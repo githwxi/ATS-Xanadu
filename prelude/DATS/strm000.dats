@@ -57,14 +57,17 @@ strxcon_cons(x0, xs) => f1(x0, xs)
 #impltmp
 <a>(*tmp*)
 strm_nil() =
-$lazy(strmcon_nil())
+($lazy(strmcon_nil()))
 #impltmp
 <a>(*tmp*)
 strm_cons
   (x0, xs) =
-(
-$lazy(strmcon_cons(x0, xs))
-)
+($lazy(strmcon_cons(x0, xs)))
+#impltmp
+<a>(*tmp*)
+strx_cons
+  (x0, xs) =
+($lazy(strxcon_cons(x0, xs)))
 //
 (* ****** ****** *)
 //
@@ -733,7 +736,7 @@ end // end of [strmcon_cons]
 // For gseq-i-operations
 //
 (* ****** ****** *)
-
+//
 #impltmp
 <x0><y0>
 strm_imap
@@ -759,9 +762,7 @@ strmcon_cons
 (imap$fopr<x0><y0>(i0, x0), auxmain(i0+1, xs))
 )
 } (*where*) // end-of(strm_imap)
-
-(* ****** ****** *)
-
+//
 #impltmp
 <x0><y0>
 strx_imap
@@ -784,9 +785,9 @@ strxcon_cons
 (imap$fopr<x0><y0>(i0, x0), auxmain(i0+1, xs))
 )
 } (*where*) // end-of(strx_imap)
-
+//
 (* ****** ****** *)
-
+//
 #impltmp
 <x0><y0>
 strm_imap_vt
@@ -812,9 +813,7 @@ strmcon_vt_cons
 (imap$fopr<x0><y0>(i0, x0), auxmain(i0+1, xs))
 )
 } (*where*) // end of(strm_imap_vt)
-
-(* ****** ****** *)
-
+//
 #impltmp
 <x0><y0>
 strx_imap_vt
@@ -837,7 +836,71 @@ strxcon_vt_cons
 (imap$fopr<x0><y0>(i0, x0), auxmain(i0+1, xs))
 )
 } (*where*) // end of(strx_imap_vt)
-
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+strm_idropif
+(    xs    ) =
+(
+auxloop
+(xs, 0(*i0*))) where
+{
+//
+#vwtpdef
+xs = strm(x0)
+//
+fnx
+auxloop
+(xs: xs, i0: sint): xs =
+(
+case+ !xs of
+|
+strmcon_nil
+  ((*void*)) =>
+(
+  strm_nil((*void*))
+)
+|
+strmcon_cons
+  ( x0, xs ) =>
+(
+if
+idropif$test<x0>(i0, x0)
+then auxloop(xs, i0 + 1)
+else strm_cons( x0, xs )))(*auxloop*)
+//
+}(*where*)//end-of-(strm_idropif(xs))
+//
+#impltmp
+<x0>(*tmp*)
+strx_idropif
+(    xs    ) =
+(
+auxloop
+(xs, 0(*i0*))) where
+{
+//
+#vwtpdef
+xs = strx(x0)
+//
+fnx
+auxloop
+(xs: xs, i0: sint): xs =
+(
+case+ !xs of
+|
+strxcon_cons
+  ( x0, xs ) =>
+(
+if
+idropif$test<x0>(i0, x0)
+then auxloop(xs, i0 + 1)
+else strx_cons( x0, xs )))(*auxloop*)
+//
+}(*where*)//end-of-(strx_idropif(xs))
+//
 (* ****** ****** *)
 //
 #impltmp

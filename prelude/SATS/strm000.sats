@@ -75,6 +75,10 @@ fun
 <a:t0>
 strm_cons
 (x0: a, xs: strm(a)): strm(a)
+fun
+<a:t0>
+strx_cons
+(x0: a, xs: strx(a)): strx(a)
 
 (* ****** ****** *)
 //
@@ -304,6 +308,9 @@ strx_imap_vt(strx(x0)): strx_vt( y0 )
 fun
 <x0:t0>
 strm_idropif(strm(x0)): strm(x0)
+fun
+<x0:t0>
+strx_idropif(strx(x0)): strx(x0)
 (* ****** ****** *)
 fun
 <x0:t0>
