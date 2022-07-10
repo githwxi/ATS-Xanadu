@@ -41,15 +41,15 @@ fun
 isPrime(x: sint): bool =
 let
 val ps =
-gseq_filter_strm
-<strx(sint)><sint>(thePrimes) where
+strx_filter_vt
+ (  thePrimes  ) where
 {
 #impltmp
 filter$test<sint>(p) =
 (if x % p = 0 then true else p*p > x)
 }
 val-
-~strmcon_vt_cons
+~strxcon_vt_cons
  (  p1  ,   ps ) = !ps in free(ps); p1*p1 > x
 end (*let*) // end of [isPrime]
 
@@ -61,7 +61,7 @@ let
 #impltmp
 filter0$test<sint> = isPrime
 in
-strm_vt_filter0<sint>(strm_vt_from(2)) end
+strm_vt_filter0(strm_vt_from(2)) end
 //
 val
 thePrimes2 = 
@@ -75,9 +75,9 @@ takeif0$test<sint>(p0) = (p0 <= 16*1024*1024)
 
 (*
 //
-real	1m6.470s
-user	1m6.824s
-system	0m0.904s
+real	0m23.060s
+user	0m23.380s
+system	0m00.188s
 //
 output: |thePrimes2| = 1077871
 //
@@ -85,12 +85,12 @@ The time info is obtained from
 running on the machine: hwxi@hongwei-t440p
 the JS code produced by compiling the ATS3
 source via the Xats2js-H0 compiler (ATS->JS).
-It is about *30* times slower than the C code
+It is about *10* times slower than the C code
 generated from some comparable ATS2 code.
 //
 *)
 val () =
-prerrln0("|thePrimes2| = ", length(thePrimes2))
+prerrln0("|thePrimes2| = ", length0(thePrimes2))
 
 (* ****** ****** *)
 

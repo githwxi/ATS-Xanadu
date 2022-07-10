@@ -21,9 +21,11 @@ Monad m => (a -> m b) -> t a -> m (t b)
 fun
 <f0:
 t0->t0>
+<f1:
+t0->t0>
 <x0:t0>
 <y0:t0>
-traverse
+mapM
 (cfr1(x0, f0(y0)), f1(x0)): f0(f1(y0))
 //
 (* ****** ****** *)
