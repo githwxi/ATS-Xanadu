@@ -123,7 +123,7 @@ else
 <x0><y0>
 mapoptn0$fopr(x0) =
 if
-filter1$test<x0>(x0)
+filter0$test<x0>(x0)
 then
 (
   optn_vt_cons(y0)

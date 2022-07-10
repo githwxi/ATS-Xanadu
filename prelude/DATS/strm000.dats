@@ -865,9 +865,26 @@ gseq_strmize
 <strx(a)><a> = strx_strmize<a>
 //
 (* ****** ****** *)
+//
 #impltmp
 {a:t0}
-gseq_imap<strm(a)><a> = strm_imap_vt<a>
+gseq_imap
+<strm(a)><a> = strm_imap_vt<a>
+//
+(* ****** ****** *)
+//
+#impltmp
+{a:t0}
+gseq_filter_strm
+< strm(a) >< a > = strm_filter_vt< a >
+//
+#impltmp
+{a:t0}
+gseq_filter_strm
+< strx(a) >< a >
+(      xs      ) =
+strx_vt_strmize<a>(strx_filter_vt<a>(xs))
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_strm000.dats] *)

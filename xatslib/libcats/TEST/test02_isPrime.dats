@@ -8,9 +8,13 @@ Sat Jul  9 19:33:25 EDT 2022
 (* ****** ****** *)
 (*
 (*
-The following Haskell code was sent
-to the ats-lang google-group by Dambaev. Please see:
+//
+The following Haskell code was sent to
+the ats-lang-users google-group by Dambaev.
+//
+Please see:
 https://groups.google.com/u/1/g/ats-lang-users/c/z-QbPs7JWgg
+//
 *)
 {-# LANGUAGE ScopedTypeVariables#-}
   module Main where
@@ -37,12 +41,31 @@ sieve$test<sint>(x1, x2) = (x2 % x1 > 0)
 
 (* ****** ****** *)
 
+(*
 fun
-isPrime(x: sint): bool =
+isPrime
+(x: sint): bool =
+let
+val ps =
+gseq_itakeif_strm
+<strx(sint)><sint>
+(   thePrimes   ) where
+{
+#impltmp
+itakeif$test<sint>(i, p) = p * p <= x
+}
+in//let
+strm_vt_forall0(ps) where
+{ #impltmp forall0$test<sint>(p) = x % p > 0 }
+end (*let*) // end of [isPrime(x)]
+*)
+fun
+isPrime
+(x: sint): bool =
 let
 val ps =
 strx_filter_vt
- (  thePrimes  ) where
+(  thePrimes  ) where
 {
 #impltmp
 filter$test<sint>(p) =
@@ -51,7 +74,7 @@ filter$test<sint>(p) =
 val-
 ~strxcon_vt_cons
  (  p1  ,   ps ) = !ps in free(ps); p1*p1 > x
-end (*let*) // end of [isPrime]
+end (*let*) // end of [isPrime(x)]
 
 (* ****** ****** *)
 //
@@ -65,7 +88,7 @@ strm_vt_filter0(strm_vt_from(2)) end
 //
 val
 thePrimes2 = 
-strm_vt_takeif<sint>(thePrimes2) where
+strm_vt_takeif0<sint>(thePrimes2) where
 {
 #impltmp
 takeif0$test<sint>(p0) = (p0 <= 16*1024*1024)

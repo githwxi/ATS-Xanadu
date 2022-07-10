@@ -121,7 +121,7 @@ fun
 strmcon_vt_sing(a): strmcon_vt(a)
 
 (* ****** ****** *)
-
+//
 fun
 <a:vt>
 strm_vt_pair
@@ -130,7 +130,7 @@ fun
 <a:vt>
 strmcon_vt_pair
   (fst: a, snd: a): strmcon_vt(a)
-
+//
 (* ****** ****** *)
 
 fun
@@ -224,37 +224,6 @@ fun
 <a:vt>
 strm_vt_concat
 (xss: strm_vt(strm_vt(a))): strm_vt(a)
-//
-(* ****** ****** *)
-//
-fun
-<a:vt>
-strm_vt_dropif
-(xs: strm_vt(a)): strm_vt(a)
-fun
-<a:vt>
-strm_vt_idropif
-(xs: strm_vt(a)): strm_vt(a)
-//
-fun
-<a:vt>
-strm_vt_takeif
-(xs: strm_vt(a)): strm_vt(a)
-fun
-<a:vt>
-strm_vt_itakeif
-(xs: strm_vt(a)): strm_vt(a)
-//
-fun
-<a:vt>
-strm_vt_drop//based on [idrop]
-( xs
-: strm_vt(a),n0:sint):strm_vt(a)
-fun
-<a:vt>
-strm_vt_take//based on [idrop]
-( xs
-: strm_vt(a),n0:sint):strm_vt(a)
 //
 (* ****** ****** *)
 //
@@ -364,6 +333,29 @@ strx_vt_filter0
 //
 (* ****** ****** *)
 //
+fun
+<a:vt>
+strm_vt_dropif0
+(xs: strm_vt(a)): strm_vt(a)
+//
+fun
+<a:vt>
+strm_vt_takeif0
+(xs: strm_vt(a)): strm_vt(a)
+//
+fun
+<a:vt>
+strm_vt_drop0//based on [idrop0]
+( xs
+: strm_vt(a),n0:sint):strm_vt(a)
+fun
+<a:vt>
+strm_vt_take0//based on [itake0]
+( xs
+: strm_vt(a),n0:sint):strm_vt(a)
+//
+(* ****** ****** *)
+//
 (*
 strm_vt_mapopt: filter+map
 *)
@@ -468,6 +460,15 @@ fun
 strx_vt_ifilter0
   (xs: strx_vt(x0)): strx_vt(x0)
 //
+(* ****** ****** *)
+fun
+<a:vt>
+strm_vt_idropif0
+(xs: strm_vt(a)): strm_vt(a)
+fun
+<a:vt>
+strm_vt_itakeif0
+(xs: strm_vt(a)): strm_vt(a)
 (* ****** ****** *)
 //
 fun
@@ -629,13 +630,13 @@ strm_vt_z2iforeach0
 #symload map0 with strm_vt_map0 of 1000
 #symload map0 with strx_vt_map0 of 1000
 (* ****** ****** *)
-#symload drop0 with strm_vt_drop of 1000
-#symload dropif0 with strm_vt_dropif of 1000
-#symload idropif0 with strm_vt_idropif of 1000
+#symload drop0 with strm_vt_drop0 of 1000
+#symload dropif0 with strm_vt_dropif0 of 1000
+#symload idropif0 with strm_vt_idropif0 of 1000
 (* ****** ****** *)
-#symload take0 with strm_vt_take of 1000
-#symload takeif0 with strm_vt_takeif of 1000
-#symload itakeif0 with strm_vt_itakeif of 1000
+#symload take0 with strm_vt_take0 of 1000
+#symload takeif0 with strm_vt_takeif0 of 1000
+#symload itakeif0 with strm_vt_itakeif0 of 1000
 (* ****** ****** *)
 #symload foldl0 with strm_vt_foldl0 of 1000
 (* ****** ****** *)

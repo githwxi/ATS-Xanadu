@@ -271,58 +271,6 @@ foldl$fopr<x0><r0>(r0, _) = succ(r0)
 }(*where*)//end-of(gseq_length/foldl)
 
 (* ****** ****** *)
-//
-#impltmp
-<xs><x0>
-gseq_drop
-  (xs, n0) =
-(
-gseq_idropif
-< xs >< x0 >(xs)) where
-{
-#impltmp
-idropif$test<x0>(i0, x0) = (i0 < n0)
-} (*where*)//end-of(gseq_drop/idropif)
-//
-#impltmp
-<xs><x0>
-gseq_dropif
-  ( xs ) =
-(
-gseq_idropif
-< xs >< x0 >(xs)) where
-{
-#impltmp
-idropif$test<x0>(i0, x0) = dropif$test<x0>(x0)
-} (*where*)//end-of(gseq_dropif/idropif)
-//
-(* ****** ****** *)
-//
-#impltmp
-<xs><x0>
-gseq_take
-  (xs, n0) =
-(
-gseq_itakeif
-< xs >< x0 >(xs)) where
-{
-#impltmp
-itakeif$test<x0>(i0, x0) = (i0 < n0)
-}(*where*)//end-of(gseq_take(xs,n0)/itakeif)
-//
-#impltmp
-<xs><x0>
-gseq_takeif
-  ( xs ) =
-(
-gseq_itakeif
-< xs >< x0 >(xs)) where
-{
-#impltmp
-itakeif$test<x0>(i0, x0) = takeif$test<x0>(x0)
-} (*where*)//end-of(gseq_takeif/itakeif)
-//
-(* ****** ****** *)
 
 #impltmp
 <xs>
@@ -951,15 +899,16 @@ let
 val xs =
 gseq_strmize<xs><x0>(xs)
 in(*in-of-let*)
-let
+(
+strm_vt_mapopt0<x0><y0>(xs)
+) where
+{
 #impltmp
 map0$fopr
 <x0><y0> = map$fopr<x0><y0>
 #impltmp
-filter1$test<x0> = filter$test<x0>
-in
-  strm_vt_mapopt0<x0><y0>(xs)
-end
+filter0$test<x0> = filter$test<x0>
+}
 end // end-of(impltmp)
 // end-of(gseq_mapopt_strm/strmize)
 //
@@ -1037,6 +986,20 @@ endlet//end-of-[gseq_filter_list/foldl]
 
 #impltmp
 <xs><x0>
+gseq_filter_strm
+  (xs) =
+(
+strm_vt_filter0
+(gseq_strmize<xs><x0>(xs))
+) where
+{
+#impltmp
+filter0$test<x0> = filter$test<x0>
+}(*where*)//end-of[gseq_filter_strm(xs)]
+
+(* ****** ****** *)
+#impltmp
+<xs><x0>
 gseq_filter_rlist
   (xs) = let
 //
@@ -1061,20 +1024,93 @@ gseq_foldl
 end//end-of(gseq_filter_rlist/foldl)
 
 (* ****** ****** *)
-
+//
 #impltmp
 <xs><x0>
-gseq_filter_strm
-  (xs) =
+gseq_drop
+  (xs, n0) =
 (
-strm_vt_filter0
-(gseq_strmize<xs><x0>(xs))
-) where
+gseq_idropif
+< xs >< x0 >(xs)) where
 {
 #impltmp
-filter0$test<x0> = filter$test<x0>
-}(*where*)//end of(gseq_filter_strm)
-
+idropif$test<x0>(i0, x0) = (i0 < n0)
+} (*where*)//end-of(gseq_drop/idropif)
+//
+#impltmp
+<xs><x0>
+gseq_dropif
+  ( xs ) =
+(
+gseq_idropif
+< xs >< x0 >(xs)) where
+{
+#impltmp
+idropif$test<x0>(i0, x0) = dropif$test<x0>(x0)
+} (*where*)//end-of(gseq_dropif/idropif)
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs><x0>
+gseq_take
+  (xs, n0) =
+(
+gseq_itakeif
+< xs >< x0 >(xs)) where
+{
+#impltmp
+itakeif$test<x0>(i0, x0) = (i0 < n0)
+}(*where*)//end-of(gseq_take(xs,n0)/itakeif)
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs><x0>
+gseq_takeif
+  ( xs ) =
+(
+gseq_itakeif
+< xs >< x0 >(xs)) where
+{
+#impltmp
+itakeif$test<x0>(_, x0) = takeif$test<x0>(x0)
+} (*where*)//end-of(gseq_takeif/itakeif)
+//
+(* ****** ****** *)
+#impltmp
+<xs><x0>
+gseq_takeif_list
+  ( xs ) =
+(
+gseq_itakeif_list
+< xs >< x0 >(xs)) where
+{
+#impltmp
+itakeif$test<x0>(_, x0) = takeif$test<x0>(x0)
+} (*where*)//end-of(gseq_takeif_list/itakeif)
+#impltmp
+<xs><x0>
+gseq_takeif_strm
+  ( xs ) =
+(
+gseq_itakeif_strm
+< xs >< x0 >(xs)) where
+{
+#impltmp
+itakeif$test<x0>(_, x0) = takeif$test<x0>(x0)
+} (*where*)//end-of(gseq_takeif_strm/itakeif)
+#impltmp
+<xs><x0>
+gseq_takeif_rlist
+  ( xs ) =
+(
+gseq_itakeif_rlist
+< xs >< x0 >(xs)) where
+{
+#impltmp
+itakeif$test<x0>(_, x0) = takeif$test<x0>(x0)
+} (*where*)//end-of(gseq_takeif_rlist/itakeif)
 (* ****** ****** *)
 //
 #impltmp
@@ -1658,7 +1694,22 @@ gseq_itakeif_list
 (
 list_vt_reverse0<x0>
 (gseq_itakeif_rlist<xs><x0>(xs))
-) (* end of [ gseq_itakeif_list ] *)
+) (* end of [gseq_itakeif_list(xs)] *)
+
+(* ****** ****** *)
+
+#impltmp
+<xs><x0>
+gseq_itakeif_strm
+  ( xs ) =
+(
+  strm_vt_itakeif0<x0>
+  (gseq_strmize<xs><x0>(xs))
+) where
+{
+#impltmp
+itakeif0$test<x0> = itakeif$test<x0>
+} (* end of [gseq_itakeif_strm(xs)] *)
 
 (* ****** ****** *)
 
@@ -1683,7 +1734,8 @@ loop
 , i0: nint
 , r0: xlst): xlst =
 if
-gseq_nilq<xs><x0>(xs)
+gseq_nilq
+<xs><x0>(xs)
 then (r0) else
 let
 val x0 =
@@ -1990,7 +2042,7 @@ strm_vt_imapopt0<x0><y0>(xs)
 imap0$fopr
 <x0><y0> = imap$fopr<x0><y0>
 #impltmp
-ifilter1$test<x0> = ifilter$test<x0>
+ifilter0$test<x0> = ifilter$test<x0>
 }
 end//end-of(gseq_imap_strm/strmize)
 
