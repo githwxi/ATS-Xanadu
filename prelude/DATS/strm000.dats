@@ -568,10 +568,14 @@ val
 opt =
 mapoptn$fopr<x0><y0>(x0)
 in//let
-case+ opt of
-| optn_vt_nil() => auxloop(xs)
-| optn_vt_cons(y0) =>
+//
+  case+ opt of
+  | ~
+  optn_vt_nil() => auxloop(xs)
+  | ~
+  optn_vt_cons(y0) =>
   strmcon_cons(y0, auxmain(xs))
+//
 end // let // end-of-[strmcon_cons]
 )
 } (*where*)//end-of-[strm_mapoptn(xs)]
@@ -608,10 +612,14 @@ let
   opt =
   mapoptn$fopr<x0><y0>(x0)
 in//etl
-case+ opt of
-| optn_vt_nil() => auxloop(xs)
-| optn_vt_cons(y0) =>
+//
+  case+ opt of
+  | ~
+  optn_vt_nil() => auxloop(xs)
+  | ~
+  optn_vt_cons(y0) =>
   strmcon_vt_cons(y0, auxmain(xs))
+//
 endlet//end-of-[strmcon_cons(x0,xs)]
 )
 }(*where*)//end-of-[strm_mapoptn_vt(xs)]
