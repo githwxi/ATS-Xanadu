@@ -442,4 +442,39 @@ endloc (*local*) // end of [local(linum)]
 //
 (* ****** ****** *)
 
+val strm =
+strm_vt_range_lte(1, 1000)
+val (  ) =
+let
+#impltmp
+foldl0$fopr<sint><sint>(r, x) = r+x
+in//let
+prerrln
+("sum(strm) = ", strm_vt_foldl0(strm, 0))
+end(*let*) // end of [strm_vt_fold0(...)]
+
+(* ****** ****** *)
+
+val xs =
+list
+("Hello", ",", "world", "!")
+local
+//
+#impltmp
+g_max<strn>(x, y) =
+if
+(  length x
+>= length y ) then x else y
+//
+#impltmp gseq_max$nil<strn>() = ""
+//
+in//local
+val () =
+prerrln
+("gseq_max(", xs, ") = "
+, gseq_max<list(strn)><strn>(xs))
+endloc (*local*) // end of [gseq_max(xs)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/xatslib/libcats/TEST/test01_synoug0.dats] *)

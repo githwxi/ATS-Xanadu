@@ -427,6 +427,37 @@ glseq_mapstrm0_strm(~xs): strm_vt(y0)
 //
 (* ****** ****** *)
 //
+fun
+<x0:vt>
+glseq_add$nil
+  ( (*void*) ): (x0)
+fun
+<x0:vt>
+glseq_mul$nil
+  ( (*void*) ): (x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+glseq_add0(xs): (x0)
+fun
+<xs:vt>
+<x0:vt>
+glseq_mul0(xs): (x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+glseq_map0_add0(xs): (y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+glseq_map0_mul0(xs): (y0)
+//
+(* ****** ****** *)
+//
 // For glseq-i-operations
 //
 (* ****** ****** *)

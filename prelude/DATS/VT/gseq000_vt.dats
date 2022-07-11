@@ -651,7 +651,106 @@ end(*let*)//end(glseq_rappend0(xs1,xs2))
 //
 (* ****** ****** *)
 //
+#impltmp
+<xs><x0>
+glseq_add0(xs) =
+let
+#impltmp
+map0$fopr<x0><x0>(x0) = x0
+in
+glseq_map0_add0<xs><x0><x0>(xs)
+end (*let*) // end-of-[ glseq_add0(xs) ]
+//
+#impltmp
+<xs><x0>
+glseq_mul0(xs) =
+let
+#impltmp
+map0$fopr<x0><x0>(x0) = x0
+in
+glseq_map0_mul0<xs><x0><x0>(xs)
+end (*let*) // end-of-[ glseq_mul0(xs) ]
+//
+(* ****** ****** *)
+#impltmp
+<x0>
+glseq_add$nil = gl_0<x0> // add-unit
+#impltmp
+<x0>
+glseq_mul$nil = gl_1<x0> // mul-unit
+(* ****** ****** *)
+//
+#impltmp
+<xs>
+<x0><y0>
+glseq_map0_add0(xs) =
+let
+//
+#impltmp
+foldl0$fopr
+<x0><y0>
+(r0, x0) =
+gl_add00<y0>
+(r0, map0$fopr<x0><y0>(x0))
+//
+in//let
+glseq_foldl0
+<xs><x0><y0>(xs, glseq_add$nil<y0>())
+endlet//end-of-[glseq_map0_add0(xs)/foldl]
+//
+#impltmp
+<xs>
+<x0><y0>
+glseq_map0_mul0(xs) =
+let
+//
+#impltmp
+foldl0$fopr
+<x0><y0>
+(r0, x0) =
+gl_mul00<y0>
+(r0, map0$fopr<x0><y0>(x0))
+//
+in//let
+glseq_foldl0
+<xs><x0><y0>(xs, glseq_mul$nil<y0>())
+endlet//end-of-[glseq_map0_mul0(xs)/foldl]
+//
+(* ****** ****** *)
+//
 // For gseq-i-operations
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs><x0>
+glseq_iexists0
+  (xs) = let
+//
+  #impltmp
+  iforall0$test<x0>(i0, x0) =
+  not(iexists0$test<x0>(i0, x0))
+//
+in
+  if
+  glseq_iforall0
+  <xs><x0>(xs) then false else true
+end // end of [glseq_iexists0/iforall0]
+//
+#impltmp
+<xs><x0>
+glseq_iexists1
+  (xs) = let
+//
+  #impltmp
+  iforall1$test<x0>(i0, x0) =
+  not(iexists1$test<x0>(i0, x0))
+//
+in
+  if
+  glseq_iforall1
+  <xs><x0>(xs) then false else true
+end // end of [glseq_iexists1/iforall1]
 //
 (* ****** ****** *)
 //
@@ -710,38 +809,6 @@ in
 end (* end of [glseq_forall1] *)
 //
 end(*let*)//end(glseq_iforall1/forall1)
-//
-(* ****** ****** *)
-//
-#impltmp
-<xs><x0>
-glseq_iexists0
-  (xs) = let
-//
-  #impltmp
-  iforall0$test<x0>(i0, x0) =
-  not(iexists0$test<x0>(i0, x0))
-//
-in
-  if
-  glseq_iforall0
-  <xs><x0>(xs) then false else true
-end // end of [glseq_iexists0/iforall0]
-//
-#impltmp
-<xs><x0>
-glseq_iexists1
-  (xs) = let
-//
-  #impltmp
-  iforall1$test<x0>(i0, x0) =
-  not(iexists1$test<x0>(i0, x0))
-//
-in
-  if
-  glseq_iforall1
-  <xs><x0>(xs) then false else true
-end // end of [glseq_iexists1/iforall1]
 //
 (* ****** ****** *)
 //
