@@ -1132,7 +1132,7 @@ gseq_map_mul
 <xs><x0><x0>(xs)
 ) where
 {
-  #impltmp map$fopr<x0><x0>(x0) = x0
+#impltmp map$fopr<x0><x0>(x0) = x0
 }
 //
 (* ****** ****** *)

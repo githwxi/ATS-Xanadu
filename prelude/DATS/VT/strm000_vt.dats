@@ -1316,59 +1316,31 @@ end // end of [strmcon_vt_cons]
 (* ****** ****** *)
 //
 #impltmp
-<x0>(*tmp*)
-strm_vt_group0_list
-  (xs) =
-(
-auxmain0(xs)) where
-{
-//
-#vwtpdef r0 = list_vt(x0)
-#vwtpdef xs = strm_vt(x0)
-//
-fnx
-auxmain0
-( xs: xs) =
-$llazy
-(
-auxmain1(xs, list_vt_nil())
-)
-//
-and
-auxmain1
-( xs: xs
-, r0: r0)
-: strmcon_vt(r0) =
-(
-case+ !xs of
-| ~
-strmcon_vt_nil
-  ((*void*)) =>
+<x0:t0>
+strm_vt_add0
+  (  xs  ) =
 let
-val r0 =
-list_vt_reverse0<x0>(r0)
+#vwtpdef
+xs = strm_vt(x0)
+#impltmp
+map0$fopr<x0><x0>(x0) = x0
 in
-  strmcon_vt_sing<r0>(r0)
-end // end of [strmcon_vt_cons]
-| ~
-strmcon_vt_cons
-  ( x0, xs ) =>
-if
-group0$test<x0>(x0)
-then
-auxmain1
-(xs, list_vt_cons(x0, r0))
-else
-let
-val r0 = list_vt_reverse0<x0>(r0)
-in//let
-  g_free(x0)
-; strmcon_vt_cons(r0, auxmain0(xs))
-end // end of [strmcon_vt_cons]
-)
+  glseq_map0_add0<xs><x0><x0>(xs)
+end (*let*)//end-of-(strm_vt_add0(xs))
 //
-}(*where*)//end-of(strm_vt_group0_list)
-
+#impltmp
+<x0:t0>
+strm_vt_mul0
+  (  xs  ) =
+let
+#vwtpdef
+xs = strm_vt(x0)
+#impltmp
+map0$fopr<x0><x0>(x0) = x0
+in
+  glseq_map0_mul0<xs><x0><x0>(xs)
+end (*let*)//end-of-(strm_vt_mul0(xs))
+//
 (* ****** ****** *)
 
 #impltmp
@@ -1522,6 +1494,62 @@ endlet // end-of-[ strmcon_cons(y0, ys1)]
 ) (*llazy*)//end-of-[merge0_y(x0,xs1,ys1)]
 //
 } (*where*)//end-of-[strm_vt_merge0(xs,ys)]
+
+(* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+strm_vt_group0_list
+  (xs) =
+(
+auxmain0(xs)) where
+{
+//
+#vwtpdef r0 = list_vt(x0)
+#vwtpdef xs = strm_vt(x0)
+//
+fnx
+auxmain0
+( xs: xs) =
+$llazy
+(
+auxmain1(xs, list_vt_nil())
+)
+//
+and
+auxmain1
+( xs: xs
+, r0: r0)
+: strmcon_vt(r0) =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil
+  ((*void*)) =>
+let
+val r0 =
+list_vt_reverse0<x0>(r0)
+in
+  strmcon_vt_sing<r0>(r0)
+end // end of [strmcon_vt_cons]
+| ~
+strmcon_vt_cons
+  ( x0, xs ) =>
+if
+group0$test<x0>(x0)
+then
+auxmain1
+(xs, list_vt_cons(x0, r0))
+else
+let
+val r0 = list_vt_reverse0<x0>(r0)
+in//let
+  g_free(x0)
+; strmcon_vt_cons(r0, auxmain0(xs))
+end // end of [strmcon_vt_cons]
+)
+//
+}(*where*)//end-of(strm_vt_group0_list)
 
 (* ****** ****** *)
 //
@@ -2305,6 +2333,17 @@ list_vt2t(strm_vt_listize<x0>(xs))
 {x0:vt}
 glseq_unstrm_vt
 <list_vt(x0)><x0> = strm_vt_listize< x0 >
+//
+(* ****** ****** *)
+//
+#impltmp
+{x0:vt}
+glseq_add0
+<strm_vt(x0)><x0> = strm_vt_add0<x0>
+#impltmp
+{x0:vt}
+glseq_mul0
+<strm_vt(x0)><x0> = strm_vt_mul0<x0>
 //
 (* ****** ****** *)
 
