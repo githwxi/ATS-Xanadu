@@ -45,49 +45,70 @@ g_sub<a>(x, g_1<a>())
 // For linear gnums
 //
 (* ****** ****** *)
+//
+#impltmp
+{a:t0}
+gl_0<a> = g_0<a>
+#impltmp
+{a:t0}
+gl_1<a> = g_1<a>
+#impltmp
+{a:t0}
+gl_2<a> = g_2<a>
+#impltmp
+{a:t0}
+gl_3<a> = g_3<a>
+#impltmp
+{a:t0}
+gl_4<a> = g_4<a>
+#impltmp
+{a:t0}
+gl_5<a> = g_5<a>
+//
+(* ****** ****** *)
 
 #impltmp
 {a:t0}
-gl_add00<a>(x, y) = g_add<a>(x, y)
+gl_add00<a> = g_add<a>
 #impltmp
 {a:t0}
-gl_add11<a>(x, y) = g_add<a>(x, y)
+gl_add11<a> = g_add<a>
 
 (* ****** ****** *)
 
 #impltmp
 {a:t0}
-gl_sub00<a>(x, y) = g_sub<a>(x, y)
+gl_sub00<a> = g_sub<a>
 #impltmp
 {a:t0}
-gl_sub11<a>(x, y) = g_sub<a>(x, y)
+gl_sub11<a> = g_sub<a>
 
 (* ****** ****** *)
 
 #impltmp
 {a:t0}
-gl_mul00<a>(x, y) = g_mul<a>(x, y)
+gl_mul00<a> = g_mul<a>
 #impltmp
 {a:t0}
-gl_mul11<a>(x, y) = g_mul<a>(x, y)
+gl_mul11<a> = g_mul<a>
 
 (* ****** ****** *)
 
 #impltmp
 {a:t0}
-gl_div00<a>(x, y) = g_div<a>(x, y)
+gl_div00<a> = g_div<a>
 #impltmp
 {a:t0}
-gl_div11<a>(x, y) = g_div<a>(x, y)
+gl_div11<a> = g_div<a>
 
 (* ****** ****** *)
 
 #impltmp
 {a:t0}
-gl_mod00<a>(x, y) = g_mod<a>(x, y)
+gl_mod00<a> = g_mod<a>
 #impltmp
 {a:t0}
-gl_mod11<a>(x, y) = g_mod<a>(x, y)
+gl_mod11<a> = g_mod<a>
 
 (* ****** ****** *)
 
