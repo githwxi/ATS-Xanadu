@@ -127,6 +127,15 @@ gl_1((*void*)): (a)
 fun
 <a:vt>
 gl_2((*void*)): (a)
+fun
+<a:vt>
+gl_3((*void*)): (a)
+fun
+<a:vt>
+gl_4((*void*)): (a)
+fun
+<a:vt>
+gl_5((*void*)): (a)
 //
 (* ****** ****** *)
 
