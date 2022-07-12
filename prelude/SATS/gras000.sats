@@ -51,6 +51,17 @@ gras_length(xs): nint
 fun
 <xs:t0>
 <x0:t0>
+gras_listize(xs): list_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gras_strmize(xs): strm_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
 gras_rlistize(xs): list_vt(x0)
 fun
 <xs:t0>
