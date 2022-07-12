@@ -118,5 +118,20 @@ strm_vt_map0<(key,itm)>(gmap_strmize(kxs))
 end(*let*)//end-of-[gmap_strmize_itm(kxs)]
 //
 (* ****** ****** *)
+//
+(*
+(*
+HX-2022-07-12:
+Tue Jul 12 13:01:46 EDT 2022
+It is already in [list000.dats]
+*)
+#impltmp
+{k0:t0}
+{x0:t0}
+gmap_strmize
+<list0((k0,x0))><k0><x0> = list_strmize<(k0,x0)>
+*)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gmap000.dats] *)
