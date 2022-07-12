@@ -6,6 +6,12 @@
 //
 *)
 (* ****** ****** *)
+fun
+<map:t0>
+<key:t0>
+<itm:t0>
+gmap_size(map): nint
+(* ****** ****** *)
 //
 fun
 <map:t0>

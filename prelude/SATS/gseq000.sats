@@ -236,6 +236,13 @@ gseq_get_at
 fun
 <xs:t0>
 <x0:t0>
+gseq_set_at
+( xs:
+& xs >> xs
+, i0: nint, x0: x0): void
+fun
+<xs:t0>
+<x0:t0>
 gseq_fset_at
 ( xs: xs
 , i0: nint, x0: x0): xs
@@ -246,14 +253,13 @@ fun
 gseq_get_at_opt
 ( xs: xs
 , i0: nint): optn_vt(x0)
-(*
 fun
 <xs:t0>
 <x0:t0>
-gseq_fset_at_opt
-( xs: xs
-, i0: nint, x0: x0): optn_vt(xs)
-*)
+gseq_set_at_opt
+( xs:
+& xs >> xs
+, i0: nint, x0: x0): optn_vt(x0)
 //
 (* ****** ****** *)
 //

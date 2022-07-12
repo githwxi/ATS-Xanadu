@@ -12,6 +12,13 @@ UN =
 "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
+#impltmp
+<map>
+<key><itm>
+gmap_size(kxs) =
+strm_vt_length
+(gmap_strmize<map><key><itm>(kxs))
+(* ****** ****** *)
 //
 #impltmp
 <map>
