@@ -15,8 +15,7 @@ UN =
 //
 #impltmp
 <map>
-<key>
-<itm>
+<key><itm>
 gmap_print(kxs) =
 let
 //
@@ -66,8 +65,7 @@ gmap_print$end<>() = ()
 gmap_print$sep<>() = strn_print(";")
 //
 #impltmp
-<key>
-<itm>
+<key><itm>
 gmap_print$keyval
   (k0, x0) =
 (
@@ -78,58 +76,45 @@ strn_print<>("->"); g_print<itm>( x0 )
 //
 #impltmp
 <map>
-<key>
-<itm>
+<key><itm>
 gmap_keyq
 (kxs, k0) =
+strm_vt_exists0<key>
 (
-case+ !ks of
-| ~
-strmcon_vt_nil
-  ((*void*)) => false
-| ~
-strmcon_vt_cons
-  ( k1, ks ) => (g_free(ks); true)
-) where
-{
-val ks =
-strm_vt_filter0
-(gmap_strmize_key
-<map><key><itm>(kxs)) where
+gmap_strmize_key
+<map><key><itm>(kxs)
+) where // end-of(strm_vt_exists0<key>)
 {
 #impltmp
-filter0$test<key>(k1) = g_equal<key>(k0,k1)
-}
-} (*where*) // end of [ gmap_keyq(kxs, k0) ]
+exists0$test<key>(k1)=g_equal<key>(k0,k1)
+} (*where*) // end of [gmap_keyq(kxs, k0)]
 //
 (* ****** ****** *)
 //
 #impltmp
 <map>
-<key>
-<itm>
+<key><itm>
 gmap_strmize_key(kxs) =
 let
 #impltmp
 map0$fopr
 <(key,itm)><key>(kx) = kx.0
 in
-  strm_vt_map0(gmap_strmize(kxs))
+strm_vt_map0<(key,itm)>(gmap_strmize(kxs))
 end(*let*)//end-of-[gmap_strmize_key(kxs)]
 //
 (* ****** ****** *)
 //
 #impltmp
 <map>
-<key>
-<itm>
+<key><itm>
 gmap_strmize_itm(kxs) =
 let
 #impltmp
 map0$fopr
 <(key,itm)><itm>(kx) = kx.1
 in
-  strm_vt_map0(gmap_strmize(kxs))
+strm_vt_map0<(key,itm)>(gmap_strmize(kxs))
 end(*let*)//end-of-[gmap_strmize_itm(kxs)]
 //
 (* ****** ****** *)
