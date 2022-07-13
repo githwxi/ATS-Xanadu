@@ -125,6 +125,13 @@ tnode with token_get_node//lexing0
 #symload
 lctn with d0cstdcl_get_lctn//dynexp0
 (* ****** ****** *)
+#symload
+lctn with d0valdcl_get_lctn//dynexp0
+#symload
+lctn with d0vardcl_get_lctn//dynexp0
+#symload
+lctn with d0fundcl_get_lctn//dynexp0
+(* ****** ****** *)
 #symload + with add_loctn_loctn//locinfo
 (* ****** ****** *)
 
@@ -311,6 +318,16 @@ fun
 pk_dynconst: pk_fun(d0ecl)
 //
 (* ****** ****** *)
+#extern
+fun
+pk_valdclst: pk_fun(d0ecl)
+#extern
+fun
+pk_vardclst: pk_fun(d0ecl)
+#extern
+fun
+pk_fundclst: pk_fun(d0ecl)
+(* ****** ****** *)
 
 #implfun
 fp_d0ecl
@@ -374,6 +391,16 @@ err := e00;
 d0ecl_make_node
 (lres, D0Clocal(tbeg,head,tmid,body,tend))
 end (*let*) // end of [ T_LOCAL() ]
+//
+|
+T_VAL _
+when f00 > 0 => pk_valdclst(tok, buf, err)
+|
+T_VAR _
+when f00 > 0 => pk_vardclst(tok, buf, err)
+|
+T_FUN _
+when f00 > 0 => pk_fundclst(tok, buf, err)
 //
 |
 T_ABSSORT() => let
@@ -605,11 +632,11 @@ val lres =
     )
   | WD0CSsome
     (_, _, _, tend) => lknd+tend.lctn()
-) : loc_t (*case*) // end of [ val( lres ) ]
+) : loc_t // case // end of [ val(lres) ]
 in//let
-err := e00;
-d0ecl_make_node(lres, D0Cdatatype(tknd, dtps, wopt))
-end (*let*) // end of [T_DATATYPE(k0)]
+  err := e00
+; d0ecl(lres, D0Cdatatype(tknd, dtps, wopt))
+end (*let*) // end of [ T_DATATYPE( k0 ) ]
 //
 (* ****** ****** *)
 //
@@ -1355,8 +1382,61 @@ end (*let*) // end of [p1_d0cstdcl(buf,err)]
 //
 #implfun
 p1_d0cstdclseq_AND(buf, err) =
-list_vt2t(ps_AND_p1fun{d0cstdcl}(buf, err, p1_d0cstdcl))
+list_vt2t
+(ps_AND_p1fun{d0cstdcl}(buf, err, p1_d0cstdcl))
 //
+(* ****** ****** *)
+//
+#typedef
+d0valdclist = list(d0valdcl)
+#typedef
+d0vardclist = list(d0vardcl)
+//
+#extern
+fun
+p1_d0valdcl: p1_fun(d0valdcl)
+#extern
+fun
+p1_d0vardcl: p1_fun(d0vardcl)
+#extern
+fun
+p1_d0valdclseq_AND: p1_fun(d0valdclist)
+#extern
+fun
+p1_d0vardclseq_AND: p1_fun(d0vardclist)
+//
+(* ****** ****** *)
+//
+#implfun
+pk_valdclst
+(tok, buf, err) =
+let
+//
+val e00 = err
+val tknd = tok
+val (  ) = buf.skip1()
+//
+val d0cs =
+p1_d0valdclseq_AND(buf, err)
+//
+val lres =
+(
+  case+ d0cs of
+  | list_nil _ =>
+    tknd.lctn((*nil*))
+  | list_cons _ =>
+    (
+    tknd.lctn()+d0c1.lctn()
+    ) where
+    {
+      val d0c1 = list_last(d0cs)
+    }
+) : loc_t // end of [val(lres)]
+in//let
+  err := e00
+; d0ecl_make_node(lres, D0Cvaldclst(tok, d0cs))
+end (*let*)//end-of-[pk_valdclst(tok, buf, err)]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_parsing_decl00.dats] *)

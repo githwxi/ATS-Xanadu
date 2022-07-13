@@ -677,12 +677,22 @@ D0Cdatasort of
 (token(*DATASORT*), d0tstlst)
 //
 |
+D0Cvaldclst of
+(token(*VAL(vlk)*), d0valdclist)
+|
+D0Cvardclst of
+(token(*VAR(vrk)*), d0vardclist)
+|
+D0Cfundclst of
+(token(*FUN(fnk)*), d0fundclist)
+//
+|
 D0Cdatatype of
 (token(*DATATYPE*), d0typlst, wd0eclseq)
 //
 |
 D0Cdynconst of
-(token(*fnk//vlk*), t0qaglst, d0cstdclist)
+(token(*fnk/vlk*), t0qaglst, d0cstdclist)
 //
 (*
 HX-2022-06-20:
@@ -929,6 +939,21 @@ d0cstdcl_make_args
 ) : d0cstdcl//end-of(d0cstdcl_make_node)
 #symload d0cstdcl with d0cstdcl_make_args
 //
+(* ****** ****** *)
+fun
+d0valdcl_get_lctn:(d0valdcl)->loc_t
+(* ****** ****** *)
+#symload lctn with d0valdcl_get_lctn
+(* ****** ****** *)
+fun
+d0vardcl_get_lctn:(d0vardcl)->loc_t
+(* ****** ****** *)
+#symload lctn with d0vardcl_get_lctn
+(* ****** ****** *)
+fun
+d0fundcl_get_lctn:(d0fundcl)->loc_t
+(* ****** ****** *)
+#symload lctn with d0fundcl_get_lctn
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_dynexp0.sats] *)
