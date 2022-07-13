@@ -349,6 +349,15 @@ fun
 <y0:vt>
 gseq_map(xs: xs): (ys)
 //
+fun
+<xs:t0>
+<x0:t0> // g_mul
+gseq_scale(xs, x0): (xs)
+fun
+<xs:t0>
+<x0:t0> // g_add
+gseq_shift(xs, x0): (xs)
+//
 (* ****** ****** *)
 //
 fun
