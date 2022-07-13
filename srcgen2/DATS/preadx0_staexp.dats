@@ -137,7 +137,7 @@ fun
 sort0_errvl_a2
 (st1: sort0
 ,st2: sort0): sint =
-max
+gmax
 (errvl(st1),errvl(st2))
 #symload
 sort0_errvl with sort0_errvl_a2
@@ -148,7 +148,7 @@ sort0_errvl_a3
 (st1: sort0
 ,st2: sort0
 ,st3: sort0): sint =
-max
+gmax
 (errvl(st1)
 ,errvl(st2),errvl(st3))
 #symload
@@ -171,7 +171,7 @@ list_nil
 ((*nil*)) => 0
 |
 list_cons
-(st1,sts) => max(errvl(st1),errvl(sts)))
+(st1,sts) => gmax(errvl(st1),errvl(sts)))
 //
 (* ****** ****** *)
 //
@@ -318,7 +318,7 @@ fun
 s0exp_errvl_a2
 (se1: s0exp
 ,se2: s0exp): sint =
-max
+gmax
 (errvl(se1),errvl(se2))
 #symload
 s0exp_errvl with s0exp_errvl_a2
@@ -329,7 +329,7 @@ s0exp_errvl_a3
 (se1: s0exp
 ,se2: s0exp
 ,se3: s0exp): sint =
-max
+gmax
 (errvl(se1)
 ,errvl(se2),errvl(se3))
 #symload
@@ -350,11 +350,12 @@ s0exp_errvl_ses(ses) =
 (
 case+ ses of
 |
-list_nil
-((*nil*)) => 0
+list_nil((*nil*)) => 0
 |
-list_cons
-(se1,ses) => max(errvl(se1),errvl(ses)))
+list_cons(se1,ses) =>
+(
+  gmax(errvl(se1),errvl(ses)))
+)
 //
 (* ****** ****** *)
 //
@@ -399,17 +400,20 @@ l0s0e_errvl_lses(lses) =
 (
 case+ lses of
 |
-list_nil
-((*nil*)) => 0
+list_nil((*nil*)) => 0
 |
-list_cons
-(lse1,lses) => max(errvl(lse1),errvl(lses)))
+list_cons(lse1,lses) =>
+(
+  gmax(errvl(lse1),errvl(lses)))
+)
 //
 (* ****** ****** *)
+//
 #extern
 fun
 l0s0e_errvl_lsrb
 (lsrb: l0s0e_RBRACE): sint
+//
 #implfun
 l0s0e_errvl_lsrb
 (     lsrb     ) =
@@ -422,7 +426,9 @@ l0s0e_RBRACE_cons0
 l0s0e_RBRACE_cons1
 (  tkb,lses,tke  ) => errvl(lses)
 )
+//
 #symload errvl with l0s0e_errvl_lsrb
+//
 (* ****** ****** *)
 //
 fun
@@ -513,7 +519,7 @@ s0exp_lpar_errck
 , srp
 : s0exp_RPAREN): s0exp =
 let
-  val lvl = max(errvl(ses),errvl(srp))
+val lvl = gmax(errvl(ses),errvl(srp))
 in//let
 s0exp_errck
 (lvl+1, s0exp(loc,S0Elpar(tkb,ses,srp)))
@@ -534,7 +540,7 @@ s0exp_tup1_errck
 , srp
 : s0exp_RPAREN): s0exp =
 let
-val lvl = max(errvl(ses),errvl(srp))
+val lvl = gmax(errvl(ses),errvl(srp))
 in//let
 s0exp_errck
 (lvl+1, s0exp(loc,S0Etup1(tkb,opt,ses,srp)))
@@ -555,7 +561,7 @@ s0exp_rcd2_errck
 , lsrb
 : l0s0e_RBRACE): s0exp =
 let
-val lvl = max(errvl(lses),errvl(lsrb))
+val lvl = gmax(errvl(lses),errvl(lsrb))
 in//let
 s0exp_errck
 (lvl+1, s0exp(loc,S0Ercd2(tkb,opt,lses,lsrb)))

@@ -76,7 +76,7 @@ HX: [stamp(0)] is special
 *)
 #implfun
 stamper_new
-((*void*)) = a0ref_make(1u)
+  ( ) = a0ref_make_1val(1u)
 //
 #implfun
 stamper_tmpset
