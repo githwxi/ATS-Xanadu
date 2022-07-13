@@ -635,7 +635,7 @@ in//let
 strmcon_vt_cons(x0, auxseq(xs))
 endlet // end of [else]
 )(*llazy*)//end-of-[auxseq]
-}(*where*)//end-of(gseq_strmize)
+}(*where*)//end-of(gseq_strmize(xs))
 //
 (* ****** ****** *)
 //
@@ -646,16 +646,18 @@ gseq_rlistize(xs) =
 gseq_map_rlist<xs><x0><x0>(xs)
 ) where
 {
-  #impltmp map$fopr<x0><x0>(x0) = x0
-}
+#impltmp map$fopr<x0><x0>(x0) = x0
+}(*where*)//end-of(gseq_rlistize(xs))
 //
 (* ****** ****** *)
 //
 #impltmp
 <xs><x0>
 gseq_rstrmize(xs) =
+(
 list_vt_strmize<x0>
-(gseq_rlistize<xs><x0>(xs))
+(gseq_rlistize<xs><x0>(xs)))
+(*end-of(gseq_rstrmize(xs))*)
 //
 (* ****** ****** *)
 //
@@ -1525,8 +1527,8 @@ gseq_rappend<xs><x0>
 <xs><x0>
 gseq_reverse(xs) =
 gseq_unstrm_vt<xs><x0>
-(
-gseq_rstrmize<xs><x0>(xs))
+(gseq_rstrmize<xs><x0>(xs))
+(*end-of-(gseq_reverse(xs)*)
 //
 (* ****** ****** *)
 //

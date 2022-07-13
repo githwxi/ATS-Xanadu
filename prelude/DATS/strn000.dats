@@ -413,6 +413,36 @@ endlet //end-of-(else)//end-of-(if)
 //
 (* ****** ****** *)
 //
+#impltmp
+<>(*tmp*)
+strn_rstrmize(cs) =
+(
+  auxmain(n0)) where
+{
+//
+val n0 = length(cs)
+//
+fun
+auxmain
+(i0: nint): strm_vt(cgtz) =
+$llazy
+(
+if
+(i0 <= 0)
+then
+(
+strmcon_vt_nil())
+else
+let
+  val i0 = (i0-1)
+  val ci = cs[i0] in
+  strmcon_vt_cons(ci, auxmain(i0))
+end // end of [else]
+)
+} (*where*) // end of [strn_rstrmize]
+//
+(* ****** ****** *)
+//
 #impltmp<>
 strn_copy_vt(xs) =
 strn_vt_make_strn<>(xs)
@@ -652,10 +682,15 @@ gseq_listize<xs><x0> = strn_listize<>
 gseq_strmize<xs><x0> = strn_strmize<>
 
 (* ****** ****** *)
-
+//
 #impltmp
 gseq_rlistize<xs><x0> = strn_rlistize<>
-
+//
+#impltmp
+gras_rstrmize<xs><x0> = strn_rstrmize<>
+#impltmp
+gseq_rstrmize<xs><x0> = strn_rstrmize<>
+//
 (* ****** ****** *)
 
 #impltmp

@@ -44,29 +44,15 @@ gras_set_at_opt
 fun
 <xs:t0>
 <x0:t0>
-gras_length(xs): nint
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-gras_listize(xs): list_vt(x0)
-fun
-<xs:t0>
-<x0:t0>
-gras_strmize(xs): strm_vt(x0)
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-gras_rlistize(xs): list_vt(x0)
-fun
-<xs:t0>
-<x0:t0>
 gras_rstrmize(xs): strm_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gras_bsearch
+(xs:xs, x0:x0): optn_vt((nint,x0))
 //
 (* ****** ****** *)
 
