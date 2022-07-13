@@ -878,10 +878,7 @@ in
 end (*let*) // end-of-[ T_TRY() ]
 //
 (*
-|
-T_DOT() =>
-|
-T_MSGT() =>
+|T_DOT()=>|T_MSGT()=>
 *)
 | _
 when t0_dtsel(tnd) =>

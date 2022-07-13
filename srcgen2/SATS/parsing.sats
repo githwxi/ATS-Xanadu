@@ -123,6 +123,9 @@ D0E = "./dynexp0.sats"
 #typedef s0explst = $S0E.s0explst
 
 (* ****** ****** *)
+#typedef d0valdcl = $D0E.d0valdcl
+#typedef d0vardcl = $D0E.d0vardcl
+(* ****** ****** *)
 
 #typedef wd0eclseq = $D0E.wd0eclseq
 
