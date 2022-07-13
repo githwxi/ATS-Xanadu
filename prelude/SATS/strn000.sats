@@ -292,10 +292,8 @@ fun<>
 strn_listize
 {n:int}
 (strn(n)): list_vt(cgtz,n)
-fun<>
-strn_strqize
-{n:int}
-(strn(n)): strq_vt(cgtz,n)
+//
+(* ****** ****** *)
 //
 fun<>
 strn_strmize
@@ -309,12 +307,19 @@ fun<>
 strn_strxize
 (cs:strn): strx_vt( char )
 //
+fun<>
+strn_strqize
+{n:int}
+(strn(n)): strq_vt(cgtz,n)
+//
 (* ****** ****** *)
 //
 fun<>
 strn_rlistize
 {n:int}
 (cs:strn(n)): list_vt(cgtz,n)
+//
+(* ****** ****** *)
 //
 fun<>
 strn_rstrmize
