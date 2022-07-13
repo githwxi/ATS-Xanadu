@@ -495,21 +495,22 @@ prerrln0
 ("range1(0,10) = ", strmize(range1(0,10)))
 val () =
 prerrln0
-("range1(0,10) = ", rstrmize(range1(0,10)))
+("r(range1(0,10)) = ", rstrmize(range1(0,10)))
 val () =
 prerrln0
-("range1(10,0,-1) = ", listize(range1(10, 0, -1)))
+("range1(10,0,-1) = ", listize(range1(10,0,-1)))
 val () =
 prerrln0
-("range1(10,0,-1) = ", rlistize(range1(10, 0, -1)))
+("r(range1(10,0,-1)) = ", rlistize(range1(10,0,-1)))
 //
 val () =
+let
+#impltmp
+foldl$fopr<sint><sint>(r0,x0) = r0*( x0+1 )
+in
 prerrln0
-("prod(range1(10, 0)) = ", foldl(range1(0, 10), 1))
-where
-{
-  #impltmp foldl$fopr<sint><sint>(r0,x0) = r0*(x0+1)
-}
+("product(range1(0,10)+1) = ", foldl(range1(0,10), 1))
+end(*let*)
 //
 (* ****** ****** *)
 

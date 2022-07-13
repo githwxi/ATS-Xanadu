@@ -803,6 +803,25 @@ gseq_map
 (* ****** ****** *)
 //
 #impltmp
+<xs><x0>
+gseq_scale(xs, x0) =
+(
+gseq_map<xs><x0>(xs)) where
+{
+  #impltmp
+  map$fopr<x0><x0>(x1) = g_mul<x0>(x0, x1) }
+#impltmp
+<xs><x0>
+gseq_shift(xs, x0) =
+(
+gseq_map<xs><x0>(xs)) where
+{
+  #impltmp
+  map$fopr<x0><x0>(x1) = g_add<x0>(x1, x0) }
+//
+(* ****** ****** *)
+//
+#impltmp
 <xs>
 <x0><y0>
 gseq_map_list
