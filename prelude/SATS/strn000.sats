@@ -277,7 +277,14 @@ strn_reverse_vt
 fun<>
 strn_forall(strn): bool
 fun<>
+strn_foreach(strn): void
+//
+(* ****** ****** *)
+//
+fun<>
 strn_rforall(strn): bool
+fun<>
+strn_rforeach(strn): void
 //
 (* ****** ****** *)
 //
