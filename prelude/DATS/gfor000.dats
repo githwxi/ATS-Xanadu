@@ -13,12 +13,12 @@
 //
 #impltmp
 <a:t0>
-range_make_arg2
-(  s1, f2  ) = RANGE3(s1, f2, 1)
+range1_make_arg2
+(  s1, f2  ) = RANGE1(s1, f2, 1)
 #impltmp
 <a:t0>
-range_make_arg3
-(s1, f2, d3) = RANGE3(s1, f2, d3)
+range1_make_arg3
+(s1, f2, d3) = RANGE1(s1, f2, d3)
 //
 (* ****** ****** *)
 
@@ -111,19 +111,33 @@ end(*let*)//end-of-[g_x3forint(n1,n2,n3)]
 (* ****** ****** *)
 #impltmp
 {x0:t0}
-range_forall<x0> = gseq_forall<range(x0)><x0>
+range1_forall<x0> = gseq_forall<range1(x0)><x0>
 #impltmp
 {x0:t0}
-range_foreach<x0> = gseq_foreach<range(x0)><x0>
+range1_foreach<x0> = gseq_foreach<range1(x0)><x0>
 #impltmp
 {x0:t0}
 {r0:t0}
-range_foldl<x0><r0> = gseq_foldl<range(x0)><x0><r0>
+range1_foldl<x0><r0> = gseq_foldl<range1(x0)><x0><r0>
 (* ****** ****** *)
-
+#impltmp
+{x0:t0}
+range1_listize<x0> = gseq_listize<range1(x0)><x0>
+#impltmp
+{x0:t0}
+range1_strmize<x0> = gseq_strmize<range1(x0)><x0>
+(* ****** ****** *)
+#impltmp
+{x0:t0}
+range1_rlistize<x0> = gseq_rlistize<range1(x0)><x0>
+#impltmp
+{x0:t0}
+range1_rstrmize<x0> = gseq_rstrmize<range1(x0)><x0>
+(* ****** ****** *)
+//
 #impltmp
 <x0:t0>
-range_strmize(xs) =
+range1_strmize(xs) =
 let
 //
 fun
@@ -174,19 +188,19 @@ auxmain2
 in
 let
 val+
-RANGE3(s1, f2, d3) = xs in
+RANGE1(s1, f2, d3) = xs in
 if
 (d3 >= 0)
 then
 auxmain1(s1, f2, d3) else auxmain2(s1, f2, d3)
 end(* let *)
-end(* let *) // end of [ range_strmize( xs ) ]
-
+end(* let *) // end of [ range1_strmize( xs ) ]
+//
 (* ****** ****** *)
 
 #impltmp
 {x0:t0}
-gseq_strmize<range(x0)><x0> = range_strmize<x0>
+gseq_strmize<range1(x0)><x0> = range1_strmize<x0>
 
 (* ****** ****** *)
 
