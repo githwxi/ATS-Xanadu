@@ -277,6 +277,40 @@ end // end of [else]
 (* ****** ****** *)
 //
 #impltmp
+<>(*tmp*)
+strn_rforall
+  {n}( cs ) =
+(
+loop(cs, n0)) where
+{
+//
+val n0 = length(cs)
+//
+fnx
+loop
+{n:int}
+{i:nat
+|i <= n}
+( cs: strn(n)
+, i0: sint(i)): bool =
+(
+if
+(i0 <= 0)
+then true else
+let
+  val i1 = i0 - 1
+  val ci = cs[i1]
+in
+if
+forall$test<cgtz>(ci)
+then loop(cs, i1) else false
+endlet//end-of-(else)//end-of-(if)
+)
+} (*where*) // end of [strn_rforall]
+//
+(* ****** ****** *)
+//
+#impltmp
 strn_foreach<> =
 gseq_foreach<strn><cgtz>
 //
@@ -419,7 +453,7 @@ let
   val i1 = i0 + 1
 in
 loop(i1, list_vt_cons(ci, r0))
-endlet //end-of-(else)//end-of-(if)
+endlet//end-of-(else)//end-of-(if)
 )
 } (*where*) // end of [strn_rlistize]
 //
