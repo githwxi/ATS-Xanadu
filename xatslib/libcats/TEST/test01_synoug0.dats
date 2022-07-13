@@ -478,5 +478,12 @@ prerrln
 , strn_reverse(gseq_range_lte('a', 'z')))
 
 (* ****** ****** *)
+val () =
+prerrln
+("gmax(1,2,3,4,5) = ", gmax('1', '2', '3', '4', '5'))
+val () =
+prerrln
+("gmin(1,2,3,4,5) = ", gmin("1", "2", "3", "4", "5"))
+(* ****** ****** *)
 
 (* end of [ATS3/xatslib/libcats/TEST/test01_synoug0.dats] *)
