@@ -111,10 +111,19 @@ source via the Xats2js-H0 compiler (ATS->JS).
 It is about *10* times slower than the C code
 generated from some comparable ATS2 code.
 //
+// HX: More runs:
+//
+|thePrimes2| = 1077871
+21.64user 0.10system 0:21.30elapsed 102%CPU (0avgtext+0avgdata 139628maxresident)k
+0inputs+0outputs (0major+29154minor)pagefaults 0swaps
+|thePrimes2| = 1077871
+22.54user 0.16system 0:22.40elapsed 101%CPU (0avgtext+0avgdata 139372maxresident)k
+0inputs+0outputs (0major+29181minor)pagefaults 0swaps
+//
 *)
 val () =
 prerrln0("|thePrimes2| = ", length0(thePrimes2))
 
 (* ****** ****** *)
 
-(* end of [ATS3/xatslib/libcats/TEST/test02_isPrime.dats] *)
+(* end of [ATS3/xatslib/TEST/test02_isPrime.dats] *)
