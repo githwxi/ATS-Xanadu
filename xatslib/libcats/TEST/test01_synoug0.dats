@@ -472,4 +472,11 @@ endloc (*local*) // end of [gseq_max(xs)]
 
 (* ****** ****** *)
 
+val () =
+prerrln
+("reverse(...) = "
+, strn_reverse(gseq_range_lte('a', 'z')))
+
+(* ****** ****** *)
+
 (* end of [ATS3/xatslib/libcats/TEST/test01_synoug0.dats] *)
