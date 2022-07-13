@@ -350,6 +350,15 @@ T_IDALP _ =>
 T_IDSYM _ =>
 (buf.skip1(); i0dnt_some(tok))
 //
+| T_MSGT() =>
+( buf.skip1()
+; i0dnt_some(tok)) where
+{
+val loc = tok.lctn((*void*))
+val tnd = T0IDENT_MSGT(*void*)
+val tok = token_make_node(loc,tnd)
+}
+//
 |
 T_BSLSH _ =>
 (buf.skip1(); i0dnt_some(tok))
@@ -450,6 +459,15 @@ val tok = token_make_node(loc,tnd)
 {
 val loc = tok.lctn((*void*))
 val tnd = T0IDENT_LTGT(*void*)
+val tok = token_make_node(loc,tnd)
+}
+//
+| T_MSGT() =>
+( buf.skip1()
+; i0dnt_some(tok)) where
+{
+val loc = tok.lctn((*void*))
+val tnd = T0IDENT_MSGT(*void*)
 val tok = token_make_node(loc,tnd)
 }
 //

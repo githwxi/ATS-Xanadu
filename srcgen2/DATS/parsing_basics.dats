@@ -92,6 +92,20 @@ case+ tnd of
 (* ****** ****** *)
 
 #implfun
+t0_dtsel(tnd) =
+(
+case+ tnd of
+//
+| T_DOT _ => true
+| T_MSGT _ => true
+//
+| _ (* non-ident *) => false
+//
+) (*case*)//end-of-[t0_dtsel(tnd)]
+
+(* ****** ****** *)
+
+#implfun
 t0_g0nid(tnd) =
 (
 case+ tnd of
@@ -134,7 +148,9 @@ case+ tnd of
 | T_IDALP _ => true
 | T_IDSYM _ => true
 //
-| T_BSLSH() => true
+| T_MSGT() => true // "->"
+//
+| T_BSLSH() => true // '\\'
 //
 | _(*otherwise*) => false
 //
@@ -172,6 +188,9 @@ T_IDDLR _ => true
 | T_GT0() => true // ">"
 //
 | T_LTGT() => true // "<>"
+//
+| T_MSGT() => true // "->"
+//
 (*
 | T_EQGT() => true // "=>"
 *)
