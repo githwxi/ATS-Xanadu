@@ -474,16 +474,37 @@ endloc (*local*) // end of [gseq_max(xs)]
 
 val () =
 prerrln
+( "gmax(1,2,3,4,5) = "
+, gmax('1', '2', '3', '4', '5'))
+val () =
+prerrln
+( "gmin(1,2,3,4,5) = "
+, gmin("1", "2", "3", "4", "5"))
+
+(* ****** ****** *)
+
+val () =
+prerrln
 ("reverse(...) = "
 , strn_reverse(gseq_range_lte('a', 'z')))
 
 (* ****** ****** *)
+//
 val () =
-prerrln
-("gmax(1,2,3,4,5) = ", gmax('1', '2', '3', '4', '5'))
+prerrln0
+("range(0,10) = ", strmize(range(0,10)))
 val () =
-prerrln
-("gmin(1,2,3,4,5) = ", gmin("1", "2", "3", "4", "5"))
+prerrln0
+("range(10,0,-1) = ", strmize(range(10, 0, -1)))
+//
+val () =
+prerrln0
+("prod(range(10, 0)) = ", foldl(range(0, 10), 1))
+where
+{
+#impltmp foldl$fopr<sint><sint>(r0,x0) = r0*(x0+1)
+}
+//
 (* ****** ****** *)
 
-(* end of [ATS3/xatslib/libcats/TEST/test01_synoug0.dats] *)
+(* end of [ATS3/xatslib/TEST/test01_miscell.dats] *)
