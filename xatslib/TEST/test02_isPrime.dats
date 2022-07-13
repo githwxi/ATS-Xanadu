@@ -95,7 +95,7 @@ takeif0$test<sint>(p0) = (p0 <= 16*1024*1024)
 }
 //
 (* ****** ****** *)
-
+//
 (*
 //
 real	0m23.060s
@@ -119,11 +119,14 @@ generated from some comparable ATS2 code.
 |thePrimes2| = 1077871
 22.54user 0.16system 0:22.40elapsed 101%CPU (0avgtext+0avgdata 139372maxresident)k
 0inputs+0outputs (0major+29181minor)pagefaults 0swaps
+|thePrimes2| = 1077871
+21.40user 0.24system 0:21.30elapsed 101%CPU (0avgtext+0avgdata 139904maxresident)k
+0inputs+0outputs (0major+29140minor)pagefaults 0swaps
 //
 *)
 val () =
 prerrln0("|thePrimes2| = ", length0(thePrimes2))
-
+//
 (* ****** ****** *)
 
 (* end of [ATS3/xatslib/TEST/test02_isPrime.dats] *)
