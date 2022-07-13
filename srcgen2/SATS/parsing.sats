@@ -241,6 +241,8 @@ fun t0_t0flt(tnode): bool
 fun t0_t0str(tnode): bool
 
 (* ****** ****** *)
+fun t0_dtsel(tnode): bool
+(* ****** ****** *)
 
 fun t0_g0nid(tnode): bool
 fun t0_g0eid(tnode): bool

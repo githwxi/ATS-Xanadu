@@ -1185,7 +1185,7 @@ val (  ) =
 case+
 arrw.node() of
 | T_EQGT() => ()
-| _(*non-T_MSGT*) => (err := err + 1)
+| _(*non-T_EQGT*) => (err := err + 1)
 )
 //
 val body = preadx0(body, err) // ( s0exp )

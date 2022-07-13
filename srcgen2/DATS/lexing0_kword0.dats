@@ -182,10 +182,7 @@ val () = kwdins("=>", T_EQGT)
 val () = kwdins("<>", T_LTGT)
 val () = kwdins("><", T_GTLT)
 val () = kwdins("-<", T_MSLT)
-(*
 val () = kwdins("->", T_MSGT)
-val () = kwdins("-<>", T_MSLTGT)
-*)
 //
 (*
 val () = kwdins(".<", T_DOTLT)
@@ -350,6 +347,8 @@ end (*local*) // end of [ local ]
 //
 #implval T0IDENT_EQGT = T_IDSYM("=>")
 #implval T0IDENT_LTGT = T_IDSYM("<>")
+//
+#implval T0IDENT_MSLT = T_IDSYM("-<")
 #implval T0IDENT_MSGT = T_IDSYM("->")
 //
 (* ****** ****** *)

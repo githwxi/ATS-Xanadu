@@ -876,41 +876,47 @@ in
   , D0Etry0
     (tok1, d0e1, tok2, tbar, dcls, tend))
 end (*let*) // end-of-[ T_TRY() ]
+//
 (*
-//
-| T_DOT() => let
-    val () =
-      buf.skip1()
-    // end-of-[val]
-    val lab =
-      p1_l0abl(buf, err)
-    val arg = let
-      val tok2 = buf.get0()
-    in
-      case+
-      tok2.node() of
-      | T_LPAREN() =>
-        Some( d0e ) where
-        {
-          val d0e =
-            p_atmd0exp(buf, err)
-          // end-of-[val]
-        }
-      | _(* non-LPAREN *) => None()
-    end : d0expopt // end-of-[val]
-    val loc_res = let
-      val loc = tok.lctn()
-    in
-      case+ arg of
-      | None() => loc + lab.lctn()
-      | Some(d0e) => loc + d0e.lctn()
-    end // end-of-[val]
-  in
-    d0exp_make_node
-    (loc_res, D0Edtsel(tok, lab, arg))
-  end // end-of-[T_DOT]
-//
+|
+T_DOT() =>
+|
+T_MSGT() =>
 *)
+| _
+when t0_dtsel(tnd) =>
+let
+val tok1 = tok
+val (  ) = buf.skip1()
+val lab1 = p1_l0abl(buf, err)
+val arg2 =
+let
+  val tok2 = buf.getk0()
+in
+case+
+tok2.node() of
+| T_LPAREN() =>
+  optn_cons(d0e2) where
+  {
+  val
+  d0e2 = p1_d0exp_atm(buf, err)
+  }
+| _(*non-T_LPAREN*) => optn_nil()
+end : d0expopt // end-of-[val]
+//
+val lres =
+let
+  val loc1 = tok1.lctn()
+in
+  case+ arg2 of
+  | optn_nil() => loc1 + lab1.lctn()
+  | optn_cons(d0e2) => loc1 + d0e2.lctn()
+end : loc_t // end-of-[val(lres)]
+in
+  err := e00
+; d0exp(lres, D0Edtsel(tok1, lab1, arg2))
+end (*let*) // end-of-[ T_DOT() ]
+//
 |
 T_LBRCKT() =>
 let
@@ -934,7 +940,7 @@ T_IDQUA _ => let
 in
   err := e00
 ; d0exp_make_node
-  (lres, D0Equal(tok0, d0e1)) where
+  (lres,D0Equal(tok0,d0e1)) where
   {
     val lres = tok0.lctn()+d0e1.lctn()
   }
@@ -951,8 +957,7 @@ in
 ; d0exp_make_node
   ( lres, D0Eextnam(gnm1) ) where
   {
-    val lres = tok0.lctn()+gnm1.lctn()
-  }
+    val lres = tok0.lctn()+gnm1.lctn() }
 end(*let*) // end-of-[ T_DLR_EXTNAM(_) ]
 //
 |
@@ -969,8 +974,7 @@ in//let
   ( lres
   , D0Eexists(tok0,sqas,d0e1)) where
   {
-    val lres = tok0.lctn()+d0e1.lctn()
-  }
+    val lres = tok0.lctn()+d0e1.lctn() }
 end(*let*) // end-of-[ T_DLR_EXISTS(_) ]
 //
 |

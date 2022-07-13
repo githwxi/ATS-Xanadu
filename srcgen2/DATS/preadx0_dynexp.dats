@@ -107,7 +107,7 @@ fun
 d0exp_errvl_a2
 (de1: d0exp
 ,de2: d0exp): sint =
-max
+gmax
 (errvl(de1),errvl(de2))
 #symload
 d0exp_errvl with d0exp_errvl_a2
@@ -118,7 +118,7 @@ d0exp_errvl_a3
 (de1: d0exp
 ,de2: d0exp
 ,de3: d0exp): sint =
-max
+gmax
 (errvl(de1)
 ,errvl(de2),errvl(de3))
 #symload
@@ -143,7 +143,8 @@ list_nil
 ((*nil*)) => 0
 |
 list_cons
-(de1,des) => max(errvl(de1),errvl(des)))
+(de1,des) =>
+gmax(errvl(de1), errvl(des)))
 //
 (* ****** ****** *)
 //
@@ -165,6 +166,12 @@ d0exp_RPAREN_cons1(tkb,des,tke) => errvl(des)
 )
 //
 (* ****** ****** *)
+//
+#extern
+fun
+l0d0e_errvl_ldes
+(ldes: l0d0elst): sint
+//
 fun
 l0d0e_errvl
 (lde: l0d0e): sint =
@@ -174,14 +181,11 @@ l0d0e_errvl
   val+
   D0LAB(lab, tok, d0e) = lde
 }
-#symload errvl with l0d0e_errvl
-(* ****** ****** *)
 //
-#extern
-fun
-l0d0e_errvl_ldes
-(ldes: l0d0elst): sint
+(* ****** ****** *)
+#symload errvl with l0d0e_errvl
 #symload errvl with l0d0e_errvl_ldes
+(* ****** ****** *)
 //
 #implfun
 l0d0e_errvl_ldes(ldes) =
@@ -192,7 +196,8 @@ list_nil
 ((*nil*)) => 0
 |
 list_cons
-(lde1,ldes) => max(errvl(lde1),errvl(ldes)))
+(lde1,ldes) =>
+gmax(errvl(lde1), errvl(ldes)))
 //
 (* ****** ****** *)
 #extern
@@ -211,7 +216,9 @@ l0d0e_RBRACE_cons0
 l0d0e_RBRACE_cons1
 (  tkb,ldes,tke  ) => errvl(ldes)
 )
+//
 #symload errvl with l0d0e_errvl_ldrb
+//
 (* ****** ****** *)
 //
 fun
@@ -239,7 +246,8 @@ d0exp_lpar_errck
 , drp
 : d0exp_RPAREN): d0exp =
 let
-val lvl = max(errvl(des),errvl(drp))
+  val lvl =
+  gmax(errvl(des),errvl(drp))
 in//let
 d0exp_errck
 (lvl+1, d0exp(loc,D0Elpar(tkb,des,drp)))

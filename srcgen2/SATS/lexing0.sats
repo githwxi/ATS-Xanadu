@@ -137,10 +137,7 @@ datatype tnode =
   | T_GTLT of () // ><
 //
   | T_MSLT of () // -<
-(*
   | T_MSGT of () // ->
-  | T_MSLTGT of () // -<>
-*)
 //
   | T_GTDOT of () // >.
 //
@@ -280,6 +277,7 @@ val T0IDENT_LT0 : tnode
 val T0IDENT_GT0 : tnode
 val T0IDENT_EQGT : tnode
 val T0IDENT_LTGT : tnode
+val T0IDENT_MSLT : tnode
 val T0IDENT_MSGT : tnode
 (* ****** ****** *)
 //

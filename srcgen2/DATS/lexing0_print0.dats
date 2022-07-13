@@ -199,6 +199,9 @@ print("T_GTLT()")
 |
 T_MSLT() =>
 print("T_MSLT()")
+|
+T_MSLT() =>
+print("T_MSGT()")
 //
 |
 T_GTDOT() =>
