@@ -245,10 +245,10 @@ end (*let*)//strn_reverse_vt
 end // end-of-[strn_reverse_vt]
 
 (* ****** ****** *)
-
+//
 #impltmp<>
 strn_forall
-  (xs) =
+  ( xs ) =
 ( loop(xs) ) where
 {
 //
@@ -273,7 +273,19 @@ loop
 // end of [if]
 end // end of [else]
 } (* end of [strn_forall/uncons] *)
-
+//
+(* ****** ****** *)
+//
+#impltmp
+strn_foreach<> =
+gseq_foreach<strn><cgtz>
+//
+(* ****** ****** *)
+//
+#impltmp
+strn_rforeach<> =
+gseq_rforeach<strn><cgtz>
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -670,10 +682,23 @@ gseq_nilq<xs><x0> = strn_nilq<>
 #impltmp
 gseq_consq<xs><x0> = strn_consq<>
 (* ****** ****** *)
-
+//
+#impltmp
+gseq_append<xs><x0> = strn_append<>
+//
+(* ****** ****** *)
+//
+#impltmp
+gseq_reverse<xs><x0> = strn_reverse<>
+//
+(* ****** ****** *)
+//
 #impltmp
 gseq_forall<xs><x0> = strn_forall<>
-
+//
+#impltmp
+gseq_rforall<xs><x0> = strn_rforall<>
+//
 (* ****** ****** *)
 
 #impltmp
