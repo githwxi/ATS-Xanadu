@@ -759,10 +759,10 @@ val
 d0es =
 p1_d0expseq_atm(buf, err)
 //
-(*
+// (*
 val () =
 prerrln("p1_d0exp: d0es = ", d0es)
-*)
+// *)
 //
 in//let
 //
@@ -847,6 +847,13 @@ p1_d0exp_atm
 val e00 = err
 val tok = buf.getk0()
 val tnd = tok.tnode()
+//
+val ( ) =
+prerrln
+("p1_d0exp_atm: e00=", e00)
+val ( ) =
+prerrln
+("p1_d0exp_atm: tok=", tok)
 //
 in//let
 //
@@ -1265,11 +1272,17 @@ end(*let*) // end-of-[ T_DLR_EXISTS(_) ]
 //
 |
 _(* error-processing *) =>
+let
+val () =
+prerrln
+("p1_d0exp_atm(error): tok=", tok)
+in//let
 (
 err := e00 + 1;
 d0exp_make_node(tok.lctn(), D0Etkerr(tok)))
+end(*let*)//end-of-[ (error-processing) ]
 //
-end(*end*)//end-of-[p1_d0exp_atm(buf,err)]
+end(*let*)//end-of-[ p1_d0exp_atm(buf,err) ]
 
 (* ****** ****** *)
 
