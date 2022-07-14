@@ -462,6 +462,15 @@ D0VALDCL
 , dpat
 , tdxp, wsxp) = dval in wsxp end
 
+(* ****** ****** *)
+
+#implfun
+d0valdcl_make_args
+(lctn, dpat, tdxp, wsxp) =
+(
+  D0VALDCL(lctn, dpat, tdxp, wsxp)
+)
+
 endloc (*local*) // end of [ local(d0valdcl) ]
 
 (* ****** ****** *)
@@ -530,6 +539,16 @@ D0VARDCL
 ( lctn
 , dpid, vpid
 , sres, dini) = dvar in dini end
+
+(* ****** ****** *)
+
+#implfun
+d0vardcl_make_args
+( lctn
+, dpid, vpid, sres, dini) =
+(
+D0VARDCL(lctn, dpid, vpid, sres, dini)
+)
 
 endloc (*local*) // end of [ local(d0vardcl) ]
 
