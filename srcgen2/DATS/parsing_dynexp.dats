@@ -265,6 +265,12 @@ val e00 = err
 val tok = buf.getk0()
 val tnd = tok.tnode()
 //
+(*
+val ( ) =
+prerrln
+("p1_d0pat_atm: tok=", tok)
+*)
+//
 in//let
 //
 case+ tnd of
@@ -382,11 +388,11 @@ end(*let*) // end of [ T_IDQUA(...) ]
 //
 | _(*otherwise*) =>
 let
-(*
+// (*
 val () =
 prerrln
-("p1_s0exp_atm: otherwise: tok = ", tok)
-*)
+("p1_d0pat_atm: otherwise: tok = ", tok)
+// *)
 in//let
 err := e00+1; d0pat(tok.lctn(),D0Ptkerr(tok))
 end (*let*) // end of [ _(*otherwise*) ]
@@ -1260,6 +1266,38 @@ _(*non-T_RPAREN*) =>
 ) (* end of [ non-T_BAR ] *)
 //
 end(*let*)//end-[p1_l0d0e_RBRACE(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
+pq_s0exp_anno
+  (buf, err) = let
+//
+val e00 = err
+val tok = buf.getk0()
+//
+(*
+val ( )
+prerrln
+("pq_s0exp_anno: tok = ", tok)
+*)
+//
+in(*let*)
+//
+case+
+tok.node() of
+|
+T_CLN() =>
+let
+val ( ) = buf.skip1()
+val s0t = p1_s0exp(buf, err)
+in//let
+  (err := e00; optn_cons(s0t))
+end (*let*) // end of [T_CLN]
+|
+_(*non-T_CLN*) => optn_nil(*void*)
+//
+end (*let*)//end-of(pq_s0exp_anno)
 
 (* ****** ****** *)
 

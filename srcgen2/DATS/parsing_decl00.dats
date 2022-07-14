@@ -339,6 +339,10 @@ val e00 = err
 val tok = buf.getk0()
 val tnd = tok.tnode()
 //
+val () =
+prerrln
+("fp_d0ecl: tok=", tok)
+//
 fun
 ENDq(tnd: tnode): bool =
 (
@@ -1276,10 +1280,15 @@ in//let
 //
 case+
 tok.node() of
-(*
 |
-T_EQ0() => D0RESnone()
-*)
+T_EQ0() =>
+let
+  val teq1 = tok
+  val (  ) = buf.skip1()
+  val dexp = p1_d0exp(buf, err)
+in
+  err := e00; D0RESsome(teq1, dexp)
+end(*let*) // end of [ T_EQ0() ]
 | _(*non-T_EQ0*) => D0RESnone((*void*))
 //
 end (*let*) // end of [ p1_d0res(buf, err) ]
@@ -1432,6 +1441,10 @@ val e00 = err
 val tknd = tok
 val (  ) = buf.skip1()
 //
+val (  ) =
+prerrln
+("pk_valdclst: tknd=", tknd)
+//
 val d0cs =
 p1_d0valdclseq_AND(buf, err)
 //
@@ -1533,6 +1546,9 @@ p1_d0pat(buf, err)
 //
 val
 topt = pq_EQ0(buf, err)
+//
+val () =
+prerrln("p1_d0valdcl: dpat = ", dpat)
 //
 in//let
 //

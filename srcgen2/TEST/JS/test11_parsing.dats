@@ -147,18 +147,18 @@ var
 err:
 sint = 0
 //
-(*
-val opt =
-p1_fun_test<d0eclist>
-("./mytest.sats", p1_d0eclseq_sta)
-*)
-//
+val () =
+prerrln("p1_fun_test(0)")
 // (*
 val opt =
 p1_fun_test<d0eclist>
-("./basics0.sats", p1_d0eclseq_sta)
+("./basics0.dats", p1_d0eclseq_dyn)
 // *)
 //
+val () =
+prerrln("p1_fun_test(1)")
+//
+(*
 val opt =
 (
 case+ opt of
@@ -168,15 +168,11 @@ optn_nil() => optn_nil()
 optn_cons(dcls) =>
 optn_cons(preadx0_d0eclist(dcls, err))
 )
-//
-(*
-val ( ) =
-prerrln("p1_fun_test(\"./mytest.sats\") =\n", opt)
 *)
 //
 // (*
 val ( ) =
-prerrln("p1_fun_test(\"./basics0.sats\") =\n", opt)
+prerrln("p1_fun_test(\"./basics0.dats\") =\n", opt)
 // *)
 //
 (* ****** ****** *)

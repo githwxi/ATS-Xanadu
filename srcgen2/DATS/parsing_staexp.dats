@@ -827,7 +827,7 @@ T_IF0() => let
 //
   val topt = optn_nil{token}()
 (*
-  val topt = popt_ENDIF(buf, err)
+  val topt = pq_ENDIF(buf, err)
 *)
 //
   val lres =
@@ -1413,7 +1413,8 @@ val tok = buf.getk0()
 //
 (*
 val ( )
-prerrln("popt_sort0_anno: tok = ", tok)
+prerrln
+("pq_sort0_anno: tok = ", tok)
 *)
 //
 in(*let*)

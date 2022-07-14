@@ -344,9 +344,6 @@ pq_sort0_anno: pq_fun(sort0)
 fun
 pq_ids0t_anno: pq_fun(sort0)
 (* ****** ****** *)
-fun
-pq_s0exp_anno: pq_fun(s0exp)
-(* ****** ****** *)
 //
 #typedef s0tcnlst=list(s0tcn)
 #typedef d0tstlst=list(d0tst)
@@ -426,14 +423,18 @@ fun p1_d0typ: p1_fun( d0typ )
 fun p1_a0typ: p1_fun( a0typ )
 fun p1_d0arg: p1_fun( d0arg )
 //
+(* ****** ****** *)
+//
 (*
 fun p1_s0eff: p1_fun( s0eff )
 *)
 fun p1_s0res: p1_fun( s0res )
 //
 fun p1_d0res: p1_fun( d0res )
-fun p1_w0s0e: p1_fun( w0s0e )
 //
+(* ****** ****** *)
+fun
+pq_s0exp_anno: pq_fun( s0exp )
 (* ****** ****** *)
 //
 fun
