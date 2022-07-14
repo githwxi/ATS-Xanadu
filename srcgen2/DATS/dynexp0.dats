@@ -45,10 +45,43 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xlabel0.sats"
 (* ****** ****** *)
+#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
+(* ****** ****** *)
+//
+#symload lctn with s0exp_get_lctn
+#symload lctn with d0pat_get_lctn
+#symload lctn with d0exp_get_lctn
+//
+(* ****** ****** *)
+
+local
+#symload + with add_loctn_loctn
+in//local
+//
+#implfun
+d0pat_anno_opt
+( d0p1, opt2 ) =
+(
+case+ opt2 of
+|
+optn_nil() => d0p1
+|
+optn_cons(s0e2) =>
+let
+  val
+  loc0 = d0p1.lctn()+s0e2.lctn()
+in
+  d0pat(loc0, D0Panno(d0p1, s0e2))
+end // let
+)(*case*)//end(d0pat_anno_opt(d0p1,opt2))
+//
+endloc(*local*)//end-(local(d0pat_anno_opt))
+
 (* ****** ****** *)
 
 local
@@ -79,6 +112,31 @@ let
 end
 //
 endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+#symload + with add_loctn_loctn
+in//local
+//
+#implfun
+d0exp_anno_opt
+( d0e1, opt2 ) =
+(
+case+ opt2 of
+|
+optn_nil() => d0e1
+|
+optn_cons(s0e2) =>
+let
+  val
+  loc0 = d0e1.lctn()+s0e2.lctn()
+in
+  d0exp(loc0, D0Eanno(d0e1, s0e2))
+end // let
+)(*case*)//end(d0exp_anno_opt(d0e1,opt2))
+//
+endloc(*local*)//end-(local(d0exp_anno_opt))
 
 (* ****** ****** *)
 

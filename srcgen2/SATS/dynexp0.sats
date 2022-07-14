@@ -249,13 +249,15 @@ d0pat_node =
 | D0Prcd2 of
   (token, tokenopt, l0d0plst, l0d0p_RBRACE)
 //
+| D0Panno of (d0pat, s0exp) // HX: annotation
+//
 | D0Pqual of (token, d0pat) // HX: qual-d0pat
 //
 |
 (*
-HX-2022-06-20:
-D0Ptkerr(tok):
-tok is not consumed by the parser!
+// HX-2022-06-20:
+// D0Ptkerr(tok):
+// tok is not consumed by the parser!
 *)
 D0Ptkerr of (token) // HX: parsing error
 |
@@ -456,42 +458,43 @@ d0cls_fprint
 (* ****** ****** *)
 //
 fun
-d0exp_get_lctn
-  (dexp: d0exp): loc_t
+d0exp_get_lctn: d0exp->loc_t
 fun
-d0cls_get_lctn
-  (dcl1: d0cls): loc_t
+d0cls_get_lctn: d0cls->loc_t
 //
 (* ****** ****** *)
-//
 fun
-d0exp_THEN_get_lctn
-  (dthn: d0exp_THEN): loc_t
-fun
-d0exp_ELSE_get_lctn
-  (dels: d0exp_THEN): loc_t
-fun
-d0exp_RPAREN_get_lctn
-  (d0rp: d0exp_RPAREN): loc_t
-fun
-l0d0e_RBRACE_get_lctn
-  (ldrb: l0d0e_RBRACE): loc_t
-//
+d0exp_get_node: d0exp->d0exp_node
 (* ****** ****** *)
 #symload lctn with d0exp_get_lctn
 #symload lctn with d0cls_get_lctn
+#symload node with d0exp_get_node
 (* ****** ****** *)
 //
-#symload lctn with d0exp_THEN_get_lctn
-#symload lctn with d0exp_ELSE_get_lctn
-#symload lctn with d0exp_RPAREN_get_lctn
-#symload lctn with l0d0e_RBRACE_get_lctn
+fun
+d0exp_THEN_lctn
+  (dthn: d0exp_THEN): loc_t
+fun
+d0exp_ELSE_lctn
+  (dels: d0exp_THEN): loc_t
+fun
+d0exp_RPAREN_lctn
+  (d0rp: d0exp_RPAREN): loc_t
+fun
+l0d0e_RBRACE_lctn
+  (ldrb: l0d0e_RBRACE): loc_t
+//
+(* ****** ****** *)
+//
+#symload lctn with d0exp_THEN_lctn
+#symload lctn with d0exp_ELSE_lctn
+#symload lctn with d0exp_RPAREN_lctn
+#symload lctn with l0d0e_RBRACE_lctn
 //
 (* ****** ****** *)
 fun
-d0exp_get_node(d0exp): d0exp_node
-#symload node with d0exp_get_node
-//
+d0exp_anno_opt
+(d0e: d0exp, opt: s0expopt): d0exp
 (* ****** ****** *)
 //
 fun

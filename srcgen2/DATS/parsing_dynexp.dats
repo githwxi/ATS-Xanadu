@@ -526,6 +526,320 @@ l0d0e_RBRACE_lctn:(l0d0e_RBRACE)->loc_t
 //
 (* ****** ****** *)
 
+local
+
+#extern
+fun
+p1_napps: p1_fun(d0exp)
+#implfun
+p1_napps(buf, err) =
+let
+//
+  val e00 = err
+  val tok = buf.getk0()
+  val tnd = tok.tnode()
+//
+in//let
+//
+case+ tnd of
+//
+(*
+|
+T_IF0() => let
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+//
+  val d0e1 =
+    p1_d0exp_app(buf, err)
+  val d0e2 =
+    p1_d0exp_THEN(buf, err)
+  val d0e3 =
+    p1_d0exp_ELSE(buf, err)
+//
+(*
+  val topt =
+    popt_ENDIF(buf, err)
+*)
+  val topt =
+    pq_endst0inv(buf, err)
+//
+  val lres =
+  (
+    case+ topt of
+    | ENDST0INVnone() =>
+      (
+      case d0e3 of
+      | d0exp_ELSE_none
+          () =>
+        (
+        case+ d0e2 of
+        | d0exp_THEN
+          ( _, d0e ) =>
+          tok.lctn() + d0e.lctn()
+          // end of [d0exp_THEN]
+        )
+      | d0exp_ELSE_some
+          (_, d0e) =>
+          tok.lctn() + d0e.lctn()
+        // end of [d0exp_ELSEsome]
+      )
+    | ENDST0INVsome
+      ( tend, inv0 ) => tok.lctn() + inv0.lctn()
+    ) : loc_t // end of [val]
+//
+  in
+    err := e0;
+    (
+    case+ topt of
+    | ENDST0INVnone _ =>
+      d0exp_make_node
+      ( loc_res
+      , D0Eif0(tok, d0e1, d0e2, d0e3))
+    | ENDST0INVsome(_, tinv) =>
+      d0exp_make_node
+      ( loc_res
+      , D0Eif1(tok, d0e1, d0e2, d0e3, tinv))
+    )
+  end // end of [T_IF]
+*)
+//
+(*
+| T_CASE _ => let
+//
+    val () = buf.skip1()
+//
+    val d0e1 =
+      p1_d0exp_app(buf, err)
+//
+    val tok2 =
+      p1_OF(buf, err)
+    val tbar =
+      pq_BAR(buf, err)
+    val dcls =
+      p1_d0clauseq_BAR(buf, err)
+//
+(*
+    val topt =
+      popt_ENDCASE(buf, err)
+*)
+    val topt =
+      pq_endst0inv(buf, err)
+//
+    val
+    loc_res = let
+      val loc = tok.lctn()
+    in
+      case+ topt of
+      | ENDST0INVnone
+        ( (*void*) ) =>
+        (
+        case+ dcls of
+        | list_nil() =>
+          (
+          case+ tbar of
+          | None() => loc + tok2.lctn()
+          | Some(tbar) => loc + tbar.lctn()
+          )
+        | list_cons(_, _) =>
+          let
+          val d0cl =
+          list_last(dcls) in loc + d0cl.lctn()
+          end // end of [list_cons]
+        )
+      | ENDST0INVsome
+        ( tend, inv0 ) => loc + inv0.lctn()
+    end : loc_t // end of [let] // end of [val]
+//
+  in
+    err := e0;
+    (
+    case+ topt of
+    | ENDST0INVnone _ =>
+      d0exp_make_node
+      ( loc_res
+      , D0Ecas0(tok, d0e1, tok2, tbar, dcls))
+    | ENDST0INVsome(_, tinv) =>
+      d0exp_make_node
+      ( loc_res
+      , D0Ecas1(tok, d0e1, tok2, tbar, dcls, tinv))
+    )
+  end // end of [T_CASE]
+*)
+//
+(*
+|
+T_LAM(k0) => let
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+//
+  val farg =
+    p1_f0argseq(buf, err)
+  val sres =
+    p1_effs0expopt(buf, err)
+  val farrw =
+    p1_f0unarrow(buf, err)
+  val fbody = p_d0exp(buf, err)
+  val tfini = pq_ENDLAM(buf, err)
+//
+  in
+    err := e0;
+    d0exp_make_node
+    ( loc_res
+    , D0Elam
+      ( tok // lam|lam@
+      , arg, res, farrw, fbody, tfini)
+    ) where
+    {
+      val loc_res =
+      (
+        case+ tfini of 
+        | None() => tok.lctn()+fbody.lctn()
+        | Some(tok2) => tok.lctn()+tok2.lctn()
+      ) : loc_t // end of [val]
+    }
+  end 
+*)
+//
+(*
+| T_FIX(k0) => let
+//
+    val () = buf.skip1()
+//
+    val fid =
+      p_d0eid(buf, err)
+    val arg =
+      p_f0argseq(buf, err)
+    val res =
+      p_effs0expopt(buf, err)
+    val farrw =
+      p_f0unarrow(buf, err)
+    val fbody = p_d0exp(buf, err)
+    val tfini = popt_ENDLAM(buf, err)
+//
+  in
+    err := e0;
+    d0exp_make_node
+    ( loc_res
+    , D0Efix
+      ( tok // fix|fix@
+      , fid, arg, res, farrw, fbody, tfini)
+    ) where
+    {
+      val loc_res =
+      (
+        case+ tfini of 
+        | None() => tok.lctn()+fbody.lctn()
+        | Some(tok2) => tok.lctn()+tok2.lctn()
+      ) : loc_t // end of [val]
+    }
+  end 
+*)
+//
+|
+_ (* rest-of-token *) =>
+let
+  val () = err := e00 + 1
+in
+  d0exp_make_node(tok.lctn(), D0Etkerr(tok))
+end (*let*) // HX: indicating a parsing error
+//
+end (*let*) // end of [ p1_napps(buf, err) ]
+
+in//local
+
+#implfun
+p1_d0exp(buf, err) =
+let
+//
+val e00 = err
+//
+val
+d0es =
+p1_d0expseq_atm(buf, err)
+//
+(*
+val () =
+prerrln("p1_d0exp: d0es = ", d0es)
+*)
+//
+in//let
+//
+case+ d0es of
+|
+list_nil
+((*void*)) =>
+p1_napps(buf, err)
+|
+list_cons
+(d0e1, des2) =>
+let
+val sopt =
+pq_s0exp_anno(buf, err)
+(*
+val d0e0 =
+auxwhr_list(d0e0, wdcs)
+*)
+//
+in//let
+  d0exp_anno_opt(d0e0, sopt)
+end where
+{
+val d0e0 =
+(
+case+ des2 of
+|
+list_nil() => d0e1
+|
+list_cons _ => let
+  val d0e2 =
+  list_last(des2)
+  val loc0 =
+  (d0e1.lctn()+d0e2.lctn())
+in
+d0exp_make_node(loc0, D0Eapps(d0es))
+endlet // end of [list_cons]
+) : d0exp // end of [val(d0e0)]
+(*
+val wdcs = ps_d0eclseq_WHERE(buf, err)
+*)
+} (* end of [ list_cons(...) ] *)
+//
+endlet // end of [ p1_d0exp(buf, err) ]
+
+endloc (*local*) // end of [local(p1_d0exp)]
+
+(* ****** ****** *)
+
+#implfun
+p1_l0d0e(buf, err) =
+let
+//
+val e00 = err
+//
+val lab0 =
+(
+  p1_l0abl(buf, err)
+)
+val teq1 = p1_EQ0(buf, err)
+val d0e2 = p1_d0exp(buf, err)
+//
+(*
+val ( ) =
+println("p1_l0d0e: lab0 = ", lab0)
+val ( ) =
+println("p1_l0d0e: teq1 = ", teq1)
+val ( ) =
+println("p1_l0d0e: d0e2 = ", d0e2)
+*)
+//
+in
+  err := e00; D0LAB(lab0, teq1, d0e2)
+end (*let*) // end of [p1_l0d0e(buf,err)]
+
+(* ****** ****** *)
+
 #implfun
 p1_d0exp_atm
 ( buf, err ) = let
@@ -1065,6 +1379,15 @@ p1_d0expseq_sqarg
 (
 list_vt2t
 (ps_p1fun{d0exp}(buf, err, p1_d0exp_sqarg)))
+//
+(* ****** ****** *)
+//
+#implfun
+p1_d0expseq_atm
+  (buf, err) =
+( list_vt2t
+  (ps_p1fun{d0exp}(buf, err, p1_d0exp_atm)))
+(* end of [ p1_d0expseq_atm( buf, err ) ] *)
 //
 (* ****** ****** *)
 //

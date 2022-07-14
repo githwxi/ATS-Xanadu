@@ -878,6 +878,9 @@ s0exp_get_node(s0exp): s0exp_node
 #symload node with s0exp_get_node
 //
 fun
+s0exp_anno_opt
+(s0e: s0exp, opt: sort0opt): s0exp
+fun
 s0exp_make_node
 (loc:loc_t, nod:s0exp_node): s0exp
 #symload s0exp with s0exp_make_node
