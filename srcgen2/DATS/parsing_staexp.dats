@@ -53,14 +53,38 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload
 lctn with token_get_lctn//lexing0
+(* ****** ****** *)
+#symload
+lctn with t0int_get_lctn//lexing0
+#symload
+lctn with t0chr_get_lctn//lexing0
+#symload
+lctn with t0flt_get_lctn//lexing0
+#symload
+lctn with t0str_get_lctn//lexing0
+(* ****** ****** *)
 #symload
 lctn with i0dnt_get_lctn//staexp0
 #symload
 lctn with l0abl_get_lctn//staexp0
+(* ****** ****** *)
+#symload
+lctn with g0exp_get_lctn//staexp0
+(* ****** ****** *)
 #symload
 lctn with sort0_get_lctn//staexp0
 #symload
 lctn with s0exp_get_lctn//staexp0
+(* ****** ****** *)
+#symload
+lctn with s0tcn_get_lctn//staexp0
+#symload
+lctn with d0tcn_get_lctn//staexp0
+(* ****** ****** *)
+#symload
+lctn with s0arg_get_lctn//staexp0
+#symload
+lctn with s0uni_get_lctn//staexp0
 (* ****** ****** *)
 #symload
 node with token_get_node//lexing0
@@ -816,34 +840,35 @@ case+ tnd of
 |
 T_IF0() => let
 //
-  val tknd = tok
-  val (  ) = buf.skip1()
-  val g0e1 =
-    p1_g0exp_app(buf, err)
-  val g0e2 =
-    p1_g0exp_THEN(buf, err)
-  val g0e3 =
-    p1_g0exp_ELSE(buf, err)
+val tknd = tok
+val (  ) = buf.skip1()
+val g0e1 =
+  p1_g0exp_app(buf, err)
+val g0e2 =
+  p1_g0exp_THEN(buf, err)
+val g0e3 =
+  p1_g0exp_ELSE(buf, err)
 //
-  val topt = optn_nil{token}()
+val topt = optn_nil{token}()
+//
 (*
   val topt = pq_ENDIF(buf, err)
 *)
 //
-  val lres =
+val lres =
+(
+case+ topt of
+| optn_nil() =>
   (
-  case+ topt of
-  | optn_nil() =>
-    (
-    case g0e3 of
-    |
-    g0exp_ELSE
-    (tels, g0e3) =>
-    (tknd.lctn() + g0e3.lctn())
-    )
-  | optn_cons(tok1) =>
-    (tknd.lctn() + tok1.lctn())
-  ) : loc_t // end of [val(lres)]
+  case g0e3 of
+  |
+  g0exp_ELSE
+  (tels, g0e3) =>
+  (tknd.lctn() + g0e3.lctn())
+  )
+| optn_cons(tok1) =>
+  (tknd.lctn() + tok1.lctn())
+) : loc_t // end of [val(lres)]
 //
 in
 err := e00;
@@ -1460,26 +1485,6 @@ T_CLN() =>
 _(*non-COLON*) => optn_nil(*void*)
 //
 end (*let*) // end-of-[pq_ids0t_anno]
-
-(* ****** ****** *)
-
-fun
-s0exp_anno_opt
-( s0e: s0exp
-, opt: sort0opt): s0exp =
-(
-case+ opt of
-|
-optn_nil() => s0e
-|
-optn_cons(s0t) =>
-let
-val loc =
-s0e.lctn()+s0t.lctn()
-in
-s0exp(loc, S0Eanno(s0e, s0t))
-end
-) (*case*)//end-of(s0exp_anno_opt)
 
 (* ****** ****** *)
 

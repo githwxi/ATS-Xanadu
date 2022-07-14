@@ -649,6 +649,25 @@ endloc (*local*) // end of [ local ]
 
 (* ****** ****** *)
 
+#implfun
+s0exp_anno_opt
+( s0e1, opt2 ) =
+(
+case+ opt2 of
+|
+optn_nil() => s0e1
+|
+optn_cons(s0t2) =>
+let
+  val
+  loc0 = s0e1.lctn()+s0t2.lctn()
+in
+  s0exp(loc0, S0Eanno(s0e1, s0t2))
+end//let
+)(*case*)//end(s0exp_anno_opt(s0e1,opt2))
+
+(* ****** ****** *)
+
 local
 //
 datatype
