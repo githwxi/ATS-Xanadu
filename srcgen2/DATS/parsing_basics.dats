@@ -203,6 +203,25 @@ T_IDDLR _ => true
 (* ****** ****** *)
 
 #implfun
+t0_d0pid(tnd) =
+(
+case+ tnd of
+//
+|
+T_IDALP _ => true
+|
+T_IDSYM _ => true
+//
+| T_AT0() => true // "@"
+//
+| T_BSLSH() => true // "\\"
+//
+| _ (* otherwise *) => false
+) (*case*)//end-of-[t0_d0pid(tnd)]
+
+(* ****** ****** *)
+
+#implfun
 t0_d0eid(tnd) =
 (
 case+ tnd of

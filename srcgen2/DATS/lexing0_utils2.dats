@@ -721,13 +721,9 @@ f0_VAL
 , xs: tklst
 , res: tklst): tklst =
 let
+//
 val-
 T_VAL(vlk) = x0.node()
-//
-val () =
-prerrln("f0_VAL: x0 = ", x0)
-val () =
-prerrln("f0_VAL: x1 = ", x1)
 //
 fun
 plusq
@@ -737,6 +733,15 @@ fun
 mnusq
 (sym: strn): bool =
 (strn_head_opt(sym) = '-')
+//
+(*
+val () =
+prerrln
+("lexing_preping_all: f0_VAL: x0 = ", x0)
+val () =
+prerrln
+("lexing_preping_all: f0_VAL: x1 = ", x1)
+*)
 //
 in//let
 case+ vlk of
