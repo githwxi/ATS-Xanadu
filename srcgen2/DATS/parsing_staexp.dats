@@ -100,6 +100,15 @@ tnode with token_get_node//lexing0
 (* ****** ****** *)
 //
 #extern
+fun p1_g0nam_atm: p1_fun(g0nam)
+//
+#extern
+fun
+p1_g0namseq_COMMA: p1_fun(g0namlst)
+//
+(* ****** ****** *)
+//
+#extern
 fun p1_g0exp_atm: p1_fun(g0exp)
 #extern
 fun p1_g0exp_app: p1_fun(g0exp)
@@ -819,6 +828,142 @@ end (*let*) // end of [ rest-of-token ]
 //
 end (*let*) // end of [p1_s0ymb(buf,err)]
 
+(* ****** ****** *)
+
+local
+//
+in//local
+//
+#implfun
+p1_g0nam(buf, err) =
+let
+//
+  val e00 = err
+  val tok = buf.getk0()
+  val tnd = tok.tnode()
+//
+in//let
+//
+case+ tnd of
+|
+T_LPAREN() => let
+  val tbeg = tok
+  val (  ) = buf.skip1()
+  val gnms =
+    p1_g0namseq_COMMA(buf, err)
+  val tend = p1_RPAREN(buf, err)
+in
+  err := e00;
+  g0nam_make_node
+  ( lres
+  , G0Nlist(tbeg, gnms, tend)) where
+  {
+    val lres = (tbeg.lctn()+tend.lctn())
+  }
+end // end of [T_LPAREN]
+|
+_(*rest-of-token*) => p1_g0nam_atm(buf, err)
+end (*let*) // end of [ p1_g0nam(buf, err) ]
+//
+endloc (*local*) // end-of-[ local(p1_g0nam) ]
+
+(* ****** ****** *)
+
+#implfun
+p1_g0nam_atm
+  (buf, err) = let
+//
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+(*
+val () =
+println!
+("p1_g0nam_atm: e0 = ", e0)
+val () =
+println!
+("p1_g0nam_atm: tok = ", tok)
+*)
+//
+in
+//
+case+ tnd of
+//
+|
+_ when t0_g0nid(tnd) =>
+let
+  val id0 =
+  p1_g0nid(buf, err)
+  val loc = id0.lctn()
+in
+  err := e00;
+  g0nam_make_node(loc, G0Nid0(id0))
+end // end of [t0_g0nid]
+//
+|
+_ when t0_t0int(tnd) =>
+let
+  val i00 =
+  p1_t0int(buf, err)
+  val loc = i00.lctn()
+in//let
+  err := e00;
+  g0nam_make_node(loc, G0Nint(i00))
+end // end of [t0_t0int]
+//
+|
+_ when t0_t0chr(tnd) =>
+let
+  val c00 =
+  p1_t0chr(buf, err)
+  val loc = c00.lctn()
+in//let
+  err := e00;
+  g0nam_make_node(loc, G0Nchr(c00))
+end // end of [t0_t0chr]
+//
+|
+_ when t0_t0flt(tnd) =>
+let
+  val f00 =
+  p1_t0flt(buf, err)
+  val loc = f00.lctn()
+in//let
+  err := e00;
+  g0nam_make_node(loc, G0Nflt(f00))
+end // end of [t0_t0flt]
+//
+|
+_ when t0_t0str(tnd) =>
+let
+  val s00 =
+  p1_t0str(buf, err)
+  val loc = s00.lctn()
+in//let
+  err := e00;
+  g0nam_make_node(loc, G0Nstr(s00))
+end // end of [t0_t0str]
+//
+| _ (* rest-of-token *) =>
+(
+  err := e00 + 1;
+  g0nam_make_node(tok.lctn(), G0Ntkerr(tok))
+)
+//
+end (*let*) // end of [p1_g0nam_atm(buf,err)]
+
+(* ****** ****** *)
+//
+#implfun
+p1_g0namseq_COMMA
+  (buf, err) =
+(
+list_vt2t
+(
+ps_COMMA_p1fun{g0nam}(buf, err, p1_g0nam_atm))
+) (* end of [ p1_g0namseq_COMMA(buf, err) ] *)
+//
 (* ****** ****** *)
 
 local
