@@ -177,6 +177,9 @@ S0E = "./staexp0.sats"
 #typedef d0arglst = list(d0arg)
 (* ****** ****** *)
 //
+#typedef d0pidopt = optn(d0pid)
+//
+(* ****** ****** *)
 #typedef d0patlst = list(d0pat)
 #typedef d0explst = list(d0exp)
 #typedef d0clslst = list(d0cls)
@@ -684,7 +687,7 @@ D0Cvardclst of
 (token(*VAR(vrk)*), d0vardclist)
 |
 D0Cfundclst of
-(token(*FUN(fnk)*), d0fundclist)
+(token(*FUN(fnk)*), t0qaglst, d0fundclist)
 //
 |
 D0Cdatatype of
@@ -940,20 +943,58 @@ d0cstdcl_make_args
 #symload d0cstdcl with d0cstdcl_make_args
 //
 (* ****** ****** *)
+//
+datatype
+teqd0exp =
+|
+TEQD0EXPnone of ((*void*))
+|
+TEQD0EXPsome of (token(*EQ0*), d0exp)
+datatype
+wths0exp =
+|
+WTHS0EXPnone of ((*void*))
+|
+WTHS0EXPsome of (token(*WTP*), s0exp)
+//
+(* ****** ****** *)
 fun
 d0valdcl_get_lctn:(d0valdcl)->loc_t
-(* ****** ****** *)
-#symload lctn with d0valdcl_get_lctn
-(* ****** ****** *)
 fun
 d0vardcl_get_lctn:(d0vardcl)->loc_t
-(* ****** ****** *)
-#symload lctn with d0vardcl_get_lctn
-(* ****** ****** *)
 fun
 d0fundcl_get_lctn:(d0fundcl)->loc_t
 (* ****** ****** *)
+#symload lctn with d0valdcl_get_lctn
+#symload lctn with d0vardcl_get_lctn
 #symload lctn with d0fundcl_get_lctn
+(* ****** ****** *)
+fun
+d0valdcl_get_dpat:(d0valdcl)->d0pat
+fun
+d0valdcl_get_tdxp:(d0valdcl)->teqd0exp
+fun
+d0valdcl_get_wsxp:(d0valdcl)->wths0exp
+(* ****** ****** *)
+fun
+d0vardcl_get_dpid:(d0vardcl)->d0pid
+fun
+d0vardcl_get_vpid:(d0vardcl)->d0pidopt
+fun
+d0vardcl_get_sres:(d0vardcl)->s0expopt
+fun
+d0vardcl_get_dini:(d0vardcl)->teqd0exp
+(* ****** ****** *)
+fun
+d0fundcl_get_dpid:(d0fundcl)->d0pid
+fun
+d0fundcl_get_farg:(d0fundcl)->f0arglst
+fun
+d0fundcl_get_sres:(d0fundcl)->s0res
+fun
+d0fundcl_get_tdxp:(d0fundcl)->teqd0exp
+fun
+d0fundcl_get_wsxp:(d0fundcl)->wths0exp
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_dynexp0.sats] *)
