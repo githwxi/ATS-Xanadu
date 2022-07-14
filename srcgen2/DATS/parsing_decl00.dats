@@ -1549,6 +1549,8 @@ topt = pq_EQ0(buf, err)
 //
 val () =
 prerrln("p1_d0valdcl: dpat = ", dpat)
+val () =
+prerrln("p1_d0valdcl: topt = ", topt)
 //
 in//let
 //
@@ -1578,13 +1580,16 @@ end (*let*) // end of [ optn_nil() ]
 |
 optn_cons(teq1) =>
 let
+//
 val dexp =
 p1_d0exp(buf, err)
+//
 val tdxp =
 TEQD0EXPsome(teq1, dexp)
+//
 val wsxp = p1_wths0exp(buf, err)
 //
-val loc0 = dpat.lctn()
+val loc0 = dpat.lctn((*nil*))
 val loc1 =
 (
 case+ wsxp of

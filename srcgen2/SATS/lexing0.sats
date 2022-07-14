@@ -239,6 +239,9 @@ datatype tnode =
 //
   | T_WITHTYPE of int(*kind*)
 //
+  | T_DLR_EXTNAM of () // $exname
+  | T_DLR_EXISTS of () // $exists
+//
   | T_SRP_THEN of ()
   | T_SRP_ELSE of ()
   | T_SRP_IFDEC of int(*kind*)
