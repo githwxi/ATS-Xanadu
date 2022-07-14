@@ -141,6 +141,7 @@ S0E = "./staexp0.sats"
 (* ****** ****** *)
 #abstbox a0typ_tbox // ptr
 #abstbox d0arg_tbox // ptr
+#abstbox f0arg_tbox // ptr
 (* ****** ****** *)
 //
 #abstbox d0pat_tbox // ptr
@@ -162,6 +163,7 @@ S0E = "./staexp0.sats"
 (* ****** ****** *)
 #typedef a0typ = a0typ_tbox
 #typedef d0arg = d0arg_tbox
+#typedef f0arg = f0arg_tbox
 (* ****** ****** *)
 #typedef d0pat = d0pat_tbox
 #typedef d0exp = d0exp_tbox
@@ -175,6 +177,7 @@ S0E = "./staexp0.sats"
 (* ****** ****** *)
 #typedef a0typlst = list(a0typ)
 #typedef d0arglst = list(d0arg)
+#typedef f0arglst = list(f0arg)
 (* ****** ****** *)
 //
 #typedef d0pidopt = optn(d0pid)
@@ -988,7 +991,7 @@ d0vardcl_get_dini:(d0vardcl)->teqd0exp
 fun
 d0fundcl_get_dpid:(d0fundcl)->d0pid
 fun
-d0fundcl_get_farg:(d0fundcl)->f0aglst
+d0fundcl_get_farg:(d0fundcl)->f0arglst
 fun
 d0fundcl_get_sres:(d0fundcl)->s0res
 fun
@@ -1012,9 +1015,9 @@ d0vardcl_make_args
 fun
 d0fundcl_make_args
 ( lctn: loc_t
-, farg: f0aglst
+, farg: f0arglst
 , sres: s0res
-, tdxp; teqd0exp, wsxp: wths0exp): d0fundcl
+, tdxp: teqd0exp, wsxp: wths0exp): d0fundcl
 //
 (* ****** ****** *)
 (* end of [ATS3/XATSOPT_dynexp0.sats] *)

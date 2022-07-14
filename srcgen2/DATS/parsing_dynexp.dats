@@ -314,16 +314,16 @@ end (*let*) // end of [t0_t0str(tnd)]
 |
 T_LPAREN() =>
 let
-val tbeg = tok
-val () = buf.skip1()
-val d0ps =
-  p1_d0patseq_COMMA(buf, err)
-val tend = p1_d0pat_RPAREN(buf, err)
-val lres =
-tbeg.lctn() + d0pat_RPAREN_lctn(tend)
+  val tbeg = tok
+  val (  ) = buf.skip1()
+  val d0ps =
+    p1_d0patseq_COMMA(buf, err)
+  val dend = p1_d0pat_RPAREN(buf, err)
+  val lres =
+  (tbeg.lctn()+d0pat_RPAREN_lctn(dend))
 in//let
   err := e00
-; d0pat(lres, D0Plpar(tbeg, d0ps, tend))
+; d0pat(lres, D0Plpar(tbeg, d0ps, dend))
 end (*let*) // end of [T_LPAREN()]
 //
 |
@@ -358,15 +358,15 @@ val topt =
 val d0ps =
   p1_d0patseq_COMMA(buf, err)
 //
-val tend = p1_d0pat_RPAREN(buf, err)
+val dend = p1_d0pat_RPAREN(buf, err)
 //
 val lres =
-tbeg.lctn() + d0pat_RPAREN_lctn(tend)
+(tbeg.lctn()+d0pat_RPAREN_lctn(dend))
 //
 in//let
   err := e00
 ; d0pat_make_node
-  (lres, D0Ptup1(tbeg, topt, d0ps, tend))
+  (lres, D0Ptup1(tbeg, topt, d0ps, dend))
 end (*let*) // end of [ T_TRCD1(k0) ]
 //
 |
@@ -418,47 +418,6 @@ p1_l0d0pseq_COMMA
   (ps_COMMA_p1fun{l0d0p}(buf, err, p1_l0d0p))
 ) (* end of [p1_l0d0pseq_COMMA] *)
 //
-(* ****** ****** *)
-
-#implfun
-p1_d0pat_RPAREN
-  (buf, err) =
-let
-  val e00 = err
-  val tok = buf.getk0()
-  val tnd = tok.tnode()
-in
-//
-case+ tnd of
-|
-T_BAR() =>
-let
-  val tbeg = tok
-  val (  ) = buf.skip1()
-  val d0ps =
-    p1_d0patseq_COMMA(buf, err)
-  val tend = p1_RPAREN(buf, err)
-in
-  err := e00
-; d0pat_RPAREN_cons1(tbeg, d0ps, tend)
-end (*let*) // end of [ T_BAR() ]
-| 
-_(* non-T_BAR *) =>
-(
-case+ tnd of
-|
-T_RPAREN() =>
-let
-  val () = buf.skip1()
-in
-  err := e00; d0pat_RPAREN_cons0(tok)
-end (*let*) // end of [T_RPAREN]
-|
-_(*non-T_RPAREN*) =>
-(err := e00 + 1; d0pat_RPAREN_cons0(tok)))
-//
-end (*let*)//end-of-[p1_d0pat_RPAREN(buf,err)]
-
 (* ****** ****** *)
 //
 (*
@@ -551,6 +510,13 @@ p1_d0exp_RPAREN: p1_fun(d0exp_RPAREN)
 #extern
 fun
 p1_l0d0e_RBRACE: p1_fun(l0d0e_RBRACE)
+//
+#extern
+fun
+d0exp_RPAREN_lctn:(d0exp_RPAREN)->loc_t
+#extern
+fun
+l0d0e_RBRACE_lctn:(l0d0e_RBRACE)->loc_t
 //
 (* ****** ****** *)
 
@@ -747,11 +713,12 @@ let
   val (  ) = buf.skip1()
   val d0es =
     p1_d0expseq_COMMA(buf,err)
-  val tend = p1_d0exp_RPAREN(buf,err)
-  val lres = (tbeg.lctn()+tend.lctn())
+  val dend = p1_d0exp_RPAREN(buf,err)
+  val lres =
+  tbeg.lctn()+d0exp_RPAREN_lctn(dend)
 in//let
   err := e00
-; d0exp(lres,D0Elpar(tbeg, d0es, tend))
+; d0exp(lres,D0Elpar(tbeg, d0es, dend))
 end(*let*) // end-of-[  T_LPAREN()  ]
 //
 |
@@ -768,14 +735,15 @@ let
   ) : tokenopt // end-of-[val]
   val d0es =
     p1_d0expseq_COMMA(buf, err)
-  val tend = p1_d0exp_RPAREN(buf, err)
+  val dend = p1_d0exp_RPAREN(buf, err)
 //
-  val lres = tbeg.lctn() + tend.lctn()
+  val lres =
+  (tbeg.lctn()+d0exp_RPAREN_lctn(dend))
 //
 in//let
   err := e00
 ; d0exp_make_node
-  (lres, D0Etup1(tbeg, topt, d0es, tend))
+  (lres, D0Etup1(tbeg, topt, d0es, dend))
 end (*let*)//end-of-[T_TRCD10(k0)]
 //
 |
@@ -792,14 +760,15 @@ let
   ) : tokenopt // end-of-[val]
   val ldes =
     p1_l0d0eseq_COMMA(buf, err)
-  val tend = p1_l0d0e_RBRACE(buf, err)
+  val dend = p1_l0d0e_RBRACE(buf, err)
 //
-  val lres = tbeg.lctn() + tend.lctn()
+  val lres =
+  (tbeg.lctn()+l0d0e_RBRACE_lctn(dend))
 //
 in//let
   err := e00
 ; d0exp_make_node
-  (lres, D0Ercd2(tbeg, topt, ldes, tend))
+  (lres, D0Ercd2(tbeg, topt, ldes, dend))
 end (*let*)//end-of-[T_TRCD20(k0)]
 //
 |
