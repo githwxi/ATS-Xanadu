@@ -988,7 +988,7 @@ d0vardcl_get_dini:(d0vardcl)->teqd0exp
 fun
 d0fundcl_get_dpid:(d0fundcl)->d0pid
 fun
-d0fundcl_get_farg:(d0fundcl)->f0arglst
+d0fundcl_get_farg:(d0fundcl)->f0aglst
 fun
 d0fundcl_get_sres:(d0fundcl)->s0res
 fun
@@ -996,5 +996,25 @@ d0fundcl_get_tdxp:(d0fundcl)->teqd0exp
 fun
 d0fundcl_get_wsxp:(d0fundcl)->wths0exp
 (* ****** ****** *)
-
+//
+fun
+d0valdcl_make_args
+( lctn: loc_t
+, dpat: d0pat
+, tdxp: teqd0exp, wsxp: wths0exp): d0valdcl
+fun
+d0vardcl_make_args
+( lctn: loc_t
+, dpid: d0pid
+, vpid: d0pidopt
+, sres: s0expopt, dini: teqd0exp): d0vardcl
+//
+fun
+d0fundcl_make_args
+( lctn: loc_t
+, farg: f0aglst
+, sres: s0res
+, tdxp; teqd0exp, wsxp: wths0exp): d0fundcl
+//
+(* ****** ****** *)
 (* end of [ATS3/XATSOPT_dynexp0.sats] *)

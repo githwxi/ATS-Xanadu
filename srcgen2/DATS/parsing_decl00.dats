@@ -1399,6 +1399,10 @@ d0fundclist = list(d0fundcl)
 //
 #extern
 fun
+p1_wths0exp: p1_fun(wths0exp)
+//
+#extern
+fun
 p1_d0valdcl: p1_fun(d0valdcl)
 #extern
 fun
@@ -1515,6 +1519,99 @@ in//let
 ; d0ecl(lres, D0Cfundclst(tok, tqas, d0cs))
 end (*let*)//end-of-[pk_fundclst(tok, buf, err)]
 
+(* ****** ****** *)
+
+#implfun
+p1_d0valdcl
+  (buf, err) = let
+//
+val e00 = err
+//
+val
+dpat =
+p1_d0pat(buf, err)
+//
+val
+topt = pq_EQ0(buf, err)
+//
+in//let
+//
+case+ topt of
+|
+optn_nil() =>
+let
+val tdxp =
+TEQD0EXPnone()
+val wsxp =
+WTHS0EXPnone()
+val loc0 = dpat.lctn()
+val loc1 =
+(
+case+ wsxp of
+|
+WTHS0EXPnone
+((*nil*)) => loc0
+|
+WTHS0EXPsome
+(_, sexp) => loc0+sexp.lctn()): loc_t
+//
+in
+err := e00;
+d0valdcl_make_args(loc1, dpat, tdxp, wsxp)
+end (*let*) // end of [ optn_nil() ]
+|
+optn_cons(teq1) =>
+let
+val dexp =
+p1_d0exp(buf, err)
+val tdxp =
+TEQD0EXPsome(teq1, dexp)
+val wsxp = p1_wths0exp(buf, err)
+//
+val loc0 = dpat.lctn()
+val loc1 =
+(
+case+ wsxp of
+|
+WTHS0EXPnone
+((*nil*)) => loc0+dexp.lctn()
+|
+WTHS0EXPsome
+(_, sexp) => loc0+sexp.lctn()): loc_t
+//
+in
+err := e00;
+d0valdcl_make_args(loc1, dpat, tdxp, wsxp)
+end (*let*) // end of [optn_cons(teq1)]
+//
+end (*let*) // end of [p1_d0valdecl(buf,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+p1_d0valdclseq_AND
+  (buf, err) =
+(
+list_vt2t
+(ps_COMMA_p1fun{d0valdcl}(buf,err,p1_d0valdcl))
+) (* end-of-[p1_d0valdclseq_AND( buf, err ) ] *)
+//
+#implfun
+p1_d0vardclseq_AND
+  (buf, err) =
+(
+list_vt2t
+(ps_COMMA_p1fun{d0vardcl}(buf,err,p1_d0vardcl))
+) (* end-of-[p1_d0vardclseq_AND( buf, err ) ] *)
+//
+#implfun
+p1_d0fundclseq_AND
+  (buf, err) =
+(
+list_vt2t
+(ps_COMMA_p1fun{d0fundcl}(buf,err,p1_d0fundcl))
+) (* end-of-[p1_d0fundclseq_AND( buf, err ) ] *)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_parsing_decl00.dats] *)
