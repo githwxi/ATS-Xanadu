@@ -404,7 +404,134 @@ d0cstdcl_make_args
 (lctn, dpid, darg, sred, dres) =
 D0CSTDCL(lctn, dpid, darg, sred, dres)
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*) // end of [ local(d0cstdcl) ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d0valdcl =
+D0VALDCL of
+( loc_t
+, d0pat
+, teqd0exp, wths0exp)
+//
+#absimpl
+d0valdcl_tbox = d0valdcl
+//
+in//local
+
+#implfun
+d0valdcl_get_lctn
+(  dval  ) =
+let
+val+
+D0VALDCL
+( lctn
+, dpat
+, tdxp, wsxp) = dval in lctn end
+
+#implfun
+d0valdcl_get_dpat
+(  dval  ) =
+let
+val+
+D0VALDCL
+( lctn
+, dpat
+, tdxp, wsxp) = dval in dpat end
+
+#implfun
+d0valdcl_get_tdxp
+(  dval  ) =
+let
+val+
+D0VALDCL
+( lctn
+, dpat
+, tdxp, wsxp) = dval in tdxp end
+
+#implfun
+d0valdcl_get_wsxp
+(  dval  ) =
+let
+val+
+D0VALDCL
+( lctn
+, dpat
+, tdxp, wsxp) = dval in wsxp end
+
+endloc (*local*) // end of [ local(d0valdcl) ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d0vardcl =
+D0VARDCL of
+( loc_t
+, d0pid
+, d0pidopt
+, s0expopt, teqd0exp)
+//
+#absimpl
+d0vardcl_tbox = d0vardcl
+//
+in//local
+
+#implfun
+d0vardcl_get_lctn
+(  dvar  ) =
+let
+val+
+D0VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in lctn end
+
+#implfun
+d0vardcl_get_dpid
+(  dvar  ) =
+let
+val+
+D0VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in dpid end
+
+#implfun
+d0vardcl_get_vpid
+(  dvar  ) =
+let
+val+
+D0VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in vpid end
+
+#implfun
+d0vardcl_get_sres
+(  dvar  ) =
+let
+val+
+D0VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in sres end
+
+#implfun
+d0vardcl_get_dini
+(  dvar  ) =
+let
+val+
+D0VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in dini end
+
+endloc (*local*) // end of [ local(d0vardcl) ]
 
 (* ****** ****** *)
 
