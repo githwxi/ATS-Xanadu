@@ -324,6 +324,7 @@ pk_valdclst: pk_fun(d0ecl)
 #extern
 fun
 pk_vardclst: pk_fun(d0ecl)
+(* ****** ****** *)
 #extern
 fun
 pk_fundclst: pk_fun(d0ecl)
@@ -395,12 +396,14 @@ end (*let*) // end of [ T_LOCAL() ]
 |
 T_VAL _
 when f00 > 0 => pk_valdclst(tok, buf, err)
+(*
 |
 T_VAR _
 when f00 > 0 => pk_vardclst(tok, buf, err)
 |
 T_FUN _
 when f00 > 0 => pk_fundclst(tok, buf, err)
+*)
 //
 |
 T_ABSSORT() => let
@@ -1391,6 +1394,8 @@ list_vt2t
 d0valdclist = list(d0valdcl)
 #typedef
 d0vardclist = list(d0vardcl)
+#typedef
+d0fundclist = list(d0fundcl)
 //
 #extern
 fun
@@ -1400,10 +1405,17 @@ fun
 p1_d0vardcl: p1_fun(d0vardcl)
 #extern
 fun
+p1_d0fundcl: p1_fun(d0fundcl)
+//
+#extern
+fun
 p1_d0valdclseq_AND: p1_fun(d0valdclist)
 #extern
 fun
 p1_d0vardclseq_AND: p1_fun(d0vardclist)
+#extern
+fun
+p1_d0fundclseq_AND: p1_fun(d0fundclist)
 //
 (* ****** ****** *)
 //
@@ -1434,8 +1446,74 @@ val lres =
 ) : loc_t // end of [val(lres)]
 in//let
   err := e00
-; d0ecl_make_node(lres, D0Cvaldclst(tok, d0cs))
+; d0ecl(lres, D0Cvaldclst(tok, d0cs))
 end (*let*)//end-of-[pk_valdclst(tok, buf, err)]
+
+(* ****** ****** *)
+
+#implfun
+pk_vardclst
+(tok, buf, err) =
+let
+//
+val e00 = err
+val tknd = tok
+val (  ) = buf.skip1()
+//
+val d0cs =
+p1_d0vardclseq_AND(buf, err)
+//
+val lres =
+(
+  case+ d0cs of
+  | list_nil _ =>
+    tknd.lctn((*nil*))
+  | list_cons _ =>
+    (
+    tknd.lctn()+d0c1.lctn()
+    ) where
+    {
+      val d0c1 = list_last(d0cs)
+    }
+) : loc_t // end of [val(lres)]
+in//let
+  err := e00
+; d0ecl(lres, D0Cvardclst(tok, d0cs))
+end (*let*)//end-of-[pk_vardclst(tok, buf, err)]
+
+(* ****** ****** *)
+
+#implfun
+pk_fundclst
+(tok, buf, err) =
+let
+//
+val e00 = err
+val tknd = tok
+val (  ) = buf.skip1()
+//
+val tqas =
+p1_t0qagseq(buf, err)
+val d0cs =
+p1_d0fundclseq_AND(buf, err)
+//
+val lres =
+(
+  case+ d0cs of
+  | list_nil _ =>
+    tknd.lctn((*nil*))
+  | list_cons _ =>
+    (
+    tknd.lctn()+d0c1.lctn()
+    ) where
+    {
+      val d0c1 = list_last(d0cs)
+    }
+) : loc_t // end of [val(lres)]
+in//let
+  err := e00
+; d0ecl(lres, D0Cfundclst(tok, tqas, d0cs))
+end (*let*)//end-of-[pk_fundclst(tok, buf, err)]
 
 (* ****** ****** *)
 
