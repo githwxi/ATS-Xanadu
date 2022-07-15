@@ -265,8 +265,8 @@ s0qua_fprint(g_print$out<>(), s0q)
 g_print<s0exp>(s0e) =
 s0exp_fprint(g_print$out<>(), s0e)
 #impltmp
-g_print<s0exp_RPAREN>(srp) =
-s0exp_RPAREN_fprint(g_print$out<>(), srp)
+g_print<s0exp_RPAREN>(srp0) =
+s0exp_RPAREN_fprint(g_print$out<>(), srp0)
 #impltmp
 g_print<l0s0e_RBRACE>(lsrb) =
 l0s0e_RBRACE_fprint(g_print$out<>(), lsrb)
@@ -319,6 +319,7 @@ d0pat_fprint(g_print$out<>(), d0p)
 #impltmp
 g_print<f0arg>(f0a) =
 f0arg_fprint(g_print$out<>(), f0a)
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -346,40 +347,60 @@ d0ecl_fprint(g_print$out<>(), dcl)
 //
 (* ****** ****** *)
 #impltmp
-g_print<f0unarrw>(sres) =
-f0unarrw_fprint(g_print$out<>(), sres)
+g_print<t0qua>(tqua) =
+t0qua_fprint(g_print$out<>(), tqua)
+#impltmp
+g_print<t0inv>(tinv) =
+t0inv_fprint(g_print$out<>(), tinv)
+(* ****** ****** *)
+#impltmp
+g_print<f0unarrw>(arrw) =
+f0unarrw_fprint(g_print$out<>(), arrw)
 (* ****** ****** *)
 //
 #impltmp
-g_print<d0exp_RPAREN>(drp) =
-d0exp_RPAREN_fprint(g_print$out<>(), drp)
+g_print<d0exp_THEN>(dthn) =
+d0exp_THEN_fprint(g_print$out<>(), dthn)
+#impltmp
+g_print<d0exp_ELSE>(dels) =
+d0exp_ELSE_fprint(g_print$out<>(), dels)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<d0exp_RPAREN>(drp0) =
+d0exp_RPAREN_fprint(g_print$out<>(), drp0)
 #impltmp
 g_print<l0d0e_RBRACE>(ldrb) =
 l0d0e_RBRACE_fprint(g_print$out<>(), ldrb)
 //
 (* ****** ****** *)
 #impltmp
-g_print<s0qag>(sqa) =
-s0qag_fprint(g_print$out<>(), sqa)
+g_print<s0qag>(sqag) =
+s0qag_fprint(g_print$out<>(), sqag)
 #impltmp
-g_print<t0qag>(tqa) =
-t0qag_fprint(g_print$out<>(), tqa)
+g_print<t0qag>(tqag) =
+t0qag_fprint(g_print$out<>(), tqag)
 #impltmp
-g_print<t0iag>(tia) =
-t0iag_fprint(g_print$out<>(), tia)
+g_print<t0iag>(tiag) =
+t0iag_fprint(g_print$out<>(), tiag)
 (* ****** ****** *)
 #impltmp
-g_print<a0typ>(a0t) =
-a0typ_fprint(g_print$out<>(), a0t)
+g_print<a0typ>(a0tp) =
+a0typ_fprint(g_print$out<>(), a0tp)
 #impltmp
-g_print<d0arg>(d0a) =
-d0arg_fprint(g_print$out<>(), d0a)
+g_print<d0arg>(d0ag) =
+d0arg_fprint(g_print$out<>(), d0ag)
 (* ****** ****** *)
 //
 #impltmp
-g_print<a0tdf>(tdf) =
-a0tdf_fprint(g_print$out<>(), tdf)
+g_print<a0tdf>(tdf0) =
+a0tdf_fprint(g_print$out<>(), tdf0)
 //
+(* ****** ****** *)
+#impltmp
+g_print<d0res>(dres) =
+d0res_fprint(g_print$out<>(), dres)
 (* ****** ****** *)
 //
 #impltmp
@@ -392,13 +413,6 @@ precmod_fprint(g_print$out<>(), pmd)
 g_print<precint>(int) =
 precint_fprint(g_print$out<>(), int)
 //
-(* ****** ****** *)
-#impltmp
-g_print<d0res>(dres) =
-d0res_fprint(g_print$out<>(), dres)
-#impltmp
-g_print<w0s0e>(ws0e) =
-w0s0e_fprint(g_print$out<>(), ws0e)
 (* ****** ****** *)
 #impltmp
 g_print<d0cstdcl>(dcst) =
