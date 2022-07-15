@@ -139,8 +139,12 @@ S0E = "./staexp0.sats"
 #abstbox t0iag_tbox // ptr
 //
 (* ****** ****** *)
+//
 #abstbox a0typ_tbox // ptr
 #abstbox d0arg_tbox // ptr
+(*
+#abstbox d0ann_tbox // ptr
+*)
 (* ****** ****** *)
 //
 #abstbox d0pat_tbox // ptr
@@ -478,7 +482,7 @@ T0INVnone of
 ( t0qualst, token )
 |
 T0INVsome of
-(t0qualst,token,d0typlst,token)
+(t0qualst,token,d0patlst,token)
 //
 (* ****** ****** *)
 and
@@ -599,6 +603,8 @@ d0exp_get_node: d0exp->d0exp_node
 (* ****** ****** *)
 //
 fun
+t0qua_get_lctn:t0qua->loc_t
+fun
 t0inv_get_lctn:t0inv->loc_t
 //
 fun
@@ -616,6 +622,7 @@ l0d0e_RBRACE_lctn
 //
 (* ****** ****** *)
 //
+#symload lctn with t0qua_get_lctn
 #symload lctn with t0inv_get_lctn
 //
 #symload lctn with d0exp_THEN_lctn

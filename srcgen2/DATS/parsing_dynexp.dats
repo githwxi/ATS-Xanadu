@@ -1222,7 +1222,7 @@ T_LPAREN() => let
   val (  ) =
   buf.skip1((*void*))
   val d0ts = 
-  p1_d0typseq_COMMA(buf, err)
+  p1_d0patseq_COMMA(buf, err)
   val tend = p1_RPAREN(buf, err)
 in
 let
@@ -2067,6 +2067,53 @@ _(*non-T_RPAREN*) =>
 //
 end(*let*)//end-[p1_l0d0e_RBRACE(buf,err)]
 
+(* ****** ****** *)
+//
+#implfun
+t0qua_get_lctn
+  (tqua) =
+(
+case+ tqua of
+|
+T0QUAnone
+(  terr  ) => terr.lctn()
+|
+T0QUAsome
+(tbeg, s0qs, tend) =>
+(tbeg.lctn() + tend.lctn())
+) (*case*) // end of [t0qua_get_lctn(tinv)]
+
+(* ****** ****** *)
+//
+#implfun
+t0inv_get_lctn
+  (tinv) =
+(
+case+ tinv of
+|
+T0INVnone
+(t0qs, terr) =>
+(
+case+ t0qs of
+|
+list_nil() => terr.lctn()
+|
+list_cons(t0q1, _) =>
+(t0q1.lctn() + terr.lctn())
+)
+|
+T0INVsome
+( t0qs
+, tbeg, d0ps, tend) =>
+(
+case+ t0qs of
+| list_nil() =>
+  (tbeg.lctn()+tend.lctn())
+| list_cons(t0q1, _) =>
+  (t0q1.lctn()+tend.lctn())
+)
+) (*case*) // end of [t0inv_get_lctn(tinv)]
+//
 (* ****** ****** *)
 #implfun
 d0pat_RPAREN_lctn

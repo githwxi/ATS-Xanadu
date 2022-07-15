@@ -171,8 +171,15 @@ D0Eif0
 (tknd,d0e1,dthn,dels) =>
 (
 print
-( "D0Eif0("
-, tknd ,";",d0e1,";",dthn,";",dels,")"))
+("D0Eif0(", tknd,";");
+print(d0e1,";",dthn,";",dels,")"))
+|
+D0Eif1
+(tknd,d0e1,dthn,dels,tinv) =>
+(
+print
+("D0Eif1(",tknd,";");
+print(d0e1,";",dthn,";",dels,";",tinv,")"))
 //
 |
 D0Elam0
@@ -204,7 +211,11 @@ end (*let*) // end of [d0exp_fprint(out,d0e)]
 #implfun
 t0qua_fprint
 (out, tqua) =
-(
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
 case+ tqua of
 |
 T0QUAnone(tok) =>
@@ -212,21 +223,25 @@ print("T0QUAnone(",tok,")")
 |
 T0QUAsome(tkb,sqs,tke) =>
 print("T0QUAsome(",tkb,";",sqs,";",tke,")")
-) (*case*) // end of [t0qua_fprint(out,tqua)]
+//
+end (*let*) // end of [t0qua_fprint(out,tqua)]
 #implfun
 t0inv_fprint
 (out, tinv) =
-(
+let
+#impltmp
+g_print$out<>() = out
+in//let
 case+ tinv of
 |
 T0INVnone(tqua,terr) =>
 print("T0INVnone(",tqua,";",terr,")")
 |
-T0INVsome(tqas,tbeg,d0ts,tend) =>
+T0INVsome(tqas,tbeg,d0ps,tend) =>
 (
 print("T0INVsome(");
-print(tqas,";",tbeg,";",d0ts,";",tend,")"))
-) (*case*) // end of [t0inv_fprint(out,tinv)]
+print(tqas,";",tbeg,";",d0ps,";",tend,")"))
+end (*let*) // end of [t0inv_fprint(out,tinv)]
 //
 (* ****** ****** *)
 
