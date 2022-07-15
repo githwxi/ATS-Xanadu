@@ -1329,7 +1329,7 @@ f0a0.node() of
     val node =
     F0ARGsome_sta(tbeg, s0qs, tend)
   }
-| _ (* non-F0ARGsom_sta *) => f0a0
+| _ (* non-F0ARGsome_sta *) => f0a0
 )
 fun
 auxf0as
@@ -1386,7 +1386,7 @@ if
 tsts0qs(s0qs)
 then true else tstf0as(xs)
 |
-_(*non-F0ARGsom_sta*) => tstf0as(xs)
+_(*non-F0ARGsome_sta*) => tstf0as(xs)
 )
 )
 //

@@ -141,10 +141,10 @@ S0E = "./staexp0.sats"
 (* ****** ****** *)
 #abstbox a0typ_tbox // ptr
 #abstbox d0arg_tbox // ptr
-#abstbox f0arg_tbox // ptr
 (* ****** ****** *)
 //
 #abstbox d0pat_tbox // ptr
+#abstbox f0arg_tbox // ptr
 #abstbox d0exp_tbox // ptr
 #abstbox d0cls_tbox // ptr
 #abstbox d0ecl_tbox // ptr
@@ -163,9 +163,9 @@ S0E = "./staexp0.sats"
 (* ****** ****** *)
 #typedef a0typ = a0typ_tbox
 #typedef d0arg = d0arg_tbox
-#typedef f0arg = f0arg_tbox
 (* ****** ****** *)
 #typedef d0pat = d0pat_tbox
+#typedef f0arg = f0arg_tbox
 #typedef d0exp = d0exp_tbox
 #typedef d0cls = d0cls_tbox
 #typedef d0ecl = d0ecl_tbox
@@ -177,13 +177,13 @@ S0E = "./staexp0.sats"
 (* ****** ****** *)
 #typedef a0typlst = list(a0typ)
 #typedef d0arglst = list(d0arg)
-#typedef f0arglst = list(f0arg)
 (* ****** ****** *)
 //
 #typedef d0pidopt = optn(d0pid)
 //
 (* ****** ****** *)
 #typedef d0patlst = list(d0pat)
+#typedef f0arglst = list(f0arg)
 #typedef d0explst = list(d0exp)
 #typedef d0clslst = list(d0cls)
 #typedef d0eclist = list(d0ecl)
@@ -280,8 +280,23 @@ l0d0p_RBRACE_cons0 of token
 l0d0p_RBRACE_cons1 of (token, l0d0plst, token)
 //
 (* ****** ****** *)
+//
+datatype
+f0arg_node =
+|
+F0ARGnone of (token)
+|
+F0ARGdyn0 of (d0pat)
+|
+F0ARGsta0 of (token, s0qualst, token)
+|
+F0ARGmet0 of (token, s0explst, token)
+//
+(* ****** ****** *)
 fun
 d0pat_fprint(FILR, d0pat): void
+fun
+f0arg_fprint(FILR, f0arg): void
 fun
 d0pat_RPAREN_fprint
 (out:FILR, drp:d0pat_RPAREN): void
@@ -293,10 +308,16 @@ l0d0p_RBRACE_fprint
 fun
 d0pat_get_lctn(d0pat): loc_t
 fun
+f0arg_get_lctn(f0arg): loc_t
+fun
 d0pat_get_node(d0pat): d0pat_node
+fun
+f0arg_get_node(f0arg): f0arg_node
 //
 #symload lctn with d0pat_get_lctn
+#symload lctn with f0arg_get_lctn
 #symload node with d0pat_get_node
+#symload node with f0arg_get_node
 //
 (* ****** ****** *)
 fun
@@ -307,6 +328,10 @@ fun
 d0pat_make_node
 (loc:loc_t, nod:d0pat_node): d0pat
 #symload d0pat with d0pat_make_node
+fun
+f0arg_make_node
+(loc:loc_t, nod:f0arg_node): f0arg
+#symload f0arg with f0arg_make_node
 (* ****** ****** *)
 //
 (*
@@ -845,8 +870,7 @@ D0ARGdyn2 of
 where
 {
 #typedef
-a0typlstopt = optn(a0typlst)
-}
+a0typlstopt = optn(a0typlst) }
 (* ****** ****** *)
 fun
 a0typ_fprint(FILR, a0typ): void

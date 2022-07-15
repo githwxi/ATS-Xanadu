@@ -99,6 +99,7 @@ D0E = "./dynexp0.sats"
 (* ****** ****** *)
 #typedef a0typ = $D0E.a0typ
 #typedef d0arg = $D0E.d0arg
+#typedef f0arg = $D0E.f0arg
 (* ****** ****** *)
 #typedef s0eff = $D0E.s0eff
 #typedef s0res = $D0E.s0res
@@ -367,6 +368,7 @@ pq_ids0t_anno: pq_fun(sort0)
 //
 #typedef a0typlst=list(a0typ)
 #typedef d0arglst=list(d0arg)
+#typedef f0arglst=list(f0arg)
 //
 (* ****** ****** *)
 //
@@ -422,6 +424,7 @@ fun p1_d0typ: p1_fun( d0typ )
 //
 fun p1_a0typ: p1_fun( a0typ )
 fun p1_d0arg: p1_fun( d0arg )
+fun p1_f0arg: p1_fun( f0arg )
 //
 (* ****** ****** *)
 //

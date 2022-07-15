@@ -568,7 +568,8 @@ val cc1 = char_make_code(ci1)
 //
 (*
 val () =
-println("f0_SYDLR: loop: cc0 = ", cc0)
+println
+("f0_SYDLR: loop: cc0 = ", cc0)
 *)
 //
 in//let
@@ -587,16 +588,17 @@ if
 (cc1 = '.')
 then
 (
-T_IDQUA(gobj_lexing$fcseg(buf))
+T_IDQUA
+(gobj_lexing$fcseg(buf))
 ) // end of [then]
 else
 let
-  val
-  cix =
-  gobj_lexing$unget(buf, ci1)
+val
+cix =
+gobj_lexing$unget(buf, ci1)
 in
 T_IDDLR(gobj_lexing$fcseg(buf))
-end // end of [else]
+end //endof(else)//end-of(if)
 ) (* then *)
 else
 (

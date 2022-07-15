@@ -81,6 +81,8 @@ lctn with s0exp_get_lctn//staexp0
 #symload
 lctn with d0pat_get_lctn//dynexp0
 #symload
+lctn with f0arg_get_lctn//dynexp0
+#symload
 lctn with d0exp_get_lctn//dynexp0
 #symload
 lctn with d0cls_get_lctn//dynexp0
@@ -91,6 +93,14 @@ node with token_get_node//lexing0
 node with i0dnt_get_node//staexp0
 #symload
 node with l0abl_get_node//staexp0
+(* ****** ****** *)
+#symload
+node with s0exp_get_node//staexp0
+#symload
+node with s0qua_get_node//staexp0
+(* ****** ****** *)
+#symload
+node with f0arg_get_node//dynexp0
 (* ****** ****** *)
 #symload
 tnode with token_get_node//lexing0
@@ -424,6 +434,211 @@ p1_l0d0pseq_COMMA
   (ps_COMMA_p1fun{l0d0p}(buf, err, p1_l0d0p))
 ) (* end of [p1_l0d0pseq_COMMA] *)
 //
+(* ****** ****** *)
+//
+#extern
+fun
+p1_f0argseq0: p1_fun(f0arglst)
+#extern
+fun
+p1_f0argseq1: p1_fun(f0arglst)
+//
+(* ****** ****** *)
+
+#implfun
+p1_f0arg(buf, err) =
+let
+//
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+in//let
+//
+case+ tnd of
+//
+|
+T_DOTLT(_) =>
+let
+  val tbeg = tok
+  val () = buf.skip1()
+  val s0es =
+    p1_s0expseq_COMMA(buf, err)
+  val tend = p1_GTDOT(buf, err)
+  val lres = tbeg.lctn() + tend.lctn()
+in//let
+  err := e00;
+  f0arg_make_node
+  (lres, F0ARGmet0(tbeg, s0es, tend))
+end (*let*) // end of [ T_DOTLT() ]
+//
+|
+T_LBRACE() =>
+let
+  val tbeg = tok
+  val () = buf.skip1()
+  val s0qs =
+  p1_s0quaseq_BSCLN(buf, err)
+  val tend = p1_RBRACE(buf, err)
+  val lres = tbeg.lctn() + tend.lctn()
+in//let
+  err := e00;
+  f0arg_make_node
+  (lres, F0ARGsta0(tbeg, s0qs, tend))
+end (*let*) // end of [T_LBRACE() ]
+//
+|
+_(* non-sta-met *) =>
+let
+  val d0p = p1_d0pat_atm(buf, err)
+in
+  f0arg_make_node(d0p.lctn(), F0ARGdyn0(d0p))
+end (*let*) // end of [non-sta-met]
+//
+end (*let*) // end of [ p1_f0arg(buf,err) ]
+
+(* ****** ****** *)
+#impltmp
+p1_f0argseq0
+  (buf, err) =
+(
+list_vt2t(ps_p1fun{f0arg}(buf, err, p1_f0arg))
+) (* end of [p1_f0argseq0] *)
+(* ****** ****** *)
+
+local
+//
+fun
+f0_s0q0
+( s0q0
+: s0qua): s0qua =
+(
+case+
+s0q0.node() of
+|
+S0QUAprop(s0p) =>
+(
+case+
+s0p.node() of
+|
+S0Eid0(sid) =>
+let
+  val loc = s0p.lctn()
+  val opt =
+    optn_nil(*sort0*)
+  val ids = list_sing(sid)
+in
+  s0qua_make_node
+  (loc, S0QUAvars(ids, opt))
+end
+| _ (* non-S0Eid0 *) => s0q0
+)
+| _(* non-S0QUAprop *) => s0q0
+)
+fun
+auxs0qs
+( xs
+: s0qualst): s0qualst =
+list_map
+<s0qua><s0qua>(xs) where
+{
+#impltmp
+map$fopr<s0qua><s0qua> = f0_s0q0
+}
+//
+fun
+f0_f0a0
+( f0a0
+: f0arg): f0arg =
+(
+case+
+f0a0.node() of
+|
+F0ARGsta0
+(tbeg, s0qs, tend) =>
+(
+  f0arg_make_node(loc0, node)
+) where
+{
+  val loc0 = f0a0.lctn()
+  val s0qs = auxs0qs(s0qs)
+  val node =
+  F0ARGsta0(tbeg, s0qs, tend)
+}
+| _ (* non-F0ARGsom_sta *) => f0a0
+)
+fun
+f0_f0as
+( xs
+: f0arglst): f0arglst =
+list_map
+<f0arg><f0arg>(xs) where
+{
+#impltmp
+map$fopr<f0arg><f0arg> = f0_f0a0
+}
+//
+fun
+t0_s0qs
+( xs
+: s0qualst): bool =
+(
+case+ xs of
+|
+list_nil() => false
+|
+list_cons(x1, xs) =>
+(
+case+
+x1.node() of
+|
+S0QUAprop(s0p) =>
+(
+case+
+s0p.node() of
+| S0Eid0(sid) => true
+| _(*non-S0Eid0*) => t0_s0qs(xs)
+)
+| _(*non-S0QUAprop*) => t0_s0qs(xs)
+)
+)
+fun
+t0_f0as
+( xs
+: f0arglst): bool =
+(
+case+ xs of
+|
+list_nil() => false
+|
+list_cons(x1, xs) =>
+(
+case+
+x1.node() of
+|
+F0ARGsta0
+(tbeg, s0qs, tend) =>
+if
+t0_s0qs(s0qs)
+then true else t0_f0as(xs)
+| _(*non-F0ARGsta0*) => t0_f0as(xs)
+)
+)
+//
+in
+//
+#implfun
+p1_f0argseq1
+( buf, err ) =
+let
+val
+f0as = p1_f0argseq0(buf, err)
+in//let
+if t0_f0as(f0as) then f0_f0as(f0as) else f0as
+end (*let*) // end of [p_f0argseq1]
+//
+endloc (*local*) // end of [local(p1_f0argseq1)]
+
 (* ****** ****** *)
 //
 (*
