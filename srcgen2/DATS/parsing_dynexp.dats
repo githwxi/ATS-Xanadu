@@ -786,10 +786,11 @@ l0d0e_RBRACE_lctn:(l0d0e_RBRACE)->loc_t
 (* ****** ****** *)
 
 local
-
+//
 #extern
 fun
 p1_napps: p1_fun(d0exp)
+//
 #implfun
 p1_napps(buf, err) =
 let

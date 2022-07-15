@@ -104,7 +104,6 @@ D0E = "./dynexp0.sats"
 #typedef s0eff = $D0E.s0eff
 #typedef s0res = $D0E.s0res
 #typedef d0res = $D0E.d0res
-#typedef w0s0e = $D0E.w0s0e
 (* ****** ****** *)
 //
 #typedef d0pat = $D0E.d0pat

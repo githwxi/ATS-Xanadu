@@ -299,7 +299,7 @@ fun
 f0arg_fprint(FILR, f0arg): void
 fun
 d0pat_RPAREN_fprint
-(out:FILR, drp:d0pat_RPAREN): void
+(out:FILR, drp0:d0pat_RPAREN): void
 fun
 l0d0p_RBRACE_fprint
 (out:FILR, ldrb:l0d0p_RBRACE): void
@@ -372,6 +372,11 @@ D0Eif0 of
 ( token
 , d0exp
 , d0exp_THEN, d0exp_ELSE(*opt*))
+|
+D0Eif1 of
+( token
+, d0exp
+, d0exp_THEN, d0exp_ELSE, t0inv)
 //
 |
 D0Etup1 of // HX: tuple
@@ -457,6 +462,25 @@ s0res =
 | S0RESsome of (s0eff, s0exp)
 //
 (* ****** ****** *)
+//
+and
+t0qua =
+|
+T0QUAnone of
+( token )
+|
+T0QUAsome of
+(token, s0qualst, token)
+//
+and
+t0inv =
+|
+T0INVnone of (t0qua, token)
+|
+T0INVsome of
+(t0qualst,token,d0typlst,token)
+//
+(* ****** ****** *)
 and
 f0unarrw =
 |
@@ -512,6 +536,13 @@ l0d0e_RBRACE_cons1 of (token, l0d0elst, token)
 //
 (* ****** ****** *)
 //
+where
+{
+  #typedef
+  t0qualst = list(t0qua) }
+//
+(* ****** ****** *)
+//
 fun
 d0exp_fprint
 (out:FILR, d0e:d0exp): void
@@ -533,8 +564,20 @@ f0unarrw_fprint
 (out: FILR, arrw: f0unarrw): void
 (* ****** ****** *)
 fun
+t0qua_fprint: (FILR, t0qua)->void
+fun
+t0inv_fprint: (FILR, t0inv)->void
+(* ****** ****** *)
+fun
+d0exp_THEN_fprint
+(out:FILR, dthn:d0exp_THEN): void
+fun
+d0exp_ELSE_fprint
+(out:FILR, dels:d0exp_ELSE): void
+(* ****** ****** *)
+fun
 d0exp_RPAREN_fprint
-(out:FILR, drp:d0exp_RPAREN): void
+(out:FILR, drp0:d0exp_RPAREN): void
 fun
 l0d0e_RBRACE_fprint
 (out:FILR, ldrb:l0d0e_RBRACE): void
@@ -957,18 +1000,12 @@ datatype d0res =
 |
 D0RESnone of ((*void*))
 |
-D0RESsome of (token(*T_EQ0*), d0exp)
-//
-datatype w0s0e =
-|
-W0S0Enone of ((*void*))
-|
-W0S0Esome of (token(*WITHTYPE*), s0exp)
+D0RESsome of (token(*T_EQ0*),d0exp)
 //
 (* ****** ****** *)
 //
-fun d0res_fprint: (FILR, d0res) -> void
-fun w0s0e_fprint: (FILR, w0s0e) -> void
+fun
+d0res_fprint: (FILR, d0res) -> void
 //
 (* ****** ****** *)
 //

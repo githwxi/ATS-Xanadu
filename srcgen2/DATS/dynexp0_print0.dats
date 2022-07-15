@@ -161,9 +161,18 @@ D0Eapps(d0es) =>
 print("D0Eapps(",d0es,")")
 //
 |
-D0Elpar(tbeg,d0es,tend) =>
+D0Elpar
+(tbeg,d0es,tend) =>
 print
 ("D0Elpar(",tbeg,";",d0es,";",tend,")")
+//
+|
+D0Eif0
+(tknd,d0e1,dthn,dels) =>
+(
+print
+( "D0Eif0("
+, tknd ,";",d0e1,";",dthn,";",dels,")"))
 //
 |
 D0Elam0
@@ -171,6 +180,15 @@ D0Elam0
 (
 print
 ("D0Elam0(",tknd,";",farg,";");
+print(sres,";",arrw,";",body,";",tend))
+//
+|
+D0Efix0
+(tknd,fid0,farg,sres,arrw,body,tend) =>
+(
+print
+("D0Elfix0(");
+print(tknd,";",fid0,";",farg,";");
 print(sres,";",arrw,";",body,";",tend))
 //
 |
