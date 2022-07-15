@@ -447,7 +447,7 @@ p1_s0uniseq: p1_fun( s0unilst )
 fun
 p1_d0tcnseq_BAR: p1_fun(d0tcnlst)
 fun
-p1_d0typseq_COMMA: p1_fun(d0typlst)
+p1_d0typseq_AND: p1_fun(d0typlst)
 //
 (* ****** ****** *)
 //
