@@ -960,40 +960,40 @@ d0exp_make_node
   , farg, sres, arrw, body, tend))
 end (*let*) // end of [ T_LAM(k0) ]
 //
-(*
-| T_FIX(k0) => let
+|
+T_FIX(k0) =>
+let
 //
-    val () = buf.skip1()
+  val tknd = tok
+  val (  ) = buf.skip1()
 //
-    val fid =
-      p_d0eid(buf, err)
-    val arg =
-      p_f0argseq(buf, err)
-    val res =
-      p_effs0expopt(buf, err)
-    val farrw =
-      p_f0unarrow(buf, err)
-    val fbody = p_d0exp(buf, err)
-    val tfini = popt_ENDLAM(buf, err)
+  val fid0 =
+    p1_d0pid(buf, err)
+  val farg =
+    p1_f0argseq(buf, err)
+  val sres =
+    p1_s0res(buf, err)
+  val arrw =
+    p1_f0unarrw(buf, err)
+  val body = p1_d0exp(buf, err)
+  val tend = pq_ENDLAM(buf, err)
 //
-  in
-    err := e0;
-    d0exp_make_node
-    ( loc_res
-    , D0Efix
-      ( tok // fix|fix@
-      , fid, arg, res, farrw, fbody, tfini)
-    ) where
-    {
-      val loc_res =
-      (
-        case+ tfini of 
-        | None() => tok.lctn()+fbody.lctn()
-        | Some(tok2) => tok.lctn()+tok2.lctn()
-      ) : loc_t // end of [val]
-    }
-  end 
-*)
+  val lres =
+  (
+  case+ tend of 
+  | optn_nil() =>
+    tknd.lctn()+body.lctn()
+  | optn_cons(tok2) =>
+    tknd.lctn()+tok2.lctn()): loc_t
+//
+in//let
+err := e00;
+d0exp_make_node
+( lres
+, D0Efix0
+  ( tknd // fix|fix@
+  , fid0, farg, sres, arrw, body, tend))
+end (*let*) // end of [ T_FIX(k0) ]
 //
 |
 _ (* rest-of-token *) =>
