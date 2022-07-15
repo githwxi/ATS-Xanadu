@@ -797,7 +797,11 @@ T0ENDINVsome of (token, t0inv)
 //
 (* ****** ****** *)
 #extern
+fun p1_t0qua: p1_fun(t0qua)
+#extern
 fun p1_t0inv: p1_fun(t0inv)
+#extern
+fun p1_t0quaseq: p1_fun(t0qualst)
 #extern
 fun p1_t0endinv: p1_fun(t0endinv)
 (* ****** ****** *)
@@ -1162,6 +1166,84 @@ end (*let*) // end of [T_CLNLT]
 _(*non-T_CLN/CLNLT*) => S0RESnone((*void*))
 //
 end (*let*) // end of [ p1_s0res(buf, err) ]
+//
+(* ****** ****** *)
+//
+#implfun
+p1_t0qua(buf, err) =
+let
+//
+val e00 = err
+//
+val tok = buf.getk0()
+//
+in
+case+
+tok.node() of
+|
+T_LBRACE() =>
+let
+val tbeg = tok
+val (  ) = buf.skip1()
+val s0qs =
+p1_s0quaseq_BSCLN(buf, err)
+val tend = p1_RBRACE(buf, err)
+in
+  err := e00
+; T0QUAsome( tbeg, s0qs, tend )
+end // end of [T_LBRACE]
+|
+_(* non-T_LBRACE *) =>
+let
+  val () =
+  err := e00 + 1 in T0QUAnone(tok)
+end (*let*) // end of [non-T_LBRACE]
+end (*let*) // end of [p1_t0qua(buf,err)]
+
+(* ****** ****** *)
+//
+#implfun
+p1_t0inv(buf, err) =
+let
+//
+val
+t0qs =
+p1_t0quaseq(buf, err)
+//
+val tok0 = buf.getk0()
+//
+in(* in-of-let *)
+//
+case+
+tok0.node() of
+|
+T_LPAREN() => let
+  val tbeg = tok0
+  val (  ) =
+  buf.skip1((*void*))
+  val d0ts = 
+  p1_d0typseq_COMMA(buf, err)
+  val tend = p1_RPAREN(buf, err)
+in
+let
+  val
+  tann = pq_s0exp_anno(buf, err)
+in
+  T0INVsome(t0qs, tbeg, d0ts, tend)
+end
+end (*let*) // end of [ T_LPAREN() ]
+|
+_(*non-LPAREN*) => T0INVnone(t0qs, tok0)
+//
+end (*let*) // end of [p1_t0inv(buf,err)]
+
+(* ****** ****** *)
+//
+#implfun
+p1_t0quaseq
+  (buf, err) =
+( list_vt2t
+  (ps_p1fun{t0qua}(buf, err, p1_t0qua)))
 //
 (* ****** ****** *)
 

@@ -466,8 +466,7 @@ s0res =
 and
 t0qua =
 |
-T0QUAnone of
-( token )
+T0QUAnone of token
 |
 T0QUAsome of
 (token, s0qualst, token)
@@ -475,7 +474,8 @@ T0QUAsome of
 and
 t0inv =
 |
-T0INVnone of (t0qua, token)
+T0INVnone of
+( t0qualst, token )
 |
 T0INVsome of
 (t0qualst,token,d0typlst,token)

@@ -103,6 +103,9 @@ D0E = "./dynexp0.sats"
 (* ****** ****** *)
 #typedef s0eff = $D0E.s0eff
 #typedef s0res = $D0E.s0res
+(* ****** ****** *)
+#typedef t0qua = $D0E.t0qua
+#typedef t0inv = $D0E.t0inv
 #typedef d0res = $D0E.d0res
 (* ****** ****** *)
 //
@@ -444,7 +447,7 @@ p1_s0uniseq: p1_fun( s0unilst )
 fun
 p1_d0tcnseq_BAR: p1_fun(d0tcnlst)
 fun
-p1_d0typseq_AND: p1_fun(d0typlst)
+p1_d0typseq_COMMA: p1_fun(d0typlst)
 //
 (* ****** ****** *)
 //
