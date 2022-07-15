@@ -244,6 +244,14 @@ print
 |
 D0Cdatasort(tknd,dtcs) =>
 print("D0Cdatasort(",tknd,";",dtcs,")")
+//
+|
+D0Cvaldclst(tknd,dcls) =>
+print("D0Cvaldclst(",tknd,";",dcls,")")
+|
+D0Cvardclst(tknd,dcls) =>
+print("D0Cvardclst(",tknd,";",dcls,")")
+//
 |
 D0Cdatatype(tknd,dtps,wdcs) =>
 print("D0Cdatatype(",tknd,";",dtps,";",wdcs,")")
@@ -456,6 +464,22 @@ print
 ("D0CSTDCL("
 ,dpid,";",darg,";",sres,";",dres,")")
 end (*let*) // end of [d0cstdcl_fprint]
+
+(* ****** ****** *)
+
+#implfun
+d0valdcl_fprint
+  (out, d0cl) = let
+//
+val dpat = d0cl.dpat()
+val tdxp = d0cl.tdxp()
+val wsxp = d0cl.wsxp()
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+print("D0VALDCL(",dpat,";",tdxp,",",wsxp,")")
+end(*let*)//end-of-[d0valdcl_fprin(out,d0cl)]
 
 (* ****** ****** *)
 //
