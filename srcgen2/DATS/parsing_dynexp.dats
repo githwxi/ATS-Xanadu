@@ -79,6 +79,9 @@ lctn with sort0_get_lctn//staexp0
 lctn with s0exp_get_lctn//staexp0
 (* ****** ****** *)
 #symload
+lctn with t0inv_get_lctn//dynexp0
+(* ****** ****** *)
+#symload
 lctn with d0pat_get_lctn//dynexp0
 #symload
 lctn with f0arg_get_lctn//dynexp0
@@ -784,6 +787,20 @@ fun
 l0d0e_RBRACE_lctn:(l0d0e_RBRACE)->loc_t
 //
 (* ****** ****** *)
+//
+datatype
+t0endinv =
+|
+T0ENDINVnone of ()
+|
+T0ENDINVsome of (token, t0inv)
+//
+(* ****** ****** *)
+#extern
+fun p1_t0inv: p1_fun(t0inv)
+#extern
+fun p1_t0endinv: p1_fun(t0endinv)
+(* ****** ****** *)
 
 local
 //
@@ -803,66 +820,62 @@ in//let
 //
 case+ tnd of
 //
-(*
 |
 T_IF0() => let
 //
-  val tknd = tok
-  val (  ) = buf.skip1()
+val tknd = tok
+val (  ) = buf.skip1()
 //
-  val d0e1 =
-    p1_d0exp_app(buf, err)
-  val d0e2 =
-    p1_d0exp_THEN(buf, err)
-  val d0e3 =
-    p1_d0exp_ELSE(buf, err)
+val d0e1 =
+  p1_d0exp_app(buf, err)
+val d0e2 =
+  p1_d0exp_THEN(buf, err)
+val d0e3 =
+  p1_d0exp_ELSE(buf, err)
 //
-(*
-  val topt =
-    popt_ENDIF(buf, err)
-*)
-  val topt =
-    pq_endst0inv(buf, err)
+val
+tend = p1_t0endinv(buf, err)
 //
-  val lres =
-  (
-    case+ topt of
-    | ENDST0INVnone() =>
-      (
-      case d0e3 of
-      | d0exp_ELSE_none
-          () =>
-        (
-        case+ d0e2 of
-        | d0exp_THEN
-          ( _, d0e ) =>
-          tok.lctn() + d0e.lctn()
-          // end of [d0exp_THEN]
-        )
-      | d0exp_ELSE_some
-          (_, d0e) =>
-          tok.lctn() + d0e.lctn()
-        // end of [d0exp_ELSEsome]
-      )
-    | ENDST0INVsome
-      ( tend, inv0 ) => tok.lctn() + inv0.lctn()
-    ) : loc_t // end of [val]
-//
-  in
-    err := e0;
+val lres =
+(
+case+ tend of
+|
+T0ENDINVnone() =>
+(
+  case d0e3 of
+  | d0exp_ELSE_none
+      (  tok  ) =>
     (
-    case+ topt of
-    | ENDST0INVnone _ =>
-      d0exp_make_node
-      ( loc_res
-      , D0Eif0(tok, d0e1, d0e2, d0e3))
-    | ENDST0INVsome(_, tinv) =>
-      d0exp_make_node
-      ( loc_res
-      , D0Eif1(tok, d0e1, d0e2, d0e3, tinv))
+    case+ d0e2 of
+    | d0exp_THEN_some
+        ( _, d0e2 ) =>
+      tknd.lctn() + d0e2.lctn()
     )
-  end // end of [T_IF]
-*)
+  | d0exp_ELSE_some
+      ( _, d0e3 ) =>
+      tknd.lctn() + d0e3.lctn()
+) (* end-of(T0ENDINVnone) *)
+|
+T0ENDINVsome
+( tend
+, tinv ) => tok.lctn() + tinv.lctn()
+) : loc_t // end of [val(lres)]
+//
+in//elt
+err := e00;
+(
+case+ tend of
+|
+T0ENDINVnone _ =>
+d0exp_make_node
+(lres, D0Eif0(tknd, d0e1, d0e2, d0e3))
+|
+T0ENDINVsome(_, tinv) =>
+d0exp_make_node
+( lres
+, D0Eif1(tknd, d0e1, d0e2, d0e3, tinv))
+)
+end (*let*) // end of [ T_IF0(...) ]
 //
 (*
 | T_CASE _ => let
@@ -1150,6 +1163,31 @@ _(*non-T_CLN/CLNLT*) => S0RESnone((*void*))
 //
 end (*let*) // end of [ p1_s0res(buf, err) ]
 //
+(* ****** ****** *)
+
+#implfun
+p1_t0endinv
+  (buf, err) = let
+//
+val tok0 = buf.getk0()
+//
+in//let
+//
+case+
+tok0.node() of
+|
+T_ENDST() =>
+let
+  val (  ) = buf.skip1()
+  val tinv = p1_t0inv(buf, err)
+in
+  T0ENDINVsome(tok0, tinv)
+end (*let*) // end of [T_ENDST]
+//
+| _(*non-T_ENDST*) => T0ENDINVnone()
+//
+end(*let*)//end-of-[p1_t0endinv(buf,err)]
+
 (* ****** ****** *)
 
 #implfun
