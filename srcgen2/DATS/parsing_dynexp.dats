@@ -1637,6 +1637,38 @@ end(*let*)//end-of-[ p1_d0exp_atm(buf,err) ]
 (* ****** ****** *)
 
 #implfun
+p1_d0exp_app
+  (buf, err) = let
+//
+val
+d0e0 =
+p1_d0exp_atm(buf, err)
+val
+d0es =
+p1_d0expseq_atm(buf, err)
+//
+in//let
+//
+case+ d0es of
+|
+list_nil() => d0e0
+|
+list_cons _ => let
+val
+d0e1 =
+list_last(d0es)
+val
+loc0 = (d0e0.lctn() + d0e1.lctn())
+in
+d0exp_make_node
+(loc0, D0Eapps(list_cons(d0e0, d0es)))
+end(*let*)//end-of-[list_cons]
+//
+end(*let*)//end-of-[p1_d0exp_app(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
 p1_d0exp_THEN
   (buf, err) = let
 //
