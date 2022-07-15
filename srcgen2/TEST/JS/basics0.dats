@@ -16,6 +16,7 @@ val id = fix f(x) => x
 (* ****** ****** *)
 
 val x4 = if b0 > 0 then 1 else 0
+val x4 = if b0 > 0 then 1 else 0 endst{n:int}()
 
 (* ****** ****** *)
 
