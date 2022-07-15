@@ -200,6 +200,35 @@ D0Eerrck(lvl(*err-level*),d0e) => print("D0Eerrck(",lvl,";",d0e,")")
 end (*let*) // end of [d0exp_fprint(out,d0e)]
 
 (* ****** ****** *)
+//
+#implfun
+t0qua_fprint
+(out, tqua) =
+(
+case+ tqua of
+|
+T0QUAnone(tok) =>
+print("T0QUAnone(",tok,")")
+|
+T0QUAsome(tkb,sqs,tke) =>
+print("T0QUAsome(",tkb,";",sqs,";",tke,")")
+) (*case*) // end of [t0qua_fprint(out,tqua)]
+#implfun
+t0inv_fprint
+(out, tinv) =
+(
+case+ tinv of
+|
+T0INVnone(tqua,terr) =>
+print("T0INVnone(",tqua,";",terr,")")
+|
+T0INVsome(tqas,tbeg,d0ts,tend) =>
+(
+print("T0INVsome(");
+print(tqas,";",tbeg,";",d0ts,";",tend,")"))
+) (*case*) // end of [t0inv_fprint(out,tinv)]
+//
+(* ****** ****** *)
 
 #implfun
 f0unarrw_fprint
@@ -221,6 +250,36 @@ F0UNARRWlist(tkb,ses,tke) =>
 print("F0UNARRWlist(",tkb,";",ses,";",tke,")")
 //
 end (*let*)//end-of-[f0unarrw_fprint(out,arrw)]
+
+(* ****** ****** *)
+
+#implfun
+d0exp_THEN_fprint
+  (out, gthn) =
+(
+case+ gthn of
+|
+d0exp_THEN_some(tok,d0e) =>
+print("d0exp_THEN(",tok,";",d0e,")")
+) where
+{
+#impltmp g_print$out<>() = out
+} (*where*) // end of [d0exp_THEN_fprint]
+#implfun
+d0exp_ELSE_fprint
+  (out, gels) =
+(
+case+ gels of
+|
+d0exp_ELSE_none(tok) =>
+print("d0exp_ELSE_none(",tok,")")
+|
+d0exp_ELSE_some(tok, d0e) =>
+print("d0exp_ELSE_some(",tok,";",d0e,")")
+) where
+{
+#impltmp g_print$out<>() = out
+} (*where*) // end of [d0exp_ELSE_fprint]
 
 (* ****** ****** *)
 
