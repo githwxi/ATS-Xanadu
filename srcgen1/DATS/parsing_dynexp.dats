@@ -1614,6 +1614,7 @@ _(*non-LPAREN*) => ST0INVnone(stqs, tok0)
 //
 end (*let*) // end of [p_st0inv]
 (* ****** ****** *)
+//
 implement
 popt_endst0inv
   (buf, err) =
@@ -1637,6 +1638,7 @@ tok0.node() of
 | _(*non-ENDST*) => ENDST0INVnone()
 //
 end (*let*) // end of [popt_endst0inv]
+//
 (* ****** ****** *)
 (*
 //

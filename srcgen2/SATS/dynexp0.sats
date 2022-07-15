@@ -599,6 +599,9 @@ d0exp_get_node: d0exp->d0exp_node
 (* ****** ****** *)
 //
 fun
+t0inv_get_lctn:t0inv->loc_t
+//
+fun
 d0exp_THEN_lctn
   (dthn: d0exp_THEN): loc_t
 fun
@@ -612,6 +615,8 @@ l0d0e_RBRACE_lctn
   (ldrb: l0d0e_RBRACE): loc_t
 //
 (* ****** ****** *)
+//
+#symload lctn with t0inv_get_lctn
 //
 #symload lctn with d0exp_THEN_lctn
 #symload lctn with d0exp_ELSE_lctn
