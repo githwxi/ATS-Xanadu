@@ -54,7 +54,11 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #symload lctn with s0exp_get_lctn
+//
+(* ****** ****** *)
+//
 #symload lctn with d0pat_get_lctn
+#symload lctn with f0arg_get_lctn
 #symload lctn with d0exp_get_lctn
 //
 (* ****** ****** *)
@@ -112,6 +116,42 @@ let
 end
 //
 endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+f0arg =
+F0ARG of
+(
+loctn, f0arg_node)
+#absimpl
+f0arg_tbox = f0arg
+//
+in (* in-of-local *)
+//
+#implfun
+f0arg_make_node
+( loc,nod ) = F0ARG(loc, nod)
+//
+#implfun
+f0arg_get_lctn
+  ( f0a0 ) =
+let
+val+
+F0ARG(loc0, node) = f0a0 in loc0
+end (*let*)//end-of-[f0arg_get_lctn]
+//
+#implfun
+f0arg_get_node
+  ( f0a0 ) =
+let
+val+
+F0ARG(loc0, node) = f0a0 in node
+end (*let*)//end-of-[f0arg_get_node]
+//
+endloc (*local*) // end-of-local(f0arg)
 
 (* ****** ****** *)
 

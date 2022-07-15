@@ -317,12 +317,24 @@ d0lab_fprint(g_print$out<>(), lab)
 g_print<d0pat>(d0p) =
 d0pat_fprint(g_print$out<>(), d0p)
 #impltmp
+g_print<f0arg>(f0a) =
+f0arg_fprint(g_print$out<>(), f0a)
+(* ****** ****** *)
+//
+#impltmp
 g_print<d0pat_RPAREN>(drp) =
 d0pat_RPAREN_fprint(g_print$out<>(), drp)
 #impltmp
 g_print<l0d0p_RBRACE>(ldrb) =
 l0d0p_RBRACE_fprint(g_print$out<>(), ldrb)
 //
+(* ****** ****** *)
+#impltmp
+g_print<s0eff>(seff) =
+s0eff_fprint(g_print$out<>(), seff)
+#impltmp
+g_print<s0res>(sres) =
+s0res_fprint(g_print$out<>(), sres)
 (* ****** ****** *)
 //
 #impltmp
@@ -331,6 +343,12 @@ d0exp_fprint(g_print$out<>(), d0e)
 #impltmp
 g_print<d0ecl>(dcl) =
 d0ecl_fprint(g_print$out<>(), dcl)
+//
+(* ****** ****** *)
+#impltmp
+g_print<f0unarrw>(sres) =
+f0unarrw_fprint(g_print$out<>(), sres)
+(* ****** ****** *)
 //
 #impltmp
 g_print<d0exp_RPAREN>(drp) =
@@ -374,13 +392,6 @@ precmod_fprint(g_print$out<>(), pmd)
 g_print<precint>(int) =
 precint_fprint(g_print$out<>(), int)
 //
-(* ****** ****** *)
-#impltmp
-g_print<s0eff>(seff) =
-s0eff_fprint(g_print$out<>(), seff)
-#impltmp
-g_print<s0res>(sres) =
-s0res_fprint(g_print$out<>(), sres)
 (* ****** ****** *)
 #impltmp
 g_print<d0res>(dres) =

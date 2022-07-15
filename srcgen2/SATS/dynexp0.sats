@@ -402,6 +402,18 @@ D0Edtsel of
 (*DOT/MGT*), l0abl, d0expopt(*arg*))
 //
 |
+D0Elam0 of
+( token(*lam/lam@*)
+, f0arglst(*arglst*)
+, s0res, f0unarrw, d0exp, tokenopt )
+|
+D0Efix0 of
+( token(*fix/fix@*)
+, d0pid(*fixed-pnt*)
+, f0arglst(*arglst*)
+, s0res, f0unarrw, d0exp, tokenopt )
+//
+|
 D0Etry0 of
 ( token
 , d0exp, token(*WITH*)
@@ -432,6 +444,28 @@ D0Eerrck of (int(*lvl*), d0exp)//HX:pread-error
 //
 // HX-2022-06-20: end-of-[datatype(d0exp_node)]
 //
+(* ****** ****** *)
+//
+and
+s0eff =
+| S0EFFnone of (token)
+| S0EFFsome of // :<...>
+  (token, s0explst, token)
+and
+s0res =
+| S0RESnone of ((*void*))
+| S0RESsome of (s0eff, s0exp)
+//
+(* ****** ****** *)
+and
+f0unarrw =
+|
+F0UNARRWnone of token(*err*)
+|
+F0UNARRWdflt of (token(*=>*))
+|
+F0UNARRWlist of
+(token(*=<*),s0explst,token(*>*))
 (* ****** ****** *)
 //
 and
@@ -486,6 +520,18 @@ fun
 d0cls_fprint
 (out:FILR, dcl:d0cls): void
 //
+(* ****** ****** *)
+//
+fun
+s0eff_fprint:(FILR,s0eff)->void
+fun
+s0res_fprint:(FILR,s0res)->void
+//
+(* ****** ****** *)
+fun
+f0unarrw_fprint
+(out: FILR, arrw: f0unarrw): void
+(* ****** ****** *)
 fun
 d0exp_RPAREN_fprint
 (out:FILR, drp:d0exp_RPAREN): void
@@ -904,23 +950,6 @@ d0arg_make_node
 //
 #symload a0typ with a0typ_make_node
 #symload d0arg with d0arg_make_node
-//
-(* ****** ****** *)
-//
-datatype
-s0eff =
-| S0EFFnone of (token)
-| S0EFFsome of // :<...>
-  (token, s0explst, token)
-datatype
-s0res =
-| S0RESnone of ((*void*))
-| S0RESsome of (s0eff, s0exp)
-//
-(* ****** ****** *)
-//
-fun s0eff_fprint: (FILR, s0eff) -> void
-fun s0res_fprint: (FILR, s0res) -> void
 //
 (* ****** ****** *)
 //

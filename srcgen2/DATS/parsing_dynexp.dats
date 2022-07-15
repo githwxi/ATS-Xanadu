@@ -438,10 +438,13 @@ p1_l0d0pseq_COMMA
 //
 #extern
 fun
-p1_f0argseq0: p1_fun(f0arglst)
+p1_f0argseq: p1_fun(f0arglst)
 #extern
 fun
-p1_f0argseq1: p1_fun(f0arglst)
+p1_f0argsq1: p1_fun(f0arglst)
+#extern
+fun
+p1_f0unarrw: p1_fun(f0unarrw)
 //
 (* ****** ****** *)
 
@@ -499,11 +502,10 @@ end (*let*) // end of [ p1_f0arg(buf,err) ]
 
 (* ****** ****** *)
 #impltmp
-p1_f0argseq0
+p1_f0argseq
   (buf, err) =
 (
-list_vt2t(ps_p1fun{f0arg}(buf, err, p1_f0arg))
-) (* end of [p1_f0argseq0] *)
+list_vt2t(ps_p1fun{f0arg}(buf,err,p1_f0arg)))
 (* ****** ****** *)
 
 local
@@ -628,16 +630,58 @@ then true else t0_f0as(xs)
 in
 //
 #implfun
-p1_f0argseq1
+p1_f0argsq1
 ( buf, err ) =
 let
 val
-f0as = p1_f0argseq0(buf, err)
+f0as = p1_f0argseq(buf, err)
 in//let
 if t0_f0as(f0as) then f0_f0as(f0as) else f0as
-end (*let*) // end of [p_f0argseq1]
+end (*let*) // end of [p_f0argsq1]
 //
-endloc (*local*) // end of [local(p1_f0argseq1)]
+endloc (*local*) // end of [local(p1_f0argsq1)]
+
+(* ****** ****** *)
+//
+#implfun
+p1_f0unarrw(buf, err) =
+let
+//
+val e00 = err
+//
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+in//let
+//
+case+ tnd of
+//
+|
+T_EQGT() =>
+F0UNARRWdflt(tok) where
+{
+  val () = buf.skip1( )
+} (*where*) // end of [T_EQGT]
+//
+|
+T_EQLT() =>
+let
+  val tbeg = tok
+  val (  ) = buf.skip1()
+  val s0es =
+  list_vt2t
+  (
+  ps_COMMA_p1fun{s0exp}
+  (buf, err, p1_s0exp_app_NGT0))
+  val tend = p1_GT0(buf, err)
+in//let
+  err := e00;
+  F0UNARRWlist(tbeg, s0es, tend)
+end (*let*) // end of [ T_EQLT() ]
+//
+| _(*non-arrow*) => F0UNARRWnone(tok)
+//
+end (*let*) // end of [p_f0unarrw(buf,err)]
 
 (* ****** ****** *)
 //
@@ -882,40 +926,39 @@ T_IF0() => let
   end // end of [T_CASE]
 *)
 //
-(*
 |
-T_LAM(k0) => let
+T_LAM(k0) =>
+let
 //
-  val tknd = tok
-  val (  ) = buf.skip1()
+val tknd = tok
+val (  ) = buf.skip1()
 //
-  val farg =
-    p1_f0argseq(buf, err)
-  val sres =
-    p1_effs0expopt(buf, err)
-  val farrw =
-    p1_f0unarrow(buf, err)
-  val fbody = p_d0exp(buf, err)
-  val tfini = pq_ENDLAM(buf, err)
+val
+farg = p1_f0argseq(buf, err)
 //
-  in
-    err := e0;
-    d0exp_make_node
-    ( loc_res
-    , D0Elam
-      ( tok // lam|lam@
-      , arg, res, farrw, fbody, tfini)
-    ) where
-    {
-      val loc_res =
-      (
-        case+ tfini of 
-        | None() => tok.lctn()+fbody.lctn()
-        | Some(tok2) => tok.lctn()+tok2.lctn()
-      ) : loc_t // end of [val]
-    }
-  end 
-*)
+val sres = p1_s0res(buf, err)
+//
+val arrw = p1_f0unarrw(buf, err)
+//
+val body = p1_d0exp(buf, err)
+val tend = pq_ENDLAM(buf, err)
+//
+val lres =
+(
+case+ tend of 
+| optn_nil() =>
+  tknd.lctn()+body.lctn()
+| optn_cons(tok2) =>
+  tknd.lctn()+tok2.lctn()): loc_t
+//
+in//let
+err := e00;
+d0exp_make_node
+( lres
+, D0Elam0
+  ( tknd // lam|lam@
+  , farg, sres, arrw, body, tend))
+end (*let*) // end of [ T_LAM(k0) ]
 //
 (*
 | T_FIX(k0) => let
@@ -1053,6 +1096,59 @@ in
   err := e00; D0LAB(lab0, teq1, d0e2)
 end (*let*) // end of [p1_l0d0e(buf,err)]
 
+(* ****** ****** *)
+//
+#implfun
+p1_s0res(buf, err) =
+let
+//
+val e00 = err
+val tok = buf.getk0()
+//
+in//let
+//
+case+
+tok.node() of
+|
+T_CLN() =>
+(
+err := e00;
+S0RESsome(seff, s0e1)) where
+{
+val tcln = tok
+val (  ) = buf.skip1()
+val seff = S0EFFnone(tcln)
+val s0e1 = p1_s0exp_app_NEQ0(buf, err)
+} (*where*) // end of [T_CLN]
+|
+T_CLNLT(_) =>
+let
+//
+  val tbeg = tok
+  val () = buf.skip1()
+//
+  val s0fs =
+  list_vt2t
+  (
+  ps_COMMA_p1fun{s0exp}
+  (buf, err, p1_s0exp_app_NGT0)
+  ) : s0explst // end-val(s0fs)
+//
+  val tend =
+    p1_GT0(buf, err)
+  val s0e1 =
+    p1_s0exp_app_NEQ0(buf, err)
+//
+  val lres = tbeg.lctn()+tend.lctn()
+in
+err := e00;
+S0RESsome(S0EFFsome(tbeg,s0fs,tend), s0e1)
+end (*let*) // end of [T_CLNLT]
+|
+_(*non-T_CLN/CLNLT*) => S0RESnone((*void*))
+//
+end (*let*) // end of [ p1_s0res(buf, err) ]
+//
 (* ****** ****** *)
 
 #implfun

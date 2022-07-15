@@ -10,4 +10,8 @@ and x3 = $lam($10 + $20)
 
 (* ****** ****** *)
 
+val id = lam(x) => x
+
+(* ****** ****** *)
+
 (* end of [ATS3/XANADU_prelude_basics0.dats] *)
