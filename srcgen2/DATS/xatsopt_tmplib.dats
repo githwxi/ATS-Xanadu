@@ -435,4 +435,4 @@ print("WTHS0EXPsome(", tok, ";", s0e, ")")
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xatsopt_libtmp.dats] *)
+(* end of [ATS3/XATSOPT_xatsopt_tmplib.dats] *)
