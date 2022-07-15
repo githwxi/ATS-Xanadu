@@ -264,7 +264,6 @@ s0qua_fprint(g_print$out<>(), s0q)
 #impltmp
 g_print<s0exp>(s0e) =
 s0exp_fprint(g_print$out<>(), s0e)
-//
 #impltmp
 g_print<s0exp_RPAREN>(srp) =
 s0exp_RPAREN_fprint(g_print$out<>(), srp)
@@ -285,15 +284,60 @@ g_print<d0typ>(dtp) =
 d0typ_fprint(g_print$out<>(), dtp)
 (* ****** ****** *)
 //
+(*
+fun
+<x0:type>
+d0lab_fprint
+(out: FILR, lab: d0lab(x0)): void
+*)
+//
+#impltmp
+<x0>
+d0lab_fprint
+  (out, lab) = let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+case+ lab of
+|
+D0LAB(l01, t02, x03) =>
+print("D0LAB(",l01,";",x03,")")
+end(*let*)//end-of-[d0lab_fprint]
+//
+#impltmp
+{x0:t0}
+g_print<d0lab(x0)>(lab) =
+d0lab_fprint(g_print$out<>(), lab)
+//
+(* ****** ****** *)
+//
 #impltmp
 g_print<d0pat>(d0p) =
 d0pat_fprint(g_print$out<>(), d0p)
+#impltmp
+g_print<d0pat_RPAREN>(drp) =
+d0pat_RPAREN_fprint(g_print$out<>(), drp)
+#impltmp
+g_print<l0d0p_RBRACE>(ldrb) =
+l0d0p_RBRACE_fprint(g_print$out<>(), ldrb)
+//
+(* ****** ****** *)
+//
 #impltmp
 g_print<d0exp>(d0e) =
 d0exp_fprint(g_print$out<>(), d0e)
 #impltmp
 g_print<d0ecl>(dcl) =
 d0ecl_fprint(g_print$out<>(), dcl)
+//
+#impltmp
+g_print<d0exp_RPAREN>(drp) =
+d0exp_RPAREN_fprint(g_print$out<>(), drp)
+#impltmp
+g_print<l0d0e_RBRACE>(ldrb) =
+l0d0e_RBRACE_fprint(g_print$out<>(), ldrb)
 //
 (* ****** ****** *)
 #impltmp

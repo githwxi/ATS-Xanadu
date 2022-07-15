@@ -865,7 +865,7 @@ s0exp_RPAREN_fprint
 (out:FILR, srp:s0exp_RPAREN): void
 fun
 l0s0e_RBRACE_fprint
-(out:FILR, lrb:l0s0e_RBRACE): void
+(out:FILR, lsrb:l0s0e_RBRACE): void
 //
 (* ****** ****** *)
 //

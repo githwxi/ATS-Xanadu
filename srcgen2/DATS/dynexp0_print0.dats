@@ -124,15 +124,57 @@ print("D0Estr(",str,")")
 //
 |
 D0Eapps(d0es) =>
-print("D0Eapps(", d0es, ")")
+print("D0Eapps(",d0es,")")
 //
 |
-D0Etkerr(tok) => print("D0Etkerr(",tok,")")
+D0Elpar(tbeg,d0es,tend) =>
+print("D0Elpar(",tbeg,";",d0es,";",tend,")")
+//
+|
+D0Etkerr(tok) => print("D0Etkerr(", tok, ")")
 //
 |
 D0Eerrck(lvl(*err-level*),d0e) => print("D0Eerrck(",lvl,";",d0e,")")
 //
 end (*let*) // end of [d0exp_fprint(out,d0e)]
+
+(* ****** ****** *)
+
+#implfun
+d0exp_RPAREN_fprint
+  (out, drp) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ drp of
+|
+d0exp_RPAREN_cons0(tbar) =>
+print("d0exp_RPAREN_cons0(",tbar,")")
+|
+d0exp_RPAREN_cons1(tok1, d0es, tok2) =>
+print("d0exp_RPAREN_cons1(",tok1,";",d0es,";",tok2,")")
+end (*let*) // end of [d0exp_RPAREN_fprint]
+
+(* ****** ****** *)
+
+#implfun
+l0d0e_RBRACE_fprint
+  (out, ldrb) =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+case+ ldrb of
+|
+l0d0e_RBRACE_cons0(tbar) =>
+print("l0d0e_RBRACE_cons0(",tbar,")")
+|
+l0d0e_RBRACE_cons1(tok1, lses, tok2) =>
+print("l0d0e_RBRACE_cons1(",tok1,";",lses,";",tok2,")")
+end (*let*) // end of [l0d0e_RBRACE_fprint]
 
 (* ****** ****** *)
 

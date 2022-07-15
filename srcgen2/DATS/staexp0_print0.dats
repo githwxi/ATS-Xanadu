@@ -679,7 +679,7 @@ print("l0s0e_RBRACE_cons0(",tbar,")")
 |
 l0s0e_RBRACE_cons1(tok1, lses, tok2) =>
 print("l0s0e_RBRACE_cons1(",tok1,";",lses,";",tok2,")")
-end (*let*) // end of [s0exp_RBRACE_fprint]
+end (*let*) // end of [l0s0e_RBRACE_fprint]
 
 (* ****** ****** *)
 
