@@ -1217,59 +1217,6 @@ list_vt2t(ps_p1fun{d0arg}(buf,err,p1_d0arg))
 )
 //
 (* ****** ****** *)
-//
-#implfun
-p1_s0res(buf, err) =
-let
-//
-val e00 = err
-val tok = buf.getk0()
-//
-in//let
-//
-case+
-tok.node() of
-|
-T_CLN() =>
-(
-err := e00;
-S0RESsome(seff, s0e1)) where
-{
-val tcln = tok
-val (  ) = buf.skip1()
-val seff = S0EFFnone(tcln)
-val s0e1 = p1_s0exp_app_NEQ0(buf, err)
-} (*where*) // end of [T_CLN]
-|
-T_CLNLT(_) =>
-let
-//
-  val tbeg = tok
-  val () = buf.skip1()
-//
-  val s0fs =
-  list_vt2t
-  (
-  ps_COMMA_p1fun{s0exp}
-  (buf, err, p1_s0exp_app_NGT0)
-  ) : s0explst // end-val(s0fs)
-//
-  val tend =
-    p1_GT0(buf, err)
-  val s0e1 =
-    p1_s0exp_app_NEQ0(buf, err)
-//
-  val lres = tbeg.lctn()+tend.lctn()
-in
-err := e00;
-S0RESsome(S0EFFsome(tbeg,s0fs,tend), s0e1)
-end (*let*) // end of [T_CLNLT]
-|
-_(*non-T_CLN/CLNLT*) => S0RESnone((*void*))
-//
-end (*let*) // end of [ p1_s0res(buf, err) ]
-//
-(* ****** ****** *)
 
 #implfun
 p1_d0res(buf, err) =

@@ -88,9 +88,43 @@ D0Papps(d0ps) =>
 print("D0Papps(", d0ps, ")")
 //
 |
+D0Plpar(tbeg,t0ps,tend) =>
+print
+("D0Plpar(",tbeg,";",t0ps,";",tend,")")
+//
+|
 D0Ptkerr(tok) => print("D0Ptkerr(",tok,")")
 //
 end (*let*) // end of [d0pat_fprint(out,d0p)]
+
+(* ****** ****** *)
+
+#implfun
+f0arg_fprint
+(out, f0a) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+f0a.node() of
+|
+F0ARGnone(tok) =>
+print("F0ARGnone(",tok,")")
+|
+F0ARGdyn0(d0p) =>
+print("F0ARGdyn0(",d0p,")")
+|
+F0ARGsta0(tkb,sqs,tke) =>
+print
+("F0ARGsta0(",tkb,";",sqs,";",tke,")")
+|
+F0ARGmet0(tkb,ses,tke) =>
+print
+("F0ARGmet0(",tkb,";",ses,";",tke,")")
+//
+end (*let*) // end of [f0arg_fprint(out,f0a)]
 
 (* ****** ****** *)
 
@@ -128,7 +162,16 @@ print("D0Eapps(",d0es,")")
 //
 |
 D0Elpar(tbeg,d0es,tend) =>
-print("D0Elpar(",tbeg,";",d0es,";",tend,")")
+print
+("D0Elpar(",tbeg,";",d0es,";",tend,")")
+//
+|
+D0Elam0
+(tknd,farg,sres,arrw,body,tend) =>
+(
+print
+("D0Elam0(",tknd,";",farg,";");
+print(sres,";",arrw,";",body,";",tend))
 //
 |
 D0Etkerr(tok) => print("D0Etkerr(", tok, ")")
@@ -137,6 +180,67 @@ D0Etkerr(tok) => print("D0Etkerr(", tok, ")")
 D0Eerrck(lvl(*err-level*),d0e) => print("D0Eerrck(",lvl,";",d0e,")")
 //
 end (*let*) // end of [d0exp_fprint(out,d0e)]
+
+(* ****** ****** *)
+
+#implfun
+f0unarrw_fprint
+  (out, arrw) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ arrw of
+|
+F0UNARRWnone(tok) =>
+print("F0UNARRWnone(",tok,")")
+|
+F0UNARRWdflt(tok) =>
+print("F0UNARRWdflt(",tok,")")
+|
+F0UNARRWlist(tkb,ses,tke) =>
+print("F0UNARRWlist(",tkb,";",ses,";",tke,")")
+//
+end (*let*)//end-of-[f0unarrw_fprint(out,arrw)]
+
+(* ****** ****** *)
+
+#implfun
+d0pat_RPAREN_fprint
+  (out, drp) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ drp of
+|
+d0pat_RPAREN_cons0(tbar) =>
+print("d0pat_RPAREN_cons0(",tbar,")")
+|
+d0pat_RPAREN_cons1(tok1, d0ps, tok2) =>
+print("d0pat_RPAREN_cons1(",tok1,";",d0ps,";",tok2,")")
+end (*let*) // end of [d0pat_RPAREN_fprint]
+
+(* ****** ****** *)
+
+#implfun
+l0d0p_RBRACE_fprint
+  (out, ldrb) =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+case+ ldrb of
+|
+l0d0p_RBRACE_cons0(tbar) =>
+print("l0d0p_RBRACE_cons0(",tbar,")")
+|
+l0d0p_RBRACE_cons1(tok1, lses, tok2) =>
+print("l0d0p_RBRACE_cons1(",tok1,";",lses,";",tok2,")")
+end (*let*) // end of [l0d0p_RBRACE_fprint]
 
 (* ****** ****** *)
 
