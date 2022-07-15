@@ -282,6 +282,12 @@ l0d0p_RBRACE_cons1 of (token, l0d0plst, token)
 (* ****** ****** *)
 fun
 d0pat_fprint(FILR, d0pat): void
+fun
+d0pat_RPAREN_fprint
+(out:FILR, drp:d0pat_RPAREN): void
+fun
+l0d0p_RBRACE_fprint
+(out:FILR, ldrb:l0d0p_RBRACE): void
 (* ****** ****** *)
 //
 fun
@@ -454,6 +460,13 @@ d0exp_fprint
 fun
 d0cls_fprint
 (out:FILR, dcl:d0cls): void
+//
+fun
+d0exp_RPAREN_fprint
+(out:FILR, drp:d0exp_RPAREN): void
+fun
+l0d0e_RBRACE_fprint
+(out:FILR, ldrb:l0d0e_RBRACE): void
 //
 (* ****** ****** *)
 //

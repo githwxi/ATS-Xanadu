@@ -1604,6 +1604,50 @@ _(*non-T_RPAREN*) =>
 end(*let*)//end-[p1_l0d0e_RBRACE(buf,err)]
 
 (* ****** ****** *)
+#implfun
+d0pat_RPAREN_lctn
+  (node) =
+(
+case+ node of
+| d0pat_RPAREN_cons0
+  (      tbar      ) => tbar.lctn()
+| d0pat_RPAREN_cons1
+  (tok1, d0ps, tok2) => tok1.lctn() + tok2.lctn()
+) (*case*) // end of [d0pat_RPAREN_lctn(node)] 
+(* ****** ****** *)
+#implfun
+l0d0p_RBRACE_lctn
+  (node) =
+(
+case+ node of
+| l0d0p_RBRACE_cons0
+  (      tbar      ) => tbar.lctn()
+| l0d0p_RBRACE_cons1
+  (tok1, lses, tok2) => tok1.lctn() + tok2.lctn()
+) (*case*) // end of [l0d0p_RBRACE_lctn(node)]
+(* ****** ****** *)
+#implfun
+d0exp_RPAREN_lctn
+  (node) =
+(
+case+ node of
+| d0exp_RPAREN_cons0
+  (      tbar      ) => tbar.lctn()
+| d0exp_RPAREN_cons1
+  (tok1, d0es, tok2) => tok1.lctn() + tok2.lctn()
+) (*case*) // end of [d0exp_RPAREN_lctn(node)] 
+(* ****** ****** *)
+#implfun
+l0d0e_RBRACE_lctn
+  (node) =
+(
+case+ node of
+| l0d0e_RBRACE_cons0
+  (      tbar      ) => tbar.lctn()
+| l0d0e_RBRACE_cons1
+  (tok1, lses, tok2) => tok1.lctn() + tok2.lctn()
+) (*case*) // end of [l0d0e_RBRACE_lctn(node)]
+(* ****** ****** *)
 
 #implfun
 pq_s0exp_anno
@@ -1633,7 +1677,7 @@ end (*let*) // end of [T_CLN]
 |
 _(*non-T_CLN*) => optn_nil(*void*)
 //
-end (*let*)//end-of(pq_s0exp_anno)
+end (*let*)//end-of(pq_s0exp_anno(buf,err))
 
 (* ****** ****** *)
 
