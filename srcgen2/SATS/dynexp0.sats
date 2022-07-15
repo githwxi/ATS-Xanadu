@@ -965,6 +965,16 @@ WTHS0EXPsome of (token(*WTP*), s0exp)
 //
 (* ****** ****** *)
 fun
+d0valdcl_fprint
+(out: FILR, d0cl: d0valdcl): void
+fun
+d0vardcl_fprint
+(out: FILR, d0cl: d0vardcl): void
+fun
+d0fundcl_fprint
+(out: FILR, d0cl: d0fundcl): void
+(* ****** ****** *)
+fun
 d0valdcl_get_lctn:(d0valdcl)->loc_t
 fun
 d0vardcl_get_lctn:(d0vardcl)->loc_t
@@ -982,6 +992,10 @@ d0valdcl_get_tdxp:(d0valdcl)->teqd0exp
 fun
 d0valdcl_get_wsxp:(d0valdcl)->wths0exp
 (* ****** ****** *)
+#symload dpat with d0valdcl_get_dpat
+#symload tdxp with d0valdcl_get_tdxp
+#symload wsxp with d0valdcl_get_wsxp
+(* ****** ****** *)
 fun
 d0vardcl_get_dpid:(d0vardcl)->d0pid
 fun
@@ -990,6 +1004,11 @@ fun
 d0vardcl_get_sres:(d0vardcl)->s0expopt
 fun
 d0vardcl_get_dini:(d0vardcl)->teqd0exp
+(* ****** ****** *)
+#symload dpid with d0vardcl_get_dpid
+#symload vpid with d0vardcl_get_vpid
+#symload sres with d0vardcl_get_sres
+#symload dini with d0vardcl_get_dini
 (* ****** ****** *)
 fun
 d0fundcl_get_dpid:(d0fundcl)->d0pid
@@ -1001,6 +1020,12 @@ fun
 d0fundcl_get_tdxp:(d0fundcl)->teqd0exp
 fun
 d0fundcl_get_wsxp:(d0fundcl)->wths0exp
+(* ****** ****** *)
+#symload dpid with d0fundcl_get_dpid
+#symload farg with d0fundcl_get_farg
+#symload sres with d0fundcl_get_sres
+#symload tdxp with d0fundcl_get_tdxp
+#symload wsxp with d0fundcl_get_wsxp
 (* ****** ****** *)
 //
 fun

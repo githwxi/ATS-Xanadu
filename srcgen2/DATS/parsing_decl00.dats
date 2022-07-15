@@ -1535,6 +1535,30 @@ end (*let*)//end-of-[pk_fundclst(tok, buf, err)]
 (* ****** ****** *)
 
 #implfun
+p1_wths0exp(buf, err) =
+let
+//
+  val tok = buf.getk0()
+  val tnd = tok.tnode()
+//
+in//let
+//
+case+ tnd of
+|
+T_WITHTYPE _ =>
+WTHS0EXPsome(tok, s0e) where
+{
+  val ( ) = buf.skip1()
+  val s0e = p1_s0exp(buf, err)
+}
+|
+_(*non-WITH*) => WTHS0EXPnone(*void*)
+//
+end(*let*)//end-of-[p1_wths0exp(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
 p1_d0valdcl
   (buf, err) = let
 //
@@ -1587,7 +1611,8 @@ p1_d0exp(buf, err)
 val tdxp =
 TEQD0EXPsome(teq1, dexp)
 //
-val wsxp = p1_wths0exp(buf, err)
+val
+wsxp = p1_wths0exp(buf, err)
 //
 val loc0 = dpat.lctn((*nil*))
 val loc1 =
@@ -1614,24 +1639,24 @@ p1_d0valdclseq_AND
   (buf, err) =
 (
 list_vt2t
-(ps_COMMA_p1fun{d0valdcl}(buf,err,p1_d0valdcl))
-) (* end-of-[p1_d0valdclseq_AND( buf, err ) ] *)
+(ps_AND_p1fun{d0valdcl}(buf,err,p1_d0valdcl))
+) (* end-of-[p1_d0valdclseq_AND(buf, err) ] *)
 //
 #implfun
 p1_d0vardclseq_AND
   (buf, err) =
 (
 list_vt2t
-(ps_COMMA_p1fun{d0vardcl}(buf,err,p1_d0vardcl))
-) (* end-of-[p1_d0vardclseq_AND( buf, err ) ] *)
+(ps_AND_p1fun{d0vardcl}(buf,err,p1_d0vardcl))
+) (* end-of-[p1_d0vardclseq_AND(buf, err) ] *)
 //
 #implfun
 p1_d0fundclseq_AND
   (buf, err) =
 (
 list_vt2t
-(ps_COMMA_p1fun{d0fundcl}(buf,err,p1_d0fundcl))
-) (* end-of-[p1_d0fundclseq_AND( buf, err ) ] *)
+(ps_AND_p1fun{d0fundcl}(buf,err,p1_d0fundcl))
+) (* end-of-[p1_d0fundclseq_AND(buf, err) ] *)
 //
 (* ****** ****** *)
 

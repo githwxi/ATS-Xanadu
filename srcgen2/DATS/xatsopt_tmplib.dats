@@ -350,8 +350,45 @@ g_print<d0cstdcl>(dcst) =
 d0cstdcl_fprint(g_print$out<>(), dcst)
 (* ****** ****** *)
 #impltmp
+g_print<d0valdcl>(d0cl) =
+d0valdcl_fprint(g_print$out<>(), d0cl)
+#impltmp
+g_print<d0vardcl>(d0cl) =
+d0vardcl_fprint(g_print$out<>(), d0cl)
+#impltmp
+g_print<d0fundcl>(d0cl) =
+d0fundcl_fprint(g_print$out<>(), d0cl)
+(* ****** ****** *)
+#impltmp
 g_print<wd0eclseq>(wdcs) =
 wd0eclseq_fprint(g_print$out<>(), wdcs)
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<teqd0exp>(tdxp) =
+(
+case+ tdxp of
+|
+TEQD0EXPnone() =>
+print("TEQD0EXPnone(", ")")
+|
+TEQD0EXPsome(tok, d0e) =>
+print("TEQD0EXPsome(", tok, ";", d0e, ")")
+)
+#impltmp
+g_print
+<wths0exp>(wsxp) =
+(
+case+ wsxp of
+|
+WTHS0EXPnone() =>
+print("WTHS0EXPnone(", ")")
+|
+WTHS0EXPsome(tok, s0e) =>
+print("WTHS0EXPsome(", tok, ";", s0e, ")")
+)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xatsopt_libtmp.dats] *)
