@@ -201,7 +201,7 @@ val () = kwdins("in", T_IN0)
 val () = kwdins("and", T_AND)
 val () = kwdins("end", T_END)
 //
-val () = kwdins("if0", T_IF0)
+val () = kwdins("if", T_IF0)
 val () = kwdins("sif", T_SIF)
 val () = kwdins("then", T_THEN)
 val () = kwdins("else", T_ELSE)

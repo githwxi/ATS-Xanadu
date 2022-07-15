@@ -15,4 +15,8 @@ val id = fix f(x) => x
 
 (* ****** ****** *)
 
+val x4 = if b0 > 0 then 1 else 0
+
+(* ****** ****** *)
+
 (* end of [ATS3/XANADU_prelude_basics0.dats] *)
