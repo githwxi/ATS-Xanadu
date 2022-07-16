@@ -28,12 +28,12 @@ resulting in a language that may have more expressive types but fewer
 programming features. For instance, regardless how powerful
 Martin-Lof's type theory is, one simply cannot give in it an efficient
 tail-recursive implementation of the list-append function. But this
-can be readily done in ATS.
+can be readily done in ATS (with the support of linear types)
 
 ##################################################################
 
 For previously post messages:
 
-https://github.com/githwxi/ATS-Xanadu/tree/master/docgen/NOTES
+https://github.com/githwxi/ATS-Xanadu/tree/master/docgenx/NOTES
 
 ##################################################################
