@@ -660,9 +660,22 @@ d0gpt_get_lctn: d0gpt->loc_t
 fun
 d0exp_get_node: d0exp->d0exp_node
 (* ****** ****** *)
+fun
+d0cls_get_node: d0cls->d0cls_node
+fun
+d0gua_get_node: d0gua->d0gua_node
+fun
+d0gpt_get_node: d0gpt->d0gpt_node
+(* ****** ****** *)
+//
 #symload lctn with d0exp_get_lctn
 #symload lctn with d0cls_get_lctn
+//
 #symload node with d0exp_get_node
+#symload node with d0cls_get_node
+#symload node with d0gua_get_node
+#symload node with d0gpt_get_node
+//
 (* ****** ****** *)
 //
 fun

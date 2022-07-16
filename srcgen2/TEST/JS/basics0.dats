@@ -18,7 +18,13 @@ val id = fix f(x) => x
 val x4 =
 if b0 > 0 then 1 else 0
 val x4 =
-if b0 > 0 then 1 else 0 endst{n:int}(x:int, y:int)
+if b0 > 0
+then 1 else 0 endst{n:int}(x:int, y:int)
+
+(* ****** ****** *)
+
+val ln =
+(case+ xs of list_nil() => 0 | list_cons _ => 1)
 
 (* ****** ****** *)
 

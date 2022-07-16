@@ -214,6 +214,99 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
+d0gua =
+D0GUA of
+(
+loctn, d0gua_node)
+#absimpl
+d0gua_tbox = d0gua
+//
+in (* in-of-local *)
+//
+#implfun
+d0gua_make_node
+(   loc,nod   ) = D0GUA(loc,nod)
+//
+#implfun
+d0gua_get_lctn(d0g) =
+let
+  val+D0GUA(loc,nod) = d0g in loc
+end(*let*)//end-of[d0gua_get_lctn]
+#implfun
+d0gua_get_node(d0g) =
+let
+  val+D0GUA(loc,nod) = d0g in nod
+end(*let*)//end-of[d0gua_get_node]
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d0cls =
+D0CLS of
+(
+loctn, d0cls_node)
+#absimpl
+d0cls_tbox = d0cls
+//
+in (* in-of-local *)
+//
+#implfun
+d0cls_make_node
+(   loc,nod   ) = D0CLS(loc,nod)
+//
+#implfun
+d0cls_get_lctn(dcl) =
+let
+  val+D0CLS(loc,nod) = dcl in loc
+end(*let*)//end-of[d0cls_get_lctn]
+#implfun
+d0cls_get_node(dcl) =
+let
+  val+D0CLS(loc,nod) = dcl in nod
+end(*let*)//end-of[d0cls_get_node]
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d0gpt =
+D0GPT of
+(
+loctn, d0gpt_node)
+#absimpl
+d0gpt_tbox = d0gpt
+//
+in (* in-of-local *)
+//
+#implfun
+d0gpt_make_node
+(   loc,nod   ) = D0GPT(loc,nod)
+//
+#implfun
+d0gpt_get_lctn(d0g) =
+let
+  val+D0GPT(loc,nod) = d0g in loc
+end(*let*)//end-of[d0gpt_get_lctn]
+#implfun
+d0gpt_get_node(d0g) =
+let
+  val+D0GPT(loc,nod) = d0g in nod
+end(*let*)//end-of[d0gpt_get_node]
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 q0arg =
 Q0ARG of
 (
