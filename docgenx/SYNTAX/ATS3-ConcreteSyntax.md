@@ -5,8 +5,8 @@ The Concrete Syntax of Xanadu
 ___________________
 
 ATS/Xanadu refers to a programming language in the ATS family and its
-implementation. It is often referred to as ATS3 for its being the 3rd
-edition of ATS (while Xanadu is the name of the implementation).
+implementation. It is also often referred to as ATS3 for its being the
+3rd edition of ATS (while Xanadu is the name of the implementation).
 
 ATS3 is designed to be both a source language and a target language;
 it is a source for manual program construction (by programmers), and

@@ -4,7 +4,7 @@ The Concrete Syntax of ATS3
 *)
 (* ****** ****** *)
 
-(* Sints *)
+(* Ints *)
 
 val _ =
 01234567: sint
@@ -47,7 +47,7 @@ val _ = '\123'
 
 val _ = 0.01
 val _ = 1E-2
-val _ = 1000
+val _ = 1000.
 val _ = 1.0E3
 val _ = 3.1415926
 
@@ -61,11 +61,12 @@ val ld = 1.0l : ldouble
 
 val _ = "abcde"
 val _ = "\"abcde\""
+val _ = "\177\2ff\012\013"
 val _ =
-"Hello, world!\n": string
+"Hello, world!\012": string
 val _ = "\
 This is a string \
-spreaded over multiple lines"
+spreaded over multiple lines."
 
 (* ****** ****** *)
 

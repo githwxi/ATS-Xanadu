@@ -606,6 +606,15 @@ D0Cdynconst(tknd,tqas,dcls) =>
 print("D0Cdynconst(",tknd,";",tqas,";",dcls,")")
 //
 |
+D0Cimplmnt0
+(tknd,s0qs,t0qs,dqid
+,t0is,farg,sres,teq1,d0e2) =>
+(
+print("D0Cimplmnt0(",tknd,";");
+print(s0qs,";",t0qs,";",dqid,";");
+print(t0is,";",farg,";",sres,";",teq1,";",d0e2,")"))
+//
+|
 D0Cerrck(lvl(*err-level*),dcl) => print("D0Cerrck(",lvl,";",dcl,")")
 //
 end (*let*) // end of [d0ecl_fprint(out,dcl)]
