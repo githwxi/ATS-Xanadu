@@ -400,14 +400,12 @@ end (*let*) // end of [ T_LOCAL() ]
 |
 T_VAL _
 when f00 > 0 => pk_valdclst(tok, buf, err)
-(*
 |
 T_VAR _
 when f00 > 0 => pk_vardclst(tok, buf, err)
 |
 T_FUN _
 when f00 > 0 => pk_fundclst(tok, buf, err)
-*)
 //
 |
 T_ABSSORT() => let
@@ -1518,10 +1516,12 @@ p1_d0pat(buf, err)
 val
 topt = pq_EQ0(buf, err)
 //
+(*
 val () =
 prerrln("p1_d0valdcl: dpat = ", dpat)
 val () =
 prerrln("p1_d0valdcl: topt = ", topt)
+*)
 //
 in//let
 //
@@ -1577,7 +1577,92 @@ err := e00;
 d0valdcl_make_args(loc1, dpat, tdxp, wsxp)
 end (*let*) // end of [optn_cons(teq1)]
 //
-end (*let*) // end of [p1_d0valdecl(buf,err)]
+end (*let*) // end of [p1_d0valdcl(buf,err)]
+//
+(* ****** ****** *)
+
+#implfun
+p1_d0vardcl
+  (buf, err) = let
+//
+val e00 = err
+//
+val dpid =
+p1_d0pid(buf, err)
+//
+val sres =
+pq_s0exp_anno(buf, err)
+//
+val vpid =
+let
+val tok = buf.getk0()
+in//in-of-let
+//
+case+
+tok.node() of
+|
+T_WITH() =>
+let
+val () = buf.skip1()
+in//let
+optn_cons
+(p1_d0pid(buf, err))
+end // end of [T_WITH]
+|
+_(*non-T_WITH*) => optn_nil()
+//
+end : d0pidopt // end of [val]
+//
+val dini =
+let
+val tok = buf.getk0()
+in//in-of-let
+//
+case+
+tok.node() of
+|
+T_EQ0( ) =>
+let
+val () = buf.skip1()
+in//let
+TEQD0EXPsome
+(tok, p1_d0exp(buf, err))
+end // end of [T_EQ0]
+|
+_(*non-T_EQ0*) => TEQD0EXPnone()
+//
+end : teqd0exp // end of [val]
+//
+val loc0 =
+let
+val
+lpid = dpid.lctn()
+in//in-of-let
+(
+case+ dini of
+|
+TEQD0EXPnone() =>
+(
+case+ vpid of
+|
+optn_nil() =>
+(
+case+ sres of
+|
+optn_nil() => lpid
+|
+optn_cons(s0e1) => lpid+s0e1.lctn())
+|
+optn_cons(vpid) => lpid + vpid.lctn())
+|
+TEQD0EXPsome
+(teq1, d0e2) => lpid+d0e2.lctn()): loc_t
+end (*let*) // end of [val(loc0)]
+//
+in
+err := e00;
+d0vardcl_make_args(loc0,dpid,vpid,sres,dini)
+end (*let*) // end of [ p1_d0vardcl(buf,err) ]
 //
 (* ****** ****** *)
 //
