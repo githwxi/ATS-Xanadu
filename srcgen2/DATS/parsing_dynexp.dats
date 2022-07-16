@@ -886,68 +886,69 @@ d0exp_make_node
 )
 end (*let*) // end of [ T_IF0(...) ]
 //
-(*
-| T_CASE _ => let
+|
+T_CASE(k0) =>
+let
 //
-    val () = buf.skip1()
+val tknd = tok
+val (  ) = buf.skip1()
 //
-    val d0e1 =
-      p1_d0exp_app(buf, err)
+val d0e1 =
+  p1_d0exp_app(buf, err)
 //
-    val tok2 =
-      p1_OF(buf, err)
-    val tbar =
-      pq_BAR(buf, err)
-    val dcls =
-      p1_d0clauseq_BAR(buf, err)
+val tof0 =
+  p1_OF0(buf, err)
+val tbar =
+  pq_BAR(buf, err)
+val dcls =
+  p1_d0clsseq_BAR(buf, err)
 //
-(*
-    val topt =
-      popt_ENDCASE(buf, err)
-*)
-    val topt =
-      pq_endst0inv(buf, err)
+val topt =
+  p1_t0endinv(buf, err)
 //
-    val
-    loc_res = let
-      val loc = tok.lctn()
-    in
-      case+ topt of
-      | ENDST0INVnone
-        ( (*void*) ) =>
-        (
-        case+ dcls of
-        | list_nil() =>
-          (
-          case+ tbar of
-          | None() => loc + tok2.lctn()
-          | Some(tbar) => loc + tbar.lctn()
-          )
-        | list_cons(_, _) =>
-          let
-          val d0cl =
-          list_last(dcls) in loc + d0cl.lctn()
-          end // end of [list_cons]
-        )
-      | ENDST0INVsome
-        ( tend, inv0 ) => loc + inv0.lctn()
-    end : loc_t // end of [let] // end of [val]
+val lres =
+let
+  val lknd = tknd.lctn()
+in//let
+case+ topt of
+|
+T0ENDINVnone
+( (*void*) ) =>
+(
+  case+ dcls of
+  |
+  list_nil() =>
+  (
+  case+ tbar of
+  | optn_nil() => lknd + tof0.lctn()
+  | optn_cons(tbar) => lknd + tbar.lctn()
+  )
+  |
+  list_cons(_, _) =>
+  let
+    val dcl1 =
+    list_last(dcls) in lknd + dcl1.lctn()
+  end (*let*) // end of [list_cons]
+)
+| T0ENDINVsome(_, tinv) => lknd+tinv.lctn()
+end : loc_t // end of [let] // end of [val]
 //
-  in
-    err := e0;
-    (
-    case+ topt of
-    | ENDST0INVnone _ =>
-      d0exp_make_node
-      ( loc_res
-      , D0Ecas0(tok, d0e1, tok2, tbar, dcls))
-    | ENDST0INVsome(_, tinv) =>
-      d0exp_make_node
-      ( loc_res
-      , D0Ecas1(tok, d0e1, tok2, tbar, dcls, tinv))
-    )
-  end // end of [T_CASE]
-*)
+in//let
+err := e00;
+(
+case+ topt of
+|
+T0ENDINVnone _ =>
+d0exp_make_node
+( lres
+, D0Ecas0(tknd, d0e1, tof0, tbar, dcls))
+|
+T0ENDINVsome(_, tinv) =>
+d0exp_make_node
+( lres
+, D0Ecas1(tknd, d0e1, tof0, tbar, dcls, tinv))
+)
+end (*let*) // end of [ T_CASE(k0) ]
 //
 |
 T_LAM(k0) =>

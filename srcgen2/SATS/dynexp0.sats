@@ -393,6 +393,19 @@ D0Eif1 of
 , d0exp_THEN, d0exp_ELSE, t0inv)
 //
 |
+D0Ecas0 of
+( token
+, d0exp
+, token(*OF*)
+, tokenopt(*BAR*), d0clslst)
+|
+D0Ecas1 of
+( token
+, d0exp
+, token(*OF*)
+, tokenopt(*BAR*), d0clslst, t0inv)
+//
+|
 D0Etup1 of // HX: tuple
 ( token
 , tokenopt,d0explst,d0exp_RPAREN)
