@@ -177,8 +177,8 @@ find some examples of indentifiers as follows:
 - <code>some_variable</code>
 - <code>\_$some$variable\_</code>
 
-There may be restrictions to be imposed on the use of the char `$` in
-an identifier.
+There may be certain restrictions (yet to be specified) to be imposed
+on the use of the char `$` in an identifier.
 
 Fixity Delarations
 ------------------
@@ -187,21 +187,21 @@ ATS3 supports prefix, infix, and postfix operators.
 
 ### Infix-declarations
 
-An infix operator is binary and it may be non-associative,
-left-associative or right-associative. Such an operator is supposed to
-be placed between its two arguments. The keywords `#infix0`, `#infixl`,
-and `#infixr` are for initiating infix-declarations. Also, `#infix0` is
-the same as `#infix`. Please find some examples of infix-declarations as
-follows:
+An infix operator is binary (that is, it takes two arguments) and it
+may be non-associative, left-associative or right-associative. Such an
+operator is supposed to be placed between its two arguments. The
+keywords `#infix0`, `#infixl`, and `#infixr` are for initiating
+infix-declarations. Also, `#infix` can be used in place of
+`#infix0`. Please find some examples of infix-declarations as follows:
 
 - #infixl + -
-- #infixl * /
+- #infixr @ ->
 - #infix0 < > of 40
 - #infix0 = != of 30
 
 These declarations state that `+` and `-` are left-associative infix
-operators; `*` and `/` are right-associative infix operators; `<` and
-`>` are non-associative operations of precedence value 40; and `=` and
+operators; `@` and `->` are right-associative infix operators; `<` and
+`>` are non-associative operators of precedence value 40; and `=` and
 `!=` are non-associative operations of precedence value 30.
 
 ### Prefix-declarations
