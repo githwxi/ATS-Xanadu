@@ -360,15 +360,22 @@ t0inv_fprint(g_print$out<>(), tinv)
 g_print<f0unarrw>(arrw) =
 f0unarrw_fprint(g_print$out<>(), arrw)
 (* ****** ****** *)
+//
+#impltmp
+g_print<q0arg>(qarg) =
+q0arg_fprint(g_print$out<>(), qarg)
+//
 #impltmp
 g_print<s0qag>(sqag) =
 s0qag_fprint(g_print$out<>(), sqag)
 #impltmp
 g_print<t0qag>(tqag) =
 t0qag_fprint(g_print$out<>(), tqag)
+//
 #impltmp
 g_print<t0iag>(tiag) =
 t0iag_fprint(g_print$out<>(), tiag)
+//
 (* ****** ****** *)
 #impltmp
 g_print<a0typ>(a0tp) =

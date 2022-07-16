@@ -50,6 +50,10 @@ ATS_PACKNAME
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
 (* ****** ****** *)
+#symload node with q0arg_get_node
+#symload node with s0qag_get_node
+#symload node with t0qag_get_node
+(* ****** ****** *)
 #symload node with d0exp_get_node
 #symload node with d0pat_get_node
 #symload node with d0ecl_get_node
@@ -609,12 +613,61 @@ end (*let*) // end of [d0ecl_fprint(out,dcl)]
 (* ****** ****** *)
 //
 #implfun
+q0arg_fprint
+(out, qag) =
+let
+#impltmp
+g_print$out<>() = out
+in//in-of-let
+case+
+qag.node() of
+| Q0ARGsome(id0,opt) =>
+  print("Q0ARGsome(",id0,";",opt,")")
+end (*let*) // end of [q0arg_fprint(out,qag)]
+//
+#implfun
+s0qag_fprint
+(out, s0q) =
+let
+#impltmp
+g_print$out<>() = out
+in//in-of-let
+case+
+s0q.node() of
+|
+S0QAGnone(tok) =>
+print("S0QAGnone(",tok,")")
+|
+S0QAGsome(tkb,qas,tke) =>
+print("S0QAGsome(",tkb,";",qas,";",tke,")")
+end (*let*) // end of [s0qag_fprint(out,s0q)]
+//
+#implfun
+t0qag_fprint
+(out, t0q) =
+let
+#impltmp
+g_print$out<>() = out
+in//in-of-let
+case+
+t0q.node() of
+|
+T0QAGnone(tok) =>
+print("T0QAGnone(",tok,")")
+|
+T0QAGsome(tkb,qas,tke) =>
+print("T0QAGsome(",tkb,";",qas,";",tke,")")
+end (*let*) // end of [t0qag_fprint(out,t0q)]
+
+(* ****** ****** *)
+//
+#implfun
 a0typ_fprint
 (out, a0t) =
 let
 #impltmp
 g_print$out<>() = out
-in//let
+in//in-of-let
 //
 case+
 a0t.node() of
