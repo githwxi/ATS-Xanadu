@@ -334,6 +334,10 @@ pk_vardclst: pk_fun(d0ecl)
 fun
 pk_fundclst: pk_fun(d0ecl)
 (* ****** ****** *)
+#extern
+fun
+pk_implmnt0: pk_fun(d0ecl)
+(* ****** ****** *)
 
 #implfun
 fp_d0ecl
@@ -411,6 +415,10 @@ when f00 > 0 => pk_vardclst(tok, buf, err)
 |
 T_FUN _
 when f00 > 0 => pk_fundclst(tok, buf, err)
+//
+|
+T_IMPLMNT _
+when f00 > 0 => pk_implmnt0(tok, buf, err)
 //
 |
 T_ABSSORT() => let
