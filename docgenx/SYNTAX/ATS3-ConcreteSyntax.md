@@ -233,7 +233,7 @@ int-values to 64-bit size-values.
 A nonfix-declaration is introduced to remove the fixity status
 previously assigned to an identifier.  The keyword `#nonfix` is for
 initiating nonfix-declarations. For instance, the following
-declarations removes the fixity status of the identifiers following
+declarations remove the fixity status of the identifiers following
 the keyword `#nonfix`:
 
 - `#nonfix foo`
@@ -274,6 +274,10 @@ area
 (rad: double): double = PI * rad * rad in area(10.0)
 end
 ```
+
+If the keyword `in` is missing in a let-expression, then the
+let-expression is in a truncated form consisting of only declarations
+between the keywords `let` and `end`.
 
 ### Try-expressions
 
