@@ -1561,20 +1561,24 @@ TEQD0EXPsome(teq1, dexp)
 val
 wsxp = p1_wths0exp(buf, err)
 //
-val loc0 = dpat.lctn((*nil*))
-val loc1 =
-(
+val loc0 =
+let
+val
+loc0 = dpat.lctn((*nil*))
+in//let
+//
 case+ wsxp of
 |
 WTHS0EXPnone
 ((*nil*)) => loc0+dexp.lctn()
 |
 WTHS0EXPsome
-(_, sexp) => loc0+sexp.lctn()): loc_t
+(_, sexp) => loc0+sexp.lctn()
+end : loc_t // end of [val(loc0)]
 //
-in
+in//let
 err := e00;
-d0valdcl_make_args(loc1, dpat, tdxp, wsxp)
+d0valdcl_make_args(loc0, dpat, tdxp, wsxp)
 end (*let*) // end of [optn_cons(teq1)]
 //
 end (*let*) // end of [p1_d0valdcl(buf,err)]
@@ -1664,6 +1668,91 @@ err := e00;
 d0vardcl_make_args(loc0,dpid,vpid,sres,dini)
 end (*let*) // end of [ p1_d0vardcl(buf,err) ]
 //
+(* ****** ****** *)
+
+#implfun
+p1_d0fundcl
+  (buf, err) = let
+//
+val e00 = err
+//
+val dpid =
+p1_d0pid(buf, err)
+//
+val farg =
+p1_f0argsq1(buf, err)
+//
+val
+sres = p1_s0res(buf, err)
+//
+val teq1 = pq_EQ0(buf, err)
+//
+in//in-of-let
+//
+case+ teq1 of
+|
+optn_nil() =>
+let
+val tdxp = TEQD0EXPnone()
+val wsxp = WTHS0EXPnone()
+val loc0 =
+let
+val
+lpid = dpid.lctn((*void*))
+in//let
+case+ sres of
+|
+S0RESnone() =>
+(
+case+ farg of
+|
+list_nil() => lpid
+|
+list_cons _ =>
+(
+lpid+f0a1.lctn()) where
+{
+val f0a1 = list_last(farg) }
+)
+|
+S0RESsome
+(seff,s0e1) => lpid+s0e1.lctn()
+end : loc_t // end of [val(loc0)]
+in
+err := e00;
+d0fundcl_make_args
+(loc0, dpid, farg, sres, tdxp, wsxp)
+end
+|
+optn_cons(teq1) =>
+let
+val d0e2 =
+  p1_d0exp(buf,err)
+val tdxp =
+  TEQD0EXPsome(teq1, d0e2)
+val wsxp = p1_wths0exp(buf,err)
+//
+val loc0 =
+let
+val lpid = dpid.lctn((*void*))
+in//let
+case+ wsxp of
+|
+WTHS0EXPnone
+( (*void*) ) => lpid+d0e2.lctn()
+|
+WTHS0EXPsome
+(twth, s0e1) => lpid+s0e1.lctn()
+end : loc_t // end of [val(loc0)]
+//
+in
+err := e00;
+d0fundcl_make_args
+(loc0, dpid, farg, sres, tdxp, wsxp)
+end (*let*) // end of [optn_cons(teq1)]
+//
+endlet (*let*) // end-of-[p1_d0fundcl(buf, err)]
+
 (* ****** ****** *)
 //
 #implfun

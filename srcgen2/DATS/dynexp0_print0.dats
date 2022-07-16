@@ -54,6 +54,21 @@ ATS_PACKNAME
 #symload node with d0pat_get_node
 #symload node with d0ecl_get_node
 (* ****** ****** *)
+#symload dpat with d0valdcl_get_dpat
+#symload wsxp with d0valdcl_get_wsxp
+#symload tdxp with d0valdcl_get_tdxp
+(* ****** ****** *)
+#symload dpid with d0vardcl_get_dpid
+#symload vpid with d0vardcl_get_vpid
+#symload sres with d0vardcl_get_sres
+#symload dini with d0vardcl_get_dini
+(* ****** ****** *)
+#symload dpid with d0fundcl_get_dpid
+#symload farg with d0fundcl_get_farg
+#symload sres with d0fundcl_get_sres
+#symload tdxp with d0fundcl_get_tdxp
+#symload wsxp with d0fundcl_get_wsxp
+(* ****** ****** *)
 
 #implfun
 d0pat_fprint
@@ -569,6 +584,9 @@ print("D0Cvaldclst(",tknd,";",dcls,")")
 |
 D0Cvardclst(tknd,dcls) =>
 print("D0Cvardclst(",tknd,";",dcls,")")
+|
+D0Cfundclst(tknd,t0qs,dcls) =>
+print("D0Cvardclst(",tknd,";",t0qs,";",dcls,")")
 //
 |
 D0Cdatatype(tknd,dtps,wdcs) =>
@@ -797,7 +815,46 @@ val wsxp = d0cl.wsxp()
 //
 in//let
 print("D0VALDCL(",dpat,";",tdxp,",",wsxp,")")
-end(*let*)//end-of-[d0valdcl_fprin(out,d0cl)]
+end(*let*)//end-of-[d0valdcl_fprint(out,d0cl)]
+
+(* ****** ****** *)
+
+#implfun
+d0vardcl_fprint
+  (out, d0cl) = let
+//
+val dpid = d0cl.dpid()
+val vpid = d0cl.vpid()
+val sres = d0cl.sres()
+val dini = d0cl.dini()
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print("D0VARDCL(");
+print(dpid,";",vpid,";",sres,",",dini,")"))
+end(*let*)//end-of-[d0vardcl_fprint(out,d0cl)]
+
+(* ****** ****** *)
+
+#implfun
+d0fundcl_fprint
+  (out, d0cl) = let
+//
+val dpid = d0cl.dpid()
+val farg = d0cl.farg()
+val sres = d0cl.sres()
+val tdxp = d0cl.tdxp()
+val wsxp = d0cl.wsxp()
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print("D0FUNDCL(",dpid,";");
+print(farg,";",sres,";",tdxp,",",wsxp,")"))
+end(*let*)//end-of-[d0fundcl_fprint(out,d0cl)]
 
 (* ****** ****** *)
 //
