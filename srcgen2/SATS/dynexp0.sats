@@ -633,8 +633,15 @@ l0d0e_RBRACE_fprint
 //
 fun
 d0exp_get_lctn: d0exp->loc_t
+//
+(* ****** ****** *)
+//
 fun
 d0cls_get_lctn: d0cls->loc_t
+fun
+d0gua_get_lctn: d0gua->loc_t
+fun
+d0gpt_get_lctn: d0gpt->loc_t
 //
 (* ****** ****** *)
 fun
@@ -684,6 +691,21 @@ d0exp_make_node
 (loc:loc_t, nod:d0exp_node): d0exp
 //
 #symload d0exp with d0exp_make_node
+//
+(* ****** ****** *)
+fun
+d0cls_make_node
+(loc:loc_t, nod:d0cls_node): d0cls
+fun
+d0gua_make_node
+(loc:loc_t, nod:d0gua_node): d0gua
+fun
+d0gpt_make_node
+(loc:loc_t, nod:d0gpt_node): d0gpt
+//
+#symload d0cls with d0cls_make_node
+#symload d0gua with d0gua_make_node
+#symload d0gpt with d0gpt_make_node
 //
 (* ****** ****** *)
 //

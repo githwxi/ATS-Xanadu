@@ -84,11 +84,16 @@ lctn with t0inv_get_lctn//dynexp0
 #symload
 lctn with d0pat_get_lctn//dynexp0
 #symload
+lctn with d0exp_get_lctn//dynexp0
+(* ****** ****** *)
+#symload
 lctn with f0arg_get_lctn//dynexp0
 #symload
-lctn with d0exp_get_lctn//dynexp0
-#symload
 lctn with d0cls_get_lctn//dynexp0
+#symload
+lctn with d0gua_get_lctn//dynexp0
+#symload
+lctn with d0gpt_get_lctn//dynexp0
 (* ****** ****** *)
 #symload
 node with token_get_node//lexing0
@@ -2190,6 +2195,198 @@ _(*non-T_CLN*) => optn_nil(*void*)
 //
 end (*let*)//end-of(pq_s0exp_anno(buf,err))
 
+(* ****** ****** *)
+#extern
+fun
+p1_d0guaseq_AND: p1_fun(d0gualst)
+(* ****** ****** *)
+
+local
+
+fun
+p2_d0exp_app
+( buf:
+! tkbf0
+, err:
+& sint >> _): d0exp = let
+
+fun
+p2_d0exp_atm
+( buf:
+! tkbf0 >> _
+, err:
+& sint >> _): d0exp = let
+//
+  val e00 = err
+  val tok = buf.getk0()
+//
+in//let
+case+
+tok.node() of
+|
+T_EQGT() =>
+let
+val () = (err := e00 + 1)
+in//let
+d0exp(tok.lctn(), D0Etkerr(tok))
+end (*let*) // end of [ T_EQGT() ]
+|
+_(*non-T_EQGT*) => p1_d0exp_atm(buf, err)
+end (*let*) // end of [non-T_EQGT...]
+//
+val d0e0 = p2_d0exp_atm(buf, err)
+//
+val d0es = 
+list_vt2t
+(ps_p1fun{d0exp}(buf, err, p2_d0exp_atm))
+//
+in
+//
+case+ d0es of
+|
+list_nil() => d0e0
+|
+list_cons _ => let
+  val d0e1 = list_last(d0es)
+  val loc0 = d0e0.lctn()+d0e1.lctn()
+in
+d0exp(loc0, D0Eapps(list_cons(d0e0, d0es)))
+end (*let*) // end of [list_cons]
+//
+end (*let*) // end of [p2_d0exp_app(buf,err)]
+
+in(*in-of-local*)
+
+#implfun
+p1_d0gua(buf, err) =
+let
+//
+val
+d0e1 =
+p2_d0exp_app(buf,err)
+val tok1 = buf.getk0()
+//
+in//let
+//
+case+
+tok1.node() of
+|
+T_AS0() => let
+//
+val () = buf.skip1()
+val d0p2 = p1_d0pat(buf, err)
+val lres = (d0e1.lctn()+d0p2.lctn())
+//
+in//let
+  d0gua_make_node
+  (lres, D0GUAmat(d0e1, tok1, d0p2))
+end (*let*) // end of [ T_AS0() ]
+|
+_(* non-T_AS *) =>
+(
+d0gua_make_node(d0e1.lctn(), D0GUAexp(d0e1))
+)
+//
+end (*let*) // end of [ p1_d0gua(buf, err) ]
+
+endloc (*local*) // end-of-[local(p1_d0gua)]
+
+(* ****** ****** *)
+//
+#implfun
+p1_d0guaseq_AND
+  (buf, err) =
+( list_vt2t
+  (ps_AND_p1fun{d0gua}(buf, err, p1_d0gua)))
+//
+(* ****** ****** *)
+
+#implfun
+p1_d0gpt(buf, err) =
+let
+//
+val
+d0p1 =
+p1_d0pat(buf, err)
+//
+val tok1 = buf.getk0()
+//
+in//let
+//
+case+
+tok1.node() of
+|
+T_WHEN() =>
+let
+  val () = buf.skip1()
+  val d0gs =
+    p1_d0guaseq_AND(buf, err)
+  val lres =
+  (
+    case+ d0gs of
+    | list_nil() =>
+      (
+        d0p1.lctn() + tok1.lctn()
+      )
+    | list_cons _ =>
+      (
+        d0p1.lctn() + d0g1.lctn()
+      ) where
+      {
+        val d0g1 = list_last(d0gs)
+      }
+  ) : loc_t // end of [ val(lres) ]
+in
+  d0gpt_make_node
+  (lres, D0GPTgua(d0p1, tok1, d0gs))
+end (*let*) // end of [ T_WHEN() ]
+|
+_ (* non-WHEN *) =>
+d0gpt_make_node(d0p1.lctn(),D0GPTpat(d0p1))
+//
+end (*let*) // end of [ p1_d0gpt(buf, err) ]
+
+(* ****** ****** *)
+
+#implfun
+p1_d0cls(buf, err) =
+let
+//
+val
+dgp1 =
+p1_d0gpt(buf, err)
+//
+val tok1 = buf.getk0()
+//
+in//let
+//
+case+
+tok1.node() of
+|
+T_EQGT() =>
+let
+val (  ) = buf.skip1()
+val d0e2 = p1_d0exp(buf, err)
+val lres = (dgp1.lctn()+d0e2.lctn())
+in//let
+  d0cls_make_node
+  (lres, D0CLScls(dgp1, tok1, d0e2))
+end (*let*) // end of [ T_EQGT() ]
+|
+_(* non-T_EQGT *) =>
+d0cls_make_node(dgp1.lctn(),D0CLSgpt(dgp1))
+//
+end (*let*) // end of [ p1_d0cls(buf,err) ]
+
+(* ****** ****** *)
+//
+#implfun
+p1_d0clsseq_BAR
+  (buf, err) =
+(
+list_vt2t
+(ps_BAR_p1fun{d0cls}(buf, err, p1_d0cls)))
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_parsing_dynexp.dats] *)
