@@ -93,6 +93,10 @@ print
 ("D0Plpar(",tbeg,";",t0ps,";",tend,")")
 //
 |
+D0Panno(d0p1,s0e2) =>
+print("D0Panno(",d0p1,";",s0e2,")")
+//
+|
 D0Ptkerr(tok) => print("D0Ptkerr(",tok,")")
 //
 end (*let*) // end of [d0pat_fprint(out,d0p)]
@@ -197,6 +201,10 @@ print
 ("D0Elfix0(");
 print(tknd,";",fid0,";",farg,";");
 print(sres,";",arrw,";",body,";",tend))
+//
+|
+D0Eanno(d0e1,s0e2) =>
+print("D0Eanno(",d0e1,";",s0e2,")")
 //
 |
 D0Etkerr(tok) => print("D0Etkerr(", tok, ")")
