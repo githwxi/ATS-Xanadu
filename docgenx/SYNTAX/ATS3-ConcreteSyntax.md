@@ -65,7 +65,7 @@ in C. Please find some examples of float-values as follows:
 
 - <code>0.01</code>
 - <code>1E-2</code>
-- <code>1000</code>
+- <code>1000.</code>
 - <code>1.0E3</code>
 - <code>3.1415926</code>
   
@@ -82,7 +82,10 @@ Keywords
 --------
 
 ATS3 supports a rich set of programming features, making use of
-quite a few keywords.
+quite a few keywords. There are essentially two set of keywords:
+those beginning with the symbol `$` for forming expressions, and
+those beginning with the symbol `#` for initiating declarations.
+(However, there are exceptions for a few short keywords.)
 
 The following keywords are for forming expressions:
 
@@ -114,10 +117,18 @@ The following keywords are for forming expressions:
   for raising a run-time exception (which may be caught by a handler). ATS3 supports
   the use of exceptions for altering control-flow in program execution.
 - <code>$tup</code>:
-  for forming a boxed tuple. Note that $tup is resolved to either $tup_t or $tup_vt.
-- <code>$tup_t</code>: for forming a boxed tuple containing no linear components.
+  for forming a boxed tuple. Note that $tup is resolved to either $tup_t0 or $tup_vt.
+- <code>$tup_t0</code>: for forming a boxed tuple containing no linear components.
+  Note that the formed tuple is non-linear.
 - <code>$tup_vt</code>:
   for forming a boxed tuple that may contain linear components. The formed tuple is
+  linear even if there are no linear components in it.
+- <code>$rec</code>:
+  for forming a boxed record. Note that $rec is resolved to either $rec_t0 or $rec_vt.
+- <code>$rec_t0</code>: for forming a boxed record containing no linear components.
+  Note that the formed record is non-linear.
+- <code>$rec_vt</code>:
+  for forming a boxed record that may contain linear components. The formed record is
   linear even if there are no linear components in it.
   
 Some of the commonly used keywords for forming declarations are listed as follows:
@@ -130,12 +141,24 @@ Some of the commonly used keywords for forming declarations are listed as follow
   Some of its variants are: `val+` and `val-`.
 - <code>var</code>
   for introduction a variable-declaration (or var-declaration for short).
-- <code>stacst</code>: for introducing a static constant of some (predicative) sort.
-- <code>sexpdef</code>: for introducing a name for a static expression (of any sort).
-- <code>typedef</code>:
+- <code>#stacst0</code>: for introducing a static constant of some (predicative) sort.
+- <code>#sexpdef</code>: for introducing a name for a static expression (of any sort).
+- <code>#typedef</code>:
   for introducing a name for a static expression of some (impredicative) sort (such as
   types, props, and views).
-
+- <code>datasort</code>:
+  for introducing a datasort together with constructors for constructing
+  static terms of the sort. Note that the introduced sort and constructors are
+  all monomorphic. In particular, ATS3 does not support polymorphic sorts.
+- <code>datatype</code>:
+  for introducing a datatype together with constructors for constructing
+  dynmic terms of the type. Note that dependent datatypes can be introduced and
+  guarded recursive datatyps (a.k.a. generalized datatypes in Haskell) cal also
+  be introduced.
+- <code>#implval</code>: for initiating the implementation of a value.
+- <code>#implfun</code>: for initiating the implementation of a function.
+- <code>#impltmp</code>: for initiating the implementation of a (function) template.
+    
 Identifiers
 -----------
 
