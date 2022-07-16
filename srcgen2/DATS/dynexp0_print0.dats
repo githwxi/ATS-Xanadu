@@ -54,6 +54,11 @@ ATS_PACKNAME
 #symload node with d0pat_get_node
 #symload node with d0ecl_get_node
 (* ****** ****** *)
+#symload dpid with d0cstdcl_get_dpid
+#symload darg with d0cstdcl_get_darg
+#symload sres with d0cstdcl_get_sres
+#symload dres with d0cstdcl_get_dres
+(* ****** ****** *)
 #symload dpat with d0valdcl_get_dpat
 #symload wsxp with d0valdcl_get_wsxp
 #symload tdxp with d0valdcl_get_tdxp
