@@ -101,6 +101,22 @@ end(*let*)//end-of(valkind_fprint)
 
 #implfun
 //<>(*tmp*)
+varkind_fprint
+  (out, vrk) = let
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+//
+case+ vrk of
+| VRKvar() => print( "VAKvar" )
+//
+end(*let*)//end-of(varkind_fprint)
+
+(* ****** ****** *)
+
+#implfun
+//<>(*tmp*)
 funkind_fprint
   (out, fnk) = let
 //

@@ -73,7 +73,8 @@ val T0VAL = T_VAL(VLKval)
 val T0VLP = T_VAL(VLKvlp)
 val T0VLN = T_VAL(VLKvln)
 val T0VLR = T_VAL(VLKvlr)
-val T0VAR = T_VAR(VLKvar)
+//
+val T0VAR = T_VAR(VRKvar)
 //
 val T0PRVAL = T_VAL(VLKprval)
 val T0PRVAR = T_VAL(VLKprval)

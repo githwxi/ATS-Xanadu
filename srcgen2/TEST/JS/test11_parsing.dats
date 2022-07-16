@@ -152,7 +152,7 @@ prerrln("p1_fun_test(0)")
 // (*
 val opt =
 p1_fun_test<d0eclist>
-("./basics0.dats", p1_d0eclseq_dyn)
+("./miscell.dats", p1_d0eclseq_dyn)
 // *)
 //
 val () =
@@ -172,7 +172,7 @@ optn_cons(preadx0_d0eclist(dcls, err))
 //
 // (*
 val ( ) =
-prerrln("p1_fun_test(\"./basics0.dats\") =\n", opt)
+prerrln("p1_fun_test(\"./miscell.dats\") =\n", opt)
 // *)
 //
 (* ****** ****** *)

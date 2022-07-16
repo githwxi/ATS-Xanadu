@@ -29,6 +29,10 @@ val ln =
 
 (* ****** ****** *)
 
+var foo1: int with foo2 = (1 + 2)
+
+(* ****** ****** *)
+
 fun fact(x:int): int =
 if x > 0 then x * fact(x-1) else 1
 
@@ -36,11 +40,12 @@ if x > 0 then x * fact(x-1) else 1
 
 datatype
 list(a:type) =
-|list_nil of () |list_cons of (a, list(a))
+|list_nil |list_cons of (a, list(a))
 
 (* ****** ****** *)
 
-fun<a:type>
+fun
+<a:type>
 list_length
 (xs: list(a)): sint =
 (
