@@ -275,6 +275,7 @@ datatype tnode =
 #typedef tokenopt = optn(token)
 (* ****** ****** *)
 val T0IDENT_AT0 : tnode
+val T0IDENT_BAR : tnode
 val T0IDENT_EQ0 : tnode
 val T0IDENT_LT0 : tnode
 val T0IDENT_GT0 : tnode

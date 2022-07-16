@@ -346,6 +346,8 @@ end (*local*) // end of [ local ]
 (* ****** ****** *)
 //
 #implval T0IDENT_AT0 = T_IDSYM("@")
+#implval T0IDENT_BAR = T_IDSYM("|")
+//
 #implval T0IDENT_EQ0 = T_IDSYM("=")
 //
 #implval T0IDENT_LT0 = T_IDSYM("<")

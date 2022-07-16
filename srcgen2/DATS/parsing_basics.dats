@@ -234,6 +234,7 @@ T_IDSYM _ => true
 T_IDDLR _ => true
 //
 | T_AT0() => true // "@"
+| T_BAR() => true // "|"
 //
 | T_EQ0() => true // "="
 //
