@@ -2,7 +2,6 @@ The Concrete Syntax of Xanadu
 =============================
 
 ### Author: Hongwei Xi (gmhwxi@gmail.com)
-
 ___________________
 
 ATS/Xanadu refers to a programming language in the ATS family and its

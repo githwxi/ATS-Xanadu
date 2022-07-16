@@ -13,8 +13,8 @@ mentality comes from the ubiquity of for-loops and while-loops in
 imperative programming. As far as I can see, it would be nearly
 impossible for a programmer to break out of this mentality if there
 was no support at the level of programming language to greatly
-facilitate batch-processing, that is, processing a sequence of
-elements at a time.
+facilitate batch-processing, that is, processing a batch of elements
+at a time.
 
 In functional programming, batch-processing is commonly associated
 with the use of combinators (which are often higher-order functions
