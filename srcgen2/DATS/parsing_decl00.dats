@@ -1028,6 +1028,58 @@ list_vt2t
 (* ****** ****** *)
 //
 #implfun
+p1_s0qag(buf, err) =
+let
+//
+val e00 = err
+val tok = buf.getk0()
+//
+(*
+val () =
+prerrln("p1_s0qag: tok = ", tok)
+*)
+//
+in//let
+//
+case+
+tok.node() of
+|
+T_LT0() => let
+  val tbeg = tok
+  val (  ) = buf.skip1()
+  val q0as =
+  p1_q0argseq_COMMA(buf, err)
+  val tend = p1_GT0(buf, err)
+  val lres = tbeg.lctn() + tend.lctn()
+in//let
+  err := e00
+; s0qag_make_node
+  (lres, S0QAGsome(tbeg, q0as, tend))
+end (*let*) // end of [T_LT0]
+|
+T_LTGT() => let
+  val tbeg = tok
+  val tend = tok
+  val q0as = list_nil()
+  val (  ) = buf.skip1()
+  val lres = tbeg.lctn()
+in
+  s0qag_make_node
+  (lres, S0QAGsome(tbeg, q0as, tend))
+end (*let*) // end of [ T_LTGT ]
+|
+_(* non-T_LT/GT *) =>
+let
+val () = (err := e00 + 1)
+in//let
+s0qag_make_node(tok.lctn(), S0QAGnone(tok))
+end (*let*) // end of [ non-T_LTGT ]
+//
+end (*let*) // end of [p1_s0qag(buf,err)]
+//
+(* ****** ****** *)
+//
+#implfun
 p1_t0qag(buf, err) =
 let
 //
@@ -1077,10 +1129,85 @@ end (*let*) // end of [ non-T_LTGT ]
 //
 end (*let*) // end of [p1_t0qag(buf,err)]
 //
+(* ****** ****** *)
+
+#implfun
+p1_t0iag(buf, err) =
+let
+//
+val e00 = err
+val tok = buf.getk0()
+//
+(*
+val () =
+println! ("p1_t0iag: tok = ", tok)
+*)
+//
+in//let
+//
+case+
+tok.node() of
+//
+|
+T_LT0() => let
+  val tbeg = tok
+  val (  ) = buf.skip1()
+//
+  val s0es =
+  list_vt2t
+  (
+  ps_COMMA_p1fun{s0exp}
+  (buf, err, p1_s0exp_app_NGT0))
+//
+  val tend = p1_GT0(buf, err)
+//
+  val lres = tbeg.lctn()+tend.lctn()
+//
+in
+  err := e00;
+  t0iag_make_node
+  (lres, T0IAGsome(tbeg, s0es, tend))
+end (*let*) // end of [ T_LT0() ]
+| T_LTGT() => let
+//
+  val tbeg = tok
+  val tend = tok
+  val (  ) = buf.skip1()
+//
+  val s0es = list_nil()
+  val lres = tbeg.lctn()
+//
+in
+  err := e00;
+  t0iag_make_node
+  (lres, T0IAGsome(tbeg, s0es, tend))
+end (*let*) // end of [ T_LTGT() ]
+|
+_(* non-T_LT/T_LTGT *) =>
+(
+err := e00 + 1;
+t0iag_make_node(tok.lctn(),T0IAGnone(tok)))
+//
+end (*let*) // end of [ p1_ti0arg(buf,err) ]
+
+(* ****** ****** *)
+//
+#implfun
+p1_s0qagseq(buf, err) =
+(
+list_vt2t(ps_p1fun{s0qag}(buf,err,p1_s0qag))
+)
+//
 #implfun
 p1_t0qagseq(buf, err) =
 (
 list_vt2t(ps_p1fun{t0qag}(buf,err,p1_t0qag))
+)
+//
+#implfun
+p1_t0iagseq(buf, err) =
+(
+list_vt2t(ps_p1fun{t0iag}(buf,err,p1_t0iag))
 )
 //
 (* ****** ****** *)
