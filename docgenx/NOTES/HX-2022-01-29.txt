@@ -37,10 +37,10 @@ write programs in ATS3 and then compile them to code in X.  In
 practice, we hope to do co-programming with ATS3 and X; code in X
 generated from ATS3 source can be combined with code in X obtained
 otherwise. By programming in ATS3, we can benefit greatly from the
-advanced type-checking that allows many varities of bugs to be flushed
-out at compile-time; we can also benefit greatly from the extensive
-use of templates that allows massive amount of quality code to be
-generated in an automated manner.
+advanced type-checking that allows many varities of (potential) bugs
+to be flushed out at compile-time; we can also benefit greatly from
+the extensive use of templates that allows massive amount of quality
+code to be generated in an automated manner.
 
 In a following post, I will use a concrete example (co-programming
 with ATS3 and Javascript) to outline some of the big steps involved
@@ -52,6 +52,6 @@ choice.
 
 For previously post messages:
 
-https://github.com/githwxi/ATS-Xanadu/tree/master/docgen/NOTES
+https://github.com/githwxi/ATS-Xanadu/tree/master/docgenx/NOTES
 
 ##################################################################

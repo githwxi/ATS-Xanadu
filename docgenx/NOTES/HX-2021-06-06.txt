@@ -20,6 +20,6 @@ https://www.facebook.com/caldwellwritesdotcom/videos/lonesome-dove-tells-the-sto
 
 For previously post messages:
 
-https://github.com/githwxi/ATS-Xanadu/tree/master/docgen/NOTES
+https://github.com/githwxi/ATS-Xanadu/tree/master/docgenx/NOTES
 
 ##################################################################

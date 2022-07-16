@@ -25,3 +25,15 @@ gflist_append
 , ys: list(a)): list(append(xs, ys))
 
 ##################################################################
+
+Cheers!
+
+--Hongwei
+
+##################################################################
+
+For previously post messages:
+
+https://github.com/githwxi/ATS-Xanadu/tree/master/docgenx/NOTES
+
+##################################################################
