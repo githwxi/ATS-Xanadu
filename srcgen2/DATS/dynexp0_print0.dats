@@ -186,12 +186,27 @@ print
 print(d0e1,";",dthn,";",dels,";",tinv,")"))
 //
 |
+D0Ecas0
+(tknd,d0e1,tof0,tbar,dcls) =>
+(
+print
+("D0Ecas0(",tknd,";");
+print(d0e1,";",tof0,";",tbar,";",dcls,")"))
+|
+D0Ecas1
+(tknd,d0e1,tof0,tbar,dcls,tinv) =>
+(
+print
+("D0Ecas0(",tknd,";",d0e1,";");
+print(tof0,";",tbar,";",dcls,";",tinv,")"))
+//
+|
 D0Elam0
 (tknd,farg,sres,arrw,body,tend) =>
 (
 print
 ("D0Elam0(",tknd,";",farg,";");
-print(sres,";",arrw,";",body,";",tend))
+print(sres,";",arrw,";",body,";",tend,")"))
 //
 |
 D0Efix0
@@ -200,7 +215,7 @@ D0Efix0
 print
 ("D0Elfix0(");
 print(tknd,";",fid0,";",farg,";");
-print(sres,";",arrw,";",body,";",tend))
+print(sres,";",arrw,";",body,";",tend,")"))
 //
 |
 D0Eanno(d0e1,s0e2) =>
@@ -215,6 +230,63 @@ D0Eerrck(lvl(*err-level*),d0e) => print("D0Eerrck(",lvl,";",d0e,")")
 end (*let*) // end of [d0exp_fprint(out,d0e)]
 
 (* ****** ****** *)
+
+#implfun
+d0gua_fprint
+(out, dgua) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+dgua.node() of
+|
+D0GUAexp(d0e1) =>
+print("D0GUAexp(",d0e1,")")
+|
+D0GUAmat(d0e1,tkas,d0p2) =>
+print("D0GUAmat(",d0e1,";",tkas,";",d0p2,")")
+//
+end (*let*) // end of [d0gua_fprint(out,dgua)]
+
+(* ****** ****** *)
+//
+#implfun
+d0cls_fprint
+(out, dcl0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+dcl0.node() of
+|
+D0CLSgpt(dgpt) =>
+print("D0CLSgpt(",dgpt,")")
+|
+D0CLScls
+(d0g1,tsep,d0e2) =>
+print("D0CLScls(",d0g1,";",tsep,";",d0e2,")")
+end (*let*) // end of [d0cls_fprint(out,dcl0)]
+#implfun
+d0gpt_fprint
+(out, dgpt) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+dgpt.node() of
+|
+D0GPTpat(d0p1) =>
+print("D0GPTpat(",d0p1,")")
+|
+D0GPTgua(d0p1,tsep,d0gs) =>
+print("D0GPTgua(",d0p1,";",tsep,";",d0gs,")")
+end (*let*) // end of [d0gpt_fprint(out,dgpt)]
+//
+(* ****** ****** *)
 //
 #implfun
 t0qua_fprint
@@ -226,11 +298,11 @@ in//let
 //
 case+ tqua of
 |
-T0QUAnone(tok) =>
-print("T0QUAnone(",tok,")")
+T0QUAnone(terr) =>
+print("T0QUAnone(",terr,")")
 |
-T0QUAsome(tkb,sqs,tke) =>
-print("T0QUAsome(",tkb,";",sqs,";",tke,")")
+T0QUAsome(tbeg,s0qs,tend) =>
+print("T0QUAsome(",tbeg,";",s0qs,";",tend,")")
 //
 end (*let*) // end of [t0qua_fprint(out,tqua)]
 #implfun
