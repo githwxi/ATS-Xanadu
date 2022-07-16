@@ -148,10 +148,13 @@ S0E = "./staexp0.sats"
 (* ****** ****** *)
 //
 #abstbox d0pat_tbox // ptr
-#abstbox f0arg_tbox // ptr
 #abstbox d0exp_tbox // ptr
-#abstbox d0cls_tbox // ptr
 #abstbox d0ecl_tbox // ptr
+//
+#abstbox f0arg_tbox // ptr
+#abstbox d0cls_tbox // ptr
+#abstbox d0gua_tbox // ptr
+#abstbox d0gpt_tbox // ptr
 //
 #abstbox d0cstdcl_tbox // ptr
 #abstbox d0fundcl_tbox // ptr
@@ -169,10 +172,13 @@ S0E = "./staexp0.sats"
 #typedef d0arg = d0arg_tbox
 (* ****** ****** *)
 #typedef d0pat = d0pat_tbox
-#typedef f0arg = f0arg_tbox
 #typedef d0exp = d0exp_tbox
-#typedef d0cls = d0cls_tbox
 #typedef d0ecl = d0ecl_tbox
+(* ****** ****** *)
+#typedef f0arg = f0arg_tbox
+#typedef d0cls = d0cls_tbox
+#typedef d0gua = d0gua_tbox
+#typedef d0gpt = d0gpt_tbox
 (* ****** ****** *)
 #typedef q0arglst = list(q0arg)
 #typedef s0qaglst = list(s0qag)
@@ -186,15 +192,19 @@ S0E = "./staexp0.sats"
 #typedef d0pidopt = optn(d0pid)
 //
 (* ****** ****** *)
+//
 #typedef d0patlst = list(d0pat)
-#typedef f0arglst = list(f0arg)
 #typedef d0explst = list(d0exp)
-#typedef d0clslst = list(d0cls)
 #typedef d0eclist = list(d0ecl)
 //
 #typedef d0patopt = optn(d0pat)
 #typedef d0expopt = optn(d0exp)
 //
+(* ****** ****** *)
+#typedef f0arglst = list(f0arg)
+#typedef d0clslst = list(d0cls)
+#typedef d0gualst = list(d0gua)
+#typedef d0gptlst = list(d0gpt)
 (* ****** ****** *)
 //
 #typedef d0cstdcl = d0cstdcl_tbox
@@ -547,13 +557,46 @@ where
 //
 (* ****** ****** *)
 //
+datatype
+d0gua_node =
+|
+D0GUAexp of (d0exp)
+|
+D0GUAmat of
+(d0exp, token(*AS*), d0pat)
+//
+datatype
+d0cls_node =
+|
+D0CLSgpt of (d0gpt)
+|
+D0CLScls of
+(d0gpt, token(*EQGT*), d0exp)
+and
+d0gpt_node =
+|
+D0GPTpat of (d0pat)
+|
+D0GPTgua of
+(d0pat, token(*WHEN*), d0gualst)
+//
+(* ****** ****** *)
+//
 fun
 d0exp_fprint
 (out:FILR, d0e:d0exp): void
 //
+(* ****** ****** *)
+//
 fun
 d0cls_fprint
 (out:FILR, dcl:d0cls): void
+fun
+d0gua_fprint
+(out:FILR, d0g:d0gua): void
+fun
+d0gpt_fprint
+(out:FILR, d0g:d0gpt): void
 //
 (* ****** ****** *)
 //
