@@ -189,10 +189,21 @@ D0Eapps(d0es) =>
 print("D0Eapps(",d0es,")")
 //
 |
+D0Esqarg
+(tbeg,s0es,tend) =>
+print
+("D0Esqarg(",tbeg,";",s0es,";",tend,")")
+|
+D0Etqarg
+(tbeg,s0es,tend) =>
+print
+("D0Etqarg(",tbeg,";",s0es,";",tend,")")
+//
+|
 D0Elpar
 (tbeg,d0es,tend) =>
 print
-("D0Elpar(",tbeg,";",d0es,";",tend,")")
+( "D0Elpar(",tbeg,";",d0es,";",tend,")" )
 //
 |
 D0Eif0
