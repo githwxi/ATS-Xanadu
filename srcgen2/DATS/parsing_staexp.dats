@@ -1483,6 +1483,79 @@ ps_COMMA_p1fun{sort0}(buf, err, p1_sort0)
 //
 (* ****** ****** *)
 
+local
+//
+fun
+p1_sort0_app_ntk
+( buf:
+! tkbf0
+, err: &sint >> _
+, ntk
+: (tnode) -> bool): sort0 =
+let
+//
+fun
+f1_ngt
+( buf:
+! tkbf0
+, err: &sint >> _): sort0 =
+let
+//
+  val e00 = err
+  val tok = buf.getk0()
+  val tnd = tok.tnode()
+//
+in
+if
+ntk(tnd)
+then
+p1_sort0_atm(buf, err)
+else let
+  val () = (err := e00 + 1)
+in
+sort0(tok.lctn(), S0Ttkerr(tok))
+end (*let*) // end of [else]
+end (*let*) // end of [f1_ngt]
+//
+val s0t1 = f1_ngt(buf, err)
+val s0ts =
+list_vt2t(ps_p1fun{sort0}(buf,err,f1_ngt))
+//
+in
+//
+case+ s0ts of
+|
+list_nil
+((*void*)) => s0t1
+|
+list_cons _ =>
+let
+  val s0t2 = list_last(s0ts)
+  val lres = s0t1.lctn()+s0t2.lctn()
+in//let
+sort0(lres, S0Tapps(list_cons(s0t1,s0ts)))
+end // end of [list_cons]
+//
+end(*let*)//end(p1_sort0_app_ntk(buf,err,ntk))
+//
+in//local
+//
+#implfun
+p1_sort0_app_NGT0
+  (buf, err) =
+(
+p1_sort0_app_ntk(buf, err, ntk)
+) where
+{
+fun
+ntk(tnd: tnode): bool =
+(case+ tnd of T_GT0() => false | _ => true)
+} (*where*)//end-of(p1_sort0_app_NGT0(buf,err))
+//
+endloc(*local*)//end-of[local(p1_sort0_app_ntk]
+
+(* ****** ****** *)
+
 #implfun
 p1_s0tcn(buf, err) =
 let
@@ -1907,7 +1980,7 @@ in//let
 err := e00; s0qua(lres, S0QUAvars(ids, tres))
 end (*let*) // end of [T_COMMA]
 //
-| _(*atms0expseq*) =>
+| _(*s0expseq_atm*) =>
 let
 val s0es =
 p1_s0expseq_atm(buf, err)
@@ -1932,7 +2005,7 @@ s0exp
 in
   err := e00
 ; s0qua(s0e1.lctn(), S0QUAprop(s0e1))
-end (*let*) // end of [atms0expseq]
+end (*let*) // end of [s0expseq_atm]
 //
 end (*let*) // end of [t0_s0aid(tnd)]
 //
