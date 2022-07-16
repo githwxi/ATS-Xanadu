@@ -477,6 +477,11 @@ fun
 p1_a0tdf: p1_fun(a0tdf)
 //
 (* ****** ****** *)
+fun
+p1_f0argseq: p1_fun(f0arglst)
+fun
+p1_f0argsq1: p1_fun(f0arglst)
+(* ****** ****** *)
 //
 fun
 fp_d0eclseq: fp_fun(d0eclist)

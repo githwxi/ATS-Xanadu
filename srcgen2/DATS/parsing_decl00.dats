@@ -120,6 +120,11 @@ node with i0dnt_get_node//staexp0
 node with l0abl_get_node//staexp0
 (* ****** ****** *)
 #symload
+node with s0exp_get_node//staexp0
+#symload
+node with s0qua_get_node//staexp0
+(* ****** ****** *)
+#symload
 tnode with token_get_node//lexing0
 (* ****** ****** *)
 #symload
@@ -1779,6 +1784,141 @@ list_vt2t
 (ps_AND_p1fun{d0fundcl}(buf,err,p1_d0fundcl))
 ) (* end-of-[p1_d0fundclseq_AND(buf, err) ] *)
 //
+(* ****** ****** *)
+
+local
+//
+fun
+f0_s0q0
+( s0q0
+: s0qua): s0qua =
+(
+case+
+s0q0.node() of
+|
+S0QUAprop(s0p) =>
+(
+case+
+s0p.node() of
+|
+S0Eid0(sid) =>
+let
+  val loc = s0p.lctn()
+  val opt =
+    optn_nil(*sort0*)
+  val ids = list_sing(sid)
+in
+  s0qua_make_node
+  (loc, S0QUAvars(ids, opt))
+end
+| _ (* non-S0Eid0 *) => s0q0
+)
+| _(* non-S0QUAprop *) => s0q0
+)
+fun
+auxs0qs
+( xs
+: s0qualst): s0qualst =
+list_map
+<s0qua><s0qua>(xs) where
+{
+#impltmp
+map$fopr<s0qua><s0qua> = f0_s0q0
+}
+//
+fun
+f0_f0a0
+( f0a0
+: f0arg): f0arg =
+(
+case+
+f0a0.node() of
+|
+F0ARGsta0
+(tbeg, s0qs, tend) =>
+(
+  f0arg_make_node(loc0, node)
+) where
+{
+  val loc0 = f0a0.lctn()
+  val s0qs = auxs0qs(s0qs)
+  val node =
+  F0ARGsta0(tbeg, s0qs, tend)
+}
+| _ (* non-F0ARGsom_sta *) => f0a0
+)
+fun
+f0_f0as
+( xs
+: f0arglst): f0arglst =
+list_map
+<f0arg><f0arg>(xs) where
+{
+#impltmp
+map$fopr<f0arg><f0arg> = f0_f0a0
+}
+//
+fun
+t0_s0qs
+( xs
+: s0qualst): bool =
+(
+case+ xs of
+|
+list_nil() => false
+|
+list_cons(x1, xs) =>
+(
+case+
+x1.node() of
+|
+S0QUAprop(s0p) =>
+(
+case+
+s0p.node() of
+| S0Eid0(sid) => true
+| _(*non-S0Eid0*) => t0_s0qs(xs)
+)
+| _(*non-S0QUAprop*) => t0_s0qs(xs)
+)
+)
+fun
+t0_f0as
+( xs
+: f0arglst): bool =
+(
+case+ xs of
+|
+list_nil() => false
+|
+list_cons(x1, xs) =>
+(
+case+
+x1.node() of
+|
+F0ARGsta0
+(tbeg, s0qs, tend) =>
+if
+t0_s0qs(s0qs)
+then true else t0_f0as(xs)
+| _(*non-F0ARGsta0*) => t0_f0as(xs)
+)
+)
+//
+in
+//
+#implfun
+p1_f0argsq1
+( buf, err ) =
+let
+val
+f0as = p1_f0argseq(buf, err)
+in//let
+if t0_f0as(f0as) then f0_f0as(f0as) else f0as
+end (*let*) // end of [p_f0argsq1]
+//
+endloc (*local*) // end of [local(p1_f0argsq1)]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_parsing_decl00.dats] *)
