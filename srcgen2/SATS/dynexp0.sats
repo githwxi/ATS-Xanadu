@@ -1236,22 +1236,25 @@ d0fundcl_get_wsxp:(d0fundcl)->wths0exp
 //
 fun
 d0valdcl_make_args
-( lctn: loc_t
-, dpat: d0pat
-, tdxp: teqd0exp, wsxp: wths0exp): d0valdcl
+( lctn:loc_t
+, dpat:d0pat
+, tdxp:teqd0exp, wsxp:wths0exp):d0valdcl
 fun
 d0vardcl_make_args
-( lctn: loc_t
-, dpid: d0pid
-, vpid: d0pidopt
-, sres: s0expopt, dini: teqd0exp): d0vardcl
+( lctn:loc_t
+, dpid:d0pid
+, vpid:d0pidopt
+, sres:s0expopt, dini:teqd0exp):d0vardcl
 //
 fun
 d0fundcl_make_args
-( lctn: loc_t
-, farg: f0arglst
-, sres: s0res
-, tdxp: teqd0exp, wsxp: wths0exp): d0fundcl
+( lctn:loc_t
+, dpid:d0pid
+, farg:f0arglst
+, sres:s0res
+, tdxp:teqd0exp, wsxp:wths0exp):d0fundcl
+//
+#symload d0fundcl with d0fundcl_make_args
 //
 (* ****** ****** *)
 (* end of [ATS3/XATSOPT_dynexp0.sats] *)

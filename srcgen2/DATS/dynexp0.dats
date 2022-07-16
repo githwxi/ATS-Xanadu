@@ -745,4 +745,101 @@ endloc (*local*) // end of [ local(d0vardcl) ]
 
 (* ****** ****** *)
 
+local
+//
+datatype
+d0fundcl =
+D0FUNDCL of
+( loc_t
+, d0pid
+, f0arglst, s0res
+, teqd0exp, wths0exp)
+//
+#absimpl
+d0fundcl_tbox = d0fundcl
+//
+in//local
+
+(* ****** ****** *)
+
+#implfun
+d0fundcl_get_lctn
+(  dfun  ) =
+let
+val+
+D0FUNDCL
+( lctn
+, dpid, farg
+, sres, tdxp, wsxp) = dfun in lctn
+end (*let*) // end(d0fundcl_get_lctn)
+
+#implfun
+d0fundcl_get_dpid
+(  dfun  ) =
+let
+val+
+D0FUNDCL
+( lctn
+, dpid, farg
+, sres, tdxp, wsxp) = dfun in dpid
+end (*let*) // end(d0fundcl_get_dpid)
+
+#implfun
+d0fundcl_get_farg
+(  dfun  ) =
+let
+val+
+D0FUNDCL
+( lctn
+, dpid, farg
+, sres, tdxp, wsxp) = dfun in farg
+end (*let*) // end(d0fundcl_get_farg)
+
+#implfun
+d0fundcl_get_sres
+(  dfun  ) =
+let
+val+
+D0FUNDCL
+( lctn
+, dpid, farg
+, sres, tdxp, wsxp) = dfun in sres
+end (*let*) // end(d0fundcl_get_sres)
+
+#implfun
+d0fundcl_get_tdxp
+(  dfun  ) =
+let
+val+
+D0FUNDCL
+( lctn
+, dpid, farg
+, sres, tdxp, wsxp) = dfun in tdxp
+end (*let*) // end(d0fundcl_get_tdxp)
+
+#implfun
+d0fundcl_get_wsxp
+(  dfun  ) =
+let
+val+
+D0FUNDCL
+( lctn
+, dpid, farg
+, sres, tdxp, wsxp) = dfun in wsxp
+end (*let*) // end(d0fundcl_get_wsxp)
+
+(* ****** ****** *)
+
+#implfun
+d0fundcl_make_args
+( lctn
+, dpid, farg, sres, tdxp, wsxp) =
+(
+D0FUNDCL(lctn,dpid,farg,sres,tdxp,wsxp)
+)
+
+endloc (*local*) // end of [ local(d0fundcl) ]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_dynexp0.dats] *)
