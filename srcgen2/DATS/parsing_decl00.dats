@@ -935,10 +935,13 @@ fun
 p1_q0arg: p1_fun(q0arg)
 #extern
 fun
+p1_s0qag: p1_fun(s0qag)
+#extern
+fun
 p1_t0qag: p1_fun(t0qag)
 #extern
 fun
-p1_s0qag: p1_fun(s0qag)
+p1_t0iag: p1_fun(t0iag)
 //
 #extern
 fun
@@ -946,6 +949,10 @@ p1_s0qagseq: p1_fun(s0qaglst)
 #extern
 fun
 p1_t0qagseq: p1_fun(t0qaglst)
+#extern
+fun
+p1_t0iagseq: p1_fun(t0iaglst)
+//
 #extern
 fun
 p1_q0argseq_COMMA: p1_fun(q0arglst)
@@ -1454,7 +1461,7 @@ val lres =
 in//let
   err := e00
 ; d0ecl(lres, D0Cvardclst(tok, d0cs))
-end (*let*)//end-of-[pk_vardclst(tok, buf, err)]
+end (*let*)//end-of-[pk_vardclst(tok,buf,err)]
 
 (* ****** ****** *)
 
@@ -1488,7 +1495,7 @@ val lres =
 in//let
   err := e00
 ; d0ecl(lres, D0Cfundclst(tok, tqas, d0cs))
-end (*let*)//end-of-[pk_fundclst(tok, buf, err)]
+end (*let*)//end-of-[pk_fundclst(tok,buf,err)]
 
 (* ****** ****** *)
 
@@ -1513,6 +1520,56 @@ WTHS0EXPsome(tok, s0e) where
 _(*non-WITH*) => WTHS0EXPnone(*void*)
 //
 end(*let*)//end-of-[p1_wths0exp(buf,err)]
+
+(* ****** ****** *)
+
+local
+//
+// HX: nothing
+//
+(* ****** ****** *)
+in(* in-of-local *)
+(* ****** ****** *)
+//
+#implfun
+pk_implmnt0
+(tok, buf, err) = let
+//
+val e00 = err
+//
+val tknd = tok
+val (  ) = buf.skip1()
+//
+val sqas =
+  p1_s0qagseq(buf, err)
+val tqas =
+  p1_t0qagseq(buf, err)
+//
+val dqid =
+  p1_d0qid(buf, err)
+val tias =
+  p1_t0iagseq(buf, err)
+//
+val f0as =
+  p1_f0argsq1(buf, err)
+//
+val tres = p1_s0res(buf, err)
+//
+val teq1 = p1_EQ0(buf, err)
+val d0e2 = p1_d0exp(buf, err)
+//
+val lres = tknd.lctn() + d0e2.lctn()
+//
+in
+err := e00;
+d0ecl_make_node
+( lres
+, D0Cimplmnt0
+  ( tknd, sqas, tqas
+  , dqid, tias, f0as, tres, teq1, d0e2))
+end (*let*)//end-of-[pk_implmnt0(tok,buf,err)]
+//
+endloc (*local*) // end of [local(pk_implmnt0)]
 
 (* ****** ****** *)
 
