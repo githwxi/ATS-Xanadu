@@ -3885,7 +3885,6 @@ tok, buf, err
   val () =
     buf.incby1()
   // end of [val]
-  val loc = tok.loc()
 //
   val mopt =
     p_decmodopt(buf, err)
