@@ -1671,6 +1671,7 @@ end // end of [T_THEN]
 |
 _(*non-ELSE*) =>
 (
+// HX: there is no error!
   d0exp_ELSE_none(tok) // HX: ELSE-less
 )
 //
