@@ -647,6 +647,16 @@ val tok = token_make_node(loc,tnd)
 }
 //
 |
+T_BAR() =>
+i0dnt_some(tok) where
+{
+val ( ) = buf.skip1()
+val loc = tok.lctn((*void*))
+val tnd = T0IDENT_BAR(*void*)
+val tok = token_make_node(loc,tnd)
+}
+//
+|
 T_EQ0() =>
 i0dnt_some(tok) where
 {

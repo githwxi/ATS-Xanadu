@@ -133,14 +133,14 @@ The following keywords are for forming expressions:
   
 Some of the commonly used keywords for forming declarations are listed as follows:
 
-- <code>fun</code>: for
-  introducing a function-declaration (or fun-declaration for short).
-  Some of its variants are: `fn`, `fn0`, `fn1`, and `fnx`.
 - <code>val</code>
   for introduction a value-declaration (or val-declaration for short).
   Some of its variants are: `val+` and `val-`.
 - <code>var</code>
   for introduction a variable-declaration (or var-declaration for short).
+- <code>fun</code>: for
+  introducing a function-declaration (or fun-declaration for short).
+  Some of its variants are: `fn`, `fn0`, `fn1`, and `fnx`.
 - <code>#stacst0</code>: for introducing a static constant of some (predicative) sort.
 - <code>#sexpdef</code>: for introducing a name for a static expression (of any sort).
 - <code>#typedef</code>:

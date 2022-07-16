@@ -51,7 +51,7 @@ list_length
 (
 case+ xs of
 | list_nil() => 0
-| list_cons(_, xs) => 1 + list_length(xs)
+| list_cons(_, xs) => 1 + list_length(xs) | y
 )
 
 (* ****** ****** *)

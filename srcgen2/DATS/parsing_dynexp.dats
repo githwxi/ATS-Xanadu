@@ -539,8 +539,8 @@ let
   list_vt2t
   (
   ps_COMMA_p1fun{s0exp}
-  (buf, err, p1_s0exp_app_NGT0))
-  val tend = p1_GT0(buf, err)
+  (buf,err,p1_s0exp_app_NGT0))
+  val tend = p1_GT0( buf, err )
 in//let
   err := e00;
   F0UNARRWlist(tbeg, s0es, tend)
@@ -609,6 +609,10 @@ p1_d0expseq_sqarg: p1_fun(d0explst)
 fun
 p1_d0clsseq_BAR: p1_fun(d0clslst)
 //
+(* ****** ****** *)
+#extern
+fun
+p1_d0exp_app_NBAR: p1_fun( d0exp )
 (* ****** ****** *)
 //
 #extern
@@ -2226,8 +2230,14 @@ tok1.node() of
 T_EQGT() =>
 let
 val (  ) = buf.skip1()
+(*
 val d0e2 = p1_d0exp(buf, err)
+*)
+val d0e2 =
+  p1_d0exp_app_NBAR(buf, err)
+//
 val lres = (dgp1.lctn()+d0e2.lctn())
+//
 in//let
   d0cls_make_node
   (lres, D0CLScls(dgp1, tok1, d0e2))
@@ -2247,6 +2257,79 @@ p1_d0clsseq_BAR
 list_vt2t
 (ps_BAR_p1fun{d0cls}(buf, err, p1_d0cls)))
 //
+(* ****** ****** *)
+
+local
+//
+fun
+p1_d0exp_app_ntk
+( buf:
+! tkbf0
+, err: &sint >> _
+, ntk
+: (tnode) -> bool): d0exp =
+let
+//
+fun
+f1_ngt
+( buf:
+! tkbf0
+, err: &sint >> _): d0exp =
+let
+//
+  val e00 = err
+  val tok = buf.getk0()
+  val tnd = tok.tnode()
+//
+in
+if
+ntk(tnd)
+then
+p1_d0exp_atm(buf, err)
+else let
+  val () = (err := e00 + 1)
+in
+d0exp(tok.lctn(), D0Etkerr(tok))
+end (*let*) // end of [else]
+end (*let*) // end of [f1_ngt]
+//
+val d0e1 = f1_ngt(buf, err)
+val d0es =
+list_vt2t(ps_p1fun{d0exp}(buf,err,f1_ngt))
+//
+in
+//
+case+ d0es of
+|
+list_nil
+((*void*)) => d0e1
+|
+list_cons _ =>
+let
+  val d0e2 = list_last(d0es)
+  val lres = d0e1.lctn()+d0e2.lctn()
+in//let
+d0exp(lres, D0Eapps(list_cons(d0e1,d0es)))
+end // end of [list_cons]
+//
+end(*let*)//end(p1_d0exp_app_ntk(buf,err,ntk))
+//
+in//local
+//
+#implfun
+p1_d0exp_app_NBAR
+  (buf, err) =
+(
+p1_d0exp_app_ntk(buf, err, ntk)
+) where
+{
+fun
+ntk(tnd: tnode): bool =
+(case+ tnd of T_BAR() => false | _ => true)
+} (*where*)//end-of(p1_d0exp_app_NBAR(buf,err))
+//
+endloc(*local*)//end-of[local(p1_d0exp_app_ntk]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_parsing_dynexp.dats] *)
