@@ -150,9 +150,10 @@ valkind_fprint
 (out: FILR, vlk: valkind): void
 //
 (* ****** ****** *)
+//
 datatype
 varkind =
-| VLKvar // var 
+| VRKvar // var 
 (*
 // there may be some more
 *)
