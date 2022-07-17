@@ -676,6 +676,12 @@ fun p1_t0endinv: p1_fun(t0endinv)
 #extern
 fun
 p1_tkend_WHERE: p1_fun(tkend_WHERE)
+(* ****** ****** *)
+#extern
+fun
+tkend_WHERE_lctn:tkend_WHERE->loc_t
+#symload lctn with tkend_WHERE_lctn
+(* ****** ****** *)
 #extern
 fun
 p1_d0eclseq_WHERE: p1_fun(list(d0eclseq_WHERE))
@@ -2036,10 +2042,12 @@ d0pat_RPAREN_lctn
   (node) =
 (
 case+ node of
-| d0pat_RPAREN_cons0
-  (      tbar      ) => tbar.lctn()
-| d0pat_RPAREN_cons1
-  (tok1, d0ps, tok2) => tok1.lctn() + tok2.lctn()
+|
+d0pat_RPAREN_cons0
+(      tbar      ) => tbar.lctn()
+|
+d0pat_RPAREN_cons1
+(tok1, d0ps, tok2) => tok1.lctn()+tok2.lctn()
 ) (*case*) // end of [d0pat_RPAREN_lctn(node)] 
 (* ****** ****** *)
 #implfun
@@ -2047,10 +2055,12 @@ l0d0p_RBRACE_lctn
   (node) =
 (
 case+ node of
-| l0d0p_RBRACE_cons0
-  (      tbar      ) => tbar.lctn()
-| l0d0p_RBRACE_cons1
-  (tok1, lses, tok2) => tok1.lctn() + tok2.lctn()
+|
+l0d0p_RBRACE_cons0
+(      tbar      ) => tbar.lctn()
+|
+l0d0p_RBRACE_cons1
+(tok1, lses, tok2) => tok1.lctn()+tok2.lctn()
 ) (*case*) // end of [l0d0p_RBRACE_lctn(node)]
 (* ****** ****** *)
 #implfun
@@ -2058,10 +2068,12 @@ d0exp_RPAREN_lctn
   (node) =
 (
 case+ node of
-| d0exp_RPAREN_cons0
-  (      tbar      ) => tbar.lctn()
-| d0exp_RPAREN_cons1
-  (tok1, d0es, tok2) => tok1.lctn() + tok2.lctn()
+|
+d0exp_RPAREN_cons0
+(      tbar      ) => tbar.lctn()
+|
+d0exp_RPAREN_cons1
+(tok1, d0es, tok2) => tok1.lctn()+tok2.lctn()
 ) (*case*) // end of [d0exp_RPAREN_lctn(node)] 
 (* ****** ****** *)
 #implfun
@@ -2069,11 +2081,31 @@ l0d0e_RBRACE_lctn
   (node) =
 (
 case+ node of
-| l0d0e_RBRACE_cons0
-  (      tbar      ) => tbar.lctn()
-| l0d0e_RBRACE_cons1
-  (tok1, lses, tok2) => tok1.lctn() + tok2.lctn()
+|
+l0d0e_RBRACE_cons0
+(      tbar      ) => tbar.lctn()
+|
+l0d0e_RBRACE_cons1
+(tok1, lses, tok2) => tok1.lctn()+tok2.lctn()
 ) (*case*) // end of [l0d0e_RBRACE_lctn(node)]
+(* ****** ****** *)
+#implfun
+tkend_WHERE_lctn
+  (node) =
+(
+case+ node of
+|
+tkend_WHERE_cons1
+  (  terr  ) => terr.lctn()
+|
+tkend_WHERE_cons2
+  (tok1,topt) =>
+(
+case+ topt of
+| optn_nil( ) => tok1.lctn()
+| optn_cons(tok2) => tok1.lctn()+tok2.lctn()
+)
+) (*case*) // end of [tkend_WHERE_lctn(node)]
 (* ****** ****** *)
 
 #implfun

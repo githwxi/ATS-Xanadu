@@ -952,7 +952,9 @@ end(*let*)//end-of-[d0fundcl_fprint(out,d0cl)]
 #implfun
 wd0eclseq_fprint
 (out, wdc1) =
-(
+let
+#impltmp g_print$out<>() = out
+in//let
 case+ wdc1 of
 |
 WD0CSnone() =>
@@ -962,14 +964,35 @@ WD0CSsome(tbeg, topt, dcls, tend) =>
 (
 print
 ("WD0CSsome(",tbeg,";",topt,";",dcls,";",tend,")"))
-) (*case*) // end of [ wd0eclseq_fprint(out,wdc1) ]
+end (*let*) // end of [ wd0eclseq_fprint(out,wdc1) ]
+//
+(* ****** ****** *)
+//
+#implfun
+tkend_WHERE_fprint
+(out, tend) =
+let
+#impltmp g_print$out<>() = out
+//
+in//let
+case+ tend of
+|
+tkend_WHERE_cons1(terr) =>
+print("tkend_WHERE_cons1(",terr,")")
+|
+tkend_WHERE_cons2(tok1,tok2) =>
+print("tkend_WHERE_cons2(",tok1,";",tok2,")")
+end (*let*) // end of [ tkend_WHERE_fprint(out,wdc1) ]
 //
 (* ****** ****** *)
 //
 #implfun
 d0eclseq_WHERE_fprint
 (out, wdc1) =
-(
+let
+#impltmp g_print$out<>() = out
+//
+in//let
 case+ wdc1 of
 |
 d0eclseq_WHERE
@@ -977,7 +1000,7 @@ d0eclseq_WHERE
 (
 print
 ("d0eclseq_WHERE(",tbeg,";",topt,";",dcls,";",tend,")"))
-) (*case*) // end of [ d0eclseq_WHERE_fprint(out,wdc1) ]
+end (*let*) // end of [ d0eclseq_WHERE_fprint(out,wdc1) ]
 //
 (* ****** ****** *)
 
