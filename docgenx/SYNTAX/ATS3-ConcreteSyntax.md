@@ -414,9 +414,24 @@ the declaration with the content of the file.
 A declaration for staloading a file creates a namespace for the
 content of the file.
 
+In the following example, the created namespace is unnamed:
+
 ```
 #staload "/path/to/myfile-for-staloading.hats"
 ```
+
+For accessing a name, say, `foo` that is in some unnamed namespace,
+one simply writes `foo`.
+
+In the following example, the created namespace is given the name
+`NS`:
+
+```
+#staload NS = "/path/to/myfile-for-staloading.hats"
+```
+
+For accessing a name, say, `foo` that is in the namespace `NS`, one
+needs to write `$NS.foo`.
 
 ## Documenting, Documenting, Documenting, ...
 
