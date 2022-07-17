@@ -155,9 +155,19 @@ p1_fun_test<d0eclist>
 ("./miscell.dats", p1_d0eclsq1_dyn)
 // *)
 //
-val () =
+val ( ) =
 prerrln("p1_fun_test(1)")
+val ( ) =
+prerrln("p1_fun_test(2): err=", err)
 //
+val ( ) =
+(
+case+ opt of
+|
+optn_nil() => prerrln("opt=optn_nil()")
+|
+optn_cons _ => prerrln("opt=optn_cons(...)")
+)
 (*
 val opt =
 (

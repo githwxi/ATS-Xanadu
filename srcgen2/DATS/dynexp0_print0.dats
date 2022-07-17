@@ -593,19 +593,22 @@ print("D0Cabsimpl(",tknd,";");
 print(sid0,";",smas,";",tres,";");print(teq1,";",def2,")"))
 //
 |
-D0Cinclude(tknd,g0e1) =>
-print("D0Cinclude(",tknd,";",g0e1,")")
-|
-D0Cstaload(tknd,g0e1) =>
-print("D0Cstaload(",tknd,";",g0e1,")")
-//
-|
 D0Csymload
 (tknd,symb,twth,dqid,prec) =>
 (
 print("D0Csymload(",tknd,";");
 print
 (symb,";",twth,";",dqid,";",prec,")"))
+//
+|
+D0Cinclude(tknd,g0e1) =>
+print("D0Cinclude(",tknd,";",g0e1,")")
+|
+D0Cstaload(tknd,g0e1) =>
+print("D0Cstaload(",tknd,";",g0e1,")")
+|
+D0Cdyninit(tknd,g0e1) =>
+print("D0Cdyninit(",tknd,";",g0e1,")")
 //
 |
 D0Cdatasort(tknd,dtcs) =>
@@ -691,7 +694,26 @@ print("T0QAGnone(",tok,")")
 T0QAGsome(tkb,qas,tke) =>
 print("T0QAGsome(",tkb,";",qas,";",tke,")")
 end (*let*) // end of [t0qag_fprint(out,t0q)]
-
+//
+(* ****** ****** *)
+//
+#implfun
+t0iag_fprint
+(out, t0i) =
+let
+#impltmp
+g_print$out<>() = out
+in//in-of-let
+case+
+t0i.node() of
+|
+T0IAGnone(tok) =>
+print("T0IAGnone(",tok,")")
+|
+T0IAGsome(tkb,ses,tke) =>
+print("T0IAGsome(",tkb,";",ses,";",tke,")")
+end (*let*) // end of [t0iag_fprint(out,t0i)]
+//
 (* ****** ****** *)
 //
 #implfun

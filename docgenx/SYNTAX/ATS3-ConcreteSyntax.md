@@ -417,7 +417,7 @@ content of the file.
 In the following example, the created namespace is unnamed:
 
 ```
-#staload "/path/to/myfile-for-staloading.hats"
+#staload "/path/to/myfile-for-staloading.sats"
 ```
 
 For accessing a name, say, `foo` that is in some unnamed namespace,
@@ -427,7 +427,7 @@ In the following example, the created namespace is given the name
 `NS`:
 
 ```
-#staload NS = "/path/to/myfile-for-staloading.hats"
+#staload NS = "/path/to/myfile-for-staloading.dats"
 ```
 
 For accessing a name, say, `foo` that is stored in the namespace `NS`, one

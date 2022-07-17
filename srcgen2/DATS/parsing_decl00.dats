@@ -696,31 +696,6 @@ end (*let*) // end of [T_SRP_EXTERN]
 (* ****** ****** *)
 //
 |
-T_SRP_INCLUDE() =>
-let
-  val tknd = tok
-  val (  ) = buf.skip1()
-  val g0e0 = p1_g0exp(buf, err)
-  val lres = tknd.lctn()+g0e0.lctn()
-in//let
-err := e00;
-d0ecl_make_node( lres, D0Cinclude(tknd, g0e0) )
-end (*let*) // end of [T_SRP_INCLUDE(...)]
-|
-T_SRP_STALOAD() =>
-let
-  val tknd = tok
-  val (  ) = buf.skip1()
-  val g0e0 = p1_g0exp(buf, err)
-  val lres = tknd.lctn()+g0e0.lctn()
-in//let
-err := e00;
-d0ecl_make_node( lres, D0Cstaload(tknd, g0e0) )
-end // end of [T_SRP_STALOAD(...)]
-//
-(* ****** ****** *)
-//
-|
 T_SRP_SYMLOAD() => let
 //
   val tknd = tok
@@ -755,14 +730,53 @@ T_SRP_SYMLOAD() => let
   optn_vt_nil() =>
   (tknd.lctn() + dqid.lctn())
   | ~
-  optn_vt_cons(loc1) => tknd.lctn() + loc1
+  optn_vt_cons(loc1) => tknd.lctn()+loc1
   ) : loc_t // end of [ val(lrec) ]
 //
 in
 err := e00;
 d0ecl_make_node
-(lres, D0Csymload(tknd, symb, twth, dqid, opt1))
+( lres
+, D0Csymload(tknd, symb, twth, dqid, opt1))
 end (*let*) // end of [T_SRP_SYMLOAD(...)]
+//
+(* ****** ****** *)
+//
+|
+T_SRP_INCLUDE() =>
+let
+  val tknd = tok
+  val (  ) = buf.skip1()
+  val g0e1 = p1_g0exp(buf, err)
+  val lres = tknd.lctn()+g0e1.lctn()
+in//let
+err := e00;
+d0ecl_make_node(lres, D0Cinclude(tknd, g0e1))
+end (*let*) // end of [T_SRP_INCLUDE(...)]
+|
+T_SRP_STALOAD() =>
+let
+  val tknd = tok
+  val (  ) = buf.skip1()
+  val g0e1 = p1_g0exp(buf, err)
+  val lres = tknd.lctn()+g0e1.lctn()
+in//let
+err := e00;
+d0ecl_make_node(lres, D0Cstaload(tknd, g0e1))
+end (*let*) // end of [T_SRP_STALOAD(...)]
+//
+(* ****** ****** *)
+|
+T_SRP_DYNINIT() =>
+let
+  val tknd = tok
+  val (  ) = buf.skip1()
+  val g0e1 = p1_g0exp(buf, err)
+  val lres = tknd.lctn()+g0e1.lctn()
+in//let
+err := e00;
+d0ecl_make_node(lres, D0Cdyninit(tknd, g0e1))
+end (*let*) // end of [T_SRP_DYNINIT(...)]
 //
 (* ****** ****** *)
 //
@@ -941,19 +955,27 @@ if
 (err = e00)
 then
 loop
-(buf, err, cons_vt(dcl, res))
+( buf, err
+, cons_vt(dcl, res))
 else
 let
-val tok = buf.getk0() in//let
+val
+tok = buf.getk0() in//let
 //
 case+
 tok.node() of
-|
+| // HX: no more tokens left
 T_EOF() =>
-(err := e00; list_vt_reverse0(res))
-|
-_(*non-T_EOF*) =>
+(err := e00;list_vt_reverse0(res))
+| // HX: there are still
+_(*non-T_EOF*) => // unused tokens
 let
+//
+(*
+HX-2022-07-17:
+skip the current token and continue
+*)
+//
   val
   ( ) = buf.skip1()
   val
