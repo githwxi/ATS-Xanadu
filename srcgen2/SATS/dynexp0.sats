@@ -432,6 +432,13 @@ D0Edtsel of
 (*DOT/MGT*), l0abl, d0expopt(*arg*))
 //
 |
+D0Etry0 of
+( token
+, d0exp
+, token(*WITH*)
+, tokenopt(*BAR*), d0clslst, token )
+//
+|
 D0Elam0 of
 ( token(*lam/lam@*)
 , f0arglst(*arglst*)
@@ -442,13 +449,6 @@ D0Efix0 of
 , d0pid(*fixed-pnt*)
 , f0arglst(*arglst*)
 , s0res, f0unarrw, d0exp, tokenopt )
-//
-|
-D0Etry0 of
-( token
-, d0exp, token(*WITH*)
-, tokenopt, d0clslst, tokenopt(*END*))
-//
 //
 |
 D0Eanno of (d0exp, s0exp) // HX: annotation

@@ -182,7 +182,7 @@ if
 then
 let
 val xs = pred(xs)
-in
+in//let
 if
 rforall$test<x0>(xs) then loop(xs) else false
 end
