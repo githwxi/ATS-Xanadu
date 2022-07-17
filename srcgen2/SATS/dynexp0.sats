@@ -888,16 +888,18 @@ D0Cabsimpl of
 , s0maglst, sort0opt, token, s0exp)
 //
 |
-D0Cinclude of (token, g0exp)
-|
-D0Cstaload of (token, g0exp)
-//
-|
 D0Csymload of
 ( token
 , s0ymb
 , token(*WITH*)
 , d0qid(*qual-id*), precopt)
+//
+|
+D0Cinclude of (token, g0exp)//inclusion
+|
+D0Cstaload of (token, g0exp)//staloading
+|
+D0Cdyninit of (token, g0exp)//initization
 //
 |
 D0Cdatasort of

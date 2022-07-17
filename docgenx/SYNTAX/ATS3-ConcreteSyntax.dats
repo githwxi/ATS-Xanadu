@@ -102,4 +102,11 @@ case+ xs of
 
 (* ****** ****** *)
 
+#include "/path/to/myfile-for-inclusion.hats"
+#staload "/path/to/myfile-for-staloading.sats"
+#dyninit "/path/to/myfile-for-dyniniting.dats"
+#staload NS = "/path/to/myfile-for-staloading.dats"
+
+(* ****** ****** *)
+
 (* end of [ATS3-ConcreteSyntax.dats] *)

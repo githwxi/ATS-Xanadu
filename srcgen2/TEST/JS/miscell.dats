@@ -67,4 +67,11 @@ list_cons(_, xs) => (if(xs|xs)then(0)else(1)) where { val xxx = yyy }
 
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_basics0.dats] *)
+#include "myfile-for-inclusion.hats"
+#staload "myfile-for-staloading.sats"
+#dyninit "myfile-for-dyniniting.dats"
+#staload NS = "myfile-for-staloading.dats"
+
+(* ****** ****** *)
+
+(* end of [ATS3/XANADU_prelude_miscell.dats] *)
