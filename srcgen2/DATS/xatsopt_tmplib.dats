@@ -433,6 +433,10 @@ g_print<d0exp_ELSE>(dels) =
 d0exp_ELSE_fprint(g_print$out<>(), dels)
 //
 (* ****** ****** *)
+#impltmp
+g_print<tkend_WHERE>(tend) =
+tkend_WHERE_fprint(g_print$out<>(), tend)
+(* ****** ****** *)
 //
 #impltmp
 g_print<d0pat_RPAREN>(drp0) =
@@ -450,6 +454,10 @@ d0exp_RPAREN_fprint(g_print$out<>(), drp0)
 g_print<l0d0e_RBRACE>(ldrb) =
 l0d0e_RBRACE_fprint(g_print$out<>(), ldrb)
 //
+(* ****** ****** *)
+#impltmp
+g_print<d0eclseq_WHERE>(dcls) =
+d0eclseq_WHERE_fprint(g_print$out<>(), dcls)
 (* ****** ****** *)
 //
 #impltmp

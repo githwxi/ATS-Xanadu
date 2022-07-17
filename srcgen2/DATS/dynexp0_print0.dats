@@ -229,11 +229,24 @@ print
 print(d0e1,";",tof0,";",tbar,";",dcls,")"))
 |
 D0Ecas1
-(tknd,d0e1,tof0,tbar,dcls,tinv) =>
+(tknd
+,d0e1,tof0,tbar,dcls,tinv) =>
 (
 print
 ("D0Ecas0(",tknd,";",d0e1,";");
 print(tof0,";",tbar,";",dcls,";",tinv,")"))
+//
+|
+D0Elet0
+(tknd,dcls,topt,d0es,tend) =>
+(
+print("D0Elet0(",tknd,";");
+print(dcls,";",topt,";",d0es,";",tend,")"))
+//
+|
+D0Ewhere(d0e1,dcl2) =>
+print
+("D0Ewhere(",d0e1,";",dcl2,")")
 //
 |
 D0Elam0
@@ -938,9 +951,9 @@ end(*let*)//end-of-[d0fundcl_fprint(out,d0cl)]
 //
 #implfun
 wd0eclseq_fprint
-  (out, wdcs) =
+(out, wdc1) =
 (
-case+ wdcs of
+case+ wdc1 of
 |
 WD0CSnone() =>
 print("WD0CSnone(", ")")
@@ -949,7 +962,22 @@ WD0CSsome(tbeg, topt, dcls, tend) =>
 (
 print
 ("WD0CSsome(",tbeg,";",topt,";",dcls,";",tend,")"))
-) (*case*) // end of [ wd0eclseq_fprint(out,wdcs) ]
+) (*case*) // end of [ wd0eclseq_fprint(out,wdc1) ]
+//
+(* ****** ****** *)
+//
+#implfun
+d0eclseq_WHERE_fprint
+(out, wdc1) =
+(
+case+ wdc1 of
+|
+d0eclseq_WHERE
+(tbeg, topt, dcls, tend) =>
+(
+print
+("d0eclseq_WHERE(",tbeg,";",topt,";",dcls,";",tend,")"))
+) (*case*) // end of [ d0eclseq_WHERE_fprint(out,wdc1) ]
 //
 (* ****** ****** *)
 
