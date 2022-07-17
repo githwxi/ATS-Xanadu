@@ -130,7 +130,17 @@ The following keywords are for forming expressions:
 - <code>$rec_vt</code>:
   for forming a boxed record that may contain linear components. The formed record is
   linear even if there are no linear components in it.
-  
+- <code>lam-=>-end</code>
+  The kewords `lam`, `=>` and `end` (or `endlam`) are for forming lam-expressions
+  (representing nameless functions). Note that the use of `endlam` is optional.
+- <code>fix-=>-end</code>
+  The kewords `fix`, `=>` and `end` (or `endfix`) are for forming fix-expressions
+  (representing nameless recursive functions). Note that the use of `endfix` is optional.
+- <code>let-in-end</code>:
+  The kewords `let`, `in` and `end` (or `endlet`) are for forming let-expressions.
+- <code>try-with-end</code>:
+  The kewords `try`, `with` and `end` (or `endtry`) are for forming try-expressions.
+      
 Some of the commonly used keywords for forming declarations are listed as follows:
 
 - <code>val</code>
