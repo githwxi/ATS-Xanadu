@@ -331,6 +331,8 @@ val () = kwdins("#include", T_SRP_INCLUDE)
 val () = kwdins("#staload", T_SRP_STALOAD)
 val () = kwdins("#symload", T_SRP_SYMLOAD)
 //
+val () = kwdins("#dyninit", T_SRP_DYNINIT)
+//
 end where
 {
   #symload

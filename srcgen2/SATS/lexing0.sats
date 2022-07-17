@@ -260,7 +260,7 @@ datatype tnode =
   | T_SRP_SYMLOAD of () // #symload
 //
   | T_SRP_STALOAD of () // #staload
-  | T_SRP_DYNLOAD of () // #dynload
+  | T_SRP_DYNINIT of () // #dyninit
 //
   | T_SRP_INCLUDE of () // #include
 (*

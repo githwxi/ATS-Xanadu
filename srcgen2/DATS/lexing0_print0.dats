@@ -448,8 +448,8 @@ print("T_SRP_SYMLOAD(", ")")
 T_SRP_STALOAD() =>
 print("T_SRP_STALOAD(", ")")
 |
-T_SRP_DYNLOAD() =>
-print("T_SRP_DYNLOAD(", ")")
+T_SRP_DYNINIT() =>
+print("T_SRP_DYNINIT(", ")")
 |
 T_SRP_INCLUDE() =>
 print("T_SRP_INCLUDE(", ")")
