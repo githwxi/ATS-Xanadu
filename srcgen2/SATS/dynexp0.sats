@@ -420,10 +420,8 @@ D0Elet0 of
 , d0eclist
 , tokenopt(*IN*), d0explst, token)
 //
-(*
 |
 D0Ewhere of (d0exp, d0eclseq_WHERE)
-*)
 //
 |
 D0Ebrckt of
@@ -636,12 +634,20 @@ d0exp_ELSE_fprint
 (out:FILR, dels:d0exp_ELSE): void
 (* ****** ****** *)
 fun
+tkend_WHERE_fprint
+(out:FILR, twhr:tkend_WHERE): void
+(* ****** ****** *)
+fun
 d0exp_RPAREN_fprint
 (out:FILR, drp0:d0exp_RPAREN): void
 fun
 l0d0e_RBRACE_fprint
 (out:FILR, ldrb:l0d0e_RBRACE): void
 //
+(* ****** ****** *)
+fun
+d0eclseq_WHERE_fprint
+(out:FILR, dcls:d0eclseq_WHERE): void
 (* ****** ****** *)
 //
 fun
@@ -696,6 +702,10 @@ fun
 l0d0e_RBRACE_lctn
   (ldrb: l0d0e_RBRACE): loc_t
 //
+fun
+tkend_WHERE_lctn
+  (twhr : tkend_WHERE): loc_t
+//
 (* ****** ****** *)
 //
 #symload lctn with t0qua_get_lctn
@@ -703,6 +713,9 @@ l0d0e_RBRACE_lctn
 //
 #symload lctn with d0exp_THEN_lctn
 #symload lctn with d0exp_ELSE_lctn
+//
+#symload lctn with tkend_WHERE_lctn
+//
 #symload lctn with d0exp_RPAREN_lctn
 #symload lctn with l0d0e_RBRACE_lctn
 //
@@ -939,7 +952,7 @@ D0Cdatatype of
 //
 |
 D0Cdynconst of
-(token(*fnk/vlk*), t0qaglst, d0cstdclist)
+(token(*fnk//vlk*), t0qaglst, d0cstdclist)
 //
 (*
 HX-2022-06-20:

@@ -673,6 +673,13 @@ fun p1_t0quaseq: p1_fun(t0qualst)
 #extern
 fun p1_t0endinv: p1_fun(t0endinv)
 (* ****** ****** *)
+#extern
+fun
+p1_tkend_WHERE: p1_fun(tkend_WHERE)
+#extern
+fun
+p1_d0eclseq_WHERE: p1_fun(list(d0eclseq_WHERE))
+(* ****** ****** *)
 
 local
 //
@@ -892,6 +899,44 @@ end (*let*) // HX: indicating a parsing error
 //
 end (*let*) // end of [ p1_napps(buf, err) ]
 
+(* ****** ****** *)
+
+fun
+f0_whereseq
+( d0e0
+: d0exp
+, wdcs
+: list(d0eclseq_WHERE)
+) : d0exp =
+(
+case+ wdcs of
+|
+list_nil
+((*void*)) => d0e0
+|
+list_cons
+(wdc1, wdcs) =>
+(
+f0_whereseq(d0e1, wdcs)) where
+{
+val
+d0e1 =
+(
+d0exp
+( loc1
+, D0Ewhere(d0e0, wdc1))) where
+{
+val loc1 =
+(
+case+ wdc1 of
+| d0eclseq_WHERE
+  (_, _, _, tend) =>
+  (d0e0.lctn() + tend.lctn())): loc_t
+}
+}(*end of [list_cons]*)
+//
+)(*case*)//end-of(f0_whereseq(d0e0,wdcs))
+
 in//local
 
 #implfun
@@ -906,7 +951,8 @@ p1_d0expseq_atm(buf, err)
 //
 // (*
 val () =
-prerrln("p1_d0exp: d0es = ", d0es)
+prerrln
+("p1_d0exp: d0es = ", d0es)
 // *)
 //
 in//let
@@ -920,12 +966,12 @@ p1_napps(buf, err)
 list_cons
 (d0e1, des2) =>
 let
+//
+val d0e0 =
+f0_whereseq(d0e0, wdcs)
+//
 val sopt =
 pq_s0exp_anno(buf, err)
-(*
-val d0e0 =
-auxwhr_list(d0e0, wdcs)
-*)
 //
 in//let
   d0exp_anno_opt(d0e0, sopt)
@@ -946,10 +992,10 @@ in
 d0exp_make_node(loc0, D0Eapps(d0es))
 endlet // end of [list_cons]
 ) : d0exp // end of [val(d0e0)]
-(*
-val wdcs = ps_d0eclseq_WHERE(buf, err)
-*)
-} (* end of [ list_cons(...) ] *)
+//
+val wdcs = p1_d0eclseq_WHERE(buf,err)
+//
+} (*where*) // end of [list_cons(...)]
 //
 endlet // end of [ p1_d0exp(buf, err) ]
 
@@ -2330,6 +2376,92 @@ ntk(tnd: tnode): bool =
 } (*where*)//end-of(p1_d0exp_app_NBAR(buf,err))
 //
 endloc(*local*)//end-of[local(p1_d0exp_app_ntk]
+
+(* ****** ****** *)
+//
+#implfun
+p1_tkend_WHERE
+  (buf, err) = let
+//
+val e00 = err
+val tok = buf.getk0()
+//
+in
+  case+
+  tok.node() of
+//
+|
+T_RBRACE() =>
+let
+  val tok1 = tok
+  val (  ) = buf.skip1()
+  val tok2 = buf.getk0()
+in//let
+case+
+tok2.node() of
+|
+T_ENDWHR() =>
+let
+  val () = buf.skip1()
+in
+tkend_WHERE_cons2(tok1,optn_cons(tok2))
+end
+|
+_(*non-END*) => tkend_WHERE_cons1(tok1)
+end (*let*) // end of [ T_RBRACE() ]
+//
+|
+T_ENDWHR() =>
+let
+  val (  ) =
+  buf.skip1() in tkend_WHERE_cons1(tok)
+end
+//
+|
+_ (* non-END *) =>
+let
+val () =
+(err := e00 + 1) in tkend_WHERE_cons1(tok)
+end
+end (*let*) // end of [p1_tkend_WHERE(buf,err)]
+//
+(* ****** ****** *)
+
+#implfun
+p1_d0eclseq_WHERE
+  (buf, err) = let
+//
+val tok = buf.getk0()
+//
+in//let
+//
+case+
+tok.node() of
+|
+T_WHERE() => let
+//
+val twhr = tok
+val (  ) = buf.skip1()
+val topt =
+  pq_LBRACE(buf, err)
+val d0cs =
+  p1_d0eclseq_dyn(buf, err)
+//
+val tend = p1_tkend_WHERE(buf, err)
+//
+in//let
+//
+list_cons
+( d0c0
+, p1_d0eclseq_WHERE(buf, err)) where
+{
+val d0c0 =
+d0eclseq_WHERE(twhr, topt, d0cs, tend) }
+//
+end
+| _(* non-T_WHERE *) => list_nil((*void*))
+//
+end(*let*)//end(pseq_d0eclseq_WHERE(buf,err))
 
 (* ****** ****** *)
 
