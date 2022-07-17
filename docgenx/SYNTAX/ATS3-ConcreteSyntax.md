@@ -430,7 +430,7 @@ In the following example, the created namespace is given the name
 #staload NS = "/path/to/myfile-for-staloading.hats"
 ```
 
-For accessing a name, say, `foo` that is in the namespace `NS`, one
+For accessing a name, say, `foo` that is stored in the namespace `NS`, one
 needs to write `$NS.foo`.
 
 ## Documenting, Documenting, Documenting, ...

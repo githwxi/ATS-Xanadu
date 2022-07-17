@@ -962,6 +962,7 @@ let
 in
   loop(buf, err, cons_vt(dcl, res))
 end(*let*)//end-of[(*non-T_EOF*)]
+end(*let*)//end-of[else]//end-of(if)
 //
 end(*let*)//end-of[loop(buf,err,res)]
 //
