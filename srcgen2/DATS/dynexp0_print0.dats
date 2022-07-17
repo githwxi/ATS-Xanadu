@@ -287,6 +287,10 @@ D0Eanno(d0e1,s0e2) =>
 print("D0Eanno(",d0e1,";",s0e2,")")
 //
 |
+D0Equal(tok1,d0e2) =>
+print("D0Equal(",tok1,";",d0e2,")")
+//
+|
 D0Etkerr(tok) => print("D0Etkerr(", tok, ")")
 //
 |

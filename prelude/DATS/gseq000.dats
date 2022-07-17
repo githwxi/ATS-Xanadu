@@ -875,7 +875,7 @@ gseq_foldl
 {
 #impltmp
 foldl$fopr
- <x0><r0>
+< x0><r0 >
 ( r0, x0 ) =
 list_vt_cons(map$fopr<x0><y0>(x0), r0)
 }
@@ -1035,8 +1035,8 @@ gseq_foldl
 {
   #impltmp
   foldl$fopr
-  <x0><r0>
-  (r0, x0) =
+  < x0><r0 >
+  ( r0, x0 ) =
   if
   filter$test<x0>(x0)
   then list_vt_cons(x0, r0) else r0
@@ -2109,7 +2109,7 @@ gseq_ifoldl
 {
 #impltmp
 ifoldl$fopr
- <x0><r0>
+< x0 >< r0 >
 ( r0, i0, x0 ) =
 list_vt_cons
 ( imap$fopr<x0><y0>(i0, x0), r0 )
