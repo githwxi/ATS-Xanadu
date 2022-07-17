@@ -130,16 +130,16 @@ The following keywords are for forming expressions:
 - <code>$rec_vt</code>:
   for forming a boxed record that may contain linear components. The formed record is
   linear even if there are no linear components in it.
+- <code>let-in-end</code>:
+  The kewords `let`, `in` and `end` (or `endlet`) are for forming let-expressions.
+- <code>try-with-end</code>:
+  The kewords `try`, `with` and `end` (or `endtry`) are for forming try-expressions.
 - <code>lam-=>-end</code>
   The kewords `lam`, `=>` and `end` (or `endlam`) are for forming lam-expressions
   (representing nameless functions). Note that the use of `endlam` is optional.
 - <code>fix-=>-end</code>
   The kewords `fix`, `=>` and `end` (or `endfix`) are for forming fix-expressions
   (representing nameless recursive functions). Note that the use of `endfix` is optional.
-- <code>let-in-end</code>:
-  The kewords `let`, `in` and `end` (or `endlet`) are for forming let-expressions.
-- <code>try-with-end</code>:
-  The kewords `try`, `with` and `end` (or `endtry`) are for forming try-expressions.
       
 Some of the commonly used keywords for forming declarations are listed as follows:
 
@@ -196,7 +196,7 @@ find some examples of indentifiers as follows:
 There may be certain restrictions (yet to be specified) to be imposed
 on the use of the char `$` in an identifier.
 
-Fixity Delarations
+Fixity Declarations
 ------------------
 
 ATS3 supports prefix, infix, and postfix operators.
@@ -267,7 +267,7 @@ There are many forms of dynamic expressions in ATS3.  A dynamic
 expression is atomic if it cannot result in parsing ambiguities when
 put in any contexts.
 
-### Let-expressions
+### Let-Expressions
 
 Let-expressions are atomic.
 A let-expression starts with the keyword `let` and ends with the
@@ -295,7 +295,7 @@ If the keyword `in` is missing in a let-expression, then the
 let-expression is in a truncated form consisting of only declarations
 between the keywords `let` and `end`.
 
-### Try-expressions
+### Try-Expressions
 
 Try-expressions are atomic.
 A try-expression starts with the keyword `try` and ends with the
@@ -318,12 +318,12 @@ endtry
 try auxlst(xs); false with ~TRUE() => true end
 ```
 
-### Lazy-expressions
+### Lazy-Expressions
 
 A lazy expression starts with the keyword `$lazy` followed by an
 atomic expression.
 
-### Llazy-expressions
+### Llazy-Expressions
 
 A llazy (that is, linearly lazy) expression starts with the keyword
 `$llazy` followed by an atomic expression such that the atomic expression
@@ -331,22 +331,21 @@ represents a sequence of expressions where the last one is the suspended
 computation and those before the last one are for freeing the resources contained
 in the suspended computation.
 
-
 Static Declarations
 -------------------
 
-### Stacst-Delarations
+### Stacst-Declarations
 
-### Staexp-Delarations
+### Staexp-Declarations
 
 Dynamic Declarations
 --------------------
 
-### Value-Delarations
+### Value-Declarations
 
-### Variable-Delarations
+### Variable-Declarations
 
-### Function Delarations
+### Function Declarations
 
 In ATS3, there are (regular) functions and there are function
 templates.  We often use the word `function` to refer to either a
@@ -377,7 +376,7 @@ For those familiar with ATS2 (i.e., ATS/Postiats), please note that
 the syntax `<a:type>` (following the keyword `fun`) corresponds to the
 syntax `{a:t@ype}` in ATS2.
 
-Implement-Delarations
+Implement-Declarations
 ---------------------
 
 An implement-declaration implements a previously declared dynamic constant.
@@ -391,12 +390,32 @@ fun fact(x: int): int
 The name `fact` is not associated with a definition at the point where
 it is declared. Instead, an implement-declaration for `fact` can be given
 elsewhere as follows:
-
   
 ```
 implfun
 fact(x) =
 if x > 0 then x * fact(x-1) else 1
+```
+
+Loading-Declarations
+--------------------
+
+### Inclusion of a File
+
+A declaration for including a file essentially means to replace
+the declaration with the content of the file.
+
+```
+#include "/path/to/myfile-for-inclusion.hats"
+```
+
+### Static Loading of a File
+
+A declaration for staloading a file creates a namespace for the
+content of the file.
+
+```
+#staload "/path/to/myfile-for-staloading.hats"
 ```
 
 ## Documenting, Documenting, Documenting, ...
