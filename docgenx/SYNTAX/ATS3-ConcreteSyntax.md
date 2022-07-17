@@ -144,8 +144,13 @@ Some of the commonly used keywords for forming declarations are listed as follow
 - <code>#stacst0</code>: for introducing a static constant of some (predicative) sort.
 - <code>#sexpdef</code>: for introducing a name for a static expression (of any sort).
 - <code>#typedef</code>:
-  for introducing a name for a static expression of some (impredicative) sort (such as
-  types, props, and views).
+  for introducing a name for a static expression of the sort `type`.
+- <code>#propdef</code>:
+  for introducing a name for a static expression of the sort `prop`.
+- <code>#viewdef</code>:
+  for introducing a name for a static expression of the sort `view`.
+- <code>#vwtpdef</code>:
+  for introducing a name for a static expression of the sort `viewtype`.
 - <code>datasort</code>:
   for introducing a datasort together with constructors for constructing
   static terms of the sort. Note that the introduced sort and constructors are
@@ -158,7 +163,8 @@ Some of the commonly used keywords for forming declarations are listed as follow
 - <code>#implval</code>: for initiating the implementation of a value.
 - <code>#implfun</code>: for initiating the implementation of a function.
 - <code>#impltmp</code>: for initiating the implementation of a (function) template.
-    
+- <code>#implmnt</code>: for use in place of `#implval`, `#implfun`, or `impltmp`.
+      
 Identifiers
 -----------
 
