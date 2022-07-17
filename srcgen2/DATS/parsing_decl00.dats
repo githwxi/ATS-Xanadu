@@ -854,24 +854,9 @@ d0ecl_make_node(lres, D0Cfixity(tknd,dnts,opt1))
 end // end of [T_SRP_FIXITY(k0)]
 //
 (* ****** ****** *)
-//
-| T_IN0() => // HX: let-IN-end / local-IN-end
-(err := e00 + 1; d0ecl(tok.lctn(), D0Ctkerr(tok)))
-| _
-when
-ENDq(tnd) => // HX: end / endlam/fix/let/whr/loc
-(err := e00 + 1; d0ecl(tok.lctn(), D0Ctkerr(tok)))
-//
 | _(* else *) =>
-(
-case+ tnd of
-| T_EOF() =>
 (err := e00 + 1; d0ecl(tok.lctn(), D0Ctkerr(tok)))
-| _(*non-T_EOF*) =>
-let
-val () =
-buf.skip1() in d0ecl(tok.lctn(), D0Ctkskp(tok)) end
-)
+(* ****** ****** *)
 //
 end (*let*) // end-of-[ fp_d0ecl( f00, buf, err ) ]
 
@@ -927,6 +912,81 @@ p1_d0eclseq_dyn
 (buf, err) = fp_d0eclseq(DYN, buf, err)
 //
 endloc(*local*)//end-of[local(p1_declseq...)]
+
+(* ****** ****** *)
+
+#implfun
+fp_d0eclsq1
+(f00, buf, err) =
+let
+//
+  val e00 = err
+//
+fnx
+loop
+( buf:
+! tkbf0 >> _
+, err
+: &sint >> _
+, res
+: list_vt(d0ecl)
+) : list_vt(d0ecl) =
+let
+val
+dcl =
+fp_d0ecl
+(f00, buf, err) in//let
+//
+if
+(err = e00)
+then
+loop
+(buf, err, cons_vt(dcl, res))
+else
+let
+val tok = buf.getk0() in//let
+//
+case+
+tok.node() of
+|
+T_EOF() =>
+(err := e00; list_vt_reverse0(res))
+|
+_(*non-T_EOF*) =>
+let
+  val
+  ( ) = buf.skip1()
+  val
+  dcl =
+  d0ecl(tok.lctn(), D0Ctkskp(tok))
+in
+  loop(buf, err, cons_vt(dcl, res))
+end(*let*)//end-of[(*non-T_EOF*)]
+//
+end(*let*)//end-of[loop(buf,err,res)]
+//
+in
+list_vt2t
+(loop(buf, err, list_vt_nil(*void*)))
+end(*let*)//end-of[fp_d0eclsq1(f00,buf,err)]
+
+(* ****** ****** *)
+
+local
+//
+#define STA 0
+#define DYN 1
+//
+in//local
+//
+#implfun
+p1_d0eclsq1_sta
+(buf, err) = fp_d0eclsq1(STA, buf, err)
+#implfun
+p1_d0eclsq1_dyn
+(buf, err) = fp_d0eclsq1(DYN, buf, err)
+//
+endloc(*local*)//end-of[local(p1_declsq1...)]
 
 (* ****** ****** *)
 //

@@ -489,13 +489,18 @@ fp_d0eclseq: fp_fun(d0eclist)
 (* ****** ****** *)
 //
 fun
-fp_d0eclseq_top: fp_fun(d0eclist)
+fp_d0eclsq1: fp_fun(d0eclist)
 //
 (* ****** ****** *)
 fun
 p1_d0eclseq_sta: p1_fun(d0eclist)
 fun
 p1_d0eclseq_dyn: p1_fun(d0eclist)
+(* ****** ****** *)
+fun
+p1_d0eclsq1_sta: p1_fun(d0eclist)
+fun
+p1_d0eclsq1_dyn: p1_fun(d0eclist)
 (* ****** ****** *)
 (*
 //
