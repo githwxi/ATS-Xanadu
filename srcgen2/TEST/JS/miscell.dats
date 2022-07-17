@@ -3,11 +3,18 @@
 Thu Jul 14 12:57:48 EDT 2022
 *)
 (* ****** ****** *)
-
+//
 val x1 = 10
+//
 val x2 = 20
-and x3 = $lam($10 + $20)
-
+and x3 =
+$lam($10 + $20)
+//
+val x4 =
+$lam($10 + $20)
+where
+{ val foo1 = bar2 }
+//
 (* ****** ****** *)
 
 val id = lam(x) => x

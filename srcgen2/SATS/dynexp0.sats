@@ -689,35 +689,10 @@ t0qua_get_lctn:t0qua->loc_t
 fun
 t0inv_get_lctn:t0inv->loc_t
 //
-fun
-d0exp_THEN_lctn
-  (dthn: d0exp_THEN): loc_t
-fun
-d0exp_ELSE_lctn
-  (dels: d0exp_THEN): loc_t
-fun
-d0exp_RPAREN_lctn
-  (d0rp: d0exp_RPAREN): loc_t
-fun
-l0d0e_RBRACE_lctn
-  (ldrb: l0d0e_RBRACE): loc_t
-//
-fun
-tkend_WHERE_lctn
-  (twhr : tkend_WHERE): loc_t
-//
 (* ****** ****** *)
 //
 #symload lctn with t0qua_get_lctn
 #symload lctn with t0inv_get_lctn
-//
-#symload lctn with d0exp_THEN_lctn
-#symload lctn with d0exp_ELSE_lctn
-//
-#symload lctn with tkend_WHERE_lctn
-//
-#symload lctn with d0exp_RPAREN_lctn
-#symload lctn with l0d0e_RBRACE_lctn
 //
 (* ****** ****** *)
 fun
