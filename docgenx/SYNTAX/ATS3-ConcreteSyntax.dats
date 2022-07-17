@@ -88,4 +88,18 @@ if x > 0 then x * fact(x-1) else 1
 
 (* ****** ****** *)
 
+#extern
+fun
+<a:t0>
+length(xs: list(a)): sint
+#impltmp
+{a:t0}
+length<a>(xs) =
+(
+case+ xs of
+| list_nil() => 0
+| list_cons(_, xs) => 1 + length<a>(xs))
+
+(* ****** ****** *)
+
 (* end of [ATS3-ConcreteSyntax.dats] *)
