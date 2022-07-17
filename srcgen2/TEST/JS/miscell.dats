@@ -74,4 +74,9 @@ list_cons(_, xs) => (if(xs|xs)then(0)else(1)) where { val xxx = yyy }
 
 (* ****** ****** *)
 
+val xyz =
+(loop(i0, r0); fold(r0))
+
+(* ****** ****** *)
+
 (* end of [ATS3/XANADU_prelude_miscell.dats] *)

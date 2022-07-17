@@ -1491,32 +1491,9 @@ T_TRY() => let
   val dcls =
     p1_d0clsseq_BAR( buf, err )
 //
-  val tend = pq_ENDTRY(buf, err)
+  val tend = p1_ENDTRY(buf, err)
 //
-  val lres =
-    tok1.lctn()+lend where
-  {
-    val lend =
-    (
-    case+ tend of
-    | optn_nil() =>
-    (
-    case+ dcls of
-    | list_nil() =>
-    (
-    case+ tbar of
-    | optn_nil() => tok2.lctn()
-    | optn_cons(tbar) => tbar.lctn()
-    )
-    | list_cons _ =>
-      let
-      val dcl1 =
-      list_last(dcls) in dcl1.lctn()
-      endlet // end of [ list_cons ]
-    )
-    | optn_cons(tend) => tend.lctn()
-    ) : loc_t // end of [ val(lend) ]
-  }
+  val lres = tok1.lctn()+tend.lctn()
 //
 in
   err := e00

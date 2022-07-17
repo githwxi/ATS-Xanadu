@@ -249,6 +249,23 @@ print
 ("D0Ewhere(",d0e1,";",dcl2,")")
 //
 |
+D0Ebrckt(tbeg,d0es,tend) =>
+print
+("D0Ebrckt(",tbeg,";",d0es,";",tend,")")
+|
+D0Edtsel(tknd,lab1,opt2) =>
+print
+("D0Edtsel(",tknd,";",lab1,";",opt2,")")
+//
+|
+D0Etry0
+(tknd,d0e1,twth,tbar,dcls,tend) =>
+//
+(
+print
+("D0Etry0(",tknd,";",d0e1,";");
+print(twth,";",tbar,";",dcls,";",tend,")"))
+|
 D0Elam0
 (tknd,farg,sres,arrw,body,tend) =>
 (
