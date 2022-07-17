@@ -192,6 +192,8 @@ list_vt_cons
 //
 end (*let*) // end of [lxbf2_getc0]
 
+(* ****** ****** *)
+
 #implfun
 lxbf2_getc1
 (   buf   ) =
