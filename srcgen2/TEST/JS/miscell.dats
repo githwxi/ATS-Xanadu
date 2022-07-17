@@ -1,6 +1,6 @@
 (* ****** ****** *)
 (*
-Thu Jul 14 12:57:48 EDT 2022
+thu Jul 14 12:57:48 EDT 2022
 *)
 (* ****** ****** *)
 //
@@ -62,7 +62,7 @@ list_nil() => 0
 |
 list_cons(_, xs) => 1 + list_length<a>(xs)
 |
-list_cons(_, xs) => (if(xs|xs)then(0)else(1))
+list_cons(_, xs) => (if(xs|xs)then(0)else(1)) where { val xxx = yyy }
 )
 
 (* ****** ****** *)

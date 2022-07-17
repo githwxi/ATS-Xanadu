@@ -2103,8 +2103,7 @@ tkend_WHERE_cons2
 (
 case+ topt of
 | optn_nil( ) => tok1.lctn()
-| optn_cons(tok2) => tok1.lctn()+tok2.lctn()
-)
+| optn_cons(tok2) => tok1.lctn()+tok2.lctn())
 ) (*case*) // end of [tkend_WHERE_lctn(node)]
 (* ****** ****** *)
 
@@ -2373,23 +2372,76 @@ end (*let*) // end of [else]
 end (*let*) // end of [f1_ngt]
 //
 val d0e1 = f1_ngt(buf, err)
+//
 val d0es =
-list_vt2t(ps_p1fun{d0exp}(buf,err,f1_ngt))
+list_vt2t
+(ps_p1fun{d0exp}(buf,err,f1_ngt))
 //
-in
-//
+val d0e0 =
+(
 case+ d0es of
 |
-list_nil
-((*void*)) => d0e1
+list_nil _ => d0e1
 |
 list_cons _ =>
 let
-  val d0e2 = list_last(d0es)
-  val lres = d0e1.lctn()+d0e2.lctn()
+val d0e2 =
+list_last(d0es)
+val loc0 =
+(d0e1.lctn()+d0e2.lctn())
 in//let
-d0exp(lres, D0Eapps(list_cons(d0e1,d0es)))
-end // end of [list_cons]
+d0exp_make_node
+(loc0
+,D0Eapps(list_cons(d0e1,d0es))) end
+) : d0exp //case//end-of-(val(d0e0))
+//
+in//let
+(
+d0exp_anno_opt(d0e0, sopt))
+where
+{
+val wdcs =
+p1_d0eclseq_WHERE(buf,err)
+val d0e0 = f0_whereseq(d0e0, wdcs)
+val sopt = pq_s0exp_anno(buf, err) }
+where
+{
+fun
+f0_whereseq
+( d0e0
+: d0exp
+, wdcs
+: list(d0eclseq_WHERE)
+) : d0exp =
+(
+case+ wdcs of
+|
+list_nil
+((*void*)) => d0e0
+|
+list_cons
+(wdc1, wdcs) =>
+(
+f0_whereseq(d0e1, wdcs)) where
+{
+val
+d0e1 =
+(
+d0exp
+( loc1
+, D0Ewhere(d0e0, wdc1))) where
+{
+val loc1 =
+(
+case+ wdc1 of
+| d0eclseq_WHERE
+  (_, _, _, tend) =>
+  (d0e0.lctn() + tend.lctn())): loc_t
+}
+}(*end of [list_cons]*)
+//
+)(*case*)//end-of(f0_whereseq(d0e0,wdcs))
+}
 //
 end(*let*)//end(p1_d0exp_app_ntk(buf,err,ntk))
 //
@@ -2418,10 +2470,13 @@ p1_tkend_WHERE
 val e00 = err
 val tok = buf.getk0()
 //
-in
-  case+
-  tok.node() of
+val ( ) =
+prerrln
+("p1_tkend_WHERE: tok = ", tok)
 //
+in
+case+
+tok.node() of
 |
 T_RBRACE() =>
 let

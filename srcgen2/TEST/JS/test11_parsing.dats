@@ -152,7 +152,7 @@ prerrln("p1_fun_test(0)")
 // (*
 val opt =
 p1_fun_test<d0eclist>
-("./miscell.dats", p1_d0eclseq_dyn)
+("./miscell.dats", p1_d0eclsq1_dyn)
 // *)
 //
 val () =

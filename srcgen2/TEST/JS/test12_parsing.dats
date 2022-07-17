@@ -152,7 +152,7 @@ prerrln("p1_fun_test(0)")
 // (*
 val opt =
 p1_fun_test<d0eclist>
-("./../../../docgenx/SYNTAX/ATS3-ConcreteSyntax.dats", p1_d0eclseq_dyn)
+("./../../../docgenx/SYNTAX/ATS3-ConcreteSyntax.dats", p1_d0eclsq1_dyn)
 // *)
 //
 val () =
