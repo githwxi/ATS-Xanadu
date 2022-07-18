@@ -137,11 +137,13 @@ The following keywords are for forming expressions:
   an if-expression.
 - <code>case-of-endcas</code>:
   The keywords `case`, `of` and `endcas` (not `end`) are for forming case-expressions.
-  Note that the keyword `end` in a case-expression is optional.
+  Note that the use of `endcas` is optional.
 - <code>let-in-endlet</code>:
   The keywords `let`, `in` and `endlet` (or `end`) are for forming let-expressions.
+  Note that the use of `endlet` (or `end`) is not optional.
 - <code>try-with-endtry</code>:
   The keywords `try`, `with` and `endtry` (or `end`) are for forming try-expressions.
+  Note that the use of `endtry` (or `end`) is not optional.
 - <code>lam-=>-endlam</code>
   The keywords `lam` (short for lambda), `=>` and `endlam` (not `end`) are for forming
   lam-expressions (representing nameless functions). Note that the use of `endlam` is optional.
@@ -158,7 +160,8 @@ Some of the commonly used keywords for forming declarations are listed as follow
   for introduction a variable-declaration (or var-declaration for short).
 - <code>fun</code>: for
   introducing a function-declaration (or fun-declaration for short).
-  Some of its variants are: `fn`, `fn0`, `fn1`, and `fnx`.
+  Some of its variants are: `fn` (which is the same as `fn0`), `fn0` (for non-recursive functions),
+  `fn1` (for recursive functions), and `fnx` (for tail-recursive functions).
 - <code>#stacst0</code>: for introducing a static constant of some (predicative) sort.
 - <code>#sexpdef</code>: for introducing a name for a static expression (of any sort).
 - <code>#typedef</code>:
