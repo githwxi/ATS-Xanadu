@@ -201,11 +201,11 @@ tnode =
 //
   | T_ENDST of ()
 //
+  | T_ENDIF0 of () // 'endif'
+  | T_ENDCAS of () // 'endcas'
 (*
-  | T_ENDIF of () // 'endif'
   | T_ENDSIF of () // 'endsif'
-  | T_ENDCASE of () // 'endcase'
-  | T_ENDSCASE of () // 'endscase'
+  | T_ENDSCAS of () // 'endscas'
 *)
 //
   | T_LAM of int
@@ -219,6 +219,7 @@ tnode =
   | T_LOCAL of () // 'local'
 //
   | T_ENDLAM of () // 'endlam'
+  | T_ENDFIX of () // 'endlam'
   | T_ENDLET of () // 'endlet'
   | T_ENDTRY of () // 'endtry'
   | T_ENDWHERE of () // 'endwhere'

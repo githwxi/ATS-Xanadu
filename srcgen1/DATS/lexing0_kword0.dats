@@ -333,15 +333,16 @@ val () = myins("ifcase", T_IFCASE)
 val () =
 myins("endst", T_ENDST)
 //
-(*
 val () =
-myins("endif", T_ENDIF)
+myins("endif", T_ENDIF0)
+val () =
+myins("endcas", T_ENDCAS)
+//
+(*
 val () =
 myins("endsif", T_ENDSIF)
 val () =
-myins("endcase", T_ENDCASE)
-val () =
-myins("endscase", T_ENDSCASE)
+myins("endscas", T_ENDSCAS)
 *)
 //
 val () = myins("lam", T_LAM(0))

@@ -47,6 +47,7 @@ gseq_consq<xs><x0>(xs)
 then
 gseq_head_raw<xs><x0>(xs)
 else $raise SubscriptExn()
+endif//end-of(gseq_head_exn)
 #impltmp
 <xs><x0>
 gseq_tail_exn(xs) =
@@ -55,6 +56,7 @@ gseq_consq<xs><x0>(xs)
 then
 gseq_tail_raw<xs><x0>(xs)
 else $raise SubscriptExn()
+endif//end-of(gseq_tail_exn)
 //
 #impltmp
 <xs><x0>
@@ -188,7 +190,7 @@ then
 else
   optn_vt_cons
   (gseq_uncons_raw<xs><x0>(xs))
-// end of [if]
+endif (* end of [if] *)
 )
 //
 (* ****** ****** *)
@@ -229,10 +231,10 @@ iforeach$work<x0>
   g_print<x0>(x0)
 ) where
 {
-  val () =
-  if
-  (i0 > 0)
-  then gseq_print$sep<xs><x0>()
+val () =
+if
+(i0 > 0)
+then gseq_print$sep<xs><x0>()
 } (* where *)
 //
 } (* where *)
@@ -316,7 +318,8 @@ gseq_exists
 in
   if
   gseq_forall
-  <xs><x0>(xs) then false else true
+  <xs><x0>(xs)
+  then false else true endif
 end(*let*)//end-of-[gseq_exists/forall]
 //
 (* ****** ****** *)
@@ -1033,13 +1036,14 @@ gseq_foldl
 <xs><x0><r0>
 (xs, list_vt_nil()) where
 {
-  #impltmp
-  foldl$fopr
-  < x0><r0 >
-  ( r0, x0 ) =
-  if
-  filter$test<x0>(x0)
-  then list_vt_cons(x0, r0) else r0
+#impltmp
+foldl$fopr
+< x0><r0 >
+( r0, x0 ) =
+if
+filter$test<x0>(x0)
+then
+list_vt_cons(x0, r0) else (r0)
 }
 //
 end//end-of(gseq_filter_rlist/foldl)
@@ -1067,7 +1071,7 @@ gseq_idropif
 < xs >< x0 >(xs)) where
 {
 #impltmp
-idropif$test<x0>(i0, x0) = dropif$test<x0>(x0)
+idropif$test<x0>(i0,x0) = dropif$test<x0>(x0)
 } (*where*)//end-of(gseq_dropif/idropif)
 //
 (* ****** ****** *)
@@ -1295,6 +1299,7 @@ else
 gseq_max_ini
 ( gseq_tail_raw<xs><x0>(xs)
 , gseq_head_raw<xs><x0>(xs))
+endif // end-of-( if )
 ) (* end of [gseq_max_exn(xs)] *)
 //
 #impltmp
@@ -1310,6 +1315,7 @@ else
 gseq_min_ini
 ( gseq_tail_raw<xs><x0>(xs)
 , gseq_head_raw<xs><x0>(xs))
+endif // end-of-( if )
 ) (* end of [gseq_min_exn(xs)] *)
 //
 (* ****** ****** *)
@@ -1347,6 +1353,7 @@ gseq_min_ini
 ( gseq_tail_raw<xs><x0>(xs)
 , gseq_head_raw<xs><x0>(xs))
 )
+endif // end-of-( if )
 ) (* end of [gseq_min_opt(xs)] *)
 //
 (* ****** ****** *)
@@ -1442,7 +1449,8 @@ in
 if
 gseq_rforall
 <xs><x0>(xs) then false else true
-endlet
+endif // end-of-(if)
+endlet // end-of-(let)
 // end of [gseq_rexists(xs)/rforall]
 //
 (* ****** ****** *)
@@ -1863,7 +1871,7 @@ then
   val xs =
   gseq_tail_raw<xs><x0>(xs)
   val r0 = list_vt_cons(x0, r0) }
-else (r0) // else // end-of-if
+else (r0) // else // end-of-(if)
 endlet (* end of [loop(xs,i0,r0)] *)
 //
 } (*where*)//end-of-[gseq_itakeif_rlist]
@@ -1914,7 +1922,7 @@ in//let
 if
 gseq_iforall
 <xs><x0>(xs) then false else true
-end
+endlet // end-of-( let )
 // end of [gseq_rexists/rforall]
 //
 (* ****** ****** *)
@@ -1945,7 +1953,7 @@ in
   gseq_forall<xs><x0>(xs)
 end (* end of [gseq_forall] *)
 //
-end // end of [gseq_iforall/forall]
+endlet // end of [gseq_iforall/forall]
 
 (* ****** ****** *)
 
@@ -1960,12 +1968,12 @@ gseq_iforall<xs><x0>(xs) where
 #impltmp
 iforall$test<x0>(i0, x0) =
 let
-val () = iforeach$work<x0>(i0, x0) in true
-endlet
+val () =
+iforeach$work<x0>(i0, x0) in true end
 }
 in//let
   // nothing
-end // end of [gseq_iforeach/iforall]
+endlet // end of [gseq_iforeach/iforall]
 
 (* ****** ****** *)
 

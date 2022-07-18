@@ -270,11 +270,11 @@ val d0p2 = p1_d0pat(buf, err)
 //
 (*
 val ( ) =
-println("p1_l0d0p: lab0 = ", lab0)
+prerrln("p1_l0d0p: lab0 = ", lab0)
 val ( ) =
-println("p1_l0d0p: teq1 = ", teq1)
+prerrln("p1_l0d0p: teq1 = ", teq1)
 val ( ) =
-println("p1_l0d0p: d0p2 = ", d0p2)
+prerrln("p1_l0d0p: d0p2 = ", d0p2)
 *)
 //
 in
@@ -985,11 +985,11 @@ val
 d0es =
 p1_d0expseq_atm(buf, err)
 //
-// (*
+(*
 val () =
 prerrln
 ("p1_d0exp: d0es = ", d0es)
-// *)
+*)
 //
 in//let
 //
@@ -1054,11 +1054,11 @@ val d0e2 = p1_d0exp(buf, err)
 //
 (*
 val ( ) =
-println("p1_l0d0e: lab0 = ", lab0)
+prerrln("p1_l0d0e: lab0 = ", lab0)
 val ( ) =
-println("p1_l0d0e: teq1 = ", teq1)
+prerrln("p1_l0d0e: teq1 = ", teq1)
 val ( ) =
-println("p1_l0d0e: d0e2 = ", d0e2)
+prerrln("p1_l0d0e: d0e2 = ", d0e2)
 *)
 //
 in
@@ -1232,12 +1232,14 @@ val e00 = err
 val tok = buf.getk0()
 val tnd = tok.tnode()
 //
+(*
 val ( ) =
 prerrln
 ("p1_d0exp_atm: e00=", e00)
 val ( ) =
 prerrln
 ("p1_d0exp_atm: tok=", tok)
+*)
 //
 in//let
 //
@@ -1634,9 +1636,11 @@ end(*let*) // end-of-[ T_DLR_EXISTS(_) ]
 |
 _(* error-processing *) =>
 let
+// (*
 val () =
 prerrln
 ("p1_d0exp_atm(error): tok=", tok)
+// *)
 in//let
 (
 err := e00 + 1;
@@ -2748,9 +2752,11 @@ p1_tkend_WHERE
 val e00 = err
 val tok = buf.getk0()
 //
+(*
 val ( ) =
 prerrln
 ("p1_tkend_WHERE: tok = ", tok)
+*)
 //
 in
 case+

@@ -289,12 +289,11 @@ popt_LBRACE: parser(tokenopt)
 //
 (* ****** ****** *)
 //
-(*
 fun
-popt_ENDIF: parser(tokenopt)
+popt_ENDIF0: parser(tokenopt)
+//
 fun
-popt_ENDCASE: parser(tokenopt)
-*)
+popt_ENDCAS: parser(tokenopt)
 //
 (* ****** ****** *)
 //

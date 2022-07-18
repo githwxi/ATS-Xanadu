@@ -133,8 +133,9 @@ The following keywords are for forming expressions:
 - <code>if-then-else</code>:
   The keywords `if`, `then` and `else` are for forming if-expressions.
   Note that an if-expression may be in a truncated form where there is no else-branch.
-- <code>case-of-end</code>:
-  The keywords `case`, `of` and `end` (or `endcas`) are for forming case-expressions.
+  Also, the keyword `endif` can be used (optionally) to indicate the end of an if-expression.
+- <code>case-of-endcas</code>:
+  The keywords `case`, `of` and `endcas` (not `end`) are for forming case-expressions.
   Note that the keyword `end` in a case-expression is optional.
 - <code>let-in-end</code>:
   The keywords `let`, `in` and `end` (or `endlet`) are for forming let-expressions.
