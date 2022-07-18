@@ -332,6 +332,9 @@ T_LOCAL() =>
 print("T_LOCAL(", ")")
 //
 |
+T_ENDIF0() =>
+print("T_ENDIF0(", ")")
+|
 T_ENDCAS() =>
 print("T_ENDCAS(", ")")
 |

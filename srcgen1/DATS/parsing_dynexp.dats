@@ -1782,17 +1782,16 @@ case+ tnd of
     val d0e3 =
       p_d0exp_ELSE(buf, err)
 //
-(*
     val topt =
-      popt_ENDIF(buf, err)
-*)
-    val topt =
+      popt_ENDIF0(buf, err)
+//
+    val tend =
       popt_endst0inv(buf, err)
 //
     val
     loc_res =
     (
-    case+ topt of
+    case+ tend of
     | ENDST0INVnone() =>
       (
       case d0e3 of
@@ -1817,7 +1816,7 @@ case+ tnd of
   in
     err := e0;
     (
-    case+ topt of
+    case+ tend of
     | ENDST0INVnone _ =>
       d0exp_make_node
       ( loc_res
@@ -1843,18 +1842,17 @@ case+ tnd of
     val dcls =
       p_d0clauseq_BAR(buf, err)
 //
-(*
     val topt =
-      popt_ENDCASE(buf, err)
-*)
-    val topt =
+      popt_ENDCAS(buf, err)
+//
+    val tend =
       popt_endst0inv(buf, err)
 //
     val
     loc_res = let
       val loc = tok.loc()
     in
-      case+ topt of
+      case+ tend of
       | ENDST0INVnone
         ( (*void*) ) =>
         (
@@ -1878,7 +1876,7 @@ case+ tnd of
   in
     err := e0;
     (
-    case+ topt of
+    case+ tend of
     | ENDST0INVnone _ =>
       d0exp_make_node
       ( loc_res
@@ -1934,7 +1932,7 @@ case+ tnd of
     val farrw =
       p_f0unarrow(buf, err)
     val fbody = p_d0exp(buf, err)
-    val tfini = popt_ENDLAM(buf, err)
+    val tfini = popt_ENDFIX(buf, err)
 //
   in
     err := e0;

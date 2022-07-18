@@ -449,9 +449,9 @@ in
 end // end of [popt_LBRACE]
 
 (* ****** ****** *)
-(*
+//
 implement
-popt_ENDIF
+popt_ENDIF0
   (buf, err) = let
 //
   val tok = buf.get0()
@@ -466,17 +466,16 @@ in
       val () = buf.incby1()
     } (* T_END *)
 *)
-  | T_ENDIF() =>
+  | T_ENDIF0() =>
     Some(tok) where
     {
       val () = buf.incby1()
     } (* T_ENDIF *)
   | _ (* non-END *) => None(*void*)
-end // end of [popt_ENDIF]
-*)
-(*
+end // end of [popt_ENDIF0]
+//
 implement
-popt_ENDCASE
+popt_ENDCAS
   (buf, err) = let
 //
   val tok = buf.get0()
@@ -491,14 +490,14 @@ in
       val () = buf.incby1()
     } (* T_END *)
 *)
-  | T_ENDCASE() =>
+  | T_ENDCAS() =>
     Some(tok) where
     {
       val () = buf.incby1()
-    } (* T_ENDCASE *)
+    } (* T_ENDCAS *)
   | _ (* non-END *) => None(*void*)
-end // end of [popt_ENDCASE]
-*)
+end // end of [popt_ENDCAS]
+//
 (* ****** ****** *)
 
 implement

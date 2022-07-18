@@ -35,9 +35,11 @@
 //
 #impltmp
 bool_print<>(b0) =
-if b0
+if
+(b0)
 then g_print<string>("true")
 else g_print<string>("false")
+endif//end-of-[bool_print(b0)]
 //
 (* ****** ****** *)
 //

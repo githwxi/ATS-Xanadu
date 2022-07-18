@@ -266,11 +266,11 @@ case+ tnd of
 //
 | T_ENDST() => fprint(out, "ENDST")
 //
+| T_ENDIF0() => fprint(out, "ENDIF0")
+| T_ENDCAS() => fprint(out, "ENDCAS")
 (*
-| T_ENDIF() => fprint(out, "ENDIF")
 | T_ENDSIF() => fprint(out, "ENDSIF")
-| T_ENDCASE() => fprint(out, "ENDCASE")
-| T_ENDSCASE() => fprint(out, "ENDSCASE")
+| T_ENDSCAS() => fprint(out, "ENDSCAS")
 *)
 //
 | T_LAM(knd) =>
@@ -284,6 +284,8 @@ case+ tnd of
 | T_LOCAL() => fprint(out, "LOCAL")
 //
 | T_ENDLAM() => fprint(out, "ENDLAM")
+| T_ENDFIX() => fprint(out, "ENDFIX")
+//
 | T_ENDLET() => fprint(out, "ENDLET")
 | T_ENDTRY() => fprint(out, "ENDTRY")
 | T_ENDWHERE() => fprint(out, "ENDWHERE")
@@ -555,11 +557,11 @@ case+ tnd of
 //
 | T_ENDST() => fprint(out, "endst")
 //
+| T_ENDIF0() => fprint(out, "endif")
+| T_ENDCAS() => fprint(out, "endcas")
 (*
-| T_ENDIF() => fprint(out, "endif")
 | T_ENDSIF() => fprint(out, "endsif")
-| T_ENDCASE() => fprint(out, "endcase")
-| T_ENDSCASE() => fprint(out, "endscase")
+| T_ENDSCAS() => fprint(out, "endscas")
 *)
 //
 | T_LAM(knd) =>
@@ -573,6 +575,8 @@ case+ tnd of
 | T_LOCAL() => fprint(out, "local")
 //
 | T_ENDLAM() => fprint(out, "endlam")
+| T_ENDFIX() => fprint(out, "endfix")
+//
 | T_ENDLET() => fprint(out, "endlet")
 | T_ENDTRY() => fprint(out, "endtry")
 | T_ENDWHERE() => fprint(out, "endwhere")
