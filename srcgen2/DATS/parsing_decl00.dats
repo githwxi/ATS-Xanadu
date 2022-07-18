@@ -192,16 +192,22 @@ list_vt2t
 p1_precopt
   (buf, err) = let
 //
-val tok0 = buf.getk0()
-val tnd0 = tok0.tnode()
+val tok = buf.getk0()
+val tnd = tok.tnode()
 //
-in
+in//let
 //
-case+ tnd0 of
+case+ tnd of
 //
 |
 T_INT01 _ =>
-PRECint1(tok0) where
+PRECint1(tok) where
+{
+  val () = buf.skip1()
+}
+|
+T_INT02 _ =>
+PRECint1(tok) where
 {
   val () = buf.skip1()
 }
@@ -221,16 +227,16 @@ endlet // end of [p1_precopt(buf,err)]
 p1_precint
   (buf, err) = let
 //
-val tok0 = buf.getk0()
-val tnd0 = tok0.tnode()
+val tok = buf.getk0()
+val tnd = tok.tnode()
 //
 in
 //
-case+ tnd0 of
+case+ tnd of
 (*
 |
 T_INT01 _ =>
-PINTint1(tok0) where
+PINTint1(tok) where
 {
   val () = buf.skip1()
 }
@@ -238,9 +244,10 @@ PINTint1(tok0) where
 |
 _ (* non-T_INT01 *) =>
 let
+val tok0 = tok
 val (  ) = buf.skip1()
 val tint = buf.getk1()
-in PINTopr2(tok0, tint) end
+in PINTopr2(tok0, tint) endlet
 //
 endlet // end of [p1_precint(buf,err)]
 
@@ -1131,29 +1138,19 @@ in//let
 case+
 tok.node() of
 |
-T_LT0() => let
+T_LBRACE() =>
+let
   val tbeg = tok
   val (  ) = buf.skip1()
   val q0as =
   p1_q0argseq_COMMA(buf, err)
-  val tend = p1_GT0(buf, err)
+  val tend = p1_RBRACE(buf, err)
   val lres = tbeg.lctn() + tend.lctn()
 in//let
   err := e00
 ; s0qag_make_node
   (lres, S0QAGsome(tbeg, q0as, tend))
 end (*let*) // end of [T_LT0]
-|
-T_LTGT() => let
-  val tbeg = tok
-  val tend = tok
-  val q0as = list_nil()
-  val (  ) = buf.skip1()
-  val lres = tbeg.lctn()
-in
-  s0qag_make_node
-  (lres, S0QAGsome(tbeg, q0as, tend))
-end (*let*) // end of [ T_LTGT ]
 |
 _(* non-T_LT/GT *) =>
 let

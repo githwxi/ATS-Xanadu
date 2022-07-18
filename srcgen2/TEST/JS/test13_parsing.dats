@@ -171,7 +171,11 @@ val
 prerrln("p1_fun_test(2)")
 //
 val
-opt3 =
+opt30 =
+p1_fun_test<d0eclist>
+("./../../../prelude/SATS/gint000.sats", p1_d0eclsq1_sta)
+val
+opt31 =
 p1_fun_test<d0eclist>
 ("./../../../prelude/DATS/gint000.dats", p1_d0eclsq1_dyn)
 //
@@ -179,7 +183,11 @@ val (  ) =
 prerrln("p1_fun_test(3)")
 //
 val
-opt4 =
+opt40 =
+p1_fun_test<d0eclist>
+("./../../../prelude/SATS/gseq000.sats", p1_d0eclsq1_sta)
+val
+opt41 =
 p1_fun_test<d0eclist>
 ("./../../../prelude/DATS/gseq000.dats", p1_d0eclsq1_dyn)
 //
@@ -187,7 +195,11 @@ val (  ) =
 prerrln("p1_fun_test(4)")
 //
 val
-opt5 =
+opt50 =
+p1_fun_test<d0eclist>
+("./../../../prelude/SATS/list000.sats", p1_d0eclsq1_sta)
+val
+opt51 =
 p1_fun_test<d0eclist>
 ("./../../../prelude/DATS/list000.dats", p1_d0eclsq1_dyn)
 //
@@ -195,7 +207,11 @@ val (  ) =
 prerrln("p1_fun_test(5)")
 //
 val
-opt6 =
+opt60 =
+p1_fun_test<d0eclist>
+("./../../../prelude/SATS/strm000.sats", p1_d0eclsq1_sta)
+val
+opt61 =
 p1_fun_test<d0eclist>
 ("./../../../prelude/DATS/strm000.dats", p1_d0eclsq1_dyn)
 //
@@ -209,16 +225,24 @@ val (  ) =
 prerrln("p1_fun_test(\"./../../../prelude/DATS/char000.dats\") =\n", opt2)
 //
 val (  ) =
-prerrln("p1_fun_test(\"./../../../prelude/DATS/gint000.dats\") =\n", opt3)
+prerrln("p1_fun_test(\"./../../../prelude/SATS/gint000.sats\") =\n", opt30)
+val (  ) =
+prerrln("p1_fun_test(\"./../../../prelude/DATS/gint000.dats\") =\n", opt31)
 //
 val (  ) =
-prerrln("p1_fun_test(\"./../../../prelude/DATS/gseq000.dats\") =\n", opt4)
+prerrln("p1_fun_test(\"./../../../prelude/SATS/gseq000.sats\") =\n", opt40)
+val (  ) =
+prerrln("p1_fun_test(\"./../../../prelude/DATS/gseq000.dats\") =\n", opt41)
 //
 val (  ) =
-prerrln("p1_fun_test(\"./../../../prelude/DATS/list000.dats\") =\n", opt5)
+prerrln("p1_fun_test(\"./../../../prelude/SATS/list000.sats\") =\n", opt50)
+val (  ) =
+prerrln("p1_fun_test(\"./../../../prelude/DATS/list000.dats\") =\n", opt51)
 //
 val (  ) =
-prerrln("p1_fun_test(\"./../../../prelude/DATS/strm000.dats\") =\n", opt6)
+prerrln("p1_fun_test(\"./../../../prelude/SATS/strm000.sats\") =\n", opt60)
+val (  ) =
+prerrln("p1_fun_test(\"./../../../prelude/DATS/strm000.dats\") =\n", opt61)
 //
 (* ****** ****** *)
 //
