@@ -137,7 +137,9 @@ The following keywords are for forming expressions:
   an if-expression.
 - <code>case-of-endcas</code>:
   The keywords `case`, `of` and `endcas` (not `end`) are for forming case-expressions.
-  Note that the use of `endcas` is optional.
+  Note that the use of `endcas` is optional. There are two variants of `case`: `case+`
+  (for exhaustive pattern matching) and `case-` (for suppressing warnings due to non-exhaustive
+  pattern matching).
 - <code>let-in-endlet</code>:
   The keywords `let`, `in` and `endlet` (or `end`) are for forming let-expressions.
   Note that the use of `endlet` (or `end`) is not optional.
@@ -155,7 +157,8 @@ Some of the commonly used keywords for forming declarations are listed as follow
 
 - <code>val</code>
   for introduction a value-declaration (or val-declaration for short).
-  Some of its variants are: `val+` and `val-`.
+  Some of its variants are: `val+` (for exhaustive pattern matching) and `val-`
+  (for suppressing warnings due to non-exhaustive pattern matching).
 - <code>var</code>
   for introduction a variable-declaration (or var-declaration for short).
 - <code>fun</code>: for
