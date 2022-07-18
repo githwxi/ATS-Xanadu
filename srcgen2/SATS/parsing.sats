@@ -230,6 +230,9 @@ fun p1_WITH: p1_fun(token)
 //
 fun p1_END: p1_fun(token)
 //
+fun pq_ENDIF0: pq_fun(token)
+fun pq_ENDCAS: pq_fun(token)
+//
 fun pq_ENDLAM: pq_fun(token)
 fun pq_ENDFIX: pq_fun(token)
 //

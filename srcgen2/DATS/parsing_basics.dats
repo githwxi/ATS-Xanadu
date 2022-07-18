@@ -633,6 +633,44 @@ end (*let*) // end of [p1_END(buf,err)]
 (* ****** ****** *)
 
 #implfun
+pq_ENDIF0(buf, err) =
+let
+//
+val tok = buf.getk0()
+//
+in//let
+case+
+tok.node() of
+|
+T_ENDIF0() =>
+optn_cons(tok) where
+{ val () = buf.skip1() }
+|
+_ (* non-ENDLAM *) => optn_nil()
+end (*let*) // end of [pq_ENDIF0]
+
+(* ****** ****** *)
+
+#implfun
+pq_ENDCAS(buf, err) =
+let
+//
+val tok = buf.getk0()
+//
+in//let
+case+
+tok.node() of
+|
+T_ENDCAS() =>
+optn_cons(tok) where
+{ val () = buf.skip1() }
+|
+_ (* non-ENDLAM *) => optn_nil()
+end (*let*) // end of [pq_ENDCAS]
+
+(* ****** ****** *)
+
+#implfun
 pq_ENDLAM(buf, err) =
 let
 //

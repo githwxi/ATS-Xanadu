@@ -177,12 +177,19 @@ l0d0p_RBRACE_lctn:(l0d0p_RBRACE)->loc_t
 
 local
 
+(* ****** ****** *)
+//
+#extern
 fun
-p1_napps
-( buf:
-! tkbf0
-, err:
-& sint >> _): d0pat =
+p1_napp
+( buf: !tkbf0
+, err: &sint >> _): d0pat
+//
+(* ****** ****** *)
+
+#implfun
+p1_napp
+( buf, err ) =
 let
 //
 val e00 = err
@@ -198,7 +205,9 @@ _ (* error *) =>
   d0pat(tok.lctn(), D0Ptkerr(tok))
 ) (* end-of-error *)
 //
-end (*let*) // end of [p1_napps(buf,err)]
+end (*let*) // end of [p1_napp(buf,err)]
+
+(* ****** ****** *)
 
 in(*in-of-local*)
 //
@@ -215,7 +224,7 @@ in//let
 case+ d0ps of
 |
 list_nil() =>
-p1_napps(buf, err)
+p1_napp(buf, err)
 |
 list_cons
 (d0p1, dps1) =>
@@ -688,13 +697,55 @@ p1_d0eclseq_WHERE: p1_fun(list(d0eclseq_WHERE))
 (* ****** ****** *)
 
 local
+
+(* ****** ****** *)
 //
 #extern
 fun
-p1_napps: p1_fun(d0exp)
+p1_napp: p1_fun(d0exp)
 //
+(* ****** ****** *)
+
+fun
+f0_whrs
+( d0e0
+: d0exp
+, wdcs
+: list(d0eclseq_WHERE)
+) : d0exp =
+(
+case+ wdcs of
+|
+list_nil
+((*void*)) => d0e0
+|
+list_cons
+(wdc1, wdcs) =>
+(
+f0_whrs(d0e1, wdcs)) where
+{
+val
+d0e1 =
+(
+d0exp
+( loc1
+, D0Ewhere(d0e0, wdc1))) where
+{
+val loc1 =
+(
+case+ wdc1 of
+| d0eclseq_WHERE
+  (_, _, _, tend) =>
+  (d0e0.lctn() + tend.lctn())): loc_t
+}
+}(*end of [list_cons]*)
+//
+)(*case*)//end-of(f0_whrs(d0e0,wdcs))
+
+(* ****** ****** *)
+
 #implfun
-p1_napps(buf, err) =
+p1_napp(buf, err) =
 let
 //
   val e00 = err
@@ -718,12 +769,14 @@ val d0e2 =
 val d0e3 =
   p1_d0exp_ELSE(buf, err)
 //
-val
-tend = p1_t0endinv(buf, err)
+// HX: this is optional
+val tend = pq_ENDIF0(buf, err)
+//
+val tinv = p1_t0endinv(buf,err)
 //
 val lres =
 (
-case+ tend of
+case+ tinv of
 |
 T0ENDINVnone() =>
 (
@@ -741,17 +794,15 @@ T0ENDINVnone() =>
 | d0exp_ELSE_some
     ( _, d0e3 ) =>
   tknd.lctn() + d0e3.lctn()
-) (* end-of-(T0ENDINVnone()) *)
+) (*end-of(T0ENDINVnone())*)
 |
-T0ENDINVsome
-( tend
-, tinv ) => tok.lctn()+tinv.lctn()
-) : loc_t // end of [val(lres)]
+T0ENDINVsome(_, tinv) =>
+  (tknd.lctn()+tinv.lctn())): loc_t
 //
 in//elt
 err := e00;
 (
-case+ tend of
+case+ tinv of
 |
 T0ENDINVnone _ =>
 d0exp_make_node
@@ -781,52 +832,59 @@ val tbar =
 val dcls =
   p1_d0clsseq_BAR(buf, err)
 //
-val topt =
-  p1_t0endinv(buf, err)
+// HX: this is optional
+val tend = pq_ENDCAS(buf, err)
+//
+val tinv = p1_t0endinv(buf, err)
 //
 val lres =
 let
   val lknd = tknd.lctn()
 in//let
-case+ topt of
+case+ tinv of
 |
 T0ENDINVnone
 ( (*void*) ) =>
 (
-  case+ dcls of
-  |
-  list_nil() =>
-  (
-  case+ tbar of
-  | optn_nil() => lknd + tof0.lctn()
-  | optn_cons(tbar) => lknd + tbar.lctn()
-  )
-  |
-  list_cons(_, _) =>
-  let
-    val dcl1 =
-    list_last(dcls) in lknd + dcl1.lctn()
-  end (*let*) // end of [list_cons]
+case+ dcls of
+|
+list_nil() =>
+(
+case+ tbar of
+|
+optn_nil() => lknd+tof0.lctn()
+|
+optn_cons(tbar) => lknd+tbar.lctn()
 )
-| T0ENDINVsome(_, tinv) => lknd+tinv.lctn()
-end : loc_t // end of [let] // end of [val]
+|
+list_cons(_, _) =>
+let
+val dcl1 =
+list_last(dcls) in lknd+dcl1.lctn()
+end (*let*) // end of [list_cons]
+)
+|
+T0ENDINVsome(_, tinv) => lknd+tinv.lctn()
+end : loc_t // end-of-(let) // end-of-(val)
 //
 in//let
 err := e00;
 (
-case+ topt of
+case+ tinv of
 |
 T0ENDINVnone _ =>
 d0exp_make_node
-( lres
-, D0Ecas0(tknd, d0e1, tof0, tbar, dcls))
+(
+lres,
+D0Ecas0(tknd, d0e1, tof0, tbar, dcls))
 |
 T0ENDINVsome(_, tinv) =>
 d0exp_make_node
-( lres
-, D0Ecas1(tknd, d0e1, tof0, tbar, dcls, tinv))
+(
+lres,
+D0Ecas1(tknd, d0e1, tof0, tbar, dcls, tinv))
 )
-end (*let*) // end of [ T_CASE(k0) ]
+end (*let*) // end of [ case-of(T_CASE(k0)) ]
 //
 |
 T_LAM(k0) =>
@@ -843,6 +901,8 @@ val sres = p1_s0res(buf, err)
 val arrw = p1_f0unarrw(buf, err)
 //
 val body = p1_d0exp(buf, err)
+//
+// HX: this one is option
 val tend = pq_ENDLAM(buf, err)
 //
 val lres =
@@ -860,7 +920,7 @@ d0exp_make_node
 , D0Elam0
   ( tknd // lam|lam@
   , farg, sres, arrw, body, tend))
-end (*let*) // end of [ T_LAM(k0) ]
+end (*let*) // end of [ case-of(T_LAM(k0)) ]
 //
 |
 T_FIX(k0) =>
@@ -879,6 +939,8 @@ val arrw =
   p1_f0unarrw(buf, err)
 //
 val body = p1_d0exp(buf, err)
+//
+// HX: this one is optional
 val tend = pq_ENDFIX(buf, err)
 //
 val lres =
@@ -897,7 +959,7 @@ d0exp_make_node
   ( tknd // fix|fix@
   , fid0
   , farg, sres, arrw, body, tend))
-end (*let*) // end of [ T_FIX(k0) ]
+end (*let*) // end of [ case-of(T_FIX(k0)) ]
 //
 |
 _ (* rest-of-token *) =>
@@ -907,47 +969,11 @@ in
   d0exp_make_node(tok.lctn(), D0Etkerr(tok))
 end (*let*) // HX: indicating a parsing error
 //
-end (*let*) // end of [ p1_napps(buf, err) ]
+end (*let*) // end of [fun-p1_napp(buf, err)]
 
 (* ****** ****** *)
 
-fun
-f0_whereseq
-( d0e0
-: d0exp
-, wdcs
-: list(d0eclseq_WHERE)
-) : d0exp =
-(
-case+ wdcs of
-|
-list_nil
-((*void*)) => d0e0
-|
-list_cons
-(wdc1, wdcs) =>
-(
-f0_whereseq(d0e1, wdcs)) where
-{
-val
-d0e1 =
-(
-d0exp
-( loc1
-, D0Ewhere(d0e0, wdc1))) where
-{
-val loc1 =
-(
-case+ wdc1 of
-| d0eclseq_WHERE
-  (_, _, _, tend) =>
-  (d0e0.lctn() + tend.lctn())): loc_t
-}
-}(*end of [list_cons]*)
-//
-)(*case*)//end-of(f0_whereseq(d0e0,wdcs))
-
-in//local
+in(*in-of-local*)
 
 #implfun
 p1_d0exp(buf, err) =
@@ -971,14 +997,14 @@ case+ d0es of
 |
 list_nil
 ((*void*)) =>
-p1_napps(buf, err)
+p1_napp(buf, err)
 |
 list_cons
 (d0e1, des2) =>
 let
 //
 val d0e0 =
-f0_whereseq(d0e0, wdcs)
+f0_whrs(d0e0, wdcs)
 //
 val sopt =
 pq_s0exp_anno(buf, err)
@@ -1185,14 +1211,14 @@ tok0.node() of
 |
 T_ENDST() =>
 (
-T0ENDINVsome(tok0, tinv)
-) where
+T0ENDINVsome(_, tinv)) where
 {
   val (  ) = buf.skip1()
   val tinv = p1_t0inv(buf, err)
-}(*where*)//end-of-[T_ENDST]
+} (*where*) // end-of-[T_ENDST]
 //
-| _(*non-T_ENDST*) => T0ENDINVnone()
+|
+_(*non-T_ENDST*) => T0ENDINVnone()
 //
 end(*let*)//end-of-[p1_t0endinv(buf,err)]
 
@@ -2174,10 +2200,11 @@ list_cons _ => let
   val d0e1 = list_last(d0es)
   val loc0 = d0e0.lctn()+d0e1.lctn()
 in
-d0exp(loc0, D0Eapps(list_cons(d0e0, d0es)))
+d0exp_make_node
+(loc0, D0Eapps(list_cons(d0e0, d0es)))
 end (*let*) // end of [list_cons]
 //
-end (*let*) // end of [p2_d0exp_app(buf,err)]
+end (*let*)//end-of-[p2_d0exp_app(buf,err)]
 
 in(*in-of-local*)
 
@@ -2462,12 +2489,14 @@ val d0e1 =
 val d0e2 = p1_then(buf, err)
 val d0e3 = p1_else(buf, err)
 //
-val
-tend = p1_t0endinv(buf, err)
+// HX: this is optional
+val tend = pq_ENDIF0(buf, err)
+//
+val tinv = p1_t0endinv(buf, err)
 //
 val lres =
 (
-case+ tend of
+case+ tinv of
 |
 T0ENDINVnone() =>
 (
@@ -2484,18 +2513,15 @@ case d0e3 of
 | d0exp_ELSE_some
     ( _, d0e3 ) =>
   tknd.lctn() + d0e3.lctn()
-) (* end-of-(T0ENDINVnone()) *)
+) (*end-of(T0ENDINVnone())*)
 |
-T0ENDINVsome
-( tend
-, tinv ) =>
-  (tok.lctn() + tinv.lctn())
-) : loc_t // end of [val(lres)]
+T0ENDINVsome(_, tinv) =>
+  (tknd.lctn()+tinv.lctn())): loc_t
 //
 in//elt
 err := e00;
 (
-case+ tend of
+case+ tinv of
 |
 T0ENDINVnone _ =>
 d0exp_make_node
@@ -2508,7 +2534,7 @@ d0exp_make_node
 , D0Eif1
   (tknd, d0e1, d0e2, d0e3, tinv))
 )
-end(*let*)//end-of-[pk_if0(tok,buf,err)]
+end(*let*)//end-of-[pk_if01(tok,buf,err)]
 //
 and
 p1_then

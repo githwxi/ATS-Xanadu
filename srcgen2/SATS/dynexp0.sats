@@ -408,17 +408,17 @@ D0Ecas1 of
 |
 D0Etup1 of // HX: tuple
 ( token
-, tokenopt,d0explst,d0exp_RPAREN)
+, tokenopt, d0explst, d0exp_RPAREN)
 |
 D0Ercd2 of // HX: tuple
 ( token
-, tokenopt,l0d0elst,l0d0e_RBRACE)
+, tokenopt, l0d0elst, l0d0e_RBRACE)
 //
 |
 D0Elet0 of
 ( token
 , d0eclist
-, tokenopt(*IN*), d0explst, token)
+, tokenopt(*IN*), d0explst, token )
 //
 |
 D0Ewhere of (d0exp, d0eclseq_WHERE)

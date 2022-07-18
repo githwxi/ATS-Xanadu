@@ -233,7 +233,7 @@ D0Ecas1
 ,d0e1,tof0,tbar,dcls,tinv) =>
 (
 print
-("D0Ecas0(",tknd,";",d0e1,";");
+("D0Ecas1(",tknd,";",d0e1,";");
 print(tof0,";",tbar,";",dcls,";",tinv,")"))
 //
 |
@@ -251,11 +251,11 @@ print
 |
 D0Ebrckt(tbeg,d0es,tend) =>
 print
-("D0Ebrckt(",tbeg,";",d0es,";",tend,")")
+( "D0Ebrckt(" ,tbeg,";",d0es,";",tend,")" )
 |
 D0Edtsel(tknd,lab1,opt2) =>
 print
-("D0Edtsel(",tknd,";",lab1,";",opt2,")")
+( "D0Edtsel(" ,tknd,";",lab1,";",opt2,")" )
 //
 |
 D0Etry0

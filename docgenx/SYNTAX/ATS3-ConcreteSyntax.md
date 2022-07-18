@@ -130,15 +130,21 @@ The following keywords are for forming expressions:
 - <code>$rec_vt</code>:
   for forming a boxed record that may contain linear components. The formed record is
   linear even if there are no linear components in it.
+- <code>if-then-else</code>:
+  The keywords `if`, `then` and `else` are for forming if-expressions.
+  Note that an if-expression may be in a truncated form where there is no else-branch.
+- <code>case-of-end</code>:
+  The keywords `case`, `of` and `end` (or `endcas`) are for forming case-expressions.
+  Note that the keyword `end` in a case-expression is optional.
 - <code>let-in-end</code>:
-  The kewords `let`, `in` and `end` (or `endlet`) are for forming let-expressions.
+  The keywords `let`, `in` and `end` (or `endlet`) are for forming let-expressions.
 - <code>try-with-end</code>:
-  The kewords `try`, `with` and `end` (or `endtry`) are for forming try-expressions.
+  The keywords `try`, `with` and `end` (or `endtry`) are for forming try-expressions.
 - <code>lam-=>-end</code>
-  The kewords `lam`, `=>` and `end` (or `endlam`) are for forming lam-expressions
+  The keywords `lam`, `=>` and `end` (or `endlam`) are for forming lam-expressions
   (representing nameless functions). Note that the use of `endlam` is optional.
 - <code>fix-=>-end</code>
-  The kewords `fix`, `=>` and `end` (or `endfix`) are for forming fix-expressions
+  The keywords `fix`, `=>` and `end` (or `endfix`) are for forming fix-expressions
   (representing nameless recursive functions). Note that the use of `endfix` is optional.
       
 Some of the commonly used keywords for forming declarations are listed as follows:
