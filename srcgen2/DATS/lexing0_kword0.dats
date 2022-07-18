@@ -223,6 +223,8 @@ val () = kwdins("try", T_TRY)
 val () = kwdins("where", T_WHERE)
 val () = kwdins("local", T_LOCAL)
 //
+val () = kwdins("endif", T_ENDIF0)
+val () = kwdins("endcas", T_ENDCAS)
 val () = kwdins("endlam", T_ENDLAM)
 val () = kwdins("endlet", T_ENDLET)
 val () = kwdins("endtry", T_ENDTRY)

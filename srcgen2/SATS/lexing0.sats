@@ -204,6 +204,8 @@ datatype tnode =
 //
   | T_LOCAL of () // 'local'
 //
+  | T_ENDIF0 of () // 'endif'
+  | T_ENDCAS of () // 'endcas'
   | T_ENDLAM of () // 'endlam'
   | T_ENDFIX of () // 'endfix'
   | T_ENDLET of () // 'endlet'
