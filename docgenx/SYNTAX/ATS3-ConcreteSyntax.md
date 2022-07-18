@@ -137,15 +137,15 @@ The following keywords are for forming expressions:
 - <code>case-of-endcas</code>:
   The keywords `case`, `of` and `endcas` (not `end`) are for forming case-expressions.
   Note that the keyword `end` in a case-expression is optional.
-- <code>let-in-end</code>:
-  The keywords `let`, `in` and `end` (or `endlet`) are for forming let-expressions.
-- <code>try-with-end</code>:
-  The keywords `try`, `with` and `end` (or `endtry`) are for forming try-expressions.
-- <code>lam-=>-end</code>
-  The keywords `lam`, `=>` and `end` (or `endlam`) are for forming lam-expressions
+- <code>let-in-endlet</code>:
+  The keywords `let`, `in` and `endlet` (or `end`) are for forming let-expressions.
+- <code>try-with-endtry</code>:
+  The keywords `try`, `with` and `endtry` (or `end`) are for forming try-expressions.
+- <code>lam-=>-endlam</code>
+  The keywords `lam`, `=>` and `endlam` (not `end`) are for forming lam-expressions
   (representing nameless functions). Note that the use of `endlam` is optional.
-- <code>fix-=>-end</code>
-  The keywords `fix`, `=>` and `end` (or `endfix`) are for forming fix-expressions
+- <code>fix-=>-endfix</code>
+  The keywords `fix`, `=>` and `endfix` (not `end`) are for forming fix-expressions
   (representing nameless recursive functions). Note that the use of `endfix` is optional.
       
 Some of the commonly used keywords for forming declarations are listed as follows:
