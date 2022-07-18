@@ -306,6 +306,8 @@ which is equivalent to the following one:
 if x >= 0 then println(x) else ()
 ```
 
+where `()` refers to the *only* value of the type `void`.
+
 ### Let-Expressions
 
 Let-expressions are atomic.
