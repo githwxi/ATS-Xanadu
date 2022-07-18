@@ -267,6 +267,31 @@ There are many forms of dynamic expressions in ATS3.  A dynamic
 expression is atomic if it cannot result in parsing ambiguities when
 put in any contexts.
 
+### If-Expressions
+
+If-expressions may not be atomic.
+An if-expression starts with the keyword `if`; it contains a
+then-branch and, optionally, an else-branch. If the else-branch is
+missing, then the default `else ()` is assumed. For instance, the
+following if-expression contains both of a then-branch and an
+else-branch:
+
+```
+if x >= 0 then x else -x
+```
+
+And the following if-expression does not have an else-branch:
+
+```
+if x >= 0 then println(x)
+```
+
+which is equivalent to the following one:
+  
+```
+if x >= 0 then println(x) else ()
+```
+
 ### Let-Expressions
 
 Let-expressions are atomic.
