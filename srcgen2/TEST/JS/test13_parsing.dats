@@ -186,6 +186,22 @@ p1_fun_test<d0eclist>
 val (  ) =
 prerrln("p1_fun_test(4)")
 //
+val
+opt5 =
+p1_fun_test<d0eclist>
+("./../../../prelude/DATS/list000.dats", p1_d0eclsq1_dyn)
+//
+val (  ) =
+prerrln("p1_fun_test(5)")
+//
+val
+opt6 =
+p1_fun_test<d0eclist>
+("./../../../prelude/DATS/strm000.dats", p1_d0eclsq1_dyn)
+//
+val (  ) =
+prerrln("p1_fun_test(6)")
+//
 val (  ) =
 prerrln("p1_fun_test(\"./../../../prelude/DATS/bool000.dats\") =\n", opt1)
 //
@@ -197,6 +213,12 @@ prerrln("p1_fun_test(\"./../../../prelude/DATS/gint000.dats\") =\n", opt3)
 //
 val (  ) =
 prerrln("p1_fun_test(\"./../../../prelude/DATS/gseq000.dats\") =\n", opt4)
+//
+val (  ) =
+prerrln("p1_fun_test(\"./../../../prelude/DATS/list000.dats\") =\n", opt5)
+//
+val (  ) =
+prerrln("p1_fun_test(\"./../../../prelude/DATS/strm000.dats\") =\n", opt6)
 //
 (* ****** ****** *)
 //

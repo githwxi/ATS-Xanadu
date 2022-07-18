@@ -728,22 +728,24 @@ case+ tend of
 T0ENDINVnone() =>
 (
   case d0e3 of
-  | d0exp_ELSE_none
-      (  tok  ) =>
-    (
-    case+ d0e2 of
-    | d0exp_THEN_some
-        ( _, d0e2 ) =>
-      tknd.lctn() + d0e2.lctn()
-    )
-  | d0exp_ELSE_some
-      ( _, d0e3 ) =>
-      tknd.lctn() + d0e3.lctn()
-) (* end-of(T0ENDINVnone) *)
+  |
+  d0exp_ELSE_none
+    (  tok  ) =>
+  (
+  case+ d0e2 of
+  |
+  d0exp_THEN_some
+    ( _, d0e2 ) =>
+  tknd.lctn() + d0e2.lctn()
+  )
+| d0exp_ELSE_some
+    ( _, d0e3 ) =>
+  tknd.lctn() + d0e3.lctn()
+) (* end-of-(T0ENDINVnone()) *)
 |
 T0ENDINVsome
 ( tend
-, tinv ) => tok.lctn() + tinv.lctn()
+, tinv ) => tok.lctn()+tinv.lctn()
 ) : loc_t // end of [val(lres)]
 //
 in//elt
@@ -864,27 +866,28 @@ end (*let*) // end of [ T_LAM(k0) ]
 T_FIX(k0) =>
 let
 //
-  val tknd = tok
-  val (  ) = buf.skip1()
+val tknd = tok
+val (  ) = buf.skip1()
 //
-  val fid0 =
-    p1_d0pid(buf, err)
-  val farg =
-    p1_f0argseq(buf, err)
-  val sres =
-    p1_s0res(buf, err)
-  val arrw =
-    p1_f0unarrw(buf, err)
-  val body = p1_d0exp(buf, err)
-  val tend = pq_ENDLAM(buf, err)
+val fid0 =
+  p1_d0pid(buf, err)
+val farg =
+  p1_f0argseq(buf, err)
+val sres =
+  p1_s0res(buf, err)
+val arrw =
+  p1_f0unarrw(buf, err)
 //
-  val lres =
-  (
-  case+ tend of 
-  | optn_nil() =>
-    tknd.lctn()+body.lctn()
-  | optn_cons(tok2) =>
-    tknd.lctn()+tok2.lctn()): loc_t
+val body = p1_d0exp(buf, err)
+val tend = pq_ENDFIX(buf, err)
+//
+val lres =
+(
+case+ tend of 
+| optn_nil() =>
+  tknd.lctn()+body.lctn()
+| optn_cons(tok2) =>
+  tknd.lctn()+tok2.lctn()): loc_t
 //
 in//let
 err := e00;
@@ -892,7 +895,8 @@ d0exp_make_node
 ( lres
 , D0Efix0
   ( tknd // fix|fix@
-  , fid0, farg, sres, arrw, body, tend))
+  , fid0
+  , farg, sres, arrw, body, tend))
 end (*let*) // end of [ T_FIX(k0) ]
 //
 |
@@ -1180,12 +1184,13 @@ case+
 tok0.node() of
 |
 T_ENDST() =>
-let
+(
+T0ENDINVsome(tok0, tinv)
+) where
+{
   val (  ) = buf.skip1()
   val tinv = p1_t0inv(buf, err)
-in
-  T0ENDINVsome(tok0, tinv)
-end (*let*) // end of [T_ENDST]
+}(*where*)//end-of-[T_ENDST]
 //
 | _(*non-T_ENDST*) => T0ENDINVnone()
 //
@@ -1301,19 +1306,19 @@ end(*let*) // end-of-[  T_OP3(_)  ]
 | T_LT0() =>
 let
 //
-val tok1 = tok
-val (  ) = buf.skip1()
+  val tok1 = tok
+  val (  ) = buf.skip1()
 //
-val
-mark = tokbuf_mark_get(buf)
+  val
+  mark = tokbuf_mark_get(buf)
 //
-val
-s0es = list_vt2t
-(
-ps_COMMA_p1fun{s0exp}
-(buf, err, p1_s0exp_app_NGT0))
+  val
+  s0es = list_vt2t
+  (
+  ps_COMMA_p1fun{s0exp}
+  (buf, err, p1_s0exp_app_NGT0))
 //
-val tok2 = buf.getk0((*void*))
+  val tok2 = buf.getk0((*void*))
 //
 in//let
 //
@@ -2326,33 +2331,45 @@ p1_d0exp_app_ntk
 let
 //
 fun
-f1_ngt
+p1_ntk
 ( buf:
 ! tkbf0
-, err: &sint >> _): d0exp =
+, err:
+& sint >> _): d0exp =
 let
 //
-  val e00 = err
-  val tok = buf.getk0()
-  val tnd = tok.tnode()
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
 //
-in
+in//let
 if
 ntk(tnd)
 then
 p1_d0exp_atm(buf, err)
-else let
-  val () = (err := e00 + 1)
-in
+else
+let
+val () =
+(err := e00 + 1) in//let
 d0exp(tok.lctn(), D0Etkerr(tok))
 end (*let*) // end of [else]
-end (*let*) // end of [f1_ngt]
+end (*let*) // end of [p1_ntk]
 //
-val d0e1 = f1_ngt(buf, err)
-//
-val d0es =
+fun
+p1_apps
+( buf:
+! tkbf0
+, err:
+& sint >> _): d0exp =
+let
+val
+d0e1 = p1_ntk(buf, err)
+val
+d0es =
 list_vt2t
-(ps_p1fun{d0exp}(buf,err,f1_ngt))
+(
+ps_p1fun{d0exp}(buf,err,p1_ntk)
+)
 //
 val d0e0 =
 (
@@ -2362,29 +2379,33 @@ list_nil _ => d0e1
 |
 list_cons _ =>
 let
-val d0e2 =
-list_last(d0es)
-val loc0 =
-(d0e1.lctn()+d0e2.lctn())
+val
+d0e2 = list_last(d0es)
+val
+loc0 = d0e1.lctn()+d0e2.lctn()
 in//let
 d0exp_make_node
-(loc0
-,D0Eapps(list_cons(d0e1,d0es))) end
-) : d0exp //case//end-of-(val(d0e0))
+( loc0
+, D0Eapps(list_cons(d0e1,d0es)))
+end (*let*) // end-of-(list_cons)
+) : (d0exp) // end of-(val(d0e0))
 //
 in//let
+//
 (
-d0exp_anno_opt(d0e0, sopt))
-where
+d0exp_anno_opt(d0e0, sopt)) where
 {
+//
 val wdcs =
-p1_d0eclseq_WHERE(buf,err)
-val d0e0 = f0_whereseq(d0e0, wdcs)
+  p1_d0eclseq_WHERE(buf,err)
+//
+val d0e0 = f0_whrs(d0e0, wdcs)
 val sopt = pq_s0exp_anno(buf, err) }
-where
-{
-fun
-f0_whereseq
+//
+end(*let*)//end-of[p1_apps(buf,err)]
+//
+and
+f0_whrs
 ( d0e0
 : d0exp
 , wdcs
@@ -2399,7 +2420,7 @@ list_nil
 list_cons
 (wdc1, wdcs) =>
 (
-f0_whereseq(d0e1, wdcs)) where
+f0_whrs(d0e1, wdcs)) where
 {
 val
 d0e1 =
@@ -2411,14 +2432,268 @@ d0exp
 val loc1 =
 (
 case+ wdc1 of
-| d0eclseq_WHERE
-  (_, _, _, tend) =>
-  (d0e0.lctn() + tend.lctn())): loc_t
+|
+d0eclseq_WHERE
+(_, _, _, tend) =>
+(d0e0.lctn() + tend.lctn())): loc_t
 }
 }(*end of [list_cons]*)
 //
-)(*case*)//end-of(f0_whereseq(d0e0,wdcs))
-}
+)(*case*)//end-of(f0_whrs(d0e1,wdcs))
+//
+fun
+pk_if01
+( tok:
+  token
+, buf:
+! tkbf0
+, err:
+& sint >> _): d0exp =
+let
+//
+val e00 = err
+//
+val tknd = tok
+val (  ) = buf.skip1()
+//
+val d0e1 =
+  p1_d0exp_app(buf, err)
+//
+val d0e2 = p1_then(buf, err)
+val d0e3 = p1_else(buf, err)
+//
+val
+tend = p1_t0endinv(buf, err)
+//
+val lres =
+(
+case+ tend of
+|
+T0ENDINVnone() =>
+(
+case d0e3 of
+| d0exp_ELSE_none
+    (  tok  ) =>
+  (
+  case+ d0e2 of
+  |
+  d0exp_THEN_some
+    ( _, d0e2 ) =>
+  tknd.lctn() + d0e2.lctn()
+  )
+| d0exp_ELSE_some
+    ( _, d0e3 ) =>
+  tknd.lctn() + d0e3.lctn()
+) (* end-of-(T0ENDINVnone()) *)
+|
+T0ENDINVsome
+( tend
+, tinv ) =>
+  (tok.lctn() + tinv.lctn())
+) : loc_t // end of [val(lres)]
+//
+in//elt
+err := e00;
+(
+case+ tend of
+|
+T0ENDINVnone _ =>
+d0exp_make_node
+( lres
+, D0Eif0(tknd, d0e1, d0e2, d0e3))
+|
+T0ENDINVsome(_, tinv) =>
+d0exp_make_node
+( lres
+, D0Eif1
+  (tknd, d0e1, d0e2, d0e3, tinv))
+)
+end(*let*)//end-of-[pk_if0(tok,buf,err)]
+//
+and
+p1_then
+( buf:
+! tkbf0
+, err:
+& sint >> _): d0exp_THEN =
+let
+//
+val e00 = err
+val tok = buf.getk0((*nil*))
+//
+in//let
+//
+case+
+tok.node() of
+|
+T_THEN() =>
+let
+val ( ) = buf.skip1()
+val d0e = p1_apps( buf, err )
+in//let
+let
+val () =
+err := e00 in//let
+d0exp_THEN_some(tok, d0e) end
+end // end of [T_THEN]
+|
+_(*non-THEN*) =>
+let
+val // HX-2018-09-25: error
+( ) = err := e00 + 1
+in//let
+d0exp_THEN_some(tok,p1_ntk(buf,err))
+end(*let*)//end-of-[non-T_THEN]
+//
+end(*let*)//end-of-[p1_then(buf,err)]
+//
+and
+p1_else
+( buf:
+! tkbf0
+, err:
+& sint >> _): d0exp_ELSE =
+let
+val e00 = err
+val tok = buf.getk0((*nil*))
+//
+in//let
+//
+case+
+tok.node() of
+|
+T_ELSE() =>
+let
+val ( ) = buf.skip1()
+val d0e = p1_apps( buf, err )
+in//let
+let
+val () =
+(err := e00) in//let
+d0exp_ELSE_some(tok, d0e) end
+end // end of [T_THEN]
+|
+_(*non-ELSE*) =>
+(
+// HX: there is no error!
+  d0exp_ELSE_none(tok) // ELSE-less
+)
+//
+end(*let*)//end-of-[p1_else(buf,err)]
+//
+fun
+pk_lam0
+( tok:
+  token
+, buf:
+! tkbf0
+, err:
+& sint >> _): d0exp =
+let
+//
+val e00 = err
+//
+val tknd = tok
+val (  ) = buf.skip1()
+//
+val
+farg =
+p1_f0argseq(buf, err)
+//
+val sres =
+  p1_s0res( buf, err )
+//
+val arrw =
+  p1_f0unarrw(buf, err)
+//
+val body = p1_apps(buf, err)
+val tend = pq_ENDLAM(buf, err)
+//
+val lres =
+(
+case+ tend of 
+| optn_nil() =>
+  tknd.lctn()+body.lctn()
+| optn_cons(tok2) =>
+  tknd.lctn()+tok2.lctn()): loc_t
+//
+in//let
+err := e00;
+d0exp_make_node
+( lres
+, D0Elam0
+  ( tknd // lam|lam@
+  , farg, sres, arrw, body, tend))
+end(*let*)//end(fk_lam0(tok,buf,err))
+//
+fun
+pk_fix0
+( tok:
+  token
+, buf:
+! tkbf0
+, err:
+& sint >> _): d0exp =
+let
+//
+val e00 = err
+//
+val tknd = tok
+val (  ) = buf.skip1()
+//
+val fid0 =
+  p1_d0pid(buf, err)
+val farg =
+  p1_f0argseq(buf, err)
+val sres =
+  p1_s0res(buf, err)
+val arrw =
+  p1_f0unarrw(buf, err)
+//
+val body = p1_apps(buf, err)
+val tend = pq_ENDFIX(buf, err)
+//
+val lres =
+(
+case+ tend of 
+| optn_nil() =>
+  tknd.lctn()+body.lctn()
+| optn_cons(tok2) =>
+  tknd.lctn()+tok2.lctn()): loc_t
+//
+in//let
+err := e00;
+d0exp_make_node
+( lres
+, D0Efix0
+  ( tknd // fix|fix@
+  , fid0
+  , farg, sres, arrw, body, tend))
+end(*let*)//end(fk_fix0(tok,buf,err))
+//
+in//let
+//
+let
+val tok = buf.getk0()
+in
+case+
+tok.node() of
+|
+T_IF0() =>
+pk_if01(tok, buf, err)
+(*
+| // HX: case-exp should reside in
+T_CASE _ => // a pair of parentheses
+*)
+|
+T_LAM(k0) =>
+pk_lam0(tok, buf, err)
+|
+T_FIX(k0) =>
+pk_fix0(tok, buf, err)
+|
+_(*otherwise*) => p1_apps( buf, err )
+end(*let*)
 //
 end(*let*)//end(p1_d0exp_app_ntk(buf,err,ntk))
 //
