@@ -269,10 +269,12 @@ loop{i,j:int}
 , j0: int(j)): int(i+j) =
 (
 case+ xs of
-| list_nil() => j0
-| list_cons(_, xs) => loop(xs, j0+1)
-)
-} (*where*) // end-of(list_length)
+|
+list_nil() => j0
+|
+list_cons(_, xs) => loop(xs, j0+1)
+)(*case+*)//end-of(loop(xs,j0))
+}(*where*)//end-of(list_length(xs))
 //
 (* ****** ****** *)
 //
@@ -297,9 +299,11 @@ case+ xs of
 list_cons(x0, xs) =>
 if
 (i0 > 0)
-then loop(xs, pred(i0)) else x0
-) (*cas*)//end of [loop(xs,i0)]
-} (*where*) // end of [list_get_at]
+then
+loop(xs, pred(i0)) else x0
+endif // end-of(list_cons)
+)(*case+*)//end-(loop(xs,i0))
+}(*where*)//end-(list_get_at(xs,i0))
 //
 (* ****** ****** *)
 
@@ -362,8 +366,8 @@ loop
 {m:nat} .<m>.
 ( xs
 : list(a, m)
-, r0
-: &(?list(a)>>list(a,m+n))): void =
+, r0:
+& (?list(a)>>list(a,m+n))): void =
 (
 case+ xs of
 | list_nil() =>
@@ -375,12 +379,13 @@ case+ xs of
   in
     loop(xs, r0.1); $fold(r0)
   end
+endcas // end of [ case+(xs) ]
 )
 in
 let
-  var r0: list(a) in loop(xs, r0); r0
-end
-end (*where*) // end of [list_append]
+var r0: list(a) in loop(xs, r0); r0
+end(* let *)
+end(* let *)//end-of(list_append(xs,ys))
 //
 (* ****** ****** *)
 //

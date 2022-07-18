@@ -41,6 +41,7 @@ case+ xs of
 strmcon_nil() => f0((*void*))
 |
 strmcon_cons(x0, xs) => f1(x0, xs)
+endcas // end of [case+(xs)]
 )
 #impltmp
 <x0><r0>
@@ -50,6 +51,7 @@ strxcon_uncons_cfr
 case+ xs of
 |
 strxcon_cons(x0, xs) => f1(x0, xs)
+endcas // end of [case+(xs)]
 )
 //
 (* ****** ****** *)
@@ -75,21 +77,23 @@ strx_cons
 <a>(*tmp*)
 strm_nilq(xs) =
 (
-case !xs of
+case+ !xs of
 |
 strmcon_nil() => true
 |
 strmcon_cons(_,_) => false
+endcas // end of [case+(!xs)]
 )
 #impltmp
 <a>(*tmp*)
 strm_consq(xs) =
 (
-case !xs of
+case+ !xs of
 |
 strmcon_nil() => false
 |
 strmcon_cons(_,_) => (true)
+endcas // end of [case+(!xs)]
 )
 //
 (* ****** ****** *)
@@ -170,7 +174,7 @@ strmcon_nil
 strmcon_cons
 ( x0, xs ) => loop(xs, succ(i0))
 )
-}(*where*) // end-of(strm_length)
+}(*where*)//end-of(strm_length(xs))
 
 (* ****** ****** *)
 //
@@ -179,8 +183,7 @@ strmcon_cons
 strm_extend
   (xs, x0) =
 (
-strm_append(xs, strm_sing<a>(x0))
-)
+strm_append(xs, strm_sing<a>(x0)))
 //
 (* ****** ****** *)
 
@@ -189,8 +192,7 @@ strm_append(xs, strm_sing<a>(x0))
 strm_append
   (xs, ys) =
 (
-  append(xs, ys)
-) where
+  append(xs, ys)) where
 {
 fun
 append(xs, ys) =
@@ -203,7 +205,7 @@ strmcon_nil() => $eval(ys)
 strmcon_cons(x0, xs) =>
 strmcon_cons(x0, append(xs, ys))
 )
-} (*where*) // end of(strm_append)
+}(*where*)//end(strm_append(xs,ys))
 
 (* ****** ****** *)
 
@@ -229,8 +231,8 @@ let
 in
 if test then loop(xs) else false
 end
-) (* end of [loop] *)
-} (*where*) // end of [strm_forall]
+)(*case+*)//end-of(loop(xs))
+}(*where*)//end-of(strm_forall(xs))
 
 (* ****** ****** *)
 //
