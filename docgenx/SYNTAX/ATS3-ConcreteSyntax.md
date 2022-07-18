@@ -308,6 +308,11 @@ if x >= 0 then println(x) else ()
 
 where `()` refers to the *only* value of the type `void`.
 
+Note that the then-brance and the else-branch in an if-expression
+must have the same type, which is the type of the if-expression.
+Clearly, an if-expression in the truncated form is supposed to be
+of the type `void`.
+
 ### Let-Expressions
 
 Let-expressions are atomic.
