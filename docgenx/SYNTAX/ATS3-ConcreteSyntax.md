@@ -133,7 +133,8 @@ The following keywords are for forming expressions:
 - <code>if-then-else</code>:
   The keywords `if`, `then` and `else` are for forming if-expressions.
   Note that an if-expression may be in a truncated form where there is no else-branch.
-  Also, the keyword `endif` can be used (optionally) to indicate the end of an if-expression.
+  Also, the keyword `endif` (not `end`) can be used (optionally) to indicate the end of
+  an if-expression.
 - <code>case-of-endcas</code>:
   The keywords `case`, `of` and `endcas` (not `end`) are for forming case-expressions.
   Note that the keyword `end` in a case-expression is optional.
@@ -142,11 +143,11 @@ The following keywords are for forming expressions:
 - <code>try-with-endtry</code>:
   The keywords `try`, `with` and `endtry` (or `end`) are for forming try-expressions.
 - <code>lam-=>-endlam</code>
-  The keywords `lam`, `=>` and `endlam` (not `end`) are for forming lam-expressions
-  (representing nameless functions). Note that the use of `endlam` is optional.
+  The keywords `lam` (short for lambda), `=>` and `endlam` (not `end`) are for forming
+  lam-expressions (representing nameless functions). Note that the use of `endlam` is optional.
 - <code>fix-=>-endfix</code>
-  The keywords `fix`, `=>` and `endfix` (not `end`) are for forming fix-expressions
-  (representing nameless recursive functions). Note that the use of `endfix` is optional.
+  The keywords `fix` (short for fixed-point), `=>` and `endfix` (not `end`) are for forming
+  fix-expressions (representing nameless recursive functions). Note that the use of `endfix` is optional.
       
 Some of the commonly used keywords for forming declarations are listed as follows:
 
