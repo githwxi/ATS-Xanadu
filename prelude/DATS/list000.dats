@@ -288,7 +288,7 @@ fnx
 loop
 {n:int}
 ( xs
-: list(a, n)
+: list(a,n)
 , i0
 : nintlt(n)): (a) =
 (
@@ -298,7 +298,7 @@ list_cons(x0, xs) =>
 if
 (i0 > 0)
 then loop(xs, pred(i0)) else x0
-) (* end of [auxloop] *)
+) (*cas*)//end of [loop(xs,i0)]
 } (*where*) // end of [list_get_at]
 //
 (* ****** ****** *)
@@ -344,11 +344,13 @@ end // end of [auxmain]
 #impltmp
 <a>(*tmp*)
 list_extend
-(xs, x0) = let
-val ys =
-list_sing<a>(x0) in
-  list_append<a>(xs, ys)
-end // end of [list_extend]
+(xs, x0) =
+(
+list_append<a>(xs, ys)
+) where
+{
+  val ys = list_sing<a>(x0)
+} (*where*)//end-of-[list_extend]
 //
 #impltmp
 <a>(*tmp*)

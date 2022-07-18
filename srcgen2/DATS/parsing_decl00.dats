@@ -949,18 +949,22 @@ let
 val
 dcl =
 fp_d0ecl
-(f00, buf, err) in//let
+(f00, buf, err)
+val
+res =
+list_vt_cons(dcl,res)
+//
+in//let
 //
 if
 (err = e00)
 then
-loop
-( buf, err
-, cons_vt(dcl, res))
+(
+  loop(buf, err, res)
+)
 else
 let
-val
-tok = buf.getk0() in//let
+val tok = buf.getk0() in//let
 //
 case+
 tok.node() of

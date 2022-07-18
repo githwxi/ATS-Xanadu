@@ -1505,7 +1505,7 @@ p1_sort0_app_ntk
 let
 //
 fun
-f1_ngt
+f1_ntk
 ( buf:
 ! tkbf0
 , err: &sint >> _): sort0 =
@@ -1520,16 +1520,18 @@ if
 ntk(tnd)
 then
 p1_sort0_atm(buf, err)
-else let
-  val () = (err := e00 + 1)
-in
+else
+let
+val () =
+(err := e00 + 1) in//let
 sort0(tok.lctn(), S0Ttkerr(tok))
 end (*let*) // end of [else]
-end (*let*) // end of [f1_ngt]
+end (*let*) // end of [f1_ntk]
 //
-val s0t1 = f1_ngt(buf, err)
+val s0t1 = f1_ntk(buf, err)
 val s0ts =
-list_vt2t(ps_p1fun{sort0}(buf,err,f1_ngt))
+list_vt2t
+(ps_p1fun{sort0}(buf,err,f1_ntk))
 //
 in
 //
@@ -2635,7 +2637,7 @@ p1_s0exp_app_ntk
 let
 //
 fun
-f1_ngt
+f1_ntk
 ( buf:
 ! tkbf0
 , err: &sint >> _): s0exp =
@@ -2650,16 +2652,18 @@ if
 ntk(tnd)
 then
 p1_s0exp_atm(buf, err)
-else let
-  val () = (err := e00 + 1)
-in
+else
+let
+val () =
+(err := e00 + 1) in//let
 s0exp(tok.lctn(), S0Etkerr(tok))
 end (*let*) // end of [else]
-end (*let*) // end of [f1_ngt]
+end (*let*) // end of [f1_ntk]
 //
-val s0e1 = f1_ngt(buf, err)
+val s0e1 = f1_ntk(buf, err)
 val s0es =
-list_vt2t(ps_p1fun{s0exp}(buf,err,f1_ngt))
+list_vt2t
+(ps_p1fun{s0exp}(buf,err,f1_ntk))
 //
 in
 //
