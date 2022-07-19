@@ -62,6 +62,12 @@ ATS_PACKNAME
 #symload lctn with s0exp_get_lctn
 #symload node with s0exp_get_node
 (* ****** ****** *)
+#symload lctn with s0tdf_get_lctn
+#symload node with s0tdf_get_node
+(* ****** ****** *)
+//
+#symload lctn with s0arg_get_lctn
+#symload node with s0arg_get_node
 //
 #symload lctn with s0mag_get_lctn
 #symload node with s0mag_get_node
@@ -141,7 +147,7 @@ I0DNTsome _ => ()
 |
 I0DNTnone(tok) =>
 println
-("PREADX0-ERROR:",tok.lctn(),":", id0)
+("PREADX0-ERROR:",tok.lctn(),":",id0)
 end (*let*)//end-of-[i0dnt_fpemsg(out,id0)]
 //
 (* ****** ****** *)
@@ -159,7 +165,7 @@ T0INTsome _ => ()
 |
 T0INTnone(tok) =>
 println
-("PREADX0-ERROR:",tok.lctn(),":", int)
+("PREADX0-ERROR:",tok.lctn(),":",int)
 end (*let*)//end-of-[t0int_fpemsg(out,int)]
 //
 #implfun
@@ -175,7 +181,7 @@ T0CHRsome _ => ()
 |
 T0CHRnone(tok) =>
 println
-("PREADX0-ERROR:",tok.lctn(),":", chr)
+("PREADX0-ERROR:",tok.lctn(),":",chr)
 end (*let*)//end-of-[t0chr_fpemsg(out,chr)]
 //
 #implfun
@@ -191,7 +197,7 @@ T0FLTsome _ => ()
 |
 T0FLTnone(tok) =>
 println
-("PREADX0-ERROR:",tok.lctn(),":", flt)
+("PREADX0-ERROR:",tok.lctn(),":",flt)
 end (*let*)//end-of-[t0chr_fpemsg(out,flt)]
 //
 #implfun
@@ -207,7 +213,7 @@ T0STRsome _ => ()
 |
 T0STRnone(tok) =>
 println
-("PREADX0-ERROR:",tok.lctn(),":", str)
+("PREADX0-ERROR:",tok.lctn(),":",str)
 end (*let*)//end-of-[t0chr_fpemsg(out,str)]
 //
 (* ****** ****** *)
@@ -264,7 +270,7 @@ if
 (lvl
 >FPEMSG_ERRVL) then () else
 println
-("PREADX0-ERROR:", s0t.lctn(), ":", s0t)
+("PREADX0-ERROR:", s0t.lctn(), ":",s0t)
 )
 | _(* otherwise *) => ((*void*))
 //
@@ -347,9 +353,9 @@ if
 (lvl
 >FPEMSG_ERRVL) then () else
 println
-("PREADX0-ERROR:", s0e.lctn(), ":", s0e)
+("PREADX0-ERROR:",s0e.lctn(),":",s0e)
 )
-| _(* otherwise *) => ((*void*))
+| _(* otherwise *) => (   (*void*)   )
 end(*let*)//end-of(s0exp_fpemsg(out,s0e))
 //
 endloc(*local*)//end-of-local(s0exp_fpemsg)
@@ -361,8 +367,9 @@ l0s0e_fpemsg
 (out, lse) =
 (
 case+ lse of
-| S0LAB
-  (lab,teq,s0e) => s0exp_fpemsg(out,s0e)
+|
+S0LAB
+(lab,teq,s0e) => s0exp_fpemsg(out,s0e)
 ) (*case*)//end-of(l0s0e_fpemsg(out,lse))
 //
 (* ****** ****** *)
@@ -370,24 +377,32 @@ case+ lse of
 #implfun
 s0arg_fpemsg
 (out, s0a) =
-(
+let
+#impltmp
+g_print$out<>() = out
+in//let
 case+
 s0a.node() of
 |
 S0ARGnone(tok) =>
 println
-("PREADX0-ERROR:",tok.lctn(),":", s0a)
+("PREADX0-ERROR:",tok.lctn(),":",s0a)
 |
 S0ARGsome(sid1,topt) =>
 (
-  fpemsg(out,sid1); fpemsg(out,topt) ))
+  fpemsg(out, sid1); fpemsg(out, topt)
+)
+end(*let*)//end-of-[s0arg_fpemsg(out,s0a)]
 //
 (* ****** ****** *)
 //
 #implfun
 t0arg_fpemsg
 (out, t0a) =
-(
+let
+#impltmp
+g_print$out<>() = out
+in//let
 case+
 t0a.node() of
 |
@@ -396,13 +411,16 @@ println
 ("PREADX0-ERROR:",tok.lctn(),":", t0a)
 |
 T0ARGsome(s0t1,topt) => fpemsg(out,s0t1)
-)
+end(*let*)//end-of-[t0arg_fpemsg(out,t0a)]
 //
 (* ****** ****** *)
 #implfun
 t0mag_fpemsg
 (out, tma) =
-(
+let
+#impltmp
+g_print$out<>() = out
+in//let
 case+
 tma.node() of
 |
@@ -417,14 +435,17 @@ let
 val () = t0arglst_fpemsg(out, t0as)
 val () = token_RPAREN_fpemsg(out, tend)
 //
-endlet
-) (*case*)//end-of(t0mag_fpemsg(out,lse))
+end(*let*)//end-of-[T0MAGlist(_,_,_)]
+end(*let*)//end-of-[t0mag_fpemsg(out,lse)]
 (* ****** ****** *)
 //
 #implfun
 s0tdf_fpemsg
 (out, tdf) =
-(
+let
+#impltmp
+g_print$out<>() = out
+in//let
 case+
 tdf.node() of
 |
@@ -440,8 +461,8 @@ val () =
   token_BAR_fpemsg(out, tbar)
 val () = s0explst_fpemsg(out, s0es)
 val () = token_RBRACE_fpemsg(out, tend)
-endlet // end of [S0TDFtsub(...)]
-)
+end(*let*)//end of [S0TDFtsub(out,tdf)]
+end(*let*)//end-of-[s0tdf_fpemsg(out,tdf)]
 //
 (* ****** ****** *)
 //
@@ -868,11 +889,15 @@ foreach$work<d0ecl>(dcl1) = d0ecl_fpemsg(out,dcl1)
 }
 //
 (* ****** ****** *)
-
+//
 #implfun
 token_BAR_fpemsg
   (out, tok0) =
-(
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
 case+ tok0.node() of
 |
 T_BAR() => ((*void*))
@@ -880,40 +905,59 @@ T_BAR() => ((*void*))
 _(*non-T_BAR*) =>
 println
 ("PREADX0-ERROR:", tok0.lctn(), ":", tok0))
+//
+end (*let*) // end of [ t0ken_BAR_fpemsg ]
+//
 #implfun
 token_EQ0_fpemsg
   (out, tok0) =
-(
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
 case+ tok0.node() of
 |
 T_EQ0() => ((*void*))
 |
 _(*non-T_EQ0*) =>
 println
-("PREADX0-ERROR:", tok0.lctn(), ":", tok0))
+("PREADX0-ERROR:", tok0.lctn(), ":", tok0)
+//
+end (*let*) // end of [ t0ken_EQ0_fpemsg ]
+//
 #implfun
 token_RPAREN_fpemsg
   (out, tok0) =
-(
+let
+#impltmp
+g_print$out<>() = out
+in//let
 case+ tok0.node() of
 |
 T_RPAREN() => ((*void*))
 |
 _(*non-T_RPAREN*) =>
 println
-("PREADX0-ERROR:", tok0.lctn(), ":", tok0))
+("PREADX0-ERROR:", tok0.lctn(), ":", tok0)
+end (*let*) // end of [token_RPAREN_fpemsg]
+//
 #implfun
 token_RBRACE_fpemsg
   (out, tok0) =
-(
+let
+#impltmp
+g_print$out<>() = out
+in//let
 case+ tok0.node() of
 |
 T_RBRACE() => ((*void*))
 |
 _(*non-T_RBRACE*) =>
 println
-("PREADX0-ERROR:", tok0.lctn(), ":", tok0))
-
+("PREADX0-ERROR:", tok0.lctn(), ":", tok0)
+end (*let*) // end of [token_RBRACE_fpemsg]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_preadx0_errmsg.dats] *)
