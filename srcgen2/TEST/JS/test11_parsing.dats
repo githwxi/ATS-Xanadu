@@ -161,25 +161,9 @@ val ( ) =
 prerrln("p1_fun_test(2): err=", err)
 //
 val ( ) =
-(
-case+ opt of
-|
-optn_nil() => prerrln("opt=optn_nil()")
-|
-optn_cons _ => prerrln("opt=optn_cons(...)")
-)
-// (*
-val opt =
-(
-case+ opt of
-|
-optn_nil() => optn_nil()
-|
-optn_cons(dcls) =>
-optn_cons
-(preadx0_d0eclist(dcls, err))
-)
-// *)
+prerrln("opt = ", opt)
+//
+val opt = preadx0(opt, err)
 //
 val ( ) =
 (
@@ -194,7 +178,8 @@ where { val out = g_stderr<>() }
 //
 (*
 val ( ) =
-prerrln("p1_fun_test(\"./miscell.dats\") =\n", opt)
+prerrln
+("p1_fun_test(\"./miscell.dats\") =\n", opt)
 *)
 //
 (* ****** ****** *)

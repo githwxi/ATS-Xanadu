@@ -108,6 +108,8 @@ l0d0e_RBRACE = $D0E.l0d0e_RBRACE
 #typedef d0explst = $D0E.d0explst
 #typedef d0eclist = $D0E.d0eclist
 (* ****** ****** *)
+#typedef d0eclistopt = optn(d0eclist)
+(* ****** ****** *)
 //
 #typedef
 fpreadx0
@@ -221,6 +223,21 @@ fun
 preadx0_d0explst: fpreadx0(d0explst)
 fun
 preadx0_d0eclist: fpreadx0(d0eclist)
+(* ****** ****** *)
+fun
+preadx0_d0eclistopt: fpreadx0(d0eclistopt)
+(* ****** ****** *)
+//
+#symload preadx0 with preadx0_d0pat
+#symload preadx0 with preadx0_d0exp
+#symload preadx0 with preadx0_d0ecl
+//
+#symload preadx0 with preadx0_d0patlst
+#symload preadx0 with preadx0_d0explst
+#symload preadx0 with preadx0_d0eclist
+//
+#symload preadx0 with preadx0_d0eclistopt
+//
 (* ****** ****** *)
 //
 fun

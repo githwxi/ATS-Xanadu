@@ -887,7 +887,7 @@ if
 (err = e00)
 then dcl else
 d0ecl_abstype_errck
-(dcl.lctn(), tknd, seid, tmas, tres, tdef)
+( dcl.lctn(), tknd,seid,tmas,tres,tdef )
 end (*let*) // end of [f0_abstype(dcl,err)]
 //
 (* ****** ****** *)
@@ -910,7 +910,7 @@ in
 if
 (err = e00)
 then dcl else
-d0ecl_absopen_errck(dcl.lctn(), tknd, sqid)
+d0ecl_absopen_errck(dcl.lctn(),tknd,sqid)
 end (*let*) // end of [f0_absopen(dcl,err)]
 //
 (* ****** ****** *)
@@ -952,7 +952,7 @@ if
 (err = e00)
 then dcl else
 d0ecl_absimpl_errck
-(dcl.lctn(), tknd, sqid, smas, tres, teq1, s0e2)
+(dcl.lctn(),tknd,sqid,smas,tres,teq1,s0e2)
 end (*let*) // end of [f0_absimpl(dcl,err)]
 //
 (* ****** ****** *)
@@ -982,7 +982,7 @@ end (*let*) // end of [f0_datasort(dcl,err)]
 } (*where*) // end of [preadx0_d0ecl(dcl,err)]
 
 (* ****** ****** *)
-
+//
 #implfun
 preadx0_d0eclist
   (dcls, err) =
@@ -1007,42 +1007,47 @@ if
 (err = e00)
 then dcls else list_cons(dcl1, dcs1)
 endlet // end of [list_cons(dcl1,dcls)]
-) (*case*) // end-of-[preadx0_d0eclist(dcls,err)]
-
+) (*case*)//end-of-[preadx0_d0eclist(dcls,err)]
+//
+(* ****** ****** *)
+#implfun
+preadx0_d0eclistopt
+  (opt0, err) =
+preadx0_synentopt_fun(opt0,err,preadx0_d0eclist)
 (* ****** ****** *)
 
 #implfun
 preadx0_a0tdf
-  (tdf, err) =
+  (tdf0, err) =
 let
 val e00 = err
 in//let
 //
-case+ tdf of
+case+ tdf0 of
 |
-A0TDFsome() => tdf
+A0TDFsome() => tdf0
 |
-A0TDFlteq(tok, s0e) =>
+A0TDFlteq(tok1, s0e2) =>
 let
-val s0e =
-preadx0_s0exp(s0e, err)
+val s0e2 =
+preadx0_s0exp(s0e2, err)
 in
 if
-(err = e00)
-then tdf else A0TDFlteq(tok, s0e)
-end (*let*) // end of [A0TDFlteq]
+(err=e00)
+then tdf0 else A0TDFlteq(tok1, s0e2)
+end (*let*) // end of [A0TDFlteq(_,_)]
 |
-A0TDFeqeq(tok, s0e) =>
+A0TDFeqeq(tok1, s0e2) =>
 let
-val s0e =
-preadx0_s0exp(s0e, err)
+val s0e2 =
+preadx0_s0exp(s0e2, err)
 in
 if
-(err = e00)
-then tdf else A0TDFeqeq(tok, s0e)
-end (*let*) // end of [A0TDFeqeq]
+(err=e00)
+then tdf0 else A0TDFeqeq(tok1, s0e2)
+end (*let*) // end of [A0TDFeqeq(_,_)]
 //
-end (*let*)//end-of-[preadx0_a0tdf(tdf,err)]
+end (*let*)//end-of-[preadx0_a0tdf(tdf0,err)]
 
 (* ****** ****** *)
 
