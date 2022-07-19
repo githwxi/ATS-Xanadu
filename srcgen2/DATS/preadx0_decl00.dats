@@ -1035,7 +1035,7 @@ in
 if
 (err=e00)
 then tdf0 else A0TDFlteq(tok1, s0e2)
-end (*let*) // end of [A0TDFlteq(_,_)]
+end (*let*)//end of [A0TDFlteq(_,_)]
 |
 A0TDFeqeq(tok1, s0e2) =>
 let
@@ -1045,7 +1045,7 @@ in
 if
 (err=e00)
 then tdf0 else A0TDFeqeq(tok1, s0e2)
-end (*let*) // end of [A0TDFeqeq(_,_)]
+end (*let*)//end of [A0TDFeqeq(_,_)]
 //
 end (*let*)//end-of-[preadx0_a0tdf(tdf0,err)]
 

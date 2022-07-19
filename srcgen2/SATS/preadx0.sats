@@ -267,6 +267,8 @@ fun s0mag_fpemsg(FILR, s0mag): void
 fun t0arg_fpemsg(FILR, t0arg): void
 fun t0mag_fpemsg(FILR, t0mag): void
 (* ****** ****** *)
+fun s0tdf_fpemsg(FILR, s0tdf): void
+(* ****** ****** *)
 fun
 i0dntlst_fpemsg(FILR, i0dntlst): void
 (* ****** ****** *)

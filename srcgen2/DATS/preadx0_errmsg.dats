@@ -116,6 +116,9 @@ FPEMSG_ERRVL 2
 (* ****** ****** *)
 #extern
 fun
+token_EQ0_fpemsg:(FILR,token)->void
+#extern
+fun
 token_RPAREN_fpemsg:(FILR,token)->void
 (* ****** ****** *)
 //
@@ -718,6 +721,16 @@ let
   val () =
   t0maglst_fpemsg(out, tmas)
   val () = fpemsg(out, s0t1)
+endlet
+//
+|
+D0Csortdef
+(knd,tid,teq1,tdf2) =>
+let
+  val () = fpemsg(out, tid)
+  val () =
+  token_EQ0_fpemsg(out, teq1)
+  val () = s0tdf_fpemsg(out, tdf2)
 endlet
 //
 |
