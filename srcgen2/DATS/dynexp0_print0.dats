@@ -499,6 +499,9 @@ print("d0exp_RPAREN_cons0(",tbar,")")
 |
 d0exp_RPAREN_cons1(tok1, d0es, tok2) =>
 print("d0exp_RPAREN_cons1(",tok1,";",d0es,";",tok2,")")
+|
+d0exp_RPAREN_cons2(tok1, d0es, tok2) =>
+print("d0exp_RPAREN_cons2(",tok1,";",d0es,";",tok2,")")
 end (*let*) // end of [d0exp_RPAREN_fprint]
 
 (* ****** ****** *)

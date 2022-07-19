@@ -85,6 +85,12 @@
 //
 (* ****** ****** *)
 //
+datasort ints =
+|ints_nil of ((*nil*))
+|ints_cons of (i0,ints)
+//
+(* ****** ****** *)
+//
 #stacst0
 cast_b0_i0:
 bool -> int // t->1/f->0
