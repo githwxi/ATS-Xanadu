@@ -225,7 +225,7 @@ sort0lst_fpemsg(out, sts)
 S0Ttkerr _ => ( (*void*) )
 |
 S0Terrck _ => sort0_fpemsg(out, s0t)
-end (*let*)//end-of(auxmain(out,s0t))
+end(*let*)//end-of-(auxmain(out,s0t))
 //
 in//local
 //
@@ -302,12 +302,14 @@ S0Efimp(tkb,ses,tke) =>
 s0explst_fpemsg(out, ses)
 |
 S0Elpar(tkb,ses,srp) =>
-(fpemsg(out, ses); fpemsg(out, srp))
+(
+fpemsg(out, ses); fpemsg(out, srp)
+)
 |
 S0Etkerr _ => ( (*void*) )
 |
 S0Eerrck _ => s0exp_fpemsg(out, s0e)
-end (*let*) // end of [auxmain(out,s0e)]
+end(*let*)//end-of-(auxmain(out,s0e))
 
 in//local
 //
@@ -498,9 +500,83 @@ l0s0e_RBRACE_cons1
 //
 (* ****** ****** *)
 
+local
+//
+fun
+auxmain
+( out: FILR
+, d0p: d0pat): void =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case
+d0p.node() of
+//
+|
+D0Pid0(id0) =>
+i0dnt_fpemsg(out, id0)
+//
+|
+D0Pint(int) =>
+t0int_fpemsg(out, int)
+|
+D0Pchr(chr) =>
+t0chr_fpemsg(out, chr)
+|
+D0Pflt(flt) =>
+t0flt_fpemsg(out, flt)
+|
+D0Pstr(str) =>
+t0str_fpemsg(out, str)
+//
+|
+D0Papps(ses) =>
+d0patlst_fpemsg(out, ses)
+//
+|
+D0Ptkerr _ => ( (*void*) )
+|
+D0Perrck _ => d0pat_fpemsg(out,d0p)
+//
+end(*let*)//end-of-(auxmain(out,d0p))
+//
+in//local
+//
 #implfun
-d0exp_fpemsg
-(out, d0e) =
+d0pat_fpemsg
+(out, d0p) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+d0p.node() of
+|
+D0Perrck(lvl, se1) =>
+(
+d0pat_fpemsg(out, se1)
+; 
+if
+(lvl
+>FPEMSG_ERRVL) then () else
+println
+("PREADX0-ERROR:", d0p.lctn(), ":", d0p)
+)
+//
+| _(* otherwise *) => ((*void*))
+end(*let*)//end-of(d0pat_fpemsg(out,d0p))
+//
+endloc(*local*)//end-of-local(d0pat_fpemsg)
+
+(* ****** ****** *)
+
+local
+//
+fun
+auxmain
+( out: FILR
+, d0e: d0exp): void =
 let
 #impltmp
 g_print$out<>() = out
@@ -534,6 +610,24 @@ D0Eapps(ses) =>
 d0explst_fpemsg(out, ses)
 //
 |
+D0Etkerr _ => ( (*void*) )
+|
+D0Eerrck _ => d0exp_fpemsg(out,d0e)
+//
+end(*let*)//end-of-(auxmain(out,d0e))
+//
+in//local
+//
+#implfun
+d0exp_fpemsg
+(out, d0e) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+d0e.node() of
+|
 D0Eerrck(lvl, se1) =>
 (
 d0exp_fpemsg(out, se1)
@@ -547,6 +641,8 @@ println
 //
 | _(* otherwise *) => ((*void*))
 end(*let*)//end-of(d0exp_fpemsg(out,d0e))
+//
+endloc(*local*)//end-of-local(d0exp_fpemsg)
 
 (* ****** ****** *)
 //
