@@ -89,6 +89,8 @@
 #include
 "./../../DATS/parsing_staexp.dats"
 #include
+"./../../DATS/parsing_dynexp.dats"
+#include
 "./../../DATS/parsing_decl00.dats"
 (* ****** ****** *)
 #include

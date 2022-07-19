@@ -549,15 +549,17 @@ and
 d0exp_RPAREN =
 |
 d0exp_RPAREN_cons0 of (token)
-|
-d0exp_RPAREN_cons1 of (token, d0explst, token)
+| // (d0es1 | d0es2)
+d0exp_RPAREN_cons1 of (token,d0explst,token)
+| // (d0es1 ; d0es2)
+d0exp_RPAREN_cons2 of (token,d0explst,token)
 //
 and
 l0d0e_RBRACE =
 |
 l0d0e_RBRACE_cons0 of token
 |
-l0d0e_RBRACE_cons1 of (token, l0d0elst, token)
+l0d0e_RBRACE_cons1 of (token,l0d0elst,token)
 //
 (* ****** ****** *)
 //

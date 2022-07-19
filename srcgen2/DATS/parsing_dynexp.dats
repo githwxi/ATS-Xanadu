@@ -1935,10 +1935,22 @@ let
   val tok2 = p1_RPAREN(buf, err)
 in//let
 err := e00;
-d0exp_RPAREN_cons1(tok1, d0es, tok2)
+d0exp_RPAREN_cons1(tok1,d0es,tok2)
 end (*let*) // end of [ T_BAR() ]
 |
-_ (*non-T_BAR*) =>
+T_SMCLN() =>
+let
+  val tok1 = tok
+  val (  ) = buf.skip1()
+  val d0es =
+    p1_d0expseq_SMCLN(buf, err)
+  val tok2 = p1_RPAREN(buf, err)
+in
+err := e00;
+d0exp_RPAREN_cons2(tok1,d0es,tok2)
+end (*let*) // end of [T_SMCLN()]
+|
+_(*non-T_BAR/SMCLN*) =>
 (
 case+ tnd of
 |
@@ -2085,6 +2097,9 @@ d0exp_RPAREN_cons0
 (      tbar      ) => tbar.lctn()
 |
 d0exp_RPAREN_cons1
+(tok1, d0es, tok2) => tok1.lctn()+tok2.lctn()
+|
+d0exp_RPAREN_cons2
 (tok1, d0es, tok2) => tok1.lctn()+tok2.lctn()
 ) (*case*) // end of [d0exp_RPAREN_lctn(node)] 
 (* ****** ****** *)
