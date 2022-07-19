@@ -95,64 +95,84 @@ FPEMSG_ERRVL 2
 #implfun
 i0dnt_fpemsg
 (out, id0) =
-(
+let
+#impltmp
+g_print$out<>() = out
+in//let
 case+ id0 of
 |
 I0DNTsome _ => ()
 |
 I0DNTnone(tok) =>
-println("PREADX0-ERROR:", tok.lctn(), ":", id0)
-)
+println
+("PREADX0-ERROR:", tok.lctn(), ":", id0)
+end (*let*)//end-of-[i0dnt_fpemsg(out,id0)]
 //
 (* ****** ****** *)
 //
 #implfun
 t0int_fpemsg
 (out, int) =
-(
+let
+#impltmp
+g_print$out<>() = out
+in//let
 case+ int of
 |
 T0INTsome _ => ()
 |
 T0INTnone(tok) =>
-println("PREADX0-ERROR:", tok.lctn(), ":", int)
-)
+println
+("PREADX0-ERROR:", tok.lctn(), ":", int)
+end (*let*)//end-of-[t0int_fpemsg(out,int)]
 //
 #implfun
 t0int_fpemsg
 (out, chr) =
-(
+let
+#impltmp
+g_print$out<>() = out
+in//let
 case+ chr of
 |
 T0CHRsome _ => ()
 |
 T0CHRnone(tok) =>
-println("PREADX0-ERROR:", tok.lctn(), ":", chr)
-)
+println
+("PREADX0-ERROR:", tok.lctn(), ":", chr)
+end (*let*)//end-of-[t0chr_fpemsg(out,chr)]
 //
 #implfun
 t0flt_fpemsg
 (out, flt) =
-(
+let
+#impltmp
+g_print$out<>() = out
+in//let
 case+ flt of
 |
 T0FLTsome _ => ()
 |
 T0FLTnone(tok) =>
-println("PREADX0-ERROR:", tok.lctn(), ":", flt)
-)
+println
+("PREADX0-ERROR:", tok.lctn(), ":", flt)
+end (*let*)//end-of-[t0chr_fpemsg(out,flt)]
 //
 #implfun
 t0str_fpemsg
 (out, str) =
-(
+let
+#impltmp
+g_print$out<>() = out
+in//let
 case+ str of
 |
 T0STRsome _ => ()
 |
 T0STRnone(tok) =>
-println("PREADX0-ERROR:", tok.lctn(), ":", str)
-)
+println
+("PREADX0-ERROR:", tok.lctn(), ":", str)
+end (*let*)//end-of-[t0chr_fpemsg(out,str)]
 //
 (* ****** ****** *)
 
@@ -167,14 +187,17 @@ case
 s0t.node() of
 //
 |
-S0Tid0(id0) => fpemsg(out, id0)
+S0Tid0(id0) =>
+i0dnt_fpemsg(out, id0)
 |
-S0Tint(int) => fpemsg(out, int)
+S0Tint(int) =>
+t0int_fpemsg(out, int)
 //
 |
 S0Tapps(sts) => fpemsg(out, sts)
 |
-S0Tlpar(tkb,sts,tke) => fpemsg(out, sts)
+S0Tlpar
+(tkb,sts,tke) => fpemsg(out, sts)
 |
 S0Terrck(lvl, st1) =>
 (
@@ -183,7 +206,8 @@ sort0_fpemsg(out, st1)
 if
 (lvl
 >FPEMSG_ERRVL) then () else
-println("PREADX0-ERROR:", s0t.lctn(), ":", s0t)
+println
+("PREADX0-ERROR:", s0t.lctn(), ":", s0t)
 )
 | _(* otherwise *) => ((*void*))
 end(*let*)//end-of(sort0_fpemsg(out,s0t))
@@ -241,7 +265,8 @@ s0exp_fpemsg(out, se1)
 if
 (lvl
 >FPEMSG_ERRVL) then () else
-println("PREADX0-ERROR:", s0e.lctn(), ":", s0e)
+println
+("PREADX0-ERROR:", s0e.lctn(), ":", s0e)
 )
 | _(* otherwise *) => ((*void*))
 end(*let*)//end-of(s0exp_fpemsg(out,s0e))
@@ -334,6 +359,58 @@ l0s0e_RBRACE_cons1
 )
 //
 (* ****** ****** *)
+
+#implfun
+d0exp_fpemsg
+(out, d0e) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case
+d0e.node() of
+//
+|
+D0Eid0(id0) =>
+i0dnt_fpemsg(out, id0)
+//
+|
+D0Eint(int) =>
+t0int_fpemsg(out, int)
+|
+D0Echr(chr) =>
+t0chr_fpemsg(out, chr)
+|
+D0Eflt(flt) =>
+t0flt_fpemsg(out, flt)
+|
+D0Estr(str) =>
+t0str_fpemsg(out, str)
+//
+|
+D0Eopid(id0) =>
+i0dnt_fpemsg(out, id0)
+//
+|
+D0Eapps(ses) =>
+d0explst_fpemsg(out, ses)
+//
+|
+D0Eerrck(lvl, se1) =>
+(
+d0exp_fpemsg(out, se1)
+; 
+if
+(lvl
+>FPEMSG_ERRVL) then () else
+println
+("PREADX0-ERROR:", d0e.lctn(), ":", d0e)
+)
+//
+| _(* otherwise *) => ((*void*))
+end(*let*)//end-of(d0exp_fpemsg(out,d0e))
+
+(* ****** ****** *)
 //
 #implfun
 d0ecl_fpemsg
@@ -345,9 +422,25 @@ in//let
 //
 case+
 dcl.node() of
+//
 |
-D0Cerrck _ =>
-println("PREADX0-ERROR:", dcl.lctn(), ":", dcl)
+D0Clocal
+( tkb, ds1
+, tin, ds2, tke) =>
+let
+val () =
+d0eclist_fpemsg(out, ds1)
+val () =
+d0eclist_fpemsg(out, ds2)
+endlet // end of [D0Clocal]
+//
+|
+D0Cerrck(lvl, dc1)  =>
+(
+d0ecl_fpemsg( out, dc1 )
+; 
+println
+("PREADX0-ERROR:", dcl.lctn(), ":", dcl))
 //
 | _(* otherwise *) => ((*void*))
 //
