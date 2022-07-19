@@ -341,9 +341,6 @@ s0exp_errvl with s0exp_errvl_a3
 fun
 s0exp_errvl_ses
 (ses: s0explst): sint
-#symload
-s0exp_errvl with s0exp_errvl_ses
-#symload errvl with s0exp_errvl_ses
 //
 #implfun
 s0exp_errvl_ses(ses) =
@@ -354,8 +351,12 @@ list_nil((*nil*)) => 0
 |
 list_cons(se1,ses) =>
 (
-  gmax(errvl(se1),errvl(ses)))
+gmax
+( errvl(se1),s0exp_errvl_ses(ses)))
+endcas // end of [ case+(ses) ]
 )
+//
+#symload errvl with s0exp_errvl_ses
 //
 (* ****** ****** *)
 //
@@ -393,7 +394,6 @@ l0s0e_errvl
 fun
 l0s0e_errvl_lses
 (lses: l0s0elst): sint
-#symload errvl with l0s0e_errvl_lses
 //
 #implfun
 l0s0e_errvl_lses(lses) =
@@ -404,8 +404,13 @@ list_nil((*nil*)) => 0
 |
 list_cons(lse1,lses) =>
 (
-  gmax(errvl(lse1),errvl(lses)))
+gmax
+( errvl(lse1)
+, l0s0e_errvl_lses(lses)))
+endcas // end of [ case+(lses) ]
 )
+//
+#symload errvl with l0s0e_errvl_lses
 //
 (* ****** ****** *)
 //
@@ -469,7 +474,8 @@ let
 val lvl = 0
 in//let
 s0exp_errck
-(lvl+1, s0exp(loc, S0Eop3(tkb,id0,tke)))
+( lvl+1
+, s0exp(loc, S0Eop3(tkb,id0,tke)))
 end (*let*) // end of [s0exp_op3_errck]
 //
 (* ****** ****** *)
@@ -481,7 +487,7 @@ s0exp_apps_errck
 , ses
 : s0explst): s0exp =
 let
-  val lvl = s0exp_errvl(ses)
+val lvl = s0exp_errvl_ses(ses)
 in//let
 s0exp_errck
 (lvl+1, s0exp(loc,S0Eapps(ses)))
@@ -500,7 +506,7 @@ s0exp_fimp_errck
 , tke
 : token   ): s0exp =
 let
-  val lvl = s0exp_errvl(ses)
+val lvl = s0exp_errvl_ses(ses)
 in//let
 s0exp_errck
 (lvl+1, s0exp(loc,S0Efimp(tkb,ses,tke)))
