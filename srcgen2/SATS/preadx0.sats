@@ -246,6 +246,10 @@ fun sort0_fpemsg(FILR, sort0): void
 fun s0exp_fpemsg(FILR, s0exp): void
 fun l0s0e_fpemsg(FILR, l0s0e): void
 (* ****** ****** *)
+fun s0mag_fpemsg(FILR, s0mag): void
+fun t0arg_fpemsg(FILR, t0arg): void
+fun t0mag_fpemsg(FILR, t0mag): void
+(* ****** ****** *)
 fun
 i0dntlst_fpemsg(FILR, i0dntlst): void
 (* ****** ****** *)
@@ -259,6 +263,13 @@ fun
 s0explst_fpemsg(FILR, s0explst): void
 fun
 l0s0elst_fpemsg(FILR, l0s0elst): void
+(* ****** ****** *)
+fun
+s0maglst_fpemsg(FILR, s0maglst): void
+fun
+t0arglst_fpemsg(FILR, t0arglst): void
+fun
+t0maglst_fpemsg(FILR, t0maglst): void
 (* ****** ****** *)
 //
 fun

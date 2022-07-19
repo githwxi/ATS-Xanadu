@@ -89,4 +89,12 @@ datasort ints =
 
 (* ****** ****** *)
 
+#infix0 foo1 foo2 foo3 of 1000
+
+(* ****** ****** *)
+
+#stacst0 abc of int -> int
+
+(* ****** ****** *)
+
 (* end of [ATS3/XANADU_prelude_miscell.dats] *)
