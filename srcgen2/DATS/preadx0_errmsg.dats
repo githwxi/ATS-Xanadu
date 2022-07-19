@@ -96,15 +96,23 @@ FPEMSG_ERRVL 2
 #symload fpemsg with sort0_fpemsg
 #symload fpemsg with s0exp_fpemsg
 #symload fpemsg with l0s0e_fpemsg
+(* ****** ****** *)
 #symload fpemsg with sort0opt_fpemsg
 #symload fpemsg with s0expopt_fpemsg
 #symload fpemsg with sort0lst_fpemsg
 #symload fpemsg with s0explst_fpemsg
 #symload fpemsg with s0exp_RPAREN_fpemsg
+#symload fpemsg with l0s0e_RBRACE_fpemsg
 (* ****** ****** *)
 #symload fpemsg with d0pat_fpemsg
 #symload fpemsg with d0exp_fpemsg
 #symload fpemsg with d0ecl_fpemsg
+(* ****** ****** *)
+#symload fpemsg with d0patopt_fpemsg
+#symload fpemsg with d0expopt_fpemsg
+#symload fpemsg with d0patlst_fpemsg
+#symload fpemsg with d0explst_fpemsg
+#symload fpemsg with d0eclist_fpemsg
 (* ****** ****** *)
 #extern
 fun
@@ -479,10 +487,12 @@ s0exp_RPAREN_fpemsg
 (out, srp) =
 (
 case+ srp of
-| s0exp_RPAREN_cons0
-  (      tend      ) => ()
-| s0exp_RPAREN_cons1
-  (tbar, s0es, tend) => s0explst_fpemsg(out,s0es)
+|
+s0exp_RPAREN_cons0
+(      tend      ) => ()
+|
+s0exp_RPAREN_cons1
+(tbar, s0es, tend) => s0explst_fpemsg(out,s0es)
 )
 //
 #implfun

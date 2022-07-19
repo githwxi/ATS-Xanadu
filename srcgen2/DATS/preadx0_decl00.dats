@@ -123,6 +123,23 @@ list_cons
 (* ****** ****** *)
 
 fun
+d0ecl_nonfix_errck
+( loc0
+: loc_t
+, tknd
+: token
+, oprs
+: i0dntlst): d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+(lvl+1,d0ecl(loc0,D0Cnonfix(tknd,oprs)))
+end (*let*) // end of [d0ecl_nonfix_errck]
+
+(* ****** ****** *)
+
+fun
 d0ecl_local_errck
 ( loc0
 : loc_t
@@ -442,8 +459,12 @@ case+
 dcl.node() of
 //
 |
+D0Cnonfix _ =>
+f0_nonfix(dcl, err)
+//
+|
 D0Clocal _ =>
-f0_local(dcl, err)
+f0_local( dcl, err )
 //
 |
 D0Cabssort _ =>
@@ -487,6 +508,30 @@ D0Cerrck _ =>
 //
 ) where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_nonfix
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val-
+D0Cnonfix
+(tknd, oprs) = dcl.node()
+//
+val oprs =
+preadx0_i0dntlst(oprs, err)
+//
+in
+if
+(err = e00)
+then dcl else
+d0ecl_nonfix_errck(dcl.lctn(),tknd,oprs)
+end (*let*) // end of [f0_nonfix(dcl,err)]
 //
 (* ****** ****** *)
 //
