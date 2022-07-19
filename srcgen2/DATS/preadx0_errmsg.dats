@@ -116,10 +116,16 @@ FPEMSG_ERRVL 2
 (* ****** ****** *)
 #extern
 fun
+token_BAR_fpemsg:(FILR,token)->void
+#extern
+fun
 token_EQ0_fpemsg:(FILR,token)->void
 #extern
 fun
 token_RPAREN_fpemsg:(FILR,token)->void
+#extern
+fun
+token_RBRACE_fpemsg:(FILR,token)->void
 (* ****** ****** *)
 //
 #implfun
@@ -394,6 +400,30 @@ val () = token_RPAREN_fpemsg(out, tend)
 //
 endlet
 ) (*case*)//end-of(t0mag_fpemsg(out,lse))
+(* ****** ****** *)
+//
+#implfun
+s0tdf_fpemsg
+(out, tdf) =
+(
+case+
+tdf.node() of
+|
+S0TDFsort(s0t) =>
+sort0_fpemsg(out, s0t)
+|
+S0TDFtsub
+(tbeg,s0a1,tbar,s0es,tend) =>
+let
+val () =
+  s0arg_fpemsg(out, s0a1)
+val () =
+  token_BAR_fpemsg(out, tbar)
+val () = s0explst_fpemsg(out, s0es)
+val () = token_RBRACE_fpemsg(out, tend)
+endlet // end of [S0TDFtsub(...)]
+)
+//
 (* ****** ****** *)
 //
 #implfun
