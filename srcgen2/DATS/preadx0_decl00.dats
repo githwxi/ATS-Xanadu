@@ -405,6 +405,13 @@ D0Clocal _ =>
 f0_local(dcl, err)
 //
 |
+D0Cabssort _ =>
+f0_abssort(dcl, err)
+|
+D0Cstacst0 _ =>
+f0_stacst0(dcl, err)
+//
+|
 D0Csortdef _ =>
 f0_sortdef(dcl, err)
 |
