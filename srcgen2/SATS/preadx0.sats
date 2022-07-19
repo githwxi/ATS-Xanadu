@@ -75,6 +75,8 @@ s0exp_RPAREN = $S0E.s0exp_RPAREN
 #typedef
 l0s0e_RBRACE = $S0E.l0s0e_RBRACE
 (* ****** ****** *)
+#typedef i0dntlst = $S0E.i0dntlst
+(* ****** ****** *)
 #typedef s0expopt = $S0E.s0expopt
 #typedef sort0opt = $S0E.sort0opt
 (* ****** ****** *)
@@ -161,6 +163,9 @@ preadx0_synentlst_fun
 //
 (* ****** ****** *)
 fun
+preadx0_i0dntlst: fpreadx0(i0dntlst)
+(* ****** ****** *)
+fun
 preadx0_sort0opt: fpreadx0(sort0opt)
 fun
 preadx0_s0expopt: fpreadx0(s0expopt)
@@ -240,6 +245,9 @@ fun t0str_fpemsg(FILR, t0str): void
 fun sort0_fpemsg(FILR, sort0): void
 fun s0exp_fpemsg(FILR, s0exp): void
 fun l0s0e_fpemsg(FILR, l0s0e): void
+(* ****** ****** *)
+fun
+i0dntlst_fpemsg(FILR, i0dntlst): void
 (* ****** ****** *)
 fun
 sort0opt_fpemsg(FILR, sort0opt): void

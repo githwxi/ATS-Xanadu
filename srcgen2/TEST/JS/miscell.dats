@@ -85,4 +85,8 @@ datasort ints =
 
 (* ****** ****** *)
 
+#nonfix foo1 foo2 foo3
+
+(* ****** ****** *)
+
 (* end of [ATS3/XANADU_prelude_miscell.dats] *)

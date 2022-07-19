@@ -1340,6 +1340,11 @@ endlet // end of [S0TDFsub]
 ) (*case*)//end-of-[preadx0_s0tdf(tdf,err)]
 
 (* ****** ****** *)
+#implfun
+preadx0_i0dntlst
+(   lst, err   ) =
+preadx0_synentlst_fun(lst,err,preadx0_i0dnt)
+(* ****** ****** *)
 //
 #implfun
 preadx0_sort0opt
