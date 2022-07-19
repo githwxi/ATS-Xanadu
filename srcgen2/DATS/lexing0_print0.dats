@@ -200,7 +200,7 @@ print("T_GTLT()")
 T_MSLT() =>
 print("T_MSLT()")
 |
-T_MSLT() =>
+T_MSGT() =>
 print("T_MSGT()")
 //
 |
