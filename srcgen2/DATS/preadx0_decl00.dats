@@ -118,7 +118,7 @@ list_cons
 
 fun
 d0ecl_local_errck
-( loc
+( loc0
 : loc_t
 , tknd
 : token
@@ -135,14 +135,15 @@ in//let
 d0ecl_errck
 ( lvl+1
 , d0ecl_make_node
-  (loc, D0Clocal(tknd, dcs1, topt, dcs2, tend)))
+  ( loc0
+  , D0Clocal(tknd, dcs1, topt, dcs2, tend)))
 end (*let*) // end of [d0ecl_local_errck]
 
 (* ****** ****** *)
 
 fun
 d0ecl_sortdef_errck
-( loc
+( loc0
 : loc_t
 , tknd
 : token
@@ -156,14 +157,14 @@ in//let
 d0ecl_errck
 ( lvl+1
 , d0ecl_make_node
-  (loc, D0Csortdef(tknd,stid,teq1,def2)))
+  (loc0, D0Csortdef(tknd,stid,teq1,def2)))
 end (*let*) // end of [d0ecl_sortdef_errck]
 
 (* ****** ****** *)
 
 fun
 d0ecl_sexpdef_errck
-( loc
+( loc0
 : loc_t
 , tknd
 : token
@@ -181,7 +182,7 @@ in//let
 d0ecl_errck
 ( lvl+1
 , d0ecl_make_node
-  ( loc
+  ( loc0
   , D0Csexpdef
     (tknd, seid, smas, tres, teq1, s0e2)))
 end (*let*) // end of [d0ecl_sexpdef_errck]
@@ -190,7 +191,7 @@ end (*let*) // end of [d0ecl_sexpdef_errck]
 
 fun
 d0ecl_abstype_errck
-( loc
+( loc0
 : loc_t
 , tknd
 : token
@@ -207,7 +208,7 @@ in//let
 d0ecl_errck
 ( lvl+1
 , d0ecl_make_node
-  ( loc
+  ( loc0
   , D0Cabstype(tknd,seid,tmas,tres,tdef)))
 end (*let*) // end of [d0ecl_abstype_errck]
 
@@ -229,7 +230,7 @@ end (*let*) // end of [d0ecl_absopen_errck]
 
 fun
 d0ecl_absimpl_errck
-( loc
+( loc0
 : loc_t
 , tknd
 : token
@@ -245,12 +246,50 @@ let
 val lvl = 0
 in//let
 d0ecl_errck
-( lvl+1
-, d0ecl_make_node
-  ( loc
-  , D0Cabsimpl(tknd,sqid,smas,tres,teq1,s0e2)))
+(
+lvl+1,
+d0ecl_make_node
+( loc0
+, D0Cabsimpl(tknd,sqid,smas,tres,teq1,s0e2)))
 end (*let*) // end of [d0ecl_absimpl_errck]
 
+(* ****** ****** *)
+//
+fun
+d0ecl_datasort_errck
+( loc0
+: loc_t
+, tknd
+: token
+, d0ts
+: d0tstlst) : d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+(lvl+1, d0ecl(loc0, D0Cdatasort(tknd, d0ts)))
+end (*let*) // end of [d0ecl_datatype_errck]
+//
+(* ****** ****** *)
+//
+fun
+d0ecl_datatype_errck
+( loc0
+: loc_t
+, tknd
+: token
+, d0ts
+: d0typlst
+, wdcs
+: wd0eclseq) : d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+( lvl+1
+, d0ecl(loc0, D0Cdatatype(tknd, d0ts, wdcs)))
+end (*let*) // end of [d0ecl_datatype_errck]
+//
 (* ****** ****** *)
 
 #implfun
@@ -285,14 +324,21 @@ f0_absimpl(dcl, err)
 D0Ctkskp _ =>
 (err := err+1; d0ecl_errck(1, dcl))
 |
-D0Ctkerr _ =>
+D0Ctkerr(tok) =>
+(
+case+
+tok.node() of
+| T_EOF() => dcl
+|
+_(*non-T_EOF*) =>
 (err := err+1; d0ecl_errck(1, dcl))
+)
 //
 |
 D0Cerrck _ =>
 (err := err+1; d0ecl_errck(1, dcl))
 //
-| _(* else *) => dcl // HX: placeholder
+| _(* otherwise *) => dcl // HX: placeholder
 //
 ) where
 {
