@@ -192,12 +192,13 @@ Some of the commonly used keywords for forming declarations are listed as follow
 Identifiers
 -----------
 
-An identifer is a non-empty sequence of chars such that the first char
-is a letter and the rest are either letters or digits, where a letter
-is either from the English alphabet or equals `_` (underscore), `'`
-(apostrophe) or `$` (dollar sign). Note that neither the char `'` nor
-the char `$` can appear as the first letter of an identifier.  Please
-find some examples of indentifiers as follows:
+An identifer (that is, name) is a non-empty sequence of chars such
+that the first char is a letter and the rest are either letters or
+digits, where a letter is either from the English alphabet or equals
+`_` (underscore), `'` (apostrophe) or `$` (dollar sign). Note that
+neither the char `'` nor the char `$` can appear as the first letter
+of an identifier.  Please find some examples of indentifiers as
+follows:
 
 - <code>xyz</code>
 - <code>xyz'</code>
@@ -369,13 +370,33 @@ try auxlst(xs); false with ~TRUE() => true end
 A lazy expression starts with the keyword `$lazy` followed by an
 atomic expression.
 
+In the following example, the body of the defined function `from` is a
+lazy-expression.
+
+```
+fun
+from
+(n: sint): strm(sint) =
+$lazy(strmcon_cons(n, from(n+1)))
+```
+
 ### Llazy-Expressions
 
 A llazy (that is, linearly lazy) expression starts with the keyword
-`$llazy` followed by an atomic expression such that the atomic expression
-represents a sequence of expressions where the last one is the suspended
-computation and those before the last one are for freeing the resources contained
-in the suspended computation.
+`$llazy` followed by an atomic expression such that the atomic
+expression represents a (non-empty) sequence of expressions where the
+last one is the suspended computation and those before the last one
+are for freeing the resources contained in the suspended computation.
+
+In the following example, the body of the defined function `from` is a
+llazy-expression:
+
+```
+fun
+from_vt
+(n: sint): strm_vt(sint) =
+$llazy(strmcon_vt_cons(n, from_vt(n+1)))
+```
 
 Static Declarations
 -------------------
