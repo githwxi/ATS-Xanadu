@@ -473,19 +473,11 @@ f0_absimpl(dcl, err)
 D0Cdatasort _ =>
 f0_datasort(dcl, err)
 //
+| // HX: ignored!
+D0Ctkerr(tok) => ( dcl )
 |
 D0Ctkskp _ =>
 (err := err+1; d0ecl_errck(1, dcl))
-|
-D0Ctkerr(tok) =>
-(
-case+
-tok.node() of
-| T_EOF() => dcl
-|
-_(*non-T_EOF*) =>
-(err := err+1; d0ecl_errck(1, dcl))
-)
 //
 |
 D0Cerrck _ =>

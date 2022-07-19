@@ -355,9 +355,11 @@ val e00 = err
 val tok = buf.getk0()
 val tnd = tok.tnode()
 //
+(*
 val () =
 prerrln
 ("fp_d0ecl: tok=", tok)
+*)
 //
 fun
 ENDq(tnd: tnode): bool =
@@ -1617,9 +1619,11 @@ val e00 = err
 val tknd = tok
 val (  ) = buf.skip1()
 //
+(*
 val (  ) =
 prerrln
 ("pk_valdclst: tknd=", tknd)
+*)
 //
 val d0cs =
 p1_d0valdclseq_AND(buf, err)
@@ -1653,6 +1657,12 @@ val e00 = err
 val tknd = tok
 val (  ) = buf.skip1()
 //
+(*
+val (  ) =
+prerrln
+("pk_vardclst: tknd=", tknd)
+*)
+//
 val d0cs =
 p1_d0vardclseq_AND(buf, err)
 //
@@ -1684,6 +1694,12 @@ let
 val e00 = err
 val tknd = tok
 val (  ) = buf.skip1()
+//
+(*
+val (  ) =
+prerrln
+("pk_fundclst: tknd=", tknd)
+*)
 //
 val tqas =
 p1_t0qagseq(buf, err)
