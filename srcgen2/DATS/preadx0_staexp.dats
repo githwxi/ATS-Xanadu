@@ -745,25 +745,8 @@ endlet // end of [S0MAGlst]
 //
 #implfun
 preadx0_s0maglst
-  (smas, err) =
-(
-case+ smas of
-|
-list_nil() =>
-list_nil((*nil*))
-|
-list_cons
-(sma1, sms1) => let
-//
-val e00 = err
-val sma1 = preadx0_s0mag(sma1, err)
-val sms1 = preadx0_s0maglst(sms1, err)
-//
-in//let
-if
-(err = e00) then smas else list_cons(sma1, sms1)
-endlet // end of [list_cons(sma1,sms1)]
-) (*case*) // end-of-[preadx0_s0maglst(smas,err)]
+(   lst, err   ) =
+preadx0_synentlst_fun(lst,err,preadx0_s0mag)
 //
 (* ****** ****** *)
 //
@@ -785,7 +768,7 @@ optn_nil() =>
 let
 val s0t =
 preadx0_sort0(s0t, err) in t0a
-end // optn_nil()
+end // optn_nil((*nil*))
 |
 optn_cons(tok) =>
 let
@@ -802,25 +785,13 @@ tok.node() of
 | _(*non-T_IDALP*) => (err := err + 1))
 *)
 }
-) (*case*) // end of [T0ARGsome]
-) (*case*) // end of [preadx0_t0arg(t0a,err)]
+) (*case+*)//end of [T0ARGsome]
+) (*case+*)//end of [preadx0_t0arg(t0a,err)]
 //
 #implfun
 preadx0_t0arglst
-  (t0as, err) =
-(
-case+ t0as of
-|
-list_nil() =>
-list_nil((*nil*))
-|
-list_cons
-(t0a1, tas1) => t0as where
-{
-  val t0a1 = preadx0_t0arg(t0a1, err)
-  val tas1 = preadx0_t0arglst(tas1, err)
-} // end of [list_cons(t0a1,t0as)]
-) (*case*) // end-of-[preadx0_t0arglst(t0as,err)]
+(   lst, err   ) =
+preadx0_synentlst_fun(lst,err,preadx0_t0arg)
 //
 (* ****** ****** *)
 //
@@ -851,25 +822,8 @@ endlet // end of [T0MAGlst]
 //
 #implfun
 preadx0_t0maglst
-  (tmas, err) =
-(
-case+ tmas of
-|
-list_nil() =>
-list_nil((*nil*))
-|
-list_cons
-(tma1, tms1) => let
-//
-val e00 = err
-val tma1 = preadx0_t0mag(tma1, err)
-val tms1 = preadx0_t0maglst(tms1, err)
-//
-in//let
-if
-(err = e00) then tmas else list_cons(tma1, tms1)
-endlet // end of [list_cons(tma1,tms1)]
-) (*case*) // end-of-[preadx0_t0maglst(tmas,err)]
+(   lst, err   ) =
+preadx0_synentlst_fun(lst,err,preadx0_t0mag)
 //
 (* ****** ****** *)
 //
@@ -887,20 +841,8 @@ S0QUAnone _ => (err := err + 1; s0q)
 //
 #implfun
 preadx0_s0qualst
-  (s0qs, err) =
-(
-case+ s0qs of
-|
-list_nil() =>
-list_nil((*nil*))
-|
-list_cons
-(s0q1, sqs1) => s0qs where
-{
-val s0q1 = preadx0_s0qua(s0q1, err)
-val sqs1 = preadx0_s0qualst(sqs1, err)
-} // end of [list_cons(s0q1,s0qs)]
-) (*case*) // end-of-[preadx0_s0qualst(s0qs,err)]
+(   lst, err   ) =
+preadx0_synentlst_fun(lst,err,preadx0_s0qua)
 //
 (* ****** ****** *)
 //
@@ -1401,102 +1343,27 @@ endlet // end of [S0TDFsub]
 //
 #implfun
 preadx0_sort0opt
-  (opt, err) =
-(
-case+ opt of
-|
-optn_nil() =>
-optn_nil()
-|
-optn_cons(st1) =>
-let
-val e00 = err
-val st1 = preadx0_sort0(st1, err)
-in//let
-if err = e00 then opt else optn_cons(st1)
-endlet // end of [optn_cons(st1)]
-) (*case*)//end-of-[preadx0_sort0opt(opt,err)]
-//
+(   opt, err   ) =
+preadx0_synentopt_fun(opt,err,preadx0_sort0)
 #implfun
 preadx0_s0expopt
-  (opt, err) =
-(
-case+ opt of
-|
-optn_nil() =>
-optn_nil()
-|
-optn_cons(se1) =>
-let
-val e00 = err
-val se1 = preadx0_s0exp(se1, err)
-in//let
-if err = e00 then opt else optn_cons(se1)
-endlet // end of [optn_cons(se1)]
-) (*case*)//end-of-[preadx0_s0expopt(opt,err)]
+(   opt, err   ) =
+preadx0_synentopt_fun(opt,err,preadx0_s0exp)
 //
 (* ****** ****** *)
 //
 #implfun
 preadx0_sort0lst
-  (s0ts, err) =
-(
-case+ s0ts of
-|
-list_nil() =>
-list_nil((*nil*))
-|
-list_cons
-(s0t1, sts1) => let
-  val e00 = err
-  val s0t1 = preadx0_sort0(s0t1, err)
-  val sts1 = preadx0_sort0lst(sts1, err)
-in//let
-if err = e00 then s0ts else list_cons(s0t1, sts1)
-endlet // end of [list_cons(st01,sts1)]
-) (*case*) // end-of-[preadx0_sort0lst(s0ts,err)]
-//
+(   lst, err   ) =
+preadx0_synentlst_fun(lst,err,preadx0_sort0)
 #implfun
 preadx0_s0explst
-  (s0es, err) =
-(
-case+ s0es of
-|
-list_nil() =>
-list_nil((*nil*))
-|
-list_cons
-(s0e1, ses1) => let
-//
-  val e00 = err
-  val s0e1 = preadx0_s0exp(s0e1, err)
-  val ses1 = preadx0_s0explst(ses1, err)
-//
-in//let
-if err = e00 then s0es else list_cons(s0e1, ses1)
-endlet // end of [list_cons(s0e1,s0es)]
-) (*case*) // end-of-[preadx0_s0explst(s0es,err)]
-//
+(   lst, err   ) =
+preadx0_synentlst_fun(lst,err,preadx0_s0exp)
 #implfun
 preadx0_l0s0elst
-  (lses, err) =
-(
-case+ lses of
-|
-list_nil() =>
-list_nil((*nil*))
-|
-list_cons
-(lse1, lxs1) => let
-//
-  val e00 = err
-  val lse1 = preadx0_l0s0e(lse1, err)
-  val lxs1 = preadx0_l0s0elst(lxs1, err)
-//
-in//let
-if err = e00 then lses else list_cons(lse1, lxs1)
-endlet // end of [list_cons(lse1,lses)]
-) (*case*) // end-of-[preadx0_l0s0elst(lses,err)]
+(   lst, err  ) =
+preadx0_synentlst_fun(lst,err,preadx0_l0s0e)
 //
 (* ****** ****** *)
 

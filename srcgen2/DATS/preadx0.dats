@@ -47,5 +47,59 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/preadx0.sats"
 (* ****** ****** *)
+//
+#implfun
+preadx0_synentopt_fun
+{  syn:tx  }
+(  opt , err , fpr  ) =
+(
+case+ opt of
+|
+optn_nil() => opt
+|
+optn_cons(tm1) =>
+let
+val e00 = err
+val tm1 = fpr(tm1, err)
+in // let
+if
+(err=e00)
+then opt else optn_cons(tm1)
+endlet // end of [optn_cons(tm1)]
+)(*case+*)//end(preadx0_synentopt_fun)
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_synentlst_fun
+{  syn:tx  }
+(  lst , err , fpr  ) =
+(
+  auxlst(lst, err)) where
+{
+//
+fun
+auxlst
+( lst: list(syn)
+, err: &sint >> _): list(syn) =
+case+ lst of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(tm1, tms) =>
+let
+val e00 = err
+val tm1 = fpr(tm1, err)
+val tm2 = auxlst(tms, err)
+in//let
+if
+(err = e00)
+then lst else list_cons(tm1,tm2)
+endlet // end of [auxlst(lst,err)]
+//
+}(*where*)//end(preadx0_synentlst_fun)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_preadx0.dats] *)
