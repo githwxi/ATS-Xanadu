@@ -415,11 +415,11 @@ end(*let*) // end of [ T_IDQUA(...) ]
 //
 | _(*otherwise*) =>
 let
-// (*
+(*
 val () =
 prerrln
 ("p1_d0pat_atm: otherwise: tok = ", tok)
-// *)
+*)
 in//let
 err := e00+1; d0pat(tok.lctn(),D0Ptkerr(tok))
 end (*let*) // end of [ _(*otherwise*) ]
@@ -1636,11 +1636,11 @@ end(*let*) // end-of-[ T_DLR_EXISTS(_) ]
 |
 _(* error-processing *) =>
 let
-// (*
+(*
 val () =
 prerrln
 ("p1_d0exp_atm(error): tok=", tok)
-// *)
+*)
 in//let
 (
 err := e00 + 1;
