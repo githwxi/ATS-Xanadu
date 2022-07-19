@@ -67,6 +67,9 @@ ATS_PACKNAME
 #symload lctn with d0exp_get_lctn
 #symload node with d0exp_get_node
 (* ****** ****** *)
+#symload lctn with s0tcn_get_lctn
+#symload node with s0tcn_get_node
+(* ****** ****** *)
 #symload lctn with d0tst_get_lctn
 #symload node with d0tst_get_node
 (* ****** ****** *)
@@ -309,6 +312,34 @@ preadx0_d0tstlst: fpreadx0(d0tstlst)
 (* ****** ****** *)
 
 #implfun
+preadx0_s0tcn
+(syn, err) =
+(
+case+
+syn.node() of
+|
+S0TCNnode
+(sid0, topt) =>
+(
+if
+(err=e00)
+then syn else
+s0tcn
+(syn.lctn(), S0TCNnode(sid0, topt))
+) where
+{
+//
+val e00 = err
+//
+val sid0 = preadx0_i0dnt(sid0, err)
+val topt = preadx0_sort0opt(topt, err)
+//
+}(*where*)//end-of(if(err=e00))
+)(*case+*)//end-of(preadx0_s0tcn(syn,err))
+
+(* ****** ****** *)
+
+#implfun
 preadx0_d0tst
 (syn, err) =
 (
@@ -333,6 +364,7 @@ val e00 = err
 //
 val tid0 =
 preadx0_i0dnt(tid0, err)
+//
 val (  ) =
 (
 case+

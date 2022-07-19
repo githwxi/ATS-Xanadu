@@ -49,6 +49,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
 (* ****** ****** *)
+#staload "./../SATS/dynexp0.sats"
+(* ****** ****** *)
 #staload "./../SATS/preadx0.sats"
 (* ****** ****** *)
 #symload lctn with token_get_lctn
@@ -59,6 +61,15 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload lctn with s0exp_get_lctn
 #symload node with s0exp_get_node
+(* ****** ****** *)
+#symload lctn with d0pat_get_lctn
+#symload node with d0pat_get_node
+(* ****** ****** *)
+#symload lctn with d0exp_get_lctn
+#symload node with d0exp_get_node
+(* ****** ****** *)
+#symload lctn with d0ecl_get_lctn
+#symload node with d0ecl_get_node
 (* ****** ****** *)
 
 #define
@@ -149,7 +160,8 @@ println("PREADX0-ERROR:", tok.lctn(), ":", str)
 sort0_fpemsg
 (out, s0t) =
 let
-#impltmp g_print$out() = out
+#impltmp
+g_print$out<>() = out
 in//let
 case
 s0t.node() of
@@ -182,7 +194,8 @@ end(*let*)//end-of(sort0_fpemsg(out,s0t))
 s0exp_fpemsg
 (out, s0e) =
 let
-#impltmp g_print$out() = out
+#impltmp
+g_print$out<>() = out
 in//let
 case
 s0e.node() of
@@ -312,11 +325,33 @@ l0s0e_RBRACE_fpemsg
 (out, lsrb) =
 (
 case+ lsrb of
-| l0s0e_RBRACE_cons0
-  (      tend      ) => ()
-| l0s0e_RBRACE_cons1
-  (tbar, lses, tend) => l0s0elst_fpemsg(out,lses)
+|
+l0s0e_RBRACE_cons0
+(      tend      ) => ()
+|
+l0s0e_RBRACE_cons1
+(tbar, lses, tend) => l0s0elst_fpemsg(out,lses)
 )
+//
+(* ****** ****** *)
+//
+#implfun
+d0ecl_fpemsg
+(out, dcl) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+dcl.node() of
+|
+D0Cerrck _ =>
+println("PREADX0-ERROR:", dcl.lctn(), ":", dcl)
+//
+| _(* otherwise *) => ((*void*))
+//
+end (*let*) // end of [ d0ecl_fpemsg(out,dcl) ]
 //
 (* ****** ****** *)
 //
