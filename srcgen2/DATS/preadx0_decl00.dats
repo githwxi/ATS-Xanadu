@@ -139,11 +139,50 @@ let
 val lvl = 0
 in//let
 d0ecl_errck
-( lvl+1
-, d0ecl_make_node
-  ( loc0
-  , D0Clocal(tknd, dcs1, topt, dcs2, tend)))
+(
+lvl+1
+,
+d0ecl_make_node
+( loc0
+, D0Clocal(tknd,dcs1,topt,dcs2,tend)))
 end (*let*) // end of [d0ecl_local_errck]
+
+(* ****** ****** *)
+
+fun
+d0ecl_abssort_errck
+( loc0: loc_t
+, tknd: token
+, tid0: s0tid): d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+( lvl+1
+, d0ecl( loc0, D0Cabssort(tknd,tid0)) )
+end (*let*) // end of [d0ecl_abssort_errck]
+
+(* ****** ****** *)
+
+fun
+d0ecl_stacst0_errck
+( loc0: loc_t
+, tknd: token
+, sid0: s0tid
+, tmas: t0maglst
+, tcln: token
+, s0t1: sort0): d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+(
+lvl+1
+,
+d0ecl
+( loc0
+, D0Cstacst0(tknd,sid0,tmas,tcln,s0t1)))
+end (*let*) // end of [d0ecl_stacst0_errck]
 
 (* ****** ****** *)
 
@@ -153,7 +192,7 @@ d0ecl_sortdef_errck
 : loc_t
 , tknd
 : token
-, stid
+, tid0
 : s0tid
 , teq1: token
 , def2: s0tdf): d0ecl =
@@ -161,9 +200,11 @@ let
 val lvl = 0
 in//let
 d0ecl_errck
-( lvl+1
-, d0ecl_make_node
-  (loc0, D0Csortdef(tknd,stid,teq1,def2)))
+(
+lvl+1
+,
+d0ecl_make_node
+(loc0, D0Csortdef(tknd,tid0,teq1,def2)))
 end (*let*) // end of [d0ecl_sortdef_errck]
 
 (* ****** ****** *)
@@ -493,6 +534,68 @@ end (*let*) // end of [ f0_local(dcl,err) ]
 (* ****** ****** *)
 //
 fun
+f0_abssort
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val-
+D0Cabssort
+(tknd, tid0) = dcl.node()
+//
+val tid0 =
+preadx0_i0dnt( tid0, err )
+//
+in//let
+if
+(err = e00)
+then dcl else
+d0ecl_abssort_errck(dcl.lctn(), tknd, tid0)
+end (*let*) // end of [f0_abssort(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_stacst0
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val-
+D0Cstacst0
+( tknd
+, sid0
+, tmas
+, tcln, s0t1) = dcl.node()
+//
+val sid0 =
+preadx0_i0dnt(sid0, err)
+val tmas =
+preadx0_t0maglst(tmas, err)
+val (  ) =
+(
+case+
+tcln.node() of
+| T_CLN() => ((*void*))
+| _(*non-T_CLN*) => (err := err+1)
+)
+val s0t1 = preadx0_sort0(s0t1, err)
+//
+in//let
+if
+(err = e00)
+then dcl else
+d0ecl_stacst0_errck
+(dcl.lctn(), tknd, sid0, tmas, tcln, s0t1)
+end (*let*) // end of [f0_stacst0(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
 f0_sortdef
 ( dcl: d0ecl
 , err: &sint >> _): d0ecl =
@@ -503,11 +606,11 @@ val e00 = err
 val-
 D0Csortdef
 ( tknd
-, stid
+, tid0
 , teq1, def2) = dcl.node()
 //
-val stid =
-preadx0_i0dnt(stid, err)
+val tid0 =
+preadx0_i0dnt(tid0, err)
 val (  ) =
 (
 case+
@@ -522,7 +625,7 @@ if
 (err = e00)
 then dcl else
 d0ecl_sortdef_errck
-(dcl.lctn(), tknd, stid, teq1, def2)
+(dcl.lctn(), tknd, tid0, teq1, def2)
 end (*let*) // end of [f0_sortdef(dcl, err)]
 //
 (* ****** ****** *)

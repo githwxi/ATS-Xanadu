@@ -222,6 +222,8 @@ sort0lst_fpemsg(out, sts)
 S0Tlpar(tkb,sts,tke) =>
 sort0lst_fpemsg(out, sts)
 |
+S0Ttkerr _ => ( (*void*) )
+|
 S0Terrck _ => sort0_fpemsg(out, s0t)
 end (*let*)//end-of(auxmain(out,s0t))
 //
@@ -301,6 +303,8 @@ s0explst_fpemsg(out, ses)
 |
 S0Elpar(tkb,ses,srp) =>
 (fpemsg(out, ses); fpemsg(out, srp))
+|
+S0Etkerr _ => ( (*void*) )
 |
 S0Eerrck _ => s0exp_fpemsg(out, s0e)
 end (*let*) // end of [auxmain(out,s0e)]
@@ -611,10 +615,9 @@ let
 endlet
 //
 |
-D0Cerrck _  =>
-let
-val () = d0ecl_fpemsg(out, dcl)
-endlet
+D0Ctkerr _  => ( (*void*) )
+|
+D0Cerrck _  => d0ecl_fpemsg(out, dcl)
 //
 | _(* otherwise *) => ((*void*))
 end (*let*) // end of [auxmain(out, dcl)]
