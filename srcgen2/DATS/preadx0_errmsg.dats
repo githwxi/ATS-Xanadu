@@ -91,6 +91,10 @@ FPEMSG_ERRVL 2
 #symload fpemsg with s0explst_fpemsg
 #symload fpemsg with s0exp_RPAREN_fpemsg
 (* ****** ****** *)
+#symload fpemsg with d0pat_fpemsg
+#symload fpemsg with d0exp_fpemsg
+#symload fpemsg with d0ecl_fpemsg
+(* ****** ****** *)
 //
 #implfun
 i0dnt_fpemsg
@@ -306,6 +310,15 @@ optn_cons(s0e) => s0exp_fpemsg(out, s0e)
 )
 //
 (* ****** ****** *)
+#implfun
+i0dntlst_fpemsg
+(out, ids) =
+list_foreach<i0dnt>(ids) where
+{
+#impltmp
+foreach$work<i0dnt>(id1) = i0dnt_fpemsg(out,id1)
+}
+(* ****** ****** *)
 //
 #implfun
 sort0lst_fpemsg
@@ -422,6 +435,29 @@ in//let
 //
 case+
 dcl.node() of
+//
+|
+D0Cnonfix
+(knd, ids) =>
+i0dntlst_fpemsg(out, ids)
+(*
+|
+D0Cfixity of
+(knd, ids, opt) =>
+*)
+//
+|
+D0Cstatic
+(knd, dc1) =>
+let
+val () = fpemsg(out, dc1)
+end
+|
+D0Cextern
+(knd, dc1) =>
+let
+val () = fpemsg(out, dc1)
+end
 //
 |
 D0Clocal
