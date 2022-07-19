@@ -134,8 +134,27 @@ let
 val lvl = 0
 in//let
 d0ecl_errck
-(lvl+1,d0ecl(loc0,D0Cnonfix(tknd,oprs)))
-end (*let*) // end of [d0ecl_nonfix_errck]
+(
+lvl+1,d0ecl(loc0,D0Cnonfix(tknd,oprs)))
+end (*let*)//end-of-[d0ecl_nonfix_errck]
+
+(* ****** ****** *)
+
+fun
+d0ecl_fixity_errck
+( loc0: loc_t
+, tknd: token
+, oprs
+: i0dntlst
+, prec: precopt): d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+( lvl+1
+, d0ecl_make_node
+  (loc0, D0Cfixity(tknd, oprs, prec)) )
+end (*let*)//end-of-[d0ecl_fixity_errck]
 
 (* ****** ****** *)
 
@@ -461,6 +480,9 @@ dcl.node() of
 |
 D0Cnonfix _ =>
 f0_nonfix(dcl, err)
+|
+D0Cfixity _ =>
+f0_fixity(dcl, err)
 //
 |
 D0Clocal _ =>
@@ -532,6 +554,134 @@ if
 then dcl else
 d0ecl_nonfix_errck(dcl.lctn(),tknd,oprs)
 end (*let*) // end of [f0_nonfix(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fixity
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val-
+D0Cfixity
+( tknd
+, oprs, prec) = dcl.node()
+//
+val oprs =
+preadx0_i0dntlst(oprs, err)
+//
+val
+prec = f1_precopt(prec, err)
+//
+in//let
+if
+(err = e00)
+then dcl else
+d0ecl_fixity_errck
+( dcl.lctn(),  tknd,  oprs,  prec )
+end (*let*) // end of [f0_fixity(dcl,err)]
+//
+and
+f1_tokint
+( tok
+: token
+, err: &sint >> _):token =
+(
+case+
+tok.node() of
+| T_INT01 _ => tok
+| T_INT02 _ => tok
+| T_INT03 _ =>
+  (err := err+1; tok)
+|
+_(*non-T_INT??*) =>
+ ( err := err + 1; tok ) )
+and
+f1_tokopr
+( tok
+: token
+, err: &sint >> _):token =
+(
+case+
+tok.node() of
+| T_IDALP _ => tok
+| T_IDSYM _ => tok
+|
+_(*non-T_ID???*) =>
+ ( err := err + 1; tok ) )
+//
+and
+f1_precopt
+( prec
+: precopt
+, err: &sint >> _):precopt =
+(
+case+ prec of
+|
+PRECnil0() => prec
+|
+PRECint1(tint) =>
+let
+val tint =
+f1_tokint(tint, err) in prec end
+|
+PRECopr2(opr1, pmod) =>
+let
+val opr1 =
+  preadx0(opr1, err)
+val pmod =
+  f1_precmod(pmod, err) in prec end
+) (*case+*)//end-of-[f1_precopt(prec,err)]
+//
+and
+f1_precmod
+( pmod
+: precmod
+, err: &sint >> _):precmod =
+(
+case+ pmod of
+|
+PMODnone() => pmod
+|
+PMODsome
+( tbeg
+, pint, tend) => pmod where
+{
+val pint = f1_precint(pint, err)
+val (  ) =
+(
+case+
+tend.node() of
+|
+T_RPAREN() => ()
+|
+_(*otherwise*) => (err := err+1))
+} (*where*)//end-of-(PMODsome)
+) (*case+*)//end-of-[f1_precmod(pmod,err)]
+//
+and
+f1_precint
+( pint
+: precint
+, err: &sint >> _):precint =
+(
+case+ pint of
+|
+PINTint1(tint) =>
+let
+val tint =
+f1_tokint(tint, err) in pint end
+|
+PINTopr2(topr,tint) =>
+let
+val topr =
+f1_tokopr(topr, err)
+val tint =
+f1_tokint(tint, err) in pint end
+) (*case+*)// end-of-[f1_precint(pint,err)]
 //
 (* ****** ****** *)
 //

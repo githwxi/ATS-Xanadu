@@ -89,7 +89,8 @@ datasort ints =
 
 (* ****** ****** *)
 
-#infix0 foo1 foo2 foo3 of 1000
+#infix0
+foo1 foo2 foo3 of 1000
 
 (* ****** ****** *)
 
