@@ -195,9 +195,12 @@ end (*let*)//end-of-[t0chr_fpemsg(out,str)]
 //
 (* ****** ****** *)
 
-#implfun
-sort0_fpemsg
-(out, s0t) =
+local
+
+fun
+auxmain
+( out: FILR
+, s0t: sort0): void =
 let
 #impltmp
 g_print$out<>() = out
@@ -213,15 +216,31 @@ S0Tint(int) =>
 t0int_fpemsg(out, int)
 //
 |
-S0Tapps(sts) => fpemsg(out, sts)
+S0Tapps(sts) =>
+sort0lst_fpemsg(out, sts)
 |
-S0Tlpar
-(tkb,sts,tke) => fpemsg(out, sts)
+S0Tlpar(tkb,sts,tke) =>
+sort0lst_fpemsg(out, sts)
+|
+S0Terrck _ => sort0_fpemsg(out, s0t)
+end (*let*)//end-of(auxmain(out,s0t))
+//
+in//local
+//
+#implfun
+sort0_fpemsg
+(out, s0t) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+s0t.node() of
 |
 S0Terrck(lvl, st1) =>
 (
-sort0_fpemsg(out, st1)
-; 
+auxmain( out, st1 ); 
 if
 (lvl
 >FPEMSG_ERRVL) then () else
@@ -229,13 +248,19 @@ println
 ("PREADX0-ERROR:", s0t.lctn(), ":", s0t)
 )
 | _(* otherwise *) => ((*void*))
+//
 end(*let*)//end-of(sort0_fpemsg(out,s0t))
+//
+endloc(*local*)//end-of(local(sort0_fpemsg))
 
 (* ****** ****** *)
 
-#implfun
-s0exp_fpemsg
-(out, s0e) =
+local
+//
+fun
+auxmain
+( out: FILR
+, s0e: s0exp): void =
 let
 #impltmp
 g_print$out<>() = out
@@ -277,10 +302,24 @@ s0explst_fpemsg(out, ses)
 S0Elpar(tkb,ses,srp) =>
 (fpemsg(out, ses); fpemsg(out, srp))
 |
+S0Eerrck _ => s0exp_fpemsg(out, s0e)
+end (*let*) // end of [auxmain(out,s0e)]
+
+in//local
+//
+#implfun
+s0exp_fpemsg
+(out, s0e) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case
+s0e.node() of
+|
 S0Eerrck(lvl, se1) =>
 (
-s0exp_fpemsg(out, se1)
-; 
+auxmain( out, se1 );
 if
 (lvl
 >FPEMSG_ERRVL) then () else
@@ -289,6 +328,8 @@ println
 )
 | _(* otherwise *) => ((*void*))
 end(*let*)//end-of(s0exp_fpemsg(out,s0e))
+//
+endloc(*local*)//end-of-local(s0exp_fpemsg)
 
 (* ****** ****** *)
 //
@@ -505,9 +546,12 @@ end(*let*)//end-of(d0exp_fpemsg(out,d0e))
 
 (* ****** ****** *)
 //
-#implfun
-d0ecl_fpemsg
-(out, dcl) =
+local
+//
+fun
+auxmain
+( out: FILR
+, dcl: d0ecl): void =
 let
 #impltmp
 g_print$out<>() = out
@@ -567,16 +611,36 @@ let
 endlet
 //
 |
+D0Cerrck _  =>
+let
+val () = d0ecl_fpemsg(out, dcl)
+endlet
+//
+| _(* otherwise *) => ((*void*))
+end (*let*) // end of [auxmain(out, dcl)]
+//
+in//local
+//
+#implfun
+d0ecl_fpemsg
+(out, dcl) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+dcl.node() of
+|
 D0Cerrck(lvl, dc1)  =>
 (
-d0ecl_fpemsg( out, dc1 )
-; 
+auxmain( out, dc1 );
 println
 ("PREADX0-ERROR:", dcl.lctn(), ":", dcl))
 //
 | _(* otherwise *) => ((*void*))
+end (*let*)//end-of(d0ecl_fpemsg(out,dcl))
 //
-end (*let*) // end of [ d0ecl_fpemsg(out,dcl) ]
+endloc(*local*)//end-of(local(d0ecl_fpemsg))
 //
 (* ****** ****** *)
 //
