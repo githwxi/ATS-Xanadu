@@ -211,6 +211,14 @@ PRECint1(tok) where
 {
   val () = buf.skip1()
 }
+(*
+|
+T_INT03 _ =>
+PRECint1(tok) where
+{
+  val () = buf.skip1()
+}
+*)
 |
 _ (* non-T_INT01 *) =>
 PRECopr2(dnt1, pmod) where
@@ -943,12 +951,11 @@ fp_d0eclsq1
 (f00, buf, err) =
 let
 //
-  val e00 = err
-//
 fnx
 loop
 ( buf:
 ! tkbf0 >> _
+, e00: sint
 , err
 : &sint >> _
 , res
@@ -969,7 +976,7 @@ if
 (err = e00)
 then
 (
-  loop(buf, err, res)
+loop(buf, e00, err, res)
 )
 else
 let
@@ -989,21 +996,25 @@ HX-2022-07-17:
 skip the current token and continue
 *)
 //
-  val
-  ( ) = buf.skip1()
-  val
-  dcl =
+  val ( ) = err := e00
+  val ( ) = buf.skip1()
+  val dcl =
   d0ecl(tok.lctn(), D0Ctkskp(tok))
 in
-  loop(buf, err, cons_vt(dcl, res))
+  loop
+  (buf, e00, err, cons_vt(dcl, res))
 end(*let*)//end-of[(*non-T_EOF*)]
 end(*let*)//end-of[else]//end-of(if)
 //
 end(*let*)//end-of[loop(buf,err,res)]
 //
 in
+let
+val e00 = err
+in//let
 list_vt2t
-(loop(buf, err, list_vt_nil(*void*)))
+(loop(buf, e00, err, list_vt_nil(*void*)))
+end(*let*)
 end(*let*)//end-of[fp_d0eclsq1(f00,buf,err)]
 
 (* ****** ****** *)
