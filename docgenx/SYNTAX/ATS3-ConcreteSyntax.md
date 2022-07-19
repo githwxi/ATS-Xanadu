@@ -1,5 +1,5 @@
-The Concrete Syntax of Xanadu
-=============================
+The Concrete Syntax of ATS3
+===========================
 
 ### Author: Hongwei Xi (gmhwxi@gmail.com)
 ___________________
