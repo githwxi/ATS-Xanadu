@@ -160,13 +160,20 @@ case+ opt of
 optn_nil() => optn_nil()
 |
 optn_cons(dcls) =>
-optn_cons(preadx0_d0eclist(dcls, err))
+optn_cons
+(preadx0_d0eclist(dcls, err))
 )
 //
-(*
 val ( ) =
-prerrln("p1_fun_test(\"./mytest.sats\") =\n", opt)
-*)
+(
+case+ opt of
+|
+optn_nil() => ()
+|
+optn_cons(dcls) =>
+d0eclist_fpemsg(out, dcls)
+where { val out = g_stderr<>() }
+)
 //
 // (*
 val ( ) =

@@ -168,7 +168,7 @@ optn_nil() => prerrln("opt=optn_nil()")
 |
 optn_cons _ => prerrln("opt=optn_cons(...)")
 )
-(*
+// (*
 val opt =
 (
 case+ opt of
@@ -176,14 +176,26 @@ case+ opt of
 optn_nil() => optn_nil()
 |
 optn_cons(dcls) =>
-optn_cons(preadx0_d0eclist(dcls, err))
+optn_cons
+(preadx0_d0eclist(dcls, err))
 )
-*)
+// *)
 //
-// (*
+val ( ) =
+(
+case+ opt of
+|
+optn_nil() => ()
+|
+optn_cons(dcls) =>
+d0eclist_fpemsg(out, dcls)
+where { val out = g_stderr<>() }
+)
+//
+(*
 val ( ) =
 prerrln("p1_fun_test(\"./miscell.dats\") =\n", opt)
-// *)
+*)
 //
 (* ****** ****** *)
 endloc (*local*) // end-of-[local(p1_fun_test)]
