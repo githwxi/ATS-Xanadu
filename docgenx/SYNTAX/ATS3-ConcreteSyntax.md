@@ -388,7 +388,7 @@ expression represents a (non-empty) sequence of expressions where the
 last one is the suspended computation and those before the last one
 are for freeing the resources contained in the suspended computation.
 
-In the following example, the body of the defined function `from` is a
+In the following example, the body of the defined function `from_vt` is a
 llazy-expression:
 
 ```
