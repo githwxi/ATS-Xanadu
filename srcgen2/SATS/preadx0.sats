@@ -145,6 +145,21 @@ fun preadx0_s0tdf: fpreadx0(s0tdf)
 #symload preadx0 with preadx0_t0mag
 #symload preadx0 with preadx0_s0qua
 (* ****** ****** *)
+//
+fun
+preadx0_synentopt_fun
+{syn:tx}
+( opt: optn(syn)
+, err: &sint >> _
+, fpr: fpreadx0(syn)): optn(syn)
+fun
+preadx0_synentlst_fun
+{syn:tx}
+( lst: list(syn)
+, err: &sint >> _
+, fpr: fpreadx0(syn)): list(syn)
+//
+(* ****** ****** *)
 fun
 preadx0_sort0opt: fpreadx0(sort0opt)
 fun
@@ -202,12 +217,14 @@ preadx0_d0explst: fpreadx0(d0explst)
 fun
 preadx0_d0eclist: fpreadx0(d0eclist)
 (* ****** ****** *)
+//
 fun
 preadx0_d0exp_RPAREN: fpreadx0(d0exp_RPAREN)
 (*
 fun
 preadx0_l0d0e_RBRACE: fpreadx0(l0d0e_RBRACE)
 *)
+//
 (* ****** ****** *)
 //
 //HX-2022-06-18: printing errmsgs

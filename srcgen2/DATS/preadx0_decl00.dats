@@ -67,6 +67,9 @@ ATS_PACKNAME
 #symload lctn with d0exp_get_lctn
 #symload node with d0exp_get_node
 (* ****** ****** *)
+#symload lctn with d0tst_get_lctn
+#symload node with d0tst_get_node
+(* ****** ****** *)
 #symload lctn with d0ecl_get_lctn
 #symload node with d0ecl_get_node
 (* ****** ****** *)
@@ -291,6 +294,72 @@ d0ecl_errck
 end (*let*) // end of [d0ecl_datatype_errck]
 //
 (* ****** ****** *)
+#extern
+fun
+preadx0_s0tcn: fpreadx0(s0tcn)
+#extern
+fun
+preadx0_d0tst: fpreadx0(d0tst)
+#extern
+fun
+preadx0_s0tcnlst: fpreadx0(s0tcnlst)
+#extern
+fun
+preadx0_d0tstlst: fpreadx0(d0tstlst)
+(* ****** ****** *)
+
+#implfun
+preadx0_d0tst
+(syn, err) =
+(
+case+
+syn.node() of
+|
+D0TSTnode
+( tid0
+, teq1
+, tbar, tcns) =>
+(
+if
+(err=e00)
+then syn else
+d0tst
+( syn.lctn()
+, D0TSTnode(tid0, teq1, tbar, tcns))
+) where
+{
+//
+val e00 = err
+//
+val tid0 =
+preadx0_i0dnt(tid0, err)
+val (  ) =
+(
+case+
+teq1.node() of
+| T_EQ0() => ((*void*))
+| _(*non-T_EQ0*) => ( err := err+1 )
+)
+//
+// HX: tbar: tokenopt
+//
+val tcns = preadx0_s0tcnlst(tcns, err)
+//
+}(*where*)//end-of(if(err=e00))
+)(*case+*)//end-of(preadx0_d0tst(syn,err))
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_s0tcnlst
+(   lst, err   ) =
+preadx0_synentlst_fun(lst,err,preadx0_s0tcn)
+#implfun
+preadx0_d0tstlst
+(   lst, err   ) =
+preadx0_synentlst_fun(lst,err,preadx0_d0tst)
+//
+(* ****** ****** *)
 
 #implfun
 preadx0_d0ecl
@@ -319,6 +388,10 @@ f0_absopen(dcl, err)
 |
 D0Cabsimpl _ =>
 f0_absimpl(dcl, err)
+//
+|
+D0Cdatasort _ =>
+f0_datasort(dcl, err)
 //
 |
 D0Ctkskp _ =>
@@ -357,7 +430,8 @@ val-
 D0Clocal
 ( tknd
 , dcs1
-, topt, dcs2, tend) = dcl.node()
+, topt
+, dcs2, tend) = dcl.node()
 //
 val dcs1 =
 preadx0_d0eclist(dcs1, err)
@@ -390,7 +464,8 @@ val e00 = err
 val-
 D0Csortdef
 ( tknd
-, stid, teq1, def2) = dcl.node()
+, stid
+, teq1, def2) = dcl.node()
 //
 val stid =
 preadx0_i0dnt(stid, err)
@@ -424,8 +499,10 @@ val e00 = err
 val-
 D0Csexpdef
 ( tknd
-, seid, smas
-, tres, teq1, def2) = dcl.node()
+, seid
+, smas
+, tres
+, teq1, def2) = dcl.node()
 //
 val seid =
 preadx0_i0dnt(seid, err)
@@ -464,7 +541,8 @@ val-
 D0Cabstype
 ( tknd
 , seid
-, tmas, tres, tdef) = dcl.node()
+, tmas
+, tres, tdef) = dcl.node()
 //
 val seid =
 preadx0_i0dnt(seid, err)
@@ -521,7 +599,8 @@ D0Cabsimpl
 ( tknd
 , sqid
 , smas
-, tres, teq1, s0e2) = dcl.node()
+, tres
+, teq1, s0e2) = dcl.node()
 //
 val sqid =
 preadx0_s0qid(sqid, err)
@@ -539,13 +618,35 @@ teq1.node() of
 //
 val s0e2 = preadx0_s0exp(s0e2, err)
 //
-in
+in//let
 if
 (err = e00)
 then dcl else
 d0ecl_absimpl_errck
 (dcl.lctn(), tknd, sqid, smas, tres, teq1, s0e2)
 end (*let*) // end of [f0_absimpl(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_datasort
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val-
+D0Cdatasort
+(tknd, d0ts) = dcl.node()
+//
+val d0ts = preadx0_d0tstlst(d0ts, err)
+//
+if
+(err = e00)
+then dcl else
+d0ecl_datasort_errck(dcl.lctn(), tknd, d0ts)
+end (*let*) // end of [f0_datasort(dcl,err)]
 //
 (* ****** ****** *)
 //
