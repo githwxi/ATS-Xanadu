@@ -99,4 +99,8 @@ foo1 foo2 foo3 of 1000ul
 
 (* ****** ****** *)
 
+#sortdef nat = {a:int | a >= 0}
+
+(* ****** ****** *)
+
 (* end of [ATS3/XANADU_prelude_miscell.dats] *)
