@@ -93,7 +93,8 @@ datasort ints =
 
 (* ****** ****** *)
 
-#stacst0 abc of int -> int
+#abssort abc // abstract
+#stacst0 abc : int -> int
 
 (* ****** ****** *)
 
