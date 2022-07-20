@@ -61,11 +61,8 @@ ATS_PACKNAME
 #symload lctn with s0exp_get_lctn
 #symload node with s0exp_get_node
 (* ****** ****** *)
-#symload lctn with d0pat_get_lctn
-#symload node with d0pat_get_node
-(* ****** ****** *)
-#symload lctn with d0exp_get_lctn
-#symload node with d0exp_get_node
+#symload lctn with s0qua_get_lctn
+#symload node with s0qua_get_node
 (* ****** ****** *)
 #symload lctn with s0tcn_get_lctn
 #symload node with s0tcn_get_node
@@ -82,6 +79,12 @@ ATS_PACKNAME
 #symload lctn with d0typ_get_lctn
 #symload node with d0typ_get_node
 (* ****** ****** *)
+#symload lctn with d0pat_get_lctn
+#symload node with d0pat_get_node
+(* ****** ****** *)
+#symload lctn with d0exp_get_lctn
+#symload node with d0exp_get_node
+(* ****** ****** *)
 #symload lctn with s0qag_get_lctn
 #symload node with s0qag_get_node
 (* ****** ****** *)
@@ -90,6 +93,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload lctn with d0ecl_get_lctn
 #symload node with d0ecl_get_node
+(* ****** ****** *)
+#symload lctn with d0cstdcl_get_lctn
 (* ****** ****** *)
 //
 fun
@@ -734,6 +739,41 @@ preadx0_d0cstdcl: fpreadx0(d0cstdcl)
 fun
 preadx0_d0cstdclist: fpreadx0(d0cstdclist)
 (* ****** ****** *)
+//
+#implfun
+preadx0_s0qag
+  (s0q, err) =
+(
+case+
+s0q.node() of
+|
+S0QAGnone(tok) =>
+(err := err+1; s0q)
+|
+S0QAGsome
+(tbeg,q0as,tend) => 
+let
+//
+val e00 = err
+//
+val q0as =
+preadx0_q0arglst(q0as, err)
+val (  ) =
+(
+case+
+tend.node() of
+| T_RBRACE() => ()
+| _(*non-T_RBRACE*) => (err:=err+1))
+in//let
+if
+(err=e00)
+then (s0q) else s0qag
+(s0q.lctn(), S0QAGsome(tbeg,q0as,tend))
+endlet // end of [ S0QAGsome(_, _, _) ]
+) (*case+*)//end-of-[preadx0_s0qag(s0q,err)]
+//
+(* ****** ****** *)
+//
 #implfun
 preadx0_t0qag
   (t0q, err) =
@@ -757,15 +797,47 @@ val (  ) =
 case+
 tend.node() of
 | T_GT0() => ()
-| _(*non-T_GT0*) => (err := err + 1)
-)
-in
+| _(*non-T_GT0*) => (err := err + 1))
+in//let
 if
 (err=e00)
 then (t0q) else t0qag
 (t0q.lctn(), T0QAGsome(tbeg,q0as,tend))
 endlet // end of [ T0QAGsome(_, _, _) ]
 ) (*case+*)//end-of-[preadx0_t0qag(t0q,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_d0cstdcl
+  (dcst, err) =
+let
+//
+val e00 = err
+//
+val loc = dcst.lctn()
+//
+val dpid =
+  preadx0_i0dnt(dpid, err)
+(*
+val dags =
+  preadx0_d0arglst(dags, err)
+val sres = preadx0_s0res(sres, err)
+val dres = preadx0_d0res(dres, err)
+*)
+in
+if
+(err=e00)
+then (dcst) else
+d0cstdcl(loc,dpid,dags,sres,dres)
+end where
+{
+  val dpid = d0cstdcl_get_dpid(dcst)
+  val dags = d0cstdcl_get_darg(dcst)
+  val sres = d0cstdcl_get_sres(dcst)
+  val dres = d0cstdcl_get_dres(dcst)
+} (*where*)//end-of-[d0cstdcl_fpemsg(out,dcst)]
+//
 (* ****** ****** *)
 #implfun
 preadx0_t0qaglst
