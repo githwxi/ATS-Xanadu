@@ -382,7 +382,7 @@ teq1.node() of
 | _(*non-T_EQ0*) => (err := err+1)
 )
 val d0e2 = preadx0_d0exp(d0e2, err)
-in
+in//let
 if
 (err=e00)
 then (dres) else D0RESsome(teq1, d0e2)
