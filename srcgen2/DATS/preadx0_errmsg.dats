@@ -1415,10 +1415,10 @@ val (  ) = d0res_fpemsg(out, dres)
 *)
 end where
 {
-val dpid = d0cstdcl_get_dpid(dcst)
-val dags = d0cstdcl_get_darg(dcst)
-val sres = d0cstdcl_get_sres(dcst)
-val dres = d0cstdcl_get_dres(dcst)
+  val dpid = d0cstdcl_get_dpid(dcst)
+  val dags = d0cstdcl_get_darg(dcst)
+  val sres = d0cstdcl_get_sres(dcst)
+  val dres = d0cstdcl_get_dres(dcst)
 } (*where*)//end-of-[d0cstdcl_fpemsg(out,dcst)]
 //
 (* ****** ****** *)

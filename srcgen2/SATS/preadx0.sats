@@ -92,6 +92,10 @@ l0s0e_RBRACE = $S0E.l0s0e_RBRACE
 (* ****** ****** *)
 #typedef d0pat = $D0E.d0pat
 #typedef d0exp = $D0E.d0exp
+(* ****** ****** *)
+#typedef s0res = $D0E.s0res
+#typedef d0res = $D0E.d0res
+(* ****** ****** *)
 #typedef d0ecl = $D0E.d0ecl
 (* ****** ****** *)
 #typedef a0tdf = $D0E.a0tdf
@@ -213,6 +217,10 @@ preadx0_l0s0e_RBRACE: fpreadx0(l0s0e_RBRACE)
 (* ****** ****** *)
 fun preadx0_d0pat: fpreadx0(d0pat)
 fun preadx0_d0exp: fpreadx0(d0exp)
+(* ****** ****** *)
+fun preadx0_s0res: fpreadx0(s0res)
+fun preadx0_d0res: fpreadx0(d0res)
+(* ****** ****** *)
 fun preadx0_d0ecl: fpreadx0(d0ecl)
 (* ****** ****** *)
 fun preadx0_a0tdf: fpreadx0(a0tdf)

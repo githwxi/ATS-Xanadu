@@ -67,6 +67,8 @@ ATS_PACKNAME
 #symload lctn with d0exp_get_lctn
 #symload node with d0exp_get_node
 (* ****** ****** *)
+#symload lctn with t0qua_get_lctn
+(* ****** ****** *)
 #symload lctn with d0ecl_get_lctn
 #symload node with d0ecl_get_node
 (* ****** ****** *)
@@ -329,6 +331,64 @@ end (*let*) // end of [f0_lpar]
 
 } (*where*) // end-of-[preadx0_d0exp(d0e,err)]
 
+(* ****** ****** *)
+//
+#implfun
+preadx0_s0res
+  (sres, err) =
+(
+case+ sres of
+|
+S0RESnone() => sres
+|
+S0RESsome(seff,s0e1) =>
+let
+//
+val e00 = err
+//
+(*
+val seff =
+preadx0_s0eff(seff, err)
+*)
+val s0e1 =
+preadx0_s0exp(s0e1, err)
+in
+if
+(err=e00)
+then (sres) else S0RESsome(seff, s0e1)
+endlet // end of [S0RESsome(seff,s0e1)]
+) (*case+*)//end-of[ preadx0_s0res(sres,err) ]
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_d0res
+  (dres, err) =
+(
+case+ dres of
+|
+D0RESnone() => dres
+|
+D0RESsome(teq1,d0e2) =>
+let
+//
+val e00 = err
+//
+val (  ) =
+(
+case+
+teq1.node() of
+| T_EQ0() => ()
+| _(*non-T_EQ0*) => (err := err+1)
+)
+val d0e2 = preadx0_d0exp(d0e2, err)
+in
+if
+(err=e00)
+then (dres) else D0RESsome(teq1, d0e2)
+endlet // end of [D0RESsome(teq1,d0e2)]
+) (*case+*)//end-of[ preadx0_d0res(dres,err) ]
+//
 (* ****** ****** *)
 
 #implfun
