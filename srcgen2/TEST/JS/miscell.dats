@@ -79,7 +79,7 @@ val xyz =
 
 (* ****** ****** *)
 
-datasort ints =
+datasort ints !=
 |ints_nil of ()
 |ints_cons of (int, ints)
 
@@ -107,8 +107,13 @@ val ID = $lam($1)
 
 (* ****** ****** *)
 
-datatype ints =
-ints_nil of () | ints_cons of (int, ints)
+datatype
+ints(int) !=
+|
+ints_nil(0) of ()
+|
+{n:nat}
+ints_cons(n+1) of (int, ints(n))
 
 (* ****** ****** *)
 

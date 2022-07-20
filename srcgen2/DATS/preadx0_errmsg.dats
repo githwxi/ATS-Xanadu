@@ -729,6 +729,43 @@ endloc(*local*)//end-of-local(d0exp_fpemsg)
 
 (* ****** ****** *)
 //
+#extern
+fun
+s0tcn_fpemsg:(FILR,s0tcn)->void
+#extern
+fun
+d0tst_fpemsg:(FILR,d0tst)->void
+//
+#extern
+fun
+s0tcnlst_fpemsg:(FILR,s0tcnlst)->void
+#extern
+fun
+d0tstlst_fpemsg:(FILR,d0tstlst)->void
+//
+(* ****** ****** *)
+//
+#extern
+fun
+s0uni_fpemsg:(FILR,s0uni)->void
+#extern
+fun
+d0tcn_fpemsg:(FILR,d0tcn)->void
+#extern
+fun
+d0typ_fpemsg:(FILR,d0typ)->void
+#extern
+fun
+s0unilst_fpemsg:(FILR,s0unilst)->void
+#extern
+fun
+d0tcnlst_fpemsg:(FILR,d0tcnlst)->void
+#extern
+fun
+d0typlst_fpemsg:(FILR,d0typlst)->void
+//
+(* ****** ****** *)
+//
 local
 //
 fun
@@ -791,17 +828,24 @@ let
   val () =
   t0maglst_fpemsg(out, tmas)
   val () = fpemsg(out, s0t1)
-endlet
+endlet // end-of-(D0Cstacst0)
 //
 |
 D0Csortdef
 (knd,tid,teq1,tdf2) =>
 let
-  val () = fpemsg(out, tid)
+val () = fpemsg(out, tid)
+val () =
+token_EQ0_fpemsg(out, teq1)
+val () = s0tdf_fpemsg(out, tdf2)
+endlet // end-of-(D0Csortdef)
+//
+|
+D0Cdatasort
+(knd, d0ts) => let
   val () =
-  token_EQ0_fpemsg(out, teq1)
-  val () = s0tdf_fpemsg(out, tdf2)
-endlet
+  d0tstlst_fpemsg(out, d0ts)
+endlet // end-of-(D0Cdatasort)
 //
 |
 D0Ctkerr _  => ( (*void*) )
@@ -956,8 +1000,67 @@ T_RBRACE() => ((*void*))
 |
 _(*non-T_RBRACE*) =>
 println
-("PREADX0-ERROR:", tok0.lctn(), ":", tok0)
+("PREADX0-ERROR:",tok0.lctn(),":",tok0)
 end (*let*) // end of [token_RBRACE_fpemsg]
+//
+(* ****** ****** *)
+//
+#implfun
+s0tcn_fpemsg
+(out, tcn0) =
+(
+case+
+tcn0.node() of
+|
+S0TCNnode(seid,tres) =>
+let
+val () = i0dnt_fpemsg(out, seid)
+val () = sort0opt_fpemsg(out, tres)
+endlet //end-of-[S0TCNnode(_,_)]
+) (*case+*) // end-of-[ s0tcn_fpemsg(_,_) ]
+//
+(* ****** ****** *)
+//
+#implfun
+d0tst_fpemsg
+(out, d0t0) =
+(
+case+
+d0t0.node() of
+|
+D0TSTnode
+(stid
+,teq1,tbar,tcns) =>
+let
+val () =
+i0dnt_fpemsg(out, stid)
+val () =
+token_EQ0_fpemsg(out, teq1)
+val () = s0tcnlst_fpemsg(out, tcns)
+endlet // end of [D0TSTnode(_,_,_,_)]
+) (*case+*)//end-of-[d0tst_fpemsg(out,d0t0)]
+//
+(* ****** ****** *)
+//
+#implfun
+s0tcnlst_fpemsg
+(out, tcns) =
+list_foreach<s0tcn>(tcns) where
+{
+#impltmp
+foreach$work<s0tcn>(tcn1) = s0tcn_fpemsg(out,tcn1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d0tstlst_fpemsg
+(out, d0ts) =
+list_foreach<d0tst>(d0ts) where
+{
+#impltmp
+foreach$work<d0tst>(d0t1) = d0tst_fpemsg(out,d0t1)
+}
 //
 (* ****** ****** *)
 
