@@ -765,7 +765,7 @@ if
 then (t0q) else t0qag
 (t0q.lctn(), T0QAGsome(tbeg,q0as,tend))
 endlet // end of [ T0QAGsome(_, _, _) ]
-) (*case+)//end-of-[preadx0_t0qag(t0q,err)]
+) (*case+*)//end-of-[preadx0_t0qag(t0q,err)]
 (* ****** ****** *)
 #implfun
 preadx0_t0qaglst
