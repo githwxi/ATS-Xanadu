@@ -73,6 +73,12 @@ ATS_PACKNAME
 #symload lctn with d0tst_get_lctn
 #symload node with d0tst_get_node
 (* ****** ****** *)
+#symload lctn with d0tcn_get_lctn
+#symload node with d0tcn_get_node
+(* ****** ****** *)
+#symload lctn with d0typ_get_lctn
+#symload node with d0typ_get_node
+(* ****** ****** *)
 #symload lctn with d0ecl_get_lctn
 #symload node with d0ecl_get_node
 (* ****** ****** *)
@@ -470,13 +476,68 @@ preadx0_synentlst_fun(lst,err,preadx0_d0tst)
 (* ****** ****** *)
 #extern
 fun
+preadx0_d0tcn: fpreadx0(d0tcn)
+#extern
+fun
 preadx0_d0typ: fpreadx0(d0typ)
+#extern
+fun
+preadx0_d0tcnlst: fpreadx0(d0tcnlst)
 #extern
 fun
 preadx0_d0typlst: fpreadx0(d0typlst)
 #extern
 fun
 preadx0_wd0eclseq: fpreadx0(wd0eclseq)
+(* ****** ****** *)
+//
+#implfun
+preadx0_d0typ
+  (d0t, err) =
+let
+//
+val e00 = err
+//
+val loc = d0t.lctn()
+//
+val+
+D0TYPnode
+( deid
+, tmas, tres
+, teq1, tcns) = d0t.node()
+//
+val deid =
+preadx0_i0dnt(deid, err)
+val tmas =
+preadx0_t0maglst(tmas, err)
+val tres =
+preadx0_sort0opt(tres, err)
+//
+val (  ) =
+(
+case+
+teq1.node() of
+| T_EQ0() => ((*void*))
+| _(*non-T_EQ0*) => ( err := err+1 )
+)
+//
+val tcns = preadx0_d0tcnlst(tcns, err)
+//
+in//let
+if
+(err=e00)
+then (d0t) else
+d0typ_make_node
+(loc, D0TYPnode(deid,tmas,tres,teq1,tcns))
+end(*let*)//end-of-[preadx0_d0typ(d0t,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_d0tcnlst
+(   lst, err   ) =
+preadx0_synentlst_fun(lst,err,preadx0_d0tcn)
+//
 (* ****** ****** *)
 //
 #implfun

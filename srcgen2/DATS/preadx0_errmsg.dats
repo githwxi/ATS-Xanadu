@@ -898,13 +898,14 @@ let
 g_print$out<>() = out
 in//let
 //
-case+ tok0.node() of
+case+
+tok0.node() of
 |
 T_BAR() => ((*void*))
 |
 _(*non-T_BAR*) =>
 println
-("PREADX0-ERROR:", tok0.lctn(), ":", tok0))
+("PREADX0-ERROR:",tok0.lctn(),":",tok0)
 //
 end (*let*) // end of [ t0ken_BAR_fpemsg ]
 //
