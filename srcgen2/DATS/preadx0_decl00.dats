@@ -476,10 +476,16 @@ preadx0_synentlst_fun(lst,err,preadx0_d0tst)
 (* ****** ****** *)
 #extern
 fun
+preadx0_s0uni: fpreadx0(s0uni)
+#extern
+fun
 preadx0_d0tcn: fpreadx0(d0tcn)
 #extern
 fun
 preadx0_d0typ: fpreadx0(d0typ)
+#extern
+fun
+preadx0_s0unilst: fpreadx0(s0unilst)
 #extern
 fun
 preadx0_d0tcnlst: fpreadx0(d0tcnlst)
@@ -492,9 +498,41 @@ preadx0_wd0eclseq: fpreadx0(wd0eclseq)
 (* ****** ****** *)
 //
 #implfun
+preadx0_d0tcn
+  (tcn, err) = let
+//
+val e00 = err
+//
+val loc = tcn.lctn()
+//
+val+
+D0TCNnode
+( s0us, deid
+, s0es, sres) = tcn.node()
+//
+val deid =
+preadx0_i0dnt(deid, err)
+val s0us =
+preadx0_s0unilst(s0us, err)
+val s0es =
+preadx0_s0explst(s0es, err)
+val sres =
+preadx0_s0expopt(sres, err)
+//
+in//let
+if
+(err=e00)
+then (tcn) else
+d0tcn_make_node
+(loc, D0TCNnode(s0us, deid, s0es, sres))
+end(*let*)//end-of-[preadx0_d0tcn(tcn,err)]
+
+
+(* ****** ****** *)
+//
+#implfun
 preadx0_d0typ
-  (d0t, err) =
-let
+  (d0t, err) = let
 //
 val e00 = err
 //
