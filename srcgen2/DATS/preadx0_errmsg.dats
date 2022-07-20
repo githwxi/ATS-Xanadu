@@ -103,6 +103,15 @@ ATS_PACKNAME
 #symload lctn with d0typ_get_lctn
 #symload node with d0typ_get_node
 (* ****** ****** *)
+#symload lctn with q0arg_get_lctn
+#symload node with q0arg_get_node
+(* ****** ****** *)
+#symload lctn with s0qag_get_lctn
+#symload node with s0qag_get_node
+(* ****** ****** *)
+#symload lctn with t0qag_get_lctn
+#symload node with t0qag_get_node
+(* ****** ****** *)
 #symload lctn with d0ecl_get_lctn
 #symload node with d0ecl_get_node
 (* ****** ****** *)
@@ -144,6 +153,9 @@ token_BAR_fpemsg:(FILR,token)->void
 #extern
 fun
 token_EQ0_fpemsg:(FILR,token)->void
+#extern
+fun
+token_GT0_fpemsg:(FILR,token)->void
 #extern
 fun
 token_RPAREN_fpemsg:(FILR,token)->void
@@ -823,6 +835,25 @@ fun
 wd0eclseq_fpemsg:(FILR,wd0eclseq)->void
 //
 (* ****** ****** *)
+#extern
+fun
+q0arg_fpemsg:(FILR,q0arg)->void
+#extern
+fun
+t0qag_fpemsg:(FILR,t0qag)->void
+#extern
+fun
+q0arglst_fpemsg:(FILR,q0arglst)->void
+#extern
+fun
+t0qaglst_fpemsg:(FILR,t0qaglst)->void
+#extern
+fun
+d0cstdcl_fpemsg:(FILR,d0cstdcl)->void
+#extern
+fun
+d0cstdclist_fpemsg:(FILR,d0cstdclist)->void
+(* ****** ****** *)
 //
 local
 //
@@ -911,6 +942,14 @@ D0Cdatatype
 val () = d0typlst_fpemsg(out, d0ts)
 val () = wd0eclseq_fpemsg(out, wdcs)
 endlet // end-of-(D0Cdatatype(_,_,_))
+//
+|
+D0Cdynconst
+( knd
+, tqas, d0cs) => let
+val () = t0qaglst_fpemsg(out, tqas)
+val () = d0cstdclist_fpemsg(out, d0cs)
+endlet // end-of-(D0Cdynconst(_,_,_))
 //
 |
 D0Ctkerr _  => ( (*void*) )
@@ -1032,9 +1071,27 @@ T_EQ0() => ((*void*))
 |
 _(*non-T_EQ0*) =>
 println
-("PREADX0-ERROR:", tok0.lctn(), ":", tok0)
+("PREADX0-ERROR:",tok0.lctn(),":",tok0)
 //
 end (*let*) // end of [ t0ken_EQ0_fpemsg ]
+//
+#implfun
+token_GT0_fpemsg
+  (out, tok0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ tok0.node() of
+|
+T_GT0() => ((*void*))
+|
+_(*non-T_GT0*) =>
+println
+("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+//
+end (*let*) // end of [ t0ken_GT0_fpemsg ]
 //
 #implfun
 token_RPAREN_fpemsg
@@ -1049,7 +1106,7 @@ T_RPAREN() => ((*void*))
 |
 _(*non-T_RPAREN*) =>
 println
-("PREADX0-ERROR:", tok0.lctn(), ":", tok0)
+("PREADX0-ERROR:",tok0.lctn(), ":",tok0)
 end (*let*) // end of [token_RPAREN_fpemsg]
 //
 #implfun
@@ -1274,6 +1331,106 @@ optn_cons _ => token_RBRACE_fpemsg(out, tend))
 //
 endlet // end of [WD0CSsome(_,_,_,_)]
 ) (*case+*) // end-of-[wd0eclseq_fpemsg(out,wdcs)]
+//
+(* ****** ****** *)
+//
+#implfun
+q0arg_fpemsg
+  (out, q0a) = let
+//
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+q0a.node() of
+|
+Q0ARGsome(sid0, tres) =>
+let
+val () = i0dnt_fpemsg(out, sid0)
+val () = sort0opt_fpemsg(out, tres)
+endlet // end of [ Q0ARGsome(_,_) ]
+end (*let*) // end-of-[q0arg_fpemsg(out,q0a)]
+//
+(* ****** ****** *)
+//
+#implfun
+t0qag_fpemsg
+  (out, tqa) = let
+//
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+tqa.node() of
+|
+T0QAGnone(tok) =>
+print
+("PREADX0-ERROR:",tqa.lctn(),":",tqa)
+|
+T0QAGsome
+(tbeg,q0as,tend) =>
+let
+val () = q0arglst_fpemsg(out, q0as)
+val () = token_GT0_fpemsg(out, tend)
+endlet // end of [ T0QAGsome(_,_,_) ]
+end (*let*) // end-of-[q0arg_fpemsg(out,q0a)]
+//
+(* ****** ****** *)
+//
+#implfun
+q0arglst_fpemsg
+(out, q0as) =
+list_foreach<q0arg>(q0as) where
+{
+#impltmp
+foreach$work<q0arg>(q0a1) = q0arg_fpemsg(out,q0a1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+t0qaglst_fpemsg
+(out, tqas) =
+list_foreach<t0qag>(tqas) where
+{
+#impltmp
+foreach$work<t0qag>(tqa1) = t0qag_fpemsg(out,tqa1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d0cstdcl_fpemsg
+(out, dcst) =
+let
+val (  ) =
+  i0dnt_fpemsg(out, dpid)
+(*
+val (  ) =
+  d0arglst_fpemsg(out, dags)
+val (  ) = s0res_fpemsg(out, sres)
+val (  ) = d0res_fpemsg(out, dres)
+*)
+end where
+{
+val dpid = d0cstdcl_get_dpid(dcst)
+val dags = d0cstdcl_get_darg(dcst)
+val sres = d0cstdcl_get_sres(dcst)
+val dres = d0cstdcl_get_dres(dcst)
+} (*where*)//end-of-[d0cstdcl_fpemsg(out,dcst)]
+//
+(* ****** ****** *)
+//
+#implfun
+d0cstdclist_fpemsg
+(out, d0cs) =
+list_foreach<d0cstdcl>(d0cs) where
+{
+#impltmp
+foreach$work<d0cstdcl>(tqa1) = d0cstdcl_fpemsg(out,tqa1)
+}
 //
 (* ****** ****** *)
 
