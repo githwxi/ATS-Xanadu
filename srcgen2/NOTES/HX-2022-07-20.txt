@@ -1,0 +1,88 @@
+(*
+Wed Jul 20 18:17:07 EDT 2022
+*)
+##################################################################
+
+Hi, there,
+
+HX-2022-07-20:
+
+##################################################################
+
+>>HX-2022-06-15:
+>>Implementing a PARSER for ATS3 is the next task in this effort of
+>>implementing ATS3 in ATS3.
+
+>>By the end of 2022-06-18, I have implemented a parser for sort0
+>>and also a parser for s0exp. I have also initiated implementation of
+>>errmsg reporting (preadx0). The ATS3-in-ATS3 implementation is going
+>>pretty smoothly and its closely follows the ATS3-in-ATS2 implementation.
+
+By the end of 2022-07-19, I have implemented a parser for ATS3. I have
+also implemented preadx0 and fpemsg for sort0 and s0exp. And I am still
+working on preadx0 and fpemsg for d0pat and d0exp.
+
+##################################################################
+wc -l */*.?ats
+   845 DATS/dynexp0.dats
+  1053 DATS/dynexp0_print0.dats
+   268 DATS/filpath.dats
+    70 DATS/filpath_drpth0.dats
+    92 DATS/filpath_fpath0.dats
+    69 DATS/filpath_print0.dats
+    49 DATS/lexbuf0.dats
+   294 DATS/lexbuf0_cstrx1.dats
+   418 DATS/lexbuf0_cstrx2.dats
+   146 DATS/lexing0.dats
+   368 DATS/lexing0_kword0.dats
+   102 DATS/lexing0_mymap0.dats
+   485 DATS/lexing0_print0.dats
+   112 DATS/lexing0_token0.dats
+  1641 DATS/lexing0_utils1.dats
+  1631 DATS/lexing0_utils2.dats
+   190 DATS/locinfo.dats
+   104 DATS/locinfo_print0.dats
+    47 DATS/parsing.dats
+   987 DATS/parsing_basics.dats
+  2242 DATS/parsing_decl00.dats
+  2854 DATS/parsing_dynexp.dats
+  2914 DATS/parsing_staexp.dats
+   183 DATS/parsing_tokbuf.dats
+   143 DATS/parsing_utils0.dats
+   105 DATS/preadx0.dats
+  1499 DATS/preadx0_decl00.dats
+   440 DATS/preadx0_dynexp.dats
+  1437 DATS/preadx0_errmsg.dats
+  1467 DATS/preadx0_staexp.dats
+   795 DATS/staexp0.dats
+   749 DATS/staexp0_print0.dats
+   489 DATS/xatsopt_tmplib.dats
+   114 DATS/xbasics.dats
+   187 DATS/xbasics_print0.dats
+    75 DATS/xerrory.dats
+    49 DATS/xlabel0.dats
+    69 DATS/xlabel0_print0.dats
+   110 DATS/xstamp0.dats
+    60 DATS/xstamp0_print0.dats
+   127 DATS/xsymbol.dats
+    69 DATS/xsymbol_inits0.dats
+    95 DATS/xsymbol_mymap0.dats
+    61 DATS/xsymbol_print0.dats
+    44 DATS/xsynoug.dats
+    50 HATS/xatsopt_dats.hats
+    22 HATS/xatsopt_sats.hats
+  1259 SATS/dynexp0.sats
+   109 SATS/filpath.sats
+   150 SATS/lexbuf0.sats
+   422 SATS/lexing0.sats
+   144 SATS/locinfo.sats
+   600 SATS/parsing.sats
+   340 SATS/preadx0.sats
+   970 SATS/staexp0.sats
+   222 SATS/xbasics.sats
+    61 SATS/xerrory.sats
+    66 SATS/xlabel0.sats
+    91 SATS/xstamp0.sats
+   124 SATS/xsymbol.sats
+    38 SATS/xsynoug.sats
+ 30016 total
