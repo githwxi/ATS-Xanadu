@@ -73,6 +73,9 @@ ATS_PACKNAME
 #symload lctn with d0tst_get_lctn
 #symload node with d0tst_get_node
 (* ****** ****** *)
+#symload lctn with s0uni_get_lctn
+#symload node with s0uni_get_node
+(* ****** ****** *)
 #symload lctn with d0tcn_get_lctn
 #symload node with d0tcn_get_node
 (* ****** ****** *)
@@ -498,6 +501,43 @@ preadx0_wd0eclseq: fpreadx0(wd0eclseq)
 (* ****** ****** *)
 //
 #implfun
+preadx0_s0uni
+  (s0u, err) = let
+//
+val e00 = err
+//
+in//let
+//
+case+
+s0u.node() of
+|
+S0UNInone(tok) =>
+(err := err+1; s0u)
+|
+S0UNIsome
+(tbeg, s0qs, tend) =>
+let
+val s0qs =
+preadx0_s0qualst(s0qs, err)
+val (  ) =
+(
+case+
+tend.node() of
+| T_RBRACE() => ()
+| _(*non-T_RBRACE*) => (err := err+1)
+)
+in//let
+if
+(err=e00)
+then (s0u) else s0uni
+(s0u.lctn(), S0UNIsome(tbeg,s0qs,tend))
+end(*let*)//end-of-[ S0UNIsome(_,_,_) ]
+//
+end(*let*)//end-of-[preadx0_s0uni(s0u,err)]
+//
+(* ****** ****** *)
+//
+#implfun
 preadx0_d0tcn
   (tcn, err) = let
 //
@@ -526,8 +566,7 @@ then (tcn) else
 d0tcn_make_node
 (loc, D0TCNnode(s0us, deid, s0es, sres))
 end(*let*)//end-of-[preadx0_d0tcn(tcn,err)]
-
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -568,6 +607,13 @@ then (d0t) else
 d0typ_make_node
 (loc, D0TYPnode(deid,tmas,tres,teq1,tcns))
 end(*let*)//end-of-[preadx0_d0typ(d0t,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_s0unilst
+(   lst, err   ) =
+preadx0_synentlst_fun(lst,err,preadx0_s0uni)
 //
 (* ****** ****** *)
 //
