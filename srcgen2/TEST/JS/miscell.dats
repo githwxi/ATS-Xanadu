@@ -75,7 +75,7 @@ list_cons(_, xs) => (if(xs|xs)then(0)else(1)) where { val xxx = yyy }
 (* ****** ****** *)
 
 val xyz =
-(loop(i0, r0); fold(r0))
+(loop(i0,r0); fold(r0))
 
 (* ****** ****** *)
 
@@ -90,7 +90,7 @@ datasort ints =
 (* ****** ****** *)
 
 #infix0
-foo1 foo2 foo3 of 1000ul
+foo1 foo2 foo3 of 1000
 
 (* ****** ****** *)
 
@@ -99,7 +99,11 @@ foo1 foo2 foo3 of 1000ul
 
 (* ****** ****** *)
 
-#sortdef nat = {a:int | a >= 0}
+#sortdef nat = {a:int | a >= 0; a <= 5}
+
+(* ****** ****** *)
+
+val ID = $lam($1)
 
 (* ****** ****** *)
 

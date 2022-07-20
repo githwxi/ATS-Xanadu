@@ -94,8 +94,7 @@ d0ecl_errvl_a1
 case+ dcl.node() of
 |
 D0Cerrck
-(lvl, _) => lvl | _ => 0
-)
+(lvl, _) => lvl | _ => (0))
 #symload
 d0ecl_errvl with d0ecl_errvl_a1
 #symload errvl with d0ecl_errvl_a1
@@ -469,6 +468,23 @@ preadx0_d0tstlst
 preadx0_synentlst_fun(lst,err,preadx0_d0tst)
 //
 (* ****** ****** *)
+#extern
+fun
+preadx0_d0typ: fpreadx0(d0typ)
+#extern
+fun
+preadx0_d0typlst: fpreadx0(d0typlst)
+#extern
+fun
+preadx0_wd0eclseq: fpreadx0(wd0eclseq)
+(* ****** ****** *)
+//
+#implfun
+preadx0_d0typlst
+(   lst, err   ) =
+preadx0_synentlst_fun(lst,err,preadx0_d0typ)
+//
+(* ****** ****** *)
 
 #implfun
 preadx0_d0ecl
@@ -515,6 +531,10 @@ f0_absimpl(dcl, err)
 |
 D0Cdatasort _ =>
 f0_datasort(dcl, err)
+//
+|
+D0Cdatatype _ =>
+f0_datatype(dcl, err)
 //
 | // HX: ignored!
 D0Ctkerr(tok) => ( dcl )
@@ -825,6 +845,8 @@ let
 //
 val e00 = err
 //
+val loc = dcl.lctn()
+//
 val-
 D0Csexpdef
 ( tknd
@@ -853,7 +875,7 @@ if
 (err = e00)
 then dcl else
 d0ecl_sexpdef_errck
-(dcl.lctn(), tknd, seid, smas, tres, teq1, def2)
+(loc, tknd, seid, smas, tres, teq1, def2)
 end (*let*) // end of [f0_sexpdef(dcl,err)]
 //
 (* ****** ****** *)
@@ -974,8 +996,34 @@ val d0ts = preadx0_d0tstlst(d0ts, err)
 if
 (err = e00)
 then dcl else
-d0ecl_datasort_errck(dcl.lctn(), tknd, d0ts)
+d0ecl_datasort_errck(dcl.lctn(),tknd,d0ts)
 end (*let*) // end of [f0_datasort(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_datatype
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val loc = dcl.lctn()
+//
+val-
+D0Cdatatype
+( tknd
+, d0ts, wdcs) = dcl.node()
+//
+val d0ts = preadx0_d0typlst(d0ts, err)
+val wdcs = preadx0_wd0eclseq(wdcs, err)
+//
+if
+(err = e00)
+then dcl else
+d0ecl_datatype_errck(loc, tknd, d0ts, wdcs)
+end (*let*) // end of [f0_datatype(dcl,err)]
 //
 (* ****** ****** *)
 //
