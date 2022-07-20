@@ -485,6 +485,55 @@ preadx0_d0typlst
 preadx0_synentlst_fun(lst,err,preadx0_d0typ)
 //
 (* ****** ****** *)
+//
+#implfun
+preadx0_wd0eclseq
+ (wdcs, err) =
+(
+case+ wdcs of
+|
+WD0CSnone
+((*void*)) => wdcs
+|
+WD0CSsome
+(tbeg
+,topt,d0cs,tend) =>
+let
+//
+val e00 = err
+//
+val d0cs =
+preadx0_d0eclist(d0cs, err)
+val (  ) =
+(
+case+ topt of
+|
+optn_nil() =>
+(
+case+
+tend.node() of
+| T_ENDWHR() => ()
+| _(*non-T_ENDWHR*) => (err:=err+1)
+)
+|
+optn_cons _ =>
+(
+case+
+tend.node() of
+| T_RBRACE() => ()
+| _(*non-T_RBRACE*) => (err:=err+1)
+)
+) (*case+*)//end-of(val())
+in
+//
+if(err=e00)
+  then wdcs
+  else WD0CSsome(tbeg,topt,d0cs,tend)
+// end of [if]
+endlet // end of [WD0CSsome(_,_,_,_)]
+) (*case+*)//end-of(preadx0_wd0eclseq)
+//
+(* ****** ****** *)
 
 #implfun
 preadx0_d0ecl

@@ -628,26 +628,41 @@ val wopt =
 case+
 tok1.node() of
 |
-T_WHERE() => let
-  val (  ) = buf.skip1()
-  val topt = pq_LBRACE(buf, err)
-  val wdcs = p1_d0eclseq_sta(buf, err)
-  val tok2 = buf.getk0( (*void*) )
-  val ((*void*)) =
-  (
-  case+
-  tok2.node() of
-  | T_END() => buf.skip1()
-  | T_RBRACE() => buf.skip1()
-  | T_ENDWHR() => buf.skip1()
-  | _(*non-closing*) => (err := err+1)
-  ) : void // end of [val]
+T_WHERE() =>
+let
+//
+val (  ) =
+  buf.skip1()
+val topt =
+  pq_LBRACE(buf, err)
+val wdcs =
+p1_d0eclseq_sta(buf, err)
+//
+val
+tok2 = buf.getk0((*void*))
+//
+val
+((*void*)) =
+(
+case+
+tok2.node() of
+(*
+| T_END() => buf.skip1()
+*)
+//
+| T_RBRACE() => buf.skip1()
+| T_ENDWHR() => buf.skip1()
+//
+|
+_(*non-closing*) => (err:=err+1)
+) : void // end of [val((*void*))]
 in//let
   WD0CSsome(tok1, topt, wdcs, tok2)
-end (*let*) // end of [T_WHERE()]
+end (*let*) // end of [ T_WHERE() ]
 |
-_(*non-T_WHERE*) => WD0CSnone( (*void*) )
-) : wd0eclseq (*case*)//end-of-[val(wopt)]
+_(*non-T_WHERE*) => WD0CSnone((*void*))
+)
+: wd0eclseq(*case*)//end-of-[val(wopt)]
 //
 val lknd = tknd.lctn()
 //
