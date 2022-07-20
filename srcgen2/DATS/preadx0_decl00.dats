@@ -82,6 +82,12 @@ ATS_PACKNAME
 #symload lctn with d0typ_get_lctn
 #symload node with d0typ_get_node
 (* ****** ****** *)
+#symload lctn with s0qag_get_lctn
+#symload node with s0qag_get_node
+(* ****** ****** *)
+#symload lctn with t0qag_get_lctn
+#symload node with t0qag_get_node
+(* ****** ****** *)
 #symload lctn with d0ecl_get_lctn
 #symload node with d0ecl_get_node
 (* ****** ****** *)
@@ -704,16 +710,72 @@ endlet // end of [WD0CSsome(_,_,_,_)]
 (* ****** ****** *)
 #extern
 fun
+preadx0_q0arg: fpreadx0(q0arg)
+#extern
+fun
+preadx0_s0qag: fpreadx0(s0qag)
+#extern
+fun
 preadx0_t0qag: fpreadx0(t0qag)
 #extern
 fun
+preadx0_q0arglst: fpreadx0(q0arglst)
+#extern
+fun
+preadx0_s0qaglst: fpreadx0(s0qaglst)
+#extern
+fun
 preadx0_t0qaglst: fpreadx0(t0qaglst)
+(* ****** ****** *)
 #extern
 fun
 preadx0_d0cstdcl: fpreadx0(d0cstdcl)
 #extern
 fun
 preadx0_d0cstdclist: fpreadx0(d0cstdclist)
+(* ****** ****** *)
+#implfun
+preadx0_t0qag
+  (t0q, err) =
+(
+case+
+t0q.node() of
+|
+T0QAGnone(tok) =>
+(err := err+1; t0q)
+|
+T0QAGsome
+(tbeg,q0as,tend) => 
+let
+//
+val e00 = err
+//
+val q0as =
+preadx0_q0arglst(q0as, err)
+val (  ) =
+(
+case+
+tend.node() of
+| T_GT0() => ()
+| _(*non-T_GT0*) => (err := err + 1)
+)
+in
+if
+(err=e00)
+then (t0q) else t0qag
+(t0q.lctn(), T0QAGsome(tbeg,q0as,tend))
+endlet // end of [ T0QAGsome(_, _, _) ]
+) (*case+)//end-of-[preadx0_t0qag(t0q,err)]
+(* ****** ****** *)
+#implfun
+preadx0_t0qaglst
+  (  lst, err  ) =
+preadx0_synentlst_fun(lst,err,preadx0_t0qag)
+(* ****** ****** *)
+#implfun
+preadx0_d0cstdclist
+  (  lst, err  ) =
+preadx0_synentlst_fun(lst,err,preadx0_d0cstdcl)
 (* ****** ****** *)
 
 #implfun
@@ -804,7 +866,7 @@ preadx0_i0dntlst(oprs, err)
 //
 in
 if
-(err = e00)
+(err=e00)
 then dcl else
 d0ecl_nonfix_errck(dcl.lctn(),tknd,oprs)
 end (*let*) // end of [f0_nonfix(dcl,err)]
@@ -832,7 +894,7 @@ prec = f1_precopt(prec, err)
 //
 in//let
 if
-(err = e00)
+(err=e00)
 then dcl else
 d0ecl_fixity_errck
 ( dcl.lctn(),  tknd,  oprs,  prec )
@@ -966,7 +1028,7 @@ case+ tend.node() of
 //
 in
 if
-(err = e00)
+(err=e00)
 then dcl else
 d0ecl_local_errck
 (dcl.lctn(), tknd, dcs1, topt, dcs2, tend)
@@ -991,7 +1053,7 @@ preadx0_i0dnt( tid0, err )
 //
 in//let
 if
-(err = e00)
+(err=e00)
 then dcl else
 d0ecl_abssort_errck(dcl.lctn(), tknd, tid0)
 end (*let*) // end of [f0_abssort(dcl,err)]
@@ -1028,7 +1090,7 @@ val s0t1 = preadx0_sort0(s0t1, err)
 //
 in//let
 if
-(err = e00)
+(err=e00)
 then dcl else
 d0ecl_stacst0_errck
 (dcl.lctn(), tknd, sid0, tmas, tcln, s0t1)
@@ -1063,7 +1125,7 @@ val def2 = preadx0_s0tdf(def2, err)
 //
 in//let
 if
-(err = e00)
+(err=e00)
 then dcl else
 d0ecl_sortdef_errck
 (dcl.lctn(), tknd, tid0, teq1, def2)
@@ -1106,7 +1168,7 @@ val def2 = preadx0_s0exp(def2, err)
 //
 in//let
 if
-(err = e00)
+(err=e00)
 then dcl else
 d0ecl_sexpdef_errck
 (loc, tknd, seid, smas, tres, teq1, def2)
@@ -1140,7 +1202,7 @@ val tdef = preadx0_a0tdf(tdef, err)
 //
 in//let
 if
-(err = e00)
+(err=e00)
 then dcl else
 d0ecl_abstype_errck
 ( dcl.lctn(), tknd,seid,tmas,tres,tdef )
@@ -1164,7 +1226,7 @@ val sqid = preadx0_s0qid(sqid, err)
 //
 in
 if
-(err = e00)
+(err=e00)
 then dcl else
 d0ecl_absopen_errck(dcl.lctn(),tknd,sqid)
 end (*let*) // end of [f0_absopen(dcl,err)]
@@ -1205,7 +1267,7 @@ val s0e2 = preadx0_s0exp(s0e2, err)
 //
 in//let
 if
-(err = e00)
+(err=e00)
 then dcl else
 d0ecl_absimpl_errck
 (dcl.lctn(),tknd,sqid,smas,tres,teq1,s0e2)
@@ -1228,7 +1290,7 @@ D0Cdatasort
 val d0ts = preadx0_d0tstlst(d0ts, err)
 //
 if
-(err = e00)
+(err=e00)
 then dcl else
 d0ecl_datasort_errck(dcl.lctn(),tknd,d0ts)
 end (*let*) // end of [f0_datasort(dcl,err)]
@@ -1254,7 +1316,7 @@ val d0ts = preadx0_d0typlst(d0ts, err)
 val wdcs = preadx0_wd0eclseq(wdcs, err)
 //
 if
-(err = e00)
+(err=e00)
 then dcl else
 d0ecl_datatype_errck(loc, tknd, d0ts, wdcs)
 end (*let*) // end of [f0_datatype(dcl,err)]
@@ -1283,7 +1345,7 @@ preadx0_d0cstdclist(d0cs, err)
 //
 in
 if
-(err = e00)
+(err=e00)
 then dcl else
 d0ecl_dynconst_errck(loc, tknd, tqas, d0cs)
 end (*let*) // end of [f0_dynconst(dcl, err)]
@@ -1315,7 +1377,7 @@ dcs1 = preadx0_d0eclist(dcs1, err)
 //
 in//let
 if
-(err = e00)
+(err=e00)
 then dcls else list_cons(dcl1, dcs1)
 endlet // end of [list_cons(dcl1,dcls)]
 ) (*case*)//end-of-[preadx0_d0eclist(dcls,err)]
