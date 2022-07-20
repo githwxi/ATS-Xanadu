@@ -82,10 +82,11 @@ Keywords
 --------
 
 ATS3 supports a rich set of programming features, making use of
-quite a few keywords. There are essentially two set of keywords:
+quite a few keywords. There are essentially two kinds of keywords:
 those beginning with the symbol `$` for forming expressions, and
 those beginning with the symbol `#` for initiating declarations.
-(However, there are exceptions for a few short keywords.)
+(However, there are exceptions for a few common keywords, which are
+ usually short.)
 
 The following keywords are for forming expressions:
 
