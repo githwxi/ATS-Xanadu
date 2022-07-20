@@ -107,4 +107,9 @@ val ID = $lam($1)
 
 (* ****** ****** *)
 
+datatype ints =
+ints_nil of () | ints_cons of (int, ints)
+
+(* ****** ****** *)
+
 (* end of [ATS3/XANADU_prelude_miscell.dats] *)
