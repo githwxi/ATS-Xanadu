@@ -132,6 +132,9 @@ token_RPAREN_fpemsg:(FILR,token)->void
 #extern
 fun
 token_RBRACE_fpemsg:(FILR,token)->void
+#extern
+fun
+token_ENDWHR_fpemsg:(FILR,token)->void
 (* ****** ****** *)
 //
 #implfun
@@ -888,9 +891,7 @@ D0Cdatatype
 ( knd
 , d0ts, wdcs) => let
 val () = d0typlst_fpemsg(out, d0ts)
-(*
 val () = wd0eclseq_fpemsg(out, wdcs)
-*)
 endlet // end-of-(D0Cdatatype(_,_,_))
 //
 |
@@ -1048,6 +1049,22 @@ _(*non-T_RBRACE*) =>
 println
 ("PREADX0-ERROR:",tok0.lctn(),":",tok0)
 end (*let*) // end of [token_RBRACE_fpemsg]
+//
+#implfun
+token_ENDWHR_fpemsg
+  (out, tok0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ tok0.node() of
+|
+T_ENDWHR() => ((*void*))
+|
+_(*non-T_ENDWHR*) =>
+println
+("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+end (*let*) // end of [token_ENDWHR_fpemsg]
 //
 (* ****** ****** *)
 //
@@ -1211,6 +1228,34 @@ list_foreach<d0typ>(d0ts) where
 #impltmp
 foreach$work<d0typ>(d0t1) = d0typ_fpemsg(out,d0t1)
 }
+//
+(* ****** ****** *)
+//
+#implfun
+wd0eclseq_fpemsg
+(out, wdcs) =
+(
+case+ wdcs of
+|
+WD0CSnone() => ((*void*))
+|
+WD0CSsome
+(twhr, topt, d0es, tend) =>
+let
+//
+val () =
+d0eclist_fpemsg(out, d0es)
+//
+val () =
+(
+case+ topt of
+|
+optn_nil() => token_ENDWHR_fpemsg(out, tend)
+|
+optn_cons _ => token_RBRACE_fpemsg(out, tend))
+//
+endlet // end of [WD0CSsome(_,_,_,_)]
+) (*case+*) // end-of-[wd0eclseq_fpemsg(out,wdcs)]
 //
 (* ****** ****** *)
 
