@@ -382,6 +382,26 @@ d0ecl_errck
 end (*let*) // end of [d0ecl_datatype_errck]
 //
 (* ****** ****** *)
+//
+fun
+d0ecl_dynconst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, tqas
+: t0qaglst
+, d0cs
+: d0cstdclist): d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+( lvl+1
+, d0ecl(loc0, D0Cdynconst(tknd, tqas, d0cs)))
+end (*let*) // end of [d0ecl_dynconst_errck]
+//
+(* ****** ****** *)
 #extern
 fun
 preadx0_s0tcn: fpreadx0(s0tcn)
@@ -666,8 +686,10 @@ optn_cons _ =>
 (
 case+
 tend.node() of
-| T_RBRACE() => ()
-| _(*non-T_RBRACE*) => (err:=err+1)
+|
+T_RBRACE() => ()
+|
+_(*non-T_RBRACE*) => (err:=err+1)
 )
 ) (*case+*)//end-of(val())
 in
@@ -679,6 +701,19 @@ if(err=e00)
 endlet // end of [WD0CSsome(_,_,_,_)]
 ) (*case+*)//end-of(preadx0_wd0eclseq)
 //
+(* ****** ****** *)
+#extern
+fun
+preadx0_t0qag: fpreadx0(t0qag)
+#extern
+fun
+preadx0_t0qaglst: fpreadx0(t0qaglst)
+#extern
+fun
+preadx0_d0cstdcl: fpreadx0(d0cstdcl)
+#extern
+fun
+preadx0_d0cstdclist: fpreadx0(d0cstdclist)
 (* ****** ****** *)
 
 #implfun
@@ -730,6 +765,10 @@ f0_datasort(dcl, err)
 |
 D0Cdatatype _ =>
 f0_datatype(dcl, err)
+//
+|
+D0Cdynconst _ =>
+f0_dynconst(dcl, err)
 //
 | // HX: ignored!
 D0Ctkerr(tok) => ( dcl )
@@ -1220,6 +1259,35 @@ then dcl else
 d0ecl_datatype_errck(loc, tknd, d0ts, wdcs)
 end (*let*) // end of [f0_datatype(dcl,err)]
 //
+(* ****** ****** *)
+//
+fun
+f0_dynconst
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val loc = dcl.lctn()
+//
+val-
+D0Cdynconst
+( tknd
+, tqas, d0cs) = dcl.node()
+//
+val tqas =
+preadx0_t0qaglst(tqas, err)
+val d0cs =
+preadx0_d0cstdclist(d0cs, err)
+//
+in
+if
+(err = e00)
+then dcl else
+d0ecl_dynconst_errck(loc, tknd, tqas, d0cs)
+end (*let*) // end of [f0_dynconst(dcl, err)]
+
 (* ****** ****** *)
 //
 } (*where*) // end of [preadx0_d0ecl(dcl,err)]

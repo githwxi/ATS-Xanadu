@@ -74,6 +74,10 @@ list_cons(_, xs) => (if(xs|xs)then(0)else(1)) where { val xxx = yyy }
 
 (* ****** ****** *)
 
+val ID = $lam($1)
+
+(* ****** ****** *)
+
 val xyz =
 (loop(i0,r0); fold(r0))
 
@@ -100,10 +104,6 @@ foo1 foo2 foo3 of 1000
 (* ****** ****** *)
 
 #sortdef nat = {a:int | a >= 0; a <= 5}
-
-(* ****** ****** *)
-
-val ID = $lam($1)
 
 (* ****** ****** *)
 
