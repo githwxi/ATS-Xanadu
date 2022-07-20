@@ -798,6 +798,54 @@ endloc(*local*)//end-of-local(d0exp_fpemsg)
 //
 #extern
 fun
+s0eff_fpemsg:(FILR,s0eff)->void
+#extern
+fun
+s0res_fpemsg:(FILR,s0res)->void
+#extern
+fun
+d0res_fpemsg:(FILR,d0res)->void
+//
+(* ****** ****** *)
+//
+#implfun
+s0eff_fpemsg
+  (out, seff) =
+(
+case+ seff of
+|
+S0EFFnone(tok) => ()
+|
+S0EFFsome
+(tbeg,s0es,tend) =>
+let
+val () =
+s0explst_fpemsg(out, s0es)
+val () =
+token_GT0_fpemsg(out, tend)
+end (*let*) // end of [S0EFFsome(_,_,_)]
+//
+(* ****** ****** *)
+//
+#implfun
+s0res_fpemsg
+  (out, sres) =
+(
+case+ sres of
+|
+S0RESnone() => ()
+|
+S0RESsome(seff, s0e1) =>
+let
+val () = s0eff_fpemsg(out, seff)
+val () = s0exp_fpemsg(out, s0e1)
+end (*let*) // end of [S0RESsome(seff,s0e1)]
+)
+//
+(* ****** ****** *)
+//
+#extern
+fun
 s0tcn_fpemsg:(FILR,s0tcn)->void
 #extern
 fun
@@ -1410,7 +1458,9 @@ val (  ) =
 (*
 val (  ) =
   d0arglst_fpemsg(out, dags)
+*)
 val (  ) = s0res_fpemsg(out, sres)
+(*
 val (  ) = d0res_fpemsg(out, dres)
 *)
 end where
