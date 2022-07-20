@@ -436,7 +436,31 @@ val () = t0arglst_fpemsg(out, t0as)
 val () = token_RPAREN_fpemsg(out, tend)
 //
 end(*let*)//end-of-[T0MAGlist(_,_,_)]
-end(*let*)//end-of-[t0mag_fpemsg(out,lse)]
+end(*let*)//end-of-[t0mag_fpemsg(out,tma)]
+(* ****** ****** *)
+//
+#implfun
+s0qua_fpemsg
+(out, s0q) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+s0q.node() of
+|
+S0QUAprop(s0e) =>
+s0exp_fpemsg(out, s0e)
+|
+S0QUAvars(sids, tres) =>
+let
+//
+val () = i0dntlst_fpemsg(out, sids)
+val () = sort0opt_fpemsg(out, tres)
+//
+end(*let*)//end-of-[S0QUAvars(_,_)]
+end(*let*)//end-of-[s0qua_fpemsg(out,lse)]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -552,6 +576,16 @@ list_foreach<t0mag>(tms) where
 {
 #impltmp
 foreach$work<t0mag>(tma) = t0mag_fpemsg(out,tma)
+}
+(* ****** ****** *)
+//
+#implfun
+s0qualst_fpemsg
+(out, sqs) =
+list_foreach<s0qua>(sqs) where
+{
+#impltmp
+foreach$work<s0qua>(sq1) = s0qua_fpemsg(out,sq1)
 }
 (* ****** ****** *)
 //
@@ -763,6 +797,9 @@ d0tcnlst_fpemsg:(FILR,d0tcnlst)->void
 #extern
 fun
 d0typlst_fpemsg:(FILR,d0typlst)->void
+#extern
+fun
+wd0eclseq_fpemsg:(FILR,wd0eclseq)->void
 //
 (* ****** ****** *)
 //
@@ -794,13 +831,13 @@ D0Cstatic
 (knd, dc1) =>
 let
 val () = fpemsg(out, dc1)
-end
+endlet //end-of(D0Cstatic(_,_))
 |
 D0Cextern
 (knd, dc1) =>
 let
 val () = fpemsg(out, dc1)
-end
+endlet //end-of(D0Cextern(_,_))
 //
 |
 D0Clocal
@@ -811,13 +848,13 @@ val () =
 d0eclist_fpemsg(out, ds1)
 val () =
 d0eclist_fpemsg(out, ds2)
-endlet // end of [D0Clocal]
+endlet // end of [D0Clocal(...)]
 //
 |
 D0Cabssort
 (knd, tid) => let
   val () = fpemsg(out, tid)
-endlet // end-of(D0Cabssort)
+endlet // end-of(D0Cabssort(...))
 //
 |
 D0Cstacst0
@@ -828,7 +865,7 @@ let
   val () =
   t0maglst_fpemsg(out, tmas)
   val () = fpemsg(out, s0t1)
-endlet // end-of-(D0Cstacst0)
+endlet // end-of-(D0Cstacst0(...))
 //
 |
 D0Csortdef
@@ -838,14 +875,23 @@ val () = fpemsg(out, tid)
 val () =
 token_EQ0_fpemsg(out, teq1)
 val () = s0tdf_fpemsg(out, tdf2)
-endlet // end-of-(D0Csortdef)
+endlet // end-of-(D0Csortdef(...))
 //
 |
 D0Cdatasort
 (knd, d0ts) => let
-  val () =
-  d0tstlst_fpemsg(out, d0ts)
-endlet // end-of-(D0Cdatasort)
+val () = d0tstlst_fpemsg(out, d0ts)
+endlet // end-of-(D0Cdatasort(_,_))
+//
+|
+D0Cdatatype
+( knd
+, d0ts, wdcs) => let
+val () = d0typlst_fpemsg(out, d0ts)
+(*
+val () = wd0eclseq_fpemsg(out, wdcs)
+*)
+endlet // end-of-(D0Cdatatype(_,_,_))
 //
 |
 D0Ctkerr _  => ( (*void*) )
@@ -1060,6 +1106,110 @@ list_foreach<d0tst>(d0ts) where
 {
 #impltmp
 foreach$work<d0tst>(d0t1) = d0tst_fpemsg(out,d0t1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+s0uni_fpemsg
+(out, s0u0) =
+let
+#impltmp
+g_print$out<>() = out
+in
+case+
+s0u0.node() of
+|
+S0UNInone(tok) => ()
+|
+S0UNIsome
+(tbeg,s0qs,tend) =>
+let
+val () = s0qualst_fpemsg(out,s0qs)
+val () = token_RBRACE_fpemsg(out,tend)
+end (*let*)//end-of-[S0UNIsome(_,_,_)]
+end (*let*)//end-of-[s0uni_fpemsg(out,s0u0)]
+
+(* ****** ****** *)
+//
+#implfun
+d0tcn_fpemsg
+(out, tcn0) =
+(
+case+
+tcn0.node() of
+|
+D0TCNnode
+( s0us
+, deid
+, s0es, sres) =>
+let
+val () =
+i0dnt_fpemsg(out, deid)
+val () =
+s0unilst_fpemsg(out, s0us)
+val () = s0explst_fpemsg(out, s0es)
+val () = s0expopt_fpemsg(out, sres)
+endlet // end of [D0TCNnode(_,_,_,_)]
+) (*case+*)//end-of-[d0tcn_fpemsg(out,tcn0)]
+//
+(* ****** ****** *)
+//
+#implfun
+d0typ_fpemsg
+(out, d0t0) =
+(
+case+
+d0t0.node() of
+|
+D0TYPnode
+( deid
+, tmas, tres
+, teq1, tcns) =>
+let
+val () =
+i0dnt_fpemsg(out, deid)
+val () =
+t0maglst_fpemsg(out, tmas)
+val () =
+sort0opt_fpemsg(out, tres)
+val () =
+token_EQ0_fpemsg(out, teq1)
+val () = d0tcnlst_fpemsg(out, tcns)
+endlet // end of [D0TYPnode(_,_,_,_,_)]
+) (*case+*)//end-of-[d0typ_fpemsg(out,d0t0)]
+//
+(* ****** ****** *)
+//
+#implfun
+s0unilst_fpemsg
+(out, s0us) =
+list_foreach<s0uni>(s0us) where
+{
+#impltmp
+foreach$work<s0uni>(s0u1) = s0uni_fpemsg(out,s0u1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d0tcnlst_fpemsg
+(out, tcns) =
+list_foreach<d0tcn>(tcns) where
+{
+#impltmp
+foreach$work<d0tcn>(tcn1) = d0tcn_fpemsg(out,tcn1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d0typlst_fpemsg
+(out, d0ts) =
+list_foreach<d0typ>(d0ts) where
+{
+#impltmp
+foreach$work<d0typ>(d0t1) = d0typ_fpemsg(out,d0t1)
 }
 //
 (* ****** ****** *)
