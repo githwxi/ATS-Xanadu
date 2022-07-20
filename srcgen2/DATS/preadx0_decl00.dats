@@ -511,8 +511,9 @@ in//let
 case+
 s0u.node() of
 |
-S0UNInone(tok) =>
-(err := err+1; s0u)
+S0UNInone
+(  tok  ) =>
+(err:=err+1; s0u)
 |
 S0UNIsome
 (tbeg, s0qs, tend) =>
