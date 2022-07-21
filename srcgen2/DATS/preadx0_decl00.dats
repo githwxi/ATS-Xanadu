@@ -370,7 +370,61 @@ val lvl = 0
 in//let
 d0ecl_errck
 (lvl+1, d0ecl(loc0, D0Cdatasort(tknd, d0ts)))
-end (*let*) // end of [d0ecl_datatype_errck]
+end (*let*) // end of [d0ecl_datasort_errck]
+//
+(* ****** ****** *)
+//
+fun
+d0ecl_valdclst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, d0cs
+: d0valdclist): d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+(lvl+1, d0ecl(loc0, D0Cvaldclst(tknd, d0cs)))
+end (*let*) // end of [d0ecl_valdclst_errck]
+//
+(* ****** ****** *)
+//
+fun
+d0ecl_vardclst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, d0cs
+: d0vardclist): d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+(lvl+1, d0ecl(loc0, D0Cvardclst(tknd, d0cs)))
+end (*let*) // end of [d0ecl_vardclst_errck]
+//
+(* ****** ****** *)
+//
+fun
+d0ecl_fundclst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, tqas
+: t0qaglst
+, d0cs
+: d0fundclist): d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+( lvl+1
+, d0ecl(loc0, D0Cfundclst(tknd, tqas, d0cs)))
+end (*let*) // end of [d0ecl_fundclst_errck]
 //
 (* ****** ****** *)
 //
@@ -734,7 +788,14 @@ preadx0_t0qaglst: fpreadx0(t0qaglst)
 (* ****** ****** *)
 #extern
 fun
+preadx0_d0fundcl: fpreadx0(d0fundcl)
+#extern
+fun
 preadx0_d0cstdcl: fpreadx0(d0cstdcl)
+(* ****** ****** *)
+#extern
+fun
+preadx0_d0fundclist: fpreadx0(d0fundclist)
 #extern
 fun
 preadx0_d0cstdclist: fpreadx0(d0cstdclist)
@@ -845,6 +906,11 @@ preadx0_t0qaglst
 preadx0_synentlst_fun(lst,err,preadx0_t0qag)
 (* ****** ****** *)
 #implfun
+preadx0_d0fundclist
+  (  lst, err  ) =
+preadx0_synentlst_fun(lst,err,preadx0_d0fundcl)
+(* ****** ****** *)
+#implfun
 preadx0_d0cstdclist
   (  lst, err  ) =
 preadx0_synentlst_fun(lst,err,preadx0_d0cstdcl)
@@ -895,6 +961,18 @@ f0_absimpl(dcl, err)
 |
 D0Cdatasort _ =>
 f0_datasort(dcl, err)
+//
+(*
+|
+D0Cvaldclst _ =>
+f0_valdclst(dcl, err)
+|
+D0Cvardclst _ =>
+f0_vardclst(dcl, err)
+*)
+|
+D0Cfundclst _ =>
+f0_fundclst(dcl, err)
 //
 |
 D0Cdatatype _ =>
@@ -1366,6 +1444,35 @@ if
 then dcl else
 d0ecl_datasort_errck(dcl.lctn(),tknd,d0ts)
 end (*let*) // end of [f0_datasort(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fundclst
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val loc = dcl.lctn()
+//
+val-
+D0Cfundclst
+( tknd
+, tqas, d0cs) = dcl.node()
+//
+val tqas =
+preadx0_t0qaglst(tqas, err)
+val d0cs =
+preadx0_d0fundclist(d0cs, err)
+//
+in//let
+if
+(err=e00)
+then dcl else
+d0ecl_fundclst_errck(loc, tknd, tqas, d0cs)
+end (*let*) // end of [f0_fundclst(dcl,err)]
 //
 (* ****** ****** *)
 //
