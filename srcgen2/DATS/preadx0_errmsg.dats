@@ -1518,6 +1518,7 @@ case+ opt1 of
   a0typlst_fpemsg(out, atps))
 //
 val () = token_RPAREN_fpemsg(out, tend)
+endlet // end of [ D0ARGdyn2(_,_,_,_) ]
 ) (*case+*)//end-of-[d0arg_fpemsg(out,d0a)]
 //
 (* ****** ****** *)
@@ -1570,12 +1571,12 @@ foreach$work<d0arg>(d0a1) = d0arg_fpemsg(out,d0a1)
 d0cstdcl_fpemsg
 (out, dcst) =
 let
+//
 val (  ) =
   i0dnt_fpemsg(out, dpid)
-(*
+//
 val (  ) =
   d0arglst_fpemsg(out, dags)
-*)
 //
 val (  ) = s0res_fpemsg(out, sres)
 val (  ) = d0res_fpemsg(out, dres)
