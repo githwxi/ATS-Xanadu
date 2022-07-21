@@ -1253,6 +1253,8 @@ d0fundcl_make_args
 , sres:s0res
 , tdxp:teqd0exp, wsxp:wths0exp):d0fundcl
 //
+#symload d0valdcl with d0valdcl_make_args
+#symload d0vardcl with d0vardcl_make_args
 #symload d0fundcl with d0fundcl_make_args
 //
 (* ****** ****** *)

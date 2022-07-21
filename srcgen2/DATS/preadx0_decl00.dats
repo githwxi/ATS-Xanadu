@@ -801,6 +801,12 @@ preadx0_f0arglst: fpreadx0(f0arglst)
 (* ****** ****** *)
 #extern
 fun
+preadx0_d0valdcl: fpreadx0(d0valdcl)
+#extern
+fun
+preadx0_d0vardcl: fpreadx0(d0vardcl)
+#extern
+fun
 preadx0_d0fundcl: fpreadx0(d0fundcl)
 #extern
 fun
@@ -811,6 +817,12 @@ preadx0_teqd0exp: fpreadx0(teqd0exp)
 fun
 preadx0_wths0exp: fpreadx0(wths0exp)
 (* ****** ****** *)
+#extern
+fun
+preadx0_d0valdclist: fpreadx0(d0valdclist)
+#extern
+fun
+preadx0_d0vardclist: fpreadx0(d0vardclist)
 #extern
 fun
 preadx0_d0fundclist: fpreadx0(d0fundclist)
@@ -885,86 +897,6 @@ then (t0q) else t0qag
 endlet // end of [ T0QAGsome(_, _, _) ]
 ) (*case+*)//end-of-[preadx0_t0qag(t0q,err)]
 //
-(* ****** ****** *)
-//
-#implfun
-preadx0_d0fundcl
-  (dfun, err) =
-let
-//
-val e00 = err
-//
-val loc = dfun.lctn()
-//
-val dpid =
-  preadx0_i0dnt(dpid, err)
-val fags =
-  preadx0_f0arglst(fags, err)
-val sres = preadx0_s0res(sres, err)
-val tdxp = preadx0_teqd0exp(tdxp, err)
-val wsxp = preadx0_wths0exp(wsxp, err)
-//
-in//let
-if
-(err=e00)
-then (dfun) else
-d0fundcl_make_args
-(loc, dpid, fags, sres, tdxp, wsxp)
-end where
-{
-  val dpid = d0fundcl_get_dpid(dfun)
-  val fags = d0fundcl_get_farg(dfun)
-  val sres = d0fundcl_get_sres(dfun)
-  val tdxp = d0fundcl_get_tdxp(dfun)
-  val wsxp = d0fundcl_get_wsxp(dfun)
-} (*where*)//end-of-[d0fundcl_fpemsg(out,dfun)]
-//
-(* ****** ****** *)
-//
-#implfun
-preadx0_d0cstdcl
-  (dcst, err) =
-let
-//
-val e00 = err
-//
-val loc = dcst.lctn()
-//
-val dpid =
-  preadx0_i0dnt(dpid, err)
-val dags =
-  preadx0_d0arglst(dags, err)
-val sres = preadx0_s0res(sres, err)
-val dres = preadx0_d0res(dres, err)
-//
-in//let
-if
-(err=e00)
-then (dcst) else
-d0cstdcl(loc,dpid, dags, sres, dres)
-end where
-{
-  val dpid = d0cstdcl_get_dpid(dcst)
-  val dags = d0cstdcl_get_darg(dcst)
-  val sres = d0cstdcl_get_sres(dcst)
-  val dres = d0cstdcl_get_dres(dcst)
-} (*where*)//end-of-[d0cstdcl_fpemsg(out,dcst)]
-//
-(* ****** ****** *)
-#implfun
-preadx0_t0qaglst
-  (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_t0qag)
-(* ****** ****** *)
-#implfun
-preadx0_d0fundclist
-  (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_d0fundcl)
-(* ****** ****** *)
-#implfun
-preadx0_d0cstdclist
-  (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_d0cstdcl)
 (* ****** ****** *)
 
 #implfun
@@ -1613,11 +1545,6 @@ endlet // end of [list_cons(dcl1,dcls)]
 ) (*case*)//end-of-[preadx0_d0eclist(dcls,err)]
 //
 (* ****** ****** *)
-#implfun
-preadx0_d0eclistopt
-  (opt0, err) =
-preadx0_synentopt_fun(opt0,err,preadx0_d0eclist)
-(* ****** ****** *)
 
 #implfun
 preadx0_a0tdf
@@ -1652,6 +1579,134 @@ end (*let*)//end of [A0TDFeqeq(_,_)]
 //
 end (*let*)//end-of-[preadx0_a0tdf(tdf0,err)]
 
+(* ****** ****** *)
+//
+#implfun
+preadx0_d0valdcl
+  (dval, err) =
+let
+//
+val e00 = err
+//
+val loc = dval.lctn()
+//
+in//let
+if
+(err=e00)
+then (dval)
+else d0valdcl(loc,dpat,tdxp,wsxp)
+end where
+{
+  val dpat = d0valdcl_get_dpat(dval)
+  val tdxp = d0valdcl_get_tdxp(dval)
+  val wsxp = d0valdcl_get_wsxp(dval)
+} (*where*)//end-of-[d0valdcl_fpemsg(out,dval)]
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_d0fundcl
+  (dfun, err) =
+let
+//
+val e00 = err
+//
+val loc = dfun.lctn()
+//
+val dpid =
+  preadx0_i0dnt(dpid, err)
+val fags =
+  preadx0_f0arglst(fags, err)
+val sres = preadx0_s0res(sres, err)
+val tdxp = preadx0_teqd0exp(tdxp, err)
+val wsxp = preadx0_wths0exp(wsxp, err)
+//
+in//let
+if
+(err=e00)
+then (dfun) else
+d0fundcl_make_args
+(loc, dpid, fags, sres, tdxp, wsxp)
+end where
+{
+  val dpid = d0fundcl_get_dpid(dfun)
+  val fags = d0fundcl_get_farg(dfun)
+  val sres = d0fundcl_get_sres(dfun)
+  val tdxp = d0fundcl_get_tdxp(dfun)
+  val wsxp = d0fundcl_get_wsxp(dfun)
+} (*where*)//end-of-[d0fundcl_fpemsg(out,dfun)]
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_d0cstdcl
+  (dcst, err) =
+let
+//
+val e00 = err
+//
+val loc = dcst.lctn()
+//
+val dpid =
+  preadx0_i0dnt(dpid, err)
+val dags =
+  preadx0_d0arglst(dags, err)
+val sres = preadx0_s0res(sres, err)
+val dres = preadx0_d0res(dres, err)
+//
+in//let
+if
+(err=e00)
+then (dcst) else
+d0cstdcl(loc,dpid, dags, sres, dres)
+end where
+{
+  val dpid = d0cstdcl_get_dpid(dcst)
+  val dags = d0cstdcl_get_darg(dcst)
+  val sres = d0cstdcl_get_sres(dcst)
+  val dres = d0cstdcl_get_dres(dcst)
+} (*where*)//end-of-[d0cstdcl_fpemsg(out,dcst)]
+//
+(* ****** ****** *)
+#implfun
+preadx0_t0qaglst
+  (  lst, err  ) =
+preadx0_synentlst_fun(lst,err,preadx0_t0qag)
+(* ****** ****** *)
+#implfun
+preadx0_d0arglst
+  (  lst, err  ) =
+preadx0_synentlst_fun(lst,err,preadx0_d0arg)
+(* ****** ****** *)
+#implfun
+preadx0_f0arglst
+  (  lst, err  ) =
+preadx0_synentlst_fun(lst,err,preadx0_f0arg)
+(* ****** ****** *)
+#implfun
+preadx0_d0valdclist
+  (  lst, err  ) =
+preadx0_synentlst_fun(lst,err,preadx0_d0valdcl)
+(* ****** ****** *)
+#implfun
+preadx0_d0vardclist
+  (  lst, err  ) =
+preadx0_synentlst_fun(lst,err,preadx0_d0vardcl)
+(* ****** ****** *)
+#implfun
+preadx0_d0fundclist
+  (  lst, err  ) =
+preadx0_synentlst_fun(lst,err,preadx0_d0fundcl)
+(* ****** ****** *)
+#implfun
+preadx0_d0cstdclist
+  (  lst, err  ) =
+preadx0_synentlst_fun(lst,err,preadx0_d0cstdcl)
+(* ****** ****** *)
+#implfun
+preadx0_d0eclistopt
+  (opt0, err) =
+preadx0_synentopt_fun(opt0,err,preadx0_d0eclist)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_preadx0_decl00.dats] *)
