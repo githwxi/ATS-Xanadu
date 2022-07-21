@@ -1446,14 +1446,14 @@ in
 end // end of [T_LBRACE]
 //
 | _
-when t0_s0eid(tnd) =>
+when t0_d0pid(tnd) =>
 let
-  val sid0 =
-    p1_s0eid(buf, err)
-  val loc0 = sid0.lctn()
+  val dpid =
+    p1_d0pid(buf, err)
+  val loc0 = dpid.lctn()
 in
   err := e00
-; d0arg_make_node(loc0, D0ARGdyn1( sid0 ))
+; d0arg_make_node(loc0, D0ARGdyn1( dpid ))
 end (*let*) // end of [t0_s0eid(tnd)]
 //
 |

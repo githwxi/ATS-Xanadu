@@ -799,6 +799,7 @@ endloc(*local*)//end-of-local(d0exp_fpemsg)
 #extern
 fun
 s0eff_fpemsg:(FILR,s0eff)->void
+//
 #extern
 fun
 s0res_fpemsg:(FILR,s0res)->void
@@ -824,6 +825,7 @@ s0explst_fpemsg(out, s0es)
 val () =
 token_GT0_fpemsg(out, tend)
 end (*let*) // end of [S0EFFsome(_,_,_)]
+)
 //
 (* ****** ****** *)
 //
@@ -840,6 +842,27 @@ let
 val () = s0eff_fpemsg(out, seff)
 val () = s0exp_fpemsg(out, s0e1)
 end (*let*) // end of [S0RESsome(seff,s0e1)]
+)
+//
+(* ****** ****** *)
+//
+#implfun
+d0res_fpemsg
+  (out, dres) =
+(
+case+ dres of
+|
+D0RESnone() => ()
+|
+D0RESsome(teq1, d0e2) =>
+let
+//
+val () =
+token_EQ0_fpemsg(out, teq1)
+//
+val () = d0exp_fpemsg(out, d0e2)
+//
+end (*let*) // end of [D0RESsome(seff,s0e1)]
 )
 //
 (* ****** ****** *)
@@ -895,6 +918,21 @@ q0arglst_fpemsg:(FILR,q0arglst)->void
 #extern
 fun
 t0qaglst_fpemsg:(FILR,t0qaglst)->void
+(* ****** ****** *)
+#extern
+fun
+a0typ_fpemsg:(FILR,a0typ)->void
+#extern
+fun
+d0arg_fpemsg:(FILR,d0arg)->void
+#extern
+fun
+a0typlst_fpemsg:(FILR,a0typlst)->void
+#extern
+fun
+d0arglst_fpemsg:(FILR,d0arglst)->void
+(* ****** ****** *)
+(* ****** ****** *)
 #extern
 fun
 d0cstdcl_fpemsg:(FILR,d0cstdcl)->void
@@ -1398,7 +1436,7 @@ let
 val () = i0dnt_fpemsg(out, sid0)
 val () = sort0opt_fpemsg(out, tres)
 endlet // end of [ Q0ARGsome(_,_) ]
-end (*let*) // end-of-[q0arg_fpemsg(out,q0a)]
+end (*let*)//end-of-[q0arg_fpemsg(out,q0a)]
 //
 (* ****** ****** *)
 //
@@ -1423,7 +1461,64 @@ let
 val () = q0arglst_fpemsg(out, q0as)
 val () = token_GT0_fpemsg(out, tend)
 endlet // end of [ T0QAGsome(_,_,_) ]
-end (*let*) // end-of-[q0arg_fpemsg(out,q0a)]
+end (*let*)//end-of-[q0arg_fpemsg(out,q0a)]
+//
+(* ****** ****** *)
+//
+#implfun
+a0typ_fpemsg
+(out, atp) =
+(
+case+
+atp.node() of
+|
+A0TYPsome(s0e1,topt) =>
+let
+val () = s0exp_fpemsg(out, s0e1)
+endlet // end of [ATYPsome(_,_)]
+) (*case+*)//end-of-[a0typ_fpemsg(out,atp)]
+//
+(* ****** ****** *)
+//
+#implfun
+d0arg_fpemsg
+(out, d0a) =
+(
+case+
+d0a.node() of
+|
+D0ARGnone(tok) => ()
+|
+D0ARGsta0
+(tbeg,s0qs,tend) =>
+let
+val () =
+s0qualst_fpemsg(out, s0qs)
+val () =
+token_RBRACE_fpemsg(out, tend)
+endlet // end of [D0ARGsta0(_,_,_)]
+|
+D0ARGdyn1(dpid) =>
+let
+val () = i0dnt_fpemsg(out, dpid)
+endlet // end of [D0ARGdyn1(  _  )]
+|
+D0ARGdyn2
+(tbeg,atps,opt1,tend) =>
+let
+//
+val () =
+a0typlst_fpemsg(out, atps)
+//
+val () =
+(
+case+ opt1 of
+| optn_nil() => ()
+| optn_cons(atps) =>
+  a0typlst_fpemsg(out, atps))
+//
+val () = token_RPAREN_fpemsg(out, tend)
+) (*case+*)//end-of-[d0arg_fpemsg(out,d0a)]
 //
 (* ****** ****** *)
 //
@@ -1450,6 +1545,28 @@ foreach$work<t0qag>(tqa1) = t0qag_fpemsg(out,tqa1)
 (* ****** ****** *)
 //
 #implfun
+a0typlst_fpemsg
+(out, atps) =
+list_foreach<a0typ>(atps) where
+{
+#impltmp
+foreach$work<a0typ>(atp1) = a0typ_fpemsg(out,atp1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d0arglst_fpemsg
+(out, d0as) =
+list_foreach<d0arg>(d0as) where
+{
+#impltmp
+foreach$work<d0arg>(d0a1) = d0arg_fpemsg(out,d0a1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
 d0cstdcl_fpemsg
 (out, dcst) =
 let
@@ -1459,10 +1576,10 @@ val (  ) =
 val (  ) =
   d0arglst_fpemsg(out, dags)
 *)
+//
 val (  ) = s0res_fpemsg(out, sres)
-(*
 val (  ) = d0res_fpemsg(out, dres)
-*)
+//
 end where
 {
   val dpid = d0cstdcl_get_dpid(dcst)
@@ -1479,7 +1596,7 @@ d0cstdclist_fpemsg
 list_foreach<d0cstdcl>(d0cs) where
 {
 #impltmp
-foreach$work<d0cstdcl>(tqa1) = d0cstdcl_fpemsg(out,tqa1)
+foreach$work<d0cstdcl>(d0c1) = d0cstdcl_fpemsg(out,d0c1)
 }
 //
 (* ****** ****** *)

@@ -1052,7 +1052,7 @@ D0ARGnone of token
 D0ARGsta0 of
 (token, s0qualst, token)
 |
-D0ARGdyn1 of (s0eid)
+D0ARGdyn1 of (d0pid)
 |
 D0ARGdyn2 of
 (token
