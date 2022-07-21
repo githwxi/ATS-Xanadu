@@ -777,8 +777,8 @@ D0ARGsta0
 print("D0ARGsta0(",tbeg,";",sqas,";",tend,")")
 |
 D0ARGdyn1
-(  seid  ) =>
-print("D0ARGdyn1(",seid,")")
+(  dpid  ) =>
+print("D0ARGdyn1(",dpid,")")
 |
 D0ARGdyn2
 (tbeg,a0ts,atsq,tend) =>
