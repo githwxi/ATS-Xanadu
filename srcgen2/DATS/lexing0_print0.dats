@@ -410,6 +410,13 @@ T_WITHTYPE(knd) =>
 print("T_WITHTYPE(", knd, ")")
 //
 |
+T_DLR_EXTNAM() =>
+print("T_DLR_EXTNAM(", ")")
+|
+T_DLR_EXISTS() =>
+print("T_DLR_EXISTS(", ")")
+//
+|
 T_SRP_THEN() =>
 print("T_SRP_THEN(", ")")
 |

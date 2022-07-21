@@ -117,4 +117,8 @@ ints_cons(n+1) of (int, ints(n))
 
 (* ****** ****** *)
 
+fun foo(x:)(y:) = $extnam()
+
+(* ****** ****** *)
+
 (* end of [ATS3/XANADU_prelude_miscell.dats] *)
