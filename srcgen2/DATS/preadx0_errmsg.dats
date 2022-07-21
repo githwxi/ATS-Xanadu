@@ -303,7 +303,7 @@ if
 (lvl
 >FPEMSG_ERRVL) then () else
 println
-("PREADX0-ERROR:", s0t.lctn(), ":",s0t)
+("PREADX0-ERROR:",s0t.lctn(),":",s0t)
 )
 | _(* otherwise *) => ((*void*))
 //
@@ -388,7 +388,7 @@ if
 println
 ("PREADX0-ERROR:",s0e.lctn(),":",s0e)
 )
-| _(* otherwise *) => (   (*void*)   )
+| _(* otherwise *) => ( (*void*) )
 end(*let*)//end-of(s0exp_fpemsg(out,s0e))
 //
 endloc(*local*)//end-of-local(s0exp_fpemsg)
@@ -441,7 +441,7 @@ t0a.node() of
 |
 T0ARGnone(tok) =>
 println
-("PREADX0-ERROR:",tok.lctn(),":", t0a)
+("PREADX0-ERROR:",tok.lctn(),":",t0a)
 |
 T0ARGsome(s0t1,topt) => fpemsg(out,s0t1)
 end(*let*)//end-of-[t0arg_fpemsg(out,t0a)]
@@ -459,7 +459,7 @@ tma.node() of
 |
 T0MAGnone(tok) =>
 println
-("PREADX0-ERROR:",tok.lctn(),":", tma)
+("PREADX0-ERROR:",tok.lctn(),":",tma)
 |
 T0MAGlist
 (tbeg,t0as,tend) =>
@@ -711,7 +711,7 @@ if
 (lvl
 >FPEMSG_ERRVL) then () else
 println
-("PREADX0-ERROR:", d0p.lctn(), ":", d0p)
+("PREADX0-ERROR:",d0p.lctn(),":",d0p)
 )
 //
 | _(* otherwise *) => ((*void*))
@@ -786,7 +786,7 @@ if
 (lvl
 >FPEMSG_ERRVL) then () else
 println
-("PREADX0-ERROR:", d0e.lctn(), ":", d0e)
+("PREADX0-ERROR:",d0e.lctn(),":",d0e)
 )
 //
 | _(* otherwise *) => ((*void*))
@@ -1061,7 +1061,7 @@ D0Cerrck(lvl, dc1)  =>
 (
 auxmain( out, dc1 );
 println
-("PREADX0-ERROR:", dcl.lctn(), ":", dcl))
+("PREADX0-ERROR:",dcl.lctn(),":",dcl))
 //
 | _(* otherwise *) => ((*void*))
 end (*let*)//end-of(d0ecl_fpemsg(out,dcl))
