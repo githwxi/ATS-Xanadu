@@ -112,6 +112,9 @@ ATS_PACKNAME
 #symload lctn with t0qag_get_lctn
 #symload node with t0qag_get_node
 (* ****** ****** *)
+#symload node with a0typ_get_node
+#symload node with d0arg_get_node
+(* ****** ****** *)
 #symload lctn with d0ecl_get_lctn
 #symload node with d0ecl_get_node
 (* ****** ****** *)
