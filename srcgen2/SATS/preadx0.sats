@@ -354,6 +354,15 @@ d0eclist_fpemsg(FILR, d0eclist): void
 (* ****** ****** *)
 //
 fun
+d0pat_RPAREN_fpemsg
+  (out: FILR, drp: d0pat_RPAREN): void
+fun
+l0d0p_RBRACE_fpemsg
+  (out: FILR, ldrb: l0d0p_RBRACE): void
+//
+(* ****** ****** *)
+//
+fun
 d0exp_RPAREN_fpemsg
   (out: FILR, drp: d0exp_RPAREN): void
 fun
