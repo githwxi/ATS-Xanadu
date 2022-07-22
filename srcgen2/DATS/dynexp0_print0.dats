@@ -112,9 +112,9 @@ D0Papps(d0ps) =>
 print("D0Papps(", d0ps, ")")
 //
 |
-D0Psqag(tbeg,s0as,tend) =>
+D0Psarg(tbeg,s0as,tend) =>
 print
-("D0Psqag(",tbeg,";",s0as,";",tend,")")
+("D0Psarg(",tbeg,";",s0as,";",tend,")")
 //
 |
 D0Plpar(tbeg,t0ps,tend) =>

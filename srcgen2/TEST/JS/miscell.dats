@@ -116,14 +116,11 @@ ints_nil(0) of ()
 ints_cons(n+1) of (int, ints(n))
 
 (* ****** ****** *)
-
 fun foo1(x:) = $extnam()
-
 (* ****** ****** *)
-
-fun foo(x:int) =
-if x > 0 then (x+1 else y)
-
+fun foo2(x:int) = if x > 0 else (y)
+(* ****** ****** *)
+fun foo3(x:int) = if x > 0 then (x+1 else y)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_miscell.dats] *)

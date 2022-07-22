@@ -370,7 +370,7 @@ let
   val lres = tbeg.lctn() + tend.lctn()
 in//elt
   err := e00
-; d0pat(lres, D0Psqag(tbeg, s0as, tend))
+; d0pat(lres, D0Psarg(tbeg, s0as, tend))
 end (*let*) // end of [T_LBRACE()]
 //
 |

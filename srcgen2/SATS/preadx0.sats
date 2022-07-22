@@ -340,6 +340,8 @@ fun
 l0s0elst_fpemsg(FILR, l0s0elst): void
 (* ****** ****** *)
 fun
+s0arglst_fpemsg(FILR, s0arglst): void
+fun
 s0maglst_fpemsg(FILR, s0maglst): void
 fun
 t0arglst_fpemsg(FILR, t0arglst): void
