@@ -112,14 +112,27 @@ D0Papps(d0ps) =>
 print("D0Papps(", d0ps, ")")
 //
 |
-D0Psarg(tbeg,s0as,tend) =>
+D0Psarg
+(tbeg,s0as,tend) =>
 print
 ("D0Psarg(",tbeg,";",s0as,";",tend,")")
 //
 |
-D0Plpar(tbeg,t0ps,tend) =>
+D0Plpar
+(tbeg,t0ps,tend) =>
 print
 ("D0Plpar(",tbeg,";",t0ps,";",tend,")")
+//
+|
+D0Ptup1
+(tbeg,topt,d0ps,tend) =>
+print
+("D0Ptup1(",tbeg,";",topt,";",d0ps,";",tend,")")
+|
+D0Prcd2
+(tbeg,topt,ldps,tend) =>
+print
+("D0Prcd2(",tbeg,";",topt,";",ldps,";",tend,")")
 //
 |
 D0Panno(d0p1,s0e2) =>
@@ -243,6 +256,17 @@ D0Ecas1
 print
 ("D0Ecas1(",tknd,";",d0e1,";");
 print(tof0,";",tbar,";",dcls,";",tinv,")"))
+//
+|
+D0Etup1
+(tbeg,topt,d0es,tend) =>
+print
+("D0Etup1(",tbeg,";",topt,";",d0es,";",tend,")")
+|
+D0Ercd2
+(tbeg,topt,ldes,tend) =>
+print
+("D0Ercd2(",tbeg,";",topt,";",ldes,";",tend,")")
 //
 |
 D0Elet0

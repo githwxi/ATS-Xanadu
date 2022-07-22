@@ -562,6 +562,60 @@ end (*let*) // end of [d0exp_if0_errck]
 //
 (* ****** ****** *)
 //
+fun
+d0exp_tup1_errck
+( loc
+: loc_t
+, tbeg
+: token
+, topt
+: tokenopt
+, d0es
+: d0explst
+, tend
+: d0exp_RPAREN): d0exp =
+let
+  val lvl =
+  gmax(errvl(d0es),errvl(tend))
+in//let
+d0exp_errck
+(lvl+1,
+ d0exp_make_node
+ (loc,D0Etup1(tbeg, topt, d0es, tend)))
+end (*let*) // end of [d0exp_tup1_errck]
+//
+(* ****** ****** *)
+//
+fun
+d0exp_rcd2_errck
+( loc
+: loc_t
+, tbeg
+: token
+, topt
+: tokenopt
+, ldps
+: l0d0elst
+, tend
+: l0d0e_RBRACE): d0exp =
+let
+  val lvl =
+  gmax(errvl(ldps),errvl(tend))
+in//let
+d0exp_errck
+(lvl+1,
+ d0exp_make_node
+ (loc,D0Ercd2(tbeg, topt, ldps, tend)))
+end (*let*) // end of [d0exp_rcd2_errck]
+//
+(* ****** ****** *)
+(*
+HX-2022-07:
+implement [preadx0_d0pat]
+implement [preadx0_d0exp]
+*)
+(* ****** ****** *)
+//
 #implfun
 preadx0_d0pat
   (d0p, err) =
@@ -767,6 +821,13 @@ D0Eif1
 *)
 //
 |
+D0Etup1 _ => f0_tup1(d0e, err)
+(*
+|
+D0Ercd2 _ => f0_rcd2(d0e, err)
+*)
+//
+|
 D0Etkerr _ =>
 (err := err+1; d0exp_errck(1, d0e))
 //
@@ -878,6 +939,36 @@ then d0e else
 d0exp_if0_errck(loc,tif0,d0e1,dthn,dels)
 end (*let*) // end of [f0_if0(d0e, err)]
 
+(* ****** ****** *)
+//
+fun
+f0_tup1
+( d0e
+: d0exp
+, err
+: &sint >> _): d0exp =
+let
+//
+val e00 = err
+//
+val-
+D0Etup1
+( tbeg, topt
+, d0es, tend) = d0e.node()
+//
+val d0es =
+preadx0_d0explst(d0es, err)
+val tend =
+preadx0_d0exp_RPAREN(tend, err)
+//
+in//let
+if
+(err=e00)
+then (d0e) else
+d0exp_tup1_errck
+(d0e.lctn(), tbeg, topt, d0es, tend)
+end (*let*) // end of [f0_tup1(d0e,err)]
+//
 (* ****** ****** *)
 
 } (*where*) // end-of-[preadx0_d0exp(d0e,err)]
