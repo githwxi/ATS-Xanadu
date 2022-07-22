@@ -272,11 +272,36 @@ fun
 d0exp_errvl_then
 (drp: d0exp_THEN): sint
 #symload errvl with d0exp_errvl_then
+//
+#implfun
+d0exp_errvl_then
+(     dthn     ) =
+(
+case+ dthn of
+|
+d0exp_THEN_none(tok) => 0
+|
+d0exp_THEN_some(tok,d0e) => errvl(d0e)
+)
+//
+(* ****** ****** *)
 #extern
 fun
 d0exp_errvl_else
 (drp: d0exp_ELSE): sint
 #symload errvl with d0exp_errvl_else
+//
+#implfun
+d0exp_errvl_else
+(     dels     ) =
+(
+case+ dels of
+|
+d0exp_ELSE_none(tok) => 0
+|
+d0exp_ELSE_some(tok,d0e) => errvl(d0e)
+)
+//
 (* ****** ****** *)
 //
 #extern

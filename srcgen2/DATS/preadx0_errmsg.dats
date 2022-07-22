@@ -150,6 +150,9 @@ FPEMSG_ERRVL 2
 #symload fpemsg with d0explst_fpemsg
 #symload fpemsg with d0eclist_fpemsg
 (* ****** ****** *)
+#symload fpemsg with d0exp_THEN_fpemsg
+#symload fpemsg with d0exp_ELSE_fpemsg
+(* ****** ****** *)
 #symload fpemsg with d0pat_RPAREN_fpemsg
 #symload fpemsg with l0d0p_RBRACE_fpemsg
 #symload fpemsg with d0exp_RPAREN_fpemsg
@@ -639,7 +642,8 @@ s0exp_RPAREN_fpemsg
 case+ srp of
 |
 s0exp_RPAREN_cons0
-(      tend      ) => ()
+(      tend      ) =>
+token_RPAREN_fpemsg(out, tend)
 |
 s0exp_RPAREN_cons1
 (tbar, s0es, tend) => s0explst_fpemsg(out,s0es)
@@ -652,7 +656,8 @@ l0s0e_RBRACE_fpemsg
 case+ lsrb of
 |
 l0s0e_RBRACE_cons0
-(      tend      ) => ()
+(      tend      ) =>
+token_RBRACE_fpemsg(out, tend)
 |
 l0s0e_RBRACE_cons1
 (tbar, lses, tend) => l0s0elst_fpemsg(out,lses)
@@ -785,6 +790,14 @@ d0explst_fpemsg(out, des)
 D0Elpar(tkb,des,drp) =>
 (
 fpemsg(out, des); fpemsg(out, drp)
+)
+//
+|
+D0Eif0
+(tif0,d0e1,dthn,dels) =>
+(
+fpemsg(out,d0e1);
+fpemsg(out,dthn); fpemsg(out,dels)
 )
 //
 |
@@ -1787,13 +1800,44 @@ WTHS0EXPsome
 (* ****** ****** *)
 //
 #implfun
+d0exp_THEN_fpemsg
+(out, dthn) =
+(
+case+ dthn of
+|
+d0exp_THEN_none
+(     tok     ) => ()
+|
+d0exp_THEN_some
+(   tok,d0e   ) => d0exp_fpemsg(out,d0e)
+)
+//
+(* ****** ****** *)
+//
+#implfun
+d0exp_ELSE_fpemsg
+(out, dels) =
+(
+case+ dels of
+|
+d0exp_ELSE_none
+(     tok     ) => ()
+|
+d0exp_ELSE_some
+(   tok,d0e   ) => d0exp_fpemsg(out,d0e)
+)
+//
+(* ****** ****** *)
+//
+#implfun
 d0pat_RPAREN_fpemsg
 (out, drp0) =
 (
 case+ drp0 of
 |
 d0pat_RPAREN_cons0
-(      tend      ) => ()
+(      tend      ) =>
+token_RPAREN_fpemsg(out, tend)
 |
 d0pat_RPAREN_cons1
 (tbar, d0ps, tend) => d0patlst_fpemsg(out,d0ps)
@@ -1806,7 +1850,8 @@ l0d0p_RBRACE_fpemsg
 case+ ldrb of
 |
 l0d0p_RBRACE_cons0
-(      tend      ) => ()
+(      tend      ) =>
+token_RBRACE_fpemsg(out, tend)
 |
 l0d0p_RBRACE_cons1
 (tbar, ldps, tend) => l0d0plst_fpemsg(out,ldps)
@@ -1821,7 +1866,8 @@ d0exp_RPAREN_fpemsg
 case+ drp0 of
 |
 d0exp_RPAREN_cons0
-(      tend      ) => ()
+(      tend      ) =>
+token_RPAREN_fpemsg(out, tend)
 |
 d0exp_RPAREN_cons1
 (tbar, d0es, tend) => d0explst_fpemsg(out,d0es)
@@ -1834,7 +1880,8 @@ l0d0e_RBRACE_fpemsg
 case+ ldrb of
 |
 l0d0e_RBRACE_cons0
-(      tend      ) => ()
+(      tend      ) =>
+token_RBRACE_fpemsg(out, tend)
 |
 l0d0e_RBRACE_cons1
 (tbar, ldes, tend) => l0d0elst_fpemsg(out,ldes)

@@ -378,10 +378,17 @@ l0d0elst_fpemsg(FILR, l0d0elst): void
 fun
 d0eclist_fpemsg(FILR, d0eclist): void
 (* ****** ****** *)
+fun
+d0exp_THEN_fpemsg
+  (out: FILR, dthn: d0exp_THEN): void
+fun
+d0exp_ELSE_fpemsg
+  (out: FILR, dthn: d0exp_ELSE): void
+(* ****** ****** *)
 //
 fun
 d0pat_RPAREN_fpemsg
-  (out: FILR, drp: d0pat_RPAREN): void
+  (out: FILR, drp0: d0pat_RPAREN): void
 fun
 l0d0p_RBRACE_fpemsg
   (out: FILR, ldrb: l0d0p_RBRACE): void
@@ -390,7 +397,7 @@ l0d0p_RBRACE_fpemsg
 //
 fun
 d0exp_RPAREN_fpemsg
-  (out: FILR, drp: d0exp_RPAREN): void
+  (out: FILR, drp0: d0exp_RPAREN): void
 fun
 l0d0e_RBRACE_fpemsg
   (out: FILR, ldrb: l0d0e_RBRACE): void
