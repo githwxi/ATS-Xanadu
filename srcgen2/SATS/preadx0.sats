@@ -93,12 +93,18 @@ l0s0e_RBRACE = $S0E.l0s0e_RBRACE
 #typedef d0pat = $D0E.d0pat
 #typedef d0exp = $D0E.d0exp
 (* ****** ****** *)
+#typedef f0arg = $D0E.f0arg
 #typedef s0res = $D0E.s0res
 #typedef d0res = $D0E.d0res
 (* ****** ****** *)
 #typedef d0ecl = $D0E.d0ecl
 (* ****** ****** *)
 #typedef a0tdf = $D0E.a0tdf
+(* ****** ****** *)
+#typedef
+d0pat_RPAREN = $D0E.d0pat_RPAREN
+#typedef
+l0d0p_RBRACE = $D0E.l0d0p_RBRACE
 (* ****** ****** *)
 #typedef
 d0exp_RPAREN = $D0E.d0exp_RPAREN
@@ -110,6 +116,9 @@ l0d0e_RBRACE = $D0E.l0d0e_RBRACE
 (* ****** ****** *)
 #typedef d0patlst = $D0E.d0patlst
 #typedef d0explst = $D0E.d0explst
+(* ****** ****** *)
+#typedef f0arglst = $D0E.f0arglst
+(* ****** ****** *)
 #typedef d0eclist = $D0E.d0eclist
 (* ****** ****** *)
 #typedef d0eclistopt = optn(d0eclist)
@@ -218,6 +227,7 @@ preadx0_l0s0e_RBRACE: fpreadx0(l0s0e_RBRACE)
 fun preadx0_d0pat: fpreadx0(d0pat)
 fun preadx0_d0exp: fpreadx0(d0exp)
 (* ****** ****** *)
+fun preadx0_f0arg: fpreadx0(f0arg)
 fun preadx0_s0res: fpreadx0(s0res)
 fun preadx0_d0res: fpreadx0(d0res)
 (* ****** ****** *)
@@ -229,6 +239,10 @@ fun
 preadx0_d0patlst: fpreadx0(d0patlst)
 fun
 preadx0_d0explst: fpreadx0(d0explst)
+(* ****** ****** *)
+fun
+preadx0_f0arglst: fpreadx0(f0arglst)
+(* ****** ****** *)
 fun
 preadx0_d0eclist: fpreadx0(d0eclist)
 (* ****** ****** *)
@@ -249,7 +263,18 @@ preadx0_d0eclistopt: fpreadx0(d0eclistopt)
 (* ****** ****** *)
 //
 fun
+preadx0_d0pat_RPAREN: fpreadx0(d0pat_RPAREN)
+//
+(*
+fun
+preadx0_l0d0p_RBRACE: fpreadx0(l0d0p_RBRACE)
+*)
+//
+(* ****** ****** *)
+//
+fun
 preadx0_d0exp_RPAREN: fpreadx0(d0exp_RPAREN)
+//
 (*
 fun
 preadx0_l0d0e_RBRACE: fpreadx0(l0d0e_RBRACE)

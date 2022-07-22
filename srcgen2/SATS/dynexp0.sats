@@ -252,9 +252,9 @@ d0pat_node =
 //
 | D0Papps of d0patlst
 //
-| D0Psqarg of
+| D0Psqag of
   (token(*LB*), s0arglst, token)
-// end of [D0Psqarg]
+// end of [D0Psqag]
 | D0Plpar of
   (token, d0patlst, d0pat_RPAREN)
 //
@@ -372,9 +372,9 @@ d0exp_node =
 //
 | D0Eapps of d0explst
 //
-| D0Esqarg of // sexparg
+| D0Esqag of // sexparg
   (token, s0explst, token)
-| D0Etqarg of // temparg
+| D0Etqag of // temparg
   (token, s0explst, token)
 //
 |
@@ -1111,50 +1111,6 @@ d0res_fprint: (FILR, d0res) -> void
 //
 (* ****** ****** *)
 //
-(*
-datatype
-d0cstdcl =
-D0CSTDCL of @{
-  lctn= loc_t
-, dpid= d0pid
-, darg= d0arglst
-, sres= s0res, dres= d0res
-}
-*)
-//
-fun
-d0cstdcl_fprint
-(out: FILR,dcst: d0cstdcl): void
-//
-fun
-d0cstdcl_get_lctn:(d0cstdcl)->loc_t
-fun
-d0cstdcl_get_dpid:(d0cstdcl)->d0pid(*nam*)
-fun
-d0cstdcl_get_darg:(d0cstdcl)->d0arglst
-fun
-d0cstdcl_get_sres:(d0cstdcl)->s0res(*opt*)
-fun
-d0cstdcl_get_dres:(d0cstdcl)->d0res(*opt*)
-//
-#symload lctn with d0cstdcl_get_lctn
-#symload dpid with d0cstdcl_get_dpid
-#symload darg with d0cstdcl_get_darg(*lst*)
-#symload sres with d0cstdcl_get_sres(*opt*)
-#symload dres with d0cstdcl_get_dres(*opt*)
-//
-(* ****** ****** *)
-//
-fun
-d0cstdcl_make_args
-( loc0:loc_t
-, dpid:d0pid
-, args:d0arglst,sres:s0res, dres:d0res
-) : d0cstdcl//end-of(d0cstdcl_make_node)
-#symload d0cstdcl with d0cstdcl_make_args
-//
-(* ****** ****** *)
-//
 datatype
 teqd0exp =
 |
@@ -1258,4 +1214,49 @@ d0fundcl_make_args
 #symload d0fundcl with d0fundcl_make_args
 //
 (* ****** ****** *)
+//
+(*
+datatype
+d0cstdcl =
+D0CSTDCL of @{
+  lctn= loc_t
+, dpid= d0pid
+, darg= d0arglst
+, sres= s0res, dres= d0res
+}
+*)
+//
+fun
+d0cstdcl_fprint
+(out: FILR,dcst: d0cstdcl): void
+//
+fun
+d0cstdcl_get_lctn:(d0cstdcl)->loc_t
+fun
+d0cstdcl_get_dpid:(d0cstdcl)->d0pid(*nam*)
+fun
+d0cstdcl_get_darg:(d0cstdcl)->d0arglst
+fun
+d0cstdcl_get_sres:(d0cstdcl)->s0res(*opt*)
+fun
+d0cstdcl_get_dres:(d0cstdcl)->d0res(*opt*)
+//
+#symload lctn with d0cstdcl_get_lctn
+#symload dpid with d0cstdcl_get_dpid
+#symload darg with d0cstdcl_get_darg(*lst*)
+#symload sres with d0cstdcl_get_sres(*opt*)
+#symload dres with d0cstdcl_get_dres(*opt*)
+//
+(* ****** ****** *)
+//
+fun
+d0cstdcl_make_args
+( loc0:loc_t
+, dpid:d0pid
+, args:d0arglst,sres:s0res, dres:d0res
+) : d0cstdcl//end-of(d0cstdcl_make_node)
+#symload d0cstdcl with d0cstdcl_make_args
+//
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_dynexp0.sats] *)

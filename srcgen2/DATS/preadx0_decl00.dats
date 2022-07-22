@@ -779,9 +779,6 @@ preadx0_t0qag: fpreadx0(t0qag)
 #extern
 fun
 preadx0_d0arg: fpreadx0(d0arg)
-#extern
-fun
-preadx0_f0arg: fpreadx0(f0arg)
 (* ****** ****** *)
 #extern
 fun
@@ -795,9 +792,6 @@ preadx0_t0qaglst: fpreadx0(t0qaglst)
 #extern
 fun
 preadx0_d0arglst: fpreadx0(d0arglst)
-#extern
-fun
-preadx0_f0arglst: fpreadx0(f0arglst)
 (* ****** ****** *)
 #extern
 fun
@@ -1668,6 +1662,27 @@ end where
 } (*where*)//end-of-[d0cstdcl_fpemsg(out,dcst)]
 //
 (* ****** ****** *)
+
+#implfun
+preadx0_teqd0exp
+  (tdxp, err) =
+(
+case+ tdxp of
+|
+TEQD0EXPnone() => tdxp
+|
+TEQD0EXPsome(teq1, d0e2) =>
+let
+val e00 = err
+val d0e2 = preadx0_d0exp(d0e2, err)
+in//letp
+if
+(err=e00)
+then tdxp else TEQD0EXPsome(teq1, d0e2)
+end (*let*) // end of [TEQD0EXPsome(_,_)]
+)
+
+(* ****** ****** *)
 #implfun
 preadx0_t0qaglst
   (  lst, err  ) =
@@ -1677,11 +1692,6 @@ preadx0_synentlst_fun(lst,err,preadx0_t0qag)
 preadx0_d0arglst
   (  lst, err  ) =
 preadx0_synentlst_fun(lst,err,preadx0_d0arg)
-(* ****** ****** *)
-#implfun
-preadx0_f0arglst
-  (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_f0arg)
 (* ****** ****** *)
 #implfun
 preadx0_d0valdclist
