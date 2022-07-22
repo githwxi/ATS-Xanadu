@@ -147,23 +147,14 @@ var
 err:
 sint = 0
 //
-val () =
-prerrln("p1_fun_test(0)")
-// (*
 val opt =
 p1_fun_test<d0eclist>
 ("./miscell.dats", p1_d0eclsq1_dyn)
-// *)
-//
-val ( ) =
-prerrln("p1_fun_test(1)")
-val ( ) =
-prerrln("p1_fun_test(2): err=", err)
 //
 val ( ) =
 prerrln("opt = ", opt)
 //
-val opt = preadx0_d0eclistopt(opt, err)
+val opt = preadx0(opt, err)
 //
 val ( ) =
 (

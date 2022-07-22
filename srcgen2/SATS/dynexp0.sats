@@ -372,9 +372,9 @@ d0exp_node =
 //
 | D0Eapps of d0explst
 //
-| D0Esqag of // sexparg
+| D0Esarg of // sexparg
   (token, s0explst, token)
-| D0Etqag of // temparg
+| D0Etarg of // temparg
   (token, s0explst, token)
 //
 |

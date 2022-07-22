@@ -117,7 +117,12 @@ ints_cons(n+1) of (int, ints(n))
 
 (* ****** ****** *)
 
-fun foo(x:)(y:) = $extnam()
+fun foo1(x:) = $extnam()
+
+(* ****** ****** *)
+
+fun foo(x:int) =
+if x > 0 then (x+1 else y)
 
 (* ****** ****** *)
 

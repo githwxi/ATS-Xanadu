@@ -106,10 +106,17 @@ d0pat_RPAREN = $D0E.d0pat_RPAREN
 #typedef
 l0d0p_RBRACE = $D0E.l0d0p_RBRACE
 (* ****** ****** *)
+//
+#typedef
+d0exp_THEN = $D0E.d0exp_THEN
+#typedef
+d0exp_ELSE = $D0E.d0exp_ELSE
+//
 #typedef
 d0exp_RPAREN = $D0E.d0exp_RPAREN
 #typedef
 l0d0e_RBRACE = $D0E.l0d0e_RBRACE
+//
 (* ****** ****** *)
 #typedef d0patopt = $D0E.d0patopt
 #typedef d0expopt = $D0E.d0expopt
@@ -238,6 +245,11 @@ fun preadx0_d0ecl: fpreadx0(d0ecl)
 fun preadx0_a0tdf: fpreadx0(a0tdf)
 (* ****** ****** *)
 fun
+preadx0_d0patopt: fpreadx0(d0patopt)
+fun
+preadx0_d0expopt: fpreadx0(d0expopt)
+(* ****** ****** *)
+fun
 preadx0_d0patlst: fpreadx0(d0patlst)
 fun
 preadx0_d0explst: fpreadx0(d0explst)
@@ -271,6 +283,13 @@ preadx0_d0pat_RPAREN: fpreadx0(d0pat_RPAREN)
 fun
 preadx0_l0d0p_RBRACE: fpreadx0(l0d0p_RBRACE)
 *)
+//
+(* ****** ****** *)
+//
+fun
+preadx0_d0exp_THEN: fpreadx0(d0exp_THEN)
+fun
+preadx0_d0exp_ELSE: fpreadx0(d0exp_ELSE)
 //
 (* ****** ****** *)
 //

@@ -197,15 +197,15 @@ D0Eapps(d0es) =>
 print("D0Eapps(",d0es,")")
 //
 |
-D0Esqag
+D0Esarg
 (tbeg,s0es,tend) =>
 print
-("D0Esqag(",tbeg,";",s0es,";",tend,")")
+("D0Esarg(",tbeg,";",s0es,";",tend,")")
 |
-D0Etqag
+D0Etarg
 (tbeg,s0es,tend) =>
 print
-("D0Etqag(",tbeg,";",s0es,";",tend,")")
+("D0Etarg(",tbeg,";",s0es,";",tend,")")
 //
 |
 D0Elpar
