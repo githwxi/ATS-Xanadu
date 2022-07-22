@@ -146,8 +146,12 @@ FPEMSG_ERRVL 2
 (* ****** ****** *)
 #symload fpemsg with d0patopt_fpemsg
 #symload fpemsg with d0expopt_fpemsg
+(* ****** ****** *)
 #symload fpemsg with d0patlst_fpemsg
 #symload fpemsg with d0explst_fpemsg
+#symload fpemsg with l0d0plst_fpemsg
+#symload fpemsg with l0d0elst_fpemsg
+(* ****** ****** *)
 #symload fpemsg with d0eclist_fpemsg
 (* ****** ****** *)
 #symload fpemsg with d0exp_THEN_fpemsg
@@ -725,15 +729,30 @@ fpemsg(out, dps); fpemsg(out, drp)
 )
 //
 |
-D0Panno(dp1,se2) =>
+D0Ptup1
+(tbeg
+,topt,d0ps,tend) =>
 (
-fpemsg(out, dp1); fpemsg(out, se2)
+fpemsg(out, d0ps); fpemsg(out, tend)
+)
+|
+D0Prcd2
+(tbeg
+,topt,ldps,tend) =>
+(
+fpemsg(out, ldps); fpemsg(out, tend)
+)
+//
+|
+D0Panno(d0p1,s0e2) =>
+(
+fpemsg(out, d0p1); fpemsg(out, s0e2)
 )
 //
 |
 D0Ptkerr _ => ( (*void*) )
 |
-D0Perrck _ => d0pat_fpemsg(out,d0p)
+D0Perrck(lvl,d0p1) => d0pat_fpemsg(out, d0p)
 //
 end(*let*)//end-of-(auxmain(out,d0p))
 //
@@ -837,7 +856,7 @@ fpemsg(out,dthn); fpemsg(out,dels)
 |
 D0Etkerr _ => ( (*void*) )
 |
-D0Eerrck _ => d0exp_fpemsg(out,d0e)
+D0Eerrck(lvl0,d0e1) => d0exp_fpemsg(out, d0e)
 //
 end(*let*)//end-of-(auxmain(out,d0e))
 //
