@@ -122,7 +122,8 @@ fun foo2(x:int) = if x > 0 else (y)
 (* ****** ****** *)
 fun foo3(x:int) = if x > 0 then (x+1 else y)
 (* ****** ****** *)
-fun foo4(x:int) = @(x, x+1
+fun foo4(x:int) = @(x, x+1)
+fun foo5(x:int) = @{a=x, b=x+1
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_miscell.dats] *)

@@ -787,6 +787,41 @@ end (*let*) // end of [f0_anno(d0p,err)]
 } (*where*) // end-of-[preadx0_d0pat(d0p,err)]
 //
 (* ****** ****** *)
+//
+#implfun
+preadx0_l0d0p
+  (ldp, err) =
+let
+//
+val e00 = err
+//
+val+
+D0LAB
+(lab,teq,d0p) = ldp
+//
+val ( ) =
+(
+case+ lab of
+|
+L0ABLsome _ => ()
+|
+L0ABLnone _ => (err := err + 1)
+)
+val ( ) =
+(
+case+ teq.node() of
+|
+T_EQ0() => () // HX: lab = d0p
+|
+_(*non-EQ0*) => (err := err + 1)
+)
+val d0p = preadx0_d0pat(d0p, err)
+in//let
+if
+(err = e00) then ldp else D0LAB(lab,teq,d0p)
+end (*let*) // end of [preadx0_l0d0p(ldp,err)]
+//
+(* ****** ****** *)
 
 #implfun
 preadx0_d0exp
@@ -822,10 +857,8 @@ D0Eif1
 //
 |
 D0Etup1 _ => f0_tup1(d0e, err)
-(*
 |
 D0Ercd2 _ => f0_rcd2(d0e, err)
-*)
 //
 |
 D0Etkerr _ =>
@@ -970,9 +1003,72 @@ d0exp_tup1_errck
 end (*let*) // end of [f0_tup1(d0e,err)]
 //
 (* ****** ****** *)
+//
+fun
+f0_rcd2
+( d0e: d0exp
+, err: &sint >> _): d0exp =
+let
+//
+val e00 = err
+//
+val-
+D0Ercd2
+( tbeg, topt
+, ldes, tend) = d0e.node()
+//
+val ldes =
+preadx0_l0d0elst(ldes, err)
+val tend =
+preadx0_l0d0e_RBRACE(tend, err)
+//
+in//let
+if
+(err=e00)
+then (d0e) else
+d0exp_rcd2_errck
+(d0e.lctn(), tbeg, topt, ldes, tend)
+end (*let*) // end of [f0_rcd2(d0e,err)]
+//
+(* ****** ****** *)
 
 } (*where*) // end-of-[preadx0_d0exp(d0e,err)]
 
+(* ****** ****** *)
+//
+#implfun
+preadx0_l0d0e
+  (lde, err) =
+let
+//
+val e00 = err
+//
+val+
+D0LAB
+(lab,teq,d0e) = lde
+//
+val ( ) =
+(
+case+ lab of
+|
+L0ABLsome _ => ()
+|
+L0ABLnone _ => (err := err + 1)
+)
+val ( ) =
+(
+case+ teq.node() of
+|
+T_EQ0() => () // HX: lab = d0e
+|
+_(*non-EQ0*) => (err := err + 1)
+)
+val d0e = preadx0_d0exp(d0e, err)
+in//let
+if
+(err = e00) then lde else D0LAB(lab,teq,d0e)
+end (*let*) // end of [preadx0_l0d0e(lde,err)]
+//
 (* ****** ****** *)
 
 #implfun
@@ -1131,11 +1227,20 @@ preadx0_d0explst
 preadx0_synentlst_fun(lst,err,preadx0_d0exp)
 (* ****** ****** *)
 #implfun
+preadx0_l0d0plst
+  (  lst, err  ) =
+preadx0_synentlst_fun(lst,err,preadx0_l0d0p)
+#implfun
+preadx0_l0d0elst
+  (  lst, err  ) =
+preadx0_synentlst_fun(lst,err,preadx0_l0d0e)
+(* ****** ****** *)
+#implfun
 preadx0_f0arglst
   (  lst, err  ) =
 preadx0_synentlst_fun(lst,err,preadx0_f0arg)
 (* ****** ****** *)
-
+//
 #implfun
 preadx0_d0pat_RPAREN
   (drp0, err) =
@@ -1168,17 +1273,65 @@ tend.node() of
 |
 T_RPAREN() =>
 (
-  if
-  (err=e00)
-  then drp0
-  else d0pat_RPAREN_cons1(tbar, d0ps, tend)
-)
+if
+(err=e00)
+then drp0
+else
+d0pat_RPAREN_cons1(tbar, d0ps, tend))
 |
 _(*non-T_RPAREN*) =>
-(err := err+1; d0pat_RPAREN_cons1(tbar, d0ps, tend))
+( err := err+1
+; d0pat_RPAREN_cons1(tbar, d0ps, tend))
 //
 endlet // end of [d0pat_RPAREN_cons1]
 ) (*case*) // end of [preadx0_d0pat_RPAREN]
+//
+(* ****** ****** *)
+
+#implfun
+preadx0_l0d0p_RBRACE
+  (ldrb, err) =
+(
+case+ ldrb of
+|
+l0d0p_RBRACE_cons0
+(      tend      ) =>
+(
+case+
+tend.node() of
+|
+T_RBRACE() => ldrb
+|
+_(*non-T_RBRACE*) => (err := err+1; ldrb)
+)
+|
+l0d0p_RBRACE_cons1
+(tbar, ldps, tend) =>
+let
+//
+val e00 = err
+//
+val ldps =
+preadx0_l0d0plst(ldps, err)
+in//let
+//
+case+
+tend.node() of
+|
+T_RBRACE() =>
+(
+if
+(err=e00)
+then ldrb
+else
+l0d0p_RBRACE_cons1(tbar, ldps, tend)
+)
+|
+_(*non-T_RBRACE*) =>
+(err := err+1; l0d0p_RBRACE_cons1(tbar,ldps,tend))
+//
+endlet // end of [l0d0p_RBRACE_cons1]
+) (*case*)//end-of-[preadx0_l0d0p_RBRACE(ldrb,err)]
 
 (* ****** ****** *)
 //
@@ -1268,17 +1421,65 @@ tend.node() of
 |
 T_RPAREN() =>
 (
-  if
-  (err=e00)
-  then drp0
-  else d0exp_RPAREN_cons1(tbar, d0es, tend)
+if
+(err=e00)
+then drp0
+else
+d0exp_RPAREN_cons1(tbar, d0es, tend)
 )
 |
 _(*non-T_RPAREN*) =>
-(err := err+1; d0exp_RPAREN_cons1(tbar, d0es, tend))
+(err := err+1; d0exp_RPAREN_cons1(tbar,d0es,tend))
 //
 endlet // end of [d0exp_RPAREN_cons1]
-) (*case*) // end of [preadx0_d0exp_RPAREN]
+) (*case*)//end-of-[preadx0_d0exp_RPAREN(drp0,err)]
+
+(* ****** ****** *)
+
+#implfun
+preadx0_l0d0e_RBRACE
+  (ldrb, err) =
+(
+case+ ldrb of
+|
+l0d0e_RBRACE_cons0
+(      tend      ) =>
+(
+case+
+tend.node() of
+|
+T_RBRACE() => ldrb
+|
+_(*non-T_RBRACE*) => (err := err+1; ldrb)
+)
+|
+l0d0e_RBRACE_cons1
+(tbar, ldes, tend) =>
+let
+//
+val e00 = err
+//
+val ldes =
+preadx0_l0d0elst(ldes, err)
+in//let
+//
+case+
+tend.node() of
+|
+T_RBRACE() =>
+(
+if
+(err=e00)
+then ldrb
+else
+l0d0e_RBRACE_cons1(tbar, ldes, tend)
+)
+|
+_(*non-T_RBRACE*) =>
+(err := err+1; l0d0e_RBRACE_cons1(tbar,ldes,tend))
+//
+endlet // end of [l0d0e_RBRACE_cons1]
+) (*case*)//end-of-[preadx0_l0d0e_RBRACE(ldrb,err)]
 
 (* ****** ****** *)
 

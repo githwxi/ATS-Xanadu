@@ -784,6 +784,18 @@ end(*let*)//end-of(d0pat_fpemsg(out,d0p))
 endloc(*local*)//end-of-local(d0pat_fpemsg)
 
 (* ****** ****** *)
+//
+#implfun
+l0d0p_fpemsg
+(out, ldp) =
+(
+case+ ldp of
+|
+D0LAB
+(lab,teq,d0p) => d0pat_fpemsg(out,d0p)
+) (*case*) // end-of(l0d0p_fpemsg(out,ldp))
+//
+(* ****** ****** *)
 
 local
 //
@@ -902,6 +914,18 @@ end(*let*)//end-of(d0exp_fpemsg(out,d0e))
 //
 endloc(*local*)//end-of-local(d0exp_fpemsg)
 
+(* ****** ****** *)
+//
+#implfun
+l0d0e_fpemsg
+(out, lde) =
+(
+case+ lde of
+|
+D0LAB
+(lab,teq,d0e) => d0exp_fpemsg(out,d0e)
+) (*case*) // end-of(l0d0e_fpemsg(out,lde))
+//
 (* ****** ****** *)
 //
 #extern
@@ -1289,12 +1313,32 @@ foreach$work<d0pat>(dp1) = d0pat_fpemsg(out,dp1)
 }
 //
 #implfun
+l0d0plst_fpemsg
+(out, dps) =
+list_foreach<l0d0p>(dps) where
+{
+#impltmp
+foreach$work<l0d0p>(ldp) = l0d0p_fpemsg(out,ldp)
+}
+//
+(* ****** ****** *)
+//
+#implfun
 d0explst_fpemsg
 (out, des) =
 list_foreach<d0exp>(des) where
 {
 #impltmp
 foreach$work<d0exp>(de1) = d0exp_fpemsg(out,de1)
+}
+//
+#implfun
+l0d0elst_fpemsg
+(out, des) =
+list_foreach<l0d0e>(des) where
+{
+#impltmp
+foreach$work<l0d0e>(lde) = l0d0e_fpemsg(out,lde)
 }
 //
 (* ****** ****** *)
