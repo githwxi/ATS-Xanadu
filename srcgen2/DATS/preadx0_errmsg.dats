@@ -159,6 +159,8 @@ token_EQ0_fpemsg:(FILR,token)->void
 #extern
 fun
 token_GT0_fpemsg:(FILR,token)->void
+fun
+token_GTDOT_fpemsg:(FILR,token)->void
 #extern
 fun
 token_RPAREN_fpemsg:(FILR,token)->void
@@ -803,6 +805,10 @@ endloc(*local*)//end-of-local(d0exp_fpemsg)
 fun
 s0eff_fpemsg:(FILR,s0eff)->void
 //
+fun
+f0arg_fpemsg:(FILR,f0arg)->void
+#extern
+//
 #extern
 fun
 s0res_fpemsg:(FILR,s0res)->void
@@ -810,6 +816,9 @@ s0res_fpemsg:(FILR,s0res)->void
 fun
 d0res_fpemsg:(FILR,d0res)->void
 //
+(* ****** ****** *)
+fun
+f0arglst_fpemsg:(FILR,f0arglst)->void
 (* ****** ****** *)
 //
 #implfun
@@ -828,6 +837,37 @@ s0explst_fpemsg(out, s0es)
 val () =
 token_GT0_fpemsg(out, tend)
 end (*let*) // end of [S0EFFsome(_,_,_)]
+)
+//
+(* ****** ****** *)
+//
+#implfun
+f0arg_fpemsg
+  (out, farg) =
+(
+case+
+farg.node() of
+|
+F0ARGnone(tok) => ()
+|
+F0ARGdyn0(dpat) =>
+d0pat_fpemsg(out, dpat)
+|
+F0ARGsta0(tbeg,s0qs,tend) =>
+let
+val () =
+s0qualst_fpemsg(out, s0qs)
+val () =
+token_RBRACE_fpemsg(out, tend)
+endlet // end of [F0ARGsta0(_,_,_)]
+|
+F0ARGmet0(tbeg,s0es,tend) =>
+let
+val () =
+s0explst_fpemsg(out, s0es)
+val () =
+token_GTDOT_fpemsg( out, tend )
+endlet // end of [F0ARGmet0(_,_,_)]
 )
 //
 (* ****** ****** *)
@@ -935,10 +975,35 @@ a0typlst_fpemsg:(FILR,a0typlst)->void
 fun
 d0arglst_fpemsg:(FILR,d0arglst)->void
 (* ****** ****** *)
-(* ****** ****** *)
+#extern
+fun
+d0valdcl_fpemsg:(FILR,d0valdcl)->void
+#extern
+fun
+d0vardcl_fpemsg:(FILR,d0vardcl)->void
+#extern
+fun
+d0fundcl_fpemsg:(FILR,d0fundcl)->void
 #extern
 fun
 d0cstdcl_fpemsg:(FILR,d0cstdcl)->void
+(* ****** ****** *)
+#extern
+fun
+teqd0exp_fpemsg:(FILR,teqd0exp)->void
+#extern
+fun
+wths0exp_fpemsg:(FILR,wths0exp)->void
+(* ****** ****** *)
+#extern
+fun
+d0valdclist_fpemsg:(FILR,d0valdclist)->void
+#extern
+fun
+d0vardclist_fpemsg:(FILR,d0vardclist)->void
+#extern
+fun
+d0fundclist_fpemsg:(FILR,d0fundclist)->void
 #extern
 fun
 d0cstdclist_fpemsg:(FILR,d0cstdclist)->void
@@ -1021,23 +1086,38 @@ endlet // end-of-(D0Csortdef(...))
 |
 D0Cdatasort
 (knd, d0ts) => let
-val () = d0tstlst_fpemsg(out, d0ts)
+  val () =
+  d0tstlst_fpemsg(out, d0ts)
 endlet // end-of-(D0Cdatasort(_,_))
+//
+|
+D0Cfundclst
+( knd
+, tqas, d0cs) => let
+val () =
+  t0qaglst_fpemsg(out, tqas)
+val () =
+  d0fundclist_fpemsg(out, d0cs)
+endlet // end-of-(D0Cfundclst(_,_,_))
 //
 |
 D0Cdatatype
 ( knd
 , d0ts, wdcs) => let
-val () = d0typlst_fpemsg(out, d0ts)
-val () = wd0eclseq_fpemsg(out, wdcs)
+val () =
+  d0typlst_fpemsg(out, d0ts)
+val () =
+  wd0eclseq_fpemsg( out, wdcs )
 endlet // end-of-(D0Cdatatype(_,_,_))
 //
 |
 D0Cdynconst
 ( knd
 , tqas, d0cs) => let
-val () = t0qaglst_fpemsg(out, tqas)
-val () = d0cstdclist_fpemsg(out, d0cs)
+val () =
+  t0qaglst_fpemsg(out, tqas)
+val () =
+  d0cstdclist_fpemsg(out, d0cs)
 endlet // end-of-(D0Cdynconst(_,_,_))
 //
 |
@@ -1117,6 +1197,17 @@ foreach$work<d0exp>(de1) = d0exp_fpemsg(out,de1)
 (* ****** ****** *)
 //
 #implfun
+f0arglst_fpemsg
+(out, f0as) =
+list_foreach<f0arg>(f0as) where
+{
+#impltmp
+foreach$work<f0arg>(f0a1) = f0arg_fpemsg(out,f0a1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
 d0eclist_fpemsg
 (out, dcls) =
 list_foreach<d0ecl>(dcls) where
@@ -1181,6 +1272,24 @@ println
 ("PREADX0-ERROR:",tok0.lctn(),":",tok0)
 //
 end (*let*) // end of [ t0ken_GT0_fpemsg ]
+//
+#implfun
+token_GTDOT_fpemsg
+  (out, tok0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ tok0.node() of
+|
+T_GTDOT() => ((*void*))
+|
+_(*non-T_GTDOT*) =>
+println
+("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+//
+end (*let*) // end of [t0ken_GTDOT_fpemsg]
 //
 #implfun
 token_RPAREN_fpemsg
@@ -1571,6 +1680,37 @@ foreach$work<d0arg>(d0a1) = d0arg_fpemsg(out,d0a1)
 (* ****** ****** *)
 //
 #implfun
+d0fundcl_fpemsg
+(out, dfun) =
+let
+//
+val (  ) =
+  i0dnt_fpemsg(out, dpid)
+//
+val (  ) =
+  f0arglst_fpemsg(out, fags)
+//
+val (  ) =
+  s0res_fpemsg(out, sres)
+//
+val (  ) =
+  teqd0exp_fpemsg(out, tdxp)
+//
+val (  ) =
+  wths0exp_fpemsg(out, wsxp)
+//
+end where
+{
+  val dpid = d0fundcl_get_dpid(dfun)
+  val fags = d0fundcl_get_farg(dfun)
+  val sres = d0fundcl_get_sres(dfun)
+  val tdxp = d0fundcl_get_tdxp(dfun)
+  val wsxp = d0fundcl_get_wsxp(dfun)
+} (*where*)//end-of-[d0fundcl_fpemsg(out,dfun)]
+//
+(* ****** ****** *)
+//
+#implfun
 d0cstdcl_fpemsg
 (out, dcst) =
 let
@@ -1591,6 +1731,39 @@ end where
   val sres = d0cstdcl_get_sres(dcst)
   val dres = d0cstdcl_get_dres(dcst)
 } (*where*)//end-of-[d0cstdcl_fpemsg(out,dcst)]
+//
+(* ****** ****** *)
+//
+#implfun
+d0valdclist_fpemsg
+(out, d0cs) =
+list_foreach<d0valdcl>(d0cs) where
+{
+#impltmp
+foreach$work<d0valdcl>(d0c1) = d0valdcl_fpemsg(out,d0c1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d0vardclist_fpemsg
+(out, d0cs) =
+list_foreach<d0vardcl>(d0cs) where
+{
+#impltmp
+foreach$work<d0vardcl>(d0c1) = d0vardcl_fpemsg(out,d0c1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d0fundclist_fpemsg
+(out, d0cs) =
+list_foreach<d0fundcl>(d0cs) where
+{
+#impltmp
+foreach$work<d0fundcl>(d0c1) = d0fundcl_fpemsg(out,d0c1)
+}
 //
 (* ****** ****** *)
 //
