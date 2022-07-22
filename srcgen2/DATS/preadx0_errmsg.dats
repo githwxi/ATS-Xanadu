@@ -1798,6 +1798,20 @@ d0pat_RPAREN_cons0
 d0pat_RPAREN_cons1
 (tbar, d0ps, tend) => d0patlst_fpemsg(out,d0ps)
 )
+//
+#implfun
+l0d0p_RBRACE_fpemsg
+(out, ldrb) =
+(
+case+ ldrb of
+|
+l0d0p_RBRACE_cons0
+(      tend      ) => ()
+|
+l0d0p_RBRACE_cons1
+(tbar, ldps, tend) => l0d0plst_fpemsg(out,ldps)
+)
+//
 (* ****** ****** *)
 //
 #implfun
@@ -1812,6 +1826,20 @@ d0exp_RPAREN_cons0
 d0exp_RPAREN_cons1
 (tbar, d0es, tend) => d0explst_fpemsg(out,d0es)
 )
+//
+#implfun
+l0d0e_RBRACE_fpemsg
+(out, ldrb) =
+(
+case+ ldrb of
+|
+l0d0e_RBRACE_cons0
+(      tend      ) => ()
+|
+l0d0e_RBRACE_cons1
+(tbar, ldes, tend) => l0d0elst_fpemsg(out,ldes)
+)
+//
 (* ****** ****** *)
 //
 #implfun
