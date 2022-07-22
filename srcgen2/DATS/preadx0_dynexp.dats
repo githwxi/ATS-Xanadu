@@ -112,40 +112,99 @@ d0pat_errvl with d0pat_errvl_a2
 //
 #extern
 fun
-d0pat_errvl_dps
-(dps: d0patlst): sint
+d0pat_errvl_d0ps
+(d0ps: d0patlst): sint
 #symload
-d0pat_errvl with d0pat_errvl_dps
-#symload errvl with d0pat_errvl_dps
+d0pat_errvl with d0pat_errvl_d0ps
+#symload errvl with d0pat_errvl_d0ps
 //
 #implfun
-d0pat_errvl_dps(dps) =
+d0pat_errvl_d0ps(d0ps) =
 (
-case+ dps of
+case+ d0ps of
 |
 list_nil
 ((*nil*)) => 0
 |
 list_cons
-(dp1,dps) => gmax(errvl(dp1), errvl(dps)))
+(d0p1,d0ps) =>
+gmax(errvl(d0p1), errvl(d0ps)))
+//
+(* ****** ****** *)
+#extern
+fun
+l0d0p_errvl
+(ld0p: l0d0p): sint
+#extern
+fun
+l0d0p_errvl_ldps
+(ldps: l0d0plst): sint
+(* ****** ****** *)
+#symload errvl with l0d0p_errvl
+#symload errvl with l0d0p_errvl_ldps
+(* ****** ****** *)
+//
+#implfun
+l0d0p_errvl(ld0p) =
+(
+  d0pat_errvl(d0p)) where
+{
+  val+
+  D0LAB(lab, tok, d0p) = ld0p
+}
+//
+#implfun
+l0d0p_errvl_ldps(ldps) =
+(
+case+ ldps of
+|
+list_nil
+((*nil*)) => 0
+|
+list_cons
+(ldp1,ldps) =>
+gmax(errvl(ldp1), errvl(ldps)))
 //
 (* ****** ****** *)
 //
 #extern
 fun
-d0pat_errvl_drp
-(drp: d0pat_RPAREN): sint
-#symload errvl with d0pat_errvl_drp
+d0pat_errvl_drp0
+(drp0: d0pat_RPAREN): sint
+#symload errvl with d0pat_errvl_drp0
 //
 #implfun
-d0pat_errvl_drp
-(     drp     ) =
+d0pat_errvl_drp0
+(     drp0     ) =
 (
-case+ drp of
+case+ drp0 of
 |
-d0pat_RPAREN_cons0(tok) => 0
+d0pat_RPAREN_cons0
+(      tpar      ) => 0
 |
-d0pat_RPAREN_cons1(tkb,dps,tke) => errvl(dps)
+d0pat_RPAREN_cons1
+(tbeg, d0ps, tend) => errvl(d0ps)
+)
+//
+(* ****** ****** *)
+//
+#extern
+fun
+d0pat_errvl_ldrb
+(ldrb: l0d0p_RBRACE): sint
+#symload errvl with d0pat_errvl_ldrb
+//
+#implfun
+d0pat_errvl_ldrb
+(     ldrb     ) =
+(
+case+ ldrb of
+|
+l0d0p_RBRACE_cons0
+(      tbra      ) => 0
+|
+l0d0p_RBRACE_cons1
+(tbeg, ldps, tend) => errvl(ldps)
 )
 //
 (* ****** ****** *)
@@ -154,13 +213,13 @@ fun
 d0pat_apps_errck
 ( loc
 : loc_t
-, dps
+, d0ps
 : d0patlst): d0pat =
 let
-  val lvl = d0pat_errvl(dps)
+  val lvl = d0pat_errvl(d0ps)
 in//let
 d0pat_errck
-(lvl+1, d0pat(loc,D0Papps(dps)))
+(lvl+1, d0pat(loc,D0Papps(d0ps)))
 end (*let*) // end of [d0pat_apps_errck]
 //
 (* ****** ****** *)
@@ -169,19 +228,68 @@ fun
 d0pat_lpar_errck
 ( loc
 : loc_t
-, tkb
+, tbeg
 : token
-, dps
+, d0ps
 : d0patlst
-, drp
+, drp0
 : d0pat_RPAREN): d0pat =
 let
   val lvl =
-  gmax(errvl(dps),errvl(drp))
+  gmax(errvl(d0ps),errvl(drp0))
 in//let
 d0pat_errck
-(lvl+1, d0pat(loc,D0Plpar(tkb,dps,drp)))
+( lvl+1
+, d0pat(loc,D0Plpar(tbeg, d0ps, drp0)))
 end (*let*) // end of [d0pat_lpar_errck]
+//
+(* ****** ****** *)
+//
+fun
+d0pat_tup1_errck
+( loc
+: loc_t
+, tbeg
+: token
+, topt
+: tokenopt
+, d0ps
+: d0patlst
+, tend
+: d0pat_RPAREN): d0pat =
+let
+  val lvl =
+  gmax(errvl(d0ps),errvl(tend))
+in//let
+d0pat_errck
+(lvl+1,
+ d0pat_make_node
+ (loc,D0Ptup1(tbeg, topt, d0ps, tend)))
+end (*let*) // end of [d0pat_tup1_errck]
+//
+(* ****** ****** *)
+//
+fun
+d0pat_rcd2_errck
+( loc
+: loc_t
+, tbeg
+: token
+, topt
+: tokenopt
+, ldps
+: l0d0plst
+, tend
+: l0d0p_RBRACE): d0pat =
+let
+  val lvl =
+  gmax(errvl(ldps),errvl(tend))
+in//let
+d0pat_errck
+(lvl+1,
+ d0pat_make_node
+ (loc,D0Prcd2(tbeg, topt, ldps, tend)))
+end (*let*) // end of [d0pat_rcd2_errck]
 //
 (* ****** ****** *)
 //
@@ -248,22 +356,23 @@ d0exp_errvl with d0exp_errvl_a3
 //
 #extern
 fun
-d0exp_errvl_des
-(des: d0explst): sint
+d0exp_errvl_d0es
+(d0es: d0explst): sint
 #symload
-d0exp_errvl with d0exp_errvl_des
-#symload errvl with d0exp_errvl_des
+d0exp_errvl with d0exp_errvl_d0es
+#symload errvl with d0exp_errvl_d0es
 //
 #implfun
-d0exp_errvl_des(des) =
+d0exp_errvl_d0es(d0es) =
 (
-case+ des of
+case+ d0es of
 |
 list_nil
 ((*nil*)) => 0
 |
 list_cons
-(de1,des) => gmax(errvl(de1), errvl(des)))
+(d0e1,d0es) =>
+gmax(errvl(d0e1), errvl(d0es)))
 //
 (* ****** ****** *)
 //
@@ -325,23 +434,25 @@ d0exp_RPAREN_cons1(tkb,des,tke) => errvl(des)
 //
 #extern
 fun
+l0d0e_errvl
+(lde: l0d0e): sint
+#extern
+fun
 l0d0e_errvl_ldes
 (ldes: l0d0elst): sint
-//
-fun
-l0d0e_errvl
-(lde: l0d0e): sint =
-(
-  d0exp_errvl(d0e)) where
-{
-  val+
-  D0LAB(lab, tok, d0e) = lde
-}
-//
 (* ****** ****** *)
 #symload errvl with l0d0e_errvl
 #symload errvl with l0d0e_errvl_ldes
 (* ****** ****** *)
+//
+#implfun
+l0d0e_errvl(ld0e) =
+(
+  d0exp_errvl(d0e)) where
+{
+  val+
+  D0LAB(lab, tok, d0e) = ld0e
+}
 //
 #implfun
 l0d0e_errvl_ldes(ldes) =
@@ -472,6 +583,11 @@ D0Papps _ => f0_apps(d0p, err)
 D0Plpar _ => f0_lpar(d0p, err)
 //
 |
+D0Ptup1 _ => f0_tup1(d0p, err)
+|
+D0Prcd2 _ => f0_rcd2(d0p, err)
+//
+|
 D0Panno _ => f0_anno(d0p, err)
 //
 |
@@ -531,6 +647,62 @@ if
 then d0p else
 d0pat_lpar_errck(d0p.lctn(),tkb,dps,drp)
 end (*let*) // end of [f0_lpar]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup1
+( d0p: d0pat
+, err: &sint >> _): d0pat =
+let
+//
+val e00 = err
+//
+val-
+D0Ptup1
+( tbeg, topt
+, d0ps, tend) = d0p.node()
+//
+val d0p2 =
+preadx0_d0patlst(d0ps, err)
+val tend =
+preadx0_d0pat_RPAREN(tend, err)
+//
+in//let
+if
+(err=e00)
+then (d0p) else
+d0pat_tup1_errck
+(d0p.lctn(), tbeg, topt, d0ps, tend)
+end (*let*) // end of [f0_tup1(d0p,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_rcd2
+( d0p: d0pat
+, err: &sint >> _): d0pat =
+let
+//
+val e00 = err
+//
+val-
+D0Prcd2
+( tbeg, topt
+, ldps, tend) = d0p.node()
+//
+val ldps =
+preadx0_l0d0plst(ldps, err)
+val tend =
+preadx0_l0d0p_RBRACE(tend, err)
+//
+in//let
+if
+(err=e00)
+then (d0p) else
+d0pat_rcd2_errck
+(d0p.lctn(), tbeg, topt, ldps, tend)
+end (*let*) // end of [f0_rcd2(d0p,err)]
 //
 (* ****** ****** *)
 //

@@ -854,6 +854,21 @@ fpemsg(out,dthn); fpemsg(out,dels)
 )
 //
 |
+D0Etup1
+(tbeg
+,topt,d0es,tend) =>
+(
+fpemsg(out, d0es); fpemsg(out, tend)
+)
+|
+D0Ercd2
+(tbeg
+,topt,ldes,tend) =>
+(
+fpemsg(out, ldes); fpemsg(out, tend)
+)
+//
+|
 D0Etkerr _ => ( (*void*) )
 |
 D0Eerrck(lvl0,d0e1) => d0exp_fpemsg(out, d0e)
