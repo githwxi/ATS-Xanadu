@@ -269,15 +269,27 @@ list_cons
 //
 #extern
 fun
-d0exp_errvl_drp
+d0exp_errvl_then
+(drp: d0exp_THEN): sint
+#symload errvl with d0exp_errvl_then
+#extern
+fun
+d0exp_errvl_else
+(drp: d0exp_ELSE): sint
+#symload errvl with d0exp_errvl_else
+(* ****** ****** *)
+//
+#extern
+fun
+d0exp_errvl_drp0
 (drp: d0exp_RPAREN): sint
-#symload errvl with d0exp_errvl_drp
+#symload errvl with d0exp_errvl_drp0
 //
 #implfun
-d0exp_errvl_drp
-(     drp     ) =
+d0exp_errvl_drp0
+(     drp0     ) =
 (
-case+ drp of
+case+ drp0 of
 |
 d0exp_RPAREN_cons0(tok) => 0
 |
@@ -341,13 +353,28 @@ l0d0e_RBRACE_cons1
 (* ****** ****** *)
 //
 fun
+d0exp_opid_errck
+( loc
+: loc_t
+, id0
+: d0eid): d0exp =
+let
+val
+lvl = 0 in
+d0exp_errck
+(lvl+1, d0exp(loc, D0Eopid(id0)))
+end (*let*) // end of [d0exp_opid_errck]
+//
+(* ****** ****** *)
+//
+fun
 d0exp_apps_errck
 ( loc
 : loc_t
 , des
 : d0explst): d0exp =
 let
-  val lvl = d0exp_errvl(des)
+val lvl = d0exp_errvl(des)
 in//let
 d0exp_errck
 (lvl+1, d0exp(loc, D0Eapps(des)))
@@ -372,6 +399,30 @@ in//let
 d0exp_errck
 (lvl+1, d0exp(loc,D0Elpar(tkb,des,drp)))
 end (*let*) // end of [d0exp_lpar_errck]
+//
+(* ****** ****** *)
+//
+fun
+d0exp_if0_errck
+( loc: loc_t
+, tif0: token
+, d0e1: d0exp
+, dthn
+: d0exp_THEN
+, dels
+: d0exp_ELSE): d0exp =
+let
+val lvl =
+(
+gmax
+(errvl(d0e1)
+,errvl(dthn),errvl(dels)))
+in//let
+d0exp_errck
+( lvl+1
+, d0exp
+  (loc, D0Eif0(tif0,d0e1,dthn,dels) )
+end (*let*) // end of [d0exp_if0_errck]
 //
 (* ****** ****** *)
 //
@@ -501,10 +552,22 @@ d0e.node() of
 | D0Estr _ => d0e
 //
 |
+D0Eopid _ => f0_opid(d0e, err)
+//
+|
 D0Eapps _ => f0_apps(d0e, err)
 //
 |
 D0Elpar _ => f0_lpar(d0e, err)
+//
+|
+D0Eif0
+(_,_,_,_) => f0_if0( d0e, err )
+(*
+|
+D0Eif1
+(_,_,_,_,_) => f0_if1( d0e, err )
+*)
 //
 |
 D0Etkerr _ =>
@@ -518,6 +581,26 @@ D0Eerrck _ =>
 //
 ) where // end-of(case(d0e.node()))
 {
+(* ****** ****** *)
+//
+fun
+f0_opid
+( d0e
+: d0exp
+, err
+: &sint >> _): d0exp =
+let
+val e00 = err
+val-
+D0Eopid(id0) = d0e.node()
+val id0 = preadx0_i0dnt(id0, err)
+in//let
+if
+(err=e00)
+then (d0e)
+else d0exp_opid_errck(d0e.lctn(), id0)
+end (*let*) // end of [f0_opid]
+//
 (* ****** ****** *)
 //
 fun
@@ -564,6 +647,40 @@ then d0e else
 d0exp_lpar_errck(d0e.lctn(),tkb,des,drp)
 end (*let*) // end of [f0_lpar]
 //
+(* ****** ****** *)
+//
+fun
+f0_if0
+( d0e
+: d0exp
+, err
+: &sint >> _): d0exp =
+let
+//
+val e00 = err
+//
+val loc = d0e.lctn()
+//
+val-
+D0Eif0
+( tif0
+, d0e1
+, dthn, dels) = d0e.node()
+//
+val
+d0e1 = preadx0_d0exp(d0e1, err)
+val
+dthn = preadx0_d0exp_THEN(dthn, err)
+val
+dels = preadx0_d0exp_ELSE(dels, err)
+//
+in
+if
+(err=e00)
+then d0e else
+d0exp_if0_errck(loc,tif0,d0e1,dthn,dels)
+end (*let*) // end of [f0_if0(d0e, err)]
+
 (* ****** ****** *)
 
 } (*where*) // end-of-[preadx0_d0exp(d0e,err)]
@@ -708,10 +825,18 @@ endlet // end of [D0RESsome(teq1,d0e2)]
 //
 (* ****** ****** *)
 #implfun
+preadx0_d0patopt
+  (  lst, err  ) =
+preadx0_synentopt_fun(lst,err,preadx0_d0pat)
+#implfun
+preadx0_d0expopt
+  (  lst, err  ) =
+preadx0_synentopt_fun(lst,err,preadx0_d0exp)
+(* ****** ****** *)
+#implfun
 preadx0_d0patlst
   (  lst, err  ) =
 preadx0_synentlst_fun(lst,err,preadx0_d0pat)
-(* ****** ****** *)
 #implfun
 preadx0_d0explst
   (  lst, err  ) =
