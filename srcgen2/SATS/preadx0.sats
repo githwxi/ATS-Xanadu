@@ -115,7 +115,9 @@ l0d0e_RBRACE = $D0E.l0d0e_RBRACE
 #typedef d0expopt = $D0E.d0expopt
 (* ****** ****** *)
 #typedef d0patlst = $D0E.d0patlst
+#typedef l0d0plst = $D0E.l0d0plst
 #typedef d0explst = $D0E.d0explst
+#typedef l0d0elst = $D0E.l0d0elst
 (* ****** ****** *)
 #typedef f0arglst = $D0E.f0arglst
 (* ****** ****** *)
@@ -344,10 +346,15 @@ fun
 d0patopt_fpemsg(FILR, d0patopt): void
 fun
 d0expopt_fpemsg(FILR, d0expopt): void
+(* ****** ****** *)
 fun
 d0patlst_fpemsg(FILR, d0patlst): void
 fun
+l0d0plst_fpemsg(FILR, l0d0plst): void
+fun
 d0explst_fpemsg(FILR, d0explst): void
+fun
+l0d0elst_fpemsg(FILR, l0d0elst): void
 (* ****** ****** *)
 fun
 d0eclist_fpemsg(FILR, d0eclist): void
