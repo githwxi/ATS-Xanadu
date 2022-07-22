@@ -93,6 +93,9 @@ l0s0e_RBRACE = $S0E.l0s0e_RBRACE
 #typedef d0pat = $D0E.d0pat
 #typedef d0exp = $D0E.d0exp
 (* ****** ****** *)
+#typedef l0d0p = $D0E.l0d0p
+#typedef l0d0e = $D0E.l0d0e
+(* ****** ****** *)
 #typedef f0arg = $D0E.f0arg
 #typedef s0res = $D0E.s0res
 #typedef d0res = $D0E.d0res
@@ -235,6 +238,8 @@ preadx0_l0s0e_RBRACE: fpreadx0(l0s0e_RBRACE)
 (* ****** ****** *)
 fun preadx0_d0pat: fpreadx0(d0pat)
 fun preadx0_d0exp: fpreadx0(d0exp)
+fun preadx0_l0d0p: fpreadx0(l0d0p)
+fun preadx0_l0d0e: fpreadx0(l0d0e)
 (* ****** ****** *)
 fun preadx0_f0arg: fpreadx0(f0arg)
 fun preadx0_s0res: fpreadx0(s0res)
@@ -359,6 +364,9 @@ l0s0e_RBRACE_fpemsg
 (* ****** ****** *)
 fun d0pat_fpemsg(FILR, d0pat): void
 fun d0exp_fpemsg(FILR, d0exp): void
+fun l0d0p_fpemsg(FILR, l0d0p): void
+fun l0d0e_fpemsg(FILR, l0d0e): void
+(* ****** ****** *)
 fun d0ecl_fpemsg(FILR, d0ecl): void
 (* ****** ****** *)
 fun
