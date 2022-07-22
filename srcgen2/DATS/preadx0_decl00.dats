@@ -826,6 +826,32 @@ preadx0_d0cstdclist: fpreadx0(d0cstdclist)
 (* ****** ****** *)
 //
 #implfun
+preadx0_q0arg
+  (q0a, err) =
+(
+case+
+q0a.node() of
+|
+Q0ARGsome(sid0, topt) =>
+let
+//
+val e00 = err
+//
+val sid0 =
+preadx0_i0dnt(sid0, err)
+val topt =
+preadx0_sort0opt(topt, err)
+//
+in//let
+if
+(err=e00)
+then (q0a) else q0arg
+(q0a.lctn(), Q0ARGsome(sid0, topt))
+endlet // end of [Q0ARGsome(sid0,topt)]
+) (*case+*)//end-of-[preadx0_q0arg(q0a,err)]
+(* ****** ****** *)
+//
+#implfun
 preadx0_s0qag
   (s0q, err) =
 (
@@ -1682,6 +1708,37 @@ then tdxp else TEQD0EXPsome(teq1, d0e2)
 end (*let*) // end of [TEQD0EXPsome(_,_)]
 )
 
+(* ****** ****** *)
+
+#implfun
+preadx0_wths0exp
+  (wsxp, err) =
+(
+case+ wsxp of
+|
+WTHS0EXPnone() => wsxp
+|
+WTHS0EXPsome(twth, s0e1) =>
+let
+val e00 = err
+val d0e2 = preadx0_s0exp(s0e1, err)
+in//letp
+if
+(err=e00)
+then wsxp else WTHS0EXPsome(twth, s0e1)
+end (*let*) // end of [WTHS0EXPsome(_,_)]
+)
+
+(* ****** ****** *)
+#implfun
+preadx0_q0arglst
+  (  lst, err  ) =
+preadx0_synentlst_fun(lst,err,preadx0_q0arg)
+(* ****** ****** *)
+#implfun
+preadx0_s0qaglst
+  (  lst, err  ) =
+preadx0_synentlst_fun(lst,err,preadx0_s0qag)
 (* ****** ****** *)
 #implfun
 preadx0_t0qaglst
