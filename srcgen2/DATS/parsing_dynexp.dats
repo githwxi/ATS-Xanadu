@@ -370,7 +370,7 @@ let
   val lres = tbeg.lctn() + tend.lctn()
 in//elt
   err := e00
-; d0pat(lres, D0Psqarg(tbeg, s0as, tend))
+; d0pat(lres, D0Psqag(tbeg, s0as, tend))
 end (*let*) // end of [T_LBRACE()]
 //
 |
@@ -607,10 +607,10 @@ p1_d0exp_ELSE: p1_fun(d0exp_ELSE)
 //
 #extern
 fun
-p1_d0exp_sqarg: p1_fun(d0exp)
+p1_d0exp_sqag: p1_fun(d0exp)
 #extern
 fun
-p1_d0expseq_sqarg: p1_fun(d0explst)
+p1_d0expseq_sqag: p1_fun(d0explst)
 //
 (* ****** ****** *)
 //
@@ -1362,8 +1362,7 @@ tokbuf_mark_clr(buf, mark)
 val lres = tbeg.lctn()+tend.lctn()
 in//let
 err := e00;
-d0exp_make_node
-(lres, D0Etqarg(tbeg, s0es, tend))
+d0exp(lres, D0Etqag(tbeg,s0es,tend))
 end(*let*) // end of [ T_GT0() ]
 |
 _(*non-T_GT0*) =>
@@ -1372,11 +1371,11 @@ let
 val (  ) =
 tokbuf_mark_set(buf, mark)
 //
-val loc0 = tok1.lctn()
+val loc1 = tok1.lctn()
 val tnd2 = T0IDENT_LT0(*val*)
-val tok2 = token_make_node(loc0,tnd2)
+val tok2 = token_make_node(loc1,tnd2)
 in//let
-  d0exp(loc0, D0Eid0(i0dnt_some(tok2)))
+  d0exp(loc1, D0Eid0(i0dnt_some(tok2)))
 end(*let*) // end-of-[ non-T_GT0 ]
 //
 end(*let*) // end-of-[ T_LT0(  ) ]
@@ -1386,11 +1385,11 @@ T_GT0() =>
 let
 val tok1 = tok
 val (  ) = buf.skip1()
-val loc0 = tok1.lctn()
+val loc1 = tok1.lctn()
 val tnd2 = T0IDENT_GT0(*val*)
-val tok2 = token_make_node(loc0,tnd2)
+val tok2 = token_make_node(loc1,tnd2)
 in//let
-  d0exp(loc0, D0Eid0(i0dnt_some(tok2)))
+  d0exp(loc1, D0Eid0(i0dnt_some(tok2)))
 end (*let*) // end-of-[ T_GT0(  ) ]
 //
 |
@@ -1402,7 +1401,7 @@ T_LTGT() => let
   val lres = tbeg.lctn()
 in
   err := e00
-; d0exp(lres, D0Etqarg(tbeg,s0es,tend))
+; d0exp(lres, D0Etqag(tbeg,s0es,tend))
 end(*let*) // end-of-[  T_LTGT()  ]
 //
 |
@@ -1416,7 +1415,7 @@ let
   val lres = tbeg.lctn()+tend.lctn()
 in//let
   err := e00
-; d0exp(lres, D0Esqarg(tbeg,s0es,tend))
+; d0exp(lres, D0Esqag(tbeg,s0es,tend))
 end(*let*) // end-of-[  T_LBRACE()  ]
 //
 |
@@ -1622,7 +1621,7 @@ let
   val tok0 = tok
   val (  ) = buf.skip1()
   val sqas =
-  p1_d0expseq_sqarg(buf, err)
+  p1_d0expseq_sqag(buf, err)
   val d0e1 = p1_d0exp_atm(buf, err)
 in//let
   err := e00
@@ -1744,7 +1743,7 @@ end(*let*)//end-of-[p1_d0exp_ELSE(buf,err)]
 (* ****** ****** *)
 
 #implfun
-p1_d0exp_sqarg
+p1_d0exp_sqag
   (buf, err) = let
 //
 val e00 = err
@@ -1766,7 +1765,7 @@ in
   err := e00;
   d0exp_make_node
   ( lres
-  , D0Esqarg(tbeg, s0es, tend)) where
+  , D0Esqag(tbeg, s0es, tend)) where
   {
     val lres = tbeg.lctn()+tend.lctn()
   }
@@ -1780,16 +1779,16 @@ in//let
 d0exp_make_node(tok.lctn(), D0Etkerr(tok))
 end(*let*)//HX: indicating a parsing error
 //
-end(*let*)//end-of-[p1_d0exp_sqarg(buf,err)]
+end(*let*)//end-of-[p1_d0exp_sqag(buf,err)]
 
 (* ****** ****** *)
 //
 #implfun
-p1_d0expseq_sqarg
+p1_d0expseq_sqag
   (buf, err) =
 (
 list_vt2t
-(ps_p1fun{d0exp}(buf, err, p1_d0exp_sqarg)))
+(ps_p1fun{d0exp}(buf, err, p1_d0exp_sqag)))
 //
 (* ****** ****** *)
 //
