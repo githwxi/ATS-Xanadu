@@ -421,7 +421,7 @@ in//let
 d0exp_errck
 ( lvl+1
 , d0exp
-  (loc, D0Eif0(tif0,d0e1,dthn,dels) )
+  (loc, D0Eif0(tif0,d0e1,dthn,dels)) )
 end (*let*) // end of [d0exp_if0_errck]
 //
 (* ****** ****** *)
@@ -892,6 +892,60 @@ _(*non-T_RPAREN*) =>
 endlet // end of [d0pat_RPAREN_cons1]
 ) (*case*) // end of [preadx0_d0pat_RPAREN]
 
+(* ****** ****** *)
+//
+#implfun
+preadx0_d0exp_THEN
+  (dthn, err) =
+(
+case+ dthn of
+|
+d0exp_THEN_none
+(     tok1    ) => dthn
+|
+d0exp_THEN_some
+(  tok1,d0e2  ) =>
+let
+//
+val e00 = err
+//
+val d0e2 =
+preadx0_d0exp(d0e2, err)
+in//let
+if
+(err=e00)
+then (dthn)
+else d0exp_THEN_some(tok1, d0e2)
+endlet // end of [d0exp_THEN_some(tok1,d0e2)]
+)
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_d0exp_ELSE
+  (dels, err) =
+(
+case+ dels of
+|
+d0exp_ELSE_none
+(     tok1    ) => dels
+|
+d0exp_ELSE_some
+(  tok1,d0e2  ) =>
+let
+//
+val e00 = err
+//
+val d0e2 =
+preadx0_d0exp(d0e2, err)
+in//let
+if
+(err=e00)
+then (dels)
+else d0exp_ELSE_some(tok1, d0e2)
+endlet // end of [d0exp_ELSE_some(tok1,d0e2)]
+)
+//
 (* ****** ****** *)
 
 #implfun

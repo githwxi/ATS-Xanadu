@@ -1700,14 +1700,25 @@ T_THEN() => let
 in
 err := e00; d0exp_THEN_some(tok, d0e)
 end // end of [T_THEN]
+(*
 |
 _(*non-THEN*) =>
 let
-val // HX-2018-09-25: error
-( ) = err := e00 + 1
+(*
+HX-2018-09-25: error
+*)
+val
+( ) = (err := e00 + 1)
 in//let
 d0exp_THEN_some(tok, p1_d0exp(buf, err))
 end(*let*)//end-of-[non-T_THEN]
+*)
+|
+_(*non-THEN*) =>
+(
+// HX: there is no error!
+  d0exp_THEN_none(tok) // HX: THEN-less
+)
 //
 end(*let*)//end-of-[p1_d0exp_THEN(buf,err)]
 

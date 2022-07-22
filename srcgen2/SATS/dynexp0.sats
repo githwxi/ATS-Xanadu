@@ -520,6 +520,8 @@ F0UNARRWlist of
 and
 d0exp_THEN =
 |
+d0exp_THEN_none of (token)
+|
 d0exp_THEN_some of (token, d0exp)
 and
 d0exp_ELSE =

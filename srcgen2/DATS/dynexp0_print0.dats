@@ -440,6 +440,9 @@ d0exp_THEN_fprint
 (
 case+ gthn of
 |
+d0exp_THEN_none(tok) =>
+print("d0exp_THEN_none(",tok,")")
+|
 d0exp_THEN_some(tok,d0e) =>
 print("d0exp_THEN(",tok,";",d0e,")")
 ) where
