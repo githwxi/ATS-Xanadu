@@ -77,7 +77,7 @@ list_cons(_, xs) => (if(xs|xs)then(0)else(1)) where { val xxx = yyy }
 val ID = $lam($1)
 
 (* ****** ****** *)
-////
+
 val xyz =
 (loop(i0,r0); fold(r0))
 
@@ -116,7 +116,7 @@ ints_nil(0) of ()
 ints_cons(n+1) of (int, ints(n))
 
 (* ****** ****** *)
-////
+
 fun foo(x:)(y:) = $extnam()
 
 (* ****** ****** *)
