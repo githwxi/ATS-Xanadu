@@ -150,6 +150,11 @@ FPEMSG_ERRVL 2
 #symload fpemsg with d0explst_fpemsg
 #symload fpemsg with d0eclist_fpemsg
 (* ****** ****** *)
+#symload fpemsg with d0pat_RPAREN_fpemsg
+#symload fpemsg with l0d0p_RBRACE_fpemsg
+#symload fpemsg with d0exp_RPAREN_fpemsg
+#symload fpemsg with l0d0e_RBRACE_fpemsg
+(* ****** ****** *)
 #extern
 fun
 token_BAR_fpemsg:(FILR,token)->void
@@ -686,8 +691,21 @@ D0Pstr(str) =>
 t0str_fpemsg(out, str)
 //
 |
-D0Papps(ses) =>
-d0patlst_fpemsg(out, ses)
+D0Papps(dps) =>
+d0patlst_fpemsg(out, dps)
+//
+|
+D0Plpar
+(tkb,dps,drp) =>
+(
+fpemsg(out, dps); fpemsg(out, drp)
+)
+//
+|
+D0Panno(dp1,se2) =>
+(
+fpemsg(out, dp1); fpemsg(out, se2)
+)
 //
 |
 D0Ptkerr _ => ( (*void*) )
@@ -708,10 +726,9 @@ in//let
 case+
 d0p.node() of
 |
-D0Perrck(lvl, se1) =>
+D0Perrck(lvl, dp1) =>
 (
-d0pat_fpemsg(out, se1)
-; 
+auxmain( out, dp1 );
 if
 (lvl
 >FPEMSG_ERRVL) then () else
@@ -761,8 +778,14 @@ D0Eopid(id0) =>
 i0dnt_fpemsg(out, id0)
 //
 |
-D0Eapps(ses) =>
-d0explst_fpemsg(out, ses)
+D0Eapps(des) =>
+d0explst_fpemsg(out, des)
+//
+|
+D0Elpar(tkb,des,drp) =>
+(
+fpemsg(out, des); fpemsg(out, drp)
+)
 //
 |
 D0Etkerr _ => ( (*void*) )
@@ -783,10 +806,9 @@ in//let
 case+
 d0e.node() of
 |
-D0Eerrck(lvl, se1) =>
+D0Eerrck(lvl, de1) =>
 (
-d0exp_fpemsg(out, se1)
-; 
+auxmain( out, de1 );
 if
 (lvl
 >FPEMSG_ERRVL) then () else
@@ -905,7 +927,7 @@ token_EQ0_fpemsg(out, teq1)
 //
 val () = d0exp_fpemsg(out, d0e2)
 //
-end (*let*) // end of [D0RESsome(seff,s0e1)]
+end (*let*) // end of [D0RESsome(teq1,d0e2)]
 )
 //
 (* ****** ****** *)
@@ -1732,6 +1754,64 @@ end where
   val dres = d0cstdcl_get_dres(dcst)
 } (*where*)//end-of-[d0cstdcl_fpemsg(out,dcst)]
 //
+(* ****** ****** *)
+//
+#implfun
+teqd0exp_fpemsg
+  (out, tdxp) =
+(
+case+ tdxp of
+|
+TEQD0EXPnone
+( (*void*) ) => ()
+|
+TEQD0EXPsome
+(teq1, d0e2) => d0exp_fpemsg(out, d0e2)
+)
+//
+(* ****** ****** *)
+//
+#implfun
+wths0exp_fpemsg
+  (out, wsxp) =
+(
+case+ wsxp of
+|
+WTHS0EXPnone
+( (*void*) ) => ()
+|
+WTHS0EXPsome
+(twth, s0e1) => s0exp_fpemsg(out, s0e1)
+)
+//
+(* ****** ****** *)
+//
+#implfun
+d0pat_RPAREN_fpemsg
+(out, drp0) =
+(
+case+ drp0 of
+|
+d0pat_RPAREN_cons0
+(      tend      ) => ()
+|
+d0pat_RPAREN_cons1
+(tbar, d0ps, tend) => d0patlst_fpemsg(out,d0ps)
+)
+(* ****** ****** *)
+//
+#implfun
+d0exp_RPAREN_fpemsg
+(out, drp0) =
+(
+case+ drp0 of
+|
+d0exp_RPAREN_cons0
+(      tend      ) => ()
+|
+d0exp_RPAREN_cons1
+(tbar, d0es, tend) => d0explst_fpemsg(out,d0es)
+)
 (* ****** ****** *)
 //
 #implfun
