@@ -596,6 +596,16 @@ foreach$work<l0s0e>(lx1) = l0s0e_fpemsg(out,lx1)
 (* ****** ****** *)
 //
 #implfun
+s0arglst_fpemsg
+(out, sas) =
+list_foreach<s0arg>(sas) where
+{
+#impltmp
+foreach$work<s0arg>(s0a) = s0arg_fpemsg(out,s0a)
+}
+(* ****** ****** *)
+//
+#implfun
 s0maglst_fpemsg
 (out, sms) =
 list_foreach<s0mag>(sms) where
@@ -700,6 +710,14 @@ D0Papps(dps) =>
 d0patlst_fpemsg(out, dps)
 //
 |
+D0Psarg
+(tkb,sas,tke) =>
+(
+s0arglst_fpemsg(out, sas);
+token_RBRACE_fpemsg(out, tke)
+)
+//
+|
 D0Plpar
 (tkb,dps,drp) =>
 (
@@ -785,6 +803,22 @@ i0dnt_fpemsg(out, id0)
 |
 D0Eapps(des) =>
 d0explst_fpemsg(out, des)
+//
+|
+D0Esarg
+(tkb,ses,tke) =>
+(
+s0explst_fpemsg(out, ses);
+token_RBRACE_fpemsg(out, tke)
+)
+//
+|
+D0Etarg
+(tkb,ses,tke) =>
+(
+s0explst_fpemsg(out, ses);
+token_RBRACE_fpemsg(out, tke)
+)
 //
 |
 D0Elpar(tkb,des,drp) =>
