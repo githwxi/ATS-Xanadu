@@ -42,7 +42,7 @@ var foo1: int with foo2 = (1 + 2)
 
 fun fact(x:int): int =
 if x > 0 then x * fact(x-1) else 1
-////
+
 (* ****** ****** *)
 
 datatype
