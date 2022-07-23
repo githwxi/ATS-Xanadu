@@ -105,6 +105,8 @@ l0s0e_RBRACE = $S0E.l0s0e_RBRACE
 #typedef s0res = $D0E.s0res
 #typedef d0res = $D0E.d0res
 (* ****** ****** *)
+#typedef d0cls = $D0E.d0cls
+(* ****** ****** *)
 #typedef t0qua = $D0E.t0qua
 #typedef t0inv = $D0E.t0inv
 (* ****** ****** *)
@@ -143,6 +145,8 @@ d0eclseq_WHERE = $D0E.d0eclseq_WHERE
 #typedef l0d0elst = $D0E.l0d0elst
 (* ****** ****** *)
 #typedef f0arglst = $D0E.f0arglst
+(* ****** ****** *)
+#typedef d0clslst = $D0E.d0clslst
 (* ****** ****** *)
 #typedef t0qualst = $D0E.t0qualst
 (* ****** ****** *)
@@ -263,6 +267,8 @@ fun preadx0_f0arg: fpreadx0(f0arg)
 fun preadx0_s0res: fpreadx0(s0res)
 fun preadx0_d0res: fpreadx0(d0res)
 (* ****** ****** *)
+fun preadx0_d0cls: fpreadx0(d0cls)
+(* ****** ****** *)
 fun preadx0_t0inv: fpreadx0(t0inv)
 (* ****** ****** *)
 fun preadx0_d0ecl: fpreadx0(d0ecl)
@@ -285,6 +291,9 @@ preadx0_l0d0elst: fpreadx0(l0d0elst)
 (* ****** ****** *)
 fun
 preadx0_f0arglst: fpreadx0(f0arglst)
+(* ****** ****** *)
+fun
+preadx0_d0clslst: fpreadx0(d0clslst)
 (* ****** ****** *)
 fun
 preadx0_d0eclist: fpreadx0(d0eclist)
