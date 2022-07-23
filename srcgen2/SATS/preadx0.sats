@@ -128,6 +128,8 @@ l0d0e_RBRACE = $D0E.l0d0e_RBRACE
 d0eclseq_WHERE = $D0E.d0eclseq_WHERE
 //
 (* ****** ****** *)
+#typedef f0unarrw = $D0E.f0unarrw
+(* ****** ****** *)
 #typedef d0patopt = $D0E.d0patopt
 #typedef d0expopt = $D0E.d0expopt
 (* ****** ****** *)
@@ -398,6 +400,9 @@ l0d0elst_fpemsg(FILR, l0d0elst): void
 (* ****** ****** *)
 fun
 d0eclist_fpemsg(FILR, d0eclist): void
+(* ****** ****** *)
+fun
+f0unarrw_fpemsg(FILR, f0unarrw): void
 (* ****** ****** *)
 fun
 d0exp_THEN_fpemsg

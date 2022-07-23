@@ -134,9 +134,9 @@ fact(x:int): int =
 (
   loop(0, r))
 where
-  fun
-  loop(i:int, r:int) =
-  if i < x then loop(i+1,(i+1)*r) else r
+fun
+loop(i:int, r:int) =
+if i < x then loop(i+1,(i+1)*r) else r
 endwhr // end of [fact(x)]
 
 (* ****** ****** *)
@@ -147,8 +147,19 @@ let
 fun
 loop(i:int, r:int) =
 if i < x
-then loop(i+1,(i+1)*r) else r in loop(0, r)
+then
+loop(i+1,(i+1)*r) else r in loop(0, r)
 endlet // end of [fact(x)]
+
+(* ****** ****** *)
+
+fun fact =
+lam(x:int): int =>
+if x > 0 then x * fact(x-1) else 1 endif
+
+fun fact =
+fix fact(x:int): int =>
+if x > 0 then x * fact(x-1) else 1 endif
 
 (* ****** ****** *)
 
