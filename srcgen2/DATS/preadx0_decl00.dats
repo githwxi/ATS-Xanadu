@@ -965,14 +965,12 @@ f0_absimpl(dcl, err)
 D0Cdatasort _ =>
 f0_datasort(dcl, err)
 //
-(*
 |
 D0Cvaldclst _ =>
 f0_valdclst(dcl, err)
 |
 D0Cvardclst _ =>
 f0_vardclst(dcl, err)
-*)
 |
 D0Cfundclst _ =>
 f0_fundclst(dcl, err)
@@ -1451,6 +1449,54 @@ end (*let*) // end of [f0_datasort(dcl,err)]
 (* ****** ****** *)
 //
 fun
+f0_valdclst
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val-
+D0Cvaldclst
+( tknd, d0cs) = dcl.node()
+//
+val d0cs =
+preadx0_d0valdclist(d0cs, err)
+//
+in//let
+if
+(err=e00)
+then dcl else
+d0ecl_valdclst_errck(dcl.lctn(),tknd,d0cs)
+end (*let*) // end of [f0_valdclst(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_vardclst
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val-
+D0Cvardclst
+( tknd, d0cs) = dcl.node()
+//
+val d0cs =
+preadx0_d0vardclist(d0cs, err)
+//
+in//let
+if
+(err=e00)
+then dcl else
+d0ecl_vardclst_errck(dcl.lctn(),tknd,d0cs)
+end (*let*) // end of [f0_vardclst(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
 f0_fundclst
 ( dcl: d0ecl
 , err: &sint >> _): d0ecl =
@@ -1610,6 +1656,13 @@ val e00 = err
 //
 val loc = dval.lctn()
 //
+val
+dpat = preadx0_d0pat(dpat,err)
+val
+tdxp = preadx0_teqd0exp(tdxp,err)
+val
+wsxp = preadx0_wths0exp(wsxp,err)
+//
 in//let
 if
 (err=e00)
@@ -1621,6 +1674,39 @@ end where
   val tdxp = d0valdcl_get_tdxp(dval)
   val wsxp = d0valdcl_get_wsxp(dval)
 } (*where*)//end-of-[d0valdcl_fpemsg(out,dval)]
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_d0vardcl
+  (dvar, err) =
+let
+//
+val e00 = err
+//
+val loc = dvar.lctn()
+//
+val
+dpid = preadx0_i0dnt(dpid,err)
+val
+vpid = preadx0_i0dntopt(vpid,err)
+val
+sres = preadx0_s0expopt(sres,err)
+val
+dini = preadx0_teqd0exp(dini,err)
+//
+in//let
+if
+(err=e00)
+then (dvar) else
+d0vardcl(loc, dpid,vpid,sres,dini )
+end where
+{
+  val dpid = d0vardcl_get_dpid(dvar)
+  val vpid = d0vardcl_get_vpid(dvar)
+  val sres = d0vardcl_get_sres(dvar)
+  val dini = d0vardcl_get_dini(dvar)
+} (*where*)//end-of-[d0vardcl_fpemsg(out,dvar)]
 //
 (* ****** ****** *)
 //

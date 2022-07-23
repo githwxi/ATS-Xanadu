@@ -1359,6 +1359,11 @@ endlet // end of [S0TDFsub]
 
 (* ****** ****** *)
 #implfun
+preadx0_i0dntopt
+(   opt, err   ) =
+preadx0_synentopt_fun(opt,err,preadx0_i0dnt)
+(* ****** ****** *)
+#implfun
 preadx0_i0dntlst
 (   lst, err   ) =
 preadx0_synentlst_fun(lst,err,preadx0_i0dnt)

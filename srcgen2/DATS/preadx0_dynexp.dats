@@ -1735,12 +1735,12 @@ endlet // end of [T0INVsome(_,_,_,_)]
 (* ****** ****** *)
 #implfun
 preadx0_d0patopt
-  (  lst, err  ) =
-preadx0_synentopt_fun(lst,err,preadx0_d0pat)
+  (  opt, err  ) =
+preadx0_synentopt_fun(opt,err,preadx0_d0pat)
 #implfun
 preadx0_d0expopt
-  (  lst, err  ) =
-preadx0_synentopt_fun(lst,err,preadx0_d0exp)
+  (  opt, err  ) =
+preadx0_synentopt_fun(opt,err,preadx0_d0exp)
 (* ****** ****** *)
 #implfun
 preadx0_d0patlst
@@ -1965,6 +1965,7 @@ endlet // end of [d0exp_ELSE_some(tok1,d0e2)]
 preadx0_d0exp_RPAREN
   (drp0, err) =
 (
+//
 case+ drp0 of
 |
 d0exp_RPAREN_cons0
@@ -1979,7 +1980,7 @@ _(*non-T_RPAREN*) => (err := err+1; drp0)
 )
 |
 d0exp_RPAREN_cons1
-(tbar, d0es, tend) =>
+(tsep, d0es, tend) =>
 let
 //
 val e00 = err
@@ -1997,13 +1998,41 @@ if
 (err=e00)
 then drp0
 else
-d0exp_RPAREN_cons1(tbar, d0es, tend)
+d0exp_RPAREN_cons1(tsep, d0es, tend)
 )
 |
 _(*non-T_RPAREN*) =>
-(err := err+1; d0exp_RPAREN_cons1(tbar,d0es,tend))
+(err := err+1; d0exp_RPAREN_cons1(tsep,d0es,tend))
 //
 endlet // end of [d0exp_RPAREN_cons1]
+|
+d0exp_RPAREN_cons2
+(tsep, d0es, tend) =>
+let
+//
+val e00 = err
+//
+val d0es =
+preadx0_d0explst(d0es, err)
+in//let
+//
+case+
+tend.node() of
+|
+T_RPAREN() =>
+(
+if
+(err=e00)
+then drp0
+else
+d0exp_RPAREN_cons2(tsep, d0es, tend)
+)
+|
+_(*non-T_RPAREN*) =>
+(err := err+1; d0exp_RPAREN_cons2(tsep,d0es,tend))
+//
+endlet // end of [d0exp_RPAREN_cons2]
+//
 ) (*case*)//end-of-[preadx0_d0exp_RPAREN(drp0,err)]
 
 (* ****** ****** *)
