@@ -76,7 +76,7 @@ nint_rand$limit(): sintgt(0)
 //
 fun<>
 nint_rand_limit
-{n:pos}(l0: int(n)): nintlt(n)
+{n:pos}(l0: sint(n)): nintlt(n)
 //
 (* ****** ****** *)
 //
@@ -89,7 +89,7 @@ list_rand$length(): nint
 fun
 <a:vt>
 list_rand_length
-{n:nat}(ln: int(n)): list_vt(a,n)
+{n:nat}(ln: sint(n)): list_vt(a,n)
 //
 (* ****** ****** *)
 //
@@ -100,7 +100,7 @@ strn_rand$length(): nint
 //
 fun<>
 strn_rand_length
-{n:nat}(ln: int(n)): strn_vt(n)
+{n:nat}(ln: sint(n)): strn_vt( n )
 //
 (* ****** ****** *)
 
