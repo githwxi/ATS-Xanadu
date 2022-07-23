@@ -85,6 +85,9 @@ ATS_PACKNAME
 #symload lctn with d0pat_get_lctn
 #symload node with d0pat_get_node
 (* ****** ****** *)
+#symload lctn with f0arg_get_lctn
+#symload node with f0arg_get_node
+(* ****** ****** *)
 #symload lctn with d0exp_get_lctn
 #symload node with d0exp_get_node
 (* ****** ****** *)
@@ -156,6 +159,8 @@ FPEMSG_ERRVL 2
 #symload fpemsg with l0d0elst_fpemsg
 (* ****** ****** *)
 #symload fpemsg with d0eclist_fpemsg
+(* ****** ****** *)
+#symload fpemsg with f0unarrw_fpemsg
 (* ****** ****** *)
 #symload fpemsg with d0exp_THEN_fpemsg
 #symload fpemsg with d0exp_ELSE_fpemsg
@@ -691,6 +696,29 @@ l0s0e_RBRACE_cons1
 )
 //
 (* ****** ****** *)
+//
+#extern
+fun
+s0eff_fpemsg:(FILR,s0eff)->void
+//
+#extern
+fun
+s0res_fpemsg:(FILR,s0res)->void
+#extern
+fun
+d0res_fpemsg:(FILR,d0res)->void
+//
+#symload fpemsg with s0res_fpemsg
+#symload fpemsg with d0res_fpemsg
+//
+(* ****** ****** *)
+#extern
+fun
+f0arg_fpemsg:(FILR,f0arg)->void
+#extern
+fun
+f0arglst_fpemsg:(FILR,f0arglst)->void
+(* ****** ****** *)
 
 local
 //
@@ -939,6 +967,30 @@ D0Edtsel
   fpemsg(out, lab1); fpemsg(out, opt2))
 //
 |
+D0Elam0
+(tknd,fags,sres
+,arrw,body,tend) =>
+let
+val () = f0arglst_fpemsg(out, fags)
+in//let
+( fpemsg(out, sres);
+  fpemsg(out, arrw); fpemsg(out, body))
+endlet // end of [D0Elam0(_,_,_,_,_,_)]
+//
+|
+D0Efix0
+(tknd
+,dpid,fags,arrw
+,sres,body,tend) =>
+let
+val () = i0dnt_fpemsg(out, dpid)
+val () = f0arglst_fpemsg(out, fags)
+in//let
+( fpemsg(out, sres);
+  fpemsg(out, arrw); fpemsg(out, body))
+endlet // end of [D0Efix0(_,_,_,_,_,_,_)]
+//
+|
 D0Eanno(d0e1, s0e2) =>
 (
   fpemsg(out, d0e1); fpemsg(out, s0e2))
@@ -994,26 +1046,6 @@ D0LAB
 //
 (* ****** ****** *)
 //
-#extern
-fun
-s0eff_fpemsg:(FILR,s0eff)->void
-//
-fun
-f0arg_fpemsg:(FILR,f0arg)->void
-#extern
-//
-#extern
-fun
-s0res_fpemsg:(FILR,s0res)->void
-#extern
-fun
-d0res_fpemsg:(FILR,d0res)->void
-//
-(* ****** ****** *)
-fun
-f0arglst_fpemsg:(FILR,f0arglst)->void
-(* ****** ****** *)
-//
 #implfun
 s0eff_fpemsg
   (out, seff) =
@@ -1029,8 +1061,8 @@ val () =
 s0explst_fpemsg(out, s0es)
 val () =
 token_GT0_fpemsg(out, tend)
-end (*let*) // end of [S0EFFsome(_,_,_)]
-)
+endlet // end of [S0EFFsome(_,_,_)]
+) (*case+*)//end-of(s0eff_fpemsg(out,seff))
 //
 (* ****** ****** *)
 //
@@ -2035,6 +2067,26 @@ WTHS0EXPsome
 (twth, s0e1) => s0exp_fpemsg(out, s0e1)
 )
 //
+(* ****** ****** *)
+#implfun
+f0unarrw_fpemsg
+  (out, arrw) =
+(
+case+ arrw of
+|
+F0UNARRWnone
+(   tok   ) => ()
+|
+F0UNARRWdflt
+(   tok   ) => ()
+|
+F0UNARRWlist
+(tbeg,s0es,tend) =>
+let
+val () = s0explst_fpemsg(out, s0es)
+val () = token_GT0_fpemsg(out, tend)
+endlet // end of [F0UNARRWlist(_,_,_)]
+)
 (* ****** ****** *)
 //
 #implfun
