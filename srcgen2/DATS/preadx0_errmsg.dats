@@ -185,6 +185,10 @@ token_ENDLET_fpemsg:(FILR,token)->void
 #extern
 fun
 token_ENDWHR_fpemsg:(FILR,token)->void
+#extern
+fun
+tkend_WHERE_fpemsg
+(out:FILR,topt:tokenopt,tend:tkend_WHERE):void
 (* ****** ****** *)
 //
 #implfun
@@ -904,33 +908,9 @@ d0eclseq_WHERE
 (tbeg,topt,d0cs,tend) =>
 let
 //
-val () =
-(
-case+ tend of
-(
-tkend_WHERE_cons1
-(     tok1     ) =>
-(
-case+
-tok1.node() of
-|
-T_WHERE() =>
-(
-case+ topt of
-| optn_nil() => ((*void*))
-| optn_cons _ =>
-  token_RPAREN_fpemsg(out, tok1))
-|
-T_RBRACE() =>
-(
-case+ topt of
-| optn_cons _ => ((*void*))
-| optn_nil( ) =>
-  token_ENDWHR_fpemsg(out, tok1)))
-) (*caseof(tend)*) // end-of-val()
-//
 val () = d0exp_fpemsg(out, d0e1)
 val () = d0eclist_fpemsg(out, d0cs)
+val () = tkend_WHERE_fpemsg(out,topt,tend)
 //
 endlet // end-(d0eclseq_WHERE(...))
 )
@@ -1561,6 +1541,30 @@ _(*non-T_END/ENDLET*) =>
 println
 ("PREADX0-ERROR:",tok0.lctn(),":",tok0)
 end (*let*) // end of [token_ENDLET_fpemsg]
+//
+(* ****** ****** *)
+//
+#implfun
+tkend_WHERE_fpemsg
+(
+out, topt, tend) =
+(
+case+ topt of
+|
+optn_nil() =>
+(
+case+ tend of
+tkend_WHERE_cons1
+(     tok1     ) =>
+token_ENDWHR_fpemsg(out, tok1))
+|
+optn_cons _ =>
+(
+case+ tend of
+tkend_WHERE_cons1
+(     tok1     ) =>
+token_RBRACE_fpemsg(out, tok1))
+)(*case+*)//end-of(tkend_WHERE_fpemsg(...))
 //
 (* ****** ****** *)
 //
