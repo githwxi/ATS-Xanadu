@@ -54,6 +54,9 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with l0abl_get_lctn
+#symload node with l0abl_get_node
+(* ****** ****** *)
 #symload lctn with sort0_get_lctn
 #symload node with sort0_get_node
 (* ****** ****** *)
@@ -88,6 +91,21 @@ end (*let*)//end-of-[I0DNTnone]
 (* ****** ****** *)
 //
 #implfun
+preadx0_l0abl
+  (l0ab, err) =
+(
+case+
+l0ab.node() of
+|
+L0ABLsome(lab) => l0ab
+|
+L0ABLnone(tok) => l0ab
+where{ val () = err := err+1 }
+) (*case+*)//end-of-[preadx0_l0abl]
+//
+(* ****** ****** *)
+//
+#implfun
 preadx0_s0qid
   (sqid, err) =
 (
@@ -106,7 +124,7 @@ val
 id0 =
 preadx0_i0dnt(id0, err) in sqid
 end
-) (*case*)//end-of-[preadx0_s0qid]
+) (*case+*)//end-of-[preadx0_s0qid]
 //
 (* ****** ****** *)
 //
