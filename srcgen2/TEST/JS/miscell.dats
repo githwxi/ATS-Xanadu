@@ -131,13 +131,12 @@ fun foo6(x:int) = ${aa=x, bb=x+1}
 fun
 fact(x:int): int =
 (
-  loop(0, r)
-) where
-{
+  loop(0, r))
+where
   fun
   loop(i:int, r:int) =
   if i < x then loop(i+1,(i+1)*r) else r
-} (*where*) // end of [fact(x)]
+endwhr // end of [fact(x)]
 
 (* ****** ****** *)
 
