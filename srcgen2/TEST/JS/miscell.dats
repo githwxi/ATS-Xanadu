@@ -140,4 +140,15 @@ endwhr // end of [fact(x)]
 
 (* ****** ****** *)
 
+fun
+fact(x:int): int =
+let
+fun
+loop(i:int, r:int) =
+if i < x
+then loop(i+1,(i+1)*r) else r in loop(0, r)
+endlet // end of [fact(x)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XANADU_prelude_miscell.dats] *)

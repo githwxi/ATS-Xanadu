@@ -1147,8 +1147,10 @@ val (  ) =
 (
 case+
 tend.node() of
-| T_IN0() => ()
-| _(*non-T_IN0*) => (err := err+1)
+| T_END() => ()
+| T_ENDLET() => ()
+|
+_(*non-T_ENDLET*) => (err := err+1)
 )
 //
 in//let
