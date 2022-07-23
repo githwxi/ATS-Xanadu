@@ -719,6 +719,16 @@ f0arg_fpemsg:(FILR,f0arg)->void
 fun
 f0arglst_fpemsg:(FILR,f0arglst)->void
 (* ****** ****** *)
+#extern
+fun
+t0qua_fpemsg:(FILR,t0qua)->void
+#extern
+fun
+t0inv_fpemsg:(FILR,t0inv)->void
+#extern
+fun
+t0qualst_fpemsg:(FILR,t0qualst)->void
+(* ****** ****** *)
 
 local
 //
@@ -881,47 +891,54 @@ D0Esarg
 (tkb,ses,tke) =>
 (
 s0explst_fpemsg(out, ses);
-token_RBRACE_fpemsg(out, tke)
-)
+token_RBRACE_fpemsg(out, tke))
 //
 |
 D0Etarg
 (tkb,ses,tke) =>
 (
 s0explst_fpemsg(out, ses);
-token_RBRACE_fpemsg(out, tke)
-)
+token_RBRACE_fpemsg(out, tke))
 //
 |
 D0Elpar
 (tkb,des,drp) =>
 (
-fpemsg(out, des); fpemsg(out, drp)
-)
+fpemsg(out, des); fpemsg(out, drp))
 //
 |
 D0Eif0
 (tif0
 ,d0e1,dthn,dels) =>
 (
-fpemsg(out,d0e1);
-fpemsg(out,dthn); fpemsg(out,dels)
-)
+fpemsg(out, d0e1);
+fpemsg(out, dthn); fpemsg(out, dels))
+|
+D0Eif1
+(tif0
+,d0e1
+,dthn,dels,tinv) =>
+(
+t0inv_fpemsg(out,tinv)) where
+{
+val () =
+(
+fpemsg(out, d0e1);
+fpemsg(out, dthn); fpemsg(out, dels))
+}
 //
 |
 D0Etup1
 (tbeg
 ,topt,d0es,tend) =>
 (
-fpemsg(out, d0es); fpemsg(out, tend)
-)
+fpemsg(out, d0es); fpemsg(out, tend))
 |
 D0Ercd2
 (tbeg
 ,topt,ldes,tend) =>
 (
-fpemsg(out, ldes); fpemsg(out, tend)
-)
+fpemsg(out, ldes); fpemsg(out, tend))
 //
 |
 D0Elet0
