@@ -124,6 +124,9 @@ FPEMSG_ERRVL 2
 
 (* ****** ****** *)
 #symload fpemsg with i0dnt_fpemsg
+(* ****** ****** *)
+#symload fpemsg with l0abl_fpemsg
+(* ****** ****** *)
 #symload fpemsg with t0int_fpemsg
 #symload fpemsg with t0chr_fpemsg
 #symload fpemsg with t0flt_fpemsg
@@ -179,6 +182,9 @@ token_RPAREN_fpemsg:(FILR,token)->void
 #extern
 fun
 token_RBRACE_fpemsg:(FILR,token)->void
+#extern
+fun
+token_RBRCKT_fpemsg:(FILR,token)->void
 #extern
 fun
 token_ENDLET_fpemsg:(FILR,token)->void
@@ -874,15 +880,13 @@ fpemsg(out,dthn); fpemsg(out,dels)
 //
 |
 D0Etup1
-(tbeg
-,topt,d0es,tend) =>
+(tbeg,topt,d0es,tend) =>
 (
 fpemsg(out, d0es); fpemsg(out, tend)
 )
 |
 D0Ercd2
-(tbeg
-,topt,ldes,tend) =>
+(tbeg,topt,ldes,tend) =>
 (
 fpemsg(out, ldes); fpemsg(out, tend)
 )
@@ -915,6 +919,18 @@ val () = tkend_WHERE_fpemsg(out,topt,tend)
 endlet // end-(d0eclseq_WHERE(...))
 )
 endlet // end of [  D0Ewhere(_, _)  ]
+//
+|
+D0Ebrckt(tbeg,d0es,tend) =>
+let
+val () = d0explst_fpemsg(out, d0es)
+val () = token_RBRCKT_fpemsg(out, tend)
+endlet // end of [  D0Ebrckt(_,_,_)  ]
+//
+|
+D0Edtsel(tdot,lab1,opt2) =>
+(
+  fpemsg(out, lab1); fpemsg(out, opt2))
 //
 |
 D0Etkerr _ => ( (*void*) )
@@ -1505,6 +1521,22 @@ _(*non-T_RBRACE*) =>
 println
 ("PREADX0-ERROR:",tok0.lctn(),":",tok0)
 end (*let*) // end of [token_RBRACE_fpemsg]
+//
+#implfun
+token_RBRCKT_fpemsg
+  (out, tok0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ tok0.node() of
+|
+T_RBRCKT() => ((*void*))
+|
+_(*non-T_RBRCKT*) =>
+println
+("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+end (*let*) // end of [token_RBRCKT_fpemsg]
 //
 #implfun
 token_ENDWHR_fpemsg

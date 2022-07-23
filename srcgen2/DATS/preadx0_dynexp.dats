@@ -696,6 +696,21 @@ d0exp_errck
 end (*let*) // end of [d0exp_where_errck]
 //
 (* ****** ****** *)
+//
+fun
+d0exp_anno_errck
+( loc
+: loc_t
+, d0e1: d0exp
+, s0e2: s0exp): d0exp =
+let
+  val lvl = d0exp_errvl(d0e1)
+in//let
+d0exp_errck
+(lvl+1, d0exp(loc,D0Eanno(d0e1,s0e2)))
+end (*let*) // end of [d0exp_anno_errck]
+//
+(* ****** ****** *)
 (*
 HX-2022-07:
 implement [preadx0_d0pat]
@@ -953,6 +968,9 @@ D0Elet0 _ => f0_let0(d0e, err)
 D0Ewhere _ => f0_where(d0e, err)
 //
 |
+D0Eanno _ => f0_anno(d0e, err)
+//
+|
 D0Etkerr _ =>
 (err := err+1; d0exp_errck(1, d0e))
 //
@@ -1186,6 +1204,30 @@ if
 then (d0e) else
 d0exp_where_errck(d0e.lctn(),d0e1,dcls)
 end (*let*) // end of [f0_where(d0e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_anno
+( d0e: d0exp
+, err: &sint >> _): d0exp =
+let
+//
+val e00 = err
+//
+val-
+D0Eanno
+( d0e1, s0e2) = d0e.node()
+//
+val d0e1 = preadx0_d0exp(d0e1, err)
+val s0e2 = preadx0_s0exp(s0e2, err)
+//
+in//let
+if
+(err=e00)
+then (d0e) else
+d0exp_anno_errck(d0e.lctn(),d0e1,s0e2)
+end (*let*) // end of [f0_anno(d0e,err)]
 //
 (* ****** ****** *)
 

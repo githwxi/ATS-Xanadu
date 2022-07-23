@@ -43,6 +43,7 @@ ATS_PACKNAME // namespace
 (* ****** ****** *)
 #staload
 LEX = "./lexing0.sats"
+(* ****** ****** *)
 #staload
 S0E = "./staexp0.sats"
 #staload
@@ -51,6 +52,9 @@ D0E = "./dynexp0.sats"
 #typedef token = $LEX.token
 (* ****** ****** *)
 #typedef i0dnt = $S0E.i0dnt
+(* ****** ****** *)
+#typedef l0abl = $S0E.l0abl
+(* ****** ****** *)
 #typedef s0qid = $S0E.s0qid
 (* ****** ****** *)
 #typedef t0int = $S0E.t0int
@@ -316,6 +320,8 @@ preadx0_d0eclseq_WHERE: fpreadx0(d0eclseq_WHERE)
 //
 (* ****** ****** *)
 fun i0dnt_fpemsg(FILR, i0dnt): void
+(* ****** ****** *)
+fun l0abl_fpemsg(FILR, l0abl): void
 (* ****** ****** *)
 fun t0int_fpemsg(FILR, t0int): void
 fun t0chr_fpemsg(FILR, t0chr): void
