@@ -79,6 +79,7 @@ s0exp_RPAREN = $S0E.s0exp_RPAREN
 #typedef
 l0s0e_RBRACE = $S0E.l0s0e_RBRACE
 (* ****** ****** *)
+#typedef i0dntopt = $S0E.i0dntopt
 #typedef i0dntlst = $S0E.i0dntlst
 (* ****** ****** *)
 #typedef s0expopt = $S0E.s0expopt
@@ -204,6 +205,8 @@ preadx0_synentlst_fun
 , fpr: fpreadx0(syn)): list(syn)
 //
 (* ****** ****** *)
+fun
+preadx0_i0dntopt: fpreadx0(i0dntopt)
 fun
 preadx0_i0dntlst: fpreadx0(i0dntlst)
 (* ****** ****** *)
