@@ -114,6 +114,9 @@ generated from some comparable ATS2 code.
 // HX: More runs:
 //
 |thePrimes2| = 1077871
+19.36user 0.19system 0:19.01elapsed 102%CPU (0avgtext+0avgdata 139276maxresident)k
+0inputs+0outputs (0major+29129minor)pagefaults 0swaps
+|thePrimes2| = 1077871
 21.64user 0.10system 0:21.30elapsed 102%CPU (0avgtext+0avgdata 139628maxresident)k
 0inputs+0outputs (0major+29154minor)pagefaults 0swaps
 |thePrimes2| = 1077871

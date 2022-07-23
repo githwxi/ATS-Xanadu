@@ -120,10 +120,25 @@ fun foo1(x:) = $extnam()
 (* ****** ****** *)
 fun foo2(x:int) = if x > 0 else (y)
 (* ****** ****** *)
-fun foo3(x:int) = if x > 0 then (x+1 else y)
+fun
+foo3(x:int) = if x > 0 then (x+1 else y)
 (* ****** ****** *)
 fun foo4(x:int) = @(x, x+1)
-fun foo5(x:int) = @{a=x, b=x+1
+fun foo5(x:int) = @{a=x, b=x+1}
+fun foo6(x:int) = ${aa=x, bb=x+1}
+(* ****** ****** *)
+
+fun
+fact(x:int): int =
+(
+  loop(0, r)
+) where
+{
+  fun
+  loop(i:int, r:int) =
+  if i < x then loop(i+1,(i+1)*r) else r
+} (*where*) // end of [fact(x)]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_miscell.dats] *)

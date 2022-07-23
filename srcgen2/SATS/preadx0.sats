@@ -120,6 +120,9 @@ d0exp_RPAREN = $D0E.d0exp_RPAREN
 #typedef
 l0d0e_RBRACE = $D0E.l0d0e_RBRACE
 //
+#typedef
+d0eclseq_WHERE = $D0E.d0eclseq_WHERE
+//
 (* ****** ****** *)
 #typedef d0patopt = $D0E.d0patopt
 #typedef d0expopt = $D0E.d0expopt
@@ -304,6 +307,9 @@ preadx0_d0exp_RPAREN: fpreadx0(d0exp_RPAREN)
 fun
 preadx0_l0d0e_RBRACE: fpreadx0(l0d0e_RBRACE)
 //
+(* ****** ****** *)
+fun
+preadx0_d0eclseq_WHERE: fpreadx0(d0eclseq_WHERE)
 (* ****** ****** *)
 //
 //HX-2022-06-18: printing errmsgs

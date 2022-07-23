@@ -2134,6 +2134,7 @@ case+ node of
 |
 tkend_WHERE_cons1
   (  terr  ) => terr.lctn()
+(*
 |
 tkend_WHERE_cons2
   (tok1,topt) =>
@@ -2141,6 +2142,7 @@ tkend_WHERE_cons2
 case+ topt of
 | optn_nil( ) => tok1.lctn()
 | optn_cons(tok2) => tok1.lctn()+tok2.lctn())
+*)
 ) (*case*) // end of [tkend_WHERE_lctn(node)]
 (* ****** ****** *)
 
@@ -2786,6 +2788,8 @@ prerrln
 in
 case+
 tok.node() of
+//
+(*
 |
 T_RBRACE() =>
 let
@@ -2805,7 +2809,14 @@ end
 |
 _(*non-END*) => tkend_WHERE_cons1(tok1)
 end (*let*) // end of [ T_RBRACE() ]
+*)
 //
+|
+T_RBRACE() =>
+let
+  val (  ) =
+  buf.skip1() in tkend_WHERE_cons1(tok)
+end
 |
 T_ENDWHR() =>
 let
@@ -2814,7 +2825,7 @@ let
 end
 //
 |
-_ (* non-END *) =>
+_(*non-RBRACE/ENDWHR*) =>
 let
 val () =
 (err := e00 + 1) in tkend_WHERE_cons1(tok)

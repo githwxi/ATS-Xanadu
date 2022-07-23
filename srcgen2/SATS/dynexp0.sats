@@ -536,8 +536,10 @@ and
 tkend_WHERE =
 |
 tkend_WHERE_cons1 of token
+(*
 |
 tkend_WHERE_cons2 of (token, tokenopt)
+*)
 //
 and
 d0eclseq_WHERE =

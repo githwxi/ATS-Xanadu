@@ -1067,11 +1067,13 @@ let
 in//let
 case+ tend of
 |
-tkend_WHERE_cons1(terr) =>
-print("tkend_WHERE_cons1(",terr,")")
+tkend_WHERE_cons1(tok1) =>
+print("tkend_WHERE_cons1(",tok1,")")
+(*
 |
-tkend_WHERE_cons2(tok1,tok2) =>
-print("tkend_WHERE_cons2(",tok1,";",tok2,")")
+tkend_WHERE_cons2(tok1,topt) =>
+print("tkend_WHERE_cons2(",tok1,";",topt,")")
+*)
 end (*let*) // end of [ tkend_WHERE_fprint(out,wdc1) ]
 //
 (* ****** ****** *)
