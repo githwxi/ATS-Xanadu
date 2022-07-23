@@ -721,6 +721,13 @@ f0arglst_fpemsg:(FILR,f0arglst)->void
 (* ****** ****** *)
 #extern
 fun
+d0cls_fpemsg:(FILR,d0cls)->void
+#extern
+fun
+d0clslst_fpemsg:(FILR,d0clslst)->void
+(* ****** ****** *)
+#extern
+fun
 t0qua_fpemsg:(FILR,t0qua)->void
 #extern
 fun
