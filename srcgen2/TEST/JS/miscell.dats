@@ -152,15 +152,15 @@ loop(i+1,(i+1)*r) else r in loop(0, r)
 endlet // end of [fact(x)]
 
 (* ****** ****** *)
-
+//
 fun fact =
 lam(x:int): int =>
 if x > 0 then x * fact(x-1) else 1 endif
-
+//
 fun fact =
 fix fact(x:int): int =>
 if x > 0 then x * fact(x-1) else 1 endif
-
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_miscell.dats] *)

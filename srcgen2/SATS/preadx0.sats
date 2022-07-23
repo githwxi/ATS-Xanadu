@@ -104,6 +104,9 @@ l0s0e_RBRACE = $S0E.l0s0e_RBRACE
 #typedef s0res = $D0E.s0res
 #typedef d0res = $D0E.d0res
 (* ****** ****** *)
+#typedef t0qua = $D0E.t0qua
+#typedef t0inv = $D0E.t0inv
+(* ****** ****** *)
 #typedef d0ecl = $D0E.d0ecl
 (* ****** ****** *)
 #typedef a0tdf = $D0E.a0tdf
