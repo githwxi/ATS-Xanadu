@@ -944,6 +944,9 @@ D0Eanno(d0e1, s0e2) =>
   fpemsg(out, d0e1); fpemsg(out, s0e2))
 //
 |
+D0Equal(tok1, d0e2) => fpemsg(out, d0e2)
+//
+|
 D0Etkerr _ => ( (*void*) )
 |
 D0Eerrck(lvl0,d0e1) => d0exp_fpemsg(out, d0e)
