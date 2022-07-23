@@ -1152,6 +1152,54 @@ end (*let*) // end of [D0RESsome(teq1,d0e2)]
 //
 (* ****** ****** *)
 //
+#implfun
+t0qua_fpemsg
+(out, t0q0) =
+(
+case+ t0q0 of
+|
+T0QUAnone(tok) => ()
+|
+T0QUAsome
+(tbeg,s0qs,tend) =>
+let
+val () =
+s0qualst_fpemsg(out, s0qs)
+val () =
+token_RBRACE_fpemsg(out, tend)
+endlet // end of [T0QUAsome(_,_,_)]
+) (*case+*)//end(t0qua_fpemsg(out,t0q0))
+//
+(* ****** ****** *)
+//
+#implfun
+t0inv_fpemsg
+(out, tinv) =
+(
+case+ tinv of
+|
+T0INVnone
+(t0qs, tok1) =>
+let
+val () =
+t0qualst_fpemsg(out, t0qs)
+endlet // end-of(T0INVnone(_,_))
+|
+T0INVsome
+(t0qs
+,tbeg,d0ps,tend) =>
+let
+val () =
+t0qualst_fpemsg(out, t0qs)
+val () =
+d0patlst_fpemsg(out, d0ps)
+val () =
+token_RPAREN_fpemsg(out, tend)
+endlet // end-of(T0INVsome(_,_,_,_))
+) (*case+*)//end(t0inv_fpemsg(out,tinv))
+//
+(* ****** ****** *)
+//
 #extern
 fun
 s0tcn_fpemsg:(FILR,s0tcn)->void
@@ -1465,6 +1513,17 @@ list_foreach<f0arg>(f0as) where
 {
 #impltmp
 foreach$work<f0arg>(f0a1) = f0arg_fpemsg(out,f0a1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+t0qualst_fpemsg
+(out, t0qs) =
+list_foreach<t0qua>(t0qs) where
+{
+#impltmp
+foreach$work<t0qua>(t0q1) = t0qua_fpemsg(out,t0q1)
 }
 //
 (* ****** ****** *)

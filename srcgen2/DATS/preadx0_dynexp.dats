@@ -599,6 +599,32 @@ end (*let*) // end of [d0exp_if0_errck]
 (* ****** ****** *)
 //
 fun
+d0exp_if1_errck
+( loc: loc_t
+, tif0: token
+, d0e1: d0exp
+, dthn
+: d0exp_THEN
+, dels
+: d0exp_ELSE
+, tinv: t0inv): d0exp =
+let
+val lvl =
+(
+gmax
+(errvl(d0e1)
+,errvl(dthn),errvl(dels)))
+in//let
+d0exp_errck
+( lvl+1
+, d0exp
+  (loc
+  ,D0Eif1(tif0,d0e1,dthn,dels,tinv)) )
+end (*let*) // end of [d0exp_if1_errck]
+//
+(* ****** ****** *)
+//
+fun
 d0exp_tup1_errck
 ( loc
 : loc_t
@@ -778,6 +804,12 @@ implement [preadx0_d0pat]
 implement [preadx0_d0exp]
 *)
 (* ****** ****** *)
+#extern
+fun
+preadx0_t0qua: fpreadx0(t0qua)
+#extern
+fun
+preadx0_t0qualst: fpreadx0(t0qualst)
 #extern
 fun
 preadx0_f0unarrw: fpreadx0(f0unarrw)
@@ -1016,11 +1048,10 @@ D0Elpar _ => f0_lpar(d0e, err)
 |
 D0Eif0
 (_,_,_,_) => f0_if0( d0e, err )
-(*
 |
 D0Eif1
-(_,_,_,_,_) => f0_if1( d0e, err )
-*)
+(_
+,_,_,_,_) => f0_if1( d0e, err )
 //
 |
 D0Etup1 _ => f0_tup1(d0e, err)
@@ -1152,9 +1183,47 @@ in
 if
 (err=e00)
 then d0e else
-d0exp_if0_errck(loc,tif0,d0e1,dthn,dels)
+d0exp_if0_errck
+(d0e.lctn(), tif0, d0e1, dthn, dels)
 end (*let*) // end of [f0_if0(d0e, err)]
-
+//
+(* ****** ****** *)
+//
+fun
+f0_if1
+( d0e
+: d0exp
+, err
+: &sint >> _): d0exp =
+let
+//
+val e00 = err
+//
+val-
+D0Eif1
+( tif0
+, d0e1, dthn
+, dels, tinv) = d0e.node()
+//
+val
+d0e1 = preadx0_d0exp(d0e1, err)
+//
+val
+dthn = preadx0_d0exp_THEN(dthn, err)
+val
+dels = preadx0_d0exp_ELSE(dels, err)
+//
+val
+tinv = preadx0_t0inv(tinv, err)
+//
+in
+if
+(err=e00)
+then d0e else
+d0exp_if1_errck
+(d0e.lctn(),tif0,d0e1,dthn,dels,tinv)
+end (*let*) // end of [f0_if1(d0e, err)]
+//
 (* ****** ****** *)
 //
 fun
@@ -1546,7 +1615,7 @@ if
 (err=e00)
 then (sres) else S0RESsome(seff, s0e1)
 endlet // end of [S0RESsome(seff,s0e1)]
-) (*case+*)//end-of[ preadx0_s0res(sres,err) ]
+) (*case+*)//end-of[preadx0_s0res(sres,err)]
 //
 (* ****** ****** *)
 //
@@ -1576,8 +1645,93 @@ if
 (err=e00)
 then (dres) else D0RESsome(teq1, d0e2)
 endlet // end of [D0RESsome(teq1,d0e2)]
-) (*case+*)//end-of[ preadx0_d0res(dres,err) ]
+) (*case+*)//end-of[preadx0_d0res(dres,err)]
 //
+(* ****** ****** *)
+
+#implfun
+preadx0_t0qua
+  (t0q0, err) =
+(
+case+ t0q0 of
+|
+T0QUAnone
+(  tok  ) => t0q0
+|
+T0QUAsome
+(tbeg,s0qs,tend) =>
+let
+//
+val e00 = err
+//
+val s0qs =
+preadx0_s0qualst(s0qs, err)
+val (  ) =
+(
+case+
+tend.node() of
+|
+T_RBRACE() => ((*void*))
+|
+_(*T_RBRACE*) => (err := err+1)
+)
+in//let
+if
+(err=e00)
+then (t0q0)
+else T0QUAsome(tbeg, s0qs, tend)
+endlet // end of [T0QUAsome(_,_,_)]
+) (*case+*)//end-of[preadx0_t0qua(dres,err)]
+
+(* ****** ****** *)
+
+#implfun
+preadx0_t0inv
+  (tinv, err) =
+(
+case+ tinv of
+|
+T0INVnone
+(t0qs, tok1) =>
+let
+//
+val e00 = err
+//
+val t0qs =
+preadx0_t0qualst(t0qs, err)
+in//let
+if
+(err=e00)
+then tinv else T0INVnone(t0qs,tok1)
+endlet // end of [ T0INVnone(_,_) ]
+|
+T0INVsome
+(t0qs,tbeg,d0ps,tend) =>
+let
+//
+val e00 = err
+//
+val t0qs =
+preadx0_t0qualst(t0qs, err)
+val d0ps =
+preadx0_d0patlst(d0ps, err)
+val (  ) =
+(
+case+
+tend.node() of
+|
+T_RPAREN() => ((*void*))
+|
+_(*non-T_RPAREN*) => (err := err+1)
+)
+in//let
+if
+(err=e00)
+then tinv
+else T0INVsome(t0qs,tbeg,d0ps,tend)
+endlet // end of [T0INVsome(_,_,_,_)]
+) (*case+*)//end-of[preadx0_t0inv(dres,err)]
+
 (* ****** ****** *)
 #implfun
 preadx0_d0patopt
@@ -1610,6 +1764,11 @@ preadx0_synentlst_fun(lst,err,preadx0_l0d0e)
 preadx0_f0arglst
   (  lst, err  ) =
 preadx0_synentlst_fun(lst,err,preadx0_f0arg)
+(* ****** ****** *)
+#implfun
+preadx0_t0qualst
+  (  lst, err  ) =
+preadx0_synentlst_fun(lst,err,preadx0_t0qua)
 (* ****** ****** *)
 //
 #implfun
