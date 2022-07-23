@@ -143,6 +143,8 @@ d0eclseq_WHERE = $D0E.d0eclseq_WHERE
 (* ****** ****** *)
 #typedef f0arglst = $D0E.f0arglst
 (* ****** ****** *)
+#typedef t0qualst = $D0E.t0qualst
+(* ****** ****** *)
 #typedef d0eclist = $D0E.d0eclist
 (* ****** ****** *)
 #typedef d0eclistopt = optn(d0eclist)
@@ -257,6 +259,8 @@ fun preadx0_l0d0e: fpreadx0(l0d0e)
 fun preadx0_f0arg: fpreadx0(f0arg)
 fun preadx0_s0res: fpreadx0(s0res)
 fun preadx0_d0res: fpreadx0(d0res)
+(* ****** ****** *)
+fun preadx0_t0inv: fpreadx0(t0inv)
 (* ****** ****** *)
 fun preadx0_d0ecl: fpreadx0(d0ecl)
 (* ****** ****** *)
