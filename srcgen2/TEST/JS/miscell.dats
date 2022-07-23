@@ -102,9 +102,10 @@ foo1 foo2 foo3 of 1000
 #stacst0 abc : int -> int
 
 (* ****** ****** *)
-
-#sortdef nat = {a:int | a >= 0; a <= 5}
-
+//
+#sortdef nat =
+{ a:int | a >= 0; a <= 5 }
+//
 (* ****** ****** *)
 
 datatype
