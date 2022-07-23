@@ -154,6 +154,7 @@ fpreadx0
 *)
 (* ****** ****** *)
 fun preadx0_i0dnt: fpreadx0(i0dnt)
+fun preadx0_l0abl: fpreadx0(l0abl)
 fun preadx0_s0qid: fpreadx0(s0qid)
 (* ****** ****** *)
 fun preadx0_sort0: fpreadx0(sort0)

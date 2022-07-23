@@ -865,14 +865,16 @@ token_RBRACE_fpemsg(out, tke)
 )
 //
 |
-D0Elpar(tkb,des,drp) =>
+D0Elpar
+(tkb,des,drp) =>
 (
 fpemsg(out, des); fpemsg(out, drp)
 )
 //
 |
 D0Eif0
-(tif0,d0e1,dthn,dels) =>
+(tif0
+,d0e1,dthn,dels) =>
 (
 fpemsg(out,d0e1);
 fpemsg(out,dthn); fpemsg(out,dels)
@@ -880,21 +882,23 @@ fpemsg(out,dthn); fpemsg(out,dels)
 //
 |
 D0Etup1
-(tbeg,topt,d0es,tend) =>
+(tbeg
+,topt,d0es,tend) =>
 (
 fpemsg(out, d0es); fpemsg(out, tend)
 )
 |
 D0Ercd2
-(tbeg,topt,ldes,tend) =>
+(tbeg
+,topt,ldes,tend) =>
 (
 fpemsg(out, ldes); fpemsg(out, tend)
 )
 //
 |
 D0Elet0
-(tknd
-,dcls,topt,d0es,tend) =>
+(tknd,dcls
+,topt,d0es,tend) =>
 let
 val () = d0eclist_fpemsg(out, dcls)
 val () = d0explst_fpemsg(out, d0es)
@@ -921,16 +925,23 @@ endlet // end-(d0eclseq_WHERE(...))
 endlet // end of [  D0Ewhere(_, _)  ]
 //
 |
-D0Ebrckt(tbeg,d0es,tend) =>
+D0Ebrckt
+(tbeg,d0es,tend) =>
 let
 val () = d0explst_fpemsg(out, d0es)
 val () = token_RBRCKT_fpemsg(out, tend)
 endlet // end of [  D0Ebrckt(_,_,_)  ]
 //
 |
-D0Edtsel(tdot,lab1,opt2) =>
+D0Edtsel
+(tdot,lab1,opt2) =>
 (
   fpemsg(out, lab1); fpemsg(out, opt2))
+//
+|
+D0Eanno(d0e1, s0e2) =>
+(
+  fpemsg(out, d0e1); fpemsg(out, s0e2))
 //
 |
 D0Etkerr _ => ( (*void*) )
