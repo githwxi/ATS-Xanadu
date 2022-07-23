@@ -185,6 +185,9 @@ fun
 token_GT0_fpemsg:(FILR,token)->void
 #extern
 fun
+token_EQGT_fpemsg:(FILR,token)->void
+#extern
+fun
 token_WHEN_fpemsg:(FILR,token)->void
 //
 #extern
@@ -1132,6 +1135,29 @@ endlet // end of [ D0GPTgua(_,_,_) ]
 (* ****** ****** *)
 //
 #implfun
+d0cls_fpemsg
+(out, dcls) =
+(
+case+
+dcls.node() of
+|
+D0CLSgpt(dgpt) =>
+d0gpt_fpemsg(out, dgpt)
+|
+D0CLScls
+(dgpt,tkeg,d0e2) =>
+let
+val () =
+d0gpt_fpemsg(out, dgpt)
+val () =
+token_EQGT_fpemsg(out, tkeg)
+val () = d0exp_fpemsg(out, d0e2)
+endlet // end of [ D0CLScls(_,_,_) ]
+) (*case*) // end-of(d0cls_fpemsg(out,dcls))
+//
+(* ****** ****** *)
+//
+#implfun
 s0eff_fpemsg
   (out, seff) =
 (
@@ -1599,6 +1625,28 @@ foreach$work<t0qua>(t0q1) = t0qua_fpemsg(out,t0q1)
 (* ****** ****** *)
 //
 #implfun
+d0gualst_fpemsg
+(out, d0gs) =
+list_foreach<d0gua>(d0gs) where
+{
+#impltmp
+foreach$work<d0gua>(dgua) = d0gua_fpemsg(out,dgua)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d0clslst_fpemsg
+(out, d0cs) =
+list_foreach<d0cls>(d0cs) where
+{
+#impltmp
+foreach$work<d0cls>(dcls) = d0cls_fpemsg(out,dcls)
+}
+//
+(* ****** ****** *)
+//
+#implfun
 d0eclist_fpemsg
 (out, dcls) =
 list_foreach<d0ecl>(dcls) where
@@ -1682,6 +1730,24 @@ println
 ("PREADX0-ERROR:",tok0.lctn(),":",tok0)
 //
 end (*let*) // end of [t0ken_GT0_fpemsg]
+//
+#implfun
+token_EQGT_fpemsg
+  (out, tok0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ tok0.node() of
+|
+T_EQGT() => ((*void*))
+|
+_(*non-T_EQGT*) =>
+println
+("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+//
+end (*let*) // end of [t0ken_EQGT_fpemsg]
 //
 (* ****** ****** *)
 //
