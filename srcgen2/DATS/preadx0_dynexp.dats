@@ -489,6 +489,42 @@ l0d0e_RBRACE_cons1
 (* ****** ****** *)
 //
 fun
+d0ecl_errvl_a1
+(dcl: d0ecl): sint =
+(
+case+ dcl.node() of
+|
+D0Cerrck
+(lvl, _) => lvl | _ => 0
+)
+#symload
+d0ecl_errvl with d0ecl_errvl_a1
+#symload errvl with d0ecl_errvl_a1
+//
+(* ****** ****** *)
+#extern
+fun
+d0ecl_errvl_dcls
+(dcls: d0eclist): sint
+#symload
+d0ecl_errvl with d0ecl_errvl_dcls
+#symload errvl with d0ecl_errvl_dcls
+//
+#implfun
+d0ecl_errvl_dcls(dcls) =
+(
+case+ dcls of
+|
+list_nil
+((*nil*)) => 0
+|
+list_cons
+(dcl1,dcls) =>
+gmax(errvl(dcl1), errvl(dcls)))
+//
+(* ****** ****** *)
+//
+fun
 d0exp_opid_errck
 ( loc
 : loc_t
@@ -594,19 +630,70 @@ d0exp_rcd2_errck
 : token
 , topt
 : tokenopt
-, ldps
+, ldes
 : l0d0elst
 , tend
 : l0d0e_RBRACE): d0exp =
 let
   val lvl =
-  gmax(errvl(ldps),errvl(tend))
+  gmax(errvl(ldes),errvl(tend))
 in//let
 d0exp_errck
 (lvl+1,
  d0exp_make_node
- (loc,D0Ercd2(tbeg, topt, ldps, tend)))
+ (loc,D0Ercd2(tbeg, topt, ldes, tend)))
 end (*let*) // end of [d0exp_rcd2_errck]
+//
+(* ****** ****** *)
+//
+fun
+d0exp_let0_errck
+( loc
+: loc_t
+, tknd
+: token
+, dcls
+: d0eclist
+, topt
+: tokenopt
+, d0es
+: d0explst
+, tend: token): d0exp =
+let
+  val lvl =
+  gmax(errvl(dcls),errvl(d0es))
+in//let
+d0exp_errck
+(lvl+1,
+ d0exp_make_node
+ (loc
+ ,D0Elet0(tknd,dcls,topt,d0es,tend)))
+end (*let*) // end of [d0exp_let0_errck]
+//
+(* ****** ****** *)
+//
+fun
+d0exp_where_errck
+( loc
+: loc_t
+, d0e1
+: d0exp
+, dcls
+: d0eclseq_WHERE): d0exp =
+let
+//
+val lvl =
+(
+case+ dcls of
+|
+d0eclseq_WHERE
+(tbeg,topt,d0cs,tend) =>
+gmax(errvl(d0e1),errvl(d0cs)))
+//
+in//let
+d0exp_errck
+(lvl+1,d0exp(loc, D0Ewhere(d0e1, dcls)))
+end (*let*) // end of [d0exp_where_errck]
 //
 (* ****** ****** *)
 (*
@@ -861,6 +948,11 @@ D0Etup1 _ => f0_tup1(d0e, err)
 D0Ercd2 _ => f0_rcd2(d0e, err)
 //
 |
+D0Elet0 _ => f0_let0(d0e, err)
+|
+D0Ewhere _ => f0_where(d0e, err)
+//
+|
 D0Etkerr _ =>
 (err := err+1; d0exp_errck(1, d0e))
 //
@@ -1029,6 +1121,69 @@ then (d0e) else
 d0exp_rcd2_errck
 (d0e.lctn(), tbeg, topt, ldes, tend)
 end (*let*) // end of [f0_rcd2(d0e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_let0
+( d0e: d0exp
+, err: &sint >> _): d0exp =
+let
+//
+val e00 = err
+//
+val-
+D0Elet0
+( tknd
+, dcls, topt
+, d0es, tend) = d0e.node()
+//
+val dcls =
+preadx0_d0eclist(dcls, err)
+val d0es =
+preadx0_d0explst(d0es, err)
+//
+val (  ) =
+(
+case+
+tend.node() of
+| T_IN0() => ()
+| _(*non-T_IN0*) => (err := err+1)
+)
+//
+in//let
+if
+(err=e00)
+then (d0e) else
+d0exp_let0_errck
+(d0e.lctn(),tknd,dcls,topt,d0es,tend)
+end (*let*) // end of [f0_let0(d0e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_where
+( d0e: d0exp
+, err: &sint >> _): d0exp =
+let
+//
+val e00 = err
+//
+val-
+D0Ewhere
+( d0e1, dcls) = d0e.node()
+//
+val d0e1 =
+preadx0_d0exp(d0e1, err)
+val dcls =
+preadx0_d0eclseq_WHERE(dcls, err)
+//
+in//let
+if
+(err=e00)
+then (d0e) else
+d0exp_where_errck(d0e.lctn(),d0e1,dcls)
+end (*let*) // end of [f0_where(d0e,err)]
 //
 (* ****** ****** *)
 
@@ -1481,6 +1636,53 @@ _(*non-T_RBRACE*) =>
 endlet // end of [l0d0e_RBRACE_cons1]
 ) (*case*)//end-of-[preadx0_l0d0e_RBRACE(ldrb,err)]
 
+(* ****** ****** *)
+//
+#implfun
+preadx0_d0eclseq_WHERE
+  (dcls, err) =
+(
+case+ dcls of
+|
+d0eclseq_WHERE
+(tbeg, topt, d0cs, tend) =>
+let
+//
+val e00 = err
+//
+val d0cs =
+preadx0_d0eclist(d0cs, err)
+//
+val (  ) =
+(
+case+ tend of
+|
+tkend_WHERE_cons1
+(     tok1     ) =>
+(
+case+
+tok1.node() of
+|
+T_ENDWHR() =>
+( case+ topt of
+| optn_nil() => ()
+| optn_cons _ => (err := err+1))
+|
+T_RBRACE() =>
+(case+ topt of
+| optn_nil() =>
+  (err := err+1) | optn_cons _ => ())
+)
+) (*case+*) // end of [val()]
+//
+in
+if
+(err=e00)
+then dcls else
+d0eclseq_WHERE(tbeg, topt, d0cs, tend)
+endlet // end of [d0eclseq_WHERE(_,_,_,_)]
+) (*case+*)//end(preadx0_d0eclseq_WHERE(dcls,err))
+//  
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_preadx0_dynexp.dats] *)
