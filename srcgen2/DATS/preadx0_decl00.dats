@@ -158,7 +158,7 @@ lvl+1,d0ecl(loc0,D0Cnonfix(tknd,oprs)))
 end (*let*)//end-of-[d0ecl_nonfix_errck]
 
 (* ****** ****** *)
-
+//
 fun
 d0ecl_fixity_errck
 ( loc0: loc_t
@@ -174,9 +174,9 @@ d0ecl_errck
 , d0ecl_make_node
   (loc0, D0Cfixity(tknd, oprs, prec)) )
 end (*let*)//end-of-[d0ecl_fixity_errck]
-
+//
 (* ****** ****** *)
-
+//
 fun
 d0ecl_local_errck
 ( loc0
@@ -201,9 +201,9 @@ d0ecl_make_node
 ( loc0
 , D0Clocal(tknd,dcs1,topt,dcs2,tend)))
 end (*let*) // end of [d0ecl_local_errck]
-
+//
 (* ****** ****** *)
-
+//
 fun
 d0ecl_abssort_errck
 ( loc0: loc_t
@@ -216,9 +216,9 @@ d0ecl_errck
 ( lvl+1
 , d0ecl( loc0, D0Cabssort(tknd,tid0)) )
 end (*let*) // end of [d0ecl_abssort_errck]
-
+//
 (* ****** ****** *)
-
+//
 fun
 d0ecl_stacst0_errck
 ( loc0: loc_t
@@ -238,9 +238,9 @@ d0ecl
 ( loc0
 , D0Cstacst0(tknd,sid0,tmas,tcln,s0t1)))
 end (*let*) // end of [d0ecl_stacst0_errck]
-
+//
 (* ****** ****** *)
-
+//
 fun
 d0ecl_sortdef_errck
 ( loc0
@@ -261,9 +261,9 @@ lvl+1
 d0ecl_make_node
 (loc0, D0Csortdef(tknd,tid0,teq1,def2)))
 end (*let*) // end of [d0ecl_sortdef_errck]
-
+//
 (* ****** ****** *)
-
+//
 fun
 d0ecl_sexpdef_errck
 ( loc0
@@ -288,9 +288,9 @@ d0ecl_errck
   , D0Csexpdef
     (tknd, seid, smas, tres, teq1, s0e2)))
 end (*let*) // end of [d0ecl_sexpdef_errck]
-
+//
 (* ****** ****** *)
-
+//
 fun
 d0ecl_abstype_errck
 ( loc0
@@ -313,9 +313,9 @@ d0ecl_errck
   ( loc0
   , D0Cabstype(tknd,seid,tmas,tres,tdef)))
 end (*let*) // end of [d0ecl_abstype_errck]
-
+//
 (* ****** ****** *)
-
+//
 fun
 d0ecl_absopen_errck
 ( loc: loc_t
@@ -327,9 +327,9 @@ in//let
 d0ecl_errck
 (lvl+1, d0ecl(loc, D0Cabsopen(tknd, sqid)))
 end (*let*) // end of [d0ecl_absopen_errck]
-
+//
 (* ****** ****** *)
-
+//
 fun
 d0ecl_absimpl_errck
 ( loc0
@@ -354,7 +354,7 @@ d0ecl_make_node
 ( loc0
 , D0Cabsimpl(tknd,sqid,smas,tres,teq1,s0e2)))
 end (*let*) // end of [d0ecl_absimpl_errck]
-
+//
 (* ****** ****** *)
 //
 fun

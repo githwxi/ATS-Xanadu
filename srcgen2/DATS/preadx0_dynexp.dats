@@ -720,6 +720,30 @@ end (*let*) // end of [d0exp_lam0_errck]
 (* ****** ****** *)
 //
 fun
+d0exp_fix0_errck
+( loc: loc_t
+, tknd: token
+, dpid: d0pid
+, fags: f0arglst
+, sres: s0res
+, arrw: f0unarrw
+, body: d0exp
+, tend: tokenopt): d0exp =
+let
+  val lvl = d0exp_errvl(body)
+in//let
+d0exp_errck
+(
+lvl+1,
+d0exp_make_node
+(loc,
+ D0Efix0
+ (tknd,dpid,fags,sres,arrw,body,tend)))
+end (*let*) // end of [d0exp_fix0_errck]
+//
+(* ****** ****** *)
+//
+fun
 d0exp_anno_errck
 ( loc
 : loc_t
@@ -753,6 +777,10 @@ HX-2022-07:
 implement [preadx0_d0pat]
 implement [preadx0_d0exp]
 *)
+(* ****** ****** *)
+#extern
+fun
+preadx0_f0unarrw: fpreadx0(f0unarrw)
 (* ****** ****** *)
 //
 #implfun
@@ -1006,10 +1034,8 @@ D0Ewhere _ => f0_where(d0e, err)
 //
 |
 D0Elam0 _ => f0_lam0(d0e, err)
-(*
 |
 D0Efix0 _ => f0_fix0(d0e, err)
-*)
 //
 |
 D0Eanno _ => f0_anno(d0e, err)
@@ -1275,10 +1301,9 @@ val fags =
 //
 val sres = preadx0_s0res(sres, err)
 //
-(*
 val arrw =
   preadx0_f0unarrw(arrw, err)
-*)
+//
 val body = preadx0_d0exp(body, err)
 //
 in//let
@@ -1288,6 +1313,46 @@ then (d0e) else
 d0exp_lam0_errck
 (loc, tknd, fags, sres, arrw, body, tend)
 end (*let*) // end of [f0_lam0(d0e, err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fix0
+( d0e: d0exp
+, err: &sint >> _): d0exp =
+let
+//
+val e00 = err
+//
+val loc = d0e.lctn()
+//
+val-
+D0Efix0
+( tknd
+, dpid, fags
+, sres, arrw
+, body, tend) = d0e.node()
+//
+val dpid =
+  preadx0_i0dnt(dpid, err)
+//
+val fags =
+  preadx0_f0arglst(fags, err)
+//
+val sres = preadx0_s0res(sres, err)
+//
+val arrw =
+  preadx0_f0unarrw(arrw, err)
+//
+val body = preadx0_d0exp(body, err)
+//
+in//let
+if
+(err=e00)
+then (d0e) else
+d0exp_fix0_errck
+(loc,tknd,dpid,fags,sres,arrw,body,tend)
+end (*let*) // end of [f0_fix0(d0e, err)]
 //
 (* ****** ****** *)
 //
@@ -1639,6 +1704,48 @@ _(*non-T_RBRACE*) =>
 endlet // end of [l0d0p_RBRACE_cons1]
 ) (*case*)//end-of-[preadx0_l0d0p_RBRACE(ldrb,err)]
 
+(* ****** ****** *)
+//
+#implfun
+preadx0_f0unarrw
+  (arrw, err) =
+(
+case+ arrw of
+|
+F0UNARRWnone
+(   tok   ) =>
+( err := err + 1; arrw)
+|
+F0UNARRWdflt
+(   tok   ) => arrw
+|
+F0UNARRWlist
+(tbeg,s0es,tend) =>
+let
+//
+val e00 = err
+//
+val s0es =
+preadx0_s0explst(s0es, err)
+//
+val (  ) =
+(
+case+
+tend.node() of
+|
+T_GT0() => ((*void*))
+|
+_(*non-T_GT0*) => (err := err+1)
+) : void // end of [val()]
+//
+in
+if
+(err=e00)
+then arrw
+else F0UNARRWlist(tbeg,s0es,tend)
+endlet // end of [F0UNARRWlist(_,_,_)]
+) (*case+*)//end-of-[preadx0_f0unarrw(arrw,err)]
+//
 (* ****** ****** *)
 //
 #implfun
