@@ -170,6 +170,10 @@ FPEMSG_ERRVL 2
 #symload fpemsg with d0exp_RPAREN_fpemsg
 #symload fpemsg with l0d0e_RBRACE_fpemsg
 (* ****** ****** *)
+//
+#extern
+fun
+token_AS0_fpemsg:(FILR,token)->void
 #extern
 fun
 token_BAR_fpemsg:(FILR,token)->void
@@ -179,8 +183,14 @@ token_EQ0_fpemsg:(FILR,token)->void
 #extern
 fun
 token_GT0_fpemsg:(FILR,token)->void
+#extern
+fun
+token_WHEN_fpemsg:(FILR,token)->void
+//
+#extern
 fun
 token_GTDOT_fpemsg:(FILR,token)->void
+//
 #extern
 fun
 token_RPAREN_fpemsg:(FILR,token)->void
@@ -190,16 +200,19 @@ token_RBRACE_fpemsg:(FILR,token)->void
 #extern
 fun
 token_RBRCKT_fpemsg:(FILR,token)->void
+//
 #extern
 fun
 token_ENDLET_fpemsg:(FILR,token)->void
 #extern
 fun
 token_ENDWHR_fpemsg:(FILR,token)->void
+//
 #extern
 fun
 tkend_WHERE_fpemsg
 (out:FILR,topt:tokenopt,tend:tkend_WHERE):void
+//
 (* ****** ****** *)
 //
 #implfun
@@ -1071,6 +1084,54 @@ D0LAB
 (* ****** ****** *)
 //
 #implfun
+d0gua_fpemsg
+(out, dgua) =
+(
+case+
+dgua.node() of
+|
+D0GUAexp
+( d0e1 ) =>
+d0exp_fpemsg(out, d0e1)
+|
+D0GUAmat
+(d0e1,tkas,d0p2) =>
+let
+val () =
+  d0exp_fpemsg(out, d0e1)
+val () =
+  token_AS0_fpemsg(out, tkas)
+val () = d0pat_fpemsg(out, d0p2)
+endlet // end of [D0GUAmat(_,_,_)]
+) (*case*) // end-of(d0gua_fpemsg(out,dgua))
+//
+(* ****** ****** *)
+//
+#implfun
+d0gpt_fpemsg
+(out, dgpt) =
+(
+case+
+dgpt.node() of
+|
+D0GPTpat
+( d0p1 ) =>
+d0pat_fpemsg(out, d0p1)
+|
+D0GPTgua
+(d0p1,twhn,d0gs) =>
+let
+val () =
+  d0pat_fpemsg(out, d0p1)
+val () =
+  token_WHEN_fpemsg(out, twhn)
+val () = d0gualst_fpemsg(out, d0gs)
+endlet // end of [ D0GPTgua(_,_,_) ]
+) (*case*) // end-of(d0gpt_fpemsg(out,dgpt))
+//
+(* ****** ****** *)
+//
+#implfun
 s0eff_fpemsg
   (out, seff) =
 (
@@ -1081,10 +1142,12 @@ S0EFFnone(tok) => ()
 S0EFFsome
 (tbeg,s0es,tend) =>
 let
+//
 val () =
-s0explst_fpemsg(out, s0es)
+  s0explst_fpemsg(out, s0es)
 val () =
-token_GT0_fpemsg(out, tend)
+  token_GT0_fpemsg(out, tend)
+//
 endlet // end of [S0EFFsome(_,_,_)]
 ) (*case+*)//end-of(s0eff_fpemsg(out,seff))
 //
@@ -1547,6 +1610,25 @@ foreach$work<d0ecl>(dcl1) = d0ecl_fpemsg(out,dcl1)
 (* ****** ****** *)
 //
 #implfun
+token_AS0_fpemsg
+  (out, tok0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+tok0.node() of
+|
+T_AS0() => ((*void*))
+|
+_(*non-T_AS0*) =>
+println
+("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+//
+end (*let*) // end of [t0ken_AS0_fpemsg]
+//
+#implfun
 token_BAR_fpemsg
   (out, tok0) =
 let
@@ -1563,7 +1645,7 @@ _(*non-T_BAR*) =>
 println
 ("PREADX0-ERROR:",tok0.lctn(),":",tok0)
 //
-end (*let*) // end of [ t0ken_BAR_fpemsg ]
+end (*let*) // end of [t0ken_BAR_fpemsg]
 //
 #implfun
 token_EQ0_fpemsg
@@ -1581,7 +1663,7 @@ _(*non-T_EQ0*) =>
 println
 ("PREADX0-ERROR:",tok0.lctn(),":",tok0)
 //
-end (*let*) // end of [ t0ken_EQ0_fpemsg ]
+end (*let*) // end of [t0ken_EQ0_fpemsg]
 //
 #implfun
 token_GT0_fpemsg
@@ -1599,7 +1681,27 @@ _(*non-T_GT0*) =>
 println
 ("PREADX0-ERROR:",tok0.lctn(),":",tok0)
 //
-end (*let*) // end of [ t0ken_GT0_fpemsg ]
+end (*let*) // end of [t0ken_GT0_fpemsg]
+//
+(* ****** ****** *)
+//
+#implfun
+token_WHEN_fpemsg
+  (out, tok0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ tok0.node() of
+|
+T_WHEN() => ((*void*))
+|
+_(*non-T_WHEN*) =>
+println
+("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+//
+end (*let*) // end of [t0ken_WHEN_fpemsg]
 //
 #implfun
 token_GTDOT_fpemsg
@@ -1618,6 +1720,8 @@ println
 ("PREADX0-ERROR:",tok0.lctn(),":",tok0)
 //
 end (*let*) // end of [t0ken_GTDOT_fpemsg]
+//
+(* ****** ****** *)
 //
 #implfun
 token_RPAREN_fpemsg
@@ -1666,6 +1770,8 @@ _(*non-T_RBRCKT*) =>
 println
 ("PREADX0-ERROR:",tok0.lctn(),":",tok0)
 end (*let*) // end of [token_RBRCKT_fpemsg]
+//
+(* ****** ****** *)
 //
 #implfun
 token_ENDWHR_fpemsg
