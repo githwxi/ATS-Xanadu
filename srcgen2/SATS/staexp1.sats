@@ -140,19 +140,62 @@ g1exp_node =
 | G1Enone1 of (g0exp) // HX: ERROR!
 //
 (* ****** ****** *)
-fun
-g1nam_fprint: (FILR, g1nam)->void
-fun
-g1exp_fprint: (FILR, g1exp)->void
-(* ****** ****** *)
 //
+datatype
+g1mag_node =
+(*
+| G1MAGnone of ((*void*))
+*)
+| G1MAGsarg of (g1arglst)
+| G1MAGdarg of (g1arglst)
+//
+(* ****** ****** *)
+fun
+g1nam_fprint:(FILR, g1nam)->void
+fun
+g1exp_fprint:(FILR, g1exp)->void
+fun
+g1mag_fprint:(FILR, g1mag)->void
+(* ****** ****** *)
 fun
 g1exp_get_lctn(g1exp): loc_t
 fun
 g1exp_get_node(g1exp): g1exp_node
-//
+(* ****** ****** *)
 #symload lctn with g1exp_get_lctn
 #symload node with g1exp_get_node
+(* ****** ****** *)
+fun
+g1mag_get_lctn(g1mag): loc_t
+fun
+g1mag_get_node(g1mag): g1mag_node
+(* ****** ****** *)
+#symload lctn with g1mag_get_lctn
+#symload node with g1mag_get_node
+(* ****** ****** *)
+fun
+g1exp_make_node
+(loc:loc_t, node:g1exp_node): g1exp
+fun
+g1mag_make_node
+(loc:loc_t, node:g1mag_node): g1mag
+(* ****** ****** *)
+#symload g1exp with g1exp_make_node
+#symload g1mag with g1mag_make_node
+(* ****** ****** *)
+//
+#abstbox sort1_tbox // ptr
+#abstbox s1exp_tbox // ptr
+//
+(* ****** ****** *)
+//
+#typedef sort1 = sort1_tbox
+#typedef sort1lst = list(sort1)
+#typedef sort1opt = optn(sort1)
+//
+#typedef s1exp = s1exp_tbox
+#typedef s1explst = list(s1exp)
+#typedef s1expopt = optn(s1exp)
 //
 (* ****** ****** *)
 
