@@ -198,5 +198,88 @@ g1mag_make_node
 #typedef s1expopt = optn(s1exp)
 //
 (* ****** ****** *)
+//
+datatype
+sort1_node =
+//
+| S1Tid0 of sym_t
+//
+| S1Tint of token
+//
+// HX-2018-08: operators
+//
+| S1Tapp of () // apply
+//
+(*
+| S1Ttype of int(*kind*)
+  (*prop/view/type/tbox/vwtp/vtbx*)
+*)
+//
+| S1Tapp1 of
+  (sort1(*fun*), sort1)
+| S1Tapp2 of
+  (sort1(*fun*), sort1, sort1)
+//
+| S1Tlist of sort1lst // HX: temp
+| S1Tqual of (token(*NS*), sort1)
+//
+// end of [ datatype(sort1_node) ]
+//
+(* ****** ****** *)
+//
+fun
+sort1_fprint:(FILR,sort1)->void
+//
+(* ****** ****** *)
+//
+fun
+sort1_get_lctn(sort1): loc_t
+fun
+sort1_get_node(sort1): sort1_node
+//
+#symload lctn with sort1_get_lctn
+#symload node with sort1_get_node
+//
+(* ****** ****** *)
+//
+fun
+sort1_make_node
+(loc:loc_t, node:sort1_node): sort1
+//
+#symload sort1 with sort1_make_node
+//
+(* ****** ****** *)
+//
+#abstbox s1tcn_tbox // ptr
+#typedef s1tcn = s1tcn_tbox
+#typedef s1tcnlst = list(s1tcn)
+//
+(* ****** ****** *)
+//
+datatype s1tcn_node =
+| S1TCN of (token, sort1opt) 
+//
+(* ****** ****** *)
+fun
+s1tcn_fprint:(FILR,s1tcn)->void
+(* ****** ****** *)
+//
+fun
+s1tcn_get_lctn(s1tcn): loc_t
+fun
+s1tcn_get_node(s1tcn): s1tcn_node
+//
+#symload lctn with s1tcn_get_lctn
+#symload node with s1tcn_get_node
+//
+(* ****** ****** *)
+//
+fun
+s1tcn_make_node
+(loc:loc_t, node:s1tcn_node): s1tcn
+//
+#symload s1tcn with s1tcn_make_node
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_staexp1.sats] *)
