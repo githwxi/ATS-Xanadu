@@ -866,22 +866,22 @@ endlet // end of [list_cons(x0, xs)]
 (* ****** ****** *)
 #impltmp
 <x0><y0>
-list_map_fnp1
+list_map_f1np
 (    xs, f0    ) =
 (
 list_map<x0><y0>(xs)) where
 {
 #impltmp map$fopr<x0><y0>(x0) = f0(x0)
-} (*where*)//end-[list_map_fnp1(xs,f0)]
+} (*where*)//end-[list_map_f1np(xs,f0)]
 #impltmp
 <x0><y0>
-list_map_fnp1_vt
+list_map_f1np_vt
 (    xs, f0    ) =
 (
 list_map_vt<x0><y0>(xs)) where
 {
 #impltmp map$fopr<x0><y0>(x0) = f0(x0)
-} (*where*)//end-[list_map_fnp1_vt(xs,f0)]
+} (*where*)//end-[list_map_f1np_vt(xs,f0)]
 (* ****** ****** *)
 //
 // For gseq-operations

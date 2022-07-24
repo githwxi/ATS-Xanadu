@@ -24,7 +24,7 @@ let
 #typedef xs = optn(x0)
 #typedef ys = optn(y0)
 in//let
-gseq_map_cfr1<xs><x0><ys><y0>(xs, fx)
+gseq_map_c1fr<xs><x0><ys><y0>(xs, fx)
 end(*let*)//end-of-[fmap<optn><x0><y0>(fx,xs)]
 (* ****** ****** *)
 #impltmp
@@ -37,7 +37,7 @@ let
 #typedef xs = list(x0)
 #typedef ys = list(y0)
 in//let
-gseq_map_cfr1<xs><x0><ys><y0>(xs, fx)
+gseq_map_c1fr<xs><x0><ys><y0>(xs, fx)
 end(*let*)//end-of-[fmap<list><x0><y0>(fx,xs)]
 (* ****** ****** *)
 #impltmp
@@ -50,7 +50,7 @@ let
 #typedef xs = strm(x0)
 #typedef ys = strm(y0)
 in//let
-gseq_map_cfr1<xs><x0><ys><y0>(xs, fx)
+gseq_map_c1fr<xs><x0><ys><y0>(xs, fx)
 end(*let*)//end-of-[fmap<strm><x0><y0>(fx,xs)]
 (* ****** ****** *)
 

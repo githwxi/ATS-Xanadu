@@ -3018,7 +3018,7 @@ end(*let*)//end-[gseq_x2iforeach_col(xs,ys)]
 (* ****** ****** *)
 #impltmp
 <xs><x0><r0>
-gseq_foldl_fnp2
+gseq_foldl_f2np
 ( xs, r0, f0 ) =
 (
 gseq_foldl
@@ -3027,12 +3027,12 @@ gseq_foldl
 #impltmp
 foldl$fopr
 <x0><r0>(r0, x0) = f0(r0, x0)
-}(*where*)//gseq_foldl_fnp2(xs,r0,f0)
+}(*where*)//gseq_foldl_f2np(xs,r0,f0)
 (* ****** ****** *)
 #impltmp
 <xs>
 <x0><r0>
-gseq_foldl_cfr2
+gseq_foldl_c2fr
 ( xs, r0, f0 ) =
 (
 gseq_foldl
@@ -3041,7 +3041,7 @@ gseq_foldl
 #impltmp
 foldl$fopr
 <x0><r0>(r0, x0) = f0(r0, x0)
-}(*where*)//gseq_foldl_cfr2(xs,r0,f0)
+}(*where*)//gseq_foldl_c2fr(xs,r0,f0)
 (* ****** ****** *)
 //
 // HX: gseq_foldr
@@ -3050,7 +3050,7 @@ foldl$fopr
 #impltmp
 <xs>
 <x0><r0>
-gseq_foldr_fnp2
+gseq_foldr_f2np
 ( xs, r0, f0 ) =
 (
 gseq_foldr
@@ -3059,12 +3059,12 @@ gseq_foldr
 #impltmp
 foldr$fopr
 <x0><r0>(x0, r0) = f0(x0, r0)
-}(*where*)//gseq_foldr_fnp2(xs,r0,f0)
+}(*where*)//gseq_foldr_f2np(xs,r0,f0)
 (* ****** ****** *)
 #impltmp
 <xs>
 <x0><r0>
-gseq_foldr_cfr2
+gseq_foldr_c2fr
 ( xs, r0, f0 ) =
 (
 gseq_foldr
@@ -3073,7 +3073,7 @@ gseq_foldr
 #impltmp
 foldr$fopr
 <x0><r0>(x0, r0) = f0(x0, r0)
-}(*where*)//gseq_foldr_cfr2(xs,r0,f0)
+}(*where*)//gseq_foldr_c2fr(xs,r0,f0)
 (* ****** ****** *)
 //
 // HX: gseq_exists
@@ -3081,23 +3081,23 @@ foldr$fopr
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-gseq_exists_fnp1
+gseq_exists_f1np
 (    xs, f0    ) =
 (
 gseq_exists<xs><x0>(xs)) where
 {
 #impltmp exists$test<x0>(x0) = f0(x0)
-} (*where*)//gseq_exists_fnp1(xs, f0)
+} (*where*)//gseq_exists_f1np(xs, f0)
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-gseq_exists_cfr1
+gseq_exists_c1fr
 (    xs, f0    ) =
 (
 gseq_exists<xs><x0>(xs)) where
 {
 #impltmp exists$test<x0>(x0) = f0(x0)
-} (*where*)//gseq_exists_cfr1(xs, f0)
+} (*where*)//gseq_exists_c1fr(xs, f0)
 (* ****** ****** *)
 //
 // HX: gseq_forall
@@ -3105,23 +3105,23 @@ gseq_exists<xs><x0>(xs)) where
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-gseq_forall_fnp1
+gseq_forall_f1np
 (    xs, f0    ) =
 (
 gseq_forall<xs><x0>(xs)) where
 {
 #impltmp forall$test<x0>(x0) = f0(x0)
-} (*where*)//gseq_forall_fnp1(xs, f0)
+} (*where*)//gseq_forall_f1np(xs, f0)
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-gseq_forall_cfr1
+gseq_forall_c1fr
 (    xs, f0    ) =
 (
 gseq_forall<xs><x0>(xs)) where
 {
 #impltmp forall$test<x0>(x0) = f0(x0)
-} (*where*)//gseq_forall_cfr1(xs, f0)
+} (*where*)//gseq_forall_c1fr(xs, f0)
 (* ****** ****** *)
 //
 // HX: gseq_foreach
@@ -3129,23 +3129,23 @@ gseq_forall<xs><x0>(xs)) where
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-gseq_foreach_fnp1
+gseq_foreach_f1np
 (    xs, f0    ) =
 (
 gseq_foreach<xs><x0>(xs)) where
 {
 #impltmp foreach$work<x0>(x0) = f0(x0)
-} (*where*)//gseq_foreach_fnp1(xs, f0)
+} (*where*)//gseq_foreach_f1np(xs, f0)
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-gseq_foreach_cfr1
+gseq_foreach_c1fr
 (    xs, f0    ) =
 (
 gseq_foreach<xs><x0>(xs)) where
 {
 #impltmp foreach$work<x0>(x0) = f0(x0)
-} (*where*)//gseq_foreach_cfr1(xs, f0)
+} (*where*)//gseq_foreach_c1fr(xs, f0)
 (* ****** ****** *)
 //
 // HX: gseq_map(seq)
@@ -3154,26 +3154,26 @@ gseq_foreach<xs><x0>(xs)) where
 #impltmp
 <xs><x0>
 <ys><y0>
-gseq_map_fnp1
+gseq_map_f1np
 (    xs, f0    ) =
 (
 gseq_map
 <xs><x0><ys><y0>(xs)) where
 {
 #impltmp map$fopr<x0><y0>(x0) = f0(x0)
-} (*where*)//end-[gseq_map_fnp1(xs,f0)]
+} (*where*)//end-[gseq_map_f1np(xs,f0)]
 (* ****** ****** *)
 #impltmp
 <xs><x0>
 <ys><y0>
-gseq_map_cfr1
+gseq_map_c1fr
 (    xs, f0    ) =
 (
 gseq_map
 <xs><x0><ys><y0>(xs)) where
 {
 #impltmp map$fopr<x0><y0>(x0) = f0(x0)
-} (*where*)//end-[gseq_map_cfr1(xs,f0)]
+} (*where*)//end-[gseq_map_c1fr(xs,f0)]
 (* ****** ****** *)
 //
 // HX: gseq_map_list
@@ -3182,26 +3182,26 @@ gseq_map
 #impltmp
 <xs>
 <x0><y0>
-gseq_map_list_fnp1
+gseq_map_list_f1np
 (    xs, f0    ) =
 (
 gseq_map_list
 < xs><x0><y0 >(xs)) where
 {
 #impltmp map$fopr<x0><y0>(x0) = f0(x0)
-} (*where*)//gseq_map_list_fnp1(xs,f0)
+} (*where*)//gseq_map_list_f1np(xs,f0)
 (* ****** ****** *)
 #impltmp
 <xs>
 <x0><y0>
-gseq_map_list_cfr1
+gseq_map_list_c1fr
 (    xs, f0    ) =
 (
 gseq_map_list
 < xs><x0><y0 >(xs)) where
 {
 #impltmp map$fopr<x0><y0>(x0) = f0(x0)
-} (*where*)//gseq_map_list_cfr1(xs,f0)
+} (*where*)//gseq_map_list_c1fr(xs,f0)
 (* ****** ****** *)
 //
 // HX: gseq_map_strm
@@ -3210,26 +3210,26 @@ gseq_map_list
 #impltmp
 <xs>
 <x0><y0>
-gseq_map_strm_fnp1
+gseq_map_strm_f1np
 (    xs, f0    ) =
 (
 gseq_map_strm
 < xs><x0><y0 >(xs)) where
 {
 #impltmp map$fopr<x0><y0>(x0) = f0(x0)
-} (*where*)//gseq_map_strm_fnp1(xs,f0)
+} (*where*)//gseq_map_strm_f1np(xs,f0)
 (* ****** ****** *)
 #impltmp
 <xs>
 <x0><y0>
-gseq_map_strm_cfr1
+gseq_map_strm_c1fr
 (    xs, f0    ) =
 (
 gseq_map_strm
 < xs><x0><y0 >(xs)) where
 {
 #impltmp map$fopr<x0><y0>(x0) = f0(x0)
-} (*where*)//gseq_map_strm_cfr1(xs,f0)
+} (*where*)//gseq_map_strm_c1fr(xs,f0)
 (* ****** ****** *)
 //
 // HX: gseq_filter(seq)
@@ -3237,23 +3237,23 @@ gseq_map_strm
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-gseq_filter_fnp1
+gseq_filter_f1np
 (    xs, f0    ) =
 (
 gseq_filter<xs><x0>(xs)) where
 {
 #impltmp filter$test<x0>( x0 ) = f0(x0)
-}(*where*)//end-[gseq_filter_fnp1(xs,f0)]
+}(*where*)//end-[gseq_filter_f1np(xs,f0)]
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-gseq_filter_cfr1
+gseq_filter_c1fr
 (    xs, f0    ) =
 (
 gseq_filter<xs><x0>(xs)) where
 {
 #impltmp filter$test<x0>( x0 ) = f0(x0)
-}(*where*)//end-[gseq_filter_cfr1(xs,f0)]
+}(*where*)//end-[gseq_filter_c1fr(xs,f0)]
 (* ****** ****** *)
 //
 // HX: gseq_filter_list
@@ -3261,23 +3261,23 @@ gseq_filter<xs><x0>(xs)) where
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-gseq_filter_list_fnp1
+gseq_filter_list_f1np
 (    xs, f0    ) =
 (
 gseq_filter_list<xs><x0>(xs)) where
 {
 #impltmp filter$test<x0>( x0 ) = f0(x0)
-}(*where*)//end-[gseq_filter_list_fnp1(xs,f0)]
+}(*where*)//end-[gseq_filter_list_f1np(xs,f0)]
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-gseq_filter_list_cfr1
+gseq_filter_list_c1fr
 (    xs, f0    ) =
 (
 gseq_filter_list<xs><x0>(xs)) where
 {
 #impltmp filter$test<x0>( x0 ) = f0(x0)
-}(*where*)//end-[gseq_filter_list_cfr1(xs,f0)]
+}(*where*)//end-[gseq_filter_list_c1fr(xs,f0)]
 (* ****** ****** *)
 //
 // HX: gseq_filter_strm
@@ -3285,23 +3285,23 @@ gseq_filter_list<xs><x0>(xs)) where
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-gseq_filter_strm_fnp1
+gseq_filter_strm_f1np
 (    xs, f0    ) =
 (
 gseq_filter_strm<xs><x0>(xs)) where
 {
 #impltmp filter$test<x0>( x0 ) = f0(x0)
-}(*where*)//end-[gseq_filter_strm_fnp1(xs,f0)]
+}(*where*)//end-[gseq_filter_strm_f1np(xs,f0)]
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-gseq_filter_strm_cfr1
+gseq_filter_strm_c1fr
 (    xs, f0    ) =
 (
 gseq_filter_strm<xs><x0>(xs)) where
 {
 #impltmp filter$test<x0>( x0 ) = f0(x0)
-}(*where*)//end-[gseq_filter_strm_cfr1(xs,f0)]
+}(*where*)//end-[gseq_filter_strm_c1fr(xs,f0)]
 (* ****** ****** *)
 //
 // HX: gseq_ifoldl
@@ -3310,7 +3310,7 @@ gseq_filter_strm<xs><x0>(xs)) where
 #impltmp
 <xs>
 <x0><r0>
-gseq_ifoldl_fnp3
+gseq_ifoldl_f3np
 (  xs, r0, f0  ) =
 (
 gseq_ifoldl<xs><x0><r0>(xs, r0)) where
@@ -3318,12 +3318,12 @@ gseq_ifoldl<xs><x0><r0>(xs, r0)) where
 #impltmp
 ifoldl$fopr
 < x0><r0 >(r0, i0, x0) = f0(r0, i0, x0)
-} (*where*)//gseq_ifoldl_fnp3(xs,r0,f0)
+} (*where*)//gseq_ifoldl_f3np(xs,r0,f0)
 (* ****** ****** *)
 #impltmp
 <xs>
 <x0><r0>
-gseq_ifoldl_cfr3
+gseq_ifoldl_c3fr
 (  xs, r0, f0  ) =
 (
 gseq_ifoldl<xs><x0><r0>(xs, r0)) where
@@ -3331,7 +3331,7 @@ gseq_ifoldl<xs><x0><r0>(xs, r0)) where
 #impltmp
 ifoldl$fopr
 < x0><r0 >(r0, i0, x0) = f0(r0, i0, x0)
-} (*where*)//gseq_ifoldl_cfr3(xs,r0,f0)
+} (*where*)//gseq_ifoldl_c3fr(xs,r0,f0)
 (* ****** ****** *)
 //
 // HX: gseq_ifoldr
@@ -3340,7 +3340,7 @@ ifoldl$fopr
 #impltmp
 <xs>
 <x0><r0>
-gseq_ifoldr_fnp3
+gseq_ifoldr_f3np
 (  xs, r0, f0  ) =
 (
 gseq_ifoldr<xs><x0><r0>(xs, r0)) where
@@ -3348,12 +3348,12 @@ gseq_ifoldr<xs><x0><r0>(xs, r0)) where
 #impltmp
 ifoldr$fopr
 < x0><r0 >(i0, x0, r0) = f0(i0, x0, r0)
-} (*where*)//gseq_ifoldr_fnp3(xs,r0,f0)
+} (*where*)//gseq_ifoldr_f3np(xs,r0,f0)
 (* ****** ****** *)
 #impltmp
 <xs>
 <x0><r0>
-gseq_ifoldr_cfr3
+gseq_ifoldr_c3fr
 (  xs, r0, f0  ) =
 (
 gseq_ifoldr<xs><x0><r0>(xs, r0)) where
@@ -3361,7 +3361,7 @@ gseq_ifoldr<xs><x0><r0>(xs, r0)) where
 #impltmp
 ifoldr$fopr
 < x0><r0 >(i0, x0, r0) = f0(i0, x0, r0)
-} (*where*)//gseq_ifoldr_cfr3(xs,r0,f0)
+} (*where*)//gseq_ifoldr_c3fr(xs,r0,f0)
 (* ****** ****** *)
 //
 // HX: gseq_iexists
@@ -3369,25 +3369,25 @@ ifoldr$fopr
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-gseq_iexists_fnp2
+gseq_iexists_f2np
 (    xs, f0    ) =
 (
 gseq_iexists<xs><x0>(xs)) where
 {
 #impltmp
 iexists$test<x0>(i0, x0) = f0(i0, x0)
-} (*where*)//gseq_iexists_fnp2(xs, f0)
+} (*where*)//gseq_iexists_f2np(xs, f0)
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-gseq_iexists_cfr2
+gseq_iexists_c2fr
 (    xs, f0    ) =
 (
 gseq_iexists<xs><x0>(xs)) where
 {
 #impltmp
 iexists$test<x0>(i0, x0) = f0(i0, x0)
-} (*where*)//gseq_iexists_cfr2(xs, f0)
+} (*where*)//gseq_iexists_c2fr(xs, f0)
 (* ****** ****** *)
 //
 // HX: gseq_iforall
@@ -3395,25 +3395,25 @@ iexists$test<x0>(i0, x0) = f0(i0, x0)
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-gseq_iforall_fnp2
+gseq_iforall_f2np
 (    xs, f0    ) =
 (
 gseq_iforall<xs><x0>(xs)) where
 {
 #impltmp
 iforall$test<x0>(i0, x0) = f0(i0, x0)
-} (*where*)//gseq_iforall_fnp2(xs, f0)
+} (*where*)//gseq_iforall_f2np(xs, f0)
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-gseq_iforall_cfr2
+gseq_iforall_c2fr
 (    xs, f0    ) =
 (
 gseq_iforall<xs><x0>(xs)) where
 {
 #impltmp
 iforall$test<x0>(i0, x0) = f0(i0, x0)
-} (*where*)//gseq_iforall_cfr2(xs, f0)
+} (*where*)//gseq_iforall_c2fr(xs, f0)
 (* ****** ****** *)
 //
 // HX: gseq_iforeach
@@ -3421,25 +3421,25 @@ iforall$test<x0>(i0, x0) = f0(i0, x0)
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-gseq_iforeach_fnp2
+gseq_iforeach_f2np
 (    xs, f0    ) =
 (
 gseq_iforeach<xs><x0>(xs)) where
 {
 #impltmp
 iforeach$work<x0>(i0, x0) = f0(i0, x0)
-} (*where*)//gseq_iforeach_fnp2(xs, f0)
+} (*where*)//gseq_iforeach_f2np(xs, f0)
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-gseq_iforeach_cfr2
+gseq_iforeach_c2fr
 (    xs, f0    ) =
 (
 gseq_iforeach<xs><x0>(xs)) where
 {
 #impltmp
 iforeach$work<x0>(i0, x0) = f0(i0, x0)
-} (*where*)//gseq_iforeach_cfr2(xs, f0)
+} (*where*)//gseq_iforeach_c2fr(xs, f0)
 (* ****** ****** *)
 //
 // HX: gseq_imap(seq)
@@ -3448,7 +3448,7 @@ iforeach$work<x0>(i0, x0) = f0(i0, x0)
 #impltmp
 <xs><x0>
 <ys><y0>
-gseq_imap_fnp2
+gseq_imap_f2np
 (    xs, f0    ) =
 (
 gseq_imap
@@ -3456,12 +3456,12 @@ gseq_imap
 {
 #impltmp
 imap$fopr<x0><y0>(i0, x0) = f0(i0, x0)
-} (*where*)//end-[gseq_imap_fnp2(xs,f0)]
+} (*where*)//end-[gseq_imap_f2np(xs,f0)]
 (* ****** ****** *)
 #impltmp
 <xs><x0>
 <ys><y0>
-gseq_imap_cfr2
+gseq_imap_c2fr
 (    xs, f0    ) =
 (
 gseq_imap
@@ -3469,7 +3469,7 @@ gseq_imap
 {
 #impltmp
 imap$fopr<x0><y0>(i0, x0) = f0(i0, x0)
-} (*where*)//end-[gseq_imap_cfr2(xs,f0)]
+} (*where*)//end-[gseq_imap_c2fr(xs,f0)]
 (* ****** ****** *)
 //
 // HX: gseq_imap_list
@@ -3478,7 +3478,7 @@ imap$fopr<x0><y0>(i0, x0) = f0(i0, x0)
 #impltmp
 <xs>
 <x0><y0>
-gseq_imap_list_fnp2
+gseq_imap_list_f2np
 (    xs, f0    ) =
 (
 gseq_imap_list
@@ -3486,12 +3486,12 @@ gseq_imap_list
 {
 #impltmp
 imap$fopr<x0><y0>(i0, x0) = f0(i0, x0)
-} (*where*)//gseq_imap_list_fnp2(xs,f0)
+} (*where*)//gseq_imap_list_f2np(xs,f0)
 (* ****** ****** *)
 #impltmp
 <xs>
 <x0><y0>
-gseq_imap_list_cfr2
+gseq_imap_list_c2fr
 (    xs, f0    ) =
 (
 gseq_imap_list
@@ -3499,7 +3499,7 @@ gseq_imap_list
 {
 #impltmp
 imap$fopr<x0><y0>(i0, x0) = f0(i0, x0)
-} (*where*)//gseq_imap_list_cfr2(xs,f0)
+} (*where*)//gseq_imap_list_c2fr(xs,f0)
 (* ****** ****** *)
 //
 // HX: gseq_imap_strm
@@ -3508,7 +3508,7 @@ imap$fopr<x0><y0>(i0, x0) = f0(i0, x0)
 #impltmp
 <xs>
 <x0><y0>
-gseq_imap_strm_fnp2
+gseq_imap_strm_f2np
 (    xs, f0    ) =
 (
 gseq_imap_strm
@@ -3516,12 +3516,12 @@ gseq_imap_strm
 {
 #impltmp
 imap$fopr<x0><y0>(i0, x0) = f0(i0, x0)
-} (*where*)//gseq_imap_strm_fnp2(xs,f0)
+} (*where*)//gseq_imap_strm_f2np(xs,f0)
 (* ****** ****** *)
 #impltmp
 <xs>
 <x0><y0>
-gseq_imap_strm_cfr2
+gseq_imap_strm_c2fr
 (    xs, f0    ) =
 (
 gseq_imap_strm
@@ -3529,7 +3529,7 @@ gseq_imap_strm
 {
 #impltmp
 imap$fopr<x0><y0>(i0, x0) = f0(i0, x0)
-} (*where*)//gseq_imap_strm_cfr2(xs,f0)
+} (*where*)//gseq_imap_strm_c2fr(xs,f0)
 (* ****** ****** *)
 //
 // HX: gseq_z2forall
@@ -3538,7 +3538,7 @@ imap$fopr<x0><y0>(i0, x0) = f0(i0, x0)
 #impltmp
 <xs,yz>
 <x0,y0>
-gseq_z2forall_fnp2
+gseq_z2forall_f2np
 (  xs, ys, f0  ) =
 (
 gseq_z2forall
@@ -3546,12 +3546,12 @@ gseq_z2forall
 {
 #impltmp
 z2forall$test<x0,y0>(x0,y0) = f0(x0,y0)
-} (*where*)//gseq_z2forall_fnp2(xs,ys,f0)
+} (*where*)//gseq_z2forall_f2np(xs,ys,f0)
 (* ****** ****** *)
 #impltmp
 <xs,yz>
 <x0,y0>
-gseq_z2forall_cfr2
+gseq_z2forall_c2fr
 (  xs, ys, f0  ) =
 (
 gseq_z2forall
@@ -3559,7 +3559,7 @@ gseq_z2forall
 {
 #impltmp
 z2forall$test<x0,y0>(x0,y0) = f0(x0,y0)
-} (*where*)//gseq_z2forall_cfr2(xs,ys,f0)
+} (*where*)//gseq_z2forall_c2fr(xs,ys,f0)
 (* ****** ****** *)
 //
 // HX: gseq_z2forcmp
@@ -3568,7 +3568,7 @@ z2forall$test<x0,y0>(x0,y0) = f0(x0,y0)
 #impltmp
 <xs,yz>
 <x0,y0>
-gseq_z2forcmp_fnp2
+gseq_z2forcmp_f2np
 (  xs, ys, f0  ) =
 (
 gseq_z2forcmp
@@ -3576,12 +3576,12 @@ gseq_z2forcmp
 {
 #impltmp
 z2forcmp$fcmp<x0,y0>(x0,y0) = f0(x0,y0)
-} (*where*)//gseq_z2forcmp_fnp2(xs,ys,f0)
+} (*where*)//gseq_z2forcmp_f2np(xs,ys,f0)
 (* ****** ****** *)
 #impltmp
 <xs,yz>
 <x0,y0>
-gseq_z2forcmp_cfr2
+gseq_z2forcmp_c2fr
 (  xs, ys, f0  ) =
 (
 gseq_z2forcmp
@@ -3589,7 +3589,7 @@ gseq_z2forcmp
 {
 #impltmp
 z2forcmp$fcmp<x0,y0>(x0,y0) = f0(x0,y0)
-} (*where*)//gseq_z2forcmp_cfr2(xs,ys,f0)
+} (*where*)//gseq_z2forcmp_c2fr(xs,ys,f0)
 (* ****** ****** *)
 //
 // HX: gseq_z2foreach
@@ -3598,7 +3598,7 @@ z2forcmp$fcmp<x0,y0>(x0,y0) = f0(x0,y0)
 #impltmp
 <xs,yz>
 <x0,y0>
-gseq_z2foreach_fnp2
+gseq_z2foreach_f2np
 (  xs, ys, f0  ) =
 (
 gseq_z2foreach
@@ -3606,12 +3606,12 @@ gseq_z2foreach
 {
 #impltmp
 z2foreach$work<x0,y0>(x0,y0) = f0(x0,y0)
-} (*where*)//gseq_z2foreach_fnp2(xs,ys,f0)
+} (*where*)//gseq_z2foreach_f2np(xs,ys,f0)
 (* ****** ****** *)
 #impltmp
 <xs,yz>
 <x0,y0>
-gseq_z2foreach_cfr2
+gseq_z2foreach_c2fr
 (  xs, ys, f0  ) =
 (
 gseq_z2foreach
@@ -3619,7 +3619,7 @@ gseq_z2foreach
 {
 #impltmp
 z2foreach$work<x0,y0>(x0,y0) = f0(x0,y0)
-} (*where*)//gseq_z2foreach_cfr2(xs,ys,f0)
+} (*where*)//gseq_z2foreach_c2fr(xs,ys,f0)
 (* ****** ****** *)
 //
 // HX: gseq_z2map(seq)
@@ -3629,7 +3629,7 @@ z2foreach$work<x0,y0>(x0,y0) = f0(x0,y0)
 <xs, ys>
 <x0, y0>
 <zs><z0>
-gseq_z2map_fnp2
+gseq_z2map_f2np
 (  xs, ys, f0  ) =
 (
 gseq_z2map
@@ -3638,13 +3638,13 @@ gseq_z2map
 {
 #impltmp
 z2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
-} (*where*)//end-[gseq_z2map_fnp2(xs,ys,f0)]
+} (*where*)//end-[gseq_z2map_f2np(xs,ys,f0)]
 (* ****** ****** *)
 #impltmp
 <xs, ys>
 <x0, y0>
 <zs><z0>
-gseq_z2map_cfr2
+gseq_z2map_c2fr
 (  xs, ys, f0  ) =
 (
 gseq_z2map
@@ -3653,7 +3653,7 @@ gseq_z2map
 {
 #impltmp
 z2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
-} (*where*)//end-[gseq_z2map_cfr2(xs,ys,f0)]
+} (*where*)//end-[gseq_z2map_c2fr(xs,ys,f0)]
 (* ****** ****** *)
 //
 // HX: gseq_z2map_list
@@ -3662,7 +3662,7 @@ z2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
 #impltmp
 <xs,ys>
 <x0,y0><z0>
-gseq_z2map_list_fnp2
+gseq_z2map_list_f2np
 (  xs, ys, f0  ) =
 (
 gseq_z2map_list
@@ -3670,12 +3670,12 @@ gseq_z2map_list
 {
 #impltmp
 z2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
-}(*where*)//(gseq_z2map_list_fnp2(xs,ys,f0))
+}(*where*)//(gseq_z2map_list_f2np(xs,ys,f0))
 (* ****** ****** *)
 #impltmp
 <xs,ys>
 <x0,y0><z0>
-gseq_z2map_list_cfr2
+gseq_z2map_list_c2fr
 (  xs, ys, f0  ) =
 (
 gseq_z2map_list
@@ -3683,7 +3683,7 @@ gseq_z2map_list
 {
 #impltmp
 z2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
-}(*where*)//end(gseq_z2map_list_cfr2(xs,ys,f0))
+}(*where*)//end(gseq_z2map_list_c2fr(xs,ys,f0))
 (* ****** ****** *)
 //
 // HX: gseq_z2map_strm
@@ -3692,7 +3692,7 @@ z2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
 #impltmp
 <xs,ys>
 <x0,y0><z0>
-gseq_z2map_strm_fnp2
+gseq_z2map_strm_f2np
 (  xs, ys, f0  ) =
 (
 gseq_z2map_strm
@@ -3700,12 +3700,12 @@ gseq_z2map_strm
 {
 #impltmp
 z2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
-}(*where*)//end(gseq_z2map_strm_fnp2(xs,ys,f0))
+}(*where*)//end(gseq_z2map_strm_f2np(xs,ys,f0))
 (* ****** ****** *)
 #impltmp
 <xs,ys>
 <x0,y0><z0>
-gseq_z2map_strm_cfr2
+gseq_z2map_strm_c2fr
 (  xs, ys, f0  ) =
 (
 gseq_z2map_strm
@@ -3713,7 +3713,7 @@ gseq_z2map_strm
 {
 #impltmp
 z2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
-}(*where*)//end(gseq_z2map_strm_cfr2(xs,ys,f0))
+}(*where*)//end(gseq_z2map_strm_c2fr(xs,ys,f0))
 (* ****** ****** *)
 //
 // HX: gseq_z2iforall
@@ -3722,7 +3722,7 @@ z2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
 #impltmp
 <xs,ys>
 <x0,y0>
-gseq_z2iforall_fnp3
+gseq_z2iforall_f3np
   (xs, ys, f0) =
 (
 gseq_z2iforall
@@ -3731,12 +3731,12 @@ gseq_z2iforall
 #impltmp
 z2iforall$test
 <    x0,y0    >(i0, x0, y0) = f0(i0, x0, y0)
-}(*where*)//end(gseq_z2iforall_fnp3(xs,ys,f0))
+}(*where*)//end(gseq_z2iforall_f3np(xs,ys,f0))
 (* ****** ****** *)
 #impltmp
 <xs,ys>
 <x0,y0>
-gseq_z2iforall_cfr3
+gseq_z2iforall_c3fr
   (xs, ys, f0) =
 (
 gseq_z2iforall
@@ -3745,7 +3745,7 @@ gseq_z2iforall
 #impltmp
 z2iforall$test
 <    x0,y0    >(i0, x0, y0) = f0(i0, x0, y0)
-}(*where*)//end(gseq_z2iforall_cfr3(xs,ys,f0))
+}(*where*)//end(gseq_z2iforall_c3fr(xs,ys,f0))
 (* ****** ****** *)
 //
 // HX: gseq_z2iforcmp
@@ -3754,7 +3754,7 @@ z2iforall$test
 #impltmp
 <xs,ys>
 <x0,y0>
-gseq_z2iforcmp_fnp3
+gseq_z2iforcmp_f3np
   (xs, ys, f0) =
 (
 gseq_z2iforcmp
@@ -3763,12 +3763,12 @@ gseq_z2iforcmp
 #impltmp
 z2iforcmp$fcmp
 <    x0,y0    >(i0, x0, y0) = f0(i0, x0, y0)
-}(*where*)//end(gseq_z2iforcmp_fnp3(xs,ys,f0))
+}(*where*)//end(gseq_z2iforcmp_f3np(xs,ys,f0))
 (* ****** ****** *)
 #impltmp
 <xs,ys>
 <x0,y0>
-gseq_z2iforcmp_cfr3
+gseq_z2iforcmp_c3fr
   (xs, ys, f0) =
 (
 gseq_z2iforcmp
@@ -3777,7 +3777,7 @@ gseq_z2iforcmp
 #impltmp
 z2iforcmp$fcmp
 <    x0,y0    >(i0, x0, y0) = f0(i0, x0, y0)
-}(*where*)//end(gseq_z2iforcmp_cfr3(xs,ys,f0))
+}(*where*)//end(gseq_z2iforcmp_c3fr(xs,ys,f0))
 (* ****** ****** *)
 //
 // HX: gseq_z2iforeach
@@ -3786,7 +3786,7 @@ z2iforcmp$fcmp
 #impltmp
 <xs,ys>
 <x0,y0>
-gseq_z2iforeach_fnp3
+gseq_z2iforeach_f3np
   (xs, ys, f0) =
 (
 gseq_z2iforeach
@@ -3795,12 +3795,12 @@ gseq_z2iforeach
 #impltmp
 z2iforeach$work
 <    x0,y0    >(i0, x0, y0) = f0(i0, x0, y0)
-}(*where*)//end(gseq_z2iforeach_fnp3(xs,ys,f0))
+}(*where*)//end(gseq_z2iforeach_f3np(xs,ys,f0))
 (* ****** ****** *)
 #impltmp
 <xs,ys>
 <x0,y0>
-gseq_z2iforeach_cfr3
+gseq_z2iforeach_c3fr
   (xs, ys, f0) =
 (
 gseq_z2iforeach
@@ -3809,7 +3809,7 @@ gseq_z2iforeach
 #impltmp
 z2iforeach$work
 <    x0,y0    >(i0, x0, y0) = f0(i0, x0, y0)
-}(*where*)//end(gseq_z2iforeach_cfr3(xs,ys,f0))
+}(*where*)//end(gseq_z2iforeach_c3fr(xs,ys,f0))
 (* ****** ****** *)
 //
 // HX: gseq_z2imap(seq)
@@ -3819,7 +3819,7 @@ z2iforeach$work
 <xs, ys>
 <x0, y0>
 <zs><z0>
-gseq_z2imap_fnp3
+gseq_z2imap_f3np
 (  xs, ys, f0  ) =
 (
 gseq_z2imap
@@ -3829,13 +3829,13 @@ gseq_z2imap
 #impltmp
 z2imap$fopr
 <x0,y0><z0>(i0, x0 ,y0) = f0(i0, x0 ,y0)
-} (*where*)//end-of-[gseq_z2imap_fnp3(xs,ys,f0)]
+} (*where*)//end-of-[gseq_z2imap_f3np(xs,ys,f0)]
 (* ****** ****** *)
 #impltmp
 <xs, ys>
 <x0, y0>
 <zs><z0>
-gseq_z2imap_cfr3
+gseq_z2imap_c3fr
 (  xs, ys, f0  ) =
 (
 gseq_z2imap
@@ -3845,7 +3845,7 @@ gseq_z2imap
 #impltmp
 z2imap$fopr
 <x0,y0><z0>(i0, x0 ,y0) = f0(i0, x0 ,y0)
-} (*where*)//end-of-[gseq_z2imap_cfr3(xs,ys,f0)]
+} (*where*)//end-of-[gseq_z2imap_c3fr(xs,ys,f0)]
 (* ****** ****** *)
 //
 // HX: gseq_x2foreach
@@ -3854,7 +3854,7 @@ z2imap$fopr
 #impltmp
 <xs,ys>
 <x0,y0>
-gseq_x2foreach_fnp2
+gseq_x2foreach_f2np
   (xs, ys, f0) =
 (
 gseq_x2foreach
@@ -3862,12 +3862,12 @@ gseq_x2foreach
 {
 #impltmp
 x2foreach$work<x0,y0>(x0, y0) = f0(x0, y0)
-}(*where*)//end(gseq_x2foreach_fnp2(xs,ys,f0))
+}(*where*)//end(gseq_x2foreach_f2np(xs,ys,f0))
 (* ****** ****** *)
 #impltmp
 <xs,ys>
 <x0,y0>
-gseq_x2foreach_cfr2
+gseq_x2foreach_c2fr
   (xs, ys, f0) =
 (
 gseq_x2foreach
@@ -3875,7 +3875,7 @@ gseq_x2foreach
 {
 #impltmp
 x2foreach$work<x0,y0>(x0, y0) = f0(x0, y0)
-}(*where*)//end(gseq_x2foreach_cfr2(xs,ys,f0))
+}(*where*)//end(gseq_x2foreach_c2fr(xs,ys,f0))
 (* ****** ****** *)
 //
 // HX: gseq_x2map(seq)
@@ -3885,7 +3885,7 @@ x2foreach$work<x0,y0>(x0, y0) = f0(x0, y0)
 <xs, ys>
 <x0, y0>
 <zs><z0>
-gseq_x2map_fnp2
+gseq_x2map_f2np
 (  xs, ys, f0  ) =
 (
 gseq_x2map
@@ -3894,13 +3894,13 @@ gseq_x2map
 {
 #impltmp
 x2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
-}(*where*)//end-(gseq_x2map_fnp2(xs,ys,f0))
+}(*where*)//end-(gseq_x2map_f2np(xs,ys,f0))
 (* ****** ****** *)
 #impltmp
 <xs, ys>
 <x0, y0>
 <zs><z0>
-gseq_x2map_cfr2
+gseq_x2map_c2fr
 (  xs, ys, f0  ) =
 (
 gseq_x2map
@@ -3909,7 +3909,7 @@ gseq_x2map
 {
 #impltmp
 x2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
-}(*where*)//end-(gseq_x2map_cfr2(xs,ys,f0))
+}(*where*)//end-(gseq_x2map_c2fr(xs,ys,f0))
 (* ****** ****** *)
 //
 // HX: gseq_x2map_list
@@ -3918,7 +3918,7 @@ x2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
 #impltmp
 <xs,ys>
 <x0,y0><z0>
-gseq_x2map_list_fnp2
+gseq_x2map_list_f2np
 (  xs, ys, f0  ) =
 (
 gseq_x2map_list
@@ -3926,12 +3926,12 @@ gseq_x2map_list
 {
 #impltmp
 x2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
-}(*where*)//end(gseq_x2map_list_fnp2(xs,ys,f0))
+}(*where*)//end(gseq_x2map_list_f2np(xs,ys,f0))
 (* ****** ****** *)
 #impltmp
 <xs,ys>
 <x0,y0><z0>
-gseq_x2map_list_cfr2
+gseq_x2map_list_c2fr
 (  xs, ys, f0  ) =
 (
 gseq_x2map_list
@@ -3939,7 +3939,7 @@ gseq_x2map_list
 {
 #impltmp
 x2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
-}(*where*)//end(gseq_x2map_list_cfr2(xs,ys,f0))
+}(*where*)//end(gseq_x2map_list_c2fr(xs,ys,f0))
 (* ****** ****** *)
 //
 // HX: gseq_x2map_strm
@@ -3948,7 +3948,7 @@ x2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
 #impltmp
 <xs,ys>
 <x0,y0><z0>
-gseq_x2map_strm_fnp2
+gseq_x2map_strm_f2np
 (  xs, ys, f0  ) =
 (
 gseq_x2map_strm
@@ -3956,12 +3956,12 @@ gseq_x2map_strm
 {
 #impltmp
 x2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
-}(*where*)//end(gseq_x2map_strm_fnp2(xs,ys,f0))
+}(*where*)//end(gseq_x2map_strm_f2np(xs,ys,f0))
 (* ****** ****** *)
 #impltmp
 <xs,ys>
 <x0,y0><z0>
-gseq_x2map_strm_cfr2
+gseq_x2map_strm_c2fr
 (  xs, ys, f0  ) =
 (
 gseq_x2map_strm
@@ -3969,7 +3969,7 @@ gseq_x2map_strm
 {
 #impltmp
 x2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
-}(*where*)//end(gseq_x2map_strm_cfr2(xs,ys,f0))
+}(*where*)//end(gseq_x2map_strm_c2fr(xs,ys,f0))
 (* ****** ****** *)
 //
 // HX: gseq_x2iforeach
@@ -3978,7 +3978,7 @@ x2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
 #impltmp
 <xs,ys>
 <x0,y0>
-gseq_x2iforeach_fnp4
+gseq_x2iforeach_f4np
   (xs, ys, f0) =
 (
 gseq_x2iforeach
@@ -3987,12 +3987,12 @@ gseq_x2iforeach
 #impltmp
 x2iforeach$work
 <    x0,y0    >(ix,x0,jy,y0) = f0(ix,x0,jy,y0)
-}(*where*)//end(gseq_x2iforeach_fnp4(xs,ys,f0))
+}(*where*)//end(gseq_x2iforeach_f4np(xs,ys,f0))
 (* ****** ****** *)
 #impltmp
 <xs,ys>
 <x0,y0>
-gseq_x2iforeach_cfr4
+gseq_x2iforeach_c4fr
   (xs, ys, f0) =
 (
 gseq_x2iforeach
@@ -4001,7 +4001,7 @@ gseq_x2iforeach
 #impltmp
 x2iforeach$work
 <    x0,y0    >(ix,x0,jy,y0) = f0(ix,x0,jy,y0)
-}(*where*)//end(gseq_x2iforeach_cfr4(xs,ys,f0))
+}(*where*)//end(gseq_x2iforeach_c4fr(xs,ys,f0))
 (* ****** ****** *)
 //
 // HX: gseq_x2imap(seq)
@@ -4011,7 +4011,7 @@ x2iforeach$work
 <xs, ys>
 <x0, y0>
 <zs><z0>
-gseq_x2imap_fnp4
+gseq_x2imap_f4np
 (  xs, ys, f0  ) =
 (
 gseq_x2imap
@@ -4021,13 +4021,13 @@ gseq_x2imap
 #impltmp
 x2imap$fopr
 <x0,y0><z0>(ix,x0,jy,y0) = f0(ix,x0,jy,y0)
-} (*where*)//end-of-[gseq_x2imap_fnp4(xs,ys,f0)]
+} (*where*)//end-of-[gseq_x2imap_f4np(xs,ys,f0)]
 (* ****** ****** *)
 #impltmp
 <xs, ys>
 <x0, y0>
 <zs><z0>
-gseq_x2imap_cfr4
+gseq_x2imap_c4fr
 (  xs, ys, f0  ) =
 (
 gseq_x2imap
@@ -4037,7 +4037,7 @@ gseq_x2imap
 #impltmp
 x2imap$fopr
 <x0,y0><z0>(ix,x0,jy,y0) = f0(ix,x0,jy,y0)
-} (*where*)//end-of-[gseq_x2imap_cfr4(xs,ys,f0)]
+} (*where*)//end-of-[gseq_x2imap_c4fr(xs,ys,f0)]
 (* ****** ****** *)
 //
 // HX: gseq_x2imap_list
@@ -4046,7 +4046,7 @@ x2imap$fopr
 #impltmp
 <xs,ys>
 <x0,y0><z0>
-gseq_x2imap_list_fnp4
+gseq_x2imap_list_f4np
 (  xs, ys, f0  ) =
 (
 gseq_x2imap_list
@@ -4056,12 +4056,12 @@ gseq_x2imap_list
 #impltmp
 x2imap$fopr
 <x0,y0><z0>(ix,x0,jy,y0) = f0(ix,x0,jy,y0)
-} (*where*)//end-of-[gseq_x2imap_list_fnp4(...)]
+} (*where*)//end-of-[gseq_x2imap_list_f4np(...)]
 (* ****** ****** *)
 #impltmp
 <xs,ys>
 <x0,y0><z0>
-gseq_x2imap_list_cfr4
+gseq_x2imap_list_c4fr
 (  xs, ys, f0  ) =
 (
 gseq_x2imap_list
@@ -4071,7 +4071,7 @@ gseq_x2imap_list
 #impltmp
 x2imap$fopr
 <x0,y0><z0>(ix,x0,jy,y0) = f0(ix,x0,jy,y0)
-} (*where*)//end-of-[gseq_x2imap_list_cfr4(...)]
+} (*where*)//end-of-[gseq_x2imap_list_c4fr(...)]
 (* ****** ****** *)
 //
 // HX: gseq_x2imap_strm
@@ -4080,7 +4080,7 @@ x2imap$fopr
 #impltmp
 <xs,ys>
 <x0,y0><z0>
-gseq_x2imap_strm_fnp4
+gseq_x2imap_strm_f4np
 (  xs, ys, f0  ) =
 (
 gseq_x2imap_strm
@@ -4090,12 +4090,12 @@ gseq_x2imap_strm
 #impltmp
 x2imap$fopr
 <x0,y0><z0>(ix,x0,jy,y0) = f0(ix,x0,jy,y0)
-} (*where*)//end-of-[gseq_x2imap_strm_fnp4(...)]
+} (*where*)//end-of-[gseq_x2imap_strm_f4np(...)]
 (* ****** ****** *)
 #impltmp
 <xs,ys>
 <x0,y0><z0>
-gseq_x2imap_strm_cfr4
+gseq_x2imap_strm_c4fr
 (  xs, ys, f0  ) =
 (
 gseq_x2imap_strm
@@ -4105,7 +4105,7 @@ gseq_x2imap_strm
 #impltmp
 x2imap$fopr
 <x0,y0><z0>(ix,x0,jy,y0) = f0(ix,x0,jy,y0)
-} (*where*)//end-of-[gseq_x2imap_strm_cfr4(...)]
+} (*where*)//end-of-[gseq_x2imap_strm_c4fr(...)]
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gseq000.dats] *)

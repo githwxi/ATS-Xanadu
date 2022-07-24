@@ -167,6 +167,28 @@ else true // end of [else]
 (* ****** ****** *)
 //
 #impltmp
+gint_foreach_sint<>
+  (xs) =
+( loop(0) ) where
+{
+//
+#typedef x0 = nint
+#typedef xs = sint
+//
+fun
+loop(x0: sint): void =
+if
+(x0 < xs)
+then
+loop(succ(x0)) where
+{
+val () = foreach$work<x0>(x0)
+} else ((*void*)) //end(else)
+} (* end of [gint_foreach_sint] *)
+//
+(* ****** ****** *)
+//
+#impltmp
 gint_rforall_sint<>
   (xs) =
 ( loop(xs) ) where
@@ -350,6 +372,8 @@ gseq_consq<xs><x0> = gint_consq_sint<>
 //
 #impltmp
 gseq_forall<xs><x0> = gint_forall_sint<>
+#impltmp
+gseq_foreach<xs><x0> = gint_foreach_sint<>
 #impltmp
 gseq_rforall<xs><x0> = gint_rforall_sint<>
 //
