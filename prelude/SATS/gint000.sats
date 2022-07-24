@@ -279,6 +279,13 @@ gint_forall_uint(ub: uint): bool
 (* ****** ****** *)
 //
 fun<>
+gint_foreach_sint(ub: sint): void
+fun<>
+gint_foreach_uint(ub: uint): void
+//
+(* ****** ****** *)
+//
+fun<>
 gint_rforall_sint(ub: sint): bool
 fun<>
 gint_rforall_uint(ub: uint): bool

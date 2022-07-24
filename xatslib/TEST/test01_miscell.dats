@@ -170,20 +170,23 @@ val ( ) = prerrln("xs2 = ", xs2)
 // HX:
 // Fri Jul  1 20:34:36 EDT 2022
 *)
+val ( ) = prerrln("xys = ", xys) where
+{
 val xys =
-gseq_z2map_fnp2
+gseq_z2map_f2np
 ( list(1,3,5)
-, list(2,4,6)
-, lam(x:int,y:int) => 10*x+y)
-val ( ) = prerrln("xys = ", xys)
+, list(2,4,6), lam(x:int,y:int) => 10*x+y) }
 //
 (* ****** ****** *)
 (*
 // HX:
 // Fri Jul  1 21:41:55 EDT 2022
 *)
+val ( ) =
+prerrln("xys = ", xys) where
+{
 val xys =
-gseq_x2map_list_cfr2
+gseq_x2map_list_c2fr
 ( list(1,3,5,7)
 , list(0,2,4,8)
 , lam(x:int,y:int) => 10*x + y)
@@ -191,9 +194,7 @@ val xys =
 glseq_filter0(xys) where
 {
 #impltmp
-filter0$test<int>(xy) = (xy % 10 <= 4)
-}
-val ( ) = prerrln("xys = ", xys)
+filter0$test<int>(xy) = (xy % 10 <= 4) } }
 //
 (* ****** ****** *)
 (*
@@ -201,7 +202,7 @@ val ( ) = prerrln("xys = ", xys)
 // Sat Jul  2 02:37:39 EDT 2022
 *)
 val ( ) =
-gseq_x2iforeach_fnp4
+gseq_x2iforeach_f4np
 ( list(1,3,5),"2468"
 , lam(i:int,x:int,j:int,y:char) =>
   (
@@ -209,7 +210,7 @@ gseq_x2iforeach_fnp4
   prerr("(", x, ",", y, ")");
   if ((j+1)%4) = 0 then prerrln();
   )
-) (* end of [gseq_x2iforeach_fnp4] *)
+) (* end of [gseq_x2iforeach_f4np] *)
 //
 (* ****** ****** *)
 //
@@ -518,7 +519,7 @@ val () = prerrln("b0 = ", b0) where
 {
   val b0 =
   exists(
-  list_map_fnp1
+  list_map_f1np
   (list_btw(0, 10), lam(x:int) => x >= 10))
 }
 

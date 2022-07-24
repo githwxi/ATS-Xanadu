@@ -468,13 +468,13 @@ cons with list_cons of 000
 fun
 <x0:t0>
 <y0:t0>
-list_map_fnp1
+list_map_f1np
 {n:int}
 (xs:list(x0, n), f0:(x0)-<fnp>y0): list(y0, n)
 fun
 <x0:t0>
 <y0:vt>
-list_map_fnp1_vt
+list_map_f1np_vt
 {n:int}
 (xs:list(x0, n), f0:(x0)-<fnp>y0): list_vt(y0, n)
 (* ****** ****** *)

@@ -4,31 +4,31 @@
 *)
 (* ****** ****** *)
 #typedef
-cfr0(r0:vt) = () -<cfr> r0
+c0fr(r0:vt) = () -<cfr> r0
 (* ****** ****** *)
 #typedef
-fnp1
+f1np
 (a1:t0,r0:vt) = (a1)-<fnp>r0
 #typedef
-cfr1
+c1fr
 (a1:t0,r0:vt) = (a1)-<cfr>r0
 (* ****** ****** *)
 #typedef
-fnp2
+f2np
 (a1:t0
 ,a2:t0,r0:vt) = (a1,a2)-<fnp>r0
 #typedef
-cfr2
+c2fr
 (a1:t0
 ,a2:t0,r0:vt) = (a1,a2)-<cfr>r0
 (* ****** ****** *)
 #typedef
-fnp3
+f3np
 (a1:t0
 ,a2:t0
 ,a3:t0,r0:vt) = (a1,a2,a3)-<fnp>r0
 #typedef
-cfr3
+c3fr
 (a1:t0
 ,a2:t0
 ,a3:t0,r0:vt) = (a1,a2,a3)-<cfr>r0
@@ -49,27 +49,27 @@ cfr4
 //
 fun
 <a1:t0>
-gfun_not_fnp1
+gfun_not_f1np
 ( f0
-: fnp1(a1,bool)): cfr1(a1, bool)
+: f1np(a1,bool)): c1fr(a1, bool)
 fun
 <a1:t0>
-gfun_not_cfr1
+gfun_not_c1fr
 ( f0
-: cfr1(a1,bool)): cfr1(a1, bool)
+: c1fr(a1,bool)): c1fr(a1, bool)
 //
 (* ****** ****** *)
 //
 fun
 <x0:vt>
 gfun_enum_strx_vt
-  (xs: strx_vt( x0 )): cfr0( x0 )
+  (xs: strx_vt( x0 )): c0fr( x0 )
 //
 //
 fun
 <xs:t0>
 <x0:t0>
-gfun_memberq_gseq(xs): cfr1(x0,bool)
+gfun_memberq_gseq(xs): c1fr(x0,bool)
 //
 (* ****** ****** *)
 //
@@ -78,8 +78,8 @@ gfun_memberq_gseq(xs): cfr1(x0,bool)
 //
 (* ****** ****** *)
 
-#symload fnot with gfun_not_fnp1 of 0100
-#symload fnot with gfun_not_cfr1 of 0100
+#symload fnot with gfun_not_f1np of 0100
+#symload fnot with gfun_not_c1fr of 0100
 
 (* ****** ****** *)
 //
@@ -92,3 +92,4 @@ gfun_memberq_gseq(xs): cfr1(x0,bool)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gfun000.sats] *)
+ 

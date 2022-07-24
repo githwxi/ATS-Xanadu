@@ -16,11 +16,11 @@
 //
 #impltmp
 <a1>
-gfun_not_fnp1
+gfun_not_f1np
 (    f0    ) = lam(x1) => not(f0(x1))
 #impltmp
 <a1>
-gfun_not_cfr1
+gfun_not_c1fr
 (    f0    ) = lam(x1) => not(f0(x1))
 //
 (* ****** ****** *)
