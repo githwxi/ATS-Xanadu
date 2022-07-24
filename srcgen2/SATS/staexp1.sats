@@ -111,5 +111,49 @@ where
 #typedef g1maglst = list(g1mag)
 //
 (* ****** ****** *)
+//
+datatype
+g1exp_node =
+//
+| G1Eid0 of (sym_t)
+//
+| G1Eint of (token)
+| G1Echr of (token)
+| G1Eflt of (token)
+| G1Estr of (token)
+//
+| G1Eif0 of
+  ( g1exp(* cond *)
+  , g1exp(* then *)
+  , g1exp(* else *) )
+//
+| G1Eapp of ((*void*))
+//
+| G1Eapp1 of
+  (g1exp(*fun*), g1exp)
+| G1Eapp2 of
+  (g1exp(*fun*), g1exp, g1exp)
+//
+| G1Elist of g1explst (*temp*)
+//
+| G1Enone0 of () // HX: EMPTY
+| G1Enone1 of (g0exp) // HX: ERROR!
+//
+(* ****** ****** *)
+fun
+g1nam_fprint: (FILR, g1nam)->void
+fun
+g1exp_fprint: (FILR, g1exp)->void
+(* ****** ****** *)
+//
+fun
+g1exp_get_lctn(g1exp): loc_t
+fun
+g1exp_get_node(g1exp): g1exp_node
+//
+#symload lctn with g1exp_get_lctn
+#symload node with g1exp_get_node
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_staexp1.sats] *)
