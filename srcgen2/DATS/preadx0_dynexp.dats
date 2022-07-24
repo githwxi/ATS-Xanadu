@@ -425,9 +425,11 @@ d0exp_errvl_drp0
 (
 case+ drp0 of
 |
-d0exp_RPAREN_cons0(tok) => 0
+d0exp_RPAREN_cons0
+(      tok      ) => 0
 |
-d0exp_RPAREN_cons1(tkb,des,tke) => errvl(des)
+d0exp_RPAREN_cons1
+( tkb, des, tke ) => d0exp_errvl(des)
 )
 //
 (* ****** ****** *)
@@ -1818,7 +1820,7 @@ let
 val e00 = err
 //
 val
-d0p1 = preadx0_d0exp(d0e1, err)
+d0e1 = preadx0_d0exp(d0e1, err)
 //
 val (  ) =
 (
@@ -1830,7 +1832,7 @@ T_AS0() => ((*void*))
 _(*non-T_AS0*) => (err := err + 1)
 )
 //
-val d0gs = preadx0_d0pat(d0p2, err)
+val d0p2 = preadx0_d0pat(d0p2, err)
 //
 in//let
 if

@@ -185,6 +185,9 @@ fun
 token_GT0_fpemsg:(FILR,token)->void
 #extern
 fun
+token_OF0_fpemsg:(FILR,token)->void
+#extern
+fun
 token_EQGT_fpemsg:(FILR,token)->void
 #extern
 fun
@@ -949,6 +952,19 @@ val () =
 fpemsg(out, d0e1);
 fpemsg(out, dthn); fpemsg(out, dels))
 }
+//
+|
+D0Ecas0
+(tcas
+,d0e1
+,tkof,tbar,dcls) =>
+let
+val () =
+  d0exp_fpemsg(out, d0e1)
+val () =
+  token_OF0_fpemsg(out, tkof)
+val () = d0clslst_fpemsg(out, dcls)
+endlet // end of [D0Ecas0(_,_,_,_,_)]
 //
 |
 D0Etup1
@@ -1730,6 +1746,25 @@ println
 ("PREADX0-ERROR:",tok0.lctn(),":",tok0)
 //
 end (*let*) // end of [t0ken_GT0_fpemsg]
+//
+#implfun
+token_OF0_fpemsg
+  (out, tok0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+tok0.node() of
+|
+T_OF0() => ((*void*))
+|
+_(*non-T_OF0*) =>
+println
+("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+//
+end (*let*) // end of [t0ken_OF0_fpemsg]
 //
 #implfun
 token_EQGT_fpemsg
