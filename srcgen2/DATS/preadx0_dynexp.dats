@@ -356,23 +356,22 @@ d0exp_errvl with d0exp_errvl_a3
 //
 #extern
 fun
-d0exp_errvl_d0es
+d0exp_errvl_list
 (d0es: d0explst): sint
 #symload
-d0exp_errvl with d0exp_errvl_d0es
-#symload errvl with d0exp_errvl_d0es
+d0exp_errvl with d0exp_errvl_list
+#symload errvl with d0exp_errvl_list
 //
 #implfun
-d0exp_errvl_d0es(d0es) =
+d0exp_errvl_list(d0es) =
 (
 case+ d0es of
 |
-list_nil
-((*nil*)) => 0
+list_nil((*nil*)) => 0
 |
-list_cons
-(d0e1,d0es) =>
-gmax(errvl(d0e1), errvl(d0es)))
+list_cons(d0e1,d0es) => gmax
+(d0exp_errvl(d0e1), d0exp_errvl(d0es))
+) (*case+*)//end-of-[d0exp_errvl_list]
 //
 (* ****** ****** *)
 //
@@ -394,6 +393,7 @@ d0exp_THEN_some(tok,d0e) => errvl(d0e)
 )
 //
 (* ****** ****** *)
+//
 #extern
 fun
 d0exp_errvl_else
@@ -434,19 +434,25 @@ d0exp_RPAREN_cons1(tkb,des,tke) => errvl(des)
 //
 #extern
 fun
-l0d0e_errvl
+l0d0e_errvl_a1
 (lde: l0d0e): sint
 #extern
 fun
-l0d0e_errvl_ldes
+l0d0e_errvl_list
 (ldes: l0d0elst): sint
 (* ****** ****** *)
-#symload errvl with l0d0e_errvl
-#symload errvl with l0d0e_errvl_ldes
+#symload
+errvl with l0d0e_errvl_a1
+#symload
+errvl with l0d0e_errvl_list
+#symload
+l0d0e_errvl with l0d0e_errvl_a1
+#symload
+l0d0e_errvl with l0d0e_errvl_list
 (* ****** ****** *)
 //
 #implfun
-l0d0e_errvl(ld0e) =
+l0d0e_errvl_a1(ld0e) =
 (
   d0exp_errvl(d0e)) where
 {
@@ -455,18 +461,18 @@ l0d0e_errvl(ld0e) =
 }
 //
 #implfun
-l0d0e_errvl_ldes(ldes) =
+l0d0e_errvl_list(ldes) =
 (
 case+ ldes of
 |
-list_nil
-((*nil*)) => 0
+list_nil((*nil*)) => 0
 |
-list_cons
-(lde1,ldes) =>
-gmax(errvl(lde1), errvl(ldes)))
+list_cons(lde1,ldes) => gmax
+(l0d0e_errvl(lde1), l0d0e_errvl(ldes))
+) (*case+*)//end-of-(l0d0e_errvl_list)
 //
 (* ****** ****** *)
+//
 #extern
 fun
 l0d0e_errvl_ldrb
@@ -489,6 +495,44 @@ l0d0e_RBRACE_cons1
 (* ****** ****** *)
 //
 fun
+d0cls_errvl_a1
+(dcl: d0cls): sint =
+(
+case+ dcl.node() of
+|
+D0CLSgpt(dgpt) => 0
+|
+D0CLScls
+(dgpt,tkeg,d0e1) => errvl(d0e1)
+)
+#symload
+d0cls_errvl with d0cls_errvl_a1
+#symload errvl with d0cls_errvl_a1
+//
+(* ****** ****** *)
+//
+#extern
+fun
+d0cls_errvl_list
+(dcls: d0clslst): sint
+#symload
+d0cls_errvl with d0cls_errvl_list
+#symload errvl with d0cls_errvl_list
+//
+#implfun
+d0cls_errvl_list(dcls) =
+(
+case+ dcls of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(dcl1,dcls) => gmax
+(d0cls_errvl(dcl1), d0cls_errvl(dcls))
+) (*case+*)//end-of-(d0cls_errvl_list)
+//
+(* ****** ****** *)
+//
+fun
 d0ecl_errvl_a1
 (dcl: d0ecl): sint =
 (
@@ -502,25 +546,25 @@ d0ecl_errvl with d0ecl_errvl_a1
 #symload errvl with d0ecl_errvl_a1
 //
 (* ****** ****** *)
+//
 #extern
 fun
-d0ecl_errvl_dcls
+d0ecl_errvl_list
 (dcls: d0eclist): sint
 #symload
-d0ecl_errvl with d0ecl_errvl_dcls
-#symload errvl with d0ecl_errvl_dcls
+d0ecl_errvl with d0ecl_errvl_list
+#symload errvl with d0ecl_errvl_list
 //
 #implfun
-d0ecl_errvl_dcls(dcls) =
+d0ecl_errvl_list(dcls) =
 (
 case+ dcls of
 |
-list_nil
-((*nil*)) => 0
+list_nil((*nil*)) => 0
 |
-list_cons
-(dcl1,dcls) =>
-gmax(errvl(dcl1), errvl(dcls)))
+list_cons(dcl1,dcls) => gmax
+(d0ecl_errvl(dcl1), d0ecl_errvl(dcls))
+) (*case+*)//end-of-(d0ecl_errvl_list)
 //
 (* ****** ****** *)
 //
@@ -576,9 +620,12 @@ end (*let*) // end of [d0exp_lpar_errck]
 //
 fun
 d0exp_if0_errck
-( loc: loc_t
-, tif0: token
-, d0e1: d0exp
+( loc
+: loc_t
+, tif0
+: token
+, d0e1
+: d0exp
 , dthn
 : d0exp_THEN
 , dels
@@ -600,9 +647,12 @@ end (*let*) // end of [d0exp_if0_errck]
 //
 fun
 d0exp_if1_errck
-( loc: loc_t
-, tif0: token
-, d0e1: d0exp
+( loc
+: loc_t
+, tif0
+: token
+, d0e1
+: d0exp
 , dthn
 : d0exp_THEN
 , dels
@@ -621,6 +671,66 @@ d0exp_errck
   (loc
   ,D0Eif1(tif0,d0e1,dthn,dels,tinv)) )
 end (*let*) // end of [d0exp_if1_errck]
+//
+(* ****** ****** *)
+//
+fun
+d0exp_cas0_errck
+( loc
+: loc_t
+, tcas
+: token
+, d0e1
+: d0exp
+, tkof
+: token
+, tbar
+: tokenopt
+, dcls
+: d0clslst): d0exp =
+let
+val lvl =
+(
+gmax
+(errvl(d0e1),errvl(dcls)))
+in//let
+d0exp_errck
+( lvl+1
+, d0exp
+  (loc
+  ,D0Ecas0(tcas,d0e1,tkof,tbar,dcls)))
+end (*let*) // end of [d0exp_cas0_errck]
+//
+(* ****** ****** *)
+//
+fun
+d0exp_cas1_errck
+( loc
+: loc_t
+, tcas
+: token
+, d0e1
+: d0exp
+, tkof
+: token
+, tbar
+: tokenopt
+, dcls
+: d0clslst
+, tinv: t0inv): d0exp =
+let
+val lvl =
+(
+gmax
+(errvl(d0e1),errvl(dcls)))
+in//let
+d0exp_errck
+( lvl+1
+, d0exp
+  (loc
+  ,D0Ecas1
+   (tcas, d0e1,tkof,tbar,dcls,tinv )))
+end (*let*) // end of [d0exp_cas1_errck]
 //
 (* ****** ****** *)
 //
@@ -1054,6 +1164,11 @@ D0Eif1
 ,_,_,_,_) => f0_if1( d0e, err )
 //
 |
+D0Ecas0 _ => f0_cas0(d0e, err)
+|
+D0Ecas1 _ => f0_cas1(d0e, err)
+//
+|
 D0Etup1 _ => f0_tup1(d0e, err)
 |
 D0Ercd2 _ => f0_rcd2(d0e, err)
@@ -1205,16 +1320,15 @@ D0Eif1
 , d0e1, dthn
 , dels, tinv) = d0e.node()
 //
-val
-d0e1 = preadx0_d0exp(d0e1, err)
+val d0e1 =
+  preadx0_d0exp(d0e1, err)
 //
-val
-dthn = preadx0_d0exp_THEN(dthn, err)
-val
-dels = preadx0_d0exp_ELSE(dels, err)
+val dthn =
+  preadx0_d0exp_THEN(dthn, err)
+val dels =
+  preadx0_d0exp_ELSE(dels, err)
 //
-val
-tinv = preadx0_t0inv(tinv, err)
+val tinv = preadx0_t0inv(tinv, err)
 //
 in
 if
@@ -1223,6 +1337,90 @@ then d0e else
 d0exp_if1_errck
 (d0e.lctn(),tif0,d0e1,dthn,dels,tinv)
 end (*let*) // end of [f0_if1(d0e, err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_cas0
+( d0e
+: d0exp
+, err
+: &sint >> _): d0exp =
+let
+//
+val e00 = err
+//
+val-
+D0Ecas0
+( tcas
+, d0e1, tkof
+, tbar, dcls) = d0e.node()
+//
+val d0e1 =
+  preadx0_d0exp(d0e1, err)
+//
+val (  ) =
+(
+case+
+tkof.node() of
+| T_OF0() => ((*void*))
+| _(*non-T_OF0*) => (err := err+1)
+)
+//
+val
+dcls = preadx0_d0clslst(dcls, err)
+//
+in
+if
+(err=e00)
+then d0e else
+d0exp_cas0_errck
+(d0e.lctn(),tcas,d0e1,tkof,tbar,dcls)
+end (*let*) // end of [f0_cas0(d0e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_cas1
+( d0e
+: d0exp
+, err
+: &sint >> _): d0exp =
+let
+//
+val e00 = err
+//
+val loc = d0e.lctn()
+//
+val-
+D0Ecas1
+( tcas
+, d0e1
+, tkof, tbar
+, dcls, tinv) = d0e.node()
+//
+val d0e1 =
+  preadx0_d0exp(d0e1, err)
+//
+val (  ) =
+(
+case+
+tkof.node() of
+| T_OF0() => ((*void*))
+| _(*non-T_OF0*) => (err := err+1)
+)
+//
+val dcls =
+  preadx0_d0clslst(dcls, err)
+val tinv = preadx0_t0inv(tinv, err)
+//
+in
+if
+(err=e00)
+then d0e else
+d0exp_cas1_errck
+(loc, tcas,d0e1,tkof,tbar,dcls,tinv )
+end (*let*) // end of [f0_cas1(d0e,err)]
 //
 (* ****** ****** *)
 //
@@ -1764,6 +1962,16 @@ preadx0_synentlst_fun(lst,err,preadx0_l0d0e)
 preadx0_f0arglst
   (  lst, err  ) =
 preadx0_synentlst_fun(lst,err,preadx0_f0arg)
+(* ****** ****** *)
+#implfun
+preadx0_d0gualst
+  (  lst, err  ) =
+preadx0_synentlst_fun(lst,err,preadx0_d0gua)
+(* ****** ****** *)
+#implfun
+preadx0_d0clslst
+  (  lst, err  ) =
+preadx0_synentlst_fun(lst,err,preadx0_d0cls)
 (* ****** ****** *)
 #implfun
 preadx0_t0qualst
