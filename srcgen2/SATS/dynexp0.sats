@@ -254,7 +254,7 @@ d0pat_node =
 //
 | D0Psarg of
   (token(*LB*), s0arglst, token)
-// end of [D0Psarg]
+//
 | D0Plpar of
   (token, d0patlst, d0pat_RPAREN)
 //
