@@ -43,6 +43,28 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+//
+#staload
+LAB = "./xlabel0.sats"
+#staload
+LOC = "./locinfo.sats"
+//
+#typedef lab_t = $LAB.lab_t
+#typedef label = $LAB.label
+#typedef loc_t = $LOC.loc_t
+#typedef loctn = $LOC.loctn
+//
+(* ****** ****** *)
+//
+#staload
+SYM = "./xsymbol.sats"
+#staload
+LEX = "./lexing0.sats"
+//
+#typedef sym_t = $SYM.sym_t
+#typedef token = $LEX.token
+//
+(* ****** ****** *)
 #staload S0E = "./staexp0.sats"
 (* ****** ****** *)
 //
@@ -63,32 +85,30 @@ datatype g1nam =
 //
 where
 {
-g0nam = $S0E.g0nam
-and
-g1namlst = list(g1nam)
-and
-g1namopt = Option(g1nam)
+#typedef g0nam = $S0E.g0nam
+#typedef g1namlst = list(g1nam)
+#typedef g1namopt = optn(g1nam)
 } (*where*) // end-of(datatype(g1nam))
 //
 (* ****** ****** *)
-abstbox g1exp_tbox = ptr
-abstype g1mac_tbox = ptr
+#abstbox g1exp_tbox // ptr
+#abstype g1mac_tbox // ptr
 (* ****** ****** *)
-abstbox g1mag_tbox = ptr
+#abstbox g1mag_tbox // ptr
 (* ****** ****** *)
 //
-typedef g0exp = $S0E.g0exp
+#typedef g0exp = $S0E.g0exp
 //
-typedef g1exp = g1exp_tbox
-typedef g1mac = g1mac_tbox
-typedef g1arg = token(*sym*)
-typedef g1mag = g1mag_tbox
+#typedef g1exp = g1exp_tbox
+#typedef g1mac = g1mac_tbox
+#typedef g1arg = token(*sym*)
+#typedef g1mag = g1mag_tbox
 //
-typedef g1explst = list(g1exp)
-typedef g1expopt = optn(g1exp)
+#typedef g1explst = list(g1exp)
+#typedef g1expopt = optn(g1exp)
 //
-typedef g1arglst = list(g1arg)
-typedef g1maglst = list(g1mag)
+#typedef g1arglst = list(g1arg)
+#typedef g1maglst = list(g1mag)
 //
 (* ****** ****** *)
 
