@@ -514,4 +514,26 @@ end(*let*)
 //
 (* ****** ****** *)
 
+val () = prerrln("b0 = ", b0) where
+{
+  val b0 =
+  exists(
+  list_map_fnp1
+  (list_btw(0, 10), lam(x:int) => x >= 10))
+}
+
+(* ****** ****** *)
+
+val () = prerrln("b0 = ", b0) where
+{
+  val b0 =
+  forall(
+  list_map
+  (list_btw(0, 10)) where
+  {
+    #impltmp map$fopr<sint><bool>(x) = (x < 10) } )
+}
+
+(* ****** ****** *)
+
 (* end of [ATS3/xatslib/TEST/test01_miscell.dats] *)

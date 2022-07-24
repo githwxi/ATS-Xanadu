@@ -140,6 +140,28 @@ loop
 (* ****** ****** *)
 //
 #impltmp
+<a>(*tmp*)
+list_make_strm(xs) =
+list_vt2t
+(list_make_strm_vt<a>(xs))
+#impltmp
+<a>(*tmp*)
+list_make_strm_vt(xs) =
+(list_vt_make_strm<a>(xs))
+//
+#impltmp
+<a>(*tmp*)
+list_make_lstrm(xs) =
+list_vt2t
+(list_make_lstrm_vt<a>(xs))
+#impltmp
+<a>(*tmp*)
+list_make_lstrm_vt(xs) =
+(list_vt_make_lstrm<a>(xs))
+//
+(* ****** ****** *)
+//
+#impltmp
 <>(*tmp*)
 list_nilq
   (xs) =
@@ -147,7 +169,7 @@ list_nilq
 case+ xs of
 | list_nil() => true
 | list_cons(_, _) => false
-)
+) (*case*) // end-of-[list_nilq(xs)]
 #impltmp
 <>(*tmp*)
 list_consq
@@ -156,7 +178,7 @@ list_consq
 case+ xs of
 | list_nil() => false
 | list_cons(_, _) => (true)
-)
+) (*case*) // end-of-[list_consq(xs)]
 //
 (* ****** ****** *)
 //
@@ -178,9 +200,11 @@ list_cons
 #impltmp
 <a:type>
 list_head_raw(xs) = (xs.0)
+(* end of [list_head_raw(xs)] *)
 #impltmp
 <a:type>
 list_tail_raw(xs) = (xs.1)
+(* end of [list_tail_raw(xs)] *)
 //
 (* ****** ****** *)
 //
@@ -192,7 +216,7 @@ list_last_ini<a>(x0, xs)
 ) where
 {
 val+list_cons(x0, xs) = xs
-} (*where*) // list_last(xs)
+} (*where*)//end-of-(list_last)
 //
 #impltmp
 <a>(*tmp*)
@@ -212,7 +236,7 @@ list_nil() => x0
 |
 list_cons(x1, xs) => loop(x1, xs)
 )
-} (*where*)//end-of(list_last_ini)
+} (*where*)//end-of-(list_last_ini)
 //
 (* ****** ****** *)
 //
@@ -556,7 +580,7 @@ loop
 (xs: list(x0)): bool =
 (
 case+ xs of
-| list_nil() => true
+| list_nil() => false
 | list_cons(x0, xs) =>
   if
   exists$test<x0>(x0)
@@ -576,7 +600,7 @@ loop
 (xs: list(x0)): bool =
 (
 case+ xs of
-| list_nil() => true
+| list_nil() => (true)
 | list_cons(x0, xs) =>
   if
   forall$test<x0>(x0)
@@ -603,7 +627,7 @@ case+ xs of
   foreach$work<x0>(x0) in loop(xs)
   end
 )
-}
+}(*where*)//end-of[list_foreach(xs)]
 //
 (* ****** ****** *)
 //
@@ -632,7 +656,7 @@ strmcon_vt_nil()
 list_cons(x0, xs) =>
 strmcon_vt_cons(x0, auxmain(xs))
 )
-} (* end of [list_strmize] *)
+}(*where*)//end-of-[list_strmize(xs)]
 //
 (* ****** ****** *)
 //
@@ -680,7 +704,7 @@ in
 let
 var r0: list_vt(y0) in loop(xs, r0); r0
 end
-end (* end of [list_map_vt] *)
+end (*let*) // end of [list_map_vt(xs)]
 //
 (* ****** ****** *)
 //
@@ -724,7 +748,7 @@ list_cons(x0, xs) =>
 }
 ) (* end of [loop] *)
 //
-} (* end of [list_maprev_vt] *)
+}(*where*)//end-(list_maprev_vt(xs))
 //
 (* ****** ****** *)
 
@@ -766,7 +790,7 @@ tabulate$fopr<a><n>(i0) = f0(i0)
 //
 in
   list_tabulate<a><n>(n0)
-end // end of [list_tabulate_cfr]
+end (*let*) // end of [list_tabulate_cfr]
 //
 (* ****** ****** *)
 
@@ -833,6 +857,31 @@ endlet // end of [list_cons(x0, xs)]
 )
 }(*where*)//end-of-[list_subsetize_vt(xs)]
 //
+(* ****** ****** *)
+//
+// HX-2022-07-23:
+// higher-order gseq-functions
+// Sun Jul 24 01:02:26 EDT 2022
+//
+(* ****** ****** *)
+#impltmp
+<x0><y0>
+list_map_fnp1
+(    xs, f0    ) =
+(
+list_map<x0><y0>(xs)) where
+{
+#impltmp map$fopr<x0><y0>(x0) = f0(x0)
+} (*where*)//end-[list_map_fnp1(xs,f0)]
+#impltmp
+<x0><y0>
+list_map_fnp1_vt
+(    xs, f0    ) =
+(
+list_map_vt<x0><y0>(xs)) where
+{
+#impltmp map$fopr<x0><y0>(x0) = f0(x0)
+} (*where*)//end-[list_map_fnp1_vt(xs,f0)]
 (* ****** ****** *)
 //
 // For gseq-operations
@@ -968,6 +1017,15 @@ gseq_strmize<list(a)><a> = list_strmize<a>
 #impltmp
 {a:t0}
 gseq_rlistize<list(a)><a> = list_rlistize<a>
+//
+(* ****** ****** *)
+//
+#impltmp
+{a:t0}
+gseq_unstrm<list(a)><a> = list_make_strm<a>
+#impltmp
+{a:t0}
+gseq_unstrm_vt<list(a)><a> = list_make_lstrm<a>
 //
 (* ****** ****** *)
 //

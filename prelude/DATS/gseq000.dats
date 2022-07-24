@@ -1626,7 +1626,7 @@ val css =
 gseq_strmize<cz><cs>(css)
 //
 in//let
-strn_vt_make_strm_vt<>
+strn_vt_make_lstrm<>
 (strm_vt_gconcat<cs><c0>(css))
 end // end of [gseq_concat_strn]
 //

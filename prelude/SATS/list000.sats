@@ -89,6 +89,22 @@ list_make_nval_vt
 //
 (* ****** ****** *)
 //
+fun
+<a:t0>
+list_make_strm(strm(a)): list(a)
+fun
+<a:t0>
+list_make_strm_vt(strm(a)): list_vt(a)
+//
+fun
+<a:t0>
+list_make_lstrm(strm_vt(a)): list(a)
+fun
+<a:t0>
+list_make_lstrm_vt(strm_vt(a)): list_vt(a)
+//
+(* ****** ****** *)
+//
 fun<>
 list_nilq
 {a:type}{n:int}
@@ -422,6 +438,7 @@ cons with list_cons of 000
 //
 (* ****** ****** *)
 
+#symload exists with list_exists of 1000
 #symload forall with list_forall of 1000
 #symload foreach with list_foreach of 1000
 
@@ -441,6 +458,25 @@ cons with list_cons of 000
 (* ****** ****** *)
 #symload mergesort with list_mergesort of 1000
 #symload mergesort_vt with list_mergesort_vt of 1000
+(* ****** ****** *)
+//
+// HX-2022-07-23:
+// higher-order gseq-functions
+// Sun Jul 24 01:02:26 EDT 2022
+//
+(* ****** ****** *)
+fun
+<x0:t0>
+<y0:t0>
+list_map_fnp1
+{n:int}
+(xs:list(x0, n), f0:(x0)-<fnp>y0): list(y0, n)
+fun
+<x0:t0>
+<y0:vt>
+list_map_fnp1_vt
+{n:int}
+(xs:list(x0, n), f0:(x0)-<fnp>y0): list_vt(y0, n)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_list000.sats] *)
