@@ -1,8 +1,8 @@
-######
+########################################################################
 #
 # For building xatsopt
 #
-######
+########################################################################
 
 AR=ar
 CP=cp
@@ -88,6 +88,14 @@ parsing_sats: ; $(XATSOPT) --static SATS/parsing.sats
 all_sats:: \
 preadx0_sats
 preadx0_sats: ; $(XATSOPT) --static SATS/preadx0.sats
+######
+all_sats:: \
+staexp1_sats
+staexp1_sats: ; $(XATSOPT) --static SATS/staexp1.sats
+######
+all_sats:: \
+dynexp1_sats
+dynexp1_sats: ; $(XATSOPT) --static SATS/dynexp1.sats
 ######
 
 ######
@@ -291,11 +299,35 @@ preadx0_errmsg_dats: ; $(XATSOPT) --dynamic DATS/preadx0_errmsg.dats
 
 ######
 all_dats:: \
+staexp1_dats
+staexp1_dats: ; $(XATSOPT) --dynamic DATS/staexp1.dats
+######
+all_dats:: \
+staexp1_print0_dats
+staexp1_print0_dats: ; $(XATSOPT) --dynamic DATS/staexp1_print0.dats
+######
+
+######
+all_dats:: \
+dynexp1_dats
+dynexp1_dats: ; $(XATSOPT) --dynamic DATS/dynexp1.dats
+######
+all_dats:: \
+dynexp1_print0_dats
+dynexp1_print0_dats: ; $(XATSOPT) --dynamic DATS/dynexp1_print0.dats
+######
+
+######
+all_dats:: \
 xatsopt_tmplib_dats
 xatsopt_tmplib_dats: ; $(XATSOPT) --dynamic DATS/xatsopt_tmplib.dats
 ######
 
+########################################################################
+
 testall:: ; make all > /dev/null
+
+########################################################################
 
 ######
 srclines:: ; wc -l */*.?ats
@@ -304,6 +336,7 @@ srclines_sats:: ; wc -l SATS/*.sats
 srclines_dats:: ; wc -l DATS/*.dats
 ######
 
+########################################################################
 
 ######
 clean:: ; rm -f */SATS/*~
@@ -315,4 +348,4 @@ clean:: ; rm -f */DATS/CATS/JS/*~
 cleanall:: clean
 ######
 
-###### end of [Makefile] ######
+######################## end of [Makefile] ##############################
