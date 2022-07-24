@@ -934,7 +934,8 @@ val (  ) =
 case+
 tend.node() of
 | T_GT0() => ()
-| _(*non-T_GT0*) => (err := err + 1))
+| T_LTGT() => ()
+| _(*non-T_GT0*) => (err := err+1))
 in//let
 if
 (err=e00)
@@ -968,8 +969,9 @@ val (  ) =
 (
 case+
 tend.node() of
-| T_GT0() => ()
-| _(*non-T_GT0*) => (err := err + 1))
+| T_GT0() => ((*void*))
+| T_LTGT() => ((*void*))
+| _(*non-T_GT0*) => (err := err+1))
 in//let
 if
 (err=e00)

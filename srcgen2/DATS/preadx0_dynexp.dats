@@ -610,6 +610,42 @@ end (*let*) // end of [d0exp_apps_errck]
 (* ****** ****** *)
 //
 fun
+d0exp_sarg_errck
+( loc
+: loc_t
+, tkb
+: token
+, ses
+: s0explst
+, tke: token): d0exp =
+let
+val lvl = 0
+in//let
+d0exp_errck
+(lvl+1,d0exp(loc,D0Esarg(tkb,ses,tke)))
+end (*let*) // end of [d0exp_sarg_errck]
+//
+(* ****** ****** *)
+//
+fun
+d0exp_targ_errck
+( loc
+: loc_t
+, tkb
+: token
+, ses
+: s0explst
+, tke: token): d0exp =
+let
+val lvl = 0
+in//let
+d0exp_errck
+(lvl+1,d0exp(loc,D0Etarg(tkb,ses,tke)))
+end (*let*) // end of [d0exp_targ_errck]
+//
+(* ****** ****** *)
+//
+fun
 d0exp_lpar_errck
 ( loc
 : loc_t
@@ -1185,6 +1221,11 @@ D0Eopid _ => f0_opid(d0e, err)
 D0Eapps _ => f0_apps(d0e, err)
 //
 |
+D0Esarg _ => f0_sarg(d0e, err)
+|
+D0Etarg _ => f0_targ(d0e, err)
+//
+|
 D0Elpar _ => f0_lpar(d0e, err)
 //
 |
@@ -1272,7 +1313,75 @@ if
 (err=e00)
 then (d0e)
 else d0exp_apps_errck(d0e.lctn(), des)
-end (*let*) // end of [f0_apps]
+end (*let*) // end of [f0_apps(d0e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_sarg
+( d0e
+: d0exp
+, err
+: &sint >> _): d0exp =
+let
+val e00 = err
+//
+val-
+D0Esarg
+( tkb
+, ses, tke) = d0e.node()
+//
+val des =
+preadx0_s0explst(ses, err)
+//
+val ( ) =
+(
+case+
+tke.node() of
+|
+T_RBRACE() => ((*void*))
+|
+_(*T_RBRACE*) => (err := err+1)
+)
+//
+in//let
+if
+(err=e00)
+then (d0e) else
+d0exp_sarg_errck(d0e.lctn(),tkb,ses,tke)
+end (*let*) // end of [f0_sarg(d0e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_targ
+( d0e
+: d0exp
+, err
+: &sint >> _): d0exp =
+let
+val e00 = err
+val-
+D0Etarg
+( tkb
+, ses, tke) = d0e.node()
+//
+val des =
+preadx0_s0explst(ses, err)
+val ( ) =
+(
+case+
+tke.node() of
+| T_GT0() => ((*void*))
+| T_LTGT() => ((*void*))
+| _(*T_GT0/LTGT*) => (err := err+1)
+)
+in//let
+if
+(err=e00)
+then (d0e) else
+d0exp_targ_errck(d0e.lctn(),tkb,ses,tke)
+end (*let*) // end of [f0_targ(d0e,err)]
 //
 (* ****** ****** *)
 //
@@ -1298,7 +1407,7 @@ if
 (err=e00)
 then d0e else
 d0exp_lpar_errck(d0e.lctn(),tkb,des,drp)
-end (*let*) // end of [f0_lpar]
+end (*let*) // end of [f0_lpar(d0e,err)]
 //
 (* ****** ****** *)
 //
