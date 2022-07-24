@@ -1077,7 +1077,17 @@ D0Eanno(d0e1, s0e2) =>
 D0Equal(tok1, d0e2) => fpemsg(out, d0e2)
 //
 |
+D0Eexists
+(tknd, d0es, d0e1) =>
+(
+  fpemsg(out, d0es); fpemsg(out, d0e1))
+//
+|
 D0Etkerr _ => ( (*void*) )
+//
+|
+D0Eextnam(  gnm1  ) => ( (*void*) )
+//
 |
 D0Eerrck(lvl0,d0e1) => d0exp_fpemsg(out, d0e)
 //
