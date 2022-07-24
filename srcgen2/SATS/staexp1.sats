@@ -257,7 +257,8 @@ sort1_make_node
 (* ****** ****** *)
 //
 datatype s1tcn_node =
-| S1TCN of (token, sort1opt) 
+|
+S1TCN of (token, sort1opt) 
 //
 (* ****** ****** *)
 fun
@@ -279,6 +280,38 @@ s1tcn_make_node
 (loc:loc_t, node:s1tcn_node): s1tcn
 //
 #symload s1tcn with s1tcn_make_node
+//
+(* ****** ****** *)
+//
+#abstbox d1tst_tbox // ptr
+#typedef d1tst = d1tst_tbox
+#typedef d1tstlst = list(d1tst)
+//
+(* ****** ****** *)
+//
+datatype d1tst_node =
+|
+D1TST of
+(token(*T_DATASORT*), s1tcnlst)
+//
+(* ****** ****** *)
+fun
+d1tst_fprint:(FILR,d1tst)->void
+//
+fun
+d1tst_get_lctn(d1tst): loc_t
+fun
+d1tst_get_node(d1tst): d1tst_node
+//
+#symload lctn with d1tst_get_lctn
+#symload node with d1tst_get_node
+//
+(* ****** ****** *)
+//
+fun
+d1tst_make_node
+(loc:loc_t, node:d1tst_node): d1tst
+#symload d1tst with d1tst_make_node
 //
 (* ****** ****** *)
 
