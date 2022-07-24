@@ -1790,6 +1790,157 @@ end (*let*)//end-of-[F0ARGmet0(_,_,_)]
 (* ****** ****** *)
 //
 #implfun
+preadx0_d0gua
+  (dgua, err) =
+(
+case+
+dgua.node() of
+|
+D0GUAexp
+( d0e1 ) => let
+//
+val e00 = err
+//
+val
+d0e1 = preadx0_d0exp(d0e1, err)
+//
+in//let
+if
+(err = e00)
+then (dgua) else
+d0gua(dgua.lctn(), D0GUAexp(d0e1))
+endlet // end of [ D0GUAexp(d0e1) ]
+|
+D0GUAmat
+(d0e1,tkas,d0p2) =>
+let
+//
+val e00 = err
+//
+val
+d0p1 = preadx0_d0exp(d0e1, err)
+//
+val (  ) =
+(
+case+
+tkas.node() of
+|
+T_AS0() => ((*void*))
+|
+_(*non-T_AS0*) => (err := err + 1)
+)
+//
+val d0gs = preadx0_d0pat(d0p2, err)
+//
+in//let
+if
+(err = e00)
+then (dgua) else
+d0gua(dgua.lctn(), D0GUAmat(d0e1,tkas,d0p2))
+endlet // end of [ D0GPTgua(_,_,_) ]
+) (*case+*)//end-of-[preadx0_d0gua(dgua,err)]
+//
+(* ****** ****** *)
+
+#implfun
+preadx0_d0gpt
+  (dgpt, err) =
+(
+case+
+dgpt.node() of
+|
+D0GPTpat
+( d0p1 ) => let
+//
+val e00 = err
+//
+val
+d0p1 = preadx0_d0pat(d0p1, err)
+//
+in//let
+if
+(err = e00)
+then (dgpt) else
+d0gpt(dgpt.lctn(), D0GPTpat(d0p1))
+endlet // end of [ D0GPTpat(d0p1) ]
+|
+D0GPTgua
+(d0p1,twhn,d0gs) =>
+let
+//
+val e00 = err
+//
+val d0p1 = preadx0_d0pat(d0p1, err)
+val (  ) =
+(
+case+
+twhn.node() of
+| T_WHEN() => ((*void*))
+| _(*non-T_WHEN*) => (err := err + 1)
+)
+//
+val d0gs = preadx0_d0gualst(d0gs, err)
+//
+in//let
+if
+(err = e00)
+then (dgpt) else
+d0gpt(dgpt.lctn(), D0GPTgua(d0p1,twhn,d0gs))
+endlet // end of [ D0GPTgua(_,_,_) ]
+) (*case+*)//end-of-[preadx0_d0gpt(dgpt,err)]
+
+(* ****** ****** *)
+
+#implfun
+preadx0_d0cls
+  (dcls, err) =
+(
+case+
+dcls.node() of
+|
+D0CLSgpt
+( dgpt ) => let
+//
+val e00 = err
+//
+val dgpt =
+preadx0_d0gpt(dgpt, err)
+in//let
+if
+(err=e00)
+then (dcls)
+else
+d0cls(dcls.lctn(), D0CLSgpt(dgpt))
+end (*let*)//end-of[D0CLSgpt(dgpt)]
+|
+D0CLScls
+(dgpt,tkeg,d0e1) =>
+let
+//
+val e00 = err
+//
+val dgpt = preadx0_d0gpt(dgpt, err)
+val (  ) =
+(
+case+
+tkeg.node() of
+| T_EQGT() => ((*void*))
+| _(*non-T_EQGT*) => (err := err+1)
+)
+val d0e1 = preadx0_d0exp(d0e1, err)
+//
+in//let
+if
+(err=e00)
+then (dcls)
+else
+d0cls(dcls.lctn(), D0CLScls(dgpt,tkeg,d0e1))
+endlet // end-of-[ D0CLScls(_,_,_) ]
+) (*case+*)//end-of-[preadx0_d0cls(dcls,err)]
+
+(* ****** ****** *)
+//
+#implfun
 preadx0_s0res
   (sres, err) =
 (
