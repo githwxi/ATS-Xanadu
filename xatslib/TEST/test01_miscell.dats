@@ -29,6 +29,16 @@ prerrln
 ("3 * -2 = ", 3 * (-2))
 (* ****** ****** *)
 
+val () = prerrln0(strmize(10))
+val () = prerrln0(listize(10))
+
+(* ****** ****** *)
+
+val () = prerrln0(strmize"abcde")
+val () = prerrln0(listize"abcde")
+
+(* ****** ****** *)
+
 val () =
 prerrln(
 "concat(...) = ",
@@ -427,17 +437,15 @@ prerrln
 local
 val
 linum =
-fenum(strx_vt_from(0))
+fenum
+(strx_vt_from(0))
 in//local
-val () = loop(10) where
+val () =
+foreach(10) where
 {
-fun loop(n: int): void =
-if
-(n > 0)
-then
-(
-prerrln
-("linum() = ", linum()); loop(n-1))
+#impltmp
+foreach$work<int>(i0) =
+prerrln("linum() = ", linum())
 }
 endloc (*local*) // end of [local(linum)]
 //

@@ -1837,7 +1837,7 @@ list_vt_print$beg<>() = print"$list_vt("
 #impltmp
 list_vt_print$end<>() = print(   ")"   )
 #impltmp
-list_vt_print$sep<>() = print(   ";"   )
+list_vt_print$sep<>() = print(   ","   )
 //
 (* ****** ****** *)
 //

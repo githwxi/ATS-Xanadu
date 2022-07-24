@@ -1439,7 +1439,7 @@ list_print$beg<(*0*)>() = print"$list("
 #impltmp
 list_print$end<(*0*)>() = print( ")"  )
 #impltmp
-list_print$sep<(*0*)>() = print( ";"  )
+list_print$sep<(*0*)>() = print( ","  )
 //
 (* ****** ****** *)
 //
