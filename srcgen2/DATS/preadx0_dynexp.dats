@@ -72,6 +72,15 @@ ATS_PACKNAME
 #symload lctn with f0arg_get_lctn
 #symload node with f0arg_get_node
 (* ****** ****** *)
+#symload lctn with d0gua_get_lctn
+#symload node with d0gua_get_node
+(* ****** ****** *)
+#symload lctn with d0gpt_get_lctn
+#symload node with d0gpt_get_node
+(* ****** ****** *)
+#symload lctn with d0cls_get_lctn
+#symload node with d0cls_get_node
+(* ****** ****** *)
 #symload lctn with d0ecl_get_lctn
 #symload node with d0ecl_get_node
 (* ****** ****** *)
@@ -836,6 +845,29 @@ end (*let*) // end of [d0exp_where_errck]
 (* ****** ****** *)
 //
 fun
+d0exp_try0_errck
+( loc: loc_t
+, tknd: token
+, d0e1: d0exp
+, twth: token
+, tbar: tokenopt
+, dcls: d0clslst
+, tend: token   ): d0exp =
+let
+  val lvl =
+  gmax(errvl(d0e1),errvl(dcls))
+in//let
+d0exp_errck
+( lvl+1,
+  d0exp_make_node
+  ( loc
+  , D0Etry0
+    (tknd,d0e1,twth,tbar,dcls,tend)) )
+end (*let*) // end of [d0exp_try0_errck]
+//
+(* ****** ****** *)
+//
+fun
 d0exp_lam0_errck
 ( loc: loc_t
 , tknd: token
@@ -1179,6 +1211,9 @@ D0Ercd2 _ => f0_rcd2(d0e, err)
 D0Elet0 _ => f0_let0(d0e, err)
 |
 D0Ewhere _ => f0_where(d0e, err)
+//
+|
+D0Etry0 _ => f0_try0(d0e, err)
 //
 |
 D0Elam0 _ => f0_lam0(d0e, err)
@@ -1547,6 +1582,58 @@ then (d0e) else
 d0exp_where_errck(d0e.lctn(),d0e1,dcls)
 end (*let*) // end of [f0_where(d0e,err)]
 //
+(* ****** ****** *)
+//
+fun
+f0_try0
+( d0e: d0exp
+, err: &sint >> _): d0exp =
+let
+//
+val e00 = err
+//
+val loc = d0e.lctn()
+//
+val-
+D0Etry0
+( tknd
+, d0e1
+, twth, tbar
+, dcls, tend) = d0e.node()
+//
+val
+d0e1 = preadx0_d0exp(d0e1, err)
+//
+val (  ) =
+(
+case+
+twth.node() of
+| T_WITH() => ()
+|
+_(*non-T_WITH*) => (err := err+1)
+)
+//
+val
+dcls = preadx0_d0clslst(dcls, err)
+//
+val (  ) =
+(
+case+
+tend.node() of
+| T_END() => ()
+| T_ENDTRY() => ()
+|
+_(*non-T_ENDTRY*) => (err := err+1)
+)
+//
+in//let
+if
+(err=e00)
+then (d0e) else
+d0exp_try0_errck
+(loc, tknd, d0e1, twth, tbar, dcls, tend)
+end (*let*) // end of [f0_try0(d0e, err)]
+
 (* ****** ****** *)
 //
 fun
