@@ -234,6 +234,24 @@ end (*let*) // end of [d0pat_apps_errck]
 (* ****** ****** *)
 //
 fun
+d0pat_sarg_errck
+( loc
+: loc_t
+, tkb
+: token
+, sas
+: s0arglst
+, tke: token): d0pat =
+let
+val lvl = 0
+in//let
+d0pat_errck
+(lvl+1,d0pat(loc,D0Psarg(tkb,sas,tke)))
+end (*let*) // end of [d0pat_sarg_errck]
+//
+(* ****** ****** *)
+//
+fun
 d0pat_lpar_errck
 ( loc
 : loc_t
@@ -1013,6 +1031,9 @@ d0p.node() of
 D0Papps _ => f0_apps(d0p, err)
 //
 |
+D0Psarg _ => f0_sarg(d0p, err)
+//
+|
 D0Plpar _ => f0_lpar(d0p, err)
 //
 |
@@ -1052,6 +1073,42 @@ if
 then (d0p)
 else d0pat_apps_errck(d0p.lctn(), dps)
 end (*let*) // end of [f0_apps]
+//
+(* ****** ****** *)
+//
+fun
+f0_sarg
+( d0p
+: d0pat
+, err
+: &sint >> _): d0pat =
+let
+val e00 = err
+//
+val-
+D0Psarg
+( tkb
+, sas, tke) = d0p.node()
+//
+val sas =
+preadx0_s0arglst(sas, err)
+//
+val ( ) =
+(
+case+
+tke.node() of
+|
+T_RBRACE() => ((*void*))
+|
+_(*T_RBRACE*) => (err := err+1)
+)
+//
+in//let
+if
+(err=e00)
+then (d0p) else
+d0pat_sarg_errck(d0p.lctn(),tkb,sas,tke)
+end (*let*) // end of [f0_sarg(d0p,err)]
 //
 (* ****** ****** *)
 //
@@ -1331,7 +1388,7 @@ D0Esarg
 ( tkb
 , ses, tke) = d0e.node()
 //
-val des =
+val ses =
 preadx0_s0explst(ses, err)
 //
 val ( ) =
@@ -1366,7 +1423,7 @@ D0Etarg
 ( tkb
 , ses, tke) = d0e.node()
 //
-val des =
+val ses =
 preadx0_s0explst(ses, err)
 val ( ) =
 (
