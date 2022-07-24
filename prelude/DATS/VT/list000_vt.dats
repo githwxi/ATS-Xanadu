@@ -70,6 +70,15 @@ end
 end (* end of [list_vt_make_nval] *)
 
 (* ****** ****** *)
+
+#impltmp
+<a>(*tmp*)
+list_vt_make_strm = strm_listize<a>
+#impltmp
+<a>(*tmp*)
+list_vt_make_lstrm = strm_vt_listize<a>
+
+(* ****** ****** *)
 //
 #impltmp
 <>(*tmp*)
@@ -112,7 +121,7 @@ let
   val () = g_free<a>(x0) in loop(xs)
 end
 ) (* end of [loop] *)
-} (* end of [list_vt_free] *)
+} (*where*)// end of [list_vt_free(xs)]
 //
 (* ****** ****** *)
 
@@ -147,7 +156,7 @@ in
 let
 var r0: list_vt(a) in loop(xs, r0); r0
 end
-end // end of [list_vt_copy]
+end (*let*) // end of [list_vt_copy(xs)]
 //
 (* ****** ****** *)
 
@@ -178,7 +187,7 @@ list_vt_nil() => ln
 | !
 list_vt_cons(_, xs) => loop(xs, ln+1)
 )
-} endwhr // end of [length_vt_length1]
+} (*where*) // end of [length_vt_length1]
 
 (* ****** ****** *)
 //
@@ -190,7 +199,7 @@ let
 val ys =
 list_vt_sing<a>(x0) in
 list_vt_append0<a>(xs, ys)
-end // list_vt_extend0
+end (*let*)//end-of-(list_vt_extend0(xs))
 //
 (* ****** ****** *)
 //
@@ -226,7 +235,7 @@ in
 let
 prval () = $fold(xs) in () end
 end // end of [list_vt_cons]
-) (* end of [loop] *)
+) (*case*) // end of [loop(xs, ys)]
 //
 } (* end of [list_vt_append0(xs,ys)] *)
 //
@@ -983,6 +992,12 @@ glseq_rlistize
 {a:vt}
 glseq_strmize
 <list_vt(a)><a> = list_vt_strmize<a>
+//
+(* ****** ****** *)
+//
+#impltmp
+{a:t0}
+glseq_unstrm_vt<list(a)><a> = list_make_lstrm<a>
 //
 (* ****** ****** *)
 //

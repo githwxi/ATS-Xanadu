@@ -347,7 +347,7 @@ strn_make_list
 {n:int}
 (cs:list(cgtz, n)): strn(n)
 fun<>
-strn_make_list_vt
+strn_make_llist
 {n:int}
 (cs:list_vt(cgtz, n)): strn(n)
 //
@@ -357,7 +357,7 @@ fun<>
 strn_make_strm
   (cs:strm(cgtz)): strn(*0*)
 fun<>
-strn_make_strm_vt
+strn_make_lstrm
   (cs:strm_vt(cgtz)): strn(*0*)
 //
 (* ****** ****** *)
@@ -428,9 +428,9 @@ with strn_make_list of 1000
 #symload strn
 with strn_make_strm of 1000
 #symload strn
-with strn_make_list_vt of 1000
+with strn_make_llist of 1000
 #symload strn
-with strn_make_strm_vt of 1000
+with strn_make_lstrm of 1000
 (* ****** ****** *)
 //
 #symload

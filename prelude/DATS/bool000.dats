@@ -77,8 +77,10 @@ bool_ifval
 //
 (* ****** ****** *)
 //
-// HX:
-// For implementing g-ops
+(*
+HX:
+For implementing g-ops
+*)
 //
 (* ****** ****** *)
 #impltmp
@@ -88,6 +90,24 @@ g_neqrf<bool> = g_noteq<bool>
 (* ****** ****** *)
 #impltmp
 g_print<bool> = bool_print<(*nil*)>
+(* ****** ****** *)
+//
+(*
+HX:
+For implementing
+some verbs in [gbas.sats]
+*)
+//
+#impltmp forall$test<bool>(x0) = x0
+#impltmp forall0$test<bool>(x0) = x0
+#impltmp forall1$test<bool>(x0) = x0
+//
+(* ****** ****** *)
+//
+#impltmp exists$test<bool>(x0) = x0
+#impltmp exists0$test<bool>(x0) = x0
+#impltmp exists1$test<bool>(x0) = x0
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_bool000.dats] *)

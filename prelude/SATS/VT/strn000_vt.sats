@@ -298,14 +298,14 @@ strtmp_vt_alloc
 (* ****** ****** *)
 //
 fun<>
-strn_vt_free(strn_vt): void
+strn_vt_free(cs:strn_vt): void
 //
 (* ****** ****** *)
 //
 fun<>
 strn_vt_copy
 {n:int}
-(cs: !strn_vt(n)): strn_vt(n)
+(cs: !strn_vt(n)): strn_vt( n )
 //
 (* ****** ****** *)
 //
@@ -323,7 +323,7 @@ strn_vt_make_list
 (* ****** ****** *)
 //
 fun<>
-strn_vt_make_list_vt
+strn_vt_make_llist
 {n:int}
 ( cs
 : list_vt(cgtz, n)): strn_vt(n)
@@ -334,7 +334,7 @@ fun<>
 strn_vt_make_strm
   (cs: strm(cgtz)): strn_vt
 fun<>
-strn_vt_make_strm_vt
+strn_vt_make_lstrm
   (cs: strm_vt(cgtz)): strn_vt
 //
 (* ****** ****** *)
@@ -396,11 +396,11 @@ strn_vt with strn_copy_vt
 #symload
 strn_vt with strn_make_list
 #symload
-strn_vt with strn_make_list_vt
+strn_vt with strn_make_llist
 #symload
 strn_vt with strn_make_strm
 #symload
-strn_vt with strn_make_strm_vt
+strn_vt with strn_make_lstrm
 (* ****** ****** *)
 //
 #symload

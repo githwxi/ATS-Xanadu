@@ -97,6 +97,17 @@ list_vt_make_nval
 //
 (* ****** ****** *)
 //
+fun
+<a:t0>
+list_vt_make_strm
+(  xs: strm(a)  ) : list_vt(a)
+fun
+<a:vt>
+list_vt_make_lstrm
+(  xs: strm_vt(a)  ) : list_vt(a)
+//
+(* ****** ****** *)
+//
 fun<>
 list_vt_nilq
 {a:vt}{n:int}

@@ -165,7 +165,7 @@ strmcon_vt_sing(l1)
 val rs =
 list_vt_reverse0(rs)
 val l1 =
-strn_vt_make_list_vt(rs)
+strn_vt_make_llist(rs)
 }
 | ~
 strmcon_vt_cons(c0, cs) =>
@@ -176,7 +176,7 @@ let
 val rs =
 list_vt_reverse0(rs)
 val l1 =
-strn_vt_make_list_vt(rs)
+strn_vt_make_llist(rs)
 in
   strmcon_vt_cons(l1, auxmain0(cs))
 end
