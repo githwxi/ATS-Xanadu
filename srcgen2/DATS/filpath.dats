@@ -260,7 +260,7 @@ gseq_group_list
 group$test<cgtz>(ch) = (ch != DS) }
 //
 in
-strn_make_list_vt(fcats(fmain(nms,0,nil_vt())))
+strn_make_llist(fcats(fmain(nms,0,nil_vt())))
 end (*let*) // end-of-(fpath_normize)
 
 (* ****** ****** *)
