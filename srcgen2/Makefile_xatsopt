@@ -97,6 +97,10 @@ all_sats:: \
 dynexp1_sats
 dynexp1_sats: ; $(XATSOPT) --static SATS/dynexp1.sats
 ######
+all_sats:: \
+tread01_sats
+tread01_sats: ; $(XATSOPT) --static SATS/tread01.sats
+######
 
 ######
 #

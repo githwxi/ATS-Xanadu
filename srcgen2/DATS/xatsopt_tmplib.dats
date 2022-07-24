@@ -56,6 +56,9 @@ ATS_PACKNAME
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
 (* ****** ****** *)
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
+(* ****** ****** *)
 //
 #impltmp
 g_print
