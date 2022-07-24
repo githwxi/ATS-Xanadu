@@ -429,15 +429,39 @@ end (*let*) // end of [d0ecl_fundclst_errck]
 (* ****** ****** *)
 //
 fun
-d0ecl_datatype_errck
+d0ecl_implmnt0_errck
+( loc0: loc_t
+, tknd: token
+, sqas: s0qaglst
+, tqas: t0qaglst
+, dqid: d0qid
+, tias: t0iaglst
+, fags: f0arglst
+, sres: s0res
+, teq1: token
+, body: d0exp   ): d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+(
+lvl+1
+,
+d0ecl_make_node
 ( loc0
-: loc_t
-, tknd
-: token
-, d0ts
-: d0typlst
-, wdcs
-: wd0eclseq) : d0ecl =
+, D0Cimplmnt0
+  ( tknd, sqas, tqas
+  , dqid, tias, fags, sres, teq1, body) ))
+end (*let*) // end of [d0ecl_fundclst_errck]
+//
+(* ****** ****** *)
+//
+fun
+d0ecl_datatype_errck
+( loc0: loc_t
+, tknd: token
+, d0ts: d0typlst
+, wdcs: wd0eclseq) : d0ecl =
 let
 val lvl = 0
 in//let
@@ -450,14 +474,10 @@ end (*let*) // end of [d0ecl_datatype_errck]
 //
 fun
 d0ecl_dynconst_errck
-( loc0
-: loc_t
-, tknd
-: token
-, tqas
-: t0qaglst
-, d0cs
-: d0cstdclist): d0ecl =
+( loc0: loc_t
+, tknd: token
+, tqas: t0qaglst
+, d0cs: d0cstdclist): d0ecl =
 let
 val lvl = 0
 in//let
@@ -778,6 +798,9 @@ fun
 preadx0_t0qag: fpreadx0(t0qag)
 #extern
 fun
+preadx0_t0iag: fpreadx0(t0iag)
+#extern
+fun
 preadx0_d0arg: fpreadx0(d0arg)
 (* ****** ****** *)
 #extern
@@ -789,6 +812,9 @@ preadx0_s0qaglst: fpreadx0(s0qaglst)
 #extern
 fun
 preadx0_t0qaglst: fpreadx0(t0qaglst)
+#extern
+fun
+preadx0_t0iaglst: fpreadx0(t0iaglst)
 #extern
 fun
 preadx0_d0arglst: fpreadx0(d0arglst)
@@ -919,6 +945,41 @@ endlet // end of [ T0QAGsome(_, _, _) ]
 //
 (* ****** ****** *)
 
+//
+#implfun
+preadx0_t0iag
+  (t0i, err) =
+(
+case+
+t0i.node() of
+|
+T0IAGnone(tok) =>
+(err := err+1; t0i)
+|
+T0IAGsome
+(tbeg,s0es,tend) => 
+let
+//
+val e00 = err
+//
+val s0es =
+preadx0_s0explst(s0es, err)
+val (  ) =
+(
+case+
+tend.node() of
+| T_GT0() => ()
+| _(*non-T_GT0*) => (err := err + 1))
+in//let
+if
+(err=e00)
+then (t0i) else t0iag
+(t0i.lctn(), T0IAGsome(tbeg,s0es,tend))
+endlet // end of [ T0IAGsome(_, _, _) ]
+) (*case+*)//end-of-[preadx0_t0iag(t0i,err)]
+//
+(* ****** ****** *)
+
 #implfun
 preadx0_d0ecl
   (dcl, err) =
@@ -976,6 +1037,10 @@ D0Cfundclst _ =>
 f0_fundclst(dcl, err)
 //
 |
+D0Cimplmnt0 _ =>
+f0_implmnt0(dcl, err)
+//
+|
 D0Cdatatype _ =>
 f0_datatype(dcl, err)
 //
@@ -990,10 +1055,8 @@ D0Ctkskp _ =>
 (err := err+1; d0ecl_errck(1, dcl))
 //
 |
-D0Cerrck _ =>
+_(*otherwise*) =>
 (err := err+1; d0ecl_errck(1, dcl))
-//
-| _(* otherwise *) => dcl // HX: placeholder
 //
 ) where
 {
@@ -1524,6 +1587,58 @@ d0ecl_fundclst_errck(loc, tknd, tqas, d0cs)
 end (*let*) // end of [f0_fundclst(dcl,err)]
 //
 (* ****** ****** *)
+
+fun
+f0_implmnt0
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val-
+D0Cimplmnt0
+( tknd
+, sqas, tqas
+, dqid, tias
+, fags, sres
+, teq1, body) = dcl.node()
+//
+val sqas =
+  preadx0_s0qaglst(sqas, err)
+val tqas =
+  preadx0_t0qaglst(tqas, err)
+//
+val dqid =
+  preadx0_d0qid(dqid, err)
+val tias =
+  preadx0_t0iaglst(tias, err)
+val fags =
+  preadx0_f0arglst(fags, err)
+//
+val sres = preadx0_s0res(sres, err)
+//
+val (  ) =
+(
+case+
+teq1.node() of
+|
+T_EQ0() => ((*void*))
+| _(*non-T_EQ0*) => (err := err+1)
+)
+//
+val body = preadx0_d0exp(body, err)
+//
+in//let
+if
+(err=e00)
+then dcl else
+d0ecl_implmnt0_errck
+( dcl.lctn(), tknd, sqas
+, tqas, dqid, tias, fags, sres, teq1, body)
+end (*let*) // end of [f0_implmnt0(dcl,err)]
+
+(* ****** ****** *)
 //
 fun
 f0_datatype
@@ -1830,6 +1945,11 @@ preadx0_synentlst_fun(lst,err,preadx0_s0qag)
 preadx0_t0qaglst
   (  lst, err  ) =
 preadx0_synentlst_fun(lst,err,preadx0_t0qag)
+(* ****** ****** *)
+#implfun
+preadx0_t0iaglst
+  (  lst, err  ) =
+preadx0_synentlst_fun(lst,err,preadx0_t0iag)
 (* ****** ****** *)
 #implfun
 preadx0_d0arglst

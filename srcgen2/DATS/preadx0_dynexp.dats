@@ -992,10 +992,8 @@ D0Ptkerr _ =>
 (err := err+1; d0pat_errck(1, d0p))
 //
 |
-D0Perrck _ =>
+_(*otherwise*) =>
 (err := err+1; d0pat_errck(1, d0p))
-//
-| _(*otherwise*) => (d0p) // HX: placeholder
 //
 ) where // end-of(case(d0p.node()))
 {
@@ -1231,10 +1229,8 @@ D0Etkerr _ =>
 (err := err+1; d0exp_errck(1, d0e))
 //
 |
-D0Eerrck _ =>
+_(*otherwise*) =>
 (err := err+1; d0exp_errck(1, d0e))
-//
-| _(*otherwise*) => (d0e) // HX: placeholder
 //
 ) where // end-of(case(d0e.node()))
 {

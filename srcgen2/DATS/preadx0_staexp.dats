@@ -128,14 +128,36 @@ end
 //
 (* ****** ****** *)
 //
+#implfun
+preadx0_d0qid
+  (dqid, err) =
+(
+case+ dqid of
+|
+D0QIDnone(id0) =>
+let
+val
+id0 =
+preadx0_i0dnt(id0, err) in dqid
+end
+|
+D0QIDsome(tok, id0) =>
+let
+val
+id0 =
+preadx0_i0dnt(id0, err) in dqid
+end
+) (*case+*)//end-of-[preadx0_d0qid]
+//
+(* ****** ****** *)
+//
 fun
 sort0_errck
 (lvl: sint
 ,s0t: sort0): sort0 =
 (
 sort0
-(s0t.lctn(), S0Terrck(lvl, s0t))
-)//end-of-[sort0_errck(_,_)]
+(s0t.lctn(), S0Terrck(lvl, s0t)))
 //
 (* ****** ****** *)
 fun
@@ -245,7 +267,7 @@ S0Ttkerr _ =>
 (err := err+1; sort0_errck(1, s0t))
 //
 |
-S0Terrck _ =>
+_(*otherwise*) =>
 (err := err+1; sort0_errck(1, s0t))
 ) where//end-of(case(s0t.node()))
 {
@@ -916,7 +938,7 @@ S0Etkerr _ =>
 (err := err+1; s0exp_errck(1, s0e))
 //
 |
-S0Eerrck _ =>
+_(*otherwise*) =>
 (err := err+1; s0exp_errck(1, s0e))
 //
 ) where // end-of(case(s0e.node()))

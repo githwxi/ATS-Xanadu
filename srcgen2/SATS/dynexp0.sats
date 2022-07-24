@@ -460,7 +460,7 @@ D0Eextnam of (g0nam) // external names
 |
 D0Eexists of
 ( token // HX-2021-01-14: $exists{..}..{..}
-, d0explst(*D0Esqarglst*), d0exp) // (d0exp)
+, d0explst(*D0Esarglst*), d0exp ) // (d0exp)
 //
 |
 (*
