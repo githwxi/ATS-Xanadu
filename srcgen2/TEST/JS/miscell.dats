@@ -185,4 +185,8 @@ _ when xs as list_cons(_, xs) => 1 + list_length<a>(xs)
 )
 (* ****** ****** *)
 
+val xyz = try subscript(A, n) with SubScriptExn() => dflt)
+
+(* ****** ****** *)
+
 (* end of [ATS3/XANADU_prelude_miscell.dats] *)

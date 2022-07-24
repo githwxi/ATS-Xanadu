@@ -189,9 +189,13 @@ token_OF0_fpemsg:(FILR,token)->void
 #extern
 fun
 token_EQGT_fpemsg:(FILR,token)->void
+//
 #extern
 fun
 token_WHEN_fpemsg:(FILR,token)->void
+#extern
+fun
+token_WITH_fpemsg:(FILR,token)->void
 //
 #extern
 fun
@@ -213,6 +217,9 @@ token_ENDLET_fpemsg:(FILR,token)->void
 #extern
 fun
 token_ENDWHR_fpemsg:(FILR,token)->void
+#extern
+fun
+token_ENDTRY_fpemsg:(FILR,token)->void
 //
 #extern
 fun
@@ -1023,6 +1030,21 @@ D0Edtsel
   fpemsg(out, lab1); fpemsg(out, opt2))
 //
 |
+D0Etry0
+(tknd,d0e1,twth
+,tbar,dcls,tend) =>
+let
+val () =
+  d0exp_fpemsg(out, d0e1)
+val () =
+  token_WITH_fpemsg(out, twth)
+val () =
+  d0clslst_fpemsg(out, dcls)
+val () =
+  token_ENDTRY_fpemsg(out, tend)
+endlet // end of [D0Etry0(_,_,_,_,_,_)]
+//
+|
 D0Elam0
 (tknd,fags,sres
 ,arrw,body,tend) =>
@@ -1493,6 +1515,19 @@ D0Cdatasort
 endlet // end-of-(D0Cdatasort(_,_))
 //
 |
+D0Cvaldclst
+( knd, d0cs) => let
+val () =
+  d0valdclist_fpemsg(out, d0cs)
+endlet // end-of-(D0Cvaldclst(_,_,_))
+|
+D0Cvardclst
+( knd, d0cs) => let
+val () =
+  d0vardclist_fpemsg(out, d0cs)
+endlet // end-of-(D0Cvardclst(_,_,_))
+//
+|
 D0Cfundclst
 ( knd
 , tqas, d0cs) => let
@@ -1804,6 +1839,27 @@ println
 //
 end (*let*) // end of [t0ken_WHEN_fpemsg]
 //
+//
+#implfun
+token_WITH_fpemsg
+  (out, tok0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ tok0.node() of
+|
+T_WITH() => ((*void*))
+|
+_(*non-T_WITH*) =>
+println
+("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+//
+end (*let*) // end of [t0ken_WITH_fpemsg]
+//
+(* ****** ****** *)
+//
 #implfun
 token_GTDOT_fpemsg
   (out, tok0) =
@@ -1933,6 +1989,26 @@ tkend_WHERE_cons1
 (     tok1     ) =>
 token_RBRACE_fpemsg(out, tok1))
 )(*case+*)//end-of(tkend_WHERE_fpemsg(...))
+//
+(* ****** ****** *)
+//
+#implfun
+token_ENDTRY_fpemsg
+  (out, tok0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ tok0.node() of
+|
+T_END() => ((*void*))
+|
+T_ENDTRY() => ((*void*))
+|
+_(*non-T_END/ENDTRY*) =>
+println
+("PREADX0-ERROR:",tok0.lctn(),":",tok0)
+end (*let*) // end of [token_ENDTRY_fpemsg]
 //
 (* ****** ****** *)
 //
@@ -2271,6 +2347,62 @@ list_foreach<d0arg>(d0as) where
 #impltmp
 foreach$work<d0arg>(d0a1) = d0arg_fpemsg(out,d0a1)
 }
+//
+(* ****** ****** *)
+//
+#implfun
+d0valdcl_fpemsg
+(out, dval) =
+let
+//
+val (  ) =
+  d0pat_fpemsg(out, dpat)
+//
+val (  ) =
+  teqd0exp_fpemsg(out, tdxp)
+//
+val (  ) =
+  wths0exp_fpemsg(out, wsxp)
+//
+end where
+{
+  val dpat = d0valdcl_get_dpat(dval)
+  val tdxp = d0valdcl_get_tdxp(dval)
+  val wsxp = d0valdcl_get_wsxp(dval)
+//
+} (*where*)//end-of-[d0valdcl_fpemsg(out,dval)]
+//
+(* ****** ****** *)
+//
+#implfun
+d0vardcl_fpemsg
+(out, dvar) =
+let
+//
+val (  ) =
+  i0dnt_fpemsg(out, dpid)
+//
+val (  ) =
+(
+case+ vpid of
+| optn_nil() => ()
+| optn_cons(vpid) =>
+  i0dnt_fpemsg(out, vpid))
+//
+val (  ) =
+  s0expopt_fpemsg(out, sres)
+//
+val (  ) =
+  teqd0exp_fpemsg(out, dini)
+//
+end where
+{
+  val dpid = d0vardcl_get_dpid(dvar)
+  val vpid = d0vardcl_get_vpid(dvar)
+  val sres = d0vardcl_get_sres(dvar)
+  val dini = d0vardcl_get_dini(dvar)
+//
+} (*where*)//end-of-[d0vardcl_fpemsg(out,dval)]
 //
 (* ****** ****** *)
 //
