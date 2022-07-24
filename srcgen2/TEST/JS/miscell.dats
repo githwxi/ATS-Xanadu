@@ -172,5 +172,17 @@ lam(x:int): int =>
 if x > 0 then x * fact(x-1) else 1 endif
 //
 (* ****** ****** *)
+fun
+<a:type>
+list_length
+(xs: list(a)): sint =
+(
+case+ xs of
+|
+_ when xs as list_nil() => 0
+|
+_ when xs as list_cons(_, xs) => 1 + list_length<a>(xs)
+)
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_miscell.dats] *)

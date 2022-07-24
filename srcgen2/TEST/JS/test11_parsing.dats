@@ -151,10 +151,10 @@ val opt =
 p1_fun_test<d0eclist>
 ("./miscell.dats", p1_d0eclsq1_dyn)
 //
-(*
+// (*
 val ( ) =
 prerrln("opt = ", opt)
-*)
+// *)
 //
 val opt = preadx0(opt, err)
 //
