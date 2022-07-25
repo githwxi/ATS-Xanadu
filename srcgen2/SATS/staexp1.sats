@@ -343,5 +343,36 @@ s1arg_make_node
 #symload s1arg with s1arg_make_node
 //
 (* ****** ****** *)
+//
+#abstbox
+s1tdf_tbox = ptr
+#typedef
+s1tdf = s1tdf_tbox
+//
+datatype
+s1tdf_node =
+| S1TDFsort of sort1
+| S1TDFsbst of (s1arg, s1explst)
+//
+(* ****** ****** *)
+fun
+s1tdf_fprint:(FILR,s1tdf)->void
+(* ****** ****** *)
+fun
+s1tdf_get_lctn(s1tdf): loc_t
+fun
+s1tdf_get_node(s1tdf): s1tdf_node
+//
+overload lctn with s1tdf_get_lctn
+overload node with s1tdf_get_node
+//
+(* ****** ****** *)
+//
+fun
+s1tdf_make_node
+(lctn:loc_t,node:s1tdf_node): s1tdf
+#symload s1tdf with s1tdf_make_node
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_staexp1.sats] *)
