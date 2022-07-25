@@ -30,64 +30,13 @@
 (*
 Author: Hongwei Xi
 (*
-Mon Jul 25 11:30:41 EDT 2022
+Mon Jul 25 12:00:21 EDT 2022
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_sats.hats"
-(* ****** ****** *)
-#define
-ATS_PACKNAME // namespace
-"ATS3.XANADU.xatsopt-20220500"
-(* ****** ****** *)
-//
-#staload
-SYM = "./xsymbol.sats"
-#staload
-MAP = "./xsymmap.sats"
-#staload
-FIX = "./xfixity.sats"
-#staload
-LEX = "./lexing0.sats"
-//
-#typedef sym_t = $SYM.sym_t
-#typedef fixty = $FIX.fixty
-#typedef token = $LEX.token
-//
-#vwtpdef
-fixtyopt_vt = optn_vt(fixty)
-//
-(* ****** ****** *)
-//
-#staload
-FIL = "./filpath.sats"
-#typedef fpath = $FIL.filpath
-#typedef filpath = $FIL.filpath
-//
-(* ****** ****** *)
-#staload S0E = "./staexp0.sats"
-#staload D0E = "./dynexp0.sats"
-(* ****** ****** *)
-#staload S1E = "./staexp1.sats"
-#staload D1E = "./dynexp1.sats"
-(* ****** ****** *)
-fun token2sint: token -> sint
-fun token2dint: token -> sint
-(* ****** ****** *)
-fun token2sbtf: token -> bool
-fun token2dbtf: token -> bool
-(* ****** ****** *)
-fun token2schr: token -> char
-fun token2dchr: token -> char
-(* ****** ****** *)
-fun token2sflt: token -> double
-fun token2dflt: token -> double
-(* ****** ****** *)
-fun token2sstr: token -> string
-fun token2dstr: token -> string
+
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_trans01.sats] *)
+(* end of [ATS3/XATSOPT_xfixity.sats] *)
