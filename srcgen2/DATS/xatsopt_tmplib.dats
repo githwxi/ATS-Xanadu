@@ -494,5 +494,11 @@ g_print<sort1>(s1t) =
 sort1_fprint(g_print$out<>(), s1t)
 //
 (* ****** ****** *)
+//
+#impltmp
+g_print<s1exp>(s1e) =
+s1exp_fprint(g_print$out<>(), s1e)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xatsopt_tmplib.dats] *)
