@@ -92,4 +92,97 @@ endloc (*local*) // end of [ local ]
 
 (* ****** ****** *)
 
+local
+//
+datatype
+s1qua =
+S1QUA of
+(
+loctn, s1qua_node)
+#absimpl
+s1qua_tbox = s1qua
+//
+in (* in-of-local *)
+//
+#implfun
+s1qua_make_node
+(   loc,nod   ) = S1QUA(loc,nod)
+//
+#implfun
+s1qua_get_lctn(s1q) =
+let
+  val+S1QUA(loc,nod) = s1q in loc
+end
+#implfun
+s1qua_get_node(s1q) =
+let
+  val+S1QUA(loc,nod) = s1q in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+s1uni =
+S1UNI of
+(
+loctn, s1uni_node)
+#absimpl
+s1uni_tbox = s1uni
+//
+in (* in-of-local *)
+//
+#implfun
+s1uni_make_node
+(   loc,nod   ) = S1UNI(loc,nod)
+//
+#implfun
+s1uni_get_lctn(s1u) =
+let
+  val+S1UNI(loc,nod) = s1u in loc
+end
+#implfun
+s1uni_get_node(s1u) =
+let
+  val+S1UNI(loc,nod) = s1u in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+s1exp =
+S1EXP of
+(
+loctn, s1exp_node)
+#absimpl
+s1exp_tbox = s1exp
+//
+in (* in-of-local *)
+//
+#implfun
+s1exp_make_node
+(   loc,nod   ) = S1EXP(loc,nod)
+//
+#implfun
+s1exp_get_lctn(s1e) =
+let
+  val+S1EXP(loc,nod) = s1e in loc
+end
+#implfun
+s1exp_get_node(s1e) =
+let
+  val+S1EXP(loc,nod) = s1e in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_staexp1.dats] *)
