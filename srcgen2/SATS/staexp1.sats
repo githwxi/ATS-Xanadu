@@ -570,13 +570,8 @@ s1exp_node =
 | S1Ebs0 of () // backslash
 | S1Ebs1 of s1exp // backslash
 //
-| S1Eimp of
-  (s1explst) // imply
+| S1Eimp of s1explst // imply
 //
-(*
-| S1Eapps of
-  (s1exp, s1explst) // apply
-*)
 | S1Eapp1 of
   (s1exp(*fun*), s1exp)
 | S1Eapp2 of

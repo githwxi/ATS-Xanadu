@@ -430,16 +430,23 @@ end (*let*) // end of [d0ecl_fundclst_errck]
 //
 fun
 d0ecl_implmnt0_errck
-( loc0: loc_t
-, tknd: token
-, sqas: s0qaglst
-, tqas: t0qaglst
-, dqid: d0qid
-, tias: t0iaglst
-, fags: f0arglst
+( loc0
+: loc_t
+, tknd
+: token
+, sqas
+: s0qaglst
+, tqas
+: t0qaglst
+, dqid
+: d0qid
+, tias
+: t0iaglst
+, fags
+: f0arglst
 , sres: s0res
-, teq1: token
-, body: d0exp   ): d0ecl =
+, teq1
+: token, body: d0exp): d0ecl =
 let
 val lvl = 0
 in//let
@@ -799,6 +806,10 @@ preadx0_t0qag: fpreadx0(t0qag)
 #extern
 fun
 preadx0_t0iag: fpreadx0(t0iag)
+(* ****** ****** *)
+#extern
+fun
+preadx0_a0typ: fpreadx0(a0typ)
 #extern
 fun
 preadx0_d0arg: fpreadx0(d0arg)
@@ -815,6 +826,10 @@ preadx0_t0qaglst: fpreadx0(t0qaglst)
 #extern
 fun
 preadx0_t0iaglst: fpreadx0(t0iaglst)
+(* ****** ****** *)
+#extern
+fun
+preadx0_a0typlst: fpreadx0(a0typlst)
 #extern
 fun
 preadx0_d0arglst: fpreadx0(d0arglst)
@@ -945,7 +960,6 @@ endlet // end of [ T0QAGsome(_, _, _) ]
 ) (*case+*)//end-of-[preadx0_t0qag(t0q,err)]
 //
 (* ****** ****** *)
-
 //
 #implfun
 preadx0_t0iag
@@ -979,6 +993,96 @@ then (t0i) else t0iag
 (t0i.lctn(), T0IAGsome(tbeg,s0es,tend))
 endlet // end of [ T0IAGsome(_, _, _) ]
 ) (*case+*)//end-of-[preadx0_t0iag(t0i,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_d0arg
+  (dag, err) =
+(
+case+
+dag.node() of
+|
+D0ARGnone(tok) =>
+(err := err + 1; dag)
+|
+D0ARGsta0
+(tbeg,s0qs,tend) =>
+let
+//
+val e00 = err
+//
+val s0qs =
+preadx0_s0qualst(s0qs, err)
+val (  ) =
+(
+case+
+tend.node() of
+|
+T_RBRACE() => ((*void*))
+|
+_(*non-T_RBRACE*) => (err := err+1)
+)
+in//let
+if
+(err=e00)
+then (dag) else d0arg
+(dag.lctn(), D0ARGsta0(tbeg,s0qs,tend))
+endlet // end of [ D0ARGsta0(_, _, _) ]
+|
+D0ARGdyn1(dpid) =>
+let
+//
+val e00 = err
+//
+val loc = dag.lctn()
+//
+val dpid =
+preadx0_i0dnt(dpid, err)
+in//let
+if
+(err=e00)
+then (dag) else
+d0arg_make_node( loc, D0ARGdyn1(dpid) )
+endlet // end of [ D0ARGdyn1 ( dpid ) ]
+|
+D0ARGdyn2
+(tbeg
+,atps,opt2,tend) =>
+let
+//
+val e00 = err
+//
+val loc = dag.lctn()
+//
+val atps =
+preadx0_a0typlst(atps, err)
+val opt2 =
+(
+case+ opt2 of
+|
+optn_nil() => opt2
+|
+optn_cons(atps) =>
+let
+val e00 = err
+val atps =
+preadx0_a0typlst(atps, err)
+in
+if
+(e00=err)
+then opt2 else optn_cons(atps)
+endlet // end of [optn_cons(atps)]
+) : a0typlstopt // end of [val(opt2)]
+//
+in//let
+if
+(err=e00)
+then (dag) else
+d0arg_make_node
+(loc,D0ARGdyn2(tbeg, atps, opt2, tend))
+endlet // end of [ D0ARGdyn2(_,_,_,_) ]
+) (*case+*)//end-of-[preadx0_d0arg(t0i,err)]
 //
 (* ****** ****** *)
 
@@ -1953,6 +2057,10 @@ preadx0_t0iaglst
   (  lst, err  ) =
 preadx0_synentlst_fun(lst,err,preadx0_t0iag)
 (* ****** ****** *)
+#implfun
+preadx0_a0typlst
+  (  lst, err  ) =
+preadx0_synentlst_fun(lst,err,preadx0_a0typ)
 #implfun
 preadx0_d0arglst
   (  lst, err  ) =
