@@ -36,52 +36,5 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-//
-#staload "./xbasics.sats"
-//
-(* ****** ****** *)
-//
-#staload
-FP0 = "./filpath.sats"
-//
-#typedef
-fpath = $FP0.fpath
-#typedef
-fpathopt = $FP0.fpathopt
-//
-(* ****** ****** *)
-
-#staload
-S0E = "./staexp0.sats"
-#staload
-D0E = "./dynexp0.sats"
-
-(* ****** ****** *)
-
-#staload "./staexp1.sats"
-
-(* ****** ****** *)
-//
-#abstype d1pat_tbox = ptr
-#abstype d1exp_tbox = ptr
-//
-(* ****** ****** *)
-//
-#typedef d1pat = d1pat_tbox
-#typedef d1patlst = list(d1pat)
-#typedef d1patopt = optn(d1pat)
-//
-#typedef d1exp = d1exp_tbox
-#typedef d1explst = list(d1exp)
-#typedef d1expopt = optn(d1exp)
-//
-(* ****** ****** *)
-#typedef
-l0d1p = $D0E.d0lab(d1pat)
-#typedef
-l0d1e = $D0E.d0lab(d1exp)
-#typedef l0d1plst = list(l0d1p)
-#typedef l0d1elst = list(l0d1e)
-(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_dynexp1.dats] *)
