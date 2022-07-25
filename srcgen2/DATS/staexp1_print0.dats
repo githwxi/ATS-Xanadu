@@ -105,6 +105,43 @@ print("S1Tqual(",tok1,";",s1t2,")")
 end (*let*) // end of [sort1_fprint(out,s1t)]
 
 (* ****** ****** *)
+//
+#implfun
+s1qua_fprint
+( out, s1q ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+s1q.node() of
+|
+S1QUAprop
+(  s1e  ) =>
+print("S1QUAprop(",s1e,")")
+|
+S1QUAvars
+(toks, topt) =>
+print("S1QUAvars(",toks,";",topt,")")
+end (*let*) // end-of-[s1qua_fprint(out,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+s1uni_fprint
+( out, s1u ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+s1u.node() of
+|
+S1UNIsome(s1qs) =>
+print("S1UNIsome(",s1qs,")")
+end (*let*) // end-of-[s1uni_fprint(out,err)]
+//
+(* ****** ****** *)
 
 #implfun
 s1exp_fprint
@@ -139,11 +176,16 @@ S1Eb0sh(   ) =>
 print( "S1Eb0sh(" , ")" )
 |
 S1Eb1sh(s1e) =>
-print( "S1Eb1sh(",s1e,")" )
+print("S1Eb1sh(",s1e,")")
+//
+|
+S1Earrw(ses) =>
+print("S1Earrw(",ses,")")
 //
 |
 S1Ea0pp() =>
-print("S1Ea0pp(",")")
+print
+(    "S1Ea0pp(", ")"    )
 |
 S1Ea1pp
 (s1f0, s1e1) =>
@@ -168,6 +210,13 @@ print("S1Et1up(",knd0,";",s1es,")")
 S1Et2up(knd0, ses1, ses2) =>
 print
 ("S1Et2up(",knd0,";",ses1,";",ses2,")")
+//
+|
+S1Euni0(s1qs) =>
+print("S1Euni0(",s1qs,")")
+|
+S1Eexi0(knd0, s1qs) =>
+print("S1Eexi0(",knd0,";",s1qs,")")
 //
 |
 S1Equal(tok1,s1e2) =>

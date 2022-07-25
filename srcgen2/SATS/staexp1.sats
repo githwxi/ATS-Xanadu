@@ -525,7 +525,7 @@ s1qua_make_node
 //
 datatype
 s1uni_node =
-  | S1UNIsome of (s1qualst)
+| S1UNIsome of (s1qualst)
 //
 #abstbox s1uni_tbox // ptr
 #typedef s1uni = s1uni_tbox
