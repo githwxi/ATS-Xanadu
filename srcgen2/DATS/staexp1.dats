@@ -68,8 +68,8 @@ sort1 =
 SORT1 of
 (
 loctn, sort1_node)
-#absimpl
-sort1_tbox = sort1
+//
+#absimpl sort1_tbox = sort1
 //
 in (* in-of-local *)
 //
@@ -99,8 +99,8 @@ s1qua =
 S1QUA of
 (
 loctn, s1qua_node)
-#absimpl
-s1qua_tbox = s1qua
+//
+#absimpl s1qua_tbox = s1qua
 //
 in (* in-of-local *)
 //
@@ -130,8 +130,8 @@ s1uni =
 S1UNI of
 (
 loctn, s1uni_node)
-#absimpl
-s1uni_tbox = s1uni
+//
+#absimpl s1uni_tbox = s1uni
 //
 in (* in-of-local *)
 //
@@ -161,8 +161,8 @@ s1exp =
 S1EXP of
 (
 loctn, s1exp_node)
-#absimpl
-s1exp_tbox = s1exp
+//
+#absimpl s1exp_tbox = s1exp
 //
 in (* in-of-local *)
 //

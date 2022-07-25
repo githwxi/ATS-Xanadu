@@ -36,16 +36,41 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+#include
+"./../HATS/xatsopt_dats.hats"
+(* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+#include
+"./../HATS/xatsopt_dats.hats"
+(* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+#staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
+#staload "./../SATS/xlabel0.sats"
+(* ****** ****** *)
+#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
+#staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
+(* ****** ****** *)
 
 local
 //
 datatype
 d1pat =
 D1PAT of
-(
-loctn, d1pat_node)
-#absimpl
-d1pat_tbox = d1pat
+(loctn, d1pat_node)
+//
+#absimpl d1pat_tbox = d1pat
 //
 in (* in-of-local *)
 //
@@ -62,6 +87,96 @@ end
 d1pat_get_node(d1p) =
 let
   val+D1PAT(loc,nod) = d1p in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d1gua =
+D1GUA of
+(loctn, d1gua_node)
+//
+#absimpl d1gua_tbox = d1gua
+//
+in (* in-of-local *)
+//
+#implfun
+d1gua_make_node
+(   loc,nod   ) = D1GUA(loc,nod)
+//
+#implfun
+d1gua_get_lctn(d1g) =
+let
+  val+D1GUA(loc,nod) = d1g in loc
+end
+#implfun
+d1gua_get_node(d1g) =
+let
+  val+D1GUA(loc,nod) = d1g in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d1gpt =
+D1GPT of
+(loctn, d1gpt_node)
+//
+#absimpl d1gpt_tbox = d1gpt
+//
+in (* in-of-local *)
+//
+#implfun
+d1gpt_make_node
+(   loc,nod   ) = D1GPT(loc,nod)
+//
+#implfun
+d1gpt_get_lctn(d1g) =
+let
+  val+D1GPT(loc,nod) = d1g in loc
+end
+#implfun
+d1gpt_get_node(d1g) =
+let
+  val+D1GPT(loc,nod) = d1g in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d1cls =
+D1CLS of
+(loctn, d1cls_node)
+//
+#absimpl d1cls_tbox = d1cls
+//
+in (* in-of-local *)
+//
+#implfun
+d1cls_make_node
+(   loc,nod   ) = D1CLS(loc,nod)
+//
+#implfun
+d1cls_get_lctn(dcl) =
+let
+  val+D1CLS(loc,nod) = dcl in loc
+end
+#implfun
+d1cls_get_node(dcl) =
+let
+  val+D1CLS(loc,nod) = dcl in nod
 end
 //
 endloc (*local*) // end of [ local ]

@@ -91,7 +91,7 @@ l0d1e = $D0E.d0lab(d1exp)
 #abstbox d1cls_tbox // ptr
 //
 #typedef d1gua = d1gua_tbox
-#typedef d1gpt = d1gpat_tbox
+#typedef d1gpt = d1gpt_tbox
 #typedef d1cls = d1cls_tbox
 //
 #typedef d1gualst = list(d1gua)
@@ -174,6 +174,78 @@ fun
 d1pat_make_node
 (loc:loc_t,nod:d1pat_node): d1pat
 #symload d1pat with d1pat_make_node
+//
+(* ****** ****** *)
+//
+datatype
+d1gua_node =
+| D1GUAexp of (d1exp)
+| D1GUAmat of (d1exp, d1pat)
+//
+(* ****** ****** *)
+//
+datatype
+d1cls_node =
+| D1CLSgpt of d1gpt
+| D1CLScls of (d1gpt, d1exp)
+and
+d1gpt_node =
+| D1GPTpat of (d1pat)
+| D1GPTgua of (d1pat, d1gualst)
+//
+(* ****** ****** *)
+//
+fun
+d1gua_fprint:(FILR,d1gua)->void
+fun
+d1gpt_fprint:(FILR,d1gpt)->void
+fun
+d1cls_fprint:(FILR,d1cls)->void
+//
+(* ****** ****** *)
+//
+fun
+d1gua_get_lctn(d1gua): loc_t
+fun
+d1gua_get_node(d1gua): d1gua_node
+//
+#symload lctn with d1gua_get_lctn
+#symload node with d1gua_get_node
+//
+(* ****** ****** *)
+//
+fun
+d1gpt_get_lctn(d1gpt): loc_t
+fun
+d1gpt_get_node(d1gpt): d1gpt_node
+//
+#symload lctn with d1gpt_get_lctn
+#symload node with d1gpt_get_node
+//
+(* ****** ****** *)
+//
+fun
+d1cls_get_lctn(d1cls): loc_t
+fun
+d1cls_get_node(d1cls): d1cls_node
+//
+#symload lctn with d1cls_get_lctn
+#symload node with d1cls_get_node
+//
+(* ****** ****** *)
+//
+fun
+d1gua_make_node
+(loc:loc_t,nod:d1gua_node): d1gua
+#symload d1gua with d1gua_make_node
+fun
+d1gpt_make_node
+(loc:loc_t,nod:d1gpt_node): d1gpt
+#symload d1gpt with d1gpt_make_node
+fun
+d1cls_make_node
+(loc:loc_t,nod:d1cls_node): d1cls
+#symload d1cls with d1cls_make_node
 //
 (* ****** ****** *)
 
