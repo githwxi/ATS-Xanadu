@@ -37,12 +37,70 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 #include
+"./../HATS/xatsopt_sats.hats"
+#include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./lexing0_print0.dats"
+(* ****** ****** *)
+#staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp0.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp1.sats"
+(* ****** ****** *)
+
+#implfun
+sort1_fprint
+( out, s1t ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+s1t.node() of
+|
+S1Tid0(id0) =>
+print("S1Tid0(",id0,")")
+//
+|
+S1Tint(int) =>
+print("S1Tint(",int,")")
+//
+// HX-2018-08: operators
+//
+|
+S1Tapp(   ) =>
+print(  "S1Tapp(",")"  )
+//
+(*
+| S1Ttype of int(*kind*)
+  (*prop/view/type/tbox/vwtp/vtbx*)
+*)
+//
+|
+S1Tapp1
+(s1f0, s1t1) =>
+print
+("S1Tapp1(",s1f0,";",s1t1,")")
+|
+S1Tapp2
+(s1f0, s1t1, s1t2) =>
+print
+("S1Tapp2(",s1f0,";",s1t1,";",s1t2,")")
+|
+S1Tlist(s1ts) =>
+print( "S1Tlist(", s1ts ,")" )
+|
+S1Tqual(tok1,s1t2) =>
+print("S1Tqual(",tok1,";",s1t2,")")
+//
+end (*let*) // end of [sort1_fprint(out,s1t)]
 
 (* ****** ****** *)
 
