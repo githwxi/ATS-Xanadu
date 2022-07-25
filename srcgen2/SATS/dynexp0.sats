@@ -1037,6 +1037,7 @@ d0ecl_make_node
 (loc:loc_t, nod:d0ecl_node): d0ecl
 #symload d0ecl with d0ecl_make_node
 (* ****** ****** *)
+//
 datatype
 a0typ_node =
 (*
@@ -1066,6 +1067,7 @@ where
 {
 #typedef
 a0typlstopt = optn(a0typlst) }
+//
 (* ****** ****** *)
 fun
 a0typ_fprint(FILR, a0typ): void
