@@ -402,5 +402,78 @@ s1tdf_make_node
 #symload s1tdf with s1tdf_make_node
 //
 (* ****** ****** *)
+//
+#typedef
+tokenopt = $LEX.tokenopt
+//
+#abstbox t1arg_tbox // ptr
+#typedef t1arg = t1arg_tbox
+#typedef t1arglst = list(t1arg)
+//
+datatype
+t1arg_node =
+(*
+|
+T1ARGnone of ()
+*)
+|
+T1ARGsome of (sort1, tokenopt)
+//
+(* ****** ****** *)
+fun
+t1arg_fprint:(FILR,t1arg)->void
+(* ****** ****** *)
+//
+fun
+t1arg_get_lctn(t1arg): loc_t
+fun
+t1arg_get_node(t1arg): t1arg_node
+//
+#symload lctn with t1arg_get_lctn
+#symload node with t1arg_get_node
+//
+(* ****** ****** *)
+//
+fun
+t1arg_make_node
+(loc:loc_t,nod:t1arg_node): t1arg
+#symload t1arg with t1arg_make_node
+//
+(* ****** ****** *)
+//
+datatype
+t1mag_node =
+(*
+|
+T1MAGnone of token(*error*)
+*)
+|
+T1MAGlist of t1arglst(*arglst*)
+//
+#abstbox t1mag_tbox // ptr
+#typedef t1mag = t1mag_tbox
+#typedef t1maglst = list(t1mag)
+//
+(* ****** ****** *)
+fun
+t1mag_fprint:(FILR,t1mag)->void
+(* ****** ****** *)
+//
+fun
+t1mag_get_lctn(t1mag): loc_t
+fun
+t1mag_get_node(t1mag): t1mag_node
+//
+#symload lctn with t1mag_get_lctn
+#symload node with t1mag_get_node
+//
+(* ****** ****** *)
+//
+fun
+t1mag_make_node
+(loc:loc_t,nod:t1mag_node): t1mag
+#symload t1mag with t1mag_make_node
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_staexp1.sats] *)
