@@ -473,6 +473,30 @@ d1ecl_node =
 | D1Cnone0 of () | D1Cnone1 of (d0ecl)
 //
 (* ****** ****** *)
+//
+and a1tdf =
+| A1TDFsome of () // unspecified
+| A1TDFlteq of (s1exp) // ty-erasure
+| A1TDFeqeq of (s1exp) // definition
+//
+(* ****** ****** *)
+//
+and
+wd1eclseq =
+|
+WD1CSnone of () | WD1CSsome of (d1eclist)
+//
+(* ****** ****** *)
+//
+where
+{
+  #typedef d1cstdclist = list(  d1cstdcl  )
+  #typedef d1fundclist = list(  d1fundcl  )
+  #typedef d1valdclist = list(  d1valdcl  )
+  #typedef d1vardclist = list(  d1vardcl  )
+} (*where*) // end-of-[datatype ... and ...]
+//
+(* ****** ****** *)
 fun
 d1ecl_fprint:(FILR,d1ecl)->void
 (* ****** ****** *)
