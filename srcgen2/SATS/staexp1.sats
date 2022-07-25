@@ -175,10 +175,10 @@ g1mag_get_node(g1mag): g1mag_node
 (* ****** ****** *)
 fun
 g1exp_make_node
-(loc:loc_t, node:g1exp_node): g1exp
+(lctn:loc_t,node:g1exp_node): g1exp
 fun
 g1mag_make_node
-(loc:loc_t, node:g1mag_node): g1mag
+(lctn:loc_t,node:g1mag_node): g1mag
 (* ****** ****** *)
 #symload g1exp with g1exp_make_node
 #symload g1mag with g1mag_make_node
@@ -244,8 +244,7 @@ sort1_get_node(sort1): sort1_node
 //
 fun
 sort1_make_node
-(loc:loc_t, node:sort1_node): sort1
-//
+(lctn:loc_t,node:sort1_node): sort1
 #symload sort1 with sort1_make_node
 //
 (* ****** ****** *)
@@ -277,8 +276,7 @@ s1tcn_get_node(s1tcn): s1tcn_node
 //
 fun
 s1tcn_make_node
-(loc:loc_t, node:s1tcn_node): s1tcn
-//
+(lctn:loc_t,node:s1tcn_node): s1tcn
 #symload s1tcn with s1tcn_make_node
 //
 (* ****** ****** *)
@@ -310,8 +308,39 @@ d1tst_get_node(d1tst): d1tst_node
 //
 fun
 d1tst_make_node
-(loc:loc_t, node:d1tst_node): d1tst
+(lctn:loc_t,node:d1tst_node): d1tst
 #symload d1tst with d1tst_make_node
+//
+(* ****** ****** *)
+//
+#abstbox s1arg_tbox // ptr
+#typedef s1arg = s1arg_tbox
+#typedef s1arglst = list(s1arg)
+//
+(* ****** ****** *)
+datatype
+s1arg_node =
+|
+S1ARGsome of (token, sort1opt)
+(* ****** ****** *)
+fun
+s1arg_fprint:(FILR,s1arg)->void
+(* ****** ****** *)
+//
+fun
+s1arg_get_lctn(s1arg): loc_t
+fun
+s1arg_get_node(s1arg): s1arg_node
+//
+#symload lctn with s1arg_get_lctn
+#symload node with s1arg_get_node
+//
+(* ****** ****** *)
+//
+fun
+s1arg_make_node
+(lctn:loc_t,node:s1arg_node): s1arg
+#symload s1arg with s1arg_make_node
 //
 (* ****** ****** *)
 
