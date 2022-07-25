@@ -106,6 +106,10 @@ xsymenv_sats
 xsymenv_sats: ; $(XATSOPT) --static SATS/xsymenv.sats
 ######
 all_sats:: \
+xfixity_sats
+xfixity_sats: ; $(XATSOPT) --static SATS/xfixity.sats
+######
+all_sats:: \
 trans01_sats
 trans01_sats: ; $(XATSOPT) --static SATS/trans01.sats
 ######

@@ -54,18 +54,21 @@ FIX = "./xfixity.sats"
 LEX = "./lexing0.sats"
 //
 #typedef sym_t = $SYM.sym_t
+(*
 #typedef fixty = $FIX.fixty
+*)
 #typedef token = $LEX.token
 //
+(*
 #vwtpdef
 fixtyopt_vt = optn_vt(fixty)
+*)
 //
 (* ****** ****** *)
 //
 #staload
 FIL = "./filpath.sats"
-#typedef fpath = $FIL.filpath
-#typedef filpath = $FIL.filpath
+#typedef fpath = $FIL.fpath
 //
 (* ****** ****** *)
 #staload S0E = "./staexp0.sats"
@@ -73,6 +76,10 @@ FIL = "./filpath.sats"
 (* ****** ****** *)
 #staload S1E = "./staexp1.sats"
 #staload D1E = "./dynexp1.sats"
+(* ****** ****** *)
+
+(* HX: trans01_basics *)
+
 (* ****** ****** *)
 fun token2sint: token -> sint
 fun token2dint: token -> sint
