@@ -98,6 +98,8 @@
 #include
 "./../../DATS/preadx0_staexp.dats"
 #include
+"./../../DATS/preadx0_dynexp.dats"
+#include
 "./../../DATS/preadx0_decl00.dats"
 #include
 "./../../DATS/preadx0_errmsg.dats"

@@ -1959,86 +1959,6 @@ if
 end (*let*) // end of [preadx0_l0d0e(lde,err)]
 //
 (* ****** ****** *)
-
-#implfun
-preadx0_f0arg
-  (f0a, err) =
-(
-case+
-f0a.node() of
-|
-F0ARGnone(tok) =>
-(err := err+1; f0a)
-//
-|
-F0ARGdyn0(dpat) =>
-let
-val e00 = err
-val dpat =
-preadx0_d0pat(dpat, err)
-in//let
-if
-(err=e00)
-then (f0a) else
-f0arg(f0a.lctn(), F0ARGdyn0(dpat))
-end (*let*)//end-of-[F0ARGdyn0(dpat)]
-//
-|
-F0ARGsta0
-(tbeg,s0qs,tend) =>
-let
-//
-val e00 = err
-//
-val s0qs =
-preadx0_s0qualst(s0qs, err)
-//
-val (  ) =
-(
-case+
-tend.node() of
-|
-T_RBRACE() => ((*void*))
-|
-_(*non-T_RBRACE*) => (err := err+1)
-)
-//
-in//let
-if
-(err=e00)
-then (f0a) else f0arg
-(f0a.lctn(),F0ARGsta0(tbeg,s0qs,tend))
-end (*let*)//end-of-[F0ARGsta0(_,_,_)]
-//
-|
-F0ARGmet0
-(tbeg,s0es,tend) =>
-let
-//
-val e00 = err
-//
-val s0es =
-preadx0_s0explst(s0es, err)
-val (  ) =
-(
-case+
-tend.node() of
-|
-T_GTDOT() => ((*void*))
-|
-_(*non-T_GTDOT*) => (err := err+1)
-)
-//
-in//let
-if
-(err=e00)
-then (f0a) else f0arg
-(f0a.lctn(),F0ARGmet0(tbeg,s0es,tend))
-end (*let*)//end-of-[F0ARGmet0(_,_,_)]
-//
-) (*case+*)//end-of-[preadx0_f0arg(dcl,err)]
-
-(* ****** ****** *)
 //
 #implfun
 preadx0_d0gua
@@ -2189,6 +2109,86 @@ d0cls(dcls.lctn(), D0CLScls(dgpt,tkeg,d0e1))
 endlet // end-of-[ D0CLScls(_,_,_) ]
 ) (*case+*)//end-of-[preadx0_d0cls(dcls,err)]
 
+(* ****** ****** *)
+//
+#implfun
+preadx0_f0arg
+  (f0a, err) =
+(
+case+
+f0a.node() of
+|
+F0ARGnone(tok) =>
+(err := err+1; f0a)
+//
+|
+F0ARGdyn0(dpat) =>
+let
+val e00 = err
+val dpat =
+preadx0_d0pat(dpat, err)
+in//let
+if
+(err=e00)
+then (f0a) else
+f0arg(f0a.lctn(), F0ARGdyn0(dpat))
+end (*let*)//end-of-[F0ARGdyn0(dpat)]
+//
+|
+F0ARGsta0
+(tbeg,s0qs,tend) =>
+let
+//
+val e00 = err
+//
+val s0qs =
+preadx0_s0qualst(s0qs, err)
+//
+val (  ) =
+(
+case+
+tend.node() of
+|
+T_RBRACE() => ((*void*))
+|
+_(*non-T_RBRACE*) => (err := err+1)
+)
+//
+in//let
+if
+(err=e00)
+then (f0a) else f0arg
+(f0a.lctn(),F0ARGsta0(tbeg,s0qs,tend))
+end (*let*)//end-of-[F0ARGsta0(_,_,_)]
+//
+|
+F0ARGmet0
+(tbeg,s0es,tend) =>
+let
+//
+val e00 = err
+//
+val s0es =
+preadx0_s0explst(s0es, err)
+val (  ) =
+(
+case+
+tend.node() of
+|
+T_GTDOT() => ((*void*))
+|
+_(*non-T_GTDOT*) => (err := err+1)
+)
+//
+in//let
+if
+(err=e00)
+then (f0a) else f0arg
+(f0a.lctn(),F0ARGmet0(tbeg,s0es,tend))
+end (*let*)//end-of-[F0ARGmet0(_,_,_)]
+//
+) (*case+*)//end-of-[preadx0_f0arg(dcl,err)]
+//
 (* ****** ****** *)
 //
 #implfun
