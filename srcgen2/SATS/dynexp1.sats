@@ -154,10 +154,8 @@ d1pat_node =
 // end of [d1pat_node] // end of [datatype]
 //
 (* ****** ****** *)
-//
 fun
 d1pat_fprint:(FILR,d1pat)->void
-//
 (* ****** ****** *)
 //
 fun
@@ -174,6 +172,24 @@ fun
 d1pat_make_node
 (loc:loc_t,nod:d1pat_node): d1pat
 #symload d1pat with d1pat_make_node
+//
+(* ****** ****** *)
+//
+datatype
+t1qua =
+|
+T1QUAsome of
+(loc_t, s1qualst)
+where
+#typedef
+t1qualst = list(t1qua)
+endwhre
+//
+datatype
+t1inv =
+|
+T1INVsome of
+(loc_t, t1qualst, d1patlst)
 //
 (* ****** ****** *)
 //
@@ -247,6 +263,149 @@ d1cls_make_node
 (loc:loc_t,nod:d1cls_node): d1cls
 #symload d1cls with d1cls_make_node
 //
+(* ****** ****** *)
+//
+datatype
+d1exp_node =
+//
+| D1Eid0 of token
+//
+| D1Eint of token
+| D1Echr of token
+| D1Eflt of token
+| D1Estr of token
+//
+| D1Eb0sh of () // bslash
+| D1Eb1sh of d1exp // bslash
+//
+| D1Ea0pp of ((*nil*)) // apply
+//
+| D1Ea1pp of
+  (d1exp(*fun*), d1exp)
+| D1Ea2pp of
+  (d1exp(*fun*), d1exp, d1exp)
+//
+| D1Esarg of s1explst
+| D1Etarg of s1explst
+//
+| D1El1st of d1explst // temp.
+| D1El2st of
+  (d1explst, d1explst) // temp.
+//
+| D1Enone of ()//HX: emptiness?
+//
+| D1Eseqn of
+  (d1explst, d1explst)//sequencing
+//
+| D1Et1up of // HX: tuple1
+  ( token
+  , d1explst(*prop/type*))
+| D1Et2up of // HX: tuple2
+  ( token
+  , d1explst(*prop*), d1explst(*type*))
+//
+| D1Er1cd of // HX: record1
+  ( token
+  , l0d1elst(*prop/type*))
+| D1Er2cd of // HX: record2
+  ( token
+  , l0d1elst(*prop*), l0d1elst(*type*))
+//
+| D1Ebrack of (d1explst)
+| D1Edtsel of (label, d1expopt)
+//
+| D1Elet0 of
+  (d1eclist, d1explst(*semi*))
+| D1Ewhere of (d1exp, d1eclist)
+//
+| D1Eif0 of
+  ( d1exp(*cond*)
+  , d1expopt, d1expopt(*else*))
+| D1Eif1 of
+  ( d1exp(*cond*)
+  , d1expopt, d1expopt(*else*), t1inv)
+//
+|
+D1Ecas0 of
+( token(*+/0/-*), d1exp, d1clslst)
+|
+D1Ecas1 of
+( token(*+/0/-*), d1exp, d1clslst, t1inv)
+//
+|
+D1Elam0 of
+( token(*LAM*)
+, f1arglst(*arg*)
+, effs1expopt, f1unarrw, d1exp(*body*))
+|
+D1Efix0 of
+( token(*FIX*)
+, token(*fid*)
+, f1arglst(*arg*)
+, effs1expopt, f1unarrw, d1exp(*body*))
+//
+|
+D1Etry0 of
+( token(*TRY*)
+, d1exp(*value*), d1clslst(*clauses*) )
+// D1Etry0
+//
+|
+D1Eanno of
+( d1exp, s1exp(*anno*) ) // HX: type-anno
+//
+|
+D1Equal of
+( token(*NS*), d1exp(*deid*) )//qual-d1exp
+//
+| // HX: for temp-names that
+D1Eextnam of (g1nam) // are to be expanded
+|
+D1Eexists of // HX-2021-01-14: $exists{..}..{..}
+(token, d1explst(*D1Esarglst*), d1exp) // (d1exp)
+//
+// end of [d1exp_node] // end of [datatype]
+//
+(* ****** ****** *)
+fun
+d1exp_fprint:(FILR,d1exp)->void
+(* ****** ****** *)
+//
+fun
+d1exp_get_lctn(d1exp): loc_t
+fun
+d1exp_get_node(d1exp): d1exp_node
+//
+#symload lctn with d1exp_get_lctn
+#symload node with d1exp_get_node
+//
+(* ****** ****** *)
+//
+fun
+d1exp_make_node
+(loc:loc_t,nod:d1exp_node): d1exp
+#symload d1exp with d1exp_make_node
+//
+(* ****** ****** *)
+//
+datatype
+teqd1exp =
+|
+TEQD1EXPnone of ((*void*))
+|
+TEQD1EXPsome of (token(*EQ0*), d1exp)
+datatype
+wths1exp =
+|
+WTHS1EXPnone of ((*void*))
+|
+WTHS1EXPsome of (token(*WTP*), s1exp)
+//
+(* ****** ****** *)
+fun
+teqd1exp_fprint:(FILR,teqd1exp)->void
+fun
+wths1exp_fprint:(FILR,wths1exp)->void
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_dynexp1.sats] *)
