@@ -134,9 +134,9 @@ g1exp_node =
 //
 | G1Eapp of ((*void*))
 //
-| G1Eapp1 of
+| G1Ea1pp of
   (g1exp(*fun*), g1exp)
-| G1Eapp2 of
+| G1Ea2pp of
   (g1exp(*fun*), g1exp, g1exp)
 //
 | G1Elist of g1explst (*temp*)
@@ -218,16 +218,16 @@ sort1_node =
 //
 // HX-2018-08: operators
 //
-| S1Tapp of () // apply
+| S1Ta0pp of () // apply
 //
 (*
 | S1Ttype of int(*kind*)
   (*prop/view/type/tbox/vwtp/vtbx*)
 *)
 //
-| S1Tapp1 of
+| S1Ta1pp of
   (sort1(*fun*), sort1)
-| S1Tapp2 of
+| S1Ta2pp of
   (sort1(*fun*), sort1, sort1)
 //
 | S1Tlist of sort1lst // HX: temp
@@ -565,31 +565,31 @@ s1exp_node =
 //
 // HX-2018-08: operators:
 //
-| S1Eapp of () // apply
+| S1Eb0sh of () // bslash
+| S1Eb1sh of s1exp // bslash
 //
-| S1Ebs0 of () // backslash
-| S1Ebs1 of s1exp // backslash
+| S1Earrw of s1explst // imply
 //
-| S1Eimp of s1explst // imply
+| S1Ea0pp of ((*nil*)) // apply
 //
-| S1Eapp1 of
+| S1Ea1pp of
   (s1exp(*fun*), s1exp)
-| S1Eapp2 of
+| S1Ea2pp of
   (s1exp(*fun*), s1exp, s1exp)
 //
-| S1Elist of s1explst // temp
-| S1Elist of
-  (s1explst, s1explst) // temp
+| S1El1st of s1explst // temp-list
+| S1El2st of
+  (s1explst, s1explst) // temp-list
 //
-| S1Etup1 of // HX: tuple1
+| S1Et1up of // HX: tuple1
   ( int, s1explst(*prop/type*))
-| S1Etup1 of // HX: tuple2
+| S1Et2up of // HX: tuple2
   ( int(*kind*)
   , s1explst(*prop*), s1explst(*type*))
 //
-| S1Ercd2 of // HX: record1
+| S1Er1cd of // HX: record1
   ( int, l0s1elst(*prop/type*))
-| S1Ercd2 of // HX: record2
+| S1Er2cd of // HX: record2
   ( int(*kind*)
   , l0s1elst(*prop*), l0s1elst(*type*))
 //

@@ -75,8 +75,10 @@ print("S1Tint(",int,")")
 // HX-2018-08: operators
 //
 |
-S1Tapp(   ) =>
-print(  "S1Tapp(",")"  )
+S1Ta0pp(   ) =>
+(
+  print(  "S1Ta0pp(",")"  )
+)
 //
 (*
 | S1Ttype of int(*kind*)
@@ -84,15 +86,15 @@ print(  "S1Tapp(",")"  )
 *)
 //
 |
-S1Tapp1
+S1Ta1pp
 (s1f0, s1t1) =>
 print
-("S1Tapp1(",s1f0,";",s1t1,")")
+("S1Ta1pp(",s1f0,";",s1t1,")")
 |
-S1Tapp2
+S1Ta2pp
 (s1f0, s1t1, s1t2) =>
 print
-("S1Tapp2(",s1f0,";",s1t1,";",s1t2,")")
+("S1Ta2pp(",s1f0,";",s1t1,";",s1t2,")")
 |
 S1Tlist(s1ts) =>
 print( "S1Tlist(", s1ts ,")" )
@@ -101,6 +103,45 @@ S1Tqual(tok1,s1t2) =>
 print("S1Tqual(",tok1,";",s1t2,")")
 //
 end (*let*) // end of [sort1_fprint(out,s1t)]
+
+(* ****** ****** *)
+
+#implfun
+s1exp_fprint
+( out, s1e ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+s1e.node() of
+|
+S1Ea0pp() =>
+print("S1Ea0pp(",")")
+|
+S1Ea1pp
+(s1f0, s1e1) =>
+print
+("S1Ea1pp(",s1f0,";",s1e1,")")
+|
+S1Ea2pp
+(s1f0, s1e1, s1e2) =>
+print
+("S1Ea2pp(",s1f0,";",s1e1,";",s1e2,")")
+|
+S1El1st(s1es) =>
+print( "S1El1st(", s1es ,")" )
+|
+S1El2st(ses1, ses2) =>
+print("S1El2st(", ses1, ";", ses2 ,")")
+|
+S1Equal(tok1,s1e2) =>
+(
+  print(  "S1Equal(",tok1,";",s1e2,")"  )
+)
+//
+end (*let*) // end of [s1exp_fprint(out,s1e)]
 
 (* ****** ****** *)
 
