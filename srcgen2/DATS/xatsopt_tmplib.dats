@@ -535,5 +535,33 @@ g_print<d1pat>(d1p) =
 d1pat_fprint(g_print$out<>(), d1p)
 //
 (* ****** ****** *)
+//
+#impltmp
+g_print<d1gua>(d1g) =
+d1gua_fprint(g_print$out<>(), d1g)
+#impltmp
+g_print<d1gpt>(d1g) =
+d1gpt_fprint(g_print$out<>(), d1g)
+//
+#impltmp
+g_print<d1cls>(dcl) =
+d1cls_fprint(g_print$out<>(), dcl)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<d1exp>(d1e) =
+d1exp_fprint(g_print$out<>(), d1e)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<teqd1exp>(tdxp) =
+teqd1exp_fprint(g_print$out<>(), tdxp)
+#impltmp
+g_print<wths1exp>(wsxp) =
+wths1exp_fprint(g_print$out<>(), wsxp)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xatsopt_tmplib.dats] *)

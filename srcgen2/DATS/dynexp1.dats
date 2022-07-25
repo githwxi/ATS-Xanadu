@@ -183,4 +183,34 @@ endloc (*local*) // end of [ local ]
 
 (* ****** ****** *)
 
+local
+//
+datatype
+d1exp =
+D1EXP of
+(loctn, d1exp_node)
+//
+#absimpl d1exp_tbox = d1exp
+//
+in (* in-of-local *)
+//
+#implfun
+d1exp_make_node
+(   loc,nod   ) = D1EXP(loc,nod)
+//
+#implfun
+d1exp_get_lctn(d1e) =
+let
+  val+D1EXP(loc,nod) = d1e in loc
+end
+#implfun
+d1exp_get_node(d1e) =
+let
+  val+D1EXP(loc,nod) = d1e in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_dynexp1.dats] *)
