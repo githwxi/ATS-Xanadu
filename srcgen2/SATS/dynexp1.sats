@@ -67,6 +67,12 @@ D0E = "./dynexp0.sats"
 #abstype d1pat_tbox // ptr
 #abstype d1exp_tbox // ptr
 //
+#abstbox d1cstdcl_tbox // ptr
+#abstbox d1fundcl_tbox // ptr
+#abstbox d1valdcl_tbox // ptr
+#abstbox d1vardcl_tbox // ptr
+#abstbox i1mpldcl_tbox // ptr
+//
 (* ****** ****** *)
 //
 #typedef d1pat = d1pat_tbox
@@ -402,10 +408,90 @@ WTHS1EXPnone of ((*void*))
 WTHS1EXPsome of (token(*WTP*), s1exp)
 //
 (* ****** ****** *)
+(*
+(*
+HX-2022-07-25:
+Directly implemented in xatsopt_tmplib
+*)
 fun
-teqd1exp_fprint:(FILR,teqd1exp)->void
+teqd1exp_fprint:(FILR, teqd1exp)->void
 fun
-wths1exp_fprint:(FILR,wths1exp)->void
+wths1exp_fprint:(FILR, wths1exp)->void
+*)
+(* ****** ****** *)
+fun
+d1valdcl_fprint
+(out: FILR, d1cl: d1valdcl): void
+fun
+d1vardcl_fprint
+(out: FILR, d1cl: d1vardcl): void
+fun
+d1fundcl_fprint
+(out: FILR, d1cl: d1fundcl): void
+(* ****** ****** *)
+fun
+d1valdcl_get_lctn:(d1valdcl)->loc_t
+fun
+d1vardcl_get_lctn:(d1vardcl)->loc_t
+fun
+d1fundcl_get_lctn:(d1fundcl)->loc_t
+(* ****** ****** *)
+#symload lctn with d1valdcl_get_lctn
+#symload lctn with d1vardcl_get_lctn
+#symload lctn with d1fundcl_get_lctn
+(* ****** ****** *)
+//
+datatype
+d1ecl_node =
+//
+| D1Cd0ecl of (d0ecl)
+//
+(*
+| D1Cfixity of (d0ecl)
+  // updating fixity env
+| D1Cnonfix of (d0ecl)
+  // updating fixity env
+*)
+//
+| D1Cstatic of
+  (token, d1ecl) // locally
+| D1Cextern of
+  (token, d1ecl) // globally
+//
+| D1Cdefine of
+  ( token
+  , token(*g0eid*)
+  , g1maglst(*arg*), g1expopt)
+| D1Cmacdef of
+  ( token
+  , token(*g0eid*)
+  , g1maglst(*arg*), d1expopt)
+//
+| D1Clocal of
+  (d1eclist(*local*), d1eclist)
+//
+| D1Cnone0 of () | D1Cnone1 of (d0ecl)
+//
+(* ****** ****** *)
+fun
+d1ecl_fprint:(FILR,d1ecl)->void
+(* ****** ****** *)
+//
+fun
+d1ecl_get_lctn(d1ecl): loc_t
+fun
+d1ecl_get_node(d1ecl): d1ecl_node
+//
+#symload lctn with d1ecl_get_lctn
+#symload node with d1ecl_get_node
+//
+(* ****** ****** *)
+//
+fun
+d1ecl_make_node
+(loc:loc_t,nod:d1ecl_node): d1ecl
+#symload d1ecl with d1ecl_make_node
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_dynexp1.sats] *)

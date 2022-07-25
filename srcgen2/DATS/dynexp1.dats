@@ -213,4 +213,34 @@ endloc (*local*) // end of [ local ]
 
 (* ****** ****** *)
 
+local
+//
+datatype
+d1ecl =
+D1ECL of
+(loctn, d1ecl_node)
+//
+#absimpl d1ecl_tbox = d1ecl
+//
+in (* in-of-local *)
+//
+#implfun
+d1ecl_make_node
+(   loc,nod   ) = D1ECL(loc,nod)
+//
+#implfun
+d1ecl_get_lctn(dcl) =
+let
+  val+D1ECL(loc,nod) = dcl in loc
+end
+#implfun
+d1ecl_get_node(dcl) =
+let
+  val+D1ECL(loc,nod) = dcl in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_dynexp1.dats] *)
