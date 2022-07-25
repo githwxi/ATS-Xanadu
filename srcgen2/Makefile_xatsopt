@@ -350,7 +350,8 @@ testall:: ; make all > /dev/null
 ########################################################################
 
 ######
-srclines:: ; wc -l */*.?ats
+srclines:: ; wc -l \
+HATS/*.hats SATS/*.sats DATS/*.dats
 ######
 srclines_sats:: ; wc -l SATS/*.sats
 srclines_dats:: ; wc -l DATS/*.dats

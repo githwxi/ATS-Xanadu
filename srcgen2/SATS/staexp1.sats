@@ -156,11 +156,11 @@ g1mag_node =
 //
 (* ****** ****** *)
 fun
-g1nam_fprint:(FILR, g1nam)->void
+g1nam_fprint:(FILR,g1nam)->void
 fun
-g1exp_fprint:(FILR, g1exp)->void
+g1exp_fprint:(FILR,g1exp)->void
 fun
-g1mag_fprint:(FILR, g1mag)->void
+g1mag_fprint:(FILR,g1mag)->void
 (* ****** ****** *)
 fun
 g1exp_get_lctn(g1exp): loc_t
@@ -606,6 +606,28 @@ s1exp_node =
 //
 // end of [s1exp_node] // end of [datatype]
 
+(* ****** ****** *)
+//
+fun
+s1exp_fprint:(FILR,s1exp)->void
+//
+(* ****** ****** *)
+//
+fun
+s1exp_get_lctn(s1exp): loc_t
+fun
+s1exp_get_node(s1exp): s1exp_node
+//
+#symload lctn with s1exp_get_lctn
+#symload node with s1exp_get_node
+//
+(* ****** ****** *)
+//
+fun
+s1exp_make_node
+(loc:loc_t,nod:s1exp_node): s1exp
+#symload s1exp with s1exp_make_node
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_staexp1.sats] *)

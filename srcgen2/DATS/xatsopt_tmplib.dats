@@ -56,6 +56,8 @@ ATS_PACKNAME
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
 (* ****** ****** *)
+#staload "./../SATS/xfixity.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
@@ -170,6 +172,12 @@ l0abl_fprint(g_print$out<>(), lab)
 #impltmp
 g_print<s0ymb>(sym) =
 s0ymb_fprint(g_print$out<>(), sym)
+(* ****** ****** *)
+
+(*
+HX: for level-0 syntax
+*)
+
 (* ****** ****** *)
 //
 (*
@@ -486,6 +494,18 @@ print("WTHS0EXPnone(", ")")
 |
 WTHS0EXPsome(tok, s0e) =>
 print("WTHS0EXPsome(", tok, ";", s0e, ")"))
+//
+(* ****** ****** *)
+
+(*
+HX: for level-1 syntax
+*)
+
+(* ****** ****** *)
+//
+#impltmp
+g_print<assoc>(s1t) =
+assoc_fprint(g_print$out<>(), s1t)
 //
 (* ****** ****** *)
 //
