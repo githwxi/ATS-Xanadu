@@ -553,4 +553,64 @@ s1uni_make_node
 //
 (* ****** ****** *)
 
+datatype
+s1exp_node =
+//
+| S1Eid0 of sym_t
+//
+| S1Eint of token
+| S1Echr of token
+| S1Eflt of token
+| S1Estr of token
+//
+// HX-2018-08: operators:
+//
+| S1Eapp of () // apply
+//
+| S1Ebs0 of () // backslash
+| S1Ebs1 of s1exp // backslash
+//
+| S1Eimp of
+  (s1explst) // imply
+//
+(*
+| S1Eapps of
+  (s1exp, s1explst) // apply
+*)
+| S1Eapp1 of
+  (s1exp(*fun*), s1exp)
+| S1Eapp2 of
+  (s1exp(*fun*), s1exp, s1exp)
+//
+| S1Elist of s1explst // temp
+| S1Elist of
+  (s1explst, s1explst) // temp
+//
+| S1Etup1 of // HX: tuple1
+  ( int, s1explst(*prop/type*))
+| S1Etup1 of // HX: tuple2
+  ( int(*kind*)
+  , s1explst(*prop*), s1explst(*type*))
+//
+| S1Ercd2 of // HX: record1
+  ( int, l0s1elst(*prop/type*))
+| S1Ercd2 of // HX: record2
+  ( int(*kind*)
+  , l0s1elst(*prop*), l0s1elst(*type*))
+//
+| S1Euni0 of (s1qualst)
+| S1Eexi0 of (int(*#*), s1qualst)
+//
+| S1Elam0 of
+  (s1maglst
+  , sort1opt(*tres*), s1exp(*body*))
+//
+| S1Eanno of (s1exp, sort1)
+//
+| S1Equal of ( token(*$NS.*), s1exp )
+//
+// end of [s1exp_node] // end of [datatype]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_staexp1.sats] *)
