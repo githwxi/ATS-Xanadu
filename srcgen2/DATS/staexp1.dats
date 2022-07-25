@@ -43,6 +43,52 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#include
+"./../HATS/xatsopt_dats.hats"
+(* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+#staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
+#staload "./../SATS/xlabel0.sats"
+(* ****** ****** *)
+#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
+#staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp1.sats"
+(* ****** ****** *)
+
+local
+//
+datatype
+sort1 =
+SORT1 of
+(
+loctn, sort1_node)
+#absimpl
+sort1_tbox = sort1
+//
+in (* in-of-local *)
+//
+#implfun
+sort1_make_node
+(   loc,nod   ) = SORT1(loc,nod)
+//
+#implfun
+sort1_get_lctn(s1t) =
+let
+  val+SORT1(loc,nod) = s1t in loc
+end
+#implfun
+sort1_get_node(s1t) =
+let
+  val+SORT1(loc,nod) = s1t in nod
+end
+//
+endloc (*local*) // end of [ local ]
 
 (* ****** ****** *)
 
