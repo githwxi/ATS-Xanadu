@@ -68,6 +68,11 @@ LEX = "./lexing0.sats"
 #staload S0E = "./staexp0.sats"
 (* ****** ****** *)
 //
+#typedef
+s0lab(a:type) = $S0E.s0lab(a)
+//
+(* ****** ****** *)
+//
 datatype g1nam =
 //
 | G1Nnil of ()
@@ -196,6 +201,11 @@ g1mag_make_node
 #typedef s1exp = s1exp_tbox
 #typedef s1explst = list(s1exp)
 #typedef s1expopt = optn(s1exp)
+//
+(* ****** ****** *)
+//
+#typedef l0s1e = s0lab(s1exp)
+#typedef l0s1elst = list(l0s1e)
 //
 (* ****** ****** *)
 //
