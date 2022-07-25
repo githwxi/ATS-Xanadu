@@ -116,6 +116,31 @@ in//let
 //
 case+
 s1e.node() of
+//
+|
+S1Eid0(id0) =>
+print("S1Eid0(",id0,")")
+//
+|
+S1Eint(int) =>
+print("S1Eint(",int,")")
+|
+S1Echr(chr) =>
+print("S1Echr(",chr,")")
+|
+S1Eflt(flt) =>
+print("S1Eflt(",flt,")")
+|
+S1Estr(str) =>
+print("S1Estr(",str,")")
+//
+|
+S1Eb0sh(   ) =>
+print( "S1Eb0sh(" , ")" )
+|
+S1Eb1sh(s1e) =>
+print( "S1Eb1sh(",s1e,")" )
+//
 |
 S1Ea0pp() =>
 print("S1Ea0pp(",")")
@@ -135,6 +160,15 @@ print( "S1El1st(", s1es ,")" )
 |
 S1El2st(ses1, ses2) =>
 print("S1El2st(", ses1, ";", ses2 ,")")
+//
+|
+S1Et1up(knd0, s1es) =>
+print("S1Et1up(",knd0,";",s1es,")")
+|
+S1Et2up(knd0, ses1, ses2) =>
+print
+("S1Et2up(",knd0,";",ses1,";",ses2,")")
+//
 |
 S1Equal(tok1,s1e2) =>
 (
