@@ -488,5 +488,11 @@ WTHS0EXPsome(tok, s0e) =>
 print("WTHS0EXPsome(", tok, ";", s0e, ")"))
 //
 (* ****** ****** *)
+//
+#impltmp
+g_print<sort1>(s1t) =
+sort1_fprint(g_print$out<>(), s1t)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xatsopt_tmplib.dats] *)
