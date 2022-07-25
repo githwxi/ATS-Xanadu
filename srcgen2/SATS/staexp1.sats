@@ -475,5 +475,72 @@ t1mag_make_node
 #symload t1mag with t1mag_make_node
 //
 (* ****** ****** *)
+//
+#typedef
+tokenlst = $LEX.tokenlst
+//
+#abstbox s1qua_tbox // ptr
+#typedef s1qua = s1qua_tbox
+#typedef s1qualst = list(s1qua)
+//
+datatype
+s1qua_node =
+|
+S1QUAprop of (s1exp)
+|
+S1QUAvars of
+(tokenlst(*svars*), sort1opt)
+//
+(* ****** ****** *)
+fun
+s1qua_fprint:(FILR,s1qua)->void
+(* ****** ****** *)
+//
+fun
+s1qua_get_lctn(s1qua): loc_t
+fun
+s1qua_get_node(s1qua): s1qua_node
+//
+#symload lctn with s1qua_get_lctn
+#symload node with s1qua_get_node
+//
+(* ****** ****** *)
+//
+fun
+s1qua_make_node
+(loc:loc_t,nod:s1qua_node): s1qua
+#symload s1qua with s1qua_make_node
+//
+(* ****** ****** *)
+//
+datatype
+s1uni_node =
+  | S1UNIsome of (s1qualst)
+//
+#abstbox s1uni_tbox // ptr
+#typedef s1uni = s1uni_tbox
+#typedef s1unilst = list(s1uni)
+//
+(* ****** ****** *)
+fun
+s1uni_fprint:(FILR,s1uni)->void
+(* ****** ****** *)
+//
+fun
+s1uni_get_lctn(s1uni): loc_t
+fun
+s1uni_get_node(s1uni): s1uni_node
+//
+#symload lctn with s1uni_get_lctn
+#symload node with s1uni_get_node
+//
+(* ****** ****** *)
+//
+fun
+s1uni_make_node
+(loc:loc_t,nod:s1uni_node): s1uni
+#symload s1uni with s1uni_make_node
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_staexp1.sats] *)
