@@ -997,6 +997,28 @@ endlet // end of [ T0IAGsome(_, _, _) ]
 (* ****** ****** *)
 //
 #implfun
+preadx0_a0typ
+  (atp, err) =
+(
+case+
+atp.node() of
+|
+A0TYPsome
+(s0e1, topt) =>
+let
+val e00 = err
+val loc = atp.lctn()
+val s0e1 = preadx0_s0exp(s0e1, err)
+in//let
+if
+(err=e00)
+then (atp)
+else a0typ(loc,A0TYPsome(s0e1,topt))
+endlet // end of [ A0TYPsome(_, _) ]
+) (*case+*)//end-of-[preadx0_a0typ(t0i,err)]
+(* ****** ****** *)
+//
+#implfun
 preadx0_d0arg
   (dag, err) =
 (
