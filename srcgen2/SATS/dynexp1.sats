@@ -36,6 +36,13 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
 //
 #staload
 FP0 = "./filpath.sats"
@@ -113,15 +120,11 @@ d1pat_node =
 | D1Pflt of token
 | D1Pstr of token
 //
-| D1Pa0pp of () // apply
+| D1Pb0sh of () // bslash
+| D1Pb1sh of d1pat // bslash
 //
-| D1Pb0sh of () // backslash
-| D1Pb1sh of d1pat // backslash
+| D1Pa0pp of ((*nil*))
 //
-(*
-| D1Papps of
-  (d1pat, d1patlst) // apply
-*)
 | D1Pa1pp of
   (d1pat(*fun*), d1pat)
 | D1Pa2pp of
@@ -149,6 +152,28 @@ d1pat_node =
   , s1exp(*given*)) // HX: annotation
 //
 // end of [d1pat_node] // end of [datatype]
+//
+(* ****** ****** *)
+//
+fun
+d1pat_fprint:(FILR,d1pat)->void
+//
+(* ****** ****** *)
+//
+fun
+d1pat_get_lctn(d1pat): loc_t
+fun
+d1pat_get_node(d1pat): d1pat_node
+//
+#symload lctn with d1pat_get_lctn
+#symload node with d1pat_get_node
+//
+(* ****** ****** *)
+//
+fun
+d1pat_make_node
+(loc:loc_t,nod:d1pat_node): d1pat
+#symload d1pat with d1pat_make_node
 //
 (* ****** ****** *)
 

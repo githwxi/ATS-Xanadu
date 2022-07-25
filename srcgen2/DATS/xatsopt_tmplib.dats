@@ -529,5 +529,11 @@ g_print<s1exp>(s1e) =
 s1exp_fprint(g_print$out<>(), s1e)
 //
 (* ****** ****** *)
+//
+#impltmp
+g_print<d1pat>(d1p) =
+d1pat_fprint(g_print$out<>(), d1p)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xatsopt_tmplib.dats] *)

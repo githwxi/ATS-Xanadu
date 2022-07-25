@@ -56,6 +56,68 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
 
+#implfun
+d1pat_fprint
+( out, d1p ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+d1p.node() of
+|
+D1Pid0(id0) =>
+print("D1Pid0(",id0,")")
+//
+|
+D1Pint(int) =>
+print("D1Pint(",int,")")
+|
+D1Pchr(chr) =>
+print("D1Pchr(",chr,")")
+|
+D1Pflt(flt) =>
+print("D1Pflt(",flt,")")
+|
+D1Pstr(str) =>
+print("D1Pstr(",str,")")
+//
+|
+D1Pb0sh(   ) =>
+print( "D1Pb0sh(" , ")" )
+|
+D1Pb1sh(d1p) =>
+print("D1Pb1sh(",d1p,")")
+//
+|
+D1Pa0pp(   ) =>
+(
+  print(  "D1Pa0pp(",")"  )
+)
+|
+D1Pa1pp
+(d1f0, d1p1) =>
+print
+("D1Pa1pp(",d1f0,";",d1p1,")")
+|
+D1Pa2pp
+(d1f0, d1p1, d1p2) =>
+print
+("D1Pa2pp(",d1f0,";",d1p1,";",d1p2,")")
+|
+D1Pl1st(d1ps) =>
+print( "D1Pl1st(", d1ps ,")" )
+|
+D1Pl2st(dps1, dps2) =>
+print("D1Pl2st(", dps1, ";", dps2 ,")")
+//
+|
+D1Panno(d1p1,s1e2) =>
+print("D1Pqual(",d1p1,";",s1e2,")")
+//
+end (*let*) // end of [d1pat_fprint(out,d1p)]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_dynexp1_print0.dats] *)
