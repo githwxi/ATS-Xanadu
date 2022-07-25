@@ -504,14 +504,23 @@ HX: for level-1 syntax
 (* ****** ****** *)
 //
 #impltmp
-g_print<assoc>(s1t) =
-assoc_fprint(g_print$out<>(), s1t)
+g_print<assoc>(asc) =
+assoc_fprint(g_print$out<>(), asc)
 //
 (* ****** ****** *)
 //
 #impltmp
 g_print<sort1>(s1t) =
 sort1_fprint(g_print$out<>(), s1t)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<s1qua>(s1q) =
+s1qua_fprint(g_print$out<>(), s1q)
+#impltmp
+g_print<s1uni>(s1u) =
+s1uni_fprint(g_print$out<>(), s1u)
 //
 (* ****** ****** *)
 //
