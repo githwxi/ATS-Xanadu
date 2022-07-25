@@ -37,11 +37,23 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 #include
+"./../HATS/xatsopt_sats.hats"
+#include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+#staload "./lexing0_print0.dats"
+(* ****** ****** *)
+#staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp0.sats"
+#staload "./../SATS/dynexp0.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
 
 (* ****** ****** *)

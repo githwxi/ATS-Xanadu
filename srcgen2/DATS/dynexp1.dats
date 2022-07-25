@@ -37,4 +37,35 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 
+local
+//
+datatype
+d1pat =
+D1PAT of
+(
+loctn, d1pat_node)
+#absimpl
+d1pat_tbox = d1pat
+//
+in (* in-of-local *)
+//
+#implfun
+d1pat_make_node
+(   loc,nod   ) = D1PAT(loc,nod)
+//
+#implfun
+d1pat_get_lctn(d1p) =
+let
+  val+D1PAT(loc,nod) = d1p in loc
+end
+#implfun
+d1pat_get_node(d1p) =
+let
+  val+D1PAT(loc,nod) = d1p in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_dynexp1.dats] *)
