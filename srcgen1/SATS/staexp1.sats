@@ -624,7 +624,7 @@ s1exp_node =
   (int, labs1explst(*prop/type*))
 | S1Etrcd2 of // HX: record2
   ( int
-  , labs1explst(*prof*), labs1explst(*type*))
+  , labs1explst(*prop*), labs1explst(*type*))
 //
 | S1Eforall of (s1qualst)
 | S1Eexists of (int(*#*), s1qualst)
