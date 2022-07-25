@@ -556,11 +556,28 @@ d1exp_fprint(g_print$out<>(), d1e)
 (* ****** ****** *)
 //
 #impltmp
-g_print<teqd1exp>(tdxp) =
-teqd1exp_fprint(g_print$out<>(), tdxp)
+g_print
+<teqd1exp>(tdxp) =
+(
+case+ tdxp of
+|
+TEQD1EXPnone() =>
+print("TEQD1EXPnone(", ")")
+|
+TEQD1EXPsome(tok, d0e) =>
+print("TEQD1EXPsome(", tok, ";", d0e, ")"))
+//
 #impltmp
-g_print<wths1exp>(wsxp) =
-wths1exp_fprint(g_print$out<>(), wsxp)
+g_print
+<wths1exp>(wsxp) =
+(
+case+ wsxp of
+|
+WTHS1EXPnone() =>
+print("WTHS1EXPnone(", ")")
+|
+WTHS1EXPsome(tok, s0e) =>
+print("WTHS1EXPsome(", tok, ";", s0e, ")"))
 //
 (* ****** ****** *)
 
