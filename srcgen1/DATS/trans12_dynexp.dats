@@ -935,6 +935,32 @@ end (*let*) // end of [auxapp10]
 (* ****** ****** *)
 
 fun
+auxapp2
+( d1p0
+: d1pat): d2pat = let
+//
+val loc0 = d1p0.loc()
+//
+val-
+D1Papp2
+( d1f0
+, d1p1, d1p2) = d1p0.node()
+//
+val npf1 = (~1)
+//
+val d2f0 = trans12_dpat(d1f0)
+val d2p1 = trans12_dpat(d1p1)
+val d2p2 = trans12_dpat(d1p2)
+//
+val d2as = list_pair(d2p1, d2p2)
+//
+in
+  d2pat_dapp(loc0, d2f0, npf1, d2as)
+end (*let*) // end of [auxapp2(d1p0)]
+
+(* ****** ****** *)
+
+fun
 auxlist1
 ( d1p0
 : d1pat): d2pat = let
@@ -1065,6 +1091,8 @@ d1p0.node() of
 | D1Pbs1 _ => auxbs1(d1p0)
 //
 | D1Papp1 _ => auxapp1(d1p0)
+//
+| D1Papp2 _ => auxapp2(d1p0)
 //
 | D1Plist
   (d1ps) => auxlist1(d1p0)
