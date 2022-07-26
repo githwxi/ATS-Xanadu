@@ -171,6 +171,36 @@ fxitmlst
 //
 (* ****** ****** *)
 //
+fun
+fixty_prcdv: (fixty)->prcdv
+fun
+fixty_assoc: (fixty)->assoc
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+fxopr_prcdv:(fxitm(a))->prcdv
+fun
+<a:t0>
+fxopr_assoc:(fxitm(a))->assoc
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+fxatm_none: loc_t -> (a)
+fun
+<a:t0>
+fxopr_get_lctn: (a) -> loc_t
+fun
+<a:t0>
+fxitm_get_lctn: fxitm(a) -> loc_t
+//
+#symload lctn with fxitm_get_lctn
+//
+(* ****** ****** *)
+//
 (*
 fun
 <a:t0>

@@ -198,6 +198,51 @@ inftmp_fixty = FIXTYinf(inftmp_prcdv, ASSOCnon)
 (* ****** ****** *)
 //
 #implfun
+fixty_prcdv
+  (fxt) =
+(
+case- fxt of
+//
+| FIXTYpre(p1) => p1
+| FIXTYpos(p1) => p1
+| FIXTYinf(p1, a2) => p1
+//
+) (*case-*) // end of [fxopr_prcdv(fxt]
+//
+#implfun
+fixty_assoc
+  (fxt) =
+(
+case- fxt of
+//
+| FIXTYpre
+  (  p1  ) => ASSOCnon()
+| FIXTYpos
+  (  p1  ) => ASSOCnon()
+//
+| FIXTYinf(p1, a2) => a2
+//
+) (*case-*) // end of [fxopr_assoc(fxt]
+//
+(* ****** ****** *)
+//
+#implfun
+fxopr_prcdv(itm) =
+let
+val-
+FXITMopr(_, fxt) = itm in fixty_prcdv(fxt)
+end (*let*) // end of [ fxopr_prcdv(itm) ]
+//
+#implfun
+fxopr_assoc(itm) =
+let
+val-
+FXITMopr(_, fxt) = itm in fixty_assoc(fxt)
+end (*let*) // end of [ fxopr_assoc(itm) ]
+//
+(* ****** ****** *)
+//
+#implfun
 <a:t0>
 fxitm_fprint
 ( out, fxi ) =
@@ -247,63 +292,6 @@ end (*let*) // end of [fixty_fprint(out,fxt)]
 
 (* ****** ****** *)
 ////
-
-fixty_prcdv
-  (fx) =
-(
-  case- fx of
-//
-  | FIXTYinf
-    (p0, a0) => p0
-//
-  | FIXTYpre(p0) => p0
-  | FIXTYpos(p0) => p0
-//
-(*
-  | FIXTYnon() => (0)
-  | FIXTYpreinf(p0, p1, _) => p0
-  | FIXTYposinf(p0, p1, _) => p0
-*)
-//
-) // end of [fxopr_prcdv]
-
-implement
-fxopr_prcdv(x0) = let
-//
-val-FXITMopr(_, fx) = x0 in fixty_prcdv(fx)
-//
-end // end of [fxopr_prcdv]
-
-(* ****** ****** *)
-
-implement
-fixty_assoc
-  (fx) =
-(
-  case- fx of
-//
-  | FIXTYinf
-    (p0, a0) => a0
-//
-  | FIXTYpre(p0) => ASSOCnon()
-  | FIXTYpos(p0) => ASSOCnon()
-//
-(*
-  | FIXTYnon() => (0)
-  | FIXTYpreinf(p0, p1, _) => p0
-  | FIXTYposinf(p0, p1, _) => p0
-*)
-//
-) // end of [fixty_assoc]
-
-implement
-fxopr_assoc(x0) = let
-//
-val-FXITMopr(_, fx) = x0 in fixty_assoc(fx)
-//
-end // end of [fxopr_assoc]
-
-(* ****** ****** *)
 
 implement
 {a}(*tmp*)
