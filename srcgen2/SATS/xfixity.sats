@@ -201,22 +201,26 @@ fxitm_get_lctn: fxitm(a) -> loc_t
 //
 (* ****** ****** *)
 //
-(*
-fun
-<a:t0>
-fxitm_make(x0: a): fxitm(a)
-*)
-//
-fun
-<a:t0>
-fxopr_make_app
-( x0: fxitm(a) ): fxitm(a)
-//
-//
 fun
 <a:t0>
 fxitmlst_resolve
-(loc0: loc_t, xs: fxitmlst(a)): (a)
+( loc0: loc_t
+, itms: fxitmlst(a)): (a)
+//
+fun
+<a:t0>
+fxitmlst_resolve$appopr
+(  itm: fxitm(a)  ): fxitm(a)
+//
+fun
+<a:t0>
+fxitmlst_resolve$oprerr:(fxitm(a))->(a)
+fun
+<a:t0>
+fxitmlst_resolve$rederr:(fxitm(a))->(a)
+fun
+<a:t0>
+fxitmlst_resolve$rederr:(fxitm(a))->(a)
 //
 (* ****** ****** *)
 //

@@ -49,13 +49,12 @@ ATS_PACKNAME
 #staload "./../SATS/xfixity.sats"
 (* ****** ****** *)
 //
-#implfun
+#implval
 app_assoc = ASSOClft()
-#implfun
+#implval
 imp_assoc = ASSOCrgt()
 //
 (* ****** ****** *)
-//
 //
 #implfun
 assoc_fprint
@@ -141,10 +140,10 @@ forall_prcdv = prcdv( 0 )
 #implval
 exists_prcdv = prcdv( 0 )
 (* ****** ****** *)
-#implfun
+#implval
 bslash_prcdv =
 prcdv(app_prcdv.decd()+1)
-#implfun
+#implval
 inftmp_prcdv = prcdv ( 0 ) // for temp-infixity
 (* ****** ****** *)
 //
@@ -242,8 +241,8 @@ end (*let*) // end of [ fxopr_assoc(itm) ]
 //
 (* ****** ****** *)
 //
-#implfun
-<a:t0>
+#impltmp
+<a>(*tmp*)
 fxitm_fprint
 ( out, fxi ) =
 let
@@ -288,6 +287,25 @@ end (*let*) // end of [fixty_fprint(out,fxt)]
 //
 (* ****** ****** *)
 
+#impltmp
+<a>(*tmp*)
+fxitmlst_resolve
+  (loc0, itms) = let
+//
+//
+#typedef itm = fxitm(a)
+#typedef itmlst = fxitmlst(a)
+//
+val () =
+prerrln
+("fxitmlst_resolve: itms = ", itms)
+//
+in
+
+end (*let*)//end-of-[fxitmlst_resolve(loc0,xs)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_xfixity.dats] *)
 
 (* ****** ****** *)
@@ -298,12 +316,9 @@ implement
 fxitmlst_resolve
 (loc0, xs) = let
 //
-#define nil list_nil
 #define :: list_cons
+#define nil list_nil
 #define cons list_cons
-//
-typedef itm = fxitm(a)
-typedef itmlst = fxitmlst(a)
 //
 fun
 itmloc
