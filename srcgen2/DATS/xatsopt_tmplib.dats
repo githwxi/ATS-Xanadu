@@ -556,6 +556,12 @@ d1exp_fprint(g_print$out<>(), d1e)
 (* ****** ****** *)
 //
 #impltmp
+g_print<d1ecl>(dcl) =
+d1ecl_fprint(g_print$out<>(), dcl)
+//
+(* ****** ****** *)
+//
+#impltmp
 g_print
 <teqd1exp>(tdxp) =
 (
