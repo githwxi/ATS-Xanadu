@@ -218,7 +218,7 @@ d2p0.node() of
     ( loc0, ": ***TRERR12***");
     prerrln!
     ( loc0
-    , ": TRERR12(D2Pnone1): d3pat-error", d2p0);
+    , ": TRERR12(D2Pnone1): d3pat-error: ", d2p0);
   end // end of [D2Pnone1]
 //
 | _(* rest-of-d2pat *) =>

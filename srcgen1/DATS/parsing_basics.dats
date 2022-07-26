@@ -527,6 +527,32 @@ end // end of [popt_ENDLAM]
 (* ****** ****** *)
 
 implement
+popt_ENDFIX
+  (buf, err) = let
+//
+  val tok = buf.get0()
+//
+in
+  case+
+  tok.node() of
+(*
+  | T_END() =>
+    Some(tok) where
+    {
+      val () = buf.incby1()
+    } (* T_END *)
+*)
+  | T_ENDFIX() =>
+    Some(tok) where
+    {
+      val () = buf.incby1()
+    } (* T_ENDFIX *)
+  | _ (* non-END *) => None(*void*)
+end // end of [popt_ENDFIX]
+
+(* ****** ****** *)
+
+implement
 popt_SRP_THEN
   (buf, err) = let
 //
@@ -539,7 +565,7 @@ in
     Some(tok) where
     {
       val () = buf.incby1()
-    } (* T_ENDLAM *)
+    } (* T_SRP_THEN *)
   | _ (* non-END *) => None(*void*)
 end // end of [popt_SRP_THEN]
 

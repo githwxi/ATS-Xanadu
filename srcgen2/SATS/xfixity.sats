@@ -231,7 +231,7 @@ fxitmlst_resolve$rederr
 //
 fun
 <a:t0>
-fxitm_infix
+fxitm_infix0
 (x0: a, f1: a, x2: a): fxitm(a) // f0(x1,x2)
 //
 fun
