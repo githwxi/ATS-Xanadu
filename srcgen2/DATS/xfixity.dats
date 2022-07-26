@@ -290,12 +290,18 @@ end (*let*) // end of [fixty_fprint(out,fxt)]
 //
 (* ****** ****** *)
 
-(*
 #impltmp
 <a>(*tmp*)
 fxitmlst_resolve
-  (loc0, itms) = let
+  (loc0, itms) =
+(
+process(itms, nil(*void*))
+) where
+{
 //
+#define :: list_cons
+#define nil list_nil
+#define cons list_cons
 //
 #typedef itm = fxitm(a)
 #typedef itmlst = fxitmlst(a)
@@ -304,10 +310,129 @@ val () =
 prerrln
 ("fxitmlst_resolve: itms = ", itms)
 //
-in
-
-end (*let*)//end-of-[fxitmlst_resolve(loc0,xs)]
+fnx
+process
+( xs: itmlst
+, ys: itmlst): a =
+(
+case+ xs of
+| nil() => yreduce(nil(), ys)
+| cons(x0, xs1) => resolve(x0, xs1, ys)
+) (* end of [process] *)
+//
+and
+yreduce
+( xs: itmlst
+, ys: itmlst): a =
+(
+case+ ys of
+//
+|
+list_nil
+((*nil*)) => // HX-2018-09: is this
+fxitmlst_resolve$rederr<a>(ys) // deadcode?
+//
+|
+list_cons
+(y0, ys1) =>
+(
+case+ y0 of
+|
+FXITMopr(f0, fx) =>
+( case+ fx of
+  |
+  FIXTYpos _ =>
+  ( case+ ys1 of
+    | FXITMatm(t1) :: ys2 =>
+      resolve
+      (f0_t1, xs, ys2) where
+      {
+        val
+        f0_t1 =
+        fxitm_pstfix<a>(t1, f0)
+      }
+    | _(*reduction-error*) =>
+      (
+        fxitmlst_resolve$rederr<a>(ys)
+      )
+  ) (*FIXTYpos*)
+  |
+  _ (*non-FIXTYpos*) =>
+  let
+    val l0 =
+      fxopr_get_loc<a>(f0)
+    // end of [val(l0)]
+    val t0 = fxatm_none<a>(l0)
+  in
+    yreduce(xs, cons(FXITMatm(t0), ys))
+  endlet // end of [non-FIXTYpos]
+) (*case+*) // end of [FXITMopr(f0,fx)]
+|
+FXITMatm(t0) =>
+( case+ ys1 of
+  |
+  list_nil() => t0
+  |
+  FXITMopr
+  (f1, FIXTYpre _) :: ys2 =>
+  (
+    resolve(f1_t0, xs, ys2) where
+    {
+      val f1_t0 = fxitm_prefix<a>(f1, t0)
+    }
+  )
+  |
+  FXITMopr
+  (f1, FIXTYinf(_, _)) :: ys2 =>
+  ( case+ ys2 of
+    | FXITMatm(t2) :: ys3 =>
+      resolve
+      (t2_f1_t0, xs, ys3) where
+      {
+        val t2_f1_t0 = fxitm_infix0<a>(t2, f1, t0)
+      }
+    | _(* missing-left-arg *) => 
+      resolve
+      (t2_f1_t0, xs, ys2) where
+      {
+        val l1 =
+          fxopr_get_loc<a>(f1)
+        val t2 = fxatm_none<a>(l1)
+        val t2_f1_t0 = fxitm_infix0<a>(t2, f1, t0)
+      }
+  )
+  | _(* non-pre-inf :: ys2 *) =>  
+    (
+      fxitmlst_resolve$rederr<a>(ys) // HX:deadcode?
+    )
+) (*case+*) // end of [FXITMatm( t0 )]
+) (*case+*) // end of [list_cons(...)]
+) (*case+*) // end of [yreduce(xs, ys)]
+//
+and
+resolve
+( y0: itm
+, xs: itmlst
+, ys: itmlst): a =
+(
+case+ y0 of
+|
+FXITMatm _ =>
+( case+ ys of
+(*
+  | FXITMatm _ :: _ =>
+    resolve_app(y0, xs, ys)
 *)
+  | _(*non-FXITMatm*) =>
+    process(xs, list_cons(y0, ys))
+) (* end of [FXITMatm] *)
+(*
+|
+FXITMopr(_, fx) => resolve_opr(fx, y0, xs, ys)
+*)
+) (*case+*)// end of [resolve(y0,xs,ys)]
+//
+} (*where*)//end-of-[fxitmlst_resolve(loc0,itms)]
 
 (* ****** ****** *)
 //
@@ -383,114 +508,7 @@ endlet // end of [fxitmlst_resolve$rederr<a>(loc0,itms)]
 
 (* ****** ****** *)
 ////
-
-implement
-{a}(*tmp*)
-fxitmlst_resolve
-(loc0, xs) = let
-//
-#define :: list_cons
-#define nil list_nil
-#define cons list_cons
-//
-fnx
-process
-( xs: itmlst
-, ys: itmlst): a =
-(
-case+ xs of
-| nil() => yreduce(nil(), ys)
-| cons(x0, xs1) => resolve(x0, xs1, ys)
-) (* end of [process] *)
-//
 and
-yreduce
-( xs: itmlst
-, ys: itmlst): a =
-(
-case+ ys of
-//
-| nil() =>
-  auxerr_red(ys) // HX-2018-09: deadcode?
-//
-| cons(y0, ys1) =>
-  ( case+ y0 of
-    | FXITMatm(t0) =>
-      (
-        case+ ys1 of
-        | nil() => t0
-        | FXITMopr
-          (f1, FIXTYpre _) :: ys2 =>
-          (
-            resolve(f1_t0, xs, ys2) where
-            {
-              val f1_t0 = fxitm_prefix<a>(f1, t0)
-            }
-          )
-        | FXITMopr
-          (f1, FIXTYinf(_, _)) :: ys2 =>
-          ( case+ ys2 of
-            | FXITMatm(t2) :: ys3 =>
-              resolve(t2_f1_t0, xs, ys3) where
-              {
-                val
-                t2_f1_t0 = fxitm_infix<a>(t2, f1, t0)
-              }
-            | _ (* missing-left-arg *) => 
-              resolve(t2_f1_t0, xs, ys2) where
-              {
-                val
-                l1 =
-                fxopr_get_loc<a>(f1)
-                val
-                t2 = fxatm_none<a>(l1)
-                val
-                t2_f1_t0 = fxitm_infix<a>(t2, f1, t0)
-              }
-            // end of [case]
-          )
-        | _ (*non-pre-inf*) => auxerr_red(ys) // deadcode?
-      )
-    | FXITMopr(f0, fx) =>
-      ( case+ fx of
-        | FIXTYpos _ =>
-          ( case+ ys1 of
-            | FXITMatm(t1) :: ys2 =>
-              resolve(f0_t1, xs, ys2) where
-              {
-                val
-                f0_t1 = fxitm_postfix<a>(t1, f0)
-              }
-            | _ (* error *) => auxerr_red(ys)
-          )
-        | _ (*non-FIXTYpos*) => let
-            val
-            l0 =
-            fxopr_get_loc<a>(f0)
-            val
-            t0 = fxatm_none<a>(l0)
-          in
-            yreduce(xs, FXITMatm(t0) :: ys)
-          end // end of [non-FIXTYpos]
-      ) (* end of [FXITMopr] *)
-  )
-) (* end of [yreduce] *)
-//
-and
-resolve
-( y0: itm
-, xs: itmlst
-, ys: itmlst): a =
-(
-case+ y0 of
-| FXITMatm _ =>
-  ( case+ ys of
-    | FXITMatm _ :: _ =>
-      resolve_app(y0, xs, ys)
-    | _(*non-FXITMatm*) => process(xs, y0 :: ys)
-  ) (* end of [FXITMatm] *)
-| FXITMopr(_, fx) => resolve_opr(fx, y0, xs, ys)
-) (* end of [resolve] *)
 //
 and
 resolve_app
