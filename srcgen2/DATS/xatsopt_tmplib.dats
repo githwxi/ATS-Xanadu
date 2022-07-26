@@ -510,6 +510,14 @@ assoc_fprint(g_print$out<>(), asc)
 (* ****** ****** *)
 //
 #impltmp
+g_cmp<prcdv> = cmp_prcdv_prcdv
+#impltmp
+g_print<prcdv>(cdv) =
+prcdv_fprint(g_print$out<>(), cdv)
+//
+(* ****** ****** *)
+//
+#impltmp
 g_print<sort1>(s1t) =
 sort1_fprint(g_print$out<>(), s1t)
 //

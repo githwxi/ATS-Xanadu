@@ -52,11 +52,32 @@ LOC = "./locinfo.sats"
 (* ****** ****** *)
 //
 datatype assoc =
-ASSOCnon | ASSOClft | ASSOCrgt
+|ASSOCnon|ASSOClft|ASSOCrgt
 //
 (* ****** ****** *)
 fun
 assoc_fprint:(FILR,assoc)->void
+(* ****** ****** *)
+//
+#abstype
+prcdv_tflt//sint(*flat-type*)
+#typedef
+prcdv = prcdv_tflt(*prcd-val*)
+//
+(* ****** ****** *)
+fun
+prcdv_fprint:(FILR,prcdv)->void
+(* ****** ****** *)
+//
+fun
+add_prcdv_int:(prcdv,sint)->prcdv
+and
+sub_prcdv_int:(prcdv,sint)->prcdv
+//
+(* ****** ****** *)
+fun
+cmp_prcdv_prcdv
+(p1:prcdv, p2:prcdv): sint(*sgn*)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xfixity.sats] *)

@@ -80,19 +80,29 @@ FIL = "./filpath.sats"
 //
 #typedef sort0 = $S0E.sort0
 #typedef s0exp = $S0E.s0exp
-//
 #typedef sort1 = $S1E.sort1
 #typedef s1exp = $S1E.s1exp
+//
+#typedef sort0lst = $S0E.sort0lst
+#typedef s0explst = $S0E.s0explst
+#typedef sort1lst = $S1E.sort1lst
+#typedef s1explst = $S1E.s1explst
 //
 (* ****** ****** *)
 //
 #typedef d0pat = $D0E.d0pat
 #typedef d0exp = $D0E.d0exp
 #typedef d0ecl = $D0E.d0ecl
-//
 #typedef d1pat = $D1E.d1pat
 #typedef d1exp = $D1E.d1exp
 #typedef d1ecl = $D1E.d1ecl
+//
+#typedef d0patlst = $D0E.d0patlst
+#typedef d0explst = $D0E.d0explst
+#typedef d0eclist = $D0E.d0eclist
+#typedef d1patlst = $D1E.d1patlst
+#typedef d1explst = $D1E.d1explst
+#typedef d1eclist = $D1E.d1eclist
 //
 (* ****** ****** *)
 
