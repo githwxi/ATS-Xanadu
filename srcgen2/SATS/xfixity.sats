@@ -68,12 +68,22 @@ prcdv_tflt//sint(*flat-type*)
 prcdv = prcdv_tflt(*prcd-val*)
 //
 (* ****** ****** *)
+//
+val app_prcdv: prcdv
+val imp_prcdv: prcdv
+//
+val brckt_prcdv: prcdv
+val dtsel_prcdv: prcdv
+//
+(* ****** ****** *)
+//
 fun
 prcdv_decode:(prcdv)->sint
+#symload decd with prcdv_decode
+//
 fun
 prcdv_encode(cdv:sint):prcdv
-#symload decd with prcdv_decode
-#symload encd with prcdv_encode
+#symload prcdv with prcdv_encode
 (* ****** ****** *)
 fun
 prcdv_fprint:(FILR,prcdv)->void

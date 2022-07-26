@@ -84,6 +84,13 @@ PRCDV_MAX  1000000000 // HX: high enough
 
 in (* in-of-local *)
 
+(* ****** ****** *)
+#implfun
+app_prcdv = 70
+#implfun
+imp_prcdv = 10
+(* ****** ****** *)
+
 #implfun
 prcdv_decode(cdv) = cdv
 
@@ -98,8 +105,26 @@ if
 (cdv>=PRCDV_MAX)
 then PRCDV_MAX else cdv))
 
+(* ****** ****** *)
+
 endloc(*local*)//end-of-[local(prcdv)]
 
+(* ****** ****** *)
+#implfun
+add_prcdv_int
+( cdv , int ) =
+prcdv(cdv.decd() + int)
+#implfun
+sub_prcdv_int
+( cdv , int ) =
+prcdv(cdv.decd() - int)
+(* ****** ****** *)
+#implfun
+brckt_prcdv =
+add_prcdv_int(app_prcdv, 10)
+#implfun
+dtsel_prcdv =
+add_prcdv_int(app_prcdv, 10)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xfixity.dats] *)
@@ -120,11 +145,6 @@ MAXPRCDV  1000000000 // HX: high enough
 in (* in-of-local *)
 
 (* ****** ****** *)
-//
-implement
-app_prcdv = 70
-implement
-imp_prcdv = 10
 //
 implement
 app_fixty =
