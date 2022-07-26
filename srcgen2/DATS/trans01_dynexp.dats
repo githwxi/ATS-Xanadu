@@ -58,6 +58,67 @@ ATS_PACKNAME
 #staload "./../SATS/trans01.sats"
 (* ****** ****** *)
 
+#symload lctn with d0pat_get_lctn
+#symload node with d0pat_get_node
+#symload lctn with d0exp_get_lctn
+#symload node with d0exp_get_node
+
+(* ****** ****** *)
+//
+fun
+d1pat_none1
+(d0p1: d0pat): d1pat =
+d1pat(d0p1.lctn(), D1Pnone1(d0p1))
+//
+(* ****** ****** *)
+//
+fun
+d1exp_none1
+(d0e1: d0exp): d1exp =
+d1exp(d0e1.lctn(), D1Enone1(d0e1))
+//
+(* ****** ****** *)
+
+#implfun
+trans01_d0pat(d0p0) =
+let
+//
+val loc0 = d0p0.lctn()
+//
+val () =
+prerrln
+("trans01_d0pat: loc0 = ", loc0)
+val () =
+prerrln
+("trans01_d0pat: d0p0 = ", d0p0)
+//
+in//let
+case+
+d0p0.node() of
+| _(*otherwise*) => d1pat_none1(d0p0)
+end (*let*) // end of [trans01_d0pat(d0p0)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_d0exp(d0e0) =
+let
+//
+val loc0 = d0e0.lctn()
+//
+val () =
+prerrln
+("trans01_d0exp: loc0 = ", loc0)
+val () =
+prerrln
+("trans01_d0exp: d0e0 = ", d0e0)
+//
+in//let
+case+
+d0e0.node() of
+| _(*otherwise*) => d1exp_none1(d0e0)
+end (*let*) // end of [trans01_d0exp(d0e0)]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_trans01_dynexp.dats] *)

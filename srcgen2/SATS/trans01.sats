@@ -78,13 +78,6 @@ FIL = "./filpath.sats"
 #staload D1E = "./dynexp1.sats"
 (* ****** ****** *)
 //
-#typedef
-ftrans01
-(syn: tx) =
-(syn , &sint >> _) -> syn
-//
-(* ****** ****** *)
-//
 #typedef sort0 = $S0E.sort0
 #typedef s0exp = $S0E.s0exp
 //
@@ -124,15 +117,15 @@ fun token2dstr: token -> string
 
 (* HX: transing staexp *)
 
-fun trans01_sort0: ftrans01(sort0)
-fun trans01_s0exp: ftrans01(s0exp)
+fun trans01_sort0: (sort0)->sort1
+fun trans01_s0exp: (s0exp)->s1exp
 
 (* ****** ****** *)
 
 (* HX: transing dynexp *)
 
-fun trans01_d0pat: ftrans01(d0pat)
-fun trans01_d0exp: ftrans01(d0exp)
+fun trans01_d0pat: (d0pat)->d1pat
+fun trans01_d0exp: (d0exp)->d1exp
 
 (* ****** ****** *)
 
@@ -140,7 +133,7 @@ fun trans01_d0exp: ftrans01(d0exp)
 
 (* ****** ****** *)
 
-fun trans01_d0ecl: ftrans01(d0ecl)
+fun trans01_d0ecl: (d0ecl)->d1ecl
 
 (* ****** ****** *)
 
