@@ -93,6 +93,13 @@ D0E = "./dynexp0.sats"
 (* ****** ****** *)
 //
 #typedef d0pid = $S0E.d0pid
+#typedef d0eid = $S0E.d0eid
+//
+#typedef d0pat = $D0E.d0pat
+#typedef d0exp = $D0E.d0exp
+#typedef d0ecl = $D0E.d0ecl
+//
+(* ****** ****** *)
 //
 #typedef d0pidopt = optn(d0pid)
 //
@@ -200,6 +207,8 @@ d1pat_node =
 | D1Panno of
   ( d1pat
   , s1exp(*given*)) // HX: annotation
+//
+| D1Pnone0 of () | D1Pnone1 of (d0pat)
 //
 // end of [d1pat_node] // end of [datatype]
 //
@@ -414,7 +423,8 @@ D1Eextnam of (g1nam) // are to be expanded
 D1Eexists of // HX-2021-01-14: $exists{..}..{..}
 (token, d1explst(*D1Esarglst*), d1exp) // (d1exp)
 //
-// end of [d1exp_node] // end of [datatype]
+| D1Enone0 of ((*void*)) | D1Enone1 of ( d0exp )
+// end of [d1exp_node] // end of [ datatype(...) ]
 //
 (* ****** ****** *)
 //
