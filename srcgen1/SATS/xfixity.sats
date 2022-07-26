@@ -198,7 +198,7 @@ fxitm(a:type) =
 //
 (* ****** ****** *)
 //
-vtypedef
+typedef
 fxitmlst(a:type) = List0(fxitm(a))
 //
 (* ****** ****** *)
