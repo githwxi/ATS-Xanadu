@@ -63,9 +63,28 @@ D0E = "./dynexp0.sats"
 #staload "./xbasics.sats"
 #staload "./staexp1.sats"
 (* ****** ****** *)
+
+#typedef d0pid = $S0E.d0pid
+
+(* ****** ****** *)
+//
+#abstbox a1typ_tbox // ptr
+#abstbox d1arg_tbox // ptr
+//
+(* ****** ****** *)
+#typedef a1typ = a1typ_tbox
+#typedef d1arg = d1arg_tbox
+#typedef a1typlst = list(a1typ)
+#typedef d1arglst = list(d1arg)
+(* ****** ****** *)
 //
 #abstype d1pat_tbox // ptr
 #abstype d1exp_tbox // ptr
+#abstype d1ecl_tbox // ptr
+//
+#abstbox d1gua_tbox // ptr
+#abstbox d1gpt_tbox // ptr
+#abstbox d1cls_tbox // ptr
 //
 #abstbox d1cstdcl_tbox // ptr
 #abstbox d1fundcl_tbox // ptr
@@ -92,9 +111,11 @@ l0d1e = $D0E.d0lab(d1exp)
 #typedef l0d1elst = list(l0d1e)
 (* ****** ****** *)
 //
-#abstbox d1gua_tbox // ptr
-#abstbox d1gpt_tbox // ptr
-#abstbox d1cls_tbox // ptr
+#typedef d1ecl = d1ecl_tbox
+#typedef d1eclist = list(d1ecl)
+#typedef d1eclopt = optn(d1ecl)
+//
+(* ****** ****** *)
 //
 #typedef d1gua = d1gua_tbox
 #typedef d1gpt = d1gpt_tbox
@@ -104,14 +125,15 @@ l0d1e = $D0E.d0lab(d1exp)
 #typedef d1clslst = list(d1cls)
 //
 (* ****** ****** *)
-//
-#abstype d1ecl_tbox // ptr
-#typedef d1ecl = d1ecl_tbox
-#typedef d1eclist = list(d1ecl)
-#typedef d1eclopt = optn(d1ecl)
+
+#typedef d1valdcl = d1valdcl_tbox
+#typedef d1vardcl = d1vardcl_tbox
+#typedef d1fundcl = d1fundcl_tbox
+#typedef d1cstdcl = d1cstdcl_tbox
+
+(* ****** ****** *)
 //
 #vwtpdef d1eclist_vt = list_vt(d1ecl)
-//
 #typedef d1eclistopt = optn(d1eclist)
 //
 (* ****** ****** *)
@@ -373,6 +395,17 @@ D1Eexists of // HX-2021-01-14: $exists{..}..{..}
 // end of [d1exp_node] // end of [datatype]
 //
 (* ****** ****** *)
+//
+and
+s1eff =
+| S1EFFnone of ()
+| S1EFFsome of s1explst
+and
+s1res =
+| S1RESnone of ((*void*))
+| S1RESsome of (s1eff, s1exp)
+//
+(* ****** ****** *)
 fun
 d1exp_fprint:(FILR,d1exp)->void
 (* ****** ****** *)
@@ -515,6 +548,48 @@ fun
 d1ecl_make_node
 (loc:loc_t,nod:d1ecl_node): d1ecl
 #symload d1ecl with d1ecl_make_node
+//
+(* ****** ****** *)
+//
+#typedef d1res = teqd1exp
+//
+(*
+datatype
+d1cstdcl =
+D1CSTDCL of @{
+  lctn= loc_t
+, dpid= token
+, darg= d1arglst
+, sres= s1res, dres= d1res
+} (*d1cstdcl*)
+*)
+//
+fun
+d1cstdcl_get_lctn:(d1cstdcl)->loc_t
+fun
+d1cstdcl_get_dpid:(d1cstdcl)->d0pid(*nam*)
+fun
+d1cstdcl_get_darg:(d1cstdcl)->d1arglst
+fun
+d1cstdcl_get_sres:(d1cstdcl)->s1res(*opt*)
+fun
+d1cstdcl_get_dres:(d1cstdcl)->d1res(*opt*)
+//
+#symload lctn with d1cstdcl_get_lctn
+#symload dpid with d0cstdcl_get_dpid
+#symload darg with d0cstdcl_get_darg(*lst*)
+#symload sres with d0cstdcl_get_sres(*opt*)
+#symload dres with d0cstdcl_get_dres(*opt*)
+//
+(* ****** ****** *)
+//
+fun
+d1cstdcl_make_args
+( loc0:loc_t
+, dpid:d0pid
+, args:d1arglst, sres:s1res, dres:d1res
+) : d1cstdcl//end-of(d1cstdcl_make_node)
+#symload d1cstdcl with d1cstdcl_make_args
 //
 (* ****** ****** *)
 
