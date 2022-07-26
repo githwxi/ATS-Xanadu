@@ -319,6 +319,12 @@ preadx0_errmsg_dats: ; $(XATSOPT) --dynamic DATS/preadx0_errmsg.dats
 
 ######
 all_dats:: \
+xfixity_dats
+xfixity_dats: ; $(XATSOPT) --dynamic DATS/xfixity.dats
+######
+
+######
+all_dats:: \
 staexp1_dats
 staexp1_dats: ; $(XATSOPT) --dynamic DATS/staexp1.dats
 ######

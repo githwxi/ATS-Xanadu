@@ -55,6 +55,9 @@ datatype assoc =
 |ASSOCnon|ASSOClft|ASSOCrgt
 //
 (* ****** ****** *)
+val app_assoc: assoc
+val imp_assoc: assoc
+(* ****** ****** *)
 fun
 assoc_fprint:(FILR,assoc)->void
 (* ****** ****** *)
@@ -64,6 +67,13 @@ prcdv_tflt//sint(*flat-type*)
 #typedef
 prcdv = prcdv_tflt(*prcd-val*)
 //
+(* ****** ****** *)
+fun
+prcdv_decode:(prcdv)->sint
+fun
+prcdv_encode(cdv:sint):prcdv
+#symload decd with prcdv_decode
+#symload encd with prcdv_encode
 (* ****** ****** *)
 fun
 prcdv_fprint:(FILR,prcdv)->void
