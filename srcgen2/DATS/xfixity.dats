@@ -45,6 +45,9 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload
+ERR = "./../SATS/xerrory.sats"
+(* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 #staload "./../SATS/xfixity.sats"
 (* ****** ****** *)
@@ -287,6 +290,7 @@ end (*let*) // end of [fixty_fprint(out,fxt)]
 //
 (* ****** ****** *)
 
+(*
 #impltmp
 <a>(*tmp*)
 fxitmlst_resolve
@@ -303,6 +307,75 @@ prerrln
 in
 
 end (*let*)//end-of-[fxitmlst_resolve(loc0,xs)]
+*)
+
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+fxitmlst_resolve$apperr
+  (itm) =
+let
+//
+val
+loc0 =
+fxitm_get_lctn<a>(itm)
+//
+(*
+val-FXITMatm(atm) = itm
+*)
+val () = prerr ( loc0 )
+val () = prerr (": error(1)")
+//
+val () =
+prerrln
+(": app-fixity cannot be resolved: ", itm)
+//
+in
+  $raise(XATSOPT_FixityExn(*void*))
+endlet // end of [fxitmlst_resolve$apperr<a>(itm)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+fxitmlst_resolve$oprerr
+  (itm) =
+let
+//
+val
+loc0 =
+fxitm_get_lctn<a>(itm)
+//
+val () =
+prerr("FIXITY-ERROR:")
+val () = prerr( loc0 )
+val () =
+prerrln
+(": opr-fixity cannot be resolved: ", itm)
+//
+in//let
+  $raise(XATSOPT_FixityExn(*void*))
+endlet // end of [fxitmlst_resolve$oprerr<a>(itm)]
+//
+(* ****** ****** *)
+
+#impltmp
+<a>(*tmp*)
+fxitmlst_resolve$rederr
+  (loc0, itms) =
+let
+//
+val () =
+prerr("FIXITY-ERROR:")
+val () = prerr( loc0 )
+val () =
+prerrln
+(": opr-fixity cannot be resolved: ", itms)
+//
+in//let
+  $raise(XATSOPT_FixityExn(*void*))
+endlet // end of [fxitmlst_resolve$rederr<a>(loc0,itms)]
 
 (* ****** ****** *)
 
@@ -319,67 +392,6 @@ fxitmlst_resolve
 #define :: list_cons
 #define nil list_nil
 #define cons list_cons
-//
-fun
-itmloc
-( itm
-: fxitm(a)): loc_t =
-  fxitm_get_loc<a>(itm)
-//
-fun
-auxerr_opr
-  (y0: itm): a = let
-  val () = prerr (itmloc(y0))
-  val () = prerr (": error(1)")
-//
-  val () =
-  prerr ": operator fixity cannot be resolved."
-(*
-  val () =
-  prerr ": auxerr_opr: operator fixity cannot be resolved."
-*)
-//
-  val () = prerr_newline((*void*))
-in
-  $raise($ERR.XATSOPT_FIXITY_EXN(*void*))
-end // end of [auxerr_opr]
-//
-fun
-auxerr_red
-  (ys: itmlst): a = let
-  val () = prerr (loc0)
-  val () = prerr (": error(1)")
-//
-  val () =
-  prerr ": operator fixity cannot be resolved."
-(*
-  val () =
-  prerr ": auxerr_red: operator fixity cannot be resolved."
-*)
-//
-  val () = prerr_newline((*void*))
-in
-  $raise($ERR.XATSOPT_FIXITY_EXN(*void*))
-end // end of [auxerr_red]
-//
-fun
-auxerr_app
-  (y0: itm): a = let
-  val-FXITMatm atm = y0
-  val () = prerr (itmloc(y0))
-  val () = prerr (": error(1)")
-//
-  val () =
-  prerr ": application fixity cannot be resolved."
-(*
-  val () =
-  prerr ": auxerr_app: application fixity cannot be resolved."
-*)
-//
-  val () = prerr_newline((*void*))
-in
-  $raise($ERR.XATSOPT_FIXITY_EXN(*void*))
-end // end of [auxerr_app]
 //
 fnx
 process
