@@ -75,6 +75,17 @@ val imp_prcdv: prcdv
 val brckt_prcdv: prcdv
 val dtsel_prcdv: prcdv
 //
+val forall_prcdv: prcdv
+and exists_prcdv: prcdv
+//
+val bslash_prcdv: prcdv
+val inftmp_prcdv: prcdv // for temp-infixity
+//
+(* ****** ****** *)
+val
+the_prcdv_neginf: prcdv
+val
+the_prcdv_posinf: prcdv
 (* ****** ****** *)
 //
 fun

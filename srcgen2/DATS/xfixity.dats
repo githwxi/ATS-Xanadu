@@ -73,21 +73,26 @@ end (*let*) // end of [assoc_fprint]
 (* ****** ****** *)
 
 local
-
+//
 #absimpl
 prcdv_tflt = sint
-
-#define
-PRCDV_MIN -1000000000 // HX: low enough
-#define
-PRCDV_MAX  1000000000 // HX: high enough
-
+//
+(*
+HX:
+PRCDV_MIN: low enough
+PRCDV_MAX: high enough
+*)
+val
+PRCDV_MIN = -1000000000
+val
+PRCDV_MAX =  1000000000
+//
 in (* in-of-local *)
 
 (* ****** ****** *)
-#implfun
+#implval
 app_prcdv = 70
-#implfun
+#implval
 imp_prcdv = 10
 (* ****** ****** *)
 
@@ -106,6 +111,11 @@ if
 then PRCDV_MAX else cdv))
 
 (* ****** ****** *)
+#implval
+the_prcdv_neginf = PRCDV_MIN
+#implval
+the_prcdv_posinf = PRCDV_MAX
+(* ****** ****** *)
 
 endloc(*local*)//end-of-[local(prcdv)]
 
@@ -119,31 +129,36 @@ sub_prcdv_int
 ( cdv , int ) =
 prcdv(cdv.decd() - int)
 (* ****** ****** *)
-#implfun
+#implval
 brckt_prcdv =
 add_prcdv_int(app_prcdv, 10)
-#implfun
+#implval
 dtsel_prcdv =
 add_prcdv_int(app_prcdv, 10)
+(* ****** ****** *)
+#implval
+forall_prcdv = prcdv( 0 )
+#implval
+exists_prcdv = prcdv( 0 )
+(* ****** ****** *)
+#implfun
+bslash_prcdv =
+prcdv(app_prcdv.decd()+1)
+#implfun
+inftmp_prcdv = prcdv ( 0 ) // for temp-infixity
+(* ****** ****** *)
+//
+#implfun
+cmp_prcdv_prcdv
+(  cdv1,cdv2  ) =
+(cdv1.decd() \cmp cdv2.decd())
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xfixity.dats] *)
 
 (* ****** ****** *)
 ////
-(* ****** ****** *)
-local
-
-absimpl
-prcdv_tflt = int
-
-#define
-MINPRCDV ~1000000000 // HX: low enough
-#define
-MAXPRCDV  1000000000 // HX: high enough
-
-in (* in-of-local *)
-
 (* ****** ****** *)
 //
 implement
@@ -156,48 +171,17 @@ FIXTYinf(imp_prcdv, imp_assoc)
 (* ****** ****** *)
 //
 implement
-brack_prcdv =
-add_prcdv_int(app_prcdv, 10)
-implement
-dtsel_prcdv =
-add_prcdv_int(app_prcdv, 10)
-//
-implement
 brack_fixty = FIXTYpos(brack_prcdv)
 implement
 dtsel_fixty = FIXTYpos(dtsel_prcdv)
 //
 (* ****** ****** *)
 //
-(*
-implement
-raise_prcdv =
-pred(prcdv2int(app_prcdv))
-//
-implement
-raise_fixty = FIXTYpre(raise_prcdv)
-*)
-//
-(* ****** ****** *)
-//
-implement
-forall_prcdv = (0)
-implement
-exists_prcdv = (0)
-//
 implement
 forall_fixty = FIXTYpre(forall_prcdv)
 implement
 exists_fixty = FIXTYpre(exists_prcdv)
 //
-(* ****** ****** *)
-
-implement
-backslash_prcdv =
-succ(prcdv2int(app_prcdv))
-implement
-infixtemp_prcdv = 0 // for temporary infix status
-
 (* ****** ****** *)
 
 implement
@@ -218,32 +202,8 @@ FIXTYinf
 
 (* ****** ****** *)
 
-implement
-the_neginf_prcdv = MINPRCDV
-implement
-the_posinf_prcdv = MAXPRCDV
-
 end // end of [local]
 
-(* ****** ****** *)
-//
-implement
-add_prcdv_int(p, i) =
-int2prcdv
-(g0int_add_int(prcdv2int(p), i))
-implement
-sub_prcdv_int(p, i) =
-int2prcdv
-(g0int_sub_int(prcdv2int(p), i))
-//
-(* ****** ****** *)
-//
-implement
-cmp_prcdv_prcdv(x0, x1) =
-compare(prcdv2int(x0), prcdv2int(x1))
-//
-overload compare with cmp_prcdv_prcdv
-//
 (* ****** ****** *)
 //
 implement
