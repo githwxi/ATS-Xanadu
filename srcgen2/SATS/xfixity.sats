@@ -113,7 +113,6 @@ cmp_prcdv_prcdv
 //
 datatype
 fxitm(a:type) =
-
 | FXITMatm(a) of (a)
 | FXITMopr(a) of (a, fixty)
 //
@@ -132,6 +131,28 @@ fixty =
 // end of [fixty]
 //
 (* ****** ****** *)
+//
+val app_fixty: fixty
+//
+val imp_fixty: fixty
+//
+val brckt_fixty: fixty
+val dtsel_fixty: fixty
+//
+(*
+val raise_fixty: fixty
+*)
+//
+val forall_fixty: fixty
+and exists_fixty: fixty
+//
+val bslash_fixty: fixty
+val inftmp_fixty: fixty
+//
+val postplus_fixty: fixty
+and postmnus_fixty: fixty
+//
+(* ****** ****** *)
 fun
 fixty_prcdv(fxt: fixty): prcdv
 fun
@@ -140,8 +161,47 @@ fixty_assoc(fxt: fixty): assoc
 fun
 fixty_fprint:(FILR,fixty)->void
 fun
-<a:type>
+<a:t0>
 fxitm_fprint:(FILR,fxitm(a))->void
+(* ****** ****** *)
+//
+#typedef
+fxitmlst
+(a:type) = list(fxitm(a))
+//
+(* ****** ****** *)
+//
+(*
+fun
+<a:t0>
+fxitm_make(x0: a): fxitm(a)
+*)
+//
+fun
+<a:t0>
+fxopr_make_app
+( x0: fxitm(a) ): fxitm(a)
+//
+//
+fun
+<a:t0>
+fxitmlst_resolve
+(loc0: loc_t, xs: fxitmlst(a)): (a)
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+fxitm_infix
+(x0: a, f1: a, x2: a): fxitm(a) // f0(x1,x2)
+//
+fun
+<a:t0>
+fxitm_prefix(f0: a, x1: a): fxitm(a) // f0(x1)
+fun
+<a:t0>
+fxitm_pstfix(x0: a, f1: a): fxitm(a) // f1(x0)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xfixity.sats] *)
