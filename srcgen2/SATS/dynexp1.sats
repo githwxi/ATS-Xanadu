@@ -513,17 +513,31 @@ d1ecl_node =
 | D1Cextern of
   (token, d1ecl) // globally
 //
+| D1Clocal of
+  ( d1eclist(*head*)
+  , d1eclist(*body*))
+//
 | D1Cdefine of
   ( token
-  , token(*g0eid*)
+  , g0eid
   , g1maglst(*arg*), g1expopt)
 | D1Cmacdef of
   ( token
-  , token(*g0eid*)
+  , g0eid
   , g1maglst(*arg*), d1expopt)
 //
-| D1Clocal of
-  (d1eclist(*local*), d1eclist)
+| D1Cstacst0 of
+  ( token
+  , s0eid
+  , t1maglst, sort1)
+//
+| D1Csortdef of
+  ( token, s0tid, s1tdf)
+//
+| D1Csexpdef of
+  ( token // kind
+  , s0eid
+  , s1maglst, sort1opt, s1exp)
 //
 |
 D1Cvaldclst of
