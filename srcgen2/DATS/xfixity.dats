@@ -154,122 +154,100 @@ cmp_prcdv_prcdv
 (cdv1.decd() \cmp cdv2.decd())
 //
 (* ****** ****** *)
+//
+#implfun
+prcdv_fprint
+ (out, cdv) =
+(
+print(cdv.decd())) where
+{
+#implfun g_print$out<>() = out
+} (*where*)//end-of-(prcdv_fprint)
+//
+(* ****** ****** *)
+#implval
+app_fixty =
+FIXTYinf(app_prcdv, app_assoc)
+#implval
+imp_fixty =
+FIXTYinf(imp_prcdv, imp_assoc)
+(* ****** ****** *)
+#implval
+brckt_fixty = FIXTYpos(brckt_prcdv)
+#implval
+dtsel_fixty = FIXTYpos(dtsel_prcdv)
+(* ****** ****** *)
+#implval
+forall_fixty = FIXTYpre(forall_prcdv)
+#implval
+exists_fixty = FIXTYpre(exists_prcdv)
+(* ****** ****** *)
+//
+#implval
+postplus_fixty = FIXTYpos(prcdv(0))
+#implval
+postmnus_fixty = FIXTYpos(prcdv(0))
+//
+(* ****** ****** *)
+//
+#implval
+bslash_fixty = FIXTYpre(bslash_prcdv)
+#implval
+inftmp_fixty = FIXTYinf(inftmp_prcdv, ASSOCnon)
+//
+(* ****** ****** *)
+//
+#implfun
+<a:t0>
+fxitm_fprint
+( out, fxi ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ fxi of
+|
+FXITMatm(itm) =>
+print("FXITMatm(",itm,")")
+|
+FXITMopr(itm,fxt) =>
+print("FXITMopr(",itm,";",fxt,")")
+end (*let*) // end of [fixty_fprint(out,fxi)]
+//
+(* ****** ****** *)
+//
+#implfun
+fixty_fprint
+( out, fxt ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ fxt of
+|
+FIXTYnon() =>
+print("FIXTYnon(",")")
+|
+FIXTYpre(p1) =>
+print("FIXTYpre(", p1, ")")
+|
+FIXTYpos(p1) =>
+print("FIXTYpos(", p1, ")")
+|
+FIXTYinf(p1, a2) =>
+print("FIXTYinf(",p1,";",a2,")")
+|
+FIXTYpreinf(p1, p2, a3) =>
+print("FIXTYpreinf(",p1,";",p2,";",a3,")")
+end (*let*) // end of [fixty_fprint(out,fxt)]
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xfixity.dats] *)
 
 (* ****** ****** *)
 ////
-(* ****** ****** *)
-//
-implement
-app_fixty =
-FIXTYinf(app_prcdv, app_assoc)
-implement
-imp_fixty =
-FIXTYinf(imp_prcdv, imp_assoc)
-//
-(* ****** ****** *)
-//
-implement
-brack_fixty = FIXTYpos(brack_prcdv)
-implement
-dtsel_fixty = FIXTYpos(dtsel_prcdv)
-//
-(* ****** ****** *)
-//
-implement
-forall_fixty = FIXTYpre(forall_prcdv)
-implement
-exists_fixty = FIXTYpre(exists_prcdv)
-//
-(* ****** ****** *)
 
-implement
-postplus_fixty = FIXTYpos(0)
-implement
-postmnus_fixty = FIXTYpos(0)
-
-(* ****** ****** *)
-
-implement
-backslash_fixty =
-FIXTYpre
-(backslash_prcdv)
-implement
-infixtemp_fixty =
-FIXTYinf
-(infixtemp_prcdv, ASSOCnon)
-
-(* ****** ****** *)
-
-end // end of [local]
-
-(* ****** ****** *)
-//
-implement
-print_prcdv(x0) =
-fprint(stdout_ref, x0)
-implement
-prerr_prcdv(x0) =
-fprint(stderr_ref, x0)
-implement
-fprint_prcdv(out, x0) = fprint(out, prcdv2int(x0))
-//
-(* ****** ****** *)
-//
-implement
-print_fixty(x0) =
-fprint_fixty(stdout_ref, x0)
-implement
-prerr_fixty(x0) =
-fprint_fixty(stderr_ref, x0)
-//
-implement
-fprint_fixty
-  (out, x0) =
-(
-  case+ x0 of
-  | FIXTYnon() => begin
-    fprint!(out, "FIXTYnon()")
-    end // end of [FIXTYnon]
-  | FIXTYpre(p) =>
-    fprint!(out, "FIXTYpre(", p, ")")
-  | FIXTYpos(p) =>
-    fprint!(out, "FIXTYpos(", p, ")")
-  | FIXTYinf(p, a) =>
-    fprint!(out, "FIXTYinf(", p, ", ", a, ")")
-  | FIXTYpreinf(p1, p2, a) =>
-    fprint!
-    (out, "FIXTYpreinf(", p1, ", ", p2, ", ", a, ")")
-(*
-  | FIXTYposinf(p1, p2, a) =>
-    fprint!
-    (out, "FIXTYposinf(", p1, ", ", p2, ", ", a, ")")
-*)
-) (* end of [fprint_fixty] *)
-//
-(* ****** ****** *)
-
-(*
-implement
-{a}(*tmp*)
-fxitm_make
-  (x0) = let
-//
-val fx = fixty(x0)
-//
-in
-//
-case+ fx of
-| FIXTYnon() => FXITMatm(x0)
-| _(*non-FIXTYnon*) => FXITMopr(x0, x0)
-//
-end // end of [let]
-*)
-
-(* ****** ****** *)
-
-implement
 fixty_prcdv
   (fx) =
 (
