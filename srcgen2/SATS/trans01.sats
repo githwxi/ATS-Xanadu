@@ -117,24 +117,41 @@ fun token2dstr: token -> string
 
 (* HX: transing staexp *)
 
+(* ****** ****** *)
+//
 fun trans01_sort0: (sort0)->sort1
 fun trans01_s0exp: (s0exp)->s1exp
-
+//
+fun
+trans01_sort0lst: (sort0lst)->sort1lst
+fun
+trans01_s0explst: (s0explst)->s1explst
+//
 (* ****** ****** *)
 
 (* HX: transing dynexp *)
 
+(* ****** ****** *)
+//
 fun trans01_d0pat: (d0pat)->d1pat
 fun trans01_d0exp: (d0exp)->d1exp
-
+//
+fun
+trans01_d0patlst: (d0patlst)->d1patlst
+fun
+trans01_d0explst: (d0explst)->d1explst
+//
 (* ****** ****** *)
 
 (* HX: trans01_decl00 *)
 
 (* ****** ****** *)
-
+//
 fun trans01_d0ecl: (d0ecl)->d1ecl
-
+//
+fun
+trans01_d0ecllst: (d0eclist)->d1eclist
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_trans01.sats] *)
