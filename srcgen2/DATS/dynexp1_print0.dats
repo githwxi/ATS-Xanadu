@@ -120,4 +120,34 @@ end (*let*) // end of [d1pat_fprint(out,d1p)]
 
 (* ****** ****** *)
 
+#implfun
+d1exp_fprint
+( out, d1e ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+d1e.node() of
+//
+end (*let*) // end of [d1exp_fprint(out,d1e)]
+
+(* ****** ****** *)
+
+#implfun
+d1ecl_fprint
+( out, dcl ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+dcl.node() of
+//
+end (*let*) // end of [d1ecl_fprint(out,dcl)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_dynexp1_print0.dats] *)
