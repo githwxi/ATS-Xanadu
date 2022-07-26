@@ -110,5 +110,37 @@ fun
 cmp_prcdv_prcdv
 (p1:prcdv, p2:prcdv): sint(*sgn*)
 (* ****** ****** *)
+//
+datatype
+fxitm(a:type) =
+
+| FXITMatm(a) of (a)
+| FXITMopr(a) of (a, fixty)
+//
+and
+fixty =
+| FIXTYnon
+| FIXTYpre of prcdv
+| FIXTYpos of prcdv
+| FIXTYinf of (prcdv, assoc)
+//
+| FIXTYpreinf of (prcdv, prcdv, assoc)
+(*
+| FIXTYposinf of (prcdv, prcdv, assoc)
+*)
+//
+// end of [fixty]
+//
+(* ****** ****** *)
+fun
+fixty_prcdv(fxt: fixty): prcdv
+fun
+fixty_assoc(fxt: fixty): assoc
+(* ****** ****** *)
+fun
+fxitm_fprint:(FILR,fxitm)->void
+fun
+fixty_fprint:(FILR,fixty)->void
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xfixity.sats] *)
