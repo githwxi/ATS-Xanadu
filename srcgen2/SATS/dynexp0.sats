@@ -993,10 +993,10 @@ WD0CSsome of
 //
 where
 {
-  #typedef d0cstdclist = list(  d0cstdcl  )
   #typedef d0fundclist = list(  d0fundcl  )
   #typedef d0valdclist = list(  d0valdcl  )
   #typedef d0vardclist = list(  d0vardcl  )
+  #typedef d0cstdclist = list(  d0cstdcl  )
 } (*where*) // end-of-[datatype ... and ...]
 //
 (* ****** ****** *)

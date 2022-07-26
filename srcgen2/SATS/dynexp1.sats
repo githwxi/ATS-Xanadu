@@ -63,19 +63,17 @@ D0E = "./dynexp0.sats"
 #staload "./xbasics.sats"
 #staload "./staexp1.sats"
 (* ****** ****** *)
-
-#typedef d0pid = $S0E.d0pid
-
+//
+#abstbox q1arg_tbox // ptr
+#abstbox s1qag_tbox // ptr
+#abstbox t1qag_tbox // ptr
+#abstbox t1iag_tbox // ptr
+//
 (* ****** ****** *)
 //
 #abstbox a1typ_tbox // ptr
 #abstbox d1arg_tbox // ptr
 //
-(* ****** ****** *)
-#typedef a1typ = a1typ_tbox
-#typedef d1arg = d1arg_tbox
-#typedef a1typlst = list(a1typ)
-#typedef d1arglst = list(d1arg)
 (* ****** ****** *)
 //
 #abstype d1pat_tbox // ptr
@@ -94,11 +92,35 @@ D0E = "./dynexp0.sats"
 //
 (* ****** ****** *)
 //
+#typedef d0pid = $S0E.d0pid
+//
+#typedef d0pidopt = optn(d0pid)
+//
+(* ****** ****** *)
+//
+#typedef s1qag = s1qag_tbox
+#typedef t1qag = t1qag_tbox
+#typedef t1iag = t1iag_tbox
+//
+(* ****** ****** *)
+#typedef s1qaglst = list(s1qag)
+#typedef t1qaglst = list(t1qag)
+#typedef t1iaglst = list(t1iag)
+(* ****** ****** *)
+//
+#typedef a1typ = a1typ_tbox
+#typedef d1arg = d1arg_tbox
+//
+#typedef a1typlst = list(a1typ)
+#typedef d1arglst = list(d1arg)
+//
+(* ****** ****** *)
+//
 #typedef d1pat = d1pat_tbox
+#typedef d1exp = d1exp_tbox
+//
 #typedef d1patlst = list(d1pat)
 #typedef d1patopt = optn(d1pat)
-//
-#typedef d1exp = d1exp_tbox
 #typedef d1explst = list(d1exp)
 #typedef d1expopt = optn(d1exp)
 //
@@ -503,6 +525,24 @@ d1ecl_node =
 | D1Clocal of
   (d1eclist(*local*), d1eclist)
 //
+|
+D1Cvaldclst of
+(token(*VAL(vlk)*), d1valdclist)
+|
+D1Cvardclst of
+(token(*VAR(vrk)*), d1vardclist)
+|
+D1Cfundclst of
+(token(*FUN(fnk)*), t1qaglst, d1fundclist)
+//
+|
+D1Cimplmnt0 of
+( token(*implknd*)
+, s1qaglst // {...}
+, t1qaglst // <...>
+, d0qid, t1iaglst, f1arglst
+, s1res, token(*EQ0*), d1exp(*body*))
+//
 | D1Cnone0 of () | D1Cnone1 of (d0ecl)
 //
 (* ****** ****** *)
@@ -523,10 +563,10 @@ WD1CSnone of () | WD1CSsome of (d1eclist)
 //
 where
 {
-  #typedef d1cstdclist = list(  d1cstdcl  )
   #typedef d1fundclist = list(  d1fundcl  )
   #typedef d1valdclist = list(  d1valdcl  )
   #typedef d1vardclist = list(  d1vardcl  )
+  #typedef d1cstdclist = list(  d1cstdcl  )
 } (*where*) // end-of-[datatype ... and ...]
 //
 (* ****** ****** *)
@@ -548,6 +588,74 @@ fun
 d1ecl_make_node
 (loc:loc_t,nod:d1ecl_node): d1ecl
 #symload d1ecl with d1ecl_make_node
+//
+(* ****** ****** *)
+fun
+d1valdcl_get_dpat:(d1valdcl)->d1pat
+fun
+d1valdcl_get_tdxp:(d1valdcl)->teqd1exp
+fun
+d1valdcl_get_wsxp:(d1valdcl)->wths1exp
+(* ****** ****** *)
+#symload dpat with d1valdcl_get_dpat
+#symload tdxp with d1valdcl_get_tdxp
+#symload wsxp with d1valdcl_get_wsxp
+(* ****** ****** *)
+fun
+d1vardcl_get_dpid:(d1vardcl)->d0pid
+fun
+d1vardcl_get_vpid:(d1vardcl)->d0pidopt
+fun
+d1vardcl_get_sres:(d1vardcl)->s1expopt
+fun
+d1vardcl_get_dini:(d1vardcl)->teqd1exp
+(* ****** ****** *)
+#symload dpid with d1vardcl_get_dpid
+#symload vpid with d1vardcl_get_vpid
+#symload sres with d1vardcl_get_sres
+#symload dini with d1vardcl_get_dini
+(* ****** ****** *)
+fun
+d1fundcl_get_dpid:(d1fundcl)->d0pid
+fun
+d1fundcl_get_farg:(d1fundcl)->f1arglst
+fun
+d1fundcl_get_sres:(d1fundcl)->s1res
+fun
+d1fundcl_get_tdxp:(d1fundcl)->teqd1exp
+fun
+d1fundcl_get_wsxp:(d1fundcl)->wths1exp
+(* ****** ****** *)
+#symload dpid with d1fundcl_get_dpid
+#symload farg with d1fundcl_get_farg
+#symload sres with d1fundcl_get_sres
+#symload tdxp with d1fundcl_get_tdxp
+#symload wsxp with d1fundcl_get_wsxp
+(* ****** ****** *)
+//
+fun
+d1valdcl_make_args
+( lctn:loc_t
+, dpat:d1pat
+, tdxp:teqd1exp, wsxp:wths1exp):d1valdcl
+fun
+d1vardcl_make_args
+( lctn:loc_t
+, dpid:d0pid
+, vpid:d0pidopt
+, sres:s1expopt, dini:teqd1exp):d1vardcl
+//
+fun
+d1fundcl_make_args
+( lctn:loc_t
+, dpid:d0pid
+, farg:f1arglst
+, sres:s0res
+, tdxp:teqd1exp, wsxp:wths1exp):d1fundcl
+//
+#symload d1valdcl with d1valdcl_make_args
+#symload d1vardcl with d0vardcl_make_args
+#symload d0fundcl with d0fundcl_make_args
 //
 (* ****** ****** *)
 //
@@ -576,10 +684,10 @@ fun
 d1cstdcl_get_dres:(d1cstdcl)->d1res(*opt*)
 //
 #symload lctn with d1cstdcl_get_lctn
-#symload dpid with d0cstdcl_get_dpid
-#symload darg with d0cstdcl_get_darg(*lst*)
-#symload sres with d0cstdcl_get_sres(*opt*)
-#symload dres with d0cstdcl_get_dres(*opt*)
+#symload dpid with d1cstdcl_get_dpid
+#symload darg with d1cstdcl_get_darg(*lst*)
+#symload sres with d1cstdcl_get_sres(*opt*)
+#symload dres with d1cstdcl_get_dres(*opt*)
 //
 (* ****** ****** *)
 //
