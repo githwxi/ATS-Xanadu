@@ -339,6 +339,18 @@ dynexp1_print0_dats: ; $(XATSOPT) --dynamic DATS/dynexp1_print0.dats
 
 ######
 all_dats:: \
+trans01_staexp_dats
+trans01_staexp_dats: ; $(XATSOPT) --dynamic DATS/trans01_staexp.dats
+all_dats:: \
+trans01_dynexp_dats
+trans01_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trans01_dynexp.dats
+all_dats:: \
+trans01_decl00_dats
+trans01_decl00_dats: ; $(XATSOPT) --dynamic DATS/trans01_decl00.dats
+######
+
+######
+all_dats:: \
 xatsopt_tmplib_dats
 xatsopt_tmplib_dats: ; $(XATSOPT) --dynamic DATS/xatsopt_tmplib.dats
 ######
