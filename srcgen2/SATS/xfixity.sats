@@ -197,7 +197,10 @@ fun
 <a:t0>
 fxitm_get_lctn: fxitm(a) -> loc_t
 //
-#symload lctn with fxitm_get_lctn
+(* ****** ****** *)
+//
+excptcon
+XATSOPT_FixityExn of ((*void*))
 //
 (* ****** ****** *)
 //
@@ -217,10 +220,12 @@ fun
 fxitmlst_resolve$oprerr:(fxitm(a))->(a)
 fun
 <a:t0>
-fxitmlst_resolve$rederr:(fxitm(a))->(a)
+fxitmlst_resolve$apperr:(fxitm(a))->(a)
+//
 fun
 <a:t0>
-fxitmlst_resolve$rederr:(fxitm(a))->(a)
+fxitmlst_resolve$rederr
+( loc0: loc_t, itms: fxitmlst(a) ): (a)
 //
 (* ****** ****** *)
 //
