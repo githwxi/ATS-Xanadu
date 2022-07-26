@@ -138,9 +138,10 @@ fun
 fixty_assoc(fxt: fixty): assoc
 (* ****** ****** *)
 fun
-fxitm_fprint:(FILR,fxitm)->void
-fun
 fixty_fprint:(FILR,fixty)->void
+fun
+<a:type>
+fxitm_fprint:(FILR,fxitm(a))->void
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xfixity.sats] *)
