@@ -1259,7 +1259,7 @@ fun
 d0cstdcl_make_args
 ( loc0:loc_t
 , dpid:d0pid
-, args:d0arglst,sres:s0res, dres:d0res
+, args:d0arglst, sres:s0res, dres:d0res
 ) : d0cstdcl//end-of(d0cstdcl_make_node)
 #symload d0cstdcl with d0cstdcl_make_args
 //

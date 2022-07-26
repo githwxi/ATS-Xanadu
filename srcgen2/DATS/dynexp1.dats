@@ -36,7 +36,6 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-(* ****** ****** *)
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
@@ -58,6 +57,8 @@ ATS_PACKNAME
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp0.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
@@ -240,6 +241,84 @@ let
 end
 //
 endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d1cstdcl =
+D1CSTDCL of
+( loc_t
+, d0pid
+, d1arglst,s1res,d1res)
+//
+#absimpl
+d1cstdcl_tbox = d1cstdcl
+//
+in//local
+//
+#implfun
+d1cstdcl_get_lctn
+(  dcst  ) =
+let
+val+
+D1CSTDCL
+( lctn
+, dpid
+, darg
+, sres, dres) = dcst in lctn end
+//
+#implfun
+d1cstdcl_get_darg
+(  dcst  ) =
+let
+val+
+D1CSTDCL
+( lctn
+, dpid
+, darg
+, sres, dres) = dcst in darg end
+//
+#implfun
+d1cstdcl_get_dpid
+(  dcst  ) =
+let
+val+
+D1CSTDCL
+( lctn
+, dpid
+, darg
+, sres, dres) = dcst in dpid end
+//
+#implfun
+d1cstdcl_get_sres
+(  dcst  ) =
+let
+val+
+D1CSTDCL
+( lctn
+, dpid
+, darg
+, sres, dres) = dcst in sres end
+//
+#implfun
+d1cstdcl_get_dres
+(  dcst  ) =
+let
+val+
+D1CSTDCL
+( lctn
+, dpid
+, darg
+, sres, dres) = dcst in dres end
+//
+#implfun
+d1cstdcl_make_args
+(lctn, dpid, darg, sred, dres) =
+D1CSTDCL(lctn, dpid, darg, sred, dres)
+//
+endloc (*local*) // end of [ local(d1cstdcl) ]
 
 (* ****** ****** *)
 
