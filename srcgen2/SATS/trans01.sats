@@ -77,8 +77,33 @@ FIL = "./filpath.sats"
 #staload S1E = "./staexp1.sats"
 #staload D1E = "./dynexp1.sats"
 (* ****** ****** *)
+//
+#typedef
+ftrans01
+(syn: tx) =
+(syn , &sint >> _) -> syn
+//
+(* ****** ****** *)
+//
+#typedef sort0 = $S0E.sort0
+#typedef s0exp = $S0E.s0exp
+//
+#typedef sort1 = $S1E.sort1
+#typedef s1exp = $S1E.s1exp
+//
+(* ****** ****** *)
+//
+#typedef d0pat = $D0E.d0pat
+#typedef d0exp = $D0E.d0exp
+#typedef d0ecl = $D0E.d0ecl
+//
+#typedef d1pat = $D1E.d1pat
+#typedef d1exp = $D1E.d1exp
+#typedef d1ecl = $D1E.d1ecl
+//
+(* ****** ****** *)
 
-(* HX: trans01_basics *)
+(* HX: transing basics *)
 
 (* ****** ****** *)
 fun token2sint: token -> sint
@@ -95,6 +120,28 @@ fun token2dflt: token -> double
 (* ****** ****** *)
 fun token2sstr: token -> string
 fun token2dstr: token -> string
+(* ****** ****** *)
+
+(* HX: transing staexp *)
+
+fun trans01_sort0: ftrans01(sort0)
+fun trans01_s0exp: ftrans01(s0exp)
+
+(* ****** ****** *)
+
+(* HX: transing dynexp *)
+
+fun trans01_d0pat: ftrans01(d0pat)
+fun trans01_d0exp: ftrans01(d0exp)
+
+(* ****** ****** *)
+
+(* HX: trans01_decl00 *)
+
+(* ****** ****** *)
+
+fun trans01_d0ecl: ftrans01(d0ecl)
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_trans01.sats] *)

@@ -146,6 +146,24 @@ in//let
 case+
 dcl.node() of
 //
+|
+D1Cextern
+(tknd,dcl1) =>
+print
+("D1Cextern(",tknd,";",dcl1,")")
+|
+D1Cstatic
+(tknd,dcl1) =>
+print
+("D1Cstatic(",tknd,";",dcl1,")")
+//
+|
+D1Clocal
+(head,body) =>
+print("D1Clocal(",head,";",body,")")
+//
+| D1Cnone0() => print("D1Cnone0(",")")
+| D1Cnone1(d0cl) => print("D1Cnone1(",d0cl,")")
 end (*let*) // end of [d1ecl_fprint(out,dcl)]
 
 (* ****** ****** *)
