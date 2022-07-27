@@ -36,7 +36,83 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-
+#include
+"./../HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+//
+#staload
+SYM = "./xsymbol.sats"
+//
+#typedef sym_t = $SYM.sym_t
+//
+(* ****** ****** *)
+//
+#absvtbx
+symmap_vtbx(x0:t0) // ptr
+#vwtpdef
+symmap(x0:t0) = symmap_vtbx(x0)
+//
+(* ****** ****** *)
+//
+fun
+symmap_make_nil
+{x0:type}((*void*)): symmap(x0)
+//
+(* ****** ****** *)
+//
+fun
+symmap_free
+{x0:type}(map: symmap(x0)): void
+//
+(* ****** ****** *)
+//
+fun
+symmap_search
+  {x0:type}
+(
+  kxs:
+! symmap(x0),k0:sym_t): optn_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+symmap_insert
+  {x0:type}
+( kxs:
+& symmap(x0),k0:sym_t,x0:x0): void
+//
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xats_xsymmap.sats] *)
+fun
+symmap_insert2
+  {x0:type}
+( kxs:
+& symmap(x0)
+, k0: sym_t, x0: x0, mix:(x0,x0)->x0
+) : void // end of [ symmap_insert2 ]
+
+(* ****** ****** *)
+//
+fun
+symmap_joinwth
+  {x0:type}
+( m1: &symmap(x0)
+, m2: !symmap(x0)): void // end-of-fun
+//
+(* ****** ****** *)
+//
+fun
+symmap_fprint_f2np
+  {x0:type}
+( out: FILR
+, map:
+! symmap(x0)
+, fpr: (FILR, x0) -> void): void//end(fun)
+//
+(* ****** ****** *)
+
+(* end of [ATS3/XATSOPT_xsymmap.sats] *)
