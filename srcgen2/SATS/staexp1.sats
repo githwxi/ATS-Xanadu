@@ -132,7 +132,7 @@ g1exp_node =
   , g1exp(* then *)
   , g1exp(* else *) )
 //
-| G1Eapp of ((*void*))
+| G1Ea0pp of ((*void*))
 //
 | G1Ea1pp of
   (g1exp(*fun*), g1exp)
@@ -178,6 +178,8 @@ g1mag_get_node(g1mag): g1mag_node
 #symload lctn with g1mag_get_lctn
 #symload node with g1mag_get_node
 (* ****** ****** *)
+fun
+g1exp_none0(loc:loc_t): g1exp
 fun
 g1exp_make_node
 (loc:loc_t,nod:g1exp_node): g1exp

@@ -111,7 +111,7 @@ symmap_fprint_f2np
 ( out: FILR
 , map:
 ! symmap(x0)
-, fpr: (FILR, x0) -> void): void//end(fun)
+, fpr: (FILR,x0)->void): void//end(fun)
 //
 (* ****** ****** *)
 
