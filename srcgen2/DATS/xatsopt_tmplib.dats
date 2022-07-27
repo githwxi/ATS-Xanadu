@@ -530,6 +530,15 @@ fxitm_fprint<a>(g_print$out<>(), fxi)
 (* ****** ****** *)
 //
 #impltmp
+g_print<g1nam>(g1n) =
+g1nam_fprint(g_print$out<>(), g1n)
+#impltmp
+g_print<g1exp>(g1e) =
+g1exp_fprint(g_print$out<>(), g1e)
+//
+(* ****** ****** *)
+//
+#impltmp
 g_print<sort1>(s1t) =
 sort1_fprint(g_print$out<>(), s1t)
 //

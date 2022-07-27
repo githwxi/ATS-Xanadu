@@ -116,6 +116,41 @@ the_fxtyenv_insert
 (key: sym_t, itm: fixty): void
 //
 (* ****** ****** *)
+//
+#absview
+fxtyenv_view
+#viewdef
+fxtyenv = fxtyenv_view
+//
+fun
+the_fxtyenv_pop
+( fxtyenv
+| (*none*) )
+: $MAP.symmap(fixty)
+fun
+the_fxtyenv_popfree
+( fxtyenv | (*none*) ): void
+//
+fun
+the_fxtyenv_pushnil
+( (*void*) ):(fxtyenv | void)
+//
+(* ****** ****** *)
+//
+fun
+the_fxtyenv_locjoin
+(
+  pf1: fxtyenv
+, pf2: fxtyenv | (*none*)
+) : void // end of [the_fxtyenv_locjoin]
+//
+(* ****** ****** *)
+//
+fun // p: pervasive
+the_fxtyenv_ptopmrg
+( map: $MAP.symmap(fixty) ): void
+//
+(* ****** ****** *)
 
 (* HX: transing basics *)
 

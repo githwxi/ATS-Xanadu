@@ -43,7 +43,8 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload "./xsymbol_print0.dats"
+#staload
+_(*?*) = "./xsymbol_print0.dats"
 (* ****** ****** *)
 #staload "./../SATS/xlabel0.sats"
 (* ****** ****** *)
