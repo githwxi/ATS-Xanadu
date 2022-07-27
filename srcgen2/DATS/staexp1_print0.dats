@@ -112,6 +112,51 @@ in//let
 case+
 g1e.node() of
 //
+|
+G1Eid0(id0) =>
+print("G1Eid0(",id0,")")
+//
+|
+G1Eint(tok) =>
+print("G1Eint(",tok,")")
+|
+G1Echr(tok) =>
+print("G1Echr(",tok,")")
+|
+G1Eflt(tok) =>
+print("G1Eflt(",tok,")")
+|
+G1Estr(tok) =>
+print("G1Estr(",tok,")")
+//
+|
+G1Eif0
+(g1e1,g1e2,g1e3) =>
+print
+("G1Eif0(",g1e1,";",g1e2,";",g1e3,")")
+|
+G1Ea0pp() =>
+print("G1Ea0pp(",")")
+//
+|
+G1Ea1pp
+(g1f0,g1e1) =>
+print("G1Ea1pp(",g1f0,";",g1e1,")")
+|
+G1Ea2pp
+(g1f0,g1e1,g1e2) =>
+print
+("G1Ea2pp(",g1f0,";",g1e1,";",g1e2,")")
+//
+|
+G1Elist(g1es) =>
+print("G1Elist(",g1es,")")
+//
+|
+G1Enone0() => print("G1Enone0(",")")
+|
+G1Enone1(g0e1) => print("G1Enone1(",g0e1,")")
+//
 end (*let*) // end of [g1exp_fprint(out,g1e)]
 
 (* ****** ****** *)
