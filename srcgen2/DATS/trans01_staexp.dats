@@ -325,4 +325,18 @@ end (*let*) // end of [fxitmlst_resolve_s1exp]
 
 (* ****** ****** *)
 
+#implfun
+trans01_g0namlst
+  (g0ns) =
+list_vt2t
+(
+list_map_vt
+<g0nam><g1nam>(g0ns)) where
+{
+#impltmp
+map$fopr<g0nam><g1nam> = trans01_g0nam
+} (*where*) // end of [trans01_gnamlst(g0ns)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_trans01_staexp.dats] *)
