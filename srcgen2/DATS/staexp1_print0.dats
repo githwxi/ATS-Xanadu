@@ -90,8 +90,10 @@ case+ g1n of
 | G1Nlist(g1ns) =>
   print("G1Nlist(",g1ns,")")
 //
+(*
 | G1Nnone0() =>
   print("G1Nnone0(",")")
+*)
 | G1Nnone1(g1n1) =>
   print("G1Nnone1(",g1n1,")")
 //

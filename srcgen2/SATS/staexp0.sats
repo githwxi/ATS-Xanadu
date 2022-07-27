@@ -364,7 +364,9 @@ g0nam_node =
 | G0Nlist of
   (token, g0namlst, token)
 //
+(*
 | G0Nnone0 of ()
+*)
 | G0Ntkerr of (token(*error*))
 //
 (* ****** ****** *)

@@ -498,7 +498,9 @@ end
 end
 ) (* end of [G0Nlist] *)
 //
+(*
 | G0Nnone0() => G1Nnone0()
+*)
 //
 | _(*rest-of-g0nam*) => G1Nnone1(gnm0)
 ) (* end of [trans01_gnam] *)

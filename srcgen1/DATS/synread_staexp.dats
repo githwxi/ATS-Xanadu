@@ -123,8 +123,10 @@ G0Nlist
   val () =
   synread_g0namlst(gnms)
 }
+(*
 |
 G0Nnone0() => ()
+*)
 |
 G0Nnone1(tok0) =>
 let
