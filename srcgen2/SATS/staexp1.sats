@@ -255,6 +255,8 @@ sort1_get_node(sort1): sort1_node
 (* ****** ****** *)
 //
 fun
+sort1_none0(loc:loc_t): sort1
+fun
 sort1_make_node
 (loc:loc_t,nod:sort1_node): sort1
 #symload sort1 with sort1_make_node
@@ -625,6 +627,8 @@ s1exp_get_node(s1exp): s1exp_node
 //
 (* ****** ****** *)
 //
+fun
+s1exp_none0(loc:loc_t): s1exp
 fun
 s1exp_make_node
 (loc:loc_t,nod:s1exp_node): s1exp

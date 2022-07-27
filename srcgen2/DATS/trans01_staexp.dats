@@ -241,4 +241,88 @@ end (*let*) // end of [fxitmlst_resolve_sort1]
 
 (* ****** ****** *)
 
+fun
+fxitmlst_resolve_s1exp
+( loc0: loc_t
+, itms: s1efxlst): s1exp =
+let
+//
+#impltmp
+fxitm_infix0<s1exp>
+  (x0, f1, x2) =
+let
+val loc0 =
+x0.lctn() + x2.lctn()
+val s1en =
+(
+  case+
+  f1.node() of
+  | S1Ea0pp() =>
+    S1Ea1pp(x0, x2)
+  | _(*non-S1Eapp*) =>
+    S1Ea2pp(f1, x0, x2)
+) : s1exp_node // end of [val]
+in
+  FXITMatm(s1exp(loc0, s1en))
+end // end of [$FIX.fxitm_infix0]
+//
+#impltmp
+fxitm_prefix<s1exp>
+  (f0, x1) = let
+  val loc0 =
+  f0.lctn() + x1.lctn()
+in
+  FXITMatm
+  (s1exp(loc0, S1Ea1pp(f0, x1)))
+end // end of [$FIX.fxitm_prefix]
+//
+#impltmp
+fxitm_pstfix<s1exp>
+  (x0, f1) = let
+  val loc0 =
+  x0.lctn() + f1.lctn()
+in
+  FXITMatm
+  (s1exp(loc0, S1Ea1pp(f1, x0)))
+end // end of [$FIX.fxitm_pstfix]
+//
+#impltmp
+fxatm_none<s1exp>
+  (loc) =
+  s1exp_none0(loc)
+#impltmp
+fxopr_get_lctn<s1exp>
+  (opr) = opr.lctn()
+//
+#impltmp
+fxitm_get_lctn<s1exp>
+  (itm) =
+(
+case+ itm of
+| FXITMatm(x0) => x0.lctn()
+| FXITMopr(x0, _) => x0.lctn()
+) (* end of [$FIX.fxitm_get_lctn] *)
+//
+#impltmp
+fxitmlst_resolve$appopr<s1exp>
+  (itm) = let
+//
+val s1e1 =
+s1exp
+(loc0, S1Ea0pp(*void*)) where
+{
+val loc0 =
+$FIX.fxitm_get_lctn<s1exp>(itm)
+}
+//
+in//let
+  $FIX.FXITMopr(s1e1, app_fixty)
+end // end of [$FIX.fxitmlst_resolve$appopr]
+//
+in//let
+  fxitmlst_resolve<s1exp>(loc0, itms)
+end (*let*) // end of [fxitmlst_resolve_s1exp]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_trans01_staexp.dats] *)
