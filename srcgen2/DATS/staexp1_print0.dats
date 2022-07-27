@@ -54,11 +54,14 @@ _(*?*) = "./lexing0_print0.dats"
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 (* ****** ****** *)
-#symload node with g1nam_get_node
-#symload lctn with g1nam_get_lctn
-(* ****** ****** *)
 #symload node with g1exp_get_node
 #symload lctn with g1exp_get_lctn
+(* ****** ****** *)
+#symload node with sort1_get_node
+#symload lctn with sort1_get_lctn
+(* ****** ****** *)
+#symload node with s1exp_get_node
+#symload lctn with s1exp_get_lctn
 (* ****** ****** *)
 
 #implfun
@@ -69,8 +72,28 @@ let
 g_print$out<>() = out
 in//let
 //
-case+
-g1n.node() of
+case+ g1n of
+//
+| G1Nnil() =>
+  print("G1Nnil(",")")
+//
+| G1Nid0(id0) =>
+  print("G1Nid0(",id0,")")
+//
+| G1Nint(int) =>
+  print("G1Nint(",int,")")
+| G1Nflt(flt) =>
+  print("G1Nflt(",flt,")")
+| G1Nstr(str) =>
+  print("G1Nstr(",str,")")
+//
+| G1Nlist(g1ns) =>
+  print("G1Nlist(",g1ns,")")
+//
+| G1Nnone0() =>
+  print("G1Nnone0(",")")
+| G1Nnone1(g1n1) =>
+  print("G1Nnone1(",g1n1,")")
 //
 end (*let*) // end of [g1nam_fprint(out,g1n)]
 

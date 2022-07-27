@@ -163,11 +163,6 @@ fun
 g1mag_fprint:(FILR,g1mag)->void
 (* ****** ****** *)
 fun
-g1nam_get_lctn(g1nam): loc_t
-fun
-g1nam_get_node(g1nam): g1nam_node
-(* ****** ****** *)
-fun
 g1exp_get_lctn(g1exp): loc_t
 fun
 g1exp_get_node(g1exp): g1exp_node

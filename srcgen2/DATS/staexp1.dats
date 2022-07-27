@@ -64,6 +64,37 @@ ATS_PACKNAME
 local
 //
 datatype
+g1exp =
+G1EXP of
+(
+loctn, g1exp_node)
+//
+#absimpl g1exp_tbox = g1exp
+//
+in (* in-of-local *)
+//
+#implfun
+g1exp_make_node
+(   loc,nod   ) = G1EXP(loc,nod)
+//
+#implfun
+g1exp_get_lctn(g1e) =
+let
+  val+G1EXP(loc,nod) = g1e in loc
+end
+#implfun
+g1exp_get_node(g1e) =
+let
+  val+G1EXP(loc,nod) = g1e in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 sort1 =
 SORT1 of
 (
