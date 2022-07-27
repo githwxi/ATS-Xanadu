@@ -85,7 +85,9 @@ datatype g1nam =
 //
 | G1Nlist of (g1namlst)
 //
+(*
 | G1Nnone0 of () // HX: EMPTY
+*)
 | G1Nnone1 of (g0nam) // ERROR!
 //
 where

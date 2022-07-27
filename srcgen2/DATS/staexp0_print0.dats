@@ -262,8 +262,10 @@ G0Nlist(tk1, gns, tk2) =>
 print
 ("G0Nlist(", tk1, ";", gns, ";", tk2, ")")
 //
+(*
 |
 G0Nnone0(   ) => print("G0Nnone0(", ")")
+*)
 |
 G0Ntkerr(tok) => print("G0Ntkerr(", tok, ")")
 //

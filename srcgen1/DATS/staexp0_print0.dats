@@ -363,8 +363,10 @@ fprint!
 , "G0Nlist("
 , tbeg, "; ", gnms, "; ", tend, ")")
 //
+(*
 | G0Nnone0() =>
   fprint!(out, "G0Nnone0(", ")")
+*)
 | G0Nnone1(tok) =>
   fprint!(out, "G0Nnone1(", tok, ")")
 )
