@@ -335,7 +335,21 @@ list_map_vt
 {
 #impltmp
 map$fopr<g0nam><g1nam> = trans01_g0nam
-} (*where*) // end of [trans01_gnamlst(g0ns)]
+} (*where*) // end of [trans01_g0namlst(g0ns)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_g0explst
+  (g0es) =
+list_vt2t
+(
+list_map_vt
+<g0exp><g1exp>(g0es)) where
+{
+#impltmp
+map$fopr<g0exp><g1exp> = trans01_g0exp
+} (*where*) // end of [trans01_g0explst(g0es)]
 
 (* ****** ****** *)
 
