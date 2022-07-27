@@ -54,6 +54,42 @@ _(*?*) = "./lexing0_print0.dats"
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 (* ****** ****** *)
+#symload node with g1nam_get_node
+#symload lctn with g1nam_get_lctn
+(* ****** ****** *)
+#symload node with g1exp_get_node
+#symload lctn with g1exp_get_lctn
+(* ****** ****** *)
+
+#implfun
+g1nam_fprint
+( out, g1n ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+g1n.node() of
+//
+end (*let*) // end of [g1nam_fprint(out,g1n)]
+
+(* ****** ****** *)
+
+#implfun
+g1exp_fprint
+( out, g1e ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+g1e.node() of
+//
+end (*let*) // end of [g1exp_fprint(out,g1e)]
+
+(* ****** ****** *)
 
 #implfun
 sort1_fprint

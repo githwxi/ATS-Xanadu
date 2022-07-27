@@ -80,6 +80,18 @@ FIL = "./filpath.sats"
 #staload D1E = "./dynexp1.sats"
 (* ****** ****** *)
 //
+#typedef g0nam = $S0E.g0nam
+#typedef g0exp = $S0E.g0exp
+#typedef g1nam = $S1E.g1nam
+#typedef g1exp = $S1E.g1exp
+//
+#typedef g0namlst = $S0E.g0namlst
+#typedef g0explst = $S0E.g0explst
+#typedef g1namlst = $S1E.g1namlst
+#typedef g1explst = $S1E.g1explst
+//
+(* ****** ****** *)
+//
 #typedef sort0 = $S0E.sort0
 #typedef s0exp = $S0E.s0exp
 #typedef sort1 = $S1E.sort1
@@ -173,6 +185,16 @@ fun token2dstr: token -> string
 
 (* HX: transing staexp *)
 
+(* ****** ****** *)
+//
+fun trans01_g0nam: (g0nam)->g1nam
+fun trans01_g0exp: (g0exp)->g1exp
+//
+fun
+trans01_g0namlst: (g0namlst)->g1namlst
+fun
+trans01_g0explst: (g0explst)->g1explst
+//
 (* ****** ****** *)
 //
 fun trans01_sort0: (sort0)->sort1
