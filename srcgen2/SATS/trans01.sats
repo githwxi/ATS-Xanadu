@@ -59,10 +59,12 @@ LEX = "./lexing0.sats"
 *)
 #typedef token = $LEX.token
 //
-(*
+(* ****** ****** *)
+//
+#vwtpdef
+fixty = $FIX.fixty
 #vwtpdef
 fixtyopt_vt = optn_vt(fixty)
-*)
 //
 (* ****** ****** *)
 //
@@ -103,6 +105,15 @@ FIL = "./filpath.sats"
 #typedef d1patlst = $D1E.d1patlst
 #typedef d1explst = $D1E.d1explst
 #typedef d1eclist = $D1E.d1eclist
+//
+(* ****** ****** *)
+//
+fun
+the_fxtyenv_search
+(key: sym_t): fixtyopt_vt
+fun
+the_fxtyenv_insert
+(key: sym_t, itm: fixty): void
 //
 (* ****** ****** *)
 
