@@ -404,6 +404,18 @@ d2pat_sym0
 (* ****** ****** *)
 //
 implement
+d2pat_app2
+(loc0, d2f0, d2a1, d2a2) =
+(
+  d2pat_dapp
+  (loc0, d2f0, npf0, d2as)
+) where
+{
+val npf0 = ~1
+val d2as = list_pair(d2a1, d2a2)
+}
+//
+implement
 d2pat_sapp
 (loc0, d2f0, s2es) =
 (

@@ -781,6 +781,14 @@ d2pat_sym0
 (* ****** ****** *)
 //
 fun
+d2pat_app2
+( loc0: loc_t
+, d2f0: d2pat(*fun*)
+, d2a1: d2pat, d2a2: d2pat): d2pat
+//
+(* ****** ****** *)
+//
+fun
 d2pat_sapp
 ( loc0: loc_t
 , d2f0: d2pat(*fun*)

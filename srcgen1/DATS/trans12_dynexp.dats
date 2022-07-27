@@ -946,8 +946,6 @@ D1Papp2
 ( d1f0
 , d1p1, d1p2) = d1p0.node()
 //
-val npf1 = (~1)
-//
 val d2f0 = trans12_dpat(d1f0)
 val d2p1 = trans12_dpat(d1p1)
 val d2p2 = trans12_dpat(d1p2)
@@ -955,7 +953,7 @@ val d2p2 = trans12_dpat(d1p2)
 val d2as = list_pair(d2p1, d2p2)
 //
 in
-  d2pat_dapp(loc0, d2f0, npf1, d2as)
+d2pat_app2(loc0, d2f0, d2p1, d2p2)
 end (*let*) // end of [auxapp2(d1p0)]
 
 (* ****** ****** *)
