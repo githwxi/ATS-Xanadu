@@ -157,4 +157,88 @@ end (*let*) // end of [fxitmlst_resolve_g1exp]
 
 (* ****** ****** *)
 
+fun
+fxitmlst_resolve_sort1
+( loc0: loc_t
+, itms: s1tfxlst): sort1 =
+let
+//
+#impltmp
+fxitm_infix0<sort1>
+  (x0, f1, x2) =
+let
+val loc0 =
+x0.lctn() + x2.lctn()
+val s1tn =
+(
+  case+
+  f1.node() of
+  | S1Ta0pp() =>
+    S1Ta1pp(x0, x2)
+  | _(*non-S1Tapp*) =>
+    S1Ta2pp(f1, x0, x2)
+) : sort1_node // end of [val]
+in
+  FXITMatm(sort1(loc0, s1tn))
+end // end of [$FIX.fxitm_infix0]
+//
+#impltmp
+fxitm_prefix<sort1>
+  (f0, x1) = let
+  val loc0 =
+  f0.lctn() + x1.lctn()
+in
+  FXITMatm
+  (sort1(loc0, S1Ta1pp(f0, x1)))
+end // end of [$FIX.fxitm_prefix]
+//
+#impltmp
+fxitm_pstfix<sort1>
+  (x0, f1) = let
+  val loc0 =
+  x0.lctn() + f1.lctn()
+in
+  FXITMatm
+  (sort1(loc0, S1Ta1pp(f1, x0)))
+end // end of [$FIX.fxitm_pstfix]
+//
+#impltmp
+fxatm_none<sort1>
+  (loc) =
+  sort1_none0(loc)
+#impltmp
+fxopr_get_lctn<sort1>
+  (opr) = opr.lctn()
+//
+#impltmp
+fxitm_get_lctn<sort1>
+  (itm) =
+(
+case+ itm of
+| FXITMatm(x0) => x0.lctn()
+| FXITMopr(x0, _) => x0.lctn()
+) (* end of [$FIX.fxitm_get_lctn] *)
+//
+#impltmp
+fxitmlst_resolve$appopr<sort1>
+  (itm) = let
+//
+val s1t1 =
+sort1
+(loc0, S1Ta0pp(*void*)) where
+{
+val loc0 =
+$FIX.fxitm_get_lctn<sort1>(itm)
+}
+//
+in//let
+  $FIX.FXITMopr(s1t1, app_fixty)
+end // end of [$FIX.fxitmlst_resolve$appopr]
+//
+in//let
+  fxitmlst_resolve<sort1>(loc0, itms)
+end (*let*) // end of [fxitmlst_resolve_sort1]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_trans01_staexp.dats] *)
