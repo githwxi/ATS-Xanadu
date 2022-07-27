@@ -510,10 +510,10 @@ end // end of [local]
 implement
 trans01_gnamlst
   (gnms) =
-list_vt2t(g1es) where
+list_vt2t(gnms) where
 {
 val
-g1es =
+gnms =
 list_map<g0nam><g1nam>
   (gnms) where
 {

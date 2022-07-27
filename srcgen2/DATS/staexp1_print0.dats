@@ -134,10 +134,10 @@ G1Eif0
 (g1e1,g1e2,g1e3) =>
 print
 ("G1Eif0(",g1e1,";",g1e2,";",g1e3,")")
+//
 |
 G1Ea0pp() =>
 print("G1Ea0pp(",")")
-//
 |
 G1Ea1pp
 (g1f0,g1e1) =>
