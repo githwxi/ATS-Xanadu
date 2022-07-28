@@ -345,8 +345,10 @@ f0_main(g0e0) =
 (
 case+
 g0e0.node() of
+//
 |
 G0Eid0 _ => f0_gid(g0e0)
+//
 |
 G0Eint _ => f0_int(g0e0)
 |
@@ -355,6 +357,13 @@ G0Echr _ => f0_chr(g0e0)
 G0Eflt _ => f0_flt(g0e0)
 |
 G0Estr _ => f0_str(g0e0)
+//
+|
+G0Eapps _ => f0_apps(g0e0)
+//
+|
+G0Elist _ => f0_list(g0e0)
+//
 ) where
 {
 //
@@ -434,6 +443,59 @@ FXITMatm
 //
 endlet // end of [f0_str(g0e0)]
 //
+(* ****** ****** *)
+//
+fun
+f0_g0es
+( g0es
+: g0explst): g1efxlst =
+(
+list_map
+<g0exp><g1efx>(g0es)) where
+{
+#impltmp
+map$fopr<g0exp><g1efx> = f0_main
+} (*where*)//end-of(f0_g0es(g0es))
+//
+(* ****** ****** *)
+//
+fun
+f0_apps
+(g0e0: g0exp): g1efx =
+let
+//
+val loc0 = g0e0.lctn()
+//
+val-
+G0Eapps(g0es) = g0e0.node()
+//
+in//let
+FXITMatm
+(fxitmlst_resolve_g1exp(loc0, f0_g0es(g0es)))
+endlet // end of [ f0_apps(g0e0) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_list
+(g0e0: g0exp): g1efx =
+let
+val-
+G0Elist
+(tbeg
+,g0es,tend) = g0e0.node()
+in//let
+let
+val
+g1es = trans01_g0explst(g0es)
+in//let
+FXITMatm
+(g1exp(g0e0.lctn(),G1Elist(g1es)))
+endlet
+endlet // end of [ f0_list(g0e0) ]
+
+(* ****** ****** *)
+
 }(*where*)//end-of-[f0_main(g0e0)]
 
 in//let
@@ -466,9 +528,8 @@ endloc(*local*)//end-of-[local(trans01_g0exp)]
 #implfun
 trans01_g0namlst
   (g0ns) =
-list_vt2t
 (
-list_map_vt
+list_map
 <g0nam><g1nam>(g0ns)) where
 {
 #impltmp
@@ -480,9 +541,8 @@ map$fopr<g0nam><g1nam> = trans01_g0nam
 #implfun
 trans01_g0explst
   (g0es) =
-list_vt2t
 (
-list_map_vt
+list_map
 <g0exp><g1exp>(g0es)) where
 {
 #impltmp
@@ -494,9 +554,8 @@ map$fopr<g0exp><g1exp> = trans01_g0exp
 #implfun
 trans01_sort0lst
   (s0ts) =
-list_vt2t
 (
-list_map_vt
+list_map
 <sort0><sort1>(s0ts)) where
 {
 #impltmp
@@ -508,9 +567,8 @@ map$fopr<sort0><sort1> = trans01_sort0
 #implfun
 trans01_s0explst
   (s0es) =
-list_vt2t
 (
-list_map_vt
+list_map
 <s0exp><s1exp>(s0es)) where
 {
 #impltmp
