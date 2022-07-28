@@ -57,6 +57,32 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
 (* ****** ****** *)
+#symload lctn with d0ecl_get_lctn
+#symload node with d0ecl_get_node
+(* ****** ****** *)
+
+#implfun
+trans01_d0ecl
+  (d0cl) = let
+//
+// (*
+val
+loc0 = d0cl.lctn()
+val () =
+prerrln
+("trans01_decl: d0cl = ", d0cl)
+// *)
+//
+in//let
+//
+case+
+d0cl.node() of
+//
+|
+_ (*otherwise*) =>
+d1ecl(d0cl.lctn(), D1Cd0ecl(d0cl))
+//
+end (*let*) // end of [trans01_d0ecl(d0cl)]
 
 (* ****** ****** *)
 
