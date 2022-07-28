@@ -85,4 +85,17 @@ end (*let*) // end of [trans01_d0ecl(d0cl)]
 
 (* ****** ****** *)
 
+#implfun
+trans01_d0eclist
+  (dcls) =
+(
+list_map
+<d0ecl><d1ecl>(dcls)) where
+{
+#impltmp
+map$fopr<d0ecl><d1ecl> = trans01_d0ecl
+} (*where*) // end of [trans01_d0eclist(dcls)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_trans01_decl00.dats] *)
