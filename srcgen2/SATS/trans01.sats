@@ -228,7 +228,7 @@ trans01_d0explst: (d0explst)->d1explst
 fun trans01_d0ecl: (d0ecl)->d1ecl
 //
 fun
-trans01_d0ecllst: (d0eclist)->d1eclist
+trans01_d0eclist: (d0eclist)->d1eclist
 //
 (* ****** ****** *)
 
