@@ -60,10 +60,9 @@ _(*XFIXITY*) = "./xfixity.dats"
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
 (* ****** ****** *)
-
 #sexpdef fxitm = fxitm
-
 (* ****** ****** *)
+#typedef i0dnt = i0dnt
 #typedef g1efx = fxitm(g1exp)
 #typedef g1efxlst = list(g1efx)
 (* ****** ****** *)
@@ -71,6 +70,13 @@ _(*XFIXITY*) = "./xfixity.dats"
 #typedef s1efx = fxitm(s1exp)
 #typedef s1tfxlst = list(s1tfx)
 #typedef s1efxlst = list(s1efx)
+(* ****** ****** *)
+#symload node with i0dnt_get_node
+(* ****** ****** *)
+#symload lctn with g0exp_get_lctn
+#symload node with g0exp_get_node
+(* ****** ****** *)
+#symload g1exp with g1exp_make_node
 (* ****** ****** *)
 
 fun
@@ -143,12 +149,12 @@ val g1e1 =
 g1exp
 (loc0, G1Ea0pp(*void*)) where
 {
-val loc0 =
-$FIX.fxitm_get_lctn<g1exp>(itm)
+val
+loc0 = fxitm_get_lctn<g1exp>(itm)
 }
 //
 in//let
-  $FIX.FXITMopr(g1e1, app_fixty)
+  FXITMopr(g1e1, app_fixty)
 end // end of [$FIX.fxitmlst_resolve$appopr]
 //
 in//let
@@ -325,6 +331,138 @@ end (*let*) // end of [fxitmlst_resolve_s1exp]
 
 (* ****** ****** *)
 
+local
+
+#extern
+fun
+f0_gid:(g0exp) -> g1efx
+#extern
+fun
+f0_main:(g0exp) -> g1efx
+
+#implfun
+f0_main(g0e0) =
+(
+case+
+g0e0.node() of
+|
+G0Eid0 _ => f0_gid(g0e0)
+|
+G0Eint _ => f0_int(g0e0)
+|
+G0Echr _ => f0_chr(g0e0)
+|
+G0Eflt _ => f0_flt(g0e0)
+|
+G0Estr _ => f0_str(g0e0)
+) where
+{
+//
+fun
+f0_int
+(g0e0: g0exp): g1efx =
+let
+val-
+G0Eint(int) = g0e0.node()
+in//let
+//
+case+ int of
+|
+T0INTnone(tok) =>
+FXITMatm(g1exp_none1(g0e0))
+|
+T0INTsome(tok) =>
+FXITMatm
+(g1exp(g0e0.lctn(), G1Eint(tok)))
+//
+endlet // end of [f0_int(g0e0)]
+//
+fun
+f0_chr
+(g0e0: g0exp): g1efx =
+let
+val-
+G0Echr(chr) = g0e0.node()
+in//let
+//
+case+ chr of
+|
+T0CHRnone(tok) =>
+FXITMatm(g1exp_none1(g0e0))
+|
+T0CHRsome(tok) =>
+FXITMatm
+(g1exp(g0e0.lctn(), G1Echr(tok)))
+//
+endlet // end of [f0_chr(g0e0)]
+//
+fun
+f0_flt
+(g0e0: g0exp): g1efx =
+let
+val-
+G0Eflt(flt) = g0e0.node()
+in//let
+//
+case+ flt of
+|
+T0FLTnone(tok) =>
+FXITMatm(g1exp_none1(g0e0))
+|
+T0FLTsome(tok) =>
+FXITMatm
+(g1exp(g0e0.lctn(), G1Eflt(tok)))
+//
+endlet // end of [f0_flt(g0e0)]
+//
+fun
+f0_str
+(g0e0: g0exp): g1efx =
+let
+val-
+G0Estr(str) = g0e0.node()
+in//let
+//
+case+ str of
+|
+T0STRnone(tok) =>
+FXITMatm(g1exp_none1(g0e0))
+|
+T0STRsome(tok) =>
+FXITMatm
+(g1exp(g0e0.lctn(), G1Estr(tok)))
+//
+endlet // end of [f0_str(g0e0)]
+//
+}(*where*)//end-of-[f0_main(g0e0)]
+
+in//let
+
+#implfun
+trans01_g0exp(g0e0) =
+let
+//
+(*
+//
+val loc0 = g0e0.lctn()
+val (  ) =
+prerrln
+("trans01_gexp: g0e0 = ", g0e0)
+*)
+//
+in(*in-of-let*)
+//
+case+
+f0_main(g0e0) of
+| FXITMatm(g1e0) => g1e0
+| FXITMopr(g1e0, fxty) => g1e0
+//
+end (*let*) // end of [trans01_g0exp(g0e0)]
+
+endloc(*local*)//end-of-[local(trans01_g0exp)]
+
+(* ****** ****** *)
+
 #implfun
 trans01_g0namlst
   (g0ns) =
@@ -350,6 +488,34 @@ list_map_vt
 #impltmp
 map$fopr<g0exp><g1exp> = trans01_g0exp
 } (*where*) // end of [trans01_g0explst(g0es)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_sort0lst
+  (s0ts) =
+list_vt2t
+(
+list_map_vt
+<sort0><sort1>(s0ts)) where
+{
+#impltmp
+map$fopr<sort0><sort1> = trans01_sort0
+} (*where*) // end of [trans01_sort0lst(s0ts)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_s0explst
+  (s0es) =
+list_vt2t
+(
+list_map_vt
+<s0exp><s1exp>(s0es)) where
+{
+#impltmp
+map$fopr<s0exp><s1exp> = trans01_s0exp
+} (*where*) // end of [trans01_s0explst(s0es)]
 
 (* ****** ****** *)
 
