@@ -79,8 +79,7 @@ case+
 d0cl.node() of
 //
 |
-_ (*otherwise*) =>
-d1ecl(d0cl.lctn(), D1Cd0ecl(d0cl))
+_ (*otherwise*) => d1ecl_none1(d0cl)
 //
 end (*let*) // end of [trans01_d0ecl(d0cl)]
 

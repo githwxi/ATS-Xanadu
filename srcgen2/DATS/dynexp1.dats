@@ -59,9 +59,23 @@ ATS_PACKNAME
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
+#staload "./../SATS/dynexp0.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
+(* ****** ****** *)
+#symload lctn with d0pat_get_lctn
+#symload lctn with d0exp_get_lctn
+#symload lctn with d0ecl_get_lctn
+(* ****** ****** *)
+
+#implfun
+d1pat_none1
+(  dpat  ) =
+d1pat_make_node
+(
+dpat.lctn(),D1Pnone1(dpat))
+
 (* ****** ****** *)
 
 local
@@ -184,6 +198,15 @@ endloc (*local*) // end of [ local ]
 
 (* ****** ****** *)
 
+#implfun
+d1exp_none1
+(  dexp  ) =
+d1exp_make_node
+(
+dexp.lctn(),D1Enone1(dexp))
+
+(* ****** ****** *)
+
 local
 //
 datatype
@@ -211,6 +234,15 @@ let
 end
 //
 endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+#implfun
+d1ecl_none1
+(  d0cl  ) =
+d1ecl_make_node
+(
+d0cl.lctn(),D1Cnone1(d0cl))
 
 (* ****** ****** *)
 

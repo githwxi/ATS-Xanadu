@@ -228,6 +228,9 @@ d1pat_get_node(d1pat): d1pat_node
 (* ****** ****** *)
 //
 fun
+d1pat_none1(dpat:d0pat): d1pat
+//
+fun
 d1pat_make_node
 (loc:loc_t,nod:d1pat_node): d1pat
 #symload d1pat with d1pat_make_node
@@ -453,6 +456,9 @@ d1exp_get_node(d1exp): d1exp_node
 (* ****** ****** *)
 //
 fun
+d1exp_none1(dexp:d0exp): d1exp
+//
+fun
 d1exp_make_node
 (loc:loc_t,nod:d1exp_node): d1exp
 #symload d1exp with d1exp_make_node
@@ -567,7 +573,7 @@ D1Cimplmnt0 of
 , d0qid, t1iaglst, f1arglst
 , s1res, token(*EQ0*), d1exp(*body*))
 //
-| D1Cnone0 of () | D1Cnone1 of (d0ecl)
+| D1Cnone0 of ((*void*)) | D1Cnone1 of (d0ecl)
 //
 (* ****** ****** *)
 //
@@ -607,6 +613,9 @@ d1ecl_get_node(d1ecl): d1ecl_node
 #symload node with d1ecl_get_node
 //
 (* ****** ****** *)
+//
+fun
+d1ecl_none1(d0cl:d0ecl): d1ecl
 //
 fun
 d1ecl_make_node
