@@ -183,6 +183,8 @@ g1mag_get_node(g1mag): g1mag_node
 fun
 g1exp_none0(loc:loc_t): g1exp
 fun
+g1exp_none1(g0e1:g0exp): g1exp
+fun
 g1exp_make_node
 (loc:loc_t,nod:g1exp_node): g1exp
 fun
