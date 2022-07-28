@@ -309,10 +309,10 @@ print
 ("G0Elist(", tkb, ";", ges, ",", tke, ")")
 //
 |
-G0Eifexp
+G0Eif0
 (tknd,g0e1,g0e2,g0e3,topt) =>
 (
-print("G0Eifexp(",tknd,";");
+print("G0Eif0(",tknd,";");
 print(g0e1,";",g0e2,";",g0e3,";",topt,")"))
 //
 |

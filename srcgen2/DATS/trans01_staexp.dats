@@ -359,11 +359,20 @@ G0Eflt _ => f0_flt(g0e0)
 G0Estr _ => f0_str(g0e0)
 //
 |
+G0Eif0 _ => f0_if0(g0e0)
+//
+|
 G0Eapps _ => f0_apps(g0e0)
 //
 |
 G0Elist _ => f0_list(g0e0)
 //
+|
+G0Enone1 _ =>
+FXITMatm
+(
+g1exp
+(g0e0.lctn(),G1Enone1(g0e0)))
 ) where
 {
 //
@@ -456,6 +465,44 @@ list_map
 #impltmp
 map$fopr<g0exp><g1efx> = f0_main
 } (*where*)//end-of(f0_g0es(g0es))
+//
+(* ****** ****** *)
+//
+fun
+f0_if0
+( g0e0
+: g0exp): g1efx =
+let
+//
+val loc0 = g0e0.lctn()
+//
+val-
+G0Eif0
+(tknd
+,g0e1,g0e2
+,g0e3,tend) = g0e0.node()
+//
+val g1e1 = trans01_g0exp(g0e1)
+//
+val g1e2 =
+(
+case+ g0e2 of
+|
+g0exp_THEN
+(tok1, g0e2) => trans01_g0exp(g0e2))
+//
+val g1e3 =
+(
+case+ g0e3 of
+|
+g0exp_ELSE
+(tok1, g0e3) => trans01_g0exp(g0e3))
+//
+in
+FXITMatm
+(
+g1exp(loc0, G1Eif0(g1e1, g1e2, g1e3)))
+endlet // end of [ f0_if0(g0e0) ]
 //
 (* ****** ****** *)
 //

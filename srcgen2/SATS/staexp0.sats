@@ -385,7 +385,7 @@ g0exp_node =
 | G0Elist of // temp.
   (token, g0explst, token)
 //
-| G0Eifexp of
+| G0Eif0 of
   ( token
   , g0exp
   , g0exp_THEN
