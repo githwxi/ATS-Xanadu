@@ -49,9 +49,9 @@ LOC = "./locinfo.sats"
 //
 #typedef lab_t = $LAB.lab_t
 #typedef label = $LAB.label
+//
 #typedef loc_t = $LOC.loc_t
 #typedef loctn = $LOC.loctn
-//
 #typedef lcsrc = $LOC.lcsrc
 //
 (* ****** ****** *)
@@ -1274,6 +1274,10 @@ d0cstdcl_make_args
 //
 #typedef
 d0eclistopt = optn(d0eclist)
+//
+fun
+d0parsed_fprint
+(out: FILR, dpar: d0parsed): void
 //
 fun
 d0parsed_get_stadyn:(d0parsed)->sint
