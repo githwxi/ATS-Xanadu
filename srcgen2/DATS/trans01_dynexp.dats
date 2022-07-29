@@ -64,20 +64,6 @@ ATS_PACKNAME
 #symload node with d0exp_get_node
 
 (* ****** ****** *)
-//
-fun
-d1pat_none1
-(d0p1: d0pat): d1pat =
-d1pat(d0p1.lctn(), D1Pnone1(d0p1))
-//
-(* ****** ****** *)
-//
-fun
-d1exp_none1
-(d0e1: d0exp): d1exp =
-d1exp(d0e1.lctn(), D1Enone1(d0e1))
-//
-(* ****** ****** *)
 
 #implfun
 trans01_d0pat(d0p0) =
@@ -118,6 +104,32 @@ case+
 d0e0.node() of
 | _(*otherwise*) => d1exp_none1(d0e0)
 end (*let*) // end of [trans01_d0exp(d0e0)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_d0patlst
+  (d0ps) =
+(
+list_map
+<d0pat><d1pat>(d0ps)) where
+{
+#impltmp
+map$fopr<d0pat><d1pat> = trans01_d0pat
+} (*where*) // end of [trans01_d0patlst(d0ps)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_d0explst
+  (d0es) =
+(
+list_map
+<d0exp><d1exp>(d0es)) where
+{
+#impltmp
+map$fopr<d0exp><d1exp> = trans01_d0exp
+} (*where*) // end of [trans01_d0explst(d0es)]
 
 (* ****** ****** *)
 

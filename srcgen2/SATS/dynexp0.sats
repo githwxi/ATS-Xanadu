@@ -52,6 +52,8 @@ LOC = "./locinfo.sats"
 #typedef loc_t = $LOC.loc_t
 #typedef loctn = $LOC.loctn
 //
+#typedef lcsrc = $LOC.lcsrc
+//
 (* ****** ****** *)
 //
 #staload
@@ -1262,6 +1264,31 @@ d0cstdcl_make_args
 , args:d0arglst, sres:s0res, dres:d0res
 ) : d0cstdcl//end-of(d0cstdcl_make_node)
 #symload d0cstdcl with d0cstdcl_make_args
+//
+(* ****** ****** *)
+
+#abstbox d0parsed_tbox // ptr
+#typedef d0parsed = d0parsed_tbox
+
+(* ****** ****** *)
+//
+#typedef
+d0eclistopt = optn(d0eclist)
+//
+fun
+d0parsed_get_stadyn:(d0parsed)->sint
+fun
+d0parsed_get_source:(d0parsed)->lcsrc
+fun
+d0parsed_get_parsed:(d0parsed)->d0eclistopt
+//
+fun
+d0parsed_make_args
+( stadyn:sint
+, source:lcsrc
+, parsed:d0eclistopt): d0parsed//end-fun
+//
+#symload d0parsed with d0parsed_make_args
 //
 (* ****** ****** *)
 
