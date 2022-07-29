@@ -842,4 +842,63 @@ endloc (*local*) // end of [ local(d0fundcl) ]
 
 (* ****** ****** *)
 
+local
+//
+datatype
+d0parsed =
+D0PARSED of
+(
+sint // stadyn
+,
+lcsrc // source
+,
+d0eclistopt)//program
+//
+#absimpl
+d0parsed_tbox = d0parsed
+//
+in//local
+
+(* ****** ****** *)
+
+#implfun
+d0parsed_get_stadyn
+  (dpar) =
+(
+  stadyn ) where
+{
+val+
+D0PARSED(stadyn, source, parsed) = dpar
+} (*where*)//end-of-[d0parsed_get_stadyn]
+
+(* ****** ****** *)
+
+#implfun
+d0parsed_get_source
+  (dpar) =
+(
+  source ) where
+{
+val+
+D0PARSED(stadyn, source, parsed) = dpar
+} (*where*)//end-of-[d0parsed_get_source]
+
+(* ****** ****** *)
+
+#implfun
+d0parsed_get_parsed
+  (dpar) =
+(
+  parsed ) where
+{
+val+
+D0PARSED(stadyn, source, parsed) = dpar
+} (*where*)//end-of-[d0parsed_get_parsed]
+
+(* ****** ****** *)
+
+endloc (*local*) // end of [ local(d0parsed) ]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_dynexp0.dats] *)
