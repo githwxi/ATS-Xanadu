@@ -43,8 +43,7 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload
-_(*?*) = "./lexing0_print0.dats"
+#staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
@@ -1037,6 +1036,30 @@ in//let
 print("D0FUNDCL(",dpid,";");
 print(farg,";",sres,";",tdxp,",",wsxp,")"))
 end(*let*)//end-of-[d0fundcl_fprint(out,d0cl)]
+
+(* ****** ****** *)
+
+#implfun
+d0parsed_fprint
+  (out, dpar) = let
+//
+val
+stadyn =
+d0parsed_get_stadyn(dpar)
+val
+source =
+d0parsed_get_source(dpar)
+val
+parsed =
+d0parsed_get_parsed(dpar)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print("D0PARSED(");
+print(stadyn,";",source,";",parsed,")"))
+end(*let*)//end-of-[d0parsed_fprint(out,dpar)]
 
 (* ****** ****** *)
 //

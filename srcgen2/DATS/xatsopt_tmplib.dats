@@ -432,6 +432,10 @@ g_print<d0fundcl>(d0cl) =
 d0fundcl_fprint(g_print$out<>(), d0cl)
 (* ****** ****** *)
 #impltmp
+g_print<d0parsed>(dpar) =
+d0parsed_fprint(g_print$out<>(), dpar)
+(* ****** ****** *)
+#impltmp
 g_print<wd0eclseq>(wdcs) =
 wd0eclseq_fprint(g_print$out<>(), wdcs)
 (* ****** ****** *)
