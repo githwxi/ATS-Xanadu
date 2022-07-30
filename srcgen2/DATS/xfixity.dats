@@ -664,7 +664,14 @@ prerrln
 (": app-fixity cannot be resolved: ", itm)
 //
 in
-  $raise(XATSOPT_FixityExn(*void*))
+$raise
+(
+XATSOPT_fxitmlst_resolve$apperr_exn
+) where
+{
+excptcon
+XATSOPT_fxitmlst_resolve$apperr_exn of ((*void*))
+}
 endlet // end of [fxitmlst_resolve$apperr<a>(itm)]
 //
 (* ****** ****** *)
@@ -687,7 +694,14 @@ prerrln
 (": opr-fixity cannot be resolved: ", itm)
 //
 in//let
-  $raise(XATSOPT_FixityExn(*void*))
+$raise
+(
+XATSOPT_fxitmlst_resolve$oprerr_exn
+) where
+{
+excptcon
+XATSOPT_fxitmlst_resolve$oprerr_exn of ((*void*))
+}
 endlet // end of [fxitmlst_resolve$oprerr<a>(itm)]
 //
 (* ****** ****** *)
@@ -706,7 +720,14 @@ prerrln
 (": opr-fixity cannot be resolved: ", itms)
 //
 in//let
-  $raise(XATSOPT_FixityExn(*void*))
+$raise
+(
+XATSOPT_fxitmlst_resolve$rederr_exn
+) where
+{
+excptcon
+XATSOPT_fxitmlst_resolve$rederr_exn of ((*void*))
+}
 endlet // end of [fxitmlst_resolve$rederr<a>(loc0,itms)]
 
 (* ****** ****** *)

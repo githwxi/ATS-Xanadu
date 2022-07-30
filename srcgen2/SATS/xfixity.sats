@@ -199,11 +199,6 @@ fxitm_get_lctn: fxitm(a) -> loc_t
 //
 (* ****** ****** *)
 //
-excptcon
-XATSOPT_FixityExn of ((*void*))
-//
-(* ****** ****** *)
-//
 fun
 <a:t0>
 fxitmlst_resolve

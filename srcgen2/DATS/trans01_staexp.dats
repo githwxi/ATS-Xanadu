@@ -75,8 +75,24 @@ _(*XFIXITY*) = "./xfixity.dats"
 (* ****** ****** *)
 #symload lctn with g0exp_get_lctn
 #symload node with g0exp_get_node
+#symload lctn with g1exp_get_lctn
+#symload node with g1exp_get_node
 (* ****** ****** *)
 #symload g1exp with g1exp_make_node
+(* ****** ****** *)
+#symload lctn with sort0_get_lctn
+#symload node with sort0_get_node
+#symload lctn with sort1_get_lctn
+#symload node with sort1_get_node
+(* ****** ****** *)
+#symload sort1 with sort1_make_node
+(* ****** ****** *)
+#symload lctn with s0exp_get_lctn
+#symload node with s0exp_get_node
+#symload lctn with s1exp_get_lctn
+#symload node with s1exp_get_node
+(* ****** ****** *)
+#symload sort1 with s1exp_make_node
 (* ****** ****** *)
 
 fun
