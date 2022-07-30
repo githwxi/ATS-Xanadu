@@ -918,6 +918,22 @@ D0PARSED
 } (*where*)//end-of-[d0parsed_get_parsed]
 
 (* ****** ****** *)
+//
+#implfun
+d0parsed_make_args
+(stadyn,nerror,source,parsed) =
+(
+D0PARSED(stadyn,nerror,source,parsed)
+) where
+{
+(*
+val () =
+prerrln
+("d0parsed_make_args:nerror=",nerror)
+*)
+} (*where*) // end-of-[d0parsed_make_args]
+//
+(* ****** ****** *)
 
 endloc (*local*) // end of [ local(d0parsed) ]
 

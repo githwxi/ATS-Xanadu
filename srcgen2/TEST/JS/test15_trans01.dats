@@ -154,19 +154,18 @@ in//local
 (* ****** ****** *)
 //
 val
-(  ) =
-prerrln("p1_fun_test(0)")
-//
-val
-opt1 =
-p1_fun_test<d0eclist>
+dpar =
+d0parsed_from_fpath
 (
+1 // stadyn
+,
 "./../../..\
-/prelude/DATS/bool000.dats", p1_d0eclsq1_dyn)
-val opt1 = preadx0(opt1, err) where { var err: sint = 0 }
+/prelude/DATS/bool000.dats")
+val dpar = d0parsed_preadx0(dpar)
 //
 val (  ) =
-prerrln("p1_fun_test(\"./../../../prelude/DATS/bool000.dats\") =\n", opt1)
+prerrln
+("dparsed_from_fpath(\"./../../../prelude/DATS/bool000.dats\") =\n", dpar)
 //
 (* ****** ****** *)
 //

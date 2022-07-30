@@ -69,11 +69,14 @@ fpath_tokenize(fpx)
 val buf =
 tokbuf_make_list_vt(tks)
 //
-var err = 0(*init*)
+var err: sint = 0(*init*)
+//
 val res =
 optn_cons
 (fp_d0eclsq1(knd,buf,err))
+//
 val ( ) = tokbuf_free(buf)
+//
 in//let
 //HX: nerror=-1: unknown of errors
 d0parsed(knd,(-1),LCSRCsome1(fpx),res)
