@@ -1047,6 +1047,9 @@ val
 stadyn =
 d0parsed_get_stadyn(dpar)
 val
+nerror =
+d0parsed_get_nerror(dpar)
+val
 source =
 d0parsed_get_source(dpar)
 val
@@ -1058,7 +1061,7 @@ d0parsed_get_parsed(dpar)
 in//let
 (
 print("D0PARSED(");
-print(stadyn,";",source,";",parsed,")"))
+print(stadyn,";",nerror,";",source,";",parsed,")"))
 end(*let*)//end-of-[d0parsed_fprint(out,dpar)]
 
 (* ****** ****** *)
