@@ -848,7 +848,9 @@ datatype
 d0parsed =
 D0PARSED of
 (
-sint // stadyn
+sint  // stadyn
+,
+sint  // nerror
 ,
 lcsrc // source
 ,
@@ -868,8 +870,24 @@ d0parsed_get_stadyn
   stadyn ) where
 {
 val+
-D0PARSED(stadyn, source, parsed) = dpar
+D0PARSED
+( stadyn
+, nerror, source, parsed) = dpar
 } (*where*)//end-of-[d0parsed_get_stadyn]
+
+(* ****** ****** *)
+
+#implfun
+d0parsed_get_nerror
+  (dpar) =
+(
+  nerror ) where
+{
+val+
+D0PARSED
+( stadyn
+, nerror, source, parsed) = dpar
+} (*where*)//end-of-[d0parsed_get_nerror]
 
 (* ****** ****** *)
 
@@ -880,7 +898,9 @@ d0parsed_get_source
   source ) where
 {
 val+
-D0PARSED(stadyn, source, parsed) = dpar
+D0PARSED
+( stadyn
+, nerror, source, parsed) = dpar
 } (*where*)//end-of-[d0parsed_get_source]
 
 (* ****** ****** *)
@@ -892,7 +912,9 @@ d0parsed_get_parsed
   parsed ) where
 {
 val+
-D0PARSED(stadyn, source, parsed) = dpar
+D0PARSED
+( stadyn
+, nerror, source, parsed) = dpar
 } (*where*)//end-of-[d0parsed_get_parsed]
 
 (* ****** ****** *)

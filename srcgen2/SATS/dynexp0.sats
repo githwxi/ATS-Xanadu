@@ -1282,6 +1282,8 @@ d0parsed_fprint
 fun
 d0parsed_get_stadyn:(d0parsed)->sint
 fun
+d0parsed_get_nerror:(d0parsed)->sint
+fun
 d0parsed_get_source:(d0parsed)->lcsrc
 fun
 d0parsed_get_parsed:(d0parsed)->d0eclistopt
@@ -1289,6 +1291,7 @@ d0parsed_get_parsed:(d0parsed)->d0eclistopt
 fun
 d0parsed_make_args
 ( stadyn:sint
+, nerror:sint
 , source:lcsrc
 , parsed:d0eclistopt): d0parsed//end-fun
 //
