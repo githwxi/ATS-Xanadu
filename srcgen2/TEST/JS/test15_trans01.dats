@@ -153,10 +153,6 @@ print(tok.lctn(), ":", tok.node())
 in//local
 (* ****** ****** *)
 //
-var
-err:
-sint = 0
-//
 val
 (  ) =
 prerrln("p1_fun_test(0)")
@@ -169,27 +165,8 @@ p1_fun_test<d0eclist>
 /prelude/DATS/bool000.dats", p1_d0eclsq1_dyn)
 val opt1 = preadx0(opt1, err) where { var err: sint = 0 }
 //
-val
-(  ) =
-prerrln("p1_fun_test(1)")
-//
-val
-opt2 =
-p1_fun_test<d0eclist>
-(
-"./../../..\
-/prelude/DATS/char000.dats", p1_d0eclsq1_dyn)
-val opt2 = preadx0(opt2, err) where { var err: sint = 0 }
-//
-val
-(  ) =
-prerrln("p1_fun_test(2)")
-//
 val (  ) =
 prerrln("p1_fun_test(\"./../../../prelude/DATS/bool000.dats\") =\n", opt1)
-//
-val (  ) =
-prerrln("p1_fun_test(\"./../../../prelude/DATS/char000.dats\") =\n", opt2)
 //
 (* ****** ****** *)
 //

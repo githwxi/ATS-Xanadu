@@ -108,8 +108,6 @@
 #include
 "./../../DATS/preadx0_errmsg.dats"
 (* ****** ****** *)
-var the_err = 0
-(* ****** ****** *)
 #define
 p1_fun_test p1_fun_test_fpath
 #define
@@ -143,10 +141,6 @@ print(tok.lctn(), ":", tok.node())
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
-//
-var
-err:
-sint = 0
 //
 val
 (  ) =

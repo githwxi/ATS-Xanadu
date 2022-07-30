@@ -71,7 +71,8 @@ optn_cons
 (fp_d0eclsq1(knd,buf,err))
 val ( ) = tokbuf_free(buf)
 in//let
-d0parsed(knd, LCSRCsome1(fpx), res)
+//HX: nerror=-1: unknown of errors
+d0parsed(knd,(-1),LCSRCsome1(fpx),res)
 end (*let*)//end-of(d0parsed_from_fpath)
 
 (* ****** ****** *)
