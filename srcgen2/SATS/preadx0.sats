@@ -156,7 +156,14 @@ d0eclseq_WHERE = $D0E.d0eclseq_WHERE
 (* ****** ****** *)
 #typedef d0eclist = $D0E.d0eclist
 (* ****** ****** *)
+#typedef d0parsed = $D0E.d0parsed
 #typedef d0eclistopt = optn(d0eclist)
+(* ****** ****** *)
+//
+fun
+d0parsed_preadx0
+(prgm: d0parsed): d0parsed
+//
 (* ****** ****** *)
 //
 #typedef

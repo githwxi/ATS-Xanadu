@@ -52,6 +52,10 @@ ATS_PACKNAME
 #staload "./../SATS/parsing.sats"
 (* ****** ****** *)
 
+(*
+HX-2022-07:
+[fpath] is a string
+*)
 #impltmp
 d0parsed_from_fpath
   (stadyn, source) =
@@ -73,7 +77,7 @@ val ( ) = tokbuf_free(buf)
 in//let
 //HX: nerror=-1: unknown of errors
 d0parsed(knd,(-1),LCSRCsome1(fpx),res)
-end (*let*)//end-of(d0parsed_from_fpath)
+end(*let*)//end-of(d0parsed_from_fpath)
 
 (* ****** ****** *)
 
