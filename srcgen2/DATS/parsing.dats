@@ -36,12 +36,44 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
+#staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
+#staload "./../SATS/dynexp0.sats"
+(* ****** ****** *)
 #staload "./../SATS/parsing.sats"
+(* ****** ****** *)
+
+#impltmp
+d0parsed_from_fpath
+  (stadyn, source) =
+let
+//
+val knd = stadyn
+val fpx = source
+//
+val tks =
+fpath_tokenize(fpx)
+val buf =
+tokbuf_make_list_vt(tks)
+//
+var err = 0(*init*)
+val res =
+optn_cons
+(fp_d0eclsq1(knd,buf,err))
+val ( ) = tokbuf_free(buf)
+in//let
+d0parsed(knd, LCSRCsome1(fpx), res)
+end (*let*)//end-of(d0parsed_from_fpath)
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_parsing.dats] *)

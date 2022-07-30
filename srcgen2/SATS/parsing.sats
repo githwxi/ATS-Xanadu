@@ -129,12 +129,17 @@ D0E = "./dynexp0.sats"
 #typedef s0explst = $S0E.s0explst
 
 (* ****** ****** *)
+(*
 #typedef d0valdcl = $D0E.d0valdcl
 #typedef d0vardcl = $D0E.d0vardcl
+#typedef d0fundcl = $D0E.d0fundcl
+*)
 (* ****** ****** *)
-
+#typedef d0parsed = $D0E.d0parsed
+(* ****** ****** *)
+(*
 #typedef wd0eclseq = $D0E.wd0eclseq
-
+*)
 (* ****** ****** *)
 //
 #absvwtp tkbf0_vtbx
@@ -594,6 +599,14 @@ fun
 <r0:t0>
 pq_fun_test_fpath
 (fpx: strn, pfn: pq_fun(r0)): optn(r0)
+//
+(* ****** ****** *)
+#staload FP0 = "./filpath.sats"
+(* ****** ****** *)
+//
+fun
+d0parsed_from_fpath
+(stadyn: sint, source: strn(*fpath*)): d0parsed
 //
 (* ****** ****** *)
 
