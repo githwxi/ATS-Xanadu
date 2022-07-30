@@ -44,6 +44,7 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
+#staload "./../SATS/dynexp0.sats"
 (* ****** ****** *)
 #staload "./../SATS/preadx0.sats"
 (* ****** ****** *)
@@ -100,6 +101,29 @@ endlet // end of [auxlst(lst,err)]
 //
 }(*where*)//end(preadx0_synentlst_fun)
 //
+(* ****** ****** *)
+
+#implfun
+d0parsed_preadx0
+  (prgm) =
+let
+//
+var nerror: sint = 0
+//
+val stadyn =
+d0parsed_get_stadyn(prgm)
+val source =
+d0parsed_get_source(prgm)
+val parsed =
+d0parsed_get_parsed(prgm)
+//
+val parsed =
+preadx0_d0eclistopt(parsed, nerror)
+//
+in//let
+d0parsed(stadyn,nerror,source,parsed)
+end (*let*) // end of [d0parsed_preadx0(prgm)]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_preadx0.dats] *)

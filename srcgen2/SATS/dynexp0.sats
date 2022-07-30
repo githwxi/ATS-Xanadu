@@ -1288,6 +1288,11 @@ d0parsed_get_source:(d0parsed)->lcsrc
 fun
 d0parsed_get_parsed:(d0parsed)->d0eclistopt
 //
+#symload stadyn with d0parsed_get_stadyn
+#symload nerror with d0parsed_get_nerror
+#symload source with d0parsed_get_source
+#symload parsed with d0parsed_get_parsed
+//
 fun
 d0parsed_make_args
 ( stadyn:sint
