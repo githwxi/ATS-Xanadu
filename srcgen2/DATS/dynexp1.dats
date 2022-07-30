@@ -355,4 +355,101 @@ endloc (*local*) // end of [ local(d1cstdcl) ]
 
 (* ****** ****** *)
 
+local
+//
+datatype
+d1parsed =
+D1PARSED of
+(
+sint  // stadyn
+,
+sint  // nerror
+,
+lcsrc // source
+,
+d1eclistopt)//program
+//
+#absimpl
+d1parsed_tbox = d1parsed
+//
+in//local
+
+(* ****** ****** *)
+
+#implfun
+d1parsed_get_stadyn
+  (dpar) =
+(
+  stadyn ) where
+{
+val+
+D1PARSED
+( stadyn
+, nerror, source, parsed) = dpar
+} (*where*)//end-of-[d1parsed_get_stadyn]
+
+(* ****** ****** *)
+
+#implfun
+d1parsed_get_nerror
+  (dpar) =
+(
+  nerror ) where
+{
+val+
+D1PARSED
+( stadyn
+, nerror, source, parsed) = dpar
+} (*where*)//end-of-[d1parsed_get_nerror]
+
+(* ****** ****** *)
+
+#implfun
+d1parsed_get_source
+  (dpar) =
+(
+  source ) where
+{
+val+
+D1PARSED
+( stadyn
+, nerror, source, parsed) = dpar
+} (*where*)//end-of-[d1parsed_get_source]
+
+(* ****** ****** *)
+
+#implfun
+d1parsed_get_parsed
+  (dpar) =
+(
+  parsed ) where
+{
+val+
+D1PARSED
+( stadyn
+, nerror, source, parsed) = dpar
+} (*where*)//end-of-[d1parsed_get_parsed]
+
+(* ****** ****** *)
+//
+#implfun
+d1parsed_make_args
+(stadyn,nerror,source,parsed) =
+(
+D1PARSED(stadyn,nerror,source,parsed)
+) where
+{
+(*
+val () =
+prerrln
+("d1parsed_make_args:nerror=",nerror)
+*)
+} (*where*) // end-of-[d1parsed_make_args]
+//
+(* ****** ****** *)
+
+endloc (*local*) // end of [ local(d1parsed) ]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_dynexp1.dats] *)

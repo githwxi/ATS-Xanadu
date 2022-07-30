@@ -121,6 +121,12 @@ FIL = "./filpath.sats"
 (* ****** ****** *)
 //
 fun
+d1parsed_from_trans
+(  dpar: d0parsed  ): d1parsed
+//
+(* ****** ****** *)
+//
+fun
 the_fxtyenv_search
 (key: sym_t): fixtyopt_vt
 fun
@@ -225,10 +231,15 @@ trans01_d0explst: (d0explst)->d1explst
 
 (* ****** ****** *)
 //
-fun trans01_d0ecl: (d0ecl)->d1ecl
+fun
+trans01_d0ecl: (d0ecl)->d1ecl
 //
 fun
 trans01_d0eclist: (d0eclist)->d1eclist
+(* ****** ****** *)
+//
+fun
+trans01_d0eclistopt: (d0eclistopt)->d1eclistopt
 //
 (* ****** ****** *)
 

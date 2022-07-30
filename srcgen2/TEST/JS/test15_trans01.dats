@@ -162,6 +162,7 @@ d0parsed_from_fpath
 "./../../..\
 /prelude/DATS/bool000.dats")
 val dpar = d0parsed_preadx0(dpar)
+val dpar = d1parsed_from_trans(dpar)
 //
 val (  ) =
 prerrln
