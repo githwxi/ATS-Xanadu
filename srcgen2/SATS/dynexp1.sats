@@ -45,6 +45,20 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #staload
+LAB = "./xlabel0.sats"
+#staload
+LOC = "./locinfo.sats"
+//
+#typedef lab_t = $LAB.lab_t
+#typedef label = $LAB.label
+//
+#typedef loc_t = $LOC.loc_t
+#typedef loctn = $LOC.loctn
+#typedef lcsrc = $LOC.lcsrc
+//
+(* ****** ****** *)
+//
+#staload
 FP0 = "./filpath.sats"
 //
 #typedef
@@ -731,6 +745,40 @@ d1cstdcl_make_args
 , args:d1arglst, sres:s1res, dres:d1res
 ) : d1cstdcl//end-of(d1cstdcl_make_node)
 #symload d1cstdcl with d1cstdcl_make_args
+//
+(* ****** ****** *)
+
+#abstbox d1parsed_tbox // ptr
+#typedef d1parsed = d1parsed_tbox
+
+(* ****** ****** *)
+//
+fun
+d1parsed_fprint
+(out: FILR, dpar: d1parsed): void
+//
+fun
+d1parsed_get_stadyn:(d1parsed)->sint
+fun
+d1parsed_get_nerror:(d1parsed)->sint
+fun
+d1parsed_get_source:(d1parsed)->lcsrc
+fun
+d1parsed_get_parsed:(d1parsed)->d1eclistopt
+//
+#symload stadyn with d1parsed_get_stadyn
+#symload nerror with d1parsed_get_nerror
+#symload source with d1parsed_get_source
+#symload parsed with d1parsed_get_parsed
+//
+fun
+d1parsed_make_args
+( stadyn:sint
+, nerror:sint
+, source:lcsrc
+, parsed:d1eclistopt): d1parsed//end-fun
+//
+#symload d1parsed with d1parsed_make_args
 //
 (* ****** ****** *)
 
