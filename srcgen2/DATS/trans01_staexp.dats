@@ -71,6 +71,8 @@ _(*XFIXITY*) = "./xfixity.dats"
 #typedef s1tfxlst = list(s1tfx)
 #typedef s1efxlst = list(s1efx)
 (* ****** ****** *)
+#symload lctn with token_get_lctn
+(* ****** ****** *)
 #symload node with i0dnt_get_node
 (* ****** ****** *)
 #symload lctn with g0exp_get_lctn
@@ -346,15 +348,39 @@ in//let
 end (*let*) // end of [fxitmlst_resolve_s1exp]
 
 (* ****** ****** *)
+//
+#implfun
+trans01_i0dnt
+  (id0) =
+(
+case+
+id0.node() of
+|
+I0DNTsome(tok) => tok
+|
+I0DNTnone(tok) =>
+token_none(tok.lctn())
+) where
+{
+fun
+token_none
+(loc: loc_t): token = 
+token_make_node
+(loc, T0IDENT_NONE(*val*))
+}(*where*)//end-of(trans01_i0dnt)
+//
+(* ****** ****** *)
 
 local
 
+(* ****** ****** *)
 #extern
 fun
 f0_gid:(g0exp) -> g1efx
 #extern
 fun
 f0_main:(g0exp) -> g1efx
+(* ****** ****** *)
 
 #implfun
 f0_main(g0e0) =

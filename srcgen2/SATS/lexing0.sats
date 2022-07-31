@@ -286,6 +286,8 @@ val T0IDENT_LTGT : tnode
 val T0IDENT_MSLT : tnode
 val T0IDENT_MSGT : tnode
 (* ****** ****** *)
+val T0IDENT_NONE : tnode
+(* ****** ****** *)
 //
 fun//<>
 tnode_fprint(FILR, tnode): void

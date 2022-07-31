@@ -363,6 +363,8 @@ end (*local*) // end of [ local ]
 #implval T0IDENT_MSLT = T_IDSYM("-<")
 #implval T0IDENT_MSGT = T_IDSYM("->")
 //
+#implval T0IDENT_NONE = T_IDSYM("*NONE*")
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_lexing0_kword0.dats] *)
