@@ -439,10 +439,10 @@ t0a.node() of
 T0ARGnone(tok) =>
 print("T0ARGnone(", tok, ")")
 |
-T0ARGsome(id0, tres) =>
-print("T0ARGsome(",id0,";",tres,")")
+T0ARGsome(s0t1, topt) =>
+print("T0ARGsome(",s0t1,";",topt,")")
 //
-end (*let*) // end of [t0arg_fprint]
+end (*let*) // end of [t0arg_fprint(out,t0a)]
 
 (* ****** ****** *)
 

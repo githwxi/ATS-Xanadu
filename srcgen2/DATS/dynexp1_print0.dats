@@ -172,6 +172,18 @@ D1Clocal
 (head,body) =>
 print("D1Clocal(",head,";",body,")")
 //
+|
+D1Cabssort
+(tknd,tid0) =>
+print("D1Cabssort(",tknd,";",tid0,")")
+//
+|
+D1Cstacst0
+(tknd,sid0,tmas,s1t1) =>
+(
+print("D1Cstacst0(");
+print(tknd,";",sid0,";",tmas,";",s1t1,")"))
+//
 | D1Cnone0() => print("D1Cnone0(",")")
 | D1Cnone1(d0cl) => print("D1Cnone1(",d0cl,")")
 end (*let*) // end of [d1ecl_fprint(out,dcl)]
