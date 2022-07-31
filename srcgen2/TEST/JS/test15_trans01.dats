@@ -110,6 +110,19 @@
 (* ****** ****** *)
 #include
 "./../../DATS/xfixity.dats"
+(* ****** ****** *)
+#include
+"./../../DATS/staexp1.dats"
+#include
+"./../../DATS/staexp1_print0.dats"
+(* ****** ****** *)
+#include
+"./../../DATS/dynexp1.dats"
+#include
+"./../../DATS/dynexp1_print0.dats"
+(* ****** ****** *)
+#include
+"./../../DATS/trans01.dats"
 #include
 "./../../DATS/trans01_staexp.dats"
 #include
@@ -161,8 +174,10 @@ d0parsed_from_fpath
 ,
 "./../../..\
 /prelude/DATS/bool000.dats")
-val dpar = d0parsed_preadx0(dpar)
-val dpar = d1parsed_from_trans(dpar)
+val
+dpar = d0parsed_preadx0(dpar)
+val
+dpar = d1parsed_from_trans(dpar)
 //
 val (  ) =
 prerrln

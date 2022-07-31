@@ -56,6 +56,15 @@ _(*?*) = "./lexing0_print0.dats"
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
+#symload node with d1pat_get_node
+#symload lctn with d1pat_get_lctn
+(* ****** ****** *)
+#symload node with d1exp_get_node
+#symload lctn with d1exp_get_lctn
+(* ****** ****** *)
+#symload node with d1ecl_get_node
+#symload lctn with d1ecl_get_lctn
+(* ****** ****** *)
 
 #implfun
 d1pat_fprint
@@ -166,6 +175,33 @@ print("D1Clocal(",head,";",body,")")
 | D1Cnone0() => print("D1Cnone0(",")")
 | D1Cnone1(d0cl) => print("D1Cnone1(",d0cl,")")
 end (*let*) // end of [d1ecl_fprint(out,dcl)]
+
+(* ****** ****** *)
+
+#implfun
+d1parsed_fprint
+  (out, dpar) = let
+//
+val
+stadyn =
+d1parsed_get_stadyn(dpar)
+val
+nerror =
+d1parsed_get_nerror(dpar)
+val
+source =
+d1parsed_get_source(dpar)
+val
+parsed =
+d1parsed_get_parsed(dpar)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print("D1PARSED(");
+print(stadyn,";",nerror,";",source,";",parsed,")"))
+end(*let*)//end-of-[d1parsed_fprint(out,dpar)]
 
 (* ****** ****** *)
 
