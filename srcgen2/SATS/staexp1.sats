@@ -104,6 +104,11 @@ where
 #abstbox g1mag_tbox // ptr
 (* ****** ****** *)
 //
+#typedef i1dnt = token
+#typedef i0dnt = $S0E.i0dnt
+//
+(* ****** ****** *)
+//
 #typedef g0exp = $S0E.g0exp
 //
 #typedef g1exp = g1exp_tbox

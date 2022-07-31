@@ -79,6 +79,9 @@ FIL = "./filpath.sats"
 #staload S1E = "./staexp1.sats"
 #staload D1E = "./dynexp1.sats"
 (* ****** ****** *)
+#typedef i0dnt = $S0E.i0dnt
+#typedef i1dnt = $S1E.i1dnt
+(* ****** ****** *)
 //
 #typedef g0nam = $S0E.g0nam
 #typedef g0exp = $S0E.g0exp
@@ -102,6 +105,16 @@ FIL = "./filpath.sats"
 #typedef sort1lst = $S1E.sort1lst
 #typedef s1explst = $S1E.s1explst
 //
+(* ****** ****** *)
+#typedef s0mag = $S0E.s0mag
+#typedef s1mag = $S1E.s1mag
+#typedef s0maglst = $S0E.s0maglst
+#typedef s1maglst = $S1E.s1maglst
+(* ****** ****** *)
+#typedef t0mag = $S0E.t0mag
+#typedef t1mag = $S1E.t1mag
+#typedef t0maglst = $S0E.t0maglst
+#typedef t1maglst = $S1E.t1maglst
 (* ****** ****** *)
 //
 #typedef d0pat = $D0E.d0pat
@@ -195,6 +208,8 @@ fun token2dstr: token -> string
 (* HX: transing staexp *)
 
 (* ****** ****** *)
+fun trans01_i0dnt: (i0dnt)->i1dnt
+(* ****** ****** *)
 //
 fun trans01_g0nam: (g0nam)->g1nam
 fun trans01_g0exp: (g0exp)->g1exp
@@ -214,6 +229,14 @@ trans01_sort0lst: (sort0lst)->sort1lst
 fun
 trans01_s0explst: (s0explst)->s1explst
 //
+(* ****** ****** *)
+fun trans01_s0mag: (s0mag)->s1mag
+fun trans01_t0mag: (t0mag)->t1mag
+(* ****** ****** *)
+fun
+trans01_s0maglst: (s0maglst)->s1maglst
+fun
+trans01_t0maglst: (t0maglst)->t1maglst
 (* ****** ****** *)
 
 (* HX: transing dynexp *)

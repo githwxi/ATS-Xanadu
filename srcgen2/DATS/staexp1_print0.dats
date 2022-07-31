@@ -218,6 +218,42 @@ print("S1Tqual(",tok1,";",s1t2,")")
 end (*let*) // end of [sort1_fprint(out,s1t)]
 
 (* ****** ****** *)
+
+#implfun
+t1arg_fprint
+( out, t1a ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+t1a.node() of
+|
+T1ARGsome(s1t1, topt) =>
+print("T1ARGsome(",s1t1,";",topt,")")
+//
+end (*let*) // end of [t1arg_fprint]
+
+(* ****** ****** *)
+//
+#implfun
+t1mag_fprint
+( out, t1m ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+t1m.node() of
+|
+T1MAGlist(t1as) =>
+print("T1MAGlist(",t1as,")")
+//
+end (*let*)//end of [t1mag_fprint(out,t1m)]
+//
+(* ****** ****** *)
 //
 #implfun
 s1qua_fprint
@@ -237,22 +273,6 @@ S1QUAvars
 (toks, topt) =>
 print("S1QUAvars(",toks,";",topt,")")
 end (*let*) // end-of-[s1qua_fprint(out,err)]
-//
-(* ****** ****** *)
-//
-#implfun
-s1uni_fprint
-( out, s1u ) =
-let
-#impltmp
-g_print$out<>() = out
-in//let
-case+
-s1u.node() of
-|
-S1UNIsome(s1qs) =>
-print("S1UNIsome(",s1qs,")")
-end (*let*) // end-of-[s1uni_fprint(out,err)]
 //
 (* ****** ****** *)
 
@@ -339,6 +359,22 @@ S1Equal(tok1,s1e2) =>
 //
 end (*let*) // end of [s1exp_fprint(out,s1e)]
 
+(* ****** ****** *)
+//
+#implfun
+s1uni_fprint
+( out, s1u ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+s1u.node() of
+|
+S1UNIsome(s1qs) =>
+print("S1UNIsome(",s1qs,")")
+end (*let*) // end-of-[s1uni_fprint(out,err)]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_staexp1_print0.dats] *)

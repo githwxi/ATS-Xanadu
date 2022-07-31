@@ -57,6 +57,15 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
 (* ****** ****** *)
+#symload lctn with i0dnt_get_lctn
+#symload node with i0dnt_get_node
+(* ****** ****** *)
+#symload lctn with d0pat_get_lctn
+#symload node with d0pat_get_node
+(* ****** ****** *)
+#symload lctn with d0exp_get_lctn
+#symload node with d0exp_get_node
+(* ****** ****** *)
 #symload lctn with d0ecl_get_lctn
 #symload node with d0ecl_get_node
 (* ****** ****** *)
@@ -81,6 +90,9 @@ d0cl.node() of
 | D0Cstatic _ => f0_static(d0cl)
 | D0Cextern _ => f0_extern(d0cl)
 //
+| D0Cabssort _ => f0_abssort(d0cl)
+| D0Cstacst0 _ => f0_stacst0(d0cl)
+//
 |
 _ (*otherwise*) => d1ecl_none1(d0cl)
 //
@@ -97,12 +109,12 @@ val loc0 = d0cl.lctn()
 //
 val-
 D0Cstatic
-(tok0, dcl1) = d0cl.node()
+(tknd, dcl1) = d0cl.node()
 //
 val dcl1 = trans01_d0ecl(dcl1)
 //
 in
-d1ecl(loc0, D1Cstatic(tok0, dcl1))
+d1ecl(loc0, D1Cstatic(tknd, dcl1))
 end (* let *) // end of [f0_static]
 
 fun
@@ -123,6 +135,54 @@ d1ecl(loc0, D1Cextern(tknd, dcl1))
 end (* let *) // end of [f0_extern]
 
 (* ****** ****** *)
+
+fun
+f0_abssort
+( d0cl
+: d0ecl): d1ecl = let
+//
+val loc0 = d0cl.lctn()
+//
+val-
+D0Cabssort
+(tknd, tid0) = d0cl.node()
+//
+val tid0 = trans01_i0dnt(tid0)
+//
+in
+d1ecl(loc0, D1Cabssort(tknd, tid0))
+end // end of [f0_abssort]
+
+(* ****** ****** *)
+
+fun
+f0_stacst0
+( d0cl
+: d0ecl): d1ecl = let
+//
+val loc0 = d0cl.lctn()
+//
+val-
+D0Cstacst0
+(tknd
+,sid0, tmas
+,tcln, s0t1) = d0cl.node()
+//
+val sid0 =
+  trans01_i0dnt(sid0)
+val tmas =
+  trans01_t0maglst(tmas)
+//
+val s1t1 = trans01_sort0(s0t1)
+//
+in
+d1ecl_make_node
+( loc0
+, D1Cstacst0(tknd, sid0, tmas, s1t1))
+end // end of [f0_stacst0]
+
+(* ****** ****** *)
+
 } (*where*) // end of [trans01_d0ecl(d0cl)]
 
 (* ****** ****** *)

@@ -556,17 +556,19 @@ d1ecl_node =
   , g0eid
   , g1maglst(*arg*), d1expopt)
 //
+| D1Cabssort of
+  (token, token(*s0tid*))
+//
 | D1Cstacst0 of
-  ( token
-  , s0eid
-  , t1maglst, sort1)
+  ( token // STACST0
+  , token, t1maglst, sort1)
 //
 | D1Csortdef of
-  ( token, s0tid, s1tdf)
+  ( token, token(*s0tid*), s1tdf)
 //
 | D1Csexpdef of
   ( token // kind
-  , s0eid
+  , token // s0eid
   , s1maglst, sort1opt, s1exp)
 //
 |
