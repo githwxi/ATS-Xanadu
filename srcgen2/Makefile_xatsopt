@@ -345,6 +345,9 @@ dynexp1_print0_dats: ; $(XATSOPT) --dynamic DATS/dynexp1_print0.dats
 
 ######
 all_dats:: \
+trans01_dats
+trans01_dats: ; $(XATSOPT) --dynamic DATS/trans01.dats
+all_dats:: \
 trans01_staexp_dats
 trans01_staexp_dats: ; $(XATSOPT) --dynamic DATS/trans01_staexp.dats
 all_dats:: \

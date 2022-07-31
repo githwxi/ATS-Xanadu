@@ -119,6 +119,9 @@ FIL = "./filpath.sats"
 #typedef d1eclist = $D1E.d1eclist
 //
 (* ****** ****** *)
+#typedef d0parsed = $D0E.d0parsed
+#typedef d1parsed = $D1E.d1parsed
+(* ****** ****** *)
 //
 fun
 d1parsed_from_trans
@@ -237,6 +240,9 @@ trans01_d0ecl: (d0ecl)->d1ecl
 fun
 trans01_d0eclist: (d0eclist)->d1eclist
 (* ****** ****** *)
+//
+#typedef d0eclistopt = optn(d0eclist)
+#typedef d1eclistopt = optn(d1eclist)
 //
 fun
 trans01_d0eclistopt: (d0eclistopt)->d1eclistopt
