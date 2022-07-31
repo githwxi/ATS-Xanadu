@@ -220,6 +220,24 @@ end (*let*) // end of [sort1_fprint(out,s1t)]
 (* ****** ****** *)
 
 #implfun
+s1arg_fprint
+( out, s1a ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+s1a.node() of
+|
+S1ARGsome(sid0, tres) =>
+print("S1ARGsome(",sid0,";",tres,")")
+//
+end (*let*) // end of [s1arg_fprint]
+
+(* ****** ****** *)
+
+#implfun
 t1arg_fprint
 ( out, t1a ) =
 let
@@ -375,6 +393,31 @@ S1UNIsome(s1qs) =>
 print("S1UNIsome(",s1qs,")")
 end (*let*) // end-of-[s1uni_fprint(out,err)]
 //
+(* ****** ****** *)
+
+#implfun
+s1tdf_fprint
+( out, stdf ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+stdf.node() of
+|
+S1TDFsort(s1t1) =>
+(
+  print("S1TDFsort(",s1t1,")")
+)
+|
+S1TDFtsub(s1a1,s1es) =>
+(
+  print("S1TDFtsub(",s1a1,";",s1es,")")
+)
+//
+end (*let*) // end of [s1tdf_fprint(out,stdf)]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_staexp1_print0.dats] *)

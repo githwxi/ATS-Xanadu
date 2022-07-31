@@ -548,6 +548,13 @@ sort1_fprint(g_print$out<>(), s1t)
 //
 (* ****** ****** *)
 #impltmp
+g_print<s1arg>(s1a) =
+s1arg_fprint(g_print$out<>(), s1a)
+#impltmp
+g_print<s1mag>(s1m) =
+s1mag_fprint(g_print$out<>(), s1m)
+(* ****** ****** *)
+#impltmp
 g_print<t1arg>(t1a) =
 t1arg_fprint(g_print$out<>(), t1a)
 #impltmp

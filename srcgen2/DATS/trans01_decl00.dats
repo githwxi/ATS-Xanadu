@@ -60,6 +60,9 @@ ATS_PACKNAME
 #symload lctn with i0dnt_get_lctn
 #symload node with i0dnt_get_node
 (* ****** ****** *)
+#symload lctn with s0tdf_get_lctn
+#symload node with s0tdf_get_node
+(* ****** ****** *)
 #symload lctn with d0pat_get_lctn
 #symload node with d0pat_get_node
 (* ****** ****** *)
@@ -93,17 +96,22 @@ d0cl.node() of
 | D0Cabssort _ => f0_abssort(d0cl)
 | D0Cstacst0 _ => f0_stacst0(d0cl)
 //
+| D0Csortdef _ => f0_sortdef(d0cl)
+(*
+| D0Csexpdef _ => f0_sexpdef(d0cl)
+*)
+//
 |
 _ (*otherwise*) => d1ecl_none1(d0cl)
 //
 end where
 {
 (* ****** ****** *)
-
+//
 fun
 f0_static
-( d0cl
-: d0ecl): d1ecl = let
+(d0cl: d0ecl): d1ecl =
+let
 //
 val loc0 = d0cl.lctn()
 //
@@ -116,11 +124,11 @@ val dcl1 = trans01_d0ecl(dcl1)
 in
 d1ecl(loc0, D1Cstatic(tknd, dcl1))
 end (* let *) // end of [f0_static]
-
+//
 fun
 f0_extern
-( d0cl
-: d0ecl): d1ecl = let
+(d0cl: d0ecl): d1ecl =
+let
 //
 val loc0 = d0cl.lctn()
 //
@@ -133,13 +141,13 @@ val dcl1 = trans01_d0ecl(dcl1)
 in
 d1ecl(loc0, D1Cextern(tknd, dcl1))
 end (* let *) // end of [f0_extern]
-
+//
 (* ****** ****** *)
 
 fun
 f0_abssort
-( d0cl
-: d0ecl): d1ecl = let
+(d0cl: d0ecl): d1ecl =
+let
 //
 val loc0 = d0cl.lctn()
 //
@@ -157,8 +165,8 @@ end // end of [f0_abssort]
 
 fun
 f0_stacst0
-( d0cl
-: d0ecl): d1ecl = let
+(d0cl: d0ecl): d1ecl =
+let
 //
 val loc0 = d0cl.lctn()
 //
@@ -180,6 +188,62 @@ d1ecl_make_node
 ( loc0
 , D1Cstacst0(tknd, sid0, tmas, s1t1))
 end // end of [f0_stacst0]
+
+(* ****** ****** *)
+
+fun
+f0_sortdef
+(d0cl: d0ecl): d1ecl =
+let
+//
+val loc0 = d0cl.lctn()
+//
+val-
+D0Csortdef
+( tknd
+, tid0
+, teq1, stdf) = d0cl.node()
+//
+val tid0 = trans01_i0dnt(tid0)
+//
+val stdf =
+(
+case+
+stdf.node() of
+|
+S0TDFsort
+(  s0t1  ) =>
+let
+val
+s1t1 = trans01_sort0(s0t1)
+in
+s1tdf
+(stdf.lctn(), S1TDFsort(s1t1))
+end
+|
+S0TDFtsub
+( tbeg
+, s0a1, tbar
+, s0es, tend) =>
+let
+val s1a1 = trans01_s0arg(s0a1)
+val s1es = trans01_s0explst(s0es)
+in
+s1tdf
+(stdf.lctn(),S1TDFtsub(s1a1,s1es))
+endlet // end of [S0TDFtsub]
+) : s1tdf // end of [ val(stdf) ]
+//
+(*
+val () =
+println!("f0_sortdef: tid0 = ", tid0)
+val () =
+println!("f0_sortdef: stdf = ", stdf)
+*)
+//
+in
+d1ecl_make_node(loc0, D1Csortdef(tknd, tid0, stdf))
+end // end of [f0_sortdef]
 
 (* ****** ****** *)
 

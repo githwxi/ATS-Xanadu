@@ -403,7 +403,7 @@ s1mag_make_node
 datatype
 s1tdf_node =
 | S1TDFsort of sort1
-| S1TDFsbst of (s1arg, s1explst)
+| S1TDFtsub of (s1arg, s1explst)
 //
 (* ****** ****** *)
 fun

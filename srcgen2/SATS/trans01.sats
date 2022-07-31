@@ -106,11 +106,15 @@ FIL = "./filpath.sats"
 #typedef s1explst = $S1E.s1explst
 //
 (* ****** ****** *)
+#typedef s0arg = $S0E.s0arg
+#typedef s1arg = $S1E.s1arg
 #typedef s0mag = $S0E.s0mag
 #typedef s1mag = $S1E.s1mag
 #typedef s0maglst = $S0E.s0maglst
 #typedef s1maglst = $S1E.s1maglst
 (* ****** ****** *)
+#typedef t0arg = $S0E.t0arg
+#typedef t1arg = $S1E.t1arg
 #typedef t0mag = $S0E.t0mag
 #typedef t1mag = $S1E.t1mag
 #typedef t0maglst = $S0E.t0maglst
@@ -230,8 +234,12 @@ fun
 trans01_s0explst: (s0explst)->s1explst
 //
 (* ****** ****** *)
+//
+fun trans01_s0arg: (s0arg)->s1arg
 fun trans01_s0mag: (s0mag)->s1mag
+fun trans01_t0arg: (t0arg)->t1arg
 fun trans01_t0mag: (t0mag)->t1mag
+//
 (* ****** ****** *)
 fun
 trans01_s0maglst: (s0maglst)->s1maglst

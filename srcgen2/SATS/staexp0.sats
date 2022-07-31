@@ -607,7 +607,7 @@ s0tdf_node =
 S0TDFsort of sort0
 |
 S0TDFtsub of
-( token // #sortdef
+( token // LBRACE
 , s0arg, token, s0explst, token)
 //
 (* ****** ****** *)
