@@ -78,10 +78,52 @@ in//let
 case+
 d0cl.node() of
 //
+| D0Cstatic _ => f0_static(d0cl)
+| D0Cextern _ => f0_extern(d0cl)
+//
 |
 _ (*otherwise*) => d1ecl_none1(d0cl)
 //
-end (*let*) // end of [trans01_d0ecl(d0cl)]
+end where
+{
+(* ****** ****** *)
+
+fun
+f0_static
+( d0cl
+: d0ecl): d1ecl = let
+//
+val loc0 = d0cl.lctn()
+//
+val-
+D0Cstatic
+(tok0, dcl1) = d0cl.node()
+//
+val dcl1 = trans01_d0ecl(dcl1)
+//
+in
+d1ecl(loc0, D1Cstatic(tok0, dcl1))
+end (* let *) // end of [f0_static]
+
+fun
+f0_extern
+( d0cl
+: d0ecl): d1ecl = let
+//
+val loc0 = d0cl.lctn()
+//
+val-
+D0Cextern
+(tknd, dcl1) = d0cl.node()
+//
+val dcl1 = trans01_d0ecl(dcl1)
+//
+in
+d1ecl(loc0, D1Cextern(tknd, dcl1))
+end (* let *) // end of [f0_extern]
+
+(* ****** ****** *)
+} (*where*) // end of [trans01_d0ecl(d0cl)]
 
 (* ****** ****** *)
 

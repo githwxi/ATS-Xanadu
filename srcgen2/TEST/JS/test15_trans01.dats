@@ -169,11 +169,7 @@ in//local
 val
 dpar =
 d0parsed_from_fpath
-(
-1 // stadyn
-,
-"./../../..\
-/prelude/DATS/bool000.dats")
+(0(*sta*), "./mytest.sats")
 val
 dpar = d0parsed_preadx0(dpar)
 val
@@ -181,7 +177,7 @@ dpar = d1parsed_from_trans(dpar)
 //
 val (  ) =
 prerrln
-("dparsed_from_fpath(\"./../../../prelude/DATS/bool000.dats\") =\n", dpar)
+("dparsed_from_fpath(\"./mytest.sats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
