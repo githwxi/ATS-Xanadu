@@ -98,4 +98,16 @@ map$fopr<d0ecl><d1ecl> = trans01_d0ecl
 
 (* ****** ****** *)
 
+#implfun
+trans01_d0eclistopt
+  (opt0) =
+(
+case+ opt0 of
+| optn_nil() => optn_nil()
+| optn_cons(dcls) =>
+  optn_cons(trans01_d0eclist(dcls))
+) (*where*) // end of [trans01_d0eclistopt(opt0)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_trans01_decl00.dats] *)
