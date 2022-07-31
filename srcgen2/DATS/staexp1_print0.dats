@@ -63,11 +63,24 @@ _(*?*) = "./lexing0_print0.dats"
 #symload node with s1exp_get_node
 #symload lctn with s1exp_get_lctn
 (* ****** ****** *)
+#symload node with s1arg_get_node
+#symload lctn with s1arg_get_lctn
+#symload node with t1arg_get_node
+#symload lctn with t1arg_get_lctn
+(* ****** ****** *)
+#symload node with s1mag_get_node
+#symload lctn with s1mag_get_lctn
+#symload node with t1mag_get_node
+#symload lctn with t1mag_get_lctn
+(* ****** ****** *)
 #symload node with s1qua_get_node
 #symload lctn with s1qua_get_lctn
 (* ****** ****** *)
 #symload node with s1uni_get_node
 #symload lctn with s1uni_get_lctn
+(* ****** ****** *)
+#symload node with s1tdf_get_node
+#symload lctn with s1tdf_get_lctn
 (* ****** ****** *)
 
 #implfun
