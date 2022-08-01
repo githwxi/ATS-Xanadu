@@ -239,6 +239,11 @@ g0exp_ELSE_fprint(g_print$out<>(), gels)
 (* ****** ****** *)
 //
 #impltmp
+g_print<sort0>(s0t) =
+sort0_fprint(g_print$out<>(), s0t)
+//
+(* ****** ****** *)
+#impltmp
 g_print<s0tcn>(stc) =
 s0tcn_fprint(g_print$out<>(), stc)
 #impltmp
@@ -247,11 +252,6 @@ d0tst_fprint(g_print$out<>(), dst)
 #impltmp
 g_print<s0tdf>(tdf) =
 s0tdf_fprint(g_print$out<>(), tdf)
-//
-#impltmp
-g_print<sort0>(s0t) =
-sort0_fprint(g_print$out<>(), s0t)
-//
 (* ****** ****** *)
 #impltmp
 g_print<s0arg>(sag) =
@@ -546,6 +546,10 @@ g1exp_fprint(g_print$out<>(), g1e)
 g_print<sort1>(s1t) =
 sort1_fprint(g_print$out<>(), s1t)
 //
+(* ****** ****** *)
+#impltmp
+g_print<s1tdf>(tdf) =
+s1tdf_fprint(g_print$out<>(), tdf)
 (* ****** ****** *)
 #impltmp
 g_print<s1arg>(s1a) =

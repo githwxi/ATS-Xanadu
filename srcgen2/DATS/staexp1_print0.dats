@@ -228,6 +228,11 @@ print( "S1Tlist(", s1ts ,")" )
 S1Tqual(tok1,s1t2) =>
 print("S1Tqual(",tok1,";",s1t2,")")
 //
+|
+S1Tnone0() => print("S1Tnone0(", ")")
+|
+S1Tnone1(s0t1) => print("S1Tnone1(", s0t1 ,")")
+//
 end (*let*) // end of [sort1_fprint(out,s1t)]
 
 (* ****** ****** *)
@@ -387,6 +392,11 @@ S1Equal(tok1,s1e2) =>
 (
   print(  "S1Equal(",tok1,";",s1e2,")"  )
 )
+//
+|
+S1Enone0() => print("S1Enone0(", ")")
+|
+S1Enone1(s0e1) => print("S1Enone1(", s0e1 ,")")
 //
 end (*let*) // end of [s1exp_fprint(out,s1e)]
 

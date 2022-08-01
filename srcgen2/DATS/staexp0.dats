@@ -635,14 +635,14 @@ s0tdf_make_node
 (   loc,nod   ) = S0TDF(loc,nod)
 //
 #implfun
-s0tdf_get_lctn(tdf) =
+s0tdf_get_lctn(stdf) =
 let
-  val+S0TDF(loc,nod) = tdf in loc
+ val+S0TDF(loc,nod) = stdf in loc
 end
 #implfun
-s0tdf_get_node(tdf) =
+s0tdf_get_node(stdf) =
 let
-  val+S0TDF(loc,nod) = tdf in nod
+ val+S0TDF(loc,nod) = stdf in nod
 end
 //
 endloc (*local*) // end of [ local ]

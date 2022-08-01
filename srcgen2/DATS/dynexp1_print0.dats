@@ -141,6 +141,9 @@ in//let
 case+
 d1e.node() of
 //
+| D1Enone0() => print("D1Enone0(", ")")
+| D1Enone1(dexp) => print("D1Enone1(", dexp ,")")
+//
 end (*let*) // end of [d1exp_fprint(out,d1e)]
 
 (* ****** ****** *)
@@ -184,8 +187,13 @@ D1Cstacst0
 print("D1Cstacst0(");
 print(tknd,";",sid0,";",tmas,";",s1t1,")"))
 //
-| D1Cnone0() => print("D1Cnone0(",")")
-| D1Cnone1(d0cl) => print("D1Cnone1(",d0cl,")")
+|
+D1Csortdef
+(tknd,tid0,stdf) =>
+print("D1Csortdef(",tknd,";",tid0,";",stdf,")")
+//
+| D1Cnone0() => print("D1Cnone0(", ")")
+| D1Cnone1(d0cl) => print("D1Cnone1(", d0cl ,")")
 end (*let*) // end of [d1ecl_fprint(out,dcl)]
 
 (* ****** ****** *)
