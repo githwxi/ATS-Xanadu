@@ -94,7 +94,10 @@ _(*XFIXITY*) = "./xfixity.dats"
 #symload lctn with s1exp_get_lctn
 #symload node with s1exp_get_node
 (* ****** ****** *)
-#symload sort1 with s1exp_make_node
+#symload s1exp with s1exp_make_node
+(* ****** ****** *)
+#symload lctn with s0arg_get_lctn
+#symload node with s0arg_get_node
 (* ****** ****** *)
 
 fun
@@ -611,6 +614,49 @@ f0_main(g0e0) of
 end (*let*) // end of [trans01_g0exp(g0e0)]
 
 endloc(*local*)//end-of-[local(trans01_g0exp)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_s0arg
+  (s0a0) =
+(
+case+
+s0a0.node() of
+|
+S0ARGnone
+(  tok1  ) =>
+let
+val
+loc0 = s0a0.lctn()
+val
+loc1 = tok1.lctn()
+val
+sid1 =
+token_make_node
+(loc1, T0IDENT_NONE)
+val tres = optn_nil()
+in//let
+s1arg
+(loc0, S1ARGsome(sid1, tres))
+end (*let*) // S0ARGnone(_)
+|
+S0ARGsome
+(sid1, tres) =>
+let
+val
+loc0 = s0a0.lctn()
+val
+sid1 =
+trans01_i0dnt(sid1)
+val
+tres =
+trans01_sort0opt(tres)
+in//let
+s1arg
+(loc0, S1ARGsome(sid1, tres))
+end (*let*) // S0ARGsome(_, _)
+) (*case+*) // end of [trans01_s0arg(s0a0)]
 
 (* ****** ****** *)
 
