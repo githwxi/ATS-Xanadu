@@ -92,6 +92,15 @@ endloc (*local*) // end of [ local ]
 
 (* ****** ****** *)
 
+#implfun
+sort1_none1
+(  s0t0  ) =
+sort1_make_node
+(
+s0t0.lctn(),S1Tnone1(s0t0))
+
+(* ****** ****** *)
+
 local
 //
 datatype
@@ -182,6 +191,15 @@ let
 end
 //
 endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+#implfun
+s1exp_none1
+(  s0e0  ) =
+s1exp_make_node
+(
+s0e0.lctn(),S1Enone1(s0e0))
 
 (* ****** ****** *)
 
