@@ -618,6 +618,28 @@ endloc(*local*)//end-of-[local(trans01_g0exp)]
 (* ****** ****** *)
 
 #implfun
+trans01_sort0
+  (s0t0) =
+(
+case+
+s0t0.node() of
+| _(*otherwise*) => sort1_none1(s0t0)
+) (*case+*) // end of [trans01_sort0(s0t0)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_s0exp
+  (s0e0) =
+(
+case+
+s0e0.node() of
+| _(*otherwise*) => s1exp_none1(s0e0)
+) (*case+*) // end of [trans01_s0exp(s0e0)]
+
+(* ****** ****** *)
+
+#implfun
 trans01_s0arg
   (s0a0) =
 (
@@ -700,6 +722,19 @@ map$fopr<sort0><sort1> = trans01_sort0
 (* ****** ****** *)
 
 #implfun
+trans01_sort0opt
+  (opt0) =
+(
+optn_map
+<sort0><sort1>(opt0)) where
+{
+#impltmp
+map$fopr<sort0><sort1> = trans01_sort0
+} (*where*) // end of [trans01_sort0opt(opt0)]
+
+(* ****** ****** *)
+
+#implfun
 trans01_s0explst
   (s0es) =
 (
@@ -709,6 +744,19 @@ list_map
 #impltmp
 map$fopr<s0exp><s1exp> = trans01_s0exp
 } (*where*) // end of [trans01_s0explst(s0es)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_s0expopt
+  (opt0) =
+(
+optn_map
+<s0exp><s1exp>(opt0)) where
+{
+#impltmp
+map$fopr<s0exp><s1exp> = trans01_s0exp
+} (*where*) // end of [trans01_s0explst(opt0)]
 
 (* ****** ****** *)
 

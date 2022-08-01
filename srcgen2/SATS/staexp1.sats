@@ -204,7 +204,9 @@ g1mag_make_node
 #abstbox s1exp_tbox // ptr
 //
 (* ****** ****** *)
-//
+#typedef sort0 = $S0E.sort0
+#typedef s0exp = $S0E.s0exp
+(* ****** ****** *)
 #typedef sort1 = sort1_tbox
 #typedef sort1lst = list(sort1)
 #typedef sort1opt = optn(sort1)
@@ -244,7 +246,8 @@ sort1_node =
 | S1Tlist of sort1lst // HX: temp
 | S1Tqual of (token(*NS*), sort1)
 //
-// end of [ datatype(sort1_node) ]
+| S1Tnone0 of () | S1Tnone1 of (sort0)
+// end of [sort1_node] // end of [datatype]
 //
 (* ****** ****** *)
 //
@@ -265,6 +268,8 @@ sort1_get_node(sort1): sort1_node
 //
 fun
 sort1_none0(loc:loc_t): sort1
+fun
+sort1_none1(s0t:sort0): sort1
 fun
 sort1_make_node
 (loc:loc_t,nod:sort1_node): sort1
@@ -617,6 +622,8 @@ s1exp_node =
 //
 | S1Equal of ( token(*$NS.*), s1exp )
 //
+| S1Enone0 of () | S1Enone1 of ( s0exp )
+//
 // end of [s1exp_node] // end of [datatype]
 
 (* ****** ****** *)
@@ -638,6 +645,8 @@ s1exp_get_node(s1exp): s1exp_node
 //
 fun
 s1exp_none0(loc:loc_t): s1exp
+fun
+s1exp_none1(s0e:s0exp): s1exp
 fun
 s1exp_make_node
 (loc:loc_t,nod:s1exp_node): s1exp
