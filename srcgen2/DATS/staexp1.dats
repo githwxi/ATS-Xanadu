@@ -135,6 +135,37 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
+s1arg =
+S1ARG of
+(
+loctn, s1arg_node)
+//
+#absimpl s1arg_tbox = s1arg
+//
+in (* in-of-local *)
+//
+#implfun
+s1arg_make_node
+(   loc,nod   ) = S1ARG(loc,nod)
+//
+#implfun
+s1arg_get_lctn(s1a) =
+let
+  val+S1ARG(loc,nod) = s1a in loc
+end
+#implfun
+s1arg_get_node(s1a) =
+let
+  val+S1ARG(loc,nod) = s1a in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 s1qua =
 S1QUA of
 (
@@ -188,6 +219,37 @@ end
 s1uni_get_node(s1u) =
 let
   val+S1UNI(loc,nod) = s1u in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+s1tdf =
+S1TDF of
+(
+loctn, s1tdf_node)
+#absimpl
+s1tdf_tbox = s1tdf
+//
+in (* in-of-local *)
+//
+#implfun
+s1tdf_make_node
+(   loc,nod   ) = S1TDF(loc,nod)
+//
+#implfun
+s1tdf_get_lctn(stdf) =
+let
+ val+S1TDF(loc,nod) = stdf in loc
+end
+#implfun
+s1tdf_get_node(stdf) =
+let
+ val+S1TDF(loc,nod) = stdf in nod
 end
 //
 endloc (*local*) // end of [ local ]
