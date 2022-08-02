@@ -100,5 +100,16 @@ fun
 <itm:t0>
 gmap_strmize_itm(map): strm_vt(key)
 (* ****** ****** *)
+fun
+<map:t0>
+<key:t0>
+<itm:t0>
+gmap_unlist_vt(list_vt(@(key, itm))): map
+fun
+<map:t0>
+<key:t0>
+<itm:t0>
+gmap_unstrm_vt(strm_vt(@(key, itm))): map
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gmap000.sats] *)
