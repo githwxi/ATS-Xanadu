@@ -858,11 +858,32 @@ s1exp
 ( loc0
 , S1El2st(ses1, ses2))) where
 {
-  val ses1 = trans01_s0explst(ses1)
-  val ses2 = trans01_s0explst(ses2)
+val ses1 = trans01_s0explst(ses1)
+val ses2 = trans01_s0explst(ses2)
 }
 //
 endlet // end of [ S0Elpar(_,_,_) ]
+//
+|
+S0Eanno(s0e1, s0t2) =>
+let
+  val loc0 = s0e0.lctn()
+  val s1e1 = trans01_s0exp(s0e1)
+  val s1t2 = trans01_sort0(s0t2)
+in//let
+FXITMatm
+(s1exp(loc0, S1Eanno(s1e1, s1t2)))
+end (*let*) // end of [S0Eanno(_,_)]
+//
+|
+S0Equal(tok1, s0e2) =>
+let
+  val loc0 = s0e0.lctn()
+  val s1e2 = trans01_s0exp(s0e2)
+in
+FXITMatm
+(s1exp(loc0, S1Equal(tok1, s1e2)))
+end (*let*) // end of [S0Equal(_,_)]
 //
 |
 _(*otherwise*) => FXITMatm(s1exp_none1(s0e0))
