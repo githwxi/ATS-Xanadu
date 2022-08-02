@@ -97,9 +97,7 @@ d0cl.node() of
 | D0Cstacst0 _ => f0_stacst0(d0cl)
 //
 | D0Csortdef _ => f0_sortdef(d0cl)
-(*
 | D0Csexpdef _ => f0_sexpdef(d0cl)
-*)
 //
 |
 _ (*otherwise*) => d1ecl_none1(d0cl)
@@ -196,8 +194,6 @@ f0_sortdef
 (d0cl: d0ecl): d1ecl =
 let
 //
-val loc0 = d0cl.lctn()
-//
 val-
 D0Csortdef
 ( tknd
@@ -242,8 +238,57 @@ println!("f0_sortdef: stdf = ", stdf)
 *)
 //
 in
-d1ecl_make_node(loc0, D1Csortdef(tknd, tid0, stdf))
+d1ecl_make_node
+(d0cl.lctn(), D1Csortdef(tknd, tid0, stdf))
 end // end of [f0_sortdef]
+
+(* ****** ****** *)
+
+fun
+f0_sexpdef
+(d0cl: d0ecl): d1ecl =
+let
+//
+val loc0 = d0cl.lctn()
+//
+(*
+val () =
+println!
+("trans01_d0ecl: d0cl = ", d0cl)
+*)
+//
+val-
+D0Csexpdef
+( tknd
+, seid
+, smas
+, tres
+, teq1, s0e2) = d0cl.node()
+//
+val seid =
+  trans01_i0dnt(seid)
+val smas =
+  trans01_s0maglst(smas) 
+val tres =
+  trans01_sort0opt(tres)
+//
+val s1e2 = trans01_s0exp(s0e2)
+//
+(*
+val () =
+println!("f0_sexpdef: seid = ", seid)
+val () =
+println!("f0_sexpdef: smas = ", smas)
+val () =
+println!("f0_sexpdef: tres = ", tres)
+val () =
+println!("f0_sexpdef: s1e2 = ", s1e2)
+*)
+//
+in
+d1ecl_make_node
+(loc0, D1Csexpdef(tknd,seid,smas,tres,s1e2))
+end // end of [f0_sexpdef]
 
 (* ****** ****** *)
 

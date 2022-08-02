@@ -89,15 +89,19 @@ _(*XFIXITY*) = "./xfixity.dats"
 (* ****** ****** *)
 #symload sort1 with sort1_make_node
 (* ****** ****** *)
+#symload lctn with s0arg_get_lctn
+#symload node with s0arg_get_node
+#symload lctn with s0mag_get_lctn
+#symload node with s0mag_get_node
+(* ****** ****** *)
+#symload s1mag with s1mag_make_node
+(* ****** ****** *)
 #symload lctn with s0exp_get_lctn
 #symload node with s0exp_get_node
 #symload lctn with s1exp_get_lctn
 #symload node with s1exp_get_node
 (* ****** ****** *)
 #symload s1exp with s1exp_make_node
-(* ****** ****** *)
-#symload lctn with s0arg_get_lctn
-#symload node with s0arg_get_node
 (* ****** ****** *)
 
 fun
@@ -683,6 +687,63 @@ end (*let*) // S0ARGsome(_, _)
 (* ****** ****** *)
 
 #implfun
+trans01_s0mag
+  (s0ma) = let
+//
+val loc0 = s0ma.lctn()
+//
+(*
+val () =
+prerrln
+("trans01_s0mag: s0ma = ", s0ma)
+*)
+//
+in
+//
+case+
+s0ma.node() of
+|
+S0MAGnone(tok) => let
+  val sid =
+  token_make_node
+  ( tok.lctn()
+  , T0IDENT_NONE(*val*))
+  val
+  s1a =
+  s1arg_make_node
+  ( sid.lctn()
+  , S1ARGsome(sid, optn_nil()))
+in
+  s1mag_make_node
+  (loc0, S1MAGlist(list_sing(s1a)))
+end (*let*) // end of [S0MAGnone]
+|
+S0MAGsing(sid) => let
+  val
+  sid = trans01_i0dnt(sid)
+  val
+  s1a =
+  s1arg_make_node
+  ( sid.lctn()
+  , S1ARGsome(sid, optn_nil()))
+in
+  s1mag_make_node
+  (loc0, S1MAGlist(list_sing(s1a)))
+end (*let*) // end of [S0MAGsing]
+|
+S0MAGlist
+(tbeg,s0as,tend) => let
+  val
+  s1as = trans01_s0arglst(s0as)
+in
+  s1mag_make_node(loc0, S1MAGlist(s1as))
+end (*let*) // end of [S0MAGlist]
+//
+end (*let*) // end of [trans01_s0mag(s0ma)]
+
+(* ****** ****** *)
+
+#implfun
 trans01_g0namlst
   (g0ns) =
 (
@@ -731,6 +792,32 @@ optn_map
 #impltmp
 map$fopr<sort0><sort1> = trans01_sort0
 } (*where*) // end of [trans01_sort0opt(opt0)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_s0arglst
+  (s0as) =
+(
+list_map
+<s0arg><s1arg>(s0as)) where
+{
+#impltmp
+map$fopr<s0arg><s1arg> = trans01_s0arg
+} (*where*) // end of [trans01_s0arglst(s0as)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_s0maglst
+  (smas) =
+(
+list_map
+<s0mag><s1mag>(smas)) where
+{
+#impltmp
+map$fopr<s0mag><s1mag> = trans01_s0mag
+} (*where*) // end of [trans01_s0maglst(smas)]
 
 (* ****** ****** *)
 

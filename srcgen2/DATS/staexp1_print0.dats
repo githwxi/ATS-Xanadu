@@ -254,6 +254,24 @@ print("S1ARGsome(",sid0,";",tres,")")
 end (*let*) // end of [s1arg_fprint]
 
 (* ****** ****** *)
+//
+#implfun
+s1mag_fprint
+( out, s1m ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+s1m.node() of
+|
+S1MAGlist(s1as) =>
+print("S1MAGlist(",s1as,")")
+//
+end (*let*)//end of [s1mag_fprint(out,s1m)]
+//
+(* ****** ****** *)
 
 #implfun
 t1arg_fprint
