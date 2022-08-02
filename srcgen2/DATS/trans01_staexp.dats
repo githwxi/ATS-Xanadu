@@ -737,6 +737,21 @@ val s1ts = f0_s0ts(s0ts)
 val s1t0 =
 fxitmlst_resolve_sort1(loc0, s1ts)
 }
+//
+|
+S0Tlpar
+(tbeg,s0ts,tend) =>
+FXITMatm(s1t0) where
+{
+//
+val loc0 = s0t0.lctn()
+//
+val s1ts =
+trans01_sort0lst(s0ts)
+val s1t0 =
+sort1_make_node(loc0, S1Tlist(s1ts))
+}
+//
 |
 _(*otherwise*) =>
 let
@@ -813,6 +828,41 @@ val s1es = f0_s0es(s0es)
 val s1e0 =
 fxitmlst_resolve_s1exp(loc0, s1es)
 }
+//
+|
+S0Elpar
+(tbeg,ses1,tend) =>
+let
+//
+val loc0 = s0e0.lctn()
+//
+in//let
+//
+case+ tend of
+|
+s0exp_RPAREN_cons0
+(      tok       ) =>
+FXITMatm
+(
+s1exp
+(loc0, S1El1st(ses1))) where
+{
+  val ses1 = trans01_s0explst(ses1)
+}
+|
+s0exp_RPAREN_cons1
+(tbeg, ses2, tend) =>
+FXITMatm
+(
+s1exp
+( loc0
+, S1El2st(ses1, ses2))) where
+{
+  val ses1 = trans01_s0explst(ses1)
+  val ses2 = trans01_s0explst(ses2)
+}
+//
+endlet // end of [ S0Elpar(_,_,_) ]
 //
 |
 _(*otherwise*) => FXITMatm(s1exp_none1(s0e0))
