@@ -1083,7 +1083,7 @@ in
 case-
 s0ma.node() of
 (*
-| S0ARGnone(tok) => ...
+| S0MARGnone(tok) => ...
 *)
 | S0MARGsing(sid) => let
     val-

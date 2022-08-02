@@ -192,6 +192,14 @@ D1Csortdef
 (tknd,tid0,stdf) =>
 print("D1Csortdef(",tknd,";",tid0,";",stdf,")")
 //
+|
+D1Csexpdef
+(tknd,seid
+,smas,tres,s1e1) =>
+(
+print("D1Csexpdef(");
+print(tknd,";",seid,";",smas,";",tres,";",s1e1,")"))
+//
 | D1Cnone0() => print("D1Cnone0(", ")")
 | D1Cnone1(d0cl) => print("D1Cnone1(", d0cl ,")")
 end (*let*) // end of [d1ecl_fprint(out,dcl)]

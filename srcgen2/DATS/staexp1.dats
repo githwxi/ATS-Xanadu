@@ -166,6 +166,37 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
+s1mag =
+S1MAG of
+(
+loctn, s1mag_node)
+//
+#absimpl s1mag_tbox = s1mag
+//
+in (* in-of-local *)
+//
+#implfun
+s1mag_make_node
+(   loc,nod   ) = S1MAG(loc,nod)
+//
+#implfun
+s1mag_get_lctn(sma) =
+let
+  val+S1MAG(loc,nod) = sma in loc
+end
+#implfun
+s1mag_get_node(sma) =
+let
+  val+S1MAG(loc,nod) = sma in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 s1qua =
 S1QUA of
 (
