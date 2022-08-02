@@ -377,6 +377,86 @@ token_make_node
 }(*where*)//end-of(trans01_i0dnt)
 //
 (* ****** ****** *)
+//
+#implfun
+trans01_t0int
+  (int) =
+(
+case+ int of
+|
+T0INTsome(tok) => tok
+|
+T0INTnone(tok) =>
+token_none(tok.lctn())
+) where
+{
+fun
+token_none
+(loc: loc_t): token = 
+token_make_node(loc, T_ERR())
+}(*where*)//end-of(trans01_t0int)
+//
+(* ****** ****** *)
+//
+#implfun
+trans01_t0chr
+  (chr) =
+(
+case+ chr of
+|
+T0CHRsome(tok) => tok
+|
+T0CHRnone(tok) =>
+token_none(tok.lctn())
+) where
+{
+fun
+token_none
+(loc: loc_t): token = 
+token_make_node(loc, T_ERR())
+}(*where*)//end-of(trans01_t0chr)
+//
+(* ****** ****** *)
+//
+#implfun
+trans01_t0flt
+  (flt) =
+(
+case+ flt of
+|
+T0FLTsome(tok) => tok
+|
+T0FLTnone(tok) =>
+token_none(tok.lctn())
+) where
+{
+fun
+token_none
+(loc: loc_t): token = 
+token_make_node(loc, T_ERR())
+}(*where*)//end-of(trans01_t0flt)
+//
+(* ****** ****** *)
+//
+#implfun
+trans01_t0str
+  (str) =
+(
+case+ str of
+|
+T0STRsome(tok) => tok
+|
+T0STRnone(tok) =>
+token_none(tok.lctn())
+) where
+{
+fun
+token_none
+(loc: loc_t): token = 
+token_make_node(loc, T_ERR())
+}(*where*)//end-of(trans01_t0str)
+//
+(* ****** ****** *)
 
 local
 
@@ -622,24 +702,192 @@ endloc(*local*)//end-of-[local(trans01_g0exp)]
 (* ****** ****** *)
 
 #implfun
-trans01_sort0
-  (s0t0) =
+trans01_sort0(s0t0) =
+let
+(* ****** ****** *)
+val () =
+prerrln(
+"trans01_sort0: s0t0 = ", s0t0
+)(*prerrln*)
+(* ****** ****** *)
+val sfx0 = f0_sort(s0t0)
+in//let
+case+ sfx0 of
+| FXITMatm(s1e0) => s1e0
+| FXITMopr(s1e0, fxty) => s1e0
+end where
+{
+fun
+f0_sort
+(s0t0: sort0): s1tfx =
 (
 case+
 s0t0.node() of
-| _(*otherwise*) => sort1_none1(s0t0)
-) (*case+*) // end of [trans01_sort0(s0t0)]
+//
+| S0Tint _ => f0_int(s0t0)
+//
+|
+S0Tapps(s0ts) =>
+FXITMatm(s1t0) where
+{
+//
+val loc0 = s0t0.lctn()
+//
+val s1ts = f0_s0ts(s0ts)
+val s1t0 =
+fxitmlst_resolve_sort1(loc0, s1ts)
+}
+|
+_(*otherwise*) =>
+let
+val s1t0 =
+sort1_none1(s0t0) in FXITMatm(s1t0)
+end
+) (*case+*) // end of [f0_sort(s0t0)]
+//
+and
+f0_int
+(s0t0: sort0): s1tfx =
+let
+val
+loc0 = s0t0.lctn()
+val-
+S0Tint
+( int ) = s0t0.node() in
+FXITMatm
+(
+sort1(loc0,S1Tint(trans01_t0int(int)))
+)
+end // end of [let] // end of [f0_int]
+//
+and
+f0_s0ts
+(s0ts: sort0lst): s1tfxlst =
+list_map<sort0><s1tfx>(s0ts) where
+{
+#impltmp map$fopr<sort0><s1tfx> = f0_sort
+} (* end of [f0_s0ts] *)
+//
+} (*where*) // end of [trans01_sort0(s0t0)]
 
 (* ****** ****** *)
 
 #implfun
-trans01_s0exp
-  (s0e0) =
+trans01_s0exp(s0e0) =
+let
+(* ****** ****** *)
+val () =
+prerrln(
+"trans01_s0exp: s0e0 = ", s0e0
+)(*prerrln*)
+(* ****** ****** *)
+val sfx0 = f0_sexp(s0e0)
+in//let
+case+ sfx0 of
+| FXITMatm(s1e0) => s1e0
+| FXITMopr(s1e0, fxty) => s1e0
+end where
+{
+(* ****** ****** *)
+//
+fun
+f0_sexp
+(s0e0: s0exp): s1efx =
 (
 case+
 s0e0.node() of
-| _(*otherwise*) => s1exp_none1(s0e0)
-) (*case+*) // end of [trans01_s0exp(s0e0)]
+//
+| S0Eint _ => f0_int(s0e0)
+| S0Echr _ => f0_chr(s0e0)
+| S0Eflt _ => f0_flt(s0e0)
+| S0Estr _ => f0_str(s0e0)
+//
+|
+S0Eapps(s0es) =>
+FXITMatm(s1e0) where
+{
+//
+val loc0 = s0e0.lctn()
+//
+val s1es = f0_s0es(s0es)
+val s1e0 =
+fxitmlst_resolve_s1exp(loc0, s1es)
+}
+//
+|
+_(*otherwise*) => FXITMatm(s1exp_none1(s0e0))
+//
+) (*case+*) // end of [f0_sexp(s0e0)]
+//
+and
+f0_int
+(s0e0: s0exp): s1efx =
+let
+val
+loc0 = s0e0.lctn()
+val-
+S0Eint
+( int ) = s0e0.node() in
+FXITMatm
+(
+s1exp(loc0,S1Eint(trans01_t0int(int)))
+)
+end // end of [let] // end of [f0_int]
+//
+and
+f0_chr
+(s0e0: s0exp): s1efx =
+let
+val
+loc0 = s0e0.lctn()
+val-
+S0Echr
+( chr ) = s0e0.node() in
+FXITMatm
+(
+s1exp(loc0,S1Echr(trans01_t0chr(chr)))
+)
+end // end of [let] // end of [f0_chr]
+//
+and
+f0_flt
+(s0e0: s0exp): s1efx =
+let
+val
+loc0 = s0e0.lctn()
+val-
+S0Eflt
+( flt ) = s0e0.node() in
+FXITMatm
+(
+s1exp(loc0,S1Eflt(trans01_t0flt(flt)))
+)
+end // end of [let] // end of [f0_flt]
+//
+and
+f0_str
+(s0e0: s0exp): s1efx =
+let
+val
+loc0 = s0e0.lctn()
+val-
+S0Estr
+( str ) = s0e0.node() in
+FXITMatm
+(
+s1exp(loc0,S1Estr(trans01_t0str(str)))
+)
+end // end of [let] // end of [f0_str]
+//
+and
+f0_s0es
+(s0es: s0explst): s1efxlst =
+list_map<s0exp><s1efx>(s0es) where
+{
+#impltmp map$fopr<s0exp><s1efx> = f0_sexp
+} (* end of [f0_s0es] *)
+//
+} (*where*) // end of [trans01_s0exp(s0e0)]
 
 (* ****** ****** *)
 

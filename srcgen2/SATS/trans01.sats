@@ -79,8 +79,19 @@ FIL = "./filpath.sats"
 #staload S1E = "./staexp1.sats"
 #staload D1E = "./dynexp1.sats"
 (* ****** ****** *)
+//
 #typedef i0dnt = $S0E.i0dnt
+#typedef t0int = $S0E.t0int
+#typedef t0chr = $S0E.t0chr
+#typedef t0flt = $S0E.t0flt
+#typedef t0str = $S0E.t0str
+//
 #typedef i1dnt = $S1E.i1dnt
+#typedef t1int = $S1E.t1int
+#typedef t1chr = $S1E.t1chr
+#typedef t1flt = $S1E.t1flt
+#typedef t1str = $S1E.t1str
+//
 (* ****** ****** *)
 //
 #typedef g0nam = $S0E.g0nam
@@ -220,6 +231,10 @@ fun token2dstr: token -> string
 
 (* ****** ****** *)
 fun trans01_i0dnt: (i0dnt)->i1dnt
+fun trans01_t0int: (t0int)->t1int
+fun trans01_t0chr: (t0chr)->t1chr
+fun trans01_t0flt: (t0flt)->t1flt
+fun trans01_t0str: (t0str)->t1str
 (* ****** ****** *)
 //
 fun trans01_g0nam: (g0nam)->g1nam

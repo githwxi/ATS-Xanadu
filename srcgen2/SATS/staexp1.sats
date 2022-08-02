@@ -105,7 +105,15 @@ where
 (* ****** ****** *)
 //
 #typedef i1dnt = token
+#typedef t1int = token
+#typedef t1chr = token
+#typedef t1flt = token
+#typedef t1str = token
 #typedef i0dnt = $S0E.i0dnt
+#typedef t0int = $S0E.t0int
+#typedef t0chr = $S0E.t0chr
+#typedef t0flt = $S0E.t0flt
+#typedef t0str = $S0E.t0str
 //
 (* ****** ****** *)
 //
