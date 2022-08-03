@@ -407,6 +407,11 @@ print
 ("S1Er2cd(",tknd,";",lss1,";",lss2,")")
 //
 |
+S1Elam0(smas, tres, s1e1) =>
+print
+("S1Elam0(",smas,";",tres,";",s1e1,")")
+//
+|
 S1Euni0(s1qs) =>
 print("S1Euni0(",s1qs,")")
 |
@@ -414,9 +419,14 @@ S1Eexi0(tknd, s1qs) =>
 print("S1Eexi0(",tknd,";",s1qs,")")
 //
 |
+S1Eanno(s1e1,s1t2) =>
+(
+print(  "S1Eanno(",s1e1,";",s1t2,")"  )
+)
+|
 S1Equal(tok1,s1e2) =>
 (
-  print(  "S1Equal(",tok1,";",s1e2,")"  )
+print(  "S1Equal(",tok1,";",s1e2,")"  )
 )
 //
 |

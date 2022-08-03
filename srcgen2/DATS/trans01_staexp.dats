@@ -966,10 +966,31 @@ let
 in
 FXITMatm
 (
-s1exp
+s1exp_make_node
 ( s0e0.lctn(), S1Eexi0(tknd,s1qs) )
 )(*FXITMatm*)
 end (*let*) // end of [S0Euni0(...)]
+//
+|
+S0Elam0
+(tknd
+,smas,tres
+,teg1,s0e1,tend) =>
+let
+//
+val loc0 = s0e0.lctn()
+//
+val smas =
+  trans01_s0maglst(smas)
+val tres =
+  trans01_sort0opt(tres)
+val s1e1 = trans01_s0exp(s0e1)
+in//let
+FXITMatm
+(
+s1exp_make_node
+(loc0, S1Elam0(smas, tres, s1e1)))
+end (*let*) // end of [S0Elam(...)]
 //
 |
 S0Eanno(s0e1, s0t2) =>
@@ -1195,6 +1216,19 @@ val sids = trans01_i0dntlst(sids)
 val topt = trans01_sort0opt(topt) }
 //
 end (*let*) // end of [trans01_s0qua(s0q0)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_i0dntlst
+  (ids) =
+(
+list_map
+<i0dnt><i1dnt>(ids)) where
+{
+#impltmp
+map$fopr<i0dnt><i1dnt> = trans01_i0dnt
+} (*where*) // end of [trans01_i0dntlst(ids)]
 
 (* ****** ****** *)
 

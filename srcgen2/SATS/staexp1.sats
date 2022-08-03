@@ -626,7 +626,7 @@ s1exp_node =
 | S1Eexi0 of (token(*#*), s1qualst)
 //
 | S1Elam0 of
-  (s1maglst
+  ( s1maglst
   , sort1opt(*tres*), s1exp(*body*))
 //
 | S1Eanno of (s1exp, sort1)
