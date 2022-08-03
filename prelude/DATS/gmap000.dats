@@ -144,6 +144,16 @@ gmap_strmize
 #impltmp
 <map>
 <key><itm>
+gmap_unlist(kxs) =
+gmap_unstrm_vt
+<map><key><itm>
+(list_strmize<(key,itm)>(kxs))
+//
+(* ****** ****** *)
+//
+#impltmp
+<map>
+<key><itm>
 gmap_unstrm(kxs) =
 gmap_unstrm_vt
 <map><key><itm>
