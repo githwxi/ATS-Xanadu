@@ -80,6 +80,21 @@ g_print<key>( k0 );
 strn_print<>("->"); g_print<itm>( x0 )
 ) // end-of-[gmap_print$keyval(k0,x0)]
 (* ****** ****** *)
+
+#impltmp
+<map>
+<key><itm>
+gmap_search
+(kxs, k0) =
+let
+val opt =
+gmap_search_opt
+<map><key><itm>(kxs, k0)
+in
+  case- opt of ~optn_cons(x0) => ( x0 )
+end (*let*)//end-of[gmap_search(kxs,k0)]
+
+(* ****** ****** *)
 //
 #impltmp
 <map>
