@@ -958,6 +958,20 @@ s1exp(s0e0.lctn(), S1Euni0(s1qs))
 end (*let*) // end of [S0Euni0(...)]
 //
 |
+S0Eexi0
+(tknd,s0qs,tend) =>
+let
+  val
+  s1qs = trans01_s0qualst(s0qs)
+in
+FXITMatm
+(
+s1exp
+( s0e0.lctn(), S1Eexi0(tknd,s1qs) )
+)(*FXITMatm*)
+end (*let*) // end of [S0Euni0(...)]
+//
+|
 S0Eanno(s0e1, s0t2) =>
 let
   val loc0 = s0e0.lctn()

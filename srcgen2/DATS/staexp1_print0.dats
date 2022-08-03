@@ -410,8 +410,8 @@ print
 S1Euni0(s1qs) =>
 print("S1Euni0(",s1qs,")")
 |
-S1Eexi0(knd0, s1qs) =>
-print("S1Eexi0(",knd0,";",s1qs,")")
+S1Eexi0(tknd, s1qs) =>
+print("S1Eexi0(",tknd,";",s1qs,")")
 //
 |
 S1Equal(tok1,s1e2) =>
