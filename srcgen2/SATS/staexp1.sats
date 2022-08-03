@@ -623,7 +623,7 @@ s1exp_node =
   , l0s1elst(*prop*), l0s1elst(*type*))
 //
 | S1Euni0 of (s1qualst)
-| S1Eexi0 of (int(*#*), s1qualst)
+| S1Eexi0 of (token(*#*), s1qualst)
 //
 | S1Elam0 of
   (s1maglst
