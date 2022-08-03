@@ -122,7 +122,7 @@ $effmask_ref
 let
 val opt =
 $ENV.symenv_search(!p0, k0)
-in
+in//let
 //
 case+ opt of
 | @Some_vt _ =>
@@ -135,7 +135,7 @@ end // end of [let]
 ) where
 {
 prval vbox(pf) = pfbox
-} (* end of [the_fxtyenv_search] *)
+} (*where*) // end of [the_fxtyenv_search]
 
 (* ****** ****** *)
 
@@ -166,12 +166,12 @@ FIXTYinf(p0, a0) =>
 | _ (* non-FIXTYpre-FIXTYinf *) => x0
 )
 //
-in
+in//let
 //
 $effmask_ref
 ($ENV.symenv_insert2(!p0, k0, x0, mix))
 //
-end (* end of [the_fxtyenv_insert] *)
+end (*let*) // end of [the_fxtyenv_insert]
 
 (* ****** ****** *)
 

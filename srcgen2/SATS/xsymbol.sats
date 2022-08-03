@@ -67,6 +67,10 @@ symbl_neqz(sym: symbl): bool
 //
 (* ****** ****** *)
 //
+(*
+fun
+symbl_eq(symbl, symbl): bool
+*)
 fun
 symbl_cmp(symbl, symbl): sint
 //

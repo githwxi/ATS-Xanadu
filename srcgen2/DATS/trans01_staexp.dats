@@ -48,6 +48,8 @@ ATS_PACKNAME
 #staload
 _(*XFIXITY*) = "./xfixity.dats"
 (* ****** ****** *)
+#staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
@@ -72,7 +74,9 @@ _(*XFIXITY*) = "./xfixity.dats"
 #typedef s1efxlst = list(s1efx)
 (* ****** ****** *)
 #symload lctn with token_get_lctn
+#symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with i0dnt_get_lctn
 #symload node with i0dnt_get_node
 (* ****** ****** *)
 #symload lctn with g0exp_get_lctn
@@ -727,6 +731,8 @@ f0_sort
 case+
 s0t0.node() of
 //
+| S0Tid0 _ => f0_id0(s0t0)
+//
 | S0Tint _ => f0_int(s0t0)
 //
 |
@@ -762,6 +768,69 @@ val s1t0 =
 sort1_none1(s0t0) in FXITMatm(s1t0)
 end
 ) (*case+*) // end of [f0_sort(s0t0)]
+//
+and
+f0_id0
+(s0t0: sort0): s1tfx =
+let
+//
+val
+loc0 = s0t0.lctn()
+//
+val
+S0Tid0(tid) = s0t0.node()
+//
+val
+tok0 = trans01_i0dnt(tid)
+//
+val sym0 =
+(
+case-
+tok0.node() of
+|
+T_IDALP
+( nam ) => symbl(nam)
+|
+T_IDSYM
+( nam ) => symbl(nam)): sym_t
+//
+val opt1 =
+(
+if
+(
+sym0=ADD_symbl)
+then
+optn_vt_cons
+(postplus_fixty) else
+(
+if
+(
+sym0=SUB_symbl)
+then
+optn_vt_cons
+(postmnus_fixty) else
+the_fxtyenv_search(sym0))
+) : fixtyopt_vt // end(val(opt))
+//
+val
+s1t0 = sort1(loc0, S1Tid0(sym0))
+//
+in//let
+//
+case+ opt1 of
+| ~
+optn_vt_nil() =>
+FXITMatm(s1t0)
+| ~
+optn_vt_cons(fxty) =>
+(
+case+ fxty of
+|
+FIXTYnon() => FXITMatm(s1t0)
+|
+_(* else *) => FXITMopr(s1t0, fxty))
+//
+end (*let*) // end of [f0_id0(s0t0)]
 //
 and
 f0_int
