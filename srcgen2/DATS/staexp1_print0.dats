@@ -399,6 +399,14 @@ print
 ("S1Et2up(",tknd,";",ses1,";",ses2,")")
 //
 |
+S1Er1cd(tknd, lses) =>
+print("S1Er1cd(",tknd,";",lses,")")
+|
+S1Er2cd(tknd, lss1, lss2) =>
+print
+("S1Er2cd(",tknd,";",lss1,";",lss2,")")
+//
+|
 S1Euni0(s1qs) =>
 print("S1Euni0(",s1qs,")")
 |

@@ -108,13 +108,17 @@ FIL = "./filpath.sats"
 //
 #typedef sort0 = $S0E.sort0
 #typedef s0exp = $S0E.s0exp
+#typedef l0s0e = $S0E.l0s0e
 #typedef sort1 = $S1E.sort1
 #typedef s1exp = $S1E.s1exp
+#typedef l0s1e = $S1E.l0s1e
 //
 #typedef sort0lst = $S0E.sort0lst
 #typedef s0explst = $S0E.s0explst
+#typedef l0s0elst = $S0E.l0s0elst
 #typedef sort1lst = $S1E.sort1lst
 #typedef s1explst = $S1E.s1explst
+#typedef l0s1elst = $S1E.l0s1elst
 //
 #typedef sort0opt = $S0E.sort0opt
 #typedef s0expopt = $S0E.s0expopt
@@ -249,11 +253,14 @@ trans01_g0explst: (g0explst)->g1explst
 //
 fun trans01_sort0: (sort0)->sort1
 fun trans01_s0exp: (s0exp)->s1exp
+fun trans01_l0s0e: (l0s0e)->l0s1e
 //
 fun
 trans01_sort0lst: (sort0lst)->sort1lst
 fun
 trans01_s0explst: (s0explst)->s1explst
+fun
+trans01_l0s0elst: (l0s0elst)->l0s1elst
 //
 fun
 trans01_sort0opt: (sort0opt)->sort1opt
