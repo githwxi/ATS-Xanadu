@@ -36,6 +36,22 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+//
+#staload
+SYM = "./xsymbol.sats"
+#typedef sym_t = $SYM.sym_t
+//
+#staload
+MAP = "./xsymmap.sats"
+#vwtpdef
+symmap(itm:tbox) = $MAP.symmap(itm)
+//
+(* ****** ****** *)
+
+#absvwtp
+symenv_vwtp(itm:tbox)
+#vwtpdef
+symenv(itm:tbox) = symenv_vwtp(itm)
 
 (* ****** ****** *)
 
