@@ -48,6 +48,14 @@ fun
 <map:t0>
 <key:t0>
 <itm:t0>
+gmap_make_nil(): map
+//
+(* ****** ****** *)
+//
+fun
+<map:t0>
+<key:t0>
+<itm:t0>
 gmap_search_opt
 (kxs: map, key: key): optn_vt(itm)
 //
@@ -100,6 +108,11 @@ fun
 <itm:t0>
 gmap_strmize_itm(map): strm_vt(key)
 (* ****** ****** *)
+fun
+<map:t0>
+<key:t0>
+<itm:t0>
+gmap_unstrm(strm(@(key, itm))): map
 fun
 <map:t0>
 <key:t0>
