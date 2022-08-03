@@ -56,6 +56,12 @@ fun
 <map:t0>
 <key:t0>
 <itm:t0>
+gmap_search
+(kxs: map, key: key): itm
+fun
+<map:t0>
+<key:t0>
+<itm:t0>
 gmap_search_opt
 (kxs: map, key: key): optn_vt(itm)
 //
