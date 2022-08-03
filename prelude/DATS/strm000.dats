@@ -334,6 +334,71 @@ strmcon_vt_cons
 } (*where*)//end-of-[strm_map_vt(xs)]
 
 (* ****** ****** *)
+
+#impltmp
+<x0>(*tmp*)
+strm_scanl
+(   xs   ) =
+strm_vt2t
+(strm_scanl_vt<x0>(xs))
+
+(* ****** ****** *)
+
+#impltmp
+<x0>(*tmp*)
+strm_scanl_vt
+  (xs) =
+(
+  auxmain(xs)) where
+{
+fun
+auxmain
+( xs
+: strm(x0))
+: strm_vt(x0) =
+$llazy
+(
+case+
+$eval(xs) of
+|
+strmcon_nil() =>
+strmcon_vt_nil()
+|
+strmcon_cons(x0, xs) =>
+!(strm_xscanl_vt(xs, x0))
+)
+} (*where*)//end-of-[strm_scanl_vt(xs)]
+
+(* ****** ****** *)
+
+#impltmp
+<x0><r0>
+strm_xscanl_vt
+  (xs, r0) =
+(
+auxmain(r0, xs)) where
+{
+fun
+auxmain(r0, xs) =
+$llazy
+(
+case+
+$eval(xs) of
+|
+strmcon_nil() =>
+strmcon_vt_sing(r0)
+|
+strmcon_cons(x0, xs) =>
+let
+val r1 =
+xscanl$fopr<x0><r0>(r0, x0)
+in//let
+strmcon_vt_cons(r0, auxmain(r1, xs))
+endlet // end of [strmcon_cons]
+)
+}(*where*)//end-of(strm_xscanl_vt(xs,r0))
+
+(* ****** ****** *)
 //
 #impltmp
 <x0>(*tmp*)
