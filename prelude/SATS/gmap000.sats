@@ -112,6 +112,11 @@ fun
 <map:t0>
 <key:t0>
 <itm:t0>
+gmap_unlist(list(@(key, itm))): map
+fun
+<map:t0>
+<key:t0>
+<itm:t0>
 gmap_unstrm(strm(@(key, itm))): map
 fun
 <map:t0>
