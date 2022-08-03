@@ -1116,7 +1116,7 @@ g_equal<k0>
 (key, kx1.0)
 then optn_vt_cons(kx1.1) else loop(kxs)
 )
-} (*where*) // end of [gmap_search_opt]
+} (*where*)//end-of-[gmap_search_opt(...)]
 (* ****** ****** *)
 #impltmp
 {k0:t0}
@@ -1128,7 +1128,7 @@ optn_vt_nil(*void*) where
 {
 val () =
 ( kxs := list_cons((key, itm), kxs) )
-} (* end of [gmap_insert_opt] *)
+} (*where*)//end-of-[gmap_insert_opt(...)]
 (* ****** ****** *)
 //
 #impltmp
