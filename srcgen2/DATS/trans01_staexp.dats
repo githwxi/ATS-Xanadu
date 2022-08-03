@@ -943,6 +943,18 @@ val lss2 = trans01_l0s0elst(lss2)
 endlet // end of [S0Elrcd2(_,_,_,_)]
 //
 |
+S0Euni0
+(tbeg,s0qs,tend) =>
+let
+  val
+  s1qs = trans01_s0qualst(s0qs)
+in
+FXITMatm(
+s1exp(s0e0.lctn(), S1Euni0(s1qs))
+)(*FXITMatm*)
+end (*let*) // end of [S0Euni0(...)]
+//
+|
 S0Eanno(s0e1, s0t2) =>
 let
   val loc0 = s0e0.lctn()

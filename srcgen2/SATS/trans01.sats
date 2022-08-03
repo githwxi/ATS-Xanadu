@@ -142,6 +142,11 @@ FIL = "./filpath.sats"
 #typedef t0maglst = $S0E.t0maglst
 #typedef t1maglst = $S1E.t1maglst
 (* ****** ****** *)
+#typedef s0qua = $S0E.s0qua
+#typedef s1qua = $S1E.s1qua
+#typedef s0qualst = $S0E.s0qualst
+#typedef s1qualst = $S1E.s1qualst
+(* ****** ****** *)
 //
 #typedef d0pat = $D0E.d0pat
 #typedef d0exp = $D0E.d0exp
@@ -281,6 +286,9 @@ fun
 trans01_s0maglst: (s0maglst)->s1maglst
 fun
 trans01_t0maglst: (t0maglst)->t1maglst
+(* ****** ****** *)
+fun
+trans01_s0qualst: (s0qualst)->s1qualst
 (* ****** ****** *)
 
 (* HX: transing dynexp *)
