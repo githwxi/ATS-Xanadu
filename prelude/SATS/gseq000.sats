@@ -214,6 +214,15 @@ fun
 <x0:t0>
 gseq_rsearch(xs): x0
 //
+fun
+<xs:t0>
+<x0:t0>
+gseq_search$exn(): x0
+fun
+<xs:t0>
+<x0:t0>
+gseq_rsearch$exn(): x0
+//
 (* ****** ****** *)
 fun
 <xs:t0>
@@ -236,6 +245,13 @@ gseq_get_at
 fun
 <xs:t0>
 <x0:t0>
+gseq_get_at$exn( ): x0
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
 gseq_set_at
 ( xs:
 & xs >> xs
@@ -243,9 +259,22 @@ gseq_set_at
 fun
 <xs:t0>
 <x0:t0>
+gseq_set_at$exn(  ): void
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
 gseq_fset_at
 ( xs: xs
-, i0: nint, x0: x0): xs
+, i0: nint, x0: x0): (xs)
+fun
+<xs:t0>
+<x0:t0>
+gseq_fset_at$exn( ): (xs)
+//
+(* ****** ****** *)
 //
 fun
 <xs:t0>

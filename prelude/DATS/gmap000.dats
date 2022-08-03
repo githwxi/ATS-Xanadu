@@ -91,7 +91,12 @@ val opt =
 gmap_search_opt
 <map><key><itm>(kxs, k0)
 in
-  case- opt of ~optn_cons(x0) => ( x0 )
+case+ opt of
+| ~
+optn_cons(x0) => x0 // found!
+| ~
+optn_nil(x0) => // not found!
+gmap_search$exn<map><key><itm>()
 end (*let*)//end-of[gmap_search(kxs,k0)]
 
 (* ****** ****** *)

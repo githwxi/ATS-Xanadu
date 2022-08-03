@@ -111,6 +111,24 @@ strm_cons(x0, strm_sing(y0))
 //
 #impltmp
 <a>(*tmp*)
+strm_head_raw(xs) =
+strmcon_head_raw<a>(!xs)
+#impltmp
+<a>(*tmp*)
+strm_tail_raw(xs) =
+strmcon_tail_raw<a>(!xs)
+//
+#impltmp
+<a>(*tmp*)
+strmcon_head_raw(xs) = xs.0
+#impltmp
+<a>(*tmp*)
+strmcon_tail_raw(xs) = xs.1
+//
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
 strm_from(x0) =
 (
 auxmain(x0) ) where
@@ -1118,6 +1136,17 @@ gseq_nilq
 {a:t0}
 gseq_consq
 <strm(a)><a> = strm_consq<a>
+(* ****** ****** *)
+//
+#impltmp
+{a:type}
+gseq_head_raw
+<strm(a)><a> = strm_head_raw<a>
+#impltmp
+{a:type}
+gseq_tail_raw
+<strm(a)><a> = strm_tail_raw<a>
+//
 (* ****** ****** *)
 //
 #impltmp

@@ -403,7 +403,11 @@ exists$test<x0>(x1) = g_equal<x0>(x0, x1)
 gseq_search
   (xs) =
 (
-case- opt of
+case+ opt of
+| ~
+optn_vt_nil() =>
+gseq_search$exn
+<xs><x0>( (*void*) )
 | ~
 optn_vt_cons(x0) => x0) where
 {
@@ -416,7 +420,11 @@ opt = gseq_search_opt<xs><x0>(xs)
 gseq_rsearch
   (xs) =
 (
-case- opt of
+case+ opt of
+| ~
+optn_vt_nil() =>
+gseq_rsearch$exn
+<xs><x0>( (*void*) )
 | ~
 optn_vt_cons(x0) => x0) where
 {
@@ -515,7 +523,11 @@ var r0: res = optn_vt_nil((*void*))
 gseq_get_at
   (xs, i0) =
 (
-case- opt of
+case+ opt of
+| ~
+optn_vt_nil() =>
+gseq_get_at$exn
+<xs><x0>( (*void*) )
 | ~
 optn_vt_cons(x0) => x0) where
 {
@@ -531,7 +543,8 @@ opt = gseq_get_at_opt<xs><x0>(xs, i0)
 gseq_fset_at
   (xs, i0, x0) =
 (
-case- opt of
+case+ opt of
+| ~optn_vt_nil(xs) => xs
 | ~optn_vt_cons(xs) => xs
 ) where
 {
