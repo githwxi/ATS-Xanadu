@@ -394,7 +394,7 @@ print("S1El2st(", ses1, ";", ses2 ,")")
 S1Et1up(tknd, s1es) =>
 print("S1Et1up(",tknd,";",s1es,")")
 |
-S1Et2up(tknd, ses1, ses2) =>
+S1Et2up(tknd,ses1,ses2) =>
 print
 ("S1Et2up(",tknd,";",ses1,";",ses2,")")
 //
@@ -402,12 +402,12 @@ print
 S1Er1cd(tknd, lses) =>
 print("S1Er1cd(",tknd,";",lses,")")
 |
-S1Er2cd(tknd, lss1, lss2) =>
+S1Er2cd(tknd,lss1,lss2) =>
 print
 ("S1Er2cd(",tknd,";",lss1,";",lss2,")")
 //
 |
-S1Elam0(smas, tres, s1e1) =>
+S1Elam0(smas,tres,s1e1) =>
 print
 ("S1Elam0(",smas,";",tres,";",s1e1,")")
 //
