@@ -51,6 +51,8 @@ fun
 strxcon_cons_
 (a, strx(a)): strxcon(a)
 //
+(* ****** ****** *)
+//
 fun
 <x0:t0>
 <r0:vt>
@@ -90,6 +92,22 @@ fun
 strm_pair(x1: a, x2: a): strm(a)
 //
 (* ****** ****** *)
+//
+fun
+<a:t0>
+strm_head_raw(strm(a)): a
+fun
+<a:t0>
+strm_tail_raw(strm(a)): strm(a)
+fun
+<a:t0>
+strmcon_head_raw(strmcon(a)): a
+fun
+<a:t0>
+strmcon_tail_raw(strmcon(a)): strm(a)
+//
+(* ****** ****** *)
+//
 (*
 Sun Jul  3 13:01:34 EDT 2022
 *)

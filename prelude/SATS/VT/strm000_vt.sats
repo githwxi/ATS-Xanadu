@@ -418,6 +418,15 @@ strm_vt_mul0(strm_vt(x0)): (x0)
 //
 fun
 <x0:vt>
+strm1_vt_max0(strm_vt(x0)): (x0)
+fun
+<x0:vt>
+strm1_vt_min0(strm_vt(x0)): (x0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
 strm_vt_merge0
 ( xs: strm_vt(x0)
 , ys: strm_vt(x0) ): strm_vt(x0)
