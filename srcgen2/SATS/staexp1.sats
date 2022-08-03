@@ -116,6 +116,9 @@ where
 #typedef t0str = $S0E.t0str
 //
 (* ****** ****** *)
+#typedef i1dntlst = list(token)
+#typedef i0dntlst = $S0E.i0dntlst
+(* ****** ****** *)
 //
 #typedef g0exp = $S0E.g0exp
 //
