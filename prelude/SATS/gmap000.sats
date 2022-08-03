@@ -114,6 +114,11 @@ fun
 <itm:t0>
 gmap_strmize_itm(map): strm_vt(key)
 (* ****** ****** *)
+(*
+HX: For initializing a gmap
+Wed Aug  3 10:20:10 EDT 2022
+*)
+(* ****** ****** *)
 fun
 <map:t0>
 <key:t0>

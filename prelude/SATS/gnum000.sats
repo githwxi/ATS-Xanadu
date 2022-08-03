@@ -144,6 +144,12 @@ fun
 gl_add00(x: ~a, y: ~a): a
 fun
 <a:vt>
+gl_add01(x: ~a, y: !a): a
+fun
+<a:vt>
+gl_add10(x: !a, y: ~a): a
+fun
+<a:vt>
 gl_add11(x: !a, y: !a): a
 
 (* ****** ****** *)
