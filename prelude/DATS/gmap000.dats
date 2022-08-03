@@ -140,5 +140,73 @@ gmap_strmize
 *)
 //
 (* ****** ****** *)
+//
+#impltmp
+<map>
+<key><itm>
+gmap_unstrm(kxs) =
+gmap_unstrm_vt
+<map><key><itm>
+(strm_strmize<(key,itm)>(kxs))
+//
+(* ****** ****** *)
+//
+#impltmp
+<map>
+<key><itm>
+gmap_unlist_vt(kxs) =
+gmap_unstrm_vt
+<map><key><itm>
+(list_vt_strmize<(key,itm)>(kxs))
+//
+(* ****** ****** *)
+//
+#impltmp
+<map>
+<key><itm>
+gmap_unstrm_vt(kxs) =
+let
+val map =
+gmap_make_nil
+<map><key><itm>((*nil*))
+var map = map
+val ( ) = loop(map, kxs) in map
+end where
+{
+//
+#vwtpdef
+kxs = strm_vt@(key,itm)
+//
+fun
+loop
+( map
+: &map >> map
+, kxs
+: strm_vt@(key,itm)): void =
+(
+case+ !kxs of
+| ~
+strmcon_vt_nil() => ()
+| ~
+strmcon_vt_cons(kx1, kxs) =>
+(
+  loop(map, kxs)) where
+{
+val opt =
+gmap_insert_opt
+<map><key><itm>(map, kx1.0, kx1.1)
+val ( ) =
+(
+case+ opt of
+| ~
+optn_vt_nil _ => ( (*void*) )
+| ~
+optn_vt_cons _ => ( (*void*) )): void
+} (*where*) // end of [strmcon_vt_cons]
+)
+//
+} (*where*) // end of [gmap_unstrm_vt(kxs)]
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gmap000.dats] *)

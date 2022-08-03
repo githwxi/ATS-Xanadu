@@ -1059,9 +1059,19 @@ For gmap-operations
 #impltmp
 {k0:t0}
 {x0:t0}
+gmap_make_nil
+<list@(k0,x0)><k0><x0>
+  ((*void*)) =
+(
+  list_nil( (*void*) )
+)
+(* ****** ****** *)
+#impltmp
+{k0:t0}
+{x0:t0}
 gmap_keyq
 <list@(k0,x0)><k0><x0>
-(kxs, key) =
+  (kxs, key) =
 (
   loop(kxs)) where
 {
