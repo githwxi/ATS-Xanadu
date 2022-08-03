@@ -93,6 +93,9 @@ FIL = "./filpath.sats"
 #typedef t1str = $S1E.t1str
 //
 (* ****** ****** *)
+#typedef i0dntlst = $S0E.i0dntlst
+#typedef i1dntlst = $S1E.i1dntlst
+(* ****** ****** *)
 //
 #typedef g0nam = $S0E.g0nam
 #typedef g0exp = $S0E.g0exp
@@ -245,6 +248,9 @@ fun trans01_t0chr: (t0chr)->t1chr
 fun trans01_t0flt: (t0flt)->t1flt
 fun trans01_t0str: (t0str)->t1str
 (* ****** ****** *)
+fun
+trans01_i0dntlst: (i0dntlst)->i1dntlst
+(* ****** ****** *)
 //
 fun trans01_g0nam: (g0nam)->g1nam
 fun trans01_g0exp: (g0exp)->g1exp
@@ -278,6 +284,7 @@ fun trans01_s0arg: (s0arg)->s1arg
 fun trans01_s0mag: (s0mag)->s1mag
 fun trans01_t0arg: (t0arg)->t1arg
 fun trans01_t0mag: (t0mag)->t1mag
+fun trans01_s0qua: (s0qua)->s1qua
 //
 (* ****** ****** *)
 fun

@@ -94,6 +94,9 @@ _(*XFIXITY*) = "./xfixity.dats"
 #symload lctn with s0mag_get_lctn
 #symload node with s0mag_get_node
 (* ****** ****** *)
+#symload lctn with s0qua_get_lctn
+#symload node with s0qua_get_node
+(* ****** ****** *)
 #symload s1mag with s1mag_make_node
 (* ****** ****** *)
 #symload lctn with s0exp_get_lctn
@@ -1153,6 +1156,35 @@ end (*let*) // end of [trans01_s0mag(s0ma)]
 (* ****** ****** *)
 
 #implfun
+trans01_s0qua
+  (s0q0) = let
+//
+val
+loc0 = s0q0.lctn()
+//
+in//let
+//
+case+
+s0q0.node() of
+|
+S0QUAprop(s0e1) =>
+s1qua
+( loc0
+, S1QUAprop(trans01_s0exp(s0e1)))
+|
+S0QUAvars(sids, topt) =>
+s1qua
+( loc0
+, S1QUAvars(sids, topt)) where
+{
+val sids = trans01_i0dntlst(sids)
+val topt = trans01_sort0opt(topt) }
+//
+end (*let*) // end of [trans01_s0qua(s0q0)]
+
+(* ****** ****** *)
+
+#implfun
 trans01_g0namlst
   (g0ns) =
 (
@@ -1227,6 +1259,19 @@ list_map
 #impltmp
 map$fopr<s0mag><s1mag> = trans01_s0mag
 } (*where*) // end of [trans01_s0maglst(smas)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_s0qualst
+  (s0qs) =
+(
+list_map
+<s0qua><s1qua>(s0qs)) where
+{
+#impltmp
+map$fopr<s0qua><s1qua> = trans01_s0qua
+} (*where*) // end of [trans01_squalst(s0qs)]
 
 (* ****** ****** *)
 
