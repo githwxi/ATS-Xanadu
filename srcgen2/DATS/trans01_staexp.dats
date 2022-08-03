@@ -902,6 +902,46 @@ val ses2 = trans01_s0explst(ses2)
 }
 //
 endlet // end of [S0Eltup1(_,_,_,_)]
+//
+|
+S0Ercd2
+(tknd
+,topt,lss1,tend) =>
+//
+let
+//
+val loc0 = s0e0.lctn()
+//
+in//let
+//
+case+ tend of
+|
+l0s0e_RBRACE_cons0
+(      tok       ) =>
+FXITMatm
+(
+s1exp
+( loc0
+, S1Er1cd(tknd,lss1))) where
+{
+  val lss1 = trans01_l0s0elst(lss1)
+}
+|
+l0s0e_RBRACE_cons1
+(tbeg, lss2, tend) =>
+FXITMatm
+(
+s1exp
+( loc0
+, S1Er2cd
+  (tknd, lss1, lss2))) where
+{
+val lss1 = trans01_l0s0elst(lss1)
+val lss2 = trans01_l0s0elst(lss2)
+}
+//
+endlet // end of [S0Elrcd2(_,_,_,_)]
+//
 |
 S0Eanno(s0e1, s0t2) =>
 let

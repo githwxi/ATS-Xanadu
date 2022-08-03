@@ -614,9 +614,9 @@ s1exp_node =
   , s1explst(*prop*), s1explst(*type*))
 //
 | S1Er1cd of // HX: record1
-  ( int, l0s1elst(*prop/type*))
+  ( token, l0s1elst(*prop/type*))
 | S1Er2cd of // HX: record2
-  ( int(*kind*)
+  ( token(*kind*)
   , l0s1elst(*prop*), l0s1elst(*type*))
 //
 | S1Euni0 of (s1qualst)
