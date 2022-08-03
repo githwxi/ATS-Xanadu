@@ -391,12 +391,12 @@ S1El2st(ses1, ses2) =>
 print("S1El2st(", ses1, ";", ses2 ,")")
 //
 |
-S1Et1up(knd0, s1es) =>
-print("S1Et1up(",knd0,";",s1es,")")
+S1Et1up(tknd, s1es) =>
+print("S1Et1up(",tknd,";",s1es,")")
 |
-S1Et2up(knd0, ses1, ses2) =>
+S1Et2up(tknd, ses1, ses2) =>
 print
-("S1Et2up(",knd0,";",ses1,";",ses2,")")
+("S1Et2up(",tknd,";",ses1,";",ses2,")")
 //
 |
 S1Euni0(s1qs) =>

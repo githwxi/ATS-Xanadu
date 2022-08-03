@@ -608,9 +608,9 @@ s1exp_node =
   (s1explst, s1explst) // temp-list
 //
 | S1Et1up of // HX: tuple1
-  ( int, s1explst(*prop/type*))
+  ( token, s1explst(*prop/type*))
 | S1Et2up of // HX: tuple2
-  ( int(*kind*)
+  ( token(*kind*)
   , s1explst(*prop*), s1explst(*type*))
 //
 | S1Er1cd of // HX: record1

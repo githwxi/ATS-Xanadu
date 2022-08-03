@@ -865,6 +865,44 @@ val ses2 = trans01_s0explst(ses2)
 endlet // end of [ S0Elpar(_,_,_) ]
 //
 |
+S0Etup1
+(tknd
+,topt,ses1,tend) =>
+//
+let
+//
+val loc0 = s0e0.lctn()
+//
+in//let
+//
+case+ tend of
+|
+s0exp_RPAREN_cons0
+(      tok       ) =>
+FXITMatm
+(
+s1exp
+( loc0
+, S1Et1up(tknd,ses1))) where
+{
+  val ses1 = trans01_s0explst(ses1)
+}
+|
+s0exp_RPAREN_cons1
+(tbeg, ses2, tend) =>
+FXITMatm
+(
+s1exp
+( loc0
+, S1Et2up
+  (tknd, ses1, ses2))) where
+{
+val ses1 = trans01_s0explst(ses1)
+val ses2 = trans01_s0explst(ses2)
+}
+//
+endlet // end of [S0Eltup1(_,_,_,_)]
+|
 S0Eanno(s0e1, s0t2) =>
 let
   val loc0 = s0e0.lctn()
