@@ -51,67 +51,17 @@ SYM = "./xsymbol.sats"
 //
 (* ****** ****** *)
 //
+#abstbox
+topmap_tbox(x0:t0) // ptr
+#typedef
+topmap(x0:t0) = topmap_tbox(x0)
+//
+(* ****** ****** *)
+//
 #absvtbx
-symmap_vtbx(x0:t0) // ptr
+stkmap_vtbx(x0:t0) // ptr
 #vwtpdef
-symmap(x0:t0) = symmap_vtbx(x0)
-//
-(* ****** ****** *)
-//
-fun
-symmap_make_nil
-{x0:type}((*void*)): symmap(x0)
-//
-(* ****** ****** *)
-//
-fun
-symmap_free
-{x0:type}(map: symmap(x0)): void
-//
-(* ****** ****** *)
-//
-fun
-symmap_search
-  {x0:type}
-(
-  kxs:
-! symmap(x0),k0:sym_t): optn_vt(x0)
-//
-(* ****** ****** *)
-//
-fun
-symmap_insert
-  {x0:type}
-( kxs:
-& symmap(x0),k0:sym_t,x0:x0): void
-//
-(* ****** ****** *)
-
-fun
-symmap_insert2
-  {x0:type}
-( kxs:
-& symmap(x0)
-, k0: sym_t, x0: x0, mix:(x0,x0)->x0
-) : void // end of [ symmap_insert2 ]
-
-(* ****** ****** *)
-//
-fun
-symmap_joinwth
-  {x0:type}
-( m1: &symmap(x0)
-, m2: !symmap(x0)): void // end-of-fun
-//
-(* ****** ****** *)
-//
-fun
-symmap_fprint_f2np
-  {x0:type}
-( out: FILR
-, map:
-! symmap(x0)
-, fpr: (FILR,x0)->void): void//end(fun)
+stkmap(x0:t0) = stkmap_vtbx(x0)
 //
 (* ****** ****** *)
 

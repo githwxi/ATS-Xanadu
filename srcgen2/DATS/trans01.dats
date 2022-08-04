@@ -70,8 +70,13 @@ val source =
 d0parsed_get_source(dpar)
 val parsed =
 d0parsed_get_parsed(dpar)
+//
+val env0 = tr01env_make_nil()
+//
 val parsed =
-trans01_d0eclistopt(parsed)
+trans01_d0eclistopt(env0, parsed)
+//
+val (  ) = tr01env_free_top(env0)
 //
 in//let
 d1parsed(stadyn,nerror,source,parsed)

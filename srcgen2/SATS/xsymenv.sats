@@ -39,20 +39,29 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #staload
 SYM = "./xsymbol.sats"
-#typedef sym_t = $SYM.sym_t
-//
 #staload
 MAP = "./xsymmap.sats"
+//
+#typedef sym_t = $SYM.sym_t
+//
+#typedef
+topmap(itm:t0) = $MAP.topmap(itm)
 #vwtpdef
-symmap(itm:tbox) = $MAP.symmap(itm)
+stkmap(itm:t0) = $MAP.stkmap(itm)
 //
 (* ****** ****** *)
 
 #absvwtp
-symenv_vwtp(itm:tbox)
+symenv_vtbx(itm:t0)
 #vwtpdef
-symenv(itm:tbox) = symenv_vwtp(itm)
+symenv(itm:t0) = symenv_vtbx(itm)
 
+(* ****** ****** *)
+//
+fun
+symenv_make_nil
+  {itm:tbox}( (*void*) ) : symenv(itm)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xats_xsymenv.sats] *)
