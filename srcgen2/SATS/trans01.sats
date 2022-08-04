@@ -175,48 +175,30 @@ d1parsed_from_trans
 (  dpar: d0parsed  ): d1parsed
 //
 (* ****** ****** *)
-//
-fun
-the_fxtyenv_search
-(key: sym_t): fixtyopt_vt
-fun
-the_fxtyenv_insert
-(key: sym_t, itm: fixty): void
-//
-(* ****** ****** *)
-//
-#absview
-fxtyenv_view
-#viewdef
-fxtyenv = fxtyenv_view
-//
-fun
-the_fxtyenv_pop
-( fxtyenv
-| (*none*) )
-: $MAP.symmap(fixty)
-fun
-the_fxtyenv_popfree
-( fxtyenv | (*none*) ): void
-//
-fun
-the_fxtyenv_pushnil
-( (*void*) ):(fxtyenv | void)
-//
+#absvtbx tr01env_vtbx
+#vwtpdef tr01env = tr01env_vtbx
 (* ****** ****** *)
 //
 fun
-the_fxtyenv_locjoin
-(
-  pf1: fxtyenv
-, pf2: fxtyenv | (*none*)
-) : void // end of [the_fxtyenv_locjoin]
+tr01env_search
+( env:
+! tr01env, key: sym_t): fixtyopt_vt
+fun
+tr01env_insert
+( env:
+! tr01env, key: sym_t, itm: fixty): void
 //
-(* ****** ****** *)
+fun
+tr01env_make_nil((*void*)): tr01env
+fun
+tr01env_free_top(env: ~tr01env): void
 //
-fun // p: pervasive
-the_fxtyenv_ptopmrg
-( map: $MAP.symmap(fixty) ): void
+fun
+tr01env_popfree( env: !tr01env ): void
+fun
+tr01env_pushnil( env: !tr01env ): void
+fun
+tr01env_locjoin( env: !tr01env ): void
 //
 (* ****** ****** *)
 
@@ -242,73 +224,104 @@ fun token2dstr: token -> string
 (* HX: transing staexp *)
 
 (* ****** ****** *)
-fun trans01_i0dnt: (i0dnt)->i1dnt
-fun trans01_t0int: (t0int)->t1int
-fun trans01_t0chr: (t0chr)->t1chr
-fun trans01_t0flt: (t0flt)->t1flt
-fun trans01_t0str: (t0str)->t1str
+fun trans01_i0dnt:
+  (!tr01env, i0dnt)->i1dnt
+fun trans01_t0int:
+  (!tr01env, t0int)->t1int
+fun trans01_t0chr:
+  (!tr01env, t0chr)->t1chr
+fun trans01_t0flt:
+  (!tr01env, t0flt)->t1flt
+fun trans01_t0str:
+  (!tr01env, t0str)->t1str
 (* ****** ****** *)
 fun
-trans01_i0dntlst: (i0dntlst)->i1dntlst
+trans01_i0dntlst:
+  (!tr01env, i0dntlst)->i1dntlst
 (* ****** ****** *)
 //
-fun trans01_g0nam: (g0nam)->g1nam
-fun trans01_g0exp: (g0exp)->g1exp
+fun trans01_g0nam:
+  (!tr01env, g0nam)->g1nam
+fun trans01_g0exp:
+  (!tr01env, g0exp)->g1exp
 //
 fun
-trans01_g0namlst: (g0namlst)->g1namlst
+trans01_g0namlst:
+  (!tr01env, g0namlst)->g1namlst
 fun
-trans01_g0explst: (g0explst)->g1explst
-//
-(* ****** ****** *)
-//
-fun trans01_sort0: (sort0)->sort1
-fun trans01_s0exp: (s0exp)->s1exp
-fun trans01_l0s0e: (l0s0e)->l0s1e
-//
-fun
-trans01_sort0lst: (sort0lst)->sort1lst
-fun
-trans01_s0explst: (s0explst)->s1explst
-fun
-trans01_l0s0elst: (l0s0elst)->l0s1elst
-//
-fun
-trans01_sort0opt: (sort0opt)->sort1opt
-fun
-trans01_s0expopt: (s0expopt)->s1expopt
+trans01_g0explst:
+  (!tr01env, g0explst)->g1explst
 //
 (* ****** ****** *)
 //
-fun trans01_s0arg: (s0arg)->s1arg
-fun trans01_s0mag: (s0mag)->s1mag
-fun trans01_t0arg: (t0arg)->t1arg
-fun trans01_t0mag: (t0mag)->t1mag
-fun trans01_s0qua: (s0qua)->s1qua
+fun trans01_sort0:
+  (!tr01env, sort0)->sort1
+fun trans01_s0exp:
+  (!tr01env, s0exp)->s1exp
+fun trans01_l0s0e:
+  (!tr01env, l0s0e)->l0s1e
+//
+fun
+trans01_sort0lst:
+  (!tr01env, sort0lst)->sort1lst
+fun
+trans01_s0explst:
+  (!tr01env, s0explst)->s1explst
+fun
+trans01_l0s0elst:
+  (!tr01env, l0s0elst)->l0s1elst
+//
+fun
+trans01_sort0opt:
+  (!tr01env, sort0opt)->sort1opt
+fun
+trans01_s0expopt:
+  (!tr01env, s0expopt)->s1expopt
+//
+(* ****** ****** *)
+//
+fun trans01_s0arg:
+  (!tr01env, s0arg)->s1arg
+fun trans01_s0mag:
+  (!tr01env, s0mag)->s1mag
+fun trans01_t0arg:
+  (!tr01env, t0arg)->t1arg
+fun trans01_t0mag:
+  (!tr01env, t0mag)->t1mag
+fun trans01_s0qua:
+  (!tr01env, s0qua)->s1qua
 //
 (* ****** ****** *)
 fun
-trans01_s0arglst: (s0arglst)->s1arglst
+trans01_s0arglst:
+  (!tr01env, s0arglst)->s1arglst
 fun
-trans01_s0maglst: (s0maglst)->s1maglst
+trans01_s0maglst:
+  (!tr01env, s0maglst)->s1maglst
 fun
-trans01_t0maglst: (t0maglst)->t1maglst
+trans01_t0maglst:
+  (!tr01env, t0maglst)->t1maglst
 (* ****** ****** *)
 fun
-trans01_s0qualst: (s0qualst)->s1qualst
+trans01_s0qualst:
+  (!tr01env, s0qualst)->s1qualst
 (* ****** ****** *)
 
 (* HX: transing dynexp *)
 
 (* ****** ****** *)
 //
-fun trans01_d0pat: (d0pat)->d1pat
-fun trans01_d0exp: (d0exp)->d1exp
+fun trans01_d0pat:
+  (!tr01env, d0pat)->d1pat
+fun trans01_d0exp:
+  (!tr01env, d0exp)->d1exp
 //
 fun
-trans01_d0patlst: (d0patlst)->d1patlst
+trans01_d0patlst:
+  (!tr01env, d0patlst)->d1patlst
 fun
-trans01_d0explst: (d0explst)->d1explst
+trans01_d0explst:
+  (!tr01env, d0explst)->d1explst
 //
 (* ****** ****** *)
 
@@ -317,17 +330,20 @@ trans01_d0explst: (d0explst)->d1explst
 (* ****** ****** *)
 //
 fun
-trans01_d0ecl: (d0ecl)->d1ecl
+trans01_d0ecl:
+  (!tr01env, d0ecl)->d1ecl
 //
 fun
-trans01_d0eclist: (d0eclist)->d1eclist
+trans01_d0eclist:
+  (!tr01env, d0eclist)->d1eclist
 (* ****** ****** *)
 //
 #typedef d0eclistopt = optn(d0eclist)
 #typedef d1eclistopt = optn(d1eclist)
 //
 fun
-trans01_d0eclistopt: (d0eclistopt)->d1eclistopt
+trans01_d0eclistopt:
+  (!tr01env, d0eclistopt)->d1eclistopt
 //
 (* ****** ****** *)
 

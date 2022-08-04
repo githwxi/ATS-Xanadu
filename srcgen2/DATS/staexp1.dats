@@ -58,7 +58,14 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
+#staload "./../SATS/staexp0.sats"
 #staload "./../SATS/staexp1.sats"
+(* ****** ****** *)
+#symload lctn with sort0_get_lctn
+#symload node with sort0_get_node
+(* ****** ****** *)
+#symload lctn with s0exp_get_lctn
+#symload node with s0exp_get_node
 (* ****** ****** *)
 
 local
