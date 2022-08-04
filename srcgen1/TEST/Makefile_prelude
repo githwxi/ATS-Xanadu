@@ -67,6 +67,9 @@ all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/grasn00.sats
 
 all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/genv000.sats
+
+all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/optn000.sats
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/list000.sats
@@ -137,6 +140,9 @@ all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gmap000.dats
 all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gseqn00.dats
+
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/genv000.dats
 
 all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/arrn000.dats

@@ -6,11 +6,11 @@
 
 (*
 #staload
-"./../SATS/list.sats"
+"./../SATS/list000.sats"
 *)
 (*
 #staload
-"./../SATS/gseq.sats"
+"./../SATS/gseq000.sats"
 *)
 
 (* ****** ****** *)
