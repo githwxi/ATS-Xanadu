@@ -76,10 +76,12 @@ val env0 = tr01env_make_nil()
 val parsed =
 trans01_d0eclistopt(env0, parsed)
 //
+in//let
+let
 val (  ) = tr01env_free_top(env0)
-//
 in//let
 d1parsed(stadyn,nerror,source,parsed)
+end
 end (*let*) // end of [d1parsed_preadx0(dpar)]
 
 (* ****** ****** *)

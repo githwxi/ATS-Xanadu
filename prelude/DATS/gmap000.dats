@@ -93,10 +93,11 @@ gmap_search_opt
 in
 case+ opt of
 | ~
-optn_cons(x0) => x0 // found!
+optn_vt_nil() =>
+gmap_search$exn
+<map><key><itm>((*void*))
 | ~
-optn_nil(x0) => // not found!
-gmap_search$exn<map><key><itm>()
+optn_vt_cons(x0) => ( x0 ) // found!
 end (*let*)//end-of[gmap_search(kxs,k0)]
 
 (* ****** ****** *)
