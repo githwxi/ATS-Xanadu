@@ -39,34 +39,33 @@ UN =
 <x0>
 <r0>
 <e1>
-gseq_foldl_env1
-( xs, r0, env ) =
+gseq_foldl_e1nv
+( xs, r0, e1 ) =
 (
 gseq_foldl
 <xs>
 <x0>
 <r0>(xs, r0)) where
 {
-val env =
-$UN.datacopy( env )
+val e1 =
+$UN.datacopy( e1 )
 #impltmp
 foldl$fopr<x0>(r0, x0) =
 let
 //
-val env =
-$UN.castlin10{e1}(env)
+val e1 =
+$UN.castlin10{e1}(e1)
 val res =
-foldl_env1$fopr
-< x0><r0 >< e1>(r0, x0, env)
+foldl_e1nv$fopr
+< x0><r0 >< e1>(r0, x0, e1)
 //
 in//let
 //
 let
-val
-env = $UN.delinear(env) in res end
+val e1 = $UN.delinear(e1) in res end
 //
 endlet//end-of(foldl$fopr<x0><r0>(x0))
-} (*where*) // end-of-(gseq_foldl_env1)
+} (*where*) // end-of-(gseq_foldl_e1nv)
 
 (* ****** ****** *)
 
@@ -75,34 +74,33 @@ endlet//end-of(foldl$fopr<x0><r0>(x0))
 <x0>
 <r0>
 <e1>
-gseq_foldr_env1
-( xs, r0, env ) =
+gseq_foldr_e1nv
+( xs, r0, e1 ) =
 (
 gseq_foldr
 <xs>
 <x0>
 <r0>(xs, r0)) where
 {
-val env =
-$UN.datacopy( env )
+val e1 =
+$UN.datacopy( e1 )
 #impltmp
 foldr$fopr<x0>(x0, r0) =
 let
 //
-val env =
-$UN.castlin10{e1}(env)
+val e1 =
+$UN.castlin10{e1}(e1)
 val res =
-foldr_env1$fopr
-< x0><r0 >< e1>(x0, r0, env)
+foldr_e1nv$fopr
+< x0><r0 >< e1>(x0, r0, e1)
 //
 in//let
 //
 let
-val
-env = $UN.delinear(env) in res end
+val e1 = $UN.delinear(e1) in res end
 //
 endlet//end-of(foldr$fopr<x0><r0>(x0))
-} (*where*) // end-of-(gseq_foldr_env1)
+} (*where*) // end-of-(gseq_foldr_e1nv)
 
 (* ****** ****** *)
 
@@ -110,31 +108,31 @@ endlet//end-of(foldr$fopr<x0><r0>(x0))
 <xs>
 <x0>
 <e1>
-gseq_forall_env1
-  (xs, env) =
+gseq_forall_e1nv
+  (xs, e1) =
 (
 gseq_forall
 < xs >
 < x0 >( xs )) where
 {
-val env =
-$UN.datacopy( env )
+val e1 =
+$UN.datacopy( e1 )
 #impltmp
 forall$test<x0>(x0) =
 let
 //
-val env =
-$UN.castlin10{e1}(env)
+val e1 =
+$UN.castlin10{e1}(e1)
 val res =
-forall_env1$test<x0><e1>(x0, env)
+forall_e1nv$test<x0><e1>(x0, e1)
 //
 in//let
 //
 let
-val env = $UN.delinear(env) in res end
+val e1 = $UN.delinear(e1) in res end
 //
 endlet // end of [forall$test<x0>(x0)]
-} (*where*) // end-of(gseq_forall_env1)
+} (*where*) // end-of(gseq_forall_e1nv)
 
 (* ****** ****** *)
 
@@ -142,31 +140,31 @@ endlet // end of [forall$test<x0>(x0)]
 <xs>
 <x0>
 <e1>
-gseq_foreach_env1
-  (xs, env) =
+gseq_foreach_e1nv
+  (xs, e1) =
 (
 gseq_foreach
 < xs >
 < x0 >( xs )) where
 {
-val env =
-$UN.datacopy( env )
+val e1 =
+$UN.datacopy( e1 )
 #impltmp
 foreach$work<x0>(x0) =
 let
 //
-val env =
-$UN.castlin10{e1}(env)
+val e1 =
+$UN.castlin10{e1}(e1)
 val res =
-foreach_env1$work<x0>(x0, env)
+foreach_e1nv$work<x0>(x0, e1)
 //
 in//let
 //
 let
-val env = $UN.delinear(env) in res end
+val e1 = $UN.delinear(e1) in res end
 //
 endlet // end of [foreach$work<x0>(x0)]
-} (*where*) // end-of(gseq_foreach_env1)
+} (*where*) // end-of(gseq_foreach_e1nv)
 
 (* ****** ****** *)
 
@@ -175,31 +173,127 @@ endlet // end of [foreach$work<x0>(x0)]
 <x0>
 <y0>
 <e1>
-gseq_map_env1_list
-  (xs, env) =
+gseq_map_e1nv_list
+  (xs, e1) =
 (
 gseq_map_list
 <xs>
 <x0><y0>( xs )) where
 {
-val env =
-$UN.datacopy( env )
+val e1 =
+$UN.datacopy( e1 )
 #impltmp
 map$fopr<x0><y0>(x0) =
 let
 //
-val env =
-$UN.castlin10{e1}(env)
+val e1 =
+$UN.castlin10{e1}(e1)
 val res =
-map_env1$fopr<x0><y0>(x0, env)
+map_e1nv$fopr<x0><y0>(x0, e1)
 //
 in//let
 //
 let
-val env = $UN.delinear(env) in res end
+val e1 = $UN.delinear(e1) in res end
 //
 endlet // end of [map$fopr<x0><y0>(x0)]
-} (*where*) // end-of(gseq_map_env1_list)
+} (*where*) // end-of(gseq_map_e1nv_list)
+
+(* ****** ****** *)
+//
+#impltmp
+<x0>
+<y0>
+<e1>
+list_map_e1nv
+  (xs, e1) =
+(
+list_vt2t
+(list_map_e1nv_vt<x0><y0><e1>(xs, e1))
+)
+//
+#impltmp
+<x0><y0><e1>
+list_map_e1nv_vt
+  (xs, e1) = let
+//
+#vwtpdef
+ys = list_vt(y0)
+#vwtpdef
+ys(i:int) = list_vt(y0, i)
+//
+fnx
+loop
+{i:nat}.<i>.
+( e1: !e1
+, xs:
+  list(x0, i)
+, r0:
+& (?ys) >> ys(i)): void =
+(
+case+ xs of
+|
+list_nil() =>
+(r0 := list_vt_nil())
+|
+list_cons(x0, xs) =>
+let
+val y0 =
+map_e1nv$fopr
+<x0><y0><e1>(x0, e1)
+val () =
+(r0 := list_vt_cons(y0, _))
+in
+  loop(e1, xs, r0.1); $fold(r0)
+end
+) (* end of [loop] *)
+//
+in
+let
+var r0: list_vt(y0) in loop(e1, xs, r0); r0
+end
+end (*let*) // end of [list_map_e1nv_vt(xs,e1)]
+//
+(* ****** ****** *)
+
+#impltmp
+<xs>
+<x0>
+<y0>
+<e1><e2>
+gseq_map_e2nv_list
+  (xs, e1, e2) =
+(
+gseq_map_list
+<xs>
+<x0><y0>( xs )) where
+{
+//
+val e1 =
+$UN.datacopy( e1 )
+val e2 =
+$UN.datacopy( e2 )
+//
+#impltmp
+map$fopr<x0><y0>(x0) =
+let
+//
+val e1 =
+$UN.castlin10{e1}(e1)
+val e2 =
+$UN.castlin10{e2}(e1)
+val res =
+map_e1nv$fopr<x0><y0>(x0, e1, e2)
+//
+in//let
+//
+let
+val e1 = $UN.delinear(e1)
+val e2 = $UN.delinear(e2) in res end
+//
+endlet // end of [map$fopr<x0><y0>(x0)]
+//
+} (*where*) // end-of(gseq_map_e2nv_list)
 
 (* ****** ****** *)
 

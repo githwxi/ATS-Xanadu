@@ -115,18 +115,18 @@ else pstn1_inc1_nc(pos)
 endlet // end of [pstn1_inc1_if]
 
 (* ****** ****** *)
-
+//
 fun
 pstn1_incs_if
 ( pos:
 ! pstn1
 , cs0: strn): void =
-gseq_foreach_env1<strn><char>(cs0, pos) where
+gseq_foreach_e1nv<strn><char>(cs0, pos) where
 {
 #impltmp
-foreach_env1$work<char><pstn1>(chr, pos) = pstn1_inc1_if(pos, chr)
+foreach_e1nv$work<char><pstn1>(chr, pos) = pstn1_inc1_if(pos, chr)
 } (*where*) // end of [pstn1_incs(pstn1, strn)]
-
+//
 (* ****** ****** *)
 
 fun

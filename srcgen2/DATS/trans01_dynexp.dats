@@ -113,11 +113,11 @@ end (*let*) // end of [trans01_d0exp(d0e0)]
 trans01_d0patlst
   (tenv, d0ps) =
 (
-list_map_env1
+list_map_e1nv
 <d0pat><d1pat>(d0ps, tenv)) where
 {
 #impltmp
-map_env1$fopr
+map_e1nv$fopr
 <d0pat><d1pat>
 ( d0p1, tenv ) = trans01_d0pat(tenv, d0p1)
 } (*where*) // end of [trans01_d0patlst(d0ps)]
@@ -128,12 +128,12 @@ map_env1$fopr
 trans01_d0explst
   (tenv, d0es) =
 (
-list_map_env1
-<d0exp><d1pat>(d0es, tenv)) where
+list_map_e1nv
+<d0exp><d1exp>(d0es, tenv)) where
 {
 #impltmp
-map_env1$fopr
-<d0exp><d1pat>
+map_e1nv$fopr
+<d0exp><d1exp>
 ( d0e1, tenv ) = trans01_d0exp(tenv, d0e1)
 } (*where*) // end of [trans01_d0explst(d0es)]
 
