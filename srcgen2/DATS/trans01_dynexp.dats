@@ -66,7 +66,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 
 #implfun
-trans01_d0pat(d0p0) =
+trans01_d0pat
+  (tenv, d0p0) =
 let
 //
 val loc0 = d0p0.lctn()
@@ -87,7 +88,8 @@ end (*let*) // end of [trans01_d0pat(d0p0)]
 (* ****** ****** *)
 
 #implfun
-trans01_d0exp(d0e0) =
+trans01_d0exp
+  (tenv, d0e0) =
 let
 //
 val loc0 = d0e0.lctn()
@@ -109,26 +111,30 @@ end (*let*) // end of [trans01_d0exp(d0e0)]
 
 #implfun
 trans01_d0patlst
-  (d0ps) =
+  (tenv, d0ps) =
 (
-list_map
-<d0pat><d1pat>(d0ps)) where
+list_map_env1
+<d0pat><d1pat>(d0ps, tenv)) where
 {
 #impltmp
-map$fopr<d0pat><d1pat> = trans01_d0pat
+map_env1$fopr
+<d0pat><d1pat>
+( d0p1, tenv ) = trans01_d0pat(tenv, d0p1)
 } (*where*) // end of [trans01_d0patlst(d0ps)]
 
 (* ****** ****** *)
 
 #implfun
 trans01_d0explst
-  (d0es) =
+  (tenv, d0es) =
 (
-list_map
-<d0exp><d1exp>(d0es)) where
+list_map_env1
+<d0exp><d1pat>(d0es, tenv)) where
 {
 #impltmp
-map$fopr<d0exp><d1exp> = trans01_d0exp
+map_env1$fopr
+<d0exp><d1pat>
+( d0e1, tenv ) = trans01_d0exp(tenv, d0e1)
 } (*where*) // end of [trans01_d0explst(d0es)]
 
 (* ****** ****** *)
