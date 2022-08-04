@@ -664,7 +664,8 @@ strmcon_vt_cons(x0, auxmain(xs))
 <x0><y0>
 list_map(xs) =
 (
-list_vt2t(list_map_vt(xs))
+list_vt2t
+(list_map_vt<x0><y0>(xs))
 )
 //
 #impltmp
@@ -712,7 +713,8 @@ end (*let*) // end of [list_map_vt(xs)]
 <x0><y0>
 list_maprev(xs) =
 (
-list_vt2t(list_maprev_vt(xs))
+list_vt2t
+(list_maprev_vt<x0><y0>(xs))
 )
 //
 #impltmp
