@@ -50,7 +50,8 @@ gseq_foldl
 val e1 =
 $UN.datacopy( e1 )
 #impltmp
-foldl$fopr<x0>(r0, x0) =
+foldl$fopr
+< x0><r0 >(r0, x0) =
 let
 //
 val e1 =
@@ -85,7 +86,8 @@ gseq_foldr
 val e1 =
 $UN.datacopy( e1 )
 #impltmp
-foldr$fopr<x0>(x0, r0) =
+foldr$fopr
+< x0><r0 >(x0, r0) =
 let
 //
 val e1 =

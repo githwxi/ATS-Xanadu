@@ -18,6 +18,8 @@ ATS3_XANADU_prelude/DATS
 #staload _ = "./../DATS/gfor000.dats"
 #staload _ = "./../DATS/gfun000.dats"
 (* ****** ****** *)
+#staload _ = "./../DATS/genv000.dats"
+(* ****** ****** *)
 #staload _ = "./../DATS/bool000.dats"
 #staload _ = "./../DATS/char000.dats"
 (* ****** ****** *)
