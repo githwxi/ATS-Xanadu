@@ -75,7 +75,6 @@ fun
 map_e1nv$fopr
 (x0: x0, e1: !e1): (y0)
 //
-//
 fun
 <x0:t0>
 <y0:vt>
