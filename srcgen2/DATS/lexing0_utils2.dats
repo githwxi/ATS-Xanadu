@@ -124,7 +124,7 @@ pstn1_incs_if
 gseq_foreach_e1nv<strn><char>(cs0, pos) where
 {
 #impltmp
-foreach_e1nv$work<char><pstn1>(chr, pos) = pstn1_inc1_if(pos, chr)
+foreach$work_e1nv<char><pstn1>(chr, pos) = pstn1_inc1_if(pos, chr)
 } (*where*) // end of [pstn1_incs(pstn1, strn)]
 //
 (* ****** ****** *)

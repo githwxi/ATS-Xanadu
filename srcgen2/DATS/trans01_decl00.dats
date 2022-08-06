@@ -75,7 +75,7 @@ ATS_PACKNAME
 
 #implfun
 trans01_d0ecl
-  (d0cl) = let
+(tenv, d0cl) = let
 //
 // (*
 val
@@ -90,14 +90,26 @@ in//let
 case+
 d0cl.node() of
 //
-| D0Cstatic _ => f0_static(d0cl)
-| D0Cextern _ => f0_extern(d0cl)
+|
+D0Cstatic _ =>
+f0_static(tenv, d0cl)
+|
+D0Cextern _ =>
+f0_extern(tenv, d0cl)
 //
-| D0Cabssort _ => f0_abssort(d0cl)
-| D0Cstacst0 _ => f0_stacst0(d0cl)
+|
+D0Cabssort _ =>
+f0_abssort(tenv, d0cl)
+|
+D0Cstacst0 _ =>
+f0_stacst0(tenv, d0cl)
 //
-| D0Csortdef _ => f0_sortdef(d0cl)
-| D0Csexpdef _ => f0_sexpdef(d0cl)
+|
+D0Csortdef _ =>
+f0_sortdef(tenv, d0cl)
+|
+D0Csexpdef _ =>
+f0_sexpdef(tenv, d0cl)
 //
 |
 _ (*otherwise*) => d1ecl_none1(d0cl)
@@ -108,7 +120,9 @@ end where
 //
 fun
 f0_static
-(d0cl: d0ecl): d1ecl =
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
 let
 //
 val loc0 = d0cl.lctn()
@@ -117,7 +131,8 @@ val-
 D0Cstatic
 (tknd, dcl1) = d0cl.node()
 //
-val dcl1 = trans01_d0ecl(dcl1)
+val
+dcl1 = trans01_d0ecl(tenv, dcl1)
 //
 in
 d1ecl(loc0, D1Cstatic(tknd, dcl1))
@@ -125,7 +140,9 @@ end (* let *) // end of [f0_static]
 //
 fun
 f0_extern
-(d0cl: d0ecl): d1ecl =
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
 let
 //
 val loc0 = d0cl.lctn()
@@ -134,7 +151,8 @@ val-
 D0Cextern
 (tknd, dcl1) = d0cl.node()
 //
-val dcl1 = trans01_d0ecl(dcl1)
+val
+dcl1 = trans01_d0ecl(tenv, dcl1)
 //
 in
 d1ecl(loc0, D1Cextern(tknd, dcl1))
@@ -144,7 +162,9 @@ end (* let *) // end of [f0_extern]
 
 fun
 f0_abssort
-(d0cl: d0ecl): d1ecl =
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
 let
 //
 val loc0 = d0cl.lctn()
@@ -153,7 +173,8 @@ val-
 D0Cabssort
 (tknd, tid0) = d0cl.node()
 //
-val tid0 = trans01_i0dnt(tid0)
+val
+tid0 = trans01_i0dnt(tenv, tid0)
 //
 in
 d1ecl(loc0, D1Cabssort(tknd, tid0))
@@ -163,7 +184,9 @@ end // end of [f0_abssort]
 
 fun
 f0_stacst0
-(d0cl: d0ecl): d1ecl =
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
 let
 //
 val loc0 = d0cl.lctn()
@@ -174,12 +197,15 @@ D0Cstacst0
 ,sid0, tmas
 ,tcln, s0t1) = d0cl.node()
 //
-val sid0 =
-  trans01_i0dnt(sid0)
-val tmas =
-  trans01_t0maglst(tmas)
+val
+sid0 =
+trans01_i0dnt(tenv, sid0)
+val
+tmas =
+trans01_t0maglst(tenv, tmas)
 //
-val s1t1 = trans01_sort0(s0t1)
+val
+s1t1 = trans01_sort0(tenv, s0t1)
 //
 in
 d1ecl_make_node
@@ -191,7 +217,9 @@ end // end of [f0_stacst0]
 
 fun
 f0_sortdef
-(d0cl: d0ecl): d1ecl =
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
 let
 //
 val-
@@ -200,7 +228,8 @@ D0Csortdef
 , tid0
 , teq1, stdf) = d0cl.node()
 //
-val tid0 = trans01_i0dnt(tid0)
+val tid0 =
+trans01_i0dnt(tenv, tid0)
 //
 val stdf =
 (
@@ -211,7 +240,8 @@ S0TDFsort
 (  s0t1  ) =>
 let
 val
-s1t1 = trans01_sort0(s0t1)
+s1t1 =
+trans01_sort0(tenv, s0t1)
 in
 s1tdf
 (stdf.lctn(), S1TDFsort(s1t1))
@@ -222,8 +252,12 @@ S0TDFtsub
 , s0a1, tbar
 , s0es, tend) =>
 let
-val s1a1 = trans01_s0arg(s0a1)
-val s1es = trans01_s0explst(s0es)
+val
+s1a1 =
+trans01_s0arg(tenv, s0a1)
+val
+s1es =
+trans01_s0explst(tenv, s0es)
 in
 s1tdf
 (stdf.lctn(),S1TDFtsub(s1a1,s1es))
@@ -246,7 +280,9 @@ end // end of [f0_sortdef]
 
 fun
 f0_sexpdef
-(d0cl: d0ecl): d1ecl =
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
 let
 //
 val loc0 = d0cl.lctn()
@@ -265,14 +301,18 @@ D0Csexpdef
 , tres
 , teq1, s0e2) = d0cl.node()
 //
-val seid =
-  trans01_i0dnt(seid)
-val smas =
-  trans01_s0maglst(smas) 
-val tres =
-  trans01_sort0opt(tres)
+val
+seid =
+trans01_i0dnt(tenv, seid)
+val
+smas =
+trans01_s0maglst(tenv, smas) 
+val
+tres =
+trans01_sort0opt(tenv, tres)
 //
-val s1e2 = trans01_s0exp(s0e2)
+val
+s1e2 = trans01_s0exp(tenv, s0e2)
 //
 (*
 val () =
@@ -298,25 +338,27 @@ end // end of [f0_sexpdef]
 
 #implfun
 trans01_d0eclist
-  (dcls) =
+(tenv, dcls) =
 (
-list_map
-<d0ecl><d1ecl>(dcls)) where
+list_map_e1nv
+<d0ecl><d1ecl>(dcls, tenv)) where
 {
 #impltmp
-map$fopr<d0ecl><d1ecl> = trans01_d0ecl
+map$fopr_e1nv
+<d0ecl><d1ecl>
+( dcl1, tenv ) = trans01_d0ecl(tenv, dcl1)
 } (*where*) // end of [trans01_d0eclist(dcls)]
 
 (* ****** ****** *)
 
 #implfun
 trans01_d0eclistopt
-  (opt0) =
+  (tenv, opt0) =
 (
 case+ opt0 of
 | optn_nil() => optn_nil()
 | optn_cons(dcls) =>
-  optn_cons(trans01_d0eclist(dcls))
+  optn_cons(trans01_d0eclist(tenv, dcls))
 ) (*where*) // end of [trans01_d0eclistopt(opt0)]
 
 (* ****** ****** *)

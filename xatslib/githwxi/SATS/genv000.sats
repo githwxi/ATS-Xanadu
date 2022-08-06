@@ -40,14 +40,14 @@ fun
 <x0:t0>
 <r0:vt>
 <e1:vt>
-foldl_e1nv$fopr
+foldl$fopr_e1nv
 ( r0:r0
 , x0:x0, e1: !e1): r0
 fun
 <x0:t0>
 <r0:vt>
 <e1:vt>
-foldr_e1nv$fopr
+foldr$fopr_e1nv
 ( x0:x0
 , r0:r0, e1: !e1): r0
 *)
@@ -58,7 +58,7 @@ foldr_e1nv$fopr
 fun
 <x0:t0>
 <e1:vt>
-forall_e1nv$test
+forall$test_e1nv
 (x0: x0, e1: !e1): bool
 *)
 //
@@ -68,7 +68,7 @@ forall_e1nv$test
 fun
 <x0:t0>
 <e1:vt>
-foreach_e1nv$work
+foreach$work_e1nv
 (x0: x0, e1: !e1): void
 *)
 //
@@ -79,7 +79,7 @@ fun
 <x0:t0>
 <y0:vt>
 <e1:vt>
-map_e1nv$fopr
+map$fopr_e1nv
 (x0: x0, e1: !e1): (y0)
 //
 fun
@@ -87,7 +87,7 @@ fun
 <y0:vt>
 <e1:vt>
 <e2:vt>
-map_e2nv$fopr
+map$fopr_e2nv
 (x0: x0, e1: !e1, e2: !e2): y0
 *)
 //
