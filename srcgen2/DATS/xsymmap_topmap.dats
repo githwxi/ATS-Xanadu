@@ -74,6 +74,13 @@ in//local
 (* ****** ****** *)
 
 #implfun
+topmap_make_nil
+  ( (*nil*) ) =
+XATS2JS_jsobjmap_make_nil<key>()
+
+(* ****** ****** *)
+
+#implfun
 topmap_search_opt
   {itm}(map, key) =
 let

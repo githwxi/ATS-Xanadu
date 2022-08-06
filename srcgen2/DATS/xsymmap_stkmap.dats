@@ -47,6 +47,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
+#staload "./../SATS/xsymmap.sats"
+(* ****** ****** *)
 
 #typedef key = sym_t
 
@@ -59,7 +61,8 @@ stkmap(itm:type) =
 //
 | stkmap_nil of ()
 //
-| stkmap_cons of (key, itm)
+| stkmap_cons of
+  (key, itm, stkmap(itm))
 //
 | stkmap_let0 of stkmap(itm)
 | stkmap_loc1 of stkmap(itm)
@@ -72,6 +75,60 @@ stkmap_vtbx(itm:type) = stkmap(itm)
 
 in//local
 
+(* ****** ****** *)
+//
+#implfun
+stkmap_make_nil
+  ( (*nil*) ) =
+  stkmap_nil((*void*))
+//
+(* ****** ****** *)
+#implfun
+stkmap_search_opt
+  {itm}
+( map, key ) =
+(
+  loop(map, key)) where
+{
+//
+#vwtpdef
+kxs = stkmap(itm)
+//
+fnx
+loop
+( kxs:
+! kxs
+, k0: key): optn_vt(itm) =
+(
+case+ kxs of
+//
+| !
+stkmap_nil() => optn_vt_nil()
+//
+| !
+stkmap_cons(k1, x1, kxs) =>
+(
+if
+(k0 = k1)
+then
+optn_vt_cons(x1) else loop(kxs,k0))
+//
+| !stkmap_let0(kxs) => loop(kxs, k0)
+| !stkmap_loc1(kxs) => loop(kxs, k0)
+| !stkmap_loc2(kxs) => loop(kxs, k0)
+//
+)
+//
+} (*where*) // end of [stkmap_search_opt]
+(* ****** ****** *)
+//
+#implfun
+stkmap_insert_any
+  {itm}
+( map, key, itm ) =
+(
+  map := stkmap_cons(key,itm,map) )
+//
 (* ****** ****** *)
 
 endloc (*local*) // end of [ local(stkmap) ]

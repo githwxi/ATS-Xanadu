@@ -64,6 +64,11 @@ stkmap_vtbx(x0:t0) // ptr
 stkmap(x0:t0) = stkmap_vtbx(x0)
 //
 (* ****** ****** *)
+fun
+topmap_make_nil{itm:tbox}(): topmap(itm)
+fun
+stkmap_make_nil{itm:tbox}(): stkmap(itm)
+(* ****** ****** *)
 //
 fun
 topmap_search_opt
