@@ -84,6 +84,10 @@ topmap_insert_any
 (* ****** ****** *)
 //
 fun
+stkmap_free_nil
+{itm:tbox}(map: stkmap(itm)): void
+//
+fun
 stkmap_poplet0
 {itm:tbox}(map: &stkmap(itm) >> _): sint
 fun

@@ -85,6 +85,14 @@ stkmap_make_nil
 (* ****** ****** *)
 //
 #implfun
+stkmap_free_nil
+  (   map   ) =
+(
+case- map of ~stkmap_nil() => ())
+//
+(* ****** ****** *)
+//
+#implfun
 stkmap_pshlet0
   {itm}(map) =
 (

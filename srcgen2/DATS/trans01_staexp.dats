@@ -843,7 +843,7 @@ sym0=SUB_symbl)
 then
 optn_vt_cons
 (postmnus_fixty) else
-tr01env_search(tenv, sym0))
+tr01env_search_opt(tenv, sym0))
 ) : fixtyopt_vt // end(val(opt))
 //
 val

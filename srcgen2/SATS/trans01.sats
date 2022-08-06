@@ -180,11 +180,11 @@ d1parsed_from_trans
 (* ****** ****** *)
 //
 fun
-tr01env_search
+tr01env_search_opt
 ( env:
 ! tr01env, key: sym_t): fixtyopt_vt
 fun
-tr01env_insert
+tr01env_insert_any
 ( env:
 ! tr01env, key: sym_t, itm: fixty): void
 //
