@@ -5,17 +5,17 @@ Native arrays for Xats2js
 *)
 (* ****** ****** *)
 //
-#abstype
-jsobj_type(*void*)
+#abstbox
+jsobj_tbox(*void*)
 #typedef
-jsobj = jsobj_type
+jsobj = jsobj_tbox
 //
 (* ****** ****** *)
 //
-#abstype
-jsarray_type(a:vt)
+#abstbox
+jsarray_tbox(a:vt)
 #sexpdef
-jsarray = jsarray_type
+jsarray = jsarray_tbox
 //
 (* ****** ****** *)
 (*
@@ -25,17 +25,17 @@ based on the native JS objmaps
 *)
 (* ****** ****** *)
 //
-#abstype
-jsobjmap_type
+#abstbox
+jsobjmap_tbox
 (k0:t0, x0:vt)
 //
 #sexpdef
-jsobjmap = jsobjmap_type
+jsobjmap = jsobjmap_tbox
 (*
 #typedef
 jsobjmap
 ( k0: t0
-, x0: vt) = jsobjmap_type(k0, x0)
+, x0: vt) = jsobjmap_tbox(k0, x0)
 *)
 //
 (* ****** ****** *)

@@ -47,7 +47,7 @@ ATS_PACKNAME
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 
-#abstype mymap_tbox // ptr
+#abstbox mymap_tbox // ptr
 #typedef mymap = mymap_tbox
 
 (* ****** ****** *)
@@ -66,8 +66,7 @@ local
 (* ****** ****** *)
 
 #absimpl
-mymap_tbox =
-jsobjmap_type(key, itm)
+mymap_tbox = jsobjmap(key, itm)
 
 (* ****** ****** *)
 
