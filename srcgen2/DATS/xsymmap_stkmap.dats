@@ -94,6 +94,24 @@ stkmap_pshlet0
 (* ****** ****** *)
 //
 #implfun
+stkmap_pshloc1
+  {itm}(map) =
+(
+  map := stkmap_loc1(map))
+(* end of [stkmap_pshloc1(map)] *)
+//
+(* ****** ****** *)
+//
+#implfun
+stkmap_pshloc2
+  {itm}(map) =
+(
+  map := stkmap_loc2(map))
+(* end of [stkmap_pshloc2(map)] *)
+//
+(* ****** ****** *)
+//
+#implfun
 stkmap_poplet0
   {itm}(map) =
 let
