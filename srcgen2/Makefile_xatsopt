@@ -207,6 +207,9 @@ locinfo_print0_dats: ; $(XATSOPT) --dynamic DATS/locinfo_print0.dats
 all_dats:: \
 xsymmap_topmap_dats
 xsymmap_topmap_dats: ; $(XATSOPT) --dynamic DATS/xsymmap_topmap.dats
+all_dats:: \
+xsymmap_stkmap_dats
+xsymmap_stkmap_dats: ; $(XATSOPT) --dynamic DATS/xsymmap_stkmap.dats
 ######
 
 ######

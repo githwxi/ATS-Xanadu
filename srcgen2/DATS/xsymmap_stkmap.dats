@@ -48,8 +48,33 @@ ATS_PACKNAME
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
 
-#abstype mymap_tbox // ptr
-#typedef mymap = mymap_tbox
+#typedef key = sym_t
+
+(* ****** ****** *)
+local
+(* ****** ****** *)
+//
+datavwtp
+stkmap(itm:type) =
+//
+| stkmap_nil of ()
+//
+| stkmap_cons of (key, itm)
+//
+| stkmap_let0 of stkmap(itm)
+| stkmap_loc1 of stkmap(itm)
+| stkmap_loc2 of stkmap(itm)
+//
+(* ****** ****** *)
+#absimpl
+stkmap_vtbx(itm:type) = stkmap(itm)
+(* ****** ****** *)
+
+in//local
+
+(* ****** ****** *)
+
+endloc (*local*) // end of [ local(stkmap) ]
 
 (* ****** ****** *)
 
