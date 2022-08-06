@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Tue Jul 26 12:37:25 EDT 2022
+Fri Aug  5 14:13:00 EDT 2022
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -58,85 +58,4 @@ ATS_PACKNAME
 #staload "./../SATS/trans01.sats"
 (* ****** ****** *)
 
-#symload lctn with d0pat_get_lctn
-#symload node with d0pat_get_node
-#symload lctn with d0exp_get_lctn
-#symload node with d0exp_get_node
-
-(* ****** ****** *)
-
-#implfun
-trans01_d0pat
-  (tenv, d0p0) =
-let
-//
-val loc0 = d0p0.lctn()
-//
-val () =
-prerrln
-("trans01_d0pat: loc0 = ", loc0)
-val () =
-prerrln
-("trans01_d0pat: d0p0 = ", d0p0)
-//
-in//let
-case+
-d0p0.node() of
-| _(*otherwise*) => d1pat_none1(d0p0)
-end (*let*) // end of [trans01_d0pat(d0p0)]
-
-(* ****** ****** *)
-
-#implfun
-trans01_d0exp
-  (tenv, d0e0) =
-let
-//
-val loc0 = d0e0.lctn()
-//
-val () =
-prerrln
-("trans01_d0exp: loc0 = ", loc0)
-val () =
-prerrln
-("trans01_d0exp: d0e0 = ", d0e0)
-//
-in//let
-case+
-d0e0.node() of
-| _(*otherwise*) => d1exp_none1(d0e0)
-end (*let*) // end of [trans01_d0exp(d0e0)]
-
-(* ****** ****** *)
-
-#implfun
-trans01_d0patlst
-  (tenv, d0ps) =
-(
-list_map_e1nv
-<d0pat><d1pat>(d0ps, tenv)) where
-{
-#impltmp
-map$fopr_e1nv
-<d0pat><d1pat>
-( d0p1, tenv ) = trans01_d0pat(tenv, d0p1)
-} (*where*) // end of [trans01_d0patlst(d0ps)]
-
-(* ****** ****** *)
-
-#implfun
-trans01_d0explst
-  (tenv, d0es) =
-(
-list_map_e1nv
-<d0exp><d1exp>(d0es, tenv)) where
-{
-#impltmp
-map$fopr_e1nv
-<d0exp><d1exp>
-( d0e1, tenv ) = trans01_d0exp(tenv, d0e1)
-} (*where*) // end of [trans01_d0explst(d0es)]
-
-(* ****** ****** *)
-
-(* end of [ATS3/XATSOPT_trans01_dynexp.dats] *)
+(* end of [ATS3/XATSOPT_trans01_myenv0.dats] *)

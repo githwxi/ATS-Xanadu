@@ -16,7 +16,7 @@ fun
 <x0:t0>
 <r0:vt>
 <e1:vt>
-foldl_e1nv$fopr
+foldl$fopr_e1nv
 ( r0: r0
 , x0: x0, e1: !e1): r0
 fun
@@ -24,7 +24,7 @@ fun
 <r0:vt>
 <e1:vt>
 <e2:vt>
-foldl_e2nv$fopr
+foldl$fopr_e2nv
 ( r0: r0
 , x0: x0, e1: !e1, e2: !e2): r0
 //
@@ -32,7 +32,7 @@ fun
 <x0:t0>
 <r0:vt>
 <e1:vt>
-foldr_e1nv$fopr
+foldr$fopr_e1nv
 ( x0: x0
 , r0: r0, e1: !e1): r0
 fun
@@ -40,7 +40,7 @@ fun
 <r0:vt>
 <e1:vt>
 <e2:vt>
-foldr_e2nv$fopr
+foldr$fopr_e2nv
 ( x0: x0
 , r0: r0, e1: !e1, e2: !e2): r0
 //
@@ -49,25 +49,25 @@ foldr_e2nv$fopr
 fun
 <x0:t0>
 <e1:vt>
-forall_e1nv$test
+forall$test_e1nv
 (x0: x0, e1: !e1): bool
 fun
 <x0:t0>
 <e1:vt>
 <e2:vt>
-forall_e2nv$test
+forall$test_e2nv
 (x0: x0, e1: !e1, e2: !e2): bool
 //
 fun
 <x0:t0>
 <e1:vt>
-foreach_e1nv$work
+foreach$work_e1nv
 (x0: x0, e1: !e1): void
 fun
 <x0:t0>
 <e1:vt>
 <e2:vt>
-foreach_e2nv$work
+foreach$work_e2nv
 (x0: x0, e1: !e1, e2: !e2): void
 //
 (* ****** ****** *)
@@ -76,14 +76,14 @@ fun
 <x0:t0>
 <y0:vt>
 <e1:vt>
-map_e1nv$fopr
+map$fopr_e1nv
 (x0: x0, e1: !e1): (y0)
 fun
 <x0:t0>
 <y0:vt>
 <e1:vt>
 <e2:vt>
-map_e2nv$fopr
+map$fopr_e2nv
 (x0: x0, e1: !e1, e2: !e2): (y0)
 //
 (* ****** ****** *)
@@ -136,15 +136,30 @@ fun
 <y0:t0>
 <e1:vt>
 list_map_e1nv
-{n:int}
+{n:i0}
 (list(x0, n), e1: !e1): list(y0, n)
 fun
 <x0:t0>
 <y0:t0>
 <e1:vt>
 list_map_e1nv_vt
-{n:int}
+{n:i0}
 (list(x0, n), e1: !e1): list_vt(y0, n)
+//
+fun
+<x0:t0>
+<y0:t0>
+<e1:vt>
+optn_map_e1nv
+{b:b0}
+(optn(x0, b), e1: !e1): optn(y0, b)
+fun
+<x0:t0>
+<y0:t0>
+<e1:vt>
+optn_map_e1nv_vt
+{b:b0}
+(optn(x0, b), e1: !e1): optn_vt(y0, b)
 //
 (* ****** ****** *)
 //
@@ -163,7 +178,7 @@ fun
 <e1:vt>
 <e2:vt>
 list_map_e2nv
-{n:int}
+{n:i0}
 (list(x0, n), e1: !e1, e2: !e2): list(y0, n)
 fun
 <x0:t0>
@@ -171,8 +186,25 @@ fun
 <e1:vt>
 <e2:vt>
 list_map_e2nv_vt
-{n:int}
+{n:i0}
 (list(x0, n), e1: !e1, e2: !e2): list_vt(y0, n)
+//
+fun
+<x0:t0>
+<y0:t0>
+<e1:vt>
+<e2:vt>
+optn_map_e2nv
+{b:b0}
+(optn(x0, b), e1: !e1, e2: !e2): optn(y0, b)
+fun
+<x0:t0>
+<y0:t0>
+<e1:vt>
+<e2:vt>
+optn_map_e2nv_vt
+{b:b0}
+(optn(x0, b), e1: !e1, e2: !e2): optn_vt(y0, b)
 //
 (* ****** ****** *)
 
