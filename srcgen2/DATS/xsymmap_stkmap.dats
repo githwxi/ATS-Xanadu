@@ -113,8 +113,8 @@ stkmap_pshloc2
 //
 #implfun
 stkmap_poplet0
-  {itm}(map) =
-let
+  {itm}(map) = let
+//
 fnx
 loop
 ( kxs
@@ -135,6 +135,7 @@ stkmap_cons
 | !stkmap_loc2 _ => (err := 1; kxs)
 //
 )
+//
 in//let
 let
 var
@@ -142,6 +143,98 @@ err: sint = 0
 val
 ( ) = (map := loop(map, err)) in err end
 end (*let*) // [ stkmap_poplet0(map) ]
+//
+(* ****** ****** *)
+//
+#implfun
+stkmap_poploc1
+  {itm}(map) = let
+//
+#vwtpdef
+kxs = stkmap(itm)
+#vwtpdef
+res = list_vt@(key,itm)
+//
+fnx
+loop0
+( kxs: kxs
+, err: &sint >> _, res: res): kxs =
+let
+fun
+auxlp
+(res: res, kxs: kxs): kxs =
+(
+case+ res of
+| ~
+list_vt_nil() => kxs
+| ~
+list_vt_cons(kx1, res) =>
+auxlp
+(res,stkmap_cons(kx1.0,kx1.1,kxs))
+)
+in//let
+  auxlp(list_vt_reverse0(res), kxs)
+end (*let*) // end of [loop0(...)]
+//
+fnx
+loop1
+( kxs: kxs
+, err: &sint >> _, res: res): kxs =
+(
+case+ kxs of
+//
+| ~
+stkmap_loc1
+(   kxs   ) => loop0(kxs, err, res)
+//
+| ~
+stkmap_cons
+(k1, x1, kxs) => loop1(kxs, err, res)
+//
+| !stkmap_nil() =>
+  ( err := err+1; loop0(kxs, err, res) )
+| !stkmap_let0 _ =>
+  ( err := err+1; loop0(kxs, err, res) )
+| !stkmap_loc2 _ =>
+  ( err := err+1; loop0(kxs, err, res) )
+//
+)
+fnx
+loop2
+( kxs: kxs
+, err: &sint >> _, res: res): kxs =
+(
+case+ kxs of
+//
+| ~
+stkmap_loc2
+(   kxs   ) => loop1(kxs, err, res)
+//
+| ~
+stkmap_cons
+(k1, x1, kxs) =>
+loop1(kxs, err, res) where
+{
+val res = list_vt_cons(@(k1,x1), res) }
+//
+| !stkmap_nil() =>
+  ( err := err+1; loop1(kxs, err, res) )
+| !stkmap_let0 _ =>
+  ( err := err+1; loop1(kxs, err, res) )
+| !stkmap_loc1 _ =>
+  ( err := err+1; loop1(kxs, err, res) )
+//
+) (*case+*) // end of [ loop1(kxs,err,res)
+//
+in//let
+let
+val
+err: sint = 0
+val
+res = list_vt_nil()
+val
+( ) = (map := loop2(map,err,res)) in err end
+end (*let*) // end of [stkmap_poploc1(map)]
 //
 (* ****** ****** *)
 //
