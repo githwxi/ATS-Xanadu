@@ -66,7 +66,8 @@ local
 
 #absimpl
 topmap_tbox
-(itm:type) = jsobjmap(key, itm)
+(itm:type) =
+jsobjmap(key, list(itm))
 
 (* ****** ****** *)
 in//local
@@ -76,12 +77,68 @@ in//local
 topmap_search_opt
   {itm}(map, key) =
 let
-val key =
+//
+#typedef
+itms = list(itm)
+//
+val
+key =
 g0u2s(uint(key.stmp()))
+val
+opt = 
+XATS2JS_jsobjmap_search_opt<key>{itms}(map,key)
+//
 in//let
-XATS2JS_jsobjmap_search_opt<key>{itm}(map,key)
-end (*let*) // end of [topmap_search_opt(k0)]
+//
+case+ opt of
+| ~
+optn_vt_nil() =>
+optn_vt_nil()
+| ~
+optn_vt_cons(itms) =>
+let
+val-list_cons(itm, _) = itms in optn_vt_cons(itm)
+end (*let*) // end of [optn_vt_cons]
+//
+end (*let*) // end of [topmap_search_opt(...]
 
+(* ****** ****** *)
+
+#implfun
+topmap_insert_any
+  {itm}
+  (map, key, itm) =
+let
+//
+#typedef
+itms = list(itm)
+//
+val
+key =
+g0u2s(uint(key.stmp()))
+val
+opt = 
+XATS2JS_jsobjmap_search_opt<key>{itms}(map,key)
+//
+in//let
+//
+case+ opt of
+| ~
+optn_vt_nil() =>
+let
+val itms = list_sing(itm)
+in//let
+XATS2JS_jsobjmap_insert_any<key>{itms}(map,key,itms)
+end (*let*) // end of [optn_vt_nil()]
+| ~
+optn_vt_cons(itms) =>
+let
+val itms = list_cons(itm, itms)
+in
+XATS2JS_jsobjmap_insert_any<key>{itms}(map,key,itms)
+end (*let*) // end of [optn_vt_cons(...)]
+//
+end (*let*) // end of [topmap_insert_any(...)]
 (* ****** ****** *)
 
 endloc (*local*) // end of [  local(topmap)  ]
