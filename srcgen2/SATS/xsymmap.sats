@@ -64,5 +64,31 @@ stkmap_vtbx(x0:t0) // ptr
 stkmap(x0:t0) = stkmap_vtbx(x0)
 //
 (* ****** ****** *)
+//
+fun
+topmap_search
+{itm:tbox}
+( map:
+  topmap(itm), key: sym_t): optn_vt(itm)
+fun
+topmap_insert
+{itm:tbox}
+( map:
+  topmap(itm), key: sym_t, itm: itm): void
+//
+(* ****** ****** *)
+//
+fun
+stkmap_search
+{itm:tbox}
+( map:
+! stkmap(itm), key: sym_t): optn_vt(itm)
+fun
+stkmap_insert
+{itm:tbox}
+( map:
+& stkmap(itm) >> _, key: sym_t, itm: itm): void
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xsymmap.sats] *)
