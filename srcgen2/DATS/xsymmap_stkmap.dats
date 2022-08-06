@@ -83,6 +83,50 @@ stkmap_make_nil
   stkmap_nil((*void*))
 //
 (* ****** ****** *)
+//
+#implfun
+stkmap_pshlet0
+  {itm}(map) =
+(
+  map := stkmap_let0(map))
+(* end of [stkmap_pshlet0(map)] *)
+//
+(* ****** ****** *)
+//
+#implfun
+stkmap_poplet0
+  {itm}(map) =
+let
+fnx
+loop
+( kxs
+: stkmap(itm)
+, err: &sint >> _): stkmap(itm) =
+(
+case+ kxs of
+| ~
+stkmap_let0
+(   kxs   ) => kxs
+| ~
+stkmap_cons
+(k1, x1, kxs) => loop(kxs, err)
+//
+| !stkmap_nil() => (err := 1; kxs)
+//
+| !stkmap_loc1 _ => (err := 1; kxs)
+| !stkmap_loc2 _ => (err := 1; kxs)
+//
+)
+in//let
+let
+var
+err: sint = 0
+val
+( ) = (map := loop(map, err)) in err end
+end (*let*) // [ stkmap_poplet0(map) ]
+//
+(* ****** ****** *)
+//
 #implfun
 stkmap_search_opt
   {itm}
@@ -103,7 +147,8 @@ loop
 case+ kxs of
 //
 | !
-stkmap_nil() => optn_vt_nil()
+stkmap_nil() =>
+optn_vt_nil((*void*))
 //
 | !
 stkmap_cons(k1, x1, kxs) =>
@@ -117,9 +162,10 @@ optn_vt_cons(x1) else loop(kxs,k0))
 | !stkmap_loc1(kxs) => loop(kxs, k0)
 | !stkmap_loc2(kxs) => loop(kxs, k0)
 //
-)
+) (*case+*) // end of [loop(kxs, k0)]
 //
 } (*where*) // end of [stkmap_search_opt]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -127,7 +173,7 @@ stkmap_insert_any
   {itm}
 ( map, key, itm ) =
 (
-  map := stkmap_cons(key,itm,map) )
+  map := stkmap_cons(key, itm, map) )
 //
 (* ****** ****** *)
 

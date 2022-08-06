@@ -84,6 +84,25 @@ topmap_insert_any
 (* ****** ****** *)
 //
 fun
+stkmap_poplet0
+{itm:tbox}(map: &stkmap(itm) >> _): sint
+fun
+stkmap_pshlet0
+{itm:tbox}(map: &stkmap(itm) >> _): void
+//
+fun
+stkmap_poploc1
+{itm:tbox}(map: &stkmap(itm) >> _): sint
+fun
+stkmap_pshloc1
+{itm:tbox}(map: &stkmap(itm) >> _): void
+fun
+stkmap_pshloc2
+{itm:tbox}(map: &stkmap(itm) >> _): void
+//
+(* ****** ****** *)
+//
+fun
 stkmap_search_opt
 {itm:tbox}
 ( map:
