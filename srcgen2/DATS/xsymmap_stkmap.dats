@@ -215,7 +215,8 @@ stkmap_cons
 (k1, x1, kxs) =>
 loop1(kxs, err, res) where
 {
-val res = list_vt_cons(@(k1,x1), res) }
+  val
+  res = list_vt_cons(@(k1,x1), res) }
 //
 | !stkmap_nil() =>
   ( err := err+1; loop1(kxs, err, res) )

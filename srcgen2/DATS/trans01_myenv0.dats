@@ -47,6 +47,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
+#staload "./../SATS/xsymmap.sats"
+(* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
@@ -56,6 +58,33 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
+(* ****** ****** *)
+
+local
+
+datavwtp
+tr01env =
+TR01ENV of
+(topmap(fixty), stkmap(fixty))
+
+#absimpl tr01env_vtbx = tr01env
+
+in//local
+
+(*
+fun
+tr01env_make_nil((*void*)): tr01env
+*)
+#implfun
+tr01env_make_nil() =
+TR01ENV(topmap, stkmap) where
+{
+  val topmap = topmap_make_nil()
+  val stkmap = stkmap_make_nil()
+} (*where*) // end of [tr01env_make_nil()]
+
+endloc (*local*) // end of [local(tr01env)]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_trans01_myenv0.dats] *)

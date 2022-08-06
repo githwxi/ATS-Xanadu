@@ -51,6 +51,11 @@
 "./../../DATS/locinfo_print0.dats"
 (* ****** ****** *)
 #include
+"./../../DATS/xsymmap_topmap.dats"
+#include
+"./../../DATS/xsymmap_stkmap.dats"
+(* ****** ****** *)
+#include
 "./../../DATS/lexbuf0.dats"
 #include
 "./../../DATS/lexbuf0_cstrx1.dats"
@@ -123,6 +128,8 @@
 (* ****** ****** *)
 #include
 "./../../DATS/trans01.dats"
+#include
+"./../../DATS/trans01_myenv0.dats"
 #include
 "./../../DATS/trans01_staexp.dats"
 #include
