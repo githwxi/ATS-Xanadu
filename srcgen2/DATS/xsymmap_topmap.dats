@@ -45,12 +45,11 @@ ATS_PACKNAME
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+#staload "./../SATS/xstamp0.sats"
+(* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
-
-#abstype mymap_tbox // ptr
-#typedef mymap = mymap_tbox
-
+#staload "./../SATS/xsymmap.sats"
 (* ****** ****** *)
 
 local
@@ -66,13 +65,26 @@ local
 (* ****** ****** *)
 
 #absimpl
-mymap_tbox
-(itm:tbox) =
-jsobjmap_type(key, itm)
+topmap_tbox
+(itm:type) = jsobjmap(key, itm)
+
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+
+#implfun
+topmap_search_opt
+  {itm}(map, key) =
+let
+val key =
+g0u2s(uint(key.stmp()))
+in//let
+XATS2JS_jsobjmap_search_opt<key>{itm}(map,key)
+end (*let*) // end of [topmap_search_opt(k0)]
 
 (* ****** ****** *)
 
-endloc (*local*) // end of [local(topmap)]
+endloc (*local*) // end of [  local(topmap)  ]
 
 (* ****** ****** *)
 

@@ -66,12 +66,12 @@ stkmap(x0:t0) = stkmap_vtbx(x0)
 (* ****** ****** *)
 //
 fun
-topmap_search
+topmap_search_opt
 {itm:tbox}
 ( map:
   topmap(itm), key: sym_t): optn_vt(itm)
 fun
-topmap_insert
+topmap_insert_any
 {itm:tbox}
 ( map:
   topmap(itm), key: sym_t, itm: itm): void
@@ -79,12 +79,12 @@ topmap_insert
 (* ****** ****** *)
 //
 fun
-stkmap_search
+stkmap_search_opt
 {itm:tbox}
 ( map:
 ! stkmap(itm), key: sym_t): optn_vt(itm)
 fun
-stkmap_insert
+stkmap_insert_any
 {itm:tbox}
 ( map:
 & stkmap(itm) >> _, key: sym_t, itm: itm): void
