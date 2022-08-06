@@ -62,6 +62,8 @@ ATS_PACKNAME
 
 local
 
+#typedef key = sym_t
+
 datavwtp
 tr01env =
 TR01ENV of
@@ -70,6 +72,8 @@ TR01ENV of
 #absimpl tr01env_vtbx = tr01env
 
 in//local
+
+(* ****** ****** *)
 
 (*
 fun
@@ -82,6 +86,42 @@ TR01ENV(topmap, stkmap) where
   val topmap = topmap_make_nil()
   val stkmap = stkmap_make_nil()
 } (*where*) // end of [tr01env_make_nil()]
+
+(* ****** ****** *)
+
+#implfun
+tr01env_free_top
+  (  tenv  ) =
+(
+stkmap_free_nil(stkmap)) where
+//
+val+
+~TR01ENV(topmap, stkmap) = tenv
+} (*where*)//end-of(tr01env_free_top(tenv))
+
+(* ****** ****** *)
+
+#implfun
+tr01env_search_opt
+  (tenv, k0) = let
+val+
+TR01ENV
+(topmap, stkmap) = tenv
+//
+val opt =
+stkmap_search_opt(stkmap, k0)
+//
+in//let
+//
+case+ opt of
+| !
+optn_vt_cons _ => opt
+| ~
+optn_vt_nil( ) => topmap_search_opt(topmap, k0)
+//
+end (*let*) // end of [tr01env_search_opt(tenv,k0)]
+
+(* ****** ****** *)
 
 endloc (*local*) // end of [local(tr01env)]
 
