@@ -1833,4 +1833,49 @@ map$fopr_e1nv
 
 (* ****** ****** *)
 
+#implfun
+trans01_s0unilst
+( tenv, s0us ) =
+(
+list_map_e1nv
+<s0uni><s1uni>(s0us, tenv)) where
+{
+#impltmp
+map$fopr_e1nv
+<s0uni><s1uni>
+( s0u1, tenv ) = trans01_s0uni(tenv, s0u1)
+} (*where*) // end of [trans01_s0unilst(s0us)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_d0tcnlst
+( tenv, tcns ) =
+(
+list_map_e1nv
+<d0tcn><d1tcn>(tcns, tenv)) where
+{
+#impltmp
+map$fopr_e1nv
+<d0tcn><d1tcn>
+( tcn1, tenv ) = trans01_d0tcn(tenv, tcn1)
+} (*where*) // end of [trans01_d0tcnlst(tcns)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_d0typlst
+( tenv, d0ts ) =
+(
+list_map_e1nv
+<d0typ><d1typ>(d0ts, tenv)) where
+{
+#impltmp
+map$fopr_e1nv
+<d0typ><d1typ>
+( d0t1, tenv ) = trans01_d0typ(tenv, d0t1)
+} (*where*) // end of [trans01_d0typlst(d0ts)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_trans01_staexp.dats] *)
