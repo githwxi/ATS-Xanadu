@@ -63,6 +63,9 @@ _(*?*) = "./lexing0_print0.dats"
 #symload node with s1exp_get_node
 #symload lctn with s1exp_get_lctn
 (* ****** ****** *)
+#symload node with s1tdf_get_node
+#symload lctn with s1tdf_get_lctn
+(* ****** ****** *)
 #symload node with s1arg_get_node
 #symload lctn with s1arg_get_lctn
 #symload node with t1arg_get_node
@@ -78,9 +81,6 @@ _(*?*) = "./lexing0_print0.dats"
 (* ****** ****** *)
 #symload node with s1uni_get_node
 #symload lctn with s1uni_get_lctn
-(* ****** ****** *)
-#symload node with s1tdf_get_node
-#symload lctn with s1tdf_get_lctn
 (* ****** ****** *)
 //
 #implfun
@@ -271,6 +271,37 @@ S1Tnone1(s0t1) => print("S1Tnone1(", s0t1 ,")")
 //
 end (*let*) // end of [sort1_fprint(out,s1t)]
 
+(* ****** ****** *)
+#implfun
+s1tcn_fprint
+( out, tcn ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+tcn.node() of
+|
+S1TCNnode(id0, stq) =>
+print("S1TCNnode(",id0,";",stq,")")
+end (*let*) // end of [s1tcn_fprint]
+(* ****** ****** *)
+#implfun
+d1tst_fprint
+( out, dst ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+dst.node() of
+|
+D1TSTnode(tid0,stcs) =>
+(
+print("D1TSTnode(",tid0,";",stcs,")"))
+end (*let*) // end of [d1tst_fprint]
 (* ****** ****** *)
 
 #implfun

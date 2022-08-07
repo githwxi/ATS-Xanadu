@@ -581,6 +581,10 @@ d1ecl_node =
   , s1qid, s1maglst, sort1opt, s1exp)
 //
 |
+D1Cdatasort of
+(token(*DATASORT*), d1tstlst)
+//
+|
 D1Cvaldclst of
 (token(*VAL(vlk)*), d1valdclist)
 |
