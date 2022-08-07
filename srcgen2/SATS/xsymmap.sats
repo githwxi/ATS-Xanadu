@@ -65,6 +65,13 @@ stkmap(x0:t0) = stkmap_vtbx(x0)
 //
 (* ****** ****** *)
 fun
+stkmap_nilq
+{itm:tbox}(!stkmap(itm)): bool
+fun
+stkmap_topq
+{itm:tbox}(!stkmap(itm)): bool
+(* ****** ****** *)
+fun
 topmap_make_nil{itm:tbox}(): topmap(itm)
 fun
 stkmap_make_nil{itm:tbox}(): stkmap(itm)
@@ -87,16 +94,25 @@ fun
 stkmap_free_nil
 {itm:tbox}(map: stkmap(itm)): void
 //
-fun
-stkmap_poplet0
-{itm:tbox}(map: &stkmap(itm) >> _): sint
-fun
-stkmap_pshlet0
-{itm:tbox}(map: &stkmap(itm) >> _): void
+(* ****** ****** *)
 //
 fun
-stkmap_poploc1
-{itm:tbox}(map: &stkmap(itm) >> _): sint
+stkmap_poplet0
+  {itm:tbox}
+(map: &stkmap(itm) >> _): sint
+//
+fun
+stkmap_pshlet0
+  {itm:tbox}
+(map: &stkmap(itm) >> _): void
+//
+fun
+stkmap_poploc0
+  {itm:tbox}
+( map:
+& stkmap(itm) >> _):
+(sint(*err*), list_vt@(sym_t, itm))
+//
 fun
 stkmap_pshloc1
 {itm:tbox}(map: &stkmap(itm) >> _): void

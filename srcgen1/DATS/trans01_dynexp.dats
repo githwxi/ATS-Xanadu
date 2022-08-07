@@ -2551,6 +2551,8 @@ in
   end
 end // end of [aux_fixity]
 
+(* ****** ****** *)
+
 fun
 aux_nonfix
 (d0cl: d0ecl): d1ecl = let

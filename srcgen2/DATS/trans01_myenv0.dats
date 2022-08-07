@@ -94,7 +94,7 @@ tr01env_free_top
   (  tenv  ) =
 (
 stkmap_free_nil(stkmap)) where
-//
+{
 val+
 ~TR01ENV(topmap, stkmap) = tenv
 } (*where*)//end-of(tr01env_free_top(tenv))
@@ -117,13 +117,32 @@ case+ opt of
 | !
 optn_vt_cons _ => opt
 | ~
-optn_vt_nil( ) => topmap_search_opt(topmap, k0)
+optn_vt_nil( ) => topmap_search_opt(topmap,k0)
 //
-end (*let*) // end of [tr01env_search_opt(tenv,k0)]
+end (*let*)//end-of-[tr01env_search_opt(tenv,k0)]
 
 (* ****** ****** *)
+//
+#implfun
+tr01env_insert_any
+  (tenv, k0, x0) = let
+//
+val+
+@TR01ENV
+(topmap, stkmap) = tenv
+//
+in//let
+//
+if
+stkmap_nilq(stkmap)
+then topmap_insert_any(topmap, k0, x0)//top
+else stkmap_insert_any(stkmap, k0, x0)//inner
+//
+end (*let*)//end-of(tr01env_insert_any(tenv,k0,x0))
+//
+(* ****** ****** *)
 
-endloc (*local*) // end of [local(tr01env)]
+endloc (*local*) // end of [ local(tr01env) ]
 
 (* ****** ****** *)
 
