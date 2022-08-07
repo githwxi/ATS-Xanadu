@@ -45,6 +45,8 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/xbasics.sats"
+(* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
@@ -148,46 +150,49 @@ D0Cfixity
 //
 val-
 T_SRP_FIXITY
-  (knd0) = tknd.node()
+(  knd0  ) = tknd.node()
 //
 val pval =
-prcdv_encode(h1precopt(popt))
+prcdv_encode
+( h1precopt(tenv,popt) )
 //
 val fxty =
 (
 if
-(knd=INFIX0)
+(knd0=KINFIX0)
 then
 FIXTYinf(pval, ASSOCnon)
 else
 (
 if
-(knd=INFIXL)
+(knd0=KINFIXL)
 then
 FIXTYinf(pval, ASSOClft)
 else
 (
 if
-(knd0=INFIXR)
+(knd0=KINFIXR)
 then
 FIXTYinf(pval, ASSOCrgt)
 else
 (
 if
-(knd0=PREFIX)
+(knd0=KPREFIX)
 then FIXTYpre(pval) else
 (
 if
-(knd0=PSTFIX)
-then FIXTYpos(pval) else FIXTYnon())))))
+(knd0=KPSTFIX)
+then FIXTYpos(pval) else FIXTYnon()))))
 //
 ) : fixty // end of [val(fxty)]
 //
 fun
 loop
-(id0s: i0dntlst): void =
+( tenv:
+! tr01env
+, id0s: i0dntlst): void =
 (
-case+ xs of
+case+ id0s of
 |
 list_nil() => ()
 |
@@ -204,7 +209,7 @@ T_IDALP(nam) => symbl(nam)
 |
 T_IDSYM(nam) => symbl(nam)
 |
-T_IDDIR(nam) => symbl(nam)): sym_t
+T_IDDLR(nam) => symbl(nam)): sym_t
 //
 in//let
 loop(tenv, id0s) where
@@ -243,6 +248,7 @@ T_IDSYM("+") => 0+token2sint(tint)
 |
 T_IDSYM("-") => 0-token2sint(tint)
 ) (*case-*) // end of [PINTopr2(_,_)]
+) (*case+*) // end of [h1signint(pint)]
 //
 fun
 h1precopt
