@@ -223,6 +223,10 @@ D1Cabsimpl
 print("D1Cabsimpl(",tknd,";");
 print(sid1,";",smas,";",tres,";",sdef,")"))
 //
+|
+D1Cdatasort(tknd,dtcs) =>
+print("D1Cdatasort(",tknd,";",dtcs,")")
+//
 | D1Cnone0() => print("D1Cnone0(", ")")
 | D1Cnone1(d0cl) => print("D1Cnone1(", d0cl ,")")
 //

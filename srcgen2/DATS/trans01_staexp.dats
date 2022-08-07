@@ -91,7 +91,19 @@ _(*XFIXITY*) = "./xfixity.dats"
 #symload lctn with sort1_get_lctn
 #symload node with sort1_get_node
 (* ****** ****** *)
+#symload lctn with s0exp_get_lctn
+#symload node with s0exp_get_node
+#symload lctn with s1exp_get_lctn
+#symload node with s1exp_get_node
+(* ****** ****** *)
 #symload sort1 with sort1_make_node
+#symload s1exp with s1exp_make_node
+(* ****** ****** *)
+#symload lctn with s0tcn_get_lctn
+#symload node with s0tcn_get_node
+(* ****** ****** *)
+#symload lctn with d0tst_get_lctn
+#symload node with d0tst_get_node
 (* ****** ****** *)
 #symload lctn with s0arg_get_lctn
 #symload node with s0arg_get_node
@@ -108,13 +120,6 @@ _(*XFIXITY*) = "./xfixity.dats"
 (* ****** ****** *)
 #symload s1mag with s1mag_make_node
 #symload t1mag with t1mag_make_node
-(* ****** ****** *)
-#symload lctn with s0exp_get_lctn
-#symload node with s0exp_get_node
-#symload lctn with s1exp_get_lctn
-#symload node with s1exp_get_node
-(* ****** ****** *)
-#symload s1exp with s1exp_make_node
 (* ****** ****** *)
 
 fun
@@ -1363,6 +1368,47 @@ map$fopr_e1nv
 } (*where*) // end of [trans01_s0exp(s0e0)]
 
 (* ****** ****** *)
+//
+#implfun
+trans01_s0tcn
+(tenv, tcn0) =
+(
+case+
+tcn0.node() of
+|
+S0TCNnode(seid, tres) =>
+s1tcn_make_node
+( tcn0.lctn()
+, S1TCNnode(seid, tres)) where
+{
+val seid = trans01_i0dnt(tenv, seid)
+val tres = trans01_sort0opt(tenv, tres)
+} (*where*)//end-of(S0TCNnode(seid,tres))
+) (*case+*)//end(trans01_s0tcn(tenv,tcn0))
+//
+(* ****** ****** *)
+//
+#implfun
+trans01_d0tst
+(tenv, d0t0) =
+(
+case+
+d0t0.node() of
+|
+D0TSTnode
+( stid
+, teq1
+, tbar,tcns) =>
+d1tst_make_node
+( d0t0.lctn()
+, D1TSTnode(stid, tcns)) where
+{
+val stid = trans01_i0dnt(tenv, stid)
+val tcns = trans01_s0tcnlst(tenv, tcns)
+} (*where*)//end-of(D0TSTnode(_,_,_,_))
+) (*case+*)//end(trans01_d0tst(tenv,d0t0))
+//
+(* ****** ****** *)
 
 #implfun
 trans01_s0arg
@@ -1648,6 +1694,36 @@ map$fopr_e1nv
 <sort0><sort1>
 ( s1t1, tenv ) = trans01_sort0(tenv, s1t1)
 } (*where*) // end of [trans01_sort0opt(opt0)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_s0tcnlst
+(tenv, tcns) =
+(
+list_map_e1nv
+<s0tcn><s1tcn>(tcns, tenv)) where
+{
+#impltmp
+map$fopr_e1nv
+<s0tcn><s1tcn>
+( tcn1, tenv ) = trans01_s0tcn(tenv, tcn1)
+} (*where*) // end of [trans01_s0tcnlst(tcns)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_d0tstlst
+(tenv, d0ts) =
+(
+list_map_e1nv
+<d0tst><d1tst>(d0ts, tenv)) where
+{
+#impltmp
+map$fopr_e1nv
+<d0tst><d1tst>
+( d0t1, tenv ) = trans01_d0tst(tenv, d0t1)
+} (*where*) // end of [trans01_d0tstlst(d0ts)]
 
 (* ****** ****** *)
 

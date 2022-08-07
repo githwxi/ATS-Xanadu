@@ -304,6 +304,19 @@ trans01_s0expopt:
 //
 (* ****** ****** *)
 //
+fun trans01_s0tcn:
+  (!tr01env, s0tcn)->s1tcn
+fun trans01_d0tst:
+  (!tr01env, d0tst)->d1tst
+//
+fun
+trans01_s0tcnlst:
+  (!tr01env, s0tcnlst)->s1tcnlst
+fun
+trans01_d0tstlst:
+  (!tr01env, d0tstlst)->d1tstlst
+(* ****** ****** *)
+//
 fun trans01_s0arg:
   (!tr01env, s0arg)->s1arg
 fun trans01_s0mag:
@@ -332,13 +345,6 @@ trans01_t0maglst:
 fun
 trans01_s0qualst:
   (!tr01env, s0qualst)->s1qualst
-(* ****** ****** *)
-fun
-trans01_s0tcnlst:
-  (!tr01env, s0tcnlst)->s1tcnlst
-fun
-trans01_d0tstlst:
-  (!tr01env, d0tstlst)->d1tstlst
 (* ****** ****** *)
 
 (* HX: transing dynexp *)

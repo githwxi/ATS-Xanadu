@@ -139,6 +139,139 @@ endloc (*local*) // end of [ local ]
 
 (* ****** ****** *)
 
+#implfun
+s1exp_none1
+(  s0e0  ) =
+s1exp_make_node
+(
+s0e0.lctn(),S1Enone1(s0e0))
+
+(* ****** ****** *)
+
+local
+//
+datatype
+s1exp =
+S1EXP of
+(
+loctn, s1exp_node)
+//
+#absimpl s1exp_tbox = s1exp
+//
+in (* in-of-local *)
+//
+#implfun
+s1exp_make_node
+(   loc,nod   ) = S1EXP(loc,nod)
+//
+#implfun
+s1exp_get_lctn(s1e) =
+let
+  val+S1EXP(loc,nod) = s1e in loc
+end
+#implfun
+s1exp_get_node(s1e) =
+let
+  val+S1EXP(loc,nod) = s1e in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+s1tcn =
+S1TCN of
+(
+loctn, s1tcn_node)
+//
+#absimpl s1tcn_tbox = s1tcn
+//
+in (* in-of-local *)
+//
+#implfun
+s1tcn_make_node
+(   loc,nod   ) = S1TCN(loc,nod)
+//
+#implfun
+s1tcn_get_lctn(s1e) =
+let
+  val+S1TCN(loc,nod) = s1e in loc
+end
+#implfun
+s1tcn_get_node(s1e) =
+let
+  val+S1TCN(loc,nod) = s1e in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d1tst =
+D1TST of
+(
+loctn, d1tst_node)
+#absimpl
+d1tst_tbox = d1tst
+//
+in (* in-of-local *)
+//
+#implfun
+d1tst_make_node
+(   loc,nod   ) = D1TST(loc,nod)
+//
+#implfun
+d1tst_get_lctn(stdf) =
+let
+ val+D1TST(loc,nod) = stdf in loc
+end
+#implfun
+d1tst_get_node(stdf) =
+let
+ val+D1TST(loc,nod) = stdf in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+s1tdf =
+S1TDF of
+(
+loctn, s1tdf_node)
+#absimpl
+s1tdf_tbox = s1tdf
+//
+in (* in-of-local *)
+//
+#implfun
+s1tdf_make_node
+(   loc,nod   ) = S1TDF(loc,nod)
+//
+#implfun
+s1tdf_get_lctn(stdf) =
+let
+ val+S1TDF(loc,nod) = stdf in loc
+end
+#implfun
+s1tdf_get_node(stdf) =
+let
+ val+S1TDF(loc,nod) = stdf in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
 local
 //
 datatype
@@ -319,77 +452,6 @@ end
 s1uni_get_node(s1u) =
 let
   val+S1UNI(loc,nod) = s1u in nod
-end
-//
-endloc (*local*) // end of [ local ]
-
-(* ****** ****** *)
-
-local
-//
-datatype
-s1tdf =
-S1TDF of
-(
-loctn, s1tdf_node)
-#absimpl
-s1tdf_tbox = s1tdf
-//
-in (* in-of-local *)
-//
-#implfun
-s1tdf_make_node
-(   loc,nod   ) = S1TDF(loc,nod)
-//
-#implfun
-s1tdf_get_lctn(stdf) =
-let
- val+S1TDF(loc,nod) = stdf in loc
-end
-#implfun
-s1tdf_get_node(stdf) =
-let
- val+S1TDF(loc,nod) = stdf in nod
-end
-//
-endloc (*local*) // end of [ local ]
-
-(* ****** ****** *)
-
-#implfun
-s1exp_none1
-(  s0e0  ) =
-s1exp_make_node
-(
-s0e0.lctn(),S1Enone1(s0e0))
-
-(* ****** ****** *)
-
-local
-//
-datatype
-s1exp =
-S1EXP of
-(
-loctn, s1exp_node)
-//
-#absimpl s1exp_tbox = s1exp
-//
-in (* in-of-local *)
-//
-#implfun
-s1exp_make_node
-(   loc,nod   ) = S1EXP(loc,nod)
-//
-#implfun
-s1exp_get_lctn(s1e) =
-let
-  val+S1EXP(loc,nod) = s1e in loc
-end
-#implfun
-s1exp_get_node(s1e) =
-let
-  val+S1EXP(loc,nod) = s1e in nod
 end
 //
 endloc (*local*) // end of [ local ]
