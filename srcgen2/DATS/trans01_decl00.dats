@@ -97,11 +97,9 @@ in//let
 case+
 d0cl.node() of
 //
-(*
 |
 D0Cfixity _ =>
 f0_fixity(tenv, d0cl)
-*)
 |
 D0Cnonfix _ =>
 f0_nonfix(tenv, d0cl)
@@ -133,6 +131,175 @@ _ (*otherwise*) => d1ecl_none1(d0cl)
 end where
 {
 (* ****** ****** *)
+//
+fun
+f0_fixity
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
+let
+//
+val loc0 = d0cl.lctn()
+//
+val-
+D0Cfixity
+(tknd
+,id0s,popt)= d0cl.node()
+//
+val-
+T_SRP_FIXITY
+  (knd0) = tknd.node()
+//
+val pval =
+prcdv_encode(h1precopt(popt))
+//
+val fxty =
+(
+if
+(knd=INFIX0)
+then
+FIXTYinf(pval, ASSOCnon)
+else
+(
+if
+(knd=INFIXL)
+then
+FIXTYinf(pval, ASSOClft)
+else
+(
+if
+(knd0=INFIXR)
+then
+FIXTYinf(pval, ASSOCrgt)
+else
+(
+if
+(knd0=PREFIX)
+then FIXTYpre(pval) else
+(
+if
+(knd0=PSTFIX)
+then FIXTYpos(pval) else FIXTYnon())))))
+//
+) : fixty // end of [val(fxty)]
+//
+fun
+loop
+(id0s: i0dntlst): void =
+(
+case+ xs of
+|
+list_nil() => ()
+|
+list_cons
+(id0, id0s) => let
+val tok =
+trans01_i0dnt(tenv, id0)
+val sym =
+(
+case-
+tok.node() of
+|
+T_IDALP(nam) => symbl(nam)
+|
+T_IDSYM(nam) => symbl(nam)
+|
+T_IDDIR(nam) => symbl(nam)): sym_t
+//
+in//let
+loop(tenv, id0s) where
+{
+val () =
+tr01env_insert_any(tenv, sym, fxty)
+}
+endlet//end-of-[list_cons(id0,ids)]
+) (*case+*) // end of [loop(tenv,ids)]
+//
+in
+let
+val () = loop(tenv, id0s)
+in
+d1ecl_make_node(loc0, D1Cd0ecl(d0cl))
+end
+end where // end-of-let
+{
+//
+fun
+h1signint
+(pint: precint): sint =
+(
+case+ pint of
+|
+PINTint1
+( tint ) => token2sint(tint)
+|
+PINTopr2
+(topr,tint) =>
+(
+case-
+topr.node() of
+|
+T_IDSYM("+") => 0+token2sint(tint)
+|
+T_IDSYM("-") => 0-token2sint(tint)
+) (*case-*) // end of [PINTopr2(_,_)]
+//
+fun
+h1precopt
+( tenv:
+! tr01env
+, popt: precopt): sint =
+(
+case+ popt of
+|
+PRECnil0() => 0
+|
+PRECint1(tint) =>
+token2sint(tint)
+|
+PRECopr2(topr,pmod) =>
+(
+case+ pmod of
+|
+PMODnone() => pval
+|
+PMODsome
+(tbeg,pint,tend) =>
+pval+h1signint(pint)) where
+{
+//
+val tok =
+trans01_i0dnt(tenv,topr)
+//
+val sym =
+(
+case-
+tok.node() of
+|
+T_IDALP(nam) => symbl(nam)
+|
+T_IDSYM(nam) => symbl(nam)): sym_t
+//
+val
+fopt =
+tr01env_search_opt(tenv, sym)
+//
+val pval =
+(
+case+ fopt of
+| ~
+optn_vt_nil() => 0
+| ~
+optn_vt_cons(fxty) =>
+(prcdv_decode(fixty_prcdv(fxty))))
+//
+} (*where*)//end-of-[PMODsome(_,_,_)]
+) (*case+*)//end-of-[h1precopt(tenv,popt)]
+//
+} (*where*)//end-of-[f0_fixity(tenv,d0cl)]
+
+(* ****** ****** *)
+//
 fun
 f0_nonfix
 ( tenv:
@@ -144,20 +311,20 @@ val loc0 = d0cl.lctn()
 //
 val-
 D0Cnonfix
-(tok0, ids) = d0cl.node()
+(tknd, id0s) = d0cl.node()
 //
 fun
 loop
 ( tenv:
 ! tr01env
-, ids: i0dntlst): void =
+, id0s: i0dntlst): void =
 (
-case+ ids of
+case+ id0s of
 |
 list_nil() => ()
 |
 list_cons
-(id0, ids) => let
+(id0, id0s) => let
 //
 val tok =
 trans01_i0dnt(tenv, id0)
@@ -171,7 +338,7 @@ T_IDALP(nam) => symbl(nam)
 T_IDSYM(nam) => symbl(nam)): sym_t
 //
 in
-loop(tenv, ids) where
+loop(tenv, id0s) where
 {
 val () =
 tr01env_insert_any(tenv,sym,FIXTYnon)
@@ -181,7 +348,7 @@ endlet//end-of-[list_cons(id0,ids)]
 //
 in
 let
-val () = loop(tenv, ids)
+val () = loop(tenv, id0s)
 in
 d1ecl_make_node(loc0, D1Cd0ecl(d0cl))
 end
