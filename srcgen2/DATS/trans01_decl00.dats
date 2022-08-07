@@ -142,6 +142,10 @@ D0Cdatasort _ =>
 f0_datasort(tenv, d0cl)
 //
 |
+D0Cdatatype _ =>
+f0_datatype(tenv, d0cl)
+//
+|
 _ (*otherwise*) => d1ecl_none1(d0cl)
 //
 end where
@@ -746,6 +750,35 @@ trans01_d0tstlst(tenv, d0ts)
 in//let
   d1ecl(loc0, D1Cdatasort(tknd, d1ts))
 end (*let*) // end of [f0_datasort(tenv,d0cl)]
+
+(* ****** ****** *)
+
+fun
+f0_datatype
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
+let
+//
+val loc0 = d0cl.lctn()
+//
+(*
+val () =
+println!
+("trans01_d0ecl: d0cl = ", d0cl)
+*)
+//
+val-
+D0Cdatatype
+(tknd
+,d0ts, wdcs) = d0cl.node()
+//
+val d1ts = trans01_d0typlst(tenv, d0ts)
+val wdcs = trans01_wd0eclseq(tenv, wdcs)
+//
+in//let
+  d1ecl(loc0, D1Cdatatype(tknd, d1ts, wdcs))
+end (*let*) // end of [f0_datatype(tenv,d0cl)]
 
 (* ****** ****** *)
 

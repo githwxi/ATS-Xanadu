@@ -169,6 +169,21 @@ FIL = "./filpath.sats"
 #typedef d0tstlst = $S0E.d0tstlst
 #typedef d1tstlst = $S1E.d1tstlst
 (* ****** ****** *)
+#typedef s0uni = $S0E.s0uni
+#typedef s1uni = $S1E.s1uni
+#typedef s0unilst = $S0E.s0unilst
+#typedef s1unilst = $S1E.s1unilst
+(* ****** ****** *)
+#typedef d0tcn = $S0E.d0tcn
+#typedef d1tcn = $S1E.d1tcn
+#typedef d0tcnlst = $S0E.d0tcnlst
+#typedef d1tcnlst = $S1E.d1tcnlst
+(* ****** ****** *)
+#typedef d0typ = $S0E.d0typ
+#typedef d1typ = $S1E.d1typ
+#typedef d0typlst = $S0E.d0typlst
+#typedef d1typlst = $S1E.d1typlst
+(* ****** ****** *)
 //
 #typedef d0pat = $D0E.d0pat
 #typedef d0exp = $D0E.d0exp
@@ -187,6 +202,9 @@ FIL = "./filpath.sats"
 (* ****** ****** *)
 #typedef d0parsed = $D0E.d0parsed
 #typedef d1parsed = $D1E.d1parsed
+(* ****** ****** *)
+#typedef wd0eclseq = $D0E.wd0eclseq
+#typedef wd1eclseq = $D1E.wd1eclseq
 (* ****** ****** *)
 //
 fun
@@ -329,6 +347,13 @@ fun trans01_s0qua:
   (!tr01env, s0qua)->s1qua
 //
 (* ****** ****** *)
+fun trans01_s0uni:
+  (!tr01env, s0uni)->s1uni
+fun trans01_d0tcn:
+  (!tr01env, d0tcn)->d0tcn
+fun trans01_d0typ:
+  (!tr01env, d0typ)->d0typ
+(* ****** ****** *)
 fun
 trans01_s0arglst:
   (!tr01env, s0arglst)->s1arglst
@@ -345,6 +370,16 @@ trans01_t0maglst:
 fun
 trans01_s0qualst:
   (!tr01env, s0qualst)->s1qualst
+(* ****** ****** *)
+fun
+trans01_s0unilst:
+  (!tr01env, s0unilst)->s1unilst
+fun
+trans01_d0tcnlst:
+  (!tr01env, d0tcnlst)->d1tcnlst
+fun
+trans01_d0typlst:
+  (!tr01env, d0typlst)->d1typlst
 (* ****** ****** *)
 
 (* HX: transing dynexp *)
@@ -376,6 +411,10 @@ trans01_d0ecl:
 fun
 trans01_d0eclist:
   (!tr01env, d0eclist)->d1eclist
+(* ****** ****** *)
+fun
+trans01_wd0eclseq:
+  (!tr01env, wd0eclseq)->wd1eclseq
 (* ****** ****** *)
 //
 #typedef d0eclistopt = optn(d0eclist)
