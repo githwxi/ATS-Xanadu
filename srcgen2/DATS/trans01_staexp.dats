@@ -864,7 +864,7 @@ FIXTYnon() => FXITMatm(s1t0)
 |
 _(* else *) => FXITMopr(s1t0, fxty))
 //
-end (*let*) // end of [f0_id0(tenv,s0t0)]
+end (*let*) //end-of(f0_id0(tenv,s0t0))
 //
 and
 f0_int
@@ -928,6 +928,9 @@ f0_sexp
 (
 case+
 s0e0.node() of
+//
+|
+S0Tid0 _ => f0_id0(tenv, s0e0)
 //
 |
 S0Eint _ => f0_int(tenv, s0e0)
@@ -1151,7 +1154,86 @@ end (*let*) // end of [S0Equal(_,_)]
 |
 _(*otherwise*) => FXITMatm(s1exp_none1(s0e0))
 //
-) (*case+*) // end of [f0_sexp(s0e0)]
+) (*case+*) // end of [f0_sexp(tenv,s0e0)]
+//
+and
+f0_id0
+( tenv:
+! tr01env
+, s0e0: s0exp): s1efx =
+let
+//
+val
+loc0 = s0e0.lctn()
+val
+S0Eid0
+( sid ) = s0e0.node()
+val
+tok0 =
+trans01_i0dnt(tenv, sid)
+//
+in//let
+//
+case-
+tok0.node() of
+|
+T_IDALP(nam1) =>
+f0_id0_1(tenv, tok0, nam1)
+|
+T_IDSYM(nam1) =>
+f0_id0_1(tenv, tok0, nam1)
+|
+T_IDDLR(nam1) =>
+f0_id0_1(tenv, tok0, nam1)
+//
+|
+T_BSLSH((*nil*)) => f0_id0_2(tenv, tok0)
+//
+end // end of [f0_id0(tenv,s0e0)]
+//
+and
+f0_id0_1
+( tenv:
+! tr01env
+, tok0: token
+, nam1: string): s1efx =
+let
+//
+val loc0 = tok0.lctn()
+val sym1 = symbl(nam1)
+val s1e0 =
+s1exp(loc0, S1Eid0(sym1))
+val fopt =
+tr01env_search_opt(tenv, sym1)
+//
+in
+case+ fopt of
+| ~
+optn_vt_nil() => FXITMatm(s1e0)
+| ~
+optn_vt_cons(fxty) =>
+(
+case+ fxty of
+|
+FIXTYnon() => FXITMatm(s1e0)
+|
+_(*otherwise*) => FXITMopr(s1e0, fxty)
+) (* end of [optn_vt_cons(fxty)] *)
+end (*let*) // end of [f0_id0_1(_,_,_)]
+//
+and
+f0_id0_2
+( tenv:
+! tr01env
+, tok0: token): s1efx =
+(
+FXITMopr
+(s1e0, bslash_fixty)) where
+{
+val loc0 = tok0.lctn()
+val s1e0 =
+s1exp_make_node(loc0, S1Eb0sh())
+} (*where*) // end of [ f0_id0_2(_,_) ]
 //
 and
 f0_int
