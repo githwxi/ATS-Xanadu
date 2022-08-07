@@ -82,6 +82,42 @@ _(*?*) = "./lexing0_print0.dats"
 #symload node with s1tdf_get_node
 #symload lctn with s1tdf_get_lctn
 (* ****** ****** *)
+//
+#implfun
+s1qid_fprint
+(out, qid) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ qid of
+|
+S1QIDnone(id1) =>
+print("S1QIDnone(", id1, ")")
+|
+S1QIDsome(tok, id1) =>
+print
+("S1QIDsome(", tok, ";", id1, ")")
+end (*let*) // end of [s1qid_fprint]
+//
+#implfun
+d1qid_fprint
+(out, qid) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ qid of
+|
+D1QIDnone(id1) =>
+print("D1QIDnone(", id1, ")")
+|
+D1QIDsome(tok, id1) =>
+print
+("D1QIDsome(", tok, ";", id1, ")")
+end (*let*) // end of [d1qid_fprint]
+//
+(* ****** ****** *)
 
 #implfun
 g1nam_fprint

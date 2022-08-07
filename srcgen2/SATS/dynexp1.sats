@@ -571,6 +571,11 @@ d1ecl_node =
   , token // s0eid
   , s1maglst, sort1opt, s1exp)
 //
+| D1Cabsopen of (token, s1qid)
+| D1Cabsimpl of
+  ( token // kind
+  , s1qid, s1maglst, sort1opt, s1exp)
+//
 |
 D1Cvaldclst of
 (token(*VAL(vlk)*), d1valdclist)

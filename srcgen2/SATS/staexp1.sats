@@ -234,6 +234,28 @@ g1mag_make_node
 (* ****** ****** *)
 //
 datatype
+s1qid =
+| S1QIDnone of (i1dnt)
+| S1QIDsome of (token, i1dnt)
+datatype
+d1qid =
+| D1QIDnone of (i1dnt)
+| D1QIDsome of (token, i1dnt)
+//
+fun
+s1qid_get_lctn(s1qid): loc_t
+fun
+d1qid_get_lctn(d1qid): loc_t
+//
+#symload lctn with s1qid_get_lctn
+#symload lctn with d1qid_get_lctn
+//
+fun s1qid_fprint:(FILR,s1qid)->void
+fun d1qid_fprint:(FILR,d1qid)->void
+//
+(* ****** ****** *)
+//
+datatype
 sort1_node =
 //
 | S1Tid0 of sym_t

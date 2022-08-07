@@ -464,6 +464,38 @@ token_make_node(loc, T_ERR())
 }(*where*)//end-of(trans01_t0str)
 //
 (* ****** ****** *)
+//
+#implfun
+trans01_s0qid
+(tenv, sqid) =
+(
+case+ sqid of
+|
+S0QIDnone(id0) =>
+S1QIDnone
+(trans01_i0dnt(tenv, id0))
+|
+S0QIDsome(tok, id0) =>
+S1QIDsome
+(tok, trans01_i0dnt(tenv, id0))
+)
+//
+#implfun
+trans01_d0qid
+(tenv, sqid) =
+(
+case+ sqid of
+|
+D0QIDnone(id0) =>
+D1QIDnone
+(trans01_i0dnt(tenv, id0))
+|
+D0QIDsome(tok, id0) =>
+D1QIDsome
+(tok, trans01_i0dnt(tenv, id0))
+)
+//
+(* ****** ****** *)
 
 local
 
@@ -1187,7 +1219,8 @@ T_IDDLR(nam1) =>
 f0_id0_1(tenv, tok0, nam1)
 //
 |
-T_BSLSH((*nil*)) => f0_id0_2(tenv, tok0)
+T_BSLSH
+((*nil*)) => f0_id0_2(tenv, tok0)
 //
 end // end of [f0_id0(tenv,s0e0)]
 //

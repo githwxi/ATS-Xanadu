@@ -213,8 +213,7 @@ s0lab_fprint(g_print$out<>(), lab)
 g_print<s0qid>(qid) =
 s0qid_fprint(g_print$out<>(), qid)
 #impltmp
-g_print
-<d0qid>(qid) =
+g_print<d0qid>(qid) =
 d0qid_fprint(g_print$out<>(), qid)
 //
 (* ****** ****** *)
@@ -527,9 +526,17 @@ fixty_fprint(g_print$out<>(), fxt)
 //
 #impltmp
 {a:t0}
-g_print
-<fxitm(a)>(fxi) =
+g_print<fxitm(a)>(fxi) =
 fxitm_fprint<a>(g_print$out<>(), fxi)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<s1qid>(qid) =
+s1qid_fprint(g_print$out<>(), qid)
+#impltmp
+g_print<d1qid>(qid) =
+d1qid_fprint(g_print$out<>(), qid)
 //
 (* ****** ****** *)
 //
