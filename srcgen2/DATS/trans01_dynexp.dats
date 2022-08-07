@@ -45,6 +45,9 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload
+_(*TRANS01*) = "./trans01.dats"
+(* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
@@ -111,31 +114,15 @@ end (*let*) // end of [trans01_d0exp(d0e0)]
 
 #implfun
 trans01_d0patlst
-  (tenv, d0ps) =
-(
-list_map_e1nv
-<d0pat><d1pat>(d0ps, tenv)) where
-{
-#impltmp
-map$fopr_e1nv
-<d0pat><d1pat>
-( d0p1, tenv ) = trans01_d0pat(tenv, d0p1)
-} (*where*) // end of [trans01_d0patlst(d0ps)]
+(tenv, d0ps) =
+list_trans01_fnp(tenv, d0ps, trans01_d0pat)
 
 (* ****** ****** *)
 
 #implfun
 trans01_d0explst
-  (tenv, d0es) =
-(
-list_map_e1nv
-<d0exp><d1exp>(d0es, tenv)) where
-{
-#impltmp
-map$fopr_e1nv
-<d0exp><d1exp>
-( d0e1, tenv ) = trans01_d0exp(tenv, d0e1)
-} (*where*) // end of [trans01_d0explst(d0es)]
+(tenv, d0es) =
+list_trans01_fnp(tenv, d0es, trans01_d0exp)
 
 (* ****** ****** *)
 

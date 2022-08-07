@@ -47,6 +47,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload
 _(*XFIXITY*) = "./xfixity.dats"
+#staload
+_(*TRANS01*) = "./trans01.dats"
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
@@ -1640,241 +1642,112 @@ map$fopr_e1nv
 #implfun
 trans01_g0namlst
 (tenv, g0ns) =
-(
-list_map_e1nv
-<g0nam><g1nam>(g0ns, tenv)) where
-{
-#impltmp
-map$fopr_e1nv
-<g0nam><g1nam>
-( g0n1, tenv ) = trans01_g0nam(tenv, g0n1)
-} (*where*) // end of [trans01_g0namlst(g0ns)]
+list_trans01_fnp(tenv, g0ns, trans01_g0nam)
 
 (* ****** ****** *)
 
 #implfun
 trans01_g0explst
   (tenv, g0es) =
-(
-list_map_e1nv
-<g0exp><g1exp>(g0es, tenv)) where
-{
-#impltmp
-map$fopr_e1nv
-<g0exp><g1exp>
-( g1e1, tenv ) = trans01_g0exp(tenv, g1e1)
-} (*where*) // end of [trans01_g0explst(g0es)]
+list_trans01_fnp(tenv, g0es, trans01_g0exp)
 
 (* ****** ****** *)
 
 #implfun
 trans01_sort0lst
 (tenv, s0ts) =
-(
-list_map_e1nv
-<sort0><sort1>(s0ts, tenv)) where
-{
-#impltmp
-map$fopr_e1nv
-<sort0><sort1>
-( s0t1, tenv ) = trans01_sort0(tenv, s0t1)
-} (*where*) // end of [trans01_sort0lst(s0ts)]
+list_trans01_fnp(tenv, s0ts, trans01_sort0)
 
 (* ****** ****** *)
 
 #implfun
 trans01_sort0opt
 (tenv, opt0) =
-(
-optn_map_e1nv
-<sort0><sort1>(opt0, tenv)) where
-{
-#impltmp
-map$fopr_e1nv
-<sort0><sort1>
-( s1t1, tenv ) = trans01_sort0(tenv, s1t1)
-} (*where*) // end of [trans01_sort0opt(opt0)]
+optn_trans01_fnp(tenv, opt0, trans01_sort0)
 
 (* ****** ****** *)
 
 #implfun
 trans01_s0tcnlst
 (tenv, tcns) =
-(
-list_map_e1nv
-<s0tcn><s1tcn>(tcns, tenv)) where
-{
-#impltmp
-map$fopr_e1nv
-<s0tcn><s1tcn>
-( tcn1, tenv ) = trans01_s0tcn(tenv, tcn1)
-} (*where*) // end of [trans01_s0tcnlst(tcns)]
+list_trans01_fnp(tenv, tcns, trans01_s0tcn)
 
 (* ****** ****** *)
 
 #implfun
 trans01_d0tstlst
 (tenv, d0ts) =
-(
-list_map_e1nv
-<d0tst><d1tst>(d0ts, tenv)) where
-{
-#impltmp
-map$fopr_e1nv
-<d0tst><d1tst>
-( d0t1, tenv ) = trans01_d0tst(tenv, d0t1)
-} (*where*) // end of [trans01_d0tstlst(d0ts)]
+list_trans01_fnp(tenv, d0ts, trans01_d0tst)
 
 (* ****** ****** *)
 
 #implfun
 trans01_s0arglst
 (tenv, s0as) =
-(
-list_map_e1nv
-<s0arg><s1arg>(s0as, tenv)) where
-{
-#impltmp
-map$fopr_e1nv
-<s0arg><s1arg>
-( s0a1, tenv ) = trans01_s0arg(tenv, s0a1)
-} (*where*) // end of [trans01_s0arglst(s0as)]
+list_trans01_fnp(tenv, s0as, trans01_s0arg)
 
 (* ****** ****** *)
 
 #implfun
 trans01_s0maglst
 (tenv, smas) =
-(
-list_map_e1nv
-<s0mag><s1mag>(smas, tenv)) where
-{
-#impltmp
-map$fopr_e1nv
-<s0mag><s1mag>
-( sma1, tenv ) = trans01_s0mag(tenv, sma1)
-} (*where*) // end of [trans01_s0maglst(smas)]
+list_trans01_fnp(tenv, smas, trans01_s0mag)
 
 (* ****** ****** *)
 
 #implfun
 trans01_t0arglst
 (tenv, t0as) =
-(
-list_map_e1nv
-<t0arg><t1arg>(t0as, tenv)) where
-{
-#impltmp
-map$fopr_e1nv
-<t0arg><t1arg>
-( t0a1, tenv ) = trans01_t0arg(tenv, t0a1)
-} (*where*) // end of [trans01_t0arglst(t0as)]
+list_trans01_fnp(tenv, t0as, trans01_t0arg)
 
 (* ****** ****** *)
 
 #implfun
 trans01_t0maglst
 (tenv, tmas) =
-(
-list_map_e1nv
-<t0mag><t1mag>(tmas, tenv)) where
-{
-#impltmp
-map$fopr_e1nv
-<t0mag><t1mag>
-( tma1, tenv ) = trans01_t0mag(tenv, tma1)
-} (*where*) // end of [trans01_t0maglst(tmas)]
+list_trans01_fnp(tenv, tmas, trans01_t0mag)
 
 (* ****** ****** *)
 
 #implfun
 trans01_s0qualst
 (tenv, s0qs) =
-(
-list_map_e1nv
-<s0qua><s1qua>(s0qs, tenv)) where
-{
-#impltmp
-map$fopr_e1nv
-<s0qua><s1qua>
-( s0q1, tenv ) = trans01_s0qua(tenv, s0q1)
-} (*where*) // end of [trans01_squalst(s0qs)]
+list_trans01_fnp(tenv, s0qs, trans01_s0qua)
 
 (* ****** ****** *)
 
 #implfun
 trans01_s0explst
 ( tenv, s0es ) =
-(
-list_map_e1nv
-<s0exp><s1exp>(s0es, tenv)) where
-{
-#impltmp
-map$fopr_e1nv
-<s0exp><s1exp>
-( s0e1, tenv ) = trans01_s0exp(tenv, s0e1)
-} (*where*) // end of [trans01_s0explst(s0es)]
+list_trans01_fnp(tenv, s0es, trans01_s0exp)
 
 (* ****** ****** *)
 
 #implfun
 trans01_s0expopt
 ( tenv, opt0 ) =
-(
-optn_map_e1nv
-<s0exp><s1exp>
-( opt0, tenv )) where
-{
-#impltmp
-map$fopr_e1nv
-<s0exp><s1exp>
-( s0e1, tenv ) = trans01_s0exp(tenv, s0e1)
-} (*where*) // end of [trans01_s0expopt(opt0)]
+optn_trans01_fnp(tenv, opt0, trans01_s0exp)
 
 (* ****** ****** *)
 
 #implfun
 trans01_s0unilst
 ( tenv, s0us ) =
-(
-list_map_e1nv
-<s0uni><s1uni>(s0us, tenv)) where
-{
-#impltmp
-map$fopr_e1nv
-<s0uni><s1uni>
-( s0u1, tenv ) = trans01_s0uni(tenv, s0u1)
-} (*where*) // end of [trans01_s0unilst(s0us)]
+list_trans01_fnp(tenv, s0us, trans01_s0uni)
 
 (* ****** ****** *)
 
 #implfun
 trans01_d0tcnlst
-( tenv, tcns ) =
-(
-list_map_e1nv
-<d0tcn><d1tcn>(tcns, tenv)) where
-{
-#impltmp
-map$fopr_e1nv
-<d0tcn><d1tcn>
-( tcn1, tenv ) = trans01_d0tcn(tenv, tcn1)
-} (*where*) // end of [trans01_d0tcnlst(tcns)]
+(tenv, tcns) =
+list_trans01_fnp(tenv, tcns, trans01_d0tcn)
 
 (* ****** ****** *)
 
 #implfun
 trans01_d0typlst
-( tenv, d0ts ) =
-(
-list_map_e1nv
-<d0typ><d1typ>(d0ts, tenv)) where
-{
-#impltmp
-map$fopr_e1nv
-<d0typ><d1typ>
-( d0t1, tenv ) = trans01_d0typ(tenv, d0t1)
-} (*where*) // end of [trans01_d0typlst(d0ts)]
+(tenv, d0ts) =
+list_trans01_fnp(tenv, d0ts, trans01_d0typ)
 
 (* ****** ****** *)
 

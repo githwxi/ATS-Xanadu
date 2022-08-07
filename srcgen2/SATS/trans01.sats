@@ -257,6 +257,25 @@ fun token2dflt: token -> double
 fun token2sstr: token -> string
 fun token2dstr: token -> string
 (* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:t0>
+list_trans01_fnp
+( e1:
+! tr01env
+, xs: list(x0)
+, (!tr01env, x0) -> y0): list(y0)
+fun
+<x0:t0>
+<y0:t0>
+optn_trans01_fnp
+( e1:
+! tr01env
+, xs: optn(x0)
+, (!tr01env, x0) -> y0): optn(y0)
+//
+(* ****** ****** *)
 
 (* HX: transing staexp *)
 
@@ -350,9 +369,9 @@ fun trans01_s0qua:
 fun trans01_s0uni:
   (!tr01env, s0uni)->s1uni
 fun trans01_d0tcn:
-  (!tr01env, d0tcn)->d0tcn
+  (!tr01env, d0tcn)->d1tcn
 fun trans01_d0typ:
-  (!tr01env, d0typ)->d0typ
+  (!tr01env, d0typ)->d1typ
 (* ****** ****** *)
 fun
 trans01_s0arglst:

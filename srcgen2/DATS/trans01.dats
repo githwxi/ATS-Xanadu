@@ -116,4 +116,30 @@ end (*let*) // end of [d1parsed_preadx0(dpar)]
 
 (* ****** ****** *)
 
+#impltmp
+<x0><y0>
+list_trans01_fnp
+( e1, xs, fopr ) =
+(
+list_map_e1nv<x0><y0>(xs, e1)) where
+{
+#impltmp
+map$fopr_e1nv<x0><y0>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [list_trans01_fnp(e1,xs,fopr)]
+
+(* ****** ****** *)
+
+#impltmp
+<x0><y0>
+optn_trans01_fnp
+( e1, xs, fopr ) =
+(
+optn_map_e1nv<x0><y0>(xs, e1)) where
+{
+#impltmp
+map$fopr_e1nv<x0><y0>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [optn_trans01_fnp(e1,xs,fopr)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_trans01.dats] *)
