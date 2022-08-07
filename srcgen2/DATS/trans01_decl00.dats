@@ -182,9 +182,11 @@ then FIXTYpre(pval) else
 (
 if
 (knd0=KPSTFIX)
-then FIXTYpos(pval) else FIXTYnon()))))
+then
+FIXTYpos(pval) else FIXTYnon())))
+)
 //
-) : fixty // end of [val(fxty)]
+) : fixty // end of [ val(fxty) ]
 //
 fun
 loop
@@ -284,7 +286,8 @@ tok.node() of
 |
 T_IDALP(nam) => symbl(nam)
 |
-T_IDSYM(nam) => symbl(nam)): sym_t
+T_IDSYM(nam) => symbl(nam)
+) : sym_t//end-of-[val(sym)]
 //
 val
 fopt =
@@ -294,10 +297,25 @@ val pval =
 (
 case+ fopt of
 | ~
-optn_vt_nil() => 0
-| ~
 optn_vt_cons(fxty) =>
-(prcdv_decode(fixty_prcdv(fxty))))
+(
+prcdv_decode(fixty_prcdv(fxty))
+)
+//
+| ~
+optn_vt_nil((*nil*)) => 0 where
+{
+val () =
+let
+val nam = sym.name()
+in//let
+prerr
+("TRANS01-WARN1:", tok.lctn());
+prerrln
+(":[",nam,"] is a non-operator!")
+endlet // end-of-[ val () ]
+} (*where*)//end-of-(optn_vt_nil())
+)
 //
 } (*where*)//end-of-[PMODsome(_,_,_)]
 ) (*case+*)//end-of-[h1precopt(tenv,popt)]
