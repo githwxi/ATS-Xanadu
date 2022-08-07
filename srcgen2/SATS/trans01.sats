@@ -149,6 +149,8 @@ FIL = "./filpath.sats"
 #typedef t1arg = $S1E.t1arg
 #typedef t0mag = $S0E.t0mag
 #typedef t1mag = $S1E.t1mag
+#typedef t0arglst = $S0E.t0arglst
+#typedef t1arglst = $S1E.t1arglst
 #typedef t0maglst = $S0E.t0maglst
 #typedef t1maglst = $S1E.t1maglst
 (* ****** ****** *)
@@ -310,6 +312,9 @@ trans01_s0arglst:
 fun
 trans01_s0maglst:
   (!tr01env, s0maglst)->s1maglst
+fun
+trans01_t0arglst:
+  (!tr01env, t0arglst)->t1arglst
 fun
 trans01_t0maglst:
   (!tr01env, t0maglst)->t1maglst

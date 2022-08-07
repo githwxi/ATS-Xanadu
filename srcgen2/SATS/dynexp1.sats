@@ -571,6 +571,10 @@ d1ecl_node =
   , token // s0eid
   , s1maglst, sort1opt, s1exp)
 //
+| D1Cabstype of
+  ( token // kind
+  , token // s0eid
+  , t1maglst, sort1opt, a1tdf)
 | D1Cabsopen of (token, s1qid)
 | D1Cabsimpl of
   ( token // kind
@@ -623,6 +627,9 @@ where
 (* ****** ****** *)
 fun
 d1ecl_fprint:(FILR,d1ecl)->void
+(* ****** ****** *)
+fun
+a1tdf_fprint:(FILR,a1tdf)->void
 (* ****** ****** *)
 //
 fun

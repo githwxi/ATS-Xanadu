@@ -645,11 +645,11 @@ print(sid0,";",smas,";",tres,";");print(teq1,";",def2,")"))
 //
 |
 D0Cabstype
-(tknd,sid0,tmas,tres,def2) =>
+(tknd,seid,tmas,tres,atdf) =>
 (
 print("D0Cabstype(",tknd,";");
 print
-(sid0,";",tmas,";",tres,";",def2,")"))
+(seid,";",tmas,";",tres,";",atdf,")"))
 |
 D0Cabsopen(tknd, sqid) =>
 print("D0Cabsopen(",tknd,";",sqid,")")

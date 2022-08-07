@@ -98,10 +98,16 @@ _(*XFIXITY*) = "./xfixity.dats"
 #symload lctn with s0mag_get_lctn
 #symload node with s0mag_get_node
 (* ****** ****** *)
+#symload lctn with t0arg_get_lctn
+#symload node with t0arg_get_node
+#symload lctn with t0mag_get_lctn
+#symload node with t0mag_get_node
+(* ****** ****** *)
 #symload lctn with s0qua_get_lctn
 #symload node with s0qua_get_node
 (* ****** ****** *)
 #symload s1mag with s1mag_make_node
+#symload t1mag with t1mag_make_node
 (* ****** ****** *)
 #symload lctn with s0exp_get_lctn
 #symload node with s0exp_get_node
@@ -1413,7 +1419,7 @@ prerrln
 ("trans01_s0mag: s0ma = ", s0ma)
 *)
 //
-in
+in//let
 //
 case+
 s0ma.node() of
@@ -1457,6 +1463,84 @@ s1mag_make_node(loc0, S1MAGlist(s1as))
 end (*let*) // end of [S0MAGlist]
 //
 end (*let*) // end of [trans01_s0mag(s0ma)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_t0arg
+(tenv, t0a0) =
+(
+case+
+t0a0.node() of
+|
+T0ARGnone
+(  tok1  ) =>
+let
+val
+loc0 = t0a0.lctn()
+val
+s1t1 =
+sort1_none0(tok1.lctn())
+in//let
+t1arg
+(loc0
+,T1ARGsome(s1t1,optn_nil()))
+end (*let*) // T0ARGnone(_)
+|
+T0ARGsome
+(s0t1, topt) =>
+let
+val
+loc0 = t0a0.lctn()
+val
+s1t1 =
+trans01_sort0(tenv, s0t1)
+in//let
+t1arg
+(loc0, T1ARGsome(s1t1, topt))
+endlet // end of (S0ARGsome(_,_))
+) (*case+*)//end-of(trans01_t0arg(tenv,t0a0))
+
+(* ****** ****** *)
+
+#implfun
+trans01_t0mag
+(tenv, t0ma) = let
+//
+val
+loc0 = t0ma.lctn()
+//
+in//let
+//
+case-
+t0ma.node() of
+|
+T0MAGnone(tok) =>
+let
+val loc =
+tok.lctn()
+val s1t =
+sort1_none0(loc)
+val
+t1a =
+t1arg_make_node
+( loc
+, T1ARGsome(s1t, optn_nil()))
+in
+t1mag_make_node
+(loc0, T1MAGlist(list_sing(t1a)))
+end (*let*) // end of [T0MAGnone]
+|
+T0MAGlist
+(tbeg,t0as,tend) =>
+let
+val t1as =
+trans01_t0arglst(tenv, t0as)
+in//let
+t1mag_make_node(loc0, T1MAGlist(t1as))
+end (*let*) // end of [T0MAGlist]
+//
+end (*let*) // end of [trans01_t0mag(tenv,t0ma)]
 
 (* ****** ****** *)
 
@@ -1594,6 +1678,36 @@ map$fopr_e1nv
 <s0mag><s1mag>
 ( sma1, tenv ) = trans01_s0mag(tenv, sma1)
 } (*where*) // end of [trans01_s0maglst(smas)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_t0arglst
+(tenv, t0as) =
+(
+list_map_e1nv
+<t0arg><t1arg>(t0as, tenv)) where
+{
+#impltmp
+map$fopr_e1nv
+<t0arg><t1arg>
+( t0a1, tenv ) = trans01_t0arg(tenv, t0a1)
+} (*where*) // end of [trans01_t0arglst(t0as)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_t0maglst
+(tenv, tmas) =
+(
+list_map_e1nv
+<t0mag><t1mag>(tmas, tenv)) where
+{
+#impltmp
+map$fopr_e1nv
+<t0mag><t1mag>
+( tma1, tenv ) = trans01_t0mag(tenv, tma1)
+} (*where*) // end of [trans01_t0maglst(tmas)]
 
 (* ****** ****** *)
 

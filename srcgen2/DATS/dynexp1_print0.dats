@@ -195,19 +195,61 @@ print(tknd,";",sid0,";",tmas,";",s1t1,")"))
 |
 D1Csortdef
 (tknd,tid0,stdf) =>
-print("D1Csortdef(",tknd,";",tid0,";",stdf,")")
+print
+("D1Csortdef(",tknd,";",tid0,";",stdf,")")
 //
 |
 D1Csexpdef
 (tknd,seid
 ,smas,tres,s1e1) =>
 (
-print("D1Csexpdef(");
-print(tknd,";",seid,";",smas,";",tres,";",s1e1,")"))
+print("D1Csexpdef(",tknd,";");
+print(seid,";",smas,";",tres,";",s1e1,")"))
+//
+|
+D1Cabstype
+(tknd,seid,tmas,tres,atdf) =>
+(
+print("D1Cabstype(",tknd,";");
+print
+(seid,";",tmas,";",tres,";",atdf,")"))
+|
+D1Cabsopen(tknd, sqid) =>
+print("D1Cabsopen(",tknd,";",sqid,")")
+|
+D1Cabsimpl
+(tknd,sid1,smas,tres,sdef) =>
+(
+print("D1Cabsimpl(",tknd,";");
+print(sid1,";",smas,";",tres,";",sdef,")"))
 //
 | D1Cnone0() => print("D1Cnone0(", ")")
 | D1Cnone1(d0cl) => print("D1Cnone1(", d0cl ,")")
+//
 end (*let*) // end of [d1ecl_fprint(out,dcl)]
+
+(* ****** ****** *)
+
+#implfun
+a1tdf_fprint
+(out, tdf) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ tdf of
+|
+A1TDFsome() =>
+print("A1TDFsome(", ")")
+|
+A1TDFlteq(s1e1) =>
+print("A1TDFlteq(",s1e1,")")
+|
+A1TDFeqeq(s1e1) =>
+print("A1TDFeqeq(",s1e1,")")
+//
+end (*let*) // end of [a1tdf_fprint]
 
 (* ****** ****** *)
 

@@ -128,6 +128,9 @@ D0Csexpdef _ =>
 f0_sexpdef(tenv, d0cl)
 //
 |
+D0Cabstype _ =>
+f0_abstype(tenv, d0cl)
+|
 D0Cabsopen _ =>
 f0_absopen(tenv, d0cl)
 |
@@ -602,6 +605,54 @@ end (*let*) // end of [f0_sexpdef(tenv,d0cl]
 (* ****** ****** *)
 
 fun
+f0_abstype
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
+let
+//
+val loc0 = d0cl.lctn()
+//
+(*
+val () =
+println!
+("trans01_d0ecl: d0cl = ", d0cl)
+*)
+//
+val-
+D0Cabstype
+(tknd
+,seid, tmas
+,tres, atdf) = d0cl.node()
+//
+val seid =
+trans01_i0dnt(tenv, seid)
+val tmas =
+trans01_t0maglst(tenv, tmas)
+val tres =
+trans01_sort0opt(tenv, tres)
+//
+val atdf =
+(
+case+ atdf of
+|
+A0TDFsome() => A1TDFsome()
+|
+A0TDFlteq(tknd, s0e1) =>
+A1TDFlteq(trans01_s0exp(tenv,s0e1))
+|
+A0TDFeqeq(tknd, s0e1) =>
+A1TDFeqeq(trans01_s0exp(tenv,s0e1))
+) : a1tdf // end of [ val(atdf) ]
+//
+in//let
+d1ecl_make_node
+(loc0,D1Cabstype(tknd,seid,tmas,tres,atdf))
+end (*let*) // end of [f0_abstype(tenv,d0cl)]
+
+(* ****** ****** *)
+
+fun
 f0_absopen
 ( tenv:
 ! tr01env
@@ -645,10 +696,10 @@ println!
 //
 val-
 D0Cabsimpl
-( tknd
-, sqid
-, smas, tres
-, teq1, s0e2) = d0cl.node()
+(tknd
+,sqid
+,smas, tres
+,teq1, s0e2) = d0cl.node()
 //
 val sqid =
 trans01_s0qid(tenv, sqid)
