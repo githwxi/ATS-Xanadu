@@ -138,6 +138,10 @@ D0Cabsimpl _ =>
 f0_absimpl(tenv, d0cl)
 //
 |
+D0Cdatasort _ =>
+f0_datasort(tenv, d0cl)
+//
+|
 _ (*otherwise*) => d1ecl_none1(d0cl)
 //
 end where
@@ -711,8 +715,37 @@ val s1e2 = trans01_s0exp(tenv, s0e2)
 //
 in//let
 d1ecl_make_node
-(loc0,D1Cabsimpl(tknd,sqid,smas,tres,s1e2))
+(loc0
+,D1Cabsimpl(tknd,sqid,smas,tres,s1e2))
 end (*let*) // end of [f0_absopen(tenv,d0cl)]
+
+(* ****** ****** *)
+
+fun
+f0_datasort
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
+let
+//
+val loc0 = d0cl.lctn()
+//
+(*
+val () =
+println!
+("trans01_d0ecl: d0cl = ", d0cl)
+*)
+//
+val-
+D0Cdatasort
+(tknd, d0ts) = d0cl.node()
+//
+val d1ts =
+trans01_d0tstlst(tenv, d0ts)
+//
+in//let
+  d1ecl(loc0, D1Cdatasort(tknd, d1ts))
+end (*let*) // end of [f0_datasort(tenv,d0cl)]
 
 (* ****** ****** *)
 
@@ -742,7 +775,7 @@ trans01_d0eclistopt
 case+ opt0 of
 | optn_nil() => optn_nil()
 | optn_cons(dcls) =>
-  optn_cons(trans01_d0eclist(tenv, dcls))
+  optn_cons( trans01_d0eclist(tenv, dcls) )
 ) (*where*) // end of [trans01_d0eclistopt(opt0)]
 
 (* ****** ****** *)

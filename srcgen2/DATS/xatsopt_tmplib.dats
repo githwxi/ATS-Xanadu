@@ -243,8 +243,8 @@ sort0_fprint(g_print$out<>(), s0t)
 //
 (* ****** ****** *)
 #impltmp
-g_print<s0tcn>(stc) =
-s0tcn_fprint(g_print$out<>(), stc)
+g_print<s0tcn>(tcn) =
+s0tcn_fprint(g_print$out<>(), tcn)
 #impltmp
 g_print<d0tst>(dst) =
 d0tst_fprint(g_print$out<>(), dst)
@@ -554,6 +554,12 @@ g_print<sort1>(s1t) =
 sort1_fprint(g_print$out<>(), s1t)
 //
 (* ****** ****** *)
+#impltmp
+g_print<s1tcn>(tcn) =
+s1tcn_fprint(g_print$out<>(), tcn)
+#impltmp
+g_print<d1tst>(dst) =
+d1tst_fprint(g_print$out<>(), dst)
 #impltmp
 g_print<s1tdf>(tdf) =
 s1tdf_fprint(g_print$out<>(), tdf)

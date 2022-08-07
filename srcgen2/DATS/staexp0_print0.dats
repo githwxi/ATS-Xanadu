@@ -398,7 +398,7 @@ dst.node() of
 |
 D0TSTnode(tid0,teq1,topt,stcs) =>
 (
-print("D0TST(",tid0);
+print("D0TSTnode(",tid0);
 print(";",teq1,";",topt,";",stcs,")"))
 end (*let*) // end of [d0tst_fprint]
 

@@ -214,16 +214,20 @@ g1mag_make_node
 #abstbox sort1_tbox // ptr
 #abstbox s1exp_tbox // ptr
 //
+(* ****** ****** *)
+#abstbox s1tdf_tbox // ptr
+#abstbox s1tcn_tbox // ptr
+#abstbox d1tst_tbox // ptr
+(* ****** ****** *)
 #abstbox s1arg_tbox // ptr
 #abstbox s1mag_tbox // ptr
-//
 #abstbox t1arg_tbox // ptr
 #abstbox t1mag_tbox // ptr
-//
 (* ****** ****** *)
 #typedef sort0 = $S0E.sort0
 #typedef s0exp = $S0E.s0exp
 (* ****** ****** *)
+//
 #typedef sort1 = sort1_tbox
 #typedef sort1lst = list(sort1)
 #typedef sort1opt = optn(sort1)
@@ -235,6 +239,14 @@ g1mag_make_node
 (* ****** ****** *)
 #typedef l0s1e = s0lab(s1exp)
 #typedef l0s1elst = list(l0s1e)
+(* ****** ****** *)
+//
+#typedef s1tdf = s1tdf_tbox
+#typedef s1tcn = s1tcn_tbox
+#typedef d1tst = d1tst_tbox
+#typedef s1tcnlst = list(s1tcn)
+#typedef d1tstlst = list(d1tst)
+//
 (* ****** ****** *)
 //
 #typedef s1arg = s1arg_tbox
@@ -328,15 +340,9 @@ sort1_make_node
 //
 (* ****** ****** *)
 //
-#abstbox s1tcn_tbox // ptr
-#typedef s1tcn = s1tcn_tbox
-#typedef s1tcnlst = list(s1tcn)
-//
-(* ****** ****** *)
-//
 datatype s1tcn_node =
 |
-S1TCN of (token, sort1opt) 
+S1TCNnode of (token, sort1opt) 
 //
 (* ****** ****** *)
 fun
@@ -360,20 +366,15 @@ s1tcn_make_node
 //
 (* ****** ****** *)
 //
-#abstbox d1tst_tbox // ptr
-#typedef d1tst = d1tst_tbox
-#typedef d1tstlst = list(d1tst)
-//
-(* ****** ****** *)
-//
 datatype d1tst_node =
 |
-D1TST of
+D1TSTnode of
 (token(*T_DATASORT*), s1tcnlst)
 //
 (* ****** ****** *)
 fun
 d1tst_fprint:(FILR,d1tst)->void
+(* ****** ****** *)
 //
 fun
 d1tst_get_lctn(d1tst): loc_t
@@ -391,9 +392,6 @@ d1tst_make_node
 #symload d1tst with d1tst_make_node
 //
 (* ****** ****** *)
-//
-#abstbox s1tdf_tbox // ptr
-#typedef s1tdf = s1tdf_tbox
 //
 datatype
 s1tdf_node =
