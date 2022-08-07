@@ -160,6 +160,11 @@ case+
 dcl.node() of
 //
 |
+D1Cd0ecl
+( d0cl ) =>
+print("D1Cd0ecl(",d0cl,")")
+//
+|
 D1Cextern
 (tknd,dcl1) =>
 print

@@ -57,6 +57,36 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
 (* ****** ****** *)
+#symload lctn with token_get_lctn
+#symload node with token_get_node
+(* ****** ****** *)
+
+#implfun
+token2sint
+  (tok) =
+(
+case-
+tok.node() of
+|
+T_INT01(rep) => fint(rep, 10)
+|
+T_INT02(bas, rep) => fint(rep, bas)
+) where
+{
+fun
+fint
+( rep: strn
+, bas: sint): sint =
+gseq_foldl
+<strn><cgtz><sint>(rep, bas) where
+{
+#impltmp
+foldl$fopr
+<cgtz><sint>(r0, c0) = r0*bas+(c0-'0')
+}
+} (*where*) // en dof [token2sint(tok)]
+
+(* ****** ****** *)
 
 #implfun
 d1parsed_from_trans
