@@ -214,6 +214,12 @@ g1mag_make_node
 #abstbox sort1_tbox // ptr
 #abstbox s1exp_tbox // ptr
 //
+#abstbox s1arg_tbox // ptr
+#abstbox s1mag_tbox // ptr
+//
+#abstbox t1arg_tbox // ptr
+#abstbox t1mag_tbox // ptr
+//
 (* ****** ****** *)
 #typedef sort0 = $S0E.sort0
 #typedef s0exp = $S0E.s0exp
@@ -227,9 +233,21 @@ g1mag_make_node
 #typedef s1expopt = optn(s1exp)
 //
 (* ****** ****** *)
-//
 #typedef l0s1e = s0lab(s1exp)
 #typedef l0s1elst = list(l0s1e)
+(* ****** ****** *)
+//
+#typedef s1arg = s1arg_tbox
+#typedef s1mag = s1mag_tbox
+#typedef s1arglst = list(s1arg)
+#typedef s1maglst = list(s1mag)
+//
+(* ****** ****** *)
+//
+#typedef t1arg = t1arg_tbox
+#typedef t1mag = t1mag_tbox
+#typedef t1arglst = list(t1arg)
+#typedef t1maglst = list(t1mag)
 //
 (* ****** ****** *)
 //
@@ -374,67 +392,6 @@ d1tst_make_node
 //
 (* ****** ****** *)
 //
-#abstbox s1arg_tbox // ptr
-#typedef s1arg = s1arg_tbox
-#typedef s1arglst = list(s1arg)
-//
-(* ****** ****** *)
-datatype
-s1arg_node =
-|
-S1ARGsome of (token, sort1opt)
-(* ****** ****** *)
-fun
-s1arg_fprint:(FILR,s1arg)->void
-(* ****** ****** *)
-//
-fun
-s1arg_get_lctn(s1arg): loc_t
-fun
-s1arg_get_node(s1arg): s1arg_node
-//
-#symload lctn with s1arg_get_lctn
-#symload node with s1arg_get_node
-//
-(* ****** ****** *)
-//
-fun
-s1arg_make_node
-(loc:loc_t,nod:s1arg_node): s1arg
-#symload s1arg with s1arg_make_node
-//
-(* ****** ****** *)
-//
-datatype
-s1mag_node =
-S1MAGlist of (s1arglst)
-//
-#abstbox s1mag_tbox // ptr
-#typedef s1mag = s1mag_tbox
-#typedef s1maglst = list(s1mag)
-//
-(* ****** ****** *)
-fun
-s1mag_fprint:(FILR,s1mag)->void
-(* ****** ****** *)
-//
-fun
-s1mag_get_lctn(s1mag): loc_t
-fun
-s1mag_get_node(s1mag): s1mag_node
-//
-#symload lctn with s1mag_get_lctn
-#symload node with s1mag_get_node
-//
-(* ****** ****** *)
-//
-fun
-s1mag_make_node
-(loc:loc_t,nod:s1mag_node): s1mag
-#symload s1mag with s1mag_make_node
-//
-(* ****** ****** *)
-//
 #abstbox s1tdf_tbox // ptr
 #typedef s1tdf = s1tdf_tbox
 //
@@ -464,12 +421,61 @@ s1tdf_make_node
 //
 (* ****** ****** *)
 //
+datatype
+s1arg_node =
+|
+S1ARGsome of (token, sort1opt)
+//
+(* ****** ****** *)
+fun
+s1arg_fprint:(FILR,s1arg)->void
+(* ****** ****** *)
+//
+fun
+s1arg_get_lctn(s1arg): loc_t
+fun
+s1arg_get_node(s1arg): s1arg_node
+//
+#symload lctn with s1arg_get_lctn
+#symload node with s1arg_get_node
+//
+(* ****** ****** *)
+//
+fun
+s1arg_make_node
+(loc:loc_t,nod:s1arg_node): s1arg
+#symload s1arg with s1arg_make_node
+//
+(* ****** ****** *)
+//
+datatype
+s1mag_node =
+S1MAGlist of (s1arglst)
+//
+(* ****** ****** *)
+fun
+s1mag_fprint:(FILR,s1mag)->void
+(* ****** ****** *)
+//
+fun
+s1mag_get_lctn(s1mag): loc_t
+fun
+s1mag_get_node(s1mag): s1mag_node
+//
+#symload lctn with s1mag_get_lctn
+#symload node with s1mag_get_node
+//
+(* ****** ****** *)
+//
+fun
+s1mag_make_node
+(loc:loc_t,nod:s1mag_node): s1mag
+#symload s1mag with s1mag_make_node
+//
+(* ****** ****** *)
+//
 #typedef
 tokenopt = $LEX.tokenopt
-//
-#abstbox t1arg_tbox // ptr
-#typedef t1arg = t1arg_tbox
-#typedef t1arglst = list(t1arg)
 //
 datatype
 t1arg_node =
@@ -510,10 +516,6 @@ T1MAGnone of token(*error*)
 *)
 |
 T1MAGlist of t1arglst(*arglst*)
-//
-#abstbox t1mag_tbox // ptr
-#typedef t1mag = t1mag_tbox
-#typedef t1maglst = list(t1mag)
 //
 (* ****** ****** *)
 fun

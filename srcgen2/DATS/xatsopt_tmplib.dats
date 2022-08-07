@@ -396,8 +396,8 @@ d0arg_fprint(g_print$out<>(), d0ag)
 (* ****** ****** *)
 //
 #impltmp
-g_print<a0tdf>(tdf0) =
-a0tdf_fprint(g_print$out<>(), tdf0)
+g_print<a0tdf>(atdf) =
+a0tdf_fprint(g_print$out<>(), atdf)
 //
 (* ****** ****** *)
 #impltmp
@@ -616,6 +616,12 @@ d1exp_fprint(g_print$out<>(), d1e)
 #impltmp
 g_print<d1ecl>(dcl) =
 d1ecl_fprint(g_print$out<>(), dcl)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<a1tdf>(atdf) =
+a1tdf_fprint(g_print$out<>(), atdf)
 //
 (* ****** ****** *)
 #impltmp

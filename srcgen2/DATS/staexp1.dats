@@ -204,6 +204,68 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
+t1arg =
+T1ARG of
+(
+loctn, t1arg_node)
+//
+#absimpl t1arg_tbox = t1arg
+//
+in (* in-of-local *)
+//
+#implfun
+t1arg_make_node
+(   loc,nod   ) = T1ARG(loc,nod)
+//
+#implfun
+t1arg_get_lctn(t1a) =
+let
+  val+T1ARG(loc,nod) = t1a in loc
+end
+#implfun
+t1arg_get_node(t1a) =
+let
+  val+T1ARG(loc,nod) = t1a in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+t1mag =
+T1MAG of
+(
+loctn, t1mag_node)
+//
+#absimpl t1mag_tbox = t1mag
+//
+in (* in-of-local *)
+//
+#implfun
+t1mag_make_node
+(   loc,nod   ) = T1MAG(loc,nod)
+//
+#implfun
+t1mag_get_lctn(sma) =
+let
+  val+T1MAG(loc,nod) = sma in loc
+end
+#implfun
+t1mag_get_node(sma) =
+let
+  val+T1MAG(loc,nod) = sma in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 s1qua =
 S1QUA of
 (
