@@ -224,6 +224,10 @@ g1mag_make_node
 #abstbox t1arg_tbox // ptr
 #abstbox t1mag_tbox // ptr
 (* ****** ****** *)
+#abstbox s1uni_tbox // ptr
+#abstbox d1tcn_tbox // ptr
+#abstbox d1typ_tbox // ptr
+(* ****** ****** *)
 #typedef sort0 = $S0E.sort0
 #typedef s0exp = $S0E.s0exp
 (* ****** ****** *)
@@ -260,6 +264,15 @@ g1mag_make_node
 #typedef t1mag = t1mag_tbox
 #typedef t1arglst = list(t1arg)
 #typedef t1maglst = list(t1mag)
+//
+(* ****** ****** *)
+//
+#typedef s1uni = s1uni_tbox
+#typedef d1tcn = d1tcn_tbox
+#typedef d1typ = d1typ_tbox
+#typedef s1unilst = list(s1uni)
+#typedef d1tcnlst = list(d1tcn)
+#typedef d1typlst = list(d1typ)
 //
 (* ****** ****** *)
 //
@@ -577,10 +590,6 @@ s1qua_make_node
 datatype
 s1uni_node =
 | S1UNIsome of (s1qualst)
-//
-#abstbox s1uni_tbox // ptr
-#typedef s1uni = s1uni_tbox
-#typedef s1unilst = list(s1uni)
 //
 (* ****** ****** *)
 fun

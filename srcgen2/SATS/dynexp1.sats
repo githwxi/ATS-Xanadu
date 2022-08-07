@@ -602,6 +602,14 @@ D1Cimplmnt0 of
 , d0qid, t1iaglst, f1arglst
 , s1res, token(*EQ0*), d1exp(*body*))
 //
+|
+D1Cdatatype of
+(token(*DATATYPE*), d1typlst, wd1eclseq)
+//
+|
+D1Cdynconst of
+(token(*fnk//vlk*), t1qaglst, d1cstdclist)
+//
 | D1Cnone0 of ((*void*)) | D1Cnone1 of (d0ecl)
 //
 (* ****** ****** *)
