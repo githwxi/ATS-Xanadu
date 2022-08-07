@@ -128,6 +128,13 @@ D0Csexpdef _ =>
 f0_sexpdef(tenv, d0cl)
 //
 |
+D0Cabsopen _ =>
+f0_absopen(tenv, d0cl)
+|
+D0Cabsimpl _ =>
+f0_absimpl(tenv, d0cl)
+//
+|
 _ (*otherwise*) => d1ecl_none1(d0cl)
 //
 end where
@@ -590,11 +597,75 @@ println!("f0_sexpdef: s1e2 = ", s1e2)
 in
 d1ecl_make_node
 (loc0, D1Csexpdef(tknd,seid,smas,tres,s1e2))
-end // end of [f0_sexpdef]
+end (*let*) // end of [f0_sexpdef(tenv,d0cl]
 
 (* ****** ****** *)
 
-} (*where*) // end of [trans01_d0ecl(d0cl)]
+fun
+f0_absopen
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
+let
+//
+val loc0 = d0cl.lctn()
+//
+(*
+val () =
+println!
+("trans01_d0ecl: d0cl = ", d0cl)
+*)
+//
+val-
+D0Cabsopen
+(tknd, sqid) = d0cl.node()
+//
+val sqid = trans01_s0qid(tenv, sqid)
+//
+in//let
+d1ecl_make_node(loc0,D1Cabsopen(tknd,sqid))
+end (*let*) // end of [f0_absopen(tenv,d0cl)]
+
+(* ****** ****** *)
+
+fun
+f0_absimpl
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
+let
+//
+val loc0 = d0cl.lctn()
+//
+(*
+val () =
+println!
+("trans01_d0ecl: d0cl = ", d0cl)
+*)
+//
+val-
+D0Cabsimpl
+( tknd
+, sqid
+, smas, tres
+, teq1, s0e2) = d0cl.node()
+//
+val sqid =
+trans01_s0qid(tenv, sqid)
+val smas =
+trans01_s0maglst(tenv, smas)
+val tres =
+trans01_sort0opt(tenv, tres)
+val s1e2 = trans01_s0exp(tenv, s0e2)
+//
+in//let
+d1ecl_make_node
+(loc0,D1Cabsimpl(tknd,sqid,smas,tres,s1e2))
+end (*let*) // end of [f0_absopen(tenv,d0cl)]
+
+(* ****** ****** *)
+
+} (*where*) // end of [trans01_d0ecl(tenv,d0cl)]
 
 (* ****** ****** *)
 

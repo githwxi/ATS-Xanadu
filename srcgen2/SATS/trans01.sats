@@ -97,6 +97,13 @@ FIL = "./filpath.sats"
 #typedef i1dntlst = $S1E.i1dntlst
 (* ****** ****** *)
 //
+#typedef s0qid = $S0E.s0qid
+#typedef d0qid = $S0E.d0qid
+#typedef s1qid = $S1E.s1qid
+#typedef d1qid = $S1E.d1qid
+//
+(* ****** ****** *)
+//
 #typedef g0nam = $S0E.g0nam
 #typedef g0exp = $S0E.g0exp
 #typedef g1nam = $S1E.g1nam
@@ -238,6 +245,11 @@ fun trans01_t0str:
 fun
 trans01_i0dntlst:
   (!tr01env, i0dntlst)->i1dntlst
+(* ****** ****** *)
+fun trans01_s0qid:
+  (!tr01env, s0qid)->s1qid
+fun trans01_d0qid:
+  (!tr01env, d0qid)->d1qid
 (* ****** ****** *)
 //
 fun trans01_g0nam:
