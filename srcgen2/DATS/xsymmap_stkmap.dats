@@ -78,9 +78,43 @@ in//local
 (* ****** ****** *)
 //
 #implfun
-stkmap_make_nil
-  ( (*nil*) ) =
-  stkmap_nil((*void*))
+stkmap_nilq
+(   map   ) =
+(
+case+ map of
+| !
+stkmap_nil() => true | _ => false
+) (* end of [stkmap_nilq(map)] *)
+//
+(* ****** ****** *)
+//
+#implfun
+stkmap_topq
+  {itm}(map) =
+(
+  loop(map) ) where
+{
+fnx
+loop
+( kxs:
+! stkmap(itm)): bool =
+(
+case+ kxs of
+| !
+stkmap_nil
+((*void*)) => true
+| !
+stkmap_cons
+(k1, x1, kxs) => loop(kxs)
+|
+_ (*rest-of-stkmap*) => ( false )
+)
+} (*where*)//end-of-[stkmap_topq]
+//
+(* ****** ****** *)
+//
+#implfun
+stkmap_make_nil() = stkmap_nil()
 //
 (* ****** ****** *)
 //
@@ -155,7 +189,7 @@ end (*let*) // [ stkmap_poplet0(map) ]
 (* ****** ****** *)
 //
 #implfun
-stkmap_poploc1
+stkmap_poploc0
   {itm}(map) = let
 //
 #vwtpdef
@@ -166,28 +200,19 @@ res = list_vt@(key,itm)
 fnx
 loop0
 ( kxs: kxs
-, err: &sint >> _, res: res): kxs =
-let
-fun
-auxlp
-(res: res, kxs: kxs): kxs =
+, err:
+& sint >> _
+, res: res): (kxs, res) =
 (
-case+ res of
-| ~
-list_vt_nil() => kxs
-| ~
-list_vt_cons(kx1, res) =>
-auxlp
-(res,stkmap_cons(kx1.0,kx1.1,kxs))
+  kxs, list_vt_reverse0(res)
 )
-in//let
-  auxlp(list_vt_reverse0(res), kxs)
-end (*let*) // end of [loop0(...)]
 //
 fnx
 loop1
 ( kxs: kxs
-, err: &sint >> _, res: res): kxs =
+, err:
+& sint >> _
+, res: res): (kxs, res) =
 (
 case+ kxs of
 //
@@ -210,7 +235,9 @@ stkmap_cons
 fnx
 loop2
 ( kxs: kxs
-, err: &sint >> _, res: res): kxs =
+, err:
+& sint >> _
+, res: res): (kxs, res) =
 (
 case+ kxs of
 //
@@ -237,13 +264,18 @@ loop1(kxs, err, res) where
 //
 in//let
 let
+//
 val
 err: sint = 0
 val
-res = list_vt_nil()
+res =
+list_vt_nil(*nil*)
+//
 val
-( ) = (map := loop2(map,err,res)) in err end
-end (*let*) // end of [stkmap_poploc1(map)]
+(kxs,res) =
+loop2(map,err,res) in map := kxs;(err,res)
+end
+end (*let*) // end of [stkmap_poploc0(map)]
 //
 (* ****** ****** *)
 //

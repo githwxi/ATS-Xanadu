@@ -45,9 +45,13 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
+#staload "./../SATS/xfixity.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
@@ -56,6 +60,9 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
+(* ****** ****** *)
+#symload lctn with token_get_lctn
+#symload node with token_get_node
 (* ****** ****** *)
 #symload lctn with i0dnt_get_lctn
 #symload node with i0dnt_get_node
@@ -90,6 +97,15 @@ in//let
 case+
 d0cl.node() of
 //
+(*
+|
+D0Cfixity _ =>
+f0_fixity(tenv, d0cl)
+*)
+|
+D0Cnonfix _ =>
+f0_nonfix(tenv, d0cl)
+//
 |
 D0Cstatic _ =>
 f0_static(tenv, d0cl)
@@ -116,6 +132,61 @@ _ (*otherwise*) => d1ecl_none1(d0cl)
 //
 end where
 {
+(* ****** ****** *)
+fun
+f0_nonfix
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
+let
+//
+val loc0 = d0cl.lctn()
+//
+val-
+D0Cnonfix
+(tok0, ids) = d0cl.node()
+//
+fun
+loop
+( tenv:
+! tr01env
+, ids: i0dntlst): void =
+(
+case+ ids of
+|
+list_nil() => ()
+|
+list_cons
+(id0, ids) => let
+//
+val tok =
+trans01_i0dnt(tenv, id0)
+val sym =
+(
+case-
+tok.node() of
+|
+T_IDALP(nam) => symbl(nam)
+|
+T_IDSYM(nam) => symbl(nam)): sym_t
+//
+in
+loop(tenv, ids) where
+{
+val () =
+tr01env_insert_any(tenv,sym,FIXTYnon)
+}
+endlet//end-of-[list_cons(id0,ids)]
+) (*case+*) // end of [loop(tenv,ids)]
+//
+in
+let
+val () = loop(tenv, ids)
+in
+d1ecl_make_node(loc0, D1Cd0ecl(d0cl))
+end
+end (*let*)//end-of-[f0_nonfix(tenv,d0cl)]
+//
 (* ****** ****** *)
 //
 fun
