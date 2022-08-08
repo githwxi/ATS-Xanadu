@@ -268,15 +268,6 @@ val d1e2 = trans01_d0exp(tenv, d0e2)
 end (*let*) // end of [trans01_d0cls(dcls)]
 
 (* ****** ****** *)
-////
-//
-datatype
-d0cls_node =
-|
-and
-d0gpt_node =
-
-(* ****** ****** *)
 
 #implfun
 trans01_d0patlst
