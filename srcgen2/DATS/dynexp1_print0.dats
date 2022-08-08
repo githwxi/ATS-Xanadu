@@ -56,14 +56,26 @@ _(*?*) = "./lexing0_print0.dats"
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
-#symload node with d1pat_get_node
 #symload lctn with d1pat_get_lctn
+#symload node with d1pat_get_node
 (* ****** ****** *)
-#symload node with d1exp_get_node
 #symload lctn with d1exp_get_lctn
+#symload node with d1exp_get_node
 (* ****** ****** *)
-#symload node with d1ecl_get_node
 #symload lctn with d1ecl_get_lctn
+#symload node with d1ecl_get_node
+(* ****** ****** *)
+#symload lctn with d1gua_get_lctn
+#symload node with d1gua_get_node
+#symload lctn with d1gpt_get_lctn
+#symload node with d1gpt_get_node
+#symload lctn with d1cls_get_lctn
+#symload node with d1cls_get_node
+(* ****** ****** *)
+#symload lctn with a1typ_get_lctn
+#symload node with a1typ_get_node
+#symload lctn with d1arg_get_lctn
+#symload node with d1arg_get_node
 (* ****** ****** *)
 
 #implfun
