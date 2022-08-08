@@ -738,8 +738,8 @@ t0mag_make_node
 #symload t0mag with t0mag_make_node
 //
 (* ****** ****** *)
-#typedef i0dntopt = optn(i0dnt)
 #typedef i0dntlst = list(i0dnt)
+#typedef i0dntopt = optn(i0dnt)
 (* ****** ****** *)
 //
 datatype

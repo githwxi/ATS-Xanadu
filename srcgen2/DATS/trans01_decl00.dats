@@ -853,6 +853,69 @@ end (*let*) // end of [f0_datatype(tenv,d0cl)]
 (* ****** ****** *)
 
 #implfun
+trans01_d0valdcl
+  (tenv, dval) =
+let
+//
+val loc0 =
+d0valdcl_get_lctn(dval)
+//
+val dpat =
+d0valdcl_get_dpat(dval)
+val dpat =
+trans01_d0pat(tenv, dpat)
+//
+val tdxp =
+d0valdcl_get_tdxp(dval)
+val tdxp =
+trans01_teqd0exp(tenv, tdxp)
+//
+val wsxp =
+d0valdcl_get_wsxp(dval)
+val wsxp =
+trans01_wths0exp(tenv, wsxp)
+//
+in//let
+d1valdcl_make_args(loc0, dpat, tdxp, wsxp)
+end (*let*)//end-of-[trans01_d0valdcl(tenv,dval)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_d0vardcl
+  (tenv, dvar) =
+let
+//
+val loc0 =
+d0vardcl_get_lctn(dvar)
+//
+val dpid =
+d0vardcl_get_dpid(dvar)
+val dpid =
+trans01_i0dnt(tenv, dpid)
+//
+val vpid =
+d0vardcl_get_vpid(dvar)
+val vpid =
+trans01_i0dntopt(tenv, vpid)
+//
+val sres =
+d0vardcl_get_sres(dvar)
+val sres =
+trans01_s0expopt(tenv, sres)
+//
+val dini =
+d0vardcl_get_dini(dvar)
+val dini =
+trans01_teqd0exp(tenv, dini)
+//
+in//let
+d1vardcl_make_args(loc0,dpid,vpid,sres,dini)
+end (*let*)//end-of-[trans01_d0vardcl(tenv,dvar)]
+
+(* ****** ****** *)
+
+#implfun
 trans01_d0eclist
 (tenv, dcls) =
 list_trans01_fnp(tenv, dcls, trans01_d0ecl)
