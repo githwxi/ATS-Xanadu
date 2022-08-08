@@ -98,6 +98,7 @@ D0E = "./dynexp0.sats"
 #abstype d1exp_tbox // ptr
 #abstype d1ecl_tbox // ptr
 //
+#abstbox f1arg_tbox // ptr
 #abstbox d1gua_tbox // ptr
 #abstbox d1gpt_tbox // ptr
 #abstbox d1cls_tbox // ptr
@@ -126,6 +127,14 @@ D0E = "./dynexp0.sats"
 #typedef d1exp = d1exp_tbox
 #typedef d1ecl = d1ecl_tbox
 //
+(* ****** ****** *)
+#typedef f1arg = f1arg_tbox
+#typedef d1gua = d1gua_tbox
+#typedef d1gpt = d1gpt_tbox
+#typedef d1cls = d1cls_tbox
+(* ****** ****** *)
+#typedef f1arglst = list(f1arg)
+#typedef d1clslst = list(d1cls)
 (* ****** ****** *)
 //
 #typedef q1arg = q1arg_tbox
@@ -749,6 +758,15 @@ fun
 d1ecl_fprint:(FILR,d1ecl)->void
 (* ****** ****** *)
 fun
+f1arg_fprint:(FILR,f1arg)->void
+fun
+d1gua_fprint:(FILR,d1gua)->void
+fun
+d1gpt_fprint:(FILR,d1gpt)->void
+fun
+d1cls_fprint:(FILR,d1cls)->void
+(* ****** ****** *)
+fun
 a1tdf_fprint:(FILR,a1tdf)->void
 (* ****** ****** *)
 fun
@@ -875,8 +893,8 @@ d1fundcl_make_args
 , tdxp:teqd1exp, wsxp:wths1exp):d1fundcl
 //
 #symload d1valdcl with d1valdcl_make_args
-#symload d1vardcl with d0vardcl_make_args
-#symload d0fundcl with d0fundcl_make_args
+#symload d1vardcl with d1vardcl_make_args
+#symload d1fundcl with d1fundcl_make_args
 //
 (* ****** ****** *)
 //

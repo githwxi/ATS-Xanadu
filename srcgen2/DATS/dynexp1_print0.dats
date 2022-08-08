@@ -255,7 +255,7 @@ print("D1Cdatatyp1(",tknd,";",d1ts,";",wdcs,")")
 end (*let*) // end of [d1ecl_fprint(out,dcl)]
 
 (* ****** ****** *)
-
+//
 #implfun
 a1tdf_fprint
 (out, tdf) =
@@ -276,7 +276,7 @@ A1TDFeqeq(s1e1) =>
 print("A1TDFeqeq(",s1e1,")")
 //
 end (*let*) // end of [a1tdf_fprint]
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -326,6 +326,73 @@ WD1CSsome(dcls) => print("WD1CSsome(",dcls,")")
 //
 end (*let*) // end of [wd1eclseq_fprint]
 //
+(* ****** ****** *)
+
+#implfun
+d1valdcl_fprint
+  (out, dval) = let
+//
+val dpat =
+d1valdcl_get_dpat(dval)
+val tdxp =
+d1valdcl_get_tdxp(dval)
+val wsxp =
+d1valdcl_get_wsxp(dval)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+print("D1VALDCL(",dpat,";",tdxp,",",wsxp,")")
+end(*let*)//end-of-[d1valdcl_fprint(out,d1cl)]
+
+(* ****** ****** *)
+
+#implfun
+d1vardcl_fprint
+  (out, dvar) = let
+//
+val dpid =
+d1vardcl_get_dpid(dvar)
+val vpid =
+d1vardcl_get_vpid(dvar)
+val sres =
+d1vardcl_get_sres(dvar)
+val dini =
+d1vardcl_get_dini(dvar)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print("D1VARDCL(");
+print(dpid,";",vpid,";",sres,",",dini,")"))
+end(*let*)//end-of-[d1vardcl_fprint(out,d1cl)]
+
+(* ****** ****** *)
+
+#implfun
+d1fundcl_fprint
+  (out, dfun) = let
+//
+val dpid =
+d1fundcl_get_dpid(dfun)
+val farg =
+d1fundcl_get_farg(dfun)
+val sres =
+d1fundcl_get_sres(dfun)
+val tdxp =
+d1fundcl_get_tdxp(dfun)
+val wsxp =
+d1fundcl_get_wsxp(dfun)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print("D1FUNDCL(",dpid,";");
+print(farg,";",sres,";",tdxp,",",wsxp,")"))
+end(*let*)//end-of-[d1fundcl_fprint(out,d1cl)]
+
 (* ****** ****** *)
 
 #implfun
