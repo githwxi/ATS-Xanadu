@@ -800,6 +800,21 @@ a1typ_node =
 *)
 | A1TYPsome of (s1exp,tokenopt)
 //
+datatype
+d1arg_node =
+(*
+| D1ARGnone of token
+*)
+//
+|
+D1ARGsome_sta of (s1qualst)
+//
+|
+D1ARGsome_dyn1 of token // s0eid
+|
+D1ARGsome_dyn2 of
+(a1typlst(*arg0*), a1typlstopt(*opt1*))
+//
 (* ****** ****** *)
 //
 fun
@@ -807,6 +822,15 @@ a1typ_fprint(FILR, a1typ): void
 fun
 d1arg_fprint(FILR, d1arg): void
 //
+(* ****** ****** *)
+fun
+a1typ_get_lctn:(a1typ)->loc_t
+fun
+d1arg_get_lctn:(d1arg)->loc_t
+fun
+a1typ_get_node:(a1typ)->a1typ_node
+fun
+d1arg_get_node:(d1arg)->d1arg_node
 (* ****** ****** *)
 fun
 d1valdcl_fprint
@@ -855,7 +879,7 @@ d1vardcl_get_dini:(d1vardcl)->teqd1exp
 #symload dini with d1vardcl_get_dini
 (* ****** ****** *)
 fun
-d1fundcl_get_dpid:(d1fundcl)->d0pid
+d1fundcl_get_dpid:(d1fundcl)->d1pid
 fun
 d1fundcl_get_farg:(d1fundcl)->f1arglst
 fun
