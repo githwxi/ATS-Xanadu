@@ -403,79 +403,6 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
-d1cstdcl =
-D1CSTDCL of
-( loc_t
-, d1pid
-, d1arglst,s1res,d1res)
-//
-#absimpl
-d1cstdcl_tbox = d1cstdcl
-//
-in//local
-//
-#implfun
-d1cstdcl_get_lctn
-  (  dcst  ) = let
-val+
-D1CSTDCL
-( lctn
-, dpid
-, darg
-, sres, dres) = dcst in lctn end
-//
-#implfun
-d1cstdcl_get_darg
-  (  dcst  ) = let
-val+
-D1CSTDCL
-( lctn
-, dpid
-, darg
-, sres, dres) = dcst in darg end
-//
-#implfun
-d1cstdcl_get_dpid
-  (  dcst  ) = let
-val+
-D1CSTDCL
-( lctn
-, dpid
-, darg
-, sres, dres) = dcst in dpid end
-//
-#implfun
-d1cstdcl_get_sres
-  (  dcst  ) = let
-val+
-D1CSTDCL
-( lctn
-, dpid
-, darg
-, sres, dres) = dcst in sres end
-//
-#implfun
-d1cstdcl_get_dres
-  (  dcst  ) = let
-val+
-D1CSTDCL
-( lctn
-, dpid
-, darg
-, sres, dres) = dcst in dres end
-//
-#implfun
-d1cstdcl_make_args
-(lctn, dpid, darg, sred, dres) =
-D1CSTDCL(lctn, dpid, darg, sred, dres)
-//
-endloc (*local*) // end of [ local(d1cstdcl) ]
-
-(* ****** ****** *)
-
-local
-//
-datatype
 d1valdcl =
 D1VALDCL of
 ( loc_t
@@ -607,6 +534,176 @@ D1VARDCL(lctn, dpid, vpid, sres, dini)
 )
 
 endloc (*local*) // end of [ local(d1vardcl) ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d1fundcl =
+D1FUNDCL of
+( loc_t
+, d1pid
+, f1arglst
+, s1res
+, teqd1exp, wths1exp)
+//
+#absimpl
+d1fundcl_tbox = d1fundcl
+//
+in//local
+
+#implfun
+d1fundcl_get_lctn
+  (  dfun  ) = let
+val+
+D1FUNDCL
+( lctn
+, dpid
+, farg
+, sres
+, tdxp, wsxp) = dfun in lctn end
+
+#implfun
+d1fundcl_get_dpid
+  (  dfun  ) = let
+val+
+D1FUNDCL
+( lctn
+, dpid
+, farg
+, sres
+, tdxp, wsxp) = dfun in dpid end
+
+#implfun
+d1fundcl_get_farg
+  (  dfun  ) = let
+val+
+D1FUNDCL
+( lctn
+, dpid
+, farg
+, sres
+, tdxp, wsxp) = dfun in farg end
+
+#implfun
+d1fundcl_get_sres
+  (  dfun  ) = let
+val+
+D1FUNDCL
+( lctn
+, dpid
+, farg
+, sres
+, tdxp, wsxp) = dfun in sres end
+
+#implfun
+d1fundcl_get_tdxp
+  (  dfun  ) = let
+val+
+D1FUNDCL
+( lctn
+, dpid
+, farg
+, sres
+, tdxp, wsxp) = dfun in tdxp end
+
+#implfun
+d1fundcl_get_wsxp
+  (  dfun  ) = let
+val+
+D1FUNDCL
+( lctn
+, dpid
+, farg
+, sres
+, tdxp, wsxp) = dfun in wsxp end
+
+(* ****** ****** *)
+
+#implfun
+d1fundcl_make_args
+( lctn
+, dpid, farg
+, sres, tdxp, wsxp) =
+(
+D1FUNDCL(lctn,dpid,farg,sres,tdxp,wsxp)
+)
+
+endloc (*local*) // end of [ local(d1fundcl) ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d1cstdcl =
+D1CSTDCL of
+( loc_t
+, d1pid
+, d1arglst,s1res,d1res)
+//
+#absimpl
+d1cstdcl_tbox = d1cstdcl
+//
+in//local
+//
+#implfun
+d1cstdcl_get_lctn
+  (  dcst  ) = let
+val+
+D1CSTDCL
+( lctn
+, dpid
+, darg
+, sres, dres) = dcst in lctn end
+//
+#implfun
+d1cstdcl_get_darg
+  (  dcst  ) = let
+val+
+D1CSTDCL
+( lctn
+, dpid
+, darg
+, sres, dres) = dcst in darg end
+//
+#implfun
+d1cstdcl_get_dpid
+  (  dcst  ) = let
+val+
+D1CSTDCL
+( lctn
+, dpid
+, darg
+, sres, dres) = dcst in dpid end
+//
+#implfun
+d1cstdcl_get_sres
+  (  dcst  ) = let
+val+
+D1CSTDCL
+( lctn
+, dpid
+, darg
+, sres, dres) = dcst in sres end
+//
+#implfun
+d1cstdcl_get_dres
+  (  dcst  ) = let
+val+
+D1CSTDCL
+( lctn
+, dpid
+, darg
+, sres, dres) = dcst in dres end
+//
+#implfun
+d1cstdcl_make_args
+(lctn, dpid, darg, sred, dres) =
+D1CSTDCL(lctn, dpid, darg, sred, dres)
+//
+endloc (*local*) // end of [ local(d1cstdcl) ]
 
 (* ****** ****** *)
 
