@@ -224,6 +224,8 @@ g1mag_make_node
 #abstbox t1arg_tbox // ptr
 #abstbox t1mag_tbox // ptr
 (* ****** ****** *)
+#abstbox s1qua_tbox // ptr
+(* ****** ****** *)
 #abstbox s1uni_tbox // ptr
 #abstbox d1tcn_tbox // ptr
 #abstbox d1typ_tbox // ptr
@@ -265,6 +267,9 @@ g1mag_make_node
 #typedef t1arglst = list(t1arg)
 #typedef t1maglst = list(t1mag)
 //
+(* ****** ****** *)
+#typedef s1qua = s1qua_tbox
+#typedef s1qualst = list(s1qua)
 (* ****** ****** *)
 //
 #typedef s1uni = s1uni_tbox
@@ -350,6 +355,89 @@ fun
 sort1_make_node
 (loc:loc_t,nod:sort1_node): sort1
 #symload sort1 with sort1_make_node
+//
+(* ****** ****** *)
+//
+datatype
+s1exp_node =
+//
+| S1Eid0 of sym_t
+//
+| S1Eint of token
+| S1Echr of token
+| S1Eflt of token
+| S1Estr of token
+//
+// HX-2018-08: operators:
+//
+| S1Eb0sh of () // bslash
+| S1Eb1sh of s1exp // bslash
+//
+| S1Earrw of s1explst // imply
+//
+| S1Ea0pp of ((*nil*)) // apply
+//
+| S1Ea1pp of
+  (s1exp(*fun*), s1exp)
+| S1Ea2pp of
+  (s1exp(*fun*), s1exp, s1exp)
+//
+| S1El1st of s1explst // temp-list
+| S1El2st of
+  (s1explst, s1explst) // temp-list
+//
+| S1Et1up of // HX: tuple1
+  ( token, s1explst(*prop/type*))
+| S1Et2up of // HX: tuple2
+  ( token(*kind*)
+  , s1explst(*prop*), s1explst(*type*))
+//
+| S1Er1cd of // HX: record1
+  ( token, l0s1elst(*prop/type*))
+| S1Er2cd of // HX: record2
+  ( token(*kind*)
+  , l0s1elst(*prop*), l0s1elst(*type*))
+//
+| S1Euni0 of (s1qualst)
+| S1Eexi0 of (token(*#*), s1qualst)
+//
+| S1Elam0 of
+  ( s1maglst
+  , sort1opt(*tres*), s1exp(*body*))
+//
+| S1Eanno of (s1exp, sort1)
+//
+| S1Equal of ( token(*$NS.*), s1exp )
+//
+| S1Enone0 of () | S1Enone1 of ( s0exp )
+//
+// end of [s1exp_node] // end of [datatype]
+//
+(* ****** ****** *)
+//
+fun
+s1exp_fprint:(FILR,s1exp)->void
+//
+(* ****** ****** *)
+//
+fun
+s1exp_get_lctn(s1exp): loc_t
+fun
+s1exp_get_node(s1exp): s1exp_node
+//
+#symload lctn with s1exp_get_lctn
+#symload node with s1exp_get_node
+//
+(* ****** ****** *)
+//
+fun
+s1exp_none0(loc:loc_t): s1exp
+fun
+s1exp_none1(s0e:s0exp): s1exp
+fun
+s1exp_make_node
+(loc:loc_t,nod:s1exp_node): s1exp
+#symload s1exp with s1exp_make_node
 //
 (* ****** ****** *)
 //
@@ -553,10 +641,6 @@ t1mag_make_node
 #typedef
 tokenlst = $LEX.tokenlst
 //
-#abstbox s1qua_tbox // ptr
-#typedef s1qua = s1qua_tbox
-#typedef s1qualst = list(s1qua)
-//
 datatype
 s1qua_node =
 |
@@ -644,87 +728,34 @@ d1tcn_make_node
 #symload d1tcn with d1tcn_make_node
 //
 (* ****** ****** *)
-
+//
 datatype
-s1exp_node =
+d1typ_node =
+|
+D1TYPnode of
+( token
+, t1maglst
+, sort1opt(*res*), d1tcnlst)
 //
-| S1Eid0 of sym_t
-//
-| S1Eint of token
-| S1Echr of token
-| S1Eflt of token
-| S1Estr of token
-//
-// HX-2018-08: operators:
-//
-| S1Eb0sh of () // bslash
-| S1Eb1sh of s1exp // bslash
-//
-| S1Earrw of s1explst // imply
-//
-| S1Ea0pp of ((*nil*)) // apply
-//
-| S1Ea1pp of
-  (s1exp(*fun*), s1exp)
-| S1Ea2pp of
-  (s1exp(*fun*), s1exp, s1exp)
-//
-| S1El1st of s1explst // temp-list
-| S1El2st of
-  (s1explst, s1explst) // temp-list
-//
-| S1Et1up of // HX: tuple1
-  ( token, s1explst(*prop/type*))
-| S1Et2up of // HX: tuple2
-  ( token(*kind*)
-  , s1explst(*prop*), s1explst(*type*))
-//
-| S1Er1cd of // HX: record1
-  ( token, l0s1elst(*prop/type*))
-| S1Er2cd of // HX: record2
-  ( token(*kind*)
-  , l0s1elst(*prop*), l0s1elst(*type*))
-//
-| S1Euni0 of (s1qualst)
-| S1Eexi0 of (token(*#*), s1qualst)
-//
-| S1Elam0 of
-  ( s1maglst
-  , sort1opt(*tres*), s1exp(*body*))
-//
-| S1Eanno of (s1exp, sort1)
-//
-| S1Equal of ( token(*$NS.*), s1exp )
-//
-| S1Enone0 of () | S1Enone1 of ( s0exp )
-//
-// end of [s1exp_node] // end of [datatype]
-
+(* ****** ****** *)
+fun
+d1typ_fprint:(FILR,d1typ)->void
 (* ****** ****** *)
 //
 fun
-s1exp_fprint:(FILR,s1exp)->void
+d1typ_get_lctn(d1typ): loc_t
+fun
+d1typ_get_node(d1typ): d1typ_node
+//
+#symload lctn with d1typ_get_lctn
+#symload node with d1typ_get_node
 //
 (* ****** ****** *)
 //
 fun
-s1exp_get_lctn(s1exp): loc_t
-fun
-s1exp_get_node(s1exp): s1exp_node
-//
-#symload lctn with s1exp_get_lctn
-#symload node with s1exp_get_node
-//
-(* ****** ****** *)
-//
-fun
-s1exp_none0(loc:loc_t): s1exp
-fun
-s1exp_none1(s0e:s0exp): s1exp
-fun
-s1exp_make_node
-(loc:loc_t,nod:s1exp_node): s1exp
-#symload s1exp with s1exp_make_node
+d1typ_make_node
+(loc:loc_t,nod:d1typ_node): d1typ
+#symload d1typ with d1typ_make_node
 //
 (* ****** ****** *)
 

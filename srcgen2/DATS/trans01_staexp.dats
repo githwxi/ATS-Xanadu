@@ -126,6 +126,9 @@ _(*TRANS01*) = "./trans01.dats"
 #symload lctn with d0tcn_get_lctn
 #symload node with d0tcn_get_node
 (* ****** ****** *)
+#symload lctn with d0typ_get_lctn
+#symload node with d0typ_get_node
+(* ****** ****** *)
 #symload s1mag with s1mag_make_node
 #symload t1mag with t1mag_make_node
 (* ****** ****** *)
@@ -1693,6 +1696,40 @@ d1tcn_make_node
 end (*let*)//end-of-(D0TCNnode(_,_,_,_))
 //
 end (*let*)//end-of-[trans01_d0tcn(tenv,tcn0)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_d0typ
+(tenv, d0t0) = let
+//
+val
+loc0 = d0t0.lctn()
+//
+in//let
+//
+case+
+d0t0.node() of
+|
+D0TYPnode
+( deid
+, tmas, tres
+, teq1, tcns) =>
+let
+val deid =
+trans01_i0dnt(tenv, deid)
+val tmas =
+trans01_t0maglst(tenv, tmas)
+val tres =
+trans01_sort0opt(tenv, tres)
+val tcns =
+trans01_d0tcnlst(tenv, tcns)
+in
+d1typ_make_node
+(loc0,D1TYPnode(deid,tmas,tres,tcns))
+end (*let*)//end-of-(D0TYPnode(_,_,_,_,_))
+//
+end (*let*)//end-of-[trans01_d0typ(tenv,d0t0)]
 
 (* ****** ****** *)
 

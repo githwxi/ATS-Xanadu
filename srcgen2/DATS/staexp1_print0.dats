@@ -88,6 +88,12 @@ _(*?*) = "./lexing0_print0.dats"
 #symload node with s1uni_get_node
 #symload lctn with s1uni_get_lctn
 (* ****** ****** *)
+#symload node with d1tcn_get_node
+#symload lctn with d1tcn_get_lctn
+(* ****** ****** *)
+#symload node with d1typ_get_node
+#symload lctn with d1typ_get_lctn
+(* ****** ****** *)
 //
 #implfun
 s1qid_fprint
@@ -549,6 +555,50 @@ S1TDFtsub(s1a1,s1es) =>
 )
 //
 end (*let*) // end of [s1tdf_fprint(out,stdf)]
+
+(* ****** ****** *)
+
+#implfun
+d1tcn_fprint
+( out, dtcn ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+dtcn.node() of
+|
+D1TCNnode
+(s1us
+,deid,s1es,sres) =>
+(
+print("D1TCNnode(");
+print(s1us,";",deid,";",s1es,";",sres,")"))
+//
+end (*let*) // end of [d1tcn_fprint(out,dtcn)]
+
+(* ****** ****** *)
+
+#implfun
+d1typ_fprint
+( out, dtyp ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+dtyp.node() of
+|
+D1TYPnode
+(deid
+,tmas,tres,tcns) =>
+(
+print("D1TYPnode(");
+print(deid,";",tmas,";",tres,";",tcns,")"))
+//
+end (*let*) // end of [d1typ_fprint(out,dtyp)]
 
 (* ****** ****** *)
 
