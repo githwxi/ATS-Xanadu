@@ -962,29 +962,6 @@ end (*let*) // end of [d0res_fprint]
 (* ****** ****** *)
 
 #implfun
-d0cstdcl_fprint
-  (out, dcst) =
-let
-//
-(*
-val lctn = dcst.lctn()
-*)
-val dpid = dcst.dpid()
-val darg = dcst.darg()
-val sres = dcst.sres()
-val dres = dcst.dres()
-//
-#impltmp g_print$out<>() = out
-//
-in//let
-print
-("D0CSTDCL("
-,dpid,";",darg,";",sres,";",dres,")")
-end (*let*) // end of [d0cstdcl_fprint]
-
-(* ****** ****** *)
-
-#implfun
 d0valdcl_fprint
   (out, d0cl) = let
 //
@@ -1036,6 +1013,29 @@ in//let
 print("D0FUNDCL(",dpid,";");
 print(farg,";",sres,";",tdxp,",",wsxp,")"))
 end(*let*)//end-of-[d0fundcl_fprint(out,d0cl)]
+
+(* ****** ****** *)
+
+#implfun
+d0cstdcl_fprint
+  (out, dcst) =
+let
+//
+(*
+val lctn = dcst.lctn()
+*)
+val dpid = dcst.dpid()
+val darg = dcst.darg()
+val sres = dcst.sres()
+val dres = dcst.dres()
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+print
+("D0CSTDCL("
+,dpid,";",darg,";",sres,";",dres,")")
+end (*let*) // end of [d0cstdcl_fprint]
 
 (* ****** ****** *)
 

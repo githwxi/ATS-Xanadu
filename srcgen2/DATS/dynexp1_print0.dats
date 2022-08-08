@@ -280,6 +280,37 @@ end (*let*) // end of [a1tdf_fprint]
 (* ****** ****** *)
 //
 #implfun
+s1eff_fprint
+(out, seff) =
+let
+#implfun
+g_print$out<>() = out
+in//let
+case+ seff of
+|
+S1EFFsome(s1fs) =>
+print("S1EFFsome(",s1fs,")")
+end (*let*) // end of [s1eff_fprint]
+//
+#implfun
+s1res_fprint
+(out, sres) =
+let
+#implfun
+g_print$out<>() = out
+in//let
+case+ sres of
+|
+S1RESnone() =>
+print("S1RESnone(",")")
+|
+S1RESsome(seff, s1e1) =>
+print("S1RESsome(",seff,";",s1e1,")")
+end (*let*) // end of [s1res_fprint]
+//
+(* ****** ****** *)
+//
+#implfun
 wd1eclseq_fprint
   (out, wdcs) =
 let
@@ -295,6 +326,33 @@ WD1CSsome(dcls) => print("WD1CSsome(",dcls,")")
 //
 end (*let*) // end of [wd1eclseq_fprint]
 //
+(* ****** ****** *)
+
+#implfun
+d1cstdcl_fprint
+  (out, dcst) =
+let
+//
+(*
+val lctn = dcst.lctn()
+*)
+val dpid =
+d1cstdcl_get_dpid(dcst)
+val darg =
+d1cstdcl_get_darg(dcst)
+val sres =
+d1cstdcl_get_sres(dcst)
+val dres =
+d1cstdcl_get_dres(dcst)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+print
+("D1CSTDCL("
+,dpid,";",darg,";",sres,";",dres,")")
+end (*let*) // end of [d1cstdcl_fprint]
+
 (* ****** ****** *)
 
 #implfun
