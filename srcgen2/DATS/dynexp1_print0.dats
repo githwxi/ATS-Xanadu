@@ -230,6 +230,20 @@ print(sid1,";",smas,";",tres,";",sdef,")"))
 D1Cdatasort
 (  tknd, dtcs  ) =>
 print("D1Cdatasort(",tknd,";",dtcs,")")
+//
+|
+D1Cvaldclst
+(  tknd, d1vs  ) =>
+print("D1Cvaldclst(",tknd,";",d1vs,")")
+|
+D1Cvardclst
+(  tknd, d1vs  ) =>
+print("D1Cvardclst(",tknd,";",d1vs,")")
+|
+D1Cfundclst
+(tknd,tqas,d1fs) =>
+print("D1Cfundclst(",tknd,";",tqas,";",d1fs,")")
+//
 |
 D1Cdatatype
 (tknd,d1ts,wdcs) =>
