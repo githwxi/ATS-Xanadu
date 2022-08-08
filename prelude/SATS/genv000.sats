@@ -114,12 +114,26 @@ fun
 <x0:t0>
 <e1:vt>
 gseq_forall_e1nv(xs, !e1): bool
+fun
+<xs:t0>
+<x0:t0>
+<e1:vt>
+<e2:vt>
+gseq_forall_e2nv(xs, !e1, !e2): bool
+//
+(* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
 <e1:vt>
 gseq_foreach_e1nv(xs, !e1): void
+fun
+<xs:t0>
+<x0:t0>
+<e1:vt>
+<e2:vt>
+gseq_foreach_e2nv(xs, !e1, !e2): void
 //
 (* ****** ****** *)
 //
