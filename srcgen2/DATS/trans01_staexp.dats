@@ -120,6 +120,12 @@ _(*TRANS01*) = "./trans01.dats"
 #symload lctn with s0qua_get_lctn
 #symload node with s0qua_get_node
 (* ****** ****** *)
+#symload lctn with s0uni_get_lctn
+#symload node with s0uni_get_node
+(* ****** ****** *)
+#symload lctn with d0tcn_get_lctn
+#symload node with d0tcn_get_node
+(* ****** ****** *)
 #symload s1mag with s1mag_make_node
 #symload t1mag with t1mag_make_node
 (* ****** ****** *)
@@ -1621,6 +1627,72 @@ val
 topt = trans01_sort0opt(tenv, topt) }
 //
 end (*let*) // end of [trans01_s0qua(s0q0)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_s0uni
+(tenv, s0u0) = let
+//
+val
+loc0 = s0u0.lctn()
+//
+in//let
+//
+case+
+s0u0.node() of
+|
+S0UNInone(tok) =>
+let
+val s1qs = list_nil()
+in
+  s1uni(loc0,S1UNIsome(s1qs))
+end (*let*)//end-of-(S0UNInone(tok))
+|
+S0UNIsome
+(tbeg,s0qs,tend) =>
+let
+val s1qs =
+trans01_s0qualst(tenv, s0qs)
+in
+s1uni_make_node(loc0,S1UNIsome(s1qs))
+end (*let*)//end-of-(S0UNIsome(_,_,_))
+//
+end (*let*)//end of [trans01_s0uni(tenv,s0u0)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_d0tcn
+(tenv, tcn0) = let
+//
+val
+loc0 = tcn0.lctn()
+//
+in//let
+//
+case+
+tcn0.node() of
+|
+D0TCNnode
+( s0us
+, deid
+, s0es, sres) =>
+let
+val deid =
+trans01_i0dnt(tenv, deid)
+val s1us =
+trans01_s0unilst(tenv, s0us)
+val s1es =
+trans01_s0explst(tenv, s0es)
+val sres =
+trans01_s0expopt(tenv, sres)
+in
+d1tcn_make_node
+(loc0,D1TCNnode(s1us,deid,s1es,sres))
+end (*let*)//end-of-(D0TCNnode(_,_,_,_))
+//
+end (*let*)//end-of-[trans01_d0tcn(tenv,tcn0)]
 
 (* ****** ****** *)
 

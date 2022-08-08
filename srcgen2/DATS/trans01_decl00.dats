@@ -792,7 +792,7 @@ end (*let*) // end of [f0_datatype(tenv,d0cl)]
 #implfun
 trans01_d0eclist
 (tenv, dcls) =
-list_trans01_fnp(tenv, d0cs, trans01_d0ecl)
+list_trans01_fnp(tenv, dcls, trans01_d0ecl)
 
 (* ****** ****** *)
 

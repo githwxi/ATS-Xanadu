@@ -589,7 +589,8 @@ s1qua_make_node
 //
 datatype
 s1uni_node =
-| S1UNIsome of (s1qualst)
+|
+S1UNIsome of (s1qualst)
 //
 (* ****** ****** *)
 fun
@@ -610,6 +611,37 @@ fun
 s1uni_make_node
 (loc:loc_t,nod:s1uni_node): s1uni
 #symload s1uni with s1uni_make_node
+//
+(* ****** ****** *)
+//
+datatype
+d1tcn_node =
+|
+D1TCNnode of
+( s1unilst
+, token(*d0eid*)
+, s1explst(*indices*)
+, s1expopt(*argtypes*) )
+//
+(* ****** ****** *)
+fun
+d1tcn_fprint:(FILR,d1tcn)->void
+(* ****** ****** *)
+//
+fun
+d1tcn_get_lctn(d1tcn): loc_t
+fun
+d1tcn_get_node(d1tcn): d1tcn_node
+//
+#symload lctn with d1tcn_get_lctn
+#symload node with d1tcn_get_node
+//
+(* ****** ****** *)
+//
+fun
+d1tcn_make_node
+(loc:loc_t,nod:d1tcn_node): d1tcn
+#symload d1tcn with d1tcn_make_node
 //
 (* ****** ****** *)
 
