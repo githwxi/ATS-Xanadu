@@ -904,7 +904,7 @@ d0tcn_node =
 D0TCNnode of
 ( s0unilst
 , d0eid(*nam*), s0explst, s0expopt) 
-// end- of-[D0TCN]
+// end-of-[D0TCNnode]
 //
 datatype
 d0typ_node =
@@ -913,7 +913,7 @@ D0TYPnode of
 ( d0eid
 , t0maglst
 , sort0opt(*res*), token, d0tcnlst)
-// end- of-[D0TYP]
+// end- of-[D0TYPnode]
 //
 (* ****** ****** *)
 fun
