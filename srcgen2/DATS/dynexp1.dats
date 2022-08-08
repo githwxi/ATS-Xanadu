@@ -240,6 +240,37 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
+f1arg =
+F1ARG of
+(
+loctn, f1arg_node)
+#absimpl
+f1arg_tbox = f1arg
+//
+in (* in-of-local *)
+//
+#implfun
+f1arg_make_node
+(   loc,nod   ) = F1ARG(loc,nod)
+//
+#implfun
+f1arg_get_lctn(tia) =
+let
+  val+F1ARG(loc,nod) = tia in loc
+end
+#implfun
+f1arg_get_node(tia) =
+let
+  val+F1ARG(loc,nod) = tia in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 q1arg =
 Q1ARG of
 (
