@@ -57,6 +57,10 @@ LOC = "./locinfo.sats"
 #typedef lcsrc = $LOC.lcsrc
 //
 (* ****** ****** *)
+#staload
+LEX = "./lexing0.sats"
+#typedef token = $LEX.token
+(* ****** ****** *)
 //
 #staload
 FP0 = "./filpath.sats"
@@ -106,8 +110,12 @@ D0E = "./dynexp0.sats"
 //
 (* ****** ****** *)
 //
+#typedef d1pid = token
+#typedef d1eid = token
 #typedef d0pid = $S0E.d0pid
 #typedef d0eid = $S0E.d0eid
+//
+(* ****** ****** *)
 //
 #typedef d0pat = $D0E.d0pat
 #typedef d0exp = $D0E.d0exp
@@ -116,6 +124,7 @@ D0E = "./dynexp0.sats"
 (* ****** ****** *)
 //
 #typedef d0pidopt = optn(d0pid)
+#typedef d1pidopt = optn(d1pid)
 //
 (* ****** ****** *)
 //
@@ -678,9 +687,9 @@ d1valdcl_get_wsxp:(d1valdcl)->wths1exp
 #symload wsxp with d1valdcl_get_wsxp
 (* ****** ****** *)
 fun
-d1vardcl_get_dpid:(d1vardcl)->d0pid
+d1vardcl_get_dpid:(d1vardcl)->d1pid
 fun
-d1vardcl_get_vpid:(d1vardcl)->d0pidopt
+d1vardcl_get_vpid:(d1vardcl)->d1pidopt
 fun
 d1vardcl_get_sres:(d1vardcl)->s1expopt
 fun
@@ -717,14 +726,14 @@ d1valdcl_make_args
 fun
 d1vardcl_make_args
 ( lctn:loc_t
-, dpid:d0pid
-, vpid:d0pidopt
+, dpid:d1pid
+, vpid:d1pidopt
 , sres:s1expopt, dini:teqd1exp):d1vardcl
 //
 fun
 d1fundcl_make_args
 ( lctn:loc_t
-, dpid:d0pid
+, dpid:d1pid
 , farg:f1arglst
 , sres:s0res
 , tdxp:teqd1exp, wsxp:wths1exp):d1fundcl
@@ -751,7 +760,7 @@ D1CSTDCL of @{
 fun
 d1cstdcl_get_lctn:(d1cstdcl)->loc_t
 fun
-d1cstdcl_get_dpid:(d1cstdcl)->d0pid(*nam*)
+d1cstdcl_get_dpid:(d1cstdcl)->d1pid(*nam*)
 fun
 d1cstdcl_get_darg:(d1cstdcl)->d1arglst
 fun
@@ -770,7 +779,7 @@ d1cstdcl_get_dres:(d1cstdcl)->d1res(*opt*)
 fun
 d1cstdcl_make_args
 ( loc0:loc_t
-, dpid:d0pid
+, dpid:d1pid
 , args:d1arglst, sres:s1res, dres:d1res
 ) : d1cstdcl//end-of(d1cstdcl_make_node)
 #symload d1cstdcl with d1cstdcl_make_args

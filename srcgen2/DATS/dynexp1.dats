@@ -282,7 +282,7 @@ datatype
 d1cstdcl =
 D1CSTDCL of
 ( loc_t
-, d0pid
+, d1pid
 , d1arglst,s1res,d1res)
 //
 #absimpl
@@ -292,8 +292,7 @@ in//local
 //
 #implfun
 d1cstdcl_get_lctn
-(  dcst  ) =
-let
+  (  dcst  ) = let
 val+
 D1CSTDCL
 ( lctn
@@ -303,8 +302,7 @@ D1CSTDCL
 //
 #implfun
 d1cstdcl_get_darg
-(  dcst  ) =
-let
+  (  dcst  ) = let
 val+
 D1CSTDCL
 ( lctn
@@ -314,8 +312,7 @@ D1CSTDCL
 //
 #implfun
 d1cstdcl_get_dpid
-(  dcst  ) =
-let
+  (  dcst  ) = let
 val+
 D1CSTDCL
 ( lctn
@@ -325,8 +322,7 @@ D1CSTDCL
 //
 #implfun
 d1cstdcl_get_sres
-(  dcst  ) =
-let
+  (  dcst  ) = let
 val+
 D1CSTDCL
 ( lctn
@@ -336,8 +332,7 @@ D1CSTDCL
 //
 #implfun
 d1cstdcl_get_dres
-(  dcst  ) =
-let
+  (  dcst  ) = let
 val+
 D1CSTDCL
 ( lctn
@@ -351,6 +346,143 @@ d1cstdcl_make_args
 D1CSTDCL(lctn, dpid, darg, sred, dres)
 //
 endloc (*local*) // end of [ local(d1cstdcl) ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d1valdcl =
+D1VALDCL of
+( loc_t
+, d1pat
+, teqd1exp, wths1exp)
+//
+#absimpl
+d1valdcl_tbox = d1valdcl
+//
+in//local
+
+#implfun
+d1valdcl_get_lctn
+  (  dval  ) = let
+val+
+D1VALDCL
+( lctn
+, dpat
+, tdxp, wsxp) = dval in lctn end
+
+#implfun
+d1valdcl_get_dpat
+  (  dval  ) = let
+val+
+D1VALDCL
+( lctn
+, dpat
+, tdxp, wsxp) = dval in dpat end
+
+#implfun
+d1valdcl_get_tdxp
+  (  dval  ) = let
+val+
+D1VALDCL
+( lctn
+, dpat
+, tdxp, wsxp) = dval in tdxp end
+
+#implfun
+d1valdcl_get_wsxp
+  (  dval  ) = let
+val+
+D1VALDCL
+( lctn
+, dpat
+, tdxp, wsxp) = dval in wsxp end
+
+(* ****** ****** *)
+
+#implfun
+d1valdcl_make_args
+(lctn, dpat, tdxp, wsxp) =
+(
+  D1VALDCL(lctn, dpat, tdxp, wsxp)
+)
+
+endloc (*local*) // end of [ local(d1valdcl) ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d1vardcl =
+D1VARDCL of
+( loc_t
+, d1pid
+, d1pidopt
+, s1expopt, teqd1exp)
+//
+#absimpl
+d1vardcl_tbox = d1vardcl
+//
+in//local
+
+#implfun
+d1vardcl_get_lctn
+  (  dvar  ) = let
+val+
+D1VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in lctn end
+
+#implfun
+d1vardcl_get_dpid
+  (  dvar  ) = let
+val+
+D1VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in dpid end
+
+#implfun
+d1vardcl_get_vpid
+  (  dvar  ) = let
+val+
+D1VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in vpid end
+
+#implfun
+d1vardcl_get_sres
+  (  dvar  ) = let
+val+
+D1VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in sres end
+
+#implfun
+d1vardcl_get_dini
+  (  dvar  ) = let
+val+
+D1VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in dini end
+
+(* ****** ****** *)
+
+#implfun
+d1vardcl_make_args
+( lctn
+, dpid, vpid, sres, dini) =
+(
+D1VARDCL(lctn, dpid, vpid, sres, dini)
+)
+
+endloc (*local*) // end of [ local(d1vardcl) ]
 
 (* ****** ****** *)
 

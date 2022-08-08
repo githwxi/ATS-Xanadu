@@ -615,8 +615,7 @@ in//local
 
 #implfun
 d0valdcl_get_lctn
-(  dval  ) =
-let
+  (  dval  ) = let
 val+
 D0VALDCL
 ( lctn
@@ -625,8 +624,7 @@ D0VALDCL
 
 #implfun
 d0valdcl_get_dpat
-(  dval  ) =
-let
+  (  dval  ) = let
 val+
 D0VALDCL
 ( lctn
@@ -635,8 +633,7 @@ D0VALDCL
 
 #implfun
 d0valdcl_get_tdxp
-(  dval  ) =
-let
+  (  dval  ) = let
 val+
 D0VALDCL
 ( lctn
@@ -645,8 +642,7 @@ D0VALDCL
 
 #implfun
 d0valdcl_get_wsxp
-(  dval  ) =
-let
+  (  dval  ) = let
 val+
 D0VALDCL
 ( lctn
@@ -683,8 +679,7 @@ in//local
 
 #implfun
 d0vardcl_get_lctn
-(  dvar  ) =
-let
+  (  dvar  ) = let
 val+
 D0VARDCL
 ( lctn
@@ -693,8 +688,7 @@ D0VARDCL
 
 #implfun
 d0vardcl_get_dpid
-(  dvar  ) =
-let
+  (  dvar  ) = let
 val+
 D0VARDCL
 ( lctn
@@ -703,8 +697,7 @@ D0VARDCL
 
 #implfun
 d0vardcl_get_vpid
-(  dvar  ) =
-let
+  (  dvar  ) = let
 val+
 D0VARDCL
 ( lctn
@@ -713,8 +706,7 @@ D0VARDCL
 
 #implfun
 d0vardcl_get_sres
-(  dvar  ) =
-let
+  (  dvar  ) = let
 val+
 D0VARDCL
 ( lctn
@@ -723,8 +715,7 @@ D0VARDCL
 
 #implfun
 d0vardcl_get_dini
-(  dvar  ) =
-let
+  (  dvar  ) = let
 val+
 D0VARDCL
 ( lctn
