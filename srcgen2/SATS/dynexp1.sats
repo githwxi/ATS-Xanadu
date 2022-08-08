@@ -102,11 +102,12 @@ D0E = "./dynexp0.sats"
 #abstbox d1gpt_tbox // ptr
 #abstbox d1cls_tbox // ptr
 //
-#abstbox d1cstdcl_tbox // ptr
-#abstbox d1fundcl_tbox // ptr
 #abstbox d1valdcl_tbox // ptr
 #abstbox d1vardcl_tbox // ptr
+#abstbox d1fundcl_tbox // ptr
 #abstbox i1mpldcl_tbox // ptr
+//
+#abstbox d1cstdcl_tbox // ptr
 //
 (* ****** ****** *)
 //
@@ -127,14 +128,20 @@ D0E = "./dynexp0.sats"
 //
 (* ****** ****** *)
 //
+#typedef q1arg = q1arg_tbox
 #typedef s1qag = s1qag_tbox
 #typedef t1qag = t1qag_tbox
+//
 #typedef t1iag = t1iag_tbox
 //
 (* ****** ****** *)
+//
+#typedef q1arglst = list(q1arg)
 #typedef s1qaglst = list(s1qag)
 #typedef t1qaglst = list(t1qag)
+//
 #typedef t1iaglst = list(t1iag)
+//
 (* ****** ****** *)
 //
 #typedef a1typ = a1typ_tbox
@@ -175,12 +182,13 @@ l0d1e = $D0E.d0lab(d1exp)
 #typedef d1clslst = list(d1cls)
 //
 (* ****** ****** *)
-
+//
 #typedef d1valdcl = d1valdcl_tbox
 #typedef d1vardcl = d1vardcl_tbox
 #typedef d1fundcl = d1fundcl_tbox
+//
 #typedef d1cstdcl = d1cstdcl_tbox
-
+//
 (* ****** ****** *)
 //
 #vwtpdef d1eclist_vt = list_vt(d1ecl)
@@ -467,6 +475,13 @@ d1exp_fprint:(FILR,d1exp)->void
 (* ****** ****** *)
 //
 fun
+s1eff_fprint:(FILR,s1eff)->void
+fun
+s1res_fprint:(FILR,s1res)->void
+//
+(* ****** ****** *)
+//
+fun
 d1exp_get_lctn(d1exp): loc_t
 fun
 d1exp_get_node(d1exp): d1exp_node
@@ -501,12 +516,9 @@ Q1ARGsome of
 datatype
 s1qag_node =
 (*
-|
-S1QAGnone of token
+|S1QAGnone of token
 *)
-|
-S1QAGsome of // {...}
-(token, q1arglst, token)
+|S1QAGsome of (q1arglst)//{...}
 //
 datatype
 t1qag_node =
@@ -514,9 +526,7 @@ t1qag_node =
 |
 T1QAGnone of token
 *)
-|
-T1QAGsome of // <...>
-(token, q1arglst, token)
+|T1QAGsome of (q1arglst)//<...>
 //
 (* ****** ****** *)
 fun
@@ -525,6 +535,77 @@ fun
 s1qag_fprint(FILR, s1qag): void
 fun
 t1qag_fprint(FILR, t1qag): void
+(* ****** ****** *)
+//
+fun
+q1arg_get_lctn(q1arg): loc_t
+fun
+s1qag_get_lctn(s1qag): loc_t
+fun
+t1qag_get_lctn(t1qag): loc_t
+#symload lctn with q1arg_get_lctn
+#symload lctn with s1qag_get_lctn
+#symload lctn with t1qag_get_lctn
+//
+(* ****** ****** *)
+//
+fun
+q1arg_get_node(q1arg): q1arg_node
+fun
+s1qag_get_node(s1qag): s1qag_node
+fun
+t1qag_get_node(t1qag): t1qag_node
+#symload node with q1arg_get_node
+#symload node with s1qag_get_node
+#symload node with t1qag_get_node
+//
+(* ****** ****** *)
+//
+fun
+q1arg_make_node
+(loc:loc_t, nod:q1arg_node): q1arg
+fun
+s1qag_make_node
+(loc:loc_t, nod:s1qag_node): s1qag
+fun
+t1qag_make_node
+(loc:loc_t, nod:t1qag_node): t1qag
+#symload q1arg with q1arg_make_node
+#symload s1qag with s1qag_make_node
+#symload t1qag with t1qag_make_node
+//
+(* ****** ****** *)
+//
+datatype
+t1iag_node =
+(*
+|
+T1IAGnone of token
+*)
+|T1IAGsome of (s0explst)//<...>
+//
+(* ****** ****** *)
+fun
+t1iag_fprint(FILR, t1iag): void
+(* ****** ****** *)
+fun
+t1iag_get_lctn(t1iag): loc_t
+fun
+t1iag_get_node(t1iag): t1iag_node
+//
+#symload lctn with t1iag_get_lctn
+#symload node with t1iag_get_node
+//
+(* ****** ****** *)
+//
+fun
+t1iag_make_node
+(loc:loc_t, nod:t1iag_node): t1iag
+#symload t1iag with t1iag_make_node
+//
+(* ****** ****** *)
+
+
 (* ****** ****** *)
 //
 datatype
@@ -551,27 +632,6 @@ teqd1exp_fprint:(FILR, teqd1exp)->void
 fun
 wths1exp_fprint:(FILR, wths1exp)->void
 *)
-(* ****** ****** *)
-fun
-d1valdcl_fprint
-(out: FILR, d1cl: d1valdcl): void
-fun
-d1vardcl_fprint
-(out: FILR, d1cl: d1vardcl): void
-fun
-d1fundcl_fprint
-(out: FILR, d1cl: d1fundcl): void
-(* ****** ****** *)
-fun
-d1valdcl_get_lctn:(d1valdcl)->loc_t
-fun
-d1vardcl_get_lctn:(d1vardcl)->loc_t
-fun
-d1fundcl_get_lctn:(d1fundcl)->loc_t
-(* ****** ****** *)
-#symload lctn with d1valdcl_get_lctn
-#symload lctn with d1vardcl_get_lctn
-#symload lctn with d1fundcl_get_lctn
 (* ****** ****** *)
 //
 datatype
@@ -714,6 +774,43 @@ d1ecl_make_node
 #symload d1ecl with d1ecl_make_node
 //
 (* ****** ****** *)
+//
+datatype
+a1typ_node =
+(*
+| A1TYPnone of token
+*)
+| A1TYPsome of (s1exp,tokenopt)
+//
+(* ****** ****** *)
+//
+fun
+a1typ_fprint(FILR, a1typ): void
+fun
+d1arg_fprint(FILR, d1arg): void
+//
+(* ****** ****** *)
+fun
+d1valdcl_fprint
+(out: FILR, dval: d1valdcl): void
+fun
+d1vardcl_fprint
+(out: FILR, dvar: d1vardcl): void
+fun
+d1fundcl_fprint
+(out: FILR, dfun: d1fundcl): void
+(* ****** ****** *)
+fun
+d1valdcl_get_lctn:(d1valdcl)->loc_t
+fun
+d1vardcl_get_lctn:(d1vardcl)->loc_t
+fun
+d1fundcl_get_lctn:(d1fundcl)->loc_t
+(* ****** ****** *)
+#symload lctn with d1valdcl_get_lctn
+#symload lctn with d1vardcl_get_lctn
+#symload lctn with d1fundcl_get_lctn
+(* ****** ****** *)
 fun
 d1valdcl_get_dpat:(d1valdcl)->d1pat
 fun
@@ -774,7 +871,7 @@ d1fundcl_make_args
 ( lctn:loc_t
 , dpid:d1pid
 , farg:f1arglst
-, sres:s0res
+, sres:s1res
 , tdxp:teqd1exp, wsxp:wths1exp):d1fundcl
 //
 #symload d1valdcl with d1valdcl_make_args
@@ -795,6 +892,14 @@ D1CSTDCL of @{
 , sres= s1res, dres= d1res
 } (*d1cstdcl*)
 *)
+//
+(* ****** ****** *)
+//
+fun
+d1cstdcl_fprint
+(out: FILR, dcst: d1cstdcl): void
+//
+(* ****** ****** *)
 //
 fun
 d1cstdcl_get_lctn:(d1cstdcl)->loc_t

@@ -237,6 +237,130 @@ endloc (*local*) // end of [ local ]
 
 (* ****** ****** *)
 
+local
+//
+datatype
+q1arg =
+Q1ARG of
+(
+loctn, q1arg_node)
+#absimpl
+q1arg_tbox = q1arg
+//
+in (* in-of-local *)
+//
+#implfun
+q1arg_make_node
+(   loc,nod   ) = Q1ARG(loc,nod)
+//
+#implfun
+q1arg_get_lctn(tia) =
+let
+  val+Q1ARG(loc,nod) = tia in loc
+end
+#implfun
+q1arg_get_node(tia) =
+let
+  val+Q1ARG(loc,nod) = tia in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+s1qag =
+S1QAG of
+(
+loctn, s1qag_node)
+#absimpl
+s1qag_tbox = s1qag
+//
+in (* in-of-local *)
+//
+#implfun
+s1qag_make_node
+(   loc,nod   ) = S1QAG(loc,nod)
+//
+#implfun
+s1qag_get_lctn(tia) =
+let
+  val+S1QAG(loc,nod) = tia in loc
+end
+#implfun
+s1qag_get_node(tia) =
+let
+  val+S1QAG(loc,nod) = tia in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+t1qag =
+T1QAG of
+(
+loctn, t1qag_node)
+#absimpl
+t1qag_tbox = t1qag
+//
+in (* in-of-local *)
+//
+#implfun
+t1qag_make_node
+(   loc,nod   ) = T1QAG(loc,nod)
+//
+#implfun
+t1qag_get_lctn(tia) =
+let
+  val+T1QAG(loc,nod) = tia in loc
+end
+#implfun
+t1qag_get_node(tia) =
+let
+  val+T1QAG(loc,nod) = tia in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+t1iag =
+T1IAG of
+(
+loctn, t1iag_node)
+#absimpl
+t1iag_tbox = t1iag
+//
+in (* in-of-local *)
+//
+#implfun
+t1iag_make_node
+(   loc,nod   ) = T1IAG(loc,nod)
+//
+#implfun
+t1iag_get_lctn(tia) =
+let
+  val+T1IAG(loc,nod) = tia in loc
+end
+#implfun
+t1iag_get_node(tia) =
+let
+  val+T1IAG(loc,nod) = tia in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
 #implfun
 d1ecl_none1
 (  d0cl  ) =

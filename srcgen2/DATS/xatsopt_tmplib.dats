@@ -631,6 +631,13 @@ g_print<d1ecl>(dcl) =
 d1ecl_fprint(g_print$out<>(), dcl)
 //
 (* ****** ****** *)
+#impltmp
+g_print<s1eff>(seff) =
+s1eff_fprint(g_print$out<>(), seff)
+#impltmp
+g_print<s1res>(sres) =
+s1res_fprint(g_print$out<>(), sres)
+(* ****** ****** *)
 //
 #impltmp
 g_print<q1arg>(qarg) =
@@ -643,10 +650,19 @@ s1qag_fprint(g_print$out<>(), sqag)
 g_print<t1qag>(tqag) =
 t1qag_fprint(g_print$out<>(), tqag)
 //
+(* ****** ****** *)
+//
 #impltmp
 g_print<t1iag>(tiag) =
 t1iag_fprint(g_print$out<>(), tiag)
 //
+(* ****** ****** *)
+#impltmp
+g_print<a1typ>(a1tp) =
+a1typ_fprint(g_print$out<>(), a1tp)
+#impltmp
+g_print<d1arg>(d1ag) =
+d1arg_fprint(g_print$out<>(), d1ag)
 (* ****** ****** *)
 //
 #impltmp
