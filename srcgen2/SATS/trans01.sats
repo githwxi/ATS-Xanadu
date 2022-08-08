@@ -95,6 +95,8 @@ FIL = "./filpath.sats"
 (* ****** ****** *)
 #typedef i0dntlst = $S0E.i0dntlst
 #typedef i1dntlst = $S1E.i1dntlst
+#typedef i0dntopt = $S0E.i0dntopt
+#typedef i1dntopt = $S1E.i1dntopt
 (* ****** ****** *)
 //
 #typedef s0qid = $S0E.s0qid
@@ -199,6 +201,12 @@ FIL = "./filpath.sats"
 #typedef d1explst = $D1E.d1explst
 #typedef d1eclist = $D1E.d1eclist
 //
+(* ****** ****** *)
+#typedef teqd0exp = $D0E.teqd0exp
+#typedef teqd1exp = $D1E.teqd1exp
+(* ****** ****** *)
+#typedef wths0exp = $D0E.wths0exp
+#typedef wths1exp = $D1E.wths1exp
 (* ****** ****** *)
 #typedef d0valdcl = $D0E.d0valdcl
 #typedef d0vardcl = $D0E.d0vardcl
@@ -308,6 +316,9 @@ fun trans01_t0str:
 fun
 trans01_i0dntlst:
   (!tr01env, i0dntlst)->i1dntlst
+fun
+trans01_i0dntopt:
+  (!tr01env, i0dntopt)->i1dntopt
 (* ****** ****** *)
 fun trans01_s0qid:
   (!tr01env, s0qid)->s1qid
@@ -456,6 +467,15 @@ trans01_wd0eclseq:
 fun
 trans01_d0eclistopt:
   (!tr01env, d0eclistopt)->d1eclistopt
+//
+(* ****** ****** *)
+//
+fun
+trans01_teqd0exp:
+  (!tr01env, teqd0exp)->teqd1exp
+fun
+trans01_wths0exp:
+  (!tr01env, wths0exp)->wths1exp
 //
 (* ****** ****** *)
 //

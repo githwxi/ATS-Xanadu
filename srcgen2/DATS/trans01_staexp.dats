@@ -1732,7 +1732,7 @@ end (*let*)//end-of-(D0TYPnode(_,_,_,_,_))
 end (*let*)//end-of-[trans01_d0typ(tenv,d0t0)]
 
 (* ****** ****** *)
-
+//
 #implfun
 trans01_i0dntlst
   (tenv, ids) =
@@ -1745,7 +1745,19 @@ map$fopr_e1nv
 <i0dnt><i1dnt>
 ( id0, tenv ) = trans01_i0dnt(tenv, id0)
 } (*where*) // end of [trans01_i0dntlst(ids)]
-
+//
+#implfun
+trans01_i0dntopt
+  (tenv, opt) =
+(
+case+ opt of
+| optn_nil() =>
+  optn_nil()
+| optn_cons(id0) =>
+  optn_cons(id1) where
+  { val id1 = trans01_i0dnt(tenv, id0) }
+) (*case+*) // end of [trans01_i0dntopt(opt)]
+//
 (* ****** ****** *)
 
 #implfun

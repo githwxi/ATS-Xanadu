@@ -117,7 +117,9 @@ where
 //
 (* ****** ****** *)
 #typedef i1dntlst = list(token)
+#typedef i1dntopt = optn(token)
 #typedef i0dntlst = $S0E.i0dntlst
+#typedef i0dntopt = $S0E.i0dntopt
 (* ****** ****** *)
 //
 #typedef g0exp = $S0E.g0exp
