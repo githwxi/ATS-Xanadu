@@ -218,12 +218,12 @@ FIL = "./filpath.sats"
 #typedef q0arg = $D0E.q0arg
 #typedef s0qag = $D0E.s0qag
 #typedef t0qag = $D0E.t0qag
-#typedef q1arg = q1arg_tbox
-#typedef s1qag = s1qag_tbox
-#typedef t1qag = t1qag_tbox
+#typedef q1arg = $D1E.q1arg
+#typedef s1qag = $D1E.s1qag
+#typedef t1qag = $D1E.t1qag
 //
 #typedef t0iag = $D0E.t0iag
-#typedef t1iag = t1iag_tbox
+#typedef t1iag = $D1E.t1iag
 //
 (* ****** ****** *)
 #typedef q0arglst = $D0E.q0arglst
@@ -505,18 +505,30 @@ trans01_d0clslst:
 (* ****** ****** *)
 //
 fun
+trans01_q0arg:
+  (!tr01env, q0arg)->q1arg
+fun
 trans01_s0qag:
   (!tr01env, s0qag)->s1qag
 fun
 trans01_t0qag:
   (!tr01env, t0qag)->t1qag
+fun
+trans01_t0iag:
+  (!tr01env, t0iag)->t1iag
 //
+fun
+trans01_q0arglst:
+  (!tr01env, q0arglst)->q1arglst
 fun
 trans01_s0qaglst:
   (!tr01env, s0qaglst)->s1qaglst
 fun
 trans01_t0qaglst:
   (!tr01env, t0qaglst)->t1qaglst
+fun
+trans01_t0iaglst:
+  (!tr01env, t0iaglst)->t1iaglst
 //
 (* ****** ****** *)
 //

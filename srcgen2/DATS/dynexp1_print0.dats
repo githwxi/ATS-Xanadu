@@ -340,7 +340,7 @@ print("D1Cfundclst(",tknd,";",tqas,";",d1fs,")")
 |
 D1Cdatatype
 (tknd,d1ts,wdcs) =>
-print("D1Cdatatyp1(",tknd,";",d1ts,";",wdcs,")")
+print("D1Cdatatype(",tknd,";",d1ts,";",wdcs,")")
 //
 | D1Cnone0() => print("D1Cnone0(", ")")
 | D1Cnone1(d0cl) => print("D1Cnone1(", d0cl ,")")
