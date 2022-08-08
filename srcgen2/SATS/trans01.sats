@@ -200,11 +200,25 @@ FIL = "./filpath.sats"
 #typedef d1eclist = $D1E.d1eclist
 //
 (* ****** ****** *)
+#typedef d0valdcl = $D0E.d0valdcl
+#typedef d0vardcl = $D0E.d0vardcl
+#typedef d0fundcl = $D0E.d0fundcl
+#typedef d1valdcl = $D1E.d1valdcl
+#typedef d1vardcl = $D1E.d1vardcl
+#typedef d1fundcl = $D1E.d1fundcl
+(* ****** ****** *)
 #typedef d0parsed = $D0E.d0parsed
 #typedef d1parsed = $D1E.d1parsed
 (* ****** ****** *)
 #typedef wd0eclseq = $D0E.wd0eclseq
 #typedef wd1eclseq = $D1E.wd1eclseq
+(* ****** ****** *)
+#typedef d0valdclist = $D0E.d0valdclist
+#typedef d1valdclist = $D1E.d1valdclist
+#typedef d0vardclist = $D0E.d0vardclist
+#typedef d1vardclist = $D1E.d1vardclist
+#typedef d0fundclist = $D0E.d0fundclist
+#typedef d1fundclist = $D1E.d1fundclist
 (* ****** ****** *)
 //
 fun
@@ -442,6 +456,28 @@ trans01_wd0eclseq:
 fun
 trans01_d0eclistopt:
   (!tr01env, d0eclistopt)->d1eclistopt
+//
+(* ****** ****** *)
+//
+fun
+trans01_d0valdcl:
+  (!tr01env, d0valdcl)->d1valdcl
+fun
+trans01_d0vardcl:
+  (!tr01env, d0vardcl)->d1vardcl
+fun
+trans01_d0fundcl:
+  (!tr01env, d0fundcl)->d1fundcl
+//
+fun
+trans01_d0valdclist:
+  (!tr01env, d0valdclist)->d1valdclist
+fun
+trans01_d0vardclist:
+  (!tr01env, d0vardclist)->d1vardclist
+fun
+trans01_d0fundclist:
+  (!tr01env, d0fundclist)->d1fundclist
 //
 (* ****** ****** *)
 
