@@ -202,6 +202,18 @@ FIL = "./filpath.sats"
 #typedef d1eclist = $D1E.d1eclist
 //
 (* ****** ****** *)
+#typedef d0gua = $D0E.d0gua
+#typedef d0gpt = $D0E.d0gpt
+#typedef d0cls = $D0E.d0cls
+#typedef d1gua = $D1E.d1gua
+#typedef d1gpt = $D1E.d1gpt
+#typedef d1cls = $D1E.d1cls
+(* ****** ****** *)
+#typedef d0gualst = $D0E.d0gualst
+#typedef d0clslst = $D0E.d0clslst
+#typedef d1gualst = $D1E.d1gualst
+#typedef d1clslst = $D1E.d1clslst
+(* ****** ****** *)
 #typedef teqd0exp = $D0E.teqd0exp
 #typedef teqd1exp = $D1E.teqd1exp
 (* ****** ****** *)
@@ -441,6 +453,22 @@ trans01_d0patlst:
 fun
 trans01_d0explst:
   (!tr01env, d0explst)->d1explst
+//
+(* ****** ****** *)
+//
+fun trans01_d0gua:
+  (!tr01env, d0gua)->d1gua
+fun trans01_d0gpt:
+  (!tr01env, d0gpt)->d1gpt
+fun trans01_d0cls:
+  (!tr01env, d0cls)->d1cls
+//
+fun
+trans01_d0gualst:
+  (!tr01env, d0gualst)->d1gualst
+fun
+trans01_d0clslst:
+  (!tr01env, d0clslst)->d1clslst
 //
 (* ****** ****** *)
 
