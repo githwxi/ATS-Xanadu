@@ -145,6 +145,13 @@ D0Cdatasort _ =>
 f0_datasort(tenv, d0cl)
 //
 |
+D0Cvaldclst _ =>
+f0_valdclst(tenv, d0cl)
+|
+D0Cvardclst _ =>
+f0_vardclst(tenv, d0cl)
+//
+|
 D0Cdatatype _ =>
 f0_datatype(tenv, d0cl)
 //
@@ -757,6 +764,62 @@ end (*let*) // end of [f0_datasort(tenv,d0cl)]
 (* ****** ****** *)
 
 fun
+f0_valdclst
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
+let
+//
+val loc0 = d0cl.lctn()
+//
+(*
+val () =
+println!
+("trans01_d0ecl: d0cl = ", d0cl)
+*)
+//
+val-
+D0Cvaldclst
+(tknd, d0vs) = d0cl.node()
+//
+val d1vs =
+trans01_d0valdclist(tenv, d0vs)
+//
+in//let
+  d1ecl(loc0, D1Cvaldclst(tknd, d1vs))
+end (*let*) // end of [f0_valdclst(tenv,d0cl)]
+
+(* ****** ****** *)
+
+fun
+f0_vardclst
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
+let
+//
+val loc0 = d0cl.lctn()
+//
+(*
+val () =
+println!
+("trans01_d0ecl: d0cl = ", d0cl)
+*)
+//
+val-
+D0Cvardclst
+(tknd, d0vs) = d0cl.node()
+//
+val d1vs =
+trans01_d0vardclist(tenv, d0vs)
+//
+in//let
+  d1ecl(loc0, D1Cvardclst(tknd, d1vs))
+end (*let*) // end of [f0_vardclst(tenv,d0cl)]
+
+(* ****** ****** *)
+
+fun
 f0_datatype
 ( tenv:
 ! tr01env
@@ -810,17 +873,27 @@ WD1CSsome(trans01_d0eclist(tenv, dcls))
 ) (*case+*)//end-of[trans01_wd0eclseq(tenv,wdcs)]
 //
 (* ****** ****** *)
-
+//
+#implfun
+trans01_d0valdclist
+  (  tenv,dcls  ) =
+list_trans01_fnp(tenv, dcls, trans01_d0valdcl)
+#implfun
+trans01_d0vardclist
+  (  tenv,dcls  ) =
+list_trans01_fnp(tenv, dcls, trans01_d0vardcl)
+#implfun
+trans01_d0fundclist
+  (  tenv,dcls  ) =
+list_trans01_fnp(tenv, dcls, trans01_d0fundcl)
+//
+(* ****** ****** *)
+//
 #implfun
 trans01_d0eclistopt
-  (tenv, opt0) =
-(
-case+ opt0 of
-| optn_nil() => optn_nil()
-| optn_cons(dcls) =>
-  optn_cons( trans01_d0eclist(tenv, dcls) )
-) (*where*)//end-of[trans01_d0eclistopt(tenv,opt0)]
-
+  (  tenv,opt0  ) =
+optn_trans01_fnp(tenv, opt0, trans01_d0eclist)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_trans01_decl00.dats] *)
