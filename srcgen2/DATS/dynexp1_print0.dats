@@ -141,11 +141,92 @@ in//let
 case+
 d1e.node() of
 //
+|
+D1Eid0(id0) =>
+print("D1Eid0(",id0,")")
+//
+|
+D1Eint(int) =>
+print("D1Eint(",int,")")
+|
+D1Echr(chr) =>
+print("D1Echr(",chr,")")
+|
+D1Eflt(flt) =>
+print("D1Eflt(",flt,")")
+|
+D1Estr(str) =>
+print("D1Estr(",str,")")
+//
+|
+D1Eb0sh(   ) =>
+print( "D1Eb0sh(" , ")" )
+|
+D1Eb1sh(d1e) =>
+print("D1Eb1sh(",d1e,")")
+//
 | D1Enone0() => print("D1Enone0(", ")")
 | D1Enone1(dexp) => print("D1Enone1(", dexp ,")")
 //
 end (*let*) // end of [d1exp_fprint(out,d1e)]
 
+(* ****** ****** *)
+
+#implfun
+d1gua_fprint
+(out, dgua) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+dgua.node() of
+|
+D1GUAexp(d1e1) =>
+print("D1GUAexp(",d1e1,")")
+|
+D1GUAmat(d1e1,d1p2) =>
+print("D1GUAmat(",d1e1,";",d1p2,")")
+//
+end (*let*) // end of [d1gua_fprint(out,dgua)]
+
+(* ****** ****** *)
+//
+#implfun
+d1cls_fprint
+(out, dcls) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+dcls.node() of
+|
+D1CLSgpt(dgpt) =>
+print("D1CLSgpt(",dgpt,")")
+|
+D1CLScls(d1g1,d1e2) =>
+print("D1CLScls(",d1g1,";",d1e2,")")
+end (*let*) // end of [d1cls_fprint(out,dcls)]
+//
+#implfun
+d1gpt_fprint
+(out, dgpt) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+dgpt.node() of
+|
+D1GPTpat(d1p1) =>
+print("D1GPTpat(",d1p1,")")
+|
+D1GPTgua(d1p1,d1gs) =>
+print("D1GPTgua(",d1p1,";",d1gs,")")
+end (*let*) // end of [d1gpt_fprint(out,dgpt)]
+//
 (* ****** ****** *)
 
 #implfun

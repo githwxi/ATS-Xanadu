@@ -364,13 +364,13 @@ end (*let*) // end of [d0gua_fprint(out,dgua)]
 //
 #implfun
 d0cls_fprint
-(out, dcl0) =
+(out, dcls) =
 let
 #impltmp
 g_print$out<>() = out
 in//let
 case+
-dcl0.node() of
+dcls.node() of
 |
 D0CLSgpt(dgpt) =>
 print("D0CLSgpt(",dgpt,")")
@@ -378,7 +378,8 @@ print("D0CLSgpt(",dgpt,")")
 D0CLScls
 (d0g1,tsep,d0e2) =>
 print("D0CLScls(",d0g1,";",tsep,";",d0e2,")")
-end (*let*) // end of [d0cls_fprint(out,dcl0)]
+end (*let*) // end of [d0cls_fprint(out,dcls)]
+//
 #implfun
 d0gpt_fprint
 (out, dgpt) =
@@ -392,7 +393,8 @@ dgpt.node() of
 D0GPTpat(d0p1) =>
 print("D0GPTpat(",d0p1,")")
 |
-D0GPTgua(d0p1,tsep,d0gs) =>
+D0GPTgua
+(d0p1,tsep,d0gs) =>
 print("D0GPTgua(",d0p1,";",tsep,";",d0gs,")")
 end (*let*) // end of [d0gpt_fprint(out,dgpt)]
 //
