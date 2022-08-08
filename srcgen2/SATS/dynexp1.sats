@@ -276,6 +276,35 @@ d1pat_make_node
 (* ****** ****** *)
 //
 datatype
+f1arg_node =
+(*
+| F1ARGnone of (token)
+*)
+| F1ARGsome_dyn of (d1pat)
+| F1ARGsome_sta of (s1qualst)
+| F1ARGsome_met of (s1explst)
+//
+(* ****** ****** *)
+fun
+f1arg_fprint:(FILR,f1arg)->void
+(* ****** ****** *)
+//
+fun
+f1arg_get_lctn(f1arg): loc_t
+fun
+f1arg_get_node(f1arg): f1arg_node
+//
+#symload lctn with f1arg_get_lctn
+#symload node with f1arg_get_node
+//
+(* ****** ****** *)
+fun
+f1arg_make_node
+(loc:loc_t,nod:f1arg_node): f1arg
+#symload f1arg with f1arg_make_node
+(* ****** ****** *)
+//
+datatype
 t1qua =
 |
 T1QUAsome of
@@ -613,9 +642,6 @@ t1iag_make_node
 #symload t1iag with t1iag_make_node
 //
 (* ****** ****** *)
-
-
-(* ****** ****** *)
 //
 datatype
 teqd1exp =
@@ -756,15 +782,6 @@ where
 (* ****** ****** *)
 fun
 d1ecl_fprint:(FILR,d1ecl)->void
-(* ****** ****** *)
-fun
-f1arg_fprint:(FILR,f1arg)->void
-fun
-d1gua_fprint:(FILR,d1gua)->void
-fun
-d1gpt_fprint:(FILR,d1gpt)->void
-fun
-d1cls_fprint:(FILR,d1cls)->void
 (* ****** ****** *)
 fun
 a1tdf_fprint:(FILR,a1tdf)->void
