@@ -582,10 +582,17 @@ t1mag_fprint(g_print$out<>(), t1m)
 #impltmp
 g_print<s1qua>(s1q) =
 s1qua_fprint(g_print$out<>(), s1q)
+//
+(* ****** ****** *)
 #impltmp
 g_print<s1uni>(s1u) =
 s1uni_fprint(g_print$out<>(), s1u)
-//
+#impltmp
+g_print<d1tcn>(dtc) =
+d1tcn_fprint(g_print$out<>(), dtc)
+#impltmp
+g_print<d1typ>(dtp) =
+d1typ_fprint(g_print$out<>(), dtp)
 (* ****** ****** *)
 //
 #impltmp
@@ -633,6 +640,10 @@ a1tdf_fprint(g_print$out<>(), atdf)
 #impltmp
 g_print<d1parsed>(dpar) =
 d1parsed_fprint(g_print$out<>(), dpar)
+(* ****** ****** *)
+#impltmp
+g_print<wd1eclseq>(wdcs) =
+wd1eclseq_fprint(g_print$out<>(), wdcs)
 (* ****** ****** *)
 //
 #impltmp

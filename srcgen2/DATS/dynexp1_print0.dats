@@ -208,24 +208,32 @@ print(seid,";",smas,";",tres,";",s1e1,")"))
 //
 |
 D1Cabstype
-(tknd,seid,tmas,tres,atdf) =>
+(tknd,seid
+,tmas,tres,atdf) =>
 (
 print("D1Cabstype(",tknd,";");
 print
 (seid,";",tmas,";",tres,";",atdf,")"))
 |
-D1Cabsopen(tknd, sqid) =>
+D1Cabsopen
+(  tknd, sqid  ) =>
 print("D1Cabsopen(",tknd,";",sqid,")")
 |
 D1Cabsimpl
-(tknd,sid1,smas,tres,sdef) =>
+(tknd,sid1
+,smas,tres,sdef) =>
 (
 print("D1Cabsimpl(",tknd,";");
 print(sid1,";",smas,";",tres,";",sdef,")"))
 //
 |
-D1Cdatasort(tknd,dtcs) =>
+D1Cdatasort
+(  tknd, dtcs  ) =>
 print("D1Cdatasort(",tknd,";",dtcs,")")
+|
+D1Cdatatype
+(tknd,d1ts,wdcs) =>
+print("D1Cdatatyp1(",tknd,";",d1ts,";",wdcs,")")
 //
 | D1Cnone0() => print("D1Cnone0(", ")")
 | D1Cnone1(d0cl) => print("D1Cnone1(", d0cl ,")")
@@ -255,6 +263,24 @@ print("A1TDFeqeq(",s1e1,")")
 //
 end (*let*) // end of [a1tdf_fprint]
 
+(* ****** ****** *)
+//
+#implfun
+wd1eclseq_fprint
+  (out, wdcs) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ wdcs of
+|
+WD1CSnone() => print("WD1CSnone(",")")
+|
+WD1CSsome(dcls) => print("WD1CSsome(",dcls,")")
+//
+end (*let*) // end of [wd1eclseq_fprint]
+//
 (* ****** ****** *)
 
 #implfun

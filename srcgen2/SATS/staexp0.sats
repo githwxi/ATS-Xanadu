@@ -912,7 +912,7 @@ d0typ_node =
 D0TYPnode of
 ( d0eid
 , t0maglst
-, sort0opt(*res*), token, d0tcnlst)
+, sort0opt, token(*teq*), d0tcnlst)
 // end- of-[D0TYPnode]
 //
 (* ****** ****** *)

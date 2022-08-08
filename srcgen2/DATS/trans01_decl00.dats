@@ -795,6 +795,21 @@ trans01_d0eclist
 list_trans01_fnp(tenv, dcls, trans01_d0ecl)
 
 (* ****** ****** *)
+//
+#implfun
+trans01_wd0eclseq
+  (tenv, wdcs) =
+(
+case+ wdcs of
+|
+WD0CSnone() => WD1CSnone()
+|
+WD0CSsome
+(twhr,topt,dcls,tend) =>
+WD1CSsome(trans01_d0eclist(tenv, dcls))
+) (*case+*)//end-of[trans01_wd0eclseq(tenv,wdcs)]
+//
+(* ****** ****** *)
 
 #implfun
 trans01_d0eclistopt
@@ -804,7 +819,7 @@ case+ opt0 of
 | optn_nil() => optn_nil()
 | optn_cons(dcls) =>
   optn_cons( trans01_d0eclist(tenv, dcls) )
-) (*where*) // end of [trans01_d0eclistopt(opt0)]
+) (*where*)//end-of[trans01_d0eclistopt(tenv,opt0)]
 
 (* ****** ****** *)
 

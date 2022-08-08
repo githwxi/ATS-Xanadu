@@ -643,6 +643,9 @@ d1ecl_fprint:(FILR,d1ecl)->void
 fun
 a1tdf_fprint:(FILR,a1tdf)->void
 (* ****** ****** *)
+fun
+wd1eclseq_fprint:(FILR,wd1eclseq)->void
+(* ****** ****** *)
 //
 fun
 d1ecl_get_lctn(d1ecl): loc_t

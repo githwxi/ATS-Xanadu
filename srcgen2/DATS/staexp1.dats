@@ -489,4 +489,35 @@ endloc (*local*) // end of [ local ]
 
 (* ****** ****** *)
 
+local
+//
+datatype
+d1typ =
+D1TYP of
+(
+loctn, d1typ_node)
+//
+#absimpl d1typ_tbox = d1typ
+//
+in (* in-of-local *)
+//
+#implfun
+d1typ_make_node
+(   loc,nod   ) = D1TYP(loc,nod)
+//
+#implfun
+d1typ_get_lctn(s1u) =
+let
+  val+D1TYP(loc,nod) = s1u in loc
+end
+#implfun
+d1typ_get_node(s1u) =
+let
+  val+D1TYP(loc,nod) = s1u in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_staexp1.dats] *)
