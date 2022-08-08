@@ -822,15 +822,13 @@ d1arg_node =
 (*
 | D1ARGnone of token
 *)
-//
 |
-D1ARGsome_sta of (s1qualst)
-//
+D1ARGsta0 of (s1qualst)
 |
-D1ARGsome_dyn1 of token // s0eid
+D1ARGdyn1 of token // d0pid
 |
-D1ARGsome_dyn2 of
-(a1typlst(*arg0*), a1typlstopt(*opt1*))
+D1ARGdyn2 of
+(a1typlst, a1typlstopt(*argopt2*))
 //
 (* ****** ****** *)
 //
@@ -848,6 +846,11 @@ fun
 a1typ_get_node:(a1typ)->a1typ_node
 fun
 d1arg_get_node:(d1arg)->d1arg_node
+(* ****** ****** *)
+#symload lctn with a1typ_get_lctn
+#symload node with a1typ_get_node
+#symload lctn with d1arg_get_lctn
+#symload node with d1arg_get_node
 (* ****** ****** *)
 fun
 d1valdcl_fprint

@@ -214,6 +214,28 @@ FIL = "./filpath.sats"
 #typedef d1gualst = $D1E.d1gualst
 #typedef d1clslst = $D1E.d1clslst
 (* ****** ****** *)
+//
+#typedef q0arg = $D0E.q0arg
+#typedef s0qag = $D0E.s0qag
+#typedef t0qag = $D0E.t0qag
+#typedef q1arg = q1arg_tbox
+#typedef s1qag = s1qag_tbox
+#typedef t1qag = t1qag_tbox
+//
+#typedef t0iag = $D0E.t0iag
+#typedef t1iag = t1iag_tbox
+//
+(* ****** ****** *)
+#typedef q0arglst = $D0E.q0arglst
+#typedef s0qaglst = $D0E.s0qaglst
+#typedef t0qaglst = $D0E.t0qaglst
+#typedef q1arglst = $D1E.q1arglst
+#typedef s1qaglst = $D1E.s1qaglst
+#typedef t1qaglst = $D1E.t1qaglst
+(* ****** ****** *)
+#typedef t0iaglst = $D0E.t0iaglst
+#typedef t1iaglst = $D1E.t1iaglst
+(* ****** ****** *)
 #typedef teqd0exp = $D0E.teqd0exp
 #typedef teqd1exp = $D1E.teqd1exp
 (* ****** ****** *)
@@ -227,6 +249,9 @@ FIL = "./filpath.sats"
 #typedef d1vardcl = $D1E.d1vardcl
 #typedef d1fundcl = $D1E.d1fundcl
 (* ****** ****** *)
+#typedef d0cstdcl = $D0E.d0cstdcl
+#typedef d1cstdcl = $D1E.d1cstdcl
+(* ****** ****** *)
 #typedef d0parsed = $D0E.d0parsed
 #typedef d1parsed = $D1E.d1parsed
 (* ****** ****** *)
@@ -239,6 +264,9 @@ FIL = "./filpath.sats"
 #typedef d1vardclist = $D1E.d1vardclist
 #typedef d0fundclist = $D0E.d0fundclist
 #typedef d1fundclist = $D1E.d1fundclist
+(* ****** ****** *)
+#typedef d0cstdclist = $D0E.d0cstdclist
+#typedef d1cstdclist = $D1E.d1cstdclist
 (* ****** ****** *)
 //
 fun
@@ -477,6 +505,22 @@ trans01_d0clslst:
 (* ****** ****** *)
 //
 fun
+trans01_s0qag:
+  (!tr01env, s0qag)->s1qag
+fun
+trans01_t0qag:
+  (!tr01env, t0qag)->t1qag
+//
+fun
+trans01_s0qaglst:
+  (!tr01env, s0qaglst)->s1qaglst
+fun
+trans01_t0qaglst:
+  (!tr01env, t0qaglst)->t1qaglst
+//
+(* ****** ****** *)
+//
+fun
 trans01_d0ecl:
   (!tr01env, d0ecl)->d1ecl
 //
@@ -516,6 +560,9 @@ trans01_d0vardcl:
 fun
 trans01_d0fundcl:
   (!tr01env, d0fundcl)->d1fundcl
+fun
+trans01_d0cstdcl:
+  (!tr01env, d0cstdcl)->d1cstdcl
 //
 fun
 trans01_d0valdclist:
@@ -526,6 +573,9 @@ trans01_d0vardclist:
 fun
 trans01_d0fundclist:
   (!tr01env, d0fundclist)->d1fundclist
+fun
+trans01_d0cstdclist:
+  (!tr01env, d0cstdclist)->d1cstdclist
 //
 (* ****** ****** *)
 

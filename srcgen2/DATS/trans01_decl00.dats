@@ -156,6 +156,10 @@ D0Cdatatype _ =>
 f0_datatype(tenv, d0cl)
 //
 |
+D0Cdynconst _ =>
+f0_dynconst(tenv, d0cl)
+//
+|
 _ (*otherwise*) => d1ecl_none1(d0cl)
 //
 end where
@@ -845,6 +849,37 @@ val wdcs = trans01_wd0eclseq(tenv, wdcs)
 in//let
   d1ecl(loc0, D1Cdatatype(tknd, d1ts, wdcs))
 end (*let*) // end of [f0_datatype(tenv,d0cl)]
+
+(* ****** ****** *)
+
+fun
+f0_dynconst
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
+let
+//
+val loc0 = d0cl.lctn()
+//
+(*
+val () =
+println!
+("trans01_d0ecl: d0cl = ", d0cl)
+*)
+//
+val-
+D0Cdynconst
+(tknd
+,tqas, d0cs) = d0cl.node()
+//
+val tqas =
+trans01_t0qaglst(tenv, tqas)
+val d1cs =
+trans01_d0cstdclist(tenv, d0cs)
+//
+in//let
+  d1ecl(loc0, D1Cdynconst(tknd, tqas, d1cs))
+end (*let*) // end of [f0_dynconst(tenv,d0cl)]
 
 (* ****** ****** *)
 
