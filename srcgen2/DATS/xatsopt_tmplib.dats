@@ -633,9 +633,40 @@ d1ecl_fprint(g_print$out<>(), dcl)
 (* ****** ****** *)
 //
 #impltmp
+g_print<q1arg>(qarg) =
+q1arg_fprint(g_print$out<>(), qarg)
+//
+#impltmp
+g_print<s1qag>(sqag) =
+s1qag_fprint(g_print$out<>(), sqag)
+#impltmp
+g_print<t1qag>(tqag) =
+t1qag_fprint(g_print$out<>(), tqag)
+//
+#impltmp
+g_print<t1iag>(tiag) =
+t1iag_fprint(g_print$out<>(), tiag)
+//
+(* ****** ****** *)
+//
+#impltmp
 g_print<a1tdf>(atdf) =
 a1tdf_fprint(g_print$out<>(), atdf)
 //
+(* ****** ****** *)
+#impltmp
+g_print<d1cstdcl>(dcst) =
+d1cstdcl_fprint(g_print$out<>(), dcst)
+(* ****** ****** *)
+#impltmp
+g_print<d1valdcl>(dval) =
+d1valdcl_fprint(g_print$out<>(), dval)
+#impltmp
+g_print<d1vardcl>(dvar) =
+d1vardcl_fprint(g_print$out<>(), dvar)
+#impltmp
+g_print<d1fundcl>(dfun) =
+d1fundcl_fprint(g_print$out<>(), dfun)
 (* ****** ****** *)
 #impltmp
 g_print<d1parsed>(dpar) =

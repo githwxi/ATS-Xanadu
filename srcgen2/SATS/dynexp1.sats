@@ -121,10 +121,9 @@ D0E = "./dynexp0.sats"
 #typedef d0exp = $D0E.d0exp
 #typedef d0ecl = $D0E.d0ecl
 //
-(* ****** ****** *)
-//
-#typedef d0pidopt = optn(d0pid)
-#typedef d1pidopt = optn(d1pid)
+#typedef d1pat = d1pat_tbox
+#typedef d1exp = d1exp_tbox
+#typedef d1ecl = d1ecl_tbox
 //
 (* ****** ****** *)
 //
@@ -146,8 +145,8 @@ D0E = "./dynexp0.sats"
 //
 (* ****** ****** *)
 //
-#typedef d1pat = d1pat_tbox
-#typedef d1exp = d1exp_tbox
+#typedef d0pidopt = optn(d0pid)
+#typedef d1pidopt = optn(d1pid)
 //
 #typedef d1patlst = list(d1pat)
 #typedef d1patopt = optn(d1pat)
@@ -163,7 +162,6 @@ l0d1e = $D0E.d0lab(d1exp)
 #typedef l0d1elst = list(l0d1e)
 (* ****** ****** *)
 //
-#typedef d1ecl = d1ecl_tbox
 #typedef d1eclist = list(d1ecl)
 #typedef d1eclopt = optn(d1ecl)
 //
@@ -486,6 +484,47 @@ d1exp_make_node
 (loc:loc_t,nod:d1exp_node): d1exp
 #symload d1exp with d1exp_make_node
 //
+(* ****** ****** *)
+//
+datatype
+q1arg_node =
+(*
+|
+Q1ARGnone of token
+*)
+|
+Q1ARGsome of
+(i1dnt(*tok*), sort1opt)
+//
+(* ****** ****** *)
+//
+datatype
+s1qag_node =
+(*
+|
+S1QAGnone of token
+*)
+|
+S1QAGsome of // {...}
+(token, q1arglst, token)
+//
+datatype
+t1qag_node =
+(*
+|
+T1QAGnone of token
+*)
+|
+T1QAGsome of // <...>
+(token, q1arglst, token)
+//
+(* ****** ****** *)
+fun
+q1arg_fprint(FILR, q1arg): void
+fun
+s1qag_fprint(FILR, s1qag): void
+fun
+t1qag_fprint(FILR, t1qag): void
 (* ****** ****** *)
 //
 datatype
