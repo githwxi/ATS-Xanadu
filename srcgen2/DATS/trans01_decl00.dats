@@ -84,6 +84,92 @@ _(*TRANS01*) = "./trans01.dats"
 #symload lctn with d0ecl_get_lctn
 #symload node with d0ecl_get_node
 (* ****** ****** *)
+#symload lctn with q0arg_get_lctn
+#symload node with q0arg_get_node
+#symload lctn with s0qag_get_lctn
+#symload node with s0qag_get_node
+#symload lctn with t0qag_get_lctn
+#symload node with t0qag_get_node
+(* ****** ****** *)
+//
+#implfun
+trans01_q0arg
+  (tenv, q0a0) =
+(
+case+
+q0a0.node() of
+|
+Q0ARGsome(sid0, tres) =>
+let
+val sid0 =
+trans01_i0dnt(tenv, sid0)
+val tres =
+trans01_sort0opt(tenv, tres)
+in//let
+q1arg_make_node
+(q0a0.lctn(),Q1ARGsome(sid0,tres))
+end (*let*)//end-of(Q0ARGsome(_,_))
+)
+//
+(* ****** ****** *)
+//
+#implfun
+trans01_s0qag
+  (tenv, sqa0) =
+(
+case+
+sqa0.node() of
+|
+S0QAGnone(tok) =>
+let
+val
+q1as = list_nil() in
+s1qag_make_node
+(sqa0.lctn(),S1QAGsome(q1as))
+end // end of [S0QAGnone(tok)]
+|
+S0QAGsome
+(tbeg,q0as,tend) =>
+let
+val
+q1as =
+trans01_q0arglst(tenv, q0as)
+in//let
+s1qag_make_node
+(sqa0.lctn(),S1QAGsome(q1as))
+end (*let*)//end-of(S0QAGsome(...))
+)
+//
+(* ****** ****** *)
+//
+#implfun
+trans01_t0qag
+  (tenv, tqa0) =
+(
+case+
+tqa0.node() of
+|
+T0QAGnone(tok) =>
+let
+val
+q1as = list_nil() in
+t1qag_make_node
+(tqa0.lctn(),T1QAGsome(q1as))
+end // end of [T0QAGnone(tok)]
+|
+T0QAGsome
+(tbeg,q0as,tend) =>
+let
+val
+q1as =
+trans01_q0arglst(tenv, q0as)
+in//let
+t1qag_make_node
+(tqa0.lctn(),T1QAGsome(q1as))
+end (*let*)//end-of(T0QAGsome(...))
+)
+//
+(* ****** ****** *)
 
 #implfun
 trans01_d0ecl
@@ -952,8 +1038,27 @@ end (*let*)//end-of-[trans01_d0vardcl(tenv,dvar)]
 
 #implfun
 trans01_d0eclist
-(tenv, dcls) =
+  (tenv, dcls) =
 list_trans01_fnp(tenv, dcls, trans01_d0ecl)
+
+(* ****** ****** *)
+
+#implfun
+trans01_q0arglst
+  (tenv, q0as) =
+list_trans01_fnp(tenv, q0as, trans01_q0arg)
+#implfun
+trans01_s0qaglst
+  (tenv, sqas) =
+list_trans01_fnp(tenv, sqas, trans01_s0qag)
+#implfun
+trans01_t0qaglst
+  (tenv, tqas) =
+list_trans01_fnp(tenv, tqas, trans01_t0qag)
+#implfun
+trans01_t0iaglst
+  (tenv, tias) =
+list_trans01_fnp(tenv, tias, trans01_t0iag)
 
 (* ****** ****** *)
 //
@@ -984,6 +1089,10 @@ list_trans01_fnp(tenv, dcls, trans01_d0vardcl)
 trans01_d0fundclist
   (  tenv,dcls  ) =
 list_trans01_fnp(tenv, dcls, trans01_d0fundcl)
+#implfun
+trans01_d0cstdclist
+  (  tenv,dcls  ) =
+list_trans01_fnp(tenv, dcls, trans01_d0cstdcl)
 //
 (* ****** ****** *)
 //

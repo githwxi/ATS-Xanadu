@@ -908,8 +908,8 @@ d0exp_try0_errck
 , dcls: d0clslst
 , tend: token   ): d0exp =
 let
-  val lvl =
-  gmax(errvl(d0e1),errvl(dcls))
+val lvl =
+gmax(errvl(d0e1),errvl(dcls))
 in//let
 d0exp_errck
 ( lvl+1,
@@ -931,7 +931,7 @@ d0exp_lam0_errck
 , body: d0exp
 , tend: tokenopt): d0exp =
 let
-  val lvl = d0exp_errvl(body)
+val lvl = d0exp_errvl(body)
 in//let
 d0exp_errck
 ( lvl+1,
@@ -954,7 +954,7 @@ d0exp_fix0_errck
 , body: d0exp
 , tend: tokenopt): d0exp =
 let
-  val lvl = d0exp_errvl(body)
+val lvl = d0exp_errvl(body)
 in//let
 d0exp_errck
 (
@@ -974,7 +974,7 @@ d0exp_anno_errck
 , d0e1: d0exp
 , s0e2: s0exp): d0exp =
 let
-  val lvl = d0exp_errvl(d0e1)
+val lvl = d0exp_errvl(d0e1)
 in//let
 d0exp_errck
 (lvl+1, d0exp(loc,D0Eanno(d0e1,s0e2)))
@@ -989,10 +989,24 @@ d0exp_qual_errck
 , tok1: token
 , d0e2: d0exp): d0exp =
 let
-  val lvl = d0exp_errvl(d0e2)
+val lvl = d0exp_errvl(d0e2)
 in//let
 d0exp_errck
 (lvl+1, d0exp(loc,D0Equal(tok1,d0e2)))
+end (*let*) // end of [d0exp_qual_errck]
+//
+(* ****** ****** *)
+//
+fun
+d0exp_extnam_errck
+( loc
+: loc_t
+, tok1: token
+, gnm2: g0nam): d0exp =
+let
+val lvl = 0 in
+d0exp_errck
+(lvl+1,d0exp(loc,D0Eextnam(tok1,gnm2)))
 end (*let*) // end of [d0exp_qual_errck]
 //
 (* ****** ****** *)
@@ -1323,7 +1337,10 @@ D0Eanno _ => f0_anno(d0e, err)
 D0Equal _ => f0_qual(d0e, err)
 //
 |
-D0Etkerr _ =>
+D0Eextnam _ => f0_extnam(d0e, err)
+//
+|
+D0Etkerr(tok) =>
 (err := err+1; d0exp_errck(1, d0e))
 //
 |
@@ -1919,6 +1936,32 @@ then (d0e) else
 d0exp_qual_errck(d0e.lctn(),tok1,d0e2)
 end (*let*) // end of [f0_qual(d0e,err)]
 //
+(* ****** ****** *)
+
+//
+fun
+f0_extnam
+( d0e: d0exp
+, err: &sint >> _): d0exp =
+let
+//
+val e00 = err
+//
+val-
+D0Eextnam
+( tok1, gnm2) = d0e.node()
+//
+(*
+val gnm2 = preadx0_g0nam(gnm2, err)
+*)
+//
+in//let
+if
+(err=e00)
+then (d0e) else
+d0exp_extnam_errck(d0e.lctn(),tok1,gnm2)
+end (*let*) // end of [f0_extnam(d0e,err)]
+
 (* ****** ****** *)
 
 } (*where*) // end-of-[preadx0_d0exp(d0e,err)]

@@ -1078,12 +1078,18 @@ in//let
 endlet // end of [D0Efix0(_,_,_,_,_,_,_)]
 //
 |
-D0Eanno(d0e1, s0e2) =>
+D0Eanno
+(d0e1, s0e2) =>
 (
   fpemsg(out, d0e1); fpemsg(out, s0e2))
 //
 |
-D0Equal(tok1, d0e2) => fpemsg(out, d0e2)
+D0Equal
+(tok1, d0e2) => fpemsg(out, d0e2)
+//
+|
+D0Eextnam
+(tok1, gnm2) => ()//fpemsg(out, gnm2)
 //
 |
 D0Eexists
@@ -1092,15 +1098,12 @@ D0Eexists
   fpemsg(out, d0es); fpemsg(out, d0e1))
 //
 |
-D0Etkerr _ => ( (*void*) )
-//
-|
-D0Eextnam(  gnm1  ) => ( (*void*) )
+D0Etkerr(tok1) => ()//fpemsg(out,tok1)
 //
 |
 D0Eerrck(lvl0,d0e1) => d0exp_fpemsg(out, d0e)
 //
-end(*let*)//end-of-(auxmain(out,d0e))
+end (*let*) // end-of-[ auxmain(out,d0e) ]
 //
 in//local
 //

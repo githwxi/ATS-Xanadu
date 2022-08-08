@@ -458,7 +458,7 @@ D0Eanno of (d0exp, s0exp) // HX: annotation
 D0Equal of (token, d0exp) // HX: qual-d0exp
 //
 | // HX-2020-11-04: for specifying
-D0Eextnam of (g0nam) // external names
+D0Eextnam of (token, g0nam) // external names
 |
 D0Eexists of
 ( token // HX-2021-01-14: $exists{..}..{..}

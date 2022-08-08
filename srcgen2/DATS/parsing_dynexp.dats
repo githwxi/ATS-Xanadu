@@ -1610,7 +1610,7 @@ let
 in
   err := e00
 ; d0exp_make_node
-  ( lres, D0Eextnam(gnm1) ) where
+  (lres,D0Eextnam(tok0,gnm1)) where
   {
     val lres = tok0.lctn()+gnm1.lctn() }
 end(*let*) // end-of-[ T_DLR_EXTNAM(_) ]
