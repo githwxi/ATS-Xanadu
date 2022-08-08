@@ -287,18 +287,18 @@ typedef d1arglst = List0(d1arg)
 //
 datatype
 d1arg_node =
+//
 (*
 | D1ARGnone of token
 *)
 //
 |
 D1ARGsome_sta of (s1qualst)
-//
 |
-D1ARGsome_dyn1 of token // s0eid
+D1ARGsome_dyn1 of token // d0pid
 |
 D1ARGsome_dyn2 of
-(a1typlst(*arg0*), a1typlstopt(*opt1*))
+(a1typlst, a1typlstopt(*argopt2*))
 //
 fun
 d1arg_get_loc(d1arg): loc_t

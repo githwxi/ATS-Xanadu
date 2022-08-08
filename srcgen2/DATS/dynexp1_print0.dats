@@ -338,6 +338,48 @@ end (*let*) // end of [d1ecl_fprint(out,dcl)]
 (* ****** ****** *)
 //
 #implfun
+a1typ_fprint
+(out, a1t) =
+let
+#impltmp
+g_print$out<>() = out
+in//in-of-let
+//
+case+
+a1t.node() of
+|
+A1TYPsome(s0e1,topt) =>
+print("A1TYPsome(",s0e1,";",topt,")")
+end (*let*) // end of [a1typ_fprint(out,a1t)]
+//
+(* ****** ****** *)
+//
+#implfun
+d1arg_fprint
+(out, d1a) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+d1a.node() of
+|
+D1ARGsta0(sqas) =>
+print("D1ARGsta0(",sqas,")")
+|
+D1ARGdyn1
+(  dpid  ) =>
+print("D1ARGdyn1(",dpid,")")
+|
+D1ARGdyn2(a1ts,atsq) =>
+print("D1ARGdyn2(",";",a1ts,";",atsq,")")
+//
+end (*let*) // end of [d1arg_fprint(out,d1a)]
+//
+(* ****** ****** *)
+//
+#implfun
 a1tdf_fprint
 (out, tdf) =
 let
