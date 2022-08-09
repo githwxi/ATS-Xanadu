@@ -112,6 +112,25 @@ D0E = "./dynexp0.sats"
 //
 (* ****** ****** *)
 //
+datatype
+d1lab(x0:type) =
+|
+D1LAB of
+(label, x0(*elt*))
+//
+(* ****** ****** *)
+#typedef
+d0lab(x0:t0)=$D0E.d0lab(x0)
+(* ****** ****** *)
+//
+fun
+<x0:type>
+d1lab_fprint
+(out
+:FILR, lab:d1lab(x0)): void
+//
+(* ****** ****** *)
+//
 #typedef d1pid = token
 #typedef d1eid = token
 #typedef d0pid = $S0E.d0pid
@@ -127,6 +146,9 @@ D0E = "./dynexp0.sats"
 #typedef d1exp = d1exp_tbox
 #typedef d1ecl = d1ecl_tbox
 //
+(* ****** ****** *)
+#typedef l1d1p = d1lab(d1pat)
+#typedef l1d1e = d1lab(d1exp)
 (* ****** ****** *)
 #typedef f1arg = f1arg_tbox
 #typedef d1gua = d1gua_tbox
@@ -170,12 +192,8 @@ D0E = "./dynexp0.sats"
 #typedef d1expopt = optn(d1exp)
 //
 (* ****** ****** *)
-#typedef
-l0d1p = $D0E.d0lab(d1pat)
-#typedef
-l0d1e = $D0E.d0lab(d1exp)
-#typedef l0d1plst = list(l0d1p)
-#typedef l0d1elst = list(l0d1e)
+#typedef l1d1plst = list(l1d1p)
+#typedef l1d1elst = list(l1d1e)
 (* ****** ****** *)
 //
 #typedef d1eclist = list(d1ecl)
@@ -238,9 +256,9 @@ d1pat_node =
   (token(*knd*), d1patlst, d1patlst)
 //
 | D1Pr1cd of
-  (token(*knd*), l0d1plst)
+  (token(*knd*), l1d1plst)
 | D1Pr2cd of
-  (token(*knd*), l0d1plst, l0d1plst)
+  (token(*knd*), l1d1plst, l1d1plst)
 //
 |
 D1Panno of
@@ -464,10 +482,10 @@ D1Ecas1 of
 //
 | D1Er1cd of // HX: record1
   ( token
-  , l0d1elst(*prop/type*))
+  , l1d1elst(*prop/type*))
 | D1Er2cd of // HX: record2
   ( token
-  , l0d1elst(*prop*), l0d1elst(*type*))
+  , l1d1elst(*prop*), l1d1elst(*type*))
 //
 |
 D1Elam0 of

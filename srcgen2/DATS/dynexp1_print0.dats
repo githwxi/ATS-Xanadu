@@ -190,6 +190,14 @@ D1Ea2pp
 (d1f0,d1e1,d1e2) =>
 print
 ("D1Ea2pp(",d1f0,";",d1e1,";",d1e2,")")
+//
+|
+D1El1st(d1es) =>
+print("D1El1st(",d1es,")")
+|
+D1El2st(des1,des2) =>
+print("D1El2st(",des1,";",des2,")")
+//
 |
 D1Eif0
 (d1e1,dthn,dels) =>

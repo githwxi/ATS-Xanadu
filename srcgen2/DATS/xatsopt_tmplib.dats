@@ -506,6 +506,35 @@ HX: for level-1 syntax
 
 (* ****** ****** *)
 //
+(*
+fun
+<x0:type>
+s1lab_fprint
+(out: FILR, lab: s1lab(x0)): void
+*)
+//
+#impltmp
+<x0>
+s1lab_fprint
+  (out, lab) = let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+case+ lab of
+|
+S1LAB(l01, x02) =>
+print("S1LAB(",l01,";",x02,")")
+end(*let*)//end-of-[s1lab_fprint]
+//
+#impltmp
+{x0:t0}
+g_print<s1lab(x0)>(lab) =
+s1lab_fprint(g_print$out<>(), lab)
+//
+(* ****** ****** *)
+//
 #impltmp
 g_print<assoc>(asc) =
 assoc_fprint(g_print$out<>(), asc)
@@ -601,9 +630,41 @@ s1exp_fprint(g_print$out<>(), s1e)
 //
 (* ****** ****** *)
 //
+(*
+fun
+<x0:type>
+d1lab_fprint
+(out: FILR, lab: d1lab(x0)): void
+*)
+//
+#impltmp
+<x0>
+d1lab_fprint
+  (out, lab) = let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+case+ lab of
+|
+D1LAB(l01, x02) =>
+print("D1LAB(",l01,";",x02,")")
+end(*let*)//end-of-[d1lab_fprint]
+//
+#impltmp
+{x0:t0}
+g_print<d1lab(x0)>(lab) =
+d1lab_fprint(g_print$out<>(), lab)
+//
+(* ****** ****** *)
+//
 #impltmp
 g_print<d1pat>(d1p) =
 d1pat_fprint(g_print$out<>(), d1p)
+#impltmp
+g_print<d1exp>(d1e) =
+d1exp_fprint(g_print$out<>(), d1e)
 //
 (* ****** ****** *)
 //
@@ -617,12 +678,6 @@ d1gpt_fprint(g_print$out<>(), d1g)
 #impltmp
 g_print<d1cls>(dcl) =
 d1cls_fprint(g_print$out<>(), dcl)
-//
-(* ****** ****** *)
-//
-#impltmp
-g_print<d1exp>(d1e) =
-d1exp_fprint(g_print$out<>(), d1e)
 //
 (* ****** ****** *)
 //

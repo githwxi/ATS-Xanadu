@@ -123,14 +123,14 @@ FIL = "./filpath.sats"
 #typedef l0s0e = $S0E.l0s0e
 #typedef sort1 = $S1E.sort1
 #typedef s1exp = $S1E.s1exp
-#typedef l0s1e = $S1E.l0s1e
+#typedef l1s1e = $S1E.l1s1e
 //
 #typedef sort0lst = $S0E.sort0lst
 #typedef s0explst = $S0E.s0explst
 #typedef l0s0elst = $S0E.l0s0elst
 #typedef sort1lst = $S1E.sort1lst
 #typedef s1explst = $S1E.s1explst
-#typedef l0s1elst = $S1E.l0s1elst
+#typedef l1s1elst = $S1E.l1s1elst
 //
 #typedef sort0opt = $S0E.sort0opt
 #typedef s0expopt = $S0E.s0expopt
@@ -196,8 +196,8 @@ FIL = "./filpath.sats"
 //
 #typedef l0d0p = $D0E.l0d0p
 #typedef l0d0e = $D0E.l0d0e
-#typedef l0d1p = $D1E.l0d1p
-#typedef l0d1e = $D1E.l0d1e
+#typedef l1d1p = $D1E.l1d1p
+#typedef l1d1e = $D1E.l1d1e
 //
 #typedef d0patlst = $D0E.d0patlst
 #typedef d0explst = $D0E.d0explst
@@ -211,8 +211,8 @@ FIL = "./filpath.sats"
 //
 #typedef l0d0plst = $D0E.l0d0plst
 #typedef l0d0elst = $D0E.l0d0elst
-#typedef l0d1plst = $D1E.l0d1plst
-#typedef l0d1elst = $D1E.l0d1elst
+#typedef l1d1plst = $D1E.l1d1plst
+#typedef l1d1elst = $D1E.l1d1elst
 //
 #typedef
 d0exp_THEN = $D0E.d0exp_THEN
@@ -422,7 +422,7 @@ fun trans01_sort0:
 fun trans01_s0exp:
   (!tr01env, s0exp)->s1exp
 fun trans01_l0s0e:
-  (!tr01env, l0s0e)->l0s1e
+  (!tr01env, l0s0e)->l1s1e
 //
 fun
 trans01_sort0lst:
@@ -432,7 +432,7 @@ trans01_s0explst:
   (!tr01env, s0explst)->s1explst
 fun
 trans01_l0s0elst:
-  (!tr01env, l0s0elst)->l0s1elst
+  (!tr01env, l0s0elst)->l1s1elst
 //
 fun
 trans01_sort0opt:
@@ -512,9 +512,9 @@ fun trans01_d0pat:
 fun trans01_d0exp:
   (!tr01env, d0exp)->d1exp
 fun trans01_l0d0p:
-  (!tr01env, l0d0p)->l0d1p
+  (!tr01env, l0d0p)->l1d1p
 fun trans01_l0d0e:
-  (!tr01env, l0d0e)->l0d1e
+  (!tr01env, l0d0e)->l1d1e
 //
 fun
 trans01_d0patlst:
@@ -524,10 +524,10 @@ trans01_d0explst:
   (!tr01env, d0explst)->d1explst
 fun
 trans01_l0d0plst:
-  (!tr01env, l0d0plst)->l0d1plst
+  (!tr01env, l0d0plst)->l1d1plst
 fun
 trans01_l0d0elst:
-  (!tr01env, l0d0elst)->l0d1elst
+  (!tr01env, l0d0elst)->l1d1elst
 //
 fun
 trans01_d0expopt:
