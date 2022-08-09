@@ -177,6 +177,55 @@ print( "D1Eb0sh(" , ")" )
 D1Eb1sh(d1e) =>
 print("D1Eb1sh(",d1e,")")
 //
+|
+D1Ea0pp() =>
+print("D1Ea0pp(",")")
+|
+D1Ea1pp
+(d1f0,d1e1) =>
+print
+("D1Ea1pp(",d1f0,";",d1e1,")")
+|
+D1Ea2pp
+(d1f0,d1e1,d1e2) =>
+print
+("D1Ea2pp(",d1f0,";",d1e1,";",d1e2,")")
+|
+D1Eif0
+(d1e1,dthn,dels) =>
+(
+print("D1Eif0(");
+print(d1e1,";",dthn,";",dels,")"))
+//
+|
+D1Ecas0
+(tknd,d1e1,d1cs) =>
+(
+print("D1Ecas0(");
+print(tknd,";",d1e1,";",d1cs,")"))
+//
+|
+D1Elet0(d1cs,d1es) =>
+print("D1Elet0(",d1cs,";",d1es,")")
+|
+D1Ewhere(d1e1,d1cs) =>
+print("D1Ewhere(",d1e1,";",d1cs,")")
+//
+|
+D1Etry0
+(tknd,d1e1,d1cs) =>
+(
+print("D1Etry0(");
+print(tknd,";",d1e1,";",d1cs,")"))
+//
+|
+D1Eanno(d1e1,s1e2) =>
+print("D1Eanno(",d1e1,";",s1e2,")")
+//
+|
+D1Equal(tok1,d1e2) =>
+print("D1Equal(",tok1,";",d1e2,")")
+//
 | D1Enone0() => print("D1Enone0(", ")")
 | D1Enone1(dexp) => print("D1Enone1(", dexp ,")")
 //

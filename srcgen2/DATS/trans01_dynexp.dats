@@ -88,6 +88,9 @@ _(*TRANS01*) = "./trans01.dats"
 #symload lctn with d0cls_get_lctn
 #symload node with d0cls_get_node
 (* ****** ****** *)
+#symload trans01 with trans01_d0pat
+#symload trans01 with trans01_d0exp
+(* ****** ****** *)
 
 fun
 fxitmlst_resolve_d1pat
@@ -592,20 +595,74 @@ D0Eif1 _ => f0_if1(tenv, d0e0)
 *)
 //
 |
-D0Eanno(d0e1, s0e2) =>
+D0Ecas0 _ => f0_cas0(tenv, d0e0)
+(*
+|
+D0Ecas1 _ => f0_cas1(tenv, d0e0)
+*)
+//
+|
+D0Elet0 _ => f0_let0(tenv, d0e0)
+|
+D0Ewhere
+(d0e1,d0cs) =>
 let
-val d1p1 =
+//
+val
+loc0 = d0e1.lctn()
+//
+val (  ) =
+tr01env_pushnil(tenv)
+//
+val d1cs =
+(
+case+ d0cs of
+|
+d0eclseq_WHERE
+(twhr
+,topt,d0cs,tend) =>
+trans01_d0eclist(tenv,d0cs)
+) : d1eclist//end(val(d1cs))
+val
+d1e1 =
+trans01_d0exp( tenv, d0e1 )
+//
+val (  ) = tr01env_popfree(tenv)
+//
+in//let
+FXITMatm
+(d1exp(loc0, D1Ewhere(d1e1, d1cs)))
+end (*let*)//end(f0_where(tenv,d0e0))
+//
+|
+D0Etry0 _ => f0_try0(tenv, d0e0)
+//
+|
+D0Eanno
+(d0e1, s0e2) =>
+let
+val d1e1 =
   trans01_d0exp(tenv, d0e1)
 val s1e2 =
   trans01_s0exp(tenv, s0e2)
 in // let
 //
-FXITMatm(d1p0) where
-
-  val d1p0 = d1exp_make_node
-  (d0e0.lctn(), D1Eanno(d1p1, s1e2)) }
+FXITMatm(d1e0) where
+{ val d1e0 = d1exp_make_node
+  (d0e0.lctn(), D1Eanno(d1e1, s1e2)) }
 //
 end (*let*)//end of [D0Eanno(d0e1,s0e2)]
+//
+|
+D0Equal
+(tok1, d0e2) =>
+let
+val d1e2 = 
+  trans01_d0exp(tenv, d0e2)
+in // let
+FXITMatm
+(d1exp(d0e0.lctn(),D1Equal(tok1,d1e2))
+end (*let*)//end of [D0Equal(tok1,d0e2)]
 //
 |
 _(*otherwise*) =>
@@ -811,6 +868,97 @@ val d1e0 = d1exp
 end (*let*)//end-of(f0_if0(tenv,d0e0))
 
 (* ****** ****** *)
+
+and
+f0_cas0
+( tenv:
+! tr01env
+, d0e0: d0exp): d1efx =
+let
+//
+val loc0 = d0e0.lctn()
+//
+val-
+D0Ecas0
+(tknd
+,d0e1,tkof
+,tbar,d0cs) = d0e0.node()
+//
+val d1e1 =
+trans01_d0exp(tenv, d0e1)
+val d1cs =
+trans01_d0clslst(tenv, d0cs)
+//
+in
+FXITMatm(d1e0) where
+{
+val d1e0 = d1exp
+(loc0, D1Ecas0(tknd,d1e1,d1cs)) }
+end (*let*) // end of [f0_cas0(tenv,d0e0)]
+
+(* ****** ****** *)
+
+and
+f0_let0
+( tenv:
+! tr01env
+, d0e0: d0exp): d1efx =
+let
+//
+val loc0 = d0e0.lctn()
+//
+val-
+D0Elet0
+( tknd
+, d0cs, topt
+, d0es, tend) = d0e0.node()
+//
+val (  ) =
+tr01env_pushnil(tenv)
+//
+val d1cs =
+trans01_d0eclist(tenv, d0cs)
+val d1es =
+trans01_d0explst(tenv, d0es)
+//
+val (  ) = tr01env_popfree(tenv)
+//
+in//let
+FXITMatm
+(d1exp(loc0, D1Elet0(d1cs, d1es)))
+end (*let*)//end-of(f0_let0(tenv,d0e0))
+
+(* ****** ****** *)
+
+and
+f0_try0
+( tenv:
+! tr01env
+, d0e0: d0exp): d1efx =
+let
+//
+val loc0 = d0e0.lctn()
+//
+val-
+D0Etry0
+(tknd
+,d0e1
+,twth,tbar
+,d0cs,tend) = d0e0.node()
+//
+val d1e1 =
+trans01_d0exp(tenv, d0e1)
+val d1cs =
+trans01_d0clslst(tenv, d0cs)
+//
+in//let
+FXITMatm(d1e0) where
+{
+val d1e0 = d1exp
+(loc0,D1Etry0(tknd,d1e1,d1cs)) }
+end (*let*)//end-of(f0_try0(tenv,d0e0))
+
+(* ****** ****** *)
 //
 and
 f0_d0es
@@ -824,6 +972,35 @@ f0_d0es
 (* ****** ****** *)
 
 } (*where*)//end-of[trans01_d0exp(tenv,d0e0)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_d0exp_THEN
+  (tenv, dthn) =
+(
+case+ dthn of
+|
+d0exp_THEN_none
+(     tok1     ) => optn_nil()
+|
+d0exp_THEN_some
+(  tok1, d0e2  ) =>
+optn_cons(trans01_d0exp(tenv, d0e2)
+)
+#implfun
+trans01_d0exp_ELSE
+  (tenv, dthn) =
+(
+case+ dthn of
+|
+d0exp_ELSE_none
+(     tok1     ) => optn_nil()
+|
+d0exp_ELSE_some
+(  tok1, d0e2  ) =>
+optn_cons(trans01_d0exp(tenv, d0e2)
+)
 
 (* ****** ****** *)
 
