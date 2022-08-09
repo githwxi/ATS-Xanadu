@@ -208,7 +208,7 @@ l0d1e = $D0E.d0lab(d1exp)
 datatype
 d1pat_node =
 //
-| D1Pid0 of token
+| D1Pid0 of sym_t
 //
 | D1Pint of token
 | D1Pchr of token
