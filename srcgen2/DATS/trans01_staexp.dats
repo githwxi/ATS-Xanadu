@@ -384,6 +384,16 @@ in//let
 end (*let*) // end of [fxitmlst_resolve_s1exp]
 
 (* ****** ****** *)
+#symload
+fxis_resolve
+with fxitmlst_resolve_g1exp
+#symload
+fxis_resolve
+with fxitmlst_resolve_sort1
+#symload
+fxis_resolve
+with fxitmlst_resolve_s1exp
+(* ****** ****** *)
 //
 #implfun
 trans01_i0dnt
@@ -730,10 +740,7 @@ G0Eapps(g0es) = g0e0.node()
 val g1es = f0_g0es(tenv, g0es)
 //
 in//let
-FXITMatm
-(
-fxitmlst_resolve_g1exp(loc0, g1es)
-)
+FXITMatm(fxis_resolve(loc0,g1es))
 endlet // end of [ f0_apps(g0e0) ]
 //
 (* ****** ****** *)
@@ -829,10 +836,11 @@ FXITMatm(s1t0) where
 //
 val loc0 = s0t0.lctn()
 //
-val s1ts = f0_s0ts(tenv, s0ts)
+val s1ts =
+  f0_s0ts(tenv, s0ts)
 val s1t0 =
-fxitmlst_resolve_sort1(loc0, s1ts)
-} (*where*) // end of [S0Tapps(...)]
+  fxis_resolve(loc0, s1ts) }
+(*where*) // end of [S0Tapps(...)]
 //
 |
 S0Tlpar
@@ -1003,10 +1011,11 @@ FXITMatm(s1e0) where
 //
 val loc0 = s0e0.lctn()
 //
-val s1es = f0_s0es(tenv, s0es)
+val s1es =
+  f0_s0es(tenv, s0es)
 val s1e0 =
-fxitmlst_resolve_s1exp(loc0, s1es)
-}
+  fxis_resolve(loc0, s1es) }
+(*where*) // end of [S0Eapps(...)]
 //
 |
 S0Elpar
@@ -1133,30 +1142,31 @@ endlet // end of [S0Elrcd2(_,_,_,_)]
 |
 S0Euni0
 (tbeg,s0qs,tend) =>
-let
-val s1qs =
-  trans01_s0qualst(tenv, s0qs)
-in
-FXITMatm(
+FXITMopr
+(s1e0, forall_fixty) where
+{
+val
+s1qs =
+trans01_s0qualst(tenv, s0qs)
+val
+s1e0 =
 s1exp(s0e0.lctn(), S1Euni0(s1qs))
-)(*FXITMatm*)
-end (*let*) // end of [S0Euni0(...)]
+} (*where*) // end of [S0Euni0(...)]
 //
 |
 S0Eexi0
 (tknd,s0qs,tend) =>
-let
-//
-val s1qs =
-  trans01_s0qualst(tenv, s0qs)
-//
-in
-FXITMatm
-(
-s1exp_make_node
-( s0e0.lctn(), S1Eexi0(tknd,s1qs) )
-)(*FXITMatm*)
-end (*let*) // end of [S0Euni0(...)]
+FXITMopr
+(s1e0, exists_fixty) where
+{
+val
+s1qs =
+trans01_s0qualst(tenv, s0qs)
+val
+s1e0 =
+s1exp
+(s0e0.lctn(), S1Eexi0(tknd,s1qs))
+} (*where*) // end of [S0Eexi0(...)]
 //
 |
 S0Elam0
