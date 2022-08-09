@@ -45,5 +45,11 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
+//
+#implfun
+label_none
+((*void*)) = LABsym(symbl("**ERROR**"))
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xlabel0.dats] *)
