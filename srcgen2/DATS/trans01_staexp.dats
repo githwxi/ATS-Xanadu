@@ -807,7 +807,7 @@ in//let
 case+ sfx0 of
 | FXITMatm(s1e0) => s1e0
 | FXITMopr(s1e0, fxty) => s1e0
-end where
+end where // end of [val(sfx0)]
 {
 fun
 f0_sort
@@ -964,13 +964,14 @@ prerrln(
 "trans01_s0exp: s0e0 = ", s0e0
 )(*prerrln*)
 (* ****** ****** *)
-val sfx0 =
+val
+sfx0 =
 f0_sexp(tenv, s0e0)
 in//let
 case+ sfx0 of
 | FXITMatm(s1e0) => s1e0
 | FXITMopr(s1e0, fxty) => s1e0
-end where
+end where // end of [val(sfx0)]
 {
 (* ****** ****** *)
 //
@@ -984,7 +985,7 @@ case+
 s0e0.node() of
 //
 |
-S0Tid0 _ => f0_id0(tenv, s0e0)
+S0Eid0 _ => f0_id0(tenv, s0e0)
 //
 |
 S0Eint _ => f0_int(tenv, s0e0)
@@ -1206,7 +1207,10 @@ FXITMatm
 end (*let*) // end of [S0Equal(_,_)]
 //
 |
-_(*otherwise*) => FXITMatm(s1exp_none1(s0e0))
+_(*otherwise*) =>
+let
+val s1e0 =
+s1exp_none1(s0e0) in FXITMatm(s1e0) end
 //
 ) (*case+*) // end of [f0_sexp(tenv,s0e0)]
 //
@@ -1221,10 +1225,10 @@ val
 loc0 = s0e0.lctn()
 val
 S0Eid0
-( sid ) = s0e0.node()
+( sid0 ) = s0e0.node()
 val
 tok0 =
-trans01_i0dnt(tenv, sid)
+trans01_i0dnt(tenv, sid0)
 //
 in//let
 //
@@ -1367,14 +1371,7 @@ f0_s0es
 ( tenv:
 ! tr01env
 , s0es: s0explst): s1efxlst =
-list_map_e1nv
-<s0exp><s1efx>(s0es, tenv) where
-{
-#impltmp
-map$fopr_e1nv
-<s0exp><s1efx>
-( s0e1, tenv ) = f0_sexp( tenv, s0e1 )
-} (* end of [f0_s0es] *)
+list_trans01_fnp(tenv, s0es, f0_sexp)
 //
 } (*where*) // end of [trans01_s0exp(s0e0)]
 
