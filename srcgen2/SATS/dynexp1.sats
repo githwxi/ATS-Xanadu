@@ -266,6 +266,8 @@ d1pat_get_node(d1pat): d1pat_node
 (* ****** ****** *)
 //
 fun
+d1pat_none0(loc0:loc_t): d1pat
+fun
 d1pat_none1(dpat:d0pat): d1pat
 //
 fun
@@ -397,7 +399,7 @@ d1cls_make_node
 datatype
 d1exp_node =
 //
-| D1Eid0 of token
+| D1Eid0 of sym_t
 //
 | D1Eint of token
 | D1Echr of token
@@ -420,8 +422,6 @@ d1exp_node =
 | D1El1st of d1explst // temp.
 | D1El2st of
   (d1explst, d1explst) // temp.
-//
-| D1Enone of ()//HX: emptiness?
 //
 | D1Eseqn of
   (d1explst, d1explst)//sequencing
@@ -529,6 +529,8 @@ d1exp_get_node(d1exp): d1exp_node
 //
 (* ****** ****** *)
 //
+fun
+d1exp_none0(loc0:loc_t): d1exp
 fun
 d1exp_none1(dexp:d0exp): d1exp
 //
