@@ -1095,7 +1095,7 @@ val ses2 =
   trans01_s0explst(tenv, ses2)
 }
 //
-endlet // end of [S0Eltup1(_,_,_,_)]
+endlet // end of [S0Etup1(_,_,_,_)]
 //
 |
 S0Ercd2
@@ -1137,7 +1137,7 @@ val lss2 =
   trans01_l0s0elst(tenv, lss2)
 }
 //
-endlet // end of [S0Elrcd2(_,_,_,_)]
+endlet // end of [S0Ercd2(_,_,_,_)]
 //
 |
 S0Euni0

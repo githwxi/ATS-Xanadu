@@ -328,6 +328,11 @@ fxis_resolve(loc0, d1ps)
 D0Plpar _ => f0_lpar(tenv, d0p0)
 //
 |
+D0Ptup1 _ => f0_tup1(tenv, d0p0)
+|
+D0Prcd2 _ => f0_rcd2(tenv, d0p0)
+//
+|
 D0Panno(d0p1, s0e2) =>
 let
 val d1p1 =
@@ -570,6 +575,107 @@ val dps2 =
 }
 //
 endlet // end of [ D0Plpar(_,_,_) ]
+
+(* ****** ****** *)
+
+and
+f0_tup1
+( tenv:
+! tr01env
+, d0p0: d0pat): d1pfx =
+let
+//
+val
+loc0 = d0p0.lctn()
+val-
+D0Ptup1
+(tknd
+,topt
+,dps1,tend) = d0p0.node()
+//
+in//let
+//
+case+ tend of
+|
+d0pat_RPAREN_cons0
+(      tok       ) =>
+FXITMatm
+(
+d1pat
+( loc0
+, D1Pt1up(tknd,dps1))) where
+{
+val dps1 =
+  trans01_d0patlst(tenv, dps1)
+}
+|
+d0pat_RPAREN_cons1
+(tbeg, dps2, tend) =>
+FXITMatm
+(
+d1pat
+( loc0
+, D1Pt2up
+  (tknd, dps1, dps2))) where
+{
+val dps1 =
+  trans01_d0patlst(tenv, dps1)
+val dps2 =
+  trans01_d0patlst(tenv, dps2)
+}
+//
+endlet // end of [D0Ptup1(_,_,_,_)]
+//
+(* ****** ****** *)
+
+and
+f0_rcd2
+( tenv:
+! tr01env
+, d0p0: d0pat): d1pfx =
+let
+//
+val
+loc0 = d0p0.lctn()
+//
+val-
+D0Prcd2
+(tknd
+,topt
+,lss1,tend) = d0p0.node()
+//
+in//let
+//
+case+ tend of
+|
+l0d0p_RBRACE_cons0
+(      tok       ) =>
+FXITMatm
+(
+d1pat
+( loc0
+, D1Pr1cd(tknd,lss1))) where
+{
+val lss1 =
+  trans01_l0d0plst(tenv, lss1)
+}
+|
+l0d0p_RBRACE_cons1
+(tbeg, lss2, tend) =>
+FXITMatm
+(
+d1pat
+( loc0
+, D1Pr2cd
+  (tknd, lss1, lss2))) where
+{
+val lss1 =
+  trans01_l0d0plst(tenv, lss1)
+val lss2 =
+  trans01_l0d0plst(tenv, lss2)
+}
+//
+endlet // end of [D0Prcd2(_,_,_,_)]
 
 (* ****** ****** *)
 //
@@ -1322,32 +1428,40 @@ val d1e1 = trans01_d0exp(tenv, d0e1)
 ) (*case+*) // end of [trans01_d0res(...)]
 //
 (* ****** ****** *)
-
+//
 #implfun
 trans01_d0patlst
-(tenv, d0ps) =
+( tenv, d0ps ) =
 list_trans01_fnp(tenv, d0ps, trans01_d0pat)
-
-(* ****** ****** *)
-
 #implfun
 trans01_d0explst
-(tenv, d0es) =
+( tenv, d0es ) =
 list_trans01_fnp(tenv, d0es, trans01_d0exp)
-
+//
+(* ****** ****** *)
+//
+#implfun
+trans01_l0d0plst
+( tenv, ldps ) =
+list_trans01_fnp(tenv, ldps, trans01_l0d0p)
+#implfun
+trans01_l0d0elst
+( tenv, ldes ) =
+list_trans01_fnp(tenv, ldes, trans01_l0d0e)
+//
 (* ****** ****** *)
 
 #implfun
 trans01_d0gualst
-(tenv, d0ps) =
-list_trans01_fnp(tenv, d0ps, trans01_d0gua)
+( tenv, d0gs ) =
+list_trans01_fnp(tenv, d0gs, trans01_d0gua)
 
 (* ****** ****** *)
 
 #implfun
 trans01_d0clslst
-(tenv, d0ps) =
-list_trans01_fnp(tenv, d0ps, trans01_d0cls)
+( tenv, d0cs ) =
+list_trans01_fnp(tenv, d0cs, trans01_d0cls)
 
 (* ****** ****** *)
 
