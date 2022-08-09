@@ -201,6 +201,12 @@ FIL = "./filpath.sats"
 #typedef d1explst = $D1E.d1explst
 #typedef d1eclist = $D1E.d1eclist
 //
+#typedef
+d0exp_THEN = $D0E.d0exp_THEN
+#typedef
+d0exp_ELSE = $D0E.d0exp_ELSE
+#typedef d1expopt = $D1E.d1expopt
+//
 (* ****** ****** *)
 #typedef d0gua = $D0E.d0gua
 #typedef d0gpt = $D0E.d0gpt
@@ -516,6 +522,13 @@ fun
 trans01_d0clslst:
   (!tr01env, d0clslst)->d1clslst
 //
+(* ****** ****** *)
+fun
+trans01_d0exp_THEN:
+(!tr01env, d0exp_THEN)->d1expopt
+fun
+trans01_d0exp_ELSE:
+(!tr01env, d0exp_ELSE)->d1expopt
 (* ****** ****** *)
 
 (* HX: trans01_decl00 *)

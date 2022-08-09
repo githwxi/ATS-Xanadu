@@ -256,6 +256,13 @@ in//let
 end (*let*) // end of [fxitmlst_resolve_d1exp]
 
 (* ****** ****** *)
+#symload
+fxis_resolve
+with fxitmlst_resolve_d1pat
+#symload
+fxis_resolve
+with fxitmlst_resolve_d1exp
+(* ****** ****** *)
 
 #implfun
 trans01_d0pat
@@ -308,10 +315,27 @@ FXITMatm(d1p0) where
 //
 val loc0 = d0p0.lctn()
 //
-val d1ps = f0_d0ps(tenv, d0ps)
+val d1ps =
+f0_d0ps(tenv, d0ps)
 val d1p0 =
-fxitmlst_resolve_d1pat(loc0, d1ps)
+fxis_resolve(loc0, d1ps)
 }
+//
+|
+D0Panno(d0p1, s0e2) =>
+let
+val d1p1 =
+  trans01_d0pat(tenv, d0p1)
+val s1e2 =
+  trans01_s0exp(tenv, s0e2)
+in // let
+//
+FXITMatm(d1p0) where
+{
+  val d1p0 = d1pat_make_node
+  (d0p0.lctn(), D1Panno(d1p1, s1e2)) }
+//
+end (*let*)//end of [D0Panno(d0p1,s0e2)]
 //
 |
 _(*otherwise*) =>
@@ -490,7 +514,9 @@ f0_d0ps
 ( tenv:
 ! tr01env
 , d0ps: d0patlst): d1pfxlst =
-list_trans01_fnp(tenv, d0ps, f0_dpat)
+(
+  list_trans01_fnp(tenv, d0ps, f0_dpat)
+)
 //
 (* ****** ****** *)
 
@@ -549,12 +575,37 @@ D0Eapps(d0es) =>
 FXITMatm(d1e0) where
 {
 //
-val loc0 = d0e0.lctn()
+val
+loc0 = d0e0.lctn()
 //
-val d1es = f0_d0es(tenv, d0es)
+val d1es =
+f0_d0es(tenv, d0es)
 val d1e0 =
-fxitmlst_resolve_d1exp(loc0, d1es)
+fxis_resolve(loc0, d1es)
 }
+//
+|
+D0Eif0 _ => f0_if0(tenv, d0e0)
+(*
+|
+D0Eif1 _ => f0_if1(tenv, d0e0)
+*)
+//
+|
+D0Eanno(d0e1, s0e2) =>
+let
+val d1p1 =
+  trans01_d0exp(tenv, d0e1)
+val s1e2 =
+  trans01_s0exp(tenv, s0e2)
+in // let
+//
+FXITMatm(d1p0) where
+
+  val d1p0 = d1exp_make_node
+  (d0e0.lctn(), D1Eanno(d1p1, s1e2)) }
+//
+end (*let*)//end of [D0Eanno(d0e1,s0e2)]
 //
 |
 _(*otherwise*) =>
@@ -727,13 +778,48 @@ d1exp
 end // end of [let] // end of [f0_str]
 //
 (* ****** ****** *)
+
+and
+f0_if0
+( tenv:
+! tr01env
+, d0e0: d0exp): d1efx =
+let
+//
+val
+loc0 = d0e0.lctn()
+//
+val-
+D0Eif0
+(tif0
+,d0e1
+,dthn,dels) = d0e0.node()
+//
+val d1e1 =
+trans01_d0exp(tenv, d0e1)
+val dthn =
+trans01_d0exp_THEN(tenv, dthn)
+val dels =
+trans01_d0exp_ELSE(tenv, dels)
+//
+in//let
+FXITMatm(d1e0) where
+{
+val d1e0 = d1exp
+(loc0, D1Eif0(d1e1,dthn,dels)) }
+//
+end (*let*)//end-of(f0_if0(tenv,d0e0))
+
+(* ****** ****** *)
 //
 and
 f0_d0es
 ( tenv:
 ! tr01env
 , d0es: d0explst): d1efxlst =
-list_trans01_fnp(tenv, d0es, f0_dexp)
+(
+  list_trans01_fnp(tenv, d0es, f0_dexp)
+)
 //
 (* ****** ****** *)
 
