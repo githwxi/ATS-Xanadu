@@ -91,6 +91,11 @@ _(*TRANS01*) = "./trans01.dats"
 #symload lctn with t0qag_get_lctn
 #symload node with t0qag_get_node
 (* ****** ****** *)
+#symload lctn with a0typ_get_lctn
+#symload node with a0typ_get_node
+#symload lctn with d0arg_get_lctn
+#symload node with d0arg_get_node
+(* ****** ****** *)
 //
 #implfun
 trans01_q0arg
@@ -172,16 +177,104 @@ end (*let*)//end-of(T0QAGsome(...))
 (* ****** ****** *)
 
 #implfun
-trans01_d0ecl
-(tenv, d0cl) = let
+trans01_a0typ
+( tenv,a0t0 ) = let
 //
-// (*
+val
+loc0 = a0t0.lctn()
+//
+in//let
+//
+case+
+a0t0.node() of
+|
+A0TYPsome(s0e1, topt) =>
+let
+val
+s1e1 =
+trans01_s0exp(tenv, s0e1)
+in
+a1typ_make_node
+(loc0, A1TYPsome(s1e1, topt))
+end // end of [A0TYPsome(s0e1,opt2)]
+//
+end (*let*) // end of [trans01_a0typ(tenv,a0tp)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_d0arg
+( tenv,d0a0 ) = let
+//
+val
+loc0 = d0a0.lctn()
+//
+in//let
+//
+case+
+d0a0.node() of
+//
+|
+D0ARGnone(tok) =>
+let
+val loc = tok.lctn()
+val tok =
+token_make_node
+(loc, T0IDENT_NONE(*val*))
+in//let
+d1arg_make_node(loc0, D1ARGdyn1(tok))
+end (*let*) // end of [D0ARGnone(tok)]
+//
+|
+D0ARGsta0
+(_, s0qs, _) =>
+let
+val
+s1qs =
+trans01_s0qualst(tenv, s0qs)
+in
+d1arg_make_node(loc0, D1ARGsta0(s1qs))
+end (*let*) // end of [D0ARGsta0(...)]
+//
+|
+D0ARGdyn1
+( dpid ) => let
+val
+dpid =
+trans01_i0dnt(tenv, dpid)
+in//let
+d1arg_make_node(loc0, D1ARGdyn1(dpid))
+end (*let*) // end of [D0ARGdyn1(dpid)]
+|
+D0ARGdyn2
+(tbeg,a0ts
+,aopt,tend) => let
+//
+val a1ts =
+trans01_a0typlst(tenv, a0ts)
+val aopt =
+optn_trans01_fnp
+(tenv, aopt, trans01_a0typlst)
+//
+in//let
+d1arg_make_node(loc0, D1ARGdyn2(a1ts, aopt))
+end (*let*) // end of [D0ARGdyn2(_,a0ts,aopt,_)]
+//
+end (*let*) // end of [trans01_d0arg(tenv,d0a0)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_d0ecl
+( tenv,d0cl ) = let
+//
+(*
 val
 loc0 = d0cl.lctn()
 val () =
 prerrln
 ("trans01_decl: d0cl = ", d0cl)
-// *)
+*)
 //
 in//let
 //
@@ -1090,6 +1183,17 @@ trans01_t0iaglst
   (tenv, tias) =
 list_trans01_fnp(tenv, tias, trans01_t0iag)
 
+(* ****** ****** *)
+//
+#implfun
+trans01_a0typlst
+  (tenv, a0ts) =
+list_trans01_fnp(tenv, a0ts, trans01_a0typ)
+#implfun
+trans01_d0arglst
+  (tenv, d0as) =
+list_trans01_fnp(tenv, d0as, trans01_d0arg)
+//
 (* ****** ****** *)
 //
 #implfun
