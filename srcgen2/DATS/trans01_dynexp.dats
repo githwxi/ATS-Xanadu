@@ -325,6 +325,9 @@ fxis_resolve(loc0, d1ps)
 }
 //
 |
+D0Plpar _ => f0_lpar(tenv, d0p0)
+//
+|
 D0Panno(d0p1, s0e2) =>
 let
 val d1p1 =
@@ -335,10 +338,21 @@ in // let
 //
 FXITMatm(d1p0) where
 {
-  val d1p0 = d1pat_make_node
-  (d0p0.lctn(), D1Panno(d1p1, s1e2)) }
+val d1p0 = d1pat_make_node
+(d0p0.lctn(), D1Panno(d1p1, s1e2)) }
 //
 end (*let*)//end of [D0Panno(d0p1,s0e2)]
+//
+|
+D0Pqual
+(tok1, d0p2) =>
+let
+val d1p2 = 
+  trans01_d0pat(tenv, d0p2)
+in // let
+FXITMatm
+(d1pat(d0p0.lctn(),D1Pqual(tok1,d1p2)))
+end (*let*)//end of [D0Pqual(tok1,d0p2)]
 //
 |
 _(*otherwise*) =>
@@ -511,6 +525,53 @@ d1pat
 end // end of [let] // end of [f0_str]
 //
 (* ****** ****** *)
+
+and
+f0_lpar
+( tenv:
+! tr01env
+, d0p0: d0pat): d1pfx =
+let
+//
+val
+loc0 = d0p0.lctn()
+val-
+D0Plpar
+(tbeg
+,dps1,tend) = d0p0.node()
+//
+in//let
+//
+case+ tend of
+|
+d0pat_RPAREN_cons0
+(      tok       ) =>
+FXITMatm
+(
+d1pat
+(loc0, D1Pl1st(dps1))) where
+{
+val dps1 =
+  trans01_d0patlst(tenv, dps1)
+}
+|
+d0pat_RPAREN_cons1
+(tbeg, dps2, tend) =>
+FXITMatm
+(
+d1pat
+( loc0
+, D1Pl2st(dps1, dps2))) where
+{
+val dps1 =
+  trans01_d0patlst(tenv, dps1)
+val dps2 =
+  trans01_d0patlst(tenv, dps2)
+}
+//
+endlet // end of [ D0Plpar(_,_,_) ]
+
+(* ****** ****** *)
 //
 and
 f0_d0ps
@@ -588,6 +649,9 @@ fxis_resolve(loc0, d1es)
 }
 //
 |
+D0Elpar _ => f0_lpar(tenv, d0e0)
+//
+|
 D0Eif0 _ => f0_if0(tenv, d0e0)
 (*
 |
@@ -661,7 +725,7 @@ val d1e2 =
   trans01_d0exp(tenv, d0e2)
 in // let
 FXITMatm
-(d1exp(d0e0.lctn(),D1Equal(tok1,d1e2))
+(d1exp(d0e0.lctn(),D1Equal(tok1,d1e2)))
 end (*let*)//end of [D0Equal(tok1,d0e2)]
 //
 |
@@ -837,6 +901,53 @@ end // end of [let] // end of [f0_str]
 (* ****** ****** *)
 
 and
+f0_lpar
+( tenv:
+! tr01env
+, d0e0: d0exp): d1efx =
+let
+//
+val
+loc0 = d0e0.lctn()
+val-
+D0Elpar
+(tbeg
+,des1,tend) = d0e0.node()
+//
+in//let
+//
+case+ tend of
+|
+d0exp_RPAREN_cons0
+(      tok       ) =>
+FXITMatm
+(
+d1exp
+(loc0, D1El1st(des1))) where
+{
+val des1 =
+  trans01_d0explst(tenv, des1)
+}
+|
+d0exp_RPAREN_cons1
+(tbeg, des2, tend) =>
+FXITMatm
+(
+d1exp
+( loc0
+, D1El2st(des1, des2))) where
+{
+val des1 =
+  trans01_d0explst(tenv, des1)
+val des2 =
+  trans01_d0explst(tenv, des2)
+}
+//
+endlet // end of [ D0Elpar(_,_,_) ]
+
+(* ****** ****** *)
+
+and
 f0_if0
 ( tenv:
 ! tr01env
@@ -986,7 +1097,7 @@ d0exp_THEN_none
 |
 d0exp_THEN_some
 (  tok1, d0e2  ) =>
-optn_cons(trans01_d0exp(tenv, d0e2)
+optn_cons(trans01_d0exp(tenv, d0e2))
 )
 #implfun
 trans01_d0exp_ELSE
@@ -999,7 +1110,7 @@ d0exp_ELSE_none
 |
 d0exp_ELSE_some
 (  tok1, d0e2  ) =>
-optn_cons(trans01_d0exp(tenv, d0e2)
+optn_cons(trans01_d0exp(tenv, d0e2))
 )
 
 (* ****** ****** *)

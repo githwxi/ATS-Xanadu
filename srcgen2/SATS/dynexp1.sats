@@ -242,13 +242,18 @@ d1pat_node =
 | D1Pr2cd of
   (token(*knd*), l0d1plst, l0d1plst)
 //
-| D1Panno of
-  ( d1pat
-  , s1exp(*given*)) // HX: annotation
+|
+D1Panno of
+( d1pat, s1exp(*anno*) ) // HX: type-anno
 //
-| D1Pnone0 of () | D1Pnone1 of (d0pat)
+|
+D1Pqual of
+( token(*NS*), d1pat(*dpid*) )//qual-d1pat
 //
-// end of [d1pat_node] // end of [datatype]
+|
+D1Pnone0 of ((*void*)) | D1Pnone1 of (d0pat)
+//
+// end of [d1pat_node] // end-(datatype(...))
 //
 (* ****** ****** *)
 fun
