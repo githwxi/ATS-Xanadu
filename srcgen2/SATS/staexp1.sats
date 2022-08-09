@@ -68,8 +68,21 @@ LEX = "./lexing0.sats"
 #staload S0E = "./staexp0.sats"
 (* ****** ****** *)
 //
+datatype
+s1lab(x0:type) =
+|
+S1LAB of
+(label, x0(*elt*))
+//
+(* ****** ****** *)
 #typedef
-s0lab(a:type) = $S0E.s0lab(a)
+s0lab(x0:t0)=$S0E.s0lab(x0)
+(* ****** ****** *)
+//
+fun
+<x0:type>
+s1lab_fprint
+(out: FILR, lab: s1lab(x0)): void
 //
 (* ****** ****** *)
 //
@@ -245,8 +258,8 @@ g1mag_make_node
 #typedef s1expopt = optn(s1exp)
 //
 (* ****** ****** *)
-#typedef l0s1e = s0lab(s1exp)
-#typedef l0s1elst = list(l0s1e)
+#typedef l1s1e = s1lab(s1exp)
+#typedef l1s1elst = list(l1s1e)
 (* ****** ****** *)
 //
 #typedef s1tdf = s1tdf_tbox
@@ -388,17 +401,21 @@ s1exp_node =
 | S1El2st of
   (s1explst, s1explst) // temp-list
 //
-| S1Et1up of // HX: tuple1
-  ( token, s1explst(*prop/type*))
-| S1Et2up of // HX: tuple2
-  ( token(*kind*)
-  , s1explst(*prop*), s1explst(*type*))
+|
+S1Et1up of // HX: tuple1
+( token, s1explst(*prop/type*))
+|
+S1Et2up of // HX: tuple2
+( token(*kind*)
+, s1explst(*prop*), s1explst(*type*))
 //
-| S1Er1cd of // HX: record1
-  ( token, l0s1elst(*prop/type*))
-| S1Er2cd of // HX: record2
-  ( token(*kind*)
-  , l0s1elst(*prop*), l0s1elst(*type*))
+|
+S1Er1cd of // HX: record1
+( token, l1s1elst(*prop/type*))
+|
+S1Er2cd of // HX: record2
+( token(*kind*)
+, l1s1elst(*prop*), l1s1elst(*type*))
 //
 | S1Euni0 of (s1qualst)
 | S1Eexi0 of (token(*#*), s1qualst)
