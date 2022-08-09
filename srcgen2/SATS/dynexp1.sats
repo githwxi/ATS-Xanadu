@@ -828,7 +828,13 @@ D1ARGsta0 of (s1qualst)
 D1ARGdyn1 of token // d0pid
 |
 D1ARGdyn2 of
-(a1typlst, a1typlstopt(*argopt2*))
+(
+a1typlst, a1typlstopt(*argopt2*)
+)
+//
+where
+{ #typedef
+  a1typlstopt = optn(a1typlst) }
 //
 (* ****** ****** *)
 //
@@ -851,6 +857,15 @@ d1arg_get_node:(d1arg)->d1arg_node
 #symload node with a1typ_get_node
 #symload lctn with d1arg_get_lctn
 #symload node with d1arg_get_node
+(* ****** ****** *)
+fun
+a1typ_make_node
+(loc:loc_t,nod:a1typ_node): a1typ
+#symload a1typ with a1typ_make_node
+fun
+d1arg_make_node
+(loc:loc_t,nod:d1arg_node): d1arg
+#symload d1arg with d1arg_make_node
 (* ****** ****** *)
 fun
 d1valdcl_fprint

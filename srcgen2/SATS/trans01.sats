@@ -548,6 +548,12 @@ trans01_t0iaglst:
 //
 (* ****** ****** *)
 fun
+trans01_a0typ:
+  (!tr01env, a0typ)->a1typ
+fun
+trans01_d0arg:
+  (!tr01env, d0arg)->d1arg
+fun
 trans01_a0typlst:
   (!tr01env, a0typlst)->a1typlst
 fun
