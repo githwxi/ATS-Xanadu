@@ -342,6 +342,11 @@ D1Cdatatype
 (tknd,d1ts,wdcs) =>
 print("D1Cdatatype(",tknd,";",d1ts,";",wdcs,")")
 //
+|
+D1Cdynconst
+(tknd,tqas,d1cs) =>
+print("D1Cdynconst(",tknd,";",tqas,";",d1cs,")")
+//
 | D1Cnone0() => print("D1Cnone0(", ")")
 | D1Cnone1(d0cl) => print("D1Cnone1(", d0cl ,")")
 //
@@ -422,6 +427,9 @@ let
 g_print$out<>() = out
 in//let
 case+ seff of
+|
+S1EFFnone() =>
+print("S1EFFnone(", ")")
 |
 S1EFFsome(s1fs) =>
 print("S1EFFsome(",s1fs,")")

@@ -392,6 +392,68 @@ endloc (*local*) // end of [ local ]
 
 (* ****** ****** *)
 
+local
+//
+datatype
+a1typ =
+A1TYP of
+(
+loctn, a1typ_node)
+#absimpl
+a1typ_tbox = a1typ
+//
+in (* in-of-local *)
+//
+#implfun
+a1typ_make_node
+(   loc,nod   ) = A1TYP(loc,nod)
+//
+#implfun
+a1typ_get_lctn(tia) =
+let
+  val+A1TYP(loc,nod) = tia in loc
+end
+#implfun
+a1typ_get_node(tia) =
+let
+  val+A1TYP(loc,nod) = tia in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d1arg =
+D1ARG of
+(
+loctn, d1arg_node)
+#absimpl
+d1arg_tbox = d1arg
+//
+in (* in-of-local *)
+//
+#implfun
+d1arg_make_node
+(   loc,nod   ) = D1ARG(loc,nod)
+//
+#implfun
+d1arg_get_lctn(tia) =
+let
+  val+D1ARG(loc,nod) = tia in loc
+end
+#implfun
+d1arg_get_node(tia) =
+let
+  val+D1ARG(loc,nod) = tia in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
 #implfun
 d1ecl_none1
 (  d0cl  ) =

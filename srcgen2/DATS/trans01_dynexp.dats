@@ -268,6 +268,62 @@ val d1e2 = trans01_d0exp(tenv, d0e2)
 end (*let*) // end of [trans01_d0cls(dcls)]
 
 (* ****** ****** *)
+//
+#implfun
+trans01_s0eff
+(tenv, seff) =
+(
+case+ seff of
+|
+S0EFFnone
+(  tok  ) =>
+S1EFFnone((*void*))
+|
+S0EFFsome
+(tbeg,s0es,tend) =>
+S1EFFsome( s1es ) where
+{
+val s1es = trans01_s0explst(tenv, s0es)
+}
+) (*case+*) // end of [trans01_s0eff(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans01_s0res
+(tenv, sres) =
+(
+case+ sres of
+|
+S0RESnone() => S1RESnone()
+|
+S0RESsome(seff,s0e1) =>
+S1RESsome(seff,s1e1) where
+{
+val seff = trans01_s0eff(tenv, seff)
+val s1e1 = trans01_s0exp(tenv, s0e1)
+}
+) (*case+*) // end of [trans01_s0res(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans01_d0res
+(tenv, dres) =
+(
+case+ dres of
+|
+D0RESnone() =>
+TEQD1EXPnone((*void*))
+|
+D0RESsome(teq0,d0e1) =>
+TEQD1EXPsome(teq0,d1e1) where
+{
+val d1e1 = trans01_d0exp(tenv, d0e1)
+}
+) (*case+*) // end of [trans01_d0res(...)]
+//
+(* ****** ****** *)
 
 #implfun
 trans01_d0patlst

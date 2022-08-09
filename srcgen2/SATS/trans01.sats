@@ -246,7 +246,9 @@ FIL = "./filpath.sats"
 #typedef d0arglst = $D0E.d0arglst
 #typedef d1arglst = $D1E.d1arglst
 (* ****** ****** *)
+#typedef s0eff = $D0E.s0eff
 #typedef s0res = $D0E.s0res
+#typedef s1eff = $D1E.s1eff
 #typedef s1res = $D1E.s1res
 (* ****** ****** *)
 #typedef d0res = $D0E.d0res
@@ -583,6 +585,9 @@ trans01_d0eclistopt:
 //
 (* ****** ****** *)
 //
+fun
+trans01_s0eff:
+  (!tr01env, s0eff)->s1eff
 fun
 trans01_s0res:
   (!tr01env, s0res)->s1res
