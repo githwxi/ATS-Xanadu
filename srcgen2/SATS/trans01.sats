@@ -194,12 +194,22 @@ FIL = "./filpath.sats"
 #typedef d1exp = $D1E.d1exp
 #typedef d1ecl = $D1E.d1ecl
 //
+#typedef l0d0p = $D0E.l0d0p
+#typedef l0d0e = $D0E.l0d0e
+#typedef l0d1p = $D1E.l0d1p
+#typedef l0d1e = $D1E.l0d1e
+//
 #typedef d0patlst = $D0E.d0patlst
 #typedef d0explst = $D0E.d0explst
 #typedef d0eclist = $D0E.d0eclist
 #typedef d1patlst = $D1E.d1patlst
 #typedef d1explst = $D1E.d1explst
 #typedef d1eclist = $D1E.d1eclist
+//
+#typedef l0d0plst = $D0E.l0d0plst
+#typedef l0d0elst = $D0E.l0d0elst
+#typedef l0d1plst = $D1E.l0d1plst
+#typedef l0d1elst = $D1E.l0d1elst
 //
 #typedef
 d0exp_THEN = $D0E.d0exp_THEN
@@ -498,6 +508,10 @@ fun trans01_d0pat:
   (!tr01env, d0pat)->d1pat
 fun trans01_d0exp:
   (!tr01env, d0exp)->d1exp
+fun trans01_l0d0p:
+  (!tr01env, l0d0p)->l0d1p
+fun trans01_l0d0e:
+  (!tr01env, l0d0e)->l0d1e
 //
 fun
 trans01_d0patlst:
@@ -505,6 +519,12 @@ trans01_d0patlst:
 fun
 trans01_d0explst:
   (!tr01env, d0explst)->d1explst
+fun
+trans01_l0d0plst:
+  (!tr01env, l0d0plst)->l0d1plst
+fun
+trans01_l0d0elst:
+  (!tr01env, l0d0elst)->l0d1elst
 //
 (* ****** ****** *)
 //
