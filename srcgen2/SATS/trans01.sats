@@ -236,6 +236,22 @@ FIL = "./filpath.sats"
 #typedef t0iaglst = $D0E.t0iaglst
 #typedef t1iaglst = $D1E.t1iaglst
 (* ****** ****** *)
+#typedef a0typ = $D0E.a0typ
+#typedef d0arg = $D0E.d0arg
+#typedef a1typ = $D1E.a1typ
+#typedef d1arg = $D1E.d1arg
+(* ****** ****** *)
+#typedef a0typlst = $D0E.a0typlst
+#typedef a1typlst = $D1E.a1typlst
+#typedef d0arglst = $D0E.d0arglst
+#typedef d1arglst = $D1E.d1arglst
+(* ****** ****** *)
+#typedef s0res = $D0E.s0res
+#typedef s1res = $D1E.s1res
+(* ****** ****** *)
+#typedef d0res = $D0E.d0res
+#typedef d1res = $D1E.d1res
+(* ****** ****** *)
 #typedef teqd0exp = $D0E.teqd0exp
 #typedef teqd1exp = $D1E.teqd1exp
 (* ****** ****** *)
@@ -531,6 +547,13 @@ trans01_t0iaglst:
   (!tr01env, t0iaglst)->t1iaglst
 //
 (* ****** ****** *)
+fun
+trans01_a0typlst:
+  (!tr01env, a0typlst)->a1typlst
+fun
+trans01_d0arglst:
+  (!tr01env, d0arglst)->d1arglst
+(* ****** ****** *)
 //
 fun
 trans01_d0ecl:
@@ -554,6 +577,12 @@ trans01_d0eclistopt:
 //
 (* ****** ****** *)
 //
+fun
+trans01_s0res:
+  (!tr01env, s0res)->s1res
+fun
+trans01_d0res:
+  (!tr01env, d0res)->d1res
 fun
 trans01_teqd0exp:
   (!tr01env, teqd0exp)->teqd1exp

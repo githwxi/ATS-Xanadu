@@ -1037,6 +1037,36 @@ end (*let*)//end-of-[trans01_d0vardcl(tenv,dvar)]
 (* ****** ****** *)
 
 #implfun
+trans01_d0cstdcl
+  (tenv, dcst) =
+let
+//
+val loc0 =
+d0cstdcl_get_lctn(dcst)
+val dpid =
+d0cstdcl_get_dpid(dcst)
+val darg =
+d0cstdcl_get_darg(dcst)
+val sres =
+d0cstdcl_get_sres(dcst)
+val dres =
+d0cstdcl_get_dres(dcst)
+//
+val dpid =
+trans01_i0dnt(tenv, dpid)
+val darg =
+trans01_d0arglst(tenv, darg)
+//
+val sres = trans01_s0res(tenv, sres)
+val dres = trans01_d0res(tenv, dres)
+//
+in//let
+d1cstdcl_make_args(loc0,dpid,darg,sres,dres)
+end (*let*)//end-of-[trans01_d0cstdcl(tenv,dcst)]
+
+(* ****** ****** *)
+
+#implfun
 trans01_d0eclist
   (tenv, dcls) =
 list_trans01_fnp(tenv, dcls, trans01_d0ecl)
