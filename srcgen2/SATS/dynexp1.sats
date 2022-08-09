@@ -465,13 +465,13 @@ D1Ecas1 of
 D1Elam0 of
 ( token(*LAM*)
 , f1arglst(*arg*)
-, effs1expopt, f1unarrw, d1exp(*body*))
+, s1res, f1unarrw, d1exp(*body*))
 |
 D1Efix0 of
 ( token(*FIX*)
 , token(*fid*)
 , f1arglst(*arg*)
-, effs1expopt, f1unarrw, d1exp(*body*))
+, s1res, f1unarrw, d1exp(*body*))
 //
 |
 D1Etry0 of
