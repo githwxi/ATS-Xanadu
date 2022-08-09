@@ -57,6 +57,8 @@ datatype label =
 #typedef label = label_tbox
 *)
 (* ****** ****** *)
+fun label_none(): label
+(* ****** ****** *)
 //
 fun
 label_fprint(FILR, label): void

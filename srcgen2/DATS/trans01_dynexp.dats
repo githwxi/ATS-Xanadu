@@ -50,6 +50,8 @@ _(*XFIXITY*) = "./xfixity.dats"
 #staload
 _(*TRANS01*) = "./trans01.dats"
 (* ****** ****** *)
+#staload "./../SATS/xlabel0.sats"
+(* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
@@ -75,6 +77,9 @@ _(*TRANS01*) = "./trans01.dats"
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
+(* ****** ****** *)
+#symload lctn with l0abl_get_lctn
+#symload node with l0abl_get_node
 (* ****** ****** *)
 #symload lctn with d0pat_get_lctn
 #symload node with d0pat_get_node
@@ -772,6 +777,47 @@ D0Ecas1 _ => f0_cas1(tenv, d0e0)
 *)
 //
 |
+D0Etup1 _ => f0_tup1(tenv, d0e0)
+|
+D0Ercd2 _ => f0_rcd2(tenv, d0e0)
+//
+|
+D0Ebrckt
+(tbeg,d0es,tend) =>
+let
+val loc0 = d0e0.lctn()
+val d1es =
+trans01_d0explst(tenv, d0es)
+in // let
+FXITMatm(d1exp(loc0, D1Ebrckt(d1es)))
+end (*let*) // end of [D0Ebrckt(_,_,_)]
+//
+|
+D0Edtsel
+(tknd, l0ab, dopt) =>
+let
+//
+val loc0 = d0e0.lctn()
+//
+val lab1 =
+(
+case+
+l0ab.node() of
+|
+L0ABLsome(lab1) => lab1
+|
+L0ABLnone(tok1) => label_none()
+) : label // end of [val(lab1)]
+//
+val
+dopt = trans01_d0expopt(tenv, dopt)
+//
+in // let
+FXITMatm
+(d1exp(loc0,D1Edtsel(tknd,lab1,dopt)))
+end (*let*) // end of [D0Edtsel(_,_,_)]
+//
+|
 D0Elet0 _ => f0_let0(tenv, d0e0)
 |
 D0Ewhere
@@ -1114,6 +1160,107 @@ val d1e0 = d1exp
 end (*let*) // end of [f0_cas0(tenv,d0e0)]
 
 (* ****** ****** *)
+//
+and
+f0_tup1
+( tenv:
+! tr01env
+, d0e0: d0exp): d1efx =
+let
+//
+val
+loc0 = d0e0.lctn()
+val-
+D0Etup1
+(tknd
+,topt
+,dps1,tend) = d0e0.node()
+//
+in//let
+//
+case+ tend of
+|
+d0exp_RPAREN_cons0
+(      tok       ) =>
+FXITMatm
+(
+d1exp
+( loc0
+, D1Et1up(tknd,dps1))) where
+{
+val dps1 =
+  trans01_d0explst(tenv, dps1)
+}
+|
+d0exp_RPAREN_cons1
+(tbeg, dps2, tend) =>
+FXITMatm
+(
+d1exp
+( loc0
+, D1Et2up
+  (tknd, dps1, dps2))) where
+{
+val dps1 =
+  trans01_d0explst(tenv, dps1)
+val dps2 =
+  trans01_d0explst(tenv, dps2)
+}
+//
+endlet // end of [D0Etup1(_,_,_,_)]
+//
+(* ****** ****** *)
+//
+and
+f0_rcd2
+( tenv:
+! tr01env
+, d0e0: d0exp): d1efx =
+let
+//
+val
+loc0 = d0e0.lctn()
+//
+val-
+D0Ercd2
+(tknd
+,topt
+,lss1,tend) = d0e0.node()
+//
+in//let
+//
+case+ tend of
+|
+l0d0e_RBRACE_cons0
+(      tok       ) =>
+FXITMatm
+(
+d1exp
+( loc0
+, D1Er1cd(tknd,lss1))) where
+{
+val lss1 =
+  trans01_l0d0elst(tenv, lss1)
+}
+|
+l0d0e_RBRACE_cons1
+(tbeg, lss2, tend) =>
+FXITMatm
+(
+d1exp
+( loc0
+, D1Er2cd
+  (tknd, lss1, lss2))) where
+{
+val lss1 =
+  trans01_l0d0elst(tenv, lss1)
+val lss2 =
+  trans01_l0d0elst(tenv, lss2)
+}
+//
+endlet // end of [D0Ercd2(_,_,_,_)]
+//
+(* ****** ****** *)
 
 and
 f0_let0
@@ -1438,6 +1585,11 @@ trans01_d0explst
 ( tenv, d0es ) =
 list_trans01_fnp(tenv, d0es, trans01_d0exp)
 //
+(* ****** ****** *)
+#implfun
+trans01_d0expopt
+( tenv, dopt ) =
+optn_trans01_fnp(tenv, dopt, trans01_d0exp)
 (* ****** ****** *)
 //
 #implfun

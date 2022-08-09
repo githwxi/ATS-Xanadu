@@ -205,6 +205,16 @@ print("D1Ecas0(");
 print(tknd,";",d1e1,";",d1cs,")"))
 //
 |
+D1Ebrckt(d1es) =>
+print("D1Ebrckt(",d1es,")")
+|
+D1Edtsel
+(tknd,lab1,dopt) =>
+(
+print("D1Edtsel(");
+print(tknd,";",lab1,";",dopt,")"))
+//
+|
 D1Elet0(d1cs,d1es) =>
 print("D1Elet0(",d1cs,";",d1es,")")
 |

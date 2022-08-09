@@ -431,6 +431,30 @@ d1exp_node =
 | D1Eseqn of
   (d1explst, d1explst)//sequencing
 //
+|
+D1Eif0 of
+( d1exp(*cond*)
+, d1expopt, d1expopt(*else*))
+|
+D1Eif1 of
+( d1exp(*cond*)
+, d1expopt, d1expopt(*else*), t1inv)
+//
+|
+D1Ecas0 of
+( token(*+/0/-*), d1exp, d1clslst)
+|
+D1Ecas1 of
+( token(*+/0/-*), d1exp, d1clslst, t1inv)
+//
+| D1Elet0 of
+  (d1eclist, d1explst(*semi*))
+| D1Ewhere of (d1exp, d1eclist)
+//
+| D1Ebrckt of (d1explst)
+| D1Edtsel of
+  (token(*kind*), label, d1expopt)
+//
 | D1Et1up of // HX: tuple1
   ( token
   , d1explst(*prop/type*))
@@ -444,27 +468,6 @@ d1exp_node =
 | D1Er2cd of // HX: record2
   ( token
   , l0d1elst(*prop*), l0d1elst(*type*))
-//
-| D1Ebrack of (d1explst)
-| D1Edtsel of (label, d1expopt)
-//
-| D1Elet0 of
-  (d1eclist, d1explst(*semi*))
-| D1Ewhere of (d1exp, d1eclist)
-//
-| D1Eif0 of
-  ( d1exp(*cond*)
-  , d1expopt, d1expopt(*else*))
-| D1Eif1 of
-  ( d1exp(*cond*)
-  , d1expopt, d1expopt(*else*), t1inv)
-//
-|
-D1Ecas0 of
-( token(*+/0/-*), d1exp, d1clslst)
-|
-D1Ecas1 of
-( token(*+/0/-*), d1exp, d1clslst, t1inv)
 //
 |
 D1Elam0 of
