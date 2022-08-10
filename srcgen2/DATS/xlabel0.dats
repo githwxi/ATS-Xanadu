@@ -48,7 +48,7 @@ ATS_PACKNAME
 //
 #implfun
 label_none
-((*void*)) = LABsym(symbl("**ERROR**"))
+((*void*)) = LABsym(symbl("*NONE*"))
 //
 (* ****** ****** *)
 
