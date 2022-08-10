@@ -100,6 +100,41 @@ val+
 } (*where*)//end-of(tr01env_free_top(tenv))
 
 (* ****** ****** *)
+//
+#implfun
+tr01env_popfree
+(     tenv     ) = let
+//
+val+
+@TR01ENV
+(topmap, !stkmap) = tenv
+//
+in//let
+//
+let
+val nerr =
+stkmap_poplet0(stkmap) in $fold(tenv)
+end (*let*)
+//
+end (*let*)//end-of-(tr01env_popfree(tenv))
+//
+(* ****** ****** *)
+//
+#implfun
+tr01env_pushnil
+(     tenv     ) = let
+//
+val+
+@TR01ENV
+(topmap, !stkmap) = tenv
+//
+in//let
+//
+stkmap_pshlet0(stkmap); $fold(tenv)
+//
+end (*let*)//end-of-(tr01env_pushnil(tenv))
+//
+(* ****** ****** *)
 
 #implfun
 tr01env_search_opt

@@ -195,8 +195,10 @@ print
 D1El1st(d1es) =>
 print("D1El1st(",d1es,")")
 |
-D1El2st(des1,des2) =>
-print("D1El2st(",des1,";",des2,")")
+D1El2st
+(des1,des2) =>
+print
+("D1El2st(",des1,";",des2,")")
 //
 |
 D1Eif0
