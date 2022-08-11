@@ -1594,6 +1594,13 @@ list_trans01_fnp(tenv, ldes, trans01_l0d0e)
 (* ****** ****** *)
 
 #implfun
+trans01_f0arglst
+( tenv, f0as ) =
+list_trans01_fnp(tenv, f0as, trans01_f0arg)
+
+(* ****** ****** *)
+
+#implfun
 trans01_d0gualst
 ( tenv, d0gs ) =
 list_trans01_fnp(tenv, d0gs, trans01_d0gua)
