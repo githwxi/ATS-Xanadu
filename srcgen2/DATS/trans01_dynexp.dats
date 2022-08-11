@@ -818,17 +818,39 @@ FXITMatm
 end (*let*) // end of [D0Edtsel(_,_,_)]
 //
 |
-D0Elet0 _ => f0_let0(tenv, d0e0)
+D0Elet0
+(tknd
+,d0cs,topt
+,d0es,tend) =>
+let
+//
+val
+loc0 = d0e0.lctn()
+//
+val (  ) =
+tr01env_pshlet0(tenv)
+//
+val d1cs =
+trans01_d0eclist(tenv, d0cs)
+val d1es =
+trans01_d0explst(tenv, d0es)
+//
+val (  ) = tr01env_poplet0(tenv)
+//
+in//let
+FXITMatm
+(d1exp(loc0, D1Elet0(d1cs, d1es)))
+end (*let*)//end-of(f0_let0(tenv,d0e0))
 |
 D0Ewhere
 (d0e1,d0cs) =>
 let
 //
 val
-loc0 = d0e1.lctn()
+loc0 = d0e0.lctn()
 //
 val (  ) =
-tr01env_pushnil(tenv)
+tr01env_pshlet0(tenv)
 //
 val d1cs =
 (
@@ -843,7 +865,7 @@ val
 d1e1 =
 trans01_d0exp( tenv, d0e1 )
 //
-val (  ) = tr01env_popfree(tenv)
+val (  ) = tr01env_poplet0(tenv)
 //
 in//let
 FXITMatm
@@ -1260,38 +1282,6 @@ val lss2 =
 //
 endlet // end of [D0Ercd2(_,_,_,_)]
 //
-(* ****** ****** *)
-
-and
-f0_let0
-( tenv:
-! tr01env
-, d0e0: d0exp): d1efx =
-let
-//
-val loc0 = d0e0.lctn()
-//
-val-
-D0Elet0
-( tknd
-, d0cs, topt
-, d0es, tend) = d0e0.node()
-//
-val (  ) =
-tr01env_pushnil(tenv)
-//
-val d1cs =
-trans01_d0eclist(tenv, d0cs)
-val d1es =
-trans01_d0explst(tenv, d0es)
-//
-val (  ) = tr01env_popfree(tenv)
-//
-in//let
-FXITMatm
-(d1exp(loc0, D1Elet0(d1cs, d1es)))
-end (*let*)//end-of(f0_let0(tenv,d0e0))
-
 (* ****** ****** *)
 
 and

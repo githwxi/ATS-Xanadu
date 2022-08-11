@@ -102,7 +102,7 @@ val+
 (* ****** ****** *)
 //
 #implfun
-tr01env_popfree
+tr01env_poplet0
 (     tenv     ) = let
 //
 val+
@@ -116,12 +116,12 @@ val nerr =
 stkmap_poplet0(stkmap) in $fold(tenv)
 end (*let*)
 //
-end (*let*)//end-of-(tr01env_popfree(tenv))
+end (*let*)//end-of-(tr01env_poplet0(tenv))
 //
 (* ****** ****** *)
 //
 #implfun
-tr01env_pushnil
+tr01env_pshlet0
 (     tenv     ) = let
 //
 val+
@@ -132,13 +132,78 @@ in//let
 //
 stkmap_pshlet0(stkmap); $fold(tenv)
 //
-end (*let*)//end-of-(tr01env_pushnil(tenv))
+end (*let*)//end-of-(tr01env_pshlet0(tenv))
+//
+(* ****** ****** *)
+//
+#implfun
+tr01env_pshloc1
+(     tenv     ) = let
+//
+val+
+@TR01ENV
+(topmap, !stkmap) = tenv
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshloc1(stkmap) in $fold(tenv)
+end (*let*)
+//
+end (*let*)//end-of-(tr01env_pshloc1(tenv))
+//
+(* ****** ****** *)
+//
+#implfun
+tr01env_pshloc2
+(     tenv     ) = let
+//
+val+
+@TR01ENV
+(topmap, !stkmap) = tenv
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshloc2(stkmap) in $fold(tenv)
+end (*let*)
+//
+end (*let*)//end-of-(tr01env_pshloc2(tenv))
+//
+(* ****** ****** *)
+//
+#implfun
+tr01env_locjoin
+(     tenv     ) = let
+//
+val+
+@TR01ENV
+(topmap, !stkmap) = tenv
+//
+in//let
+//
+$fold(tenv) where
+{
+val
+(nerr,kxs) =
+stkmap_poploc0(stkmap)
+val
+((*void*)) =
+if
+stkmap_nilq(stkmap)
+then topmap_insert_kxs(topmap, kxs)
+else stkmap_insert_kxs(stkmap, kxs) }
+//
+end (*let*)//end-of-(tr01env_pshloc2(tenv))
 //
 (* ****** ****** *)
 
 #implfun
 tr01env_search_opt
   (tenv, k0) = let
+//
 val+
 TR01ENV
 (topmap, stkmap) = tenv
@@ -164,7 +229,7 @@ tr01env_insert_any
 //
 val+
 @TR01ENV
-(topmap, stkmap) = tenv
+(topmap, !stkmap) = tenv
 //
 in//let
 //

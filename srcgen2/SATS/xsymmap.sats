@@ -47,7 +47,7 @@ ATS_PACKNAME
 #staload
 SYM = "./xsymbol.sats"
 //
-#typedef sym_t = $SYM.sym_t
+#typedef key = $SYM.sym_t
 //
 (* ****** ****** *)
 //
@@ -81,12 +81,17 @@ fun
 topmap_search_opt
 {itm:tbox}
 ( map:
-  topmap(itm), key: sym_t): optn_vt(itm)
+  topmap(itm), key: key): optn_vt(itm)
 fun
 topmap_insert_any
 {itm:tbox}
 ( map:
-  topmap(itm), key: sym_t, itm: itm): void
+  topmap(itm), key: key, itm: itm): void
+fun
+topmap_insert_kxs
+{itm:tbox}
+( map:
+  topmap(itm), kxs: list_vt@(key,itm)): void
 //
 (* ****** ****** *)
 //
@@ -111,7 +116,7 @@ stkmap_poploc0
   {itm:tbox}
 ( map:
 & stkmap(itm) >> _):
-(sint(*err*), list_vt@(sym_t, itm))
+(sint(*err*), list_vt@(key, itm))
 //
 fun
 stkmap_pshloc1
@@ -126,12 +131,17 @@ fun
 stkmap_search_opt
 {itm:tbox}
 ( map:
-! stkmap(itm), key: sym_t): optn_vt(itm)
+! stkmap(itm), key: key): optn_vt(itm)
 fun
 stkmap_insert_any
 {itm:tbox}
 ( map:
-& stkmap(itm) >> _, key: sym_t, itm: itm): void
+& stkmap(itm) >> _, key: key, itm: itm): void
+fun
+stkmap_insert_kxs
+{itm:tbox}
+( map:
+& stkmap(itm) >> _, kxs: list_vt@(key,itm)): void
 //
 (* ****** ****** *)
 

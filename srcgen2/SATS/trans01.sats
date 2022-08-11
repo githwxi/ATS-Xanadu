@@ -330,9 +330,14 @@ fun
 tr01env_free_top(env: ~tr01env): void
 //
 fun
-tr01env_popfree( env: !tr01env ): void
+tr01env_poplet0( env: !tr01env ): void
 fun
-tr01env_pushnil( env: !tr01env ): void
+tr01env_pshlet0( env: !tr01env ): void
+fun
+tr01env_pshloc1( env: !tr01env ): void
+fun
+tr01env_pshloc2( env: !tr01env ): void
+//
 fun
 tr01env_locjoin( env: !tr01env ): void
 //
