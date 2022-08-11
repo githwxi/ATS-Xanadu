@@ -295,6 +295,27 @@ f0_static(tenv, d0cl)
 D0Cextern _ =>
 f0_extern(tenv, d0cl)
 //
+| D0Clocal
+( tbeg
+, dcs1, topt
+, dcs2, tend) => let
+//
+val loc0 = d0cl.lctn()
+//
+val (  ) =
+  tr01env_pshloc1(tenv)
+val dcs1 =
+  trans01_d0eclist(tenv, dcs1)
+val (  ) =
+  tr01env_pshloc2(tenv)
+val dcs2 =
+  trans01_d0eclist(tenv, dcs2)
+//
+val (  ) = tr01env_locjoin(tenv)
+//
+in // let
+  d1ecl(loc0, D1Clocal(dcs1, dcs2))
+end (*let*)//end-(D0Clocal(_,_,_,_,_))
 |
 D0Cabssort _ =>
 f0_abssort(tenv, d0cl)

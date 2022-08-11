@@ -152,4 +152,31 @@ endloc (*local*) // end of [  local(topmap)  ]
 
 (* ****** ****** *)
 
+#implfun
+topmap_insert_kxs
+{itm}( map, kxs ) =
+(
+loop(kxs) ) where
+{
+fnx
+loop
+( kxs
+: list_vt@(key,itm)): void =
+(
+case+ kxs of
+| ~
+list_vt_nil
+( (*void*) ) => ()
+| ~
+list_vt_cons
+( kx1, kxs ) =>
+loop(kxs) where {
+  val () =
+  topmap_insert_any(map, kx1.0, kx1.1)
+} // end of-(list_vt_cons)
+) (* end of [loop(kxs)] *)
+} (*where*)//end-of-[topmap_insert_kxs(map,kxs)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_xsymmap_topmap.dats] *)

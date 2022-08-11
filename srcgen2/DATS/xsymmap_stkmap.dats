@@ -265,7 +265,7 @@ loop1(kxs, err, res) where
 in//let
 let
 //
-val
+var
 err: sint = 0
 val
 res =
@@ -327,6 +327,36 @@ stkmap_insert_any
 (
   map := stkmap_cons(key, itm, map) )
 //
+(* ****** ****** *)
+
+#implfun
+stkmap_insert_kxs
+{itm}( map, kxs ) =
+(
+map :=
+loop(map, kxs)) where
+{
+#vwtpdef
+stkmap = stkmap( itm )
+fnx
+loop
+( map: stkmap
+, kxs
+: list_vt@(key,itm)): stkmap =
+(
+case+ kxs of
+| ~
+list_vt_nil
+( (*void*) ) => map
+| ~
+list_vt_cons
+( kx1, kxs ) =>
+loop(map, kxs) where {
+  val map = stkmap_cons(kx1.0, kx1.1, map)
+} // end of-(list_vt_cons)
+) (* end of [loop(kxs)] *)
+} (*where*)//end-of-[stkmap_insert_kxs(map,kxs)]
+
 (* ****** ****** *)
 
 endloc (*local*) // end of [ local(stkmap) ]
