@@ -770,8 +770,8 @@ D1Cimplmnt0 of
 ( token(*implknd*)
 , s1qaglst // {...}
 , t1qaglst // <...>
-, d0qid, t1iaglst, f1arglst
-, s1res, token(*EQ0*), d1exp(*body*))
+, d1qid, t1iaglst
+, f1arglst, s1res, d1exp(*body*))
 //
 |
 D1Cdatatype of

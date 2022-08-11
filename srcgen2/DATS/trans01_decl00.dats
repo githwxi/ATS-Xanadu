@@ -355,6 +355,10 @@ D0Cfundclst _ =>
 f0_fundclst(tenv, d0cl)
 //
 |
+D0Cimplmnt0 _ =>
+f0_implmnt0(tenv, d0cl)
+//
+|
 D0Cdatatype _ =>
 f0_datatype(tenv, d0cl)
 //
@@ -1054,6 +1058,50 @@ trans01_d0fundclist(tenv, d0fs)
 in//let
 d1ecl(loc0, D1Cfundclst(tknd, tqas, d1fs))
 end (*let*) // end of [f0_fundclst(tenv,d0cl)]
+
+(* ****** ****** *)
+
+fun
+f0_implmnt0
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
+let
+//
+val loc0 = d0cl.lctn()
+//
+val-
+D0Cimplmnt0
+( tknd
+, sqas, tqas
+, dqid, tias
+, f0as, sres
+, teq1, body) = d0cl.node()
+//
+val sqas =
+trans01_s0qaglst(tenv, sqas)
+val tqas =
+trans01_t0qaglst(tenv, tqas)
+//
+val dqid =
+  trans01_d0qid( tenv, dqid )
+//
+val tias =
+trans01_t0iaglst(tenv, tias)
+val f1as =
+trans01_f0arglst(tenv, f0as)
+//
+val sres =
+  trans01_s0res( tenv, sres )
+val body =
+  trans01_d0exp( tenv, body )
+//
+in//let
+d1ecl_make_node
+( loc0
+, D1Cimplmnt0
+  (tknd,sqas,tqas,dqid,tias,f1as,sres,body))
+end (*let*) // end of [f0_implmnt0(tenv,d0cl)]
 
 (* ****** ****** *)
 
