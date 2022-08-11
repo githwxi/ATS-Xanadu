@@ -13,7 +13,7 @@ pure   :: a -> f a
 #infixl <*> of ++
 (* ****** ****** *)
 #typedef
-cfr1(a1:t0,r0:vt) = (a1)-<cfr>r0
+c1fr(a1:t0,r0:vt) = (a1)-<cfr>r0
 (* ****** ****** *)
 //
 fun
@@ -29,14 +29,14 @@ fun
 t0->t0>
 <x0:t0>
 <m0:t0>
-fappl(f0(cfr1(x0, m0)), f0(x0)): f0(m0)
+fappl(f0(c1fr(x0, m0)), f0(x0)): f0(m0)
 //
 fun
 <f0:
 t0->t0>
 <x0:t0>
 <m0:t0>
-fappr(f0(x0), f0(cfr1(x0, m0))): f0(m0)
+fappr(f0(x0), f0(c1fr(x0, m0))): f0(m0)
 //
 (* ****** ****** *)
 //
