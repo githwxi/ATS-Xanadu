@@ -13,9 +13,9 @@ Monoid m => (a -> m) -> t a -> m
 *)
 (* ****** ****** *)
 #typedef
-cfr1(a1:t0,r0:vt) = (a1)-<cfr>r0
+c1fr(a1:t0,r0:vt) = (a1)-<cfr>r0
 #typedef
-cfr2(a1:t0,a2:t0,r0:vt) = (a1,a2)-<cfr>r0
+c2fr(a1:t0,a2:t0,r0:vt) = (a1,a2)-<cfr>r0
 (* ****** ****** *)
 //
 fun
@@ -29,14 +29,14 @@ fun
 t0->t0>
 <x0:t0>
 <r0:t0>
-foldr(cfr2(x0, r0, r0), r0, f0(x0)): r0
+foldr(c2fr(x0, r0, r0), r0, f0(x0)): r0
 //
 fun
 <f0:
 t0->t0>
 <x0:t0>
 <m0:t0>
-foldMap(fx: cfr1(x0, m0), xs: f0(x0)): m0
+foldMap(fx: c1fr(x0, m0), xs: f0(x0)): m0
 //
 (* ****** ****** *)
 
