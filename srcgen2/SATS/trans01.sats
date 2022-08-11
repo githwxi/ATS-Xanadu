@@ -221,15 +221,19 @@ d0exp_ELSE = $D0E.d0exp_ELSE
 #typedef d1expopt = $D1E.d1expopt
 //
 (* ****** ****** *)
+#typedef f0arg = $D0E.f0arg
 #typedef d0gua = $D0E.d0gua
 #typedef d0gpt = $D0E.d0gpt
 #typedef d0cls = $D0E.d0cls
+#typedef f1arg = $D1E.f1arg
 #typedef d1gua = $D1E.d1gua
 #typedef d1gpt = $D1E.d1gpt
 #typedef d1cls = $D1E.d1cls
 (* ****** ****** *)
+#typedef f0arglst = $D0E.f0arglst
 #typedef d0gualst = $D0E.d0gualst
 #typedef d0clslst = $D0E.d0clslst
+#typedef f1arglst = $D1E.f1arglst
 #typedef d1gualst = $D1E.d1gualst
 #typedef d1clslst = $D1E.d1clslst
 (* ****** ****** *)
@@ -540,6 +544,8 @@ trans01_d0expopt:
 //
 (* ****** ****** *)
 //
+fun trans01_f0arg:
+  (!tr01env, f0arg)->f1arg
 fun trans01_d0gua:
   (!tr01env, d0gua)->d1gua
 fun trans01_d0gpt:
@@ -547,6 +553,9 @@ fun trans01_d0gpt:
 fun trans01_d0cls:
   (!tr01env, d0cls)->d1cls
 //
+fun
+trans01_f0arglst:
+  (!tr01env, f0arglst)->f1arglst
 fun
 trans01_d0gualst:
   (!tr01env, d0gualst)->d1gualst

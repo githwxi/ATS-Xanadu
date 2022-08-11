@@ -350,6 +350,9 @@ f0_valdclst(tenv, d0cl)
 |
 D0Cvardclst _ =>
 f0_vardclst(tenv, d0cl)
+|
+D0Cfundclst _ =>
+f0_fundclst(tenv, d0cl)
 //
 |
 D0Cdatatype _ =>
@@ -1024,6 +1027,37 @@ end (*let*) // end of [f0_vardclst(tenv,d0cl)]
 (* ****** ****** *)
 
 fun
+f0_fundclst
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
+let
+//
+val loc0 = d0cl.lctn()
+//
+(*
+val () =
+println!
+("trans01_d0ecl: d0cl = ", d0cl)
+*)
+//
+val-
+D0Cfundclst
+(tknd
+,tqas, d0fs) = d0cl.node()
+//
+val tqas =
+trans01_t0qaglst(tenv, tqas)
+val d1fs =
+trans01_d0fundclist(tenv, d0fs)
+//
+in//let
+d1ecl(loc0, D1Cfundclst(tknd, tqas, d1fs))
+end (*let*) // end of [f0_fundclst(tenv,d0cl)]
+
+(* ****** ****** *)
+
+fun
 f0_datatype
 ( tenv:
 ! tr01env
@@ -1147,6 +1181,45 @@ trans01_teqd0exp(tenv, dini)
 in//let
 d1vardcl_make_args(loc0,dpid,vpid,sres,dini)
 end (*let*)//end-of-[trans01_d0vardcl(tenv,dvar)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_d0fundcl
+  (tenv, dfun) =
+let
+//
+val loc0 =
+d0fundcl_get_lctn(dfun)
+//
+val dpid =
+d0fundcl_get_dpid(dfun)
+val dpid =
+trans01_i0dnt(tenv, dpid)
+//
+val farg =
+d0fundcl_get_farg(dfun)
+val farg =
+trans01_f0arglst(tenv, farg)
+//
+val sres =
+d0fundcl_get_sres(dfun)
+val sres =
+trans01_s0res(tenv, sres)
+//
+val tdxp =
+d0fundcl_get_tdxp(dfun)
+val tdxp =
+trans01_teqd0exp(tenv, tdxp)
+//
+val wsxp =
+d0fundcl_get_wsxp(dfun)
+val wsxp =
+trans01_wths0exp(tenv, wsxp)
+//
+in//let
+d1fundcl(loc0, dpid, farg, sres, tdxp, wsxp)
+end (*let*)//end-of-[trans01_d0fundcl(tenv,dfun)]
 
 (* ****** ****** *)
 
