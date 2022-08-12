@@ -464,6 +464,22 @@ end (*let*) // end of [d0ecl_fundclst_errck]
 (* ****** ****** *)
 //
 fun
+d0ecl_excptcon_errck
+( loc0: loc_t
+, tknd: token
+, tbar: tokenopt
+, d0ts: d0tcnlst) : d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+( lvl+1
+, d0ecl(loc0, D0Cexcptcon(tknd, tbar, d0ts)))
+end (*let*) // end of [d0ecl_excptcon_errck]
+//
+(* ****** ****** *)
+//
+fun
 d0ecl_datatype_errck
 ( loc0: loc_t
 , tknd: token
@@ -1169,6 +1185,9 @@ D0Cimplmnt0 _ =>
 f0_implmnt0(dcl, err)
 //
 |
+D0Cexcptcon _ =>
+f0_excptcon(dcl, err)
+|
 D0Cdatatype _ =>
 f0_datatype(dcl, err)
 //
@@ -1766,6 +1785,31 @@ d0ecl_implmnt0_errck
 , tqas, dqid, tias, fags, sres, teq1, body)
 end (*let*) // end of [f0_implmnt0(dcl,err)]
 
+(* ****** ****** *)
+//
+fun
+f0_excptcon
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val loc = dcl.lctn()
+//
+val-
+D0Cexcptcon
+( tknd
+, tbar, d0ts) = dcl.node()
+//
+val d0ts = preadx0_d0tcnlst(d0ts, err)
+//
+if
+(err=e00)
+then dcl else
+d0ecl_excptcon_errck(loc, tknd, tbar, d0ts)
+end (*let*) // end of [f0_excptcon(dcl,err)]
+//
 (* ****** ****** *)
 //
 fun
