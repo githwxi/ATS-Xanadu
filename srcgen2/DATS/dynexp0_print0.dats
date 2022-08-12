@@ -696,6 +696,9 @@ D0Cfundclst(tknd,t0qs,dcls) =>
 print("D0Cfundclst(",tknd,";",t0qs,";",dcls,")")
 //
 |
+D0Cexcptcon(tknd,tbar,tcns) =>
+print("D0Cdatatype(",tknd,";",tbar,";",tcns,")")
+|
 D0Cdatatype(tknd,dtps,wdcs) =>
 print("D0Cdatatype(",tknd,";",dtps,";",wdcs,")")
 //

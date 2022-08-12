@@ -445,6 +445,10 @@ print(tknd,";",s0qs,";",t0qs,";");
 print(dqid,";",t0is,";",farg,";",sres,";",d0e2,")"))
 //
 |
+D1Cexcptcon
+(tknd,dtcs) =>
+print("D1Cexcptcon(",tknd,";",dtcs,")")
+|
 D1Cdatatype
 (tknd,d1ts,wdcs) =>
 print("D1Cdatatype(",tknd,";",d1ts,";",wdcs,")")
