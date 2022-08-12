@@ -1130,7 +1130,7 @@ wths0exp =
 |
 WTHS0EXPnone of ((*void*))
 |
-WTHS0EXPsome of (token(*WTP*), s0exp)
+WTHS0EXPsome of (token(*WTH*), s0exp)
 //
 (* ****** ****** *)
 fun

@@ -417,7 +417,7 @@ fun
 token_none
 (loc: loc_t): token = 
 token_make_node
-(loc, T0IDENT_NONE(*val*))
+(loc, T0IDALP_NONE(*val*))
 }(*where*)//end-of(trans01_i0dnt)
 //
 (* ****** ****** *)
@@ -1478,7 +1478,7 @@ loc1 = tok1.lctn()
 val
 sid1 =
 token_make_node
-(loc1, T0IDENT_NONE)
+(loc1, T0IDALP_NONE)
 val tres = optn_nil()
 in//let
 s1arg
@@ -1525,7 +1525,7 @@ S0MAGnone(tok) => let
   val sid =
   token_make_node
   ( tok.lctn()
-  , T0IDENT_NONE(*val*))
+  , T0IDALP_NONE(*val*))
   val
   s1a =
   s1arg_make_node

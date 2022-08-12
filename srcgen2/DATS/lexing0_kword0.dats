@@ -349,21 +349,21 @@ end (*local*) // end of [ local ]
 
 (* ****** ****** *)
 //
-#implval T0IDENT_AT0 = T_IDSYM("@")
-#implval T0IDENT_BAR = T_IDSYM("|")
+#implval T0IDSYM_AT0 = T_IDSYM("@")
+#implval T0IDSYM_BAR = T_IDSYM("|")
 //
-#implval T0IDENT_EQ0 = T_IDSYM("=")
+#implval T0IDSYM_EQ0 = T_IDSYM("=")
 //
-#implval T0IDENT_LT0 = T_IDSYM("<")
-#implval T0IDENT_GT0 = T_IDSYM(">")
+#implval T0IDSYM_LT0 = T_IDSYM("<")
+#implval T0IDSYM_GT0 = T_IDSYM(">")
 //
-#implval T0IDENT_EQGT = T_IDSYM("=>")
-#implval T0IDENT_LTGT = T_IDSYM("<>")
+#implval T0IDSYM_EQGT = T_IDSYM("=>")
+#implval T0IDSYM_LTGT = T_IDSYM("<>")
 //
-#implval T0IDENT_MSLT = T_IDSYM("-<")
-#implval T0IDENT_MSGT = T_IDSYM("->")
+#implval T0IDSYM_MSLT = T_IDSYM("-<")
+#implval T0IDSYM_MSGT = T_IDSYM("->")
 //
-#implval T0IDENT_NONE = T_IDALP("*NONE*")
+#implval T0IDALP_NONE = T_IDALP("*NONE*")
 //
 (* ****** ****** *)
 

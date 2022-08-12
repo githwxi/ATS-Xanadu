@@ -348,21 +348,32 @@ FXITMopr(f0, fx) =>
     resolve
     (f0_t1, xs0, ys2) where
     {
-      val
-      f0_t1 =
+      val f0_t1 =
       fxitm_pstfix<a>(t1, f0)
     }
-  | _(*reduction-error*) =>
+  | _(*error*) =>
+    resolve
+    (f0_t1, xs0, ys1) where
+    {
+      val t1 =
+      fxatm_none<a>
+      (fxopr_get_lctn<a>(f0))
+      val f0_t1 =
+      fxitm_pstfix<a>(t1, f0) }
+    // end of (reduction-error)
+(*
+  | _(*error*) =>
     fxitmlst_resolve$rederr<a>(loc0, ys0)
+*)
   ) (*FIXTYpos*)
   |
   _ (*non-FIXTYpos*) =>
   let
     val l0 =
     fxopr_get_lctn<a>(f0)
-    val t0 = fxatm_none<a>(l0)
+    val t1 = fxatm_none<a>(l0)
   in
-    yreduce(xs0, cons(FXITMatm(t0), ys0))
+    yreduce(xs0, cons(FXITMatm(t1), ys0))
   endlet // end of [non-FIXTYpos]
 ) (*case+*) // end of [FXITMopr(f0,fx)]
 |
@@ -430,8 +441,7 @@ case+ ys0 of
 |
 FXITMopr(_, fx) =>
 (
-  resolve_opr(fx, y0, xs0, ys0)
-)
+  resolve_opr(fx, y0, xs0, ys0))
 ) (*case+*)// end of [resolve(y0,xs0,ys0)]
 //
 and
@@ -448,8 +458,8 @@ y1 :: list_nil() =>
 process
 (xs0, y0 :: app :: ys0)) where
 {
-  val app =
-  fxitmlst_resolve$appopr<a>(y1)
+val app =
+fxitmlst_resolve$appopr<a>(y1)
 }
 //
 |
@@ -482,13 +492,11 @@ case+ asc of
 |
 ASSOClft() =>
 (
-  yreduce(y0 :: xs0, ys0)
-)
+  yreduce(y0 :: xs0, ys0))
 |
 ASSOCnon() =>
 (
-  yreduce(y0 :: xs0, ys0)
-)
+  yreduce(y0 :: xs0, ys0))
 |
 ASSOCrgt() =>
 let
@@ -503,7 +511,7 @@ end // end of [y1 :: FIXITMopr _ :: ys2]
 //
 | _ (*error*) =>
 (
-  fxitmlst_resolve$apperr<a>(y0) // HX: [y0] is FXITMatm
+fxitmlst_resolve$apperr<a>(y0) // deadcode?
 )
 //
 ) (*case+*)//end of [resolve_app(y0,xs0,ys0)]
