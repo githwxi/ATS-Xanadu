@@ -359,6 +359,9 @@ D0Cimplmnt0 _ =>
 f0_implmnt0(tenv, d0cl)
 //
 |
+D0Cexcptcon _ =>
+f0_excptcon(tenv, d0cl)
+|
 D0Cdatatype _ =>
 f0_datatype(tenv, d0cl)
 //
@@ -1102,6 +1105,34 @@ d1ecl_make_node
 , D1Cimplmnt0
   (tknd,sqas,tqas,dqid,tias,f1as,sres,body))
 end (*let*) // end of [f0_implmnt0(tenv,d0cl)]
+
+(* ****** ****** *)
+
+fun
+f0_excptcon
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
+let
+//
+val loc0 = d0cl.lctn()
+//
+(*
+val () =
+println!
+("trans01_d0ecl: d0cl = ", d0cl)
+*)
+//
+val-
+D0Cexcptcon
+(tknd
+,topt, tcns) = d0cl.node()
+//
+val tcns = trans01_d0tcnlst(tenv, tcns)
+//
+in//let
+d1ecl_make_node(loc0,D1Cexcptcon(tknd,tcns))
+end (*let*) // end of [f0_excptcon(tenv,d0cl)]
 
 (* ****** ****** *)
 
