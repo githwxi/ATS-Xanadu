@@ -1806,12 +1806,16 @@ trans01_g0namlst
 list_trans01_fnp(tenv, g0ns, trans01_g0nam)
 
 (* ****** ****** *)
-
+//
 #implfun
 trans01_g0explst
   (tenv, g0es) =
 list_trans01_fnp(tenv, g0es, trans01_g0exp)
-
+#implfun
+trans01_g0expopt
+  (tenv, opt0) =
+optn_trans01_fnp(tenv, opt0, trans01_g0exp)
+//
 (* ****** ****** *)
 
 #implfun

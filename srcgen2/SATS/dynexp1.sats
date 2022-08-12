@@ -752,6 +752,12 @@ d1ecl_node =
   , s1qid, s1maglst, sort1opt, s1exp)
 //
 |
+D1Csymload of
+( token
+, sym_t
+, d1qid(*qual-id*), g1expopt)
+//
+|
 D1Cdatasort of
 (token(*DATASORT*), d1tstlst)
 //

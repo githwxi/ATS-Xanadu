@@ -665,11 +665,11 @@ print(sid0,";",smas,";",tres,";");print(teq1,";",def2,")"))
 //
 |
 D0Csymload
-(tknd,symb,twth,dqid,prec) =>
+(tknd,symb,twth,dqid,pval) =>
 (
 print("D0Csymload(",tknd,";");
 print
-(symb,";",twth,";",dqid,";",prec,")"))
+(symb,";",twth,";",dqid,";",pval,")"))
 //
 |
 D0Cinclude(tknd,g0e1) =>

@@ -117,6 +117,9 @@ S0E = "./staexp0.sats"
 (* ****** ****** *)
 #typedef i0dntlst = list(i0dnt)
 (* ****** ****** *)
+#typedef g0explst = list(g0exp)
+#typedef g0expopt = optn(g0exp)
+(* ****** ****** *)
 #typedef sort0lst = list(sort0)
 #typedef sort0opt = optn(sort0)
 (* ****** ****** *)
@@ -900,7 +903,7 @@ D0Csymload of
 ( token
 , s0ymb
 , token(*WITH*)
-, d0qid(*qual-id*), precopt)
+, d0qid(*qual-id*), g0expopt)
 //
 |
 D0Cinclude of (token, g0exp)//inclusion
