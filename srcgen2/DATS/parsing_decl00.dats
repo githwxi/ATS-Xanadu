@@ -86,6 +86,8 @@ lctn with d0tst_get_lctn//staexp0
 #symload
 lctn with s0tdf_get_lctn//staexp0
 #symload
+lctn with d0tcn_get_lctn//staexp0
+#symload
 lctn with d0typ_get_lctn//staexp0
 //
 (* ****** ****** *)
@@ -485,7 +487,8 @@ let
   val lres = tknd.lctn() + def2.lctn()
 in
 err := e00;
-d0ecl(lres, D0Csortdef(tknd, tid0, teq1, def2))
+d0ecl_make_node
+( lres, D0Csortdef(tknd, tid0, teq1, def2) )
 end (*let*) // end of [ T_SORTDEF() ]
 //
 |
@@ -505,7 +508,7 @@ in
 err := e00;
 d0ecl_make_node
 ( lres
-, D0Csexpdef(tknd, sid0, smas, tres, teq1, def2))
+, D0Csexpdef(tknd,sid0,smas,tres,teq1,def2))
 end (*let*) // end of [T_SEXPDEF(k0)]
 //
 |
@@ -545,10 +548,11 @@ let
     | A0TDFeqeq(tok, s0e) => lknd+s0e.lctn()
   end : loc_t // end-of-let // end-of-val
 in
+(
 err := e00;
 d0ecl_make_node
-(lres, D0Cabstype(tknd, sid0, tmas, tres, tdef))
-end // end of [T_ABSTYPE(k0)]
+(lres, D0Cabstype(tknd,sid0,tmas,tres,tdef)))
+end (*let*) // end of [T_ABSTYPE(k0)]
 |
 T_ABSOPEN() =>
 let
@@ -560,11 +564,14 @@ let
   val lres = tknd.lctn() + sqid.lctn()
 //
 in
- (err := e00; d0ecl(lres, D0Cabsopen(tknd,sqid)))
+(
+err := e00;
+d0ecl_make_node(lres, D0Cabsopen(tknd,sqid)))
 end (*let*) // end of [ T_ABSOPEN() ]
 //
 |
-T_ABSIMPL() => let
+T_ABSIMPL() =>
+let
 //
   val tknd = tok
   val (  ) = buf.skip1()
@@ -575,40 +582,81 @@ T_ABSIMPL() => let
   val def2 = p1_s0exp(buf, err)
   val lres = tknd.lctn() + def2.lctn()
 in//let
+(
 err := e00;
 d0ecl_make_node
 ( lres
-, D0Cabsimpl(tknd, sqid, smas, tres, teq1, def2))
+, D0Cabsimpl
+  (tknd, sqid, smas, tres, teq1, def2)))
 end (*let*) // end of [ T_ABSIMPL() ]
 //
 |
-T_DATASORT() => let
+T_DATASORT() =>
+let
 //
-  val tknd = tok
-  val (  ) = buf.skip1()
+val tknd = tok
+val (  ) = buf.skip1()
 //
-  val dtcs =
-  p1_d0tstseq_AND(buf, err)
+val dtcs =
+p1_d0tstseq_AND(buf, err)
 //
-  val lres =
-  (
-  case+ dtcs of
-  |
-  list_nil
-  ((*nil*)) => tknd.lctn()
-  |
-  list_cons
-  ( _ , _ ) =>
-  let
-    val dtc1 =
-    list_last(dtcs) in tknd.lctn()+dtc1.lctn()
-  end
-  ) : loc_t // end of [val(lres)]
-in
-  err := e00
-; d0ecl_make_node(lres, D0Cdatasort(tknd, dtcs))
-end (*let*) // end of [T_DATASORT()]
+val lres =
+(
+case+ dtcs of
+|
+list_nil
+((*nil*)) => tknd.lctn()
+|
+list_cons
+( _ , _ ) =>
+let
+val dtc1 =
+list_last(dtcs) in tknd.lctn()+dtc1.lctn()
+endlet // end of [list_cons]
+) : loc_t // end of [val(lres)]
+in//let
+(
+err := e00;
+d0ecl_make_node(lres,D0Cdatasort(tknd,dtcs)))
+end (*let*) // end of [ T_DATASORT() ]
 //
+(* ****** ****** *)
+|
+T_EXCPTCON() => let
+//
+val tknd = tok
+val (  ) = buf.skip1()
+//
+val lknd = tknd.lctn()
+//
+val topt = pq_BAR(buf, err)
+val dtcs =
+  p1_d0tcnseq_BAR(buf, err)
+//
+val lres =
+(
+case+ dtcs of
+| list_nil() =>
+(
+case+ topt of
+| optn_nil() => lknd
+| optn_cons(tbar) =>
+(
+  lknd + tbar.lctn())
+)
+| list_cons _ =>
+(
+  lknd + dtc1.lctn()) where
+  {
+    val dtc1 = list_last(dtcs)
+  }
+) : loc_t // end of [val(lres)]
+//
+in//let
+(
+err := e00;
+d0ecl(lres, D0Cexcptcon(tknd, topt, dtcs)))
+end (*let*) // end of [ T_EXCPTCON() ]
 (* ****** ****** *)
 |
 T_DATATYPE(k0) =>
@@ -684,8 +732,9 @@ val lres =
     (_, _, _, tend) => lknd+tend.lctn()
 ) : loc_t // case // end of [ val(lres) ]
 in//let
-  err := e00
-; d0ecl(lres, D0Cdatatype(tknd, dtps, wopt))
+(
+err := e00;
+d0ecl(lres, D0Cdatatype(tknd, dtps, wopt)))
 end (*let*) // end of [ T_DATATYPE( k0 ) ]
 //
 (* ****** ****** *)
@@ -707,8 +756,9 @@ T_SRP_STATIC( ) => let
   // end of [val]
   val lres = tknd.lctn()+dcl0.lctn()
 in
+(
 err := e00;
-d0ecl_make_node( lres, D0Cstatic(tknd, dcl0) )
+d0ecl_make_node(lres, D0Cstatic(tknd, dcl0)))
 end // end of [T_SRP_STATIC]
 |
 T_SRP_EXTERN() => let
@@ -721,8 +771,9 @@ T_SRP_EXTERN() => let
   // end of [val]
   val lres = tknd.lctn()+dcl0.lctn()
 in
+(
 err := e00;
-d0ecl_make_node( lres, D0Cextern(tknd, dcl0) )
+d0ecl_make_node(lres, D0Cextern(tknd, dcl0)))
 end (*let*) // end of [T_SRP_EXTERN]
 //
 (* ****** ****** *)
@@ -766,10 +817,11 @@ T_SRP_SYMLOAD() => let
   ) : loc_t // end of [ val(lrec) ]
 //
 in
+(
 err := e00;
 d0ecl_make_node
 ( lres
-, D0Csymload(tknd, symb, twth, dqid, opt1))
+, D0Csymload(tknd, symb, twth, dqid, opt1)))
 end (*let*) // end of [T_SRP_SYMLOAD(...)]
 //
 (* ****** ****** *)

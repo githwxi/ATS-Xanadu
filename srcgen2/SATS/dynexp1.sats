@@ -774,6 +774,9 @@ D1Cimplmnt0 of
 , f1arglst, s1res, d1exp(*body*))
 //
 |
+D1Cexcptcon of
+(token(*EXCPTCON*), d1tcnlst)
+|
 D1Cdatatype of
 (token(*DATATYPE*), d1typlst, wd1eclseq)
 //

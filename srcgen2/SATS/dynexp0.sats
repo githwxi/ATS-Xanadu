@@ -932,6 +932,9 @@ D0Cimplmnt0 of
 , s0res, token(*EQ0*), d0exp(*body*))
 //
 |
+D0Cexcptcon of
+(token(*EXCPTCON*), tokenopt, d0tcnlst)
+|
 D0Cdatatype of
 (token(*DATATYPE*), d0typlst, wd0eclseq)
 //
