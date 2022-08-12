@@ -792,28 +792,32 @@ T_SRP_SYMLOAD() => let
     p1_d0qid( buf, err )
 //
   val tok1 = buf.getk0()
+//
   val opt1 =
   (
-    case+
-    tok1.node() of
-    | T_OF0() =>
-      p1_precopt
-      (buf, err) where
-      {
-        val () = buf.skip1()
-      }
-    | _(*non-T_OF0*) => PRECnil0()
-  ) : precopt // end of [val]
+  case+
+  tok1.node() of
+  |
+  T_OF0() =>
+  let
+    val () = buf.skip1()
+  in//let
+    optn_cons
+    (p1_g0exp(buf, err))
+  endlet // end-of(T_OF0())
+  |
+  _(*non-T_OF0*) => optn_nil()
+  ) : g0expopt // end of [val]
 //
-  val lopt = precopt_lctn(opt1)
   val lres =
   (
-  case+ lopt of
-  | ~
-  optn_vt_nil() =>
-  (tknd.lctn() + dqid.lctn())
-  | ~
-  optn_vt_cons(loc1) => tknd.lctn()+loc1
+  case+ opt1 of
+  | optn_nil
+    ((*void*)) =>
+    (tknd.lctn() + dqid.lctn())
+  | optn_vt_cons
+    (  g0e1  ) =>
+    (tknd.lctn() + g0e1.lctn())
   ) : loc_t // end of [ val(lrec) ]
 //
 in

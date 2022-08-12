@@ -107,14 +107,18 @@ FIL = "./filpath.sats"
 (* ****** ****** *)
 //
 #typedef g0nam = $S0E.g0nam
-#typedef g0exp = $S0E.g0exp
 #typedef g1nam = $S1E.g1nam
+//
+#typedef g0exp = $S0E.g0exp
 #typedef g1exp = $S1E.g1exp
 //
 #typedef g0namlst = $S0E.g0namlst
-#typedef g0explst = $S0E.g0explst
 #typedef g1namlst = $S1E.g1namlst
+//
+#typedef g0explst = $S0E.g0explst
+#typedef g0expopt = $S0E.g0expopt
 #typedef g1explst = $S1E.g1explst
+#typedef g1expopt = $S1E.g1expopt
 //
 (* ****** ****** *)
 //
@@ -423,6 +427,9 @@ trans01_g0namlst:
 fun
 trans01_g0explst:
   (!tr01env, g0explst)->g1explst
+fun
+trans01_g0expopt:
+  (!tr01env, g0expopt)->g1expopt
 //
 (* ****** ****** *)
 //

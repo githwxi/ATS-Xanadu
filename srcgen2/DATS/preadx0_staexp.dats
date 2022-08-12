@@ -57,6 +57,9 @@ ATS_PACKNAME
 #symload lctn with l0abl_get_lctn
 #symload node with l0abl_get_node
 (* ****** ****** *)
+#symload lctn with s0ymb_get_lctn
+#symload node with s0ymb_get_node
+(* ****** ****** *)
 #symload lctn with sort0_get_lctn
 #symload node with sort0_get_node
 (* ****** ****** *)
@@ -102,6 +105,24 @@ L0ABLsome(lab) => l0ab
 L0ABLnone(tok) => l0ab
 where{ val () = err := err+1 }
 ) (*case+*)//end-of-[preadx0_l0abl]
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_s0ymb
+  (symb, err) =
+(
+case+
+symb.node() of
+|
+S0YMBi0dnt
+(  deid  ) => symb where
+{
+val deid =
+preadx0_i0dnt(deid, err) }
+|
+S0YMBbrckt(tkb,tke) => symb
+) (*case+*)//end-of-[preadx0_s0ymb]
 //
 (* ****** ****** *)
 //
@@ -1381,25 +1402,22 @@ endlet // end of [S0TDFsub]
 
 (* ****** ****** *)
 #implfun
+preadx0_i0dntlst
+(   lst, err   ) =
+preadx0_synentlst_fun(lst,err,preadx0_i0dnt)
+#implfun
 preadx0_i0dntopt
 (   opt, err   ) =
 preadx0_synentopt_fun(opt,err,preadx0_i0dnt)
 (* ****** ****** *)
 #implfun
-preadx0_i0dntlst
+preadx0_g0explst
 (   lst, err   ) =
-preadx0_synentlst_fun(lst,err,preadx0_i0dnt)
-(* ****** ****** *)
-//
+preadx0_synentlst_fun(lst,err,preadx0_g0exp)
 #implfun
-preadx0_sort0opt
+preadx0_g0expopt
 (   opt, err   ) =
-preadx0_synentopt_fun(opt,err,preadx0_sort0)
-#implfun
-preadx0_s0expopt
-(   opt, err   ) =
-preadx0_synentopt_fun(opt,err,preadx0_s0exp)
-//
+preadx0_synentopt_fun(opt,err,preadx0_g0exp)
 (* ****** ****** *)
 //
 #implfun
@@ -1407,9 +1425,21 @@ preadx0_sort0lst
 (   lst, err   ) =
 preadx0_synentlst_fun(lst,err,preadx0_sort0)
 #implfun
+preadx0_sort0opt
+(   opt, err   ) =
+preadx0_synentopt_fun(opt,err,preadx0_sort0)
+//
+(* ****** ****** *)
+//
+#implfun
 preadx0_s0explst
 (   lst, err   ) =
 preadx0_synentlst_fun(lst,err,preadx0_s0exp)
+#implfun
+preadx0_s0expopt
+(   opt, err   ) =
+preadx0_synentopt_fun(opt,err,preadx0_s0exp)
+//
 #implfun
 preadx0_l0s0elst
 (   lst, err  ) =

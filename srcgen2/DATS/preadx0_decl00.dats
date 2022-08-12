@@ -358,6 +358,32 @@ end (*let*) // end of [d0ecl_absimpl_errck]
 (* ****** ****** *)
 //
 fun
+d0ecl_symload_errck
+( loc0
+: loc_t
+, tknd
+: token
+, symb
+: s0ymb
+, twth
+: token
+, dqid
+: d0qid
+, gopt
+: g0expopt) : d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+(
+lvl+1,
+d0ecl_make_node
+(loc0, D0Csymload(tknd,symb,twth,dqid,gopt)))
+end (*let*) // end of [d0ecl_symload_errck]
+//
+(* ****** ****** *)
+//
+fun
 d0ecl_datasort_errck
 ( loc0
 : loc_t
@@ -1167,6 +1193,10 @@ D0Cabsimpl _ =>
 f0_absimpl(dcl, err)
 //
 |
+D0Csymload _ =>
+f0_symload(dcl, err)
+//
+|
 D0Cdatasort _ =>
 f0_datasort(dcl, err)
 //
@@ -1633,6 +1663,33 @@ then dcl else
 d0ecl_absimpl_errck
 (dcl.lctn(),tknd,sqid,smas,tres,teq1,s0e2)
 end (*let*) // end of [f0_absimpl(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_symload
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val-
+D0Csymload
+( tknd
+, symb, twth
+, dqid, gopt) = dcl.node()
+//
+val symb = preadx0_s0ymb(symb, err)
+val dqid = preadx0_d0qid(dqid, err)
+val gopt = preadx0_g0expopt(gopt, err)
+//
+if
+(err=e00)
+then dcl else
+d0ecl_symload_errck
+( dcl.lctn(), tknd,symb,twth,dqid,gopt )
+end (*let*) // end of [f0_symload(dcl,err)]
 //
 (* ****** ****** *)
 //

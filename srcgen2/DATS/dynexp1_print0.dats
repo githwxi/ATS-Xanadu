@@ -401,8 +401,7 @@ D1Cabstype
 ,tmas,tres,atdf) =>
 (
 print("D1Cabstype(",tknd,";");
-print
-(seid,";",tmas,";",tres,";",atdf,")"))
+print(seid,";",tmas,";",tres,";",atdf,")"))
 |
 D1Cabsopen
 (  tknd, sqid  ) =>
@@ -414,6 +413,14 @@ D1Cabsimpl
 (
 print("D1Cabsimpl(",tknd,";");
 print(sid1,";",smas,";",tres,";",sdef,")"))
+//
+|
+D1Csymload
+(tknd
+,deid,dqid,gopt) =>
+(
+print("D1Csymload(");
+print(tknd,";",deid,";",dqid,";",gopt,")"))
 //
 |
 D1Cdatasort
@@ -428,6 +435,7 @@ print("D1Cvaldclst(",tknd,";",d1vs,")")
 D1Cvardclst
 (  tknd, d1vs  ) =>
 print("D1Cvardclst(",tknd,";",d1vs,")")
+//
 |
 D1Cfundclst
 (tknd,tqas,d1fs) =>

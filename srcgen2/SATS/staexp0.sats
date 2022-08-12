@@ -75,7 +75,7 @@ LEX = "./lexing0.sats"
 //
 #abstbox i0dnt_tbox // ptr
 #abstbox l0abl_tbox // ptr
-#abstype s0ymb_tbox // ptr
+#abstbox s0ymb_tbox // ptr
 //
 (* ****** ****** *)
 //
@@ -189,8 +189,12 @@ t0str_get_lctn(t0str): loc_t
 #typedef g0nam = g0nam_tbox
 #typedef g0exp = g0exp_tbox
 #typedef g0mag = g0mag_tbox
+//
 #typedef g0namlst = list(g0nam)
+//
 #typedef g0explst = list(g0exp)
+#typedef g0expopt = optn(g0exp)
+//
 #typedef g0arglst = list(g0arg)
 #typedef g0maglst = list(g0mag)
 //

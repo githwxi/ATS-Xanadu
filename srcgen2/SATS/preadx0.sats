@@ -54,6 +54,7 @@ D0E = "./dynexp0.sats"
 #typedef i0dnt = $S0E.i0dnt
 (* ****** ****** *)
 #typedef l0abl = $S0E.l0abl
+#typedef s0ymb = $S0E.s0ymb
 (* ****** ****** *)
 #typedef s0qid = $S0E.s0qid
 #typedef d0qid = $S0E.d0qid
@@ -62,6 +63,8 @@ D0E = "./dynexp0.sats"
 #typedef t0chr = $S0E.t0chr
 #typedef t0flt = $S0E.t0flt
 #typedef t0str = $S0E.t0str
+(* ****** ****** *)
+#typedef g0exp = $S0E.g0exp
 (* ****** ****** *)
 #typedef sort0 = $S0E.sort0
 #typedef s0exp = $S0E.s0exp
@@ -82,6 +85,9 @@ l0s0e_RBRACE = $S0E.l0s0e_RBRACE
 (* ****** ****** *)
 #typedef i0dntopt = $S0E.i0dntopt
 #typedef i0dntlst = $S0E.i0dntlst
+(* ****** ****** *)
+#typedef g0explst = $S0E.g0explst
+#typedef g0expopt = $S0E.g0expopt
 (* ****** ****** *)
 #typedef s0expopt = $S0E.s0expopt
 #typedef sort0opt = $S0E.sort0opt
@@ -178,8 +184,12 @@ fpreadx0
 (* ****** ****** *)
 fun preadx0_i0dnt: fpreadx0(i0dnt)
 fun preadx0_l0abl: fpreadx0(l0abl)
+fun preadx0_s0ymb: fpreadx0(s0ymb)
+(* ****** ****** *)
 fun preadx0_s0qid: fpreadx0(s0qid)
 fun preadx0_d0qid: fpreadx0(d0qid)
+(* ****** ****** *)
+fun preadx0_g0exp: fpreadx0(g0exp)
 (* ****** ****** *)
 fun preadx0_sort0: fpreadx0(sort0)
 fun preadx0_s0exp: fpreadx0(s0exp)
@@ -196,6 +206,8 @@ fun preadx0_s0tdf: fpreadx0(s0tdf)
 #symload preadx0 with preadx0_i0dnt
 #symload preadx0 with preadx0_s0qid
 #symload preadx0 with preadx0_d0qid
+(* ****** ****** *)
+#symload preadx0 with preadx0_g0exp
 (* ****** ****** *)
 #symload preadx0 with preadx0_sort0
 #symload preadx0 with preadx0_s0exp
@@ -228,15 +240,20 @@ fun
 preadx0_i0dntlst: fpreadx0(i0dntlst)
 (* ****** ****** *)
 fun
-preadx0_sort0opt: fpreadx0(sort0opt)
+preadx0_g0explst: fpreadx0(g0explst)
 fun
-preadx0_s0expopt: fpreadx0(s0expopt)
+preadx0_g0expopt: fpreadx0(g0expopt)
 (* ****** ****** *)
 fun
 preadx0_sort0lst: fpreadx0(sort0lst)
+fun
+preadx0_sort0opt: fpreadx0(sort0opt)
 (* ****** ****** *)
 fun
 preadx0_s0explst: fpreadx0(s0explst)
+fun
+preadx0_s0expopt: fpreadx0(s0expopt)
+(* ****** ****** *)
 fun
 preadx0_l0s0elst: fpreadx0(l0s0elst)
 (* ****** ****** *)
@@ -361,6 +378,8 @@ preadx0_d0eclseq_WHERE: fpreadx0(d0eclseq_WHERE)
 fun i0dnt_fpemsg(FILR, i0dnt): void
 (* ****** ****** *)
 fun l0abl_fpemsg(FILR, l0abl): void
+(* ****** ****** *)
+fun s0ymb_fpemsg(FILR, s0ymb): void
 (* ****** ****** *)
 fun t0int_fpemsg(FILR, t0int): void
 fun t0chr_fpemsg(FILR, t0chr): void

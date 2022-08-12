@@ -68,6 +68,14 @@ LEX = "./lexing0.sats"
 #staload S0E = "./staexp0.sats"
 (* ****** ****** *)
 //
+(*
+datatype
+s1ymb_node =
+| S1YMBtoken of (token)
+*)
+//
+(* ****** ****** *)
+//
 datatype
 s1lab(x0:type) =
 |

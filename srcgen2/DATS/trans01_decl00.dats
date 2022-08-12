@@ -72,6 +72,9 @@ _(*TRANS01*) = "./trans01.dats"
 #symload lctn with i0dnt_get_lctn
 #symload node with i0dnt_get_node
 (* ****** ****** *)
+#symload lctn with s0ymb_get_lctn
+#symload node with s0ymb_get_node
+(* ****** ****** *)
 #symload lctn with s0tdf_get_lctn
 #symload node with s0tdf_get_node
 (* ****** ****** *)
@@ -339,6 +342,10 @@ f0_absopen(tenv, d0cl)
 |
 D0Cabsimpl _ =>
 f0_absimpl(tenv, d0cl)
+//
+|
+D0Csymload _ =>
+f0_symload(tenv, d0cl)
 //
 |
 D0Cdatasort _ =>
@@ -946,6 +953,63 @@ d1ecl_make_node
 (loc0
 ,D1Cabsimpl(tknd,sqid,smas,tres,s1e2))
 end (*let*) // end of [f0_absopen(tenv,d0cl)]
+
+(* ****** ****** *)
+
+fun
+f0_symload
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
+let
+//
+val loc0 = d0cl.lctn()
+//
+(*
+val () =
+println!
+("trans01_d0ecl: d0cl = ", d0cl)
+*)
+//
+val-
+D0Csymload
+(tknd
+,symb, twth
+,dqid, gopt) = d0cl.node()
+//
+val deid =
+(
+case+
+symb.node() of
+|
+S0YMBi0dnt(deid) =>
+let
+val
+tok =
+trans01_i0dnt(tenv, deid)
+in//let
+(
+case-
+tok.node() of
+|
+T_IDALP(nam) => symbl(nam)
+|
+T_IDSYM(nam) => symbl(nam)
+|
+T_IDDLR(nam) => symbl(nam))
+endlet // end of [S0YMBi0dnt]
+|
+S0YMBbrckt
+( tlb,trb ) => symbl("[]")): sym_t
+//
+val dqid = trans01_d0qid(tenv,dqid)
+//
+val gopt = trans01_g0expopt(tenv,gopt)
+//
+in//let
+d1ecl_make_node
+(loc0,D1Csymload(tknd, deid, dqid, gopt))
+end (*let*) // end of [f0_symload(tenv,d0cl)]
 
 (* ****** ****** *)
 
