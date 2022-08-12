@@ -510,8 +510,8 @@ end // let // end-of-(else)
 end // end of [y1 :: FIXITMopr _ :: ys2]
 //
 | _ (*error*) =>
-(
-fxitmlst_resolve$apperr<a>(y0) // deadcode?
+( // HX-2022-08-12: is this a case of
+  fxitmlst_resolve$apperr<a>(y0) // deadcode?
 )
 //
 ) (*case+*)//end of [resolve_app(y0,xs0,ys0)]
@@ -643,7 +643,10 @@ case+ ys0 of
 ) (* end of [FIXTYpreinf] *)
 //
 |
-FIXTYnon((*void*)) => fxitmlst_resolve$oprerr<a>(y0) // HX: deadcode?
+FIXTYnon((*void*)) =>
+( // HX-2022-08-12: is this a case of
+  fxitmlst_resolve$oprerr<a>(y0) // deadcode?
+)
 //
 ) (*case+*)//end of [resolve_opr(fx,y0,xs0,ys0)]
 //
