@@ -86,6 +86,9 @@ _(*TRANS01*) = "./trans01.dats"
 #symload lctn with d0exp_get_lctn
 #symload node with d0exp_get_node
 (* ****** ****** *)
+#symload lctn with f0arg_get_lctn
+#symload node with f0arg_get_node
+(* ****** ****** *)
 #symload lctn with d0gua_get_lctn
 #symload node with d0gua_get_node
 #symload lctn with d0gpt_get_lctn
@@ -1330,6 +1333,66 @@ f0_d0es
 (* ****** ****** *)
 
 #implfun
+trans01_f0arg
+( tenv, f0a0 ) =
+let
+val
+loc0 = f0a0.lctn()
+in//let
+case+
+f0a0.node() of
+|
+F0ARGnone(tok) =>
+let
+val
+loc = tok.lctn()
+val
+sym =
+(
+case+
+T0IDALP_NONE of
+|
+T_IDALP
+( nam ) => symbl(nam)): sym_t
+in//let
+f1arg
+(loc0
+,F1ARGdyn0(d1pat(loc,D1Pid0(sym))))
+end (*let*) // end of [F0ARGnone(tok)]
+//
+|
+F0ARGdyn0(d0p1) =>
+let
+val
+d1p1 = trans01_d0pat(tenv, d0p1)
+in//let
+f1arg_make_node(loc0,F1ARGdyn0(d1p1))
+end (*let*) // end of [F0ARGdyn0(d0p1)]
+//
+|
+F0ARGsta0
+(tbeg,s0qs,tend) =>
+let
+val
+s1qs = trans01_s0qualst(tenv, s0qs)
+in//let
+f1arg_make_node(loc0,F1ARGsta0(s1qs))
+end (*let*) // end of [F0ARGsta0(_,_,_)]
+|
+F0ARGmet0
+(tbeg,s0es,tend) =>
+let
+val
+s1es = trans01_s0explst(tenv, s0es)
+in//let
+f1arg_make_node(loc0,F1ARGmet0(s1es))
+end (*let*) // end of [F0ARGmet0(_,_,_)]
+//
+end (*let*) // end of [trans01_f0arg(tenv,f0a0)]
+
+(* ****** ****** *)
+
+#implfun
 trans01_d0exp_THEN
   (tenv, dthn) =
 (
@@ -1563,6 +1626,40 @@ TEQD1EXPsome(teq0,d1e1) where
 val d1e1 = trans01_d0exp(tenv, d0e1)
 }
 ) (*case+*) // end of [trans01_d0res(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans01_teqd0exp
+  (tenv, tdxp) =
+(
+case+ tdxp of
+|
+TEQD0EXPnone() =>
+TEQD1EXPnone((*void*))
+|
+TEQD0EXPsome(teq1, d0e2) =>
+TEQD1EXPsome(teq1, d1e2) where
+{ val
+  d1e2 = trans01_d0exp(tenv, d0e2) }
+) (*case+*)//end-of(trans01_teqd0exp(...))
+//
+(* ****** ****** *)
+//
+#implfun
+trans01_wths0exp
+  (tenv, tdxp) =
+(
+case+ tdxp of
+|
+WTHS0EXPnone() =>
+WTHS1EXPnone((*void*))
+|
+WTHS0EXPsome(twth, s0e2) =>
+WTHS1EXPsome(twth, s1e2) where
+{ val
+  s1e2 = trans01_s0exp(tenv, s0e2) }
+) (*case+*)//end-of(trans01_wths0exp(...))
 //
 (* ****** ****** *)
 //

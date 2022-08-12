@@ -1372,7 +1372,7 @@ val (  ) =
 tokbuf_mark_set(buf, mark)
 //
 val loc1 = tok1.lctn()
-val tnd2 = T0IDENT_LT0(*val*)
+val tnd2 = T0IDSYM_LT0(*val*)
 val tok2 = token_make_node(loc1,tnd2)
 in//let
   d0exp(loc1, D0Eid0(i0dnt_some(tok2)))
@@ -1386,7 +1386,7 @@ let
 val tok1 = tok
 val (  ) = buf.skip1()
 val loc1 = tok1.lctn()
-val tnd2 = T0IDENT_GT0(*val*)
+val tnd2 = T0IDSYM_GT0(*val*)
 val tok2 = token_make_node(loc1,tnd2)
 in//let
   d0exp(loc1, D0Eid0(i0dnt_some(tok2)))

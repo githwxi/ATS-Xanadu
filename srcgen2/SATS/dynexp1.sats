@@ -305,9 +305,9 @@ f1arg_node =
 (*
 | F1ARGnone of (token)
 *)
-| F1ARGsome_dyn of (d1pat)
-| F1ARGsome_sta of (s1qualst)
-| F1ARGsome_met of (s1explst)
+| F1ARGdyn0 of (d1pat)
+| F1ARGsta0 of (s1qualst)
+| F1ARGmet0 of (s1explst)
 //
 (* ****** ****** *)
 fun
@@ -682,7 +682,7 @@ wths1exp =
 |
 WTHS1EXPnone of ((*void*))
 |
-WTHS1EXPsome of (token(*WTP*), s1exp)
+WTHS1EXPsome of (token(*WTH*), s1exp)
 //
 (* ****** ****** *)
 (*

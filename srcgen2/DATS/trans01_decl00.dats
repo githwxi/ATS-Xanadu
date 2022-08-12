@@ -220,7 +220,7 @@ let
 val loc = tok.lctn()
 val tok =
 token_make_node
-(loc, T0IDENT_NONE(*val*))
+(loc, T0IDALP_NONE(*val*))
 in//let
 d1arg_make_node(loc0, D1ARGdyn1(tok))
 end (*let*) // end of [D0ARGnone(tok)]

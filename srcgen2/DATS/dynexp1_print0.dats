@@ -65,6 +65,9 @@ _(*?*) = "./lexing0_print0.dats"
 #symload lctn with d1ecl_get_lctn
 #symload node with d1ecl_get_node
 (* ****** ****** *)
+#symload lctn with f1arg_get_lctn
+#symload node with f1arg_get_node
+(* ****** ****** *)
 #symload lctn with d1gua_get_lctn
 #symload node with d1gua_get_node
 #symload lctn with d1gpt_get_lctn
@@ -254,6 +257,30 @@ end (*let*) // end of [d1exp_fprint(out,d1e)]
 (* ****** ****** *)
 
 #implfun
+f1arg_fprint
+(out, farg) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+farg.node() of
+|
+F1ARGdyn0(d1p1) =>
+print("F1ARGdyn0(",d1p1,")")
+|
+F1ARGsta0(s1qs) =>
+print("F1ARGsta0(",s1qs,")")
+|
+F1ARGmet0(s1es) =>
+print("F1ARGmet0(",s1es,")")
+//
+end (*let*) // end of [f1arg_fprint(out,farg)]
+
+(* ****** ****** *)
+
+#implfun
 d1gua_fprint
 (out, dgua) =
 let
@@ -405,6 +432,17 @@ print("D1Cvardclst(",tknd,";",d1vs,")")
 D1Cfundclst
 (tknd,tqas,d1fs) =>
 print("D1Cfundclst(",tknd,";",tqas,";",d1fs,")")
+//
+|
+D1Cimplmnt0
+(tknd
+,s0qs,t0qs
+,dqid,t0is
+,farg,sres,d0e2) =>
+(
+print("D1Cimplmnt0(");
+print(tknd,";",s0qs,";",t0qs,";");
+print(dqid,";",t0is,";",farg,";",sres,";",d0e2,")"))
 //
 |
 D1Cdatatype

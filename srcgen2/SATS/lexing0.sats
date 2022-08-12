@@ -276,17 +276,17 @@ datatype tnode =
 #typedef tokenlst = list(token)
 #typedef tokenopt = optn(token)
 (* ****** ****** *)
-val T0IDENT_AT0 : tnode
-val T0IDENT_BAR : tnode
-val T0IDENT_EQ0 : tnode
-val T0IDENT_LT0 : tnode
-val T0IDENT_GT0 : tnode
-val T0IDENT_EQGT : tnode
-val T0IDENT_LTGT : tnode
-val T0IDENT_MSLT : tnode
-val T0IDENT_MSGT : tnode
+val T0IDSYM_AT0 : tnode
+val T0IDSYM_BAR : tnode
+val T0IDSYM_EQ0 : tnode
+val T0IDSYM_LT0 : tnode
+val T0IDSYM_GT0 : tnode
+val T0IDSYM_EQGT : tnode
+val T0IDSYM_LTGT : tnode
+val T0IDSYM_MSLT : tnode
+val T0IDSYM_MSGT : tnode
 (* ****** ****** *)
-val T0IDENT_NONE : tnode
+val T0IDALP_NONE : tnode
 (* ****** ****** *)
 //
 fun//<>

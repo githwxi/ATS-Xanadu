@@ -317,7 +317,7 @@ i0dnt_some(tok) where
 {
 val ( ) = buf.skip1()
 val loc = tok.lctn((*void*))
-val tnd = T0IDENT_AT0(*void*)
+val tnd = T0IDSYM_AT0(*void*)
 val tok = token_make_node(loc,tnd)
 }
 //
@@ -327,7 +327,7 @@ i0dnt_some(tok) where
 {
 val ( ) = buf.skip1()
 val loc = tok.lctn((*void*))
-val tnd = T0IDENT_EQ0(*void*)
+val tnd = T0IDSYM_EQ0(*void*)
 val tok = token_make_node(loc,tnd)
 }
 //
@@ -337,7 +337,7 @@ i0dnt_some(tok) where
 {
 val ( ) = buf.skip1()
 val loc = tok.lctn((*void*))
-val tnd = T0IDENT_LT0(*void*)
+val tnd = T0IDSYM_LT0(*void*)
 val tok = token_make_node(loc,tnd)
 }
 |
@@ -346,7 +346,7 @@ i0dnt_some(tok) where
 {
 val ( ) = buf.skip1()
 val loc = tok.lctn((*void*))
-val tnd = T0IDENT_GT0(*void*)
+val tnd = T0IDSYM_GT0(*void*)
 val tok = token_make_node(loc,tnd)
 }
 //
@@ -388,7 +388,7 @@ T_IDSYM _ =>
 ; i0dnt_some(tok)) where
 {
 val loc = tok.lctn((*void*))
-val tnd = T0IDENT_MSGT(*void*)
+val tnd = T0IDSYM_MSGT(*void*)
 val tok = token_make_node(loc,tnd)
 }
 //
@@ -456,7 +456,7 @@ T_IDDLR _ =>
 ; i0dnt_some(tok)) where
 {
 val loc = tok.lctn((*void*))
-val tnd = T0IDENT_AT0(*void*)
+val tnd = T0IDSYM_AT0(*void*)
 val tok = token_make_node(loc,tnd)
 }
 //
@@ -465,7 +465,7 @@ val tok = token_make_node(loc,tnd)
 ; i0dnt_some(tok)) where
 {
 val loc = tok.lctn((*void*))
-val tnd = T0IDENT_EQ0(*void*)
+val tnd = T0IDSYM_EQ0(*void*)
 val tok = token_make_node(loc,tnd)
 }
 //
@@ -474,7 +474,7 @@ val tok = token_make_node(loc,tnd)
 ; i0dnt_some(tok)) where
 {
 val loc = tok.lctn((*void*))
-val tnd = T0IDENT_LT0(*void*)
+val tnd = T0IDSYM_LT0(*void*)
 val tok = token_make_node(loc,tnd)
 }
 | T_GT0() =>
@@ -482,7 +482,7 @@ val tok = token_make_node(loc,tnd)
 ; i0dnt_some(tok)) where
 {
 val loc = tok.lctn((*void*))
-val tnd = T0IDENT_GT0(*void*)
+val tnd = T0IDSYM_GT0(*void*)
 val tok = token_make_node(loc,tnd)
 }
 //
@@ -491,7 +491,7 @@ val tok = token_make_node(loc,tnd)
 ; i0dnt_some(tok)) where
 {
 val loc = tok.lctn((*void*))
-val tnd = T0IDENT_LTGT(*void*)
+val tnd = T0IDSYM_LTGT(*void*)
 val tok = token_make_node(loc,tnd)
 }
 //
@@ -500,7 +500,7 @@ val tok = token_make_node(loc,tnd)
 ; i0dnt_some(tok)) where
 {
 val loc = tok.lctn((*void*))
-val tnd = T0IDENT_MSGT(*void*)
+val tnd = T0IDSYM_MSGT(*void*)
 val tok = token_make_node(loc,tnd)
 }
 //
@@ -580,7 +580,7 @@ i0dnt_some(tok) where
 {
 val ( ) = buf.skip1()
 val loc = tok.lctn((*void*))
-val tnd = T0IDENT_AT0(*void*)
+val tnd = T0IDSYM_AT0(*void*)
 val tok = token_make_node(loc,tnd)
 }
 //
@@ -642,7 +642,7 @@ i0dnt_some(tok) where
 {
 val ( ) = buf.skip1()
 val loc = tok.lctn((*void*))
-val tnd = T0IDENT_AT0(*void*)
+val tnd = T0IDSYM_AT0(*void*)
 val tok = token_make_node(loc,tnd)
 }
 //
@@ -652,7 +652,7 @@ i0dnt_some(tok) where
 {
 val ( ) = buf.skip1()
 val loc = tok.lctn((*void*))
-val tnd = T0IDENT_BAR(*void*)
+val tnd = T0IDSYM_BAR(*void*)
 val tok = token_make_node(loc,tnd)
 }
 //
@@ -662,7 +662,7 @@ i0dnt_some(tok) where
 {
 val ( ) = buf.skip1()
 val loc = tok.lctn((*void*))
-val tnd = T0IDENT_EQ0(*void*)
+val tnd = T0IDSYM_EQ0(*void*)
 val tok = token_make_node(loc,tnd)
 }
 //
@@ -673,7 +673,7 @@ i0dnt_some(tok) where
 {
 val ( ) = buf.skip1()
 val loc = tok.lctn((*void*))
-val tnd = T0IDENT_LT0(*void*)
+val tnd = T0IDSYM_LT0(*void*)
 val tok = token_make_node(loc,tnd)
 }
 |
@@ -682,7 +682,7 @@ i0dnt_some(tok) where
 {
 val ( ) = buf.skip1()
 val loc = tok.lctn((*void*))
-val tnd = T0IDENT_GT0(*void*)
+val tnd = T0IDSYM_GT0(*void*)
 val tok = token_make_node(loc,tnd)
 }
 *)
@@ -693,7 +693,7 @@ i0dnt_some(tok) where
 {
 val ( ) = buf.skip1()
 val loc = tok.lctn((*void*))
-val tnd = T0IDENT_EQGT(*void*)
+val tnd = T0IDSYM_EQGT(*void*)
 val tok = token_make_node(loc,tnd)
 }
 //
