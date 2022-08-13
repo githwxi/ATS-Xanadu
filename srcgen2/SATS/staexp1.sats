@@ -168,19 +168,22 @@ g1exp_node =
 | G1Eflt of (token)
 | G1Estr of (token)
 //
-| G1Eif0 of
-  ( g1exp(* cond *)
-  , g1exp(* then *)
-  , g1exp(* else *) )
+| G1Eb0sh of () // bslash
+| G1Eb1sh of g1exp // bslash
 //
-| G1Ea0pp of ((*void*))
+| G1Ea0pp of ((*nil*))//apply
 //
 | G1Ea1pp of
-  (g1exp(*fun*), g1exp)
+  (g1exp(*fun*), g1exp(*arg*))
 | G1Ea2pp of
   (g1exp(*fun*), g1exp, g1exp)
 //
 | G1Elist of g1explst (*temp*)
+//
+|
+G1Eif0 of
+( g1exp(*cond*)
+, g1exp(*then*), g1exp(*else*))
 //
 | G1Enone0 of () // HX: EMPTY
 | G1Enone1 of (g0exp) // HX: ERROR!

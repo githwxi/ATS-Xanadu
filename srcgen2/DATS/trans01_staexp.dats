@@ -166,11 +166,27 @@ end // end of [$FIX.fxitm_infix0]
 #impltmp
 fxitm_prefix<g1exp>
   (f0, x1) = let
-  val loc0 =
-  f0.lctn() + x1.lctn()
+//
+val loc0 =
+f0.lctn() + x1.lctn()
+//
+in//let
+//
+case+
+f0.node() of
+|
+G1Eb0sh() => let
+  val g1e =
+  g1exp_make_node
+  (loc0, G1Eb1sh(x1))
 in
-  FXITMatm
-  (g1exp(loc0, G1Ea1pp(f0, x1)))
+  FXITMopr(g1e, inftmp_fixty)
+end // end of [G1Ebs0]
+|
+_(*non-G1Eb0sh*) =>
+FXITMatm
+(g1exp(loc0, G1Ea1pp(f0, x1)))
+//
 end // end of [$FIX.fxitm_prefix]
 //
 #impltmp
@@ -334,11 +350,27 @@ end // end of [$FIX.fxitm_infix0]
 #impltmp
 fxitm_prefix<s1exp>
   (f0, x1) = let
-  val loc0 =
-  f0.lctn() + x1.lctn()
+//
+val loc0 =
+f0.lctn() + x1.lctn()
+//
+in//let
+//
+case+
+f0.node() of
+|
+S1Eb0sh() => let
+  val s1e =
+  s1exp_make_node
+  (loc0, S1Eb1sh(x1))
 in
-  FXITMatm
-  (s1exp(loc0, S1Ea1pp(f0, x1)))
+  FXITMopr(s1e, inftmp_fixty)
+end // end of [S1Ebs0]
+|
+_(*non-S1Eb0sh*) =>
+FXITMatm
+(s1exp(loc0, S1Ea1pp(f0, x1)))
+//
 end // end of [$FIX.fxitm_prefix]
 //
 #impltmp
@@ -539,10 +571,6 @@ local
 (* ****** ****** *)
 #extern
 fun
-f0_gid:
-(!tr01env, g0exp) -> g1efx
-#extern
-fun
 f0_main:
 (!tr01env, g0exp) -> g1efx
 (* ****** ****** *)
@@ -582,6 +610,88 @@ FXITMatm
 g1exp(g0e0.lctn(),G1Enone1(g0e0)))
 ) where
 {
+//
+fun
+f0_gid
+( tenv:
+! tr01env
+, g0e0: g0exp): g1efx =
+let
+//
+val
+loc0 = g0e0.lctn()
+val
+G0Eid0
+( deid ) = g0e0.node()
+val
+tok0 =
+trans01_i0dnt(tenv, deid)
+//
+in//let
+//
+case-
+tok0.node() of
+|
+T_IDALP(nam1) =>
+f0_id0_1(tenv, tok0, nam1)
+|
+T_IDSYM(nam1) =>
+f0_id0_1(tenv, tok0, nam1)
+|
+T_IDDLR(nam1) =>
+f0_id0_1(tenv, tok0, nam1)
+//
+|
+T_BSLSH
+((*nil*)) => f0_id0_2(tenv, tok0)
+//
+end // end of [f0_id0(tenv,s0e0)]
+//
+and
+f0_id0_1
+( tenv:
+! tr01env
+, tok0: token
+, nam1: string): g1efx =
+let
+//
+val loc0 = tok0.lctn()
+val sym1 = symbl(nam1)
+val g1e0 =
+g1exp(loc0, G1Eid0(sym1))
+val fopt =
+tr01env_search_opt(tenv, sym1)
+//
+in
+case+ fopt of
+| ~
+optn_vt_nil() => FXITMatm(g1e0)
+| ~
+optn_vt_cons(fxty) =>
+(
+case+ fxty of
+|
+FIXTYnon() => FXITMatm(g1e0)
+|
+_(* else *) => FXITMopr(g1e0, fxty)
+) (* end of [optn_vt_cons(fxty)] *)
+end (*let*) // end of [f0_id0_1(_,_,_)]
+//
+and
+f0_id0_2
+( tenv:
+! tr01env
+, tok0: token): g1efx =
+(
+FXITMopr
+(g1e0, bslash_fixty)) where
+{
+val loc0 = tok0.lctn()
+val g1e0 =
+g1exp_make_node(loc0, G1Eb0sh())
+} (*where*) // end of [ f0_id0_2(_,_) ]
+//
+(* ****** ****** *)
 //
 fun
 f0_int
@@ -862,8 +972,7 @@ sort1_make_node(loc0, S1Tlist(s1ts))
 //
 } (*where*) // end of [S0Tlpar(...)]
 //
-|
-_(*otherwise*) =>
+| _(*otherwise*) =>
 let
 val s1t0 =
 sort1_none1(s0t0) in FXITMatm(s1t0)
@@ -1221,8 +1330,7 @@ FXITMatm
 (s1exp(loc0, S1Equal(tok1, s1e2)))
 end (*let*) // end of [S0Equal(_,_)]
 //
-|
-_(*otherwise*) =>
+| _(*otherwise*) =>
 let
 val s1e0 =
 s1exp_none1(s0e0) in FXITMatm(s1e0) end
@@ -1291,7 +1399,7 @@ case+ fxty of
 |
 FIXTYnon() => FXITMatm(s1e0)
 |
-_(*otherwise*) => FXITMopr(s1e0, fxty)
+_(* else *) => FXITMopr(s1e0, fxty)
 ) (* end of [optn_vt_cons(fxty)] *)
 end (*let*) // end of [f0_id0_1(_,_,_)]
 //

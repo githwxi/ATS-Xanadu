@@ -128,11 +128,27 @@ end // end of [$FIX.fxitm_infix0]
 #impltmp
 fxitm_prefix<d1pat>
   (f0, x1) = let
-  val loc0 =
-  f0.lctn() + x1.lctn()
+//
+val loc0 =
+f0.lctn() + x1.lctn()
+//
+in//let
+//
+case+
+f0.node() of
+|
+D1Pb0sh() => let
+  val d1p =
+  d1pat_make_node
+  (loc0, D1Pb1sh(x1))
 in
-  FXITMatm
-  (d1pat(loc0, D1Pa1pp(f0, x1)))
+  FXITMopr(d1p, inftmp_fixty)
+end // end of [D1Pbs0]
+|
+_(*non-D1Pb0sh*) =>
+FXITMatm
+(d1pat(loc0, D1Pa1pp(f0, x1)))
+//
 end // end of [$FIX.fxitm_prefix]
 //
 #impltmp
@@ -212,11 +228,27 @@ end // end of [$FIX.fxitm_infix0]
 #impltmp
 fxitm_prefix<d1exp>
   (f0, x1) = let
-  val loc0 =
-  f0.lctn() + x1.lctn()
+//
+val loc0 =
+f0.lctn() + x1.lctn()
+//
+in//let
+//
+case+
+f0.node() of
+|
+D1Eb0sh() => let
+  val d1e =
+  d1exp_make_node
+  (loc0, D1Eb1sh(x1))
 in
-  FXITMatm
-  (d1exp(loc0, D1Ea1pp(f0, x1)))
+  FXITMopr(d1e, inftmp_fixty)
+end // end of [D1Ebs0]
+|
+_(*non-D1Eb0sh*) =>
+FXITMatm
+(d1exp(loc0, D1Ea1pp(f0, x1)))
+//
 end // end of [$FIX.fxitm_prefix]
 //
 #impltmp
