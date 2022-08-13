@@ -304,9 +304,9 @@ print("G0Estr(", tok, ")")
 G0Eapps(ges) =>
 print("G0Eapps(", ges, ")")
 |
-G0Elist(tkb, ges, tke) =>
+G0Elpar(tkb, ges, tke) =>
 print
-("G0Elist(", tkb, ";", ges, ",", tke, ")")
+("G0Elpar(", tkb, ";", ges, ",", tke, ")")
 //
 |
 G0Eif0
@@ -316,9 +316,13 @@ print("G0Eif0(",tknd,";");
 print(g0e1,";",g0e2,";",g0e3,";",topt,")"))
 //
 |
-G0Ntkerr(tok) => print("G0Ntkerr(", tok, ")")
+G0Etkerr(tok) => print("G0Etkerr(", tok, ")")
 //
-end (*let*) // end of [g0exp_fprint(g0e)]
+|
+G0Eerrck
+(lvl(*err*),ge1) => print("G0Eerrck(",lvl,";",ge1,")")
+//
+end (*let*) // end of [g0exp_fprint(out,g0e)]
 
 (* ****** ****** *)
 
@@ -362,7 +366,8 @@ S0Ttype of int(*kind*)
 |
 S0Ttkerr(tok) => print("S0Ttkerr(",tok,")")
 |
-S0Terrck(lvl(*err-level*),st1) => print("S0Terrck(",lvl,";",st1,")")
+S0Terrck
+(lvl(*err*),st1) => print("S0Terrck(",lvl,";",st1,")")
 //
 end (*let*)//end-of-[sort0_fprint(out,s0t)]
 
@@ -571,7 +576,9 @@ print("S0Ercd2(",tkb,";",opt,";",lses,";",lsrb,")")
 //
 |
 S0Elam0(tlam,s0ms,tres,arrw,body,tend) =>
-(print("S0Elam0(",tlam,";",s0ms,";",tres);print(";",arrw,";",body,";",tend,")"))
+(
+print("S0Elam0(",tlam,";");
+print(s0ms,";",tres,";",arrw,";",body,";",tend,")"))
 //
 |
 S0Euni0(tkb,sqs,tbe) =>
@@ -590,7 +597,8 @@ print("S0Equal(",tok,";",se1,")") //HX:qual-s0exp
 S0Etkerr(tok) => print("S0Etkerr(",tok,")")//HX:error
 |
 // HX: [S0Eerrck]: syntax error confirmed by checking
-S0Eerrck(lvl(*err-level*),se1) => print("S0Eerrck(", lvl, ";", se1,")")
+S0Eerrck
+(lvl(*err-level*),se1) => print("S0Eerrck(", lvl, ";", se1,")")
 //
 end (*let*)//end-of-[s0exp_fprint(out,s0e)]
 
