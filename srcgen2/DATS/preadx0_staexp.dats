@@ -191,7 +191,8 @@ g0exp_apps_errck
 let
 val lvl = 0 // errvl(ges)
 in//let
-g0exp_errck(lvl+1, g0exp(loc,G0Eapps(ges)))
+g0exp_errck
+(lvl+1, g0exp(loc, G0Eapps( ges )))
 end (*let*) // end of [g0exp_apps_errck]
 //
 fun
@@ -205,10 +206,35 @@ g0exp_lpar_errck
 , tke
 : token   ): g0exp =
 let
-  val lvl = 0 // errvl(ges)
+val lvl = 0 // errvl(ges)
 in//let
-g0exp_errck(lvl+1, g0exp(loc,G0Elpar(tkb,ges,tke)))
+g0exp_errck
+(lvl+1, g0exp(loc,G0Elpar(tkb,ges,tke)))
 end (*let*) // end of [g0exp_lpar_errck]
+//
+(* ****** ****** *)
+//
+fun
+g0exp_if0_errck
+( loc
+: loc_t
+, tif0
+: token
+, g0e1
+: g0exp
+, gthn:
+g0exp_THEN
+, gels:
+g0exp_ELSE
+, tend
+: tokenopt): g0exp =
+let
+val lvl = 0 // errvl(ges)
+in//let
+g0exp_errck
+( lvl+1
+, g0exp(loc,G0Eif0(tif0,g0e1,gthn,gels,tend)))
+end (*let*) // end of [g0exp_if0_errck]
 //
 (* ****** ****** *)
 
@@ -229,6 +255,8 @@ g0e.node() of
 G0Eapps _ => f0_apps(g0e, err)
 |
 G0Elpar _ => f0_lpar(g0e, err)
+//
+|G0Eif0 _ => f0_if0( g0e, err )
 //
 |
 G0Etkerr _ =>
@@ -254,8 +282,9 @@ G0Eapps(ges) = g0e.node()
 val ges = preadx0_g0explst(ges, err)
 in//let
 if
-(err = e00)
-then g0e else g0exp_apps_errck(g0e.lctn(), ges)
+(err=e00)
+then (g0e)
+else g0exp_apps_errck(g0e.lctn(), ges)
 end (*let*) // end of [f0_apps]
 //
 fun
@@ -284,9 +313,90 @@ tke.node() of
 )
 in//let
 if
-(err = e00)
-then g0e else g0exp_lpar_errck(g0e.lctn(),tkb,ges,tke)
+(err=e00)
+then (g0e) else
+g0exp_lpar_errck(g0e.lctn(), tkb, ges, tke)
 end (*let*) // end of [f0_lpar]
+//
+fun
+f0_if0
+( g0e
+: g0exp
+, err
+: &sint >> _): g0exp =
+let
+//
+val e00 = err
+//
+val-
+G0Eif0
+( tif0
+, g0e1
+, gthn
+, gels
+, tend ) = g0e.node()
+//
+val g0e1 =
+preadx0_g0exp(g0e1, err)
+//
+val gthn =
+(
+case+ gthn of
+|
+g0exp_THEN(tok1, g0e2) =>
+let
+//
+val e00 = err
+//
+val ( ) =
+(
+case+
+tok1.node() of
+|
+T_THEN() => ()
+| _ =>
+(err := err+1)): void
+//
+val
+g0e2 =
+  preadx0_g0exp(g0e2, err)
+in//let
+if
+(err=e00)
+then gthn else
+g0exp_THEN(tok1, g0e2) end): g0exp_THEN
+//
+val gels =
+(
+case+ gels of
+|
+g0exp_ELSE(tok1, g0e3) =>
+let
+val e00 = err
+val ( ) =
+(
+case+
+tok1.node() of
+|
+T_ELSE() => ()
+| _ =>
+(err := err+1)): void
+val
+g0e3 =
+preadx0_g0exp(g0e3, err)
+in//let
+if
+(err=e00)
+then gels else
+g0exp_ELSE(tok1, g0e3) end): g0exp_ELSE
+//
+in//let
+if
+(err=e00)
+then (g0e) else
+g0exp_if0_errck
+(g0e.lctn(), tif0, g0e1, gthn, gels, tend)
+end (*let*) // end of [f_if0(g0e,err)]
 //
 } (*where*) // end of [preadx0_g0exp(g0e,err)]
 
