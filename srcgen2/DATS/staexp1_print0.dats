@@ -197,6 +197,9 @@ print("G1Estr(",tok,")")
 |
 G1Eb0sh(   ) =>
 print( "G1Eb0sh(" , ")" )
+|
+G1Eb1sh(g1e) =>
+print("G1Eb1sh(",g1e,")")
 //
 |
 G1Ea0pp(   ) =>

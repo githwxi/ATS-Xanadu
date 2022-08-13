@@ -183,6 +183,7 @@ fpreadx0
 *)
 (* ****** ****** *)
 fun preadx0_i0dnt: fpreadx0(i0dnt)
+(* ****** ****** *)
 fun preadx0_l0abl: fpreadx0(l0abl)
 fun preadx0_s0ymb: fpreadx0(s0ymb)
 (* ****** ****** *)
@@ -386,6 +387,11 @@ fun t0chr_fpemsg(FILR, t0chr): void
 fun t0flt_fpemsg(FILR, t0flt): void
 fun t0str_fpemsg(FILR, t0str): void
 (* ****** ****** *)
+fun s0qid_fpemsg(FILR, s0qid): void
+fun d0qid_fpemsg(FILR, d0qid): void
+(* ****** ****** *)
+fun g0exp_fpemsg(FILR, g0exp): void
+(* ****** ****** *)
 fun sort0_fpemsg(FILR, sort0): void
 fun s0exp_fpemsg(FILR, s0exp): void
 fun l0s0e_fpemsg(FILR, l0s0e): void
@@ -402,9 +408,13 @@ fun
 i0dntlst_fpemsg(FILR, i0dntlst): void
 (* ****** ****** *)
 fun
+g0expopt_fpemsg(FILR, g0expopt): void
+(* ****** ****** *)
+fun
 sort0opt_fpemsg(FILR, sort0opt): void
 fun
 s0expopt_fpemsg(FILR, s0expopt): void
+(* ****** ****** *)
 fun
 sort0lst_fpemsg(FILR, sort0lst): void
 fun
