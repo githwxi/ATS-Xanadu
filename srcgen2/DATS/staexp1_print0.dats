@@ -195,27 +195,31 @@ G1Estr(tok) =>
 print("G1Estr(",tok,")")
 //
 |
-G1Eif0
-(g1e1,g1e2,g1e3) =>
-print
-("G1Eif0(",g1e1,";",g1e2,";",g1e3,")")
+G1Eb0sh(   ) =>
+print( "G1Eb0sh(" , ")" )
 //
 |
-G1Ea0pp() =>
+G1Ea0pp(   ) =>
 print("G1Ea0pp(",")")
 |
 G1Ea1pp
-(g1f0,g1e1) =>
+(g1f0, g1e1) =>
 print("G1Ea1pp(",g1f0,";",g1e1,")")
 |
 G1Ea2pp
-(g1f0,g1e1,g1e2) =>
+(g1f0, g1e1, g1e2) =>
 print
 ("G1Ea2pp(",g1f0,";",g1e1,";",g1e2,")")
 //
 |
 G1Elist(g1es) =>
 print("G1Elist(",g1es,")")
+//
+|
+G1Eif0
+(g1e1, g1e2, g1e3) =>
+print
+("G1Eif0(",g1e1,";",g1e2,";",g1e3,")")
 //
 |
 G1Enone0() => print("G1Enone0(",")")
@@ -447,7 +451,7 @@ S1Earrw(ses) =>
 print("S1Earrw(",ses,")")
 //
 |
-S1Ea0pp() =>
+S1Ea0pp(   ) =>
 print
 (    "S1Ea0pp(", ")"    )
 |
