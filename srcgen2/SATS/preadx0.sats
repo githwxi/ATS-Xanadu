@@ -480,6 +480,15 @@ f0unarrw_fpemsg(FILR, f0unarrw): void
 (* ****** ****** *)
 //
 fun
+d0parsed
+(out: FILR, dpar: d0parsed): void
+fun
+d0eclistopt_fpemsg
+(out: FILR, dopt: d0eclistopt): void
+//
+(* ****** ****** *)
+//
+fun
 d0exp_THEN_fpemsg
   (out: FILR, dthn: d0exp_THEN): void
 fun
