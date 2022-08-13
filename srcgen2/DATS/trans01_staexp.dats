@@ -573,7 +573,7 @@ G0Eif0 _ => f0_if0(tenv, g0e0)
 G0Eapps _ => f0_apps(tenv, g0e0)
 //
 |
-G0Elist _ => f0_list(tenv, g0e0)
+G0Elist _ => f0_lpar(tenv, g0e0)
 //
 |
 G0Enone1 _ =>
@@ -751,13 +751,13 @@ endlet // end of [ f0_apps(g0e0) ]
 (* ****** ****** *)
 //
 fun
-f0_list
+f0_lpar
 ( tenv:
 ! tr01env
 , g0e0: g0exp): g1efx =
 let
 val-
-G0Elist
+G0Elpar
 (tbeg
 ,g0es,tend) = g0e0.node()
 in//let
@@ -769,7 +769,7 @@ in//let
 FXITMatm
 (g1exp(g0e0.lctn(),G1Elist(g1es)))
 endlet
-endlet // end of [ f0_list(g0e0) ]
+endlet // end of [ f0_lpar(g0e0) ]
 
 (* ****** ****** *)
 

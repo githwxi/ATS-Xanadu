@@ -1153,7 +1153,7 @@ in
   err := e00;
   g0exp_make_node
   ( lres
-  , G0Elist(tbeg, g0es, tend)) where
+  , G0Elpar(tbeg, g0es, tend)) where
   {
     val lres = tbeg.lctn()+tend.lctn()
   }

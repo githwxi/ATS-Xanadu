@@ -173,6 +173,126 @@ end
 (* ****** ****** *)
 //
 fun
+g0exp_errck
+(lvl: sint
+,g0e: g0exp): g0exp =
+(
+g0exp
+(g0e.lctn(), G0Eerrck(lvl, g0e)))
+//
+(* ****** ****** *)
+//
+fun
+g0exp_apps_errck
+( loc
+: loc_t
+, ges
+: g0explst): g0exp =
+let
+val lvl = 0 // errvl(ges)
+in//let
+g0exp_errck(lvl+1, g0exp(loc,G0Eapps(ges)))
+end (*let*) // end of [g0exp_apps_errck]
+//
+fun
+g0exp_lpar_errck
+( loc
+: loc_t
+, tkb
+: token
+, ges
+: g0explst
+, tke
+: token   ): g0exp =
+let
+  val lvl = 0 // errvl(ges)
+in//let
+g0exp_errck(lvl+1, g0exp(loc,G0Elpar(tkb,ges,tke)))
+end (*let*) // end of [g0exp_lpar_errck]
+//
+(* ****** ****** *)
+
+#implfun
+preadx0_g0exp(g0e, err) =
+(
+case+
+g0e.node() of
+//
+| G0Eid0 _ => g0e
+//
+| G0Eint _ => g0e
+| G0Echr _ => g0e
+| G0Eflt _ => g0e
+| G0Estr _ => g0e
+//
+|
+G0Eapps _ => f0_apps(g0e, err)
+|
+G0Elpar _ => f0_lpar(g0e, err)
+//
+|
+G0Etkerr _ =>
+(err := err+1; g0exp_errck(1, g0e))
+//
+|
+_(*otherwise*) =>
+(err := err+1; g0exp_errck(1, g0e))
+//
+) where//end-of(case(g0e.node()))
+{
+//
+fun
+f0_apps
+( g0e
+: g0exp
+, err
+: &sint >> _): g0exp =
+let
+val e00 = err
+val-
+G0Eapps(ges) = g0e.node()
+val ges = preadx0_g0explst(ges, err)
+in//let
+if
+(err = e00)
+then g0e else g0exp_apps_errck(g0e.lctn(), ges)
+end (*let*) // end of [f0_apps]
+//
+fun
+f0_lpar
+( g0e
+: g0exp
+, err
+: &sint >> _): g0exp =
+let
+//
+val e00 = err
+//
+val-
+G0Elpar
+(tkb,ges,tke) = g0e.node()
+//
+val ges =
+preadx0_g0explst(ges, err)
+//
+val ( ) = // tke: T_RPAREN
+(
+case+
+tke.node() of
+| T_RPAREN() => ()
+| _(* else *) => (err := err+1)
+)
+in//let
+if
+(err = e00)
+then g0e else g0exp_lpar_errck(g0e.lctn(),tkb,ges,tke)
+end (*let*) // end of [f0_lpar]
+//
+} (*where*) // end of [preadx0_g0exp(g0e,err)]
+
+(* ****** ****** *)
+//
+fun
 sort0_errck
 (lvl: sint
 ,s0t: sort0): sort0 =

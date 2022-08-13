@@ -386,7 +386,7 @@ g0exp_node =
 | G0Estr of (t0str)
 //
 | G0Eapps of g0explst
-| G0Elist of // temp.
+| G0Elpar of // temp.
   (token, g0explst, token)
 //
 | G0Eif0 of
@@ -396,6 +396,11 @@ g0exp_node =
   , g0exp_ELSE, tokenopt)
 //
 | G0Etkerr of (token(*error*))
+//
+|
+G0Eerrck of (int(*lvl*), g0exp)//HX:pread-error
+//
+// HX-2022-08-13: end-of-[datatype(g0exp_node)]
 //
 (* ****** ****** *)
 and
