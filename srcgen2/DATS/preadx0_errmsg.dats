@@ -139,10 +139,15 @@ FPEMSG_ERRVL 2
 (* ****** ****** *)
 #symload fpemsg with l0abl_fpemsg
 (* ****** ****** *)
+#symload fpemsg with s0ymb_fpemsg
+(* ****** ****** *)
 #symload fpemsg with t0int_fpemsg
 #symload fpemsg with t0chr_fpemsg
 #symload fpemsg with t0flt_fpemsg
 #symload fpemsg with t0str_fpemsg
+(* ****** ****** *)
+#symload fpemsg with s0qid_fpemsg
+#symload fpemsg with d0qid_fpemsg
 (* ****** ****** *)
 #symload fpemsg with sort0_fpemsg
 #symload fpemsg with s0exp_fpemsg
@@ -152,6 +157,7 @@ FPEMSG_ERRVL 2
 #symload fpemsg with s0expopt_fpemsg
 #symload fpemsg with sort0lst_fpemsg
 #symload fpemsg with s0explst_fpemsg
+(* ****** ****** *)
 #symload fpemsg with s0exp_RPAREN_fpemsg
 #symload fpemsg with l0s0e_RBRACE_fpemsg
 (* ****** ****** *)
@@ -590,6 +596,19 @@ val () = s0explst_fpemsg(out, s0es)
 val () = token_RBRACE_fpemsg(out, tend)
 end(*let*)//end of [S0TDFtsub(out,tdf)]
 end(*let*)//end-of-[s0tdf_fpemsg(out,tdf)]
+//
+(* ****** ****** *)
+//
+#implfun
+g0expopt_fpemsg
+(out, opt) =
+(
+case+ opt of
+|
+optn_nil() => ()
+|
+optn_cons(g0e) => g0exp_fpemsg(out, g0e)
+)
 //
 (* ****** ****** *)
 //
@@ -1521,13 +1540,24 @@ endlet // end-of-(D0Cstacst0(...))
 //
 |
 D0Csortdef
-(knd,tid,teq1,tdf2) =>
+( knd
+, tid, teq1, tdf2) =>
 let
 val () = fpemsg(out, tid)
 val () =
 token_EQ0_fpemsg(out, teq1)
 val () = s0tdf_fpemsg(out, tdf2)
 endlet // end-of-(D0Csortdef(...))
+//
+|
+D0Csymload
+( knd, symb
+, twth, dqid, gopt) =>
+let
+val () = fpemsg(out, symb)
+val () = fpemsg(out, dqid)
+val () = g0expopt_fpemsg(out, gopt)
+endlet // end-of-(D0Csymload(...))
 //
 |
 D0Cdatasort
