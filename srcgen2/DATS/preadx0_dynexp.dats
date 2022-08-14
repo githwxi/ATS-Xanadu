@@ -401,6 +401,25 @@ list_cons(d0e1,d0es) => gmax
 ) (*case+*)//end-of-[d0exp_errvl_list]
 //
 (* ****** ****** *)
+#extern
+fun
+d0exp_errvl_optn
+(d0es: d0expopt): sint
+#symload
+d0exp_errvl with d0exp_errvl_optn
+#symload errvl with d0exp_errvl_optn
+//
+#implfun
+d0exp_errvl_optn(dopt) =
+(
+case+ dopt of
+|
+optn_nil((*nil*)) => 0
+|
+optn_cons(d0e1) => d0exp_errvl(d0e1)
+) (*case+*)//end-of-[d0exp_errvl_optn]
+//
+(* ****** ****** *)
 //
 #extern
 fun
@@ -899,6 +918,38 @@ end (*let*) // end of [d0exp_where_errck]
 (* ****** ****** *)
 //
 fun
+d0exp_brckt_errck
+( loc: loc_t
+, tbeg: token
+, d0es: d0explst
+, tend: token   ): d0exp =
+let
+val lvl = d0exp_errvl(d0es)
+in//let
+d0exp_errck
+( lvl+1,
+  d0exp(loc, D0Ebrckt(tbeg,d0es,tend)) )
+end (*let*) // end of [d0exp_brckt_errck]
+//
+(* ****** ****** *)
+//
+fun
+d0exp_dtsel_errck
+( loc: loc_t
+, tknd: token
+, l0ab: l0abl
+, dopt: d0expopt): d0exp =
+let
+val lvl = d0exp_errvl(dopt)
+in//let
+d0exp_errck
+( lvl+1,
+  d0exp(loc, D0Edtsel(tknd,l0ab,dopt)) )
+end (*let*) // end of [d0exp_dtsel_errck]
+//
+(* ****** ****** *)
+//
+fun
 d0exp_try0_errck
 ( loc: loc_t
 , tknd: token
@@ -1323,18 +1374,18 @@ D0Elet0 _ => f0_let0(d0e, err)
 D0Ewhere _ => f0_where(d0e, err)
 //
 |
-D0Etry0 _ => f0_try0(d0e, err)
+D0Ebrckt _ => f0_brckt(d0e, err)
+|
+D0Edtsel _ => f0_dtsel(d0e, err)
 //
-|
-D0Elam0 _ => f0_lam0(d0e, err)
-|
-D0Efix0 _ => f0_fix0(d0e, err)
+|D0Etry0 _ => f0_try0( d0e, err )
 //
-|
-D0Eanno _ => f0_anno(d0e, err)
+|D0Elam0 _ => f0_lam0( d0e, err )
+|D0Efix0 _ => f0_fix0( d0e, err )
 //
-|
-D0Equal _ => f0_qual(d0e, err)
+|D0Eanno _ => f0_anno( d0e, err )
+//
+|D0Equal _ => f0_qual( d0e, err )
 //
 |
 D0Eextnam _ => f0_extnam(d0e, err)
@@ -1760,6 +1811,68 @@ if
 then (d0e) else
 d0exp_where_errck(d0e.lctn(),d0e1,dcls)
 end (*let*) // end of [f0_where(d0e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_brckt
+( d0e: d0exp
+, err: &sint >> _): d0exp =
+let
+//
+val e00 = err
+//
+val loc = d0e.lctn()
+//
+val-
+D0Ebrckt
+(tbeg
+,d0es,tend) = d0e.node()
+//
+val d0es =
+preadx0_d0explst(d0es, err)
+val (  ) =
+(
+case+
+tend.node() of
+| T_RBRCKT() => ()
+| _(*non-T_RBRCKT*) => (err := err+1)
+)
+in//let
+if
+(err=e00)
+then (d0e) else
+d0exp_brckt_errck(loc, tbeg, d0es, tend)
+end (*let*) // end of [f0_brckt(d0e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dtsel
+( d0e: d0exp
+, err: &sint >> _): d0exp =
+let
+//
+val e00 = err
+//
+val loc = d0e.lctn()
+//
+val-
+D0Edtsel
+(tknd
+,l0ab,dopt) = d0e.node()
+//
+val
+l0ab = preadx0_l0abl(l0ab, err)
+val
+dopt = preadx0_d0expopt(dopt, err)
+//
+in//let
+if
+(err=e00)
+then (d0e) else
+d0exp_dtsel_errck(loc, tknd, l0ab, dopt)
+end (*let*) // end of [f0_dtsel(d0e,err)]
 //
 (* ****** ****** *)
 //
