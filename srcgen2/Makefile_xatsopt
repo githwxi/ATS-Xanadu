@@ -117,6 +117,14 @@ all_sats:: \
 tread01_sats
 tread01_sats: ; $(XATSOPT) --static SATS/tread01.sats
 ######
+all_sats:: \
+staexp2_sats
+staexp2_sats: ; $(XATSOPT) --static SATS/staexp2.sats
+######
+all_sats:: \
+dynexp2_sats
+dynexp2_sats: ; $(XATSOPT) --static SATS/dynexp2.sats
+######
 
 ######
 #
