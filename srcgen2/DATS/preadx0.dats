@@ -120,18 +120,28 @@ d0parsed_get_parsed(dpar)
 val parsed =
 preadx0_d0eclistopt(parsed, nerror)
 //
-val
-( (*void*) ) =
-(
-if
-(nerror > 0)
-then
-d0eclistopt_fpemsg(parsed)
-)
-//
 in//let
 d0parsed(stadyn,nerror,source,parsed)
 end (*let*) // end of [d0parsed_preadx0(dpar)]
+
+(* ****** ****** *)
+
+#implfun
+d0parsed_fpemsg
+  (out, dpar) = let
+//
+val nerror =
+d0parsed_get_nerror(dpar)
+//
+in//let
+if
+(nerror > 0) then
+let
+val parsed =
+d0parsed_get_parsed(dpar)
+in
+d0eclistopt_fpemsg(out, parsed) end else ()
+end (*let*)//end-of-[d0parsed_fpemsg(out,dpar)]
 
 (* ****** ****** *)
 
