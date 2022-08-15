@@ -58,9 +58,18 @@ D1E = "./dynexp0.sats"
 #typedef sort1 = $S1E.sort1
 #typedef s1exp = $S1E.s1exp
 (* ****** ****** *)
-#typedef d1pat = $S1E.d1pat
-#typedef d1exp = $S1E.d1exp
-#typedef d1ecl = $S1E.d1ecl
+#typedef g1explst = $S1E.g1explst
+(* ****** ****** *)
+#typedef sort1lst = $S1E.sort1lst
+#typedef s1explst = $S1E.s1explst
+(* ****** ****** *)
+#typedef d1pat = $D1E.d1pat
+#typedef d1exp = $D1E.d1exp
+#typedef d1ecl = $D1E.d1ecl
+(* ****** ****** *)
+#typedef d1patlst = $D1E.d1patlst
+#typedef d1explst = $D1E.d1explst
+#typedef d1eclist = $D1E.d1eclist
 (* ****** ****** *)
 //
 fun
@@ -115,6 +124,20 @@ fun
 trans01_s1explst: ftrans01(s1explst)
 fun
 trans01_s1expopt: ftrans01(s1expopt)
+(* ****** ****** *)
+fun
+trans01_d1patlst: ftrans01(d1patlst)
+(* ****** ****** *)
+fun
+trans01_d1explst: ftrans01(d1explst)
+fun
+trans01_d1expopt: ftrans01(d1expopt)
+(* ****** ****** *)
+fun
+trans01_d1eclist: ftrans01(d1eclist)
+(* ****** ****** *)
+fun
+trans01_d1eclistopt: ftrans01(d1eclistopt)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_tread01.sats] *)
