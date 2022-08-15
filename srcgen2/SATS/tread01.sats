@@ -43,17 +43,36 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME // namespace
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload
+LEX = "./lexing0.sats"
+(* ****** ****** *)
+#staload
+S1E = "./staexp0.sats"
+#staload
+D1E = "./dynexp0.sats"
+(* ****** ****** *)
+#typedef token = $LEX.token
+(* ****** ****** *)
+#typedef g1exp = $S1E.g1exp
+(* ****** ****** *)
+#typedef sort1 = $S1E.sort1
+#typedef s1exp = $S1E.s1exp
+(* ****** ****** *)
+#typedef d1pat = $S1E.d1pat
+#typedef d1exp = $S1E.d1exp
+#typedef d1ecl = $S1E.d1ecl
+(* ****** ****** *)
 //
 fun
 d1parsed_tread01
-(dpar: d1parsed): d1parsed
+(dpar: d1parsed): (d1parsed)
 //
 (* ****** ****** *)
 //
 #typedef
 ftrans01
 (syn: tx) =
-(syn , &sint >> _) -> syn
+(syn , &sint >> _) -> ( syn )
 //
 (* ****** ****** *)
 fun trans01_g1exp: ftrans01(g1exp)
