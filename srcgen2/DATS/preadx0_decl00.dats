@@ -384,6 +384,34 @@ end (*let*) // end of [d0ecl_symload_errck]
 (* ****** ****** *)
 //
 fun
+d0ecl_include_errck
+( loc0: loc_t
+, tknd: token
+, g0e1: g0exp) : d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+(lvl+1, d0ecl(loc0, D0Cinclude(tknd, g0e1)))
+end (*let*) // end of [d0ecl_include_errck]
+//
+(* ****** ****** *)
+//
+fun
+d0ecl_staload_errck
+( loc0: loc_t
+, tknd: token
+, g0e1: g0exp) : d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+(lvl+1, d0ecl(loc0, D0Cstaload(tknd, g0e1)))
+end (*let*) // end of [d0ecl_staload_errck]
+//
+(* ****** ****** *)
+//
+fun
 d0ecl_datasort_errck
 ( loc0
 : loc_t
@@ -1197,6 +1225,13 @@ D0Csymload _ =>
 f0_symload(dcl, err)
 //
 |
+D0Cinclude _ =>
+f0_include(dcl, err)
+|
+D0Cstaload _ =>
+f0_staload(dcl, err)
+//
+|
 D0Cdatasort _ =>
 f0_datasort(dcl, err)
 //
@@ -1690,6 +1725,50 @@ then dcl else
 d0ecl_symload_errck
 ( dcl.lctn(), tknd,symb,twth,dqid,gopt )
 end (*let*) // end of [f0_symload(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_include
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val-
+D0Cinclude
+(tknd, g0e1) = dcl.node()
+//
+val g0e1 = preadx0_g0exp(g0e1, err)
+//
+if
+(err=e00)
+then dcl else
+d0ecl_include_errck(dcl.lctn(),tknd,g0e1)
+end (*let*) // end of [f0_include(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_staload
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val-
+D0Cstaload
+(tknd, g0e1) = dcl.node()
+//
+val g0e1 = preadx0_g0exp(g0e1, err)
+//
+if
+(err=e00)
+then dcl else
+d0ecl_staload_errck(dcl.lctn(),tknd,g0e1)
+end (*let*) // end of [f0_staload(dcl,err)]
 //
 (* ****** ****** *)
 //

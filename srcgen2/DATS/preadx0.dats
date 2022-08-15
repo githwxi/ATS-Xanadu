@@ -144,5 +144,16 @@ d0eclistopt_fpemsg(out, parsed) end else ()
 end (*let*)//end-of-[d0parsed_fpemsg(out,dpar)]
 
 (* ****** ****** *)
+//
+#implfun
+d0eclistopt_fpemsg
+  (out, dopt) =
+(
+case+ dopt of
+| optn_nil() => ((*void*))
+| optn_cons(d0cs) => d0eclist_fpemsg(out, d0cs)
+)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_preadx0.dats] *)
