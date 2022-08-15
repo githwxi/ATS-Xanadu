@@ -94,9 +94,9 @@ D0E = "./dynexp0.sats"
 //
 (* ****** ****** *)
 //
-#abstype d1pat_tbox // ptr
-#abstype d1exp_tbox // ptr
-#abstype d1ecl_tbox // ptr
+#abstbox d1pat_tbox // ptr
+#abstbox d1exp_tbox // ptr
+#abstbox d1ecl_tbox // ptr
 //
 #abstbox f1arg_tbox // ptr
 #abstbox d1gua_tbox // ptr
