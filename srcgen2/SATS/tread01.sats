@@ -47,9 +47,9 @@ ATS_PACKNAME // namespace
 LEX = "./lexing0.sats"
 (* ****** ****** *)
 #staload
-S1E = "./staexp0.sats"
+S1E = "./staexp1.sats"
 #staload
-D1E = "./dynexp0.sats"
+D1E = "./dynexp1.sats"
 (* ****** ****** *)
 #typedef token = $LEX.token
 (* ****** ****** *)
@@ -59,8 +59,12 @@ D1E = "./dynexp0.sats"
 #typedef s1exp = $S1E.s1exp
 (* ****** ****** *)
 #typedef g1explst = $S1E.g1explst
+#typedef g1expopt = $S1E.g1expopt
 (* ****** ****** *)
 #typedef sort1lst = $S1E.sort1lst
+#typedef sort1opt = $S1E.sort1opt
+(* ****** ****** *)
+#typedef s1expopt = $S1E.s1expopt
 #typedef s1explst = $S1E.s1explst
 (* ****** ****** *)
 #typedef d1pat = $D1E.d1pat
@@ -68,8 +72,15 @@ D1E = "./dynexp0.sats"
 #typedef d1ecl = $D1E.d1ecl
 (* ****** ****** *)
 #typedef d1patlst = $D1E.d1patlst
+(* ****** ****** *)
 #typedef d1explst = $D1E.d1explst
+#typedef d1expopt = $D1E.d1expopt
+(* ****** ****** *)
 #typedef d1eclist = $D1E.d1eclist
+(* ****** ****** *)
+#typedef d1parsed = $D1E.d1parsed
+(* ****** ****** *)
+#typedef d1eclistopt = $D1E.d1eclistopt
 (* ****** ****** *)
 //
 fun
