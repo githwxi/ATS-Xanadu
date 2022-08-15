@@ -43,7 +43,23 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME // namespace
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-
+//
+fun
+d1parsed_tread01
+(dpar: d1parsed): d1parsed
+//
+(* ****** ****** *)
+//
+#typedef
+ftrans01
+(syn: tx) =
+(syn , &sint >> _) -> syn
+//
+(* ****** ****** *)
+fun trans01_g1exp: ftrans01(g1exp)
+(* ****** ****** *)
+fun trans01_sort1: ftrans01(sort1)
+fun trans01_s1exp: ftrans01(s1exp)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_tread01.sats] *)
