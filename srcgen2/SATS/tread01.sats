@@ -61,5 +61,41 @@ fun trans01_g1exp: ftrans01(g1exp)
 fun trans01_sort1: ftrans01(sort1)
 fun trans01_s1exp: ftrans01(s1exp)
 (* ****** ****** *)
+fun trans01_d1pat: ftrans01(d1pat)
+fun trans01_d1exp: ftrans01(d1exp)
+(* ****** ****** *)
+fun trans01_d1ecl: ftrans01(d1ecl)
+(* ****** ****** *)
+//
+fun
+trans01_synentlst_fun
+{syn:tx}
+( lst: list(syn)
+, err: &sint >> _
+, fpr: ftrans01(syn)): list(syn)
+//
+fun
+trans01_synentopt_fun
+{syn:tx}
+( opt: optn(syn)
+, err: &sint >> _
+, fpr: ftrans01(syn)): optn(syn)
+//
+(* ****** ****** *)
+fun
+trans01_g1explst: ftrans01(g1explst)
+fun
+trans01_g1expopt: ftrans01(g1expopt)
+(* ****** ****** *)
+fun
+trans01_sort1lst: ftrans01(sort1lst)
+fun
+trans01_sort1opt: ftrans01(sort1opt)
+(* ****** ****** *)
+fun
+trans01_s1explst: ftrans01(s1explst)
+fun
+trans01_s1expopt: ftrans01(s1expopt)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_tread01.sats] *)
