@@ -380,6 +380,18 @@ trans01_decl00_dats: ; $(XATSOPT) --dynamic DATS/trans01_decl00.dats
 
 ######
 all_dats:: \
+tread01_dats
+tread01_dats: ; $(XATSOPT) --dynamic DATS/tread01.dats
+all_dats:: \
+tread01_staexp_dats
+tread01_staexp_dats: ; $(XATSOPT) --dynamic DATS/tread01_staexp.dats
+all_dats:: \
+tread01_dynexp_dats
+tread01_dynexp_dats: ; $(XATSOPT) --dynamic DATS/tread01_dynexp.dats
+######
+
+######
+all_dats:: \
 xatsopt_tmplib_dats
 xatsopt_tmplib_dats: ; $(XATSOPT) --dynamic DATS/xatsopt_tmplib.dats
 ######
