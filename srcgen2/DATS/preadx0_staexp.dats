@@ -1031,16 +1031,18 @@ preadx0_s0arglst(s0as, err)
 in//let
 case+
 tkrp.node() of
-| T_RPAREN() => sma
-| _(*non-T_RPAREN*) => (err := err + 1; sma)
-endlet // end of [S0MAGlst]
+|
+T_RPAREN() => sma
+|
+_(*non-T_RPAREN*) => (err := err+1; sma)
+endlet // end of [S0MAGlst(_,_,_)]
 //
 ) (*case*) // end of [preadx0_s0mag(sma,err)]
 //
 #implfun
 preadx0_s0maglst
 (   lst, err   ) =
-preadx0_synentlst_fun(lst,err,preadx0_s0mag)
+list_preadx0_fnp(lst, err, preadx0_s0mag)
 //
 (* ****** ****** *)
 //
@@ -1085,7 +1087,7 @@ tok.node() of
 #implfun
 preadx0_t0arglst
 (   lst, err   ) =
-preadx0_synentlst_fun(lst,err,preadx0_t0arg)
+list_preadx0_fnp(lst, err, preadx0_t0arg)
 //
 (* ****** ****** *)
 //
@@ -1108,8 +1110,10 @@ preadx0_t0arglst(t0as, err)
 in//let
 case+
 tkrp.node() of
-| T_RPAREN() => tma
-| _(*non-T_RPAREN*) => (err := err + 1; tma)
+|
+T_RPAREN() => tma
+|
+_(*non-T_RPAREN*) => (err := err+1; tma)
 endlet // end of [T0MAGlst]
 //
 ) (*case*) // end of [preadx0_t0mag(tma,err)]
@@ -1117,7 +1121,7 @@ endlet // end of [T0MAGlst]
 #implfun
 preadx0_t0maglst
 (   lst, err   ) =
-preadx0_synentlst_fun(lst,err,preadx0_t0mag)
+list_preadx0_fnp(lst, err, preadx0_t0mag)
 //
 (* ****** ****** *)
 //
@@ -1136,7 +1140,7 @@ S0QUAnone _ => (err := err + 1; s0q)
 #implfun
 preadx0_s0qualst
 (   lst, err   ) =
-preadx0_synentlst_fun(lst,err,preadx0_s0qua)
+list_preadx0_fnp(lst, err, preadx0_s0qua)
 //
 (* ****** ****** *)
 //
@@ -1624,11 +1628,13 @@ val (  ) =
 (
 case+
 tend.node() of
-|T_RBRACE() => ()| _ => (err := err+1))
+|
+T_RBRACE() => () | _ => (err := err+1))
 in//let
 s0tdf_make_node
-( tdf.lctn()
-, S0TDFtsub(tbeg, s0a1, tbar, s0ps, tend))
+(
+tdf.lctn(),
+S0TDFtsub(tbeg, s0a1, tbar, s0ps, tend))
 endlet // end of [S0TDFsub]
 //
 ) (*case*)//end-of-[preadx0_s0tdf(tdf,err)]
@@ -1637,46 +1643,46 @@ endlet // end of [S0TDFsub]
 #implfun
 preadx0_i0dntlst
 (   lst, err   ) =
-preadx0_synentlst_fun(lst,err,preadx0_i0dnt)
+list_preadx0_fnp(lst, err, preadx0_i0dnt)
 #implfun
 preadx0_i0dntopt
 (   opt, err   ) =
-preadx0_synentopt_fun(opt,err,preadx0_i0dnt)
+optn_preadx0_fnp(opt, err, preadx0_i0dnt)
 (* ****** ****** *)
 #implfun
 preadx0_g0explst
 (   lst, err   ) =
-preadx0_synentlst_fun(lst,err,preadx0_g0exp)
+list_preadx0_fnp(lst, err, preadx0_g0exp)
 #implfun
 preadx0_g0expopt
 (   opt, err   ) =
-preadx0_synentopt_fun(opt,err,preadx0_g0exp)
+optn_preadx0_fnp(opt, err, preadx0_g0exp)
 (* ****** ****** *)
 //
 #implfun
 preadx0_sort0lst
 (   lst, err   ) =
-preadx0_synentlst_fun(lst,err,preadx0_sort0)
+list_preadx0_fnp(lst, err, preadx0_sort0)
 #implfun
 preadx0_sort0opt
 (   opt, err   ) =
-preadx0_synentopt_fun(opt,err,preadx0_sort0)
+optn_preadx0_fnp(opt, err, preadx0_sort0)
 //
 (* ****** ****** *)
 //
 #implfun
 preadx0_s0explst
 (   lst, err   ) =
-preadx0_synentlst_fun(lst,err,preadx0_s0exp)
+list_preadx0_fnp(lst, err, preadx0_s0exp)
 #implfun
 preadx0_s0expopt
 (   opt, err   ) =
-preadx0_synentopt_fun(opt,err,preadx0_s0exp)
+optn_preadx0_fnp(opt, err, preadx0_s0exp)
 //
 #implfun
 preadx0_l0s0elst
 (   lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_l0s0e)
+list_preadx0_fnp(lst, err, preadx0_l0s0e)
 //
 (* ****** ****** *)
 

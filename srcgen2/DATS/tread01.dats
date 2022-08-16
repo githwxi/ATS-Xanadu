@@ -55,10 +55,64 @@ ATS_PACKNAME
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
-#staload "./../SATS/trans01.sats"
+#staload "./../SATS/tread01.sats"
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
+(* ****** ****** *)
+//
+#implfun
+optn_tread01_fnp
+{  syn:tx  }
+(  opt , err , fpr  ) =
+(
+case+ opt of
+|
+optn_nil() => opt
+|
+optn_cons(tm1) =>
+let
+val e00 = err
+val tm1 = fpr(tm1, err)
+in // let
+if
+(err=e00)
+then opt else optn_cons(tm1)
+endlet // end of [optn_cons(tm1)]
+)(*case+*)//end(optn_tread01_fnp(opt,err,fpr)
+//
+(* ****** ****** *)
+//
+#implfun
+list_tread01_fnp
+{  syn:tx  }
+(  lst , err , fpr  ) =
+(
+  auxlst(lst, err)) where
+{
+//
+fun
+auxlst
+( lst: list(syn)
+, err: &sint >> _): list(syn) =
+case+ lst of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(tm1, tms) =>
+let
+val e00 = err
+val tm1 = fpr(tm1, err)
+val tm2 = auxlst(tms, err)
+in//let
+if
+(err = e00)
+then lst else list_cons(tm1,tm2)
+endlet // end of [auxlst(lst,err)]
+//
+}(*where*)//end(list_tread01_fnp(lst,err,fpr))
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_tread01.dats] *)

@@ -90,65 +90,65 @@ d1parsed_tread01
 (* ****** ****** *)
 //
 #typedef
-ftrans01
+ftread01
 (syn: tx) =
 (syn , &sint >> _) -> ( syn )
 //
 (* ****** ****** *)
-fun trans01_g1exp: ftrans01(g1exp)
+fun tread01_g1exp: ftread01(g1exp)
 (* ****** ****** *)
-fun trans01_sort1: ftrans01(sort1)
-fun trans01_s1exp: ftrans01(s1exp)
+fun tread01_sort1: ftread01(sort1)
+fun tread01_s1exp: ftread01(s1exp)
 (* ****** ****** *)
-fun trans01_d1pat: ftrans01(d1pat)
-fun trans01_d1exp: ftrans01(d1exp)
+fun tread01_d1pat: ftread01(d1pat)
+fun tread01_d1exp: ftread01(d1exp)
 (* ****** ****** *)
-fun trans01_d1ecl: ftrans01(d1ecl)
+fun tread01_d1ecl: ftread01(d1ecl)
 (* ****** ****** *)
 //
 fun
-trans01_synentlst_fun
+list_tread01_fnp
 {syn:tx}
 ( lst: list(syn)
 , err: &sint >> _
-, fpr: ftrans01(syn)): list(syn)
+, fpr: ftread01(syn)): list(syn)
 //
 fun
-trans01_synentopt_fun
+optn_tread01_fnp
 {syn:tx}
 ( opt: optn(syn)
 , err: &sint >> _
-, fpr: ftrans01(syn)): optn(syn)
+, fpr: ftread01(syn)): optn(syn)
 //
 (* ****** ****** *)
 fun
-trans01_g1explst: ftrans01(g1explst)
+tread01_g1explst: ftread01(g1explst)
 fun
-trans01_g1expopt: ftrans01(g1expopt)
+tread01_g1expopt: ftread01(g1expopt)
 (* ****** ****** *)
 fun
-trans01_sort1lst: ftrans01(sort1lst)
+tread01_sort1lst: ftread01(sort1lst)
 fun
-trans01_sort1opt: ftrans01(sort1opt)
+tread01_sort1opt: ftread01(sort1opt)
 (* ****** ****** *)
 fun
-trans01_s1explst: ftrans01(s1explst)
+tread01_s1explst: ftread01(s1explst)
 fun
-trans01_s1expopt: ftrans01(s1expopt)
+tread01_s1expopt: ftread01(s1expopt)
 (* ****** ****** *)
 fun
-trans01_d1patlst: ftrans01(d1patlst)
+tread01_d1patlst: ftread01(d1patlst)
 (* ****** ****** *)
 fun
-trans01_d1explst: ftrans01(d1explst)
+tread01_d1explst: ftread01(d1explst)
 fun
-trans01_d1expopt: ftrans01(d1expopt)
+tread01_d1expopt: ftread01(d1expopt)
 (* ****** ****** *)
 fun
-trans01_d1eclist: ftrans01(d1eclist)
+tread01_d1eclist: ftread01(d1eclist)
 (* ****** ****** *)
 fun
-trans01_d1eclistopt: ftrans01(d1eclistopt)
+tread01_d1eclistopt: ftread01(d1eclistopt)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_tread01.sats] *)

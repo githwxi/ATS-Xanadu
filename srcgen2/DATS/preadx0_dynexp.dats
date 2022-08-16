@@ -2492,49 +2492,49 @@ endlet // end of [T0INVsome(_,_,_,_)]
 #implfun
 preadx0_d0patopt
   (  opt, err  ) =
-preadx0_synentopt_fun(opt,err,preadx0_d0pat)
+optn_preadx0_fnp(opt, err, preadx0_d0pat)
 #implfun
 preadx0_d0expopt
   (  opt, err  ) =
-preadx0_synentopt_fun(opt,err,preadx0_d0exp)
+optn_preadx0_fnp(opt, err, preadx0_d0exp)
 (* ****** ****** *)
 #implfun
 preadx0_d0patlst
   (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_d0pat)
+list_preadx0_fnp(lst, err, preadx0_d0pat)
 #implfun
 preadx0_d0explst
   (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_d0exp)
+list_preadx0_fnp(lst, err, preadx0_d0exp)
 (* ****** ****** *)
 #implfun
 preadx0_l0d0plst
   (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_l0d0p)
+list_preadx0_fnp(lst, err, preadx0_l0d0p)
 #implfun
 preadx0_l0d0elst
   (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_l0d0e)
+list_preadx0_fnp(lst, err, preadx0_l0d0e)
 (* ****** ****** *)
 #implfun
 preadx0_f0arglst
   (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_f0arg)
+list_preadx0_fnp(lst, err, preadx0_f0arg)
 (* ****** ****** *)
 #implfun
 preadx0_d0gualst
   (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_d0gua)
+list_preadx0_fnp(lst, err, preadx0_d0gua)
 (* ****** ****** *)
 #implfun
 preadx0_d0clslst
   (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_d0cls)
+list_preadx0_fnp(lst, err, preadx0_d0cls)
 (* ****** ****** *)
 #implfun
 preadx0_t0qualst
   (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_t0qua)
+list_preadx0_fnp(lst, err, preadx0_t0qua)
 (* ****** ****** *)
 //
 #implfun
@@ -2551,7 +2551,8 @@ tend.node() of
 |
 T_RPAREN() => drp0
 |
-_(*non-T_RPAREN*) => (err := err+1; drp0)
+_(*non-T_RPAREN*) =>
+drp0 where {val ()=(err := err+1)}
 )
 |
 d0pat_RPAREN_cons1
@@ -2598,7 +2599,8 @@ tend.node() of
 |
 T_RBRACE() => ldrb
 |
-_(*non-T_RBRACE*) => (err := err+1; ldrb)
+_(*non-T_RBRACE*) =>
+ldrb where {val ()=(err := err+1)}
 )
 |
 l0d0p_RBRACE_cons1
@@ -2624,7 +2626,8 @@ l0d0p_RBRACE_cons1(tbar, ldps, tend)
 )
 |
 _(*non-T_RBRACE*) =>
-(err := err+1; l0d0p_RBRACE_cons1(tbar,ldps,tend))
+( err := err+1
+; l0d0p_RBRACE_cons1(tbar,ldps,tend))
 //
 endlet // end of [l0d0p_RBRACE_cons1]
 ) (*case*)//end-of-[preadx0_l0d0p_RBRACE(ldrb,err)]
@@ -2768,7 +2771,8 @@ d0exp_RPAREN_cons1(tsep, d0es, tend)
 )
 |
 _(*non-T_RPAREN*) =>
-(err := err+1; d0exp_RPAREN_cons1(tsep,d0es,tend))
+( err := err+1
+; d0exp_RPAREN_cons1(tsep,d0es,tend))
 //
 endlet // end of [d0exp_RPAREN_cons1]
 |
@@ -2795,7 +2799,8 @@ d0exp_RPAREN_cons2(tsep, d0es, tend)
 )
 |
 _(*non-T_RPAREN*) =>
-(err := err+1; d0exp_RPAREN_cons2(tsep,d0es,tend))
+( err := err+1
+; d0exp_RPAREN_cons2(tsep,d0es,tend))
 //
 endlet // end of [d0exp_RPAREN_cons2]
 //
@@ -2843,7 +2848,8 @@ l0d0e_RBRACE_cons1(tbar, ldes, tend)
 )
 |
 _(*non-T_RBRACE*) =>
-(err := err+1; l0d0e_RBRACE_cons1(tbar,ldes,tend))
+( err := err+1
+; l0d0e_RBRACE_cons1(tbar,ldes,tend))
 //
 endlet // end of [l0d0e_RBRACE_cons1]
 ) (*case*)//end-of-[preadx0_l0d0e_RBRACE(ldrb,err)]
