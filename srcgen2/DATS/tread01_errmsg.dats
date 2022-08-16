@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Mon Aug 15 17:35:46 EDT 2022
+Tue Aug 16 16:09:56 EDT 2022
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -49,10 +49,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
-#staload "./../SATS/staexp0.sats"
-#staload "./../SATS/dynexp0.sats"
-(* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
+(* ****** ****** *)
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
 #staload "./../SATS/tread01.sats"
@@ -60,103 +58,5 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
-#symload lctn with d1pat_get_lctn
-#symload node with d1pat_get_node
-(* ****** ****** *)
-#symload lctn with d1exp_get_lctn
-#symload node with d1exp_get_node
-(* ****** ****** *)
-//
-fun
-d1pat_errck
-(lvl: sint
-,d1p: d1pat): d1pat =
-(
-d1pat
-(d1p.lctn(), D1Perrck(lvl, d1p))
-) (*case+*) //end-of-[d1pat_errck(_,_)]
-//
-(* ****** ****** *)
 
-#implfun
-tread01_d1pat
-  (d1p, err) =
-(
-case+
-d1p.node() of
-//
-| D1Pid0 _ => d1p
-//
-| D1Pint _ => d1p
-| D1Pchr _ => d1p
-| D1Pflt _ => d1p
-| D1Pstr _ => d1p
-//
-|
-_(*otherwise*) =>
-(err := err+1; d1pat_errck(1, d1p))
-//
-) where
-{
-//
-val () =
-prerrln("tread01_d1pat: d1p = ", d1p)
-//
-} (*where*)//end(tread01_d1pat(d1p,err))
-
-(* ****** ****** *)
-//
-fun
-d1exp_errck
-(lvl: sint
-,d1e: d1exp): d1exp =
-(
-d1exp
-(d1e.lctn(), D1Eerrck(lvl, d1e))
-) (*case+*) // end-of-[d1exp_errck(_,_)]
-//
-(* ****** ****** *)
-
-#implfun
-tread01_d1exp
-  (d1e, err) =
-(
-case+
-d1e.node() of
-//
-| D1Eid0 _ => d1e
-//
-| D1Eint _ => d1e
-| D1Echr _ => d1e
-| D1Eflt _ => d1e
-| D1Estr _ => d1e
-//
-|
-_(*otherwise*) =>
-(err := err+1; d1exp_errck(1, d1e))
-//
-) where
-{
-//
-val () =
-prerrln("tread01_d1exp: d1e = ", d1e)
-//
-} (*where*)//end(tread01_d1exp(d1e,err))
-
-(* ****** ****** *)
-
-#implfun
-tread01_d1patlst
-  (  d1ps, err  ) =
-list_tread01_fnp(d1ps, err, tread01_d1pat)
-
-(* ****** ****** *)
-
-#implfun
-tread01_d1explst
-  (  d1es, err  ) =
-list_tread01_fnp(d1es, err, tread01_d1exp)
-
-(* ****** ****** *)
-
-(* end of [ATS3/XATSOPT_tread01_dynexp.dats] *)
+(* end of [ATS3/XATSOPT_tread01_errmsg.dats] *)
