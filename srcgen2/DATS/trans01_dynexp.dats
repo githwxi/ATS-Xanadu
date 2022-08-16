@@ -367,6 +367,9 @@ fxis_resolve(loc0, d1ps)
 }
 //
 |
+D0Psarg _ => f0_sarg(tenv, d0p0)
+//
+|
 D0Plpar _ => f0_lpar(tenv, d0p0)
 //
 |
@@ -571,6 +574,33 @@ d1pat
 , D1Pstr(trans01_t0str(tenv, str))))
 end // end of [let] // end of [f0_str]
 //
+(* ****** ****** *)
+
+and
+f0_sarg
+( tenv:
+! tr01env
+, d0p0: d0pat): d1pfx =
+let
+//
+val
+loc0 = d0p0.lctn()
+val-
+D0Psarg
+(tbeg
+,s0as,tend) = d0p0.node()
+//
+in//let
+FXITMatm
+(
+d1pat
+(loc0,D1Psarg(s1as))) where
+{
+val s1as =
+trans01_s0arglst(tenv, s0as)
+}
+endlet // end of [ D0Psarg(_,_,_) ]
+
 (* ****** ****** *)
 
 and
@@ -799,13 +829,14 @@ fxis_resolve(loc0, d1es)
 }
 //
 |
-D0Elpar _ => f0_lpar(tenv, d0e0)
+D0Esarg _ => f0_sarg(tenv, d0e0)
 //
 |
-D0Eif0 _ => f0_if0(tenv, d0e0)
+D0Elpar _ => f0_lpar(tenv, d0e0)
+//
+|D0Eif0 _ => f0_if0( tenv, d0e0 )
 (*
-|
-D0Eif1 _ => f0_if1(tenv, d0e0)
+|D0Eif1 _ => f0_if1( tenv, d0e0 )
 *)
 //
 |
@@ -1111,6 +1142,33 @@ d1exp
 , D1Estr(trans01_t0str(tenv, str))))
 end // end of [let] // end of [f0_str]
 //
+(* ****** ****** *)
+
+and
+f0_sarg
+( tenv:
+! tr01env
+, d0e0: d0exp): d1efx =
+let
+//
+val
+loc0 = d0e0.lctn()
+val-
+D0Esarg
+(tbeg
+,s0es,tend) = d0e0.node()
+//
+in//let
+FXITMatm
+(
+d1exp
+(loc0,D1Esarg(s1es))) where
+{
+val s1es =
+trans01_s0explst(tenv, s0es)
+}
+endlet // end of [ D0Esarg(_,_,_) ]
+
 (* ****** ****** *)
 
 and

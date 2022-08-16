@@ -84,6 +84,14 @@ tread01_d1pat
 (
 case+
 d1p.node() of
+//
+| D1Pid0 _ => d1p
+//
+| D1Pint _ => d1p
+| D1Pchr _ => d1p
+| D1Pflt _ => d1p
+| D1Pstr _ => d1p
+//
 |
 _(*otherwise*) =>
 (err := err+1; d1pat_errck(1, d1p))
