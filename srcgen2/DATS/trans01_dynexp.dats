@@ -314,12 +314,14 @@ trans01_d0pat
 val loc0 = d0p0.lctn()
 //
 (* ****** ****** *)
+(*
 val () =
 prerrln
 ("trans01_d0pat: loc0 = ", loc0)
 val () =
 prerrln
 ("trans01_d0pat: d0p0 = ", d0p0)
+*)
 (* ****** ****** *)
 val
 dfx0 =
@@ -742,12 +744,14 @@ val loc0 = d0e0.lctn()
 //
 (* ****** ****** *)
 //
+(*
 val () =
 prerrln
 ("trans01_d0exp: loc0 = ", loc0)
 val () =
 prerrln
 ("trans01_d0exp: d0e0 = ", d0e0)
+*)
 //
 (* ****** ****** *)
 val

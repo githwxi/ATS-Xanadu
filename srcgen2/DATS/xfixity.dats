@@ -304,9 +304,14 @@ process(itms, list_nil())
 #typedef itm = fxitm(a)
 #typedef itmlst = fxitmlst(a)
 //
+(*
+val () =
+prerrln
+("fxitmlst_resolve: loc0 = ", loc0)
 val () =
 prerrln
 ("fxitmlst_resolve: itms = ", itms)
+*)
 //
 fnx
 process
