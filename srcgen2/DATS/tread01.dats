@@ -115,4 +115,32 @@ endlet // end of [auxlst(lst,err)]
 //
 (* ****** ****** *)
 
+#implfun
+d1parsed_tread01
+  (dpar) =
+let
+//
+var nerror: sint = 0
+//
+val stadyn =
+d1parsed_get_stadyn(dpar)
+val source =
+d1parsed_get_source(dpar)
+val parsed =
+d1parsed_get_parsed(dpar)
+//
+val parsed =
+tread01_d1eclistopt(parsed, nerror)
+//
+in//let
+//
+if
+(nerror=0)
+then (dpar) else
+d1parsed(stadyn,nerror,source,parsed)
+//
+end (*let*) // end of [d1parsed_tread01(dpar)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_tread01.dats] *)
