@@ -60,5 +60,79 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with d1pat_get_lctn
+#symload node with d1pat_get_node
+(* ****** ****** *)
+#symload lctn with d1exp_get_lctn
+#symload node with d1exp_get_node
+(* ****** ****** *)
+//
+fun
+d1pat_errck
+(lvl: sint
+,d1p: d1pat): d1pat =
+(
+d1pat
+(d1p.lctn(), D1Perrck(lvl, d1p))
+) (*case+*) //end-of-[d1pat_errck(_,_)]
+//
+(* ****** ****** *)
+
+#implfun
+tread01_d1pat
+  (d1p, err) =
+(
+case+
+d1p.node() of
+|
+_(*otherwise*) =>
+(err := err+1; d1pat_errck(1, d1p))
+//
+) where
+{
+} (*where*)//end(tread01_d1pat(d1p,err))
+
+(* ****** ****** *)
+//
+fun
+d1exp_errck
+(lvl: sint
+,d1e: d1exp): d1exp =
+(
+d1exp
+(d1e.lctn(), D1Eerrck(lvl, d1e))
+) (*case+*) // end-of-[d1exp_errck(_,_)]
+//
+(* ****** ****** *)
+
+#implfun
+tread01_d1exp
+  (d1e, err) =
+(
+case+
+d1e.node() of
+|
+_(*otherwise*) =>
+(err := err+1; d1exp_errck(1, d1e))
+//
+) where
+{
+} (*where*)//end(tread01_d1exp(d1e,err))
+
+(* ****** ****** *)
+
+#implfun
+tread01_d1patlst
+  (  d1ps, err  ) =
+list_tread01_fnp(d1ps, err, tread01_d1pat)
+
+(* ****** ****** *)
+
+#implfun
+tread01_d1explst
+  (  d1es, err  ) =
+list_tread01_fnp(d1es, err, tread01_d1exp)
+
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_tread01_dynexp.dats] *)

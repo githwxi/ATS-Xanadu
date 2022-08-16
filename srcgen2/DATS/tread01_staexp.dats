@@ -58,4 +58,25 @@ ATS_PACKNAME
 #symload node with token_get_node
 (* ****** ****** *)
 
+#implfun
+tread01_g1explst
+  (  g1es, err  ) =
+list_tread01_fnp(g1es, err, tread01_g1exp)
+
+(* ****** ****** *)
+
+#implfun
+tread01_sort1lst
+  (  s1ts, err  ) =
+list_tread01_fnp(s1ts, err, tread01_sort1)
+
+(* ****** ****** *)
+
+#implfun
+tread01_s1explst
+  (  s1es, err  ) =
+list_tread01_fnp(s1es, err, tread01_s1exp)
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_tread01_staexp.dats] *)

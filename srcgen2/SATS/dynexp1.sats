@@ -271,7 +271,10 @@ D1Pqual of
 |
 D1Pnone0 of ((*void*)) | D1Pnone1 of (d0pat)
 //
-// end of [d1pat_node] // end-(datatype(...))
+|
+D1Perrck of (sint(*lvl*), d1pat)//HX:tread01-error
+//
+// end of [d1exp_node] // end of [ datatype(...) ]
 //
 (* ****** ****** *)
 fun
