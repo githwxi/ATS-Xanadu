@@ -519,7 +519,12 @@ D1Eextnam of (g1nam) // are to be expanded
 D1Eexists of // HX-2021-01-14: $exists{..}..{..}
 (token, d1explst(*D1Esarglst*), d1exp) // (d1exp)
 //
-| D1Enone0 of ((*void*)) | D1Enone1 of ( d0exp )
+|
+D1Enone0 of ((*void*)) | D1Enone1 of (d0exp)
+//
+|
+D1Eerrck of (sint(*lvl*), d1exp)//HX:tread01-error
+//
 // end of [d1exp_node] // end of [ datatype(...) ]
 //
 (* ****** ****** *)
@@ -790,7 +795,11 @@ D1Cdatatype of
 D1Cdynconst of
 (token(*fnk//vlk*), t1qaglst, d1cstdclist)
 //
-| D1Cnone0 of ((*void*)) | D1Cnone1 of (d0ecl)
+|
+D1Cnone0 of ((*void*)) | D1Cnone1 of (d0ecl)
+//
+|
+D1Cerrck of (sint(*lvl*), d1ecl)//HX:tread0x-error
 //
 (* ****** ****** *)
 //

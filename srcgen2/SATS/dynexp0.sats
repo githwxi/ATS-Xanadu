@@ -950,16 +950,19 @@ HX-2022-06-20:
 D0Ctkerr(tok):
 [tok] is not consumed by the parser!
 *) // HX: This one is an indication
-| D0Ctkerr of (token) // of some syn error
+|
+D0Ctkerr of (token) // of some syn error
 //
 (*
 HX-2019-??-??:
 D0Ctkskp(tok):
 for skipping synerr:
 *) // HX: Note that [tok] is consumed and
-| D0Ctkskp of (token) // parsing is to continue
+|
+D0Ctkskp of (token) // parsing is to continue
 //
-| D0Cerrck of (int(*lvl*), d0ecl)//HX:pread-error
+|
+D0Cerrck of (sint(*lvl*), d0ecl)//HX:pread-error
 //
 // HX-2022-06-22: end-of-[ datatype(d0ecl_node) ]
 //
