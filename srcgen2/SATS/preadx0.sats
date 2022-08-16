@@ -222,14 +222,14 @@ fun preadx0_s0tdf: fpreadx0(s0tdf)
 (* ****** ****** *)
 //
 fun
-preadx0_synentlst_fun
+list_preadx0_fnp
 {syn:tx}
 ( lst: list(syn)
 , err: &sint >> _
 , fpr: fpreadx0(syn)): list(syn)
 //
 fun
-preadx0_synentopt_fun
+optn_preadx0_fnp
 {syn:tx}
 ( opt: optn(syn)
 , err: &sint >> _

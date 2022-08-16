@@ -52,7 +52,7 @@ ATS_PACKNAME
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/staexp1.sats"
 (* ****** ****** *)
-#staload "./../SATS/trans01.sats"
+#staload "./../SATS/tread01.sats"
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node

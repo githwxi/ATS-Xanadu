@@ -50,7 +50,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #implfun
-preadx0_synentopt_fun
+optn_preadx0_fnp
 {  syn:tx  }
 (  opt , err , fpr  ) =
 (
@@ -67,12 +67,12 @@ if
 (err=e00)
 then opt else optn_cons(tm1)
 endlet // end of [optn_cons(tm1)]
-)(*case+*)//end(preadx0_synentopt_fun)
+)(*case+*)//end(optn_preadx0_fnp(opt,err,fpr)
 //
 (* ****** ****** *)
 //
 #implfun
-preadx0_synentlst_fun
+list_preadx0_fnp
 {  syn:tx  }
 (  lst , err , fpr  ) =
 (
@@ -99,7 +99,7 @@ if
 then lst else list_cons(tm1,tm2)
 endlet // end of [auxlst(lst,err)]
 //
-}(*where*)//end(preadx0_synentlst_fun)
+}(*where*)//end(list_preadx0_fnp(lst,err,fpr))
 //
 (* ****** ****** *)
 

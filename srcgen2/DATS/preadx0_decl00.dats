@@ -666,11 +666,11 @@ val tcns = preadx0_s0tcnlst(tcns, err)
 #implfun
 preadx0_s0tcnlst
 (   lst, err   ) =
-preadx0_synentlst_fun(lst,err,preadx0_s0tcn)
+list_preadx0_fnp(lst,err,preadx0_s0tcn)
 #implfun
 preadx0_d0tstlst
 (   lst, err   ) =
-preadx0_synentlst_fun(lst,err,preadx0_d0tst)
+list_preadx0_fnp(lst,err,preadx0_d0tst)
 //
 (* ****** ****** *)
 #extern
@@ -810,21 +810,21 @@ end(*let*)//end-of-[preadx0_d0typ(d0t,err)]
 #implfun
 preadx0_s0unilst
 (   lst, err   ) =
-preadx0_synentlst_fun(lst,err,preadx0_s0uni)
+list_preadx0_fnp(lst,err,preadx0_s0uni)
 //
 (* ****** ****** *)
 //
 #implfun
 preadx0_d0tcnlst
 (   lst, err   ) =
-preadx0_synentlst_fun(lst,err,preadx0_d0tcn)
+list_preadx0_fnp(lst,err,preadx0_d0tcn)
 //
 (* ****** ****** *)
 //
 #implfun
 preadx0_d0typlst
 (   lst, err   ) =
-preadx0_synentlst_fun(lst,err,preadx0_d0typ)
+list_preadx0_fnp(lst,err,preadx0_d0typ)
 //
 (* ****** ****** *)
 //
@@ -2233,7 +2233,7 @@ end where
   val dags = d0cstdcl_get_darg(dcst)
   val sres = d0cstdcl_get_sres(dcst)
   val dres = d0cstdcl_get_dres(dcst)
-} (*where*)//end-of-[d0cstdcl_fpemsg(out,dcst)]
+} (*where*)//end(d0cstdcl_fpemsg(out,dcst))
 //
 (* ****** ****** *)
 
@@ -2253,8 +2253,8 @@ in//letp
 if
 (err=e00)
 then tdxp else TEQD0EXPsome(teq1, d0e2)
-end (*let*) // end of [TEQD0EXPsome(_,_)]
-)
+endlet // end of [TEQD0EXPsome(_,_)]
+) (*case+*)//end-(preadx0_teqd0exp(tdxp,err))
 
 (* ****** ****** *)
 
@@ -2274,63 +2274,63 @@ in//letp
 if
 (err=e00)
 then wsxp else WTHS0EXPsome(twth, s0e1)
-end (*let*) // end of [WTHS0EXPsome(_,_)]
-)
+endlet // end of [WTHS0EXPsome(_,_)]
+) (*case+*)//end-(preadx0_wths0exp(wsxp,err))
 
 (* ****** ****** *)
 #implfun
 preadx0_q0arglst
   (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_q0arg)
+list_preadx0_fnp(lst, err, preadx0_q0arg)
 (* ****** ****** *)
 #implfun
 preadx0_s0qaglst
   (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_s0qag)
+list_preadx0_fnp(lst, err, preadx0_s0qag)
 (* ****** ****** *)
 #implfun
 preadx0_t0qaglst
   (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_t0qag)
+list_preadx0_fnp(lst, err, preadx0_t0qag)
 (* ****** ****** *)
 #implfun
 preadx0_t0iaglst
   (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_t0iag)
+list_preadx0_fnp(lst, err, preadx0_t0iag)
 (* ****** ****** *)
 #implfun
 preadx0_a0typlst
   (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_a0typ)
+list_preadx0_fnp(lst, err, preadx0_a0typ)
 #implfun
 preadx0_d0arglst
   (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_d0arg)
+list_preadx0_fnp(lst, err, preadx0_d0arg)
 (* ****** ****** *)
 #implfun
 preadx0_d0valdclist
   (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_d0valdcl)
+list_preadx0_fnp(lst, err, preadx0_d0valdcl)
 (* ****** ****** *)
 #implfun
 preadx0_d0vardclist
   (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_d0vardcl)
+list_preadx0_fnp(lst, err, preadx0_d0vardcl)
 (* ****** ****** *)
 #implfun
 preadx0_d0fundclist
   (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_d0fundcl)
+list_preadx0_fnp(lst, err, preadx0_d0fundcl)
 (* ****** ****** *)
 #implfun
 preadx0_d0cstdclist
   (  lst, err  ) =
-preadx0_synentlst_fun(lst,err,preadx0_d0cstdcl)
+list_preadx0_fnp(lst, err, preadx0_d0cstdcl)
 (* ****** ****** *)
 #implfun
 preadx0_d0eclistopt
   (opt0, err) =
-preadx0_synentopt_fun(opt0,err,preadx0_d0eclist)
+optn_preadx0_fnp(opt0, err, preadx0_d0eclist)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_preadx0_decl00.dats] *)
