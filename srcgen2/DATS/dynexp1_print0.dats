@@ -65,6 +65,17 @@ _(*?*) = "./lexing0_print0.dats"
 #symload lctn with d1ecl_get_lctn
 #symload node with d1ecl_get_node
 (* ****** ****** *)
+#symload lctn with q1arg_get_lctn
+#symload node with q1arg_get_node
+(* ****** ****** *)
+#symload lctn with s1qag_get_lctn
+#symload node with s1qag_get_node
+#symload lctn with t1qag_get_lctn
+#symload node with t1qag_get_node
+(* ****** ****** *)
+#symload lctn with t1iag_get_lctn
+#symload node with t1iag_get_node
+(* ****** ****** *)
 #symload lctn with f1arg_get_lctn
 #symload node with f1arg_get_node
 (* ****** ****** *)
@@ -471,6 +482,70 @@ print("D1Cdynconst(",tknd,";",tqas,";",d1cs,")")
 //
 end (*let*) // end of [d1ecl_fprint(out,dcl)]
 
+(* ****** ****** *)
+//
+#implfun
+q1arg_fprint
+(out, q1a) =
+let
+#impltmp
+g_print$out<>() = out
+in//in-of-let
+case+
+q1a.node() of
+|
+Q1ARGsome(sid,opt) =>
+print("Q1ARGsome(", sid, ";", opt, ")")
+end (*let*) // end of [q1arg_fprint(out,q1a)]
+//
+(* ****** ****** *)
+//
+#implfun
+s1qag_fprint
+(out, s1q) =
+let
+#impltmp
+g_print$out<>() = out
+in//in-of-let
+case+
+s1q.node() of
+|
+S1QAGsome
+(  sqs  ) => print("T1QAGsome(",sqs,")")
+end (*let*) // end of [s1qag_fprint(out,s1q)]
+//
+(* ****** ****** *)
+//
+#implfun
+t1qag_fprint
+(out, t1q) =
+let
+#impltmp
+g_print$out<>() = out
+in//in-of-let
+case+
+t1q.node() of
+|
+T1QAGsome
+(  tqs  ) => print("T1QAGsome(",tqs,")")
+end (*let*) // end of [t1qag_fprint(out,t1q)]
+//
+(* ****** ****** *)
+//
+#implfun
+t1iag_fprint
+(out, t1i) =
+let
+#impltmp
+g_print$out<>() = out
+in//in-of-let
+case+
+t1i.node() of
+|
+T1IAGsome
+(  ses  ) => print("T1IAGsome(",ses,")")
+end (*let*) // end of [t1iag_fprint(out,t1i)]
+//
 (* ****** ****** *)
 //
 #implfun

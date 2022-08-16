@@ -200,4 +200,4 @@ endloc (*local*) // end-of-[local(p1_fun_test)]
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_TEST_JS_test13_parsing.dats] *)
+(* end of [ATS3/XATSOPT_TEST_JS_test15_trans01.dats] *)
