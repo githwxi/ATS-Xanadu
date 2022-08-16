@@ -58,5 +58,49 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+//
+#implfun
+sort1lst_fpemsg
+(out, s1ts) =
+list_foreach<sort1>(s1ts) where
+{
+#impltmp
+foreach$work<sort1>(s1t1) = sort1_fpemsg(out,s1t1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+s1explst_fpemsg
+(out, s1es) =
+list_foreach<s1exp>(s1es) where
+{
+#impltmp
+foreach$work<s1exp>(s1e1) = s1exp_fpemsg(out,s1e1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d1patlst_fpemsg
+(out, d1ps) =
+list_foreach<d1pat>(d1ps) where
+{
+#impltmp
+foreach$work<d1pat>(d1p1) = d1pat_fpemsg(out,d1p1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d1explst_fpemsg
+(out, d1es) =
+list_foreach<d1exp>(d1es) where
+{
+#impltmp
+foreach$work<d1exp>(d1e1) = d1exp_fpemsg(out,d1e1)
+}
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_tread01_errmsg.dats] *)

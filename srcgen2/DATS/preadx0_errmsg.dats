@@ -326,6 +326,31 @@ println
 end (*let*)//end-of-[t0chr_fpemsg(out,str)]
 //
 (* ****** ****** *)
+//
+#implfun
+g0exp_fpemsg
+(out, g0e) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+g0e.node() of
+|
+G0Eerrck(lvl, ge1) =>
+let
+  val loc = g0e.lctn()
+in//let
+(*
+println
+("PREADX0-ERROR:",loc,":",g0e)
+*)
+endlet // end of [G0Eerrck(lvl,ge1)]
+| _(* otherwise *) => ( (*void*) )
+//
+end(*let*)//end-of(sort0_fpemsg(out,s0t))
+//
+(* ****** ****** *)
 
 local
 
@@ -381,7 +406,7 @@ if
 println
 ("PREADX0-ERROR:",s0t.lctn(),":",s0t)
 )
-| _(* otherwise *) => ((*void*))
+| _(* otherwise *) => ( (*void*) )
 //
 end(*let*)//end-of(sort0_fpemsg(out,s0t))
 //
@@ -1558,6 +1583,22 @@ val () = fpemsg(out, symb)
 val () = fpemsg(out, dqid)
 val () = g0expopt_fpemsg(out, gopt)
 endlet // end-of-(D0Csymload(...))
+//
+|
+D0Cinclude
+(knd, g0e) =>
+(
+  g0exp_fpemsg(out, g0e))
+|
+D0Cstaload
+(knd, g0e) =>
+(
+  g0exp_fpemsg(out, g0e))
+|
+D0Cdyninit
+(knd, g0e) =>
+(
+  g0exp_fpemsg(out, g0e))
 //
 |
 D0Cdatasort

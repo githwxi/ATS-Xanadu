@@ -57,6 +57,7 @@ D1E = "./dynexp1.sats"
 (* ****** ****** *)
 #typedef sort1 = $S1E.sort1
 #typedef s1exp = $S1E.s1exp
+#typedef l1s1e = $S1E.l1s1e
 (* ****** ****** *)
 #typedef g1explst = $S1E.g1explst
 #typedef g1expopt = $S1E.g1expopt
@@ -69,6 +70,9 @@ D1E = "./dynexp1.sats"
 (* ****** ****** *)
 #typedef d1pat = $D1E.d1pat
 #typedef d1exp = $D1E.d1exp
+#typedef l1d1p = $D1E.l1d1p
+#typedef l1d1e = $D1E.l1d1e
+(* ****** ****** *)
 #typedef d1ecl = $D1E.d1ecl
 (* ****** ****** *)
 #typedef d1patlst = $D1E.d1patlst
@@ -149,6 +153,35 @@ tread01_d1eclist: ftread01(d1eclist)
 (* ****** ****** *)
 fun
 tread01_d1eclistopt: ftread01(d1eclistopt)
+(* ****** ****** *)
+//
+//HX-2022-08-16: printing errmsgs
+//
+fun g1exp_fpemsg(FILR, g1exp): void
+(* ****** ****** *)
+fun sort1_fpemsg(FILR, sort1): void
+fun s1exp_fpemsg(FILR, s1exp): void
+fun l1s1e_fpemsg(FILR, l1s1e): void
+(* ****** ****** *)
+fun g1explst_fpemsg(FILR, g1explst): void
+(* ****** ****** *)
+fun sort1lst_fpemsg(FILR, sort1lst): void
+fun s1explst_fpemsg(FILR, s1explst): void
+fun l1s1elst_fpemsg(FILR, l1s1elst): void
+(* ****** ****** *)
+fun d1pat_fpemsg(FILR, d1pat): void
+fun d1exp_fpemsg(FILR, d1exp): void
+fun l1d1p_fpemsg(FILR, l1d1p): void
+fun l1d1e_fpemsg(FILR, l1d1e): void
+(* ****** ****** *)
+fun d1ecl_fpemsg(FILR, d1ecl): void
+(* ****** ****** *)
+fun d1patlst_fpemsg(FILR, d1patlst): void
+fun d1explst_fpemsg(FILR, d1explst): void
+fun l1d1plst_fpemsg(FILR, l1d1plst): void
+fun l1d1elst_fpemsg(FILR, l1d1elst): void
+(* ****** ****** *)
+fun d1eclist_fpemsg(FILR, d1eclist): void
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_tread01.sats] *)
