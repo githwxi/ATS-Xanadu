@@ -53,6 +53,7 @@ ATS_PACKNAME
 #symload node with q0arg_get_node
 #symload node with s0qag_get_node
 #symload node with t0qag_get_node
+#symload node with t0iag_get_node
 (* ****** ****** *)
 #symload node with d0exp_get_node
 #symload node with d0pat_get_node

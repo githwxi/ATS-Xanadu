@@ -648,7 +648,7 @@ t1iag_node =
 |
 T1IAGnone of token
 *)
-|T1IAGsome of (s0explst)//<...>
+|T1IAGsome of (s1explst)//<...>
 //
 (* ****** ****** *)
 fun

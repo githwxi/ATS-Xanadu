@@ -244,6 +244,7 @@ d0exp_ELSE = $D0E.d0exp_ELSE
 //
 #typedef q0arg = $D0E.q0arg
 #typedef s0qag = $D0E.s0qag
+//
 #typedef t0qag = $D0E.t0qag
 #typedef q1arg = $D1E.q1arg
 #typedef s1qag = $D1E.s1qag

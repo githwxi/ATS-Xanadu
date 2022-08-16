@@ -87,12 +87,18 @@ _(*TRANS01*) = "./trans01.dats"
 #symload lctn with d0ecl_get_lctn
 #symload node with d0ecl_get_node
 (* ****** ****** *)
+//
 #symload lctn with q0arg_get_lctn
 #symload node with q0arg_get_node
+//
 #symload lctn with s0qag_get_lctn
 #symload node with s0qag_get_node
 #symload lctn with t0qag_get_lctn
 #symload node with t0qag_get_node
+//
+#symload lctn with t0iag_get_lctn
+#symload node with t0iag_get_node
+//
 (* ****** ****** *)
 #symload lctn with a0typ_get_lctn
 #symload node with a0typ_get_node
@@ -131,7 +137,8 @@ sqa0.node() of
 S0QAGnone(tok) =>
 let
 val
-q1as = list_nil() in
+q1as = list_nil(*void*)
+in//let
 s1qag_make_node
 (sqa0.lctn(),S1QAGsome(q1as))
 end // end of [S0QAGnone(tok)]
@@ -160,7 +167,8 @@ tqa0.node() of
 T0QAGnone(tok) =>
 let
 val
-q1as = list_nil() in
+q1as = list_nil(*void*)
+in//let
 t1qag_make_node
 (tqa0.lctn(),T1QAGsome(q1as))
 end // end of [T0QAGnone(tok)]
@@ -175,6 +183,36 @@ in//let
 t1qag_make_node
 (tqa0.lctn(),T1QAGsome(q1as))
 end (*let*)//end-of(T0QAGsome(...))
+)
+//
+(* ****** ****** *)
+//
+#implfun
+trans01_t0iag
+  (tenv, tia0) =
+(
+case+
+tia0.node() of
+|
+T0IAGnone(tok) =>
+let
+val
+s1es = list_nil(*void*)
+in//let
+t1iag_make_node
+(tia0.lctn(),T1IAGsome(s1es))
+end // end of [T0IAGnone(tok)]
+|
+T0IAGsome
+(tbeg,s0es,tend) =>
+let
+val
+s1es =
+trans01_s0explst(tenv, s0es)
+in//let
+t1iag_make_node
+(tia0.lctn(),T1IAGsome(s1es))
+end (*let*)//end-of(T0IAGsome(...))
 )
 //
 (* ****** ****** *)
