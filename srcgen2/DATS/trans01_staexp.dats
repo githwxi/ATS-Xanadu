@@ -894,9 +894,15 @@ trans01_g0exp
 (*
 //
 val loc0 = g0e0.lctn()
+//
 val (  ) =
-prerrln
-("trans01_gexp: g0e0 = ", g0e0)
+prerrln(
+"trans01_g0exp: loc0 = ", loc0
+)(*prerrln*)
+val (  ) =
+prerrln(
+"trans01_g0exp: g0e0 = ", g0e0
+)(*prerrln*)
 *)
 //
 in(*in-of-let*)
@@ -917,10 +923,20 @@ endloc(*local*)//end-of-[local(trans01_g0exp)]
 trans01_sort0
 (tenv, s0t0) = let
 (* ****** ****** *)
+(*
+//
+val loc0 = s0e0.lctn()
+//
+val (  ) =
+prerrln(
+"trans01_s0exp: loc0 = ", loc0
+)(*prerrln*)
 val () =
 prerrln(
 "trans01_sort0: s0t0 = ", s0t0
 )(*prerrln*)
+//
+*)
 (* ****** ****** *)
 val
 sfx0 =
@@ -1081,10 +1097,21 @@ map$fopr_e1nv
 trans01_s0exp
 (tenv, s0e0) = let
 (* ****** ****** *)
+//
+(*
+//
+val loc0 = s0e0.lctn()
+//
+val (  ) =
+prerrln(
+"trans01_s0exp: loc0 = ", loc0
+)(*prerrln*)
 val () =
 prerrln(
 "trans01_s0exp: s0e0 = ", s0e0
 )(*prerrln*)
+*)
+//
 (* ****** ****** *)
 val
 sfx0 =
