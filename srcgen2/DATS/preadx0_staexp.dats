@@ -95,7 +95,7 @@ I0DNTnone _ =>
 let
 val () = (err := err+1) in id0
 end (*let*)//end-of-[I0DNTnone]
-)
+) (*case+*)//end-of-[preadx0_i0dnt]
 //
 (* ****** ****** *)
 //
@@ -273,7 +273,7 @@ G0Etkerr _ =>
 _(*otherwise*) =>
 (err := err+1; g0exp_errck(1, g0e))
 //
-) where//end-of(case(g0e.node()))
+) where // end-of(case(g0e.node()))
 {
 //
 fun
@@ -361,12 +361,12 @@ case+
 tok1.node() of
 |
 T_THEN() => ()
-| _ =>
-(err := err+1)): void
+_(*non-T_THEN*) =>
+( err := err + 1 )): void
 //
-val
-g0e2 =
+val g0e2 =
   preadx0_g0exp(g0e2, err)
+//
 in//let
 if
 (err=e00)
@@ -386,11 +386,13 @@ case+
 tok1.node() of
 |
 T_ELSE() => ()
-| _ =>
-(err := err+1)): void
-val
-g0e3 =
-preadx0_g0exp(g0e3, err)
+|
+_(*non-T_ELSE*) =>
+( err := err + 1 )): void
+//
+val g0e3 =
+  preadx0_g0exp(g0e3, err)
+//
 in//let
 if
 (err=e00)

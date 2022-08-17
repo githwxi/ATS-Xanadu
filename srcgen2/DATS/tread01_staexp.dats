@@ -57,6 +57,135 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with g1exp_get_lctn
+#symload node with g1exp_get_node
+(* ****** ****** *)
+//
+fun
+g1exp_errck
+(lvl: sint
+,g1e: g1exp): g1exp =
+(
+g1exp
+(g1e.lctn(), G1Eerrck(lvl, g1e)))
+//
+(* ****** ****** *)
+//
+fun
+g1exp_errvl_a1
+(g1e: g1exp): sint =
+(
+case+ g1e.node() of
+|
+G1Eerrck
+(lvl, _) => lvl | _ => 0
+)
+#symload
+g1exp_errvl with g1exp_errvl_a1
+#symload errvl with g1exp_errvl_a1
+//
+(* ****** ****** *)
+fun
+g1exp_b0sh_errck
+(loc: loc_t): g1exp =
+g1exp_errck(1, g1exp(loc, G1Eb0sh()))
+(* ****** ****** *)
+fun
+g1exp_b1sh_errck
+(loc: loc_t
+,g1e: g1exp): g1exp =
+g1exp_errck(1, g1exp(loc, G1Eb1sh(g1e)))
+(* ****** ****** *)
+fun
+g1exp_a0pp_errck
+(loc: loc_t): g1exp =
+g1exp_errck(1, g1exp(loc, G1Ea0pp()))
+(* ****** ****** *)
+fun
+g1exp_a1pp_errck
+(loc: loc_t
+,ge1: g1exp
+,ge2: g1exp): g1exp =
+let
+val lvl =
+gmax(errvl(ge1), errvl(ge2))
+in//let
+g1exp_errck
+(lvl, g1exp(loc, G1Ea1pp(ge1, ge2))) end
+(* ****** ****** *)
+
+#implfun
+tread01_g1exp
+( g1e0, err ) =
+(
+case+
+g1e0.node() of
+//
+| G1Eid0 _ => g1e0
+//
+| G1Eint _ => g1e0
+| G1Echr _ => g1e0
+| G1Eflt _ => g1e0
+| G1Estr _ => g1e0
+//
+| G1Eb0sh() =>
+( err := err+1
+; g1exp_b0sh_errck(loc0))
+| G1Eb1sh(g1e1) =>
+let
+//
+val g1e1 =
+  tread01_g1exp(g1e1, err)
+//
+in//let
+( err := err+1
+; g1exp_b1sh_errck(loc0,g1e1))
+endlet // end of [G1Eb1sh(g1e1)]
+//
+| G1Ea0pp() =>
+(
+g1exp_a0pp_errck(loc0)
+) where
+{ val () = ( err := err + 1 ) }
+//
+|
+G1Ea1pp(g1e1, g1e2) =>
+let
+//
+val e00 = err
+//
+val g1e1 =
+  tread01_g1exp(g1e1, err)
+val g1e2 =
+  tread01_g1exp(g1e2, err)
+in//let
+if
+(e00=err)
+then (g1e0) else
+g1exp_a1pp_errck(loc0, g1e1, g1e2)
+endlet // end of [G1Ea1pp(g1e1,g1e2)]
+//
+|
+_(*otherwise*) =>
+let
+val lvl = 1
+in//let
+err := err+1; g1exp_errck(lvl, g1e0)
+endlet // end of [_(*otherwise*)]
+//
+) where // end-of(case(g1e0.node()))
+{
+//
+val loc0 = g1e0.lctn()
+//
+val (  ) =
+prerrln("tread01_g1exp: loc0 = ", loc0)
+val (  ) =
+prerrln("tread01_g1exp: g1e0 = ", g1e0)
+//
+} (*where*) // end of [tread01_g1exp(g1e0,err)]
+
+(* ****** ****** *)
 
 #implfun
 tread01_g1explst
