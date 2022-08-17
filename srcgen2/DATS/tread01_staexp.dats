@@ -302,6 +302,10 @@ optn_tread01_fnp(gopt, err, tread01_g1exp)
 tread01_sort1lst
   (  s1ts, err  ) =
 list_tread01_fnp(s1ts, err, tread01_sort1)
+#implfun
+tread01_sort1opt
+  (  topt, err  ) =
+optn_tread01_fnp(topt, err, tread01_sort1)
 
 (* ****** ****** *)
 
@@ -309,6 +313,10 @@ list_tread01_fnp(s1ts, err, tread01_sort1)
 tread01_s1explst
   (  s1es, err  ) =
 list_tread01_fnp(s1es, err, tread01_s1exp)
+#implfun
+tread01_s1expopt
+  (  sopt, err  ) =
+optn_tread01_fnp(sopt, err, tread01_s1exp)
 
 (* ****** ****** *)
 
