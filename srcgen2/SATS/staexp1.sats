@@ -188,6 +188,9 @@ G1Eif0 of
 | G1Enone0 of () // HX: EMPTY
 | G1Enone1 of (g0exp) // HX: ERROR!
 //
+|
+G1Eerrck of (int(*lvl*), g1exp)//HX:tread-error
+//
 (* ****** ****** *)
 //
 datatype

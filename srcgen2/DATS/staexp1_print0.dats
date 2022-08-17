@@ -229,6 +229,10 @@ G1Enone0() => print("G1Enone0(",")")
 |
 G1Enone1(g0e1) => print("G1Enone1(",g0e1,")")
 //
+|
+G1Eerrck
+(lvl(*err*),g1e1) => print("G1Eerrck(",lvl,";",g1e1,")")
+//
 end (*let*) // end of [g1exp_fprint(out,g1e)]
 
 (* ****** ****** *)
