@@ -339,6 +339,9 @@ f0_extern(tenv, d0cl)
 |
 D0Cdefine _ =>
 f0_define(tenv, d0cl)
+|
+D0Cmacdef _ =>
+f0_macdef(tenv, d0cl)
 //
 |
 D0Clocal0
@@ -754,6 +757,49 @@ d1ecl_make_node
 ( loc0
 , D1Cdefine(tknd, geid, gmas, gedf))
 end (* let *) // end of [f0_define]
+//
+(* ****** ****** *)
+//
+fun
+f0_macdef
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
+let
+//
+val loc0 = d0cl.lctn()
+//
+val-
+D0Cmacdef
+( tknd
+, geid
+, gmas, dedf) = d0cl.node()
+//
+val
+geid =
+trans01_i0dnt(tenv, geid)
+val
+gmas =
+trans01_g0maglst(tenv, gmas)
+//
+val
+dedf =
+(
+case+ dedf of
+|
+D0EDFnone() =>
+optn_nil((*void*))
+|
+D0EDFsome(topt,d0e1) =>
+optn_cons
+(trans01_d0exp(tenv, d0e1))
+) : d1expopt // end of [val(dedf)]
+//
+in
+d1ecl_make_node
+( loc0
+, D1Cmacdef(tknd, geid, gmas, dedf))
+end (* let *) // end of [f0_macdef]
 //
 (* ****** ****** *)
 

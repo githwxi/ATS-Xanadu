@@ -399,7 +399,7 @@ d0arg_fprint(g_print$out<>(), d0ag)
 g_print<g0edf>(gedf) =
 g0edf_fprint(g_print$out<>(), gedf)
 #impltmp
-g_print<d0edf>(gedf) =
+g_print<d0edf>(dedf) =
 d0edf_fprint(g_print$out<>(), dedf)
 #impltmp
 g_print<a0tdf>(atdf) =

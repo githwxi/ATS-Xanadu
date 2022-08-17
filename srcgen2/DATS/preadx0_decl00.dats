@@ -226,6 +226,27 @@ d0ecl_errck
   , D0Cdefine(tknd,geid,gmas,gedf)) )
 end (*let*)//end-of-[d0ecl_define_errck]
 //
+fun
+d0ecl_macdef_errck
+( loc0
+: loc_t
+, tknd
+: token
+, geid
+: g0eid
+, gmas
+: g0maglst
+, dedf: d0edf): d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+( lvl+1
+, d0ecl_make_node
+  ( loc0
+  , D0Cmacdef(tknd,geid,gmas,dedf)) )
+end (*let*)//end-of-[d0ecl_macdef_errck]
+//
 (* ****** ****** *)
 //
 fun
@@ -1267,6 +1288,9 @@ f0_extern(dcl, err)
 |
 D0Cdefine _ =>
 f0_define(dcl, err)
+|
+D0Cmacdef _ =>
+f0_macdef(dcl, err)
 //
 |
 D0Clocal0 _ =>
@@ -1594,7 +1618,54 @@ then dcl else
 d0ecl_define_errck
 (dcl.lctn(), tknd, geid, gmas, gedf)
 end (*let*) // end of [ f0_define(dcl,err) ]
-
+//
+(* ****** ****** *)
+//
+fun
+f0_macdef
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val-
+D0Cmacdef
+( tknd
+, geid
+, gmas, dedf) = dcl.node()
+//
+val geid =
+preadx0_i0dnt( geid, err )
+val gmas =
+preadx0_g0maglst(gmas, err)
+//
+val dedf =
+(
+case+ dedf of
+| 
+D0EDFnone() => dedf
+|
+D0EDFsome(topt,d0e1) =>
+let
+val e00 = err
+val
+d0e1 =
+preadx0_d0exp( d0e1, err )
+in//let
+if
+(e00=err)
+then dedf else
+D0EDFsome(topt, d0e1) end): d0edf
+//
+in//let
+if
+(err=e00)
+then dcl else
+d0ecl_macdef_errck
+(dcl.lctn(), tknd, geid, gmas, dedf)
+end (*let*) // end of [ f0_macdef(dcl,err) ]
+//
 (* ****** ****** *)
 //
 fun

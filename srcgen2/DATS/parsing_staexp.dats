@@ -1291,7 +1291,7 @@ p1_g0argseq_COMMA
   (buf, err) =
 (
 list_vt2t
-(ps_COMMA_p1fun{g0arg}(buf, err, p1_g0eid))
+(ps_COMMA_p1fun{g0eid}(buf, err, p1_g0eid))
 )
 //
 (* ****** ****** *)
@@ -1324,6 +1324,7 @@ in//let
 err := e00;
 g0mag_make_node
 (lres, G0MAGsarg(tbeg,g0as,tend))
+end (*let*) // end of [T_LBRACE()]
 //
 |
 T_LPAREN() => let
@@ -1341,6 +1342,7 @@ in//let
 err := e00;
 g0mag_make_node
 (lres, G0MAGdarg(tbeg,g0as,tend))
+end (*let*) // end of [T_LPAREN()]
 //
 |
 _ (*non-LBRACE/LPAREN*) =>
