@@ -393,6 +393,14 @@ D1Cdefine
 print("D1Cdefine(");
 print
 (tknd,";",geid,";",gmas,";",gopt,")"))
+|
+D1Cmacdef
+(tknd
+,geid,gmas,dopt) =>
+(
+print("D1Cmacdef(");
+print
+(tknd,";",geid,";",gmas,";",dopt,")"))
 //
 |
 D1Clocal0

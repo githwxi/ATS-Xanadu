@@ -619,6 +619,12 @@ D0Cdefine
 (
 print("D0Cdefine(",tknd,";");
 print(geid,";",gmas,";",gedf,")"))
+|
+D0Cmacdef
+(tknd,geid,gmas,dedf) =>
+(
+print("D0Cmacdef(",tknd,";");
+print(geid,";",gmas,";",dedf,")"))
 //
 |
 D0Clocal0

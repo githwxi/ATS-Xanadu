@@ -56,6 +56,9 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with g0exp_get_lctn
+#symload node with g0exp_get_node
+(* ****** ****** *)
 #symload lctn with sort0_get_lctn
 #symload node with sort0_get_node
 (* ****** ****** *)
