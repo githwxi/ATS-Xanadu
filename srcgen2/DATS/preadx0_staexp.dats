@@ -361,6 +361,7 @@ case+
 tok1.node() of
 |
 T_THEN() => ()
+|
 _(*non-T_THEN*) =>
 ( err := err + 1 )): void
 //

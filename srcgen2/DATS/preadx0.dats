@@ -102,7 +102,7 @@ endlet // end of [auxlst(lst,err)]
 }(*where*)//end(list_preadx0_fnp(lst,err,fpr))
 //
 (* ****** ****** *)
-
+//
 #implfun
 d0parsed_preadx0
   (dpar) =
@@ -123,9 +123,14 @@ preadx0_d0eclistopt(parsed, nerror)
 in//let
 d0parsed(stadyn,nerror,source,parsed)
 end (*let*) // end of [d0parsed_preadx0(dpar)]
-
+//
 (* ****** ****** *)
-
+#implfun
+preadx0_d0eclistopt
+  (opt0, err) =
+optn_preadx0_fnp(opt0, err, preadx0_d0eclist)
+(* ****** ****** *)
+//
 #implfun
 d0parsed_fpemsg
   (out, dpar) = let
@@ -142,7 +147,7 @@ d0parsed_get_parsed(dpar)
 in
 d0eclistopt_fpemsg(out, parsed) end else ()
 end (*let*)//end-of-[d0parsed_fpemsg(out,dpar)]
-
+//
 (* ****** ****** *)
 //
 #implfun
