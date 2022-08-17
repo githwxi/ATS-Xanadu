@@ -386,9 +386,19 @@ print
 ("D1Cstatic(",tknd,";",dcl1,")")
 //
 |
+D1Cdefine
+(tknd
+,geid,gmas,gopt) =>
+(
+print("D1Cdefine(");
+print
+(tknd,";",geid,";",gmas,";",gopt,")"))
+//
+|
 D1Clocal0
 (head,body) =>
-print("D1Clocal0(",head,";",body,")")
+(
+print("D1Clocal0(",head,";",body,")"))
 //
 |
 D1Cabssort
@@ -397,7 +407,8 @@ print("D1Cabssort(",tknd,";",tid0,")")
 //
 |
 D1Cstacst0
-(tknd,sid0,tmas,s1t1) =>
+(tknd
+,sid0,tmas,s1t1) =>
 (
 print("D1Cstacst0(");
 print(tknd,";",sid0,";",tmas,";",s1t1,")"))

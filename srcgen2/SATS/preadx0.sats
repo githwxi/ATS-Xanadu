@@ -65,6 +65,7 @@ D0E = "./dynexp0.sats"
 #typedef t0str = $S0E.t0str
 (* ****** ****** *)
 #typedef g0exp = $S0E.g0exp
+#typedef g0mag = $S0E.g0mag
 (* ****** ****** *)
 #typedef sort0 = $S0E.sort0
 #typedef s0exp = $S0E.s0exp
@@ -88,6 +89,8 @@ l0s0e_RBRACE = $S0E.l0s0e_RBRACE
 (* ****** ****** *)
 #typedef g0explst = $S0E.g0explst
 #typedef g0expopt = $S0E.g0expopt
+(* ****** ****** *)
+#typedef g0maglst = $S0E.g0maglst
 (* ****** ****** *)
 #typedef s0expopt = $S0E.s0expopt
 #typedef sort0opt = $S0E.sort0opt
@@ -191,6 +194,7 @@ fun preadx0_s0qid: fpreadx0(s0qid)
 fun preadx0_d0qid: fpreadx0(d0qid)
 (* ****** ****** *)
 fun preadx0_g0exp: fpreadx0(g0exp)
+fun preadx0_g0mag: fpreadx0(g0mag)
 (* ****** ****** *)
 fun preadx0_sort0: fpreadx0(sort0)
 fun preadx0_s0exp: fpreadx0(s0exp)
@@ -209,6 +213,7 @@ fun preadx0_s0tdf: fpreadx0(s0tdf)
 #symload preadx0 with preadx0_d0qid
 (* ****** ****** *)
 #symload preadx0 with preadx0_g0exp
+#symload preadx0 with preadx0_g0mag
 (* ****** ****** *)
 #symload preadx0 with preadx0_sort0
 #symload preadx0 with preadx0_s0exp
@@ -245,6 +250,9 @@ fun
 preadx0_g0explst: fpreadx0(g0explst)
 fun
 preadx0_g0expopt: fpreadx0(g0expopt)
+(* ****** ****** *)
+fun
+preadx0_g0maglst: fpreadx0(g0maglst)
 (* ****** ****** *)
 fun
 preadx0_sort0lst: fpreadx0(sort0lst)

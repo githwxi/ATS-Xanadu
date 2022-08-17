@@ -337,6 +337,10 @@ D0Cextern _ =>
 f0_extern(tenv, d0cl)
 //
 |
+D0Cdefine _ =>
+f0_define(tenv, d0cl)
+//
+|
 D0Clocal0
 ( tbeg
 , dcs1, topt
@@ -709,6 +713,49 @@ d1ecl(loc0, D1Cextern(tknd, dcl1))
 end (* let *) // end of [f0_extern]
 //
 (* ****** ****** *)
+//
+fun
+f0_define
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
+let
+//
+val loc0 = d0cl.lctn()
+//
+val-
+D0Cdefine
+( tknd
+, geid
+, gmas, gedf) = d0cl.node()
+//
+val
+geid =
+trans01_i0dnt(tenv, geid)
+val
+gmas =
+trans01_g0maglst(tenv, gmas)
+//
+val
+gedf =
+(
+case+ gedf of
+|
+G0EDFnone() =>
+optn_nil((*void*))
+|
+G0EDFsome(topt,g0e1) =>
+optn_cons
+(trans01_g0exp(tenv, g0e1))
+) : g1expopt // end of [val(gedf)]
+//
+in
+d1ecl_make_node
+( loc0
+, D1Cdefine(tknd, geid, gmas, gedf))
+end (* let *) // end of [f0_define]
+//
+(* ****** ****** *)
 
 fun
 f0_abssort
@@ -728,7 +775,7 @@ tid0 = trans01_i0dnt(tenv, tid0)
 //
 in
 d1ecl(loc0, D1Cabssort(tknd, tid0))
-end // end of [f0_abssort]
+end (*let*) // end of [f0_abssort]
 
 (* ****** ****** *)
 

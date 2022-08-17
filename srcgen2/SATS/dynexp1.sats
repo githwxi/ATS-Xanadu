@@ -131,10 +131,17 @@ d1lab_fprint
 //
 (* ****** ****** *)
 //
+#typedef g1eid = token
+//
+(* ****** ****** *)
+//
 #typedef d1pid = token
-#typedef d1eid = token
 #typedef d0pid = $S0E.d0pid
+//
+(*
+#typedef d1eid = token
 #typedef d0eid = $S0E.d0eid
+*)
 //
 (* ****** ****** *)
 //
@@ -728,11 +735,11 @@ d1ecl_node =
 //
 | D1Cdefine of
   ( token
-  , g0eid
+  , g1eid
   , g1maglst(*arg*), g1expopt)
 | D1Cmacdef of
   ( token
-  , g0eid
+  , g1eid
   , g1maglst(*arg*), d1expopt)
 //
 | D1Cabssort of
