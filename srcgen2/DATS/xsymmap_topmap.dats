@@ -156,11 +156,13 @@ endloc (*local*) // end of [  local(topmap)  ]
 topmap_insert_kxs
 {itm}( map, kxs ) =
 (
-loop(kxs) ) where
+loop(map, kxs) ) where
 {
 fnx
 loop
-( kxs
+( map
+: topmap(itm)
+, kxs
 : list_vt@(key,itm)): void =
 (
 case+ kxs of
@@ -170,12 +172,65 @@ list_vt_nil
 | ~
 list_vt_cons
 ( kx1, kxs ) =>
-loop(kxs) where {
+loop(map, kxs) where {
   val () =
   topmap_insert_any(map, kx1.0, kx1.1)
 } // end of-(list_vt_cons)
-) (* end of [loop(kxs)] *)
+) (* end of [loop(map, kxs)] *)
 } (*where*)//end-of-[topmap_insert_kxs(map,kxs)]
+
+(* ****** ****** *)
+
+#implfun
+topmap_insmix_any
+  {itm}
+( map
+, k0, x0, mix ) =
+let
+val opt =
+topmap_search_opt(map, k0)
+in//let
+//
+case+ opt of
+| ~
+optn_vt_nil() =>
+topmap_insert_any(map, k0, x0)
+| ~
+optn_vt_cons(x1) =>
+topmap_insert_any(map, k0, mix(x0, x1))
+//
+end (*let*)//end(topmap_insmix_any(map,k0,x0,mix))
+
+(* ****** ****** *)
+
+#implfun
+topmap_insmix_kxs
+  {itm}
+( map, kxs, mix ) =
+(
+loop(map, kxs)) where
+{
+#vwtpdef
+topmap = topmap( itm )
+fnx
+loop
+( map: topmap
+, kxs
+: list_vt@(key,itm)): void =
+(
+case+ kxs of
+| ~
+list_vt_nil
+( (*void*) ) => ()
+| ~
+list_vt_cons
+( kx1, kxs ) =>
+loop(map, kxs) where {
+  val () =
+  topmap_insmix_any(map, kx1.0, kx1.1, mix)
+} // end of-(list_vt_cons)
+) (* end of [loop(map,kxs)] *)
+} (*where*)//end-of-[topmap_insmix_kxs(map,kxs,mix)]
 
 (* ****** ****** *)
 

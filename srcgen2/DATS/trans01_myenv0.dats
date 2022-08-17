@@ -49,6 +49,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xsymmap.sats"
 (* ****** ****** *)
+#staload "./../SATS/xfixity.sats"
+(* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
@@ -58,6 +60,29 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
+(* ****** ****** *)
+
+fun
+mix_fixty_fixty
+(x0: fixty, x1: fixty): fixty =
+(
+case+ x0 of
+|
+FIXTYpre(p0) =>
+( case+ x1 of
+  | FIXTYinf
+    (p1, a1) =>
+    FIXTYpreinf(p0, p1, a1) | _ => x0
+) (* end of [FIXTYinf] *)
+|
+FIXTYinf(p0, a0) =>
+( case+ x1 of
+  | FIXTYpre(p1) =>
+    FIXTYpreinf(p1, p0, a0) | _ => x0
+) (* end of [FIXTYinf] *)
+| _ (* non-FIXTYpre-FIXTYinf *) => x0
+)
+
 (* ****** ****** *)
 
 local
