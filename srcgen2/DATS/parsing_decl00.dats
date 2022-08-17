@@ -72,6 +72,8 @@ lctn with d0qid_get_lctn//staexp0
 lctn with g0nam_get_lctn//staexp0
 #symload
 lctn with g0exp_get_lctn//staexp0
+#symload
+lctn with g0mag_get_lctn//staexp0
 (* ****** ****** *)
 //
 #symload
@@ -173,6 +175,12 @@ optn_vt_cons(id0.lctn()+tend.lctn())
 fun
 p1_i0dntseq: p1_fun(i0dntlst)
 //
+(* ****** ****** *)
+#extern
+fun
+p1_g0magseq: p1_fun(g0maglst)
+(* ****** ****** *)
+//
 #extern
 fun p1_precopt: p1_fun(precopt)
 #extern
@@ -186,7 +194,17 @@ fun p1_precint: p1_fun(precint)
 p1_i0dntseq
 ( buf, err ) =
 list_vt2t
-(ps_p1fun{i0dnt}(buf, err, p1_i0dnt))
+( ps_p1fun
+  {i0dnt}(buf, err, p1_i0dnt))
+//
+(* ****** ****** *)
+//
+#implfun
+p1_g0magseq
+( buf, err ) =
+list_vt2t
+( ps_p1fun
+  {g0mag}(buf, err, p1_g0mag))
 //
 (* ****** ****** *)
 //
@@ -422,7 +440,8 @@ let
 in
 err := e00;
 d0ecl_make_node
-(lres, D0Clocal(tbeg,head,tmid,body,tend))
+( lres
+, D0Clocal0(tbeg, head, tmid, body, tend))
 end (*let*) // end of [ T_LOCAL() ]
 //
 |
@@ -775,6 +794,50 @@ in
 err := e00;
 d0ecl_make_node(lres, D0Cextern(tknd, dcl0)))
 end (*let*) // end of [T_SRP_EXTERN]
+//
+(* ****** ****** *)
+//
+|
+T_SRP_DEFINE() => let
+//
+val tknd = tok
+val (  ) = buf.skip1()
+//
+val gid0 =
+  p1_g0eid(buf, err)
+val gmas =
+  p1_g0magseq(buf, err)
+val gedf = p1_g0edf(buf, err)
+//
+val lres =
+(
+case+ gedf of
+| G0EDFnone
+  ((*void*)) =>
+(
+  case+ gmas of
+  |
+  list_nil _ =>
+  (
+    gid0.lctn()
+  )
+  |
+  list_cons _ =>
+  (
+    gid0.lctn() + larg
+  ) where
+  {
+    val larg = lctn(list_last(gmas))
+  }
+)
+| G0EDFsome
+  (topt, g0e1) => gid0.lctn() + g0e1.lctn()
+) : loc_t // end of [ val(lres) ]
+//
+in
+err := e00;
+d0ecl(lres, D0Cdefine(tknd, gid0, gmas, gedf))
+end (*let*) // end of [T_SRP_DEFINE]
 //
 (* ****** ****** *)
 //

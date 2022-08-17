@@ -81,6 +81,8 @@ S0E = "./staexp0.sats"
 #typedef t0flt = $S0E.t0flt
 #typedef t0str = $S0E.t0str
 (* ****** ****** *)
+#typedef g0eid = $S0E.g0eid
+(* ****** ****** *)
 #typedef s0tid = $S0E.s0tid
 #typedef s0aid = $S0E.s0aid
 #typedef s0eid = $S0E.s0eid
@@ -92,6 +94,7 @@ S0E = "./staexp0.sats"
 (* ****** ****** *)
 #typedef g0nam = $S0E.g0nam
 #typedef g0exp = $S0E.g0exp
+#typedef g0mag = $S0E.g0mag
 (* ****** ****** *)
 //
 #typedef sort0 = $S0E.sort0
@@ -119,6 +122,8 @@ S0E = "./staexp0.sats"
 (* ****** ****** *)
 #typedef g0explst = list(g0exp)
 #typedef g0expopt = optn(g0exp)
+(* ****** ****** *)
+#typedef g0maglst = list(g0mag)
 (* ****** ****** *)
 #typedef sort0lst = list(sort0)
 #typedef sort0opt = optn(sort0)
@@ -857,25 +862,40 @@ D0Cstatic of (token, d0ecl)
 D0Cextern of (token, d0ecl)
 //
 |
-D0Clocal of
+D0Cdefine of
+(
+token(*tknd*),
+g0eid(* fun *),
+g0maglst(*arg*), g0edf(*def*))
+|
+D0Cmacdef of
+(
+token(*tknd*),
+g0eid(* fun *),
+g0maglst(*arg*), d0edf(*def*))
+//
+|
+D0Clocal0 of
 ( token(*LOCAL*)
 , d0eclist(*head*)
 , tokenopt(* IN *)
 , d0eclist(*body*), token(*END*))
 //
 |
-D0Cabssort of (token, s0tid)
+D0Cabssort of
+(token(*ABSSORT*), s0tid(*name*))
 //
 |
 D0Cstacst0 of
-( token
-, s0eid
-, t0maglst, token(*:*), sort0)
+(
+token,
+s0eid(*name*),
+t0maglst(*arg*), token(*:*), sort0)
 //
 |
 D0Csortdef of
 ( token(*tknd*)
-, s0tid, token(*=*), s0tdf(*def*))
+, s0tid(*name*), token(*=*), s0tdf)
 //
 |
 D0Csexpdef of
@@ -886,12 +906,12 @@ D0Csexpdef of
 |
 D0Cabstype of
 ( token
-, s0eid
-, t0maglst
-, sort0opt, a0tdf(*def*))
+, s0eid(*name*)
+, t0maglst, sort0opt, a0tdf(*def*))
 |
 D0Cabsopen of
-(token(*ABSOPEN*), s0qid)
+(
+token(*ABSOPEN*), s0qid(*qual-id*))
 |
 D0Cabsimpl of
 ( token
@@ -903,7 +923,7 @@ D0Csymload of
 ( token
 , s0ymb
 , token(*WITH*)
-, d0qid(*qual-id*), g0expopt)
+, d0qid(*qual-id*), g0expopt(*prec*))
 //
 |
 D0Cinclude of (token, g0exp)//inclusion
@@ -985,10 +1005,23 @@ precint =
 //
 (* ****** ****** *)
 //
+and g0edf =
+| G0EDFnone of ()
+| G0EDFsome of (tokenopt, g0exp(*def*))
+//
+and d0edf =
+| D0EDFnone of ()
+| D0EDFsome of (tokenopt, d0exp(*def*))
+//
+(* ****** ****** *)
+//
 and a0tdf =
-| A0TDFsome of () // unspecified
-| A0TDFlteq of (token(*"<="*), s0exp)
-| A0TDFeqeq of (token(*"=="*), s0exp)
+|
+A0TDFsome of () // unspecified
+|
+A0TDFlteq of (token(*"<="*), s0exp(*def*))
+|
+A0TDFeqeq of (token(*"=="*), s0exp(*def*))
 //
 (* ****** ****** *)
 //

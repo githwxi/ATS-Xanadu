@@ -173,8 +173,7 @@ print(tok.lctn(), ":", tok.node())
 in//local
 (* ****** ****** *)
 //
-val
-dpar =
+val dpar =
 d0parsed_from_fpath
 (0(*sta*), "./mytest.sats")
 //

@@ -386,9 +386,9 @@ print
 ("D1Cstatic(",tknd,";",dcl1,")")
 //
 |
-D1Clocal
+D1Clocal0
 (head,body) =>
-print("D1Clocal(",head,";",body,")")
+print("D1Clocal0(",head,";",body,")")
 //
 |
 D1Cabssort

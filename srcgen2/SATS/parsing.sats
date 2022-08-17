@@ -78,6 +78,7 @@ D0E = "./dynexp0.sats"
 //
 #typedef g0nam = $S0E.g0nam
 #typedef g0exp = $S0E.g0exp
+#typedef g0mag = $S0E.g0mag
 //
 #typedef sort0 = $S0E.sort0
 #typedef s0exp = $S0E.s0exp
@@ -121,9 +122,9 @@ D0E = "./dynexp0.sats"
 #typedef d0gua = $D0E.d0gua
 #typedef d0gpt = $D0E.d0gpt
 (* ****** ****** *)
-
+#typedef g0edf = $D0E.g0edf
+#typedef d0edf = $D0E.d0edf
 #typedef a0tdf = $D0E.a0tdf
-
 (* ****** ****** *)
 
 #typedef s0explst = $S0E.s0explst
@@ -317,6 +318,7 @@ fun p1_s0ymb: p1_fun(s0ymb)
 //
 fun p1_g0nam: p1_fun(g0nam)
 fun p1_g0exp: p1_fun(g0exp)
+fun p1_g0mag: p1_fun(g0mag)
 //
 (* ****** ****** *)
 //
@@ -484,6 +486,12 @@ fp_fun(syn:type) =
 fun
 fp_d0ecl: fp_fun(d0ecl)
 //
+(* ****** ****** *)
+//
+fun
+p1_g0edf: p1_fun(g0edf)
+fun
+p1_d0edf: p1_fun(d0edf)
 fun
 p1_a0tdf: p1_fun(a0tdf)
 //
