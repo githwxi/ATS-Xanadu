@@ -82,6 +82,9 @@ topmap_search_opt
 {itm:tbox}
 ( map:
   topmap(itm), key: key): optn_vt(itm)
+//
+(* ****** ****** *)
+//
 fun
 topmap_insert_any
 {itm:tbox}
@@ -132,16 +135,54 @@ stkmap_search_opt
 {itm:tbox}
 ( map:
 ! stkmap(itm), key: key): optn_vt(itm)
+//
+(* ****** ****** *)
+//
 fun
 stkmap_insert_any
 {itm:tbox}
 ( map:
-& stkmap(itm) >> _, key: key, itm: itm): void
+& stkmap(itm) >> _, key, itm): void
 fun
 stkmap_insert_kxs
 {itm:tbox}
 ( map:
-& stkmap(itm) >> _, kxs: list_vt@(key,itm)): void
+& stkmap(itm) >> _, list_vt@(key,itm)): void
+//
+(* ****** ****** *)
+(*
+// HX-2022-08-18:
+// for inserting with mixing
+*)
+(* ****** ****** *)
+//
+fun
+topmap_insmix_any
+{itm:tbox}
+( map: topmap(itm)
+, key, itm, mix: (itm, itm) -> itm): void
+fun
+topmap_insmix_kxs
+{itm:tbox}
+( map: topmap(itm)
+, kxs
+: list_vt@(key,itm), mix: (itm,itm)->itm): void
+//
+(* ****** ****** *)
+//
+fun
+stkmap_insmix_any
+{itm:tbox}
+( map:
+& stkmap(itm) >> _
+, key, itm, mix: (itm, itm) -> itm): void
+fun
+stkmap_insmix_kxs
+{itm:tbox}
+( map:
+& stkmap(itm) >> _
+, kxs
+: list_vt@(key,itm), mix: (itm,itm)->itm): void
 //
 (* ****** ****** *)
 

@@ -354,12 +354,66 @@ list_vt_cons
 loop(map, kxs) where {
   val map = stkmap_cons(kx1.0, kx1.1, map)
 } // end of-(list_vt_cons)
-) (* end of [loop(kxs)] *)
+) (* end of [loop(map,kxs)] *)
 } (*where*)//end-of-[stkmap_insert_kxs(map,kxs)]
 
 (* ****** ****** *)
 
 endloc (*local*) // end of [ local(stkmap) ]
+
+(* ****** ****** *)
+
+#implfun
+stkmap_insmix_any
+  {itm}
+( map
+, k0, x0, mix ) =
+let
+val opt =
+stkmap_search_opt(map, k0)
+in//let
+//
+case+ opt of
+| ~
+optn_vt_nil() =>
+stkmap_insert_any(map, k0, x0)
+| ~
+optn_vt_cons(x1) =>
+stkmap_insert_any(map, k0, mix(x0, x1))
+//
+end (*let*)//end(stkmap_insmix_any(map,k0,x0,mix))
+
+(* ****** ****** *)
+
+#implfun
+stkmap_insmix_kxs
+  {itm}
+( map, kxs, mix ) =
+(
+loop(map, kxs)) where
+{
+#vwtpdef
+stkmap = stkmap( itm )
+fnx
+loop
+( map:
+& stkmap >> _
+, kxs
+: list_vt@(key,itm)): void =
+(
+case+ kxs of
+| ~
+list_vt_nil
+( (*void*) ) => ()
+| ~
+list_vt_cons
+( kx1, kxs ) =>
+loop(map, kxs) where {
+  val () =
+  stkmap_insmix_any(map, kx1.0, kx1.1, mix)
+} // end of-(list_vt_cons)
+) (* end of [loop(map,kxs)] *)
+} (*where*)//end-of-[stkmap_insmix_kxs(map,kxs,mix)]
 
 (* ****** ****** *)
 
