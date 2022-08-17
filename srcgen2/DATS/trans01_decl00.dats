@@ -512,7 +512,7 @@ in//let
 loop(tenv, id0s) where
 {
 val () =
-tr01env_insert_any(tenv, sym, fxty)
+tr01env_insmix_any(tenv, sym, fxty)
 }
 endlet//end-of-[list_cons(id0,ids)]
 ) (*case+*) // end of [loop(tenv,ids)]

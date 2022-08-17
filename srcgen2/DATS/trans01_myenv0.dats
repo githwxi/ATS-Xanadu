@@ -207,6 +207,8 @@ val+
 @TR01ENV
 (topmap, !stkmap) = tenv
 //
+val mix = mix_fixty_fixty
+//
 in//let
 //
 $fold(tenv) where
@@ -218,8 +220,10 @@ val
 ((*void*)) =
 if
 stkmap_nilq(stkmap)
-then topmap_insert_kxs(topmap, kxs)
-else stkmap_insert_kxs(stkmap, kxs) }
+then
+topmap_insmix_kxs(topmap, kxs, mix)
+else
+stkmap_insmix_kxs(stkmap, kxs, mix) }
 //
 end (*let*)//end-of-(tr01env_pshloc2(tenv))
 //
@@ -260,10 +264,35 @@ in//let
 //
 if
 stkmap_nilq(stkmap)
-then topmap_insert_any(topmap, k0, x0)//top
-else stkmap_insert_any(stkmap, k0, x0)//inner
+then
+topmap_insert_any(topmap, k0, x0)//top
+else
+stkmap_insert_any(stkmap, k0, x0)//inner
 //
 end (*let*)//end-of(tr01env_insert_any(tenv,k0,x0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr01env_insmix_any
+  (tenv, k0, x0) = let
+//
+val+
+@TR01ENV
+(topmap, !stkmap) = tenv
+//
+val mix = mix_fixty_fixty
+//
+in//let
+//
+if
+stkmap_nilq(stkmap)
+then
+topmap_insmix_any(topmap, k0, x0, mix)//top
+else
+stkmap_insmix_any(stkmap, k0, x0, mix)//inner
+//
+end (*let*)//end-of(tr01env_insmix_any(tenv,k0,x0))
 //
 (* ****** ****** *)
 
