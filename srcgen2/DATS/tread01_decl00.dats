@@ -73,6 +73,23 @@ d1ecl
 (dcl.lctn(), D1Cerrck(lvl, dcl)))
 //
 (* ****** ****** *)
+fun
+d1ecl_define_errck
+( loc0: loc_t
+, tknd: token
+, geid: token
+, gmas: g1maglst
+, gopt: g1expopt): d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+(
+lvl+1,
+d1ecl_make_node
+(loc0,D1Cdefine(tknd,geid,gmas,gopt)))
+end (*let*)//end-of-[d1ecl_define_errck]
+(* ****** ****** *)
 
 #implfun
 tread01_d1ecl
@@ -82,7 +99,7 @@ case+
 d1cl.node() of
 //
 |
-D1Cdefine
+D1Cdefine _ => f0_define(d1cl, err)
 //
 |
 _(*otherwise*) =>
@@ -102,15 +119,39 @@ prerrln("tread01_d1ecl: loc0 = ", loc0)
 val (  ) =
 prerrln("tread01_d1ecl: d1cl = ", d1cl)
 //
+fun
+f0_define
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+//
+val-
+D1Cdefine
+( tknd
+, geid
+, gmas, gopt) = dcl.node()
+//
+val
+gopt = tread01_g1expopt(gopt, err)
+//
+in//let
+if
+(e00=err)
+then (dcl) else
+d1ecl_define_errck(loc0,tknd,geid,gmas,gopt)
+endlet // end of [ f0_define(dcl,err) ]
+//
 } (*where*) // end of [tread01_d1ecl(d1cl,err)]
 
 (* ****** ****** *)
-
+//
 #implfun
 tread01_d1eclist
   (  dcls, err  ) =
 list_tread01_fnp(dcls, err, tread01_d1ecl)
-
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_tread01_decl00.dats] *)

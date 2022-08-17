@@ -291,6 +291,10 @@ prerrln("tread01_g1exp: g1e0 = ", g1e0)
 tread01_g1explst
   (  g1es, err  ) =
 list_tread01_fnp(g1es, err, tread01_g1exp)
+#implfun
+tread01_g1expopt
+  (  gopt, err  ) =
+optn_tread01_fnp(gopt, err, tread01_g1exp)
 
 (* ****** ****** *)
 

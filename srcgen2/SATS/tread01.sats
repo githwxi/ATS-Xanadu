@@ -188,5 +188,14 @@ fun l1d1elst_fpemsg(FILR, l1d1elst): void
 (* ****** ****** *)
 fun d1eclist_fpemsg(FILR, d1eclist): void
 (* ****** ****** *)
+//
+fun
+d1parsed_fpemsg
+( out: FILR, dpar: d1parsed ): void
+fun
+d1eclistopt_fpemsg
+( out: FILR, dopt: d1eclistopt ): void
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_tread01.sats] *)

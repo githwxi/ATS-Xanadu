@@ -1673,9 +1673,9 @@ in//let
 case+
 dcl.node() of
 |
-D0Cerrck(lvl, dc1)  =>
+D0Cerrck(lvl, d1c)  =>
 (
-auxmain( out, dc1 );
+auxmain( out, d1c );
 println
 ("PREADX0-ERROR:",dcl.lctn(),":",dcl))
 //

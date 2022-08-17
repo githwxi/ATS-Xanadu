@@ -58,6 +58,50 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with sort1_get_lctn
+#symload node with sort1_get_node
+(* ****** ****** *)
+#symload lctn with s1exp_get_lctn
+#symload node with s1exp_get_node
+(* ****** ****** *)
+#symload lctn with d1pat_get_lctn
+#symload node with d1pat_get_node
+(* ****** ****** *)
+#symload lctn with d1exp_get_lctn
+#symload node with d1exp_get_node
+(* ****** ****** *)
+#symload lctn with d1ecl_get_lctn
+#symload node with d1ecl_get_node
+(* ****** ****** *)
+
+local
+
+in(*in-of-local*)
+
+#implfun
+d1ecl_fpemsg
+(out, dcl0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+dcl0.node() of
+|
+D1Cerrck(lvl, d1cl)  =>
+(
+(*
+auxmain( out, d1cl );
+*)
+println
+("TREAD01-ERROR:",dcl0.lctn(),":",dcl0))
+//
+| _(* otherwise *) => ((*void*))
+end (*let*)//end-of(d1ecl_fpemsg(out,dcl0))
+//
+endloc(*local*)//end-of(local(d1ecl_fpemsg))
+
+(* ****** ****** *)
 //
 #implfun
 sort1lst_fpemsg
@@ -99,6 +143,17 @@ list_foreach<d1exp>(d1es) where
 {
 #impltmp
 foreach$work<d1exp>(d1e1) = d1exp_fpemsg(out,d1e1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d1eclist_fpemsg
+(out, dcls) =
+list_foreach<d1ecl>(dcls) where
+{
+#impltmp
+foreach$work<d1ecl>(dcl1) = d1ecl_fpemsg(out,dcl1)
 }
 //
 (* ****** ****** *)

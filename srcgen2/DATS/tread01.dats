@@ -142,5 +142,42 @@ d1parsed(stadyn,nerror,source,parsed)
 end (*let*) // end of [d1parsed_tread01(dpar)]
 
 (* ****** ****** *)
+//
+#implfun
+tread01_d1eclistopt
+  (  dopt, err  ) =
+optn_tread01_fnp(dopt, err, tread01_d1eclist)
+//
+(* ****** ****** *)
+//
+#implfun
+d1parsed_fpemsg
+  (out, dpar) = let
+//
+val nerror =
+d1parsed_get_nerror(dpar)
+//
+in//let
+if
+(nerror > 0) then
+let
+val parsed =
+d1parsed_get_parsed(dpar)
+in
+d1eclistopt_fpemsg(out, parsed) end else ()
+end (*let*)//end-of-[d1parsed_fpemsg(out,dpar)]
+//
+(* ****** ****** *)
+//
+#implfun
+d1eclistopt_fpemsg
+  (out, dopt) =
+(
+case+ dopt of
+| optn_nil() => ((*void*))
+| optn_cons(d1cs) => d1eclist_fpemsg(out, d1cs)
+)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_tread01.dats] *)

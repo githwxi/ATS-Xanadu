@@ -2551,10 +2551,5 @@ preadx0_d0cstdclist
   (  lst, err  ) =
 list_preadx0_fnp(lst, err, preadx0_d0cstdcl)
 (* ****** ****** *)
-#implfun
-preadx0_d0eclistopt
-  (opt0, err) =
-optn_preadx0_fnp(opt0, err, preadx0_d0eclist)
-(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_preadx0_decl00.dats] *)
