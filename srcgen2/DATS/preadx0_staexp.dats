@@ -63,6 +63,9 @@ ATS_PACKNAME
 #symload lctn with g0exp_get_lctn
 #symload node with g0exp_get_node
 (* ****** ****** *)
+#symload lctn with g0mag_get_lctn
+#symload node with g0mag_get_node
+(* ****** ****** *)
 #symload lctn with sort0_get_lctn
 #symload node with sort0_get_node
 (* ****** ****** *)
@@ -242,7 +245,8 @@ end (*let*) // end of [g0exp_if0_errck]
 (* ****** ****** *)
 
 #implfun
-preadx0_g0exp(g0e, err) =
+preadx0_g0exp
+( g0e, err ) =
 (
 case+
 g0e.node() of
@@ -403,6 +407,66 @@ end (*let*) // end of [f_if0(g0e,err)]
 //
 } (*where*) // end of [preadx0_g0exp(g0e,err)]
 
+(* ****** ****** *)
+//
+#implfun
+preadx0_g0mag
+( gma, err ) =
+(
+case+ gma.node() of
+|
+G0MAGnone(tok) =>
+(err := err + 1; gma)
+|
+G0MAGsarg
+(tbeg, g0as, tend) =>
+let
+//
+val e00 = err
+//
+val g0as =
+preadx0_i0dntlst(g0as, err)
+//
+val (  ) =
+(
+case+
+tend.node() of
+| T_RBRACE() => ()
+| _ => (err := err+1)): void
+//
+in//let
+if
+(e00=err)
+then gma else
+g0mag_make_node
+(gma.lctn(),G0MAGsarg(tbeg, g0as, tend))
+endlet // end of [G0MAGsarg(_,_,_)]
+|
+G0MAGdarg
+(tbeg, g0as, tend) =>
+let
+//
+val e00 = err
+//
+val g0as =
+preadx0_i0dntlst(g0as, err)
+//
+val (  ) =
+(
+case+
+tend.node() of
+| T_RBRACE() => ()
+| _ => (err := err+1)): void
+//
+in//let
+if
+(e00=err)
+then gma else
+g0mag_make_node
+(gma.lctn(), G0MAGsarg(tbeg, g0as, tend))
+endlet // end of [G0MAGdarg(_,_,_)]
+) (*case+*) // end of [preadx0_g0mag(gma,err)]
+//
 (* ****** ****** *)
 //
 fun
@@ -1657,6 +1721,11 @@ list_preadx0_fnp(lst, err, preadx0_g0exp)
 preadx0_g0expopt
 (   opt, err   ) =
 optn_preadx0_fnp(opt, err, preadx0_g0exp)
+(* ****** ****** *)
+#implfun
+preadx0_g0maglst
+(   lst, err   ) =
+list_preadx0_fnp(lst, err, preadx0_g0mag)
 (* ****** ****** *)
 //
 #implfun

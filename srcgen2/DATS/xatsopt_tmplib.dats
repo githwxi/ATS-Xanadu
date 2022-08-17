@@ -219,14 +219,14 @@ d0qid_fprint(g_print$out<>(), qid)
 (* ****** ****** *)
 //
 #impltmp
-g_print<g0nam>(nam) =
-g0nam_fprint(g_print$out<>(), nam)
+g_print<g0nam>(gnm) =
+g0nam_fprint(g_print$out<>(), gnm)
 #impltmp
-g_print<g0exp>(exp) =
-g0exp_fprint(g_print$out<>(), exp)
+g_print<g0exp>(g0e) =
+g0exp_fprint(g_print$out<>(), g0e)
 #impltmp
-g_print<g0mag>(mag) =
-g0mag_fprint(g_print$out<>(), mag)
+g_print<g0mag>(gma) =
+g0mag_fprint(g_print$out<>(), gma)
 //
 (* ****** ****** *)
 #impltmp
@@ -576,11 +576,14 @@ d1qid_fprint(g_print$out<>(), qid)
 (* ****** ****** *)
 //
 #impltmp
-g_print<g1nam>(g1n) =
-g1nam_fprint(g_print$out<>(), g1n)
+g_print<g1nam>(gnm) =
+g1nam_fprint(g_print$out<>(), gnm)
 #impltmp
 g_print<g1exp>(g1e) =
 g1exp_fprint(g_print$out<>(), g1e)
+#impltmp
+g_print<g1mag>(gma) =
+g1mag_fprint(g_print$out<>(), gma)
 //
 (* ****** ****** *)
 //

@@ -178,6 +178,57 @@ end (*let*)//end-of-[d0ecl_fixity_errck]
 (* ****** ****** *)
 //
 fun
+d0ecl_static_errck
+( loc0: loc_t
+, tknd: token
+, dcl1: d0ecl): d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+( lvl+1
+, d0ecl(loc0, D0Cstatic(tknd, dcl1)) )
+end (*let*)//end-of-[d0ecl_static_errck]
+//
+fun
+d0ecl_extern_errck
+( loc0: loc_t
+, tknd: token
+, dcl1: d0ecl): d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+( lvl+1
+, d0ecl(loc0, D0Cextern(tknd, dcl1)) )
+end (*let*)//end-of-[d0ecl_extern_errck]
+//
+(* ****** ****** *)
+//
+fun
+d0ecl_define_errck
+( loc0
+: loc_t
+, tknd
+: token
+, geid
+: g0eid
+, gmas
+: g0maglst
+, gedf: g0edf): d0ecl =
+let
+val lvl = 0
+in//let
+d0ecl_errck
+( lvl+1
+, d0ecl_make_node
+  ( loc0
+  , D0Cdefine(tknd,geid,gmas,gedf)) )
+end (*let*)//end-of-[d0ecl_define_errck]
+//
+(* ****** ****** *)
+//
+fun
 d0ecl_local0_errck
 ( loc0
 : loc_t
@@ -1207,6 +1258,17 @@ D0Cfixity _ =>
 f0_fixity(dcl, err)
 //
 |
+D0Cstatic _ =>
+f0_static(dcl, err)
+|
+D0Cextern _ =>
+f0_extern(dcl, err)
+//
+|
+D0Cdefine _ =>
+f0_define(dcl, err)
+//
+|
 D0Clocal0 _ =>
 f0_local0( dcl, err )
 //
@@ -1442,6 +1504,97 @@ val tint =
 f1_tokint(tint, err) in pint end
 ) (*case+*)// end-of-[f1_precint(pint,err)]
 //
+(* ****** ****** *)
+//
+fun
+f0_static
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val-
+D0Cstatic
+( tknd, dcl1) = dcl.node()
+//
+val dcl1 = preadx0_d0ecl(dcl1, err)
+//
+in
+if
+(err=e00)
+then dcl else
+d0ecl_static_errck(dcl.lctn(), tknd, dcl1)
+end (*let*) // end of [ f0_static(dcl,err) ]
+//
+fun
+f0_extern
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val-
+D0Cextern
+( tknd, dcl1) = dcl.node()
+//
+val dcl1 = preadx0_d0ecl(dcl1, err)
+//
+in
+if
+(err=e00)
+then dcl else
+d0ecl_extern_errck(dcl.lctn(), tknd, dcl1)
+end (*let*) // end of [ f0_extern(dcl,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_define
+( dcl: d0ecl
+, err: &sint >> _): d0ecl =
+let
+//
+val e00 = err
+//
+val-
+D0Cdefine
+( tknd
+, geid
+, gmas, gedf) = dcl.node()
+//
+val geid =
+preadx0_i0dnt( geid, err )
+val gmas =
+preadx0_g0maglst(gmas, err)
+//
+val gedf =
+(
+case+ gedf of
+| 
+G0EDFnone() => gedf
+|
+G0EDFsome(topt,g0e1) =>
+let
+val e00 = err
+val
+g0e1 =
+preadx0_g0exp( g0e1, err )
+in//let
+if
+(e00=err)
+then gedf else
+G0EDFsome(topt, g0e1) end): g0edf
+//
+in//let
+if
+(err=e00)
+then dcl else
+d0ecl_define_errck
+(dcl.lctn(), tknd, geid, gmas, gedf)
+end (*let*) // end of [ f0_define(dcl,err) ]
+
 (* ****** ****** *)
 //
 fun

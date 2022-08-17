@@ -88,23 +88,15 @@ _(*TRANS01*) = "./trans01.dats"
 (* ****** ****** *)
 #symload lctn with g0exp_get_lctn
 #symload node with g0exp_get_node
-#symload lctn with g1exp_get_lctn
-#symload node with g1exp_get_node
 (* ****** ****** *)
-#symload g1exp with g1exp_make_node
+#symload lctn with g0mag_get_lctn
+#symload node with g0mag_get_node
 (* ****** ****** *)
 #symload lctn with sort0_get_lctn
 #symload node with sort0_get_node
-#symload lctn with sort1_get_lctn
-#symload node with sort1_get_node
 (* ****** ****** *)
 #symload lctn with s0exp_get_lctn
 #symload node with s0exp_get_node
-#symload lctn with s1exp_get_lctn
-#symload node with s1exp_get_node
-(* ****** ****** *)
-#symload sort1 with sort1_make_node
-#symload s1exp with s1exp_make_node
 (* ****** ****** *)
 #symload lctn with s0tcn_get_lctn
 #symload node with s0tcn_get_node
@@ -133,6 +125,12 @@ _(*TRANS01*) = "./trans01.dats"
 (* ****** ****** *)
 #symload lctn with d0typ_get_lctn
 #symload node with d0typ_get_node
+(* ****** ****** *)
+#symload g1exp with g1exp_make_node
+#symload g1mag with g1mag_make_node
+(* ****** ****** *)
+#symload sort1 with sort1_make_node
+#symload s1exp with s1exp_make_node
 (* ****** ****** *)
 #symload s1mag with s1mag_make_node
 #symload t1mag with t1mag_make_node
@@ -920,6 +918,16 @@ endloc(*local*)//end-of-[local(trans01_g0exp)]
 (* ****** ****** *)
 
 #implfun
+trans01_g0mag
+(tenv, g0ma) =
+(
+case+
+g0ma.node() of
+)
+
+(* ****** ****** *)
+
+#implfun
 trans01_sort0
 (tenv, s0t0) = let
 (* ****** ****** *)
@@ -929,7 +937,7 @@ val loc0 = s0e0.lctn()
 //
 val (  ) =
 prerrln(
-"trans01_s0exp: loc0 = ", loc0
+"trans01_sort0: loc0 = ", loc0
 )(*prerrln*)
 val () =
 prerrln(
@@ -1950,6 +1958,13 @@ list_trans01_fnp(tenv, g0es, trans01_g0exp)
 trans01_g0expopt
   (tenv, opt0) =
 optn_trans01_fnp(tenv, opt0, trans01_g0exp)
+//
+(* ****** ****** *)
+//
+#implfun
+trans01_g0maglst
+  (tenv, gmas) =
+list_trans01_fnp(tenv, gmas, trans01_g0mag)
 //
 (* ****** ****** *)
 
