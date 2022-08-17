@@ -181,6 +181,23 @@ g1exp_errck
 (lvl , g1exp( loc , G1Elist( ges ) ))
 endlet // end of [g1exp_list_errck(...)]
 (* ****** ****** *)
+fun
+g1exp_cond_errck
+( loc
+: loc_t
+, ge1: g1exp
+, ge2: g1exp
+, ge3: g1exp): g1exp =
+let
+val lvl =
+gmax
+(errvl(ge1)
+,errvl(ge2),errvl(ge3))
+in//let
+g1exp_errck
+(lvl , g1exp(loc,G1Eif0(ge1,ge2,ge3)))
+endlet // end of [g1exp_cond_errck(...)]
+(* ****** ****** *)
 
 #implfun
 tread01_g1exp
@@ -266,6 +283,9 @@ then (g1e0)
 else g1exp_list_errck(loc0, g1es )
 endlet // end of [ G1Elist( g1es ) ]
 //
+|
+G1Eif0(_,_,_) => f0_cond(g1e0, err)
+//
 | _(*otherwise*) =>
 let
 val lvl = 1
@@ -283,6 +303,32 @@ prerrln("tread01_g1exp: loc0 = ", loc0)
 val (  ) =
 prerrln("tread01_g1exp: g1e0 = ", g1e0)
 //
+fun
+f0_cond
+(g1e: g1exp
+,err: &sint >> _): g1exp =
+let
+//
+val e00 = err
+//
+val-
+G1Eif0
+(g1e1,g1e2,g1e3) = g1e.node()
+//
+val
+g1e1 = tread01_g1exp(g1e1, err)
+val
+g1e2 = tread01_g1exp(g1e2, err)
+val
+g1e3 = tread01_g1exp(g1e3, err)
+//
+in//let
+if
+(e00=err)
+then (g1e) else
+g1exp_cond_errck(loc0,g1e1,g1e2,g1e3)
+endlet // end-of-[ f0_cond(g1e,err) ]
+
 } (*where*) // end of [tread01_g1exp(g1e0,err)]
 
 (* ****** ****** *)
