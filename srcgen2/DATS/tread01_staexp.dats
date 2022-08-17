@@ -85,21 +85,58 @@ g1exp_errvl with g1exp_errvl_a1
 #symload errvl with g1exp_errvl_a1
 //
 (* ****** ****** *)
+//
+fun
+g1exp_errvl_a2
+(ge1: g1exp
+,ge2: g1exp): sint =
+gmax
+(errvl(ge1),errvl(ge2))
+#symload
+g1exp_errvl with g1exp_errvl_a2
+#symload errvl with g1exp_errvl_a2
+//
+(* ****** ****** *)
+//
+#extern
+fun
+g1exp_errvl_ges
+(ges: g1explst): sint
+//
+#implfun
+g1exp_errvl_ges(ges) =
+(
+case+ ges of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(ge1,ges) =>
+(
+gmax
+( errvl(ge1),g1exp_errvl_ges(ges)))
+endcas // end of [ case+(ges) ]
+)
+//
+#symload errvl with g1exp_errvl_ges
+//
+(* ****** ****** *)
 fun
 g1exp_b0sh_errck
 (loc: loc_t): g1exp =
-g1exp_errck(1, g1exp(loc, G1Eb0sh()))
+g1exp_errck
+(1, g1exp(loc, G1Eb0sh()))
 (* ****** ****** *)
 fun
 g1exp_b1sh_errck
 (loc: loc_t
 ,g1e: g1exp): g1exp =
-g1exp_errck(1, g1exp(loc, G1Eb1sh(g1e)))
+g1exp_errck
+(1, g1exp(loc, G1Eb1sh(g1e)))
 (* ****** ****** *)
 fun
 g1exp_a0pp_errck
 (loc: loc_t): g1exp =
-g1exp_errck(1, g1exp(loc, G1Ea0pp()))
+g1exp_errck(1,g1exp(loc,G1Ea0pp()))
 (* ****** ****** *)
 fun
 g1exp_a1pp_errck
@@ -108,10 +145,41 @@ g1exp_a1pp_errck
 ,ge2: g1exp): g1exp =
 let
 val lvl =
-gmax(errvl(ge1), errvl(ge2))
+gmax
+(errvl(ge1), errvl(ge2))
 in//let
 g1exp_errck
-(lvl, g1exp(loc, G1Ea1pp(ge1, ge2))) end
+(lvl, g1exp(loc, G1Ea1pp(ge1, ge2)))
+endlet // end of [g1exp_a1pp_errck(...)]
+(* ****** ****** *)
+fun
+g1exp_a2pp_errck
+(loc: loc_t
+,ge1: g1exp
+,ge2: g1exp
+,ge3: g1exp): g1exp =
+let
+val lvl =
+gmax
+( errvl(ge1)
+, errvl(ge2), errvl(ge3))
+in//let
+g1exp_errck
+(lvl,g1exp(loc,G1Ea2pp(ge1,ge2,ge3)))
+endlet // end of [g1exp_a2pp_errck(...)]
+(* ****** ****** *)
+fun
+g1exp_list_errck
+( loc
+: loc_t
+, ges
+: g1explst ): g1exp =
+let
+val lvl = errvl(ges)
+in//let
+g1exp_errck
+(lvl , g1exp( loc , G1Elist( ges ) ))
+endlet // end of [g1exp_list_errck(...)]
 (* ****** ****** *)
 
 #implfun
@@ -166,14 +234,46 @@ g1exp_a1pp_errck(loc0, g1e1, g1e2)
 endlet // end of [G1Ea1pp(g1e1,g1e2)]
 //
 |
-_(*otherwise*) =>
+G1Ea2pp
+(g1e1, g1e2, g1e3) =>
+let
+//
+val e00 = err
+//
+val g1e1 =
+  tread01_g1exp(g1e1, err)
+val g1e2 =
+  tread01_g1exp(g1e2, err)
+val g1e3 =
+  tread01_g1exp(g1e3, err)
+in//let
+if
+(e00=err)
+then (g1e0) else
+g1exp_a2pp_errck(loc0,g1e1,g1e2,g1e3)
+endlet // end-[G1Ea2pp(g1e1,g1e2,g1e3)]
+//
+|
+G1Elist(g1es) =>
+let
+val e00 = err
+val g1es =
+  tread01_g1explst(g1es, err)
+in//let
+if
+(e00=err)
+then (g1e0)
+else g1exp_list_errck(loc0, g1es )
+endlet // end of [ G1Elist( g1es ) ]
+//
+| _(*otherwise*) =>
 let
 val lvl = 1
 in//let
-err := err+1; g1exp_errck(lvl, g1e0)
-endlet // end of [_(*otherwise*)]
+(err := err+1; g1exp_errck(lvl, g1e0))
+endlet // end of [ _(* otherwise *) ]
 //
-) where // end-of(case(g1e0.node()))
+) where // end-of-[ case(g1e0.node()) ]
 {
 //
 val loc0 = g1e0.lctn()
