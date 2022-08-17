@@ -77,6 +77,33 @@ d1pat
 ) (*case+*) //end-of-[d1pat_errck(_,_)]
 //
 (* ****** ****** *)
+//
+fun
+d1pat_errvl_a1
+(d1p: d1pat): sint =
+(
+case+ d1p.node() of
+|
+D1Perrck
+(lvl, _) => lvl | _ => 0
+)
+#symload
+d1pat_errvl with d1pat_errvl_a1
+#symload errvl with d1pat_errvl_a1
+//
+(* ****** ****** *)
+//
+fun
+d1pat_errvl_a2
+(dp1: d1pat
+,dp2: d1pat): sint =
+gmax
+(errvl(dp1),errvl(dp2))
+#symload
+d1pat_errvl with d1pat_errvl_a2
+#symload errvl with d1pat_errvl_a2
+//
+(* ****** ****** *)
 
 #implfun
 tread01_d1pat
@@ -116,6 +143,33 @@ d1exp_errck
 d1exp
 (d1e.lctn(), D1Eerrck(lvl, d1e))
 ) (*case+*) // end-of-[d1exp_errck(_,_)]
+//
+(* ****** ****** *)
+//
+fun
+d1exp_errvl_a1
+(d1e: d1exp): sint =
+(
+case+ d1e.node() of
+|
+D1Eerrck
+(lvl, _) => lvl | _ => 0
+)
+#symload
+d1exp_errvl with d1exp_errvl_a1
+#symload errvl with d1exp_errvl_a1
+//
+(* ****** ****** *)
+//
+fun
+d1exp_errvl_a2
+(de1: d1exp
+,de2: d1exp): sint =
+gmax
+(errvl(de1),errvl(de2))
+#symload
+d1exp_errvl with d1exp_errvl_a2
+#symload errvl with d1exp_errvl_a2
 //
 (* ****** ****** *)
 
