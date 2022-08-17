@@ -61,11 +61,51 @@ ATS_PACKNAME
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/staexp1.sats"
 (* ****** ****** *)
+#symload lctn with g0exp_get_lctn
 #symload lctn with sort0_get_lctn
-#symload node with sort0_get_node
-(* ****** ****** *)
 #symload lctn with s0exp_get_lctn
-#symload node with s0exp_get_node
+(* ****** ****** *)
+
+#implfun
+g1exp_none0
+(  loc0  ) =
+g1exp_make_node
+(loc0, G1Enone0(*void*))
+#implfun
+g1exp_none1
+(  g1e0  ) =
+g1exp_make_node
+(
+g1e0.lctn(),G1Enone1(g1e0))
+
+(* ****** ****** *)
+
+#implfun
+sort1_none0
+(  loc0  ) =
+sort1_make_node
+(loc0, S1Tnone0(*void*))
+#implfun
+sort1_none1
+(  s0t0  ) =
+sort1_make_node
+(
+s0t0.lctn(),S1Tnone1(s0t0))
+
+(* ****** ****** *)
+
+#implfun
+s1exp_none0
+(  loc0  ) =
+s1exp_make_node
+(loc0, S1Enone0(*void*))
+#implfun
+s1exp_none1
+(  s0e0  ) =
+s1exp_make_node
+(
+s0e0.lctn(),S1Enone1(s0e0))
+
 (* ****** ****** *)
 
 local
@@ -99,15 +139,6 @@ endloc (*local*) // end of [ local ]
 
 (* ****** ****** *)
 
-#implfun
-sort1_none1
-(  s0t0  ) =
-sort1_make_node
-(
-s0t0.lctn(),S1Tnone1(s0t0))
-
-(* ****** ****** *)
-
 local
 //
 datatype
@@ -136,15 +167,6 @@ let
 end
 //
 endloc (*local*) // end of [ local ]
-
-(* ****** ****** *)
-
-#implfun
-s1exp_none1
-(  s0e0  ) =
-s1exp_make_node
-(
-s0e0.lctn(),S1Enone1(s0e0))
 
 (* ****** ****** *)
 

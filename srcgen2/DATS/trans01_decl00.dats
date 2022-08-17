@@ -693,7 +693,7 @@ dcl1 = trans01_d0ecl(tenv, dcl1)
 //
 in
 d1ecl(loc0, D1Cstatic(tknd, dcl1))
-end (* let *) // end of [f0_static]
+end (*let*)//end-of-[f0_static(tenv,d0cl)]
 //
 fun
 f0_extern
@@ -713,7 +713,7 @@ dcl1 = trans01_d0ecl(tenv, dcl1)
 //
 in
 d1ecl(loc0, D1Cextern(tknd, dcl1))
-end (* let *) // end of [f0_extern]
+end (*let*)//end-of-[f0_extern(tenv,d0cl)]
 //
 (* ****** ****** *)
 //
@@ -756,7 +756,7 @@ in
 d1ecl_make_node
 ( loc0
 , D1Cdefine(tknd, geid, gmas, gedf))
-end (* let *) // end of [f0_define]
+end (*let*)//end-of-[f0_define(tenv,d0cl)]
 //
 (* ****** ****** *)
 //
@@ -799,7 +799,7 @@ in
 d1ecl_make_node
 ( loc0
 , D1Cmacdef(tknd, geid, gmas, dedf))
-end (* let *) // end of [f0_macdef]
+end (*let*)//end-of-[f0_macdef(tenv,d0cl)]
 //
 (* ****** ****** *)
 
@@ -821,7 +821,7 @@ tid0 = trans01_i0dnt(tenv, tid0)
 //
 in
 d1ecl(loc0, D1Cabssort(tknd, tid0))
-end (*let*) // end of [f0_abssort]
+end (*let*)//end-of-[f0_abssort(tenv,d0cl)]
 
 (* ****** ****** *)
 
@@ -854,7 +854,7 @@ in
 d1ecl_make_node
 ( loc0
 , D1Cstacst0(tknd, sid0, tmas, s1t1))
-end // end of [f0_stacst0]
+end (*let*)//end-of-[f0_stacst0(tenv,d0cl)]
 
 (* ****** ****** *)
 
@@ -917,7 +917,7 @@ println!("f0_sortdef: stdf = ", stdf)
 in
 d1ecl_make_node
 (d0cl.lctn(), D1Csortdef(tknd, tid0, stdf))
-end // end of [f0_sortdef]
+end (*let*) // end-of-[f0_sortdef(tenv,d0cl)]
 
 (* ****** ****** *)
 

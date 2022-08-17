@@ -78,6 +78,24 @@ dpat.lctn(),D1Pnone1(dpat))
 
 (* ****** ****** *)
 
+#implfun
+d1exp_none1
+(  dexp  ) =
+d1exp_make_node
+(
+dexp.lctn(),D1Enone1(dexp))
+
+(* ****** ****** *)
+
+#implfun
+d1ecl_none1
+(  d0cl  ) =
+d1ecl_make_node
+(
+d0cl.lctn(),D1Cnone1(d0cl))
+
+(* ****** ****** *)
+
 local
 //
 datatype
@@ -195,15 +213,6 @@ let
 end
 //
 endloc (*local*) // end of [ local ]
-
-(* ****** ****** *)
-
-#implfun
-d1exp_none1
-(  dexp  ) =
-d1exp_make_node
-(
-dexp.lctn(),D1Enone1(dexp))
 
 (* ****** ****** *)
 
@@ -451,15 +460,6 @@ let
 end
 //
 endloc (*local*) // end of [ local ]
-
-(* ****** ****** *)
-
-#implfun
-d1ecl_none1
-(  d0cl  ) =
-d1ecl_make_node
-(
-d0cl.lctn(),D1Cnone1(d0cl))
 
 (* ****** ****** *)
 
