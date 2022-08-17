@@ -80,29 +80,31 @@ d1pat
 
 #implfun
 tread01_d1pat
-  (d1p, err) =
+  (d1p0, err) =
 (
 case+
-d1p.node() of
+d1p0.node() of
 //
-| D1Pid0 _ => d1p
+| D1Pid0 _ => d1p0
 //
-| D1Pint _ => d1p
-| D1Pchr _ => d1p
-| D1Pflt _ => d1p
-| D1Pstr _ => d1p
+| D1Pint _ => d1p0
+| D1Pchr _ => d1p0
+| D1Pflt _ => d1p0
+| D1Pstr _ => d1p0
 //
 |
 _(*otherwise*) =>
-(err := err+1; d1pat_errck(1, d1p))
+(err := err+1; d1pat_errck(1, d1p0))
 //
 ) where
 {
 //
-val () =
-prerrln("tread01_d1pat: d1p = ", d1p)
+val loc0 = d1p0.lctn()
 //
-} (*where*)//end(tread01_d1pat(d1p,err))
+val (  ) =
+prerrln("tread01_d1pat: d1p0 = ", d1p0)
+//
+} (*where*)//end(tread01_d1pat(d1p0,err))
 
 (* ****** ****** *)
 //
@@ -119,29 +121,33 @@ d1exp
 
 #implfun
 tread01_d1exp
-  (d1e, err) =
+  (d1e0, err) =
 (
 case+
-d1e.node() of
+d1e0.node() of
 //
-| D1Eid0 _ => d1e
+| D1Eid0 _ => d1e0
 //
-| D1Eint _ => d1e
-| D1Echr _ => d1e
-| D1Eflt _ => d1e
-| D1Estr _ => d1e
+| D1Eint _ => d1e0
+| D1Echr _ => d1e0
+| D1Eflt _ => d1e0
+| D1Estr _ => d1e0
 //
 |
 _(*otherwise*) =>
-(err := err+1; d1exp_errck(1, d1e))
+(err := err+1; d1exp_errck(1, d1e0))
 //
 ) where
 {
 //
-val () =
-prerrln("tread01_d1exp: d1e = ", d1e)
+val loc0 = d1e0.lctn()
 //
-} (*where*)//end(tread01_d1exp(d1e,err))
+val (  ) =
+prerrln("tread01_d1exp: loc0 = ", loc0)
+val (  ) =
+prerrln("tread01_d1exp: d1e0 = ", d1e0)
+//
+} (*where*)//end(tread01_d1exp(d1e0,err))
 
 (* ****** ****** *)
 

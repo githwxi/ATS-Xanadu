@@ -60,6 +60,9 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with d1ecl_get_lctn
+#symload node with d1ecl_get_node
+(* ****** ****** *)
 //
 fun
 d1ecl_errck
@@ -67,24 +70,39 @@ d1ecl_errck
 ,dcl: d1ecl): d1ecl =
 (
 d1ecl
-(dcl.lctn(), D1Cerrck(lvl, dcl))
-)//end-of-[d1ecl_errck(_,_)]
+(dcl.lctn(), D1Cerrck(lvl, dcl)))
 //
 (* ****** ****** *)
 
 #implfun
 tread01_d1ecl
-  (dcl, err) =
+  (d1cl, err) =
 (
 case+
-dcl.node() of
+d1cl.node() of
+//
+|
+D1Cdefine
+//
 |
 _(*otherwise*) =>
-(err := err+1; d1ecl_errck(1, dcl))
+let
+val lvl = 1
+in//let
+(err := err+1; d1ecl_errck(lvl, d1cl))
+endlet // end of [ _(* otherwise *) ]
 //
 ) where
 {
-} (*where*) // end of [tread01_d1ecl(dcl,err)]
+//
+val loc0 = d1cl.lctn()
+//
+val (  ) =
+prerrln("tread01_d1ecl: loc0 = ", loc0)
+val (  ) =
+prerrln("tread01_d1ecl: d1cl = ", d1cl)
+//
+} (*where*) // end of [tread01_d1ecl(d1cl,err)]
 
 (* ****** ****** *)
 
