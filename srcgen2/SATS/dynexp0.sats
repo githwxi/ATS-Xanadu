@@ -1049,8 +1049,14 @@ d0ecl_fprint
 (out:FILR, dcl:d0ecl): void
 (* ****** ****** *)
 fun
+g0edf_fprint
+(out:FILR, gedf:g0edf): void
+fun
+d0edf_fprint
+(out:FILR, dedf:d0edf): void
+fun
 a0tdf_fprint
-(out:FILR, tdf:a0tdf): void
+(out:FILR, atdf:a0tdf): void
 (* ****** ****** *)
 fun
 precopt_fprint

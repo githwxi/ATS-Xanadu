@@ -118,10 +118,14 @@ lctn with d0ecl_get_lctn//dynexp0
 (* ****** ****** *)
 #symload
 node with token_get_node//lexing0
+(* ****** ****** *)
 #symload
 node with i0dnt_get_node//staexp0
 #symload
 node with l0abl_get_node//staexp0
+(* ****** ****** *)
+#symload
+node with g0exp_get_node//staexp0
 (* ****** ****** *)
 #symload
 node with s0exp_get_node//staexp0
@@ -305,6 +309,41 @@ PMODsome
 | _(*non-T_LPAREN*) => PMODnone()
 //
 endlet // end of [p1_precmod(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
+p1_g0edf(buf, err) =
+let
+//
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+in//let
+//
+case+ tnd of
+|
+T_EQ0() => let
+  val ( ) = buf.skip1()
+  val g0e = p1_g0exp(buf, err)
+in//let
+G0EDFsome(optn_cons(tok), g0e(*def*))
+end (*let*) // end of [T_EQ0]
+|
+_(*non-T_EQ0*) => let
+  val g0e = p1_g0exp(buf, err)
+in
+case+
+g0e.node() of
+|
+G0Etkerr(_) => G0EDFnone(*void*)
+|
+_(*non-G0Etkerr*) =>
+G0EDFsome(optn_nil(*void*), g0e(*def*))
+end (*let*) // end of [non-T_EQ0]
+//
+end (*let*) // end of [p_g0edf(buf,err)]
 
 (* ****** ****** *)
 

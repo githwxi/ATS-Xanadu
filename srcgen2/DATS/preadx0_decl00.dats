@@ -178,7 +178,7 @@ end (*let*)//end-of-[d0ecl_fixity_errck]
 (* ****** ****** *)
 //
 fun
-d0ecl_local_errck
+d0ecl_local0_errck
 ( loc0
 : loc_t
 , tknd
@@ -199,8 +199,8 @@ lvl+1
 ,
 d0ecl_make_node
 ( loc0
-, D0Clocal(tknd,dcs1,topt,dcs2,tend)))
-end (*let*) // end of [d0ecl_local_errck]
+, D0Clocal0(tknd,dcs1,topt,dcs2,tend)))
+end (*let*) // end of [d0ecl_local0_errck]
 //
 (* ****** ****** *)
 //
@@ -1207,8 +1207,8 @@ D0Cfixity _ =>
 f0_fixity(dcl, err)
 //
 |
-D0Clocal _ =>
-f0_local( dcl, err )
+D0Clocal0 _ =>
+f0_local0( dcl, err )
 //
 |
 D0Cabssort _ =>
@@ -1445,7 +1445,7 @@ f1_tokint(tint, err) in pint end
 (* ****** ****** *)
 //
 fun
-f0_local
+f0_local0
 ( dcl: d0ecl
 , err: &sint >> _): d0ecl =
 let
@@ -1453,7 +1453,7 @@ let
 val e00 = err
 //
 val-
-D0Clocal
+D0Clocal0
 ( tknd
 , dcs1
 , topt
@@ -1473,9 +1473,9 @@ in
 if
 (err=e00)
 then dcl else
-d0ecl_local_errck
+d0ecl_local0_errck
 (dcl.lctn(), tknd, dcs1, topt, dcs2, tend)
-end (*let*) // end of [ f0_local(dcl,err) ]
+end (*let*) // end of [ f0_local0(dcl,err) ]
 //
 (* ****** ****** *)
 //

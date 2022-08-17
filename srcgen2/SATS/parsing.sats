@@ -318,6 +318,7 @@ fun p1_s0ymb: p1_fun(s0ymb)
 //
 fun p1_g0nam: p1_fun(g0nam)
 fun p1_g0exp: p1_fun(g0exp)
+//
 fun p1_g0mag: p1_fun(g0mag)
 //
 (* ****** ****** *)

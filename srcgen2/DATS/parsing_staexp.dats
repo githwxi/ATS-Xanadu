@@ -114,14 +114,24 @@ fun p1_g0exp_atm: p1_fun(g0exp)
 fun p1_g0exp_app: p1_fun(g0exp)
 //
 #extern
-fun p1_g0exp_THEN: p1_fun(g0exp_THEN)
+fun
+p1_g0exp_THEN: p1_fun(g0exp_THEN)
 #extern
-fun p1_g0exp_ELSE: p1_fun(g0exp_ELSE)
+fun
+p1_g0exp_ELSE: p1_fun(g0exp_ELSE)
 //
 #extern
-fun p1_g0expseq_atm: p1_fun(g0explst)
+fun
+p1_g0expseq_atm: p1_fun(g0explst)
 #extern
-fun p1_g0expseq_COMMA: p1_fun(g0explst)
+fun
+p1_g0expseq_COMMA: p1_fun(g0explst)
+//
+(* ****** ****** *)
+//
+#extern
+fun
+p1_g0argseq_COMMA: p1_fun(g0arglst)
 //
 (* ****** ****** *)
 //
@@ -1273,6 +1283,74 @@ p1_g0expseq_COMMA
 list_vt2t
 (ps_COMMA_p1fun{g0exp}(buf, err, p1_g0exp))
 )
+//
+(* ****** ****** *)
+//
+#implfun
+p1_g0argseq_COMMA
+  (buf, err) =
+(
+list_vt2t
+(ps_COMMA_p1fun{g0arg}(buf, err, p1_g0eid))
+)
+//
+(* ****** ****** *)
+//
+#implfun
+p1_g0mag(buf, err) =
+let
+//
+val e00 = err
+val tok = buf.getk0()
+val tnd = tok.tnode()
+//
+in (* in-of-let *)
+//
+case+ tnd of
+//
+|
+T_LBRACE() => let
+//
+val tbeg = tok
+val (  ) = buf.skip1()
+val g0as =
+  p1_g0argseq_COMMA(buf, err)
+val tend = p1_RBRACE(buf, err)
+//
+val
+lres = tbeg.lctn()+tend.lctn()
+//
+in//let
+err := e00;
+g0mag_make_node
+(lres, G0MAGsarg(tbeg,g0as,tend))
+//
+|
+T_LPAREN() => let
+//
+val tbeg = tok
+val (  ) = buf.skip1()
+val g0as =
+  p1_g0argseq_COMMA(buf, err)
+val tend = p1_RPAREN(buf, err)
+//
+val
+lres = tbeg.lctn()+tend.lctn()
+//
+in//let
+err := e00;
+g0mag_make_node
+(lres, G0MAGdarg(tbeg,g0as,tend))
+//
+|
+_ (*non-LBRACE/LPAREN*) =>
+let
+  val () = (err := e00 + 1)
+in
+  g0mag( tok.lctn(), G0MAGnone(tok) )
+end (*let*) // end-of(non-LBRACE/LPAREN)
+//
+end (*let*) // end of [p1_g0mag(buf,err)]
 //
 (* ****** ****** *)
 //

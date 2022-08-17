@@ -476,6 +476,11 @@ g0mag_get_node(g0mag): g0mag_node
 #symload lctn with g0mag_get_lctn
 #symload node with g0mag_get_node
 //
+fun
+g0mag_make_node
+(loc:loc_t,gnd:g0mag_node): g0mag
+#symload g0mag with g0mag_make_node
+//
 (* ****** ****** *)
 //
 datatype
