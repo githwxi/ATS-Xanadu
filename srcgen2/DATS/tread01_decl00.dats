@@ -99,6 +99,9 @@ case+
 d1cl.node() of
 //
 |
+D1Cd0ecl _ => d1cl
+//
+|
 D1Cdefine _ => f0_define(d1cl, err)
 //
 |
