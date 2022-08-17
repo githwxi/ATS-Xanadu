@@ -338,6 +338,10 @@ fun
 tr01env_insert_any
 ( env:
 ! tr01env, key: sym_t, itm: fixty): void
+fun
+tr01env_insmix_any
+( env:
+! tr01env, key: sym_t, itm: fixty): void
 //
 fun
 tr01env_make_nil((*void*)): tr01env
