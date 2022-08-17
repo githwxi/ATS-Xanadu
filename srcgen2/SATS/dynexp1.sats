@@ -722,7 +722,7 @@ d1ecl_node =
 | D1Cextern of
   (token, d1ecl) // globally
 //
-| D1Clocal of
+| D1Clocal0 of
   ( d1eclist(*head*)
   , d1eclist(*body*))
 //

@@ -615,11 +615,11 @@ print
 ("D0Cfixity(",tknd,";",dnts,";",prec,")")
 //
 |
-D0Clocal
+D0Clocal0
 (tknd,head,tin1,body,tend) =>
 (
-print("D0Clocal(",tknd,";");
-print(head,";",tin1,";");print(body,";",tend,")"))
+print("D0Clocal0(",tknd,";");
+print(head,";",tin1,";",body,";",tend,")"))
 //
 |
 D0Cabssort

@@ -65,8 +65,10 @@ D1E = "./dynexp1.sats"
 #typedef sort1lst = $S1E.sort1lst
 #typedef sort1opt = $S1E.sort1opt
 (* ****** ****** *)
-#typedef s1expopt = $S1E.s1expopt
 #typedef s1explst = $S1E.s1explst
+#typedef s1expopt = $S1E.s1expopt
+(* ****** ****** *)
+#typedef l1s1elst = $S1E.l1s1elst
 (* ****** ****** *)
 #typedef d1pat = $D1E.d1pat
 #typedef d1exp = $D1E.d1exp
@@ -79,6 +81,9 @@ D1E = "./dynexp1.sats"
 (* ****** ****** *)
 #typedef d1explst = $D1E.d1explst
 #typedef d1expopt = $D1E.d1expopt
+(* ****** ****** *)
+#typedef l1d1plst = $D1E.l1d1plst
+#typedef l1d1elst = $D1E.l1d1elst
 (* ****** ****** *)
 #typedef d1eclist = $D1E.d1eclist
 (* ****** ****** *)
