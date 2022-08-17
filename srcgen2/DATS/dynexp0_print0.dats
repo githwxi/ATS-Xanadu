@@ -593,26 +593,32 @@ D0Ctkskp(tok) =>
 print("D0Ctkskp(",tok,")")
 //
 |
-D0Cextern
-(tknd,dcl1) =>
-print
-("D0Cextern(",tknd,";",dcl1,")")
-|
-D0Cstatic
-(tknd,dcl1) =>
-print
-("D0Cstatic(",tknd,";",dcl1,")")
-//
-|
 D0Cnonfix
 (tknd,dnts) =>
-print
-("D0Cnonfix(",tknd,";",dnts,")")
+print("D0Cnonfix(",tknd,";",dnts,")")
 |
 D0Cfixity
 (tknd,dnts,prec) =>
 print
 ("D0Cfixity(",tknd,";",dnts,";",prec,")")
+//
+|
+D0Cstatic
+(tknd,dcl1) =>
+print
+("D0Cstatic(",tknd,";",dcl1,")")
+|
+D0Cextern
+(tknd,dcl1) =>
+print
+("D0Cextern(",tknd,";",dcl1,")")
+//
+|
+D0Cdefine
+(tknd,geid,gmas,gedf) =>
+(
+print("D0Cdefine(",tknd,";");
+print(geid,";",gmas,";",gedf,")"))
 //
 |
 D0Clocal0
@@ -840,14 +846,54 @@ end (*let*) // end of [d0arg_fprint(out,d0a)]
 (* ****** ****** *)
 
 #implfun
-a0tdf_fprint
-(out, tdf) =
+g0edf_fprint
+(out, gedf) =
 let
 #impltmp
 g_print$out<>() = out
 in//let
 //
-case+ tdf of
+case+ gedf of
+|
+G0EDFnone() =>
+print("G0EDFnone(", ")")
+|
+G0EDFsome(topt,g0e1) =>
+print("G0EDFsome(",topt,";",g0e1,")")
+//
+end (*let*) // end of [g0edf_fprint(out,gedf)]
+
+(* ****** ****** *)
+
+#implfun
+d0edf_fprint
+(out, dedf) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ dedf of
+|
+D0EDFnone() =>
+print("D0EDFnone(", ")")
+|
+D0EDFsome(topt,d0e1) =>
+print("D0EDFsome(",topt,";",d0e1,")")
+//
+end (*let*) // end of [d0edf_fprint(out,dedf)]
+
+(* ****** ****** *)
+
+#implfun
+a0tdf_fprint
+(out, atdf) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ atdf of
 |
 A0TDFsome() =>
 print("A0TDFsome(", ")")
@@ -858,7 +904,7 @@ print("A0TDFlteq(",tok,";",s0e,")")
 A0TDFeqeq(tok,s0e) =>
 print("A0TDFeqeq(",tok,";",s0e,")")
 //
-end (*let*) // end of [a0tdf_fprint]
+end (*let*) // end of [a0tdf_fprint(out,atdf)]
 
 (* ****** ****** *)
 //

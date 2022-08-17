@@ -396,6 +396,12 @@ d0arg_fprint(g_print$out<>(), d0ag)
 (* ****** ****** *)
 //
 #impltmp
+g_print<g0edf>(gedf) =
+g0edf_fprint(g_print$out<>(), gedf)
+#impltmp
+g_print<d0edf>(gedf) =
+d0edf_fprint(g_print$out<>(), dedf)
+#impltmp
 g_print<a0tdf>(atdf) =
 a0tdf_fprint(g_print$out<>(), atdf)
 //

@@ -1536,7 +1536,7 @@ val () = fpemsg(out, dc1)
 endlet //end-of(D0Cextern(_,_))
 //
 |
-D0Clocal
+D0Clocal0
 ( tkb, ds1
 , tin, ds2, tke) =>
 let
@@ -1544,7 +1544,7 @@ val () =
 d0eclist_fpemsg(out, ds1)
 val () =
 d0eclist_fpemsg(out, ds2)
-endlet // end of [D0Clocal(...)]
+endlet // end of [D0Clocal0(...)]
 //
 |
 D0Cabssort

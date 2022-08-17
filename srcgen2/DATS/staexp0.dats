@@ -330,6 +330,37 @@ endloc (*local*) // end of [ local ]
 local
 //
 datatype
+g0mag =
+G0MAG of
+(
+loctn, g0mag_node)
+#absimpl
+g0mag_tbox = g0mag
+//
+in (* in-of-local *)
+//
+#implfun
+g0mag_make_node
+(   loc,nod   ) = G0MAG(loc,nod)
+//
+#implfun
+g0mag_get_lctn(gma) =
+let
+  val+G0MAG(loc,nod) = gma in loc
+end
+#implfun
+g0mag_get_node(gma) =
+let
+  val+G0MAG(loc,nod) = gma in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 sort0 =
 SORT0 of
 (

@@ -319,15 +319,18 @@ val () = kwdins("$exists", T_DLR_EXISTS)
 //
 (* HX: for IDSRP-keywords in ATS3 *)
 //
-val () = kwdins("#extern", T_SRP_EXTERN)
-val () = kwdins("#static", T_SRP_STATIC)
-//
 val () = kwdins("#infix0", T0SRP_INFIX0)
 val () = kwdins("#infixl", T0SRP_INFIXL)
 val () = kwdins("#infixr", T0SRP_INFIXR)
 val () = kwdins("#prefix", T0SRP_PREFIX)
 val () = kwdins("#pstfix", T0SRP_PSTFIX)
 val () = kwdins("#nonfix", T_SRP_NONFIX)
+//
+val () = kwdins("#extern", T_SRP_EXTERN)
+val () = kwdins("#static", T_SRP_STATIC)
+//
+val () = kwdins("#define", T_SRP_DEFINE)
+val () = kwdins("#macdef", T_SRP_MACDEF)
 //
 val () = kwdins("#include", T_SRP_INCLUDE)
 val () = kwdins("#staload", T_SRP_STALOAD)
