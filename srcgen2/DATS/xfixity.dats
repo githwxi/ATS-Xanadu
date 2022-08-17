@@ -389,13 +389,13 @@ FXITMatm(t0) =>
   |
   FXITMopr
   (f1, FIXTYpre _) :: ys2 =>
-  (
-    resolve(f1_t0, xs0, ys2) where
-    {
-      val
-      f1_t0 = fxitm_prefix<a>(f1, t0)
-    }
-  )
+  let
+    val
+    f1_t0 =
+    fxitm_prefix<a>(f1, t0)
+  in//let
+    resolve(f1_t0, xs0, ys2)
+  endlet // end-of-(FXITMopr)
   |
   FXITMopr
   (f1, FIXTYinf(_, _)) :: ys2 =>
@@ -579,9 +579,8 @@ case+ ys0 of
     fxitm_get_lctn<a>(y0)
     val
     t0 = fxatm_none<a>(l0)
-    val
-    ys0 = FXITMatm(t0) :: ys0
-  }
+    val ys0 = FXITMatm(t0) :: ys0
+  } (*where*) // end of [list_nil]
 //
 | _ :: list_nil() =>
   (
@@ -614,8 +613,17 @@ case+ ys0 of
     ) (* end-of-(else) *) // end of [if]
   end (*let*) // end of [_ :: FXITMopr(_, fy) :: ys2]
 //
+(*
 | _ (*error*) =>
   fxitmlst_resolve$oprerr<a>(y0) // HX: deadcode?
+*)
+| _ (*error*) =>
+  let
+    val t0 =
+    fxatm_none<a>(fxitm_get_lctn<a>(y0))
+  in//let
+    resolve_opr(fx, y0, xs0, FXITMatm(t0) :: ys0)
+  end (*let*) // end of [_ :: FXITMatm( ... ) :: ys2]
 //
 )
 //
