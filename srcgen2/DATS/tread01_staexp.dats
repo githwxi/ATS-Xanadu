@@ -113,7 +113,7 @@ list_nil((*nil*)) => 0
 list_cons(ge1,ges) =>
 (
 gmax
-( errvl(ge1),g1exp_errvl_ges(ges)))
+(errvl(ge1),g1exp_errvl_ges(ges)))
 endcas // end of [ case+(ges) ]
 )
 //
@@ -144,8 +144,7 @@ g1exp_a1pp_errck
 ,ge1: g1exp
 ,ge2: g1exp): g1exp =
 let
-val lvl =
-gmax
+val lvl = gmax
 (errvl(ge1), errvl(ge2))
 in//let
 g1exp_errck
@@ -159,8 +158,7 @@ g1exp_a2pp_errck
 ,ge2: g1exp
 ,ge3: g1exp): g1exp =
 let
-val lvl =
-gmax
+val lvl = gmax
 ( errvl(ge1)
 , errvl(ge2), errvl(ge3))
 in//let
@@ -189,10 +187,9 @@ g1exp_cond_errck
 , ge2: g1exp
 , ge3: g1exp): g1exp =
 let
-val lvl =
-gmax
-(errvl(ge1)
-,errvl(ge2),errvl(ge3))
+val lvl = gmax
+( errvl(ge1)
+, errvl(ge2), errvl(ge3))
 in//let
 g1exp_errck
 (lvl , g1exp(loc,G1Eif0(ge1,ge2,ge3)))
@@ -385,7 +382,7 @@ list_nil((*nil*)) => 0
 list_cons(st1,sts) =>
 (
 gmax
-( errvl(st1),sort1_errvl_sts(sts)))
+(errvl(st1),sort1_errvl_sts(sts)))
 endcas // end of [ case+(sts) ]
 )
 //
@@ -403,8 +400,7 @@ sort1_a1pp_errck
 ,st1: sort1
 ,st2: sort1): sort1 =
 let
-val lvl =
-gmax
+val lvl = gmax
 (errvl(st1), errvl(st2))
 in//let
 sort1_errck
@@ -418,8 +414,7 @@ sort1_a2pp_errck
 ,st2: sort1
 ,st3: sort1): sort1 =
 let
-val lvl =
-gmax
+val lvl = gmax
 ( errvl(st1)
 , errvl(st2), errvl(st3))
 in//let
@@ -605,7 +600,7 @@ list_nil((*nil*)) => 0
 list_cons(se1,ses) =>
 (
 gmax
-( errvl(se1),s1exp_errvl_ses(ses)))
+(errvl(se1),s1exp_errvl_ses(ses)))
 endcas // end of [ case+(ses) ]
 )
 //
@@ -636,8 +631,7 @@ s1exp_a1pp_errck
 ,se1: s1exp
 ,se2: s1exp): s1exp =
 let
-val lvl =
-gmax
+val lvl = gmax
 (errvl(se1), errvl(se2))
 in//let
 s1exp_errck
@@ -651,8 +645,7 @@ s1exp_a2pp_errck
 ,se2: s1exp
 ,se3: s1exp): s1exp =
 let
-val lvl =
-gmax
+val lvl = gmax
 ( errvl(se1)
 , errvl(se2), errvl(se3))
 in//let
@@ -682,13 +675,45 @@ s1exp_l2st_errck
 , ses2
 : s1explst ): s1exp =
 let
-val lvl =
-gmax
+val lvl = gmax
 (errvl(ses1), errvl(ses2))
 in//let
 s1exp_errck
 (lvl , s1exp(loc, S1El2st(ses1,ses2)))
 endlet // end of [s1exp_l2st_errck(...)]
+(* ****** ****** *)
+fun
+s1exp_t1up_errck
+( loc
+: loc_t
+, tknd
+: token
+, s1es
+: s1explst ): s1exp =
+let
+val lvl = errvl(s1es)
+in//let
+s1exp_errck
+(lvl , s1exp(loc , S1Et1up(tknd,s1es)))
+endlet // end of [s1exp_t1up_errck(...)]
+(* ****** ****** *)
+fun
+s1exp_t2up_errck
+( loc
+: loc_t
+, tknd
+: token
+, ses1
+: s1explst
+, ses2
+: s1explst ): s1exp =
+let
+val lvl = gmax
+(errvl(ses1), errvl(ses2))
+in//let
+s1exp_errck
+(lvl,s1exp(loc,S1Et2up(tknd,ses1,ses2)))
+endlet // end of [s1exp_t2up_errck(...)]
 (* ****** ****** *)
 
 #implfun
@@ -726,7 +751,7 @@ s1exp_a0pp_errck(loc0)
 { val () = ( err := err + 1 ) }
 //
 |
-S1Ea1pp(s1e1, s1e2) =>
+S1Ea1pp(s1e1,s1e2) =>
 let
 //
 val e00 = err
@@ -760,7 +785,7 @@ if
 (e00=err)
 then (s1e0) else
 s1exp_a2pp_errck(loc0,s1e1,s1e2,s1e3)
-endlet // end-[S1Ea2pp(s1e1,s1e2,s1e3)]
+endlet//end-(S1Ea2pp(s1e1,s1e2,s1e3))
 //
 |
 S1El1st(s1es) =>
@@ -787,7 +812,36 @@ if
 (e00=err)
 then (s1e0) else
 s1exp_l2st_errck(loc0, ses1, ses2)
-endlet // end of [ S1El1st( s1es ) ]
+endlet // end of [S1El2st(ses1,ses2)]
+//
+|
+S1Et1up(tknd,s1es) =>
+let
+val e00 = err
+val s1es =
+  tread01_s1explst(s1es, err)
+in//let
+if
+(e00=err)
+then (s1e0) else
+s1exp_t1up_errck(loc0, tknd, s1es)
+endlet // end of [S1Et1up(tknd,s1es)]
+|
+S1Et2up
+(tknd, ses1, ses2) =>
+let
+val e00 = err
+val ses1 =
+  tread01_s1explst(ses1, err)
+val ses2 =
+  tread01_s1explst(ses2, err)
+in//let
+if
+(e00=err)
+then (s1e0) else
+s1exp_t2up_errck(loc0,tknd,ses1,ses2)
+endlet // end of [S1Et2up(tknd,ses1,ses2)]
+//
 //
 | _(*otherwise*) =>
 let
