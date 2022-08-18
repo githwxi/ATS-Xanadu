@@ -61,7 +61,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
 (* ****** ****** *)
-
+//
 fun
 mix_fixty_fixty
 (x0: fixty, x1: fixty): fixty =
@@ -72,17 +72,23 @@ FIXTYpre(p0) =>
 ( case+ x1 of
   | FIXTYinf
     (p1, a1) =>
+    FIXTYpreinf(p0, p1, a1)
+  | FIXTYpreinf
+    (q0, p1, a1) =>
     FIXTYpreinf(p0, p1, a1) | _ => x0
 ) (* end of [FIXTYinf] *)
 |
-FIXTYinf(p0, a0) =>
+FIXTYinf(p1, a1) =>
 ( case+ x1 of
-  | FIXTYpre(p1) =>
-    FIXTYpreinf(p1, p0, a0) | _ => x0
+  | FIXTYpre(p0) =>
+    FIXTYpreinf(p0, p1, a1)
+  | FIXTYpreinf
+    (p0, q1, b1) =>
+    FIXTYpreinf(p0, p1, a1) | _ => x0
 ) (* end of [FIXTYinf] *)
 | _ (* non-FIXTYpre-FIXTYinf *) => x0
 )
-
+//
 (* ****** ****** *)
 
 local
@@ -207,8 +213,6 @@ val+
 @TR01ENV
 (topmap, !stkmap) = tenv
 //
-val mix = mix_fixty_fixty
-//
 in//let
 //
 $fold(tenv) where
@@ -220,12 +224,10 @@ val
 ((*void*)) =
 if
 stkmap_nilq(stkmap)
-then
-topmap_insmix_kxs(topmap, kxs, mix)
-else
-stkmap_insmix_kxs(stkmap, kxs, mix) }
+then topmap_insert_kxs(topmap, kxs)
+else stkmap_insert_kxs(stkmap, kxs) }
 //
-end (*let*)//end-of-(tr01env_pshloc2(tenv))
+end (*let*)//end-of-(tr01env_locjoin(tenv))
 //
 (* ****** ****** *)
 

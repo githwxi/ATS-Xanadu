@@ -660,6 +660,36 @@ s1exp_errck
 (lvl,s1exp(loc,S1Ea2pp(se1,se2,se3)))
 endlet // end of [s1exp_a2pp_errck(...)]
 (* ****** ****** *)
+fun
+s1exp_l1st_errck
+( loc
+: loc_t
+, ses
+: s1explst ): s1exp =
+let
+val lvl = errvl(ses)
+in//let
+s1exp_errck
+(lvl , s1exp( loc , S1El1st( ses ) ))
+endlet // end of [s1exp_l1st_errck(...)]
+(* ****** ****** *)
+fun
+s1exp_l2st_errck
+( loc
+: loc_t
+, ses1
+: s1explst 
+, ses2
+: s1explst ): s1exp =
+let
+val lvl =
+gmax
+(errvl(ses1), errvl(ses2))
+in//let
+s1exp_errck
+(lvl , s1exp(loc, S1El2st(ses1,ses2)))
+endlet // end of [s1exp_l2st_errck(...)]
+(* ****** ****** *)
 
 #implfun
 tread01_s1exp
@@ -731,6 +761,33 @@ if
 then (s1e0) else
 s1exp_a2pp_errck(loc0,s1e1,s1e2,s1e3)
 endlet // end-[S1Ea2pp(s1e1,s1e2,s1e3)]
+//
+|
+S1El1st(s1es) =>
+let
+val e00 = err
+val s1es =
+  tread01_s1explst(s1es, err)
+in//let
+if
+(e00=err)
+then (s1e0)
+else s1exp_l1st_errck(loc0, s1es )
+endlet // end of [ S1El1st( s1es ) ]
+|
+S1El2st(ses1,ses2) =>
+let
+val e00 = err
+val ses1 =
+  tread01_s1explst(ses1, err)
+val ses2 =
+  tread01_s1explst(ses2, err)
+in//let
+if
+(e00=err)
+then (s1e0) else
+s1exp_l2st_errck(loc0, ses1, ses2)
+endlet // end of [ S1El1st( s1es ) ]
 //
 | _(*otherwise*) =>
 let
