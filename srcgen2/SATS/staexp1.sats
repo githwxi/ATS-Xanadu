@@ -448,6 +448,9 @@ S1Er2cd of // HX: record2
 //
 | S1Enone0 of () | S1Enone1 of ( s0exp )
 //
+|
+S1Eerrck of (int(*lvl*), s1exp)//HX:tread-error
+//
 // end of [s1exp_node] // end of [datatype]
 //
 (* ****** ****** *)

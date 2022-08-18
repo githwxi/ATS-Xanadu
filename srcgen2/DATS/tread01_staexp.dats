@@ -440,6 +440,18 @@ sort1_errck
 (lvl , sort1( loc , S1Tlist( sts ) ))
 endlet // end of [sort1_list_errck(...)]
 (* ****** ****** *)
+fun
+sort1_qual_errck
+( loc: loc_t
+, tok1: token
+, s1t2: sort1): sort1 =
+let
+val lvl = errvl(s1t2)
+in//let
+sort1_errck
+(lvl , sort1(loc, S1Tqual(tok1,s1t2)))
+endlet // end of [sort1_qual_errck(...)]
+(* ****** ****** *)
 
 #implfun
 tread01_sort1
@@ -508,6 +520,17 @@ then (s1t0)
 else sort1_list_errck(loc0, s1ts )
 endlet // end of [ S1Tlist( s1ts ) ]
 //
+|
+S1Tqual(tok1, s1t2) =>
+let
+val e00 = err
+val s1t2 = tread01_sort1(s1t2, err)
+in//let
+if
+(e00=err)
+then (s1t0) else
+sort1_qual_errck(loc0, tok1, s1t2)
+endlet // end of [S1Tqual(tok1,s1t2)]
 //
 | _(*otherwise*) =>
 let
@@ -527,6 +550,208 @@ val (  ) =
 prerrln("tread01_sort1: s1t0 = ", s1t0)
 //
 } (*where*) // end of [tread01_sort1(s1t0,err)]
+
+(* ****** ****** *)
+//
+fun
+s1exp_errck
+(lvl: sint
+,s1e: s1exp): s1exp =
+(
+s1exp
+(s1e.lctn(), S1Eerrck(lvl, s1e)))
+//
+(* ****** ****** *)
+//
+fun
+s1exp_errvl_a1
+(s1e: s1exp): sint =
+(
+case+ s1e.node() of
+|
+S1Eerrck
+(lvl, _) => lvl | _ => 0
+)
+#symload
+s1exp_errvl with s1exp_errvl_a1
+#symload errvl with s1exp_errvl_a1
+//
+(* ****** ****** *)
+//
+fun
+s1exp_errvl_a2
+(se1: s1exp
+,se2: s1exp): sint =
+gmax
+(errvl(se1),errvl(se2))
+#symload
+s1exp_errvl with s1exp_errvl_a2
+#symload errvl with s1exp_errvl_a2
+//
+(* ****** ****** *)
+//
+#extern
+fun
+s1exp_errvl_ses
+(ses: s1explst): sint
+//
+#implfun
+s1exp_errvl_ses(ses) =
+(
+case+ ses of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(se1,ses) =>
+(
+gmax
+( errvl(se1),s1exp_errvl_ses(ses)))
+endcas // end of [ case+(ses) ]
+)
+//
+#symload errvl with s1exp_errvl_ses
+//
+(* ****** ****** *)
+fun
+s1exp_b0sh_errck
+(loc: loc_t): s1exp =
+s1exp_errck
+(1, s1exp(loc, S1Eb0sh()))
+(* ****** ****** *)
+fun
+s1exp_b1sh_errck
+(loc: loc_t
+,s1e: s1exp): s1exp =
+s1exp_errck
+(1, s1exp(loc, S1Eb1sh(s1e)))
+(* ****** ****** *)
+fun
+s1exp_a0pp_errck
+(loc: loc_t): s1exp =
+s1exp_errck(1,s1exp(loc,S1Ea0pp()))
+(* ****** ****** *)
+fun
+s1exp_a1pp_errck
+(loc: loc_t
+,se1: s1exp
+,se2: s1exp): s1exp =
+let
+val lvl =
+gmax
+(errvl(se1), errvl(se2))
+in//let
+s1exp_errck
+(lvl, s1exp(loc, S1Ea1pp(se1, se2)))
+endlet // end of [s1exp_a1pp_errck(...)]
+(* ****** ****** *)
+fun
+s1exp_a2pp_errck
+(loc: loc_t
+,se1: s1exp
+,se2: s1exp
+,se3: s1exp): s1exp =
+let
+val lvl =
+gmax
+( errvl(se1)
+, errvl(se2), errvl(se3))
+in//let
+s1exp_errck
+(lvl,s1exp(loc,S1Ea2pp(se1,se2,se3)))
+endlet // end of [s1exp_a2pp_errck(...)]
+(* ****** ****** *)
+
+#implfun
+tread01_s1exp
+( s1e0, err ) =
+(
+case+
+s1e0.node() of
+//
+| S1Eid0 _ => s1e0
+//
+| S1Eint _ => s1e0
+| S1Echr _ => s1e0
+| S1Eflt _ => s1e0
+| S1Estr _ => s1e0
+//
+| S1Eb0sh() =>
+( err := err+1
+; s1exp_b0sh_errck(loc0))
+| S1Eb1sh(s1e1) =>
+let
+//
+val s1e1 =
+  tread01_s1exp(s1e1, err)
+//
+in//let
+( err := err+1
+; s1exp_b1sh_errck(loc0,s1e1))
+endlet // end of [S1Eb1sh(s1e1)]
+//
+| S1Ea0pp() =>
+(
+s1exp_a0pp_errck(loc0)
+) where
+{ val () = ( err := err + 1 ) }
+//
+|
+S1Ea1pp(s1e1, s1e2) =>
+let
+//
+val e00 = err
+//
+val s1e1 =
+  tread01_s1exp(s1e1, err)
+val s1e2 =
+  tread01_s1exp(s1e2, err)
+in//let
+if
+(e00=err)
+then (s1e0) else
+s1exp_a1pp_errck(loc0, s1e1, s1e2)
+endlet // end of [S1Ea1pp(s1e1,s1e2)]
+//
+|
+S1Ea2pp
+(s1e1, s1e2, s1e3) =>
+let
+//
+val e00 = err
+//
+val s1e1 =
+  tread01_s1exp(s1e1, err)
+val s1e2 =
+  tread01_s1exp(s1e2, err)
+val s1e3 =
+  tread01_s1exp(s1e3, err)
+in//let
+if
+(e00=err)
+then (s1e0) else
+s1exp_a2pp_errck(loc0,s1e1,s1e2,s1e3)
+endlet // end-[S1Ea2pp(s1e1,s1e2,s1e3)]
+//
+| _(*otherwise*) =>
+let
+val lvl = 1
+in//let
+(err := err+1; s1exp_errck(lvl, s1e0))
+endlet // end of [ _(* otherwise *) ]
+//
+) where // end-of-[ case(s1e0.node()) ]
+{
+//
+val loc0 = s1e0.lctn()
+//
+(*
+val (  ) =
+prerrln("tread01_s1exp: loc0 = ", loc0)
+val (  ) =
+prerrln("tread01_s1exp: s1e0 = ", s1e0)
+*)
+//
+} (*where*) // end of [tread01_s1exp(s1e0,err)]
 
 (* ****** ****** *)
 
