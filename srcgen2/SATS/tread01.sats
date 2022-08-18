@@ -112,6 +112,7 @@ fun tread01_g1exp: ftread01(g1exp)
 (* ****** ****** *)
 fun tread01_sort1: ftread01(sort1)
 fun tread01_s1exp: ftread01(s1exp)
+fun tread01_l1s1e: ftread01(l1s1e)
 (* ****** ****** *)
 fun tread01_d1pat: ftread01(d1pat)
 fun tread01_d1exp: ftread01(d1exp)
@@ -148,6 +149,9 @@ fun
 tread01_s1explst: ftread01(s1explst)
 fun
 tread01_s1expopt: ftread01(s1expopt)
+(* ****** ****** *)
+fun
+tread01_l1s1elst: ftread01(l1s1elst)
 (* ****** ****** *)
 fun
 tread01_s1maglst: ftread01(s1maglst)
