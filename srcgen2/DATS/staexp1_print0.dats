@@ -290,6 +290,10 @@ S1Tnone0() => print("S1Tnone0(", ")")
 |
 S1Tnone1(s0t1) => print("S1Tnone1(", s0t1 ,")")
 //
+|
+S1Terrck
+(lvl(*err*),s1t1) => print("S1Terrck(",lvl,";",s1t1,")")
+//
 end (*let*) // end of [sort1_fprint(out,s1t)]
 
 (* ****** ****** *)
