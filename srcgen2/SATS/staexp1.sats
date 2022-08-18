@@ -357,6 +357,10 @@ sort1_node =
 | S1Tqual of (token(*NS*), sort1)
 //
 | S1Tnone0 of () | S1Tnone1 of (sort0)
+//
+|
+S1Terrck of (int(*lvl*), sort1)//HX:tread-error
+//
 // end of [sort1_node] // end of [datatype]
 //
 (* ****** ****** *)

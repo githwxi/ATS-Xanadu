@@ -298,11 +298,6 @@ endlet // end of [ _(* otherwise *) ]
 //
 val loc0 = g1e0.lctn()
 //
-val (  ) =
-prerrln("tread01_g1exp: loc0 = ", loc0)
-val (  ) =
-prerrln("tread01_g1exp: g1e0 = ", g1e0)
-//
 fun
 f0_cond
 (g1e: g1exp
@@ -328,8 +323,66 @@ if
 then (g1e) else
 g1exp_cond_errck(loc0,g1e1,g1e2,g1e3)
 endlet // end-of-[ f0_cond(g1e,err) ]
-
+//
+(*
+val (  ) =
+prerrln("tread01_g1exp: loc0 = ", loc0)
+val (  ) =
+prerrln("tread01_g1exp: g1e0 = ", g1e0)
+*)
+//
 } (*where*) // end of [tread01_g1exp(g1e0,err)]
+
+(* ****** ****** *)
+fun
+sort1_errck
+(lvl: sint
+,s1t: sort1): sort1 =
+(
+sort1
+(s1t.lctn(), S1Terrck(lvl, s1t)))
+(* ****** ****** *)
+fun
+sort1_a0pp_errck
+(loc: loc_t): sort1 =
+sort1_errck(1,sort1(loc,S1Ta0pp()))
+(* ****** ****** *)
+
+#implfun
+tread01_sort1
+( s1t0, err ) =
+(
+case+
+s1t0.node() of
+//
+| S1Tid0 _ => s1t0
+//
+| S1Tint _ => s1t0
+//
+| S1Ta0pp() =>
+(
+sort1_a0pp_errck(loc0)
+) where
+{ val () = ( err := err + 1 ) }
+//
+| _(*otherwise*) =>
+let
+val lvl = 1
+in//let
+(err := err+1; sort1_errck(lvl, s1t0))
+endlet // end of [ _(* otherwise *) ]
+//
+) where // end-of-[ case(s1t0.node()) ]
+{
+//
+val loc0 = s1t0.lctn()
+//
+val (  ) =
+prerrln("tread01_sort1: loc0 = ", loc0)
+val (  ) =
+prerrln("tread01_sort1: s1t0 = ", s1t0)
+//
+} (*where*) // end of [tread01_sort1(s1t0,err)]
 
 (* ****** ****** *)
 
