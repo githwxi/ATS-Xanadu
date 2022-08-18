@@ -694,7 +694,7 @@ let
 val lvl = errvl(s1es)
 in//let
 s1exp_errck
-(lvl , s1exp(loc , S1Et1up(tknd,s1es)))
+(lvl , s1exp(loc, S1Et1up(tknd,s1es)))
 endlet // end of [s1exp_t1up_errck(...)]
 (* ****** ****** *)
 fun
@@ -714,6 +714,19 @@ in//let
 s1exp_errck
 (lvl,s1exp(loc,S1Et2up(tknd,ses1,ses2)))
 endlet // end of [s1exp_t2up_errck(...)]
+(* ****** ****** *)
+fun
+s1exp_anno_errck
+( loc: loc_t
+, s1e1: s1exp
+, s1t2: sort1): s1exp =
+let
+val lvl = gmax
+(errvl(s1e1), errvl(s1t2))
+in//let
+s1exp_errck
+(lvl, s1exp(loc, S1Eanno(s1e1, s1t2)))
+endlet // end of [s1exp_anno_errck(...)]
 (* ****** ****** *)
 
 #implfun
@@ -840,10 +853,24 @@ if
 (e00=err)
 then (s1e0) else
 s1exp_t2up_errck(loc0,tknd,ses1,ses2)
-endlet // end of [S1Et2up(tknd,ses1,ses2)]
+endlet // end(S1Et2up(tknd,ses1,ses2))
 //
+|
+S1Eanno(s1e1,s1t2) =>
+let
+val e00 = err
+val s1e1 =
+  tread01_s1exp(s1e1, err)
+val s1t2 =
+  tread01_sort1(s1t2, err)
+in//let
+if
+(e00=err)
+then (s1e0)
+else s1exp_anno_errck(loc0,s1e1,s1t2)
+endlet // end of [S1Eanno(s1e1, s1t2)]
 //
-| _(*otherwise*) =>
+| _(* otherwise *) =>
 let
 val lvl = 1
 in//let
