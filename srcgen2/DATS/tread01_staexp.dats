@@ -281,7 +281,8 @@ else g1exp_list_errck(loc0, g1es )
 endlet // end of [ G1Elist( g1es ) ]
 //
 |
-G1Eif0(_,_,_) => f0_cond(g1e0, err)
+G1Eif0(_,_,_) =>
+f0_cond(g1e0, err)
 //
 | _(*otherwise*) =>
 let
@@ -367,6 +368,25 @@ sort1_errvl with sort1_errvl_a2
 //
 (* ****** ****** *)
 //
+fun
+sort1_errvl_opt
+( opt
+: sort1opt): sint =
+(
+case+ opt of
+|
+optn_nil((*nil*)) => 0
+|
+optn_cons(st1) => errvl(st1)
+endcas // end of [ case+(sts) ]
+)
+//
+#symload
+sort1_errvl with sort1_errvl_opt
+#symload errvl with sort1_errvl_opt
+//
+(* ****** ****** *)
+//
 #extern
 fun
 sort1_errvl_sts
@@ -386,6 +406,8 @@ gmax
 endcas // end of [ case+(sts) ]
 )
 //
+#symload
+sort1_errvl with sort1_errvl_sts
 #symload errvl with sort1_errvl_sts
 //
 (* ****** ****** *)
@@ -512,7 +534,7 @@ in//let
 if
 (e00=err)
 then (s1t0)
-else sort1_list_errck(loc0, s1ts )
+else sort1_list_errck( loc0, s1ts )
 endlet // end of [ S1Tlist( s1ts ) ]
 //
 |
@@ -524,7 +546,7 @@ in//let
 if
 (e00=err)
 then (s1t0) else
-sort1_qual_errck(loc0, tok1, s1t2)
+sort1_qual_errck( loc0, tok1, s1t2 )
 endlet // end of [S1Tqual(tok1,s1t2)]
 //
 | _(*otherwise*) =>
@@ -716,6 +738,22 @@ s1exp_errck
 endlet // end of [s1exp_t2up_errck(...)]
 (* ****** ****** *)
 fun
+s1exp_lam0_errck
+( loc: loc_t
+, smas
+: s1maglst
+, tres
+: sort1opt
+, s1e1: s1exp): s1exp =
+let
+val lvl = gmax
+(errvl(tres), errvl(s1e1))
+in//let
+s1exp_errck
+(lvl,s1exp(loc,S1Elam0(smas,tres,s1e1)))
+endlet // end of [s1exp_lam0_errck(...)]
+(* ****** ****** *)
+fun
 s1exp_anno_errck
 ( loc: loc_t
 , s1e1: s1exp
@@ -727,6 +765,18 @@ in//let
 s1exp_errck
 (lvl, s1exp(loc, S1Eanno(s1e1, s1t2)))
 endlet // end of [s1exp_anno_errck(...)]
+(* ****** ****** *)
+fun
+s1exp_qual_errck
+( loc: loc_t
+, tok1: token
+, s1e2: s1exp): s1exp =
+let
+val lvl = errvl(s1e2)
+in//let
+s1exp_errck
+(lvl , s1exp(loc, S1Equal(tok1,s1e2)))
+endlet // end of [s1exp_qual_errck(...)]
 (* ****** ****** *)
 
 #implfun
@@ -856,6 +906,10 @@ s1exp_t2up_errck(loc0,tknd,ses1,ses2)
 endlet // end(S1Et2up(tknd,ses1,ses2))
 //
 |
+S1Elam0 _ =>
+f0_lam0(s1e0, err)
+//
+|
 S1Eanno(s1e1,s1t2) =>
 let
 val e00 = err
@@ -869,6 +923,18 @@ if
 then (s1e0)
 else s1exp_anno_errck(loc0,s1e1,s1t2)
 endlet // end of [S1Eanno(s1e1, s1t2)]
+//
+|
+S1Equal(tok1, s1e2) =>
+let
+val e00 = err
+val s1e2 = tread01_s1exp(s1e2, err)
+in//let
+if
+(e00=err)
+then (s1e0) else
+s1exp_qual_errck( loc0, tok1, s1e2 )
+endlet // end of [S1Equal(tok1,s1e2)]
 //
 | _(* otherwise *) =>
 let
@@ -888,6 +954,34 @@ prerrln("tread01_s1exp: loc0 = ", loc0)
 val (  ) =
 prerrln("tread01_s1exp: s1e0 = ", s1e0)
 *)
+//
+fun
+f0_lam0
+( s1e: s1exp
+, err: &sint >> _): s1exp =
+let
+//
+val e00 = err
+//
+val-
+S1Elam0
+( smas
+, tres, s1e1) = s1e.node()
+//
+val smas =
+tread01_s1maglst(smas, err)
+val tres =
+tread01_sort1opt(tres, err)
+//
+val
+s1e1 = tread01_s1exp(s1e1, err)
+//
+in//let
+if
+(e00=err)
+then (s1e) else
+s1exp_lam0_errck(loc0,smas,tres,s1e1)
+endlet // end of [ f0_lam0( s1e,err ) ]
 //
 } (*where*) // end of [tread01_s1exp(s1e0,err)]
 

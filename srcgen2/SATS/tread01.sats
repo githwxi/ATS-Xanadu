@@ -59,6 +59,8 @@ D1E = "./dynexp1.sats"
 #typedef s1exp = $S1E.s1exp
 #typedef l1s1e = $S1E.l1s1e
 (* ****** ****** *)
+#typedef s1mag = $S1E.s1mag
+(* ****** ****** *)
 #typedef g1explst = $S1E.g1explst
 #typedef g1expopt = $S1E.g1expopt
 (* ****** ****** *)
@@ -69,6 +71,8 @@ D1E = "./dynexp1.sats"
 #typedef s1expopt = $S1E.s1expopt
 (* ****** ****** *)
 #typedef l1s1elst = $S1E.l1s1elst
+(* ****** ****** *)
+#typedef s1maglst = $S1E.s1maglst
 (* ****** ****** *)
 #typedef d1pat = $D1E.d1pat
 #typedef d1exp = $D1E.d1exp
@@ -144,6 +148,9 @@ fun
 tread01_s1explst: ftread01(s1explst)
 fun
 tread01_s1expopt: ftread01(s1expopt)
+(* ****** ****** *)
+fun
+tread01_s1maglst: ftread01(s1maglst)
 (* ****** ****** *)
 fun
 tread01_d1patlst: ftread01(d1patlst)
