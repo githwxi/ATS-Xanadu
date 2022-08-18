@@ -393,7 +393,8 @@ sort1_errvl_sts
 (sts: sort1lst): sint
 //
 #implfun
-sort1_errvl_sts(sts) =
+sort1_errvl_sts
+(  sts  ) =
 (
 case+ sts of
 |
@@ -629,6 +630,33 @@ endcas // end of [ case+(ses) ]
 #symload errvl with s1exp_errvl_ses
 //
 (* ****** ****** *)
+//
+#extern
+fun
+l1s1e_errvl_lses
+(lses: l1s1elst): sint
+//
+#implfun
+l1s1e_errvl_lses
+(   lses   ) =
+(
+case+ lses of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(lse1,lses) =>
+let
+val+
+S1LAB(lab, se1) = lse1 in
+gmax
+( errvl(se1)
+, l1s1e_errvl_lses(lses)) end
+endcas // end of [ case+(lses) ]
+)
+//
+#symload errvl with l1s1e_errvl_lses
+//
+(* ****** ****** *)
 fun
 s1exp_b0sh_errck
 (loc: loc_t): s1exp =
@@ -736,6 +764,39 @@ in//let
 s1exp_errck
 (lvl,s1exp(loc,S1Et2up(tknd,ses1,ses2)))
 endlet // end of [s1exp_t2up_errck(...)]
+(* ****** ****** *)
+fun
+s1exp_r1cd_errck
+( loc
+: loc_t
+, tknd
+: token
+, lses
+: l1s1elst ): s1exp =
+let
+val lvl = errvl(lses)
+in//let
+s1exp_errck
+(lvl , s1exp(loc, S1Er1cd(tknd,lses)))
+endlet // end of [s1exp_r1cd_errck(...)]
+(* ****** ****** *)
+fun
+s1exp_r2cd_errck
+( loc
+: loc_t
+, tknd
+: token
+, lss1
+: l1s1elst
+, lss2
+: l1s1elst ): s1exp =
+let
+val lvl = gmax
+(errvl(lss1), errvl(lss2))
+in//let
+s1exp_errck
+(lvl,s1exp(loc,S1Er2cd(tknd,lss1,lss2)))
+endlet // end of [s1exp_r2cd_errck(...)]
 (* ****** ****** *)
 fun
 s1exp_lam0_errck
@@ -906,6 +967,34 @@ s1exp_t2up_errck(loc0,tknd,ses1,ses2)
 endlet // end(S1Et2up(tknd,ses1,ses2))
 //
 |
+S1Er1cd(tknd,lses) =>
+let
+val e00 = err
+val lses =
+  tread01_l1s1elst(lses, err)
+in//let
+if
+(e00=err)
+then (s1e0) else
+s1exp_r1cd_errck(loc0, tknd, lses)
+endlet // end of [S1Er1cd(tknd,lses)]
+|
+S1Er2cd
+(tknd, lss1, lss2) =>
+let
+val e00 = err
+val lss1 =
+  tread01_l1s1elst(lss1, err)
+val lss2 =
+  tread01_l1s1elst(lss2, err)
+in//let
+if
+(e00=err)
+then (s1e0) else
+s1exp_r2cd_errck(loc0,tknd,lss1,lss2)
+endlet // end(S1Er2cd(tknd,lss1,lss2))
+//
+|
 S1Elam0 _ =>
 f0_lam0(s1e0, err)
 //
@@ -1018,6 +1107,11 @@ tread01_s1expopt
   (  sopt, err  ) =
 optn_tread01_fnp(sopt, err, tread01_s1exp)
 
+(* ****** ****** *)
+#implfun
+tread01_l1s1elst
+  (  lses, err  ) =
+list_tread01_fnp(lses, err, tread01_l1s1e)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_tread01_staexp.dats] *)
