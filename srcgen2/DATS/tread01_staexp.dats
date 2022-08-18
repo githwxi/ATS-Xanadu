@@ -342,10 +342,67 @@ sort1_errck
 sort1
 (s1t.lctn(), S1Terrck(lvl, s1t)))
 (* ****** ****** *)
+//
+fun
+sort1_errvl_a1
+(s1t: sort1): sint =
+(
+case+ s1t.node() of
+|
+S1Terrck
+(lvl, _) => lvl | _ => 0
+)
+#symload
+sort1_errvl with sort1_errvl_a1
+#symload errvl with sort1_errvl_a1
+//
+(* ****** ****** *)
+//
+fun
+sort1_errvl_a2
+(st1: sort1
+,st2: sort1): sint =
+gmax
+(errvl(st1),errvl(st2))
+#symload
+sort1_errvl with sort1_errvl_a2
+#symload errvl with sort1_errvl_a2
+//
+(* ****** ****** *)
 fun
 sort1_a0pp_errck
 (loc: loc_t): sort1 =
 sort1_errck(1,sort1(loc,S1Ta0pp()))
+(* ****** ****** *)
+fun
+sort1_a1pp_errck
+(loc: loc_t
+,st1: sort1
+,st2: sort1): sort1 =
+let
+val lvl =
+gmax
+(errvl(st1), errvl(st2))
+in//let
+sort1_errck
+(lvl, sort1(loc, S1Ta1pp(st1, st2)))
+endlet // end of [sort1_a1pp_errck(...)]
+(* ****** ****** *)
+fun
+sort1_a2pp_errck
+(loc: loc_t
+,st1: sort1
+,st2: sort1
+,st3: sort1): sort1 =
+let
+val lvl =
+gmax
+( errvl(st1)
+, errvl(st2), errvl(st3))
+in//let
+sort1_errck
+(lvl,sort1(loc,S1Ta2pp(st1,st2,st3)))
+endlet // end of [sort1_a2pp_errck(...)]
 (* ****** ****** *)
 
 #implfun
@@ -364,6 +421,43 @@ s1t0.node() of
 sort1_a0pp_errck(loc0)
 ) where
 { val () = ( err := err + 1 ) }
+//
+|
+S1Ta1pp(s1t1, s1t2) =>
+let
+//
+val e00 = err
+//
+val s1t1 =
+  tread01_sort1(s1t1, err)
+val s1t2 =
+  tread01_sort1(s1t2, err)
+in//let
+if
+(e00=err)
+then (s1t0) else
+sort1_a1pp_errck(loc0, s1t1, s1t2)
+endlet // end of [S1Ta1pp(s1t1,s1t2)]
+//
+|
+S1Ta2pp
+(s1t1, s1t2, s1t3) =>
+let
+//
+val e00 = err
+//
+val s1t1 =
+  tread01_sort1(s1t1, err)
+val s1t2 =
+  tread01_sort1(s1t2, err)
+val s1t3 =
+  tread01_sort1(s1t3, err)
+in//let
+if
+(e00=err)
+then (s1t0) else
+sort1_a2pp_errck(loc0,s1t1,s1t2,s1t3)
+endlet // end-[S1Ta2pp(s1t1,s1t2,s1t3)]
 //
 | _(*otherwise*) =>
 let
