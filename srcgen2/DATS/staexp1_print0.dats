@@ -526,6 +526,10 @@ S1Enone0() => print("S1Enone0(", ")")
 |
 S1Enone1(s0e1) => print("S1Enone1(", s0e1 ,")")
 //
+|
+S1Eerrck
+(lvl(*err*),s1e1) => print("S1Eerrck(",lvl,";",s1e1,")")
+//
 end (*let*) // end of [s1exp_fprint(out,s1e)]
 
 (* ****** ****** *)
