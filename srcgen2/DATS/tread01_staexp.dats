@@ -369,6 +369,29 @@ sort1_errvl with sort1_errvl_a2
 #symload errvl with sort1_errvl_a2
 //
 (* ****** ****** *)
+//
+#extern
+fun
+sort1_errvl_sts
+(sts: sort1lst): sint
+//
+#implfun
+sort1_errvl_sts(sts) =
+(
+case+ sts of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(st1,sts) =>
+(
+gmax
+( errvl(st1),sort1_errvl_sts(sts)))
+endcas // end of [ case+(sts) ]
+)
+//
+#symload errvl with sort1_errvl_sts
+//
+(* ****** ****** *)
 fun
 sort1_a0pp_errck
 (loc: loc_t): sort1 =
@@ -403,6 +426,19 @@ in//let
 sort1_errck
 (lvl,sort1(loc,S1Ta2pp(st1,st2,st3)))
 endlet // end of [sort1_a2pp_errck(...)]
+(* ****** ****** *)
+fun
+sort1_list_errck
+( loc
+: loc_t
+, sts
+: sort1lst ): sort1 =
+let
+val lvl = errvl(sts)
+in//let
+sort1_errck
+(lvl , sort1( loc , S1Tlist( sts ) ))
+endlet // end of [sort1_list_errck(...)]
 (* ****** ****** *)
 
 #implfun
@@ -458,6 +494,20 @@ if
 then (s1t0) else
 sort1_a2pp_errck(loc0,s1t1,s1t2,s1t3)
 endlet // end-[S1Ta2pp(s1t1,s1t2,s1t3)]
+//
+|
+S1Tlist(s1ts) =>
+let
+val e00 = err
+val s1ts =
+  tread01_sort1lst(s1ts, err)
+in//let
+if
+(e00=err)
+then (s1t0)
+else sort1_list_errck(loc0, s1ts )
+endlet // end of [ S1Tlist( s1ts ) ]
+//
 //
 | _(*otherwise*) =>
 let
