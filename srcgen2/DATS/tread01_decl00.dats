@@ -118,6 +118,44 @@ d1ecl_make_node
 (loc0,D1Cdefine(tknd,geid,gmas,gopt)))
 end (*let*)//end-of-[d1ecl_define_errck]
 (* ****** ****** *)
+//
+fun
+d1ecl_local0_errck
+( loc0: loc_t
+, dcs1: d1eclist
+, dcs2: d1eclist): d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+(lvl+1,d1ecl(loc0,D1Clocal0(dcs1,dcs2)))
+end (*let*) // end of [d1ecl_local0_errck]
+//
+(* ****** ****** *)
+//
+fun
+d1ecl_stacst0_errck
+( loc0
+: loc_t
+, tknd
+: token
+, sid0
+: token
+, tmas
+: t1maglst
+, s1t1: sort1): d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+(
+lvl+1
+,
+d1ecl
+(loc0,D1Cstacst0(tknd,sid0,tmas,s1t1)))
+end (*let*) // end of [d1ecl_stacst0_errck]
+//
+(* ****** ****** *)
 
 #implfun
 tread01_d1ecl
@@ -138,6 +176,14 @@ D0Cextern _ => f0_extern(d1cl, err)
 D1Cdefine _ => f0_define(d1cl, err)
 //
 |
+D0Clocal0 _ => f0_local0(d1cl, err)
+//
+|
+D0Cabssort _ => d1cl//HX:fixity-less
+|
+D0Cstacst0 _ => f0_stacst0(d1cl, err)
+//
+|
 _(*otherwise*) =>
 let
 val lvl = 1
@@ -145,8 +191,9 @@ in//let
 (err := err+1; d1ecl_errck(lvl, d1cl))
 endlet // end of [ _(* otherwise *) ]
 //
-) where
+) where // end of [case+(d1cl.node())]
 {
+(* ****** ****** *)
 //
 val loc0 = d1cl.lctn()
 //
@@ -177,7 +224,7 @@ in
 if
 (err=e00)
 then dcl else
-d1ecl_static_errck(dcl.lctn(), tknd, dcl1)
+d1ecl_static_errck(dcl.lctn(),tknd,dcl1)
 end (*let*) // end of [ f0_static(dcl,err) ]
 //
 fun
@@ -198,7 +245,7 @@ in
 if
 (err=e00)
 then dcl else
-d1ecl_extern_errck(dcl.lctn(), tknd, dcl1)
+d1ecl_extern_errck(dcl.lctn(),tknd,dcl1)
 end (*let*) // end of [ f0_extern(dcl,err) ]
 //
 (* ****** ****** *)
@@ -224,8 +271,66 @@ in//let
 if
 (e00=err)
 then (dcl) else
-d1ecl_define_errck(loc0,tknd,geid,gmas,gopt)
+d1ecl_define_errck
+( dcl.lctn(), tknd, geid, gmas, gopt )
 end (*let*) // end of [ f0_define(dcl,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_local0
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D1Clocal0
+(dcs1, dcs2) = dcl.node()
+//
+val dcs1 =
+tread01_d1eclist(dcs1, err)
+val dcs2 =
+tread01_d1eclist(dcs2, err)
+//
+in
+if
+(err=e00)
+then dcl else
+d1ecl_local0_errck( loc, dcs1, dcs2 )
+end (*let*) // end of [ f0_local0(dcl,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_stacst0
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+//
+val-
+D1Cstacst0
+( tknd
+, sid0
+, tmas, s1t1) = dcl.node()
+//
+val
+tmas =
+tread01_t1maglst(tmas, err)
+val
+s1t1 = tread01_sort1(s1t1, err)
+//
+in//let
+if
+(err=e00)
+then dcl else
+d1ecl_stacst0_errck
+( dcl.lctn(), tknd, sid0, tmas, s1t1 )
+end (*let*) // end of [f0_stacst0(dcl,err)]
 //
 (* ****** ****** *)
 //

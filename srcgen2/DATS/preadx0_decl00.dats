@@ -1272,108 +1272,90 @@ case+
 dcl.node() of
 //
 |
-D0Cnonfix _ =>
-f0_nonfix(dcl, err)
+D0Cnonfix _ => f0_nonfix(dcl, err)
 |
-D0Cfixity _ =>
-f0_fixity(dcl, err)
+D0Cfixity _ => f0_fixity(dcl, err)
 //
 |
-D0Cstatic _ =>
-f0_static(dcl, err)
+D0Cstatic _ => f0_static(dcl, err)
 |
-D0Cextern _ =>
-f0_extern(dcl, err)
+D0Cextern _ => f0_extern(dcl, err)
 //
 |
-D0Cdefine _ =>
-f0_define(dcl, err)
+D0Cdefine _ => f0_define(dcl, err)
 |
-D0Cmacdef _ =>
-f0_macdef(dcl, err)
+D0Cmacdef _ => f0_macdef(dcl, err)
 //
 |
-D0Clocal0 _ =>
-f0_local0( dcl, err )
+D0Clocal0 _ => f0_local0(dcl, err)
 //
 |
-D0Cabssort _ =>
-f0_abssort(dcl, err)
+D0Cabssort _ => f0_abssort(dcl, err)
 |
-D0Cstacst0 _ =>
-f0_stacst0(dcl, err)
+D0Cstacst0 _ => f0_stacst0(dcl, err)
 //
 |
-D0Csortdef _ =>
-f0_sortdef(dcl, err)
+D0Csortdef _ => f0_sortdef(dcl, err)
 |
-D0Csexpdef _ =>
-f0_sexpdef(dcl, err)
+D0Csexpdef _ => f0_sexpdef(dcl, err)
 //
 |
-D0Cabstype _ =>
-f0_abstype(dcl, err)
+D0Cabstype _ => f0_abstype(dcl, err)
 |
-D0Cabsopen _ =>
-f0_absopen(dcl, err)
+D0Cabsopen _ => f0_absopen(dcl, err)
 |
-D0Cabsimpl _ =>
-f0_absimpl(dcl, err)
+D0Cabsimpl _ => f0_absimpl(dcl, err)
 //
 |
-D0Csymload _ =>
-f0_symload(dcl, err)
+D0Csymload _ => f0_symload(dcl, err)
 //
 |
-D0Cinclude _ =>
-f0_include(dcl, err)
+D0Cinclude _ => f0_include(dcl, err)
 |
-D0Cstaload _ =>
-f0_staload(dcl, err)
+D0Cstaload _ => f0_staload(dcl, err)
 |
-D0Cdyninit _ =>
-f0_dyninit(dcl, err)
+D0Cdyninit _ => f0_dyninit(dcl, err)
 //
 |
-D0Cdatasort _ =>
-f0_datasort(dcl, err)
+D0Cdatasort _ => f0_datasort(dcl, err)
 //
 |
-D0Cvaldclst _ =>
-f0_valdclst(dcl, err)
+D0Cvaldclst _ => f0_valdclst(dcl, err)
 |
-D0Cvardclst _ =>
-f0_vardclst(dcl, err)
+D0Cvardclst _ => f0_vardclst(dcl, err)
 |
-D0Cfundclst _ =>
-f0_fundclst(dcl, err)
+D0Cfundclst _ => f0_fundclst(dcl, err)
 //
 |
-D0Cimplmnt0 _ =>
-f0_implmnt0(dcl, err)
+D0Cimplmnt0 _ => f0_implmnt0(dcl, err)
 //
 |
-D0Cexcptcon _ =>
-f0_excptcon(dcl, err)
+D0Cexcptcon _ => f0_excptcon(dcl, err)
 |
-D0Cdatatype _ =>
-f0_datatype(dcl, err)
+D0Cdatatype _ => f0_datatype(dcl, err)
 //
 |
-D0Cdynconst _ =>
-f0_dynconst(dcl, err)
+D0Cdynconst _ => f0_dynconst(dcl, err)
 //
 | // HX: ignored!
 D0Ctkerr(tok) => ( dcl )
 |
 D0Ctkskp _ =>
-(err := err+1; d0ecl_errck(1, dcl))
+let
+val lvl = 1
+in//let
+(err := err + 1; d0ecl_errck(lvl, dcl))
+end (*let*) // end of [D0Ctkskp _]
 //
 |
 _(*otherwise*) =>
-(err := err+1; d0ecl_errck(1, dcl))
+let
+val lvl = 1
+in//let
+(err := err + 1; d0ecl_errck(lvl, dcl))
+end (*let*) // end of [_(*otherwise*)]
 //
-) where
+) where // end of [ case+(dcl.node()) ]
 {
 //
 (* ****** ****** *)
