@@ -881,10 +881,11 @@ let
 //
 val e00 = err
 //
-val s1e1 =
-  tread01_s1exp(s1e1, err)
-val s1e2 =
-  tread01_s1exp(s1e2, err)
+val
+s1e1 = tread01_s1exp(s1e1, err)
+val
+s1e2 = tread01_s1exp(s1e2, err)
+//
 in//let
 if
 (e00=err)
@@ -899,12 +900,13 @@ let
 //
 val e00 = err
 //
-val s1e1 =
-  tread01_s1exp(s1e1, err)
-val s1e2 =
-  tread01_s1exp(s1e2, err)
-val s1e3 =
-  tread01_s1exp(s1e3, err)
+val
+s1e1 = tread01_s1exp(s1e1, err)
+val
+s1e2 = tread01_s1exp(s1e2, err)
+val
+s1e3 = tread01_s1exp(s1e3, err)
+//
 in//let
 if
 (e00=err)
@@ -915,9 +917,12 @@ endlet//end-(S1Ea2pp(s1e1,s1e2,s1e3))
 |
 S1El1st(s1es) =>
 let
+//
 val e00 = err
+//
 val s1es =
   tread01_s1explst(s1es, err)
+//
 in//let
 if
 (e00=err)
@@ -927,11 +932,14 @@ endlet // end of [ S1El1st( s1es ) ]
 |
 S1El2st(ses1,ses2) =>
 let
+//
 val e00 = err
+//
 val ses1 =
   tread01_s1explst(ses1, err)
 val ses2 =
   tread01_s1explst(ses2, err)
+//
 in//let
 if
 (e00=err)
@@ -942,9 +950,12 @@ endlet // end of [S1El2st(ses1,ses2)]
 |
 S1Et1up(tknd,s1es) =>
 let
+//
 val e00 = err
+//
 val s1es =
   tread01_s1explst(s1es, err)
+//
 in//let
 if
 (e00=err)
@@ -955,11 +966,14 @@ endlet // end of [S1Et1up(tknd,s1es)]
 S1Et2up
 (tknd, ses1, ses2) =>
 let
+//
 val e00 = err
+//
 val ses1 =
   tread01_s1explst(ses1, err)
 val ses2 =
   tread01_s1explst(ses2, err)
+//
 in//let
 if
 (e00=err)
@@ -970,9 +984,12 @@ endlet // end(S1Et2up(tknd,ses1,ses2))
 |
 S1Er1cd(tknd,lses) =>
 let
+//
 val e00 = err
+//
 val lses =
   tread01_l1s1elst(lses, err)
+//
 in//let
 if
 (e00=err)
@@ -983,11 +1000,14 @@ endlet // end of [S1Er1cd(tknd,lses)]
 S1Er2cd
 (tknd, lss1, lss2) =>
 let
+//
 val e00 = err
-val lss1 =
-  tread01_l1s1elst(lss1, err)
-val lss2 =
-  tread01_l1s1elst(lss2, err)
+//
+val
+lss1 = tread01_l1s1elst(lss1, err)
+val
+lss2 = tread01_l1s1elst(lss2, err)
+//
 in//let
 if
 (e00=err)
@@ -1017,8 +1037,12 @@ endlet // end of [S1Eanno(s1e1, s1t2)]
 |
 S1Equal(tok1, s1e2) =>
 let
+//
 val e00 = err
-val s1e2 = tread01_s1exp(s1e2, err)
+//
+val
+s1e2 = tread01_s1exp(s1e2, err)
+//
 in//let
 if
 (e00=err)
@@ -1035,8 +1059,11 @@ endlet // end of [ _(* otherwise *) ]
 //
 ) where // end-of-[ case(s1e0.node()) ]
 {
+(* ****** ****** *)
 //
 val loc0 = s1e0.lctn()
+//
+(* ****** ****** *)
 //
 fun
 f0_lam0
@@ -1067,12 +1094,14 @@ then (s1e) else
 s1exp_lam0_errck(loc,smas,tres,s1e1)
 endlet // end of [ f0_lam0( s1e,err ) ]
 //
+(* ****** ****** *)
 (*
 val (  ) =
 prerrln("tread01_s1exp: loc0 = ", loc0)
 val (  ) =
 prerrln("tread01_s1exp: s1e0 = ", s1e0)
 *)
+(* ****** ****** *)
 //
 } (*where*) // end of [tread01_s1exp(s1e0,err)]
 
