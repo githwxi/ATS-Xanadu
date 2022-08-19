@@ -303,6 +303,7 @@ f0_cond
 let
 //
 val e00 = err
+val loc = g1e.lctn()
 //
 val-
 G1Eif0
@@ -319,7 +320,7 @@ in//let
 if
 (e00=err)
 then (g1e) else
-g1exp_cond_errck(loc0,g1e1,g1e2,g1e3)
+g1exp_cond_errck(loc,g1e1,g1e2,g1e3)
 endlet // end-of-[ f0_cond(g1e,err) ]
 //
 (*
@@ -1051,6 +1052,7 @@ f0_lam0
 let
 //
 val e00 = err
+val loc = s1e.lctn()
 //
 val-
 S1Elam0
@@ -1069,7 +1071,7 @@ in//let
 if
 (e00=err)
 then (s1e) else
-s1exp_lam0_errck(loc0,smas,tres,s1e1)
+s1exp_lam0_errck(loc,smas,tres,s1e1)
 endlet // end of [ f0_lam0( s1e,err ) ]
 //
 } (*where*) // end of [tread01_s1exp(s1e0,err)]
