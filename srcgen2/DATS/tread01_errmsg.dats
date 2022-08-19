@@ -73,6 +73,14 @@ ATS_PACKNAME
 #symload lctn with d1ecl_get_lctn
 #symload node with d1ecl_get_node
 (* ****** ****** *)
+#define FPEMSG_ERRVL 2
+(* ****** ****** *)
+#symload fpemsg with g1exp_fpemsg
+(* ****** ****** *)
+#symload fpemsg with sort1_fpemsg
+#symload fpemsg with s1exp_fpemsg
+#symload fpemsg with l1s1e_fpemsg
+(* ****** ****** *)
 //
 #implfun
 g1exp_fpemsg
@@ -97,6 +105,83 @@ endlet // end of [G1Eerrck(lvl,ge1)]
 //
 end(*let*)//end-of(g1exp_fpemsg(out,g1e))
 //
+(* ****** ****** *)
+
+local
+
+fun
+auxmain
+( out: FILR
+, s1t: sort1): void =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case
+s1t.node() of
+//
+|S1Tid0 _ => ()
+|S1Tint _ => ()
+//
+|S1Ta0pp() => ()
+|
+S1Ta1pp(s1f0,s1t1) =>
+(
+sort1_fpemsg(out, s1f0)
+;
+sort1_fpemsg(out, s1t1))
+|
+S1Ta2pp
+(s1f0,s1t1,s1t2) =>
+(
+sort1_fpemsg(out, s1f0)
+;
+sort1_fpemsg(out, s1t1)
+;
+sort1_fpemsg(out, s1t2))
+|
+S1Tlist(s1ts) =>
+sort1lst_fpemsg(out, s1ts)
+|
+S1Tqual(tok1,s1t2) =>
+(
+sort1_fpemsg(out, s1t2))
+//
+|S1Tnone0() => ((*void*))
+|S1Tnone1(s0t1) => ((*void*))
+//
+|
+S1Terrck _ => sort1_fpemsg(out, s1t)
+end(*let*)//end-of-(auxmain(out,s1t))
+//
+in//local
+//
+#implfun
+sort1_fpemsg
+(out, s1t) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+s1t.node() of
+|
+S1Terrck(lvl, st1) =>
+(
+auxmain( out, st1 ); 
+if
+(lvl
+>FPEMSG_ERRVL) then () else
+println
+("PREADX0-ERROR:",s1t.lctn(),":",s1t)
+)
+| _(* otherwise *) => ( (*void*) )
+//
+end(*let*)//end-of(sort1_fpemsg(out,s1t))
+//
+endloc(*local*)//end-of(local(sort1_fpemsg))
+
 (* ****** ****** *)
 
 local

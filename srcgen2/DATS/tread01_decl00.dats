@@ -73,6 +73,34 @@ d1ecl
 (dcl.lctn(), D1Cerrck(lvl, dcl)))
 //
 (* ****** ****** *)
+//
+fun
+d1ecl_static_errck
+( loc0: loc_t
+, tknd: token
+, dcl1: d1ecl): d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+( lvl+1
+, d1ecl(loc0, D1Cstatic(tknd, dcl1)) )
+end (*let*)//end-of-[d1ecl_static_errck]
+//
+fun
+d1ecl_extern_errck
+( loc0: loc_t
+, tknd: token
+, dcl1: d1ecl): d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+( lvl+1
+, d1ecl(loc0, D1Cextern(tknd, dcl1)) )
+end (*let*)//end-of-[d1ecl_extern_errck]
+//
+(* ****** ****** *)
 fun
 d1ecl_define_errck
 ( loc0: loc_t
@@ -102,6 +130,11 @@ d1cl.node() of
 D1Cd0ecl _ => d1cl
 //
 |
+D0Cstatic _ => f0_static(d1cl, err)
+|
+D0Cextern _ => f0_extern(d1cl, err)
+//
+|
 D1Cdefine _ => f0_define(d1cl, err)
 //
 |
@@ -117,10 +150,58 @@ endlet // end of [ _(* otherwise *) ]
 //
 val loc0 = d1cl.lctn()
 //
+(* ****** ****** *)
+//
 val (  ) =
 prerrln("tread01_d1ecl: loc0 = ", loc0)
 val (  ) =
 prerrln("tread01_d1ecl: d1cl = ", d1cl)
+//
+(* ****** ****** *)
+//
+fun
+f0_static
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+//
+val-
+D1Cstatic
+( tknd, dcl1) = dcl.node()
+//
+val dcl1 = tread01_d1ecl(dcl1, err)
+//
+in
+if
+(err=e00)
+then dcl else
+d1ecl_static_errck(dcl.lctn(), tknd, dcl1)
+end (*let*) // end of [ f0_static(dcl,err) ]
+//
+fun
+f0_extern
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+//
+val-
+D1Cextern
+( tknd, dcl1) = dcl.node()
+//
+val dcl1 = tread01_d1ecl(dcl1, err)
+//
+in
+if
+(err=e00)
+then dcl else
+d1ecl_extern_errck(dcl.lctn(), tknd, dcl1)
+end (*let*) // end of [ f0_extern(dcl,err) ]
+//
+(* ****** ****** *)
 //
 fun
 f0_define
@@ -144,7 +225,9 @@ if
 (e00=err)
 then (dcl) else
 d1ecl_define_errck(loc0,tknd,geid,gmas,gopt)
-endlet // end of [ f0_define(dcl,err) ]
+end (*let*) // end of [ f0_define(dcl,err) ]
+//
+(* ****** ****** *)
 //
 } (*where*) // end of [tread01_d1ecl(d1cl,err)]
 
