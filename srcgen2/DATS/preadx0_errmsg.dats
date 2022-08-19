@@ -134,8 +134,7 @@ ATS_PACKNAME
 #symload node with d0ecl_get_node
 (* ****** ****** *)
 
-#define
-FPEMSG_ERRVL 2
+#define FPEMSG_ERRVL 2
 
 (* ****** ****** *)
 #symload fpemsg with i0dnt_fpemsg
@@ -151,6 +150,8 @@ FPEMSG_ERRVL 2
 (* ****** ****** *)
 #symload fpemsg with s0qid_fpemsg
 #symload fpemsg with d0qid_fpemsg
+(* ****** ****** *)
+#symload fpemsg with g0exp_fpemsg
 (* ****** ****** *)
 #symload fpemsg with sort0_fpemsg
 #symload fpemsg with s0exp_fpemsg
