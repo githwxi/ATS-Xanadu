@@ -1038,13 +1038,6 @@ endlet // end of [ _(* otherwise *) ]
 //
 val loc0 = s1e0.lctn()
 //
-(*
-val (  ) =
-prerrln("tread01_s1exp: loc0 = ", loc0)
-val (  ) =
-prerrln("tread01_s1exp: s1e0 = ", s1e0)
-*)
-//
 fun
 f0_lam0
 ( s1e: s1exp
@@ -1073,6 +1066,13 @@ if
 then (s1e) else
 s1exp_lam0_errck(loc,smas,tres,s1e1)
 endlet // end of [ f0_lam0( s1e,err ) ]
+//
+(*
+val (  ) =
+prerrln("tread01_s1exp: loc0 = ", loc0)
+val (  ) =
+prerrln("tread01_s1exp: s1e0 = ", s1e0)
+*)
 //
 } (*where*) // end of [tread01_s1exp(s1e0,err)]
 

@@ -199,13 +199,6 @@ val loc0 = d1cl.lctn()
 //
 (* ****** ****** *)
 //
-val (  ) =
-prerrln("tread01_d1ecl: loc0 = ", loc0)
-val (  ) =
-prerrln("tread01_d1ecl: d1cl = ", d1cl)
-//
-(* ****** ****** *)
-//
 fun
 f0_static
 ( dcl: d1ecl
@@ -331,6 +324,15 @@ then dcl else
 d1ecl_stacst0_errck
 ( dcl.lctn(), tknd, sid0, tmas, s1t1 )
 end (*let*) // end of [f0_stacst0(dcl,err)]
+//
+(* ****** ****** *)
+//
+(*
+val (  ) =
+prerrln("tread01_d1ecl: loc0 = ", loc0)
+val (  ) =
+prerrln("tread01_d1ecl: d1cl = ", d1cl)
+*)
 //
 (* ****** ****** *)
 //
