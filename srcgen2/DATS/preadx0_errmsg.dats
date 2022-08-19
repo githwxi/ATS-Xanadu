@@ -351,7 +351,7 @@ println
 endlet // end of [G0Eerrck(lvl,ge1)]
 | _(* otherwise *) => ( (*void*) )
 //
-end(*let*)//end-of(sort0_fpemsg(out,s0t))
+end(*let*)//end-of(g0exp_fpemsg(out,g0e))
 //
 (* ****** ****** *)
 

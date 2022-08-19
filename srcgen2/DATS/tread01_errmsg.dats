@@ -73,6 +73,31 @@ ATS_PACKNAME
 #symload lctn with d1ecl_get_lctn
 #symload node with d1ecl_get_node
 (* ****** ****** *)
+//
+#implfun
+g1exp_fpemsg
+(out, g1e) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+g1e.node() of
+|
+G1Eerrck(lvl, ge1) =>
+let
+  val loc = g1e.lctn()
+in//let
+(*
+println
+("TREAD01-ERROR:",loc,":",g1e)
+*)
+endlet // end of [G1Eerrck(lvl,ge1)]
+| _(* otherwise *) => ( (*void*) )
+//
+end(*let*)//end-of(g1exp_fpemsg(out,g1e))
+//
+(* ****** ****** *)
 
 local
 
