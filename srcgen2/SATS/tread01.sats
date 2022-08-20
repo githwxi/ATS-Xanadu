@@ -66,6 +66,9 @@ D1E = "./dynexp1.sats"
 (* ****** ****** *)
 #typedef s1tdf = $S1E.s1tdf
 (* ****** ****** *)
+#typedef s1tcn = $S1E.s1tcn
+#typedef d1tst = $S1E.d1tst
+(* ****** ****** *)
 #typedef g1explst = $S1E.g1explst
 #typedef g1expopt = $S1E.g1expopt
 (* ****** ****** *)
@@ -81,6 +84,9 @@ D1E = "./dynexp1.sats"
 #typedef s1maglst = $S1E.s1maglst
 #typedef t1arglst = $S1E.t1arglst
 #typedef t1maglst = $S1E.t1maglst
+(* ****** ****** *)
+#typedef s1tcnlst = $S1E.s1tcnlst
+#typedef d1tstlst = $S1E.d1tstlst
 (* ****** ****** *)
 #typedef d1pat = $D1E.d1pat
 #typedef d1exp = $D1E.d1exp
@@ -130,6 +136,9 @@ fun tread01_t1arg: ftread01(t1arg)
 fun tread01_t1mag: ftread01(t1mag)
 (* ****** ****** *)
 fun tread01_s1tdf: ftread01(s1tdf)
+(* ****** ****** *)
+fun tread01_s1tcn: ftread01(s1tcn)
+fun tread01_d1tst: ftread01(d1tst)
 (* ****** ****** *)
 fun tread01_d1pat: ftread01(d1pat)
 fun tread01_d1exp: ftread01(d1exp)
@@ -181,6 +190,11 @@ fun
 tread01_t1arglst: ftread01(t1arglst)
 fun
 tread01_t1maglst: ftread01(t1maglst)
+(* ****** ****** *)
+fun
+tread01_s1tcnlst: ftread01(s1tcnlst)
+fun
+tread01_d1tstlst: ftread01(d1tstlst)
 (* ****** ****** *)
 fun
 tread01_d1patlst: ftread01(d1patlst)
