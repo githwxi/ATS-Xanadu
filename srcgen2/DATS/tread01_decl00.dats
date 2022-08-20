@@ -314,6 +314,23 @@ d1ecl_errck
 end (*let*) // end of [d1ecl_dyninit_errck]
 //
 (* ****** ****** *)
+//
+fun
+d1ecl_datasort_errck
+( loc0
+: loc_t
+, tknd
+: token
+, d1ts
+: d1tstlst) : d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+(lvl+1, d1ecl(loc0, D1Cdatasort(tknd, d1ts)))
+end (*let*) // end of [d1ecl_datasort_errck]
+//
+(* ****** ****** *)
 
 #implfun
 tread01_d1ecl
@@ -363,6 +380,9 @@ D1Cinclude _ => f0_include(d1cl, err)
 D1Cstaload _ => f0_staload(d1cl, err)
 |
 D1Cdyninit _ => f0_dyninit(d1cl, err)
+//
+|
+D1Cdatasort _ => f0_datasort(d1cl, err)
 //
 |
 _(*otherwise*) =>
@@ -716,13 +736,37 @@ val-
 D1Cdyninit
 (tknd, g1e1) = dcl.node()
 //
-val g1e1 = tread01_g1exp(g1e1, err)
+val
+g1e1 = tread01_g1exp(g1e1, err)
 //
 if
 (err=e00)
 then (dcl) else
 d1ecl_dyninit_errck(dcl.lctn(),tknd,g1e1)
 end (*let*) // end of [f0_dyninit(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_datasort
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+//
+val-
+D1Cdatasort
+(tknd, d1ts) = dcl.node()
+//
+val
+d1ts = tread01_d1tstlst(d1ts, err)
+//
+if
+(err=e00)
+then (dcl) else
+d1ecl_datasort_errck(dcl.lctn(),tknd,d1ts)
+end (*let*) // end of [f0_datasort(dcl,err)]
 //
 (* ****** ****** *)
 //
