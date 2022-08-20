@@ -89,6 +89,8 @@ D1E = "./dynexp1.sats"
 (* ****** ****** *)
 #typedef d1ecl = $D1E.d1ecl
 (* ****** ****** *)
+#typedef a1tdf = $D1E.a1tdf
+(* ****** ****** *)
 #typedef d1patlst = $D1E.d1patlst
 (* ****** ****** *)
 #typedef d1explst = $D1E.d1explst
@@ -133,6 +135,8 @@ fun tread01_d1pat: ftread01(d1pat)
 fun tread01_d1exp: ftread01(d1exp)
 (* ****** ****** *)
 fun tread01_d1ecl: ftread01(d1ecl)
+(* ****** ****** *)
+fun tread01_a1tdf: ftread01(a1tdf)
 (* ****** ****** *)
 //
 fun
