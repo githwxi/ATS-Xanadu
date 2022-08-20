@@ -733,14 +733,16 @@ d1ecl_node =
   ( d1eclist(*head*)
   , d1eclist(*body*))
 //
-| D1Cdefine of
-  ( token
-  , g1eid
-  , g1maglst(*arg*), g1expopt)
-| D1Cmacdef of
-  ( token
-  , g1eid
-  , g1maglst(*arg*), d1expopt)
+|
+D1Cdefine of
+( token
+, g1eid
+, g1maglst(*arg*), g1expopt)
+|
+D1Cmacdef of
+( token
+, g1eid
+, g1maglst(*arg*), d1expopt)
 //
 | D1Cabssort of
   (token, token(*s0tid*))
@@ -749,8 +751,9 @@ d1ecl_node =
   ( token // STACST0
   , token, t1maglst, sort1)
 //
-| D1Csortdef of
-  ( token, token(*s0tid*), s1tdf)
+|
+D1Csortdef of
+(token, token(*s0tid*), s1tdf)
 //
 | D1Csexpdef of
   ( token // kind
@@ -764,17 +767,25 @@ d1ecl_node =
 | D1Cabsopen of (token, s1qid)
 | D1Cabsimpl of
   ( token // kind
-  , s1qid, s1maglst, sort1opt, s1exp)
+  , s1qid
+  , s1maglst, sort1opt, s1exp)
 //
 |
 D1Csymload of
 ( token
 , sym_t
-, d1qid(*qual-id*), g1expopt)
+, d1qid(*qual-id*), g1expopt )
+//
+|
+D1Cinclude of (token, g1exp)//inclusion
+|
+D1Cstaload of (token, g1exp)//staloading
+|
+D1Cdyninit of (token, g1exp)//initization
 //
 |
 D1Cdatasort of
-(token(*DATASORT*), d1tstlst)
+(token(*DATASORT*), d1tstlst )
 //
 |
 D1Cvaldclst of

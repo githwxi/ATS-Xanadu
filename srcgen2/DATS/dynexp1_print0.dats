@@ -463,6 +463,16 @@ print("D1Csymload(");
 print(tknd,";",deid,";",dqid,";",gopt,")"))
 //
 |
+D1Cinclude(tknd,g1e1) =>
+print("D1Cinclude(",tknd,";",g1e1,")")
+|
+D1Cstaload(tknd,g1e1) =>
+print("D1Cstaload(",tknd,";",g1e1,")")
+|
+D1Cdyninit(tknd,g1e1) =>
+print("D1Cdyninit(",tknd,";",g1e1,")")
+//
+|
 D1Cdatasort
 (  tknd, dtcs  ) =>
 print("D1Cdatasort(",tknd,";",dtcs,")")

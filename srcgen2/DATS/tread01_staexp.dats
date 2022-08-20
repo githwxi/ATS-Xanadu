@@ -1230,6 +1230,24 @@ endlet // end of [ T1MAGlist( t1as ) ]
 (* ****** ****** *)
 //
 #implfun
+tread01_l1s1e
+  (ls1e, err) =
+let
+//
+val e00 = err
+//
+val+
+S1LAB(lab,s1e) = ls1e
+val s1e = tread01_s1exp(s1e, err)
+//
+in//let
+if
+(e00=err) then ls1e else S1LAB(lab,s1e)
+endlet // end of [tread01_l1s1e(ls1e,err)]
+//
+(* ****** ****** *)
+//
+#implfun
 tread01_s1tdf
   (stdf, err) =
 (
