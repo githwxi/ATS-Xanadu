@@ -930,6 +930,69 @@ val tcns = tread01_s1tcnlst(tcns, err)
 (* ****** ****** *)
 
 #implfun
+tread01_d1tcn
+  (syn, err) =
+(
+case+
+syn.node() of
+|
+D1TCNnode
+( s1us, deid
+, s1es, sopt) =>
+let
+//
+val e00 = err
+//
+val s1us =
+tread01_s1unilst(s1us, err)
+val s1es =
+tread01_s1explst(s1es, err)
+val sopt =
+tread01_s1expopt(sopt, err)
+//
+in//let
+if
+(err=e00)
+then (syn) else
+d1tcn_make_node
+(syn.lctn(),D1TCNnode(s1us,deid,s1es,sopt))
+end
+) (*case+*) // end-of-(tread01_d1tcn(syn,err))
+
+(* ****** ****** *)
+//
+#implfun
+tread01_d1typ
+  (dtyp, err) = let
+//
+val e00 = err
+//
+val loc = dtyp.lctn()
+//
+val+
+D1TYPnode
+( deid, tmas
+, tres, tcns) = dtyp.node()
+//
+val tmas =
+tread01_t1maglst(tmas, err)
+val tres =
+tread01_sort1opt(tres, err)
+val tcns =
+tread01_d1tcnlst(tcns, err)
+//
+in//let
+if
+(err=e00)
+then (dtyp)
+else
+d1typ_make_node
+(loc, D1TYPnode(deid, tmas, tres, tcns))
+end(*let*)//end-of-[tread01_d1typ(dtyp,err)]
+//
+(* ****** ****** *)
+
+#implfun
 tread01_a1tdf
   (atdf, err) =
 (
@@ -991,6 +1054,29 @@ list_tread01_fnp(tcns, err, tread01_d1tcn)
 tread01_d1typlst
   (  d1ts, err  ) =
 list_tread01_fnp(d1ts, err, tread01_d1typ)
+//
+(* ****** ****** *)
+//
+#implfun
+tread01_wd1eclseq
+  (  wdcs, err  ) =
+(
+case+ wdcs of
+|
+WD1CSnone() => wdcs
+|
+WD1CSsome(d1cs) =>
+let
+//
+val e00 = err
+//
+val
+d1cs = tread01_d1eclist(d1cs, err)
+in//let
+if
+(e00=err) then wdcs else WD1CSsome(d1cs)
+end (*let*) // end of [WD1CSsome(d1cs)]
+) (*case+*) // end of [tread01_wd1eclseq(wdcs,err)]
 //
 (* ****** ****** *)
 

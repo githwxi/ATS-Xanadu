@@ -838,7 +838,7 @@ let
 val lvl = 0 // errvl(s1qs)
 in//let
 s1exp_errck
-( lvl+1, s1exp( loc , S1Euni0( s1qs ) )
+(lvl+1, s1exp( loc , S1Euni0( s1qs ) ))
 endlet // end of [s1exp_uni0_errck(...)]
 (* ****** ****** *)
 fun
@@ -853,7 +853,7 @@ let
 val lvl = 0 // errvl(s1qs)
 in//let
 s1exp_errck
-(lvl+1, s1exp(loc, S1Eexi0(tknd, s1qs))
+(lvl+1, s1exp(loc,S1Eexi0(tknd, s1qs)))
 endlet // end of [s1exp_exi0_errck(...)]
 (* ****** ****** *)
 fun
@@ -1191,6 +1191,24 @@ prerrln("tread01_s1exp: s1e0 = ", s1e0)
 (* ****** ****** *)
 //
 #implfun
+tread01_l1s1e
+  (ls1e, err) =
+let
+//
+val e00 = err
+//
+val+
+S1LAB(lab,s1e) = ls1e
+val s1e = tread01_s1exp(s1e, err)
+//
+in//let
+if
+(e00=err) then ls1e else S1LAB(lab,s1e)
+endlet // end of [tread01_l1s1e(ls1e,err)]
+//
+(* ****** ****** *)
+//
+#implfun
 tread01_s1arg
 ( s1a1, err ) =
 (
@@ -1333,20 +1351,26 @@ endlet // end of [S1QUAvars(toks,tres)]
 (* ****** ****** *)
 //
 #implfun
-tread01_l1s1e
-  (ls1e, err) =
+tread01_s1uni
+  (s1u0, err) =
+(
+case+
+s1u0.node() of
+|
+S1UNIsome(s1qs) =>
 let
 //
 val e00 = err
 //
-val+
-S1LAB(lab,s1e) = ls1e
-val s1e = tread01_s1exp(s1e, err)
-//
+val s1qs =
+tread01_s1qualst(s1qs, err)
 in//let
 if
-(e00=err) then ls1e else S1LAB(lab,s1e)
-endlet // end of [tread01_l1s1e(ls1e,err)]
+(e00=err)
+then (s1u0) else
+s1uni(s1u0.lctn(), S1UNIsome(s1qs))
+endlet // end of [ S1UNIsome( s1qs ) ]
+) (*case+*) // end of [tread01_s1uni(s1u0,err)]
 //
 (* ****** ****** *)
 //
@@ -1458,6 +1482,11 @@ list_tread01_fnp(tmas, err, tread01_t1mag)
 tread01_s1qualst
   (  s1qs, err  ) =
 list_tread01_fnp(s1qs, err, tread01_s1qua)
+(* ****** ****** *)
+#implfun
+tread01_s1unilst
+  (  s1us, err  ) =
+list_tread01_fnp(s1us, err, tread01_s1uni)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_tread01_staexp.dats] *)
