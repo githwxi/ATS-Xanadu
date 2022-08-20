@@ -175,6 +175,32 @@ d1ecl_errck
 end (*let*) // end of [d1ecl_sortdef_errck]
 //
 (* ****** ****** *)
+//
+fun
+d1ecl_sexpdef_errck
+( loc0
+: loc_t
+, tknd
+: token
+, seid
+: token
+, smas
+: s1maglst
+, tres
+: sort1opt
+, sdef: s1exp): d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+(
+lvl+1,
+d1ecl_make_node
+( loc0
+, D1Csexpdef(tknd,seid,smas,tres,sdef)))
+end (*let*) // end of [d1ecl_sexpdef_errck]
+//
+(* ****** ****** *)
 
 #implfun
 tread01_d1ecl
@@ -204,6 +230,9 @@ D1Cstacst0 _ => f0_stacst0(d1cl, err)
 //
 |
 D1Csortdef _ => f0_sortdef(d1cl, err)
+//
+|
+D1Csexpdef _ => f0_sexpdef(d1cl, err)
 //
 |
 _(*otherwise*) =>
@@ -372,6 +401,39 @@ if
 then dcl else
 d1ecl_sortdef_errck(loc,tknd,tid0,stdf)
 end (*let*) // end of [f0_sortdef(dcl,err)]
+
+(* ****** ****** *)
+
+fun
+f0_sexpdef
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+//
+val-
+D1Csexpdef
+( tknd
+, sid0, smas
+, tres, sdef) = dcl.node()
+//
+val
+smas =
+tread01_s1maglst(smas, err)
+val
+tres =
+tread01_sort1opt(tres, err)
+val
+sdef = tread01_s1exp(sdef, err)
+//
+in//let
+if
+(err=e00)
+then (dcl) else
+d1ecl_sexpdef_errck
+( dcl.lctn(), tknd,sid0,smas,tres,sdef )
+end (*let*) // end of [f0_sexpdef(dcl,err)]
 
 (* ****** ****** *)
 //

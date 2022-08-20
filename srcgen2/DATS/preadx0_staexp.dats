@@ -1854,14 +1854,15 @@ tend.node() of
 |
 T_RBRACE() =>
 (
-  if
-  (err=e00)
-  then lsrb
-  else l0s0e_RBRACE_cons1(tbar, lses, tend)
+if
+(err=e00)
+then lsrb
+else l0s0e_RBRACE_cons1(tbar, lses, tend)
 )
 |
 _(*non-T_RBRACE*) =>
-(err := err+1; l0s0e_RBRACE_cons1(tbar, lses, tend))
+(
+err := err+1; l0s0e_RBRACE_cons1(tbar,lses,tend))
 //
 endlet // end of [l0s0e_RBRACE_cons1]
 ) (*case*) // end of [preadx0_l0s0e_RBRACE]
