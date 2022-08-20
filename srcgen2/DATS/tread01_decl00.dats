@@ -784,6 +784,60 @@ prerrln("tread01_d1ecl: d1cl = ", d1cl)
 (* ****** ****** *)
 
 #implfun
+tread01_s1tcn
+(syn, err) =
+(
+case+
+syn.node() of
+|
+S1TCNnode
+(sid0, tres) =>
+(
+if
+(err=e00)
+then (syn) else
+s1tcn
+(syn.lctn(), S1TCNnode(sid0, tres))
+) where
+{
+//
+val e00 = err
+//
+val tres = tread01_sort1opt(tres, err)
+//
+}(*where*)//end-of(if(err=e00))
+)(*case+*)//end-of(tread01_s1tcn(syn,err))
+
+(* ****** ****** *)
+//
+#implfun
+tread01_d1tst
+(syn, err) =
+(
+case+
+syn.node() of
+|
+D1TSTnode
+(tid0, tcns) =>
+(
+if
+(err=e00)
+then (syn) else
+d1tst
+(syn.lctn(), D1TSTnode(tid0, tcns))
+) where
+{
+//
+val e00 = err
+//
+val tcns = tread01_s1tcnlst(tcns, err)
+//
+}(*where*)//end-of(if(err=e00))
+)(*case+*)//end-of(tread01_d1tst(syn,err))
+//
+(* ****** ****** *)
+
+#implfun
 tread01_a1tdf
   (atdf, err) =
 (
@@ -823,6 +877,17 @@ endlet // end of [A1TDFeqeq(s1e1)]
 tread01_d1eclist
   (  dcls, err  ) =
 list_tread01_fnp(dcls, err, tread01_d1ecl)
+//
+(* ****** ****** *)
+//
+#implfun
+tread01_s1tcnlst
+  (  tcns, err  ) =
+list_tread01_fnp(tcns, err, tread01_s1tcn)
+#implfun
+tread01_d1tstlst
+  (  d1ts, err  ) =
+list_tread01_fnp(d1ts, err, tread01_d1tst)
 //
 (* ****** ****** *)
 
