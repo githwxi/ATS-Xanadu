@@ -1256,8 +1256,10 @@ let
 //
 val e00 = err
 //
-val s1a1 = tread01_s1arg(s1a1, err)
-val s1ps = tread01_s1explst(s1ps, err)
+val
+s1a1 = tread01_s1arg(s1a1, err)
+val
+s1ps = tread01_s1explst(s1ps, err)
 //
 in//let
 if
@@ -1265,7 +1267,7 @@ if
 then (stdf)
 else
 s1tdf_make_node
-(stdf.lctn(),S1TDFtsub(s1a1, s1ps))
+(stdf.lctn(), S1TDFtsub(s1a1, s1ps))
 endlet // end of [S1TDFtsub(s1as,s1ps)]
 //
 ) (*case*)//end-of-[tread01_s1tdf(stdf,err)]

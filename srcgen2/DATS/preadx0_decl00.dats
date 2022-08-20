@@ -354,11 +354,12 @@ let
 val lvl = 0
 in//let
 d0ecl_errck
-( lvl+1
-, d0ecl_make_node
-  ( loc0
-  , D0Csexpdef
-    (tknd, seid, smas, tres, teq1, s0e2)))
+(
+lvl+1,
+d0ecl_make_node
+( loc0
+, D0Csexpdef
+  (tknd, seid, smas, tres, teq1, s0e2)))
 end (*let*) // end of [d0ecl_sexpdef_errck]
 //
 (* ****** ****** *)
@@ -676,7 +677,7 @@ S0TCNnode
 (
 if
 (err=e00)
-then syn else
+then (syn) else
 s0tcn
 (syn.lctn(), S0TCNnode(sid0, topt))
 ) where
@@ -706,7 +707,7 @@ D0TSTnode
 (
 if
 (err=e00)
-then syn else
+then (syn) else
 d0tst
 ( syn.lctn()
 , D0TSTnode(tid0, teq1, tbar, tcns))
@@ -1378,7 +1379,7 @@ preadx0_i0dntlst(oprs, err)
 in
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_nonfix_errck(dcl.lctn(),tknd,oprs)
 end (*let*) // end of [f0_nonfix(dcl,err)]
 //
@@ -1406,7 +1407,7 @@ prec = f1_precopt(prec, err)
 in//let
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_fixity_errck
 ( dcl.lctn(),  tknd,  oprs,  prec )
 end (*let*) // end of [f0_fixity(dcl,err)]
@@ -1529,7 +1530,7 @@ val dcl1 = preadx0_d0ecl(dcl1, err)
 in
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_static_errck(dcl.lctn(), tknd, dcl1)
 end (*let*) // end of [ f0_static(dcl,err) ]
 //
@@ -1550,7 +1551,7 @@ val dcl1 = preadx0_d0ecl(dcl1, err)
 in
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_extern_errck(dcl.lctn(), tknd, dcl1)
 end (*let*) // end of [ f0_extern(dcl,err) ]
 //
@@ -1596,7 +1597,7 @@ G0EDFsome(topt, g0e1) end): g0edf
 in//let
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_define_errck
 (dcl.lctn(), tknd, geid, gmas, gedf)
 end (*let*) // end of [ f0_define(dcl,err) ]
@@ -1643,7 +1644,7 @@ D0EDFsome(topt, d0e1) end): d0edf
 in//let
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_macdef_errck
 (dcl.lctn(), tknd, geid, gmas, dedf)
 end (*let*) // end of [ f0_macdef(dcl,err) ]
@@ -1678,7 +1679,7 @@ case+ tend.node() of
 in
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_local0_errck
 (dcl.lctn(), tknd, dcs1, topt, dcs2, tend)
 end (*let*) // end of [ f0_local0(dcl,err) ]
@@ -1703,7 +1704,7 @@ preadx0_i0dnt( tid0, err )
 in//let
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_abssort_errck(dcl.lctn(), tknd, tid0)
 end (*let*) // end of [f0_abssort(dcl,err)]
 //
@@ -1740,7 +1741,7 @@ val s0t1 = preadx0_sort0(s0t1, err)
 in//let
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_stacst0_errck
 (dcl.lctn(), tknd, sid0, tmas, tcln, s0t1)
 end (*let*) // end of [f0_stacst0(dcl,err)]
@@ -1775,7 +1776,7 @@ val def2 = preadx0_s0tdf(def2, err)
 in//let
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_sortdef_errck
 (dcl.lctn(), tknd, tid0, teq1, def2)
 end (*let*) // end of [f0_sortdef(dcl, err)]
@@ -1818,7 +1819,7 @@ val def2 = preadx0_s0exp(def2, err)
 in//let
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_sexpdef_errck
 (loc, tknd, seid, smas, tres, teq1, def2)
 end (*let*) // end of [f0_sexpdef(dcl,err)]
@@ -1852,7 +1853,7 @@ val tdef = preadx0_a0tdf(tdef, err)
 in//let
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_abstype_errck
 ( dcl.lctn(), tknd,seid,tmas,tres,tdef )
 end (*let*) // end of [f0_abstype(dcl,err)]
@@ -1876,7 +1877,7 @@ val sqid = preadx0_s0qid(sqid, err)
 in
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_absopen_errck(dcl.lctn(),tknd,sqid)
 end (*let*) // end of [f0_absopen(dcl,err)]
 //
@@ -1917,7 +1918,7 @@ val s0e2 = preadx0_s0exp(s0e2, err)
 in//let
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_absimpl_errck
 (dcl.lctn(),tknd,sqid,smas,tres,teq1,s0e2)
 end (*let*) // end of [f0_absimpl(dcl,err)]
@@ -1944,7 +1945,7 @@ val gopt = preadx0_g0expopt(gopt, err)
 //
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_symload_errck
 ( dcl.lctn(), tknd,symb,twth,dqid,gopt )
 end (*let*) // end of [f0_symload(dcl,err)]
@@ -1967,7 +1968,7 @@ val g0e1 = preadx0_g0exp(g0e1, err)
 //
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_include_errck(dcl.lctn(),tknd,g0e1)
 end (*let*) // end of [f0_include(dcl,err)]
 //
@@ -1989,7 +1990,7 @@ val g0e1 = preadx0_g0exp(g0e1, err)
 //
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_staload_errck(dcl.lctn(),tknd,g0e1)
 end (*let*) // end of [f0_staload(dcl,err)]
 //
@@ -2011,7 +2012,7 @@ val g0e1 = preadx0_g0exp(g0e1, err)
 //
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_dyninit_errck(dcl.lctn(),tknd,g0e1)
 end (*let*) // end of [f0_dyninit(dcl,err)]
 //
@@ -2033,7 +2034,7 @@ val d0ts = preadx0_d0tstlst(d0ts, err)
 //
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_datasort_errck(dcl.lctn(),tknd,d0ts)
 end (*let*) // end of [f0_datasort(dcl,err)]
 //
@@ -2057,7 +2058,7 @@ preadx0_d0valdclist(d0cs, err)
 in//let
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_valdclst_errck(dcl.lctn(),tknd,d0cs)
 end (*let*) // end of [f0_valdclst(dcl,err)]
 //
@@ -2081,7 +2082,7 @@ preadx0_d0vardclist(d0cs, err)
 in//let
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_vardclst_errck(dcl.lctn(),tknd,d0cs)
 end (*let*) // end of [f0_vardclst(dcl,err)]
 //
@@ -2110,7 +2111,7 @@ preadx0_d0fundclist(d0cs, err)
 in//let
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_fundclst_errck(loc, tknd, tqas, d0cs)
 end (*let*) // end of [f0_fundclst(dcl,err)]
 //
@@ -2160,7 +2161,7 @@ val body = preadx0_d0exp(body, err)
 in//let
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_implmnt0_errck
 ( dcl.lctn(), tknd, sqas
 , tqas, dqid, tias, fags, sres, teq1, body)
@@ -2187,7 +2188,7 @@ val d0ts = preadx0_d0tcnlst(d0ts, err)
 //
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_excptcon_errck(loc, tknd, tbar, d0ts)
 end (*let*) // end of [f0_excptcon(dcl,err)]
 //
@@ -2213,7 +2214,7 @@ val wdcs = preadx0_wd0eclseq(wdcs, err)
 //
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_datatype_errck(loc, tknd, d0ts, wdcs)
 end (*let*) // end of [f0_datatype(dcl,err)]
 //
@@ -2242,7 +2243,7 @@ preadx0_d0cstdclist(d0cs, err)
 in
 if
 (err=e00)
-then dcl else
+then (dcl) else
 d0ecl_dynconst_errck(loc, tknd, tqas, d0cs)
 end (*let*) // end of [f0_dynconst(dcl, err)]
 

@@ -1197,7 +1197,7 @@ preadx0_d0pat_RPAREN(drp, err)
 in//let
 if
 (err=e00)
-then d0p else
+then (d0p) else
 d0pat_lpar_errck(d0p.lctn(),tkb,dps,drp)
 end (*let*) // end of [f0_lpar]
 //
@@ -1530,7 +1530,7 @@ preadx0_d0exp_RPAREN(drp, err)
 in//let
 if
 (err=e00)
-then d0e else
+then (d0e) else
 d0exp_lpar_errck(d0e.lctn(),tkb,des,drp)
 end (*let*) // end of [f0_lpar(d0e,err)]
 //
@@ -1564,7 +1564,7 @@ dels = preadx0_d0exp_ELSE(dels, err)
 in
 if
 (err=e00)
-then d0e else
+then (d0e) else
 d0exp_if0_errck
 (d0e.lctn(), tif0, d0e1, dthn, dels)
 end (*let*) // end of [f0_if0(d0e, err)]
@@ -1600,7 +1600,7 @@ val tinv = preadx0_t0inv(tinv, err)
 in
 if
 (err=e00)
-then d0e else
+then (d0e) else
 d0exp_if1_errck
 (d0e.lctn(),tif0,d0e1,dthn,dels,tinv)
 end (*let*) // end of [f0_if1(d0e, err)]
@@ -1640,7 +1640,7 @@ dcls = preadx0_d0clslst(dcls, err)
 in
 if
 (err=e00)
-then d0e else
+then (d0e) else
 d0exp_cas0_errck
 (d0e.lctn(),tcas,d0e1,tkof,tbar,dcls)
 end (*let*) // end of [f0_cas0(d0e,err)]
@@ -1684,7 +1684,7 @@ val tinv = preadx0_t0inv(tinv, err)
 in
 if
 (err=e00)
-then d0e else
+then (d0e) else
 d0exp_cas1_errck
 (loc, tcas,d0e1,tkof,tbar,dcls,tinv )
 end (*let*) // end of [f0_cas1(d0e,err)]
@@ -2572,7 +2572,7 @@ T_RPAREN() =>
 (
 if
 (err=e00)
-then drp0
+then (drp0)
 else
 d0pat_RPAREN_cons1(tbar, d0ps, tend))
 |
@@ -2620,7 +2620,7 @@ T_RBRACE() =>
 (
 if
 (err=e00)
-then ldrb
+then (ldrb)
 else
 l0d0p_RBRACE_cons1(tbar, ldps, tend)
 )
@@ -2669,7 +2669,7 @@ _(*non-T_GT0*) => (err := err+1)
 in
 if
 (err=e00)
-then arrw
+then (arrw)
 else F0UNARRWlist(tbeg,s0es,tend)
 endlet // end of [F0UNARRWlist(_,_,_)]
 ) (*case+*)//end-of-[preadx0_f0unarrw(arrw,err)]
@@ -2765,7 +2765,7 @@ T_RPAREN() =>
 (
 if
 (err=e00)
-then drp0
+then (drp0)
 else
 d0exp_RPAREN_cons1(tsep, d0es, tend)
 )
@@ -2793,7 +2793,7 @@ T_RPAREN() =>
 (
 if
 (err=e00)
-then drp0
+then (drp0)
 else
 d0exp_RPAREN_cons2(tsep, d0es, tend)
 )
@@ -2842,7 +2842,7 @@ T_RBRACE() =>
 (
 if
 (err=e00)
-then ldrb
+then (ldrb)
 else
 l0d0e_RBRACE_cons1(tbar, ldes, tend)
 )
@@ -2896,7 +2896,8 @@ T_RBRACE() =>
 in
 if
 (err=e00)
-then dcls else
+then (dcls)
+else
 d0eclseq_WHERE(tbeg, topt, d0cs, tend)
 endlet // end of [d0eclseq_WHERE(_,_,_,_)]
 ) (*case+*)//end(preadx0_d0eclseq_WHERE(dcls,err))
