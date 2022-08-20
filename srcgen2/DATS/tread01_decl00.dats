@@ -201,6 +201,58 @@ d1ecl_make_node
 end (*let*) // end of [d1ecl_sexpdef_errck]
 //
 (* ****** ****** *)
+//
+fun
+d1ecl_abstype_errck
+( loc0
+: loc_t
+, tknd
+: token
+, seid
+: token
+, tmas
+: t1maglst
+, tres
+: sort1opt
+, atdf: a1tdf): d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+(
+lvl+1,
+d1ecl_make_node
+( loc0
+, D1Cabstype(tknd,seid,tmas,tres,atdf)))
+end (*let*) // end of [d1ecl_abstype_errck]
+//
+(* ****** ****** *)
+//
+fun
+d1ecl_absimpl_errck
+( loc0
+: loc_t
+, tknd
+: token
+, sqid
+: s1qid
+, smas
+: s1maglst
+, tres
+: sort1opt
+, sdef: s1exp): d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+(
+lvl+1,
+d1ecl_make_node
+( loc0
+, D1Cabsimpl(tknd,sqid,smas,tres,sdef)))
+end (*let*) // end of [d1ecl_absimpl_errck]
+//
+(* ****** ****** *)
 
 #implfun
 tread01_d1ecl
@@ -233,6 +285,13 @@ D1Csortdef _ => f0_sortdef(d1cl, err)
 //
 |
 D1Csexpdef _ => f0_sexpdef(d1cl, err)
+//
+|
+D1Cabstype _ => f0_abstype(d1cl, err)
+|
+D1Cabsopen _ => d1cl//HX:fixity-less
+|
+D1Cabsimpl _ => f0_absimpl(d1cl, err)
 //
 |
 _(*otherwise*) =>
@@ -415,7 +474,7 @@ val e00 = err
 val-
 D1Csexpdef
 ( tknd
-, sid0, smas
+, seid, smas
 , tres, sdef) = dcl.node()
 //
 val
@@ -432,8 +491,74 @@ if
 (err=e00)
 then (dcl) else
 d1ecl_sexpdef_errck
-( dcl.lctn(), tknd,sid0,smas,tres,sdef )
+( dcl.lctn(), tknd,seid,smas,tres,sdef )
 end (*let*) // end of [f0_sexpdef(dcl,err)]
+
+(* ****** ****** *)
+
+fun
+f0_abstype
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+//
+val-
+D1Cabstype
+( tknd
+, seid, tmas
+, tres, atdf) = dcl.node()
+//
+val
+smas =
+tread01_t1maglst(tmas, err)
+val
+tres =
+tread01_sort1opt(tres, err)
+val
+atdf = tread01_a1tdf(atdf, err)
+//
+in//let
+if
+(err=e00)
+then (dcl) else
+d1ecl_abstype_errck
+( dcl.lctn(), tknd,seid,tmas,tres,atdf )
+end (*let*) // end of [f0_abstype(dcl,err)]
+
+(* ****** ****** *)
+
+fun
+f0_absimpl
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+//
+val-
+D1Cabsimpl
+( tknd
+, sqid, smas
+, tres, sdef) = dcl.node()
+//
+val
+smas =
+tread01_s1maglst(smas, err)
+val
+tres =
+tread01_sort1opt(tres, err)
+val
+sdef = tread01_s1exp(sdef, err)
+//
+in//let
+if
+(err=e00)
+then (dcl) else
+d1ecl_absimpl_errck
+( dcl.lctn(), tknd,sqid,smas,tres,sdef )
+end (*let*) // end of [f0_absimpl(dcl,err)]
 
 (* ****** ****** *)
 //
@@ -447,6 +572,42 @@ prerrln("tread01_d1ecl: d1cl = ", d1cl)
 (* ****** ****** *)
 //
 } (*where*) // end of [tread01_d1ecl(d1cl,err)]
+
+(* ****** ****** *)
+
+#implfun
+tread01_a1tdf
+  (atdf, err) =
+(
+case+ atdf of
+|
+A1TDFsome
+((*void*)) => atdf
+|
+A1TDFlteq(s1e1) =>
+let
+val e00 = err
+val
+s1e1 =
+tread01_s1exp(s1e1, err)
+in//let
+if
+(e00=err)
+then atdf else A1TDFlteq(s1e1)
+endlet // end of [A1TDFlteq(s1e1)]
+|
+A1TDFeqeq(s1e1) =>
+let
+val e00 = err
+val
+s1e1 =
+tread01_s1exp(s1e1, err)
+in//let
+if
+(e00=err)
+then atdf else A1TDFeqeq(s1e1)
+endlet // end of [A1TDFeqeq(s1e1)]
+) (*case+*) // end of [tread01_a1tdf(atdf,err)]
 
 (* ****** ****** *)
 //
