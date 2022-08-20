@@ -77,6 +77,9 @@ ATS_PACKNAME
 #symload lctn with t1mag_get_lctn
 #symload node with t1mag_get_node
 (* ****** ****** *)
+#symload lctn with s1qua_get_lctn
+#symload node with s1qua_get_node
+(* ****** ****** *)
 #symload lctn with s1tdf_get_lctn
 #symload node with s1tdf_get_node
 (* ****** ****** *)
@@ -170,7 +173,7 @@ val lvl = gmax
 (errvl(ge1), errvl(ge2))
 in//let
 g1exp_errck
-(lvl, g1exp(loc, G1Ea1pp(ge1, ge2)))
+(lvl+1, g1exp(loc, G1Ea1pp(ge1, ge2)))
 endlet // end of [g1exp_a1pp_errck(...)]
 (* ****** ****** *)
 fun
@@ -185,7 +188,7 @@ val lvl = gmax
 , errvl(ge2), errvl(ge3))
 in//let
 g1exp_errck
-(lvl,g1exp(loc,G1Ea2pp(ge1,ge2,ge3)))
+(lvl+1,g1exp(loc,G1Ea2pp(ge1,ge2,ge3)))
 endlet // end of [g1exp_a2pp_errck(...)]
 (* ****** ****** *)
 fun
@@ -198,7 +201,7 @@ let
 val lvl = errvl(ges)
 in//let
 g1exp_errck
-(lvl , g1exp( loc , G1Elist( ges ) ))
+(lvl+1, g1exp( loc , G1Elist( ges ) ))
 endlet // end of [g1exp_list_errck(...)]
 (* ****** ****** *)
 fun
@@ -214,7 +217,7 @@ val lvl = gmax
 , errvl(ge2), errvl(ge3))
 in//let
 g1exp_errck
-(lvl , g1exp(loc,G1Eif0(ge1,ge2,ge3)))
+(lvl+1, g1exp(loc,G1Eif0(ge1,ge2,ge3)))
 endlet // end of [g1exp_cond_errck(...)]
 (* ****** ****** *)
 
@@ -450,7 +453,7 @@ val lvl = gmax
 (errvl(st1), errvl(st2))
 in//let
 sort1_errck
-(lvl, sort1(loc, S1Ta1pp(st1, st2)))
+(lvl+1,sort1(loc, S1Ta1pp(st1, st2)))
 endlet // end of [sort1_a1pp_errck(...)]
 (* ****** ****** *)
 fun
@@ -465,7 +468,7 @@ val lvl = gmax
 , errvl(st2), errvl(st3))
 in//let
 sort1_errck
-(lvl,sort1(loc,S1Ta2pp(st1,st2,st3)))
+(lvl+1,sort1(loc,S1Ta2pp(st1,st2,st3)))
 endlet // end of [sort1_a2pp_errck(...)]
 (* ****** ****** *)
 fun
@@ -478,7 +481,7 @@ let
 val lvl = errvl(sts)
 in//let
 sort1_errck
-(lvl , sort1( loc , S1Tlist( sts ) ))
+(lvl+1, sort1( loc , S1Tlist( sts ) ))
 endlet // end of [sort1_list_errck(...)]
 (* ****** ****** *)
 fun
@@ -490,7 +493,7 @@ let
 val lvl = errvl(s1t2)
 in//let
 sort1_errck
-(lvl , sort1(loc, S1Tqual(tok1,s1t2)))
+(lvl+1, sort1(loc, S1Tqual(tok1,s1t2)))
 endlet // end of [sort1_qual_errck(...)]
 (* ****** ****** *)
 
@@ -710,7 +713,7 @@ val lvl = gmax
 (errvl(se1), errvl(se2))
 in//let
 s1exp_errck
-(lvl, s1exp(loc, S1Ea1pp(se1, se2)))
+(lvl+1, s1exp(loc, S1Ea1pp(se1, se2)))
 endlet // end of [s1exp_a1pp_errck(...)]
 (* ****** ****** *)
 fun
@@ -725,7 +728,7 @@ val lvl = gmax
 , errvl(se2), errvl(se3))
 in//let
 s1exp_errck
-(lvl,s1exp(loc,S1Ea2pp(se1,se2,se3)))
+(lvl+1,s1exp(loc,S1Ea2pp(se1,se2,se3)))
 endlet // end of [s1exp_a2pp_errck(...)]
 (* ****** ****** *)
 fun
@@ -738,7 +741,7 @@ let
 val lvl = errvl(ses)
 in//let
 s1exp_errck
-(lvl , s1exp( loc , S1El1st( ses ) ))
+(lvl+1, s1exp( loc , S1El1st( ses ) ))
 endlet // end of [s1exp_l1st_errck(...)]
 (* ****** ****** *)
 fun
@@ -754,7 +757,7 @@ val lvl = gmax
 (errvl(ses1), errvl(ses2))
 in//let
 s1exp_errck
-(lvl , s1exp(loc, S1El2st(ses1,ses2)))
+(lvl+1, s1exp(loc, S1El2st(ses1,ses2)))
 endlet // end of [s1exp_l2st_errck(...)]
 (* ****** ****** *)
 fun
@@ -769,7 +772,7 @@ let
 val lvl = errvl(s1es)
 in//let
 s1exp_errck
-(lvl , s1exp(loc, S1Et1up(tknd,s1es)))
+(lvl+1, s1exp(loc, S1Et1up(tknd,s1es)))
 endlet // end of [s1exp_t1up_errck(...)]
 (* ****** ****** *)
 fun
@@ -787,7 +790,8 @@ val lvl = gmax
 (errvl(ses1), errvl(ses2))
 in//let
 s1exp_errck
-(lvl,s1exp(loc,S1Et2up(tknd,ses1,ses2)))
+(lvl+1
+,s1exp(loc, S1Et2up(tknd, ses1, ses2)))
 endlet // end of [s1exp_t2up_errck(...)]
 (* ****** ****** *)
 fun
@@ -802,7 +806,7 @@ let
 val lvl = errvl(lses)
 in//let
 s1exp_errck
-(lvl , s1exp(loc, S1Er1cd(tknd,lses)))
+(lvl+1, s1exp(loc, S1Er1cd(tknd,lses)))
 endlet // end of [s1exp_r1cd_errck(...)]
 (* ****** ****** *)
 fun
@@ -820,12 +824,42 @@ val lvl = gmax
 (errvl(lss1), errvl(lss2))
 in//let
 s1exp_errck
-(lvl,s1exp(loc,S1Er2cd(tknd,lss1,lss2)))
+(lvl+1
+,s1exp(loc, S1Er2cd(tknd, lss1, lss2)))
 endlet // end of [s1exp_r2cd_errck(...)]
 (* ****** ****** *)
 fun
+s1exp_uni0_errck
+( loc
+: loc_t
+, s1qs
+: s1qualst): s1exp =
+let
+val lvl = 0 // errvl(s1qs)
+in//let
+s1exp_errck
+( lvl+1, s1exp( loc , S1Euni0( s1qs ) )
+endlet // end of [s1exp_uni0_errck(...)]
+(* ****** ****** *)
+fun
+s1exp_exi0_errck
+( loc
+: loc_t
+, tknd
+: token
+, s1qs
+: s1qualst): s1exp =
+let
+val lvl = 0 // errvl(s1qs)
+in//let
+s1exp_errck
+(lvl+1, s1exp(loc, S1Eexi0(tknd, s1qs))
+endlet // end of [s1exp_exi0_errck(...)]
+(* ****** ****** *)
+fun
 s1exp_lam0_errck
-( loc: loc_t
+( loc
+: loc_t
 , smas
 : s1maglst
 , tres
@@ -861,7 +895,7 @@ let
 val lvl = errvl(s1e2)
 in//let
 s1exp_errck
-(lvl , s1exp(loc, S1Equal(tok1,s1e2)))
+(lvl+1, s1exp(loc, S1Equal(tok1,s1e2)))
 endlet // end of [s1exp_qual_errck(...)]
 (* ****** ****** *)
 
@@ -1038,6 +1072,31 @@ if
 then (s1e0) else
 s1exp_r2cd_errck(loc0,tknd,lss1,lss2)
 endlet // end(S1Er2cd(tknd,lss1,lss2))
+//
+|
+S1Euni0(s1qs) =>
+let
+val e00 = err
+val s1qs =
+  tread01_s1qualst(s1qs, err)
+in//let
+if
+(e00=err)
+then (s1e0)
+else s1exp_uni0_errck(loc0,s1qs)
+endlet // end of [ S1Euni0(s1qs) ]
+|
+S1Eexi0(tknd,s1qs) =>
+let
+val e00 = err
+val s1qs =
+  tread01_s1qualst(s1qs, err)
+in//let
+if
+(e00=err)
+then (s1e0)
+else s1exp_exi0_errck(loc0,tknd,s1qs)
+endlet // end of [ S1Eexi0(tknd,s1qs) ]
 //
 |
 S1Elam0 _ =>
@@ -1230,6 +1289,50 @@ endlet // end of [ T1MAGlist( t1as ) ]
 (* ****** ****** *)
 //
 #implfun
+tread01_s1qua
+  (s1q0, err) =
+(
+case+
+s1q0.node() of
+|
+S1QUAprop(s1e1) =>
+let
+//
+val e00 = err
+//
+val s1e1 =
+tread01_s1exp(s1e1, err)
+//
+in//let
+if
+(e00=err)
+then (s1q0)
+else
+s1qua_make_node
+(s1q0.lctn(), S1QUAprop(s1e1))
+endlet // end of [S1QUAprop(s1e1)]
+|
+S1QUAvars(toks,tres) =>
+let
+//
+val e00 = err
+//
+val tres =
+tread01_sort1opt(tres, err)
+//
+in//let
+if
+(e00=err)
+then (s1q0)
+else
+s1qua_make_node
+(s1q0.lctn(), S1QUAvars(toks,tres))
+endlet // end of [S1QUAvars(toks,tres)]
+) (*case+*) // end of [tread01_s1qua(s1q0,err)]
+//
+(* ****** ****** *)
+//
+#implfun
 tread01_l1s1e
   (ls1e, err) =
 let
@@ -1350,6 +1453,11 @@ tread01_t1maglst
   (  tmas, err  ) =
 list_tread01_fnp(tmas, err, tread01_t1mag)
 //
+(* ****** ****** *)
+#implfun
+tread01_s1qualst
+  (  s1qs, err  ) =
+list_tread01_fnp(s1qs, err, tread01_s1qua)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_tread01_staexp.dats] *)

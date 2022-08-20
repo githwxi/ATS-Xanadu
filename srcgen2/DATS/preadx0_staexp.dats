@@ -972,8 +972,8 @@ s0exp_uni0_errck
 , sqs: s0qualst
 , tke: token   ): s0exp =
 let
-val lvl = 0
-in
+val lvl = 0 // errvl(sqs)
+in//let
 s0exp_errck
 (lvl+1, s0exp(loc,S0Euni0(tkb,sqs,tke)))
 end (*let*) // end of [s0exp_uni0_errck]
@@ -985,8 +985,8 @@ s0exp_exi0_errck
 , sqs: s0qualst
 , tke: token   ): s0exp =
 let
-val lvl = 0
-in
+val lvl = 0 // errvl(sqs)
+in//let
 s0exp_errck
 (lvl+1, s0exp(loc,S0Eexi0(tkb,sqs,tke)))
 end (*let*) // end of [s0exp_exi0_errck]

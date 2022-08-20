@@ -394,6 +394,16 @@ D0Csymload _ =>
 f0_symload(tenv, d0cl)
 //
 |
+D0Cinclude _ =>
+f0_include(tenv, d0cl)
+|
+D0Cstaload _ =>
+f0_staload(tenv, d0cl)
+|
+D0Cdyninit _ =>
+f0_dyninit(tenv, d0cl)
+//
+|
 D0Cdatasort _ =>
 f0_datasort(tenv, d0cl)
 //
@@ -1154,6 +1164,87 @@ in//let
 d1ecl_make_node
 (loc0,D1Csymload(tknd, deid, dqid, gopt))
 end (*let*) // end of [f0_symload(tenv,d0cl)]
+
+(* ****** ****** *)
+
+fun
+f0_include
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
+let
+//
+val loc0 = d0cl.lctn()
+//
+(*
+val () =
+println!
+("trans01_d0ecl: d0cl = ", d0cl)
+*)
+//
+val-
+D0Cinclude
+(tknd, g0e1) = d0cl.node()
+//
+val g1e1 = trans01_g0exp(tenv, g0e1)
+//
+in//let
+  d1ecl(loc0, D1Cinclude(tknd, g1e1))
+end (*let*) // end of [f0_include(tenv,d0cl)]
+
+(* ****** ****** *)
+
+fun
+f0_staload
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
+let
+//
+val loc0 = d0cl.lctn()
+//
+(*
+val () =
+println!
+("trans01_d0ecl: d0cl = ", d0cl)
+*)
+//
+val-
+D0Cstaload
+(tknd, g0e1) = d0cl.node()
+//
+val g1e1 = trans01_g0exp(tenv, g0e1)
+//
+in//let
+  d1ecl(loc0, D1Cstaload(tknd, g1e1))
+end (*let*) // end of [f0_staload(tenv,d0cl)]
+
+(* ****** ****** *)
+
+fun
+f0_dyninit
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
+let
+//
+val loc0 = d0cl.lctn()
+//
+(*
+val () =
+println!
+("trans01_d0ecl: d0cl = ", d0cl)
+*)
+//
+val-
+D0Cdyninit
+(tknd, g0e1) = d0cl.node()
+//
+val g1e1 = trans01_g0exp(tenv, g0e1)
+//
+in//let
+  d1ecl(loc0, D1Cdyninit(tknd, g1e1))
+end (*let*) // end of [f0_dyninit(tenv,d0cl)]
 
 (* ****** ****** *)
 
