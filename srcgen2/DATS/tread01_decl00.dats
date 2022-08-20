@@ -253,6 +253,67 @@ d1ecl_make_node
 end (*let*) // end of [d1ecl_absimpl_errck]
 //
 (* ****** ****** *)
+//
+fun
+d1ecl_symload_errck
+( loc0: loc_t
+, tknd: token
+, deid: sym_t
+, dqid: d1qid
+, gopt: g1expopt): d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+(
+lvl+1,
+d1ecl_make_node
+(loc0, D1Csymload(tknd,deid,dqid,gopt)))
+end (*let*) // end of [d1ecl_symload_errck]
+//
+(* ****** ****** *)
+//
+fun
+d1ecl_include_errck
+( loc0: loc_t
+, tknd: token
+, g1e1: g1exp) : d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+(lvl+1, d1ecl(loc0, D1Cinclude(tknd, g1e1)))
+end (*let*) // end of [d1ecl_include_errck]
+//
+(* ****** ****** *)
+//
+fun
+d1ecl_staload_errck
+( loc0: loc_t
+, tknd: token
+, g1e1: g1exp) : d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+(lvl+1, d1ecl(loc0, D1Cstaload(tknd, g1e1)))
+end (*let*) // end of [d1ecl_staload_errck]
+//
+(* ****** ****** *)
+//
+fun
+d1ecl_dyninit_errck
+( loc0: loc_t
+, tknd: token
+, g1e1: g1exp) : d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+(lvl+1, d1ecl(loc0, D1Cdyninit(tknd, g1e1)))
+end (*let*) // end of [d1ecl_dyninit_errck]
+//
+(* ****** ****** *)
 
 #implfun
 tread01_d1ecl
@@ -292,6 +353,16 @@ D1Cabstype _ => f0_abstype(d1cl, err)
 D1Cabsopen _ => d1cl//HX:fixity-less
 |
 D1Cabsimpl _ => f0_absimpl(d1cl, err)
+//
+|
+D1Csymload _ => f0_symload(d1cl, err)
+//
+|
+D1Cinclude _ => f0_include(d1cl, err)
+|
+D1Cstaload _ => f0_staload(d1cl, err)
+|
+D1Cdyninit _ => f0_dyninit(d1cl, err)
 //
 |
 _(*otherwise*) =>
@@ -560,6 +631,99 @@ d1ecl_absimpl_errck
 ( dcl.lctn(), tknd,sqid,smas,tres,sdef )
 end (*let*) // end of [f0_absimpl(dcl,err)]
 
+(* ****** ****** *)
+
+fun
+f0_symload
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+//
+val-
+D1Csymload
+( tknd
+, deid
+, dqid, gopt) = dcl.node()
+//
+val gopt =
+tread01_g1expopt(gopt, err)
+//
+in//let
+if
+(err=e00)
+then (dcl) else
+d1ecl_symload_errck
+( dcl.lctn(), tknd, deid, dqid, gopt )
+end (*let*) // end of [f0_symload(dcl,err)]
+
+(* ****** ****** *)
+//
+fun
+f0_include
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+//
+val-
+D1Cinclude
+(tknd, g1e1) = dcl.node()
+//
+val g1e1 = tread01_g1exp(g1e1, err)
+//
+if
+(err=e00)
+then (dcl) else
+d1ecl_include_errck(dcl.lctn(),tknd,g1e1)
+end (*let*) // end of [f0_include(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_staload
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+//
+val-
+D1Cstaload
+(tknd, g1e1) = dcl.node()
+//
+val g1e1 = tread01_g1exp(g1e1, err)
+//
+if
+(err=e00)
+then (dcl) else
+d1ecl_staload_errck(dcl.lctn(),tknd,g1e1)
+end (*let*) // end of [f0_staload(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dyninit
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+//
+val-
+D1Cdyninit
+(tknd, g1e1) = dcl.node()
+//
+val g1e1 = tread01_g1exp(g1e1, err)
+//
+if
+(err=e00)
+then (dcl) else
+d1ecl_dyninit_errck(dcl.lctn(),tknd,g1e1)
+end (*let*) // end of [f0_dyninit(dcl,err)]
+//
 (* ****** ****** *)
 //
 (*
