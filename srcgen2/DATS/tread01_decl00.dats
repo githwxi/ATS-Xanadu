@@ -63,6 +63,10 @@ ATS_PACKNAME
 #symload lctn with d1ecl_get_lctn
 #symload node with d1ecl_get_node
 (* ****** ****** *)
+#symload lctn with d1valdcl_get_lctn
+#symload lctn with d1vardcl_get_lctn
+#symload lctn with d1fundcl_get_lctn
+(* ****** ****** *)
 //
 fun
 d1ecl_errck
@@ -1073,6 +1077,78 @@ endlet // end of [A1TDFeqeq(s1e1)]
 (* ****** ****** *)
 //
 #implfun
+tread01_teqd1exp
+  (tdxp, err) =
+(
+case+ tdxp of
+|
+TEQD1EXPnone() => tdxp
+|
+TEQD1EXPsome(teq1, d1e2) =>
+let
+val e00 = err
+val d1e2 = tread01_d1exp(d1e2, err)
+in//letp
+if
+(err=e00)
+then tdxp else TEQD1EXPsome(teq1, d1e2)
+endlet // end of [TEQD1EXPsome(_,_)]
+) (*case+*)//end-(tread01_teqd1exp(tdxp,err))
+//
+#implfun
+tread01_wths1exp
+  (wsxp, err) =
+(
+case+ wsxp of
+|
+WTHS1EXPnone() => wsxp
+|
+WTHS1EXPsome(twth, s1e1) =>
+let
+val e00 = err
+val d0e2 = tread01_s1exp(s1e1, err)
+in//letp
+if
+(err=e00)
+then wsxp else WTHS1EXPsome(twth, s1e1)
+endlet // end of [WTHS1EXPsome(_,_)]
+) (*case+*)//end-(tread01_wths1exp(wsxp,err))
+//
+(* ****** ****** *)
+//
+#implfun
+tread01_d1valdcl
+  (dval, err) =
+let
+//
+val e00 = err
+//
+val loc = dval.lctn()
+//
+val
+dpat = d1valdcl_get_dpat(dval)
+val
+tdxp = d1valdcl_get_tdxp(dval)
+val
+wsxp = d1valdcl_get_wsxp(dval)
+//
+val
+dpat = tread01_d1pat(dpat,err)
+val
+tdxp = tread01_teqd1exp(tdxp,err)
+val
+wsxp = tread01_wths1exp(wsxp,err)
+//
+in//let
+if
+(err=e00)
+then (dval)
+else d1valdcl( loc, dpat, tdxp, wsxp )
+endlet // end-of-[tread01_d1valdcl(out,dval)]
+//
+(* ****** ****** *)
+//
+#implfun
 tread01_d1eclist
   (  dcls, err  ) =
 list_tread01_fnp(dcls, err, tread01_d1ecl)
@@ -1122,6 +1198,21 @@ if
 end (*let*) // end of [WD1CSsome(d1cs)]
 ) (*case+*) // end of [tread01_wd1eclseq(wdcs,err)]
 //
+(* ****** ****** *)
+#implfun
+tread01_d1valdclist
+  (  d1vs, err  ) =
+list_tread01_fnp(d1vs, err, tread01_d1valdcl)
+(* ****** ****** *)
+#implfun
+tread01_d1vardclist
+  (  d1vs, err  ) =
+list_tread01_fnp(d1vs, err, tread01_d1vardcl)
+(* ****** ****** *)
+#implfun
+tread01_d1fundclist
+  (  d1fs, err  ) =
+list_tread01_fnp(d1fs, err, tread01_d1fundcl)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_tread01_decl00.dats] *)
