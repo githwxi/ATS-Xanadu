@@ -327,8 +327,45 @@ let
 val lvl = 0
 in//let
 d1ecl_errck
-(lvl+1, d1ecl(loc0, D1Cdatasort(tknd, d1ts)))
+(lvl+1,d1ecl(loc0,D1Cdatasort(tknd,d1ts)))
 end (*let*) // end of [d1ecl_datasort_errck]
+//
+(* ****** ****** *)
+//
+fun
+d1ecl_excptcon_errck
+( loc0
+: loc_t
+, tknd
+: token
+, tcns
+: d1tcnlst) : d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+(lvl+1,d1ecl(loc0,D1Cexcptcon(tknd,tcns)))
+end (*let*) // end of [d1ecl_excptcon_errck]
+//
+(* ****** ****** *)
+//
+fun
+d1ecl_datatype_errck
+( loc0
+: loc_t
+, tknd
+: token
+, d1ts
+: d1typlst
+, wdcs
+: wd1eclseq) : d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+( lvl+1
+, d1ecl(loc0,D1Cdatatype(tknd,d1ts,wdcs)))
+end (*let*) // end of [d1ecl_datatype_errck]
 //
 (* ****** ****** *)
 
@@ -383,6 +420,11 @@ D1Cdyninit _ => f0_dyninit(d1cl, err)
 //
 |
 D1Cdatasort _ => f0_datasort(d1cl, err)
+//
+|
+D1Cexcptcon _ => f0_excptcon(d1cl, err)
+|
+D1Cdatatype _ => f0_datatype(d1cl, err)
 //
 |
 _(*otherwise*) =>
@@ -770,6 +812,56 @@ end (*let*) // end of [f0_datasort(dcl,err)]
 //
 (* ****** ****** *)
 //
+fun
+f0_excptcon
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+//
+val-
+D1Cexcptcon
+(tknd, tcns) = dcl.node()
+//
+val
+tcns = tread01_d1tcnlst(tcns, err)
+//
+if
+(err=e00)
+then (dcl) else
+d1ecl_excptcon_errck(dcl.lctn(),tknd,tcns)
+end (*let*) // end of [f0_excptcon(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_datatype
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D1Cdatatype
+( tknd
+, d1ts, wdcs) = dcl.node()
+//
+val
+d1ts = tread01_d1typlst(d1ts, err)
+val
+wdcs = tread01_wd1eclseq(wdcs, err)
+//
+if
+(err=e00)
+then (dcl) else
+d1ecl_datatype_errck(loc,tknd,d1ts,wdcs)
+end (*let*) // end of [f0_datatype(dcl,err)]
+//
+(* ****** ****** *)
+//
 (*
 val (  ) =
 prerrln("tread01_d1ecl: loc0 = ", loc0)
@@ -888,6 +980,17 @@ list_tread01_fnp(tcns, err, tread01_s1tcn)
 tread01_d1tstlst
   (  d1ts, err  ) =
 list_tread01_fnp(d1ts, err, tread01_d1tst)
+//
+(* ****** ****** *)
+//
+#implfun
+tread01_d1tcnlst
+  (  tcns, err  ) =
+list_tread01_fnp(tcns, err, tread01_d1tcn)
+#implfun
+tread01_d1typlst
+  (  d1ts, err  ) =
+list_tread01_fnp(d1ts, err, tread01_d1typ)
 //
 (* ****** ****** *)
 

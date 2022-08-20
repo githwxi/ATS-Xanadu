@@ -79,6 +79,27 @@ D0E = "./dynexp0.sats"
 (* ****** ****** *)
 #typedef s0tdf = $S0E.s0tdf
 (* ****** ****** *)
+#typedef d0pat = $D0E.d0pat
+#typedef d0exp = $D0E.d0exp
+(* ****** ****** *)
+#typedef l0d0p = $D0E.l0d0p
+#typedef l0d0e = $D0E.l0d0e
+(* ****** ****** *)
+#typedef f0arg = $D0E.f0arg
+#typedef s0res = $D0E.s0res
+#typedef d0res = $D0E.d0res
+(* ****** ****** *)
+#typedef d0cls = $D0E.d0cls
+#typedef d0gua = $D0E.d0gua
+#typedef d0gpt = $D0E.d0gpt
+(* ****** ****** *)
+#typedef t0qua = $D0E.t0qua
+#typedef t0inv = $D0E.t0inv
+(* ****** ****** *)
+#typedef d0ecl = $D0E.d0ecl
+(* ****** ****** *)
+#typedef a0tdf = $D0E.a0tdf
+(* ****** ****** *)
 #typedef
 s0exp_RPAREN = $S0E.s0exp_RPAREN
 #typedef
@@ -104,27 +125,6 @@ l0s0e_RBRACE = $S0E.l0s0e_RBRACE
 #typedef t0arglst = $S0E.t0arglst
 #typedef t0maglst = $S0E.t0maglst
 #typedef s0qualst = $S0E.s0qualst
-(* ****** ****** *)
-#typedef d0pat = $D0E.d0pat
-#typedef d0exp = $D0E.d0exp
-(* ****** ****** *)
-#typedef l0d0p = $D0E.l0d0p
-#typedef l0d0e = $D0E.l0d0e
-(* ****** ****** *)
-#typedef f0arg = $D0E.f0arg
-#typedef s0res = $D0E.s0res
-#typedef d0res = $D0E.d0res
-(* ****** ****** *)
-#typedef d0cls = $D0E.d0cls
-#typedef d0gua = $D0E.d0gua
-#typedef d0gpt = $D0E.d0gpt
-(* ****** ****** *)
-#typedef t0qua = $D0E.t0qua
-#typedef t0inv = $D0E.t0inv
-(* ****** ****** *)
-#typedef d0ecl = $D0E.d0ecl
-(* ****** ****** *)
-#typedef a0tdf = $D0E.a0tdf
 (* ****** ****** *)
 #typedef
 d0pat_RPAREN = $D0E.d0pat_RPAREN
@@ -166,6 +166,7 @@ d0eclseq_WHERE = $D0E.d0eclseq_WHERE
 #typedef d0eclist = $D0E.d0eclist
 (* ****** ****** *)
 #typedef d0parsed = $D0E.d0parsed
+(* ****** ****** *)
 #typedef d0eclistopt = optn(d0eclist)
 (* ****** ****** *)
 //
