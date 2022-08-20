@@ -333,6 +333,23 @@ end (*let*) // end of [d1ecl_datasort_errck]
 (* ****** ****** *)
 //
 fun
+d1ecl_valdclst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, d1cs
+: d1valdclist): d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+(lvl+1, d1ecl(loc0, D1Cvaldclst(tknd, d1cs)))
+end (*let*) // end of [d1ecl_valdclst_errck]
+//
+(* ****** ****** *)
+//
+fun
 d1ecl_excptcon_errck
 ( loc0
 : loc_t
@@ -422,6 +439,9 @@ D1Cdyninit _ => f0_dyninit(d1cl, err)
 D1Cdatasort _ => f0_datasort(d1cl, err)
 //
 |
+D0Cvaldclst _ => f0_valdclst(d1cl, err)
+//
+|
 D1Cexcptcon _ => f0_excptcon(d1cl, err)
 |
 D1Cdatatype _ => f0_datatype(d1cl, err)
@@ -431,7 +451,7 @@ _(*otherwise*) =>
 let
 val lvl = 1
 in//let
-(err := err+1; d1ecl_errck(lvl, d1cl))
+( err := err+1; d1ecl_errck(lvl, d1cl) )
 endlet // end of [ _(* otherwise *) ]
 //
 ) where // end of [case+(d1cl.node())]
@@ -809,6 +829,30 @@ if
 then (dcl) else
 d1ecl_datasort_errck(dcl.lctn(),tknd,d1ts)
 end (*let*) // end of [f0_datasort(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_valdclst
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+//
+val-
+D1Cvaldclst
+( tknd, d1cs) = dcl.node()
+//
+val d1cs =
+tread01_d1valdclist(d1cs, err)
+//
+in//let
+if
+(err=e00)
+then (dcl) else
+d1ecl_valdclst_errck(dcl.lctn(),tknd,d1cs)
+end (*let*) // end of [f0_valdclst(dcl,err)]
 //
 (* ****** ****** *)
 //

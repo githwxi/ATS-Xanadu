@@ -85,6 +85,10 @@ D1E = "./dynexp1.sats"
 (* ****** ****** *)
 #typedef a1tdf = $D1E.a1tdf
 (* ****** ****** *)
+#typedef d1valdcl = $D1E.d1valdcl
+#typedef d1vardcl = $D1E.d1vardcl
+#typedef d1fundcl = $D1E.d1fundcl
+(* ****** ****** *)
 #typedef g1explst = $S1E.g1explst
 #typedef g1expopt = $S1E.g1expopt
 (* ****** ****** *)
@@ -124,6 +128,10 @@ D1E = "./dynexp1.sats"
 #typedef d1parsed = $D1E.d1parsed
 (* ****** ****** *)
 #typedef wd1eclseq = $D1E.wd1eclseq
+(* ****** ****** *)
+#typedef d1valdclist = $D1E.d1valdclist
+#typedef d1vardclist = $D1E.d1vardclist
+#typedef d1fundclist = $D1E.d1fundclist
 (* ****** ****** *)
 #typedef d1eclistopt = $D1E.d1eclistopt
 (* ****** ****** *)
@@ -242,7 +250,21 @@ fun
 tread01_d1eclist: ftread01(d1eclist)
 (* ****** ****** *)
 fun
+tread01_d1valdcl: ftread01(d1valdcl)
+fun
+tread01_d1vardcl: ftread01(d1vardcl)
+fun
+tread01_d1fundcl: ftread01(d1fundcl)
+(* ****** ****** *)
+fun
 tread01_wd1eclseq: ftread01(wd1eclseq)
+(* ****** ****** *)
+fun
+tread01_d1valdclist: ftread01(d1valdclist)
+fun
+tread01_d1vardclist: ftread01(d1vardclist)
+fun
+tread01_d1fundclist: ftread01(d1fundclist)
 (* ****** ****** *)
 fun
 tread01_d1eclistopt: ftread01(d1eclistopt)
