@@ -54,11 +54,33 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/tread01.sats"
 (* ****** ****** *)
+//
+(* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
 #symload lctn with g1exp_get_lctn
 #symload node with g1exp_get_node
+(* ****** ****** *)
+#symload lctn with sort1_get_lctn
+#symload node with sort1_get_node
+(* ****** ****** *)
+#symload lctn with s1exp_get_lctn
+#symload node with s1exp_get_node
+(* ****** ****** *)
+#symload lctn with s1arg_get_lctn
+#symload node with s1arg_get_node
+#symload lctn with s1mag_get_lctn
+#symload node with s1mag_get_node
+#symload lctn with t1arg_get_lctn
+#symload node with t1arg_get_node
+#symload lctn with t1mag_get_lctn
+#symload node with t1mag_get_node
+(* ****** ****** *)
+#symload lctn with s1tdf_get_lctn
+#symload node with s1tdf_get_node
+(* ****** ****** *)
+//
 (* ****** ****** *)
 //
 fun
@@ -563,10 +585,12 @@ endlet // end of [ _(* otherwise *) ]
 //
 val loc0 = s1t0.lctn()
 //
+(*
 val (  ) =
 prerrln("tread01_sort1: loc0 = ", loc0)
 val (  ) =
 prerrln("tread01_sort1: s1t0 = ", s1t0)
+*)
 //
 } (*where*) // end of [tread01_sort1(s1t0,err)]
 
@@ -1106,7 +1130,148 @@ prerrln("tread01_s1exp: s1e0 = ", s1e0)
 } (*where*) // end of [tread01_s1exp(s1e0,err)]
 
 (* ****** ****** *)
-
+//
+#implfun
+tread01_s1arg
+( s1a1, err ) =
+(
+case+
+s1a1.node() of
+|
+S1ARGsome
+(sid0,tres) =>
+let
+//
+val e00 = err
+//
+val tres =
+tread01_sort1opt(tres, err)
+//
+in//let
+if
+(e00=err)
+then (s1a1) else
+s1arg_make_node
+(s1a1.lctn(), S1ARGsome(sid0, tres))
+endlet // end of [S1ARGsome(sid0,tres)]
+) (*case+*) // end of [tread01_s1arg(s1a1,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread01_s1mag
+  (s1ma, err) =
+(
+case+
+s1ma.node() of
+|
+S1MAGlist(s1as) =>
+let
+val e00 = err
+val s1as =
+tread01_s1arglst(s1as, err)
+in//let
+if
+(e00=err)
+then (s1ma) else
+s1mag(s1ma.lctn(), S1MAGlist(s1as))
+endlet // end of [ S1MAGlist( s1as ) ]
+) (*case+*) // end of [tread01_s1mag(s1ma,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread01_t1arg
+( t1a1, err ) =
+(
+case+
+t1a1.node() of
+|
+T1ARGsome
+(s1t1, topt) =>
+let
+//
+val e00 = err
+//
+val
+s1t1 = tread01_sort1(s1t1, err)
+//
+in//let
+if
+(e00=err)
+then (t1a1) else
+t1arg_make_node
+(t1a1.lctn(), T1ARGsome(s1t1, topt))
+endlet // end of [T1ARGsome(s1t1,topt)]
+) (*case+*) // end of [tread01_t1arg(t1a1,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread01_t1mag
+  (t1ma, err) =
+(
+case+
+t1ma.node() of
+|
+T1MAGlist(t1as) =>
+let
+val e00 = err
+val t1as =
+tread01_t1arglst(t1as, err)
+in//let
+if
+(e00=err)
+then (t1ma) else
+t1mag(t1ma.lctn(), T1MAGlist(t1as))
+endlet // end of [ T1MAGlist( t1as ) ]
+) (*case+*) // end of [tread01_t1mag(t1ma,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread01_s1tdf
+  (stdf, err) =
+(
+case+
+stdf.node() of
+|
+S1TDFsort(s1t1) =>
+let
+//
+val e00 = err
+//
+val s1t1 =
+tread01_sort1(s1t1, err)
+in
+if
+(e00=err)
+then (stdf) else
+s1tdf(stdf.lctn(),S1TDFsort(s1t1))
+endlet // end of [ S1TDFsort(s1t1) ]
+|
+S1TDFtsub
+(s1a1, s1ps) =>
+let
+//
+val e00 = err
+//
+val s1a1 = tread01_s1arg(s1a1, err)
+val s1ps = tread01_s1explst(s1ps, err)
+//
+in//let
+if
+(e00=err)
+then (stdf)
+else
+s1tdf_make_node
+(stdf.lctn(),S1TDFtsub(s1a1, s1ps))
+endlet // end of [S1TDFtsub(s1as,s1ps)]
+//
+) (*case*)//end-of-[tread01_s1tdf(stdf,err)]
+//
+(* ****** ****** *)
+//
 #implfun
 tread01_g1explst
   (  g1es, err  ) =
@@ -1115,9 +1280,9 @@ list_tread01_fnp(g1es, err, tread01_g1exp)
 tread01_g1expopt
   (  gopt, err  ) =
 optn_tread01_fnp(gopt, err, tread01_g1exp)
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 tread01_sort1lst
   (  s1ts, err  ) =
@@ -1126,9 +1291,9 @@ list_tread01_fnp(s1ts, err, tread01_sort1)
 tread01_sort1opt
   (  topt, err  ) =
 optn_tread01_fnp(topt, err, tread01_sort1)
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 tread01_s1explst
   (  s1es, err  ) =
@@ -1137,12 +1302,34 @@ list_tread01_fnp(s1es, err, tread01_s1exp)
 tread01_s1expopt
   (  sopt, err  ) =
 optn_tread01_fnp(sopt, err, tread01_s1exp)
-
+//
 (* ****** ****** *)
 #implfun
 tread01_l1s1elst
   (  lses, err  ) =
 list_tread01_fnp(lses, err, tread01_l1s1e)
+(* ****** ****** *)
+//
+#implfun
+tread01_s1arglst
+  (  s1as, err  ) =
+list_tread01_fnp(s1as, err, tread01_s1arg)
+#implfun
+tread01_s1maglst
+  (  smas, err  ) =
+list_tread01_fnp(smas, err, tread01_s1mag)
+//
+(* ****** ****** *)
+//
+#implfun
+tread01_t1arglst
+  (  t1as, err  ) =
+list_tread01_fnp(t1as, err, tread01_t1arg)
+#implfun
+tread01_t1maglst
+  (  tmas, err  ) =
+list_tread01_fnp(tmas, err, tread01_t1mag)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_tread01_staexp.dats] *)

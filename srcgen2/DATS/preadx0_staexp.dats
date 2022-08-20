@@ -51,6 +51,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/preadx0.sats"
 (* ****** ****** *)
+//
+(* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
@@ -80,6 +82,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload lctn with s0tdf_get_lctn
 #symload node with s0tdf_get_node
+(* ****** ****** *)
+//
 (* ****** ****** *)
 //
 #implfun
@@ -1672,9 +1676,15 @@ tdf.node() of
 |
 S0TDFsort(s0t) =>
 let
+//
+val e00 = err
+//
 val s0t =
 preadx0_sort0(s0t, err)
-in  
+in//let
+if
+(e00=err)
+then (tdf) else
 s0tdf(tdf.lctn(), S0TDFsort(s0t))
 end
 |
@@ -1682,7 +1692,12 @@ S0TDFtsub
 ( tbeg, s0a1
 , tbar, s0ps, tend) =>
 let
-val s0a1 = preadx0_s0arg(s0a1, err)
+//
+val e00 = err
+//
+val
+s0a1 = preadx0_s0arg(s0a1, err)
+//
 val (  ) =
 (
 case+
@@ -1698,11 +1713,14 @@ tend.node() of
 |
 T_RBRACE() => () | _ => (err := err+1))
 in//let
+if
+(e00=err)
+then (tdf) else
 s0tdf_make_node
 (
 tdf.lctn(),
 S0TDFtsub(tbeg, s0a1, tbar, s0ps, tend))
-endlet // end of [S0TDFsub]
+endlet // end of [S0TDFtsub(...)]
 //
 ) (*case*)//end-of-[preadx0_s0tdf(tdf,err)]
 
