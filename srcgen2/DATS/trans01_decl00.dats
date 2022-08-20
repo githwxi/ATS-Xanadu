@@ -451,6 +451,12 @@ val pval =
 prcdv_encode
 ( h1precopt(tenv,popt) )
 //
+(*
+val () =
+prerrln
+("f0_fixity: pval = ", pval)
+*)
+//
 val fxty =
 (
 if
@@ -545,7 +551,13 @@ T_IDSYM("+") => 0+token2sint(tint)
 |
 T_IDSYM("-") => 0-token2sint(tint)
 ) (*case-*) // end of [PINTopr2(_,_)]
-) (*case+*) // end of [h1signint(pint)]
+) where
+{
+(*
+  val () =
+  prerrln("h1signint: pint = ", pint)
+*)
+} (*where*) // end of [h1signint(pint)]
 //
 fun
 h1precopt

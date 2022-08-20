@@ -208,8 +208,17 @@ case- fxt of
 | FIXTYpre(p1) => p1
 | FIXTYpos(p1) => p1
 | FIXTYinf(p1, a2) => p1
+| FIXTYpreinf(p0,p1,a2) => p1
 //
-) (*case-*) // end of [fxopr_prcdv(fxt]
+) where // end of [case-(fxt)]
+{
+//
+(*
+val () =
+prerrln("fixty_prcdv: fxt = ", fxt)
+*)
+//
+} (*where*) // end of [fxopr_prcdv(fxt]
 //
 #implfun
 fixty_assoc
@@ -224,7 +233,17 @@ case- fxt of
 //
 | FIXTYinf(p1, a2) => a2
 //
-) (*case-*) // end of [fxopr_assoc(fxt]
+| FIXTYpreinf(p0, p1, a2) => a2
+//
+) where
+{
+//
+(*
+val () =
+prerrln("fixty_assoc: fxt = ", fxt)
+*)
+//
+} (*where*) // end of [fxopr_assoc(fxt)]
 //
 (* ****** ****** *)
 //

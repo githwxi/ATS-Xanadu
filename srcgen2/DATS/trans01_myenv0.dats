@@ -64,30 +64,38 @@ ATS_PACKNAME
 //
 fun
 mix_fixty_fixty
-(x0: fixty, x1: fixty): fixty =
+(fx0: fixty, fx1: fixty): fixty =
 (
-case+ x0 of
+case+ fx0 of
 |
 FIXTYpre(p0) =>
-( case+ x1 of
+( case+ fx1 of
   | FIXTYinf
     (p1, a1) =>
     FIXTYpreinf(p0, p1, a1)
   | FIXTYpreinf
     (q0, p1, a1) =>
-    FIXTYpreinf(p0, p1, a1) | _ => x0
+    FIXTYpreinf(p0, p1, a1) | _ => fx0
 ) (* end of [FIXTYinf] *)
 |
 FIXTYinf(p1, a1) =>
-( case+ x1 of
+( case+ fx1 of
   | FIXTYpre(p0) =>
     FIXTYpreinf(p0, p1, a1)
   | FIXTYpreinf
     (p0, q1, b1) =>
-    FIXTYpreinf(p0, p1, a1) | _ => x0
+    FIXTYpreinf(p0, p1, a1) | _ => fx0
 ) (* end of [FIXTYinf] *)
-| _ (* non-FIXTYpre-FIXTYinf *) => x0
-)
+| _ (* non-FIXTYpre-FIXTYinf *) => fx0
+) where
+{
+(*
+val () =
+prerrln("mix_fixty_fixty: fx0 = ", fx0)
+val () =
+prerrln("mix_fixty_fixty: fx1 = ", fx1)
+*)
+} (*where*) // end of [mix_fixty_fixty(...)]
 //
 (* ****** ****** *)
 

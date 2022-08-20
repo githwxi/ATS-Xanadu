@@ -70,20 +70,27 @@ tok.node() of
 |
 T_INT01(rep) => fint(rep, 10)
 |
-T_INT02(bas, rep) => fint(rep, bas)
+T_INT02(bas,rep) => fint(rep,bas)
 ) where
 {
+//
+(*
+val () =
+prerrln("token2sint: tok = ", tok)
+*)
+//
 fun
 fint
 ( rep: strn
 , bas: sint): sint =
 gseq_foldl
-<strn><cgtz><sint>(rep, bas) where
+<strn><cgtz><sint>(rep, 0) where
 {
 #impltmp
 foldl$fopr
 <cgtz><sint>(r0, c0) = r0*bas+(c0-'0')
 }
+//
 } (*where*) // en dof [token2sint(tok)]
 
 (* ****** ****** *)

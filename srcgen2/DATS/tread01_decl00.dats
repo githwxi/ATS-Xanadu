@@ -156,6 +156,25 @@ d1ecl
 end (*let*) // end of [d1ecl_stacst0_errck]
 //
 (* ****** ****** *)
+//
+fun
+d1ecl_sortdef_errck
+( loc0
+: loc_t
+, tknd
+: token
+, tid0
+: token
+, stdf: s1tdf): d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+(lvl+1,
+ d1ecl(loc0,D1Csortdef(tknd,tid0,stdf)))
+end (*let*) // end of [d1ecl_sortdef_errck]
+//
+(* ****** ****** *)
 
 #implfun
 tread01_d1ecl
@@ -168,20 +187,23 @@ d1cl.node() of
 D1Cd0ecl _ => d1cl
 //
 |
-D0Cstatic _ => f0_static(d1cl, err)
+D1Cstatic _ => f0_static(d1cl, err)
 |
-D0Cextern _ => f0_extern(d1cl, err)
+D1Cextern _ => f0_extern(d1cl, err)
 //
 |
 D1Cdefine _ => f0_define(d1cl, err)
 //
 |
-D0Clocal0 _ => f0_local0(d1cl, err)
+D1Clocal0 _ => f0_local0(d1cl, err)
 //
 |
-D0Cabssort _ => d1cl//HX:fixity-less
+D1Cabssort _ => d1cl//HX:fixity-less
 |
-D0Cstacst0 _ => f0_stacst0(d1cl, err)
+D1Cstacst0 _ => f0_stacst0(d1cl, err)
+//
+|
+D1Csortdef _ => f0_sortdef(d1cl, err)
 //
 |
 _(*otherwise*) =>
@@ -325,6 +347,32 @@ d1ecl_stacst0_errck
 ( dcl.lctn(), tknd, sid0, tmas, s1t1 )
 end (*let*) // end of [f0_stacst0(dcl,err)]
 //
+(* ****** ****** *)
+
+fun
+f0_sortdef
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D1Csortdef
+( tknd
+, tid0, stdf) = dcl.node()
+//
+val
+stdf = tread01_s1tdf(stdf, err)
+//
+in//let
+if
+(err=e00)
+then dcl else
+d1ecl_sortdef_errck(loc,tknd,tid0,stdf)
+end (*let*) // end of [f0_sortdef(dcl,err)]
+
 (* ****** ****** *)
 //
 (*
