@@ -71,6 +71,18 @@ D1E = "./dynexp1.sats"
 #typedef s1tcn = $S1E.s1tcn
 #typedef d1tst = $S1E.d1tst
 (* ****** ****** *)
+#typedef d1tcn = $S1E.d1tcn
+#typedef d1typ = $S1E.d1typ
+(* ****** ****** *)
+#typedef d1pat = $D1E.d1pat
+#typedef d1exp = $D1E.d1exp
+#typedef l1d1p = $D1E.l1d1p
+#typedef l1d1e = $D1E.l1d1e
+(* ****** ****** *)
+#typedef d1ecl = $D1E.d1ecl
+(* ****** ****** *)
+#typedef a1tdf = $D1E.a1tdf
+(* ****** ****** *)
 #typedef g1explst = $S1E.g1explst
 #typedef g1expopt = $S1E.g1expopt
 (* ****** ****** *)
@@ -92,14 +104,8 @@ D1E = "./dynexp1.sats"
 #typedef s1tcnlst = $S1E.s1tcnlst
 #typedef d1tstlst = $S1E.d1tstlst
 (* ****** ****** *)
-#typedef d1pat = $D1E.d1pat
-#typedef d1exp = $D1E.d1exp
-#typedef l1d1p = $D1E.l1d1p
-#typedef l1d1e = $D1E.l1d1e
-(* ****** ****** *)
-#typedef d1ecl = $D1E.d1ecl
-(* ****** ****** *)
-#typedef a1tdf = $D1E.a1tdf
+#typedef d1tcnlst = $S1E.d1tcnlst
+#typedef d1typlst = $S1E.d1typlst
 (* ****** ****** *)
 #typedef d1patlst = $D1E.d1patlst
 (* ****** ****** *)
@@ -112,6 +118,8 @@ D1E = "./dynexp1.sats"
 #typedef d1eclist = $D1E.d1eclist
 (* ****** ****** *)
 #typedef d1parsed = $D1E.d1parsed
+(* ****** ****** *)
+#typedef wd1eclseq = $D1E.wd1eclseq
 (* ****** ****** *)
 #typedef d1eclistopt = $D1E.d1eclistopt
 (* ****** ****** *)
@@ -145,6 +153,9 @@ fun tread01_s1tdf: ftread01(s1tdf)
 (* ****** ****** *)
 fun tread01_s1tcn: ftread01(s1tcn)
 fun tread01_d1tst: ftread01(d1tst)
+(* ****** ****** *)
+fun tread01_d1tcn: ftread01(d1tcn)
+fun tread01_d1typ: ftread01(d1typ)
 (* ****** ****** *)
 fun tread01_d1pat: ftread01(d1pat)
 fun tread01_d1exp: ftread01(d1exp)
@@ -206,6 +217,11 @@ fun
 tread01_d1tstlst: ftread01(d1tstlst)
 (* ****** ****** *)
 fun
+tread01_d1tcnlst: ftread01(d1tcnlst)
+fun
+tread01_d1typlst: ftread01(d1typlst)
+(* ****** ****** *)
+fun
 tread01_d1patlst: ftread01(d1patlst)
 (* ****** ****** *)
 fun
@@ -215,6 +231,9 @@ tread01_d1expopt: ftread01(d1expopt)
 (* ****** ****** *)
 fun
 tread01_d1eclist: ftread01(d1eclist)
+(* ****** ****** *)
+fun
+tread01_wd1eclseq: ftread01(wd1eclseq)
 (* ****** ****** *)
 fun
 tread01_d1eclistopt: ftread01(d1eclistopt)
