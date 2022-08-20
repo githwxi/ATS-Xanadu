@@ -2317,6 +2317,46 @@ end (*let*)//end-of-[preadx0_a0tdf(tdf0,err)]
 (* ****** ****** *)
 //
 #implfun
+preadx0_teqd0exp
+  (tdxp, err) =
+(
+case+ tdxp of
+|
+TEQD0EXPnone() => tdxp
+|
+TEQD0EXPsome(teq1, d0e2) =>
+let
+val e00 = err
+val d0e2 = preadx0_d0exp(d0e2, err)
+in//letp
+if
+(err=e00)
+then tdxp else TEQD0EXPsome(teq1, d0e2)
+endlet // end of [TEQD0EXPsome(_,_)]
+) (*case+*)//end-(preadx0_teqd0exp(tdxp,err))
+//
+#implfun
+preadx0_wths0exp
+  (wsxp, err) =
+(
+case+ wsxp of
+|
+WTHS0EXPnone() => wsxp
+|
+WTHS0EXPsome(twth, s0e1) =>
+let
+val e00 = err
+val d0e2 = preadx0_s0exp(s0e1, err)
+in//letp
+if
+(err=e00)
+then wsxp else WTHS0EXPsome(twth, s0e1)
+endlet // end of [WTHS0EXPsome(_,_)]
+) (*case+*)//end-(preadx0_wths0exp(wsxp,err))
+//
+(* ****** ****** *)
+//
+#implfun
 preadx0_d0valdcl
   (dval, err) =
 let
@@ -2342,7 +2382,7 @@ end where
   val dpat = d0valdcl_get_dpat(dval)
   val tdxp = d0valdcl_get_tdxp(dval)
   val wsxp = d0valdcl_get_wsxp(dval)
-} (*where*)//end-of-[d0valdcl_fpemsg(out,dval)]
+} (*where*)//end-of-[preadx0_d0valdcl(out,dval)]
 //
 (* ****** ****** *)
 //
@@ -2375,7 +2415,7 @@ end where
   val vpid = d0vardcl_get_vpid(dvar)
   val sres = d0vardcl_get_sres(dvar)
   val dini = d0vardcl_get_dini(dvar)
-} (*where*)//end-of-[d0vardcl_fpemsg(out,dvar)]
+} (*where*)//end-of-[preadx0_d0vardcl(out,dvar)]
 //
 (* ****** ****** *)
 //
@@ -2409,7 +2449,7 @@ end where
   val sres = d0fundcl_get_sres(dfun)
   val tdxp = d0fundcl_get_tdxp(dfun)
   val wsxp = d0fundcl_get_wsxp(dfun)
-} (*where*)//end-of-[d0fundcl_fpemsg(out,dfun)]
+} (*where*)//end-of-[preadx0_d0fundcl(out,dfun)]
 //
 (* ****** ****** *)
 //
@@ -2440,50 +2480,8 @@ end where
   val dags = d0cstdcl_get_darg(dcst)
   val sres = d0cstdcl_get_sres(dcst)
   val dres = d0cstdcl_get_dres(dcst)
-} (*where*)//end(d0cstdcl_fpemsg(out,dcst))
+} (*where*)//end-of-[preadx0_d0cstdcl(out,dcst)]
 //
-(* ****** ****** *)
-
-#implfun
-preadx0_teqd0exp
-  (tdxp, err) =
-(
-case+ tdxp of
-|
-TEQD0EXPnone() => tdxp
-|
-TEQD0EXPsome(teq1, d0e2) =>
-let
-val e00 = err
-val d0e2 = preadx0_d0exp(d0e2, err)
-in//letp
-if
-(err=e00)
-then tdxp else TEQD0EXPsome(teq1, d0e2)
-endlet // end of [TEQD0EXPsome(_,_)]
-) (*case+*)//end-(preadx0_teqd0exp(tdxp,err))
-
-(* ****** ****** *)
-
-#implfun
-preadx0_wths0exp
-  (wsxp, err) =
-(
-case+ wsxp of
-|
-WTHS0EXPnone() => wsxp
-|
-WTHS0EXPsome(twth, s0e1) =>
-let
-val e00 = err
-val d0e2 = preadx0_s0exp(s0e1, err)
-in//letp
-if
-(err=e00)
-then wsxp else WTHS0EXPsome(twth, s0e1)
-endlet // end of [WTHS0EXPsome(_,_)]
-) (*case+*)//end-(preadx0_wths0exp(wsxp,err))
-
 (* ****** ****** *)
 #implfun
 preadx0_q0arglst

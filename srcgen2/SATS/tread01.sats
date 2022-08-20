@@ -85,6 +85,9 @@ D1E = "./dynexp1.sats"
 (* ****** ****** *)
 #typedef a1tdf = $D1E.a1tdf
 (* ****** ****** *)
+#typedef teqd1exp = $D1E.teqd1exp
+#typedef wths1exp = $D1E.wths1exp
+(* ****** ****** *)
 #typedef d1valdcl = $D1E.d1valdcl
 #typedef d1vardcl = $D1E.d1vardcl
 #typedef d1fundcl = $D1E.d1fundcl
@@ -248,6 +251,11 @@ tread01_d1expopt: ftread01(d1expopt)
 (* ****** ****** *)
 fun
 tread01_d1eclist: ftread01(d1eclist)
+(* ****** ****** *)
+fun
+tread01_teqd1exp: ftread01(teqd1exp)
+fun
+tread01_wths1exp: ftread01(wths1exp)
 (* ****** ****** *)
 fun
 tread01_d1valdcl: ftread01(d1valdcl)
