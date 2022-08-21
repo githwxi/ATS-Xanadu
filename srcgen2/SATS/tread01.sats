@@ -82,10 +82,14 @@ D1E = "./dynexp1.sats"
 #typedef l1d1e = $D1E.l1d1e
 (* ****** ****** *)
 #typedef f1arg = $D1E.f1arg
+(* ****** ****** *)
+#typedef a1typ = $D1E.a1typ
 #typedef d1arg = $D1E.d1arg
 (* ****** ****** *)
 #typedef s1res = $D1E.s1res
+(*
 #typedef d1res = $D1E.d1res
+*)
 (* ****** ****** *)
 #typedef d1ecl = $D1E.d1ecl
 (* ****** ****** *)
@@ -134,6 +138,8 @@ D1E = "./dynexp1.sats"
 #typedef l1d1elst = $D1E.l1d1elst
 (* ****** ****** *)
 #typedef f1arglst = $D1E.f1arglst
+(* ****** ****** *)
+#typedef a1typlst = $D1E.a1typlst
 #typedef d1arglst = $D1E.d1arglst
 (* ****** ****** *)
 #typedef d1eclist = $D1E.d1eclist
@@ -148,6 +154,8 @@ D1E = "./dynexp1.sats"
 #typedef d1cstdclist = $D1E.d1cstdclist
 (* ****** ****** *)
 #typedef d1eclistopt = $D1E.d1eclistopt
+(* ****** ****** *)
+#typedef a1typlstopt = $D1E.a1typlstopt
 (* ****** ****** *)
 //
 fun
@@ -191,10 +199,14 @@ fun tread01_d1exp: ftread01(d1exp)
 fun tread01_l1d1e: ftread01(l1d1e)
 (* ****** ****** *)
 fun tread01_f1arg: ftread01(f1arg)
+(* ****** ****** *)
+fun tread01_a1typ: ftread01(a1typ)
 fun tread01_d1arg: ftread01(d1arg)
 (* ****** ****** *)
 fun tread01_s1res: ftread01(s1res)
+(*
 fun tread01_d1res: ftread01(d1res)
+*)
 (* ****** ****** *)
 fun tread01_d1ecl: ftread01(d1ecl)
 (* ****** ****** *)
@@ -274,6 +286,9 @@ tread01_l1d1elst: ftread01(l1d1elst)
 (* ****** ****** *)
 fun
 tread01_f1arglst: ftread01(f1arglst)
+(* ****** ****** *)
+fun
+tread01_a1typlst: ftread01(a1typlst)
 fun
 tread01_d1arglst: ftread01(d1arglst)
 (* ****** ****** *)
@@ -308,6 +323,9 @@ tread01_d1cstdclist: ftread01(d1cstdclist)
 (* ****** ****** *)
 fun
 tread01_d1eclistopt: ftread01(d1eclistopt)
+(* ****** ****** *)
+fun
+tread01_a1typlstopt: ftread01(a1typlstopt)
 (* ****** ****** *)
 //
 //HX-2022-08-16: printing errmsgs
