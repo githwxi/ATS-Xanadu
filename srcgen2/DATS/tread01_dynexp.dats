@@ -72,6 +72,16 @@ ATS_PACKNAME
 #symload lctn with d1arg_get_lctn
 #symload node with d1arg_get_node
 (* ****** ****** *)
+(*
+HX-2022-08-21:
+A placeholder for the moment
+but it may actually just be okay!
+*)
+fun
+s1exp_errvl_lst
+(ses: s1explst): sint = 0
+#symload errvl with s1exp_errvl_lst
+(* ****** ****** *)
 //
 fun
 d1pat_errck
@@ -220,15 +230,17 @@ optn_cons(d1e1) => errvl(d1e1))
 #symload errvl with d1exp_errvl_opt
 //
 (* ****** ****** *)
-fun
-s1exp_errvl_lst
-(ses: s1explst): sint = 0
-#symload errvl with s1exp_errvl_lst
-(* ****** ****** *)
+//
+(*
+HX-2022-08-21:
+A placeholder for the moment
+but it may actually just be okay!
+*)
 fun
 d1ecl_errvl_lst
 (dcs: d1eclist): sint = 0
 #symload errvl with d1ecl_errvl_lst
+//
 (* ****** ****** *)
 //
 #extern
