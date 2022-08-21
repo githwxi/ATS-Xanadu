@@ -600,7 +600,7 @@ d0ecl_make_node
 , D0Cimplmnt0
   ( tknd, sqas, tqas
   , dqid, tias, fags, sres, teq1, body) ))
-end (*let*) // end of [d0ecl_fundclst_errck]
+end (*let*) // end of [d0ecl_implmnt0_errck]
 //
 (* ****** ****** *)
 //
