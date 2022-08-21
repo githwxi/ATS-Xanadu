@@ -1285,7 +1285,7 @@ tread01_d1arglst(darg, err)
 val
 sres = tread01_s1res(sres, err)
 val
-dres = tread01_d1res(dres, err)
+dres = tread01_teqd1exp(dres, err)
 //
 in//let
 if

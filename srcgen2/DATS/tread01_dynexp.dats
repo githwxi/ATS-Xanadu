@@ -69,6 +69,9 @@ ATS_PACKNAME
 #symload lctn with f1arg_get_lctn
 #symload node with f1arg_get_node
 (* ****** ****** *)
+#symload lctn with d1arg_get_lctn
+#symload node with d1arg_get_node
+(* ****** ****** *)
 //
 fun
 d1pat_errck
@@ -269,6 +272,84 @@ endlet // end of [F1ARGmet0(s1es)]
 (* ****** ****** *)
 //
 #implfun
+tread01_a1typ
+  (a1t0, err) =
+(
+case+
+a1t0.node() of
+//
+(*
+|
+A1TYPnone(tok) => a1t0
+*)
+//
+|
+A1TYPsome(s1e1,topt) =>
+let
+val e00 = err
+val s1e1 = tread01_s1exp(s1e1, err)
+in//let
+if
+(e00=err)
+then (a1t0) else
+a1typ
+(a1t0.lctn(), A1TYPsome(s1e1,topt))
+endlet // end of [A1TYPsome(s1e1,topt)]
+) (*case+*)//end-of[tread01_a1typ(a1t0,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread01_d1arg
+  (darg, err) =
+(
+case+
+darg.node() of
+//
+(*
+| D1ARGnone(tok)
+*)
+|
+D1ARGsta0(s1qs) =>
+let
+//
+val e00 = err
+//
+val s1qs =
+tread01_s1qualst(s1qs, err)
+//
+in//let
+if
+(e00=err)
+then (darg) else
+d1arg
+(darg.lctn(), D1ARGsta0(s1qs))
+endlet // end of [D1ARGsta0(s1qs)]
+|
+D1ARGdyn1(dpid) => darg
+|
+D1ARGdyn2(ats1,opt2) =>
+let
+//
+val e00 = err
+//
+val ats1 =
+tread01_a1typlst(ats1, err)
+val opt2 =
+tread01_a1typlstopt(opt2, err)
+//
+in//let
+if
+(e00=err)
+then (darg) else
+d1arg
+(darg.lctn(), D1ARGdyn2(ats1,opt2))
+endlet // end of [D1ARGdyn2(ats1,opt2)]
+) (*case+*)//end-of[tread01_d1arg(darg,err)]
+//
+(* ****** ****** *)
+//
+#implfun
 tread01_s1res
   (sres, err) =
 (
@@ -323,6 +404,24 @@ tread01_f1arglst
   (  f1as, err  ) =
 list_tread01_fnp(f1as, err, tread01_f1arg)
 
+(* ****** ****** *)
+//
+#implfun
+tread01_a1typlst
+  (  a1ts, err  ) =
+list_tread01_fnp(a1ts, err, tread01_a1typ)
+#implfun
+tread01_d1arglst
+  (  d1as, err  ) =
+list_tread01_fnp(d1as, err, tread01_d1arg)
+//
+(* ****** ****** *)
+//
+#implfun
+tread01_a1typlstopt
+  (  aopt, err  ) =
+optn_tread01_fnp(aopt, err, tread01_a1typlst)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_tread01_dynexp.dats] *)

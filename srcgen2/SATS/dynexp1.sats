@@ -886,6 +886,7 @@ a1typ_node =
 //
 datatype
 d1arg_node =
+//
 (*
 | D1ARGnone of token
 *)
