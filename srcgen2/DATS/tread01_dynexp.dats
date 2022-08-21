@@ -66,6 +66,9 @@ ATS_PACKNAME
 #symload lctn with d1exp_get_lctn
 #symload node with d1exp_get_node
 (* ****** ****** *)
+#symload lctn with f1arg_get_lctn
+#symload node with f1arg_get_node
+(* ****** ****** *)
 //
 fun
 d1pat_errck
@@ -209,11 +212,98 @@ prerrln("tread01_d1exp: d1e0 = ", d1e0)
 } (*where*)//end(tread01_d1exp(d1e0,err))
 
 (* ****** ****** *)
+//
+#implfun
+tread01_f1arg
+  (farg, err) =
+(
+case+
+farg.node() of
+//
+(*
+|
+F1ARGnone(tok)
+*)
+|
+F1ARGdyn0(d1p1) =>
+let
+val e00 = err
+val d1p1 =
+tread01_d1pat(d1p1, err)
+in//let
+if
+(e00=err)
+then (farg) else
+f1arg
+(farg.lctn(), F1ARGdyn0(d1p1))
+endlet // end of [F1ARGdyn0(d1p1)]
+|
+F1ARGsta0(s1qs) =>
+let
+val e00 = err
+val s1qs =
+tread01_s1qualst(s1qs, err)
+in//let
+if
+(e00=err)
+then (farg) else
+f1arg
+(farg.lctn(), F1ARGsta0(s1qs))
+endlet // end of [F1ARGsta0(s1qs)]
+|
+F1ARGmet0(s1es) =>
+let
+val e00 = err
+val s1es =
+tread01_s1explst(s1es, err)
+in//let
+if
+(e00=err)
+then (farg) else
+f1arg
+(farg.lctn(), F1ARGmet0(s1es))
+endlet // end of [F1ARGmet0(s1es)]
+//
+) (*case+*)//end-of[tread01_f1arg(farg,err)]
+
+(* ****** ****** *)
+//
+#implfun
+tread01_s1res
+  (sres, err) =
+(
+case+ sres of
+|
+S1RESnone() => sres
+|
+S1RESsome(seff,s1e1) =>
+let
+//
+val e00 = err
+//
+(*
+val seff =
+tread01_s1eff(seff, err)
+*)
+val s1e1 =
+tread01_s1exp(s1e1, err)
+in
+if
+(err=e00)
+then (sres) else S1RESsome(seff, s1e1)
+endlet // end of [S1RESsome(seff,s1e1)]
+) (*case+*)//end-of[tread01_s1res(sres,err)]
+//
+(* ****** ****** *)
 
 #implfun
 tread01_d1patlst
   (  d1ps, err  ) =
 list_tread01_fnp(d1ps, err, tread01_d1pat)
+#implfun
+tread01_l1d1plst
+  (  ldps, err  ) =
+list_tread01_fnp(ldps, err, tread01_l1d1p)
 
 (* ****** ****** *)
 
@@ -221,6 +311,17 @@ list_tread01_fnp(d1ps, err, tread01_d1pat)
 tread01_d1explst
   (  d1es, err  ) =
 list_tread01_fnp(d1es, err, tread01_d1exp)
+#implfun
+tread01_l1d1elst
+  (  ldes, err  ) =
+list_tread01_fnp(ldes, err, tread01_l1d1e)
+
+(* ****** ****** *)
+
+#implfun
+tread01_f1arglst
+  (  f1as, err  ) =
+list_tread01_fnp(f1as, err, tread01_f1arg)
 
 (* ****** ****** *)
 
