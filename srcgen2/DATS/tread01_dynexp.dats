@@ -178,6 +178,39 @@ d1exp_errvl with d1exp_errvl_a2
 #symload errvl with d1exp_errvl_a2
 //
 (* ****** ****** *)
+fun
+d1exp_a0pp_errck
+(loc: loc_t): d1exp =
+d1exp_errck(1,d1exp(loc,D1Ea0pp()))
+(* ****** ****** *)
+fun
+d1exp_a1pp_errck
+(loc: loc_t
+,de1: d1exp
+,de2: d1exp): d1exp =
+let
+val lvl = gmax
+(errvl(de1), errvl(de2))
+in//let
+d1exp_errck
+(lvl+1, d1exp(loc, D1Ea1pp(de1, de2)))
+endlet // end of [d1exp_a1pp_errck(...)]
+(* ****** ****** *)
+fun
+d1exp_a2pp_errck
+(loc: loc_t
+,de1: d1exp
+,de2: d1exp
+,de3: d1exp): d1exp =
+let
+val lvl = gmax
+( errvl(de1)
+, errvl(de2), errvl(de3))
+in//let
+d1exp_errck
+(lvl+1,d1exp(loc,D1Ea2pp(de1,de2,de3)))
+endlet // end of [d1exp_a2pp_errck(...)]
+(* ****** ****** *)
 
 #implfun
 tread01_d1exp
@@ -192,6 +225,50 @@ d1e0.node() of
 | D1Echr _ => d1e0
 | D1Eflt _ => d1e0
 | D1Estr _ => d1e0
+//
+| D1Ea0pp() =>
+(
+d1exp_a0pp_errck(loc0)
+) where
+{ val () = ( err := err + 1 ) }
+|
+D1Ea1pp(d1e1,d1e2) =>
+let
+//
+val e00 = err
+//
+val
+d1e1 = tread01_d1exp(d1e1, err)
+val
+d1e2 = tread01_d1exp(d1e2, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_a1pp_errck(loc0, d1e1, d1e2)
+endlet // end of [D1Ea1pp(d1e1,d1e2)]
+//
+|
+D1Ea2pp
+(d1e1, d1e2, d1e3) =>
+let
+//
+val e00 = err
+//
+val
+d1e1 = tread01_d1exp(d1e1, err)
+val
+d1e2 = tread01_d1exp(d1e2, err)
+val
+d1e3 = tread01_d1exp(d1e3, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_a2pp_errck(loc0,d1e1,d1e2,d1e3)
+endlet//end-(D1Ea2pp(d1e1,d1e2,d1e3))
 //
 |
 _(*otherwise*) =>
