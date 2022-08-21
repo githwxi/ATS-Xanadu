@@ -1244,7 +1244,7 @@ wsxp = d1fundcl_get_wsxp(dfun)
 //
 val
 farg =
-tread01_f1arglst(farg,err)
+tread01_f1arglst(farg, err)
 val
 sres = tread01_s1res(sres,err)
 val
@@ -1258,6 +1258,41 @@ if
 then (dfun)
 else d1fundcl(loc,dpid,farg,sres,tdxp,wsxp)
 endlet // end-of-[tread01_d1fundcl(out,dfun)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread01_d1cstdcl
+  (dcst, err) =
+let
+//
+val e00 = err
+//
+val loc = dcst.lctn()
+//
+val
+dpid = d1cstdcl_get_dpid(dcst)
+val
+darg = d1cstdcl_get_darg(dcst)
+val
+sres = d1cstdcl_get_sres(dcst)
+val
+dres = d1cstdcl_get_dres(dcst)
+//
+val
+darg =
+tread01_d1arglst(darg, err)
+val
+sres = tread01_s1res(sres, err)
+val
+dres = tread01_d1res(dres, err)
+//
+in//let
+if
+(err=e00)
+then (dcst)
+else d1cstdcl(loc, dpid, darg, sres, dres)
+endlet // end-of-[tread01_d1cstdcl(out,dcst)]
 //
 (* ****** ****** *)
 //
@@ -1308,7 +1343,7 @@ d1cs = tread01_d1eclist(d1cs, err)
 in//let
 if
 (e00=err) then wdcs else WD1CSsome(d1cs)
-end (*let*) // end of [WD1CSsome(d1cs)]
+endlet // end of [ WD1CSsome( d1cs ) ]
 ) (*case+*) // end of [tread01_wd1eclseq(wdcs,err)]
 //
 (* ****** ****** *)
