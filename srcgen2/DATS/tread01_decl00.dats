@@ -358,7 +358,7 @@ let
 val lvl = 0
 in//let
 d1ecl_errck
-(lvl+1, d1ecl(loc0, D1Cvaldclst(tknd, d1cs)))
+(lvl+1, d1ecl(loc0,D1Cvaldclst(tknd,d1cs)))
 end (*let*) // end of [d1ecl_valdclst_errck]
 //
 (* ****** ****** *)
@@ -375,8 +375,62 @@ let
 val lvl = 0
 in//let
 d1ecl_errck
-(lvl+1, d1ecl(loc0, D1Cvardclst(tknd, d1cs)))
+(lvl+1, d1ecl(loc0,D1Cvardclst(tknd,d1cs)))
 end (*let*) // end of [d1ecl_vardclst_errck]
+//
+(* ****** ****** *)
+//
+fun
+d1ecl_fundclst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, tqas
+: t1qaglst
+, d1cs
+: d1fundclist): d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+( lvl+1
+, d1ecl(loc0,D1Cfundclst(tknd,tqas,d1cs)) )
+end (*let*) // end of [d1ecl_fundclst_errck]
+//
+(* ****** ****** *)
+//
+fun
+d1ecl_implmnt0_errck
+( loc0
+: loc_t
+, tknd
+: token
+, sqas
+: s1qaglst
+, tqas
+: t1qaglst
+, dqid
+: d1qid
+, tias
+: t1iaglst
+, fags
+: f1arglst
+, sres: s1res
+, body: d1exp): d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+(
+lvl+1
+,
+d1ecl_make_node
+( loc0
+, D1Cimplmnt0
+  ( tknd
+  , sqas,tqas,dqid,tias,fags,sres,body ) ))
+end (*let*) // end of [d1ecl_implmnt0_errck]
 //
 (* ****** ****** *)
 //
@@ -392,7 +446,7 @@ let
 val lvl = 0
 in//let
 d1ecl_errck
-(lvl+1,d1ecl(loc0,D1Cexcptcon(tknd,tcns)))
+(lvl+1, d1ecl(loc0,D1Cexcptcon(tknd,tcns)))
 end (*let*) // end of [d1ecl_excptcon_errck]
 //
 (* ****** ****** *)
@@ -412,7 +466,7 @@ val lvl = 0
 in//let
 d1ecl_errck
 ( lvl+1
-, d1ecl(loc0,D1Cdatatype(tknd,d1ts,wdcs)))
+, d1ecl(loc0,D1Cdatatype(tknd,d1ts,wdcs)) )
 end (*let*) // end of [d1ecl_datatype_errck]
 //
 (* ****** ****** *)
@@ -432,7 +486,7 @@ val lvl = 0
 in//let
 d1ecl_errck
 ( lvl+1
-, d1ecl(loc0,D1Cdynconst(tknd,tqas,d1cs)))
+, d1ecl(loc0,D1Cdynconst(tknd,tqas,d1cs)) )
 end (*let*) // end of [d1ecl_dynconst_errck]
 //
 (* ****** ****** *)
@@ -490,9 +544,14 @@ D1Cdyninit _ => f0_dyninit(d1cl, err)
 D1Cdatasort _ => f0_datasort(d1cl, err)
 //
 |
-D0Cvaldclst _ => f0_valdclst(d1cl, err)
+D1Cvaldclst _ => f0_valdclst(d1cl, err)
 |
-D0Cvardclst _ => f0_vardclst(d1cl, err)
+D1Cvardclst _ => f0_vardclst(d1cl, err)
+|
+D1Cfundclst _ => f0_fundclst(d1cl, err)
+//
+|
+D1Cimplmnt0 _ => f0_implmnt0(d1cl, err)
 //
 |
 D1Cexcptcon _ => f0_excptcon(d1cl, err)
@@ -937,6 +996,74 @@ end (*let*) // end of [f0_vardclst(dcl,err)]
 (* ****** ****** *)
 //
 fun
+f0_fundclst
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D1Cfundclst
+( tknd
+, tqas, d1cs) = dcl.node()
+//
+val tqas =
+tread01_t1qaglst(tqas, err)
+val d1cs =
+tread01_d1fundclist(d1cs, err)
+//
+in//let
+if
+(e00=err)
+then (dcl) else
+d1ecl_fundclst_errck(loc, tknd, tqas, d1cs)
+end (*let*) // end of [f0_fundclst(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_implmnt0
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+//
+val-
+D1Cimplmnt0
+(tknd
+,sqas,tqas
+,dqid,tias
+,fags,sres,body) = dcl.node()
+//
+val sqas =
+  tread01_s1qaglst(sqas, err)
+val tqas =
+  tread01_t1qaglst(tqas, err)
+//
+val tias =
+  tread01_t1iaglst(tias, err)
+val fags =
+  tread01_f1arglst(fags, err)
+//
+val sres = tread01_s1res(sres, err)
+//
+val body = tread01_d1exp(body, err)
+//
+in//let
+if
+(err=e00)
+then (dcl) else
+d1ecl_implmnt0_errck
+( dcl.lctn(), tknd
+, sqas, tqas, dqid, tias, fags, sres, body)
+end (*let*) // end of [f0_implmnt0(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
 f0_excptcon
 ( dcl: d1ecl
 , err: &sint >> _): d1ecl =
@@ -1001,9 +1128,11 @@ D1Cdynconst
 , tqas, d1cs) = dcl.node()
 //
 val
-tqas = tread01_t1qaglst(tqas, err)
+tqas =
+tread01_t1qaglst(tqas, err)
 val
-d1cs = tread01_d1cstdclist(d1cs, err)
+d1cs =
+tread01_d1cstdclist(d1cs, err)
 //
 if
 (e00=err)
