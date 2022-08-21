@@ -407,6 +407,26 @@ d1ecl_errck
 end (*let*) // end of [d1ecl_datatype_errck]
 //
 (* ****** ****** *)
+//
+fun
+d1ecl_dynconst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, tqas
+: t1qaglst
+, d1cs
+: d1cstdclist): d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+( lvl+1
+, d1ecl(loc0,D1Cdynconst(tknd,tqas,d1cs)))
+end (*let*) // end of [d1ecl_dynconst_errck]
+//
+(* ****** ****** *)
 
 #implfun
 tread01_d1ecl
@@ -462,11 +482,16 @@ D1Cdatasort _ => f0_datasort(d1cl, err)
 //
 |
 D0Cvaldclst _ => f0_valdclst(d1cl, err)
+|
+D0Cvardclst _ => f0_vardclst(d1cl, err)
 //
 |
 D1Cexcptcon _ => f0_excptcon(d1cl, err)
 |
 D1Cdatatype _ => f0_datatype(d1cl, err)
+//
+|
+D1Cdynconst _ => f0_dynconst(d1cl, err)
 //
 |
 _(*otherwise*) =>
@@ -952,6 +977,33 @@ end (*let*) // end of [f0_datatype(dcl,err)]
 //
 (* ****** ****** *)
 //
+fun
+f0_dynconst
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D1Cdynconst
+( tknd
+, tqas, d1cs) = dcl.node()
+//
+val
+tqas = tread01_t1qaglst(tqas, err)
+val
+d1cs = tread01_d1cstdclist(d1cs, err)
+//
+if
+(err=e00)
+then (dcl) else
+d1ecl_dynconst_errck(loc,tknd,tqas,d1cs)
+end (*let*) // end of [f0_dynconst(dcl,err)]
+//
+(* ****** ****** *)
+//
 (*
 val (  ) =
 prerrln("tread01_d1ecl: loc0 = ", loc0)
@@ -1323,6 +1375,23 @@ tread01_d1typlst
   (  d1ts, err  ) =
 list_tread01_fnp(d1ts, err, tread01_d1typ)
 //
+(* ****** ****** *)
+#implfun
+tread01_q1arglst
+  (  q1as, err  ) =
+list_tread01_fnp(q1as, err, tread01_q1arg)
+#implfun
+tread01_s1qaglst
+  (  sqas, err  ) =
+list_tread01_fnp(sqas, err, tread01_s1qag)
+#implfun
+tread01_t1qaglst
+  (  tqas, err  ) =
+list_tread01_fnp(tqas, err, tread01_t1qag)
+#implfun
+tread01_t1iaglst
+  (  tias, err  ) =
+list_tread01_fnp(tias, err, tread01_t1iag)
 (* ****** ****** *)
 //
 #implfun

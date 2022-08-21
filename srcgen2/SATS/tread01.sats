@@ -93,6 +93,11 @@ D1E = "./dynexp1.sats"
 (* ****** ****** *)
 #typedef d1ecl = $D1E.d1ecl
 (* ****** ****** *)
+#typedef q1arg = $D1E.q1arg
+#typedef s1qag = $D1E.s1qag
+#typedef t1qag = $D1E.t1qag
+#typedef t1iag = $D1E.t1iag
+(* ****** ****** *)
 #typedef a1tdf = $D1E.a1tdf
 (* ****** ****** *)
 #typedef teqd1exp = $D1E.teqd1exp
@@ -143,6 +148,11 @@ D1E = "./dynexp1.sats"
 #typedef d1arglst = $D1E.d1arglst
 (* ****** ****** *)
 #typedef d1eclist = $D1E.d1eclist
+(* ****** ****** *)
+#typedef q1arglst = $D1E.q1arglst
+#typedef s1qaglst = $D1E.s1qaglst
+#typedef t1qaglst = $D1E.t1qaglst
+#typedef t1iaglst = $D1E.t1iaglst
 (* ****** ****** *)
 #typedef d1parsed = $D1E.d1parsed
 (* ****** ****** *)
@@ -209,6 +219,11 @@ fun tread01_d1res: ftread01(d1res)
 *)
 (* ****** ****** *)
 fun tread01_d1ecl: ftread01(d1ecl)
+(* ****** ****** *)
+fun tread01_q1arg: ftread01(q1arg)
+fun tread01_s1qag: ftread01(s1qag)
+fun tread01_t1qag: ftread01(t1qag)
+fun tread01_t1iag: ftread01(t1iag)
 (* ****** ****** *)
 fun tread01_a1tdf: ftread01(a1tdf)
 (* ****** ****** *)
@@ -294,6 +309,15 @@ tread01_d1arglst: ftread01(d1arglst)
 (* ****** ****** *)
 fun
 tread01_d1eclist: ftread01(d1eclist)
+(* ****** ****** *)
+fun
+tread01_q1arglst: ftread01(q1arglst)
+fun
+tread01_s1qaglst: ftread01(s1qaglst)
+fun
+tread01_t1qaglst: ftread01(t1qaglst)
+fun
+tread01_t1iaglst: ftread01(t1iaglst)
 (* ****** ****** *)
 fun
 tread01_teqd1exp: ftread01(teqd1exp)
