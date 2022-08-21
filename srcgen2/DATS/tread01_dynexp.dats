@@ -221,6 +221,11 @@ optn_cons(d1e1) => errvl(d1e1))
 //
 (* ****** ****** *)
 fun
+s1exp_errvl_lst
+(ses: s1explst): sint = 0
+#symload errvl with s1exp_errvl_lst
+(* ****** ****** *)
+fun
 d1ecl_errvl_lst
 (dcs: d1eclist): sint = 0
 #symload errvl with d1ecl_errvl_lst
@@ -281,6 +286,32 @@ d1exp_errck
 endlet // end of [d1exp_a2pp_errck(...)]
 (* ****** ****** *)
 fun
+d1exp_sarg_errck
+( loc
+: loc_t
+, ses
+: s1explst ): d1exp =
+let
+val lvl = errvl(ses)
+in//let
+d1exp_errck
+(lvl+1, d1exp( loc , D1Esarg( ses ) ))
+endlet // end of [d1exp_sarg_errck(...)]
+(* ****** ****** *)
+fun
+d1exp_targ_errck
+( loc
+: loc_t
+, ses
+: s1explst ): d1exp =
+let
+val lvl = errvl(ses)
+in//let
+d1exp_errck
+(lvl+1, d1exp( loc , D1Etarg( ses ) ))
+endlet // end of [d1exp_targ_errck(...)]
+(* ****** ****** *)
+fun
 d1exp_l1st_errck
 ( loc
 : loc_t
@@ -310,6 +341,22 @@ d1exp_errck
 endlet // end of [d1exp_l2st_errck(...)]
 (* ****** ****** *)
 fun
+d1exp_seqn_errck
+( loc
+: loc_t
+, des1
+: d1explst 
+, des2
+: d1explst ): d1exp =
+let
+val lvl = gmax
+(errvl(des1), errvl(des2))
+in//let
+d1exp_errck
+(lvl+1, d1exp(loc, D1Eseqn(des1,des2)))
+endlet // end of [d1exp_seqn_errck(...)]
+(* ****** ****** *)
+fun
 d1exp_let0_errck
 ( loc
 : loc_t
@@ -324,6 +371,22 @@ in//let
 d1exp_errck
 (lvl+1, d1exp(loc, D1Elet0(d1cs,d1es)))
 endlet // end of [d1exp_let0_errck(...)]
+(* ****** ****** *)
+fun
+d1exp_where_errck
+( loc
+: loc_t
+, d1e1
+: d1exp
+, d1cs
+: d1eclist): d1exp =
+let
+val lvl = gmax
+(errvl(d1cs), errvl(d1e1))
+in//let
+d1exp_errck
+(lvl+1, d1exp(loc, D1Ewhere(d1e1,d1cs)))
+endlet // end of [d1exp_where_errck(...)]
 (* ****** ****** *)
 fun
 d1exp_brckt_errck
@@ -484,6 +547,35 @@ d1exp_a2pp_errck(loc0,d1e1,d1e2,d1e3)
 endlet//end-(D1Ea2pp(d1e1,d1e2,d1e3))
 //
 |
+D1Esarg(s1es) =>
+let
+val e00 = err
+//
+val s1es =
+  tread01_s1explst(s1es, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0)
+else d1exp_sarg_errck(loc0, s1es )
+endlet // end of [ D1Esarg( s1es ) ]
+|
+D1Etarg(s1es) =>
+let
+val e00 = err
+//
+val s1es =
+  tread01_s1explst(s1es, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0)
+else d1exp_targ_errck(loc0, s1es )
+endlet // end of [ D1Etarg( s1es ) ]
+//
+|
 D1El1st(d1es) =>
 let
 //
@@ -517,6 +609,24 @@ d1exp_l2st_errck(loc0, des1, des2)
 endlet // end of [D1El2st(des1,des2)]
 //
 |
+D1Eseqn(des1,des2) =>
+let
+//
+val e00 = err
+//
+val des1 =
+  tread01_d1explst(des1, err)
+val des2 =
+  tread01_d1explst(des2, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_seqn_errck(loc0, des1, des2)
+endlet // end of [D1Eseqn(des1,des2)]
+//
+|
 D1Elet0
 (d1cs, d1es) =>
 let
@@ -534,6 +644,26 @@ if
 then (d1e0) else
 d1exp_let0_errck(loc0, d1cs, d1es)
 endlet // end of [D1Elet0(d1cs,d1es)]
+//
+|
+D1Ewhere
+(d1e1, d1cs) =>
+let
+//
+val e00 = err
+//
+val
+d1cs =
+tread01_d1eclist(d1cs, err)
+val
+d1e1 = tread01_d1exp(d1e1, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_where_errck(loc0, d1e1, d1cs)
+endlet // end of [D1Ewhere(d1cs,d1es)]
 //
 |
 D1Ebrckt(d1es) =>
