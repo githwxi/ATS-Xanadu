@@ -370,7 +370,7 @@ val s1e1 =
 tread01_s1exp(s1e1, err)
 in
 if
-(err=e00)
+(e00=err)
 then (sres) else S1RESsome(seff, s1e1)
 endlet // end of [S1RESsome(seff,s1e1)]
 ) (*case+*)//end-of[tread01_s1res(sres,err)]

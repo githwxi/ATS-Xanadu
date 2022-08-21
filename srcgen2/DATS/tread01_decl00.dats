@@ -63,6 +63,15 @@ ATS_PACKNAME
 #symload lctn with d1ecl_get_lctn
 #symload node with d1ecl_get_node
 (* ****** ****** *)
+#symload lctn with q1arg_get_lctn
+#symload node with q1arg_get_node
+#symload lctn with s1qag_get_lctn
+#symload node with s1qag_get_node
+#symload lctn with t1qag_get_lctn
+#symload node with t1qag_get_node
+#symload lctn with t1iag_get_lctn
+#symload node with t1iag_get_node
+(* ****** ****** *)
 #symload lctn with d1valdcl_get_lctn
 #symload lctn with d1vardcl_get_lctn
 #symload lctn with d1fundcl_get_lctn
@@ -525,7 +534,7 @@ val dcl1 = tread01_d1ecl(dcl1, err)
 //
 in
 if
-(err=e00)
+(e00=err)
 then dcl else
 d1ecl_static_errck(dcl.lctn(),tknd,dcl1)
 end (*let*) // end of [ f0_static(dcl,err) ]
@@ -546,7 +555,7 @@ val dcl1 = tread01_d1ecl(dcl1, err)
 //
 in
 if
-(err=e00)
+(e00=err)
 then dcl else
 d1ecl_extern_errck(dcl.lctn(),tknd,dcl1)
 end (*let*) // end of [ f0_extern(dcl,err) ]
@@ -600,7 +609,7 @@ tread01_d1eclist(dcs2, err)
 //
 in
 if
-(err=e00)
+(e00=err)
 then dcl else
 d1ecl_local0_errck( loc, dcs1, dcs2 )
 end (*let*) // end of [ f0_local0(dcl,err) ]
@@ -629,7 +638,7 @@ s1t1 = tread01_sort1(s1t1, err)
 //
 in//let
 if
-(err=e00)
+(e00=err)
 then dcl else
 d1ecl_stacst0_errck
 ( dcl.lctn(), tknd, sid0, tmas, s1t1 )
@@ -656,7 +665,7 @@ stdf = tread01_s1tdf(stdf, err)
 //
 in//let
 if
-(err=e00)
+(e00=err)
 then dcl else
 d1ecl_sortdef_errck(loc,tknd,tid0,stdf)
 end (*let*) // end of [f0_sortdef(dcl,err)]
@@ -688,7 +697,7 @@ sdef = tread01_s1exp(sdef, err)
 //
 in//let
 if
-(err=e00)
+(e00=err)
 then (dcl) else
 d1ecl_sexpdef_errck
 ( dcl.lctn(), tknd,seid,smas,tres,sdef )
@@ -721,7 +730,7 @@ atdf = tread01_a1tdf(atdf, err)
 //
 in//let
 if
-(err=e00)
+(e00=err)
 then (dcl) else
 d1ecl_abstype_errck
 ( dcl.lctn(), tknd,seid,tmas,tres,atdf )
@@ -754,7 +763,7 @@ sdef = tread01_s1exp(sdef, err)
 //
 in//let
 if
-(err=e00)
+(e00=err)
 then (dcl) else
 d1ecl_absimpl_errck
 ( dcl.lctn(), tknd,sqid,smas,tres,sdef )
@@ -781,7 +790,7 @@ tread01_g1expopt(gopt, err)
 //
 in//let
 if
-(err=e00)
+(e00=err)
 then (dcl) else
 d1ecl_symload_errck
 ( dcl.lctn(), tknd, deid, dqid, gopt )
@@ -804,7 +813,7 @@ D1Cinclude
 val g1e1 = tread01_g1exp(g1e1, err)
 //
 if
-(err=e00)
+(e00=err)
 then (dcl) else
 d1ecl_include_errck(dcl.lctn(),tknd,g1e1)
 end (*let*) // end of [f0_include(dcl,err)]
@@ -826,7 +835,7 @@ D1Cstaload
 val g1e1 = tread01_g1exp(g1e1, err)
 //
 if
-(err=e00)
+(e00=err)
 then (dcl) else
 d1ecl_staload_errck(dcl.lctn(),tknd,g1e1)
 end (*let*) // end of [f0_staload(dcl,err)]
@@ -849,7 +858,7 @@ val
 g1e1 = tread01_g1exp(g1e1, err)
 //
 if
-(err=e00)
+(e00=err)
 then (dcl) else
 d1ecl_dyninit_errck(dcl.lctn(),tknd,g1e1)
 end (*let*) // end of [f0_dyninit(dcl,err)]
@@ -872,7 +881,7 @@ val
 d1ts = tread01_d1tstlst(d1ts, err)
 //
 if
-(err=e00)
+(e00=err)
 then (dcl) else
 d1ecl_datasort_errck(dcl.lctn(),tknd,d1ts)
 end (*let*) // end of [f0_datasort(dcl,err)]
@@ -896,7 +905,7 @@ tread01_d1valdclist(d1cs, err)
 //
 in//let
 if
-(err=e00)
+(e00=err)
 then (dcl) else
 d1ecl_valdclst_errck(dcl.lctn(),tknd,d1cs)
 end (*let*) // end of [f0_valdclst(dcl,err)]
@@ -920,7 +929,7 @@ tread01_d1vardclist(d1cs, err)
 //
 in//let
 if
-(err=e00)
+(e00=err)
 then (dcl) else
 d1ecl_vardclst_errck(dcl.lctn(),tknd,d1cs)
 end (*let*) // end of [f0_vardclst(dcl,err)]
@@ -943,7 +952,7 @@ val
 tcns = tread01_d1tcnlst(tcns, err)
 //
 if
-(err=e00)
+(e00=err)
 then (dcl) else
 d1ecl_excptcon_errck(dcl.lctn(),tknd,tcns)
 end (*let*) // end of [f0_excptcon(dcl,err)]
@@ -970,7 +979,7 @@ val
 wdcs = tread01_wd1eclseq(wdcs, err)
 //
 if
-(err=e00)
+(e00=err)
 then (dcl) else
 d1ecl_datatype_errck(loc,tknd,d1ts,wdcs)
 end (*let*) // end of [f0_datatype(dcl,err)]
@@ -997,7 +1006,7 @@ val
 d1cs = tread01_d1cstdclist(d1cs, err)
 //
 if
-(err=e00)
+(e00=err)
 then (dcl) else
 d1ecl_dynconst_errck(loc,tknd,tqas,d1cs)
 end (*let*) // end of [f0_dynconst(dcl,err)]
@@ -1028,7 +1037,7 @@ S1TCNnode
 (sid0, tres) =>
 (
 if
-(err=e00)
+(e00=err)
 then (syn) else
 s1tcn
 (syn.lctn(), S1TCNnode(sid0, tres))
@@ -1039,7 +1048,7 @@ val e00 = err
 //
 val tres = tread01_sort1opt(tres, err)
 //
-}(*where*)//end-of(if(err=e00))
+}(*where*)//end-of(if(e00=err))
 )(*case+*)//end-of(tread01_s1tcn(syn,err))
 
 (* ****** ****** *)
@@ -1055,7 +1064,7 @@ D1TSTnode
 (tid0, tcns) =>
 (
 if
-(err=e00)
+(e00=err)
 then (syn) else
 d1tst
 (syn.lctn(), D1TSTnode(tid0, tcns))
@@ -1066,7 +1075,7 @@ val e00 = err
 //
 val tcns = tread01_s1tcnlst(tcns, err)
 //
-}(*where*)//end-of(if(err=e00))
+}(*where*)//end-of(if(e00=err))
 )(*case+*)//end-of(tread01_d1tst(syn,err))
 //
 (* ****** ****** *)
@@ -1094,7 +1103,7 @@ tread01_s1expopt(sopt, err)
 //
 in//let
 if
-(err=e00)
+(e00=err)
 then (syn) else
 d1tcn_make_node
 (syn.lctn(),D1TCNnode(s1us,deid,s1es,sopt))
@@ -1125,12 +1134,122 @@ tread01_d1tcnlst(tcns, err)
 //
 in//let
 if
-(err=e00)
+(e00=err)
 then (dtyp)
 else
 d1typ_make_node
 (loc, D1TYPnode(deid, tmas, tres, tcns))
 end(*let*)//end-of-[tread01_d1typ(dtyp,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread01_q1arg
+  (q1a0, err) =
+(
+case+
+q1a0.node() of
+|
+Q1ARGsome(tok1,tres) =>
+let
+//
+val e00 = err
+//
+val tres =
+tread01_sort1opt(tres, err)
+//
+in//let
+if
+(e00=err)
+then (q1a0) else
+q1arg
+( q1a0.lctn(), Q1ARGsome(tok1, tres) )
+endlet // end of [Q1ARGsome(tok1,tres)]
+) (*case+*)//end-of-[tread01_q1arg(q1a0,err)]
+
+(* ****** ****** *)
+//
+#implfun
+tread01_s1qag
+  (s1q0, err) =
+(
+case+
+s1q0.node() of
+(*
+|
+S1QAGnone(tok) =>
+*)
+|
+S1QAGsome(q1as) => 
+let
+//
+val e00 = err
+//
+val q1as =
+tread01_q1arglst(q1as, err)
+in//let
+if
+(e00=err)
+then (s1q0) else
+s1qag(s1q0.lctn(), S1QAGsome(q1as))
+endlet // end of [ S1QAGsome(q1as) ]
+) (*case+*)//end-of-[tread01_s1qag(s1q0,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread01_t1qag
+  (t1q0, err) =
+(
+case+
+t1q0.node() of
+(*
+|
+T1QAGnone(tok) =>
+*)
+|
+T1QAGsome(q1as) => 
+let
+//
+val e00 = err
+//
+val q1as =
+tread01_q1arglst(q1as, err)
+in//let
+if
+(e00=err)
+then (t1q0) else
+t1qag(t1q0.lctn(), T1QAGsome(q1as))
+endlet // end of [ T1QAGsome(q1as) ]
+) (*case+*)//end-of-[tread01_t1qag(t1q0,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread01_t1iag
+  (t1i0, err) =
+(
+case+
+t1i0.node() of
+(*
+|
+T1IAGnone(tok) =>
+*)
+|
+T1IAGsome(s1es) => 
+let
+//
+val e00 = err
+//
+val s1es =
+tread01_s1explst(s1es, err)
+in//let
+if
+(e00=err)
+then (t1i0) else
+t1iag(t1i0.lctn(), T1IAGsome(s1es))
+endlet // end of [ T1IAGsome(s1es) ]
+) (*case+*)//end-of-[tread01_t1iag(t1i0,err)]
 //
 (* ****** ****** *)
 
@@ -1184,7 +1303,7 @@ val e00 = err
 val d1e2 = tread01_d1exp(d1e2, err)
 in//letp
 if
-(err=e00)
+(e00=err)
 then tdxp else TEQD1EXPsome(teq1, d1e2)
 endlet // end of [TEQD1EXPsome(_,_)]
 ) (*case+*)//end-(tread01_teqd1exp(tdxp,err))
@@ -1203,7 +1322,7 @@ val e00 = err
 val d0e2 = tread01_s1exp(s1e1, err)
 in//letp
 if
-(err=e00)
+(e00=err)
 then wsxp else WTHS1EXPsome(twth, s1e1)
 endlet // end of [WTHS1EXPsome(_,_)]
 ) (*case+*)//end-(tread01_wths1exp(wsxp,err))
@@ -1235,7 +1354,7 @@ wsxp = tread01_wths1exp(wsxp,err)
 //
 in//let
 if
-(err=e00)
+(e00=err)
 then (dval)
 else d1valdcl( loc, dpat, tdxp, wsxp )
 endlet // end-of-[tread01_d1valdcl(out,dval)]
@@ -1267,7 +1386,7 @@ dini = tread01_teqd1exp(dini,err)
 //
 in//let
 if
-(err=e00)
+(e00=err)
 then (dvar)
 else d1vardcl(loc,dpid,vpid,sres,dini)
 endlet // end-of-[tread01_d1vardcl(out,dvar)]
@@ -1306,7 +1425,7 @@ wsxp = tread01_wths1exp(wsxp,err)
 //
 in//let
 if
-(err=e00)
+(e00=err)
 then (dfun)
 else d1fundcl(loc,dpid,farg,sres,tdxp,wsxp)
 endlet // end-of-[tread01_d1fundcl(out,dfun)]
@@ -1341,7 +1460,7 @@ dres = tread01_teqd1exp(dres, err)
 //
 in//let
 if
-(err=e00)
+(e00=err)
 then (dcst)
 else d1cstdcl(loc, dpid, darg, sres, dres)
 endlet // end-of-[tread01_d1cstdcl(out,dcst)]
@@ -1376,6 +1495,7 @@ tread01_d1typlst
 list_tread01_fnp(d1ts, err, tread01_d1typ)
 //
 (* ****** ****** *)
+//
 #implfun
 tread01_q1arglst
   (  q1as, err  ) =
@@ -1392,6 +1512,7 @@ list_tread01_fnp(tqas, err, tread01_t1qag)
 tread01_t1iaglst
   (  tias, err  ) =
 list_tread01_fnp(tias, err, tread01_t1iag)
+//
 (* ****** ****** *)
 //
 #implfun
