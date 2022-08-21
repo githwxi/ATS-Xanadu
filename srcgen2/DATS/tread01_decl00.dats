@@ -66,6 +66,7 @@ ATS_PACKNAME
 #symload lctn with d1valdcl_get_lctn
 #symload lctn with d1vardcl_get_lctn
 #symload lctn with d1fundcl_get_lctn
+#symload lctn with d1cstdcl_get_lctn
 (* ****** ****** *)
 //
 fun
@@ -350,6 +351,23 @@ in//let
 d1ecl_errck
 (lvl+1, d1ecl(loc0, D1Cvaldclst(tknd, d1cs)))
 end (*let*) // end of [d1ecl_valdclst_errck]
+//
+(* ****** ****** *)
+//
+fun
+d1ecl_vardclst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, d1cs
+: d1vardclist): d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+(lvl+1, d1ecl(loc0, D1Cvardclst(tknd, d1cs)))
+end (*let*) // end of [d1ecl_vardclst_errck]
 //
 (* ****** ****** *)
 //
@@ -861,6 +879,30 @@ end (*let*) // end of [f0_valdclst(dcl,err)]
 (* ****** ****** *)
 //
 fun
+f0_vardclst
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+//
+val-
+D1Cvardclst
+( tknd, d1cs) = dcl.node()
+//
+val d1cs =
+tread01_d1vardclist(d1cs, err)
+//
+in//let
+if
+(err=e00)
+then (dcl) else
+d1ecl_vardclst_errck(dcl.lctn(),tknd,d1cs)
+end (*let*) // end of [f0_vardclst(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
 f0_excptcon
 ( dcl: d1ecl
 , err: &sint >> _): d1ecl =
@@ -1149,6 +1191,77 @@ endlet // end-of-[tread01_d1valdcl(out,dval)]
 (* ****** ****** *)
 //
 #implfun
+tread01_d1vardcl
+  (dvar, err) =
+let
+//
+val e00 = err
+//
+val loc = dvar.lctn()
+//
+val
+dpid = d1vardcl_get_dpid(dvar)
+val
+vpid = d1vardcl_get_vpid(dvar)
+val
+sres = d1vardcl_get_sres(dvar)
+val
+dini = d1vardcl_get_dini(dvar)
+//
+val
+sres = tread01_s1expopt(sres,err)
+val
+dini = tread01_teqd1exp(dini,err)
+//
+in//let
+if
+(err=e00)
+then (dvar)
+else d1vardcl(loc,dpid,vpid,sres,dini)
+endlet // end-of-[tread01_d1vardcl(out,dvar)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread01_d1fundcl
+  (dfun, err) =
+let
+//
+val e00 = err
+//
+val loc = dfun.lctn()
+//
+val
+dpid = d1fundcl_get_dpid(dfun)
+val
+farg = d1fundcl_get_farg(dfun)
+val
+sres = d1fundcl_get_sres(dfun)
+val
+tdxp = d1fundcl_get_tdxp(dfun)
+val
+wsxp = d1fundcl_get_wsxp(dfun)
+//
+val
+farg =
+tread01_f1arglst(farg,err)
+val
+sres = tread01_s1res(sres,err)
+val
+tdxp = tread01_teqd1exp(tdxp,err)
+val
+wsxp = tread01_wths1exp(wsxp,err)
+//
+in//let
+if
+(err=e00)
+then (dfun)
+else d1fundcl(loc,dpid,farg,sres,tdxp,wsxp)
+endlet // end-of-[tread01_d1fundcl(out,dfun)]
+//
+(* ****** ****** *)
+//
+#implfun
 tread01_d1eclist
   (  dcls, err  ) =
 list_tread01_fnp(dcls, err, tread01_d1ecl)
@@ -1213,6 +1326,11 @@ list_tread01_fnp(d1vs, err, tread01_d1vardcl)
 tread01_d1fundclist
   (  d1fs, err  ) =
 list_tread01_fnp(d1fs, err, tread01_d1fundcl)
+(* ****** ****** *)
+#implfun
+tread01_d1cstdclist
+  (  d1cs, err  ) =
+list_tread01_fnp(d1cs, err, tread01_d1cstdcl)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_tread01_decl00.dats] *)
