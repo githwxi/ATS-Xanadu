@@ -183,6 +183,29 @@ d1exp_a0pp_errck
 (loc: loc_t): d1exp =
 d1exp_errck(1,d1exp(loc,D1Ea0pp()))
 (* ****** ****** *)
+//
+#extern
+fun
+d1exp_errvl_des
+(des: d1explst): sint
+//
+#implfun
+d1exp_errvl_des(des) =
+(
+case+ des of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(de1,des) =>
+(
+gmax
+(errvl(de1),d1exp_errvl_des(des)))
+endcas // end of [ case+(des) ]
+)
+//
+#symload errvl with d1exp_errvl_des
+//
+(* ****** ****** *)
 fun
 d1exp_a1pp_errck
 (loc: loc_t
@@ -210,6 +233,35 @@ in//let
 d1exp_errck
 (lvl+1,d1exp(loc,D1Ea2pp(de1,de2,de3)))
 endlet // end of [d1exp_a2pp_errck(...)]
+(* ****** ****** *)
+fun
+d1exp_l1st_errck
+( loc
+: loc_t
+, des
+: d1explst ): d1exp =
+let
+val lvl = errvl(des)
+in//let
+d1exp_errck
+(lvl+1, d1exp( loc , D1El1st( des ) ))
+endlet // end of [d1exp_l1st_errck(...)]
+(* ****** ****** *)
+fun
+d1exp_l2st_errck
+( loc
+: loc_t
+, des1
+: d1explst 
+, des2
+: d1explst ): d1exp =
+let
+val lvl = gmax
+(errvl(des1), errvl(des2))
+in//let
+d1exp_errck
+(lvl+1, d1exp(loc, D1El2st(des1,des2)))
+endlet // end of [d1exp_l2st_errck(...)]
 (* ****** ****** *)
 
 #implfun
