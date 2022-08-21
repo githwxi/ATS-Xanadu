@@ -125,11 +125,11 @@ g1exp_errvl with g1exp_errvl_a2
 //
 #extern
 fun
-g1exp_errvl_ges
+g1exp_errvl_lst
 (ges: g1explst): sint
 //
 #implfun
-g1exp_errvl_ges(ges) =
+g1exp_errvl_lst(ges) =
 (
 case+ ges of
 |
@@ -138,11 +138,11 @@ list_nil((*nil*)) => 0
 list_cons(ge1,ges) =>
 (
 gmax
-(errvl(ge1),g1exp_errvl_ges(ges)))
+(errvl(ge1),g1exp_errvl_lst(ges)))
 endcas // end of [ case+(ges) ]
 )
 //
-#symload errvl with g1exp_errvl_ges
+#symload errvl with g1exp_errvl_lst
 //
 (* ****** ****** *)
 fun
@@ -415,11 +415,11 @@ sort1_errvl with sort1_errvl_opt
 //
 #extern
 fun
-sort1_errvl_sts
+sort1_errvl_lst
 (sts: sort1lst): sint
 //
 #implfun
-sort1_errvl_sts
+sort1_errvl_lst
 (  sts  ) =
 (
 case+ sts of
@@ -429,13 +429,13 @@ list_nil((*nil*)) => 0
 list_cons(st1,sts) =>
 (
 gmax
-(errvl(st1),sort1_errvl_sts(sts)))
+(errvl(st1),sort1_errvl_lst(sts)))
 endcas // end of [ case+(sts) ]
 )
 //
 #symload
-sort1_errvl with sort1_errvl_sts
-#symload errvl with sort1_errvl_sts
+sort1_errvl with sort1_errvl_lst
+#symload errvl with sort1_errvl_lst
 //
 (* ****** ****** *)
 fun
@@ -638,11 +638,11 @@ s1exp_errvl with s1exp_errvl_a2
 //
 #extern
 fun
-s1exp_errvl_ses
+s1exp_errvl_lst
 (ses: s1explst): sint
 //
 #implfun
-s1exp_errvl_ses(ses) =
+s1exp_errvl_lst(ses) =
 (
 case+ ses of
 |
@@ -651,11 +651,11 @@ list_nil((*nil*)) => 0
 list_cons(se1,ses) =>
 (
 gmax
-(errvl(se1),s1exp_errvl_ses(ses)))
+(errvl(se1),s1exp_errvl_lst(ses)))
 endcas // end of [ case+(ses) ]
 )
 //
-#symload errvl with s1exp_errvl_ses
+#symload errvl with s1exp_errvl_lst
 //
 (* ****** ****** *)
 //
