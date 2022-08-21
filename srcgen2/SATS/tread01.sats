@@ -81,6 +81,10 @@ D1E = "./dynexp1.sats"
 #typedef l1d1p = $D1E.l1d1p
 #typedef l1d1e = $D1E.l1d1e
 (* ****** ****** *)
+#typedef f1arg = $D1E.f1arg
+(* ****** ****** *)
+#typedef s1res = $D1E.s1res
+(* ****** ****** *)
 #typedef d1ecl = $D1E.d1ecl
 (* ****** ****** *)
 #typedef a1tdf = $D1E.a1tdf
@@ -91,6 +95,7 @@ D1E = "./dynexp1.sats"
 #typedef d1valdcl = $D1E.d1valdcl
 #typedef d1vardcl = $D1E.d1vardcl
 #typedef d1fundcl = $D1E.d1fundcl
+#typedef d1cstdcl = $D1E.d1cstdcl
 (* ****** ****** *)
 #typedef g1explst = $S1E.g1explst
 #typedef g1expopt = $S1E.g1expopt
@@ -126,6 +131,8 @@ D1E = "./dynexp1.sats"
 #typedef l1d1plst = $D1E.l1d1plst
 #typedef l1d1elst = $D1E.l1d1elst
 (* ****** ****** *)
+#typedef f1arglst = $D1E.f1arglst
+(* ****** ****** *)
 #typedef d1eclist = $D1E.d1eclist
 (* ****** ****** *)
 #typedef d1parsed = $D1E.d1parsed
@@ -135,6 +142,7 @@ D1E = "./dynexp1.sats"
 #typedef d1valdclist = $D1E.d1valdclist
 #typedef d1vardclist = $D1E.d1vardclist
 #typedef d1fundclist = $D1E.d1fundclist
+#typedef d1cstdclist = $D1E.d1cstdclist
 (* ****** ****** *)
 #typedef d1eclistopt = $D1E.d1eclistopt
 (* ****** ****** *)
@@ -176,6 +184,10 @@ fun tread01_d1typ: ftread01(d1typ)
 (* ****** ****** *)
 fun tread01_d1pat: ftread01(d1pat)
 fun tread01_d1exp: ftread01(d1exp)
+(* ****** ****** *)
+fun tread01_f1arg: ftread01(f1arg)
+(* ****** ****** *)
+fun tread01_s1res: ftread01(s1res)
 (* ****** ****** *)
 fun tread01_d1ecl: ftread01(d1ecl)
 (* ****** ****** *)
@@ -250,6 +262,9 @@ fun
 tread01_d1expopt: ftread01(d1expopt)
 (* ****** ****** *)
 fun
+tread01_f1arglst: ftread01(f1arglst)
+(* ****** ****** *)
+fun
 tread01_d1eclist: ftread01(d1eclist)
 (* ****** ****** *)
 fun
@@ -263,6 +278,8 @@ fun
 tread01_d1vardcl: ftread01(d1vardcl)
 fun
 tread01_d1fundcl: ftread01(d1fundcl)
+fun
+tread01_d1cstdcl: ftread01(d1cstdcl)
 (* ****** ****** *)
 fun
 tread01_wd1eclseq: ftread01(wd1eclseq)
@@ -273,6 +290,8 @@ fun
 tread01_d1vardclist: ftread01(d1vardclist)
 fun
 tread01_d1fundclist: ftread01(d1fundclist)
+fun
+tread01_d1cstdclist: ftread01(d1cstdclist)
 (* ****** ****** *)
 fun
 tread01_d1eclistopt: ftread01(d1eclistopt)
