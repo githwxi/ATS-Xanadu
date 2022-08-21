@@ -300,8 +300,8 @@ preadx0_l0s0e_RBRACE: fpreadx0(l0s0e_RBRACE)
 *)
 (* ****** ****** *)
 fun preadx0_d0pat: fpreadx0(d0pat)
-fun preadx0_d0exp: fpreadx0(d0exp)
 fun preadx0_l0d0p: fpreadx0(l0d0p)
+fun preadx0_d0exp: fpreadx0(d0exp)
 fun preadx0_l0d0e: fpreadx0(l0d0e)
 (* ****** ****** *)
 fun preadx0_f0arg: fpreadx0(f0arg)
@@ -326,9 +326,9 @@ preadx0_d0expopt: fpreadx0(d0expopt)
 fun
 preadx0_d0patlst: fpreadx0(d0patlst)
 fun
-preadx0_d0explst: fpreadx0(d0explst)
-fun
 preadx0_l0d0plst: fpreadx0(l0d0plst)
+fun
+preadx0_d0explst: fpreadx0(d0explst)
 fun
 preadx0_l0d0elst: fpreadx0(l0d0elst)
 (* ****** ****** *)
