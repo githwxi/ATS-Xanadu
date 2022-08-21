@@ -186,11 +186,11 @@ d1exp_errck(1,d1exp(loc,D1Ea0pp()))
 //
 #extern
 fun
-d1exp_errvl_des
+d1exp_errvl_lst
 (des: d1explst): sint
 //
 #implfun
-d1exp_errvl_des(des) =
+d1exp_errvl_lst(des) =
 (
 case+ des of
 |
@@ -199,11 +199,57 @@ list_nil((*nil*)) => 0
 list_cons(de1,des) =>
 (
 gmax
-(errvl(de1),d1exp_errvl_des(des)))
+(errvl(de1),d1exp_errvl_lst(des)))
 endcas // end of [ case+(des) ]
 )
 //
-#symload errvl with d1exp_errvl_des
+#symload errvl with d1exp_errvl_lst
+//
+(* ****** ****** *)
+//
+fun
+d1exp_errvl_opt
+(opt: d1expopt): sint =
+(
+case+ opt of
+|
+optn_nil((*nil*)) => 0
+|
+optn_cons(d1e1) => errvl(d1e1))
+//
+#symload errvl with d1exp_errvl_opt
+//
+(* ****** ****** *)
+fun
+d1ecl_errvl_lst
+(dcs: d1eclist): sint = 0
+#symload errvl with d1ecl_errvl_lst
+(* ****** ****** *)
+//
+#extern
+fun
+l1d1e_errvl_ldes
+(ldes: l1d1elst): sint
+//
+#implfun
+l1d1e_errvl_ldes
+(   ldes   ) =
+(
+case+ ldes of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(lse1,ldes) =>
+let
+val+
+D1LAB(lab, se1) = lse1 in
+gmax
+( errvl(se1)
+, l1d1e_errvl_ldes(ldes)) end
+endcas // end of [ case+(ldes) ]
+)
+//
+#symload errvl with l1d1e_errvl_ldes
 //
 (* ****** ****** *)
 fun
@@ -262,6 +308,121 @@ in//let
 d1exp_errck
 (lvl+1, d1exp(loc, D1El2st(des1,des2)))
 endlet // end of [d1exp_l2st_errck(...)]
+(* ****** ****** *)
+fun
+d1exp_let0_errck
+( loc
+: loc_t
+, d1cs
+: d1eclist
+, d1es
+: d1explst): d1exp =
+let
+val lvl = gmax
+(errvl(d1cs), errvl(d1es))
+in//let
+d1exp_errck
+(lvl+1, d1exp(loc, D1Elet0(d1cs,d1es)))
+endlet // end of [d1exp_let0_errck(...)]
+(* ****** ****** *)
+fun
+d1exp_brckt_errck
+( loc
+: loc_t
+, d1es
+: d1explst): d1exp =
+let
+val lvl = errvl(d1es)
+in//let
+d1exp_errck
+( lvl+1, d1exp(loc, D1Ebrckt( d1es )) )
+endlet // end of [d1exp_brckt_errck(...)]
+(* ****** ****** *)
+fun
+d1exp_dtsel_errck
+( loc
+: loc_t
+, tknd
+: token
+, lab1
+: label
+, dopt
+: d1expopt): d1exp =
+let
+val lvl = errvl(dopt)
+in//let
+d1exp_errck
+( lvl+1
+, d1exp(loc, D1Edtsel(tknd,lab1,dopt)) )
+endlet // end of [d1exp_dtsel_errck(...)]
+(* ****** ****** *)
+fun
+d1exp_t1up_errck
+( loc
+: loc_t
+, tknd
+: token
+, d1es
+: d1explst ): d1exp =
+let
+val lvl = errvl(d1es)
+in//let
+d1exp_errck
+(lvl+1, d1exp(loc, D1Et1up(tknd,d1es)))
+endlet // end of [d1exp_t1up_errck(...)]
+(* ****** ****** *)
+fun
+d1exp_t2up_errck
+( loc
+: loc_t
+, tknd
+: token
+, des1
+: d1explst
+, des2
+: d1explst ): d1exp =
+let
+val lvl = gmax
+(errvl(des1), errvl(des2))
+in//let
+d1exp_errck
+(lvl+1
+,d1exp(loc, D1Et2up(tknd, des1, des2)))
+endlet // end of [d1exp_t2up_errck(...)]
+(* ****** ****** *)
+fun
+d1exp_r1cd_errck
+( loc
+: loc_t
+, tknd
+: token
+, ldes
+: l1d1elst ): d1exp =
+let
+val lvl = errvl(ldes)
+in//let
+d1exp_errck
+(lvl+1, d1exp(loc, D1Er1cd(tknd,ldes)))
+endlet // end of [d1exp_r1cd_errck(...)]
+(* ****** ****** *)
+fun
+d1exp_r2cd_errck
+( loc
+: loc_t
+, tknd
+: token
+, lss1
+: l1d1elst
+, lss2
+: l1d1elst ): d1exp =
+let
+val lvl = gmax
+(errvl(lss1), errvl(lss2))
+in//let
+d1exp_errck
+(lvl+1
+,d1exp(loc, D1Er2cd(tknd, lss1, lss2)))
+endlet // end of [d1exp_r2cd_errck(...)]
 (* ****** ****** *)
 
 #implfun
@@ -323,8 +484,159 @@ d1exp_a2pp_errck(loc0,d1e1,d1e2,d1e3)
 endlet//end-(D1Ea2pp(d1e1,d1e2,d1e3))
 //
 |
+D1El1st(d1es) =>
+let
+//
+val e00 = err
+//
+val d1es =
+  tread01_d1explst(d1es, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0)
+else d1exp_l1st_errck(loc0, d1es )
+endlet // end of [ D1El1st( d1es ) ]
+|
+D1El2st(des1,des2) =>
+let
+//
+val e00 = err
+//
+val des1 =
+  tread01_d1explst(des1, err)
+val des2 =
+  tread01_d1explst(des2, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_l2st_errck(loc0, des1, des2)
+endlet // end of [D1El2st(des1,des2)]
+//
+|
+D1Elet0
+(d1cs, d1es) =>
+let
+//
+val e00 = err
+//
+val d1cs =
+tread01_d1eclist(d1cs, err)
+val d1es =
+tread01_d1explst(d1es, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_let0_errck(loc0, d1cs, d1es)
+endlet // end of [D1Elet0(d1cs,d1es)]
+//
+|
+D1Ebrckt(d1es) =>
+let
+//
+val e00 = err
+//
+val d1es =
+tread01_d1explst(d1es, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0)
+else d1exp_brckt_errck( loc0,d1es )
+endlet // end of [ D1Ebrckt( d1es ) ]
+|
+D1Edtsel
+(tknd,lab1,dopt) =>
+let
+//
+val e00 = err
+//
+val dopt =
+tread01_d1expopt(dopt, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_dtsel_errck(loc0,tknd,lab1,dopt)
+endlet // end(D1Edtsel(tknd,lab1,dopt))
+|
+D1Et1up(tknd,d1es) =>
+let
+//
+val e00 = err
+//
+val d1es =
+  tread01_d1explst(d1es, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_t1up_errck(loc0, tknd, d1es)
+endlet // end of [D1Et1up(tknd,d1es)]
+|
+D1Et2up
+(tknd, des1, des2) =>
+let
+//
+val e00 = err
+//
+val des1 =
+  tread01_d1explst(des1, err)
+val des2 =
+  tread01_d1explst(des2, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_t2up_errck(loc0,tknd,des1,des2)
+endlet // end(D1Et2up(tknd,des1,des2))
+//
+|
+D1Er1cd(tknd,ldes) =>
+let
+//
+val e00 = err
+//
+val ldes =
+  tread01_l1d1elst(ldes, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_r1cd_errck(loc0, tknd, ldes)
+endlet // end of [D1Er1cd(tknd,ldes)]
+|
+D1Er2cd
+(tknd, lss1, lss2) =>
+let
+//
+val e00 = err
+//
+val
+lss1 = tread01_l1d1elst(lss1, err)
+val
+lss2 = tread01_l1d1elst(lss2, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_r2cd_errck(loc0,tknd,lss1,lss2)
+endlet // end(D1Er2cd(tknd,lss1,lss2))
+//
+|
 _(*otherwise*) =>
-(err := err+1; d1exp_errck(1, d1e0))
+(err := err + 1; d1exp_errck(1, d1e0))
 //
 ) where
 {
