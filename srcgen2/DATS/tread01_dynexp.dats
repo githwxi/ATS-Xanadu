@@ -511,6 +511,19 @@ d1ecl_errvl_lst
 //
 (* ****** ****** *)
 fun
+d1exp_b0sh_errck
+(loc: loc_t): d1exp =
+d1exp_errck
+(1, d1exp(loc, D1Eb0sh()))
+(* ****** ****** *)
+fun
+d1exp_b1sh_errck
+(loc: loc_t
+,d1e: d1exp): d1exp =
+d1exp_errck
+(1, d1exp(loc, D1Eb1sh(d1e)))
+(* ****** ****** *)
+fun
 d1exp_a0pp_errck
 (loc: loc_t): d1exp =
 d1exp_errck(1,d1exp(loc,D1Ea0pp()))
@@ -613,6 +626,26 @@ in//let
 d1exp_errck
 (lvl+1, d1exp(loc, D1Eseqn(des1,des2)))
 endlet // end of [d1exp_seqn_errck(...)]
+(* ****** ****** *)
+fun
+d1exp_if0_errck
+( loc
+: loc_t
+, d1e1
+: d1exp
+, dthn
+: d1expopt
+, dels
+: d1expopt): d1exp =
+let
+val lvl = gmax
+( errvl(d1e1)
+, errvl(dthn), errvl(dels))
+in//let
+d1exp_errck
+( lvl+1
+, d1exp(loc,D1Eif0(d1e1, dthn, dels)))
+endlet // end of [d1exp_if0_errck(...)]
 (* ****** ****** *)
 fun
 d1exp_let0_errck
@@ -760,6 +793,20 @@ d1e0.node() of
 | D1Eflt _ => d1e0
 | D1Estr _ => d1e0
 //
+| D1Eb0sh() =>
+( err := err+1
+; d1exp_b0sh_errck(loc0))
+| D1Eb1sh(d1e1) =>
+let
+//
+val d1e1 =
+  tread01_d1exp(d1e1, err)
+//
+in//let
+( err := err+1
+; d1exp_b1sh_errck(loc0,d1e1))
+endlet // end of [D1Eb1sh(d1e1)]
+//
 | D1Ea0pp() =>
 (
 d1exp_a0pp_errck(loc0)
@@ -885,8 +932,28 @@ d1exp_seqn_errck(loc0, des1, des2)
 endlet // end of [D1Eseqn(des1,des2)]
 //
 |
-D1Elet0
-(d1cs, d1es) =>
+D1Eif0
+(d1e1, dthn, dels) =>
+let
+//
+val e00 = err
+//
+val d1e1 =
+tread01_d1exp(d1e1, err)
+val dthn =
+tread01_d1expopt(dthn, err)
+val dels =
+tread01_d1expopt(dels, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_if0_errck(loc0,d1e1,dthn,dels)
+endlet//end-[D1Eif0(d1e1,dthn,dels)]
+//
+|
+D1Elet0(d1cs,d1es) =>
 let
 //
 val e00 = err
