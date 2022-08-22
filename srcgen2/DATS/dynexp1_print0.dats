@@ -150,7 +150,10 @@ print("D1Pl2st(", dps1, ";", dps2 ,")")
 //
 |
 D1Panno(d1p1,s1e2) =>
-print("D1Pqual(",d1p1,";",s1e2,")")
+print("D1Panno(",d1p1,";",s1e2,")")
+|
+D1Pqual(tok1,d1p2) =>
+print("D1Pqual(",tok1,";",d1p2,")")
 //
 | D1Pnone0() => print("D1Pnone0(", ")")
 | D1Pnone1(dpat) => print("D1Pnone1(", dpat ,")")

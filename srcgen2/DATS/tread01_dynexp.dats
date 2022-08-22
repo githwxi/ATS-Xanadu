@@ -120,6 +120,107 @@ d1pat_errvl with d1pat_errvl_a2
 #symload errvl with d1pat_errvl_a2
 //
 (* ****** ****** *)
+//
+#extern
+fun
+d1pat_errvl_lst
+(dps: d1patlst): sint
+//
+#implfun
+d1pat_errvl_lst(dps) =
+(
+case+ dps of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(de1,dps) =>
+(
+gmax
+(errvl(de1),d1pat_errvl_lst(dps)))
+endcas // end of [ case+(dps) ]
+)
+//
+#symload errvl with d1pat_errvl_lst
+//
+(* ****** ****** *)
+fun
+d1pat_l1st_errck
+( loc
+: loc_t
+, dps
+: d1patlst ): d1pat =
+let
+val lvl = errvl(dps)
+in//let
+d1pat_errck
+(lvl+1, d1pat( loc , D1Pl1st( dps ) ))
+endlet // end of [d1pat_l1st_errck(...)]
+(* ****** ****** *)
+fun
+d1pat_l2st_errck
+( loc
+: loc_t
+, dps1
+: d1patlst 
+, dps2
+: d1patlst ): d1pat =
+let
+val lvl = gmax
+(errvl(dps1), errvl(dps2))
+in//let
+d1pat_errck
+(lvl+1, d1pat(loc, D1Pl2st(dps1,dps2)))
+endlet // end of [d1pat_l2st_errck(...)]
+(* ****** ****** *)
+fun
+d1pat_t1up_errck
+( loc
+: loc_t
+, tknd
+: token
+, d1ps
+: d1patlst ): d1pat =
+let
+val lvl = errvl(d1ps)
+in//let
+d1pat_errck
+(lvl+1, d1pat(loc, D1Pt1up(tknd,d1ps)))
+endlet // end of [d1pat_t1up_errck(...)]
+(* ****** ****** *)
+fun
+d1pat_t2up_errck
+( loc
+: loc_t
+, tknd
+: token
+, dps1
+: d1patlst
+, dps2
+: d1patlst ): d1pat =
+let
+val lvl = gmax
+(errvl(dps1), errvl(dps2))
+in//let
+d1pat_errck
+(lvl+1
+,d1pat(loc, D1Pt2up(tknd, dps1, dps2)))
+endlet // end of [d1pat_t2up_errck(...)]
+(* ****** ****** *)
+//
+fun
+d1pat_anno_errck
+( loc: loc_t
+, dp1: d1pat
+, se2: s1exp): d1pat =
+let
+//
+val lvl = 0 // errvl(dp1)
+//
+in//let
+  d1pat( loc, D1Panno( dp1, se2 ) )
+endlet // end of [d1pat_anno_errck(...)]
+//
+(* ****** ****** *)
 
 #implfun
 tread01_d1pat
@@ -136,8 +237,92 @@ d1p0.node() of
 | D1Pstr _ => d1p0
 //
 |
+D1Pl1st(d1ps) =>
+let
+//
+val e00 = err
+//
+val d1ps =
+  tread01_d1patlst(d1ps, err)
+//
+in//let
+if
+(e00=err)
+then (d1p0)
+else d1pat_l1st_errck(loc0, d1ps )
+endlet // end of [ D1Pl1st( d1ps ) ]
+|
+D1Pl2st(dps1,dps2) =>
+let
+//
+val e00 = err
+//
+val dps1 =
+  tread01_d1patlst(dps1, err)
+val dps2 =
+  tread01_d1patlst(dps2, err)
+//
+in//let
+if
+(e00=err)
+then (d1p0) else
+d1pat_l2st_errck(loc0, dps1, dps2)
+endlet // end of [D1Pl2st(dps1,dps2)]
+//
+|
+D1Pt1up(tknd,d1ps) =>
+let
+//
+val e00 = err
+//
+val d1ps =
+  tread01_d1patlst(d1ps, err)
+//
+in//let
+if
+(e00=err)
+then (d1p0) else
+d1pat_t1up_errck(loc0, tknd, d1ps)
+endlet // end of [D1Pt1up(tknd,d1ps)]
+|
+D1Pt2up
+(tknd, dps1, dps2) =>
+let
+//
+val e00 = err
+//
+val dps1 =
+  tread01_d1patlst(dps1, err)
+val dps2 =
+  tread01_d1patlst(dps2, err)
+//
+in//let
+if
+(e00=err)
+then (d1p0) else
+d1pat_t2up_errck(loc0,tknd,dps1,dps2)
+endlet // end(D1Pt2up(tknd,dps1,dps2))
+//
+|
+D1Panno(d1p1, s1e2) =>
+let
+//
+val e00 = err
+//
+val d1p1 =
+tread01_d1pat(d1p1, err)
+val s1e2 =
+tread01_s1exp(s1e2, err)
+//
+in//let
+if
+(e00=err)
+then (d1p0) else
+d1pat_anno_errck(loc0, d1p1, s1e2)
+endlet // end of [D1Panno(d1p1,s1e2)]
+|
 _(*otherwise*) =>
-(err := err+1; d1pat_errck(1, d1p0))
+(err := err + 1; d1pat_errck(1, d1p0))
 //
 ) where
 {
@@ -708,6 +893,7 @@ if
 then (d1e0) else
 d1exp_dtsel_errck(loc0,tknd,lab1,dopt)
 endlet // end(D1Edtsel(tknd,lab1,dopt))
+//
 |
 D1Et1up(tknd,d1es) =>
 let
@@ -975,6 +1161,10 @@ list_tread01_fnp(ldps, err, tread01_l1d1p)
 tread01_d1explst
   (  d1es, err  ) =
 list_tread01_fnp(d1es, err, tread01_d1exp)
+#implfun
+tread01_d1expopt
+  (  dopt, err  ) =
+optn_tread01_fnp(dopt, err, tread01_d1exp)
 #implfun
 tread01_l1d1elst
   (  ldes, err  ) =

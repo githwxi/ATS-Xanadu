@@ -266,6 +266,24 @@ end (*let*)//end-of-[i0dnt_fpemsg(out,id0)]
 (* ****** ****** *)
 //
 #implfun
+l0abl_fpemsg
+(out, lab) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ lab of
+|
+I0DNTsome _ => ()
+|
+I0DNTnone(tok) =>
+println
+("PREADX0-ERROR:",tok.lctn(),":",lab)
+end (*let*)//end-of-[l0abl_fpemsg(out,lab)]
+//
+(* ****** ****** *)
+//
+#implfun
 t0int_fpemsg
 (out, int) =
 let
