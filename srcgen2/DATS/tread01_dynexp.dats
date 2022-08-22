@@ -143,6 +143,33 @@ endcas // end of [ case+(dps) ]
 #symload errvl with d1pat_errvl_lst
 //
 (* ****** ****** *)
+//
+#extern
+fun
+l1d1p_errvl_ldps
+(ldps: l1d1plst): sint
+//
+#implfun
+l1d1p_errvl_ldps
+(   ldps   ) =
+(
+case+ ldps of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(ldp1,ldps) =>
+let
+val+
+D1LAB(lab, dp1) = ldp1 in
+gmax
+( errvl(dp1)
+, l1d1p_errvl_ldps(ldps)) end
+endcas // end of [ case+(ldps) ]
+)
+//
+#symload errvl with l1d1p_errvl_ldps
+//
+(* ****** ****** *)
 fun
 d1pat_l1st_errck
 ( loc
@@ -205,6 +232,40 @@ d1pat_errck
 (lvl+1
 ,d1pat(loc, D1Pt2up(tknd, dps1, dps2)))
 endlet // end of [d1pat_t2up_errck(...)]
+(* ****** ****** *)
+fun
+d1pat_r1cd_errck
+( loc
+: loc_t
+, tknd
+: token
+, ldps
+: l1d1plst ): d1pat =
+let
+val lvl = errvl(ldps)
+in//let
+d1pat_errck
+(lvl+1, d1pat(loc, D1Pr1cd(tknd,ldps)))
+endlet // end of [d1pat_r1cd_errck(...)]
+(* ****** ****** *)
+fun
+d1pat_r2cd_errck
+( loc
+: loc_t
+, tknd
+: token
+, lss1
+: l1d1plst
+, lss2
+: l1d1plst ): d1pat =
+let
+val lvl = gmax
+(errvl(lss1), errvl(lss2))
+in//let
+d1pat_errck
+(lvl+1
+,d1pat(loc, D1Pr2cd(tknd, lss1, lss2)))
+endlet // end of [d1pat_r2cd_errck(...)]
 (* ****** ****** *)
 //
 fun
@@ -373,11 +434,6 @@ d1exp_errvl with d1exp_errvl_a2
 #symload errvl with d1exp_errvl_a2
 //
 (* ****** ****** *)
-fun
-d1exp_a0pp_errck
-(loc: loc_t): d1exp =
-d1exp_errck(1,d1exp(loc,D1Ea0pp()))
-(* ****** ****** *)
 //
 #extern
 fun
@@ -416,18 +472,6 @@ optn_cons(d1e1) => errvl(d1e1))
 //
 (* ****** ****** *)
 //
-(*
-HX-2022-08-21:
-A placeholder for the moment
-but it may actually just be okay!
-*)
-fun
-d1ecl_errvl_lst
-(dcs: d1eclist): sint = 0
-#symload errvl with d1ecl_errvl_lst
-//
-(* ****** ****** *)
-//
 #extern
 fun
 l1d1e_errvl_ldes
@@ -441,18 +485,35 @@ case+ ldes of
 |
 list_nil((*nil*)) => 0
 |
-list_cons(lse1,ldes) =>
+list_cons(lde1,ldes) =>
 let
 val+
-D1LAB(lab, se1) = lse1 in
+D1LAB(lab, de1) = lde1 in
 gmax
-( errvl(se1)
+( errvl(de1)
 , l1d1e_errvl_ldes(ldes)) end
 endcas // end of [ case+(ldes) ]
 )
 //
 #symload errvl with l1d1e_errvl_ldes
 //
+(* ****** ****** *)
+//
+(*
+HX-2022-08-21:
+A placeholder for the moment
+but it may actually just be okay!
+*)
+fun
+d1ecl_errvl_lst
+(dcs: d1eclist): sint = 0
+#symload errvl with d1ecl_errvl_lst
+//
+(* ****** ****** *)
+fun
+d1exp_a0pp_errck
+(loc: loc_t): d1exp =
+d1exp_errck(1,d1exp(loc,D1Ea0pp()))
 (* ****** ****** *)
 fun
 d1exp_a1pp_errck
