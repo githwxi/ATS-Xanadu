@@ -215,6 +215,13 @@ print
 ("D1Ea2pp(",d1f0,";",d1e1,";",d1e2,")")
 //
 |
+D1Esarg(s1es) =>
+print("D1Esarg(",s1es,")")
+|
+D1Etarg(s1es) =>
+print("D1Etarg(",s1es,")")
+//
+|
 D1El1st(d1es) =>
 print("D1El1st(",d1es,")")
 |

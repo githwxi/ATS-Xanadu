@@ -171,6 +171,52 @@ endcas // end of [ case+(ldps) ]
 //
 (* ****** ****** *)
 fun
+d1pat_b0sh_errck
+(loc: loc_t): d1pat =
+d1pat_errck
+(1, d1pat(loc, D1Pb0sh()))
+(* ****** ****** *)
+fun
+d1pat_b1sh_errck
+(loc: loc_t
+,d1p: d1pat): d1pat =
+d1pat_errck
+(1, d1pat(loc, D1Pb1sh(d1p)))
+(* ****** ****** *)
+fun
+d1pat_a0pp_errck
+(loc: loc_t): d1pat =
+d1pat_errck(1,d1pat(loc,D1Pa0pp()))
+(* ****** ****** *)
+fun
+d1pat_a1pp_errck
+(loc: loc_t
+,dp1: d1pat
+,dp2: d1pat): d1pat =
+let
+val lvl = gmax
+(errvl(dp1), errvl(dp2))
+in//let
+d1pat_errck
+(lvl+1, d1pat(loc, D1Pa1pp(dp1, dp2)))
+endlet // end of [d1pat_a1pp_errck(...)]
+(* ****** ****** *)
+fun
+d1pat_a2pp_errck
+(loc: loc_t
+,dp1: d1pat
+,dp2: d1pat
+,dp3: d1pat): d1pat =
+let
+val lvl = gmax
+( errvl(dp1)
+, errvl(dp2), errvl(dp3))
+in//let
+d1pat_errck
+(lvl+1,d1pat(loc,D1Pa2pp(dp1,dp2,dp3)))
+endlet // end of [d1pat_a2pp_errck(...)]
+(* ****** ****** *)
+fun
 d1pat_l1st_errck
 ( loc
 : loc_t
@@ -296,6 +342,51 @@ d1p0.node() of
 | D1Pchr _ => d1p0
 | D1Pflt _ => d1p0
 | D1Pstr _ => d1p0
+//
+| D1Pa0pp() =>
+(
+d1pat_a0pp_errck(loc0)
+) where
+{ val () = ( err := err + 1 ) }
+|
+D1Pa1pp(d1p1,d1p2) =>
+let
+//
+val e00 = err
+//
+val
+d1p1 = tread01_d1pat(d1p1, err)
+val
+d1p2 = tread01_d1pat(d1p2, err)
+//
+in//let
+if
+(e00=err)
+then (d1p0) else
+d1pat_a1pp_errck(loc0, d1p1, d1p2)
+endlet // end of [D1Pa1pp(d1p1,d1p2)]
+//
+|
+D1Pa2pp
+(d1p1, d1p2, d1p3) =>
+let
+//
+val e00 = err
+//
+val
+d1p1 = tread01_d1pat(d1p1, err)
+val
+d1p2 = tread01_d1pat(d1p2, err)
+val
+d1p3 = tread01_d1pat(d1p3, err)
+//
+in//let
+if
+(e00=err)
+then (d1p0) else
+d1pat_a2pp_errck
+( loc0  ,  d1p1  ,  d1p2  ,  d1p3 )
+endlet//end(D1Pa2pp(d1p1,d1p2,d1p3))
 //
 |
 D1Pl1st(d1ps) =>

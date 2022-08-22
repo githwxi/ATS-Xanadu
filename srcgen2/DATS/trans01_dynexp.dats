@@ -830,6 +830,8 @@ fxis_resolve(loc0, d1es)
 //
 |
 D0Esarg _ => f0_sarg(tenv, d0e0)
+|
+D0Etarg _ => f0_targ(tenv, d0e0)
 //
 |
 D0Elpar _ => f0_lpar(tenv, d0e0)
@@ -1168,6 +1170,33 @@ val s1es =
 trans01_s0explst(tenv, s0es)
 }
 endlet // end of [ D0Esarg(_,_,_) ]
+
+(* ****** ****** *)
+
+and
+f0_targ
+( tenv:
+! tr01env
+, d0e0: d0exp): d1efx =
+let
+//
+val
+loc0 = d0e0.lctn()
+val-
+D0Etarg
+(tbeg
+,s0es,tend) = d0e0.node()
+//
+in//let
+FXITMatm
+(
+d1exp
+(loc0,D1Etarg(s1es))) where
+{
+val s1es =
+trans01_s0explst(tenv, s0es)
+}
+endlet // end of [ D0Etarg(_,_,_) ]
 
 (* ****** ****** *)
 
