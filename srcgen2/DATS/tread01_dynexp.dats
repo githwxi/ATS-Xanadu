@@ -390,8 +390,12 @@ _(*otherwise*) =>
 //
 val loc0 = d1p0.lctn()
 //
+(*
+val (  ) =
+prerrln("tread01_d1pat: loc0 = ", loc0)
 val (  ) =
 prerrln("tread01_d1pat: d1p0 = ", d1p0)
+*)
 //
 } (*where*)//end(tread01_d1pat(d1p0,err))
 
@@ -496,6 +500,13 @@ endcas // end of [ case+(ldes) ]
 )
 //
 #symload errvl with l1d1e_errvl_ldes
+//
+(* ****** ****** *)
+//
+fun
+d1cls_errvl_lst
+(dcs: d1clslst): sint = 0
+#symload errvl with d1cls_errvl_lst
 //
 (* ****** ****** *)
 //
@@ -646,6 +657,25 @@ d1exp_errck
 ( lvl+1
 , d1exp(loc,D1Eif0(d1e1, dthn, dels)))
 endlet // end of [d1exp_if0_errck(...)]
+(* ****** ****** *)
+fun
+d1exp_cas0_errck
+( loc
+: loc_t
+, tknd
+: token
+, d1e1
+: d1exp
+, d1cs
+: d1clslst ): d1exp =
+let
+val lvl = gmax
+(errvl(d1e1), errvl(d1cs))
+in//let
+d1exp_errck
+( lvl+1
+, d1exp(loc,D1Ecas0(tknd, d1e1, d1cs)))
+endlet // end of [d1exp_cas0_errck(...)]
 (* ****** ****** *)
 fun
 d1exp_let0_errck
@@ -953,6 +983,25 @@ d1exp_if0_errck(loc0,d1e1,dthn,dels)
 endlet//end-[D1Eif0(d1e1,dthn,dels)]
 //
 |
+D1Ecas0
+(tknd, d1e1, dcls) =>
+let
+//
+val e00 = err
+//
+val d1e1 =
+tread01_d1exp(d1e1, err)
+val dcls =
+tread01_d1clslst(dcls, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_cas0_errck(loc0,tknd,d1e1,dcls)
+endlet//end-[D1Ecas0(tknd,d1e1,dcls)]
+//
+|
 D1Elet0(d1cs,d1es) =>
 let
 //
@@ -1169,6 +1218,133 @@ endlet // end of [F1ARGmet0(s1es)]
 (* ****** ****** *)
 //
 #implfun
+tread01_d1gua
+  (dgua, err) =
+(
+case+
+dgua.node() of
+|
+D1GUAexp
+( d1e1 ) => let
+//
+val e00 = err
+//
+val
+d1e1 = tread01_d1exp(d1e1, err)
+//
+in//let
+if
+(err = e00)
+then (dgua) else
+d1gua(dgua.lctn(), D1GUAexp(d1e1))
+endlet // end of [ D1GUAexp(d1e1) ]
+|
+D1GUAmat
+(d1e1,d1p2) =>
+let
+//
+val e00 = err
+//
+val
+d1e1 = tread01_d1exp(d1e1, err)
+//
+val d1p2 = tread01_d1pat(d1p2, err)
+//
+in//let
+if
+(err = e00)
+then (dgua) else
+d1gua(dgua.lctn(), D1GUAmat(d1e1,d1p2))
+endlet // end of [ D1GPTgua(_,_,_) ]
+) (*case+*)//end-of-[tread01_d1gua(dgua,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread01_d1gpt
+  (dgpt, err) =
+(
+case+
+dgpt.node() of
+|
+D1GPTpat
+( d1p1 ) => let
+//
+val e00 = err
+//
+val
+d1p1 = tread01_d1pat(d1p1, err)
+//
+in//let
+if
+(err = e00)
+then (dgpt) else
+d1gpt(dgpt.lctn(), D1GPTpat(d1p1))
+endlet // end of [ D1GPTpat(d1p1) ]
+|
+D1GPTgua
+(d1p1,d1gs) =>
+let
+//
+val e00 = err
+//
+val d1p1 = tread01_d1pat(d1p1, err)
+//
+val d1gs = tread01_d1gualst(d1gs, err)
+//
+in//let
+if
+(err = e00)
+then (dgpt) else
+d1gpt(dgpt.lctn(), D1GPTgua(d1p1,d1gs))
+endlet // end of [ D1GPTgua(_,_,_) ]
+) (*case+*)//end-of-[tread01_d1gpt(dgpt,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread01_d1cls
+  (dcls, err) =
+(
+case+
+dcls.node() of
+|
+D1CLSgpt
+( dgpt ) => let
+//
+val e00 = err
+//
+val dgpt =
+tread01_d1gpt(dgpt, err)
+in//let
+if
+(err=e00)
+then (dcls)
+else
+d1cls(dcls.lctn(), D1CLSgpt(dgpt))
+end (*let*)//end-of[D1CLSgpt(dgpt)]
+|
+D1CLScls
+(dgpt,d1e1) =>
+let
+//
+val e00 = err
+//
+val dgpt = tread01_d1gpt(dgpt, err)
+val d1e1 = tread01_d1exp(d1e1, err)
+//
+in//let
+if
+(err=e00)
+then (dcls)
+else
+d1cls(dcls.lctn(), D1CLScls(dgpt,d1e1))
+endlet // end-of-[ D1CLScls(_,_,_) ]
+) (*case+*)//end-of-[tread01_d1cls(dcls,err)]
+//
+(* ****** ****** *)
+//
+#implfun
 tread01_a1typ
   (a1t0, err) =
 (
@@ -1305,6 +1481,17 @@ tread01_f1arglst
   (  f1as, err  ) =
 list_tread01_fnp(f1as, err, tread01_f1arg)
 
+(* ****** ****** *)
+//
+#implfun
+tread01_d1gualst
+  (  d1gs, err  ) =
+list_tread01_fnp(d1gs, err, tread01_d1gua)
+#implfun
+tread01_d1clslst
+  (  d1cs, err  ) =
+list_tread01_fnp(d1cs, err, tread01_d1cls)
+//
 (* ****** ****** *)
 //
 #implfun
