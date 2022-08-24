@@ -624,9 +624,35 @@ endcas // end of [ case+(ldes) ]
 (* ****** ****** *)
 //
 fun
+d1cls_errvl_a1
+(dcl: d1cls): sint =
+(
+case+ dcl.node() of
+|
+D1CLSgpt(dgpt) => 0
+|
+D1CLScls(dgpt,d1e1) => errvl(d1e1)
+)
+#symload errvl with d1cls_errvl_a1
+//
+(* ****** ****** *)
+//
+#extern
+fun
 d1cls_errvl_lst
-(dcs: d1clslst): sint = 0
+(dcls: d1clslst): sint
 #symload errvl with d1cls_errvl_lst
+//
+#implfun
+d1cls_errvl_lst(dcls) =
+(
+case+ dcls of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(dcl1,dcls) => gmax
+(errvl(dcl1), d1cls_errvl_lst(dcls))
+) (*case+*)//end-of-(d1cls_errvl_lst)
 //
 (* ****** ****** *)
 //
