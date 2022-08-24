@@ -146,7 +146,7 @@ sint = 0
 (*
 val opt =
 p1_fun_test<d0eclist>
-("./mytest.sats", p1_d0eclseq_sta)
+("./mytest1.sats", p1_d0eclseq_sta)
 *)
 //
 // (*
