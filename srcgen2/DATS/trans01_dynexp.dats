@@ -945,6 +945,11 @@ FXITMatm
 end (*let*)//end(f0_where(tenv,d0e0))
 //
 |
+D0Elam0 _ => f0_lam0(tenv, d0e0)
+|
+D0Efix0 _ => f0_fix0(tenv, d0e0)
+//
+|
 D0Etry0 _ => f0_try0(tenv, d0e0)
 //
 |
@@ -1408,6 +1413,91 @@ val lss2 =
 //
 endlet // end of [D0Ercd2(_,_,_,_)]
 //
+(* ****** ****** *)
+
+and
+f0_lam0
+( tenv:
+! tr01env
+, d0e0: d0exp): d1efx =
+let
+//
+val loc0 = d0e0.lctn()
+//
+val-
+D0Elam0
+(tknd
+,f0as
+,sres,arrw
+,body,topt) = d0e0.node()
+//
+val
+f1as =
+trans01_f0arglst(tenv, f0as)
+//
+val
+sres =
+trans01_s0res(tenv, sres)
+val
+arrw =
+trans01_f0unarrw(tenv, arrw)
+//
+val
+body = trans01_d0exp(tenv, body)
+//
+in//let
+FXITMatm(d1e0) where
+{
+val d1e0 = d1exp
+( loc0
+, D1Elam0(tknd,f1as,sres,arrw,body)) }
+end (*let*)//end-of(f0_lam0(tenv,d0e0))
+
+(* ****** ****** *)
+
+and
+f0_fix0
+( tenv:
+! tr01env
+, d0e0: d0exp): d1efx =
+let
+//
+val loc0 = d0e0.lctn()
+//
+val-
+D0Efix0
+(tknd
+,deid,f0as
+,sres,arrw
+,body,topt) = d0e0.node()
+//
+val
+deid =
+trans01_i0dnt(tenv, deid)
+val
+f1as =
+trans01_f0arglst(tenv, f0as)
+//
+val
+sres =
+trans01_s0res(tenv, sres)
+val
+arrw =
+trans01_f0unarrw(tenv, arrw)
+//
+val
+body = trans01_d0exp(tenv, body)
+//
+in//let
+FXITMatm(d1e0) where
+{
+val d1e0 = d1exp
+(
+loc0,
+D1Efix0
+(tknd, deid, f1as, sres, arrw, body)) }
+end (*let*)//end-of(f0_fix0(tenv,d0e0))
+
 (* ****** ****** *)
 
 and
