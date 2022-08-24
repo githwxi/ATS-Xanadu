@@ -82,20 +82,23 @@ D1E = "./dynexp1.sats"
 #typedef l1d1e = $D1E.l1d1e
 (* ****** ****** *)
 #typedef f1arg = $D1E.f1arg
-#typedef d1gua = $D1E.d1gua
-#typedef d1gpt = $D1E.d1gpt
-#typedef d1cls = $D1E.d1cls
 (* ****** ****** *)
-#typedef t1qua = $D1E.t1qua
-#typedef t1inv = $D1E.t1inv
-(* ****** ****** *)
-#typedef a1typ = $D1E.a1typ
-#typedef d1arg = $D1E.d1arg
-(* ****** ****** *)
+//
 #typedef s1res = $D1E.s1res
 (*
 #typedef d1res = $D1E.d1res
 *)
+//
+(* ****** ****** *)
+#typedef t1qua = $D1E.t1qua
+#typedef t1inv = $D1E.t1inv
+(* ****** ****** *)
+#typedef d1gua = $D1E.d1gua
+#typedef d1gpt = $D1E.d1gpt
+#typedef d1cls = $D1E.d1cls
+(* ****** ****** *)
+#typedef a1typ = $D1E.a1typ
+#typedef d1arg = $D1E.d1arg
 (* ****** ****** *)
 #typedef d1ecl = $D1E.d1ecl
 (* ****** ****** *)
@@ -149,10 +152,13 @@ D1E = "./dynexp1.sats"
 #typedef l1d1elst = $D1E.l1d1elst
 (* ****** ****** *)
 #typedef f1arglst = $D1E.f1arglst
-#typedef d1gualst = $D1E.d1gualst
-#typedef d1clslst = $D1E.d1clslst
 (* ****** ****** *)
 #typedef t1qualst = $D1E.t1qualst
+(* ****** ****** *)
+#typedef f1unarrw = $D1E.f1unarrw
+(* ****** ****** *)
+#typedef d1gualst = $D1E.d1gualst
+#typedef d1clslst = $D1E.d1clslst
 (* ****** ****** *)
 #typedef a1typlst = $D1E.a1typlst
 #typedef d1arglst = $D1E.d1arglst
@@ -219,20 +225,23 @@ fun tread01_d1exp: ftread01(d1exp)
 fun tread01_l1d1e: ftread01(l1d1e)
 (* ****** ****** *)
 fun tread01_f1arg: ftread01(f1arg)
+fun tread01_t1qua: ftread01(t1qua)
+fun tread01_t1inv: ftread01(t1inv)
+(* ****** ****** *)
+//
+fun tread01_s1res: ftread01(s1res)
+//
+(*
+fun tread01_d1res: ftread01(d1res)
+*)
+//
+(* ****** ****** *)
 fun tread01_d1gua: ftread01(d1gua)
 fun tread01_d1gpt: ftread01(d1gpt)
 fun tread01_d1cls: ftread01(d1cls)
 (* ****** ****** *)
-fun tread01_t1qua: ftread01(t1qua)
-fun tread01_t1inv: ftread01(t1inv)
-(* ****** ****** *)
 fun tread01_a1typ: ftread01(a1typ)
 fun tread01_d1arg: ftread01(d1arg)
-(* ****** ****** *)
-fun tread01_s1res: ftread01(s1res)
-(*
-fun tread01_d1res: ftread01(d1res)
-*)
 (* ****** ****** *)
 fun tread01_d1ecl: ftread01(d1ecl)
 (* ****** ****** *)
@@ -317,13 +326,17 @@ tread01_l1d1elst: ftread01(l1d1elst)
 (* ****** ****** *)
 fun
 tread01_f1arglst: ftread01(f1arglst)
+(* ****** ****** *)
+fun
+tread01_t1qualst: ftread01(t1qualst)
+(* ****** ****** *)
+fun
+tread01_f1unarrw: ftread01(f1unarrw)
+(* ****** ****** *)
 fun
 tread01_d1gualst: ftread01(d1gualst)
 fun
 tread01_d1clslst: ftread01(d1clslst)
-(* ****** ****** *)
-fun
-tread01_t1qualst: ftread01(t1qualst)
 (* ****** ****** *)
 fun
 tread01_a1typlst: ftread01(a1typlst)

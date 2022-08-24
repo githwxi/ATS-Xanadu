@@ -718,6 +718,17 @@ s1eff_fprint(g_print$out<>(), seff)
 g_print<s1res>(sres) =
 s1res_fprint(g_print$out<>(), sres)
 (* ****** ****** *)
+#impltmp
+g_print<t1qua>(tqua) =
+t1qua_fprint(g_print$out<>(), tqua)
+#impltmp
+g_print<t1inv>(tinv) =
+t1inv_fprint(g_print$out<>(), tinv)
+(* ****** ****** *)
+#impltmp
+g_print<f1unarrw>(arrw) =
+f1unarrw_fprint(g_print$out<>(), arrw)
+(* ****** ****** *)
 //
 #impltmp
 g_print<q1arg>(qarg) =
@@ -782,8 +793,8 @@ case+ tdxp of
 TEQD1EXPnone() =>
 print("TEQD1EXPnone(", ")")
 |
-TEQD1EXPsome(tok, d0e) =>
-print("TEQD1EXPsome(", tok, ";", d0e, ")"))
+TEQD1EXPsome(tok1, d1e2) =>
+print("TEQD1EXPsome(", tok1, ";", d1e2, ")"))
 //
 #impltmp
 g_print
@@ -794,8 +805,8 @@ case+ wsxp of
 WTHS1EXPnone() =>
 print("WTHS1EXPnone(", ")")
 |
-WTHS1EXPsome(tok, s0e) =>
-print("WTHS1EXPsome(", tok, ";", s0e, ")"))
+WTHS1EXPsome(tok1, s1e2) =>
+print("WTHS1EXPsome(", tok1, ";", s1e2, ")"))
 //
 (* ****** ****** *)
 
