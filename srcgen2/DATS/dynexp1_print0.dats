@@ -262,6 +262,26 @@ D1Ewhere(d1e1,d1cs) =>
 print("D1Ewhere(",d1e1,";",d1cs,")")
 //
 |
+D1Elam0
+( tknd, f1as
+, sres, arrw, d1e1) =>
+(
+print
+("D1Elam0(",tknd,";");
+print
+(f1as,";",sres,";",arrw,";",d1e1,")"))
+//
+|
+D1Efix0
+( tknd, fid0, f1as
+, sres, arrw, d1e1) =>
+(
+print
+("D1Efix0(",tknd,";",fid0,";");
+print
+(f1as,";",sres,";",arrw,";",d1e1,")"))
+//
+|
 D1Etry0
 (tknd,d1e1,d1cs) =>
 (
@@ -697,6 +717,56 @@ print("S1RESnone(",")")
 S1RESsome(seff, s1e1) =>
 print("S1RESsome(",seff,";",s1e1,")")
 end (*let*) // end of [s1res_fprint]
+//
+(* ****** ****** *)
+//
+#implfun
+t1qua_fprint
+(out, tqua) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ tqua of
+|
+T1QUAsome
+(loc0, s1qs) =>
+print("T1QUAsome(",s1qs,")")
+end (*let*) // end of [t1qua_fprint(out,tqua)]
+//
+#implfun
+t1inv_fprint
+(out, tinv) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ tinv of
+|
+T1INVsome
+(loc0, tqas,d1ps) =>
+print("T1INVsome(",tqas,";",d1ps,")")
+end (*let*) // end of [t1inv_fprint(out,tinv)]
+//
+(* ****** ****** *)
+//
+#implfun
+f1unarrw_fprint
+  (out, arrw) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ arrw of
+|
+F1UNARRWdflt
+(   loc0   ) => print("F1UNARRWdflt(",")")
+|
+F1UNARRWlist
+(loc0, s1es) => print("F1UNARRWlist(",s1es,")")
+//
+end (*let*)//end-of-[f1unarrw_fprint(out,arrw)]
 //
 (* ****** ****** *)
 //

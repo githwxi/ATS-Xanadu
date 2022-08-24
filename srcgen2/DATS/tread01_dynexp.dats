@@ -978,6 +978,60 @@ d1exp_errck
 endlet // end of [d1exp_r2cd_errck(...)]
 (* ****** ****** *)
 fun
+d1exp_lam0_errck
+( loc
+: loc_t
+, tknd
+: token
+, f1as
+: f1arglst
+, sres
+: s1res
+, arrw
+: f1unarrw
+, d1e1: d1exp): d1exp =
+let
+//
+val lvl = errvl(d1e1)
+//
+in//let
+d1exp_errck
+(
+lvl+1,
+d1exp
+(loc
+,D1Elam0(tknd, f1as, sres, arrw, d1e1)))
+endlet // end of [d1exp_lam0_errck(...)]
+(* ****** ****** *)
+fun
+d1exp_fix0_errck
+( loc
+: loc_t
+, tknd
+: token
+, deid
+: token
+, f1as
+: f1arglst
+, sres
+: s1res
+, arrw
+: f1unarrw
+, d1e1: d1exp): d1exp =
+let
+//
+val lvl = errvl(d1e1)
+//
+in//let
+d1exp_errck
+(
+lvl+1,
+d1exp
+(loc,
+D1Efix0(tknd,deid,f1as,sres,arrw,d1e1)))
+endlet // end of [d1exp_fix0_errck(...)]
+(* ****** ****** *)
+fun
 d1exp_try0_errck
 ( loc
 : loc_t
@@ -1421,9 +1475,64 @@ d1exp_r2cd_errck(loc0,tknd,lss1,lss2)
 endlet // end(D1Er2cd(tknd,lss1,lss2))
 //
 |
+D1Elam0
+(tknd, f1as
+,sres, arrw, d1e1) =>
+let
+//
+val e00 = err
+//
+val f1as =
+tread01_f1arglst(f1as, err)
+//
+val sres =
+  tread01_s1res( sres, err )
+val arrw =
+  tread01_f1unarrw(arrw, err)
+//
+val
+d1e1 = tread01_d1exp(d1e1, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_lam0_errck
+(loc0, tknd, f1as, sres, arrw, d1e1)
+endlet // end-of-[ D1Elam0(  ...  ) ]
+//
+|
+D1Efix0
+(tknd, deid, f1as
+,sres, arrw, d1e1) =>
+let
+//
+val e00 = err
+//
+val f1as =
+tread01_f1arglst(f1as, err)
+//
+val sres =
+  tread01_s1res( sres, err )
+val arrw =
+  tread01_f1unarrw(arrw, err)
+//
+val
+d1e1 = tread01_d1exp(d1e1, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_fix0_errck
+(loc0,tknd,deid,f1as,sres,arrw,d1e1)
+endlet // end-of-[ D1Efix0(  ...  ) ]
+//
+|
 D1Etry0
 (tknd, d1e1, d1cs) =>
 let
+//
 val e00 = err
 //
 val d1e1 =
@@ -1874,11 +1983,43 @@ tread01_l1d1elst
 list_tread01_fnp(ldes, err, tread01_l1d1e)
 
 (* ****** ****** *)
-
+//
 #implfun
 tread01_f1arglst
   (  f1as, err  ) =
 list_tread01_fnp(f1as, err, tread01_f1arg)
+//
+(* ****** ****** *)
+//
+#implfun
+tread01_t1qualst
+  (  tqas, err  ) =
+list_tread01_fnp(tqas, err, tread01_t1qua)
+//
+(* ****** ****** *)
+
+#implfun
+tread01_f1unarrw
+  (  arrw, err  ) =
+(
+case+ arrw of
+|
+F1UNARRWdflt
+(   loc0   ) => arrw
+|
+F1UNARRWlist
+(loc0, s1es) =>
+let
+val e00 = err
+val s1es =
+tread01_s1explst(s1es, err)
+//
+in//let
+if
+(e00=err)
+then arrw else F1UNARRWlist(loc0, s1es)
+endlet // end of [F1UNARRWlist(...)]
+) (*case+*)//end-of(tread01_f1unarrw(...))
 
 (* ****** ****** *)
 //

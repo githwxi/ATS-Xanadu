@@ -356,6 +356,14 @@ T1INVsome of
 (loc_t, t1qualst, d1patlst)
 //
 (* ****** ****** *)
+datatype
+f1unarrw =
+|
+F1UNARRWdflt of (loc_t)
+|
+F1UNARRWlist of
+(loc_t, s1explst(*modlst*))
+(* ****** ****** *)
 //
 datatype
 d1gua_node =
@@ -558,6 +566,15 @@ s1eff_fprint:(FILR,s1eff)->void
 fun
 s1res_fprint:(FILR,s1res)->void
 //
+(* ****** ****** *)
+fun
+t1qua_fprint: (FILR, t1qua)->void
+fun
+t1inv_fprint: (FILR, t1inv)->void
+(* ****** ****** *)
+fun
+f1unarrw_fprint
+(out: FILR, arrw: f1unarrw): void
 (* ****** ****** *)
 //
 fun

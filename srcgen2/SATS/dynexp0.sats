@@ -634,13 +634,13 @@ s0res_fprint:(FILR,s0res)->void
 //
 (* ****** ****** *)
 fun
-f0unarrw_fprint
-(out: FILR, arrw: f0unarrw): void
-(* ****** ****** *)
-fun
 t0qua_fprint: (FILR, t0qua)->void
 fun
 t0inv_fprint: (FILR, t0inv)->void
+(* ****** ****** *)
+fun
+f0unarrw_fprint
+(out: FILR, arrw: f0unarrw): void
 (* ****** ****** *)
 fun
 d0exp_THEN_fprint
