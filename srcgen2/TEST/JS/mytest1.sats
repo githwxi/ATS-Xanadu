@@ -158,4 +158,4 @@ case+ xs of
 
 (* ****** ****** *)
 
-(* end of [mytest.sats] *)
+(* end of [mytest1.sats] *)

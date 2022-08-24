@@ -186,7 +186,7 @@ in//local
 //
 val dpar =
 d0parsed_from_fpath
-(0(*sta*), "./mytest.sats")
+(0(*sta*), "./mytest1.sats")
 //
 val
 dpar = d0parsed_preadx0(dpar)
@@ -213,7 +213,7 @@ end
 //
 val (  ) =
 prerrln
-("dparsed_from_fpath(\"./mytest.sats\") =\n", dpar)
+("dparsed_from_fpath(\"./mytest1.sats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
