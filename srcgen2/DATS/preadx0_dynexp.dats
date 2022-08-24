@@ -553,30 +553,26 @@ D0CLSgpt(dgpt) => 0
 D0CLScls
 (dgpt,tkeg,d0e1) => errvl(d0e1)
 )
-#symload
-d0cls_errvl with d0cls_errvl_a1
 #symload errvl with d0cls_errvl_a1
 //
 (* ****** ****** *)
 //
 #extern
 fun
-d0cls_errvl_list
+d0cls_errvl_lst
 (dcls: d0clslst): sint
-#symload
-d0cls_errvl with d0cls_errvl_list
-#symload errvl with d0cls_errvl_list
+#symload errvl with d0cls_errvl_lst
 //
 #implfun
-d0cls_errvl_list(dcls) =
+d0cls_errvl_lst(dcls) =
 (
 case+ dcls of
 |
 list_nil((*nil*)) => 0
 |
 list_cons(dcl1,dcls) => gmax
-(d0cls_errvl(dcl1), d0cls_errvl(dcls))
-) (*case+*)//end-of-(d0cls_errvl_list)
+(errvl(dcl1), d0cls_errvl_lst(dcls))
+) (*case+*)//end-of-(d0cls_errvl_lst)
 //
 (* ****** ****** *)
 //
