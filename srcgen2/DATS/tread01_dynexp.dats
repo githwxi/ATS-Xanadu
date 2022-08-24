@@ -317,16 +317,28 @@ endlet // end of [d1pat_r2cd_errck(...)]
 fun
 d1pat_anno_errck
 ( loc: loc_t
-, dp1: d1pat
-, se2: s1exp): d1pat =
+, d1p1: d1pat
+, s1e2: s1exp): d1pat =
 let
 //
-val lvl = 0 // errvl(dp1)
+val lvl = errvl(d1p1)
 //
 in//let
-  d1pat( loc, D1Panno( dp1, se2 ) )
+  d1pat( loc , D1Panno( d1p1 , s1e2 ) )
 endlet // end of [d1pat_anno_errck(...)]
 //
+(* ****** ****** *)
+fun
+d1pat_qual_errck
+( loc: loc_t
+, tok1: token
+, d1p2: d1pat): d1pat =
+let
+val lvl = errvl(d1p2)
+in//let
+d1pat_errck
+(lvl+1, d1pat(loc, D1Pqual(tok1,d1p2)))
+endlet // end of [d1pat_qual_errck(...)]
 (* ****** ****** *)
 
 #implfun
@@ -470,8 +482,25 @@ in//let
 if
 (e00=err)
 then (d1p0) else
-d1pat_anno_errck(loc0, d1p1, s1e2)
+d1pat_anno_errck(loc0 , d1p1 , s1e2)
 endlet // end of [D1Panno(d1p1,s1e2)]
+//
+|
+D1Pqual(tok1, d1p2) =>
+let
+//
+val e00 = err
+//
+val
+d1p2 = tread01_d1pat(d1p2, err)
+//
+in//let
+if
+(e00=err)
+then (d1p0) else
+d1pat_qual_errck( loc0, tok1, d1p2 )
+endlet // end of [D1Pqual(tok1,d1p2)]
+//
 |
 _(*otherwise*) =>
 (err := err + 1; d1pat_errck(1, d1p0))
@@ -729,6 +758,7 @@ d1exp_errck
 (lvl+1, d1exp(loc, D1Eseqn(des1,des2)))
 endlet // end of [d1exp_seqn_errck(...)]
 (* ****** ****** *)
+//
 fun
 d1exp_if0_errck
 ( loc
@@ -748,7 +778,32 @@ d1exp_errck
 ( lvl+1
 , d1exp(loc,D1Eif0(d1e1, dthn, dels)))
 endlet // end of [d1exp_if0_errck(...)]
+//
+fun
+d1exp_if1_errck
+( loc
+: loc_t
+, d1e1
+: d1exp
+, dthn
+: d1expopt
+, dels
+: d1expopt
+, tinv: t1inv): d1exp =
+let
+val lvl = gmax
+( errvl(d1e1)
+, errvl(dthn), errvl(dels))
+in//let
+d1exp_errck
+(
+lvl+1,
+d1exp
+(loc, D1Eif1(d1e1, dthn, dels, tinv)))
+endlet // end of [d1exp_if1_errck(...)]
+//
 (* ****** ****** *)
+//
 fun
 d1exp_cas0_errck
 ( loc
@@ -767,6 +822,29 @@ d1exp_errck
 ( lvl+1
 , d1exp(loc,D1Ecas0(tknd, d1e1, d1cs)))
 endlet // end of [d1exp_cas0_errck(...)]
+//
+fun
+d1exp_cas1_errck
+( loc
+: loc_t
+, tknd
+: token
+, d1e1
+: d1exp
+, d1cs
+: d1clslst
+, tinv: t1inv): d1exp =
+let
+val lvl = gmax
+(errvl(d1e1), errvl(d1cs))
+in//let
+d1exp_errck
+(
+lvl+1,
+d1exp
+(loc, D1Ecas1(tknd, d1e1, d1cs, tinv)))
+endlet // end of [d1exp_cas1_errck(...)]
+//
 (* ****** ****** *)
 fun
 d1exp_let0_errck
@@ -898,6 +976,70 @@ d1exp_errck
 (lvl+1
 ,d1exp(loc, D1Er2cd(tknd, lss1, lss2)))
 endlet // end of [d1exp_r2cd_errck(...)]
+(* ****** ****** *)
+fun
+d1exp_try0_errck
+( loc
+: loc_t
+, tknd
+: token
+, d1e1
+: d1exp
+, d1cs
+: d1clslst): d1exp =
+let
+//
+val lvl = gmax
+(errvl(d1e1), errvl(d1cs))
+//
+in//let
+  d1exp( loc, D1Etry0(tknd,d1e1,d1cs) )
+endlet // end of [d1exp_try0_errck(...)]
+(* ****** ****** *)
+//
+fun
+d1exp_anno_errck
+( loc: loc_t
+, d1e1: d1exp
+, s1e2: s1exp): d1exp =
+let
+//
+val lvl = errvl(d1e1)
+//
+in//let
+  d1exp( loc , D1Eanno( d1e1 , s1e2 ) )
+endlet // end of [d1exp_anno_errck(...)]
+//
+(* ****** ****** *)
+fun
+d1exp_qual_errck
+( loc: loc_t
+, tok1: token
+, d1e2: d1exp): d1exp =
+let
+val lvl = errvl(d1e2)
+in//let
+d1exp_errck
+(lvl+1, d1exp(loc, D1Equal(tok1,d1e2)))
+endlet // end of [d1exp_qual_errck(...)]
+(* ****** ****** *)
+fun
+d1exp_exists_errck
+( loc
+: loc_t
+, tknd
+: token
+, d1es
+: d1explst
+, d1e1: d1exp): d1exp =
+let
+val lvl = gmax
+(errvl(d1es), errvl(d1e1))
+in//let
+d1exp_errck
+( lvl+1
+, d1exp(loc, D1Eexists(tknd,d1es,d1e1)))
+endlet // end of [d1exp_exists_errck(...)]
 (* ****** ****** *)
 
 #implfun
@@ -1072,6 +1214,31 @@ if
 then (d1e0) else
 d1exp_if0_errck(loc0,d1e1,dthn,dels)
 endlet//end-[D1Eif0(d1e1,dthn,dels)]
+|
+D1Eif1
+( d1e1
+, dthn, dels, tinv) =>
+let
+//
+val e00 = err
+//
+val d1e1 =
+tread01_d1exp(d1e1, err)
+val dthn =
+tread01_d1expopt(dthn, err)
+val dels =
+tread01_d1expopt(dels, err)
+//
+val
+tinv = tread01_t1inv(tinv, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_if1_errck
+( loc0 , d1e1 , dthn , dels , tinv )
+endlet//end-[D1Eif1(d1e1,dthn,dels)]
 //
 |
 D1Ecas0
@@ -1090,7 +1257,30 @@ if
 (e00=err)
 then (d1e0) else
 d1exp_cas0_errck(loc0,tknd,d1e1,dcls)
-endlet//end-[D1Ecas0(tknd,d1e1,dcls)]
+endlet//end-(D1Ecas0(tknd,d1e1,dcls))
+|
+D1Ecas1
+( tknd
+, d1e1, dcls, tinv) =>
+let
+//
+val e00 = err
+//
+val d1e1 =
+tread01_d1exp(d1e1, err)
+val dcls =
+tread01_d1clslst(dcls, err)
+//
+val
+tinv = tread01_t1inv(tinv, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_cas1_errck
+( loc0 , tknd , d1e1 , dcls , tinv )
+endlet//end-[D1Ecas1(tknd,d1e1,dcls)]
 //
 |
 D1Elet0(d1cs,d1es) =>
@@ -1107,7 +1297,7 @@ in//let
 if
 (e00=err)
 then (d1e0) else
-d1exp_let0_errck(loc0, d1cs, d1es)
+d1exp_let0_errck(loc0 , d1cs , d1es)
 endlet // end of [D1Elet0(d1cs,d1es)]
 //
 |
@@ -1127,7 +1317,7 @@ in//let
 if
 (e00=err)
 then (d1e0) else
-d1exp_where_errck(loc0, d1e1, d1cs)
+d1exp_where_errck(loc0 , d1e1 , d1cs)
 endlet // end of [D1Ewhere(d1cs,d1es)]
 //
 |
@@ -1143,8 +1333,8 @@ in//let
 if
 (e00=err)
 then (d1e0)
-else d1exp_brckt_errck( loc0,d1es )
-endlet // end of [ D1Ebrckt( d1es ) ]
+else d1exp_brckt_errck( loc0 , d1es )
+endlet // end of [ D1Ebrckt(  d1es  ) ]
 |
 D1Edtsel
 (tknd,lab1,dopt) =>
@@ -1160,7 +1350,7 @@ if
 (e00=err)
 then (d1e0) else
 d1exp_dtsel_errck(loc0,tknd,lab1,dopt)
-endlet // end(D1Edtsel(tknd,lab1,dopt))
+endlet//end-of(D1Edtsel(tknd,lab1,dopt))
 //
 |
 D1Et1up(tknd,d1es) =>
@@ -1175,8 +1365,8 @@ in//let
 if
 (e00=err)
 then (d1e0) else
-d1exp_t1up_errck(loc0, tknd, d1es)
-endlet // end of [D1Et1up(tknd,d1es)]
+d1exp_t1up_errck(loc0 , tknd , d1es)
+endlet // end of [ D1Et1up(tknd,d1es) ]
 |
 D1Et2up
 (tknd, des1, des2) =>
@@ -1209,8 +1399,8 @@ in//let
 if
 (e00=err)
 then (d1e0) else
-d1exp_r1cd_errck(loc0, tknd, ldes)
-endlet // end of [D1Er1cd(tknd,ldes)]
+d1exp_r1cd_errck( loc0 , tknd , ldes )
+endlet // end of [ D1Er1cd(tknd,ldes) ]
 |
 D1Er2cd
 (tknd, lss1, lss2) =>
@@ -1230,6 +1420,77 @@ then (d1e0) else
 d1exp_r2cd_errck(loc0,tknd,lss1,lss2)
 endlet // end(D1Er2cd(tknd,lss1,lss2))
 //
+|
+D1Etry0
+(tknd, d1e1, d1cs) =>
+let
+val e00 = err
+//
+val d1e1 =
+tread01_d1exp(d1e1, err)
+val d1cs =
+tread01_d1clslst(d1cs, err)
+//
+in//let
+d1exp_try0_errck(loc0,tknd,d1e1,d1cs)
+endlet // end(D1Etry0(tknd,d1e1,d1cs))
+//
+|
+D1Eanno(d1e1,s1e2) =>
+let
+//
+val e00 = err
+//
+val d1e1 =
+tread01_d1exp(d1e1, err)
+val s1e2 =
+tread01_s1exp(s1e2, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_anno_errck(loc0 , d1e1 , s1e2)
+endlet // end of [D1Eanno(d1e1,s1e2)]
+//
+|
+D1Equal(tok1, d1e2) =>
+let
+//
+val e00 = err
+//
+val
+d1e2 = tread01_d1exp(d1e2, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_qual_errck( loc0, tok1, d1e2 )
+endlet // end of [D1Equal(tok1,d1e2)]
+//
+|
+D1Eextnam(gnm) => d1e0//fixity-less
+//
+|
+D1Eexists
+(tknd, d1es, d1e1) =>
+let
+//
+val e00 = err
+//
+val d1es =
+tread01_d1explst(d1es, err)
+//
+val
+d1e1 = tread01_d1exp(d1e1, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_exists_errck(loc0,tknd,d1es,d1e1)
+endlet//end-[D1Eexists(tknd,d1es,d1e1)]
 |
 _(*otherwise*) =>
 (err := err + 1; d1exp_errck(1, d1e0))
@@ -1433,6 +1694,53 @@ d1cls(dcls.lctn(), D1CLScls(dgpt,d1e1))
 endlet // end-of-[ D1CLScls(_,_,_) ]
 ) (*case+*)//end-of-[tread01_d1cls(dcls,err)]
 //
+(* ****** ****** *)
+//
+#implfun
+tread01_t1qua
+  (t1q0, err) =
+(
+case+ t1q0 of
+|
+T1QUAsome(loc0, s1qs) =>
+let
+//
+val e00 = err
+//
+val s1qs =
+tread01_s1qualst(s1qs, err)
+//
+in//let
+if
+(e00=err)
+then t1q0 else T1QUAsome(loc0, s1qs)
+endlet // end of [T1QUAsome(loc0,s1qs)]
+) (*case+*) // end of [tread01_t1qua(t1q0,err)]
+//
+(* ****** ****** *)
+#implfun
+tread01_t1inv
+  (tinv, err) =
+(
+case+ tinv of
+|
+T1INVsome
+( loc0
+, t1qs, d1ps) =>
+let
+val e00 = err
+//
+val t1qs =
+tread01_t1qualst(t1qs, err)
+val d1ps =
+tread01_d1patlst(d1ps, err)
+//
+in//let
+if
+(e00=err)
+then tinv else T1INVsome(loc0, t1qs, d1ps)
+endlet // end of [T1INVsom(loc0,t1qs,d1ps)]
+) (*case+*) // end of [tread01_t1inv(tinv,err)]
 (* ****** ****** *)
 //
 #implfun

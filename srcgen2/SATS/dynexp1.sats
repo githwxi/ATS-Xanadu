@@ -347,7 +347,7 @@ T1QUAsome of
 where
 #typedef
 t1qualst = list(t1qua)
-endwhre
+endwhere
 //
 datatype
 t1inv =
