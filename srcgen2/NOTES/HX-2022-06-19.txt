@@ -16,7 +16,7 @@ HX-2022-06-19:
 By the end of 2022-06-18, I have implemented a parser for sort0
 and also a parser for s0exp. I have also initiated implementation of
 errmsg reporting (preadx0). The ATS3-in-ATS3 implementation is going
-pretty smoothly and its closely follows the ATS3-in-ATS2 implementation.
+pretty smoothly and it closely follows the ATS3-in-ATS2 implementation.
 
 ##################################################################
 wc -l */*.?ats
