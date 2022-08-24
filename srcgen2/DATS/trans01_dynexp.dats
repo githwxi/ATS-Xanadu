@@ -1604,6 +1604,28 @@ end (*let*) // end of [F0ARGmet0(_,_,_)]
 end (*let*) // end of [trans01_f0arg(tenv,f0a0)]
 
 (* ****** ****** *)
+//
+#implfun
+trans01_f0unarrw
+  (tenv, arrw) =
+(
+case+ arrw of
+|
+F0UNARRWnone(tok) =>
+F1UNARRWdflt(tok.lctn())
+|
+F0UNARRWdflt(tok) =>
+F1UNARRWdflt(tok.lctn())
+|
+F0UNARRWlist(tbeg,s0es,tend) =>
+(
+F1UNARRWlist(loc0, s1es)) where
+{
+val loc0 = tbeg.lctn()+tend.lctn()
+val s1es = trans01_s0explst(tenv, s0es) }
+) (*case+*)//end-of(trans01_f0unarrw(tenv,arrw))
+//
+(* ****** ****** *)
 
 #implfun
 trans01_d0exp_THEN
