@@ -774,6 +774,12 @@ D1Cdyninit
 (
   g1exp_fpemsg(out, g1e1))
 //
+|
+D1Cdatasort
+(tknd, d1ts) => let
+val () = d1tstlst_fpemsg(out, d1ts)
+endlet // end-of-( D1Cdatasort(...) )
+//
 | D1Cnone0() => ( (*void*) )
 | D1Cnone1(d0cl) => ( (*void*) )
 //
@@ -925,6 +931,28 @@ list_foreach<t1mag>(tmas) where
 {
 #impltmp
 foreach$work<t1mag>(tma1) = t1mag_fpemsg(out,tma1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+s1tcnlst_fpemsg
+(out, tcns) =
+list_foreach<s1tcn>(tcns) where
+{
+#impltmp
+foreach$work<s1tcn>(tcn1) = s1tcn_fpemsg(out,tcn1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d1tstlst_fpemsg
+(out, d1ts) =
+list_foreach<d1tst>(d1ts) where
+{
+#impltmp
+foreach$work<d1tst>(d1t1) = d1tst_fpemsg(out,d1t1)
 }
 //
 (* ****** ****** *)
