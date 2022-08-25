@@ -81,30 +81,96 @@ ATS_PACKNAME
 #symload fpemsg with s1exp_fpemsg
 #symload fpemsg with l1s1e_fpemsg
 (* ****** ****** *)
+
+local
 //
-#implfun
-g1exp_fpemsg
-(out, g1e) =
+fun
+auxmain
+( out: FILR
+, g1e: g1exp): void =
 let
 #impltmp
 g_print$out<>() = out
 in//let
 case+
 g1e.node() of
+//
+|G1Eid0 _ => ()
+//
+|G1Eint _ => ()
+|G1Echr _ => ()
+|G1Eflt _ => ()
+|G1Estr _ => ()
+//
 |
-G1Eerrck(lvl, ge1) =>
+G1Eb0sh _ => ()
+|
+G1Eb1sh(g1e1) =>
+g1exp_fpemsg(out, g1e1)
+//
+|G1Ea0pp() => ()
+|
+G1Ea1pp(g1f0,g1e1) =>
+(
+g1exp_fpemsg(out, g1f0)
+;
+g1exp_fpemsg(out, g1e1))
+|
+G1Ea2pp
+(g1f0,g1e1,g1e2) =>
+(
+g1exp_fpemsg(out, g1f0)
+;
+g1exp_fpemsg(out, g1e1)
+;
+g1exp_fpemsg(out, g1e2))
+|
+G1Elist(g1es) =>
+g1explst_fpemsg(out, g1es)
+|
+G1Eif0
+(g1e1,g1e2,g1e3) =>
+(
+g1exp_fpemsg(out, g1e1)
+;
+g1exp_fpemsg(out, g1e2)
+;
+g1exp_fpemsg(out, g1e3))
+//
+|G1Enone0() => ((*void*))
+|G1Enone1(g0e1) => ((*void*))
+//
+|
+G1Eerrck _ => g1exp_fpemsg(out, g1e)
+end(*let*)//end-of-(auxmain(out,g1e))
+//
+in//local
+
+#implfun
+g1exp_fpemsg
+(out, g1e0) =
 let
-  val loc = g1e.lctn()
+#impltmp
+g_print$out<>() = out
 in//let
-(*
+case+
+g1e0.node() of
+|
+G1Eerrck(lvl,g1e1) =>
+(
+auxmain( out, g1e1 ); 
+if
+(lvl
+>FPEMSG_ERRVL) then () else
 println
-("TREAD01-ERROR:",loc,":",g1e)
-*)
-endlet // end of [G1Eerrck(lvl,ge1)]
-| _(* otherwise *) => ( (*void*) )
+("TREAD01-ERROR:",g1e0.lctn(),":",g1e0)
+)
+| _(* otherwise *) => (  (*ignored*)  )
 //
-end(*let*)//end-of(g1exp_fpemsg(out,g1e))
+end(*let*)//end-of(g1exp_fpemsg(out,g1e0))
 //
+endloc(*local*)//end-of(local(g1exp_fpemsg))
+
 (* ****** ****** *)
 
 local
@@ -158,33 +224,53 @@ in//local
 //
 #implfun
 sort1_fpemsg
-(out, s1t) =
+( out, s1t0 ) =
 let
 #impltmp
 g_print$out<>() = out
 in//let
 //
 case+
-s1t.node() of
+s1t0.node() of
 |
-S1Terrck(lvl, st1) =>
+S1Terrck(lvl, s1t1) =>
 (
-auxmain( out, st1 ); 
+auxmain( out, s1t1 ); 
 if
 (lvl
 >FPEMSG_ERRVL) then () else
 println
-("PREADX0-ERROR:",s1t.lctn(),":",s1t)
+("TREAD01-ERROR:",s1t0.lctn(),":",s1t0)
 )
-| _(* otherwise *) => ( (*void*) )
+| _(* otherwise *) => (  (* ignored *)  )
 //
-end(*let*)//end-of(sort1_fpemsg(out,s1t))
+end(*let*)//end-of(sort1_fpemsg(out,s1t0))
 //
 endloc(*local*)//end-of(local(sort1_fpemsg))
 
 (* ****** ****** *)
 
 local
+
+fun
+auxmain
+( out: FILR
+, dcl: d1ecl): void =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+dcl.node() of
+//
+|D1Cnone0() => ((*void*))
+|D1Cnone1(s0t1) => ((*void*))
+//
+|
+D1Cerrck _ => d1ecl_fpemsg(out, dcl)
+//
+end(*let*)//end-of-(auxmain(out,dcl))
 
 in(*in-of-local*)
 
@@ -200,13 +286,11 @@ dcl0.node() of
 |
 D1Cerrck(lvl, d1cl)  =>
 (
-(*
 auxmain( out, d1cl );
-*)
 println
 ("TREAD01-ERROR:",dcl0.lctn(),":",dcl0))
 //
-| _(* otherwise *) => ((*void*))
+| _(* otherwise *) => (   (*ignored*)   )
 end (*let*)//end-of(d1ecl_fpemsg(out,dcl0))
 //
 endloc(*local*)//end-of(local(d1ecl_fpemsg))
