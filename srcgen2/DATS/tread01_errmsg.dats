@@ -302,6 +302,16 @@ s1explst_fpemsg(out, ses1);
 s1explst_fpemsg(out, ses2))
 //
 |
+S1Et1up(tknd,s1es) =>
+s1explst_fpemsg(out, s1es)
+|
+S1Et2up
+(tknd, ses1, ses2) =>
+(
+s1explst_fpemsg(out, ses1);
+s1explst_fpemsg(out, ses2))
+//
+|
 S1Equal(tok1,s1e2) =>
 (
 s1exp_fpemsg(out, s1e2))
@@ -344,6 +354,221 @@ end(*let*)//end-of(s1exp_fpemsg(out,s1e0))
 //
 endloc(*local*)//end-of(local(s1exp_fpemsg))
 
+(* ****** ****** *)
+//
+#implfun
+l1s1e_fpemsg
+(out, lse0) =
+(
+case+ lse0 of
+|
+S1LAB(lab,s1e1) => s1exp_fpemsg(out,s1e1)
+) (*case+*)//end-of-(l1s1e_fpemsg(out,lse0))
+//
+(* ****** ****** *)
+
+local
+//
+fun
+auxmain
+( out: FILR
+, d1p: d1pat): void =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case
+d1p.node() of
+//
+|D1Pid0 _ => ()
+|D1Pint _ => ()
+//
+|
+D1Pb0sh _ => ()
+|
+D1Pb1sh(d1p1) =>
+d1pat_fpemsg(out, d1p1)
+//
+|
+D1Pa0pp() => ()
+|
+D1Pa1pp(d1f0,d1p1) =>
+(
+d1pat_fpemsg(out, d1f0);
+d1pat_fpemsg(out, d1p1))
+|
+D1Pa2pp
+(d1f0,d1p1,d1p2) =>
+(
+d1pat_fpemsg(out, d1f0);
+d1pat_fpemsg(out, d1p1);
+d1pat_fpemsg(out, d1p2))
+//
+|
+D1Pl1st(d1ps) =>
+d1patlst_fpemsg(out, d1ps)
+|
+D1Pl2st(ses1,ses2) =>
+(
+d1patlst_fpemsg(out, ses1);
+d1patlst_fpemsg(out, ses2))
+//
+|
+D1Pqual(tok1,d1p2) =>
+(
+d1pat_fpemsg(out, d1p2))
+//
+|D1Pnone0() => ((*void*))
+|D1Pnone1(s0e1) => ((*void*))
+//
+|
+D1Perrck _ => d1pat_fpemsg(out, d1p)
+end(*let*)//end-of-(auxmain(out,d1p))
+//
+in//local
+//
+#implfun
+d1pat_fpemsg
+( out, d1p0 ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+d1p0.node() of
+|
+D1Perrck(lvl, d1p1) =>
+(
+auxmain( out, d1p1 ); 
+if
+(lvl
+>FPEMSG_ERRVL) then () else
+let
+val loc0 = d1p0.lctn() in
+println
+("TREAD01-ERROR:",loc0,":",d1p0)
+end
+)
+| _(* otherwise *) => (  (* skipped *)  )
+//
+end(*let*)//end-of(d1pat_fpemsg(out,d1p0))
+//
+endloc(*local*)//end-of(local(d1pat_fpemsg))
+
+(* ****** ****** *)
+//
+#implfun
+l1d1p_fpemsg
+(out, lde0) =
+(
+case+ lde0 of
+|
+D1LAB(lab,d1p1) => d1pat_fpemsg(out,d1p1)
+) (*case+*)//end-of-(l1d1p_fpemsg(out,lde0))
+//
+(* ****** ****** *)
+
+local
+
+fun
+auxmain
+( out: FILR
+, d1e: d1exp): void =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case
+d1e.node() of
+//
+|D1Eid0 _ => ()
+|D1Eint _ => ()
+//
+|
+D1Eb0sh _ => ()
+|
+D1Eb1sh(d1e1) =>
+d1exp_fpemsg(out, d1e1)
+//
+|
+D1Ea0pp() => ()
+|
+D1Ea1pp(d1f0,d1e1) =>
+(
+d1exp_fpemsg(out, d1f0);
+d1exp_fpemsg(out, d1e1))
+|
+D1Ea2pp
+(d1f0,d1e1,d1e2) =>
+(
+d1exp_fpemsg(out, d1f0);
+d1exp_fpemsg(out, d1e1);
+d1exp_fpemsg(out, d1e2))
+//
+|
+D1El1st(d1es) =>
+d1explst_fpemsg(out, d1es)
+|
+D1El2st(ses1,ses2) =>
+(
+d1explst_fpemsg(out, ses1);
+d1explst_fpemsg(out, ses2))
+//
+|
+D1Equal(tok1,d1e2) =>
+(
+d1exp_fpemsg(out, d1e2))
+//
+|D1Enone0() => ((*void*))
+|D1Enone1(s0e1) => ((*void*))
+//
+|
+D1Eerrck _ => d1exp_fpemsg(out, d1e)
+end(*let*)//end-of-(auxmain(out,d1e))
+//
+in//local
+//
+#implfun
+d1exp_fpemsg
+( out, d1e0 ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+d1e0.node() of
+|
+D1Eerrck(lvl, d1e1) =>
+(
+auxmain( out, d1e1 ); 
+if
+(lvl
+>FPEMSG_ERRVL) then () else
+let
+val loc0 = d1e0.lctn() in
+println
+("TREAD01-ERROR:",loc0,":",d1e0)
+end
+)
+| _(* otherwise *) => (  (* skipped *)  )
+//
+end(*let*)//end-of(d1exp_fpemsg(out,d1e0))
+//
+endloc(*local*)//end-of(local(d1exp_fpemsg))
+
+(* ****** ****** *)
+//
+#implfun
+l1d1e_fpemsg
+(out, lde0) =
+(
+case+ lde0 of
+|
+D1LAB(lab,d1e1) => d1exp_fpemsg(out,d1e1)
+) (*case+*)//end-of-(l1d1e_fpemsg(out,lde0))
+//
 (* ****** ****** *)
 
 local
@@ -434,6 +659,17 @@ foreach$work<s1exp>(s1e1) = s1exp_fpemsg(out,s1e1)
 (* ****** ****** *)
 //
 #implfun
+l1s1elst_fpemsg
+(out, lses) =
+list_foreach<l1s1e>(lses) where
+{
+#impltmp
+foreach$work<l1s1e>(lse1) = l1s1e_fpemsg(out,lse1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
 d1patlst_fpemsg
 (out, d1ps) =
 list_foreach<d1pat>(d1ps) where
@@ -445,12 +681,34 @@ foreach$work<d1pat>(d1p1) = d1pat_fpemsg(out,d1p1)
 (* ****** ****** *)
 //
 #implfun
+l1d1plst_fpemsg
+(out, ldps) =
+list_foreach<l1d1p>(ldps) where
+{
+#impltmp
+foreach$work<l1d1p>(ldp1) = l1d1p_fpemsg(out,ldp1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
 d1explst_fpemsg
 (out, d1es) =
 list_foreach<d1exp>(d1es) where
 {
 #impltmp
 foreach$work<d1exp>(d1e1) = d1exp_fpemsg(out,d1e1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+l1d1elst_fpemsg
+(out, ldes) =
+list_foreach<l1d1e>(ldes) where
+{
+#impltmp
+foreach$work<l1d1e>(lde1) = l1d1e_fpemsg(out,lde1)
 }
 //
 (* ****** ****** *)
