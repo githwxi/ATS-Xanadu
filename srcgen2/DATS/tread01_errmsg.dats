@@ -86,6 +86,8 @@ ATS_PACKNAME
 #symload fpemsg with d1exp_fpemsg
 #symload fpemsg with l1d1e_fpemsg
 (* ****** ****** *)
+#symload fpemsg with d1ecl_fpemsg
+(* ****** ****** *)
 
 local
 //
@@ -408,10 +410,21 @@ d1pat_fpemsg(out, d1p2))
 D1Pl1st(d1ps) =>
 d1patlst_fpemsg(out, d1ps)
 |
-D1Pl2st(ses1,ses2) =>
+D1Pl2st(dps1,dps2) =>
 (
-d1patlst_fpemsg(out, ses1);
-d1patlst_fpemsg(out, ses2))
+d1patlst_fpemsg(out, dps1);
+d1patlst_fpemsg(out, dps2))
+//
+//
+|
+D1Pt1up(tknd,d1ps) =>
+d1patlst_fpemsg(out, d1ps)
+|
+D1Pt2up
+(tknd, dps1, dps2) =>
+(
+d1patlst_fpemsg(out, dps1);
+d1patlst_fpemsg(out, dps2))
 //
 |
 D1Pqual(tok1,d1p2) =>
@@ -510,10 +523,20 @@ d1exp_fpemsg(out, d1e2))
 D1El1st(d1es) =>
 d1explst_fpemsg(out, d1es)
 |
-D1El2st(ses1,ses2) =>
+D1El2st(des1,des2) =>
 (
-d1explst_fpemsg(out, ses1);
-d1explst_fpemsg(out, ses2))
+d1explst_fpemsg(out, des1);
+d1explst_fpemsg(out, des2))
+//
+|
+D1Et1up(tknd,d1es) =>
+d1explst_fpemsg(out, d1es)
+|
+D1Et2up
+(tknd, des1, des2) =>
+(
+d1explst_fpemsg(out, des1);
+d1explst_fpemsg(out, des2))
 //
 |
 D1Equal(tok1,d1e2) =>
@@ -585,8 +608,30 @@ in//let
 case+
 dcl.node() of
 //
-|D1Cnone0() => ((*void*))
-|D1Cnone1(d0cl) => ((*void*))
+|
+D1Cstatic(tknd,dcl1) =>
+let
+val () =
+d1ecl_fpemsg(out, dcl1)
+endlet//end-of(D1Cstatic(_,_))
+|
+D1Cextern(tknd,dcl1) =>
+let
+val () =
+d1ecl_fpemsg(out, dcl1)
+endlet//end-of(D1Cextern(_,_))
+//
+|
+D1Clocal0(dcs1,dcs2) =>
+let
+val () =
+d1eclist_fpemsg(out, dcs1)
+val () =
+d1eclist_fpemsg(out, dcs2)
+endlet // end of [D1Clocal0(...)]
+//
+|D1Cnone0() => ( (*void*) )
+|D1Cnone1(d0cl) => ( (*void*) )
 //
 |
 D1Cerrck _ => d1ecl_fpemsg(out, dcl)
