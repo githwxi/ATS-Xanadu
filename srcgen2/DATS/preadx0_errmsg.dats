@@ -526,7 +526,7 @@ case+ lse of
 |
 S0LAB
 (lab,teq,s0e) => s0exp_fpemsg(out,s0e)
-) (*case*)//end-of(l0s0e_fpemsg(out,lse))
+) (*case+*)//end-of(l0s0e_fpemsg(out,lse))
 //
 (* ****** ****** *)
 //
