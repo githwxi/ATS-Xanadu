@@ -387,6 +387,26 @@ end(*let*)//end-of-[s1arg_fpemsg(out,s1a0)]
 (* ****** ****** *)
 //
 #implfun
+s1mag_fpemsg
+(out, s1ma) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+s1ma.node() of
+|
+S1MAGlist(s1as) =>
+let
+//
+val () = s1arglst_fpemsg(out, s1as)
+//
+end(*let*)//end-of-[S1MAGlist(_,_,_)]
+end(*let*)//end-of-[s1mag_fpemsg(out,s1ma)]
+//
+(* ****** ****** *)
+//
+#implfun
 t1arg_fpemsg
 (out, t1a0) =
 let
@@ -726,6 +746,34 @@ let
 val () = s1tdf_fpemsg(out, tdf1)
 endlet // end-of-(D1Csortdef(...))
 //
+|
+D1Csymload
+( tknd
+, symb, dqid, gopt) =>
+let
+(*
+val () = fpemsg(out, symb)
+val () = fpemsg(out, dqid)
+*)
+val () = g1expopt_fpemsg(out, gopt)
+endlet // end-of-( D0Csymload(...) )
+//
+|
+D1Cinclude
+(tknd, g1e1) =>
+(
+  g1exp_fpemsg(out, g1e1))
+|
+D1Cstaload
+(tknd, g1e1) =>
+(
+  g1exp_fpemsg(out, g1e1))
+|
+D1Cdyninit
+(tknd, g1e1) =>
+(
+  g1exp_fpemsg(out, g1e1))
+//
 | D1Cnone0() => ( (*void*) )
 | D1Cnone1(d0cl) => ( (*void*) )
 //
@@ -770,6 +818,15 @@ endloc(*local*)//end-of(local(d1ecl_fpemsg))
 g1explst_fpemsg
 (out, g1es) =
 list_foreach<g1exp>(g1es) where
+{
+#impltmp
+foreach$work<g1exp>(g1e1) = g1exp_fpemsg(out,g1e1)
+}
+//
+#implfun
+g1expopt_fpemsg
+(out, gopt) =
+optn_foreach<g1exp>(gopt) where
 {
 #impltmp
 foreach$work<g1exp>(g1e1) = g1exp_fpemsg(out,g1e1)

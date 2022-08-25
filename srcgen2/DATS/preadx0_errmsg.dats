@@ -563,14 +563,18 @@ case+
 sma.node() of
 |
 S0MAGnone(tok) =>
+let
+val loc = sma.lctn() in
 println
-("PREADX0-ERROR:",tok.lctn(),":",sma)
+("PREADX0-ERROR:",loc,":",sma)
+end // end of [ S0MAGnone(tok) ]
 |
 S0MAGsing(sid0) =>
 i0dnt_fpemsg(out, sid0)
 |
 S0MAGlist
-(tbeg,s0as,tend) => let
+(tbeg,s0as,tend) =>
+let
 //
 val () = s0arglst_fpemsg(out, s0as)
 val () = token_RPAREN_fpemsg(out, tend)
@@ -591,8 +595,11 @@ case+
 t0a.node() of
 |
 T0ARGnone(tok) =>
+let
+val loc = t0a.lctn() in
 println
-("PREADX0-ERROR:",tok.lctn(),":",t0a)
+("PREADX0-ERROR:",loc,":",t0a)
+end // end of [ T0ARGnone(tok) ]
 |
 T0ARGsome(s0t1,topt) => fpemsg(out,s0t1)
 end(*let*)//end-of-[t0arg_fpemsg(out,t0a)]
@@ -610,8 +617,11 @@ case+
 tma.node() of
 |
 T0MAGnone(tok) =>
+let
+val loc = tok.lctn() in
 println
-("PREADX0-ERROR:",tok.lctn(),":",tma)
+("PREADX0-ERROR:",loc,":",tma)
+end // end of [ T0MAGnone(tok) ]
 |
 T0MAGlist
 (tbeg,t0as,tend) =>

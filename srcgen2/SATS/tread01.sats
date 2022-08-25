@@ -405,6 +405,7 @@ fun s1qua_fpemsg(FILR, s1qua): void
 fun s1tdf_fpemsg(FILR, s1tdf): void
 (* ****** ****** *)
 fun g1explst_fpemsg(FILR, g1explst): void
+fun g1expopt_fpemsg(FILR, g1expopt): void
 (* ****** ****** *)
 fun sort1lst_fpemsg(FILR, sort1lst): void
 fun sort1opt_fpemsg(FILR, sort1opt): void
