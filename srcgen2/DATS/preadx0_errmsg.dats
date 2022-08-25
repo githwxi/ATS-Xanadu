@@ -544,11 +544,39 @@ S0ARGnone(tok) =>
 println
 ("PREADX0-ERROR:",tok.lctn(),":",s0a)
 |
-S0ARGsome(sid1,topt) =>
+S0ARGsome(sid0,topt) =>
 (
-  fpemsg(out, sid1); fpemsg(out, topt)
+  fpemsg(out, sid0); fpemsg(out, topt)
 )
 end(*let*)//end-of-[s0arg_fpemsg(out,s0a)]
+//
+(* ****** ****** *)
+//
+#implfun
+s0mag_fpemsg
+(out, sma) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+sma.node() of
+|
+S0MAGnone(tok) =>
+println
+("PREADX0-ERROR:",tok.lctn(),":",sma)
+|
+S0MAGsing(sid0) =>
+i0dnt_fpemsg(out, sid0)
+|
+S0MAGlist
+(tbeg,s0as,tend) => let
+//
+val () = s0arglst_fpemsg(out, s0as)
+val () = token_RPAREN_fpemsg(out, tend)
+//
+end(*let*)//end-of-[S0MAGlist(_,_,_)]
+end(*let*)//end-of-[s0mag_fpemsg(out,sma)]
 //
 (* ****** ****** *)
 //
@@ -570,6 +598,7 @@ T0ARGsome(s0t1,topt) => fpemsg(out,s0t1)
 end(*let*)//end-of-[t0arg_fpemsg(out,t0a)]
 //
 (* ****** ****** *)
+//
 #implfun
 t0mag_fpemsg
 (out, tma) =
@@ -593,6 +622,7 @@ val () = token_RPAREN_fpemsg(out, tend)
 //
 end(*let*)//end-of-[T0MAGlist(_,_,_)]
 end(*let*)//end-of-[t0mag_fpemsg(out,tma)]
+//
 (* ****** ****** *)
 //
 #implfun

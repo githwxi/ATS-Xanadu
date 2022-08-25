@@ -368,6 +368,82 @@ S1LAB(lab,s1e1) => s1exp_fpemsg(out,s1e1)
 ) (*case+*)//end-of-(l1s1e_fpemsg(out,lse0))
 //
 (* ****** ****** *)
+//
+#implfun
+s1arg_fpemsg
+(out, s1a0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+s1a0.node() of
+|
+S1ARGsome(sid0,topt) =>
+(
+  sort1opt_fpemsg(out, topt))
+end(*let*)//end-of-[s1arg_fpemsg(out,s1a0)]
+//
+(* ****** ****** *)
+//
+#implfun
+t1arg_fpemsg
+(out, t1a0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+t1a0.node() of
+|
+T1ARGsome(s1t1,topt) => fpemsg(out, s1t1)
+end(*let*)//end-of-[t1arg_fpemsg(out,t1a0)]
+//
+(* ****** ****** *)
+//
+#implfun
+t1mag_fpemsg
+(out, t1ma) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+t1ma.node() of
+|
+T1MAGlist(t1as) =>
+let
+//
+val () = t1arglst_fpemsg(out, t1as)
+//
+end(*let*)//end-of-[T1MAGlist(_,_,_)]
+end(*let*)//end-of-[t1mag_fpemsg(out,t1ma)]
+//
+(* ****** ****** *)
+//
+#implfun
+s1tdf_fpemsg
+(out, tdf0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+tdf0.node() of
+|
+S1TDFsort(s1t1) =>
+sort1_fpemsg(out, s1t1)
+|
+S1TDFtsub(s1a1,s1es) =>
+let
+val () =
+  s1arg_fpemsg(out, s1a1)
+val () =
+  s1explst_fpemsg(out, s1es)
+end(*let*)//end of [S1TDFtsub(out,tdf)]
+end(*let*)//end-of-[s1tdf_fpemsg(out,tdf)]
+//
+(* ****** ****** *)
 
 local
 //
@@ -630,13 +706,33 @@ val () =
 d1eclist_fpemsg(out, dcs2)
 endlet // end of [D1Clocal0(...)]
 //
-|D1Cnone0() => ( (*void*) )
-|D1Cnone1(d0cl) => ( (*void*) )
+|
+D1Cabssort _ => ( (*void*) )
 //
 |
-D1Cerrck _ => d1ecl_fpemsg(out, dcl)
+D1Cstacst0
+( tknd
+, sid0, tmas, s1t1) =>
+let
+  val () =
+  t1maglst_fpemsg(out, tmas)
+  val () = fpemsg(out, s1t1)
+endlet // end-of-(D1Cstacst0(...))
 //
-end(*let*)//end-of-(auxmain(out,dcl))
+|
+D1Csortdef
+(tknd, tid0, tdf1) =>
+let
+val () = s1tdf_fpemsg(out, tdf1)
+endlet // end-of-(D1Csortdef(...))
+//
+| D1Cnone0() => ( (*void*) )
+| D1Cnone1(d0cl) => ( (*void*) )
+//
+|
+D1Cerrck(_,_) => d1ecl_fpemsg(out, dcl)
+//
+end (*let*) // end-of-(auxmain(out,dcl))
 
 in(*in-of-local*)
 
@@ -690,12 +786,30 @@ list_foreach<sort1>(s1ts) where
 foreach$work<sort1>(s1t1) = sort1_fpemsg(out,s1t1)
 }
 //
+#implfun
+sort1opt_fpemsg
+(out, topt) =
+optn_foreach<sort1>(topt) where
+{
+#impltmp
+foreach$work<sort1>(s1t1) = sort1_fpemsg(out,s1t1)
+}
+//
 (* ****** ****** *)
 //
 #implfun
 s1explst_fpemsg
 (out, s1es) =
 list_foreach<s1exp>(s1es) where
+{
+#impltmp
+foreach$work<s1exp>(s1e1) = s1exp_fpemsg(out,s1e1)
+}
+//
+#implfun
+s1expopt_fpemsg
+(out, sopt) =
+optn_foreach<s1exp>(sopt) where
 {
 #impltmp
 foreach$work<s1exp>(s1e1) = s1exp_fpemsg(out,s1e1)
@@ -710,6 +824,50 @@ list_foreach<l1s1e>(lses) where
 {
 #impltmp
 foreach$work<l1s1e>(lse1) = l1s1e_fpemsg(out,lse1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+s1arglst_fpemsg
+(out, s1as) =
+list_foreach<s1arg>(s1as) where
+{
+#impltmp
+foreach$work<s1arg>(s1a1) = s1arg_fpemsg(out,s1a1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+s1maglst_fpemsg
+(out, smas) =
+list_foreach<s1mag>(smas) where
+{
+#impltmp
+foreach$work<s1mag>(sma1) = s1mag_fpemsg(out,sma1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+t1arglst_fpemsg
+(out, t1as) =
+list_foreach<t1arg>(t1as) where
+{
+#impltmp
+foreach$work<t1arg>(t1a1) = t1arg_fpemsg(out,t1a1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+t1maglst_fpemsg
+(out, tmas) =
+list_foreach<t1mag>(tmas) where
+{
+#impltmp
+foreach$work<t1mag>(tma1) = t1mag_fpemsg(out,tma1)
 }
 //
 (* ****** ****** *)
