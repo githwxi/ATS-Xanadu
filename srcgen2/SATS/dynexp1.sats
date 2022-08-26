@@ -356,6 +356,13 @@ T1INVsome of
 (loc_t, t1qualst, d1patlst)
 //
 (* ****** ****** *)
+fun
+t1qua_get_lctn(t1qua): loc_t
+fun
+t1inv_get_lctn(t1inv): loc_t
+#symload lctn with t1qua_get_lctn
+#symload lctn with t1inv_get_lctn
+(* ****** ****** *)
 datatype
 f1unarrw =
 |
@@ -363,6 +370,10 @@ F1UNARRWdflt of (loc_t)
 |
 F1UNARRWlist of
 (loc_t, s1explst(*modlst*))
+(* ****** ****** *)
+fun
+f1unarrw_get_lctn(f1unarrw): loc_t
+#symload lctn with f1unarrw_get_lctn
 (* ****** ****** *)
 //
 datatype

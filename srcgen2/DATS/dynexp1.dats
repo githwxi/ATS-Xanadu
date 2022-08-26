@@ -255,6 +255,31 @@ end
 endloc (*local*) // end of [ local ]
 
 (* ****** ****** *)
+//
+#implfun
+t1qua_get_lctn
+(    tqua    ) =
+(
+case+ tqua of
+T1QUAsome(loc0, s1qs) => loc0)
+#implfun
+t1inv_get_lctn
+(    tinv    ) =
+(
+case+ tqua of
+T1INVsome(loc0,t1qs,d1ps) => loc0)
+//
+(* ****** ****** *)
+//
+#implfun
+f1unarrw_get_lctn
+(    arrw    ) =
+(
+case+ arrw of
+| F1UNARRWdflt(loc0) => loc0
+| F1UNARRWlist(loc0, s1es) => loc0)
+//
+(* ****** ****** *)
 
 local
 //

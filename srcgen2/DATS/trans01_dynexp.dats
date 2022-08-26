@@ -96,6 +96,9 @@ _(*TRANS01*) = "./trans01.dats"
 #symload lctn with d0cls_get_lctn
 #symload node with d0cls_get_node
 (* ****** ****** *)
+#symload lctn with t1qua_get_lctn
+#symload lctn with t1inv_get_lctn
+(* ****** ****** *)
 #symload trans01 with trans01_d0pat
 #symload trans01 with trans01_d0exp
 (* ****** ****** *)
@@ -1921,6 +1924,92 @@ val d1e1 = trans01_d0exp(tenv, d0e1)
 }
 ) (*case+*) // end of [trans01_d0res(...)]
 //
+(* ****** ****** *)
+
+#implfun
+trans01_t0qua
+(tenv, t0q0) =
+(
+case+ t0q0 of
+|
+T0QUAnone
+(  tok  ) =>
+let
+val loc0 = tok.lctn()
+in
+T1QUAsome(loc0, list_nil())
+end // end of [T0QUAnone(tok)]
+|
+T0QUAsome
+(tbeg,s0qs,tend) =>
+(
+T1QUAsome(loc0, s1qs)) where
+{
+//
+val
+loc0 = tbeg.lctn()+tend.lctn()
+val
+s1qs = trans01_s0qualst(tenv, s0qs)
+} (*where*)//end-of-[T0QUAsome(_,_,_)]
+) (*case+*)//end-of[trans01_t0qua(tenv,dres)]
+
+(* ****** ****** *)
+
+#implfun
+trans01_t0inv
+(tenv, tinv) =
+(
+case+ tinv of
+|
+T0INVnone
+(t0qs, tok1) =>
+let
+//
+val t1qs =
+trans01_t0qualst(tenv, t0qs)
+val d1ps = list_nil((*void*))
+//
+val loc0 =
+(
+case+ t1qs of
+|
+list_nil() => tok1.lctn()
+|
+list_cons
+(t1q1, t1qs) =>
+(t1q1.lctn() + tok1.lctn())
+) : loc_t // end-(val(loc0))
+//
+in//let
+  T1INVsome(loc0, t1qs, d1ps)
+endlet // end of [ T0INVnone(_,_) ]
+|
+T0INVsome
+(t0qs,tbeg,d0ps,tend) =>
+let
+//
+val t1qs =
+trans01_t0qualst(tenv, t0qs)
+val d1ps =
+trans01_d0patlst(tenv, d0ps)
+//
+val loc0 =
+(
+case+ t1qs of
+|
+list_nil() =>
+(tbeg.lctn()+tend.lctn())
+|
+list_cons
+(t1q1, t1qs) =>
+(t1q1.lctn() + tend.lctn())
+) : loc_t // end-(val(loc0))
+//
+in//let
+  T1INVsome(loc0, t1qs, d1ps)
+endlet // end of [T0INVsome(_,_,_,_)]
+) (*case+*)//end-of[trans01_t0inv(tenv,tinv)]
+
 (* ****** ****** *)
 //
 #implfun
