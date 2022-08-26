@@ -689,6 +689,31 @@ D1LAB(lab,d1e1) => d1exp_fpemsg(out,d1e1)
 ) (*case+*)//end-of-(l1d1e_fpemsg(out,lde0))
 //
 (* ****** ****** *)
+//
+#implfun
+f1arg_fpemsg
+  (out, farg) =
+(
+case+
+farg.node() of
+|
+F1ARGdyn0(dpat) =>
+d1pat_fpemsg(out, dpat)
+|
+F1ARGsta0(s1qs) =>
+let
+val () =
+s1qualst_fpemsg(out, s1qs)
+endlet // end of [F1ARGsta0(_,_,_)]
+|
+F1ARGmet0(s1es) =>
+let
+val () =
+s1explst_fpemsg(out, s1es)
+endlet // end of [F1ARGmet0(_,_,_)]
+)
+//
+(* ****** ****** *)
 
 local
 
@@ -1035,12 +1060,34 @@ foreach$work<l1d1e>(lde1) = l1d1e_fpemsg(out,lde1)
 (* ****** ****** *)
 //
 #implfun
+f1arglst_fpemsg
+(out, f1as) =
+list_foreach<f1arg>(f1as) where
+{
+#impltmp
+foreach$work<f1arg>(f1a1) = f1arg_fpemsg(out,f1a1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
 d1eclist_fpemsg
 (out, dcls) =
 list_foreach<d1ecl>(dcls) where
 {
 #impltmp
 foreach$work<d1ecl>(dcl1) = d1ecl_fpemsg(out,dcl1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d1arglst_fpemsg
+(out, d1as) =
+list_foreach<d1arg>(d1as) where
+{
+#impltmp
+foreach$work<d1arg>(d1a1) = d1arg_fpemsg(out,d1a1)
 }
 //
 (* ****** ****** *)
@@ -1134,7 +1181,7 @@ val (  ) =
 val (  ) =
   s1res_fpemsg( out , sres )
 val (  ) = // d1res=teqd1exp
-  teqd1exp_fpemsg(out, dres)
+  teqd1exp_fpemsg( out, dres )
 //
 end where
 {
