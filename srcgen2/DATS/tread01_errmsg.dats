@@ -1124,6 +1124,31 @@ end where
 (* ****** ****** *)
 //
 #implfun
+d1cstdcl_fpemsg
+(out, dcst) =
+let
+//
+val (  ) =
+  d1arglst_fpemsg(out, dags)
+//
+val (  ) =
+  s1res_fpemsg( out , sres )
+val (  ) = // d1res=teqd1exp
+  teqd1exp_fpemsg(out, dres)
+//
+end where
+{
+(*
+  val dpid = d1cstdcl_get_dpid(dcst)
+*)
+  val dags = d1cstdcl_get_darg(dcst)
+  val sres = d1cstdcl_get_sres(dcst)
+  val dres = d1cstdcl_get_dres(dcst)
+} (*where*)//end-of-[d1cstdcl_fpemsg(out,dcst)]
+//
+(* ****** ****** *)
+//
+#implfun
 d1valdclist_fpemsg
 (out, d1vs) =
 list_foreach<d1valdcl>(d1vs) where
