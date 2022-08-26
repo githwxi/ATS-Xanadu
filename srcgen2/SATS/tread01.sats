@@ -400,6 +400,7 @@ fun s1arg_fpemsg(FILR, s1arg): void
 fun s1mag_fpemsg(FILR, s1mag): void
 fun t1arg_fpemsg(FILR, t1arg): void
 fun t1mag_fpemsg(FILR, t1mag): void
+(* ****** ****** *)
 fun s1qua_fpemsg(FILR, s1qua): void
 (* ****** ****** *)
 fun s1tcn_fpemsg(FILR, s1tcn): void
@@ -422,6 +423,8 @@ fun s1arglst_fpemsg(FILR, s1arglst): void
 fun s1maglst_fpemsg(FILR, s1maglst): void
 fun t1arglst_fpemsg(FILR, t1arglst): void
 fun t1maglst_fpemsg(FILR, t1maglst): void
+(* ****** ****** *)
+fun s1qualst_fpemsg(FILR, s1qualst): void
 (* ****** ****** *)
 fun s1tcnlst_fpemsg(FILR, s1tcnlst): void
 fun d1tstlst_fpemsg(FILR, d1tstlst): void
