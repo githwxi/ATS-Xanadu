@@ -6,12 +6,16 @@
 #infixl > >= of 30
 (* ****** ****** *)
 //
-fun fact =
-lam(x: sint): sint =>
+fun
+fact(x: sint): sint =
 if x > 0 then x * fact(x-1) else 1
 //
 fun fact =
-fix fact(x: sint): sint =>
+lam(x: sint) : sint =>
+if x > 0 then x * fact(x-1) else 1
+//
+fun fact =
+fix fact(x: sint) : sint =>
 if x > 0 then x * fact(-1+x) else 1
 //
 (* ****** ****** *)

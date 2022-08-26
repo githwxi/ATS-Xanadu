@@ -334,7 +334,16 @@ endlet // end of [S1Equal(...)]
 //
 |
 S1Eerrck _ => s1exp_fpemsg(out, s1e)
-end(*let*)//end-of-(auxmain(out,s1e))
+endlet where
+{
+(*
+  val loc = s1e.lctn()
+  val ( ) =
+  prerrln("auxmain: loc = ", loc)
+  val ( ) =
+  prerrln("auxmain: s1e = ", s1e)
+*)
+} (*where*)//end-of-(auxmain(out,s1e))
 //
 in//local
 //
@@ -552,7 +561,7 @@ d1pat_fpemsg(out, d1p2))
 //
 |
 D1Perrck _ => d1pat_fpemsg(out, d1p)
-end where
+endlet where
 {
 (*
   val loc = d1p.lctn()
@@ -726,7 +735,7 @@ d1exp_fpemsg(out, d1e2))
 //
 |
 D1Eerrck _ => d1exp_fpemsg(out, d1e)
-end where
+endlet where
 {
 (*
   val loc = d1e.lctn()
@@ -1268,7 +1277,7 @@ val (  ) =
 val (  ) =
   wths1exp_fpemsg(out, wsxp)
 //
-end where
+endlet where
 {
   val dpat = d1valdcl_get_dpat(dval)
   val tdxp = d1valdcl_get_tdxp(dval)
@@ -1289,7 +1298,7 @@ val (  ) =
 val (  ) =
   teqd1exp_fpemsg(out, dini)
 //
-end where
+endlet where
 {
 (*
   val dpid = d1vardcl_get_dpid(dvar)
@@ -1319,7 +1328,7 @@ val (  ) =
 val (  ) =
   wths1exp_fpemsg(out, wsxp)
 //
-end where
+endlet where
 {
 (*
   val dpid = d1fundcl_get_dpid(dfun)
@@ -1345,7 +1354,7 @@ val (  ) =
 val (  ) = // d1res=teqd1exp
   teqd1exp_fpemsg( out, dres )
 //
-end where
+endlet where
 {
 (*
   val dpid = d1cstdcl_get_dpid(dcst)
