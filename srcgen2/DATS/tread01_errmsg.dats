@@ -843,6 +843,75 @@ endlet // end of [S1RESsome(seff,s1e1)]
 ) (*case+*)//end-of[s1res_fpemsg(out,sres)]
 //
 (* ****** ****** *)
+//
+#implfun
+l0d0e_fpemsg
+(out, lde) =
+(
+case+ lde of
+|
+D0LAB
+(lab,teq,d0e) => d0exp_fpemsg(out,d0e)
+) (*case*) // end-of(l0d0e_fpemsg(out,lde))
+//
+(* ****** ****** *)
+//
+#implfun
+d1gua_fpemsg
+(out, dgua) =
+(
+case+
+dgua.node() of
+|
+D1GUAexp(d1e1) =>
+d1exp_fpemsg(out, d1e1)
+|
+D1GUAmat(d1e1,d1p2) =>
+let
+val () = d1exp_fpemsg(out, d1e1)
+val () = d1pat_fpemsg(out, d1p2)
+endlet // end of [D1GUAmat(_,_,_)]
+) (*case*) // end-of(d1gua_fpemsg(out,dgua))
+//
+(* ****** ****** *)
+//
+#implfun
+d1gpt_fpemsg
+(out, dgpt) =
+(
+case+
+dgpt.node() of
+|
+D1GPTpat(d1p1) =>
+d1pat_fpemsg(out, d1p1)
+|
+D1GPTgua(d1p1,d1gs) =>
+let
+val () = d1pat_fpemsg(out, d1p1)
+val () = d1gualst_fpemsg(out, d1gs)
+endlet // end of [ D1GPTgua(_,_,_) ]
+) (*case*) // end-of(d1gpt_fpemsg(out,dgpt))
+//
+(* ****** ****** *)
+//
+#implfun
+d1cls_fpemsg
+(out, dcls) =
+(
+case+
+dcls.node() of
+|
+D1CLSgpt(dgpt) =>
+d1gpt_fpemsg(out, dgpt)
+|
+D1CLScls(dgpt,d1e2) =>
+let
+val () = d1gpt_fpemsg(out, dgpt)
+val () = d1exp_fpemsg(out, d1e2)
+endlet // end of [ D1CLScls(_,_,_) ]
+) (*case*) // end-of(d1cls_fpemsg(out,dcls))
+//
+(* ****** ****** *)
 
 local
 
@@ -1251,6 +1320,26 @@ list_foreach<f1arg>(f1as) where
 {
 #impltmp
 foreach$work<f1arg>(f1a1) = f1arg_fpemsg(out,f1a1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d1gualst_fpemsg
+(out, d1gs) =
+list_foreach<d1gua>(d1gs) where
+{
+#impltmp
+foreach$work<d1gua>(dgua) = d1gua_fpemsg(out,dgua)
+}
+//
+#implfun
+d1clslst_fpemsg
+(out, d1cs) =
+list_foreach<d1cls>(d1cs) where
+{
+#impltmp
+foreach$work<d1cls>(d1cl) = d1cls_fpemsg(out,d1cl)
 }
 //
 (* ****** ****** *)
