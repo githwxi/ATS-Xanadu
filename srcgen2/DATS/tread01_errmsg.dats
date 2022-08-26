@@ -685,6 +685,20 @@ d1exp_fpemsg(out, d1e1);
 d1clslst_fpemsg(out, d1cs))
 //
 |
+D1Elet0(d1cs,d1es) =>
+(
+d1eclist_fpemsg(out, d1cs);
+d1explst_fpemsg(out, d1es))
+|
+D1Ewhere(d1e1, d1cs) =>
+(
+d1exp_fpemsg
+( out, d1e1 )) where
+{
+val () =
+d1eclist_fpemsg(out, d1cs)}
+//
+|
 D1Et1up(tknd,d1es) =>
 (
 d1explst_fpemsg(out, d1es))
@@ -864,18 +878,6 @@ val
 s1e1 = s1exp_fpemsg(out, s1e1)
 endlet // end of [S1RESsome(seff,s1e1)]
 ) (*case+*)//end-of[s1res_fpemsg(out,sres)]
-//
-(* ****** ****** *)
-//
-#implfun
-l0d0e_fpemsg
-(out, lde) =
-(
-case+ lde of
-|
-D0LAB
-(lab,teq,d0e) => d0exp_fpemsg(out,d0e)
-) (*case*) // end-of(l0d0e_fpemsg(out,lde))
 //
 (* ****** ****** *)
 //
