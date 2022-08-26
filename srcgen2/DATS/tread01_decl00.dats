@@ -1434,7 +1434,7 @@ in//letp
 if
 (e00=err)
 then tdxp else TEQD1EXPsome(teq1, d1e2)
-endlet // end of [TEQD1EXPsome(_,_)]
+endlet // end of [ TEQD1EXPsome( _,_ ) ]
 ) (*case+*)//end-(tread01_teqd1exp(tdxp,err))
 //
 #implfun
@@ -1448,12 +1448,12 @@ WTHS1EXPnone() => wsxp
 WTHS1EXPsome(twth, s1e1) =>
 let
 val e00 = err
-val d0e2 = tread01_s1exp(s1e1, err)
-in//letp
+val s1e1 = tread01_s1exp(s1e1, err)
+in//let
 if
 (e00=err)
 then wsxp else WTHS1EXPsome(twth, s1e1)
-endlet // end of [WTHS1EXPsome(_,_)]
+endlet // end of [ WTHS1EXPsome( _,_ ) ]
 ) (*case+*)//end-(tread01_wths1exp(wsxp,err))
 //
 (* ****** ****** *)

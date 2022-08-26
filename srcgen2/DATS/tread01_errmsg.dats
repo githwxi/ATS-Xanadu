@@ -314,9 +314,20 @@ s1explst_fpemsg(out, ses1);
 s1explst_fpemsg(out, ses2))
 //
 |
+S1Eanno(s1e1,s1t2) =>
+let
+val
+( ) = s1exp_fpemsg(out, s1e1)
+val
+( ) = sort1_fpemsg(out, s1t2)
+endlet // end of [S1Eanno(...)]
+//
+|
 S1Equal(tok1,s1e2) =>
-(
-s1exp_fpemsg(out, s1e2))
+let
+val
+( ) = s1exp_fpemsg(out, s1e2)
+endlet // end of [S1Equal(...)]
 //
 |S1Enone0() => ((*void*))
 |S1Enone1(s0e1) => ((*void*))
@@ -523,6 +534,15 @@ d1patlst_fpemsg(out, dps1);
 d1patlst_fpemsg(out, dps2))
 //
 |
+D1Panno(d1p1,s1e2) =>
+let
+val
+( ) = d1pat_fpemsg(out, d1p1)
+val
+( ) = s1exp_fpemsg(out, s1e2)
+endlet // end of [D1Panno(...)]
+//
+|
 D1Pqual(tok1,d1p2) =>
 (
 d1pat_fpemsg(out, d1p2))
@@ -532,7 +552,16 @@ d1pat_fpemsg(out, d1p2))
 //
 |
 D1Perrck _ => d1pat_fpemsg(out, d1p)
-end(*let*)//end-of-(auxmain(out,d1p))
+end where
+{
+(*
+  val loc = d1p.lctn()
+  val ( ) =
+  prerrln("auxmain: loc = ", loc)
+  val ( ) =
+  prerrln("auxmain: d1p = ", d1p)
+*)
+} (*where*)//end-of-(auxmain(out,d1p))
 //
 in//local
 //
@@ -587,6 +616,7 @@ auxmain
 let
 #impltmp
 g_print$out<>() = out
+//
 in//let
 case
 d1e.node() of
@@ -625,6 +655,20 @@ d1explst_fpemsg(out, des1);
 d1explst_fpemsg(out, des2))
 //
 |
+D1Eseqn(des1,des2) =>
+(
+d1explst_fpemsg(out, des1);
+d1explst_fpemsg(out, des2))
+//
+|
+D1Eif0
+(d1e1, dthn, dels) =>
+(
+d1exp_fpemsg(out, d1e1);
+d1expopt_fpemsg(out, dthn);
+d1expopt_fpemsg(out, dels))
+//
+|
 D1Et1up(tknd,d1es) =>
 d1explst_fpemsg(out, d1es)
 |
@@ -633,6 +677,44 @@ D1Et2up
 (
 d1explst_fpemsg(out, des1);
 d1explst_fpemsg(out, des2))
+//
+|
+D1Elam0
+( tknd, f1as
+, sres, arrw, d1e1) =>
+let
+val
+( ) =
+f1arglst_fpemsg(out, f1as)
+val
+( ) = s1res_fpemsg(out, sres)
+val
+( ) = d1exp_fpemsg(out, d1e1)
+endlet // end of [D1Elam0(...)]
+//
+|
+D1Efix0
+( tknd
+, dpid, f1as
+, sres, arrw, d1e1) =>
+let
+val
+( ) =
+f1arglst_fpemsg(out, f1as)
+val
+( ) = s1res_fpemsg(out, sres)
+val
+( ) = d1exp_fpemsg(out, d1e1)
+endlet // end of [D1Efix0(...)]
+//
+|
+D1Eanno(d1e1,s1e2) =>
+let
+val
+( ) = d1exp_fpemsg(out, d1e1)
+val
+( ) = s1exp_fpemsg(out, s1e2)
+endlet // end of [D1Eanno(...)]
 //
 |
 D1Equal(tok1,d1e2) =>
@@ -644,7 +726,16 @@ d1exp_fpemsg(out, d1e2))
 //
 |
 D1Eerrck _ => d1exp_fpemsg(out, d1e)
-end(*let*)//end-of-(auxmain(out,d1e))
+end where
+{
+(*
+  val loc = d1e.lctn()
+  val ( ) =
+  prerrln("auxmain: loc = ", loc)
+  val ( ) =
+  prerrln("auxmain: d1e = ", d1e)
+*)
+} (*where*)//end-of-(auxmain(out,d1e))
 //
 in//local
 //
@@ -712,6 +803,27 @@ val () =
 s1explst_fpemsg(out, s1es)
 endlet // end of [F1ARGmet0(_,_,_)]
 )
+//
+(* ****** ****** *)
+//
+#implfun
+s1res_fpemsg
+  (out, sres) =
+(
+case+ sres of
+|
+S1RESnone() => ()
+|
+S1RESsome(seff,s1e1) =>
+let
+(*
+val
+seff = s1eff_fpemsg(out, seff)
+*)
+val
+s1e1 = s1exp_fpemsg(out, s1e1)
+endlet // end of [S1RESsome(seff,s1e1)]
+) (*case+*)//end-of[s1res_fpemsg(out,sres)]
 //
 (* ****** ****** *)
 
@@ -1046,6 +1158,15 @@ list_foreach<d1exp>(d1es) where
 foreach$work<d1exp>(d1e1) = d1exp_fpemsg(out,d1e1)
 }
 //
+#implfun
+d1expopt_fpemsg
+(out, dopt) =
+optn_foreach<d1exp>(dopt) where
+{
+#impltmp
+foreach$work<d1exp>(d1e1) = d1exp_fpemsg(out,d1e1)
+}
+//
 (* ****** ****** *)
 //
 #implfun
@@ -1082,6 +1203,17 @@ foreach$work<d1ecl>(dcl1) = d1ecl_fpemsg(out,dcl1)
 (* ****** ****** *)
 //
 #implfun
+t1qaglst_fpemsg
+(out, tqas) =
+list_foreach<t1qag>(tqas) where
+{
+#impltmp
+foreach$work<t1qag>(tqa1) = t1qag_fpemsg(out,tqa1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
 d1arglst_fpemsg
 (out, d1as) =
 list_foreach<d1arg>(d1as) where
@@ -1089,6 +1221,36 @@ list_foreach<d1arg>(d1as) where
 #impltmp
 foreach$work<d1arg>(d1a1) = d1arg_fpemsg(out,d1a1)
 }
+//
+(* ****** ****** *)
+//
+#implfun
+teqd1exp_fpemsg
+  (out, tdxp) =
+(
+case+ tdxp of
+|
+TEQD1EXPnone() => ()
+|
+TEQD1EXPsome(teq1, d1e2) =>
+let
+val d1e2 = d1exp_fpemsg(out, d1e2)
+endlet // end of [TEQD1EXPsome(_,_)]
+) (*case+*)//end-(teqd1exp_fpemsg(out,tdxp))
+//
+#implfun
+wths1exp_fpemsg
+  (out, wsxp) =
+(
+case+ wsxp of
+|
+WTHS1EXPnone() => ()
+|
+WTHS1EXPsome(twth, s1e1) =>
+let
+val s1e1 = s1exp_fpemsg(out, s1e1)
+endlet // end of [WTHS1EXPsome(_,_)]
+) (*case+*)//end-(wths1exp_fpemsg(out,wsxp))
 //
 (* ****** ****** *)
 //

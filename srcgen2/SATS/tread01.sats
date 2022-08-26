@@ -447,7 +447,10 @@ fun d1arg_fpemsg(FILR, d1arg): void
 fun d1ecl_fpemsg(FILR, d1ecl): void
 (* ****** ****** *)
 fun d1patlst_fpemsg(FILR, d1patlst): void
+(* ****** ****** *)
 fun d1explst_fpemsg(FILR, d1explst): void
+fun d1expopt_fpemsg(FILR, d1expopt): void
+(* ****** ****** *)
 fun l1d1plst_fpemsg(FILR, l1d1plst): void
 fun l1d1elst_fpemsg(FILR, l1d1elst): void
 (* ****** ****** *)
