@@ -25,7 +25,7 @@ length(xs: list(a)): sint =
 (
 case+ xs of
 | list_nil() => 0
-| list_cons(_, xs) => *1+length<a>(xs)
+| list_cons(_, xs) => 1+length<a>(xs)
 )
 (* ****** ****** *)
 
