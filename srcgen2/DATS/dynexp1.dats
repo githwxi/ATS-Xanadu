@@ -70,6 +70,11 @@ ATS_PACKNAME
 (* ****** ****** *)
 
 #implfun
+d1pat_none0
+(  loc0  ) =
+d1pat_make_node
+(loc0,D1Pnone0((*void*)))
+#implfun
 d1pat_none1
 (  dpat  ) =
 d1pat_make_node
@@ -78,6 +83,11 @@ dpat.lctn(),D1Pnone1(dpat))
 
 (* ****** ****** *)
 
+#implfun
+d1exp_none0
+(  loc0  ) =
+d1exp_make_node
+(loc0,D1Enone0((*void*)))
 #implfun
 d1exp_none1
 (  dexp  ) =
