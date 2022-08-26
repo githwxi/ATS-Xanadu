@@ -837,21 +837,13 @@ D0Etarg _ => f0_targ(tenv, d0e0)
 D0Elpar _ => f0_lpar(tenv, d0e0)
 //
 |D0Eif0 _ => f0_if0( tenv, d0e0 )
-(*
 |D0Eif1 _ => f0_if1( tenv, d0e0 )
-*)
 //
-|
-D0Ecas0 _ => f0_cas0(tenv, d0e0)
-(*
-|
-D0Ecas1 _ => f0_cas1(tenv, d0e0)
-*)
+|D0Ecas0 _ => f0_cas0(tenv, d0e0)
+|D0Ecas1 _ => f0_cas1(tenv, d0e0)
 //
-|
-D0Etup1 _ => f0_tup1(tenv, d0e0)
-|
-D0Ercd2 _ => f0_rcd2(tenv, d0e0)
+|D0Etup1 _ => f0_tup1(tenv, d0e0)
+|D0Ercd2 _ => f0_rcd2(tenv, d0e0)
 //
 |
 D0Ebrckt
@@ -1279,9 +1271,44 @@ in//let
 FXITMatm(d1e0) where
 {
 val d1e0 = d1exp
-(loc0, D1Eif0(d1e1,dthn,dels)) }
+(loc0, D1Eif0(d1e1, dthn, dels)) }
 //
 end (*let*)//end-of(f0_if0(tenv,d0e0))
+
+(* ****** ****** *)
+
+and
+f0_if1
+( tenv:
+! tr01env
+, d0e0: d0exp): d1efx =
+let
+//
+val
+loc0 = d0e0.lctn()
+//
+val-
+D0Eif1
+(tif0
+,d0e1,dthn
+,dels,tinv) = d0e0.node()
+//
+val d1e1 =
+trans01_d0exp(tenv, d0e1)
+val dthn =
+trans01_d0exp_THEN(tenv, dthn)
+val dels =
+trans01_d0exp_ELSE(tenv, dels)
+//
+val tinv = trans01_t0inv(tenv, tinv)
+//
+in//let
+FXITMatm(d1e0) where
+{
+val d1e0 = d1exp
+(loc0, D1Eif1(d1e1,dthn,dels,tinv)) }
+//
+end (*let*)//end-of(f0_if1(tenv,d0e0))
 
 (* ****** ****** *)
 
@@ -1309,8 +1336,40 @@ in
 FXITMatm(d1e0) where
 {
 val d1e0 = d1exp
-(loc0, D1Ecas0(tknd,d1e1,d1cs)) }
+(loc0, D1Ecas0(tknd, d1e1, d1cs)) }
 end (*let*) // end of [f0_cas0(tenv,d0e0)]
+
+(* ****** ****** *)
+
+and
+f0_cas1
+( tenv:
+! tr01env
+, d0e0: d0exp): d1efx =
+let
+//
+val loc0 = d0e0.lctn()
+//
+val-
+D0Ecas1
+(tknd
+,d0e1
+,tkof,tbar
+,d0cs,tinv) = d0e0.node()
+//
+val d1e1 =
+trans01_d0exp(tenv, d0e1)
+val d1cs =
+trans01_d0clslst(tenv, d0cs)
+//
+val tinv = trans01_t0inv(tenv, tinv)
+//
+in//let
+FXITMatm(d1e0) where
+{
+val d1e0 = d1exp
+(loc0, D1Ecas1(tknd,d1e1,d1cs,tinv)) }
+end (*let*) // end of [f0_cas1(tenv,d0e0)]
 
 (* ****** ****** *)
 //

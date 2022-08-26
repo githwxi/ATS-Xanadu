@@ -292,6 +292,11 @@ d0exp_ELSE = $D0E.d0exp_ELSE
 #typedef d0res = $D0E.d0res
 #typedef d1res = $D1E.d1res
 (* ****** ****** *)
+#typedef t0qua = $D0E.t0qua
+#typedef t1qua = $D1E.t1qua
+#typedef t0inv = $D0E.t0inv
+#typedef t1inv = $D1E.t1inv
+(* ****** ****** *)
 #typedef teqd0exp = $D0E.teqd0exp
 #typedef teqd1exp = $D1E.teqd1exp
 (* ****** ****** *)
@@ -683,6 +688,16 @@ trans01_s0res:
 fun
 trans01_d0res:
   (!tr01env, d0res)->d1res
+//
+(* ****** ****** *)
+fun
+trans01_t0qua:
+  (!tr01env, t0qua)->t1qua
+fun
+trans01_t0inv:
+  (!tr01env, t0inv)->t1inv
+(* ****** ****** *)
+//
 fun
 trans01_teqd0exp:
   (!tr01env, teqd0exp)->teqd1exp
