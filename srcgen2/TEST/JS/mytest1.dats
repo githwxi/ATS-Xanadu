@@ -19,6 +19,15 @@ fix fact(x: sint) : sint =>
 if x > 0 then x * fact(-1+x) else 1
 //
 (* ****** ****** *)
+fun
+<a:t0>
+length(xs: list(a)): sint = 
+(
+case+ xs of
+| list_nil() => 0
+| list_cons(_, xs) => *1+length<a>(xs)
+)
+(* ****** ****** *)
 
 #typedef
 fint2 =

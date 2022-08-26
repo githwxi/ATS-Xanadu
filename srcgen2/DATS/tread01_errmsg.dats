@@ -678,8 +678,16 @@ d1expopt_fpemsg(out, dthn);
 d1expopt_fpemsg(out, dels))
 //
 |
+D1Ecas0
+(tknd, d1e1, d1cs) =>
+(
+d1exp_fpemsg(out, d1e1);
+d1clslst_fpemsg(out, d1cs))
+//
+|
 D1Et1up(tknd,d1es) =>
-d1explst_fpemsg(out, d1es)
+(
+d1explst_fpemsg(out, d1es))
 |
 D1Et2up
 (tknd, des1, des2) =>
@@ -1000,6 +1008,53 @@ endloc(*local*)//end-of(local(d1ecl_fpemsg))
 (* ****** ****** *)
 //
 #implfun
+q1arg_fpemsg
+  (out, q1a0) =
+(
+case+
+q1a0.node() of
+|
+Q1ARGsome(tok1,tres) =>
+sort1opt_fpemsg(out, tres)
+) (*case+*)//end-of-[q1arg_fpemsg(out,q1a0)]
+//
+(* ****** ****** *)
+//
+#implfun
+s1qag_fpemsg
+  (out, s1q0) =
+(
+case+
+s1q0.node() of
+(*
+|
+S1QAGnone(tok) =>
+*)
+|
+S1QAGsome(q1as) => 
+q1arglst_fpemsg(out, q1as)
+) (*case+*)//end-of-[s1qag_fpemsg(out,s1q0)]
+//
+(* ****** ****** *)
+//
+#implfun
+t1qag_fpemsg
+  (out, t1q0) =
+(
+case+
+t1q0.node() of
+(*
+|
+T1QAGnone(tok) =>
+*)
+|
+T1QAGsome(q1as) => 
+q1arglst_fpemsg(out, q1as)
+) (*case+*)//end-of-[t1qag_fpemsg(out,t1q0)]
+//
+(* ****** ****** *)
+//
+#implfun
 g1explst_fpemsg
 (out, g1es) =
 list_foreach<g1exp>(g1es) where
@@ -1207,6 +1262,28 @@ list_foreach<d1ecl>(dcls) where
 {
 #impltmp
 foreach$work<d1ecl>(dcl1) = d1ecl_fpemsg(out,dcl1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+q1arglst_fpemsg
+(out, q1as) =
+list_foreach<q1arg>(q1as) where
+{
+#impltmp
+foreach$work<q1arg>(q1a1) = q1arg_fpemsg(out,q1a1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+s1qaglst_fpemsg
+(out, sqas) =
+list_foreach<s1qag>(sqas) where
+{
+#impltmp
+foreach$work<s1qag>(sqa1) = s1qag_fpemsg(out,sqa1)
 }
 //
 (* ****** ****** *)
