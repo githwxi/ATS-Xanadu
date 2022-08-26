@@ -431,6 +431,13 @@ fun d1exp_fpemsg(FILR, d1exp): void
 fun l1d1p_fpemsg(FILR, l1d1p): void
 fun l1d1e_fpemsg(FILR, l1d1e): void
 (* ****** ****** *)
+fun f1arg_fpemsg:(FILR,f1arg)->void
+(* ****** ****** *)
+fun s1res_fpemsg:(FILR,s1res)->void
+(* ****** ****** *)
+fun q1arg_fpemsg:(FILR,q1arg)->void
+fun t1qag_fpemsg:(FILR,t1qag)->void
+(* ****** ****** *)
 fun d1ecl_fpemsg(FILR, d1ecl): void
 (* ****** ****** *)
 fun d1patlst_fpemsg(FILR, d1patlst): void
@@ -438,15 +445,39 @@ fun d1explst_fpemsg(FILR, d1explst): void
 fun l1d1plst_fpemsg(FILR, l1d1plst): void
 fun l1d1elst_fpemsg(FILR, l1d1elst): void
 (* ****** ****** *)
+fun f1arglst_fpemsg:(FILR,f1arglst)->void
+(* ****** ****** *)
+fun q1arglst_fpemsg:(FILR,q1arglst)->void
+fun t1qaglst_fpemsg:(FILR,t1qaglst)->void
+(* ****** ****** *)
 fun d1eclist_fpemsg(FILR, d1eclist): void
+(* ****** ****** *)
+fun teqd1exp_fpemsg(FILR, teqd1exp): void
+fun wths1exp_fpemsg(FILR, wths1exp): void
+(* ****** ****** *)
+fun d1valdcl_fpemsg(FILR, d1valdcl): void
+fun d1vardcl_fpemsg(FILR, d1vardcl): void
+fun d1fundcl_fpemsg(FILR, d1fundcl): void
+fun d1cstdcl_fpemsg(FILR, d1cstdcl): void
+(* ****** ****** *)
+fun
+d1valdclist_fpemsg(FILR, d1valdclist): void
+(* ****** ****** *)
+fun
+d1vardclist_fpemsg(FILR, d1vardclist): void
+(* ****** ****** *)
+fun
+d1fundclist_fpemsg(FILR, d1fundclist): void
+(* ****** ****** *)
+fun
+d1cstdclist_fpemsg(FILR, d1cstdclist): void
 (* ****** ****** *)
 //
 fun
 d1parsed_fpemsg
 ( out: FILR, dpar: d1parsed ): void
 fun
-d1eclistopt_fpemsg
-( out: FILR, dopt: d1eclistopt ): void
+d1eclistopt_fpemsg(FILR, d1eclistopt): void
 //
 (* ****** ****** *)
 

@@ -784,6 +784,39 @@ endlet // end-of-( D1Cdatasort(...) )
 | D1Cnone1(d0cl) => ( (*void*) )
 //
 |
+D1Cvaldclst
+(tknd, d1cs) => let
+val () =
+  d1valdclist_fpemsg(out, d1cs)
+endlet // end-of-(D1Cvaldclst(_,_,_))
+|
+D1Cvardclst
+(tknd, d1cs) => let
+val () =
+  d1vardclist_fpemsg(out, d1cs)
+endlet // end-of-(D1Cvardclst(_,_,_))
+//
+|
+D1Cfundclst
+( tknd
+, tqas, d1cs) => let
+val () =
+  t1qaglst_fpemsg(out, tqas)
+val () =
+  d1fundclist_fpemsg(out, d1cs)
+endlet // end-of-(D1Cfundclst(_,_,_))
+//
+|
+D1Cdynconst
+( tknd
+, tqas, d1cs) => let
+val () =
+  t1qaglst_fpemsg(out, tqas)
+val () =
+  d1cstdclist_fpemsg(out, d1cs)
+endlet // end-of-(D1Cdynconst(_,_,_))
+//
+|
 D1Cerrck(_,_) => d1ecl_fpemsg(out, dcl)
 //
 end (*let*) // end-of-(auxmain(out,dcl))
@@ -1008,6 +1041,128 @@ list_foreach<d1ecl>(dcls) where
 {
 #impltmp
 foreach$work<d1ecl>(dcl1) = d1ecl_fpemsg(out,dcl1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d1valdcl_fpemsg
+(out, dval) =
+let
+//
+val (  ) =
+  d1pat_fpemsg(out, dpat)
+//
+val (  ) =
+  teqd1exp_fpemsg(out, tdxp)
+//
+val (  ) =
+  wths1exp_fpemsg(out, wsxp)
+//
+end where
+{
+  val dpat = d1valdcl_get_dpat(dval)
+  val tdxp = d1valdcl_get_tdxp(dval)
+  val wsxp = d1valdcl_get_wsxp(dval)
+//
+} (*where*)//end-of-[d1valdcl_fpemsg(out,dval)]
+//
+(* ****** ****** *)
+//
+#implfun
+d1vardcl_fpemsg
+(out, dvar) =
+let
+//
+val (  ) =
+  s1expopt_fpemsg(out, sres)
+//
+val (  ) =
+  teqd1exp_fpemsg(out, dini)
+//
+end where
+{
+(*
+  val dpid = d1vardcl_get_dpid(dvar)
+  val vpid = d1vardcl_get_vpid(dvar)
+*)
+  val sres = d1vardcl_get_sres(dvar)
+  val dini = d1vardcl_get_dini(dvar)
+//
+} (*where*)//end-of-[d1vardcl_fpemsg(out,dval)]
+//
+(* ****** ****** *)
+//
+#implfun
+d1fundcl_fpemsg
+(out, dfun) =
+let
+//
+val (  ) =
+  f1arglst_fpemsg(out, fags)
+//
+val (  ) =
+  s1res_fpemsg( out , sres )
+//
+val (  ) =
+  teqd1exp_fpemsg(out, tdxp)
+//
+val (  ) =
+  wths1exp_fpemsg(out, wsxp)
+//
+end where
+{
+(*
+  val dpid = d1fundcl_get_dpid(dfun)
+*)
+  val fags = d1fundcl_get_farg(dfun)
+  val sres = d1fundcl_get_sres(dfun)
+  val tdxp = d1fundcl_get_tdxp(dfun)
+  val wsxp = d1fundcl_get_wsxp(dfun)
+} (*where*)//end-of-[d1fundcl_fpemsg(out,dfun)]
+//
+(* ****** ****** *)
+//
+#implfun
+d1valdclist_fpemsg
+(out, d1vs) =
+list_foreach<d1valdcl>(d1vs) where
+{
+#impltmp
+foreach$work<d1valdcl>(dval) = d1valdcl_fpemsg(out,dval)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d1vardclist_fpemsg
+(out, d1vs) =
+list_foreach<d1vardcl>(d1vs) where
+{
+#impltmp
+foreach$work<d1vardcl>(dvar) = d1vardcl_fpemsg(out,dvar)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d1fundclist_fpemsg
+(out, d1fs) =
+list_foreach<d1fundcl>(d1fs) where
+{
+#impltmp
+foreach$work<d1fundcl>(dfun) = d1fundcl_fpemsg(out,dfun)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d1cstdclist_fpemsg
+(out, d1cs) =
+list_foreach<d1cstdcl>(d1cs) where
+{
+#impltmp
+foreach$work<d1cstdcl>(dcst) = d1cstdcl_fpemsg(out,dcst)
 }
 //
 (* ****** ****** *)
