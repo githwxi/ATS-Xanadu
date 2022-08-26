@@ -2482,55 +2482,81 @@ if
 then tinv
 else T0INVsome(t0qs,tbeg,d0ps,tend)
 endlet // end of [T0INVsome(_,_,_,_)]
-) (*case+*)//end-of[preadx0_t0inv(dres,err)]
+) (*case+*)//end-of[preadx0_t0inv(tinv,err)]
 
 (* ****** ****** *)
+//
 #implfun
 preadx0_d0patopt
-  (  opt, err  ) =
-optn_preadx0_fnp(opt, err, preadx0_d0pat)
-#implfun
-preadx0_d0expopt
-  (  opt, err  ) =
-optn_preadx0_fnp(opt, err, preadx0_d0exp)
-(* ****** ****** *)
+(   opt, err   ) =
+(
+  optn_preadx0_fnp(opt, err, preadx0_d0pat))
+//
 #implfun
 preadx0_d0patlst
-  (  lst, err  ) =
-list_preadx0_fnp(lst, err, preadx0_d0pat)
+(   lst, err   ) =
+(
+  list_preadx0_fnp(lst, err, preadx0_d0pat))
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_d0expopt
+(   opt, err   ) =
+(
+  optn_preadx0_fnp(opt, err, preadx0_d0exp))
+//
 #implfun
 preadx0_d0explst
-  (  lst, err  ) =
-list_preadx0_fnp(lst, err, preadx0_d0exp)
+(   lst, err   ) =
+(
+  list_preadx0_fnp(lst, err, preadx0_d0exp))
+//
 (* ****** ****** *)
+//
 #implfun
 preadx0_l0d0plst
-  (  lst, err  ) =
-list_preadx0_fnp(lst, err, preadx0_l0d0p)
+(   lst, err   ) =
+(
+  list_preadx0_fnp(lst, err, preadx0_l0d0p))
 #implfun
 preadx0_l0d0elst
-  (  lst, err  ) =
-list_preadx0_fnp(lst, err, preadx0_l0d0e)
+(   lst, err   ) =
+(
+  list_preadx0_fnp(lst, err, preadx0_l0d0e))
+//
 (* ****** ****** *)
+//
 #implfun
 preadx0_f0arglst
-  (  lst, err  ) =
-list_preadx0_fnp(lst, err, preadx0_f0arg)
+(   lst, err   ) =
+(
+  list_preadx0_fnp(lst, err, preadx0_f0arg))
+//
 (* ****** ****** *)
+//
 #implfun
 preadx0_d0gualst
-  (  lst, err  ) =
-list_preadx0_fnp(lst, err, preadx0_d0gua)
+(   lst, err   ) =
+(
+  list_preadx0_fnp(lst, err, preadx0_d0gua))
+//
 (* ****** ****** *)
+//
 #implfun
 preadx0_d0clslst
-  (  lst, err  ) =
-list_preadx0_fnp(lst, err, preadx0_d0cls)
+(   lst, err   ) =
+(
+  list_preadx0_fnp(lst, err, preadx0_d0cls))
+//
 (* ****** ****** *)
+//
 #implfun
 preadx0_t0qualst
-  (  lst, err  ) =
-list_preadx0_fnp(lst, err, preadx0_t0qua)
+(   lst, err   ) =
+(
+  list_preadx0_fnp(lst, err, preadx0_t0qua))
+//
 (* ****** ****** *)
 //
 #implfun

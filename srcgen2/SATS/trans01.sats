@@ -303,6 +303,9 @@ d0exp_ELSE = $D0E.d0exp_ELSE
 #typedef wths0exp = $D0E.wths0exp
 #typedef wths1exp = $D1E.wths1exp
 (* ****** ****** *)
+#typedef t0qualst = $D0E.t0qualst
+#typedef t1qualst = $D1E.t1qualst
+(* ****** ****** *)
 #typedef d0valdcl = $D0E.d0valdcl
 #typedef d0vardcl = $D0E.d0vardcl
 #typedef d0fundcl = $D0E.d0fundcl
@@ -705,6 +708,10 @@ fun
 trans01_wths0exp:
   (!tr01env, wths0exp)->wths1exp
 //
+(* ****** ****** *)
+fun
+trans01_t0qualst:
+  (!tr01env, t0qualst)->t1qualst
 (* ****** ****** *)
 //
 fun
