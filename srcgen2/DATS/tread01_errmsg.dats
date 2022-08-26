@@ -725,6 +725,18 @@ val
 endlet // end of [D1Efix0(...)]
 //
 |
+D1Etry0
+(tknd, d1e1, d1cs) =>
+let
+val
+( ) =
+d1exp_fpemsg( out , d1e1 )
+val
+( ) =
+d1clslst_fpemsg( out , d1cs )
+endlet // end of [D1Etry0(...)]
+//
+|
 D1Eanno(d1e1,s1e2) =>
 let
 val
@@ -738,8 +750,19 @@ D1Equal(tok1,d1e2) =>
 (
 d1exp_fpemsg(out, d1e2))
 //
-|D1Enone0() => ((*void*))
-|D1Enone1(s0e1) => ((*void*))
+|
+D1Eexists
+(tknd, d1es, d1e1) =>
+let
+val
+( ) =
+d1explst_fpemsg(out, d1es)
+val
+( ) = d1exp_fpemsg(out , d1e1)
+endlet // end of [D1Eexists(...)]
+//
+|D1Enone0() => (  (*void*)  )
+|D1Enone1(s0e1) => (  (*void*)  )
 //
 |
 D1Eerrck _ => d1exp_fpemsg(out, d1e)
