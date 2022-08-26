@@ -655,6 +655,13 @@ d1exp_fpemsg(out, d1e1);
 d1exp_fpemsg(out, d1e2))
 //
 |
+D1Esarg(s1es) =>
+s1explst_fpemsg(out, s1es)
+|
+D1Etarg(s1es) =>
+s1explst_fpemsg(out, s1es)
+//
+|
 D1El1st(d1es) =>
 d1explst_fpemsg(out, d1es)
 |
@@ -697,6 +704,16 @@ d1exp_fpemsg
 {
 val () =
 d1eclist_fpemsg(out, d1cs)}
+//
+|
+D1Ebrckt(d1es) =>
+(
+d1explst_fpemsg(out, d1es))
+|
+D1Edtsel
+(tknd, lab1, dopt) =>
+(
+d1expopt_fpemsg(out, dopt))
 //
 |
 D1Et1up(tknd,d1es) =>
@@ -764,6 +781,8 @@ D1Equal(tok1,d1e2) =>
 (
 d1exp_fpemsg(out, d1e2))
 //
+|
+D1Eextnam(  gnm  ) => ((*void*))
 |
 D1Eexists
 (tknd, d1es, d1e1) =>
