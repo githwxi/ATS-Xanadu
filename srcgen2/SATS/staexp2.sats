@@ -106,13 +106,14 @@ S2Txtv of (t2xtv) // for unification
 S2Ttup of (sort2lst) (* tuple sort *)
 //
 |
-S2Tfun of ((*void*))
+S2Tf0un of ((*void*))
 |
-S2Tfun of
+S2Tf1un of
 (sort2lst(*arg*),sort2(*res*))//function
 //
 |
-S2Tapp of (sort2(*fun*), sort2lst(*arg*))
+S2Tapps of
+(sort2(*fun*),sort2lst(*arg*))//app-list
 //
 |
 S2Tnone0 of () // HX: error or special
@@ -129,10 +130,14 @@ where
 //
 (* ****** ****** *)
 //
-fun t2abs_fprint:(FILR,t2abs)->void
-fun t2bas_fprint:(FILR,t2bas)->void
-fun t2dat_fprint:(FILR,t2dat)->void
-fun sort2_fprint:(FILR,sort2)->void
+fun
+t2abs_fprint:(FILR,t2abs)->void
+fun
+t2bas_fprint:(FILR,t2bas)->void
+fun
+t2dat_fprint:(FILR,t2dat)->void
+fun
+sort2_fprint:(FILR,sort2)->void
 //
 (* ****** ****** *)
 

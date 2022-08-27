@@ -398,6 +398,15 @@ tread01_errmsg_dats: ; $(XATSOPT) --dynamic DATS/tread01_errmsg.dats
 
 ######
 all_dats:: \
+staexp2_dats
+staexp2_dats: ; $(XATSOPT) --dynamic DATS/staexp2.dats
+all_dats:: \
+staexp2_print0_dats
+staexp2_print0_dats: ; $(XATSOPT) --dynamic DATS/staexp2_print0.dats
+######
+
+######
+all_dats:: \
 xatsopt_tmplib_dats
 xatsopt_tmplib_dats: ; $(XATSOPT) --dynamic DATS/xatsopt_tmplib.dats
 ######
