@@ -1088,7 +1088,8 @@ let
 val lvl = errvl(d1e1)
 //
 in//let
-  d1exp( loc , D1Eanno( d1e1 , s1e2 ) )
+d1exp_errck
+(lvl+1, d1exp(loc,D1Eanno(d1e1,s1e2)))
 endlet // end of [d1exp_anno_errck(...)]
 //
 (* ****** ****** *)
