@@ -101,4 +101,65 @@ end (*let*) // end of [sort2_fprint(out, s2t0)]
 
 (* ****** ****** *)
 
+#implfun
+s2exp_fprint
+(out, s2e0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ s2e0 of
+//
+|S2Eint(int) =>
+print("S2Eint(",int,")")
+|S2Ebtf(btf) =>
+print("S2Ebtf(",btf,")")
+|S2Echr(chr) =>
+print("S2Echr(",chr,")")
+|S2Estr(str) =>
+print("S2Estr(",str,")")
+//
+|S2Ecst(s2c) =>
+print("S2Ecst(",s2c,")")
+|S2Evar(s2v) =>
+print("S2Evar(",s2v,")")
+//
+|
+S2Eany(knd) =>
+print("S2Eany(",knd,")")
+//
+|S2Etop0(s2e) =>
+print("S2Etop0(",s2e,")")
+|S2Etopz(s2e) =>
+print("S2Etopz(",s2e,")")
+//
+|
+S2Eapps(s2f0,s2es) =>
+print("S2Eapps(",s2f0,";",s2es,")")
+|
+S2Elam0(s2vs,s2e1) =>
+print("S2Elam0(",s2vs,";",s2e1,")")
+//
+|
+S2Efun0
+( f2cl
+, npf1, s2es, s2r0) =>
+(
+print("S2Efun0(");
+print(f2cl,";",npf1,";",s2es,";",s2r0,")"))
+//
+|
+S2Enone0() => print("S2Enone0(",")")
+|
+S2Enone1
+(loc0, s1e1) => print("S2Enone1(",s1e1,")")
+|
+S2Enone2
+(loc0, s2e1) => print("S2Enone2(",s2e1,")")
+//
+end (*let*) // end of [s2exp_fprint(out, s2e0)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_staexp2_print0.dats] *)
