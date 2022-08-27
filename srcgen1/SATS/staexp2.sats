@@ -165,7 +165,7 @@ where sort2lst = List0(sort2)
 typedef
 sort2opt = Option(sort2)
 typedef
-sort2lstst = List0(sort2lst)
+sort2lstlst = List0(sort2lst)
 typedef
 sort2lstopt = Option(sort2lst)
 
