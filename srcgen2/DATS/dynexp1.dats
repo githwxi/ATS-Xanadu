@@ -266,7 +266,7 @@ T1QUAsome(loc0, s1qs) => loc0)
 t1inv_get_lctn
 (    tinv    ) =
 (
-case+ tqua of
+case+ tinv of
 T1INVsome(loc0,t1qs,d1ps) => loc0)
 //
 (* ****** ****** *)

@@ -782,7 +782,8 @@ D1Equal(tok1,d1e2) =>
 d1exp_fpemsg(out, d1e2))
 //
 |
-D1Eextnam(  gnm  ) => ((*void*))
+D1Eextnam
+(tknd, gnam) => () // fixity-less
 |
 D1Eexists
 (tknd, d1es, d1e1) =>

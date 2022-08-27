@@ -975,10 +975,41 @@ FXITMatm
 end (*let*)//end of [D0Equal(tok1,d0e2)]
 //
 |
-_(*otherwise*) =>
+D0Eextnam
+(tknd, gnam) =>
 let
-val d1e0 =
-d1exp_none1(d0e0) in FXITMatm(d1e0) end
+//
+val loc0 = d0e0.lctn()
+//
+val
+gnam = trans01_g0nam(tenv, gnam)
+in // let
+FXITMatm
+(d1exp(loc0, D1Eextnam(tknd, gnam)))
+end (*let*)//end-of(D0Eextnam(tknd,gnam))
+|
+D0Eexists
+(tknd,d0es,d0e1) =>
+let
+//
+val loc0 = d0e0.lctn()
+//
+val
+d1es =
+trans01_d0explst(tenv, d0es)
+val
+d1e1 = trans01_d0exp(tenv, d0e1)
+//
+in // let
+FXITMatm
+(d1exp(loc0, D1Eexists(tknd,d1es,d1e1)))
+endlet//end-of-[D0Eexists(tknd,d0es,d0e1)]
+|
+_(* otherwise *) =>
+let
+val
+d1e0 = d1exp_none1(d0e0) in FXITMatm(d1e0)
+endlet // end of [ _(*otherwise*) ]
 //
 ) (*case+*) // end of [f0_dexp(tenv,d0e0)]
 //

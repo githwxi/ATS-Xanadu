@@ -1605,7 +1605,8 @@ d1exp_qual_errck( loc0, tok1, d1e2 )
 endlet // end of [D1Equal(tok1,d1e2)]
 //
 |
-D1Eextnam(gnm) => d1e0//fixity-less
+D1Eextnam
+(tknd, gnam) => d1e0//HX:fixity-less
 //
 |
 D1Eexists
@@ -1627,8 +1628,11 @@ then (d1e0) else
 d1exp_exists_errck(loc0,tknd,d1es,d1e1)
 endlet//end-[D1Eexists(tknd,d1es,d1e1)]
 |
-_(*otherwise*) =>
-(err := err + 1; d1exp_errck(1, d1e0))
+_(* otherwise *) =>
+let
+val () =
+(err := err + 1) in d1exp_errck(1, d1e0)
+endlet // end of [ _(*otherwise*) ]
 //
 ) where
 {
