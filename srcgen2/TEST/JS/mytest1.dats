@@ -5,6 +5,12 @@
 #infixl < <= of 30
 #infixl > >= of 30
 (* ****** ****** *)
+#typedef
+fint2 =
+lam(a:int): type => (int(a), int(a))
+#typedef
+fint2(a:int): type = (int(a), int(a))
+(* ****** ****** *)
 //
 fun
 fact(x: sint): sint =
@@ -28,14 +34,15 @@ case+ xs of
 | list_cons(_, xs) => 1+length<a>(xs)
 )
 (* ****** ****** *)
-
-#typedef
-fint2 =
-lam(a:int): type => (int(a), int(a))
-
-#typedef
-fint2(a:int): type = (int(a), int(a))
-
+#impltmp
+{a:t0}
+length<a>
+(xs: list(/a)): sint = 
+(
+case+ xs of
+| list_nil() => 0
+| list_cons(_, xs) => 1+length<a>(xs)
+)
 (* ****** ****** *)
 
 (* end of [mytest1.dats] *)

@@ -329,8 +329,8 @@ val
 ( ) = s1exp_fpemsg(out, s1e2)
 endlet // end of [S1Equal(...)]
 //
-|S1Enone0() => ((*void*))
-|S1Enone1(s0e1) => ((*void*))
+|S1Enone0() => ( (*void*) )
+|S1Enone1(s0e1) => ( (*void*) )
 //
 |
 S1Eerrck _ => s1exp_fpemsg(out, s1e)
@@ -1048,9 +1048,6 @@ D1Cdatasort
 val () = d1tstlst_fpemsg(out, d1ts)
 endlet // end-of-( D1Cdatasort(...) )
 //
-| D1Cnone0() => ( (*void*) )
-| D1Cnone1(d0cl) => ( (*void*) )
-//
 |
 D1Cvaldclst
 (tknd, d1cs) => let
@@ -1075,6 +1072,25 @@ val () =
 endlet // end-of-(D1Cfundclst(_,_,_))
 //
 |
+D1Cimplmnt0
+( tknd
+, sqas, tqas
+, dqid, tias
+, f1as, sres, d1e1) =>
+let
+val () =
+  s1qaglst_fpemsg(out, sqas)
+val () =
+  t1qaglst_fpemsg(out, tqas)
+val () =
+  t1iaglst_fpemsg(out, tias)
+val () =
+  f1arglst_fpemsg(out, f1as)
+val () = s1res_fpemsg(out, sres)
+val () = d1exp_fpemsg(out, d1e1)
+endlet // end of [ D1Cimplmnt0(...) ]
+//
+|
 D1Cdynconst
 ( tknd
 , tqas, d1cs) => let
@@ -1083,6 +1099,9 @@ val () =
 val () =
   d1cstdclist_fpemsg(out, d1cs)
 endlet // end-of-(D1Cdynconst(_,_,_))
+//
+| D1Cnone0() => ( (*void*) )
+| D1Cnone1(d0cl) => ( (*void*) )
 //
 |
 D1Cerrck(_,_) => d1ecl_fpemsg(out, dcl)
@@ -1165,6 +1184,23 @@ T1QAGnone(tok) =>
 T1QAGsome(q1as) => 
 q1arglst_fpemsg(out, q1as)
 ) (*case+*)//end-of-[t1qag_fpemsg(out,t1q0)]
+//
+(* ****** ****** *)
+//
+#implfun
+t1iag_fpemsg
+  (out, t1i0) =
+(
+case+
+t1i0.node() of
+(*
+|
+T1IAGnone(tok) =>
+*)
+|
+T1IAGsome(s1es) => 
+s1explst_fpemsg(out, s1es)
+) (*case+*)//end-of-[t1iag_fpemsg(out,t1i0)]
 //
 (* ****** ****** *)
 //
@@ -1429,6 +1465,17 @@ list_foreach<t1qag>(tqas) where
 {
 #impltmp
 foreach$work<t1qag>(tqa1) = t1qag_fpemsg(out,tqa1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+t1iaglst_fpemsg
+(out, tias) =
+list_foreach<t1iag>(tias) where
+{
+#impltmp
+foreach$work<t1iag>(tia1) = t1iag_fpemsg(out,tia1)
 }
 //
 (* ****** ****** *)
