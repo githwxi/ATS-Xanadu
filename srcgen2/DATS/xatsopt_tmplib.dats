@@ -61,6 +61,9 @@ ATS_PACKNAME
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
+(* ****** ****** *)
 //
 #impltmp
 g_print
@@ -807,6 +810,30 @@ print("WTHS1EXPnone(", ")")
 |
 WTHS1EXPsome(tok1, s1e2) =>
 print("WTHS1EXPsome(", tok1, ";", s1e2, ")"))
+//
+(* ****** ****** *)
+
+(*
+HX: for level-2 syntax
+*)
+
+(* ****** ****** *)
+//
+#impltmp
+g_print<t2abs>(t2a) =
+t2abs_fprint(g_print$out<>(), t2a)
+#impltmp
+g_print<t2bas>(t2b) =
+t2bas_fprint(g_print$out<>(), t2b)
+#impltmp
+g_print<t2dat>(t2d) =
+t2dat_fprint(g_print$out<>(), t2d)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<sort2>(s2t) =
+sort2_fprint(g_print$out<>(), s2t)
 //
 (* ****** ****** *)
 
