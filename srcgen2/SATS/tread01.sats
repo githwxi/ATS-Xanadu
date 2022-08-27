@@ -445,6 +445,7 @@ fun s1res_fpemsg:(FILR,s1res)->void
 fun q1arg_fpemsg:(FILR,q1arg)->void
 fun s1qag_fpemsg:(FILR,s1qag)->void
 fun t1qag_fpemsg:(FILR,t1qag)->void
+fun t1iag_fpemsg:(FILR,t1iag)->void
 (* ****** ****** *)
 fun a1typ_fpemsg(FILR, a1typ): void
 fun d1arg_fpemsg(FILR, d1arg): void
@@ -467,6 +468,7 @@ fun d1clslst_fpemsg:(FILR,d1clslst)->void
 fun q1arglst_fpemsg:(FILR,q1arglst)->void
 fun s1qaglst_fpemsg:(FILR,s1qaglst)->void
 fun t1qaglst_fpemsg:(FILR,t1qaglst)->void
+fun t1iaglst_fpemsg:(FILR,t1iaglst)->void
 (* ****** ****** *)
 fun a1typlst_fpemsg(FILR, a1typlst): void
 fun d1arglst_fpemsg(FILR, d1arglst): void

@@ -324,7 +324,8 @@ let
 val lvl = errvl(d1p1)
 //
 in//let
-  d1pat( loc , D1Panno( d1p1 , s1e2 ) )
+d1pat_errck
+(lvl+1, d1pat(loc,D1Panno(d1p1,s1e2)))
 endlet // end of [d1pat_anno_errck(...)]
 //
 (* ****** ****** *)
