@@ -97,7 +97,24 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef s2cstlst = list(s2cst)
 #typedef s2varlst = list(s2var)
+(* ****** ****** *)
 #typedef s2explst = list(s2exp)
+#typedef s2expopt = optn(s2exp)
+(* ****** ****** *)
+//
+datatype
+s2lab(x0:type) =
+|
+S2LAB of
+(label, x0(*elt*))
+//
+(* ****** ****** *)
+#typedef
+s1lab(x0:t0)=$S1E.s1lab(x0)
+(* ****** ****** *)
+#typedef l2s2e = s2lab(s2exp)
+(* ****** ****** *)
+#typedef l2s2elst = list(l2s2e)
 (* ****** ****** *)
 
 datatype t2bas =
@@ -166,6 +183,11 @@ fun
 sort2_fprint:(FILR,sort2)->void
 //
 (* ****** ****** *)
+fun
+s2cst_fprint:(FILR,s2cst)->void
+fun
+s2var_fprint:(FILR,s2var)->void
+(* ****** ****** *)
 //
 datatype
 s2exp_node =
@@ -232,10 +254,8 @@ s2exp_node =
   ( strn(*name*)
   , s2explst(*arglst*)) (* external *)
 //
-(*
 | S2Etrcd of
-  (s2rec(*knd*), int(*npf*), l2s2elst)
-*)
+  (trcdknd(*knd*), int(*npf*), l2s2elst)
 //
 | S2Enone0 // of () // HX: error or special
 //
@@ -249,16 +269,14 @@ s2exp_node =
 | S2Enone2 of
   (loc_t, s2exp(*src*)) // HX: error indication
 //
-// end of [s2exp_node]
+// end of [s2exp_node] // end of [ datatype(...) ]
 //
 (* ****** ****** *)
 fun
 s2exp_fprint:(FILR,s2exp)->void
 (* ****** ****** *)
-fun
-s2exp_get_sort(s2exp): sort2
-fun
-s2exp_get_node(s2exp): s2exp_node
+fun s2exp_get_sort(s2exp): sort2
+fun s2exp_get_node(s2exp): s2exp_node
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_staexp2.sats] *)

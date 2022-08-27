@@ -836,5 +836,17 @@ g_print<sort2>(s2t) =
 sort2_fprint(g_print$out<>(), s2t)
 //
 (* ****** ****** *)
+//
+#impltmp
+g_print<s2cst>(s2c) =
+s2cst_fprint(g_print$out<>(), s2c)
+#impltmp
+g_print<s2var>(s2v) =
+s2var_fprint(g_print$out<>(), s2v)
+#impltmp
+g_print<s2exp>(s2e) =
+s2exp_fprint(g_print$out<>(), s2e)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xatsopt_tmplib.dats] *)
