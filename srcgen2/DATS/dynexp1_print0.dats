@@ -296,6 +296,15 @@ print("D1Eanno(",d1e1,";",s1e2,")")
 D1Equal(tok1,d1e2) =>
 print("D1Equal(",tok1,";",d1e2,")")
 //
+|
+D1Eextnam
+(tknd,gnam) =>
+print("D1Eextnam(",tknd,";",gnam,")")
+|
+D1Eexists
+(tknd,d1es,d1e1) =>
+print("D1Eexists(",tknd,";",d1es,";",d1e1,")")
+//
 | D1Enone0() => print("D1Enone0(", ")")
 | D1Enone1(dexp) => print("D1Enone1(", dexp ,")")
 //

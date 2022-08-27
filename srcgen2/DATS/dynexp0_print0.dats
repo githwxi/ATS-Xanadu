@@ -325,8 +325,8 @@ print("D0Equal(",tok1,";",d0e2,")")
 //
 |
 D0Eextnam
-(tknd,gnm1) =>
-print("D0Eextnam(",tknd,";",gnm1,")")
+(tknd,gnam) =>
+print("D0Eextnam(",tknd,";",gnam,")")
 |
 D0Eexists
 (tknd,d0es,d0e1) =>

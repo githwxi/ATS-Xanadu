@@ -542,8 +542,8 @@ D1Eanno of
 D1Equal of
 ( token(*NS*), d1exp(*deid*) )//qual-d1exp
 //
-| // HX: for temp-names that
-D1Eextnam of (g1nam) // are to be expanded
+| // HX: for temp-names that are to
+D1Eextnam of (token, g1nam) // be expanded
 |
 D1Eexists of // HX-2021-01-14: $exists{..}..{..}
 (token, d1explst(*D1Esarglst*), d1exp) // (d1exp)
