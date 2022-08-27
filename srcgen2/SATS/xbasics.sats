@@ -228,7 +228,23 @@ f2clknd =
   // closure: knd=1/0/~1: ptr/flt/ref
 (* ****** ****** *)
 fun
-f2clknd_fprint: (FILR, f2clknd): void
+f2clknd_fprint: (FILR, f2clknd)->void
+(* ****** ****** *)
+datatype
+trcdknd =
+//
+| TRCDbox0 (*box*) // nonlin
+| TRCDbox1 (*box*) // linear
+//
+| TRCDflt0 (* flat: non/lin *)
+(*
+| TRCDflt1 of stamp (* flat *)
+*)
+| TRCDflt2 of string (* flat *)
+// end of [ datatype(trcdknd) ]
+(* ****** ****** *)
+fun
+trcdknd_fprint: (FILR, trcdknd)->void
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xbasics.sats] *)
