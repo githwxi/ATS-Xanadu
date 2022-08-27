@@ -218,5 +218,17 @@ fun
 implknd_fprint(FILR, implknd): void
 //
 (* ****** ****** *)
+datatype
+f2clknd =
+//
+// func/clos-kind
+//
+| F2CLfun of ((*fun*))
+| F2CLclo of int(*knd*)
+  // closure: knd=1/0/~1: ptr/flt/ref
+(* ****** ****** *)
+fun
+f2clknd_fprint: (FILR, f2clknd): void
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xbasics.sats] *)
