@@ -30,9 +30,8 @@ fun
 length(xs: list(a)): sint = 
 (
 case+ xs of
-| list_nil() => 0
-| list_cons(_, xs) => 1+length<a>(xs)
-)
+|list_nil() => 0
+|list_cons(_, xs) => 1+length<a>(xs))
 (* ****** ****** *)
 #impltmp
 {a:t0}
@@ -40,9 +39,8 @@ length<a>
 (xs: list(/a)): sint = 
 (
 case+ xs of
-| list_nil() => 0
-| list_cons(_, xs) => 1+length<a>(xs)
-)
+|list_nil() => 0
+|list_cons(_, xs) => 1+length<a>(xs))
 (* ****** ****** *)
 
 (* end of [mytest1.dats] *)
