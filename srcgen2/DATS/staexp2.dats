@@ -45,7 +45,64 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/xstamp0.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
+(* ****** ****** *)
+//
+local
+val
+stamper = stamper_new()
+in//local
+fun
+the_t2abs_stamp_new
+( (*void*) ): stamp = stamper.getinc()
+endloc // end of [the_t2abs_stamp_new]
+//
+(* ****** ****** *)
+//
+local
+val
+stamper = stamper_new()
+in//local
+fun
+the_t2dat_stamp_new
+( (*void*) ): stamp = stamper.getinc()
+endloc // end of [the_t2dat_stamp_new]
+//
+(* ****** ****** *)
+//
+local
+val
+stamper = stamper_new()
+in//local
+fun
+the_s2cst_stamp_new
+( (*void*) ): stamp = stamper.getinc()
+endloc // end of [the_s2cst_stamp_new]
+//
+(* ****** ****** *)
+//
+local
+val
+stamper = stamper_new()
+in//local
+fun
+the_s2var_stamp_new
+( (*void*) ): stamp = stamper.getinc()
+endloc // end of [the_s2var_stamp_new]
+//
+(* ****** ****** *)
+//
+local
+val
+stamper = stamper_new()
+in//local
+fun
+the_s2xtv_stamp_new
+( (*void*) ): stamp = stamper.getinc()
+endloc // end of [the_s2xtv_stamp_new]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_staexp2.dats] *)
