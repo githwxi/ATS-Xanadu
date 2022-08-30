@@ -45,6 +45,13 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #staload
+TMP = "./xstamp0.sats"
+//
+#typedef stamp = $TMP.stamp
+//
+(* ****** ****** *)
+//
+#staload
 LAB = "./xlabel0.sats"
 #staload
 LOC = "./locinfo.sats"
@@ -187,6 +194,14 @@ fun
 s2cst_fprint:(FILR,s2cst)->void
 fun
 s2var_fprint:(FILR,s2var)->void
+(* ****** ****** *)
+fun
+s2cst_get_sort(s2c:s2cst):sort2
+(* ****** ****** *)
+fun
+s2var_get_sort(s2v:s2var):sort2
+fun
+s2var_get_stmp(s2v:s2var):stamp
 (* ****** ****** *)
 //
 datatype
