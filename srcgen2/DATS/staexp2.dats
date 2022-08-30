@@ -105,4 +105,28 @@ endloc // end of [the_s2xtv_stamp_new]
 //
 (* ****** ****** *)
 
+local
+//
+datatype s2var =
+S2VAR of
+(sym_t, sort2, stamp)
+datavwtp s2var_vt =
+S2VAR_vt of
+(sym_t, sort2, stamp)
+//
+#absimpl s2var_tbox = s2var
+//
+in//local
+
+#implfun
+s2var_get_sort(s2v) =
+let
+val
+S2VAR(sym, s2t, tmp) = s2v in s2t
+end (*let*) // end of [s2var_get_sort]
+
+endloc (*local*) // end of [local(s2var)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_staexp2.dats] *)
