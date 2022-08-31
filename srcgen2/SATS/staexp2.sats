@@ -103,10 +103,17 @@ LEX = "./lexing0.sats"
 #typedef s1explst = list(s1exp)
 (* ****** ****** *)
 #typedef s2cstlst = list(s2cst)
+#typedef s2cstopt = optn(s2cst)
+(* ****** ****** *)
 #typedef s2varlst = list(s2var)
+#typedef s2varopt = optn(s2var)
 (* ****** ****** *)
 #typedef s2explst = list(s2exp)
 #typedef s2expopt = optn(s2exp)
+(* ****** ****** *)
+#vwtpdef s2cstopt_vt = optn_vt(s2cst)
+#vwtpdef s2varopt_vt = optn_vt(s2var)
+#vwtpdef s2expopt_vt = optn_vt(s2exp)
 (* ****** ****** *)
 //
 datatype
@@ -196,12 +203,56 @@ fun
 s2var_fprint:(FILR,s2var)->void
 (* ****** ****** *)
 fun
+s2cst_get_name(s2c:s2cst):sym_t
+fun
 s2cst_get_sort(s2c:s2cst):sort2
+fun
+s2cst_get_stmp(s2c:s2cst):stamp
 (* ****** ****** *)
+fun
+s2var_get_name(s2v:s2var):sym_t
 fun
 s2var_get_sort(s2v:s2var):sort2
 fun
 s2var_get_stmp(s2v:s2var):stamp
+(* ****** ****** *)
+//
+fun
+s2cst_make_idst
+(sid: token, s2t: sort2): s2cst
+//
+(* ****** ****** *)
+//
+fun
+s2var_make_sort
+(   s2t: sort2    ): s2var
+fun
+s2var_make_idst
+(sid: sym_t, s2t: sort2): s2var
+//
+(* ****** ****** *)
+//
+#symload name with s2cst_get_name
+#symload sort with s2cst_get_sort
+#symload stmp with s2cst_get_stmp
+//
+#symload name with s2var_get_name
+#symload sort with s2var_get_sort
+#symload stmp with s2var_get_stmp
+//
+#symload s2cst with s2cst_make_idst
+#symload s2var with s2var_make_idst
+//
+(* ****** ****** *)
+fun
+the_s2cstmap_insert_any(s2cst): void
+fun
+the_s2cstmap_search_opt(sym_t): s2cstopt_vt
+(* ****** ****** *)
+fun
+the_s2varmap_insert_any(s2var): void
+fun
+the_s2varmap_search_opt(sym_t): s2varopt_vt
 (* ****** ****** *)
 //
 datatype
@@ -292,6 +343,9 @@ s2exp_fprint:(FILR,s2exp)->void
 (* ****** ****** *)
 fun s2exp_get_sort(s2exp): sort2
 fun s2exp_get_node(s2exp): s2exp_node
+(* ****** ****** *)
+#symload sort with s2exp_get_sort
+#symload node with s2exp_get_node
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_staexp2.sats] *)
