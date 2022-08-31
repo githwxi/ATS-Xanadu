@@ -79,6 +79,7 @@ S2E = "./staexp2.sats"
 (* ****** ****** *)
 #typedef d1pat = $D1E.d1pat
 #typedef d1exp = $D1E.d1exp
+#typedef d1ecl = $D1E.d1ecl
 (* ****** ****** *)
 #typedef sort2 = $S2E.sort2
 #typedef s2var = $S2E.s2var
@@ -228,6 +229,27 @@ fun
 d2pat_get_lctn(d2pat): loc_t
 fun
 d2pat_get_node(d2pat): d2pat_node
+(* ****** ****** *)
+#symload sort with d2pat_get_sort
+#symload node with d2pat_get_node
+(* ****** ****** *)
+//
+datatype
+d2exp_node =
+//
+| D2Enone0 of () | D2Enone1 of (d1exp)
+//
+(* ****** ****** *)
+fun
+d2exp_fprint:(FILR,d2exp)->void
+(* ****** ****** *)
+fun
+d2exp_get_lctn(d2exp): loc_t
+fun
+d2exp_get_node(d2exp): d2exp_node
+(* ****** ****** *)
+#symload sort with d2exp_get_sort
+#symload node with d2exp_get_node
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_dynexp2.sats] *)

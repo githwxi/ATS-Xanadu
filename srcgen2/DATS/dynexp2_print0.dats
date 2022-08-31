@@ -62,4 +62,44 @@ _(*?*) = "./lexing0_print0.dats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 
+#implfun
+d2pat_fprint
+(out, d2p0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+d2p0.node() of
+//
+|
+D2Pnone0() => print("D2Pnone0(",")")
+|
+D2Pnone1(d1p1) => print("D2Pnone1(",d1p1,")")
+//
+end (*let*) // end of [d2pat_fprint(out, d2p0)]
+
+(* ****** ****** *)
+
+#implfun
+d2exp_fprint
+(out, d2e0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+d2e0.node() of
+//
+|
+D2Enone0() => print("D2Enone0(",")")
+|
+D2Enone1(d1e1) => print("D2Enone1(",d1e1,")")
+//
+end (*let*) // end of [d2exp_fprint(out, d2e0)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_dynexp2_print0.dats] *)

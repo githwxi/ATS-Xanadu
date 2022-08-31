@@ -46,6 +46,7 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 #staload "./../SATS/xstamp0.sats"
+#staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 (* ****** ****** *)
@@ -107,16 +108,54 @@ endloc // end of [the_s2xtv_stamp_new]
 
 local
 //
+datatype s2cst =
+S2CST of
+( loc_t
+, sym_t
+, sort2
+, stamp // unicity
+) (* datatype(s2cst) *)
+//
+#absimpl s2cst_tbox = s2cst
+//
+in//local
+
+#implfun
+s2cst_get_stmp(s2c) =
+let
+val
+S2CST
+( loc
+, sym
+, s2t
+, tmp (*unicity*) ) = s2c in tmp
+end (*let*) // end of [s2cst_get_stmp]
+
+endloc (*local*) // end of [local(s2cst)]
+
+(* ****** ****** *)
+
+local
+//
 datatype s2var =
 S2VAR of
 (sym_t, sort2, stamp)
+(*
 datavwtp s2var_vt =
 S2VAR_vt of
 (sym_t, sort2, stamp)
+*)
 //
 #absimpl s2var_tbox = s2var
 //
 in//local
+
+#implfun
+s2var_get_name(s2v) =
+let
+val
+S2VAR(sym, s2t, tmp) = s2v in sym
+end (*let*) // end of [s2var_get_name]
 
 #implfun
 s2var_get_sort(s2v) =
@@ -125,8 +164,37 @@ val
 S2VAR(sym, s2t, tmp) = s2v in s2t
 end (*let*) // end of [s2var_get_sort]
 
+#implfun
+s2var_get_stmp(s2v) =
+let
+val
+S2VAR(sym, s2t, tmp) = s2v in tmp
+end (*let*) // end of [s2var_get_stmp]
+
+(* ****** ****** *)
+//
+#implfun
+s2var_make_idst
+  (sid, s2t) =
+let
+val s2v =
+S2VAR(sid, s2t, tmp) where
+{val tmp = the_s2var_stamp_new()}
+in//let
+  the_s2varmap_insert_any(s2v); s2v
+end (*let*) // end of [s2var_make_idst]
+//
+(* ****** ****** *)
+
 endloc (*local*) // end of [local(s2var)]
 
+(* ****** ****** *)
+#implfun
+s2var_make_sort(s2t) =
+let
+val id0 =
+SRP_symbl in s2var_make_idst(id0, s2t)
+end (*let*)//end of [s2var_make_sort(s2t)]
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_staexp2.dats] *)
