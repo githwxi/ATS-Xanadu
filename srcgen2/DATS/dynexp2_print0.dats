@@ -73,6 +73,24 @@ in//let
 case+
 d2p0.node() of
 //
+|D2Pint(tok) =>
+print("D2Pint(",tok,")")
+|D2Pbtf(tok) =>
+print("D2Pbtf(",tok,")")
+|D2Pchr(tok) =>
+print("D2Pchr(",tok,")")
+|D2Pstr(tok) =>
+print("D2Pstr(",tok,")")
+//
+|D2Pi00(int) =>
+print("D2Pi00(",int,")")
+|D2Pb00(btf) =>
+print("D2Pb00(",btf,")")
+|D2Pc00(chr) =>
+print("D2Pc00(",chr,")")
+|D2Ps00(str) =>
+print("D2Ps00(",str,")")
+//
 |
 D2Pnone0() => print("D2Pnone0(",")")
 |
@@ -93,14 +111,14 @@ in//let
 case+
 d2e0.node() of
 //
-|D2Eint(int) =>
-print("D2Eint(",int,")")
-|D2Ebtf(btf) =>
-print("D2Ebtf(",btf,")")
-|D2Echr(chr) =>
-print("D2Echr(",chr,")")
-|D2Estr(str) =>
-print("D2Estr(",str,")")
+|D2Eint(tok) =>
+print("D2Eint(",tok,")")
+|D2Ebtf(tok) =>
+print("D2Ebtf(",tok,")")
+|D2Echr(tok) =>
+print("D2Echr(",tok,")")
+|D2Estr(tok) =>
+print("D2Estr(",tok,")")
 //
 |D2Ei00(int) =>
 print("D2Ei00(",int,")")
