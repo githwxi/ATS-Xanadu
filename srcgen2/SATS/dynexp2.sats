@@ -169,34 +169,34 @@ d2ptm_fprint:(FILR,d2ptm)->void
 datatype
 d2pat_node =
 //
-| D2Pnil of ()
-| D2Pany of ()
-| D2Parg of ()
+|D2Pnil of ()
+|D2Pany of ()
+|D2Parg of ()
 //
-| D2Pvar of d2var
-| D2Pcon1 of (d2con)
-| D2Pcon2 of (d2conlst)
+|D2Pvar of d2var
+|D2Pcon1 of (d2con)
+|D2Pcon2 of (d2conlst)
 //
-| D2Pint of (token)
-| D2Pbtf of (token)
-| D2Pchr of (token)
-| D2Pflt of (token)
-| D2Pstr of (token)
+|D2Pint of (token)
+|D2Pbtf of (token)
+|D2Pchr of (token)
+|D2Pflt of (token)
+|D2Pstr of (token)
 //
-| D2Pi00 of (sint) // sint
-| D2Pb00 of (bool) // bool
-| D2Pc00 of (char) // char
-| D2Ps00 of (strn) // string
+|D2Pi00 of (sint) // sint
+|D2Pb00 of (bool) // bool
+|D2Pc00 of (char) // char
+|D2Ps00 of (strn) // string
 //
-| D2Pbang of (d2pat) // !
-| D2Pflat of (d2pat) // @
-| D2Pfree of (d2pat) // ~
+|D2Pbang of (d2pat) // !
+|D2Pflat of (d2pat) // @
+|D2Pfree of (d2pat) // ~
 //
-| D2Psym0 of
-  (d1pat(*sym*), d2itmlst)
+|D2Psym0 of
+ (d1pat(*sym*), d2itmlst)
 //
-| D2Psapp of
-  (d2pat, s2varlst(*sarg*))
+|D2Psapp of
+ (d2pat, s2varlst(*sarg*))
 //
 |D2Pd0ap of (d2pat) // nullary
 |D2Pd1ap of (d2pat) // argless
@@ -236,6 +236,11 @@ d2pat_get_node(d2pat): d2pat_node
 //
 datatype
 d2exp_node =
+//
+|D2Eint of token
+|D2Ebtf of token
+|D2Echr of token
+|D2Estr of token
 //
 |D2Ei00 of (sint) // sint
 |D2Eb00 of (bool) // bool

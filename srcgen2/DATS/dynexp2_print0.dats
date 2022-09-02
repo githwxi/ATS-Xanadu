@@ -93,6 +93,15 @@ in//let
 case+
 d2e0.node() of
 //
+|D2Eint(int) =>
+print("D2Eint(",int,")")
+|D2Ebtf(btf) =>
+print("D2Ebtf(",btf,")")
+|D2Echr(chr) =>
+print("D2Echr(",chr,")")
+|D2Estr(str) =>
+print("D2Estr(",str,")")
+//
 |D2Ei00(int) =>
 print("D2Ei00(",int,")")
 |D2Eb00(btf) =>
