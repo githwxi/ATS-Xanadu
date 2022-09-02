@@ -237,6 +237,15 @@ d2pat_get_node(d2pat): d2pat_node
 datatype
 d2exp_node =
 //
+|D2Ei00 of (sint) // sint
+|D2Eb00 of (bool) // bool
+|D2Ec00 of (char) // char
+|D2Es00 of (strn) // string
+//
+|
+D2Eexist1 of
+(s2explst(*wits*), d2exp(*packed*))
+//
 | D2Enone0 of () | D2Enone1 of (d1exp)
 //
 (* ****** ****** *)
