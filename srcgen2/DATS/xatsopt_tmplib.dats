@@ -858,6 +858,28 @@ s2exp_fprint(g_print$out<>(), s2e)
 (* ****** ****** *)
 //
 #impltmp
+g_print<d2con>(d2c) =
+d2con_fprint(g_print$out<>(), d2c)
+#impltmp
+g_print<d2cst>(d2c) =
+d2cst_fprint(g_print$out<>(), d2c)
+//
+#impltmp
+g_print<d2var>(d2v) =
+d2var_fprint(g_print$out<>(), d2v)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<d2itm>(d2i) =
+d2itm_fprint(g_print$out<>(), d2i)
+#impltmp
+g_print<d2ptm>(d2p) =
+d2ptm_fprint(g_print$out<>(), d2p)
+//
+(* ****** ****** *)
+//
+#impltmp
 g_print<d2pat>(d2p) =
 d2pat_fprint(g_print$out<>(), d2p)
 //

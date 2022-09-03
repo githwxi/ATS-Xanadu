@@ -135,6 +135,13 @@ d1lab(x0:t0)=$D1E.d1lab(x0)
 #typedef l2d2plst = list(l2d2p)
 #typedef l2d2elst = list(l2d2e)
 (* ****** ****** *)
+fun
+d2con_fprint:(FILR,d2con)->void
+fun
+d2cst_fprint:(FILR,d2cst)->void
+fun
+d2var_fprint:(FILR,d2var)->void
+(* ****** ****** *)
 //
 datatype
 d2itm =
@@ -174,8 +181,6 @@ d2pat_node =
 |D2Parg of ()
 //
 |D2Pvar of d2var
-|D2Pcon1 of (d2con)
-|D2Pcon2 of (d2conlst)
 //
 |D2Pint of (token)
 |D2Pbtf of (token)
@@ -187,6 +192,9 @@ d2pat_node =
 |D2Pb00 of (bool) // bool
 |D2Pc00 of (char) // char
 |D2Ps00 of (strn) // string
+//
+|D2Pcon1 of (d2con)
+|D2Pcon2 of (d2conlst)
 //
 |D2Pbang of (d2pat) // !
 |D2Pflat of (d2pat) // @
@@ -246,6 +254,10 @@ d2exp_node =
 |D2Eb00 of (bool) // bool
 |D2Ec00 of (char) // char
 |D2Es00 of (strn) // string
+//
+|D2Etop of (token)
+//
+|D2Evar of (d2var)
 //
 |
 D2Eexist1 of
