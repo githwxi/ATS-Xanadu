@@ -73,6 +73,16 @@ in//let
 case+
 d2p0.node() of
 //
+|D2Pnil() =>
+print("D2Pnil(",")")
+|D2Pany() =>
+print("D2Pany(",")")
+|D2Parg() =>
+print("D2Parg(",")")
+//
+|D2Pvar(d2v) =>
+print("D2Pvar(",d2v,")")
+//
 |D2Pint(tok) =>
 print("D2Pint(",tok,")")
 |D2Pbtf(tok) =>
@@ -90,6 +100,26 @@ print("D2Pb00(",btf,")")
 print("D2Pc00(",chr,")")
 |D2Ps00(str) =>
 print("D2Ps00(",str,")")
+//
+|D2Pcon1(d2c1) =>
+print("D2Pcon1(",d2c1,")")
+|D2Pcon2(d2cs) =>
+print("D2Pcon2(",d2cs,")")
+//
+|D2Pbang(d2p1) =>
+print("D2Pbang(",d2p1,")")
+|D2Pflat(d2p1) =>
+print("D2Pflat(",d2p1,")")
+|D2Pfree(d2p1) =>
+print("D2Pfree(",d2p1,")")
+//
+|
+D2Psym0(d1p1,d2is) =>
+print("D2Psym0(",d1p1,";",d2is,")")
+//
+|
+D2Psapp(d2p1,s2vs) =>
+print("D2Psapp(",d2p1,";",s2vs,")")
 //
 |
 D2Pnone0() => print("D2Pnone0(",")")
@@ -128,6 +158,14 @@ print("D2Eb00(",btf,")")
 print("D2Ec00(",chr,")")
 |D2Es00(str) =>
 print("D2Es00(",str,")")
+//
+|
+D2Evar(d2v) =>
+print("D2Evar(", d2v, ")")
+//
+|
+D2Etop(tok) =>
+print("D2Etop(", tok, ")")
 //
 |
 D2Eexist1
