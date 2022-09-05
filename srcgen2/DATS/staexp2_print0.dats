@@ -172,8 +172,39 @@ S2Efun0
 ( f2cl
 , npf1, s2es, s2r0) =>
 (
-print("S2Efun0(");
-print(f2cl,";",npf1,";",s2es,";",s2r0,")"))
+print("S2Efun0(",f2cl,";");
+print(npf1,";",s2es,";",s2r0,")") )
+//
+|
+S2Emet0(s2es,s2e1) =>
+print("S2Emet0(",s2es,";",s2e1,")")
+//
+|
+S2Etext(name, s2es) =>
+print("S2Etext(",name,";",s2es,")")
+//
+|
+S2Eexi0
+(s2vs, s2ps, s2e1) =>
+( print("S2Eexi0(")
+; print(s2vs,";",s2ps,";",s2e1,")"))
+|
+S2Euni0
+(s2vs, s2ps, s2e1) =>
+( print("S2Euni0(")
+; print(s2vs,";",s2ps,";",s2e1,")"))
+//
+|
+S2Ecimp(loc0,s2e1) =>
+print("S2Ecimp(",loc0,";",s2e1,")")
+|
+S2Ecprf(loc0,s2e1) =>
+print("S2Ecprf(",loc0,";",s2e1,")")
+|
+S2Ecast
+(loc0, s2e1, s2t2) =>
+( print("S2Ecast(")
+; print(loc0,";",s2e1,";",s2t2,")"))
 //
 |
 S2Enone0() => print("S2Enone0(",")")
