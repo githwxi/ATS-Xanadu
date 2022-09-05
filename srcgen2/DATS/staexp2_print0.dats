@@ -180,10 +180,6 @@ S2Emet0(s2es,s2e1) =>
 print("S2Emet0(",s2es,";",s2e1,")")
 //
 |
-S2Etext(name, s2es) =>
-print("S2Etext(",name,";",s2es,")")
-//
-|
 S2Eexi0
 (s2vs, s2ps, s2e1) =>
 ( print("S2Eexi0(")
@@ -193,6 +189,14 @@ S2Euni0
 (s2vs, s2ps, s2e1) =>
 ( print("S2Euni0(")
 ; print(s2vs,";",s2ps,";",s2e1,")"))
+//
+|
+S2Etype(s2tp) =>
+print("S2Etype(", s2tp, ")")
+//
+|
+S2Etext(name, s2es) =>
+print("S2Etext(",name,";",s2es,")")
 //
 |
 S2Ecimp(loc0,s2e1) =>
