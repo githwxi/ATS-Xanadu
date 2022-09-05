@@ -159,18 +159,41 @@ print("D2Ec00(",chr,")")
 |D2Es00(str) =>
 print("D2Es00(",str,")")
 //
-|
-D2Evar(d2v) =>
-print("D2Evar(", d2v, ")")
-//
-|
-D2Etop(tok) =>
+|D2Etop(tok) =>
 print("D2Etop(", tok, ")")
 //
+|D2Evar(d2v) =>
+print("D2Evar(", d2v, ")")
+//
+|D2Econ1(d2c1) =>
+print("D2Econ1(", d2c1, ")")
+|D2Ecst1(d2c1) =>
+print("D2Ecst1(", d2c1, ")")
+//
+|D2Econ2(d2cs) =>
+print("D2Econ2(", d2cs, ")")
+|D2Ecst2(d2cs) =>
+print("D2Ecst2(", d2cs, ")")
+//
+|D2Esapp(d2e1,s2es) =>
+print("D2Esapp(",d2e1,";",s2es,")")
+|D2Etapp(d2e1,s2es) =>
+print("D2Etapp(",d2e1,";",s2es,")")
+//
 |
-D2Eexist1
-(s2es, d2e1) =>
-print("D2Eexist1(",s2es,";",d2e1,")")
+D2Etup1
+( tknd, npf1, d2es ) =>
+( print("D2Etup1(")
+; print(tknd,";",npf1,";",d2es,")"))
+|
+D2Ercd2
+( tknd, npf1, ldes ) =>
+( print("D2Ercd2(")
+; print(tknd,";",npf1,";",ldes,")"))
+//
+|
+D2Eexists(s2es,d2e1) =>
+print("D2Eexists(",s2es,";",d2e1,")")
 //
 |
 D2Enone0() => print( "D2Enone0(",")" )

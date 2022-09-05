@@ -220,6 +220,35 @@ s0lab_fprint(g_print$out<>(), lab)
 //
 (* ****** ****** *)
 //
+(*
+fun
+<x0:type>
+d0lab_fprint
+(out: FILR, lab: d0lab(x0)): void
+*)
+//
+#impltmp
+<x0>
+d0lab_fprint
+  (out, lab) = let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+case+ lab of
+|
+D0LAB(l01, t02, x03) =>
+print("D0LAB(",l01,";",x03,")")
+end(*let*)//end-of-[d0lab_fprint]
+//
+#impltmp
+{x0:t0}
+g_print<d0lab(x0)>(lab) =
+d0lab_fprint(g_print$out<>(), lab)
+//
+(* ****** ****** *)
+//
 #impltmp
 g_print<s0qid>(qid) =
 s0qid_fprint(g_print$out<>(), qid)
@@ -303,35 +332,6 @@ d0tcn_fprint(g_print$out<>(), dtc)
 #impltmp
 g_print<d0typ>(dtp) =
 d0typ_fprint(g_print$out<>(), dtp)
-(* ****** ****** *)
-//
-(*
-fun
-<x0:type>
-d0lab_fprint
-(out: FILR, lab: d0lab(x0)): void
-*)
-//
-#impltmp
-<x0>
-d0lab_fprint
-  (out, lab) = let
-//
-#impltmp
-g_print$out<>() = out
-//
-in//let
-case+ lab of
-|
-D0LAB(l01, t02, x03) =>
-print("D0LAB(",l01,";",x03,")")
-end(*let*)//end-of-[d0lab_fprint]
-//
-#impltmp
-{x0:t0}
-g_print<d0lab(x0)>(lab) =
-d0lab_fprint(g_print$out<>(), lab)
-//
 (* ****** ****** *)
 //
 #impltmp
@@ -552,6 +552,35 @@ s1lab_fprint(g_print$out<>(), lab)
 //
 (* ****** ****** *)
 //
+(*
+fun
+<x0:type>
+d1lab_fprint
+(out: FILR, lab: d1lab(x0)): void
+*)
+//
+#impltmp
+<x0>
+d1lab_fprint
+  (out, lab) = let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+case+ lab of
+|
+D1LAB(l01, x02) =>
+print("D1LAB(",l01,";",x02,")")
+end(*let*)//end-of-[d1lab_fprint]
+//
+#impltmp
+{x0:t0}
+g_print<d1lab(x0)>(lab) =
+d1lab_fprint(g_print$out<>(), lab)
+//
+(* ****** ****** *)
+//
 #impltmp
 g_print<assoc>(asc) =
 assoc_fprint(g_print$out<>(), asc)
@@ -647,35 +676,6 @@ d1typ_fprint(g_print$out<>(), dtp)
 #impltmp
 g_print<s1exp>(s1e) =
 s1exp_fprint(g_print$out<>(), s1e)
-//
-(* ****** ****** *)
-//
-(*
-fun
-<x0:type>
-d1lab_fprint
-(out: FILR, lab: d1lab(x0)): void
-*)
-//
-#impltmp
-<x0>
-d1lab_fprint
-  (out, lab) = let
-//
-#impltmp
-g_print$out<>() = out
-//
-in//let
-case+ lab of
-|
-D1LAB(l01, x02) =>
-print("D1LAB(",l01,";",x02,")")
-end(*let*)//end-of-[d1lab_fprint]
-//
-#impltmp
-{x0:t0}
-g_print<d1lab(x0)>(lab) =
-d1lab_fprint(g_print$out<>(), lab)
 //
 (* ****** ****** *)
 //
@@ -853,6 +853,35 @@ end(*let*)//end-of-[s2lab_fprint]
 {x0:t0}
 g_print<s2lab(x0)>(lab) =
 s2lab_fprint(g_print$out<>(), lab)
+//
+(* ****** ****** *)
+//
+(*
+fun
+<x0:type>
+d2lab_fprint
+(out: FILR, lab: d2lab(x0)): void
+*)
+//
+#impltmp
+<x0>
+d2lab_fprint
+  (out, lab) = let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+case+ lab of
+|
+D2LAB(l01, x02) =>
+print("D2LAB(",l01,";",x02,")")
+end(*let*)//end-of-[d2lab_fprint]
+//
+#impltmp
+{x0:t0}
+g_print<d2lab(x0)>(lab) =
+d2lab_fprint(g_print$out<>(), lab)
 //
 (* ****** ****** *)
 //

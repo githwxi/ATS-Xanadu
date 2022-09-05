@@ -270,9 +270,34 @@ d2exp_node =
 //
 |D2Evar of (d2var)
 //
+|D2Econ1 of (d2con)
+|D2Ecst1 of (d2cst)
+|D2Econ2 of (d2conlst)
+|D2Ecst2 of (d2cstlst)
+//
+|D2Esapp of (d2exp, s2explst)
+|D2Etapp of (d2exp, s2explst)
+//
+|D2Ed0ap of (d2exp)
+|D2Edapp of
+(d2exp, int(*npf*), d2explst)
+//
+|D2Elet0 of (d2eclist, d2exp)
+|D2Ewhere of (d2exp, d2eclist)
+//
+|D2Eseqn of
+(d2explst(*semi*), d2exp(*last*))
+//
 |
-D2Eexist1 of
-(s2explst(*wits*), d2exp(*packed*))
+D2Etup1 of // HX: tuple
+(token(*knd*), int(*npf*), d2explst)
+|
+D2Ercd2 of // HX: record
+(token(*knd*), int(*npf*), l2d2elst)
+//
+|
+D2Eexists of
+(s2explst(*witness*), d2exp(*scoped*))
 //
 | D2Enone0 of () | D2Enone1 of (d1exp)
 //
