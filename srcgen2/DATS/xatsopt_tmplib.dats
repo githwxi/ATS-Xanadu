@@ -827,6 +827,35 @@ HX: for level-2 syntax
 
 (* ****** ****** *)
 //
+(*
+fun
+<x0:type>
+s2lab_fprint
+(out: FILR, lab: s2lab(x0)): void
+*)
+//
+#impltmp
+<x0>
+s2lab_fprint
+  (out, lab) = let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+case+ lab of
+|
+S2LAB(l01, x02) =>
+print("S2LAB(",l01,";",x02,")")
+end(*let*)//end-of-[s2lab_fprint]
+//
+#impltmp
+{x0:t0}
+g_print<s2lab(x0)>(lab) =
+s2lab_fprint(g_print$out<>(), lab)
+//
+(* ****** ****** *)
+//
 #impltmp
 g_print<t2abs>(t2a) =
 t2abs_fprint(g_print$out<>(), t2a)
@@ -854,6 +883,9 @@ s2var_fprint(g_print$out<>(), s2v)
 #impltmp
 g_print<s2exp>(s2e) =
 s2exp_fprint(g_print$out<>(), s2e)
+#impltmp
+g_print<s2typ>(stp) =
+s2typ_fprint(g_print$out<>(), stp)
 //
 (* ****** ****** *)
 //

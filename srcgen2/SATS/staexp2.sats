@@ -126,6 +126,13 @@ S2LAB of
 #typedef
 s1lab(x0:t0)=$S1E.s1lab(x0)
 (* ****** ****** *)
+//
+fun
+<x0:type>
+s2lab_fprint
+(out: FILR, lab: s2lab(x0)): void
+//
+(* ****** ****** *)
 #typedef l2s2e = s2lab(s2exp)
 (* ****** ****** *)
 #typedef l2s2elst = list(l2s2e)
@@ -338,6 +345,8 @@ s2exp_node =
 (* ****** ****** *)
 fun
 s2exp_fprint:(FILR,s2exp)->void
+fun
+s2typ_fprint:(FILR,s2typ)->void
 (* ****** ****** *)
 fun s2exp_get_sort(s2exp): sort2
 fun s2exp_get_node(s2exp): s2exp_node

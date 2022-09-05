@@ -82,6 +82,8 @@ S2E = "./staexp2.sats"
 #typedef d1ecl = $D1E.d1ecl
 (* ****** ****** *)
 #typedef sort2 = $S2E.sort2
+(* ****** ****** *)
+#typedef s2cst = $S2E.s2cst
 #typedef s2var = $S2E.s2var
 #typedef s2exp = $S2E.s2exp
 (* ****** ****** *)
@@ -109,7 +111,9 @@ S2E = "./staexp2.sats"
 #typedef d2gpt = d2gpt_tbox
 #typedef d2cls = d2cls_tbox
 (* ****** ****** *)
+#typedef s2cstlst = list(s2cst)
 #typedef s2varlst = list(s2var)
+#typedef s2explst = list(s2exp)
 (* ****** ****** *)
 #typedef d2conlst = list(d2con)
 #typedef d2cstlst = list(d2cst)
@@ -128,6 +132,13 @@ D2LAB of
 (* ****** ****** *)
 #typedef
 d1lab(x0:t0)=$D1E.d1lab(x0)
+(* ****** ****** *)
+//
+fun
+<x0:type>
+d2lab_fprint
+(out: FILR, lab: d2lab(x0)): void
+//
 (* ****** ****** *)
 #typedef l2d2p = d2lab(d2pat)
 #typedef l2d2e = d2lab(d2exp)
@@ -238,7 +249,7 @@ d2pat_get_lctn(d2pat): loc_t
 fun
 d2pat_get_node(d2pat): d2pat_node
 (* ****** ****** *)
-#symload sort with d2pat_get_sort
+#symload lctn with d2pat_get_lctn
 #symload node with d2pat_get_node
 (* ****** ****** *)
 //
@@ -274,7 +285,7 @@ d2exp_get_lctn(d2exp): loc_t
 fun
 d2exp_get_node(d2exp): d2exp_node
 (* ****** ****** *)
-#symload sort with d2exp_get_sort
+#symload lctn with d2exp_get_lctn
 #symload node with d2exp_get_node
 (* ****** ****** *)
 
