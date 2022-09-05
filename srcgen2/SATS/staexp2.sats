@@ -288,24 +288,15 @@ s2exp_node =
   , s2explst(*arglst*), s2exp(*result*)
   ) (* end of S2Efun *)
 //
-| S2Ecimp of // HX: for storing
-  (loc_t, s2exp) // sort-checking error
-| S2Ecprf of // HX: for storing
-  (loc_t, s2exp) // sort-checking error
-| S2Ectcd of // HX: for storing
-  (loc_t, s2exp) // sort-checking error
-| S2Ecast of // HX-2108-12-23: for storing
-  (loc_t, s2exp, sort2) // sort-checking error
-//
-| S2Emet of // HX: for term-check
+| S2Emet0 of // HX: for term-check
   (s2explst(*met*), s2exp(*body*))
 //
 // HX: for [...]
-| S2Eexi of // exists quantifier
+| S2Eexi0 of // exists quantifier
   ( s2varlst(*vars*)
   , s2explst(*prop*), s2exp(*body*))
 // HX: for {...}
-| S2Euni of // forall quantifier
+| S2Euni0 of // forall quantifier
   ( s2varlst(*vars*)
   , s2explst(*prop*), s2exp(*body*))
 //
@@ -314,7 +305,7 @@ s2exp_node =
 *)
 //
 // HX-2021-01: for lifting from
-| S2Etype of (s2typ) // [t2ype] to [s2exp]
+| S2Etype of (s2typ) // [s2typ] to [s2exp]
 //
 | S2Etext of
   ( strn(*name*)
@@ -322,6 +313,13 @@ s2exp_node =
 //
 | S2Etrcd of
   (trcdknd(*knd*), int(*npf*), l2s2elst)
+//
+| S2Ecimp of // HX: for storing
+  (loc_t, s2exp) // sort-checking error
+| S2Ecprf of // HX: for storing
+  (loc_t, s2exp) // sort-checking error
+| S2Ecast of // HX-2108-12-23: for storing
+  (loc_t, s2exp, sort2) // sort-checking error
 //
 | S2Enone0 // of () // HX: error or special
 //

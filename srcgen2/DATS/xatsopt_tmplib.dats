@@ -874,8 +874,8 @@ d2var_fprint(g_print$out<>(), d2v)
 g_print<d2itm>(d2i) =
 d2itm_fprint(g_print$out<>(), d2i)
 #impltmp
-g_print<d2ptm>(d2p) =
-d2ptm_fprint(g_print$out<>(), d2p)
+g_print<d2ptm>(dpi) =
+d2ptm_fprint(g_print$out<>(), dpi)
 //
 (* ****** ****** *)
 //
