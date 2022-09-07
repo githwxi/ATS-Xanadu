@@ -180,6 +180,11 @@ print("D2Esapp(",d2e1,";",s2es,")")
 |D2Etapp(d2e1,s2es) =>
 print("D2Etapp(",d2e1,";",s2es,")")
 //
+|D2Eif0
+( d2e1, dthn, dels ) =>
+( print("D2Eif0(")
+; print(d2e1,";",dthn,";",dels,")"))
+//
 |
 D2Etup1
 ( tknd, npf1, d2es ) =>
@@ -190,6 +195,12 @@ D2Ercd2
 ( tknd, npf1, ldes ) =>
 ( print("D2Ercd2(")
 ; print(tknd,";",npf1,";",ldes,")"))
+//
+|
+D2Eanno
+( d2e1, s1e2, s2e2 ) =>
+( print("D2Eanno(")
+; print(d2e1,";",s1e2,";",s2e2,")"))
 //
 |
 D2Eexists(s2es,d2e1) =>
