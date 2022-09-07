@@ -289,11 +289,20 @@ d2exp_node =
 (d2explst(*semi*), d2exp(*last*))
 //
 |
+D2Eif0 of
+(d2exp(*cond*)
+,d2expopt(*then*),d2expopt(*else*))
+//
+|
 D2Etup1 of // HX: tuple
 (token(*knd*), int(*npf*), d2explst)
 |
 D2Ercd2 of // HX: record
 (token(*knd*), int(*npf*), l2d2elst)
+//
+|
+D2Eanno of
+(d2exp,s1exp(*given*),s2exp(*trans*))
 //
 |
 D2Eexists of
