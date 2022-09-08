@@ -131,6 +131,63 @@ end (*let*) // end of [d2pat_fprint(out, d2p0)]
 (* ****** ****** *)
 
 #implfun
+d2gua_fprint
+(out, dgua) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+dgua.node() of
+|
+D2GUAexp(d2e1) =>
+print("D2GUAexp(",d2e1,")")
+|
+D2GUAmat(d2e1,d2p2) =>
+print("D2GUAmat(",d2e1,";",d2p2,")")
+//
+end (*let*) // end of [d2gua_fprint(out,dgua)]
+
+(* ****** ****** *)
+//
+#implfun
+d2cls_fprint
+(out, dcls) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+dcls.node() of
+|
+D2CLSgpt(dgpt) =>
+print("D2CLSgpt(",dgpt,")")
+|
+D2CLScls(d2g1,d2e2) =>
+print("D2CLScls(",d2g1,";",d2e2,")")
+end (*let*) // end of [d2cls_fprint(out,dcls)]
+//
+#implfun
+d2gpt_fprint
+(out, dgpt) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+dgpt.node() of
+|
+D2GPTpat(d2p1) =>
+print("D2GPTpat(",d2p1,")")
+|
+D2GPTgua(d2p1,d2gs) =>
+print("D2GPTgua(",d2p1,";",d2gs,")")
+end (*let*) // end of [d2gpt_fprint(out,dgpt)]
+//
+(* ****** ****** *)
+
+#implfun
 d2exp_fprint
 (out, d2e0) =
 let
@@ -212,6 +269,34 @@ D2Enone0() => print( "D2Enone0(",")" )
 D2Enone1(d1e1) => print("D2Enone1(",d1e1,")")
 //
 end (*let*) // end of [d2exp_fprint(out, d2e0)]
+
+(* ****** ****** *)
+
+#implfun
+d2ecl_fprint
+(out, dcl0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+dcl0.node() of
+//
+|D2Cd1ecl(d1cl) =>
+print("D2Cd1ecl(",d1cl,")")
+//
+|D2Cstatic(tknd,dcl1) =>
+print("D2Cstatic(",tknd,";",dcl1,")")
+|D2Cextern(tknd,dcl1) =>
+print("D2Cextern(",tknd,";",dcl1,")")
+//
+|
+D2Cnone0() => print( "D2Cnone0(",")" )
+|
+D2Cnone1(d1cl) => print("D2Cnone1(",d1cl,")")
+//
+end (*let*) // end of [d2ecl_fprint(out, dcl0)]
 
 (* ****** ****** *)
 
