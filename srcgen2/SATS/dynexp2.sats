@@ -121,6 +121,11 @@ S2E = "./staexp2.sats"
 (* ****** ****** *)
 #typedef d2patlst = list(d2pat)
 #typedef d2explst = list(d2exp)
+#typedef d2expopt = optn(d2exp)
+#typedef d2eclist = list(d2ecl)
+(* ****** ****** *)
+#typedef d2gualst = list(d2gua)
+#typedef d2clslst = list(d2cls)
 (* ****** ****** *)
 //
 datatype
@@ -254,6 +259,33 @@ d2pat_get_node(d2pat): d2pat_node
 (* ****** ****** *)
 //
 datatype
+d2gua_node =
+| D2GUAexp of (d2exp)
+| D2GUAmat of (d2exp, d2pat)
+//
+(* ****** ****** *)
+//
+datatype
+d2cls_node =
+| D2CLSgpt of d2gpt
+| D2CLScls of (d2gpt, d2exp)
+and
+d2gpt_node =
+| D2GPTpat of (d2pat)
+| D2GPTgua of (d2pat, d2gualst)
+//
+(* ****** ****** *)
+//
+fun
+d2gua_fprint:(FILR,d2gua)->void
+fun
+d2gpt_fprint:(FILR,d2gpt)->void
+fun
+d2cls_fprint:(FILR,d2cls)->void
+//
+(* ****** ****** *)
+//
+datatype
 d2exp_node =
 //
 |D2Eint of token
@@ -294,11 +326,20 @@ D2Eif0 of
 ,d2expopt(*then*),d2expopt(*else*))
 //
 |
+D2Ecas0 of
+( token(*+/0/-*), d2exp, d2clslst )
+//
+|
 D2Etup1 of // HX: tuple
 (token(*knd*), int(*npf*), d2explst)
 |
 D2Ercd2 of // HX: record
 (token(*knd*), int(*npf*), l2d2elst)
+//
+|
+D2Etry0 of
+(token(*TRY*)
+,d2exp(*value*), d2clslst(*clauses*))
 //
 |
 D2Eanno of
