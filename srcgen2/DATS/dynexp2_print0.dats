@@ -300,11 +300,18 @@ print( "D2Clocal(",head,";",body,")" )
 |D2Cabssort(tid0) =>
 print("D2Cabssort(",tid0,")")
 //
-|D2Cstacst0(s2c1,s2t2) =>
+|
+D2Cstacst0(s2c1,s2t2) =>
 print("D2Cstacst0(",s2c1,";",s2t2,")")
 |
-|D2Csexpdef(s2c1,s2e2) =>
+D2Csexpdef(s2c1,s2e2) =>
 print("D2Csexpdef(",s2c1,";",s2e2,")")
+//
+|
+D2Csymload
+( tknd , sym0 , dptm ) =>
+( print("D2Csymload(")
+; print( tknd,";",sym0,";",dptm,")" ))
 //
 |
 D2Cdatasort(d1cl,s2cs) =>

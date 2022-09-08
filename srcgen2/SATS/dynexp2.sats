@@ -419,6 +419,10 @@ d2ecl_node =
 //
 |D2Csexpdef of (s2cst, s2exp)
 //
+|
+D2Csymload of
+(token, sym_t(*loaded*), d2ptm)
+//
 |D2Cdatasort of (d1ecl, sort2lst)
 //
 |D2Cexcptcon of (d1ecl, d2conlst)
