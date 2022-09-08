@@ -338,19 +338,13 @@ d0typ_fprint(g_print$out<>(), dtp)
 g_print<d0pat>(d0p) =
 d0pat_fprint(g_print$out<>(), d0p)
 //
-#impltmp
-g_print<d0exp>(d0e) =
-d0exp_fprint(g_print$out<>(), d0e)
-//
-#impltmp
-g_print<d0ecl>(dcl) =
-d0ecl_fprint(g_print$out<>(), dcl)
-//
 (* ****** ****** *)
 //
 #impltmp
 g_print<f0arg>(f0a) =
 f0arg_fprint(g_print$out<>(), f0a)
+//
+(* ****** ****** *)
 //
 #impltmp
 g_print<d0cls>(d0c) =
@@ -361,6 +355,16 @@ d0gua_fprint(g_print$out<>(), d0g)
 #impltmp
 g_print<d0gpt>(dgt) =
 d0gpt_fprint(g_print$out<>(), dgt)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<d0exp>(d0e) =
+d0exp_fprint(g_print$out<>(), d0e)
+//
+#impltmp
+g_print<d0ecl>(dcl) =
+d0ecl_fprint(g_print$out<>(), dcl)
 //
 (* ****** ****** *)
 #impltmp
@@ -682,10 +686,6 @@ s1exp_fprint(g_print$out<>(), s1e)
 #impltmp
 g_print<d1pat>(d1p) =
 d1pat_fprint(g_print$out<>(), d1p)
-#impltmp
-g_print<d1exp>(d1e) =
-d1exp_fprint(g_print$out<>(), d1e)
-//
 (* ****** ****** *)
 //
 #impltmp
@@ -698,6 +698,12 @@ d1gpt_fprint(g_print$out<>(), d1g)
 #impltmp
 g_print<d1cls>(dcl) =
 d1cls_fprint(g_print$out<>(), dcl)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<d1exp>(d1e) =
+d1exp_fprint(g_print$out<>(), d1e)
 //
 (* ****** ****** *)
 //
@@ -943,6 +949,21 @@ d2ptm_fprint(g_print$out<>(), dpi)
 #impltmp
 g_print<d2pat>(d2p) =
 d2pat_fprint(g_print$out<>(), d2p)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<d2gua>(d2g) =
+d2gua_fprint(g_print$out<>(), d2g)
+#impltmp
+g_print<d2gpt>(d2g) =
+d2gpt_fprint(g_print$out<>(), d2g)
+//
+#impltmp
+g_print<d2cls>(dcl) =
+d2cls_fprint(g_print$out<>(), dcl)
+//
+(* ****** ****** *)
 //
 #impltmp
 g_print<d2exp>(d2e) =
