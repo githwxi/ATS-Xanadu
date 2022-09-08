@@ -970,5 +970,11 @@ g_print<d2exp>(d2e) =
 d2exp_fprint(g_print$out<>(), d2e)
 //
 (* ****** ****** *)
+//
+#impltmp
+g_print<d2ecl>(dcl) =
+d2ecl_fprint(g_print$out<>(), dcl)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xatsopt_tmplib.dats] *)

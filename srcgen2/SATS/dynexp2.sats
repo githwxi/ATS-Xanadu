@@ -285,6 +285,36 @@ d2cls_fprint:(FILR,d2cls)->void
 //
 (* ****** ****** *)
 //
+fun
+d2gua_get_lctn(d2gua): loc_t
+fun
+d2gua_get_node(d2gua): d2gua_node
+//
+#symload lctn with d2gua_get_lctn
+#symload node with d2gua_get_node
+//
+(* ****** ****** *)
+//
+fun
+d2gpt_get_lctn(d2gpt): loc_t
+fun
+d2gpt_get_node(d2gpt): d2gpt_node
+//
+#symload lctn with d2gpt_get_lctn
+#symload node with d2gpt_get_node
+//
+(* ****** ****** *)
+//
+fun
+d2cls_get_lctn(d2cls): loc_t
+fun
+d2cls_get_node(d2cls): d2cls_node
+//
+#symload lctn with d2cls_get_lctn
+#symload node with d2cls_get_node
+//
+(* ****** ****** *)
+//
 datatype
 d2exp_node =
 //
@@ -362,6 +392,32 @@ d2exp_get_node(d2exp): d2exp_node
 (* ****** ****** *)
 #symload lctn with d2exp_get_lctn
 #symload node with d2exp_get_node
+(* ****** ****** *)
+//
+datatype
+d2ecl_node =
+//
+|D2Cd1ecl of (d1ecl)
+//
+|D2Cstatic of
+ (token(*STATIC*), d2ecl)
+|D2Cextern of
+ (token(*EXTERN*), d2ecl)
+//
+|
+D2Cnone0 of ((*void*)) | D2Cnone1 of (d1ecl)
+//
+(* ****** ****** *)
+fun
+d2ecl_fprint:(FILR,d2ecl)->void
+(* ****** ****** *)
+fun
+d2ecl_get_lctn(d2ecl): loc_t
+fun
+d2ecl_get_node(d2ecl): d2ecl_node
+(* ****** ****** *)
+#symload lctn with d2ecl_get_lctn
+#symload node with d2ecl_get_node
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_dynexp2.sats] *)
