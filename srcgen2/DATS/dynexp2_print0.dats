@@ -286,13 +286,24 @@ dcl0.node() of
 |D2Cd1ecl(d1cl) =>
 print("D2Cd1ecl(",d1cl,")")
 //
-|D2Cstatic(tknd,dcl1) =>
+|
+D2Cstatic(tknd,dcl1) =>
 print("D2Cstatic(",tknd,";",dcl1,")")
-|D2Cextern(tknd,dcl1) =>
+|
+D2Cextern(tknd,dcl1) =>
 print("D2Cextern(",tknd,";",dcl1,")")
 //
 |
-D2Cnone0() => print( "D2Cnone0(",")" )
+D2Clocal(head, body) =>
+print( "D2Clocal(",head,";",body,")" )
+//
+|D2Cabssort(tid0) =>
+print("D2Cabssort(",tid0,")")
+//
+|D2Cstacst0(s2c1,s2t2) =>
+print("D2Cstacst0(",s2c1,";",s2t2,")")
+|
+D2Cnone0() => print( "D2Cnone0(", ")" )
 |
 D2Cnone1(d1cl) => print("D2Cnone1(",d1cl,")")
 //
