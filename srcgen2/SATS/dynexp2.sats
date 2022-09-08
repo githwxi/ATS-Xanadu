@@ -111,6 +111,8 @@ S2E = "./staexp2.sats"
 #typedef d2gpt = d2gpt_tbox
 #typedef d2cls = d2cls_tbox
 (* ****** ****** *)
+#typedef sort2lst = list(sort2)
+(* ****** ****** *)
 #typedef s2cstlst = list(s2cst)
 #typedef s2varlst = list(s2var)
 #typedef s2explst = list(s2exp)
@@ -120,12 +122,16 @@ S2E = "./staexp2.sats"
 #typedef d2varlst = list(d2var)
 (* ****** ****** *)
 #typedef d2patlst = list(d2pat)
-#typedef d2explst = list(d2exp)
-#typedef d2expopt = optn(d2exp)
-#typedef d2eclist = list(d2ecl)
+(* ****** ****** *)
+#typedef f2arglst = list(f2arg)
 (* ****** ****** *)
 #typedef d2gualst = list(d2gua)
 #typedef d2clslst = list(d2cls)
+(* ****** ****** *)
+#typedef d2explst = list(d2exp)
+#typedef d2expopt = optn(d2exp)
+(* ****** ****** *)
+#typedef d2eclist = list(d2ecl)
 (* ****** ****** *)
 //
 datatype
@@ -410,6 +416,13 @@ d2ecl_node =
 |D2Cabssort of (sym_t)
 //
 |D2Cstacst0 of (s2cst, sort2)
+//
+|D2Csexpdef of (s2cst, s2exp)
+//
+|D2Cdatasort of (d1ecl, sort2lst)
+//
+|D2Cexcptcon of (d1ecl, d2conlst)
+|D2Cdatatype of (d1ecl, s2cstlst)
 //
 |
 D2Cnone0 of ((*void*)) | D2Cnone1 of (d1ecl)
