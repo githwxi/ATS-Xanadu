@@ -43,5 +43,48 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME // namespace
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+//
+#staload
+SYM = "./xsymbol.sats"
+#staload
+MAP = "./xsymmap.sats"
+#staload
+LEX = "./lexing0.sats"
+//
+#typedef sym_t = $SYM.sym_t
+#typedef token = $LEX.token
+//
+(* ****** ****** *)
+#staload S1E = "./staexp1.sats"
+#staload D1E = "./dynexp1.sats"
+(* ****** ****** *)
+#staload S2E = "./staexp2.sats"
+#staload D2E = "./dynexp2.sats"
+(* ****** ****** *)
+//
+#typedef sort1 = $S1E.sort1
+#typedef s1exp = $S1E.s1exp
+#typedef l1s1e = $S1E.l1s1e
+#typedef sort2 = $S2E.sort2
+#typedef s2exp = $S2E.s2exp
+#typedef l2s2e = $S2E.l2s2e
+//
+#typedef sort1lst = $S1E.sort1lst
+#typedef s1explst = $S1E.s1explst
+#typedef l1s1elst = $S1E.l1s1elst
+#typedef sort2lst = $S2E.sort2lst
+#typedef s2explst = $S2E.s2explst
+#typedef l2s2elst = $S2E.l2s2elst
+//
+(* ****** ****** *)
+#absvtbx tr12env_vtbx
+#vwtpdef tr12env = tr12env_vtbx
+(* ****** ****** *)
+fun
+tr12env_sortenv_find
+( env:
+! tr12env, key: sym_t): s2texopt_vt
+the_sortenv_find(tid)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_trans12.sats] *)
