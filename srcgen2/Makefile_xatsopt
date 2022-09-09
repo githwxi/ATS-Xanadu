@@ -125,6 +125,14 @@ all_sats:: \
 dynexp2_sats
 dynexp2_sats: ; $(XATSOPT) --static SATS/dynexp2.sats
 ######
+all_sats:: \
+trans12_sats
+trans12_sats: ; $(XATSOPT) --static SATS/trans12.sats
+######
+all_sats:: \
+tread12_sats
+tread12_sats: ; $(XATSOPT) --static SATS/tread12.sats
+######
 
 ######
 #
