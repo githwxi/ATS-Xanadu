@@ -54,14 +54,11 @@ FIX = "./xfixity.sats"
 LEX = "./lexing0.sats"
 //
 #typedef sym_t = $SYM.sym_t
-(*
-#typedef fixty = $FIX.fixty
-*)
 #typedef token = $LEX.token
 //
 (* ****** ****** *)
 //
-#vwtpdef
+#typedef
 fixty = $FIX.fixty
 #vwtpdef
 fixtyopt_vt = optn_vt(fixty)

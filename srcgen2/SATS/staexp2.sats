@@ -262,6 +262,21 @@ fun
 the_s2varmap_search_opt(sym_t): s2varopt_vt
 (* ****** ****** *)
 //
+(*
+HX:
+extended sort *)
+datatype s2tex =
+|
+S2TEXsrt of sort2
+|
+S2TEXsub of
+(s2var, s2explst(*prop*))
+//
+(* ****** ****** *)
+fun
+s2tex_fprint:(FILR,s2tex)->void
+(* ****** ****** *)
+//
 datatype
 s2exp_node =
 //
