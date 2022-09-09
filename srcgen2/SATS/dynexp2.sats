@@ -94,6 +94,9 @@ S2E = "./staexp2.sats"
 #typedef d2cst = d2cst_tbox
 #typedef d2var = d2var_tbox
 (* ****** ****** *)
+#typedef d2itm_tbox // ptr
+#typedef d2itm = d2itm_tbox
+(* ****** ****** *)
 #abstbox d2pat_tbox // ptr
 #abstbox d2exp_tbox // ptr
 #abstbox d2ecl_tbox // ptr

@@ -61,13 +61,33 @@ LEX = "./lexing0.sats"
 #staload S2E = "./staexp2.sats"
 #staload D2E = "./dynexp2.sats"
 (* ****** ****** *)
-//
 #typedef sort1 = $S1E.sort1
 #typedef s1exp = $S1E.s1exp
 #typedef l1s1e = $S1E.l1s1e
+(* ****** ****** *)
 #typedef sort2 = $S2E.sort2
+#typedef s2var = $S2E.s2var
+#typedef s2cst = $S2E.s2cst
 #typedef s2exp = $S2E.s2exp
 #typedef l2s2e = $S2E.l2s2e
+(* ****** ****** *)
+#typedef s2itm = $S2E.s2itm
+#typedef s2tex = $S2E.s2tex
+(* ****** ****** *)
+#typedef d1pat = $D1E.d1pat
+#typedef d1exp = $D1E.d1exp
+#typedef l1d1p = $D1E.l1d1p
+#typedef l1d1e = $D1E.l1d1e
+(* ****** ****** *)
+#typedef d2pat = $D2E.d2pat
+#typedef d2exp = $D2E.d2exp
+#typedef l2d2p = $D2E.l2d2p
+#typedef l2d2e = $D2E.l2d2e
+(* ****** ****** *)
+#typedef d2itm = $D2E.d2itm
+(* ****** ****** *)
+#typedef d2ecl = $D2E.d2ecl
+(* ****** ****** *)
 //
 #typedef sort1lst = $S1E.sort1lst
 #typedef s1explst = $S1E.s1explst
@@ -80,11 +100,69 @@ LEX = "./lexing0.sats"
 #absvtbx tr12env_vtbx
 #vwtpdef tr12env = tr12env_vtbx
 (* ****** ****** *)
+#vwtpdef s2texopt_vt = optn_vt(s2tex)
+#vwtpdef s2itmopt_vt = optn_vt(s2itm)
+#vwtpdef d2itmopt_vt = optn_vt(d2itm)
+(* ****** ****** *)
+//
 fun
-tr12env_sortenv_find
+tr12env_sort_find
 ( env:
-! tr12env, key: sym_t): s2texopt_vt
-the_sortenv_find(tid)
+! tr12env, sym: sym_t): s2texopt_vt
+//
+fun
+tr12env_sexp_find
+( env:
+! tr12env, sym: sym_t): s2itmopt_vt
+//
+fun
+tr12env_dexp_find
+( env:
+! tr12env, sym: sym_t): d2itmopt_vt
+//
+(* ****** ****** *)
+//
+fun
+tr12env_sort_qfind
+( env:
+! tr12env
+, qua:token,sym:sym_t): s2texopt_vt
+//
+fun
+tr12env_sexp_qfind
+( env:
+! tr12env
+, qua:token,sym:sym_t): s2itmopt_vt
+//
+fun
+tr12env_dexp_qfind
+( env:
+! tr12env
+, qua:token,sym:sym_t): d2itmopt_vt
+//
+(* ****** ****** *)
+//
+fun
+trans12_sort1:(!tr12env, sort1)->sort2
+fun
+trans12_s1exp:(!tr12env, s1exp)->s2exp
+fun
+trans12_l1s1e:(!tr12env, l1s1e)->l2s2e
+//
+(* ****** ****** *)
+//
+fun
+trans12_d1pat:(!tr12env, d1pat)->d2pat
+fun
+trans12_l1d1p:(!tr12env, l1d1p)->l2d2p
+//
+(* ****** ****** *)
+//
+fun
+trans12_d1exp:(!tr12env, d1exp)->d2exp
+fun
+trans12_l1d1e:(!tr12env, l1d1e)->l2d2e
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_trans12.sats] *)
