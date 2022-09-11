@@ -67,6 +67,12 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with d1pat_get_lctn
+#symload node with d1pat_get_node
+(* ****** ****** *)
+#symload lctn with d1exp_get_lctn
+#symload node with d1exp_get_node
+(* ****** ****** *)
 #symload lctn with d1ecl_get_lctn
 #symload node with d1ecl_get_node
 (* ****** ****** *)
@@ -93,6 +99,13 @@ val loc0 = d1cl.lctn()
 in//let
 d2ecl(loc0, D2Cd1ecl(d1cl))
 end (*let*) // end of [D1Cd0ecl]
+//
+|_(*otherwise*) =>
+let
+val loc0 = d1cl.lctn()
+in//let
+d2ecl_make_node(loc0, D2Cnone1(d1cl))
+end (*let*) // end of [_(*otherwise*)] // temp
 //
 end where
 {

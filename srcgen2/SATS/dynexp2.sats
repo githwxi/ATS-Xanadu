@@ -266,6 +266,11 @@ d2pat_get_node(d2pat): d2pat_node
 #symload lctn with d2pat_get_lctn
 #symload node with d2pat_get_node
 (* ****** ****** *)
+fun
+d2pat_make_node
+(loc:loc_t,nod:d2pat_node): d2pat
+#symload d2pat with d2pat_make_node
+(* ****** ****** *)
 //
 datatype
 d2gua_node =
@@ -401,6 +406,11 @@ d2exp_get_node(d2exp): d2exp_node
 (* ****** ****** *)
 #symload lctn with d2exp_get_lctn
 #symload node with d2exp_get_node
+(* ****** ****** *)
+fun
+d2exp_make_node
+(loc:loc_t,nod:d2exp_node): d2exp
+#symload d2exp with d2exp_make_node
 (* ****** ****** *)
 //
 datatype
