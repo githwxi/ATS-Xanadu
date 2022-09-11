@@ -79,6 +79,8 @@ LEX = "./lexing0.sats"
 #typedef l1d1p = $D1E.l1d1p
 #typedef l1d1e = $D1E.l1d1e
 (* ****** ****** *)
+#typedef d1ecl = $D1E.d1ecl
+(* ****** ****** *)
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
 #typedef l2d2p = $D2E.l2d2p
@@ -95,6 +97,27 @@ LEX = "./lexing0.sats"
 #typedef sort2lst = $S2E.sort2lst
 #typedef s2explst = $S2E.s2explst
 #typedef l2s2elst = $S2E.l2s2elst
+//
+(* ****** ****** *)
+//
+#typedef d1patlst = $D1E.d1patlst
+#typedef d1explst = $D1E.d1explst
+#typedef l1d1plst = $D1E.l1d1plst
+#typedef l1d1elst = $D1E.l1d1elst
+#typedef d2patlst = $D2E.d2patlst
+#typedef d2explst = $D2E.d2explst
+#typedef l2d2plst = $D2E.l2d2plst
+#typedef l2d2elst = $D2E.l2d2elst
+//
+(* ****** ****** *)
+//
+#typedef d1expopt = $D1E.d1expopt
+#typedef d2expopt = $D2E.d2expopt
+//
+(* ****** ****** *)
+//
+#typedef d1eclist = $D1E.d1eclist
+#typedef d2eclist = $D2E.d2eclist
 //
 (* ****** ****** *)
 #absvtbx tr12env_vtbx
@@ -155,13 +178,35 @@ fun
 trans12_d1pat:(!tr12env, d1pat)->d2pat
 fun
 trans12_l1d1p:(!tr12env, l1d1p)->l2d2p
-//
 (* ****** ****** *)
-//
 fun
 trans12_d1exp:(!tr12env, d1exp)->d2exp
 fun
 trans12_l1d1e:(!tr12env, l1d1e)->l2d2e
+//
+(* ****** ****** *)
+//
+fun
+trans12_d1ecl:(!tr12env, d1ecl)->d2ecl
+//
+(* ****** ****** *)
+//
+fun
+trans12_d1patlst:(!tr12env, d1patlst)->d2patlst
+fun
+trans12_d1explst:(!tr12env, d1explst)->d2explst
+fun
+trans12_l1d1plst:(!tr12env, l1d1plst)->l2d2plst
+fun
+trans12_l1d1elst:(!tr12env, l1d1elst)->l2d2elst
+//
+fun
+trans12_d1expopt:(!tr12env, d1expopt)->d2expopt
+//
+(* ****** ****** *)
+//
+fun
+trans12_d1ecllst:(!tr12env, d1eclist)->d2eclist
 //
 (* ****** ****** *)
 
