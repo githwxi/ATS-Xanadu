@@ -267,6 +267,9 @@ d2pat_get_node(d2pat): d2pat_node
 #symload node with d2pat_get_node
 (* ****** ****** *)
 fun
+d2pat_none1(d1p0:d1pat): d2pat
+(* ****** ****** *)
+fun
 d2pat_make_node
 (loc:loc_t,nod:d2pat_node): d2pat
 #symload d2pat with d2pat_make_node
@@ -406,6 +409,9 @@ d2exp_get_node(d2exp): d2exp_node
 (* ****** ****** *)
 #symload lctn with d2exp_get_lctn
 #symload node with d2exp_get_node
+(* ****** ****** *)
+fun
+d2exp_none1(d1e0:d1exp): d2exp
 (* ****** ****** *)
 fun
 d2exp_make_node

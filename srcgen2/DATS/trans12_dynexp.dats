@@ -91,12 +91,7 @@ in//let
 case+
 d1e0.node() of
 //
-|_(*otherwise*) =>
-let
-val loc0 = d1e0.lctn()
-in//let
-d2exp_make_node(loc0, D2Enone1(d1e0))
-end (*let*) // end of [_(*otherwise*)] // temp
+|_(*otherwise*) => d2exp_none1(d1e0)
 //
 end where
 {

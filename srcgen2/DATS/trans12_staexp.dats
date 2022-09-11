@@ -45,5 +45,52 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload
+_(*TRANS12*) = "./trans12.dats"
+(* ****** ****** *)
+#staload "./../SATS/xbasics.sats"
+(* ****** ****** *)
+#staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
+#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
+#staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/staexp2.sats"
+(* ****** ****** *)
+#staload "./../SATS/trans12.sats"
+(* ****** ****** *)
+#symload lctn with token_get_lctn
+#symload node with token_get_node
+(* ****** ****** *)
+#symload lctn with s1exp_get_lctn
+#symload node with s1exp_get_node
+(* ****** ****** *)
+
+#implfun
+trans12_s1exp
+( tenv,s1e0 ) = let
+//
+(*
+val
+loc0 = s1e0.lctn()
+val () =
+prerrln
+("trans12_dexp: s1e0 = ", s1e0)
+*)
+//
+in//let
+//
+case+
+s1e0.node() of
+//
+|_(*otherwise*) => s2exp_none1(s1e0)
+//
+end where
+{
+} (*where*) // end of [trans12_s1exp(tenv,s1e0)]
+
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_trans12_staexp.dats] *)
