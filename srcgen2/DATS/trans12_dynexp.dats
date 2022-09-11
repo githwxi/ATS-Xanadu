@@ -45,5 +45,63 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload
+_(*TRANS12*) = "./trans12.dats"
+(* ****** ****** *)
+#staload "./../SATS/xbasics.sats"
+(* ****** ****** *)
+#staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
+#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
+#staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
+(* ****** ****** *)
+#staload "./../SATS/trans12.sats"
+(* ****** ****** *)
+#symload lctn with token_get_lctn
+#symload node with token_get_node
+(* ****** ****** *)
+#symload lctn with d1pat_get_lctn
+#symload node with d1pat_get_node
+(* ****** ****** *)
+#symload lctn with d1exp_get_lctn
+#symload node with d1exp_get_node
+(* ****** ****** *)
+
+#implfun
+trans12_d1exp
+( tenv,d1e0 ) = let
+//
+(*
+val
+loc0 = d1e0.lctn()
+val () =
+prerrln
+("trans12_dexp: d1e0 = ", d1e0)
+*)
+//
+in//let
+//
+case+
+d1e0.node() of
+//
+|_(*otherwise*) =>
+let
+val loc0 = d1e0.lctn()
+in//let
+d2exp_make_node(loc0, D2Enone1(d1e0))
+end (*let*) // end of [_(*otherwise*)] // temp
+//
+end where
+{
+} (*where*) // end of [trans12_d1exp(tenv,d1e0)]
+
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_trans12_dynexp.dats] *)
