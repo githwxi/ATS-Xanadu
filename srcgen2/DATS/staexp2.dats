@@ -105,6 +105,13 @@ the_s2xtv_stamp_new
 endloc // end of [the_s2xtv_stamp_new]
 //
 (* ****** ****** *)
+//
+#implfun
+sort2_none0() = S2Tnone0()
+#implfun
+sort2_none1(s1t0) = S2Tnone1(s1t0)
+//
+(* ****** ****** *)
 
 local
 //

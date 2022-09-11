@@ -208,6 +208,11 @@ sort2_fprint:(FILR,sort2)->void
 //
 (* ****** ****** *)
 fun
+sort2_none0((*void*)): sort2
+fun
+sort2_none1(s1t0: sort1): sort2
+(* ****** ****** *)
+fun
 s2cst_fprint:(FILR,s2cst)->void
 fun
 s2var_fprint:(FILR,s2var)->void
@@ -372,6 +377,8 @@ fun s2exp_get_node(s2exp): s2exp_node
 #symload sort with s2exp_get_sort
 #symload node with s2exp_get_node
 (* ****** ****** *)
+fun
+s2exp_none0((*void*)): s2exp
 fun
 s2exp_none1(s1e0:s1exp): s2exp
 (* ****** ****** *)
