@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sun 11 Sep 2022 03:17:27 PM EDT
+Sun 11 Sep 2022 05:10:48 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -45,72 +45,5 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload
-_(*TRANS12*) = "./trans12.dats"
-(* ****** ****** *)
-#staload "./../SATS/xbasics.sats"
-(* ****** ****** *)
-#staload "./../SATS/xsymbol.sats"
-(* ****** ****** *)
-#staload "./../SATS/locinfo.sats"
-(* ****** ****** *)
-#staload "./../SATS/lexing0.sats"
-(* ****** ****** *)
-#staload "./../SATS/staexp1.sats"
-#staload "./../SATS/dynexp1.sats"
-(* ****** ****** *)
-#staload "./../SATS/staexp2.sats"
-#staload "./../SATS/dynexp2.sats"
-(* ****** ****** *)
-#staload "./../SATS/trans12.sats"
-(* ****** ****** *)
-#symload lctn with token_get_lctn
-#symload node with token_get_node
-(* ****** ****** *)
-#symload lctn with d1pat_get_lctn
-#symload node with d1pat_get_node
-(* ****** ****** *)
-#symload lctn with d1exp_get_lctn
-#symload node with d1exp_get_node
-(* ****** ****** *)
-#symload lctn with d1ecl_get_lctn
-#symload node with d1ecl_get_node
-(* ****** ****** *)
 
-#implfun
-trans12_d1ecl
-( tenv,d1cl ) = let
-//
-(*
-val
-loc0 = d1cl.lctn()
-val () =
-prerrln
-("trans12_d1ecl: d1cl = ", d1cl)
-*)
-//
-in//let
-//
-case+
-d1cl.node() of
-|D1Cd0ecl _ =>
-let
-val loc0 = d1cl.lctn()
-in//let
-d2ecl(loc0, D2Cd1ecl(d1cl))
-end (*let*) // end of [D1Cd0ecl]
-//
-|_(*otherwise*) =>
-let
-val loc0 = d1cl.lctn()
-in//let
-d2ecl_make_node(loc0, D2Cnone1(d1cl))
-end (*let*) // end of [_(*otherwise*)] // temp
-//
-end where
-{
-} (*where*) // end of [trans12_d1ecl(tenv,d1cl)]
-
-(* ****** ****** *)
-
-(* end of [ATS3/XATSOPT_trans12_decl00.dats] *)
+(* end of [ATS3/XATSOPT_trans12_myenv0.dats] *)

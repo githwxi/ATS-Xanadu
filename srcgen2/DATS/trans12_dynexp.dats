@@ -83,7 +83,7 @@ val
 loc0 = d1e0.lctn()
 val () =
 prerrln
-("trans12_dexp: d1e0 = ", d1e0)
+("trans12_d1exp: d1e0 = ", d1e0)
 *)
 //
 in//let

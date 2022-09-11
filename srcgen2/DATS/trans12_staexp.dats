@@ -64,8 +64,35 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with sort1_get_lctn
+#symload node with sort1_get_node
+(* ****** ****** *)
 #symload lctn with s1exp_get_lctn
 #symload node with s1exp_get_node
+(* ****** ****** *)
+
+#implfun
+trans12_sort1
+( tenv,s1t0 ) = let
+(*
+val
+loc0 = s1t0.lctn()
+val () =
+prerrln
+("trans12_sort1: s1t0 = ", s1t0)
+*)
+in//let
+//
+case+
+s1t0.node() of
+//
+| S1Tnone0 () => sort2_none1(s1t0)
+| S1Tnone1 (s0t0) => sort2_none1(s1t0)
+//
+end where
+{
+} (*where*) // end of [trans12_sort1(tenv,s1t0)]
+
 (* ****** ****** *)
 
 #implfun
@@ -77,7 +104,7 @@ val
 loc0 = s1e0.lctn()
 val () =
 prerrln
-("trans12_dexp: s1e0 = ", s1e0)
+("trans12_s1exp: s1e0 = ", s1e0)
 *)
 //
 in//let
