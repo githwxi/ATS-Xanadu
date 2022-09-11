@@ -432,6 +432,9 @@ trans12_staexp_dats: ; $(XATSOPT) --dynamic DATS/trans12_staexp.dats
 all_dats:: \
 trans12_dynexp_dats
 trans12_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trans12_dynexp.dats
+all_dats:: \
+trans12_decl00_dats
+trans12_decl00_dats: ; $(XATSOPT) --dynamic DATS/trans12_decl00.dats
 ######
 
 ######
