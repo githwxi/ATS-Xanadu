@@ -446,5 +446,10 @@ d2ecl_get_node(d2ecl): d2ecl_node
 #symload lctn with d2ecl_get_lctn
 #symload node with d2ecl_get_node
 (* ****** ****** *)
+fun
+d2ecl_make_node
+(loc:loc_t,nod:d2ecl_node): d2ecl
+#symload d2ecl with d2ecl_make_node
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_dynexp2.sats] *)
