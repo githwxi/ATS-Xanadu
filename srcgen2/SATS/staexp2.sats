@@ -86,7 +86,7 @@ LEX = "./lexing0.sats"
 #typedef s2cst = s2cst_tbox
 #typedef s2var = s2var_tbox
 (* ****** ****** *)
-#typedef s2itm_tbox // ptr
+#abstbox s2itm_tbox // ptr
 #typedef s2itm = s2itm_tbox
 (* ****** ****** *)
 #abstbox s2exp_tbox // ptr
