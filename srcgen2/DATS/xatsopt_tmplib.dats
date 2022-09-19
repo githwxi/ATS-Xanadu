@@ -976,5 +976,26 @@ g_print<d2ecl>(dcl) =
 d2ecl_fprint(g_print$out<>(), dcl)
 //
 (* ****** ****** *)
+//
+#impltmp
+g_print<d2valdcl>(dval) =
+d2valdcl_fprint(g_print$out<>(), dval)
+#impltmp
+g_print<d2vardcl>(dvar) =
+d2vardcl_fprint(g_print$out<>(), dvar)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<d2fundcl>(dfun) =
+d2fundcl_fprint(g_print$out<>(), dfun)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<d2cstdcl>(dcst) =
+d2cstdcl_fprint(g_print$out<>(), dcst)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_xatsopt_tmplib.dats] *)
