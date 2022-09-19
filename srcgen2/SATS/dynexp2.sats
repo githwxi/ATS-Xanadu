@@ -97,6 +97,11 @@ S2E = "./staexp2.sats"
 #abstbox d2itm_tbox // ptr
 #typedef d2itm = d2itm_tbox
 (* ****** ****** *)
+#abstbox t2qag_tbox // ptr
+#abstbox t2iag_tbox // ptr
+#typedef t2qag = t2qag_tbox
+#typedef t2iag = t2iag_tbox
+(* ****** ****** *)
 #abstbox d2pat_tbox // ptr
 #abstbox d2exp_tbox // ptr
 #abstbox d2ecl_tbox // ptr
@@ -132,6 +137,9 @@ S2E = "./staexp2.sats"
 #typedef d2cstlst = list(d2cst)
 #typedef d2varlst = list(d2var)
 (* ****** ****** *)
+#typedef t2qaglst = list(t2qag)
+#typedef t2iaglst = list(t2iag)
+(* ****** ****** *)
 #typedef d2patlst = list(d2pat)
 (* ****** ****** *)
 #typedef f2arglst = list(f2arg)
@@ -147,8 +155,14 @@ S2E = "./staexp2.sats"
 #typedef d2valdcl = d2valdcl_tbox
 #typedef d2vardcl = d2vardcl_tbox
 #typedef d2fundcl = d2fundcl_tbox
-#abstbox i2mpldcl = i2mpldcl_tbox
+#typedef i2mpldcl = i2mpldcl_tbox
 #typedef d2cstdcl = d2cstdcl_tbox
+(* ****** ****** *)
+#typedef d2valdclist = list(d2valdcl)
+#typedef d2vardclist = list(d2vardcl)
+#typedef d2fundclist = list(d2fundcl)
+#typedef i2mpldclist = list(i2mpldcl)
+#typedef d2cstdclist = list(d2cstdcl)
 (* ****** ****** *)
 //
 datatype
