@@ -114,6 +114,14 @@ S2E = "./staexp2.sats"
 #typedef d2gpt = d2gpt_tbox
 #typedef d2cls = d2cls_tbox
 (* ****** ****** *)
+//
+#abstbox d2valdcl_tbox // ptr
+#abstbox d2vardcl_tbox // ptr
+#abstbox d2fundcl_tbox // ptr
+#abstbox i2mpldcl_tbox // ptr
+#abstbox d2cstdcl_tbox // ptr
+//
+(* ****** ****** *)
 #typedef sort2lst = list(sort2)
 (* ****** ****** *)
 #typedef s2cstlst = list(s2cst)
@@ -135,6 +143,12 @@ S2E = "./staexp2.sats"
 #typedef d2expopt = optn(d2exp)
 (* ****** ****** *)
 #typedef d2eclist = list(d2ecl)
+(* ****** ****** *)
+#typedef d2valdcl = d2valdcl_tbox
+#typedef d2vardcl = d2vardcl_tbox
+#typedef d2fundcl = d2fundcl_tbox
+#abstbox i2mpldcl = i2mpldcl_tbox
+#typedef d2cstdcl = d2cstdcl_tbox
 (* ****** ****** *)
 //
 datatype
@@ -444,8 +458,21 @@ D2Csymload of
 //
 |D2Cdatasort of (d1ecl, sort2lst)
 //
-|D2Cexcptcon of (d1ecl, d2conlst)
-|D2Cdatatype of (d1ecl, s2cstlst)
+|
+D2Cvaldclst of
+(token(*VAL(vlk)*), d2valdclist)
+|
+D2Cvardclst of
+(token(*VAR(vrk)*), d2vardclist)
+|
+D2Cfundclst of
+(token(*FUN(fnk)*), t2qaglst, d2fundclist)
+//
+|D2Cexcptcon of (d2ecl, d2conlst)
+|D2Cdatatype of (d2ecl, s2cstlst)
+//
+|D2Cdynconst of
+(token(*fnk//vlk*), t2qaglst, d2cstdclist)
 //
 |
 D2Cnone0 of ((*void*)) | D2Cnone1 of (d1ecl)
@@ -466,6 +493,17 @@ fun
 d2ecl_make_node
 (loc:loc_t,nod:d2ecl_node): d2ecl
 #symload d2ecl with d2ecl_make_node
+(* ****** ****** *)
+fun
+d2valdcl_fprint:(FILR,d2valdcl)->void
+fun
+d2vardcl_fprint:(FILR,d2vardcl)->void
+(* ****** ****** *)
+fun
+d2fundcl_fprint:(FILR,d2fundcl)->void
+(* ****** ****** *)
+fun
+d2cstdcl_fprint:(FILR,d2cstdcl)->void
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_dynexp2.sats] *)

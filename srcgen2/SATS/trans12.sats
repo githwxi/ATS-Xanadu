@@ -166,6 +166,20 @@ tr12env_dexp_qfind
 (* ****** ****** *)
 //
 fun
+tr12env_poplet0( env: !tr12env ): void
+fun
+tr12env_pshlet0( env: !tr12env ): void
+fun
+tr12env_pshloc1( env: !tr12env ): void
+fun
+tr12env_pshloc2( env: !tr12env ): void
+//
+fun
+tr12env_locjoin( env: !tr12env ): void
+//
+(* ****** ****** *)
+//
+fun
 trans12_sort1:(!tr12env, sort1)->sort2
 fun
 trans12_s1exp:(!tr12env, s1exp)->s2exp
