@@ -181,12 +181,16 @@ stkmap_lam0
 stkmap_cons
 (k1, x1, kxs) => loop(kxs, err)
 //
-| !stkmap_nil() => (err := 1; kxs)
+| !
+stkmap_nil() => (err := 1; kxs)
 //
-| !stkmap_let0 _ => (err := 1; kxs)
+| !
+stkmap_let0 _ => (err := 1; kxs)
 //
-| !stkmap_loc1 _ => (err := 1; kxs)
-| !stkmap_loc2 _ => (err := 1; kxs)
+| !
+stkmap_loc1 _ => (err := 1; kxs)
+| !
+stkmap_loc2 _ => (err := 1; kxs)
 //
 )
 //
@@ -195,7 +199,8 @@ let
 var
 err: sint = 0
 val
-( ) = (map := loop(map, err)) in err end
+( ) =
+(map := loop(map, err)) in err end
 end (*let*) // [ stkmap_poplam0(map) ]
 //
 (* ****** ****** *)
@@ -218,12 +223,16 @@ stkmap_let0
 stkmap_cons
 (k1, x1, kxs) => loop(kxs, err)
 //
-| !stkmap_nil() => (err := 1; kxs)
+| !
+stkmap_nil() => (err := 1; kxs)
 //
-| !stkmap_lam0 _ => (err := 1; kxs)
+| !
+stkmap_lam0 _ => (err := 1; kxs)
 //
-| !stkmap_loc1 _ => (err := 1; kxs)
-| !stkmap_loc2 _ => (err := 1; kxs)
+| !
+stkmap_loc1 _ => (err := 1; kxs)
+| !
+stkmap_loc2 _ => (err := 1; kxs)
 //
 )
 //
@@ -232,7 +241,8 @@ let
 var
 err: sint = 0
 val
-( ) = (map := loop(map, err)) in err end
+( ) =
+(map := loop(map, err)) in err end
 end (*let*) // [ stkmap_poplet0(map) ]
 //
 (* ****** ****** *)
@@ -273,16 +283,21 @@ stkmap_loc1
 stkmap_cons
 (k1, x1, kxs) => loop1(kxs, err, res)
 //
-| !stkmap_nil() =>
-  ( err := err+1; loop0(kxs, err, res) )
-| !stkmap_lam0 _ =>
-  ( err := err+1; loop0(kxs, err, res) )
-| !stkmap_let0 _ =>
-  ( err := err+1; loop0(kxs, err, res) )
-| !stkmap_loc2 _ =>
-  ( err := err+1; loop0(kxs, err, res) )
+| !
+stkmap_nil() =>
+( err := err+1; loop0(kxs, err, res) )
+| !
+stkmap_lam0 _ =>
+( err := err+1; loop0(kxs, err, res) )
+| !
+stkmap_let0 _ =>
+( err := err+1; loop0(kxs, err, res) )
+| !
+stkmap_loc2 _ =>
+( err := err+1; loop0(kxs, err, res) )
 //
-)
+) (*case+*) // end-[loop1(kxs,err,res)]
+//
 fnx
 loop2
 ( kxs: kxs
@@ -304,16 +319,20 @@ loop1(kxs, err, res) where
   val
   res = list_vt_cons(@(k1,x1), res) }
 //
-| !stkmap_nil() =>
-  ( err := err+1; loop1(kxs, err, res) )
-| !stkmap_lam0 _ =>
-  ( err := err+1; loop1(kxs, err, res) )
-| !stkmap_let0 _ =>
-  ( err := err+1; loop1(kxs, err, res) )
-| !stkmap_loc1 _ =>
-  ( err := err+1; loop1(kxs, err, res) )
+| !
+stkmap_nil() =>
+( err := err+1; loop1(kxs, err, res) )
+| !
+stkmap_lam0 _ =>
+( err := err+1; loop1(kxs, err, res) )
+| !
+stkmap_let0 _ =>
+( err := err+1; loop1(kxs, err, res) )
+| !
+stkmap_loc1 _ =>
+( err := err+1; loop1(kxs, err, res) )
 //
-) (*case+*) // end of [ loop1(kxs,err,res)
+) (*case+*) // end-[loop2(kxs,err,res)]
 //
 in//let
 let

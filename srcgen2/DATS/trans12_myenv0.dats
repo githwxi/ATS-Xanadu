@@ -79,6 +79,20 @@ SORTENV(topmap, stkmap) where
   val stkmap = stkmap_make_nil()
 } (*where*) // end of [sortenv_make_nil()]
 
+(* ****** ****** *)
+
+fun
+sortenv_free_top
+(tenv : sortenv) =
+(
+stkmap_free_nil(stkmap)) where
+{
+val+
+~SORTENV(topmap, stkmap) = tenv
+} (*where*)//end-of(sortenv_free_top(tenv))
+
+(* ****** ****** *)
+
 end (*local*) // end of [ local(sortenv) ]
 
 (* ****** ****** *)
@@ -105,6 +119,20 @@ SEXPENV(topmap, stkmap) where
   val stkmap = stkmap_make_nil()
 } (*where*) // end of [sexpenv_make_nil()]
 
+(* ****** ****** *)
+
+fun
+sexpenv_free_top
+(senv : sexpenv) =
+(
+stkmap_free_nil(stkmap)) where
+{
+val+
+~SEXPENV(topmap, stkmap) = senv
+} (*where*)//end-of(sexpenv_free_top(senv))
+
+(* ****** ****** *)
+
 end (*local*) // end of [ local(sexpenv) ]
 
 (* ****** ****** *)
@@ -128,6 +156,20 @@ DEXPENV(topmap, stkmap) where
   val topmap = topmap_make_nil()
   val stkmap = stkmap_make_nil()
 } (*where*) // end of [dexpenv_make_nil()]
+
+(* ****** ****** *)
+
+fun
+dexpenv_free_top
+(senv : dexpenv) =
+(
+stkmap_free_nil(stkmap)) where
+{
+val+
+~DEXPENV(topmap, stkmap) = senv
+} (*where*)//end-of(dexpenv_free_top(senv))
+
+(* ****** ****** *)
 
 end (*local*) // end of [ local(dexpenv) ]
 
