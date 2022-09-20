@@ -45,5 +45,61 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
+#staload "./../SATS/xsymmap.sats"
+(* ****** ****** *)
+#staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
+(* ****** ****** *)
+#staload "./../SATS/trans12.sats"
+(* ****** ****** *)
+
+local
+
+#typedef key = sym_t
+
+in//local
+
+datavwtp
+sortenv =
+SORTENV of
+(topmap(s2tex), stkmap(s2tex))
+
+end (*local*) // end of [local(sortenv)]
+
+(* ****** ****** *)
+
+local
+
+#typedef key = sym_t
+
+in//local
+
+datavwtp
+sexpenv =
+SEXPENV of
+(topmap(s2itm), stkmap(s2itm))
+
+end (*local*) // end of [local(sexpenv)]
+
+(* ****** ****** *)
+
+local
+
+#typedef key = sym_t
+
+in//local
+
+datavwtp
+dexpenv =
+DEXPENV of
+(topmap(s2itm), stkmap(s2itm))
+
+end (*local*) // end of [local(dexpenv)]
+
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_trans12_myenv0.dats] *)
