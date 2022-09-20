@@ -105,6 +105,18 @@ stkmap_free_nil
 (* ****** ****** *)
 //
 fun
+stkmap_poplam0
+  {itm:tbox}
+(map: &stkmap(itm) >> _): sint
+//
+fun
+stkmap_pshlam0
+  {itm:tbox}
+(map: &stkmap(itm) >> _): void
+//
+(* ****** ****** *)
+//
+fun
 stkmap_poplet0
   {itm:tbox}
 (map: &stkmap(itm) >> _): sint
@@ -113,6 +125,8 @@ fun
 stkmap_pshlet0
   {itm:tbox}
 (map: &stkmap(itm) >> _): void
+//
+(* ****** ****** *)
 //
 fun
 stkmap_poploc0

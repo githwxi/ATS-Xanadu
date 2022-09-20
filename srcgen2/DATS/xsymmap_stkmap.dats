@@ -64,6 +64,7 @@ stkmap(itm:type) =
 | stkmap_cons of
   (key, itm, stkmap(itm))
 //
+| stkmap_lam0 of stkmap(itm)
 | stkmap_let0 of stkmap(itm)
 | stkmap_loc1 of stkmap(itm)
 | stkmap_loc2 of stkmap(itm)
@@ -127,6 +128,15 @@ case- map of ~stkmap_nil() => ())
 (* ****** ****** *)
 //
 #implfun
+stkmap_pshlam0
+  {itm}(map) =
+(
+  map := stkmap_lam0(map))
+(* end of [stkmap_pshlam0(map)] *)
+//
+(* ****** ****** *)
+//
+#implfun
 stkmap_pshlet0
   {itm}(map) =
 (
@@ -154,6 +164,43 @@ stkmap_pshloc2
 (* ****** ****** *)
 //
 #implfun
+stkmap_poplam0
+  {itm}(map) = let
+//
+fnx
+loop
+( kxs
+: stkmap(itm)
+, err: &sint >> _): stkmap(itm) =
+(
+case+ kxs of
+| ~
+stkmap_lam0
+(   kxs   ) => kxs
+| ~
+stkmap_cons
+(k1, x1, kxs) => loop(kxs, err)
+//
+| !stkmap_nil() => (err := 1; kxs)
+//
+| !stkmap_let0 _ => (err := 1; kxs)
+//
+| !stkmap_loc1 _ => (err := 1; kxs)
+| !stkmap_loc2 _ => (err := 1; kxs)
+//
+)
+//
+in//let
+let
+var
+err: sint = 0
+val
+( ) = (map := loop(map, err)) in err end
+end (*let*) // [ stkmap_poplam0(map) ]
+//
+(* ****** ****** *)
+//
+#implfun
 stkmap_poplet0
   {itm}(map) = let
 //
@@ -172,6 +219,8 @@ stkmap_cons
 (k1, x1, kxs) => loop(kxs, err)
 //
 | !stkmap_nil() => (err := 1; kxs)
+//
+| !stkmap_lam0 _ => (err := 1; kxs)
 //
 | !stkmap_loc1 _ => (err := 1; kxs)
 | !stkmap_loc2 _ => (err := 1; kxs)
@@ -226,6 +275,8 @@ stkmap_cons
 //
 | !stkmap_nil() =>
   ( err := err+1; loop0(kxs, err, res) )
+| !stkmap_lam0 _ =>
+  ( err := err+1; loop0(kxs, err, res) )
 | !stkmap_let0 _ =>
   ( err := err+1; loop0(kxs, err, res) )
 | !stkmap_loc2 _ =>
@@ -254,6 +305,8 @@ loop1(kxs, err, res) where
   res = list_vt_cons(@(k1,x1), res) }
 //
 | !stkmap_nil() =>
+  ( err := err+1; loop1(kxs, err, res) )
+| !stkmap_lam0 _ =>
   ( err := err+1; loop1(kxs, err, res) )
 | !stkmap_let0 _ =>
   ( err := err+1; loop1(kxs, err, res) )
@@ -310,6 +363,7 @@ if
 then
 optn_vt_cons(x1) else loop(kxs,k0))
 //
+| !stkmap_lam0(kxs) => loop(kxs, k0)
 | !stkmap_let0(kxs) => loop(kxs, k0)
 | !stkmap_loc1(kxs) => loop(kxs, k0)
 | !stkmap_loc2(kxs) => loop(kxs, k0)
