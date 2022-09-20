@@ -97,10 +97,19 @@ S2E = "./staexp2.sats"
 #abstbox d2itm_tbox // ptr
 #typedef d2itm = d2itm_tbox
 (* ****** ****** *)
+//
+(*
+#abstbox q2arg_tbox // ptr
+#typedef q2arg = q2arg_tbox
+*)
+#abstbox s2qag_tbox // ptr
 #abstbox t2qag_tbox // ptr
-#abstbox t2iag_tbox // ptr
+#typedef s2qag = s2qag_tbox
 #typedef t2qag = t2qag_tbox
+//
+#abstbox t2iag_tbox // ptr
 #typedef t2iag = t2iag_tbox
+//
 (* ****** ****** *)
 #abstbox d2pat_tbox // ptr
 #abstbox d2exp_tbox // ptr
@@ -137,6 +146,10 @@ S2E = "./staexp2.sats"
 #typedef d2cstlst = list(d2cst)
 #typedef d2varlst = list(d2var)
 (* ****** ****** *)
+(*
+#typedef q2arglst = list(q2arg)
+*)
+#typedef s2qaglst = list(s2qag)
 #typedef t2qaglst = list(t2qag)
 #typedef t2iaglst = list(t2iag)
 (* ****** ****** *)
@@ -224,6 +237,13 @@ fun
 d2itm_fprint:(FILR,d2itm)->void
 fun
 d2ptm_fprint:(FILR,d2ptm)->void
+(* ****** ****** *)
+fun
+s2qag_fprint:(FILR,s2qag)->void
+fun
+t2qag_fprint:(FILR,t2qag)->void
+fun
+t2iag_fprint:(FILR,t2iag)->void
 (* ****** ****** *)
 //
 datatype
