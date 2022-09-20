@@ -68,7 +68,18 @@ sortenv =
 SORTENV of
 (topmap(s2tex), stkmap(s2tex))
 
-end (*local*) // end of [local(sortenv)]
+(* ****** ****** *)
+
+fun
+sortenv_make_nil
+  ( (*void*) ): sortenv =
+SORTENV(topmap, stkmap) where
+{
+  val topmap = topmap_make_nil()
+  val stkmap = stkmap_make_nil()
+} (*where*) // end of [sortenv_make_nil()]
+
+end (*local*) // end of [ local(sortenv) ]
 
 (* ****** ****** *)
 
@@ -83,7 +94,18 @@ sexpenv =
 SEXPENV of
 (topmap(s2itm), stkmap(s2itm))
 
-end (*local*) // end of [local(sexpenv)]
+(* ****** ****** *)
+
+fun
+sexpenv_make_nil
+  ( (*void*) ): sexpenv =
+SEXPENV(topmap, stkmap) where
+{
+  val topmap = topmap_make_nil()
+  val stkmap = stkmap_make_nil()
+} (*where*) // end of [sexpenv_make_nil()]
+
+end (*local*) // end of [ local(sexpenv) ]
 
 (* ****** ****** *)
 
@@ -98,7 +120,16 @@ dexpenv =
 DEXPENV of
 (topmap(s2itm), stkmap(s2itm))
 
-end (*local*) // end of [local(dexpenv)]
+fun
+dexpenv_make_nil
+  ( (*void*) ): dexpenv =
+DEXPENV(topmap, stkmap) where
+{
+  val topmap = topmap_make_nil()
+  val stkmap = stkmap_make_nil()
+} (*where*) // end of [dexpenv_make_nil()]
+
+end (*local*) // end of [ local(dexpenv) ]
 
 (* ****** ****** *)
 
