@@ -378,6 +378,9 @@ fun s2exp_get_node(s2exp): s2exp_node
 #symload node with s2exp_get_node
 (* ****** ****** *)
 fun
+s2exp_int(i0: sint): s2exp
+(* ****** ****** *)
+fun
 s2exp_none0((*void*)): s2exp
 fun
 s2exp_none1(s1e0:s1exp): s2exp
