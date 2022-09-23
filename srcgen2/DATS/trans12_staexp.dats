@@ -87,6 +87,9 @@ in//let
 case+
 s1t0.node() of
 //
+|S1Tint(tok) =>
+sort2_int(token2sint(tok))
+//
 | S1Tnone0 () => sort2_none1(s1t0)
 | S1Tnone1 (s0t0) => sort2_none1(s1t0)
 //
@@ -117,6 +120,10 @@ s1e0.node() of
 s2exp_int(token2sint(tok))
 |S1Echr(tok) =>
 s2exp_chr(token2schr(tok))
+|S1Eflt(tok) =>
+s2exp_flt(token2sflt(tok))
+|S1Estr(tok) =>
+s2exp_str(token2sstr(tok))
 //
 |_(*otherwise*) => s2exp_none1(s1e0)
 //

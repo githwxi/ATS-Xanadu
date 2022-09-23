@@ -208,6 +208,9 @@ sort2_fprint:(FILR,sort2)->void
 //
 (* ****** ****** *)
 fun
+sort2_int(i0: sint): sort2
+(* ****** ****** *)
+fun
 sort2_none0((*void*)): sort2
 fun
 sort2_none1(s1t0: sort1): sort2
@@ -371,8 +374,10 @@ s2exp_fprint:(FILR,s2exp)->void
 fun
 s2typ_fprint:(FILR,s2typ)->void
 (* ****** ****** *)
-fun s2exp_get_sort(s2exp): sort2
-fun s2exp_get_node(s2exp): s2exp_node
+fun
+s2exp_get_sort(s2exp): sort2
+fun
+s2exp_get_node(s2exp): s2exp_node
 (* ****** ****** *)
 #symload sort with s2exp_get_sort
 #symload node with s2exp_get_node
@@ -380,9 +385,13 @@ fun s2exp_get_node(s2exp): s2exp_node
 fun
 s2exp_int(i0: sint): s2exp
 fun
-s2exp_btf(b0: char): s2exp
+s2exp_btf(b0: bool): s2exp
 fun
 s2exp_chr(c0: char): s2exp
+fun
+s2exp_flt(f0: double): s2exp
+fun
+s2exp_str(s0: string): s2exp
 (* ****** ****** *)
 fun
 s2exp_none0((*void*)): s2exp
