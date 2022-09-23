@@ -59,6 +59,7 @@ _(*TRANS12*) = "./trans12.dats"
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/staexp2.sats"
 (* ****** ****** *)
+#staload "./../SATS/trans01.sats"
 #staload "./../SATS/trans12.sats"
 (* ****** ****** *)
 #symload lctn with token_get_lctn
@@ -111,6 +112,9 @@ in//let
 //
 case+
 s1e0.node() of
+//
+|S1Eint(tok) =>
+s2exp_int(token2sint(tok))
 //
 |_(*otherwise*) => s2exp_none1(s1e0)
 //
