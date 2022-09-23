@@ -379,6 +379,10 @@ fun s2exp_get_node(s2exp): s2exp_node
 (* ****** ****** *)
 fun
 s2exp_int(i0: sint): s2exp
+fun
+s2exp_btf(b0: char): s2exp
+fun
+s2exp_chr(c0: char): s2exp
 (* ****** ****** *)
 fun
 s2exp_none0((*void*)): s2exp
