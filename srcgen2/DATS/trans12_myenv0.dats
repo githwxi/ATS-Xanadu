@@ -60,13 +60,14 @@ ATS_PACKNAME
 local
 
 #typedef key = sym_t
+#typedef itm = s2tex
 
 in//local
 
 datavwtp
 sortenv =
 SORTENV of
-(topmap(s2tex), stkmap(s2tex))
+(topmap(itm), stkmap(itm))
 
 (* ****** ****** *)
 
@@ -92,6 +93,28 @@ val+
 } (*where*)//end-of(sortenv_free_top(tenv))
 
 (* ****** ****** *)
+//
+fun
+sortenv_insert_any
+( tenv: sortenv
+, k0: key, x0: itm) = let
+//
+val+
+@SORTENV
+(topmap, !stkmap) = tenv
+//
+in//let
+//
+if
+stkmap_nilq(stkmap)
+then
+topmap_insert_any(topmap, k0, x0)//top
+else
+stkmap_insert_any(stkmap, k0, x0)//inner
+//
+end (*let*)//end-of(sortenv_insert_any(tenv,k0,x0))
+//
+(* ****** ****** *)
 
 end (*local*) // end of [ local(sortenv) ]
 
@@ -100,13 +123,14 @@ end (*local*) // end of [ local(sortenv) ]
 local
 
 #typedef key = sym_t
+#typedef itm = s2itm
 
 in//local
 
 datavwtp
 sexpenv =
 SEXPENV of
-(topmap(s2itm), stkmap(s2itm))
+(topmap(itm), stkmap(itm))
 
 (* ****** ****** *)
 
@@ -132,6 +156,28 @@ val+
 } (*where*)//end-of(sexpenv_free_top(senv))
 
 (* ****** ****** *)
+//
+fun
+sexpenv_insert_any
+( senv: sexpenv
+, k0: key, x0: itm) = let
+//
+val+
+@SEXPENV
+(topmap, !stkmap) = senv
+//
+in//let
+//
+if
+stkmap_nilq(stkmap)
+then
+topmap_insert_any(topmap, k0, x0)//top
+else
+stkmap_insert_any(stkmap, k0, x0)//inner
+//
+end (*let*)//end-of(sexpenv_insert_any(tenv,k0,x0))
+//
+(* ****** ****** *)
 
 end (*local*) // end of [ local(sexpenv) ]
 
@@ -140,13 +186,14 @@ end (*local*) // end of [ local(sexpenv) ]
 local
 
 #typedef key = sym_t
+#typedef itm = d2itm
 
 in//local
 
 datavwtp
 dexpenv =
 DEXPENV of
-(topmap(s2itm), stkmap(s2itm))
+(topmap(itm), stkmap(itm))
 
 fun
 dexpenv_make_nil
@@ -161,14 +208,36 @@ DEXPENV(topmap, stkmap) where
 
 fun
 dexpenv_free_top
-(senv : dexpenv) =
+(denv : dexpenv) =
 (
 stkmap_free_nil(stkmap)) where
 {
 val+
-~DEXPENV(topmap, stkmap) = senv
-} (*where*)//end-of(dexpenv_free_top(senv))
+~DEXPENV(topmap, stkmap) = denv
+} (*where*)//end-of(dexpenv_free_top(denv))
 
+(* ****** ****** *)
+//
+fun
+dexpenv_insert_any
+( denv: dexpenv
+, k0: key, x0: itm) = let
+//
+val+
+@DEXPENV
+(topmap, !stkmap) = denv
+//
+in//let
+//
+if
+stkmap_nilq(stkmap)
+then
+topmap_insert_any(topmap, k0, x0)//top
+else
+stkmap_insert_any(stkmap, k0, x0)//inner
+//
+end (*let*)//end-of(dexpenv_insert_any(tenv,k0,x0))
+//
 (* ****** ****** *)
 
 end (*local*) // end of [ local(dexpenv) ]

@@ -386,11 +386,13 @@ d2exp_node =
 |D2Eint of token
 |D2Ebtf of token
 |D2Echr of token
+|D2Eflt of token
 |D2Estr of token
 //
 |D2Ei00 of (sint) // sint
 |D2Eb00 of (bool) // bool
 |D2Ec00 of (char) // char
+|D2Ef00 of (char) // float
 |D2Es00 of (strn) // string
 //
 |D2Etop of (token)

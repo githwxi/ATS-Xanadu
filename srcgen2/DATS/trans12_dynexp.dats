@@ -91,6 +91,35 @@ in//let
 case+
 d1e0.node() of
 //
+|
+D1Eint(tok) =>
+let
+val loc0 = d1e0.lctn()
+in//let
+d2exp_make_node(loc0, D2Eint(tok))
+end (*let*) // end of [D1Eint(tok)]
+|
+D1Echr(tok) =>
+let
+val loc0 = d1e0.lctn()
+in//let
+d2exp_make_node(loc0, D2Echr(tok))
+end (*let*) // end of [D1Echr(tok)]
+|
+D1Eflt(tok) =>
+let
+val loc0 = d1e0.lctn()
+in//let
+d2exp_make_node(loc0, D2Eflt(tok))
+end (*let*) // end of [D1Eflt(tok)]
+|
+D1Estr(tok) =>
+let
+val loc0 = d1e0.lctn()
+in//let
+d2exp_make_node(loc0, D2Estr(tok))
+end (*let*) // end of [D1Estr(tok)]
+//
 |_(*otherwise*) => d2exp_none1(d1e0)
 //
 end where
