@@ -115,6 +115,8 @@ s1e0.node() of
 //
 |S1Eint(tok) =>
 s2exp_int(token2sint(tok))
+|S1Echr(tok) =>
+s2exp_chr(token2schr(tok))
 //
 |_(*otherwise*) => s2exp_none1(s1e0)
 //
