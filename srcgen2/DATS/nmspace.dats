@@ -37,4 +37,4 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_nmspace.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_nmspace.dats] *)

@@ -66,4 +66,4 @@ ATS_PACKNAME
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xsymbol_inits0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsymbol_inits0.dats] *)

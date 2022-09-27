@@ -1709,4 +1709,4 @@ optn_trans01_fnp(tenv, opt0, trans01_d0eclist)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_trans01_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_trans01_decl00.dats] *)

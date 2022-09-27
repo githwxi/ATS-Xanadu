@@ -180,4 +180,4 @@ end (*local*) // end of [local]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_parsing_tokbuf.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_parsing_tokbuf.dats] *)

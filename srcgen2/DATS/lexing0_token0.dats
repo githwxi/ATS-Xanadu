@@ -109,4 +109,4 @@ then true else iscmnt(tnd)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_lexing0_token0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_lexing0_token0.dats] *)

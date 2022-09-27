@@ -775,4 +775,4 @@ endlet // end of [fxitmlst_resolve$rederr<a>(loc0,itms)]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xfixity.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xfixity.dats] *)

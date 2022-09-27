@@ -490,4 +490,4 @@ loop(map, kxs) where {
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xsymmap_stkmap.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsymmap_stkmap.dats] *)

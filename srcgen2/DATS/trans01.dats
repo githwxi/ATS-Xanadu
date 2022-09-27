@@ -149,4 +149,4 @@ end (*let*) // end of [d1parsed_trans01(dpar)]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_trans01.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_trans01.dats] *)

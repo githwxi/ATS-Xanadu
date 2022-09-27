@@ -41,4 +41,4 @@ ATS_PACKNAME
 #staload "./../SATS/xsynoug.sats"
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xsynoug.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsynoug.dats] *)

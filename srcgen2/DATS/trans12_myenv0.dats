@@ -244,4 +244,4 @@ end (*local*) // end of [ local(dexpenv) ]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_trans12_myenv0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_trans12_myenv0.dats] *)

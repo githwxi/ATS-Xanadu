@@ -204,4 +204,4 @@ SRP_symbl in s2var_make_idst(id0, s2t)
 end (*let*)//end of [s2var_make_sort(s2t)]
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_staexp2.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_staexp2.dats] *)

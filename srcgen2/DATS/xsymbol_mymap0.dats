@@ -91,4 +91,4 @@ end (*local*) // end of [local]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xsymbol_mymap0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsymbol_mymap0.dats] *)

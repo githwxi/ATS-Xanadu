@@ -998,4 +998,4 @@ d2cstdcl_fprint(g_print$out<>(), dcst)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xatsopt_tmplib.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xatsopt_tmplib.dats] *)

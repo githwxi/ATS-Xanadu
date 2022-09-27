@@ -2533,4 +2533,4 @@ preadx0_d0cstdclist
 list_preadx0_fnp(lst, err, preadx0_d0cstdcl)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_preadx0_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_preadx0_decl00.dats] *)

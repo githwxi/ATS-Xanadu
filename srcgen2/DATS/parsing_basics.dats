@@ -984,4 +984,4 @@ end//end-of(ps_sep_p1fun(buf,err,fsp,pfn))
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_parsing_basics.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_parsing_basics.dats] *)
