@@ -58,4 +58,4 @@ fun abort_interr((*void*)): void
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xerrory.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xerrory.sats] *)

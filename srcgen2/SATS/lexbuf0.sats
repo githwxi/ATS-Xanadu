@@ -147,4 +147,4 @@ lxbf2_make_cstrx // lxbf2 bases on a
 (inp: ~strx_vt(sint)): lxbf2 // stream
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_lexbuf0.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_lexbuf0.sats] *)

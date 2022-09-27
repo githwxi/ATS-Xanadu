@@ -739,4 +739,4 @@ trans01_d0cstdclist:
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_trans01.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_trans01.sats] *)

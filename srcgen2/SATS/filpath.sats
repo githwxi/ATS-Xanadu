@@ -106,4 +106,4 @@ fun fpath_fprint(FILR, fpath): void
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_filpath.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_filpath.sats] *)

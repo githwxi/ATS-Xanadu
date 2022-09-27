@@ -54,4 +54,4 @@ D2E = "./dynexp2.sats"
 #typedef token = $LEX.token
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_tread12.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_tread12.sats] *)

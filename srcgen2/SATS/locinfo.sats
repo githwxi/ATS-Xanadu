@@ -141,4 +141,4 @@ add_loctn_loctn
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_locinfo.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_locinfo.sats] *)
