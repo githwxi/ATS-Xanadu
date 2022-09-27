@@ -427,6 +427,10 @@ D2Ecas0 of
 ( token(*+/0/-*), d2exp, d2clslst )
 //
 |
+D2Etup0 of (int(*npf*), d2explst)
+|
+D2Ercd0 of (int(*npf*), l2d2elst)
+|
 D2Etup1 of // HX: tuple
 (token(*knd*), int(*npf*), d2explst)
 |
