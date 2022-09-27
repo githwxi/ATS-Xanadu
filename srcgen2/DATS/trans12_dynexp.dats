@@ -120,10 +120,73 @@ in//let
 d2exp_make_node(loc0, D2Estr(tok))
 end (*let*) // end of [D1Estr(tok)]
 //
-|_(*otherwise*) => d2exp_none1(d1e0)
+|
+D1Eb0sh _ => d2exp_none1(d1e0)
+|
+D1Eb1sh(d1e1) => f0_b1sh(tenv, d1e0)
+//
+|
+D1El1st(d1es) => f0_l1st(tenv, d1e0)
+(*
+|
+D1El2st(d1es) => f0_l2st(tenv, d1e0)
+*)
+//
+| _(* otherwise *) => d2exp_none1(d1e0)
 //
 end where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_b1sh
+( tenv:
+! tr12env
+, d1e0: d1exp): d2exp =
+(
+trans12_d1exp(tenv, d1e1)) where
+{
+  val-D1Eb1sh(d1e1) = d1e0.node()
+} (*where*) // end of [f0_b1sh(tenv, d1e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_l1st
+( tenv:
+! tr12env
+, d1e0: d1exp): d2exp =
+let
+val-
+D1El1st(d1es) = d1e0.node()
+in//let
+//
+if
+list_singq(d1es)
+then
+let
+val-
+list_cons(d1e1, _) = d1es
+in
+  trans12_d1exp(tenv, d1e1)
+end (*let*) // end of [then]
+else
+let
+//
+val loc0 = d1e0.lctn()
+//
+val npf1 = -1
+val d2es = trans12_d1explst(tenv, d1es)
+//
+in//let
+d2exp_make_node(loc0, D2Etup0(npf1, d2es))
+end (*let*) // end of [else]
+//
+end (*let*) // end of [f0_l1st(tenv, d1e0)]
+//
+(* ****** ****** *)
+//
 } (*where*) // end of [trans12_d1exp(tenv,d1e0)]
 
 (* ****** ****** *)

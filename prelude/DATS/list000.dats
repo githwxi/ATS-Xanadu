@@ -184,6 +184,35 @@ case+ xs of
 //
 #impltmp
 <a:type>
+list_singq
+  (xs) =
+(
+case+ xs of
+|
+list_nil
+((*void*)) => false
+|
+list_cons
+( x1, xs ) => list_nilq<>(xs)
+)
+//
+#impltmp
+<a:type>
+list_pairq
+  (xs) =
+(
+case+ xs of
+|
+list_nil
+((*void*)) => false
+|
+list_cons
+( x1, xs ) => list_singq<a>(xs)
+)
+(* ****** ****** *)
+//
+#impltmp
+<a:type>
 list_head(xs) =
 let
 val+

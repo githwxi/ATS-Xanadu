@@ -115,6 +115,17 @@ list_consq
 (xs: list(a, n)): bool( n>0 )
 //
 (* ****** ****** *)
+fun
+<a:t0>
+list_singq
+{a:type}{n:int}
+(xs: list(a, n)): bool( n=1 )
+fun
+<a:t0>
+list_pairq
+{a:type}{n:int}
+(xs: list(a, n)): bool( n=2 )
+(* ****** ****** *)
 //
 fun
 <a:t0>
