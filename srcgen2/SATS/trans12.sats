@@ -224,4 +224,4 @@ trans12_d1ecllst:(!tr12env, d1eclist)->d2eclist
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_trans12.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_trans12.sats] *)

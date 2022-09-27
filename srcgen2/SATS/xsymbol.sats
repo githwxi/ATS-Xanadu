@@ -125,4 +125,4 @@ symbl_insert_any(sym: symbl): void
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xsymbol.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsymbol.sats] *)

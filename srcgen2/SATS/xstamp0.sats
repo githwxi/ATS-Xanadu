@@ -88,4 +88,4 @@ stamper_tmpset(stamper, sint): void
 #symload tmpset with stamper_tmpset
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xstamp0.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xstamp0.sats] *)

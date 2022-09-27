@@ -65,4 +65,4 @@ label_fprint(FILR, label): void
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xlabel0.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xlabel0.sats] *)

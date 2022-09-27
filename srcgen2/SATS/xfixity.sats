@@ -238,4 +238,4 @@ fxitm_pstfix(x0: a, f1: a): fxitm(a) // f1(x0)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xfixity.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xfixity.sats] *)
