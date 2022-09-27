@@ -49,4 +49,4 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_dynexp2.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_dynexp2.dats] *)

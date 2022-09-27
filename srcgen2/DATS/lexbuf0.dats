@@ -46,4 +46,4 @@ ATS_PACKNAME
 #staload "./../SATS/lexbuf0.sats"
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_lexbuf0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_lexbuf0.dats] *)

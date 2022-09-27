@@ -101,4 +101,4 @@ end(*let*) // end of [loctn_fprint]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_locinfo_print0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_locinfo_print0.dats] *)

@@ -72,4 +72,4 @@ end (*local*) // end of [ local ]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xerrory.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xerrory.dats] *)

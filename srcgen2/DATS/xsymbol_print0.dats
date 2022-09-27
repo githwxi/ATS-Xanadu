@@ -58,4 +58,4 @@ symbl_fprint
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xsymbol_print0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsymbol_print0.dats] *)

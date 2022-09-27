@@ -46,4 +46,4 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_trans12.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_trans12.dats] *)

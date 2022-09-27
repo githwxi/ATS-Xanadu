@@ -2397,4 +2397,4 @@ endloc (*local*) // end of [local(p1_f0argsq1)]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_parsing_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_parsing_decl00.dats] *)

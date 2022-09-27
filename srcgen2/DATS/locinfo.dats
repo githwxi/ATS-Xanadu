@@ -187,4 +187,4 @@ end (*let*) // end of [add_loctn_loctn]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_locinfo.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_locinfo.dats] *)

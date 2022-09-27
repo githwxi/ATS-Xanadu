@@ -265,4 +265,4 @@ end (*let*) // end-of-(fpath_normize)
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_filpath.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_filpath.dats] *)

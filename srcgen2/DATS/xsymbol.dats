@@ -124,4 +124,4 @@ symbl_nilq(sym) = (sym = the_symbl_nil)
 symbl_neqz(sym) = (sym != the_symbl_nil)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xsymbol.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xsymbol.dats] *)

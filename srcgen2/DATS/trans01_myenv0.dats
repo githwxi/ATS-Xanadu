@@ -310,4 +310,4 @@ endloc (*local*) // end of [ local(tr01env) ]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_trans01_myenv0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_trans01_myenv0.dats] *)

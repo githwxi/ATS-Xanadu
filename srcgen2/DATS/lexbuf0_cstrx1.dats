@@ -291,4 +291,4 @@ lxbf1_make_cstrm(cs0) where
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_lexbuf0_cstrx1.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_lexbuf0_cstrx1.dats] *)

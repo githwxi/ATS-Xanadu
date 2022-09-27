@@ -223,4 +223,4 @@ end (*let*) // end of [s2exp_fprint(out, s2e0)]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_staexp2_print0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_staexp2_print0.dats] *)
