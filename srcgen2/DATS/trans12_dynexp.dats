@@ -311,4 +311,18 @@ end (*let*) // end of [f0_r2cd(tenv, d1e0)]
 
 (* ****** ****** *)
 
+#implfun
+trans12_d1patlst
+( tenv, d1ps ) =
+list_trans12_fnp(tenv, d1ps, trans12_d1pat)
+
+(* ****** ****** *)
+
+#implfun
+trans12_d1explst
+( tenv, d1es ) =
+list_trans12_fnp(tenv, d1es, trans12_d1exp)
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_trans12_dynexp.dats] *)

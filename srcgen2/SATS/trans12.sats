@@ -166,16 +166,35 @@ tr12env_dexp_qfind
 (* ****** ****** *)
 //
 fun
-tr12env_poplet0( env: !tr12env ): void
+tr12env_poplet0(env: !tr12env): void
 fun
-tr12env_pshlet0( env: !tr12env ): void
+tr12env_pshlet0(env: !tr12env): void
 fun
-tr12env_pshloc1( env: !tr12env ): void
+tr12env_pshloc1(env: !tr12env): void
 fun
-tr12env_pshloc2( env: !tr12env ): void
+tr12env_pshloc2(env: !tr12env): void
 //
 fun
-tr12env_locjoin( env: !tr12env ): void
+tr12env_locjoin(env: !tr12env): void
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:t0>
+list_trans12_fnp
+( e1:
+! tr12env
+, xs: list(x0)
+, (!tr12env, x0) -> y0): list(y0)
+fun
+<x0:t0>
+<y0:t0>
+optn_trans12_fnp
+( e1:
+! tr12env
+, xs: optn(x0)
+, (!tr12env, x0) -> y0): optn(y0)
 //
 (* ****** ****** *)
 //
