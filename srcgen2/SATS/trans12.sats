@@ -208,9 +208,10 @@ trans12_d1ecl:(!tr12env, d1ecl)->d2ecl
 fun
 trans12_d1patlst:(!tr12env, d1patlst)->d2patlst
 fun
-trans12_d1explst:(!tr12env, d1explst)->d2explst
-fun
 trans12_l1d1plst:(!tr12env, l1d1plst)->l2d2plst
+//
+fun
+trans12_d1explst:(!tr12env, d1explst)->d2explst
 fun
 trans12_l1d1elst:(!tr12env, l1d1elst)->l2d2elst
 //
