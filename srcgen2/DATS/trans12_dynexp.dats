@@ -131,6 +131,9 @@ D1El1st _ => f0_l1st(tenv, d1e0)
 D1El2st _ => f0_l2st(tenv, d1e0)
 //
 |
+D1Eseqn _ => f0_seqn(tenv, d1e0)
+//
+|
 D1Et1up _ => f0_t1up(tenv, d1e0)
 |
 D1Et2up _ => f0_t2up(tenv, d1e0)
@@ -183,14 +186,16 @@ end (*let*) // end of [then]
 else // if-else
 let
 //
-val loc0 = d1e0.lctn()
-//
-val npf1 = -1
 val d2es =
   trans12_d1explst(tenv, d1es)
 //
 in//let
+let
+val npf1 = -1
+val loc0 = d1e0.lctn()
+in//let
   d2exp(loc0, D2Etup0(npf1, d2es))
+end//let
 end (*let*) // end of [else]
 //
 end (*let*) // end of [f0_l1st(tenv, d1e0)]
@@ -228,13 +233,36 @@ val-
 D1Et1up
 (tknd, d1es) = d1e0.node()
 //
-val loc0 = d1e0.lctn()
 val d2es =
   trans12_d1explst(tenv, d1es)
+//
+in//let
+let
 val npf1 = -1
+val loc0 = d1e0.lctn()
 in//let
 d2exp(loc0, D2Etup1(tknd, npf1, d2es))
+end//let
 end (*let*) // end of [f0_t1up(tenv, d1e0)]
+//
+fun
+f0_seqn
+( tenv:
+! tr12env
+, d1e0: d1exp): d2exp =
+let
+//
+val loc0 = d1e0.lctn()
+//
+val-
+D1Eseqn
+(des1, des2) = d1e0.node()
+//
+val d1es = list_append(des1, des2)
+//
+in
+  trans12_d1expseq(tenv, loc0, d1es)
+end (*let*) // end of [f0_seqn(tenv, d1e0)]
 //
 fun
 f0_t2up
@@ -272,12 +300,15 @@ val-
 D1Er1cd
 (tknd, ldes) = d1e0.node()
 //
-val loc0 = d1e0.lctn()
 val ldes =
   trans12_l1d1elst(tenv, ldes)
+in//let
+let
 val npf1 = -1
+val loc0 = d1e0.lctn()
 in//let
 d2exp(loc0, D2Ercd2(tknd, npf1, ldes))
+end//let
 end (*let*) // end of [f0_r1cd(tenv, d1e0)]
 //
 fun
