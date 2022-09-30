@@ -1958,7 +1958,7 @@ let
 in
 err := e00;
 d0exp_RPAREN_cons2(tok1,d0es,tok2)
-end (*let*) // end of [T_SMCLN()]
+end (*let*) // end of [ T_SMCLN() ]
 |
 _(*non-T_BAR/SMCLN*) =>
 (

@@ -770,7 +770,19 @@ d1exp_errck
 endlet // end of [d1exp_l2st_errck(...)]
 (* ****** ****** *)
 fun
-d1exp_seqn_errck
+d1exp_s1eq_errck
+( loc
+: loc_t
+, d1es
+: d1explst ): d1exp =
+let
+val lvl = errvl(d1es)
+in//let
+d1exp_errck
+( lvl+1 , d1exp( loc, D1Es1eq(d1es) ) )
+endlet // end of [d1exp_s1eq_errck(...)]
+fun
+d1exp_s2eq_errck
 ( loc
 : loc_t
 , des1
@@ -782,8 +794,8 @@ val lvl = gmax
 (errvl(des1), errvl(des2))
 in//let
 d1exp_errck
-(lvl+1, d1exp(loc, D1Eseqn(des1,des2)))
-endlet // end of [d1exp_seqn_errck(...)]
+(lvl+1, d1exp(loc, D1Es2eq(des1,des2)))
+endlet // end of [d1exp_s2eq_errck(...)]
 (* ****** ****** *)
 //
 fun
@@ -879,14 +891,13 @@ d1exp_let0_errck
 : loc_t
 , d1cs
 : d1eclist
-, d1es
-: d1explst): d1exp =
+, d1e1: d1exp): d1exp =
 let
 val lvl = gmax
-(errvl(d1cs), errvl(d1es))
+(errvl(d1cs), errvl(d1e1))
 in//let
 d1exp_errck
-(lvl+1, d1exp(loc, D1Elet0(d1cs,d1es)))
+(lvl+1, d1exp(loc, D1Elet0(d1cs,d1e1)))
 endlet // end of [d1exp_let0_errck(...)]
 (* ****** ****** *)
 fun
@@ -1259,7 +1270,22 @@ d1exp_l2st_errck(loc0, des1, des2)
 endlet // end of [D1El2st(des1,des2)]
 //
 |
-D1Eseqn(des1,des2) =>
+D1Es1eq(d1es) =>
+let
+//
+val e00 = err
+//
+val d1es =
+  tread01_d1explst(d1es, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_s1eq_errck( loc0, d1es )
+endlet // end of [D1Es1eq(d1es)]
+|
+D1Es2eq(des1,des2) =>
 let
 //
 val e00 = err
@@ -1273,8 +1299,8 @@ in//let
 if
 (e00=err)
 then (d1e0) else
-d1exp_seqn_errck(loc0, des1, des2)
-endlet // end of [D1Eseqn(des1,des2)]
+d1exp_s2eq_errck(loc0, des1, des2)
+endlet // end of [D1Es2eq(des1,des2)]
 //
 |
 D1Eif0
@@ -1365,22 +1391,23 @@ d1exp_cas1_errck
 endlet//end-[D1Ecas1(tknd,d1e1,dcls)]
 //
 |
-D1Elet0(d1cs,d1es) =>
+D1Elet0(d1cs,d1e1) =>
 let
 //
 val e00 = err
 //
-val d1cs =
+val
+d1cs =
 tread01_d1eclist(d1cs, err)
-val d1es =
-tread01_d1explst(d1es, err)
+val
+d1e1 = tread01_d1exp(d1e1, err)
 //
 in//let
 if
 (e00=err)
 then (d1e0) else
-d1exp_let0_errck(loc0 , d1cs , d1es)
-endlet // end of [D1Elet0(d1cs,d1es)]
+d1exp_let0_errck(loc0 , d1cs , d1e1)
+endlet // end of [D1Elet0(d1cs,d1e1)]
 //
 |
 D1Ewhere
