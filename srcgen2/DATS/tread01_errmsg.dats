@@ -671,7 +671,11 @@ d1explst_fpemsg(out, des1);
 d1explst_fpemsg(out, des2))
 //
 |
-D1Eseqn(des1,des2) =>
+D1Es1eq(d1es) =>
+(
+d1explst_fpemsg(out, d1es))
+|
+D1Es2eq(des1,des2) =>
 (
 d1explst_fpemsg(out, des1);
 d1explst_fpemsg(out, des2))
@@ -692,10 +696,13 @@ d1exp_fpemsg(out, d1e1);
 d1clslst_fpemsg(out, d1cs))
 //
 |
-D1Elet0(d1cs,d1es) =>
+D1Elet0(d1cs, d1e1) =>
 (
-d1eclist_fpemsg(out, d1cs);
-d1explst_fpemsg(out, d1es))
+d1exp_fpemsg
+( out, d1e1 )) where
+{
+val () =
+d1eclist_fpemsg(out, d1cs)}
 |
 D1Ewhere(d1e1, d1cs) =>
 (

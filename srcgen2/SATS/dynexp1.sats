@@ -475,7 +475,8 @@ d1exp_node =
 | D1El2st of
   (d1explst, d1explst) // temp.
 //
-| D1Eseqn of
+| D1Es1eq of d1explst//sequencing
+| D1Es2eq of
   (d1explst, d1explst)//sequencing
 //
 |
@@ -494,8 +495,7 @@ D1Ecas0 of
 D1Ecas1 of
 ( token(*+/0/-*), d1exp, d1clslst, t1inv)
 //
-| D1Elet0 of
-  (d1eclist, d1explst(*semi*))
+| D1Elet0 of (d1eclist, d1exp)
 | D1Ewhere of (d1exp, d1eclist)
 //
 | D1Ebrckt of (d1explst)

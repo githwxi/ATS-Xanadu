@@ -256,7 +256,7 @@ trans12_d1expopt:(!tr12env, d1expopt)->d2expopt
 (* ****** ****** *)
 //
 fun
-trans12_d1ecllst:(!tr12env, d1eclist)->d2eclist
+trans12_d1eclist:(!tr12env, d1eclist)->d2eclist
 //
 (* ****** ****** *)
 

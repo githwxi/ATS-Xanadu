@@ -899,14 +899,30 @@ tr01env_pshlet0(tenv)
 //
 val d1cs =
 trans01_d0eclist(tenv, d0cs)
-val d1es =
-trans01_d0explst(tenv, d0es)
+//
+val loc1 =
+(
+case+ topt of
+|
+optn_nil() => tend.lctn()
+|
+optn_cons(tkin) =>
+(tkin.lctn() + tend.lctn())
+) : loc_t // end of [val loc1]
+//
+val d1e1 =
+d1exp
+(loc1, D1Es1eq(d1es)) where
+{
+  val d1es =
+  trans01_d0explst(tenv, d0es)
+}
 //
 val (  ) = tr01env_poplet0(tenv)
 //
 in//let
 FXITMatm
-(d1exp(loc0, D1Elet0(d1cs, d1es)))
+(d1exp(loc0, D1Elet0(d1cs, d1e1)))
 end (*let*)//end-of(f0_let0(tenv,d0e0))
 |
 D0Ewhere
@@ -1267,6 +1283,20 @@ FXITMatm
 d1exp
 ( loc0
 , D1El2st(des1, des2))) where
+{
+val des1 =
+  trans01_d0explst(tenv, des1)
+val des2 =
+  trans01_d0explst(tenv, des2)
+}
+|
+d0exp_RPAREN_cons2
+(tbeg, des2, tend) =>
+FXITMatm
+(
+d1exp
+( loc0
+, D1Es2eq(des1, des2))) where
 {
 val des1 =
   trans01_d0explst(tenv, des1)

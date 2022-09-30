@@ -312,6 +312,15 @@ print
 ("D1El2st(",des1,";",des2,")")
 //
 |
+D1Es1eq(d1es) =>
+print("D1Es1eq(",d1es,")")
+|
+D1Es2eq
+(des1,des2) =>
+print
+("D1Es2eq(",des1,";",des2,")")
+//
+|
 D1Eif0
 (d1e1,dthn,dels) =>
 (
@@ -336,8 +345,8 @@ print("D1Edtsel(");
 print(tknd,";",lab1,";",dopt,")"))
 //
 |
-D1Elet0(d1cs,d1es) =>
-print("D1Elet0(",d1cs,";",d1es,")")
+D1Elet0(d1cs,d1e1) =>
+print("D1Elet0(",d1cs,";",d1e1,")")
 |
 D1Ewhere(d1e1,d1cs) =>
 print("D1Ewhere(",d1e1,";",d1cs,")")
