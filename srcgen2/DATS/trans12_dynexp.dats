@@ -135,18 +135,15 @@ D1Es1eq _ => f0_s1eq(tenv, d1e0)
 |
 D1Es2eq _ => f0_s2eq(tenv, d1e0)
 //
+|D1Elet0 _ => f0_let0(tenv, d1e0)
 |
-D1Elet0 _ => f0_let0(tenv, d1e0)
+D1Ewhere _ => f0_where(tenv, d1e0)
 //
-|
-D1Et1up _ => f0_t1up(tenv, d1e0)
-|
-D1Et2up _ => f0_t2up(tenv, d1e0)
+|D1Et1up _ => f0_t1up(tenv, d1e0)
+|D1Et2up _ => f0_t2up(tenv, d1e0)
 //
-|
-D1Er1cd _ => f0_r1cd(tenv, d1e0)
-|
-D1Er2cd _ => f0_r2cd(tenv, d1e0)
+|D1Er1cd _ => f0_r1cd(tenv, d1e0)
+|D1Er2cd _ => f0_r2cd(tenv, d1e0)
 //
 | _(* otherwise *) => d2exp_none1(d1e0)
 //
@@ -256,30 +253,32 @@ in//let
 end//let
 end (*let*) // end of [f0_let0(tenv, d1e0)]
 //
-(* ****** ****** *)
-//
 fun
-f0_t1up
+f0_where
 ( tenv:
 ! tr12env
 , d1e0: d1exp): d2exp =
 let
 //
 val-
-D1Et1up
-(tknd, d1es) = d1e0.node()
+D1Ewhere
+(d1e1, d1cs) = d1e0.node()
 //
-val d2es =
-  trans12_d1explst(tenv, d1es)
+val
+d2cs =
+trans12_d1eclist(tenv, d1cs)
+//
+val
+d2e1 = trans12_d1exp(tenv, d1e1)
 //
 in//let
 let
 val npf1 = -1
 val loc0 = d1e0.lctn()
 in//let
-d2exp(loc0, D2Etup1(tknd, npf1, d2es))
+  d2exp(loc0, D2Ewhere(d2e1, d2cs))
 end//let
-end (*let*) // end of [f0_t1up(tenv, d1e0)]
+end (*let*) // end of [f0_where(tenv, d1e0)]
 //
 (* ****** ****** *)
 //
@@ -322,6 +321,29 @@ end (*let*) // end of [f0_s2eq(tenv, d1e0)]
 (* ****** ****** *)
 //
 fun
+f0_t1up
+( tenv:
+! tr12env
+, d1e0: d1exp): d2exp =
+let
+//
+val-
+D1Et1up
+(tknd, d1es) = d1e0.node()
+//
+val d2es =
+  trans12_d1explst(tenv, d1es)
+//
+in//let
+let
+val npf1 = -1
+val loc0 = d1e0.lctn()
+in//let
+d2exp(loc0, D2Etup1(tknd, npf1, d2es))
+end//let
+end (*let*) // end of [f0_t1up(tenv, d1e0)]
+//
+fun
 f0_t2up
 ( tenv:
 ! tr12env
@@ -345,6 +367,8 @@ val d2es = list_append(des1, des2)
 in//let
 d2exp(loc0, D2Etup1(tknd, npf1, d2es))
 end (*let*) // end of [f0_t2up(tenv, d1e0)]
+//
+(* ****** ****** *)
 //
 fun
 f0_r1cd
