@@ -48,10 +48,20 @@ ATS_PACKNAME // namespace
 SYM = "./xsymbol.sats"
 #staload
 MAP = "./xsymmap.sats"
+//
+(* ****** ****** *)
+#typedef sym_t = $SYM.sym_t
+(* ****** ****** *)
+//
+#staload
+LAB = "./xlabel0.sats"
+#staload
+LOC = "./locinfo.sats"
 #staload
 LEX = "./lexing0.sats"
 //
-#typedef sym_t = $SYM.sym_t
+#typedef lab_t = $LAB.lab_t
+#typedef loc_t = $LOC.loc_t
 #typedef token = $LEX.token
 //
 (* ****** ****** *)
@@ -217,6 +227,12 @@ trans12_d1exp:(!tr12env, d1exp)->d2exp
 fun
 trans12_l1d1e:(!tr12env, l1d1e)->l2d2e
 //
+(* ****** ****** *)
+fun
+trans12_d1expseq
+( tenv:
+! tr12env
+, loc0: loc_t, d1es: d1explst): d2exp
 (* ****** ****** *)
 //
 fun
