@@ -152,24 +152,18 @@ mul_b0_b0:
 (* ****** ****** *)
 //
 #stacst0
-lt_b0_b0:
-(b0, b0) -> bool
+lt_b0_b0:(b0,b0)->b0
 #stacst0
-gt_b0_b0:
-(b0, b0) -> bool
+gt_b0_b0:(b0,b0)->b0
 #stacst0
-eq_b0_b0:
-(b0, b0) -> bool
+eq_b0_b0:(b0,b0)->b0
 //
 #stacst0
-lte_b0_b0:
-(b0, b0) -> bool
+lte_b0_b0:(b0,b0)->b0
 #stacst0
-gte_b0_b0:
-(b0, b0) -> bool
+gte_b0_b0:(b0,b0)->b0
 #stacst0
-neq_b0_b0:
-(b0, b0) -> bool
+neq_b0_b0:(b0,b0)->b0
 //
 #sexpdef < = lt_b0_b0 // overloading
 #sexpdef > = gt_b0_b0 // overloading
@@ -183,23 +177,23 @@ neq_b0_b0:
 //
 #stacst0
 lt_c0_c0:
-(c0, c0) -> bool // c0: [0, 256)
+(c0, c0) -> b0 // c0: [0, 256)
 #stacst0
 gt_c0_c0:
-(c0, c0) -> bool // c0: [0, 256)
+(c0, c0) -> b0 // c0: [0, 256)
 #stacst0
 eq_c0_c0:
-(c0, c0) -> bool // c0: [0, 256)
+(c0, c0) -> b0 // c0: [0, 256)
 //
 #stacst0
 lte_c0_c0:
-(c0, c0) -> bool // c0: [0, 256)
+(c0, c0) -> b0 // c0: [0, 256)
 #stacst0
 gte_c0_c0:
-(c0, c0) -> bool // c0: [0, 256)
+(c0, c0) -> b0 // c0: [0, 256)
 #stacst0
 neq_c0_c0:
-(c0, c0) -> bool // c0: [0, 256)
+(c0, c0) -> b0 // c0: [0, 256)
 //
 #sexpdef < = lt_c0_c0 // overloading
 #sexpdef > = gt_c0_c0 // overloading
@@ -213,23 +207,23 @@ neq_c0_c0:
 //
 #stacst0
 lt_c0_i0:
-(c0, i0) -> bool // c0: [0, 256)
+(c0, i0) -> b0 // c0: [0, 256)
 #stacst0
 gt_c0_i0:
-(c0, i0) -> bool // c0: [0, 256)
+(c0, i0) -> b0 // c0: [0, 256)
 #stacst0
 eq_c0_i0:
-(c0, i0) -> bool // c0: [0, 256)
+(c0, i0) -> b0 // c0: [0, 256)
 //
 #stacst0
 lte_c0_i0:
-(c0, i0) -> bool // c0: [0, 256)
+(c0, i0) -> b0 // c0: [0, 256)
 #stacst0
 gte_c0_i0:
-(c0, i0) -> bool // c0: [0, 256)
+(c0, i0) -> b0 // c0: [0, 256)
 #stacst0
 neq_c0_i0:
-(c0, i0) -> bool // c0: [0, 256)
+(c0, i0) -> b0 // c0: [0, 256)
 //
 #sexpdef < = lt_c0_i0 // overloading
 #sexpdef > = gt_c0_i0 // overloading
@@ -242,22 +236,22 @@ neq_c0_i0:
 (* ****** ****** *)
 //
 #stacst0
-neg_i0: int -> int
+neg_i0: i0 -> i0
 #sexpdef - = neg_i0 // overloading
 //
 #stacst0
-abs_i0: int -> int
+abs_i0: i0 -> i0
 #sexpdef abs = abs_i0 // overloading
 //
 #stacst0
-sgn_i0: int -> int
+sgn_i0: i0 -> i0
 #sexpdef sgn = sgn_i0 // overloading
 //
 (*
 #stacst0
-succ_i0: int -> int
+succ_i0: i0 -> i0 // +1
 #stacst0
-pred_i0: int -> int
+pred_i0: i0 -> i0 // -1
 #sexpdef succ = succ_i0 // overloading
 #sexpdef pred = pred_i0 // overloading
 *)
@@ -401,10 +395,12 @@ size(a:vt) = sizeof_vt_i0(a)
 //
 (* ****** ****** *)
 //
+(*
 #stacst0
-offset_vt_cs: (vt,cs) -> int
+offset_vt_cs: (vt,cs) -> i0
 #sexpdef
 ofs(a:vt,l:cs) = offset_vt_cs(a,l)
+*)
 //
 (* ****** ****** *)
 //

@@ -51,7 +51,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 
 #implfun
-sort2_intq(s2t0) =
+sort2_intq
+(  s2t0  ) =
 (
 case+ s2t0 of
 | S2Tbas(tbas) =>
@@ -67,7 +68,8 @@ case+ tbas of
 (* ****** ****** *)
 
 #implfun
-sort2_addrq(s2t0) =
+sort2_addrq
+(   s2t0   ) =
 (
 case+ s2t0 of
 | S2Tbas(tbas) =>
@@ -83,7 +85,8 @@ case+ tbas of
 (* ****** ****** *)
 
 #implfun
-sort2_boolq(s2t0) =
+sort2_boolq
+(   s2t0   ) =
 (
 case+ s2t0 of
 | S2Tbas(tbas) =>
@@ -99,7 +102,8 @@ case+ tbas of
 (* ****** ****** *)
 
 #implfun
-sort2_charq(s2t0) =
+sort2_charq
+(   s2t0   ) =
 (
 case+ s2t0 of
 | S2Tbas(tbas) =>
