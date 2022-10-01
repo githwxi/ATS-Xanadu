@@ -1002,6 +1002,8 @@ s1e.node() of
 | _(*non-S1Eid0*) => false
 )
 
+(* ****** ****** *)
+
 fun
 isextp
 ( s1e

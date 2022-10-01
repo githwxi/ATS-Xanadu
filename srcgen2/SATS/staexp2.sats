@@ -403,6 +403,16 @@ s2exp_make_node
 (srt:sort2,nod:s2exp_node): s2exp
 #symload s2exp with s2exp_make_node
 (* ****** ****** *)
+(*
+// HX-2022-10-01:
+// Various utility functions
+*)
+(* ****** ****** *)
+fun
+sort2_predq(s2t0: sort2): bool
+fun
+sort2_imprq(s2t0: sort2): bool
+(* ****** ****** *)
 fun
 s2exp_l1st(s2es: s2explst): s2exp
 fun
