@@ -403,5 +403,11 @@ s2exp_make_node
 (srt:sort2,nod:s2exp_node): s2exp
 #symload s2exp with s2exp_make_node
 (* ****** ****** *)
+fun
+s2exp_l1st(s2es: s2explst): s2exp
+fun
+s2exp_l2st
+(ses1: s2explst, ses2: s2explst): s2exp
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_staexp2.sats] *)
