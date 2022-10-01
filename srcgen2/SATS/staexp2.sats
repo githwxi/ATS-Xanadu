@@ -417,5 +417,13 @@ s2exp_t2up
 ( tknd: token
 , ses1: s2explst, ses2: s2explst): s2exp
 (* ****** ****** *)
+fun
+s2exp_r1cd
+(tknd: token, lses: l2s2elst): s2exp
+fun
+s2exp_r2cd
+( tknd: token
+, lss1: l2s2elst, lss2: l2s2elst): s2exp
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_staexp2.sats] *)
