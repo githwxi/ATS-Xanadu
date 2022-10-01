@@ -242,6 +242,10 @@ fun
 trans12_s1explst_impr
 ( tenv:
 ! tr12env, s1es: s1explst): s2explst
+fun
+trans12_s1explst_prgm
+( tenv:
+! tr12env, s1es: s1explst): s2explst
 (* ****** ****** *)
 fun
 trans12_s1explst_sort
