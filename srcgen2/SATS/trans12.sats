@@ -209,11 +209,23 @@ optn_trans12_fnp
 (* ****** ****** *)
 //
 fun
-trans12_sort1:(!tr12env, sort1)->sort2
+trans12_sort1:
+(!tr12env, sort1)->sort2
 fun
-trans12_s1exp:(!tr12env, s1exp)->s2exp
+trans12_s1exp:
+(!tr12env, s1exp)->s2exp
 fun
-trans12_l1s1e:(!tr12env, l1s1e)->l2s2e
+trans12_l1s1e:
+(!tr12env, l1s1e)->l2s2e
+//
+fun
+trans12_sort1lst
+( tenv:
+! tr12env, s1ts: sort1lst): sort2lst
+fun
+trans12_s1explst
+( tenv:
+! tr12env, s1es: s1explst): s2explst
 //
 (* ****** ****** *)
 //

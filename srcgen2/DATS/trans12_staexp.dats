@@ -130,7 +130,12 @@ S1Eb0sh _ => s2exp_none1(s1e0)
 |
 S1Eb1sh _ => f0_b1sh(tenv, s1e0)
 //
-|_(*otherwise*) => s2exp_none1(s1e0)
+|
+S1El1st _ => f0_l1st(tenv, s1e0)
+|
+S1El2st _ => f0_l2st(tenv, s1e0)
+//
+| _(* otherwise *) => s2exp_none1(s1e0)
 //
 end where
 {
@@ -147,6 +152,87 @@ trans12_s1exp(tenv, s1e1)) where
 {
   val-S1Eb1sh(s1e1) = s1e0.node()
 } (*where*) // end of [f0_b1sh(tenv, s1e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_l1st
+( tenv:
+! tr12env
+, s1e0: s1exp): s2exp =
+let
+//
+val-
+S1El1st(s1es) = s1e0.node()
+//
+(*
+val
+loc0 = s1e0.lctn()
+val ( ) =
+println
+("trans12_s1exp: f0_l1st: loc0 = ", loc0)
+val ( ) =
+println
+("trans12_s1exp: f0_l1st: s1e0 = ", s1e0)
+*)
+//
+in
+if
+list_singq(s1es)
+then
+let
+val-
+list_cons(s1e1, _) = s1es
+in//let
+  trans12_s1exp(tenv, s1e1)
+end (*let*) // end of [then]
+else
+(
+s2exp_l1st(trans12_s1explst(tenv, s1es))
+)
+end (*let*) // end of [f0_l1st(tenv, s1e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_l2st
+( tenv:
+! tr12env
+, s1e0: s1exp): s2exp =
+let
+//
+val-
+S1El2st
+(ses1, ses2) = s1e0.node()
+//
+(*
+val
+loc0 = s1e0.lctn()
+val ( ) =
+println
+("trans12_s1exp: f0_l2st: loc0 = ", loc0)
+val ( ) =
+println
+("trans12_s1exp: f0_l2st: s1e0 = ", s1e0)
+*)
+//
+in
+if
+list_nilq(ses1)
+then
+(
+s2exp_l1st(ses2) where
+{
+val ses2 = trans12_s1explst(tenv, ses2) }
+)
+else
+(
+s2exp_l2st(ses1, ses2) where
+{
+val ses1 = trans12_s1explst(tenv, ses1)
+val ses2 = trans12_s1explst(tenv, ses2) }
+)
+end (*let*) // end of [f0_l2st(tenv, s1e0)]
 //
 (* ****** ****** *)
 //
