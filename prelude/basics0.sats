@@ -49,10 +49,16 @@
 (*
 #abssort int
 // [int] is built-in
+#abssort addr
+// [addr] is built-in
 #abssort bool//tt,ff
 // [bool] is built-in
 #abssort char//[0,256)
 // [char] is built-in
+#abssort float
+// [string] is built-in
+#abssort string
+// [string] is built-in
 *)
 //
 (* ****** ****** *)
@@ -91,12 +97,16 @@ datasort ints =
 //
 (* ****** ****** *)
 //
+(*
+t->1/f->0
+*)
 #stacst0
-cast_b0_i0:
-bool -> int // t->1/f->0
+cast_b0_i0:(b0)->i0
+(*
+!0->t/=0->f
+*)
 #stacst0
-cast_i0_b0:
-(int) -> bool // !0->t/=0->f
+cast_i0_b0:(i0)->b0
 //
 #sexpdef
 b2i = cast_b0_i0 // overloading
@@ -369,16 +379,17 @@ neq_i0_i0: (i0, i0) -> b0
 #sexpdef != = neq_i0_i0 // overloading
 //
 (* ****** ****** *)
-
-#sortdef nat = {a:int | a >= 0}
-#sortdef pos = {a:int | a >= 1}
-#sortdef neg = {a:int | a <= -1}
-
+//
+#sortdef pos = {a:i0 | a > 0}
+#sortdef neg = {a:i0 | a < 0}
+//
+#sortdef nat = {a:i0 | a >= 0}
+//
 (* ****** ****** *)
-
-#sortdef agtz = {l:addr | l > 0}
-#sortdef agez = {l:addr | l >= 0}
-
+//
+#sortdef agtz = {l:a0 | l > 0}
+#sortdef agez = {l:a0 | l >= 0}
+//
 (* ****** ****** *)
 //
 #stacst0
@@ -436,11 +447,9 @@ p2tr_k = $extype("xats_p2tr_t")
 (* ****** ****** *)
 //
 #abstype
-p1tr_tbox
-(l:addr) <= p1tr_k
+p1tr_tbox(a0) <= p1tr_k
 #abstype
-p2tr_tbox
-(x:vwtp, l:addr) <= p2tr_k
+p2tr_tbox(vt,a0) <= p2tr_k
 //
 #typedef
 p1tr0 = [l:a0] p1tr_tbox(l)
@@ -463,10 +472,10 @@ p2tr1
 //
 #abstype
 cp1tr_tbox
-(l:addr) <= p1tr_k
+(l:a0) <= p1tr_k
 #abstype
 cp2tr_tbox
-(x:vwtp, l:addr) <= p2tr_k
+(x:vt, l:a0) <= p2tr_k
 //
 #typedef
 cp1tr0 = [l:a0] cp1tr_tbox(l)
@@ -515,12 +524,13 @@ ullint_k = $extype("xats_ullint_t")
 (* ****** ****** *)
 //
 #abstype
-bool_type(bool) <= bool_k
+bool_type(b0) <= bool_k
 //
 #typedef
-bool0 = [b:b0] bool_type(b)
+bool0 =
+[b:b0] bool_type(b)
 #typedef
-bool1(b:bool) = bool_type(b)
+bool1(b:b0) = bool_type(b)
 //
 (* ****** ****** *)
 //
@@ -535,12 +545,13 @@ fbool = bool1(ff) // singleton
 (* ****** ****** *)
 //
 #abstype
-char_type(char) <= char_k
+char_type(c0) <= char_k
 //
 #typedef
-char0 = [c:c0] char_type(c)
+char0 =
+[c:c0] char_type(c)
 #typedef
-char1(c:char) = char_type(c)
+char1(c:c0) = char_type(c)
 //
 #typedef char = char0
 #typedef char(c:c0) = char1(c)
@@ -548,15 +559,15 @@ char1(c:char) = char_type(c)
 (* ****** ****** *)
 //
 #abstype
-gint_type(a:t0,int) <= (a)
+gint_type(a:t0,i0) <= (a)
 //
 #typedef
 gint0(a:t0)=
-[i:int] gint_type(a(*k*), i)
+[i:i0] gint_type(a(*k*), i)
 //
 #typedef
 gint1 // HX: indexed int-type
-(a:t0,i:int) = gint_type(a, i)
+(a:t0,i:i0) = gint_type(a, i)
 //
 (* ****** ****** *)
 //
@@ -564,25 +575,25 @@ gint1 // HX: indexed int-type
 #typedef uint0 = gint0(uint_k)
 //
 #typedef
-sint1(i:int) = gint1(sint_k, i)
+sint1(i:i0) = gint1(sint_k, i)
 #typedef
-uint1(i:int) = gint1(uint_k, i)
+uint1(i:i0) = gint1(uint_k, i)
 //
 #typedef slint0 = gint0(slint_k)
 #typedef ulint0 = gint0(ulint_k)
 //
 #typedef
-slint1(i:int) = gint1(slint_k, i)
+slint1(i:i0) = gint1(slint_k, i)
 #typedef
-ulint1(i:int) = gint1(ulint_k, i)
+ulint1(i:i0) = gint1(ulint_k, i)
 //
 #typedef ssize0 = gint0(ssize_k)
 #typedef usize0 = gint0(usize_k)
 //
 #typedef
-ssize1(i:int) = gint1(ssize_k, i)
+ssize1(i:i0) = gint1(ssize_k, i)
 #typedef
-usize1(i:int) = gint1(usize_k, i)
+usize1(i:i0) = gint1(usize_k, i)
 //
 (* ****** ****** *)
 //
@@ -590,111 +601,117 @@ usize1(i:int) = gint1(usize_k, i)
 #typedef ullint0 = gint0(ullint_k)
 //
 #typedef
-sllint1(i:int) = gint1(sllint_k, i)
+sllint1(i:i0) = gint1(sllint_k, i)
 #typedef
-ullint1(i:int) = gint1(ullint_k, i)
+ullint1(i:i0) = gint1(ullint_k, i)
 //
 (* ****** ****** *)
 //
 #typedef
-gint(a:type) = gint0(a)
+gint(a:t0) = gint0(a)
 #typedef
-gint(a:type,i:int) = gint1(a, i)
+gint(a:t0,i:i0) = gint1(a, i)
 //
 (* ****** ****** *)
 //
 #typedef int = sint0
-#typedef int(i:int) = sint1(i)
+#typedef int(i:i0) = sint1(i)
 #typedef sint = sint0
-#typedef sint(i:int) = sint1(i)
+#typedef sint(i:i0) = sint1(i)
 #typedef uint = uint0
-#typedef uint(i:int) = uint1(i)
+#typedef uint(i:i0) = uint1(i)
 //
 #typedef lint = slint0
-#typedef lint(i:int) = slint1(i)
+#typedef lint(i:i0) = slint1(i)
 #typedef slint = slint0
-#typedef slint(i:int) = slint1(i)
+#typedef slint(i:i0) = slint1(i)
 #typedef ulint = ulint0
-#typedef ulint(i:int) = ulint1(i)
+#typedef ulint(i:i0) = ulint1(i)
 //
 #typedef size = usize0
-#typedef size(i:int) = usize1(i)
+#typedef size(i:i0) = usize1(i)
 #typedef usize = usize0
-#typedef usize(i:int) = usize1(i)
+#typedef usize(i:i0) = usize1(i)
 #typedef ssize = ssize0
-#typedef ssize(i:int) = ssize1(i)
+#typedef ssize(i:i0) = ssize1(i)
 //
 #typedef llint = sllint0
-#typedef llint(i:int) = sllint1(i)
+#typedef llint(i:i0) = sllint1(i)
 #typedef sllint = sllint0
-#typedef sllint(i:int) = sllint1(i)
+#typedef sllint(i:i0) = sllint1(i)
 #typedef ullint = ullint0
-#typedef ullint(i:int) = ullint1(i)
+#typedef ullint(i:i0) = ullint1(i)
 //
 (* ****** ****** *)
 //
 #typedef
-nint = [i:int | i >= 0] sint(i)
+nint = [i:i0 | i >= 0] sint(i)
 #typedef
-nlint = [i:int | i >= 0] slint(i)
+nlint = [i:i0 | i >= 0] slint(i)
 #typedef
-nsize = [i:int | i >= 0] ssize(i)
+nsize = [i:i0 | i >= 0] ssize(i)
 #typedef
-nllint = [i:int | i >= 0] sllint(i)
+nllint = [i:i0 | i >= 0] sllint(i)
 //
 (* ****** ****** *)
 #typedef
-nint(n:int) = [ n >= 0 ] sint(n)
+nint(n:i0) = [ n >= 0 ] sint(n)
 #typedef
-nlint(n:int) = [ n >= 0 ] slint(n)
+nlint(n:i0) = [ n >= 0 ] slint(n)
 #typedef
-nsize(n:int) = [ n >= 0 ] ssize(n)
+nsize(n:i0) = [ n >= 0 ] ssize(n)
 #typedef
-nllint(n:int) = [ n >= 0 ] sllint(n)
+nllint(n:i0) = [ n >= 0 ] sllint(n)
 (* ****** ****** *)
 //
 #typedef
-sintlt(n:int) = [i:int | i < n] sint(i)
+sintlt
+(n:i0) = [i:i0 | i < n] sint(i)
 #typedef
-sintgt(n:int) = [i:int | i > n] sint(i)
+sintgt
+(n:i0) = [i:i0 | i > n] sint(i)
 #typedef
-sintlte(n:int) = [i:int | i <= n] sint(i)
+sintlte
+(n:i0) = [i:i0 | i <= n] sint(i)
 #typedef
-sintgte(n:int) = [i:int | i >= n] sint(i)
+sintgte
+(n:i0) = [i:i0 | i >= n] sint(i)
 //
 #typedef
-nintlt(n:int) = [i:nat | i < n] sint(i)
+nintlt
+(n:i0) = [i:nat | i < n] sint(i)
 #typedef
-nintlte(n:int) = [i:nat | i <= n] sint(i)
+nintlte
+(n:i0) = [i:nat | i <= n] sint(i)
 //
 #typedef
 sintbtw
-(m:int
-,n:int) = [i:int | m <= i; i < n] sint(i)
+(m:i0
+,n:i0) = [i:i0 | m <= i; i < n] sint(i)
 #typedef
 sintbtwe
-(m:int
-,n:int) = [i:int | m <= i; i <= n] sint(i)
+(m:i0
+,n:i0) = [i:i0 | m <= i; i <= n] sint(i)
 //
 (* ****** ****** *)
 //
 #typedef
-sizelt(n:int) = [i:int | i < n] size(i)
+sizelt(n:i0) = [i:i0 | i < n] size(i)
 #typedef
-sizegt(n:int) = [i:int | i > n] size(i)
+sizegt(n:i0) = [i:i0 | i > n] size(i)
 #typedef
-sizelte(n:int) = [i:int | i <= n] size(i)
+sizelte(n:i0) = [i:i0 | i <= n] size(i)
 #typedef
-sizegte(n:int) = [i:int | i >= n] size(i)
+sizegte(n:i0) = [i:i0 | i >= n] size(i)
 //
 #typedef
 sizebtw
-(m:int
-,n:int) = [i:int | m <= i; i < n] size(i)
+(m:i0
+,n:i0) = [i:i0 | m <= i; i < n] size(i)
 #typedef
 sizebtwe
-(m:int
-,n:int) = [i:int | m <= i; i <= n] size(i)
+(m:i0
+,n:i0) = [i:i0 | m <= i; i <= n] size(i)
 //
 (* ****** ****** *)
 
@@ -746,18 +763,22 @@ optn_vt_i0_vx
 #sexpdef optn_vt = optn_vt_i0_vx
 //
 #typedef
-optn(a:t0) = [b:b0] optn(a, b)
+optn
+(a:t0) = [b:b0] optn(a, b)
 #typedef
-optn0(a:t0) = [b:b0] optn(a, b)
+optn0
+(a:t0) = [b:b0] optn(a, b)
 #typedef
-optn1(a:t0,b:bool) = optn(a, b)
+optn1(a:t0,b:b0) = optn(a, b)
 //
 #vwtpdef
-optn_vt(a:vt) = [b:b0] optn_vt(a, b)
+optn_vt
+(a:vt) = [b:b0] optn_vt(a, b)
 #vwtpdef
-optn0_vt(a:vt) = [b:b0] optn_vt(a, b)
+optn0_vt
+(a:vt) = [b:b0] optn_vt(a, b)
 #vwtpdef
-optn1_vt(a:vt,b:bool) = optn_vt(a, b)
+optn1_vt(a:vt,b:b0) = optn_vt(a, b)
 //
 (* ****** ****** *)
 //
@@ -777,13 +798,15 @@ list_t0_i0_x0
 ) =
 //
 |
-list_nil(a, 0)
+list_nil
+(a, 0(*len*)) of ((*void*))
 //
 |
-{n:int | n >= 0}
-list_cons(a, n+1) of (a, list_t0_i0_x0(a, n))
+{n:i0 | n >= 0}
+list_cons
+(a, n+1(*len*)) of (a, list_t0_i0_x0(a, n))
 //
-// end of [list_t0_i0_x0]
+// end of [ list_t0_i0_x0(a, n) ]
 //
 datavwtp
 list_vt_i0_vx
@@ -792,13 +815,15 @@ list_vt_i0_vx
 ) =
 //
 |
-list_vt_nil(a, 0)
+list_vt_nil
+(a, 0(*len*)) of ((*void*))
 //
 |
-{n:int | n >= 0}
-list_vt_cons(a, n+1) of (a, list_vt_i0_vx(a, n))
+{n:i0 | n >= 0}
+list_vt_cons
+(a, n+1(*len*)) of (a, list_vt_i0_vx(a, n))
 //
-// end of [list_vt_i0_vx]
+// end of [ list_vt_i0_vx(a, n) ]
 //
 (* ****** ****** *)
 //
@@ -817,51 +842,70 @@ list_vt_cons(a, n+1) of (a, list_vt_i0_vx(a, n))
 (* ****** ****** *)
 //
 #typedef
-list(a:t0) = [n:int] list(a, n)
+list(a:t0) = [n:i0] list(a, n)
 //
 #typedef
-list0(a:t0) = [n:int | n >= 0] list(a, n)
+list0(a:t0) = [n:i0 | n >= 0] list(a, n)
 #typedef
-list1(a:t0) = [n:int | n >= 1] list(a, n)
+list1(a:t0) = [n:i0 | n >= 1] list(a, n)
 //
-#typedef listlt
-  (a:t0, n:int) = [k:nat | k < n] list(a, k)
-#typedef listgt
-  (a:t0, n:int) = [k:int | k > n] list(a, k)
+#typedef
+listlt
+(a:t0, n:i0) = [k:nat | k < n] list(a, k)
+#typedef
+listgt
+(a:t0, n:i0) = [k:nat | k > n] list(a, k)
 //
-#typedef listlte
-  (a:t0, n:int) = [k:nat | k <= n] list(a, k)
-#typedef listgte
-  (a:t0, n:int) = [k:int | k >= n] list(a, k)
+#typedef
+listlte
+(a:t0, n:i0) = [k:nat | k <= n] list(a, k)
+#typedef
+listgte
+(a:t0, n:i0) = [k:nat | k >= n] list(a, k)
 //
-#typedef listbtw
-  (a:t0, m:int, n:int) = [k:int | m <= k; k < n] list(a, k)
-#typedef listbtwe
-  (a:t0, m:int, n:int) = [k:int | m <= k; k <= n] list(a, k)
+#typedef
+listbtw
+( a:t0
+, m:i0, n:i0) = [k:nat | m <= k; k < n] list(a, k)
+#typedef
+listbtwe
+( a:t0
+, m:i0, n:i0) = [k:nat | m <= k; k <= n] list(a, k)
 //
 (* ****** ****** *)
 //
 #vwtpdef
-list_vt(a:vt) = [n:int] list_vt(a, n)
+list_vt(a:vt) =
+[n:i0] list_vt(a, n)
 //
 #vwtpdef
-list0_vt(a:vt) = [n:int | n >= 0] list_vt(a, n)
+list0_vt(a:vt) =
+[n:i0 | n >= 0] list_vt(a, n)
 #vwtpdef
-list1_vt(a:vt) = [n:int | n >= 1] list_vt(a, n)
+list1_vt(a:vt) =
+[n:i0 | n >= 1] list_vt(a, n)
 //
-#vwtpdef listlt_vt
-  (a:vt, n:int) = [k:nat | k < n] list_vt(a, k)
-#vwtpdef listgt_vt
-  (a:vt, n:int) = [k:int | k > n] list_vt(a, k)
-#vwtpdef listlte_vt
-  (a:vt, n:int) = [k:nat | k <= n] list_vt(a, k)
-#vwtpdef listgte_vt
-  (a:vt, n:int) = [k:int | k >= n] list_vt(a, k)
+#vwtpdef
+listlt_vt
+(a:vt, n:i0) = [k:n0 | k < n] list_vt(a, k)
+#vwtpdef
+listgt_vt
+(a:vt, n:i0) = [k:i0 | k > n] list_vt(a, k)
+#vwtpdef
+listlte_vt
+(a:vt, n:i0) = [k:n0 | k <= n] list_vt(a, k)
+#vwtpdef
+listgte_vt
+(a:vt, n:i0) = [k:i0 | k >= n] list_vt(a, k)
 //
-#vwtpdef listbtw_vt
-  (a:vt, m:int, n:int) = [k:int | m <= k; k < n] list_vt(a, k)
-#vwtpdef listbtwe_vt
-  (a:vt, m:int, n:int) = [k:int | m <= k; k <= n] list_vt(a, k)
+#vwtpdef
+listbtw_vt
+( a:vt
+, m:i0, n:i0) = [k:i0 | m <= k; k < n] list_vt(a, k)
+#vwtpdef
+listbtwe_vt
+( a:vt
+, m:i0, n:i0) = [k:i0 | m <= k; k <= n] list_vt(a, k)
 //
 (* ****** ****** *)
 //
@@ -883,7 +927,7 @@ ldflt_k =
 $extype("xats_ldflt_t")
 //
 #abstype
-gflt_type(a:type) <= a
+gflt_type(a:t0) <= a
 //
 #typedef
 sflt = gflt_type(sflt_k)
@@ -893,7 +937,7 @@ dflt = gflt_type(dflt_k)
 ldflt = gflt_type(ldflt_k)
 //
 #typedef
-gflt(a:type) = gflt_type(a)
+gflt(a:t0) = gflt_type(a)
 //
 #typedef
 float = sflt // single precision
@@ -905,23 +949,23 @@ ldouble = ldflt // double precision
 (* ****** ****** *)
 //
 #abstype
-string_i0_x0(n:int) <= p0tr
+string_i0_x0(n:i0) <= p0tr
 #abstype
-stropt_i0_x0(n:int) <= p0tr
+stropt_i0_x0(n:i0) <= p0tr
 //
 #typedef
 string0 =
 [n:i0] string_i0_x0(n)
 #typedef
 string1
-(n:int) = string_i0_x0( n )
+(n:i0) = string_i0_x0( n )
 //
 #typedef
 stropt0 =
 [n:i0] stropt_i0_x0(n)
 #typedef
 stropt1
-(n:int) = stropt_i0_x0( n )
+(n:i0) = stropt_i0_x0( n )
 //
 (* ****** ****** *)
 //
@@ -929,31 +973,31 @@ stropt1
 #sexpdef strn = string1
 //
 #typedef string = string0
-#typedef string(n:int) = string1(n)
+#typedef string(n:i0) = string1(n)
 //
 #typedef stropt = stropt0
-#typedef stropt(n:int) = stropt1(n)
+#typedef stropt(n:i0) = stropt1(n)
 //
 (* ****** ****** *)
 //
 #absvwtp
-string_i0_vx(n:int) <= p0tr
+string_i0_vx(n:i0) <= p0tr
 #absvwtp
-stropt_i0_vx(n:int) <= p0tr
+stropt_i0_vx(n:i0) <= p0tr
 //
 #vwtpdef
 string0_vt =
 [n:i0] string_i0_vx(n)
 #vwtpdef
 string1_vt
-(n:int) = string_i0_vx( n )
+(n:i0) = string_i0_vx( n )
 //
 #vwtpdef
 stropt0_vt =
 [n:i0] stropt_i0_vx(n)
 #vwtpdef
 stropt1_vt
-(n: int) = stropt_i0_vx( n )
+(n:i0) = stropt_i0_vx( n )
 //
 (* ****** ****** *)
 //
@@ -961,10 +1005,10 @@ stropt1_vt
 #sexpdef strn_vt = string1_vt
 //
 #vwtpdef string_vt = string0_vt
-#vwtpdef string_vt(n:int) = string1_vt(n)
+#vwtpdef string_vt(n:i0) = string1_vt(n)
 //
 #vwtpdef stropt_vt = stropt0_vt
-#vwtpdef stropt_vt(n:int) = stropt1_vt(n)
+#vwtpdef stropt_vt(n:i0) = stropt1_vt(n)
 //
 (* ****** ****** *)
 //
@@ -976,14 +1020,16 @@ stropt1_vt
 (* ****** ****** *)
 //
 #abstbox
-lazy_t0_x0(a: type+) <= p0tr
+lazy_t0_x0
+(a: type+) <= p0tr
 #typedef
-lazy(a:type) = lazy_t0_x0( a )
+lazy(a:t0) = lazy_t0_x0( a )
 //
 #absvtbx
-lazy_vt_vx(a: vwtp+) <= p0tr
+lazy_vt_vx
+(a: vwtp+) <= p0tr
 #vwtpdef
-lazy_vt(a:vwtp) = lazy_vt_vx(a)
+lazy_vt(a:vt) = lazy_vt_vx(a)
 //
 (* ****** ****** *)
 //
@@ -1026,16 +1072,16 @@ strxcon(a:type+) =
 where
 {
 #typedef
-stream(a:type) = lazy(strmcon(a))
+stream(a:t0 = lazy(strmcon(a))
 #typedef
-streax(a:type) = lazy(strxcon(a))
-} (*where*) // [strmcom/strxcom]
+streax(a:t0) = lazy(strxcon(a))
+} (* where *) // [strmcom/strxcom]
 //
 (* ****** ****** *)
 #sexpdef
-strm(*(a,n)*) = stream(* (a,n) *)
+strm(* a,n *) = stream(* a,n *)
 #sexpdef
-strx(*(a,n)*) = streax(* (a,n) *)
+strx(* a,n *) = streax(* a,n *)
 (* ****** ****** *)
 //
 datavwtp
@@ -1053,17 +1099,17 @@ where
 {
 #vwtpdef
 stream_vt
-(a: vwtp) = lazy_vt( strmcon_vt(a) )
+( a: vt ) = lazy_vt( strmcon_vt(a) )
 #vwtpdef
 streax_vt
-(a: vwtp) = lazy_vt( strxcon_vt(a) )
-} (* where *)
+( a: vt ) = lazy_vt( strxcon_vt(a) )
+} (*where*)//end-of-[strmcon/strxcon]
 //
 (* ****** ****** *)
 #sexpdef
-strm_vt(*(a,n)*) = stream_vt(*(a,n)*)
+strm_vt(* a,n *) = stream_vt(* a,n *)
 #sexpdef
-strx_vt(*(a,n)*) = streax_vt(*(a,n)*)
+strx_vt(* a,n *) = streax_vt(* a,n *)
 (* ****** ****** *)
 //
 (*
@@ -1078,15 +1124,16 @@ datatype
 strqcon
 (a:type+, int) =
 |
-strqcon_nil(a,0) of ((*void*))
+strqcon_nil
+( a, 0(*len*) ) of ((*void*))
 |
-{n:int | n >= 0}
-strqcon_cons(a,n+1) of (a,streaq(a,n))
+{n:i0 | n >= 0}
+strqcon_cons
+( a, n+1(*len*) ) of (a, streaq(a,n))
 where
 {
 #typedef
-streaq(a:vwtp,n:int) = lazy(strqcon(a,n))
-} (* where *) // end of [strqcon]
+streaq(a:vt,n:i0) = lazy(strqcon(a,n))}
 (* ****** ****** *)
 datavwtp
 strqcon_vt
@@ -1095,15 +1142,14 @@ strqcon_vt
 strqcon_vt_nil
 ( a, 0(*len*) ) of ((*void*))
 |
-{n:int | n >= 0}
+{n:i0 | n >= 0}
 strqcon_vt_cons
 ( a, n+1(*len*) ) of (a, streaq_vt(a,n))
 where
 {
 #vwtpdef
-streaq_vt
-(a:vwtp,n:int) = lazy_vt(strqcon_vt(a,n))
-} (* where *) // end of [strqcon_vt]
+streaq_vt(a:vt,n:i0) = lazy_vt(strqcon_vt(a,n))
+} (* where *)//end-of-[strqcon_vt(a, n)]
 (* ****** ****** *)
 #sexpdef
 strq(*(a0,ln)*) = streaq(* (a0,ln) *)

@@ -383,15 +383,15 @@ s2exp_get_node(s2exp): s2exp_node
 #symload node with s2exp_get_node
 (* ****** ****** *)
 fun
-s2exp_int(i0: sint): s2exp
+s2exp_sint(i0: sint): s2exp
 fun
-s2exp_btf(b0: bool): s2exp
+s2exp_bool(b0: bool): s2exp
 fun
-s2exp_chr(c0: char): s2exp
+s2exp_char(c0: char): s2exp
 fun
-s2exp_flt(f0: double): s2exp
+s2exp_flt0(f0: double): s2exp
 fun
-s2exp_str(s0: string): s2exp
+s2exp_str0(s0: string): s2exp
 (* ****** ****** *)
 fun
 s2exp_none0((*void*)): s2exp
@@ -407,6 +407,15 @@ s2exp_make_node
 // HX-2022-10-01:
 // Various utility functions
 *)
+(* ****** ****** *)
+fun
+sort2_intq(s2t0: sort2): bool
+fun
+sort2_addrq(s2t0: sort2): bool
+fun
+sort2_boolq(s2t0: sort2): bool
+fun
+sort2_charq(s2t0: sort2): bool
 (* ****** ****** *)
 fun
 sort2_predq(s2t0: sort2): bool

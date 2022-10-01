@@ -114,6 +114,23 @@ val ADD_symbl: symbl //=symbl("+")
 val SUB_symbl: symbl //=symbl("-")
 val MUL_symbl: symbl //=symbl("*")
 val DIV_symbl: symbl //=symbl("/")
+val MOD_symbl: symbl //=symbl("%")
+//
+(* ****** ****** *)
+//
+val INT_symbl: symbl //=symbl("int")
+val ADDR_symbl: symbl //=symbl("addr")
+val BOOL_symbl: symbl //=symbl("bool")
+val CHAR_symbl: symbl //=symbl("char")
+//
+(* ****** ****** *)
+//
+val PROP_symbl: symbl //=symbl("prop")
+val TYPE_symbl: symbl //=symbl("type")
+val TBOX_symbl: symbl //=symbl("tbox")
+val VIEW_symbl: symbl //=symbl("view")
+val VWTP_symbl: symbl //=symbl("vwtp")
+val VTBX_symbl: symbl //=symbl("vtbx")
 //
 (* ****** ****** *)
 //
