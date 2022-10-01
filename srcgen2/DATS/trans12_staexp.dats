@@ -125,10 +125,31 @@ s2exp_flt(token2sflt(tok))
 |S1Estr(tok) =>
 s2exp_str(token2sstr(tok))
 //
+|
+S1Eb0sh _ => s2exp_none1(s1e0)
+|
+S1Eb1sh _ => f0_b1sh(tenv, s1e0)
+//
 |_(*otherwise*) => s2exp_none1(s1e0)
 //
 end where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_b1sh
+( tenv:
+! tr12env
+, s1e0: s1exp): s2exp =
+(
+trans12_s1exp(tenv, s1e1)) where
+{
+  val-S1Eb1sh(s1e1) = s1e0.node()
+} (*where*) // end of [f0_b1sh(tenv, s1e0)]
+//
+(* ****** ****** *)
+//
 } (*where*) // end of [trans12_s1exp(tenv,s1e0)]
 
 (* ****** ****** *)
