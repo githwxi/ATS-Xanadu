@@ -36,5 +36,82 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
+(* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+#staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp2.sats"
+(* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_staexp2_utils0.dats] *)
+#implfun
+sort2_intq(s2t0) =
+(
+case+ s2t0 of
+| S2Tbas(tbas) =>
+(
+case+ tbas of
+| T2Bpre(name) =>
+  (name = INT_symbl)
+| _ (* non-T2Bpre *) => false
+) // end of [S2RTbas]
+| _ (* non-S2Tbas *) => false
+) (* case+ *) // end of [sort2_intq]
+
+(* ****** ****** *)
+
+#implfun
+sort2_addrq(s2t0) =
+(
+case+ s2t0 of
+| S2Tbas(tbas) =>
+(
+case+ tbas of
+| T2Bpre(name) =>
+  (name = ADDR_symbl)
+| _ (* non-T2Bpre *) => false
+) // end of [S2RTbas]
+| _ (* non-S2Tbas *) => false
+) (* case+ *) // end of [sort2_addrq]
+
+(* ****** ****** *)
+
+#implfun
+sort2_boolq(s2t0) =
+(
+case+ s2t0 of
+| S2Tbas(tbas) =>
+(
+case+ tbas of
+| T2Bpre(name) =>
+  (name = BOOL_symbl)
+| _ (* non-T2Bpre *) => false
+) // end of [S2RTbas]
+| _ (* non-S2Tbas *) => false
+) (* case+ *) // end of [sort2_boolq]
+
+(* ****** ****** *)
+
+#implfun
+sort2_charq(s2t0) =
+(
+case+ s2t0 of
+| S2Tbas(tbas) =>
+(
+case+ tbas of
+| T2Bpre(name) =>
+  (name = CHAR_symbl)
+| _ (* non-T2Bpre *) => false
+) // end of [S2RTbas]
+| _ (* non-S2Tbas *) => false
+) (* case+ *) // end of [sort2_charq]
+
+(* ****** ****** *)
+
+(* end of [ATS3/XATSOPT_srcgen2_staexp2_utils1.dats] *)
