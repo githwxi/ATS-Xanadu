@@ -248,6 +248,15 @@ trans12_s1explst_prgm
 ! tr12env, s1es: s1explst): s2explst
 (* ****** ****** *)
 fun
+trans12_l1s1elst_impr
+( tenv:
+! tr12env, lses: l1s1elst): l2s2elst
+fun
+trans12_l1s1elst_prgm
+( tenv:
+! tr12env, lses: l1s1elst): l2s2elst
+(* ****** ****** *)
+fun
 trans12_s1explst_sort
 (!tr12env, s1explst, sort2): s2explst
 fun
