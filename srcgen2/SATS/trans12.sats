@@ -228,6 +228,13 @@ trans12_s1explst
 ! tr12env, s1es: s1explst): s2explst
 //
 (* ****** ****** *)
+fun
+trans12_s1exp_sort
+( tenv:
+! tr12env
+, s1e1: s1exp, s2t2: sort2 ) : s2exp
+//
+(* ****** ****** *)
 //
 fun
 trans12_d1pat:(!tr12env, d1pat)->d2pat
