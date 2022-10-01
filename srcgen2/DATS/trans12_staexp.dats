@@ -276,6 +276,42 @@ end (*let*) // end of [f0_t1up(tenv, s1e0)]
 (* ****** ****** *)
 //
 fun
+f0_t2up
+( tenv:
+! tr12env
+, s1e0: s1exp): s2exp =
+let
+//
+val-
+S1Et2up
+( tknd
+, ses1, ses2) = s1e0.node()
+//
+(*
+val
+loc0 = s1e0.lctn()
+val ( ) =
+println
+("trans12_s1exp: f0_t2up: loc0 = ", loc0)
+val ( ) =
+println
+("trans12_s1exp: f0_t2up: s1e0 = ", s1e0)
+*)
+//
+in
+(
+  s2exp_t2up(tknd, ses1, ses2)
+) where
+{
+  val ses1 =
+  trans12_s1explst_impr(tenv, ses1)
+  val ses2 =
+  trans12_s1explst_prgm(tenv, ses2) }
+end (*let*) // end of [f0_t2up(tenv, s1e0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_anno
 ( tenv:
 ! tr12env
