@@ -409,5 +409,9 @@ fun
 s2exp_l2st
 (ses1: s2explst, ses2: s2explst): s2exp
 (* ****** ****** *)
+fun
+s2exp_t1up
+(tknd: token, s2es: s2explst): s2exp
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_staexp2.sats] *)

@@ -136,6 +136,9 @@ S1El1st _ => f0_l1st(tenv, s1e0)
 S1El2st _ => f0_l2st(tenv, s1e0)
 //
 |
+S1Et1up _ => f0_t1up(tenv, s1e0)
+//
+|
 S1Eanno _ => f0_anno(tenv, s1e0)
 //
 | _(* otherwise *) => s2exp_none1(s1e0)
@@ -238,7 +241,40 @@ val ses2 = trans12_s1explst(tenv, ses2) }
 end (*let*) // end of [f0_l2st(tenv, s1e0)]
 //
 (* ****** ****** *)
-
+//
+fun
+f0_t1up
+( tenv:
+! tr12env
+, s1e0: s1exp): s2exp =
+let
+//
+val-
+S1Et1up
+(tknd, s1es) = s1e0.node()
+//
+(*
+val
+loc0 = s1e0.lctn()
+val ( ) =
+println
+("trans12_s1exp: f0_t1up: loc0 = ", loc0)
+val ( ) =
+println
+("trans12_s1exp: f0_t1up: s1e0 = ", s1e0)
+*)
+//
+in
+(
+  s2exp_t1up(tknd, s2es)
+) where
+{
+  val s2es =
+  trans12_s1explst_impr(tenv, s1es) }
+end (*let*) // end of [f0_t1up(tenv, s1e0)]
+//
+(* ****** ****** *)
+//
 fun
 f0_anno
 ( tenv:
@@ -254,7 +290,7 @@ s2t2 = trans12_sort1(tenv, s1t2)
 in//let
   trans12_s1exp_sort(tenv, s1e1, s2t2)
 end (*let*) // end of [f0_anno(tenv, s1e0)]
-
+//
 (* ****** ****** *)
 //
 } (*where*) // end of [trans12_s1exp(tenv,s1e0)]

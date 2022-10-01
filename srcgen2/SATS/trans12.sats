@@ -218,6 +218,16 @@ fun
 trans12_l1s1e:
 (!tr12env, l1s1e)->l2s2e
 //
+(* ****** ****** *)
+//
+fun
+trans12_s1exp_sort
+( tenv:
+! tr12env
+, s1e1: s1exp, s2t2: sort2 ) : s2exp
+//
+(* ****** ****** *)
+//
 fun
 trans12_sort1lst
 ( tenv:
@@ -229,22 +239,34 @@ trans12_s1explst
 //
 (* ****** ****** *)
 fun
-trans12_s1exp_sort
+trans12_s1explst_impr
 ( tenv:
-! tr12env
-, s1e1: s1exp, s2t2: sort2 ) : s2exp
+! tr12env, s1es: s1explst): s2explst
+(* ****** ****** *)
+fun
+trans12_s1explst_sort
+(!tr12env, s1explst, sort2): s2explst
+fun
+trans12_s1explst_sortlst
+(!tr12env, s1explst, sort2lst): s2explst
 //
 (* ****** ****** *)
 //
 fun
-trans12_d1pat:(!tr12env, d1pat)->d2pat
+trans12_d1pat
+(tenv: !tr12env, d1p0: d1pat): d2pat
 fun
-trans12_l1d1p:(!tr12env, l1d1p)->l2d2p
+trans12_l1d1p
+(tenv: !tr12env, ld1p: l1d1p): l2d2p
+//
 (* ****** ****** *)
+//
 fun
-trans12_d1exp:(!tr12env, d1exp)->d2exp
+trans12_d1exp
+(tenv: !tr12env, d1e0: d1exp): d2exp
 fun
-trans12_l1d1e:(!tr12env, l1d1e)->l2d2e
+trans12_l1d1e
+(tenv: !tr12env, ld1e: l1d1e): l2d2e
 //
 (* ****** ****** *)
 fun
