@@ -116,9 +116,9 @@ i2b = cast_i0_b0 // overloading
 (* ****** ****** *)
 //
 #stacst0
-tt_b0 : bool // true
+tt_b0 : b0 // true
 #stacst0
-ff_b0 : bool // false
+ff_b0 : b0 // false
 //
 #sexpdef tt = tt_b0 // overloading
 #sexpdef ff = ff_b0 // overloading
@@ -126,19 +126,16 @@ ff_b0 : bool // false
 (* ****** ****** *)
 //
 #stacst0
-neg_b0:
-( b0 ) -> bool
+neg_b0:( b0 ) -> b0
 #sexpdef ~ = neg_b0 // overloading
 (*
 #sexpdef neg = neg_b0 // overloading
 *)
 //
 #stacst0
-add_b0_b0:
-(b0, b0) -> bool
+add_b0_b0:(b0,b0)->b0
 #stacst0
-mul_b0_b0:
-(b0, b0) -> bool
+mul_b0_b0:(b0,b0)->b0
 //
 #sexpdef + = add_b0_b0 // overloading
 #sexpdef * = mul_b0_b0 // overloading
