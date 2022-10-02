@@ -142,14 +142,18 @@ s2lab_fprint
 (* ****** ****** *)
 
 datatype t2bas =
-| T2Bpre of (sym_t)
-  // pred: int, ...
-| T2Babs of (t2abs)
-  // for abstract sorts
-| T2Bdat of (t2dat)
-  // for user-defined datasorts
-| T2Bimp of
-  (int(*knd*), sym_t) // impred. sorts
+|
+T2Bpred of (sym_t)
+// pred: int, ...
+|
+T2Btabs of (t2abs)
+// for abstract sorts
+|
+T2Btdat of (t2dat)
+// for user-defined datasorts
+|
+T2Bimpr of
+(int(*knd*), sym_t) // impred. sorts
 // end of [ datatype(t2bas) ]
 
 (* ****** ****** *)
@@ -410,6 +414,9 @@ s2exp_make_node
 (* ****** ****** *)
 fun
 sort2_intq(s2t0: sort2): bool
+fun
+sort2_funq(s2t0: sort2): bool
+(* ****** ****** *)
 fun
 sort2_addrq(s2t0: sort2): bool
 fun

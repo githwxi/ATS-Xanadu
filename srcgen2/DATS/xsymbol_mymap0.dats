@@ -45,50 +45,57 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
-
-#abstbox mymap_tbox // ptr
-#typedef mymap = mymap_tbox
-
+//
+#abstbox
+mymap_tbox // ptr
+#typedef
+mymap = mymap_tbox
+//
 (* ****** ****** *)
-
+//
 local
-
+//
+(* ****** ****** *)
+#typedef key = strn
+#typedef itm = symbl
 (* ****** ****** *)
 #staload
 "prelude\
 /DATS/CATS/JS/basics1.dats"
 (* ****** ****** *)
-
-#typedef key = strn
-#typedef itm = symbl
-
-(* ****** ****** *)
-
 #absimpl
 mymap_tbox = jsobjmap(key, itm)
-
 (* ****** ****** *)
-
+//
 val
-mymaper: mymap =
+the_mymap: mymap =
 XATS2JS_jsobjmap_make_nil<key>{itm}()
-
+//
+(* ****** ****** *)
 in//local
-
+(* ****** ****** *)
+//
 #implfun
-symbl_search_opt(k0) =
-XATS2JS_jsobjmap_search_opt<key>{itm}(mymaper, k0)
-
+symbl_search_opt(key) =
+let
+val map = the_mymap
+in//let
+XATS2JS_jsobjmap_search_opt<key>{itm}(map, key)
+end (*let*) // end of [ symbl_search_opt(key) ]
+//
 #implfun
 symbl_insert_any(sym) =
 let
-  val k0 = sym.name()
+val map = the_mymap
+val key = sym.name()
 in//let
-XATS2JS_jsobjmap_insert_any<key>{itm}(mymaper, k0, sym)
-end (*let*) // end of [symbl_insert_any]
-
-end (*local*) // end of [local]
-
+XATS2JS_jsobjmap_insert_any<key>{itm}(map, key, sym)
+end (*let*) // end of [ symbl_insert_any(sym) ]
+//
+(* ****** ****** *)
+//
+end (*local*) // end of [local(mymap)]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xsymbol_mymap0.dats] *)
