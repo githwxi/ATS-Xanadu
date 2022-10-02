@@ -58,13 +58,22 @@ case+ s2t0 of
 | S2Tbas(tbas) =>
 (
 case+ tbas of
-| T2Bpre(name) =>
+| T2Bpred(name) =>
   (name = INT_symbl)
-| _ (* non-T2Bpre *) => false
+| _ (* non-T2Bpred *) => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
 ) (* case+ *) // end of [sort2_intq]
 
+(* ****** ****** *)
+//
+#implfun
+sort2_funq
+(  s2t0  ) =
+(
+case+ s2t0 of
+| S2Tfun _ => true | _ => false )
+//
 (* ****** ****** *)
 
 #implfun
@@ -75,9 +84,9 @@ case+ s2t0 of
 | S2Tbas(tbas) =>
 (
 case+ tbas of
-| T2Bpre(name) =>
+| T2Bpred(name) =>
   (name = ADDR_symbl)
-| _ (* non-T2Bpre *) => false
+| _ (* non-T2Bpred *) => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
 ) (* case+ *) // end of [sort2_addrq]
@@ -92,9 +101,9 @@ case+ s2t0 of
 | S2Tbas(tbas) =>
 (
 case+ tbas of
-| T2Bpre(name) =>
+| T2Bpred(name) =>
   (name = BOOL_symbl)
-| _ (* non-T2Bpre *) => false
+| _ (* non-T2Bpred *) => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
 ) (* case+ *) // end of [sort2_boolq]
@@ -109,13 +118,39 @@ case+ s2t0 of
 | S2Tbas(tbas) =>
 (
 case+ tbas of
-| T2Bpre(name) =>
+| T2Bpred(name) =>
   (name = CHAR_symbl)
-| _ (* non-T2Bpre *) => false
+| _ (* non-T2Bpred *) => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
 ) (* case+ *) // end of [sort2_charq]
 
+(* ****** ****** *)
+//
+#implfun
+sort2_imprq
+(   s2t0   ) =
+(
+case+ s2t0 of
+//
+|
+S2Tbas(tbas) =>
+(
+case+ tbas of
+|
+T2Bimpr _ => true
+|
+_(*non-T2Bimpr*) => false
+)
+//
+|
+S2Tf1un
+(targ, tres) => sort2_imprq(tres)
+//
+| _(*rest-of-sort2*) => ( false )
+//
+) (* case+ *) // end of [sort2_imprq]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_staexp2_utils1.dats] *)

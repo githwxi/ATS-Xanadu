@@ -45,6 +45,10 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
+(*
+HX-2022-10-01: Various symbols
+*)
+(* ****** ****** *)
 //
 #implval AMP_symbl = symbl("&")
 #implval BAR_symbl = symbl("|")
@@ -63,6 +67,23 @@ ATS_PACKNAME
 #implval SUB_symbl = symbl("-")
 #implval MUL_symbl = symbl("*")
 #implval DIV_symbl = symbl("/")
+#implval MOD_symbl = symbl("%")
+//
+(* ****** ****** *)
+//
+#implval INT_symbl = symbl("int")
+#implval ADDR_symbl = symbl("addr")
+#implval BOOL_symbl = symbl("bool")
+#implval CHAR_symbl = symbl("char")
+//
+(* ****** ****** *)
+//
+#implval PROP_symbl = symbl("prop")
+#implval TYPE_symbl = symbl("type")
+#implval TBOX_symbl = symbl("tbox")
+#implval VIEW_symbl = symbl("view")
+#implval VWTP_symbl = symbl("vwtp")
+#implval VTBX_symbl = symbl("vtbx")
 //
 (* ****** ****** *)
 
