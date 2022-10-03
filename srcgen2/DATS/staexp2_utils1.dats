@@ -45,6 +45,8 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/xbasics.sats"
+(* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
@@ -147,9 +149,27 @@ _(*non-T2Bimpr*) => false
 S2Tf1un
 (targ, tres) => sort2_imprq(tres)
 //
-| _(*rest-of-sort2*) => ( false )
+| _(* rest-of-sort2 *) => ( false )
 //
 ) (* case+ *) // end of [sort2_imprq]
+//
+(* ****** ****** *)
+//
+#implfun
+sort2_prgmq
+(   s2t0   ) =
+(
+case+ s2t0 of
+|
+S2Tbas(tbas) =>
+(
+case+ tbas of
+|
+T2Bimpr(knd, _) => sortprf(knd) <= 0
+| _ => false
+)
+|
+_ (* non-S2Tbas *) => false) // sort2_prgmq
 //
 (* ****** ****** *)
 

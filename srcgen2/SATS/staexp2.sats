@@ -430,6 +430,9 @@ fun
 sort2_imprq(s2t0: sort2): bool
 (* ****** ****** *)
 fun
+sort2_prgmq(s2t0: sort2): bool
+(* ****** ****** *)
+fun
 s2exp_l1st(s2es: s2explst): s2exp
 fun
 s2exp_l2st
