@@ -84,18 +84,18 @@ ATS_PACKNAME
 (* ****** ****** *)
 
 fun
-sortbox(t0: sint): sint(*0,1*)
+sortbox(k0: sint): sint(*0,1*)
 fun
-sortlin(t0: sint): sint(*0,1*)
+sortlin(k0: sint): sint(*0,1*)
 fun
-sortprf(t0: sint): sint(*0,1*)
+sortprf(k0: sint): sint(*0,1*)
 fun
-sortpol(t0: sint): sint(*-1,0,1*)
+sortpol(k0: sint): sint(*-1,0,1*)
 
 (* ****** ****** *)
 //
-fun sortpolpos(t0: int): int
-fun sortpolneg(t0: int): int
+fun sortpolpos(k0: sint): sint
+fun sortpolneg(k0: sint): sint
 //
 (* ****** ****** *)
 //
