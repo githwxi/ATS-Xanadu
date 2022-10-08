@@ -9,6 +9,7 @@ environment:
   global:
     PATSVERSION: 0.4.2
     PATSHOME_WIN: "%APPVEYOR_BUILD_FOLDER%/ATS2"
+    CYGWIN_MIRROR: https://cygwin.mirror.constant.com
 
   matrix:
     - CYG_ARCH: x86
