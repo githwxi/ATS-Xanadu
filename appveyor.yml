@@ -3,69 +3,69 @@ clone_folder: C:\projects\ATS-Xanadu
 image: Visual Studio 2015
 
 platform:
-    - x64
+  - x64
 
 environment:
-    global:
-        PATSVERSION: 0.4.2
-        PATSHOME_WIN: '%APPVEYOR_BUILD_FOLDER%/ATS2'
+  global:
+    PATSVERSION: 0.4.2
+    PATSHOME_WIN: "%APPVEYOR_BUILD_FOLDER%/ATS2"
 
-    matrix:
-        -   CYG_ARCH: x86
-            CYG_ROOT: C:/cygwin
-            CYG_CACHE: C:/cygwin/var/cache/setup
-            CYG_SH: C:/cygwin/bin/bash -lc
-            CYG_INSTALL: C:/cygwin/setup-x86.exe -q -P
-            CYG_PATH: C:/cygwin/bin/cygpath -u
-        -   CYG_ARCH: x86_64
-            CYG_ROOT: C:/cygwin64
-            CYG_CACHE: C:/cygwin64/var/cache/setup
-            CYG_SH: C:/cygwin64/bin/bash -lc
-            CYG_INSTALL: C:/cygwin64/setup-x86_64.exe -q -P
-            CYG_PATH: C:/cygwin64/bin/cygpath -u
+  matrix:
+    - CYG_ARCH: x86
+      CYG_ROOT: C:/cygwin
+      CYG_CACHE: C:/cygwin/var/cache/setup
+      CYG_SH: C:/cygwin/bin/bash -lc
+      CYG_INSTALL: C:/cygwin/setup-x86.exe -q -P
+      CYG_PATH: C:/cygwin/bin/cygpath -u
+    - CYG_ARCH: x86_64
+      CYG_ROOT: C:/cygwin64
+      CYG_CACHE: C:/cygwin64/var/cache/setup
+      CYG_SH: C:/cygwin64/bin/bash -lc
+      CYG_INSTALL: C:/cygwin64/setup-x86_64.exe -q -P
+      CYG_PATH: C:/cygwin64/bin/cygpath -u
 
 cache:
-    - '%CYG_CACHE%'
-    - '%PATSHOME_WIN% -> appveyor.yml, appveyor/install-ats2.sh'
+  - "%CYG_CACHE% -> appveyor.yml"
+  - "%PATSHOME_WIN% -> appveyor.yml, appveyor/install-ats2.sh"
 
 init:
-    # Set Windows environment variables so that they're accessible from within cygwin
-    - 'FOR /F "tokens=* USEBACKQ" %%F IN (`%CYG_PATH% %APPVEYOR_BUILD_FOLDER%`) DO SET BUILD_FOLDER=%%F'
-    - 'FOR /F "tokens=* USEBACKQ" %%F IN (`%CYG_PATH% %APPVEYOR_BUILD_FOLDER%`) DO SET XATSHOME=%%F'
-    - 'FOR /F "tokens=* USEBACKQ" %%F IN (`%CYG_PATH% %PATSHOME_WIN%`) DO SET PATSHOME=%%F'
-    # Fix quirks with Git on Windows
-    - git config --global core.symlinks true
-    - git config --global core.autocrlf input
-    - 'echo System architecture: %PLATFORM%'
-    - 'echo Repo build branch is: %APPVEYOR_REPO_BRANCH%'
-    - 'echo build folder: %BUILD_FOLDER%'
-    - 'echo Build folder is: %APPVEYOR_BUILD_FOLDER%'
+  # Set Windows environment variables so that they're accessible from within cygwin
+  - 'FOR /F "tokens=* USEBACKQ" %%F IN (`%CYG_PATH% %APPVEYOR_BUILD_FOLDER%`) DO SET BUILD_FOLDER=%%F'
+  - 'FOR /F "tokens=* USEBACKQ" %%F IN (`%CYG_PATH% %APPVEYOR_BUILD_FOLDER%`) DO SET XATSHOME=%%F'
+  - 'FOR /F "tokens=* USEBACKQ" %%F IN (`%CYG_PATH% %PATSHOME_WIN%`) DO SET PATSHOME=%%F'
+  # Fix quirks with Git on Windows
+  - git config --global core.symlinks true
+  - git config --global core.autocrlf input
+  - "echo System architecture: %PLATFORM%"
+  - "echo Repo build branch is: %APPVEYOR_REPO_BRANCH%"
+  - "echo build folder: %BUILD_FOLDER%"
+  - "echo Build folder is: %APPVEYOR_BUILD_FOLDER%"
 
 install:
-    - 'echo Checking the Cygwin setup'
-    - '%CYG_SH% "cygcheck -dc cygwin"'
-    - '%CYG_INSTALL% "wget"'
-    - '%CYG_SH% "wget rawgit.com/transcode-open/apt-cyg/master/apt-cyg"'
-    - '%CYG_SH% "install apt-cyg /bin"'
-    - '%CYG_SH% "apt-cyg install make autoconf automake gcc-core libtool intltool pkg-config git libgc-devel libgmp-devel"'
-    - 'echo Setup Cygwin dependencies is finished!'
+  - "echo Checking the Cygwin setup"
+  - '%CYG_SH% "cygcheck -dc cygwin"'
+  - '%CYG_INSTALL% "wget"'
+  - '%CYG_SH% "wget rawgit.com/transcode-open/apt-cyg/master/apt-cyg"'
+  - '%CYG_SH% "install apt-cyg /bin"'
+  - '%CYG_SH% "apt-cyg install make autoconf automake gcc-core libtool intltool pkg-config git libgc-devel libgmp-devel"'
+  - "echo Setup Cygwin dependencies is finished!"
 
 before_build:
-    - 'set PATH=%PATH%;%CYG_ROOT%/bin;%PATSHOME%/bin'
-    - 'echo Build ATS2...'
-    - '%CYG_SH% "echo PATSHOME=$PATSHOME"'
-    - '%CYG_SH% "$XATSHOME/appveyor/install-ats2.sh $PATSVERSION $PATSHOME"'
-    - 'echo Build ATS2 is finished!'
+  - "set PATH=%PATH%;%CYG_ROOT%/bin;%PATSHOME%/bin"
+  - "echo Build ATS2..."
+  - '%CYG_SH% "echo PATSHOME=$PATSHOME"'
+  - '%CYG_SH% "$XATSHOME/appveyor/install-ats2.sh $PATSVERSION $PATSHOME"'
+  - "echo Build ATS2 is finished!"
 
 build_script:
-    - 'echo Cygwin root is: %CYG_ROOT%'
-    - 'echo Build folder is: %APPVEYOR_BUILD_FOLDER%'
-    - 'echo Repo build branch is: %APPVEYOR_REPO_BRANCH%'
-    - 'echo Repo build commit is: %APPVEYOR_REPO_COMMIT%'
-    - '%CYG_SH% "echo XATSHOME=$XATSHOME"'
-    - '%CYG_SH% "echo PATH=$PATH"'
-    - 'echo Build ATS3...'
-    - '%CYG_SH% $XATSHOME/appveyor/build.sh'
+  - "echo Cygwin root is: %CYG_ROOT%"
+  - "echo Build folder is: %APPVEYOR_BUILD_FOLDER%"
+  - "echo Repo build branch is: %APPVEYOR_REPO_BRANCH%"
+  - "echo Repo build commit is: %APPVEYOR_REPO_COMMIT%"
+  - '%CYG_SH% "echo XATSHOME=$XATSHOME"'
+  - '%CYG_SH% "echo PATH=$PATH"'
+  - "echo Build ATS3..."
+  - "%CYG_SH% $XATSHOME/appveyor/build.sh"
 
 test_script:
-    - '%CYG_SH% $XATSHOME/appveyor/test.sh'
+  - "%CYG_SH% $XATSHOME/appveyor/test.sh"
