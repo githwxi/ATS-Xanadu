@@ -21,7 +21,7 @@ test01_cblist: \
 test01_cblist_dats
 test01_cblist_dats: \
 test01_cblist.dats; $(MYATSCC) $<
-regress:: test01_cblist_dats; ./@
+regress:: test01_cblist_dats
 ######
 
 testall:: all

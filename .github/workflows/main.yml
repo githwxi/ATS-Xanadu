@@ -1,0 +1,161 @@
+name: Build and Test ATS3
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: "${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}"
+  cancel-in-progress: true
+
+env:
+  ATS2_VERSION: 0.4.2
+
+jobs:
+  build-and-test-cygwin:
+    runs-on: "windows-latest"
+    defaults:
+      run:
+        shell: C:\tools\cygwin\bin\bash.exe --login -o igncr '{0}'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        uses: egor-tensin/setup-cygwin@v3
+        with:
+          platform: x64
+          packages: make autoconf automake gcc-core libtool intltool pkg-config git libgc-devel libgmp-devel wget
+
+      - name: Set environment variables
+        run: |
+          echo "PATSHOME=$(cygpath -a $GITHUB_WORKSPACE/ATS2)" >> $GITHUB_ENV
+          echo "XATSHOME=$(cygpath -a $GITHUB_WORKSPACE)" >> $GITHUB_ENV
+
+      - name: Install ATS2
+        run: ${{ env.XATSHOME }}/.github/install-ats2.sh ${{ env.ATS2_VERSION }} ${{ env.PATSHOME }}
+
+      - name: Update PATH
+        run: |
+          echo "${{ env.PATSHOME }}/bin" >> $GITHUB_PATH
+          echo "${{ env.XATSHOME }}/bin" >> $GITHUB_PATH
+
+      - name: Build ATS3
+        run: ${{ env.XATSHOME }}/.github/build.sh
+
+      - name: Run Tests
+        run: ${{ env.XATSHOME }}/.github/test.sh
+
+  build-and-test-msys2:
+    runs-on: "windows-latest"
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        uses: msys2/setup-msys2@v2
+        with:
+          update: true
+          install: >-
+            base-devel
+            gcc
+            gmp-devel
+            libgc-devel
+
+      - name: Set environment variables
+        run: |
+          echo "MSYS=winsymlinks:lnk" >> $GITHUB_ENV
+          echo "PATSHOME=$(cygpath -a $GITHUB_WORKSPACE/ATS2)" >> $GITHUB_ENV
+          echo "XATSHOME=$(cygpath -a $GITHUB_WORKSPACE)" >> $GITHUB_ENV
+
+      - name: Install ATS2
+        run: ${{ env.XATSHOME }}/.github/install-ats2.sh ${{ env.ATS2_VERSION }} ${{ env.PATSHOME }}
+
+      - name: Update PATH
+        run: |
+          echo "${{ env.PATSHOME }}/bin" >> $GITHUB_PATH
+          echo "${{ env.XATSHOME }}/bin" >> $GITHUB_PATH
+
+      - name: Build ATS3
+        run: ${{ env.XATSHOME }}/.github/build.sh
+
+      - name: Run Tests
+        run: ${{ env.XATSHOME }}/.github/test.sh
+
+  build-and-test-linux:
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: build-essential gcc libgc-dev libgmp-dev
+          version: 1.0
+
+      - name: Set environment variables
+        run: |
+          echo "PATSHOME=$GITHUB_WORKSPACE/ATS2" >> $GITHUB_ENV
+          echo "XATSHOME=$GITHUB_WORKSPACE" >> $GITHUB_ENV
+
+      - name: Install ATS2
+        run: ${{ env.XATSHOME }}/.github/install-ats2.sh "$ATS2_VERSION" "${{ env.PATSHOME }}"
+
+      - name: Update PATH
+        run: |
+          echo "${{ env.PATSHOME }}/bin" >> $GITHUB_PATH
+          echo "${{ env.XATSHOME }}/bin" >> $GITHUB_PATH
+
+      - name: Build ATS3
+        run: ${{ env.XATSHOME }}/.github/build.sh
+
+      - name: Run Tests
+        run: ${{ env.XATSHOME }}/.github/test.sh
+
+  build-and-test-macos:
+    runs-on: "macos-latest"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: brew install gcc gmp bdw-gc
+
+      - name: Symbolic link GCC
+        run: |
+          ln -s /usr/local/bin/gcc-11 /usr/local/bin/gcc
+
+      # Set GCC as a default
+      - name: Set environment variables
+        run: |
+          echo "/usr/local/bin" >> $GITHUB_PATH
+          echo "CC=/usr/local/bin/gcc-11" >> $GITHUB_ENV
+          echo "PATSHOME=$GITHUB_WORKSPACE/ATS2" >> $GITHUB_ENV
+          echo "XATSHOME=$GITHUB_WORKSPACE" >> $GITHUB_ENV
+          echo "C_INCLUDE_PATH=/usr/local/include:$C_INCLUDE_PATH" >> $GITHUB_ENV
+          echo "LIBRARY_PATH=/usr/local/lib:$LIBRARY_PATH" >> $GITHUB_ENV
+
+      - name: Install ATS2
+        run: ${{ env.XATSHOME }}/.github/install-ats2.sh "$ATS2_VERSION" "${{ env.PATSHOME }}"
+
+      - name: Update PATH
+        run: |
+          echo "${{ env.PATSHOME }}/bin" >> $GITHUB_PATH
+          echo "${{ env.XATSHOME }}/bin" >> $GITHUB_PATH
+
+      - name: Build ATS3
+        run: ${{ env.XATSHOME }}/.github/build.sh
+
+      - name: Run Tests
+        run: ${{ env.XATSHOME }}/.github/test.sh
