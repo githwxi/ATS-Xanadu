@@ -66,6 +66,7 @@ jobs:
         uses: msys2/setup-msys2@v2
         with:
           update: true
+          path-type: inherit
           install: >-
             base-devel
             gcc
