@@ -880,16 +880,16 @@ list1_vt(a:vt) =
 //
 #vwtpdef
 listlt_vt
-(a:vt, n:i0) = [k:n0 | k < n] list_vt(a, k)
+(a:vt, n:i0) = [k:nat | k < n] list_vt(a, k)
 #vwtpdef
 listgt_vt
-(a:vt, n:i0) = [k:i0 | k > n] list_vt(a, k)
+(a:vt, n:i0) = [k:int | k > n] list_vt(a, k)
 #vwtpdef
 listlte_vt
-(a:vt, n:i0) = [k:n0 | k <= n] list_vt(a, k)
+(a:vt, n:i0) = [k:nat | k <= n] list_vt(a, k)
 #vwtpdef
 listgte_vt
-(a:vt, n:i0) = [k:i0 | k >= n] list_vt(a, k)
+(a:vt, n:i0) = [k:int | k >= n] list_vt(a, k)
 //
 #vwtpdef
 listbtw_vt
@@ -1065,7 +1065,7 @@ strxcon(a:type+) =
 where
 {
 #typedef
-stream(a:t0 = lazy(strmcon(a))
+stream(a:t0) = lazy(strmcon(a))
 #typedef
 streax(a:t0) = lazy(strxcon(a))
 } (* where *) // [strmcom/strxcom]
