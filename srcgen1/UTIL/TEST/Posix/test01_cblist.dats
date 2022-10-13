@@ -40,7 +40,7 @@ implement main0() =
   #define BUFSIZE 16
   val opt =
   fpath_get_cblist
-  ("./DATA/test_cblist.txt", i2sz(BUFSIZE))
+  ("./DATA/test01_cblist.txt", i2sz(BUFSIZE))
   val-~Some_vt(cbs) = opt
 
   val () = assert (2 = length(cbs))
