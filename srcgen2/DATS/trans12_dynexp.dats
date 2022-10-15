@@ -437,4 +437,11 @@ list_trans12_fnp(tenv, d1es, trans12_d1exp)
 
 (* ****** ****** *)
 
+#implfun
+trans12_d1patopt
+( tenv, dopt ) =
+optn_trans12_fnp(tenv, dopt, trans12_d1pat)
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_trans12_dynexp.dats] *)

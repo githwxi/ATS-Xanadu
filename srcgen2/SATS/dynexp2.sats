@@ -154,6 +154,7 @@ S2E = "./staexp2.sats"
 #typedef t2iaglst = list(t2iag)
 (* ****** ****** *)
 #typedef d2patlst = list(d2pat)
+#typedef d2patopt = optn(d2pat)
 (* ****** ****** *)
 #typedef f2arglst = list(f2arg)
 (* ****** ****** *)
