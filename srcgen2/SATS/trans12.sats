@@ -121,7 +121,9 @@ LEX = "./lexing0.sats"
 //
 (* ****** ****** *)
 //
+#typedef d1patopt = $D1E.d1patopt
 #typedef d1expopt = $D1E.d1expopt
+#typedef d2patopt = $D2E.d2patopt
 #typedef d2expopt = $D2E.d2expopt
 //
 (* ****** ****** *)
@@ -298,6 +300,11 @@ fun
 trans12_d1patlst:(!tr12env, d1patlst)->d2patlst
 fun
 trans12_l1d1plst:(!tr12env, l1d1plst)->l2d2plst
+//
+fun
+trans12_d1patopt:(!tr12env, d1patopt)->d2patopt
+//
+(* ****** ****** *)
 //
 fun
 trans12_d1explst:(!tr12env, d1explst)->d2explst

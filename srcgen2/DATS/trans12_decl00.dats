@@ -93,6 +93,7 @@ in//let
 //
 case+
 d1cl.node() of
+//
 |D1Cd0ecl _ =>
 let
 val loc0 = d1cl.lctn()
@@ -110,6 +111,13 @@ end (*let*) // end of [_(*otherwise*)] // temp
 end where
 {
 } (*where*) // end of [trans12_d1ecl(tenv,d1cl)]
+
+(* ****** ****** *)
+
+#implfun
+trans12_d1eclist
+  (tenv, dcls) =
+list_trans12_fnp(tenv, dcls, trans12_d1ecl)
 
 (* ****** ****** *)
 
