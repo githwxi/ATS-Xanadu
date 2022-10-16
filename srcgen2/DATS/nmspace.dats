@@ -36,5 +36,56 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
+(* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+//
+#staload "./../SATS/nmspace.sats"
+//
+(* ****** ****** *)
+//
+#vwtpdef
+nmitmlst_vt =
+list_vt(nmitm)
+#vwtpdef
+nmitmlst2_vt =
+list_vt(nmitmlst_vt)
+#vwtpdef
+savednmlst_vt =
+list_vt@(nmitmlst_vt, nmitmlst2_vt)
+//
+(* ****** ****** *)
+//
+fun
+nmitmlst_vt_free
+  .<>.
+(xs: nmitmlst_vt): void =
+(
+  list_vt_free<nmitm>(xs))
+//
+fun
+nmitmlst2_vt_free
+  {n:nat} .<n>.
+( xss
+: list_vt(nmitmlst_vt, n)): void = 
+(
+case+ xss of
+| ~
+list_vt_nil((*void*)) => ()
+| ~
+list_vt_cons(xs1, xss) => let
+val () =
+nmitmlst_vt_free(xs1) in nmitmlst2_vt_free(xss)
+// end of [val]
+end // end of [list_vt_cons]
+) (*case+*) // end of [nmitmlist2_vt_free(xss)]
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_nmspace.dats] *)
