@@ -387,15 +387,15 @@ s2exp_get_node(s2exp): s2exp_node
 #symload node with s2exp_get_node
 (* ****** ****** *)
 fun
-s2exp_sint(i0: sint): s2exp
+s2exp_int(i0: sint): s2exp
 fun
-s2exp_bool(b0: bool): s2exp
+s2exp_btf(b0: bool): s2exp
 fun
-s2exp_char(c0: char): s2exp
+s2exp_chr(c0: char): s2exp
 fun
-s2exp_flt0(f0: double): s2exp
+s2exp_flt(f0: double): s2exp
 fun
-s2exp_str0(s0: string): s2exp
+s2exp_str(s0: string): s2exp
 (* ****** ****** *)
 fun
 s2exp_none0((*void*)): s2exp
