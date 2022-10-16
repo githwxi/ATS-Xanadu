@@ -36,5 +36,17 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+//
+#abstbox nmitm_tbox // ptr
+#typedef nmitm = nmitm_tbox
+//
+(* ****** ****** *)
+//
+fun
+the_nmspace_find{a:tbox}
+(fopr: nmitm -<cfr> optn_vt(a)): optn_vt(a)
+// end of [the_nmspace_find]
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_nmspace.sats] *)
