@@ -53,11 +53,11 @@ $UN.castlin10{a}(x1)
 val x1 =
 a0ref_get0<a>(A0)
 val x0 =
-$UN.castlin10{~a}(x0)
+$UN.castlin10{?a}(x0)
 val A1 =
-$UN.cast10{a0ref(~a)}(A0)
+$UN.cast10{a0ref(?a)}(A0)
 //
-val () = a0ref_set<(~a)>(A1, x0)
+val () = a0ref_set<(?a)>(A1, x0)
 //
 } (*where*) // a0ref_exch(A0, x0)
 //
@@ -329,7 +329,7 @@ val x0 =
 a1ref_get0_at<a>(A0, i0)
 val x0 = $UN.castlin10{ a}(x0)
 val b0 = forall1$test< a >(x0)
-val x0 = $UN.castlin10{~a}(x0)
+val x0 = $UN.castlin10{?a}(x0)
 in//let
 if b0 then loop(succ(i0)) else false
 end // then
@@ -365,7 +365,7 @@ then
   a1ref_get0_at<a>(A0, i0)
   val x0 = $UN.castlin10{ a}(x0)
   val () = foreach1$work< a>(x0)
-  val x0 = $UN.castlin10{~a}(x0)
+  val x0 = $UN.castlin10{?a}(x0)
 }
 //
 }(*where*)//end-of-[a1ref_foreach1]
@@ -394,7 +394,7 @@ val x0 =
 a1ref_get0_at<a>(A0, i1)
 val x0 = $UN.castlin10{ a}(x0)
 val b0 = rforall1$test< a>(x0)
-val x0 = $UN.castlin10{~a}(x0)
+val x0 = $UN.castlin10{?a}(x0)
 in//let
 if (b0) then loop(i1) else false
 end // then
