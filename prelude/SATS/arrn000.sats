@@ -115,7 +115,7 @@ a0ref_get0(A0: a0ref(a)): ?!a
 fun
 <a:vt>
 a0ref_set0
-(A0: a0ref(a), x0: (~a)): void
+(A0: a0ref(a), x0: ?!a): void
 *)
 //
 fun

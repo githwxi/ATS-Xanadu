@@ -38,18 +38,23 @@
 (* ****** ****** *)
 //
 fcast
-cast01{a0:t0}{a1:t0}(a0): (a1)
+cast01{a0:t0}{a1:t0}(a0):(a1)
 fcast
-cast10{a1:t0}{a0:t0}(a0): (a1)
+cast10{a1:t0}{a0:t0}(a0):(a1)
 //
 (* ****** ****** *)
 //
 fcast
-delinear{a0:vt}(a0): (~a0)
+delinear{a0:vt}( a0 ): ( ?!a0 )
 fcast
-castlin01{a0:vt}{a1:vt}(a0): (a1)
+enlinear{a0:vt}(?!a0): (  a0  )
+//
+(* ****** ****** *)
+//
 fcast
-castlin10{a1:vt}{a0:vt}(a0): (a1)
+castlin01{a0:vt}{a1:vt}(a0):(a1)
+fcast
+castlin10{a1:vt}{a0:vt}(a0):(a1)
 //
 (* ****** ****** *)
 //
@@ -57,7 +62,7 @@ castlin10{a1:vt}{a0:vt}(a0): (a1)
 Mon Jul  4 17:58:26 EDT 2022
 *)
 fcast//HX: it is safe!
-datacopy{a0:vt}(x0: !a0): (~a0)
+datacopy{a0:vt}(x0: !a0): (?!a0)
 //
 (* ****** ****** *)
 //
@@ -74,7 +79,7 @@ list_vt2t
 //
 fun
 <a:vt>
-p1tr_get(p0: p1tr): a
+p1tr_get(p0: p1tr): (a)
 fun
 <a:vt>
 p1tr_set(p0: p1tr, x0: a): void
@@ -84,7 +89,7 @@ p1tr_ret(p0: p1tr, x0: a): void
 //
 fun
 <a:vt>
-p2tr_get(p0: p2tr(a)): a
+p2tr_get(p0: p2tr(a)): (a)
 fun
 <a:vt>
 p2tr_set(p0: p2tr(a), x0: a): void
@@ -131,7 +136,7 @@ p2tr_set_list_vt_cons
 fun
 <a:vt>
 a0ref_set0
-(A0: a0ref(a), x0: (~a)): void
+(A0: a0ref(a), x0: ?!a): void
 //
 (* ****** ****** *)
 //
