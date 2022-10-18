@@ -44,16 +44,24 @@ Authoremail: gmhwxiATgmailDOTcom
 fun
 the_nmspace_top0((*void*)): nmitm
 (* ****** ****** *)
-fun
+fun // let
 the_nmspace_pop0((*void*)): void
-fun
+fun // let, loc1, loc2
 the_nmspace_push((*void*)): void
+(* ****** ****** *)
+fun // local
+the_nmspace_locjoin((*void*)): void
+(* ****** ****** *)
+fun // staload
+the_nmspace_filsave((*void*)): void
+fun // staload
+the_nmspace_filrest((*void*)): void
 (* ****** ****** *)
 //
 fun
-the_nmspace_find{a:tbox}
+the_nmspace_cfrfind{a:tbox}
 (fopr: nmitm -<cfr> optn_vt(a)): optn_vt(a)
-// end of [the_nmspace_find]
+// end of [the_nmspace_cfrfind]
 //
 (* ****** ****** *)
 

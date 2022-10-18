@@ -189,7 +189,7 @@ $UN.a0ref_set0
 
 (* ****** ****** *)
 
-end (*local*) // end of [loca(the_nmitmlst,...)]
+end(*local*)//end-of-[local(the_nmitmlst,...)]
 
 (* ****** ****** *)
 
