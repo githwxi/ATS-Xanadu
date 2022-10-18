@@ -189,6 +189,83 @@ $UN.a0ref_set0
 
 (* ****** ****** *)
 
+#implfun
+the_nmspace_cfrfind
+  {a}(fopr) = let
+//
+#typedef
+fopr_t =
+(nmitm)-<cfr>optn_vt(a)
+//
+fun
+auxlst
+( f0
+: fopr_t
+, xs:
+! nmitmlst_vt): optn_vt(a) =
+(
+case+ xs of
+| !
+list_vt_nil() => optn_vt_nil()
+| !
+list_vt_cons(x0, xs) =>
+(
+case+ f0(x0) of
+| ~
+optn_vt_nil() => auxlst(f0, xs) | ans => ans
+) // end of [list_vt_cons]
+) (*case+*) // end of [auxlst]
+//
+fun
+auxlst2
+( f0
+: !fopr_t
+, xss:
+! nmitmlst2_vt): optn_vt(a) =
+(
+case+ xss of
+|
+list_vt_nil() => optn_vt_nil()
+|
+list_vt_cons(xs0, xss) =>
+(
+case+
+auxlst(f0, xs0) of
+| ~
+optn_vt_nil() => auxlst2(f0, xss) | ans => ans
+) // end of [list_vt_cons]
+) (*case+*) // end of [auxlst2]
+//
+val ans = ans where
+{
+val xs0 =
+a0ref_get0
+<nmitmlst_vt>(the_nmitmlst)
+val xs0 = $UN.enlinear(xs0)
+val ans = auxlst(fopr, xs0)
+val xs0 = $UN.delinear(xs0)
+}
+//
+in//let
+//
+(
+case+ ans of
+| ~
+optn_vt_nil() => ans where
+{
+val xss =
+a0ref_get0
+<nmitmlst2_vt>(the_nmitmlst2)
+val xss = $UN.enlinear( xss )
+val ans = auxlst2(fopr, xss )
+val xss = $UN.delinear( xss )
+}
+| _(*optn_vt_cons(res)*) => ans)
+//
+end // end of [the_nmspace_cfrfind]
+
+(* ****** ****** *)
+
 end(*local*)//end-of-[local(the_nmitmlst,...)]
 
 (* ****** ****** *)

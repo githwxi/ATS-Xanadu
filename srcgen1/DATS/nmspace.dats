@@ -136,14 +136,14 @@ auxlst
 ) : Option_vt(a) =
 (
 case+ xs of
-| list_vt_nil
-    () => None_vt()
-| list_vt_cons
-    (x0, xs) =>
-  (
-    case+ f0(x0) of
-    | ~None_vt () => auxlst(f0, xs) | ans => ans
-  ) // end of [list_cons]
+|
+list_vt_nil() => None_vt()
+|
+list_vt_cons(x0, xs) =>
+(
+case+ f0(x0) of
+| ~None_vt () => auxlst(f0, xs) | ans => ans
+) // end of [list_vt_cons]
 ) (* end of [auxlst] *)
 //
 fun
@@ -153,15 +153,15 @@ auxlst2
 ) : Option_vt(a) =
 (
 case+ xss of
-| list_vt_nil
-    () => None_vt()
-| list_vt_cons
-    (xs0, xss) =>
-  (
-    case+
-    auxlst(f0, xs0) of
-    | ~None_vt () => auxlst2(f0, xss) | ans => ans
-  ) // end of [list_cons]
+|
+list_vt_nil() => None_vt()
+|
+list_vt_cons(xs0, xss) =>
+(
+case+
+auxlst(f0, xs0) of
+| ~None_vt () => auxlst2(f0, xss) | ans => ans
+) // end of [list_vt_cons]
 ) (* end of [auxlst2] *)
 //
 val ans = ans where
