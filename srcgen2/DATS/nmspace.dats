@@ -119,6 +119,8 @@ val xs =
 a0ref_get0
 <nmitmlst_vt>
 (the_nmitmlst)
+val xs =
+$UN.enlinear(xs)
 val-list_vt_cons(x0, _) = xs
 in//let
 let
@@ -134,9 +136,13 @@ the_nmspace_pop0
 //
 val xs1 =
 let
+//
 val xss =
 a0ref_get0
 <nmitmlst2_vt>(the_nmitmlst2)
+val xss =
+$UN.enlinear(xss)
+//
 val-
 ~list_vt_cons(xs1, xss) = xss
 val xss =
