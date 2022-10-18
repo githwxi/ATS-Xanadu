@@ -260,27 +260,27 @@ implement
 the_nmspace_savecur
   () = () where {
 //
-val x0 = x0 where
+val xs0 = xs0 where
 {
   val
   (vbox pf | p) =
   ref_get_viewptr(the_nmitmlst)
-  val x0 = !p; val () = !p := list_vt_nil()
+  val xs0 = !p; val () = !p := list_vt_nil()
 } (* end of [val] *)
 //
-val xs = xs where
+val xss = xss where
 {
   val
   (vbox pf | p) =
   ref_get_viewptr(the_nmitmlst2)
-  val xs = !p; val () = !p := list_vt_nil()
+  val xss = !p; val () = !p := list_vt_nil()
 } (* end of [val] *)
 //
 val () = () where
 {
   val (vbox pf | p) =
   ref_get_viewptr(the_savednmlst)
-  val () = !p := list_vt_cons((x0, xs), !p)
+  val () = !p := list_vt_cons((xs0, xss), !p)
 } (* end of [val] *)
 //
 } (* end of [the_nmspace_savecur] *)
@@ -292,27 +292,29 @@ the_nmspace_restore
   () = () where
 {
 //
-val x0 = x0 where
+val xy = xy where
 {
-  val
-  (vbox pf | p) =
-  ref_get_viewptr(the_savednmlst)
-  val-~list_vt_cons(x0, xs) = !p; val () = (!p := xs)
+val
+(vbox pf | p) =
+ref_get_viewptr(the_savednmlst)
+val-
+~list_vt_cons(xy, xys) = !p; val () = (!p := xys)
 } (* end of [val] *)
 //
 val () = () where
 {
-  val
-  (vbox pf | p) =
-  ref_get_viewptr(the_nmitmlst)
-  val () = nmitmlst_vt_free(!p); val () = (!p := x0.0)
+val
+(vbox pf | p) =
+ref_get_viewptr(the_nmitmlst)
+val () = nmitmlst_vt_free(!p); val () = (!p := xy.0)
 } (* end of [val] *)
 //
-val () = () where {
-  val
-  (vbox pf | p) =
-  ref_get_viewptr(the_nmitmlst2)
-  val () = nmitmlst2_vt_free(!p); val () = (!p := x0.1)
+val () = () where
+{
+val
+(vbox pf | p) =
+ref_get_viewptr(the_nmitmlst2)
+val () = nmitmlst2_vt_free(!p); val () = (!p := xy.1)
 } (* end of [val] *)
 //
 } (* end of [the_nmspace_restore] *)
@@ -325,21 +327,21 @@ the_nmspace_locjoin
 //
 val xs2 = xs2 where
 {
-  val
-  (vbox(pf)|p0) =
-  ref_get_viewptr(the_nmitmlst2)
-  val-
-  ~list_vt_cons(xs1, xss) = !p0
-  val-
-  ~list_vt_cons(xs2, xss) = xss
-  val () = nmitmlst_vt_free(xs1); val () = (!p0 := xss)
+val
+(vbox(pf)|p0) =
+ref_get_viewptr(the_nmitmlst2)
+val-
+~list_vt_cons(xs1, xss) = !p0
+val-
+~list_vt_cons(xs2, xss) = xss
+val () = nmitmlst_vt_free(xs1); val () = (!p0 := xss)
 } (* end of [val] *)
 //
 in
 let
-  val
-  (vbox(pf)|p0) =
-  ref_get_viewptr(the_nmitmlst) in !p0 := list_vt_append(!p0, xs2)
+val
+(vbox(pf)|p0) =
+ref_get_viewptr(the_nmitmlst) in !p0 := list_vt_append(!p0, xs2)
 end
 end // end of [the_nmspace_locjoin]
 
