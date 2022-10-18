@@ -164,6 +164,31 @@ a0ref_exch<nmitmlst_vt>(the_nmitmlst, xs1)
 
 (* ****** ****** *)
 
+#implfun
+the_nmspace_push
+  ((*void*)) = () where
+{
+//
+val xs =
+list_vt_nil()
+val xs =
+a0ref_exch
+<nmitmlst_vt>(the_nmitmlst, xs)
+//
+val xss =
+a0ref_get0
+<nmitmlst2_vt>(the_nmitmlst2)
+val xss =
+$UN.enlinear(xss)
+val xss = list_vt_cons(xs, xss)
+val ( ) =
+$UN.a0ref_set0
+<nmitmlst2_vt>(the_nmitmlst2, xss)
+//
+} (*where*) // end of [the_nmspace_push]
+
+(* ****** ****** *)
+
 end (*local*) // end of [loca(the_nmitmlst,...)]
 
 (* ****** ****** *)
