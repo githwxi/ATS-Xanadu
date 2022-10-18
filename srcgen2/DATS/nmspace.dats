@@ -225,6 +225,42 @@ $UN.a0ref_set0(the_savednmlst, xys)
 (* ****** ****** *)
 
 #implfun
+the_nmspace_filrest
+  ((*void*)) = () where
+{
+//
+val xy0 = xy0 where
+{
+val xys =
+a0ref_get0
+<savednmlst_vt>
+(the_savednmlst)
+val ~
+list_vt_cons
+( xy0
+, xys ) = $UN.enlinear(xys)
+val xys = $UN.delinear(xys)
+val ( ) =
+$UN.a0ref_set0(the_savednmlst, xys)
+} (*where*) // [end-of-val]
+//
+val
+( xs0
+, xss ) = xy0 // end-of-val
+//
+val xs0 =
+a0ref_exch(the_nmitmlst, xs0)
+val xss =
+a0ref_exch(the_nmitmlst2, xss)
+//
+val ( ) = nmitmlst_vt_free(xs0)
+val ( ) = nmitmlst2_vt_free(xss)
+//
+} (*where*)//end-of-[the_nmspace_restore]
+
+(* ****** ****** *)
+
+#implfun
 the_nmspace_cfrfind
   {a}(fopr) = let
 //
