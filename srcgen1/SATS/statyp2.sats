@@ -304,6 +304,11 @@ t2ype_get_node(t2ype): t2ype_node
 overload .sort with t2ype_get_sort
 overload .node with t2ype_get_node
 //
+(*
+fun
+t2ype_set_sort(t2ype, sort2): void
+*)
+//
 (* ****** ****** *)
 //
 fun
@@ -526,6 +531,10 @@ s2explst_erase
 fun
 labs2explst_erase
   (ls2es: labs2explst): labt2ypelst
+//
+fun
+s2exp_erase_sort
+(s2e0: s2exp, s2t0: sort2): t2ype
 //
 (* ****** ****** *)
 //

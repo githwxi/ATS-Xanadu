@@ -26,10 +26,12 @@ HX: for pure C-arrays
 a0ref_get(A0) =
 a0ref_get0<a>(A0)
 (* ****** ****** *)
+(*
 #impltmp
 <a:t0>
 a0ref_set(A0, x0) =
 a0ref_setf<a>(A0, x0)
+*)
 (* ****** ****** *)
 //
 #impltmp
@@ -37,6 +39,27 @@ a0ref_setf<a>(A0, x0)
 a0ref_setf(A0, x0) =
 g_free<a>
 (a0ref_exch<a>(A0, x0))
+//
+(* ****** ****** *)
+//
+#impltmp
+<a:vt>
+a0ref_exch(A0, x0) =
+(
+$UN.castlin10{a}(x1)
+) where
+{
+//
+val x1 =
+a0ref_get0<a>(A0)
+val x0 =
+$UN.castlin10{~a}(x0)
+val A1 =
+$UN.cast10{a0ref(~a)}(A0)
+//
+val () = a0ref_set<(~a)>(A1, x0)
+//
+} (*where*) // a0ref_exch(A0, x0)
 //
 (* ****** ****** *)
 //

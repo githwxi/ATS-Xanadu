@@ -41,6 +41,14 @@ Authoremail: gmhwxiATgmailDOTcom
 #typedef nmitm = nmitm_tbox
 //
 (* ****** ****** *)
+fun
+the_nmspace_top0((*void*)): nmitm
+(* ****** ****** *)
+fun
+the_nmspace_pop0((*void*)): void
+fun
+the_nmspace_push((*void*)): void
+(* ****** ****** *)
 //
 fun
 the_nmspace_find{a:tbox}
