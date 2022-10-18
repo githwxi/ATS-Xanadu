@@ -177,15 +177,50 @@ a0ref_exch
 //
 val xss =
 a0ref_get0
-<nmitmlst2_vt>(the_nmitmlst2)
+<nmitmlst2_vt>( the_nmitmlst2 )
 val xss =
-$UN.enlinear(xss)
-val xss = list_vt_cons(xs, xss)
+$UN.delinear
+(
+list_vt_cons(xs,$UN.enlinear(xss))
+)
 val ( ) =
 $UN.a0ref_set0
 <nmitmlst2_vt>(the_nmitmlst2, xss)
 //
 } (*where*) // end of [the_nmspace_push]
+
+(* ****** ****** *)
+
+#implfun
+the_nmspace_filsave
+  ((*void*)) = () where
+{
+//
+val xs0 =
+list_vt_nil()
+val xs0 =
+a0ref_exch
+<nmitmlst_vt>(the_nmitmlst, xs0)
+//
+val xss =
+list_vt_nil()
+val xss =
+a0ref_exch
+<nmitmlst2_vt>(the_nmitmlst2, xss)
+//
+val xys =
+a0ref_get0
+<savednmlst_vt>(the_savednmlst)
+val xys =
+$UN.delinear
+(
+list_vt_cons
+( @(xs0, xss), $UN.enlinear(xys) )
+)
+val ( ) =
+$UN.a0ref_set0(the_savednmlst, xys)
+//
+} (*where*)//end of [the_nmspace_filsave]
 
 (* ****** ****** *)
 
@@ -206,13 +241,15 @@ auxlst
 (
 case+ xs of
 | !
-list_vt_nil() => optn_vt_nil()
+list_vt_nil
+( (*void*) ) => optn_vt_nil()
 | !
-list_vt_cons(x0, xs) =>
-(
-case+ f0(x0) of
-| ~
-optn_vt_nil() => auxlst(f0, xs) | ans => ans
+list_vt_cons
+(  x0, xs  ) =>
+( case+ f0(x0) of
+  | ~
+  optn_vt_nil() =>
+  auxlst(f0, xs) | ans => ans
 ) // end of [list_vt_cons]
 ) (*case+*) // end of [auxlst]
 //
@@ -225,25 +262,27 @@ auxlst2
 (
 case+ xss of
 |
-list_vt_nil() => optn_vt_nil()
+list_vt_nil
+( (*void*) ) => optn_vt_nil()
 |
-list_vt_cons(xs0, xss) =>
-(
-case+
-auxlst(f0, xs0) of
-| ~
-optn_vt_nil() => auxlst2(f0, xss) | ans => ans
+list_vt_cons
+( xs0, xss ) =>
+( case+
+  auxlst(f0, xs0) of
+  | ~
+  optn_vt_nil() =>
+  auxlst2(f0, xss) | ans => ans
 ) // end of [list_vt_cons]
 ) (*case+*) // end of [auxlst2]
 //
 val ans = ans where
 {
-val xs0 =
-a0ref_get0
-<nmitmlst_vt>(the_nmitmlst)
-val xs0 = $UN.enlinear(xs0)
-val ans = auxlst(fopr, xs0)
-val xs0 = $UN.delinear(xs0)
+  val xs0 =
+  a0ref_get0
+  <nmitmlst_vt>(the_nmitmlst)
+  val xs0 = $UN.enlinear(xs0)
+  val ans = auxlst(fopr, xs0)
+  val xs0 = $UN.delinear(xs0)
 }
 //
 in//let
@@ -253,16 +292,16 @@ case+ ans of
 | ~
 optn_vt_nil() => ans where
 {
-val xss =
-a0ref_get0
-<nmitmlst2_vt>(the_nmitmlst2)
-val xss = $UN.enlinear( xss )
-val ans = auxlst2(fopr, xss )
-val xss = $UN.delinear( xss )
+  val xss =
+  a0ref_get0
+  <nmitmlst2_vt>(the_nmitmlst2)
+  val xss = $UN.enlinear( xss )
+  val ans = auxlst2(fopr, xss )
+  val xss = $UN.delinear( xss )
 }
 | _(*optn_vt_cons(res)*) => ans)
 //
-end // end of [the_nmspace_cfrfind]
+end (*let*) // end of [the_nmspace_cfrfind]
 
 (* ****** ****** *)
 
