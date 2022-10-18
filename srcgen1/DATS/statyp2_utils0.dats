@@ -177,24 +177,27 @@ s2e0.node() of
     (s2t0, T2Pfun(fc2, npf, t2ps, t2p1))
   end
 //
-| S2Etop(s2e1) => s2exp_erase(s2e1)
-| S2Etpz(s2e1) => s2exp_erase(s2e1)
+| S2Etop(s2e1) =>
+  s2exp_erase_sort(s2e1, s2t0)
+| S2Etpz(s2e1) =>
+  s2exp_erase_sort(s2e1, s2t0)
 //
 | S2Earg(knd, s2e1) =>
   (
     if
     (knd >= 0)
     then
-    s2exp_erase(s2e1)
+    s2exp_erase_sort(s2e1, s2t0)
     else
     let
-    val t2p1 = s2exp_erase(s2e1)
-    in
+      val t2p1 = s2exp_erase(s2e1)
+    in//let
       t2ype_make_node(s2t0, T2Plft(t2p1))
     end
   )
 //
-| S2Eatx(s2e1, s2e2) => s2exp_erase(s2e1)
+| S2Eatx(s2e1, s2e2) =>
+  s2exp_erase_sort(s2e1, s2t0)
 //
 | S2Eapp(s2e1, s2es) =>
   let
@@ -235,8 +238,30 @@ in
 if
 impred
 then auxmain(s2e0) else t2ype_none0(s2e0.sort())
-end // end of [s2exp_erase]
+end // end of [s2exp_erase(s2e0)]
 
+(* ****** ****** *)
+//
+implement
+s2exp_erase_sort
+  (s2e0, s2t0) = s2exp_erase(s2e0)
+//
+(*
+//
+HX-2022-10-18:
+This one does not work!!!
+//
+implement
+s2exp_erase_sort
+  (s2e0, s2t0) = let
+//
+val t2p0 = s2exp_erase(s2e0)
+//
+in//let
+t2ype_set_sort(t2p0, s2t0); t2p0
+end (*let*) // end of [s2exp_erase_sort]
+*)
+//
 (* ****** ****** *)
 //
 implement
@@ -349,7 +374,7 @@ T2Pcst(s2c1) =>
 let
 val t2p1 =
 s2cst_get_type(s2c1)
-in
+in//let
 //
 case+
 t2p1.node() of
@@ -633,8 +658,12 @@ t2ype_subst<>(t2p0)
 //
 implement
 t2ype_subst$var<>
-  (t2p0, flag) =
-let
+  (t2p0, flag) = let
+//
+(*
+val
+s2t0 = t2p0.sort()
+*)
 //
 val-
 T2Pvar
@@ -647,23 +676,23 @@ auxlst
 , t2ps
 : t2ypelst
 , flag
-: &int >> int
-): t2ype =
+: &int >> int): t2ype =
 (
 case+ s2vs of
-| list_nil() => t2p0
-| list_cons
-  (s2v1, s2vs) =>
-  let
-    val-
-    list_cons
-    (t2p1, t2ps) = t2ps
-  in
-    if
-    s2v0 = s2v1
-    then (flag := flag+1; t2p1)
-    else auxlst(s2vs, t2ps, flag)
-  end
+|
+list_nil() => t2p0
+|
+list_cons(s2v1, s2vs) =>
+let
+  val-
+  list_cons
+  (t2p1, t2ps) = t2ps
+in
+  if
+  s2v0 = s2v1
+  then (flag := flag+1; t2p1)
+  else auxlst(s2vs, t2ps, flag)
+end
 )
 //
 in

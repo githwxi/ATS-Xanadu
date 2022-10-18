@@ -368,9 +368,9 @@ BANGEQ_symbol = symbol_make("!=")
 (* ****** ****** *)
 //
 implement
-CBV0_symbol = symbol_make("!")
+CBV0_symbol = symbol_make("~")
 implement
-CBV1_symbol = symbol_make("~")
+CBV1_symbol = symbol_make("!")
 implement
 CBRF_symbol = symbol_make("&")
 implement
@@ -403,14 +403,14 @@ implement
 WCARD_symbol = symbol_make("_")
 //
 implement
-QMARK_symbol = symbol_make("?")
+QMNON_symbol = symbol_make("?")
 //
 (*
 HX-2020-06-09:
 it was QBANG: ?!
 *)
 implement
-QMNEG_symbol = symbol_make("~")
+QMLIN_symbol = symbol_make("?!")
 //
 (* ****** ****** *)
 

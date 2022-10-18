@@ -987,7 +987,7 @@ isTOP0
 case+
 s1e.node() of
 | S1Eid0(sid) =>
-  sid = $SYM.QMARK_symbol
+  sid = $SYM.QMNON_symbol
 | _(*non-S1Eid0*) => false
 )
 fun
@@ -998,7 +998,7 @@ isTOP1
 case+
 s1e.node() of
 | S1Eid0(sid) =>
-  sid = $SYM.QMNEG_symbol
+  sid = $SYM.QMLIN_symbol
 | _(*non-S1Eid0*) => false
 )
 
@@ -1325,7 +1325,7 @@ auxapp1_cbv0_
 ( s1e0
 : s1exp): s2exp = let
 //
-val CBV0 = 0 // !
+val CBV0 = 0 // ~
 //
 val-
 S1Eapp1
@@ -1347,7 +1347,7 @@ auxapp1_cbv1_
 ( s1e0
 : s1exp): s2exp = let
 //
-val CBV1 = 1 // ~
+val CBV1 = 1 // !
 //
 val-
 S1Eapp1
@@ -1526,7 +1526,7 @@ S1Enone(loc) =>
 case+
 s1e1.node() of
 | S1Eid0(sid) =>
-  sid = $SYM.QMARK_symbol
+  sid = $SYM.QMNON_symbol
 | _(*non-S1Eid0*) => false)
 | _(*non-S1Enone1*) => false
 )
@@ -1552,7 +1552,7 @@ S1Enone(loc) =>
 case+
 s1e1.node() of
 | S1Eid0(sid) =>
-  sid = $SYM.QMNEG_symbol
+  sid = $SYM.QMLIN_symbol
 | _(*non-S1Eid0*) => false)
 | _(*non-S1Enone1*) => false
 )

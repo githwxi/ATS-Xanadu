@@ -299,7 +299,20 @@ val ((*void*)) = list_vt_free(t2ps)
 } (* end of [ti3env_redo] *) end // end of [local]
 
 (* ****** ****** *)
-
+//
+(*
+//
+HX-2022-10-18:
+Ignore sort mismatching!!!
+//
+*)
+fun
+t2xtvlst_srtck
+( xtvs
+: t2xtvlst
+, test: bool): bool = test
+//
+(*
 fun
 t2xtvlst_srtck
 ( xtvs
@@ -367,7 +380,8 @@ case+ s2t0 of
 end
 end
 } (*where*) // end of [t2xtvlst_srtck]
-
+*)
+//
 (* ****** ****** *)
 
 local

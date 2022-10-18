@@ -623,8 +623,14 @@ s2e0.node() of
 //
 | S2Etop(s2e) =>
   fprint!( out, "S2Etop(", s2e, ")" )
+(*
+  fprint!( out, "S2Etop(", s2e, "):", s2e0.sort())
+*)
 | S2Etpz(s2e) =>
   fprint!( out, "S2Etpz(", s2e, ")" )
+(*
+  fprint!( out, "S2Etpz(", s2e, "):", s2e0.sort())
+*)
 //
 | S2Eapp
   (s2fn, s2es) =>
@@ -640,9 +646,17 @@ s2e0.node() of
 | S2Earg(knd, s2e) =>
   fprint!
   (out, "S2Earg(", knd, "; ", s2e, ")")
+(*
+  fprint!
+  (out, "S2Earg(", knd, "; ", s2e, "):", s2e0.sort())
+*)
 | S2Eatx(bef, aft) =>
   fprint!
   (out, "S2Eatx(", bef, "; ", aft, ")")
+(*
+  fprint!
+  (out, "S2Eatx(", bef, "; ", aft, "):", s2e0.sort())
+*)
 //
 | S2Efun
   (fc2, npf, arg, res) =>

@@ -36,6 +36,9 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsafex.sats"
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
@@ -86,6 +89,77 @@ nmitmlst_vt_free(xs1) in nmitmlst2_vt_free(xss)
 end // end of [list_vt_cons]
 ) (*case+*) // end of [nmitmlist2_vt_free(xss)]
 //
+(* ****** ****** *)
+
+local
+//
+val
+the_nmitmlst =
+a0ref_make_1val
+< nmitmlst_vt >(list_vt_nil())
+//
+val
+the_nmitmlst2 =
+a0ref_make_1val
+< nmitmlst2_vt >(list_vt_nil())
+//
+val
+the_savednmlst =
+a0ref_make_1val
+< savednmlst_vt >(list_vt_nil())
+//
+in (* in-of-local *)
+
+(* ****** ****** *)
+
+#implfun
+the_nmspace_top0() =
+let
+val xs =
+a0ref_get0
+<nmitmlst_vt>
+(the_nmitmlst)
+val-list_vt_cons(x0, _) = xs
+in//let
+let
+val xs = $UN.delinear(xs) in x0 end
+end (*let*) // end of [the_nmspace_top0]
+
+(* ****** ****** *)
+
+#implfun
+the_nmspace_pop0
+  ((*void*)) = () where
+{
+//
+val xs1 =
+let
+val xss =
+a0ref_get0
+<nmitmlst2_vt>(the_nmitmlst2)
+val-
+~list_vt_cons(xs1, xss) = xss
+val xss =
+a0ref_exch
+<nmitmlst2_vt>(the_nmitmlst2, xss)
+in//let
+let
+val xss = $UN.delinear(xss) in xs1 end
+end // end of [let] // end of [val xs1]
+//
+val ( ) =
+nmitmlst_vt_free(xs0) where
+{
+val xs0 =
+a0ref_exch<nmitmlst_vt>(the_nmitmlst, xs1)
+}
+//
+} (*where*) // end of [the_nmspace_pop0()] *)
+
+(* ****** ****** *)
+
+end (*local*) // end of [loca(the_nmitmlst,...)]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_nmspace.dats] *)

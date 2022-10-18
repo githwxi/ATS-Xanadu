@@ -108,7 +108,7 @@ a0ref_set(a0ref(a), a): void
 //
 fun
 <a:vt> // read-only
-a0ref_get0(A0: a0ref(a)): ~a
+a0ref_get0(A0: a0ref(a)): ?!a
 (*
 //HX-2022-07-06:
 //this one is in unsafex.sats
@@ -176,7 +176,7 @@ fun
 <a:t0>
 a1ref_head
 {n:i0|n>0}
-(A0: a1ref(a, n)): ~a
+(A0: a1ref(a, n)): (?!a)
 fun
 <a:vt>
 a1ref_tail
@@ -213,7 +213,7 @@ fun
 a1ref_get0_at
 {n:i0}
 ( A0:
-  a1ref(a, n), i0: nintlt(n)): (~a)
+  a1ref(a, n), i0: nintlt(n)): ?!a
 //
 (* ****** ****** *)
 //
@@ -226,7 +226,7 @@ fun
 a1ref_cget_at
 {n:i0}
 ( A0:
-  a1ref(a, n), i0: nintlt(n)): ( a)
+  a1ref(a, n), i0: nintlt(n)): (a)
 //
 (* ****** ****** *)
 //

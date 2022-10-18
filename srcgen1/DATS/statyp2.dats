@@ -69,30 +69,42 @@ t2p0.node() of
 
 local
 
-absimpl
-t2ype_tbox = $rec
-{ 
+typedef
+t2ype_struct =
+@{ 
   t2ype_sort= sort2
 , t2ype_node= t2ype_node
 } (* absimpl *)
+absimpl
+t2ype_tbox = ref(t2ype_struct)
 
 in (* in-of-local *)
 //
 implement
+t2ype_make_node
+  (s2t0, node) =
+(
+ref<t2ype_struct>
+@{
+  t2ype_sort= s2t0
+, t2ype_node= node }
+) (* end of [t2ype_make_node] *)
+//
+implement
 t2ype_get_sort
-  (t2p) = t2p.t2ype_sort
+  (t2p0) = t2p0->t2ype_sort
 implement
 t2ype_get_node
-  (t2p) = t2p.t2ype_node
+  (t2p0) = t2p0->t2ype_node
 //
+(*
 implement
-t2ype_make_node
-  (s2t0, node) = $rec
-{
-  t2ype_sort= s2t0, t2ype_node= node
-}
+t2ype_set_sort
+  ( t2p0, s2t0 ) =
+  ( t2p0->t2ype_sort := s2t0 )
+*)
 //
-end // end of [local]
+end (*local*) // end of [local(t2ype_tbox)]
 
 (* ****** ****** *)
 //

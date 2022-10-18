@@ -897,6 +897,11 @@ s2exp_get_node(s2exp): s2exp_node
 overload .sort with s2exp_get_sort
 overload .node with s2exp_get_node
 //
+(*
+fun
+s2exp_set_sort(s2exp, sort2): void
+*)
+//
 (* ****** ****** *)
 //
 fun
