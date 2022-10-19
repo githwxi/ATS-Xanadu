@@ -125,7 +125,7 @@ val-list_vt_cons(x0, _) = xs
 in//let
 let
 val xs = $UN.delinear(xs) in x0 end
-end (*let*) // end of [the_nmspace_top0]
+end (*let*) // end of [the_nmspace_top0()]
 
 (* ****** ****** *)
 
@@ -160,7 +160,7 @@ val xs0 =
 a0ref_exch<nmitmlst_vt>(the_nmitmlst, xs1)
 }
 //
-} (*where*) // end of [the_nmspace_pop0()] *)
+} (*where*) // end of [the_nmspace_pop0()]
 
 (* ****** ****** *)
 
@@ -187,7 +187,7 @@ val ( ) =
 $UN.a0ref_set0
 <nmitmlst2_vt>(the_nmitmlst2, xss)
 //
-} (*where*) // end of [the_nmspace_push]
+} (*where*) // end of [the_nmspace_push()]
 
 (* ****** ****** *)
 
@@ -220,7 +220,7 @@ list_vt_cons
 val ( ) =
 $UN.a0ref_set0(the_savednmlst, xys)
 //
-} (*where*)//end of [the_nmspace_filsave]
+} (*where*)//end-of-[the_nmspace_filsave]
 
 (* ****** ****** *)
 
@@ -256,7 +256,7 @@ a0ref_exch(the_nmitmlst2, xss)
 val ( ) = nmitmlst_vt_free(xs0)
 val ( ) = nmitmlst2_vt_free(xss)
 //
-} (*where*)//end-of-[the_nmspace_restore]
+} (*where*)//end-of-[the_nmspace_filrest]
 
 (* ****** ****** *)
 
@@ -335,7 +335,7 @@ optn_vt_nil() => ans where
   val ans = auxlst2(fopr, xss )
   val xss = $UN.delinear( xss )
 }
-| _(*optn_vt_cons(res)*) => ans)
+| _(*optn_vt_cons(itm)*) => ans)
 //
 end (*let*) // end of [the_nmspace_cfrfind]
 

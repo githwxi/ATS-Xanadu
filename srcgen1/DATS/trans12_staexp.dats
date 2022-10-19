@@ -124,36 +124,6 @@ fprint_val<s2exp> = fprint_s2exp
 
 local
 
-fun
-auxid0
-( s1t0
-: sort1): sort2 = let
-//
-val-
-S1Tid0(tid) = s1t0.node()
-val
-opt = the_sortenv_find(tid)
-//
-in
-//
-case+ opt of
-//
-| ~None_vt() => S2Tid0(tid)
-//
-| ~Some_vt(s2t) =>
-  (
-    case+ s2t of
-    | S2TXTsrt(s2t) => s2t
-    | S2TXTsub
-        (s2v, _) => s2v.sort()
-      // S2TXTsub
-(*
-    | S2TXTerr _(*loc*) => S2Tnone1(s1t0)
-*)
-  ) (* Some_vt *)
-//
-end // end of [auxid0]
-
 (* ****** ****** *)
 
 fun
@@ -189,6 +159,38 @@ s1t.node() of
   tid = $SYM.MSGT_symbol
 | _(*non-S1Tid0*) => false
 )
+
+(* ****** ****** *)
+
+fun
+auxid0
+( s1t0
+: sort1): sort2 = let
+//
+val-
+S1Tid0(tid) = s1t0.node()
+val
+opt = the_sortenv_find(tid)
+//
+in
+//
+case+ opt of
+//
+| ~None_vt() => S2Tid0(tid)
+//
+| ~Some_vt(s2t) =>
+  (
+    case+ s2t of
+    | S2TXTsrt(s2t) => s2t
+    | S2TXTsub
+        (s2v, _) => s2v.sort()
+      // S2TXTsub
+(*
+    | S2TXTerr _(*loc*) => S2Tnone1(s1t0)
+*)
+  ) (* Some_vt *)
+//
+end // end of [auxid0]
 
 (* ****** ****** *)
 
@@ -243,7 +245,7 @@ auxapp2
 val () =
 println!
 ("\
-trans01_sort: \
+trans12_sort: \
 auxapp2: s1t0 = ", s1t0)
 *)
 //

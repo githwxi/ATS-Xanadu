@@ -141,17 +141,17 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 //
 fun
-tr12env_sort_find
+tr12env_find_sort
 ( env:
 ! tr12env, sym: sym_t): s2texopt_vt
 //
 fun
-tr12env_sexp_find
+tr12env_find_sexp
 ( env:
 ! tr12env, sym: sym_t): s2itmopt_vt
 //
 fun
-tr12env_dexp_find
+tr12env_find_dexp
 ( env:
 ! tr12env, sym: sym_t): d2itmopt_vt
 //

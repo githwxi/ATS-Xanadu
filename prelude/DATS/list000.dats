@@ -30,7 +30,13 @@ list_cons(x0, xs)
 #impltmp
 <a>(*tmp*)
 list_sing(x0) =
-list_cons(x0, list_nil())
+list_cons
+(x0, list_nil(*void*))
+#impltmp
+<a>(*tmp*)
+list_pair(x1,x2) =
+list_cons
+(x1, list_sing<a>(x2))
 
 (* ****** ****** *)
 //

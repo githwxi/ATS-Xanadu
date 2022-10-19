@@ -118,6 +118,14 @@ val MOD_symbl: symbl //=symbl("%")
 //
 (* ****** ****** *)
 //
+val EQLT_symbl : symbl // symbl("=<")
+val EQGT_symbl : symbl // symbl("=>")
+//
+val MSLT_symbl : symbl // symbl("-<")
+val MSGT_symbl : symbl // symbl("->")
+//
+(* ****** ****** *)
+//
 val INT_symbl: symbl //=symbl("int")
 val ADDR_symbl: symbl //=symbl("addr")
 val BOOL_symbl: symbl //=symbl("bool")
