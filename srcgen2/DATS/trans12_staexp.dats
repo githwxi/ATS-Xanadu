@@ -73,7 +73,7 @@ _(*TRANS12*) = "./trans12.dats"
 (* ****** ****** *)
 
 fun
-isplus
+isPLUS
 ( s1t0
 : sort1): bool =
 (
@@ -84,7 +84,7 @@ s1t0.node() of
 | _(*non-S1Tid0*) => false
 )
 fun
-ismnus
+isMNUS
 ( s1t0
 : sort1): bool =
 (
@@ -95,7 +95,7 @@ s1t0.node() of
 | _(*non-S1Tid0*) => false
 )
 fun
-isarrw
+isARRW
 ( s1t0
 : sort1): bool =
 (
@@ -129,16 +129,25 @@ f0_id0(tenv, s1t0)
 |S1Tint(tok) =>
 sort2_int(token2sint(tok))
 //
-|S1Ta0pp _ => S2Tnone1(s1t0)
+|S1Ta0pp _ => sort2_none1(s1t0)
 //
-|S1Ta1pp _ => f0_a1pp(tenv, s1t0)
-|S1Ta2pp _ => f0_a2pp(tenv, s1t0)
+|
+S1Ta1pp _ => f0_a1pp(tenv, s1t0)
+|
+S1Ta2pp _ => f0_a2pp(tenv, s1t0)
+//
+|
+S1Tlist _ => f0_list(tenv, s1t0)
+//
+| S1Tqual _ => sort2_none1(s1t0)
 //
 | S1Tnone0() => sort2_none1(s1t0)
 | S1Tnone1(s0t0) => sort2_none1(s1t0)
 //
 end where
 {
+//
+(* ****** ****** *)
 //
 fun
 f0_id0
@@ -171,29 +180,31 @@ case+ s2t0 of
 *)
 ) (* end of [optn_vt_cons] *)
 //
-end (*let*) // end of [auxid0]
+end (*let*) // end of [f0_id0]
+//
+(* ****** ****** *)
 //
 fun
 f0_a1pp
 ( tenv:
 ! tr12env
-, s1t0: sort1): sort2 = let
+, s1t0: sort1): sort2 =
+let
 //
 val-
 S1Ta1pp
-( s1t1
-, s1t2 ) = s1t0.node()
+(s1t1, s1t2) = s1t0.node()
 //
 in
 //
 if
-isplus(s1t1)
+isPLUS(s1t1)
 then
 sort2_polpos
 (trans12_sort1(tenv,s1t2))
 else
 if
-ismnus(s1t1)
+isMNUS(s1t1)
 then
 sort2_polneg
 (trans12_sort1(tenv,s1t2))
@@ -217,7 +228,7 @@ list_sing(trans12_sort1(tenv,s1t2))
 //
 in
   S2Tapps(s2t1, s2ts)
-end
+end (*let*) // end of [else]
 //
 end (*let*) // end of [f0_a1pp]
 //
@@ -225,28 +236,28 @@ fun
 f0_a2pp
 ( tenv:
 ! tr12env
-, s1t0: sort1): sort2 = let
+, s1t0: sort1): sort2 =
+let
 //
 (*
 val () =
 println!
 ("\
-trans12_sort1: \
-f0_a2pp: s1t0 = ", s1t0)
+trans12_sort1: f0_a2pp: s1t0 = ", s1t0)
 *)
 //
 val-
 S1Ta2pp
 ( s1t1
-, s1t2
-, s1t3 ) = s1t0.node()
+, s1t2, s1t3) = s1t0.node()
 //
-in
+in//let
 //
 if
-isarrw(s1t1)
+isARRW(s1t1)
 then
-S2Tf1un(s2ts,s2t3) where
+(
+  S2Tf1un(s2ts, s2t3)) where
 {
 val s2ts =
 (
@@ -267,7 +278,39 @@ in//let
   S2Tapps(s2t1, list_pair(s2t2, s2t3))
 end (*let*) // end of-else
 //
-end (*let*) // end of [f0_app2]
+end (*let*) // end of [f0_a2pp]
+//
+(* ****** ****** *)
+//
+fun
+f0_list
+( tenv:
+! tr12env
+, s1t0: sort1): sort2 =
+let
+//
+val-
+S1Tlist(s1ts) = s1t0.node()
+//
+in
+if
+list_singq(s1ts)
+then
+(
+  trans12_sort1(tenv, s1t1)
+) where
+{
+  val s1t1 = list_head(s1ts)
+}
+else
+(
+S2Ttup
+(trans12_sort1lst(tenv, s1ts))
+)
+end (*let*) // end of [f0_list]
+//
+(* ****** ****** *)
+//
 } (*where*) // end of [trans12_sort1(tenv,s1t0)]
 
 (* ****** ****** *)
