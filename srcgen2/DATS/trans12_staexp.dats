@@ -72,6 +72,42 @@ _(*TRANS12*) = "./trans12.dats"
 #symload node with s1exp_get_node
 (* ****** ****** *)
 
+fun
+isplus
+( s1t0
+: sort1): bool =
+(
+case+
+s1t0.node() of
+| S1Tid0(tid0) =>
+  (tid0 = ADD_symbl)
+| _(*non-S1Tid0*) => false
+)
+fun
+ismnus
+( s1t0
+: sort1): bool =
+(
+case+
+s1t0.node() of
+| S1Tid0(tid0) =>
+  (tid0 = SUB_symbl)
+| _(*non-S1Tid0*) => false
+)
+fun
+isarrw
+( s1t0
+: sort1): bool =
+(
+case+
+s1t0.node() of
+| S1Tid0(tid0) =>
+  (tid0 = MSGT_symbl)
+| _(*non-S1Tid0*) => false
+)
+
+(* ****** ****** *)
+
 #implfun
 trans12_sort1
 ( tenv,s1t0 ) = let
@@ -87,14 +123,151 @@ in//let
 case+
 s1t0.node() of
 //
+|S1Tid0 _ =>
+f0_id0(tenv, s1t0)
+//
 |S1Tint(tok) =>
 sort2_int(token2sint(tok))
 //
-| S1Tnone0 () => sort2_none1(s1t0)
-| S1Tnone1 (s0t0) => sort2_none1(s1t0)
+|S1Ta0pp _ => S2Tnone1(s1t0)
+//
+|S1Ta1pp _ => f0_a1pp(tenv, s1t0)
+|S1Ta2pp _ => f0_a2pp(tenv, s1t0)
+//
+| S1Tnone0() => sort2_none1(s1t0)
+| S1Tnone1(s0t0) => sort2_none1(s1t0)
 //
 end where
 {
+//
+fun
+f0_id0
+( tenv:
+! tr12env
+, s1t0: sort1): sort2 = let
+//
+val-
+S1Tid0
+(tid0) = s1t0.node()
+val
+opt0 =
+tr12env_find_sort(tenv, tid0)
+//
+in//let
+//
+case+ opt0 of
+//
+| ~
+optn_vt_nil() => S2Tid0(tid0)
+//
+| ~
+optn_vt_cons(s2t0) =>
+(
+case+ s2t0 of
+| S2TEXsrt(s2t1) => s2t1
+| S2TEXsub(s2v1, _) => s2v1.sort()
+(*
+| S2TEXerr _(*loc*) => S2Tnone1(s1t0)
+*)
+) (* end of [optn_vt_cons] *)
+//
+end (*let*) // end of [auxid0]
+//
+fun
+f0_a1pp
+( tenv:
+! tr12env
+, s1t0: sort1): sort2 = let
+//
+val-
+S1Ta1pp
+( s1t1
+, s1t2 ) = s1t0.node()
+//
+in
+//
+if
+isplus(s1t1)
+then
+sort2_polpos
+(trans12_sort1(tenv,s1t2))
+else
+if
+ismnus(s1t1)
+then
+sort2_polneg
+(trans12_sort1(tenv,s1t2))
+else
+let
+//
+val
+s2t1 = trans12_sort1(tenv,s1t1)
+val
+s2ts =
+(
+case+
+s1t2.node() of
+|
+S1Tlist(s1ts) =>
+trans12_sort1lst(tenv,s1ts)
+|
+_(*non-S1Tlist*) =>
+list_sing(trans12_sort1(tenv,s1t2))
+) : sort2lst // end of [val]
+//
+in
+  S2Tapps(s2t1, s2ts)
+end
+//
+end (*let*) // end of [f0_a1pp]
+//
+fun
+f0_a2pp
+( tenv:
+! tr12env
+, s1t0: sort1): sort2 = let
+//
+(*
+val () =
+println!
+("\
+trans12_sort1: \
+f0_a2pp: s1t0 = ", s1t0)
+*)
+//
+val-
+S1Ta2pp
+( s1t1
+, s1t2
+, s1t3 ) = s1t0.node()
+//
+in
+//
+if
+isarrw(s1t1)
+then
+S2Tf1un(s2ts,s2t3) where
+{
+val s2ts =
+(
+case+
+s1t2.node() of
+| S1Tlist(s1ts) =>
+trans12_sort1lst(tenv, s1ts)
+| _(*non-S1Tlist*) =>
+list_sing(trans12_sort1(tenv, s1t2))
+) : sort2lst // [val s2ts]
+val s2t3 = trans12_sort1(tenv, s1t3)
+} (*where*) // end-of-then
+else let
+val s2t1 = trans12_sort1(tenv, s1t1)
+val s2t2 = trans12_sort1(tenv, s1t2)
+val s2t3 = trans12_sort1(tenv, s1t3)
+in//let
+  S2Tapps(s2t1, list_pair(s2t2, s2t3))
+end (*let*) // end of-else
+//
+end (*let*) // end of [f0_app2]
 } (*where*) // end of [trans12_sort1(tenv,s1t0)]
 
 (* ****** ****** *)

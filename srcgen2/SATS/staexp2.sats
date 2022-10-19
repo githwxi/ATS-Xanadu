@@ -433,6 +433,11 @@ fun
 sort2_prgmq(s2t0: sort2): bool
 (* ****** ****** *)
 fun
+sort2_polpos(s2t0:sort2): sort2
+fun
+sort2_polneg(s2t0:sort2): sort2
+(* ****** ****** *)
+fun
 s2exp_l1st(s2es: s2explst): s2exp
 fun
 s2exp_l2st

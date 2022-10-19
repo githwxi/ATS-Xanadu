@@ -53,6 +53,10 @@ list_cons_
 fun
 <a:t0>
 list_sing(x0: a): list(a,1)
+fun
+<a:t0>
+list_pair
+( x1: a, x2: a ): list(a,2)
 //
 (* ****** ****** *)
 //
