@@ -204,12 +204,12 @@ dpar = d1parsed_from_trans(dpar)
 val (  ) =
 prerrln
 ("\
-dparsed_from_fpath\
+d0parsed_from_fpath\
 (\"./../../../prelude/DATS/char000.dats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
-endloc (*local*) // end-of-[local(p1_fun_test)]
+endloc (*local*) // end-of-[local]
 //
 (* ****** ****** *)
 
