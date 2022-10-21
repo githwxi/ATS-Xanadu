@@ -178,6 +178,8 @@ S2E = "./staexp2.sats"
 #typedef i2mpldclist = list(i2mpldcl)
 #typedef d2cstdclist = list(d2cstdcl)
 (* ****** ****** *)
+#typedef d2eclistopt = optn(d2eclist)
+(* ****** ****** *)
 //
 datatype
 d2lab(x0:type) =
@@ -545,6 +547,41 @@ d2fundcl_fprint:(FILR,d2fundcl)->void
 (* ****** ****** *)
 fun
 d2cstdcl_fprint:(FILR,d2cstdcl)->void
+(* ****** ****** *)
+
+#abstbox d2parsed_tbox // ptr
+#typedef d2parsed = d2parsed_tbox
+
+(* ****** ****** *)
+//
+fun
+d2parsed_fprint
+(out: FILR, dpar: d2parsed): void
+//
+(* ****** ****** *)
+fun
+d2parsed_get_stadyn:(d2parsed)->sint
+fun
+d2parsed_get_nerror:(d2parsed)->sint
+fun
+d2parsed_get_source:(d2parsed)->lcsrc
+fun
+d2parsed_get_parsed:(d2parsed)->d2eclistopt
+//
+#symload stadyn with d2parsed_get_stadyn
+#symload nerror with d2parsed_get_nerror
+#symload source with d2parsed_get_source
+#symload parsed with d2parsed_get_parsed
+//
+fun
+d2parsed_make_args
+( stadyn:sint
+, nerror:sint
+, source:lcsrc
+, parsed:d2eclistopt): d2parsed//end-fun
+//
+#symload d2parsed with d2parsed_make_args
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_dynexp2.sats] *)

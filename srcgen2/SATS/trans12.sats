@@ -141,6 +141,12 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 //
 fun
+d2parsed_from_trans
+(  dpar: d1parsed  ): d2parsed
+//
+(* ****** ****** *)
+//
+fun
 tr12env_find_sort
 ( env:
 ! tr12env, sym: sym_t): s2texopt_vt
