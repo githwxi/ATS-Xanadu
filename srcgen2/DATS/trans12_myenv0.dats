@@ -244,4 +244,46 @@ end (*local*) // end of [ local(dexpenv) ]
 
 (* ****** ****** *)
 
+local
+
+datavwtp
+tr12env =
+TR12ENV of
+(
+sortenv, sexpenv, dexpenv)
+#absimpl tr12env_vtbx = tr12env
+
+in//local
+
+(* ****** ****** *)
+//
+#implfun
+tr12env_make_nil() =
+TR12ENV(tenv,senv,denv) where
+{
+  val tenv = sortenv_make_nil()
+  val senv = sexpenv_make_nil()
+  val denv = dexpenv_make_nil()
+} (*where*) // end of [tr12env_make_nil()]
+//
+(* ****** ****** *)
+//
+#implfun
+tr12env_free_top
+  (  env0  ) =
+(
+sortenv_free_top(tenv);
+sexpenv_free_top(senv);
+dexpenv_free_top(denv)) where
+{
+val+
+~TR12ENV(tenv, senv, denv) = env0
+} (*where*)//end-of(tr12env_free_top(tenv))
+//
+(* ****** ****** *)
+
+endloc (*local*) // end of [ local(tr12env) ]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_trans12_myenv0.dats] *)

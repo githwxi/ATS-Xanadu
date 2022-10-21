@@ -52,6 +52,96 @@ ATS_PACKNAME
 local
 //
 datatype
+d2pat =
+D2PAT of
+(loctn, d2pat_node)
+//
+#absimpl d2pat_tbox = d2pat
+//
+in (* in-of-local *)
+//
+#implfun
+d2pat_make_node
+(   loc,nod   ) = D2PAT(loc,nod)
+//
+#implfun
+d2pat_get_lctn(d2p) =
+let
+  val+D2PAT(loc,nod) = d2p in loc
+end
+#implfun
+d2pat_get_node(d2p) =
+let
+  val+D2PAT(loc,nod) = d2p in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d2exp =
+D2EXP of
+(loctn, d2exp_node)
+//
+#absimpl d2exp_tbox = d2exp
+//
+in (* in-of-local *)
+//
+#implfun
+d2exp_make_node
+(   loc,nod   ) = D2EXP(loc,nod)
+//
+#implfun
+d2exp_get_lctn(d2e) =
+let
+  val+D2EXP(loc,nod) = d2e in loc
+end
+#implfun
+d2exp_get_node(d2e) =
+let
+  val+D2EXP(loc,nod) = d2e in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d2ecl =
+D2ECL of
+(loctn, d2ecl_node)
+//
+#absimpl d2ecl_tbox = d2ecl
+//
+in (* in-of-local *)
+//
+#implfun
+d2ecl_make_node
+(   loc,nod   ) = D2ECL(loc,nod)
+//
+#implfun
+d2ecl_get_lctn(dcl) =
+let
+  val+D2ECL(loc,nod) = dcl in loc
+end
+#implfun
+d2ecl_get_node(dcl) =
+let
+  val+D2ECL(loc,nod) = dcl in nod
+end
+//
+endloc (*local*) // end of [ local ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 d2parsed =
 D2PARSED of
 (

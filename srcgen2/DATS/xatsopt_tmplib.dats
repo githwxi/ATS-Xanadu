@@ -997,5 +997,9 @@ g_print<d2cstdcl>(dcst) =
 d2cstdcl_fprint(g_print$out<>(), dcst)
 //
 (* ****** ****** *)
+#impltmp
+g_print<d2parsed>(dpar) =
+d2parsed_fprint(g_print$out<>(), dpar)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xatsopt_tmplib.dats] *)
