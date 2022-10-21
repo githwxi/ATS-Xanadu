@@ -132,6 +132,11 @@ LEX = "./lexing0.sats"
 #typedef d2eclist = $D2E.d2eclist
 //
 (* ****** ****** *)
+//
+#typedef d1parsed = $D1E.d1parsed
+#typedef d2parsed = $D2E.d2parsed
+//
+(* ****** ****** *)
 #absvtbx tr12env_vtbx
 #vwtpdef tr12env = tr12env_vtbx
 (* ****** ****** *)
