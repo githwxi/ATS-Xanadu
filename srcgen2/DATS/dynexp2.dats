@@ -49,4 +49,101 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 
+local
+//
+datatype
+d2parsed =
+D2PARSED of
+(
+sint  // stadyn
+,
+sint  // nerror
+,
+lcsrc // source
+,
+d2eclistopt)//program
+//
+#absimpl
+d2parsed_tbox = d2parsed
+//
+in//local
+
+(* ****** ****** *)
+
+#implfun
+d2parsed_get_stadyn
+  (dpar) =
+(
+  stadyn ) where
+{
+val+
+D2PARSED
+( stadyn
+, nerror, source, parsed) = dpar
+} (*where*)//end-of-[d2parsed_get_stadyn]
+
+(* ****** ****** *)
+
+#implfun
+d2parsed_get_nerror
+  (dpar) =
+(
+  nerror ) where
+{
+val+
+D2PARSED
+( stadyn
+, nerror, source, parsed) = dpar
+} (*where*)//end-of-[d2parsed_get_nerror]
+
+(* ****** ****** *)
+
+#implfun
+d2parsed_get_source
+  (dpar) =
+(
+  source ) where
+{
+val+
+D2PARSED
+( stadyn
+, nerror, source, parsed) = dpar
+} (*where*)//end-of-[d2parsed_get_source]
+
+(* ****** ****** *)
+
+#implfun
+d2parsed_get_parsed
+  (dpar) =
+(
+  parsed ) where
+{
+val+
+D2PARSED
+( stadyn
+, nerror, source, parsed) = dpar
+} (*where*)//end-of-[d2parsed_get_parsed]
+
+(* ****** ****** *)
+//
+#implfun
+d2parsed_make_args
+(stadyn,nerror,source,parsed) =
+(
+D2PARSED(stadyn,nerror,source,parsed)
+) where
+{
+(*
+val () =
+prerrln
+("d2parsed_make_args:nerror=",nerror)
+*)
+} (*where*) // end-of-[d2parsed_make_args]
+//
+(* ****** ****** *)
+
+endloc (*local*) // end of [ local(d2parsed) ]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_dynexp2.dats] *)
