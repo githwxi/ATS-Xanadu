@@ -1704,8 +1704,8 @@ list_trans01_fnp(tenv, dcls, trans01_d0cstdcl)
 //
 #implfun
 trans01_d0eclistopt
-  (  tenv,opt0  ) =
-optn_trans01_fnp(tenv, opt0, trans01_d0eclist)
+  (  tenv,dopt  ) =
+optn_trans01_fnp(tenv, dopt, trans01_d0eclist)
 //
 (* ****** ****** *)
 

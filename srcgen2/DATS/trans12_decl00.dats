@@ -120,5 +120,12 @@ trans12_d1eclist
 list_trans12_fnp(tenv, dcls, trans12_d1ecl)
 
 (* ****** ****** *)
+//
+#implfun
+trans12_d1eclistopt
+  (  tenv,dopt  ) =
+optn_trans12_fnp(tenv, dopt, trans12_d1eclist)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans12_decl00.dats] *)

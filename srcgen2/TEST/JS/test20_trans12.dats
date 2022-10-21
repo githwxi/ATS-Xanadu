@@ -21,6 +21,16 @@
 #staload
 "./../../SATS/preadx0.sats"
 (* ****** ****** *)
+#staload
+"./../../SATS/staexp1.sats"
+#staload
+"./../../SATS/dynexp1.sats"
+(* ****** ****** *)
+#staload
+"./../../SATS/staexp2.sats"
+#staload
+"./../../SATS/dynexp2.sats"
+(* ****** ****** *)
 #include
 "./../../DATS/xbasics.dats"
 #include

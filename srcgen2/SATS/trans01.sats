@@ -737,8 +737,8 @@ trans01_d0cstdclist:
 (* ****** ****** *)
 //
 fun
-trans01_d0eclistopt:
-(env: !tr01env, opt: d0eclistopt)->d1eclistopt
+trans01_d0eclistopt
+(env: !tr01env, opt: d0eclistopt): d1eclistopt
 //
 (* ****** ****** *)
 (* end of [ATS3/XATSOPT_srcgen2_trans01.sats] *)

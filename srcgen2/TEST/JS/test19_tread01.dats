@@ -12,6 +12,7 @@
 "./../../SATS/lexbuf0.sats"
 #staload
 "./../../SATS/lexing0.sats"
+(* ****** ****** *)
 #staload
 "./../../SATS/staexp0.sats"
 #staload
@@ -20,6 +21,11 @@
 "./../../SATS/parsing.sats"
 #staload
 "./../../SATS/preadx0.sats"
+(* ****** ****** *)
+#staload
+"./../../SATS/staexp1.sats"
+#staload
+"./../../SATS/dynexp1.sats"
 (* ****** ****** *)
 #include
 "./../../DATS/xbasics.dats"
