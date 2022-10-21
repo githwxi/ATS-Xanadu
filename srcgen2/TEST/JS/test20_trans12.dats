@@ -148,6 +148,21 @@
 #include
 "./../../DATS/tread01_errmsg.dats"
 (* ****** ****** *)
+#include
+"./../../DATS/staexp2.dats"
+#include
+"./../../DATS/staexp2_print0.dats"
+(* ****** ****** *)
+#include
+"./../../DATS/dynexp2.dats"
+#include
+"./../../DATS/dynexp2_print0.dats"
+(* ****** ****** *)
+#include
+"./../../DATS/trans12.dats"
+#include
+"./../../DATS/trans12_myenv0.dats"
+(* ****** ****** *)
 //
 local
 //
@@ -207,6 +222,21 @@ end
 val (  ) =
 prerrln
 ("d0parsed_from_fpath(\"./mytest1.sats\") =\n", dpar)
+//
+(* ****** ****** *)
+//
+val
+dpar =
+d2parsed_from_trans(dpar)
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+  val out = g_stderr()
+in
+  d2parsed_fprint( out, dpar )
+end
 //
 (* ****** ****** *)
 //
