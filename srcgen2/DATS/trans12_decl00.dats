@@ -59,6 +59,8 @@ _(*TRANS12*) = "./trans12.dats"
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
+#staload "./../SATS/trans01.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
@@ -79,7 +81,7 @@ _(*TRANS12*) = "./trans12.dats"
 
 #implfun
 trans12_d1ecl
-( tenv,d1cl ) = let
+( env0,d1cl ) = let
 //
 (*
 val
@@ -101,16 +103,52 @@ in//let
 d2ecl(loc0, D2Cd1ecl(d1cl))
 end (*let*) // end of [D1Cd0ecl]
 //
+|
+D1Cabssort _ => f0_abssort(env0, d1cl)
+//
 |_(*otherwise*) =>
 let
 val loc0 = d1cl.lctn()
 in//let
-d2ecl_make_node(loc0, D2Cnone1(d1cl))
+  d2ecl_make_node(loc0, D2Cnone1(d1cl))
 end (*let*) // end of [_(*otherwise*)] // temp
 //
 end where
 {
-} (*where*) // end of [trans12_d1ecl(tenv,d1cl)]
+//
+fun
+f0_abssort
+( env0:
+! tr12env
+, d1cl: d1ecl): d2ecl =
+let
+//
+val
+loc0 = d1cl.lctn()
+val-
+D1Cabssort
+(tknd, tok1) = d1cl.node()
+//
+in//let
+//
+let
+val tid1 =
+  sortid_sym(tok1)
+val tabs =
+  t2abs_make_name(tid1)
+val s2tx =
+  S2TEXsrt(S2Tbas(T2Btabs(tabs)))
+//
+in
+d2ecl_make_node
+(loc0, D2Cabssort(tid1)) where
+{ val () =
+  tr12env_add0_sort(env0, tid1, s2tx) }
+end
+//
+end (*let*) // end of [f0_abssort(env0,d1cl)]
+//
+} (*where*) // end of [trans12_d1ecl(env0,d1cl)]
 
 (* ****** ****** *)
 

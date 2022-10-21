@@ -391,6 +391,17 @@ fun token2sstr: token -> string
 fun token2dstr: token -> string
 (* ****** ****** *)
 //
+fun gexpid_sym: token -> sym_t
+//
+(* ****** ****** *)
+//
+fun sortid_sym: token -> sym_t
+fun sargid_sym: token -> sym_t
+fun sexpid_sym: token -> sym_t
+fun dexpid_sym: token -> sym_t
+//
+(* ****** ****** *)
+//
 fun
 <x0:t0>
 <y0:t0>
