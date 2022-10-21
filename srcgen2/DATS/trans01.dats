@@ -45,6 +45,11 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload
+SYM = "./../SATS/xsymbol.sats"
+#staload
+LAM = "./../SATS/xlabel0.sats"
+(* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
@@ -92,6 +97,54 @@ foldl$fopr
 }
 //
 } (*where*) // en dof [token2sint(tok)]
+
+(* ****** ****** *)
+
+#implfun
+sortid_sym(tok) =
+(
+case-
+tok.node() of
+//
+(*
+| T_IDENT(nam) =>
+  $SYM.symbl_make_name(nam)
+*)
+//
+| T_IDALP(nam) =>
+  $SYM.symbl_make_name(nam)
+| T_IDSYM(nam) =>
+  $SYM.symbl_make_name(nam)
+//
+) (*case-*) // end of [sortid_sym(tok)]
+
+(* ****** ****** *)
+
+#implfun
+sexpid_sym(tok) =
+(
+case-
+tok.node() of
+//
+| T_OP2(tok) =>
+(
+case-
+tok.node() of
+| T_IDALP(nam) =>
+  $SYM.symbl_make_name(nam)
+| T_IDSYM(nam) =>
+  $SYM.symbl_make_name(nam)
+)
+//
+| T_IDENT(nam) =>
+  $SYM.symbl_make_name(nam)
+//
+| T_IDALP(nam) =>
+  $SYM.symbl_make_name(nam)
+| T_IDSYM(nam) =>
+  $SYM.symbl_make_name(nam)
+//
+) (*case-*) // end of [sexpid_sym(tok)]
 
 (* ****** ****** *)
 
