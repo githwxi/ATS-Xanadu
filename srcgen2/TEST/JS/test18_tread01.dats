@@ -148,13 +148,6 @@
 #include
 "./../../DATS/tread01_errmsg.dats"
 (* ****** ****** *)
-var the_err = 0
-(* ****** ****** *)
-#define
-p1_fun_test p1_fun_test_fpath
-#define
-pq_fun_test pq_fun_test_fpath
-(* ****** ****** *)
 //
 local
 //
@@ -213,11 +206,11 @@ end
 //
 val (  ) =
 prerrln
-("dparsed_from_fpath(\"./mytest1.dats\") =\n", dpar)
+("d0parsed_from_fpath(\"./mytest1.dats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
-endloc (*local*) // end-of-[local(p1_fun_test)]
+endloc (*local*) // end-of-[local]
 //
 (* ****** ****** *)
 

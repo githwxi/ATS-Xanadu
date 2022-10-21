@@ -137,13 +137,6 @@
 #include
 "./../../DATS/trans01_decl00.dats"
 (* ****** ****** *)
-var the_err = 0
-(* ****** ****** *)
-#define
-p1_fun_test p1_fun_test_fpath
-#define
-pq_fun_test pq_fun_test_fpath
-(* ****** ****** *)
 //
 local
 //
@@ -191,11 +184,11 @@ val dpar = d1parsed_from_trans(dpar)
 //
 val (  ) =
 prerrln
-("dparsed_from_fpath(\"./mytest1.sats\") =\n", dpar)
+("d0parsed_from_fpath(\"./mytest1.sats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
-endloc (*local*) // end-of-[local(p1_fun_test)]
+endloc (*local*) // end-of-[local]
 //
 (* ****** ****** *)
 
