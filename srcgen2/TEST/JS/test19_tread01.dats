@@ -179,7 +179,7 @@ in//local
 //
 val dpar =
 d0parsed_from_fpath
-(0(*dyn*), "./basics0.sats")
+(0(*sta*), "./basics0.sats")
 //
 val
 dpar = d0parsed_preadx0(dpar)
