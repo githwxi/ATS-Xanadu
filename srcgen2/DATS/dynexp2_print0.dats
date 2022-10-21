@@ -351,4 +351,31 @@ end (*let*) // end of [d2ecl_fprint(out, dcl0)]
 
 (* ****** ****** *)
 
+#implfun
+d2parsed_fprint
+  (out, dpar) = let
+//
+val
+stadyn =
+d2parsed_get_stadyn(dpar)
+val
+nerror =
+d2parsed_get_nerror(dpar)
+val
+source =
+d2parsed_get_source(dpar)
+val
+parsed =
+d2parsed_get_parsed(dpar)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print("D2PARSED(");
+print(stadyn,";",nerror,";",source,";",parsed,")"))
+end(*let*)//end-of-[d2parsed_fprint(out,dpar)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_dynexp2_print0.dats] *)

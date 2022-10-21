@@ -172,6 +172,12 @@
 "./../../DATS/trans12.dats"
 #include
 "./../../DATS/trans12_myenv0.dats"
+#include
+"./../../DATS/trans12_staexp.dats"
+#include
+"./../../DATS/trans12_dynexp.dats"
+#include
+"./../../DATS/trans12_decl00.dats"
 (* ****** ****** *)
 //
 local
