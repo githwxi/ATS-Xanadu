@@ -157,6 +157,24 @@ tr12env_free_top(tr12env): void
 (* ****** ****** *)
 //
 fun
+tr12env_add0_sort
+( env:
+! tr12env
+, key: sym_t, itm: s2tex): void
+fun
+tr12env_add0_sexp
+( env:
+! tr12env
+, key: sym_t, itm: s2itm): void
+fun
+tr12env_add0_dexp
+( env:
+! tr12env
+, key: sym_t, itm: d2itm): void
+//
+(* ****** ****** *)
+//
+fun
 tr12env_find_sort
 ( env:
 ! tr12env, sym: sym_t): s2texopt_vt
@@ -174,19 +192,19 @@ tr12env_find_dexp
 (* ****** ****** *)
 //
 fun
-tr12env_sort_qfind
+tr12env_qfind_sort
 ( env:
 ! tr12env
 , qua:token,sym:sym_t): s2texopt_vt
 //
 fun
-tr12env_sexp_qfind
+tr12env_qfind_sexp
 ( env:
 ! tr12env
 , qua:token,sym:sym_t): s2itmopt_vt
 //
 fun
-tr12env_dexp_qfind
+tr12env_qfind_dexp
 ( env:
 ! tr12env
 , qua:token,sym:sym_t): d2itmopt_vt

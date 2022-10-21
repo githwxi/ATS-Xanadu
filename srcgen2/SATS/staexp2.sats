@@ -200,6 +200,9 @@ where
 } (* where *) // end of [ datatype(sort2)]
 //
 (* ****** ****** *)
+fun
+t2abs_make_name(sym_t): t2abs
+(* ****** ****** *)
 //
 fun
 t2abs_fprint:(FILR,t2abs)->void
