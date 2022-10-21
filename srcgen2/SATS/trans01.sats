@@ -340,6 +340,12 @@ d1parsed_from_trans
 (* ****** ****** *)
 //
 fun
+tr01env_make_nil(): tr01env
+fun
+tr01env_free_top(tr01env): void
+//
+(* ****** ****** *)
+fun
 tr01env_search_opt
 ( env:
 ! tr01env, key: sym_t): fixtyopt_vt
@@ -351,11 +357,6 @@ fun
 tr01env_insmix_any
 ( env:
 ! tr01env, key: sym_t, itm: fixty): void
-//
-fun
-tr01env_make_nil((*void*)): tr01env
-fun
-tr01env_free_top(env: ~tr01env): void
 //
 fun
 tr01env_poplet0( env: !tr01env ): void
@@ -673,10 +674,6 @@ trans01_wd0eclseq:
 #typedef d0eclistopt = optn(d0eclist)
 #typedef d1eclistopt = optn(d1eclist)
 //
-fun
-trans01_d0eclistopt:
-  (!tr01env, d0eclistopt)->d1eclistopt
-//
 (* ****** ****** *)
 //
 fun
@@ -738,5 +735,10 @@ trans01_d0cstdclist:
   (!tr01env, d0cstdclist)->d1cstdclist
 //
 (* ****** ****** *)
-
+//
+fun
+trans01_d0eclistopt:
+(env: !tr01env, opt: d0eclistopt)->d1eclistopt
+//
+(* ****** ****** *)
 (* end of [ATS3/XATSOPT_srcgen2_trans01.sats] *)

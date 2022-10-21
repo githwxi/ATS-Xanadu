@@ -150,6 +150,11 @@ d2parsed_from_trans
 (  dpar: d1parsed  ): d2parsed
 //
 (* ****** ****** *)
+fun
+tr12env_make_nil(): tr12env
+fun
+tr12env_free_top(tr12env): void
+(* ****** ****** *)
 //
 fun
 tr12env_find_sort
@@ -329,6 +334,14 @@ trans12_d1expopt:(!tr12env, d1expopt)->d2expopt
 //
 fun
 trans12_d1eclist:(!tr12env, d1eclist)->d2eclist
+//
+(* ****** ****** *)
+//
+#typedef d1eclistopt = optn(d1eclist)
+#typedef d2eclistopt = optn(d2eclist)
+//
+fun
+trans12_d1eclistopt:(!tr12env, d1eclistopt)->d2eclistopt
 //
 (* ****** ****** *)
 

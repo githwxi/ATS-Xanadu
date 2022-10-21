@@ -80,4 +80,32 @@ map$fopr_e1nv<x0><y0>(x0, e1) = fopr(e1, x0)
 
 (* ****** ****** *)
 
+#implfun
+d2parsed_from_trans
+  (dpar) =
+let
+val stadyn =
+d1parsed_get_stadyn(dpar)
+val nerror =
+d1parsed_get_nerror(dpar)
+val source =
+d1parsed_get_source(dpar)
+val parsed =
+d1parsed_get_parsed(dpar)
+//
+val env0 = tr12env_make_nil()
+//
+val parsed =
+trans12_d1eclistopt(env0, parsed)
+//
+in//let
+let
+val (  ) = tr12env_free_top(env0)
+in//let
+d2parsed(stadyn,nerror,source,parsed)
+end
+end (*let*) // end of [d1parsed_trans12(dpar)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_trans12.dats] *)
