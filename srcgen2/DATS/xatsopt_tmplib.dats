@@ -46,9 +46,9 @@ ATS_PACKNAME
 #staload "./../SATS/xstamp0.sats"
 #staload "./../SATS/xsymbol.sats"
 #staload "./../SATS/xlabel0.sats"
+#staload "./../SATS/xsymmap.sats"
 (* ****** ****** *)
 #staload "./../SATS/filpath.sats"
-(* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
@@ -183,6 +183,26 @@ l0abl_fprint(g_print$out<>(), lab)
 #impltmp
 g_print<s0ymb>(sym) =
 s0ymb_fprint(g_print$out<>(), sym)
+(* ****** ****** *)
+//
+(*
+HX-2022-10-23:
+xsymmap: topmap, stkmap
+*)
+#impltmp
+{x0:t0}
+gl_print1
+<topmap(x0)>(map) =
+topmap_fprint<x0>
+(gl_print$out< >( (*void*) ), map)
+//
+#impltmp
+{x0:t0}
+gl_print1
+<stkmap(x0)>(map) =
+stkmap_fprint<x0>
+(gl_print$out< >( (*void*) ), map)
+//
 (* ****** ****** *)
 
 (*
@@ -930,8 +950,8 @@ g_print<s2tex>(stx) =
 s2tex_fprint(g_print$out<>(), stx)
 (* ****** ****** *)
 #impltmp
-g_print<s2itm>(itm) =
-s2itm_fprint(g_print$out<>(), itm)
+g_print<s2itm>(s2i) =
+s2itm_fprint(g_print$out<>(), s2i)
 (* ****** ****** *)
 //
 #impltmp

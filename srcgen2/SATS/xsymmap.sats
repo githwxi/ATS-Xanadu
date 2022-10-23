@@ -72,9 +72,20 @@ stkmap_topq
 {itm:tbox}(!stkmap(itm)): bool
 (* ****** ****** *)
 fun
-topmap_make_nil{itm:tbox}(): topmap(itm)
+topmap_make_nil
+{itm:tbox}( (*void*) ): topmap(itm)
 fun
-stkmap_make_nil{itm:tbox}(): stkmap(itm)
+stkmap_make_nil
+{itm:tbox}( (*void*) ): stkmap(itm)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+topmap_fprint(FILR,topmap(x0)):void
+fun
+<x0:t0>
+stkmap_fprint(FILR,stkmap(x0)):void
+//
 (* ****** ****** *)
 //
 fun
