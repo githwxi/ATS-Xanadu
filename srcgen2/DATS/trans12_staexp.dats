@@ -68,6 +68,11 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with sort1_get_lctn
 #symload node with sort1_get_node
 (* ****** ****** *)
+#symload lctn with t1arg_get_lctn
+#symload node with t1arg_get_node
+#symload lctn with t1mag_get_lctn
+#symload node with t1mag_get_node
+(* ****** ****** *)
 #symload lctn with s1exp_get_lctn
 #symload node with s1exp_get_node
 (* ****** ****** *)
@@ -312,6 +317,51 @@ end (*let*) // end of [f0_list(env0,s1t0)]
 (* ****** ****** *)
 //
 } (*where*) // end of [trans12_sort1(env0,s1t0)]
+
+(* ****** ****** *)
+
+#implfun
+trans12_t1arg
+( env0,t1a0 ) =
+(
+case+
+t1a0.node() of
+|
+T1ARGsome
+(s1t1, topt) =>
+trans12_sort1(env0, s1t1)) where
+{
+//
+(*
+val
+loc0 = t1a0.lctn()
+val () =
+prerrln("trans12_t1arg: t1a0 = ", t1a0)
+*)
+//
+} (*where*) // end of [trans12_t1arg(env0,t1a0)
+
+(* ****** ****** *)
+
+#implfun
+trans12_t1mag
+( env0,t1ma ) =
+(
+case+
+t1ma.node() of
+|
+T1MAGlist(t1as) =>
+trans12_t1arglst(env0, t1as)) where
+{
+//
+(*
+val
+loc0 = t1ma.lctn()
+val () =
+prerrln("trans12_t1mag: t1ma = ", t1ma)
+*)
+//
+} (*where*) // end of [trans12_t1mag(env0,t1ma)
 
 (* ****** ****** *)
 

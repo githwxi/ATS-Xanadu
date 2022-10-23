@@ -4,6 +4,9 @@
 #abssort tabs1
 #abssort tabs3
 (* ****** ****** *)
+#stacst0
+myadd(int, int): int
+(* ****** ****** *)
 #sortdef mysrt = tabs1
 (* ****** ****** *)
 ////
