@@ -1,5 +1,10 @@
 (* ****** ****** *)
-#abssort tabs
+#abssort tabs1
+#abssort tabs2
+#abssort tabs1
+#abssort tabs3
+(* ****** ****** *)
+#sortdef mysrt = tabs1
 (* ****** ****** *)
 ////
 (* ****** ****** *)

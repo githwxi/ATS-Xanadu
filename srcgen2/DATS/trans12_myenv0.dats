@@ -51,6 +51,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
+#staload "./../SATS/xglobal.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
@@ -293,6 +295,11 @@ TR12ENV
 //
 val () =
 sortenv_insert_any(tenv, k0, x0)
+//
+val () =
+the_sortenv_toplst_add0( k0, x0 )
+val () =
+the_sortenv_toplst_prerr((*void*))
 //
 in//let
 end where

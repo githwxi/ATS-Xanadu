@@ -72,6 +72,10 @@ LEX = "./lexing0.sats"
 #staload D2E = "./dynexp2.sats"
 (* ****** ****** *)
 #typedef sort1 = $S1E.sort1
+(* ****** ****** *)
+#typedef t1arg = $S1E.t1arg
+#typedef t1mag = $S1E.t1mag
+(* ****** ****** *)
 #typedef s1exp = $S1E.s1exp
 #typedef l1s1e = $S1E.l1s1e
 (* ****** ****** *)
@@ -100,8 +104,12 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef d2ecl = $D2E.d2ecl
 (* ****** ****** *)
-//
 #typedef sort1lst = $S1E.sort1lst
+(* ****** ****** *)
+#typedef t1arglst = $S1E.t1arglst
+#typedef t1maglst = $S1E.t1maglst
+(* ****** ****** *)
+//
 #typedef s1explst = $S1E.s1explst
 #typedef l1s1elst = $S1E.l1s1elst
 #typedef sort2lst = $S2E.sort2lst
@@ -136,6 +144,8 @@ LEX = "./lexing0.sats"
 #typedef d1parsed = $D1E.d1parsed
 #typedef d2parsed = $D2E.d2parsed
 //
+(* ****** ****** *)
+#typedef sort2lstlst = list(sort2lst)
 (* ****** ****** *)
 #absvtbx tr12env_vtbx
 #vwtpdef tr12env = tr12env_vtbx
@@ -247,6 +257,16 @@ optn_trans12_fnp
 fun
 trans12_sort1:
 (!tr12env, sort1)->sort2
+//
+(* ****** ****** *)
+fun
+trans12_t1arg:
+(!tr12env, t1arg)->sort2
+fun
+trans12_t1mag:
+(!tr12env, t1mag)->sort2lst
+(* ****** ****** *)
+//
 fun
 trans12_s1exp:
 (!tr12env, s1exp)->s2exp
@@ -258,38 +278,50 @@ trans12_l1s1e:
 //
 fun
 trans12_s1exp_sort
-( tenv:
+( env0:
 ! tr12env
-, s1e1: s1exp, s2t2: sort2 ) : s2exp
+, s1e1: s1exp,s2t2: sort2): s2exp
 //
 (* ****** ****** *)
 //
 fun
 trans12_sort1lst
-( tenv:
+( env0:
 ! tr12env, s1ts: sort1lst): sort2lst
+//
+(* ****** ****** *)
+fun
+trans12_t1arg
+( env0:
+! tr12env, t1as: t1arglst): sort2lst
+fun
+trans12_t1mag
+( env0:
+! tr12env, tmas: t1maglst): sort2lstlst
+(* ****** ****** *)
+//
 fun
 trans12_s1explst
-( tenv:
+( env0:
 ! tr12env, s1es: s1explst): s2explst
 //
 (* ****** ****** *)
 fun
 trans12_s1explst_impr
-( tenv:
+( env0:
 ! tr12env, s1es: s1explst): s2explst
 fun
 trans12_s1explst_prgm
-( tenv:
+( env0:
 ! tr12env, s1es: s1explst): s2explst
 (* ****** ****** *)
 fun
 trans12_l1s1elst_impr
-( tenv:
+( env0:
 ! tr12env, lses: l1s1elst): l2s2elst
 fun
 trans12_l1s1elst_prgm
-( tenv:
+( env0:
 ! tr12env, lses: l1s1elst): l2s2elst
 (* ****** ****** *)
 fun
@@ -303,24 +335,24 @@ trans12_s1explst_sortlst
 //
 fun
 trans12_d1pat
-(tenv: !tr12env, d1p0: d1pat): d2pat
+(env0: !tr12env, d1p0: d1pat): d2pat
 fun
 trans12_l1d1p
-(tenv: !tr12env, ld1p: l1d1p): l2d2p
+(env0: !tr12env, ld1p: l1d1p): l2d2p
 //
 (* ****** ****** *)
 //
 fun
 trans12_d1exp
-(tenv: !tr12env, d1e0: d1exp): d2exp
+(env0: !tr12env, d1e0: d1exp): d2exp
 fun
 trans12_l1d1e
-(tenv: !tr12env, ld1e: l1d1e): l2d2e
+(env0: !tr12env, ld1e: l1d1e): l2d2e
 //
 (* ****** ****** *)
 fun
 trans12_d1expseq
-( tenv:
+( env0:
 ! tr12env
 , loc0: loc_t, d1es: d1explst): d2exp
 (* ****** ****** *)
