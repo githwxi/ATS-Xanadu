@@ -894,9 +894,11 @@ d2lab_fprint(g_print$out<>(), lab)
 #impltmp
 g_print<t2abs>(t2a) =
 t2abs_fprint(g_print$out<>(), t2a)
+//
 #impltmp
 g_print<t2bas>(t2b) =
 t2bas_fprint(g_print$out<>(), t2b)
+//
 #impltmp
 g_print<t2dat>(t2d) =
 t2dat_fprint(g_print$out<>(), t2d)

@@ -58,6 +58,18 @@ _(*?*) = "./lexing0_print0.dats"
 (* ****** ****** *)
 
 #implfun
+t2abs_fprint
+(out, tabs) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+  print(t2abs_get_name(tabs))
+end (*let*)//end of [t2abs_fprint(out, tabs)]
+
+(* ****** ****** *)
+
+#implfun
 s2cst_fprint
 (out, s2c0) =
 let
@@ -66,7 +78,7 @@ g_print$out<>() = out
 in//let
   print(s2cst_get_name(s2c0))
 ; print(": ", s2cst_get_sort(s2c0))
-end (*let*) // end of [s2cst_fprint(out, s2c0)]
+end (*let*)//end of [s2cst_fprint(out, s2c0)]
 
 (* ****** ****** *)
 

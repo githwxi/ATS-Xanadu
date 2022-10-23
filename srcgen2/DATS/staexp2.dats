@@ -105,6 +105,55 @@ the_s2xtv_stamp_new
 endloc // end of [the_s2xtv_stamp_new]
 //
 (* ****** ****** *)
+
+local
+//
+datatype t2abs =
+T2ABS of
+( sym_t
+, stamp // unicity
+) (* datatype(t2abs) *)
+//
+#absimpl t2abs_tbox = t2abs
+//
+in (* in-of-local *)
+//
+#implfun
+t2abs_make_name
+  (sym) =
+(
+T2ABS(sym, tmp)) where
+{
+val tmp = the_t2abs_stamp_new()
+} (*where*)//end-of-[t2abs_make_name]
+//
+(* ****** ****** *)
+//
+#implfun
+t2abs_get_name
+  (t2a) = let
+val
+T2ABS
+( sym
+, tmp (*unicity*) ) = t2a in sym
+end (*let*) // end of [t2abs_get_name]
+//
+(* ****** ****** *)
+//
+#implfun
+t2abs_get_stmp
+  (t2a) = let
+val
+T2ABS
+( sym
+, tmp (*unicity*) ) = t2a in tmp
+end (*let*) // end of [t2abs_get_stmp]
+//
+(* ****** ****** *)
+
+end (*local*) // end of [local(t2abs)]
+
+(* ****** ****** *)
 //
 #implfun
 sort2_none0() = S2Tnone0()
