@@ -95,10 +95,35 @@ val+
 } (*where*)//end-of(sortenv_free_top(tenv))
 
 (* ****** ****** *)
+
+fun
+sortenv_search_opt
+( tenv:
+  sortenv, k0: key) = let
+//
+val+
+SORTENV
+(topmap, stkmap) = tenv
+//
+val opt =
+stkmap_search_opt(stkmap, k0)
+//
+in//let
+//
+case+ opt of
+| !
+optn_vt_cons _ => opt
+| ~
+optn_vt_nil( ) => topmap_search_opt(topmap,k0)
+//
+end (*let*)//end-of-[sortenv_search_opt(tenv,k0)]
+
+(* ****** ****** *)
 //
 fun
 sortenv_insert_any
-( tenv: sortenv
+( tenv
+: sortenv
 , k0: key, x0: itm) = let
 //
 val+
@@ -158,10 +183,35 @@ val+
 } (*where*)//end-of(sexpenv_free_top(senv))
 
 (* ****** ****** *)
+
+fun
+sexpenv_search_opt
+( senv:
+  sexpenv, k0: key) = let
+//
+val+
+SEXPENV
+(topmap, stkmap) = senv
+//
+val opt =
+stkmap_search_opt(stkmap, k0)
+//
+in//let
+//
+case+ opt of
+| !
+optn_vt_cons _ => opt
+| ~
+optn_vt_nil( ) => topmap_search_opt(topmap,k0)
+//
+end (*let*)//end-of-[sexpenv_search_opt(senv,k0)]
+
+(* ****** ****** *)
 //
 fun
 sexpenv_insert_any
-( senv: sexpenv
+( senv
+: sexpenv
 , k0: key, x0: itm) = let
 //
 val+
@@ -219,10 +269,35 @@ val+
 } (*where*)//end-of(dexpenv_free_top(denv))
 
 (* ****** ****** *)
+
+fun
+dexpenv_search_opt
+( denv:
+  dexpenv, k0: key) = let
+//
+val+
+DEXPENV
+(topmap, stkmap) = denv
+//
+val opt =
+stkmap_search_opt(stkmap, k0)
+//
+in//let
+//
+case+ opt of
+| !
+optn_vt_cons _ => opt
+| ~
+optn_vt_nil( ) => topmap_search_opt(topmap,k0)
+//
+end (*let*)//end-of-[dexpenv_search_opt(denv,k0)]
+
+(* ****** ****** *)
 //
 fun
 dexpenv_insert_any
-( denv: dexpenv
+( denv
+: dexpenv
 , k0: key, x0: itm) = let
 //
 val+
@@ -355,6 +430,45 @@ end where
   val () =
   prerrln("tr12env_add0_d2itm: x0 = ", x0)
 } (*where*)//end-[tr12env_add0_d2itm(env0,k0,x0)]
+
+(* ****** ****** *)
+
+#implfun
+tr12env_find_s2tex
+  ( env0, k0 ) =
+(
+sortenv_search_opt(tenv, k0)) where
+{
+//
+  val+TR12ENV(tenv, senv, denv) = env0
+//
+} (*where*) // end of [tr12env_find_s2tex(env0,k0)]
+
+(* ****** ****** *)
+
+#implfun
+tr12env_find_s2itm
+  ( env0, k0 ) =
+(
+sexpenv_search_opt(senv, k0)) where
+{
+//
+  val+TR12ENV(tenv, senv, denv) = env0
+//
+} (*where*) // end of [tr12env_find_s2itm(env0,k0)]
+
+(* ****** ****** *)
+
+#implfun
+tr12env_find_d2itm
+  ( env0, k0 ) =
+(
+dexpenv_search_opt(denv, k0)) where
+{
+//
+  val+TR12ENV(tenv, senv, denv) = env0
+//
+} (*where*) // end of [tr12env_find_d2itm(env0,k0)]
 
 (* ****** ****** *)
 
