@@ -8,14 +8,17 @@
 (* ****** ****** *)
 #staload
 "./../../SATS/locinfo.sats"
+(* ****** ****** *)
 #staload
 "./../../SATS/lexbuf0.sats"
 #staload
 "./../../SATS/lexing0.sats"
+(* ****** ****** *)
 #staload
 "./../../SATS/staexp0.sats"
 #staload
 "./../../SATS/dynexp0.sats"
+(* ****** ****** *)
 #staload
 "./../../SATS/parsing.sats"
 #staload
@@ -59,6 +62,9 @@
 "./../../DATS/locinfo.dats"
 #include
 "./../../DATS/locinfo_print0.dats"
+(* ****** ****** *)
+#include
+"./../../DATS/xglobal.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/xsymmap_topmap.dats"

@@ -90,15 +90,21 @@ the_dexpenv_toplst_add0(sym_t, d2itm): void
 fun
 the_sortenv_toplst_print(): void
 fun
+the_sortenv_toplst_prerr(): void
+fun
 the_sortenv_toplst_fprint( out:FILR ): void
 (* ****** ****** *)
 fun
 the_sexpenv_toplst_print(): void
 fun
+the_sexpenv_toplst_prerr(): void
+fun
 the_sexpenv_toplst_fprint( out:FILR ): void
 (* ****** ****** *)
 fun
 the_dexpenv_toplst_print(): void
+fun
+the_dexpenv_toplst_prerr(): void
 fun
 the_dexpenv_toplst_fprint( out:FILR ): void
 (* ****** ****** *)

@@ -105,6 +105,8 @@ end (*let*) // end of [D1Cd0ecl]
 //
 |
 D1Cabssort _ => f0_abssort(env0, d1cl)
+|
+D1Cstacst0 _ => f0_stacst0(env0, d1cl)
 //
 |_(*otherwise*) =>
 let
@@ -128,6 +130,40 @@ loc0 = d1cl.lctn()
 val-
 D1Cabssort
 (tknd, tok1) = d1cl.node()
+//
+in//let
+//
+let
+val tid1 =
+  sortid_sym(tok1)
+val tabs =
+  t2abs_make_name(tid1)
+val s2tx =
+  S2TEXsrt(S2Tbas(T2Btabs(tabs)))
+//
+in
+d2ecl_make_node
+(loc0, D2Cabssort(tid1)) where
+{ val () =
+  tr12env_add0_sort(env0, tid1, s2tx) }
+end
+//
+end (*let*) // end of [f0_abssort(env0,d1cl)]
+//
+fun
+f0_stacst0
+( env0:
+! tr12env
+, d1cl: d1ecl): d2ecl =
+let
+//
+val
+loc0 = d1cl.lctn()
+val-
+D1Cstacst0
+( tknd
+, tok1
+, tmas, tres) = d1cl.node()
 //
 in//let
 //

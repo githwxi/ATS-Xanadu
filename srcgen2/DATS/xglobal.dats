@@ -41,11 +41,10 @@ Authoremail: gmhwxiATgmailDOTcom
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
-#staload
-S2E = "./../SATS/staexp2.sats"
+#staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
-#staload
-D2E = "./../SATS/dynexp2.sats"
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"
 (* ****** ****** *)
@@ -57,17 +56,21 @@ the_list =
 a0ref_make_1val(list_nil())
 
 in//local
-
+//
+#implfun
+the_sortenv_toplst
+  ((*void*)) = a0ref_get(the_list)
+//
 #implfun
 the_sortenv_toplst_add0
-  (k0, x0) =
+  ( k0, x0 ) =
 let
 val kxs = a0ref_get(the_list)
 in
 a0ref_set
 (the_list, list_cons(@(k0, x0), kxs))
 end (*let*)//end-[the_sortenv_toplst_add0]
-
+//
 endloc // end of [local(the_sortenv_topmap)]
 
 (* ****** ****** *)
@@ -79,17 +82,21 @@ the_list =
 a0ref_make_1val(list_nil())
 
 in//local
-
+//
+#implfun
+the_sexpenv_toplst
+  ((*void*)) = a0ref_get(the_list)
+//
 #implfun
 the_sexpenv_toplst_add0
-  (k0, x0) =
+  ( k0, x0 ) =
 let
 val kxs = a0ref_get(the_list)
 in
 a0ref_set
 (the_list, list_cons(@(k0, x0), kxs))
 end (*let*)//end-[the_sexpenv_toplst_add0]
-
+//
 endloc // end of [local(the_sexpenv_topmap)]
 
 (* ****** ****** *)
@@ -101,31 +108,75 @@ the_list =
 a0ref_make_1val(list_nil())
 
 in//local
-
+//
+#implfun
+the_dexpenv_toplst
+  ((*void*)) = a0ref_get(the_list)
+//
 #implfun
 the_dexpenv_toplst_add0
-  (k0, x0) =
+  ( k0, x0 ) =
 let
 val kxs = a0ref_get(the_list)
 in
 a0ref_set
 (the_list, list_cons(@(k0, x0), kxs))
 end (*let*)//end-[the_dexpenv_toplst_add0]
-
+//
 endloc // end of [local(the_dexpenv_topmap)]
 
 (* ****** ****** *)
-
 #implfun
 the_sortenv_toplst_print() =
 the_sortenv_toplst_fprint(g_stdout())
 #implfun
+the_sortenv_toplst_prerr() =
+the_sortenv_toplst_fprint(g_stderr())
+(* ****** ****** *)
+#implfun
 the_sexpenv_toplst_print() =
 the_sexpenv_toplst_fprint(g_stdout())
 #implfun
+the_sexpenv_toplst_prerr() =
+the_sexpenv_toplst_fprint(g_stderr())
+(* ****** ****** *)
+#implfun
+the_dexpenv_toplst_prerr() =
+the_dexpenv_toplst_fprint(g_stderr())
+#implfun
 the_dexpenv_toplst_print() =
 the_dexpenv_toplst_fprint(g_stdout())
-
+(* ****** ****** *)
+//
+#implfun
+the_sortenv_toplst_fprint
+  (out) =
+let
+#impltmp
+g_print$out<>() = out
+val kxs = the_sortenv_toplst()
+in//let
+(
+  loop(kxs)) where
+{
+fun loop
+(kxs: list@(sym_t, s2tex)): void =
+(
+case+ kxs of
+|
+list_nil() => ()
+|
+list_cons(kx1, kxs) =>
+(
+  loop(kxs)) where
+{
+  val () = println
+  ("the_sortenv_toplst:", "(", kx1.0, " -> ", kx1.1, ")")
+}
+)
+} (*where*)//end-[loop(kxs)]
+end (*let*)//end-[the_sortenv_toplst_fprint]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xglobal.dats] *)
