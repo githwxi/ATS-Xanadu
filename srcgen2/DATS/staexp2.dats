@@ -45,6 +45,8 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
 #staload "./../SATS/xstamp0.sats"
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
@@ -180,6 +182,61 @@ S2CST of
 //
 in//local
 
+(* ****** ****** *)
+
+#implfun
+s2cst_make_idst
+(loc, sym, s2t) =
+(
+S2CST
+( loc
+, sym, s2t, tmp)) where
+{
+  val tmp =
+  the_s2cst_stamp_new((*void*))
+} (*where*) // end of [s2cst_make_idst(...)]
+
+(* ****** ****** *)
+
+#implfun
+s2cst_get_lctn(s2c) =
+let
+val
+S2CST
+( loc
+, sym
+, s2t
+, tmp (*unicity*) ) = s2c in loc
+end (*let*) // end of [s2cst_get_lctn]
+
+(* ****** ****** *)
+
+#implfun
+s2cst_get_name(s2c) =
+let
+val
+S2CST
+( loc
+, sym
+, s2t
+, tmp (*unicity*) ) = s2c in sym
+end (*let*) // end of [s2cst_get_name]
+
+(* ****** ****** *)
+
+#implfun
+s2cst_get_sort(s2c) =
+let
+val
+S2CST
+( loc
+, sym
+, s2t
+, tmp (*unicity*) ) = s2c in s2t
+end (*let*) // end of [s2cst_get_sort]
+
+(* ****** ****** *)
+
 #implfun
 s2cst_get_stmp(s2c) =
 let
@@ -190,6 +247,8 @@ S2CST
 , s2t
 , tmp (*unicity*) ) = s2c in tmp
 end (*let*) // end of [s2cst_get_stmp]
+
+(* ****** ****** *)
 
 endloc (*local*) // end of [local(s2cst)]
 

@@ -204,7 +204,7 @@ val s2t2 =
   trans12_sort1(env0, tres) }
 //
 val s2c1 =
-  s2cst_make_idst(sid1, s2t2)
+s2cst_make_idst(loc0, sid1, s2t2)
 //
 in
 //
