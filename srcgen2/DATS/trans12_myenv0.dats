@@ -285,8 +285,8 @@ val+
 (* ****** ****** *)
 
 #implfun
-tr12env_add0_sort
-( env0, k0 , x0 ) =
+tr12env_add0_s2tex
+( env0 , k0 , x0 ) =
 let
 //
 val+
@@ -305,16 +305,16 @@ in//let
 end where
 {
   val () =
-  prerrln("tr12env_add0_sort: k0 = ", k0)
+  prerrln("tr12env_add0_s2tex: k0 = ", k0)
   val () =
-  prerrln("tr12env_add0_sort: x0 = ", x0)
-} (*where*)//end-[tr12env_add0_sort(env0, k0, x0)]
+  prerrln("tr12env_add0_s2tex: x0 = ", x0)
+} (*where*)//end-[tr12env_add0_s2tex(env0,k0,x0)]
 
 (* ****** ****** *)
 
 #implfun
-tr12env_add0_sexp
-( env0, k0 , x0 ) =
+tr12env_add0_s2itm
+( env0 , k0 , x0 ) =
 let
 //
 val+
@@ -327,16 +327,16 @@ sexpenv_insert_any(senv, k0, x0)
 in//let
 end where
 {
-  val () =
-  prerrln("tr12env_add0_sexp: k0 = ", k0)
-  val () =
-  prerrln("tr12env_add0_sexp: x0 = ", x0)
-} (*where*)//end-[tr12env_add0_sexp(env0, k0, x0)]
+val () =
+prerrln("tr12env_add0_s2itm: k0 = ", k0)
+val () =
+prerrln("tr12env_add0_s2itm: x0 = ", x0)
+} (*where*)//end-[tr12env_add0_s2itm(env0,k0,x0)]
 
 (* ****** ****** *)
 
 #implfun
-tr12env_add0_dexp
+tr12env_add0_d2itm
 ( env0, k0 , x0 ) =
 let
 //
@@ -351,14 +351,58 @@ in//let
 end where
 {
   val () =
-  prerrln("tr12env_add0_dexp: k0 = ", k0)
+  prerrln("tr12env_add0_d2itm: k0 = ", k0)
   val () =
-  prerrln("tr12env_add0_dexp: x0 = ", x0)
-} (*where*)//end-[tr12env_add0_dexp(env0, k0, x0)]
+  prerrln("tr12env_add0_d2itm: x0 = ", x0)
+} (*where*)//end-[tr12env_add0_d2itm(env0,k0,x0)]
 
 (* ****** ****** *)
 
 endloc (*local*) // end of [ local(tr12env) ]
+
+(* ****** ****** *)
+
+#implfun
+tr12env_add0_s2cst_all
+  (env0, s2c0) =
+let
+val sym0 = s2c0.name()
+val sopt =
+tr12env_find_s2itm(env0, sym0)
+in//let
+//
+case+ sopt of
+| ~
+optn_vt_nil() =>
+tr12env_add0_s2itm
+(env0, sym0, sitm) where
+{
+val
+sitm = S2ITMcst(list_sing(s2c0))
+}
+| ~
+optn_vt_cons(sitm) =>
+(
+case+ sitm of
+|
+S2ITMcst(s2cs) =>
+let
+val
+sitm =
+S2ITMcst
+(list_cons(s2c0, s2cs)) in
+tr12env_add0_s2itm(env0, sym0, sitm)
+end//let
+| _(*non-S2ITMcst*) =>
+let
+val
+sitm =
+S2ITMcst(list_sing(s2c0)) in
+tr12env_add0_s2itm(env0, sym0, sitm)
+end//let
+) (*case+*)//end-of-[optn_vt_cons(...)]
+//
+end (*let*)//end[tr12env_add0_s2cst_all(env0,s2c0)]
 
 (* ****** ****** *)
 

@@ -167,17 +167,17 @@ tr12env_free_top(tr12env): void
 (* ****** ****** *)
 //
 fun
-tr12env_add0_sort
+tr12env_add0_s2tex
 ( env:
 ! tr12env
 , key: sym_t, itm: s2tex): void
 fun
-tr12env_add0_sexp
+tr12env_add0_s2itm
 ( env:
 ! tr12env
 , key: sym_t, itm: s2itm): void
 fun
-tr12env_add0_dexp
+tr12env_add0_d2itm
 ( env:
 ! tr12env
 , key: sym_t, itm: d2itm): void
@@ -185,36 +185,36 @@ tr12env_add0_dexp
 (* ****** ****** *)
 //
 fun
-tr12env_find_sort
+tr12env_find_s2tex
 ( env:
 ! tr12env, sym: sym_t): s2texopt_vt
 //
 fun
-tr12env_find_sexp
+tr12env_find_s2itm
 ( env:
 ! tr12env, sym: sym_t): s2itmopt_vt
 //
 fun
-tr12env_find_dexp
+tr12env_find_d2itm
 ( env:
 ! tr12env, sym: sym_t): d2itmopt_vt
 //
 (* ****** ****** *)
 //
 fun
-tr12env_qfind_sort
+tr12env_qfind_s2tex
 ( env:
 ! tr12env
 , qua:token,sym:sym_t): s2texopt_vt
 //
 fun
-tr12env_qfind_sexp
+tr12env_qfind_s2itm
 ( env:
 ! tr12env
 , qua:token,sym:sym_t): s2itmopt_vt
 //
 fun
-tr12env_qfind_dexp
+tr12env_qfind_d2itm
 ( env:
 ! tr12env
 , qua:token,sym:sym_t): d2itmopt_vt
@@ -233,6 +233,10 @@ tr12env_pshloc2(env: !tr12env): void
 fun
 tr12env_locjoin(env: !tr12env): void
 //
+(* ****** ****** *)
+fun // HX: it does accumulative
+tr12env_add0_s2cst_all // insertion
+( env0: !tr12env, s2c0: s2cst ): void
 (* ****** ****** *)
 //
 fun
@@ -291,11 +295,11 @@ trans12_sort1lst
 //
 (* ****** ****** *)
 fun
-trans12_t1arg
+trans12_t1arglst
 ( env0:
 ! tr12env, t1as: t1arglst): sort2lst
 fun
-trans12_t1mag
+trans12_t1maglst
 ( env0:
 ! tr12env, tmas: t1maglst): sort2lstlst
 (* ****** ****** *)
