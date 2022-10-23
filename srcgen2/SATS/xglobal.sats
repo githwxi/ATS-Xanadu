@@ -68,15 +68,39 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 //
 fun
-the_sortenv_topmap
+the_sortenv_toplst
   ( (*void*) ): list@(sym_t, s2tex)
 fun
-the_sexpenv_topmap
+the_sexpenv_toplst
   ( (*void*) ): list@(sym_t, s2itm)
 fun
-the_dexpenv_topmap
+the_dexpenv_toplst
   ( (*void*) ): list@(sym_t, d2itm)
 //
+(* ****** ****** *)
+//
+fun
+the_sortenv_toplst_add0(sym_t, s2tex): void
+fun
+the_sexpenv_toplst_add0(sym_t, s2itm): void
+fun
+the_dexpenv_toplst_add0(sym_t, d2itm): void
+//
+(* ****** ****** *)
+fun
+the_sortenv_toplst_print(): void
+fun
+the_sortenv_toplst_fprint( out:FILR ): void
+(* ****** ****** *)
+fun
+the_sexpenv_toplst_print(): void
+fun
+the_sexpenv_toplst_fprint( out:FILR ): void
+(* ****** ****** *)
+fun
+the_dexpenv_toplst_print(): void
+fun
+the_dexpenv_toplst_fprint( out:FILR ): void
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xglobal.sats] *)

@@ -41,5 +41,91 @@ Authoremail: gmhwxiATgmailDOTcom
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+#staload
+S2E = "./../SATS/staexp2.sats"
+(* ****** ****** *)
+#staload
+D2E = "./../SATS/dynexp2.sats"
+(* ****** ****** *)
+#staload "./../SATS/xglobal.sats"
+(* ****** ****** *)
+
+local
+
+val
+the_list =
+a0ref_make_1val(list_nil())
+
+in//local
+
+#implfun
+the_sortenv_toplst_add0
+  (k0, x0) =
+let
+val kxs = a0ref_get(the_list)
+in
+a0ref_set
+(the_list, list_cons(@(k0, x0), kxs))
+end (*let*)//end-[the_sortenv_toplst_add0]
+
+endloc // end of [local(the_sortenv_topmap)]
+
+(* ****** ****** *)
+
+local
+
+val
+the_list =
+a0ref_make_1val(list_nil())
+
+in//local
+
+#implfun
+the_sexpenv_toplst_add0
+  (k0, x0) =
+let
+val kxs = a0ref_get(the_list)
+in
+a0ref_set
+(the_list, list_cons(@(k0, x0), kxs))
+end (*let*)//end-[the_sexpenv_toplst_add0]
+
+endloc // end of [local(the_sexpenv_topmap)]
+
+(* ****** ****** *)
+
+local
+
+val
+the_list =
+a0ref_make_1val(list_nil())
+
+in//local
+
+#implfun
+the_dexpenv_toplst_add0
+  (k0, x0) =
+let
+val kxs = a0ref_get(the_list)
+in
+a0ref_set
+(the_list, list_cons(@(k0, x0), kxs))
+end (*let*)//end-[the_dexpenv_toplst_add0]
+
+endloc // end of [local(the_dexpenv_topmap)]
+
+(* ****** ****** *)
+
+#implfun
+the_sortenv_toplst_print() =
+the_sortenv_toplst_fprint(g_stdout())
+#implfun
+the_sexpenv_toplst_print() =
+the_sexpenv_toplst_fprint(g_stdout())
+#implfun
+the_dexpenv_toplst_print() =
+the_dexpenv_toplst_fprint(g_stdout())
+
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xglobal.dats] *)
