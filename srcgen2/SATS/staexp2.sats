@@ -215,6 +215,14 @@ sort2_fprint:(FILR,sort2)->void
 //
 (* ****** ****** *)
 fun
+t2abs_get_name(t2a:t2abs):sym_t
+fun
+t2abs_get_stmp(t2a:t2abs):stamp
+(* ****** ****** *)
+#symload name with t2abs_get_name
+#symload stmp with t2abs_get_stmp
+(* ****** ****** *)
+fun
 sort2_int(i0: sint): sort2
 (* ****** ****** *)
 fun
@@ -244,16 +252,16 @@ s2var_get_stmp(s2v:s2var):stamp
 //
 fun
 s2cst_make_idst
-(sid: token, s2t: sort2): s2cst
+(sid1: token, s2t2: sort2): s2cst
 //
 (* ****** ****** *)
 //
 fun
 s2var_make_sort
-(   s2t: sort2    ): s2var
+(   s2t0: sort2    ): s2var
 fun
 s2var_make_idst
-(sid: sym_t, s2t: sort2): s2var
+(sid1: sym_t, s2t2: sort2): s2var
 //
 (* ****** ****** *)
 //
