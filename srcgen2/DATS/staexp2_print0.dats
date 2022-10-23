@@ -93,32 +93,6 @@ end (*let*)//end-of-[t2bas_fprint(out,tbas)]
 (* ****** ****** *)
 
 #implfun
-s2cst_fprint
-(out, s2c0) =
-let
-#impltmp
-g_print$out<>() = out
-in//let
-  print(s2cst_get_name(s2c0))
-; print(": ", s2cst_get_sort(s2c0))
-end (*let*)//end of [s2cst_fprint(out, s2c0)]
-
-(* ****** ****** *)
-
-#implfun
-s2var_fprint
-(out, s2v0) =
-let
-#impltmp
-g_print$out<>() = out
-in//let
-  print(s2var_get_name(s2v0))
-; print(": ", s2var_get_sort(s2v0))
-end (*let*) // end of [s2var_fprint(out, s2v0)]
-
-(* ****** ****** *)
-
-#implfun
 sort2_fprint
 (out, s2t0) =
 let
@@ -179,6 +153,32 @@ S2TEXsub(s2vs, s2ps) =>
 print("S2TEXsub(", s2vs, ";", s2ps, ")")
 //
 end (*let*) // end of [s2tex_fprint(out, s2tx)]
+
+(* ****** ****** *)
+
+#implfun
+s2cst_fprint
+(out, s2c0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+  print(s2cst_get_name(s2c0))
+; print(": ", s2cst_get_sort(s2c0))
+end (*let*)//end of [s2cst_fprint(out, s2c0)]
+
+(* ****** ****** *)
+
+#implfun
+s2var_fprint
+(out, s2v0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+  print(s2var_get_name(s2v0))
+; print(": ", s2var_get_sort(s2v0))
+end (*let*) // end of [s2var_fprint(out, s2v0)]
 
 (* ****** ****** *)
 
@@ -275,6 +275,27 @@ S2Enone2
 (loc0, s2e1) => print("S2Enone2(",s2e1,")")
 //
 end (*let*) // end of [s2exp_fprint(out, s2e0)]
+
+(* ****** ****** *)
+
+#implfun
+s2itm_fprint
+(out, s2i0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ s2i0 of
+//
+|
+S2ITMvar(s2v1) =>
+print("S2ITMvar(", s2v1, ")")
+|
+S2ITMcst(s2cs) =>
+print("S2ITMcst(", s2cs, ")")
+//
+end (*let*) // end of [s2itm_fprint(out, s2i0)]
 
 (* ****** ****** *)
 

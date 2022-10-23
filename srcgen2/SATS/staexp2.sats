@@ -243,6 +243,8 @@ fun
 s2var_fprint:(FILR,s2var)->void
 (* ****** ****** *)
 fun
+s2cst_get_lctn(s2c:s2cst):loc_t
+fun
 s2cst_get_name(s2c:s2cst):sym_t
 fun
 s2cst_get_sort(s2c:s2cst):sort2
@@ -259,7 +261,9 @@ s2var_get_stmp(s2v:s2var):stamp
 //
 fun
 s2cst_make_idst
-(sid1: sym_t, s2t2: sort2): s2cst
+(
+loc0: loc_t,
+sid1: sym_t, s2t2: sort2): s2cst
 //
 (* ****** ****** *)
 //
@@ -272,6 +276,7 @@ s2var_make_idst
 //
 (* ****** ****** *)
 //
+#symload name with s2cst_get_lctn
 #symload name with s2cst_get_name
 #symload sort with s2cst_get_sort
 #symload stmp with s2cst_get_stmp
