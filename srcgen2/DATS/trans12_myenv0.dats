@@ -282,6 +282,75 @@ val+
 //
 (* ****** ****** *)
 
+#implfun
+tr12env_add0_sort
+( env0, k0 , x0 ) =
+let
+//
+val+
+TR12ENV
+(tenv, senv, denv) = env0
+//
+val () =
+sortenv_insert_any(tenv, k0, x0)
+//
+in//let
+end where
+{
+  val () =
+  prerrln("tr12env_add0_sort: k0 = ", k0)
+  val () =
+  prerrln("tr12env_add0_sort: x0 = ", x0)
+} (*where*)//end-[tr12env_add0_sort(env0, k0, x0)]
+
+(* ****** ****** *)
+
+#implfun
+tr12env_add0_sexp
+( env0, k0 , x0 ) =
+let
+//
+val+
+TR12ENV
+(tenv, senv, denv) = env0
+//
+val () =
+sexpenv_insert_any(senv, k0, x0)
+//
+in//let
+end where
+{
+  val () =
+  prerrln("tr12env_add0_sexp: k0 = ", k0)
+  val () =
+  prerrln("tr12env_add0_sexp: x0 = ", x0)
+} (*where*)//end-[tr12env_add0_sexp(env0, k0, x0)]
+
+(* ****** ****** *)
+
+#implfun
+tr12env_add0_dexp
+( env0, k0 , x0 ) =
+let
+//
+val+
+TR12ENV
+(tenv, senv, denv) = env0
+//
+val () =
+dexpenv_insert_any(denv, k0, x0)
+//
+in//let
+end where
+{
+  val () =
+  prerrln("tr12env_add0_dexp: k0 = ", k0)
+  val () =
+  prerrln("tr12env_add0_dexp: x0 = ", x0)
+} (*where*)//end-[tr12env_add0_dexp(env0, k0, x0)]
+
+(* ****** ****** *)
+
 endloc (*local*) // end of [ local(tr12env) ]
 
 (* ****** ****** *)

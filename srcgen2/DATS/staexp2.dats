@@ -132,10 +132,12 @@ val tmp = the_t2abs_stamp_new()
 #implfun
 t2abs_get_name
   (t2a) = let
+//
 val
 T2ABS
 ( sym
 , tmp (*unicity*) ) = t2a in sym
+//
 end (*let*) // end of [t2abs_get_name]
 //
 (* ****** ****** *)
@@ -143,10 +145,12 @@ end (*let*) // end of [t2abs_get_name]
 #implfun
 t2abs_get_stmp
   (t2a) = let
+//
 val
 T2ABS
 ( sym
 , tmp (*unicity*) ) = t2a in tmp
+//
 end (*let*) // end of [t2abs_get_stmp]
 //
 (* ****** ****** *)

@@ -81,13 +81,15 @@ LEX = "./lexing0.sats"
 #typedef t2abs = t2abs_tbox
 #typedef t2dat = t2dat_tbox
 (* ****** ****** *)
+(*
+#abstbox sort2_tbox // ptr
+#typedef sort2 = sort2_tbox
+*)
+(* ****** ****** *)
 #abstbox s2cst_tbox // ptr
 #abstbox s2var_tbox // ptr
 #typedef s2cst = s2cst_tbox
 #typedef s2var = s2var_tbox
-(* ****** ****** *)
-#abstbox s2itm_tbox // ptr
-#typedef s2itm = s2itm_tbox
 (* ****** ****** *)
 #abstbox s2exp_tbox // ptr
 #abstbox s2hnf_tbox // ptr
@@ -95,6 +97,11 @@ LEX = "./lexing0.sats"
 #typedef s2exp = s2exp_tbox
 #typedef s2hnf = s2hnf_tbox
 #typedef s2typ = s2typ_tbox
+(* ****** ****** *)
+(*
+#abstbox s2itm_tbox // ptr
+#typedef s2itm = s2itm_tbox
+*)
 (* ****** ****** *)
 #staload S0E = "./staexp0.sats"
 #staload S1E = "./staexp1.sats"
@@ -140,7 +147,7 @@ s2lab_fprint
 (* ****** ****** *)
 #typedef l2s2elst = list(l2s2e)
 (* ****** ****** *)
-
+//
 datatype t2bas =
 |
 T2Bpred of (sym_t)
@@ -155,7 +162,7 @@ T2Btdat of (t2dat)
 T2Bimpr of
 (int(*knd*), sym_t) // impred. sorts
 // end of [ datatype(t2bas) ]
-
+//
 (* ****** ****** *)
 
 datatype sort2 =
@@ -417,6 +424,29 @@ fun
 s2exp_make_node
 (srt:sort2,nod:s2exp_node): s2exp
 #symload s2exp with s2exp_make_node
+(* ****** ****** *)
+//
+datatype s2itm =
+//
+| S2ITMvar of (s2var)
+//
+// HX-2022-10-23:
+// supporting overload
+| S2ITMcst of (s2cstlst)
+//
+(*
+|
+S2ITMexp of (g1exp) // for generic stuff
+*)
+//
+(*
+|
+S2ITMfmodenv of (fmodenv) // for name space
+*)
+//
+(* ****** ****** *)
+fun
+s2itm_fprint:(FILR,s2itm)->void
 (* ****** ****** *)
 (*
 // HX-2022-10-01:

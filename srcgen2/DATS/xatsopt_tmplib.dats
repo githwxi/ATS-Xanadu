@@ -925,6 +925,14 @@ g_print<s2typ>(stp) =
 s2typ_fprint(g_print$out<>(), stp)
 //
 (* ****** ****** *)
+#impltmp
+g_print<s2tex>(stx) =
+s2tex_fprint(g_print$out<>(), stx)
+(* ****** ****** *)
+#impltmp
+g_print<s2itm>(itm) =
+s2itm_fprint(g_print$out<>(), itm)
+(* ****** ****** *)
 //
 #impltmp
 g_print<d2con>(d2c) =

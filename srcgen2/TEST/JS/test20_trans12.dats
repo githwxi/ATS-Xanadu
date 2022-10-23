@@ -248,11 +248,8 @@ d2parsed_from_trans(dpar)
 (* ****** ****** *)
 //
 val (  ) =
-let
-  val out = g_stderr()
-in
-  d2parsed_fprint( out, dpar )
-end
+prerrln
+("d0parsed_from_fpath(\"./mytest1.sats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
