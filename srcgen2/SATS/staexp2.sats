@@ -259,7 +259,7 @@ s2var_get_stmp(s2v:s2var):stamp
 //
 fun
 s2cst_make_idst
-(sid1: token, s2t2: sort2): s2cst
+(sid1: sym_t, s2t2: sort2): s2cst
 //
 (* ****** ****** *)
 //

@@ -110,7 +110,7 @@ s1t0.node() of
 
 #implfun
 trans12_sort1
-( tenv,s1t0 ) = let
+( env0,s1t0 ) = let
 (*
 val
 loc0 = s1t0.lctn()
@@ -124,7 +124,7 @@ case+
 s1t0.node() of
 //
 |S1Tid0 _ =>
-f0_id0(tenv, s1t0)
+f0_id0(env0, s1t0)
 //
 |S1Tint(tok) =>
 sort2_int(token2sint(tok))
@@ -132,12 +132,12 @@ sort2_int(token2sint(tok))
 |S1Ta0pp _ => sort2_none1(s1t0)
 //
 |
-S1Ta1pp _ => f0_a1pp(tenv, s1t0)
+S1Ta1pp _ => f0_a1pp(env0, s1t0)
 |
-S1Ta2pp _ => f0_a2pp(tenv, s1t0)
+S1Ta2pp _ => f0_a2pp(env0, s1t0)
 //
 |
-S1Tlist _ => f0_list(tenv, s1t0)
+S1Tlist _ => f0_list(env0, s1t0)
 //
 | S1Tqual _ => sort2_none1(s1t0)
 //
@@ -151,7 +151,7 @@ end where
 //
 fun
 f0_id0
-( tenv:
+( env0:
 ! tr12env
 , s1t0: sort1): sort2 = let
 //
@@ -159,12 +159,12 @@ val-
 S1Tid0
 (tid0) = s1t0.node()
 val
-opt0 =
-tr12env_find_sort(tenv, tid0)
+topt =
+tr12env_find_s2tex(env0,tid0)
 //
 in//let
 //
-case+ opt0 of
+case+ topt of
 //
 | ~
 optn_vt_nil() => S2Tid0(tid0)
@@ -180,13 +180,13 @@ case+ s2t0 of
 *)
 ) (* end of [optn_vt_cons] *)
 //
-end (*let*) // end of [f0_id0]
+end (*let*) // end of [f0_id0(env0,s1t0)]
 //
 (* ****** ****** *)
 //
 fun
 f0_a1pp
-( tenv:
+( env0:
 ! tr12env
 , s1t0: sort1): sort2 =
 let
@@ -201,18 +201,18 @@ if
 isPLUS(s1t1)
 then
 sort2_polpos
-(trans12_sort1(tenv,s1t2))
+(trans12_sort1(env0,s1t2))
 else
 if
 isMNUS(s1t1)
 then
 sort2_polneg
-(trans12_sort1(tenv,s1t2))
+(trans12_sort1(env0,s1t2))
 else
 let
 //
 val
-s2t1 = trans12_sort1(tenv,s1t1)
+s2t1 = trans12_sort1(env0,s1t1)
 val
 s2ts =
 (
@@ -220,21 +220,21 @@ case+
 s1t2.node() of
 |
 S1Tlist(s1ts) =>
-trans12_sort1lst(tenv,s1ts)
+trans12_sort1lst(env0,s1ts)
 |
 _(*non-S1Tlist*) =>
-list_sing(trans12_sort1(tenv,s1t2))
+list_sing(trans12_sort1(env0,s1t2))
 ) : sort2lst // end of [val]
 //
 in
   S2Tapps(s2t1, s2ts)
-end (*let*) // end of [else]
+end (*let*) // end-of-[else]
 //
-end (*let*) // end of [f0_a1pp]
+end (*let*) // end-of-[f0_a1pp(env0,s1t0)]
 //
 fun
 f0_a2pp
-( tenv:
+( env0:
 ! tr12env
 , s1t0: sort1): sort2 =
 let
@@ -264,27 +264,27 @@ val s2ts =
 case+
 s1t2.node() of
 | S1Tlist(s1ts) =>
-trans12_sort1lst(tenv, s1ts)
+trans12_sort1lst(env0, s1ts)
 | _(*non-S1Tlist*) =>
-list_sing(trans12_sort1(tenv, s1t2))
+list_sing(trans12_sort1(env0, s1t2))
 ) : sort2lst // [val s2ts]
-val s2t3 = trans12_sort1(tenv, s1t3)
+val s2t3 = trans12_sort1(env0, s1t3)
 } (*where*) // end-of-then
 else let
-val s2t1 = trans12_sort1(tenv, s1t1)
-val s2t2 = trans12_sort1(tenv, s1t2)
-val s2t3 = trans12_sort1(tenv, s1t3)
+val s2t1 = trans12_sort1(env0, s1t1)
+val s2t2 = trans12_sort1(env0, s1t2)
+val s2t3 = trans12_sort1(env0, s1t3)
 in//let
   S2Tapps(s2t1, list_pair(s2t2, s2t3))
 end (*let*) // end of-else
 //
-end (*let*) // end of [f0_a2pp]
+end (*let*) // end-of-[f0_a2pp(env0,s1t0)]
 //
 (* ****** ****** *)
 //
 fun
 f0_list
-( tenv:
+( env0:
 ! tr12env
 , s1t0: sort1): sort2 =
 let
@@ -297,7 +297,7 @@ if
 list_singq(s1ts)
 then
 (
-  trans12_sort1(tenv, s1t1)
+  trans12_sort1(env0, s1t1)
 ) where
 {
   val s1t1 = list_head(s1ts)
@@ -305,19 +305,19 @@ then
 else
 (
 S2Ttup
-(trans12_sort1lst(tenv, s1ts))
+(trans12_sort1lst(env0, s1ts))
 )
-end (*let*) // end of [f0_list]
+end (*let*) // end of [f0_list(env0,s1t0)]
 //
 (* ****** ****** *)
 //
-} (*where*) // end of [trans12_sort1(tenv,s1t0)]
+} (*where*) // end of [trans12_sort1(env0,s1t0)]
 
 (* ****** ****** *)
 
 #implfun
 trans12_s1exp
-( tenv,s1e0 ) = let
+( env0,s1e0 ) = let
 //
 (*
 val
@@ -344,18 +344,18 @@ s2exp_str(token2sstr(tok))
 |
 S1Eb0sh _ => s2exp_none1(s1e0)
 |
-S1Eb1sh _ => f0_b1sh(tenv, s1e0)
+S1Eb1sh _ => f0_b1sh(env0, s1e0)
 //
 |
-S1El1st _ => f0_l1st(tenv, s1e0)
+S1El1st _ => f0_l1st(env0, s1e0)
 |
-S1El2st _ => f0_l2st(tenv, s1e0)
+S1El2st _ => f0_l2st(env0, s1e0)
 //
 |
-S1Et1up _ => f0_t1up(tenv, s1e0)
+S1Et1up _ => f0_t1up(env0, s1e0)
 //
 |
-S1Eanno _ => f0_anno(tenv, s1e0)
+S1Eanno _ => f0_anno(env0, s1e0)
 //
 | _(* otherwise *) => s2exp_none1(s1e0)
 //
@@ -366,20 +366,20 @@ end where
 //
 fun
 f0_b1sh
-( tenv:
+( env0:
 ! tr12env
 , s1e0: s1exp): s2exp =
 (
-trans12_s1exp(tenv, s1e1)) where
+trans12_s1exp(env0, s1e1)) where
 {
   val-S1Eb1sh(s1e1) = s1e0.node()
-} (*where*) // end of [f0_b1sh(tenv, s1e0)]
+} (*where*) // end of [f0_b1sh(env0, s1e0)]
 //
 (* ****** ****** *)
 //
 fun
 f0_l1st
-( tenv:
+( env0:
 ! tr12env
 , s1e0: s1exp): s2exp =
 let
@@ -406,19 +406,19 @@ let
 val-
 list_cons(s1e1, _) = s1es
 in//let
-  trans12_s1exp(tenv, s1e1)
+  trans12_s1exp(env0, s1e1)
 end (*let*) // end of [then]
 else
 (
-s2exp_l1st(trans12_s1explst(tenv, s1es))
+s2exp_l1st(trans12_s1explst(env0, s1es))
 )
-end (*let*) // end of [f0_l1st(tenv, s1e0)]
+end (*let*) // end of [f0_l1st(env0, s1e0)]
 //
 (* ****** ****** *)
 //
 fun
 f0_l2st
-( tenv:
+( env0:
 ! tr12env
 , s1e0: s1exp): s2exp =
 let
@@ -445,22 +445,22 @@ then
 (
 s2exp_l1st(ses2) where
 {
-val ses2 = trans12_s1explst(tenv, ses2) }
+val ses2 = trans12_s1explst(env0, ses2) }
 )
 else
 (
 s2exp_l2st(ses1, ses2) where
 {
-val ses1 = trans12_s1explst(tenv, ses1)
-val ses2 = trans12_s1explst(tenv, ses2) }
+val ses1 = trans12_s1explst(env0, ses1)
+val ses2 = trans12_s1explst(env0, ses2) }
 )
-end (*let*) // end of [f0_l2st(tenv, s1e0)]
+end (*let*) // end of [f0_l2st(env0, s1e0)]
 //
 (* ****** ****** *)
 //
 fun
 f0_t1up
-( tenv:
+( env0:
 ! tr12env
 , s1e0: s1exp): s2exp =
 let
@@ -486,14 +486,14 @@ in
 ) where
 {
   val s2es =
-  trans12_s1explst_impr(tenv, s1es) }
-end (*let*) // end of [f0_t1up(tenv, s1e0)]
+  trans12_s1explst_impr(env0, s1es) }
+end (*let*) // end of [f0_t1up(env0, s1e0)]
 //
 (* ****** ****** *)
 //
 fun
 f0_t2up
-( tenv:
+( env0:
 ! tr12env
 , s1e0: s1exp): s2exp =
 let
@@ -520,16 +520,16 @@ in
 ) where
 {
   val ses1 =
-  trans12_s1explst_impr(tenv, ses1)
+  trans12_s1explst_impr(env0, ses1)
   val ses2 =
-  trans12_s1explst_prgm(tenv, ses2) }
-end (*let*) // end of [f0_t2up(tenv, s1e0)]
+  trans12_s1explst_prgm(env0, ses2) }
+end (*let*) // end of [f0_t2up(env0, s1e0)]
 //
 (* ****** ****** *)
 //
 fun
 f0_r1cd
-( tenv:
+( env0:
 ! tr12env
 , s1e0: s1exp): s2exp =
 let
@@ -555,14 +555,14 @@ in
 ) where
 {
   val lses =
-  trans12_l1s1elst_impr(tenv, lses) }
-end (*let*) // end of [f0_r1cd(tenv, s1e0)]
+  trans12_l1s1elst_impr(env0, lses) }
+end (*let*) // end of [f0_r1cd(env0, s1e0)]
 //
 (* ****** ****** *)
 //
 fun
 f0_anno
-( tenv:
+( env0:
 ! tr12env
 , s1e0: s1exp): s2exp =
 let
@@ -571,14 +571,42 @@ val-
 S1Eanno
 (s1e1, s1t2) = s1e0.node()
 val
-s2t2 = trans12_sort1(tenv, s1t2)
+s2t2 = trans12_sort1(env0, s1t2)
 in//let
-  trans12_s1exp_sort(tenv, s1e1, s2t2)
-end (*let*) // end of [f0_anno(tenv, s1e0)]
+  trans12_s1exp_sort(env0, s1e1, s2t2)
+end (*let*) // end of [f0_anno(env0, s1e0)]
 //
 (* ****** ****** *)
 //
-} (*where*) // end of [trans12_s1exp(tenv,s1e0)]
+} (*where*) // end of [trans12_s1exp(env0,s1e0)]
+
+(* ****** ****** *)
+
+#implfun
+trans12_sort1lst
+  (env0, s1ts) =
+list_trans12_fnp(env0, s1ts, trans12_sort1)
+
+(* ****** ****** *)
+
+#implfun
+trans12_t1arglst
+  (env0, t1as) =
+list_trans12_fnp(env0, t1as, trans12_t1arg)
+
+(* ****** ****** *)
+
+#implfun
+trans12_t1maglst
+  (env0, tmas) =
+list_trans12_fnp(env0, tmas, trans12_t1mag)
+
+(* ****** ****** *)
+
+#implfun
+trans12_s1explst
+  (env0, s1es) =
+list_trans12_fnp(env0, s1es, trans12_s1exp)
 
 (* ****** ****** *)
 
