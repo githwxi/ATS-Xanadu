@@ -137,6 +137,10 @@ all_sats:: \
 tread12_sats
 tread12_sats: ; $(XATSOPT) --static SATS/tread12.sats
 ######
+all_sats:: \
+xglobal_sats
+xglobal_sats: ; $(XATSOPT) --static SATS/xglobal.sats
+######
 
 ######
 #
@@ -193,6 +197,12 @@ xlabel0_dats: ; $(XATSOPT) --dynamic DATS/xlabel0.dats
 all_dats:: \
 xlabel0_print0_dats
 xlabel0_print0_dats: ; $(XATSOPT) --dynamic DATS/xlabel0_print0.dats
+######
+
+######
+all_dats:: \
+xglobal_dats
+xglobal_dats: ; $(XATSOPT) --dynamic DATS/xglobal.dats
 ######
 
 ######
