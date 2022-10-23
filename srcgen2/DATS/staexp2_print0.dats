@@ -65,7 +65,30 @@ let
 g_print$out<>() = out
 in//let
   print(t2abs_get_name(tabs))
-end (*let*)//end of [t2abs_fprint(out, tabs)]
+end(*let*)//end-of-[t2abs_fprint(out,tabs)]
+
+(* ****** ****** *)
+
+#implfun
+t2bas_fprint
+(out, tbas) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ tbas of
+T2Bpred(name) =>
+print("T2Bpred(", name, ")")
+|
+T2Btabs(tabs) =>
+print("T2Btabs(", tabs, ")")
+|
+T2Btdat(tdat) =>
+print("T2Btdat(", tdat, ")")
+|
+T2Bimpr(knd0, name) =>
+print("T2Bimpr(", knd0, ";", name, ")")
+end (*let*)//end-of-[t2bas_fprint(out,tbas)]
 
 (* ****** ****** *)
 
@@ -136,6 +159,26 @@ S2Tnone0() => print("S2Tnone0(",")")
 S2Tnone1(s1t1) => print("S2Tnone1(",s1t1,")")
 //
 end (*let*) // end of [sort2_fprint(out, s2t0)]
+
+(* ****** ****** *)
+
+#implfun
+s2tex_fprint
+(out, s2tx) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ s2tx of
+|
+S2TEXsrt(s2t1) =>
+print("S2TEXsrt(", s2t1, ")")
+|
+S2TEXsub(s2vs, s2ps) =>
+print("S2TEXsub(", s2vs, ";", s2ps, ")")
+//
+end (*let*) // end of [s2tex_fprint(out, s2tx)]
 
 (* ****** ****** *)
 
