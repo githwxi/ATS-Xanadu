@@ -299,6 +299,32 @@ val
 svss =
 trans12_s1maglst(env0, smas)
 //
+val () =
+tr12env_pshlam0(env0)
+//
+val () =
+auxloop(env0, svss) where
+{
+fun
+auxloop
+( env0:
+! tr12env
+, svss: s2varlstlst): void =
+(
+case+ svss of
+|
+list_nil() => ()
+|
+list_cons(s2vs, svss) =>
+(
+  auxloop(env0, svss)) where
+{
+val () =
+tr12env_add0_s2varlst_one(env0,s2vs)
+}
+) (*case+*)
+} (*where*)//end-of-[auxloop(env0,svss)]
+//
 val
 sdef =
 (
@@ -315,6 +341,8 @@ in//let
 trans12_s1exp_sort(env0, sdef, s2t1)
 endlet // end of [optn_cons]
 )
+//
+val () = tr12env_poplam0(env0)
 //
 val sdef =
 (
