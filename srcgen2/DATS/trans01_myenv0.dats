@@ -226,7 +226,7 @@ in//let
 $fold(tenv) where
 {
 val
-(nerr,kxs) =
+(nerr, kxs) =
 stkmap_poploc0(stkmap)
 val
 ((*void*)) =

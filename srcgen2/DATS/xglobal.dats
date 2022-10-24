@@ -71,7 +71,7 @@ a0ref_set
 (the_list, list_cons(@(k0, x0), kxs))
 end (*let*)//end-[the_sortenv_toplst_add0]
 //
-endloc // end of [local(the_sortenv_topmap)]
+endloc // end of [local(the_sortenv_toplst)]
 
 (* ****** ****** *)
 
@@ -97,7 +97,7 @@ a0ref_set
 (the_list, list_cons(@(k0, x0), kxs))
 end (*let*)//end-[the_sexpenv_toplst_add0]
 //
-endloc // end of [local(the_sexpenv_topmap)]
+endloc // end of [local(the_sexpenv_toplst)]
 
 (* ****** ****** *)
 
@@ -123,7 +123,7 @@ a0ref_set
 (the_list, list_cons(@(k0, x0), kxs))
 end (*let*)//end-[the_dexpenv_toplst_add0]
 //
-endloc // end of [local(the_dexpenv_topmap)]
+endloc // end of [local(the_dexpenv_toplst)]
 
 (* ****** ****** *)
 #implfun

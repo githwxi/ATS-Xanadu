@@ -132,8 +132,10 @@ D1Cabssort _ => f0_abssort(env0, d1cl)
 |
 D1Cstacst0 _ => f0_stacst0(env0, d1cl)
 //
+(*
 |
 D1Csexpdef _ => f0_sexpdef(env0, d1cl)
+*)
 //
 |_(*otherwise*) =>
 let

@@ -314,10 +314,10 @@ stkmap_loc2
 | ~
 stkmap_cons
 (k1, x1, kxs) =>
-loop1(kxs, err, res) where
+loop2(kxs, err, res) where
 {
   val
-  res = list_vt_cons(@(k1,x1), res) }
+  res = list_vt_cons(@(k1, x1), res) }
 //
 | !
 stkmap_nil() =>
@@ -430,6 +430,66 @@ loop(map, kxs) where {
 ) (* end of [loop(map,kxs)] *)
 } (*where*)//end-of-[stkmap_insert_kxs(map,kxs)]
 
+(* ****** ****** *)
+//
+#impltmp
+<itm:t0>
+stkmap_fprint1
+  (out, map) =
+(
+auxprint(map)) where
+{
+//
+#impltmp
+g_print$out<>() = out
+//
+fun
+auxprint
+( map:
+! stkmap(itm)): void =
+(
+case+ map of
+| !
+stkmap_nil() =>
+println("stkmap_nil(", ")")
+//
+| !
+stkmap_cons
+(k0, x0, map) =>
+auxprint(map) where
+{
+val () =
+println
+("stkmap_cons(", k0, ";", x0) }
+//
+| !
+stkmap_lam0
+(   map   ) =>
+auxprint(map) where
+{ val () =
+  println("stkmap_lam0(", ")") }
+| !
+stkmap_let0
+(   map   ) =>
+auxprint(map) where
+{ val () =
+  println("stkmap_let0(", ")") }
+| !
+stkmap_loc1
+(   map   ) =>
+auxprint(map) where
+{ val () =
+  println("stkmap_loc1(", ")") }
+| !
+stkmap_loc2
+(   map   ) =>
+auxprint(map) where
+{ val () =
+  println("stkmap_loc2(", ")") }
+)
+//
+} (*where*) // end of [stkmap_fprint1(out,map)]
+//
 (* ****** ****** *)
 
 endloc (*local*) // end of [ local(stkmap) ]
