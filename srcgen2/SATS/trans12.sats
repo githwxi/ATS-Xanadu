@@ -251,6 +251,13 @@ fun // HX: it does accumulative
 tr12env_add0_s2cst_all // insertion
 ( env0: !tr12env, s2c0: s2cst ): void
 (* ****** ****** *)
+fun
+tr12env_add0_s2var_one
+( env0: !tr12env, s2v0: s2var ): void
+fun
+tr12env_add0_s2varlst_one
+( env0: !tr12env, s2vs: s2varlst ): void
+(* ****** ****** *)
 //
 fun
 <x0:t0>
