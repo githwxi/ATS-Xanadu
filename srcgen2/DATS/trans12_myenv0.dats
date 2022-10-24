@@ -758,5 +758,35 @@ end//let
 end (*let*)//end[tr12env_add0_s2cst_all(env0,s2c0)]
 
 (* ****** ****** *)
+//
+#implfun
+tr12env_add0_s2var_one
+  (env0, s2v0) =
+let
+val sym0 =
+s2var_get_name(s2v0)
+val sitm = S2ITMvar(s2v0)
+in//let
+  tr12env_add0_s2itm(env0, sym0, sitm)
+end (*let*)//end[tr12env_add0_s2var_one(env0,s2v0)]
+//
+#implfun
+tr12env_add0_s2varlst_one
+  (env0, s2vs) =
+(
+case+ s2vs of
+|
+list_nil((*void*)) => ()
+|
+list_cons(s2v1, s2vs) =>
+let
+val () =
+tr12env_add0_s2var_one(env0, s2v1)
+in
+tr12env_add0_s2varlst_one(env0, s2vs)
+end (*let*)//end-of-[list_cons]
+) (*case+*)//end-of-[tr12env_add0_s2varlst_one(...)]
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans12_myenv0.dats] *)
