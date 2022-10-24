@@ -429,6 +429,11 @@ fun
 s2exp_none1(s1e0:s1exp): s2exp
 (* ****** ****** *)
 fun
+s2exp_lam0
+( s2vs
+: s2varlst, s2e0: s2exp): s2exp
+(* ****** ****** *)
+fun
 s2exp_make_node
 (srt:sort2,nod:s2exp_node): s2exp
 #symload s2exp with s2exp_make_node
