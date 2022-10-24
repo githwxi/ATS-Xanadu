@@ -316,4 +316,25 @@ SRP_symbl in s2var_make_idst(id0, s2t)
 end (*let*)//end of [s2var_make_sort(s2t)]
 (* ****** ****** *)
 
+#implfun
+s2exp_lam0
+(s2vs, body) = let
+//
+val s2ts =
+list_map(s2vs) where
+{
+#impltmp
+map$fopr
+< s2var >
+< sort2 > = s2var_get_sort }
+//
+val s2t0 =
+  S2Tf1un(s2ts, body.sort())
+//
+in
+  s2exp(s2t0, S2Elam0(s2vs, body))
+end (*let*) // end of [s2exp_lam0(s2vs,body)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_staexp2.dats] *)
