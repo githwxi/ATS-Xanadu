@@ -132,6 +132,9 @@ D1Cabssort _ => f0_abssort(env0, d1cl)
 |
 D1Cstacst0 _ => f0_stacst0(env0, d1cl)
 //
+|
+D1Csexpdef _ => f0_sexpdef(env0, d1cl)
+//
 |_(*otherwise*) =>
 let
 val loc0 = d1cl.lctn()
@@ -205,6 +208,8 @@ end (*let*)
 //
 end (*let*) // end of [f0_abssort(env0,d1cl)]
 //
+(* ****** ****** *)
+//
 fun
 f0_stacst0
 ( env0:
@@ -271,6 +276,54 @@ d2ecl_make_node
 end (*let*)
 //
 end (*let*) // end of [f0_stacst0(env0,d1cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_stacst0
+( env0:
+! tr12env
+, d1cl: d1ecl): d2ecl =
+let
+val
+loc0 = d1cl.lctn()
+val-
+D1Csexpdef
+( tknd
+, tok1
+, smas
+, topt, sdef) = d1cl.node()
+//
+val
+svss =
+trans12_s1maglst(env0, smas)
+//
+val
+s2e1 =
+(
+case+ topt of
+|
+optn_nil() =>
+trans12_s1exp(env0, s1e1)
+|
+optn_cons(s1t1) =>
+let
+val s2t1 =
+trans12_sort1(env0, s1t1)
+in//let
+trans12_s1exp_sort(env0, sdef, s2t1)
+endlet // end of [optn_cons]
+)
+//
+val sdef = auxslam(sdef, svss)
+//
+in//let
+d2ecl_make_node
+( loc0
+, D2Csexpdef(s2c1, sdef)) where
+{ val () =
+  tr12env_add0_s2cst_all(env0, s2c1) }
+end (*let*) // end of [f0_sexpdef(env0,d1cl)]
 //
 } (*where*) // end of [trans12_d1ecl(env0,d1cl)]
 

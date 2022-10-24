@@ -758,8 +758,8 @@ d1ecl_node =
   (token, d1ecl) // globally
 //
 | D1Clocal0 of
-  ( d1eclist(*head*)
-  , d1eclist(*body*))
+  ( d1eclist(*local-head*)
+  , d1eclist(*local-body*))
 //
 |
 D1Cdefine of
