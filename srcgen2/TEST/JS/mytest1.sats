@@ -5,9 +5,10 @@
 #abssort tabs3
 (* ****** ****** *)
 #stacst0
-myadd(int, int): int
+myscst
+(tabs1, tabs2): tabs3
 (* ****** ****** *)
-#sortdef mysrt = tabs1
+#sortdef mysort = tabs1
 (* ****** ****** *)
 ////
 (* ****** ****** *)

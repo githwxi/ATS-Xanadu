@@ -63,8 +63,14 @@ t2abs_fprint
 let
 #impltmp
 g_print$out<>() = out
+//
+val sym =
+  t2abs_get_name(tabs)
+val tmp =
+  t2abs_get_stmp(tabs)
+//
 in//let
-  print(t2abs_get_name(tabs))
+  print(sym, "(", tmp, ")")
 end(*let*)//end-of-[t2abs_fprint(out,tabs)]
 
 (* ****** ****** *)
