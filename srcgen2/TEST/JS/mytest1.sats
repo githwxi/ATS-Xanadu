@@ -1,11 +1,17 @@
 (* ****** ****** *)
 #abssort tabs1
 #abssort tabs2
-#abssort tabs1
 #abssort tabs3
 (* ****** ****** *)
+local
+#abssort tabs1
+in//local
 #stacst0
-myscst
+myscst01
+(tabs1, tabs2): tabs3
+endloc // end of [local]
+#stacst0
+myscst02
 (tabs1, tabs2): tabs3
 (* ****** ****** *)
 #sortdef mysort = tabs1

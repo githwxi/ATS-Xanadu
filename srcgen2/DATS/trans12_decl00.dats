@@ -104,6 +104,30 @@ d2ecl(loc0, D2Cd1ecl(d1cl))
 end (*let*) // end of [D1Cd0ecl]
 //
 |
+D1Cstatic
+(tknd, dcl1) =>
+let
+val loc0 = d1cl.lctn()
+val dcl1 =
+trans12_d1ecl(env0, dcl1)
+in//let
+d2ecl(loc0, D2Cstatic(tknd, dcl1))
+end (*let*) // end of [D1Cstatic]
+|
+D1Cextern
+(tknd, dcl1) =>
+let
+val loc0 = d1cl.lctn()
+val dcl1 =
+trans12_d1ecl(env0, dcl1)
+in//let
+d2ecl(loc0, D2Cextern(tknd, dcl1))
+end (*let*) // end of [D1Cextern]
+//
+|
+D1Clocal0 _ => f0_local0(env0, d1cl)
+//
+|
 D1Cabssort _ => f0_abssort(env0, d1cl)
 |
 D1Cstacst0 _ => f0_stacst0(env0, d1cl)
@@ -117,6 +141,36 @@ end (*let*) // end of [_(*otherwise*)] // temp
 //
 end where
 {
+//
+(* ****** ****** *)
+fun
+f0_local0
+( env0:
+! tr12env
+, d1cl: d1ecl): d2ecl =
+let
+//
+val
+loc0 = d1cl.lctn()
+val-
+D1Clocal0
+(head, body) = d1cl.node()
+//
+val (  ) =
+tr12env_pshloc1(env0)
+val head =
+trans12_d1eclist(env0, head)
+val (  ) =
+tr12env_pshloc2(env0)
+val body =
+trans12_d1eclist(env0, body)
+//
+val (  ) = tr12env_locjoin(env0)
+//
+in//let
+d2ecl(loc0, D2Clocal0(head, body))
+end (*let*) // end of [f0_local0(env0,d1cl)]
+(* ****** ****** *)
 //
 fun
 f0_abssort

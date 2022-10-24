@@ -312,7 +312,7 @@ D2Cextern(tknd,dcl1) =>
 print("D2Cextern(",tknd,";",dcl1,")")
 //
 |
-D2Clocal(head, body) =>
+D2Clocal0(head, body) =>
 print( "D2Clocal(",head,";",body,")" )
 //
 |D2Cabssort(tid0) =>

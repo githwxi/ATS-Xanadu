@@ -95,11 +95,72 @@ val+
 } (*where*)//end-of(sortenv_free_top(tenv))
 
 (* ****** ****** *)
+//
+fun
+sortenv_pshloc1
+(tenv: !sortenv) = let
+val+
+@SORTENV
+(topmap, !stkmap) = tenv
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshloc1(stkmap) in $fold(tenv)
+end (*let*)
+//
+end (*let*)//end-of-(sortenv_pshloc1(tenv))
+//
+fun
+sortenv_pshloc2
+(tenv: !sortenv) = let
+val+
+@SORTENV
+(topmap, !stkmap) = tenv
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshloc2(stkmap) in $fold(tenv)
+end (*let*)
+//
+end (*let*)//end-of-(sortenv_pshloc2(tenv))
+//
+(* ****** ****** *)
+//
+fun
+sortenv_locjoin
+(tenv: !sortenv) = let
+//
+val+
+@SORTENV
+(topmap, !stkmap) = tenv
+//
+in//let
+//
+$fold(tenv) where
+{
+val
+(nerr,kxs) =
+stkmap_poploc0(stkmap)
+val
+((*void*)) =
+if
+stkmap_nilq(stkmap)
+then topmap_insert_kxs(topmap, kxs)
+else stkmap_insert_kxs(stkmap, kxs) }
+//
+end (*let*)//end-of-(sortenv_locjoin(tenv))
+//
+(* ****** ****** *)
 
 fun
 sortenv_search_opt
 ( tenv:
-  sortenv, k0: key) = let
+  sortenv, k0: key) =
+let
 //
 val+
 SORTENV
@@ -183,6 +244,66 @@ val+
 } (*where*)//end-of(sexpenv_free_top(senv))
 
 (* ****** ****** *)
+//
+fun
+sexpenv_pshloc1
+(senv: !sexpenv) = let
+val+
+@SEXPENV
+(topmap, !stkmap) = senv
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshloc1(stkmap) in $fold(senv)
+end (*let*)
+//
+end (*let*)//end-of-(sexpenv_pshloc1(senv))
+//
+fun
+sexpenv_pshloc2
+(senv: !sexpenv) = let
+val+
+@SEXPENV
+(topmap, !stkmap) = senv
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshloc2(stkmap) in $fold(senv)
+end (*let*)
+//
+end (*let*)//end-of-(sexpenv_pshloc2(senv))
+//
+(* ****** ****** *)
+//
+fun
+sexpenv_locjoin
+(senv: !sexpenv) = let
+//
+val+
+@SEXPENV
+(topmap, !stkmap) = senv
+//
+in//let
+//
+$fold(senv) where
+{
+val
+(nerr,kxs) =
+stkmap_poploc0(stkmap)
+val
+((*void*)) =
+if
+stkmap_nilq(stkmap)
+then topmap_insert_kxs(topmap, kxs)
+else stkmap_insert_kxs(stkmap, kxs) }
+//
+end (*let*)//end-of-(sexpenv_locjoin(senv))
+//
+(* ****** ****** *)
 
 fun
 sexpenv_search_opt
@@ -227,7 +348,7 @@ topmap_insert_any(topmap, k0, x0)//top
 else
 stkmap_insert_any(stkmap, k0, x0)//inner
 //
-end (*let*)//end-of(sexpenv_insert_any(tenv,k0,x0))
+end (*let*)//end-of(sexpenv_insert_any(senv,k0,x0))
 //
 (* ****** ****** *)
 
@@ -268,6 +389,66 @@ val+
 ~DEXPENV(topmap, stkmap) = denv
 } (*where*)//end-of(dexpenv_free_top(denv))
 
+(* ****** ****** *)
+//
+fun
+dexpenv_pshloc1
+(denv: !dexpenv) = let
+val+
+@DEXPENV
+(topmap, !stkmap) = denv
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshloc1(stkmap) in $fold(denv)
+end (*let*)
+//
+end (*let*)//end-of-(dexpenv_pshloc1(denv))
+//
+fun
+dexpenv_pshloc2
+(denv: !dexpenv) = let
+val+
+@DEXPENV
+(topmap, !stkmap) = denv
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshloc2(stkmap) in $fold(denv)
+end (*let*)
+//
+end (*let*)//end-of-(dexpenv_pshloc2(denv))
+//
+(* ****** ****** *)
+//
+fun
+dexpenv_locjoin
+(denv: !dexpenv) = let
+//
+val+
+@DEXPENV
+(topmap, !stkmap) = denv
+//
+in//let
+//
+$fold(denv) where
+{
+val
+(nerr,kxs) =
+stkmap_poploc0(stkmap)
+val
+((*void*)) =
+if
+stkmap_nilq(stkmap)
+then topmap_insert_kxs(topmap, kxs)
+else stkmap_insert_kxs(stkmap, kxs) }
+//
+end (*let*)//end-of-(dexpenv_locjoin(denv))
+//
 (* ****** ****** *)
 
 fun
@@ -313,7 +494,7 @@ topmap_insert_any(topmap, k0, x0)//top
 else
 stkmap_insert_any(stkmap, k0, x0)//inner
 //
-end (*let*)//end-of(dexpenv_insert_any(tenv,k0,x0))
+end (*let*)//end-of(dexpenv_insert_any(denv,k0,x0))
 //
 (* ****** ****** *)
 
@@ -357,6 +538,64 @@ val+
 ~TR12ENV(tenv, senv, denv) = env0
 } (*where*)//end-of(tr12env_free_top(tenv))
 //
+(* ****** ****** *)
+//
+#implfun
+tr12env_pshloc1
+  ( env0 ) = let
+//
+val+
+TR12ENV
+(tenv, senv, denv) = env0
+//
+val () = sortenv_pshloc1(tenv)
+val () = sexpenv_pshloc1(senv)
+val () = dexpenv_pshloc1(denv)
+//
+in//let
+end where
+{
+  // HX-2022-10-23: nothing
+} (*where*)//end-of-[tr12env_pshloc1(env0)]
+//
+#implfun
+tr12env_pshloc2
+  ( env0 ) = let
+//
+val+
+TR12ENV
+(tenv, senv, denv) = env0
+//
+val () = sortenv_pshloc2(tenv)
+val () = sexpenv_pshloc2(senv)
+val () = dexpenv_pshloc2(denv)
+//
+in//let
+end where
+{
+  // HX-2022-10-23: nothing
+} (*where*)//end-of-[tr12env_pshloc2(env0)]
+//
+(* ****** ****** *)
+
+#implfun
+tr12env_locjoin
+  ( env0 ) = let
+//
+val+
+TR12ENV
+(tenv, senv, denv) = env0
+//
+val () = sortenv_locjoin(tenv)
+val () = sexpenv_locjoin(senv)
+val () = dexpenv_locjoin(denv)
+//
+in//let
+end where
+{
+  // HX-2022-10-23: nothing
+} (*where*)//end-of-[tr12env_locjoin(env0)]
+
 (* ****** ****** *)
 
 #implfun
