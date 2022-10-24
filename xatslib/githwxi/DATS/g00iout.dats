@@ -154,6 +154,7 @@ but this seems so easy to actually forget!!!
 //
 *)
 //
+(*
 #impltmp
 {a:t0}
 gl_print0<a> =
@@ -168,6 +169,7 @@ gl_print1<a> =
 {
 #impltmp g_print$out<> = gl_print$out<>
 } (*where*) // end-of(gl_print1)
+*)
 //
 (* ****** ****** *)
 //

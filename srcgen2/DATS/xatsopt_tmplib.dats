@@ -193,14 +193,14 @@ xsymmap: topmap, stkmap
 {x0:t0}
 gl_print1
 <topmap(x0)>(map) =
-topmap_fprint<x0>
+topmap_fprint1<x0>
 (gl_print$out< >( (*void*) ), map)
 //
 #impltmp
 {x0:t0}
 gl_print1
 <stkmap(x0)>(map) =
-stkmap_fprint<x0>
+stkmap_fprint1<x0>
 (gl_print$out< >( (*void*) ), map)
 //
 (* ****** ****** *)

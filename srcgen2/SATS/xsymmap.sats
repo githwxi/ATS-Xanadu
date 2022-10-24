@@ -81,10 +81,10 @@ stkmap_make_nil
 //
 fun
 <x0:t0>
-topmap_fprint(FILR,topmap(x0)):void
+topmap_fprint1(FILR,!topmap(x0)):void
 fun
 <x0:t0>
-stkmap_fprint(FILR,stkmap(x0)):void
+stkmap_fprint1(FILR,!stkmap(x0)):void
 //
 (* ****** ****** *)
 //

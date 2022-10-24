@@ -61,6 +61,7 @@ _(*?*) = "./lexing0_print0.dats"
 t2abs_fprint
 (out, tabs) =
 let
+//
 #impltmp
 g_print$out<>() = out
 //

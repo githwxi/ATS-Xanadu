@@ -58,6 +58,11 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trans12.sats"
 (* ****** ****** *)
+//
+#staload _ = "./xsymmap_stkmap.dats"
+#staload _ = "./staexp2_print0.dats"
+//
+(* ****** ****** *)
 
 local
 
@@ -115,6 +120,7 @@ end (*let*)//end-of-(sortenv_pshloc1(tenv))
 fun
 sortenv_pshloc2
 (tenv: !sortenv) = let
+//
 val+
 @SORTENV
 (topmap, !stkmap) = tenv
@@ -142,9 +148,21 @@ in//let
 //
 $fold(tenv) where
 {
+//
 val
-(nerr,kxs) =
+(nerr, kxs) =
 stkmap_poploc0(stkmap)
+//
+(*
+val () =
+prerrln1
+("sortenv_locjoin:nerr=", nerr)
+val () =
+prerrln1(
+"sortenv_locjoin:stkmap(aft)=\n", stkmap
+)(*prerrln1*)
+*)
+//
 val
 ((*void*)) =
 if
@@ -248,6 +266,7 @@ val+
 fun
 sexpenv_pshloc1
 (senv: !sexpenv) = let
+//
 val+
 @SEXPENV
 (topmap, !stkmap) = senv
@@ -264,6 +283,7 @@ end (*let*)//end-of-(sexpenv_pshloc1(senv))
 fun
 sexpenv_pshloc2
 (senv: !sexpenv) = let
+//
 val+
 @SEXPENV
 (topmap, !stkmap) = senv
@@ -291,9 +311,21 @@ in//let
 //
 $fold(senv) where
 {
+//
 val
-(nerr,kxs) =
+(nerr, kxs) =
 stkmap_poploc0(stkmap)
+//
+(*
+val () =
+prerrln1
+("sexpenv_locjoin:nerr=", nerr)
+val () =
+prerrln1(
+"sexpenv_locjoin:stkmap(aft)=\n", stkmap
+)(*prerrln1*)
+*)
+//
 val
 ((*void*)) =
 if
@@ -368,6 +400,8 @@ dexpenv =
 DEXPENV of
 (topmap(itm), stkmap(itm))
 
+(* ****** ****** *)
+
 fun
 dexpenv_make_nil
   ( (*void*) ): dexpenv =
@@ -437,9 +471,21 @@ in//let
 //
 $fold(denv) where
 {
+//
 val
-(nerr,kxs) =
+(nerr, kxs) =
 stkmap_poploc0(stkmap)
+//
+(*
+val () =
+prerrln1
+("dexpenv_locjoin:nerr=", nerr)
+val () =
+prerrln1 (
+"dexpenv_locjoin:stkmap(aft)=\n", stkmap
+) (*prerrln1*)
+*)
+//
 val
 ((*void*)) =
 if
@@ -553,10 +599,8 @@ val () = sexpenv_pshloc1(senv)
 val () = dexpenv_pshloc1(denv)
 //
 in//let
-end where
-{
   // HX-2022-10-23: nothing
-} (*where*)//end-of-[tr12env_pshloc1(env0)]
+end (*let*)//end-of-[tr12env_pshloc1(env0)]
 //
 #implfun
 tr12env_pshloc2
@@ -571,10 +615,8 @@ val () = sexpenv_pshloc2(senv)
 val () = dexpenv_pshloc2(denv)
 //
 in//let
-end where
-{
   // HX-2022-10-23: nothing
-} (*where*)//end-of-[tr12env_pshloc2(env0)]
+end (*let*)//end-of-[tr12env_pshloc2(env0)]
 //
 (* ****** ****** *)
 
@@ -591,10 +633,8 @@ val () = sexpenv_locjoin(senv)
 val () = dexpenv_locjoin(denv)
 //
 in//let
-end where
-{
   // HX-2022-10-23: nothing
-} (*where*)//end-of-[tr12env_locjoin(env0)]
+end (*let*)//end-of-[tr12env_locjoin(env0)]
 
 (* ****** ****** *)
 
