@@ -268,6 +268,9 @@ sid1: sym_t, s2t2: sort2): s2cst
 (* ****** ****** *)
 //
 fun
+s2var_make_name
+(   name: sym_t    ): s2var
+fun
 s2var_make_sort
 (   s2t0: sort2    ): s2var
 fun

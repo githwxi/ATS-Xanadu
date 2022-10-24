@@ -68,6 +68,12 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with sort1_get_lctn
 #symload node with sort1_get_node
 (* ****** ****** *)
+#symload lctn with s1arg_get_lctn
+#symload node with s1arg_get_node
+#symload lctn with s1mag_get_lctn
+#symload node with s1mag_get_node
+(* ****** ****** *)
+(* ****** ****** *)
 #symload lctn with t1arg_get_lctn
 #symload node with t1arg_get_node
 #symload lctn with t1mag_get_lctn
@@ -317,6 +323,61 @@ end (*let*) // end of [f0_list(env0,s1t0)]
 (* ****** ****** *)
 //
 } (*where*) // end of [trans12_sort1(env0,s1t0)]
+
+(* ****** ****** *)
+
+#implfun
+trans12_s1arg
+( env0,s1a0 ) =
+(
+case+
+s1a0.node() of
+|
+S1ARGsome
+(tok1, topt) =>
+let
+val
+sym1 = sargid_sym(tok1)
+in//let
+case+ topt of
+|
+optn_nil() =>
+s2var_make_name(sym1)
+|
+optn_cons(s1t2) =>
+let
+val s2t2 =
+trans12_sort1(env0, s1t2)
+in//let
+s2var_make_idst(sym1, s2t2)
+end (*let*) // end of [optn_cons]
+end (*let*) // end of [S1ARGsome]
+) where
+{
+  // HX-2022-10-24: nothing
+} (*where*) // end of [trans12_s1arg(env0,s1a0)
+
+(* ****** ****** *)
+
+#implfun
+trans12_s1mag
+( env0,s1ma ) =
+(
+case+
+s1ma.node() of
+|
+S1MAGlist(s1as) =>
+trans12_s1arglst(env0, s1as)) where
+{
+//
+(*
+val
+loc0 = s1ma.lctn()
+val () =
+prerrln("trans12_s1mag: s1ma = ", s1ma)
+*)
+//
+} (*where*) // end of [trans12_s1mag(env0,s1ma)
 
 (* ****** ****** *)
 
