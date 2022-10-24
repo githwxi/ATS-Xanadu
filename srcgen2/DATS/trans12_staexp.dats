@@ -640,6 +640,20 @@ list_trans12_fnp(env0, s1ts, trans12_sort1)
 (* ****** ****** *)
 
 #implfun
+trans12_s1arglst
+  (env0, s1as) =
+list_trans12_fnp(env0, s1as, trans12_s1arg)
+
+(* ****** ****** *)
+
+#implfun
+trans12_s1maglst
+  (env0, smas) =
+list_trans12_fnp(env0, smas, trans12_s1mag)
+
+(* ****** ****** *)
+
+#implfun
 trans12_t1arglst
   (env0, t1as) =
 list_trans12_fnp(env0, t1as, trans12_t1arg)

@@ -73,6 +73,9 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef sort1 = $S1E.sort1
 (* ****** ****** *)
+#typedef s1arg = $S1E.s1arg
+#typedef s1mag = $S1E.s1mag
+(* ****** ****** *)
 #typedef t1arg = $S1E.t1arg
 #typedef t1mag = $S1E.t1mag
 (* ****** ****** *)
@@ -80,8 +83,10 @@ LEX = "./lexing0.sats"
 #typedef l1s1e = $S1E.l1s1e
 (* ****** ****** *)
 #typedef sort2 = $S2E.sort2
-#typedef s2var = $S2E.s2var
+(* ****** ****** *)
 #typedef s2cst = $S2E.s2cst
+#typedef s2var = $S2E.s2var
+(* ****** ****** *)
 #typedef s2exp = $S2E.s2exp
 #typedef l2s2e = $S2E.l2s2e
 (* ****** ****** *)
@@ -106,13 +111,20 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef sort1lst = $S1E.sort1lst
 (* ****** ****** *)
+#typedef s1arglst = $S1E.s1arglst
+#typedef s1maglst = $S1E.s1maglst
+(* ****** ****** *)
 #typedef t1arglst = $S1E.t1arglst
 #typedef t1maglst = $S1E.t1maglst
 (* ****** ****** *)
-//
 #typedef s1explst = $S1E.s1explst
 #typedef l1s1elst = $S1E.l1s1elst
+(* ****** ****** *)
 #typedef sort2lst = $S2E.sort2lst
+(* ****** ****** *)
+#typedef s2cstlst = $S2E.s2cstlst
+#typedef s2varlst = $S2E.s2varlst
+(* ****** ****** *)
 #typedef s2explst = $S2E.s2explst
 #typedef l2s2elst = $S2E.l2s2elst
 //
@@ -146,6 +158,7 @@ LEX = "./lexing0.sats"
 //
 (* ****** ****** *)
 #typedef sort2lstlst = list(sort2lst)
+#typedef s2varlstlst = list(s2varlst)
 (* ****** ****** *)
 #absvtbx tr12env_vtbx
 #vwtpdef tr12env = tr12env_vtbx
@@ -264,6 +277,13 @@ trans12_sort1:
 //
 (* ****** ****** *)
 fun
+trans12_s1arg:
+(!tr12env, s1arg)->s2var
+fun
+trans12_s1mag:
+(!tr12env, s1mag)->s2varlst
+(* ****** ****** *)
+fun
 trans12_t1arg:
 (!tr12env, t1arg)->sort2
 fun
@@ -293,6 +313,15 @@ trans12_sort1lst
 ( env0:
 ! tr12env, s1ts: sort1lst): sort2lst
 //
+(* ****** ****** *)
+fun
+trans12_s1arglst
+( env0:
+! tr12env, s1as: s1arglst): s2varlst
+fun
+trans12_s1maglst
+( env0:
+! tr12env, smas: s1maglst): s2varlstlst
 (* ****** ****** *)
 fun
 trans12_t1arglst
