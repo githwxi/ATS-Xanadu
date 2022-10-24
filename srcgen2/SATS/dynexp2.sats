@@ -486,7 +486,7 @@ d2ecl_node =
 |D2Cextern of
  (token(*EXTERN*), d2ecl)
 //
-|D2Clocal of
+|D2Clocal0 of
  (d2eclist(*local*), d2eclist)
 //
 |D2Cabssort of (sym_t)
