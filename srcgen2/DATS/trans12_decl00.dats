@@ -238,7 +238,7 @@ list_nil() => tres
 |
 list_cons(s2ts, stss) =>
 (
-auxtfun(tres, stss)) where
+  auxtfun(tres, stss)) where
 {
 val tres = S2Tf1un(s2ts, tres)
 }
@@ -280,11 +280,12 @@ end (*let*) // end of [f0_stacst0(env0,d1cl)]
 (* ****** ****** *)
 //
 fun
-f0_stacst0
+f0_sexpdef
 ( env0:
 ! tr12env
 , d1cl: d1ecl): d2ecl =
 let
+//
 val
 loc0 = d1cl.lctn()
 val-
@@ -299,12 +300,12 @@ svss =
 trans12_s1maglst(env0, smas)
 //
 val
-s2e1 =
+sdef =
 (
 case+ topt of
 |
 optn_nil() =>
-trans12_s1exp(env0, s1e1)
+trans12_s1exp(env0, sdef)
 |
 optn_cons(s1t1) =>
 let
@@ -315,7 +316,37 @@ trans12_s1exp_sort(env0, sdef, s2t1)
 endlet // end of [optn_cons]
 )
 //
-val sdef = auxslam(sdef, svss)
+val sdef =
+(
+auxslam
+(sdef, svss)) where
+{
+fun
+auxslam
+( sdef
+: s2exp
+, svss
+: s2varlstlst): s2exp =
+(
+case+ svss of
+|
+list_nil() => sdef
+|
+list_cons(s2vs, svss) =>
+(
+auxslam(sdef, svss)) where
+{
+val
+sdef = s2exp_lam0(s2vs, sdef) }
+) (*case+*) // end-of-[auxslam]
+} (*where*) // end-of-[val sdef]
+//
+val s2c1 =
+s2cst_make_idst
+(loc0, sid1, s2t2) where
+{
+  val s2t2 = sdef.sort()
+  val sid1 = sexpid_sym(tok1) }
 //
 in//let
 d2ecl_make_node
