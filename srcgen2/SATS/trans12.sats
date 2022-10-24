@@ -235,6 +235,13 @@ tr12env_qfind_d2itm
 (* ****** ****** *)
 //
 fun
+tr12env_poplam0(env: !tr12env): void
+fun
+tr12env_pshlam0(env: !tr12env): void
+//
+(* ****** ****** *)
+//
+fun
 tr12env_poplet0(env: !tr12env): void
 fun
 tr12env_pshlet0(env: !tr12env): void
