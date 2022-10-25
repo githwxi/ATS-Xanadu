@@ -69,6 +69,9 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with s1tdf_get_lctn
+#symload node with s1tdf_get_node
+(* ****** ****** *)
 #symload lctn with d1pat_get_lctn
 #symload node with d1pat_get_node
 (* ****** ****** *)
@@ -131,6 +134,9 @@ D1Clocal0 _ => f0_local0(env0, d1cl)
 D1Cabssort _ => f0_abssort(env0, d1cl)
 |
 D1Cstacst0 _ => f0_stacst0(env0, d1cl)
+//
+|
+D1Csortdef _ => f0_sortdef(env0, d1cl)
 //
 |
 D1Csexpdef _ => f0_sexpdef(env0, d1cl)
@@ -280,6 +286,45 @@ end (*let*) // end of [f0_stacst0(env0,d1cl)]
 (* ****** ****** *)
 //
 fun
+f0_sortdef
+( env0:
+! tr12env
+, d1cl: d1ecl): d2ecl =
+let
+//
+val
+loc0 = d1cl.lctn()
+val-
+D1Csortdef
+( tknd
+, tok1, stdf) = d1cl.node()
+//
+in//let
+//
+case+
+stdf.node() of
+|
+S1TDFsort(s1t1) =>
+let
+val s2t1 =
+trans12_sort1(env0, s1t1)
+val s2tx = S2TEXsrt(s2t1)
+in//let
+d2ecl_make_node
+( loc0
+, D2Csortdef(tid1, s2tx)) where
+{
+val
+tid1 = sortid_sym(tok1)
+val () =
+tr12env_add0_s2tex(env0, tid1, s2tx) }
+end (*let*) // end of [S1TDFsort(s1t1)]
+//
+end (*let*) // end of [f0_sortdef(env0,d1cl)]
+//
+(* ****** ****** *)
+//
+fun
 f0_sexpdef
 ( env0:
 ! tr12env
@@ -345,7 +390,7 @@ let
 val s2t1 =
 trans12_sort1(env0, s1t1)
 in//let
-trans12_s1exp_sort(env0, sdef, s2t1)
+trans12_s1exp_stck(env0, sdef, s2t1)
 endlet // end of [optn_cons]
 )
 //
@@ -383,7 +428,6 @@ sdef = s2exp_lam0(s2vs, sdef) }
 val () =
 prerrln
 ("f0_sexpdef: sdef=", sdef)
-//
 //
 val s2c1 =
 s2cst_make_idst
