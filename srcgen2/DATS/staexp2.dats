@@ -375,6 +375,20 @@ val s2t0 = the_sort2_int in
 s2exp_make_node(s2t0, S2Eint(int))
 end (*let*) // end of [ s2exp_int(int) ]
 (* ****** ****** *)
+#implfun
+s2exp_btf(btf) =
+let
+val s2t0 = the_sort2_bool in
+s2exp_make_node(s2t0, S2Ebtf(btf))
+end (*let*) // end of [ s2exp_btf(btf) ]
+(* ****** ****** *)
+#implfun
+s2exp_chr(chr) =
+let
+val s2t0 = the_sort2_char in
+s2exp_make_node(s2t0, S2Echr(chr))
+end (*let*) // end of [ s2exp_chr(chr) ]
+(* ****** ****** *)
 //
 #implfun
 s2exp_cst(s2c0) =

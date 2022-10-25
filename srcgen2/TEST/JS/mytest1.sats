@@ -18,7 +18,11 @@ myscst02
 #sortdef mysort2 = tabs2
 (* ****** ****** *)
 #sexpdef
-mysexp0(): int = 0
+int_0: int = 0
+#sexpdef
+char_0: char = '\0'
+#sexpdef
+bool_1: bool = true
 (* ****** ****** *)
 #sexpdef
 mysexp1(a:tabs1): tabs1 = a

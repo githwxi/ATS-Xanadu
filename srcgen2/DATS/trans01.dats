@@ -86,8 +86,10 @@ prerrln("token2sint: tok = ", tok)
 //
 fun
 fint
-( rep: strn
-, bas: sint): sint =
+( rep
+: strn
+, bas
+: sint): sint =
 gseq_foldl
 <strn><cgtz><sint>(rep, 0) where
 {
@@ -97,6 +99,53 @@ foldl$fopr
 }
 //
 } (*where*) // en dof [token2sint(tok)]
+
+(* ****** ****** *)
+
+#implfun
+token2schr
+  (tok) =
+(
+case-
+tok.node() of
+|
+T_CHAR1_nil0(_) => '\0'
+| // regular: '?'
+T_CHAR2_char(rep) =>
+let
+val opt =
+gseq_get_at_opt
+< strn >< cgtz >(rep, 1)
+in//let
+case- opt of
+| ~optn_vt_cons(chr) => chr
+end (*let*) // [T_CHAR2_char]
+| // backslash: '\...'
+T_CHAR3_blsh(rep) => fchr(rep)
+) where
+{
+//
+(*
+val () =
+prerrln("token2schr: tok = ", tok)
+*)
+//
+fun
+fchr
+( rep
+: strn): char =
+char_make_sint
+(
+gseq_foldl
+<strn><cgtz><sint>(rep, 0)) where
+{
+#impltmp
+foldl$fopr
+<cgtz><sint>(r0, c0) = // HX:base=8!
+if
+isdigit(c0) then r0*8+(c0-'0') else r0
+}
+} (*where*) // en dof [token2schr(tok)]
 
 (* ****** ****** *)
 
