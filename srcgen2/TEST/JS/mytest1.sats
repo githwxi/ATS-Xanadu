@@ -14,12 +14,16 @@ endloc // end of [local]
 myscst02
 (tabs1, tabs2): tabs3
 (* ****** ****** *)
-#sortdef mysort = tabs2
+#sortdef mysort1 = tabs1
+#sortdef mysort2 = tabs2
+(* ****** ****** *)
+#sexpdef
+mysexp0(): int = 0
 (* ****** ****** *)
 #sexpdef
 mysexp1(a:tabs1): tabs1 = a
 #sexpdef
-mysexp2(a:tabs1): mysort = a
+mysexp2(a:tabs1): mysort2 = a
 (* ****** ****** *)
 ////
 (* ****** ****** *)
