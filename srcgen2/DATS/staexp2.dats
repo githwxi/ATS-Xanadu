@@ -305,28 +305,28 @@ endloc (*local*) // end of [local(s2var)]
 
 (* ****** ****** *)
 #implfun
-s2var_make_sort(s2t) =
-let
+s2var_make_sort
+  (   s2t   ) = let
+//
 val id0 =
 SRP_symbl in s2var_make_idst(id0, s2t)
+//
 end (*let*) // end-[s2var_make_sort(s2t)]
 (* ****** ****** *)
 //
 #implfun
-s2exp_none0() =
-s2exp
-(s2t0, S2Enone0()) where
-{
-  val s2t0 = sort2_none0() }
-// end of [s2exp_none0(...)]
-#implfun
-s2exp_none1(s1e0) =
+s2exp_cst(s2c0) =
 let
-val loc0 = s1e0.lctn()
-val s2t0 = sort2_none0() 
-in
-s2exp(s2t0, S2Enone1(loc0, s1e0))
-end (*let*) // end of [s2exp_none1(s1e0)]
+val s2t0 = s2c0.sort() in
+s2exp_make_node(s2t0, S2Ecst(s2c0))
+end (*let*) // end of [ s2exp_cst(s2c0) ]
+//
+#implfun
+s2exp_var(s2v0) =
+let
+val s2t0 = s2v0.sort() in
+s2exp_make_node(s2t0, S2Evar(s2v0))
+end (*let*) // end of [ s2exp_var(s2v0) ]
 //
 (* ****** ****** *)
 
@@ -349,6 +349,31 @@ in
   s2exp(s2t0, S2Elam0(s2vs, body))
 end (*let*) // end of [s2exp_lam0(s2vs,body)]
 
+(* ****** ****** *)
+//
+#implfun
+s2exp_none0() =
+s2exp
+(s2t0, S2Enone0()) where
+{
+  val s2t0 = sort2_none0() }
+// end of [s2exp_none0(...)]
+//
+#implfun
+s2exp_none1(s1e0) =
+let
+//
+val loc0 = s1e0.lctn()
+val s2t0 = sort2_none0() 
+//
+(*
+val (  ) = prerrln
+("s2exp_none1: s1e0 = ", s1e0)
+*)
+in//let
+s2exp(s2t0, S2Enone1(loc0, s1e0))
+end (*let*) // end of [s2exp_none1(s1e0)]
+//
 (* ****** ****** *)
 
 local

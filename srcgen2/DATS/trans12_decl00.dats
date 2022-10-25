@@ -295,6 +295,13 @@ D1Csexpdef
 , smas
 , topt, sdef) = d1cl.node()
 //
+val () =
+prerrln
+("f0_sexpdef: smas=", smas)
+val () =
+prerrln
+("f0_sexpdef: sdef=", sdef)
+//
 val
 svss =
 trans12_s1maglst(env0, smas)
@@ -342,6 +349,10 @@ trans12_s1exp_sort(env0, sdef, s2t1)
 endlet // end of [optn_cons]
 )
 //
+val () =
+prerrln
+("f0_sexpdef: sdef=", sdef)
+//
 val () = tr12env_poplam0(env0)
 //
 val sdef =
@@ -368,6 +379,11 @@ val
 sdef = s2exp_lam0(s2vs, sdef) }
 ) (*case+*) // end-of-[auxslam]
 } (*where*) // end-of-[val sdef]
+//
+val () =
+prerrln
+("f0_sexpdef: sdef=", sdef)
+//
 //
 val s2c1 =
 s2cst_make_idst

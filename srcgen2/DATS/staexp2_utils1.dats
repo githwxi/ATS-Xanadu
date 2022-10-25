@@ -62,7 +62,7 @@ case+ s2t0 of
 case+ tbas of
 | T2Bpred(name) =>
   (name = INT_symbl)
-| _ (* non-T2Bpred *) => false
+| _(*non-T2Bpred*) => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
 ) (* case+ *) // end of [sort2_intq]
@@ -88,7 +88,7 @@ case+ s2t0 of
 case+ tbas of
 | T2Bpred(name) =>
   (name = ADDR_symbl)
-| _ (* non-T2Bpred *) => false
+| _(*non-T2Bpred*) => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
 ) (* case+ *) // end of [sort2_addrq]
@@ -105,7 +105,7 @@ case+ s2t0 of
 case+ tbas of
 | T2Bpred(name) =>
   (name = BOOL_symbl)
-| _ (* non-T2Bpred *) => false
+| _(*non-T2Bpred*) => false
 ) // end of [S2RTbas]
 | _ (* non-S2Tbas *) => false
 ) (* case+ *) // end of [sort2_boolq]

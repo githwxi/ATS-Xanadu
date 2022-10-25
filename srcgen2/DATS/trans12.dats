@@ -79,6 +79,56 @@ map$fopr_e1nv<x0><y0>(x0, e1) = fopr(e1, x0)
 } (*where*)//end of [optn_trans12_fnp(e1,xs,fopr)]
 
 (* ****** ****** *)
+//
+(*
+HX-2019-02:
+Please note that
+a non-functional s2cst is
+preferred over the functional ones
+*)
+//
+#implfun
+s2cst_select_any
+  (   s2cs   ) =
+(
+  test1(s2cs)) where
+{
+//
+fun
+test1
+(
+xs: s2cstlst
+) : s2cstopt_vt =
+(
+case+ xs of
+|
+list_nil() =>
+(
+  test2(s2cs)
+)
+|
+list_cons(x0, xs) =>
+if
+sort2_funq(x0.sort())
+then
+test1(xs) else optn_vt_cons(x0) 
+)
+and
+test2
+(
+xs: s2cstlst
+) : s2cstopt_vt =
+(
+case+ xs of
+|
+list_nil() => optn_vt_nil()
+|
+list_cons(x0, xs) => optn_vt_cons(x0)
+)
+//
+} (*where*) // end of [s2cst_select_any]
+
+(* ****** ****** *)
 
 #implfun
 d2parsed_from_trans

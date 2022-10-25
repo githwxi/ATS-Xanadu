@@ -16,7 +16,7 @@ myscst02
 (* ****** ****** *)
 #sortdef mysort = tabs1
 (* ****** ****** *)
-#sexpdef mysexp(a:int) = a + a
+#sexpdef mysexp(a:int) = a // + a
 (* ****** ****** *)
 ////
 (* ****** ****** *)
