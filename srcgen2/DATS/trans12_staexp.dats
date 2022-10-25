@@ -763,12 +763,32 @@ S1Eanno
 val
 s2t2 = trans12_sort1(env0, s1t2)
 in//let
-  trans12_s1exp_sort(env0, s1e1, s2t2)
+  trans12_s1exp_stck(env0, s1e1, s2t2)
 end (*let*) // end of [f0_anno(env0, s1e0)]
 //
 (* ****** ****** *)
 //
 } (*where*) // end of [trans12_s1exp(env0,s1e0)]
+
+(* ****** ****** *)
+
+#implfun
+trans12_s1exp_stck
+(env0, s1e1, s2t2) =
+let
+val
+s2e1 =
+trans12_s1exp(env0, s1e1)
+val
+s2t1 = s2e1.sort((*void*))
+val
+subq =
+lte_sort2_sort2(s2t1, s2t2)
+in//let
+if subq
+then s2e1 else
+s2exp_cast(s1e1.lctn(), s2e1, s2t2)
+end (*let*)//end-of[trans12_s1exp_stck(env0,...)]
 
 (* ****** ****** *)
 
