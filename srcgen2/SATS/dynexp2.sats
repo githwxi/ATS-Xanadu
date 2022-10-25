@@ -82,6 +82,7 @@ S2E = "./staexp2.sats"
 #typedef d1ecl = $D1E.d1ecl
 (* ****** ****** *)
 #typedef sort2 = $S2E.sort2
+#typedef s2tex = $S2E.s2tex
 (* ****** ****** *)
 #typedef s2cst = $S2E.s2cst
 #typedef s2var = $S2E.s2var
@@ -493,6 +494,8 @@ d2ecl_node =
 |D2Cabssort of (sym_t)
 //
 |D2Cstacst0 of (s2cst, sort2)
+//
+|D2Csortdef of (sym_t, s2tex)
 //
 |D2Csexpdef of (s2cst, s2exp)
 //

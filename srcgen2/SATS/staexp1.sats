@@ -536,8 +536,10 @@ d1tst_make_node
 //
 datatype
 s1tdf_node =
-| S1TDFsort of sort1
-| S1TDFtsub of (s1arg, s1explst)
+|
+S1TDFsort of sort1
+|
+S1TDFtsub of (s1arg, s1explst)
 //
 (* ****** ****** *)
 fun
