@@ -321,6 +321,10 @@ print("D2Cabssort(",tid0,")")
 |
 D2Cstacst0(s2c1,s2t2) =>
 print("D2Cstacst0(",s2c1,";",s2t2,")")
+//
+|
+D2Csortdef(tid1,s2tx) =>
+print("D2Csortdef(",tid1,";",s2tx,")")
 |
 D2Csexpdef(s2c1,s2e2) =>
 print("D2Csexpdef(",s2c1,";",s2e2,")")
