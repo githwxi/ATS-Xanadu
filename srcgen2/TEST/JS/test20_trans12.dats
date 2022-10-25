@@ -168,6 +168,8 @@
 "./../../DATS/staexp2.dats"
 #include
 "./../../DATS/staexp2_print0.dats"
+#include
+"./../../DATS/staexp2_utils1.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/dynexp2.dats"

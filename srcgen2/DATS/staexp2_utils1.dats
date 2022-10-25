@@ -173,6 +173,11 @@ _ (* non-S2Tbas *) => false) // sort2_prgmq
 //
 (* ****** ****** *)
 #implfun
+t2abs_equal
+(x1, x2) =
+(x1.stmp() = x2.stmp())
+(* ****** ****** *)
+#implfun
 t2dat_equal
 (x1, x2) =
 (x1.stmp() = x2.stmp())
@@ -180,6 +185,7 @@ t2dat_equal
 #impltmp
 g_lte<t2bas> = lte_t2bas_t2bas
 (* ****** ****** *)
+
 #implfun
 lte_t2bas_t2bas
 (x1, x2) =
@@ -187,16 +193,19 @@ lte_t2bas_t2bas
 case+
 (x1, x2) of
 |
-( T2Bpred(s1)
-, T2Bpred(s2)) => (s1 = s2)
+( T2Bpred(nm1)
+, T2Bpred(nm2)) => (nm1 = nm2)
 |
-( T2Btdat(t1)
-, T2Btdat(t2)) => t2dat_equal(t1, t2)
+( T2Btabs(ta1)
+, T2Btabs(ta2)) => t2abs_equal(ta1, ta2)
 |
-( T2Bimpr(k1, s1)
-, T2Bimpr(k2, s2)) => subsort_test(k1, k2)
+( T2Btdat(td1)
+, T2Btdat(td2)) => t2dat_equal(td1, td2)
+|
+( T2Bimpr(kx1, _)
+, T2Bimpr(kx2, _)) => subsort_test(kx1, kx2)
 //
-| (_(*rest*), _(*rest*)) => (  false )
+| (_(*rest*), _(*rest*)) => (   false   )
 //
 ) (*case+*) // end of [lte_t2bas_t2bas(x1,x2)]
 
