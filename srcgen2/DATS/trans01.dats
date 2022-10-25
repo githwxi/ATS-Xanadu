@@ -121,6 +121,24 @@ tok.node() of
 (* ****** ****** *)
 
 #implfun
+sargid_sym(tok) =
+(
+case-
+tok.node() of
+//
+(*
+| T_IDENT(nam) =>
+  $SYM.symbl_make_name(nam)
+*)
+//
+| T_IDALP(nam) =>
+  $SYM.symbl_make_name(nam)
+//
+) (*case-*) // end of [sargid_sym(tok)]
+
+(* ****** ****** *)
+
+#implfun
 sexpid_sym(tok) =
 (
 case-

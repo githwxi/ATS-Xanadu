@@ -189,11 +189,9 @@ s2cst_make_idst
 (loc, sym, s2t) =
 (
 S2CST
-( loc
-, sym, s2t, tmp)) where
-{
-  val tmp =
-  the_s2cst_stamp_new((*void*))
+(loc, sym, s2t, tmp)) where
+{ val
+  tmp = the_s2cst_stamp_new((*void*))
 } (*where*) // end of [s2cst_make_idst(...)]
 
 (* ****** ****** *)
@@ -295,13 +293,11 @@ end (*let*) // end of [s2var_get_stmp]
 #implfun
 s2var_make_idst
   (sid, s2t) =
-let
-val s2v =
-S2VAR(sid, s2t, tmp) where
-{val tmp = the_s2var_stamp_new()}
-in//let
-  the_s2varmap_insert_any(s2v); s2v
-end (*let*) // end of [s2var_make_idst]
+(
+S2VAR(sid, s2t, tmp)) where
+{ val
+  tmp = the_s2var_stamp_new((*void*))
+} (*where*) // end of [s2var_make_idst]
 //
 (* ****** ****** *)
 
@@ -313,7 +309,25 @@ s2var_make_sort(s2t) =
 let
 val id0 =
 SRP_symbl in s2var_make_idst(id0, s2t)
-end (*let*)//end of [s2var_make_sort(s2t)]
+end (*let*) // end-[s2var_make_sort(s2t)]
+(* ****** ****** *)
+//
+#implfun
+s2exp_none0() =
+s2exp
+(s2t0, S2Enone0()) where
+{
+  val s2t0 = sort2_none0() }
+// end of [s2exp_none0(...)]
+#implfun
+s2exp_none1(s1e0) =
+let
+val loc0 = s1e0.lctn()
+val s2t0 = sort2_none0() 
+in
+s2exp(s2t0, S2Enone1(loc0, s1e0))
+end (*let*) // end of [s2exp_none1(s1e0)]
+//
 (* ****** ****** *)
 
 #implfun
@@ -334,6 +348,40 @@ val s2t0 =
 in
   s2exp(s2t0, S2Elam0(s2vs, body))
 end (*let*) // end of [s2exp_lam0(s2vs,body)]
+
+(* ****** ****** *)
+
+local
+//
+datatype s2exp =
+S2EXP of (sort2,s2exp_node)
+//
+#absimpl s2exp_tbox = s2exp
+//
+in//local
+//
+#implfun
+s2exp_get_sort
+   ( s2e0 ) = let
+//
+val
+S2EXP(s2t0, node) = s2e0 in s2t0
+//
+end (*let*) // end of [s2exp_get_sort]
+#implfun
+s2exp_get_node
+   ( s2e0 ) = let
+//
+val
+S2EXP(s2t0, node) = s2e0 in node
+//
+end (*let*) // end of [s2exp_get_node]
+//
+#implfun
+s2exp_make_node
+( s2t0 , node ) = S2EXP(s2t0, node)
+//
+endloc (*local*) // end of [local(s2exp)]
 
 (* ****** ****** *)
 
