@@ -242,6 +242,24 @@ t2dat_get_s2cs(t2d:t2dat):s2cstlst
 #symload stmp with t2dat_get_stmp
 #symload s2cs with t2dat_get_s2cs
 (* ****** ****** *)
+//
+fun
+the_sort2_int : sort2
+fun
+the_sort2_addr : sort2
+fun
+the_sort2_bool : sort2
+fun
+the_sort2_char : sort2
+//
+(*
+fun
+the_sort2_real : sort2
+fun
+the_sort2_strn : sort2
+*)
+//
+(* ****** ****** *)
 fun
 sort2_int(i0: sint): sort2
 (* ****** ****** *)

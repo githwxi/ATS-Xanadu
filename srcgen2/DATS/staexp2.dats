@@ -368,6 +368,13 @@ SRP_symbl in s2var_make_idst(id0, s2t)
 //
 end (*let*) // end-[s2var_make_sort(s2t)]
 (* ****** ****** *)
+#implfun
+s2exp_int(int) =
+let
+val s2t0 = the_sort2_int in
+s2exp_make_node(s2t0, S2Eint(int))
+end (*let*) // end of [ s2exp_int(int) ]
+(* ****** ****** *)
 //
 #implfun
 s2exp_cst(s2c0) =
