@@ -61,6 +61,8 @@ HX-2022-10-01: Various symbols
 #implval SMCLN_symbl = symbl(";")
 #implval TILDA_symbl = symbl("~")
 //
+#implval WCARD_symbl = symbl("_")
+//
 (* ****** ****** *)
 //
 #implval ADD_symbl = symbl("+")

@@ -108,6 +108,8 @@ val SRP_symbl: symbl//symbl("#")
 val SMCLN_symbl: symbl//symbl(";")
 val TILDA_symbl: symbl//symbl("~")
 //
+val WCARD_symbl: symbl//symbl("_")
+//
 (* ****** ****** *)
 //
 val ADD_symbl: symbl //=symbl("+")

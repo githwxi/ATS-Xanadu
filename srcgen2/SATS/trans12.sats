@@ -121,13 +121,13 @@ LEX = "./lexing0.sats"
 #typedef l1s1elst = $S1E.l1s1elst
 (* ****** ****** *)
 #typedef sort2lst = $S2E.sort2lst
-(* ****** ****** *)
 #typedef s2cstlst = $S2E.s2cstlst
 #typedef s2varlst = $S2E.s2varlst
-(* ****** ****** *)
 #typedef s2explst = $S2E.s2explst
 #typedef l2s2elst = $S2E.l2s2elst
-//
+(* ****** ****** *)
+#typedef s2cstopt = $S2E.s2cstopt
+#typedef s2varopt = $S2E.s2varopt
 (* ****** ****** *)
 //
 #typedef d1patlst = $D1E.d1patlst
@@ -157,6 +157,9 @@ LEX = "./lexing0.sats"
 #typedef d2parsed = $D2E.d2parsed
 //
 (* ****** ****** *)
+#vwtpdef s2varopt_vt = optn_vt(s2var)
+#vwtpdef s2cstopt_vt = optn_vt(s2cst)
+(* ****** ****** *)
 #typedef sort2lstlst = list(sort2lst)
 #typedef s2varlstlst = list(s2varlst)
 (* ****** ****** *)
@@ -167,10 +170,14 @@ LEX = "./lexing0.sats"
 #vwtpdef s2itmopt_vt = optn_vt(s2itm)
 #vwtpdef d2itmopt_vt = optn_vt(d2itm)
 (* ****** ****** *)
+fun
+s2cst_select_any
+(s2cs: s2cstlst): s2cstopt_vt
+(* ****** ****** *)
 //
 fun
 d2parsed_from_trans
-(  dpar: d1parsed  ): d2parsed
+( dpar : d1parsed ): d2parsed
 //
 (* ****** ****** *)
 fun

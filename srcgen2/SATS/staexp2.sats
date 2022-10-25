@@ -385,7 +385,8 @@ s2exp_node =
   (loc_t, s2exp) // sort-checking error
 | S2Ecprf of // HX: for storing
   (loc_t, s2exp) // sort-checking error
-| S2Ecast of // HX-2108-12-23: for storing
+//
+| S2Ecast of // HX-2018-12-23: for storing
   (loc_t, s2exp, sort2) // sort-checking error
 //
 | S2Enone0 // of () // HX: error or special
@@ -494,6 +495,11 @@ fun
 sort2_polpos(s2t0:sort2): sort2
 fun
 sort2_polneg(s2t0:sort2): sort2
+(* ****** ****** *)
+fun
+s2exp_cst( s2c0: s2cst ): s2exp
+fun
+s2exp_var( s2v0: s2var ): s2exp
 (* ****** ****** *)
 fun
 s2exp_l1st(s2es: s2explst): s2exp

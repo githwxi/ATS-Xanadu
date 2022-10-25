@@ -168,17 +168,17 @@ f0_id0
 //
 val-
 S1Tid0
-(tid0) = s1t0.node()
+(tid1) = s1t0.node()
 val
 topt =
-tr12env_find_s2tex(env0,tid0)
+tr12env_find_s2tex(env0,tid1)
 //
 in//let
 //
 case+ topt of
 //
 | ~
-optn_vt_nil() => S2Tid0(tid0)
+optn_vt_nil() => S2Tid0(tid1)
 //
 | ~
 optn_vt_cons(s2t0) =>
@@ -430,18 +430,22 @@ prerrln("trans12_t1mag: t1ma = ", t1ma)
 trans12_s1exp
 ( env0,s1e0 ) = let
 //
-(*
+// (*
 val
 loc0 = s1e0.lctn()
 val () =
 prerrln
 ("trans12_s1exp: s1e0 = ", s1e0)
-*)
+// *)
 //
 in//let
 //
 case+
 s1e0.node() of
+//
+|
+S1Eid0 _ =>
+f0_id0(env0, s1e0)
 //
 |S1Eint(tok) =>
 s2exp_int(token2sint(tok))
@@ -472,6 +476,81 @@ S1Eanno _ => f0_anno(env0, s1e0)
 //
 end where
 {
+//
+(* ****** ****** *)
+fun
+isANY
+( s1e0
+: s1exp): bool =
+(
+case+
+s1e0.node() of
+| S1Eid0(sid1) =>
+  (sid1 = WCARD_symbl)
+| _(*non-S1Eid0*) => false
+)
+(* ****** ****** *)
+//
+fun
+f0_id0
+( env0:
+! tr12env
+, s1e0: s1exp): s2exp =
+let
+val-
+S1Eid0(sid1) = s1e0.node()
+val
+sopt =
+tr12env_find_s2itm(env0,sid1)
+in//let
+case+ sopt of
+| ~
+optn_vt_nil
+() => s2exp_none1(s1e0)
+| ~
+optn_vt_cons
+(s2i0) => f0_id0_s2i(env0,s1e0,s2i0)
+end (*let*) // end of [f0_id0(env0,s1e0)]
+//
+and
+f0_id0_s2i
+( env0:
+! tr12env
+, s1e0: s1exp
+, s2i0: s2itm): s2exp =
+(
+//
+case- s2i0 of
+|
+S2ITMvar
+( s2v0 ) => f0_id0_s2v(env0,s1e0,s2v0)
+|
+S2ITMcst
+( s2cs ) => f0_id0_s2c(env0,s1e0,s2cs)
+//
+) (*case-*) // end of [f0_id0_s2i(env0,...)]
+//
+and
+f0_id0_s2v
+( env0:
+! tr12env
+, s1e0: s1exp
+, s2v0: s2var): s2exp = s2exp_var(s2v0)
+//
+and
+f0_id0_s2c
+( env0:
+! tr12env
+, s1e0: s1exp
+, s2cs: s2cstlst): s2exp =
+let
+val
+opt0 = s2cst_select_any(s2cs)
+in//let
+case+ opt0 of
+| ~optn_vt_nil() => s2exp_none1(s1e0)
+| ~optn_vt_cons(s2c0) => s2exp_cst(s2c0)
+end (*let*) // end of [f0_id0_cst(env0,...)]
 //
 (* ****** ****** *)
 //
