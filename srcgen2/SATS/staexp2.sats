@@ -292,15 +292,19 @@ s2var_make_idst
 #symload s2var with s2var_make_idst
 //
 (* ****** ****** *)
+(*
 fun
 the_s2cstmap_insert_any(s2cst): void
 fun
 the_s2cstmap_search_opt(sym_t): s2cstopt_vt
+*)
 (* ****** ****** *)
+(*
 fun
 the_s2varmap_insert_any(s2var): void
 fun
 the_s2varmap_search_opt(sym_t): s2varopt_vt
+*)
 (* ****** ****** *)
 //
 (*

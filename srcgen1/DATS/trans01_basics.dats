@@ -280,7 +280,6 @@ tok.node() of
 *)
 //
 | T_IDENT_alp(nm) => $SYM.symbol_make(nm)
-| T_IDENT_alp(nm) => $SYM.symbol_make(nm)
 //
 ) (* end of [sargid_sym] *)
 

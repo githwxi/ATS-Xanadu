@@ -102,6 +102,76 @@ val+
 (* ****** ****** *)
 //
 fun
+sortenv_poplam0
+(tenv: !sortenv) = let
+//
+val+
+@SORTENV
+(topmap, !stkmap) = tenv
+//
+in//let
+//
+let
+val nerr =
+stkmap_poplam0(stkmap) in $fold(tenv)
+end (*let*)
+//
+end (*let*)//end-of-(sortenv_poplam0(tenv))
+//
+fun
+sortenv_pshlam0
+(tenv: !sortenv) = let
+val+
+@SORTENV
+(topmap, !stkmap) = tenv
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshlam0(stkmap) in $fold(tenv)
+end (*let*)
+//
+end (*let*)//end-of-(sortenv_pshlam0(tenv))
+//
+(* ****** ****** *)
+//
+fun
+sortenv_poplet0
+(tenv: !sortenv) = let
+//
+val+
+@SORTENV
+(topmap, !stkmap) = tenv
+//
+in//let
+//
+let
+val nerr =
+stkmap_poplet0(stkmap) in $fold(tenv)
+end (*let*)
+//
+end (*let*)//end-of-(sortenv_poplet0(tenv))
+//
+fun
+sortenv_pshlet0
+(tenv: !sortenv) = let
+val+
+@SORTENV
+(topmap, !stkmap) = tenv
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshlet0(stkmap) in $fold(tenv)
+end (*let*)
+//
+end (*let*)//end-of-(sortenv_pshlet0(tenv))
+//
+(* ****** ****** *)
+//
+fun
 sortenv_pshloc1
 (tenv: !sortenv) = let
 val+
@@ -261,6 +331,76 @@ val+
 ~SEXPENV(topmap, stkmap) = senv
 } (*where*)//end-of(sexpenv_free_top(senv))
 
+(* ****** ****** *)
+//
+fun
+sexpenv_poplam0
+(senv: !sexpenv) = let
+//
+val+
+@SEXPENV
+(topmap, !stkmap) = senv
+//
+in//let
+//
+let
+val nerr =
+stkmap_poplam0(stkmap) in $fold(senv)
+end (*let*)
+//
+end (*let*)//end-of-(sexpenv_poplam0(senv))
+//
+fun
+sexpenv_pshlam0
+(senv: !sexpenv) = let
+val+
+@SEXPENV
+(topmap, !stkmap) = senv
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshlam0(stkmap) in $fold(senv)
+end (*let*)
+//
+end (*let*)//end-of-(sexpenv_pshlam0(senv))
+//
+(* ****** ****** *)
+//
+fun
+sexpenv_poplet0
+(senv: !sexpenv) = let
+//
+val+
+@SEXPENV
+(topmap, !stkmap) = senv
+//
+in//let
+//
+let
+val nerr =
+stkmap_poplet0(stkmap) in $fold(senv)
+end (*let*)
+//
+end (*let*)//end-of-(sexpenv_poplet0(senv))
+//
+fun
+sexpenv_pshlet0
+(senv: !sexpenv) = let
+val+
+@SEXPENV
+(topmap, !stkmap) = senv
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshlet0(stkmap) in $fold(senv)
+end (*let*)
+//
+end (*let*)//end-of-(sexpenv_pshlet0(senv))
+//
 (* ****** ****** *)
 //
 fun
@@ -426,6 +566,76 @@ val+
 (* ****** ****** *)
 //
 fun
+dexpenv_poplam0
+(denv: !dexpenv) = let
+//
+val+
+@DEXPENV
+(topmap, !stkmap) = denv
+//
+in//let
+//
+let
+val nerr =
+stkmap_poplam0(stkmap) in $fold(denv)
+end (*let*)
+//
+end (*let*)//end-of-(dexpenv_poplam0(denv))
+//
+fun
+dexpenv_pshlam0
+(denv: !dexpenv) = let
+val+
+@DEXPENV
+(topmap, !stkmap) = denv
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshlam0(stkmap) in $fold(denv)
+end (*let*)
+//
+end (*let*)//end-of-(dexpenv_pshlam0(denv))
+//
+(* ****** ****** *)
+//
+fun
+dexpenv_poplet0
+(denv: !dexpenv) = let
+//
+val+
+@DEXPENV
+(topmap, !stkmap) = denv
+//
+in//let
+//
+let
+val nerr =
+stkmap_poplet0(stkmap) in $fold(denv)
+end (*let*)
+//
+end (*let*)//end-of-(dexpenv_poplet0(denv))
+//
+fun
+dexpenv_pshlet0
+(denv: !dexpenv) = let
+val+
+@DEXPENV
+(topmap, !stkmap) = denv
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshlet0(stkmap) in $fold(denv)
+end (*let*)
+//
+end (*let*)//end-of-(dexpenv_pshlet0(denv))
+//
+(* ****** ****** *)
+//
+fun
 dexpenv_pshloc1
 (denv: !dexpenv) = let
 val+
@@ -587,6 +797,76 @@ val+
 (* ****** ****** *)
 //
 #implfun
+tr12env_poplam0
+  ( env0 ) = let
+//
+val+
+TR12ENV
+(tenv, senv, denv) = env0
+//
+val () = sortenv_poplam0(tenv)
+val () = sexpenv_poplam0(senv)
+val () = dexpenv_poplam0(denv)
+//
+in//let
+  // HX-2022-10-23: nothing
+end (*let*)//end-of-[tr12env_poplam0(env0)]
+//
+//
+#implfun
+tr12env_pshlam0
+  ( env0 ) = let
+//
+val+
+TR12ENV
+(tenv, senv, denv) = env0
+//
+val () = sortenv_pshlam0(tenv)
+val () = sexpenv_pshlam0(senv)
+val () = dexpenv_pshlam0(denv)
+//
+in//let
+  // HX-2022-10-23: nothing
+end (*let*)//end-of-[tr12env_pshlam0(env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+tr12env_poplet0
+  ( env0 ) = let
+//
+val+
+TR12ENV
+(tenv, senv, denv) = env0
+//
+val () = sortenv_poplet0(tenv)
+val () = sexpenv_poplet0(senv)
+val () = dexpenv_poplet0(denv)
+//
+in//let
+  // HX-2022-10-23: nothing
+end (*let*)//end-of-[tr12env_poplet0(env0)]
+//
+//
+#implfun
+tr12env_pshlet0
+  ( env0 ) = let
+//
+val+
+TR12ENV
+(tenv, senv, denv) = env0
+//
+val () = sortenv_pshlet0(tenv)
+val () = sexpenv_pshlet0(senv)
+val () = dexpenv_pshlet0(denv)
+//
+in//let
+  // HX-2022-10-23: nothing
+end (*let*)//end-of-[tr12env_pshlet0(env0)]
+//
+(* ****** ****** *)
+//
+#implfun
 tr12env_pshloc1
   ( env0 ) = let
 //
@@ -650,18 +930,22 @@ TR12ENV
 val () =
 sortenv_insert_any(tenv, k0, x0)
 //
+(*
 val () =
 the_sortenv_toplst_add0( k0, x0 )
 val () =
 the_sortenv_toplst_prerr((*void*))
+*)
 //
 in//let
 end where
 {
+(*
   val () =
   prerrln("tr12env_add0_s2tex: k0 = ", k0)
   val () =
   prerrln("tr12env_add0_s2tex: x0 = ", x0)
+*)
 } (*where*)//end-[tr12env_add0_s2tex(env0,k0,x0)]
 
 (* ****** ****** *)
@@ -678,13 +962,22 @@ TR12ENV
 val () =
 sexpenv_insert_any(senv, k0, x0)
 //
+(*
+val () =
+the_sexpenv_toplst_add0( k0, x0 )
+val () =
+the_sexpenv_toplst_prerr((*void*))
+*)
+//
 in//let
 end where
 {
+(*
 val () =
 prerrln("tr12env_add0_s2itm: k0 = ", k0)
 val () =
 prerrln("tr12env_add0_s2itm: x0 = ", x0)
+*)
 } (*where*)//end-[tr12env_add0_s2itm(env0,k0,x0)]
 
 (* ****** ****** *)
@@ -701,13 +994,22 @@ TR12ENV
 val () =
 dexpenv_insert_any(denv, k0, x0)
 //
+(*
+val () =
+the_dexpenv_toplst_add0( k0, x0 )
+val () =
+the_dexpenv_toplst_prerr((*void*))
+*)
+//
 in//let
 end where
 {
+(*
   val () =
   prerrln("tr12env_add0_d2itm: k0 = ", k0)
   val () =
   prerrln("tr12env_add0_d2itm: x0 = ", x0)
+*)
 } (*where*)//end-[tr12env_add0_d2itm(env0,k0,x0)]
 
 (* ****** ****** *)
