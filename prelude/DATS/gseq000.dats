@@ -566,6 +566,7 @@ in
 end(*let*)//end(gseq_fset_at(xs,i0,x0))
 //
 (* ****** ****** *)
+//
 #impltmp
 <xs><x0>
 gseq_get_at_opt
@@ -606,6 +607,7 @@ end where
  var r0: res = optn_vt_nil((*void*))
 //
 } (*where*) // end of [gseq_get_at_opt]
+//
 (* ****** ****** *)
 //
 #impltmp
