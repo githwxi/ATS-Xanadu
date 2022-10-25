@@ -172,7 +172,7 @@ case+
 //
 | (_(*rest*), _(*rest*)) => false
 //
-) (* end of [eq_t2bas_t2bas] *)
+) (* end of [lte_t2bas_t2bas] *)
 //
 (* ****** ****** *)
 

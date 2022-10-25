@@ -322,7 +322,7 @@ trans12_l1s1e:
 (* ****** ****** *)
 //
 fun
-trans12_s1exp_sort
+trans12_s1exp_stck
 ( env0:
 ! tr12env
 , s1e1: s1exp,s2t2: sort2): s2exp

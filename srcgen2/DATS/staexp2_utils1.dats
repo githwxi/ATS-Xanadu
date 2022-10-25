@@ -172,5 +172,32 @@ T2Bimpr(knd, _) => sortprf(knd) <= 0
 _ (* non-S2Tbas *) => false) // sort2_prgmq
 //
 (* ****** ****** *)
+#implfun
+t2dat_equal
+(x1, x2) =
+(x1.stmp() = x2.stmp())
+(* ****** ****** *)
+
+#implfun
+lte_t2bas_t2bas
+(x1, x2) =
+(
+case+
+(x1, x2) of
+|
+( T2Bpred(s1)
+, T2Bpred(s2)) => (s1 = s2)
+|
+( T2Btdat(t1)
+, T2Btdat(t2)) => t2dat_equal(t1, t2)
+|
+( T2Bimpr(k1, s1)
+, T2Bimpr(k2, s2)) => subsort_test(k1, k2)
+//
+| (_(*rest*), _(*rest*)) => (  false )
+//
+) (*case+*) // end of [lte_t2bas_t2bas(x1,x2)]
+
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_staexp2_utils1.dats] *)

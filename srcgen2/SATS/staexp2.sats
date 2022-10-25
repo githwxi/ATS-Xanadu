@@ -209,6 +209,8 @@ where
 (* ****** ****** *)
 fun
 t2abs_make_name(sym_t): t2abs
+fun
+t2dat_make_name(sym_t): t2dat
 (* ****** ****** *)
 //
 fun
@@ -228,6 +230,17 @@ t2abs_get_stmp(t2a:t2abs):stamp
 (* ****** ****** *)
 #symload name with t2abs_get_name
 #symload stmp with t2abs_get_stmp
+(* ****** ****** *)
+fun
+t2dat_get_name(t2d:t2dat):sym_t
+fun
+t2dat_get_stmp(t2d:t2dat):stamp
+fun
+t2dat_get_s2cs(t2d:t2dat):s2cstlst
+(* ****** ****** *)
+#symload name with t2dat_get_name
+#symload stmp with t2dat_get_stmp
+#symload s2cs with t2dat_get_s2cs
 (* ****** ****** *)
 fun
 sort2_int(i0: sint): sort2
@@ -468,7 +481,7 @@ s2itm_fprint:(FILR,s2itm)->void
 (* ****** ****** *)
 (*
 // HX-2022-10-01:
-// Various utility functions
+// sort2-utility functions
 *)
 (* ****** ****** *)
 fun
@@ -496,6 +509,47 @@ sort2_polpos(s2t0:sort2): sort2
 fun
 sort2_polneg(s2t0:sort2): sort2
 (* ****** ****** *)
+//
+fun
+t2abs_equal:
+( t2abs, t2abs ) -> bool
+fun
+t2bas_equal:
+( t2bas, t2bas ) -> bool
+fun
+t2dat_equal:
+( t2dat, t2dat ) -> bool
+//
+(*
+#symload = with t2abs_equal
+#symload = with t2bas_equal
+#symload = with t2dat_equal
+*)
+//
+(* ****** ****** *)
+//
+fun
+lte_t2bas_t2bas:
+( t2bas, t2bas ) -> bool
+fun
+lte_sort2_sort2:
+( sort2, sort2 ) -> bool
+fun
+lte_sort2lst_sort2lst:
+( sort2lst, sort2lst ) -> bool
+//
+(*
+#symload <= with lte_t2bas_t2bas
+#symload <= with lte_sort2_sort2
+#symload <= with lte_sort2lst_sort2lst
+*)
+//
+(* ****** ****** *)
+(*
+// HX-2022-10-25:
+// s2exp-utility functions
+*)
+(* ****** ****** *)
 fun
 s2exp_cst( s2c0: s2cst ): s2exp
 fun
@@ -522,6 +576,10 @@ fun
 s2exp_r2cd
 ( tknd: token
 , lss1: l2s2elst, lss2: l2s2elst): s2exp
+(* ****** ****** *)
+fun
+s2exp_cast
+(loc0:loc_t,s2e1:s2exp,s2t2:sort2):s2exp
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_staexp2.sats] *)

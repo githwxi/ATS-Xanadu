@@ -50,7 +50,11 @@ ATS_PACKNAME
 #staload "./../SATS/xstamp0.sats"
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
+#staload "./../SATS/staexp1.sats"
 #staload "./../SATS/staexp2.sats"
+(* ****** ****** *)
+#symload lctn with s1exp_get_lctn
+#symload node with s1exp_get_node
 (* ****** ****** *)
 //
 local
@@ -158,6 +162,57 @@ end (*let*) // end of [t2abs_get_stmp]
 (* ****** ****** *)
 
 end (*local*) // end of [local(t2abs)]
+
+(* ****** ****** *)
+
+local
+
+datatype t2dat =
+T2DAT of
+(sym_t, stamp, s2cstlst)
+#absimpl t2dat_tbox = t2dat
+
+in//local
+
+(* ****** ****** *)
+//
+#implfun
+t2dat_make_name
+  (name) =
+T2DAT
+(name, stmp, s2cs) where
+{
+val stmp =
+the_t2dat_stamp_new()
+val s2cs = list_nil((*void*)) }
+//
+(* ****** ****** *)
+//
+#implfun
+t2dat_get_name(t2d) =
+let
+val
+T2DAT
+(sym, tmp, scs) = t2d in sym
+end (*let*) // end of [t2dat_get_name]
+#implfun
+t2dat_get_stmp(t2d) =
+let
+val
+T2DAT
+(sym, tmp, scs) = t2d in tmp
+end (*let*) // end of [t2dat_get_stmp]
+#implfun
+t2dat_get_s2cs(t2d) =
+let
+val
+T2DAT
+(sym, tmp, scs) = t2d in scs
+end (*let*) // end of [t2dat_get_s2cs]
+//
+(* ****** ****** *)
+
+end (*local*) // end of [local(t2dat)]
 
 (* ****** ****** *)
 //
@@ -373,6 +428,14 @@ val (  ) = prerrln
 in//let
 s2exp(s2t0, S2Enone1(loc0, s1e0))
 end (*let*) // end of [s2exp_none1(s1e0)]
+//
+(* ****** ****** *)
+//
+#implfun
+s2exp_cast
+(loc0, s2e1, s2t2) =
+s2exp
+(s2t2, S2Ecast(loc0, s2e1, s2t2))
 //
 (* ****** ****** *)
 
