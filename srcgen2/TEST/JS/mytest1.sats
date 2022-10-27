@@ -29,6 +29,9 @@ mysexp1(a:tabs1): tabs1 = a
 #sexpdef
 mysexp2(a:tabs1): mysort2 = a
 (* ****** ****** *)
+#sexpdef
+mysexp3(a:tabs1): mysort2 = f(a)
+(* ****** ****** *)
 ////
 (* ****** ****** *)
 #infixl + of 50
