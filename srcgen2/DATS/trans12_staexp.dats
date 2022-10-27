@@ -1012,6 +1012,87 @@ s2exp_cast(s1e1.lctn(), s2e1, s2t2)
 end (*let*)//end-of[trans12_s1exp_stck(env0,...)]
 
 (* ****** ****** *)
+//
+#implfun
+trans12_s1explst_stck1
+  (env0, s1es, s2t2) =
+(
+list_map_e1nv
+<x0><y0><e1>(s1es, env0)) where
+{
+//
+#typedef x0 = s1exp
+#typedef y0 = s2exp
+#vwtpdef e1 = tr12env
+//
+#impltmp
+map$fopr_e1nv
+<x0><y0><e1>(s1e1, env0) =
+trans12_s1exp_stck(env0, s1e1, s2t2)
+} (*where*)//end of [trans12_s1explst_stck1]
+//
+(* ****** ****** *)
+//
+#implfun
+trans12_s1explst_stcks
+  (env0, s1es, s2ts) =
+(
+auxlst
+(env0, s1es, s2ts)) where
+{
+//
+fun
+auxlst
+( env0:
+! tr12env
+, s1es: s1explst
+, s2ts: sort2lst): s2explst =
+(
+case+ s1es of
+|
+list_nil() =>
+(
+case+ s2ts of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(s2t1, s2ts) =>
+list_cons(s2e1, s2es) where
+{
+val s2e1 =
+s2exp_make_node
+(s2t1, S2Enone0())
+val s2es = auxlst(env0, s1es, s2ts)
+}
+)
+|
+list_cons(s1e1, s1es) =>
+(
+case+ s2ts of
+|
+list_nil() =>
+list_cons(s2e1, s2es) where
+{
+val s2e1 =
+s2exp_none1(s1e1)
+val s2es = auxlst(env0, s1es, s2ts)
+}
+|
+list_cons(s2t1, s2ts) =>
+list_cons(s2e1, s2es) where
+{
+val s2e1 =
+trans12_s1exp_stck
+(env0, s1e1, s2t1)
+val s2es = auxlst(env0, s1es, s2ts)
+}
+)
+) (*case+*)//end of [auxlst(env0,s1es,s2ts)]
+//
+} (*where*)//end of [trans12_s1explst_stck1]
+//
+(* ****** ****** *)
 
 #implfun
 trans12_sort1lst

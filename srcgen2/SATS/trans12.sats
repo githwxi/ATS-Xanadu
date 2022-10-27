@@ -388,12 +388,13 @@ trans12_l1s1elst_prgm
 ( env0:
 ! tr12env, lses: l1s1elst): l2s2elst
 (* ****** ****** *)
+//
 fun
-trans12_s1explst_stck
+trans12_s1explst_stck1
 (!tr12env, s1explst, sort2): s2explst
 fun
 trans12_s1explst_stcks
-(!tr12env, s1explst, sort2lst): s2explst
+(!tr12env,s1explst,sort2lst): s2explst
 //
 (* ****** ****** *)
 //
