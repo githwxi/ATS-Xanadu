@@ -151,5 +151,12 @@ fun
 symbl_insert_any(sym: symbl): void
 //
 (* ****** ****** *)
+//
+val
+DLR_EXTBOX_symbl: symbl //=symbl("$extbox")
+val
+DLR_EXTYPE_symbl: symbl //=symbl("$extype")
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xsymbol.sats] *)

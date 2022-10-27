@@ -171,8 +171,18 @@ LEX = "./lexing0.sats"
 #vwtpdef d2itmopt_vt = optn_vt(d2itm)
 (* ****** ****** *)
 fun
+s1exp_get_s2cstlst
+( env0:
+! tr12env
+, s1e0: s1exp): s2cstlst
+(* ****** ****** *)
+fun
 s2cst_select_any
 (s2cs: s2cstlst): s2cstopt_vt
+fun
+s2cst_select_list
+(s2cs: s2cstlst,
+ s2es: s2explst): s2cstopt_vt
 (* ****** ****** *)
 //
 fun
@@ -379,10 +389,10 @@ trans12_l1s1elst_prgm
 ! tr12env, lses: l1s1elst): l2s2elst
 (* ****** ****** *)
 fun
-trans12_s1explst_sort
+trans12_s1explst_stck
 (!tr12env, s1explst, sort2): s2explst
 fun
-trans12_s1explst_sortlst
+trans12_s1explst_stcks
 (!tr12env, s1explst, sort2lst): s2explst
 //
 (* ****** ****** *)

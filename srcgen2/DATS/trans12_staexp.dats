@@ -467,6 +467,13 @@ S1El1st _ => f0_l1st(env0, s1e0)
 S1El2st _ => f0_l2st(env0, s1e0)
 //
 |
+S1Ea1pp _ => f0_a1pp(env0, s1e0)
+(*
+|
+S1Ea2pp _ => f0_a2pp(env0, s1e0)
+*)
+//
+|
 S1Et1up _ => f0_t1up(env0, s1e0)
 //
 |
@@ -646,6 +653,220 @@ val ses2 = trans12_s1explst(env0, ses2) }
 )
 end (*let*) // end of [f0_l2st(env0, s1e0)]
 //
+(* ****** ****** *)
+//
+fun
+isextp
+( s1e0
+: s1exp): bool =
+(
+case+
+s1e0.node() of
+| S1Eid0(sid1) =>
+(
+if
+(sid1 =
+ $SYM.DLR_EXTBOX_symbl)
+then true else
+(sid1 =
+ $SYM.DLR_EXTYPE_symbl) )
+| _(*non-S1Eid0*) => false
+) (*case+*) // end-of-(isextp)
+
+fun
+f0_a1pp
+( env0:
+! tr12env
+, s1e0: s1exp): s2exp =
+let
+//
+val-
+S1Ea1pp
+(s1f0, s1e1) = s1e0.node()
+//
+in(*in-of-let*)
+//
+case+
+s1f0.node() of
+//
+(*
+| S1Eforall _ =>
+  f0_a1pp_uni0( env0, s1e0 )
+| S1Eexists _ =>
+  f0_a1pp_exi0( env0, s1e0 )
+*)
+//
+(*
+| _ when
+  isCBV0(s1e1) =>
+  f0_a1pp_cbv0( env0, s1e0 )
+| _ when
+  isCBV1(s1e1) =>
+  f0_a1pp_cbv1( env0, s1e0 )
+| _ when
+  isCBRF(s1e1) =>
+  f0_a1pp_cbrf( env0, s1e0 )
+*)
+//
+(*
+| _ when
+  isTOP0(s1e1) =>
+  f0_a1pp_top0( env0, s1e0 )
+| _ when
+  isTOP1(s1e1) =>
+  f0_a1pp_top1( env0, s1e0 )
+//
+*)
+(*
+| _ when
+  isextp(s1e1) =>
+  f0_a1pp_extp( env0, s1e0 )
+*)
+//
+|
+_(*S1E...*) => f0_a1pp_rest(env0, s1e0)
+//
+end (*let*) // end of [f0_a1pp(env0, s1e0)]
+
+(* ****** ****** *)
+
+and
+f0_a1pp_rest
+( env0:
+! tr12env
+, s1e0: s1exp): s2exp =
+let
+//
+val-
+S1Ea1pp
+( s1e1
+, s1e2) = s1e0.node()
+//
+val
+s2cs =
+s1exp_get_s2cstlst(env0, s1e1)
+//
+in//let
+//
+case+ s2cs of
+|
+list_nil() =>
+f0_a1pp_rest0(env0, s1e0)
+|
+list_cons(x1, xs2) =>
+(
+  if
+  list_nilq(xs2)
+  then
+  let
+    val
+    s2e1 = s2exp_cst(x1)
+  in
+    f0_a1pp_rest1(env0, s1e0, s2e1)
+  end
+  else
+  (
+    f0_a1pp_rest2(env0, s1e0, s2cs)
+  ) (* end of [else] *)
+)
+end (*let*) // end of [f0_a1pp_rest(...)]
+
+and
+f0_a1pp_rest0
+( env0:
+! tr12env
+, s1e0: s1exp): s2exp =
+let
+//
+val-
+S1Ea1pp
+(s1e1, s1e2) = s1e0.node()
+//
+val
+s2e1 = trans12_s1exp(env0, s1e1)
+//
+in//let
+  f0_a1pp_rest1(env0, s1e0, s2e1)
+end (*let*) // end of [f0_a1pp_rest0(...)]
+
+and
+f0_a1pp_rest1
+( env0:
+! tr12env
+, s1e0: s1exp
+, s2e1: s2exp): s2exp =
+let
+//
+val-
+S1Ea1pp
+(s1e1, s1e2) = s1e0.node()
+//
+val s1es =
+(
+case+
+s1e2.node() of
+| S1El1st(s1es) => s1es
+| _(*non-list*) => list_sing(s1e2)
+) : s1explst // end of [val]
+//
+val s2ts =
+(
+case+
+s2e1.sort() of
+| S2Tf1un(s2ts, _) => s2ts
+| _(*non-S2Tfun*) => list_nil(*void*)
+) : sort2lst // end of [va]
+//
+val loc0 = s1e0.lctn()
+//
+in//let
+//
+  s2exp_apps(loc0, s2e1, s2es) where
+{
+val s2es =
+trans12_s1explst_stcks(env0, s1es, s2ts) }
+//
+end (*let*) // end of [f0_a1pp_rest1(...)]
+
+and
+f0_a1pp_rest2
+( env0:
+! tr12env
+, s1e0: s1exp
+, s2cs: s2cstlst): s2exp =
+let
+//
+val-
+S1Ea1pp
+(s1e1, s1e2) = s1e0.node()
+//
+val s1es =
+(
+case+
+s1e2.node() of
+| S1El1st(s1es) => s1es
+| _(*non-list*) => list_sing(s1e2)
+) : s1explst // end of [val]
+//
+val
+s2es =
+trans12_s1explst(env0, s1es)
+//
+val opt1 =
+s2cst_select_list(s2cs, s2es)
+//
+in//let
+//
+case+ opt1 of
+| ~
+optn_vt_nil() =>
+f0_a1pp_rest0(env0, s1e0)
+| ~
+optn_vt_cons(s2c1) =>
+f0_a1pp_rest1(env0,s1e0,s2exp_cst(s2c1))
+//
+end (*let*) // end of [f0_a1pp_rest2(...)]
+
 (* ****** ****** *)
 //
 fun

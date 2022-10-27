@@ -53,6 +53,9 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trans12.sats"
 (* ****** ****** *)
+#symload lctn with s1exp_get_lctn
+#symload node with s1exp_get_node
+(* ****** ****** *)
 
 #impltmp
 <x0><y0>
@@ -127,6 +130,43 @@ list_cons(x0, xs) => optn_vt_cons(x0)
 )
 //
 } (*where*) // end of [s2cst_select_any]
+
+(* ****** ****** *)
+
+#implfun
+s1exp_get_s2cstlst
+  (env0, s1e0) =
+let
+(*
+val () =
+println!
+("s1exp_get_s2cstlst: s1e0 = ", s1e0)
+*)
+in
+case+
+s1e0.node() of
+|
+S1Eid0(sid1) => let
+val
+opt1 =
+tr12env_find_s2itm(env0, sid1)
+in//let
+case+ opt1 of
+| ~
+optn_vt_nil
+( (*void*) ) => list_nil()
+| ~
+optn_vt_cons
+(   s2i1   ) =>
+(
+case+ s2i1 of
+|
+S2ITMcst(s2cs) => s2cs | _ => list_nil()
+)
+end // end of [S1Eid0]
+| _(* non-S1Eid0 *) => list_nil((*void*))
+//
+end (*let*) // end of [s1exp_get_s2cstlst(...)]
 
 (* ****** ****** *)
 
