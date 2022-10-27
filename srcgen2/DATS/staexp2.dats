@@ -405,6 +405,53 @@ s2exp_make_node(s2t0, S2Evar(s2v0))
 end (*let*) // end of [ s2exp_var(s2v0) ]
 //
 (* ****** ****** *)
+//
+#implfun
+s2exp_apps
+(loc0, s2f0, s2es) = let
+//
+(*
+val () =
+println!
+("\
+s2exp_apps: s2f0 = ", s2f0)
+val () =
+println!
+("\
+s2exp_apps:\
+s2f0.sort = ", s2f0.sort())
+*)
+//
+val s2f0 =
+(
+case+
+s2f0.sort() of
+|
+S2Tf0un _ => s2f0
+|
+S2Tf1un _ => s2f0
+|
+_(*non-S2Tf?un*) =>
+s2exp_cast
+(loc0, s2f0, S2Tf0un())
+) : s2exp // end of [val s2f0]
+//
+val
+tres =
+(
+case+
+s2f0.sort() of
+|
+S2Tf1un(_, s2t1) => s2t1
+|
+_(*non-S2Tf1un*) => S2Tnone0()
+) : sort2 // end of [val tres]
+//
+in
+  s2exp(tres, S2Eapps(s2f0, s2es))
+end (*let*) // end of [s2exp_apps(...)]
+//
+(* ****** ****** *)
 
 #implfun
 s2exp_lam0
