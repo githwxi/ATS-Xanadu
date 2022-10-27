@@ -465,6 +465,13 @@ fun
 s2exp_none1(s1e0:s1exp): s2exp
 (* ****** ****** *)
 fun
+s2exp_apps
+( loc0
+: loc_t
+, s1f0
+: s2exp, s2es: s2explst): s2exp
+(* ****** ****** *)
+fun
 s2exp_lam0
 ( s2vs
 : s2varlst, s2e0: s2exp): s2exp
