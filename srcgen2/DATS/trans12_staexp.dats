@@ -82,7 +82,7 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with s1exp_get_lctn
 #symload node with s1exp_get_node
 (* ****** ****** *)
-
+//
 fun
 isPLUS
 ( s1t0
@@ -116,19 +116,19 @@ s1t0.node() of
   (tid0 = MSGT_symbl)
 | _(*non-S1Tid0*) => false
 )
-
+//
 (* ****** ****** *)
 
 #implfun
 trans12_sort1
 ( env0,s1t0 ) = let
-(*
+// (*
 val
 loc0 = s1t0.lctn()
 val () =
 prerrln
 ("trans12_sort1: s1t0 = ", s1t0)
-*)
+// *)
 in//let
 //
 case+
@@ -250,12 +250,12 @@ f0_a2pp
 , s1t0: sort1): sort2 =
 let
 //
-(*
+// (*
 val () =
-println!
+println
 ("\
 trans12_sort1: f0_a2pp: s1t0 = ", s1t0)
-*)
+// *)
 //
 val-
 S1Ta2pp
