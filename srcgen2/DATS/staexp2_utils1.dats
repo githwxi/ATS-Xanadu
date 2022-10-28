@@ -77,6 +77,27 @@ case+ s2t0 of
 | S2Tfun _ => true | _ => false )
 //
 (* ****** ****** *)
+//
+#implfun
+sort2_linq
+  (s2t0) =
+(
+case+ s2t0 of
+|
+S2Tbas(s2tb) =>
+(
+ case+ s2tb of
+ |
+ T2Bimpr
+ (knd, _) =>
+ (sortlin(knd) > 0)
+ |
+ _(*non-T2Bimpr*) => false
+)
+| _(*non-S2Tbas*) => false
+) (* case+ *) // end of [sort2_linq]
+//
+(* ****** ****** *)
 
 #implfun
 sort2_addrq
@@ -281,6 +302,20 @@ S2Tnone(s1t1) => false | S2Tnone((*void*)) => false
 //
 ) (* case+ *) // end of [lte_sort2_sort2(x1, x2)]
 
+(* ****** ****** *)
+//
+#implfun
+s2exp_linq(s2e0) =
+sort2_linq(s2e0.sort())
+//
+#implfun
+s2explst_linq(s2es) =
+(
+  list_forall(s2es)) where
+{
+  #impltmp forall$test<s2exp> = s2exp_linq
+}
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_staexp2_utils1.dats] *)
