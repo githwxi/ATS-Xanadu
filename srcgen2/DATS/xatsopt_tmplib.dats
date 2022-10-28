@@ -853,6 +853,18 @@ HX: for level-2 syntax
 
 (* ****** ****** *)
 //
+#impltmp
+g_cmp<s2cst>
+(s2c1, s2c2) =
+s2c1.stmp() \cmp s2c2.stmp()
+//
+#impltmp
+g_cmp<s2var>
+(s2v1, s2v2) =
+s2v1.stmp() \cmp s2v2.stmp()
+//
+(* ****** ****** *)
+//
 (*
 fun
 <x0:type>
