@@ -67,8 +67,26 @@ val
 s2tb_char =
 T2Bpred($SYM.CHAR_symbl)
 //
+val
+s2tb_prop =
+T2Bimpr
+(PROPSORT, $SYM.PROP_symbl)
+val
+s2tb_type =
+T2Bimpr
+(TYPESORT, $SYM.TYPE_symbl)
+//
+val
+s2tb_view =
+T2Bimpr
+(VIEWSORT, $SYM.VIEW_symbl)
+val
+s2tb_vwtp =
+T2Bimpr
+(VWTPSORT, $SYM.VWTP_symbl)
+//
 in(*local*)
-
+//
 #implval
 the_sort2_int = S2Tbas(s2tb_int)
 #implval
@@ -77,7 +95,16 @@ the_sort2_addr = S2Tbas(s2tb_addr)
 the_sort2_bool = S2Tbas(s2tb_bool)
 #implval
 the_sort2_char = S2Tbas(s2tb_char)
-
+//
+#implval
+the_sort2_prop = S2Tbas(s2tb_prop)
+#implval
+the_sort2_type = S2Tbas(s2tb_type)
+#implval
+the_sort2_view = S2Tbas(s2tb_view)
+#implval
+the_sort2_vwtp = S2Tbas(s2tb_vwtp)
+//
 endloc (*local*) // end of [local(predefined)]
 
 (* ****** ****** *)

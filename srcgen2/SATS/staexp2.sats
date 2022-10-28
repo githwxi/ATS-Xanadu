@@ -261,9 +261,11 @@ the_sort2_strn : sort2
 //
 (* ****** ****** *)
 //
+val the_sort2_prop: sort2
 val the_sort2_type: sort2
 val the_sort2_tbox: sort2
 //
+val the_sort2_view: sort2
 val the_sort2_vwtp: sort2
 val the_sort2_vtbx: sort2
 //
@@ -521,6 +523,8 @@ fun
 sort2_intq(s2t0: sort2): bool
 fun
 sort2_funq(s2t0: sort2): bool
+fun
+sort2_linq(s2t0: sort2): bool
 (* ****** ****** *)
 fun
 sort2_addrq(s2t0: sort2): bool
@@ -584,6 +588,8 @@ lte_sort2lst_sort2lst:
 *)
 (* ****** ****** *)
 //
+fun
+s2exp_linq(s2exp): bool
 fun
 s2explst_linq(s2explst): bool
 //
