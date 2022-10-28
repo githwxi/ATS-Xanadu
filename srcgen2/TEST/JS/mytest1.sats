@@ -1,4 +1,6 @@
 (* ****** ****** *)
+#infixr -> of 10
+(* ****** ****** *)
 #abssort tabs1
 #abssort tabs2
 #abssort tabs3
@@ -29,8 +31,9 @@ mysexp1(a:tabs1): tabs1 = a
 #sexpdef
 mysexp2(a:tabs1): mysort2 = a
 (* ****** ****** *)
+#stacst0 foo: tabs1 -> tabs2
 #sexpdef
-mysexp3(a:tabs1): mysort2 = f(a)
+mysexp3(a:tabs1): mysort2 = foo(a)
 (* ****** ****** *)
 ////
 (* ****** ****** *)

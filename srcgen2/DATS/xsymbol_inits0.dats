@@ -73,6 +73,14 @@ HX-2022-10-01: Various symbols
 //
 (* ****** ****** *)
 //
+#implval EQLT_symbl = symbl("=<")
+#implval EQGT_symbl = symbl("=>")
+//
+#implval MSLT_symbl = symbl("-<")
+#implval MSGT_symbl = symbl("->")
+//
+(* ****** ****** *)
+//
 #implval INT_symbl = symbl("int")
 #implval ADDR_symbl = symbl("addr")
 #implval BOOL_symbl = symbl("bool")
