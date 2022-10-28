@@ -243,21 +243,29 @@ t2dat_get_s2cs(t2d:t2dat):s2cstlst
 #symload s2cs with t2dat_get_s2cs
 (* ****** ****** *)
 //
-fun
+val
 the_sort2_int : sort2
-fun
+val
 the_sort2_addr : sort2
-fun
+val
 the_sort2_bool : sort2
-fun
+val
 the_sort2_char : sort2
 //
 (*
-fun
+val
 the_sort2_real : sort2
-fun
+val
 the_sort2_strn : sort2
 *)
+//
+(* ****** ****** *)
+//
+val the_sort2_type: sort2
+val the_sort2_tbox: sort2
+//
+val the_sort2_vwtp: sort2
+val the_sort2_vtbx: sort2
 //
 (* ****** ****** *)
 fun
@@ -575,6 +583,11 @@ lte_sort2lst_sort2lst:
 // s2exp-utility functions
 *)
 (* ****** ****** *)
+//
+fun
+s2explst_linq(s2explst): bool
+//
+(* ****** ****** *)
 fun
 s2exp_cst( s2c0: s2cst ): s2exp
 fun
@@ -605,6 +618,11 @@ s2exp_r2cd
 fun
 s2exp_cast
 (loc0:loc_t,s2e1:s2exp,s2t2:sort2):s2exp
+(* ****** ****** *)
+//
+fun
+l2s2elst_make_s2es(xs: s2explst): l2s2elst
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_staexp2.sats] *)

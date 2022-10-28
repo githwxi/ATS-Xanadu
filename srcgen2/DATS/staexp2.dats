@@ -45,6 +45,8 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/xbasics.sats"
+(* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/xstamp0.sats"
@@ -471,6 +473,33 @@ val s2t0 =
 in
   s2exp(s2t0, S2Elam0(s2vs, body))
 end (*let*) // end of [s2exp_lam0(s2vs,body)]
+
+(* ****** ****** *)
+
+#implfun
+s2exp_l1st
+  (s2es) = let
+//
+val
+knd0 = TRCDflt0(*void*)
+val
+linq = s2explst_linq(s2es)
+//
+val s2t0 =
+(
+if
+linq
+then the_sort2_vwtp(* lin*)
+else the_sort2_type(*~lin*)
+) : sort2 // end of [val s2t0]
+//
+val
+lses = l2s2elst_make_s2es(s2es)
+//
+in
+s2exp_make_node
+(s2t0, S2Etrcd(knd0, -1(*npf*), lses))
+end (*let*) // end of [s2exp_l1st(s2es)]
 
 (* ****** ****** *)
 //
