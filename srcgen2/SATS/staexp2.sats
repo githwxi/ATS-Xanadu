@@ -621,7 +621,11 @@ s2exp_cast
 (* ****** ****** *)
 //
 fun
-l2s2elst_make_s2es(xs: s2explst): l2s2elst
+l2s2elst_make_l1st
+(s2es: s2explst): l2s2elst
+fun
+l2s2elst_make_l2st
+(ses1: s2explst, ses2: s2explst): l2s2elst
 //
 (* ****** ****** *)
 

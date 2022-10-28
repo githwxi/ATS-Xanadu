@@ -1148,6 +1148,8 @@ s2exp_make_node
 (s2t, S2Etyrec(knd, ~1(*npf*), ls2es))
 end // end of [s2exp_list1]
 
+(* ****** ****** *)
+
 implement
 s2exp_list2
   (s2es1, s2es2) = let
