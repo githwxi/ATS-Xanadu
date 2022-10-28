@@ -494,12 +494,46 @@ else the_sort2_type(*~lin*)
 ) : sort2 // end of [val s2t0]
 //
 val
-lses = l2s2elst_make_s2es(s2es)
+lses = l2s2elst_make_l1st(s2es)
 //
 in
 s2exp_make_node
 (s2t0, S2Etrcd(knd0, -1(*npf*), lses))
 end (*let*) // end of [s2exp_l1st(s2es)]
+
+(* ****** ****** *)
+
+#implfun
+s2exp_l2st
+(ses1, ses2) = let
+//
+val
+knd0 = TRCDflt0(*void*)
+val
+linq = s2explst_linq(ses1)
+//
+val
+s2t0 =
+(
+if
+linq
+then
+the_sort2_vwtp else
+(
+if
+s2explst_linq(ses2)
+then
+the_sort2_vwtp else the_sort2_type
+)
+) : sort2 // end of [val s2t0]
+//
+val npf1 = list_length(ses1)
+val lses =
+l2s2elst_make_l2st(ses1, ses2)
+//
+in
+s2exp(s2t0, S2Etrcd(knd0, npf1, lses))
+end (*let*) // end of [s2exp_l2st(ses1,ses2)]
 
 (* ****** ****** *)
 //
