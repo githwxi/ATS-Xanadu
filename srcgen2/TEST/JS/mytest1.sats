@@ -1,6 +1,14 @@
 (* ****** ****** *)
 #infixr -> of 10
 (* ****** ****** *)
+//
+#infixl + of 50
+#infixl - of 50
+#infixl * of 60
+#prefix + of +(+1) (*uplus*)
+#prefix - of -(+1) (*uminus*)
+//
+(* ****** ****** *)
 #abssort tabs1
 #abssort tabs2
 #abssort tabs3
@@ -36,25 +44,25 @@ foo: tabs1 -> tabs2
 #stacst0
 foo: (tabs1, tabs1) -> tabs2
 #stacst0
+foo: (tabs1, tabs2) -> tabs2
+#stacst0
 foo1: tabs1 -> tabs2
 #stacst0
 foo2: (tabs1, tabs1) -> tabs2
 #sexpdef
 mysexp3(a:tabs1): mysort2 = foo(a)
 #sexpdef
-mysexp4(a:tabs1): mysort2 = foo2(a)
+mysexp4(a:tabs1): mysort2 = foo(a, a)
+#sexpdef
+mysexp5() = (1, 2)
 (* ****** ****** *)
 ////
 (* ****** ****** *)
-#infixl + of 50
-#infixl - of 50
-#infixl * of 60
-#prefix + of +(+1) (*uplus*)
-#prefix - of -(+1) (*uminus*)
 //
 fun fact =
 fix fact(x: sint): sint =>
 if x > 0 then x * fact(x-1) else 1
+//
 (* ****** ****** *)
 ////
 (* ****** ****** *)
