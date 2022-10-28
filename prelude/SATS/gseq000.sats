@@ -224,6 +224,7 @@ fun
 gseq_rsearch$exn(): x0
 //
 (* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>

@@ -56,6 +56,13 @@ ATS_PACKNAME
 #symload lctn with s1exp_get_lctn
 #symload node with s1exp_get_node
 (* ****** ****** *)
+//
+#impltmp
+g_lte<sort2> = lte_sort2_sort2
+#impltmp
+g_lte<sort2lst> = lte_sort2lst_sort2lst
+//
+(* ****** ****** *)
 
 #impltmp
 <x0><y0>
@@ -132,6 +139,61 @@ list_cons(x0, xs) => optn_vt_cons(x0)
 )
 //
 } (*where*) // end of [s2cst_select_any]
+
+(* ****** ****** *)
+
+#implfun
+s2cst_select_list
+  (s2cs, s2es) =
+(
+gseq_search_opt(s2cs)
+) where
+{
+fun
+f0_test0
+(s2c0: s2cst): bool = let
+//
+in
+//
+case+
+s2c0.sort() of
+| S2Tf1un(s2ts, _) =>
+  f0_test1(s2ts, s2es)
+| _(* non-S2Tfun *) => false
+//
+end // end of [f0_test0]
+
+and
+f0_test1
+( s2ts
+: sort2lst
+, s2es
+: s2explst): bool =
+(
+case+ s2ts of
+|
+list_nil() =>
+(
+case+ s2es of
+| list_nil() => true
+| list_cons _ => false
+)
+|
+list_cons(s2t0, s2ts) =>
+(
+case+ s2es of
+| list_nil() => false
+| list_cons(s2e0, s2es) =>
+  if
+  s2e0.sort() <= s2t0
+  then
+  f0_test1(s2ts, s2es) else false
+)
+) (*case+*) // end of [f0_test1(...)]
+//
+#implfun search$test<s2cst> = f0_test0
+//
+} (*where*)//end-of-[s2cst_select_list(...)]
 
 (* ****** ****** *)
 

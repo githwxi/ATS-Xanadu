@@ -31,9 +31,18 @@ mysexp1(a:tabs1): tabs1 = a
 #sexpdef
 mysexp2(a:tabs1): mysort2 = a
 (* ****** ****** *)
-#stacst0 foo: tabs1 -> tabs2
+#stacst0
+foo: tabs1 -> tabs2
+#stacst0
+foo: (tabs1, tabs1) -> tabs2
+#stacst0
+foo1: tabs1 -> tabs2
+#stacst0
+foo2: (tabs1, tabs1) -> tabs2
 #sexpdef
 mysexp3(a:tabs1): mysort2 = foo(a)
+#sexpdef
+mysexp4(a:tabs1): mysort2 = foo2(a)
 (* ****** ****** *)
 ////
 (* ****** ****** *)
