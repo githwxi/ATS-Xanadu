@@ -335,6 +335,9 @@ sort2_prfq(s2e0.sort())
 #implfun
 s2exp_imprq(s2e0) =
 sort2_imprq(s2e0.sort())
+#implfun
+s2exp_prgmq(s2e0) =
+sort2_prgmq(s2e0.sort())
 //
 #implfun
 s2explst_linq(s2es) =
@@ -357,6 +360,13 @@ s2explst_imprq(s2es) =
 {
   #impltmp
   forall$test<s2exp> = s2exp_imprq }
+#implfun
+s2explst_prgmq(s2es) =
+(
+  list_forall(s2es)) where
+{
+  #impltmp
+  forall$test<s2exp> = s2exp_prgmq }
 //
 (* ****** ****** *)
 //
