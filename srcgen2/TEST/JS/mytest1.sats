@@ -58,7 +58,9 @@ mysexp5() = (1, 2)
 #sexpdef
 mysexp6() = (0 | 1, 2)
 #sexpdef
-mysexp7() = @(1, 2)
+mysexp7() = @(1, 2, 3)
+#sexpdef
+mysexp8() = @(1 | 2, 3)
 (* ****** ****** *)
 ////
 (* ****** ****** *)
