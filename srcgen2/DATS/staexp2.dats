@@ -506,6 +506,39 @@ in
 end (*let*) // end of [s2exp_lam0(s2vs,body)]
 
 (* ****** ****** *)
+//
+#implfun
+s2exp_fun0_all
+(npf1, farg, fres) =
+(
+s2exp_fun0_full
+(f2cl, npf1, farg, fres)
+) where
+{
+  val f2cl = F2CLfun((*void*))
+} (*where*) // end of [s2exp_fun0_all(...)]
+//
+#implfun
+s2exp_fun0_full
+( f2cl
+, npf1, farg, fres) =
+(
+s2exp_make_node
+(
+s2t0,
+S2Efun0
+( f2cl
+, npf1, farg, fres))) where
+{
+val s2t0 =
+(
+if
+f2clknd_linq(f2cl)
+then (the_sort2_vtbx)
+else (the_sort2_tbox) ) : sort2
+} (*where*) // end of [s2exp_fun0_full(...)]
+//
+(* ****** ****** *)
 
 #implfun
 s2exp_l1st

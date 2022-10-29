@@ -499,8 +499,20 @@ s2exp_lam0
 : s2varlst, s2e0: s2exp): s2exp
 (* ****** ****** *)
 fun
+s2exp_fun0_nil
+( npf1: sint
+, farg
+: s2explst, fres: s2exp): s2exp
+fun
 s2exp_fun0_all
 ( npf1: sint
+, farg
+: s2explst, fres: s2exp): s2exp
+fun
+s2exp_fun0_full
+( f2cl
+: f2clknd
+, npf1: sint
 , farg
 : s2explst, fres: s2exp): s2exp
 (* ****** ****** *)
