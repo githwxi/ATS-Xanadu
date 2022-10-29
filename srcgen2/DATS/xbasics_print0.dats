@@ -184,4 +184,32 @@ end(*let*)//end-of(implknd_fprint)
 
 (* ****** ****** *)
 
+#implfun
+//<>(*tmp*)
+trcdknd_fprint
+  (out, knd) = let
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+//
+case+ knd of
+|
+TRCDbox0() => print( "TRCDbox0" )
+|
+TRCDbox1() => print( "TRCDbox1" )
+|
+TRCDflt0() => print( "TRCDflt0" )
+(*
+|
+TRCDflt1() => print( "TRCDflt1" )
+*)
+|
+TRCDflt2
+(  name  ) => print("TRCDflt2(",name,")")
+//
+end(*let*)//end-of(trcdknd_fprint)
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_xbasics_print0.dats] *)

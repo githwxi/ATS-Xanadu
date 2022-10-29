@@ -581,12 +581,12 @@ f0_l1st
 , s1e0: s1exp): s2exp =
 let
 //
+val loc0 = s1e0.lctn()
+//
 val-
 S1El1st(s1es) = s1e0.node()
 //
 (*
-val
-loc0 = s1e0.lctn()
 val ( ) =
 println
 ("trans12_s1exp: f0_l1st: loc0 = ", loc0)
@@ -607,7 +607,8 @@ in//let
 end (*let*) // end of [then]
 else
 (
-s2exp_l1st(trans12_s1explst(env0, s1es))
+s2exp_l1st
+(loc0, trans12_s1explst(env0, s1es))
 )
 end (*let*) // end of [f0_l1st(env0, s1e0)]
 //
@@ -619,6 +620,8 @@ f0_l2st
 ! tr12env
 , s1e0: s1exp): s2exp =
 let
+//
+val loc0 = s1e0.lctn()
 //
 val-
 S1El2st
@@ -640,13 +643,13 @@ if
 list_nilq(ses1)
 then
 (
-s2exp_l1st(ses2) where
+s2exp_l1st(loc0, ses2) where
 {
 val ses2 = trans12_s1explst(env0, ses2) }
 )
 else
 (
-s2exp_l2st(ses1, ses2) where
+s2exp_l2st(loc0, ses1, ses2) where
 {
 val ses1 = trans12_s1explst(env0, ses1)
 val ses2 = trans12_s1explst(env0, ses2) }

@@ -318,6 +318,43 @@ s2explst_linq(s2es) =
 }
 //
 (* ****** ****** *)
+//
+#implfun
+s2exp_stck
+(loc0, s2e1, s2t2) =
+(
+if
+s2e1.sort() <= s2t2
+then s2e1 else s2exp_cast(loc0,s2e1,s2t2))
+//
+(* ****** ****** *)
+//
+#implfun
+s2explst_stck
+(loc0, s2es, s2t2) =
+let
+val test =
+list_forall
+<x0>( s2es ) where
+{
+ #typedef x0 = s2exp
+ #impltmp
+ forall$test<x0>(x0) = x0.sort() <= s2t2
+}
+in//let
+if test
+then s2es else
+list_map
+<x0><y0>(s2es) where
+{
+ #typedef x0 = s2exp
+ #typedef y0 = s2exp
+ #impltmp
+ map$fopr<x0><y0>(x0) = s2exp_stck(loc0,x0,s2t2)
+}
+end (*let*) // end of [s2explst_stck(...)]
+//
+(* ****** ****** *)
 
 local
 

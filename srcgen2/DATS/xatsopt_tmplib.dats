@@ -109,6 +109,14 @@ f2clknd_fprint
 (g_print$out<>(), knd) // xbasics
 //
 (* ****** ****** *)
+//
+#impltmp
+g_print
+<trcdknd>(knd) =
+trcdknd_fprint
+(g_print$out<>(), knd) // xbasics
+//
+(* ****** ****** *)
 #impltmp
 g_0<stamp>
 ((*void*)) =

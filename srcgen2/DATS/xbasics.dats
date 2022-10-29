@@ -92,7 +92,14 @@ sortpolneg
 )
 //
 (* ****** ****** *)
-
+//
+(*
+HX-2022-10-28:
+1. vwtp <= view
+2. type <= prop
+3. vwtp <= type
+*)
+//
 #implfun
 subsort_test(t1, t2) =
 (
@@ -108,7 +115,7 @@ else
 ( sortprf(t1) <= sortprf(t2) )
 )
 ) (*if*) // end of [subsort_test]
-
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xbasics.dats] *)
