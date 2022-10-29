@@ -475,6 +475,14 @@ S1Ea2pp _ => f0_a2pp(env0, s1e0)
 //
 |
 S1Et1up _ => f0_t1up(env0, s1e0)
+|
+S1Et2up _ => f0_t2up(env0, s1e0)
+|
+S1Er1cd _ => f0_r1cd(env0, s1e0)
+(*
+|
+S1Er2cd _ => f0_r2cd(env0, s1e0)
+*)
 //
 |
 S1Eanno _ => f0_anno(env0, s1e0)
@@ -879,13 +887,13 @@ f0_t1up
 , s1e0: s1exp): s2exp =
 let
 //
+val
+loc0 = s1e0.lctn()
 val-
 S1Et1up
 (tknd, s1es) = s1e0.node()
 //
 (*
-val
-loc0 = s1e0.lctn()
 val ( ) =
 println
 ("trans12_s1exp: f0_t1up: loc0 = ", loc0)
@@ -894,7 +902,7 @@ println
 ("trans12_s1exp: f0_t1up: s1e0 = ", s1e0)
 *)
 //
-in
+in//let
 (
   s2exp_t1up(tknd, s2es)
 ) where
@@ -912,14 +920,14 @@ f0_t2up
 , s1e0: s1exp): s2exp =
 let
 //
+val
+loc0 = s1e0.lctn()
 val-
 S1Et2up
 ( tknd
 , ses1, ses2) = s1e0.node()
 //
 (*
-val
-loc0 = s1e0.lctn()
 val ( ) =
 println
 ("trans12_s1exp: f0_t2up: loc0 = ", loc0)
@@ -928,7 +936,7 @@ println
 ("trans12_s1exp: f0_t2up: s1e0 = ", s1e0)
 *)
 //
-in
+in//let
 (
   s2exp_t2up(tknd, ses1, ses2)
 ) where
@@ -948,13 +956,13 @@ f0_r1cd
 , s1e0: s1exp): s2exp =
 let
 //
+val
+loc0 = s1e0.lctn()
 val-
 S1Er1cd
 (tknd, lses) = s1e0.node()
 //
 (*
-val
-loc0 = s1e0.lctn()
 val ( ) =
 println
 ("trans12_s1exp: f0_r1cd: loc0 = ", loc0)
@@ -963,7 +971,7 @@ println
 ("trans12_s1exp: f0_r1cd: s1e0 = ", s1e0)
 *)
 //
-in
+in//let
 (
   s2exp_r1cd(tknd, lses)
 ) where
@@ -971,6 +979,42 @@ in
   val lses =
   trans12_l1s1elst_impr(env0, lses) }
 end (*let*) // end of [f0_r1cd(env0, s1e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_r2cd
+( env0:
+! tr12env
+, s1e0: s1exp): s2exp =
+let
+//
+val
+loc0 = s1e0.lctn()
+val-
+S1Er2cd
+( tknd
+, lss1, lss2) = s1e0.node()
+//
+(*
+val ( ) =
+println
+("trans12_s1exp: f0_r2cd: loc0 = ", loc0)
+val ( ) =
+println
+("trans12_s1exp: f0_r2cd: s1e0 = ", s1e0)
+*)
+//
+in//let
+(
+  s2exp_r2cd(tknd, lss1, lss2)
+) where
+{
+  val lss1 =
+  trans12_l1s1elst_impr(env0, lss1)
+  val lss2 =
+  trans12_l1s1elst_prgm(env0, lss2) }
+end (*let*) // end of [f0_r2cd(env0, s1e0)]
 //
 (* ****** ****** *)
 //
