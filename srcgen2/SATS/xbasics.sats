@@ -228,6 +228,9 @@ f2clknd =
   // closure: knd=1/0/~1: ptr/flt/ref
 (* ****** ****** *)
 fun
+f2clknd_linq(f2cl: f2clknd): bool
+(* ****** ****** *)
+fun
 f2clknd_fprint: (FILR, f2clknd)->void
 (* ****** ****** *)
 datatype
