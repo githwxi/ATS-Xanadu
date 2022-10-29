@@ -358,6 +358,8 @@ end (*let*) // end of [s2explst_stck(...)]
 
 local
 
+(* ****** ****** *)
+
 fun
 f0_l1st
 ( s2es
@@ -376,11 +378,42 @@ list_cons
 f0_l1st(s2es, i0+1, lses)
 ) where
 {
-  val l0 = LABint(i0)
-  val lse1 = S2LAB(l0, s2e1)
-  val lses = list_vt_cons(lse1, lses)
+val l0 = LABint(i0)
+val lse1 = S2LAB(l0, s2e1)
+val lses = list_vt_cons(lse1, lses)
 } // end of [list_cons]
 ) (*case+*) // end of [f0_l1st(...)]
+
+(* ****** ****** *)
+
+fun
+f0_l2st
+( ses1
+: s2explst
+, ses2
+: s2explst
+, i0: int
+, lses
+: l2s2elst_vt): l2s2elst_vt =
+(
+case+ ses1 of
+|
+list_nil() =>
+f0_l1st(ses2, i0, lses)
+|
+list_cons(s2e1, ses1) =>
+(
+f0_l2st
+(ses1, ses2, i0+1, lses)
+) where
+{
+val l0 = LABint(i0)
+val lse1 = S2LAB(l0, s2e1)
+val lses = list_vt_cons(lse1, lses)
+} // end of [list_cons]
+) (*case+*) // end of [f0_l2st(...)]
+
+(* ****** ****** *)
 
 in//local
 
@@ -388,13 +421,26 @@ in//local
 l2s2elst_make_l1st
       (s2es) =
 let
+val i0 = 0
+val lses = list_vt_nil()
+val lses = f0_l1st(s2es,i0,lses)
+in//let
+  list_vt2t(list_vt_reverse0(lses))
+end (*let*) // end of [l2s2elst_make_l1st]
+
+(* ****** ****** *)
+
+#implfun
+l2s2elst_make_l2st
+  ( ses1, ses2 ) =
+let
   val i0 = 0
   val lses = list_vt_nil()
-in
-list_vt2t
-(
-list_vt_reverse0(f0_l1st(s2es, i0, lses)))
-end (*let*) // end of [l2s2elst_make_l1st]
+  val lses =
+  f0_l2st( ses1, ses2, i0, lses )
+in//let
+  list_vt2t(list_vt_reverse0(lses))
+end (*let*) // end of [l2s2elst_make_l2st]
 
 end (*local*) // end of [local(l2s2elst_make)]
 
