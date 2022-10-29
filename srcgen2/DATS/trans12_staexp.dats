@@ -468,10 +468,8 @@ S1El2st _ => f0_l2st(env0, s1e0)
 //
 |
 S1Ea1pp _ => f0_a1pp(env0, s1e0)
-(*
 |
 S1Ea2pp _ => f0_a2pp(env0, s1e0)
-*)
 //
 |
 S1Et1up _ => f0_t1up(env0, s1e0)
@@ -686,7 +684,7 @@ then true else
  $SYM.DLR_EXTYPE_symbl) )
 | _(*non-S1Eid0*) => false
 ) (*case+*) // end-of-(isextp)
-
+//
 fun
 f0_a1pp
 ( env0:
@@ -880,6 +878,139 @@ optn_vt_cons(s2c1) =>
 f0_a1pp_rest1(env0,s1e0,s2exp_cst(s2c1))
 //
 end (*let*) // end of [f0_a1pp_rest2(...)]
+
+(* ****** ****** *)
+//
+fun
+f0_a2pp
+( env0:
+! tr12env
+, s1e0: s1exp): s2exp =
+let
+//
+val-
+S1Ea2pp
+(s1f0
+,s1e1, s2e2) = s1e0.node()
+//
+val
+s2cs =
+s1exp_get_s2cstlst(env0, s1f0)
+//
+in//let
+//
+case+ s2cs of
+|
+list_nil
+((*void*)) =>
+f0_a2pp_rest0(env0, s1e0)
+|
+list_cons
+(s2c1, scs2) =>
+(
+if
+list_nilq(scs2)
+then
+let
+val s2f0 = s2exp_cst(s2c1)
+in//let
+  f0_a2pp_rest1(env0, s1e0, s2f0)
+end
+else
+(
+  f0_a2pp_rest2(env0, s1e0, s2cs))
+) (* end of [list_cons] *)
+//
+end (*let*) // end of [f0_a2pp(env0, s1e0)]
+//
+(* ****** ****** *)
+
+and
+f0_a2pp_rest0
+( env0:
+! tr12env
+, s1e0: s1exp): s2exp =
+trans12_s1exp(env0, s1e0)
+
+(* ****** ****** *)
+
+and
+f0_a2pp_rest1
+( env0:
+! tr12env
+, s1e0: s1exp
+, s2f0: s2exp): s2exp =
+let
+//
+val loc0 = s1e0.lctn()
+//
+val-
+S1Ea2pp
+(s1f0
+,s1e1, s1e2) = s1e0.node()
+//
+val s2t1 =
+(
+case+
+s2f0.sort() of
+| S2Tf1un(s2ts, _) =>
+  list_get_at(s2ts, 0)
+| _(*non-S2Tfun*) => S2Tnone0()
+) : sort2 // end of [val s2t1]
+//
+val s2t2 =
+(
+case+
+s2f0.sort() of
+| S2Tf1un(s2ts, _) =>
+  list_get_at(s2ts, 1)
+| _(*non-S2Tfun*) => S2Tnone0()
+) : sort2 // end of [val s2t2]
+//
+val s2e1 =
+trans12_s1exp_stck(env0, s1e1, s2t1)
+val s2e2 =
+trans12_s1exp_stck(env0, s1e2, s2t2)
+//
+in
+  s2exp_a2pp(loc0, s2f0, s2e1, s2e2)
+end (*let*) // end of [f0_a2pp_rest1(...)]
+
+(* ****** ****** *)
+
+and
+f0_a2pp_rest2
+( env0:
+! tr12env
+, s1e0: s1exp
+, s2cs: s2cstlst): s2exp =
+let
+//
+val-
+S1Ea2pp
+(s1f0
+,s1e1, s1e2) = s1e0.node()
+//
+val
+s2e1 = trans12_s1exp(env0, s1e1)
+val
+s2e2 = trans12_s1exp(env0, s1e2)
+//
+val opt0 =
+s2cst_select_bin
+(s2cs, s2e1.sort(), s2e2.sort())
+//
+in//let
+//
+case+ opt0 of
+| ~
+optn_vt_nil() =>
+f0_a2pp_rest0(env0, s1e0)
+| ~
+optn_vt_cons(s2c1) =>
+f0_a2pp_rest1(env0, s1e0, s2exp_cst(s2c1))
+//
+end (*let*) // end of [f0_a2pp_rest2(...)]
 
 (* ****** ****** *)
 //

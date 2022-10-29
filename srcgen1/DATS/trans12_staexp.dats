@@ -1628,7 +1628,7 @@ s2c.sort() of
 val s2cs = list_vt2t{s2cst}(s2cs)
 *)
 //
-in
+in//let
 //
 case+ s2cs of
 | list_nil() =>

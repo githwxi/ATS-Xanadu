@@ -180,6 +180,11 @@ fun
 s2cst_select_any
 (s2cs: s2cstlst): s2cstopt_vt
 fun
+s2cst_select_bin
+( s2cs
+: s2cstlst
+, sort2, sort2 ): s2cstopt_vt
+fun
 s2cst_select_list
 (s2cs: s2cstlst,
  s2es: s2explst): s2cstopt_vt
