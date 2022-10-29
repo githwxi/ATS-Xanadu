@@ -120,6 +120,14 @@ val MOD_symbl: symbl //=symbl("%")
 //
 (* ****** ****** *)
 //
+val CBV0_symbl : symbl // symbl("~")
+val CBV1_symbl : symbl // symbl("!")
+val CBRF_symbl : symbl // symbl("&")
+//
+val AXCG_symbl : symbl // symbl(">>")
+//
+(* ****** ****** *)
+//
 val EQLT_symbl : symbl // symbl("=<")
 val EQGT_symbl : symbl // symbl("=>")
 //

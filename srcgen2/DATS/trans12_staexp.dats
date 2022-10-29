@@ -668,7 +668,7 @@ end (*let*) // end of [f0_l2st(env0, s1e0)]
 (* ****** ****** *)
 //
 fun
-isextp
+isEXTP
 ( s1e0
 : s1exp): bool =
 (
@@ -678,12 +678,12 @@ s1e0.node() of
 (
 if
 (sid1 =
- $SYM.DLR_EXTBOX_symbl)
+ DLR_EXTBOX_symbl)
 then true else
 (sid1 =
- $SYM.DLR_EXTYPE_symbl) )
+ DLR_EXTYPE_symbl) )
 | _(*non-S1Eid0*) => false
-) (*case+*) // end-of-(isextp)
+) (*case+*) // end-of-(isEXTP)
 //
 fun
 f0_a1pp
@@ -731,7 +731,7 @@ s1f0.node() of
 *)
 (*
 | _ when
-  isextp(s1e1) =>
+  isEXTP(s1e1) =>
   f0_a1pp_extp( env0, s1e0 )
 *)
 //
@@ -882,6 +882,31 @@ end (*let*) // end of [f0_a1pp_rest2(...)]
 (* ****** ****** *)
 //
 fun
+isAXCG
+( s1e0
+: s1exp): bool =
+(
+case+
+s1e0.node() of
+| S1Eid0(sid1) =>
+  (sid1 = AXCG_symbl)
+| _(*non-S1Eid0*) => false
+)
+fun
+isARRW
+( s1e0
+: s1exp): bool =
+(
+case+
+s1e0.node() of
+| S1Eid0(sid1) =>
+  (sid1 = MSGT_symbl)
+| _(*non-S1Eid0*) => false
+)
+//
+(* ****** ****** *)
+//
+fun
 f0_a2pp
 ( env0:
 ! tr12env
@@ -939,6 +964,50 @@ S1Ea2pp
 //
 in//let
 //
+if
+isARRW(s1f0)
+then let
+//
+val s2es =
+(
+case+
+s1e1.node() of
+|
+S1El1st(s1es) =>
+trans12_s1explst_impr(env0, s1es)
+|
+S1El2st(ses1, ses2) =>
+(
+list_append(ses1, ses2)) where
+{
+val ses1 =
+trans12_s1explst_impr(env0, ses1)
+val ses2 =
+trans12_s1explst_prgm(env0, ses2)
+}
+| _(*non-S1El?st*) =>
+list_sing
+(
+trans12_s1exp_impr(env0, s1e1))
+) : s2explst // end-of-val(s2es)
+//
+val npf1 =
+(
+case+
+s1e1.node() of
+|
+S1El2st(xs, _) =>
+list_length(xs) | _ => -1): sint
+//
+in//let
+  s2exp_fun0_all
+  (npf1, s2es, s2e2) where
+{ val
+  s2e2 =
+  trans12_s1exp_impr(env0, s1e2) }
+end // end of [then]
+else
+(
 case+
 s1f0.node() of
 |
@@ -950,6 +1019,7 @@ trans12_s1exp(env0, s1f0)
 in//let
   f0_a2pp_rest1(env0, s1e0, s2f0)
 end (*let*) // end of [non-S2Earrw]
+) (*case+*) // end of [else]
 //
 end (*let*) // end of [f0_a2pp_rest0(...)]
 
