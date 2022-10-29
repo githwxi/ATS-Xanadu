@@ -1521,8 +1521,10 @@ case+ xs of
     val lxs = list_vt_cons(lx, lxs)
   } // end of [list_cons]
 ) (* end of [auxlst1] *)
-fun
 
+(* ****** ****** *)
+
+fun
 auxlst2
 ( xs
 : s2explst

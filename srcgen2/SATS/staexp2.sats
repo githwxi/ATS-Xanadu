@@ -76,6 +76,14 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #staload "./xbasics.sats"
 (* ****** ****** *)
+//
+datatype
+s2lab(x0:type) =
+|
+S2LAB of
+(label, x0(*elt*))
+//
+(* ****** ****** *)
 #abstbox t2abs_tbox // ptr
 #abstbox t2dat_tbox // ptr
 #typedef t2abs = t2abs_tbox
@@ -98,6 +106,8 @@ LEX = "./lexing0.sats"
 #typedef s2hnf = s2hnf_tbox
 #typedef s2typ = s2typ_tbox
 (* ****** ****** *)
+#typedef l2s2e = s2lab(s2exp)
+(* ****** ****** *)
 (*
 #abstbox s2itm_tbox // ptr
 #typedef s2itm = s2itm_tbox
@@ -105,6 +115,9 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #staload S0E = "./staexp0.sats"
 #staload S1E = "./staexp1.sats"
+(* ****** ****** *)
+#typedef
+s1lab(x0:t0)=$S1E.s1lab(x0)
 (* ****** ****** *)
 #typedef sort1 = $S1E.sort1
 #typedef s1exp = $S1E.s1exp
@@ -121,20 +134,15 @@ LEX = "./lexing0.sats"
 #typedef s2explst = list(s2exp)
 #typedef s2expopt = optn(s2exp)
 (* ****** ****** *)
+#typedef l2s2elst = list(l2s2e)
+(* ****** ****** *)
 #vwtpdef s2cstopt_vt = optn_vt(s2cst)
 #vwtpdef s2varopt_vt = optn_vt(s2var)
+(* ****** ****** *)
+#vwtpdef s2explst_vt = list_vt(s2exp)
 #vwtpdef s2expopt_vt = optn_vt(s2exp)
 (* ****** ****** *)
-//
-datatype
-s2lab(x0:type) =
-|
-S2LAB of
-(label, x0(*elt*))
-//
-(* ****** ****** *)
-#typedef
-s1lab(x0:t0)=$S1E.s1lab(x0)
+#vwtpdef l2s2elst_vt = list_vt(l2s2e)
 (* ****** ****** *)
 //
 fun
@@ -142,10 +150,6 @@ fun
 s2lab_fprint
 (out: FILR, lab: s2lab(x0)): void
 //
-(* ****** ****** *)
-#typedef l2s2e = s2lab(s2exp)
-(* ****** ****** *)
-#typedef l2s2elst = list(l2s2e)
 (* ****** ****** *)
 //
 datatype t2bas =

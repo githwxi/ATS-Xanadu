@@ -47,6 +47,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
+#staload "./../SATS/xlabel0.sats"
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
@@ -316,6 +317,50 @@ s2explst_linq(s2es) =
   #impltmp forall$test<s2exp> = s2exp_linq
 }
 //
+(* ****** ****** *)
+
+local
+
+fun
+f0_l1st
+( s2es
+: s2explst
+, i0: sint
+, lses
+: l2s2elst_vt): l2s2elst_vt =
+(
+case+ s2es of
+|
+list_nil() => lses
+|
+list_cons
+(s2e1, s2es) =>
+(
+f0_l1st(s2es, i0+1, lses)
+) where
+{
+  val l0 = LABint(i0)
+  val lse1 = S2LAB(l0, s2e1)
+  val lses = list_vt_cons(lse1, lses)
+} // end of [list_cons]
+) (*case+*) // end of [f0_l1st(...)]
+
+in//local
+
+#implfun
+l2s2elst_make_l1st
+      (s2es) =
+let
+  val i0 = 0
+  val lses = list_vt_nil()
+in
+list_vt2t
+(
+list_vt_reverse0(f0_l1st(s2es, i0, lses)))
+end (*let*) // end of [l2s2elst_make_l1st]
+
+end (*local*) // end of [local(l2s2elst_make)]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_staexp2_utils1.dats] *)
