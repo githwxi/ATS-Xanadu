@@ -52,8 +52,14 @@ ATS_PACKNAME
 #staload "./../SATS/xstamp0.sats"
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
+#staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
+(* ****** ****** *)
+#symload lctn with token_get_lctn
+#symload node with token_get_node
 (* ****** ****** *)
 #symload lctn with s1exp_get_lctn
 #symload node with s1exp_get_node
@@ -589,6 +595,82 @@ end (*let*) // end of [s2exp_l2st(ses1,ses2)]
 
 (* ****** ****** *)
 //
+(*
+HX-2020-07:
+boxed tuples are linear
+val T0TRCD11 = T_TRCD10(1) //HX: $()
+and T0TRCD12 = T_TRCD10(2) //HX: $tup
+and T0TRCD13 = T_TRCD10(3) //HX: $tup_t0
+and T0TRCD14 = T_TRCD10(4) //HX: $tup_vt
+*)
+//
+#implfun
+s2exp_t1up
+(loc0, tok0, s2es) =
+let
+//
+val
+tnd0 = tok0.node()
+val
+linq =
+s2explst_linq(s2es)
+//
+val
+knd0 =
+(
+case- tnd0 of
+|
+T_TRCD10(0) => TRCDflt0
+|
+T_TRCD10(1) => TRCDbox1
+|
+T_TRCD10(2) =>
+(
+if linq then
+TRCDbox1 else TRCDbox0)
+|
+T_TRCD10(3) => TRCDbox0
+|
+T_TRCD10(4) => TRCDbox1
+) : trcdknd // end-of-val
+//
+val
+s2t0 =
+(
+case- tnd0 of
+|
+T_TRCD10(0) =>
+if
+linq
+then (the_sort2_vwtp)
+else (the_sort2_type)
+| // $(...)
+T_TRCD10(1) => the_sort2_vtbx
+| // $tup(...)
+T_TRCD10(2) =>
+if linq
+then (the_sort2_vtbx)
+else (the_sort2_tbox)
+| // $tup_t0(...)
+T_TRCD10(3) => the_sort2_tbox
+| // $tup_t0(...)
+T_TRCD10(4) => the_sort2_vtbx
+) : sort2 // end of [val s2t0]
+//
+val
+s2es =
+s2explst_stck(loc0, s2es, s2t0)
+//
+val
+lses = l2s2elst_make_l1st(s2es)
+//
+in
+s2exp_make_node
+(s2t0, S2Etrcd(knd0, -1(*npf*), lses))
+end (*let*) // end of [s2exp_t1up(tok1,s2es),]
+//
+(* ****** ****** *)
+//
 #implfun
 s2exp_none0() =
 s2exp
@@ -611,6 +693,30 @@ val (  ) = prerrln
 in//let
 s2exp(s2t0, S2Enone1(loc0, s1e0))
 end (*let*) // end of [s2exp_none1(s1e0)]
+//
+(* ****** ****** *)
+//
+#implfun
+s2exp_impr
+(loc0, s2e0) =
+let
+val
+s2t0 = the_sort2_type
+in
+s2exp
+(s2t0, S2Eimpr(loc0, s2e0))
+end (*let*)//end-of-[s2exp_impr]
+//
+#implfun
+s2exp_prgm
+(loc0, s2e0) =
+let
+val
+s2t0 = the_sort2_type
+in
+s2exp
+(s2t0, S2Eprgm(loc0, s2e0))
+end (*let*)//end-of-[s2exp_prgm]
 //
 (* ****** ****** *)
 //

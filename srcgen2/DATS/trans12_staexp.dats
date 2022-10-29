@@ -907,7 +907,7 @@ println
 //
 in//let
 (
-  s2exp_t1up(tknd, s2es)
+  s2exp_t1up(loc0, tknd, s2es)
 ) where
 {
   val s2es =
@@ -941,8 +941,8 @@ println
 //
 in//let
 (
-  s2exp_t2up(tknd, ses1, ses2)
-) where
+  s2exp_t2up
+  (loc0, tknd, ses1, ses2)) where
 {
   val ses1 =
   trans12_s1explst_impr(env0, ses1)
