@@ -412,9 +412,8 @@ s2exp_node =
   ( s2varlst(*vars*)
   , s2explst(*prop*), s2exp(*body*))
 //
-(*
-| S2Elist of s2explst // HX: temporary use
-*)
+| // HX: for terms of tuple sorts
+S2Elist of s2explst // HX: temporary use
 //
 // HX-2021-01: for lifting from
 | S2Etype of (s2typ) // [s2typ] to [s2exp]
@@ -595,7 +594,11 @@ lte_sort2lst_sort2lst:
 fun
 s2exp_linq(s2exp): bool
 fun
+s2exp_imprq(s2exp): bool
+fun
 s2explst_linq(s2explst): bool
+fun
+s2explst_imprq(s2explst): bool
 //
 (* ****** ****** *)
 fun

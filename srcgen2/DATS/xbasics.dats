@@ -97,7 +97,7 @@ sortpolneg
 HX-2022-10-28:
 1. vwtp <= view
 2. type <= prop
-3. vwtp <= type
+3. type <= vwtp
 *)
 //
 #implfun

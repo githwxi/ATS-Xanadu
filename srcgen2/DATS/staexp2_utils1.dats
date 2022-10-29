@@ -308,14 +308,24 @@ S2Tnone(s1t1) => false | S2Tnone((*void*)) => false
 #implfun
 s2exp_linq(s2e0) =
 sort2_linq(s2e0.sort())
+#implfun
+s2exp_imprq(s2e0) =
+sort2_imprq(s2e0.sort())
 //
 #implfun
 s2explst_linq(s2es) =
 (
   list_forall(s2es)) where
 {
-  #impltmp forall$test<s2exp> = s2exp_linq
-}
+  #impltmp
+  forall$test<s2exp> = s2exp_linq }
+#implfun
+s2explst_imprq(s2es) =
+(
+  list_forall(s2es)) where
+{
+  #impltmp
+  forall$test<s2exp> = s2exp_imprq }
 //
 (* ****** ****** *)
 //
