@@ -274,11 +274,12 @@ print
 ("S2Etrcd(",knd0,";",npf1,";",lses)
 //
 |
-S2Ecimp(loc0,s2e1) =>
-print("S2Ecimp(",loc0,";",s2e1,")")
+S2Eimpr(loc0,s2e1) =>
+print("S2Eimpr(",loc0,";",s2e1,")")
 |
-S2Ecprf(loc0,s2e1) =>
-print("S2Ecprf(",loc0,";",s2e1,")")
+S2Eprgm(loc0,s2e1) =>
+print("S2Eprgm(",loc0,";",s2e1,")")
+//
 |
 S2Ecast
 (loc0, s2e1, s2t2) =>
