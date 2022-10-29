@@ -930,7 +930,28 @@ f0_a2pp_rest0
 ( env0:
 ! tr12env
 , s1e0: s1exp): s2exp =
-trans12_s1exp(env0, s1e0)
+let
+//
+val-
+S1Ea2pp
+(s1f0
+,s1e1, s1e2) = s1e0.node()
+//
+in//let
+//
+case+
+s1f0.node() of
+|
+_ (* non-S2Earrw(...) *) =>
+let
+val
+s2f0 =
+trans12_s1exp(env0, s1f0)
+in//let
+  f0_a2pp_rest1(env0, s1e0, s2f0)
+end (*let*) // end of [non-S2Earrw]
+//
+end (*let*) // end of [f0_a2pp_rest0(...)]
 
 (* ****** ****** *)
 
