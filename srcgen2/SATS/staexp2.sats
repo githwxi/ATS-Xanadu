@@ -528,6 +528,8 @@ fun
 sort2_funq(s2t0: sort2): bool
 fun
 sort2_linq(s2t0: sort2): bool
+fun
+sort2_prfq(s2t0: sort2): bool
 (* ****** ****** *)
 fun
 sort2_addrq(s2t0: sort2): bool
@@ -594,9 +596,13 @@ lte_sort2lst_sort2lst:
 fun
 s2exp_linq(s2exp): bool
 fun
+s2exp_prfq(s2exp): bool
+fun
 s2exp_imprq(s2exp): bool
 fun
 s2explst_linq(s2explst): bool
+fun
+s2explst_prfq(s2explst): bool
 fun
 s2explst_imprq(s2explst): bool
 //
