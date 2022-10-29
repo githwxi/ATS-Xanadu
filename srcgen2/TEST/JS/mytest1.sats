@@ -55,6 +55,8 @@ mysexp3(a:tabs1): mysort2 = foo(a)
 mysexp4(a:tabs1): mysort2 = foo(a, a)
 #sexpdef
 mysexp5() = (1, 2)
+#sexpdef
+mysexp6() = (0 | 1, 2)
 (* ****** ****** *)
 ////
 (* ****** ****** *)

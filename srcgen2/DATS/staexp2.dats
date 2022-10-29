@@ -521,7 +521,7 @@ s2t1 =
 if
 linq
 then
-the_sort2_view else the_sort2_view
+the_sort2_view else the_sort2_prop
 ) : sort2 // end of [val s2t1]
 //
 val
