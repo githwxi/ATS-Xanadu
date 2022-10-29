@@ -604,10 +604,12 @@ fun
 s2exp_var( s2v0: s2var ): s2exp
 (* ****** ****** *)
 fun
-s2exp_l1st(s2es: s2explst): s2exp
+s2exp_l1st
+(loc0: loc_t, s2es: s2explst): s2exp
 fun
 s2exp_l2st
-(ses1: s2explst, ses2: s2explst): s2exp
+(loc0: loc_t
+,ses1: s2explst, ses2: s2explst): s2exp
 (* ****** ****** *)
 fun
 s2exp_t1up
@@ -627,7 +629,17 @@ s2exp_r2cd
 (* ****** ****** *)
 fun
 s2exp_cast
-(loc0:loc_t,s2e1:s2exp,s2t2:sort2):s2exp
+( loc0: loc_t
+, s2e1: s2exp, s2t2: sort2): s2exp
+(* ****** ****** *)
+fun
+s2exp_stck
+( loc0: loc_t
+, s2e0: s2exp, s2t0: sort2): s2exp
+fun
+s2explst_stck
+( loc0: loc_t
+, s2es: s2explst, s2t0: sort2): s2explst
 (* ****** ****** *)
 //
 fun

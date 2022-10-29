@@ -478,7 +478,7 @@ end (*let*) // end of [s2exp_lam0(s2vs,body)]
 
 #implfun
 s2exp_l1st
-  (s2es) = let
+(loc0, s2es) = let
 //
 val
 knd0 = TRCDflt0(*void*)
@@ -493,6 +493,9 @@ then the_sort2_vwtp(* lin*)
 else the_sort2_type(*~lin*)
 ) : sort2 // end of [val s2t0]
 //
+val s2es =
+s2explst_stck(loc0, s2es, s2t0)
+//
 val
 lses = l2s2elst_make_l1st(s2es)
 //
@@ -505,7 +508,7 @@ end (*let*) // end of [s2exp_l1st(s2es)]
 
 #implfun
 s2exp_l2st
-(ses1, ses2) = let
+(loc0, ses1, ses2) = let
 //
 val
 knd0 = TRCDflt0(*void*)
@@ -513,7 +516,16 @@ val
 linq = s2explst_linq(ses1)
 //
 val
-s2t0 =
+s2t1 =
+(
+if
+linq
+then
+the_sort2_view else the_sort2_view
+) : sort2 // end of [val s2t1]
+//
+val
+s2t2 =
 (
 if
 linq
@@ -525,14 +537,20 @@ s2explst_linq(ses2)
 then
 the_sort2_vwtp else the_sort2_type
 )
-) : sort2 // end of [val s2t0]
+) : sort2 // end of [val s2t2]
 //
 val npf1 = list_length(ses1)
+//
+val ses1 =
+s2explst_stck(loc0, ses1, s2t1)
+val ses2 =
+s2explst_stck(loc0, ses2, s2t2)
+//
 val lses =
-l2s2elst_make_l2st(ses1, ses2)
+l2s2elst_make_l2st( ses1, ses2 )
 //
 in
-s2exp(s2t0, S2Etrcd(knd0, npf1, lses))
+s2exp(s2t2, S2Etrcd(knd0, npf1, lses))
 end (*let*) // end of [s2exp_l2st(ses1,ses2)]
 
 (* ****** ****** *)
