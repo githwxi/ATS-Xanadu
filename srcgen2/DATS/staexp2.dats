@@ -354,6 +354,18 @@ end (*let*) // end of [s2var_get_stmp]
 (* ****** ****** *)
 //
 #implfun
+s2var_make_name
+  (  sid  ) =
+(
+S2VAR(sid, s2t, tmp)) where
+{ val s2t = S2Tnone0(*void*)
+  val
+  tmp = the_s2var_stamp_new((*void*))
+} (*where*) // end of [s2var_make_name]
+//
+(* ****** ****** *)
+//
+#implfun
 s2var_make_idst
   (sid, s2t) =
 (
@@ -458,6 +470,19 @@ _(*non-S2Tf1un*) => S2Tnone0()
 in
   s2exp(tres, S2Eapps(s2f0, s2es))
 end (*let*) // end of [s2exp_apps(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+s2exp_a2pp
+( loc0
+, s2f0, s2e1, s2e2) =
+(
+s2exp_apps
+(loc0, s2f0, s2es)) where
+{
+val s2es = list_pair(s2e1, s2e2)
+} (*where*) // end of [s2exp_a2pp(...)]
 //
 (* ****** ****** *)
 
