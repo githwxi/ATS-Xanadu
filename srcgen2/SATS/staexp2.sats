@@ -425,9 +425,9 @@ S2Elist of s2explst // HX: temporary use
 | S2Etrcd of
   (trcdknd(*knd*), int(*npf*), l2s2elst)
 //
-| S2Ecimp of // HX: for storing
+| S2Eimpr of // HX: for storing
   (loc_t, s2exp) // sort-checking error
-| S2Ecprf of // HX: for storing
+| S2Eprgm of // HX: for storing
   (loc_t, s2exp) // sort-checking error
 //
 | S2Ecast of // HX-2018-12-23: for storing
@@ -629,6 +629,13 @@ fun
 s2exp_r2cd
 ( tknd: token
 , lss1: l2s2elst, lss2: l2s2elst): s2exp
+(* ****** ****** *)
+fun
+s2exp_impr
+(loc0: loc_t, s2e1: s2exp): s2exp
+fun
+s2exp_prgm
+(loc0: loc_t, s2e1: s2exp): s2exp
 (* ****** ****** *)
 fun
 s2exp_cast
