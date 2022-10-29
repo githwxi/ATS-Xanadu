@@ -477,12 +477,21 @@ s2exp_none0((*void*)): s2exp
 fun
 s2exp_none1(s1e0:s1exp): s2exp
 (* ****** ****** *)
+//
 fun
 s2exp_apps
 ( loc0
 : loc_t
-, s1f0
+, s2f0
 : s2exp, s2es: s2explst): s2exp
+//
+fun
+s2exp_a2pp
+( loc0
+: loc_t
+, s2f0: s2exp
+, s2e1: s2exp, s2e2: s2exp): s2exp
+//
 (* ****** ****** *)
 fun
 s2exp_lam0
