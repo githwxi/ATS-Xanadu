@@ -99,6 +99,27 @@ S2Tbas(s2tb) =>
 ) (* case+ *) // end of [sort2_linq]
 //
 (* ****** ****** *)
+//
+#implfun
+sort2_prfq
+  (s2t0) =
+(
+case+ s2t0 of
+|
+S2Tbas(s2tb) =>
+(
+ case+ s2tb of
+ |
+ T2Bimpr
+ (knd, _) =>
+ (sortprf(knd) > 0)
+ |
+ _(*non-T2Bimpr*) => false
+)
+| _(*non-S2Tbas*) => false
+) (* case+ *) // end of [sort2_prfq]
+//
+(* ****** ****** *)
 
 #implfun
 sort2_addrq
@@ -309,6 +330,9 @@ S2Tnone(s1t1) => false | S2Tnone((*void*)) => false
 s2exp_linq(s2e0) =
 sort2_linq(s2e0.sort())
 #implfun
+s2exp_prfq(s2e0) =
+sort2_prfq(s2e0.sort())
+#implfun
 s2exp_imprq(s2e0) =
 sort2_imprq(s2e0.sort())
 //
@@ -319,6 +343,13 @@ s2explst_linq(s2es) =
 {
   #impltmp
   forall$test<s2exp> = s2exp_linq }
+#implfun
+s2explst_prfq(s2es) =
+(
+  list_forall(s2es)) where
+{
+  #impltmp
+  forall$test<s2exp> = s2exp_prfq }
 #implfun
 s2explst_imprq(s2es) =
 (
