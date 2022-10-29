@@ -653,14 +653,17 @@ then
 (
 s2exp_l1st(loc0, ses2) where
 {
-val ses2 = trans12_s1explst(env0, ses2) }
+val ses2 =
+trans12_s1explst_impr(env0, ses2) }
 )
 else
 (
 s2exp_l2st(loc0, ses1, ses2) where
 {
-val ses1 = trans12_s1explst(env0, ses1)
-val ses2 = trans12_s1explst(env0, ses2) }
+val ses1 =
+  trans12_s1explst_impr(env0, ses1)
+val ses2 =
+  trans12_s1explst_prgm(env0, ses2) }
 )
 end (*let*) // end of [f0_l2st(env0, s1e0)]
 //
@@ -1059,6 +1062,48 @@ s2exp_cast(s1e1.lctn(), s2e1, s2t2)
 end (*let*)//end-of[trans12_s1exp_stck(env0,...)]
 
 (* ****** ****** *)
+
+#implfun
+trans12_sort1lst
+  (env0, s1ts) =
+list_trans12_fnp(env0, s1ts, trans12_sort1)
+
+(* ****** ****** *)
+
+#implfun
+trans12_s1arglst
+  (env0, s1as) =
+list_trans12_fnp(env0, s1as, trans12_s1arg)
+
+(* ****** ****** *)
+
+#implfun
+trans12_s1maglst
+  (env0, smas) =
+list_trans12_fnp(env0, smas, trans12_s1mag)
+
+(* ****** ****** *)
+
+#implfun
+trans12_t1arglst
+  (env0, t1as) =
+list_trans12_fnp(env0, t1as, trans12_t1arg)
+
+(* ****** ****** *)
+
+#implfun
+trans12_t1maglst
+  (env0, tmas) =
+list_trans12_fnp(env0, tmas, trans12_t1mag)
+
+(* ****** ****** *)
+
+#implfun
+trans12_s1explst
+  (env0, s1es) =
+list_trans12_fnp(env0, s1es, trans12_s1exp)
+
+(* ****** ****** *)
 //
 #implfun
 trans12_s1explst_stck1
@@ -1140,47 +1185,17 @@ val s2es = auxlst(env0, s1es, s2ts)
 } (*where*)//end of [trans12_s1explst_stck1]
 //
 (* ****** ****** *)
-
+//
 #implfun
-trans12_sort1lst
-  (env0, s1ts) =
-list_trans12_fnp(env0, s1ts, trans12_sort1)
-
-(* ****** ****** *)
-
-#implfun
-trans12_s1arglst
-  (env0, s1as) =
-list_trans12_fnp(env0, s1as, trans12_s1arg)
-
-(* ****** ****** *)
-
-#implfun
-trans12_s1maglst
-  (env0, smas) =
-list_trans12_fnp(env0, smas, trans12_s1mag)
-
-(* ****** ****** *)
-
-#implfun
-trans12_t1arglst
-  (env0, t1as) =
-list_trans12_fnp(env0, t1as, trans12_t1arg)
-
-(* ****** ****** *)
-
-#implfun
-trans12_t1maglst
-  (env0, tmas) =
-list_trans12_fnp(env0, tmas, trans12_t1mag)
-
-(* ****** ****** *)
-
-#implfun
-trans12_s1explst
+trans12_s1explst_impr
   (env0, s1es) =
-list_trans12_fnp(env0, s1es, trans12_s1exp)
-
+list_trans12_fnp(env0, s1es, trans12_s1exp_impr)
+//
+#implfun
+trans12_s1explst_prgm
+  (env0, s1es) =
+list_trans12_fnp(env0, s1es, trans12_s1exp_prgm)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans12_staexp.dats] *)

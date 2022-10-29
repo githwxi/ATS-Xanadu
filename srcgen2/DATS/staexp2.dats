@@ -478,7 +478,17 @@ end (*let*) // end of [s2exp_lam0(s2vs,body)]
 
 #implfun
 s2exp_l1st
-(loc0, s2es) = let
+(loc0, s2es) =
+let
+val
+impr =
+s2explst_imprq(s2es)
+//
+in//let
+//
+if
+impr
+then let
 //
 val
 knd0 = TRCDflt0(*void*)
@@ -501,7 +511,22 @@ lses = l2s2elst_make_l1st(s2es)
 //
 in
 s2exp_make_node
-(s2t0, S2Etrcd(knd0, -1(*npf*), lses))
+( s2t0
+, S2Etrcd(knd0, -1(*npf*), lses))
+end (*let*) // end-of-then
+else // tuples // not yet supported
+let
+val s2ts =
+list_map<x0><y0>(s2es) where
+{
+ #typedef x0 = s2exp
+ #typedef y0 = sort2
+ #impltmp
+ map$fopr<x0><y0>(x0) = x0.sort() }
+in
+  s2exp(S2Ttup(s2ts), S2Elist(s2es))
+end (*let*) // end-of-else // end-if
+//
 end (*let*) // end of [s2exp_l1st(s2es)]
 
 (* ****** ****** *)
@@ -541,10 +566,19 @@ the_sort2_vwtp else the_sort2_type
 //
 val npf1 = list_length(ses1)
 //
+(*
+//
+(*
+HX-2022-10-28:
+Checking is already done.
+See f0_l2st in trans12_s2exp.
+*)
+// 
 val ses1 =
 s2explst_stck(loc0, ses1, s2t1)
 val ses2 =
 s2explst_stck(loc0, ses2, s2t2)
+*)
 //
 val lses =
 l2s2elst_make_l2st( ses1, ses2 )

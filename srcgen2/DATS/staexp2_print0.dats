@@ -257,6 +257,9 @@ S2Euni0
 ; print(s2vs,";",s2ps,";",s2e1,")"))
 //
 |
+S2Elist(s2es) =>
+print("S2Elist(", s2es, ")")
+|
 S2Etype(s2tp) =>
 print("S2Etype(", s2tp, ")")
 //
