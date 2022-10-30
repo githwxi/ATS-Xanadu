@@ -92,6 +92,34 @@ l2s2elst_revar_flag(lses, s2v0, s2v1, flag)
 end (*let*) // end of [l2s2elst_revar(...)]
 //
 (* ****** ****** *)
+
+#implfun
+s2exp_revar_flag
+( s2e0
+, s2v0, s2v1, flag) =
+(
+f0_main(s2e0, flag)) where
+{
+//
+fun
+f0_main
+( s2e0: s2exp
+, flag: &sint >> _): s2exp =
+(
+case+
+s2e0.node() of
+//
+| S2Eint _ => s2e0
+| S2Ebtf _ => s2e0
+| S2Echr _ => s2e0
+| S2Estr _ => s2e0
+//
+| _(* rest-of-s2exp *) => s2exp_none2(s2e0)
+)
+//
+} (*where*) // end of [s2exp_revar_flag(...)]
+
+(* ****** ****** *)
 //
 #implfun
 l2s2e_revar_flag
@@ -144,6 +172,7 @@ l2s2elst_revar_flag
 ( lses
 , s2v0, s2v1, flag) =
 (
+//
 case+ lses of
 |
 list_nil() =>
@@ -164,6 +193,7 @@ in//let
 if
 flag > fval then list_cons(lse1, lss2) else lses
 end (*let*) // end of [list_cons(...)]
+//
 ) (*case+*) // end of [l2s2elst_revar_flag(...)]
 
 (* ****** ****** *)
