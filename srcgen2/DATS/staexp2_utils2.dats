@@ -114,6 +114,56 @@ s2e0.node() of
 |S2Echr _ => s2e0
 |S2Estr _ => s2e0
 //
+|S2Ecst _ => s2e0
+//
+|S2Evar(svar) =>
+(
+if
+(svar != s2v0)
+then s2e0 else
+(
+flag := flag+1;
+s2exp_make_node
+(s2e0.sort(), S2Evar(s2v1))))
+//
+|S2Eany _ => s2e0
+//
+|
+S2Etop0(s2e1) =>
+let
+//
+val fval = flag
+//
+val s2e1 =
+f0_main(s2e1, flag)
+//
+val s2t0 = s2e1.sort()
+//
+in//let
+if
+flag <= fval
+then s2e0 else
+s2exp_make_node(s2t0,S2Etop0(s2e1))
+end (*let*) // end of [S2Etop0(...)]
+//
+|
+S2Etopz(s2e1) =>
+let
+//
+val fval = flag
+//
+val s2e1 =
+f0_main(s2e1, flag)
+//
+val s2t0 = s2e1.sort()
+//
+in//let
+if
+flag <= fval
+then s2e0 else
+s2exp_make_node(s2t0,S2Etopz(s2e1))
+end (*let*) // end of [S2Etopz(...)]
+//
 |
 S2Eapps
 (s2e1, s2es) =>
