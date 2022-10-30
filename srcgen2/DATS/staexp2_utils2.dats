@@ -52,5 +52,45 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 (* ****** ****** *)
+//
+#implfun
+s2exp_revar
+(s2e0, s2v0, s2v1) =
+let
+var flag: sint = 0
+in//let
+s2exp_revar_flag(s2e0, s2v0, s2v1, flag)
+end (*let*) // end of [s2exp_revar(...)]
+//
+#implfun
+l2s2e_revar
+(ls2e, s2v0, s2v1) =
+let
+var flag: sint = 0
+in//let
+l2s2e_revar_flag(ls2e, s2v0, s2v1, flag)
+end (*let*) // end of [l2s2e_revar(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+s2explst_revar
+(s2es, s2v0, s2v1) =
+let
+var flag: sint = 0
+in//let
+s2explst_revar_flag(s2es, s2v0, s2v1, flag)
+end (*let*) // end of [s2explst_revar(...)]
+//
+#implfun
+l2s2elst_revar
+(lses, s2v0, s2v1) =
+let
+var flag: sint = 0
+in//let
+l2s2elst_revar_flag(lses, s2v0, s2v1, flag)
+end (*let*) // end of [l2s2elst_revar(...)]
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_staexp2_utils2.dats] *)
