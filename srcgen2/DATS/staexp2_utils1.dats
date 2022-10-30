@@ -371,12 +371,68 @@ s2explst_prgmq(s2es) =
 (* ****** ****** *)
 //
 #implfun
+l2s2elst_linq(lses) =
+(
+  list_forall(lses)) where
+{
+#impltmp
+forall$test
+<l2s2e>(ls2e) = s2exp_linq(ls2e.itm())
+}
+//
+#implfun
+l2s2elst_prfq(lses) =
+(
+  list_forall(lses)) where
+{
+#impltmp
+forall$test
+<l2s2e>(ls2e) = s2exp_prfq(ls2e.itm())
+}
+//
+#implfun
+l2s2elst_imprq(lses) =
+(
+  list_forall(lses)) where
+{
+#impltmp
+forall$test
+<l2s2e>(ls2e) = s2exp_imprq(ls2e.itm())
+}
+//
+#implfun
+l2s2elst_prgmq(lses) =
+(
+  list_forall(lses)) where
+{
+#impltmp
+forall$test
+<l2s2e>(ls2e) = s2exp_prgmq(ls2e.itm())
+}
+//
+(* ****** ****** *)
+//
+#implfun
 s2exp_stck
 (loc0, s2e1, s2t2) =
 (
 if
 s2e1.sort() <= s2t2
 then s2e1 else s2exp_cast(loc0,s2e1,s2t2))
+//
+#implfun
+l2s2e_stck
+(loc0, ls2e, s2t2) =
+let
+val+
+S2LAB
+(l1, s2e1) = ls2e
+in//let
+if
+s2e1.sort() <= s2t2
+then ls2e
+else S2LAB(l1, s2exp_cast(loc0,s2e1,s2t2))
+end (*let*) // end of [l2s2e_stck(loc0,...)]
 //
 (* ****** ****** *)
 //
@@ -404,6 +460,33 @@ list_map
  map$fopr<x0><y0>(x0) = s2exp_stck(loc0,x0,s2t2)
 }
 end (*let*) // end of [s2explst_stck(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+l2s2elst_stck
+(loc0, lses, s2t2) =
+let
+val test =
+list_forall
+<x0>( lses ) where
+{
+ #typedef x0 = l2s2e
+ #impltmp
+ forall$test<x0>(x0) = x0.sort() <= s2t2
+}
+in//let
+if test
+then lses else
+list_map
+<x0><y0>(lses) where
+{
+ #typedef x0 = l2s2e
+ #typedef y0 = l2s2e
+ #impltmp
+ map$fopr<x0><y0>(x0) = l2s2e_stck(loc0,x0,s2t2)
+}
+end (*let*) // end of [l2s2elst_stck(...)]
 //
 (* ****** ****** *)
 

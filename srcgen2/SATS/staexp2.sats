@@ -83,6 +83,13 @@ s2lab(x0:type) =
 S2LAB of
 (label, x0(*elt*))
 //
+fun
+<x0:t0>
+s2lab_get_itm
+(slab: s2lab(x0)): x0
+#symload
+itm with s2lab_get_itm
+//
 (* ****** ****** *)
 #abstbox t2abs_tbox // ptr
 #abstbox t2dat_tbox // ptr
@@ -456,10 +463,16 @@ s2typ_fprint:(FILR,s2typ)->void
 fun
 s2exp_get_sort(s2exp): sort2
 fun
+l2s2e_get_sort(l2s2e): sort2
+fun
 s2exp_get_node(s2exp): s2exp_node
+fun
+l2s2e_get_node(l2s2e): s2exp_node
 (* ****** ****** *)
 #symload sort with s2exp_get_sort
+#symload sort with l2s2e_get_sort
 #symload node with s2exp_get_node
+#symload node with l2s2e_get_node
 (* ****** ****** *)
 fun
 s2exp_int(i0: sint): s2exp
@@ -628,6 +641,7 @@ fun
 s2exp_imprq(s2exp): bool
 fun
 s2exp_prgmq(s2exp): bool
+//
 fun
 s2explst_linq(s2explst): bool
 fun
@@ -636,6 +650,15 @@ fun
 s2explst_imprq(s2explst): bool
 fun
 s2explst_prgmq(s2explst): bool
+//
+fun
+l2s2elst_linq(l2s2elst): bool
+fun
+l2s2elst_prfq(l2s2elst): bool
+fun
+l2s2elst_imprq(l2s2elst): bool
+fun
+l2s2elst_prgmq(l2s2elst): bool
 //
 (* ****** ****** *)
 fun
@@ -663,10 +686,12 @@ s2exp_t2up
 (* ****** ****** *)
 fun
 s2exp_r1cd
-(tknd: token, lses: l2s2elst): s2exp
+( loc0: loc_t
+, tknd: token, lses: l2s2elst): s2exp
 fun
 s2exp_r2cd
-( tknd: token
+( loc0: loc_t
+, tknd: token
 , lss1: l2s2elst, lss2: l2s2elst): s2exp
 (* ****** ****** *)
 fun
@@ -684,11 +709,19 @@ s2exp_cast
 fun
 s2exp_stck
 ( loc0: loc_t
-, s2e0: s2exp, s2t0: sort2): s2exp
+, s2e1: s2exp, s2t2: sort2): s2exp
+fun
+l2s2e_stck
+( loc0: loc_t
+, ls2e: l2s2e, s2t2: sort2): l2s2e
 fun
 s2explst_stck
 ( loc0: loc_t
 , s2es: s2explst, s2t0: sort2): s2explst
+fun
+l2s2elst_stck
+( loc0: loc_t
+, lses: l2s2elst, s2t0: sort2): l2s2elst
 (* ****** ****** *)
 //
 fun

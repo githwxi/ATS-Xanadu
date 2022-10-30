@@ -218,6 +218,13 @@ HX: for level-0 syntax
 *)
 
 (* ****** ****** *)
+#impltmp
+<x0>
+s0lab_get_itm(lab) =
+(
+case+
+lab of S0LAB(l0, x0) => (x0))
+(* ****** ****** *)
 //
 (*
 fun
@@ -554,6 +561,13 @@ HX: for level-1 syntax
 *)
 
 (* ****** ****** *)
+#impltmp
+<x0>
+s1lab_get_itm(lab) =
+(
+case+
+lab of S1LAB(l0, x0) => (x0))
+(* ****** ****** *)
 //
 (*
 fun
@@ -871,6 +885,13 @@ g_cmp<s2var>
 (s2v1, s2v2) =
 s2v1.stmp() \cmp s2v2.stmp()
 //
+(* ****** ****** *)
+#impltmp
+<x0>
+s2lab_get_itm(lab) =
+(
+case+
+lab of S2LAB(l0, x0) => (x0))
 (* ****** ****** *)
 //
 (*

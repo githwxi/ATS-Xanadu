@@ -1127,8 +1127,8 @@ println
 //
 in//let
 (
-  s2exp_t1up(loc0, tknd, s2es)
-) where
+  s2exp_t1up
+  (loc0, tknd, s2es)) where
 {
   val s2es =
   trans12_s1explst_impr(env0, s1es) }
@@ -1196,11 +1196,15 @@ println
 //
 in//let
 (
-  s2exp_r1cd(tknd, lses)
-) where
+  s2exp_r1cd
+  (loc0, tknd, lses)) where
 {
   val lses =
-  trans12_l1s1elst_impr(env0, lses) }
+  trans12_l1s1elst_impr(env0, lses)
+  val () =
+  prerrln
+  ("trans12_s1exp: f0_r1cd: lses = ", lses)
+}
 end (*let*) // end of [f0_r1cd(env0, s1e0)]
 //
 (* ****** ****** *)
@@ -1230,8 +1234,8 @@ println
 //
 in//let
 (
-  s2exp_r2cd(tknd, lss1, lss2)
-) where
+  s2exp_r2cd
+  (loc0, tknd, lss1, lss2)) where
 {
   val lss1 =
   trans12_l1s1elst_impr(env0, lss1)
