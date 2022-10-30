@@ -699,9 +699,9 @@ in(*in-of-let*)
 case+
 s1f0.node() of
 //
-(*
 | S1Eforall _ =>
   f0_a1pp_uni0( env0, s1e0 )
+(*
 | S1Eexists _ =>
   f0_a1pp_exi0( env0, s1e0 )
 *)
@@ -737,6 +737,87 @@ s1f0.node() of
 _(*S1E...*) => f0_a1pp_rest(env0, s1e0)
 //
 end (*let*) // end of [f0_a1pp(env0, s1e0)]
+
+(* ****** ****** *)
+
+and
+f0_a1pp_uni0
+( env0:
+! tr12env
+, s1e0: s1exp): s2exp =
+let
+//
+val-
+S1Ea1pp
+(s1e1, s1e2) = s1e0.node()
+//
+val-
+S1Euni0(s1qs) = s1e1.node()
+//
+(*
+val () =
+prerrln
+("f0_a1pp_uni0: s1qs = ", s1qs)
+*)
+//
+val () =
+tr12env_pshlam0(env0)
+//
+val
+(s2vs, s2ps) =
+trans12_s1qualst(env0, s1qs)
+//
+val
+s2e2 =
+trans12_s1exp_impr(env0, s1e2)
+//
+val () = tr12env_poplam0(env0)
+//
+in
+//
+s2exp_uni0(s2vs, s2ps, s2e2(*body*))
+end (*let*) // end of [f0_a1pp_uni0(...)]
+
+(* ****** ****** *)
+
+and
+f0_a1pp_exi0
+( env0:
+! tr12env
+, s1e0: s1exp): s2exp =
+let
+//
+val-
+S1Ea1pp
+(s1e1, s1e2) = s1e0.node()
+//
+val-
+S1Eexi0
+( tknd, s1qs ) = s1e1.node()
+//
+(*
+val () =
+prerrln
+("f0_a1pp_exi0: s1qs = ", s1qs)
+*)
+//
+val () =
+tr12env_pshlam0(env0)
+//
+val
+(s2vs, s2ps) =
+trans12_s1qualst(env0, s1qs)
+//
+val
+s2e2 =
+trans12_s1exp_impr(env0, s1e2)
+//
+val () = tr12env_poplam0(env0)
+//
+in
+//
+s2exp_exi0(s2vs, s2ps, s2e2(*body*))
+end (*let*) // end of [f0_a1pp_exi0(...)]
 
 (* ****** ****** *)
 

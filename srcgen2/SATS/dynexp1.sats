@@ -118,6 +118,13 @@ d1lab(x0:type) =
 D1LAB of
 (label, x0(*elt*))
 //
+fun
+<x0:t0>
+d1lab_get_itm
+(dlab: d1lab(x0)): x0
+#symload
+itm with d1lab_get_itm
+//
 (* ****** ****** *)
 #typedef
 d0lab(x0:t0)=$D0E.d0lab(x0)
