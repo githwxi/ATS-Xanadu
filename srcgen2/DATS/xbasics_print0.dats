@@ -186,14 +186,34 @@ end(*let*)//end-of(implknd_fprint)
 
 #implfun
 //<>(*tmp*)
-trcdknd_fprint
-  (out, knd) = let
+f2clknd_fprint
+  (out, f2cl) = let
 //
 #impltmp g_print$out<>() = out
 //
 in//let
 //
-case+ knd of
+case+ f2cl of
+//
+| F2CLfun() =>
+    print( "F2CLfun" )
+| F2CLclo(knd) =>
+    print( "F2CLclo(", knd, ")" )
+//
+end(*let*)//end-of(f2clknd_fprint)
+
+(* ****** ****** *)
+
+#implfun
+//<>(*tmp*)
+trcdknd_fprint
+  (out, tknd) = let
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+//
+case+ tknd of
 |
 TRCDbox0() => print( "TRCDbox0" )
 |
