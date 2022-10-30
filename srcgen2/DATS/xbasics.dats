@@ -118,4 +118,14 @@ else
 //
 (* ****** ****** *)
 
+#implfun
+f2clknd_linq(f2cl) =
+(
+case+ f2cl of
+| F2CLfun() => false
+| F2CLclo(knd0) => (knd0 >= LINCLOFLT)
+)
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_xbasics.dats] *)

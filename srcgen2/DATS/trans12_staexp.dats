@@ -477,10 +477,8 @@ S1Et1up _ => f0_t1up(env0, s1e0)
 S1Et2up _ => f0_t2up(env0, s1e0)
 |
 S1Er1cd _ => f0_r1cd(env0, s1e0)
-(*
 |
 S1Er2cd _ => f0_r2cd(env0, s1e0)
-*)
 //
 |
 S1Eanno _ => f0_anno(env0, s1e0)
@@ -1281,6 +1279,18 @@ then s2e0 else
 s2exp_impr(s1e0.lctn(), s2e0)
 end (*let*)//end-of[trans12_s1exp_impr(env0,s1e0)]
 
+#implfun
+trans12_l1s1e_impr
+( env0,ls1e ) =
+(
+S2LAB(l0, s2e0)) where
+{
+val
+S1LAB(l0, s1e0) = ls1e
+val s2e0 =
+trans12_s1exp_impr(env0, s1e0)
+} (*where*)//end-of[trans12_l1s1e_impr(env0,ls1e)]
+
 (* ****** ****** *)
 
 #implfun
@@ -1298,6 +1308,18 @@ lte_sort2_sort2
 then s2e0 else
 s2exp_prgm(s1e0.lctn(), s2e0)
 end (*let*)//end-of[trans12_s1exp_impr(env0,s1e0)]
+
+#implfun
+trans12_l1s1e_prgm
+( env0,ls1e ) =
+(
+S2LAB(l0, s2e0)) where
+{
+val
+S1LAB(l0, s1e0) = ls1e
+val s2e0 =
+trans12_s1exp_prgm(env0, s1e0)
+} (*where*)//end-of[trans12_l1s1e_prgm(env0,ls1e)]
 
 (* ****** ****** *)
 
@@ -1453,6 +1475,18 @@ list_trans12_fnp(env0, s1es, trans12_s1exp_impr)
 trans12_s1explst_prgm
   (env0, s1es) =
 list_trans12_fnp(env0, s1es, trans12_s1exp_prgm)
+//
+(* ****** ****** *)
+//
+#implfun
+trans12_l1s1elst_impr
+  (env0, s1es) =
+list_trans12_fnp(env0, s1es, trans12_l1s1e_impr)
+//
+#implfun
+trans12_l1s1elst_prgm
+  (env0, s1es) =
+list_trans12_fnp(env0, s1es, trans12_l1s1e_prgm)
 //
 (* ****** ****** *)
 

@@ -218,6 +218,16 @@ fun
 implknd_fprint(FILR, implknd): void
 //
 (* ****** ****** *)
+//
+#define CLOFLT = 0 // flat
+#define CLOPTR = 1 // linear-boxed
+(*
+#define CLOREF = -1 // non-linear-boxed
+*)
+#define LINCLOFLT = 2 // linear-flat
+#define LINCLOPTR = 3 // linear-boxed
+//
+(* ****** ****** *)
 datatype
 f2clknd =
 //
