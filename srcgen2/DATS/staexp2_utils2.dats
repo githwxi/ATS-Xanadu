@@ -114,6 +114,23 @@ s2e0.node() of
 | S2Echr _ => s2e0
 | S2Estr _ => s2e0
 //
+|
+S2Eapps(s2e1, s2es) =>
+let
+val fval = flag
+val s2e1 =
+f0_main(s2e1, flag)
+val s2es =
+s2explst_revar_flag
+(s2es, s2v0, s2v1, flag)
+in
+if
+flag <= fval
+then s2e0 else
+s2exp_make_node
+(s2e0.sort(), S2Eapps(s2e1, s2es))
+end (*let*) // end of [S2Eapps(...)]
+//
 | _(* rest-of-s2exp *) => s2exp_none2(s2e0)
 )
 //
