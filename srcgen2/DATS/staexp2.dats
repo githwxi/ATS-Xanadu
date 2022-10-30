@@ -1111,10 +1111,10 @@ endloc (*local*) // end of [local(s2exp)]
 //
 #implfun
 l2s2e_get_sort
-(     lx     ) = s2exp_get_sort(lx.itm())
+(   lx   ) = s2exp_get_sort(lx.itm())
 #implfun
 l2s2e_get_node
-(     lx     ) = s2exp_get_node(lx.itm())
+(   lx   ) = s2exp_get_node(lx.itm())
 //
 (* ****** ****** *)
 

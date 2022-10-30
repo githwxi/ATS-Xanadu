@@ -729,6 +729,15 @@ end
 endloc (*local*) // end of [ local ]
 
 (* ****** ****** *)
+//
+#implfun
+l0s0e_get_lctn
+(   lx   ) = s0exp_get_lctn(lx.itm())
+#implfun
+l0s0e_get_node
+(   lx   ) = s0exp_get_node(lx.itm())
+//
+(* ****** ****** *)
 
 local
 //
