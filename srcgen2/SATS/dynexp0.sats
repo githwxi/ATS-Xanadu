@@ -231,6 +231,13 @@ d0lab(x0:type) =
 D0LAB of
 (l0abl, token, x0(*elt*))
 //
+fun
+<x0:t0>
+d0lab_get_itm
+(dlab: d0lab(x0)): x0
+#symload
+itm with d0lab_get_itm
+//
 (* ****** ****** *)
 //
 fun
