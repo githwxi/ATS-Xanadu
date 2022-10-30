@@ -1090,7 +1090,7 @@ val (  ) = prerrln
 ("s2exp_none1: s1e0 = ", s1e0)
 *)
 in//let
-s2exp(s2t0, S2Enone1(loc0, s1e0))
+  s2exp(s2t0, S2Enone1(s1e0))
 end (*let*) // end of [s2exp_none1(s1e0)]
 //
 (* ****** ****** *)
