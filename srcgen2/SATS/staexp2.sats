@@ -745,5 +745,25 @@ l2s2elst_make_l2st
 (ses1: s2explst, ses2: s2explst): l2s2elst
 //
 (* ****** ****** *)
+//
+fun
+s2exp_revar
+( s2e0: s2exp
+, s2v0: s2var, s2v1: s2var): s2exp
+fun
+l2s2e_revar
+( ls2e: l2s2e
+, s2v0: s2var, s2v1: s2var): l2s2e
+//
+fun
+s2explst_revar
+( s2es: s2explst
+, s2v0: s2var, s2v1: s2var): s2explst
+fun
+l2s2elst_revar
+( lses: l2s2elst
+, s2v0: s2var, s2v1: s2var): l2s2elst
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_staexp2.sats] *)
