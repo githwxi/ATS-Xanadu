@@ -218,12 +218,19 @@ HX: for level-0 syntax
 *)
 
 (* ****** ****** *)
+(*
+fun
+<x0:t0>
+s0lab_get_itm
+(slab: s0lab(x0)): x0
+*)
 #impltmp
 <x0>
-s0lab_get_itm(lab) =
+s0lab_get_itm(slab) =
 (
 case+
-lab of S0LAB(l0, x0) => (x0))
+slab of
+S0LAB(l0, t0, x0) => (x0))
 (* ****** ****** *)
 //
 (*
@@ -253,6 +260,20 @@ end(*let*)//end-of-[s0lab_fprint]
 g_print<s0lab(x0)>(lab) =
 s0lab_fprint(g_print$out<>(), lab)
 //
+(* ****** ****** *)
+(*
+fun
+<x0:t0>
+d0lab_get_itm
+(dlab: d0lab(x0)): x0
+*)
+#impltmp
+<x0>
+d0lab_get_itm(dlab) =
+(
+case+
+dlab of
+D0LAB(l0, t0, x0) => (x0))
 (* ****** ****** *)
 //
 (*
@@ -561,12 +582,18 @@ HX: for level-1 syntax
 *)
 
 (* ****** ****** *)
+(*
+fun
+<x0:t0>
+s1lab_get_itm
+(slab: s1lab(x0)): x0
+*)
 #impltmp
 <x0>
-s1lab_get_itm(lab) =
+s1lab_get_itm(slab) =
 (
 case+
-lab of S1LAB(l0, x0) => (x0))
+slab of S1LAB(l0, x0) => (x0))
 (* ****** ****** *)
 //
 (*
@@ -886,12 +913,18 @@ g_cmp<s2var>
 s2v1.stmp() \cmp s2v2.stmp()
 //
 (* ****** ****** *)
+(*
+fun
+<x0:t0>
+s2lab_get_itm
+(slab: s2lab(x0)): x0
+*)
 #impltmp
 <x0>
-s2lab_get_itm(lab) =
+s2lab_get_itm(slab) =
 (
 case+
-lab of S2LAB(l0, x0) => (x0))
+slab of S2LAB(l0, x0) => (x0))
 (* ****** ****** *)
 //
 (*
@@ -921,6 +954,19 @@ end(*let*)//end-of-[s2lab_fprint]
 g_print<s2lab(x0)>(lab) =
 s2lab_fprint(g_print$out<>(), lab)
 //
+(* ****** ****** *)
+(*
+fun
+<x0:t0>
+d2lab_get_itm
+(dlab: d2lab(x0)): x0
+*)
+#impltmp
+<x0>
+d2lab_get_itm(dlab) =
+(
+case+
+dlab of D2LAB(l0, x0) => (x0))
 (* ****** ****** *)
 //
 (*
