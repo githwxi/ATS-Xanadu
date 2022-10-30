@@ -765,5 +765,25 @@ l2s2elst_revar
 , s2v0: s2var, s2v1: s2var): l2s2elst
 //
 (* ****** ****** *)
+//
+fun
+s2exp_revar_flag
+( s2e0: s2exp
+, s2var, s2var, flag: &sint >> _): s2exp
+fun
+l2s2e_revar_flag
+( ls2e: l2s2e
+, s2var, s2var, flag: &sint >> _): l2s2e
+//
+fun
+s2explst_revar_flag
+( s2es: s2explst
+, s2var, s2var, flag: &sint >> _): s2explst
+fun
+l2s2elst_revar_flag
+( lses: l2s2elst
+, s2var, s2var, flag: &sint >> _): l2s2elst
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_staexp2.sats] *)
