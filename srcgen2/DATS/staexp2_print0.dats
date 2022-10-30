@@ -289,11 +289,9 @@ S2Ecast
 |
 S2Enone0() => print("S2Enone0(",")")
 |
-S2Enone1
-(loc0, s1e1) => print("S2Enone1(",s1e1,")")
+S2Enone1(s1e1) => print("S2Enone1(",s1e1,")")
 |
-S2Enone2
-(loc0, s2e1) => print("S2Enone2(",s2e1,")")
+S2Enone2(s2e1) => print("S2Enone2(",s2e1,")")
 //
 end (*let*) // end of [s2exp_fprint(out, s2e0)]
 

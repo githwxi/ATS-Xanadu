@@ -447,10 +447,14 @@ S2Elist of s2explst // HX: temporary use
   (loc_t, g1mac(*src*)) // HX: error indication
 *)
 //
+| S2Enone1 of ( s1exp ) // HX: error indication
+| S2Enone2 of ( s2exp ) // HX: error indication
+(*
 | S2Enone1 of
   (loc_t, s1exp(*src*)) // HX: error indication
 | S2Enone2 of
   (loc_t, s2exp(*src*)) // HX: error indication
+*)
 //
 // end of [s2exp_node] // end of [ datatype(...) ]
 //
@@ -489,6 +493,8 @@ fun
 s2exp_none0((*void*)): s2exp
 fun
 s2exp_none1(s1e0:s1exp): s2exp
+fun
+s2exp_none2(s2e0:s2exp): s2exp
 (* ****** ****** *)
 //
 fun
