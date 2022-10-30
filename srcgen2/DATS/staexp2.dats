@@ -541,6 +541,58 @@ else (the_sort2_tbox) ) : sort2
 (* ****** ****** *)
 
 #implfun
+s2exp_uni0
+(s2vs, s2ps, body) = let
+//
+val
+nilq =
+list_nilq(s2vs)
+val
+nilq =
+if nilq then
+list_nilq(s2ps) else false
+//
+in//let
+//
+if
+nilq
+then body else let
+  val s2t0 = body.sort()
+in
+  s2exp(s2t0, S2Euni0(s2vs, s2ps, body))
+end (*let*) // end of [else]
+//
+end (*let*) // end of [s2exp_uni0(s2vs,s2ps,s2e0)]
+
+(* ****** ****** *)
+
+#implfun
+s2exp_exi0
+(s2vs, s2ps, body) = let
+//
+val
+nilq =
+list_nilq(s2vs)
+val
+nilq =
+if nilq then
+list_nilq(s2ps) else false
+//
+in//let
+//
+if
+nilq
+then body else let
+  val s2t0 = body.sort()
+in
+  s2exp(s2t0, S2Eexi0(s2vs, s2ps, body))
+end (*let*) // end of [else]
+//
+end (*let*) // end of [s2exp_exi0(s2vs,s2ps,s2e0)]
+
+(* ****** ****** *)
+
+#implfun
 s2exp_l1st
 (loc0, s2es) =
 let
