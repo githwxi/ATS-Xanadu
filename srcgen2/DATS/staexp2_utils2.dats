@@ -123,13 +123,27 @@ f0_main(s2e1, flag)
 val s2es =
 s2explst_revar_flag
 (s2es, s2v0, s2v1, flag)
-in
+in//let
 if
 flag <= fval
 then s2e0 else
 s2exp_make_node
 (s2e0.sort(), S2Eapps(s2e1, s2es))
 end (*let*) // end of [S2Eapps(...)]
+//
+|
+S2Elam0(s2vs, s2e1) =>
+let
+val fval = flag
+val s2e1 =
+f0_main(s2e1, flag)
+in//let
+if
+flag <= fval
+then s2e0 else
+s2exp_make_node
+(s2e0.sort(), S2Elam0(s2vs, s2e1))
+end (*let*) // end of [S2Elam0(...)]
 //
 | _(* rest-of-s2exp *) => s2exp_none2(s2e0)
 )
