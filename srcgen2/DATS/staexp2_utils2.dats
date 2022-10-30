@@ -119,7 +119,7 @@ s2e0.node() of
 |S2Evar(svar) =>
 (
 if
-(svar != s2v0)
+~(svar=s2v0)
 then s2e0 else
 (
 flag := flag+1;
