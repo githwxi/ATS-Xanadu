@@ -667,6 +667,19 @@ fun
 s2exp_var( s2v0: s2var ): s2exp
 (* ****** ****** *)
 fun
+s2exp_uni0
+( s2vs
+: s2varlst
+, s2ps
+: s2explst, body: s2exp): s2exp
+fun
+s2exp_exi0
+( s2vs
+: s2varlst
+, s2ps
+: s2explst, body: s2exp): s2exp
+(* ****** ****** *)
+fun
 s2exp_l1st
 (loc0: loc_t, s2es: s2explst): s2exp
 fun

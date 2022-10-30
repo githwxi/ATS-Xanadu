@@ -230,7 +230,7 @@ s0lab_get_itm(slab) =
 (
 case+
 slab of
-S0LAB(l0, t0, x0) => (x0))
+S0LAB(l0,tk,x0) => (x0))
 (* ****** ****** *)
 //
 (*
@@ -251,7 +251,7 @@ g_print$out<>() = out
 in//let
 case+ lab of
 |
-S0LAB(l01, t02, x03) =>
+S0LAB(l01,t02,x03) =>
 print("S0LAB(",l01,";",x03,")")
 end(*let*)//end-of-[s0lab_fprint]
 //
@@ -273,7 +273,7 @@ d0lab_get_itm(dlab) =
 (
 case+
 dlab of
-D0LAB(l0, t0, x0) => (x0))
+D0LAB(l0,tk,x0) => (x0))
 (* ****** ****** *)
 //
 (*
@@ -294,7 +294,7 @@ g_print$out<>() = out
 in//let
 case+ lab of
 |
-D0LAB(l01, t02, x03) =>
+D0LAB(l01,t02,x03) =>
 print("D0LAB(",l01,";",x03,")")
 end(*let*)//end-of-[d0lab_fprint]
 //
@@ -623,6 +623,20 @@ end(*let*)//end-of-[s1lab_fprint]
 g_print<s1lab(x0)>(lab) =
 s1lab_fprint(g_print$out<>(), lab)
 //
+(* ****** ****** *)
+(*
+fun
+<x0:t0>
+d0lab_get_itm
+(dlab: d0lab(x0)): x0
+*)
+#impltmp
+<x0>
+d1lab_get_itm(dlab) =
+(
+case+
+dlab of
+D1LAB(l0, x0) => (x0))
 (* ****** ****** *)
 //
 (*

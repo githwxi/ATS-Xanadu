@@ -117,6 +117,8 @@ LEX = "./lexing0.sats"
 #typedef t1arglst = $S1E.t1arglst
 #typedef t1maglst = $S1E.t1maglst
 (* ****** ****** *)
+#typedef s1qualst = $S1E.s1qualst
+(* ****** ****** *)
 #typedef s1explst = $S1E.s1explst
 #typedef l1s1elst = $S1E.l1s1elst
 (* ****** ****** *)
@@ -385,6 +387,14 @@ fun
 trans12_t1maglst
 ( env0:
 ! tr12env, tmas: t1maglst): sort2lstlst
+(* ****** ****** *)
+//
+fun
+trans12_s1qualst
+( env0:
+! tr12env
+, s1qs: s1qualst): (s2varlst, s2explst)
+//
 (* ****** ****** *)
 //
 fun
