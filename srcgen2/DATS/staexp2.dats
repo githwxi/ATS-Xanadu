@@ -850,7 +850,172 @@ in//let
 s2exp_make_node
 (s2t2, S2Etrcd(knd0, npf1, lses))
 end (*let*) // end of [s2exp_t2up(loc0,...)]
-
+//
+(* ****** ****** *)
+//
+#implfun
+s2exp_r1cd
+(loc0, tok0, lses) =
+let
+//
+val
+tnd0 = tok0.node()
+val
+linq =
+l2s2elst_linq(lses)
+//
+val
+knd0 =
+(
+case- tnd0 of
+|
+T_TRCD20(0) => TRCDflt0
+|
+T_TRCD20(1) => TRCDbox1
+|
+T_TRCD20(2) =>
+(
+if linq then
+TRCDbox1 else TRCDbox0)
+|
+T_TRCD20(3) => TRCDbox0
+|
+T_TRCD20(4) => TRCDbox1
+) : trcdknd // end-of-val
+//
+val
+s2t0 =
+(
+case- tnd0 of
+|
+T_TRCD20(0) =>
+let
+val
+prfq =
+l2s2elst_prfq(lses)
+in//let
+if
+linq
+then
+(
+if prfq
+then the_sort2_view
+else the_sort2_vwtp)
+else
+(
+if prfq
+then the_sort2_prop
+else the_sort2_type)
+end (*let*) // T_TRCD20(0)
+| // $(...)
+T_TRCD20(1) => the_sort2_vwtp
+| // $tup(...)
+T_TRCD20(2) =>
+if linq
+then (the_sort2_vwtp)
+else (the_sort2_type)
+| // $tup_t0(...)
+T_TRCD20(3) => the_sort2_type
+| // $tup_t0(...)
+T_TRCD20(4) => the_sort2_vwtp
+) : sort2 // end of [val s2t0]
+//
+val
+npf1 = -1
+val
+lses = // HX: for T_TRCD20(3)
+l2s2elst_stck(loc0, lses, s2t0)
+//
+in
+s2exp_make_node
+(s2t0, S2Etrcd(knd0, npf1, lses))
+end (*let*) // end of [s2exp_r1cd(loc0,...)]
+//
+(* ****** ****** *)
+//
+#implfun
+s2exp_r2cd
+( loc0
+, tok0, lss1, lss2) =
+let
+//
+val
+tnd0 = tok0.node()
+val
+linq =
+l2s2elst_linq(lss1)
+val
+linq =
+if linq
+then true else
+l2s2elst_linq(lss2)
+//
+val
+knd0 =
+(
+case- tnd0 of
+|
+T_TRCD20(0) => TRCDflt0
+|
+T_TRCD20(1) => TRCDbox1
+|
+T_TRCD20(2) =>
+(
+if linq then
+TRCDbox1 else TRCDbox0)
+|
+T_TRCD20(3) => TRCDbox0
+|
+T_TRCD20(4) => TRCDbox1
+) : trcdknd // end-of-val
+//
+val
+s2t1 =
+(
+if
+linq
+then (the_sort2_view)
+else (the_sort2_prop)
+) : sort2 // end of [val s2t1]
+val
+s2t2 =
+(
+case- tnd0 of
+|
+T_TRCD20(0) =>
+if
+linq
+then (the_sort2_vwtp)
+else (the_sort2_type)
+| // $(...)
+T_TRCD20(1) => the_sort2_vwtp
+| // $tup(...)
+T_TRCD20(2) =>
+if linq
+then (the_sort2_vwtp)
+else (the_sort2_type)
+| // $tup_t0(...)
+T_TRCD20(3) => the_sort2_type
+| // $tup_t0(...)
+T_TRCD20(4) => the_sort2_vwtp
+) : sort2 // end of [val s2t2]
+//
+(*
+val
+lss1 =
+l2s2elst_stck(loc0, lss1, s2t1)
+*)
+val
+lss2 = // HX: for T_TRCD20(3)
+l2s2elst_stck(loc0, lss2, s2t2)
+//
+val npf1 = list_length(lss1)
+val lses = list_append(lss1, lss2)
+//
+in//let
+s2exp(s2t2, S2Etrcd(knd0, npf1, lses))
+end (*let*) // end of [s2exp_r2cd(loc0,...)]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -941,7 +1106,16 @@ s2exp_make_node
 ( s2t0 , node ) = S2EXP(s2t0, node)
 //
 endloc (*local*) // end of [local(s2exp)]
-
+//
+(* ****** ****** *)
+//
+#implfun
+l2s2e_get_sort
+(     lx     ) = s2exp_get_sort(lx.itm())
+#implfun
+l2s2e_get_node
+(     lx     ) = s2exp_get_node(lx.itm())
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_staexp2.dats] *)
