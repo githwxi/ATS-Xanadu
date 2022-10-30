@@ -355,6 +355,12 @@ trans12_l1s1e_prgm
 ( env0:
 ! tr12env, ls1e: l1s1e): l2s2e
 (* ****** ****** *)
+fun
+trans12_s1arg_tsub
+( env0:
+! tr12env
+, s1a0: s1arg): (s2var, s2explst)
+(* ****** ****** *)
 //
 fun
 trans12_s1exp_stck

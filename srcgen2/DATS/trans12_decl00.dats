@@ -320,6 +320,37 @@ val () =
 tr12env_add0_s2tex(env0, tid1, s2tx) }
 end (*let*) // end of [S1TDFsort(s1t1)]
 //
+|
+S1TDFtsub(s1a1, s1es) =>
+let
+val
+(s2v1, sps1) =
+trans12_s1arg_tsub
+(   env0, s1a1   )
+//
+val () =
+tr12env_pshlam0(env0)
+val sps2 =
+trans12_s1explst_stck1
+(  env0, s1es, s2t0  ) where
+{
+  val s2t0 = the_sort2_bool }
+val () = tr12env_poplam0(env0)
+//
+val s2ps =
+list_append(sps1, sps2)
+val s2tx = S2TEXsub(s2v1, s2ps)
+in//let
+d2ecl_make_node
+( loc0
+, D2Csortdef(tid1, s2tx)) where
+{
+val
+tid1 = sortid_sym(tok1)
+val () =
+tr12env_add0_s2tex(env0, tid1, s2tx) }
+end (*let*) // end of [S1TDFtsub(s1a1,s1es)]
+//
 end (*let*) // end of [f0_sortdef(env0,d1cl)]
 //
 (* ****** ****** *)

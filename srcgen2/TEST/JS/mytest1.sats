@@ -24,8 +24,13 @@ endloc // end of [local]
 myscst02
 (tabs1, tabs2): tabs3
 (* ****** ****** *)
+//
 #sortdef mysort1 = tabs1
 #sortdef mysort2 = tabs2
+//
+#sortdef
+mysort3 = {a: int | a >= 0}
+//
 (* ****** ****** *)
 #sexpdef
 int_0: int = 0
