@@ -400,15 +400,16 @@ s2exp_node =
 | S2Elam0 of
   (s2varlst, s2exp) // abstraction
 //
-| S2Efun0 of
-  ( // function type
-    f2clknd
-  , int(*npf*)
-  , s2explst(*arglst*), s2exp(*result*)
-  ) (* end of S2Efun *)
+|
+S2Efun0 of
+( // function type
+  f2clknd
+, sint(*npf*)
+, s2explst(*args*), s2exp(*res*)
+) (* end of S2Efun *)
 //
 | S2Emet0 of // HX: for term-check
-  (s2explst(*met*), s2exp(*body*))
+  (s2explst(*mets*), s2exp(*body*))
 //
 // HX: for [...]
 | S2Eexi0 of // exists quantifier
