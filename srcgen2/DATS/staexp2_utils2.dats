@@ -109,13 +109,14 @@ f0_main
 case+
 s2e0.node() of
 //
-| S2Eint _ => s2e0
-| S2Ebtf _ => s2e0
-| S2Echr _ => s2e0
-| S2Estr _ => s2e0
+|S2Eint _ => s2e0
+|S2Ebtf _ => s2e0
+|S2Echr _ => s2e0
+|S2Estr _ => s2e0
 //
 |
-S2Eapps(s2e1, s2es) =>
+S2Eapps
+(s2e1, s2es) =>
 let
 val fval = flag
 val s2e1 =
@@ -132,7 +133,8 @@ s2exp_make_node
 end (*let*) // end of [S2Eapps(...)]
 //
 |
-S2Elam0(s2vs, s2e1) =>
+S2Elam0
+(s2vs, s2e1) =>
 let
 val fval = flag
 val s2e1 =
@@ -147,16 +149,17 @@ end (*let*) // end of [S2Elam0(...)]
 //
 |
 S2Efun0
-( f2cl
-, npf1, s2es, s2e1) =>
+( f2cl, npf1
+, s2es, s2e1) =>
 let
 //
 val fval = flag
 //
+val s2e1 =
+f0_main(s2e1, flag)
 val s2es =
 s2explst_revar_flag
 (s2es, s2v0, s2v1, flag)
-val s2e1 = f0_main(s2e1, flag)
 //
 in//let
 if
@@ -168,15 +171,17 @@ s2exp_make_node
 end (*let*) // end of [S2Efun0(...)]
 //
 |
-S2Emet0(s2es, s2e1) =>
+S2Emet0
+(s2es, s2e1) =>
 let
 //
 val fval = flag
 //
+val s2e1 =
+f0_main(s2e1, flag)
 val s2es =
 s2explst_revar_flag
 (s2es, s2v0, s2v1, flag)
-val s2e1 = f0_main(s2e1, flag)
 //
 in//let
 if
@@ -188,15 +193,16 @@ end (*let*) // end of [S2Emet0(...)]
 //
 |
 S2Eexi0
-(s2vs, s2ps, s2e1) =>
+(s2vs,s2ps,s2e1) =>
 let
 //
 val fval = flag
 //
+val s2e1 =
+f0_main(s2e1, flag)
 val s2ps =
 s2explst_revar_flag
 (s2ps, s2v0, s2v1, flag)
-val s2e1 = f0_main(s2e1, flag)
 //
 in//let
 if
@@ -209,15 +215,16 @@ end (*let*) // end of [S2Eexi0(...)]
 //
 |
 S2Euni0
-(s2vs, s2ps, s2e1) =>
+(s2vs,s2ps,s2e1) =>
 let
 //
 val fval = flag
 //
+val s2e1 =
+f0_main(s2e1, flag)
 val s2ps =
 s2explst_revar_flag
 (s2ps, s2v0, s2v1, flag)
-val s2e1 = f0_main(s2e1, flag)
 //
 in//let
 if
@@ -227,6 +234,106 @@ s2exp_make_node
 (
 s2e0.sort(),S2Euni0(s2vs,s2ps,s2e1))
 end (*let*) // end of [S2Euni0(...)]
+//
+|
+S2Elist(s2es) => let
+//
+val fval = flag
+//
+val s2t0 = s2e0.sort()
+//
+val s2es =
+s2explst_revar_flag
+(s2es, s2v0, s2v1, flag)
+in//let
+s2exp_make_node(s2t0,S2Elist(s2es))
+end (*let*) // end of [S2Elist(...)]
+//
+|
+S2Etext
+(name, s2es) =>
+let
+//
+val fval = flag
+//
+val s2es =
+s2explst_revar_flag
+(s2es, s2v0, s2v1, flag)
+in//let
+s2exp_make_node
+(s2e0.sort(), S2Etext(name, s2es))
+end (*let*) // end of [S2Etext(...)]
+//
+|
+S2Etrcd
+(tknd,npf1,lses) =>
+let
+//
+val fval = flag
+//
+val lses =
+l2s2elst_revar_flag
+(lses, s2v0, s2v1, flag)
+in//let
+s2exp_make_node
+(
+s2e0.sort(),S2Etrcd(tknd,npf1,lses))
+end (*let*) // end of [S2Etrcd(...)]
+//
+|
+S2Eimpr
+(loc0, s2e1) =>
+let
+//
+val fval = flag
+//
+val s2e1 =
+f0_main(s2e1, flag)
+//
+in//let
+if
+flag <= fval
+then s2e0 else
+s2exp_make_node
+(s2e0.sort(), S2Eimpr(loc0, s2e1))
+end (*let*) // end of [S2Eimpr(...)]
+//
+|
+S2Eprgm
+(loc0, s2e1) =>
+let
+//
+val fval = flag
+//
+val s2e1 =
+f0_main(s2e1, flag)
+//
+in//let
+if
+flag <= fval
+then s2e0 else
+s2exp_make_node
+(s2e0.sort(), S2Eprgm(loc0, s2e1))
+end (*let*) // end of [S2Eprgm(...)]
+//
+|
+S2Ecast
+(loc0,s2e1,s2t2) =>
+let
+//
+val fval = flag
+//
+val s2e1 =
+f0_main(s2e1, flag)
+//
+in//let
+if
+flag <= fval
+then s2e0 else
+s2exp_make_node
+(
+s2e0.sort(),S2Ecast(loc0,s2e1,s2t2))
+end (*let*) // end of [S2Ecast(...)]
 //
 | _(* rest-of-s2exp *) => s2exp_none2(s2e0)
 )
