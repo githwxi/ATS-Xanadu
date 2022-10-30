@@ -470,10 +470,16 @@ s1exp_fprint:(FILR,s1exp)->void
 fun
 s1exp_get_lctn(s1exp): loc_t
 fun
+l1s1e_get_lctn(l1s1e): loc_t
+fun
 s1exp_get_node(s1exp): s1exp_node
+fun
+l1s1e_get_node(l1s1e): s1exp_node
 //
 #symload lctn with s1exp_get_lctn
+#symload lctn with l1s1e_get_lctn
 #symload node with s1exp_get_node
+#symload node with l1s1e_get_node
 //
 (* ****** ****** *)
 //

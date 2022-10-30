@@ -895,10 +895,18 @@ l0s0e_RBRACE_fprint
 fun
 s0exp_get_lctn(s0exp): loc_t
 fun
+l0s0e_get_lctn(l0s0e): loc_t
+fun
 s0exp_get_node(s0exp): s0exp_node
+fun
+l0s0e_get_node(l0s0e): s0exp_node
 //
 #symload lctn with s0exp_get_lctn
+#symload lctn with l0s0e_get_lctn
 #symload node with s0exp_get_node
+#symload node with l0s0e_get_node
+//
+(* ****** ****** *)
 //
 fun
 s0exp_anno_opt

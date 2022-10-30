@@ -200,6 +200,15 @@ end
 endloc (*local*) // end of [ local ]
 
 (* ****** ****** *)
+//
+#implfun
+l1s1e_get_lctn
+(   lx   ) = s1exp_get_lctn(lx.itm())
+#implfun
+l1s1e_get_node
+(   lx   ) = s1exp_get_node(lx.itm())
+//
+(* ****** ****** *)
 
 local
 //
