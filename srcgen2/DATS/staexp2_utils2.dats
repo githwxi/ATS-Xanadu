@@ -92,5 +92,80 @@ l2s2elst_revar_flag(lses, s2v0, s2v1, flag)
 end (*let*) // end of [l2s2elst_revar(...)]
 //
 (* ****** ****** *)
+//
+#implfun
+l2s2e_revar_flag
+( ls2e
+, s2v0, s2v1, flag) =
+let
+val fval = flag
+val+
+S2LAB(l0, s2e0) = ls2e
+val s2e0 =
+s2exp_revar_flag(s2e0, s2v0, s2v1, flag)
+in//let
+if
+flag > fval then S2LAB(l0, s2e0) else ls2e
+end (*let*) // end of [l2s2e_revar_flag(...)]
+//
+(* ****** ****** *)
+
+#implfun
+s2explst_revar_flag
+( s2es
+, s2v0, s2v1, flag) =
+(
+case+ s2es of
+|
+list_nil() =>
+list_nil()
+|
+list_cons
+(s2e1, ses2) =>
+let
+//
+val fval = flag
+//
+val s2e1 =
+s2exp_revar_flag(s2e1, s2v0, s2v1, flag)
+val ses2 =
+s2explst_revar_flag(ses2, s2v0, s2v1, flag)
+//
+in//let
+if
+flag > fval then list_cons(s2e1, ses2) else s2es
+end (*let*) // end of [list_cons(...)]
+) (*case+*) // end of [s2explst_revar_flag(...)]
+
+(* ****** ****** *)
+
+#implfun
+l2s2elst_revar_flag
+( lses
+, s2v0, s2v1, flag) =
+(
+case+ lses of
+|
+list_nil() =>
+list_nil()
+|
+list_cons
+(lse1, lss2) =>
+let
+//
+val fval = flag
+//
+val lse1 =
+l2s2e_revar_flag(lse1, s2v0, s2v1, flag)
+val ses2 =
+l2s2elst_revar_flag(lss2, s2v0, s2v1, flag)
+//
+in//let
+if
+flag > fval then list_cons(lse1, lss2) else lses
+end (*let*) // end of [list_cons(...)]
+) (*case+*) // end of [l2s2elst_revar_flag(...)]
+
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_staexp2_utils2.dats] *)
