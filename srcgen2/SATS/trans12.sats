@@ -312,6 +312,9 @@ optn_trans12_fnp
 fun
 trans12_sort1:
 (!tr12env, sort1)->sort2
+fun
+trans12_s1tex:
+(!tr12env, sort1)->s2tex
 //
 (* ****** ****** *)
 fun

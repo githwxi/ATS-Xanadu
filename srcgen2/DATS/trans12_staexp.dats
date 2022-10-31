@@ -327,6 +327,54 @@ end (*let*) // end of [f0_list(env0,s1t0)]
 (* ****** ****** *)
 
 #implfun
+trans12_s1tex
+( env0,s1t0 ) = let
+//
+(*
+val
+loc0 = s1t0.lctn()
+val () =
+prerrln
+("trans12_s1tex: s1t0 = ", s1t0)
+*)
+//
+in//let
+//
+case+
+s1t0.node() of
+//
+|
+S1Tid0(tid1) =>
+(
+case+ topt of
+//
+| ~
+optn_vt_nil() =>
+(
+let
+val
+s2t1 =
+S2Tid0(tid1) in
+S2TEXsrt(s2t1) end
+)
+| ~
+optn_vt_cons(s2tx) => s2tx
+) where
+{
+val
+topt =
+tr12env_find_s2tex(env0,tid1)
+} (*where*) // end of [S1Tid0]
+//
+|
+_(*non-S1Tid0*) =>
+S2TEXsrt(trans12_sort1(env0, s1t0))
+//
+end (*let*) // end of [trans12_s1tex(env0,s1t0)]
+
+(* ****** ****** *)
+
+#implfun
 trans12_s1arg
 ( env0,s1a0 ) =
 (
@@ -699,12 +747,10 @@ in(*in-of-let*)
 case+
 s1f0.node() of
 //
-| S1Eforall _ =>
+| S1Euni0 _ =>
   f0_a1pp_uni0( env0, s1e0 )
-(*
-| S1Eexists _ =>
+| S1Eexi0 _ =>
   f0_a1pp_exi0( env0, s1e0 )
-*)
 //
 (*
 | _ when
@@ -1573,6 +1619,69 @@ trans12_l1s1elst_prgm
   (env0, s1es) =
 list_trans12_fnp(env0, s1es, trans12_l1s1e_prgm)
 //
+(* ****** ****** *)
+
+#implfun
+trans12_s1arg_tsub
+  (env0, s1a0) =
+(
+//
+case+
+s1a0.node() of
+|
+S1ARGsome(tok1, topt) =>
+let
+val sid1 = sargid_sym(tok1)
+in//let
+//
+case+ topt of
+|
+optn_nil() =>
+(s2v1, sps1) where
+{
+val
+sps1 = list_nil()
+val
+s2v1 = s2var_make_name(sid1) }
+|
+optn_cons(s1t1) =>
+let
+//
+val s2tx =
+trans12_s1tex(env0, s1t1)
+//
+in//let
+//
+case+ s2tx of
+|
+S2TEXsrt
+(   s2t1   ) =>
+(s2v1, sps1) where
+{
+val sps1 = list_nil()
+val s2v1 =
+s2var_make_idst(sid1, s2t1) }
+|
+S2TEXsub
+(s2v0, sps0) =>
+(s2v1, sps1) where
+{
+  val s2t1 = s2v0.sort()
+  val s2v1 =
+  s2var_make_idst(sid1, s2t1)
+  val sps1 =
+  s2explst_revar(sps0,s2v0,s2v1) }
+//
+end (*let*) // end of [optn_cons(...)]
+end (*let*) // end of [S1ARGsome(...)]
+//
+) where {
+(*
+  val () =
+  prerrln("trans12_s1arg_tsub: s1a0 = ", s1a0)
+*)
+} (*where*) // end of [trans12_s1arg_tsub(env0,s1a0)]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans12_staexp.dats] *)
