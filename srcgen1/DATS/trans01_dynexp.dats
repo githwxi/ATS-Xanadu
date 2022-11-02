@@ -1105,13 +1105,15 @@ val
 d1p0_node =
 (
 case+ rparen of
-| d0pat_RPAREN_cons0(_) =>
-  D1Plist(d1ps1) where
+| d0pat_RPAREN_cons0
+    (     _     ) =>
+  D1Pl1st(d1ps1) where
   {
     val d1ps1 = trans01_dpatlst(d0ps1)
   }
-| d0pat_RPAREN_cons1(_, d0ps2, _) =>
-  D1Plist(d1ps1, d1ps2) where
+| d0pat_RPAREN_cons1
+    (_, d0ps2, _) =>
+  D1Pl2st(d1ps1, d1ps2) where
   {
     val d1ps1 = trans01_dpatlst(d0ps1)
     val d1ps2 = trans01_dpatlst(d0ps2)
@@ -1802,19 +1804,22 @@ val
 d1e0_node =
 (
 case+ rparen of
-| d0exp_RPAREN_cons0(_) =>
-  D1Elist(d1es1) where
+| d0exp_RPAREN_cons0
+    (     _     ) =>
+  D1El1st(d1es1) where
   {
     val
     d1es1 = trans01_dexplst(d0es1)
   }
-| d0exp_RPAREN_cons1(_, d0es2, _) =>
-  D1Elist(d1es1, d1es2) where
+| d0exp_RPAREN_cons1
+    (_, d0es2, _) =>
+  D1El2st(d1es1, d1es2) where
   {
     val d1es1 = trans01_dexplst(d0es1)
     val d1es2 = trans01_dexplst(d0es2)
   }
-| d0exp_RPAREN_cons2(_, d0es2, _) =>
+| d0exp_RPAREN_cons2
+    (_, d0es2, _) =>
   D1Eseqn(d1es1, d1es2) where
   {
     val d1es1 = trans01_dexplst(d0es1)
