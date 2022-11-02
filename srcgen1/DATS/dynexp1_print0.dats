@@ -396,13 +396,13 @@ x0.node() of
   fprint!
   (out, "D1Psarg(", s1as, ")")
 //
-| D1Plist(d1ps) =>
+| D1Pl1st(d1ps) =>
   fprint!
-  (out, "D1Plist1(", d1ps, ")")
-| D1Plist(d1ps1, d1ps2) =>
+  (out, "D1Pl1st(", d1ps, ")")
+| D1Pl2st(d1ps1, d1ps2) =>
   fprint!
   ( out
-  , "D1Plist2(", d1ps1, "; ", d1ps2, ")")
+  , "D1Pl2st(", d1ps1, "; ", d1ps2, ")")
 //
 | D1Ptrcd1(tok, d1ps) =>
   fprint!
@@ -576,13 +576,13 @@ x0.node() of
 | D1Etqarg(s1es) =>
   fprint!(out, "D1Etqarg(", s1es, ")")
 //
-| D1Elist( d1es ) =>
+| D1El1st( d1es ) =>
   fprint!
-  (out, "D1Elist1(", d1es, ")")
-| D1Elist(d1es1, d1es2) =>
+  (out, "D1El1st(", d1es, ")")
+| D1El2st(d1es1, d1es2) =>
   fprint!
   ( out
-  , "D1Elist2(", d1es1, "; ", d1es2, ")")
+  , "D1El2st(", d1es1, "; ", d1es2, ")")
 //
 | D1Enone((*void*)) =>
   fprint!(out, "D1Enone(", ")")

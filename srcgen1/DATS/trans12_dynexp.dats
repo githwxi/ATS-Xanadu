@@ -883,7 +883,7 @@ val npf2 =
 (
 case+
 d1p2.node() of
-| D1Plist(d1ps, _) =>
+| D1Pl2st(d1ps, _) =>
   list_length<d1pat>(d1ps)
 | _(* non-D2Plist *) => ~1): int
 //
@@ -892,10 +892,10 @@ val d2ps =
 case+
 d1p2.node() of
 |
-D1Plist
+D1Pl1st
 ( d1ps ) => trans12_dpatlst(d1ps)
 |
-D1Plist
+D1Pl2st
 (d1ps1, d1ps2) =>
 (
   d2ps1 + d2ps2) where
@@ -959,12 +959,12 @@ end (*let*) // end of [auxapp2(d1p0)]
 (* ****** ****** *)
 
 fun
-auxlist1
+auxl1st
 ( d1p0
 : d1pat): d2pat = let
 //
 val-
-D1Plist(d1ps) = d1p0.node()
+D1Pl1st(d1ps) = d1p0.node()
 //
 in
 //
@@ -983,15 +983,15 @@ d2pat_trcd1
   val d2ps = trans12_dpatlst(d1ps)
 }
 //
-end // end of [auxlist1]
+end // end of [auxl1st]
 
 fun
-auxlist2
+auxl2st
 ( d1p0
 : d1pat): d2pat = let
 //
 val-
-D1Plist
+D1Pl2st
 (d1ps1, d1ps2) = d1p0.node()
 //
 in
@@ -1004,7 +1004,7 @@ d2pat_trcd1
   val d2ps1 = trans12_dpatlst(d1ps1)
   val d2ps2 = trans12_dpatlst(d1ps2)
 }
-end // end of [auxlist2]
+end // end of [auxl2st]
 
 (* ****** ****** *)
 
@@ -1070,7 +1070,7 @@ val d2ps1 = trans12_dpatlst(d1ps1)
 val d2ps2 = trans12_dpatlst(d1ps2)
 //
 } (*where*)
-end (*let*) // end of [ auxlist2 ]
+end (*let*) // end of [ auxl2st ]
 
 (* ****** ****** *)
 
@@ -1092,10 +1092,8 @@ d1p0.node() of
 //
 | D1Papp2 _ => auxapp2(d1p0)
 //
-| D1Plist
-  (d1ps) => auxlist1(d1p0)
-| D1Plist
-  (xs1, xs2) => auxlist2(d1p0)
+| D1Pl1st _ => auxl2st(d1p0)
+| D1Pl2st _ => auxl2st(d1p0)
 //
 | D1Ptrcd1
   (tok, d1ps) => auxtrcd11(d1p0)
@@ -1226,11 +1224,11 @@ d2ps =
 case+
 d1p0.node() of
 |
-D1Plist
+D1Pl1st
 ( d1ps ) =>
 auxd1ps(d1ps)
 |
-D1Plist
+D1Pl2st
 (xs1, xs2) =>
 (
 npf :=
@@ -1424,11 +1422,11 @@ d2ps =
 case+
 d1p0.node() of
 |
-D1Plist
+D1Pl1st
 ( d1ps ) =>
 auxd1ps(d1ps)
 |
-D1Plist
+D1Pl2st
 (xs1, xs2) =>
 (
 npf :=
@@ -2751,10 +2749,10 @@ g1ms =
 case+
 d1e2.node() of
 |
-D1Elist(d1es) =>
+D1El1st(d1es) =>
 auxd1es(d1es)
 |
-D1Elist(d1es1, d1es2) =>
+D1El2st(d1es1, d1es2) =>
 (
   g1ms1 + g1ms2
 ) where
@@ -2805,7 +2803,7 @@ val npf2 =
 (
 case+
 d1e2.node() of
-| D1Elist(d1es, _) =>
+| D1El2st(d1es, _) =>
   list_length<d1exp>(d1es)
 | _(* non-D2Elist *) => ~1): int
 //
@@ -2814,10 +2812,10 @@ val d2es =
 case+
 d1e2.node() of
 |
-D1Elist(d1es) =>
+D1El1st(d1es) =>
 trans12_dexplst(d1es)
 |
-D1Elist(d1es1, d1es2) =>
+D1El2st(d1es1, d1es2) =>
 (
   d2es1 + d2es2
 ) where
@@ -3052,7 +3050,7 @@ end // end of [auxwhere]
 (* ****** ****** *)
 
 fun
-auxlist1
+auxl1st
 ( d1e0
 : d1exp): d2exp = let
 //
@@ -3060,7 +3058,7 @@ val
 loc0 = d1e0.loc()
 //
 val-
-D1Elist(d1es) = d1e0.node()
+D1El1st(d1es) = d1e0.node()
 //
 in
 //
@@ -3079,10 +3077,10 @@ d2exp_trcd1
   val d2es = trans12_dexplst(d1es)
 }
 //
-end // end of [auxlist1]
+end // end of [auxl1st]
 
 fun
-auxlist2
+auxl2st
 ( d1e0
 : d1exp): d2exp = let
 //
@@ -3090,7 +3088,7 @@ val
 loc0 = d1e0.loc()
 //
 val-
-D1Elist
+D1El2st
 (xs1, xs2) = d1e0.node()
 //
 in
@@ -3103,7 +3101,7 @@ d2exp_trcd1
   val ys1 = trans12_dexplst(xs1)
   val ys2 = trans12_dexplst(xs2)
 }
-end // end of [auxlist2]
+end // end of [auxl2st]
 
 (* ****** ****** *)
 //
@@ -3313,12 +3311,12 @@ val d2es =
 case+
 d1e.node() of
 |
-D1Elist(d1es1) =>
+D1El1st(d1es1) =>
 (
   trans12_dexplst(d1es1)
 )
 |
-D1Elist
+D1El2st
 (d1es1, d1es2) =>
 let
   val () =
@@ -3554,10 +3552,8 @@ d1e0.node() of
 //
 | D1Ewhere _ => auxwhere(d1e0)
 //
-| D1Elist
-  ( d1es ) => auxlist1(d1e0)
-| D1Elist
-  ( _, _ ) => auxlist2(d1e0)
+| D1El1st _ => auxl1st(d1e0)
+| D1El2st _ => auxl2st(d1e0)
 //
 | D1Enone _ => auxnone(d1e0)
 | D1Eseqn _ => auxseqn(d1e0)
