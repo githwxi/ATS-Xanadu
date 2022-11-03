@@ -616,12 +616,12 @@ case+ x0.node() of
   (out, "S1Eapp(", s1e0, "; ", s1es, ")")
 *)
 //
-| S1Elist(s1es) =>
+| S1El1st(s1es) =>
   fprint!
-  (out, "S1Elist1(", s1es, ")")
-| S1Elist(s1es1, s1es2) =>
+  (out, "S1El1st(", s1es, ")")
+| S1El2st(s1es1, s1es2) =>
   fprint!
-  (out, "S1Elist2(", s1es1, "; ", s1es2, ")")
+  (out, "S1El2st(", s1es1, "; ", s1es2, ")")
 //
 | S1Etrcd1(k0, s1es) =>
   fprint!(out, "S1Etrcd1(", k0, "; ", s1es, ")")
