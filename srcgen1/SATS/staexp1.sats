@@ -610,8 +610,8 @@ s1exp_node =
 | S1Eapp2 of
   (s1exp(*fun*), s1exp, s1exp)
 //
-| S1Elist of s1explst // temp
-| S1Elist of
+| S1El1st of s1explst // temp
+| S1El2st of
   (s1explst, s1explst) // temp
 //
 | S1Etrcd1 of // HX: tuple1

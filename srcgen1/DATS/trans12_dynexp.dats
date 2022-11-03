@@ -7086,9 +7086,9 @@ Some(s1e0) =>
 (
 case+
 s1e0.node() of
-| S1Elist(s1es) =>
+| S1El1st(s1es) =>
   trans12_sexplst(s1es)
-| S1Elist(xs1, xs2) =>
+| S1El2st(xs1, xs2) =>
   (
     s2es1 + s2es2
   ) where
@@ -7155,14 +7155,14 @@ case+ s1is of
   (
   case+
   s1i0.node() of
-  | S1Elist(s1es) =>
+  | S1El1st(s1es) =>
     (
     list_cons(s2es, auxs1is(s1is))
     ) where
     {
       val s2es = trans12_sexplst(s1es)
     }
-  | S1Elist(xs1, xs2) =>
+  | S1El2st(xs1, xs2) =>
     (
     list_cons
     (s2es1 + s2es2, auxs1is(s1is))

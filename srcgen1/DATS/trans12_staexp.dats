@@ -1164,7 +1164,7 @@ val s1es =
 (
 case+
 s1e2.node() of
-| S1Elist(s1es) => s1es
+| S1El1st(s1es) => s1es
 | _(*non-list*) => list_sing(s1e2)
 ) : s1explst // end of [val]
 //
@@ -1202,7 +1202,7 @@ val s1es =
 (
 case+
 s1e2.node() of
-| S1Elist(s1es) => s1es
+| S1El1st(s1es) => s1es
 | _(*non-list*) => list_sing(s1e2)
 ) : s1explst // end of [val]
 //
@@ -1433,7 +1433,7 @@ val s1es =
 (
 case+
 s1e2.node() of
-| S1Elist(s1es) => s1es
+| S1El1st(s1es) => s1es
 | _(*non-list*) => list_sing(s1e2)
 ) : s1explst // end of [val]
 //
@@ -1676,9 +1676,9 @@ val s2es =
 (
   case+
   s1e2.node() of
-  | S1Elist(xs) =>
+  | S1El1st(xs) =>
     trans12_sexplst_ci(xs)
-  | S1Elist(xs1, xs2) =>
+  | S1El2st(xs1, xs2) =>
     (
       s2es1 + s2es2
     ) where
@@ -1722,9 +1722,9 @@ s1e1.node() of
   (
   case+
   s1e2.node() of
-  | S1Elist(xs) =>
+  | S1El1st(xs) =>
     trans12_sexplst_ci(xs)
-  | S1Elist(xs1, xs2) =>
+  | S1El2st(xs1, xs2) =>
     (
       s2es1 + s2es2
     ) where
@@ -1885,7 +1885,7 @@ end // end of [auxapp2_2_]
 (* ****** ****** *)
 
 fun
-auxlist1
+auxl1st
 ( s1e0
 : s1exp): s2exp = let
 //
@@ -1894,11 +1894,11 @@ val () =
 println!
 ("\
 trans12_sexp:\
- auxlist1: s1e0 = ", s1e0)
+ auxl1st: s1e0 = ", s1e0)
 *)
 //
 val-
-S1Elist(s1es) = s1e0.node()
+S1El1st(s1es) = s1e0.node()
 //
 in
   if
@@ -1914,12 +1914,12 @@ in
   (
     s2exp_list1(trans12_sexplst(s1es))
   )
-end // end of [auxlist1]
+end // end of [auxl1st]
 
 (* ****** ****** *)
 
 fun
-auxlist2
+auxl2st
 ( s1e0
 : s1exp): s2exp = let
 // 
@@ -1928,11 +1928,11 @@ val () =
 println!
 ("\
 trans12_sexp:\
- auxlist2: s1e0 = ", s1e0)
+ auxl2st: s1e0 = ", s1e0)
 *)
 //
 val-
-S1Elist
+S1El2st
 (s1es1, s1es2) = s1e0.node()
 //
 in
@@ -1944,7 +1944,7 @@ case+ s1es1 of
   s2exp_list2
   (trans12_sexplst(s1es1), trans12_sexplst(s1es2))
 //
-end // end of [auxlist2]
+end // end of [auxl2st]
 
 (* ****** ****** *)
 
@@ -2140,11 +2140,8 @@ s1e0.node() of
 | S1Eapp1 _ => auxapp1(s1e0)
 | S1Eapp2 _ => auxapp2(s1e0)
 //
-| S1Elist
-    (_) => auxlist1(s1e0)
-| S1Elist
-    (_, _) => auxlist2(s1e0)
-  // end of [S1Elist]
+| S1El1st _ => auxl1st(s1e0)
+| S1El2st _ => auxl2st(s1e0)
 //
 | S1Etrcd1
     (k0, _) => auxtrcd11(s1e0)

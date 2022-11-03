@@ -1608,13 +1608,15 @@ val
 s1e0_node =
 (
 case+ rparen of
-| s0exp_RPAREN_cons0(_) =>
-  S1Elist(s1es1) where
+| s0exp_RPAREN_cons0
+    (     _     ) =>
+  S1El1st(s1es1) where
   {
     val s1es1 = trans01_sexplst(s0es1)
   }
-| s0exp_RPAREN_cons1(_, s0es2, _) =>
-  S1Elist(s1es1, s1es2) where
+| s0exp_RPAREN_cons1
+    (_, s0es2, _) =>
+  S1El2st(s1es1, s1es2) where
   {
     val s1es1 = trans01_sexplst(s0es1)
     val s1es2 = trans01_sexplst(s0es2)
