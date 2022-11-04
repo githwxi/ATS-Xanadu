@@ -188,6 +188,17 @@ D1Cabstype _ => f0_abstype(env0, d1cl)
 |
 D1Cdatasort _ => f0_datasort(env0, d1cl)
 //
+(*
+|
+D1Cvaldclst _ => f0_valdclst(env0, d1cl)
+*)
+|
+D1Cvardclst _ => f0_vardclst(env0, d1cl)
+(*
+|
+D1Cfundclst _ => f0_fundclst(env0, d1cl)
+*)
+//
 |_(*otherwise*) =>
 let
 val loc0 = d1cl.lctn()
@@ -786,6 +797,50 @@ f2_d1ts(env0, d1ts, s2ts) end
 } (*where*) // end of [f0_datasort(env0,d1cl)]
 //
 (* ****** ****** *)
+
+fun
+f0_valdclst
+( env0:
+! tr12env
+, d1cl: d1ecl): d2ecl =
+let
+//
+val
+loc0 = d1cl.lctn()
+val-
+D1Cvaldclst
+(tknd, d1vs) = d1cl.node()
+//
+val d2vs =
+trans12_d1valdclist(env0, d1vs)
+//
+in//let
+  d2ecl(loc0, D2Cvaldclst(tknd, d2vs))
+end (*let*) // end of [f0_valdclst(env0,d1cl)]
+
+(* ****** ****** *)
+
+fun
+f0_vardclst
+( env0:
+! tr12env
+, d1cl: d1ecl): d2ecl =
+let
+//
+val
+loc0 = d1cl.lctn()
+val-
+D1Cvardclst
+(tknd, d1vs) = d1cl.node()
+//
+val d2vs =
+trans12_d1vardclist(env0, d1vs)
+//
+in//let
+  d2ecl(loc0, D2Cvardclst(tknd, d2vs))
+end (*let*) // end of [f0_vardclst(env0,d1cl)]
+
+(* ****** ****** *)
 //
 } (*where*) // end of [trans12_d1ecl(env0,d1cl)]
 
@@ -833,6 +888,27 @@ trans12_d1eclistopt
   (  env0,dopt  ) =
 optn_trans12_fnp(env0, dopt, trans12_d1eclist)
 //
+(* ****** ****** *)
+
+#implfun
+trans12_d1valdclist
+  (env0, d1vs) =
+list_trans12_fnp(env0, d1vs, trans12_d1valdcl)
+
+(* ****** ****** *)
+
+#implfun
+trans12_d1vardclist
+  (env0, d1vs) =
+list_trans12_fnp(env0, d1vs, trans12_d1vardcl)
+
+(* ****** ****** *)
+
+#implfun
+trans12_d1fundclist
+  (env0, d1fs) =
+list_trans12_fnp(env0, d1fs, trans12_d1fundcl)
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans12_decl00.dats] *)

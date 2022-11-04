@@ -163,6 +163,27 @@ LEX = "./lexing0.sats"
 #typedef d2parsed = $D2E.d2parsed
 //
 (* ****** ****** *)
+#typedef d1valdcl = $D1E.d1valdcl
+#typedef d1vardcl = $D1E.d1vardcl
+#typedef d1fundcl = $D1E.d1fundcl
+(* ****** ****** *)
+#typedef d2valdcl = $D2E.d2valdcl
+#typedef d2vardcl = $D2E.d2vardcl
+#typedef d2fundcl = $D2E.d2fundcl
+(* ****** ****** *)
+#typedef d1valdclist = list(d1valdcl)
+#typedef d1vardclist = list(d1vardcl)
+#typedef d1fundclist = list(d1fundcl)
+(* ****** ****** *)
+#typedef d2valdclist = list(d2valdcl)
+#typedef d2vardclist = list(d2vardcl)
+#typedef d2fundclist = list(d2fundcl)
+(* ****** ****** *)
+//
+#typedef d1eclistopt = optn(d1eclist)
+#typedef d2eclistopt = optn(d2eclist)
+//
+(* ****** ****** *)
 #vwtpdef s2varopt_vt = optn_vt(s2var)
 #vwtpdef s2cstopt_vt = optn_vt(s2cst)
 (* ****** ****** *)
@@ -480,6 +501,13 @@ fun
 trans12_d1ecl:(!tr12env, d1ecl)->d2ecl
 //
 (* ****** ****** *)
+fun
+trans12_d1valdcl:(!tr12env, d1valdcl)->d2valdcl
+fun
+trans12_d1vardcl:(!tr12env, d1vardcl)->d2vardcl
+fun
+trans12_d1fundcl:(!tr12env, d1fundcl)->d2fundcl
+(* ****** ****** *)
 //
 fun
 trans12_d1patlst:(!tr12env, d1patlst)->d2patlst
@@ -506,8 +534,20 @@ trans12_d1eclist:(!tr12env, d1eclist)->d2eclist
 //
 (* ****** ****** *)
 //
-#typedef d1eclistopt = optn(d1eclist)
-#typedef d2eclistopt = optn(d2eclist)
+fun
+trans12_d1valdclist
+(env0: !tr12env, d1vs: d1valdclist): d2valdclist
+fun
+trans12_d1vardclist
+(env0: !tr12env, d1vs: d1vardclist): d2vardclist
+fun
+trans12_d1fundclist
+(env0: !tr12env, d1fs: d1fundclist): d2fundclist
+fun
+trans12_d1cstdclist
+(env0: !tr12env, d1cs: d1cstdclist): d2cstdclist
+//
+(* ****** ****** *)
 //
 fun
 trans12_d1eclistopt:(!tr12env, d1eclistopt)->d2eclistopt
