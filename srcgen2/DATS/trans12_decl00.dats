@@ -69,8 +69,14 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with sort1_get_lctn
+#symload node with sort1_get_node
+(* ****** ****** *)
 #symload lctn with s1tdf_get_lctn
 #symload node with s1tdf_get_node
+(* ****** ****** *)
+#symload lctn with s1tcn_get_lctn
+#symload node with s1tcn_get_node
 (* ****** ****** *)
 #symload lctn with d1tst_get_lctn
 #symload node with d1tst_get_node
@@ -545,6 +551,129 @@ list_map<x0><y0>(d1ts) where
  #typedef x0 = d1tst
  #typedef y0 = sort2
  #impltmp map$fopr<x0><y0> = f1_d1t0 }
+//
+(* ****** ****** *)
+//
+fun
+f2_d1t0
+( env0:
+! tr12env
+, d1t0: d1tst
+, s2t0: sort2): void =
+let
+//
+val-
+S2Tbas(s2tb) = s2t0
+val-
+T2Btdat(tdat) = s2tb
+//
+fun
+loop
+( env0:
+! tr12env
+, tcns
+: s1tcnlst
+, s2cs
+: s2cstlst_vt): void =
+(
+//
+case+ tcns of
+|
+list_nil() =>
+let
+val s2cs =
+list_vt2t
+(list_vt_reverse0(s2cs))
+in//let
+t2dat_set_s2cs(tdat, s2cs)
+end (*let*) // list_nil
+|
+list_cons(tcn1, tcns) =>
+let
+//
+val+
+S1TCNnode
+( tok1
+, topt) = tcn1.node()
+//
+val
+sid1 = sexpid_sym(tok1)
+//
+val
+targ =
+(
+case+ topt of
+|
+optn_nil() => list_nil()
+|
+optn_cons(s1t1) =>
+(
+case+ s1t1.node() of
+|
+S1Tlist(s1ts) =>
+trans12_sort1lst(env0, s1ts)
+| _(*non-S1Tlist*) =>
+(
+  list_sing(s2t1)) where
+{ val
+  s2t1 =
+  trans12_sort1(env0, s1t1) }
+) : sort2lst // end of [val(targ)]
+)
+val
+loc1 = tcn1.lctn()
+val
+tfun = S2Tf1un(targ, s2t0)
+val
+s2c1 =
+s2cst_make_idst(loc1, sid1, tfun)
+(*
+val () =
+println!("f2_d1t0: tok1 = ", tok1)
+val () =
+println!("f2_d1t0: tfun = ", tfun)
+val () =
+println!("f2_d1t0: s2c1 = ", s2c1)
+*)
+in
+  loop(env0, tcns, s2cs) where
+{ val
+  s2cs = list_vt_cons(s2c1, s2cs)
+  val () =
+  tr12env_add0_s2cst_all(env0, s2c1) }
+end // end of [list_cons]
+) (*case+*) // end of [loop(env0,tcns)]
+in//let
+//
+loop
+(env0, tcns, s2cs) where
+{
+val s2cs = list_vt_nil()
+val+D1TSTnode(tok0, tcns) = d1t0.node() }
+//
+end (*let*) // end of [f2_d1t0(d1t0,s2t0)]
+//
+fun
+f2_d1ts
+( env0:
+! tr12env
+, d1ts: d1tstlst
+, s2ts: sort2lst): void =
+(
+case+ d1ts of
+|
+list_nil() => ()
+|
+list_cons(d1t1, d1ts) =>
+let
+val-
+list_cons
+(s2t1, s2ts) = s2ts
+val () =
+f2_d1t0(env0, d1t1, s2t1)
+in//let
+f2_d1ts(env0, d1ts, s2ts) end 
+) (*case+*) // end of [f2_d1ts(env0,...)]
 //
 } (*where*) // end of [f0_datasort(env0,d1cl)]
 //
