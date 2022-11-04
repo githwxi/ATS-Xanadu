@@ -51,6 +51,54 @@ ATS_PACKNAME
 
 local
 //
+(* ****** ****** *)
+#typedef
+t2qas = t2qaglst
+(* ****** ****** *)
+//
+datatype
+d2var =
+D2VAR of
+( loctn
+, sym_t // name
+, s2exp // sexp
+, s2typ // type
+, t2qas // tqarg
+, stamp // stamp
+) (* end of [d2var] *)
+//
+#absimpl d2var_tbox = d2var
+//
+in//local
+//
+#implfun
+d2var_get_lctn(d2v) =
+let
+val+
+D2VAR
+(loc0
+,sym0
+,s2e0,t2p0
+,tqas,stmp) = d2v in loc0 end
+//
+#implfun
+d2pat_new2_name
+(  loc0,sym0  ) =
+let
+  val s2e0 = s2exp_none0()
+  val t2p0 = s2typ_none0()
+in//let
+D2VAR
+( loc0
+, sym0, s2e0, t2p0, tqas, stmp)
+end (*let*)
+//
+end (*let*) // end of [local(d2var_tbox)]
+
+(* ****** ****** *)
+
+local
+//
 datatype
 d2pat =
 D2PAT of

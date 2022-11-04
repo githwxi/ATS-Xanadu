@@ -122,6 +122,10 @@ staexp2_sats
 staexp2_sats: ; $(XATSOPT) --static SATS/staexp2.sats
 ######
 all_sats:: \
+statyp2_sats
+statyp2_sats: ; $(XATSOPT) --static SATS/statyp2.sats
+######
+all_sats:: \
 dynexp2_sats
 dynexp2_sats: ; $(XATSOPT) --static SATS/dynexp2.sats
 ######
