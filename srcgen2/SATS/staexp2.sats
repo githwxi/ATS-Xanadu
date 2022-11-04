@@ -143,7 +143,10 @@ s1lab(x0:t0)=$S1E.s1lab(x0)
 (* ****** ****** *)
 #typedef l2s2elst = list(l2s2e)
 (* ****** ****** *)
+#vwtpdef s2cstlst_vt = list_vt(s2cst)
 #vwtpdef s2cstopt_vt = optn_vt(s2cst)
+(* ****** ****** *)
+#vwtpdef s2varlst_vt = list_vt(s2var)
 #vwtpdef s2varopt_vt = optn_vt(s2var)
 (* ****** ****** *)
 #vwtpdef s2explst_vt = list_vt(s2exp)
@@ -246,12 +249,17 @@ fun
 t2dat_get_name(t2d:t2dat):sym_t
 fun
 t2dat_get_stmp(t2d:t2dat):stamp
-fun
-t2dat_get_s2cs(t2d:t2dat):s2cstlst
 (* ****** ****** *)
 #symload name with t2dat_get_name
 #symload stmp with t2dat_get_stmp
+(* ****** ****** *)
+fun
+t2dat_get_s2cs(t2d:t2dat):s2cstlst
+fun
+t2dat_set_s2cs
+(tdat: t2dat, s2cs: s2cstlst):void
 #symload s2cs with t2dat_get_s2cs
+#symload s2cs with t2dat_set_s2cs
 (* ****** ****** *)
 //
 val

@@ -6246,7 +6246,7 @@ auxd1ts(d1ts) where
 {
 //
 fun
-auxd1t
+auxd1t0
 ( d1t0
 : d1tsort): sort2 = let
 //
@@ -6261,7 +6261,7 @@ val s2t0 = S2Tbas(T2BASdat(s2td))
 //
 in
   the_sortenv_add(tid, S2TXTsrt(s2t0)); s2t0
-end // end of [auxd1t]
+end // end of [auxd1t0]
 //
 and
 auxd1ts
@@ -6272,8 +6272,8 @@ auxd1ts
   (list_map<d1tsort><sort2>(d1ts))
 ) where
 {
-  implement
-  list_map$fopr<d1tsort><sort2>(d1t) = auxd1t(d1t)
+implement
+list_map$fopr<d1tsort><sort2>(d1t) = auxd1t0(d1t)
 } (* end of [auxd1ts] *)
 }
 //
@@ -6281,7 +6281,7 @@ val () =
 auxd1ts(d1ts, s2ts) where
 {
 fun
-auxd1t
+auxd1t0
 ( d1t0
 : d1tsort
 , s2t0: sort2): void = let
@@ -6321,22 +6321,24 @@ let
   s2c0 =
   s2cst_make_idst(tok, s2t1)
 (*
-  val () =
-  println!("aux_datasort: tok = ", tok)
-  val () =
-  println!("aux_datasort: s2t1 = ", s2t1)
+val () =
+println!("aux_datasort: tok = ", tok)
+val () =
+println!("aux_datasort: s2t1 = ", s2t1)
 *)
 in
   the_sexpenv_add_cst(s2c0); loop(s1cs)
 end // end of [list_cons]
-)
+//
+) (*case+*) // end of [loop]
 //
 in
 let
 val+
 D1TSORT(tok, s1cs) = d1t0.node() in loop(s1cs)
 end
-end // end of [auxd1t]
+end (*let*) // end of [auxd1t0]
+//
 and
 auxd1ts
 ( d1ts
@@ -6349,18 +6351,18 @@ list_nil() => ()
 |
 list_cons(d1t0, d1ts) =>
 let
-  val-
-  list_cons
-  (s2t0, s2ts) = s2ts
-  val () =
-  auxd1t(d1t0, s2t0) in auxd1ts(d1ts, s2ts)
-end // end of [auxd1ts]
-) (* end of [auxd1ts] *)
+val-
+list_cons
+(s2t0, s2ts) = s2ts
+val () =
+auxd1t0(d1t0, s2t0) in auxd1ts(d1ts, s2ts)
+end // end of [list_cons]
+) (*case+*) // end of [auxd1ts]
 }
 //
 in
 d2ecl_make_node(loc0, D2Cdatasort(d1cl, s2ts))
-end // end of [aux_datasort]
+end (*let*) // end of [aux_datasort]
 
 (* ****** ****** *)
 
