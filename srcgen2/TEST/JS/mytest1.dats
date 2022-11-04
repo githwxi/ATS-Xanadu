@@ -1,15 +1,29 @@
 (* ****** ****** *)
-#infixl + - of 50
-#infixl * / of 60
-#prefix + - of 61
-#infixl < <= of 30
-#infixl > >= of 30
+#infixr -> of 10
+(* ****** ****** *)
+//
+#infix0 < <= of 40 (*lt/eq*)
+#infix0 > >= of 40 (*gt/eq*)
+#infix0 = != of 30 (*equal*)
+//
+(* ****** ****** *)
+//
+#infixl + of 50
+#infixl - of 50
+#infixl * of 60
+#prefix + of +(+1) (*uplus*)
+#prefix - of -(+1) (*uminus*)
+//
 (* ****** ****** *)
 #typedef
 fint2 =
 lam(a:int): type => (int(a), int(a))
 #typedef
 fint2(a:int): type = (int(a), int(a))
+(* ****** ****** *)
+var x: int = 0
+(* ****** ****** *)
+////
 (* ****** ****** *)
 //
 fun
