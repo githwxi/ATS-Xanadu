@@ -7552,7 +7552,7 @@ val s2es = trans12_sexplst(s1es)
 //
 in
   ti2arg_make(loc0, s2es)
-end // end of [trans12_t1arg]
+end // end of [trans12_tiarg]
 //
 implement
 trans12_tiarglst

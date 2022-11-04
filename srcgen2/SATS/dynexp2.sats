@@ -506,6 +506,8 @@ d2ecl_node =
 //
 |D2Csexpdef of (s2cst, s2exp)
 //
+|D2Cabstype of (s2cst, a2tdf)
+//
 |
 D2Csymload of
 (token, sym_t(*loaded*), d2ptm)
@@ -531,9 +533,24 @@ D2Cfundclst of
 |
 D2Cnone0 of ((*void*)) | D2Cnone1 of (d1ecl)
 //
+|
+D2Cerrck of (sint(*lvl*), d2ecl)//tread01-error
+//
+// HX-2022-??-??: end-of-[ datatype(d2ecl_node) ]
+//
+(* ****** ****** *)
+//
+and a2tdf =
+| A2TDFsome of () // unspecified
+| A2TDFlteq of (s2exp) // ty-erasure
+| A2TDFeqeq of (s2exp) // definition
+//
 (* ****** ****** *)
 fun
 d2ecl_fprint:(FILR,d2ecl)->void
+(* ****** ****** *)
+fun
+a2tdf_fprint:(FILR,a2tdf)->void
 (* ****** ****** *)
 fun
 d2ecl_get_lctn(d2ecl): loc_t

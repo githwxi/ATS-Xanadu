@@ -325,9 +325,14 @@ print("D2Cstacst0(",s2c1,";",s2t2,")")
 |
 D2Csortdef(tid1,s2tx) =>
 print("D2Csortdef(",tid1,";",s2tx,")")
+//
 |
 D2Csexpdef(s2c1,s2e2) =>
 print("D2Csexpdef(",s2c1,";",s2e2,")")
+//
+|
+D2Cabstype(s2c1,atdf) =>
+print("D2Csexpdef(",s2c1,";",atdf,")")
 //
 |
 D2Csymload

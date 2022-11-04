@@ -1107,6 +1107,10 @@ g_print<d2ecl>(dcl) =
 d2ecl_fprint(g_print$out<>(), dcl)
 //
 (* ****** ****** *)
+#impltmp
+g_print<a2tdf>(atdf) =
+a2tdf_fprint(g_print$out<>(), atdf)
+(* ****** ****** *)
 //
 #impltmp
 g_print<d2valdcl>(dval) =
