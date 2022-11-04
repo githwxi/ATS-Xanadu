@@ -2,6 +2,12 @@
 #infixr -> of 10
 (* ****** ****** *)
 //
+#infix0 < <= of 40 (*lt/eq*)
+#infix0 > >= of 40 (*gt/eq*)
+#infix0 = != of 30 (*equal*)
+//
+(* ****** ****** *)
+//
 #infixl + of 50
 #infixl - of 50
 #infixl * of 60
@@ -39,6 +45,12 @@ char_0: char = '\0'
 #sexpdef
 bool_1: bool = true
 (* ****** ****** *)
+//
+datasort ints =
+|ints_nil of ((*nil*))
+|ints_cons of (i0,ints)
+//
+(* ****** ****** *)
 #sexpdef
 mysexp1(a:tabs1): tabs1 = a
 #sexpdef
@@ -66,13 +78,17 @@ mysexp6() = (0 | 1, 2)
 mysexp7() = @(1, 2, 3)
 #sexpdef
 mysexp8() = @(1 | 2, 3)
+(* ****** ****** *)
 #sexpdef
-mysexp9(a1, a2, b3) = (a1, a2) -> b3
+mysexp9
+(a1, a2, b3) = (a1, a2) -> b3
 (* ****** ****** *)
 #sexpdef
 mysexp10() = @{a=0, b=1, c=3}
 #sexpdef
 mysexp11() = @{a=0 | b=1, c=3}
+(* ****** ****** *)
+
 (* ****** ****** *)
 ////
 (* ****** ****** *)

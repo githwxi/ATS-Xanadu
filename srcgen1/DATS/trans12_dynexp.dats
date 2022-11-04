@@ -963,6 +963,12 @@ auxl1st
 ( d1p0
 : d1pat): d2pat = let
 //
+(*
+val () =
+println!
+("auxl1st: d1p0 = ", d1p0)
+*)
+//
 val-
 D1Pl1st(d1ps) = d1p0.node()
 //
@@ -985,10 +991,18 @@ d2pat_trcd1
 //
 end // end of [auxl1st]
 
+(* ****** ****** *)
+
 fun
 auxl2st
 ( d1p0
 : d1pat): d2pat = let
+//
+(*
+val () =
+println!
+("auxl2st: d1p0 = ", d1p0)
+*)
 //
 val-
 D1Pl2st
@@ -1038,6 +1052,8 @@ val d2ps = trans12_dpatlst(d1ps)
 //
 end (*let*) // end of [ auxtrcd11 ]
 
+(* ****** ****** *)
+
 fun
 auxtrcd12
 ( d1p0
@@ -1070,7 +1086,7 @@ val d2ps1 = trans12_dpatlst(d1ps1)
 val d2ps2 = trans12_dpatlst(d1ps2)
 //
 } (*where*)
-end (*let*) // end of [ auxl2st ]
+end (*let*) // end of [ auxtrcd12 ]
 
 (* ****** ****** *)
 
@@ -1092,7 +1108,7 @@ d1p0.node() of
 //
 | D1Papp2 _ => auxapp2(d1p0)
 //
-| D1Pl1st _ => auxl2st(d1p0)
+| D1Pl1st _ => auxl1st(d1p0)
 | D1Pl2st _ => auxl2st(d1p0)
 //
 | D1Ptrcd1
@@ -6246,6 +6262,7 @@ val s2t0 = S2Tbas(T2BASdat(s2td))
 in
   the_sortenv_add(tid, S2TXTsrt(s2t0)); s2t0
 end // end of [auxd1t]
+//
 and
 auxd1ts
 ( d1ts
