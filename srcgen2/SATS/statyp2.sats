@@ -74,6 +74,8 @@ LEX = "./lexing0.sats"
 #typedef token = $LEX.token
 //
 (* ****** ****** *)
+#staload "./xbasics.sats"
+(* ****** ****** *)
 #staload "./staexp2.sats"
 (* ****** ****** *)
 //
@@ -84,6 +86,30 @@ s2typ_node =
 //
 | T2Pcst of s2cst // constant
 | T2Pvar of s2var // variable
+//
+| T2Plft of (s2typ) // left-value
+//
+|
+T2Papps of
+(s2typ(*fun*), s2typlst) // instantiate
+|
+T2Plam0 of
+(s2varlst(*arg*), s2typ) // abstraction
+//
+|
+T2Pf2cl of f2clknd
+|
+T2Pfun0 of
+( s2typ // f2clknd
+, sint(*npf*),s2typlst(*arg*),s2typ(*res*)
+) (* end of T2Pfun0 *)
+//
+| T2Pexi of // exists quantifier
+  (s2varlst(*vars*), s2typ(*body*))
+| T2Puni of // forall quantifier
+  (s2varlst(*vars*), s2typ(*body*))
+//
+| T2Pnone0 of ((*void*)) | T2Pnone1 of (s2exp)
 //
 // HX-2022-11-04: end of [datatype(s2typ_node)
 //
