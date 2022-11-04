@@ -855,7 +855,9 @@ D1Cdynconst of
 D1Cnone0 of ((*void*)) | D1Cnone1 of (d0ecl)
 //
 |
-D1Cerrck of (sint(*lvl*), d1ecl)//HX:tread0x-error
+D1Cerrck of (sint(*lvl*), d1ecl)//tread0x-error
+//
+// HX-2022-??-??: end-of-[ datatype(d1ecl_node) ]
 //
 (* ****** ****** *)
 //

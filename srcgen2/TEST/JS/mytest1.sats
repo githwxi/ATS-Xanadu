@@ -51,6 +51,11 @@ datasort ints =
 |ints_cons of (i0,ints)
 //
 (* ****** ****** *)
+#abstype
+mylist(a:t0)(i:i0) = list(a,i)
+(* ****** ****** *)
+////
+(* ****** ****** *)
 #sexpdef
 mysexp1(a:tabs1): tabs1 = a
 #sexpdef
@@ -87,8 +92,6 @@ mysexp9
 mysexp10() = @{a=0, b=1, c=3}
 #sexpdef
 mysexp11() = @{a=0 | b=1, c=3}
-(* ****** ****** *)
-
 (* ****** ****** *)
 ////
 (* ****** ****** *)

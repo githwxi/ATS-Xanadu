@@ -1075,15 +1075,15 @@ s2exp_none0() =
 s2exp
 (s2t0, S2Enone0()) where
 {
-  val s2t0 = sort2_none0() }
-// end of [s2exp_none0(...)]
+  val s2t0 = sort2_none0()
+} (*where*) // end of [s2exp_none0(...)]
 //
 #implfun
 s2exp_none1(s1e0) =
 let
 //
-val loc0 = s1e0.lctn()
-val s2t0 = sort2_none0() 
+  val loc0 = s1e0.lctn()
+  val s2t0 = sort2_none0() 
 //
 (*
 val (  ) = prerrln

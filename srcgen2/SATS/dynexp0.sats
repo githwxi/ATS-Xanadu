@@ -989,7 +989,7 @@ for skipping synerr:
 D0Ctkskp of (token) // parsing is to continue
 //
 |
-D0Cerrck of (sint(*lvl*), d0ecl)//HX:pread-error
+D0Cerrck of (sint(*lvl*), d0ecl)//pread0x-error
 //
 // HX-2022-06-22: end-of-[ datatype(d0ecl_node) ]
 //

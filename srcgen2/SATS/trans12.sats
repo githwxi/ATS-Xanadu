@@ -100,6 +100,8 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef d1ecl = $D1E.d1ecl
 (* ****** ****** *)
+#typedef a1tdf = $D1E.a1tdf
+(* ****** ****** *)
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
 #typedef l2d2p = $D2E.l2d2p
@@ -108,6 +110,8 @@ LEX = "./lexing0.sats"
 #typedef d2itm = $D2E.d2itm
 (* ****** ****** *)
 #typedef d2ecl = $D2E.d2ecl
+(* ****** ****** *)
+#typedef a2tdf = $D2E.a2tdf
 (* ****** ****** *)
 #typedef sort1lst = $S1E.sort1lst
 (* ****** ****** *)
@@ -370,6 +374,14 @@ trans12_s1exp_stck
 ( env0:
 ! tr12env
 , s1e1: s1exp,s2t2: sort2): s2exp
+//
+(* ****** ****** *)
+//
+fun
+trans12_a1tdf_stck
+( env0:
+! tr12env
+, atdf: a1tdf,s2t2: sort2): a2tdf
 //
 (* ****** ****** *)
 //
