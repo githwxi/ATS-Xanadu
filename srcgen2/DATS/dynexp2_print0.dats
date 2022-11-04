@@ -332,7 +332,7 @@ print("D2Csexpdef(",s2c1,";",s2e2,")")
 //
 |
 D2Cabstype(s2c1,atdf) =>
-print("D2Csexpdef(",s2c1,";",atdf,")")
+print("D2Cabstype(",s2c1,";",atdf,")")
 //
 |
 D2Csymload
@@ -358,6 +358,29 @@ D2Cnone1(d1cl) => print("D2Cnone1(",d1cl,")")
 //
 end (*let*) // end of [d2ecl_fprint(out, dcl0)]
 
+(* ****** ****** *)
+//
+#implfun
+a2tdf_fprint
+(out, tdf) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ tdf of
+|
+A2TDFsome() =>
+print("A2TDFsome(", ")")
+|
+A2TDFlteq(s2e1) =>
+print("A2TDFlteq(",s2e1,")")
+|
+A2TDFeqeq(s2e1) =>
+print("A2TDFeqeq(",s2e1,")")
+//
+end (*let*) // end of [a2tdf_fprint]
+//
 (* ****** ****** *)
 
 #implfun
