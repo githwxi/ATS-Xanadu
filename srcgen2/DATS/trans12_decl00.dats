@@ -72,6 +72,9 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with s1tdf_get_lctn
 #symload node with s1tdf_get_node
 (* ****** ****** *)
+#symload lctn with d1tst_get_lctn
+#symload node with d1tst_get_node
+(* ****** ****** *)
 #symload lctn with d1pat_get_lctn
 #symload node with d1pat_get_node
 (* ****** ****** *)
@@ -141,11 +144,14 @@ D1Csortdef _ => f0_sortdef(env0, d1cl)
 |
 D1Csexpdef _ => f0_sexpdef(env0, d1cl)
 //
+|
+D1Cdatasort _ => f0_datasort(env0, d1cl)
+//
 |_(*otherwise*) =>
 let
 val loc0 = d1cl.lctn()
 in//let
-  d2ecl_make_node(loc0, D2Cnone1(d1cl))
+  d2ecl_make_node(loc0, D2Cnone1( d1cl ))
 end (*let*) // end of [_(*otherwise*)] // temp
 //
 end where
@@ -330,6 +336,9 @@ trans12_s1arg_tsub
 //
 val () =
 tr12env_pshlam0(env0)
+val () =
+tr12env_add0_s2var_one
+(     env0, s2v1     )
 val sps2 =
 trans12_s1explst_stck1
 (  env0, s1es, s2t0  ) where
@@ -474,6 +483,72 @@ d2ecl_make_node
 { val () =
   tr12env_add0_s2cst_all(env0, s2c1) }
 end (*let*) // end of [f0_sexpdef(env0,d1cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_datasort
+( env0:
+! tr12env
+, d1cl: d1ecl): d2ecl =
+let
+//
+val
+loc0 = d1cl.lctn()
+val-
+D1Cdatasort
+( tknd
+, d1ts) = d1cl.node()
+//
+val s2ts = f1_d1ts(d1ts)
+//
+in//let
+d2ecl_make_node
+(loc0, D2Cdatasort(d1cl, s2ts))
+end where
+{
+//
+fun
+f1_d1t0
+(d1t0: d1tst): sort2 =
+let
+//
+val
+D1TSTnode
+(tok1, tcns) = d1t0.node()
+//
+val tid1 = sortid_sym(tok1)
+//
+local
+val
+s2td =
+t2dat_make_name(tid1)
+in//local
+val
+s2t1 = S2Tbas(T2Btdat(s2td))
+end//local
+//
+in//let
+(
+  s2t1 ) where
+{
+  val () =
+  tr12env_add0_s2tex
+  (env0, tid1, S2TEXsrt(s2t1)) }
+end (*let*) // end of [f1_d1t0(d1t0)]
+//
+fun
+f1_d1ts
+(d1ts: d1tstlst): sort2lst =
+list_map<x0><y0>(d1ts) where
+{
+ #typedef x0 = d1tst
+ #typedef y0 = sort2
+ #impltmp map$fopr<x0><y0> = f1_d1t0 }
+//
+} (*where*) // end of [f0_datasort(env0,d1cl)]
+//
+(* ****** ****** *)
 //
 } (*where*) // end of [trans12_d1ecl(env0,d1cl)]
 

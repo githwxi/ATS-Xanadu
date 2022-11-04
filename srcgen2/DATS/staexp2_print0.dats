@@ -80,6 +80,25 @@ end(*let*)//end-of-[t2abs_fprint(out,tabs)]
 (* ****** ****** *)
 
 #implfun
+t2dat_fprint
+(out, tdat) =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+val sym =
+  t2dat_get_name(tdat)
+val tmp =
+  t2dat_get_stmp(tdat)
+//
+in//let
+  print(sym, "(", tmp, ")")
+end(*let*)//end-of-[t2dat_fprint(out,tdat)]
+
+(* ****** ****** *)
+
+#implfun
 t2bas_fprint
 (out, tbas) =
 let
