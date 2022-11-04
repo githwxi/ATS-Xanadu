@@ -427,6 +427,9 @@ all_dats:: \
 staexp2_dats
 staexp2_dats: ; $(XATSOPT) --dynamic DATS/staexp2.dats
 all_dats:: \
+statyp2_dats
+statyp2_dats: ; $(XATSOPT) --dynamic DATS/statyp2.dats
+all_dats:: \
 staexp2_print0_dats
 staexp2_print0_dats: ; $(XATSOPT) --dynamic DATS/staexp2_print0.dats
 all_dats:: \
