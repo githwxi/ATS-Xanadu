@@ -114,6 +114,7 @@ itm with s2lab_get_itm
 #typedef s2typ = s2typ_tbox
 (* ****** ****** *)
 #typedef l2s2e = s2lab(s2exp)
+#typedef l2t2p = s2lab(s2typ)
 (* ****** ****** *)
 (*
 #abstbox s2itm_tbox // ptr
@@ -470,8 +471,6 @@ S2Elist of s2explst // HX: temporary use
 (* ****** ****** *)
 fun
 s2exp_fprint:(FILR,s2exp)->void
-fun
-s2typ_fprint:(FILR,s2typ)->void
 (* ****** ****** *)
 fun
 s2exp_get_sort(s2exp): sort2

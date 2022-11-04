@@ -76,9 +76,9 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #staload "./staexp2.sats"
 (* ****** ****** *)
-
+//
 datatype
-t2ype_node =
+s2typ_node =
 //
 | T2Pbas of sym_t // type
 //
@@ -86,7 +86,36 @@ t2ype_node =
 | T2Pvar of s2var // variable
 //
 // HX-2022-11-04: end of [datatype(s2typ_node)
-
+//
+(* ****** ****** *)
+//
+fun
+s2typ_fprint:(FILR,s2typ)->void
+//
+(* ****** ****** *)
+fun
+s2typ_get_sort(s2typ): sort2
+fun
+l2t2p_get_sort(l2t2p): sort2
+fun
+s2typ_get_node(s2typ): s2typ_node
+fun
+l2t2p_get_node(l2t2p): s2typ_node
+(* ****** ****** *)
+#symload sort with s2typ_get_sort
+#symload sort with l2t2p_get_sort
+#symload node with s2typ_get_node
+#symload node with l2t2p_get_node
+(* ****** ****** *)
+//
+fun
+s2typ_none0((*void*)): s2typ
+//
+(* ****** ****** *)
+fun
+s2typ_make_node
+(srt:sort2,nod:s2typ_node): s2typ
+#symload s2typ with s2typ_make_node
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_statyp2.sats] *)
