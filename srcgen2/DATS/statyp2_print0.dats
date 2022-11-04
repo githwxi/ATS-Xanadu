@@ -61,4 +61,41 @@ _(*?*) = "./lexing0_print0.dats"
 #symload sort with s2typ_get_sort
 (* ****** ****** *)
 
+#implfun
+s2typ_fprint
+(out, t2p0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+t2p0.node() of
+//
+|
+T2Pbas(sym1) =>
+print("T2Pbas(", sym1, ")")
+//
+|
+T2Pcst(s2c1) =>
+print("T2Pcst(", s2c1, ")")
+|
+T2Pvar(s2v1) =>
+print("T2Pvar(", s2v1, ")")
+//
+|
+T2Plft(t2p1) =>
+print("T2Plft(", t2p1, ")")
+//
+|
+T2Papps(tfun, t2ps) =>
+print("T2Papp(", tfun, ";", t2ps, ")")
+|
+T2Plam0(s2vs, tres) =>
+print("T2Plam(", s2vs, ";", tres, ")")
+//
+end (*let*) // end of [s2typ_fprint(out,s2e0)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_statyp2_print0.dats] *)
