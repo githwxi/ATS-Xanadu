@@ -251,8 +251,8 @@ d0exp_ELSE = $D0E.d0exp_ELSE
 //
 #typedef q0arg = $D0E.q0arg
 #typedef s0qag = $D0E.s0qag
-//
 #typedef t0qag = $D0E.t0qag
+//
 #typedef q1arg = $D1E.q1arg
 #typedef s1qag = $D1E.s1qag
 #typedef t1qag = $D1E.t1qag
@@ -396,8 +396,11 @@ fun gexpid_sym: token -> sym_t
 (* ****** ****** *)
 //
 fun sortid_sym: token -> sym_t
+//
 fun sargid_sym: token -> sym_t
 fun sexpid_sym: token -> sym_t
+//
+fun dpatid_sym: token -> sym_t
 fun dexpid_sym: token -> sym_t
 //
 (* ****** ****** *)

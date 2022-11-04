@@ -143,9 +143,17 @@ S2E = "./staexp2.sats"
 #typedef s2varlst = list(s2var)
 #typedef s2explst = list(s2exp)
 (* ****** ****** *)
+#typedef s2cstopt = optn(s2cst)
+#typedef s2varopt = optn(s2var)
+#typedef s2expopt = optn(s2exp)
+(* ****** ****** *)
 #typedef d2conlst = list(d2con)
 #typedef d2cstlst = list(d2cst)
 #typedef d2varlst = list(d2var)
+(* ****** ****** *)
+#typedef d2conopt = optn(d2con)
+#typedef d2cstopt = optn(d2cst)
+#typedef d2varopt = optn(d2var)
 (* ****** ****** *)
 (*
 #typedef q2arglst = list(q2arg)
@@ -485,6 +493,21 @@ d2exp_make_node
 (* ****** ****** *)
 //
 datatype
+teqd2exp =
+|
+TEQD2EXPnone of ((*void*))
+|
+TEQD2EXPsome of (token(*EQ0*), d2exp)
+datatype
+wths2exp =
+|
+WTHS2EXPnone of ((*void*))
+|
+WTHS2EXPsome of (token(*WTH*), s2exp)
+//
+(* ****** ****** *)
+//
+datatype
 d2ecl_node =
 //
 |D2Cd1ecl of (d1ecl)
@@ -575,6 +598,15 @@ d2fundcl_fprint:(FILR,d2fundcl)->void
 (* ****** ****** *)
 fun
 d2cstdcl_fprint:(FILR,d2cstdcl)->void
+(* ****** ****** *)
+//
+fun
+d2vardcl_make_args
+( lctn:loc_t
+, dpid:d2var
+, vpid:d2varopt
+, sres:s2expopt, dini:teqd2exp):d2vardcl
+//
 (* ****** ****** *)
 
 #abstbox d2parsed_tbox // ptr

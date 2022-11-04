@@ -93,25 +93,36 @@ LEX = "./lexing0.sats"
 #typedef s2itm = $S2E.s2itm
 #typedef s2tex = $S2E.s2tex
 (* ****** ****** *)
+#typedef d1pid = $D1E.d1pid
 #typedef d1pat = $D1E.d1pat
 #typedef d1exp = $D1E.d1exp
 #typedef l1d1p = $D1E.l1d1p
 #typedef l1d1e = $D1E.l1d1e
 (* ****** ****** *)
-#typedef d1ecl = $D1E.d1ecl
+#typedef t1qag = $D1E.t1qag
 (* ****** ****** *)
 #typedef a1tdf = $D1E.a1tdf
+(* ****** ****** *)
+#typedef d2con = $D2E.d2con
+#typedef d2cst = $D2E.d2cst
+#typedef d2var = $D2E.d2var
 (* ****** ****** *)
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
 #typedef l2d2p = $D2E.l2d2p
 #typedef l2d2e = $D2E.l2d2e
 (* ****** ****** *)
+#typedef t2qag = $D2E.t2qag
+(* ****** ****** *)
 #typedef d2itm = $D2E.d2itm
 (* ****** ****** *)
+#typedef d1ecl = $D1E.d1ecl
 #typedef d2ecl = $D2E.d2ecl
 (* ****** ****** *)
 #typedef a2tdf = $D2E.a2tdf
+(* ****** ****** *)
+#typedef teqd1exp = $D1E.teqd1exp
+#typedef teqd2exp = $D2E.teqd2exp
 (* ****** ****** *)
 #typedef sort1lst = $S1E.sort1lst
 (* ****** ****** *)
@@ -126,6 +137,8 @@ LEX = "./lexing0.sats"
 #typedef s1explst = $S1E.s1explst
 #typedef l1s1elst = $S1E.l1s1elst
 (* ****** ****** *)
+#typedef s1expopt = $S1E.s1expopt
+(* ****** ****** *)
 #typedef sort2lst = $S2E.sort2lst
 #typedef s2cstlst = $S2E.s2cstlst
 #typedef s2varlst = $S2E.s2varlst
@@ -134,12 +147,28 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef s2cstopt = $S2E.s2cstopt
 #typedef s2varopt = $S2E.s2varopt
+#typedef s2expopt = $S2E.s2expopt
 (* ****** ****** *)
 //
 #typedef d1patlst = $D1E.d1patlst
 #typedef d1explst = $D1E.d1explst
 #typedef l1d1plst = $D1E.l1d1plst
 #typedef l1d1elst = $D1E.l1d1elst
+//
+(* ****** ****** *)
+//
+#typedef d2conlst = $D2E.d2conlst
+#typedef d2cstlst = $D2E.d2cstlst
+#typedef d2varlst = $D2E.d2varlst
+//
+(* ****** ****** *)
+//
+#typedef d2conopt = $D2E.d2conopt
+#typedef d2cstopt = $D2E.d2cstopt
+#typedef d2varopt = $D2E.d2varopt
+//
+(* ****** ****** *)
+//
 #typedef d2patlst = $D2E.d2patlst
 #typedef d2explst = $D2E.d2explst
 #typedef l2d2plst = $D2E.l2d2plst
@@ -147,11 +176,15 @@ LEX = "./lexing0.sats"
 //
 (* ****** ****** *)
 //
+#typedef d1pidopt = $D1E.d1pidopt
 #typedef d1patopt = $D1E.d1patopt
 #typedef d1expopt = $D1E.d1expopt
 #typedef d2patopt = $D2E.d2patopt
 #typedef d2expopt = $D2E.d2expopt
 //
+(* ****** ****** *)
+#typedef t1qaglst = $D1E.t1qaglst
+#typedef t2qaglst = $D2E.t2qaglst
 (* ****** ****** *)
 //
 #typedef d1eclist = $D1E.d1eclist
@@ -444,6 +477,11 @@ trans12_s1explst
 ( env0:
 ! tr12env, s1es: s1explst): s2explst
 //
+fun
+trans12_s1expopt
+( env0:
+! tr12env, sopt: s1expopt): s2expopt
+//
 (* ****** ****** *)
 fun
 trans12_s1explst_impr
@@ -474,6 +512,9 @@ trans12_s1explst_stcks
 (* ****** ****** *)
 //
 fun
+trans12_d1pid
+(env0: !tr12env, tok0: d1pid): d2var
+fun
 trans12_d1pat
 (env0: !tr12env, d1p0: d1pat): d2pat
 fun
@@ -490,6 +531,24 @@ trans12_l1d1e
 (env0: !tr12env, ld1e: l1d1e): l2d2e
 //
 (* ****** ****** *)
+//
+fun
+trans12_t1qag
+(env0: !tr12env, t1qa: t1qag): t2qag
+//
+(* ****** ****** *)
+//
+fun
+trans12_d1ecl:(!tr12env, d1ecl)->d2ecl
+//
+(* ****** ****** *)
+//
+fun
+trans12_teqd1exp
+( env0:
+! tr12env, tdxp: teqd1exp): teqd2exp
+//
+(* ****** ****** *)
 fun
 trans12_d1expseq
 ( env0:
@@ -498,16 +557,22 @@ trans12_d1expseq
 (* ****** ****** *)
 //
 fun
-trans12_d1ecl:(!tr12env, d1ecl)->d2ecl
+trans12_t1qaglst
+(env0: !tr12env, tqas: t1qaglst): t2qaglst
 //
 (* ****** ****** *)
+//
 fun
 trans12_d1valdcl:(!tr12env, d1valdcl)->d2valdcl
 fun
 trans12_d1vardcl:(!tr12env, d1vardcl)->d2vardcl
 fun
 trans12_d1fundcl:(!tr12env, d1fundcl)->d2fundcl
+//
 (* ****** ****** *)
+//
+fun
+trans12_d1pidopt:(!tr12env, d1pidopt)->d2varopt
 //
 fun
 trans12_d1patlst:(!tr12env, d1patlst)->d2patlst
