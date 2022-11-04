@@ -841,6 +841,31 @@ in//let
 end (*let*) // end of [f0_vardclst(env0,d1cl)]
 
 (* ****** ****** *)
+
+fun
+f0_fundclst
+( env0:
+! tr12env
+, d1cl: d1ecl): d2ecl =
+let
+//
+val
+loc0 = d1cl.lctn()
+val-
+D1Cfundclst
+( tknd
+, tqas, d1fs) = d1cl.node()
+//
+val tqas =
+trans12_t1qaglst(env0, tqas)
+val d2fs =
+trans12_d1fundclist(env0, d1fs)
+//
+in//let
+  d2ecl(loc0, D2Cfundclst(tknd, tqas, d2fs))
+end (*let*) // end of [f0_vardclst(env0,d1cl)]
+
+(* ****** ****** *)
 //
 } (*where*) // end of [trans12_d1ecl(env0,d1cl)]
 
@@ -877,37 +902,76 @@ trans12_s1exp_stck(env0, s1e1, tres)
 (* ****** ****** *)
 
 #implfun
+trans12_d1vardcl
+  (env0, dvar) =
+let
+//
+val loc0 =
+d1vardcl_get_lctn(dvar)
+//
+val dpid =
+d1vardcl_get_dpid(dvar)
+val dpid =
+trans12_d1pid(env0, dpid)
+//
+val vpid =
+d1vardcl_get_vpid(dvar)
+val vpid =
+trans12_d1pidopt(env0, vpid)
+//
+val sres =
+d1vardcl_get_sres(dvar)
+val sres =
+trans12_s1expopt(env0, sres)
+//
+val dini =
+d1vardcl_get_dini(dvar)
+val dini =
+trans12_teqd1exp(env0, dini)
+//
+in//let
+d2vardcl_make_args(loc0,dpid,vpid,sres,dini)
+end (*let*) // end of [trans12_d1vardcl(env0, dvar)]
+
+(* ****** ****** *)
+
+#implfun
 trans12_d1eclist
   (env0, dcls) =
-list_trans12_fnp(env0, dcls, trans12_d1ecl)
+(
+list_trans12_fnp(env0, dcls, trans12_d1ecl))
 
 (* ****** ****** *)
 //
 #implfun
 trans12_d1eclistopt
   (  env0,dopt  ) =
-optn_trans12_fnp(env0, dopt, trans12_d1eclist)
+(
+optn_trans12_fnp(env0, dopt, trans12_d1eclist))
 //
 (* ****** ****** *)
 
 #implfun
 trans12_d1valdclist
   (env0, d1vs) =
-list_trans12_fnp(env0, d1vs, trans12_d1valdcl)
+(
+list_trans12_fnp(env0, d1vs, trans12_d1valdcl))
 
 (* ****** ****** *)
 
 #implfun
 trans12_d1vardclist
   (env0, d1vs) =
-list_trans12_fnp(env0, d1vs, trans12_d1vardcl)
+(
+list_trans12_fnp(env0, d1vs, trans12_d1vardcl))
 
 (* ****** ****** *)
 
 #implfun
 trans12_d1fundclist
   (env0, d1fs) =
-list_trans12_fnp(env0, d1fs, trans12_d1fundcl)
+(
+list_trans12_fnp(env0, d1fs, trans12_d1fundcl))
 
 (* ****** ****** *)
 
