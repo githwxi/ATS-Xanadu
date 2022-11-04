@@ -199,18 +199,22 @@ LEX = "./lexing0.sats"
 #typedef d1valdcl = $D1E.d1valdcl
 #typedef d1vardcl = $D1E.d1vardcl
 #typedef d1fundcl = $D1E.d1fundcl
+#typedef d1cstdcl = $D1E.d1cstdcl
 (* ****** ****** *)
 #typedef d2valdcl = $D2E.d2valdcl
 #typedef d2vardcl = $D2E.d2vardcl
 #typedef d2fundcl = $D2E.d2fundcl
+#typedef d2cstdcl = $D2E.d2cstdcl
 (* ****** ****** *)
 #typedef d1valdclist = list(d1valdcl)
 #typedef d1vardclist = list(d1vardcl)
 #typedef d1fundclist = list(d1fundcl)
+#typedef d1cstdclist = list(d1cstdcl)
 (* ****** ****** *)
 #typedef d2valdclist = list(d2valdcl)
 #typedef d2vardclist = list(d2vardcl)
 #typedef d2fundclist = list(d2fundcl)
+#typedef d2cstdclist = list(d2cstdcl)
 (* ****** ****** *)
 //
 #typedef d1eclistopt = optn(d1eclist)
@@ -346,6 +350,10 @@ tr12env_add0_s2var_one
 fun
 tr12env_add0_s2varlst_one
 ( env0: !tr12env, s2vs: s2varlst ): void
+(* ****** ****** *)
+fun
+tr12env_add0_d2var_one
+( env0: !tr12env, d2v0: d2var ): void
 (* ****** ****** *)
 //
 fun
@@ -608,6 +616,7 @@ trans12_d1vardclist
 fun
 trans12_d1fundclist
 (env0: !tr12env, d1fs: d1fundclist): d2fundclist
+//
 fun
 trans12_d1cstdclist
 (env0: !tr12env, d1cs: d1cstdclist): d2cstdclist

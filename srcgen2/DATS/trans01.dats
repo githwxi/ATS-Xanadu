@@ -215,6 +215,67 @@ tok.node() of
 
 (* ****** ****** *)
 
+#implfun
+dpatid_sym(tok) =
+(
+case-
+tok.node() of
+//
+| T_OP2(tok) =>
+(
+case-
+tok.node() of
+| T_IDALP(nam) =>
+  $SYM.symbl_make_name(nam)
+| T_IDSYM(nam) =>
+  $SYM.symbl_make_name(nam)
+)
+//
+| T_IDENT(nam) =>
+  $SYM.symbl_make_name(nam)
+//
+| T_IDALP(nam) =>
+  $SYM.symbl_make_name(nam)
+| T_IDSYM(nam) =>
+  $SYM.symbl_make_name(nam)
+//
+) (*case-*) // end of [dpatid_sym(tok)]
+
+(* ****** ****** *)
+
+#implfun
+dexpid_sym(tok) =
+(
+case-
+tok.node() of
+//
+| T_OP2(tok) =>
+(
+case-
+tok.node() of
+| T_IDALP(nam) =>
+  $SYM.symbl_make_name(nam)
+| T_IDSYM(nam) =>
+  $SYM.symbl_make_name(nam)
+)
+//
+| T_IDENT(nam) =>
+  $SYM.symbl_make_name(nam)
+//
+| T_IDALP(nam) =>
+  $SYM.symbl_make_name(nam)
+| T_IDSYM(nam) =>
+  $SYM.symbl_make_name(nam)
+//
+| T_IDDLR(nam) =>
+  $SYM.symbl_make_name(nam)
+| T_IDSRP(nam) =>
+  $SYM.symbl_make_name(nam)
+//
+) (*case-*) // end of [dexpid_sym(tok)]
+
+(* ****** ****** *)
+
 #impltmp
 <x0><y0>
 list_trans01_fnp

@@ -62,6 +62,8 @@ _(*TRANS12*) = "./trans12.dats"
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
+#staload "./../SATS/trans01.sats"
+(* ****** ****** *)
 #staload "./../SATS/trans12.sats"
 (* ****** ****** *)
 #symload lctn with token_get_lctn
@@ -73,10 +75,82 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with d1exp_get_lctn
 #symload node with d1exp_get_node
 (* ****** ****** *)
+//
+#implfun
+trans12_d1pid
+( env0,dpid ) = let
+//
+val
+loc0 = dpid.lctn()
+val
+sym1 = dpatid_sym(dpid)
+//
+in//let
+let
+val
+d2v1 = d2var_new2_name(loc0, sym1)
+in//let
+tr12env_add0_d2var_one(env0, d2v1); d2v1
+end (*let*)
+end (*let*) // end of [trans12_d1pid(env0,dpid)]
+//
+(* ****** ****** *)
+
+#implfun
+trans12_d1pat
+( env0,d1p0 ) = let
+//
+(*
+val
+loc0 = d1p0.lctn()
+val () =
+prerrln
+("trans12_d1pxp: d1p0 = ", d1p0)
+*)
+//
+in//let
+//
+case+
+d1p0.node() of
+//
+|
+D1Pint(tok) =>
+let
+val loc0 = d1p0.lctn()
+in//let
+d2pat_make_node(loc0, D2Pint(tok))
+end (*let*) // end of [D1Pint(tok)]
+|
+D1Pchr(tok) =>
+let
+val loc0 = d1p0.lctn()
+in//let
+d2pat_make_node(loc0, D2Pchr(tok))
+end (*let*) // end of [D1Pchr(tok)]
+|
+D1Pflt(tok) =>
+let
+val loc0 = d1p0.lctn()
+in//let
+d2pat_make_node(loc0, D2Pflt(tok))
+end (*let*) // end of [D1Pflt(tok)]
+|
+D1Pstr(tok) =>
+let
+val loc0 = d1p0.lctn()
+in//let
+d2pat_make_node(loc0, D2Pstr(tok))
+end (*let*) // end of [D1Pstr(tok)]
+//
+| _(* otherwise *) => d2pat_none1(d1p0)
+//
+end (*let*) // end of [trans12_d1pat(env0,d1p0)]
+
+(* ****** ****** *)
 
 #implfun
 trans12_d1exp
-( tenv,d1e0 ) = let
+( env0,d1e0 ) = let
 //
 (*
 val
@@ -123,27 +197,27 @@ end (*let*) // end of [D1Estr(tok)]
 |
 D1Eb0sh _ => d2exp_none1(d1e0)
 |
-D1Eb1sh _ => f0_b1sh(tenv, d1e0)
+D1Eb1sh _ => f0_b1sh(env0, d1e0)
 //
 |
-D1El1st _ => f0_l1st(tenv, d1e0)
+D1El1st _ => f0_l1st(env0, d1e0)
 |
-D1El2st _ => f0_l2st(tenv, d1e0)
+D1El2st _ => f0_l2st(env0, d1e0)
 //
 |
-D1Es1eq _ => f0_s1eq(tenv, d1e0)
+D1Es1eq _ => f0_s1eq(env0, d1e0)
 |
-D1Es2eq _ => f0_s2eq(tenv, d1e0)
+D1Es2eq _ => f0_s2eq(env0, d1e0)
 //
-|D1Elet0 _ => f0_let0(tenv, d1e0)
+|D1Elet0 _ => f0_let0(env0, d1e0)
 |
-D1Ewhere _ => f0_where(tenv, d1e0)
+D1Ewhere _ => f0_where(env0, d1e0)
 //
-|D1Et1up _ => f0_t1up(tenv, d1e0)
-|D1Et2up _ => f0_t2up(tenv, d1e0)
+|D1Et1up _ => f0_t1up(env0, d1e0)
+|D1Et2up _ => f0_t2up(env0, d1e0)
 //
-|D1Er1cd _ => f0_r1cd(tenv, d1e0)
-|D1Er2cd _ => f0_r2cd(tenv, d1e0)
+|D1Er1cd _ => f0_r1cd(env0, d1e0)
+|D1Er2cd _ => f0_r2cd(env0, d1e0)
 //
 | _(* otherwise *) => d2exp_none1(d1e0)
 //
@@ -154,20 +228,20 @@ end where
 //
 fun
 f0_b1sh
-( tenv:
+( env0:
 ! tr12env
 , d1e0: d1exp): d2exp =
 (
-trans12_d1exp(tenv, d1e1)) where
+trans12_d1exp(env0, d1e1)) where
 {
   val-D1Eb1sh(d1e1) = d1e0.node()
-} (*where*) // end of [f0_b1sh(tenv, d1e0)]
+} (*where*) // end of [f0_b1sh(env0, d1e0)]
 //
 (* ****** ****** *)
 //
 fun
 f0_l1st
-( tenv:
+( env0:
 ! tr12env
 , d1e0: d1exp): d2exp =
 let
@@ -183,13 +257,13 @@ let
 val-
 list_cons(d1e1, _) = d1es
 in
-  trans12_d1exp(tenv, d1e1)
+  trans12_d1exp(env0, d1e1)
 end (*let*) // end of [then]
 else // if-else
 let
 //
 val d2es =
-  trans12_d1explst(tenv, d1es)
+  trans12_d1explst(env0, d1es)
 //
 in//let
 let
@@ -200,11 +274,11 @@ in//let
 end//let
 end (*let*) // end of [else]
 //
-end (*let*) // end of [f0_l1st(tenv, d1e0)]
+end (*let*) // end of [f0_l1st(env0, d1e0)]
 //
 fun
 f0_l2st
-( tenv:
+( env0:
 ! tr12env
 , d1e0: d1exp): d2exp =
 let
@@ -216,19 +290,19 @@ D1El2st
 val loc0 = d1e0.lctn()
 val npf1 = list_length(des1)
 val des1 =
-  trans12_d1explst(tenv, des1)
+  trans12_d1explst(env0, des1)
 val des2 =
-  trans12_d1explst(tenv, des2)
+  trans12_d1explst(env0, des2)
 val d2es = list_append(des1, des2)
 in//let
   d2exp(loc0, D2Etup0(npf1, d2es))
-end (*let*) // end of [f0_l2st(tenv, d1e0)]
+end (*let*) // end of [f0_l2st(env0, d1e0)]
 //
 (* ****** ****** *)
 //
 fun
 f0_let0
-( tenv:
+( env0:
 ! tr12env
 , d1e0: d1exp): d2exp =
 let
@@ -239,10 +313,10 @@ D1Elet0
 //
 val
 d2cs =
-trans12_d1eclist(tenv, d1cs)
+trans12_d1eclist(env0, d1cs)
 //
 val
-d2e1 = trans12_d1exp(tenv, d1e1)
+d2e1 = trans12_d1exp(env0, d1e1)
 //
 in//let
 let
@@ -251,11 +325,11 @@ val loc0 = d1e0.lctn()
 in//let
   d2exp(loc0, D2Elet0(d2cs, d2e1))
 end//let
-end (*let*) // end of [f0_let0(tenv, d1e0)]
+end (*let*) // end of [f0_let0(env0, d1e0)]
 //
 fun
 f0_where
-( tenv:
+( env0:
 ! tr12env
 , d1e0: d1exp): d2exp =
 let
@@ -266,10 +340,10 @@ D1Ewhere
 //
 val
 d2cs =
-trans12_d1eclist(tenv, d1cs)
+trans12_d1eclist(env0, d1cs)
 //
 val
-d2e1 = trans12_d1exp(tenv, d1e1)
+d2e1 = trans12_d1exp(env0, d1e1)
 //
 in//let
 let
@@ -278,13 +352,13 @@ val loc0 = d1e0.lctn()
 in//let
   d2exp(loc0, D2Ewhere(d2e1, d2cs))
 end//let
-end (*let*) // end of [f0_where(tenv, d1e0)]
+end (*let*) // end of [f0_where(env0, d1e0)]
 //
 (* ****** ****** *)
 //
 fun
 f0_s1eq
-( tenv:
+( env0:
 ! tr12env
 , d1e0: d1exp): d2exp =
 let
@@ -296,12 +370,12 @@ D1Es1eq
 ( d1es ) = d1e0.node()
 //
 in
-  trans12_d1expseq(tenv, loc0, d1es)
-end (*let*) // end of [f0_s1eq(tenv, d1e0)]
+  trans12_d1expseq(env0, loc0, d1es)
+end (*let*) // end of [f0_s1eq(env0, d1e0)]
 //
 fun
 f0_s2eq
-( tenv:
+( env0:
 ! tr12env
 , d1e0: d1exp): d2exp =
 let
@@ -315,14 +389,14 @@ D1Es2eq
 val d1es = list_append(des1, des2)
 //
 in
-  trans12_d1expseq(tenv, loc0, d1es)
-end (*let*) // end of [f0_s2eq(tenv, d1e0)]
+  trans12_d1expseq(env0, loc0, d1es)
+end (*let*) // end of [f0_s2eq(env0, d1e0)]
 //
 (* ****** ****** *)
 //
 fun
 f0_t1up
-( tenv:
+( env0:
 ! tr12env
 , d1e0: d1exp): d2exp =
 let
@@ -332,7 +406,7 @@ D1Et1up
 (tknd, d1es) = d1e0.node()
 //
 val d2es =
-  trans12_d1explst(tenv, d1es)
+  trans12_d1explst(env0, d1es)
 //
 in//let
 let
@@ -341,11 +415,11 @@ val loc0 = d1e0.lctn()
 in//let
 d2exp(loc0, D2Etup1(tknd, npf1, d2es))
 end//let
-end (*let*) // end of [f0_t1up(tenv, d1e0)]
+end (*let*) // end of [f0_t1up(env0, d1e0)]
 //
 fun
 f0_t2up
-( tenv:
+( env0:
 ! tr12env
 , d1e0: d1exp): d2exp =
 let
@@ -358,21 +432,21 @@ D1Et2up
 val loc0 = d1e0.lctn()
 val npf1 = list_length(des1)
 val des1 =
-  trans12_d1explst(tenv, des1)
+  trans12_d1explst(env0, des1)
 val des2 =
-  trans12_d1explst(tenv, des2)
+  trans12_d1explst(env0, des2)
 //
 val d2es = list_append(des1, des2)
 //
 in//let
 d2exp(loc0, D2Etup1(tknd, npf1, d2es))
-end (*let*) // end of [f0_t2up(tenv, d1e0)]
+end (*let*) // end of [f0_t2up(env0, d1e0)]
 //
 (* ****** ****** *)
 //
 fun
 f0_r1cd
-( tenv:
+( env0:
 ! tr12env
 , d1e0: d1exp): d2exp =
 let
@@ -382,7 +456,7 @@ D1Er1cd
 (tknd, ldes) = d1e0.node()
 //
 val ldes =
-  trans12_l1d1elst(tenv, ldes)
+  trans12_l1d1elst(env0, ldes)
 in//let
 let
 val npf1 = -1
@@ -390,11 +464,11 @@ val loc0 = d1e0.lctn()
 in//let
 d2exp(loc0, D2Ercd2(tknd, npf1, ldes))
 end//let
-end (*let*) // end of [f0_r1cd(tenv, d1e0)]
+end (*let*) // end of [f0_r1cd(env0, d1e0)]
 //
 fun
 f0_r2cd
-( tenv:
+( env0:
 ! tr12env
 , d1e0: d1exp): d2exp =
 let
@@ -407,40 +481,45 @@ D1Er2cd
 val loc0 = d1e0.lctn()
 val npf1 = list_length(lds1)
 val lds1 =
-  trans12_l1d1elst(tenv, lds1)
+  trans12_l1d1elst(env0, lds1)
 val lds2 =
-  trans12_l1d1elst(tenv, lds2)
+  trans12_l1d1elst(env0, lds2)
 //
 val ldes = list_append(lds1, lds2)
 //
 in//let
 d2exp(loc0, D2Ercd2(tknd, npf1, ldes))
-end (*let*) // end of [f0_r2cd(tenv, d1e0)]
+end (*let*) // end of [f0_r2cd(env0, d1e0)]
 //
 (* ****** ****** *)
 //
-} (*where*) // end of [trans12_d1exp(tenv,d1e0)]
+} (*where*) // end of [trans12_d1exp(env0,d1e0)]
 
 (* ****** ****** *)
 
 #implfun
 trans12_d1patlst
-( tenv, d1ps ) =
-list_trans12_fnp(tenv, d1ps, trans12_d1pat)
+( env0, d1ps ) =
+list_trans12_fnp(env0, d1ps, trans12_d1pat)
 
+(* ****** ****** *)
+//
+#implfun
+trans12_d1pidopt
+( env0, dopt ) =
+optn_trans12_fnp(env0, dopt, trans12_d1pid)
+//
+#implfun
+trans12_d1patopt
+( env0, dopt ) =
+optn_trans12_fnp(env0, dopt, trans12_d1pat)
+//
 (* ****** ****** *)
 
 #implfun
 trans12_d1explst
-( tenv, d1es ) =
-list_trans12_fnp(tenv, d1es, trans12_d1exp)
-
-(* ****** ****** *)
-
-#implfun
-trans12_d1patopt
-( tenv, dopt ) =
-optn_trans12_fnp(tenv, dopt, trans12_d1pat)
+( env0, d1es ) =
+list_trans12_fnp(env0, d1es, trans12_d1exp)
 
 (* ****** ****** *)
 

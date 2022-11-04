@@ -228,6 +228,15 @@ fun
 d2var_fprint:(FILR,d2var)->void
 (* ****** ****** *)
 //
+fun
+d2var_new1_tokn
+(tok0: token): d2var
+fun
+d2var_new2_name
+(loc0: loc_t, name: sym_t): d2var
+//
+(* ****** ****** *)
+//
 datatype
 d2itm =
 //
