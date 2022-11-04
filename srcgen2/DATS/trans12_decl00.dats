@@ -72,6 +72,9 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with sort1_get_lctn
 #symload node with sort1_get_node
 (* ****** ****** *)
+#symload lctn with s1exp_get_lctn
+#symload node with s1exp_get_node
+(* ****** ****** *)
 #symload lctn with s1tdf_get_lctn
 #symload node with s1tdf_get_node
 (* ****** ****** *)
@@ -786,6 +789,36 @@ f2_d1ts(env0, d1ts, s2ts) end
 //
 } (*where*) // end of [trans12_d1ecl(env0,d1cl)]
 
+(* ****** ****** *)
+//
+#implfun
+trans12_a1tdf_stck
+(env0, atdf, tres) =
+(
+case+ atdf of
+|
+A1TDFsome() =>
+A2TDFsome()
+|
+A1TDFlteq(s1e1) =>
+A2TDFlteq
+(s2exp_impr(loc0, s2e1)) where
+{
+val loc0 = s1e1.lctn()
+val s2e1 =
+trans12_s1exp_stck(env0, s1e1, tres)
+}
+|
+A1TDFeqeq(s1e1) =>
+A2TDFeqeq
+(s2exp_impr(loc0, s2e1)) where
+{
+val loc0 = s1e1.lctn()
+val s2e1 =
+trans12_s1exp_stck(env0, s1e1, tres)
+}
+) (*case+*) // end of [trans12_a1tdf_stck(env0,...)]
+//
 (* ****** ****** *)
 
 #implfun
