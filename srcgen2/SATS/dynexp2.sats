@@ -47,10 +47,14 @@ ATS_PACKNAME
 #staload
 LAB = "./xlabel0.sats"
 #staload
+TMP = "./xstamp0.sats"
+#staload
 LOC = "./locinfo.sats"
 //
 #typedef lab_t = $LAB.lab_t
 #typedef label = $LAB.label
+//
+#typedef stamp = $TMP.stamp
 //
 #typedef loc_t = $LOC.loc_t
 #typedef loctn = $LOC.loctn
@@ -60,10 +64,13 @@ LOC = "./locinfo.sats"
 //
 #staload
 SYM = "./xsymbol.sats"
+//
+#typedef sym_t = $SYM.sym_t
+//
+(* ****** ****** *)
 #staload
 LEX = "./lexing0.sats"
 //
-#typedef sym_t = $SYM.sym_t
 #typedef token = $LEX.token
 //
 (* ****** ****** *)
@@ -234,6 +241,13 @@ d2var_new1_tokn
 fun
 d2var_new2_name
 (loc0: loc_t, name: sym_t): d2var
+//
+fun
+d2var_get_lctn:(d2var) -> loc_t
+fun
+d2var_get_name:(d2var) -> sym_t
+fun
+d2var_get_stmp:(d2var) -> stamp
 //
 (* ****** ****** *)
 //

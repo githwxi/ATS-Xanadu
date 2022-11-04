@@ -45,8 +45,28 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/xbasics.sats"
+(* ****** ****** *)
+#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
+#staload "./../SATS/xstamp0.sats"
+#staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
+#staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
+(* ****** ****** *)
+local
+val
+stamper = stamper_new()
+in//local
+fun
+the_d2var_stamp_new
+( (*void*) ): stamp = stamper.getinc()
+endloc // end of [the_d2var_stamp_new]
+//
 (* ****** ****** *)
 
 local
@@ -59,11 +79,11 @@ t2qas = t2qaglst
 datatype
 d2var =
 D2VAR of
-( loctn
+( loc_t // lctn
 , sym_t // name
-, s2exp // sexp
-, s2typ // type
 , t2qas // tqarg
+, s2exp // s2exp
+, s2typ // s2ype
 , stamp // stamp
 ) (* end of [d2var] *)
 //
@@ -78,20 +98,23 @@ val+
 D2VAR
 (loc0
 ,sym0
-,s2e0,t2p0
-,tqas,stmp) = d2v in loc0 end
+,tqas
+,s2e0
+,t2p0,stmp) = d2v in loc0 end
 //
 #implfun
-d2pat_new2_name
+d2var_new2_name
 (  loc0,sym0  ) =
 let
-  val s2e0 = s2exp_none0()
-  val t2p0 = s2typ_none0()
+val tqas = list_nil()
+val s2e0 = s2exp_none0()
+val t2p0 = s2typ_none0()
+val stmp = the_d2var_stamp_new()
 in//let
-D2VAR
-( loc0
-, sym0, s2e0, t2p0, tqas, stmp)
-end (*let*)
+  D2VAR
+  ( loc0
+  , sym0, tqas, s2e0, t2p0, stmp)
+end (*let*) // end of [d2var_new2_name]
 //
 end (*let*) // end of [local(d2var_tbox)]
 

@@ -62,6 +62,7 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 //
