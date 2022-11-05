@@ -91,4 +91,47 @@ end (*let*) // end of [s2typ_none1(s1e0)]
 //
 (* ****** ****** *)
 
+local
+//
+datatype s2typ =
+S2TYP of (sort2,s2typ_node)
+//
+#absimpl s2typ_tbox = s2typ
+//
+in//local
+//
+#implfun
+s2typ_get_sort
+   ( t2p0 ) = let
+//
+val
+S2TYP(s2t0, node) = t2p0 in s2t0
+//
+end (*let*) // end of [s2typ_get_sort]
+#implfun
+s2typ_get_node
+   ( t2p0 ) = let
+//
+val
+S2TYP(s2t0, node) = t2p0 in node
+//
+end (*let*) // end of [s2typ_get_node]
+//
+#implfun
+s2typ_make_node
+( s2t0 , node ) = S2TYP(s2t0, node)
+//
+endloc (*local*) // end of [local(s2typ)]
+//
+(* ****** ****** *)
+//
+#implfun
+l2t2p_get_sort
+(   lx   ) = s2typ_get_sort(lx.itm())
+#implfun
+l2t2p_get_node
+(   lx   ) = s2typ_get_node(lx.itm())
+//
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_statyp2.dats] *)
