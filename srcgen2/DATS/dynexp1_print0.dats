@@ -593,49 +593,49 @@ end (*let*) // end of [q1arg_fprint(out,q1a)]
 //
 #implfun
 s1qag_fprint
-(out, s1q) =
+(out, sqa) =
 let
 #impltmp
 g_print$out<>() = out
 in//in-of-let
 case+
-s1q.node() of
+sqa.node() of
 |
 S1QAGsome
 (  sqs  ) => print("S1QAGsome(",sqs,")")
-end (*let*) // end of [s1qag_fprint(out,s1q)]
+end (*let*) // end of [s1qag_fprint(out,sqa)]
 //
 (* ****** ****** *)
 //
 #implfun
 t1qag_fprint
-(out, t1q) =
+(out, tqa) =
 let
 #impltmp
 g_print$out<>() = out
 in//in-of-let
 case+
-t1q.node() of
+tqa.node() of
 |
 T1QAGsome
 (  tqs  ) => print("T1QAGsome(",tqs,")")
-end (*let*) // end of [t1qag_fprint(out,t1q)]
+end (*let*) // end of [t1qag_fprint(out,tqa)]
 //
 (* ****** ****** *)
 //
 #implfun
 t1iag_fprint
-(out, t1i) =
+(out, tia) =
 let
 #impltmp
 g_print$out<>() = out
 in//in-of-let
 case+
-t1i.node() of
+tia.node() of
 |
 T1IAGsome
 (  ses  ) => print("T1IAGsome(",ses,")")
-end (*let*) // end of [t1iag_fprint(out,t1i)]
+end (*let*) // end of [t1iag_fprint(out,tia)]
 //
 (* ****** ****** *)
 //

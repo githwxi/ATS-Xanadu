@@ -457,8 +457,17 @@ fun p1_s0res: p1_fun( s0res )
 fun p1_d0res: p1_fun( d0res )
 //
 (* ****** ****** *)
+(*
+HX: p1_s0exp for [s0exp]
+*)
 fun
 pq_s0exp_anno: pq_fun( s0exp )
+(*
+HX-2022-11-05:
+p1_s0exp_app_NEQ0 for [s0exp]
+*)
+fun
+pq_s0exp_annp: pq_fun( s0exp )
 (* ****** ****** *)
 //
 fun

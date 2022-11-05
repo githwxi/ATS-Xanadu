@@ -146,6 +146,23 @@ end (*let*) // end of [d2var_new2_name]
 end (*let*) // end of [local(d2var_tbox)]
 
 (* ****** ****** *)
+//
+(*
+#implfun
+d2pat_none0
+(  loc0  ) =
+d2pat_make_node
+(loc0,D2Pnone0((*void*)))
+*)
+//
+#implfun
+d2pat_none1
+(  dpat  ) =
+d2pat_make_node
+(
+dpat.lctn(),D2Pnone1(dpat))
+//
+(* ****** ****** *)
 
 local
 //
@@ -173,7 +190,7 @@ let
   val+D2PAT(loc,nod) = d2p in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*) // end of [local(d2pat)]
 
 (* ****** ****** *)
 
@@ -203,7 +220,7 @@ let
   val+D2EXP(loc,nod) = d2e in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*) // end of [local(d2exp)]
 
 (* ****** ****** *)
 
@@ -233,7 +250,70 @@ let
   val+D2ECL(loc,nod) = dcl in nod
 end
 //
-endloc (*local*) // end of [ local(d2ecl) ]
+endloc (*local*) // end of [local(d2ecl)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d2valdcl =
+D2VALDCL of
+( loc_t
+, d2pat
+, teqd2exp, wths2exp)
+//
+#absimpl
+d2valdcl_tbox = d2valdcl
+//
+in//local
+
+#implfun
+d2valdcl_get_lctn
+  (  dval  ) = let
+val+
+D2VALDCL
+( lctn
+, dpat
+, tdxp, wsxp) = dval in lctn end
+
+#implfun
+d2valdcl_get_dpat
+  (  dval  ) = let
+val+
+D2VALDCL
+( lctn
+, dpat
+, tdxp, wsxp) = dval in dpat end
+
+#implfun
+d2valdcl_get_tdxp
+  (  dval  ) = let
+val+
+D2VALDCL
+( lctn
+, dpat
+, tdxp, wsxp) = dval in tdxp end
+
+#implfun
+d2valdcl_get_wsxp
+  (  dval  ) = let
+val+
+D2VALDCL
+( lctn
+, dpat
+, tdxp, wsxp) = dval in wsxp end
+
+(* ****** ****** *)
+
+#implfun
+d2valdcl_make_args
+(lctn, dpat, tdxp, wsxp) =
+(
+  D2VALDCL(lctn, dpat, tdxp, wsxp)
+)
+
+endloc (*local*) // end of [local(d2valdcl)]
 
 (* ****** ****** *)
 

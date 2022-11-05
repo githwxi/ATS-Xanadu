@@ -229,9 +229,9 @@ p1_napp(buf, err)
 list_cons
 (d0p1, dps1) =>
 let
-  val opt1 =
-  pq_s0exp_anno(buf, err)
-in
+val opt1 =
+pq_s0exp_annp(buf, err)
+in//let
 case+ dps1 of
 |
 list_nil() =>
@@ -241,7 +241,7 @@ list_cons _ => let
 val d0p2 =
 list_last(dps1)
 val lres =
-d0p1.lctn()+d0p2.lctn()
+(d0p1.lctn() + d0p2.lctn())
 in
 d0pat_anno_opt
 (d0pat(lres, D0Papps(d0ps)), opt1)
@@ -2175,6 +2175,41 @@ end (*let*) // end of [T_CLN]
 _(*non-T_CLN*) => optn_nil(*void*)
 //
 end (*let*)//end-of(pq_s0exp_anno(buf,err))
+
+(* ****** ****** *)
+
+#implfun
+pq_s0exp_annp
+  (buf, err) = let
+//
+val e00 = err
+val tok = buf.getk0()
+//
+(*
+val ( )
+prerrln
+("pq_s0exp_anno: tok = ", tok)
+*)
+//
+in(*let*)
+//
+case+
+tok.node() of
+|
+T_CLN() =>
+let
+//
+val ( ) = buf.skip1()
+val s0e =
+  p1_s0exp_app_NEQ0(buf, err)
+//
+in//let
+  (err := e00; optn_cons(s0e))
+end (*let*) // end of [T_CLN]
+|
+_(*non-T_CLN*) => optn_nil(*void*)
+//
+end (*let*)//end-of(pq_s0exp_annp(buf,err))
 
 (* ****** ****** *)
 #extern
