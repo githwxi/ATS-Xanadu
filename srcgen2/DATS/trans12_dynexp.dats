@@ -496,6 +496,23 @@ end (*let*) // end of [f0_r2cd(env0, d1e0)]
 } (*where*) // end of [trans12_d1exp(env0,d1e0)]
 
 (* ****** ****** *)
+//
+#implfun
+trans12_teqd1exp
+  (env0, tdxp) =
+(
+case+ tdxp of
+|
+TEQD1EXPnone() =>
+TEQD2EXPnone((*void*))
+|
+TEQD1EXPsome(teq1, d1e2) =>
+TEQD2EXPsome(teq1, d2e2) where
+{ val
+  d2e2 = trans12_d1exp(env0, d1e2) }
+) (*case+*)//end-of(trans12_teqd0exp(...))
+//
+(* ****** ****** *)
 
 #implfun
 trans12_d1patlst

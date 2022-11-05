@@ -219,7 +219,81 @@ let
   val+D2ECL(loc,nod) = dcl in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*) // end of [ local(d2ecl) ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d2vardcl =
+D2VARDCL of
+( loc_t
+, d2var
+, d2varopt
+, s2expopt, teqd2exp)
+//
+#absimpl
+d2vardcl_tbox = d2vardcl
+//
+in//local
+
+#implfun
+d2vardcl_get_lctn
+  (  dvar  ) = let
+val+
+D2VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in lctn end
+
+#implfun
+d2vardcl_get_dpid
+  (  dvar  ) = let
+val+
+D2VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in dpid end
+
+#implfun
+d2vardcl_get_vpid
+  (  dvar  ) = let
+val+
+D2VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in vpid end
+
+#implfun
+d2vardcl_get_sres
+  (  dvar  ) = let
+val+
+D2VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in sres end
+
+#implfun
+d2vardcl_get_dini
+  (  dvar  ) = let
+val+
+D2VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in dini end
+
+(* ****** ****** *)
+
+#implfun
+d2vardcl_make_args
+( lctn
+, dpid, vpid, sres, dini) =
+(
+D2VARDCL(lctn, dpid, vpid, sres, dini)
+)
+
+endloc (*local*) // end of [ local(d2vardcl) ]
 
 (* ****** ****** *)
 

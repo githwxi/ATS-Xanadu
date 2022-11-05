@@ -345,6 +345,20 @@ D2Cdatasort(d1cl,s2cs) =>
 print("D2Cdatasort(",d1cl,";",s2cs,")")
 //
 |
+D2Cvaldclst
+(  tknd, d2vs  ) =>
+print("D2Cvaldclst(",tknd,";",d2vs,")")
+|
+D2Cvardclst
+(  tknd, d2vs  ) =>
+print("D2Cvardclst(",tknd,";",d2vs,")")
+//
+|
+D2Cfundclst
+(tknd,tqas,d2fs) =>
+print("D2Cfundclst(",tknd,";",tqas,";",d2fs,")")
+//
+|
 D2Cexcptcon(d1cl,d2cs) =>
 print("D2Cexcptcon(",d1cl,";",d2cs,")")
 |
@@ -358,6 +372,18 @@ D2Cnone1(d1cl) => print("D2Cnone1(",d1cl,")")
 //
 end (*let*) // end of [d2ecl_fprint(out, dcl0)]
 
+(* ****** ****** *)
+//
+#implfun
+t2qag_fprint
+(out, tqa) =
+let
+#impltmp
+g_print$out<>() = out
+in//in-of-let
+  print("T2QAG(", tqa.s2vs(), ")")
+end (*let*) // end of [t2qag_fprint(out,tqa)]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -381,6 +407,25 @@ print("A2TDFeqeq(",s2e1,")")
 //
 end (*let*) // end of [a2tdf_fprint]
 //
+(* ****** ****** *)
+
+#implfun
+d2valdcl_fprint
+  (out, dval) = let
+//
+val dpat =
+d2valdcl_get_dpat(dval)
+val tdxp =
+d2valdcl_get_tdxp(dval)
+val wsxp =
+d2valdcl_get_wsxp(dval)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+print("D2VALDCL(",dpat,";",tdxp,",",wsxp,")")
+end(*let*)//end-of-[d2valdcl_fprint(out,dval)]
+
 (* ****** ****** *)
 
 #implfun

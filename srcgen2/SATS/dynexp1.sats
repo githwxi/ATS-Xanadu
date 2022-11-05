@@ -1001,8 +1001,8 @@ fun
 d1valdcl_get_wsxp:(d1valdcl)->wths1exp
 (* ****** ****** *)
 #symload dpat with d1valdcl_get_dpat
-#symload tdxp with d1valdcl_get_tdxp
-#symload wsxp with d1valdcl_get_wsxp
+#symload tdxp with d1valdcl_get_tdxp(*opt*)
+#symload wsxp with d1valdcl_get_wsxp(*opt*)
 (* ****** ****** *)
 fun
 d1vardcl_get_dpid:(d1vardcl)->d1pid
@@ -1014,9 +1014,9 @@ fun
 d1vardcl_get_dini:(d1vardcl)->teqd1exp
 (* ****** ****** *)
 #symload dpid with d1vardcl_get_dpid
-#symload vpid with d1vardcl_get_vpid
-#symload sres with d1vardcl_get_sres
-#symload dini with d1vardcl_get_dini
+#symload vpid with d1vardcl_get_vpid(*opt*)
+#symload sres with d1vardcl_get_sres(*opt*)
+#symload dini with d1vardcl_get_dini(*opt*)
 (* ****** ****** *)
 fun
 d1fundcl_get_dpid:(d1fundcl)->d1pid
@@ -1030,10 +1030,10 @@ fun
 d1fundcl_get_wsxp:(d1fundcl)->wths1exp
 (* ****** ****** *)
 #symload dpid with d1fundcl_get_dpid
-#symload farg with d1fundcl_get_farg
-#symload sres with d1fundcl_get_sres
-#symload tdxp with d1fundcl_get_tdxp
-#symload wsxp with d1fundcl_get_wsxp
+#symload farg with d1fundcl_get_farg(*lst*)
+#symload sres with d1fundcl_get_sres(*opt*)
+#symload tdxp with d1fundcl_get_tdxp(*opt*)
+#symload wsxp with d1fundcl_get_wsxp(*opt*)
 (* ****** ****** *)
 //
 fun
