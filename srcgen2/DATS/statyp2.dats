@@ -62,5 +62,33 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with s1exp_get_lctn
+#symload node with s1exp_get_node
+(* ****** ****** *)
+//
+#implfun
+s2typ_none0() =
+s2typ
+(s2t0, T2Pnone0()) where
+{
+  val s2t0 = sort2_none0()
+} (*where*) // end of [s2typ_none0(...)]
+//
+#implfun
+s2typ_none1(s1e0) =
+let
+//
+  val loc0 = s1e0.lctn()
+  val s2t0 = sort2_none0() 
+//
+(*
+val (  ) = prerrln
+("s2typ_none1: s1e0 = ", s1e0)
+*)
+in//let
+  s2typ(s2t0, T2Pnone1(s1e0))
+end (*let*) // end of [s2typ_none1(s1e0)]
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_statyp2.dats] *)
