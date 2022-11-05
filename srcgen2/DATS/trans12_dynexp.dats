@@ -515,12 +515,17 @@ trans12_d1patopt
 optn_trans12_fnp(env0, dopt, trans12_d1pat)
 //
 (* ****** ****** *)
-
+//
 #implfun
 trans12_d1explst
 ( env0, d1es ) =
 list_trans12_fnp(env0, d1es, trans12_d1exp)
-
+//
+#implfun
+trans12_d1expopt
+( env0, dopt ) =
+optn_trans12_fnp(env0, dopt, trans12_d1exp)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans12_dynexp.dats] *)
