@@ -1108,6 +1108,12 @@ g_print<d2ecl>(dcl) =
 d2ecl_fprint(g_print$out<>(), dcl)
 //
 (* ****** ****** *)
+//
+#impltmp
+g_print<t2qag>(tqag) =
+t2qag_fprint(g_print$out<>(), tqag)
+//
+(* ****** ****** *)
 #impltmp
 g_print<a2tdf>(atdf) =
 a2tdf_fprint(g_print$out<>(), atdf)
@@ -1136,6 +1142,32 @@ d2cstdcl_fprint(g_print$out<>(), dcst)
 #impltmp
 g_print<d2parsed>(dpar) =
 d2parsed_fprint(g_print$out<>(), dpar)
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<teqd2exp>(tdxp) =
+(
+case+ tdxp of
+|
+TEQD2EXPnone() =>
+print("TEQD2EXPnone(", ")")
+|
+TEQD2EXPsome(tok0, d2e1) =>
+print("TEQD2EXPsome(", tok0, ";", d2e1, ")"))
+//
+#impltmp
+g_print
+<wths2exp>(wsxp) =
+(
+case+ wsxp of
+|
+WTHS2EXPnone() =>
+print("WTHS2EXPnone(", ")")
+|
+WTHS2EXPsome(tok0, s2e1) =>
+print("WTHS2EXPsome(", tok0, ";", s2e1, ")"))
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xatsopt_tmplib.dats] *)

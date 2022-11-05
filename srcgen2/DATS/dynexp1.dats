@@ -370,7 +370,7 @@ let
   val+S1QAG(loc,nod) = tia in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*) // end of [local(s1qag)]
 
 (* ****** ****** *)
 
@@ -401,7 +401,7 @@ let
   val+T1QAG(loc,nod) = tia in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*) // end of [local(t1qag)]
 
 (* ****** ****** *)
 
@@ -432,7 +432,7 @@ let
   val+T1IAG(loc,nod) = tia in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*) // end of [local(t1iag)]
 
 (* ****** ****** *)
 
@@ -463,7 +463,7 @@ let
   val+A1TYP(loc,nod) = tia in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*) // end of [local(a1typ)]
 
 (* ****** ****** *)
 
@@ -494,7 +494,7 @@ let
   val+D1ARG(loc,nod) = tia in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*) // end of [local(d1arg)]
 
 (* ****** ****** *)
 
@@ -524,7 +524,7 @@ let
   val+D1ECL(loc,nod) = dcl in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*) // end of [local(d1ecl)]
 
 (* ****** ****** *)
 
@@ -587,7 +587,7 @@ d1valdcl_make_args
   D1VALDCL(lctn, dpat, tdxp, wsxp)
 )
 
-endloc (*local*) // end of [ local(d1valdcl) ]
+endloc (*local*) // end of [local(d1valdcl)]
 
 (* ****** ****** *)
 
@@ -661,7 +661,7 @@ d1vardcl_make_args
 D1VARDCL(lctn, dpid, vpid, sres, dini)
 )
 
-endloc (*local*) // end of [ local(d1vardcl) ]
+endloc (*local*) // end of [local(d1vardcl)]
 
 (* ****** ****** *)
 
@@ -758,7 +758,7 @@ d1fundcl_make_args
 D1FUNDCL(lctn,dpid,farg,sres,tdxp,wsxp)
 )
 
-endloc (*local*) // end of [ local(d1fundcl) ]
+endloc (*local*) // end of [local(d1fundcl)]
 
 (* ****** ****** *)
 
@@ -831,7 +831,7 @@ d1cstdcl_make_args
 (lctn, dpid, darg, sred, dres) =
 D1CSTDCL(lctn, dpid, darg, sred, dres)
 //
-endloc (*local*) // end of [ local(d1cstdcl) ]
+endloc (*local*) // end of [local(d1cstdcl)]
 
 (* ****** ****** *)
 
@@ -928,7 +928,7 @@ prerrln
 //
 (* ****** ****** *)
 
-endloc (*local*) // end of [ local(d1parsed) ]
+endloc (*local*) // end of [local(d1parsed)]
 
 (* ****** ****** *)
 

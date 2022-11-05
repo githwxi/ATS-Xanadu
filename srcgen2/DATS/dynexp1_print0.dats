@@ -821,7 +821,7 @@ d1valdcl_get_wsxp(dval)
 //
 in//let
 print("D1VALDCL(",dpat,";",tdxp,",",wsxp,")")
-end(*let*)//end-of-[d1valdcl_fprint(out,d1cl)]
+end(*let*)//end-of-[d1valdcl_fprint(out,dval)]
 
 (* ****** ****** *)
 
@@ -844,7 +844,7 @@ in//let
 (
 print("D1VARDCL(");
 print(dpid,";",vpid,";",sres,",",dini,")"))
-end(*let*)//end-of-[d1vardcl_fprint(out,d1cl)]
+end(*let*)//end-of-[d1vardcl_fprint(out,dvar)]
 
 (* ****** ****** *)
 
@@ -869,7 +869,7 @@ in//let
 (
 print("D1FUNDCL(",dpid,";");
 print(farg,";",sres,";",tdxp,",",wsxp,")"))
-end(*let*)//end-of-[d1fundcl_fprint(out,d1cl)]
+end(*let*)//end-of-[d1fundcl_fprint(out,dfun)]
 
 (* ****** ****** *)
 
@@ -896,7 +896,7 @@ in//let
 print
 ("D1CSTDCL("
 ,dpid,";",darg,";",sres,";",dres,")")
-end (*let*) // end of [d1cstdcl_fprint]
+end (*let*)//end-of-[d1cstdcl_fprint(out,dcst)]
 
 (* ****** ****** *)
 
@@ -923,7 +923,7 @@ in//let
 (
 print("D1PARSED(");
 print(stadyn,";",nerror,";",source,";",parsed,")"))
-end(*let*)//end-of-[d1parsed_fprint(out,dpar)]
+end (*let*) // end-of-[ d1parsed_fprint(out,dpar) ]
 
 (* ****** ****** *)
 

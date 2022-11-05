@@ -287,6 +287,10 @@ t2qag_fprint:(FILR,t2qag)->void
 fun
 t2iag_fprint:(FILR,t2iag)->void
 (* ****** ****** *)
+fun
+t2qag_get_s2vs:(t2qag)->s2varlst
+#symload s2vs with t2qag_get_s2vs
+(* ****** ****** *)
 //
 datatype
 d2pat_node =
@@ -621,6 +625,42 @@ d2fundcl_fprint:(FILR,d2fundcl)->void
 (* ****** ****** *)
 fun
 d2cstdcl_fprint:(FILR,d2cstdcl)->void
+(* ****** ****** *)
+fun
+d2valdcl_get_lctn:(d2valdcl)->loc_t
+fun
+d2vardcl_get_lctn:(d2vardcl)->loc_t
+fun
+d2fundcl_get_lctn:(d2fundcl)->loc_t
+(* ****** ****** *)
+#symload lctn with d2valdcl_get_lctn
+#symload lctn with d2vardcl_get_lctn
+#symload lctn with d2fundcl_get_lctn
+(* ****** ****** *)
+fun
+d2valdcl_get_dpat:(d2valdcl)->d2pat
+fun
+d2valdcl_get_tdxp:(d2valdcl)->teqd2exp
+fun
+d2valdcl_get_wsxp:(d2valdcl)->wths2exp
+(* ****** ****** *)
+#symload dpat with d2valdcl_get_dpat
+#symload tdxp with d2valdcl_get_tdxp(*opt*)
+#symload wsxp with d2valdcl_get_wsxp(*opt*)
+(* ****** ****** *)
+fun
+d2vardcl_get_dpid:(d2vardcl)->d2var
+fun
+d2vardcl_get_vpid:(d2vardcl)->d2varopt
+fun
+d2vardcl_get_sres:(d2vardcl)->s2expopt
+fun
+d2vardcl_get_dini:(d2vardcl)->teqd2exp
+(* ****** ****** *)
+#symload dpid with d2vardcl_get_dpid
+#symload vpid with d2vardcl_get_vpid(*opt*)
+#symload sres with d2vardcl_get_sres(*opt*)
+#symload dini with d2vardcl_get_dini(*opt*)
 (* ****** ****** *)
 //
 fun
