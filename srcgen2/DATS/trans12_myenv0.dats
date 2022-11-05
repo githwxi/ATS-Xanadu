@@ -1130,5 +1130,18 @@ end (*let*)//end-of-[list_cons]
 ) (*case+*)//end-of-[tr12env_add0_s2varlst_one(...)]
 //
 (* ****** ****** *)
+//
+#implfun
+tr12env_add0_d2var_one
+  (env0, d2v0) =
+let
+val sym0 =
+d2var_get_name(d2v0)
+val ditm = D2ITMvar(d2v0)
+in//let
+  tr12env_add0_d2itm(env0, sym0, ditm)
+end (*let*)//end[tr12env_add0_d2var_one(env0,d2v0)]
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans12_myenv0.dats] *)

@@ -1508,12 +1508,17 @@ trans12_t1maglst
 list_trans12_fnp(env0, tmas, trans12_t1mag)
 
 (* ****** ****** *)
-
+//
 #implfun
 trans12_s1explst
   (env0, s1es) =
 list_trans12_fnp(env0, s1es, trans12_s1exp)
-
+//
+#implfun
+trans12_s1expopt
+  (env0, sopt) =
+optn_trans12_fnp(env0, sopt, trans12_s1exp)
+//
 (* ****** ****** *)
 //
 #implfun

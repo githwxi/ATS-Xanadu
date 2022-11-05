@@ -92,7 +92,8 @@ D2VAR of
 in//local
 //
 #implfun
-d2var_get_lctn(d2v) =
+d2var_get_lctn
+  (  d2v0  ) =
 let
 val+
 D2VAR
@@ -100,7 +101,19 @@ D2VAR
 ,sym0
 ,tqas
 ,s2e0
-,t2p0,stmp) = d2v in loc0 end
+,t2p0,stmp) = d2v0 in loc0 end
+//
+#implfun
+d2var_get_name
+  (  d2v0  ) =
+let
+val+
+D2VAR
+(loc0
+,sym0
+,tqas
+,s2e0
+,t2p0,stmp) = d2v0 in sym0 end
 //
 #implfun
 d2var_new2_name
