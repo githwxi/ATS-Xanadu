@@ -513,6 +513,23 @@ TEQD2EXPsome(teq1, d2e2) where
 ) (*case+*)//end-of(trans12_teqd0exp(...))
 //
 (* ****** ****** *)
+//
+#implfun
+trans12_wths1exp
+  (tenv, tdxp) =
+(
+case+ tdxp of
+|
+WTHS1EXPnone() =>
+WTHS2EXPnone((*void*))
+|
+WTHS1EXPsome(twth, s1e2) =>
+WTHS2EXPsome(twth, s2e2) where
+{ val
+  s2e2 = trans12_s1exp(tenv, s1e2) }
+) (*case+*)//end-of(trans12_wths1exp(...))
+//
+(* ****** ****** *)
 
 #implfun
 trans12_d1patlst

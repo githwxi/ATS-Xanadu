@@ -121,6 +121,9 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef a2tdf = $D2E.a2tdf
 (* ****** ****** *)
+#typedef wths1exp = $D1E.wths1exp
+#typedef wths2exp = $D2E.wths2exp
+(* ****** ****** *)
 #typedef teqd1exp = $D1E.teqd1exp
 #typedef teqd2exp = $D2E.teqd2exp
 (* ****** ****** *)
@@ -555,6 +558,11 @@ fun
 trans12_teqd1exp
 ( env0:
 ! tr12env, tdxp: teqd1exp): teqd2exp
+//
+fun
+trans12_wths1exp
+( env0:
+! tr12env, wsxp: wths1exp): wths2exp
 //
 (* ****** ****** *)
 fun

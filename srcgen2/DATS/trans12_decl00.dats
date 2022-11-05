@@ -188,22 +188,18 @@ D1Cabstype _ => f0_abstype(env0, d1cl)
 |
 D1Cdatasort _ => f0_datasort(env0, d1cl)
 //
-(*
 |
 D1Cvaldclst _ => f0_valdclst(env0, d1cl)
-*)
 |
 D1Cvardclst _ => f0_vardclst(env0, d1cl)
-(*
 |
 D1Cfundclst _ => f0_fundclst(env0, d1cl)
-*)
 //
 |_(*otherwise*) =>
 let
 val loc0 = d1cl.lctn()
 in//let
-  d2ecl_make_node(loc0, D2Cnone1( d1cl ))
+  d2ecl_make_node( loc0, D2Cnone1( d1cl ) )
 end (*let*) // end of [_(*otherwise*)] // temp
 //
 end where
@@ -863,7 +859,7 @@ trans12_d1fundclist(env0, d1fs)
 //
 in//let
   d2ecl(loc0, D2Cfundclst(tknd, tqas, d2fs))
-end (*let*) // end of [f0_vardclst(env0,d1cl)]
+end (*let*) // end of [f0_fundclst(env0,d1cl)]
 
 (* ****** ****** *)
 //
@@ -899,6 +895,35 @@ trans12_s1exp_stck(env0, s1e1, tres)
 }
 ) (*case+*) // end of [trans12_a1tdf_stck(env0,...)]
 //
+(* ****** ****** *)
+
+#implfun
+trans12_d1valdcl
+  (tenv, dval) =
+let
+//
+val loc0 =
+d1valdcl_get_lctn(dval)
+//
+val dpat =
+d1valdcl_get_dpat(dval)
+val dpat =
+trans12_d1pat(tenv, dpat)
+//
+val tdxp =
+d1valdcl_get_tdxp(dval)
+val tdxp =
+trans12_teqd1exp(tenv, tdxp)
+//
+val wsxp =
+d1valdcl_get_wsxp(dval)
+val wsxp =
+trans12_wths1exp(tenv, wsxp)
+//
+in//let
+d2valdcl_make_args(loc0, dpat, tdxp, wsxp)
+end (*let*)//end-of-[trans12_d1valdcl(tenv,dval)]
+
 (* ****** ****** *)
 
 #implfun

@@ -2075,30 +2075,8 @@ val e00 = err
 val dpid =
 p1_d0pid(buf, err)
 //
-(*
 val sres =
-pq_s0exp_anno(buf, err)
-*)
-val sres =
-let
-val tok = buf.getk0()
-in//in-of-let
-//
-case+
-tok.node() of
-|
-T_CLN() =>
-let
-val () = buf.skip1()
-in//let
-optn_cons
-(
-p1_s0exp_app_NEQ0(buf, err))
-end // end of [T_CLN]
-|
-_(*non-T_CLN*) => optn_nil()
-//
-end : s0expopt // end-of-[val]
+pq_s0exp_annp(buf, err)
 //
 val vpid =
 let

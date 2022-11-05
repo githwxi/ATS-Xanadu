@@ -664,6 +664,11 @@ d2vardcl_get_dini:(d2vardcl)->teqd2exp
 (* ****** ****** *)
 //
 fun
+d2valdcl_make_args
+( lctn:loc_t
+, dpat:d2pat
+, tdxp:teqd2exp, wsxp:wths2exp):d2valdcl
+fun
 d2vardcl_make_args
 ( lctn:loc_t
 , dpid:d2var

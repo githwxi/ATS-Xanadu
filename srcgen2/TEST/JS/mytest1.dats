@@ -21,6 +21,7 @@ lam(a:int): type => (int(a), int(a))
 #typedef
 fint2(a:int): type = (int(a), int(a))
 (* ****** ****** *)
+val x: int = 0
 var x: int = 0
 (* ****** ****** *)
 ////

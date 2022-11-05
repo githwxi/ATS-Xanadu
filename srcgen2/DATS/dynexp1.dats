@@ -132,7 +132,7 @@ let
   val+D1PAT(loc,nod) = d1p in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*) // end of [local(d1pat)]
 
 (* ****** ****** *)
 
@@ -162,7 +162,7 @@ let
   val+D1GUA(loc,nod) = d1g in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*) // end of [local(d1gua)]
 
 (* ****** ****** *)
 
@@ -192,7 +192,7 @@ let
   val+D1GPT(loc,nod) = d1g in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*) // end of [local(d1gpt)]
 
 (* ****** ****** *)
 
@@ -222,7 +222,7 @@ let
   val+D1CLS(loc,nod) = dcl in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*) // end of [local(d1cls)]
 
 (* ****** ****** *)
 
@@ -252,7 +252,7 @@ let
   val+D1EXP(loc,nod) = d1e in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*) // end of [local(d1exp)]
 
 (* ****** ****** *)
 //
@@ -308,7 +308,7 @@ let
   val+F1ARG(loc,nod) = tia in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*) // end of [local(f1arg)]
 
 (* ****** ****** *)
 
@@ -339,7 +339,7 @@ let
   val+Q1ARG(loc,nod) = tia in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*) // end of [local(q1arg)]
 
 (* ****** ****** *)
 
