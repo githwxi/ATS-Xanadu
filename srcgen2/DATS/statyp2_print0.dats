@@ -89,12 +89,34 @@ print("T2Plft(", t2p1, ")")
 //
 |
 T2Papps(tfun, t2ps) =>
-print("T2Papp(", tfun, ";", t2ps, ")")
+print("T2Papps(", tfun, ";", t2ps, ")")
 |
 T2Plam0(s2vs, tres) =>
-print("T2Plam(", s2vs, ";", tres, ")")
+print("T2Plam0(", s2vs, ";", tres, ")")
 //
-end (*let*) // end of [s2typ_fprint(out,s2e0)]
+|
+T2Pexi0(s2vs, t2p1) =>
+print("T2Pexi0(", s2vs, ";", t2p1, ")")
+|
+T2Puni0(s2vs, t2p1) =>
+print("T2Puni0(", s2vs, ";", t2p1, ")")
+//
+|
+T2Ptext(name, t2ps) =>
+print("T2Ptext(", name, ";", t2ps, ")")
+//
+|
+T2Ptrcd
+(knd0, npf1, lses) =>
+print
+("T2Ptrcd(", knd0, ";", npf1, ";", lses)
+//
+|
+T2Pnone0() => print("T2Pnone0(",")")
+|
+T2Pnone1(s1e1) => print("T2Pnone1(",s1e1,")")
+//
+end (*let*) // end of [s2typ_fprint(out,t2p0)]
 
 (* ****** ****** *)
 

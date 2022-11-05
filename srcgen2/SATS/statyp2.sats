@@ -104,10 +104,16 @@ T2Pfun0 of
 , sint(*npf*),s2typlst(*arg*),s2typ(*res*)
 ) (* end of T2Pfun0 *)
 //
-| T2Pexi of // exists quantifier
+| T2Pexi0 of // exists quantifier
   (s2varlst(*vars*), s2typ(*body*))
-| T2Puni of // forall quantifier
+| T2Puni0 of // forall quantifier
   (s2varlst(*vars*), s2typ(*body*))
+//
+| T2Ptext of
+  (string(*name*), s2typlst) // external
+//
+| T2Ptrcd of
+  (trcdknd(*knd*), int(*npf*), l2t2plst)
 //
 | T2Pnone0 of ((*void*)) | T2Pnone1 of (s2exp)
 //
