@@ -81,6 +81,25 @@ _(*?*) = "./lexing0_print0.dats"
 (* ****** ****** *)
 
 #implfun
+d2var_fprint
+(out, d2v0) =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+val
+sym0 = d2var_get_name(d2v0)
+val
+stmp = d2var_get_stmp(d2v0)
+//
+in//let
+  print(sym0, "(", stmp, ")")
+end (*let*) // end of [d2var_fprint(out,d2v0)]
+
+(* ****** ****** *)
+
+#implfun
 d2pat_fprint
 (out, d2p0) =
 let
@@ -426,6 +445,29 @@ in//let
 print("D2VALDCL(",dpat,";",tdxp,",",wsxp,")")
 end(*let*)//end-of-[d2valdcl_fprint(out,dval)]
 
+(* ****** ****** *)
+//
+#implfun
+d2vardcl_fprint
+  (out, dvar) = let
+//
+val dpid =
+d2vardcl_get_dpid(dvar)
+val vpid =
+d2vardcl_get_vpid(dvar)
+val sres =
+d2vardcl_get_sres(dvar)
+val dini =
+d2vardcl_get_dini(dvar)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print("D2VARDCL(");
+print(dpid,";",vpid,";",sres,",",dini,")"))
+end(*let*)//end-of-[d2vardcl_fprint(out,dvar)]
+//
 (* ****** ****** *)
 
 #implfun

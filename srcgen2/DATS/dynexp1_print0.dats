@@ -602,7 +602,7 @@ case+
 s1q.node() of
 |
 S1QAGsome
-(  sqs  ) => print("T1QAGsome(",sqs,")")
+(  sqs  ) => print("S1QAGsome(",sqs,")")
 end (*let*) // end of [s1qag_fprint(out,s1q)]
 //
 (* ****** ****** *)

@@ -116,6 +116,20 @@ D2VAR
 ,t2p0,stmp) = d2v0 in sym0 end
 //
 #implfun
+d2var_get_stmp
+  (  d2v0  ) =
+let
+val+
+D2VAR
+(loc0
+,sym0
+,tqas
+,s2e0
+,t2p0,stmp) = d2v0 in stmp end
+//
+(* ****** ****** *)
+//
+#implfun
 d2var_new2_name
 (  loc0,sym0  ) =
 let

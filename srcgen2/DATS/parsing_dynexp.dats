@@ -2167,9 +2167,9 @@ tok.node() of
 T_CLN() =>
 let
 val ( ) = buf.skip1()
-val s0t = p1_s0exp(buf, err)
+val s0e = p1_s0exp(buf, err)
 in//let
-  (err := e00; optn_cons(s0t))
+  (err := e00; optn_cons(s0e))
 end (*let*) // end of [T_CLN]
 |
 _(*non-T_CLN*) => optn_nil(*void*)
