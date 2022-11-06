@@ -514,6 +514,16 @@ fun
 d2exp_none1(d1e0:d1exp): d2exp
 (* ****** ****** *)
 fun
+d2exp_var
+(loc0: loc_t, d2v1: d2var): d2exp
+fun
+d2exp_btf
+(loc0: loc_t, sym1: sym_t): d2exp
+fun
+d2exp_top
+(loc0: loc_t, sym1: sym_t): d2exp
+(* ****** ****** *)
+fun
 d2exp_make_node
 (loc:loc_t,nod:d2exp_node): d2exp
 #symload d2exp with d2exp_make_node
