@@ -71,6 +71,28 @@ val
 stamper = stamper_new()
 in//local
 fun
+the_d2con_stamp_new
+( (*void*) ): stamp = stamper.getinc()
+endloc // end of [the_d2con_stamp_new]
+//
+(* ****** ****** *)
+//
+local
+val
+stamper = stamper_new()
+in//local
+fun
+the_d2cst_stamp_new
+( (*void*) ): stamp = stamper.getinc()
+endloc // end of [the_d2cst_stamp_new]
+//
+(* ****** ****** *)
+//
+local
+val
+stamper = stamper_new()
+in//local
+fun
 the_d2var_stamp_new
 ( (*void*) ): stamp = stamper.getinc()
 endloc // end of [the_d2var_stamp_new]

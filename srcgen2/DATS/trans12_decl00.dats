@@ -899,7 +899,7 @@ trans12_s1exp_stck(env0, s1e1, tres)
 
 #implfun
 trans12_d1valdcl
-  (tenv, dval) =
+  (env0, dval) =
 let
 //
 val loc0 =
@@ -908,21 +908,24 @@ d1valdcl_get_lctn(dval)
 val dpat =
 d1valdcl_get_dpat(dval)
 val dpat =
-trans12_d1pat(tenv, dpat)
+trans12_d1pat(env0, dpat)
 //
 val tdxp =
 d1valdcl_get_tdxp(dval)
 val tdxp =
-trans12_teqd1exp(tenv, tdxp)
+trans12_teqd1exp(env0, tdxp)
 //
 val wsxp =
 d1valdcl_get_wsxp(dval)
 val wsxp =
-trans12_wths1exp(tenv, wsxp)
+trans12_wths1exp(env0, wsxp)
+//
+val (  ) = //HX:non-recursive
+tr12env_add0_d2pat_one(env0, dpat)
 //
 in//let
 d2valdcl_make_args(loc0, dpat, tdxp, wsxp)
-end (*let*)//end-of-[trans12_d1valdcl(tenv,dval)]
+end (*let*)//end-of-[trans12_d1valdcl(env0,dval)]
 
 (* ****** ****** *)
 
