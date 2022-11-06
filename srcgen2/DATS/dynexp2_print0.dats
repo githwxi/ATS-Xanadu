@@ -304,27 +304,39 @@ print("D2Ewhere(",d2e1,";",dcls,")")
 |
 D2Eassgn(d2el, d2er) =>
 print("D2Eassgn(",d2el,";",d2er,")")
+|
+D2Ebrckt(dpis, d2es) =>
+print("D2Ebrckt(",dpis,";",d2es,")")
 //
 |D2Eseqn(d2es, d2e1) =>
 (
 print("D2Eseqn(",d2es,";",d2e1,")"))
 //
+|D2Etup0(npf1, d2es) =>
+(
+print("D2Etup0(",npf1,";",d2es,")"))
+(*
+|D2Ercd0(npf1, ldes) =>
+(
+print("D2Ercd0(",npf1,";",ldes,")"))
+*)
+//
 |
 D2Etup1
 ( tknd, npf1, d2es ) =>
 ( print("D2Etup1(")
-; print(tknd,";",npf1,";",d2es,")"))
+; print(tknd,";",npf1,";",d2es,")") )
 |
 D2Ercd2
 ( tknd, npf1, ldes ) =>
 ( print("D2Ercd2(")
-; print(tknd,";",npf1,";",ldes,")"))
+; print(tknd,";",npf1,";",ldes,")") )
 //
 |
 D2Eanno
 ( d2e1, s1e2, s2e2 ) =>
 ( print("D2Eanno(")
-; print(d2e1,";",s1e2,";",s2e2,")"))
+; print(d2e1,";",s1e2,";",s2e2,")") )
 //
 |
 D2Eexists(s2es,d2e1) =>

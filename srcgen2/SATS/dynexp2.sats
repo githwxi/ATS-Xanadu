@@ -339,10 +339,10 @@ D2Pdapp of
 ) (* D2Pdapp *)
 //
 |
-D2Pdtup of
+D2Ptup1 of
 ( token, sint(*npf*), d2patlst)
 |
-D2Pdrcd of
+D2Prcd2 of
 ( token, sint(*npf*), l2d2plst)
 //
 | D2Panno of (d2pat, s1exp, s2exp)
@@ -510,23 +510,23 @@ D2Eif0 of
 D2Ecas0 of
 ( token(*+/0/-*), d2exp, d2clslst )
 //
-|
-D2Etup0 of (sint(*npf*), d2explst)
-|
-D2Ercd0 of (sint(*npf*), l2d2elst)
+|D2Etup0 of (sint(*npf*), d2explst)
+(*
+|D2Ercd0 of (sint(*npf*), l2d2elst)
+*)
 |
 D2Etup1 of // HX: tuple
 (
-token(*knd*),sint(*npf*),d2explst)
+token(*knd*), sint(*npf*), d2explst)
 |
 D2Ercd2 of // HX: record
 (
-token(*knd*),sint(*npf*),l2d2elst)
+token(*knd*), sint(*npf*), l2d2elst)
 //
 |
 D2Etry0 of
-(token(*TRY*)
-,d2exp(*norm*),d2clslst(*excptn*))
+( token(*TRY*)
+, d2exp(*norm*), d2clslst(*excptn*))
 //
 |
 D2Eanno of
