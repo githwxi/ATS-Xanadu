@@ -1156,9 +1156,49 @@ tr12env_add0_d2pat_one
 case+
 d2p0.node() of
 //
+|D2Pnil() => ((*void*))
+|D2Pany() => ((*void*))
+|D2Parg() => ((*void*))
+//
 |
 D2Pvar(d2v1) =>
 tr12env_add0_d2var_one(env0, d2v1)
+//
+|D2Pint _ => ((*void*))
+|D2Pbtf _ => ((*void*))
+|D2Pchr _ => ((*void*))
+|D2Pflt _ => ((*void*))
+|D2Pstr _ => ((*void*))
+//
+|
+D2Pbang(d2p1) =>
+tr12env_add0_d2pat_one(env0, d2p1)
+|
+D2Pflat(d2p1) =>
+tr12env_add0_d2pat_one(env0, d2p1)
+|
+D2Pfree(d2p1) =>
+tr12env_add0_d2pat_one(env0, d2p1)
+//
+|
+D2Psapp
+(d2p1, s2vs) =>
+tr12env_add0_d2pat_one(env0, d2p1)
+//
+|
+D2Pd0ap(d2p1) =>
+tr12env_add0_d2pat_one(env0, d2p1)
+|
+D2Pd1ap(d2p1) =>
+tr12env_add0_d2pat_one(env0, d2p1)
+//
+|
+D2Pdapp
+(d2f0, npf1, d2ps) =>
+(
+tr12env_add0_d2pat_one(env0, d2f0);
+tr12env_add0_d2patlst_one(env0, d2ps)
+)
 //
 |
 D2Pdtup
@@ -1173,7 +1213,7 @@ tr12env_add0_l2d2plst_one(env0, ldps)
 D2Panno
 (d2p1, s1e2, s2e2) =>
 (
-  tr12env_add0_d2pat_one(env0, d2p1))
+  tr12env_add0_d2pat_one(env0, d2p1) )
 //
 | _(* rest-of-d2pat *) => ( (*skipped*) )
 //
