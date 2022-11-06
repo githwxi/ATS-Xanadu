@@ -96,5 +96,8 @@ HX-2022-10-01: Various symbols
 #implval VTBX_symbl = symbl("vtbx")
 //
 (* ****** ****** *)
+#implval TRUE_symbl = symbl("true")
+#implval FALSE_symbl = symbl("false")
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xsymbol_inits0.dats] *)
