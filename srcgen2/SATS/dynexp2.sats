@@ -305,11 +305,11 @@ d2pat_node =
 //
 |D2Pvar of d2var
 //
-|D2Pint of (token)
-|D2Pbtf of (token)
-|D2Pchr of (token)
-|D2Pflt of (token)
-|D2Pstr of (token)
+|D2Pint of token
+|D2Pbtf of token
+|D2Pchr of token
+|D2Pflt of token
+|D2Pstr of token
 //
 |D2Pi00 of (sint) // sint
 |D2Pb00 of (bool) // bool

@@ -149,6 +149,9 @@ in//let
 d2pat_make_node(loc0, D2Pstr(tok))
 end (*let*) // end of [D1Pstr(tok)]
 //
+|D1Eb0sh _  => d2pat_none1(d1p0)
+|D1Eb1sh _  => f0_b1sh(env0, d1p0)
+//
 |D1Pt1up _  => f0_t1up(env0, d1p0)
 |D1Pt2up _  => f0_t2up(env0, d1p0)
 //
@@ -193,6 +196,8 @@ then true else false
 {
 // HX-2022-11-05: nothing
 } (*where*) // end of [isANY]
+//
+(* ****** ****** *)
 //
 fun
 f0_id0
@@ -278,6 +283,19 @@ f0_id0_d2var
 , d2v1: d2var): d2pat =
 (
 f0_id0_d1sym(env0, d1p0, d2v1.name()))
+//
+(* ****** ****** *)
+//
+fun
+f0_b1sh
+( env0:
+! tr12env
+, d1p0: d1pat): d2pat =
+(
+trans12_d1pat(env0, d1p1)) where
+{
+  val-D1Pb1sh(d1p1) = d1p0.node()
+} (*where*) // end of [f0_b1sh(env0,d1p0)]
 //
 (* ****** ****** *)
 //
