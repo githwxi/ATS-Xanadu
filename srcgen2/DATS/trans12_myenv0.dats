@@ -1201,11 +1201,11 @@ tr12env_add0_d2patlst_one(env0, d2ps)
 )
 //
 |
-D2Pdtup
+D2Ptup1
 (tknd, npf1, d2ps) =>
 tr12env_add0_d2patlst_one(env0, d2ps)
 |
-D2Pdrcd
+D2Prcd2
 (tknd, npf1, ldps) =>
 tr12env_add0_l2d2plst_one(env0, ldps)
 //

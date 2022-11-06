@@ -159,6 +159,17 @@ D2Psapp(d2p1,s2vs) =>
 print("D2Psapp(",d2p1,";",s2vs,")")
 //
 |
+D2Ptup1
+( tknd, npf1, d2ps ) =>
+( print("D2Ptup1(")
+; print(tknd,";",npf1,";",d2ps,")") )
+|
+D2Prcd2
+( tknd, npf1, ldps ) =>
+( print("D2Prcd2(")
+; print(tknd,";",npf1,";",ldps,")") )
+//
+|
 D2Panno
 (d2p1, s1e2, s2e2) =>
 print("D2Panno(",d2p1,";",s1e2,";",s2e2,")")
