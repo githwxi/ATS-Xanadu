@@ -339,16 +339,23 @@ D2Pdapp of
 ) (* D2Pdapp *)
 //
 |
+D2Ptup0 of (sint(*npf*), d2patlst)
+//
+|
 D2Ptup1 of
-( token, sint(*npf*), d2patlst)
+(
+token(*knd*), sint(*npf*), d2patlst)
 |
 D2Prcd2 of
-( token, sint(*npf*), l2d2plst)
+(
+token(*knd*), sint(*npf*), l2d2plst)
 //
-| D2Panno of (d2pat, s1exp, s2exp)
+|
+D2Panno of
+(d2pat,s1exp(*given*),s2exp(*trans*))
 //
 (*
-| D2Pg1mac of (g1mac) // HX: error!
+|D2Pg1mac of (g1mac) // HX: it is an error!
 *)
 //
 |

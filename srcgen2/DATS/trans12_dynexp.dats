@@ -152,6 +152,9 @@ end (*let*) // end of [D1Pstr(tok)]
 |D1Eb0sh _  => d2pat_none1(d1p0)
 |D1Eb1sh _  => f0_b1sh(env0, d1p0)
 //
+|D1Pl1st _  => f0_l1st(env0, d1p0)
+|D1Pl2st _  => f0_l2st(env0, d1p0)
+//
 |D1Pt1up _  => f0_t1up(env0, d1p0)
 |D1Pt2up _  => f0_t2up(env0, d1p0)
 //
@@ -296,6 +299,67 @@ trans12_d1pat(env0, d1p1)) where
 {
   val-D1Pb1sh(d1p1) = d1p0.node()
 } (*where*) // end of [f0_b1sh(env0,d1p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_l1st
+( env0:
+! tr12env
+, d1p0: d1pat): d2pat =
+let
+val-
+D1Pl1st
+( d1ps ) = d1p0.node()
+in//let
+//
+if
+list_singq(d1ps)
+then // if-then
+let
+val-
+list_cons(d1p1, _) = d1ps
+in
+  trans12_d1pat(env0, d1p1)
+end (*let*) // end of [then]
+else // if-else
+let
+//
+val d2ps =
+  trans12_d1patlst(env0, d1ps)
+//
+in//let
+let
+val npf1 = -1
+val loc0 = d1p0.lctn()
+in//let
+  d2pat(loc0, D2Ptup0(npf1, d2ps))
+end//let
+end (*let*) // end of [else]
+//
+end (*let*) // end of [f0_l1st(env0,d1p0)]
+//
+fun
+f0_l2st
+( env0:
+! tr12env
+, d1p0: d1pat): d2pat =
+let
+//
+val-
+D1Pl2st
+(dps1, dps2) = d1p0.node()
+//
+val loc0 = d1p0.lctn()
+val npf1 = list_length(dps1)
+val dps1 =
+  trans12_d1patlst(env0, dps1)
+val dps2 =
+  trans12_d1patlst(env0, dps2)
+val d2ps = list_append(dps1, dps2)
+in//let
+  d2pat(loc0, D2Ptup0(npf1, d2ps))
+end (*let*) // end of [f0_l2st(env0,d1p0)]
 //
 (* ****** ****** *)
 //

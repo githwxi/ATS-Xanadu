@@ -159,6 +159,9 @@ D2Psapp(d2p1,s2vs) =>
 print("D2Psapp(",d2p1,";",s2vs,")")
 //
 |
+D2Ptup0(npf1, d2ps) =>
+print("D2Ptup0(",npf1,";",d2ps,")")
+|
 D2Ptup1
 ( tknd, npf1, d2ps ) =>
 ( print("D2Ptup1(")
@@ -174,10 +177,8 @@ D2Panno
 (d2p1, s1e2, s2e2) =>
 print("D2Panno(",d2p1,";",s1e2,";",s2e2,")")
 //
-|
-D2Pnone0() => print("D2Pnone0(",")")
-|
-D2Pnone1(d1p1) => print("D2Pnone1(",d1p1,")")
+|D2Pnone0() => print( "D2Pnone0(",")" )
+|D2Pnone1(d1p1) => print("D2Pnone1(",d1p1,")")
 //
 end (*let*) // end of [d2pat_fprint(out, d2p0)]
 
