@@ -80,6 +80,60 @@ _(*TRANS12*) = "./trans12.dats"
 #symload stmp with d2var_get_stmp
 (* ****** ****** *)
 //
+(*
+HX-2020-07:
+A nullary constructor C can
+be written as C (instead of C())
+*)
+//
+fun
+d2pat_d0ap
+(d2f0: d2pat): d2pat =
+d2pat
+(d2f0.lctn(), D2Pd0ap(d2f0))
+//
+(* ****** ****** *)
+//
+fun
+my_d2pat_sapp
+( loc0: loc_t
+, d2f0: d2pat
+, s2vs: s2varlst): d2pat =
+(
+case-
+d2f0.node() of
+|
+D2Pd0ap(d2f0) =>
+d2pat_d0ap
+(
+d2pat_sapp(loc0, d2f0, s2vs))
+|
+_ (* non-D2Pdap0 *) =>
+(
+d2pat_sapp(loc0, d2f0, s2vs))
+) (*case-*) // end of [my_d2pat_sapp]
+//
+(* ****** ****** *)
+//
+fun
+my_d2exp_dapp
+( loc0: loc_t
+, d2f0: d2exp
+, npf1: (sint)
+, d2as: d2explst): d2exp =
+(
+case+
+d2f0.node() of
+|
+D2Ed0ap(d2f0) =>
+d2exp_dapp(loc0, d2f0, npf1, d2as)
+|
+_ (*non-D2Edap0*) =>
+d2exp_dapp(loc0, d2f0, npf1, d2as)
+)
+//
+(* ****** ****** *)
+//
 #implfun
 trans12_d1pid
 ( env0,dpid ) = let
@@ -100,73 +154,7 @@ end (*let*) // end of [trans12_d1pid(env0,dpid)]
 //
 (* ****** ****** *)
 
-#implfun
-trans12_d1pat
-( env0,d1p0 ) = let
-//
-(*
-val
-loc0 = d1p0.lctn()
-val () =
-prerrln
-("trans12_d1pat: d1p0 = ", d1p0)
-*)
-//
-in//let
-//
-case+
-d1p0.node() of
-//
-|
-D1Pid0 _ => f0_id0(env0, d1p0)
-//
-|
-D1Pint(tok) =>
-let
-val loc0 = d1p0.lctn()
-in//let
-d2pat_make_node(loc0, D2Pint(tok))
-end (*let*) // end of [D1Pint(tok)]
-|
-D1Pchr(tok) =>
-let
-val loc0 = d1p0.lctn()
-in//let
-d2pat_make_node(loc0, D2Pchr(tok))
-end (*let*) // end of [D1Pchr(tok)]
-|
-D1Pflt(tok) =>
-let
-val loc0 = d1p0.lctn()
-in//let
-d2pat_make_node(loc0, D2Pflt(tok))
-end (*let*) // end of [D1Pflt(tok)]
-|
-D1Pstr(tok) =>
-let
-val loc0 = d1p0.lctn()
-in//let
-d2pat_make_node(loc0, D2Pstr(tok))
-end (*let*) // end of [D1Pstr(tok)]
-//
-|D1Eb0sh _  => d2pat_none1(d1p0)
-|D1Eb1sh _  => f0_b1sh(env0, d1p0)
-//
-|D1Pl1st _  => f0_l1st(env0, d1p0)
-|D1Pl2st _  => f0_l2st(env0, d1p0)
-//
-|D1Pt1up _  => f0_t1up(env0, d1p0)
-|D1Pt2up _  => f0_t2up(env0, d1p0)
-//
-|D1Pr1cd _  => f0_r1cd(env0, d1p0)
-|D1Pr2cd _  => f0_r2cd(env0, d1p0)
-//
-|D1Panno _  => f0_anno(env0, d1p0)
-//
-| _(* otherwise *) => d2pat_none1(d1p0)
-//
-end where
-{
+local
 //
 (* ****** ****** *)
 //
@@ -199,6 +187,53 @@ then true else false
 {
 // HX-2022-11-05: nothing
 } (*where*) // end of [isANY]
+//
+(* ****** ****** *)
+//
+fun
+isBANG
+(d1p: d1pat): bool =
+(
+case+
+d1p.node() of
+|
+D1Pid0(sym) =>
+if
+(sym=BANG_symbl)
+then true else false
+|
+_(* non-D1Pid0 *) => false
+) (*case+*) // end of [isBANG]
+//
+fun
+isFLAT
+(d1p: d1pat): bool =
+(
+case+
+d1p.node() of
+|
+D1Pid0(sym) =>
+if
+(sym=PFLAT_symbl)
+then true else false
+|
+_(* non-D1Pid0 *) => false
+) (*case+*) // end of [isFLAT]
+//
+fun
+isFREE
+(d1p: d1pat): bool =
+(
+case+
+d1p.node() of
+|
+D1Pid0(sym) =>
+if
+(sym=PFREE_symbl)
+then true else false
+|
+_(* non-D1Pid0 *) => false
+) (*case+*) // end of [isFLAT]
 //
 (* ****** ****** *)
 //
@@ -266,15 +301,19 @@ f0_id0_d2itm
 , d2i1: d2itm): d2pat =
 (
 case- d2i1 of
-| D2ITMvar(d2v1) =>
-  f0_id0_d2var(env0, d1p0, d2v1)
+|
+D2ITMvar(d2v1) =>
+f0_id0_d2var(env0, d1p0, d2v1)
 (*
-| D2ITMcon(d2cs) =>
-  f0_id0_d2con(env0, d1e0, d2cs)
-| D2ITMcst(d2cs) =>
-  f0_id0_d2cst(env0, d1e0, d2cs)
-| D2ITMsym(_, dpis) =>
-  f0_id0_d2sym(env0, d1e0, dpis)
+|
+D2ITMcon(d2cs) =>
+f0_id0_d2con(env0, d1e0, d2cs)
+|
+D2ITMcst(d2cs) =>
+f0_id0_d2cst(env0, d1e0, d2cs)
+|
+D2ITMsym(_, dpis) =>
+f0_id0_d2sym(env0, d1e0, dpis)
 *)
 ) (*case+*) // end of [f0_id0_d2itm(...)]
 //
@@ -286,6 +325,78 @@ f0_id0_d2var
 , d2v1: d2var): d2pat =
 (
 f0_id0_d1sym(env0, d1p0, d2v1.name()))
+//
+(* ****** ****** *)
+//
+fun
+f0_main
+( env0:
+! tr12env
+, d1p0: d1pat): d2pat =
+let
+(*
+val
+loc0 = d1p0.lctn()
+val () =
+prerrln
+("f0_main: d1p0 = ", d1p0)
+*)
+//
+in//let
+//
+case+
+d1p0.node() of
+//
+|
+D1Pid0 _ => f0_id0(env0, d1p0)
+//
+|
+D1Pint(tok) =>
+let
+val loc0 = d1p0.lctn()
+in//let
+d2pat_make_node(loc0, D2Pint(tok))
+end (*let*) // end of [D1Pint(tok)]
+|
+D1Pchr(tok) =>
+let
+val loc0 = d1p0.lctn()
+in//let
+d2pat_make_node(loc0, D2Pchr(tok))
+end (*let*) // end of [D1Pchr(tok)]
+|
+D1Pflt(tok) =>
+let
+val loc0 = d1p0.lctn()
+in//let
+d2pat_make_node(loc0, D2Pflt(tok))
+end (*let*) // end of [D1Pflt(tok)]
+|
+D1Pstr(tok) =>
+let
+val loc0 = d1p0.lctn()
+in//let
+d2pat_make_node(loc0, D2Pstr(tok))
+end (*let*) // end of [D1Pstr(tok)]
+//
+|D1Pb0sh _  => d2pat_none1(d1p0)
+|D1Pb1sh _  => f0_b1sh(env0, d1p0)
+//
+|D1Pl1st _  => f0_l1st(env0, d1p0)
+|D1Pl2st _  => f0_l2st(env0, d1p0)
+//
+|D1Pt1up _  => f0_t1up(env0, d1p0)
+|D1Pt2up _  => f0_t2up(env0, d1p0)
+//
+|D1Pr1cd _  => f0_r1cd(env0, d1p0)
+|D1Pr2cd _  => f0_r2cd(env0, d1p0)
+//
+|D1Panno _  => f0_anno(env0, d1p0)
+//
+| _(* otherwise *) => d2pat_none1(d1p0)
+//
+end where
+{
 //
 (* ****** ****** *)
 //
@@ -303,14 +414,116 @@ trans12_d1pat(env0, d1p1)) where
 (* ****** ****** *)
 //
 fun
+f0_a1pp
+( env0:
+! tr12env
+, d1p0: d1pat): d2pat =
+let
+//
+val loc0 = d1p0.lctn()
+//
+val-
+D1Pa1pp
+(d1f0,d1p1) = d1p0.node()
+//
+in//let
+if
+isBANG(d1f0)
+then
+let
+val
+d2p1 =
+trans12_d1pat(env0, d1p1)
+in
+d2pat(loc0, D2Pbang(d2p1))
+end // then
+else
+(
+if
+isFLAT(d1f0)
+then
+let
+val
+d2p1 =
+trans12_d1pat(env0, d1p1)
+in
+d2pat(loc0, D2Pflat(d2p1))
+end // then
+else
+(
+if
+isFREE(d1f0)
+then
+let
+val
+d2p1 =
+trans12_d1pat(env0, d1p1)
+in
+d2pat(loc0, D2Pfree(d2p1))
+end // then
+else
+(
+case+
+d1p1.node() of
+//
+|
+D1Psarg(s1as) =>
+let
+//
+val d2f0 =
+trans12_d1pat(env0, d1f0)
+val s2vs =
+trans12_s1arglst(env0, s1as)
+//
+(*
+val () =
+println("f0_app1: d2f0 = ", d2f0)
+val () =
+println("f0_app1: s2vs = ", s2vs)
+(*
+//HX: s2vs needs to be re-sorted!
+*)
+*)
+//
+in
+  my_d2pat_sapp(loc0, d2f0, s2vs)
+end (*let*) // end of [D1Psarg(s1as)]
+//
+|
+_(*d1pat-rest*) => f0_a1pp_rest(env0,d1p0)
+)
+) (* end-of-[else] *) // end-of-(if)
+) (* end-of-[else] *) // end-of-(if)
+end (*let*) // end of [f0_a1pp(env0,d1p0)]
+//
+and
+f0_a1pp_rest
+( env0:
+! tr12env
+, d1p0: d1pat): d2pat =
+let
+//
+val-
+D1Pa1pp
+( d1f0
+, d1p1) = d1p0.node()
+//
+val d2p1 = f0_main(env0, d1f0)
+//
+in//let
+  d2pat_none1(d1p0)
+end (*let*) // end of [f0_a1pp_rest(_, _)]
+//
+(* ****** ****** *)
+//
+fun
 f0_l1st
 ( env0:
 ! tr12env
 , d1p0: d1pat): d2pat =
 let
 val-
-D1Pl1st
-( d1ps ) = d1p0.node()
+D1Pl1st(d1ps)=d1p0.node()
 in//let
 //
 if
@@ -489,7 +702,52 @@ end (*let*) // end of [f0_anno(env0,d1p0)]
 //
 (* ****** ****** *)
 //
-} (*where*) // end of [trans12_d1pat(env0,d1p0)]
+} (*where*) // end of [f0_main(env0,d1p0)]
+//
+in//local
+//
+#implfun
+trans12_d1pat
+( env0,d1p0 ) = let
+//
+(*
+val
+loc0 = d1p0.lctn()
+val () =
+prerrln
+("trans12_d1pat: d1p0 = ", d1p0)
+*)
+//
+in//let
+//
+f1_d2pat
+(env0, f0_main(env0, d1p0))
+//
+end where
+{
+//
+fun
+f1_d2pat
+( env0:
+! tr12env
+, d2p0: d2pat): d2pat =
+(
+case+
+d2p0.node() of
+|
+D2Psym0(d1p0, d2is) =>
+let
+val-
+D1Pid0(sym1) = d1p0.node()
+in//let
+f0_id0_d1sym(env0, d1p0, sym1)
+end
+| _(* non-D2Psym0 *) => ( d2p0 )
+) (*case+*) // end-of-[f1_d2pat(env0,d2p0)]
+//
+} (*where*) // end of [trans12_d1pat(env0,d1p0)
+//
+end (*local*) // end of [ local(trans12_d1pat) ]
 
 (* ****** ****** *)
 
@@ -497,13 +755,13 @@ end (*let*) // end of [f0_anno(env0,d1p0)]
 trans12_d1exp
 ( env0,d1e0 ) = let
 //
-(*
+// (*
 val
 loc0 = d1e0.lctn()
 val () =
 prerrln
 ("trans12_d1exp: d1e0 = ", d1e0)
-*)
+// *)
 //
 in//let
 //
@@ -796,7 +1054,7 @@ case+
 d1e.node() of
 |
 D1Eid0(sym) =>
-( sym = CLNEQ_symbl )
+( sym = ASSGN_symbl )
 |
 _ (* non-D1Eid0 *) => false)
 //
