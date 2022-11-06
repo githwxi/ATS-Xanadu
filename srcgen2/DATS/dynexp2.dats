@@ -54,10 +54,18 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
+#symload lctn with d1pat_get_lctn
+#symload lctn with d1exp_get_lctn
+#symload lctn with d1ecl_get_lctn
+(* ****** ****** *)
+//
 local
 val
 stamper = stamper_new()
@@ -147,13 +155,11 @@ end (*let*) // end of [local(d2var_tbox)]
 
 (* ****** ****** *)
 //
-(*
 #implfun
 d2pat_none0
 (  loc0  ) =
 d2pat_make_node
 (loc0,D2Pnone0((*void*)))
-*)
 //
 #implfun
 d2pat_none1
@@ -161,6 +167,14 @@ d2pat_none1
 d2pat_make_node
 (
 dpat.lctn(),D2Pnone1(dpat))
+//
+(* ****** ****** *)
+//
+#implfun
+d2pat_var
+(loc0, dvar) =
+(
+ d2pat(loc0, D2Pvar(dvar)))
 //
 (* ****** ****** *)
 
@@ -192,6 +206,29 @@ end
 //
 endloc (*local*) // end of [local(d2pat)]
 
+(* ****** ****** *)
+//
+#implfun
+d2exp_none0
+(  loc0  ) =
+d2exp_make_node
+(loc0,D2Enone0((*void*)))
+//
+#implfun
+d2exp_none1
+(  dexp  ) =
+d2exp_make_node
+(
+dexp.lctn(),D2Enone1(dexp))
+//
+(* ****** ****** *)
+//
+#implfun
+d2exp_var
+(loc0, dvar) =
+(
+ d2exp(loc0, D2Evar(dvar)))
+//
 (* ****** ****** *)
 
 local

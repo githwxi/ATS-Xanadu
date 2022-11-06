@@ -159,6 +159,11 @@ D2Psapp(d2p1,s2vs) =>
 print("D2Psapp(",d2p1,";",s2vs,")")
 //
 |
+D2Panno
+(d2p1, s1e2, s2e2) =>
+print("D2Panno(",d2p1,";",s1e2,";",s2e2,")")
+//
+|
 D2Pnone0() => print("D2Pnone0(",")")
 |
 D2Pnone1(d1p1) => print("D2Pnone1(",d1p1,")")

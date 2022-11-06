@@ -346,7 +346,13 @@ D2Pdrcd of
 | D2Pg1mac of (g1mac) // HX: error!
 *)
 //
-| D2Pnone0 of () | D2Pnone1 of (d1pat)
+|
+D2Pnone0 of ((*void*)) | D2Pnone1 of (d1pat)
+//
+|
+D2Perrck of (sint(*lvl*), d2pat)//HX:tread12-error
+//
+// end of [d1exp_node] // end of [ datatype(...) ]
 //
 (* ****** ****** *)
 fun
@@ -361,7 +367,19 @@ d2pat_get_node(d2pat): d2pat_node
 #symload node with d2pat_get_node
 (* ****** ****** *)
 fun
+d2pat_none0(loc0:loc_t): d2pat
+fun
 d2pat_none1(d1p0:d1pat): d2pat
+(* ****** ****** *)
+fun
+d2pat_var
+(loc0: loc_t, d2v1: d2var): d2pat
+fun
+d2pat_btf
+(loc0: loc_t, sym1: sym_t): d2pat
+fun
+d2pat_any
+(loc0: loc_t, sym1: sym_t): d2pat
 (* ****** ****** *)
 fun
 d2pat_make_node
@@ -496,7 +514,13 @@ D2Eanno of
 D2Eexists of
 (s2explst(*witness*), d2exp(*scoped*))
 //
-| D2Enone0 of () | D2Enone1 of (d1exp)
+|
+D2Enone0 of ((*void*)) | D2Enone1 of (d1exp)
+//
+|
+D2Eerrck of (sint(*lvl*), d2exp)//HX:tread12-error
+//
+// end of [d1exp_node] // end of [ datatype(...) ]
 //
 (* ****** ****** *)
 fun
@@ -510,6 +534,8 @@ d2exp_get_node(d2exp): d2exp_node
 #symload lctn with d2exp_get_lctn
 #symload node with d2exp_get_node
 (* ****** ****** *)
+fun
+d2exp_none0(loc0:loc_t): d2exp
 fun
 d2exp_none1(d1e0:d1exp): d2exp
 (* ****** ****** *)
