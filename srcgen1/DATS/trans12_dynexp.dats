@@ -452,7 +452,7 @@ ifcase
 ) where
 {
 macdef WCARD = $SYM.WCARD_symbol
-} (* end of [isbtf] *)
+} (* end of [isany] *)
 
 (* ****** ****** *)
 
@@ -1991,7 +1991,7 @@ sym = dexpid_sym(tok)
 val
 opt = the_dexpenv_find(sym)
 //
-in
+in//let
 //
 case+ opt of
 |

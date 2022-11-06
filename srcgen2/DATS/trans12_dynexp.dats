@@ -166,6 +166,9 @@ case+
 d1e0.node() of
 //
 |
+D1Eid0 _ => f0_id0(env0, d1e0)
+//
+|
 D1Eint(tok) =>
 let
 val loc0 = d1e0.lctn()
@@ -223,6 +226,117 @@ D1Ewhere _ => f0_where(env0, d1e0)
 //
 end where
 {
+//
+(* ****** ****** *)
+//
+fun
+isbtf
+( sym
+: sym_t): bool =
+(
+if
+(sym=TRUE_symbl)
+then true else
+(
+if
+(sym=FALSE_symbl)
+then true else false)
+) where
+{
+// HX-2022-11-05: nothing
+} (*where*) // end of [isbtf]
+//
+fun
+istop
+( sym
+: sym_t): bool =
+(
+if
+(sym=WCARD_symbl)
+then true else false
+) where
+{
+// HX-2022-11-05: nothing
+} (*where*) // end of [istop]
+//
+(* ****** ****** *)
+//
+fun
+f0_id0
+( env0:
+! tr12env
+, d1e0: d1exp): d2exp =
+let
+//
+val loc0 = d1e0.lctn()
+val-
+D1Eid0(sym1) = d1e0.node()
+val
+dopt =
+tr12env_find_d2itm(env0,sym1)
+//
+in//let
+case+ dopt of
+| ~
+optn_vt_nil() =>
+f0_id0_d1sym(env0, d1e0, sym1)
+| ~
+optn_vt_cons(d2i1) =>
+f0_id0_d2itm(env0, d1e0, d2i1)
+end (*let*) // end of [f0_id0(env0,d1e0)]
+//
+and
+f0_id0_d1sym
+( env0:
+! tr12env
+, d1e0: d1exp
+, sym1: sym_t): d2exp =
+let
+val
+loc0 = d1e0.lctn()
+in//let
+if
+isbtf(sym1)
+then
+d2exp_btf(loc0, sym1)
+else
+(
+if
+istop(sym1)
+then
+d2exp_top(loc0, sym1)
+else (d2exp_none1(d1e0))) // HX:error
+end (*let*) // end of [f0_id0_d1sym(...)]
+//
+and
+f0_id0_d2itm
+( env0:
+! tr12env
+, d1e0: d1exp
+, d2i1: d2itm): d2exp =
+(
+case- d2i1 of
+| D2ITMvar(d2v1) =>
+  f0_id0_d2var(env0, d1e0, d2v1)
+(*
+| D2ITMcon(d2cs) =>
+  f0_id0_d2con(env0, d1e0, d2cs)
+| D2ITMcst(d2cs) =>
+  f0_id0_d2cst(env0, d1e0, d2cs)
+| D2ITMsym(_, dpis) =>
+  f0_id0_d2sym(env0, d1e0, dpis)
+*)
+) (*case+*) // end of [f0_id0_d2itm(...)]
+//
+and
+f0_id0_d2var
+( env0:
+! tr12env
+, d1e0: d1exp
+, d2v1: d2var): d2exp =
+(
+  d2exp_var(d1e0.lctn(), d2v1)
+)
 //
 (* ****** ****** *)
 //

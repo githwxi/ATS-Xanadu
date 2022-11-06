@@ -151,6 +151,9 @@ val VWTP_symbl: symbl //=symbl("vwtp")
 val VTBX_symbl: symbl //=symbl("vtbx")
 //
 (* ****** ****** *)
+val TRUE_symbl: symbl //=symbl("true")
+val FALSE_symbl: symbl //=symbl("false")
+(* ****** ****** *)
 //
 fun
 symbl_search_opt
