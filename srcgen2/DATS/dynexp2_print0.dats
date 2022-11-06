@@ -288,10 +288,26 @@ D2Edapp
 ( print("D2Edapp(")
 ; print(d2f0,";",npf1,";",d2es,")"))
 //
+|
+D2Elet0(dcls, d2e1) =>
+(
+print("D2Elet0(",dcls,";",d2e1,")"))
+|
+D2Ewhere(d2e1, dcls) =>
+print("D2Ewhere(",d2e1,";",dcls,")")
+//
 |D2Eif0
 ( d2e1, dthn, dels ) =>
 ( print("D2Eif0(")
 ; print(d2e1,";",dthn,";",dels,")"))
+//
+|
+D2Eassgn(d2el, d2er) =>
+print("D2Eassgn(",d2el,";",d2er,")")
+//
+|D2Eseqn(d2es, d2e1) =>
+(
+print("D2Eseqn(",d2es,";",d2e1,")"))
 //
 |
 D2Etup1
