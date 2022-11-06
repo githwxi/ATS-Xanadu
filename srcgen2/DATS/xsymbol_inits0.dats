@@ -80,6 +80,8 @@ HX-2022-10-01: Various symbols
 #implval MSGT_symbl = symbl("->")
 //
 (* ****** ****** *)
+#implval CLNEQ_symbl = symbl(":=")
+(* ****** ****** *)
 //
 #implval INT_symbl = symbl("int")
 #implval ADDR_symbl = symbl("addr")

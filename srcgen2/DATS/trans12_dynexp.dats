@@ -358,6 +358,9 @@ D1Eb0sh _ => d2exp_none1(d1e0)
 D1Eb1sh _ => f0_b1sh(env0, d1e0)
 //
 |
+D1Ea2pp _ => f0_a2pp(env0, d1e0)
+//
+|
 D1El1st _ => f0_l1st(env0, d1e0)
 |
 D1El2st _ => f0_l2st(env0, d1e0)
@@ -508,6 +511,107 @@ trans12_d1exp(env0, d1e1)) where
   val-D1Eb1sh(d1e1) = d1e0.node()
 } (*where*) // end of [f0_b1sh(env0,d1e0)]
 //
+(* ****** ****** *)
+
+fun
+f0_a2pp
+( env0:
+! tr12env
+, d1e0: d1exp): d2exp =
+let
+//
+val loc0 = d1e0.lctn()
+//
+val-
+D1Ea2pp
+( d1f0
+, d1e1, d1e2) = d1e0.node()
+//
+in
+//
+if
+ASSGNq(d1f0)
+then
+let
+//
+val
+d2e1 = trans12_d1exp(env0, d1e1)
+val
+d2e2 = trans12_d1exp(env0, d1e2)
+//
+in//let
+//
+case+
+d2e1.node() of
+|
+D2Edapp
+( d2f1
+, npf1, darg) =>
+(
+case+
+d2f1.node() of
+|
+D2Ebrckt(dpis, d2es) =>
+let
+//
+(*
+HX: A[idx] := itm
+*)
+//
+val d2es =
+list_extend(d2es, d2e2)
+val d2f1 =
+d2exp_make_node
+( loc0
+, D2Ebrckt(dpis, d2es) )
+in//let
+d2exp_make_node
+( loc0
+, D2Edapp(d2f1, npf1, darg) )
+end // end of [D2Ebrckt]
+|
+_(*non-D2Ebrckt*) =>
+(
+d2exp_make_node
+(loc0, D2Eassgn(d2e1, d2e2)))
+) (*case+*) // end(D2Edapp)
+|
+_(* non-D2Edapp *) =>
+(
+d2exp_make_node
+(loc0, D2Eassgn(d2e1, d2e2)))
+//
+end (*let*) // end-of-then(ASSGN)
+//
+else 
+let
+val
+d2f0 = trans12_d1exp(env0, d1f0)
+val
+d2e1 = trans12_d1exp(env0, d1e1)
+val
+d2e2 = trans12_d1exp(env0, d1e2)
+in//let
+d2exp_a2pp(loc0, d2f0, d2e1, d2e2)
+end (*let*) // end-of-else(~ASSGN)
+//
+end where
+{
+//
+fun
+ASSGNq
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+|
+D1Eid0(sym) =>
+( sym = CLNEQ_symbl )
+|
+_ (* non-D1Eid0 *) => false)
+//
+} (*where*) // end of [f0_a2pp(env0,d1e0)]
+
 (* ****** ****** *)
 //
 fun

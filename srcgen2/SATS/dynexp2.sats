@@ -335,7 +335,8 @@ d2pat_node =
 |
 D2Pdapp of
 ( d2pat
-, int(*npf*), d2patlst(*darg*))
+, sint(*npf*), d2patlst(*darg*)
+) (* D2Pdapp *)
 //
 |
 D2Pdtup of
@@ -477,10 +478,25 @@ d2exp_node =
 //
 |D2Ed0ap of (d2exp)
 |D2Edapp of
-(d2exp, int(*npf*), d2explst)
+(d2exp, sint(*npf*), d2explst)
 //
 |D2Elet0 of (d2eclist, d2exp)
 |D2Ewhere of (d2exp, d2eclist)
+//
+|
+D2Eassgn of
+(d2exp(*l-val*), d2exp(*r-val*))
+//
+|
+D2Ebrckt of
+(d2ptmlst(*[]*), d2explst(*arg*))
+(*
+|
+D2Edtsel of
+(label
+,d2ptmlst
+,sint(*npf*), d2explstopt(*arg*))
+*)
 //
 |D2Eseqn of
 (d2explst(*semi*), d2exp(*last*))
@@ -495,20 +511,22 @@ D2Ecas0 of
 ( token(*+/0/-*), d2exp, d2clslst )
 //
 |
-D2Etup0 of (int(*npf*), d2explst)
+D2Etup0 of (sint(*npf*), d2explst)
 |
-D2Ercd0 of (int(*npf*), l2d2elst)
+D2Ercd0 of (sint(*npf*), l2d2elst)
 |
 D2Etup1 of // HX: tuple
-(token(*knd*), int(*npf*), d2explst)
+(
+token(*knd*),sint(*npf*),d2explst)
 |
 D2Ercd2 of // HX: record
-(token(*knd*), int(*npf*), l2d2elst)
+(
+token(*knd*),sint(*npf*),l2d2elst)
 //
 |
 D2Etry0 of
 (token(*TRY*)
-,d2exp(*value*), d2clslst(*clauses*))
+,d2exp(*norm*),d2clslst(*excptn*))
 //
 |
 D2Eanno of
@@ -552,6 +570,17 @@ d2exp_btf
 fun
 d2exp_top
 (loc0: loc_t, sym1: sym_t): d2exp
+(* ****** ****** *)
+fun
+d2exp_a2pp
+( loc0: loc_t
+, d2f0: d2exp
+, d2e1: d2exp, d2e2: d2exp): d2exp
+fun
+d2exp_dapp
+( loc0: loc_t
+, d2f0: d2exp
+, npf1: (sint), d2es: d2explst): d2exp
 (* ****** ****** *)
 fun
 d2exp_make_node

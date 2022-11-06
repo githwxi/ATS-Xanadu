@@ -656,10 +656,10 @@ val d2as = list_pair(d2a1, d2a2)
 //
 implement
 d2exp_dapp
-(loc0, d2f0, npf0, d2as) =
+(loc0, d2f0, npf1, d2as) =
 (
 d2exp_make_node
-(loc0, D2Edapp(d2f0, npf0, d2as))
+(loc0, D2Edapp(d2f0, npf1, d2as))
 )
 //
 (* ****** ****** *)
