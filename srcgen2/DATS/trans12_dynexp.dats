@@ -818,6 +818,11 @@ D1Es1eq _ => f0_s1eq(env0, d1e0)
 |
 D1Es2eq _ => f0_s2eq(env0, d1e0)
 //
+| D1Eif0 _ => f0_if0(env0, d1e0)
+(*
+| D1Eif1 _ => f0_if1(env0, d1e0)
+*)
+//
 |D1Elet0 _ => f0_let0(env0, d1e0)
 |
 D1Ewhere _ => f0_where(env0, d1e0)
@@ -827,6 +832,8 @@ D1Ewhere _ => f0_where(env0, d1e0)
 //
 |D1Er1cd _ => f0_r1cd(env0, d1e0)
 |D1Er2cd _ => f0_r2cd(env0, d1e0)
+//
+|D1Elam0 _ => f0_lam0(env0, d1e0)
 //
 |D1Eanno _ => f0_anno(env0, d1e0)
 //
@@ -1124,6 +1131,33 @@ end (*let*) // end of [f0_l2st(env0,d1e0)]
 (* ****** ****** *)
 //
 fun
+f0_if0//inv-less
+( env0:
+! tr12env
+, d1e0: d1exp): d2exp =
+let
+//
+val loc0 = d1e0.lctn()
+//
+val-
+D1Eif0
+(d1e1
+,opt2,opt3) = d1e0.node()
+//
+val
+d2e1 = trans12_d1exp(env0, d1e1)
+val
+opt2 = trans12_d1expopt(env0, opt2)
+val
+opt3 = trans12_d1expopt(env0, opt3)
+//
+in//let
+  d2exp(loc0, D2Eif0(d2e1, opt2, opt3))
+end (*let*) // end of [f0_let0(env0,d1e0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_let0
 ( env0:
 ! tr12env
@@ -1314,6 +1348,40 @@ in//let
 d2exp(loc0, D2Ercd2(tknd, npf1, ldes))
 end (*let*) // end of [f0_r2cd(env0,d1e0)]
 //
+(* ****** ****** *)
+
+fun
+f0_lam0
+( env0:
+! tr12env
+, d1e0: d1exp): d2exp =
+let
+//
+val loc0 = d1e0.lctn()
+//
+val-
+D1Elam0
+(tknd
+,f1as,sres
+,arrw,body) = d1e0.node()
+//
+val
+f2as =
+trans12_f1arglst(env0, f1as)
+val
+arrw =
+trans12_f1unarrw(env0, arrw)
+val
+sres = trans12_s1res(env0, sres)
+val
+body = trans12_d1exp(env0, body)
+//
+in//let
+d2exp_make_node
+( loc0
+, D2Elam0(tknd,f2as,sres,arrw,body))
+end (*let*) // end of [f0_lam0(env0,d1e0)]
+
 (* ****** ****** *)
 
 fun
