@@ -105,6 +105,8 @@ val DOT_symbl: symbl//symbl(".")
 val DLR_symbl: symbl//symbl("$")
 val SRP_symbl: symbl//symbl("#")
 //
+val BANG_symbl: symbl//symbl("!")
+//
 val SMCLN_symbl: symbl//symbl(";")
 val TILDA_symbl: symbl//symbl("~")
 //
@@ -135,8 +137,11 @@ val MSLT_symbl: symbl // symbl("-<")
 val MSGT_symbl: symbl // symbl("->")
 //
 (* ****** ****** *)
+val PFLAT_symbl: symbl //=symbl("@")
+val PFREE_symbl: symbl //=symbl("!")
+(* ****** ****** *)
 //
-val CLNEQ_symbl: symbl //=symbl(":=")
+val ASSGN_symbl: symbl //=symbl(":=")
 //
 (* ****** ****** *)
 //

@@ -58,6 +58,8 @@ HX-2022-10-01: Various symbols
 #implval DLR_symbl = symbl("$")
 #implval SRP_symbl = symbl("#")
 //
+#implval BANG_symbl = symbl("!")
+//
 #implval SMCLN_symbl = symbl(";")
 #implval TILDA_symbl = symbl("~")
 //
@@ -80,7 +82,10 @@ HX-2022-10-01: Various symbols
 #implval MSGT_symbl = symbl("->")
 //
 (* ****** ****** *)
-#implval CLNEQ_symbl = symbl(":=")
+#implval ASSGN_symbl = symbl(":=")
+(* ****** ****** *)
+#implval PFLAT_symbl = symbl("@")
+#implval PFREE_symbl = symbl("~")
 (* ****** ****** *)
 //
 #implval INT_symbl = symbl("int")

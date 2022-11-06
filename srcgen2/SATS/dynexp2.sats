@@ -393,6 +393,20 @@ fun
 d2pat_any
 (loc0: loc_t, sym1: sym_t): d2pat
 (* ****** ****** *)
+//
+fun
+d2pat_sapp
+( loc0: loc_t
+, d2f0: d2pat(*fun*)
+, s2vs: s2varlst(*arg*) ) : d2pat
+fun
+d2pat_dapp
+( loc0: loc_t
+, d2f0: d2pat(*fun*)
+, npf0: (sint)
+, d2ps: d2patlst(*arg*) ) : d2pat
+//
+(* ****** ****** *)
 fun
 d2pat_make_node
 (loc:loc_t,nod:d2pat_node): d2pat
