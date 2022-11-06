@@ -93,13 +93,18 @@ LEX = "./lexing0.sats"
 #typedef s2itm = $S2E.s2itm
 #typedef s2tex = $S2E.s2tex
 (* ****** ****** *)
+#typedef q1arg = $D1E.q1arg
+#typedef s1qag = $D1E.s1qag
+#typedef t1qag = $D1E.t1qag
+#typedef t1iag = $D1E.t1iag
+(* ****** ****** *)
 #typedef d1pid = $D1E.d1pid
 #typedef d1pat = $D1E.d1pat
 #typedef d1exp = $D1E.d1exp
 #typedef l1d1p = $D1E.l1d1p
 #typedef l1d1e = $D1E.l1d1e
 (* ****** ****** *)
-#typedef t1qag = $D1E.t1qag
+#typedef f1arg = $D1E.f1arg
 (* ****** ****** *)
 #typedef a1tdf = $D1E.a1tdf
 (* ****** ****** *)
@@ -107,12 +112,16 @@ LEX = "./lexing0.sats"
 #typedef d2cst = $D2E.d2cst
 #typedef d2var = $D2E.d2var
 (* ****** ****** *)
+#typedef s2qag = $D2E.s2qag
+#typedef t2qag = $D2E.t2qag
+#typedef t2iag = $D2E.t2iag
+(* ****** ****** *)
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
 #typedef l2d2p = $D2E.l2d2p
 #typedef l2d2e = $D2E.l2d2e
 (* ****** ****** *)
-#typedef t2qag = $D2E.t2qag
+#typedef f2arg = $D2E.f2arg
 (* ****** ****** *)
 #typedef d2itm = $D2E.d2itm
 (* ****** ****** *)
@@ -152,6 +161,8 @@ LEX = "./lexing0.sats"
 #typedef s2varopt = $S2E.s2varopt
 #typedef s2expopt = $S2E.s2expopt
 (* ****** ****** *)
+#typedef t1qaglst = $D1E.t1qaglst
+(* ****** ****** *)
 //
 #typedef d1patlst = $D1E.d1patlst
 #typedef d1explst = $D1E.d1explst
@@ -171,6 +182,8 @@ LEX = "./lexing0.sats"
 #typedef d2varopt = $D2E.d2varopt
 //
 (* ****** ****** *)
+#typedef t2qaglst = $D2E.t2qaglst
+(* ****** ****** *)
 //
 #typedef d2patlst = $D2E.d2patlst
 #typedef d2explst = $D2E.d2explst
@@ -186,8 +199,8 @@ LEX = "./lexing0.sats"
 #typedef d2expopt = $D2E.d2expopt
 //
 (* ****** ****** *)
-#typedef t1qaglst = $D1E.t1qaglst
-#typedef t2qaglst = $D2E.t2qaglst
+#typedef f1arglst = $D1E.f1arglst
+#typedef f2arglst = $D2E.f2arglst
 (* ****** ****** *)
 //
 #typedef d1eclist = $D1E.d1eclist
@@ -541,6 +554,12 @@ trans12_d1pat
 fun
 trans12_l1d1p
 (env0: !tr12env, ld1p: l1d1p): l2d2p
+//
+(* ****** ****** *)
+//
+fun
+trans12_f1arg
+(env0: !tr12env, f1a0: f1arg): f2arg
 //
 (* ****** ****** *)
 //

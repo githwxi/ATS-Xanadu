@@ -471,6 +471,44 @@ d2cls_get_node(d2cls): d2cls_node
 (* ****** ****** *)
 //
 datatype
+f2arg_node =
+//
+(*
+| F2ARGnone of (token)
+*)
+//
+|
+F2ARGsta0 of
+( s2varlst(*s2vs*)
+, s2explst(*s2ps*)) // static
+//
+|
+F2ARGdyn0 of
+(int(*npf*), d2patlst(*farglst*))
+//
+|
+F2ARGmet0 of (s2explst(*metrics*))
+//
+(* ****** ****** *)
+//
+fun
+f2arg_fprint:(FILR,f2arg)->void
+//
+(* ****** ****** *)
+fun
+f2arg_get_lctn(f2arg): loc_t
+fun
+f2arg_get_node(f2arg): f2arg_node
+(* ****** ****** *)
+#symload lctn with f2arg_get_lctn
+#symload node with f2arg_get_node
+(* ****** ****** *)
+fun
+f2arg_make_node
+(loc0:loc_t, node:f2arg_node): f2arg
+(* ****** ****** *)
+//
+datatype
 d2exp_node =
 //
 |D2Eint of token
