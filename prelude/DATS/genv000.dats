@@ -146,6 +146,28 @@ endlet // end of [forall$test<x0>(x0)]
 } (*where*) // end-of(gseq_forall_e1nv(xs,e1))
 
 (* ****** ****** *)
+//
+#impltmp
+<x0>
+<e1>
+list_forall_e1nv
+  (xs, e1) =
+let
+#typedef xs = list(x0) in
+gseq_forall_e1nv<xs><x0><e1>(xs,e1)
+end (*let*) // end of [list_forall_e1nv(xs,e1)]
+//
+#impltmp
+<x0>
+<e1>
+optn_forall_e1nv
+  (xs, e1) =
+let
+#typedef xs = optn(x0) in
+gseq_forall_e1nv<xs><x0><e1>(xs,e1)
+end (*let*) // end of [optn_forall_e1nv(xs,e1)]
+//
+(* ****** ****** *)
 
 #impltmp
 <xs>
@@ -214,6 +236,28 @@ val e1 = $UN.delinear(e1) in res end
 endlet // end of [foreach$work<x0>(x0)]
 } (*where*) // end-of(gseq_foreach_e1nv(xs,e1))
 
+(* ****** ****** *)
+//
+#impltmp
+<x0>
+<e1>
+list_foreach_e1nv
+  (xs, e1) =
+let
+#typedef xs = list(x0) in
+gseq_foreach_e1nv<xs><x0><e1>(xs,e1)
+end (*let*) // end of [list_foreach_e1nv(xs,e1)]
+//
+#impltmp
+<x0>
+<e1>
+optn_foreach_e1nv
+  (xs, e1) =
+let
+#typedef xs = optn(x0) in
+gseq_foreach_e1nv<xs><x0><e1>(xs,e1)
+end (*let*) // end of [optn_foreach_e1nv(xs,e1)]
+//
 (* ****** ****** *)
 
 #impltmp
