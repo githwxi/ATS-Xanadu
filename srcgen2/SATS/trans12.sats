@@ -103,8 +103,11 @@ LEX = "./lexing0.sats"
 #typedef d1exp = $D1E.d1exp
 #typedef l1d1p = $D1E.l1d1p
 #typedef l1d1e = $D1E.l1d1e
+#typedef d1ecl = $D1E.d1ecl
 (* ****** ****** *)
 #typedef f1arg = $D1E.f1arg
+(* ****** ****** *)
+#typedef s1res = $D1E.s1res
 (* ****** ****** *)
 #typedef a1tdf = $D1E.a1tdf
 (* ****** ****** *)
@@ -120,13 +123,13 @@ LEX = "./lexing0.sats"
 #typedef d2exp = $D2E.d2exp
 #typedef l2d2p = $D2E.l2d2p
 #typedef l2d2e = $D2E.l2d2e
+#typedef d2ecl = $D2E.d2ecl
 (* ****** ****** *)
 #typedef f2arg = $D2E.f2arg
 (* ****** ****** *)
-#typedef d2itm = $D2E.d2itm
+#typedef s2res = $D2E.s2res
 (* ****** ****** *)
-#typedef d1ecl = $D1E.d1ecl
-#typedef d2ecl = $D2E.d2ecl
+#typedef d2itm = $D2E.d2itm
 (* ****** ****** *)
 #typedef a2tdf = $D2E.a2tdf
 (* ****** ****** *)
@@ -161,7 +164,9 @@ LEX = "./lexing0.sats"
 #typedef s2varopt = $S2E.s2varopt
 #typedef s2expopt = $S2E.s2expopt
 (* ****** ****** *)
+#typedef s1qaglst = $D1E.s1qaglst
 #typedef t1qaglst = $D1E.t1qaglst
+#typedef t1iaglst = $D1E.t1iaglst
 (* ****** ****** *)
 //
 #typedef d1patlst = $D1E.d1patlst
@@ -182,7 +187,9 @@ LEX = "./lexing0.sats"
 #typedef d2varopt = $D2E.d2varopt
 //
 (* ****** ****** *)
+#typedef s2qaglst = $D2E.s2qaglst
 #typedef t2qaglst = $D2E.t2qaglst
+#typedef t2iaglst = $D2E.t2iaglst
 (* ****** ****** *)
 //
 #typedef d2patlst = $D2E.d2patlst
@@ -579,6 +586,12 @@ trans12_t1qag
 (* ****** ****** *)
 //
 fun
+trans12_s1res
+(env0: !tr12env, sres: s1res): s2res
+//
+(* ****** ****** *)
+//
+fun
 trans12_d1ecl:(!tr12env, d1ecl)->d2ecl
 //
 (* ****** ****** *)
@@ -599,12 +612,6 @@ trans12_d1expseq
 ( env0:
 ! tr12env
 , loc0: loc_t, d1es: d1explst): d2exp
-(* ****** ****** *)
-//
-fun
-trans12_t1qaglst
-(env0: !tr12env, tqas: t1qaglst): t2qaglst
-//
 (* ****** ****** *)
 //
 fun
@@ -630,12 +637,22 @@ trans12_d1patopt:(!tr12env, d1patopt)->d2patopt
 (* ****** ****** *)
 //
 fun
+trans12_f1arglst:(!tr12env, f1arglst)->f2arglst
+//
+(* ****** ****** *)
+//
+fun
 trans12_d1explst:(!tr12env, d1explst)->d2explst
 fun
 trans12_l1d1elst:(!tr12env, l1d1elst)->l2d2elst
 //
 fun
 trans12_d1expopt:(!tr12env, d1expopt)->d2expopt
+//
+(* ****** ****** *)
+//
+fun
+trans12_t1qaglst:(!tr12env, t1qaglst)->t2qaglst
 //
 (* ****** ****** *)
 //

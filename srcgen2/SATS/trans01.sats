@@ -90,17 +90,17 @@ FIL = "./filpath.sats"
 #typedef t1str = $S1E.t1str
 //
 (* ****** ****** *)
-#typedef i0dntlst = $S0E.i0dntlst
-#typedef i1dntlst = $S1E.i1dntlst
-#typedef i0dntopt = $S0E.i0dntopt
-#typedef i1dntopt = $S1E.i1dntopt
-(* ****** ****** *)
 //
 #typedef s0qid = $S0E.s0qid
 #typedef d0qid = $S0E.d0qid
 #typedef s1qid = $S1E.s1qid
 #typedef d1qid = $S1E.d1qid
 //
+(* ****** ****** *)
+#typedef i0dntlst = $S0E.i0dntlst
+#typedef i1dntlst = $S1E.i1dntlst
+#typedef i0dntopt = $S0E.i0dntopt
+#typedef i1dntopt = $S1E.i1dntopt
 (* ****** ****** *)
 //
 #typedef g0nam = $S0E.g0nam
@@ -112,11 +112,14 @@ FIL = "./filpath.sats"
 #typedef g0mag = $S0E.g0mag
 #typedef g1mag = $S1E.g1mag
 //
+(* ****** ****** *)
+//
 #typedef g0namlst = $S0E.g0namlst
 #typedef g1namlst = $S1E.g1namlst
 //
 #typedef g0explst = $S0E.g0explst
 #typedef g0expopt = $S0E.g0expopt
+//
 #typedef g1explst = $S1E.g1explst
 #typedef g1expopt = $S1E.g1expopt
 //
@@ -128,16 +131,50 @@ FIL = "./filpath.sats"
 #typedef sort0 = $S0E.sort0
 #typedef s0exp = $S0E.s0exp
 #typedef l0s0e = $S0E.l0s0e
+//
 #typedef sort1 = $S1E.sort1
 #typedef s1exp = $S1E.s1exp
 #typedef l1s1e = $S1E.l1s1e
 //
+(* ****** ****** *)
+#typedef s0arg = $S0E.s0arg
+#typedef s0mag = $S0E.s0mag
+#typedef s1arg = $S1E.s1arg
+#typedef s1mag = $S1E.s1mag
+(* ****** ****** *)
+#typedef t0arg = $S0E.t0arg
+#typedef t0mag = $S0E.t0mag
+#typedef t1arg = $S1E.t1arg
+#typedef t1mag = $S1E.t1mag
+(* ****** ****** *)
+//
+#typedef s0qua = $S0E.s0qua
+#typedef s0tcn = $S0E.s0tcn
+#typedef d0tst = $S0E.d0tst
+#typedef s0uni = $S0E.s0uni
+//
+#typedef s1qua = $S1E.s1qua
+#typedef s1tcn = $S1E.s1tcn
+#typedef d1tst = $S1E.d1tst
+#typedef s1uni = $S1E.s1uni
+//
+(* ****** ****** *)
+#typedef d0tcn = $S0E.d0tcn
+#typedef d1tcn = $S1E.d1tcn
+(* ****** ****** *)
+#typedef d0typ = $S0E.d0typ
+#typedef d1typ = $S1E.d1typ
+(* ****** ****** *)
+//
 #typedef sort0lst = $S0E.sort0lst
 #typedef s0explst = $S0E.s0explst
 #typedef l0s0elst = $S0E.l0s0elst
+//
 #typedef sort1lst = $S1E.sort1lst
 #typedef s1explst = $S1E.s1explst
 #typedef l1s1elst = $S1E.l1s1elst
+//
+(* ****** ****** *)
 //
 #typedef sort0opt = $S0E.sort0opt
 #typedef s0expopt = $S0E.s0expopt
@@ -145,51 +182,29 @@ FIL = "./filpath.sats"
 #typedef s1expopt = $S1E.s1expopt
 //
 (* ****** ****** *)
-#typedef s0arg = $S0E.s0arg
-#typedef s1arg = $S1E.s1arg
-#typedef s0mag = $S0E.s0mag
-#typedef s1mag = $S1E.s1mag
 #typedef s0arglst = $S0E.s0arglst
-#typedef s1arglst = $S1E.s1arglst
 #typedef s0maglst = $S0E.s0maglst
+#typedef s1arglst = $S1E.s1arglst
 #typedef s1maglst = $S1E.s1maglst
 (* ****** ****** *)
-#typedef t0arg = $S0E.t0arg
-#typedef t1arg = $S1E.t1arg
-#typedef t0mag = $S0E.t0mag
-#typedef t1mag = $S1E.t1mag
 #typedef t0arglst = $S0E.t0arglst
-#typedef t1arglst = $S1E.t1arglst
 #typedef t0maglst = $S0E.t0maglst
+#typedef t1arglst = $S1E.t1arglst
 #typedef t1maglst = $S1E.t1maglst
 (* ****** ****** *)
-#typedef s0qua = $S0E.s0qua
-#typedef s1qua = $S1E.s1qua
 #typedef s0qualst = $S0E.s0qualst
-#typedef s1qualst = $S1E.s1qualst
-(* ****** ****** *)
-#typedef s0tcn = $S0E.s0tcn
-#typedef s1tcn = $S1E.s1tcn
 #typedef s0tcnlst = $S0E.s0tcnlst
-#typedef s1tcnlst = $S1E.s1tcnlst
-(* ****** ****** *)
-#typedef d0tst = $S0E.d0tst
-#typedef d1tst = $S1E.d1tst
 #typedef d0tstlst = $S0E.d0tstlst
+#typedef s1qualst = $S1E.s1qualst
+#typedef s1tcnlst = $S1E.s1tcnlst
 #typedef d1tstlst = $S1E.d1tstlst
 (* ****** ****** *)
-#typedef s0uni = $S0E.s0uni
-#typedef s1uni = $S1E.s1uni
 #typedef s0unilst = $S0E.s0unilst
 #typedef s1unilst = $S1E.s1unilst
 (* ****** ****** *)
-#typedef d0tcn = $S0E.d0tcn
-#typedef d1tcn = $S1E.d1tcn
 #typedef d0tcnlst = $S0E.d0tcnlst
 #typedef d1tcnlst = $S1E.d1tcnlst
 (* ****** ****** *)
-#typedef d0typ = $S0E.d0typ
-#typedef d1typ = $S1E.d1typ
 #typedef d0typlst = $S0E.d0typlst
 #typedef d1typlst = $S1E.d1typlst
 (* ****** ****** *)
@@ -206,6 +221,57 @@ FIL = "./filpath.sats"
 #typedef l1d1p = $D1E.l1d1p
 #typedef l1d1e = $D1E.l1d1e
 //
+#typedef
+d0exp_THEN = $D0E.d0exp_THEN
+#typedef
+d0exp_ELSE = $D0E.d0exp_ELSE
+#typedef d1expopt = $D1E.d1expopt
+//
+(* ****** ****** *)
+//
+#typedef f0arg = $D0E.f0arg
+#typedef d0gua = $D0E.d0gua
+#typedef d0gpt = $D0E.d0gpt
+#typedef d0cls = $D0E.d0cls
+//
+#typedef f1arg = $D1E.f1arg
+#typedef d1gua = $D1E.d1gua
+#typedef d1gpt = $D1E.d1gpt
+#typedef d1cls = $D1E.d1cls
+//
+(* ****** ****** *)
+//
+#typedef q0arg = $D0E.q0arg
+#typedef s0qag = $D0E.s0qag
+#typedef t0qag = $D0E.t0qag
+//
+#typedef q1arg = $D1E.q1arg
+#typedef s1qag = $D1E.s1qag
+#typedef t1qag = $D1E.t1qag
+//
+#typedef t0iag = $D0E.t0iag
+#typedef t1iag = $D1E.t1iag
+//
+(* ****** ****** *)
+#typedef a0typ = $D0E.a0typ
+#typedef d0arg = $D0E.d0arg
+#typedef a1typ = $D1E.a1typ
+#typedef d1arg = $D1E.d1arg
+(* ****** ****** *)
+#typedef s0eff = $D0E.s0eff
+#typedef s0res = $D0E.s0res
+#typedef s1eff = $D1E.s1eff
+#typedef s1res = $D1E.s1res
+(* ****** ****** *)
+#typedef d0res = $D0E.d0res
+#typedef d1res = $D1E.d1res
+(* ****** ****** *)
+#typedef t0qua = $D0E.t0qua
+#typedef t1qua = $D1E.t1qua
+#typedef t0inv = $D0E.t0inv
+#typedef t1inv = $D1E.t1inv
+(* ****** ****** *)
+//
 #typedef d0patlst = $D0E.d0patlst
 #typedef d0explst = $D0E.d0explst
 #typedef d0eclist = $D0E.d0eclist
@@ -221,21 +287,16 @@ FIL = "./filpath.sats"
 #typedef l1d1plst = $D1E.l1d1plst
 #typedef l1d1elst = $D1E.l1d1elst
 //
-#typedef
-d0exp_THEN = $D0E.d0exp_THEN
-#typedef
-d0exp_ELSE = $D0E.d0exp_ELSE
-#typedef d1expopt = $D1E.d1expopt
-//
 (* ****** ****** *)
-#typedef f0arg = $D0E.f0arg
-#typedef d0gua = $D0E.d0gua
-#typedef d0gpt = $D0E.d0gpt
-#typedef d0cls = $D0E.d0cls
-#typedef f1arg = $D1E.f1arg
-#typedef d1gua = $D1E.d1gua
-#typedef d1gpt = $D1E.d1gpt
-#typedef d1cls = $D1E.d1cls
+#typedef q0arglst = $D0E.q0arglst
+#typedef s0qaglst = $D0E.s0qaglst
+#typedef t0qaglst = $D0E.t0qaglst
+#typedef q1arglst = $D1E.q1arglst
+#typedef s1qaglst = $D1E.s1qaglst
+#typedef t1qaglst = $D1E.t1qaglst
+(* ****** ****** *)
+#typedef t0iaglst = $D0E.t0iaglst
+#typedef t1iaglst = $D1E.t1iaglst
 (* ****** ****** *)
 #typedef f0arglst = $D0E.f0arglst
 #typedef f1arglst = $D1E.f1arglst
@@ -248,51 +309,10 @@ d0exp_ELSE = $D0E.d0exp_ELSE
 #typedef d1gualst = $D1E.d1gualst
 #typedef d1clslst = $D1E.d1clslst
 (* ****** ****** *)
-//
-#typedef q0arg = $D0E.q0arg
-#typedef s0qag = $D0E.s0qag
-#typedef t0qag = $D0E.t0qag
-//
-#typedef q1arg = $D1E.q1arg
-#typedef s1qag = $D1E.s1qag
-#typedef t1qag = $D1E.t1qag
-//
-#typedef t0iag = $D0E.t0iag
-#typedef t1iag = $D1E.t1iag
-//
-(* ****** ****** *)
-#typedef q0arglst = $D0E.q0arglst
-#typedef s0qaglst = $D0E.s0qaglst
-#typedef t0qaglst = $D0E.t0qaglst
-#typedef q1arglst = $D1E.q1arglst
-#typedef s1qaglst = $D1E.s1qaglst
-#typedef t1qaglst = $D1E.t1qaglst
-(* ****** ****** *)
-#typedef t0iaglst = $D0E.t0iaglst
-#typedef t1iaglst = $D1E.t1iaglst
-(* ****** ****** *)
-#typedef a0typ = $D0E.a0typ
-#typedef d0arg = $D0E.d0arg
-#typedef a1typ = $D1E.a1typ
-#typedef d1arg = $D1E.d1arg
-(* ****** ****** *)
 #typedef a0typlst = $D0E.a0typlst
 #typedef a1typlst = $D1E.a1typlst
 #typedef d0arglst = $D0E.d0arglst
 #typedef d1arglst = $D1E.d1arglst
-(* ****** ****** *)
-#typedef s0eff = $D0E.s0eff
-#typedef s0res = $D0E.s0res
-#typedef s1eff = $D1E.s1eff
-#typedef s1res = $D1E.s1res
-(* ****** ****** *)
-#typedef d0res = $D0E.d0res
-#typedef d1res = $D1E.d1res
-(* ****** ****** *)
-#typedef t0qua = $D0E.t0qua
-#typedef t1qua = $D1E.t1qua
-#typedef t0inv = $D0E.t0inv
-#typedef t1inv = $D1E.t1inv
 (* ****** ****** *)
 #typedef teqd0exp = $D0E.teqd0exp
 #typedef teqd1exp = $D1E.teqd1exp

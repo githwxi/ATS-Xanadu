@@ -1368,9 +1368,11 @@ D1Elam0
 val
 f2as =
 trans12_f1arglst(env0, f1as)
+(*
 val
 arrw =
 trans12_f1unarrw(env0, arrw)
+*)
 val
 sres = trans12_s1res(env0, sres)
 val
@@ -1445,12 +1447,12 @@ WTHS2EXPsome(twth, s2e2) where
 ) (*case+*)//end-of(trans12_wths1exp(...))
 //
 (* ****** ****** *)
-
+//
 #implfun
 trans12_d1patlst
 ( env0, d1ps ) =
 list_trans12_fnp(env0, d1ps, trans12_d1pat)
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -1462,6 +1464,13 @@ optn_trans12_fnp(env0, dopt, trans12_d1pid)
 trans12_d1patopt
 ( env0, dopt ) =
 optn_trans12_fnp(env0, dopt, trans12_d1pat)
+//
+(* ****** ****** *)
+//
+#implfun
+trans12_f1arglst
+( env0, f1as ) =
+list_trans12_fnp(env0, f1as, trans12_f1arg)
 //
 (* ****** ****** *)
 //
