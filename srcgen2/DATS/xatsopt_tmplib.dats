@@ -65,6 +65,11 @@ ATS_PACKNAME
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
+#symload stmp with s2cst_get_stmp
+#symload stmp with s2var_get_stmp
+(* ****** ****** *)
+#symload stmp with d2var_get_stmp
+(* ****** ****** *)
 //
 #impltmp
 g_print
@@ -920,12 +925,21 @@ HX: for level-2 syntax
 #impltmp
 g_cmp<s2cst>
 (s2c1, s2c2) =
-s2c1.stmp() \cmp s2c2.stmp()
+(
+s2c1.stmp() \cmp s2c2.stmp())
 //
 #impltmp
 g_cmp<s2var>
 (s2v1, s2v2) =
-s2v1.stmp() \cmp s2v2.stmp()
+(
+s2v1.stmp() \cmp s2v2.stmp())
+//
+(* ****** ****** *)
+#impltmp
+g_cmp<d2var>
+(d2v1, d2v2) =
+(
+d2v1.stmp() \cmp d2v2.stmp())
 //
 (* ****** ****** *)
 (*

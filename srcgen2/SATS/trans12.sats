@@ -357,6 +357,9 @@ tr12env_add0_s2varlst_one
 fun
 tr12env_add0_d2var_one
 ( env0: !tr12env, d2v0: d2var ): void
+fun
+tr12env_add0_d2pat_one
+( env0: !tr12env, d2p0: d2pat ): void
 (* ****** ****** *)
 //
 fun

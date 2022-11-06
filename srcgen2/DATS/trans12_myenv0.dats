@@ -63,6 +63,11 @@ ATS_PACKNAME
 #staload _ = "./staexp2_print0.dats"
 //
 (* ****** ****** *)
+#symload name with s2cst_get_name
+#symload name with s2var_get_name
+(* ****** ****** *)
+#symload name with d2var_get_name
+(* ****** ****** *)
 
 local
 

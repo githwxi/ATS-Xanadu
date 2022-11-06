@@ -249,6 +249,10 @@ d2var_get_name:(d2var) -> sym_t
 fun
 d2var_get_stmp:(d2var) -> stamp
 //
+#symload lctn with d2var_get_lctn
+#symload name with d2var_get_name
+#symload stmp with d2var_get_stmp
+//
 (* ****** ****** *)
 //
 datatype

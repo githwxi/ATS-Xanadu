@@ -75,6 +75,10 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with d1exp_get_lctn
 #symload node with d1exp_get_node
 (* ****** ****** *)
+#symload lctn with d2var_get_lctn
+#symload name with d2var_get_name
+#symload stmp with d2var_get_stmp
+(* ****** ****** *)
 //
 #implfun
 trans12_d1pid
@@ -220,6 +224,7 @@ let
   val
   loc0 = d1p0.lctn()
 in//let
+//
 if
 isBTF(sym1)
 then
@@ -230,7 +235,13 @@ if
 isANY(sym1)
 then
 d2pat_any(loc0, sym1)
-else (d2pat_none1(d1p0))) // HX:error
+else
+(
+d2pat_var(loc0, d2v1) where
+{
+val d2v1 =
+d2var_new2_name(loc0, sym1)}))//HX:var!
+//
 end (*let*) // end of [f0_id0_d1sym(...)]
 //
 and
@@ -260,8 +271,7 @@ f0_id0_d2var
 , d1p0: d1pat
 , d2v1: d2var): d2pat =
 (
-  d2pat_var(d1p0.lctn(), d2v1)
-)
+f0_id0_d1sym(env0, d1p0, d2v1.name()))
 //
 (* ****** ****** *)
 //
