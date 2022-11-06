@@ -252,6 +252,29 @@ d2exp_var
  d2exp(loc0, D2Evar(dvar)))
 //
 (* ****** ****** *)
+//
+#implfun
+d2exp_a2pp
+(loc0, d2f0, d2a1, d2a2) =
+(
+d2exp_dapp
+(loc0, d2f0, npf1, d2as)
+) where
+{
+val
+npf1 = -1
+val
+d2as = list_pair(d2a1, d2a2)}
+//
+#implfun
+d2exp_dapp
+(loc0, d2f0, npf1, d2as) =
+(
+d2exp_make_node
+( loc0
+, D2Edapp(d2f0, npf1, d2as)))
+//
+(* ****** ****** *)
 
 local
 //

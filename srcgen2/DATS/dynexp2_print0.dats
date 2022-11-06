@@ -279,6 +279,15 @@ print("D2Esapp(",d2e1,";",s2es,")")
 |D2Etapp(d2e1,s2es) =>
 print("D2Etapp(",d2e1,";",s2es,")")
 //
+|
+D2Ed0ap(d2f0) =>
+print("D2Ed0ap(", d2f0, ")")
+|
+D2Edapp
+( d2f0, npf1, d2es ) =>
+( print("D2Edapp(")
+; print(d2f0,";",npf1,";",d2es,")"))
+//
 |D2Eif0
 ( d2e1, dthn, dels ) =>
 ( print("D2Eif0(")
