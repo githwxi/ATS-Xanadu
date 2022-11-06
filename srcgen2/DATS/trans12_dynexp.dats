@@ -149,6 +149,12 @@ in//let
 d2pat_make_node(loc0, D2Pstr(tok))
 end (*let*) // end of [D1Pstr(tok)]
 //
+|D1Pt1up _  => f0_t1up(env0, d1p0)
+|D1Pt2up _  => f0_t2up(env0, d1p0)
+//
+|D1Pr1cd _  => f0_r1cd(env0, d1p0)
+|D1Pr2cd _  => f0_r2cd(env0, d1p0)
+//
 |D1Panno _  => f0_anno(env0, d1p0)
 //
 | _(* otherwise *) => d2pat_none1(d1p0)
@@ -272,6 +278,108 @@ f0_id0_d2var
 , d2v1: d2var): d2pat =
 (
 f0_id0_d1sym(env0, d1p0, d2v1.name()))
+//
+(* ****** ****** *)
+//
+fun
+f0_t1up
+( env0:
+! tr12env
+, d1p0: d1pat): d2pat =
+let
+//
+val loc0 = d1p0.lctn()
+//
+val-
+D1Pt1up
+(tknd, d1ps) = d1p0.node()
+//
+val npf1 = -1
+val d2ps =
+trans12_d1patlst(env0, d1ps)
+//
+in//let
+d2pat(loc0, D2Ptup1(tknd, npf1, d2ps))
+end (*let*) // end of [f0_t1up(env0,d1p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_t2up
+( env0:
+! tr12env
+, d1p0: d1pat): d2pat =
+let
+//
+val loc0 = d1p0.lctn()
+//
+val-
+D1Pt2up
+( tknd
+, dps1, dps2) = d1p0.node()
+//
+val dps1 =
+trans12_d1patlst(env0, dps1)
+val dps2 =
+trans12_d1patlst(env0, dps2)
+//
+val npf1 = list_length(dps1)
+val d2ps = list_append(dps1, dps2)
+//
+in//let
+d2pat(loc0, D2Ptup1(tknd, npf1, d2ps))
+end (*let*) // end of [f0_t2up(env0,d1p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_r1cd
+( env0:
+! tr12env
+, d1p0: d1pat): d2pat =
+let
+//
+val loc0 = d1p0.lctn()
+//
+val-
+D1Pr1cd
+(tknd, ldps) = d1p0.node()
+//
+val npf1 = -1
+val ldps =
+trans12_l1d1plst(env0, ldps)
+//
+in//let
+d2pat(loc0, D2Prcd2(tknd, npf1, ldps))
+end (*let*) // end of [f0_r1cd(env0,d1p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_r2cd
+( env0:
+! tr12env
+, d1p0: d1pat): d2pat =
+let
+//
+val loc0 = d1p0.lctn()
+//
+val-
+D1Pr2cd
+( tknd
+, lxs1, lxs2) = d1p0.node()
+//
+val lxs1 =
+trans12_l1d1plst(env0, lxs1)
+val lxs2 =
+trans12_l1d1plst(env0, lxs2)
+//
+val npf1 = list_length(lxs1)
+val ldps = list_append(lxs1, lxs2)
+//
+in//let
+d2pat(loc0, D2Prcd2(tknd, npf1, ldps))
+end (*let*) // end of [f0_r2cd(env0,d1p0)]
 //
 (* ****** ****** *)
 //
