@@ -15,6 +15,11 @@
 #prefix - of -(+1) (*uminus*)
 //
 (* ****** ****** *)
+//
+#infix0 := of 0 // HX: assign
+#infix0 :=: of 0 // HX: exchange
+//
+(* ****** ****** *)
 #typedef
 fint2 =
 lam(a:int): type => (int(a), int(a))
@@ -22,7 +27,7 @@ lam(a:int): type => (int(a), int(a))
 fint2(a:int): type = (int(a), int(a))
 (* ****** ****** *)
 val x: int = 0
-var y: int = x + 1
+var y: int = (x := x + 1)
 (* ****** ****** *)
 ////
 (* ****** ****** *)
