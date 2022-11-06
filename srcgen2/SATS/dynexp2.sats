@@ -105,20 +105,6 @@ S2E = "./staexp2.sats"
 #abstbox d2itm_tbox // ptr
 #typedef d2itm = d2itm_tbox
 (* ****** ****** *)
-//
-(*
-#abstbox q2arg_tbox // ptr
-#typedef q2arg = q2arg_tbox
-*)
-#abstbox s2qag_tbox // ptr
-#abstbox t2qag_tbox // ptr
-#typedef s2qag = s2qag_tbox
-#typedef t2qag = t2qag_tbox
-//
-#abstbox t2iag_tbox // ptr
-#typedef t2iag = t2iag_tbox
-//
-(* ****** ****** *)
 #abstbox d2pat_tbox // ptr
 #abstbox d2exp_tbox // ptr
 #abstbox d2ecl_tbox // ptr
@@ -135,6 +121,20 @@ S2E = "./staexp2.sats"
 #typedef d2gua = d2gua_tbox
 #typedef d2gpt = d2gpt_tbox
 #typedef d2cls = d2cls_tbox
+(* ****** ****** *)
+//
+(*
+#abstbox q2arg_tbox // ptr
+#typedef q2arg = q2arg_tbox
+*)
+#abstbox s2qag_tbox // ptr
+#abstbox t2qag_tbox // ptr
+#typedef s2qag = s2qag_tbox
+#typedef t2qag = t2qag_tbox
+//
+#abstbox t2iag_tbox // ptr
+#typedef t2iag = t2iag_tbox
+//
 (* ****** ****** *)
 //
 #abstbox d2valdcl_tbox // ptr
@@ -181,6 +181,8 @@ S2E = "./staexp2.sats"
 #typedef d2expopt = optn(d2exp)
 (* ****** ****** *)
 #typedef d2eclist = list(d2ecl)
+(* ****** ****** *)
+#typedef f1unarrw = $D1E.f1unarrw
 (* ****** ****** *)
 #typedef d2valdcl = d2valdcl_tbox
 #typedef d2vardcl = d2vardcl_tbox
@@ -583,6 +585,11 @@ D2Ercd2 of // HX: record
 token(*knd*), sint(*npf*), l2d2elst)
 //
 |
+D2Elam0 of
+( token(*knd*)
+, f2arglst, s2res, f1unarrw, d2exp )
+//
+|
 D2Etry0 of
 ( token(*TRY*)
 , d2exp(*norm*), d2clslst(*excptn*))
@@ -604,8 +611,24 @@ D2Eerrck of (sint(*lvl*), d2exp)//HX:tread12-error
 // end of [d1exp_node] // end of [ datatype(...) ]
 //
 (* ****** ****** *)
+//
+and
+s2eff =
+| S2EFFnone of ()
+| S2EFFsome of s2explst
+and
+s2res =
+| S2RESnone of ((*void*))
+| S2RESsome of (s2eff, s2exp)
+//
+(* ****** ****** *)
 fun
 d2exp_fprint:(FILR,d2exp)->void
+(* ****** ****** *)
+fun
+s2eff_fprint:(FILR,s2eff)->void
+fun
+s2res_fprint:(FILR,s2res)->void
 (* ****** ****** *)
 fun
 d2exp_get_lctn(d2exp): loc_t

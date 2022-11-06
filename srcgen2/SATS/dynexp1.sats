@@ -82,6 +82,19 @@ D0E = "./dynexp0.sats"
 #staload "./staexp1.sats"
 (* ****** ****** *)
 //
+#abstbox d1pat_tbox // ptr
+#abstbox d1exp_tbox // ptr
+#abstbox d1ecl_tbox // ptr
+//
+(* ****** ****** *)
+//
+#abstbox f1arg_tbox // ptr
+#abstbox d1gua_tbox // ptr
+#abstbox d1gpt_tbox // ptr
+#abstbox d1cls_tbox // ptr
+//
+(* ****** ****** *)
+//
 #abstbox q1arg_tbox // ptr
 #abstbox s1qag_tbox // ptr
 #abstbox t1qag_tbox // ptr
@@ -93,15 +106,6 @@ D0E = "./dynexp0.sats"
 #abstbox d1arg_tbox // ptr
 //
 (* ****** ****** *)
-//
-#abstbox d1pat_tbox // ptr
-#abstbox d1exp_tbox // ptr
-#abstbox d1ecl_tbox // ptr
-//
-#abstbox f1arg_tbox // ptr
-#abstbox d1gua_tbox // ptr
-#abstbox d1gpt_tbox // ptr
-#abstbox d1cls_tbox // ptr
 //
 #abstbox d1valdcl_tbox // ptr
 #abstbox d1vardcl_tbox // ptr
@@ -169,28 +173,30 @@ d1lab_fprint
 #typedef d1gpt = d1gpt_tbox
 #typedef d1cls = d1cls_tbox
 (* ****** ****** *)
-#typedef f1arglst = list(f1arg)
-#typedef d1clslst = list(d1cls)
-(* ****** ****** *)
 //
 #typedef q1arg = q1arg_tbox
 #typedef s1qag = s1qag_tbox
 #typedef t1qag = t1qag_tbox
-//
 #typedef t1iag = t1iag_tbox
+//
+(* ****** ****** *)
+//
+#typedef a1typ = a1typ_tbox
+#typedef d1arg = d1arg_tbox
+//
+(* ****** ****** *)
+//
+#typedef f1arglst = list(f1arg)
+#typedef d1clslst = list(d1cls)
 //
 (* ****** ****** *)
 //
 #typedef q1arglst = list(q1arg)
 #typedef s1qaglst = list(s1qag)
 #typedef t1qaglst = list(t1qag)
-//
 #typedef t1iaglst = list(t1iag)
 //
 (* ****** ****** *)
-//
-#typedef a1typ = a1typ_tbox
-#typedef d1arg = d1arg_tbox
 //
 #typedef a1typlst = list(a1typ)
 #typedef d1arglst = list(d1arg)
