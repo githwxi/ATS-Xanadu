@@ -114,6 +114,20 @@ fun
 <x0:t0>
 <e1:vt>
 gseq_forall_e1nv(xs, !e1): bool
+//
+fun
+<x0:t0>
+<e1:vt>
+list_forall_e1nv
+{n:i0}(list(x0, n), e1: !e1): bool
+fun
+<x0:t0>
+<e1:vt>
+optn_forall_e1nv
+{b:b0}(optn(x0, b), e1: !e1): bool
+//
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -128,6 +142,20 @@ fun
 <x0:t0>
 <e1:vt>
 gseq_foreach_e1nv(xs, !e1): void
+//
+fun
+<x0:t0>
+<e1:vt>
+list_foreach_e1nv
+{n:i0}(list(x0, n), e1: !e1): void
+fun
+<x0:t0>
+<e1:vt>
+optn_foreach_e1nv
+{b:b0}(optn(x0, b), e1: !e1): void
+//
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>

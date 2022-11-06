@@ -352,7 +352,7 @@ tr12env_add0_s2var_one
 ( env0: !tr12env, s2v0: s2var ): void
 fun
 tr12env_add0_s2varlst_one
-( env0: !tr12env, s2vs: s2varlst ): void
+(env0: !tr12env, s2vs: s2varlst): void
 (* ****** ****** *)
 fun
 tr12env_add0_d2var_one
@@ -360,6 +360,13 @@ tr12env_add0_d2var_one
 fun
 tr12env_add0_d2pat_one
 ( env0: !tr12env, d2p0: d2pat ): void
+(* ****** ****** *)
+fun
+tr12env_add0_d2patlst_one
+(env0: !tr12env, d2ps: d2patlst): void
+fun
+tr12env_add0_l2d2plst_one
+(env0: !tr12env, ldps: l2d2plst): void
 (* ****** ****** *)
 //
 fun

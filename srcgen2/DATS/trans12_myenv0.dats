@@ -1148,5 +1148,53 @@ in//let
 end (*let*)//end[tr12env_add0_d2var_one(env0,d2v0)]
 //
 (* ****** ****** *)
+//
+#implfun
+tr12env_add0_d2pat_one
+  (env0, d2p0) =
+(
+case+
+d2p0.node() of
+//
+|
+D2Pvar(d2v1) =>
+tr12env_add0_d2var_one(env0, d2v1)
+//
+|
+D2Pdtup
+(tknd, npf1, d2ps) =>
+tr12env_add0_d2patlst_one(env0, d2ps)
+|
+D2Pdrcd
+(tknd, npf1, ldps) =>
+tr12env_add0_l2d2plst_one(env0, ldps)
+//
+|
+D2Panno
+(d2p1, s1e2, s2e2) =>
+(
+  tr12env_add0_d2pat_one(env0, d2p1))
+//
+| _(* rest-of-d2pat *) => ( (*skipped*) )
+//
+) (*case+*)//end[tr12env_add0_d2var_one(env0,d2p0)]
+//
+(* ****** ****** *)
+//
+#implfun
+tr12env_add0_d2patlst_one
+  (env0, d2ps) =
+(
+list_foreach_e1nv
+<   x0  ><  e1   >(d2ps, env0)) where
+{
+#typedef x0 = d2pat
+#vwtpdef e1 = tr12env
+#impltmp
+foreach$work_e1nv
+< x0 ><e1>(x0, e1) = tr12env_add0_d2pat_one(e1, x0)
+} (*where*)//end(tr12env_add0_d2patlst_one(env0,...))
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans12_myenv0.dats] *)
