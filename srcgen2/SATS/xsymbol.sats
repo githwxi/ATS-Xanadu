@@ -163,6 +163,14 @@ val VTBX_symbl: symbl //=symbl("vtbx")
 val TRUE_symbl: symbl //=symbl("true")
 val FALSE_symbl: symbl //=symbl("false")
 (* ****** ****** *)
+val DADDR_symbl: symbl //=symbl("$addr")
+val DEVAL_symbl: symbl //=symbl("$eval")
+val DFOLD_symbl: symbl //=symbl("$fold")
+val DFREE_symbl: symbl //=symbl("$free")
+val DLAZY_symbl: symbl //=symbl("$lazy")
+val DLLAZY_symbl: symbl //=symbl("$llazy")
+val DRAISE_symbl: symbl //=symbl("$raise")
+(* ****** ****** *)
 //
 fun
 symbl_search_opt

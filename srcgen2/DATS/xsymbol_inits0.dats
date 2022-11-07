@@ -106,5 +106,13 @@ HX-2022-10-01: Various symbols
 #implval TRUE_symbl = symbl("true")
 #implval FALSE_symbl = symbl("false")
 (* ****** ****** *)
+#implval DADDR_symbl = symbl("$addr")
+#implval DEVAL_symbl = symbl("$eval")
+#implval DFOLD_symbl = symbl("$fold")
+#implval DFREE_symbl = symbl("$free")
+#implval DLAZY_symbl = symbl("$lazy")
+#implval DLLAZY_symbl = symbl("$llazy")
+#implval DRAISE_symbl = symbl("$raise")
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xsymbol_inits0.dats] *)

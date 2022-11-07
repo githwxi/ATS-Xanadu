@@ -32,6 +32,9 @@ val (x1, y2) = (a1 + 1, a1 + 2)
 val (x1, y2) = @(x1 + 1, y2 + 2)
 val (x1, y2) = $(x1 + 1, y2 + 2)
 (* ****** ****** *)
+val dbl2 = lam(x:int) => x+x
+val sqr2 = lam(x:int) => x*x
+(* ****** ****** *)
 val fact =
 fix f(x:int): int =>
 if x > 0 then x * f(x-1) else 1
