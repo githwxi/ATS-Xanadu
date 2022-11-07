@@ -806,15 +806,17 @@ d1ecl_fprint(g_print$out<>(), dcl)
 g_print<f1arg>(f1a) =
 f1arg_fprint(g_print$out<>(), f1a)
 //
-#impltmp
-g_print<d1cls>(d1c) =
-d1cls_fprint(g_print$out<>(), d1c)
+(* ****** ****** *)
+//
 #impltmp
 g_print<d1gua>(d1g) =
 d1gua_fprint(g_print$out<>(), d1g)
 #impltmp
 g_print<d1gpt>(dgt) =
 d1gpt_fprint(g_print$out<>(), dgt)
+#impltmp
+g_print<d1cls>(d1c) =
+d1cls_fprint(g_print$out<>(), d1c)
 //
 (* ****** ****** *)
 #impltmp
@@ -1097,6 +1099,10 @@ g_print<d2pat>(d2p) =
 d2pat_fprint(g_print$out<>(), d2p)
 //
 (* ****** ****** *)
+#impltmp
+g_print<f2arg>(f2a) =
+f2arg_fprint(g_print$out<>(), f2a)
+(* ****** ****** *)
 //
 #impltmp
 g_print<d2gua>(d2g) =
@@ -1110,10 +1116,6 @@ g_print<d2cls>(dcl) =
 d2cls_fprint(g_print$out<>(), dcl)
 //
 (* ****** ****** *)
-#impltmp
-g_print<f2arg>(f2a) =
-f2arg_fprint(g_print$out<>(), f2a)
-(* ****** ****** *)
 //
 #impltmp
 g_print<d2exp>(d2e) =
@@ -1126,7 +1128,17 @@ g_print<d2ecl>(dcl) =
 d2ecl_fprint(g_print$out<>(), dcl)
 //
 (* ****** ****** *)
+#impltmp
+g_print<s2eff>(seff) =
+s2eff_fprint(g_print$out<>(), seff)
+#impltmp
+g_print<s2res>(sres) =
+s2res_fprint(g_print$out<>(), sres)
+(* ****** ****** *)
 //
+#impltmp
+g_print<s2qag>(sqag) =
+s2qag_fprint(g_print$out<>(), sqag)
 #impltmp
 g_print<t2qag>(tqag) =
 t2qag_fprint(g_print$out<>(), tqag)

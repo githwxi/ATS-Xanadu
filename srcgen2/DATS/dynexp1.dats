@@ -139,6 +139,37 @@ endloc (*local*) // end of [local(d1pat)]
 local
 //
 datatype
+f1arg =
+F1ARG of
+(
+loctn, f1arg_node)
+#absimpl
+f1arg_tbox = f1arg
+//
+in (* in-of-local *)
+//
+#implfun
+f1arg_make_node
+(   loc,nod   ) = F1ARG(loc,nod)
+//
+#implfun
+f1arg_get_lctn(tia) =
+let
+  val+F1ARG(loc,nod) = tia in loc
+end
+#implfun
+f1arg_get_node(tia) =
+let
+  val+F1ARG(loc,nod) = tia in nod
+end
+//
+endloc (*local*) // end of [local(f1arg)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 d1gua =
 D1GUA of
 (loctn, d1gua_node)
@@ -279,37 +310,6 @@ case+ arrw of
 | F1UNARRWdflt(loc0) => loc0
 | F1UNARRWlist(loc0, s1es) => loc0)
 //
-(* ****** ****** *)
-
-local
-//
-datatype
-f1arg =
-F1ARG of
-(
-loctn, f1arg_node)
-#absimpl
-f1arg_tbox = f1arg
-//
-in (* in-of-local *)
-//
-#implfun
-f1arg_make_node
-(   loc,nod   ) = F1ARG(loc,nod)
-//
-#implfun
-f1arg_get_lctn(tia) =
-let
-  val+F1ARG(loc,nod) = tia in loc
-end
-#implfun
-f1arg_get_node(tia) =
-let
-  val+F1ARG(loc,nod) = tia in nod
-end
-//
-endloc (*local*) // end of [local(f1arg)]
-
 (* ****** ****** *)
 
 local
