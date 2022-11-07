@@ -325,13 +325,12 @@ val s2t2 =
 val s2c1 =
 s2cst_make_idst(loc0, sid1, s2t2)
 //
-in
+in//let
 //
 d2ecl_make_node
-( loc0
-, D2Cstacst0(s2c1, s2t2)) where
-{ val () =
-  tr12env_add0_s2cst_all(env0, s2c1) }
+(loc0, D2Cstacst0(s2c1, s2t2)) where
+{
+val () = tr12env_add1_s2cst(env0, s2c1) }
 //
 end (*let*)
 //
@@ -385,7 +384,7 @@ trans12_s1arg_tsub
 val () =
 tr12env_pshlam0(env0)
 val () =
-tr12env_add0_s2var_one
+tr12env_add0_s2var
 (     env0, s2v1     )
 val sps2 =
 trans12_s1explst_stck1
@@ -462,7 +461,7 @@ list_cons(s2vs, svss) =>
   auxloop(env0, svss)) where
 {
 val () =
-tr12env_add0_s2varlst_one(env0,s2vs)
+tr12env_add0_s2varlst(env0,s2vs)
 }
 ) (*case+*)
 } (*where*)//end-of-[auxloop(env0,svss)]
@@ -535,7 +534,7 @@ d2ecl_make_node
 ( loc0
 , D2Csexpdef(s2c1, sdef)) where
 { val () =
-  tr12env_add0_s2cst_all(env0, s2c1) }
+  tr12env_add1_s2cst(env0, s2c1) }
 end (*let*) // end of [f0_sexpdef(env0,d1cl)]
 //
 (* ****** ****** *)
@@ -752,12 +751,14 @@ println!("f2_d1t0: s2c1 = ", s2c1)
 *)
 in
   loop(env0, tcns, s2cs) where
-{ val
-  s2cs = list_vt_cons(s2c1, s2cs)
-  val () =
-  tr12env_add0_s2cst_all(env0, s2c1) }
+{
+//
+val
+s2cs = list_vt_cons(s2c1, s2cs)
+//
+val () = tr12env_add1_s2cst(env0, s2c1) }
 end // end of [list_cons]
-) (*case+*) // end of [loop(env0,tcns)]
+) (*case+*) // end of [ loop(env0,tcns) ]
 in//let
 //
 loop
@@ -921,7 +922,7 @@ val wsxp =
 trans12_wths1exp(env0, wsxp)
 //
 val (  ) = //HX:non-recursive
-tr12env_add0_d2pat_one(env0, dpat)
+tr12env_add0_d2pat(env0, dpat)
 //
 in//let
 d2valdcl_make_args(loc0, dpat, tdxp, wsxp)
