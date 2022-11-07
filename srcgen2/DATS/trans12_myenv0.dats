@@ -1063,7 +1063,7 @@ endloc (*local*) // end of [ local(tr12env) ]
 (* ****** ****** *)
 
 #implfun
-tr12env_add0_s2cst_all
+tr12env_add1_s2cst
   (env0, s2c0) =
 let
 val sym0 = s2c0.name()
@@ -1102,23 +1102,23 @@ tr12env_add0_s2itm(env0, sym0, sitm)
 end//let
 ) (*case+*)//end-of-[optn_vt_cons(...)]
 //
-end (*let*)//end[tr12env_add0_s2cst_all(env0,s2c0)]
+end (*let*)//end[tr12env_add0_s2cst(env0,s2c0)]
 
 (* ****** ****** *)
 //
 #implfun
-tr12env_add0_s2var_one
+tr12env_add0_s2var
   (env0, s2v0) =
 let
 val sym0 =
 s2var_get_name(s2v0)
 val sitm = S2ITMvar(s2v0)
 in//let
-  tr12env_add0_s2itm(env0, sym0, sitm)
-end (*let*)//end[tr12env_add0_s2var_one(env0,s2v0)]
+tr12env_add0_s2itm(env0, sym0, sitm)
+end (*let*)//end[tr12env_add0_s2var(env0,s2v0)]
 //
 #implfun
-tr12env_add0_s2varlst_one
+tr12env_add0_s2varlst
   (env0, s2vs) =
 (
 case+ s2vs of
@@ -1128,29 +1128,29 @@ list_nil((*void*)) => ()
 list_cons(s2v1, s2vs) =>
 let
 val () =
-tr12env_add0_s2var_one(env0, s2v1)
-in
-tr12env_add0_s2varlst_one(env0, s2vs)
+tr12env_add0_s2var(env0, s2v1)
+in//let
+  tr12env_add0_s2varlst(env0, s2vs)
 end (*let*)//end-of-[list_cons]
-) (*case+*)//end-of-[tr12env_add0_s2varlst_one(...)]
+) (*case+*)//end-of-[tr12env_add0_s2varlst(...)]
 //
 (* ****** ****** *)
 //
 #implfun
-tr12env_add0_d2var_one
+tr12env_add0_d2var
   (env0, d2v0) =
 let
 val sym0 =
 d2var_get_name(d2v0)
 val ditm = D2ITMvar(d2v0)
 in//let
-  tr12env_add0_d2itm(env0, sym0, ditm)
-end (*let*)//end[tr12env_add0_d2var_one(env0,d2v0)]
+tr12env_add0_d2itm(env0, sym0, ditm)
+end (*let*)//end[tr12env_add0_d2var(env0,d2v0)]
 //
 (* ****** ****** *)
 //
 #implfun
-tr12env_add0_d2pat_one
+tr12env_add0_d2pat
   (env0, d2p0) =
 (
 case+
@@ -1162,7 +1162,7 @@ d2p0.node() of
 //
 |
 D2Pvar(d2v1) =>
-tr12env_add0_d2var_one(env0, d2v1)
+tr12env_add0_d2var(env0, d2v1)
 //
 |D2Pint _ => ((*void*))
 |D2Pbtf _ => ((*void*))
@@ -1172,57 +1172,72 @@ tr12env_add0_d2var_one(env0, d2v1)
 //
 |
 D2Pbang(d2p1) =>
-tr12env_add0_d2pat_one(env0, d2p1)
+tr12env_add0_d2pat(env0, d2p1)
 |
 D2Pflat(d2p1) =>
-tr12env_add0_d2pat_one(env0, d2p1)
+tr12env_add0_d2pat(env0, d2p1)
 |
 D2Pfree(d2p1) =>
-tr12env_add0_d2pat_one(env0, d2p1)
+tr12env_add0_d2pat(env0, d2p1)
 //
 |
 D2Psapp
 (d2p1, s2vs) =>
-tr12env_add0_d2pat_one(env0, d2p1)
+tr12env_add0_d2pat(env0, d2p1)
 //
 |
 D2Pdap0(d2p1) =>
-tr12env_add0_d2pat_one(env0, d2p1)
+tr12env_add0_d2pat(env0, d2p1)
 |
 D2Pdap1(d2p1) =>
-tr12env_add0_d2pat_one(env0, d2p1)
+tr12env_add0_d2pat(env0, d2p1)
 //
 |
 D2Pdapp
 (d2f0, npf1, d2ps) =>
 (
-tr12env_add0_d2pat_one(env0, d2f0);
-tr12env_add0_d2patlst_one(env0, d2ps)
+tr12env_add0_d2pat(env0, d2f0);
+tr12env_add0_d2patlst(env0, d2ps)
 )
 //
 |
 D2Ptup1
 (tknd, npf1, d2ps) =>
-tr12env_add0_d2patlst_one(env0, d2ps)
+tr12env_add0_d2patlst(env0, d2ps)
 |
 D2Prcd2
 (tknd, npf1, ldps) =>
-tr12env_add0_l2d2plst_one(env0, ldps)
+tr12env_add0_l2d2plst(env0, ldps)
 //
 |
 D2Panno
 (d2p1, s1e2, s2e2) =>
 (
-  tr12env_add0_d2pat_one(env0, d2p1) )
+  tr12env_add0_d2pat(env0, d2p1) )
 //
 | _(* rest-of-d2pat *) => ( (*skipped*) )
 //
-) (*case+*)//end[tr12env_add0_d2var_one(env0,d2p0)]
+) (*case+*)//end[tr12env_add0_d2var(env0,d2p0)]
 //
 (* ****** ****** *)
 //
 #implfun
-tr12env_add0_d2patlst_one
+tr12env_add0_f2arg
+  (env0, f2a0) =
+(
+case+
+f2a0.node() of
+|
+F2ARGdyn0
+(npf1, d2ps) =>
+tr12env_add0_d2patlst(env0, d2ps)
+| F2ARGsta0 _ => () | F2ARGmet0 _ => ()
+) (*case+*)//end[tr12env_add0_f2arg(env0,f2a0)]
+
+(* ****** ****** *)
+//
+#implfun
+tr12env_add0_d2patlst
   (env0, d2ps) =
 (
 list_foreach_e1nv
@@ -1232,8 +1247,24 @@ list_foreach_e1nv
 #vwtpdef e1 = tr12env
 #impltmp
 foreach$work_e1nv
-< x0 ><e1>(x0, e1) = tr12env_add0_d2pat_one(e1, x0)
-} (*where*)//end(tr12env_add0_d2patlst_one(env0,...))
+< x0 ><e1>(x0, e1) = tr12env_add0_d2pat(e1, x0)
+} (*where*)//end(tr12env_add0_d2patlst(env0,...))
+//
+(* ****** ****** *)
+//
+#implfun
+tr12env_add0_f2arglst
+  (env0, f2as) =
+(
+list_foreach_e1nv
+<   x0  ><  e1   >(f2as, env0)) where
+{
+#typedef x0 = f2arg
+#vwtpdef e1 = tr12env
+#impltmp
+foreach$work_e1nv
+< x0 ><e1>(x0, e1) = tr12env_add0_f2arg(e1, x0)
+} (*where*)//end(tr12env_add0_f2arglst(env0,...))
 //
 (* ****** ****** *)
 

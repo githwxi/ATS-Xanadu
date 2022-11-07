@@ -189,18 +189,11 @@ d2exp_dapp(loc0, d2f0, npf1, d2as)
 trans12_d1pid
 ( env0,dpid ) = let
 //
-val
-loc0 = dpid.lctn()
-val
-sym1 = dpatid_sym(dpid)
+val loc0 = dpid.lctn()
+val sym1 = dpatid_sym(dpid)
 //
 in//let
-let
-val
-d2v1 = d2var_new2_name(loc0, sym1)
-in//let
-tr12env_add0_d2var_one(env0, d2v1); d2v1
-end (*let*)
+  d2var_new2_name(loc0, sym1)
 end (*let*) // end of [trans12_d1pid(env0,dpid)]
 //
 (* ****** ****** *)
@@ -1142,7 +1135,7 @@ trans12_d1exp(env0, d1e1)) where
 (* ****** ****** *)
 //
 fun
-isAMP
+isAMP0
 (d1e: d1exp): bool =
 (
 case+
@@ -1154,7 +1147,7 @@ if
 then true else false
 |
 _(* non-D1Eid0 *) => false
-) (*case+*) // end of [isAMP]
+) (*case+*) // end of [isAMP0]
 fun
 isBANG
 (d1e: d1exp): bool =
@@ -1270,14 +1263,14 @@ D1Ea1pp
 in//let
 //
 if
-isAMP(d1e1)
+isAMP0(d1e1)
 then
 let
 val d2e1 =
 trans12_d1exp(env0, d1e1)
 in//let
 d2exp(loc0, D2Eaddr(d2e1))
-end (*let*) // end-of(isAMP)
+end (*let*) // end-of-then
 else
 (
 if
@@ -1288,7 +1281,29 @@ val d2e1 =
 trans12_d1exp(env0, d1e1)
 in//let
 d2exp(loc0, D2Eeval(d2e1))
-end (*let*) // end-of(isBANG)
+end (*let*) // end-of-then
+else
+(
+if
+isADDR(d1e1)
+then
+let
+val d2e1 =
+trans12_d1exp(env0, d1e1)
+in//let
+d2exp(loc0, D2Eaddr(d2e1))
+end (*let*) // end-of-then
+else
+(
+if
+isEVAL(d1e1)
+then
+let
+val d2e1 =
+trans12_d1exp(env0, d1e1)
+in//let
+d2exp(loc0, D2Eeval(d2e1))
+end (*let*) // end-of-then
 else
 (
 case+
@@ -1316,8 +1331,10 @@ in
 end (*let*) // end of [D1Etarg(s1es)]
 |
 _(*d1exp-rest*) => f0_a1pp_rest(env0,d1e0)
-)
-)
+) (*else*) // end-of-if(isEVAL)
+) (*else*) // end-of-if(isADDR)
+) (*else*) // end-of-if(isBANG)
+) (*else*) // end-of-if(isAMP0)
 //
 end (*let*) // end of [f0_a1pp(env0,d1e0)]
 
@@ -1775,9 +1792,14 @@ D1Elam0
 ,f1as,sres
 ,arrw,body) = d1e0.node()
 //
+val () =
+tr12env_pshlam0(env0)//enter
+//
 val
 f2as =
 trans12_f1arglst(env0, f1as)
+val () =
+tr12env_add0_f2arglst(env0,f2as)
 (*
 val
 arrw =
@@ -1787,6 +1809,9 @@ val
 sres = trans12_s1res(env0, sres)
 val
 body = trans12_d1exp(env0, body)
+//
+val//exit
+((*void*)) = tr12env_poplam0(env0)
 //
 in//let
 d2exp_make_node
@@ -1812,13 +1837,21 @@ D1Efix0
 ,f1as,sres
 ,arrw,body) = d1e0.node()
 //
+//
+val () =
+tr12env_pshlam0(env0)//enter
+//
 val
 d2v1 =
 trans12_d1pid(env0, tok1)
+val () =
+tr12env_add0_d2var(env0,d2v1)
 //
 val
 f2as =
 trans12_f1arglst(env0, f1as)
+val () =
+tr12env_add0_f2arglst(env0,f2as)
 (*
 val
 arrw =
@@ -1828,6 +1861,9 @@ val
 sres = trans12_s1res(env0, sres)
 val
 body = trans12_d1exp(env0, body)
+//
+val//exit
+((*void*)) = tr12env_poplam0(env0)
 //
 in//let
 d2exp_make_node
