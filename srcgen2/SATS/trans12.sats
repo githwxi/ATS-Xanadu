@@ -107,6 +107,7 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef f1arg = $D1E.f1arg
 (* ****** ****** *)
+#typedef s1eff = $D1E.s1eff
 #typedef s1res = $D1E.s1res
 (* ****** ****** *)
 #typedef a1tdf = $D1E.a1tdf
@@ -127,6 +128,7 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef f2arg = $D2E.f2arg
 (* ****** ****** *)
+#typedef s2eff = $D2E.s2eff
 #typedef s2res = $D2E.s2res
 (* ****** ****** *)
 #typedef d2itm = $D2E.d2itm
@@ -585,6 +587,9 @@ trans12_t1qag
 //
 (* ****** ****** *)
 //
+fun
+trans12_s1eff
+(env0: !tr12env, seff: s1eff): s2eff
 fun
 trans12_s1res
 (env0: !tr12env, sres: s1res): s2res
