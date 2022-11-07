@@ -588,6 +588,11 @@ token(*knd*), sint(*npf*), l2d2elst)
 D2Elam0 of
 ( token(*knd*)
 , f2arglst, s2res, f1unarrw, d2exp )
+|
+D2Efix0 of
+( token(*knd*)
+, d2var(*fid*)
+, f2arglst, s2res, f1unarrw, d2exp )
 //
 |
 D2Etry0 of

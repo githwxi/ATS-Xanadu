@@ -834,6 +834,7 @@ D1Ewhere _ => f0_where(env0, d1e0)
 |D1Er2cd _ => f0_r2cd(env0, d1e0)
 //
 |D1Elam0 _ => f0_lam0(env0, d1e0)
+|D1Efix0 _ => f0_fix0(env0, d1e0)
 //
 |D1Eanno _ => f0_anno(env0, d1e0)
 //
@@ -1387,6 +1388,49 @@ end (*let*) // end of [f0_lam0(env0,d1e0)]
 (* ****** ****** *)
 
 fun
+f0_fix0
+( env0:
+! tr12env
+, d1e0: d1exp): d2exp =
+let
+//
+val loc0 = d1e0.lctn()
+//
+val-
+D1Efix0
+(tknd
+,tok1
+,f1as,sres
+,arrw,body) = d1e0.node()
+//
+val
+d2v1 =
+trans12_d1pid(env0, tok1)
+//
+val
+f2as =
+trans12_f1arglst(env0, f1as)
+(*
+val
+arrw =
+trans12_f1unarrw(env0, arrw)
+*)
+val
+sres = trans12_s1res(env0, sres)
+val
+body = trans12_d1exp(env0, body)
+//
+in//let
+d2exp_make_node
+(
+loc0,
+D2Efix0
+(tknd, d2v1, f2as, sres, arrw, body))
+end (*let*) // end of [f0_fix0(env0,d1e0)]
+
+(* ****** ****** *)
+
+fun
 f0_anno
 ( env0:
 ! tr12env
@@ -1415,6 +1459,42 @@ end (*let*) // end of [f0_anno(env0,d1e0)]
 (* ****** ****** *)
 //
 #implfun
+trans12_s1eff
+( env0,seff ) =
+(
+case+ seff of
+|
+S1EFFnone
+((*void*)) => S2EFFnone()
+|
+S1EFFsome(s1es) =>
+S2EFFsome(s2es) where
+{
+val s2es = trans12_s1explst(env0, s1es)
+}
+) (*case+*) // end of [trans12_s1eff(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans12_s1res
+( env0,sres ) =
+(
+case+ sres of
+|
+S1RESnone() => S2RESnone()
+|
+S1RESsome(seff,s1e1) =>
+S2RESsome(seff,s2e1) where
+{
+val seff = trans12_s1eff(env0, seff)
+val s2e1 = trans12_s1exp(env0, s1e1)
+}
+) (*case+*) // end of [trans12_s1res(...)]
+//
+(* ****** ****** *)
+//
+#implfun
 trans12_teqd1exp
   (env0, tdxp) =
 (
@@ -1433,7 +1513,7 @@ TEQD2EXPsome(teq1, d2e2) where
 //
 #implfun
 trans12_wths1exp
-  (tenv, tdxp) =
+  (env0, tdxp) =
 (
 case+ tdxp of
 |
@@ -1443,7 +1523,7 @@ WTHS2EXPnone((*void*))
 WTHS1EXPsome(twth, s1e2) =>
 WTHS2EXPsome(twth, s2e2) where
 { val
-  s2e2 = trans12_s1exp(tenv, s1e2) }
+  s2e2 = trans12_s1exp(env0, s1e2) }
 ) (*case+*)//end-of(trans12_wths1exp(...))
 //
 (* ****** ****** *)
