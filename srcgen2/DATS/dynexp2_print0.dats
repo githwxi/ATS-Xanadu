@@ -158,8 +158,20 @@ D2Psym0(d1p1,d2is) =>
 print("D2Psym0(",d1p1,";",d2is,")")
 //
 |
-D2Psapp(d2p1,s2vs) =>
-print("D2Psapp(",d2p1,";",s2vs,")")
+D2Psapp(d2f0,s2vs) =>
+print("D2Psapp(",d2f0,";",s2vs,")")
+//
+|
+D2Pdap0(d1p1) =>
+print("D2Pdap0(", d1p1, ")")
+|
+D2Pdap1(d1p1) =>
+print("D2Pdap1(", d1p1, ")")
+|
+D2Pdapp
+(d2f0, npf1, d2ps) =>
+( print("D2Pdapp(")
+; print(d2f0,";",npf1,";",d2ps,")") )
 //
 |
 D2Ptup0(npf1, d2ps) =>
@@ -323,8 +335,8 @@ print("D2Esapp(",d2e1,";",s2es,")")
 print("D2Etapp(",d2e1,";",s2es,")")
 //
 |
-D2Ed0ap(d2f0) =>
-print("D2Ed0ap(", d2f0, ")")
+D2Edap0(d2f0) =>
+print("D2Edap0(", d2f0, ")")
 |
 D2Edapp
 ( d2f0, npf1, d2es ) =>

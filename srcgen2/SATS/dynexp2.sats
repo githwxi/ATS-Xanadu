@@ -331,8 +331,8 @@ d2pat_node =
 |D2Psapp of
  (d2pat, s2varlst(*sarg*))
 //
-|D2Pd0ap of (d2pat) // nullary
-|D2Pd1ap of (d2pat) // argless
+|D2Pdap0 of (d2pat) // nullary
+|D2Pdap1 of (d2pat) // argless
 //
 |
 D2Pdapp of
@@ -540,7 +540,7 @@ d2exp_node =
 |D2Esapp of (d2exp, s2explst)
 |D2Etapp of (d2exp, s2explst)
 //
-|D2Ed0ap of (d2exp)
+|D2Edap0 of (d2exp)
 |D2Edapp of
 (d2exp, sint(*npf*), d2explst)
 //
@@ -602,6 +602,20 @@ D2Etry0 of
 ( token(*TRY*)
 , d2exp(*norm*), d2clslst(*excptn*))
 //
+| D2Eaddr of d2exp(*left-val*)
+| D2Efold of d2exp(*open-con*)
+| D2Eeval of d2exp(*ptr/lazy*)
+| D2Efree of d2exp(*free-con*)
+//
+| D2Eraise of d2exp(*lin-exn*)
+//
+|
+D2Elazy of
+(d2exp(*thunk*)) // non-linear
+|
+D2Ellazy of // linear-lazy-eval
+(d2exp(*thunk*), d2explst(*frees*))
+//
 |
 D2Eanno of
 (d2exp,s1exp(*given*),s2exp(*trans*))
@@ -660,6 +674,17 @@ d2exp_btf
 fun
 d2exp_top
 (loc0: loc_t, sym1: sym_t): d2exp
+(* ****** ****** *)
+fun
+d2exp_sapp
+( loc0: loc_t
+, d2f0: d2exp(*fun*)
+, s2es: s2explst(*arg*) ) : d2exp
+fun
+d2exp_tapp
+( loc0: loc_t
+, d2f0: d2exp(*fun*)
+, s2es: s2explst(*arg*) ) : d2exp
 (* ****** ****** *)
 fun
 d2exp_a2pp

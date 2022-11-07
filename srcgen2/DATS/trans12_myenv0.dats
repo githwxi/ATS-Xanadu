@@ -1186,10 +1186,10 @@ D2Psapp
 tr12env_add0_d2pat_one(env0, d2p1)
 //
 |
-D2Pd0ap(d2p1) =>
+D2Pdap0(d2p1) =>
 tr12env_add0_d2pat_one(env0, d2p1)
 |
-D2Pd1ap(d2p1) =>
+D2Pdap1(d2p1) =>
 tr12env_add0_d2pat_one(env0, d2p1)
 //
 |

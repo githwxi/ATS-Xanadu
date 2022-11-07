@@ -86,14 +86,20 @@ _(*TRANS12*) = "./trans12.dats"
 (*
 HX-2020-07:
 A nullary constructor C can
-be written as C (instead of C())
+be written as C (versus C())
 *)
 //
 fun
-d2pat_d0ap
+d2pat_dap0
 (d2f0: d2pat): d2pat =
 d2pat
-(d2f0.lctn(), D2Pd0ap(d2f0))
+(d2f0.lctn(), D2Pdap0(d2f0))
+//
+fun
+d2exp_dap0
+(d2f0: d2exp): d2exp =
+d2exp
+(d2f0.lctn(), D2Edap0(d2f0))
 //
 (* ****** ****** *)
 //
@@ -106,8 +112,8 @@ my_d2pat_sapp
 case-
 d2f0.node() of
 |
-D2Pd0ap(d2f0) =>
-d2pat_d0ap
+D2Pdap0(d2f0) =>
+d2pat_dap0
 (
 d2pat_sapp(loc0, d2f0, s2vs))
 |
@@ -115,6 +121,48 @@ _ (* non-D2Pdap0 *) =>
 (
 d2pat_sapp(loc0, d2f0, s2vs))
 ) (*case-*) // end of [my_d2pat_sapp]
+//
+(* ****** ****** *)
+//
+fun
+my_d2exp_sapp
+( loc0: loc_t
+, d2e1: d2exp
+, s2es: s2explst): d2exp =
+(
+case-
+d2e1.node() of
+|
+D2Edap0(d2e1) =>
+d2exp_dap0
+(
+d2exp_sapp(loc0, d2e1, s2es)
+)
+|
+_(* non-D2Edap0 *) =>
+d2exp_sapp(loc0, d2e1, s2es)
+) (*case-*) // end-of-[my_d2exp_sapp]
+//
+(* ****** ****** *)
+//
+fun
+my_d2exp_tapp
+( loc0: loc_t
+, d2e1: d2exp
+, s2es: s2explst): d2exp =
+(
+case-
+d2e1.node() of
+|
+D2Edap0(d2e1) =>
+d2exp_dap0
+(
+d2exp_tapp(loc0, d2e1, s2es)
+)
+|
+_ (* non-D2Edap0 *) =>
+d2exp_tapp(loc0, d2e1, s2es)
+) (*case-*) // end-of-[my_d2exp_tapp]
 //
 (* ****** ****** *)
 //
@@ -128,7 +176,7 @@ my_d2exp_dapp
 case+
 d2f0.node() of
 |
-D2Ed0ap(d2f0) =>
+D2Edap0(d2f0) =>
 d2exp_dapp(loc0, d2f0, npf1, d2as)
 |
 _ (*non-D2Edap0*) =>
@@ -928,6 +976,8 @@ D1Eb0sh _ => d2exp_none1(d1e0)
 D1Eb1sh _ => f0_b1sh(env0, d1e0)
 //
 |
+D1Ea1pp _ => f0_a1pp(env0, d1e0)
+|
 D1Ea2pp _ => f0_a2pp(env0, d1e0)
 //
 |
@@ -1089,6 +1139,243 @@ trans12_d1exp(env0, d1e1)) where
   val-D1Eb1sh(d1e1) = d1e0.node()
 } (*where*) // end of [f0_b1sh(env0,d1e0)]
 //
+(* ****** ****** *)
+//
+fun
+isAMP
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+|
+D1Eid0(sym) =>
+if
+(sym=AMP_symbl)
+then true else false
+|
+_(* non-D1Eid0 *) => false
+) (*case+*) // end of [isAMP]
+fun
+isBANG
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+|
+D1Eid0(sym) =>
+if
+(sym=BANG_symbl)
+then true else false
+|
+_(* non-D1Eid0 *) => false
+) (*case+*) // end of [isBANG]
+fun
+isADDR
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+|
+D1Eid0(sym) =>
+if
+(sym=DADDR_symbl)
+then true else false
+|
+_(* non-D1Eid0 *) => false
+) (*case+*) // end of [isADDR]
+fun
+isEVAL
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+|
+D1Eid0(sym) =>
+if
+(sym=DEVAL_symbl)
+then true else false
+|
+_(* non-D1Eid0 *) => false
+) (*case+*) // end of [isEVAL]
+fun
+isFOLD
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+|
+D1Eid0(sym) =>
+if
+(sym=DFOLD_symbl)
+then true else false
+|
+_(* non-D1Eid0 *) => false
+) (*case+*) // end of [isFOLD]
+fun
+isFREE
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+|
+D1Eid0(sym) =>
+if
+(sym=DFREE_symbl)
+then true else false
+|
+_(* non-D1Eid0 *) => false
+) (*case+*) // end of [isFREE]
+fun
+isLAZY
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+|
+D1Eid0(sym) =>
+if
+(sym=DLAZY_symbl)
+then true else false
+|
+_(* non-D1Eid0 *) => false
+) (*case+*) // end of [isLAZY]
+fun
+isLLAZY
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+|
+D1Eid0(sym) =>
+if
+(sym=DLLAZY_symbl)
+then true else false
+|
+_(* non-D1Eid0 *) => false
+) (*case+*) // end of [isLLAZY]
+//
+fun
+f0_a1pp
+( env0:
+! tr12env
+, d1e0: d1exp): d2exp =
+let
+//
+val loc0 = d1e0.lctn()
+//
+val-
+D1Ea1pp
+(d1f0, d1e1) = d1e0.node()
+//
+in//let
+//
+if
+isAMP(d1e1)
+then
+let
+val d2e1 =
+trans12_d1exp(env0, d1e1)
+in//let
+d2exp(loc0, D2Eaddr(d2e1))
+end (*let*) // end-of(isAMP)
+else
+(
+if
+isBANG(d1e1)
+then
+let
+val d2e1 =
+trans12_d1exp(env0, d1e1)
+in//let
+d2exp(loc0, D2Eeval(d2e1))
+end (*let*) // end-of(isBANG)
+else
+(
+case+
+d1e1.node() of
+//
+|
+D1Esarg(s1es) =>
+let
+val d2f0 =
+trans12_d1exp(env0, d1f0)
+val s2es =
+trans12_s1explst(env0, s1es)
+in
+  my_d2exp_sapp(loc0, d2f0, s2es)
+end (*let*) // end of [D1Esarg(s1es)]
+|
+D1Etarg(s1es) =>
+let
+val d2f0 =
+trans12_d1exp(env0, d1f0)
+val s2es =
+trans12_s1explst(env0, s1es)
+in
+  my_d2exp_tapp(loc0, d2f0, s2es)
+end (*let*) // end of [D1Etarg(s1es)]
+|
+_(*d1exp-rest*) => f0_a1pp_rest(env0,d1e0)
+)
+)
+//
+end (*let*) // end of [f0_a1pp(env0,d1e0)]
+
+and
+f0_a1pp_rest
+( env0:
+! tr12env
+, d1e0: d1exp): d2exp =
+let
+//
+val loc0 = d1e0.lctn()
+//
+val
+D1Ea1pp
+(d1f0,d1e1) = d1e0.node()
+//
+val d2f0 =
+trans12_d1exp(env0, d1f0)
+//
+val npf1 =
+(
+case+
+d1e1.node() of
+|
+D1El2st
+(des1, des2) =>
+list_length<d1exp>(des1)
+|
+_(* non-D2Elist *) => -1): int
+//
+val d2es =
+(
+case+
+d1e1.node() of
+|
+D1El1st(d1es) =>
+trans12_d1explst(env0, d1es)
+|
+D1El2st(des1, des2) =>
+(
+list_append(des1, des2)) where
+{
+val
+des1 = trans12_d1explst(env0, des1)
+val
+des2 = trans12_d1explst(env0, des2)
+}
+|
+_(* non-D2Elist *) =>
+list_sing(trans12_d1exp(env0, d1e1))
+) : d2explst // end of [ val(d2es) ]
+//
+in
+//
+my_d2exp_dapp(loc0, d2f0, npf1, d2es)
+//
+end (*let*) // end of [f0_a1pp_rest(_,_)]
+
 (* ****** ****** *)
 
 fun
