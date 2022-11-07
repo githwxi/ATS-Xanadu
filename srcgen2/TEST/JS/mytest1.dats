@@ -29,7 +29,8 @@ fint2(a:int): type = (int(a), int(a))
 var a1: int = 0
 val () = (a1 := a1 + 1)
 val (x1, y2) = (a1 + 1, a1 + 2)
-val (x1, y2) = @(x1 + 1, y2 + 2)
+val (x3, y4) = @(x1 + 1, y2 + 2)
+////
 val (x1, y2) = $(x1 + 1, y2 + 2)
 (* ****** ****** *)
 val dbl2 = lam(x:int) => x+x

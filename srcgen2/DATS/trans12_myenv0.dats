@@ -1201,6 +1201,9 @@ tr12env_add0_d2patlst(env0, d2ps)
 )
 //
 |
+D2Ptup0(npf1,d2ps) =>
+tr12env_add0_d2patlst(env0, d2ps)
+|
 D2Ptup1
 (tknd, npf1, d2ps) =>
 tr12env_add0_d2patlst(env0, d2ps)
@@ -1233,7 +1236,23 @@ F2ARGdyn0
 tr12env_add0_d2patlst(env0, d2ps)
 | F2ARGsta0 _ => () | F2ARGmet0 _ => ()
 ) (*case+*)//end[tr12env_add0_f2arg(env0,f2a0)]
-
+//
+(* ****** ****** *)
+//
+#implfun
+tr12env_add0_d2varopt
+  (env0, opt0) =
+(
+case+ opt0 of
+//
+|optn_nil
+((*nil*)) => ((*void*))
+//
+|optn_cons
+(  d2v0  ) => tr12env_add0_d2var(env0, d2v0)
+//
+) (*case+*)//end(tr12env_add0_d2varopt(env0,...))
+//
 (* ****** ****** *)
 //
 #implfun

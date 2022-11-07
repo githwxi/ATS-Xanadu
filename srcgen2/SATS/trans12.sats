@@ -387,6 +387,10 @@ tr12env_add0_f2arg
 ( env0: !tr12env, f2a0: f2arg ): void
 (* ****** ****** *)
 fun
+tr12env_add0_d2varopt
+(env0: !tr12env, opt0: d2varopt): void
+(* ****** ****** *)
+fun
 tr12env_add0_d2patlst
 (env0: !tr12env, d2ps: d2patlst): void
 fun

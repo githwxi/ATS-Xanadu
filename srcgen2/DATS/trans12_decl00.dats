@@ -958,6 +958,11 @@ d1vardcl_get_dini(dvar)
 val dini =
 trans12_teqd1exp(env0, dini)
 //
+val (  ) = //HX:non-recursive
+tr12env_add0_d2var(env0, dpid)
+val (  ) = //HX:non-recursive
+tr12env_add0_d2varopt(env0, vpid)
+//
 in//let
 d2vardcl_make_args(loc0,dpid,vpid,sres,dini)
 end (*let*) // end of [trans12_d1vardcl(env0, dvar)]
