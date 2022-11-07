@@ -752,7 +752,8 @@ S1RESnone() =>
 print("S1RESnone(",")")
 |
 S1RESsome(seff, s1e1) =>
-print("S1RESsome(",seff,";",s1e1,")")
+print
+("S1RESsome(",seff,";",s1e1,")")
 end (*let*) // end of [s1res_fprint]
 //
 (* ****** ****** *)

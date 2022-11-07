@@ -66,6 +66,75 @@ ATS_PACKNAME
 #symload lctn with d1ecl_get_lctn
 (* ****** ****** *)
 //
+#implfun
+d2pat_none0
+(  loc0  ) =
+d2pat_make_node
+(loc0,D2Pnone0((*void*)))
+//
+#implfun
+d2pat_none1
+(  dpat  ) =
+d2pat_make_node
+(
+dpat.lctn(),D2Pnone1(dpat))
+//
+(* ****** ****** *)
+//
+#implfun
+d2pat_var
+(loc0, dvar) =
+(
+ d2pat(loc0, D2Pvar(dvar)))
+//
+(* ****** ****** *)
+//
+#implfun
+d2exp_none0
+(  loc0  ) =
+d2exp_make_node
+(loc0,D2Enone0((*void*)))
+//
+#implfun
+d2exp_none1
+(  dexp  ) =
+d2exp_make_node
+(
+dexp.lctn(),D2Enone1(dexp))
+//
+(* ****** ****** *)
+//
+#implfun
+d2exp_var
+(loc0, dvar) =
+(
+ d2exp(loc0, D2Evar(dvar)))
+//
+(* ****** ****** *)
+//
+#implfun
+d2exp_a2pp
+(loc0, d2f0, d2a1, d2a2) =
+(
+d2exp_dapp
+(loc0, d2f0, npf1, d2as)
+) where
+{
+val
+npf1 = -1
+val
+d2as = list_pair(d2a1, d2a2)}
+//
+#implfun
+d2exp_dapp
+(loc0, d2f0, npf1, d2as) =
+(
+d2exp_make_node
+( loc0
+, D2Edapp(d2f0, npf1, d2as)))
+//
+(* ****** ****** *)
+//
 local
 val
 stamper = stamper_new()
@@ -176,29 +245,6 @@ end (*let*) // end of [d2var_new2_name]
 end (*let*) // end of [local(d2var_tbox)]
 
 (* ****** ****** *)
-//
-#implfun
-d2pat_none0
-(  loc0  ) =
-d2pat_make_node
-(loc0,D2Pnone0((*void*)))
-//
-#implfun
-d2pat_none1
-(  dpat  ) =
-d2pat_make_node
-(
-dpat.lctn(),D2Pnone1(dpat))
-//
-(* ****** ****** *)
-//
-#implfun
-d2pat_var
-(loc0, dvar) =
-(
- d2pat(loc0, D2Pvar(dvar)))
-//
-(* ****** ****** *)
 
 local
 //
@@ -229,51 +275,36 @@ end
 endloc (*local*) // end of [local(d2pat)]
 
 (* ****** ****** *)
+
+local
 //
-#implfun
-d2exp_none0
-(  loc0  ) =
-d2exp_make_node
-(loc0,D2Enone0((*void*)))
-//
-#implfun
-d2exp_none1
-(  dexp  ) =
-d2exp_make_node
+datatype
+f2arg =
+F2ARG of
 (
-dexp.lctn(),D2Enone1(dexp))
+loctn, f2arg_node)
+#absimpl
+f2arg_tbox = f2arg
 //
-(* ****** ****** *)
-//
-#implfun
-d2exp_var
-(loc0, dvar) =
-(
- d2exp(loc0, D2Evar(dvar)))
-//
-(* ****** ****** *)
+in (* in-of-local *)
 //
 #implfun
-d2exp_a2pp
-(loc0, d2f0, d2a1, d2a2) =
-(
-d2exp_dapp
-(loc0, d2f0, npf1, d2as)
-) where
-{
-val
-npf1 = -1
-val
-d2as = list_pair(d2a1, d2a2)}
+f2arg_make_node
+(   loc,nod   ) = F2ARG(loc,nod)
 //
 #implfun
-d2exp_dapp
-(loc0, d2f0, npf1, d2as) =
-(
-d2exp_make_node
-( loc0
-, D2Edapp(d2f0, npf1, d2as)))
+f2arg_get_lctn(tia) =
+let
+  val+F2ARG(loc,nod) = tia in loc
+end
+#implfun
+f2arg_get_node(tia) =
+let
+  val+F2ARG(loc,nod) = tia in nod
+end
 //
+endloc (*local*) // end of [local(f2arg)]
+
 (* ****** ****** *)
 
 local

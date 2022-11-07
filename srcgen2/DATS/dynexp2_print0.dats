@@ -64,6 +64,9 @@ _(*?*) = "./lexing0_print0.dats"
 #symload lctn with d2pat_get_lctn
 #symload node with d2pat_get_node
 (* ****** ****** *)
+#symload lctn with f2arg_get_lctn
+#symload node with f2arg_get_node
+(* ****** ****** *)
 #symload lctn with d2gua_get_lctn
 #symload node with d2gua_get_node
 (* ****** ****** *)
@@ -181,6 +184,34 @@ print("D2Panno(",d2p1,";",s1e2,";",s2e2,")")
 |D2Pnone1(d1p1) => print("D2Pnone1(",d1p1,")")
 //
 end (*let*) // end of [d2pat_fprint(out, d2p0)]
+
+(* ****** ****** *)
+
+#implfun
+f2arg_fprint
+(out, farg) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+farg.node() of
+|
+F2ARGsta0
+(s2vs,s2ps) =>
+print
+("F2ARGsta0(",s2vs,";",s2ps,")")
+|
+F2ARGdyn0
+(npf1,d2p1) =>
+print
+("F2ARGdyn0(",npf1,";",d2p1,")")
+|
+F2ARGmet0
+(   s2es   ) => print("F2ARGmet0(",s2es,")")
+//
+end (*let*) // end of [f2arg_fprint(out,farg)]
 
 (* ****** ****** *)
 
@@ -345,6 +376,26 @@ D2Ercd2
 ; print(tknd,";",npf1,";",ldes,")") )
 //
 |
+D2Elam0
+( tknd, f2as
+, sres, arrw, body) =>
+(
+print
+("D2Elam0(",tknd,";");
+print
+(f2as,";",sres,";",arrw,";",body,")"))
+//
+|
+D2Efix0
+( tknd, fid0, f2as
+, sres, arrw, body) =>
+(
+print
+("D2Efix0(",tknd,";",fid0,";");
+print
+(f2as,";",sres,";",arrw,";",body,")"))
+//
+|
 D2Eanno
 ( d2e1, s1e2, s2e2 ) =>
 ( print("D2Eanno(")
@@ -479,6 +530,41 @@ A2TDFeqeq(s2e1) =>
 print("A2TDFeqeq(",s2e1,")")
 //
 end (*let*) // end of [a2tdf_fprint]
+//
+(* ****** ****** *)
+//
+#implfun
+s2eff_fprint
+(out, seff) =
+let
+#implfun
+g_print$out<>() = out
+in//let
+case+ seff of
+|
+S2EFFnone() =>
+print("S2EFFnone(", ")")
+|
+S2EFFsome(s2fs) =>
+print("S2EFFsome(",s2fs,")")
+end (*let*) // end of [s2eff_fprint]
+//
+#implfun
+s2res_fprint
+(out, sres) =
+let
+#implfun
+g_print$out<>() = out
+in//let
+case+ sres of
+|
+S2RESnone() =>
+print("S2RESnone(",")")
+|
+S2RESsome(seff, s2e1) =>
+print
+("S2RESsome(",seff,";",s2e1,")")
+end (*let*) // end of [s2res_fprint]
 //
 (* ****** ****** *)
 
