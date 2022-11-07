@@ -505,9 +505,12 @@ f2arg_get_node(f2arg): f2arg_node
 #symload lctn with f2arg_get_lctn
 #symload node with f2arg_get_node
 (* ****** ****** *)
+//
 fun
 f2arg_make_node
-(loc0:loc_t, node:f2arg_node): f2arg
+(loc0:loc_t,node:f2arg_node):f2arg
+#symload f2arg with f2arg_make_node
+//
 (* ****** ****** *)
 //
 datatype
