@@ -72,6 +72,9 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with d1pat_get_lctn
 #symload node with d1pat_get_node
 (* ****** ****** *)
+#symload lctn with f1arg_get_lctn
+#symload node with f1arg_get_node
+(* ****** ****** *)
 #symload lctn with d1exp_get_lctn
 #symload node with d1exp_get_node
 (* ****** ****** *)
@@ -752,16 +755,135 @@ end (*local*) // end of [ local(trans12_d1pat) ]
 (* ****** ****** *)
 
 #implfun
+trans12_f1arg
+( env0,f1a0 ) =
+(
+//
+case+
+f1a0.node() of
+|
+F1ARGdyn0 _ => f0_dyn0(env0, f1a0)
+|
+F1ARGsta0 _ => f0_sta0(env0, f1a0)
+|
+F1ARGmet0 _ => f0_met0(env0, f1a0)
+//
+) where
+{
+//
+(* ****** ****** *)
+//
+fun
+f0_sta0
+( env0:
+! tr12env
+, f1a0: f1arg): f2arg =
+let
+//
+val-
+F1ARGsta0
+(  s1qs  ) = f1a0.node()
+//
+val
+(s2vs, s2ps) =
+trans12_s1qualst(env0, s1qs)
+//
+in
+//
+f2arg(f1a0.lctn(), F2ARGsta0(s2vs, s2ps))
+//
+end (*let*) // end of [f0_sta0(env0,f1a0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dyn0
+( env0
+: !tr12env
+, f1a0: f1arg): f2arg =
+let
+//
+var
+npf1: sint = -1
+//
+val-
+F1ARGdyn0
+(  d1p0  ) = f1a0.node()
+//
+val
+d2ps =
+(
+case+
+d1p0.node() of
+|
+D1Pl1st
+( d1ps ) =>
+trans12_d1patlst(env0, d1ps)
+|
+D1Pl2st
+(dps1, dps2) =>
+(
+npf1 :=
+list_length(dps1);
+list_append(dps1, dps2)
+) where
+{
+val
+dps1 =
+trans12_d1patlst(env0, dps1)
+val
+dps2 =
+trans12_d1patlst(env0, dps2) }
+| _(*non-D1Plist*) =>
+(
+list_sing(trans12_d1pat(env0, d1p0)))
+) : d2patlst // end of [val]
+//
+in//let
+//
+f2arg(f1a0.lctn(), F2ARGdyn0(npf1, d2ps))
+//
+end (*let*) // end of [f0_dyn0(env0,f1a0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_met0
+( env0:
+! tr12env
+, f1a0: f1arg): f2arg =
+let
+//
+val-
+F1ARGmet0
+(  s1es  ) = f1a0.node()
+//
+in//let
+let
+val s2es =
+trans12_s1explst(env0, s1es)
+in//let
+  f2arg(f1a0.lctn(), F2ARGmet0(s2es))
+end (*let*)
+end (*let*) // end of [f0_met0(env0,f1a0)]
+//
+(* ****** ****** *)
+//
+} (*where*) // end of [trans12_f1arg(env0,f1a0)]
+
+(* ****** ****** *)
+
+#implfun
 trans12_d1exp
 ( env0,d1e0 ) = let
 //
-// (*
+(*
 val
 loc0 = d1e0.lctn()
 val () =
 prerrln
 ("trans12_d1exp: d1e0 = ", d1e0)
-// *)
+*)
 //
 in//let
 //
