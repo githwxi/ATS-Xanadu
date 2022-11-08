@@ -82,10 +82,28 @@ dpat.lctn(),D2Pnone1(dpat))
 (* ****** ****** *)
 //
 #implfun
+d2pat_any
+(  loc0  ) =
+(
+ d2pat(loc0, D2Pany()))
+//
+(* ****** ****** *)
+//
+#implfun
 d2pat_var
 (loc0, dvar) =
 (
  d2pat(loc0, D2Pvar(dvar)))
+//
+(* ****** ****** *)
+//
+#implfun
+d2pat_dapp
+(loc0, d2f0, npf1, d2as) =
+(
+d2pat_make_node
+( loc0
+, D2Pdapp(d2f0, npf1, d2as)))
 //
 (* ****** ****** *)
 //

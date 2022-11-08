@@ -165,6 +165,47 @@ end
 (* ****** ****** *)
 //
 fun
+my_d2pat_con1
+( loc0
+: loc_t
+, d2c0
+: d2con): d2pat =
+let  
+val
+narg = d2c0.narg()
+val
+d2p0 = d2pat_con1(loc0, d2c0)
+in
+if
+(narg>0)
+then d2p0 else d2pat_dap0(d2p0)
+end // end of [my_d2pat_con1]
+
+(* ****** ****** *)
+//
+fun
+my_d2pat_sapp
+( loc0
+: loc_t
+, d2p1
+: d2pat
+, s2vs
+: s2varlst): d2pat =
+(
+case-
+d2p1.node() of
+| D2Pdap0(d2p1) =>
+  d2pat_dap0
+  (
+  d2pat_sapp(loc0, d2p1, s2vs)
+  )
+| _ (* non-D2Pdap0 *) =>
+  d2pat_sapp(loc0, d2p1, s2vs)
+)
+//
+(* ****** ****** *)
+//
+fun
 my_d2pat_dapp
 ( loc0
 : loc_t
@@ -173,7 +214,6 @@ my_d2pat_dapp
 , npf1: int
 , d2as
 : d2patlst): d2pat =
-(
 let
 (*
 val () =
@@ -226,49 +266,7 @@ d2a1.node() of
 ) (* end of [list_cons] *)
 ) (* end of [non-D2Pdap0] *)
 //
-end // end of [let]
-) (* end of [my_d2pat_dapp] *)
-//
-(* ****** ****** *)
-
-fun
-my_d2pat_con1
-( loc0
-: loc_t
-, d2c0
-: d2con): d2pat =
-let  
-val
-narg = d2c0.narg()
-val
-d2p0 = d2pat_con1(loc0, d2c0)
-in
-if
-(narg>0)
-then d2p0 else d2pat_dap0(d2p0)
-end // end of [my_d2pat_con1]
-
-(* ****** ****** *)
-//
-fun
-my_d2pat_sapp
-( loc0
-: loc_t
-, d2p1
-: d2pat
-, s2vs
-: s2varlst): d2pat =
-(
-case-
-d2p1.node() of
-| D2Pdap0(d2p1) =>
-  d2pat_dap0
-  (
-  d2pat_sapp(loc0, d2p1, s2vs)
-  )
-| _ (* non-D2Pdap0 *) =>
-  d2pat_sapp(loc0, d2p1, s2vs)
-)
+end (*let*) // end of [my_d2pat_dapp]
 //
 (* ****** ****** *)
 //
