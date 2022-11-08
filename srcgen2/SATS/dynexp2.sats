@@ -513,6 +513,13 @@ f2arg_make_node
 //
 (* ****** ****** *)
 //
+fun
+d2cls_make_node
+(loc0:loc_t,node:d2cls_node):d2cls
+#symload d2cls with d2cls_make_node
+//
+(* ****** ****** *)
+//
 datatype
 d2exp_node =
 //

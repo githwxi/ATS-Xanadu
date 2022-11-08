@@ -399,6 +399,9 @@ tr12env_add0_d2pat
 fun
 tr12env_add0_f2arg
 ( env0: !tr12env, f2a0: f2arg ): void
+fun
+tr12env_add0_d2gpt
+( env0: !tr12env, dgpt: d2gpt ): void
 (* ****** ****** *)
 fun
 tr12env_add0_d2varopt

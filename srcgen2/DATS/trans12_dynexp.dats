@@ -75,6 +75,13 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with f1arg_get_lctn
 #symload node with f1arg_get_node
 (* ****** ****** *)
+#symload lctn with d1gua_get_lctn
+#symload node with d1gua_get_node
+#symload lctn with d1gpt_get_lctn
+#symload node with d1gpt_get_node
+#symload lctn with d1cls_get_lctn
+#symload node with d1cls_get_node
+(* ****** ****** *)
 #symload lctn with d1exp_get_lctn
 #symload node with d1exp_get_node
 (* ****** ****** *)
@@ -911,6 +918,61 @@ end (*let*) // end of [f0_met0(env0,f1a0)]
 (* ****** ****** *)
 //
 } (*where*) // end of [trans12_f1arg(env0,f1a0)]
+
+(* ****** ****** *)
+
+#implfun
+trans12_d1cls
+( env0,d1c0 ) = let
+//
+val
+loc0 = d1c0.lctn()
+//
+(*
+val
+val () =
+prerrln
+("trans12_d1cls: d1c0 = ", d1c0)
+*)
+//
+in//let
+//
+case+
+d1c0.node() of
+|
+D1CLSgpt(dgpt) =>
+d2cls
+( loc0
+, D2CLSgpt(dgpt)) where
+{
+val
+dgpt =
+trans12_d1gpt(env0, dgpt)
+}
+|
+D1CLScls(dgpt, d1e1) =>
+d2cls
+( loc0
+, D2CLScls(dgpt, d2e1)) where
+{
+//
+val () =
+tr12env_pshlam0(env0)//enter
+//
+val
+dgpt =
+trans12_d1gpt(env0, dgpt)
+val () =
+tr12env_add0_d2gpt(env0, dgpt)
+val
+d2e1 = trans12_d1exp(env0, d1e1)
+//
+val//exit
+((*void*)) = tr12env_poplam0(env0)
+//
+} (*where*) // end of [D1CLScls(dgpt,d1e1)]
+//
+end (*let*) // end of [trans12_d1cls(env0,d1c0)]
 
 (* ****** ****** *)
 
