@@ -206,6 +206,27 @@ trans12_q1arglst(env0, q1as) }
 end (*let*) // end of [trans12_t1qag(...)]
 //
 (* ****** ****** *)
+//
+#implfun
+trans12_t1iag
+  (env0, t1ia) = let
+//
+val
+loc0 = t1ia.lctn()
+//
+in//let
+case+
+t1ia.node() of
+|
+T1IAGsome(s1es) =>
+t2iag_make_s2es
+(  loc0, s2es  ) where
+{
+val s2es =
+trans12_s1explst(env0, s1es) }
+end (*let*) // end-of-[trans12_t1iag(...)]
+//
+(* ****** ****** *)
 
 #implfun
 trans12_d1ecl

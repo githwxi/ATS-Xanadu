@@ -299,7 +299,7 @@ s2qag_get_lctn:(s2qag)->loc_t
 fun
 s2qag_get_s2vs:(s2qag)->s2varlst
 //
-#symload s2vs with s2qag_get_s2vs
+#symload lctn with s2qag_get_lctn
 #symload s2vs with s2qag_get_s2vs
 //
 (* ****** ****** *)
@@ -309,8 +309,18 @@ t2qag_get_lctn:(t2qag)->loc_t
 fun
 t2qag_get_s2vs:(t2qag)->s2varlst
 //
+#symload lctn with t2qag_get_lctn
 #symload s2vs with t2qag_get_s2vs
-#symload s2vs with t2qag_get_s2vs
+//
+(* ****** ****** *)
+//
+fun
+t2iag_get_lctn:(t2iag)->loc_t
+fun
+t2iag_get_s2es:(t2iag)->s2explst
+//
+#symload lctn with t2iag_get_lctn
+#symload s2es with t2iag_get_s2es
 //
 (* ****** ****** *)
 fun
@@ -321,6 +331,10 @@ fun
 t2qag_make_s2vs
 (loc0:loc_t,s2vs:s2varlst):t2qag
 #symload t2qag with t2qag_make_s2vs
+fun
+t2iag_make_s2es
+(loc0:loc_t,s2es:s2explst):t2iag
+#symload t2iag with t2iag_make_s2vs
 (* ****** ****** *)
 //
 datatype
