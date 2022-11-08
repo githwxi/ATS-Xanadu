@@ -106,6 +106,9 @@ LEX = "./lexing0.sats"
 #typedef d1ecl = $D1E.d1ecl
 (* ****** ****** *)
 #typedef f1arg = $D1E.f1arg
+#typedef d1gua = $D1E.d1gua
+#typedef d1gpt = $D1E.d1gpt
+#typedef d1cls = $D1E.d1cls
 (* ****** ****** *)
 #typedef s1eff = $D1E.s1eff
 #typedef s1res = $D1E.s1res
@@ -127,6 +130,9 @@ LEX = "./lexing0.sats"
 #typedef d2ecl = $D2E.d2ecl
 (* ****** ****** *)
 #typedef f2arg = $D2E.f2arg
+#typedef d2gua = $D2E.d2gua
+#typedef d2gpt = $D2E.d2gpt
+#typedef d2cls = $D2E.d2cls
 (* ****** ****** *)
 #typedef s2eff = $D2E.s2eff
 #typedef s2res = $D2E.s2res
@@ -171,11 +177,19 @@ LEX = "./lexing0.sats"
 #typedef t1iaglst = $D1E.t1iaglst
 (* ****** ****** *)
 //
-#typedef d1patlst = $D1E.d1patlst
-#typedef d1explst = $D1E.d1explst
-#typedef l1d1plst = $D1E.l1d1plst
-#typedef l1d1elst = $D1E.l1d1elst
+#typedef d1pidopt = $D1E.d1pidopt
 //
+(* ****** ****** *)
+#typedef d1patlst = $D1E.d1patlst
+#typedef l1d1plst = $D1E.l1d1plst
+#typedef d1patopt = $D1E.d1patopt
+(* ****** ****** *)
+#typedef d1explst = $D1E.d1explst
+#typedef l1d1elst = $D1E.l1d1elst
+#typedef d1expopt = $D1E.d1expopt
+(* ****** ****** *)
+#typedef d1gualst = $D1E.d1gualst
+#typedef d1clslst = $D1E.d1clslst
 (* ****** ****** *)
 //
 #typedef d2conlst = $D2E.d2conlst
@@ -201,15 +215,15 @@ LEX = "./lexing0.sats"
 //
 (* ****** ****** *)
 //
-#typedef d1pidopt = $D1E.d1pidopt
-#typedef d1patopt = $D1E.d1patopt
-#typedef d1expopt = $D1E.d1expopt
 #typedef d2patopt = $D2E.d2patopt
 #typedef d2expopt = $D2E.d2expopt
 //
 (* ****** ****** *)
 #typedef f1arglst = $D1E.f1arglst
 #typedef f2arglst = $D2E.f2arglst
+(* ****** ****** *)
+#typedef d2gualst = $D2E.d2gualst
+#typedef d2clslst = $D2E.d2clslst
 (* ****** ****** *)
 //
 #typedef d1eclist = $D1E.d1eclist
@@ -581,6 +595,16 @@ trans12_f1arg
 (env0: !tr12env, f1a0: f1arg): f2arg
 //
 (* ****** ****** *)
+fun
+trans12_d1gua
+(env0: !tr12env, d1g0: d1gua): d2gua
+fun
+trans12_d1gpt
+(env0: !tr12env, dgpt: d1gpt): d2gpt
+fun
+trans12_d1cls
+(env0: !tr12env, d1c0: d1cls): d2cls
+(* ****** ****** *)
 //
 fun
 trans12_d1exp
@@ -653,6 +677,13 @@ trans12_d1patopt:(!tr12env, d1patopt)->d2patopt
 //
 fun
 trans12_f1arglst:(!tr12env, f1arglst)->f2arglst
+//
+(* ****** ****** *)
+//
+fun
+trans12_d1gualst:(!tr12env, d1gualst)->d2gualst
+fun
+trans12_d1clslst:(!tr12env, d1clslst)->d2clslst
 //
 (* ****** ****** *)
 //
