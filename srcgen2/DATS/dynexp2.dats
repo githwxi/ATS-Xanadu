@@ -293,17 +293,110 @@ f2arg_make_node
 (   loc,nod   ) = F2ARG(loc,nod)
 //
 #implfun
-f2arg_get_lctn(tia) =
+f2arg_get_lctn(f2a) =
 let
-  val+F2ARG(loc,nod) = tia in loc
+  val+F2ARG(loc,nod) = f2a in loc
 end
 #implfun
-f2arg_get_node(tia) =
+f2arg_get_node(f2a) =
 let
-  val+F2ARG(loc,nod) = tia in nod
+  val+F2ARG(loc,nod) = f2a in nod
 end
 //
 endloc (*local*) // end of [local(f2arg)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d2gua =
+D2GUA of
+(
+loctn, d2gua_node)
+#absimpl
+d2gua_tbox = d2gua
+//
+in (* in-of-local *)
+//
+#implfun
+d2gua_make_node
+(   loc,nod   ) = D2GUA(loc,nod)
+//
+#implfun
+d2gua_get_lctn(d2g) =
+let
+  val+D2GUA(loc,nod) = d2g in loc
+end
+#implfun
+d2gua_get_node(d2g) =
+let
+  val+D2GUA(loc,nod) = d2g in nod
+end
+//
+endloc (*local*) // end of [local(d2gua)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d2gpt =
+D2GPT of
+(
+loctn, d2gpt_node)
+#absimpl
+d2gpt_tbox = d2gpt
+//
+in (* in-of-local *)
+//
+#implfun
+d2gpt_make_node
+(   loc,nod   ) = D2GPT(loc,nod)
+//
+#implfun
+d2gpt_get_lctn(gpt) =
+let
+  val+D2GPT(loc,nod) = gpt in loc
+end
+#implfun
+d2gpt_get_node(gpt) =
+let
+  val+D2GPT(loc,nod) = gpt in nod
+end
+//
+endloc (*local*) // end of [local(d2gpt)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d2cls =
+D2CLS of
+(
+loctn, d2cls_node)
+#absimpl
+d2cls_tbox = d2cls
+//
+in (* in-of-local *)
+//
+#implfun
+d2cls_make_node
+(   loc,nod   ) = D2CLS(loc,nod)
+//
+#implfun
+d2cls_get_lctn(cls) =
+let
+  val+D2CLS(loc,nod) = cls in loc
+end
+#implfun
+d2cls_get_node(cls) =
+let
+  val+D2CLS(loc,nod) = cls in nod
+end
+//
+endloc (*local*) // end of [local(d2cls)]
 
 (* ****** ****** *)
 
