@@ -1055,6 +1055,14 @@ list_trans12_fnp(env0, dcls, trans12_d1ecl))
 (* ****** ****** *)
 //
 #implfun
+trans12_q1arglst
+  (env0, q1as) =
+list_trans12_fnp(env0, q1as, trans12_q1arg)
+#implfun
+trans12_s1qaglst
+  (env0, sqas) =
+list_trans12_fnp(env0, sqas, trans12_s1qag)
+#implfun
 trans12_t1qaglst
   (env0, tqas) =
 list_trans12_fnp(env0, tqas, trans12_t1qag)

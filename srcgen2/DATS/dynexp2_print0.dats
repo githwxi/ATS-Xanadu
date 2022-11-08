@@ -640,6 +640,31 @@ end(*let*)//end-of-[d2vardcl_fprint(out,dvar)]
 (* ****** ****** *)
 
 #implfun
+d2fundcl_fprint
+  (out, dfun) = let
+//
+val dpid =
+d2fundcl_get_dpid(dfun)
+val farg =
+d2fundcl_get_farg(dfun)
+val sres =
+d2fundcl_get_sres(dfun)
+val tdxp =
+d2fundcl_get_tdxp(dfun)
+val wsxp =
+d2fundcl_get_wsxp(dfun)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print("D2FUNDCL(",dpid,";");
+print(farg,";",sres,";",tdxp,",",wsxp,")"))
+end(*let*)//end-of-[d2fundcl_fprint(out,dfun)]
+
+(* ****** ****** *)
+
+#implfun
 d2parsed_fprint
   (out, dpar) = let
 //
