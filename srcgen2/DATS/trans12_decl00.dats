@@ -90,6 +90,13 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with d1exp_get_lctn
 #symload node with d1exp_get_node
 (* ****** ****** *)
+#symload lctn with s1qag_get_lctn
+#symload node with s1qag_get_node
+#symload lctn with t1qag_get_lctn
+#symload node with t1qag_get_node
+#symload lctn with t1iag_get_lctn
+#symload node with t1iag_get_node
+(* ****** ****** *)
 #symload lctn with d1ecl_get_lctn
 #symload node with d1ecl_get_node
 (* ****** ****** *)
@@ -121,6 +128,26 @@ then the_sort2_vwtp else S2Tnone0()
   val-T_ABSTYPE(knd0) = tknd.node()
 } (*where*) // end of [abstknd_sort2(tknd)]
 //
+(* ****** ****** *)
+
+//
+#implfun
+trans12_t1qag
+  (env0, t1qa) =
+let
+val
+loc0 = t1qa.lctn()
+in//let
+case+
+t1qa.node() of
+|T1QAGsome(q1as) =>
+t2qag_make_s2vs
+(  loc0, s2vs  ) where
+{
+val s2vs =
+trans12_q1arglst(env0, q1as) }
+end (*let*) // end of [trans12_t1qag]
+
 (* ****** ****** *)
 
 #implfun
@@ -1025,6 +1052,17 @@ trans12_d1eclist
 (
 list_trans12_fnp(env0, dcls, trans12_d1ecl))
 
+(* ****** ****** *)
+//
+#implfun
+trans12_t1qaglst
+  (env0, tqas) =
+list_trans12_fnp(env0, tqas, trans12_t1qag)
+#implfun
+trans12_t1iaglst
+  (env0, tias) =
+list_trans12_fnp(env0, tias, trans12_t1iag)
+//
 (* ****** ****** *)
 //
 #implfun
