@@ -941,7 +941,7 @@ case+
 d1g0.node() of
 |
 D1GUAexp(d1e1) =>
-d2gua
+d2gua_make_node
 ( loc0
 , D2GUAexp(d2e1)) where
 {
@@ -950,7 +950,7 @@ trans12_d1exp(env0, d1e1)
 }
 |
 D1GUAmat(d1e1, d1p2) =>
-d2gua
+d2gua_make_node
 ( loc0
 , D2GUAmat(d2e1, d2p2)) where
 {
@@ -961,6 +961,50 @@ d2p2 = trans12_d1pat(env0, d1p2)
 }
 //
 end (*let*) // end of [trans12_d1gua(env0,d1g0)]
+
+(* ****** ****** *)
+
+#implfun
+trans12_d1gpt
+( env0,dgpt ) = let
+//
+val
+loc0 = dgpt.lctn()
+//
+(*
+val
+val () =
+prerrln
+("trans12_d1gpt: dgpt = ", dgpt)
+*)
+//
+in//let
+//
+case+
+dgpt.node() of
+//
+|
+D1GPTpat(d1p1) =>
+d2gpt_make_node
+( loc0
+, D2GPTpat(d2p1)) where
+{
+val d2p1 =
+trans12_d1pat(env0, d1p1)
+}
+|
+D1GPTgua(d1p1, d1gs) =>
+d2gpt_make_node
+( loc0
+, D2GPTgua(d2p1, d2gs)) where
+{
+val
+d2p1 = trans12_d1pat(env0, d1p1)
+val
+d2gs = trans12_d1gualst(env0, d1gs)
+}
+//
+end (*let*) // end of [trans12_d1gpt(env0,dgpt)]
 
 (* ****** ****** *)
 
@@ -984,23 +1028,31 @@ case+
 d1c0.node() of
 |
 D1CLSgpt(dgpt) =>
-d2cls
+d2cls_make_node
 ( loc0
 , D2CLSgpt(dgpt)) where
 {
+//
+val () =
+tr12env_pshlam0(env0)
+//
 val
 dgpt =
 trans12_d1gpt(env0, dgpt)
+//
+val//exit
+((*void*)) = tr12env_poplam0(env0)
+//
 }
 |
 D1CLScls(dgpt, d1e1) =>
-d2cls
+d2cls_make_node
 ( loc0
 , D2CLScls(dgpt, d2e1)) where
 {
 //
 val () =
-tr12env_pshlam0(env0)//enter
+tr12env_pshlam0(env0)
 //
 val
 dgpt =
