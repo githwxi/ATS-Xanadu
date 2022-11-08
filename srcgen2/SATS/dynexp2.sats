@@ -293,9 +293,20 @@ t2qag_fprint:(FILR,t2qag)->void
 fun
 t2iag_fprint:(FILR,t2iag)->void
 (* ****** ****** *)
+//
+fun
+t2qag_get_lctn:(t2qag)->loc_t
 fun
 t2qag_get_s2vs:(t2qag)->s2varlst
+//
 #symload s2vs with t2qag_get_s2vs
+#symload s2vs with t2qag_get_s2vs
+//
+(* ****** ****** *)
+fun
+t2qag_make_s2vs
+(loc0:loc_t,s2vs:s2varlst):t2qag
+#symload t2qag with t2qag_make_s2vs
 (* ****** ****** *)
 //
 datatype

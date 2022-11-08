@@ -172,6 +172,7 @@ LEX = "./lexing0.sats"
 #typedef s2varopt = $S2E.s2varopt
 #typedef s2expopt = $S2E.s2expopt
 (* ****** ****** *)
+#typedef q1arglst = $D1E.q1arglst
 #typedef s1qaglst = $D1E.s1qaglst
 #typedef t1qaglst = $D1E.t1qaglst
 #typedef t1iaglst = $D1E.t1iaglst
@@ -619,8 +620,17 @@ trans12_l1d1e
 (* ****** ****** *)
 //
 fun
+trans12_q1arg
+(env0: !tr12env, q1a0: q1arg): s2var
+fun
+trans12_s1qag
+(env0: !tr12env, s1qa: s1qag): s2qag
+fun
 trans12_t1qag
 (env0: !tr12env, t1qa: t1qag): t2qag
+fun
+trans12_t1iag
+(env0: !tr12env, t1ia: t1iag): t2iag
 //
 (* ****** ****** *)
 //
@@ -701,7 +711,13 @@ trans12_d1expopt:(!tr12env, d1expopt)->d2expopt
 (* ****** ****** *)
 //
 fun
+trans12_q1arglst:(!tr12env, q1arglst)->s2varlst
+fun
+trans12_s1qaglst:(!tr12env, s1qaglst)->s2qaglst
+fun
 trans12_t1qaglst:(!tr12env, t1qaglst)->t2qaglst
+fun
+trans12_t1iaglst:(!tr12env, t1iaglst)->t2iaglst
 //
 (* ****** ****** *)
 //
