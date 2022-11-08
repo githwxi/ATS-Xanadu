@@ -514,8 +514,16 @@ f2arg_make_node
 (* ****** ****** *)
 //
 fun
+d2gua_make_node
+(loc0:loc_t,node:d2gua_node):d2gua
+fun
+d2gpt_make_node
+(loc0:loc_t,node:d2gpt_node):d2gpt
+fun
 d2cls_make_node
 (loc0:loc_t,node:d2cls_node):d2cls
+#symload d2gua with d2gua_make_node
+#symload d2gpt with d2gpt_make_node
 #symload d2cls with d2cls_make_node
 //
 (* ****** ****** *)

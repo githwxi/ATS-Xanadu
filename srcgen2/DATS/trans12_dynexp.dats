@@ -922,6 +922,49 @@ end (*let*) // end of [f0_met0(env0,f1a0)]
 (* ****** ****** *)
 
 #implfun
+trans12_d1gua
+( env0,d1g0 ) = let
+//
+val
+loc0 = d1g0.lctn()
+//
+(*
+val
+val () =
+prerrln
+("trans12_d1gua: d1g0 = ", d1g0)
+*)
+//
+in//let
+//
+case+
+d1g0.node() of
+|
+D1GUAexp(d1e1) =>
+d2gua
+( loc0
+, D2GUAexp(d2e1)) where
+{
+val d2e1 =
+trans12_d1exp(env0, d1e1)
+}
+|
+D1GUAmat(d1e1, d1p2) =>
+d2gua
+( loc0
+, D2GUAmat(d2e1, d2p2)) where
+{
+val
+d2e1 = trans12_d1exp(env0, d1e1)
+val
+d2p2 = trans12_d1pat(env0, d1p2)
+}
+//
+end (*let*) // end of [trans12_d1gua(env0,d1g0)]
+
+(* ****** ****** *)
+
+#implfun
 trans12_d1cls
 ( env0,d1c0 ) = let
 //

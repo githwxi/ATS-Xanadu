@@ -58,15 +58,20 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trans12.sats"
 (* ****** ****** *)
-//
-#staload _ = "./xsymmap_stkmap.dats"
-#staload _ = "./staexp2_print0.dats"
-//
-(* ****** ****** *)
 #symload name with s2cst_get_name
 #symload name with s2var_get_name
 (* ****** ****** *)
 #symload name with d2var_get_name
+(* ****** ****** *)
+#symload node with d2pat_get_node
+(* ****** ****** *)
+#symload node with f2arg_get_node
+#symload node with d2gpt_get_node
+(* ****** ****** *)
+//
+#staload _ = "./xsymmap_stkmap.dats"
+#staload _ = "./staexp2_print0.dats"
+//
 (* ****** ****** *)
 
 local
@@ -1240,6 +1245,22 @@ tr12env_add0_d2patlst(env0, d2ps)
 (* ****** ****** *)
 //
 #implfun
+tr12env_add0_d2gpt
+  (env0, dgpt) =
+(
+case+
+dgpt.node() of
+|
+D2GPTpat(d2p1) =>
+tr12env_add0_d2pat(env0, d2p1)
+|
+D2GPTgua(d2p1, d2gs) =>
+tr12env_add0_d2pat(env0, d2p1)
+) (*case+*)//end[tr12env_add0_d2gpt(env0,dgpt)]
+//
+(* ****** ****** *)
+//
+#implfun
 tr12env_add0_d2varopt
   (env0, opt0) =
 (
@@ -1249,7 +1270,8 @@ case+ opt0 of
 ((*nil*)) => ((*void*))
 //
 |optn_cons
-(  d2v0  ) => tr12env_add0_d2var(env0, d2v0)
+(  d2v0  ) =>
+tr12env_add0_d2var(env0, d2v0)
 //
 ) (*case+*)//end(tr12env_add0_d2varopt(env0,...))
 //
