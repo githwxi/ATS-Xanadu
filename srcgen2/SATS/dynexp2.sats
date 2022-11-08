@@ -295,6 +295,16 @@ t2iag_fprint:(FILR,t2iag)->void
 (* ****** ****** *)
 //
 fun
+s2qag_get_lctn:(s2qag)->loc_t
+fun
+s2qag_get_s2vs:(s2qag)->s2varlst
+//
+#symload s2vs with s2qag_get_s2vs
+#symload s2vs with s2qag_get_s2vs
+//
+(* ****** ****** *)
+//
+fun
 t2qag_get_lctn:(t2qag)->loc_t
 fun
 t2qag_get_s2vs:(t2qag)->s2varlst
@@ -303,6 +313,10 @@ t2qag_get_s2vs:(t2qag)->s2varlst
 #symload s2vs with t2qag_get_s2vs
 //
 (* ****** ****** *)
+fun
+s2qag_make_s2vs
+(loc0:loc_t,s2vs:s2varlst):s2qag
+#symload t2qag with s2qag_make_s2vs
 fun
 t2qag_make_s2vs
 (loc0:loc_t,s2vs:s2varlst):t2qag

@@ -685,9 +685,11 @@ d2parsed_get_parsed(dpar)
 //
 in//let
 (
-print("D2PARSED(");
-print(stadyn,";",nerror,";",source,";",parsed,")"))
-end(*let*)//end-of-[d2parsed_fprint(out,dpar)]
+print
+("D2PARSED(");
+print
+(stadyn,";",nerror,";",source,";",parsed,")"))
+end (*let*) // end-of-[d2parsed_fprint(out,dpar)]
 
 (* ****** ****** *)
 

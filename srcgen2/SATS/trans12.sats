@@ -148,6 +148,7 @@ LEX = "./lexing0.sats"
 #typedef teqd2exp = $D2E.teqd2exp
 (* ****** ****** *)
 #typedef sort1lst = $S1E.sort1lst
+#typedef sort1opt = $S1E.sort1opt
 (* ****** ****** *)
 #typedef s1arglst = $S1E.s1arglst
 #typedef s1maglst = $S1E.s1maglst
@@ -163,6 +164,8 @@ LEX = "./lexing0.sats"
 #typedef s1expopt = $S1E.s1expopt
 (* ****** ****** *)
 #typedef sort2lst = $S2E.sort2lst
+#typedef sort2opt = $S2E.sort2opt
+(* ****** ****** *)
 #typedef s2cstlst = $S2E.s2cstlst
 #typedef s2varlst = $S2E.s2varlst
 #typedef s2explst = $S2E.s2explst
@@ -514,6 +517,10 @@ fun
 trans12_sort1lst
 ( env0:
 ! tr12env, s1ts: sort1lst): sort2lst
+fun
+trans12_sort1opt
+( env0:
+! tr12env, topt: sort1opt): sort2opt
 //
 (* ****** ****** *)
 fun
