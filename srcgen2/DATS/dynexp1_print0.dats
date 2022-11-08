@@ -296,14 +296,17 @@ print
 ("D1Ea2pp(",d1f0,";",d1e1,";",d1e2,")")
 //
 |
-D1Esarg(s1es) =>
+D1Esarg
+(  s1es  ) =>
 print("D1Esarg(",s1es,")")
 |
-D1Etarg(s1es) =>
+D1Etarg
+(  s1es  ) =>
 print("D1Etarg(",s1es,")")
 //
 |
-D1El1st(d1es) =>
+D1El1st
+(  d1es  ) =>
 print("D1El1st(",d1es,")")
 |
 D1El2st
@@ -312,7 +315,8 @@ print
 ("D1El2st(",des1,";",des2,")")
 //
 |
-D1Es1eq(d1es) =>
+D1Es1eq
+(  d1es  ) =>
 print("D1Es1eq(",d1es,")")
 |
 D1Es2eq
@@ -335,14 +339,17 @@ print("D1Ecas0(");
 print(tknd,";",d1e1,";",d1cs,")"))
 //
 |
-D1Elet0(d1cs,d1e1) =>
+D1Elet0
+(d1cs,d1e1) =>
 print("D1Elet0(",d1cs,";",d1e1,")")
 |
-D1Ewhere(d1e1,d1cs) =>
+D1Ewhere
+(d1e1,d1cs) =>
 print("D1Ewhere(",d1e1,";",d1cs,")")
 //
 |
-D1Ebrckt(d1es) =>
+D1Ebrckt
+(  d1es  ) =>
 print("D1Ebrckt(",d1es,")")
 |
 D1Edtsel
@@ -351,29 +358,31 @@ D1Edtsel
  print(tknd,";",lab1,";",dopt,")"))
 //
 |
-D1Et1up(tknd,d1es) =>
+D1Et1up
+(tknd,d1es) =>
 (
 print("D1Et1up(",tknd,";",d1es,")"))
 |
 D1Et2up
-(tknd, des1, des2) =>
+(tknd,des1,des2) =>
 ( print("D1Et2up(")
 ; print(tknd,";",des1,";",des2,")"))
 //
 |
-D1Er1cd(tknd,ldes) =>
+D1Er1cd
+(tknd,ldes) =>
 (
 print("D1Er1cd(",tknd,";",ldes,")"))
 |
 D1Er2cd
-(tknd, lds1, lds2) =>
+(tknd,lds1,lds2) =>
 ( print("D1Er2cd(")
 ; print(tknd,";",lds1,";",lds2,")"))
 //
 |
 D1Elam0
-( tknd, f1as
-, sres, arrw, d1e1) =>
+(tknd,f1as
+,sres,arrw,d1e1) =>
 (
 print
 ("D1Elam0(",tknd,";");
@@ -382,8 +391,8 @@ print
 //
 |
 D1Efix0
-( tknd, fid0, f1as
-, sres, arrw, d1e1) =>
+(tknd,fid0,f1as
+,sres,arrw,d1e1) =>
 (
 print
 ("D1Efix0(",tknd,";",fid0,";");
@@ -398,11 +407,13 @@ print("D1Etry0(");
 print(tknd,";",d1e1,";",d1cs,")"))
 //
 |
-D1Eanno(d1e1,s1e2) =>
+D1Eanno
+(d1e1,s1e2) =>
 print("D1Eanno(",d1e1,";",s1e2,")")
 //
 |
-D1Equal(tok1,d1e2) =>
+D1Equal
+(tok1,d1e2) =>
 print("D1Equal(",tok1,";",d1e2,")")
 //
 |

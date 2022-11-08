@@ -132,6 +132,72 @@ d2pat_sapp(loc0, d2f0, s2vs))
 (* ****** ****** *)
 //
 fun
+my_d2pat_dapp
+( loc0: loc_t
+, d2f0: d2pat
+, npf1: (sint)
+, d2as: d2patlst): d2pat =
+let
+(*
+val () =
+prerrln
+("my_d2pat_dapp: d2f0 = ", d2f0)
+val () =
+prerrln
+("my_d2pat_dapp: d2as = ", d2as)
+*)
+in//let
+//
+case+
+d2f0.node() of
+|
+D2Pdap0(d2f0) =>
+(
+case+ d2as of
+|
+list_nil() =>
+d2pat_dapp
+(loc0, d2f0, npf1, d2as)
+|
+list_cons(d2a1, _) =>
+(
+case+
+d2a1.node() of
+|
+D2Parg() => 
+d2pat(loc0, D2Pdap1(d2f0))
+|
+_(*non-D2Parg*) =>
+d2pat_dapp(loc0, d2f0, npf1, d2as)
+)
+) (*case+*) // end-of-(D2Pdap0)
+|
+_(* non-D2Pdap0 *) =>
+(
+case+ d2as of
+|
+list_nil() =>
+d2pat_dapp
+(loc0, d2f0, npf1, d2as)
+|
+list_cons(d2a1, _) =>
+(
+case+
+d2a1.node() of
+|
+D2Parg() =>
+d2pat(loc0, D2Pdap1(d2f0))
+|
+_(*non-D2Parg*) =>
+d2pat_dapp(loc0, d2f0, npf1, d2as)
+) (* end of [list_cons] *)
+) (*case+*) // end of [non-D2Pdap0]
+//
+end (*let*) // end-of-[my_d2pat_dapp]
+//
+(* ****** ****** *)
+//
+fun
 my_d2exp_sapp
 ( loc0: loc_t
 , d2e1: d2exp
@@ -188,6 +254,20 @@ d2exp_dapp(loc0, d2f0, npf1, d2as)
 |
 _ (*non-D2Edap0*) =>
 d2exp_dapp(loc0, d2f0, npf1, d2as)
+)
+//
+(* ****** ****** *)
+//
+fun
+d2pat_any2arg
+(d2p0: d2pat): d2pat =
+(
+case+
+d2p0.node() of
+|
+D2Pany() =>
+d2pat_make_node
+(d2p0.lctn(),D2Parg()) | _(*else*) => d2p0
 )
 //
 (* ****** ****** *)
@@ -430,19 +510,21 @@ in//let
 d2pat_make_node(loc0, D2Pstr(tok))
 end (*let*) // end of [D1Pstr(tok)]
 //
-|D1Pb0sh _  => d2pat_none1(d1p0)
-|D1Pb1sh _  => f0_b1sh(env0, d1p0)
+|D1Pb0sh _ => d2pat_none1(d1p0)
+|D1Pb1sh _ => f0_b1sh(env0, d1p0)
 //
-|D1Pl1st _  => f0_l1st(env0, d1p0)
-|D1Pl2st _  => f0_l2st(env0, d1p0)
+|D1Pa1pp _ => f0_a1pp(env0, d1p0)
 //
-|D1Pt1up _  => f0_t1up(env0, d1p0)
-|D1Pt2up _  => f0_t2up(env0, d1p0)
+|D1Pl1st _ => f0_l1st(env0, d1p0)
+|D1Pl2st _ => f0_l2st(env0, d1p0)
 //
-|D1Pr1cd _  => f0_r1cd(env0, d1p0)
-|D1Pr2cd _  => f0_r2cd(env0, d1p0)
+|D1Pt1up _ => f0_t1up(env0, d1p0)
+|D1Pt2up _ => f0_t2up(env0, d1p0)
 //
-|D1Panno _  => f0_anno(env0, d1p0)
+|D1Pr1cd _ => f0_r1cd(env0, d1p0)
+|D1Pr2cd _ => f0_r2cd(env0, d1p0)
+//
+|D1Panno _ => f0_anno(env0, d1p0)
 //
 | _(* otherwise *) => d2pat_none1(d1p0)
 //
@@ -554,15 +636,60 @@ f0_a1pp_rest
 , d1p0: d1pat): d2pat =
 let
 //
+val
+loc0 = d1p0.lctn()
+//
 val-
 D1Pa1pp
 ( d1f0
 , d1p1) = d1p0.node()
 //
-val d2p1 = f0_main(env0, d1f0)
+val
+d2f0 = f0_main(env0, d1f0)
+//
+val npf1 =
+(
+case+
+d1p1.node() of
+|
+D1Pl2st
+(dps1, dps2) =>
+list_length<d1pat>(dps1)
+|
+_(* non-D2Plist *) => -1): sint
+//
+val d2ps =
+(
+case+
+d1p1.node() of
+|
+D1Pl1st
+( d1ps ) =>
+trans12_d1patlst(env0, d1ps)
+|
+D1Pl2st
+(dps1, dps2) =>
+(
+list_append(dps1, dps2)) where
+{
+val
+dps1 = trans12_d1patlst(env0, dps1)
+val
+dps2 = trans12_d1patlst(env0, dps2)
+}
+|
+_(* non-D2Plist *) =>
+let
+val d2p1 =
+trans12_d1pat(env0, d1p1)
+in//let
+  list_sing(d2pat_any2arg(d2p1))
+end (*let*) // end-of(non-D2Plist)
+//
+) : d2patlst // end of [ val(d2ps) ]
 //
 in//let
-  d2pat_none1(d1p0)
+  my_d2pat_dapp(loc0, d2f0, npf1, d2ps)
 end (*let*) // end of [f0_a1pp_rest(_, _)]
 //
 (* ****** ****** *)
@@ -1525,7 +1652,7 @@ D1El2st
 (des1, des2) =>
 list_length<d1exp>(des1)
 |
-_(* non-D2Elist *) => -1): int
+_(* non-D2Elist *) => -1): sint
 //
 val d2es =
 (

@@ -329,9 +329,11 @@ print("D2Econ2(", d2cs, ")")
 |D2Ecst2(d2cs) =>
 print("D2Ecst2(", d2cs, ")")
 //
-|D2Esapp(d2e1,s2es) =>
+|D2Esapp
+(d2e1, s2es) =>
 print("D2Esapp(",d2e1,";",s2es,")")
-|D2Etapp(d2e1,s2es) =>
+|D2Etapp
+(d2e1, s2es) =>
 print("D2Etapp(",d2e1,";",s2es,")")
 //
 |
@@ -339,58 +341,71 @@ D2Edap0(d2f0) =>
 print("D2Edap0(", d2f0, ")")
 |
 D2Edapp
-( d2f0, npf1, d2es ) =>
+(d2f0,npf1,d2es) =>
 ( print("D2Edapp(")
 ; print(d2f0,";",npf1,";",d2es,")"))
 //
 |
-D2Elet0(dcls, d2e1) =>
+D2Elet0
+(dcls, d2e1) =>
 (
 print("D2Elet0(",dcls,";",d2e1,")"))
 |
-D2Ewhere(d2e1, dcls) =>
+D2Ewhere
+(d2e1, dcls) =>
 print("D2Ewhere(",d2e1,";",dcls,")")
 //
 |D2Eif0
-( d2e1, dthn, dels ) =>
+(d2e1,dthn,dels) =>
 ( print("D2Eif0(")
 ; print(d2e1,";",dthn,";",dels,")"))
 //
 |
-D2Eassgn(d2el, d2er) =>
+D2Ecas0
+(tknd,d2e1,d2cs) =>
+( print("D2Ecas0(");
+  print(tknd,";",d2e1,";",d2cs,")"))
+//
+|
+D2Eassgn
+(d2el, d2er) =>
 print("D2Eassgn(",d2el,";",d2er,")")
 |
-D2Ebrckt(dpis, d2es) =>
+D2Ebrckt
+(dpis, d2es) =>
 print("D2Ebrckt(",dpis,";",d2es,")")
 //
-|D2Eseqn(d2es, d2e1) =>
+|D2Eseqn
+(d2es, d2e1) =>
 (
 print("D2Eseqn(",d2es,";",d2e1,")"))
 //
-|D2Etup0(npf1, d2es) =>
+|D2Etup0
+(npf1, d2es) =>
 (
 print("D2Etup0(",npf1,";",d2es,")"))
 (*
-|D2Ercd0(npf1, ldes) =>
+|D2Ercd0
+(npf1, ldes) =>
 (
 print("D2Ercd0(",npf1,";",ldes,")"))
 *)
 //
 |
 D2Etup1
-( tknd, npf1, d2es ) =>
+(tknd,npf1,d2es) =>
 ( print("D2Etup1(")
 ; print(tknd,";",npf1,";",d2es,")") )
 |
 D2Ercd2
-( tknd, npf1, ldes ) =>
+(tknd,npf1,ldes) =>
 ( print("D2Ercd2(")
 ; print(tknd,";",npf1,";",ldes,")") )
 //
 |
 D2Elam0
-( tknd, f2as
-, sres, arrw, body) =>
+(tknd,f2as
+,sres,arrw,body) =>
 (
 print
 ("D2Elam0(",tknd,";");
@@ -399,8 +414,8 @@ print
 //
 |
 D2Efix0
-( tknd, fid0, f2as
-, sres, arrw, body) =>
+(tknd,fid0,f2as
+,sres,arrw,body) =>
 (
 print
 ("D2Efix0(",tknd,";",fid0,";");
@@ -409,13 +424,15 @@ print
 //
 |
 D2Eanno
-( d2e1, s1e2, s2e2 ) =>
+(d2e1,s1e2,s2e2) =>
 ( print("D2Eanno(")
 ; print(d2e1,";",s1e2,";",s2e2,")") )
 //
 |
-D2Eexists(s2es,d2e1) =>
-print("D2Eexists(",s2es,";",d2e1,")")
+D2Eexists
+(s2es,d2e1) =>
+(
+print("D2Eexists(",s2es,";",d2e1,")"))
 //
 |
 D2Enone0() => print( "D2Enone0(",")" )

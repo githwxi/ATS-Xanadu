@@ -370,7 +370,7 @@ D0Efix0
 (tknd,fid0,farg,sres,arrw,body,tend) =>
 (
 print
-("D0Elfix0(");
+("D0Efix0(");
 print(tknd,";",fid0,";",farg,";");
 print(sres,";",arrw,";",body,";",tend,")"))
 //
