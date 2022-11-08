@@ -970,6 +970,56 @@ end (*let*) // end of [trans12_d1vardcl(env0, dvar)]
 (* ****** ****** *)
 
 #implfun
+trans12_d1fundcl
+  (env0, dfun) =
+let
+//
+val loc0 =
+d1fundcl_get_lctn(dfun)
+//
+val dpid =
+d1fundcl_get_dpid(dfun)
+//
+val farg =
+d1fundcl_get_farg(dfun)
+val sres =
+d1fundcl_get_sres(dfun)
+//
+val wsxp =
+d1fundcl_get_wsxp(dfun)
+val tdxp =
+d1fundcl_get_tdxp(dfun)
+//
+val () =
+tr12env_pshlam0(env0)//enter
+//
+val dpid =
+trans12_d1pid(env0, dpid)
+//
+val wsxp =
+trans12_wths1exp(env0, wsxp)
+//
+val farg =
+trans12_f1arglst(env0, farg)
+//
+val
+sres = trans12_s1res(env0, sres)
+//
+val () =
+tr12env_add0_f2arglst(env0,farg)
+//
+val
+tdxp = trans12_teqd1exp(env0, tdxp)
+//
+val () = tr12env_poplam0(env0)//exit
+//
+in//let
+d2fundcl(loc0, dpid, farg, sres, tdxp, wsxp)
+end (*let*)//end-of-[trans12_d1fundcl(env0,dfun)]
+
+(* ****** ****** *)
+
+#implfun
 trans12_d1eclist
   (env0, dcls) =
 (
