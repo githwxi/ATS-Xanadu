@@ -90,6 +90,8 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with d1exp_get_lctn
 #symload node with d1exp_get_node
 (* ****** ****** *)
+#symload lctn with q1arg_get_lctn
+#symload node with q1arg_get_node
 #symload lctn with s1qag_get_lctn
 #symload node with s1qag_get_node
 #symload lctn with t1qag_get_lctn
@@ -130,6 +132,60 @@ then the_sort2_vwtp else S2Tnone0()
 //
 (* ****** ****** *)
 
+#implfun
+trans12_q1arg
+( env0,q1a0 ) =
+(
+case+
+q1a0.node() of
+|
+Q1ARGsome(tok1, opt2) =>
+let
+//
+val
+opt2 =
+trans12_sort1opt(env0, opt2)
+//
+val s2t2 =
+(
+case+ opt2 of
+|
+optn_nil() => S2Tnone0()
+|
+optn_cons(s2t2) => (s2t2)
+) : sort2 // end of [val(s2t2)]
+//
+in//let
+//
+let
+val sid1 = sexpid_sym(tok1)
+in//let
+  s2var_make_idst(sid1, s2t2) end
+//
+end (*let*) // end of [Q1ARGsome(...)]
+) (*case+*) // end of [trans12_q1arg(...)]
+
+(* ****** ****** *)
+//
+#implfun
+trans12_s1qag
+  (env0, s1qa) =
+let
+val
+loc0 = s1qa.lctn()
+in//let
+case+
+s1qa.node() of
+|
+S1QAGsome(q1as) =>
+s2qag_make_s2vs
+(  loc0, s2vs  ) where
+{
+val s2vs =
+trans12_q1arglst(env0, q1as) }
+end (*let*) // end of [trans12_s1qag(...)]
+//
+(* ****** ****** *)
 //
 #implfun
 trans12_t1qag
@@ -140,14 +196,15 @@ loc0 = t1qa.lctn()
 in//let
 case+
 t1qa.node() of
-|T1QAGsome(q1as) =>
+|
+T1QAGsome(q1as) =>
 t2qag_make_s2vs
 (  loc0, s2vs  ) where
 {
 val s2vs =
 trans12_q1arglst(env0, q1as) }
-end (*let*) // end of [trans12_t1qag]
-
+end (*let*) // end of [trans12_t1qag(...)]
+//
 (* ****** ****** *)
 
 #implfun
