@@ -618,6 +618,98 @@ endloc (*local*) // end of [ local(d2vardcl) ]
 local
 //
 datatype
+d2fundcl =
+D2FUNDCL of
+( loc_t
+, d2var
+, f2arglst
+, s2res
+, teqd2exp, wths2exp)
+//
+#absimpl
+d2fundcl_tbox = d2fundcl
+//
+in//local
+
+#implfun
+d2fundcl_get_lctn
+  (  dfun  ) = let
+val+
+D2FUNDCL
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in lctn end
+
+#implfun
+d2fundcl_get_dpid
+  (  dfun  ) = let
+val+
+D2FUNDCL
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in dpid end
+
+#implfun
+d2fundcl_get_farg
+  (  dfun  ) = let
+val+
+D2FUNDCL
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in farg end
+
+#implfun
+d2fundcl_get_sres
+  (  dfun  ) = let
+val+
+D2FUNDCL
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in sres end
+
+(* ****** ****** *)
+
+#implfun
+d2fundcl_get_tdxp
+  (  dfun  ) = let
+val+
+D2FUNDCL
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in tdxp end
+
+#implfun
+d2fundcl_get_wsxp
+  (  dfun  ) = let
+val+
+D2FUNDCL
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in wsxp end
+
+(* ****** ****** *)
+
+#implfun
+d2fundcl_make_args
+( lctn
+, dpid, farg, sres, tdxp, wsxp) =
+(
+D2FUNDCL
+(lctn, dpid, farg, sres, tdxp, wsxp))
+
+endloc (*local*) // end of [ local(d2fundcl) ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 d2parsed =
 D2PARSED of
 (

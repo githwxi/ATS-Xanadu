@@ -861,6 +861,23 @@ d2vardcl_get_dini:(d2vardcl)->teqd2exp
 #symload sres with d2vardcl_get_sres(*opt*)
 #symload dini with d2vardcl_get_dini(*opt*)
 (* ****** ****** *)
+fun
+d2fundcl_get_dpid:(d2fundcl)->d2var
+fun
+d2fundcl_get_farg:(d2fundcl)->f2arglst
+fun
+d2fundcl_get_sres:(d2fundcl)->s2res
+fun
+d2fundcl_get_tdxp:(d2fundcl)->teqd2exp
+fun
+d2fundcl_get_wsxp:(d2fundcl)->wths2exp
+(* ****** ****** *)
+#symload dpid with d2fundcl_get_dpid
+#symload farg with d2fundcl_get_farg(*lst*)
+#symload sres with d2fundcl_get_sres(*opt*)
+#symload tdxp with d2fundcl_get_tdxp(*opt*)
+#symload wsxp with d2fundcl_get_wsxp(*opt*)
+(* ****** ****** *)
 //
 fun
 d2valdcl_make_args
@@ -873,6 +890,18 @@ d2vardcl_make_args
 , dpid:d2var
 , vpid:d2varopt
 , sres:s2expopt, dini:teqd2exp):d2vardcl
+//
+fun
+d2fundcl_make_args
+( lctn:loc_t
+, dpid:d2var
+, farg:f2arglst
+, sres:s2res
+, tdxp:teqd2exp, wsxp:wths2exp):d2fundcl
+//
+#symload d2valdcl with d2valdcl_make_args
+#symload d2vardcl with d2vardcl_make_args
+#symload d2fundcl with d2fundcl_make_args
 //
 (* ****** ****** *)
 

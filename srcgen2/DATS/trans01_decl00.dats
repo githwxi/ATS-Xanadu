@@ -1575,6 +1575,11 @@ d0fundcl_get_dpid(dfun)
 val dpid =
 trans01_i0dnt(tenv, dpid)
 //
+val wsxp =
+d0fundcl_get_wsxp(dfun)
+val wsxp =
+trans01_wths0exp(tenv, wsxp)
+//
 val farg =
 d0fundcl_get_farg(dfun)
 val farg =
@@ -1589,11 +1594,6 @@ val tdxp =
 d0fundcl_get_tdxp(dfun)
 val tdxp =
 trans01_teqd0exp(tenv, tdxp)
-//
-val wsxp =
-d0fundcl_get_wsxp(dfun)
-val wsxp =
-trans01_wths0exp(tenv, wsxp)
 //
 in//let
 d1fundcl(loc0, dpid, farg, sres, tdxp, wsxp)
