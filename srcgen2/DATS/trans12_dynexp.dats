@@ -200,20 +200,20 @@ end (*let*) // end-of-[my_d2pat_dapp]
 fun
 my_d2exp_sapp
 ( loc0: loc_t
-, d2e1: d2exp
+, d2f0: d2exp
 , s2es: s2explst): d2exp =
 (
 case-
-d2e1.node() of
+d2f0.node() of
 |
-D2Edap0(d2e1) =>
+D2Edap0(d2f0) =>
 d2exp_dap0
 (
-d2exp_sapp(loc0, d2e1, s2es)
+d2exp_sapp(loc0, d2f0, s2es)
 )
 |
 _(* non-D2Edap0 *) =>
-d2exp_sapp(loc0, d2e1, s2es)
+d2exp_sapp(loc0, d2f0, s2es)
 ) (*case-*) // end-of-[my_d2exp_sapp]
 //
 (* ****** ****** *)
@@ -221,20 +221,20 @@ d2exp_sapp(loc0, d2e1, s2es)
 fun
 my_d2exp_tapp
 ( loc0: loc_t
-, d2e1: d2exp
+, d2f0: d2exp
 , s2es: s2explst): d2exp =
 (
 case-
-d2e1.node() of
+d2f0.node() of
 |
-D2Edap0(d2e1) =>
+D2Edap0(d2f0) =>
 d2exp_dap0
 (
-d2exp_tapp(loc0, d2e1, s2es)
+d2exp_tapp(loc0, d2f0, s2es)
 )
 |
 _ (* non-D2Edap0 *) =>
-d2exp_tapp(loc0, d2e1, s2es)
+d2exp_tapp(loc0, d2f0, s2es)
 ) (*case-*) // end-of-[my_d2exp_tapp]
 //
 (* ****** ****** *)

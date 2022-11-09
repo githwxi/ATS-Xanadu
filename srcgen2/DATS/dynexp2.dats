@@ -131,6 +131,19 @@ d2exp_var
 (* ****** ****** *)
 //
 #implfun
+d2exp_sapp
+(loc0, d2f0, s2es) =
+d2exp_make_node
+(loc0, D2Esapp(d2f0, s2es))
+#implfun
+d2exp_tapp
+(loc0, d2f0, s2es) =
+d2exp_make_node
+(loc0, D2Etapp(d2f0, s2es))
+//
+(* ****** ****** *)
+//
+#implfun
 d2exp_a2pp
 (loc0, d2f0, d2a1, d2a2) =
 (

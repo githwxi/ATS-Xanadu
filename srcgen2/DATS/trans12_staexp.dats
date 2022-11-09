@@ -1473,12 +1473,16 @@ s2exp_cast(s1e1.lctn(), s2e1, s2t2)
 end (*let*)//end-of[trans12_s1exp_stck(env0,...)]
 
 (* ****** ****** *)
-
+//
 #implfun
 trans12_sort1lst
   (env0, s1ts) =
 list_trans12_fnp(env0, s1ts, trans12_sort1)
-
+#implfun
+trans12_sort1opt
+  (env0, sopt) =
+optn_trans12_fnp(env0, sopt, trans12_sort1)
+//
 (* ****** ****** *)
 
 #implfun
