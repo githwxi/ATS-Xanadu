@@ -683,6 +683,31 @@ trans12_d1fundcl:(!tr12env, d1fundcl)->d2fundcl
 (* ****** ****** *)
 //
 fun
+trans12_datype
+( env0:
+! tr12env
+, d1t0: d1atype, s2t0: sort2): s2cst
+fun
+trans12_datypelst
+( s2t0: sort2
+, d1ts: d1atypelst, s2t0: sort2): s2cstlst
+//
+fun
+trans12_d1atcon
+( env0:
+! tr12env
+, t1cn: d1atcon, s2c0: s2cst
+, tqas: tq2arglst, svss: s2varlstlst): d2con
+fun
+trans12_d1atconlst
+( env0:
+! tr12env
+, tcns: d1atconlst, s2c0: s2cst
+, tqas: tq2arglst, svss: s2varlstlst): d2conlst
+//
+(* ****** ****** *)
+//
+fun
 trans12_d1pidopt:(!tr12env, d1pidopt)->d2varopt
 //
 fun

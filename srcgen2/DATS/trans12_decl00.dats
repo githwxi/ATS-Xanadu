@@ -300,6 +300,11 @@ D1Cvardclst _ => f0_vardclst(env0, d1cl)
 |
 D1Cfundclst _ => f0_fundclst(env0, d1cl)
 //
+|
+D1Cexcptcon _ => f0_excptcon(env0, d1cl)
+|
+D1Cdatatype _ => f0_datatype(env0, d1cl)
+//
 |_(*otherwise*) =>
 let
 val loc0 = d1cl.lctn()
@@ -943,7 +948,7 @@ in//let
 end (*let*) // end of [f0_vardclst(env0,d1cl)]
 
 (* ****** ****** *)
-
+//
 fun
 f0_fundclst
 ( env0:
@@ -966,7 +971,44 @@ trans12_d1fundclist(env0, d1fs)
 in//let
   d2ecl(loc0, D2Cfundclst(tknd, tqas, d2fs))
 end (*let*) // end of [f0_fundclst(env0,d1cl)]
-
+//
+(* ****** ****** *)
+//
+fun
+f0_excptcon
+( env0:
+! tr12env
+, d1cl: d1ecl): d2ecl =
+let
+val
+loc0 = d1cl.lctn()
+val-
+D1Cexcptcon
+( tknd, tcns) = d1cl.node()
+//
+in//let
+  d2ecl_none1(d1cl)
+end (*let*) // end of [f0_excptcon(env0,d1cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_datatype
+( env0:
+! tr12env
+, d1cl: d1ecl): d2ecl =
+let
+val
+loc0 = d1cl.lctn()
+val-
+D1Cdatatype
+( tknd
+, d1ts, wdcs) = d1cl.node()
+//
+in//let
+  d2ecl_none1(d1cl)
+end (*let*) // end of [f0_datatype(env0,d1cl)]
+//
 (* ****** ****** *)
 //
 } (*where*) // end of [trans12_d1ecl(env0,d1cl)]

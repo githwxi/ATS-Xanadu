@@ -96,6 +96,12 @@ d2pat_var
  d2pat(loc0, D2Pvar(dvar)))
 //
 (* ****** ****** *)
+#implfun
+d2pat_sapp
+(loc0, d2f0, s2vs) =
+d2pat_make_node
+(loc0, D2Psapp(d2f0, s2vs))
+(* ****** ****** *)
 //
 #implfun
 d2pat_dapp

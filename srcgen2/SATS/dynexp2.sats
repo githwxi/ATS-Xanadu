@@ -334,7 +334,7 @@ t2qag_make_s2vs
 fun
 t2iag_make_s2es
 (loc0:loc_t,s2es:s2explst):t2iag
-#symload t2iag with t2iag_make_s2vs
+#symload t2iag with t2iag_make_s2es
 (* ****** ****** *)
 //
 datatype
@@ -812,8 +812,8 @@ D2Cvardclst of
 D2Cfundclst of
 (token(*FUN(fnk)*), t2qaglst, d2fundclist)
 //
-|D2Cexcptcon of (d2ecl, d2conlst)
-|D2Cdatatype of (d2ecl, s2cstlst)
+|D2Cexcptcon of (d1ecl, d2conlst)
+|D2Cdatatype of (d1ecl, s2cstlst)
 //
 |D2Cdynconst of
 (token(*fnk//vlk*), t2qaglst, d2cstdclist)
@@ -847,6 +847,9 @@ d2ecl_get_node(d2ecl): d2ecl_node
 (* ****** ****** *)
 #symload lctn with d2ecl_get_lctn
 #symload node with d2ecl_get_node
+(* ****** ****** *)
+fun
+d2ecl_none1(d1cl:d1ecl): d2ecl
 (* ****** ****** *)
 fun
 d2ecl_make_node
@@ -954,6 +957,7 @@ d2parsed_fprint
 (out: FILR, dpar: d2parsed): void
 //
 (* ****** ****** *)
+//
 fun
 d2parsed_get_stadyn:(d2parsed)->sint
 fun
