@@ -528,6 +528,18 @@ end (*let*) // end of [d2ecl_fprint(out, dcl0)]
 (* ****** ****** *)
 //
 #implfun
+s2qag_fprint
+(out, sqa) =
+let
+#impltmp
+g_print$out<>() = out
+in//in-of-let
+  print("S2QAG(", sqa.s2vs(), ")")
+end (*let*) // end of [s2qag_fprint(out,sqa)]
+//
+(* ****** ****** *)
+//
+#implfun
 t2qag_fprint
 (out, tqa) =
 let
@@ -536,6 +548,18 @@ g_print$out<>() = out
 in//in-of-let
   print("T2QAG(", tqa.s2vs(), ")")
 end (*let*) // end of [t2qag_fprint(out,tqa)]
+//
+(* ****** ****** *)
+//
+#implfun
+t2iag_fprint
+(out, tia) =
+let
+#impltmp
+g_print$out<>() = out
+in//in-of-let
+  print("T2IAG(", tia.s2es(), ")")
+end (*let*) // end of [t2iag_fprint(out,tia)]
 //
 (* ****** ****** *)
 //
