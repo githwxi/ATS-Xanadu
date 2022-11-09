@@ -135,6 +135,10 @@ S2E = "./staexp2.sats"
 #abstbox t2iag_tbox // ptr
 #typedef t2iag = t2iag_tbox
 //
+#typedef s2qas = list(s2qag)
+#typedef t2qas = list(t2qag)
+#typedef t2ias = list(t2iag)
+//
 (* ****** ****** *)
 //
 #abstbox d2valdcl_tbox // ptr
@@ -264,12 +268,33 @@ d2cst_get_stmp:(d2cst) -> stamp
 (* ****** ****** *)
 //
 fun
+d2cst_make_dvar
+( dvar: d2var ): d2con
+fun
+d2con_make_idtp
+(tok0: token
+,tqas: t2qas, s2e1: s2exp): d2con
+fun
+d2cst_make_idtp
+(tok0: token
+,tqas: t2qas, s2e1: s2exp): d2cst
+//
+#symload d2cst with d2cst_make_dvar
+#symload d2con with d2con_make_idtp
+#symload d2cst with d2cst_make_idtp
+//
+(* ****** ****** *)
+//
+fun
 d2var_new1_tokn
 (tok0: token): d2var
 fun
 d2var_new2_name
 (loc0: loc_t, name: sym_t): d2var
 //
+#symload d2var with d2var_new1_tokn
+#symload d2var with d2var_new2_name
+(* ****** ****** *)
 fun
 d2var_get_lctn:(d2var) -> loc_t
 fun
