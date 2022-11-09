@@ -717,14 +717,16 @@ fun
 trans12_d1tcn
 ( env0:
 ! tr12env
-, t1cn: d1tcn, s2c0: s2cst
-, tqas: t2qaglst, svss: s2varlstlst): d2con
+, t1cn: d1tcn
+, s2c0: s2cst
+, tqas
+: t2qaglst, svss: s2varlstlst): d2con
 fun
 trans12_d1tcnlst
 ( env0:
 ! tr12env
-, tcns: d1tcnlst, s2c0: s2cst
-, tqas: t2qaglst, svss: s2varlstlst): d2conlst
+, tcns: d1tcnlst
+, s2c0: s2cst, svss: s2varlstlst): d2conlst
 //
 (* ****** ****** *)
 //
