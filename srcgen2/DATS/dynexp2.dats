@@ -481,6 +481,108 @@ endloc (*local*) // end of [local(d2ecl)]
 local
 //
 datatype
+s2qag =
+S2QAG of (loc_t, s2varlst)
+//
+#absimpl s2qag_tbox = s2qag
+//
+in (* in-of-local *)
+//
+#implfun
+s2qag_get_lctn
+  (  s2qa  ) =
+let
+val+
+S2QAG
+(loc0, s2vs) = s2qa in loc0 end
+//
+#implfun
+s2qag_get_s2vs
+  (  s2qa  ) =
+let
+val+
+S2QAG
+(loc0, s2vs) = s2qa in s2vs end
+//
+#implfun
+s2qag_make_s2vs
+( loc0 , s2vs ) = S2QAG(loc0, s2vs)
+//
+end (*local*) // end of [local(s2qag)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+t2qag =
+T2QAG of (loc_t, s2varlst)
+//
+#absimpl t2qag_tbox = t2qag
+//
+in (* in-of-local *)
+//
+#implfun
+t2qag_get_lctn
+  (  t2qa  ) =
+let
+val+
+T2QAG
+(loc0, s2vs) = t2qa in loc0 end
+//
+#implfun
+t2qag_get_s2vs
+  (  t2qa  ) =
+let
+val+
+T2QAG
+(loc0, s2vs) = t2qa in s2vs end
+//
+#implfun
+t2qag_make_s2vs
+( loc0 , s2vs ) = T2QAG(loc0, s2vs)
+//
+end (*local*) // end of [local(t2qag)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+t2iag =
+T2IAG of (loc_t, s2explst)
+//
+#absimpl t2iag_tbox = t2iag
+//
+in (* in-of-local *)
+//
+#implfun
+t2iag_get_lctn
+  (  t2ia  ) =
+let
+val+
+T2IAG
+(loc0, s2es) = t2ia in loc0 end
+//
+#implfun
+t2iag_get_s2es
+  (  t2ia  ) =
+let
+val+
+T2IAG
+(loc0, s2es) = t2ia in s2es end
+//
+#implfun
+t2iag_make_s2es
+( loc0 , s2es ) = T2IAG(loc0, s2es)
+//
+end (*local*) // end of [local(t2iag)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 d2valdcl =
 D2VALDCL of
 ( loc_t
