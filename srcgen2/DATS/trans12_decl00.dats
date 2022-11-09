@@ -102,9 +102,14 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with d1ecl_get_lctn
 #symload node with d1ecl_get_node
 (* ****** ****** *)
-#symload name with s2var_get_name
+#symload lctn with s1uni_get_lctn
+#symload node with s1uni_get_node
+#symload lctn with d1tcn_get_lctn
+#symload node with d1tcn_get_node
 (* ****** ****** *)
 #symload lctn with s2cst_get_lctn
+(* ****** ****** *)
+#symload name with s2var_get_name
 (* ****** ****** *)
 //
 fun
@@ -1062,6 +1067,276 @@ trans12_s1exp_stck(env0, s1e1, tres)
 }
 ) (*case+*) // end of [trans12_a1tdf_stck(env0,...)]
 //
+(* ****** ****** *)
+
+local
+
+(* ****** ****** *)
+#typedef
+s2vss = list(s2varlst)
+#typedef
+s2ess = list(s2explst)
+(* ****** ****** *)
+(*
+datatype
+d1tcn_node =
+|
+D1TCNnode of
+( s1unilst
+, token(*d0eid*)
+, s1explst(*indices*)
+, s1expopt(*argtypes*) )
+*)
+(* ****** ****** *)
+
+fun
+f1_s2vs
+( s2vs
+: s2varlst) : s2explst =
+(
+list_map<x0><y0>(s2vs)) where
+{
+#typedef x0 = s2var
+#typedef y0 = s2exp
+#impltmp
+map$fopr<x0><y0>(x0) = s2exp_var(x0)
+} (*case+*) (* end of [ f1_s2vs(s2vs) ] *)
+
+fun
+f1_svss
+( svss
+: s2vss): s2explstlst =
+(
+list_map<x0><y0>(svss)) where
+{
+#typedef x0 = s2varlst
+#typedef y0 = s2explst
+#impltmp map$fopr<x0><y0> = f1_s2vs }
+//(*case+*) (* end of [ f1_svss(svss) ] *)
+
+(* ****** ****** *)
+
+fun
+f1_sres
+( loc0: loc_t
+, s2e0: s2exp
+, sess: s2ess) : s2exp =
+(
+case+ sess of
+|
+list_nil() => s2e0
+|
+list_cons
+(s2es, sess) =>
+(
+  f1_sres(loc0, s2e0, sess)
+) where
+{
+  val
+  s2e0 =
+  s2exp_apps(loc0, s2e0, s2es)
+}
+) (*case+*) // end of [ f1_sres(loc0,...) ]
+
+(* ****** ****** *)
+
+fun
+f0_sarg
+( env0
+: !tr12env
+, sopt
+: s1expopt
+, npf1
+: &sint >> _): s2explst =
+(
+case+ sopt of
+|
+optn_nil
+((*void*)) => list_nil()
+|
+optn_cons(s1e0) =>
+(
+case+
+s1e0.node() of
+|
+S1El1st(s1es) =>
+trans12_s1explst(env0, s1es)
+|
+S1El2st(ses1, ses2) =>
+(
+list_append(ses1, ses2)) where
+{
+val () =
+(npf1 := list_length(ses1))
+val
+ses1 = trans12_s1explst(env0, ses1)
+val
+ses2 = trans12_s1explst(env0, ses2)
+}
+|
+_(*non-S1Elist*) =>
+list_sing(trans12_s1exp(env0, s1e0))
+)
+) (*case+*) // end of [f0_sarg(env0, ...)]
+
+fun
+f0_idxs
+( env0:
+! tr12env
+, svss: s2vss
+, s1is: s1explst): s2ess =
+(
+case+ s1is of
+|
+list_nil _ => f1_svss(svss)
+|
+list_cons _ => f0_s1is(env0, s1is)
+) (*case+*) // end of [f0_idxs(env0, ...)]
+
+and
+f0_s1is
+( env0:
+! tr12env
+, s1is: s1explst): s2ess =
+(
+case+ s1is of
+|
+list_nil() =>
+list_nil(*void*)
+|
+list_cons(s1i0, s1is) =>
+(
+case+
+s1i0.node() of
+//
+|
+S1El1st(s1es) =>
+(
+list_cons
+(s2es
+,f0_s1is(env0, s1is))) where
+{
+val s2es =
+trans12_s1explst(env0, s1es) }
+//
+|
+S1El2st(ses1, ses2) =>
+(
+list_cons
+(s2es
+,f0_s1is(env0, s1is))) where
+{
+//
+val ses1 =
+trans12_s1explst(env0, ses1)
+val ses2 =
+trans12_s1explst(env0, ses2)
+//
+val s2es = list_append(ses1, ses2) }
+//
+|
+_(* non-S1Elist *) =>
+let
+val s2es =
+list_sing
+(trans12_s1exp(env0, s1i0))
+in//let
+list_cons(s2es, f0_s1is(env0, s1is))
+end (*let*) // end of [non-S1Elist(...)]
+)
+) (*case*) // end of [ f0_s1is(env0,s1is) ]
+
+in (* in-of-local *)
+
+#implfun
+trans12_d1tcn
+( env0
+, t1cn
+, s2c0, tqas, svss) =
+(
+d2con_make_idtp
+(tok0, tqas, s2e0) where
+{
+//
+val () =
+tr12env_pshlam0(env0)
+//
+val
+s2e0 = f0_s1us(env0, s1us)
+//
+val () = tr12env_poplam0(env0) }
+) where
+{
+//
+val+
+D1TCNnode
+( s1us
+, tok0
+, s1is, sarg) = t1cn.node()
+//
+val
+ltok = tok0.lctn()
+//
+fun
+f0_s1us
+( env0:
+! tr12env
+, s1us: s1unilst): s2exp =
+(
+//
+case+ s1us of
+|
+list_nil() =>
+let
+//
+var npf1: sint = -1
+//
+val sess =
+f0_idxs(env0, svss, s1is)
+val sarg =
+f0_sarg(env0, sarg, npf1)
+//
+val s2e0 =
+s2exp_cst(s2c0)
+val s2e0 =
+f1_sres(ltok, s2e0, sess)
+//
+in
+s2exp_fun0_nil(npf1,sarg,s2e0)
+end (*let*) // end of [list_nil]
+|
+list_cons(s1u1, s1us) =>
+let
+//
+val
+(s2vs, s2ps) =
+let
+val+
+S1UNIsome(s1qs) = s1u1.node()
+in
+  trans12_s1qualst(env0, s1qs)
+end (*let*) // end-of-val(s2vs,s2ps)
+//
+in
+  s2exp_uni0
+  (s2vs, s2ps, f0_s1us(env0, s1us))
+end (*let*) // end of [list_cons(_,_)'
+//
+) (*case+*) // end of [f0_s1us(env0,...)]
+//
+(*
+val () =
+println!("trans12_d1tcn: tok0 = ", tok0)
+*)
+(*
+val () =
+println!("trans12_d1tcn: s1us = ", s1us)
+*)
+//
+} (*where*) // end of [trans12_d1tcn(env0,...)]
+
+end (*local*) // end of [ local(trans12_d1tcn) ]
+
 (* ****** ****** *)
 
 #implfun
