@@ -121,6 +121,9 @@ fun loctn_get_pend(loctn): postn
 //
 (* ****** ****** *)
 fun
+loctn_dummy(): loctn
+(* ****** ****** *)
+fun
 loctn_fprint: (FILR, loctn) -> void
 (* ****** ****** *)
 fun

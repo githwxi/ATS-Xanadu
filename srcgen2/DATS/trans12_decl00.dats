@@ -986,8 +986,23 @@ val-
 D1Cexcptcon
 ( tknd, tcns) = d1cl.node()
 //
+val d2cs =
+trans12_datconlst
+(env0, d1cs, s2c0, svss) where
+{
+  val svss = list_nil(*void*)
+  val s2c0 = the_excptn_s2cst()
+}
+//
 in//let
-  d2ecl_none1(d1cl)
+//
+let
+val () =
+tr12env_add1_d2conlst(env0, d2cs)
+in//let
+d2ecl(loc0, D2Cexcptcon(d1cl, d2cs))
+end (*let*)
+//
 end (*let*) // end of [f0_excptcon(env0,d1cl)]
 //
 (* ****** ****** *)

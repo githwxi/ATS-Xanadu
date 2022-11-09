@@ -258,13 +258,17 @@ t2dat_get_stmp(t2d:t2dat):stamp
 #symload name with t2dat_get_name
 #symload stmp with t2dat_get_stmp
 (* ****** ****** *)
+//
 fun
-t2dat_get_s2cs(t2d:t2dat):s2cstlst
+t2dat_get_s2cs
+(t2d0: t2dat): s2cstlst
 fun
 t2dat_set_s2cs
-(tdat: t2dat, s2cs: s2cstlst):void
+(t2d0:t2dat, s2cs:s2cstlst):void
+//
 #symload s2cs with t2dat_get_s2cs
 #symload s2cs with t2dat_set_s2cs
+//
 (* ****** ****** *)
 //
 val
@@ -322,6 +326,11 @@ fun
 s2var_get_sort(s2v:s2var):sort2
 fun
 s2var_get_stmp(s2v:s2var):stamp
+(* ****** ****** *)
+//
+fun
+the_excptn_s2cst(): s2cst
+//
 (* ****** ****** *)
 //
 fun
