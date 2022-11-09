@@ -61,6 +61,8 @@ ATS_PACKNAME
 #symload name with s2cst_get_name
 #symload name with s2var_get_name
 (* ****** ****** *)
+#symload name with d2con_get_name
+#symload name with d2cst_get_name
 #symload name with d2var_get_name
 (* ****** ****** *)
 #symload node with d2pat_get_node
@@ -1142,6 +1144,50 @@ end (*let*)//end-of-[list_cons]
 (* ****** ****** *)
 //
 #implfun
+tr12env_add1_d2con
+  (env0, d2c0) =
+let
+val sym0 = d2c0.name()
+val dopt =
+tr12env_find_d2itm(env0, sym0)
+in//let
+//
+case+ dopt of
+| ~
+optn_vt_nil() =>
+tr12env_add0_d2itm
+(env0, sym0, ditm) where
+{
+val
+ditm = D2ITMcon(list_sing(d2c0))
+}
+| ~
+optn_vt_cons(ditm) =>
+(
+case+ ditm of
+|
+D2ITMcon(d2cs) =>
+let
+val
+ditm =
+D2ITMcon
+(list_cons(d2c0, d2cs)) in
+tr12env_add0_d2itm(env0, sym0, ditm)
+end//let
+| _(*non-D2ITMcon*) =>
+let
+val
+ditm =
+D2ITMcon(list_sing(d2c0)) in
+tr12env_add0_d2itm(env0, sym0, ditm)
+end//let
+) (*case+*)//end-of-[optn_vt_cons(...)]
+//
+end (*let*)//end[tr12env_add0_d2con(env0,d2c0)]
+//
+(* ****** ****** *)
+//
+#implfun
 tr12env_add0_d2var
   (env0, d2v0) =
 let
@@ -1257,6 +1303,22 @@ tr12env_add0_d2pat(env0, d2p1)
 D2GPTgua(d2p1, d2gs) =>
 tr12env_add0_d2pat(env0, d2p1)
 ) (*case+*)//end[tr12env_add0_d2gpt(env0,dgpt)]
+//
+(* ****** ****** *)
+//
+#implfun
+tr12env_add1_d2conlst
+  (env0, d2cs) =
+(
+list_foreach_e1nv
+<   x0  ><  e1   >(d2cs, env0)) where
+{
+#typedef x0 = d2con
+#vwtpdef e1 = tr12env
+#impltmp
+foreach$work_e1nv
+< x0 ><e1>(x0, e1) = tr12env_add1_d2con(e1, x0)
+} (*where*)//end(tr12env_add0_d2conlst(env0,...))
 //
 (* ****** ****** *)
 //

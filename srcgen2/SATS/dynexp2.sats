@@ -238,6 +238,32 @@ d2var_fprint:(FILR,d2var)->void
 (* ****** ****** *)
 //
 fun
+d2con_get_lctn:(d2con) -> loc_t
+fun
+d2con_get_name:(d2con) -> sym_t
+fun
+d2con_get_stmp:(d2con) -> stamp
+//
+#symload lctn with d2con_get_lctn
+#symload name with d2con_get_name
+#symload stmp with d2con_get_stmp
+//
+(* ****** ****** *)
+//
+fun
+d2cst_get_lctn:(d2cst) -> loc_t
+fun
+d2cst_get_name:(d2cst) -> sym_t
+fun
+d2cst_get_stmp:(d2cst) -> stamp
+//
+#symload lctn with d2cst_get_lctn
+#symload name with d2cst_get_name
+#symload stmp with d2cst_get_stmp
+//
+(* ****** ****** *)
+//
+fun
 d2var_new1_tokn
 (tok0: token): d2var
 fun
