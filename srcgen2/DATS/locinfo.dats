@@ -156,8 +156,20 @@ end (*let*) // end of [loctn_get_pend]
 loctn_make_arg3
 (src,ps1,ps2) = LOCTN(src,ps1,ps2)
 
-end (*local*) // end of [local]
+end (*local*) // end of [local(loctn)]
 
+(* ****** ****** *)
+//
+#implfun
+loctn_dummy() =
+loctn_make_arg3
+(src, ps0, ps0) where
+{
+  val src = LCSRCnone0()
+  val ps0 =
+  postn_make_int3(-1, -1, -1)
+} (*where*) // end-of-(loctn_dummy())
+//
 (* ****** ****** *)
 //
 #implfun
@@ -167,7 +179,7 @@ let
   val src = LCSRCfpath(fp0)
 in
   loctn_make_arg3( src, ps1, ps2 )
-end(*let*)//end-of(loctn_make_fpath)
+end (*let*) // end-of(loctn_make_fpath)
 //
 (* ****** ****** *)
 

@@ -47,6 +47,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
+#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
@@ -117,6 +119,46 @@ the_sort2_view = S2Tbas(s2tb_view)
 the_sort2_vwtp = S2Tbas(s2tb_vwtp)
 #implval
 the_sort2_vtbx = S2Tbas(s2tb_vtbx)
+//
+endloc (*local*) // end of [local(predefined)]
+
+(* ****** ****** *)
+
+local
+//
+val
+s2cr =
+a0ref_make_1val
+<s2cstopt>
+(optn_nil(*void*))
+//
+in//local
+//
+#implfun
+the_excptn_s2cst
+  ( (*void*) ) =
+(
+case+ !s2cr of
+//
+|
+optn_cons
+(  s2c1  ) => s2c1
+//
+| optn_nil() =>
+let
+val s2c1 =
+s2cst_make_idst
+(loc0, name, s2t1) where
+{
+val loc0 =
+loctn_dummy()
+val name =
+symbl("excptn_vt")
+val s2t1 = the_sort2_vtbx }
+in//let
+!s2cr := optn_cons(s2c1); s2c1
+end (*let*) // end of [optn_nil()]
+) (*case+*) // end of [the_excptn_s2cst]
 //
 endloc (*local*) // end of [local(predefined)]
 

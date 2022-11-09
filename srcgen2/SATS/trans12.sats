@@ -82,6 +82,9 @@ LEX = "./lexing0.sats"
 #typedef s1exp = $S1E.s1exp
 #typedef l1s1e = $S1E.l1s1e
 (* ****** ****** *)
+#typedef d1tcn = $S1E.d1tcn
+#typedef d1typ = $S1E.d1typ
+(* ****** ****** *)
 #typedef sort2 = $S2E.sort2
 (* ****** ****** *)
 #typedef s2cst = $S2E.s2cst
@@ -162,6 +165,9 @@ LEX = "./lexing0.sats"
 #typedef l1s1elst = $S1E.l1s1elst
 (* ****** ****** *)
 #typedef s1expopt = $S1E.s1expopt
+(* ****** ****** *)
+#typedef d1tcnlst = $S1E.d1tcnlst
+#typedef d1typlst = $S1E.d1typlst
 (* ****** ****** *)
 #typedef sort2lst = $S2E.sort2lst
 #typedef sort2opt = $S2E.sort2opt
@@ -394,6 +400,13 @@ fun
 tr12env_add0_s2varlst
 (env0: !tr12env, s2vs: s2varlst): void
 (* ****** ****** *)
+fun // HX: it does accumulative
+tr12env_add1_d2con // insertion
+( env0: !tr12env, d2c0: d2con ): void
+fun // HX: it does accumulative
+tr12env_add1_d2cst // insertion
+( env0: !tr12env, d2c0: d2cst ): void
+(* ****** ****** *)
 fun
 tr12env_add0_d2var
 ( env0: !tr12env, d2v0: d2var ): void
@@ -406,6 +419,13 @@ tr12env_add0_f2arg
 fun
 tr12env_add0_d2gpt
 ( env0: !tr12env, dgpt: d2gpt ): void
+(* ****** ****** *)
+fun
+tr12env_add1_d2conlst
+(env0: !tr12env, d2cs: d2conlst): void
+fun
+tr12env_add1_d2cstlst
+(env0: !tr12env, d2cs: d2cstlst): void
 (* ****** ****** *)
 fun
 tr12env_add0_d2varopt
@@ -683,27 +703,28 @@ trans12_d1fundcl:(!tr12env, d1fundcl)->d2fundcl
 (* ****** ****** *)
 //
 fun
-trans12_datype
+trans12_d1typ
 ( env0:
 ! tr12env
-, d1t0: d1atype, s2t0: sort2): s2cst
+, d1t0: d1typ, s2t0: sort2): s2cst
 fun
-trans12_datypelst
-( s2t0: sort2
-, d1ts: d1atypelst, s2t0: sort2): s2cstlst
+trans12_d1typlst
+( env0:
+! tr12env
+, d1ts: d1typlst, s2t0: sort2): s2cstlst
 //
 fun
-trans12_d1atcon
+trans12_d1tcn
 ( env0:
 ! tr12env
-, t1cn: d1atcon, s2c0: s2cst
-, tqas: tq2arglst, svss: s2varlstlst): d2con
+, t1cn: d1tcn, s2c0: s2cst
+, tqas: t2qaglst, svss: s2varlstlst): d2con
 fun
-trans12_d1atconlst
+trans12_d1tcnlst
 ( env0:
 ! tr12env
-, tcns: d1atconlst, s2c0: s2cst
-, tqas: tq2arglst, svss: s2varlstlst): d2conlst
+, tcns: d1tcnlst, s2c0: s2cst
+, tqas: t2qaglst, svss: s2varlstlst): d2conlst
 //
 (* ****** ****** *)
 //
