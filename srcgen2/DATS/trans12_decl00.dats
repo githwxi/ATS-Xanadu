@@ -102,6 +102,10 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with d1ecl_get_lctn
 #symload node with d1ecl_get_node
 (* ****** ****** *)
+#symload name with s2var_get_name
+(* ****** ****** *)
+#symload lctn with s2cst_get_lctn
+(* ****** ****** *)
 //
 fun
 abstknd_sort2
@@ -1206,6 +1210,93 @@ trans12_t1iaglst
   (env0, tias) =
 list_trans12_fnp(env0, tias, trans12_t1iag)
 //
+(* ****** ****** *)
+
+local
+
+fun
+f1_s2vs
+( s2vs
+: s2varlst): s2varlst =
+(
+case+
+s2vs of
+|
+list_nil
+((*void*)) => list_nil()
+|
+list_cons
+(s2v1, s2vs) =>
+(
+if
+(
+s2v1.name()
+=
+the_symbl_nil)
+then f1_s2vs(s2vs)
+else list_cons(s2v1, f1_s2vs(s2vs))
+)
+) (*case+*) // end of [f1_s2vs(s2vs)]
+
+fun
+f1_tqas
+( s2c0
+: s2cst
+, svss
+: s2varlstlst): t2qaglst =
+(
+case+
+svss of
+|
+list_nil() => list_nil()
+|
+list_cons
+(s2vs, svss) =>
+(
+case s2vs of
+|list_nil _ =>
+(
+f1_tqas(s2c0, svss))
+|
+list_cons _ =>
+let
+val
+s2vs = f1_s2vs(s2vs)
+val
+tqa1 = t2qag(s2c0.lctn(), s2vs)
+in//let
+list_cons(tqa1, f1_tqas(s2c0, svss))
+end (*let*) // end of [list_cons(_,_)]
+)
+) (*case+*) // end of [f0_tqas(s2c0,svss)]
+
+in(*in-of-local*)
+
+#implfun
+trans12_d1tcnlst
+( env0
+, tcns, s2c0, svss) =
+(
+list_map_e1nv
+< x0><y0 ><e1>
+( tcns, env0 )) where
+{
+#typedef x0 = d1tcn
+#typedef y0 = d2con
+#vwtpdef e1 = tr12env
+//
+val
+tqas = f1_tqas(s2c0, svss)
+//
+#impltmp
+map$fopr_e1nv
+<x0><y0><e1>(x0, e1) =
+trans12_d1tcn(e1, x0, s2c0, tqas, svss)
+//
+} (*where*) // end of [trans12_datconlst]
+
+end (*local*) // end-[local(trans12_d1tcnlst)]
+
 (* ****** ****** *)
 //
 #implfun
