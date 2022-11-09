@@ -987,8 +987,8 @@ D1Cexcptcon
 ( tknd, tcns) = d1cl.node()
 //
 val d2cs =
-trans12_datconlst
-(env0, d1cs, s2c0, svss) where
+trans12_d1tcnlst
+(env0, tcns, s2c0, svss) where
 {
   val svss = list_nil(*void*)
   val s2c0 = the_excptn_s2cst()
