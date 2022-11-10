@@ -78,7 +78,9 @@ s2typ
 s2typ_none1(s1e0) =
 let
 //
+(*
   val loc0 = s1e0.lctn()
+*)
   val s2t0 = sort2_none0() 
 //
 (*
@@ -88,6 +90,22 @@ val (  ) = prerrln
 in//let
   s2typ(s2t0, T2Pnone1(s1e0))
 end (*let*) // end of [s2typ_none1(s1e0)]
+//
+(* ****** ****** *)
+//
+#implfun
+s2typ_none2(s2e0) =
+let
+//
+  val s2t0 = s2e0.sort()
+//
+(*
+val (  ) = prerrln
+("s2typ_none2: s2e0 = ", s2e0)
+*)
+in//let
+  s2typ(s2t0, T2Pnone2(s2e0))
+end (*let*) // end of [s2typ_none2(s2e0)]
 //
 (* ****** ****** *)
 

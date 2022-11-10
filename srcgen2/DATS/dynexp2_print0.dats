@@ -84,6 +84,44 @@ _(*?*) = "./lexing0_print0.dats"
 (* ****** ****** *)
 
 #implfun
+d2con_fprint
+(out, d2c0) =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+val
+sym0 = d2con_get_name(d2c0)
+val
+stmp = d2con_get_stmp(d2c0)
+//
+in//let
+  print(sym0, "(", stmp, ")")
+end (*let*) // end of [d2con_fprint(out,d2c0)]
+
+(* ****** ****** *)
+
+#implfun
+d2cst_fprint
+(out, d2c0) =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+val
+sym0 = d2cst_get_name(d2c0)
+val
+stmp = d2cst_get_stmp(d2c0)
+//
+in//let
+  print(sym0, "(", stmp, ")")
+end (*let*) // end of [d2cst_fprint(out,d2c0)]
+
+(* ****** ****** *)
+
+#implfun
 d2var_fprint
 (out, d2v0) =
 let

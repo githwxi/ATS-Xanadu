@@ -138,7 +138,8 @@ in//local
 the_excptn_s2cst
   ( (*void*) ) =
 (
-case+ !s2cr of
+case+
+s2cr[] of
 //
 |
 optn_cons
@@ -156,7 +157,7 @@ val name =
 symbl("excptn_vt")
 val s2t1 = the_sort2_vtbx }
 in//let
-!s2cr := optn_cons(s2c1); s2c1
+s2cr[] := optn_cons(s2c1); s2c1
 end (*let*) // end of [optn_nil()]
 ) (*case+*) // end of [the_excptn_s2cst]
 //

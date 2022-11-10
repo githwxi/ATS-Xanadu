@@ -54,6 +54,10 @@ datasort ints =
 #abstype
 mylist(a:t0)(i:i0) = list(a,i)
 (* ****** ****** *)
+//
+excptcon | TRUE | FALSE of ()
+//
+(* ****** ****** *)
 ////
 (* ****** ****** *)
 #sexpdef

@@ -32,6 +32,8 @@
 #staload
 "./../../SATS/staexp2.sats"
 #staload
+"./../../SATS/statyp2.sats"
+#staload
 "./../../SATS/dynexp2.sats"
 (* ****** ****** *)
 #include
@@ -167,7 +169,12 @@
 #include
 "./../../DATS/staexp2.dats"
 #include
+"./../../DATS/statyp2.dats"
+#include
 "./../../DATS/staexp2_print0.dats"
+#include
+"./../../DATS/statyp2_print0.dats"
+(* ****** ****** *)
 #include
 "./../../DATS/staexp2_inits0.dats"
 #include
