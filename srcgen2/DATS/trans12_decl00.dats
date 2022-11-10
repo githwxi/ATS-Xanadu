@@ -1165,6 +1165,7 @@ let
 //
 val
 loc0 = d1cl.lctn()
+//
 val-
 D1Cfundclst
 ( tknd
@@ -1172,8 +1173,16 @@ D1Cfundclst
 //
 val tqas =
 trans12_t1qaglst(env0, tqas)
+//
+val (  ) =
+tr12env_pshlam0(env0)
+val (  ) =
+tr12env_add0_tqas(env0, tqas)
+//
 val d2fs =
 trans12_d1fundclist(env0, d1fs)
+//
+val (  ) = tr12env_poplam0(env0)
 //
 in//let
   d2ecl(loc0, D2Cfundclst(tknd, tqas, d2fs))

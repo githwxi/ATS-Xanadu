@@ -391,34 +391,41 @@ tr12env_locjoin(env: !tr12env): void
 (* ****** ****** *)
 fun // HX: it does accumulative
 tr12env_add1_s2cst // insertion
-( env0: !tr12env, s2c0: s2cst ): void
+(env0: !tr12env , s2c0: s2cst): void
 (* ****** ****** *)
 fun
 tr12env_add0_s2var
-( env0: !tr12env, s2v0: s2var ): void
+(env0: !tr12env , s2v0: s2var): void
 fun
-tr12env_add0_s2varlst
-(env0: !tr12env, s2vs: s2varlst): void
+tr12env_add0_t2qag
+(env0: !tr12env , tqa0: t2qag): void
 (* ****** ****** *)
 fun // HX: it does accumulative
 tr12env_add1_d2con // insertion
-( env0: !tr12env, d2c0: d2con ): void
+(env0: !tr12env , d2c0: d2con): void
 fun // HX: it does accumulative
 tr12env_add1_d2cst // insertion
-( env0: !tr12env, d2c0: d2cst ): void
+(env0: !tr12env , d2c0: d2cst): void
 (* ****** ****** *)
 fun
 tr12env_add0_d2var
-( env0: !tr12env, d2v0: d2var ): void
+(env0: !tr12env , d2v0: d2var): void
 fun
 tr12env_add0_d2pat
-( env0: !tr12env, d2p0: d2pat ): void
+(env0: !tr12env , d2p0: d2pat): void
 fun
 tr12env_add0_f2arg
-( env0: !tr12env, f2a0: f2arg ): void
+(env0: !tr12env , f2a0: f2arg): void
 fun
 tr12env_add0_d2gpt
-( env0: !tr12env, dgpt: d2gpt ): void
+(env0: !tr12env , dgpt: d2gpt): void
+(* ****** ****** *)
+fun
+tr12env_add0_s2varlst
+(env0: !tr12env, s2vs: s2varlst): void
+fun
+tr12env_add0_t2qaglst
+(env0: !tr12env, tqas: t2qaglst): void
 (* ****** ****** *)
 fun
 tr12env_add1_d2conlst
@@ -440,6 +447,11 @@ tr12env_add0_l2d2plst
 fun
 tr12env_add0_f2arglst
 (env0: !tr12env, f2as: f2arglst): void
+(* ****** ****** *)
+#symload
+tr12env_add0_s2vs with tr12env_add0_s2varlst
+#symload
+tr12env_add0_tqas with tr12env_add0_t2qaglst
 (* ****** ****** *)
 //
 fun
