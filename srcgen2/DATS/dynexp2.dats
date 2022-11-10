@@ -61,6 +61,9 @@ ATS_PACKNAME
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
+#symload lctn with token_get_lctn
+#symload node with token_get_node
+(* ****** ****** *)
 #symload lctn with d1pat_get_lctn
 #symload lctn with d1exp_get_lctn
 #symload lctn with d1ecl_get_lctn
@@ -209,6 +212,107 @@ local
 //
 (* ****** ****** *)
 #typedef
+tag_t = sint
+#typedef
+t2qas = t2qaglst
+(* ****** ****** *)
+//
+fun
+dconid_sym
+(tok0: token): sym_t =
+(
+case-
+tok0.node() of
+| T_IDALP(nam1) =>
+  symbl_make_name(nam1)
+| T_IDSYM(nam1) =>
+  symbl_make_name(nam1) )
+//
+(* ****** ****** *)
+//
+datatype
+d2con =
+D2CON of
+( loc_t // lctn
+, sym_t // name
+, tag_t // ctag
+, t2qas // tqas
+, s2exp // sexp
+, s2typ // type
+, stamp // stmp // unicity
+)
+//
+#absimpl d2con_tbox = d2con
+//
+(* ****** ****** *)
+//
+in//local
+//
+#implfun
+d2con_get_lctn
+  (  d2c0  ) =
+let
+val+
+D2CON
+(loc0
+,sym0
+,ctag
+,tqas
+,s2e0
+,t2p0,stmp) = d2c0 in loc0 end
+//
+#implfun
+d2con_get_name
+  (  d2c0  ) =
+let
+val+
+D2CON
+(loc0
+,sym0
+,ctag
+,tqas
+,s2e0
+,t2p0,stmp) = d2c0 in sym0 end
+//
+#implfun
+d2con_get_stmp
+  (  d2c0  ) =
+let
+val+
+D2CON
+(loc0
+,sym0
+,ctag
+,tqas
+,s2e0
+,t2p0,stmp) = d2c0 in stmp end
+//
+(* ****** ****** *)
+//
+#implfun
+d2con_make_idtp
+(tok0,tqas,sexp) =
+let
+val ctag = (-1)
+val loc0 = tok0.lctn()
+val sym0 = dconid_sym(tok0)
+val t2p0 = s2typ_none2(sexp)
+val stmp = the_d2con_stamp_new()
+in//let
+  D2CON
+  ( loc0
+  , sym0
+  , ctag, tqas, sexp, t2p0, stmp)
+end (*let*) // end of [d2con_make_idtp]
+//
+end (*local*) // end of [local(d2con_tbox)]
+
+(* ****** ****** *)
+
+local
+//
+(* ****** ****** *)
+#typedef
 t2qas = t2qaglst
 (* ****** ****** *)
 //
@@ -217,10 +321,10 @@ d2var =
 D2VAR of
 ( loc_t // lctn
 , sym_t // name
-, t2qas // tqarg
-, s2exp // s2exp
-, s2typ // s2ype
-, stamp // stamp
+, t2qas // tqas
+, s2exp // sexp
+, s2typ // type
+, stamp // stmp // unicity
 ) (* end of [d2var] *)
 //
 #absimpl d2var_tbox = d2var
@@ -279,7 +383,7 @@ in//let
   , sym0, tqas, s2e0, t2p0, stmp)
 end (*let*) // end of [d2var_new2_name]
 //
-end (*let*) // end of [local(d2var_tbox)]
+end (*local*) // end of [local(d2var_tbox)]
 
 (* ****** ****** *)
 

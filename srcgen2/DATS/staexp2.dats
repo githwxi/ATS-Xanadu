@@ -508,6 +508,17 @@ end (*let*) // end of [s2exp_lam0(s2vs,body)]
 (* ****** ****** *)
 //
 #implfun
+s2exp_fun0_nil
+(npf1, farg, fres) =
+(
+s2exp_fun0_full
+(f2cl, npf1, farg, fres)
+) where
+{
+  val f2cl = F2CLfun((*void*))
+} (*where*) // end of [s2exp_fun0_nil(...)]
+//
+#implfun
 s2exp_fun0_all
 (npf1, farg, fres) =
 (
@@ -517,6 +528,8 @@ s2exp_fun0_full
 {
   val f2cl = F2CLfun((*void*))
 } (*where*) // end of [s2exp_fun0_all(...)]
+//
+(* ****** ****** *)
 //
 #implfun
 s2exp_fun0_full
