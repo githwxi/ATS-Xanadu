@@ -6560,7 +6560,7 @@ in
   aux2_datype(s2c0, d1t0) in aux2_datypelst(s2cs, d1ts)
   end
 end // end of [let]
-) (* end of [aux2_datatypelst] *)
+) (* end of [aux2_datypelst] *)
 
 (* ****** ****** *)
 

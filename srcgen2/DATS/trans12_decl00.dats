@@ -72,6 +72,9 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with sort1_get_lctn
 #symload node with sort1_get_node
 (* ****** ****** *)
+#symload lctn with t1mag_get_lctn
+#symload node with t1mag_get_node
+(* ****** ****** *)
 #symload lctn with s1exp_get_lctn
 #symload node with s1exp_get_node
 (* ****** ****** *)
@@ -83,6 +86,15 @@ _(*TRANS12*) = "./trans12.dats"
 (* ****** ****** *)
 #symload lctn with d1tst_get_lctn
 #symload node with d1tst_get_node
+(* ****** ****** *)
+#symload lctn with s1uni_get_lctn
+#symload node with s1uni_get_node
+(* ****** ****** *)
+#symload lctn with d1tcn_get_lctn
+#symload node with d1tcn_get_node
+(* ****** ****** *)
+#symload lctn with d1typ_get_lctn
+#symload node with d1typ_get_node
 (* ****** ****** *)
 #symload lctn with d1pat_get_lctn
 #symload node with d1pat_get_node
@@ -101,11 +113,6 @@ _(*TRANS12*) = "./trans12.dats"
 (* ****** ****** *)
 #symload lctn with d1ecl_get_lctn
 #symload node with d1ecl_get_node
-(* ****** ****** *)
-#symload lctn with s1uni_get_lctn
-#symload node with s1uni_get_node
-#symload lctn with d1tcn_get_lctn
-#symload node with d1tcn_get_node
 (* ****** ****** *)
 #symload lctn with s2cst_get_lctn
 (* ****** ****** *)
@@ -419,7 +426,7 @@ list_cons(s2ts, stss) =>
 (
   auxtfun(tres, stss)) where
 {
-val tres = S2Tf1un(s2ts, tres)
+val tres = S2Tfun1(s2ts, tres)
 }
 )
 //
@@ -704,7 +711,7 @@ list_nil() => tres
 |
 list_cons
 (s2ts, stss) =>
-S2Tf1un
+S2Tfun1
 (s2ts, f1_stss(stss, tres)))
 }
 //
@@ -856,7 +863,7 @@ trans12_sort1lst(env0, s1ts)
 val
 loc1 = tcn1.lctn()
 val
-tfun = S2Tf1un(targ, s2t0)
+tfun = S2Tfun1(targ, s2t0)
 val
 s2c1 =
 s2cst_make_idst(loc1, sid1, tfun)
@@ -1065,8 +1072,120 @@ val loc0 = s1e1.lctn()
 val s2e1 =
 trans12_s1exp_stck(env0, s1e1, tres)
 }
-) (*case+*) // end of [trans12_a1tdf_stck(env0,...)]
+) (*case+*)
+// end of [trans12_a1tdf_stck(env0,atdf,tres)]
 //
+(* ****** ****** *)
+
+local
+
+(*
+datatype
+d1typ_node =
+|
+D1TYPnode of
+( token
+, t1maglst
+, sort1opt(*res*), d1tcnlst)
+*)
+
+in//local
+
+#implfun
+trans12_d1typ
+(env0, d1t0, s2t0) =
+let
+//
+val+
+D1TYPnode
+( tok0, tmas
+, sres, tcns) = d1t0.node()
+//
+val sres =
+(
+case+ sres of
+|
+optn_nil() =>
+(
+  s2t0//tbox|vtbx
+)
+|
+optn_cons(s1t0) =>
+(
+trans12_sort1(env0, s1t0)
+)
+) : sort2 // end-of-val(sres)
+//
+in//let
+//
+let
+val
+ltok = tok0.lctn()
+val
+sid0 = sexpid_sym(tok0)
+val
+s2t0 =
+f0_tmas(env0, tmas, sres)
+in//let
+s2cst_make_idst(ltok, sid0, s2t0)
+end//let
+//
+end where
+{
+//
+fun
+f0_t1as
+( env0:
+! tr12env
+, t1as
+: t1arglst): sort2lst =
+(
+list_map_e1nv
+< x0><y0 ><e1>(t1as, env0)) where
+{
+//
+#typedef x0 = t1arg
+#typedef y0 = sort2
+#vwtpdef e1 = tr12env
+//
+#impltmp
+map$fopr_e1nv
+< x0><y0 ><e1>
+(   x0, e1   ) =
+(
+case+ x0 of
+|
+T1ARGsome
+(s1t1, topt) => trans12_sort1(e1, s1t1))
+}
+//
+fun
+f0_tmas
+( env0:
+! tr12env
+, tmas
+: t1maglst
+, tres: sort2): sort2 =
+(
+case+ tmas of
+|
+list_nil() => tres
+|
+list_cons(t1ma, tmas) =>
+(
+case+
+t1ma.node() of
+|
+T1MAGlist(t1as) =>
+S2Tfun1
+(f0_t1as(env0,t1as),f0_tmas(env0,tmas,tres))
+)
+) (*case+*) // end of [f0_tmas(env0,tmas,tres)]
+//
+} (*where*) // end of [trans12_d1typ(env0,...)]
+
+end (*local*) // end of [ local(trans12_d1typ) ]
+
 (* ****** ****** *)
 
 local
@@ -1487,6 +1606,28 @@ list_trans12_fnp(env0, tias, trans12_t1iag)
 //
 (* ****** ****** *)
 
+#implfun
+trans12_d1typlst
+(env0, d1ts, s2t0) =
+(
+list_map_e1nv
+< x0><y0 ><e1>
+( d1ts, env0 )) where
+{
+//
+#typedef x0 = d1typ
+#typedef y0 = s2cst
+#vwtpdef e1 = tr12env
+//
+#impltmp
+map$fopr_e1nv
+< x0><y0 ><e1>
+(   x0, e1   ) = trans12_d1typ(e1, x0, s2t0)
+//
+} (*where*) // end of [trans12_d1typlst(...)]
+
+(* ****** ****** *)
+
 local
 
 fun
@@ -1565,10 +1706,10 @@ tqas = f1_tqas(s2c0, svss)
 //
 #impltmp
 map$fopr_e1nv
-<x0><y0><e1>(x0, e1) =
+< x0><y0 ><e1>(x0, e1) =
 trans12_d1tcn(e1, x0, s2c0, tqas, svss)
 //
-} (*where*) // end of [trans12_datconlst]
+} (*where*) // end of [trans12_d1tcnlst(...)]
 
 end (*local*) // end-[local(trans12_d1tcnlst)]
 
