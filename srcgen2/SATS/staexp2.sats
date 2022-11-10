@@ -205,9 +205,9 @@ S2Txtv of (t2xtv) // for unification
 S2Ttup of (sort2lst) (* tuple sort *)
 //
 |
-S2Tf0un of ((*void*))
+S2Tfun0 of ((*void*))
 |
-S2Tf1un of
+S2Tfun1 of
 (sort2lst(*arg*),sort2(*res*))//function
 //
 |
