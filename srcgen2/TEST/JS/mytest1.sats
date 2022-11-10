@@ -70,6 +70,10 @@ mylist_vt =
 | mylist_vt_cons of (sint, mylist_vt)
 //
 (* ****** ****** *)
+fun
+<a:t0>
+mylength(xs: mylist(a)): sint
+(* ****** ****** *)
 ////
 (* ****** ****** *)
 #sexpdef
