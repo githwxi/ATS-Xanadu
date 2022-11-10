@@ -73,6 +73,13 @@ fpathopt = $FP0.fpathopt
 (* ****** ****** *)
 //
 #staload
+MAP = "./xsymmap.sats"
+#staload
+FIX = "./xfixity.sats"
+//
+(* ****** ****** *)
+//
+#staload
 S0E = "./staexp0.sats"
 #staload
 D0E = "./dynexp0.sats"
@@ -1118,6 +1125,22 @@ d1cstdcl_make_args
 #symload d1cstdcl with d1cstdcl_make_args
 //
 (* ****** ****** *)
+//
+#typedef fixty = $FIX.fixty
+#typedef
+d1topenv = $MAP.topmap(fixty)
+//
+(*
+fun
+d1topenv_get_fxtyenv:
+(d1topenv) -> $MAP.topmap(fixty)
+*)
+//
+(*
+#abstbox d1topenv_tbox // ptr
+#typedef d1topenv = d1topenv_tbox
+*)
+(* ****** ****** *)
 
 #abstbox d1parsed_tbox // ptr
 #typedef d1parsed = d1parsed_tbox
@@ -1135,11 +1158,14 @@ d1parsed_get_nerror:(d1parsed)->sint
 fun
 d1parsed_get_source:(d1parsed)->lcsrc
 fun
+d1parsed_get_topenv:(d1parsed)->d1topenv
+fun
 d1parsed_get_parsed:(d1parsed)->d1eclistopt
 //
 #symload stadyn with d1parsed_get_stadyn
 #symload nerror with d1parsed_get_nerror
 #symload source with d1parsed_get_source
+#symload topenv with d1parsed_get_topenv
 #symload parsed with d1parsed_get_parsed
 //
 fun
@@ -1147,6 +1173,7 @@ d1parsed_make_args
 ( stadyn:sint
 , nerror:sint
 , source:lcsrc
+, topenv:d1topenv
 , parsed:d1eclistopt): d1parsed//end-fun
 //
 #symload d1parsed with d1parsed_make_args

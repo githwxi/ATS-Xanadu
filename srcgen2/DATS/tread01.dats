@@ -126,6 +126,8 @@ val stadyn =
 d1parsed_get_stadyn(dpar)
 val source =
 d1parsed_get_source(dpar)
+val topenv =
+d1parsed_get_topenv(dpar)
 val parsed =
 d1parsed_get_parsed(dpar)
 //
@@ -137,7 +139,8 @@ in//let
 if
 (nerror=0)
 then (dpar) else
-d1parsed(stadyn,nerror,source,parsed)
+d1parsed
+(stadyn, nerror, source, topenv, parsed)
 //
 end (*let*) // end of [d1parsed_tread01(dpar)]
 

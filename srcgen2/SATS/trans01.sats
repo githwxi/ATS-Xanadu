@@ -336,6 +336,8 @@ d0exp_ELSE = $D0E.d0exp_ELSE
 #typedef d0parsed = $D0E.d0parsed
 #typedef d1parsed = $D1E.d1parsed
 (* ****** ****** *)
+#typedef d1topenv = $D1E.d1topenv
+(* ****** ****** *)
 #typedef wd0eclseq = $D0E.wd0eclseq
 #typedef wd1eclseq = $D1E.wd1eclseq
 (* ****** ****** *)
@@ -362,7 +364,7 @@ d1parsed_from_trans
 fun
 tr01env_make_nil(): tr01env
 fun
-tr01env_free_top(tr01env): void
+tr01env_free_top(tr01env):d1topenv
 //
 (* ****** ****** *)
 fun
