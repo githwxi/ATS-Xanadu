@@ -50,6 +50,17 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #staload
+S1E = "./staexp1.sats"
+//
+(* ****** ****** *)
+//
+fun
+the_fixity_pvsload
+  ( (*void*) ): sint(*0/1*)
+//
+(* ****** ****** *)
+//
+#staload
 S2E = "./staexp2.sats"
 #typedef sort2 = $S2E.sort2
 #typedef s2exp = $S2E.s2exp

@@ -461,6 +461,9 @@ tr12env_add0_sqas with tr12env_add0_s2qaglst
 #symload
 tr12env_add0_tqas with tr12env_add0_t2qaglst
 (* ****** ****** *)
+#symload
+tr12env_add0_f2as with tr12env_add0_f2arglst
+(* ****** ****** *)
 //
 fun
 <x0:t0>

@@ -1386,6 +1386,10 @@ val tias =
 trans12_t1iaglst(env0, tias)
 val f2as =
 trans12_f1arglst(env0, f1as)
+//
+val (  ) =
+tr12env_add0_f2as(env0, f2as)
+//
 val sres = trans12_s1res(env0, sres)
 val dexp = trans12_d1exp(env0, dexp)
 //
