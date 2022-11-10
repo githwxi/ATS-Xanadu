@@ -1148,6 +1148,13 @@ t2qag_fprint(g_print$out<>(), tqag)
 g_print<a2tdf>(atdf) =
 a2tdf_fprint(g_print$out<>(), atdf)
 (* ****** ****** *)
+#impltmp
+g_print<simpl>(s2i0) =
+simpl_fprint(g_print$out<>(), s2i0)
+#impltmp
+g_print<dimpl>(d2i0) =
+dimpl_fprint(g_print$out<>(), d2i0)
+(* ****** ****** *)
 //
 #impltmp
 g_print<d2valdcl>(dval) =

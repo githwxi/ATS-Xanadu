@@ -268,7 +268,7 @@ if
 isARRW(s1t1)
 then
 (
-  S2Tf1un(s2ts, s2t3)) where
+  S2Tfun1(s2ts, s2t3)) where
 {
 val s2ts =
 (
@@ -950,7 +950,7 @@ val s2ts =
 (
 case+
 s2e1.sort() of
-| S2Tf1un(s2ts, _) => s2ts
+| S2Tfun1(s2ts, _) => s2ts
 | _(*non-S2Tfun*) => list_nil(*void*)
 ) : sort2lst // end of [va]
 //
@@ -1169,7 +1169,7 @@ val s2t1 =
 (
 case+
 s2f0.sort() of
-| S2Tf1un(s2ts, _) =>
+| S2Tfun1(s2ts, _) =>
   list_get_at(s2ts, 0)
 | _(*non-S2Tfun*) => S2Tnone0()
 ) : sort2 // end of [val s2t1]
@@ -1178,7 +1178,7 @@ val s2t2 =
 (
 case+
 s2f0.sort() of
-| S2Tf1un(s2ts, _) =>
+| S2Tfun1(s2ts, _) =>
   list_get_at(s2ts, 1)
 | _(*non-S2Tfun*) => S2Tnone0()
 ) : sort2 // end of [val s2t2]

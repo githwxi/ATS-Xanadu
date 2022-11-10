@@ -157,7 +157,7 @@ in
 //
 case+
 s2c0.sort() of
-| S2Tf1un(s2ts, _) =>
+| S2Tfun1(s2ts, _) =>
   f0_test1(s2ts, s2es)
 | _(* non-S2Tfun *) => false
 //

@@ -81,7 +81,9 @@ D1E = "./dynexp1.sats"
 #staload
 S2E = "./staexp2.sats"
 (* ****** ****** *)
+#typedef s1qid = $S1E.s1qid
 #typedef d1qid = $S1E.d1qid
+(* ****** ****** *)
 #typedef s1exp = $S1E.s1exp
 (* ****** ****** *)
 #typedef d1pat = $D1E.d1pat
@@ -847,6 +849,12 @@ d2ecl_node =
 //
 |D2Cabstype of (s2cst, a2tdf)
 //
+|D2Cabsopen of
+ ( token(*absopen*) , simpl )
+|D2Cabsimpl of
+ ( token(*abskind*)
+ , simpl, s2exp(*definition*))
+//
 |
 D2Csymload of
 (token, sym_t(*loaded*), d2ptm)
@@ -879,10 +887,30 @@ D2Cerrck of (sint(*lvl*), d2ecl)//tread01-error
 //
 (* ****** ****** *)
 //
+and simpl =
+|
+SIMPLall1 of
+(s1qid, s2cstlst)
+|
+SIMPLopt2 of
+(s1qid, s2cstlst, s2cstopt)
+//
+and dimpl =
+|
+DIMPLall1 of
+(d1qid, d2cstlst)
+|
+DIMPLopt2 of
+(d1qid, d2cstlst, d2cstopt)
+//
+//
 and a2tdf =
-| A2TDFsome of () // unspecified
-| A2TDFlteq of (s2exp) // ty-erasure
-| A2TDFeqeq of (s2exp) // definition
+|
+A2TDFsome of ()//unspecified
+|
+A2TDFlteq of s2exp//ty-erasure
+|
+A2TDFeqeq of s2exp//definition
 //
 (* ****** ****** *)
 fun
@@ -890,6 +918,11 @@ d2ecl_fprint:(FILR,d2ecl)->void
 (* ****** ****** *)
 fun
 a2tdf_fprint:(FILR,a2tdf)->void
+(* ****** ****** *)
+fun
+simpl_fprint:(FILR,simpl)->void
+fun
+dimpl_fprint:(FILR,dimpl)->void
 (* ****** ****** *)
 fun
 d2ecl_get_lctn(d2ecl): loc_t
