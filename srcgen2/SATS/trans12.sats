@@ -694,12 +694,22 @@ trans12_d1expseq
 (* ****** ****** *)
 //
 fun
-trans12_d1valdcl:(!tr12env, d1valdcl)->d2valdcl
+trans12_d1valdcl
+(env0: !tr12env, dval: d1valdcl): d2valdcl
 fun
-trans12_d1vardcl:(!tr12env, d1vardcl)->d2vardcl
+trans12_d1vardcl
+(env0: !tr12env, dvar: d1vardcl): d2vardcl
 fun
-trans12_d1fundcl:(!tr12env, d1fundcl)->d2fundcl
+trans12_d1fundcl
+(env0: !tr12env, dfun: d1fundcl): d2fundcl
 //
+(* ****** ****** *)
+fun
+trans12_d1cstdcl
+( env0:
+! tr12env
+, tknd: (token)
+, d1cs: d1cstdcl, tqas: t2qaglst): d2cstdcl
 (* ****** ****** *)
 //
 fun
@@ -793,7 +803,9 @@ trans12_d1fundclist
 //
 fun
 trans12_d1cstdclist
-(env0: !tr12env, d1cs: d1cstdclist): d2cstdclist
+( env0: !tr12env
+, tknd: ( token )
+, d1cs: d1cstdclist, tqas: t2qaglst): d2cstdclist
 //
 (* ****** ****** *)
 //
