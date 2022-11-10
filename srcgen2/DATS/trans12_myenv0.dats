@@ -1144,6 +1144,14 @@ end (*let*)//end-of-[list_cons]
 (* ****** ****** *)
 //
 #implfun
+tr12env_add0_s2qag
+  (env0, sqa0) =
+let
+val s2vs = sqa0.s2vs()
+in//let
+tr12env_add0_s2varlst(env0, s2vs)
+end (*let*) // end of [tr12env_add0_s2qag(...)]
+#implfun
 tr12env_add0_t2qag
   (env0, tqa0) =
 let
@@ -1152,6 +1160,22 @@ in//let
 tr12env_add0_s2varlst(env0, s2vs)
 end (*let*) // end of [tr12env_add0_t2qag(...)]
 //
+#implfun
+tr12env_add0_s2qaglst
+  (env0, sqas) =
+(
+case+ sqas of
+|
+list_nil((*void*)) => ()
+|
+list_cons(sqa1, sqas) =>
+let
+val () =
+tr12env_add0_s2qag(env0, sqa1)
+in//let
+  tr12env_add0_s2qaglst(env0, sqas)
+end (*let*)//end-of-[list_cons]
+) (*case+*)//end-of-[tr12env_add0_s2qaglst(...)]
 #implfun
 tr12env_add0_t2qaglst
   (env0, tqas) =

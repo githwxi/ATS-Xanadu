@@ -397,6 +397,9 @@ fun
 tr12env_add0_s2var
 (env0: !tr12env , s2v0: s2var): void
 fun
+tr12env_add0_s2qag
+(env0: !tr12env , sqa0: s2qag): void
+fun
 tr12env_add0_t2qag
 (env0: !tr12env , tqa0: t2qag): void
 (* ****** ****** *)
@@ -424,6 +427,9 @@ fun
 tr12env_add0_s2varlst
 (env0: !tr12env, s2vs: s2varlst): void
 fun
+tr12env_add0_s2qaglst
+(env0: !tr12env, sqas: s2qaglst): void
+fun
 tr12env_add0_t2qaglst
 (env0: !tr12env, tqas: t2qaglst): void
 (* ****** ****** *)
@@ -450,6 +456,8 @@ tr12env_add0_f2arglst
 (* ****** ****** *)
 #symload
 tr12env_add0_s2vs with tr12env_add0_s2varlst
+#symload
+tr12env_add0_sqas with tr12env_add0_s2qaglst
 #symload
 tr12env_add0_tqas with tr12env_add0_t2qaglst
 (* ****** ****** *)

@@ -550,11 +550,27 @@ D2Cfundclst
 print("D2Cfundclst(",tknd,";",tqas,";",d2fs,")")
 //
 |
+D2Cimplmnt0
+(tknd
+,sqas,tqas
+,dqid,tias
+,farg,sres,body) =>
+(
+print("D2Cimplmnt0(");
+print(tknd,";",sqas,";",tqas,";");
+print(dqid,";",tias,";",farg,";",sres,";",body,")"))
+//
+|
 D2Cexcptcon(d1cl,d2cs) =>
 print("D2Cexcptcon(",d1cl,";",d2cs,")")
 |
 D2Cdatatype(d1cl,s2cs) =>
 print("D2Cdatatype(",d1cl,";",s2cs,")")
+//
+|
+D2Cdynconst
+(tknd,tqas,d2cs) =>
+print("D2Cdynconst(",tknd,";",tqas,";",d2cs,")")
 //
 |
 D2Cnone0() => print( "D2Cnone0(", ")" )
@@ -656,6 +672,48 @@ S2RESsome(seff, s2e1) =>
 print
 ("S2RESsome(",seff,";",s2e1,")")
 end (*let*) // end of [s2res_fprint]
+//
+(* ****** ****** *)
+//
+#implfun
+simpl_fprint
+(out, s2i0) =
+let
+#implfun
+g_print$out<>() = out
+in//let
+case+ s2i0 of
+|
+SIMPLall1
+(sqid,s2cs) =>
+print("SIMPLall1(",sqid,";",s2cs,")")
+|
+SIMPLopt2
+(sqid,s2cs,sopt) =>
+print
+("SIMPLopt2(",sqid,";",s2cs,";",sopt,")")
+end (*let*) // end of [simpl_fprint(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+dimpl_fprint
+(out, d2i0) =
+let
+#implfun
+g_print$out<>() = out
+in//let
+case+ d2i0 of
+|
+DIMPLall1
+(dqid,d2cs) =>
+print("DIMPLall1(",dqid,";",d2cs,")")
+|
+DIMPLopt2
+(dqid,d2cs,dopt) =>
+print
+("DIMPLopt2(",dqid,";",d2cs,";",dopt,")")
+end (*let*) // end of [dimpl_fprint(...)]
 //
 (* ****** ****** *)
 

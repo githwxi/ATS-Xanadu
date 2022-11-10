@@ -1142,6 +1142,9 @@ s2qag_fprint(g_print$out<>(), sqag)
 #impltmp
 g_print<t2qag>(tqag) =
 t2qag_fprint(g_print$out<>(), tqag)
+#impltmp
+g_print<t2iag>(tiag) =
+t2iag_fprint(g_print$out<>(), tiag)
 //
 (* ****** ****** *)
 #impltmp
