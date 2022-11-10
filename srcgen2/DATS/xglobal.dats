@@ -36,6 +36,9 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsafex.sats"
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
@@ -62,9 +65,13 @@ local
 //
 val
 the_done =
-a0ref_make_1val<sint>(0)
+a0ref_make_1val(0)
 val
-the_path =
+the_fixenv =
+a0ref_make_1val
+($UN.cast10{d1topenv}(0))
+val
+the_fixpath =
 "./../../prelude/fixity0.sats"
 //
 in//local
@@ -79,7 +86,8 @@ val () =
 (the_done[] := n0+1)
 in//let
 if
-(n0 > 0) then (0) else f0_pvsload()
+(n0 > 0)
+then (0) else f0_pvsload()
 end where
 {
 //
@@ -90,14 +98,13 @@ let
 val
 dpar =
 d0parsed_from_fpath
-(0(*sta*), the_path)
+(0(*sta*), the_fixpath)
 //
 val
 dpar =
 d1parsed_from_trans(dpar)
-//
 in//let
-  (1)
+the_fixenv[] := dpar.topenv(); (1)
 end (*let*) // end of [f0_pvsload]
 //
 } (*where*) // [the_fixity_pvsload]

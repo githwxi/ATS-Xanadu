@@ -847,6 +847,8 @@ sint  // nerror
 ,
 lcsrc // source
 ,
+d1topenv //fixty-map
+,
 d1eclistopt)//program
 //
 #absimpl
@@ -865,7 +867,8 @@ d1parsed_get_stadyn
 val+
 D1PARSED
 ( stadyn
-, nerror, source, parsed) = dpar
+, nerror, source
+, topenv, parsed) = dpar
 } (*where*)//end-of-[d1parsed_get_stadyn]
 
 (* ****** ****** *)
@@ -879,7 +882,8 @@ d1parsed_get_nerror
 val+
 D1PARSED
 ( stadyn
-, nerror, source, parsed) = dpar
+, nerror, source
+, topenv, parsed) = dpar
 } (*where*)//end-of-[d1parsed_get_nerror]
 
 (* ****** ****** *)
@@ -893,7 +897,8 @@ d1parsed_get_source
 val+
 D1PARSED
 ( stadyn
-, nerror, source, parsed) = dpar
+, nerror, source
+, topenv, parsed) = dpar
 } (*where*)//end-of-[d1parsed_get_source]
 
 (* ****** ****** *)
@@ -907,16 +912,35 @@ d1parsed_get_parsed
 val+
 D1PARSED
 ( stadyn
-, nerror, source, parsed) = dpar
+, nerror, source
+, topenv, parsed) = dpar
+} (*where*)//end-of-[d1parsed_get_parsed]
+
+(* ****** ****** *)
+
+#implfun
+d1parsed_get_topenv
+  (dpar) =
+(
+  topenv ) where
+{
+val+
+D1PARSED
+( stadyn
+, nerror, source
+, topenv, parsed) = dpar
 } (*where*)//end-of-[d1parsed_get_parsed]
 
 (* ****** ****** *)
 //
 #implfun
 d1parsed_make_args
-(stadyn,nerror,source,parsed) =
+(stadyn
+,nerror,source,topenv,parsed) =
 (
-D1PARSED(stadyn,nerror,source,parsed)
+D1PARSED
+(stadyn
+,nerror,source,topenv,parsed)
 ) where
 {
 (*

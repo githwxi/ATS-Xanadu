@@ -131,11 +131,13 @@ TR01ENV(topmap, stkmap) where
 #implfun
 tr01env_free_top
   (  tenv  ) =
-(
-stkmap_free_nil(stkmap)) where
+  ( topmap ) where
 {
-val+
-~TR01ENV(topmap, stkmap) = tenv
+  val () =
+  stkmap_free_nil(stkmap)} where
+{
+  val+
+  ~TR01ENV(topmap, stkmap) = tenv
 } (*where*)//end-of(tr01env_free_top(tenv))
 
 (* ****** ****** *)
