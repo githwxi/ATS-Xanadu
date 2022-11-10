@@ -736,7 +736,8 @@ end (*let*) // end of [f0_abstype(env0,d1cl)]
 //
 local
 //
-#typedef s2vs = s2varlst
+#typedef
+s2vss = list(s2varlst)
 //
 fun
 f1_sqid
@@ -796,6 +797,63 @@ end (*let*) // end of [S1QIDsome(...)]
 ) : s2cstlst // end-of-val-(   s2cs   )
 } (* where *) // end of [f1_sqid(env0,sqid)]
 //
+fun
+f1_smas
+( env0:
+! tr12env
+, smas
+: s1maglst): s2vss =
+(
+list_map_e1nv
+< x0><y0 ><e1>
+( smas, env0 )) where
+{
+#typedef x0 = s1mag
+#vwtpdef e1 = tr12env
+#typedef y0 = s2varlst
+#impltmp
+map$fopr_e1nv
+< x0><y0 ><e1>
+(   x0, e1   ) = trans12_s1mag(e1, x0)
+} (* where *) // end of [f1_smas(env0,...)]
+//
+fun
+f1_lams
+( env0:
+! tr12env
+, svss
+: s2vss
+, tres
+: sort1opt
+, s1e2: s1exp): s2exp =
+(
+case+ svss of
+|
+list_nil() =>
+(
+case tres of
+|
+optn_nil() =>
+trans12_s1exp_impr(env0, s1e2)
+|
+optn_cons(s1t1) =>
+trans12_s1exp_stck
+( env0
+, s1e2,trans12_sort1(env0,s1t1))
+)
+|
+list_cons(s2vs, svss) =>
+let
+val () = 
+tr12env_add0_s2varlst(env0, s2vs)
+in//let
+  s2exp_lam0(s2vs, s2e2) where
+{ val
+  s2e2 =
+  f1_lams(env0, svss, tres, s1e2) }
+end (*let*) // end of [list_cons(s2vs,svss)
+)
+//
 in//let
 
 fun
@@ -818,6 +876,41 @@ end (*let*)
 end (*let*) // end of [f0_absopen(env0,d1cl)]
 
 (* ****** ****** *)
+
+fun
+f0_absimpl
+( env0:
+! tr12env
+, d1cl: d1ecl): d2ecl =
+let
+//
+val
+loc0 = d1cl.lctn()
+//
+val-
+D1Cabsimpl
+( tknd
+, sqid
+, smas
+, tres
+, s1e2) = d1cl.node()
+//
+val
+sqid = f1_sqid(env0, sqid)
+val
+svss = f1_smas(env0, smas)
+//
+val () =
+tr12env_pshlam0(env0)
+val
+s2e2 =
+f1_lams(env0,svss,tres,s1e2)
+//
+val () = tr12env_poplam0(env0)
+//
+in
+d2ecl(loc0, D2Cabsimpl(tknd, sqid, s2e2))
+end // end of [aux_absimpl]
 
 end (*local*) // end of [f0(absopen/absimpl)]
 //
