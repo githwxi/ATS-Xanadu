@@ -1029,16 +1029,52 @@ f0_datatype
 ! tr12env
 , d1cl: d1ecl): d2ecl =
 let
+//
 val
 loc0 = d1cl.lctn()
+//
 val-
 D1Cdatatype
 ( tknd
 , d1ts, wdcs) = d1cl.node()
 //
+val
+s2cs =
+trans12_d1typlst
+(env0, d1ts, s2t0) where
+{
+val s2t0 =
+(
+case-
+tknd.node() of
+|
+T_DATATYPE(knd0) =>
+if
+sortlin(knd0) = 0
+then the_sort2_tbox
+else the_sort2_vtbx):sort2 }
+//
+val
+d2cs = f0_wdeclseq(env0, wdcs)
+//
 in//let
-  d2ecl_none1(d1cl)
+  d2ecl(loc0, D2Cdatatype(d1cl, s2cs))
 end (*let*) // end of [f0_datatype(env0,d1cl)]
+//
+and
+f0_wdeclseq
+( env0:
+! tr12env
+, wdcs: wd1eclseq): d2eclist =
+(
+case+ wdcs of
+|
+WD1CSnone
+((*void*)) => list_nil()
+|
+WD1CSsome
+(  d1cs  ) => trans12_d1eclist(env0, d1cs)
+) (*case+*) // end of [f0_wdeclseq(env0,wdcs)]
 //
 (* ****** ****** *)
 //
