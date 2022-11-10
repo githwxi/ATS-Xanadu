@@ -323,6 +323,9 @@ D1Cexcptcon _ => f0_excptcon(env0, d1cl)
 |
 D1Cdatatype _ => f0_datatype(env0, d1cl)
 //
+|
+D1Cdynconst _ => f0_dynconst(env0, d1cl)
+//
 |_(*otherwise*) =>
 let
 val loc0 = d1cl.lctn()
@@ -856,6 +859,8 @@ end (*let*) // end of [list_cons(s2vs,svss)
 //
 in//let
 
+(* ****** ****** *)
+
 fun
 f0_absopen
 ( env0:
@@ -910,7 +915,9 @@ val () = tr12env_poplam0(env0)
 //
 in
 d2ecl(loc0, D2Cabsimpl(tknd, sqid, s2e2))
-end // end of [aux_absimpl]
+end (*let*) // end of [f0_absimpl(env0,d1cl)]
+
+(* ****** ****** *)
 
 end (*local*) // end of [f0(absopen/absimpl)]
 //
@@ -1259,6 +1266,34 @@ WD1CSnone
 WD1CSsome
 (  d1cs  ) => trans12_d1eclist(env0, d1cs)
 ) (*case+*) // end of [f0_wdeclseq(env0,wdcs)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dynconst
+( env0:
+! tr12env
+, d1cl: d1ecl): d2ecl =
+let
+//
+val
+loc0 = d1cl.lctn()
+//
+val-
+D1Cdynconst
+( tknd
+, tqas, d1cs) = d1cl.node()
+//
+val
+tqas =
+trans12_t1qaglst(env0, tqas)
+//
+val d2cs =
+trans12_d1cstdclist(env0,tknd,d1cs,tqas)
+//
+in//let
+d2ecl(loc0, D2Cdynconst(tknd, tqas, d2cs))
+end (*let*) // end of [f0_dynconst(env0,d1cl)]
 //
 (* ****** ****** *)
 //
