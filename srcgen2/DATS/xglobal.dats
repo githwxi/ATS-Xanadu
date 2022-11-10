@@ -43,10 +43,67 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
+#staload "./../SATS/staexp0.sats"
+#staload "./../SATS/dynexp0.sats"
+#staload "./../SATS/parsing.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
+#staload "./../SATS/trans01.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"
+(* ****** ****** *)
+
+local
+//
+val
+the_done =
+a0ref_make_1val<sint>(0)
+val
+the_path =
+"./../../prelude/fixity0.sats"
+//
+in//local
+
+#implfun
+the_fixity_pvsload
+  ((*void*)) =
+let
+val n0 =
+the_done[]
+val () =
+(the_done[] := n0+1)
+in//let
+if
+(n0 > 0) then (0) else f0_pvsload()
+end where
+{
+//
+fun
+f0_pvsload() =
+let
+//
+val
+dpar =
+d0parsed_from_fpath
+(0(*sta*), the_path)
+//
+val
+dpar =
+d1parsed_from_trans(dpar)
+//
+in//let
+  (1)
+end (*let*) // end of [f0_pvsload]
+//
+} (*where*) // [the_fixity_pvsload]
+
+endloc // end of [the_fixity_pvsload]
+
 (* ****** ****** *)
 
 local

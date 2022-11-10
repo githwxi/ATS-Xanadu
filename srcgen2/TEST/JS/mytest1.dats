@@ -70,5 +70,21 @@ case+ xs of
 |list_nil() => 0
 |list_cons(_, xs) => 1+length<a>(xs))
 (* ****** ****** *)
+(*
+#declmod(trec,debug)
+#impltmp
+{ a:t0 }
+length<a>(xs: list(a)): sint =
+(
+case+ xs of
+|list_nil() => 0
+|list_cons(_, xs) => 1+length<a>(xs))
+)
+val:
+rec
+fact =
+lam(x) => if x >= 0 then x * fact(x-1) else 1
+*)
+(* ****** ****** *)
 
 (* end of [mytest1.dats] *)

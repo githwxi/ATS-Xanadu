@@ -1274,7 +1274,7 @@ D1Es2eq _ => f0_s2eq(env0, d1e0)
 //
 |D1Ecas0 _ => f0_cas0(env0, d1e0)
 (*
-|D1Ecas1 _ => f0_cas0(env0, d1e0)
+|D1Ecas1 _ => f0_cas1(env0, d1e0)
 *)
 //
 |D1Elet0 _ => f0_let0(env0, d1e0)
