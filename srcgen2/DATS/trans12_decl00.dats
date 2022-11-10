@@ -324,6 +324,9 @@ D1Cexcptcon _ => f0_excptcon(env0, d1cl)
 D1Cdatatype _ => f0_datatype(env0, d1cl)
 //
 |
+D1Cimplmnt0 _ => f0_implmnt0(env0, d1cl)
+//
+|
 D1Cdynconst _ => f0_dynconst(env0, d1cl)
 //
 |_(*otherwise*) =>
@@ -1060,11 +1063,11 @@ s2c1 =
 s2cst_make_idst(loc1, sid1, tfun)
 (*
 val () =
-println!("f2_d1t0: tok1 = ", tok1)
+prerrln("f2_d1t0: tok1 = ", tok1)
 val () =
-println!("f2_d1t0: tfun = ", tfun)
+prerrln("f2_d1t0: tfun = ", tfun)
 val () =
-println!("f2_d1t0: s2c1 = ", s2c1)
+prerrln("f2_d1t0: s2c1 = ", s2c1)
 *)
 in
   loop(env0, tcns, s2cs) where
@@ -1277,6 +1280,112 @@ WD1CSsome
 ) (*case+*) // end of [f0_wdeclseq(env0,wdcs)]
 //
 (* ****** ****** *)
+
+local
+
+fun
+f1_dqid
+( env0:
+! tr12env
+, dqid: d1qid): dimpl =
+(
+DIMPLall1(dqid, d2cs)) where
+{
+//
+(*
+val () =
+prerrln("f1_dqid: dqid = ", dqid)
+*)
+//
+val d2cs =
+(
+case+ dqid of
+|
+D1QIDnone(tok1) =>
+let
+val sym1 =
+dexpid_sym(tok1)
+val opt1 =
+tr12env_find_d2itm(env0, sym1)
+in//let
+case+ opt1 of
+| ~
+optn_vt_nil() =>
+list_nil((*void*))
+| ~
+optn_vt_cons(d2i1) =>
+(
+case+ d2i1 of
+|
+D2ITMcst
+( d2cs ) => d2cs | _ => list_nil()
+) (*case+*) // end of [optn_vt_cons]
+end (*let*) // end of [D1QIDnone(tok1)]
+|
+D1QIDsome(tqua, tok1) =>
+let
+val
+sym1 = dexpid_sym(tok1)
+val
+opt1 =
+tr12env_qfind_d2itm(env0, tqua, sym1)
+in//let
+case+ opt1 of
+| ~
+optn_vt_nil() =>
+list_nil((*void*))
+| ~
+optn_vt_cons(d2i1) =>
+(
+case+ d2i1 of
+|
+D2ITMcst
+( d2cs ) => d2cs | _ => list_nil()
+) (*case+*) // end of [optn_vt_cons]
+//
+end (*let*) // end of [D1QIDsome(...)]
+) : d2cstlst // end-of-val-(   s2cs   )
+} (* where *) // end of [f1_dqid(env0,dqid)]
+
+in//local
+//
+fun
+f0_implmnt0
+( env0:
+! tr12env
+, d1cl: d1ecl): d2ecl =
+let
+//
+val
+loc0 = d1cl.lctn()
+//
+val-
+D1Cimplmnt0
+( tknd
+, sqas, tqas
+, dqid
+, tias, f1as
+, sres, dexp) = d1cl.node()
+//
+val
+dqid = f1_dqid(env0, dqid)
+//
+val sqas =
+trans12_s1qaglst(env0, sqas)
+val tqas =
+trans12_t1qaglst(env0, tqas)
+val f2as =
+trans12_f1arglst(env0, f1as)
+val sres = trans12_s1res(env0, sres)
+val dexp = trans12_d1exp(env0, dexp)
+//
+in//let
+  d2ecl_none1(d1cl)
+end (*let*) // end of [f0_implmnt0(env0,d1cl)]
+//
+end (*local*) // end of [ local(f0_implmnt0) ]
+
+(* ****** ****** *)
 //
 fun
 f0_dynconst
@@ -1297,8 +1406,15 @@ val
 tqas =
 trans12_t1qaglst(env0, tqas)
 //
+val (  ) =
+tr12env_pshlam0(env0)
+val (  ) =
+tr12env_add0_tqas(env0, tqas)
+//
 val d2cs =
 trans12_d1cstdclist(env0,tknd,d1cs,tqas)
+//
+val (  ) = tr12env_poplam0(env0)
 //
 in//let
 d2ecl(loc0, D2Cdynconst(tknd, tqas, d2cs))
@@ -1709,11 +1825,11 @@ end (*let*) // end of [list_cons(_,_)'
 //
 (*
 val () =
-println!("trans12_d1tcn: tok0 = ", tok0)
+prerrln("trans12_d1tcn: tok0 = ", tok0)
 *)
 (*
 val () =
-println!("trans12_d1tcn: s1us = ", s1us)
+prerrln("trans12_d1tcn: s1us = ", s1us)
 *)
 //
 } (*where*) // end of [trans12_d1tcn(env0,...)]
