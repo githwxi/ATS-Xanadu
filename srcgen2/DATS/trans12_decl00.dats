@@ -305,6 +305,8 @@ D1Csexpdef _ => f0_sexpdef(env0, d1cl)
 //
 |
 D1Cabstype _ => f0_abstype(env0, d1cl)
+|
+D1Cabsopen _ => f0_absopen(env0, d1cl)
 //
 |
 D1Cdatasort _ => f0_datasort(env0, d1cl)
@@ -729,6 +731,95 @@ in//let
   d2ecl(loc0, D2Cabstype(s2c1, atdf))
 end (*let*)
 end (*let*) // end of [f0_abstype(env0,d1cl)]
+//
+(* ****** ****** *)
+//
+local
+//
+#typedef s2vs = s2varlst
+//
+fun
+f1_sqid
+( env0:
+! tr12env
+, sqid: s1qid): simpl =
+(
+SIMPLall1(sqid, s2cs)) where
+{
+val s2cs =
+(
+case+ sqid of
+|
+S1QIDnone(tok1) =>
+let
+val sid1 =
+sexpid_sym(tok1)
+val opt1 =
+tr12env_find_s2itm(env0, sid1)
+in//
+case+ opt1 of
+| ~
+optn_vt_nil() =>
+list_nil((*void*))
+| ~
+optn_vt_cons(s2i1) =>
+(
+case+ s2i1 of
+|
+S2ITMcst
+( s2cs ) => s2cs | _ => list_nil()
+) (*case+*) // end of [optn_vt_cons]
+end (*let*) // end of [S1QIDnone(tok1)]
+|
+S1QIDsome(tqua, tok1) =>
+let
+val sid1 =
+sexpid_sym(tok1)
+val opt1 =
+tr12env_qfind_s2itm(env0, tqua, sid1)
+in//let
+//
+case+ opt1 of
+| ~
+optn_vt_nil() =>
+list_nil((*void*))
+| ~
+optn_vt_cons(s2i1) =>
+(
+case+ s2i1 of
+|
+S2ITMcst
+( s2cs ) => s2cs | _ => list_nil()
+) (*case+*) // end of [optn_vt_cons]
+//
+end (*let*) // end of [S1QIDsome(...)]
+) : s2cstlst // end-of-val-(   s2cs   )
+} (* where *) // end of [f1_sqid(env0,sqid)]
+//
+in//let
+
+fun
+f0_absopen
+( env0:
+! tr12env
+, d1cl: d1ecl): d2ecl =
+let
+val
+loc0 = d1cl.lctn()
+val-
+D1Cabsopen
+(tknd, sqid) = d1cl.node()
+in//let
+let
+val sqid = f1_sqid(env0, sqid)
+in//let
+  d2ecl(loc0, D2Cabsopen(tknd, sqid))
+end (*let*)
+end (*let*) // end of [f0_absopen(env0,d1cl)]
+
+(* ****** ****** *)
+
+end (*local*) // end of [f0(absopen/absimpl)]
 //
 (* ****** ****** *)
 //

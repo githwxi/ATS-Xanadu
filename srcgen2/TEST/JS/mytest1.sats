@@ -58,6 +58,18 @@ mylist(a:t0)(i:i0) = list(a,i)
 excptcon | TRUE | FALSE of ()
 //
 (* ****** ****** *)
+//
+datatype
+mylist =
+| mylist_nil
+| mylist_cons of (sint, mylist)
+//
+datavwtp
+mylist_vt =
+| mylist_vt_nil
+| mylist_vt_cons of (sint, mylist_vt)
+//
+(* ****** ****** *)
 ////
 (* ****** ****** *)
 #sexpdef
@@ -209,12 +221,6 @@ fun
 helper(i: sint): sint =
 if (i > 0) then helper(i-1) * i else 0 }
 //
-(* ****** ****** *)
-
-datatype
-mylist =
-| mylist_nil | mylist_cons of (sint, mylist)
-
 (* ****** ****** *)
 
 datasort

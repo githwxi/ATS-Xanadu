@@ -447,13 +447,13 @@ val s2f0 =
 case+
 s2f0.sort() of
 |
-S2Tf0un _ => s2f0
+S2Tfun0 _ => s2f0
 |
-S2Tf1un _ => s2f0
+S2Tfun1 _ => s2f0
 |
 _(*non-S2Tf?un*) =>
 s2exp_cast
-(loc0, s2f0, S2Tf0un())
+(loc0, s2f0, S2Tfun0())
 ) : s2exp // end of [val s2f0]
 //
 val
@@ -462,9 +462,9 @@ tres =
 case+
 s2f0.sort() of
 |
-S2Tf1un(_, s2t1) => s2t1
+S2Tfun1(_, s2t1) => s2t1
 |
-_(*non-S2Tf1un*) => S2Tnone0()
+_(*non-S2Tfun1*) => S2Tnone0()
 ) : sort2 // end of [val tres]
 //
 in
@@ -499,7 +499,7 @@ map$fopr
 < sort2 > = s2var_get_sort }
 //
 val s2t0 =
-  S2Tf1un(s2ts, body.sort())
+  S2Tfun1(s2ts, body.sort())
 //
 in
   s2exp(s2t0, S2Elam0(s2vs, body))

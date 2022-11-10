@@ -146,11 +146,11 @@ S2Ttup(s2ts) =>
 print("S2Ttup(", s2ts ,")")
 //
 |
-S2Tf0un(  ) =>
-print(   "S2Tf0un(", ")"   )
+S2Tfun0(  ) =>
+print(   "S2Tfun0(", ")"   )
 |
-S2Tf1un(s2ts,s2t1) =>
-print("S2Tf1un(",s2ts,";",s2t1,")")
+S2Tfun1(s2ts,s2t1) =>
+print("S2Tfun1(",s2ts,";",s2t1,")")
 //
 |
 S2Tapps(s2f0,s2ts) =>

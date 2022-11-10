@@ -189,7 +189,7 @@ _(*non-T2Bimpr*) => false
 )
 //
 |
-S2Tf1un
+S2Tfun1
 (targ, tres) => sort2_imprq(tres)
 //
 | _(* rest-of-sort2 *) => ( false )
@@ -296,13 +296,13 @@ case+ x2 of
 )
 //
 |
-S2Tf1un(arg1, res1) =>
+S2Tfun1(arg1, res1) =>
 (
 case+ x2 of
 |
-S2Tf1un(arg2, res2) =>
+S2Tfun1(arg2, res2) =>
 if (arg2 <= arg1) then (res1 <= res2) else false
-| _ (* non-S2Tf1un *) => false
+| _ (* non-S2Tfun1 *) => false
 )
 //
 |
@@ -317,7 +317,7 @@ if (s2f1 <= s2f2) then (arg1 <= arg2) else false
 //
 | _ (* rest-of-sort2 *) => false
 (*
-| S2Tf0un() => false
+| S2Tfun0() => false
 |
 S2Tnone(s1t1) => false | S2Tnone((*void*)) => false
 *)
