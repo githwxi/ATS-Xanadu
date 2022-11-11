@@ -41,6 +41,9 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload
+GLB = "./../SATS/xglobal.sats"
+(* ****** ****** *)
 #staload "./../SATS/xstamp0.sats"
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
@@ -72,7 +75,8 @@ SYMBL("", the_stamp_nil)
 (* ****** ****** *)
 
 #implfun
-symbl_get_name(sym) =
+symbl_get_name
+  (  sym  ) =
 let
 val+
 SYMBL(nam, tmp) = sym in nam
@@ -87,10 +91,11 @@ end(*let*)//end-of(symbl_get_stmp)
 (* ****** ****** *)
 
 #implfun
-symbl_make_name(nam) =
+symbl_make_name
+  (  nam  ) =
 let
-  val opt =
-  symbl_search_opt(nam)
+val opt =
+symbl_search_opt(nam)
 in//let
 //
 case+ opt of
@@ -101,8 +106,18 @@ val
 tmp = mytmper.getinc()
 val
 sym = SYMBL( nam, tmp )
+//
 in//let
-  symbl_insert_any(sym); sym
+sym where
+{
+//
+val () =
+symbl_insert_any(sym)
+//
+val () =
+$GLB.the_xsymbls_insert(sym)
+//
+}(*where*)//end-of(sym)
 end(*let*)//end-of(optn_vt_nil)
 | ~
 optn_vt_cons(sym) => sym//found!

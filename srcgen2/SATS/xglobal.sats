@@ -87,6 +87,13 @@ D2E = "./dynexp2.sats"
 #typedef d2ptm = $D2E.d2ptm
 //
 (* ****** ****** *)
+fun
+the_xsymbls_insert
+  (sym: sym_t): void
+fun
+the_xsymbls_search
+(key: sint): optn_vt(sym_t)
+(* ****** ****** *)
 //
 fun
 the_fxtyenv_pvsload
