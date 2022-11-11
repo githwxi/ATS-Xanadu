@@ -44,6 +44,7 @@ Authoremail: gmhwxiATgmailDOTcom
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+#staload "./../SATS/xstamp0.sats"
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
 #staload "./../SATS/xsymmap.sats"
@@ -63,6 +64,62 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload "./../SATS/xglobal.sats"
 (* ****** ****** *)
 #staload _ = "./xsymmap_topmap.dats"
+(* ****** ****** *)
+
+local
+
+#typedef key = sint
+#typedef itm = sym_t
+(* ****** ****** *)
+#symload
+stmp with symbl_get_stmp
+(* ****** ****** *)
+#staload
+"prelude\
+/DATS/CATS/JS/basics1.dats"
+(* ****** ****** *)
+//
+val
+the_xsymbls =
+XATS2JS_jsobjmap_make_nil<key>{itm}()
+//
+in//local
+
+(* ****** ****** *)
+
+#implfun
+the_xsymbls_insert
+  (    sym    ) =
+let
+//
+val k0 =
+sym.stmp()
+val k0 =
+g0u2s(uint(k0))
+//
+val x0 = sym
+//
+val map = the_xsymbls
+//
+in//let
+XATS2JS_jsobjmap_insert_any<key>(map,k0,x0)
+end (*let*) // end of [the_xsymbls_insert(sym)]
+
+(* ****** ****** *)
+
+#implfun
+the_xsymbls_search
+  (  key  ) =
+let
+val map = the_xsymbls
+in//let
+XATS2JS_jsobjmap_search_opt<key>(map , key)
+end (*let*) // end of [the_xsymbls_search(key)]
+
+(* ****** ****** *)
+
+end (*local*) // end of [local(the_xsymbls)]
+
 (* ****** ****** *)
 
 local
@@ -245,9 +302,10 @@ g_print$out<>() = out
 val kxs = the_sortenv_toplst()
 in//let
 (
-  loop(kxs)) where
+auxloop(kxs)) where
 {
-fun loop
+fun
+auxloop
 (kxs: list@(sym_t, s2tex)): void =
 (
 case+ kxs of
@@ -256,13 +314,13 @@ list_nil() => ()
 |
 list_cons(kx1, kxs) =>
 (
-  loop(kxs)) where
+auxloop(kxs)) where
 {
-  val () = println
-  ("the_sortenv_toplst:", "(", kx1.0, " -> ", kx1.1, ")")
+val () = println
+("the_sortenv_toplst:", "(", kx1.0, " -> ", kx1.1, ")")
 }
 )
-} (*where*)//end-[loop(kxs)]
+} (*where*)//end-[auxloop(kxs)]
 end (*let*)//end-[the_sortenv_toplst_fprint]
 //
 (* ****** ****** *)

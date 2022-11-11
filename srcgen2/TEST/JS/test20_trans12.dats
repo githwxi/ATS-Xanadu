@@ -42,6 +42,9 @@
 "./../../DATS/xbasics_print0.dats"
 (* ****** ****** *)
 #include
+"./../../DATS/xglobal.dats"
+(* ****** ****** *)
+#include
 "./../../DATS/xstamp0.dats"
 #include
 "./../../DATS/xstamp0_print0.dats"
@@ -64,9 +67,6 @@
 "./../../DATS/locinfo.dats"
 #include
 "./../../DATS/locinfo_print0.dats"
-(* ****** ****** *)
-#include
-"./../../DATS/xglobal.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/xsymmap_topmap.dats"

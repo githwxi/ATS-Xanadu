@@ -51,6 +51,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xsymmap.sats"
 (* ****** ****** *)
+#staload "./../SATS/xglobal.sats"
+(* ****** ****** *)
 
 local
 
@@ -265,6 +267,22 @@ topmap_strmize(map)
 kx = (int, list(itm))
 //
 fun
+auxkey
+(k0: int) =
+let
+val opt =
+the_xsymbls_search(k0)
+in//let
+//
+case+ opt of
+| ~
+optn_vt_nil() => print("(nil)")
+| ~
+optn_vt_cons(sym) => print( sym )
+//
+end (*let*) // end of [auxkey(k0)]
+//
+fun
 auxloop
 (kxs: strm_vt(kx)): void =
 (
@@ -274,8 +292,10 @@ strmcon_vt_nil() => ((*void*))
 | ~
 strmcon_vt_cons(kx1, kxs) =>
 (
-println(kx1.0, " -> ", kx1.1); auxloop(kxs)
-)
+auxloop(kxs)) where
+{
+  val () = auxkey(kx1.0)
+  val () = println(" -> ", kx1.1) }
 )
 }
 end (*let*) // end of [topmap_fprint(out,map)]
