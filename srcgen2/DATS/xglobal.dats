@@ -63,11 +63,18 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"
 (* ****** ****** *)
+(*
+HX-2022-11-11:
+Many of the global structures are
+for the main purpose of debugging!
+*)
+(* ****** ****** *)
 #staload _ = "./xsymmap_topmap.dats"
 (* ****** ****** *)
 
 local
 
+(* ****** ****** *)
 #typedef key = sint
 #typedef itm = sym_t
 (* ****** ****** *)
@@ -88,6 +95,17 @@ in//local
 (* ****** ****** *)
 
 #implfun
+the_xsymbls_search
+  (  key  ) =
+let
+val map = the_xsymbls
+in//let
+XATS2JS_jsobjmap_search_opt<key>(map,key)
+end (*let*) // end of [the_xsymbls_search(key)]
+
+(* ****** ****** *)
+
+#implfun
 the_xsymbls_insert
   (    sym    ) =
 let
@@ -104,17 +122,6 @@ val map = the_xsymbls
 in//let
 XATS2JS_jsobjmap_insert_any<key>(map,k0,x0)
 end (*let*) // end of [the_xsymbls_insert(sym)]
-
-(* ****** ****** *)
-
-#implfun
-the_xsymbls_search
-  (  key  ) =
-let
-val map = the_xsymbls
-in//let
-XATS2JS_jsobjmap_search_opt<key>(map , key)
-end (*let*) // end of [the_xsymbls_search(key)]
 
 (* ****** ****** *)
 

@@ -478,13 +478,13 @@ prerrln("trans12_t1mag: t1ma = ", t1ma)
 trans12_s1exp
 ( env0,s1e0 ) = let
 //
-// (*
+(*
 val
 loc0 = s1e0.lctn()
 val () =
 prerrln
 ("trans12_s1exp: s1e0 = ", s1e0)
-// *)
+*)
 //
 in//let
 //
