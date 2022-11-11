@@ -46,6 +46,8 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
+#staload "./../SATS/xsymmap.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
 #staload "./../SATS/parsing.sats"
@@ -60,30 +62,33 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"
 (* ****** ****** *)
+#staload _ = "./xsymmap_topmap.dats"
+(* ****** ****** *)
 
 local
 //
 val
-the_done =
+the_times =
 a0ref_make_1val(0)
 val
-the_fixenv =
+the_fxtyenv =
 a0ref_make_1val
 ($UN.cast10{d1topenv}(0))
 val
-the_fixpath =
-"./../../prelude/fixity0.sats"
+the_fixity0 =
+// "{$XATSHOME}/prelude/fixity0.sats"
+"/home/hwxi/Research/ATS-Xanadu/prelude/fixity0.sats"
 //
 in//local
-
+//
 #implfun
-the_fixity_pvsload
+the_fxtyenv_pvsload
   ((*void*)) =
 let
 val n0 =
-the_done[]
+the_times[]
 val () =
-(the_done[] := n0+1)
+(the_times[] := n0+1)
 in//let
 if
 (n0 > 0)
@@ -98,18 +103,37 @@ let
 val
 dpar =
 d0parsed_from_fpath
-(0(*sta*), the_fixpath)
+(0(*sta*), the_fixity0)
 //
 val
 dpar =
 d1parsed_from_trans(dpar)
-in//let
-the_fixenv[] := dpar.topenv(); (1)
-end (*let*) // end of [f0_pvsload]
 //
-} (*where*) // [the_fixity_pvsload]
-
-endloc // end of [the_fixity_pvsload]
+val () =
+prerrln
+("the_fxtyenv_pvsload:")
+val () = prerrln(dpar.topenv())
+//
+in//let
+the_fxtyenv[] := dpar.topenv(); (1)
+end (*let*) // end of [ f0_pvsload ]
+//
+} (*where*) // [the_fxtyenv_pvsload]
+//
+(* ****** ****** *)
+//
+#implfun
+the_fxtyenv_pvsfind
+  (   key   ) =
+(
+  topmap_search_opt(map, key)
+) where
+{
+  val map = the_fxtyenv[(*void*)]
+} (*where*) // [the_fxtyenv_pvsfind]
+//
+end (*local*)
+// end of [the_fxtyenv_pvs(load|find)]
 
 (* ****** ****** *)
 

@@ -511,7 +511,8 @@ val-
 ~optn_vt_cons(x0) =
 XATS2JS_jsobjmap_search_opt(kxs, k0) in (k0, x0)
 end
-}
+} (*where*)
+// end(gmap_strmize<jsobjmap(k0,x0)><k0><x0>(kxs))
 //
 #impltmp
 {k0:t0}
@@ -520,7 +521,7 @@ gmap_strmize_key
 <jsobjmap(k0,x0)><k0><x0>(kxs) =
 (
 XATS2JS_jsarray_strmize(XATS2JS_jsobjmap_keys(kxs))
-)
+) // gmap_strmize_key<jsobjmap(k0,x0)><k0><x0>(kxs)
 //
 (* ****** ****** *)
 
