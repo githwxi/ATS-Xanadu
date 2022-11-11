@@ -53,5 +53,20 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 #typedef token = $LEX.token
 (* ****** ****** *)
+#typedef sort2 = $S2E.sort2
+#typedef s2exp = $S2E.s2exp
+#typedef l2s2e = $S2E.l2s2e
+(* ****** ****** *)
+#typedef d2pat = $D2E.d2pat
+#typedef d2exp = $D2E.d2exp
+#typedef l2d2p = $D2E.l2d2p
+#typedef l2d2e = $D2E.l2d2e
+(* ****** ****** *)
+#typedef f2arg = $D2E.f2arg
+(* ****** ****** *)
+//
+#typedef s2res = $D2E.s2res
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread12.sats] *)
