@@ -205,17 +205,17 @@ xsymmap: topmap, stkmap
 *)
 #impltmp
 {x0:t0}
-gl_print1
+g_print
 <topmap(x0)>(map) =
-topmap_fprint1<x0>
-(gl_print$out< >( (*void*) ), map)
+topmap_fprint<x0>
+( g_print$out<>( (*void*) ), map )
 //
 #impltmp
 {x0:t0}
 gl_print1
 <stkmap(x0)>(map) =
 stkmap_fprint1<x0>
-(gl_print$out< >( (*void*) ), map)
+( gl_print$out<>( (*void*) ), map )
 //
 (* ****** ****** *)
 

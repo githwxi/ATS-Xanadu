@@ -1,23 +1,31 @@
 (* ****** ****** *)
+(*
 #infixr -> of 10
+*)
 (* ****** ****** *)
 //
+(*
 #infix0 < <= of 40 (*lt/eq*)
 #infix0 > >= of 40 (*gt/eq*)
 #infix0 = != of 30 (*equal*)
+*)
 //
 (* ****** ****** *)
 //
+(*
 #infixl + of 50
 #infixl - of 50
 #infixl * of 60
 #prefix + of +(+1) (*uplus*)
 #prefix - of -(+1) (*uminus*)
+*)
 //
 (* ****** ****** *)
 //
+(*
 #infix0 := of 0 // HX: assign
-#infix0 :=: of 0 // HX: exchange
+#infix0 :=: of 0 // HX: exchng
+*)
 //
 (* ****** ****** *)
 #typedef

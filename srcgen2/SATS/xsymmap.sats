@@ -73,15 +73,23 @@ stkmap_topq
 (* ****** ****** *)
 fun
 topmap_make_nil
-{itm:tbox}( (*void*) ): topmap(itm)
+{itm:tbox}((*void*)): topmap(itm)
 fun
 stkmap_make_nil
-{itm:tbox}( (*void*) ): stkmap(itm)
+{itm:tbox}((*void*)): stkmap(itm)
+(* ****** ****** *)
+//
+fun
+topmap_strmize
+{itm:tbox}
+(topmap(itm))
+: strm_vt(@(int,list(itm)))
+//
 (* ****** ****** *)
 //
 fun
 <x0:t0>
-topmap_fprint1(FILR,!topmap(x0)):void
+topmap_fprint(FILR, topmap(x0)):void
 fun
 <x0:t0>
 stkmap_fprint1(FILR,!stkmap(x0)):void

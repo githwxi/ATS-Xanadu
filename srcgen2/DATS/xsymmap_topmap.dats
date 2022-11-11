@@ -79,6 +79,17 @@ topmap_make_nil
 XATS2JS_jsobjmap_make_nil<key>()
 
 (* ****** ****** *)
+//
+#implfun
+topmap_strmize{itm}(map) =
+(
+gmap_strmize<gmap><key><itms>(map)
+) where
+{
+#typedef itms = list(itm)
+#typedef gmap = jsobjmap(key, itms)}
+//
+(* ****** ****** *)
 
 #implfun
 topmap_search_opt
@@ -232,6 +243,43 @@ loop(map, kxs) where {
 ) (* end of [loop(map,kxs)] *)
 } (*where*)//end-of-[topmap_insmix_kxs(map,kxs,mix)]
 
+(* ****** ****** *)
+//
+#impltmp
+<itm:t0>
+topmap_fprint
+  (out, map) =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+auxloop
+(
+topmap_strmize(map)
+) where
+{
+//
+#vwtpdef
+kx = (int, list(itm))
+//
+fun
+auxloop
+(kxs: strm_vt(kx)): void =
+(
+case+ !kxs of
+| ~
+strmcon_vt_nil() => ((*void*))
+| ~
+strmcon_vt_cons(kx1, kxs) =>
+(
+println(kx1.0, " -> ", kx1.1); auxloop(kxs)
+)
+)
+}
+end (*let*) // end of [topmap_fprint(out,map)]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xsymmap_topmap.dats] *)

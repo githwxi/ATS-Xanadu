@@ -488,7 +488,7 @@ auxprint(map) where
   println("stkmap_loc2(", ")") }
 )
 //
-} (*where*) // end of [stkmap_fprint1(out,map)]
+} (*where*) // end of [stkmap_fprint1(...)]
 //
 (* ****** ****** *)
 

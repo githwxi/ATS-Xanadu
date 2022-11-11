@@ -43,20 +43,30 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload
+SYM = "./xsymbol.sats"
+#staload
+FP0 = "./filpath.sats"
+(* ****** ****** *)
+#typedef sym_t = $SYM.sym_t
+#typedef fpath = $FP0.fpath
+(* ****** ****** *)
 //
-#staload "./xsymbol.sats"
-#staload "./filpath.sats"
+#staload
+FIX = "./xfixity.sats"
+//
+#typedef fixty = $FIX.fixty
+//
+#vwtpdef
+fixtyopt_vt = optn_vt(fixty)
 //
 (* ****** ****** *)
 //
 #staload
 S1E = "./staexp1.sats"
 //
-(* ****** ****** *)
-//
-fun
-the_fixity_pvsload
-  ( (*void*) ): sint(*0/1*)
+#typedef sort1 = $S1E.sort1
+#typedef s1exp = $S1E.s1exp
 //
 (* ****** ****** *)
 //
@@ -75,6 +85,15 @@ D2E = "./dynexp2.sats"
 #typedef d2exp = $D2E.d2exp
 #typedef d2itm = $D2E.d2itm
 #typedef d2ptm = $D2E.d2ptm
+//
+(* ****** ****** *)
+//
+fun
+the_fxtyenv_pvsload
+  ( (*void*) ): sint(*0/1*)
+fun
+the_fxtyenv_pvsfind
+  (key: sym_t): fixtyopt_vt
 //
 (* ****** ****** *)
 //

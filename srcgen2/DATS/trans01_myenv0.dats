@@ -61,6 +61,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
 (* ****** ****** *)
+#staload "./../SATS/xglobal.sats"
+(* ****** ****** *)
 //
 fun
 mix_fixty_fixty
@@ -256,9 +258,23 @@ in//let
 //
 case+ opt of
 | !
-optn_vt_cons _ => opt
+optn_vt_cons
+(   fxty   ) => opt
 | ~
-optn_vt_nil( ) => topmap_search_opt(topmap,k0)
+optn_vt_nil() =>
+let
+val opt =
+topmap_search_opt(topmap,k0)
+in//let
+(
+case+ opt of
+| !
+optn_vt_cons
+(   fxty   ) => opt
+| ~
+optn_vt_nil() => the_fxtyenv_pvsfind(k0)
+)
+end (*let*)//end-of-[optn_nil()]
 //
 end (*let*)//end-of-[tr01env_search_opt(tenv,k0)]
 
