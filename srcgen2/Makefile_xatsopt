@@ -481,6 +481,12 @@ trans12_decl00_dats: ; $(XATSOPT) --dynamic DATS/trans12_decl00.dats
 
 ######
 all_dats:: \
+tread12_dats
+tread12_dats: ; $(XATSOPT) --dynamic DATS/tread12.dats
+######
+
+######
+all_dats:: \
 xatsopt_tmplib_dats
 xatsopt_tmplib_dats: ; $(XATSOPT) --dynamic DATS/xatsopt_tmplib.dats
 ######

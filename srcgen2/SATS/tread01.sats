@@ -196,6 +196,22 @@ ftread01
 (syn , &sint >> _) -> ( syn )
 //
 (* ****** ****** *)
+//
+fun
+list_tread01_fnp
+{syn:tx}
+( lst: list(syn)
+, err: &sint >> _
+, fpr: ftread01(syn)): list(syn)
+//
+fun
+optn_tread01_fnp
+{syn:tx}
+( opt: optn(syn)
+, err: &sint >> _
+, fpr: ftread01(syn)): optn(syn)
+//
+(* ****** ****** *)
 fun tread01_g1exp: ftread01(g1exp)
 (* ****** ****** *)
 fun tread01_sort1: ftread01(sort1)
@@ -220,8 +236,8 @@ fun tread01_d1tcn: ftread01(d1tcn)
 fun tread01_d1typ: ftread01(d1typ)
 (* ****** ****** *)
 fun tread01_d1pat: ftread01(d1pat)
-fun tread01_l1d1p: ftread01(l1d1p)
 fun tread01_d1exp: ftread01(d1exp)
+fun tread01_l1d1p: ftread01(l1d1p)
 fun tread01_l1d1e: ftread01(l1d1e)
 (* ****** ****** *)
 fun tread01_f1arg: ftread01(f1arg)
@@ -251,22 +267,6 @@ fun tread01_t1qag: ftread01(t1qag)
 fun tread01_t1iag: ftread01(t1iag)
 (* ****** ****** *)
 fun tread01_a1tdf: ftread01(a1tdf)
-(* ****** ****** *)
-//
-fun
-list_tread01_fnp
-{syn:tx}
-( lst: list(syn)
-, err: &sint >> _
-, fpr: ftread01(syn)): list(syn)
-//
-fun
-optn_tread01_fnp
-{syn:tx}
-( opt: optn(syn)
-, err: &sint >> _
-, fpr: ftread01(syn)): optn(syn)
-//
 (* ****** ****** *)
 fun
 tread01_g1explst: ftread01(g1explst)
