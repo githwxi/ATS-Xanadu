@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sat 12 Nov 2022 09:06:44 AM EST
+Fri 11 Nov 2022 03:46:50 PM EST
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -57,49 +57,15 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/tread12.sats"
 (* ****** ****** *)
+//
+(* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
-#symload lctn with d2ecl_get_lctn
-#symload node with d2ecl_get_node
+#symload lctn with d2exp_get_lctn
+#symload node with d2exp_get_node
 (* ****** ****** *)
-//
-fun
-d2ecl_errck
-(lvl0: sint
-,d2cl: d2ecl): d2ecl =
-(
-d2ecl
-(d2cl.lctn(), D2Cerrck(lvl0, d2cl)))
 //
 (* ****** ****** *)
 
-#implfun
-tread12_d2ecl
-  (d2cl, err0) =
-(
-case+
-d2cl.node() of
-//
-|
-D2Cd0ecl _ => d2cl
-//
-|
-_(*otherwise*) =>
-let
-val lvl0 = 1
-in//let
-( err0 := err0+1; d2ecl_errck(lvl0, d2cl) )
-endlet // end of [ _(* otherwise *) ]
-//
-) where // end of [case+(d2cl.node())]
-{
-//
-//
-} (*where*) // end of [tread12_d2ecl(d2cl,err)]
-
-(* ****** ****** *)
-
-(* ****** ****** *)
-
-(* end of [ATS3/XATSOPT_srcgen2_tread12_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_tread12_dynexp.dats] *)
