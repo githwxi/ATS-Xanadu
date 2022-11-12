@@ -215,11 +215,11 @@ list_print$sep<>() = print("\n")
 //
 (* ****** ****** *)
 //
-(*
-#impltmp
-g_print<token>(tok) =
-print(tok.lctn(), ":", tok.node())
-*)
+val ret =
+the_fxtyenv_pvsload()
+val (  ) =
+prerrln
+("the_fxtyenv_pvsload() = ", ret)
 //
 (* ****** ****** *)
 in//local

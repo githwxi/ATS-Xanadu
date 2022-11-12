@@ -227,10 +227,12 @@ val ret =
 the_fxtyenv_pvsload()
 val (  ) =
 prerrln("the_fxtyenv_pvsload() = ", ret)
+(*
 val ret =
 the_fxtyenv_pvsload()
 val (  ) =
 prerrln("the_fxtyenv_pvsload() = ", ret)
+*)
 //
 (* ****** ****** *)
 in//local

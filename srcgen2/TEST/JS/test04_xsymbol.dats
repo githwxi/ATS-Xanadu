@@ -11,6 +11,11 @@
 (* ****** ****** *)
 //
 #include
+"./../../DATS/xglobal.dats"
+//
+(* ****** ****** *)
+//
+#include
 "./../../DATS/xstamp0.dats"
 #include
 "./../../DATS/xsymbol.dats"

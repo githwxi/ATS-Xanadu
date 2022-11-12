@@ -17,6 +17,11 @@
 #staload
 "./../../SATS/preadx0.sats"
 (* ****** ****** *)
+//
+#include
+"./../../DATS/xglobal.dats"
+//
+(* ****** ****** *)
 #include
 "./../../DATS/xstamp0.dats"
 #include

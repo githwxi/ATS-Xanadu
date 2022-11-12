@@ -22,6 +22,11 @@
 #include
 "./../../DATS/xbasics_print0.dats"
 (* ****** ****** *)
+//
+#include
+"./../../DATS/xglobal.dats"
+//
+(* ****** ****** *)
 #include
 "./../../DATS/xstamp0.dats"
 #include
