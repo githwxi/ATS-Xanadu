@@ -64,6 +64,8 @@ LOC = "./locinfo.sats"
 //
 #staload
 SYM = "./xsymbol.sats"
+#staload
+MAP = "./xsymmap.sats"
 //
 #typedef sym_t = $SYM.sym_t
 //
@@ -1037,10 +1039,21 @@ d2fundcl_make_args
 #symload d2fundcl with d2fundcl_make_args
 //
 (* ****** ****** *)
-
+datatype
+d2topenv =
+D2TOPENV of
+( $D1E.d1topenv
+(*
+, $MAP.topmap(s2itm)
+, $MAP.topmap(s2tex)
+, $MAP.topmap(d2itm)
+*)
+)
+(* ****** ****** *)
+//
 #abstbox d2parsed_tbox // ptr
 #typedef d2parsed = d2parsed_tbox
-
+//
 (* ****** ****** *)
 //
 fun
@@ -1056,11 +1069,14 @@ d2parsed_get_nerror:(d2parsed)->sint
 fun
 d2parsed_get_source:(d2parsed)->lcsrc
 fun
+d2parsed_get_topenv:(d2parsed)->d2topenv
+fun
 d2parsed_get_parsed:(d2parsed)->d2eclistopt
 //
 #symload stadyn with d2parsed_get_stadyn
 #symload nerror with d2parsed_get_nerror
 #symload source with d2parsed_get_source
+#symload topenv with d2parsed_get_topenv
 #symload parsed with d2parsed_get_parsed
 //
 fun
@@ -1068,6 +1084,7 @@ d2parsed_make_args
 ( stadyn:sint
 , nerror:sint
 , source:lcsrc
+, topenv:d2topenv
 , parsed:d2eclistopt): d2parsed//end-fun
 //
 #symload d2parsed with d2parsed_make_args

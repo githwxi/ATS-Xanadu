@@ -115,4 +115,35 @@ endlet // end of [optn_cons(tm1)]
 //
 (* ****** ****** *)
 
+#implfun
+d2parsed_tread12
+  (dpar) =
+let
+//
+var nerror: sint = 0
+//
+val stadyn =
+d2parsed_get_stadyn(dpar)
+val source =
+d2parsed_get_source(dpar)
+val topenv =
+d2parsed_get_topenv(dpar)
+val parsed =
+d2parsed_get_parsed(dpar)
+//
+val parsed =
+tread12_d2eclistopt(parsed, nerror)
+//
+in//let
+//
+if
+(nerror=0)
+then (dpar) else
+d2parsed
+(stadyn, nerror, source, topenv, parsed)
+//
+end (*let*) // end of [d2parsed_tread12(dpar)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_tread12.dats] *)

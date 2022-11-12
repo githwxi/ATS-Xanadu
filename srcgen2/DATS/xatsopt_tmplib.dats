@@ -883,6 +883,15 @@ d1vardcl_fprint(g_print$out<>(), dvar)
 g_print<d1fundcl>(dfun) =
 d1fundcl_fprint(g_print$out<>(), dfun)
 (* ****** ****** *)
+//
+#impltmp
+g_print
+<d1topenv>(tenv) =
+(
+case+ tenv of
+| D1TOPENV(tmap) => g_print(tmap))
+//
+(* ****** ****** *)
 #impltmp
 g_print<d1parsed>(dpar) =
 d1parsed_fprint(g_print$out<>(), dpar)
