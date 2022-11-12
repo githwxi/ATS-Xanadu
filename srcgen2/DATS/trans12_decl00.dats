@@ -2146,5 +2146,30 @@ trans12_d1fundclist
 list_trans12_fnp(env0, d1fs, trans12_d1fundcl))
 
 (* ****** ****** *)
+//
+#implfun
+trans12_d1cstdclist
+  (env0, tknd
+  ,d1cs, tqas) =
+(
+list_map_e1nv
+< x0>< y0><e1>(d1cs, env0)) where
+{
+//
+#vwtpdef
+e1 = tr12env
+#typedef
+x0 = d1cstdcl
+#typedef
+y0 = d2cstdcl
+//
+#impltmp
+map$fopr_e1nv
+<x0 >< y0><e1>
+  (x0, e1) = trans12_d1cstdcl(e1,tknd,x0,tqas)
+//
+} (*where*) // end of [trans12_d1cstdclist(...)]
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans12_decl00.dats] *)

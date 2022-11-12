@@ -824,6 +824,8 @@ fun
 trans12_d1fundclist
 (env0: !tr12env, d1fs: d1fundclist): d2fundclist
 //
+(* ****** ****** *)
+//
 fun
 trans12_d1cstdclist
 ( env0: !tr12env
