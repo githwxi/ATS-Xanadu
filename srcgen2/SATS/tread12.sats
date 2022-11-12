@@ -81,6 +81,8 @@ D2E = "./dynexp2.sats"
 #typedef d2parsed = $D2E.d2parsed
 //
 (* ****** ****** *)
+#typedef d2eclistopt = $D2E.d2eclistopt
+(* ****** ****** *)
 //
 fun
 d2parsed_tread12
@@ -130,6 +132,8 @@ fun tread12_d2patlst: ftread12(d2patlst)
 fun tread12_d2explst: ftread12(d2explst)
 (* ****** ****** *)
 fun tread12_d2eclist: ftread12(d2eclist)
+(* ****** ****** *)
+fun tread12_d2eclistopt: ftread12(d2eclistopt)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread12.sats] *)

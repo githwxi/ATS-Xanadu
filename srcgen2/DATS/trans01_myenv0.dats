@@ -133,7 +133,8 @@ TR01ENV(topmap, stkmap) where
 #implfun
 tr01env_free_top
   (  tenv  ) =
-  ( topmap ) where
+(
+D1TOPENV(topmap)) where
 {
   val () =
   stkmap_free_nil(stkmap)} where

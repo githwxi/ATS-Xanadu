@@ -1126,20 +1126,16 @@ d1cstdcl_make_args
 //
 (* ****** ****** *)
 //
-#typedef fixty = $FIX.fixty
-#typedef
-d1topenv = $MAP.topmap(fixty)
-//
-(*
-fun
-d1topenv_get_fxtyenv:
-(d1topenv) -> $MAP.topmap(fixty)
-*)
+datatype
+d1topenv =
+D1TOPENV of
+($MAP.topmap($FIX.fixty))
 //
 (*
 #abstbox d1topenv_tbox // ptr
 #typedef d1topenv = d1topenv_tbox
 *)
+//
 (* ****** ****** *)
 
 #abstbox d1parsed_tbox // ptr

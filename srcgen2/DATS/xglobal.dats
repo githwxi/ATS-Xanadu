@@ -138,10 +138,18 @@ val
 the_fxtyenv =
 a0ref_make_1val
 ($UN.cast10{d1topenv}(0))
+//
+#symload
+topenv
+with d1parsed_get_topenv
+//
+val
+XATSHOME =
+"/home/hwxi/Research/ATS-Xanadu"
 val
 the_fixity0 =
-// "{$XATSHOME}/prelude/fixity0.sats"
-"/home/hwxi/Research/ATS-Xanadu/prelude/fixity0.sats"
+strn_append
+(XATSHOME, "/prelude/fixity0.sats")
 //
 in//local
 //
@@ -193,12 +201,13 @@ the_fxtyenv_pvsfind
   topmap_search_opt(map, key)
 ) where
 {
-  val map = the_fxtyenv[(*void*)]
+  val+
+  D1TOPENV(map) = the_fxtyenv[]
 } (*where*) // [the_fxtyenv_pvsfind]
 //
 end (*local*)
 // end of [the_fxtyenv_pvs(load|find)]
-
+//
 (* ****** ****** *)
 
 local
