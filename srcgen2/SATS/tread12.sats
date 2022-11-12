@@ -57,6 +57,9 @@ D2E = "./dynexp2.sats"
 #typedef s2exp = $S2E.s2exp
 #typedef l2s2e = $S2E.l2s2e
 (* ****** ****** *)
+#typedef sort2lst = $S2E.sort2lst
+#typedef s2explst = $S2E.s2explst
+(* ****** ****** *)
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
 #typedef l2d2p = $D2E.l2d2p
@@ -69,6 +72,10 @@ D2E = "./dynexp2.sats"
 //
 (* ****** ****** *)
 #typedef d2ecl = $D2E.d2ecl
+(* ****** ****** *)
+#typedef d2patlst = $D2E.d2patlst
+#typedef d2explst = $D2E.d2explst
+#typedef d2eclist = $D2E.d2eclist
 (* ****** ****** *)
 //
 #typedef d2parsed = $D2E.d2parsed
@@ -107,6 +114,9 @@ fun tread12_sort2: ftread12(sort2)
 fun tread12_s2exp: ftread12(s2exp)
 fun tread12_l2s2e: ftread12(l2s2e)
 (* ****** ****** *)
+fun tread12_sort2lst: ftread12(sort2lst)
+fun tread12_s2explst: ftread12(s2explst)
+(* ****** ****** *)
 fun tread12_d2pat: ftread12(d2pat)
 fun tread12_d2exp: ftread12(d2exp)
 fun tread12_l2d2p: ftread12(l2d2p)
@@ -115,6 +125,11 @@ fun tread12_l2d2e: ftread12(l2d2e)
 fun tread12_f2arg: ftread12(f2arg)
 (* ****** ****** *)
 fun tread12_d2ecl: ftread12(d2ecl)
+(* ****** ****** *)
+fun tread12_d2patlst: ftread12(d2patlst)
+fun tread12_d2explst: ftread12(d2explst)
+(* ****** ****** *)
+fun tread12_d2eclist: ftread12(d2eclist)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread12.sats] *)

@@ -67,5 +67,19 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 (* ****** ****** *)
+//
+#implfun
+tread12_d2patlst
+  (  d2ps, err0  ) =
+list_tread12_fnp(d2ps, err0, tread12_d2pat)
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_d2explst
+  (  d2es, err0  ) =
+list_tread12_fnp(d2es, err0, tread12_d2exp)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread12_dynexp.dats] *)
