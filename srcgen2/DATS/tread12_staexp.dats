@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Fri 11 Nov 2022 01:49:13 PM EST
+Fri 11 Nov 2022 03:23:24 PM EST
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -50,69 +50,19 @@ ATS_PACKNAME
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
-#staload "./../SATS/dynexp1.sats"
-(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
-#staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/tread12.sats"
+(* ****** ****** *)
+//
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
-//
-#implfun
-list_tread12_fnp
-{  syn:tx  }
-(  lst , err , fpr  ) =
-(
-  auxlst(lst, err)) where
-{
-//
-fun
-auxlst
-( lst: list(syn)
-, err: &sint >> _): list(syn) =
-case+ lst of
-|
-list_nil() =>
-list_nil()
-|
-list_cons(tm1, tms) =>
-let
-val e00 = err
-val tm1 = fpr(tm1, err)
-val tm2 = auxlst(tms, err)
-in//let
-if
-(err = e00)
-then lst else list_cons(tm1,tm2)
-endlet // end of [auxlst(lst,err)]
-//
-}(*where*)//end(list_tread12_fnp(lst,err,fpr))
-//
+#symload node with s2exp_get_node
+#symload sort with s2exp_get_sort
 (* ****** ****** *)
-//
-#implfun
-optn_tread12_fnp
-{  syn:tx  }
-(  opt , err , fpr  ) =
-(
-case+ opt of
-|
-optn_nil() => opt
-|
-optn_cons(tm1) =>
-let
-val e00 = err
-val tm1 = fpr(tm1, err)
-in // let
-if
-(err=e00)
-then opt else optn_cons(tm1)
-endlet // end of [optn_cons(tm1)]
-)(*case+*)//end(optn_tread12_fnp(opt,err,fpr)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_tread12.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_tread12_staexp.dats] *)
