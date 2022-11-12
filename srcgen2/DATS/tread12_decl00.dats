@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Fri 09 Sep 2022 12:56:50 PM EDT
+Sat 12 Nov 2022 09:06:44 AM EST
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -38,83 +38,30 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
-ATS_PACKNAME // namespace
+ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload
-LEX = "./lexing0.sats"
+#staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
-#staload
-S2E = "./staexp2.sats"
-#staload
-D2E = "./dynexp2.sats"
+#staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
-#typedef token = $LEX.token
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
-#typedef sort2 = $S2E.sort2
-#typedef s2exp = $S2E.s2exp
-#typedef l2s2e = $S2E.l2s2e
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
-#typedef d2pat = $D2E.d2pat
-#typedef d2exp = $D2E.d2exp
-#typedef l2d2p = $D2E.l2d2p
-#typedef l2d2e = $D2E.l2d2e
+#staload "./../SATS/tread12.sats"
 (* ****** ****** *)
-#typedef f2arg = $D2E.f2arg
+#symload lctn with token_get_lctn
+#symload node with token_get_node
 (* ****** ****** *)
-//
-#typedef s2res = $D2E.s2res
-//
-(* ****** ****** *)
-#typedef d2ecl = $D2E.d2ecl
-(* ****** ****** *)
-//
-#typedef d2parsed = $D2E.d2parsed
-//
-(* ****** ****** *)
-//
-fun
-d2parsed_tread12
-(dpar: d2parsed): (d2parsed)
-//
-(* ****** ****** *)
-//
-#typedef
-ftread12
-(syn: tx) =
-(syn , &sint >> _) -> ( syn )
-//
-(* ****** ****** *)
-//
-fun
-list_tread12_fnp
-{syn:tx}
-( lst: list(syn)
-, err: &sint >> _
-, fpr: ftread12(syn)): list(syn)
-//
-fun
-optn_tread12_fnp
-{syn:tx}
-( opt: optn(syn)
-, err: &sint >> _
-, fpr: ftread12(syn)): optn(syn)
-//
-(* ****** ****** *)
-fun tread12_sort2: ftread12(sort2)
-fun tread12_s2exp: ftread12(s2exp)
-fun tread12_l2s2e: ftread12(l2s2e)
-(* ****** ****** *)
-fun tread12_d2pat: ftread12(d2pat)
-fun tread12_d2exp: ftread12(d2exp)
-fun tread12_l2d2p: ftread12(l2d2p)
-fun tread12_l2d2e: ftread12(l2d2e)
-(* ****** ****** *)
-fun tread12_f2arg: ftread12(f2arg)
-(* ****** ****** *)
-fun tread12_d2ecl: ftread12(d2ecl)
+#symload lctn with d2ecl_get_lctn
+#symload node with d2ecl_get_node
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_tread12.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_tread12_decl00.dats] *)
