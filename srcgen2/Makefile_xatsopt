@@ -486,6 +486,12 @@ tread12_dats: ; $(XATSOPT) --dynamic DATS/tread12.dats
 all_dats:: \
 tread12_staexp_dats
 tread12_staexp_dats: ; $(XATSOPT) --dynamic DATS/tread12_staexp.dats
+all_dats:: \
+tread12_dynexp_dats
+tread12_dynexp_dats: ; $(XATSOPT) --dynamic DATS/tread12_dynexp.dats
+all_dats:: \
+tread12_decl00_dats
+tread12_decl00_dats: ; $(XATSOPT) --dynamic DATS/tread12_decl00.dats
 ######
 
 ######
