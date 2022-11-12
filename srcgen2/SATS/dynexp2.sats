@@ -144,6 +144,9 @@ S2E = "./staexp2.sats"
 #typedef t2ias = list(t2iag)
 //
 (* ****** ****** *)
+#abstbox d2arg_tbox // ptr
+#typedef d2arg = d2arg_tbox
+(* ****** ****** *)
 //
 #abstbox d2valdcl_tbox // ptr
 #abstbox d2vardcl_tbox // ptr
@@ -189,6 +192,8 @@ S2E = "./staexp2.sats"
 #typedef d2expopt = optn(d2exp)
 (* ****** ****** *)
 #typedef d2eclist = list(d2ecl)
+(* ****** ****** *)
+#typedef d2arglst = list(d2arg)
 (* ****** ****** *)
 #typedef f1unarrw = $D1E.f1unarrw
 (* ****** ****** *)
@@ -912,6 +917,7 @@ DIMPLall1 of
 DIMPLopt2 of
 (d1qid, d2cstlst, d2cstopt)
 //
+(* ****** ****** *)
 //
 and a2tdf =
 |
@@ -948,6 +954,27 @@ fun
 d2ecl_make_node
 (loc:loc_t,nod:d2ecl_node): d2ecl
 #symload d2ecl with d2ecl_make_node
+(* ****** ****** *)
+//
+datatype
+d2arg_node =
+//
+(*
+| D1ARGnone of token
+*)
+|
+D2ARGsta0 of
+(s2varlst, s2explst(*prop*))
+|
+D2ARGdyn1 of (s2exp(*dpid*))
+|
+D2ARGdyn2 of (sint(*npf*), s2explst)
+//
+(* ****** ****** *)
+fun
+d2arg_make_node
+(loc:loc_t,nod:d2arg_node): d2arg
+#symload d2arg with d2arg_make_node
 (* ****** ****** *)
 fun
 d2valdcl_fprint:(FILR,d2valdcl)->void
@@ -1037,6 +1064,18 @@ d2fundcl_make_args
 #symload d2valdcl with d2valdcl_make_args
 #symload d2vardcl with d2vardcl_make_args
 #symload d2fundcl with d2fundcl_make_args
+//
+(* ****** ****** *)
+//
+(*
+#typedef d2res = teqd2exp
+*)
+fun
+d2cstdcl_make_args
+( lctn: loc_t
+, dpid: d2cst
+, darg: d2arglst
+, sres: s2res, tdxp: teqd2exp): d2cstdcl
 //
 (* ****** ****** *)
 datatype

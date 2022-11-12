@@ -935,6 +935,25 @@ endloc (*local*) // end of [ local(d2fundcl) ]
 local
 //
 datatype
+d2cstdcl =
+D2CSTDCL of
+( loc_t
+, d2cst
+, d2arglst
+, s2res, d2res)
+//
+#absimpl
+d2fundcl_tbox = d2fundcl
+//
+in//local
+
+endloc (*local*) // end of [ local(d2fundcl) ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 d2parsed =
 D2PARSED of
 (
