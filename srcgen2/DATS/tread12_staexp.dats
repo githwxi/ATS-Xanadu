@@ -64,5 +64,19 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 (* ****** ****** *)
+//
+#implfun
+tread12_sort2lst
+  (  s2ts, err0  ) =
+list_tread12_fnp(s2ts, err0, tread12_sort2)
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_s2explst
+  (  s2es, err0  ) =
+list_tread12_fnp(s2es, err0, tread12_s2exp)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread12_staexp.dats] *)

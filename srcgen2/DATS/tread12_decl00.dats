@@ -82,7 +82,7 @@ case+
 d2cl.node() of
 //
 |
-D2Cd0ecl _ => d2cl
+D2Cd1ecl _ => d2cl
 //
 |
 _(*otherwise*) =>
@@ -99,7 +99,12 @@ endlet // end of [ _(* otherwise *) ]
 } (*where*) // end of [tread12_d2ecl(d2cl,err)]
 
 (* ****** ****** *)
-
+//
+#implfun
+tread12_d2eclist
+  (  dcls, err0  ) =
+list_tread12_fnp(dcls, err0, tread12_d2ecl)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread12_decl00.dats] *)
