@@ -943,9 +943,74 @@ D2CSTDCL of
 , s2res, d2res)
 //
 #absimpl
-d2fundcl_tbox = d2fundcl
+d2cstdcl_tbox = d2cstdcl
 //
 in//local
+
+#implfun
+d2cstdcl_get_lctn
+  (  dcst  ) = let
+val+
+D2CSTDCL
+( lctn
+, dpid
+, darg
+, sres, dres) = dcst in lctn end
+
+(* ****** ****** *)
+
+#implfun
+d2cstdcl_get_dpid
+  (  dcst  ) = let
+val+
+D2CSTDCL
+( lctn
+, dpid
+, darg
+, sres, dres) = dcst in dpid end
+
+(* ****** ****** *)
+
+#implfun
+d2cstdcl_get_darg
+  (  dcst  ) = let
+val+
+D2CSTDCL
+( lctn
+, dpid
+, darg
+, sres, dres) = dcst in darg end
+
+(* ****** ****** *)
+
+#implfun
+d2cstdcl_get_sres
+  (  dcst  ) = let
+val+
+D2CSTDCL
+( lctn
+, dpid
+, darg
+, sres, dres) = dcst in sres end
+
+(* ****** ****** *)
+
+#implfun
+d2cstdcl_get_dres
+  (  dcst  ) = let
+val+
+D2CSTDCL
+( lctn
+, dpid
+, darg
+, sres, dres) = dcst in dres end
+
+(* ****** ****** *)
+
+#implfun
+d2cstdcl_make_args
+(loc0, d2c1, d2as, sres, dres) =
+D2CSTDCL(loc0, d2c1, d2as, sres, dres)
 
 endloc (*local*) // end of [ local(d2fundcl) ]
 

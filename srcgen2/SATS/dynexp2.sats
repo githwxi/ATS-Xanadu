@@ -1067,17 +1067,38 @@ d2fundcl_make_args
 //
 (* ****** ****** *)
 //
-(*
-#typedef d2res = teqd2exp
-*)
+#typedef
+d2res = teqd2exp
+//
+(* ****** ****** *)
+//
+fun
+d2cstdcl_get_lctn:(d2cstdcl)->loc_t
+fun
+d2cstdcl_get_dpid:(d2cstdcl)->d2cst
+fun
+d2cstdcl_get_darg:(d2cstdcl)->d2arglst
+fun
+d2cstdcl_get_sres:(d2cstdcl)->s2res(*opt*)
+fun
+d2cstdcl_get_dres:(d2cstdcl)->d2res(*opt*)
+//
+#symload lctn with d2cstdcl_get_lctn
+#symload dpid with d2cstdcl_get_dpid
+#symload darg with d2cstdcl_get_darg(*lst*)
+#symload sres with d2cstdcl_get_sres(*opt*)
+#symload dres with d2cstdcl_get_dres(*opt*)
+//
 fun
 d2cstdcl_make_args
 ( lctn: loc_t
 , dpid: d2cst
-, darg: d2arglst
-, sres: s2res, tdxp: teqd2exp): d2cstdcl
+, darg: d2arglst, s2res, d2res):d2cstdcl
+//
+#symload d2cstdcl with d2cstdcl_make_args
 //
 (* ****** ****** *)
+//
 datatype
 d2topenv =
 D2TOPENV of
@@ -1088,6 +1109,7 @@ D2TOPENV of
 , $MAP.topmap(d2itm)
 *)
 )
+//
 (* ****** ****** *)
 //
 #abstbox d2parsed_tbox // ptr
