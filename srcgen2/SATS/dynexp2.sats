@@ -972,6 +972,19 @@ D2ARGdyn2 of (sint(*npf*), s2explst)
 //
 (* ****** ****** *)
 fun
+d2arg_fprint:(FILR,d2arg)->void
+(* ****** ****** *)
+//
+fun
+d2arg_get_lctn(d2arg): loc_t
+fun
+d2arg_get_node(d2arg): d2arg_node
+//
+#symload lctn with d2arg_get_lctn
+#symload node with d2arg_get_node
+//
+(* ****** ****** *)
+fun
 d2arg_make_node
 (loc:loc_t,nod:d2arg_node): d2arg
 #symload d2arg with d2arg_make_node

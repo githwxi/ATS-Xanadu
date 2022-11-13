@@ -74,6 +74,23 @@ for the main purpose of debugging!
 
 local
 
+(*
+HX-2022-11-12:
+For getting 'S{XATSHOME}'
+*)
+
+in//local
+
+#implfun
+the_XATSHOME() =
+"/home/hwxi/Research/ATS-Xanadu"
+
+end (*local*) // end of [local(XATSHOME)]
+
+(* ****** ****** *)
+
+local
+
 (* ****** ****** *)
 #typedef key = sint
 #typedef itm = sym_t
@@ -144,8 +161,7 @@ topenv
 with d1parsed_get_topenv
 //
 val
-XATSHOME =
-"/home/hwxi/Research/ATS-Xanadu"
+XATSHOME = the_XATSHOME()
 val
 the_fixity0 =
 strn_append

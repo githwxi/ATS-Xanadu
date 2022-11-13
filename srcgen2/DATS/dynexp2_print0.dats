@@ -82,6 +82,9 @@ _(*?*) = "./lexing0_print0.dats"
 #symload lctn with d2ecl_get_lctn
 #symload node with d2ecl_get_node
 (* ****** ****** *)
+#symload lctn with d2arg_get_lctn
+#symload node with d2arg_get_node
+(* ****** ****** *)
 
 #implfun
 d2con_fprint
@@ -718,6 +721,33 @@ end (*let*) // end of [dimpl_fprint(...)]
 (* ****** ****** *)
 
 #implfun
+d2arg_fprint
+  (out, darg) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case
+darg.node() of
+| // dpid:s2exp
+D2ARGdyn1
+(   dpid   ) =>
+print("D2ARGdyn1(",dpid,")")
+|
+D2ARGdyn2(npf1, s2es) =>
+print("D2ARGdyn2(",npf1,";",s2es,")")
+//
+|
+D2ARGsta0
+(s2vs, s2ps) =>
+print("D2ARGsta0(",s2vs,";",s2ps,")")
+//
+end (*let*) // end of [d2arg_fprint(...)]
+
+(* ****** ****** *)
+
+#implfun
 d2valdcl_fprint
   (out, dval) = let
 //
@@ -781,6 +811,29 @@ in//let
 print("D2FUNDCL(",dpid,";");
 print(farg,";",sres,";",tdxp,",",wsxp,")"))
 end(*let*)//end-of-[d2fundcl_fprint(out,dfun)]
+
+(* ****** ****** *)
+
+#implfun
+d2cstdcl_fprint
+  (out, dcst) = let
+//
+val dpid =
+d2cstdcl_get_dpid(dcst)
+val darg =
+d2cstdcl_get_darg(dcst)
+val sres =
+d2cstdcl_get_sres(dcst)
+val dres =
+d2cstdcl_get_dres(dcst)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print("D2CSTDCL(");
+print(dpid,";",darg,";",sres,";",dres,")"))
+end(*let*)//end-of-[d2cstdcl_fprint(out,dcst)]
 
 (* ****** ****** *)
 

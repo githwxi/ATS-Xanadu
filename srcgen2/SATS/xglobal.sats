@@ -88,6 +88,9 @@ D2E = "./dynexp2.sats"
 //
 (* ****** ****** *)
 fun
+the_XATSHOME(): strn
+(* ****** ****** *)
+fun
 the_xsymbls_insert
   (sym: sym_t): void
 fun
