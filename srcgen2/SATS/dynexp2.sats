@@ -73,6 +73,7 @@ MAP = "./xsymmap.sats"
 #staload
 LEX = "./lexing0.sats"
 //
+#typedef tnode = $LEX.tnode
 #typedef token = $LEX.token
 //
 (* ****** ****** *)
@@ -98,6 +99,7 @@ S2E = "./staexp2.sats"
 #typedef s2cst = $S2E.s2cst
 #typedef s2var = $S2E.s2var
 #typedef s2exp = $S2E.s2exp
+#typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
 #abstbox d2con_tbox // ptr
 #abstbox d2cst_tbox // ptr
@@ -255,10 +257,19 @@ d2con_get_lctn:(d2con) -> loc_t
 fun
 d2con_get_name:(d2con) -> sym_t
 fun
+d2con_get_tqas:(d2con) -> t2qas
+fun
+d2con_get_sexp:(d2con) -> s2exp
+fun
+d2con_get_type:(d2con) -> s2typ
+fun
 d2con_get_stmp:(d2con) -> stamp
 //
 #symload lctn with d2con_get_lctn
 #symload name with d2con_get_name
+#symload tqas with d2con_get_tqas
+#symload sexp with d2con_get_sexp
+#symload type with d2con_get_type
 #symload stmp with d2con_get_stmp
 //
 (* ****** ****** *)
@@ -268,10 +279,22 @@ d2cst_get_lctn:(d2cst) -> loc_t
 fun
 d2cst_get_name:(d2cst) -> sym_t
 fun
+d2cst_get_tknd:(d2cst) -> tnode
+fun
+d2cst_get_tqas:(d2cst) -> t2qas
+fun
+d2cst_get_sexp:(d2cst) -> s2exp
+fun
+d2cst_get_type:(d2cst) -> s2typ
+fun
 d2cst_get_stmp:(d2cst) -> stamp
 //
 #symload lctn with d2cst_get_lctn
 #symload name with d2cst_get_name
+#symload tknd with d2cst_get_tknd
+#symload tqas with d2cst_get_tqas
+#symload sexp with d2cst_get_sexp
+#symload type with d2cst_get_type
 #symload stmp with d2cst_get_stmp
 //
 (* ****** ****** *)

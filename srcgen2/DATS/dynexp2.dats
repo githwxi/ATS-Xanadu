@@ -275,6 +275,45 @@ D2CON
 ,t2p0,stmp) = d2c0 in sym0 end
 //
 #implfun
+d2con_get_tqas
+  (  d2c0  ) =
+let
+val+
+D2CON
+(loc0
+,sym0
+,ctag
+,tqas
+,s2e0
+,t2p0,stmp) = d2c0 in tqas end
+//
+#implfun
+d2con_get_sexp
+  (  d2c0  ) =
+let
+val+
+D2CON
+(loc0
+,sym0
+,ctag
+,tqas
+,s2e0
+,t2p0,stmp) = d2c0 in s2e0 end
+//
+#implfun
+d2con_get_type
+  (  d2c0  ) =
+let
+val+
+D2CON
+(loc0
+,sym0
+,ctag
+,tqas
+,s2e0
+,t2p0,stmp) = d2c0 in t2p0 end
+//
+#implfun
 d2con_get_stmp
   (  d2c0  ) =
 let
@@ -306,6 +345,159 @@ in//let
 end (*let*) // end of [d2con_make_idtp]
 //
 end (*local*) // end of [local(d2con_tbox)]
+
+(* ****** ****** *)
+
+local
+//
+(* ****** ****** *)
+#typedef
+t2qas = t2qaglst
+(* ****** ****** *)
+//
+fun
+dcstid_sym
+(tok0: token): sym_t =
+(
+case-
+tok0.node() of
+| T_IDALP(nam1) =>
+  symbl_make_name(nam1)
+| T_IDSYM(nam1) =>
+  symbl_make_name(nam1) )
+//
+(* ****** ****** *)
+//
+datatype
+d2cst =
+D2CST of
+( loc_t // lctn
+, sym_t // name
+, tnode // tknd
+, t2qas // tqas
+, s2exp // sexp
+, s2typ // type
+, stamp // stmp // unicity
+)
+//
+#absimpl d2cst_tbox = d2cst
+//
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+//
+#implfun
+d2cst_get_lctn
+  (  d2c0  ) =
+let
+val+
+D2CST
+(loc0
+,sym0
+,tknd
+,tqas
+,s2e0
+,t2p0,stmp) = d2c0 in loc0 end
+//
+#implfun
+d2cst_get_name
+  (  d2c0  ) =
+let
+val+
+D2CST
+(loc0
+,sym0
+,tknd
+,tqas
+,s2e0
+,t2p0,stmp) = d2c0 in sym0 end
+//
+#implfun
+d2cst_get_tknd
+  (  d2c0  ) =
+let
+val+
+D2CST
+(loc0
+,sym0
+,tknd
+,tqas
+,s2e0
+,t2p0,stmp) = d2c0 in tknd end
+//
+#implfun
+d2cst_get_tqas
+  (  d2c0  ) =
+let
+val+
+D2CST
+(loc0
+,sym0
+,tknd
+,tqas
+,s2e0
+,t2p0,stmp) = d2c0 in tqas end
+//
+#implfun
+d2cst_get_sexp
+  (  d2c0  ) =
+let
+val+
+D2CST
+(loc0
+,sym0
+,tknd
+,tqas
+,s2e0
+,t2p0,stmp) = d2c0 in s2e0 end
+//
+#implfun
+d2cst_get_type
+  (  d2c0  ) =
+let
+val+
+D2CST
+(loc0
+,sym0
+,tknd
+,tqas
+,s2e0
+,t2p0,stmp) = d2c0 in t2p0 end
+//
+#implfun
+d2cst_get_stmp
+  (  d2c0  ) =
+let
+val+
+D2CST
+(loc0
+,sym0
+,tknd
+,tqas
+,s2e0
+,t2p0,stmp) = d2c0 in stmp end
+//
+(* ****** ****** *)
+//
+#implfun
+d2cst_make_idtp
+(tok0,tqas,sexp) =
+let
+//
+val loc0 = tok0.lctn()
+val tknd = T_EOF((*void*))
+val sym0 = dcstid_sym(tok0)
+val t2p0 = s2typ_none2(sexp)
+val stmp = the_d2cst_stamp_new()
+//
+in//let
+  D2CST
+  ( loc0
+  , sym0
+  , tknd, tqas, sexp, t2p0, stmp)
+end (*let*) // end of [d2cst_make_idtp]
+//
+end (*local*) // end of [local(d2cst_tbox)]
 
 (* ****** ****** *)
 
@@ -700,6 +892,37 @@ t2iag_make_s2es
 ( loc0 , s2es ) = T2IAG(loc0, s2es)
 //
 end (*local*) // end of [local(t2iag)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d2arg =
+D2ARG of
+(
+loctn, d2arg_node)
+#absimpl
+d2arg_tbox = d2arg
+//
+in (* in-of-local *)
+//
+#implfun
+d2arg_make_node
+(   loc,nod   ) = D2ARG(loc,nod)
+//
+#implfun
+d2arg_get_lctn(d2a) =
+let
+  val+D2ARG(loc,nod) = d2a in loc
+end
+#implfun
+d2arg_get_node(d2a) =
+let
+  val+D2ARG(loc,nod) = d2a in nod
+end
+//
+endloc (*local*) // end of [local(d2arg)]
 
 (* ****** ****** *)
 
