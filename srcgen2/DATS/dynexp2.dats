@@ -1251,7 +1251,9 @@ sint  // nerror
 ,
 lcsrc // source
 ,
-d2topenv // topenv
+d1topenv // t1penv
+,
+d2topenv // t2penv
 ,
 d2eclistopt)//program
 //
@@ -1272,7 +1274,7 @@ val+
 D2PARSED
 ( stadyn
 , nerror, source
-, topenv, parsed) = dpar
+, t1penv, t2penv, parsed) = dpar
 } (*where*)//end-of-[d2parsed_get_stadyn]
 
 (* ****** ****** *)
@@ -1287,7 +1289,7 @@ val+
 D2PARSED
 ( stadyn
 , nerror, source
-, topenv, parsed) = dpar
+, t1penv, t2penv, parsed) = dpar
 } (*where*)//end-of-[d2parsed_get_nerror]
 
 (* ****** ****** *)
@@ -1302,22 +1304,37 @@ val+
 D2PARSED
 ( stadyn
 , nerror, source
-, topenv, parsed) = dpar
+, t1penv, t2penv, parsed) = dpar
 } (*where*)//end-of-[d2parsed_get_source]
 
 (* ****** ****** *)
 
 #implfun
-d2parsed_get_topenv
+d2parsed_get_t1penv
   (dpar) =
 (
-  topenv ) where
+  t1penv ) where
 {
 val+
 D2PARSED
 ( stadyn
 , nerror, source
-, topenv, parsed) = dpar
+, t1penv, t2penv, parsed) = dpar
+} (*where*)//end-of-[d2parsed_get_topenv]
+
+(* ****** ****** *)
+
+#implfun
+d2parsed_get_t2penv
+  (dpar) =
+(
+  t2penv ) where
+{
+val+
+D2PARSED
+( stadyn
+, nerror, source
+, t1penv, t2penv, parsed) = dpar
 } (*where*)//end-of-[d2parsed_get_topenv]
 
 (* ****** ****** *)
@@ -1332,7 +1349,7 @@ val+
 D2PARSED
 ( stadyn
 , nerror, source
-, topenv, parsed) = dpar
+, t1penv, t2penv, parsed) = dpar
 } (*where*)//end-of-[d2parsed_get_parsed]
 
 (* ****** ****** *)
@@ -1340,10 +1357,12 @@ D2PARSED
 #implfun
 d2parsed_make_args
 (stadyn
-,nerror,source,topenv,parsed) =
+,nerror, source
+,t1penv, t2penv, parsed) =
 (
 D2PARSED
-(stadyn,nerror,source,topenv,parsed)
+(stadyn,nerror
+,source,t1penv,t2penv,parsed)
 ) where
 {
 (*

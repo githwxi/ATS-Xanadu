@@ -244,7 +244,7 @@ val nerror =
 d1parsed_get_nerror(dpar)
 val source =
 d1parsed_get_source(dpar)
-val fixenv =
+val t1penv =
 d1parsed_get_topenv(dpar)
 val parsed =
 d1parsed_get_parsed(dpar)
@@ -256,12 +256,10 @@ trans12_d1eclistopt(env0, parsed)
 //
 in//let
 let
-val (  ) =
-tr12env_free_top(env0)
-val topenv = D2TOPENV(fixenv)
+val t2penv = tr12env_free_top(env0)
 in//let
 d2parsed
-(stadyn,nerror,source,topenv,parsed)
+(stadyn,nerror,source,t1penv,t2penv,parsed)
 end
 end (*let*) // end of [d1parsed_trans12(dpar)]
 

@@ -250,6 +250,8 @@ LEX = "./lexing0.sats"
 #typedef d2arglst = $D2E.d2arglst
 (* ****** ****** *)
 //
+#typedef d2topenv = $D2E.d2topenv
+//
 #typedef d1parsed = $D1E.d1parsed
 #typedef d2parsed = $D2E.d2parsed
 //
@@ -317,10 +319,14 @@ d2parsed_from_trans
 ( dpar : d1parsed ): d2parsed
 //
 (* ****** ****** *)
+//
 fun
-tr12env_make_nil(): tr12env
+tr12env_make_nil
+  ( (*void*) ) : tr12env
 fun
-tr12env_free_top(tr12env): void
+tr12env_free_top
+( env0 : tr12env ) : d2topenv
+//
 (* ****** ****** *)
 //
 fun

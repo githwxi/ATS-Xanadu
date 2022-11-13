@@ -71,6 +71,12 @@ ATS_PACKNAME
 #symload node with d2gpt_get_node
 (* ****** ****** *)
 //
+#typedef sortmap = topmap(s2tex)
+#typedef sexpmap = topmap(s2itm)
+#typedef dexpmap = topmap(d2itm)
+//
+(* ****** ****** *)
+//
 #staload _ = "./xsymmap_stkmap.dats"
 #staload _ = "./staexp2_print0.dats"
 //
@@ -100,17 +106,22 @@ SORTENV(topmap, stkmap) where
 } (*where*) // end of [sortenv_make_nil()]
 
 (* ****** ****** *)
-
+//
 fun
 sortenv_free_top
-(tenv : sortenv) =
+( tenv
+: sortenv): sortmap =
 (
-stkmap_free_nil(stkmap)) where
+topmap where
+{
+val () =
+stkmap_free_nil(stkmap)}
+) where
 {
 val+
 ~SORTENV(topmap, stkmap) = tenv
 } (*where*)//end-of(sortenv_free_top(tenv))
-
+//
 (* ****** ****** *)
 //
 fun
@@ -332,17 +343,22 @@ SEXPENV(topmap, stkmap) where
 } (*where*) // end of [sexpenv_make_nil()]
 
 (* ****** ****** *)
-
+//
 fun
 sexpenv_free_top
-(senv : sexpenv) =
+( senv
+: sexpenv): sexpmap =
 (
-stkmap_free_nil(stkmap)) where
+topmap where
+{
+val () =
+stkmap_free_nil(stkmap)}
+) where
 {
 val+
 ~SEXPENV(topmap, stkmap) = senv
 } (*where*)//end-of(sexpenv_free_top(senv))
-
+//
 (* ****** ****** *)
 //
 fun
@@ -564,17 +580,22 @@ DEXPENV(topmap, stkmap) where
 } (*where*) // end of [dexpenv_make_nil()]
 
 (* ****** ****** *)
-
+//
 fun
 dexpenv_free_top
-(denv : dexpenv) =
+( denv
+: dexpenv): dexpmap =
 (
-stkmap_free_nil(stkmap)) where
+topmap where
+{
+val () =
+stkmap_free_nil(stkmap)}
+) where
 {
 val+
 ~DEXPENV(topmap, stkmap) = denv
 } (*where*)//end-of(dexpenv_free_top(denv))
-
+//
 (* ****** ****** *)
 //
 fun
@@ -784,8 +805,11 @@ in//local
 (* ****** ****** *)
 //
 #implfun
-tr12env_make_nil() =
-TR12ENV(tenv,senv,denv) where
+tr12env_make_nil
+  ( (*void*) ) =
+(
+TR12ENV
+(tenv,senv,denv)) where
 {
   val tenv = sortenv_make_nil()
   val senv = sexpenv_make_nil()
@@ -796,11 +820,18 @@ TR12ENV(tenv,senv,denv) where
 //
 #implfun
 tr12env_free_top
-  (  env0  ) =
-(
-sortenv_free_top(tenv);
-sexpenv_free_top(senv);
-dexpenv_free_top(denv)) where
+  (  env0  ) = let
+//
+val tmap =
+sortenv_free_top(tenv)
+val smap =
+sexpenv_free_top(senv)
+val dmap =
+dexpenv_free_top(denv)
+//
+in//let
+  D2TOPENV(tmap, smap, dmap)
+end where
 {
 val+
 ~TR12ENV(tenv, senv, denv) = env0

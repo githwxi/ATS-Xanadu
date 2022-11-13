@@ -111,12 +111,17 @@ the_fxtyenv_pvsfind
   (key: sym_t): fixtyopt_vt
 //
 (* ****** ****** *)
+//
 fun
-the_sortenv_pvs(): topmap(s2tex)
+the_sortenv_pvsfind
+  (key: sym_t): optn_vt(s2tex)
 fun
-the_sexpenv_pvs(): topmap(s2itm)
+the_sexpenv_pvsfind
+  (key: sym_t): optn_vt(s2itm)
 fun
-the_dexpenv_pvs(): topmap(d2itm)
+the_dexpenv_pvsfind
+  (key: sym_t): optn_vt(d2itm)
+//
 (* ****** ****** *)
 //
 fun
