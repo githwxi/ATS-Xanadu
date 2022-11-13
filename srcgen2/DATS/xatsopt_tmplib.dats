@@ -1167,6 +1167,10 @@ simpl_fprint(g_print$out<>(), s2i0)
 g_print<dimpl>(d2i0) =
 dimpl_fprint(g_print$out<>(), d2i0)
 (* ****** ****** *)
+#impltmp
+g_print<d2arg>(darg) =
+d2arg_fprint(g_print$out<>(), darg)
+(* ****** ****** *)
 //
 #impltmp
 g_print<d2valdcl>(dval) =
