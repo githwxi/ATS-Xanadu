@@ -126,8 +126,12 @@ val stadyn =
 d2parsed_get_stadyn(dpar)
 val source =
 d2parsed_get_source(dpar)
-val topenv =
-d2parsed_get_topenv(dpar)
+//
+val t1penv =
+d2parsed_get_t1penv(dpar)
+val t2penv =
+d2parsed_get_t2penv(dpar)
+//
 val parsed =
 d2parsed_get_parsed(dpar)
 //
@@ -140,7 +144,7 @@ if
 (nerror=0)
 then (dpar) else
 d2parsed
-(stadyn, nerror, source, topenv, parsed)
+(stadyn,nerror,source,t1penv,t2penv,parsed)
 //
 end (*let*) // end of [d2parsed_tread12(dpar)]
 

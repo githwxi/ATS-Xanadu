@@ -102,6 +102,8 @@ S2E = "./staexp2.sats"
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
+#typedef s2itm = $S2E.s2itm
+(* ****** ****** *)
 #abstbox d2con_tbox // ptr
 #abstbox d2cst_tbox // ptr
 #abstbox d2var_tbox // ptr
@@ -199,6 +201,7 @@ S2E = "./staexp2.sats"
 #typedef d2arglst = list(d2arg)
 (* ****** ****** *)
 #typedef f1unarrw = $D1E.f1unarrw
+#typedef d1topenv = $D1E.d1topenv
 (* ****** ****** *)
 #typedef d2valdcl = d2valdcl_tbox
 #typedef d2vardcl = d2vardcl_tbox
@@ -1139,13 +1142,9 @@ d2cstdcl_make_args
 datatype
 d2topenv =
 D2TOPENV of
-( $D1E.d1topenv
-(*
+( $MAP.topmap(s2tex)
 , $MAP.topmap(s2itm)
-, $MAP.topmap(s2tex)
-, $MAP.topmap(d2itm)
-*)
-)
+, $MAP.topmap(d2itm))
 //
 (* ****** ****** *)
 //
@@ -1167,14 +1166,17 @@ d2parsed_get_nerror:(d2parsed)->sint
 fun
 d2parsed_get_source:(d2parsed)->lcsrc
 fun
-d2parsed_get_topenv:(d2parsed)->d2topenv
+d2parsed_get_t1penv:(d2parsed)->d1topenv
+fun
+d2parsed_get_t2penv:(d2parsed)->d2topenv
 fun
 d2parsed_get_parsed:(d2parsed)->d2eclistopt
 //
 #symload stadyn with d2parsed_get_stadyn
 #symload nerror with d2parsed_get_nerror
 #symload source with d2parsed_get_source
-#symload topenv with d2parsed_get_topenv
+#symload t1penv with d2parsed_get_t1penv
+#symload t2penv with d2parsed_get_t2penv
 #symload parsed with d2parsed_get_parsed
 //
 fun
@@ -1182,7 +1184,8 @@ d2parsed_make_args
 ( stadyn:sint
 , nerror:sint
 , source:lcsrc
-, topenv:d2topenv
+, t1penv:d1topenv
+, t2penv:d2topenv
 , parsed:d2eclistopt): d2parsed//end-fun
 //
 #symload d2parsed with d2parsed_make_args
