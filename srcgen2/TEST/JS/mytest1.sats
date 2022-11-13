@@ -52,7 +52,7 @@ datasort ints =
 //
 (* ****** ****** *)
 #abstype
-mylist(a:t0)(i:i0) = list(a,i)
+mylist(a:t0)(i:i0) <= list(a,i)
 (* ****** ****** *)
 //
 excptcon | TRUE | FALSE of ()
@@ -71,8 +71,8 @@ mylist_vt =
 //
 (* ****** ****** *)
 fun
-<a:t0>
-mylength(xs: mylist(a)): sint
+<aa:t0>
+mylength(xs: mylist(aa)): sint = "mylength"
 (* ****** ****** *)
 ////
 (* ****** ****** *)

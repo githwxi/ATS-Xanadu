@@ -365,7 +365,7 @@ optn_cons(ats2) =>
 list_append(s2es, ses2)) where
 {
 val
-ses2 = f0_a1typlst(env0, a1ts) }
+ses2 = f0_a1typlst(env0, ats2) }
 ) : s2explst//end-[optn_cons(ats2)]
 //
 in//let
