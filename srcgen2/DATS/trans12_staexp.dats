@@ -795,10 +795,10 @@ let
 //
 val-
 S1Ea1pp
-(s1e1, s1e2) = s1e0.node()
+(s1f0, s1e1) = s1e0.node()
 //
 val-
-S1Euni0(s1qs) = s1e1.node()
+S1Euni0(s1qs) = s1f0.node()
 //
 (*
 val () =
@@ -814,14 +814,14 @@ val
 trans12_s1qualst(env0, s1qs)
 //
 val
-s2e2 =
-trans12_s1exp_impr(env0, s1e2)
+s2e1 =
+trans12_s1exp_impr(env0, s1e1)
 //
 val () = tr12env_poplam0(env0)
 //
 in
 //
-s2exp_uni0(s2vs, s2ps, s2e2(*body*))
+s2exp_uni0(s2vs, s2ps, s2e1(*body*))
 end (*let*) // end of [f0_a1pp_uni0(...)]
 
 (* ****** ****** *)
@@ -835,11 +835,11 @@ let
 //
 val-
 S1Ea1pp
-(s1e1, s1e2) = s1e0.node()
+(s1f0, s1e1) = s1e0.node()
 //
 val-
 S1Eexi0
-( tknd, s1qs ) = s1e1.node()
+( tknd, s1qs ) = s1f0.node()
 //
 (*
 val () =
@@ -855,14 +855,14 @@ val
 trans12_s1qualst(env0, s1qs)
 //
 val
-s2e2 =
-trans12_s1exp_impr(env0, s1e2)
+s2e1 =
+trans12_s1exp_impr(env0, s1e1)
 //
 val () = tr12env_poplam0(env0)
 //
 in
 //
-s2exp_exi0(s2vs, s2ps, s2e2(*body*))
+s2exp_exi0(s2vs, s2ps, s2e1(*body*))
 end (*let*) // end of [f0_a1pp_exi0(...)]
 
 (* ****** ****** *)
@@ -876,12 +876,11 @@ let
 //
 val-
 S1Ea1pp
-( s1e1
-, s1e2) = s1e0.node()
+(s1f0, s1e1) = s1e0.node()
 //
 val
 s2cs =
-s1exp_get_s2cstlst(env0, s1e1)
+s1exp_get_s2cstlst(env0,s1f0)
 //
 in//let
 //
@@ -890,21 +889,21 @@ case+ s2cs of
 list_nil() =>
 f0_a1pp_rest0(env0, s1e0)
 |
-list_cons(x1, xs2) =>
+list_cons
+(s2c1, scs2) =>
 (
-  if
-  list_nilq(xs2)
-  then
-  let
-    val
-    s2e1 = s2exp_cst(x1)
-  in
-    f0_a1pp_rest1(env0, s1e0, s2e1)
-  end
-  else
-  (
-    f0_a1pp_rest2(env0, s1e0, s2cs)
-  ) (* end of [else] *)
+if
+list_nilq(scs2)
+then
+let
+  val s2f0 = s2exp_cst(s2c1)
+in
+  f0_a1pp_rest1(env0, s1e0, s2f0)
+end (*let*) // then
+else
+(
+  f0_a1pp_rest2(env0, s1e0, s2cs)
+) (* end of [else] *)
 )
 end (*let*) // end of [f0_a1pp_rest(...)]
 
@@ -917,13 +916,13 @@ let
 //
 val-
 S1Ea1pp
-(s1e1, s1e2) = s1e0.node()
+(s1f0, s1e1) = s1e0.node()
 //
 val
-s2e1 = trans12_s1exp(env0, s1e1)
+s2f0 = trans12_s1exp(env0, s1f0)
 //
 in//let
-  f0_a1pp_rest1(env0, s1e0, s2e1)
+  f0_a1pp_rest1(env0, s1e0, s2f0)
 end (*let*) // end of [f0_a1pp_rest0(...)]
 
 and
@@ -931,34 +930,38 @@ f0_a1pp_rest1
 ( env0:
 ! tr12env
 , s1e0: s1exp
-, s2e1: s2exp): s2exp =
+, s2f0: s2exp): s2exp =
 let
 //
 val-
 S1Ea1pp
-(s1e1, s1e2) = s1e0.node()
+(s1f0, s1e1) = s1e0.node()
 //
 val s1es =
 (
 case+
-s1e2.node() of
-| S1El1st(s1es) => s1es
-| _(*non-list*) => list_sing(s1e2)
-) : s1explst // end of [val]
+s1e1.node() of
+|
+S1El1st(s1es) => s1es
+|
+_(*non-list*) => list_sing(s1e1)
+) : s1explst // end of [val (s1es)]
 //
 val s2ts =
 (
 case+
-s2e1.sort() of
-| S2Tfun1(s2ts, _) => s2ts
-| _(*non-S2Tfun*) => list_nil(*void*)
-) : sort2lst // end of [va]
+s2f0.sort() of
+|
+S2Tfun1(s2ts, _) => s2ts
+|
+_(*non-S2Tfun*) => list_nil(*nil*)
+) : sort2lst // end of [val (s2ts) ]
 //
 val loc0 = s1e0.lctn()
 //
 in//let
 //
-  s2exp_apps(loc0, s2e1, s2es) where
+  s2exp_apps(loc0, s2f0, s2es) where
 {
 val s2es =
 trans12_s1explst_stcks(env0, s1es, s2ts) }
@@ -975,15 +978,17 @@ let
 //
 val-
 S1Ea1pp
-(s1e1, s1e2) = s1e0.node()
+(s1f0, s1e1) = s1e0.node()
 //
 val s1es =
 (
 case+
-s1e2.node() of
-| S1El1st(s1es) => s1es
-| _(*non-list*) => list_sing(s1e2)
-) : s1explst // end of [val]
+s1e1.node() of
+|
+S1El1st(s1es) => s1es
+|
+_(*non-list*) => list_sing(s1e1)
+) : s1explst // end of [val (s1es)]
 //
 val
 s2es =
@@ -1587,18 +1592,23 @@ list_nil() =>
 list_cons(s2e1, s2es) where
 {
 val s2e1 =
-s2exp_none1(s1e1)
-val s2es = auxlst(env0, s1es, s2ts)
-}
+let
+val
+s2t1 =
+sort2_none0()
+in//let
+trans12_s1exp_stck
+( env0, s1e1, s2t1 )
+end//end-[val(s2e1)]
+val s2es = auxlst(env0, s1es, s2ts) }
 |
 list_cons(s2t1, s2ts) =>
 list_cons(s2e1, s2es) where
 {
 val s2e1 =
 trans12_s1exp_stck
-(env0, s1e1, s2t1)
-val s2es = auxlst(env0, s1es, s2ts)
-}
+( env0, s1e1, s2t1 )
+val s2es = auxlst(env0, s1es, s2ts) }
 )
 ) (*case+*)//end of [auxlst(env0,s1es,s2ts)]
 //
@@ -1638,9 +1648,11 @@ trans12_s1arg_tsub
 case+
 s1a0.node() of
 |
-S1ARGsome(tok1, topt) =>
+S1ARGsome
+(tok1, topt) =>
 let
-val sid1 = sargid_sym(tok1)
+val
+sid1 = sargid_sym(tok1)
 in//let
 //
 case+ topt of

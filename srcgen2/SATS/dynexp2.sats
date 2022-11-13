@@ -70,6 +70,7 @@ MAP = "./xsymmap.sats"
 #typedef sym_t = $SYM.sym_t
 //
 (* ****** ****** *)
+//
 #staload
 LEX = "./lexing0.sats"
 //
