@@ -1886,7 +1886,8 @@ tr12env_add0_d2pat(env0, dpat)
 //
 in//let
 d2valdcl_make_args(loc0, dpat, tdxp, wsxp)
-end (*let*)//end-of-[trans12_d1valdcl(env0,dval)]
+end//let
+(*let*)//end-of-[trans12_d1valdcl(env0,dval)]
 
 (* ****** ****** *)
 
@@ -1925,7 +1926,8 @@ tr12env_add0_d2varopt(env0, vpid)
 //
 in//let
 d2vardcl_make_args(loc0,dpid,vpid,sres,dini)
-end (*let*) // end of [trans12_d1vardcl(env0, dvar)]
+end//let
+(*let*)//end-of-[trans12_d1vardcl(env0,dvar)]
 
 (* ****** ****** *)
 
@@ -1975,7 +1977,178 @@ val () = tr12env_poplam0(env0)//exit
 //
 in//let
 d2fundcl(loc0, dpid, farg, sres, tdxp, wsxp)
-end (*let*)//end-of-[trans12_d1fundcl(env0,dfun)]
+end//let
+(*let*)//end-of-[trans12_d1fundcl(env0,dfun)]
+
+(* ****** ****** *)
+
+local
+
+(* ****** ****** *)
+//
+fun
+f1_f2cl
+(i0: sint): f2clknd =
+( if
+  (i0 = 0)
+  then F2CLfun()
+  else F2CLclo(1(*lin*)))
+//
+(* ****** ****** *)
+
+fun
+f1_sres
+( i0: sint
+, sres: s2res): s2exp =
+(
+case+ sres of
+|
+S2RESnone() => s2exp_none0()
+|
+S2RESsome(seff, s2e1) => s2e1
+)
+
+(* ****** ****** *)
+
+fun
+f1_d2a1
+( i0: sint
+, d2a1: d2arg
+, sres: s2res): s2exp =
+let
+val
+fres = f1_sres(i0, sres)
+in//let
+//
+case+
+d2a1.node() of
+|
+D2ARGsta0
+(s2vs, s2ps) =>
+s2exp_uni0(s2vs, s2ps, fres)
+|
+D2ARGdyn1(s2e1) =>
+s2exp_fun0_full
+( f2cl
+, npf1, s2es, fres) where
+{
+val npf1 = (-1)
+val f2cl = f1_f2cl(i0)
+val s2es = list_sing(s2e1) }
+|
+D2ARGdyn2(npf1, s2es) =>
+let
+val f2cl = f1_f2cl(i0)
+in//let
+  s2exp_fun0_full
+  (f2cl, npf1, s2es, fres) end
+//
+end (*let*) // end of [f1_d2a1(...)]
+
+(* ****** ****** *)
+
+fun
+f1_d2as
+( i0: sint
+, d2as
+: d2arglst
+, sres: s2res): s2exp =
+(
+case+ d2as of
+|
+list_nil
+((*nil*)) => f1_sres(i0, sres)
+|
+list_cons
+(d2a1, d2as) =>
+(
+//
+case+ d2as of
+|
+list_nil
+((*void*)) =>
+f1_d2a1(i0, d2a1, sres)
+|
+list_cons _ =>
+let
+val
+fres =
+f1_d2as(i0+1, d2as, sres)
+in//let
+//
+case+
+d2a1.node() of
+|
+D2ARGsta0
+(s2vs, s2ps) =>
+s2exp_uni0(s2vs, s2ps, fres)
+|
+D2ARGdyn1
+(   s2e1   ) =>
+s2exp_fun0_full
+( f2cl
+, npf1, s2es, fres) where
+{
+val npf1 = (-1)
+val f2cl = f1_f2cl(i0)
+val s2es = list_sing(s2e1) }
+|
+D2ARGdyn2
+(npf1, s2es) =>
+let
+val f2cl = f1_f2cl(i0)
+in//let
+  s2exp_fun0_full
+  (f2cl, npf1, s2es, fres) end
+//
+end (*let*) // end of [list_cons]
+//
+) (*case+*) // end of [list_cons]
+) (*case+*) // end of [f1_d2as(...)]
+
+in//local
+
+#implfun
+trans12_d1cstdcl
+  (env0, tknd
+  ,dcst, tqas) =
+let
+//
+val loc0 =
+d1cstdcl_get_lctn(dcst)
+//
+val dpid =
+d1cstdcl_get_dpid(dcst)
+//
+val darg =
+d1cstdcl_get_darg(dcst)
+//
+val sres =
+d1cstdcl_get_sres(dcst)
+val dres =
+d1cstdcl_get_dres(dcst)
+//
+val
+d2as =
+trans12_d1arglst(env0, darg)
+val
+sres = trans12_s1res(env0, sres)
+val // d1res = teqd1exp
+dres = trans12_teqd1exp(env0, dres)
+//
+val
+sfun = f1_d2as(0, d2as, sres)
+//
+val
+d2c1 =
+d2cst_make_idtp(dpid, tqas, sfun)
+//
+in//let
+  d2cstdcl(loc0, d2c1, d2as, sres, dres)
+end//let
+(*let*)//end-of-[trans12_d1cstdcl(env0,...)]
+
+end (*local*)//end-[local(trans12_d1cstdcl)]
 
 (* ****** ****** *)
 
@@ -2003,6 +2176,13 @@ list_trans12_fnp(env0, tqas, trans12_t1qag)
 trans12_t1iaglst
   (env0, tias) =
 list_trans12_fnp(env0, tias, trans12_t1iag)
+//
+(* ****** ****** *)
+//
+#implfun
+trans12_d1arglst
+  (env0, d1as) =
+list_trans12_fnp(env0, d1as, trans12_d1arg)
 //
 (* ****** ****** *)
 

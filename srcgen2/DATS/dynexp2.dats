@@ -1012,7 +1012,7 @@ d2cstdcl_make_args
 (loc0, d2c1, d2as, sres, dres) =
 D2CSTDCL(loc0, d2c1, d2as, sres, dres)
 
-endloc (*local*) // end of [ local(d2fundcl) ]
+endloc (*local*) // end of [ local(d2cstdcl) ]
 
 (* ****** ****** *)
 
