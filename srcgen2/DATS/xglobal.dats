@@ -304,34 +304,41 @@ endloc // end of [local(the_dexpenv_toplst)]
 
 (* ****** ****** *)
 #implfun
-the_sortenv_toplst_print() =
+the_sortenv_toplst_print
+  ((*void*)) =
 the_sortenv_toplst_fprint(g_stdout())
 #implfun
-the_sortenv_toplst_prerr() =
-the_sortenv_toplst_fprint(g_stderr())
-(* ****** ****** *)
-#implfun
-the_sexpenv_toplst_print() =
+the_sexpenv_toplst_print
+  ((*void*)) =
 the_sexpenv_toplst_fprint(g_stdout())
 #implfun
-the_sexpenv_toplst_prerr() =
-the_sexpenv_toplst_fprint(g_stderr())
+the_dexpenv_toplst_print
+  ((*void*)) =
+the_dexpenv_toplst_fprint(g_stdout())
 (* ****** ****** *)
 #implfun
-the_dexpenv_toplst_prerr() =
-the_dexpenv_toplst_fprint(g_stderr())
+the_sortenv_toplst_prerr
+  ((*void*)) =
+the_sortenv_toplst_fprint(g_stderr())
 #implfun
-the_dexpenv_toplst_print() =
-the_dexpenv_toplst_fprint(g_stdout())
+the_sexpenv_toplst_prerr
+  ((*void*)) =
+the_sexpenv_toplst_fprint(g_stderr())
+#implfun
+the_dexpenv_toplst_prerr
+  ((*void*)) =
+the_dexpenv_toplst_fprint(g_stderr())
 (* ****** ****** *)
 //
 #implfun
 the_sortenv_toplst_fprint
-  (out) =
+  (   out   ) =
 let
+//
 #impltmp
 g_print$out<>() = out
 val kxs = the_sortenv_toplst()
+//
 in//let
 (
 auxloop(kxs)) where

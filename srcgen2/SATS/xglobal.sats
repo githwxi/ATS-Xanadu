@@ -51,6 +51,11 @@ FP0 = "./filpath.sats"
 #typedef sym_t = $SYM.sym_t
 #typedef fpath = $FP0.fpath
 (* ****** ****** *)
+#staload
+MAP = "./xsymmap.sats"
+#typedef
+topmap(a:t0)= $MAP.topmap(a)
+(* ****** ****** *)
 //
 #staload
 FIX = "./xfixity.sats"
@@ -105,6 +110,13 @@ fun
 the_fxtyenv_pvsfind
   (key: sym_t): fixtyopt_vt
 //
+(* ****** ****** *)
+fun
+the_sortenv_pvs(): topmap(s2tex)
+fun
+the_sexpenv_pvs(): topmap(s2itm)
+fun
+the_dexpenv_pvs(): topmap(d2itm)
 (* ****** ****** *)
 //
 fun

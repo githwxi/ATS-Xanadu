@@ -72,6 +72,9 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with sort1_get_lctn
 #symload node with sort1_get_node
 (* ****** ****** *)
+#symload lctn with t1arg_get_lctn
+#symload node with t1arg_get_node
+(* ****** ****** *)
 #symload lctn with t1mag_get_lctn
 #symload node with t1mag_get_node
 (* ****** ****** *)
@@ -1687,7 +1690,8 @@ map$fopr_e1nv
 < x0><y0 ><e1>
 (   x0, e1   ) =
 (
-case+ x0 of
+case+
+x0.node() of
 |
 T1ARGsome
 (s1t1, topt) => trans12_sort1(e1, s1t1))
