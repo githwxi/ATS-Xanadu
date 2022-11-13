@@ -104,12 +104,20 @@ _(*TRANS12*) = "./trans12.dats"
 (* ****** ****** *)
 #symload lctn with q1arg_get_lctn
 #symload node with q1arg_get_node
+(* ****** ****** *)
 #symload lctn with s1qag_get_lctn
 #symload node with s1qag_get_node
 #symload lctn with t1qag_get_lctn
 #symload node with t1qag_get_node
+(* ****** ****** *)
 #symload lctn with t1iag_get_lctn
 #symload node with t1iag_get_node
+(* ****** ****** *)
+#symload lctn with a1typ_get_lctn
+#symload node with a1typ_get_node
+(* ****** ****** *)
+#symload lctn with d1arg_get_lctn
+#symload node with d1arg_get_node
 (* ****** ****** *)
 #symload lctn with d1ecl_get_lctn
 #symload node with d1ecl_get_node
@@ -242,6 +250,132 @@ val s2es =
 trans12_s1explst(env0, s1es) }
 end (*let*) // end-of-[trans12_t1iag(...)]
 //
+(* ****** ****** *)
+
+local
+
+fun
+f0_a1typ
+( env0:
+! tr12env
+, a1t0
+: a1typ): s2exp =
+(
+case+
+a1t0.node() of
+|
+A1TYPsome
+(s1e1, topt) =>
+trans12_s1exp(env0, s1e1))
+//
+fun
+f0_a1typlst
+( env0:
+! tr12env
+, a1ts
+: a1typlst): s2explst =
+(
+list_map_e1nv
+( a1ts, env0 )) where
+{
+//
+#typedef x0 = a1typ
+#typedef y0 = s2exp
+#vwtpdef e1 = tr12env
+//
+#impltmp
+map$fopr_e1nv
+< x0><y0 ><e1>
+(  x0 , e1  ) = f0_a1typ(e1, x0)
+//
+} (*where*) // end of [f0_a1typlst(...)]
+
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+
+#implfun
+trans12_d1arg
+( env0,darg ) = let
+//
+val
+loc0 = darg.lctn()
+(*
+val () =
+prerrln
+("trans12_d1ecl: darg = ", darg)
+*)
+//
+in
+case+
+darg.node() of
+|
+D1ARGdyn1(dpid) =>
+let
+//
+val
+loc1 = dpid.lctn()
+val
+sym1 = dpatid_sym(dpid)
+//
+val
+s1e1 =
+s1exp(loc1, S1Eid0(sym1))
+//
+val
+s2e1 =
+trans12_s1exp(env0, s1e1)
+//
+in//let
+d2arg(loc0, D2ARGdyn1(s2e1))
+end (*let*) // end of [D1ARGdyn1]
+|
+D1ARGsta0(s1qs) =>
+let
+val
+(s2vs, s2ps) =
+trans12_s1qualst(env0, s1qs)
+in//let
+d2arg(loc0, D2ARGsta0(s2vs, s2ps))
+end (*let*) // end of [D1ARGsta0]
+|
+D1ARGdyn2(a1ts,aopt) =>
+let
+//
+val npf1 =
+(
+case+ aopt of
+|
+optn_nil() => (-1)
+|
+optn_cons _ => list_length(a1ts)
+) : sint // rend of [ val(npf1) ]
+//
+val
+s2es = f0_a1typlst(env0, a1ts)
+val
+s2es =
+(
+case+ aopt of
+|
+optn_nil() => s2es
+|
+optn_cons(ats2) =>
+(
+list_append(s2es, ses2)) where
+{
+val
+ses2 = f0_a1typlst(env0, a1ts) }
+) : s2explst//end-[optn_cons(ats2)]
+//
+in//let
+  d2arg(loc0, D2ARGdyn2(npf1, s2es))
+end (*let*) // end of [D1ARGdyn2(...)]
+//
+end (*let*) // end of [trans12_d1arg(...)]
+
+end (*local*)//end-of-[local(trans12_d1arg)]
+
 (* ****** ****** *)
 
 #implfun
