@@ -60,14 +60,14 @@ excptcon | TRUE | FALSE of ()
 (* ****** ****** *)
 //
 datatype
-mylist =
+mylist(a:t0) =
 | mylist_nil
-| mylist_cons of (sint, mylist)
+| mylist_cons of (a, mylist(a))
 //
 datavwtp
-mylist_vt =
-| mylist_vt_nil
-| mylist_vt_cons of (sint, mylist_vt)
+mylist_vt(a:vt) =
+| mylist_vt_nil of ()
+| mylist_vt_cons of (a, mylist_vt(a))
 //
 (* ****** ****** *)
 fun

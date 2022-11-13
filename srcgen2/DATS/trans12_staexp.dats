@@ -122,13 +122,13 @@ s1t0.node() of
 #implfun
 trans12_sort1
 ( env0,s1t0 ) = let
-(*
+// (*
 val
 loc0 = s1t0.lctn()
 val () =
 prerrln
 ("trans12_sort1: s1t0 = ", s1t0)
-*)
+// *)
 in//let
 //
 case+
