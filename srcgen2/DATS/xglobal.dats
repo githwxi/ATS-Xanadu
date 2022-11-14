@@ -214,7 +214,7 @@ case+ tenv of
   (the_fxtyenv[] := topmap; (1))
 end (*let*) // end of [ f0_pvsload ]
 //
-} (*where*) // [the_fxtyenv_pvsload]
+} (*where*) // [the_fxtyenv_pvsload()]
 //
 (* ****** ****** *)
 //
@@ -235,6 +235,46 @@ end (*let*) // [the_fxtyenv_pvsfind]
 end (*local*)
 // end of [the_fxtyenv_pvs(load|find)]
 //
+(* ****** ****** *)
+
+local
+//
+val
+the_times =
+a0ref_make_1val(0)
+//
+val
+the_sortenv = topmap_make_nil()
+val
+the_sexpenv = topmap_make_nil()
+val
+the_dexpenv = topmap_make_nil()
+//
+fun
+pvsload
+(path: strn): void = ()
+//
+in//local
+//
+#implfun
+the_tr12env_pvsload
+  ((*void*)) =
+let
+val n0 =
+the_times[]
+val () =
+(the_times[] := n0+1)
+in//let
+//
+if
+(n0 > 0)
+then (0) else (1) where
+{ val () = pvsload("/prelude/basics0.sats") 
+  val () = pvsload("/prelude/excptn0.sats") }
+// end of [if]
+//
+end (*local*) // end of [the_tr12env_pvs(load|find)]
+
 (* ****** ****** *)
 
 local
