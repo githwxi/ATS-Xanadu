@@ -113,6 +113,12 @@ the_fxtyenv_pvsfind
 (* ****** ****** *)
 //
 fun
+the_tr12env_pvsload
+  ( (*void*) ): sint(*0/1*)
+//
+(* ****** ****** *)
+//
+fun
 the_sortenv_pvsfind
   (key: sym_t): optn_vt(s2tex)
 fun
