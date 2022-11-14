@@ -213,8 +213,12 @@ end (*let*) // end of [ f0_pvsload ]
 #implfun
 the_fxtyenv_pvsfind
   (   key   ) =
+if
+(the_times[] = 0)
+then
+optn_vt_nil(*void*) else
 (
-  topmap_search_opt(map, key)
+topmap_search_opt(map, key)
 ) where
 {
   val+
