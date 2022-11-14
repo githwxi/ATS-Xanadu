@@ -975,9 +975,9 @@ sortenv_insert_any(tenv, k0, x0)
 //
 (*
 val () =
-the_sortenv_toplst_add0( k0, x0 )
+the_sortenv_allist_add0( k0, x0 )
 val () =
-the_sortenv_toplst_prerr((*void*))
+the_sortenv_allist_prerr((*void*))
 *)
 //
 in//let
@@ -1007,9 +1007,9 @@ sexpenv_insert_any(senv, k0, x0)
 //
 (*
 val () =
-the_sexpenv_toplst_add0( k0, x0 )
+the_sexpenv_allist_add0( k0, x0 )
 val () =
-the_sexpenv_toplst_prerr((*void*))
+the_sexpenv_allist_prerr((*void*))
 *)
 //
 in//let
@@ -1039,9 +1039,9 @@ dexpenv_insert_any(denv, k0, x0)
 //
 (*
 val () =
-the_dexpenv_toplst_add0( k0, x0 )
+the_dexpenv_allist_add0( k0, x0 )
 val () =
-the_dexpenv_toplst_prerr((*void*))
+the_dexpenv_allist_prerr((*void*))
 *)
 //
 in//let
