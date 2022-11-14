@@ -148,6 +148,10 @@ end (*local*) // end of [local(the_xsymbls)]
 
 local
 //
+#symload
+topenv with
+d1parsed_get_topenv
+//
 #typedef
 fxtyenv = topmap(fixty)
 //
@@ -158,10 +162,6 @@ val
 the_fxtyenv =
 a0ref_make_1val
 ($UN.cast10{fxtyenv}(0))
-//
-#symload
-topenv
-with d1parsed_get_topenv
 //
 val
 XATSHOME = the_XATSHOME()
@@ -224,8 +224,7 @@ the_fxtyenv_pvsfind
 if
 (the_times[] = 0)
 then
-optn_vt_nil(*void*)
-else
+optn_vt_nil(*void*) else
 let
   val topmap = the_fxtyenv[]
 in//let
@@ -239,9 +238,19 @@ end (*local*)
 
 local
 //
+#symload
+t2penv with
+d2parsed_get_t2penv
+//
+#typedef
+sortenv = topmap(s2tex)
+#typedef
+sexpenv = topmap(s2itm)
+#typedef
+dexpenv = topmap(d2itm)
+//
 val
-the_times =
-a0ref_make_1val(0)
+the_times = a0ref_make_1val(0)
 //
 val
 the_sortenv = topmap_make_nil()
@@ -272,6 +281,50 @@ then (0) else (1) where
 { val () = pvsload("/prelude/basics0.sats") 
   val () = pvsload("/prelude/excptn0.sats") }
 // end of [if]
+end (*let*) // end of [the_tr12env_pvsload(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+the_sortenv_pvsfind
+  (   key   ) =
+if
+(the_times[] = 0)
+then
+optn_vt_nil(*void*) else
+let
+val topmap = the_sortenv(*[]*)
+in//let
+  topmap_search_opt(topmap, key)
+end (*let*) // [the_sortenv_pvsfind]
+//
+#implfun
+the_sexpenv_pvsfind
+  (   key   ) =
+if
+(the_times[] = 0)
+then
+optn_vt_nil(*void*) else
+let
+val topmap = the_sexpenv(*[]*)
+in//let
+  topmap_search_opt(topmap, key)
+end (*let*) // [the_sexpenv_pvsfind]
+//
+#implfun
+the_dexpenv_pvsfind
+  (   key   ) =
+if
+(the_times[] = 0)
+then
+optn_vt_nil(*void*) else
+let
+val topmap = the_dexpenv(*[]*)
+in//let
+  topmap_search_opt(topmap, key)
+end (*let*) // [the_dexpenv_pvsfind]
+//
+(* ****** ****** *)
 //
 end (*local*) // end of [the_tr12env_pvs(load|find)]
 
@@ -286,20 +339,20 @@ a0ref_make_1val(list_nil())
 in//local
 //
 #implfun
-the_sortenv_toplst
+the_sortenv_allist
   ((*void*)) = a0ref_get(the_list)
 //
 #implfun
-the_sortenv_toplst_add0
+the_sortenv_allist_add0
   ( k0, x0 ) =
 let
 val kxs = a0ref_get(the_list)
 in
 a0ref_set
 (the_list, list_cons(@(k0, x0), kxs))
-end (*let*)//end-[the_sortenv_toplst_add0]
+end (*let*)//end-[the_sortenv_allist_add0]
 //
-endloc // end of [local(the_sortenv_toplst)]
+end (*local*) // end of [local(the_sortenv_allist)]
 
 (* ****** ****** *)
 
@@ -312,20 +365,20 @@ a0ref_make_1val(list_nil())
 in//local
 //
 #implfun
-the_sexpenv_toplst
+the_sexpenv_allist
   ((*void*)) = a0ref_get(the_list)
 //
 #implfun
-the_sexpenv_toplst_add0
+the_sexpenv_allist_add0
   ( k0, x0 ) =
 let
 val kxs = a0ref_get(the_list)
 in
 a0ref_set
 (the_list, list_cons(@(k0, x0), kxs))
-end (*let*)//end-[the_sexpenv_toplst_add0]
+end (*let*)//end-[the_sexpenv_allist_add0]
 //
-endloc // end of [local(the_sexpenv_toplst)]
+end (*local*) // end of [local(the_sexpenv_allist)]
 
 (* ****** ****** *)
 
@@ -338,57 +391,57 @@ a0ref_make_1val(list_nil())
 in//local
 //
 #implfun
-the_dexpenv_toplst
+the_dexpenv_allist
   ((*void*)) = a0ref_get(the_list)
 //
 #implfun
-the_dexpenv_toplst_add0
+the_dexpenv_allist_add0
   ( k0, x0 ) =
 let
 val kxs = a0ref_get(the_list)
 in
 a0ref_set
 (the_list, list_cons(@(k0, x0), kxs))
-end (*let*)//end-[the_dexpenv_toplst_add0]
+end (*let*)//end-[the_dexpenv_allist_add0]
 //
-endloc // end of [local(the_dexpenv_toplst)]
+end (*local*) // end of [local(the_dexpenv_allist)]
 
 (* ****** ****** *)
 #implfun
-the_sortenv_toplst_print
+the_sortenv_allist_print
   ((*void*)) =
-the_sortenv_toplst_fprint(g_stdout())
+the_sortenv_allist_fprint(g_stdout())
 #implfun
-the_sexpenv_toplst_print
+the_sexpenv_allist_print
   ((*void*)) =
-the_sexpenv_toplst_fprint(g_stdout())
+the_sexpenv_allist_fprint(g_stdout())
 #implfun
-the_dexpenv_toplst_print
+the_dexpenv_allist_print
   ((*void*)) =
-the_dexpenv_toplst_fprint(g_stdout())
+the_dexpenv_allist_fprint(g_stdout())
 (* ****** ****** *)
 #implfun
-the_sortenv_toplst_prerr
+the_sortenv_allist_prerr
   ((*void*)) =
-the_sortenv_toplst_fprint(g_stderr())
+the_sortenv_allist_fprint(g_stderr())
 #implfun
-the_sexpenv_toplst_prerr
+the_sexpenv_allist_prerr
   ((*void*)) =
-the_sexpenv_toplst_fprint(g_stderr())
+the_sexpenv_allist_fprint(g_stderr())
 #implfun
-the_dexpenv_toplst_prerr
+the_dexpenv_allist_prerr
   ((*void*)) =
-the_dexpenv_toplst_fprint(g_stderr())
+the_dexpenv_allist_fprint(g_stderr())
 (* ****** ****** *)
 //
 #implfun
-the_sortenv_toplst_fprint
+the_sortenv_allist_fprint
   (   out   ) =
 let
 //
 #impltmp
 g_print$out<>() = out
-val kxs = the_sortenv_toplst()
+val kxs = the_sortenv_allist()
 //
 in//let
 (
@@ -407,11 +460,11 @@ list_cons(kx1, kxs) =>
 auxloop(kxs)) where
 {
 val () = println
-("the_sortenv_toplst:", "(", kx1.0, " -> ", kx1.1, ")")
+("the_sortenv_allist:", "(", kx1.0, " -> ", kx1.1, ")")
 }
 )
 } (*where*)//end-[auxloop(kxs)]
-end (*let*)//end-[the_sortenv_toplst_fprint]
+end (*let*)//end-[the_sortenv_allist_fprint]
 //
 (* ****** ****** *)
 

@@ -116,6 +116,16 @@ fun
 the_tr12env_pvsload
   ( (*void*) ): sint(*0/1*)
 //
+fun
+the_sortenv_pvsfind
+  (key: sym_t): optn_vt(s2tex)
+fun
+the_sexpenv_pvsfind
+  (key: sym_t): optn_vt(s2itm)
+fun
+the_dexpenv_pvsfind
+  (key: sym_t): optn_vt(d2itm)
+//
 (* ****** ****** *)
 //
 fun
@@ -131,45 +141,45 @@ the_dexpenv_pvsfind
 (* ****** ****** *)
 //
 fun
-the_sortenv_toplst
+the_sortenv_allist
   ( (*void*) ): list@(sym_t, s2tex)
 fun
-the_sexpenv_toplst
+the_sexpenv_allist
   ( (*void*) ): list@(sym_t, s2itm)
 fun
-the_dexpenv_toplst
+the_dexpenv_allist
   ( (*void*) ): list@(sym_t, d2itm)
 //
 (* ****** ****** *)
 //
 fun
-the_sortenv_toplst_add0(sym_t, s2tex): void
+the_sortenv_allist_add0(sym_t, s2tex): void
 fun
-the_sexpenv_toplst_add0(sym_t, s2itm): void
+the_sexpenv_allist_add0(sym_t, s2itm): void
 fun
-the_dexpenv_toplst_add0(sym_t, d2itm): void
+the_dexpenv_allist_add0(sym_t, d2itm): void
 //
 (* ****** ****** *)
 fun
-the_sortenv_toplst_print(): void
+the_sortenv_allist_print(): void
 fun
-the_sortenv_toplst_prerr(): void
+the_sortenv_allist_prerr(): void
 fun
-the_sortenv_toplst_fprint( out:FILR ): void
+the_sortenv_allist_fprint( out:FILR ): void
 (* ****** ****** *)
 fun
-the_sexpenv_toplst_print(): void
+the_sexpenv_allist_print(): void
 fun
-the_sexpenv_toplst_prerr(): void
+the_sexpenv_allist_prerr(): void
 fun
-the_sexpenv_toplst_fprint( out:FILR ): void
+the_sexpenv_allist_fprint( out:FILR ): void
 (* ****** ****** *)
 fun
-the_dexpenv_toplst_print(): void
+the_dexpenv_allist_print(): void
 fun
-the_dexpenv_toplst_prerr(): void
+the_dexpenv_allist_prerr(): void
 fun
-the_dexpenv_toplst_fprint( out:FILR ): void
+the_dexpenv_allist_fprint( out:FILR ): void
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xglobal.sats] *)
