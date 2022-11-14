@@ -148,13 +148,16 @@ end (*local*) // end of [local(the_xsymbls)]
 
 local
 //
+#typedef
+fxtyenv = topmap(fixty)
+//
 val
 the_times =
 a0ref_make_1val(0)
 val
 the_fxtyenv =
 a0ref_make_1val
-($UN.cast10{d1topenv}(0))
+($UN.cast10{fxtyenv}(0))
 //
 #symload
 topenv
@@ -197,13 +200,18 @@ val
 dpar =
 d1parsed_from_trans(dpar)
 //
+val
+tenv =
+d1parsed_get_topenv(dpar)
+//
 val () =
 prerrln
-("the_fxtyenv_pvsload:")
-val () = prerrln(dpar.topenv())
+("the_fxtyenv_pvsload:", tenv)
 //
 in//let
-the_fxtyenv[] := dpar.topenv(); (1)
+case+ tenv of
+| D1TOPENV(topmap) =>
+  (the_fxtyenv[] := topmap; (1))
 end (*let*) // end of [ f0_pvsload ]
 //
 } (*where*) // [the_fxtyenv_pvsload]
@@ -216,14 +224,13 @@ the_fxtyenv_pvsfind
 if
 (the_times[] = 0)
 then
-optn_vt_nil(*void*) else
-(
-topmap_search_opt(map, key)
-) where
-{
-  val+
-  D1TOPENV(map) = the_fxtyenv[]
-} (*where*) // [the_fxtyenv_pvsfind]
+optn_vt_nil(*void*)
+else
+let
+  val topmap = the_fxtyenv[]
+in//let
+  topmap_search_opt(topmap, key)
+end (*let*) // [the_fxtyenv_pvsfind]
 //
 end (*local*)
 // end of [the_fxtyenv_pvs(load|find)]
