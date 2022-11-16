@@ -60,6 +60,7 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
+#staload "./../SATS/trans12.sats"
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"
 (* ****** ****** *)
@@ -80,11 +81,11 @@ For getting 'S{XATSHOME}'
 *)
 
 in//local
-
+//
 #implfun
 the_XATSHOME() =
 "/home/hwxi/Research/ATS-Xanadu"
-
+//
 end (*local*) // end of [local(XATSHOME)]
 
 (* ****** ****** *)
@@ -259,11 +260,28 @@ the_sexpenv = topmap_make_nil()
 val
 the_dexpenv = topmap_make_nil()
 //
+(* ****** ****** *)
+
 fun
 pvsload
-(path: strn): void = ()
+( knd0: sint
+, fpth: strn): void =
+let
 //
+val
+dpar =
+d0parsed_from_fpath(knd0, fpth)
+val
+dpar = d1parsed_from_trans(dpar)
+val
+dpar = d2parsed_from_trans(dpar)
+//
+in//let
+end (*let*) // end of [pvsload(knd0,fpth)]
+
+(* ****** ****** *)
 in//local
+(* ****** ****** *)
 //
 #implfun
 the_tr12env_pvsload
@@ -278,8 +296,10 @@ in//let
 if
 (n0 > 0)
 then (0) else (1) where
-{ val () = pvsload("/prelude/basics0.sats") 
-  val () = pvsload("/prelude/excptn0.sats") }
+{ val () =
+  pvsload(0(*sta*), "/prelude/basics0.sats") 
+  val () =
+  pvsload(0(*sta*), "/prelude/excptn0.sats") }
 // end of [if]
 end (*let*) // end of [the_tr12env_pvsload(...)]
 //
