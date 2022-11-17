@@ -81,5 +81,26 @@ tread12_d2explst
 list_tread12_fnp(d2es, err0, tread12_d2exp)
 //
 (* ****** ****** *)
+//
+#implfun
+tread12_d2expopt
+  (  d2es, err0  ) =
+optn_tread12_fnp(d2es, err0, tread12_d2exp)
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_l2d2plst
+  (  ldes, err0  ) =
+list_tread12_fnp(ldes, err0, tread12_l2d2p)
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_l2d2elst
+  (  ldes, err0  ) =
+list_tread12_fnp(ldes, err0, tread12_l2d2e)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread12_dynexp.dats] *)

@@ -153,7 +153,7 @@ end (*let*) // end of [d2parsed_tread12(dpar)]
 #implfun
 tread12_d2eclistopt
   (  dopt, err0  ) =
-optn_tread12_fnp(dopt, err, tread12_d2eclist)
+optn_tread12_fnp(dopt, err0, tread12_d2eclist)
 //
 (* ****** ****** *)
 
