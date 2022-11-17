@@ -196,6 +196,15 @@
 #include
 "./../../DATS/trans12_decl00.dats"
 (* ****** ****** *)
+#include
+"./../../DATS/tread12.dats"
+#include
+"./../../DATS/tread12_staexp.dats"
+#include
+"./../../DATS/tread12_dynexp.dats"
+#include
+"./../../DATS/tread12_decl00.dats"
+(* ****** ****** *)
 //
 local
 //
@@ -275,6 +284,9 @@ val
 dpar =
 d2parsed_from_trans(dpar)
 //
+val
+dpar = d2parsed_tread12(dpar)
+//
 (* ****** ****** *)
 //
 val (  ) =
@@ -287,4 +299,4 @@ endloc (*local*) // end-of-[local]
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_TEST_JS_test21_trans12.dats] *)
+(* end of [ATS3/XATSOPT_TEST_JS_test22_trans12.dats] *)

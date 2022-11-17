@@ -149,5 +149,12 @@ d2parsed
 end (*let*) // end of [d2parsed_tread12(dpar)]
 
 (* ****** ****** *)
+//
+#implfun
+tread12_d2eclistopt
+  (  dopt, err0  ) =
+optn_tread12_fnp(dopt, err, tread12_d2eclist)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread12.dats] *)
