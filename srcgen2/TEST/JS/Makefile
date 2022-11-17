@@ -237,6 +237,16 @@ $(XATS2JS) --output-a $@_dats.js -d ./$@.dats && $(NODE) test21_trans12_dats.js
 #
 ######
 #
+test:: \
+test22_tread12
+test22_tread12:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > $@_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
+$(CAT) $(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
+$(XATS2JS) --output-a $@_dats.js -d ./$@.dats && $(NODE) test22_tread12_dats.js
+#
+######
+#
 # HX: for cleaning up
 #
 ######
