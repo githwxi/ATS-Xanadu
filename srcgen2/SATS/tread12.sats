@@ -58,7 +58,11 @@ D2E = "./dynexp2.sats"
 #typedef l2s2e = $S2E.l2s2e
 (* ****** ****** *)
 #typedef sort2lst = $S2E.sort2lst
+#typedef sort2opt = $S2E.sort2opt
+(* ****** ****** *)
 #typedef s2explst = $S2E.s2explst
+#typedef s2expopt = $S2E.s2expopt
+(* ****** ****** *)
 #typedef l2s2elst = $S2E.l2s2elst
 (* ****** ****** *)
 #typedef d2pat = $D2E.d2pat
@@ -125,7 +129,11 @@ fun tread12_s2exp: ftread12(s2exp)
 fun tread12_l2s2e: ftread12(l2s2e)
 (* ****** ****** *)
 fun tread12_sort2lst: ftread12(sort2lst)
+fun tread12_sort2opt: ftread12(sort2opt)
+(* ****** ****** *)
 fun tread12_s2explst: ftread12(s2explst)
+fun tread12_s2expopt: ftread12(s2expopt)
+(* ****** ****** *)
 fun tread12_l2s2elst: ftread12(l2s2elst)
 (* ****** ****** *)
 fun tread12_d2pat: ftread12(d2pat)
