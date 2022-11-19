@@ -268,6 +268,62 @@ end (*local*) // end of [local(the_(tsd)env_pvs)]
 (* ****** ****** *)
 
 local
+(*
+HX-2022-11-19: nothing
+*)
+in//local
+
+#implfun
+the_sortenv_pvsmrgw(map) =
+let
+//
+#typedef
+kxs_t = @(sint, list(s2tex))
+//
+val
+kxss = topmap_strmize(map)
+in//let
+(
+  auxloop(env0, kxss)) where
+{
+//
+val env0 = the_sortenv_pvs()
+//
+fun
+auxkxs1
+( env0
+: sortenv, kxs1: kxs_t): void =
+let
+val (k1, xs1) = kxs1
+val-
+~optn_vt_cons(k1) =
+the_xsymbls_search(k1)
+val-list_cons(x1, xs1) = xs1
+in//let
+  topmap_insert_any(env0, k1, x1)
+end (*let*) // end of [auxkxs1(env0,kxs1)]
+//
+fun
+auxloop
+( env0: sortenv
+, kxss: strm_vt(kxs_t)): void =
+(
+case+ !kxss of
+| ~
+strmcon_vt_nil() => ()
+| ~
+strmcon_vt_cons(kxs1, kxss) =>
+(
+  auxkxs1(env0, kxs1); auxloop(env0, kxss))
+)
+}
+end (*let*) // end of [the_sortenv_pvsmrgw(map)]
+
+end (*local*) // end of [local(the_(tsd)env_pvsmrgw)]
+
+(* ****** ****** *)
+
+local
 
 (* ****** ****** *)
 #symload
@@ -386,23 +442,23 @@ D2TOPENV
 //
 // (*
 val () =
-prerrln
-("the_tr12env_pvsload:tenv=\n", tenv)
+prerrln("\
+the_tr12env_pvsload:tenv=\n", tenv)
 val () =
-prerrln
-("the_tr12env_pvsload:senv=\n", senv)
+prerrln("\
+the_tr12env_pvsload:senv=\n", senv)
 val () =
-prerrln
-("the_tr12env_pvsload:denv=\n", denv)
+prerrln("\
+the_tr12env_pvsload:denv=\n", denv)
 // *)
 in//let
 //
 (
 let
+  val () = the_sortenv_pvsmrgw(tenv)
 (*
-  val () = the_sortenv_merge_with(tenv)
-  val () = the_sexpenv_merge_with(senv)
-  val () = the_dexpenv_merge_with(denv)
+  val () = the_sexpenv_pvsmrgw(senv)
+  val () = the_dexpenv_pvsmrgw(denv)
 *)
 end (*let*)
 )

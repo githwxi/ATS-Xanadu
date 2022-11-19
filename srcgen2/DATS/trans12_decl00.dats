@@ -821,9 +821,8 @@ list_nil() => sdef
 list_cons(s2vs, svss) =>
 (
 auxslam(sdef, svss)) where
-{
-val
-sdef = s2exp_lam0(s2vs, sdef) }
+{ val
+  sdef = s2exp_lam0(s2vs, sdef) }
 ) (*case+*) // end-of-[auxslam]
 } (*where*) // end-of-[val(sdef)]
 //
