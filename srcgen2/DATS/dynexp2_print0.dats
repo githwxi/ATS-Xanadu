@@ -491,6 +491,53 @@ end (*let*) // end of [d2exp_fprint(out, d2e0)]
 (* ****** ****** *)
 
 #implfun
+d2itm_fprint
+(out, d2i0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ d2i0 of
+//
+|
+D2ITMvar(d2v1) =>
+print("D2ITMvar(", d2v1, ")")
+|
+D2ITMcon(d2cs) =>
+print("D2ITMcon(", d2cs, ")")
+|
+D2ITMcst(d2cs) =>
+print("D2ITMcst(", d2cs, ")")
+|
+D2ITMsym(sym1, d2ps) =>
+print("D2ITMsym(", sym1, ";", d2ps, ")")
+//
+end (*let*) // end of [d2itm_fprint(out, d2i0)]
+
+(* ****** ****** *)
+//
+#implfun
+d2ptm_fprint
+(out, d2p0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ d2p0 of
+|
+D2PTMnone(dqid) =>
+print("D2PTMnone(", dqid, ")")
+|
+D2PTMsome(pval, d2i1) =>
+print("D2PTMsome(", pval, ";", d2i1, ")")
+//
+end (*let*) // end of [d2ptm_fprint(out, d2p0)]
+//
+(* ****** ****** *)
+
+#implfun
 d2ecl_fprint
 (out, dcl0) =
 let
