@@ -143,6 +143,77 @@ list_cons(x0, xs) => optn_vt_cons(x0)
 (* ****** ****** *)
 
 #implfun
+s2cst_select_bin
+(s2cs, s2t1, s2t2) =
+let
+//
+fun
+test1
+( s2c0
+: s2cst): bool = let
+//
+val
+s2t0 = s2c0.sort()
+//
+in
+//
+case+ s2t0 of
+|
+S2Tfun1
+(s2ts, _) => test2(s2ts)
+|
+_(*non-S2Tfun1*) => false
+//
+end // end of [test1(s2c0)]
+//
+and
+test2
+( s2ts
+: sort2lst): bool =
+(
+case+ s2ts of
+|
+list_nil() => false
+|
+list_cons(t2x1, s2ts) =>
+(
+case+ s2ts of
+|
+list_nil() => false
+|
+list_cons(t2x2, s2ts) =>
+(
+case+ s2ts of
+|
+list_nil() =>
+(
+if
+(t2x1 <= s2t1)
+then
+(t2x2 <= s2t2) else false)
+|list_cons(_, _) => false)))
+//
+in//let
+loop(s2cs) where
+{
+fun
+loop
+( s2cs
+: s2cstlst): s2cstopt_vt =
+(
+case+ s2cs of
+|
+list_nil() => optn_vt_nil()
+|
+list_cons(s2c1, s2cs) =>
+if test1(s2c1)
+then optn_vt_cons(s2c1) else loop(s2cs))
+}
+end (*let*) // end of [s2cst_select_bin(...)]
+
+(* ****** ****** *)
+
+#implfun
 s2cst_select_list
   (s2cs, s2es) =
 (

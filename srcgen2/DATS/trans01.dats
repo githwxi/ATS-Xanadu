@@ -149,6 +149,49 @@ isdigit(c0) then r0*8+(c0-'0') else r0
 
 (* ****** ****** *)
 
+local
+//
+(*
+//
+// utf-8 // for text
+//
+|
+T_STRN1_clsd of
+//
+// HX:
+// It may contain null-chars
+(strn, sint(*len*)) // closed: utf-8
+*)
+//
+in (* in-of-local *)
+
+#implfun
+token2sstr(tok) =
+(
+case-
+tok.node() of
+|
+T_STRN1_clsd(rep, len) =>
+strn_tabulate(len-2) where
+{
+#impltmp
+tabulate$fopr
+  <cgtz>(i) = strn_get_at(rep, i+1)
+}
+|
+T_STRN2_ncls(rep, len) =>
+strn_tabulate(len-1) where
+{
+#impltmp
+tabulate$fopr
+  <cgtz>(i) = strn_get_at(rep, i+1)
+}
+)
+
+end (*local*) // end of [local(token2sstr)]
+
+(* ****** ****** *)
+
 #implfun
 sortid_sym(tok) =
 (
