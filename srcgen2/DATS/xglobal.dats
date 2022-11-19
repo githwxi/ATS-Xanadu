@@ -273,6 +273,8 @@ HX-2022-11-19: nothing
 *)
 in//local
 
+(* ****** ****** *)
+
 #implfun
 the_sortenv_pvsmrgw(map) =
 let
@@ -283,6 +285,7 @@ kxs_t = @(sint, list(s2tex))
 val
 kxss = topmap_strmize(map)
 in//let
+//
 (
   auxloop(env0, kxss)) where
 {
@@ -316,8 +319,94 @@ strmcon_vt_cons(kxs1, kxss) =>
 (
   auxkxs1(env0, kxs1); auxloop(env0, kxss))
 )
-}
+} (*where*) // end of [auxloop(env0, kxss)]
+//
 end (*let*) // end of [the_sortenv_pvsmrgw(map)]
+
+(* ****** ****** *)
+
+#implfun
+the_sexpenv_pvsmrgw(map) =
+let
+//
+#typedef
+kxs_t = @(sint, list(s2itm))
+//
+val
+kxss = topmap_strmize(map)
+in//let
+//
+(
+  auxloop(env0, kxss)) where
+{
+//
+val env0 = the_sexpenv_pvs()
+//
+fun
+auxkxs1
+( env0
+: sexpenv, kxs1: kxs_t): void =
+let
+val (k1, xs1) = kxs1
+val-
+~optn_vt_cons(k1) =
+the_xsymbls_search(k1)
+val-list_cons(x1, xs1) = xs1
+in//let
+(
+case+ x1 of
+|
+S2ITMvar(s2v1) =>
+topmap_insert_any(env0, k1, x1)
+|
+S2ITMcst(s2cs) =>
+let
+val
+opt0 =
+topmap_search_opt(env0, k1)
+in//let
+//
+case+ opt0 of
+| ~
+optn_vt_nil() =>
+topmap_insert_any(env0, k1, x1)
+| ~
+optn_vt_cons(s2i0) =>
+(
+case+ s2i0 of
+|S2ITMcst(scs0) =>
+let
+val x1 =
+S2ITMcst
+(list_append(scs0, s2cs))
+in//let
+topmap_insert_any(env0, k1, x1)
+end (*let*) // end of [S2ITMcst]
+|_(*non-S2ITMcst*) =>
+(topmap_insert_any(env0, k1, x1)))
+//
+end (*let*) // end of [S2ITMcst(s2cs)]
+)
+end (*let*) // end of [auxkxs1(env0,kxs1)]
+//
+fun
+auxloop
+( env0: sexpenv
+, kxss: strm_vt(kxs_t)): void =
+(
+case+ !kxss of
+| ~
+strmcon_vt_nil() => ()
+| ~
+strmcon_vt_cons(kxs1, kxss) =>
+(
+  auxkxs1(env0, kxs1); auxloop(env0, kxss))
+)
+} (*where*) // end of [auxloop(env0, kxss)]
+//
+end (*let*) // end of [the_sexpenv_pvsmrgw(map)]
+
+(* ****** ****** *)
 
 end (*local*) // end of [local(the_(tsd)env_pvsmrgw)]
 
@@ -456,8 +545,8 @@ in//let
 (
 let
   val () = the_sortenv_pvsmrgw(tenv)
-(*
   val () = the_sexpenv_pvsmrgw(senv)
+(*
   val () = the_dexpenv_pvsmrgw(denv)
 *)
 end (*let*)
