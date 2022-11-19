@@ -215,6 +215,58 @@ T2Bimpr(knd, _) => sortprf(knd) <= 0
 _ (* non-S2Tbas *) => false) // sort2_prgmq
 //
 (* ****** ****** *)
+//
+#implfun
+sort2_polpos(s2t0) =
+(
+//
+case+ s2t0 of
+|
+S2Tbas(s2tb) =>
+(
+case+ s2tb of
+|
+T2Bimpr(knd0, sym0) =>
+(
+S2Tbas(T2Bimpr(knd1, sym0))
+) where
+{
+  val knd1 = sortpolpos(knd0)
+} (*end-of-T2Bimpr*)
+|
+_ (*non-T2Bimpr(...)*) => s2t0
+)
+| _(* non-S2Tbas(...) *) => s2t0
+//
+) (*case+*) // end of [sort2_polpos(s2t0)]
+//
+(* ****** ****** *)
+//
+#implfun
+sort2_polneg(s2t0) =
+(
+//
+case+ s2t0 of
+|
+S2Tbas(s2tb) =>
+(
+case+ s2tb of
+|
+T2Bimpr(knd0, sym0) =>
+(
+S2Tbas(T2Bimpr(knd1, sym0))
+) where
+{
+  val knd1 = sortpolneg(knd0)
+} (*end-of-T2Bimpr*)
+|
+_ (*non-T2Bimpr(...)*) => s2t0
+)
+| _(* non-S2Tbas(...) *) => s2t0
+//
+) (*case+*) // end of [sort2_polneg(s2t0)]
+//
+(* ****** ****** *)
 #implfun
 t2abs_equal
 (x1, x2) =
@@ -258,6 +310,7 @@ g_lte<sort2> = lte_sort2_sort2
 #impltmp
 g_lte<sort2lst> = lte_sort2lst_sort2lst
 (* ****** ****** *)
+//
 #implfun
 lte_sort2_sort2
   (x1, x2) =
@@ -301,7 +354,8 @@ S2Tfun1(arg1, res1) =>
 case+ x2 of
 |
 S2Tfun1(arg2, res2) =>
-if (arg2 <= arg1) then (res1 <= res2) else false
+if
+(arg2 <= arg1) then (res1 <= res2) else false
 | _ (* non-S2Tfun1 *) => false
 )
 //
@@ -311,15 +365,15 @@ S2Tapps(s2f1, arg1) =>
 case+ x2 of
 |
 S2Tapps(s2f2, arg2) =>
-if (s2f1 <= s2f2) then (arg1 <= arg2) else false
+if
+(s2f1 <= s2f2) then (arg1 <= arg2) else false
 | _ (* non-S2Tfun *) => false
 )
 //
 | _ (* rest-of-sort2 *) => false
 (*
 | S2Tfun0() => false
-|
-S2Tnone(s1t1) => false | S2Tnone((*void*)) => false
+| S2Tnone0() => false | S2Tnone(s1t1) => false 
 *)
 //
 ) (* case+ *) // end of [lte_sort2_sort2(x1, x2)]
