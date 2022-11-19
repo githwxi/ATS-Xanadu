@@ -116,6 +116,18 @@ fun
 the_tr12env_pvsload
   ( (*void*) ): sint(*0/1*)
 //
+(* ****** ****** *)
+fun
+the_sortenv_pvs
+  ((*void*)): topmap(s2tex)
+fun
+the_sexpenv_pvs
+  ((*void*)): topmap(s2itm)
+fun
+the_dexpenv_pvs
+  ((*void*)): topmap(d2itm)
+(* ****** ****** *)
+//
 fun
 the_sortenv_pvsfind
   (key: sym_t): optn_vt(s2tex)

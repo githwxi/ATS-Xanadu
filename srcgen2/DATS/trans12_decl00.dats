@@ -871,7 +871,12 @@ s2cst_make_idst(loc0, sid1, tfun)
 val atdf =
 trans12_a1tdf_stck(env0, atdf, tres)
 in//let
+let
+  val () =
+  tr12env_add1_s2cst( env0, s2c1 )
+in//let
   d2ecl(loc0, D2Cabstype(s2c1, atdf))
+end (*let*)
 end (*let*)
 end (*let*) // end of [f0_abstype(env0,d1cl)]
 //

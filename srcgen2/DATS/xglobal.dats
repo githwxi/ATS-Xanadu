@@ -70,6 +70,14 @@ Many of the global structures are
 for the main purpose of debugging!
 *)
 (* ****** ****** *)
+//
+#typedef fxtyenv = topmap(fixty)
+//
+#typedef sortenv = topmap(s2tex)
+#typedef sexpenv = topmap(s2itm)
+#typedef dexpenv = topmap(d2itm)
+//
+(* ****** ****** *)
 #staload _ = "./xsymmap_topmap.dats"
 (* ****** ****** *)
 
@@ -152,9 +160,6 @@ local
 #symload
 topenv with
 d1parsed_get_topenv
-//
-#typedef
-fxtyenv = topmap(fixty)
 //
 val
 the_times =
@@ -239,26 +244,86 @@ end (*local*)
 
 local
 //
-#symload
-t2penv with
-d2parsed_get_t2penv
-//
-#typedef
-sortenv = topmap(s2tex)
-#typedef
-sexpenv = topmap(s2itm)
-#typedef
-dexpenv = topmap(d2itm)
-//
-val
-the_times = a0ref_make_1val(0)
-//
+(* ****** ****** *)
 val
 the_sortenv = topmap_make_nil()
 val
 the_sexpenv = topmap_make_nil()
 val
 the_dexpenv = topmap_make_nil()
+//
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+//
+#implfun
+the_sortenv_pvs() = (the_sortenv)
+#implfun
+the_sexpenv_pvs() = (the_sexpenv)
+#implfun
+the_dexpenv_pvs() = (the_dexpenv)
+//
+end (*local*) // end of [local(the_(tsd)env_pvs)]
+
+(* ****** ****** *)
+
+local
+
+(* ****** ****** *)
+#symload
+t2penv with
+d2parsed_get_t2penv
+(* ****** ****** *)
+val
+the_times = a0ref_make_1val(0)
+(* ****** ****** *)
+//
+fun
+f0_pvsinit(): void =
+let
+//
+(* ****** ****** *)
+val PROP = PROP_symbl
+val VIEW = VIEW_symbl
+val TYPE = TYPE_symbl
+val TBOX = TBOX_symbl
+val VTBX = VTBX_symbl
+val VWTP = VWTP_symbl
+(* ****** ****** *)
+//
+(* ****** ****** *)
+local
+val env0 = the_sortenv_pvs()
+in//local
+val () =
+topmap_insert_any
+( env0
+, PROP, S2TEXsrt(the_sort2_prop))
+val () =
+topmap_insert_any
+( env0
+, TYPE, S2TEXsrt(the_sort2_type))
+val () =
+topmap_insert_any
+( env0
+, TBOX, S2TEXsrt(the_sort2_tbox))
+//
+val () =
+topmap_insert_any
+( env0
+, VIEW, S2TEXsrt(the_sort2_view))
+val () =
+topmap_insert_any
+( env0
+, VWTP, S2TEXsrt(the_sort2_vwtp))
+val () =
+topmap_insert_any
+( env0
+, VTBX, S2TEXsrt(the_sort2_vtbx))
+end (*loc*) // end-of-[local(sortenv)]
+(* ****** ****** *)
+//
+end (*let*) // end-of-[f0_pvsinit(...)]
 //
 (* ****** ****** *)
 
@@ -308,9 +373,9 @@ in//let
 (
 let
 (*
-  val () = the_sortenv_extend_by(tenv)
-  val () = the_sexpenv_extend_by(senv)
-  val () = the_dexpenv_extend_by(denv)
+  val () = the_sortenv_merge_with(tenv)
+  val () = the_sexpenv_merge_with(senv)
+  val () = the_dexpenv_merge_with(denv)
 *)
 end (*let*)
 )
@@ -337,6 +402,9 @@ if
 (n0 > 0)
 then (0) else (1) where
 {
+//
+val () = f0_pvsinit((*void*))
+//
 val () =
 f0_pvsload(0(*sta*), "/prelude/basics0.sats") 
 val () =
@@ -354,7 +422,7 @@ if
 then
 optn_vt_nil(*void*) else
 let
-val topmap = the_sortenv(*[]*)
+val topmap = the_sortenv_pvs()
 in//let
   topmap_search_opt(topmap, key)
 end (*let*) // [the_sortenv_pvsfind]
@@ -367,7 +435,7 @@ if
 then
 optn_vt_nil(*void*) else
 let
-val topmap = the_sexpenv(*[]*)
+val topmap = the_sexpenv_pvs()
 in//let
   topmap_search_opt(topmap, key)
 end (*let*) // [the_sexpenv_pvsfind]
@@ -380,7 +448,7 @@ if
 then
 optn_vt_nil(*void*) else
 let
-val topmap = the_dexpenv(*[]*)
+val topmap = the_dexpenv_pvs()
 in//let
   topmap_search_opt(topmap, key)
 end (*let*) // [the_dexpenv_pvsfind]
