@@ -219,6 +219,9 @@ S2Tnone0 of () // HX: error or special
 |
 S2Tnone1 of sort1 // HX: error indication
 //
+|
+S2Terrck of (int(*lvl*), sort2)//HX:tread-error
+//
 where
 {
   #typedef sort2lst = list(sort2)
@@ -484,6 +487,8 @@ S2Elist of s2explst // HX: temporary use
 | S2Enone2 of
   (loc_t, s2exp(*src*)) // HX: error indication
 *)
+//
+| S2Eerrck of (int(*lvl*), s2exp)//HX:tread-error
 //
 // end of [s2exp_node] // end of [ datatype(...) ]
 //

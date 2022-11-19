@@ -70,32 +70,32 @@ ATS_PACKNAME
 //
 #implfun
 tread12_d2patlst
-  (  d2ps, err0  ) =
-list_tread12_fnp(d2ps, err0, tread12_d2pat)
+  (  d2ps, err  ) =
+list_tread12_fnp(d2ps, err, tread12_d2pat)
 //
 #implfun
 tread12_d2explst
-  (  d2es, err0  ) =
-list_tread12_fnp(d2es, err0, tread12_d2exp)
+  (  d2es, err  ) =
+list_tread12_fnp(d2es, err, tread12_d2exp)
 //
 (* ****** ****** *)
 //
 #implfun
 tread12_d2expopt
-  (  d2es, err0  ) =
-optn_tread12_fnp(d2es, err0, tread12_d2exp)
+  (  d2es, err  ) =
+optn_tread12_fnp(d2es, err, tread12_d2exp)
 //
 (* ****** ****** *)
 //
 #implfun
 tread12_l2d2plst
-  (  ldes, err0  ) =
-list_tread12_fnp(ldes, err0, tread12_l2d2p)
+  (  ldes, err  ) =
+list_tread12_fnp(ldes, err, tread12_l2d2p)
 //
 #implfun
 tread12_l2d2elst
-  (  ldes, err0  ) =
-list_tread12_fnp(ldes, err0, tread12_l2d2e)
+  (  ldes, err  ) =
+list_tread12_fnp(ldes, err, tread12_l2d2e)
 //
 (* ****** ****** *)
 

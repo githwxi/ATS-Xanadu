@@ -76,7 +76,7 @@ d2ecl
 
 #implfun
 tread12_d2ecl
-  (d2cl, err0) =
+  (d2cl, err) =
 (
 case+
 d2cl.node() of
@@ -89,7 +89,8 @@ _(*otherwise*) =>
 let
 val lvl0 = 1
 in//let
-( err0 := err0+1; d2ecl_errck(lvl0, d2cl) )
+(
+err := err+1; d2ecl_errck(lvl0,d2cl))
 endlet // end of [ _(* otherwise *) ]
 //
 ) where // end of [case+(d2cl.node())]
@@ -102,8 +103,8 @@ endlet // end of [ _(* otherwise *) ]
 //
 #implfun
 tread12_d2eclist
-  (  dcls, err0  ) =
-list_tread12_fnp(dcls, err0, tread12_d2ecl)
+  (  dcls, err  ) =
+list_tread12_fnp(dcls, err, tread12_d2ecl)
 //
 (* ****** ****** *)
 
