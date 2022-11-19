@@ -357,13 +357,15 @@ in//let
 case+ x1 of
 |
 S2ITMvar(s2v1) =>
-topmap_insert_any(env0, k1, x1)
+topmap_insert_any
+( env0 , k1 , x1 )
 |
-S2ITMcst(s2cs) =>
-let
+S2ITMcst(s2cs) => let
+//
 val
 opt0 =
 topmap_search_opt(env0, k1)
+//
 in//let
 //
 case+ opt0 of
@@ -405,6 +407,123 @@ strmcon_vt_cons(kxs1, kxss) =>
 } (*where*) // end of [auxloop(env0, kxss)]
 //
 end (*let*) // end of [the_sexpenv_pvsmrgw(map)]
+
+(* ****** ****** *)
+
+#implfun
+the_dexpenv_pvsmrgw(map) =
+let
+//
+#typedef
+kxs_t = @(sint, list(d2itm))
+//
+val
+kxss = topmap_strmize(map)
+in//let
+//
+(
+  auxloop(env0, kxss)) where
+{
+//
+val env0 = the_dexpenv_pvs()
+//
+fun
+auxkxs1
+( env0
+: dexpenv, kxs1: kxs_t): void =
+let
+val (k1, xs1) = kxs1
+val-
+~optn_vt_cons(k1) =
+the_xsymbls_search(k1)
+val-list_cons(x1, xs1) = xs1
+in//let
+(
+case+ x1 of
+//
+|
+D2ITMvar(d2v1) =>
+topmap_insert_any
+( env0 , k1 , x1 )
+//
+|
+D2ITMcon(d2cs) => let
+//
+val
+opt0 =
+topmap_search_opt(env0, k1)
+//
+in//let
+//
+case+ opt0 of
+| ~
+optn_vt_nil() =>
+topmap_insert_any(env0, k1, x1)
+| ~
+optn_vt_cons(d2i0) =>
+(
+case+ d2i0 of
+|D2ITMcon(dcs0) =>
+let
+val x1 =
+D2ITMcon
+(list_append(dcs0, d2cs))
+in//let
+topmap_insert_any(env0, k1, x1)
+end (*let*) // end of [D2ITMcon]
+|_(*non-D2ITMcon*) =>
+(topmap_insert_any(env0, k1, x1)))
+//
+end (*let*) // end of [D2ITMcon(d2cs)]
+//
+|
+D2ITMcst(d2cs) => let
+//
+val
+opt0 =
+topmap_search_opt(env0, k1)
+//
+in//let
+//
+case+ opt0 of
+| ~
+optn_vt_nil() =>
+topmap_insert_any(env0, k1, x1)
+| ~
+optn_vt_cons(d2i0) =>
+(
+case+ d2i0 of
+|D2ITMcst(dcs0) =>
+let
+val x1 =
+D2ITMcst
+(list_append(dcs0, d2cs))
+in//let
+topmap_insert_any(env0, k1, x1)
+end (*let*) // end of [D2ITMcst]
+|_(*non-D2ITMcst*) =>
+(topmap_insert_any(env0, k1, x1)))
+//
+end (*let*) // end of [D2ITMcst(d2cs)]
+)
+end (*let*) // end of [auxkxs1(env0,kxs1)]
+//
+fun
+auxloop
+( env0: dexpenv
+, kxss: strm_vt(kxs_t)): void =
+(
+case+ !kxss of
+| ~
+strmcon_vt_nil() => ()
+| ~
+strmcon_vt_cons(kxs1, kxss) =>
+(
+  auxkxs1(env0, kxs1); auxloop(env0, kxss))
+)
+} (*where*) // end of [auxloop(env0, kxss)]
+//
+end (*let*) // end of [the_dexpenv_pvsmrgw(map)]
 
 (* ****** ****** *)
 
@@ -546,9 +665,7 @@ in//let
 let
   val () = the_sortenv_pvsmrgw(tenv)
   val () = the_sexpenv_pvsmrgw(senv)
-(*
   val () = the_dexpenv_pvsmrgw(denv)
-*)
 end (*let*)
 )
 //
