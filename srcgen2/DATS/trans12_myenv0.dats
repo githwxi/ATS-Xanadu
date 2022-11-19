@@ -286,7 +286,17 @@ case+ opt of
 | !
 optn_vt_cons _ => opt
 | ~
-optn_vt_nil( ) => topmap_search_opt(topmap,k0)
+optn_vt_nil( ) =>
+let
+val opt =
+topmap_search_opt(topmap, k0)
+in//let
+case+ opt of
+| !
+optn_vt_cons _ => opt
+| ~
+optn_vt_nil( ) => the_sortenv_pvsfind(k0)
+end (*let*)//end-of-[opt_vt_nil()]
 //
 end (*let*)//end-of-[sortenv_search_opt(tenv,k0)]
 
@@ -523,7 +533,17 @@ case+ opt of
 | !
 optn_vt_cons _ => opt
 | ~
-optn_vt_nil( ) => topmap_search_opt(topmap,k0)
+optn_vt_nil( ) =>
+let
+val opt =
+topmap_search_opt(topmap, k0)
+in//let
+case+ opt of
+| !
+optn_vt_cons _ => opt
+| ~
+optn_vt_nil( ) => the_sexpenv_pvsfind(k0)
+end (*let*)//end-of-[opt_vt_nil()]
 //
 end (*let*)//end-of-[sexpenv_search_opt(senv,k0)]
 
@@ -758,7 +778,17 @@ case+ opt of
 | !
 optn_vt_cons _ => opt
 | ~
-optn_vt_nil( ) => topmap_search_opt(topmap,k0)
+optn_vt_nil( ) =>
+let
+val opt =
+topmap_search_opt(topmap, k0)
+in//let
+case+ opt of
+| !
+optn_vt_cons _ => opt
+| ~
+optn_vt_nil( ) => the_dexpenv_pvsfind(k0)
+end (*let*)//end-of-[opt_vt_nil()]
 //
 end (*let*)//end-of-[dexpenv_search_opt(denv,k0)]
 
