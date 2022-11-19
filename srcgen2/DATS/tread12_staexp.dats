@@ -191,8 +191,7 @@ case+ s2t0 of
 *)
 //
 (*
-|
-S2Tfun0 _ => s2t0
+|S2Tfun0 _ => s2t0
 *)
 |
 S2Tfun1(s2ts, s2t1) =>
@@ -211,15 +210,12 @@ else (sort2_fun1_errck(s2ts, s2t1))
 end (*let*) // end of [S2Tfun1(...)]
 //
 (*
-|
-S2Tapps _ => s2t0
+|S2Tapps _ => s2t0
 *)
 //
 (*
-|
-S2Tnone0 _ => s2t0
-|
-S2Tnone1 _ => s2t0
+|S2Tnone0 _ => s2t0
+|S2Tnone1 _ => s2t0
 *)
 //
 | _(*otherwise*) =>
@@ -230,7 +226,7 @@ in//let
 err := err+1; sort2_errck(lvl0,s2t0))
 endlet // end of [ _(* otherwise *) ]
 //
-) where // end-of-[ case(s1t0.node()) ]
+) where // end-of-[(*case+(s2t0)-of*)]
 {
 (*
 val (  ) =
@@ -242,10 +238,132 @@ prerrln("tread12_sort2: s2t0 = ", s2t0)
 //
 (* ****** ****** *)
 //
+fun
+s2exp_errvl_a1
+(s2e0: s2exp): sint =
+(
+case+ s2e0.node() of
+|
+S2Eerrck
+(lvl0, _) => lvl0 | _ => 0
+)
+#symload
+s2exp_errvl with s2exp_errvl_a1
+#symload errvl with s2exp_errvl_a1
+//
+(* ****** ****** *)
+//
+fun
+s2exp_errvl_a2
+(s2e1: s2exp
+,s2e2: s2exp): sint =
+gmax
+(errvl(s2e1),errvl(s2e2))
+#symload
+s2exp_errvl with s2exp_errvl_a2
+#symload errvl with s2exp_errvl_a2
+//
+(* ****** ****** *)
+//
+#extern
+fun
+s2exp_errvl_lst
+(s2es: s2explst): sint
+//
+#implfun
+s2exp_errvl_lst
+  (  s2es  ) =
+(
+case+ s2es of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(s2e1,s2es) =>
+(
+gmax
+(
+errvl(s2e1),s2exp_errvl_lst(s2es)))
+endcas // end of [ case+(s2es)-of ]
+)
+//
+#symload errvl with s2exp_errvl_lst
+//
+(* ****** ****** *)
+//
+#extern
+fun
+l2s2e_errvl_lses
+(lses: l2s2elst): sint
+//
+#implfun
+l2s2e_errvl_lses
+  (   lses   ) =
+(
+case+ lses of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(ls2e,lses) =>
+let
+val+
+S2LAB(lab, s2e1) = ls2e in
+gmax
+( errvl(s2e1)
+, l2s2e_errvl_lses(lses)) end
+endcas // end of [ case+(lses)-of ]
+)
+//
+#symload errvl with l2s2e_errvl_lses
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_s2exp
+( s2e0, err ) =
+(
+case+
+s2e0.node() of
+//
+(*
+| S2Eid0 _ => s2e0
+*)
+//
+| S2Eint _ => s2e0
+| S2Echr _ => s2e0
+| S2Eflt _ => s2e0
+| S2Estr _ => s2e0
+//
+| S2Ecst _ => s2e0
+| S2Evar _ => s2e0
+//
+| _(*otherwise*) =>
+let
+val lvl0 = 1
+in//let
+(
+err := err+1; s2exp_errck(lvl0,s2e0))
+endlet // end of [ _(* otherwise *) ]
+) where // end-of-[(*case+(s2e0)-of*)]
+{
+(*
+val (  ) =
+prerrln("tread12_s2exp: s2e0 = ", s2e0)
+*)
+} (*where*)//end[tread12_s2exp(s2e0,err)]
+//
+(* ****** ****** *)
+//
+(* ****** ****** *)
+//
 #implfun
 tread12_sort2lst
   (  s2ts, err  ) =
 list_tread12_fnp(s2ts, err, tread12_sort2)
+//
+#implfun
+tread12_sort2opt
+  (  s2ts, err  ) =
+optn_tread12_fnp(s2ts, err, tread12_sort2)
 //
 (* ****** ****** *)
 //
