@@ -75,7 +75,8 @@ sort2_funq
 (  s2t0  ) =
 (
 case+ s2t0 of
-| S2Tfun _ => true | _ => false )
+| S2Tfun0 _ => true
+| S2Tfun1 _ => true | _ => false )
 //
 (* ****** ****** *)
 //
