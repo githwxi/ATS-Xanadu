@@ -293,12 +293,15 @@ the_sort2_strn : sort2
 (* ****** ****** *)
 //
 val the_sort2_prop: sort2
+val the_sort2_view: sort2
+//
 val the_sort2_type: sort2
 val the_sort2_tbox: sort2
+val the_sort2_tflt: sort2
 //
-val the_sort2_view: sort2
 val the_sort2_vwtp: sort2
 val the_sort2_vtbx: sort2
+val the_sort2_vtft: sort2
 //
 (* ****** ****** *)
 fun

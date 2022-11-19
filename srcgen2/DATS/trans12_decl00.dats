@@ -131,9 +131,21 @@ _(*TRANS12*) = "./trans12.dats"
 (* ****** ****** *)
 //
 fun
-abstknd_sort2
-(tknd: token): sort2 =
+sort2_ofknd
+(knd0: sint): sort2 =
 (
+if
+(knd0=TYPESORT)
+then the_sort2_type else
+if
+(knd0=VWTPSORT)
+then the_sort2_vwtp else
+if
+(knd0=TBOXSORT)
+then the_sort2_tbox else
+if
+(knd0=VTBXSORT)
+then the_sort2_vtbx else
 if
 (knd0=PROPSORT)
 then the_sort2_prop else
@@ -141,21 +153,34 @@ if
 (knd0=VIEWSORT)
 then the_sort2_view else
 if
-(knd0=TBOXSORT)
-then the_sort2_tbox else
+(knd0=TFLTSORT)
+then the_sort2_tflt else
 if
-(knd0=TYPESORT)
-then the_sort2_type else
-if
-(knd0=VTBXSORT)
-then the_sort2_vtbx else
-if
-(knd0=VWTPSORT)
-then the_sort2_vwtp else S2Tnone0()
-) where
+(knd0=VTFTSORT)
+then the_sort2_vtft else S2Tnone0()
+)
+//
+(* ****** ****** *)
+//
+fun
+abstype_sort2
+(tknd: token): sort2 =
+(
+  sort2_ofknd(knd0)) where
 {
   val-T_ABSTYPE(knd0) = tknd.node()
-} (*where*) // end of [abstknd_sort2(tknd)]
+} (*where*) // end of [abstype_sort2(tknd)]
+//
+(* ****** ****** *)
+//
+fun
+sexpdef_sort2
+(tknd: token): sort2 =
+(
+  sort2_ofknd(knd0)) where
+{
+  val-T_SEXPDEF(knd0) = tknd.node()
+} (*where*) // end of [sexpdef_sort2(tknd)]
 //
 (* ****** ****** *)
 
@@ -750,9 +775,24 @@ let
 val s2t1 =
 trans12_sort1(env0, s1t1)
 in//let
-trans12_s1exp_stck(env0, sdef, s2t1)
+trans12_s1exp_stck(env0,sdef,s2t1)
 endlet // end of [optn_cons]
-)
+) : s2exp // end of [val(sdef)]
+//
+val
+sdef =
+(
+(
+case+ tres of
+|
+S2Tnone0() => sdef
+|
+_(*non-S2Tnone0*) =>
+s2exp_stck(loc0, sdef, tres)
+) where
+{
+  val tres = sexpdef_sort2(tknd) }
+) : s2exp // end of [val(sdef)]
 //
 (*
 val () =
@@ -785,7 +825,7 @@ auxslam(sdef, svss)) where
 val
 sdef = s2exp_lam0(s2vs, sdef) }
 ) (*case+*) // end-of-[auxslam]
-} (*where*) // end-of-[val sdef]
+} (*where*) // end-of-[val(sdef)]
 //
 (*
 val () =
@@ -801,11 +841,13 @@ s2cst_make_idst
   val sid1 = sexpid_sym(tok1) }
 //
 in//let
+//
 d2ecl_make_node
 ( loc0
 , D2Csexpdef(s2c1, sdef)) where
 { val () =
   tr12env_add1_s2cst(env0, s2c1) }
+//
 end (*let*) // end of [f0_sexpdef(env0,d1cl)]
 //
 (* ****** ****** *)
@@ -836,7 +878,7 @@ val tres =
 (
 case topt of
 | optn_nil() =>
-  abstknd_sort2(tknd)
+  abstype_sort2(tknd)
 | optn_cons(s1t1) =>
   trans12_sort1(env0, s1t1)
 ) : sort2 //  end-of-val(tres)
@@ -860,9 +902,11 @@ S2Tfun1
 (s2ts, f1_stss(stss, tres)))
 }
 //
+(*
 val () =
 prerrln
 ("f0_abstype: tfun = ", tfun)
+*)
 //
 in//let
 let

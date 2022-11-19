@@ -73,13 +73,13 @@ ATS_PACKNAME
 //
 #define VIEWSORT 6 // 00110
 //
+#define TYPESORT 0 // 00000
 #define TBOXSORT 1 // 00001
 #define TFLTSORT 0 // 00000
-#define TYPESORT 0 // 00000
 //
+#define VWTPSORT 2 // 00010
 #define VTBXSORT 3 // 00011
 #define VTFTSORT 2 // 00010
-#define VWTPSORT 2 // 00010
 //
 (* ****** ****** *)
 
