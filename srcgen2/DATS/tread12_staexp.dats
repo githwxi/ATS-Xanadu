@@ -78,5 +78,12 @@ tread12_s2explst
 list_tread12_fnp(s2es, err0, tread12_s2exp)
 //
 (* ****** ****** *)
+//
+#implfun
+tread12_l2s2elst
+  (  lses, err0  ) =
+list_tread12_fnp(lses, err0, tread12_l2s2e)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread12_staexp.dats] *)

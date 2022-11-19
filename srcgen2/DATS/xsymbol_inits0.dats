@@ -92,6 +92,7 @@ HX-2022-10-01: Various symbols
 #implval ADDR_symbl = symbl("addr")
 #implval BOOL_symbl = symbl("bool")
 #implval CHAR_symbl = symbl("char")
+#implval STRN_symbl = symbl("strn")
 //
 (* ****** ****** *)
 //

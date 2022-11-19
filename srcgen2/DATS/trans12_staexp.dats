@@ -79,6 +79,9 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with t1mag_get_lctn
 #symload node with t1mag_get_node
 (* ****** ****** *)
+#symload lctn with s1qua_get_lctn
+#symload node with s1qua_get_node
+(* ****** ****** *)
 #symload lctn with s1exp_get_lctn
 #symload node with s1exp_get_node
 (* ****** ****** *)
@@ -1637,6 +1640,133 @@ list_trans12_fnp(env0, s1es, trans12_l1s1e_impr)
 trans12_l1s1elst_prgm
   (env0, s1es) =
 list_trans12_fnp(env0, s1es, trans12_l1s1e_prgm)
+//
+(* ****** ****** *)
+//
+local
+//
+(* ****** ****** *)
+//
+(*
+HX-2022-11-19:
+[auxs2vs]:
+Note that:
+The newly created s2vs are
+immediately added to [env0]!
+*)
+fun
+auxs2vs
+( env0:
+! tr12env
+, toks
+: tokenlst
+, tvar: sort2
+, s2vs
+: s2varlst_vt): s2varlst_vt =
+(
+case+ toks of
+|
+list_nil() => s2vs
+|
+list_cons(tok1, toks) =>
+(
+auxs2vs
+( env0, toks, tvar
+, list_vt_cons(s2v1, s2vs))) where
+{
+val sym1 = sargid_sym(tok1)
+val s2v1 = s2var_make_idst(sym1, tvar)
+val (  ) = tr12env_add0_s2var(env0, s2v1)
+}
+) (*case+*) // end of [auxs2vs[env0,toks,...])
+//
+(* ****** ****** *)
+//
+fun
+auxloop
+( env0:
+! tr12env
+, s1qs: s1qualst
+, s2vs: s2varlst_vt
+, s2ps: s2explst_vt)
+: (s2varlst, s2explst) =
+(
+case+ s1qs of
+|
+list_nil() =>
+(s2vs, s2ps) where
+{
+val
+s2vs =
+list_vt2t
+(list_vt_reverse0(s2vs))
+val
+s2ps =
+list_vt2t
+(list_vt_reverse0(s2ps)) }
+|
+list_cons
+(s1q1, s1qs) =>
+(
+case+
+s1q1.node() of
+|
+S1QUAprop(s1p1) =>
+let
+//
+val tbtf =
+the_sort2_bool
+val s2p1 =
+trans12_s1exp_stck
+(env0, s1p1, tbtf)
+val s2ps =
+list_vt_cons(s2p1, s2ps)
+//
+in//let
+  auxloop(env0, s1qs, s2vs, s2ps)
+end (*let*) // end-of-(S1QUAprop)
+|
+S1QUAvars(toks, topt) =>
+let
+val
+topt =
+trans12_sort1opt(env0, topt)
+val
+tvar =
+(
+case+ topt of
+|
+optn_nil() =>
+sort2_none0()
+|
+optn_cons(s2t0) => s2t0):sort2
+//
+val
+s2vs =
+auxs2vs(env0, toks, tvar, s2vs)
+//
+in//let
+  auxloop(env0, s1qs, s2vs, s2ps)
+end (*let*) // end of [S1QUAvars(...)]
+)
+) (*case+*) // end of [auxloop(env0,s1qs,...)]
+//
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+//
+#implfun
+trans12_s1qualst
+  (env0, s1qs) =
+(
+auxloop
+( env0, s1qs
+, s2vs, s2ps)) where
+{
+val s2vs = list_vt_nil() and s2ps = list_vt_nil()
+} (*where*) // end of [trans12_s1qualst(env0, s1qs)]
+//
+end (*local*) // end of [local(trans12_s1qualst(...))]
 //
 (* ****** ****** *)
 

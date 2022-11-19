@@ -68,6 +68,9 @@ T2Bpred($SYM.ADDR_symbl)
 val
 s2tb_char =
 T2Bpred($SYM.CHAR_symbl)
+val
+s2tb_strn =
+T2Bpred($SYM.STRN_symbl)
 //
 val
 s2tb_prop =
@@ -105,6 +108,8 @@ the_sort2_addr = S2Tbas(s2tb_addr)
 the_sort2_bool = S2Tbas(s2tb_bool)
 #implval
 the_sort2_char = S2Tbas(s2tb_char)
+#implval
+the_sort2_strn = S2Tbas(s2tb_strn)
 //
 #implval
 the_sort2_prop = S2Tbas(s2tb_prop)

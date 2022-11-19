@@ -149,6 +149,7 @@ val INT_symbl: symbl //=symbl("int")
 val ADDR_symbl: symbl //=symbl("addr")
 val BOOL_symbl: symbl //=symbl("bool")
 val CHAR_symbl: symbl //=symbl("char")
+val STRN_symbl: symbl //=symbl("strn")
 //
 (* ****** ****** *)
 //

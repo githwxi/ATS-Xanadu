@@ -263,10 +263,19 @@ the_dexpenv = topmap_make_nil()
 (* ****** ****** *)
 
 fun
-pvsload
+f0_pvsload
 ( knd0: sint
-, fpth: strn): void =
+, fnam: strn): void =
 let
+//
+val
+fpth =
+let
+val
+XATSHOME = the_XATSHOME()
+in//let
+strn_append(XATSHOME, fnam)
+end (*let*) // end-of-(fpth)
 //
 val
 dpar =
@@ -277,7 +286,7 @@ val
 dpar = d2parsed_from_trans(dpar)
 //
 in//let
-end (*let*) // end of [pvsload(knd0,fpth)]
+end (*let*) // end of [f0_pvsload(knd0,fpth)]
 
 (* ****** ****** *)
 in//local
@@ -296,10 +305,11 @@ in//let
 if
 (n0 > 0)
 then (0) else (1) where
-{ val () =
-  pvsload(0(*sta*), "/prelude/basics0.sats") 
-  val () =
-  pvsload(0(*sta*), "/prelude/excptn0.sats") }
+{
+val () =
+f0_pvsload(0(*sta*), "/prelude/basics0.sats") 
+val () =
+f0_pvsload(0(*sta*), "/prelude/excptn0.sats") }
 // end of [if]
 end (*let*) // end of [the_tr12env_pvsload(...)]
 //

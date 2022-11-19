@@ -73,8 +73,6 @@ tread12_d2patlst
   (  d2ps, err0  ) =
 list_tread12_fnp(d2ps, err0, tread12_d2pat)
 //
-(* ****** ****** *)
-//
 #implfun
 tread12_d2explst
   (  d2es, err0  ) =
@@ -93,8 +91,6 @@ optn_tread12_fnp(d2es, err0, tread12_d2exp)
 tread12_l2d2plst
   (  ldes, err0  ) =
 list_tread12_fnp(ldes, err0, tread12_l2d2p)
-//
-(* ****** ****** *)
 //
 #implfun
 tread12_l2d2elst

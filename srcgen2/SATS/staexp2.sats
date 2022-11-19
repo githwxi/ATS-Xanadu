@@ -285,9 +285,10 @@ the_sort2_char : sort2
 (*
 val
 the_sort2_real : sort2
+*)
+//
 val
 the_sort2_strn : sort2
-*)
 //
 (* ****** ****** *)
 //

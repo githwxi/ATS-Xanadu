@@ -409,6 +409,13 @@ val s2t0 = the_sort2_char in
 s2exp_make_node(s2t0, S2Echr(chr))
 end (*let*) // end of [ s2exp_chr(chr) ]
 (* ****** ****** *)
+#implfun
+s2exp_str(str) =
+let
+val s2t0 = the_sort2_strn in
+s2exp_make_node(s2t0, S2Estr(str))
+end (*let*) // end of [ s2exp_chr(chr) ]
+(* ****** ****** *)
 //
 #implfun
 s2exp_cst(s2c0) =
