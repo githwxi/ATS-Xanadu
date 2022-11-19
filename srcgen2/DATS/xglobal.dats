@@ -286,6 +286,37 @@ val
 dpar = d2parsed_from_trans(dpar)
 //
 in//let
+//
+let
+val+
+D2TOPENV
+(tenv, senv, denv) = dpar.t2penv()
+//
+// (*
+val () =
+prerrln
+("the_tr12env_pvsload:tenv=\n", tenv)
+val () =
+prerrln
+("the_tr12env_pvsload:senv=\n", senv)
+val () =
+prerrln
+("the_tr12env_pvsload:denv=\n", denv)
+// *)
+in//let
+//
+(
+let
+(*
+  val () = the_sortenv_extend_by(tenv)
+  val () = the_sexpenv_extend_by(senv)
+  val () = the_dexpenv_extend_by(denv)
+*)
+end (*let*)
+)
+//
+end (*let*)
+//
 end (*let*) // end of [f0_pvsload(knd0,fpth)]
 
 (* ****** ****** *)
