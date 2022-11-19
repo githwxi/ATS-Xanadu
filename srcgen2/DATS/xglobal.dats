@@ -283,6 +283,11 @@ f0_pvsinit(): void =
 let
 //
 (* ****** ****** *)
+val INT = INT_symbl
+val BOOL = BOOL_symbl
+val ADDR = ADDR_symbl
+val CHAR = CHAR_symbl
+val STRN = STRN_symbl
 val PROP = PROP_symbl
 val VIEW = VIEW_symbl
 val TYPE = TYPE_symbl
@@ -295,6 +300,28 @@ val VWTP = VWTP_symbl
 local
 val env0 = the_sortenv_pvs()
 in//local
+//
+val () =
+topmap_insert_any
+( env0
+, INT, S2TEXsrt(the_sort2_int))
+val () =
+topmap_insert_any
+( env0
+, BOOL, S2TEXsrt(the_sort2_bool))
+val () =
+topmap_insert_any
+( env0
+, ADDR, S2TEXsrt(the_sort2_addr))
+val () =
+topmap_insert_any
+( env0
+, CHAR, S2TEXsrt(the_sort2_char))
+val () =
+topmap_insert_any
+( env0
+, STRN, S2TEXsrt(the_sort2_strn))
+//
 val () =
 topmap_insert_any
 ( env0

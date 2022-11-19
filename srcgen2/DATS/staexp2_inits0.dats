@@ -77,6 +77,11 @@ s2tb_prop =
 T2Bimpr
 (PROPSORT, $SYM.PROP_symbl)
 val
+s2tb_view =
+T2Bimpr
+(VIEWSORT, $SYM.VIEW_symbl)
+//
+val
 s2tb_type =
 T2Bimpr
 (TYPESORT, $SYM.TYPE_symbl)
@@ -84,11 +89,11 @@ val
 s2tb_tbox =
 T2Bimpr
 (TBOXSORT, $SYM.TBOX_symbl)
-//
 val
-s2tb_view =
+s2tb_tflt =
 T2Bimpr
-(VIEWSORT, $SYM.VIEW_symbl)
+(TFLTSORT, $SYM.TFLT_symbl)
+//
 val
 s2tb_vwtp =
 T2Bimpr
@@ -97,6 +102,10 @@ val
 s2tb_vtbx =
 T2Bimpr
 (VTBXSORT, $SYM.VTBX_symbl)
+val
+s2tb_vtft =
+T2Bimpr
+(VTFTSORT, $SYM.VTFT_symbl)
 //
 in(*local*)
 //
@@ -114,16 +123,21 @@ the_sort2_strn = S2Tbas(s2tb_strn)
 #implval
 the_sort2_prop = S2Tbas(s2tb_prop)
 #implval
+the_sort2_view = S2Tbas(s2tb_view)
+//
+#implval
 the_sort2_type = S2Tbas(s2tb_type)
 #implval
 the_sort2_tbox = S2Tbas(s2tb_tbox)
-//
 #implval
-the_sort2_view = S2Tbas(s2tb_view)
+the_sort2_tflt = S2Tbas(s2tb_tflt)
+//
 #implval
 the_sort2_vwtp = S2Tbas(s2tb_vwtp)
 #implval
 the_sort2_vtbx = S2Tbas(s2tb_vtbx)
+#implval
+the_sort2_vtft = S2Tbas(s2tb_vtft)
 //
 endloc (*local*) // end of [local(predefined)]
 

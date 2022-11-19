@@ -97,11 +97,15 @@ HX-2022-10-01: Various symbols
 (* ****** ****** *)
 //
 #implval PROP_symbl = symbl("prop")
+#implval VIEW_symbl = symbl("view")
+//
 #implval TYPE_symbl = symbl("type")
 #implval TBOX_symbl = symbl("tbox")
-#implval VIEW_symbl = symbl("view")
+#implval TFLT_symbl = symbl("tflt")
+//
 #implval VWTP_symbl = symbl("vwtp")
 #implval VTBX_symbl = symbl("vtbx")
+#implval VTFT_symbl = symbl("vtft")
 //
 (* ****** ****** *)
 #implval TRUE_symbl = symbl("true")

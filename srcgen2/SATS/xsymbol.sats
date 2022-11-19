@@ -154,11 +154,15 @@ val STRN_symbl: symbl //=symbl("strn")
 (* ****** ****** *)
 //
 val PROP_symbl: symbl //=symbl("prop")
+val VIEW_symbl: symbl //=symbl("view")
+//
 val TYPE_symbl: symbl //=symbl("type")
 val TBOX_symbl: symbl //=symbl("tbox")
-val VIEW_symbl: symbl //=symbl("view")
+val TFLT_symbl: symbl //=symbl("tflt")
+//
 val VWTP_symbl: symbl //=symbl("vwtp")
 val VTBX_symbl: symbl //=symbl("vtbx")
+val VTFT_symbl: symbl //=symbl("vtft")
 //
 (* ****** ****** *)
 val TRUE_symbl: symbl //=symbl("true")
