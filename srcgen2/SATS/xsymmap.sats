@@ -83,7 +83,7 @@ fun
 topmap_strmize
 {itm:tbox}
 (topmap(itm))
-: strm_vt(@(int,list(itm)))
+: strm_vt(@(sint,list(itm)))
 //
 (* ****** ****** *)
 //
