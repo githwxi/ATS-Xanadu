@@ -404,7 +404,7 @@ case+ opt of
 optn_nil((*nil*)) => 0
 |
 optn_cons(st1) => errvl(st1)
-endcas // end of [ case+(sts) ]
+endcas // end of [ case+(opt) ]
 )
 //
 #symload
@@ -580,7 +580,8 @@ endlet // end of [S1Tqual(tok1,s1t2)]
 let
 val lvl = 1
 in//let
-(err := err+1; sort1_errck(lvl, s1t0))
+(
+err := err+1; sort1_errck(lvl, s1t0))
 endlet // end of [ _(* otherwise *) ]
 //
 ) where // end-of-[ case(s1t0.node()) ]

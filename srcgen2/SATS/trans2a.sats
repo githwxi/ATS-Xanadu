@@ -43,5 +43,11 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME // namespace
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+(*
+HX-2022-11-19: pre-type-inference
+The main purpose of this translation
+is for resolving overloaded symbols!
+*)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans2a.sats] *)
