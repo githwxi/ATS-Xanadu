@@ -1,5 +1,5 @@
 (*
-Wed Jul 20 18:17:07 EDT 2022
+Sun 20 Nov 2022 11:53:50 AM EST
 *)
 ##################################################################
 
@@ -11,13 +11,19 @@ HX-2022-11-20:
 
 >>HX-2022-07-20:
 >>
->>By the end of 2022-07-19, I have implemented a parser for ATS3. I have
->>also implemented preadx0 and fpemsg for sort0 and s0exp. And I am still
->>working on preadx0 and fpemsg for d0pat and d0exp.
+>>By the end of 2022-07-19, I have implemented a parser for ATS3.
+>>I have also implemented preadx0 and fpemsg for sort0 and s0exp.
+>>And I am still working on preadx0 and fpemsg for d0pat and d0exp.
 
-By the end of 2022-11-12, I have implemented trans12 and started working
-on trans2a, which is the phase of pre-type-inference (performed on level-2
-syntax); it is primarily for resolving overloaded symbols.
+(*
+In the middle, I implemented trans01 (for resolving issues of fixity)
+and tread01 (for checking the level-1 syntax tree returned by trans01).
+*)
+
+By the end of 2022-11-12, I have implemented trans12 and started
+working on tread12 and trans2a. Note that trans2a is the phase of
+pre-type-inference (performed on level-2 syntax); it is primarily for
+resolving overloaded symbols.
 
 ##################################################################
 wc -l \
