@@ -57,5 +57,12 @@ trans2a_d2eclist
 list_trans2a_fnp(env0, dcls, trans2a_d2ecl)
 //
 (* ****** ****** *)
+//
+#implfun
+trans2a_d2eclistopt
+( env0, dopt ) =
+optn_trans2a_fnp(env0, dopt, trans2a_d2eclist)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans2a_decl00.dats] *)

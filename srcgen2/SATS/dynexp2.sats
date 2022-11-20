@@ -806,7 +806,7 @@ fun
 d2exp_get_type:(d2exp)->s2typ
 fun
 d2exp_set_type
-(d2e0: d2exp, t2p0: s2typ)->void
+(d2e0: d2exp, t2p0: s2typ): void
 //
 #symload type with d2exp_get_type
 #symload type with d2exp_set_type

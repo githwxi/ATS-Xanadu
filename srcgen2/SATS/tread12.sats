@@ -89,9 +89,19 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 #typedef d2eclist = $D2E.d2eclist
 (* ****** ****** *)
+#typedef d2valdcl = $D2E.d2valdcl
+#typedef d2vardcl = $D2E.d2vardcl
+#typedef d2fundcl = $D2E.d2fundcl
+#typedef d2cstdcl = $D2E.d2cstdcl
+(* ****** ****** *)
 //
 #typedef d2parsed = $D2E.d2parsed
 //
+(* ****** ****** *)
+#typedef d2valdclist = $D2E.d2valdclist
+#typedef d2vardclist = $D2E.d2vardclist
+#typedef d2fundclist = $D2E.d2fundclist
+#typedef d2cstdclist = $D2E.d2cstdclist
 (* ****** ****** *)
 #typedef d2eclistopt = $D2E.d2eclistopt
 (* ****** ****** *)
@@ -154,6 +164,16 @@ fun tread12_l2d2plst: ftread12(l2d2plst)
 fun tread12_l2d2elst: ftread12(l2d2elst)
 (* ****** ****** *)
 fun tread12_d2eclist: ftread12(d2eclist)
+(* ****** ****** *)
+fun tread12_d2valdcl: ftread12(d2valdcl)
+fun tread12_d2vardcl: ftread12(d2vardcl)
+fun tread12_d2fundcl: ftread12(d2fundcl)
+fun tread12_d2cstdcl: ftread12(d2cstdcl)
+(* ****** ****** *)
+fun tread12_d2valdclist: ftread12(d2valdclist)
+fun tread12_d2vardclist: ftread12(d2vardclist)
+fun tread12_d2fundclist: ftread12(d2fundclist)
+fun tread12_d2cstdclist: ftread12(d2cstdclist)
 (* ****** ****** *)
 fun tread12_d2eclistopt: ftread12(d2eclistopt)
 (* ****** ****** *)
