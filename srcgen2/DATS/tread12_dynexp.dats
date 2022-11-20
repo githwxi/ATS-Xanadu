@@ -104,6 +104,12 @@ tread12_d2pat
 case+
 d2p0.node() of
 //
+|D2Pint _ => d2p0
+|D2Pbtf _ => d2p0
+|D2Pchr _ => d2p0
+|D2Pflt _ => d2p0
+|D2Pstr _ => d2p0
+//
 | _(*otherwise*) =>
 let
 val lvl0 = 1
@@ -129,6 +135,27 @@ tread12_d2exp
 case+
 d2e0.node() of
 //
+|D2Eid0 _ =>
+d2exp_errck
+(lvl0, d2e0) where
+{
+val lvl0 = 1
+val (  ) = err := err+1 }
+//
+|D2Eint _ => d2e0
+|D2Ebtf _ => d2e0
+|D2Echr _ => d2e0
+|D2Eflt _ => d2e0
+|D2Estr _ => d2e0
+//
+|D2Evar _ => d2e0
+//
+|D2Econ1 _ => d2e0
+|D2Ecst1 _ => d2e0
+//
+|D2Econ2 _ => d2e0
+|D2Ecst2 _ => d2e0
+//
 | _(*otherwise*) =>
 let
 val lvl0 = 1
@@ -139,10 +166,12 @@ endlet // end of [ _(* otherwise *) ]
 //
 ) where // end-of-[(*case+(d2e0)-of*)]
 {
+//
 (*
 val (  ) =
 prerrln("tread12_d2exp: d2e0 = ", d2e0)
 *)
+//
 } (*where*)//end[tread12_d2exp(d2e0,err)]
 //
 (* ****** ****** *)
