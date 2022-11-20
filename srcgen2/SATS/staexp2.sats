@@ -773,6 +773,7 @@ fun
 l2s2e_stck
 ( loc0: loc_t
 , ls2e: l2s2e, s2t2: sort2): l2s2e
+(* ****** ****** *)
 fun
 s2explst_stck
 ( loc0: loc_t
