@@ -513,6 +513,27 @@ in
 end (*let*) // end of [s2exp_lam0(s2vs,body)]
 
 (* ****** ****** *)
+#implfun
+s2exp_lams
+(svss, body) =
+let
+(*
+val () =
+println!("s2exp_lams: svss = ", svss)
+val () =
+println!("s2exp_lams: body = ", body)
+*)
+in//let
+//
+case+ svss of
+|
+list_nil() => body
+|
+list_cons(s2vs, svss) =>
+s2exp_lam0(s2vs, s2exp_lams(svss, body))
+//
+end (*let*) // end of [s2exp_lams(svss,body)]
+(* ****** ****** *)
 //
 #implfun
 s2exp_fun0_nil

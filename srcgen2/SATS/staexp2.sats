@@ -148,6 +148,7 @@ s1lab(x0:t0)=$S1E.s1lab(x0)
 #typedef s2typlst = list(s2typ)
 #typedef s2typopt = optn(s2typ)
 (* ****** ****** *)
+#typedef s2varlstlst = list(s2varlst)
 #typedef s2explstlst = list(s2explst)
 (* ****** ****** *)
 #vwtpdef s2cstlst_vt = list_vt(s2cst)
@@ -551,6 +552,10 @@ fun
 s2exp_lam0
 ( s2vs
 : s2varlst, s2e0: s2exp): s2exp
+fun
+s2exp_lams
+( svss
+: s2varlstlst, s2e0: s2exp): s2exp
 (* ****** ****** *)
 fun
 s2exp_fun0_nil
@@ -572,7 +577,7 @@ s2exp_fun0_full
 (* ****** ****** *)
 fun
 s2exp_make_node
-(srt:sort2,nod:s2exp_node): s2exp
+(s2t0:sort2,node:s2exp_node): s2exp
 #symload s2exp with s2exp_make_node
 (* ****** ****** *)
 //
