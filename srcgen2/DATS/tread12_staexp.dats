@@ -360,71 +360,23 @@ case+
 s2e0.node() of
 //
 (*
-| S2Eid0 _ => s2e0
+|S2Eid0 _ => s2e0
 *)
 //
-| S2Eint _ => s2e0
-| S2Echr _ => s2e0
-| S2Eflt _ => s2e0
-| S2Estr _ => s2e0
+|S2Eint _ => s2e0
+|S2Echr _ => s2e0
+|S2Eflt _ => s2e0
+|S2Estr _ => s2e0
 //
-| S2Ecst _ => s2e0
-| S2Evar _ => s2e0
+|S2Ecst _ => s2e0
+|S2Evar _ => s2e0
 //
-| S2Eany _ => s2e0
+|S2Eany _ => s2e0
 //
-|
-S2Etop0(s2e1) =>
-let
+|S2Etop0 _ => f0_top0(s2e0, err)
+|S2Etopz _ => f0_topz(s2e0, err)
 //
-val e00 = err
-//
-val s2e1 =
-tread12_s2exp(s2e1, err)
-in//let
-if
-(e00 = err)
-then (s2e0) else
-let
-val s2t0 = s2e0.sort() in
-s2exp_top0_errck(s2t0, s2e1) end
-end (*let*) // end of [S2Etop0(...)]
-|
-S2Etopz(s2e1) =>
-let
-//
-val e00 = err
-//
-val s2e1 =
-tread12_s2exp(s2e1, err)
-in//let
-if
-(e00 = err)
-then (s2e0) else
-let
-val s2t0 = s2e0.sort() in
-s2exp_topz_errck(s2t0, s2e1) end
-end (*let*) // end of [S2Etopz(...)]
-//
-|
-S2Eapps(s2f0, s2es) =>
-let
-//
-val e00 = err
-//
-val s2f0 =
-tread12_s2exp(s2f0, err)
-val s2es =
-tread12_s2explst(s2es, err)
-in//let
-if
-(e00 = err)
-then (s2e0) else
-let
-val s2t0 = s2e0.sort() in
-s2exp_apps_errck(s2t0, s2f0, s2es)
-end (*let*) // else // end-of-(if)
-end (*let*) // end of [S2Eapps(...)]
+|S2Eapps _ => f0_apps(s2e0, err)
 //
 | _(*otherwise*) =>
 let
@@ -435,10 +387,86 @@ err := err+1; s2exp_errck(lvl0,s2e0))
 endlet // end of [ _(* otherwise *) ]
 ) where // end-of-[(*case+(s2e0)-of*)]
 {
+//
+fun
+f0_top0
+( s2e: s2exp
+, err: &sint >> _): s2exp =
+let
+//
+val e00 = err
+//
+val-
+S2Etop0(s2e1) = s2e.node()
+//
+val
+s2e1 = tread12_s2exp(s2e1, err)
+//
+in//let
+if
+(e00 = err)
+then (s2e0) else
+let
+val s2t0 = s2e0.sort() in
+s2exp_top0_errck(s2t0, s2e1) end
+end (*let*) // end of [ f0_top0(s2e,err) ]
+//
+fun
+f0_topz
+( s2e: s2exp
+, err: &sint >> _): s2exp =
+let
+//
+val e00 = err
+//
+val-
+S2Etopz(s2e1) = s2e.node()
+//
+val
+s2e1 = tread12_s2exp(s2e1, err)
+//
+in//let
+if
+(e00 = err)
+then (s2e0) else
+let
+val s2t0 = s2e0.sort() in
+s2exp_topz_errck(s2t0, s2e1) end
+end (*let*) // end of [ f0_topz(s2e,err) ]
+//
+fun
+f0_apps
+( s2e: s2exp
+, err: &sint >> _): s2exp =
+let
+//
+val e00 = err
+//
+val-
+S2Eapps
+(s2f0, s2es) = s2e.node()
+//
+val
+s2f0 =
+tread12_s2exp(s2f0, err)
+val s2es =
+tread12_s2explst(s2es, err)
+//
+in//let
+if
+(e00 = err)
+then (s2e0) else
+let
+val s2t0 = s2e0.sort() in
+s2exp_apps_errck(s2t0, s2f0, s2es)
+end (*let*) // else // end-of-(if)
+end (*let*) // end of [ f0_apps(s2e,err) ]
+//
 (*
 val (  ) =
 prerrln("tread12_s2exp: s2e0 = ", s2e0)
 *)
+//
 } (*where*)//end[tread12_s2exp(s2e0,err)]
 //
 (* ****** ****** *)

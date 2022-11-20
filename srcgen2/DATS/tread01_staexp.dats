@@ -228,17 +228,17 @@ tread01_g1exp
 case+
 g1e0.node() of
 //
-| G1Eid0 _ => g1e0
+|G1Eid0 _ => g1e0
 //
-| G1Eint _ => g1e0
-| G1Echr _ => g1e0
-| G1Eflt _ => g1e0
-| G1Estr _ => g1e0
+|G1Eint _ => g1e0
+|G1Echr _ => g1e0
+|G1Eflt _ => g1e0
+|G1Estr _ => g1e0
 //
-| G1Eb0sh() =>
+|G1Eb0sh() =>
 ( err := err+1
 ; g1exp_b0sh_errck(loc0))
-| G1Eb1sh(g1e1) =>
+|G1Eb1sh(g1e1) =>
 let
 //
 val g1e1 =
@@ -249,65 +249,18 @@ in//let
 ; g1exp_b1sh_errck(loc0,g1e1))
 endlet // end of [G1Eb1sh(g1e1)]
 //
-| G1Ea0pp() =>
+|G1Ea0pp() =>
 (
 g1exp_a0pp_errck(loc0)
 ) where
 { val () = ( err := err + 1 ) }
 //
-|
-G1Ea1pp(g1e1, g1e2) =>
-let
+|G1Ea1pp _ => f0_a1pp(g1e0, err)
+|G1Ea2pp _ => f0_a2pp(g1e0, err)
 //
-val e00 = err
+|G1Elist _ => f0_list(g1e0, err)
 //
-val g1e1 =
-  tread01_g1exp(g1e1, err)
-val g1e2 =
-  tread01_g1exp(g1e2, err)
-in//let
-if
-(e00=err)
-then (g1e0) else
-g1exp_a1pp_errck(loc0, g1e1, g1e2)
-endlet // end of [G1Ea1pp(g1e1,g1e2)]
-//
-|
-G1Ea2pp
-(g1e1, g1e2, g1e3) =>
-let
-//
-val e00 = err
-//
-val g1e1 =
-  tread01_g1exp(g1e1, err)
-val g1e2 =
-  tread01_g1exp(g1e2, err)
-val g1e3 =
-  tread01_g1exp(g1e3, err)
-in//let
-if
-(e00=err)
-then (g1e0) else
-g1exp_a2pp_errck(loc0,g1e1,g1e2,g1e3)
-endlet // end-[G1Ea2pp(g1e1,g1e2,g1e3)]
-//
-|
-G1Elist(g1es) =>
-let
-val e00 = err
-val g1es =
-  tread01_g1explst(g1es, err)
-in//let
-if
-(e00=err)
-then (g1e0)
-else g1exp_list_errck(loc0, g1es )
-endlet // end of [ G1Elist( g1es ) ]
-//
-|
-G1Eif0(_,_,_) =>
-f0_cond(g1e0, err)
+|G1Eif0(_,_,_) => f0_cond(g1e0, err)
 //
 | _(*otherwise*) =>
 let
@@ -318,8 +271,86 @@ endlet // end of [ _(* otherwise *) ]
 //
 ) where // end-of-[ case(g1e0.node()) ]
 {
+(* ****** ****** *)
 //
 val loc0 = g1e0.lctn()
+//
+(* ****** ****** *)
+//
+fun
+f0_a1pp
+(g1e: g1exp
+,err: &sint >> _): g1exp =
+let
+//
+val e00 = err
+//
+val-
+G1Ea1pp
+(g1f0, g1e1) = g1e.node()
+//
+val g1f0 =
+  tread01_g1exp(g1f0, err)
+val g1e1 =
+  tread01_g1exp(g1e1, err)
+in//let
+if
+(e00=err)
+then (g1e0) else
+g1exp_a1pp_errck(loc0, g1f0, g1e1)
+endlet // end-of-[ f0_a1pp(g1e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_a2pp
+(g1e: g1exp
+,err: &sint >> _): g1exp =
+let
+//
+val e00 = err
+//
+val-
+G1Ea2pp
+( g1f0
+, g1e1, g1e2) = g1e.node()
+//
+val g1f0 =
+  tread01_g1exp(g1f0, err)
+val g1e1 =
+  tread01_g1exp(g1e1, err)
+val g1e2 =
+  tread01_g1exp(g1e2, err)
+in//let
+if
+(e00=err)
+then (g1e0) else
+g1exp_a2pp_errck(loc0,g1f0,g1e1,g1e2)
+endlet // end-of-[ f0_a2pp(g1e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_list
+(g1e: g1exp
+,err: &sint >> _): g1exp =
+let
+//
+val e00 = err
+//
+val-
+G1Elist(g1es) = g1e.node()
+//
+val g1es =
+  tread01_g1explst(g1es, err)
+in//let
+if
+(e00=err)
+then (g1e0)
+else g1exp_list_errck(loc0, g1es )
+endlet // end-of-[ f0_list(g1e,err) ]
+//
+(* ****** ****** *)
 //
 fun
 f0_cond
@@ -348,12 +379,14 @@ then (g1e) else
 g1exp_cond_errck(loc,g1e1,g1e2,g1e3)
 endlet // end-of-[ f0_cond(g1e,err) ]
 //
+(* ****** ****** *)
 (*
 val (  ) =
 prerrln("tread01_g1exp: loc0 = ", loc0)
 val (  ) =
 prerrln("tread01_g1exp: g1e0 = ", g1e0)
 *)
+(* ****** ****** *)
 //
 } (*where*) // end of [tread01_g1exp(g1e0,err)]
 
@@ -515,41 +548,42 @@ sort1_a0pp_errck(loc0)
 { val () = ( err := err + 1 ) }
 //
 |
-S1Ta1pp(s1t1, s1t2) =>
+S1Ta1pp
+(s1f0, s1t1) =>
 let
 //
 val e00 = err
 //
+val s1f0 =
+  tread01_sort1(s1f0, err)
 val s1t1 =
   tread01_sort1(s1t1, err)
-val s1t2 =
-  tread01_sort1(s1t2, err)
 in//let
 if
 (e00=err)
 then (s1t0) else
-sort1_a1pp_errck(loc0, s1t1, s1t2)
-endlet // end of [S1Ta1pp(s1t1,s1t2)]
+sort1_a1pp_errck(loc0, s1f0, s1t1)
+endlet // end of [S1Ta1pp(s1f0,s1t1)]
 //
 |
 S1Ta2pp
-(s1t1, s1t2, s1t3) =>
+(s1f0, s1t1, s1t2) =>
 let
 //
 val e00 = err
 //
+val s1f0 =
+  tread01_sort1(s1f0, err)
 val s1t1 =
   tread01_sort1(s1t1, err)
 val s1t2 =
   tread01_sort1(s1t2, err)
-val s1t3 =
-  tread01_sort1(s1t3, err)
 in//let
 if
 (e00=err)
 then (s1t0) else
-sort1_a2pp_errck(loc0,s1t1,s1t2,s1t3)
-endlet // end-[S1Ta2pp(s1t1,s1t2,s1t3)]
+sort1_a2pp_errck(loc0,s1f0,s1t1,s1t2)
+endlet // end-[S1Ta2pp(s1f0,s1t1,s1t2)]
 //
 |
 S1Tlist(s1ts) =>
@@ -935,144 +969,24 @@ s1exp_a0pp_errck(loc0)
 { val () = ( err := err + 1 ) }
 //
 |
-S1Ea1pp(s1e1,s1e2) =>
-let
-//
-val e00 = err
-//
-val
-s1e1 = tread01_s1exp(s1e1, err)
-val
-s1e2 = tread01_s1exp(s1e2, err)
-//
-in//let
-if
-(e00=err)
-then (s1e0) else
-s1exp_a1pp_errck(loc0, s1e1, s1e2)
-endlet // end of [S1Ea1pp(s1e1,s1e2)]
+S1Ea1pp _ => f0_a1pp(s1e0, err)
+|
+S1Ea2pp _ => f0_a2pp(s1e0, err)
 //
 |
-S1Ea2pp
-(s1e1, s1e2, s1e3) =>
-let
-//
-val e00 = err
-//
-val
-s1e1 = tread01_s1exp(s1e1, err)
-val
-s1e2 = tread01_s1exp(s1e2, err)
-val
-s1e3 = tread01_s1exp(s1e3, err)
-//
-in//let
-if
-(e00=err)
-then (s1e0) else
-s1exp_a2pp_errck(loc0,s1e1,s1e2,s1e3)
-endlet//end-(S1Ea2pp(s1e1,s1e2,s1e3))
+S1El1st _ => f0_l1st(s1e0, err)
+|
+S1El2st _ => f0_l2st(s1e0, err)
 //
 |
-S1El1st(s1es) =>
-let
-//
-val e00 = err
-//
-val s1es =
-  tread01_s1explst(s1es, err)
-//
-in//let
-if
-(e00=err)
-then (s1e0)
-else s1exp_l1st_errck(loc0, s1es )
-endlet // end of [ S1El1st( s1es ) ]
+S1Et1up _ => f0_t1up(s1e0, err)
 |
-S1El2st(ses1,ses2) =>
-let
-//
-val e00 = err
-//
-val ses1 =
-  tread01_s1explst(ses1, err)
-val ses2 =
-  tread01_s1explst(ses2, err)
-//
-in//let
-if
-(e00=err)
-then (s1e0) else
-s1exp_l2st_errck(loc0, ses1, ses2)
-endlet // end of [S1El2st(ses1,ses2)]
+S1Et2up _ => f0_t2up(s1e0, err)
 //
 |
-S1Et1up(tknd,s1es) =>
-let
-//
-val e00 = err
-//
-val s1es =
-  tread01_s1explst(s1es, err)
-//
-in//let
-if
-(e00=err)
-then (s1e0) else
-s1exp_t1up_errck(loc0, tknd, s1es)
-endlet // end of [S1Et1up(tknd,s1es)]
+S1Er1cd _ => f0_r1cd(s1e0, err)
 |
-S1Et2up
-(tknd, ses1, ses2) =>
-let
-//
-val e00 = err
-//
-val ses1 =
-  tread01_s1explst(ses1, err)
-val ses2 =
-  tread01_s1explst(ses2, err)
-//
-in//let
-if
-(e00=err)
-then (s1e0) else
-s1exp_t2up_errck(loc0,tknd,ses1,ses2)
-endlet // end(S1Et2up(tknd,ses1,ses2))
-//
-|
-S1Er1cd(tknd,lses) =>
-let
-//
-val e00 = err
-//
-val lses =
-  tread01_l1s1elst(lses, err)
-//
-in//let
-if
-(e00=err)
-then (s1e0) else
-s1exp_r1cd_errck(loc0, tknd, lses)
-endlet // end of [S1Er1cd(tknd,lses)]
-|
-S1Er2cd
-(tknd, lss1, lss2) =>
-let
-//
-val e00 = err
-//
-val
-lss1 = tread01_l1s1elst(lss1, err)
-val
-lss2 = tread01_l1s1elst(lss2, err)
-//
-in//let
-if
-(e00=err)
-then (s1e0) else
-s1exp_r2cd_errck(loc0,tknd,lss1,lss2)
-endlet // end(S1Er2cd(tknd,lss1,lss2))
+S1Er2cd _ => f0_r2cd(s1e0, err)
 //
 |
 S1Euni0(s1qs) =>
@@ -1150,6 +1064,220 @@ val loc0 = s1e0.lctn()
 (* ****** ****** *)
 //
 fun
+f0_a1pp
+( s1e: s1exp
+, err: &sint >> _): s1exp =
+let
+//
+val e00 = err
+val loc = s1e.lctn()
+//
+val-
+S1Ea1pp
+(s1e1,s1e2) = s1e.node()
+//
+val
+s1e1 = tread01_s1exp(s1e1, err)
+val
+s1e2 = tread01_s1exp(s1e2, err)
+//
+in//let
+if
+(e00=err)
+then (s1e0) else
+s1exp_a1pp_errck(loc0, s1e1, s1e2)
+endlet // end of [ f0_a1pp(s1e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_a2pp
+( s1e: s1exp
+, err: &sint >> _): s1exp =
+let
+//
+val e00 = err
+val loc = s1e.lctn()
+//
+val-
+S1Ea2pp
+( s1e1
+, s1e2, s1e3) = s1e.node()
+//
+val
+s1e1 = tread01_s1exp(s1e1, err)
+val
+s1e2 = tread01_s1exp(s1e2, err)
+val
+s1e3 = tread01_s1exp(s1e3, err)
+//
+in//let
+if
+(e00=err)
+then (s1e0) else
+s1exp_a2pp_errck(loc0,s1e1,s1e2,s1e3)
+endlet // end of [ f0_a2pp(s1e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_l1st
+( s1e: s1exp
+, err: &sint >> _): s1exp =
+let
+//
+val e00 = err
+val loc = s1e.lctn()
+//
+val-
+S1El1st(s1es) = s1e.node()
+//
+val s1es =
+tread01_s1explst(s1es, err)
+//
+in//let
+if
+(e00=err)
+then (s1e0)
+else s1exp_l1st_errck(loc0, s1es )
+endlet // end of [ f0_l1st(s1e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_l2st
+( s1e: s1exp
+, err: &sint >> _): s1exp =
+let
+//
+val e00 = err
+val loc = s1e.lctn()
+//
+val-
+S1El2st
+(ses1,ses2) = s1e.node()
+//
+val ses1 =
+tread01_s1explst(ses1, err)
+val ses2 =
+tread01_s1explst(ses2, err)
+//
+in//let
+if
+(e00=err)
+then (s1e0) else
+s1exp_l2st_errck(loc0, ses1, ses2)
+endlet // end of [ f0_l2st(s1e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_t1up
+( s1e: s1exp
+, err: &sint >> _): s1exp =
+let
+//
+val e00 = err
+val loc = s1e.lctn()
+//
+val-
+S1Et1up
+(tknd,s1es) = s1e.node()
+//
+val s1es =
+tread01_s1explst(s1es, err)
+//
+in//let
+if
+(e00=err)
+then (s1e0) else
+s1exp_t1up_errck(loc0, tknd, s1es)
+endlet // end of [ f0_t1up(s1e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_t2up
+( s1e: s1exp
+, err: &sint >> _): s1exp =
+let
+//
+val e00 = err
+val loc = s1e.lctn()
+//
+val-
+S1Et2up
+( tknd
+, ses1, ses2) = s1e.node()
+//
+val ses1 =
+tread01_s1explst(ses1, err)
+val ses2 =
+tread01_s1explst(ses2, err)
+//
+in//let
+if
+(e00=err)
+then (s1e0) else
+s1exp_t2up_errck(loc0,tknd,ses1,ses2)
+endlet // end of [ f0_t2up(s1e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_r1cd
+( s1e: s1exp
+, err: &sint >> _): s1exp =
+let
+//
+val e00 = err
+val loc = s1e.lctn()
+//
+val-
+S1Er1cd
+(tknd, lses) = s1e.node()
+//
+val lses =
+tread01_l1s1elst(lses, err)
+//
+in//let
+if
+(e00=err)
+then (s1e0) else
+s1exp_r1cd_errck(loc0, tknd, lses)
+endlet // end of [ f0_r1cd(s1e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_r2cd
+( s1e: s1exp
+, err: &sint >> _): s1exp =
+let
+//
+val e00 = err
+val loc = s1e.lctn()
+//
+val-
+S1Er2cd
+( tknd
+, lss1, lss2) = s1e.node()
+//
+val
+lss1 = tread01_l1s1elst(lss1, err)
+val
+lss2 = tread01_l1s1elst(lss2, err)
+//
+in//let
+if
+(e00=err)
+then (s1e0) else
+s1exp_r2cd_errck(loc0,tknd,lss1,lss2)
+endlet // end of [ f0_r2cd(s1e,err) ]
+//
+(* ****** ****** *)
+//
+fun
 f0_lam0
 ( s1e: s1exp
 , err: &sint >> _): s1exp =
@@ -1176,7 +1304,7 @@ if
 (e00=err)
 then (s1e) else
 s1exp_lam0_errck(loc,smas,tres,s1e1)
-endlet // end of [ f0_lam0( s1e,err ) ]
+endlet // end of [ f0_lam0(s1e,err) ]
 //
 (* ****** ****** *)
 (*

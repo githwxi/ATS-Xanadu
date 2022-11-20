@@ -76,6 +76,20 @@ d2ecl_make_node
 end (*let*) // end-of(d2ecl_errck)
 //
 (* ****** ****** *)
+//
+fun
+d2ecl_local0_errck
+( loc0: loc_t
+, dcs1: d2eclist
+, dcs2: d2eclist): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1,d2ecl(loc0,D2Clocal0(dcs1,dcs2)))
+end (*let*) // end of [d2ecl_local0_errck]
+//
+(* ****** ****** *)
 
 #implfun
 tread12_d2ecl
@@ -86,6 +100,9 @@ d2cl.node() of
 //
 |
 D2Cd1ecl _ => d2cl
+//
+|
+D1Clocal0 _ => f0_local0(d2cl, err)
 //
 |
 _(*otherwise*) =>
@@ -102,6 +119,36 @@ endlet // end of [ _(* otherwise *) ]
 val (  ) =
 prerrln("tread12_d2ecl: d2cl = ", d2cl)
 *)
+//
+(* ****** ****** *)
+//
+fun
+f0_local0
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D2Clocal0
+(dcs1, dcs2) = dcl.node()
+//
+val dcs1 =
+tread12_d2eclist(dcs1, err)
+val dcs2 =
+tread12_d2eclist(dcs2, err)
+//
+in
+if
+(e00=err)
+then dcl else
+d2ecl_local0_errck( loc, dcs1, dcs2 )
+end (*let*) // end of [ f0_local0(dcl,err) ]
+//
+(* ****** ****** *)
+//
 } (*where*) // end of [tread12_d2ecl(d2cl,err)]
 
 (* ****** ****** *)
