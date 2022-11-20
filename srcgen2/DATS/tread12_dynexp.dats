@@ -103,6 +103,7 @@ tread12_d2pat
 (
 case+
 d2p0.node() of
+//
 | _(*otherwise*) =>
 let
 val lvl0 = 1
@@ -110,6 +111,7 @@ in//let
 (
 err := err+1; d2pat_errck(lvl0,d2p0))
 endlet // end of [ _(* otherwise *) ]
+//
 ) where // end-of-[(*case+(d2p0)-of*)]
 {
 (*
@@ -126,6 +128,7 @@ tread12_d2exp
 (
 case+
 d2e0.node() of
+//
 | _(*otherwise*) =>
 let
 val lvl0 = 1
@@ -133,6 +136,7 @@ in//let
 (
 err := err+1; d2exp_errck(lvl0,d2e0))
 endlet // end of [ _(* otherwise *) ]
+//
 ) where // end-of-[(*case+(d2e0)-of*)]
 {
 (*
