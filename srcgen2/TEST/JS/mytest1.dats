@@ -31,6 +31,7 @@
 #typedef
 fint2 =
 lam(a:int): type => (int(a), int(a))
+////
 #typedef
 fint2(a:int): type = (int(a), int(a))
 (* ****** ****** *)
