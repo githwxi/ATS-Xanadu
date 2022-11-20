@@ -62,8 +62,85 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with d2pat_get_lctn
+#symload node with d2pat_get_node
+(* ****** ****** *)
 #symload lctn with d2exp_get_lctn
 #symload node with d2exp_get_node
+(* ****** ****** *)
+//
+(* ****** ****** *)
+//
+fun
+d2pat_errck
+(lvl0: sint
+,d2p0: d2pat): d2pat =
+let
+val loc0 = d2p0.lctn()
+in//let
+d2pat_make_node
+(loc0, D2Perrck(lvl0, d2p0))
+end (*let*)//end-of(d2pat_errck)
+//
+(* ****** ****** *)
+//
+fun
+d2exp_errck
+(lvl0: sint
+,d2e0: d2exp): d2exp =
+let
+val loc0 = d2e0.lctn()
+in//let
+d2exp_make_node
+(loc0, D2Eerrck(lvl0, d2e0))
+end (*let*)//end-of(d2exp_errck)
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_d2pat
+( d2p0, err ) =
+(
+case+
+d2p0.node() of
+| _(*otherwise*) =>
+let
+val lvl0 = 1
+in//let
+(
+err := err+1; d2pat_errck(lvl0,d2p0))
+endlet // end of [ _(* otherwise *) ]
+) where // end-of-[(*case+(d2p0)-of*)]
+{
+(*
+val (  ) =
+prerrln("tread12_d2pat: d2p0 = ", d2p0)
+*)
+} (*where*)//end[tread12_d2pat(d2p0,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_d2exp
+( d2e0, err ) =
+(
+case+
+d2e0.node() of
+| _(*otherwise*) =>
+let
+val lvl0 = 1
+in//let
+(
+err := err+1; d2exp_errck(lvl0,d2e0))
+endlet // end of [ _(* otherwise *) ]
+) where // end-of-[(*case+(d2e0)-of*)]
+{
+(*
+val (  ) =
+prerrln("tread12_d2exp: d2e0 = ", d2e0)
+*)
+} (*where*)//end[tread12_d2exp(d2e0,err)]
+//
 (* ****** ****** *)
 //
 (* ****** ****** *)

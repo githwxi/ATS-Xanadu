@@ -68,9 +68,12 @@ fun
 d2ecl_errck
 (lvl0: sint
 ,d2cl: d2ecl): d2ecl =
-(
-d2ecl
-(d2cl.lctn(), D2Cerrck(lvl0, d2cl)))
+let
+val loc0 = d2cl.lctn()
+in//let
+d2ecl_make_node
+(loc0, D2Cerrck(lvl0, d2cl))
+end (*let*) // end-of(d2ecl_errck)
 //
 (* ****** ****** *)
 
@@ -95,8 +98,10 @@ endlet // end of [ _(* otherwise *) ]
 //
 ) where // end of [case+(d2cl.node())]
 {
-//
-//
+(*
+val (  ) =
+prerrln("tread12_d2ecl: d2cl = ", d2cl)
+*)
 } (*where*) // end of [tread12_d2ecl(d2cl,err)]
 
 (* ****** ****** *)
