@@ -159,5 +159,25 @@ tread12_d2eclist
 list_tread12_fnp(dcls, err, tread12_d2ecl)
 //
 (* ****** ****** *)
+#implfun
+tread12_d2valdclist
+  (  d2vs, err  ) =
+list_tread12_fnp(d2vs, err, tread12_d2valdcl)
+(* ****** ****** *)
+#implfun
+tread12_d2vardclist
+  (  d2vs, err  ) =
+list_tread12_fnp(d2vs, err, tread12_d2vardcl)
+(* ****** ****** *)
+#implfun
+tread12_d2fundclist
+  (  d2fs, err  ) =
+list_tread12_fnp(d2fs, err, tread12_d2fundcl)
+(* ****** ****** *)
+#implfun
+tread12_d2cstdclist
+  (  d2cs, err  ) =
+list_tread12_fnp(d2cs, err, tread12_d2cstdcl)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread12_decl00.dats] *)

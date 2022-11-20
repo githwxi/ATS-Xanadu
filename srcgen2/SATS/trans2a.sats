@@ -68,17 +68,21 @@ LEX = "./lexing0.sats"
 //
 (* ****** ****** *)
 #staload S2E = "./staexp2.sats"
-#staload S2T = "./statyp2.sats"
 #staload D2E = "./dynexp2.sats"
 (* ****** ****** *)
-#typedef s2exp = $S2T.s2exp
-#typedef s2typ = $S2T.s2typ
+#typedef s2exp = $S2E.s2exp
+#typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
+#typedef d2ecl = $D2E.d2ecl
 (* ****** ****** *)
 #typedef d2patlst = $D2E.d2patlst
+(* ****** ****** *)
 #typedef d2explst = $D2E.d2explst
+#typedef d2expopt = $D2E.d2expopt
+(* ****** ****** *)
+#typedef d2eclist = $D2E.d2eclist
 (* ****** ****** *)
 //
 fun
@@ -112,6 +116,13 @@ trans2a_d2exp
 (* ****** ****** *)
 //
 fun
+trans2a_d2ecl
+(env0:
+!tr2aenv, d2cl: d2ecl): d2ecl
+//
+(* ****** ****** *)
+//
+fun
 trans2a_d2patlst
 ( env0:
 ! tr2aenv, d2ps: d2patlst): d2patlst
@@ -127,6 +138,22 @@ fun
 trans2a_d2explst
 ( env0:
 ! tr2aenv, d2es: d2explst): d2explst
+//
+(* ****** ****** *)
+//
+fun
+trans2a_d2eclist
+( env0:
+! tr2aenv, dcls: d2eclist): d2eclist
+//
+(* ****** ****** *)
+#typedef d2eclistopt = $D2E.d2eclistopt
+(* ****** ****** *)
+//
+fun
+trans2a_d2eclistopt
+( env0:
+! tr2aenv, dopt: d2eclistopt): d2eclistopt
 //
 (* ****** ****** *)
 
