@@ -510,9 +510,10 @@ val s2t0 =
 //
 in
   s2exp(s2t0, S2Elam0(s2vs, body))
-end (*let*) // end of [s2exp_lam0(s2vs,body)]
+end (*let*)//end-of-[s2exp_lam0(s2vs,body)]
 
 (* ****** ****** *)
+//
 #implfun
 s2exp_lams
 (svss, body) =
@@ -532,7 +533,8 @@ list_nil() => body
 list_cons(s2vs, svss) =>
 s2exp_lam0(s2vs, s2exp_lams(svss, body))
 //
-end (*let*) // end of [s2exp_lams(svss,body)]
+end (*let*)//end-of-[s2exp_lams(svss,body)]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -830,21 +832,29 @@ then the_sort2_prop
 else the_sort2_type)
 end (*let*) // T_TRCD10(0)
 | // $(...)
-T_TRCD10(1) => the_sort2_vwtp
+T_TRCD10(1) => the_sort2_vtbx
 | // $tup(...)
 T_TRCD10(2) =>
-if linq
-then (the_sort2_vwtp)
-else (the_sort2_type)
+(if linq then (the_sort2_vtbx)
+         else (the_sort2_tbox))
 | // $tup_t0(...)
-T_TRCD10(3) => the_sort2_type
+T_TRCD10(3) => (the_sort2_tbox)
 | // $tup_t0(...)
-T_TRCD10(4) => the_sort2_vwtp
-) : sort2 // end of [val s2t0]
+T_TRCD10(4) => (the_sort2_vtbx)
+) : sort2 // end of [val(s2t0)]
 //
 val
 s2es = // HX: for T_TRCD10(3)
-s2explst_stck(loc0, s2es, s2t0)
+(
+case- tnd0 of
+| // $tup_t0(...)
+T_TRCD10(3) =>
+s2explst_stck
+(loc0, s2es, tres) where
+{
+val tres = the_sort2_type }
+| _(*non-T_TRCD10(3)*) => s2es
+) : s2explst // end-of-[val(s2es)]
 //
 val
 npf1 = -1
@@ -908,31 +918,46 @@ s2t2 =
 case- tnd0 of
 |
 T_TRCD10(0) =>
-if
-linq
-then (the_sort2_vwtp)
-else (the_sort2_type)
+(
+if linq
+   then (the_sort2_vwtp)
+   else (the_sort2_type))
 | // $(...)
-T_TRCD10(1) => the_sort2_vwtp
+T_TRCD10(1) => the_sort2_vtbx
 | // $tup(...)
 T_TRCD10(2) =>
-if linq
-then (the_sort2_vwtp)
-else (the_sort2_type)
+(if linq then (the_sort2_vtbx)
+         else (the_sort2_tbox))
 | // $tup_t0(...)
-T_TRCD10(3) => the_sort2_type
+T_TRCD10(3) => (the_sort2_tbox)
 | // $tup_t0(...)
-T_TRCD10(4) => the_sort2_vwtp
-) : sort2 // end of [val s2t2]
+T_TRCD10(4) => (the_sort2_vtbx)
+) : sort2 // end of [val(s2t2)]
 //
-(*
 val
-ses1 =
-s2explst_stck(loc0, ses1, s2t1)
-*)
+ses1 = // HX: for T_TRCD10(3)
+(
+case- tnd0 of
+| // $tup_t0(...)
+T_TRCD10(3) =>
+s2explst_stck
+(loc0, ses1, tres) where
+{
+val tres = the_sort2_prop }
+| _(*non-T_TRCD10(3)*) => ses1
+) : s2explst // end-of-[val(ses1)]
 val
 ses2 = // HX: for T_TRCD10(3)
-s2explst_stck(loc0, ses2, s2t2)
+(
+case- tnd0 of
+| // $tup_t0(...)
+T_TRCD10(3) =>
+s2explst_stck
+(loc0, ses2, tres) where
+{
+val tres = the_sort2_type }
+| _(*non-T_TRCD10(3)*) => ses2
+) : s2explst // end-of-[val(ses2)]
 //
 val
 npf1 = list_length(ses1)
@@ -1017,7 +1042,16 @@ val
 npf1 = -1
 val
 lses = // HX: for T_TRCD20(3)
-l2s2elst_stck(loc0, lses, s2t0)
+(
+case- tnd0 of
+| // $tup_t0(...)
+T_TRCD10(3) =>
+l2s2elst_stck
+(loc0, lses, tres) where
+{
+val tres = the_sort2_type }
+| _(*non-T_TRCD10(3)*) => lses
+) : l2s2elst // end-of-[val(lses)]
 //
 in
 s2exp_make_node
@@ -1084,23 +1118,39 @@ else (the_sort2_type)
 T_TRCD20(1) => the_sort2_vwtp
 | // $tup(...)
 T_TRCD20(2) =>
-if linq
-then (the_sort2_vwtp)
-else (the_sort2_type)
+(
+if linq then (the_sort2_vwtp)
+        else (the_sort2_type))
 | // $tup_t0(...)
 T_TRCD20(3) => the_sort2_type
 | // $tup_t0(...)
 T_TRCD20(4) => the_sort2_vwtp
 ) : sort2 // end of [val s2t2]
 //
-(*
 val
-lss1 =
-l2s2elst_stck(loc0, lss1, s2t1)
-*)
+lss1 = // HX: for T_TRCD20(3)
+(
+case- tnd0 of
+| // $tup_t0(...)
+T_TRCD10(3) =>
+l2s2elst_stck
+(loc0, lss1, tres) where
+{
+val tres = the_sort2_prop }
+| _(*non-T_TRCD10(3)*) => lss1
+) : l2s2elst // end-of-[val(lss1)]
 val
 lss2 = // HX: for T_TRCD20(3)
-l2s2elst_stck(loc0, lss2, s2t2)
+(
+case- tnd0 of
+| // $tup_t0(...)
+T_TRCD10(3) =>
+l2s2elst_stck
+(loc0, lss2, tres) where
+{
+val tres = the_sort2_type }
+| _(*non-T_TRCD10(3)*) => lss2
+) : l2s2elst // end-of-[val(lss2)]
 //
 val npf1 = list_length(lss1)
 val lses = list_append(lss1, lss2)

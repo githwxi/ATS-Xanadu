@@ -28,12 +28,28 @@
 *)
 //
 (* ****** ****** *)
+//
+#sexpdef
+fint1 =
+lam
+(
+a:int
+):type => (int(a), int(a))
+//
+#sexpdef
+fint2
+(
+a:int
+): vtbx = $(int(a), int(a))
+//
 #typedef
-fint2 =
-lam(a:int): type => (int(a), int(a))
+fint3
+(
+a:int
+): type = $rec{x=int(a), y=int(a)}
+//
+(* ****** ****** *)
 ////
-#typedef
-fint2(a:int): type = (int(a), int(a))
 (* ****** ****** *)
 var a1: int = 0
 val () = (a1 := a1 + 1)
