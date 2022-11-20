@@ -49,5 +49,28 @@ The main purpose of this translation
 is for resolving overloaded symbols!
 *)
 (* ****** ****** *)
+//
+#staload
+LAB = "./xlabel0.sats"
+#staload
+LOC = "./locinfo.sats"
+#staload
+LEX = "./lexing0.sats"
+//
+#typedef lab_t = $LAB.lab_t
+#typedef loc_t = $LOC.loc_t
+#typedef token = $LEX.token
+//
+(* ****** ****** *)
+#staload S2E = "./staexp2.sats"
+#staload S2T = "./statyp2.sats"
+#staload D2E = "./dynexp2.sats"
+(* ****** ****** *)
+#typedef s2exp = $S2T.s2exp
+#typedef s2typ = $S2T.s2typ
+(* ****** ****** *)
+#typedef d2pat = $D2E.d2pat
+#typedef d2exp = $D2E.d2exp
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans2a.sats] *)

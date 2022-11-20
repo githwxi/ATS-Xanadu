@@ -801,6 +801,17 @@ d2exp_get_node(d2exp): d2exp_node
 #symload lctn with d2exp_get_lctn
 #symload node with d2exp_get_node
 (* ****** ****** *)
+//
+fun
+d2exp_get_type:(d2exp)->s2typ
+fun
+d2exp_set_type
+(d2e0: d2exp, t2p0: s2typ)->void
+//
+#symload type with d2exp_get_type
+#symload type with d2exp_set_type
+//
+(* ****** ****** *)
 fun
 d2exp_none0(loc0:loc_t): d2exp
 fun

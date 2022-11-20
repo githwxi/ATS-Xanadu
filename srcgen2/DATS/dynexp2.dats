@@ -738,7 +738,8 @@ local
 datatype
 d2exp =
 D2EXP of
-(loctn, d2exp_node)
+( loctn
+, s2typ, d2exp_node)
 //
 #absimpl d2exp_tbox = d2exp
 //
@@ -746,17 +747,26 @@ in (* in-of-local *)
 //
 #implfun
 d2exp_make_node
-(   loc,nod   ) = D2EXP(loc,nod)
+(   loc,nod   ) =
+let
+val t2p =
+s2typ_none0() in
+D2EXP(loc, t2p, nod) end
 //
 #implfun
 d2exp_get_lctn(d2e) =
 let
-  val+D2EXP(loc,nod) = d2e in loc
+val+D2EXP(loc,t2p,nod) = d2e in loc
+end
+#implfun
+d2exp_get_type(d2e) =
+let
+val+D2EXP(loc,t2p,nod) = d2e in t2p
 end
 #implfun
 d2exp_get_node(d2e) =
 let
-  val+D2EXP(loc,nod) = d2e in nod
+val+D2EXP(loc,t2p,nod) = d2e in nod
 end
 //
 endloc (*local*) // end of [local(d2exp)]
