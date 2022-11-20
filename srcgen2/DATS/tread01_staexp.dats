@@ -1074,18 +1074,18 @@ val loc = s1e.lctn()
 //
 val-
 S1Ea1pp
-(s1e1,s1e2) = s1e.node()
+(s1f0,s1e1) = s1e.node()
 //
 val
-s1e1 = tread01_s1exp(s1e1, err)
+s1f0 = tread01_s1exp(s1f0, err)
 val
-s1e2 = tread01_s1exp(s1e2, err)
+s1e1 = tread01_s1exp(s1e1, err)
 //
 in//let
 if
 (e00=err)
 then (s1e0) else
-s1exp_a1pp_errck(loc0, s1e1, s1e2)
+s1exp_a1pp_errck(loc0, s1f0, s1e1)
 endlet // end of [ f0_a1pp(s1e,err) ]
 //
 (* ****** ****** *)
@@ -1101,21 +1101,21 @@ val loc = s1e.lctn()
 //
 val-
 S1Ea2pp
-( s1e1
-, s1e2, s1e3) = s1e.node()
+( s1f0
+, s1e1, s1e2) = s1e.node()
 //
+val
+s1f0 = tread01_s1exp(s1f0, err)
 val
 s1e1 = tread01_s1exp(s1e1, err)
 val
 s1e2 = tread01_s1exp(s1e2, err)
-val
-s1e3 = tread01_s1exp(s1e3, err)
 //
 in//let
 if
 (e00=err)
 then (s1e0) else
-s1exp_a2pp_errck(loc0,s1e1,s1e2,s1e3)
+s1exp_a2pp_errck(loc0,s1f0,s1e1,s1e2)
 endlet // end of [ f0_a2pp(s1e,err) ]
 //
 (* ****** ****** *)

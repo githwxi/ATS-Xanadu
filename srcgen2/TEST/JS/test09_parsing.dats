@@ -37,6 +37,9 @@
 "./../../DATS/xsymbol_inits0.dats"
 (* ****** ****** *)
 #include
+"./../../DATS/xsymmap_topmap.dats"
+(* ****** ****** *)
+#include
 "./../../DATS/xlabel0.dats"
 #include
 "./../../DATS/xlabel0_print0.dats"

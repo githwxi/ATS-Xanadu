@@ -322,7 +322,7 @@ s2exp_top0_errck
 (s2t0: sort2
 ,s2e1: s2exp): s2exp =
 let
-val lvl0 = errvl(s2e1) in
+val lvl0 = errvl(s2e1) in//let
 s2exp_errck
 (lvl0+1, s2exp(s2t0, S2Etop0(s2e1)))
 end (*let*) // end of [s2exp_top0_errck]
@@ -332,7 +332,7 @@ s2exp_topz_errck
 (s2t0: sort2
 ,s2e1: s2exp): s2exp =
 let
-val lvl0 = errvl(s2e1) in
+val lvl0 = errvl(s2e1) in//let
 s2exp_errck
 (lvl0+1, s2exp(s2t0, S2Etopz(s2e1)))
 end (*let*) // end of [s2exp_topz_errck]
@@ -344,12 +344,24 @@ s2exp_apps_errck
 ,s2f0: s2exp
 ,s2es: s2explst): s2exp =
 let
-val lvl0 =
-gmax(errvl(s2f0), errvl(s2es))
+val lvl0 = gmax
+(errvl(s2f0), errvl(s2es))
 in//let
 s2exp_errck
 (lvl0+1,s2exp(s2t0,S2Eapps(s2f0,s2es)))
 endlet // end of [s2exp_apps_errck(...)]
+(* ****** ****** *)
+fun
+s2exp_lam0_errck
+( s2t0: sort2
+, s2vs: s2varlst
+, s2e1
+: s2exp(*body*)): s2exp =
+let
+val lvl0 = errvl(s2e1) in//let
+s2exp_errck
+(lvl0+1,s2exp(s2t0,S2Elam0(s2vs,s2e1)))
+endlet // end of [s2exp_lam0_errck(...)]
 (* ****** ****** *)
 //
 #implfun
@@ -359,9 +371,12 @@ tread12_s2exp
 case+
 s2e0.node() of
 //
-(*
-|S2Eid0 _ => s2e0
-*)
+|S2Eid0 _ =>
+s2exp_errck
+(lvl0, s2e0) where
+{
+val lvl0 = 1
+val (  ) = err := err+1 }
 //
 |S2Eint _ => s2e0
 |S2Echr _ => s2e0
@@ -377,6 +392,7 @@ s2e0.node() of
 |S2Etopz _ => f0_topz(s2e0, err)
 //
 |S2Eapps _ => f0_apps(s2e0, err)
+|S2Elam0 _ => f0_lam0(s2e0, err)
 //
 | _(*otherwise*) =>
 let
@@ -388,10 +404,12 @@ endlet // end of [ _(* otherwise *) ]
 ) where // end-of-[(*case+(s2e0)-of*)]
 {
 //
+(* ****** ****** *)
+//
 fun
 f0_top0
-( s2e: s2exp
-, err: &sint >> _): s2exp =
+(s2e: s2exp
+,err: &sint >> _): s2exp =
 let
 //
 val e00 = err
@@ -413,8 +431,8 @@ end (*let*) // end of [ f0_top0(s2e,err) ]
 //
 fun
 f0_topz
-( s2e: s2exp
-, err: &sint >> _): s2exp =
+(s2e: s2exp
+,err: &sint >> _): s2exp =
 let
 //
 val e00 = err
@@ -434,10 +452,12 @@ val s2t0 = s2e0.sort() in
 s2exp_topz_errck(s2t0, s2e1) end
 end (*let*) // end of [ f0_topz(s2e,err) ]
 //
+(* ****** ****** *)
+//
 fun
 f0_apps
-( s2e: s2exp
-, err: &sint >> _): s2exp =
+(s2e: s2exp
+,err: &sint >> _): s2exp =
 let
 //
 val e00 = err
@@ -461,6 +481,36 @@ val s2t0 = s2e0.sort() in
 s2exp_apps_errck(s2t0, s2f0, s2es)
 end (*let*) // else // end-of-(if)
 end (*let*) // end of [ f0_apps(s2e,err) ]
+//
+(* ****** ****** *)
+//
+//
+fun
+f0_lam0
+(s2e: s2exp
+,err: &sint >> _): s2exp =
+let
+//
+val e00 = err
+//
+val-
+S2Elam0
+(s2vs, s2e1) = s2e.node()
+//
+val
+s2e1 = tread12_s2exp(s2e1, err)
+//
+in//let
+if
+(e00 = err)
+then (s2e0) else
+let
+val s2t0 = s2e0.sort() in
+s2exp_lam0_errck(s2t0, s2vs, s2e1)
+end (*let*) // else // end-of-(if)
+end (*let*) // end of [ f0_lam0(s2e,err) ]
+//
+(* ****** ****** *)
 //
 (*
 val (  ) =
