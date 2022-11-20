@@ -673,16 +673,11 @@ if
 prfq
 then the_sort2_prop(* lin*)
 else the_sort2_type(*~lin*))
-) : sort2 // end of [val s2t0]
+) : sort2//end-of-[val(s2t0)]
 //
-(*
-(*
-HX-2022-10-28:
-Checking is already done.
-*)
-val s2es =
+val
+s2es =
 s2explst_stck(loc0, s2es, s2t0)
-*)
 //
 val
 lses = l2s2elst_make_l1st(s2es)
@@ -723,9 +718,9 @@ s2t1 =
 (
 if
 linq
-then
-the_sort2_view else the_sort2_prop
-) : sort2 // end of [val s2t1]
+then the_sort2_view
+else the_sort2_prop): sort2
+// end of [val(s2t1)]
 //
 val
 s2t2 =
@@ -737,10 +732,9 @@ the_sort2_vwtp else
 (
 if
 s2explst_linq(ses2)
-then
-the_sort2_vwtp else the_sort2_type
-)
-) : sort2 // end of [val s2t2]
+then the_sort2_vwtp
+else the_sort2_type)): sort2
+// end of [val(s2t2)]
 //
 (*
 //
@@ -754,9 +748,11 @@ val ses1 =
 s2explst_stck(loc0, ses1, s2t1)
 val ses2 =
 s2explst_stck(loc0, ses2, s2t2)
+//
 *)
 //
 val npf1 = list_length(ses1)
+//
 val lses =
 l2s2elst_make_l2st( ses1, ses2 )
 //
@@ -842,6 +838,12 @@ T_TRCD10(3) => (the_sort2_tbox)
 | // $tup_t0(...)
 T_TRCD10(4) => (the_sort2_vtbx)
 ) : sort2 // end of [val(s2t0)]
+//
+(*
+HX-2022-10-28:
+[s2es] is impredicative!
+See f0_t1up in trans12_s2exp.
+*)
 //
 val
 s2es = // HX: for T_TRCD10(3)
@@ -934,6 +936,12 @@ T_TRCD10(3) => (the_sort2_tbox)
 T_TRCD10(4) => (the_sort2_vtbx)
 ) : sort2 // end of [val(s2t2)]
 //
+(*
+HX-2022-10-28:
+[ses1] is impredicative!
+[ses2] is impredicative!
+See f0_t2up in trans12_s2exp.
+*)
 val
 ses1 = // HX: for T_TRCD10(3)
 (
@@ -1038,6 +1046,12 @@ T_TRCD20(3) => the_sort2_type
 T_TRCD20(4) => the_sort2_vwtp
 ) : sort2 // end of [val s2t0]
 //
+(*
+HX-2022-10-28:
+[lses] is impredicative!
+See f0_r1cd in trans12_s2exp.
+*)
+//
 val
 npf1 = -1
 val
@@ -1126,6 +1140,13 @@ T_TRCD20(3) => the_sort2_type
 | // $tup_t0(...)
 T_TRCD20(4) => the_sort2_vwtp
 ) : sort2 // end of [val s2t2]
+//
+(*
+HX-2022-10-28:
+[lss1] is impredicative!
+[lss2] is impredicative!
+See f0_r2cd in trans12_s2exp.
+*)
 //
 val
 lss1 = // HX: for T_TRCD20(3)
