@@ -418,18 +418,21 @@ s2exp_node =
 | S2Evar of (s2var) // variable
 //
 (*
-| S2Extv of (s2xtv) // ext-variable
+|
+S2Extv of (s2xtv) // ext-variable
 *)
 //
-| S2Eany of int(*knd*)
+| S2Eany of int(*knd*) (* '_' *)
 //
 | S2Etop0 of (s2exp) // uninitized
 | S2Etopz of (s2exp) // delineared
 //
-| S2Eapps of
-  (s2exp, s2explst) // application
-| S2Elam0 of
-  (s2varlst, s2exp) // abstraction
+|
+S2Eapps of
+(s2exp(*fun*), s2explst) // apply.
+|
+S2Elam0 of
+(s2varlst(*arg*), s2exp) // abstr.
 //
 |
 S2Efun0 of

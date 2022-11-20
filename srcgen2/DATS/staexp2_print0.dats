@@ -161,6 +161,9 @@ S2Tnone0() => print("S2Tnone0(",")")
 |
 S2Tnone1(s1t1) => print("S2Tnone1(",s1t1,")")
 //
+|
+S2Terrck(lvl0,s2t1) => print("S2Terrck(",lvl0,";",s2t1,")")
+//
 end (*let*) // end of [sort2_fprint(out, s2t0)]
 
 (* ****** ****** *)
@@ -311,6 +314,9 @@ S2Enone0() => print("S2Enone0(",")")
 S2Enone1(s1e1) => print("S2Enone1(",s1e1,")")
 |
 S2Enone2(s2e1) => print("S2Enone2(",s2e1,")")
+//
+|
+S2Eerrck(lvl0,s2e1) => print("S2Eerrck(",lvl0,";",s2e1,")")
 //
 end (*let*) // end of [s2exp_fprint(out, s2e0)]
 
