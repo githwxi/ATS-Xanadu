@@ -502,6 +502,12 @@ tread12_decl00_dats: ; $(XATSOPT) --dynamic DATS/tread12_decl00.dats
 all_dats:: \
 trans2a_dats
 trans2a_dats: ; $(XATSOPT) --dynamic DATS/trans2a.dats
+all_dats:: \
+trans2a_dynexp_dats
+trans2a_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trans2a_dynexp.dats
+all_dats:: \
+trans2a_decl00_dats
+trans2a_decl00_dats: ; $(XATSOPT) --dynamic DATS/trans2a_decl00.dats
 ######
 
 ######

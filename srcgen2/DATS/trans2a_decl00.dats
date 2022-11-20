@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sat 19 Nov 2022 01:59:01 PM EST
+Sun 20 Nov 2022 11:06:32 AM EST
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -45,41 +45,17 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload "./../SATS/staexp1.sats"
-#staload "./../SATS/dynexp1.sats"
-(* ****** ****** *)
-#staload "./../SATS/staexp2.sats"
-#staload "./../SATS/dynexp2.sats"
+#staload
+_(*TRANS2a*) = "./trans2a.dats"
 (* ****** ****** *)
 #staload "./../SATS/trans2a.sats"
 (* ****** ****** *)
-
-#impltmp
-<x0><y0>
-list_trans2a_fnp
-( e1, xs, fopr ) =
-(
-list_map_e1nv<x0><y0><e1>(xs, e1)) where
-{
-#vwtpdef e1 = tr2aenv
-#impltmp
-map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [list_trans2a_fnp(e1,xs,fopr)]
-
+//
+#implfun
+trans2a_d2eclist
+( env0, dcls ) =
+list_trans2a_fnp(env0, dcls, trans2a_d2ecl)
+//
 (* ****** ****** *)
 
-#impltmp
-<x0><y0>
-optn_trans2a_fnp
-( e1, xs, fopr ) =
-(
-optn_map_e1nv<x0><y0><e1>(xs, e1)) where
-{
-#vwtpdef e1 = tr2aenv
-#impltmp
-map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [optn_trans2a_fnp(e1,xs,fopr)]
-
-(* ****** ****** *)
-
-(* end of [ATS3/XATSOPT_srcgen2_trans2a.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_trans2a_decl00.dats] *)

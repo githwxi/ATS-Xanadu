@@ -43,6 +43,11 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME // namespace
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#absvtbx
+tr12env_vtbx
+#vwtpdef
+tr12env = tr12env_vtbx
+(* ****** ****** *)
 //
 #staload
 SYM = "./xsymbol.sats"
@@ -286,9 +291,6 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef sort2lstlst = list(sort2lst)
 #typedef s2varlstlst = list(s2varlst)
-(* ****** ****** *)
-#absvtbx tr12env_vtbx
-#vwtpdef tr12env = tr12env_vtbx
 (* ****** ****** *)
 #vwtpdef s2texopt_vt = optn_vt(s2tex)
 #vwtpdef s2itmopt_vt = optn_vt(s2itm)
