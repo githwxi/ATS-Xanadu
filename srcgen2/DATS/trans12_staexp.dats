@@ -128,9 +128,11 @@ trans12_sort1
 // (*
 val
 loc0 = s1t0.lctn()
+(*
 val () =
 prerrln
 ("trans12_sort1: s1t0 = ", s1t0)
+*)
 // *)
 in//let
 //
@@ -253,12 +255,11 @@ f0_a2pp
 , s1t0: sort1): sort2 =
 let
 //
-// (*
+(*
 val () =
-println
-("\
-trans12_sort1: f0_a2pp: s1t0 = ", s1t0)
-// *)
+prerrln
+("trans_sort1: f0_a2pp: s1t0 = ", s1t0)
+*)
 //
 val-
 S1Ta2pp
@@ -653,10 +654,10 @@ S1El1st(s1es) = s1e0.node()
 //
 (*
 val ( ) =
-println
+prerrln
 ("trans12_s1exp: f0_l1st: loc0 = ", loc0)
 val ( ) =
-println
+prerrln
 ("trans12_s1exp: f0_l1st: s1e0 = ", s1e0)
 *)
 //
@@ -696,10 +697,10 @@ S1El2st
 val
 loc0 = s1e0.lctn()
 val ( ) =
-println
+prerrln
 ("trans12_s1exp: f0_l2st: loc0 = ", loc0)
 val ( ) =
-println
+prerrln
 ("trans12_s1exp: f0_l2st: s1e0 = ", s1e0)
 *)
 //
@@ -816,7 +817,7 @@ S1Euni0(s1qs) = s1f0.node()
 (*
 val () =
 prerrln
-("f0_a1pp_uni0: s1qs = ", s1qs)
+("trans12_s1exp: f0_a1pp_uni0: s1qs = ", s1qs)
 *)
 //
 val () =
@@ -857,7 +858,7 @@ S1Eexi0
 (*
 val () =
 prerrln
-("f0_a1pp_exi0: s1qs = ", s1qs)
+("trans12_s1exp: f0_a1pp_exi0: s1qs = ", s1qs)
 *)
 //
 val () =
@@ -1009,18 +1010,16 @@ val
 s2es =
 trans12_s1explst(env0, s1es)
 //
-val opt1 =
-s2cst_select_list(s2cs, s2es)
+val scs1 =
+s2cst_selects_list(s2cs, s2es)
 //
 in//let
 //
-case+ opt1 of
-| ~
-optn_vt_nil() =>
+case+ scs1 of
+|list_nil() =>
 f0_a1pp_rest0(env0, s1e0)
-| ~
-optn_vt_cons(s2c1) =>
-f0_a1pp_rest1(env0,s1e0,s2exp_cst(s2c1))
+|list_cons _ =>
+f0_a1pp_rest1(env0,s1e0,s2exp_csts(scs1))
 //
 end (*let*) // end of [f0_a1pp_rest2(...)]
 
@@ -1058,6 +1057,12 @@ f0_a2pp
 , s1e0: s1exp): s2exp =
 let
 //
+(*
+val () =
+prerrln
+("trans12_s1exp: f0_a2pp: s1e0 = ", s1e0)
+*)
+//
 val-
 S1Ea2pp
 (s1f0
@@ -1065,7 +1070,11 @@ S1Ea2pp
 //
 val
 s2cs =
-s1exp_get_s2cstlst(env0, s1f0)
+s1exp_get_s2cstlst(env0,s1f0)
+//
+val () =
+prerrln
+("trans12_s1exp: f0_a2pp: s2cs = ", s2cs)
 //
 in//let
 //
@@ -1073,7 +1082,8 @@ case+ s2cs of
 |
 list_nil
 ((*void*)) =>
-f0_a2pp_rest0(env0, s1e0)
+(
+  f0_a2pp_rest0(env0, s1e0) )
 |
 list_cons
 (s2c1, scs2) =>
@@ -1232,19 +1242,20 @@ s2e1 = trans12_s1exp(env0, s1e1)
 val
 s2e2 = trans12_s1exp(env0, s1e2)
 //
-val opt0 =
-s2cst_select_bin
-(s2cs, s2e1.sort(), s2e2.sort())
+val scs1 =
+s2cst_selects_bin
+(s2cs, s2t1, s2t2) where
+{
+val
+s2t1=s2e1.sort() and s2t2=s2e2.sort()}
 //
 in//let
 //
-case+ opt0 of
-| ~
-optn_vt_nil() =>
+case+ scs1 of
+|list_nil() =>
 f0_a2pp_rest0(env0, s1e0)
-| ~
-optn_vt_cons(s2c1) =>
-f0_a2pp_rest1(env0, s1e0, s2exp_cst(s2c1))
+|list_cons _ =>
+f0_a2pp_rest1(env0,s1e0,s2exp_csts(scs1))
 //
 end (*let*) // end of [f0_a2pp_rest2(...)]
 
@@ -1265,10 +1276,10 @@ S1Et1up
 //
 (*
 val ( ) =
-println
+prerrln
 ("trans12_s1exp: f0_t1up: loc0 = ", loc0)
 val ( ) =
-println
+prerrln
 ("trans12_s1exp: f0_t1up: s1e0 = ", s1e0)
 *)
 //
@@ -1299,10 +1310,10 @@ S1Et2up
 //
 (*
 val ( ) =
-println
+prerrln
 ("trans12_s1exp: f0_t2up: loc0 = ", loc0)
 val ( ) =
-println
+prerrln
 ("trans12_s1exp: f0_t2up: s1e0 = ", s1e0)
 *)
 //
@@ -1334,10 +1345,10 @@ S1Er1cd
 //
 (*
 val ( ) =
-println
+prerrln
 ("trans12_s1exp: f0_r1cd: loc0 = ", loc0)
 val ( ) =
-println
+prerrln
 ("trans12_s1exp: f0_r1cd: s1e0 = ", s1e0)
 *)
 //
@@ -1372,10 +1383,10 @@ S1Er2cd
 //
 (*
 val ( ) =
-println
+prerrln
 ("trans12_s1exp: f0_r2cd: loc0 = ", loc0)
 val ( ) =
-println
+prerrln
 ("trans12_s1exp: f0_r2cd: s1e0 = ", s1e0)
 *)
 //

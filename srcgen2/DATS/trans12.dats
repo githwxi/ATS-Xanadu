@@ -142,15 +142,13 @@ list_cons(x0, xs) => optn_vt_cons(x0)
 
 (* ****** ****** *)
 
-#implfun
-s2cst_select_bin
-(s2cs, s2t1, s2t2) =
-let
+local
 //
 fun
-test1
-( s2c0
-: s2cst): bool = let
+f0_test1
+( s2c0: s2cst
+, s2t1: sort2
+, s2t2: sort2): bool = let
 //
 val
 s2t0 = s2c0.sort()
@@ -159,17 +157,19 @@ in//let
 //
 case+ s2t0 of
 |
-S2Tfun1
-(s2ts, _) => test2(s2ts)
+S2Tfun1(s2ts, _) =>
+f0_test2(s2ts, s2t1, s2t2)
 |
-_(*non-S2Tfun1*) => false
+_(* non-S2Tfun1 *) => false
 //
-end // end of [test1(s2c0)]
+end (*let*)//end-[f0_test1(s2c0,s1t1,s2t2)]
 //
 and
-test2
+f0_test2
 ( s2ts
-: sort2lst): bool =
+: sort2lst
+, s2t1: sort2
+, s2t2: sort2): bool =
 (
 case+ s2ts of
 |
@@ -191,8 +191,28 @@ if
 (t2x1 <= s2t1)
 then
 (t2x2 <= s2t2) else false)
-|list_cons(_, _) => false)))
+|list_cons(_, _) => false))
+) (*case+*)//end-[f0_test2(s2ts,s2t1,s2t2)]
 //
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+
+#implfun
+s2cst_select_bin
+(s2cs, s2t1, s2t2) =
+let
+(*
+val () =
+prerrln
+("s2cst_select_bin: s2cs = ", s2cs)
+val () =
+prerrln
+("s2cst_select_bin: s2t1 = ", s2t1)
+val () =
+prerrln
+("s2cst_select_bin: s2t2 = ", s2t2)
+*)
 in//let
 loop(s2cs) where
 {
@@ -203,10 +223,12 @@ loop
 (
 case+ s2cs of
 |
-list_nil() => optn_vt_nil()
+list_nil() =>
+optn_vt_nil((*void*))
 |
 list_cons(s2c1, s2cs) =>
-if test1(s2c1)
+if
+f0_test1(s2c1, s2t1, s2t2)
 then optn_vt_cons(s2c1) else loop(s2cs))
 }
 end (*let*) // end of [s2cst_select_bin(...)]
@@ -214,28 +236,63 @@ end (*let*) // end of [s2cst_select_bin(...)]
 (* ****** ****** *)
 
 #implfun
-s2cst_select_list
-  (s2cs, s2es) =
-(
-gseq_search_opt(s2cs)
-) where
-{
-fun
-f0_test0
-(s2c0: s2cst): bool = let
+s2cst_selects_bin
+(s2cs, s2t1, s2t2) =
+let
+// (*
+val () =
+prerrln
+("s2cst_selects_bin: s2cs = ", s2cs)
+val () =
+prerrln
+("s2cst_selects_bin: s2t1 = ", s2t1)
+val () =
+prerrln
+("s2cst_selects_bin: s2t2 = ", s2t2)
+// *)
+in//let
 //
-in
+list_filter<s2cst>(s2cs) where
+{
+#impltmp
+filter$test
+<s2cst>(s2c1) = f0_test1(s2c1, s2t1, s2t2)
+}
+//
+end (*let*) // end of [s2cst_selects_bin(...)]
+
+end (*local*)//end-of-[local(s2cst_select/s_bin)]
+
+(* ****** ****** *)
+
+local
+
+fun
+f0_test1
+( s2c0: s2cst
+, s2es: s2explst): bool =
+let
+//
+(*
+val () =
+prerrln("f0_test1: s2c0 = ", s2c0)
+val () =
+prerrln("f0_test1: s2es = ", s2es)
+*)
+//
+in//let
 //
 case+
 s2c0.sort() of
-| S2Tfun1(s2ts, _) =>
-  f0_test1(s2ts, s2es)
-| _(* non-S2Tfun *) => false
+|
+S2Tfun1
+(s2ts, _) => f0_test2(s2ts, s2es)
+| _(* non-S2Tfun1 *) => ( false )
 //
-end // end of [f0_test0]
+end (*let*) // end of [f0_test1(s2c0,s2es)]
 
 and
-f0_test1
+f0_test2
 ( s2ts
 : sort2lst
 , s2es
@@ -246,9 +303,10 @@ case+ s2ts of
 list_nil() =>
 (
 case+ s2es of
-| list_nil() => true
-| list_cons _ => false
-)
+|
+list_nil() => true
+|
+list_cons _ => false)
 |
 list_cons(s2t0, s2ts) =>
 (
@@ -261,14 +319,44 @@ list_cons(s2e0, s2es) =>
   if
   s2e0.sort() <= s2t0
   then
-  f0_test1(s2ts, s2es) else false
-)
-)
-) (*case+*) // end of [f0_test1(...)]
+  f0_test2(s2ts, s2es) else false))
+) (*case+*) // end of [f0_test2(s2ts,s2es)]
+
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+
+#implfun
+s2cst_select_list
+  (s2cs, s2es) =
+(
+gseq_search_opt(s2cs)
+) where
+{
 //
-#implfun search$test<s2cst> = f0_test0
+#implfun
+search$test
+<s2cst>(s2c0) = f0_test1(s2c0, s2es)
 //
 } (*where*)//end-of-[s2cst_select_list(...)]
+
+(* ****** ****** *)
+
+#implfun
+s2cst_selects_list
+  (s2cs, s2es) =
+(
+list_filter
+<s2cst>(s2cs)) where
+{
+//
+#implfun
+filter$test
+<s2cst>(s2c0) = f0_test1(s2c0, s2es)
+//
+} (*where*)//end-of-[s2cst_selects_list(...)]
+
+end (*local*)//end-of-[local(s2cst_select/s_list)]
 
 (* ****** ****** *)
 
@@ -278,7 +366,7 @@ s1exp_get_s2cstlst
 let
 (*
 val () =
-println!
+prerrln
 ("s1exp_get_s2cstlst: s1e0 = ", s1e0)
 *)
 in

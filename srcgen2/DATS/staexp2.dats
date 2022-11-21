@@ -418,18 +418,41 @@ end (*let*) // end of [ s2exp_chr(chr) ]
 (* ****** ****** *)
 //
 #implfun
+s2exp_var(s2v0) =
+let
+val s2t0 = s2v0.sort() in
+s2exp_make_node(s2t0, S2Evar(s2v0))
+end (*let*) // end of [ s2exp_var(s2v0) ]
+//
+(* ****** ****** *)
+//
+#implfun
 s2exp_cst(s2c0) =
 let
 val s2t0 = s2c0.sort() in
 s2exp_make_node(s2t0, S2Ecst(s2c0))
 end (*let*) // end of [ s2exp_cst(s2c0) ]
 //
+(* ****** ****** *)
+//
 #implfun
-s2exp_var(s2v0) =
-let
-val s2t0 = s2v0.sort() in
-s2exp_make_node(s2t0, S2Evar(s2v0))
-end (*let*) // end of [ s2exp_var(s2v0) ]
+s2exp_csts(s2cs) =
+(
+case+ s2cs of
+|
+list_nil() =>
+s2exp
+(S2Tnone0(), S2Ecsts(s2cs))
+|
+list_cons(s2c1, scs1) =>
+(
+case+ scs1 of
+|
+list_nil() => s2exp_cst(s2c1)
+|
+list_cons _ =>
+s2exp(S2Tnone0(), S2Ecsts(s2cs)))
+) (*case+*) // end of [ s2exp_csts(s2cs) ]
 //
 (* ****** ****** *)
 //

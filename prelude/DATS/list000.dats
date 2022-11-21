@@ -812,6 +812,24 @@ list_maprev_vt<a><a>(xs)
 
 (* ****** ****** *)
 //
+#impltmp
+<x0>(*tmp*)
+list_filter(xs) =
+(
+list_vt2t
+(list_filter_vt<x0>(xs)))
+//
+#impltmp
+<x0>(*tmp*)
+list_filter_vt(xs) =
+let
+#typedef xs = list(x0)
+in // let
+gseq_filter_list<xs><x0>(xs)
+end (*let*) // list_filter_vt
+//
+(* ****** ****** *)
+//
 (*
 HX-2019-10:
 Quite an informative example:

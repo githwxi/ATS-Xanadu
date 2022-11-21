@@ -683,12 +683,14 @@ lte_sort2lst_sort2lst:
 HX-2022-11-21:
 [S2Tnone0] matches all
 *)
+(*
 fun
 mat_sort2_sort2:
 ( sort2, sort2 ) -> bool
 fun
 mat_sort2lst_sort2lst:
 ( sort2lst, sort2lst ) -> bool
+*)
 //
 (* ****** ****** *)
 (*
@@ -726,9 +728,10 @@ l2s2elst_prgmq(l2s2elst): bool
 //
 (* ****** ****** *)
 fun
-s2exp_cst( s2c0: s2cst ): s2exp
-fun
 s2exp_var( s2v0: s2var ): s2exp
+(* ****** ****** *)
+fun
+s2exp_cst( s2c0: s2cst ): s2exp
 (* ****** ****** *)
 fun
 s2exp_uni0
@@ -742,6 +745,10 @@ s2exp_exi0
 : s2varlst
 , s2ps
 : s2explst, body: s2exp): s2exp
+(* ****** ****** *)
+// HX-2022-11-21: 
+fun // yet-to-be resolved
+s2exp_csts(s2cs: s2cstlst): s2exp
 (* ****** ****** *)
 fun
 s2exp_l1st

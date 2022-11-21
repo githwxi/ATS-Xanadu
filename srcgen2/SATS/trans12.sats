@@ -302,9 +302,13 @@ s1exp_get_s2cstlst
 ! tr12env
 , s1e0: s1exp): s2cstlst
 (* ****** ****** *)
+//
 fun
 s2cst_select_any
 (s2cs: s2cstlst): s2cstopt_vt
+//
+(* ****** ****** *)
+//
 fun
 s2cst_select_bin
 ( s2cs
@@ -312,13 +316,26 @@ s2cst_select_bin
 , sort2, sort2 ): s2cstopt_vt
 fun
 s2cst_select_list
-(s2cs: s2cstlst,
- s2es: s2explst): s2cstopt_vt
+( s2cs: s2cstlst,
+  s2es: s2explst): s2cstopt_vt
+//
+(* ****** ****** *)
+//
+fun
+s2cst_selects_bin
+( s2cs
+: s2cstlst
+, sort2, sort2 ): ( s2cstlst )
+fun
+s2cst_selects_list
+( s2cs: s2cstlst,
+  s2es: s2explst): ( s2cstlst )
+//
 (* ****** ****** *)
 //
 fun
 d2parsed_from_trans
-( dpar : d1parsed ): d2parsed
+( dpar : d1parsed ): (d2parsed)
 //
 (* ****** ****** *)
 //
@@ -327,7 +344,7 @@ tr12env_make_nil
   ( (*void*) ) : tr12env
 fun
 tr12env_free_top
-( env0 : tr12env ) : d2topenv
+( env0 : tr12env ) : (d2topenv)
 //
 (* ****** ****** *)
 //
