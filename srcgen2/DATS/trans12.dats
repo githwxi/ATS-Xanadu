@@ -155,7 +155,7 @@ test1
 val
 s2t0 = s2c0.sort()
 //
-in
+in//let
 //
 case+ s2t0 of
 |
@@ -253,12 +253,16 @@ case+ s2es of
 list_cons(s2t0, s2ts) =>
 (
 case+ s2es of
-| list_nil() => false
-| list_cons(s2e0, s2es) =>
+|
+list_nil() => false
+|
+list_cons(s2e0, s2es) =>
+(
   if
   s2e0.sort() <= s2t0
   then
   f0_test1(s2ts, s2es) else false
+)
 )
 ) (*case+*) // end of [f0_test1(...)]
 //

@@ -444,8 +444,8 @@ d2pat_node =
 |D2Pc00 of (char) // char
 |D2Ps00 of (strn) // string
 //
-|D2Pcon1 of (d2con)
-|D2Pcon2 of (d2conlst)
+|D2Pcon of (d2con)
+|D2Pcons of (d2conlst)
 //
 |D2Pbang of (d2pat) // !
 |D2Pflat of (d2pat) // @
@@ -673,10 +673,11 @@ d2exp_node =
 //
 |D2Evar of (d2var)
 //
-|D2Econ1 of (d2con)
-|D2Ecst1 of (d2cst)
-|D2Econ2 of (d2conlst)
-|D2Ecst2 of (d2cstlst)
+|D2Econ of (d2con)
+|D2Ecst of (d2cst)
+//
+|D2Econs of (d2conlst)
+|D2Ecsts of (d2cstlst)
 //
 |D2Esapp of (d2exp, s2explst)
 |D2Etapp of (d2exp, s2explst)

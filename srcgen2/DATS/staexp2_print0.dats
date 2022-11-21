@@ -249,6 +249,10 @@ print("S2Etop0(",s2e,")")
 print("S2Etopz(",s2e,")")
 //
 |
+S2Ecsts(s2cs) =>
+print("S2Ecsts(",s2cs,")")
+//
+|
 S2Eapps(s2f0,s2es) =>
 print("S2Eapps(",s2f0,";",s2es,")")
 |
