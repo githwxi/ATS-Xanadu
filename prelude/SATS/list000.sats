@@ -365,6 +365,15 @@ list_rcopy_vt
 {n:int}(xs:list(a, n)): list_vt(a,n)
 //
 (* ****** ****** *)
+fun
+<a:t0>
+list_filter
+{n:int}(list(a, n)): listlte(a,n)
+fun
+<a:t0>
+list_filter_vt
+{n:int}(list(a, n)): listlte_vt(a,n)
+(* ****** ****** *)
 //
 fun
 <a:t0>
