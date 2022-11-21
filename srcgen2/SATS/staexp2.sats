@@ -409,31 +409,36 @@ s2tex_fprint:(FILR,s2tex)->void
 datatype
 s2exp_node =
 //
-| S2Eint of (sint) // sint
-| S2Ebtf of (bool) // bool
-| S2Echr of (char) // char
-| S2Estr of (strn) // string
+|S2Eint of (sint) // sint
+|S2Ebtf of (bool) // bool
+|S2Echr of (char) // char
+|S2Estr of (strn) // string
 //
-| S2Ecst of (s2cst) // constant
+|S2Ecst of (s2cst) // constant
 //
-| S2Evar of (s2var) // variable
+|S2Evar of (s2var) // variable
+//
+|S2Eany of int(*knd*) (* '_' *)
 //
 (*
 |
 S2Extv of (s2xtv) // ext-variable
 *)
 //
-| S2Eany of int(*knd*) (* '_' *)
+|
+S2Etop0 of (s2exp) // uninitized
+|
+S2Etopz of (s2exp) // delineared
 //
-| S2Etop0 of (s2exp) // uninitized
-| S2Etopz of (s2exp) // delineared
+| // HX: unresolved list of
+S2Ecsts of (s2cstlst)//constants
 //
 |
 S2Eapps of
-(s2exp(*fun*), s2explst) // apply.
+(s2exp(*fun*), s2explst)//apply.
 |
 S2Elam0 of
-(s2varlst(*arg*), s2exp) // abstr.
+(s2varlst(*arg*), s2exp)//abstr.
 //
 |
 S2Efun0 of
@@ -459,7 +464,7 @@ S2Efun0 of
 S2Elist of s2explst // HX: temporary use
 //
 // HX-2021-01: for lifting from
-| S2Etype of (s2typ) // [s2typ] to [s2exp]
+| S2Etype of (s2typ) // [s2typ-to-s2exp]
 //
 | S2Etext of
   ( strn(*name*)
@@ -671,6 +676,19 @@ lte_sort2lst_sort2lst:
 #symload <= with lte_sort2_sort2
 #symload <= with lte_sort2lst_sort2lst
 *)
+//
+(* ****** ****** *)
+//
+(*
+HX-2022-11-21:
+[S2Tnone0] matches all
+*)
+fun
+mat_sort2_sort2:
+( sort2, sort2 ) -> bool
+fun
+mat_sort2lst_sort2lst:
+( sort2lst, sort2lst ) -> bool
 //
 (* ****** ****** *)
 (*

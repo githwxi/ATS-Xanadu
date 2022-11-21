@@ -900,7 +900,8 @@ in//let
 case+ s2cs of
 |
 list_nil() =>
-f0_a1pp_rest0(env0, s1e0)
+(
+  f0_a1pp_rest0(env0, s1e0) )
 |
 list_cons
 (s2c1, scs2) =>
@@ -967,15 +968,16 @@ s2f0.sort() of
 |
 S2Tfun1(s2ts, _) => s2ts
 |
-_(*non-S2Tfun*) => list_nil(*nil*)
+_(*non-S2Tfun1*) => list_nil(*nil*)
 ) : sort2lst // end of [val (s2ts) ]
+//
+in//let
+( s2exp_apps
+  (loc0, s2f0, s2es) ) where
+{
 //
 val loc0 = s1e0.lctn()
 //
-in//let
-//
-  s2exp_apps(loc0, s2f0, s2es) where
-{
 val s2es =
 trans12_s1explst_stcks(env0, s1es, s2ts) }
 //

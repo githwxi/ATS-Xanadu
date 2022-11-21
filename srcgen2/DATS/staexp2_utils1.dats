@@ -284,7 +284,7 @@ g_lte<t2bas> = lte_t2bas_t2bas
 
 #implfun
 lte_t2bas_t2bas
-(x1, x2) =
+  ( x1 , x2 ) =
 (
 case+
 (x1, x2) of
@@ -314,61 +314,74 @@ g_lte<sort2lst> = lte_sort2lst_sort2lst
 //
 #implfun
 lte_sort2_sort2
-  (x1, x2) =
+  ( x1 , x2 ) =
 (
 case+ x1 of
 //
 |
-S2Tid0(tid1) =>
+S2Tid0
+(tid1) =>
 (
 case+ x2 of
 |
-S2Tid0(tid2) => tid1 = tid2 | _ => false
+S2Tid0
+(tid2) => (tid1 = tid2) | _ => false
 )
 //
 |
-S2Tint(int1) =>
+S2Tint
+(int1) =>
 (
 case+ x2 of
 |
-S2Tint(int2) => int1 = int2 | _ => false
+S2Tint
+(int2) => (int1 = int2) | _ => false
 )
 //
 |
-S2Tbas(stb1) =>
+S2Tbas
+(stb1) =>
 (
 case+ x2 of
 |
-S2Tbas(stb2) => stb1 <= stb2 | _ => false
+S2Tbas
+(stb2) => (stb1 <= stb2) | _ => false
 )
 //
 |
-S2Ttup(sts1) =>
+S2Ttup
+(sts1) =>
 (
 case+ x2 of
-| S2Ttup(sts2) => sts1 <= sts2 | _ => false
+|
+S2Ttup
+(sts2) => (sts1 <= sts2) | _ => false
 )
 //
 |
-S2Tfun1(arg1, res1) =>
+S2Tfun1
+(arg1, res1) =>
 (
 case+ x2 of
 |
-S2Tfun1(arg2, res2) =>
+S2Tfun1
+(arg2, res2) =>
 if
-(arg2 <= arg1) then (res1 <= res2) else false
+(arg2 <= arg1)then(res1 <= res2)else(false)
 | _ (* non-S2Tfun1 *) => false
 )
 //
 |
-S2Tapps(s2f1, arg1) =>
+S2Tapps
+(s2f1, arg1) =>
 (
 case+ x2 of
 |
-S2Tapps(s2f2, arg2) =>
+S2Tapps
+(s2f2, arg2) =>
 if
-(s2f1 <= s2f2) then (arg1 <= arg2) else false
-| _ (* non-S2Tfun *) => false
+(s2f1 <= s2f2)then(arg1 <= arg2)else(false)
+| _ (* non-S2Tapps *) => false
 )
 //
 | _ (* rest-of-sort2 *) => false
@@ -377,8 +390,30 @@ if
 | S2Tnone0() => false | S2Tnone(s1t1) => false 
 *)
 //
-) (* case+ *) // end of [lte_sort2_sort2(x1, x2)]
+) (* case+ *) // end of [lte_sort2_sort2(...)]
 
+(* ****** ****** *)
+//
+#implfun
+lte_sort2lst_sort2lst
+   (  xs1 , xs2  ) =
+(
+case+ xs1 of
+|
+list_nil() =>
+(
+case+ xs2 of
+|list_nil() => true
+|list_cons _ => false)
+|
+list_cons(x1, xs1) =>
+(
+case+ xs2 of
+|list_nil() => false
+|list_cons(x2, xs1) =>
+ (if x1 <= x2 then xs1 <= xs2 else false))
+) (*case+*) // end of [lte_sort2lst_sort2lst(...)]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -469,39 +504,51 @@ forall$test
 //
 #implfun
 s2exp_stck
-(loc0, s2e1, s2t2) =
-(
+( loc0
+, s2e1, s2t2) =
+let
+val
+s2t1 = s2e1.sort()
+in//let
 if
-s2e1.sort() <= s2t2
-then s2e1 else s2exp_cast(loc0,s2e1,s2t2))
+(s2t1 <= s2t2)
+then s2e1 else
+s2exp_cast(loc0,s2e1,s2t2)
+end (*let*) // end of [s2exp_stck(loc0,...)]
 //
 #implfun
 l2s2e_stck
-(loc0, ls2e, s2t2) =
+( loc0
+, ls2e, s2t2) =
 let
 val+
 S2LAB
 (l1, s2e1) = ls2e
+val
+s2t1 = s2e1.sort()
+//
 in//let
 if
-s2e1.sort() <= s2t2
-then ls2e
-else S2LAB(l1, s2exp_cast(loc0,s2e1,s2t2))
+(s2t1 <= s2t2)
+then ls2e else
+S2LAB(l1, s2exp_cast(loc0,s2e1,s2t2))
 end (*let*) // end of [l2s2e_stck(loc0,...)]
 //
 (* ****** ****** *)
 //
 #implfun
 s2explst_stck
-(loc0, s2es, s2t2) =
+( loc0
+, s2es, s2t2 ) =
 let
 val test =
 list_forall
 <x0>( s2es ) where
 {
- #typedef x0 = s2exp
- #impltmp
- forall$test<x0>(x0) = x0.sort() <= s2t2
+#typedef x0 = s2exp
+#impltmp
+forall$test
+< x0 >( x0 ) = x0.sort() <= s2t2
 }
 in//let
 if test
@@ -512,7 +559,8 @@ list_map
  #typedef x0 = s2exp
  #typedef y0 = s2exp
  #impltmp
- map$fopr<x0><y0>(x0) = s2exp_stck(loc0,x0,s2t2)
+ map$fopr
+ <x0><y0>(x0) = s2exp_stck(loc0,x0,s2t2)
 }
 end (*let*) // end of [s2explst_stck(...)]
 //
@@ -520,15 +568,17 @@ end (*let*) // end of [s2explst_stck(...)]
 //
 #implfun
 l2s2elst_stck
-(loc0, lses, s2t2) =
+( loc0
+, lses, s2t2 ) =
 let
 val test =
 list_forall
 <x0>( lses ) where
 {
- #typedef x0 = l2s2e
- #impltmp
- forall$test<x0>(x0) = x0.sort() <= s2t2
+#typedef x0 = l2s2e
+#impltmp
+forall$test
+< x0 >( x0 ) = x0.sort() <= s2t2
 }
 in//let
 if test
@@ -539,7 +589,8 @@ list_map
  #typedef x0 = l2s2e
  #typedef y0 = l2s2e
  #impltmp
- map$fopr<x0><y0>(x0) = l2s2e_stck(loc0,x0,s2t2)
+ map$fopr
+ <x0><y0>(x0) = l2s2e_stck(loc0,x0,s2t2)
 }
 end (*let*) // end of [l2s2elst_stck(...)]
 //
@@ -606,6 +657,8 @@ val lses = list_vt_cons(lse1, lses)
 
 in//local
 
+(* ****** ****** *)
+
 #implfun
 l2s2elst_make_l1st
       (s2es) =
@@ -630,6 +683,8 @@ let
 in//let
   list_vt2t(list_vt_reverse0(lses))
 end (*let*) // end of [l2s2elst_make_l2st]
+
+(* ****** ****** *)
 
 end (*local*) // end of [local(l2s2elst_make)]
 

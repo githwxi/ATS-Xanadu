@@ -182,10 +182,10 @@ print("D2Pc00(",chr,")")
 |D2Ps00(str) =>
 print("D2Ps00(",str,")")
 //
-|D2Pcon1(d2c1) =>
-print("D2Pcon1(",d2c1,")")
-|D2Pcon2(d2cs) =>
-print("D2Pcon2(",d2cs,")")
+|D2Pcon(d2c) =>
+print("D2Pcon(",d2c,")")
+|D2Pcons(d2cs) =>
+print("D2Pcons(",d2cs,")")
 //
 |D2Pbang(d2p1) =>
 print("D2Pbang(",d2p1,")")
@@ -364,15 +364,15 @@ print("D2Etop(", tok, ")")
 |D2Evar(d2v) =>
 print("D2Evar(", d2v, ")")
 //
-|D2Econ1(d2c1) =>
-print("D2Econ1(", d2c1, ")")
-|D2Ecst1(d2c1) =>
-print("D2Ecst1(", d2c1, ")")
+|D2Econ(d2c) =>
+print("D2Econ(", d2c, ")")
+|D2Ecst(d2c) =>
+print("D2Ecst(", d2c, ")")
 //
-|D2Econ2(d2cs) =>
-print("D2Econ2(", d2cs, ")")
-|D2Ecst2(d2cs) =>
-print("D2Ecst2(", d2cs, ")")
+|D2Econs(d2cs) =>
+print("D2Econs(", d2cs, ")")
+|D2Ecsts(d2cs) =>
+print("D2Ecsts(", d2cs, ")")
 //
 |D2Esapp
 (d2e1, s2es) =>
