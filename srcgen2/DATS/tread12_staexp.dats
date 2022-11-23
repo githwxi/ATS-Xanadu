@@ -555,10 +555,10 @@ s2e1 = tread12_s2exp(s2e1, err)
 in//let
 if
 (e00 = err)
-then (s2e0) else
+then (s2e) else
 let
-val s2t0 = s2e0.sort() in
-s2exp_top0_errck(s2t0, s2e1) end
+val s2t = s2e.sort() in
+s2exp_top0_errck(s2t, s2e1) end
 end (*let*) // end of [ f0_top0(s2e,err) ]
 //
 fun
@@ -578,10 +578,10 @@ s2e1 = tread12_s2exp(s2e1, err)
 in//let
 if
 (e00 = err)
-then (s2e0) else
+then (s2e) else
 let
-val s2t0 = s2e0.sort() in
-s2exp_topz_errck(s2t0, s2e1) end
+val s2t = s2e.sort() in
+s2exp_topz_errck(s2t, s2e1) end
 end (*let*) // end of [ f0_topz(s2e,err) ]
 //
 (* ****** ****** *)
@@ -607,10 +607,10 @@ tread12_s2explst(s2es, err)
 in//let
 if
 (e00 = err)
-then (s2e0) else
+then (s2e) else
 let
-val s2t0 = s2e0.sort() in
-s2exp_apps_errck(s2t0, s2f0, s2es)
+val s2t = s2e.sort() in
+s2exp_apps_errck(s2t, s2f0, s2es)
 end (*let*) // else // end-of-(if)
 end (*let*) // end of [ f0_apps(s2e,err) ]
 //
@@ -634,10 +634,10 @@ s2e1 = tread12_s2exp(s2e1, err)
 in//let
 if
 (e00 = err)
-then (s2e0) else
+then (s2e) else
 let
-val s2t0 = s2e0.sort() in
-s2exp_lam0_errck(s2t0, s2vs, s2e1)
+val s2t = s2e.sort() in
+s2exp_lam0_errck(s2t, s2vs, s2e1)
 end (*let*) // else // end-of-(if)
 end (*let*) // end of [ f0_lam0(s2e,err) ]
 //
@@ -665,11 +665,11 @@ sres = tread12_s2exp(sres, err)
 in//let
 if
 (e00 = err)
-then (s2e0) else
+then (s2e) else
 let
-val s2t0 = s2e0.sort() in
+val s2t = s2e.sort() in
 s2exp_fun1_errck
-(s2t0 , f2cl , npf1 , s2es , sres)
+(s2t , f2cl , npf1 , s2es , sres)
 end (*let*) // else // end-of-(if)
 end (*let*) // end of [ f0_fun1(s2e,err) ]
 //
@@ -696,10 +696,10 @@ s2e1 = tread12_s2exp(s2e1, err)
 in//let
 if
 (e00 = err)
-then (s2e0) else
+then (s2e) else
 let
-val s2t0 = s2e0.sort() in
-s2exp_met0_errck(s2t0, s2es, s2e1)
+val s2t = s2e.sort() in
+s2exp_met0_errck(s2t, s2es, s2e1)
 end (*let*) // else // end-of-(if)
 end (*let*) // end of [ f0_met0(s2e,err) ]
 //
@@ -727,10 +727,10 @@ s2e1 = tread12_s2exp(s2e1, err)
 in//let
 if
 (e00 = err)
-then (s2e0) else
+then (s2e) else
 let
-val s2t0 = s2e0.sort() in
-s2exp_exi0_errck(s2t0,s2vs,s2ps,s2e1)
+val s2t = s2e.sort() in
+s2exp_exi0_errck(s2t,s2vs,s2ps,s2e1)
 end (*let*) // else // end-of-(if)
 end (*let*) // end of [ f0_exi0(s2e,err) ]
 //
@@ -758,10 +758,10 @@ s2e1 = tread12_s2exp(s2e1, err)
 in//let
 if
 (e00 = err)
-then (s2e0) else
+then (s2e) else
 let
-val s2t0 = s2e0.sort() in
-s2exp_uni0_errck(s2t0,s2vs,s2ps,s2e1)
+val s2t = s2e.sort() in
+s2exp_uni0_errck(s2t,s2vs,s2ps,s2e1)
 end (*let*) // else // end-of-(if)
 end (*let*) // end of [ f0_uni0(s2e,err) ]
 //
@@ -785,10 +785,10 @@ s2es = tread12_s2explst(s2es, err)
 in//let
 if
 (e00 = err)
-then (s2e0) else
+then (s2e) else
 let
-val s2t0 = s2e0.sort() in
-s2exp_text_errck(s2t0, name, s2es)
+val s2t = s2e.sort() in
+s2exp_text_errck(s2t, name, s2es)
 end (*let*) // else // end-of-(if)
 end (*let*) // end of [ f0_text(s2e,err) ]
 //
@@ -819,10 +819,10 @@ lses = tread12_l2s2elst(lses, err)
 in//let
 if
 (e00 = err)
-then (s2e0) else
+then (s2e) else
 let
-val s2t0 = s2e0.sort() in
-s2exp_trcd_errck(s2t0,knd0,npf1,lses)
+val s2t = s2e.sort() in
+s2exp_trcd_errck(s2t,knd0,npf1,lses)
 end (*let*) // else // end-of-(if)
 end (*let*) // end of [ f0_trcd(s2e,err) ]
 //
@@ -846,10 +846,10 @@ s2e1 = tread12_s2exp(s2e1, err)
 in//let
 if
 (e00 = err)
-then (s2e0) else
+then (s2e) else
 let
-val s2t0 = s2e0.sort() in
-s2exp_impr_errck(s2t0, loc1, s2e1)
+val s2t = s2e.sort() in
+s2exp_impr_errck(s2t, loc1, s2e1)
 end (*let*) // else // end-of-(if)
 end (*let*) // end of [ f0_impr(s2e,err) ]
 //
@@ -873,10 +873,10 @@ s2e1 = tread12_s2exp(s2e1, err)
 in//let
 if
 (e00 = err)
-then (s2e0) else
+then (s2e) else
 let
-val s2t0 = s2e0.sort() in
-s2exp_prgm_errck(s2t0, loc1, s2e1)
+val s2t = s2e.sort() in
+s2exp_prgm_errck(s2t, loc1, s2e1)
 end (*let*) // else // end-of-(if)
 end (*let*) // end of [ f0_prgm(s2e,err) ]
 //
@@ -903,10 +903,10 @@ s2t2 = tread12_sort2(s2t2, err)
 in//let
 if
 (e00 = err)
-then (s2e0) else
+then (s2e) else
 let
-val s2t0 = s2e0.sort() in
-s2exp_cast_errck(s2t0,loc1,s2e1,s2t2)
+val s2t = s2e.sort() in
+s2exp_cast_errck(s2t,loc1,s2e1,s2t2)
 end (*let*) // else // end-of-(if)
 end (*let*) // end of [ f0_cast(s2e,err) ]
 //
