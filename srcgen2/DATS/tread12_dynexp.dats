@@ -151,6 +151,33 @@ d2pat_errvl with d2pat_errvl_lst
 (* ****** ****** *)
 //
 fun
+d2exp_errvl_a1
+(d2e0: d2exp): sint =
+(
+case+ d2e0.node() of
+|
+D2Eerrck
+(lvl0, _) => lvl0 | _ => 0
+)
+#symload
+d2exp_errvl with d2exp_errvl_a1
+#symload errvl with d2exp_errvl_a1
+//
+(* ****** ****** *)
+//
+fun
+d2exp_errvl_a2
+(d2e1: d2exp
+,d2e2: d2exp): sint =
+gmax
+(errvl(d2e1),errvl(d2e2))
+#symload
+d2exp_errvl with d2exp_errvl_a2
+#symload errvl with d2exp_errvl_a2
+//
+(* ****** ****** *)
+//
+fun
 d2pat_bang_errck
 (loc0: loc_t
 ,d2p1: d2pat): d2pat =
@@ -217,6 +244,18 @@ d2pat_errck
 (lvl0+1
 ,d2pat(loc0, D2Pdapp(d2f0,npf1,d2ps)))
 endlet // end of [d2pat_dapp_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d2exp_dap0_errck
+(loc0: loc_t
+,d2e1: d2exp): d2exp =
+let
+val lvl0 = errvl(d2e1) in//let
+d2exp_errck
+(lvl0+1,d2exp(loc0, D2Edap0(d2e1)))
+endlet // end of [d2exp_dap0_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -428,6 +467,8 @@ val (  ) = err := err+1 }
 |D2Econs _ => d2e0
 |D2Ecsts _ => d2e0
 //
+|D2Edap0 _ => f0_dap0(d2e0, err)
+//
 | _(*otherwise*) =>
 let
 val lvl0 = 1
@@ -438,6 +479,29 @@ endlet // end of [ _(* otherwise *) ]
 //
 ) where // end-of-[(*case+(d2e0)-of*)]
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_dap0
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Edap0(d2e1) = d2e.node()
+val
+d2e1 = tread12_d2exp(d2e1, err)
+in//let
+if
+(e00=err)
+then (d2e) else
+d2exp_dap0_errck(d2e.lctn(), d2e1)
+end (*let*) // end of [f0_dap0(d2e,err)]
+//
+(* ****** ****** *)
 //
 (*
 val (  ) =
