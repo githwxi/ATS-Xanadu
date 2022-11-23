@@ -177,6 +177,38 @@ d2exp_errvl with d2exp_errvl_a2
 //
 (* ****** ****** *)
 //
+#extern
+fun
+d2exp_errvl_lst
+(d2es: d2explst): sint
+//
+#implfun
+d2exp_errvl_lst
+(  d2es  ) =
+(
+case+ d2es of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(d2e1,d2es) =>
+gmax
+(
+errvl(d2e1),d2exp_errvl_lst(d2es))
+endcas // end of [ case+( d2es ) ]
+)
+//
+#symload
+d2exp_errvl with d2exp_errvl_lst
+#symload errvl with d2exp_errvl_lst
+//
+(* ****** ****** *)
+(*
+HX-2022-11-23:
+Various 'errck' functions for
+constructing d2pat/d2exp-values
+*)
+(* ****** ****** *)
+//
 fun
 d2pat_bang_errck
 (loc0: loc_t
@@ -256,6 +288,22 @@ val lvl0 = errvl(d2e1) in//let
 d2exp_errck
 (lvl0+1,d2exp(loc0, D2Edap0(d2e1)))
 endlet // end of [d2exp_dap0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d2exp_dapp_errck
+(loc0: loc_t
+,d2f0: d2exp
+,npf1: (sint)
+,d2es: d2explst): d2exp =
+let
+val lvl0 = gmax
+(errvl(d2f0), errvl(d2es)) in//let
+d2exp_errck
+(lvl0+1
+,d2exp(loc0, D2Edapp(d2f0,npf1,d2es)))
+endlet // end of [d2exp_dapp_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -468,6 +516,7 @@ val (  ) = err := err+1 }
 |D2Ecsts _ => d2e0
 //
 |D2Edap0 _ => f0_dap0(d2e0, err)
+|D2Edapp _ => f0_dapp(d2e0, err)
 //
 | _(*otherwise*) =>
 let
@@ -500,6 +549,34 @@ if
 then (d2e) else
 d2exp_dap0_errck(d2e.lctn(), d2e1)
 end (*let*) // end of [f0_dap0(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dapp
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Edapp
+(d2f0
+,npf1, d2es) = d2e.node()
+val
+d2f0 = tread12_d2exp(d2f0, err)
+val
+d2es = tread12_d2explst(d2es, err)
+in//let
+if
+(e00=err)
+then (d2e) else
+let
+val loc = d2e.lctn() in
+d2exp_dapp_errck(loc,d2f0,npf1,d2es)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_dapp(d2e,err)]
 //
 (* ****** ****** *)
 //
