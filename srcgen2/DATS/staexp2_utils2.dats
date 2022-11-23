@@ -198,7 +198,7 @@ s2exp_make_node
 end (*let*) // end of [S2Elam0(...)]
 //
 |
-S2Efun0
+S2Efun1
 ( f2cl, npf1
 , s2es, s2e1) =>
 let
@@ -217,8 +217,8 @@ flag <= fval
 then s2e0 else
 s2exp_make_node
 ( s2e0.sort()
-, S2Efun0(f2cl, npf1, s2es, s2e1))
-end (*let*) // end of [S2Efun0(...)]
+, S2Efun1(f2cl, npf1, s2es, s2e1))
+end (*let*) // end of [S2Efun1(...)]
 //
 |
 S2Emet0

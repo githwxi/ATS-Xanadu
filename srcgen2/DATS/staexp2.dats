@@ -561,38 +561,38 @@ end (*let*)//end-of-[s2exp_lams(svss,body)]
 (* ****** ****** *)
 //
 #implfun
-s2exp_fun0_nil
+s2exp_fun1_nil
 (npf1, farg, fres) =
 (
-s2exp_fun0_full
+s2exp_fun1_full
 (f2cl, npf1, farg, fres)
 ) where
 {
   val f2cl = F2CLfun((*void*))
-} (*where*) // end of [s2exp_fun0_nil(...)]
+} (*where*) // end of [s2exp_fun1_nil(...)]
 //
 #implfun
-s2exp_fun0_all
+s2exp_fun1_all
 (npf1, farg, fres) =
 (
-s2exp_fun0_full
+s2exp_fun1_full
 (f2cl, npf1, farg, fres)
 ) where
 {
   val f2cl = F2CLfun((*void*))
-} (*where*) // end of [s2exp_fun0_all(...)]
+} (*where*) // end of [s2exp_fun1_all(...)]
 //
 (* ****** ****** *)
 //
 #implfun
-s2exp_fun0_full
+s2exp_fun1_full
 ( f2cl
 , npf1, farg, fres) =
 (
 s2exp_make_node
 (
 s2t0,
-S2Efun0
+S2Efun1
 ( f2cl
 , npf1, farg, fres))) where
 {
@@ -602,7 +602,7 @@ if
 f2clknd_linq(f2cl)
 then (the_sort2_vtbx)
 else (the_sort2_tbox) ) : sort2
-} (*where*) // end of [s2exp_fun0_full(...)]
+} (*where*) // end of [s2exp_fun1_full(...)]
 //
 (* ****** ****** *)
 

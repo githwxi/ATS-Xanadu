@@ -2007,7 +2007,7 @@ val s2e0 =
 f1_sres(ltok, s2e0, sess)
 //
 in
-s2exp_fun0_nil(npf1,sarg,s2e0)
+s2exp_fun1_nil(npf1,sarg,s2e0)
 end (*let*) // end of [list_nil]
 |
 list_cons(s1u1, s1us) =>
@@ -2214,7 +2214,7 @@ D2ARGsta0
 s2exp_uni0(s2vs, s2ps, fres)
 |
 D2ARGdyn1(s2e1) =>
-s2exp_fun0_full
+s2exp_fun1_full
 ( f2cl
 , npf1, s2es, fres) where
 {
@@ -2226,7 +2226,7 @@ D2ARGdyn2(npf1, s2es) =>
 let
 val f2cl = f1_f2cl(i0)
 in//let
-  s2exp_fun0_full
+  s2exp_fun1_full
   (f2cl, npf1, s2es, fres) end
 //
 end (*let*) // end of [f1_d2a1(...)]
@@ -2271,7 +2271,7 @@ s2exp_uni0(s2vs, s2ps, fres)
 |
 D2ARGdyn1
 (   s2e1   ) =>
-s2exp_fun0_full
+s2exp_fun1_full
 ( f2cl
 , npf1, s2es, fres) where
 {
@@ -2284,7 +2284,7 @@ D2ARGdyn2
 let
 val f2cl = f1_f2cl(i0)
 in//let
-  s2exp_fun0_full
+  s2exp_fun1_full
   (f2cl, npf1, s2es, fres) end
 //
 end (*let*) // end of [list_cons]

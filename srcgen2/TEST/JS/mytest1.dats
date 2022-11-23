@@ -50,7 +50,7 @@ fint3
 (
 a:i0, b:b0
 ): type =
-$rec{x= sint(a), y= bool(b1)}
+$rec{x= sint(a), y= bool(b)}
 //
 (* ****** ****** *)
 ////
