@@ -366,6 +366,38 @@ s2exp_errck
 endlet // end of [s2exp_lam0_errck(...)]
 (* ****** ****** *)
 fun
+s2exp_fun1_errck
+( s2t0: sort2
+, f2cl: f2clknd
+, npf1: (sint)
+, s2es: s2explst
+, sres
+: s2exp(*body*)): s2exp =
+let
+val
+lvl0 = gmax
+(errvl(s2es), errvl(sres)) in//let
+s2exp_errck
+(lvl0+1
+,s2exp
+ (s2t0, S2Efun1(f2cl,npf1,s2es,sres)))
+endlet // end of [s2exp_fun1_errck(...)]
+(* ****** ****** *)
+fun
+s2exp_met0_errck
+( s2t0: sort2
+, s2es: s2explst
+, s2e1
+: s2exp(*body*)): s2exp =
+let
+val
+lvl0 = gmax
+(errvl(s2es), errvl(s2e1)) in//let
+s2exp_errck
+(lvl0+1,s2exp(s2t0,S2Emet0(s2es,s2e1)))
+endlet // end of [s2exp_met0_errck(...)]
+(* ****** ****** *)
+fun
 s2exp_exi0_errck
 ( s2t0: sort2
 , s2vs: s2varlst
@@ -398,10 +430,21 @@ s2exp_errck
 endlet // end of [s2exp_uni0_errck(...)]
 (* ****** ****** *)
 fun
+s2exp_text_errck
+( s2t0: sort2
+, name: (strn)
+, s2es: s2explst): s2exp =
+let
+val lvl0 = errvl(s2es) in//let
+s2exp_errck
+(lvl0+1,s2exp(s2t0,S2Etext(name,s2es)))
+endlet // end of [s2exp_text_errck(...)]
+(* ****** ****** *)
+fun
 s2exp_trcd_errck
 ( s2t0: sort2
 , knd0: trcdknd
-, npf1: sint
+, npf1: (sint)
 , lses: l2s2elst): s2exp =
 let
 val lvl0 = errvl(lses) in//let
@@ -469,9 +512,14 @@ s2e0.node() of
 |S2Eapps _ => f0_apps(s2e0, err)
 |S2Elam0 _ => f0_lam0(s2e0, err)
 //
+|S2Efun1 _ => f0_fun1(s2e0, err)
+//
+|S2Emet0 _ => f0_met0(s2e0, err)
+//
 |S2Eexi0 _ => f0_exi0(s2e0, err)
 |S2Euni0 _ => f0_uni0(s2e0, err)
 //
+|S2Etext _ => f0_text(s2e0, err)
 |S2Etrcd _ => f0_trcd(s2e0, err)
 //
 |S2Eimpr _ => f0_impr(s2e0, err)
@@ -596,6 +644,68 @@ end (*let*) // end of [ f0_lam0(s2e,err) ]
 (* ****** ****** *)
 //
 fun
+f0_fun1
+(s2e: s2exp
+,err: &sint >> _): s2exp =
+let
+//
+val e00 = err
+//
+val-
+S2Efun1
+(f2cl, npf1
+,s2es, sres) = s2e.node()
+//
+val
+s2es =
+tread12_s2explst(s2es, err)
+val
+sres = tread12_s2exp(sres, err)
+//
+in//let
+if
+(e00 = err)
+then (s2e0) else
+let
+val s2t0 = s2e0.sort() in
+s2exp_fun1_errck
+(s2t0 , f2cl , npf1 , s2es , sres)
+end (*let*) // else // end-of-(if)
+end (*let*) // end of [ f0_fun1(s2e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_met0
+(s2e: s2exp
+,err: &sint >> _): s2exp =
+let
+//
+val e00 = err
+//
+val-
+S2Emet0
+(s2es, s2e1) = s2e.node()
+//
+val
+s2es =
+tread12_s2explst(s2es, err)
+val
+s2e1 = tread12_s2exp(s2e1, err)
+//
+in//let
+if
+(e00 = err)
+then (s2e0) else
+let
+val s2t0 = s2e0.sort() in
+s2exp_met0_errck(s2t0, s2es, s2e1)
+end (*let*) // else // end-of-(if)
+end (*let*) // end of [ f0_met0(s2e,err) ]
+//
+(* ****** ****** *)
+//
+fun
 f0_exi0
 (s2e: s2exp
 ,err: &sint >> _): s2exp =
@@ -654,6 +764,33 @@ val s2t0 = s2e0.sort() in
 s2exp_uni0_errck(s2t0,s2vs,s2ps,s2e1)
 end (*let*) // else // end-of-(if)
 end (*let*) // end of [ f0_uni0(s2e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_text
+(s2e: s2exp
+,err: &sint >> _): s2exp =
+let
+//
+val e00 = err
+//
+val-
+S2Etext
+(name, s2es) = s2e.node()
+//
+val
+s2es = tread12_s2explst(s2es, err)
+//
+in//let
+if
+(e00 = err)
+then (s2e0) else
+let
+val s2t0 = s2e0.sort() in
+s2exp_text_errck(s2t0, name, s2es)
+end (*let*) // else // end-of-(if)
+end (*let*) // end of [ f0_text(s2e,err) ]
 //
 (* ****** ****** *)
 //
