@@ -366,6 +366,38 @@ s2exp_errck
 endlet // end of [s2exp_lam0_errck(...)]
 (* ****** ****** *)
 fun
+s2exp_exi0_errck
+( s2t0: sort2
+, s2vs: s2varlst
+, s2ps: s2explst
+, s2e1
+: s2exp(*body*)): s2exp =
+let
+val
+lvl0 = gmax
+(errvl(s2ps), errvl(s2e1)) in//let
+s2exp_errck
+(lvl0+1
+,s2exp(s2t0,S2Eexi0(s2vs, s2ps, s2e1)))
+endlet // end of [s2exp_exi0_errck(...)]
+(* ****** ****** *)
+fun
+s2exp_uni0_errck
+( s2t0: sort2
+, s2vs: s2varlst
+, s2ps: s2explst
+, s2e1
+: s2exp(*body*)): s2exp =
+let
+val
+lvl0 = gmax
+(errvl(s2ps), errvl(s2e1)) in//let
+s2exp_errck
+(lvl0+1
+,s2exp(s2t0,S2Euni0(s2vs, s2ps, s2e1)))
+endlet // end of [s2exp_uni0_errck(...)]
+(* ****** ****** *)
+fun
 s2exp_trcd_errck
 ( s2t0: sort2
 , knd0: trcdknd
@@ -436,6 +468,9 @@ s2e0.node() of
 //
 |S2Eapps _ => f0_apps(s2e0, err)
 |S2Elam0 _ => f0_lam0(s2e0, err)
+//
+|S2Eexi0 _ => f0_exi0(s2e0, err)
+|S2Euni0 _ => f0_uni0(s2e0, err)
 //
 |S2Etrcd _ => f0_trcd(s2e0, err)
 //
@@ -545,10 +580,6 @@ val-
 S2Elam0
 (s2vs, s2e1) = s2e.node()
 //
-val () =
-prerrln
-("f0_lam0: s2e1 = ", s2e1)
-//
 val
 s2e1 = tread12_s2exp(s2e1, err)
 //
@@ -565,6 +596,68 @@ end (*let*) // end of [ f0_lam0(s2e,err) ]
 (* ****** ****** *)
 //
 fun
+f0_exi0
+(s2e: s2exp
+,err: &sint >> _): s2exp =
+let
+//
+val e00 = err
+//
+val-
+S2Eexi0
+(s2vs
+,s2ps, s2e1) = s2e.node()
+//
+val
+s2ps =
+tread12_s2explst(s2ps, err)
+val
+s2e1 = tread12_s2exp(s2e1, err)
+//
+in//let
+if
+(e00 = err)
+then (s2e0) else
+let
+val s2t0 = s2e0.sort() in
+s2exp_exi0_errck(s2t0,s2vs,s2ps,s2e1)
+end (*let*) // else // end-of-(if)
+end (*let*) // end of [ f0_exi0(s2e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_uni0
+(s2e: s2exp
+,err: &sint >> _): s2exp =
+let
+//
+val e00 = err
+//
+val-
+S2Euni0
+(s2vs
+,s2ps, s2e1) = s2e.node()
+//
+val
+s2ps =
+tread12_s2explst(s2ps, err)
+val
+s2e1 = tread12_s2exp(s2e1, err)
+//
+in//let
+if
+(e00 = err)
+then (s2e0) else
+let
+val s2t0 = s2e0.sort() in
+s2exp_uni0_errck(s2t0,s2vs,s2ps,s2e1)
+end (*let*) // else // end-of-(if)
+end (*let*) // end of [ f0_uni0(s2e,err) ]
+//
+(* ****** ****** *)
+//
+fun
 f0_trcd
 (s2e: s2exp
 ,err: &sint >> _): s2exp =
@@ -577,9 +670,11 @@ S2Etrcd
 (knd0
 ,npf1, lses) = s2e.node()
 //
+(*
 val () =
 prerrln
 ("f0_trcd: lses = ", lses)
+*)
 //
 val
 lses = tread12_l2s2elst(lses, err)
