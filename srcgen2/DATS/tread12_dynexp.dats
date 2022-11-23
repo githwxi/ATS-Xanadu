@@ -307,6 +307,61 @@ endlet // end of [d2exp_dapp_errck(...)]
 //
 (* ****** ****** *)
 //
+fun
+d2exp_addr_errck
+(loc0: loc_t
+,d2e1: d2exp): d2exp =
+let
+val lvl0 = errvl(d2e1) in//let
+d2exp_errck
+(lvl0+1,d2exp(loc0, D2Eaddr(d2e1)))
+endlet // end of [d2exp_addr_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d2exp_fold_errck
+(loc0: loc_t
+,d2e1: d2exp): d2exp =
+let
+val lvl0 = errvl(d2e1) in//let
+d2exp_errck
+(lvl0+1,d2exp(loc0, D2Efold(d2e1)))
+endlet // end of [d2exp_fold_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d2exp_eval_errck
+(loc0: loc_t
+,d2e1: d2exp): d2exp =
+let
+val lvl0 = errvl(d2e1) in//let
+d2exp_errck
+(lvl0+1,d2exp(loc0, D2Eeval(d2e1)))
+endlet // end of [d2exp_eval_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d2exp_free_errck
+(loc0: loc_t
+,d2e1: d2exp): d2exp =
+let
+val lvl0 = errvl(d2e1) in//let
+d2exp_errck
+(lvl0+1,d2exp(loc0, D2Efree(d2e1)))
+endlet // end of [d2exp_free_errck(...)]
+//
+(* ****** ****** *)
+(*
+HX-2022-11-23:
+Various tread12-functions for gleaning
+errors of unboundness (that is, names that
+are used but not declared)
+*)
+(* ****** ****** *)
+//
 #implfun
 tread12_d2pat
 ( d2p0, err ) =
@@ -518,6 +573,11 @@ val (  ) = err := err+1 }
 |D2Edap0 _ => f0_dap0(d2e0, err)
 |D2Edapp _ => f0_dapp(d2e0, err)
 //
+|D2Eaddr _ => f0_addr(d2e0, err)
+|D2Efold _ => f0_fold(d2e0, err)
+|D2Eeval _ => f0_eval(d2e0, err)
+|D2Efree _ => f0_free(d2e0, err)
+//
 | _(*otherwise*) =>
 let
 val lvl0 = 1
@@ -577,6 +637,90 @@ val loc = d2e.lctn() in
 d2exp_dapp_errck(loc,d2f0,npf1,d2es)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_dapp(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_addr
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Eaddr(d2e1) = d2e.node()
+val
+d2e1 = tread12_d2exp(d2e1, err)
+in//let
+if
+(e00=err)
+then (d2e) else
+d2exp_addr_errck(d2e.lctn(), d2e1)
+end (*let*) // end of [f0_addr(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fold
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Efold(d2e1) = d2e.node()
+val
+d2e1 = tread12_d2exp(d2e1, err)
+in//let
+if
+(e00=err)
+then (d2e) else
+d2exp_fold_errck(d2e.lctn(), d2e1)
+end (*let*) // end of [f0_fold(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_eval
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Eeval(d2e1) = d2e.node()
+val
+d2e1 = tread12_d2exp(d2e1, err)
+in//let
+if
+(e00=err)
+then (d2e) else
+d2exp_eval_errck(d2e.lctn(), d2e1)
+end (*let*) // end of [f0_eval(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_free
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Efree(d2e1) = d2e.node()
+val
+d2e1 = tread12_d2exp(d2e1, err)
+in//let
+if
+(e00=err)
+then (d2e) else
+d2exp_free_errck(d2e.lctn(), d2e1)
+end (*let*) // end of [f0_free(d2e,err)]
 //
 (* ****** ****** *)
 //
