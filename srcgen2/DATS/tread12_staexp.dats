@@ -378,6 +378,41 @@ s2exp_errck
 ,s2exp(s2t0,S2Etrcd(knd0, npf1, lses)))
 endlet // end of [s2exp_trcd_errck(...)]
 (* ****** ****** *)
+fun
+s2exp_impr_errck
+( s2t0: sort2
+, loc1: loc_t
+, s2e1: s2exp): s2exp =
+let
+val lvl0 = errvl(s2e1) in//let
+s2exp_errck
+(lvl0+1,s2exp(s2t0,S2Eimpr(loc1,s2e1)))
+endlet // end of [s2exp_impr_errck(...)]
+(* ****** ****** *)
+fun
+s2exp_prgm_errck
+( s2t0: sort2
+, loc1: loc_t
+, s2e1: s2exp): s2exp =
+let
+val lvl0 = errvl(s2e1) in//let
+s2exp_errck
+(lvl0+1,s2exp(s2t0,S2Eprgm(loc1,s2e1)))
+endlet // end of [s2exp_prgm_errck(...)]
+(* ****** ****** *)
+fun
+s2exp_cast_errck
+( s2t0: sort2
+, loc1: loc_t
+, s2e1: s2exp
+, s2t2: sort2): s2exp =
+let
+val lvl0 = errvl(s2e1) in//let
+s2exp_errck
+( lvl0+1
+, s2exp(s2t0, S2Ecast(loc1,s2e1,s2t2)))
+endlet // end of [s2exp_cast_errck(...)]
+(* ****** ****** *)
 //
 #implfun
 tread12_s2exp
@@ -403,6 +438,10 @@ s2e0.node() of
 |S2Elam0 _ => f0_lam0(s2e0, err)
 //
 |S2Etrcd _ => f0_trcd(s2e0, err)
+//
+|S2Eimpr _ => f0_impr(s2e0, err)
+|S2Eprgm _ => f0_prgm(s2e0, err)
+|S2Ecast _ => f0_cast(s2e0, err)
 //
 | _(*otherwise*) =>
 let
@@ -554,6 +593,90 @@ val s2t0 = s2e0.sort() in
 s2exp_trcd_errck(s2t0,knd0,npf1,lses)
 end (*let*) // else // end-of-(if)
 end (*let*) // end of [ f0_trcd(s2e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_impr
+(s2e: s2exp
+,err: &sint >> _): s2exp =
+let
+//
+val e00 = err
+//
+val-
+S2Eimpr
+(loc1, s2e1) = s2e.node()
+//
+val
+s2e1 = tread12_s2exp(s2e1, err)
+//
+in//let
+if
+(e00 = err)
+then (s2e0) else
+let
+val s2t0 = s2e0.sort() in
+s2exp_impr_errck(s2t0, loc1, s2e1)
+end (*let*) // else // end-of-(if)
+end (*let*) // end of [ f0_impr(s2e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_prgm
+(s2e: s2exp
+,err: &sint >> _): s2exp =
+let
+//
+val e00 = err
+//
+val-
+S2Eprgm
+(loc1, s2e1) = s2e.node()
+//
+val
+s2e1 = tread12_s2exp(s2e1, err)
+//
+in//let
+if
+(e00 = err)
+then (s2e0) else
+let
+val s2t0 = s2e0.sort() in
+s2exp_prgm_errck(s2t0, loc1, s2e1)
+end (*let*) // else // end-of-(if)
+end (*let*) // end of [ f0_prgm(s2e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_cast
+(s2e: s2exp
+,err: &sint >> _): s2exp =
+let
+//
+val e00 = err
+//
+val-
+S2Ecast
+(loc1
+,s2e1, s2t2) = s2e.node()
+//
+val
+s2e1 = tread12_s2exp(s2e1, err)
+val
+s2t2 = tread12_sort2(s2t2, err)
+//
+in//let
+if
+(e00 = err)
+then (s2e0) else
+let
+val s2t0 = s2e0.sort() in
+s2exp_cast_errck(s2t0,loc1,s2e1,s2t2)
+end (*let*) // else // end-of-(if)
+end (*let*) // end of [ f0_cast(s2e,err) ]
 //
 (* ****** ****** *)
 //

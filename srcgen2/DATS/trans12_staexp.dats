@@ -1157,7 +1157,7 @@ S1El2st(xs, _) =>
 list_length(xs) | _ => -1): sint
 //
 in//let
-  s2exp_fun0_all
+  s2exp_fun1_all
   (npf1, s2es, s2e2) where
 { val
   s2e2 =

@@ -260,11 +260,11 @@ S2Elam0(s2vs,s2e1) =>
 print("S2Elam0(",s2vs,";",s2e1,")")
 //
 |
-S2Efun0
+S2Efun1
 ( f2cl
 , npf1, s2es, s2r0) =>
 (
-print("S2Efun0(",f2cl,";");
+print("S2Efun1(",f2cl,";");
 print(npf1,";",s2es,";",s2r0,")") )
 //
 |

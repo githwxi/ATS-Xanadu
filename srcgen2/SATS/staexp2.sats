@@ -441,12 +441,12 @@ S2Elam0 of
 (s2varlst(*arg*), s2exp)//abstr.
 //
 |
-S2Efun0 of
+S2Efun1 of
 ( // function type
   f2clknd
 , sint(*npf*)
 , s2explst(*args*), s2exp(*res*)
-) (* end of S2Efun *)
+) (* end of S2Efun1 *)
 //
 | S2Emet0 of // HX: for term-check
   (s2explst(*mets*), s2exp(*body*))
@@ -477,11 +477,10 @@ S2Elist of s2explst // HX: temporary use
   (loc_t, s2exp) // sort-checking error
 | S2Eprgm of // HX: for storing
   (loc_t, s2exp) // sort-checking error
-//
 | S2Ecast of // HX-2018-12-23: for storing
-  (loc_t, s2exp, sort2) // sort-checking error
+  (loc_t,s2exp,sort2) // sort-checking error
 //
-| S2Enone0 // of () // HX: error or special
+| S2Enone0 of () // HX: error or special sth
 //
 (*
 | S2Eg1mac of
@@ -563,17 +562,17 @@ s2exp_lams
 : s2varlstlst, s2e0: s2exp): s2exp
 (* ****** ****** *)
 fun
-s2exp_fun0_nil
+s2exp_fun1_nil
 ( npf1: sint
 , farg
 : s2explst, fres: s2exp): s2exp
 fun
-s2exp_fun0_all
+s2exp_fun1_all
 ( npf1: sint
 , farg
 : s2explst, fres: s2exp): s2exp
 fun
-s2exp_fun0_full
+s2exp_fun1_full
 ( f2cl
 : f2clknd
 , npf1: sint
