@@ -1072,9 +1072,11 @@ val
 s2cs =
 s1exp_get_s2cstlst(env0,s1f0)
 //
+(*
 val () =
 prerrln
 ("trans12_s1exp: f0_a2pp: s2cs = ", s2cs)
+*)
 //
 in//let
 //

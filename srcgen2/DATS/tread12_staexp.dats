@@ -45,6 +45,8 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/xbasics.sats"
+(* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
@@ -363,6 +365,19 @@ s2exp_errck
 (lvl0+1,s2exp(s2t0,S2Elam0(s2vs,s2e1)))
 endlet // end of [s2exp_lam0_errck(...)]
 (* ****** ****** *)
+fun
+s2exp_trcd_errck
+( s2t0: sort2
+, knd0: trcdknd
+, npf1: sint
+, lses: l2s2elst): s2exp =
+let
+val lvl0 = errvl(lses) in//let
+s2exp_errck
+(lvl0+1
+,s2exp(s2t0,S2Etrcd(knd0, npf1, lses)))
+endlet // end of [s2exp_trcd_errck(...)]
+(* ****** ****** *)
 //
 #implfun
 tread12_s2exp
@@ -371,16 +386,9 @@ tread12_s2exp
 case+
 s2e0.node() of
 //
-|S2Eid0 _ =>
-s2exp_errck
-(lvl0, s2e0) where
-{
-val lvl0 = 1
-val (  ) = err := err+1 }
-//
 |S2Eint _ => s2e0
+|S2Ebtf _ => s2e0
 |S2Echr _ => s2e0
-|S2Eflt _ => s2e0
 |S2Estr _ => s2e0
 //
 |S2Ecst _ => s2e0
@@ -393,6 +401,8 @@ val (  ) = err := err+1 }
 //
 |S2Eapps _ => f0_apps(s2e0, err)
 |S2Elam0 _ => f0_lam0(s2e0, err)
+//
+|S2Etrcd _ => f0_trcd(s2e0, err)
 //
 | _(*otherwise*) =>
 let
@@ -484,7 +494,6 @@ end (*let*) // end of [ f0_apps(s2e,err) ]
 //
 (* ****** ****** *)
 //
-//
 fun
 f0_lam0
 (s2e: s2exp
@@ -496,6 +505,10 @@ val e00 = err
 val-
 S2Elam0
 (s2vs, s2e1) = s2e.node()
+//
+val () =
+prerrln
+("f0_lam0: s2e1 = ", s2e1)
 //
 val
 s2e1 = tread12_s2exp(s2e1, err)
@@ -512,12 +525,62 @@ end (*let*) // end of [ f0_lam0(s2e,err) ]
 //
 (* ****** ****** *)
 //
-(*
+fun
+f0_trcd
+(s2e: s2exp
+,err: &sint >> _): s2exp =
+let
+//
+val e00 = err
+//
+val-
+S2Etrcd
+(knd0
+,npf1, lses) = s2e.node()
+//
+val () =
+prerrln
+("f0_trcd: lses = ", lses)
+//
+val
+lses = tread12_l2s2elst(lses, err)
+//
+in//let
+if
+(e00 = err)
+then (s2e0) else
+let
+val s2t0 = s2e0.sort() in
+s2exp_trcd_errck(s2t0,knd0,npf1,lses)
+end (*let*) // else // end-of-(if)
+end (*let*) // end of [ f0_trcd(s2e,err) ]
+//
+(* ****** ****** *)
+//
+// (*
 val (  ) =
 prerrln("tread12_s2exp: s2e0 = ", s2e0)
-*)
+// *)
 //
-} (*where*)//end[tread12_s2exp(s2e0,err)]
+} (*where*)//end[ tread12_s2exp(s2e0,err) ]
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_l2s2e
+  (ls2e, err) =
+let
+//
+val e00 = err
+//
+val+
+S2LAB(lab,s2e) = ls2e
+val s2e = tread12_s2exp(s2e, err)
+//
+in//let
+if
+(e00=err) then ls2e else S2LAB(lab,s2e)
+endlet // end of [tread12_l2s2e(ls2e,err)]
 //
 (* ****** ****** *)
 //
