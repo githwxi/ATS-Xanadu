@@ -468,6 +468,39 @@ print
 (f2as,";",sres,";",arrw,";",body,")"))
 //
 |
+D2Eaddr(d2e1) =>
+(
+  print("D2Eaddr(", d2e1, ")"))
+|
+D2Efold(d2e1) =>
+(
+  print("D2Efold(", d2e1, ")"))
+|
+D2Eeval(d2e1) =>
+(
+  print("D2Eeval(", d2e1, ")"))
+|
+D2Efree(d2e1) =>
+(
+  print("D2Efree(", d2e1, ")"))
+//
+|
+D2Eraise(d2e1) =>
+(
+  print("D2Eraise(", d2e1, ")"))
+//
+|
+D2Elazy0(d2e1) =>
+(
+  print("D2Elazy0(", d2e1, ")"))
+|
+D2Elazy1
+( d2e1 , d2es ) =>
+(
+print
+("D2Elazy1(", d2e1, ";", d2es, ")"))
+//
+|
 D2Eanno
 (d2e1,s1e2,s2e2) =>
 ( print("D2Eanno(")

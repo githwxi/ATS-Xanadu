@@ -314,7 +314,7 @@ d2exp_addr_errck
 let
 val lvl0 = errvl(d2e1) in//let
 d2exp_errck
-(lvl0+1,d2exp(loc0, D2Eaddr(d2e1)))
+(lvl0+1, d2exp(loc0, D2Eaddr(d2e1)))
 endlet // end of [d2exp_addr_errck(...)]
 //
 (* ****** ****** *)
@@ -326,7 +326,7 @@ d2exp_fold_errck
 let
 val lvl0 = errvl(d2e1) in//let
 d2exp_errck
-(lvl0+1,d2exp(loc0, D2Efold(d2e1)))
+(lvl0+1, d2exp(loc0, D2Efold(d2e1)))
 endlet // end of [d2exp_fold_errck(...)]
 //
 (* ****** ****** *)
@@ -338,7 +338,7 @@ d2exp_eval_errck
 let
 val lvl0 = errvl(d2e1) in//let
 d2exp_errck
-(lvl0+1,d2exp(loc0, D2Eeval(d2e1)))
+(lvl0+1, d2exp(loc0, D2Eeval(d2e1)))
 endlet // end of [d2exp_eval_errck(...)]
 //
 (* ****** ****** *)
@@ -350,8 +350,43 @@ d2exp_free_errck
 let
 val lvl0 = errvl(d2e1) in//let
 d2exp_errck
-(lvl0+1,d2exp(loc0, D2Efree(d2e1)))
+(lvl0+1, d2exp(loc0, D2Efree(d2e1)))
 endlet // end of [d2exp_free_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d2exp_raise_errck
+(loc0: loc_t
+,d2e1: d2exp): d2exp =
+let
+val lvl0 = errvl(d2e1) in//let
+d2exp_errck
+(lvl0+1, d2exp(loc0, D2Eraise(d2e1)))
+endlet // end of [d2exp_raise_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d2exp_lazy0_errck
+(loc0: loc_t
+,d2e1: d2exp): d2exp =
+let
+val lvl0 = errvl(d2e1) in//let
+d2exp_errck
+(lvl0+1, d2exp(loc0, D2Elazy0(d2e1)))
+endlet // end of [d2exp_lazy0_errck(...)]
+//
+fun
+d2exp_lazy1_errck
+(loc0: loc_t
+,d2e1: d2exp
+,d2es: d2explst): d2exp =
+let
+val lvl0 = errvl(d2e1) in//let
+d2exp_errck
+(lvl0+1,d2exp(loc0,D2Elazy1(d2e1,d2es)))
+endlet // end of [d2exp_llazy1_errck(...)]
 //
 (* ****** ****** *)
 (*
@@ -578,6 +613,11 @@ val (  ) = err := err+1 }
 |D2Eeval _ => f0_eval(d2e0, err)
 |D2Efree _ => f0_free(d2e0, err)
 //
+|D2Eraise _ => f0_raise(d2e0, err)
+//
+|D2Elazy0 _ => f0_lazy0(d2e0, err)
+|D2Elazy1 _ => f0_lazy1(d2e0, err)
+//
 | _(*otherwise*) =>
 let
 val lvl0 = 1
@@ -721,6 +761,70 @@ if
 then (d2e) else
 d2exp_free_errck(d2e.lctn(), d2e1)
 end (*let*) // end of [f0_free(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_raise
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Eraise(d2e1) = d2e.node()
+val
+d2e1 = tread12_d2exp(d2e1, err)
+in//let
+if
+(e00=err)
+then (d2e) else
+d2exp_raise_errck(d2e.lctn(), d2e1)
+end (*let*) // end of [f0_raise(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_lazy0
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Elazy0(d2e1) = d2e.node()
+val
+d2e1 = tread12_d2exp(d2e1, err)
+in//let
+if
+(e00=err)
+then (d2e) else
+d2exp_lazy0_errck(d2e.lctn(), d2e1)
+end (*let*) // end of [f0_lazy0(d2e,err)]
+//
+fun
+f0_lazy1
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Elazy1
+(d2e1, d2es) = d2e.node()
+val
+d2e1 = tread12_d2exp(d2e1, err)
+val
+d2es = tread12_d2explst(d2es, err)
+in//let
+if
+(e00=err)
+then (d2e) else
+d2exp_lazy1_errck(d2e.lctn(),d2e1,d2es)
+end (*let*) // end of [f0_lazy1(d2e,err)]
 //
 (* ****** ****** *)
 //
