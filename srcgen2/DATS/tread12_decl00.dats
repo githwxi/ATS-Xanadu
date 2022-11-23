@@ -79,15 +79,46 @@ end (*let*) // end-of(d2ecl_errck)
 //
 fun
 d2ecl_local0_errck
-( loc0: loc_t
-, dcs1: d2eclist
-, dcs2: d2eclist): d2ecl =
+( loc0
+: loc_t
+, dcs1
+: d2eclist
+, dcs2
+: d2eclist): d2ecl =
 let
 val lvl = 0
 in//let
 d2ecl_errck
 (lvl+1,d2ecl(loc0,D2Clocal0(dcs1,dcs2)))
 end (*let*) // end of [d2ecl_local0_errck]
+//
+(* ****** ****** *)
+//
+fun
+d2ecl_sortdef_errck
+( loc0: loc_t
+, sym1: sym_t
+, def2: s2tex): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1,d2ecl(loc0,D2Csortdef(sym1,def2)))
+end (*let*) // end of [d2ecl_sortdef_errck]
+//
+(* ****** ****** *)
+//
+fun
+d2ecl_sexpdef_errck
+( loc0: loc_t
+, s2c1: s2cst
+, def2: s2exp): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1,d2ecl(loc0,D2Csexpdef(s2c1,def2)))
+end (*let*) // end of [d2ecl_sexpdef_errck]
 //
 (* ****** ****** *)
 
@@ -102,7 +133,12 @@ d2cl.node() of
 D2Cd1ecl _ => d2cl
 //
 |
-D1Clocal0 _ => f0_local0(d2cl, err)
+D2Clocal0 _ => f0_local0(d2cl, err)
+//
+|
+D2Csortdef _ => f0_sortdef(d2cl, err)
+|
+D2Csexpdef _ => f0_sexpdef(d2cl, err)
 //
 |
 _(*otherwise*) =>
@@ -110,8 +146,8 @@ let
 val lvl0 = 1
 in//let
 (
-err := err+1; d2ecl_errck(lvl0,d2cl))
-endlet // end of [ _(* otherwise *) ]
+err := err+1; d2ecl_errck(lvl0, d2cl))
+endlet // end of [ _ (* otherwise *) ]
 //
 ) where // end of [case+(d2cl.node())]
 {
@@ -146,6 +182,56 @@ if
 then dcl else
 d2ecl_local0_errck( loc, dcs1, dcs2 )
 end (*let*) // end of [ f0_local0(dcl,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_sortdef
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D2Csortdef
+(sym1, def2) = dcl.node()
+//
+val
+def2 = tread12_s2tex(def2, err)
+//
+in//let
+if
+(e00=err)
+then (dcl) else
+d2ecl_sortdef_errck(loc, sym1, def2 )
+end (*let*) // end of [f0_sortdef(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_sexpdef
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D2Csexpdef
+(s2c1, def2) = dcl.node()
+//
+val
+def2 = tread12_s2exp(def2, err)
+//
+in//let
+if
+(e00=err)
+then (dcl) else
+d2ecl_sexpdef_errck(loc, s2c1, def2 )
+end (*let*) // end of [f0_sexpdef(dcl,err)]
 //
 (* ****** ****** *)
 //

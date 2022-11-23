@@ -103,11 +103,11 @@ preferred over the functional ones
 s2cst_select_any
   (   s2cs   ) =
 (
-  test1(s2cs)) where
+f0_test1(s2cs)) where
 {
 //
 fun
-test1
+f0_test1
 (
 xs: s2cstlst
 ) : s2cstopt_vt =
@@ -116,33 +116,38 @@ case+ xs of
 |
 list_nil() =>
 (
-  test2(s2cs)
-)
+  f0_test2(s2cs))
 |
 list_cons(x0, xs) =>
 if
 sort2_funq(x0.sort())
 then
-test1(xs) else optn_vt_cons(x0) 
-)
+f0_test1(xs) else optn_vt_cons(x0))
+//
 and
-test2
+f0_test2
 (
 xs: s2cstlst
 ) : s2cstopt_vt =
 (
 case+ xs of
-|
-list_nil() => optn_vt_nil()
-|
-list_cons(x0, xs) => optn_vt_cons(x0)
-)
+|list_nil() => optn_vt_nil()
+|list_cons(x0, xs) => optn_vt_cons(x0)
+) (*case+*) // end of [ f0_test2(xs) ]
 //
-} (*where*) // end of [s2cst_select_any]
+} (*where*) // end of [s2cst_select_any(...)]
 
 (* ****** ****** *)
 
 local
+//
+fun
+mat // match
+( x1: sort2
+, x2: sort2): bool =
+(
+case+ x1 of
+S2Tnone0()=>true | _ =>(x1 <= x2))
 //
 fun
 f0_test1
@@ -188,9 +193,9 @@ case+ s2ts of
 list_nil() =>
 (
 if
-(t2x1 <= s2t1)
+s2t1\mat(t2x1)
 then
-(t2x2 <= s2t2) else false)
+s2t2\mat(t2x2) else false)
 |list_cons(_, _) => false))
 ) (*case+*)//end-[f0_test2(s2ts,s2t1,s2t2)]
 //
@@ -198,6 +203,7 @@ then
 in//local
 (* ****** ****** *)
 
+(*
 #implfun
 s2cst_select_bin
 (s2cs, s2t1, s2t2) =
@@ -232,6 +238,7 @@ f0_test1(s2c1, s2t1, s2t2)
 then optn_vt_cons(s2c1) else loop(s2cs))
 }
 end (*let*) // end of [s2cst_select_bin(...)]
+*)
 
 (* ****** ****** *)
 
@@ -266,7 +273,15 @@ end (*local*)//end-of-[local(s2cst_select/s_bin)]
 (* ****** ****** *)
 
 local
-
+//
+fun
+mat // match
+( x1: sort2
+, x2: sort2): bool =
+(
+case+ x1 of
+S2Tnone0()=>true | _ =>(x1 <= x2))
+//
 fun
 f0_test1
 ( s2c0: s2cst
@@ -290,7 +305,7 @@ S2Tfun1
 | _(* non-S2Tfun1 *) => ( false )
 //
 end (*let*) // end of [f0_test1(s2c0,s2es)]
-
+//
 and
 f0_test2
 ( s2ts
@@ -308,24 +323,24 @@ list_nil() => true
 |
 list_cons _ => false)
 |
-list_cons(s2t0, s2ts) =>
+list_cons(s2t1, s2ts) =>
 (
 case+ s2es of
 |
 list_nil() => false
 |
-list_cons(s2e0, s2es) =>
+list_cons(s2e1, s2es) =>
 (
-  if
-  s2e0.sort() <= s2t0
-  then
-  f0_test2(s2ts, s2es) else false))
+if
+s2e1.sort()\mat(s2t1)
+then f0_test2(s2ts, s2es) else false))
 ) (*case+*) // end of [f0_test2(s2ts,s2es)]
-
+//
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
 
+(*
 #implfun
 s2cst_select_list
   (s2cs, s2es) =
@@ -339,6 +354,7 @@ search$test
 <s2cst>(s2c0) = f0_test1(s2c0, s2es)
 //
 } (*where*)//end-of-[s2cst_select_list(...)]
+*)
 
 (* ****** ****** *)
 
