@@ -405,6 +405,22 @@ d2pat_errck
 endlet // end of [d2pat_rcd2_errck(...)]
 //
 (* ****** ****** *)
+//
+fun
+d2pat_annot_errck
+( loc0: loc_t
+, d2p1: d2pat
+, s1e2: s1exp
+, s2e2
+: s2exp(*annot*)): d2pat =
+let
+val lvl0 = errvl(d2p1) in//let
+d2pat_errck
+( lvl0+1
+, d2pat(loc0,D2Pannot(d2p1,s1e2,s2e2)))
+endlet // end of [d2pat_annot_errck(...)]
+//
+(* ****** ****** *)
 (*
 Various
 errck-functions for d2exp-values
@@ -611,6 +627,22 @@ d2exp_errck
 endlet // end of [d2exp_llazy1_errck(...)]
 //
 (* ****** ****** *)
+//
+fun
+d2exp_annot_errck
+( loc0: loc_t
+, d2e1: d2exp
+, s1e2: s1exp
+, s2e2
+: s2exp(*annot*)): d2exp =
+let
+val lvl0 = errvl(d2e1) in//let
+d2exp_errck
+( lvl0+1
+, d2exp(loc0,D2Eannot(d2e1,s1e2,s2e2)))
+endlet // end of [d2exp_annot_errck(...)]
+//
+(* ****** ****** *)
 (*
 HX-2022-11-23:
 Various tread12-functions for gleaning
@@ -649,6 +681,9 @@ d2p0.node() of
 |D2Ptup0 _ => f0_tup0(d2p0, err)
 |D2Ptup1 _ => f0_tup1(d2p0, err)
 |D2Prcd2 _ => f0_rcd2(d2p0, err)
+//
+|
+D2Pannot _ => f0_annot(d2p0, err)
 //
 | _(*otherwise*) =>
 let
@@ -904,6 +939,36 @@ end (*let*) // end of [f0_rcd2(d2p,err)]
 //
 (* ****** ****** *)
 //
+fun
+f0_annot
+(d2p: d2pat
+,err: &sint >> _): d2pat =
+let
+//
+val e00 = err
+//
+val-
+D2Pannot
+(d2p1
+,s1e2, s2e2) = d2p.node()
+//
+val
+d2p1 = tread12_d2pat(d2p1, err)
+val
+s2e2 = tread12_s2exp(s2e2, err)
+//
+in//let
+if
+(e00=err)
+then (d2p) else
+let
+val loc = d2p.lctn() in
+d2pat_annot_errck(loc,d2p1,s1e2,s2e2)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_annot(d2p,err)]
+//
+(* ****** ****** *)
+//
 (*
 val (  ) =
 prerrln("tread12_d2pat: d2p0 = ", d2p0)
@@ -963,6 +1028,8 @@ D2Ewhere _ => f0_where(d2e0, err)
 //
 |D2Elazy0 _ => f0_lazy0(d2e0, err)
 |D2Elazy1 _ => f0_lazy1(d2e0, err)
+//
+|D2Eannot _ => f0_annot(d2e0, err)
 //
 | _(*otherwise*) =>
 let
@@ -1348,6 +1415,36 @@ if
 then (d2e) else
 d2exp_lazy1_errck(d2e.lctn(),d2e1,d2es)
 end (*let*) // end of [f0_lazy1(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_annot
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Eannot
+(d2e1
+,s1e2, s2e2) = d2e.node()
+//
+val
+d2e1 = tread12_d2exp(d2e1, err)
+val
+s2e2 = tread12_s2exp(s2e2, err)
+//
+in//let
+if
+(e00=err)
+then (d2e) else
+let
+val loc = d2e.lctn() in
+d2exp_annot_errck(loc,d2e1,s1e2,s2e2)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_annot(d2e,err)]
 //
 (* ****** ****** *)
 //
