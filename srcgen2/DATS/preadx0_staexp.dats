@@ -914,7 +914,8 @@ let
 val lvl = gmax(errvl(ses),errvl(srp))
 in//let
 s0exp_errck
-(lvl+1, s0exp(loc,S0Etup1(tkb,opt,ses,srp)))
+( lvl+1
+, s0exp(loc,S0Etup1(tkb,opt,ses,srp)))
 end (*let*) // end of [s0exp_tup1_errck]
 //
 (* ****** ****** *)
@@ -935,7 +936,9 @@ let
 val lvl = gmax(errvl(lses),errvl(lsrb))
 in//let
 s0exp_errck
-(lvl+1, s0exp(loc,S0Ercd2(tkb,opt,lses,lsrb)))
+( lvl+1
+, s0exp
+  (loc, S0Ercd2(tkb, opt, lses, lsrb)))
 end (*let*) // end of [s0exp_rcd2_errck]
 //
 (* ****** ****** *)
@@ -960,7 +963,9 @@ s0exp_errck
 (
 lvl+1,
 s0exp_make_node
-(loc,S0Elam0(tknd,smas,tres,arrw,body,tend)))
+(loc
+,S0Elam0
+ (tknd, smas, tres, arrw, body, tend)))
 end (*let*) // end of [s0exp_lam0_errck]
 //
 (* ****** ****** *)
@@ -975,7 +980,7 @@ let
 val lvl = 0 // errvl(sqs)
 in//let
 s0exp_errck
-(lvl+1, s0exp(loc,S0Euni0(tkb,sqs,tke)))
+(lvl+1,s0exp(loc,S0Euni0(tkb,sqs,tke)))
 end (*let*) // end of [s0exp_uni0_errck]
 //
 fun
@@ -988,13 +993,13 @@ let
 val lvl = 0 // errvl(sqs)
 in//let
 s0exp_errck
-(lvl+1, s0exp(loc,S0Eexi0(tkb,sqs,tke)))
+(lvl+1,s0exp(loc,S0Eexi0(tkb,sqs,tke)))
 end (*let*) // end of [s0exp_exi0_errck]
 //
 (* ****** ****** *)
 //
 fun
-s0exp_anno_errck
+s0exp_annot_errck
 ( loc: loc_t
 , s0e: s0exp
 , s0t: sort0): s0exp =
@@ -1004,21 +1009,23 @@ let
 //HX: errvl for [s0t] is not used
 *)
 in//let
-s0exp_errck(lvl+1,s0exp(loc, S0Eanno(s0e,s0t)))
-end (*let*) // end of [s0exp_anno_errck]
+s0exp_errck
+(lvl+1, s0exp(loc, S0Eannot(s0e, s0t)))
+end (*let*) // end of [s0exp_annot_errck]
 //
 (* ****** ****** *)
 //
 fun
-s0exp_qual_errck
+s0exp_qual0_errck
 ( loc: loc_t
 , tok: token
 , se1: s0exp): s0exp =
 let
   val lvl = s0exp_errvl(se1)
 in//let
-s0exp_errck(lvl+1,s0exp(loc, S0Equal(tok,se1)))
-end (*let*) // end of [s0exp_qual_errck]
+s0exp_errck
+(lvl+1, s0exp(loc, S0Equal0(tok, se1)))
+end (*let*) // end of [s0exp_qual0_errck]
 //
 (* ****** ****** *)
 //
@@ -1258,9 +1265,9 @@ S0Euni0 _ => f0_uni0(s0e, err)
 S0Eexi0 _ => f0_exi0(s0e, err)
 //
 |
-S0Eanno _ => f0_anno(s0e, err)
+S0Eannot _ => f0_annot(s0e, err)
 |
-S0Equal _ => f0_qual(s0e, err)
+S0Equal0 _ => f0_qual0(s0e, err)
 //
 |
 S0Etkerr _ =>
@@ -1588,7 +1595,7 @@ end (*let*) // end of [f0_exi0]
 (* ****** ****** *)
 
 fun
-f0_anno
+f0_annot
 ( s0e
 : s0exp
 , err
@@ -1596,20 +1603,21 @@ f0_anno
 let
 val e00 = err
 val-
-S0Eanno
+S0Eannot
 (se1, st2) = s0e.node()
 val se1 = preadx0_s0exp(se1, err)
 val st2 = preadx0_sort0(st2, err)
 in
 if
-(err = e00)
-then s0e else s0exp_anno_errck(s0e.lctn(),se1,st2)
-end (*let*) // end of [f0_anno]
+(err=e00)
+then (s0e) else
+s0exp_annot_errck(s0e.lctn(),se1,st2)
+end (*let*) // end of [f0_annot(...)]
 
 (* ****** ****** *)
 
 fun
-f0_qual
+f0_qual0
 ( s0e
 : s0exp
 , err
@@ -1617,14 +1625,15 @@ f0_qual
 let
 val e00 = err
 val-
-S0Equal
+S0Equal0
 (tok, se1) = s0e.node()
 val se1 = preadx0_s0exp(se1, err)
 in
 if
 (err = e00)
-then s0e else s0exp_qual_errck(s0e.lctn(),tok,se1)
-end (*let*) // end of [f0_qual]
+then (s0e) else
+s0exp_qual0_errck(s0e.lctn(),tok,se1)
+end (*let*) // end of [f0_qual0(...)]
 
 (* ****** ****** *)
 

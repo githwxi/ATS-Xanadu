@@ -1342,7 +1342,7 @@ s1exp_make_node
 end (*let*) // end of [S0Elam(...)]
 //
 |
-S0Eanno(s0e1, s0t2) =>
+S0Eannot(s0e1, s0t2) =>
 let
 val loc0 = s0e0.lctn()
 val s1e1 =
@@ -1351,19 +1351,19 @@ val s1t2 =
   trans01_sort0(tenv, s0t2)
 in//let
 FXITMatm
-(s1exp(loc0, S1Eanno(s1e1, s1t2)))
-end (*let*) // end of [S0Eanno(_,_)]
+(s1exp(loc0, S1Eannot(s1e1, s1t2)))
+end (*let*) // end of [S0Eannot(_,_)]
 //
 |
-S0Equal(tok1, s0e2) =>
+S0Equal0(tok1, s0e2) =>
 let
 val loc0 = s0e0.lctn()
 val s1e2 =
   trans01_s0exp(tenv, s0e2)
 in
 FXITMatm
-(s1exp(loc0, S1Equal(tok1, s1e2)))
-end (*let*) // end of [S0Equal(_,_)]
+(s1exp(loc0, S1Equal0(tok1, s1e2)))
+end (*let*) // end of [S0Equal0(_,_)]
 //
 | _(*otherwise*) =>
 let

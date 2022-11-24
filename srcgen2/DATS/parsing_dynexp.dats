@@ -235,7 +235,7 @@ in//let
 case+ dps1 of
 |
 list_nil() =>
-d0pat_anno_opt(d0p1, opt1)
+d0pat_annotopt(d0p1, opt1)
 |
 list_cons _ => let
 val d0p2 =
@@ -243,7 +243,7 @@ list_last(dps1)
 val lres =
 (d0p1.lctn() + d0p2.lctn())
 in
-d0pat_anno_opt
+d0pat_annotopt
 (d0pat(lres, D0Papps(d0ps)), opt1)
 end // end of [list_cons]
 //
@@ -410,7 +410,7 @@ let
   val d0p1 = p1_d0pat_atm(buf, err)
   val lres = tqua.lctn() + d0p1.lctn()
 in//let
-err := e00; d0pat(lres, D0Pqual(tok, d0p1))
+err := e00; d0pat(lres,D0Pqual0(tok,d0p1))
 end(*let*) // end of [ T_IDQUA(...) ]
 //
 | _(*otherwise*) =>
@@ -1010,7 +1010,7 @@ val sopt =
 pq_s0exp_anno(buf, err)
 //
 in//let
-  d0exp_anno_opt(d0e0, sopt)
+  d0exp_annotopt(d0e0, sopt)
 end where
 {
 val d0e0 =
@@ -1595,7 +1595,7 @@ T_IDQUA _ => let
 in
   err := e00
 ; d0exp_make_node
-  (lres,D0Equal(tok0,d0e1)) where
+  (lres, D0Equal0(tok0, d0e1)) where
   {
     val lres = tok0.lctn()+d0e1.lctn()
   }
@@ -2486,7 +2486,7 @@ end (*let*) // end-of-(list_cons)
 in//let
 //
 (
-d0exp_anno_opt(d0e0, sopt)) where
+d0exp_annotopt(d0e0, sopt)) where
 {
 //
 val wdcs =

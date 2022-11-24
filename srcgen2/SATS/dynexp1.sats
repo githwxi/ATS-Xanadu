@@ -289,12 +289,12 @@ d1pat_node =
   (token(*knd*), l1d1plst, l1d1plst)
 //
 |
-D1Panno of
-( d1pat, s1exp(*anno*) ) // HX: type-anno
+D1Pannot of
+( d1pat, s1exp(*annot*) ) // HX: type-annot
 //
 |
-D1Pqual of
-( token(*NS*), d1pat(*dpid*) )//qual-d1pat
+D1Pqual0 of
+( token(*NS*), d1pat(*dpid*) ) //qual-d1pat
 //
 |
 D1Pnone0 of ((*void*)) | D1Pnone1 of (d0pat)
@@ -556,15 +556,15 @@ D1Etry0 of
 // D1Etry0
 //
 |
-D1Eanno of
-( d1exp, s1exp(*anno*) ) // HX: type-anno
+D1Eannot of
+( d1exp, s1exp(*annot*) ) // HX: type-annot
 //
 |
-D1Equal of
-( token(*NS*), d1exp(*deid*) )//qual-d1exp
+D1Equal0 of
+( token(*NS*), d1exp(*deid*) ) //qual-d1exp
 //
-| // HX: for temp-names that are to
-D1Eextnam of (token, g1nam) // be expanded
+| // HX: for temp-names that are
+D1Eextnam of (token, g1nam) // to be expanded
 |
 D1Eexists of // HX-2021-01-14: $exists{..}..{..}
 (token, d1explst(*D1Esarglst*), d1exp) // (d1exp)

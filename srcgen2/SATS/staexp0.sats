@@ -849,9 +849,9 @@ S0Euni0 of (token, s0qualst, token)//forall
 |
 S0Eexi0 of (token, s0qualst, token)//exists
 |
-S0Eanno of (s0exp, sort0) // HX: annotation
+S0Eannot of (s0exp, sort0) // HX: annotation
 |
-S0Equal of (token, s0exp) // HX: qual-s0exp
+S0Equal0 of (token, s0exp) // HX: qual-s0exp
 |
 //
 (*
@@ -910,10 +910,12 @@ l0s0e_get_node(l0s0e): s0exp_node
 (* ****** ****** *)
 //
 fun
-s0exp_anno_opt
+s0exp_annotopt
 (s0e: s0exp, opt: sort0opt): s0exp
-fun
-s0exp_make_node
+//
+(* ****** ****** *)
+//
+fun s0exp_make_node
 (loc:loc_t, nod:s0exp_node): s0exp
 #symload s0exp with s0exp_make_node
 //

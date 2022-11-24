@@ -280,9 +280,9 @@ d0pat_node =
 | D0Prcd2 of
   (token, tokenopt, l0d0plst, l0d0p_RBRACE)
 //
-| D0Panno of (d0pat, s0exp) // HX: annotation
+| D0Pannot of (d0pat, s0exp) // HX: annotation
 //
-| D0Pqual of (token, d0pat) // HX: qual-d0pat
+| D0Pqual0 of (token, d0pat) // HX: qual-d0pat
 //
 |
 (*
@@ -352,7 +352,7 @@ f0arg_get_node(f0arg): f0arg_node
 //
 (* ****** ****** *)
 fun
-d0pat_anno_opt
+d0pat_annotopt
 (d0p: d0pat, opt: s0expopt): d0pat
 (* ****** ****** *)
 fun
@@ -468,9 +468,9 @@ D0Efix0 of
 , s0res, f0unarrw, d0exp, tokenopt )
 //
 |
-D0Eanno of (d0exp, s0exp) // HX: annotation
+D0Eannot of (d0exp, s0exp) // HX: annotation
 | // qualified-id
-D0Equal of (token, d0exp) // HX: qual-d0exp
+D0Equal0 of (token, d0exp) // HX: qual-d0exp
 //
 | // HX-2020-11-04: for specifying
 D0Eextnam of (token, g0nam) // external names
@@ -719,7 +719,7 @@ t0inv_get_lctn:t0inv->loc_t
 //
 (* ****** ****** *)
 fun
-d0exp_anno_opt
+d0exp_annotopt
 (d0e: d0exp, opt: s0expopt): d0exp
 (* ****** ****** *)
 //

@@ -203,6 +203,33 @@ d2exp_errvl with d2exp_errvl_lst
 //
 (* ****** ****** *)
 //
+#extern
+fun
+l2d2e_errvl_ldes
+(ldes: l2d2elst): sint
+//
+#implfun
+l2d2e_errvl_ldes
+(   ldes   ) =
+(
+case+ ldes of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(lde1,ldes) =>
+let
+val+
+D2LAB(lab, de1) = lde1 in
+gmax
+( errvl(de1)
+, l2d2e_errvl_ldes(ldes)) end
+endcas // end of [ case+(ldes) ]
+)
+//
+#symload errvl with l2d2e_errvl_ldes
+//
+(* ****** ****** *)
+//
 (*
 HX-2022-11-23:
 A placeholder for the moment
@@ -391,6 +418,21 @@ d2exp_errck
 ( lvl0+1
 , d2exp(loc0,D2Etup1(knd0,npf1,d2es)))
 endlet // end of [d2exp_tup1_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d2exp_rcd2_errck
+( loc0: loc_t
+, knd0: token
+, npf1: (sint)
+, ldes: l2d2elst): d2exp =
+let
+val lvl0 = errvl(ldes) in//let
+d2exp_errck
+( lvl0+1
+, d2exp(loc0,D2Ercd2(knd0,npf1,ldes)))
+endlet // end of [d2exp_rcd2_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -703,6 +745,7 @@ D2Ewhere _ => f0_where(d2e0, err)
 //
 |D2Etup0 _ => f0_tup0(d2e0, err)
 |D2Etup1 _ => f0_tup1(d2e0, err)
+|D2Ercd2 _ => f0_rcd2(d2e0, err)
 //
 |D2Eaddr _ => f0_addr(d2e0, err)
 |D2Efold _ => f0_fold(d2e0, err)
@@ -921,6 +964,35 @@ val loc = d2e.lctn() in
 d2exp_tup1_errck(loc,knd0,npf1,d2es)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_tup1(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_rcd2
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Ercd2
+(knd0
+,npf1, ldes) = d2e.node()
+//
+val
+ldes =
+tread12_l2d2elst(ldes, err)
+//
+in//let
+if
+(e00=err)
+then (d2e) else
+let
+val loc = d2e.lctn() in
+d2exp_rcd2_errck(loc,knd0,npf1,ldes)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_rcd2(d2e,err)]
 //
 (* ****** ****** *)
 //

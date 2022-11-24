@@ -929,29 +929,33 @@ fpemsg(out, dps); fpemsg(out, drp)
 //
 |
 D0Ptup1
-(tbeg
-,topt,d0ps,tend) =>
+( tbeg
+, topt
+, d0ps, tend ) =>
 (
 fpemsg(out, d0ps); fpemsg(out, tend)
 )
 |
 D0Prcd2
-(tbeg
-,topt,ldps,tend) =>
+( tbeg
+, topt
+, ldps, tend ) =>
 (
 fpemsg(out, ldps); fpemsg(out, tend)
 )
 //
 |
-D0Panno(d0p1,s0e2) =>
+D0Pannot
+( d0p1, s0e2 ) =>
 (
-fpemsg(out, d0p1); fpemsg(out, s0e2)
-)
+fpemsg(out, d0p1); fpemsg(out, s0e2))
 //
 |
 D0Ptkerr _ => ( (*void*) )
-|
-D0Perrck(lvl,d0p1) => d0pat_fpemsg(out, d0p)
+//
+// HX-2022-11-23:
+| // [d0pat_fpemsg] should be called here:
+D0Perrck(lvl0,d0p1) => d0pat_fpemsg(out, d0p)
 //
 end(*let*)//end-of-(auxmain(out,d0p))
 //
@@ -1184,13 +1188,13 @@ in//let
 endlet // end of [D0Efix0(_,_,_,_,_,_,_)]
 //
 |
-D0Eanno
+D0Eannot
 (d0e1, s0e2) =>
 (
   fpemsg(out, d0e1); fpemsg(out, s0e2))
 //
 |
-D0Equal
+D0Equal0
 (tok1, d0e2) => fpemsg(out, d0e2)
 //
 |
@@ -1206,7 +1210,8 @@ D0Eexists
 |
 D0Etkerr(tok1) => ()//fpemsg(out,tok1)
 //
-|
+// HX-2022-11-23:
+| // [d0exp_fpemsg] should be called here:
 D0Eerrck(lvl0,d0e1) => d0exp_fpemsg(out, d0e)
 //
 end (*let*) // end-of-[ auxmain(out,d0e) ]

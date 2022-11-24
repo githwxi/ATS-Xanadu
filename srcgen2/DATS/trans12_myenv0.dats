@@ -1419,7 +1419,7 @@ D2Prcd2
 tr12env_add0_l2d2plst(env0, ldps)
 //
 |
-D2Panno
+D2Pannot
 (d2p1, s1e2, s2e2) =>
 (
   tr12env_add0_d2pat(env0, d2p1) )
