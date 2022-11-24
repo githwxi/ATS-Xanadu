@@ -321,7 +321,7 @@ end (*let*) // end of [d0pat_rcd2_errck]
 (* ****** ****** *)
 //
 fun
-d0pat_anno_errck
+d0pat_annot_errck
 ( loc
 : loc_t
 , d0p1: d0pat
@@ -330,8 +330,8 @@ let
   val lvl = d0pat_errvl(d0p1)
 in//let
 d0pat_errck
-(lvl+1, d0pat(loc,D0Panno(d0p1,s0e2)))
-end (*let*) // end of [d0pat_anno_errck]
+(lvl+1, d0pat(loc,D0Pannot(d0p1,s0e2)))
+end (*let*) // end of [d0pat_annot_errck]
 //
 (* ****** ****** *)
 //
@@ -1015,7 +1015,7 @@ end (*let*) // end of [d0exp_fix0_errck]
 (* ****** ****** *)
 //
 fun
-d0exp_anno_errck
+d0exp_annot_errck
 ( loc
 : loc_t
 , d0e1: d0exp
@@ -1024,13 +1024,13 @@ let
 val lvl = d0exp_errvl(d0e1)
 in//let
 d0exp_errck
-(lvl+1, d0exp(loc,D0Eanno(d0e1,s0e2)))
-end (*let*) // end of [d0exp_anno_errck]
+(lvl+1, d0exp(loc,D0Eannot(d0e1,s0e2)))
+end (*let*) // end of [d0exp_annot_errck]
 //
 (* ****** ****** *)
 //
 fun
-d0exp_qual_errck
+d0exp_qual0_errck
 ( loc
 : loc_t
 , tok1: token
@@ -1039,8 +1039,8 @@ let
 val lvl = d0exp_errvl(d0e2)
 in//let
 d0exp_errck
-(lvl+1, d0exp(loc,D0Equal(tok1,d0e2)))
-end (*let*) // end of [d0exp_qual_errck]
+(lvl+1, d0exp(loc,D0Equal0(tok1,d0e2)))
+end (*let*) // end of [d0exp_qual0_errck]
 //
 (* ****** ****** *)
 //
@@ -1054,7 +1054,7 @@ let
 val lvl = 0 in
 d0exp_errck
 (lvl+1,d0exp(loc,D0Eextnam(tok1,gnm2)))
-end (*let*) // end of [d0exp_qual_errck]
+end (*let*) // end of [d0exp_extnam_errck]
 //
 (* ****** ****** *)
 (*
@@ -1103,7 +1103,7 @@ D0Ptup1 _ => f0_tup1(d0p, err)
 D0Prcd2 _ => f0_rcd2(d0p, err)
 //
 |
-D0Panno _ => f0_anno(d0p, err)
+D0Pannot _ => f0_annot(d0p, err)
 //
 |
 D0Ptkerr _ =>
@@ -1256,7 +1256,7 @@ end (*let*) // end of [f0_rcd2(d0p,err)]
 (* ****** ****** *)
 //
 fun
-f0_anno
+f0_annot
 ( d0p: d0pat
 , err: &sint >> _): d0pat =
 let
@@ -1264,7 +1264,7 @@ let
 val e00 = err
 //
 val-
-D0Panno
+D0Pannot
 (d0p1, s0e2) = d0p.node()
 //
 val d0p1 = preadx0_d0pat(d0p1, err)
@@ -1274,8 +1274,8 @@ in//let
 if
 (err=e00)
 then (d0p) else
-d0pat_anno_errck(d0p.lctn(),d0p1,s0e2)
-end (*let*) // end of [f0_anno(d0p,err)]
+d0pat_annot_errck(d0p.lctn(),d0p1,s0e2)
+end (*let*) // end of [f0_annot(d0p,err)]
 //
 (* ****** ****** *)
 
@@ -1379,22 +1379,23 @@ D0Edtsel _ => f0_dtsel(d0e, err)
 |D0Elam0 _ => f0_lam0( d0e, err )
 |D0Efix0 _ => f0_fix0( d0e, err )
 //
-|D0Eanno _ => f0_anno( d0e, err )
+|D0Eannot _ => f0_annot( d0e, err )
 //
-|D0Equal _ => f0_qual( d0e, err )
+|D0Equal0 _ => f0_qual0( d0e, err )
 //
-|
-D0Eextnam _ => f0_extnam(d0e, err)
+|D0Eextnam _ => f0_extnam(d0e, err)
 //
 |
 D0Etkerr(tok) =>
-(err := err+1; d0exp_errck(1, d0e))
+(
+err := err + 1; d0exp_errck(1, d0e))
 //
 |
 _(*otherwise*) =>
-(err := err+1; d0exp_errck(1, d0e))
+(
+err := err + 1; d0exp_errck(1, d0e))
 //
-) where // end-of(case(d0e.node()))
+) where // end-of-(case+(d0e.node()))
 {
 (* ****** ****** *)
 //
@@ -2001,7 +2002,7 @@ end (*let*) // end of [f0_fix0(d0e, err)]
 (* ****** ****** *)
 //
 fun
-f0_anno
+f0_annot
 ( d0e: d0exp
 , err: &sint >> _): d0exp =
 let
@@ -2009,7 +2010,7 @@ let
 val e00 = err
 //
 val-
-D0Eanno
+D0Eannot
 ( d0e1, s0e2) = d0e.node()
 //
 val d0e1 = preadx0_d0exp(d0e1, err)
@@ -2019,13 +2020,13 @@ in//let
 if
 (err=e00)
 then (d0e) else
-d0exp_anno_errck(d0e.lctn(),d0e1,s0e2)
-end (*let*) // end of [f0_anno(d0e,err)]
+d0exp_annot_errck(d0e.lctn(),d0e1,s0e2)
+end (*let*) // end of [f0_annot(d0e,err)]
 //
 (* ****** ****** *)
 //
 fun
-f0_qual
+f0_qual0
 ( d0e: d0exp
 , err: &sint >> _): d0exp =
 let
@@ -2033,7 +2034,7 @@ let
 val e00 = err
 //
 val-
-D0Equal
+D0Equal0
 ( tok1, d0e2) = d0e.node()
 //
 val d0e2 = preadx0_d0exp(d0e2, err)
@@ -2042,8 +2043,8 @@ in//let
 if
 (err=e00)
 then (d0e) else
-d0exp_qual_errck(d0e.lctn(),tok1,d0e2)
-end (*let*) // end of [f0_qual(d0e,err)]
+d0exp_qual0_errck(d0e.lctn(),tok1,d0e2)
+end (*let*) // end of [f0_qual0(d0e,err)]
 //
 (* ****** ****** *)
 

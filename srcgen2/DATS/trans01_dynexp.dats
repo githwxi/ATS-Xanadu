@@ -381,7 +381,7 @@ D0Ptup1 _ => f0_tup1(tenv, d0p0)
 D0Prcd2 _ => f0_rcd2(tenv, d0p0)
 //
 |
-D0Panno(d0p1, s0e2) =>
+D0Pannot(d0p1, s0e2) =>
 let
 val d1p1 =
   trans01_d0pat(tenv, d0p1)
@@ -392,20 +392,20 @@ in // let
 FXITMatm(d1p0) where
 {
 val d1p0 = d1pat_make_node
-(d0p0.lctn(), D1Panno(d1p1, s1e2)) }
+(d0p0.lctn(), D1Pannot(d1p1, s1e2)) }
 //
-end (*let*)//end of [D0Panno(d0p1,s0e2)]
+end (*let*)//end of [D0Pannot(d0p1,s0e2)]
 //
 |
-D0Pqual
+D0Pqual0
 (tok1, d0p2) =>
 let
 val d1p2 = 
   trans01_d0pat(tenv, d0p2)
 in // let
 FXITMatm
-(d1pat(d0p0.lctn(),D1Pqual(tok1,d1p2)))
-end (*let*)//end of [D0Pqual(tok1,d0p2)]
+(d1pat(d0p0.lctn(),D1Pqual0(tok1,d1p2)))
+end (*let*)//end of [D0Pqual0(tok1,d0p2)]
 //
 |
 _(*otherwise*) =>
@@ -964,7 +964,7 @@ D0Efix0 _ => f0_fix0(tenv, d0e0)
 D0Etry0 _ => f0_try0(tenv, d0e0)
 //
 |
-D0Eanno
+D0Eannot
 (d0e1, s0e2) =>
 let
 val d1e1 =
@@ -975,20 +975,20 @@ in // let
 //
 FXITMatm(d1e0) where
 { val d1e0 = d1exp_make_node
-  (d0e0.lctn(), D1Eanno(d1e1, s1e2)) }
+  (d0e0.lctn(), D1Eannot(d1e1, s1e2)) }
 //
-end (*let*)//end of [D0Eanno(d0e1,s0e2)]
+end (*let*)//end of [D0Eannot(d0e1,s0e2)]
 //
 |
-D0Equal
+D0Equal0
 (tok1, d0e2) =>
 let
 val d1e2 = 
   trans01_d0exp(tenv, d0e2)
 in // let
 FXITMatm
-(d1exp(d0e0.lctn(),D1Equal(tok1,d1e2)))
-end (*let*)//end of [D0Equal(tok1,d0e2)]
+(d1exp(d0e0.lctn(),D1Equal0(tok1,d1e2)))
+end (*let*)//end of [D0Equal0(tok1,d0e2)]
 //
 |
 D0Eextnam

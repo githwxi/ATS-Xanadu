@@ -68,7 +68,7 @@ local
 in//local
 //
 #implfun
-d0pat_anno_opt
+d0pat_annotopt
 ( d0p1, opt2 ) =
 (
 case+ opt2 of
@@ -80,11 +80,11 @@ let
   val
   loc0 = d0p1.lctn()+s0e2.lctn()
 in
-  d0pat(loc0, D0Panno(d0p1, s0e2))
+  d0pat(loc0, D0Pannot(d0p1, s0e2))
 end // let
-)(*case*)//end(d0pat_anno_opt(d0p1,opt2))
+)(*case*)//end(d0pat_annotopt(d0p1,opt2))
 //
-endloc(*local*)//end-(local(d0pat_anno_opt))
+endloc(*local*)//end-(local(d0pat_annotopt))
 
 (* ****** ****** *)
 
@@ -160,7 +160,7 @@ local
 in//local
 //
 #implfun
-d0exp_anno_opt
+d0exp_annotopt
 ( d0e1, opt2 ) =
 (
 case+ opt2 of
@@ -172,11 +172,11 @@ let
   val
   loc0 = d0e1.lctn()+s0e2.lctn()
 in
-  d0exp(loc0, D0Eanno(d0e1, s0e2))
+  d0exp(loc0, D0Eannot(d0e1, s0e2))
 end // let
-)(*case*)//end(d0exp_anno_opt(d0e1,opt2))
+)(*case*)//end(d0exp_annotopt(d0e1,opt2))
 //
-endloc(*local*)//end-(local(d0exp_anno_opt))
+endloc(*local*)//end-(local(d0exp_annotopt))
 
 (* ****** ****** *)
 

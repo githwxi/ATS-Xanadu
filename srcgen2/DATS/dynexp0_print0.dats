@@ -136,8 +136,8 @@ print
 ("D0Prcd2(",tbeg,";",topt,";",ldps,";",tend,")")
 //
 |
-D0Panno(d0p1,s0e2) =>
-print("D0Panno(",d0p1,";",s0e2,")")
+D0Pannot(d0p1,s0e2) =>
+print("D0Pannot(",d0p1,";",s0e2,")")
 //
 |
 D0Ptkerr(tok) => print("D0Ptkerr(",tok,")")
@@ -375,12 +375,12 @@ print(tknd,";",fid0,";",farg,";");
 print(sres,";",arrw,";",body,";",tend,")"))
 //
 |
-D0Eanno(d0e1,s0e2) =>
-print("D0Eanno(",d0e1,";",s0e2,")")
+D0Eannot(d0e1,s0e2) =>
+print("D0Eannot(",d0e1,";",s0e2,")")
 //
 |
-D0Equal(tok1,d0e2) =>
-print("D0Equal(",tok1,";",d0e2,")")
+D0Equal0(tok1,d0e2) =>
+print("D0Equal0(",tok1,";",d0e2,")")
 //
 |
 D0Eextnam

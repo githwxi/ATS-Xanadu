@@ -361,9 +361,12 @@ sort1_node =
   (sort1(*fun*), sort1, sort1)
 //
 | S1Tlist of sort1lst // HX: temp
-| S1Tqual of (token(*NS*), sort1)
 //
-| S1Tnone0 of () | S1Tnone1 of (sort0)
+|
+S1Tqual0 of (token(*NS*), sort1)
+//
+|
+S1Tnone0 of () | S1Tnone1 of (sort0)
 //
 |
 S1Terrck of (int(*lvl*), sort1)//HX:tread-error
@@ -449,9 +452,9 @@ S1Er2cd of // HX: record2
   ( s1maglst
   , sort1opt(*tres*), s1exp(*body*))
 //
-| S1Eanno of (s1exp, sort1)
+| S1Eannot of (s1exp, sort1)
 //
-| S1Equal of ( token(*$NS.*), s1exp )
+| S1Equal0 of ( token(*$NS.*), s1exp )
 //
 | S1Enone0 of () | S1Enone1 of ( s0exp )
 //

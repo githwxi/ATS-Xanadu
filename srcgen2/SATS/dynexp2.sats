@@ -479,7 +479,7 @@ D2Prcd2 of
 token(*knd*), sint(*npf*), l2d2plst)
 //
 |
-D2Panno of
+D2Pannot of
 (d2pat,s1exp(*given*),s2exp(*trans*))
 //
 (*
@@ -759,7 +759,7 @@ D2Elazy1 of // linear-lazy-eval
 (d2exp(*thunk*), d2explst(*frees*))
 //
 |
-D2Eanno of
+D2Eannot of
 (d2exp,s1exp(*given*),s2exp(*trans*))
 //
 |

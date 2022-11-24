@@ -524,7 +524,7 @@ end (*let*) // end of [D1Pstr(tok)]
 |D1Pr1cd _ => f0_r1cd(env0, d1p0)
 |D1Pr2cd _ => f0_r2cd(env0, d1p0)
 //
-|D1Panno _ => f0_anno(env0, d1p0)
+|D1Pannot _ => f0_annot(env0, d1p0)
 //
 | _(* otherwise *) => d2pat_none1(d1p0)
 //
@@ -857,7 +857,7 @@ end (*let*) // end of [f0_r2cd(env0,d1p0)]
 (* ****** ****** *)
 //
 fun
-f0_anno
+f0_annot
 ( env0:
 ! tr12env
 , d1p0: d1pat): d2pat =
@@ -866,7 +866,7 @@ let
 val loc0 = d1p0.lctn()
 //
 val-
-D1Panno
+D1Pannot
 (d1p1, s1e2) = d1p0.node()
 //
 val d2p1 =
@@ -875,8 +875,8 @@ val s2e2 =
 trans12_s1exp_impr(env0, s1e2)
 //
 in//let
-  d2pat(loc0, D2Panno(d2p1, s1e2, s2e2))
-end (*let*) // end of [f0_anno(env0,d1p0)]
+  d2pat(loc0, D2Pannot(d2p1, s1e2, s2e2))
+end (*let*) // end of [f0_annot(env0,d1p0)]
 //
 (* ****** ****** *)
 //
@@ -1290,7 +1290,7 @@ D1Ewhere _ => f0_where(env0, d1e0)
 |D1Elam0 _ => f0_lam0(env0, d1e0)
 |D1Efix0 _ => f0_fix0(env0, d1e0)
 //
-|D1Eanno _ => f0_anno(env0, d1e0)
+|D1Eannot _ => f0_annot(env0, d1e0)
 //
 | _(* otherwise *) => d2exp_none1(d1e0)
 //
@@ -2192,7 +2192,7 @@ end (*let*) // end of [f0_fix0(env0,d1e0)]
 (* ****** ****** *)
 
 fun
-f0_anno
+f0_annot
 ( env0:
 ! tr12env
 , d1e0: d1exp): d2exp =
@@ -2201,7 +2201,7 @@ let
 val loc0 = d1e0.lctn()
 //
 val-
-D1Eanno
+D1Eannot
 (d1e1, s1e2) = d1e0.node()
 //
 val d2e1 =
@@ -2210,8 +2210,8 @@ val s2e2 =
 trans12_s1exp_impr(env0, s1e2)
 //
 in//let
-  d2exp(loc0, D2Eanno(d2e1, s1e2, s2e2))
-end (*let*) // end of [f0_anno(env0,d1e0)]
+  d2exp(loc0, D2Eannot(d2e1, s1e2, s2e2))
+end (*let*) // end of [f0_annot(env0,d1e0)]
 
 (* ****** ****** *)
 //

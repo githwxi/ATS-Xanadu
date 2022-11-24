@@ -149,11 +149,11 @@ D1Pl2st(dps1, dps2) =>
 print("D1Pl2st(", dps1, ";", dps2 ,")")
 //
 |
-D1Panno(d1p1,s1e2) =>
-print("D1Panno(",d1p1,";",s1e2,")")
+D1Pannot(d1p1,s1e2) =>
+print("D1Pannot(",d1p1,";",s1e2,")")
 |
-D1Pqual(tok1,d1p2) =>
-print("D1Pqual(",tok1,";",d1p2,")")
+D1Pqual0(tok1,d1p2) =>
+print("D1Pqual0(",tok1,";",d1p2,")")
 //
 | D1Pnone0() => print("D1Pnone0(", ")")
 | D1Pnone1(dpat) => print("D1Pnone1(", dpat ,")")
@@ -407,14 +407,14 @@ print("D1Etry0(");
 print(tknd,";",d1e1,";",d1cs,")"))
 //
 |
-D1Eanno
+D1Eannot
 (d1e1,s1e2) =>
-print("D1Eanno(",d1e1,";",s1e2,")")
+print("D1Eannot(",d1e1,";",s1e2,")")
 //
 |
-D1Equal
+D1Equal0
 (tok1,d1e2) =>
-print("D1Equal(",tok1,";",d1e2,")")
+print("D1Equal0(",tok1,";",d1e2,")")
 //
 |
 D1Eextnam

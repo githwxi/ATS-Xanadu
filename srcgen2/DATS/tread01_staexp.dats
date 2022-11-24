@@ -518,7 +518,7 @@ sort1_errck
 endlet // end of [sort1_list_errck(...)]
 (* ****** ****** *)
 fun
-sort1_qual_errck
+sort1_qual0_errck
 ( loc: loc_t
 , tok1: token
 , s1t2: sort1): sort1 =
@@ -526,8 +526,8 @@ let
 val lvl = errvl(s1t2)
 in//let
 sort1_errck
-(lvl+1, sort1(loc, S1Tqual(tok1,s1t2)))
-endlet // end of [sort1_qual_errck(...)]
+(lvl+1, sort1(loc, S1Tqual0(tok1,s1t2)))
+endlet // end of [sort1_qual0_errck(...)]
 (* ****** ****** *)
 
 #implfun
@@ -599,7 +599,7 @@ else sort1_list_errck( loc0, s1ts )
 endlet // end of [ S1Tlist( s1ts ) ]
 //
 |
-S1Tqual(tok1, s1t2) =>
+S1Tqual0(tok1, s1t2) =>
 let
 val e00 = err
 val s1t2 = tread01_sort1(s1t2, err)
@@ -607,8 +607,8 @@ in//let
 if
 (e00=err)
 then (s1t0) else
-sort1_qual_errck( loc0, tok1, s1t2 )
-endlet // end of [S1Tqual(tok1,s1t2)]
+sort1_qual0_errck( loc0, tok1, s1t2 )
+endlet // end of [S1Tqual0(tok1,s1t2)]
 //
 | _(*otherwise*) =>
 let
@@ -909,7 +909,7 @@ s1exp_errck
 endlet // end of [s1exp_lam0_errck(...)]
 (* ****** ****** *)
 fun
-s1exp_anno_errck
+s1exp_annot_errck
 ( loc: loc_t
 , s1e1: s1exp
 , s1t2: sort1): s1exp =
@@ -918,11 +918,11 @@ val lvl = gmax
 (errvl(s1e1), errvl(s1t2))
 in//let
 s1exp_errck
-(lvl, s1exp(loc, S1Eanno(s1e1, s1t2)))
-endlet // end of [s1exp_anno_errck(...)]
+(lvl, s1exp(loc, S1Eannot(s1e1, s1t2)))
+endlet // end of [s1exp_annot_errck(...)]
 (* ****** ****** *)
 fun
-s1exp_qual_errck
+s1exp_qual0_errck
 ( loc: loc_t
 , tok1: token
 , s1e2: s1exp): s1exp =
@@ -930,8 +930,8 @@ let
 val lvl = errvl(s1e2)
 in//let
 s1exp_errck
-(lvl+1, s1exp(loc, S1Equal(tok1,s1e2)))
-endlet // end of [s1exp_qual_errck(...)]
+(lvl+1, s1exp(loc, S1Equal0(tok1,s1e2)))
+endlet // end of [s1exp_qual0_errck(...)]
 (* ****** ****** *)
 
 #implfun
@@ -1018,7 +1018,7 @@ S1Elam0 _ =>
 f0_lam0(s1e0, err)
 //
 |
-S1Eanno(s1e1,s1t2) =>
+S1Eannot(s1e1,s1t2) =>
 let
 val e00 = err
 val s1e1 =
@@ -1029,11 +1029,11 @@ in//let
 if
 (e00=err)
 then (s1e0)
-else s1exp_anno_errck(loc0,s1e1,s1t2)
-endlet // end of [S1Eanno(s1e1, s1t2)]
+else s1exp_annot_errck(loc0,s1e1,s1t2)
+endlet // end of [S1Eannot(s1e1, s1t2)]
 //
 |
-S1Equal(tok1, s1e2) =>
+S1Equal0(tok1,s1e2) =>
 let
 //
 val e00 = err
@@ -1045,8 +1045,8 @@ in//let
 if
 (e00=err)
 then (s1e0) else
-s1exp_qual_errck( loc0, tok1, s1e2 )
-endlet // end of [S1Equal(tok1,s1e2)]
+s1exp_qual0_errck( loc0, tok1, s1e2 )
+endlet // end of [S1Equal0(tok1,s1e2)]
 //
 | _(* otherwise *) =>
 let

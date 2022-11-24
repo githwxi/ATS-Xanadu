@@ -2256,12 +2256,12 @@ case+ ses1 of
 |
 list_nil _ =>
 (
-  s0exp_anno_opt(s0e1, opt)
+  s0exp_annotopt(s0e1, opt)
 )
 |
 list_cons _ =>
 (
-  s0exp_anno_opt(s0e0, opt)
+  s0exp_annotopt(s0e0, opt)
 ) where
 {
   val s0e2 = list_last(ses1)
@@ -2421,7 +2421,7 @@ val tend = p1_RPAREN(buf, err)
 val lres = tbeg.lctn()+tend.lctn()
 in//let
   err := e00
-; s0exp(lres, S0Eop3(tbeg, opid, tend))
+; s0exp(lres, S0Eop3(tbeg,opid,tend))
 end (*let*) // end of [T_OP2(par)]
 //
 |
@@ -2438,7 +2438,7 @@ let
   val lres = tbeg.lctn() + tend.lctn()
 in
   err := e00
-; s0exp(lres, S0Efimp(tbeg, s0es, tend))
+; s0exp(lres, S0Efimp(tbeg,s0es,tend))
 end (*let*) // end of [ -< ... > ]
 //
 |
@@ -2452,7 +2452,7 @@ val tend = p1_RBRACE(buf, err)
 val lres = tbeg.lctn() + tend.lctn()
 in//let
   err := e00
-; s0exp(lres, S0Euni0(tbeg, s0qs, tend))
+; s0exp(lres, S0Euni0(tbeg,s0qs,tend))
 end (*let*) // end of [ { ... } ]
 //
 |
@@ -2468,7 +2468,7 @@ val tend = p1_RBRCKT(buf, err)
 val lres = tbeg.lctn() + tend.lctn()
 in//let
   err := e00
-; s0exp(lres, S0Eexi0(tbeg, s0qs, tend))
+; s0exp(lres, S0Eexi0(tbeg,s0qs,tend))
 end (*let*) // end of [ [ ... ] ]
 |
 T_EXISTS(k0) =>
@@ -2481,7 +2481,7 @@ val tend = p1_RBRCKT(buf, err)
 val lres = tbeg.lctn() + tend.lctn()
 in//let
   err := e00
-; s0exp(lres, S0Eexi0(tbeg, s0qs, tend))
+; s0exp(lres, S0Eexi0(tbeg,s0qs,tend))
 end (*let*) // end of [ #[ ... ] ]
 //
 |
@@ -2492,7 +2492,8 @@ val (  ) = buf.skip1()
 val s0e0 = p1_s0exp_atm(buf, err)
 val loc0 = tqua.lctn()+s0e0.lctn()
 in//let
-err := e00; s0exp(loc0, S0Equal(tqua, s0e0))
+  err := e00
+; s0exp(loc0 , S0Equal0( tqua, s0e0 ))
 end (*let*) // end of [T_IDQUA(qid)]
 //
 |
@@ -2507,8 +2508,8 @@ val lres =
 tbeg.lctn() + s0exp_RPAREN_lctn(tend)
 in//let
   err := e00
-; s0exp(lres, S0Elpar(tbeg, s0es, tend))
-end (*let*) // end of [ ( ... ) ]
+; s0exp(lres, S0Elpar(tbeg,s0es,tend))
+end (*let*) // end of [T_LPAREN(...)]
 //
 |
 T_TRCD10(k0) =>
@@ -2532,7 +2533,7 @@ val lres =
 //
 in//let
   err := e00
-; s0exp(lres, S0Etup1(tbeg, topt, s0es, tend))
+; s0exp(lres,S0Etup1(tbeg,topt,s0es,tend))
 //
 end (*let*) // end of [T_TRCD10(...|...)]
 //
@@ -2556,7 +2557,7 @@ val lres =
 //
 in//let
   err := e00
-; s0exp(lres, S0Ercd2(tbeg, topt, lses, tend))
+; s0exp(lres,S0Ercd2(tbeg,topt,lses,tend))
 end (*let*) // end of [T_TRCD20{...|...}]
 //
 | _(*otherwise*) =>
@@ -2567,7 +2568,11 @@ prerrln
 ("p1_s0exp_atm: otherwise: tok = ", tok)
 *)
 in//let
-(err := e00 + 1; s0exp(tok.lctn(), S0Etkerr(tok)))
+let
+val loc = tok.lctn() in
+(
+err := e00 + 1; s0exp(loc, S0Etkerr(tok)))
+end(*let*)
 end(*let*)
 //
 end(*let*)//end-of-[p1_s0exp_atm(buf,err)]

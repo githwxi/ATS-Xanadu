@@ -543,7 +543,7 @@ S1Er2cd _ => f0_r2cd(env0, s1e0)
 S1Elam0 _ => f0_lam0(env0, s1e0)
 //
 |
-S1Eanno _ => f0_anno(env0, s1e0)
+S1Eannot _ => f0_annot(env0, s1e0)
 //
 | _(* otherwise *) => s2exp_none1(s1e0)
 //
@@ -1442,20 +1442,20 @@ end (*let*) // end of [f0_lam0(env0, s1e0)]
 (* ****** ****** *)
 //
 fun
-f0_anno
+f0_annot
 ( env0:
 ! tr12env
 , s1e0: s1exp): s2exp =
 let
 //
 val-
-S1Eanno
+S1Eannot
 (s1e1, s1t2) = s1e0.node()
 val
 s2t2 = trans12_sort1(env0, s1t2)
 in//let
   trans12_s1exp_stck(env0, s1e1, s2t2)
-end (*let*) // end of [f0_anno(env0, s1e0)]
+end (*let*) // end of [f0_annot(env0, s1e0)]
 //
 (* ****** ****** *)
 //

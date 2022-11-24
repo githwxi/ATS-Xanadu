@@ -315,7 +315,7 @@ endlet // end of [d1pat_r2cd_errck(...)]
 (* ****** ****** *)
 //
 fun
-d1pat_anno_errck
+d1pat_annot_errck
 ( loc: loc_t
 , d1p1: d1pat
 , s1e2: s1exp): d1pat =
@@ -325,12 +325,12 @@ val lvl = errvl(d1p1)
 //
 in//let
 d1pat_errck
-(lvl+1, d1pat(loc,D1Panno(d1p1,s1e2)))
-endlet // end of [d1pat_anno_errck(...)]
+(lvl+1, d1pat(loc,D1Pannot(d1p1,s1e2)))
+endlet // end of [d1pat_annot_errck(...)]
 //
 (* ****** ****** *)
 fun
-d1pat_qual_errck
+d1pat_qual0_errck
 ( loc: loc_t
 , tok1: token
 , d1p2: d1pat): d1pat =
@@ -338,8 +338,8 @@ let
 val lvl = errvl(d1p2)
 in//let
 d1pat_errck
-(lvl+1, d1pat(loc, D1Pqual(tok1,d1p2)))
-endlet // end of [d1pat_qual_errck(...)]
+(lvl+1, d1pat(loc,D1Pqual0(tok1,d1p2)))
+endlet // end of [d1pat_qual0_errck(...)]
 (* ****** ****** *)
 
 #implfun
@@ -469,7 +469,7 @@ d1pat_t2up_errck(loc0,tknd,dps1,dps2)
 endlet // end(D1Pt2up(tknd,dps1,dps2))
 //
 |
-D1Panno(d1p1, s1e2) =>
+D1Pannot(d1p1, s1e2) =>
 let
 //
 val e00 = err
@@ -483,11 +483,11 @@ in//let
 if
 (e00=err)
 then (d1p0) else
-d1pat_anno_errck(loc0 , d1p1 , s1e2)
-endlet // end of [D1Panno(d1p1,s1e2)]
+d1pat_annot_errck( loc0, d1p1, s1e2 )
+endlet // end of [D1Pannot(d1p1,s1e2)]
 //
 |
-D1Pqual(tok1, d1p2) =>
+D1Pqual0(tok1, d1p2) =>
 let
 //
 val e00 = err
@@ -499,8 +499,8 @@ in//let
 if
 (e00=err)
 then (d1p0) else
-d1pat_qual_errck( loc0, tok1, d1p2 )
-endlet // end of [D1Pqual(tok1,d1p2)]
+d1pat_qual0_errck( loc0, tok1, d1p2 )
+endlet // end of [D1Pqual0(tok1,d1p2)]
 //
 |
 _(*otherwise*) =>
@@ -1090,7 +1090,7 @@ endlet // end of [d1exp_try0_errck(...)]
 (* ****** ****** *)
 //
 fun
-d1exp_anno_errck
+d1exp_annot_errck
 ( loc: loc_t
 , d1e1: d1exp
 , s1e2: s1exp): d1exp =
@@ -1100,12 +1100,12 @@ val lvl = errvl(d1e1)
 //
 in//let
 d1exp_errck
-(lvl+1, d1exp(loc,D1Eanno(d1e1,s1e2)))
-endlet // end of [d1exp_anno_errck(...)]
+(lvl+1, d1exp(loc,D1Eannot(d1e1,s1e2)))
+endlet // end of [d1exp_annot_errck(...)]
 //
 (* ****** ****** *)
 fun
-d1exp_qual_errck
+d1exp_qual0_errck
 ( loc: loc_t
 , tok1: token
 , d1e2: d1exp): d1exp =
@@ -1113,8 +1113,8 @@ let
 val lvl = errvl(d1e2)
 in//let
 d1exp_errck
-(lvl+1, d1exp(loc, D1Equal(tok1,d1e2)))
-endlet // end of [d1exp_qual_errck(...)]
+(lvl+1, d1exp(loc, D1Equal0(tok1,d1e2)))
+endlet // end of [d1exp_qual0_errck(...)]
 (* ****** ****** *)
 fun
 d1exp_exists_errck
@@ -1600,7 +1600,7 @@ d1exp_try0_errck(loc0,tknd,d1e1,d1cs)
 endlet // end(D1Etry0(tknd,d1e1,d1cs))
 //
 |
-D1Eanno(d1e1,s1e2) =>
+D1Eannot(d1e1,s1e2) =>
 let
 //
 val e00 = err
@@ -1614,11 +1614,11 @@ in//let
 if
 (e00=err)
 then (d1e0) else
-d1exp_anno_errck(loc0 , d1e1 , s1e2)
-endlet // end of [D1Eanno(d1e1,s1e2)]
+d1exp_annot_errck( loc0, d1e1, s1e2 )
+endlet // end of [D1Eannot(d1e1,s1e2)]
 //
 |
-D1Equal(tok1, d1e2) =>
+D1Equal0(tok1, d1e2) =>
 let
 //
 val e00 = err
@@ -1630,8 +1630,8 @@ in//let
 if
 (e00=err)
 then (d1e0) else
-d1exp_qual_errck( loc0, tok1, d1e2 )
-endlet // end of [D1Equal(tok1,d1e2)]
+d1exp_qual0_errck( loc0, tok1, d1e2 )
+endlet // end of [D1Equal0(tok1,d1e2)]
 //
 |
 D1Eextnam

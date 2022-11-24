@@ -213,7 +213,7 @@ sort1_fpemsg(out, s1t2))
 S1Tlist(s1ts) =>
 sort1lst_fpemsg(out, s1ts)
 |
-S1Tqual(tok1,s1t2) =>
+S1Tqual0(tok1,s1t2) =>
 (
 sort1_fpemsg(out, s1t2))
 //
@@ -314,20 +314,20 @@ s1explst_fpemsg(out, ses1);
 s1explst_fpemsg(out, ses2))
 //
 |
-S1Eanno(s1e1,s1t2) =>
+S1Eannot(s1e1,s1t2) =>
 let
 val
 ( ) = s1exp_fpemsg(out, s1e1)
 val
 ( ) = sort1_fpemsg(out, s1t2)
-endlet // end of [S1Eanno(...)]
+endlet // end of [S1Eannot(...)]
 //
 |
-S1Equal(tok1,s1e2) =>
+S1Equal0(tok1,s1e2) =>
 let
 val
 ( ) = s1exp_fpemsg(out, s1e2)
-endlet // end of [S1Equal(...)]
+endlet // end of [S1Equal0(...)]
 //
 |S1Enone0() => ( (*void*) )
 |S1Enone1(s0e1) => ( (*void*) )
@@ -543,16 +543,16 @@ d1patlst_fpemsg(out, dps1);
 d1patlst_fpemsg(out, dps2))
 //
 |
-D1Panno(d1p1,s1e2) =>
+D1Pannot(d1p1,s1e2) =>
 let
 val
 ( ) = d1pat_fpemsg(out, d1p1)
 val
 ( ) = s1exp_fpemsg(out, s1e2)
-endlet // end of [D1Panno(...)]
+endlet // end of [D1Pannot(...)]
 //
 |
-D1Pqual(tok1,d1p2) =>
+D1Pqual0(tok1,d1p2) =>
 (
 d1pat_fpemsg(out, d1p2))
 //
@@ -775,16 +775,16 @@ d1clslst_fpemsg( out , d1cs )
 endlet // end of [D1Etry0(...)]
 //
 |
-D1Eanno(d1e1,s1e2) =>
+D1Eannot(d1e1,s1e2) =>
 let
 val
 ( ) = d1exp_fpemsg(out, d1e1)
 val
 ( ) = s1exp_fpemsg(out, s1e2)
-endlet // end of [D1Eanno(...)]
+endlet // end of [D1Eannot(...)]
 //
 |
-D1Equal(tok1,d1e2) =>
+D1Equal0(tok1,d1e2) =>
 (
 d1exp_fpemsg(out, d1e2))
 //

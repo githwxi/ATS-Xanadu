@@ -275,15 +275,17 @@ print
 ("S1Ta1pp(",s1f0,";",s1t1,")")
 |
 S1Ta2pp
-(s1f0, s1t1, s1t2) =>
+( s1f0
+, s1t1, s1t2) =>
 print
 ("S1Ta2pp(",s1f0,";",s1t1,";",s1t2,")")
 |
 S1Tlist(s1ts) =>
 print( "S1Tlist(", s1ts ,")" )
+//
 |
-S1Tqual(tok1,s1t2) =>
-print("S1Tqual(",tok1,";",s1t2,")")
+S1Tqual0(tok1,s1t2) =>
+print("S1Tqual0(",tok1,";",s1t2,")")
 //
 |
 S1Tnone0() => print("S1Tnone0(", ")")
@@ -511,14 +513,14 @@ S1Eexi0(tknd, s1qs) =>
 print("S1Eexi0(",tknd,";",s1qs,")")
 //
 |
-S1Eanno(s1e1,s1t2) =>
+S1Eannot(s1e1,s1t2) =>
 (
-print(  "S1Eanno(",s1e1,";",s1t2,")"  )
+print(  "S1Eannot(",s1e1,";",s1t2,")"  )
 )
 |
-S1Equal(tok1,s1e2) =>
+S1Equal0(tok1,s1e2) =>
 (
-print(  "S1Equal(",tok1,";",s1e2,")"  )
+print(  "S1Equal0(",tok1,";",s1e2,")"  )
 )
 //
 |

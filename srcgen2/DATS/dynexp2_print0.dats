@@ -229,9 +229,9 @@ D2Prcd2
 ; print(tknd,";",npf1,";",ldps,")") )
 //
 |
-D2Panno
+D2Pannot
 (d2p1, s1e2, s2e2) =>
-print("D2Panno(",d2p1,";",s1e2,";",s2e2,")")
+print("D2Pannot(",d2p1,";",s1e2,";",s2e2,")")
 //
 |D2Pnone0() => print( "D2Pnone0(",")" )
 |D2Pnone1(d1p1) => print("D2Pnone1(",d1p1,")")
@@ -501,9 +501,9 @@ print
 ("D2Elazy1(", d2e1, ";", d2es, ")"))
 //
 |
-D2Eanno
+D2Eannot
 (d2e1,s1e2,s2e2) =>
-( print("D2Eanno(")
+( print("D2Eannot(")
 ; print(d2e1,";",s1e2,";",s2e2,")") )
 //
 |
