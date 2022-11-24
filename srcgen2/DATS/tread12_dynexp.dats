@@ -150,6 +150,33 @@ d2pat_errvl with d2pat_errvl_lst
 //
 (* ****** ****** *)
 //
+#extern
+fun
+l2d2p_errvl_ldps
+(ldps: l2d2plst): sint
+//
+#implfun
+l2d2p_errvl_ldps
+(   ldps   ) =
+(
+case+ ldps of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(ldp1,ldps) =>
+let
+val+
+D2LAB(lab, dp1) = ldp1 in
+gmax
+( errvl(dp1)
+, l2d2p_errvl_ldps(ldps)) end
+endcas // end of [ case+(ldps) ]
+)
+//
+#symload errvl with l2d2p_errvl_ldps
+//
+(* ****** ****** *)
+//
 fun
 d2exp_errvl_a1
 (d2e0: d2exp): sint =
@@ -247,6 +274,10 @@ Various 'errck' functions for
 constructing d2pat/d2exp-values
 *)
 (* ****** ****** *)
+(*
+Various
+errck-functions for d2pat-values
+*)
 //
 fun
 d2pat_bang_errck
@@ -358,6 +389,26 @@ d2pat_errck
 , d2pat(loc0,D2Ptup1(knd0,npf1,d2ps)))
 endlet // end of [d2pat_tup1_errck(...)]
 //
+(* ****** ****** *)
+//
+fun
+d2pat_rcd2_errck
+( loc0: loc_t
+, knd0: token
+, npf1: (sint)
+, ldps: l2d2plst): d2pat =
+let
+val lvl0 = errvl(ldps) in//let
+d2pat_errck
+( lvl0+1
+, d2pat(loc0,D2Prcd2(knd0,npf1,ldps)))
+endlet // end of [d2pat_rcd2_errck(...)]
+//
+(* ****** ****** *)
+(*
+Various
+errck-functions for d2exp-values
+*)
 (* ****** ****** *)
 //
 fun
@@ -597,6 +648,7 @@ d2p0.node() of
 //
 |D2Ptup0 _ => f0_tup0(d2p0, err)
 |D2Ptup1 _ => f0_tup1(d2p0, err)
+|D2Prcd2 _ => f0_rcd2(d2p0, err)
 //
 | _(*otherwise*) =>
 let
@@ -820,6 +872,35 @@ val loc = d2p.lctn() in
 d2pat_tup1_errck(loc,knd0,npf1,d2ps)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_tup1(d2p,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_rcd2
+(d2p: d2pat
+,err: &sint >> _): d2pat =
+let
+//
+val e00 = err
+//
+val-
+D2Prcd2
+(knd0
+,npf1, ldps) = d2p.node()
+//
+val
+ldps =
+tread12_l2d2plst(ldps, err)
+//
+in//let
+if
+(e00=err)
+then (d2p) else
+let
+val loc = d2p.lctn() in
+d2pat_rcd2_errck(loc,knd0,npf1,ldps)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_rcd2(d2p,err)]
 //
 (* ****** ****** *)
 //
