@@ -202,6 +202,18 @@ d2exp_errvl with d2exp_errvl_lst
 #symload errvl with d2exp_errvl_lst
 //
 (* ****** ****** *)
+//
+(*
+HX-2022-11-23:
+A placeholder for the moment
+but it may actually just be okay!
+*)
+fun
+d2ecl_errvl_lst
+(dcs: d2eclist): sint = 0
+#symload errvl with d2ecl_errvl_lst
+//
+(* ****** ****** *)
 (*
 HX-2022-11-23:
 Various 'errck' functions for
@@ -304,6 +316,21 @@ d2exp_errck
 (lvl0+1
 ,d2exp(loc0, D2Edapp(d2f0,npf1,d2es)))
 endlet // end of [d2exp_dapp_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d2exp_let0_errck
+( loc0: loc_t
+, dcls: d2eclist
+, d2e1
+: d2exp(*scope*)): d2exp =
+let
+val lvl0 = gmax
+(errvl(dcls), errvl(d2e1)) in//let
+d2exp_errck
+(lvl0+1,d2exp(loc0,D2Elet0(dcls,d2e1)))
+endlet // end of [d2exp_let0_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -608,6 +635,8 @@ val (  ) = err := err+1 }
 |D2Edap0 _ => f0_dap0(d2e0, err)
 |D2Edapp _ => f0_dapp(d2e0, err)
 //
+|D2Elet0 _ => f0_let0(d2e0, err)
+//
 |D2Eaddr _ => f0_addr(d2e0, err)
 |D2Efold _ => f0_fold(d2e0, err)
 |D2Eeval _ => f0_eval(d2e0, err)
@@ -677,6 +706,36 @@ val loc = d2e.lctn() in
 d2exp_dapp_errck(loc,d2f0,npf1,d2es)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_dapp(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_let0
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Elet0
+(dcls, d2e1) = d2e.node()
+//
+val
+dcls =
+tread12_d2eclist(dcls, err)
+val
+d2e1 = tread12_d2exp(d2e1, err)
+//
+in//let
+if
+(e00=err)
+then (d2e) else
+let
+val loc = d2e.lctn() in
+d2exp_let0_errck(loc, dcls, d2e1)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_let0(d2e,err)]
 //
 (* ****** ****** *)
 //
