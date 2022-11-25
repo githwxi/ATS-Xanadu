@@ -278,6 +278,39 @@ endcas // end of [ case+(ldes) ]
 //
 (* ****** ****** *)
 //
+fun
+d2cls_errvl_a1
+(dcl: d2cls): sint =
+(
+case+ dcl.node() of
+|
+D2CLSgpt(dgpt) => 0
+|
+D2CLScls(dgpt,d2e1) => errvl(d2e1)
+)
+#symload errvl with d2cls_errvl_a1
+//
+(* ****** ****** *)
+//
+#extern
+fun
+d2cls_errvl_lst
+(dcls: d2clslst): sint
+#symload errvl with d2cls_errvl_lst
+//
+#implfun
+d2cls_errvl_lst(dcls) =
+(
+case+ dcls of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(dcl1,dcls) => gmax
+(errvl(dcl1), d2cls_errvl_lst(dcls))
+) (*case+*)//end-of-(d2cls_errvl_lst)
+//
+(* ****** ****** *)
+//
 (*
 HX-2022-11-23:
 A placeholder for the moment
@@ -576,6 +609,23 @@ d2exp_errck
 ( lvl0+1
 , d2exp(loc0,D2Eif0(d2e1,opt1,opt2)))
 endlet // end of [d2exp_if0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d2exp_cas0_errck
+(loc0: loc_t
+,tknd: token
+,d2e1: d2exp
+,d2cs: d2clslst): d2exp =
+let
+val lvl = gmax
+(errvl(d2e1), errvl(d2cs))
+in//let
+d2exp_errck
+( lvl+1
+, d2exp(loc0,D2Ecas0(tknd,d2e1,d2cs)))
+endlet // end of [d2exp_cas0_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1120,6 +1170,8 @@ d2exp_if0_errck
 (d2e0.lctn(), d2e1, dthn, dels)
 endlet//[D1Eif0(d1e1,dthn,dels)]
 //
+|D2Ecas0 _ => f0_cas0(d2e0, err)
+//
 |D2Etup0 _ => f0_tup0(d2e0, err)
 |D2Etup1 _ => f0_tup1(d2e0, err)
 |D2Ercd2 _ => f0_rcd2(d2e0, err)
@@ -1363,6 +1415,38 @@ val loc = d2e.lctn() in
 d2exp_seqn_errck(loc, d2es, d2e1)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_seqn(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_cas0
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Ecas0
+( tknd
+, d2e1, d2cs) = d2e.node()
+//
+val
+d2e1 =
+tread12_d2exp(d2e1, err)
+val
+d2cs =
+tread12_d2clslst(d2cs, err)
+//
+in//let
+if
+(e00=err)
+then (d2e) else
+let
+val loc = d2e.lctn() in
+d2exp_cas0_errck(loc,tknd,d2e1,d2cs)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_cas0(d2e,err)]
 //
 (* ****** ****** *)
 //
