@@ -232,6 +232,27 @@ d2exp_errvl with d2exp_errvl_lst
 //
 #extern
 fun
+d2exp_errvl_opt
+(dopt: d2expopt): sint
+//
+#implfun
+d2exp_errvl_opt
+(  dopt  ) =
+(
+case+ dopt of
+| optn_nil() => 0
+| optn_cons(d2e1) => errvl(d2e1)
+endcas // end of [ case+( d2es ) ]
+)
+//
+#symload
+d2exp_errvl with d2exp_errvl_opt
+#symload errvl with d2exp_errvl_opt
+//
+(* ****** ****** *)
+//
+#extern
+fun
 l2d2e_errvl_ldes
 (ldes: l2d2elst): sint
 //
@@ -501,11 +522,26 @@ d2exp_where_errck
 , dcls: d2eclist): d2exp =
 let
 val lvl0 = gmax
-(errvl(dcls), errvl(d2e1)) in//let
+(errvl(d2e1), errvl(dcls)) in//let
 d2exp_errck
 ( lvl0+1
 , d2exp( loc0, D2Ewhere( d2e1, dcls ) ))
 endlet // end of [d2exp_where_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d2exp_assgn_errck
+( loc0: loc_t
+, d2el: d2exp
+, d2er: d2exp): d2exp =
+let
+val lvl0 = gmax
+(errvl(d2el), errvl(d2er)) in//let
+d2exp_errck
+( lvl0+1
+, d2exp( loc0, D2Eassgn( d2el, d2er ) ))
+endlet // end of [d2exp_assgn_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -522,6 +558,24 @@ d2exp_errck
 ( lvl0+1
 , d2exp( loc0, D2Eseqn( d2es, d2e1 )))
 endlet // end of [d2exp_seqn_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d2exp_if0_errck
+( loc0: loc_t
+, d2e1: d2exp
+, opt1: d2expopt
+, opt2: d2expopt): d2exp =
+let
+val lvl0 =
+gmax
+(errvl(d2e1)
+,errvl(opt1), errvl(opt2)) in//let
+d2exp_errck
+( lvl0+1
+, d2exp(loc0,D2Eif0(d2e1,opt1,opt2)))
+endlet // end of [d2exp_if0_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1042,6 +1096,30 @@ D2Ewhere _ => f0_where(d2e0, err)
 //
 |D2Eseqn _ => f0_seqn(d2e0, err)
 //
+|
+D2Eif0
+(
+d2e1,
+dthn,dels) =>
+let
+//
+val e00 = err
+//
+val d2e1 =
+tread12_d2exp(d2e1, err)
+val dthn =
+tread12_d2expopt(dthn, err)
+val dels =
+tread12_d2expopt(dels, err)
+//
+in//let
+if
+(e00=err)
+then (d2e0) else
+d2exp_if0_errck
+(d2e0.lctn(), d2e1, dthn, dels)
+endlet//[D1Eif0(d1e1,dthn,dels)]
+//
 |D2Etup0 _ => f0_tup0(d2e0, err)
 |D2Etup1 _ => f0_tup1(d2e0, err)
 |D2Ercd2 _ => f0_rcd2(d2e0, err)
@@ -1226,6 +1304,35 @@ val loc = d2e.lctn() in
 d2exp_where_errck(loc, d2e1, dcls)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_where(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_assgn
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Eassgn
+(d2el, d2er) = d2e.node()
+//
+val
+d2el = tread12_d2exp(d2el, err)
+val
+d2er = tread12_d2exp(d2er, err)
+//
+in//let
+if
+(e00=err)
+then (d2e) else
+let
+val loc = d2e.lctn() in
+d2exp_assgn_errck(loc, d2el, d2er)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_assgn(d2e,err)]
 //
 (* ****** ****** *)
 //
