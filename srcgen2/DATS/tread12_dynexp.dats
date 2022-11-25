@@ -674,6 +674,44 @@ endlet // end of [d2exp_rcd2_errck(...)]
 (* ****** ****** *)
 //
 fun
+d2exp_lam0_errck
+( loc0: loc_t
+, tknd: token
+, f2as: f2arglst
+, sres: s2res
+, arrw: f1unarrw
+, d2e1
+: d2exp(*body*)): d2exp =
+let
+val lvl = d2exp_errvl(d2e1)
+in//let
+d2exp_errck
+( lvl+1
+, d2exp
+  (loc0
+  ,D2Elam0(tknd,f2as,sres,arrw,d2e1)))
+endlet // end of [d2exp_lam0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d2exp_try0_errck
+(loc0: loc_t
+,tknd: token
+,d2e1: d2exp
+,d2cs: d2clslst): d2exp =
+let
+val lvl = gmax
+(errvl(d2e1), errvl(d2cs))
+in//let
+d2exp_errck
+( lvl+1
+, d2exp(loc0,D2Etry0(tknd,d2e1,d2cs)))
+endlet // end of [d2exp_try0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d2exp_addr_errck
 (loc0: loc_t
 ,d2e1: d2exp): d2exp =
@@ -1176,6 +1214,10 @@ endlet//[D1Eif0(d1e1,dthn,dels)]
 |D2Etup1 _ => f0_tup1(d2e0, err)
 |D2Ercd2 _ => f0_rcd2(d2e0, err)
 //
+|D2Elam0 _ => f0_lam0(d2e0, err)
+//
+|D2Etry0 _ => f0_try0(d2e0, err)
+//
 |D2Eaddr _ => f0_addr(d2e0, err)
 |D2Efold _ => f0_fold(d2e0, err)
 |D2Eeval _ => f0_eval(d2e0, err)
@@ -1533,6 +1575,67 @@ val loc = d2e.lctn() in
 d2exp_rcd2_errck(loc,knd0,npf1,ldes)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_rcd2(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_lam0
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Elam0
+( tknd
+, f2as, sres
+, arrw, d2e1) = d2e.node()
+//
+val
+sres = tread12_s2res(sres, err)
+val
+d2e1 = tread12_d2exp(d2e1, err)
+//
+in//let
+if
+(e00=err)
+then (d2e) else
+d2exp_lam0_errck
+(d2e.lctn(),tknd,f2as,sres,arrw,d2e1)
+end (*let*) // end of [f0_lam0(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_try0
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Etry0
+( tknd
+, d2e1, d2cs) = d2e.node()
+//
+val
+d2e1 =
+tread12_d2exp(d2e1, err)
+val
+d2cs =
+tread12_d2clslst(d2cs, err)
+//
+in//let
+if
+(e00=err)
+then (d2e) else
+let
+val loc = d2e.lctn() in
+d2exp_try0_errck(loc,tknd,d2e1,d2cs)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_try0(d2e,err)]
 //
 (* ****** ****** *)
 //

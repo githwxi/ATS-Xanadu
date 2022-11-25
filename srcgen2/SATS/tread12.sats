@@ -163,6 +163,14 @@ fun tread12_l2d2e: ftread12(l2d2e)
 (* ****** ****** *)
 fun tread12_f2arg: ftread12(f2arg)
 (* ****** ****** *)
+//
+fun tread12_s2res: ftread12(s2res)
+//
+(*
+fun tread12_d2res: ftread12(d2res)
+*)
+//
+(* ****** ****** *)
 fun tread12_d2gua: ftread12(d2gua)
 fun tread12_d2gpt: ftread12(d2gpt)
 fun tread12_d2cls: ftread12(d2cls)
