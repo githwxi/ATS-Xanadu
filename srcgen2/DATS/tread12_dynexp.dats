@@ -695,6 +695,31 @@ endlet // end of [d2exp_lam0_errck(...)]
 (* ****** ****** *)
 //
 fun
+d2exp_fix0_errck
+( loc0: loc_t
+, tknd: token
+, d2v0: d2var
+, f2as: f2arglst
+, sres: s2res
+, arrw: f1unarrw
+, d2e1
+: d2exp(*body*)): d2exp =
+let
+val lvl = d2exp_errvl(d2e1)
+in//let
+d2exp_errck
+(
+lvl+1,
+d2exp
+(
+loc0,
+D2Efix0
+(tknd, d2v0, f2as, sres, arrw, d2e1)))
+endlet // end of [d2exp_fix0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d2exp_try0_errck
 (loc0: loc_t
 ,tknd: token
@@ -1215,6 +1240,7 @@ endlet//[D1Eif0(d1e1,dthn,dels)]
 |D2Ercd2 _ => f0_rcd2(d2e0, err)
 //
 |D2Elam0 _ => f0_lam0(d2e0, err)
+|D2Efix0 _ => f0_fix0(d2e0, err)
 //
 |D2Etry0 _ => f0_try0(d2e0, err)
 //
@@ -1603,6 +1629,37 @@ if
 then (d2e) else
 d2exp_lam0_errck
 (d2e.lctn(),tknd,f2as,sres,arrw,d2e1)
+end (*let*) // end of [f0_lam0(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fix0
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Efix0
+( tknd
+, d2v0
+, f2as, sres
+, arrw, d2e1) = d2e.node()
+//
+val
+sres = tread12_s2res(sres, err)
+val
+d2e1 = tread12_d2exp(d2e1, err)
+//
+in//let
+if
+(e00=err)
+then (d2e) else
+d2exp_fix0_errck
+( d2e.lctn()
+, tknd, d2v0, f2as, sres, arrw, d2e1)
 end (*let*) // end of [f0_lam0(d2e,err)]
 //
 (* ****** ****** *)
