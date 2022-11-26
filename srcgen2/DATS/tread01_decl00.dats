@@ -354,13 +354,13 @@ d1ecl_valdclst_errck
 : loc_t
 , tknd
 : token
-, d1cs
+, d1vs
 : d1valdclist): d1ecl =
 let
 val lvl = 0
 in//let
 d1ecl_errck
-(lvl+1, d1ecl(loc0,D1Cvaldclst(tknd,d1cs)))
+(lvl+1, d1ecl(loc0,D1Cvaldclst(tknd,d1vs)))
 end (*let*) // end of [d1ecl_valdclst_errck]
 //
 (* ****** ****** *)
@@ -371,13 +371,13 @@ d1ecl_vardclst_errck
 : loc_t
 , tknd
 : token
-, d1cs
+, d1vs
 : d1vardclist): d1ecl =
 let
 val lvl = 0
 in//let
 d1ecl_errck
-(lvl+1, d1ecl(loc0,D1Cvardclst(tknd,d1cs)))
+(lvl+1, d1ecl(loc0,D1Cvardclst(tknd,d1vs)))
 end (*let*) // end of [d1ecl_vardclst_errck]
 //
 (* ****** ****** *)
@@ -390,14 +390,14 @@ d1ecl_fundclst_errck
 : token
 , tqas
 : t1qaglst
-, d1cs
+, d1fs
 : d1fundclist): d1ecl =
 let
 val lvl = 0
 in//let
 d1ecl_errck
 ( lvl+1
-, d1ecl(loc0,D1Cfundclst(tknd,tqas,d1cs)) )
+, d1ecl(loc0,D1Cfundclst(tknd,tqas,d1fs)) )
 end (*let*) // end of [d1ecl_fundclst_errck]
 //
 (* ****** ****** *)
@@ -959,16 +959,16 @@ val e00 = err
 //
 val-
 D1Cvaldclst
-( tknd, d1cs) = dcl.node()
+( tknd, d1vs) = dcl.node()
 //
-val d1cs =
-tread01_d1valdclist(d1cs, err)
+val d1vs =
+tread01_d1valdclist(d1vs, err)
 //
 in//let
 if
 (e00=err)
 then (dcl) else
-d1ecl_valdclst_errck(dcl.lctn(),tknd,d1cs)
+d1ecl_valdclst_errck(dcl.lctn(),tknd,d1vs)
 end (*let*) // end of [f0_valdclst(dcl,err)]
 //
 (* ****** ****** *)
@@ -983,16 +983,16 @@ val e00 = err
 //
 val-
 D1Cvardclst
-( tknd, d1cs) = dcl.node()
+( tknd, d1vs) = dcl.node()
 //
-val d1cs =
-tread01_d1vardclist(d1cs, err)
+val d1vs =
+tread01_d1vardclist(d1vs, err)
 //
 in//let
 if
 (e00=err)
 then (dcl) else
-d1ecl_vardclst_errck(dcl.lctn(),tknd,d1cs)
+d1ecl_vardclst_errck(dcl.lctn(),tknd,d1vs)
 end (*let*) // end of [f0_vardclst(dcl,err)]
 //
 (* ****** ****** *)
@@ -1009,18 +1009,18 @@ val loc = dcl.lctn()
 val-
 D1Cfundclst
 ( tknd
-, tqas, d1cs) = dcl.node()
+, tqas, d1fs) = dcl.node()
 //
 val tqas =
 tread01_t1qaglst(tqas, err)
-val d1cs =
-tread01_d1fundclist(d1cs, err)
+val d1fs =
+tread01_d1fundclist(d1fs, err)
 //
 in//let
 if
 (e00=err)
 then (dcl) else
-d1ecl_fundclst_errck(loc, tknd, tqas, d1cs)
+d1ecl_fundclst_errck(loc, tknd, tqas, d1fs)
 end (*let*) // end of [f0_fundclst(dcl,err)]
 //
 (* ****** ****** *)
