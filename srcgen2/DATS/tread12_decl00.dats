@@ -176,6 +176,40 @@ d2ecl_errck
 end (*let*) // end of [d2ecl_datasort_errck]
 //
 (* ****** ****** *)
+//
+fun
+d2ecl_valdclst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, d2vs
+: d2valdclist): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1, d2ecl(loc0,D2Cvaldclst(tknd,d2vs)))
+end (*let*) // end of [d2ecl_valdclst_errck]
+//
+(* ****** ****** *)
+//
+fun
+d2ecl_vardclst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, d2vs
+: d2vardclist): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1, d2ecl(loc0,D2Cvardclst(tknd,d2vs)))
+end (*let*) // end of [d2ecl_vardclst_errck]
+//
+(* ****** ****** *)
 
 #implfun
 tread12_d2ecl
@@ -205,6 +239,11 @@ D2Csexpdef _ => f0_sexpdef(d2cl, err)
 //
 |
 D2Cdatasort _ => f0_datasort(d2cl, err)
+//
+|
+D2Cvaldclst _ => f0_valdclst(d2cl, err)
+|
+D2Cvardclst _ => f0_vardclst(d2cl, err)
 //
 |
 _(*otherwise*) =>
@@ -470,6 +509,54 @@ d2ecl_datasort_errck( loc, d1cl, s2ts )
 end (*let*) // end of [f0_datasort(dcl,err)]
 //
 end (*local*) // end of [local(f0_datasort)]
+//
+(* ****** ****** *)
+//
+fun
+f0_valdclst
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+//
+val-
+D2Cvaldclst
+( tknd, d2vs) = dcl.node()
+//
+val d2vs =
+tread12_d2valdclist(d2vs, err)
+//
+in//let
+if
+(e00=err)
+then (dcl) else
+d2ecl_valdclst_errck(dcl.lctn(),tknd,d2vs)
+end (*let*) // end of [f0_valdclst(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_vardclst
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+//
+val-
+D2Cvardclst
+( tknd, d2vs) = dcl.node()
+//
+val d2vs =
+tread12_d2vardclist(d2vs, err)
+//
+in//let
+if
+(e00=err)
+then (dcl) else
+d2ecl_vardclst_errck(dcl.lctn(),tknd,d2vs)
+end (*let*) // end of [f0_vardclst(dcl,err)]
 //
 (* ****** ****** *)
 //
