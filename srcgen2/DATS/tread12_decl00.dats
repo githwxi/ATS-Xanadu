@@ -395,8 +395,8 @@ list_nil() => ()
 |
 list_cons(s2c1, s2cs) =>
 let
-val () = f1_s2cst(s2c1, err)
-val () = f1_s2cstlst(s2cs, err)
+  val () = f1_s2cst(s2c1, err)
+  val () = f1_s2cstlst(s2cs, err)
 end (*let*) // end of [list_cons(_,_)]
 ) (*case+*) // end of [f1_s2cstlst(...)]
 //
@@ -456,8 +456,11 @@ val-
 D2Cdatasort
 (d1cl, s2ts) = dcl.node()
 //
+val () = f1_sort2lst(s2ts, err)
+(*
 val
 s2ts = tread12_sort2lst(s2ts, err)
+*)
 //
 in//let
 if
