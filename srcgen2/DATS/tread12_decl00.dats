@@ -370,6 +370,79 @@ end (*let*) // end of [f0_sexpdef(dcl,err)]
 //
 (* ****** ****** *)
 //
+local
+
+(* ****** ****** *)
+//
+fun
+f1_s2cst
+( s2c: s2cst
+, err: &sint >> _): void =
+let
+val s2t =
+tread12_sort2(s2c.sort(), err)
+end (*let*) // end of [f1_s2cst(...)]
+//
+fun
+f1_s2cstlst
+( s2cs
+: s2cstlst
+, err: &sint >> _): void =
+(
+case+ s2cs of
+|
+list_nil() => ()
+|
+list_cons(s2c1, s2cs) =>
+let
+val () = f1_s2cst(s2c1, err)
+val () = f1_s2cstlst(s2cs, err)
+end (*let*) // end of [list_cons(_,_)]
+) (*case+*) // end of [f1_s2cstlst(...)]
+//
+(* ****** ****** *)
+
+fun
+f1_sort2lst
+( s2ts
+: sort2lst
+, err: &sint >> _): void =
+(
+case+ s2ts of
+|
+list_nil() => ()
+|
+list_cons(s2t1, s2ts) =>
+( f1_sort2(s2t1, err)
+; f1_sort2lst(s2ts, err) )
+) where
+{
+//
+fun
+f1_sort2
+( s2t: sort2
+, err: &sint >> _): void =
+(
+case+ s2t of
+|
+S2Tbas(t2b) =>
+f1_t2bas(t2b, err) | _ => ())
+//
+and
+f1_t2bas
+( t2b: t2bas
+, err: &sint >> _): void =
+(
+case+ t2b of
+| T2Btdat(tdat) =>
+  f1_s2cstlst(tdat.s2cs(), err)
+| _(* non-T2Bdat *) => ( (*void*) )
+)
+//
+} (*where*) // end of [f1_sort2lst(...)]
+
+in//local
+//
 fun
 f0_datasort
 ( dcl: d2ecl
@@ -392,6 +465,8 @@ if
 then (dcl) else
 d2ecl_datasort_errck( loc, d1cl, s2ts )
 end (*let*) // end of [f0_datasort(dcl,err)]
+//
+end (*local*) // end of [local(f0_datasort)]
 //
 (* ****** ****** *)
 //
