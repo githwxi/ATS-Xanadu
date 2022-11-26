@@ -115,6 +115,7 @@ d1ecl_errck
 end (*let*)//end-of-[d1ecl_extern_errck]
 //
 (* ****** ****** *)
+//
 fun
 d1ecl_define_errck
 ( loc0: loc_t
@@ -131,6 +132,7 @@ lvl+1,
 d1ecl_make_node
 (loc0,D1Cdefine(tknd,geid,gmas,gopt)))
 end (*let*)//end-of-[d1ecl_define_errck]
+//
 (* ****** ****** *)
 //
 fun
