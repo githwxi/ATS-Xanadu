@@ -95,6 +95,34 @@ end (*let*) // end of [d2ecl_local0_errck]
 (* ****** ****** *)
 //
 fun
+d2ecl_static_errck
+( loc0: loc_t
+, tknd: token
+, dcl1: d2ecl): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+( lvl+1
+, d2ecl(loc0, D2Cstatic(tknd, dcl1)) )
+end (*let*)//end-of-[d2ecl_static_errck]
+//
+fun
+d2ecl_extern_errck
+( loc0: loc_t
+, tknd: token
+, dcl1: d2ecl): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+( lvl+1
+, d2ecl(loc0, D2Cextern(tknd, dcl1)) )
+end (*let*)//end-of-[d2ecl_extern_errck]
+//
+(* ****** ****** *)
+//
+fun
 d2ecl_sortdef_errck
 ( loc0: loc_t
 , sym1: sym_t
@@ -105,6 +133,19 @@ in//let
 d2ecl_errck
 (lvl+1,d2ecl(loc0,D2Csortdef(sym1,def2)))
 end (*let*) // end of [d2ecl_sortdef_errck]
+//
+(* ****** ****** *)
+//
+fun
+d2ecl_abssort_errck
+( loc0: loc_t
+, sym1: sym_t): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1,d2ecl(loc0, D2Cabssort(  sym1  )))
+end (*let*) // end of [d2ecl_abssort_errck]
 //
 (* ****** ****** *)
 //
@@ -121,6 +162,20 @@ d2ecl_errck
 end (*let*) // end of [d2ecl_sexpdef_errck]
 //
 (* ****** ****** *)
+//
+fun
+d2ecl_datasort_errck
+( loc0: loc_t
+, d1cl: d1ecl
+, s2ts: sort2lst): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1,d2ecl(loc0,D2Cdatasort(d1cl,s2ts)))
+end (*let*) // end of [d2ecl_datasort_errck]
+//
+(* ****** ****** *)
 
 #implfun
 tread12_d2ecl
@@ -133,12 +188,23 @@ d2cl.node() of
 D2Cd1ecl _ => d2cl
 //
 |
+D2Cstatic _ => f0_static(d2cl, err)
+|
+D2Cextern _ => f0_extern(d2cl, err)
+//
+|
 D2Clocal0 _ => f0_local0(d2cl, err)
+//
+|
+D2Cabssort _ => f0_abssort(d2cl, err)
 //
 |
 D2Csortdef _ => f0_sortdef(d2cl, err)
 |
 D2Csexpdef _ => f0_sexpdef(d2cl, err)
+//
+|
+D2Cdatasort _ => f0_datasort(d2cl, err)
 //
 |
 _(*otherwise*) =>
@@ -155,6 +221,50 @@ endlet // end of [ _ (* otherwise *) ]
 val (  ) =
 prerrln("tread12_d2ecl: d2cl = ", d2cl)
 *)
+//
+(* ****** ****** *)
+//
+fun
+f0_static
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+//
+val-
+D2Cstatic
+( tknd, dcl1) = dcl.node()
+//
+val dcl1 = tread12_d2ecl(dcl1, err)
+//
+in
+if
+(e00=err)
+then dcl else
+d2ecl_static_errck(dcl.lctn(),tknd,dcl1)
+end (*let*) // end of [ f0_static(dcl,err) ]
+//
+fun
+f0_extern
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+//
+val-
+D2Cextern
+( tknd, dcl1) = dcl.node()
+//
+val dcl1 = tread12_d2ecl(dcl1, err)
+//
+in
+if
+(e00=err)
+then dcl else
+d2ecl_extern_errck(dcl.lctn(),tknd,dcl1)
+end (*let*) // end of [ f0_extern(dcl,err) ]
 //
 (* ****** ****** *)
 //
@@ -186,6 +296,31 @@ end (*let*) // end of [ f0_local0(dcl,err) ]
 (* ****** ****** *)
 //
 fun
+f0_abssort
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D2Cabssort(sym1) = dcl.node()
+//
+(*
+HX-2022-11-26: checking symbol-error!
+*)
+//
+in//let
+if
+(e00=err)
+then dcl else
+d2ecl_abssort_errck( dcl.lctn(), sym1 )
+end (*let*) // end of [ f0_abssort(dcl,err) ]
+//
+(* ****** ****** *)
+//
+fun
 f0_sortdef
 ( dcl: d2ecl
 , err: &sint >> _): d2ecl =
@@ -205,7 +340,7 @@ in//let
 if
 (e00=err)
 then (dcl) else
-d2ecl_sortdef_errck(loc, sym1, def2 )
+d2ecl_sortdef_errck( loc, sym1, def2 )
 end (*let*) // end of [f0_sortdef(dcl,err)]
 //
 (* ****** ****** *)
@@ -230,8 +365,33 @@ in//let
 if
 (e00=err)
 then (dcl) else
-d2ecl_sexpdef_errck(loc, s2c1, def2 )
+d2ecl_sexpdef_errck( loc, s2c1, def2 )
 end (*let*) // end of [f0_sexpdef(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_datasort
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D2Cdatasort
+(d1cl, s2ts) = dcl.node()
+//
+val
+s2ts = tread12_sort2lst(s2ts, err)
+//
+in//let
+if
+(e00=err)
+then (dcl) else
+d2ecl_datasort_errck( loc, d1cl, s2ts )
+end (*let*) // end of [f0_datasort(dcl,err)]
 //
 (* ****** ****** *)
 //
