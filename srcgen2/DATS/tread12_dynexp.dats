@@ -1619,6 +1619,9 @@ D2Elam0
 , arrw, d2e1) = d2e.node()
 //
 val
+f2as =
+tread12_f2arglst(f2as, err)
+val
 sres = tread12_s2res(sres, err)
 val
 d2e1 = tread12_d2exp(d2e1, err)
@@ -1648,6 +1651,9 @@ D2Efix0
 , f2as, sres
 , arrw, d2e1) = d2e.node()
 //
+val
+f2as =
+tread12_f2arglst(f2as, err)
 val
 sres = tread12_s2res(sres, err)
 val
