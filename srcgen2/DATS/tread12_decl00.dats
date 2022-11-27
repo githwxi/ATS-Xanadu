@@ -63,6 +63,11 @@ ATS_PACKNAME
 #symload lctn with d2ecl_get_lctn
 #symload node with d2ecl_get_node
 (* ****** ****** *)
+#symload lctn with d2valdcl_get_lctn
+#symload lctn with d2vardcl_get_lctn
+#symload lctn with d2fundcl_get_lctn
+#symload lctn with d2cstdcl_get_lctn
+(* ****** ****** *)
 //
 fun
 d2ecl_errck
@@ -208,6 +213,26 @@ in//let
 d2ecl_errck
 (lvl+1, d2ecl(loc0,D2Cvardclst(tknd,d2vs)))
 end (*let*) // end of [d2ecl_vardclst_errck]
+//
+(* ****** ****** *)
+//
+fun
+d2ecl_fundclst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, tqas
+: t2qaglst
+, d2fs
+: d2fundclist): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+( lvl+1
+, d2ecl(loc0,D2Cfundclst(tknd,tqas,d2fs)) )
+end (*let*) // end of [d2ecl_fundclst_errck]
 //
 (* ****** ****** *)
 
@@ -560,8 +585,181 @@ end (*let*) // end of [f0_vardclst(dcl,err)]
 //
 (* ****** ****** *)
 //
+fun
+f0_fundclst
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D2Cfundclst
+( tknd
+, tqas, d2fs) = dcl.node()
+//
+(*
+val tqas =
+tread12_t1qaglst(tqas, err)
+*)
+val d2fs =
+tread12_d2fundclist(d2fs, err)
+//
+in//let
+if
+(e00=err)
+then (dcl) else
+d2ecl_fundclst_errck(loc, tknd, tqas, d2fs)
+end (*let*) // end of [f0_fundclst(dcl,err)]
+//
+(* ****** ****** *)
+//
 } (*where*) // end of [tread12_d2ecl(d2cl,err)]
 
+(* ****** ****** *)
+//
+#implfun
+tread12_teqd2exp
+  (tdxp, err) =
+(
+case+ tdxp of
+|
+TEQD2EXPnone() => tdxp
+|
+TEQD2EXPsome(teq1, d2e2) =>
+let
+val e00 = err
+val d2e2 = tread12_d2exp(d2e2, err)
+in//letp
+if
+(e00=err)
+then tdxp else TEQD2EXPsome(teq1, d2e2)
+endlet // end of [ TEQD2EXPsome( _,_ ) ]
+) (*case+*)//end-(tread12_teqd2exp(tdxp,err))
+//
+#implfun
+tread12_wths2exp
+  (wsxp, err) =
+(
+case+ wsxp of
+|
+WTHS2EXPnone() => wsxp
+|
+WTHS2EXPsome(twth, s2e1) =>
+let
+val e00 = err
+val s2e1 = tread12_s2exp(s2e1, err)
+in//let
+if
+(e00=err)
+then wsxp else WTHS2EXPsome(twth, s2e1)
+endlet // end of [ WTHS2EXPsome( _,_ ) ]
+) (*case+*)//end-(tread12_wths2exp(wsxp,err))
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_d2valdcl
+  (dval, err) =
+let
+//
+val e00 = err
+//
+val loc = dval.lctn()
+//
+val
+dpat = d2valdcl_get_dpat(dval)
+val
+tdxp = d2valdcl_get_tdxp(dval)
+val
+wsxp = d2valdcl_get_wsxp(dval)
+//
+val
+dpat = tread12_d2pat(dpat,err)
+val
+tdxp = tread12_teqd2exp(tdxp,err)
+val
+wsxp = tread12_wths2exp(wsxp,err)
+//
+in//let
+if
+(e00=err)
+then (dval)
+else d2valdcl( loc, dpat, tdxp, wsxp )
+endlet // end-of-[tread12_d2valdcl(out,dval)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_d2vardcl
+  (dvar, err) =
+let
+//
+val e00 = err
+//
+val loc = dvar.lctn()
+//
+val
+dpid = d2vardcl_get_dpid(dvar)
+val
+vpid = d2vardcl_get_vpid(dvar)
+val
+sres = d2vardcl_get_sres(dvar)
+val
+dini = d2vardcl_get_dini(dvar)
+//
+val
+sres = tread12_s2expopt(sres,err)
+val
+dini = tread12_teqd2exp(dini,err)
+//
+in//let
+if
+(e00=err)
+then (dvar)
+else d2vardcl(loc,dpid,vpid,sres,dini)
+endlet // end-of-[tread12_d2vardcl(out,dvar)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_d2fundcl
+  (dfun, err) =
+let
+//
+val e00 = err
+//
+val loc = dfun.lctn()
+//
+val
+dpid = d2fundcl_get_dpid(dfun)
+val
+farg = d2fundcl_get_farg(dfun)
+val
+sres = d2fundcl_get_sres(dfun)
+val
+tdxp = d2fundcl_get_tdxp(dfun)
+val
+wsxp = d2fundcl_get_wsxp(dfun)
+//
+val
+farg =
+tread12_f2arglst(farg, err)
+val
+sres = tread12_s2res(sres,err)
+val
+tdxp = tread12_teqd2exp(tdxp,err)
+val
+wsxp = tread12_wths2exp(wsxp,err)
+//
+in//let
+if
+(e00=err)
+then (dfun)
+else d2fundcl(loc,dpid,farg,sres,tdxp,wsxp)
+endlet // end-of-[tread12_d2fundcl(out,dfun)]
+//
 (* ****** ****** *)
 //
 #implfun
