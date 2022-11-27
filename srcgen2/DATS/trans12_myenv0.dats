@@ -1295,7 +1295,14 @@ tr12env_add0_d2itm(env0, sym0, ditm)
 end//let
 ) (*case+*)//end-of-[optn_vt_cons(...)]
 //
-end (*let*)//end[tr12env_add1_d2con(env0,d2c0)]
+end where
+{
+//
+  val () =
+  prerrln
+  ("tr12env_add1_d2con: d2c0 = ", d2c0)
+//
+} (*where*)//end[tr12env_add1_d2con(env0,d2c0)]
 //
 (* ****** ****** *)
 //
@@ -1303,9 +1310,11 @@ end (*let*)//end[tr12env_add1_d2con(env0,d2c0)]
 tr12env_add1_d2cst
   (env0, d2c0) =
 let
+//
 val sym0 = d2c0.name()
 val dopt =
 tr12env_find_d2itm(env0, sym0)
+//
 in//let
 //
 case+ dopt of
@@ -1315,7 +1324,7 @@ tr12env_add0_d2itm
 (env0, sym0, ditm) where
 {
 val
-ditm = D2ITMcst(list_sing(d2c0))}
+ditm = D2ITMcst(list_sing(d2c0)) }
 | ~
 optn_vt_cons(ditm) =>
 (
@@ -1338,7 +1347,14 @@ tr12env_add0_d2itm(env0, sym0, ditm)
 end//let
 ) (*case+*)//end-of-[optn_vt_cons(...)]
 //
-end (*let*)//end[tr12env_add1_d2cst(env0,d2c0)]
+end where
+{
+//
+  val () =
+  prerrln
+  ("tr12env_add1_d2cst: d2c0 = ", d2c0)
+//
+} (*where*)//end[tr12env_add1_d2cst(env0,d2c0)]
 //
 (* ****** ****** *)
 //

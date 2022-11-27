@@ -469,6 +469,11 @@ D1Csexpdef _ => f0_sexpdef(env0, d1cl)
 D1Cabstype _ => f0_abstype(env0, d1cl)
 |
 D1Cabsopen _ => f0_absopen(env0, d1cl)
+|
+D1Cabsimpl _ => f0_absimpl(env0, d1cl)
+//
+|
+D1Csymload _ => f0_symload(env0, d1cl)
 //
 |
 D1Cdatasort _ => f0_datasort(env0, d1cl)
@@ -1112,6 +1117,72 @@ end (*local*) // end of [f0(absopen/absimpl)]
 (* ****** ****** *)
 //
 fun
+f0_symload
+( env0:
+! tr12env
+, d1cl: d1ecl): d2ecl =
+let
+//
+val
+loc0 = d1cl.lctn()
+val-
+D1Csymload
+( tknd
+, sym1
+, dqid, gopt) = d1cl.node()
+//
+val dopt =
+(
+case+ dqid of
+|
+D1QIDnone(tok1) =>
+let
+val
+did1 = dexpid_sym(tok1)
+in//let
+tr12env_find_d2itm(env0,did1)
+end (*let*) // D1QIDnone(...)
+|
+D1QIDsome(tqua, tok1) =>
+let
+val
+did1 = dexpid_sym(tok1)
+in//let
+tr12env_qfind_d2itm(env0,tqua,did1)
+end (*let*) // D1QIDsome(...)
+) : d2itmopt_vt // end-of-[val(dopt)]
+//
+val dptm =
+(
+case+ dopt of
+| ~
+optn_vt_nil
+( (*void*) ) =>
+D2PTMnone(dqid)
+| ~
+optn_vt_cons
+(   ditm   ) =>
+let
+val pval = f1_pval(gopt)
+in//let
+  D2PTMsome(pval, ditm) end): d2ptm
+//
+in//let
+//
+  d2ecl_make_node
+  (loc0, D2Csymload(tknd, sym1, dptm))
+//
+end where
+{
+//
+fun
+f1_pval(gopt: g1expopt): sint = 0 // FIXME!
+//
+} (*where*) // end of [f0_symload(env0,d1cl)]
+//
+(* ****** ****** *)
+//
+fun
 f0_datasort
 ( env0:
 ! tr12env
@@ -1611,15 +1682,9 @@ val
 tqas =
 trans12_t1qaglst(env0, tqas)
 //
-val (  ) =
-tr12env_pshlam0(env0)
-val (  ) =
-tr12env_add0_tqas(env0, tqas)
-//
-val d2cs =
+val
+d2cs =
 trans12_d1cstdclist(env0,tknd,d1cs,tqas)
-//
-val (  ) = tr12env_poplam0(env0)
 //
 in//let
 d2ecl(loc0, D2Cdynconst(tknd, tqas, d2cs))
@@ -2296,9 +2361,9 @@ in//local
 
 #implfun
 trans12_d1cstdcl
-  (env0, tknd
-  ,dcst, tqas) =
-let
+( env0
+, tknd
+, dcst, tqas) = let
 //
 val loc0 =
 d1cstdcl_get_lctn(dcst)
@@ -2314,23 +2379,39 @@ d1cstdcl_get_sres(dcst)
 val dres =
 d1cstdcl_get_dres(dcst)
 //
+val () =
+tr12env_pshlam0(env0)//enter
+//
+val () =
+tr12env_add0_tqas(env0, tqas)
+//
 val
 d2as =
-trans12_d1arglst(env0, darg)
+trans12_d1arglst( env0 , darg )
+//
 val
 sres = trans12_s1res(env0, sres)
 val // d1res = teqd1exp
 dres = trans12_teqd1exp(env0, dres)
 //
-val
-sfun = f1_d2as(0, d2as, sres)
+val () = tr12env_poplam0(env0)//exit
 //
 val
 d2c1 =
-d2cst_make_idtp(dpid, tqas, sfun)
+let
+val
+sfun = f1_d2as(0, d2as, sres)
+in//let
+  d2cst_make_idtp(dpid, tqas, sfun)
+end (*let*) // end of [ val(d2c1) ]
 //
 in//let
+let
+val () =
+  tr12env_add1_d2cst( env0 , d2c1 )
+in//let
   d2cstdcl(loc0, d2c1, d2as, sres, dres)
+end//let
 end//let
 (*let*)//end-of-[trans12_d1cstdcl(env0,...)]
 

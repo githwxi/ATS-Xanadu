@@ -630,6 +630,11 @@ TEQD2EXPnone() => tdxp
 TEQD2EXPsome(teq1, d2e2) =>
 let
 val e00 = err
+(*
+val ( ) =
+prerrln
+("tread12_teqd2exp: d2e2 = ", d2e2)
+*)
 val d2e2 = tread12_d2exp(d2e2, err)
 in//letp
 if
@@ -649,6 +654,11 @@ WTHS2EXPnone() => wsxp
 WTHS2EXPsome(twth, s2e1) =>
 let
 val e00 = err
+(*
+val ( ) =
+prerrln
+("tread12_wths2exp: s2e1 = ", s2e1)
+*)
 val s2e1 = tread12_s2exp(s2e1, err)
 in//let
 if

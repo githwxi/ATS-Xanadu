@@ -704,9 +704,6 @@ D2Edtsel of
 ,sint(*npf*), d2explstopt(*arg*))
 *)
 //
-|D2Eseqn of
-(d2explst(*semi*), d2exp(*last*))
-//
 |
 D2Eif0 of
 (d2exp(*cond*)
@@ -715,6 +712,10 @@ D2Eif0 of
 |
 D2Ecas0 of
 ( token(*+/0/-*), d2exp, d2clslst )
+//
+|
+D2Eseqn of
+( d2explst(*init*), d2exp(*last*) )
 //
 |D2Etup0 of (sint(*npf*), d2explst)
 (*

@@ -633,6 +633,10 @@ in//let
 strn_append(XATSHOME, fnam)
 end (*let*) // end-of-(fpth)
 //
+val () =
+prerrln
+("f0_pvsload: fpth = ", fpth)
+//
 val
 dpar =
 d0parsed_from_fpath(knd0, fpth)
@@ -695,9 +699,21 @@ then (0) else (1) where
 val () = f0_pvsinit((*void*))
 //
 val () =
-f0_pvsload(0(*sta*), "/prelude/basics0.sats") 
+f0_pvsload
+(0(*sta*), "/prelude/basics0.sats") 
 val () =
-f0_pvsload(0(*sta*), "/prelude/excptn0.sats") }
+f0_pvsload
+(0(*sta*), "/prelude/excptn0.sats")
+//
+val () =
+f0_pvsload
+(0(*sta*), "/prelude/SATS/bool000.sats")
+val () =
+f0_pvsload
+(0(*sta*), "/prelude/SATS/char000.sats")
+val () =
+f0_pvsload
+(0(*sta*), "/prelude/SATS/gint000.sats") }
 // end of [if]
 end (*let*) // end of [the_tr12env_pvsload(...)]
 //
