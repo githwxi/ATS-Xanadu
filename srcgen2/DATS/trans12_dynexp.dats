@@ -1393,9 +1393,9 @@ case- d2i1 of
   f0_id0_d2con(env0, d1e0, d2cs)
 | D2ITMcst(d2cs) =>
   f0_id0_d2cst(env0, d1e0, d2cs)
+*)
 | D2ITMsym(_, dpis) =>
   f0_id0_d2sym(env0, d1e0, dpis)
-*)
 ) (*case+*) // end of [f0_id0_d2itm(...)]
 //
 and
@@ -1407,6 +1407,17 @@ f0_id0_d2var
 (
   d2exp_var(d1e0.lctn(), d2v1)
 )
+and
+f0_id0_d2sym
+( env0:
+! tr12env
+, d1e0: d1exp
+, dpis: d2ptmlst): d2exp =
+let
+val loc0 = d1e0.lctn()
+in
+  d2exp_sym0(loc0, d1e0, dpis)
+end (*let*) // end of [f0_id0_d2sym(...)]
 //
 (* ****** ****** *)
 //

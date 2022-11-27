@@ -127,7 +127,8 @@ d2exp_none1
 (  dexp  ) =
 d2exp_make_node
 (
-dexp.lctn(),D2Enone1(dexp))
+dexp.lctn(),D2Enone1(dexp)
+)
 //
 (* ****** ****** *)
 //
@@ -135,8 +136,14 @@ dexp.lctn(),D2Enone1(dexp))
 d2exp_var
 (loc0, dvar) =
 (
- d2exp(loc0, D2Evar(dvar)))
+d2exp(loc0, D2Evar(dvar)))
 //
+(* ****** ****** *)
+#implfun
+d2exp_sym0
+(loc0, d1e0, dpis) =
+d2exp_make_node
+(loc0, D2Esym0(d1e0, dpis))
 (* ****** ****** *)
 //
 #implfun

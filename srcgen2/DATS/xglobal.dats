@@ -505,8 +505,38 @@ end (*let*) // end of [D2ITMcst]
 (topmap_insert_any(env0, k1, x1)))
 //
 end (*let*) // end of [D2ITMcst(d2cs)]
-)
-end (*let*) // end of [auxkxs1(env0,kxs1)]
+//
+|
+D2ITMsym(sym1,d2ps) => let
+val
+opt0 =
+topmap_search_opt(env0, k1)
+//
+in//let
+case+ opt0 of
+| ~
+optn_vt_nil() =>
+topmap_insert_any(env0, k1, x1)
+| ~
+optn_vt_cons(d2i0) =>
+(
+case+ d2i0 of
+|D2ITMsym(sym1,dps2) =>
+let
+val x1 =
+D2ITMsym
+( sym1
+, list_append(d2ps, dps2))
+in//let
+topmap_insert_any(env0, k1, x1)
+end (*let*) // end of [D2ITMsym]
+|_(*non-D2ITMcst*) =>
+(topmap_insert_any(env0, k1, x1)))
+//
+end (*let*) // end of [D2ITMsym(sym1,d2ps)]
+//
+) (*case+*)
+end (*let*) // end of [ auxkxs1(env0, kxs1) ]
 //
 fun
 auxloop
@@ -521,7 +551,7 @@ strmcon_vt_cons(kxs1, kxss) =>
 (
   auxkxs1(env0, kxs1); auxloop(env0, kxss))
 )
-} (*where*) // end of [auxloop(env0, kxss)]
+} (*where*) // end of [ auxloop(env0, kxss) ]
 //
 end (*let*) // end of [the_dexpenv_pvsmrgw(map)]
 
