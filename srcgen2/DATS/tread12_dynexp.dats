@@ -68,6 +68,9 @@ ATS_PACKNAME
 #symload lctn with d2exp_get_lctn
 #symload node with d2exp_get_node
 (* ****** ****** *)
+#symload lctn with f2arg_get_lctn
+#symload node with f2arg_get_node
+(* ****** ****** *)
 //
 (* ****** ****** *)
 //
@@ -1192,6 +1195,8 @@ d2e0.node() of
 |D2Econs _ => d2e0
 |D2Ecsts _ => d2e0
 //
+|D2Esym0 _ => d2e0
+//
 |D2Esapp _ => f0_sapp(d2e0, err)
 |D2Etapp _ => f0_tapp(d2e0, err)
 //
@@ -1883,9 +1888,69 @@ val (  ) =
 prerrln("tread12_d2exp: d2e0 = ", d2e0)
 *)
 //
-} (*where*)//end[tread12_d2exp(d2e0,err)]
+} (*where*)//end-[tread12_d2exp(d2e0,err)]
 //
 (* ****** ****** *)
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_f2arg
+  (farg, err) =
+(
+case+
+farg.node() of
+//
+(*
+| F2ARGnone of (token)
+*)
+//
+|
+F2ARGsta0
+(s2vs, s2es) =>
+let
+val e00 = err
+val s2es =
+tread12_s2explst(s2es, err)
+in//let
+if
+(e00=err)
+then (farg) else
+f2arg
+(farg.lctn(), F2ARGsta0(s2vs, s2es))
+endlet // end of [F2ARGsta0(s2vs,s2es)]
+//
+|
+F2ARGdyn0
+(npf1, d2ps) =>
+let
+val e00 = err
+val d2ps =
+tread12_d2patlst(d2ps, err)
+in//let
+if
+(e00=err)
+then (farg) else
+f2arg
+(farg.lctn(), F2ARGdyn0(npf1, d2ps))
+endlet // end of [F2ARGdyn0(npf1,d2ps)]
+//
+|
+F2ARGmet0(s2es) =>
+let
+//
+val e00 = err
+//
+val s2es =
+tread12_s2explst(s2es, err)
+in//let
+if
+(e00=err)
+then (farg) else
+f2arg( farg.lctn(), F2ARGmet0(s2es) )
+endlet // end of [ F2ARGmet0(  s2es  ) ]
+//
+) (*case+*)//end-[tread12_f2arg(farg,err)]
 //
 (* ****** ****** *)
 //
@@ -1917,6 +1982,13 @@ list_tread12_fnp(ldes, err, tread12_l2d2p)
 tread12_l2d2elst
   (  ldes, err  ) =
 list_tread12_fnp(ldes, err, tread12_l2d2e)
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_f2arglst
+  (  f2as, err  ) =
+list_tread12_fnp(f2as, err, tread12_f2arg)
 //
 (* ****** ****** *)
 
