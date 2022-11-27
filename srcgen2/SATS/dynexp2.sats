@@ -679,6 +679,9 @@ d2exp_node =
 |D2Econs of (d2conlst)
 |D2Ecsts of (d2cstlst)
 //
+|D2Esym0 of
+( d1exp(*sym*), d2ptmlst )
+//
 |D2Esapp of (d2exp, s2explst)
 |D2Etapp of (d2exp, s2explst)
 //
@@ -830,15 +833,21 @@ d2exp_top
 (loc0: loc_t, sym1: sym_t): d2exp
 (* ****** ****** *)
 fun
+d2exp_sym0
+( loc0: loc_t
+, d1e0: d1exp(*sym*)
+, dpis: d2ptmlst(*opts*) ): d2exp
+(* ****** ****** *)
+fun
 d2exp_sapp
 ( loc0: loc_t
 , d2f0: d2exp(*fun*)
-, s2es: s2explst(*arg*) ) : d2exp
+, s2es: s2explst(*args*) ): d2exp
 fun
 d2exp_tapp
 ( loc0: loc_t
 , d2f0: d2exp(*fun*)
-, s2es: s2explst(*arg*) ) : d2exp
+, s2es: s2explst(*args*) ): d2exp
 (* ****** ****** *)
 fun
 d2exp_a2pp

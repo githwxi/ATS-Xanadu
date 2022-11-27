@@ -374,16 +374,24 @@ print("D2Econs(", d2cs, ")")
 |D2Ecsts(d2cs) =>
 print("D2Ecsts(", d2cs, ")")
 //
-|D2Esapp
+|
+D2Esym0(d1e0, dpis) =>
+print
+("D2Esym0(",d1e0,";",dpis,")")
+//
+|
+D2Esapp
 (d2e1, s2es) =>
-print("D2Esapp(",d2e1,";",s2es,")")
-|D2Etapp
+print
+("D2Esapp(",d2e1,";",s2es,")")
+|
+D2Etapp
 (d2e1, s2es) =>
 print("D2Etapp(",d2e1,";",s2es,")")
 //
 |
 D2Edap0(d2f0) =>
-print("D2Edap0(", d2f0, ")")
+print( "D2Edap0(", d2f0, ")" )
 |
 D2Edapp
 (d2f0,npf1,d2es) =>

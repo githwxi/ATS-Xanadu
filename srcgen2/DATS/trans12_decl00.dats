@@ -1167,10 +1167,42 @@ val pval = f1_pval(gopt)
 in//let
   D2PTMsome(pval, ditm) end): d2ptm
 //
+val d2ps = let
+//
+val opt1 =
+tr12env_find_d2itm(env0, sym1)
+//
+in (* in-of-let *)
+//
+case+ opt1 of
+| ~
+optn_vt_nil() =>
+list_nil((*void*))
+| ~
+optn_vt_cons(d2i1) =>
+(
+case+ d2i1 of
+|
+D2ITMsym(_, d2ps) => d2ps
+|
+_(*non-D2ITMsym*) =>
+list_sing(D2PTMsome(0, d2i1)))
+//
+end : d2ptmlst // end of [val(d2ps)]
+//
 in//let
 //
+let
+val
+ditm =
+D2ITMsym
+(sym1, list_cons(dptm, d2ps))
+val () =
+tr12env_add0_d2itm(env0, sym1, ditm)
+in
   d2ecl_make_node
   (loc0, D2Csymload(tknd, sym1, dptm))
+end//let
 //
 end where
 {
