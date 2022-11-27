@@ -1955,6 +1955,34 @@ endlet // end of [ F2ARGmet0(  s2es  ) ]
 (* ****** ****** *)
 //
 #implfun
+tread12_s2res
+  (sres, err) =
+(
+case+ sres of
+|
+S2RESnone() => sres
+|
+S2RESsome(seff,s2e1) =>
+let
+//
+val e00 = err
+//
+(*
+val seff =
+tread12_s2eff(seff, err)
+*)
+val s2e1 =
+tread12_s2exp(s2e1, err)
+in
+if
+(e00=err)
+then (sres) else S2RESsome(seff, s2e1)
+endlet // end of [S2RESsome(seff,s2e1)]
+) (*case+*)//end-of[tread12_s2res(sres,err)]
+//
+(* ****** ****** *)
+//
+#implfun
 tread12_d2patlst
   (  d2ps, err  ) =
 list_tread12_fnp(d2ps, err, tread12_d2pat)
