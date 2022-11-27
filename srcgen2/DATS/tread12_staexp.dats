@@ -948,8 +948,8 @@ list_tread12_fnp(s2ts, err, tread12_sort2)
 //
 #implfun
 tread12_sort2opt
-  (  s2ts, err  ) =
-optn_tread12_fnp(s2ts, err, tread12_sort2)
+  (  sopt, err  ) =
+optn_tread12_fnp(sopt, err, tread12_sort2)
 //
 (* ****** ****** *)
 //
@@ -957,6 +957,11 @@ optn_tread12_fnp(s2ts, err, tread12_sort2)
 tread12_s2explst
   (  s2es, err  ) =
 list_tread12_fnp(s2es, err, tread12_s2exp)
+//
+#implfun
+tread12_s2expopt
+  (  sopt, err  ) =
+optn_tread12_fnp(sopt, err, tread12_s2exp)
 //
 (* ****** ****** *)
 //
