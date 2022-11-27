@@ -400,6 +400,15 @@ D2Ewhere
 (d2e1, dcls) =>
 print("D2Ewhere(",d2e1,";",dcls,")")
 //
+|
+D2Eassgn
+(d2el, d2er) =>
+print("D2Eassgn(",d2el,";",d2er,")")
+|
+D2Ebrckt
+(dpis, d2es) =>
+print("D2Ebrckt(",dpis,";",d2es,")")
+//
 |D2Eif0
 (d2e1,dthn,dels) =>
 ( print("D2Eif0(")
@@ -410,15 +419,6 @@ D2Ecas0
 (tknd,d2e1,d2cs) =>
 ( print("D2Ecas0(");
   print(tknd,";",d2e1,";",d2cs,")"))
-//
-|
-D2Eassgn
-(d2el, d2er) =>
-print("D2Eassgn(",d2el,";",d2er,")")
-|
-D2Ebrckt
-(dpis, d2es) =>
-print("D2Ebrckt(",dpis,";",d2es,")")
 //
 |D2Eseqn
 (d2es, d2e1) =>

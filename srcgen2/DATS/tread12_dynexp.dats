@@ -849,6 +849,8 @@ tread12_d2pat
 case+
 d2p0.node() of
 //
+|D2Pvar _ => d2p0
+//
 |D2Pint _ => d2p0
 |D2Pbtf _ => d2p0
 |D2Pchr _ => d2p0
@@ -1176,20 +1178,13 @@ tread12_d2exp
 case+
 d2e0.node() of
 //
-|D2Eid0 _ =>
-d2exp_errck
-(lvl0, d2e0) where
-{
-val lvl0 = 1
-val (  ) = err := err+1 }
+|D2Evar _ => d2e0
 //
 |D2Eint _ => d2e0
 |D2Ebtf _ => d2e0
 |D2Echr _ => d2e0
 |D2Eflt _ => d2e0
 |D2Estr _ => d2e0
-//
-|D2Evar _ => d2e0
 //
 |D2Econ _ => d2e0
 |D2Ecst _ => d2e0
@@ -1207,7 +1202,8 @@ val (  ) = err := err+1 }
 |
 D2Ewhere _ => f0_where(d2e0, err)
 //
-|D2Eseqn _ => f0_seqn(d2e0, err)
+|
+D2Eassgn _ => f0_assgn(d2e0, err)
 //
 |
 D2Eif0
@@ -1234,6 +1230,8 @@ d2exp_if0_errck
 endlet//[D1Eif0(d1e1,dthn,dels)]
 //
 |D2Ecas0 _ => f0_cas0(d2e0, err)
+//
+|D2Eseqn _ => f0_seqn(d2e0, err)
 //
 |D2Etup0 _ => f0_tup0(d2e0, err)
 |D2Etup1 _ => f0_tup1(d2e0, err)
@@ -1896,12 +1894,12 @@ tread12_d2patlst
   (  d2ps, err  ) =
 list_tread12_fnp(d2ps, err, tread12_d2pat)
 //
+(* ****** ****** *)
+//
 #implfun
 tread12_d2explst
   (  d2es, err  ) =
 list_tread12_fnp(d2es, err, tread12_d2exp)
-//
-(* ****** ****** *)
 //
 #implfun
 tread12_d2expopt

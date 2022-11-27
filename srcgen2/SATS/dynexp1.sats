@@ -519,9 +519,11 @@ D1Ecas1 of
 | D1Elet0 of (d1eclist, d1exp)
 | D1Ewhere of (d1exp, d1eclist)
 //
-| D1Ebrckt of (d1explst)
-| D1Edtsel of
-  (token(*kind*), label, d1expopt)
+|
+D1Ebrckt of (d1explst)
+|
+D1Edtsel of
+(token(*kind*), label, d1expopt)
 //
 | D1Et1up of // HX: tuple1
   ( token

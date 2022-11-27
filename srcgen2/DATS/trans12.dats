@@ -246,7 +246,8 @@ end (*let*) // end of [s2cst_select_bin(...)]
 s2cst_selects_bin
 (s2cs, s2t1, s2t2) =
 let
-// (*
+//
+(*
 val () =
 prerrln
 ("s2cst_selects_bin: s2cs = ", s2cs)
@@ -256,7 +257,8 @@ prerrln
 val () =
 prerrln
 ("s2cst_selects_bin: s2t2 = ", s2t2)
-// *)
+*)
+//
 in//let
 //
 list_filter<s2cst>(s2cs) where
