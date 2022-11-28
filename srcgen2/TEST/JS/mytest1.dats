@@ -60,8 +60,8 @@ val () = (a1 := a1 + 1)
 (* ****** ****** *)
 //
 (* ****** ****** *)
-val a2: int = a2 // nonrec
 vlr a2: int = a2 // recurs
+val a2: int = a2 // nonrec
 (* ****** ****** *)
 //
 (* ****** ****** *)
@@ -96,7 +96,7 @@ fix fact2(x: sint) : sint =>
 if x > 0 then x * fact2(-1+x) else 1
 //
 (* ****** ****** *)
-////
+//
 (* ****** ****** *)
 fun
 <a:t0>
@@ -105,6 +105,8 @@ length(xs: list(a)): sint =
 case+ xs of
 |list_nil() => 0
 |list_cons(_, xs) => 1+length<a>(xs))
+(* ****** ****** *)
+//
 (* ****** ****** *)
 #impltmp
 {a:t0}
@@ -116,7 +118,8 @@ case+ xs of
 |list_cons(_, xs) => 1+length<a>(xs))
 (* ****** ****** *)
 (*
-#declmod(trec,debug)
+#declmod
+(trec,debug)
 #impltmp
 { a:t0 }
 length<a>(xs: list(a)): sint =

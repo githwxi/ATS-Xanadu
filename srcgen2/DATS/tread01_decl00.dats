@@ -404,22 +404,15 @@ end (*let*) // end of [d1ecl_fundclst_errck]
 //
 fun
 d1ecl_implmnt0_errck
-( loc0
-: loc_t
-, tknd
-: token
-, sqas
-: s1qaglst
-, tqas
-: t1qaglst
-, dqid
-: d1qid
-, tias
-: t1iaglst
-, fags
-: f1arglst
-, sres: s1res
-, body: d1exp): d1ecl =
+( loc0: loc_t
+, tknd: token
+, sqas: s1qaglst
+, tqas: t1qaglst
+, dqid: d1qid
+, tias: t1iaglst
+, fags: f1arglst
+, sres: s1res(*tret*)
+, d1e1: d1exp(*body*)): d1ecl =
 let
 val lvl = 0
 in//let
@@ -431,7 +424,7 @@ d1ecl_make_node
 ( loc0
 , D1Cimplmnt0
   ( tknd
-  , sqas,tqas,dqid,tias,fags,sres,body ) ))
+  , sqas,tqas,dqid,tias,fags,sres,d1e1 ) ))
 end (*let*) // end of [d1ecl_implmnt0_errck]
 //
 (* ****** ****** *)

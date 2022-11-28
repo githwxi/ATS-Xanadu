@@ -235,6 +235,33 @@ d2ecl_errck
 end (*let*) // end of [d2ecl_fundclst_errck]
 //
 (* ****** ****** *)
+//
+fun
+d1ecl_implmnt0_errck
+( loc0: loc_t
+, tknd: token
+, sqas: s2qaglst
+, tqas: t2qaglst
+, dqid: dimpl
+, tias: t2iaglst
+, fags: f2arglst
+, sres: s2res(*tret*)
+, d2e1: d2exp(*body*)): d2ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+(
+lvl+1
+,
+d2ecl_make_node
+( loc0
+, D2Cimplmnt0
+  ( tknd
+  , sqas,tqas,dqid,tias,fags,sres,body ) ))
+end (*let*) // end of [d2ecl_implmnt0_errck]
+//
+(* ****** ****** *)
 
 #implfun
 tread12_d2ecl
