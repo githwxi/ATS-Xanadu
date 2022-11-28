@@ -237,7 +237,7 @@ end (*let*) // end of [d2ecl_fundclst_errck]
 (* ****** ****** *)
 //
 fun
-d1ecl_implmnt0_errck
+d2ecl_implmnt0_errck
 ( loc0: loc_t
 , tknd: token
 , sqas: s2qaglst
@@ -250,7 +250,7 @@ d1ecl_implmnt0_errck
 let
 val lvl = 0
 in//let
-d1ecl_errck
+d2ecl_errck
 (
 lvl+1
 ,
@@ -258,7 +258,7 @@ d2ecl_make_node
 ( loc0
 , D2Cimplmnt0
   ( tknd
-  , sqas,tqas,dqid,tias,fags,sres,body ) ))
+  , sqas,tqas,dqid,tias,fags,sres,d2e1 ) ))
 end (*let*) // end of [d2ecl_implmnt0_errck]
 //
 (* ****** ****** *)
@@ -298,6 +298,9 @@ D2Cvaldclst _ => f0_valdclst(d2cl, err)
 D2Cvardclst _ => f0_vardclst(d2cl, err)
 |
 D2Cfundclst _ => f0_fundclst(d2cl, err)
+//
+|
+D2Cimplmnt0 _ => f0_implmnt0(d2cl, err)
 //
 |
 _(*otherwise*) =>
@@ -644,8 +647,70 @@ end (*let*) // end of [f0_fundclst(dcl,err)]
 //
 (* ****** ****** *)
 //
+fun
+f0_implmnt0
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+//
+val-
+D2Cimplmnt0
+(tknd
+,sqas,tqas
+,dqid,tias
+,fags,sres,body) = dcl.node()
+//
+val sqas =
+  tread12_s2qaglst(sqas, err)
+val tqas =
+  tread12_t2qaglst(tqas, err)
+//
+val tias =
+  tread12_t2iaglst(tias, err)
+val fags =
+  tread12_f2arglst(fags, err)
+//
+val sres = tread12_s2res(sres, err)
+//
+val body = tread12_d2exp(body, err)
+//
+in//let
+if
+(err=e00)
+then (dcl) else
+d2ecl_implmnt0_errck
+( dcl.lctn(), tknd
+, sqas, tqas, dqid, tias, fags, sres, body)
+end (*let*) // end of [f0_implmnt0(dcl,err)]
+//
+(* ****** ****** *)
+//
 } (*where*) // end of [tread12_d2ecl(d2cl,err)]
 
+(* ****** ****** *)
+//
+#implfun
+tread12_s2qag
+  (s2q0, err) =
+(
+s2q0 where
+{ val
+  s2vs = tread12_s2varlst(s2q0.s2vs(), err) }
+) (*case+*) // end-of-[tread01_s2qag(s1q0,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_t2qag
+  (t2q0, err) =
+(
+t2q0 where
+{ val
+  s2vs = tread12_s2varlst(t2q0.s2vs(), err) }
+) (*case+*) // end-of-[tread01_t2qag(s1q0,err)]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -806,6 +871,19 @@ tread12_d2eclist
   (  dcls, err  ) =
 list_tread12_fnp(dcls, err, tread12_d2ecl)
 //
+(* ****** ****** *)
+#implfun
+tread12_s2qaglst
+  (  sqas, err  ) =
+list_tread12_fnp(sqas, err, tread12_s2qag)
+#implfun
+tread12_t2qaglst
+  (  tqas, err  ) =
+list_tread12_fnp(tqas, err, tread12_t2qag)
+#implfun
+tread12_t2iaglst
+  (  tias, err  ) =
+list_tread12_fnp(tias, err, tread12_t2iag)
 (* ****** ****** *)
 #implfun
 tread12_d2valdclist

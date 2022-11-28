@@ -54,6 +54,9 @@ D2E = "./dynexp2.sats"
 #typedef token = $LEX.token
 (* ****** ****** *)
 #typedef sort2 = $S2E.sort2
+(* ****** ****** *)
+#typedef s2var = $S2E.s2var
+(* ****** ****** *)
 #typedef s2exp = $S2E.s2exp
 #typedef l2s2e = $S2E.l2s2e
 (* ****** ****** *)
@@ -61,6 +64,8 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 #typedef sort2lst = $S2E.sort2lst
 #typedef sort2opt = $S2E.sort2opt
+(* ****** ****** *)
+#typedef s2varlst = $S2E.s2varlst
 (* ****** ****** *)
 #typedef s2explst = $S2E.s2explst
 #typedef s2expopt = $S2E.s2expopt
@@ -84,6 +89,10 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 #typedef d2ecl = $D2E.d2ecl
 (* ****** ****** *)
+#typedef s2qag = $D2E.s2qag
+#typedef t2qag = $D2E.t2qag
+#typedef t2iag = $D2E.t2iag
+(* ****** ****** *)
 #typedef d2patlst = $D2E.d2patlst
 #typedef d2patopt = $D2E.d2patopt
 (* ****** ****** *)
@@ -99,6 +108,10 @@ D2E = "./dynexp2.sats"
 #typedef d2clslst = $D2E.d2clslst
 (* ****** ****** *)
 #typedef d2eclist = $D2E.d2eclist
+(* ****** ****** *)
+#typedef s2qaglst = $D2E.s2qaglst
+#typedef t2qaglst = $D2E.t2qaglst
+#typedef t2iaglst = $D2E.t2iaglst
 (* ****** ****** *)
 #typedef wths2exp = $D2E.wths2exp
 #typedef teqd2exp = $D2E.teqd2exp
@@ -149,6 +162,9 @@ optn_tread12_fnp
 //
 (* ****** ****** *)
 fun tread12_sort2: ftread12(sort2)
+(* ****** ****** *)
+fun tread12_s2var: ftread12(s2var)
+(* ****** ****** *)
 fun tread12_s2exp: ftread12(s2exp)
 fun tread12_l2s2e: ftread12(l2s2e)
 (* ****** ****** *)
@@ -156,6 +172,8 @@ fun tread12_s2tex: ftread12(s2tex)
 (* ****** ****** *)
 fun tread12_sort2lst: ftread12(sort2lst)
 fun tread12_sort2opt: ftread12(sort2opt)
+(* ****** ****** *)
+fun tread12_s2varlst: ftread12(s2varlst)
 (* ****** ****** *)
 fun tread12_s2explst: ftread12(s2explst)
 fun tread12_s2expopt: ftread12(s2expopt)
@@ -183,6 +201,10 @@ fun tread12_d2cls: ftread12(d2cls)
 (* ****** ****** *)
 fun tread12_d2ecl: ftread12(d2ecl)
 (* ****** ****** *)
+fun tread12_s2qag: ftread12(s2qag)
+fun tread12_t2qag: ftread12(t2qag)
+fun tread12_t2iag: ftread12(t2iag)
+(* ****** ****** *)
 fun tread12_d2patlst: ftread12(d2patlst)
 (* ****** ****** *)
 fun tread12_d2explst: ftread12(d2explst)
@@ -197,6 +219,10 @@ fun tread12_d2gualst: ftread12(d2gualst)
 fun tread12_d2clslst: ftread12(d2clslst)
 (* ****** ****** *)
 fun tread12_d2eclist: ftread12(d2eclist)
+(* ****** ****** *)
+fun tread12_s2qaglst: ftread12(s2qaglst)
+fun tread12_t2qaglst: ftread12(t2qaglst)
+fun tread12_t2iaglst: ftread12(t2iaglst)
 (* ****** ****** *)
 fun tread12_teqd2exp: ftread12(teqd2exp)
 fun tread12_wths2exp: ftread12(wths2exp)
