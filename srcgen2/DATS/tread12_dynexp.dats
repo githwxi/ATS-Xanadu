@@ -853,6 +853,7 @@ case+
 d2p0.node() of
 //
 |D2Pvar _ => d2p0
+|D2Pany _ => d2p0
 //
 |D2Pint _ => d2p0
 |D2Pbtf _ => d2p0
@@ -1955,6 +1956,133 @@ endlet // end of [ F2ARGmet0(  s2es  ) ]
 (* ****** ****** *)
 //
 #implfun
+tread12_d2gua
+  (dgua, err) =
+(
+case+
+dgua.node() of
+|
+D2GUAexp
+( d2e1 ) => let
+//
+val e00 = err
+//
+val
+d2e1 = tread12_d2exp(d2e1, err)
+//
+in//let
+if
+(err = e00)
+then (dgua) else
+d2gua(dgua.lctn(), D2GUAexp(d2e1))
+endlet // end of [ D2GUAexp(d2e1) ]
+|
+D2GUAmat
+(d2e1,d2p2) =>
+let
+//
+val e00 = err
+//
+val
+d2e1 = tread12_d2exp(d2e1, err)
+//
+val d2p2 = tread12_d2pat(d2p2, err)
+//
+in//let
+if
+(err = e00)
+then (dgua) else
+d2gua(dgua.lctn(), D2GUAmat(d2e1,d2p2))
+endlet // end of [ D2GPTgua(_,_,_) ]
+) (*case+*)//end-of-[tread12_d2gua(dgua,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_d2gpt
+  (dgpt, err) =
+(
+case+
+dgpt.node() of
+|
+D2GPTpat
+( d2p1 ) => let
+//
+val e00 = err
+//
+val
+d2p1 = tread12_d2pat(d2p1, err)
+//
+in//let
+if
+(err = e00)
+then (dgpt) else
+d2gpt(dgpt.lctn(), D2GPTpat(d2p1))
+endlet // end of [ D2GPTpat(d2p1) ]
+|
+D2GPTgua
+(d2p1,d2gs) =>
+let
+//
+val e00 = err
+//
+val d2p1 = tread12_d2pat(d2p1, err)
+//
+val d2gs = tread12_d2gualst(d2gs, err)
+//
+in//let
+if
+(err = e00)
+then (dgpt) else
+d2gpt(dgpt.lctn(), D2GPTgua(d2p1,d2gs))
+endlet // end of [ D2GPTgua(_,_,_) ]
+) (*case+*)//end-of-[tread12_d2gpt(dgpt,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_d2cls
+  (dcls, err) =
+(
+case+
+dcls.node() of
+|
+D2CLSgpt
+( dgpt ) => let
+//
+val e00 = err
+//
+val dgpt =
+tread12_d2gpt(dgpt, err)
+in//let
+if
+(err=e00)
+then (dcls)
+else
+d2cls(dcls.lctn(), D2CLSgpt(dgpt))
+end (*let*)//end-of[D2CLSgpt(dgpt)]
+|
+D2CLScls
+(dgpt,d2e1) =>
+let
+//
+val e00 = err
+//
+val dgpt = tread12_d2gpt(dgpt, err)
+val d2e1 = tread12_d2exp(d2e1, err)
+//
+in//let
+if
+(err=e00)
+then (dcls)
+else
+d2cls(dcls.lctn(), D2CLScls(dgpt,d2e1))
+endlet // end-of-[ D2CLScls(_,_,_) ]
+) (*case+*)//end-of-[tread12_d2cls(dcls,err)]
+//
+(* ****** ****** *)
+//
+#implfun
 tread12_s2res
   (sres, err) =
 (
@@ -2017,6 +2145,20 @@ list_tread12_fnp(ldes, err, tread12_l2d2e)
 tread12_f2arglst
   (  f2as, err  ) =
 list_tread12_fnp(f2as, err, tread12_f2arg)
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_d2gualst
+  (  d2gs, err  ) =
+list_tread12_fnp(d2gs, err, tread12_d2gua)
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_d2clslst
+  (  dcls, err  ) =
+list_tread12_fnp(dcls, err, tread12_d2cls)
 //
 (* ****** ****** *)
 
