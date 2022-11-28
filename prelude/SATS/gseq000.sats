@@ -503,6 +503,7 @@ fun
 <x0:t0>
 <y0:vt>
 gseq_mapopt_strm(xs): strm_vt(y0)
+//
 (* ****** ****** *)
 fun
 <xs:t0>
@@ -1262,11 +1263,13 @@ gseq_foldr_c2fr
 fun
 <xs:t0>
 <x0:t0>
-gseq_exists_f1np(xs,(x0)-<fnp>bool): bool
+gseq_exists_f1np
+(xs: xs, fnp: (x0)-<fnp>bool): bool
 fun
 <xs:t0>
 <x0:t0>
-gseq_exists_c1fr(xs,(x0)-<cfr>bool): bool
+gseq_exists_c1fr
+(xs: xs, cfr: (x0)-<cfr>bool): bool
 (* ****** ****** *)
 //
 // HX: gseq_forall
@@ -1275,11 +1278,13 @@ gseq_exists_c1fr(xs,(x0)-<cfr>bool): bool
 fun
 <xs:t0>
 <x0:t0>
-gseq_forall_f1np(xs,(x0)-<fnp>bool): bool
+gseq_forall_f1np
+(xs: xs, fnp: (x0)-<fnp>bool): bool
 fun
 <xs:t0>
 <x0:t0>
-gseq_forall_c1fr(xs,(x0)-<cfr>bool): bool
+gseq_forall_c1fr
+(xs: xs, fnp: (x0)-<cfr>bool): bool
 (* ****** ****** *)
 //
 // HX: gseq_foreach
@@ -1288,11 +1293,32 @@ gseq_forall_c1fr(xs,(x0)-<cfr>bool): bool
 fun
 <xs:t0>
 <x0:t0>
-gseq_foreach_f1np(xs,(x0)-<fnp>void): void
+gseq_foreach_f1np
+(xs: xs, fnp: (x0)-<fnp>void): void
 fun
 <xs:t0>
 <x0:t0>
-gseq_foreach_c1fr(xs,(x0)-<cfr>void): void
+gseq_foreach_c1fr
+(xs: xs, cfr: (x0)-<cfr>void): void
+(* ****** ****** *)
+//
+(*
+HX: gseq_tabulate
+*)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_tabulate_f1np
+{n0:i0}
+(sint(n0), nintlt(n0)-<fnp>x0): (xs)
+fun
+<xs:t0>
+<x0:t0>
+gseq_tabulate_c1fr
+{n0:i0}
+(sint(n0), nintlt(n0)-<cfr>x0): (xs)
+//
 (* ****** ****** *)
 //
 // HX: gseq_map(seq)
