@@ -1494,17 +1494,29 @@ foreach$work_e1nv
 (* ****** ****** *)
 //
 #implfun
-tr12env_add0_d2varopt
-  (env0, opt0) =
+tr12env_add0_d2varlst
+  (env0, d2vs) =
 (
-case+ opt0 of
+list_foreach_e1nv
+<   x0  ><  e1   >(d2vs, env0)) where
+{
+#typedef x0 = d2var
+#vwtpdef e1 = tr12env
+#impltmp
+foreach$work_e1nv
+< x0 ><e1>(x0, e1) = tr12env_add0_d2var(e1, x0)
+} (*where*)//end(tr12env_add0_d2varlst(env0,...))
 //
-|optn_nil
-((*nil*)) => ((*void*))
+(* ****** ****** *)
 //
-|optn_cons
-(  d2v0  ) =>
-tr12env_add0_d2var(env0, d2v0)
+#implfun
+tr12env_add0_d2varopt
+  (env0, dopt) =
+(
+case+ dopt of
+//
+|optn_nil() => ((*void*))
+|optn_cons(d2v) => tr12env_add0_d2var(env0, d2v)
 //
 ) (*case+*)//end(tr12env_add0_d2varopt(env0,...))
 //

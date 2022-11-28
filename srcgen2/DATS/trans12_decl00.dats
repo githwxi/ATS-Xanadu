@@ -1416,14 +1416,94 @@ val-
 D1Cvaldclst
 (tknd, d1vs) = d1cl.node()
 //
+val recq =
+(
+case+
+tknd.node() of
+| T_VAL(vlk) =>
+  valkind_recq(vlk)
+| _(*else*) => false): bool
+//
+val d2ps =
+list_trans12_fnp
+(env0, d1vs, f1_dval) where
+{
+fun
+f1_dval
+( env0:
+! tr12env
+, dval: d1valdcl): d2pat =
+let
+val
+dpat =
+d1valdcl_get_dpat(dval)
+in//let
+trans12_d1pat(env0,dpat) end
+} (*where*)//end-of-(f1_dval)
+//
+(*
+val () =
+prerrln
+("f0_valdclst:tknd = ", tknd)
+val () =
+prerrln
+("f0_valdclst:recq = ", recq)
+val () =
+prerrln
+("f0_valdclst:d2ps = ", d2ps)
+*)
+//
+val (  ) =
+if
+(recq) then
+tr12env_add0_d2ps(env0, d2ps)
+//
 val d2vs =
-trans12_d1valdclist(env0, d1vs)
+trans12_d1valdclist(env0, d2ps, d1vs)
+//
+val (  ) =
+if
+not(recq)
+then tr12env_add0_d2ps(env0, d2ps)
 //
 in//let
   d2ecl(loc0, D2Cvaldclst(tknd, d2vs))
 end (*let*) // end of [f0_valdclst(env0,d1cl)]
 
 (* ****** ****** *)
+
+local
+
+fun
+f1_add0_d2vs
+( env0:
+! tr12env
+, d2vs
+: d2vardclist): void =
+(
+case+ d2vs of
+|
+list_nil() => ((*void*))
+|
+list_cons(d2v1, d2vs) =>
+(
+f1_add0_d2vs
+(env0, d2vs)) where
+{
+//
+val dpid =
+d2vardcl_get_dpid(d2v1)
+val vpid =
+d2vardcl_get_vpid(d2v1)
+//
+val (  ) = //HX:non-recursive
+tr12env_add0_d2var(env0, dpid)
+val (  ) = //HX:non-recursive
+tr12env_add0_d2varopt(env0, vpid) }
+//
+) (*case+*) // end of [f1_add0_d2vs(...)]
+
+in//local
 
 fun
 f0_vardclst
@@ -1441,9 +1521,13 @@ D1Cvardclst
 val d2vs =
 trans12_d1vardclist(env0, d1vs)
 //
+val (  ) = f1_add0_d2vs(env0, d2vs)
+//
 in//let
   d2ecl(loc0, D2Cvardclst(tknd, d2vs))
 end (*let*) // end of [f0_vardclst(env0,d1cl)]
+
+end (*local*) // end of [ local(f0_vardclst) ]
 
 (* ****** ****** *)
 //
@@ -1462,21 +1546,68 @@ D1Cfundclst
 ( tknd
 , tqas, d1fs) = d1cl.node()
 //
-val tqas =
-trans12_t1qaglst(env0, tqas)
+val recq =
+(
+case+
+tknd.node() of
+| T_FUN(fnk) =>
+  funkind_recq(fnk)
+| _(*else*) => false): bool
+//
+val d2vs =
+list_trans12_fnp
+(env0, d1fs, f1_dfun) where
+{
+fun
+f1_dfun
+( env0:
+! tr12env
+, dfun: d1fundcl): d2var =
+let
+val
+dpid =
+d1fundcl_get_dpid(dfun)
+in//let
+trans12_d1pid(env0,dpid) end
+} (*where*)//end-of-(f1_dfun)
+//
+(*
+val () =
+prerrln
+("f0_fundclst:tknd = ", tknd)
+val () =
+prerrln
+("f0_fundclst:recq = ", recq)
+val () =
+prerrln
+("f0_fundclst:d2vs = ", d2vs)
+*)
+//
+val (  ) =
+if
+(recq) then
+tr12env_add0_d2vs(env0, d2vs)
 //
 val (  ) =
 tr12env_pshlam0(env0)
+//
+val tqas =
+trans12_t1qaglst(env0, tqas)
 val (  ) =
 tr12env_add0_tqas(env0, tqas)
 //
 val d2fs =
-trans12_d1fundclist(env0, d1fs)
+trans12_d1fundclist(env0, d2vs, d1fs)
 //
 val (  ) = tr12env_poplam0(env0)
 //
+val (  ) =
+if
+not(recq)
+then tr12env_add0_d2vs(env0, d2vs)
+//
 in//let
-  d2ecl(loc0, D2Cfundclst(tknd, tqas, d2fs))
+d2ecl(loc0, D2Cfundclst(tknd, tqas, d2fs))
 end (*let*) // end of [f0_fundclst(env0,d1cl)]
 //
 (* ****** ****** *)
@@ -2143,16 +2274,19 @@ end (*local*) // end of [ local(trans12_d1tcn) ]
 
 #implfun
 trans12_d1valdcl
-  (env0, dval) =
+( env0
+, dpat, dval) =
 let
 //
 val loc0 =
 d1valdcl_get_lctn(dval)
 //
+(*
 val dpat =
 d1valdcl_get_dpat(dval)
 val dpat =
 trans12_d1pat(env0, dpat)
+*)
 //
 val tdxp =
 d1valdcl_get_tdxp(dval)
@@ -2163,9 +2297,6 @@ val wsxp =
 d1valdcl_get_wsxp(dval)
 val wsxp =
 trans12_wths1exp(env0, wsxp)
-//
-val (  ) = //HX:non-recursive
-tr12env_add0_d2pat(env0, dpat)
 //
 in//let
 d2valdcl_make_args(loc0, dpat, tdxp, wsxp)
@@ -2202,11 +2333,6 @@ d1vardcl_get_dini(dvar)
 val dini =
 trans12_teqd1exp(env0, dini)
 //
-val (  ) = //HX:non-recursive
-tr12env_add0_d2var(env0, dpid)
-val (  ) = //HX:non-recursive
-tr12env_add0_d2varopt(env0, vpid)
-//
 in//let
 d2vardcl_make_args(loc0,dpid,vpid,sres,dini)
 end//let
@@ -2216,14 +2342,16 @@ end//let
 
 #implfun
 trans12_d1fundcl
-  (env0, dfun) =
-let
+( env0
+, dvar, dfun) = let
 //
 val loc0 =
 d1fundcl_get_lctn(dfun)
 //
+(*
 val dpid =
 d1fundcl_get_dpid(dfun)
+*)
 //
 val farg =
 d1fundcl_get_farg(dfun)
@@ -2238,8 +2366,10 @@ d1fundcl_get_tdxp(dfun)
 val () =
 tr12env_pshlam0(env0)//enter
 //
+(*
 val dpid =
 trans12_d1pid(env0, dpid)
+*)
 //
 val wsxp =
 trans12_wths1exp(env0, wsxp)
@@ -2251,7 +2381,7 @@ val
 sres = trans12_s1res(env0, sres)
 //
 val () =
-tr12env_add0_f2arglst(env0,farg)
+tr12env_add0_f2arglst(env0, farg)
 //
 val
 tdxp = trans12_teqd1exp(env0, tdxp)
@@ -2259,7 +2389,7 @@ tdxp = trans12_teqd1exp(env0, tdxp)
 val () = tr12env_poplam0(env0)//exit
 //
 in//let
-d2fundcl(loc0, dpid, farg, sres, tdxp, wsxp)
+d2fundcl(loc0, dvar, farg, sres, tdxp, wsxp)
 end//let
 (*let*)//end-of-[trans12_d1fundcl(env0,dfun)]
 
@@ -2601,13 +2731,38 @@ trans12_d1eclistopt
 optn_trans12_fnp(env0, dopt, trans12_d1eclist))
 //
 (* ****** ****** *)
-
+//
+(*
 #implfun
 trans12_d1valdclist
   (env0, d1vs) =
 (
 list_trans12_fnp(env0, d1vs, trans12_d1valdcl))
-
+*)
+//
+#implfun
+trans12_d1valdclist
+( env0
+, d2ps, d1fs) =
+(
+case+ d1fs of
+|
+list_nil() => list_nil()
+|
+list_cons(d1f1, d1fs) =>
+let
+val-
+list_cons(d2p1, d2ps) = d2ps
+val
+d2f1 =
+trans12_d1valdcl(env0, d2p1, d1f1)
+in//let
+list_cons
+( d2f1
+, trans12_d1valdclist(env0, d2ps, d1fs))
+end (*let*) // end of [ list_cons( ... ) ]
+) (*case+*) // end of [trans12_d1valdclist(...)]
+//
 (* ****** ****** *)
 
 #implfun
@@ -2617,13 +2772,38 @@ trans12_d1vardclist
 list_trans12_fnp(env0, d1vs, trans12_d1vardcl))
 
 (* ****** ****** *)
-
+//
+(*
 #implfun
 trans12_d1fundclist
   (env0, d1fs) =
 (
 list_trans12_fnp(env0, d1fs, trans12_d1fundcl))
-
+*)
+//
+#implfun
+trans12_d1fundclist
+( env0
+, d2vs, d1fs) =
+(
+case+ d1fs of
+|
+list_nil() => list_nil()
+|
+list_cons(d1f1, d1fs) =>
+let
+val-
+list_cons(d2v1, d2vs) = d2vs
+val
+d2f1 =
+trans12_d1fundcl(env0, d2v1, d1f1)
+in//let
+list_cons
+( d2f1
+, trans12_d1fundclist(env0, d2vs, d1fs))
+end (*let*) // end of [ list_cons( ... ) ]
+) (*case+*) // end of [trans12_d1fundclist(...)]
+//
 (* ****** ****** *)
 //
 #implfun

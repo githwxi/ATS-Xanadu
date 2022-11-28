@@ -475,6 +475,9 @@ tr12env_add1_d2cstlst
 (env0: !tr12env, d2cs: d2cstlst): void
 (* ****** ****** *)
 fun
+tr12env_add0_d2varlst
+(env0: !tr12env, d2vs: d2varlst): void
+fun
 tr12env_add0_d2varopt
 (env0: !tr12env, opt0: d2varopt): void
 (* ****** ****** *)
@@ -494,6 +497,12 @@ tr12env_add0_s2vs with tr12env_add0_s2varlst
 tr12env_add0_sqas with tr12env_add0_s2qaglst
 #symload
 tr12env_add0_tqas with tr12env_add0_t2qaglst
+(* ****** ****** *)
+#symload
+tr12env_add0_d2vs with tr12env_add0_d2varlst
+(* ****** ****** *)
+#symload
+tr12env_add0_d2ps with tr12env_add0_d2patlst
 (* ****** ****** *)
 #symload
 tr12env_add0_f2as with tr12env_add0_f2arglst
@@ -757,15 +766,21 @@ trans12_d1expseq
 , loc0: loc_t, d1es: d1explst): d2exp
 (* ****** ****** *)
 //
+(*
 fun
 trans12_d1valdcl
 (env0: !tr12env, dval: d1valdcl): d2valdcl
+*)
+//
 fun
 trans12_d1vardcl
 (env0: !tr12env, dvar: d1vardcl): d2vardcl
+//
+(*
 fun
 trans12_d1fundcl
 (env0: !tr12env, dfun: d1fundcl): d2fundcl
+*)
 //
 (* ****** ****** *)
 fun
@@ -861,14 +876,34 @@ trans12_d1arglst:(!tr12env, d1arglst)->d2arglst
 (* ****** ****** *)
 //
 fun
+trans12_d1valdcl
+( env0: 
+! tr12env
+, dpat: d2pat, dval: d1valdcl): d2valdcl
+fun
 trans12_d1valdclist
-(env0: !tr12env, d1vs: d1valdclist): d2valdclist
+( env0:
+! tr12env
+, d2ps: d2patlst,d1vs: d1valdclist): d2valdclist
+//
+(* ****** ****** *)
+//
 fun
 trans12_d1vardclist
 (env0: !tr12env, d1vs: d1vardclist): d2vardclist
+//
+(* ****** ****** *)
+//
+fun
+trans12_d1fundcl
+( env0:
+! tr12env
+, dvar: d2var, dfun: d1fundcl): d2fundcl
 fun
 trans12_d1fundclist
-(env0: !tr12env, d1fs: d1fundclist): d2fundclist
+( env0:
+! tr12env
+, d2vs: d2varlst,d1fs: d1fundclist): d2fundclist
 //
 (* ****** ****** *)
 //
