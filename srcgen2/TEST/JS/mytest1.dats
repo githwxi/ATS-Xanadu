@@ -53,6 +53,11 @@ a:i0, b:b0
 $rec{x= sint(a), y= bool(b)}
 //
 (* ****** ****** *)
+vlr a: int = a // recurs
+val a: int = a // nonrec
+(* ****** ****** *)
+////
+(* ****** ****** *)
 //
 var a1: int = 0
 val () = (a1 := a1 + 1)
@@ -75,21 +80,23 @@ val fact =
 fix f(x:int): int =>
 if x > 0 then x * f(x-1) else 1
 (* ****** ****** *)
-////
+//
 (* ****** ****** *)
 //
 fun
-fact(x: sint): sint =
-if x > 0 then x * fact(x-1) else 1
+fact0(x: sint): sint =
+if x > 0 then x * fact0(x-1) else 1
 //
-fun fact =
+fn0 fact0 =
 lam(x: sint) : sint =>
-if x > 0 then x * fact(x-1) else 1
+if x > 0 then x * fact0(x-1) else 1
 //
-fun fact =
-fix fact(x: sint) : sint =>
-if x > 0 then x * fact(-1+x) else 1
+fun fact2 =
+fix fact2(x: sint) : sint =>
+if x > 0 then x * fact2(-1+x) else 1
 //
+(* ****** ****** *)
+////
 (* ****** ****** *)
 fun
 <a:t0>

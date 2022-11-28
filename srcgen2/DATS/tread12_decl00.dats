@@ -269,6 +269,8 @@ D2Cdatasort _ => f0_datasort(d2cl, err)
 D2Cvaldclst _ => f0_valdclst(d2cl, err)
 |
 D2Cvardclst _ => f0_vardclst(d2cl, err)
+|
+D2Cfundclst _ => f0_fundclst(d2cl, err)
 //
 |
 _(*otherwise*) =>

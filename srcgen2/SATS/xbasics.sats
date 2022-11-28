@@ -150,6 +150,9 @@ valkind_fprint
 (out: FILR, vlk: valkind): void
 //
 (* ****** ****** *)
+fun
+valkind_recq(vlk: valkind): bool
+(* ****** ****** *)
 //
 datatype
 varkind =
@@ -186,6 +189,9 @@ funkind =
 fun//<>
 funkind_fprint
 (out: FILR, fnk: funkind): void
+(* ****** ****** *)
+fun
+funkind_recq(fnk: funkind): bool
 (* ****** ****** *)
 //
 datatype

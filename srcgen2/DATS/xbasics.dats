@@ -119,6 +119,47 @@ else
 (* ****** ****** *)
 
 #implfun
+valkind_recq(vlk) =
+(
+case+ vlk of
+//
+| VLKval() => ff
+| VLKvlp() => ff
+| VLKvln() => ff
+//
+| VLKvlr() => tt
+//
+| _(*otherwise*) => ff
+) where
+{
+  val tt = true and ff = false
+} (*where*) // end of [valkind_recq]
+
+(* ****** ****** *)
+
+#implfun
+funkind_recq(fnk) =
+(
+case+ fnk of
+| FNKfn0() => ff
+| FNKfn1() => tt
+| FNKfn2() => tt
+| FNKfnx() => tt
+| FNKfun() => tt
+//
+| FNKprfn0() => ff
+| FNKprfn1() => tt
+| FNKprfun() => tt
+//
+| _(*otherwise*) => ff
+) where
+{
+  val tt = true and ff = false
+} (*where*) // end of [funkind_recq]
+
+(* ****** ****** *)
+
+#implfun
 f2clknd_linq(f2cl) =
 (
 case+ f2cl of
