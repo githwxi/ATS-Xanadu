@@ -71,11 +71,11 @@ val
 val dbl2 = lam(x:int) => x+x
 val sqr2 = lam(x:int) => x*x
 (* ****** ****** *)
-////
-(* ****** ****** *)
 val fact =
 fix f(x:int): int =>
 if x > 0 then x * f(x-1) else 1
+(* ****** ****** *)
+////
 (* ****** ****** *)
 //
 fun

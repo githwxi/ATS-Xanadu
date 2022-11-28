@@ -3151,7 +3151,6 @@ gseq_foreach<xs><x0>(xs)) where
 {
 #impltmp foreach$work<x0>(x0) = f0(x0)
 } (*where*)//gseq_foreach_f1np(xs, f0)
-(* ****** ****** *)
 #impltmp
 <xs><x0>
 gseq_foreach_c1fr
@@ -3161,6 +3160,30 @@ gseq_foreach<xs><x0>(xs)) where
 {
 #impltmp foreach$work<x0>(x0) = f0(x0)
 } (*where*)//gseq_foreach_c1fr(xs, f0)
+(* ****** ****** *)
+//
+#impltmp
+<xs><x0>
+gseq_tabulate_f1np
+{n0:i0}
+(    n0, f0    ) =
+(
+gseq_tabulate<xs><x0><n0>(n0)) where
+{
+#impltmp tabulate$fopr<x0><n0>(i0) = f0(i0)
+} (*where*)//gseq_tabulate_f1np(n0, f0)
+//
+#impltmp
+<xs><x0>
+gseq_tabulate_c1fr
+{n0:i0}
+(    n0, f0    ) =
+(
+gseq_tabulate<xs><x0><n0>(n0)) where
+{
+#impltmp tabulate$fopr<x0><n0>(i0) = f0(i0)
+} (*where*)//gseq_tabulate_c1fr(n0, f0)
+//
 (* ****** ****** *)
 //
 // HX: gseq_map(seq)
