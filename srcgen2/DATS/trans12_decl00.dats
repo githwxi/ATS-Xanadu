@@ -2085,7 +2085,8 @@ f0_sarg
 case+ sopt of
 |
 optn_nil
-((*void*)) => list_nil()
+((*void*)) =>
+list_nil(*void*)
 |
 optn_cons(s1e0) =>
 (
@@ -2093,7 +2094,8 @@ case+
 s1e0.node() of
 |
 S1El1st(s1es) =>
-trans12_s1explst(env0, s1es)
+trans12_s1explst_impr
+(   env0   ,   s1es   )
 |
 S1El2st(ses1, ses2) =>
 (
@@ -2102,13 +2104,15 @@ list_append(ses1, ses2)) where
 val () =
 (npf1 := list_length(ses1))
 val
-ses1 = trans12_s1explst(env0, ses1)
+ses1 =
+trans12_s1explst_impr(env0,ses1)
 val
-ses2 = trans12_s1explst(env0, ses2)
+ses2 =
+trans12_s1explst_prgm(env0,ses2)
 }
 |
 _(*non-S1Elist*) =>
-list_sing(trans12_s1exp(env0, s1e0))
+list_sing(trans12_s1exp_impr(env0,s1e0))
 )
 ) (*case+*) // end of [f0_sarg(env0, ...)]
 

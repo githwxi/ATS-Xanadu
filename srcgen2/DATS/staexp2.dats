@@ -58,6 +58,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 (* ****** ****** *)
+#symload lte with lte_sort2_sort2
+(* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
@@ -456,6 +458,87 @@ s2exp(S2Tnone0(), S2Ecsts(s2cs)))
 //
 (* ****** ****** *)
 //
+local
+//
+(* ****** ****** *)
+//
+fun
+f1_stcks
+( loc0: loc_t
+, s2es: s2explst
+, s2ts: sort2lst
+, nerr: &sint >> _): s2explst =
+(
+case+ s2es of
+|
+list_nil((*void*)) =>
+list_nil((*void*))
+|
+list_cons(s2e1, s2es) =>
+let
+//
+val ne00 = nerr
+//
+val s2t1 =
+(
+case+ s2ts of
+|list_nil() => S2Tnone0()
+|list_cons(s2t1, _) => s2t1)
+: sort2 // end of [val(s2t1)]
+val s2ts =
+(
+case+ s2ts of
+|list_nil() => list_nil()
+|list_cons(_, s2ts) => s2ts)
+: sort2lst // end of [val(s2ts)]
+//
+val s2e1 =
+let
+val st10 =
+s2e1.sort()
+in//let
+if
+st10\lte(s2t1)
+then s2e1 else
+let
+val () =
+nerr := (nerr + 1)
+in//let
+s2exp_cast
+(loc0, s2e1, s2t1) end//let
+end : s2exp // end-of[val(s2e1)]
+//
+val
+ses2 =
+f1_stcks(loc0, s2es, s2ts, nerr)
+//
+in//let
+//
+if//if
+(ne00 = nerr)
+then s2es else list_cons(s2e1,ses2)
+//
+end (*let*) // end of [list_cons...]
+//
+) (*case+*) // end of [f1_stcks(...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_stcks
+( loc0: loc_t
+, s2es: s2explst
+, s2ts: sort2lst): s2explst =
+let
+var nerr: sint = 0
+in//let
+  f1_stcks(loc0, s2es, s2ts, nerr)
+end (*let*) // end-of-[f0_stcks(...)]
+//
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+//
 #implfun
 s2exp_apps
 (loc0, s2f0, s2es) = let
@@ -487,6 +570,18 @@ s2exp_cast
 ) : s2exp // end of [val s2f0]
 //
 val
+s2ts =
+(
+case+
+s2f0.sort() of
+|
+S2Tfun1(s2ts, _) => s2ts
+|
+_(*non-S2Tfun1*) => list_nil()
+) 
+: sort2lst//end of [val(s2ts)]
+//
+val
 tres =
 (
 case+
@@ -498,8 +593,17 @@ _(*non-S2Tfun1*) => S2Tnone0()
 ) : sort2 // end of [val tres]
 //
 in
-  s2exp(tres, S2Eapps(s2f0, s2es))
+//
+let
+val s2es =
+f0_stcks(loc0, s2es, s2ts)
+in//let
+s2exp_make_node
+(tres, S2Eapps(s2f0, s2es)) end
+//
 end (*let*) // end of [s2exp_apps(...)]
+//
+end (*loca*) // end of [local(s2exp_apps)]
 //
 (* ****** ****** *)
 //

@@ -325,7 +325,7 @@ d2cst_set_type
 //
 fun
 d2cst_make_dvar
-( dvar: d2var ): d2con
+( dvar: d2var ): d2cst
 fun
 d2con_make_idtp
 (tok0: token
