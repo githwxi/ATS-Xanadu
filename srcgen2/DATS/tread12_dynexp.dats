@@ -62,6 +62,9 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload sexp with d2con_get_sexp
+#symload sexp with d2cst_get_sexp
+(* ****** ****** *)
 #symload lctn with d2pat_get_lctn
 #symload node with d2pat_get_node
 (* ****** ****** *)
@@ -843,6 +846,24 @@ Various tread12-functions for gleaning
 errors of unboundness (that is, names that
 are used but not declared)
 *)
+(* ****** ****** *)
+//
+#implfun
+tread12_d2con
+( d2c0, err ) =
+(
+if
+(e00 = err)
+then d2c0 else
+(d2con_set_sexp(d2c0, s2e0); d2c0)
+) where
+{
+//
+val e00 = err
+//
+val s2e0 = tread12_s2exp(d2c0.sexp(), err)
+} (*where*) // end of [tread12_d2con(d2c0,err)]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -2107,6 +2128,20 @@ if
 then (sres) else S2RESsome(seff, s2e1)
 endlet // end of [S2RESsome(seff,s2e1)]
 ) (*case+*)//end-of[tread12_s2res(sres,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_d2conlst
+  (  d2cs, err  ) =
+list_tread12_fnp(d2cs, err, tread12_d2con)
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_d2varlst
+  (  d2vs, err  ) =
+list_tread12_fnp(d2vs, err, tread12_d2var)
 //
 (* ****** ****** *)
 //
