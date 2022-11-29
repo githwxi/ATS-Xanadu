@@ -405,9 +405,13 @@ fun
 t2iag_get_lctn:(t2iag)->loc_t
 fun
 t2iag_get_s2es:(t2iag)->s2explst
+fun
+t2iag_set_s2es
+(t2i0:t2iag,s2es:s2explst): void
 //
 #symload lctn with t2iag_get_lctn
 #symload s2es with t2iag_get_s2es
+#symload s2es with t2iag_set_s2es
 //
 (* ****** ****** *)
 fun

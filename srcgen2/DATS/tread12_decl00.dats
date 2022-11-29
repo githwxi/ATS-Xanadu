@@ -698,7 +698,7 @@ tread12_s2qag
 s2q0 where
 { val
   s2vs = tread12_s2varlst(s2q0.s2vs(), err) }
-) (*case+*) // end-of-[tread01_s2qag(s1q0,err)]
+) (*case+*) // end-of-[tread12_s2qag(s2q0,err)]
 //
 (* ****** ****** *)
 //
@@ -709,7 +709,25 @@ tread12_t2qag
 t2q0 where
 { val
   s2vs = tread12_s2varlst(t2q0.s2vs(), err) }
-) (*case+*) // end-of-[tread01_t2qag(s1q0,err)]
+) (*case+*) // end-of-[tread12_t2qag(t2q0,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_t2iag
+  (t2i0, err) =
+let
+val e00 = err
+val s2es =
+tread12_s2explst(t2i0.s2es(), err)
+in//let
+(
+  t2i0 ) where
+{
+val () =
+if
+(e00 != err) then t2iag_set_s2es(t2i0,s2es) }
+end (*let*) // end-of-[tread12_t2iag(t2i0,err)]
 //
 (* ****** ****** *)
 //
