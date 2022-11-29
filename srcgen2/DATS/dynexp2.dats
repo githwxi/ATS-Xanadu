@@ -36,6 +36,9 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsafex.sats"
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
@@ -886,6 +889,10 @@ T2IAG of (loc_t, s2explst)
 //
 #absimpl t2iag_tbox = t2iag
 //
+datatype
+t2iag_vt =
+T2IAG_vt of (loc_t, s2explst)
+//
 in (* in-of-local *)
 //
 #implfun
@@ -907,6 +914,18 @@ T2IAG
 #implfun
 t2iag_make_s2es
 ( loc0 , s2es ) = T2IAG(loc0, s2es)
+//
+#implfun
+t2iag_set_s2es
+(t2ia, ses2) =
+let
+val
+t2ia =
+$UN.castlin10{t2iag_vt}(t2ia)
+val+
+@T2IAG_vt
+(loc0, !s2es) = t2ia in s2es := ses2
+end (*let*) // end of [t2iag_set_s2es]
 //
 end (*local*) // end of [local(t2iag)]
 
