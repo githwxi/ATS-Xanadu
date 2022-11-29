@@ -53,9 +53,13 @@ a:i0, b:b0
 $rec{x= sint(a), y= bool(b)}
 //
 (* ****** ****** *)
-
+//
+excptcon
+| TRUEexn of ()
+| FALSEexn of 123
+//
 datatype ABC = A | B | C
-
+//
 (* ****** ****** *)
 ////
 (* ****** ****** *)
