@@ -264,6 +264,34 @@ end (*let*) // end of [d2ecl_implmnt0_errck]
 (* ****** ****** *)
 //
 fun
+d2ecl_excptcon_errck
+( loc0: loc_t
+, d1cl: d1ecl
+, d2cs: d2conlst): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1, d2ecl(loc0,D2Cexcptcon(d1cl,d2cs)))
+end (*let*) // end of [d2ecl_excptcon_errck]
+//
+(* ****** ****** *)
+//
+fun
+d2ecl_datatype_errck
+( loc0: loc_t
+, d1cl: d1ecl
+, s2cs: s2cstlst): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1, d2ecl(loc0,D2Cdatatype(d1cl,s2cs)))
+end (*let*) // end of [d2ecl_datatype_errck]
+//
+(* ****** ****** *)
+//
+fun
 d2ecl_dynconst_errck
 ( loc0: loc_t
 , tknd: token
@@ -318,12 +346,10 @@ D2Cfundclst _ => f0_fundclst(d2cl, err)
 |
 D2Cimplmnt0 _ => f0_implmnt0(d2cl, err)
 //
-(*
 |
 D2Cexcptcon _ => f0_excptcon(d2cl, err)
 |
 D2Cdatatype _ => f0_datatype(d2cl, err)
-*)
 //
 |
 D2Cdynconst _ => f0_dynconst(d2cl, err)
@@ -708,9 +734,57 @@ if
 (err=e00)
 then (dcl) else
 d2ecl_implmnt0_errck
-( dcl.lctn(), tknd
-, sqas, tqas, dqid, tias, fags, sres, body)
+(dcl.lctn(), tknd
+,sqas, tqas, dqid, tias, fags, sres, body)
 end (*let*) // end of [f0_implmnt0(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_excptcon
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+//
+val-
+D2Cexcptcon
+(d1cl, d2cs) = dcl.node()
+//
+val d2cs =
+tread12_d2conlst(d2cs, err)
+//
+in//let
+if
+(err=e00)
+then (dcl) else
+d2ecl_excptcon_errck(dcl.lctn(),d1cl,d2cs)
+end (*let*) // end of [f0_excptcon(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_datatype
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+//
+val-
+D2Cdatatype
+(d1cl, s2cs) = dcl.node()
+//
+val s2cs =
+tread12_s2cstlst(s2cs, err)
+//
+in//let
+if
+(err=e00)
+then (dcl) else
+d2ecl_datatype_errck(dcl.lctn(),d1cl,s2cs)
+end (*let*) // end of [f0_datatype(dcl,err)]
 //
 (* ****** ****** *)
 //
