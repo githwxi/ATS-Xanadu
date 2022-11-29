@@ -276,6 +276,16 @@ d2con_get_stmp:(d2con) -> stamp
 #symload type with d2con_get_type
 #symload stmp with d2con_get_stmp
 //
+fun
+d2con_set_sexp
+(d2c0: d2con,s2e0: s2exp): void
+fun
+d2con_set_type
+(d2c0: d2con,t2p0: s2typ): void
+//
+#symload sexp with d2con_set_sexp
+#symload type with d2con_set_type
+//
 (* ****** ****** *)
 //
 fun
@@ -300,6 +310,16 @@ d2cst_get_stmp:(d2cst) -> stamp
 #symload sexp with d2cst_get_sexp
 #symload type with d2cst_get_type
 #symload stmp with d2cst_get_stmp
+//
+fun
+d2cst_set_sexp
+(d2c0: d2cst,s2e0: s2exp): void
+fun
+d2cst_set_type
+(d2c0: d2cst,t2p0: s2typ): void
+//
+#symload sexp with d2cst_set_sexp
+#symload type with d2cst_set_type
 //
 (* ****** ****** *)
 //

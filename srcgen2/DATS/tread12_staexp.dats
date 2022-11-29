@@ -239,6 +239,18 @@ prerrln("tread12_sort2: s2t0 = ", s2t0)
 (* ****** ****** *)
 //
 #implfun
+tread12_s2cst
+( s2c0, err ) =
+(
+  s2c0 where
+{
+val s2t0 =
+tread12_sort2(s2c0.sort(), err) }
+)
+//
+(* ****** ****** *)
+//
+#implfun
 tread12_s2var
 ( s2v0, err ) =
 (
@@ -960,6 +972,13 @@ list_tread12_fnp(s2ts, err, tread12_sort2)
 tread12_sort2opt
   (  sopt, err  ) =
 optn_tread12_fnp(sopt, err, tread12_sort2)
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_s2cstlst
+  (  s2cs, err  ) =
+list_tread12_fnp(s2cs, err, tread12_s2cst)
 //
 (* ****** ****** *)
 //
