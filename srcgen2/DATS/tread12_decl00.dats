@@ -262,6 +262,22 @@ d2ecl_make_node
 end (*let*) // end of [d2ecl_implmnt0_errck]
 //
 (* ****** ****** *)
+//
+fun
+d2ecl_dynconst_errck
+( loc0: loc_t
+, tknd: token
+, tqas: t2qaglst
+, d2cs: d2cstdclist): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+( lvl+1
+, d2ecl(loc0, D2Cdynconst(tknd,tqas,d2cs)))
+end (*let*) // end of [d2ecl_dynconst_errck]
+//
+(* ****** ****** *)
 
 #implfun
 tread12_d2ecl
@@ -301,6 +317,16 @@ D2Cfundclst _ => f0_fundclst(d2cl, err)
 //
 |
 D2Cimplmnt0 _ => f0_implmnt0(d2cl, err)
+//
+(*
+|
+D2Cexcptcon _ => f0_excptcon(d2cl, err)
+|
+D2Cdatatype _ => f0_datatype(d2cl, err)
+*)
+//
+|
+D2Cdynconst _ => f0_dynconst(d2cl, err)
 //
 |
 _(*otherwise*) =>
@@ -579,7 +605,7 @@ val e00 = err
 //
 val-
 D2Cvaldclst
-( tknd, d2vs) = dcl.node()
+(tknd, d2vs) = dcl.node()
 //
 val d2vs =
 tread12_d2valdclist(d2vs, err)
@@ -603,7 +629,7 @@ val e00 = err
 //
 val-
 D2Cvardclst
-( tknd, d2vs) = dcl.node()
+(tknd, d2vs) = dcl.node()
 //
 val d2vs =
 tread12_d2vardclist(d2vs, err)
@@ -628,8 +654,8 @@ val loc = dcl.lctn()
 //
 val-
 D2Cfundclst
-( tknd
-, tqas, d2fs) = dcl.node()
+(tknd
+,tqas, d2fs) = dcl.node()
 //
 (*
 val tqas =
@@ -659,8 +685,9 @@ val-
 D2Cimplmnt0
 (tknd
 ,sqas,tqas
-,dqid,tias
-,fags,sres,body) = dcl.node()
+,dqid
+,tias,fags
+,sres,body) = dcl.node()
 //
 val sqas =
   tread12_s2qaglst(sqas, err)
@@ -684,6 +711,34 @@ d2ecl_implmnt0_errck
 ( dcl.lctn(), tknd
 , sqas, tqas, dqid, tias, fags, sres, body)
 end (*let*) // end of [f0_implmnt0(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dynconst
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D2Cdynconst
+(tknd
+,tqas, d2cs) = dcl.node()
+//
+val tqas =
+  tread12_t2qaglst(tqas, err)
+val d2cs =
+  tread12_d2cstdclist(d2cs, err)
+//
+in//let
+if
+(e00=err)
+then (dcl) else
+d2ecl_dynconst_errck(loc, tknd, tqas, d2cs)
+end (*let*) // end of [f0_dynconst(dcl,err)]
 //
 (* ****** ****** *)
 //
