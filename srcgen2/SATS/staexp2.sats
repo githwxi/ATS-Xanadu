@@ -338,8 +338,26 @@ fun
 s2var_get_stmp(s2v:s2var):stamp
 (* ****** ****** *)
 //
+(*
+//
+// HX-2022-11-30:
+// Both are in [dynexp2.sats]
+//
 fun
-the_excptn_s2cst(): s2cst
+s2cst_get_d2cs
+( s2c0: s2cst ): d2conlst
+//
+fun
+s2cst_set_d2cs
+(s2c0:s2cst,d2cs:d2conlst):void
+//
+*)
+//
+(* ****** ****** *)
+//
+fun
+the_excptn_s2cst
+(   (*void*)   ): ( s2cst )
 //
 (* ****** ****** *)
 //

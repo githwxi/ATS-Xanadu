@@ -289,6 +289,17 @@ d2con_set_type
 (* ****** ****** *)
 //
 fun
+s2cst_get_d2cs
+( s2c0: s2cst ): d2conlst
+fun
+s2cst_set_d2cs
+(s2c0:s2cst,d2cs:d2conlst):void
+#symload d2cs with s2cst_get_d2cs
+#symload d2cs with s2cst_set_d2cs
+//
+(* ****** ****** *)
+//
+fun
 d2cst_get_lctn:(d2cst) -> loc_t
 fun
 d2cst_get_name:(d2cst) -> sym_t
