@@ -461,6 +461,12 @@ s2exp(S2Tnone0(), S2Ecsts(s2cs)))
 local
 //
 (* ****** ****** *)
+(*
+HX-2022-11-29:
+This seemly a bit
+overly complicated!
+*)
+(* ****** ****** *)
 //
 fun
 f1_stcks

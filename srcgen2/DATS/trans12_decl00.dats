@@ -1677,7 +1677,7 @@ then the_sort2_tbox
 else the_sort2_vtbx):sort2 }
 //
 val
-d2cs = f0_wdeclseq(env0, wdcs)
+dcls = f0_wdeclseq(env0, wdcs)
 //
 in//let
   d2ecl(loc0, D2Cdatatype(d1cl, s2cs))
@@ -1929,9 +1929,10 @@ trans12_sort1(env0, s1t0)
 )
 ) : sort2 // end-of-val(sres)
 //
-in//let
+in//let1
 //
 let
+//
 val
 ltok = tok0.lctn()
 val
@@ -1939,11 +1940,26 @@ sid0 = sexpid_sym(tok0)
 val
 s2t0 =
 f0_tmas(env0, tmas, sres)
-in//let
+val
+svss = f1_svss(tmas, s2t0)
+val
+s2c0 =
 s2cst_make_idst(ltok, sid0, s2t0)
+//
+in//let2
+//
+let
+val
+d2cs =
+trans12_d1tcnlst
+(env0, tcns, s2c0, svss)
+val () =
+s2cst_set_d2cs(s2c0, d2cs) in s2c0
 end//let
 //
-end where
+end//let2
+//
+end(*let1*)where
 {
 //
 fun
@@ -1996,8 +2012,77 @@ S2Tfun1
 )
 ) (*case+*) // end of [f0_tmas(env0,tmas,tres)]
 //
+fun
+f1_s2vs
+( t1as
+: t1arglst
+, s2ts
+: sort2lst): s2varlst =
+(
+case+ t1as of
+|
+list_nil() => list_nil()
+|
+list_cons(t1a1, t1as) =>
+let
+val-
+list_cons(s2t1, s2ts) = s2ts
+in//let
+//
+case+
+t1a1.node() of
+T1ARGsome(s1t1, topt) =>
+let
+val s2v1 =
+s2var_make_idst
+( sym1 , s2t1 ) where
+{
+val sym1 =
+(
+case+ topt of
+|optn_nil
+((*void*)) => the_symbl_nil
+|optn_cons
+(  tok1  ) => sortid_sym(tok1)
+) : sym_t // end of [val(sid1)]
+}
+in//let
+list_cons(s2v1, f1_s2vs(t1as, s2ts))
+end (*let*) // end of [T1ARGsome(...)]
+//
+end (*let*) // end of [list_cons(...)]
+) (*case+*) // end of [f1_s2vs(t1as,s2ts)]
+//
+fun
+f1_svss
+( tmas
+: t1maglst
+, tres: sort2): s2varlstlst =
+(
+case+ tmas of
+|
+list_nil() => list_nil()
+|
+list_cons(t1ma, tmas) =>
+//
+let
+val-
+S2Tfun1(s2ts, tres) = tres
+in//let
+case+ t1ma of
+|
+T1MAGlist(t1as) =>
+let
+val s2vs = f1_s2vs(t1as, s2ts)
+in//let
+list_cons(s2vs, f1_svss(tmas, tres))
+end (*let*) // end of [T1MAGlist(...)]
+//
+end (*let*) // end of [list_cons(...)]
+)
+//
 } (*where*) // end of [trans12_d1typ(env0,...)]
-
+//
 end (*local*) // end of [ local(trans12_d1typ) ]
 
 (* ****** ****** *)
@@ -2021,7 +2106,7 @@ D1TCNnode of
 , s1expopt(*argtypes*) )
 *)
 (* ****** ****** *)
-
+//
 fun
 f1_s2vs
 ( s2vs
@@ -2034,7 +2119,7 @@ list_map<x0><y0>(s2vs)) where
 #impltmp
 map$fopr<x0><y0>(x0) = s2exp_var(x0)
 } (*case+*) (* end of [ f1_s2vs(s2vs) ] *)
-
+//
 fun
 f1_svss
 ( svss
@@ -2046,7 +2131,7 @@ list_map<x0><y0>(svss)) where
 #typedef y0 = s2explst
 #impltmp map$fopr<x0><y0> = f1_s2vs }
 //(*case+*) (* end of [ f1_svss(svss) ] *)
-
+//
 (* ****** ****** *)
 
 fun
@@ -2067,8 +2152,7 @@ list_cons
 {
   val
   s2e0 =
-  s2exp_apps(loc0, s2e0, s2es)
-}
+  s2exp_apps(loc0, s2e0, s2es) }
 ) (*case+*) // end of [ f1_sres(loc0,...) ]
 
 (* ****** ****** *)
@@ -2677,7 +2761,8 @@ f1_tqas
 case+
 svss of
 |
-list_nil() => list_nil()
+list_nil() =>
+list_nil((*void*))
 |
 list_cons
 (s2vs, svss) =>
