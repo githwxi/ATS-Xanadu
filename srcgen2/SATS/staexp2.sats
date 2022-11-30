@@ -340,8 +340,8 @@ s2var_get_stmp(s2v:s2var):stamp
 //
 (*
 //
-// HX-2022-11-30:
-// Both are in [dynexp2.sats]
+HX-2022-11-30:
+Both are in [dynexp2.sats]
 //
 fun
 s2cst_get_d2cs
