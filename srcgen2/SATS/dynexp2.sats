@@ -290,7 +290,8 @@ d2con_set_type
 //
 fun
 s2cst_get_d2cs
-( s2c0: s2cst ): d2conlst
+( s2c0
+: s2cst ): optn_vt(d2conlst)
 fun
 s2cst_set_d2cs
 (s2c0:s2cst,d2cs:d2conlst):void
