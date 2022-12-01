@@ -242,11 +242,25 @@ prerrln("tread12_sort2: s2t0 = ", s2t0)
 tread12_s2cst
 ( s2c0, err ) =
 (
-  s2c0 where
+let
+val
+opt1 = s2c0.d2cs()
+in//let
+case+ opt1 of
+| ~
+optn_vt_nil
+  ((*0*)) => s2c0
+| ~
+optn_vt_cons
+  ( d2cs ) => s2c0 where
+{
+val d2cs =
+tread12_d2conlst(d2cs, err) }
+end where
 {
 val s2t0 =
 tread12_sort2(s2c0.sort(), err) }
-)
+) (* end of [tread12_s2cst(...)] *)
 //
 (* ****** ****** *)
 //

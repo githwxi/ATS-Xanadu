@@ -51,6 +51,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
+#staload "./../SATS/xsymmap.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 (* ****** ****** *)
 
@@ -181,6 +183,33 @@ end (*let*) // end of [optn_nil()]
 ) (*case+*) // end of [the_excptn_s2cst]
 //
 endloc (*local*) // end of [local(predefined)]
+
+(* ****** ****** *)
+
+local
+//
+(* ****** ****** *)
+#staload
+"./../SATS/dynexp2.sats"
+(* ****** ****** *)
+#symload
+name with s2cst_get_name
+(* ****** ****** *)
+//
+val
+mymap =
+topmap_make_nil{d2conlst}()
+//
+in//local
+//
+#implfun
+s2cst_get_d2cs(s2c0) =
+topmap_search_opt(mymap, s2c0.name())
+#implfun
+s2cst_set_d2cs(s2c0, d2cs) =
+topmap_insert_any(mymap, s2c0.name(), d2cs)
+//
+end (*local*) // end of [local(the_s2cst_d2conlst)]
 
 (* ****** ****** *)
 
