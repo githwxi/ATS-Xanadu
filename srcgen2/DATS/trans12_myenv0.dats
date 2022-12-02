@@ -1178,12 +1178,22 @@ end (*let*)//end[tr12env_add0_s2cst(env0,s2c0)]
 tr12env_add0_s2var
   (env0, s2v0) =
 let
-val sym0 =
+//
+val
+sym0 =
 s2var_get_name(s2v0)
-val sitm = S2ITMvar(s2v0)
+val
+sitm = S2ITMvar(s2v0)
+//
 in//let
 tr12env_add0_s2itm(env0, sym0, sitm)
-end (*let*)//end[tr12env_add0_s2var(env0,s2v0)]
+end where
+{
+(*
+val () = prerrln
+("tr12env_add0_s2var: s2v0 = ", s2v0)
+*)
+} (*where*)//end[tr12env_add0_s2var(env0,s2v0)]
 //
 #implfun
 tr12env_add0_s2varlst
@@ -1195,10 +1205,10 @@ list_nil((*void*)) => ()
 |
 list_cons(s2v1, s2vs) =>
 let
-val () =
-tr12env_add0_s2var(env0, s2v1)
+  val () =
+  tr12env_add0_s2var(env0, s2v1)
 in//let
-  tr12env_add0_s2varlst(env0, s2vs)
+  tr12env_add0_s2varlst( env0 , s2vs )
 end (*let*)//end-of-[list_cons]
 ) (*case+*)//end-of-[tr12env_add0_s2varlst(...)]
 //

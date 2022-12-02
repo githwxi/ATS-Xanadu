@@ -737,35 +737,12 @@ prerrln
 ("f0_sexpdef: sdef=", sdef)
 *)
 //
-val
-svss =
-trans12_s1maglst(env0, smas)
-//
 val () =
 tr12env_pshlam0(env0)
 //
-val () =
-auxloop(env0, svss) where
-{
-fun
-auxloop
-( env0:
-! tr12env
-, svss: s2varlstlst): void =
-(
-case+ svss of
-|
-list_nil() => ()
-|
-list_cons(s2vs, svss) =>
-(
-  auxloop(env0, svss)) where
-{
-val () =
-tr12env_add0_s2varlst(env0,s2vs)
-}
-) (*case+*)
-} (*where*)//end-of-[auxloop(env0,svss)]
+val
+svss =
+trans12_s1maglst(env0, smas)
 //
 val
 sdef =
@@ -805,8 +782,6 @@ prerrln
 ("f0_sexpdef: sdef=", sdef)
 *)
 //
-val () = tr12env_poplam0(env0)
-//
 val sdef =
 (
 auxslam
@@ -826,16 +801,14 @@ list_nil() => sdef
 list_cons(s2vs, svss) =>
 (
 auxslam(sdef, svss)) where
-{ val
-  sdef = s2exp_lam0(s2vs, sdef) }
+{
+val
+sdef = s2exp_lam0(s2vs, sdef)
+} (*where*) // end-(list_cons)
 ) (*case+*) // end-of-[auxslam]
 } (*where*) // end-of-[val(sdef)]
 //
-(*
-val () =
-prerrln
-("f0_sexpdef: sdef=", sdef)
-*)
+val () = tr12env_poplam0(env0)
 //
 val s2c1 =
 s2cst_make_idst
@@ -843,6 +816,13 @@ s2cst_make_idst
 {
   val s2t2 = sdef.sort()
   val sid1 = sexpid_sym(tok1) }
+//
+(*
+val () =
+prerrln("f0_sexpdef: s2c1 = ", s2c1)
+val () =
+prerrln("f0_sexpdef: sdef = ", sdef)
+*)
 //
 in//let
 //
@@ -1914,7 +1894,8 @@ D1TYPnode
 ( tok0, tmas
 , sres, tcns) = d1t0.node()
 //
-val sres =
+val
+sres =
 (
 case+ sres of
 |
@@ -1928,6 +1909,8 @@ optn_cons(s1t0) =>
 trans12_sort1(env0, s1t0)
 )
 ) : sort2 // end-of-val(sres)
+//
+val () = tr12env_pshlam0(env0)
 //
 in//let1
 //
@@ -1948,14 +1931,15 @@ s2cst_make_idst(ltok, sid0, s2t0)
 //
 in//let2
 //
-let
+s2c0 where
+{
 val
 d2cs =
 trans12_d1tcnlst
 (env0, tcns, s2c0, svss)
-val () =
-s2cst_set_d2cs(s2c0, d2cs) in s2c0
-end//let
+val () = tr12env_poplam0(env0)
+val () = s2cst_set_d2cs(s2c0, d2cs)
+}
 //
 end//let2
 //
@@ -2043,15 +2027,26 @@ case+ topt of
 |optn_nil
 ((*void*)) => the_symbl_nil
 |optn_cons
-(  tok1  ) => sortid_sym(tok1)
+(  tok1  ) => sexpid_sym(tok1)
 ) : sym_t // end of [val(sid1)]
 }
+//
+val (  ) =
+tr12env_add0_s2var(env0, s2v1)
+//
 in//let
 list_cons(s2v1, f1_s2vs(t1as, s2ts))
 end (*let*) // end of [T1ARGsome(...)]
 //
 end (*let*) // end of [list_cons(...)]
-) (*case+*) // end of [f1_s2vs(t1as,s2ts)]
+) (*case+*) where
+{
+(*
+val () =
+prerrln
+("trans12_d1typ: f1_s2vs: t1as = ", t1as)
+*)
+} (*where*) // end of [f1_s2vs(t1as,s2ts)]
 //
 fun
 f1_svss
@@ -2069,8 +2064,8 @@ let
 val-
 S2Tfun1(s2ts, tres) = tres
 in//let
-case+ t1ma of
-|
+case+
+t1ma.node() of
 T1MAGlist(t1as) =>
 let
 val s2vs = f1_s2vs(t1as, s2ts)
@@ -2079,7 +2074,15 @@ list_cons(s2vs, f1_svss(tmas, tres))
 end (*let*) // end of [T1MAGlist(...)]
 //
 end (*let*) // end of [list_cons(...)]
-)
+//
+) (*case+*) where
+{
+(*
+val () =
+prerrln
+("trans12_d1typ: f1_svss: tmas = ", tmas)
+*)
+} (*where*) // end of [f1_svss(tmag,tres)]
 //
 } (*where*) // end of [trans12_d1typ(env0,...)]
 //
