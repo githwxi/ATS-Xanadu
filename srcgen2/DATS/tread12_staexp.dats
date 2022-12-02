@@ -52,7 +52,9 @@ ATS_PACKNAME
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/tread12.sats"
 (* ****** ****** *)
@@ -60,6 +62,9 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
+(* ****** ****** *)
+#symload d2cs with s2cst_get_d2cs
+#symload d2cs with s2cst_set_d2cs
 (* ****** ****** *)
 #symload node with s2exp_get_node
 #symload sort with s2exp_get_sort
@@ -239,6 +244,19 @@ prerrln("tread12_sort2: s2t0 = ", s2t0)
 (* ****** ****** *)
 //
 #implfun
+tread12_s2var
+( s2v0, err ) =
+(
+  s2v0 where
+{
+val s2t0 =
+tread12_sort2(s2v0.sort(), err)
+}
+)(* end-of-[tread12_s2var(...)] *)
+//
+(* ****** ****** *)
+//
+#implfun
 tread12_s2cst
 ( s2c0, err ) =
 (
@@ -254,25 +272,26 @@ optn_vt_nil
 optn_vt_cons
   ( d2cs ) => s2c0 where
 {
-val d2cs =
-tread12_d2conlst(d2cs, err) }
+val
+d2cs =
+tread12_d2conlst(d2cs, err)
+val () =
+prerrln
+("tread12_s2cst: d2cs = ", d2cs)
+
+}
 end where
 {
 val s2t0 =
-tread12_sort2(s2c0.sort(), err) }
-) (* end of [tread12_s2cst(...)] *)
-//
-(* ****** ****** *)
-//
-#implfun
-tread12_s2var
-( s2v0, err ) =
-(
-  s2v0 where
+tread12_sort2(s2c0.sort(), err)
+}
+) (*let*) where
 {
-val s2t0 =
-tread12_sort2(s2v0.sort(), err) }
-)
+val () =
+prerrln
+("tread12_s2cst: s2c0 = ", s2c0)
+}
+//(* end-of-[tread12_s2cst(...)] *)
 //
 (* ****** ****** *)
 //

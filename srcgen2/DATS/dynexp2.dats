@@ -251,6 +251,17 @@ D2CON of
 , s2typ // type
 , stamp // stmp // unicity
 )
+datavwtp
+d2con_vt =
+D2CON_vt of
+( loc_t // lctn
+, sym_t // name
+, tag_t // ctag
+, t2qas // tqas
+, s2exp // sexp
+, s2typ // type
+, stamp // stmp // unicity
+)
 //
 #absimpl d2con_tbox = d2con
 //
@@ -353,6 +364,25 @@ in//let
   , sym0
   , ctag, tqas, sexp, t2p0, stmp)
 end (*let*) // end of [d2con_make_idtp]
+//
+(* ****** ****** *)
+//
+#implfun
+d2con_set_sexp
+( d2c0, sexp ) =
+let
+val
+d2c0 =
+$UN.castlin10{d2con_vt}(d2c0)
+val+
+@D2CON_vt
+(loc0,
+ sym0,
+ ctag,
+ tqas,
+!s2e0,
+ t2p0,stmp) = d2c0 in (s2e0 := sexp)
+end (*let*) // end of [d2con_set_sexp]
 //
 end (*local*) // end of [local(d2con_tbox)]
 

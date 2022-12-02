@@ -3,6 +3,12 @@
 #infixr -> of 10
 *)
 (* ****** ****** *)
+datatype
+AB2(x:type) =
+| A of (x) | B of (x, x)
+(* ****** ****** *)
+////
+(* ****** ****** *)
 //
 (*
 #infix0 < <= of 40 (*lt/eq*)
@@ -58,7 +64,16 @@ excptcon
 | TRUEexn of ()
 | FALSEexn of 123
 //
-datatype ABC = A | B | C
+datatype AB1 = A | B
+//
+datatype
+AB2(x:type) =
+| A of (x) | B of (x, x)
+////
+datatype
+AB3
+(a:type, n:sint) =
+| A of (a) | B of (a, a)
 //
 (* ****** ****** *)
 ////
