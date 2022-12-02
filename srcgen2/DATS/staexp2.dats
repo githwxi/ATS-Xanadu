@@ -480,7 +480,7 @@ case+ s2es of
 list_nil((*void*)) =>
 list_nil((*void*))
 |
-list_cons(s2e1, s2es) =>
+list_cons(s2e1, ses2) =>
 let
 //
 val ne00 = nerr
@@ -516,7 +516,7 @@ end : s2exp // end-of[val(s2e1)]
 //
 val
 ses2 =
-f1_stcks(loc0, s2es, s2ts, nerr)
+f1_stcks(loc0, ses2, s2ts, nerr)
 //
 in//let
 //
@@ -549,17 +549,17 @@ in//local
 s2exp_apps
 (loc0, s2f0, s2es) = let
 //
-(*
+// (*
 val () =
-println!
-("\
-s2exp_apps: s2f0 = ", s2f0)
+prerrln
+("s2exp_apps: s2f0 = ", s2f0)
 val () =
-println!
-("\
-s2exp_apps:\
-s2f0.sort = ", s2f0.sort())
-*)
+prerrln
+("s2exp_apps: s2es = ", s2es)
+val () =
+prerrln
+("s2exp_apps: s2f0.sort = ", s2f0.sort())
+// *)
 //
 val s2f0 =
 (
@@ -596,7 +596,7 @@ s2f0.sort() of
 S2Tfun1(_, s2t1) => s2t1
 |
 _(*non-S2Tfun1*) => S2Tnone0()
-) : sort2 // end of [val tres]
+) : sort2 // end of [val(tres)]
 //
 in
 //
