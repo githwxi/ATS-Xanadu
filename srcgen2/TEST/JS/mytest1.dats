@@ -3,6 +3,11 @@
 #infixr -> of 10
 *)
 (* ****** ****** *)
+#define one 1
+#define two 2
+(* ****** ****** *)
+////
+(* ****** ****** *)
 datatype
 AB2(a:t0, i0) =
 | A(a, 0) of (a)
