@@ -98,6 +98,10 @@ dynexp1_sats
 dynexp1_sats: ; $(XATSOPT) --static SATS/dynexp1.sats
 ######
 all_sats:: \
+gmacro1_sats
+gmacro1_sats: ; $(XATSOPT) --static SATS/gmacro1.sats
+######
+all_sats:: \
 xsymmap_sats
 xsymmap_sats: ; $(XATSOPT) --static SATS/xsymmap.sats
 ######

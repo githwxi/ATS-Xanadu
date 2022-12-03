@@ -863,10 +863,10 @@ val e00 = err
 //
 val s2e0 = d2c0.sexp()
 //
-(*
+// (*
 val (  ) =
 prerrln("tread12_d2con: s2e0 = ", s2e0)
-*)
+// *)
 //
 val s2e0 = tread12_s2exp(d2c0.sexp(), err)
 } (*where*) // end of [tread12_d2con(d2c0,err)]
