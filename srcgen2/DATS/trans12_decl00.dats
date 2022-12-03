@@ -452,6 +452,11 @@ d2ecl(loc0, D2Cextern(tknd, dcl1))
 end (*let*) // end of [D1Cextern]
 //
 |
+D1Cdefine _ => f0_define(env0, d1cl)
+|
+D1Cmacdef _ => f0_macdef(env0, d1cl)
+//
+|
 D1Clocal0 _ => f0_local0(env0, d1cl)
 //
 |
@@ -498,15 +503,56 @@ D1Cdynconst _ => f0_dynconst(env0, d1cl)
 //
 |_(*otherwise*) =>
 let
-val loc0 = d1cl.lctn()
+  val loc0 = d1cl.lctn()
 in//let
-  d2ecl_make_node( loc0, D2Cnone1( d1cl ) )
+  d2ecl_make_node(loc0, D2Cnone1( d1cl ))
 end (*let*) // end of [_(*otherwise*)] // temp
 //
 end where
 {
 //
 (* ****** ****** *)
+//
+fun
+f0_define
+( env0:
+! tr12env
+, d1cl: d1ecl): d2ecl =
+let
+//
+val
+loc0 = d1cl.lctn()
+val-
+D1Cdefine
+( tknd, gid0
+, gmas, def1) = d1cl.node()
+//
+in//let
+  d2ecl_make_node(loc0, D2Cd1ecl( d1cl ))
+end (*let*) // end of [f0_define(env0,d1cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_macdef
+( env0:
+! tr12env
+, d1cl: d1ecl): d2ecl =
+let
+//
+val
+loc0 = d1cl.lctn()
+val-
+D1Cmacdef
+( tknd, gid0
+, gmas, def1) = d1cl.node()
+//
+in//let
+  d2ecl_make_node(loc0, D2Cd1ecl( d1cl ))
+end (*let*) // end of [f0_macdef(env0,d1cl)]
+//
+(* ****** ****** *)
+//
 fun
 f0_local0
 ( env0:
@@ -534,6 +580,7 @@ val (  ) = tr12env_locjoin(env0)
 in//let
 d2ecl(loc0, D2Clocal0(head, body))
 end (*let*) // end of [f0_local0(env0,d1cl)]
+//
 (* ****** ****** *)
 //
 fun
