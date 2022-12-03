@@ -45,6 +45,18 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #staload
+LAB = "./xlabel0.sats"
+#staload
+LOC = "./locinfo.sats"
+//
+#typedef lab_t = $LAB.lab_t
+#typedef label = $LAB.label
+#typedef loc_t = $LOC.loc_t
+#typedef loctn = $LOC.loctn
+//
+(* ****** ****** *)
+//
+#staload
 SYM = "./xsymbol.sats"
 #staload
 LEX = "./lexing0.sats"
@@ -61,6 +73,8 @@ S1E = "./staexp1.sats"
 D1E = "./dynexp1.sats"
 //
 #typedef g1exp = $S1E.g1exp
+#typedef g1arg = $S1E.g1arg
+#typedef g1mag = $S1E.g1mag
 #typedef s1exp = $S1E.s1exp
 #typedef d1pat = $D1E.d1pat
 #typedef d1exp = $D1E.d1exp
@@ -68,18 +82,10 @@ D1E = "./dynexp1.sats"
 (* ****** ****** *)
 #abstype g1id0_tbox // ptr
 #abstbox g1env_tbox // ptr
-#abstype g1mag_tbox // ptr
-(* ****** ****** *)
-#typedef g1arg = (symbl)
 (* ****** ****** *)
 #typedef g1id0 = g1id0_tbox
 #typedef g1ids = list(g1id0)
 #typedef g1env = (g1env_tbox)
-(* ****** ****** *)
-#typedef g1mag = (g1mag_tbox)
-(* ****** ****** *)
-#typedef g1arglst = list(g1arg)
-#typedef g1maglst = list(g1mag)
 (* ****** ****** *)
 //
 datatype g1mac =
@@ -120,6 +126,9 @@ where
 #typedef g1maclst = list(g1mac) // lists
 }
 //
+(* ****** ****** *)
+fun
+g1mac_fprint:(FILR,g1mac)->void
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_gmacro1.sats] *)

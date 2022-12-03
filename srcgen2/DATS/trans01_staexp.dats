@@ -923,7 +923,20 @@ trans01_g0mag
 (
 case+
 g0ma.node() of
-)
+|
+G0MAGnone(tok) =>
+let
+val g1as = list_nil() // error
+in//let
+g1mag(g0ma.lctn(), G1MAGdarg(g1as))
+end (*let*) // end of [G0MAGnone(...)]
+) where
+{
+(*
+val () =
+prerrln("trans01_g0mag: g0ma = ", g0ma)
+*)
+} (*where*) // end of [trans01_g0mag(tenv,g0ma)]
 
 (* ****** ****** *)
 
@@ -1946,125 +1959,144 @@ case+ opt of
 #implfun
 trans01_g0namlst
   (tenv, g0ns) =
-list_trans01_fnp(tenv, g0ns, trans01_g0nam)
+(
+list_trans01_fnp(tenv, g0ns, trans01_g0nam))
 
 (* ****** ****** *)
 //
 #implfun
 trans01_g0explst
   (tenv, g0es) =
-list_trans01_fnp(tenv, g0es, trans01_g0exp)
+(
+list_trans01_fnp(tenv, g0es, trans01_g0exp))
 #implfun
 trans01_g0expopt
   (tenv, opt0) =
-optn_trans01_fnp(tenv, opt0, trans01_g0exp)
+(
+optn_trans01_fnp(tenv, opt0, trans01_g0exp))
 //
 (* ****** ****** *)
 //
 #implfun
 trans01_g0maglst
   (tenv, gmas) =
-list_trans01_fnp(tenv, gmas, trans01_g0mag)
+(
+list_trans01_fnp(tenv, gmas, trans01_g0mag))
 //
 (* ****** ****** *)
 
 #implfun
 trans01_sort0lst
   (tenv, s0ts) =
-list_trans01_fnp(tenv, s0ts, trans01_sort0)
+(
+list_trans01_fnp(tenv, s0ts, trans01_sort0))
 
 (* ****** ****** *)
 
 #implfun
 trans01_sort0opt
   (tenv, opt0) =
-optn_trans01_fnp(tenv, opt0, trans01_sort0)
+(
+optn_trans01_fnp(tenv, opt0, trans01_sort0))
 
 (* ****** ****** *)
 
 #implfun
 trans01_s0tcnlst
   (tenv, tcns) =
-list_trans01_fnp(tenv, tcns, trans01_s0tcn)
+(
+list_trans01_fnp(tenv, tcns, trans01_s0tcn))
 
 (* ****** ****** *)
 
 #implfun
 trans01_d0tstlst
   (tenv, d0ts) =
-list_trans01_fnp(tenv, d0ts, trans01_d0tst)
+(
+list_trans01_fnp(tenv, d0ts, trans01_d0tst))
 
 (* ****** ****** *)
 
 #implfun
 trans01_s0arglst
   (tenv, s0as) =
-list_trans01_fnp(tenv, s0as, trans01_s0arg)
+(
+list_trans01_fnp(tenv, s0as, trans01_s0arg))
 
 (* ****** ****** *)
 
 #implfun
 trans01_s0maglst
   (tenv, smas) =
-list_trans01_fnp(tenv, smas, trans01_s0mag)
+(
+list_trans01_fnp(tenv, smas, trans01_s0mag))
 
 (* ****** ****** *)
 
 #implfun
 trans01_t0arglst
   (tenv, t0as) =
-list_trans01_fnp(tenv, t0as, trans01_t0arg)
+(
+list_trans01_fnp(tenv, t0as, trans01_t0arg))
 
 (* ****** ****** *)
 
 #implfun
 trans01_t0maglst
   (tenv, tmas) =
-list_trans01_fnp(tenv, tmas, trans01_t0mag)
+(
+list_trans01_fnp(tenv, tmas, trans01_t0mag))
 
 (* ****** ****** *)
 
 #implfun
 trans01_s0qualst
   (tenv, s0qs) =
-list_trans01_fnp(tenv, s0qs, trans01_s0qua)
+(
+list_trans01_fnp(tenv, s0qs, trans01_s0qua))
 
 (* ****** ****** *)
 //
 #implfun
 trans01_s0explst
   (tenv, s0es) =
-list_trans01_fnp(tenv, s0es, trans01_s0exp)
+(
+list_trans01_fnp(tenv, s0es, trans01_s0exp))
 #implfun
 trans01_s0expopt
   (tenv, opt0) =
-optn_trans01_fnp(tenv, opt0, trans01_s0exp)
+(
+optn_trans01_fnp(tenv, opt0, trans01_s0exp))
 //
 (* ****** ****** *)
 #implfun
 trans01_l0s0elst
   (tenv, lses) =
-list_trans01_fnp(tenv, lses, trans01_l0s0e)
+(
+list_trans01_fnp(tenv, lses, trans01_l0s0e))
 (* ****** ****** *)
 
 #implfun
 trans01_s0unilst
   (tenv, s0us) =
-list_trans01_fnp(tenv, s0us, trans01_s0uni)
+(
+list_trans01_fnp(tenv, s0us, trans01_s0uni))
 
 (* ****** ****** *)
 
 #implfun
 trans01_d0tcnlst
   (tenv, tcns) =
-list_trans01_fnp(tenv, tcns, trans01_d0tcn)
+(
+list_trans01_fnp(tenv, tcns, trans01_d0tcn))
 
 (* ****** ****** *)
 
 #implfun
 trans01_d0typlst
   (tenv, d0ts) =
-list_trans01_fnp(tenv, d0ts, trans01_d0typ)
+(
+list_trans01_fnp(tenv, d0ts, trans01_d0typ))
 
 (* ****** ****** *)
 
