@@ -997,47 +997,96 @@ endlet // end of [tread12_l2s2e(ls2e,err)]
 (* ****** ****** *)
 //
 #implfun
+tread12_s2tex
+( s2tx, err ) =
+(
+//
+case+ s2tx of
+|
+S2TEXsrt(s2t1) =>
+let
+val e00 = err
+val s2t1 =
+tread12_sort2(s2t1, err)
+in//let
+if
+(e00 = err)
+then s2tx else S2TEXsrt(s2t1)
+end (*let*) // end of [S2TEXsrt(...)]
+|
+S2TEXsub(s2v1, s2es) =>
+let
+val e00 = err
+val s2v1 =
+tread12_s2var(s2v1, err)
+val s2es = 
+tread12_s2explst(s2es, err)
+in//let
+if
+(e00 = err)
+then s2tx else S2TEXsub(s2v1, s2es)
+end (*let*) // end of [S2TEXsub(...)]
+//
+) where
+{
+(*
+val () =
+prerrln
+("tread12_s2tex(", s2tx = ", s2tx, ")")
+*)
+} (*where*) // end of [tread12_s2tex(...)]
+//
+(* ****** ****** *)
+//
+#implfun
 tread12_sort2lst
   (  s2ts, err  ) =
-list_tread12_fnp(s2ts, err, tread12_sort2)
+(
+list_tread12_fnp(s2ts, err, tread12_sort2))
 //
 #implfun
 tread12_sort2opt
   (  sopt, err  ) =
-optn_tread12_fnp(sopt, err, tread12_sort2)
+(
+optn_tread12_fnp(sopt, err, tread12_sort2))
 //
 (* ****** ****** *)
 //
 #implfun
 tread12_s2cstlst
   (  s2cs, err  ) =
-list_tread12_fnp(s2cs, err, tread12_s2cst)
+(
+list_tread12_fnp(s2cs, err, tread12_s2cst))
 //
 (* ****** ****** *)
 //
 #implfun
 tread12_s2varlst
   (  s2vs, err  ) =
-list_tread12_fnp(s2vs, err, tread12_s2var)
+(
+list_tread12_fnp(s2vs, err, tread12_s2var))
 //
 (* ****** ****** *)
 //
 #implfun
 tread12_s2explst
   (  s2es, err  ) =
-list_tread12_fnp(s2es, err, tread12_s2exp)
+(
+list_tread12_fnp(s2es, err, tread12_s2exp))
 //
 #implfun
 tread12_s2expopt
   (  sopt, err  ) =
-optn_tread12_fnp(sopt, err, tread12_s2exp)
+(
+optn_tread12_fnp(sopt, err, tread12_s2exp))
 //
 (* ****** ****** *)
 //
 #implfun
 tread12_l2s2elst
   (  lses, err  ) =
-list_tread12_fnp(lses, err, tread12_l2s2e)
+(
+list_tread12_fnp(lses, err, tread12_l2s2e))
 //
 (* ****** ****** *)
 
