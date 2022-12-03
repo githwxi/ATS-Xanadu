@@ -425,10 +425,12 @@ g0mag_node =
 G0MAGnone of (token)
 |
 G0MAGsarg of
-(token(*'{'*), g0arglst, token(*'}'*))
+( token(*'{'*)
+, g0arglst, token(*'}'*))//sta
 |
 G0MAGdarg of
-(token(*'('*), g0arglst, token(*')'*))
+( token(*'('*)
+, g0arglst, token(*')'*))//dyn
 //
 (* ****** ****** *)
 fun

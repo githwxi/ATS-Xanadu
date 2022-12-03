@@ -194,6 +194,15 @@ d1lab_fprint
 //
 (* ****** ****** *)
 //
+#typedef d0pidopt = optn(d0pid)
+#typedef d1pidopt = optn(d1pid)
+//
+(* ****** ****** *)
+#typedef d1patlst = list(d1pat)
+#typedef d1patopt = optn(d1pat)
+#typedef l1d1plst = list(l1d1p)
+(* ****** ****** *)
+//
 #typedef f1arglst = list(f1arg)
 #typedef d1clslst = list(d1cls)
 //
@@ -210,17 +219,8 @@ d1lab_fprint
 #typedef d1arglst = list(d1arg)
 //
 (* ****** ****** *)
-//
-#typedef d0pidopt = optn(d0pid)
-#typedef d1pidopt = optn(d1pid)
-//
-#typedef d1patlst = list(d1pat)
-#typedef d1patopt = optn(d1pat)
 #typedef d1explst = list(d1exp)
 #typedef d1expopt = optn(d1exp)
-//
-(* ****** ****** *)
-#typedef l1d1plst = list(l1d1p)
 #typedef l1d1elst = list(l1d1e)
 (* ****** ****** *)
 //

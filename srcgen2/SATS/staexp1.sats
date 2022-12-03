@@ -127,9 +127,9 @@ where
 //
 (* ****** ****** *)
 #abstbox g1exp_tbox // ptr
-#abstype g1mac_tbox // ptr
 (* ****** ****** *)
-#abstbox g1mag_tbox // ptr
+#abstype g1arg_tbox // ptr
+#abstype g1mag_tbox // ptr
 (* ****** ****** *)
 //
 #typedef i1dnt = token
@@ -153,15 +153,14 @@ where
 #typedef g0exp = $S0E.g0exp
 //
 #typedef g1exp = g1exp_tbox
-#typedef g1mac = g1mac_tbox
-#typedef g1arg = token(*sym*)
+#typedef g1arg = g1mag_tbox
 #typedef g1mag = g1mag_tbox
 //
 #typedef g1explst = list(g1exp)
 #typedef g1expopt = optn(g1exp)
-//
 #typedef g1arglst = list(g1arg)
 #typedef g1maglst = list(g1mag)
+(* ****** ****** *)
 //
 (* ****** ****** *)
 //
@@ -199,22 +198,10 @@ G1Eif0 of
 G1Eerrck of (int(*lvl*), g1exp)//HX:tread-error
 //
 (* ****** ****** *)
-//
-datatype
-g1mag_node =
-(*
-| G1MAGnone of ((*void*))
-*)
-| G1MAGsarg of (g1arglst)
-| G1MAGdarg of (g1arglst)
-//
-(* ****** ****** *)
 fun
 g1nam_fprint:(FILR,g1nam)->void
 fun
 g1exp_fprint:(FILR,g1exp)->void
-fun
-g1mag_fprint:(FILR,g1mag)->void
 (* ****** ****** *)
 fun
 g1exp_get_lctn(g1exp): loc_t
@@ -225,6 +212,37 @@ g1exp_get_node(g1exp): g1exp_node
 #symload node with g1exp_get_node
 (* ****** ****** *)
 fun
+g1exp_none0(loc:loc_t): g1exp
+fun
+g1exp_none1(g0e1:g0exp): g1exp
+fun
+g1exp_make_node
+(loc:loc_t,nod:g1exp_node): g1exp
+(* ****** ****** *)
+#symload g1exp with g1exp_make_node
+(* ****** ****** *)
+//
+datatype
+g1mag_node =
+(*
+| G1MAGnone of ((*void*))
+*)
+| G1MAGsarg of (g1arglst)
+| G1MAGdarg of (g1arglst)
+//
+where
+{
+(*
+#typedef g1arglst = list(g1arg)
+*)
+}
+(* ****** ****** *)
+fun
+g1arg_fprint:(FILR,g1arg)->void
+fun
+g1mag_fprint:(FILR,g1mag)->void
+(* ****** ****** *)
+fun
 g1mag_get_lctn(g1mag): loc_t
 fun
 g1mag_get_node(g1mag): g1mag_node
@@ -233,17 +251,9 @@ g1mag_get_node(g1mag): g1mag_node
 #symload node with g1mag_get_node
 (* ****** ****** *)
 fun
-g1exp_none0(loc:loc_t): g1exp
-fun
-g1exp_none1(g0e1:g0exp): g1exp
-fun
-g1exp_make_node
-(loc:loc_t,nod:g1exp_node): g1exp
-fun
 g1mag_make_node
 (loc:loc_t,nod:g1mag_node): g1mag
 (* ****** ****** *)
-#symload g1exp with g1exp_make_node
 #symload g1mag with g1mag_make_node
 (* ****** ****** *)
 //
