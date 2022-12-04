@@ -61,6 +61,8 @@ _(*TRANS12*) = "./trans12.dats"
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
 (* ****** ****** *)
+#staload "./../SATS/gmacro1.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
@@ -527,6 +529,14 @@ D1Cdefine
 ( tknd, gid0
 , gmas, def1) = d1cl.node()
 //
+val sym0 = gexpid_sym(gid0)
+//
+val
+def1 = trans11_g1mdef(gmas, def1)
+//
+val () =
+tr12env_add0_g1mac(env0, sym0, def1)
+//
 in//let
   d2ecl_make_node(loc0, D2Cd1ecl( d1cl ))
 end (*let*) // end of [f0_define(env0,d1cl)]
@@ -546,6 +556,8 @@ val-
 D1Cmacdef
 ( tknd, gid0
 , gmas, def1) = d1cl.node()
+//
+val sym0 = gexpid_sym(gid0)
 //
 in//let
   d2ecl_make_node(loc0, D2Cd1ecl( d1cl ))

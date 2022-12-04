@@ -73,6 +73,8 @@ LEX = "./lexing0.sats"
 #staload S1E = "./staexp1.sats"
 #staload D1E = "./dynexp1.sats"
 (* ****** ****** *)
+#staload G1M = "./gmacro1.sats"
+(* ****** ****** *)
 #staload S2E = "./staexp2.sats"
 #staload D2E = "./dynexp2.sats"
 (* ****** ****** *)
@@ -89,6 +91,8 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef d1tcn = $S1E.d1tcn
 #typedef d1typ = $S1E.d1typ
+(* ****** ****** *)
+#typedef g1mac = $G1M.g1mac
 (* ****** ****** *)
 #typedef sort2 = $S2E.sort2
 (* ****** ****** *)
@@ -345,6 +349,14 @@ tr12env_make_nil
 fun
 tr12env_free_top
 ( env0 : tr12env ) : (d2topenv)
+//
+(* ****** ****** *)
+//
+fun
+tr12env_add0_g1mac
+( env:
+! tr12env
+, key: sym_t, itm: g1mac): void
 //
 (* ****** ****** *)
 //

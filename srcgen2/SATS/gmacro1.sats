@@ -87,6 +87,9 @@ D1E = "./dynexp1.sats"
 #typedef g1ids = list(g1id0)
 #typedef g1env = (g1env_tbox)
 (* ****** ****** *)
+#typedef g1expopt = optn(g1exp)
+#typedef g1maglst = list(g1mag)
+(* ****** ****** *)
 //
 datatype g1mac =
 //
@@ -129,6 +132,12 @@ where
 (* ****** ****** *)
 fun
 g1mac_fprint:(FILR,g1mac)->void
+(* ****** ****** *)
+//
+fun
+trans11_g1mdef
+(gmas: g1maglst, def1: g1expopt): g1mac
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_gmacro1.sats] *)
