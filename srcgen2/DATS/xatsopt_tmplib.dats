@@ -60,6 +60,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
+#staload "./../SATS/gmacro1.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
@@ -714,6 +715,10 @@ g1nam_fprint(g_print$out<>(), gnm)
 #impltmp
 g_print<g1exp>(g1e) =
 g1exp_fprint(g_print$out<>(), g1e)
+//
+#impltmp
+g_print<g1arg>(g1a) =
+g1mag_fprint(g_print$out<>(), g1a)
 #impltmp
 g_print<g1mag>(gma) =
 g1mag_fprint(g_print$out<>(), gma)
@@ -924,6 +929,31 @@ print("WTHS1EXPnone(", ")")
 |
 WTHS1EXPsome(tok1, s1e2) =>
 print("WTHS1EXPsome(", tok1, ";", s1e2, ")"))
+//
+(* ****** ****** *)
+(*
+HX-2022-12-04:
+for gmacro1: it is
+between level-1 and level-2
+*)
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<g1mac>(g1m0) =
+let
+val out =
+g_print$out<>()
+in//let
+  g1mac_fprint(out, g1m0) end
+#impltmp
+g_print
+<g1env>(genv) =
+let
+val out =
+g_print$out<>()
+in//let
+  g1env_fprint(out, genv) end
 //
 (* ****** ****** *)
 

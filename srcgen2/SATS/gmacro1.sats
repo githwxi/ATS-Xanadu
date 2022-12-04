@@ -80,10 +80,20 @@ D1E = "./dynexp1.sats"
 #typedef d1exp = $D1E.d1exp
 //
 (* ****** ****** *)
+(*
 #abstype g1id0_tbox // ptr
+*)
+(* ****** ****** *)
 #abstbox g1env_tbox // ptr
 (* ****** ****** *)
+//
+#typedef g1id0 = (sym_t)
+//
+(* ****** ****** *)
+(*
 #typedef g1id0 = g1id0_tbox
+*)
+(* ****** ****** *)
 #typedef g1ids = list(g1id0)
 #typedef g1env = (g1env_tbox)
 (* ****** ****** *)
@@ -99,6 +109,8 @@ datatype g1mac =
 | G1Mstr of strn
 //
 | G1Mid0 of g1id0
+//
+(* ****** ****** *)
 //
 | G1Mif0 of
   ( g1mac(*cond*)

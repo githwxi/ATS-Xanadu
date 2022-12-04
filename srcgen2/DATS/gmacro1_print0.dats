@@ -63,6 +63,26 @@ print("G1Mchr(", c0, ")")
 |G1Mstr(s0) =>
 print("G1Mstr(", s0, ")")
 //
+|G1Mid0(gid) =>
+print("G1Mid0(", gid, ")")
+//
+|
+G1Mif0
+(g1m1,g1m2,g1m3) =>
+print
+("G1Mif0("
+, g1m1, ";", g1m2, ";", g1m3, ")")
+//
+|
+G1Mlam0(gids,gmac) =>
+print("G1Mlam0(", gids, ";", gmac, ")")
+|
+G1Mapps(g1f0,g1ms) =>
+print("G1Mapps(", g1f0, ";", g1ms, ")")
+//
+|G1Mnone0() => print("G1Mnone0(", ")")
+|G1Mnone1(g1e1) => print("G1Mnone1(", g1e1, ")")
+//
 ) where
 {
   #impltmp g_print$out<>() = out
