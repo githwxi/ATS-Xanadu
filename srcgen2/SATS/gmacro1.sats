@@ -105,16 +105,22 @@ datatype g1mac =
   , g1mac(*then*)
   , g1mac(*else*) )
 //
-| G1Mlam0 of
-  ( g1ids(*marg*)
-  , g1mac(*body*) )
 (* ****** ****** *)
-| G1Mapps of
-  ( g1mac(*fun*)
-  , g1maclst(*args*))
+|
+G1Mlam0 of
+( g1ids(*marg*)
+, g1mac(*body*) )
+|
+G1Mapps of
+( g1mac(*fun*)
+, g1maclst(*args*))
+(* ****** ****** *)
 //
 | G1Msubs of
-  ( g1mac, g1env )
+  ( g1mac
+  , g1env(*subs*) )
+//
+(* ****** ****** *)
 //
 | G1Msexp of (s1exp)
 | G1Mdpat of (d1pat)
@@ -122,7 +128,7 @@ datatype g1mac =
 //
 | G1Mnone0 of () // HX: EMPTY
 //
-| G1Mnone1 of (g1exp) // ERROR!
+| G1Mnone1 of (g1exp) // HX: ERROR!
 //
 where
 {
