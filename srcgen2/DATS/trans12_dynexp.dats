@@ -623,14 +623,14 @@ in
 end (*let*) // end of [D1Psarg(s1as)]
 //
 |
-_(*d1pat-rest*) => f0_a1pp_rest(env0,d1p0)
+_(*d1pat-rest*) => f0_a1pp_else(env0,d1p0)
 )
 ) (* end-of-[else] *) // end-of-(if)
 ) (* end-of-[else] *) // end-of-(if)
 end (*let*) // end of [f0_a1pp(env0,d1p0)]
 //
 and
-f0_a1pp_rest
+f0_a1pp_else
 ( env0:
 ! tr12env
 , d1p0: d1pat): d2pat =
@@ -690,7 +690,7 @@ end (*let*) // end-of(non-D2Plist)
 //
 in//let
   my_d2pat_dapp(loc0, d2f0, npf1, d2ps)
-end (*let*) // end of [f0_a1pp_rest(_, _)]
+end (*let*) // end of [f0_a1pp_else(_, _)]
 //
 (* ****** ****** *)
 //
@@ -1630,7 +1630,7 @@ in
   my_d2exp_tapp(loc0, d2f0, s2es)
 end (*let*) // end of [D1Etarg(s1es)]
 |
-_(*d1exp-rest*) => f0_a1pp_rest(env0,d1e0)
+_(*d1exp-rest*) => f0_a1pp_else(env0,d1e0)
 ) (*else*) // end-of-if(isEVAL)
 ) (*else*) // end-of-if(isADDR)
 ) (*else*) // end-of-if(isBANG)
@@ -1639,7 +1639,7 @@ _(*d1exp-rest*) => f0_a1pp_rest(env0,d1e0)
 end (*let*) // end of [f0_a1pp(env0,d1e0)]
 
 and
-f0_a1pp_rest
+f0_a1pp_else
 ( env0:
 ! tr12env
 , d1e0: d1exp): d2exp =
@@ -1691,7 +1691,7 @@ in
 //
 my_d2exp_dapp(loc0, d2f0, npf1, d2es)
 //
-end (*let*) // end of [f0_a1pp_rest(_,_)]
+end (*let*) // end of [f0_a1pp_else(_,_)]
 
 (* ****** ****** *)
 

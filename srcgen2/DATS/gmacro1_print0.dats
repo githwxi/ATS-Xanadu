@@ -51,7 +51,12 @@ ATS_PACKNAME
 #implfun
 g1mac_fprint
 ( out, g1m0 ) =
-(
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
 case+ g1m0 of
 //
 |G1Mint(i0) =>
@@ -65,6 +70,13 @@ print("G1Mstr(", s0, ")")
 //
 |G1Mid0(gid) =>
 print("G1Mid0(", gid, ")")
+//
+|G1Msexp(g1m) =>
+print("G1Msexp(", g1m, ")")
+|G1Mdpat(g1m) =>
+print("G1Mdpat(", g1m, ")")
+|G1Mdexp(g1m) =>
+print("G1Mdexp(", g1m, ")")
 //
 |
 G1Mif0
@@ -80,13 +92,16 @@ print("G1Mlam0(", gids, ";", gmac, ")")
 G1Mapps(g1f0,g1ms) =>
 print("G1Mapps(", g1f0, ";", g1ms, ")")
 //
-|G1Mnone0() => print("G1Mnone0(", ")")
-|G1Mnone1(g1e1) => print("G1Mnone1(", g1e1, ")")
+|
+G1Msubs(g1e1,genv) =>
+print("G1Msubs(", g1e1, ";", genv, ")")
 //
-) where
-{
-  #impltmp g_print$out<>() = out
-} (*where*) // end of [g1mac_fprint(out,g1m0)]
+|
+G1Mnone0() => print( "G1Mnone0(" , ")" )
+|
+G1Mnone1(g1e1) => print("G1Mnone1(", g1e1, ")")
+//
+end (*let*) // end of [ g1mac_fprint(out,g1m0) ]
 //
 (* ****** ****** *)
 

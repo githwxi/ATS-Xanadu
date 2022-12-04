@@ -794,7 +794,7 @@ s1f0.node() of
 *)
 //
 |
-_(*S1E...*) => f0_a1pp_rest(env0, s1e0)
+_(*S1E...*) => f0_a1pp_else(env0, s1e0)
 //
 end (*let*) // end of [f0_a1pp(env0, s1e0)]
 
@@ -882,7 +882,7 @@ end (*let*) // end of [f0_a1pp_exi0(...)]
 (* ****** ****** *)
 
 and
-f0_a1pp_rest
+f0_a1pp_else
 ( env0:
 ! tr12env
 , s1e0: s1exp): s2exp =
@@ -902,7 +902,7 @@ case+ s2cs of
 |
 list_nil() =>
 (
-  f0_a1pp_rest0(env0, s1e0) )
+  f0_a1pp_els0(env0, s1e0) )
 |
 list_cons
 (s2c1, scs2) =>
@@ -913,17 +913,17 @@ then
 let
   val s2f0 = s2exp_cst(s2c1)
 in
-  f0_a1pp_rest1(env0, s1e0, s2f0)
+  f0_a1pp_els1(env0, s1e0, s2f0)
 end (*let*) // then
 else
 (
-  f0_a1pp_rest2(env0, s1e0, s2cs)
+  f0_a1pp_els2(env0, s1e0, s2cs)
 ) (* end of [else] *)
 )
-end (*let*) // end of [f0_a1pp_rest(...)]
+end (*let*) // end of [f0_a1pp_else(env0,s1e0)]
 
 and
-f0_a1pp_rest0
+f0_a1pp_els0
 ( env0:
 ! tr12env
 , s1e0: s1exp): s2exp =
@@ -937,11 +937,11 @@ val
 s2f0 = trans12_s1exp(env0, s1f0)
 //
 in//let
-  f0_a1pp_rest1(env0, s1e0, s2f0)
-end (*let*) // end of [f0_a1pp_rest0(...)]
+  f0_a1pp_els1(env0, s1e0, s2f0)
+end (*let*) // end of [f0_a1pp_els0(...)]
 
 and
-f0_a1pp_rest1
+f0_a1pp_els1
 ( env0:
 ! tr12env
 , s1e0: s1exp
@@ -982,10 +982,10 @@ val loc0 = s1e0.lctn()
 val s2es =
 trans12_s1explst_stcks(env0, s1es, s2ts) }
 //
-end (*let*) // end of [f0_a1pp_rest1(...)]
+end (*let*) // end of [f0_a1pp_els1(...)]
 
 and
-f0_a1pp_rest2
+f0_a1pp_els2
 ( env0:
 ! tr12env
 , s1e0: s1exp
@@ -1017,11 +1017,11 @@ in//let
 //
 case+ scs1 of
 |list_nil() =>
-f0_a1pp_rest0(env0, s1e0)
+f0_a1pp_els0(env0, s1e0)
 |list_cons _ =>
-f0_a1pp_rest1(env0,s1e0,s2exp_csts(scs1))
+f0_a1pp_els1(env0,s1e0,s2exp_csts(scs1))
 //
-end (*let*) // end of [f0_a1pp_rest2(...)]
+end (*let*) // end of [f0_a1pp_els2(...)]
 
 (* ****** ****** *)
 //
@@ -1085,7 +1085,7 @@ case+ s2cs of
 list_nil
 ((*void*)) =>
 (
-  f0_a2pp_rest0(env0, s1e0) )
+  f0_a2pp_els0(env0, s1e0) )
 |
 list_cons
 (s2c1, scs2) =>
@@ -1096,11 +1096,11 @@ then
 let
 val s2f0 = s2exp_cst(s2c1)
 in//let
-  f0_a2pp_rest1(env0, s1e0, s2f0)
+  f0_a2pp_els1(env0, s1e0, s2f0)
 end
 else
 (
-  f0_a2pp_rest2(env0, s1e0, s2cs))
+  f0_a2pp_els2(env0, s1e0, s2cs))
 ) (* end of [list_cons] *)
 //
 end (*let*) // end of [f0_a2pp(env0, s1e0)]
@@ -1108,7 +1108,7 @@ end (*let*) // end of [f0_a2pp(env0, s1e0)]
 (* ****** ****** *)
 
 and
-f0_a2pp_rest0
+f0_a2pp_els0
 ( env0:
 ! tr12env
 , s1e0: s1exp): s2exp =
@@ -1174,16 +1174,16 @@ val
 s2f0 =
 trans12_s1exp(env0, s1f0)
 in//let
-  f0_a2pp_rest1(env0, s1e0, s2f0)
+  f0_a2pp_els1(env0, s1e0, s2f0)
 end (*let*) // end of [non-S2Earrw]
 ) (*case+*) // end of [else]
 //
-end (*let*) // end of [f0_a2pp_rest0(...)]
+end (*let*) // end of [f0_a2pp_els0(...)]
 
 (* ****** ****** *)
 
 and
-f0_a2pp_rest1
+f0_a2pp_els1
 ( env0:
 ! tr12env
 , s1e0: s1exp
@@ -1222,12 +1222,12 @@ trans12_s1exp_stck(env0, s1e2, s2t2)
 //
 in
   s2exp_a2pp(loc0, s2f0, s2e1, s2e2)
-end (*let*) // end of [f0_a2pp_rest1(...)]
+end (*let*) // end of [f0_a2pp_els1(...)]
 
 (* ****** ****** *)
 
 and
-f0_a2pp_rest2
+f0_a2pp_els2
 ( env0:
 ! tr12env
 , s1e0: s1exp
@@ -1255,11 +1255,11 @@ in//let
 //
 case+ scs1 of
 |list_nil() =>
-f0_a2pp_rest0(env0, s1e0)
+f0_a2pp_els0(env0, s1e0)
 |list_cons _ =>
-f0_a2pp_rest1(env0,s1e0,s2exp_csts(scs1))
+f0_a2pp_els1(env0,s1e0,s2exp_csts(scs1))
 //
-end (*let*) // end of [f0_a2pp_rest2(...)]
+end (*let*) // end of [f0_a2pp_els2(...)]
 
 (* ****** ****** *)
 //

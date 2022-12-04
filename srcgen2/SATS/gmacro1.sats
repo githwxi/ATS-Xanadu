@@ -112,6 +112,12 @@ datatype g1mac =
 //
 (* ****** ****** *)
 //
+| G1Msexp of s1exp
+| G1Mdpat of d1pat
+| G1Mdexp of d1exp
+//
+(* ****** ****** *)
+//
 | G1Mif0 of
   ( g1mac(*cond*)
   , g1mac(*then*)
@@ -134,12 +140,7 @@ G1Mapps of
 //
 (* ****** ****** *)
 //
-| G1Msexp of (s1exp)
-| G1Mdpat of (d1pat)
-| G1Mdexp of (d1exp)
-//
 | G1Mnone0 of () // HX: EMPTY
-//
 | G1Mnone1 of (g1exp) // HX: ERROR!
 //
 where
@@ -150,6 +151,9 @@ where
 (* ****** ****** *)
 fun
 g1mac_fprint:(FILR,g1mac)->void
+(* ****** ****** *)
+fun
+g1env_fprint:(FILR,g1env)->void
 (* ****** ****** *)
 //
 fun
