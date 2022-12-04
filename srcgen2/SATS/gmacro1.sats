@@ -93,12 +93,12 @@ D1E = "./dynexp1.sats"
 //
 datatype g1mac =
 //
-| G1Mid0 of g1id0
-//
-| G1Mint of int
+| G1Mint of sint
 | G1Mbtf of bool
 | G1Mchr of char
-| G1Mstr of string
+| G1Mstr of strn
+//
+| G1Mid0 of g1id0
 //
 | G1Mif0 of
   ( g1mac(*cond*)

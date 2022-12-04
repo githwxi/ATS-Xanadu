@@ -38,10 +38,36 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+#staload "./../SATS/gmacro1.sats"
+(* ****** ****** *)
+//
+#implfun
+g1mac_fprint
+( out, g1m0 ) =
+(
+case+ g1m0 of
+//
+|G1Mint(i0) =>
+print("G1Mint(", i0, ")")
+|G1Mbtf(b0) =>
+print("G1Mbtf(", b0, ")")
+|G1Mchr(c0) =>
+print("G1Mchr(", c0, ")")
+|G1Mstr(s0) =>
+print("G1Mstr(", s0, ")")
+//
+) where
+{
+  #impltmp g_print$out<>() = out
+} (*where*) // end of [g1mac_fprint(out,g1m0)]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_gmacro1_print0.dats] *)
