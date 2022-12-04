@@ -396,6 +396,16 @@ dynexp1_print0_dats: ; $(XATSOPT) --dynamic DATS/dynexp1_print0.dats
 
 ######
 all_dats:: \
+gmacro1_dats
+gmacro1_dats: ; $(XATSOPT) --dynamic DATS/gmacro1.dats
+######
+all_dats:: \
+gmacro1_print0_dats
+gmacro1_print0_dats: ; $(XATSOPT) --dynamic DATS/gmacro1_print0.dats
+######
+
+######
+all_dats:: \
 trans01_dats
 trans01_dats: ; $(XATSOPT) --dynamic DATS/trans01.dats
 all_dats:: \
@@ -467,6 +477,12 @@ dynexp2_print0_dats: ; $(XATSOPT) --dynamic DATS/dynexp2_print0.dats
 all_dats:: \
 nmspace_dats
 nmspace_dats: ; $(XATSOPT) --dynamic DATS/nmspace.dats
+######
+
+######
+all_dats:: \
+trans11_gmarco_dats
+trans11_gmarco_dats: ; $(XATSOPT) --dynamic DATS/trans11_gmarco.dats
 ######
 
 ######
