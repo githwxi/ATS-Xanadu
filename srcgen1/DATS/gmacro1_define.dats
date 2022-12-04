@@ -910,30 +910,6 @@ in
 end
 //
 and
-auxapps_2
-( g1f0
-: g1mac
-, g1ms
-: g1maclst
-) : g1mac =
-(
-case+ g1f0 of
-|
-G1Mlam0
-(gmas, body) =>
-(
-trans11_g1mac_subs(body, env0)
-) where
-{
-  val env0 =
-  g1menv_nil((*void*))
-  val env0 =
-  g1menv_extends(env0, gmas, g1ms)
-}
-| _(*non-G1Mlam*) => G1Mapps(g1f0, g1ms)
-)
-//
-and
 auxapps_1
 ( g1f0
 : g1mac
@@ -1078,6 +1054,30 @@ end // end of [isIDIV]
 // end-of-ifcase
 //
 end // end of [auxapps_1]
+//
+and
+auxapps_2
+( g1f0
+: g1mac
+, g1ms
+: g1maclst
+) : g1mac =
+(
+case+ g1f0 of
+|
+G1Mlam0
+(gmas, body) =>
+(
+trans11_g1mac_subs(body, env0)
+) where
+{
+  val env0 =
+  g1menv_nil((*void*))
+  val env0 =
+  g1menv_extends(env0, gmas, g1ms)
+}
+| _(*non-G1Mlam*) => G1Mapps(g1f0, g1ms)
+)
 //
 in(* in-of-local *)
 //
