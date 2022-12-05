@@ -28,6 +28,8 @@
 "./../../SATS/staexp1.sats"
 #staload
 "./../../SATS/dynexp1.sats"
+#staload
+"./../../SATS/gmacro1.sats"
 (* ****** ****** *)
 #staload
 "./../../SATS/staexp2.sats"
@@ -165,6 +167,9 @@
 "./../../DATS/tread01_decl00.dats"
 #include
 "./../../DATS/tread01_errmsg.dats"
+(* ****** ****** *)
+#include
+"./../../DATS/trans11_gmacro.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/staexp2.dats"
