@@ -63,6 +63,71 @@ ATS_PACKNAME
 
 local
 
+(* ****** ****** *)
+
+fun
+f0_gexp
+( g1e0
+: g1exp): g1mac =
+(
+case+
+g1e0.node() of
+|
+G1Eid0(gid) => G1Mid0(gid)
+) where
+{
+val () =
+prerrln("f0_gexp: g1e0 = ", g1e0)
+} (*where*) // end of [f0_gexp(g1e0)]
+
+(* ****** ****** *)
+
+fun
+f0_g1es
+( g1es
+: g1explst): g1maclst =
+list_vt2t
+(
+list_map
+<x0><y0>(g1es)) where
+{
+//
+  #typedef x0 = g1exp
+  #typedef y0 = g1mac
+//
+  #impltmp
+  map$fopr<x0><y0>(x0) = f0_gexp(x0)
+//
+} (*where*) // end of [f0_g1es(g1es)]
+
+(* ****** ****** *)
+
+in//local
+
+#implfun
+trans11_g1mdef
+( gmas, def1 ) =
+(
+f0_gmas
+(gmas, def1)) where
+{
+//
+val def1 =
+(
+case+ def1 of
+|
+optn_cons(g1e1) =>
+  f0_gexp(g1e1) | optn_nil() => G1Mnone0()
+) : g1mac // end-of-val
+//
+} (*where*) // end of [trans11_g1mdef(...)]
+
+end (*local*) // end of [local(trans11_g1mdef)]
+
+(* ****** ****** *)
+
+local
+
 fun
 auxapps
 ( g1m0
@@ -109,6 +174,8 @@ trans11_g1mac_subs(body, env0)
 
 in//local
 
+(* ****** ****** *)
+
 #implfun
 trans11_g1mac
   (g1m0) =
@@ -138,6 +205,8 @@ val () =
 prerrln("trans11_g1mac_apps: g1ms = ", g1ms)
 *)
 } (*where*) // end-(trans11_g1mac_apps(g1f0,g1ms))
+
+(* ****** ****** *)
 
 end (*local*) // end of [local(trans12_g1mac/apps)]
 

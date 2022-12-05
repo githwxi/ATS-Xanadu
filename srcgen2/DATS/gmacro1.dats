@@ -38,10 +38,22 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+#staload "./../SATS/gmacro1.sats"
+(* ****** ****** *)
+
+local
+
+in//local
+
+end (*local*) // end of [local(g1env)]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_gmacro1.dats] *)

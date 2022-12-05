@@ -43,13 +43,6 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#include
-"./../HATS/xatsopt_dats.hats"
-(* ****** ****** *)
-#define
-ATS_PACKNAME
-"ATS3.XANADU.xatsopt-20220500"
-(* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
 #staload "./../SATS/xlabel0.sats"
@@ -135,7 +128,38 @@ let
   val+G1EXP(loc,nod) = g1e in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*)//end-[local(g1exp)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+g1mag =
+G1MAG of
+(
+loctn, g1mag_node)
+//
+#absimpl g1mag_tbox = g1mag
+//
+in (* in-of-local *)
+//
+#implfun
+g1mag_make_node
+(   loc,nod   ) = G1MAG(loc,nod)
+//
+#implfun
+g1mag_get_lctn(g1e) =
+let
+  val+G1MAG(loc,nod) = g1e in loc
+end
+#implfun
+g1mag_get_node(g1e) =
+let
+  val+G1MAG(loc,nod) = g1e in nod
+end
+//
+endloc (*local*)//end-[local(g1mag)]
 
 (* ****** ****** *)
 
@@ -166,7 +190,7 @@ let
   val+SORT1(loc,nod) = s1t in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*)//end-[local(sort1)]
 
 (* ****** ****** *)
 
@@ -197,7 +221,7 @@ let
   val+S1EXP(loc,nod) = s1e in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*)//end-[local(s1exp)]
 
 (* ****** ****** *)
 //
@@ -237,7 +261,7 @@ let
   val+S1TCN(loc,nod) = s1e in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*)//end-[local(s1tcn)]
 
 (* ****** ****** *)
 
@@ -268,7 +292,7 @@ let
  val+D1TST(loc,nod) = stdf in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*)//end-[local(d1tst)]
 
 (* ****** ****** *)
 
@@ -299,7 +323,7 @@ let
  val+S1TDF(loc,nod) = stdf in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*)//end-[local(s1dtf)]
 
 (* ****** ****** *)
 
@@ -330,7 +354,7 @@ let
   val+S1ARG(loc,nod) = s1a in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*)//end-[local(s1arg)]
 
 (* ****** ****** *)
 
@@ -361,7 +385,7 @@ let
   val+S1MAG(loc,nod) = sma in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*)//end-[local(s1mag)]
 
 (* ****** ****** *)
 
@@ -392,7 +416,7 @@ let
   val+T1ARG(loc,nod) = t1a in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*)//end-[local(t1arg)]
 
 (* ****** ****** *)
 
@@ -423,7 +447,7 @@ let
   val+T1MAG(loc,nod) = sma in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*)//end-[local(t1mag)]
 
 (* ****** ****** *)
 
@@ -454,7 +478,7 @@ let
   val+S1QUA(loc,nod) = s1q in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*)//end-[local(s1qua)]
 
 (* ****** ****** *)
 
@@ -485,7 +509,7 @@ let
   val+S1UNI(loc,nod) = s1u in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*)//end-[local(s1uni)]
 
 (* ****** ****** *)
 
@@ -516,7 +540,7 @@ let
   val+D1TCN(loc,nod) = s1u in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*)//end-[local(d1tcn)]
 
 (* ****** ****** *)
 
@@ -547,7 +571,7 @@ let
   val+D1TYP(loc,nod) = s1u in nod
 end
 //
-endloc (*local*) // end of [ local ]
+endloc (*local*)//end-[local(d1typ)]
 
 (* ****** ****** *)
 

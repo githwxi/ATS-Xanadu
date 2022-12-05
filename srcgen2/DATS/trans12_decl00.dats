@@ -58,10 +58,9 @@ _(*TRANS12*) = "./trans12.dats"
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
+#staload "./../SATS/gmacro1.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
-(* ****** ****** *)
-#staload "./../SATS/gmacro1.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
