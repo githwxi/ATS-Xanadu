@@ -57,11 +57,104 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp1.sats"
 #staload "./../SATS/gmacro1.sats"
 (* ****** ****** *)
+#symload lctn with token_get_lctn
+#symload node with token_get_node
+(* ****** ****** *)
+#symload lctn with g1arg_get_lctn
+#symload node with g1arg_get_node
+(* ****** ****** *)
 #symload lctn with g1exp_get_lctn
 #symload node with g1exp_get_node
 (* ****** ****** *)
 
 local
+//
+#absimpl
+g1env_tbox =
+list@(g1id0, g1mac)
+//
+in//local
+
+(* ****** ****** *)
+
+fun
+g1env_nil
+((*void*)): g1env = list_nil()
+
+(* ****** ****** *)
+
+fun
+g1env_extends
+( genv: g1env
+, gids: g1ids
+, g1ms: g1maclst) =
+(
+case+ gids of
+|
+list_nil() => genv
+|
+list_cons(gid1, gids) =>
+(
+case+ g1ms of
+|
+list_nil() => genv
+|
+list_cons
+(g1m1, g1ms) =>
+g1env_extends
+(genv, gids, g1ms) where
+{
+val
+genv =
+list_cons(@(gid1, g1m1), genv) }
+)
+) (*case+*)
+// end of [g1env_extends(genv,...)]
+
+(* ****** ****** *)
+
+end (*local*) // end of [local(g1env)]
+
+(* ****** ****** *)
+
+local
+
+(* ****** ****** *)
+
+fun
+f0_garg
+( g1a0
+: g1arg): g1id0 =
+(
+case+
+g1a0.node() of
+//
+|
+G1ARGnode(tok1) =>
+(
+case-
+tok1.node() of
+|T_IDALP(nam1) => symbl(nam1)
+|T_IDSYM(nam1) => symbl(nam1))
+//
+) (*case+*) // end of [f0_garg(g1a0)]
+
+fun
+f0_g1as
+( g1as
+: g1arglst): g1ids =
+(
+list_map
+<x0><y0>(g1as)) where
+{
+//
+  #typedef x0 = g1arg
+  #typedef y0 = g1id0
+//
+  #impltmp
+  map$fopr<x0><y0>(x0) = f0_garg(x0)
+//
+} (*where*) // end of [f0_g1as(g1as)]
 
 (* ****** ****** *)
 
@@ -86,7 +179,6 @@ fun
 f0_g1es
 ( g1es
 : g1explst): g1maclst =
-list_vt2t
 (
 list_map
 <x0><y0>(g1es)) where
@@ -102,7 +194,43 @@ list_map
 
 (* ****** ****** *)
 
+fun
+f0_gmag
+(g1ma: g1mag): g1ids =
+(
+case-
+g1ma.node() of
+(*
+|G1MAGsarg(g1as) => list_nil()
+*)
+|G1MAGdarg(g1as) => f0_g1as(g1as)
+) (*case-*) // end of [f0_mag(g1ma)]
+
+(* ****** ****** *)
+
+fun
+f0_gmas
+( gmas
+: g1maglst
+, def1: g1mac): g1mac =
+(
+case+ gmas of
+|
+list_nil
+((*void*)) => def1
+|
+list_cons
+(g1ma, gmas) =>
+let
+val gids = f0_gmag(g1ma)
+in//let
+G1Mlam0(gids, f0_gmas(gmas, def1))
+end // end-of-(list_cons(g1ma,gmas))
+) (*case+*) // end of [f0_gmas(gmas,...)]
+
+(* ****** ****** *)
 in//local
+(* ****** ****** *)
 
 #implfun
 trans11_g1mdef
@@ -116,9 +244,11 @@ val def1 =
 (
 case+ def1 of
 |
-optn_cons(g1e1) =>
-  f0_gexp(g1e1) | optn_nil() => G1Mnone0()
-) : g1mac // end-of-val
+optn_cons
+(  g1e1  ) =>
+f0_gexp(g1e1)
+|
+optn_nil() => G1Mnone0()): g1mac
 //
 } (*where*) // end of [trans11_g1mdef(...)]
 
@@ -129,7 +259,7 @@ end (*local*) // end of [local(trans11_g1mdef)]
 local
 
 fun
-auxapps
+f0_apps
 ( g1m0
 : g1mac): g1mac =
 (
@@ -172,15 +302,15 @@ trans11_g1mac_subs(body, env0)
 | _(*non-G1Mlam*) => G1Mapps(g1f0, g1ms)
 )
 
+(* ****** ****** *)
 in//local
-
 (* ****** ****** *)
 
 #implfun
 trans11_g1mac
   (g1m0) =
 (
-  f0_g1m0(g1m0)) where
+  f0_gmac(g1m0)) where
 {
 //
 (*

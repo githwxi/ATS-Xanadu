@@ -153,7 +153,7 @@ where
 #typedef g0exp = $S0E.g0exp
 //
 #typedef g1exp = g1exp_tbox
-#typedef g1arg = g1mag_tbox
+#typedef g1arg = g1arg_tbox
 #typedef g1mag = g1mag_tbox
 //
 #typedef g1explst = list(g1exp)
@@ -223,12 +223,18 @@ g1exp_make_node
 (* ****** ****** *)
 //
 datatype
+g1arg_node =
+|G1ARGnode of (token)
+//
+(* ****** ****** *)
+//
+datatype
 g1mag_node =
 (*
-| G1MAGnone of ((*void*))
+|G1MAGnone of ((*void*))
 *)
-| G1MAGsarg of (g1arglst)
-| G1MAGdarg of (g1arglst)
+|G1MAGsarg of (g1arglst)
+|G1MAGdarg of (g1arglst)
 //
 where
 {
@@ -243,11 +249,17 @@ fun
 g1mag_fprint:(FILR,g1mag)->void
 (* ****** ****** *)
 fun
+g1arg_get_lctn(g1arg): loc_t
+fun
 g1mag_get_lctn(g1mag): loc_t
+fun
+g1arg_get_node(g1arg): g1arg_node
 fun
 g1mag_get_node(g1mag): g1mag_node
 (* ****** ****** *)
+#symload lctn with g1arg_get_lctn
 #symload lctn with g1mag_get_lctn
+#symload node with g1arg_get_node
 #symload node with g1mag_get_node
 (* ****** ****** *)
 fun
