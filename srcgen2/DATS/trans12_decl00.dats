@@ -531,7 +531,7 @@ D1Cdefine
 val sym0 = gexpid_sym(gid0)
 //
 val
-def1 = trans11_g1mdef(gmas, def1)
+def1 = trans11_gmdef(gmas, def1)
 //
 val () =
 tr12env_add0_g1mac(env0, sym0, def1)

@@ -718,7 +718,7 @@ g1exp_fprint(g_print$out<>(), g1e)
 //
 #impltmp
 g_print<g1arg>(g1a) =
-g1mag_fprint(g_print$out<>(), g1a)
+g1arg_fprint(g_print$out<>(), g1a)
 #impltmp
 g_print<g1mag>(gma) =
 g1mag_fprint(g_print$out<>(), gma)
