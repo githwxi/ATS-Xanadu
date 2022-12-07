@@ -155,10 +155,34 @@ g1mac_fprint:(FILR,g1mac)->void
 fun
 g1env_fprint:(FILR,g1env)->void
 (* ****** ****** *)
+#absvtbx tr11env_vtbx
+#vwtpdef tr11env = tr11env_vtbx
+(* ****** ****** *)
 //
 fun
-trans11_g1mdef
-(gmas: g1maglst, def1: g1expopt): g1mac
+trans11_gmdef
+( gmas
+: g1maglst, def1: g1expopt): g1mac
+//
+(* ****** ****** *)
+//
+fun
+trans11_g1mac
+(env0: !tr11env, g1m0: g1mac): g1mac
+//
+fun
+trans11_g1mac_apps
+( env0: !tr11env
+, g1f0: g1mac, g1ms: g1maclst): g1mac
+//
+(* ****** ****** *)
+//
+#vwtpdef
+g1macopt_vt = optn_vt(g1mac)
+//
+fun
+tr11env_search_opt
+(env0: !tr11env, k0: sym_t): g1macopt_vt
 //
 (* ****** ****** *)
 

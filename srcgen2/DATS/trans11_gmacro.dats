@@ -66,6 +66,13 @@ ATS_PACKNAME
 #symload lctn with g1exp_get_lctn
 #symload node with g1exp_get_node
 (* ****** ****** *)
+#extern
+fun
+trans11_g1mac_subs
+( env0:
+! tr11env
+, body: g1mac, genv: g1env): g1mac
+(* ****** ****** *)
 
 local
 //
@@ -233,7 +240,7 @@ in//local
 (* ****** ****** *)
 
 #implfun
-trans11_g1mdef
+trans11_gmdef
 ( gmas, def1 ) =
 (
 f0_gmas
@@ -250,38 +257,50 @@ f0_gexp(g1e1)
 |
 optn_nil() => G1Mnone0()): g1mac
 //
-} (*where*) // end of [trans11_g1mdef(...)]
+} (*where*) // end of [trans11_gmdef(...)]
 
-end (*local*) // end of [local(trans11_g1mdef)]
+end (*local*) // end of [local(trans11_gmdef)]
 
 (* ****** ****** *)
 
 local
 
+(* ****** ****** *)
+
 fun
 f0_apps
-( g1m0
-: g1mac): g1mac =
+( env0:
+! tr11env
+, g1m0: g1mac): g1mac =
 (
 f0_apps_els1
-(g1f0, g1ms)) where
+(env0, g1f0, g1ms)) where
 //
 {
 val-
 G1Mapps(g1f0, g1ms) = g1m0
 }
 
+(* ****** ****** *)
+
 and
 f0_apps_els1
-( g1f0
-: g1mac
-, g1ms
-: g1maclst): g1mac =
-f0_apps_els2(g1f0, g1ms)
+( env0:
+! tr11env
+, g1f0: g1mac
+, g1ms: g1maclst): g1mac =
+(
+case+ g1f0 of
+|
+_(*otherwise*) =>
+f0_apps_els2(env0, g1f0, g1ms)
+)
 
 and
 f0_apps_els2
-( g1f0
+( env0:
+! tr11env
+, g1f0
 : g1mac
 , g1ms
 : g1maclst): g1mac =
@@ -291,26 +310,85 @@ case+ g1f0 of
 G1Mlam0
 (gmas, body) =>
 (
-trans11_g1mac_subs(body, env0)
-) where
+trans11_g1mac_subs
+(env0, body, genv)) where
 {
-  val env0 =
+  val genv =
   g1env_nil((*void*))
-  val env0 =
-  g1env_extends(env0, gmas, g1ms)
+  val genv =
+  g1env_extends(genv, gmas, g1ms)
 }
 | _(*non-G1Mlam*) => G1Mapps(g1f0, g1ms)
 )
 
+(* ****** ****** *)
+//
+fun
+f0_gmac
+( env0:
+! tr11env
+, g1m0: g1mac): g1mac =
+(
+//
+case+ g1m0 of
+//
+| G1Mint _ => g1m0
+| G1Mbtf _ => g1m0
+| G1Mstr _ => g1m0
+//
+| G1Msexp _ => g1m0
+| G1Mdpat _ => g1m0
+| G1Mdexp _ => g1m0
+//
+|
+G1Mid0 _ => f0_gid0(env0, g1m0)
+//
+(*
+|
+G1Mif0 _ => f0_cond(env0, g1m0)
+*)
+//
+|
+G1Mapps _ => f0_apps(env0, g1m0)
+//
+| _(* rest-of-G1M... *) => ( g1m0 )
+//
+) where
+{
+(*
+  val () =
+  prerrln("f0_gmac: g1m0 = ", g1m0)
+*)
+} (*where*) // end of [f0_g1m0(env0,g1m0)]
+//
+and
+f0_gid0
+( env0:
+! tr11env
+, g1m0: g1mac): g1mac =
+let
+val-
+G1Mid0(sym1) = g1m0
+val
+opt1 =
+tr11env_search_opt(env0, sym1)
+in//let
+case+ opt1 of
+| ~
+optn_vt_nil() => g1m0
+| ~
+optn_vt_cons(g1m0) => f0_gmac(env0, g1m0)
+end (*let*) // end of [f0_gid0(env0,g1m0)]
+//
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
 
 #implfun
 trans11_g1mac
-  (g1m0) =
+( env0, g1m0 ) =
 (
-  f0_gmac(g1m0)) where
+f0_gmac(env0, g1m0)) where
 {
 //
 (*
@@ -324,9 +402,9 @@ prerrln("trans11_g1mac: g1m0 = ", g1m0)
 
 #implfun
 trans11_g1mac_apps
-  (g1f0, g1ms) =
+(env0, g1f0, g1ms) =
 (
-  f0_apps_els1(g1f0, g1ms)) where
+f0_apps_els1(env0, g1f0, g1ms)) where
 {
 (*
 val () =
@@ -338,7 +416,7 @@ prerrln("trans11_g1mac_apps: g1ms = ", g1ms)
 
 (* ****** ****** *)
 
-end (*local*) // end of [local(trans12_g1mac/apps)]
+end (*local*) // end of [local(trans11_g1mac/apps)]
 
 (* ****** ****** *)
 
