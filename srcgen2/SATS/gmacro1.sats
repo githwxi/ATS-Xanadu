@@ -183,7 +183,15 @@ g1macopt_vt = optn_vt(g1mac)
 //
 fun
 tr11env_search_opt
-(env0: !tr11env, k0: sym_t): g1macopt_vt
+( env0:
+! tr11env, key: sym_t): g1macopt_vt
+//
+(* ****** ****** *)
+//
+fun
+tr11env_add0_g1mac
+( env0:
+! tr11env, key: sym_t, itm: g1mac): void
 //
 (* ****** ****** *)
 
