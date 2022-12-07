@@ -48,11 +48,9 @@ ATS_PACKNAME
 #staload "./../SATS/gmacro1.sats"
 (* ****** ****** *)
 
-local
-
-in//local
-
-end (*local*) // end of [local(g1env)]
+(*
+HX-2022-12-07: It is yet empty!!!
+*)
 
 (* ****** ****** *)
 
