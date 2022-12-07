@@ -178,14 +178,10 @@ case+
 g1e.node() of
 //
 |
-G1Eid0(id0) =>
-print("G1Eid0(",id0,")")
-//
-|
 G1Eint(tok) =>
 print("G1Eint(",tok,")")
 |
-G1Ebtf(btf) =>
+G1Ebtf(tok) =>
 print("G1Ebtf(",tok,")")
 |
 G1Echr(tok) =>
@@ -196,6 +192,10 @@ print("G1Eflt(",tok,")")
 |
 G1Estr(tok) =>
 print("G1Estr(",tok,")")
+//
+|
+G1Eid0(id0) =>
+print("G1Eid0(",id0,")")
 //
 |
 G1Eb0sh(   ) =>

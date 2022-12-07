@@ -167,13 +167,13 @@ where
 datatype
 g1exp_node =
 //
-| G1Eid0 of (sym_t)
-//
 | G1Eint of (token)
 | G1Ebtf of (token)
 | G1Echr of (token)
 | G1Eflt of (token)
 | G1Estr of (token)
+//
+| G1Eid0 of (sym_t)
 //
 | G1Eb0sh of () // bslash
 | G1Eb1sh of g1exp // bslash
