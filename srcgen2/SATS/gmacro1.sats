@@ -106,6 +106,7 @@ datatype g1mac =
 | G1Mint of sint
 | G1Mbtf of bool
 | G1Mchr of char
+| G1Mflt of dflt
 | G1Mstr of strn
 //
 | G1Mid0 of g1id0

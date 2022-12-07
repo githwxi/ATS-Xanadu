@@ -65,6 +65,8 @@ print("G1Mint(", i0, ")")
 print("G1Mbtf(", b0, ")")
 |G1Mchr(c0) =>
 print("G1Mchr(", c0, ")")
+|G1Mflt(f0) =>
+print("G1Mflt(", f0, ")")
 |G1Mstr(s0) =>
 print("G1Mstr(", s0, ")")
 //

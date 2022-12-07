@@ -53,6 +53,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
+#staload "./../SATS/trans01.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
 #staload "./../SATS/gmacro1.sats"
@@ -62,6 +64,9 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload lctn with g1arg_get_lctn
 #symload node with g1arg_get_node
+(* ****** ****** *)
+#symload lctn with g1mag_get_lctn
+#symload node with g1mag_get_node
 (* ****** ****** *)
 #symload lctn with g1exp_get_lctn
 #symload node with g1exp_get_node
@@ -172,8 +177,29 @@ f0_gexp
 (
 case+
 g1e0.node() of
+//
+|
+G1Eint(tok) =>
+G1Mint(int) where
+{
+val int = token2sint(tok)
+}
+|
+G1Ebtf(tok) =>
+G1Mbtf(btf) where
+{
+val btf = token2sbtf(tok)
+}
+|
+G1Echr(tok) =>
+G1Mchr(chr) where
+{
+val chr = token2schr(tok)
+}
+//
 |
 G1Eid0(gid) => G1Mid0(gid)
+//
 ) where
 {
 val () =

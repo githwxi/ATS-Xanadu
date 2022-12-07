@@ -185,6 +185,9 @@ print("G1Eid0(",id0,")")
 G1Eint(tok) =>
 print("G1Eint(",tok,")")
 |
+G1Ebtf(btf) =>
+print("G1Ebtf(",tok,")")
+|
 G1Echr(tok) =>
 print("G1Echr(",tok,")")
 |
