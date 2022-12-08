@@ -161,20 +161,7 @@ g1env_fprint:(FILR,g1env)->void
 (* ****** ****** *)
 //
 fun
-trans11_gmdef
-( gmas
-: g1maglst, def1: g1expopt): g1mac
-//
-(* ****** ****** *)
-//
-fun
-trans11_g1mac
-(env0: !tr11env, g1m0: g1mac): g1mac
-//
-fun
-trans11_g1mac_apps
-( env0: !tr11env
-, g1f0: g1mac, g1ms: g1maclst): g1mac
+tr11env_make_nil(): tr11env
 //
 (* ****** ****** *)
 //
@@ -189,9 +176,27 @@ tr11env_search_opt
 (* ****** ****** *)
 //
 fun
-tr11env_add0_g1mac
+tr11env_insert_any
 ( env0:
 ! tr11env, key: sym_t, itm: g1mac): void
+//
+(* ****** ****** *)
+//
+fun
+trans11_gmdef
+( gmas
+: g1maglst, def1: g1expopt): g1mac
+//
+(* ****** ****** *)
+//
+fun
+trans11_g1mac
+(env0: !tr11env, g1m0: g1mac): g1mac
+//
+fun
+trans11_g1mac_apps
+( env0: !tr11env
+, g1f0: g1mac, g1ms: g1maclst): g1mac
 //
 (* ****** ****** *)
 

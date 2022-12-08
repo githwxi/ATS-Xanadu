@@ -45,5 +45,42 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
+#staload "./../SATS/xsymmap.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
+#staload "./../SATS/gmacro1.sats"
+(* ****** ****** *)
+
+local
+
+#typedef key = sym_t
+
+datavwtp
+tr11env =
+TR11ENV of
+(topmap(g1mac), stkmap(g1mac))
+
+#absimpl tr11env_vtbx = tr11env
+
+in//local
+
+(*
+fun
+tr11env_make_nil((*void*)): tr11env
+*)
+#implfun
+tr11env_make_nil() =
+TR11ENV(topmap, stkmap) where
+{
+  val topmap = topmap_make_nil()
+  val stkmap = stkmap_make_nil()
+} (*where*) // end of [tr11env_make_nil()]
+
+end (*local*) // end of [local(tr11env)]
+
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans11_myenv0.dats] *)
