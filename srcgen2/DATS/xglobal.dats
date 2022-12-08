@@ -73,6 +73,8 @@ for the main purpose of debugging!
 //
 #typedef fxtyenv = topmap(fixty)
 //
+#typedef gmacenv = topmap(g1mac)
+//
 #typedef sortenv = topmap(s2tex)
 #typedef sexpenv = topmap(s2itm)
 #typedef dexpenv = topmap(d2itm)
@@ -246,6 +248,9 @@ local
 //
 (* ****** ****** *)
 val
+the_gmacenv = topmap_make_nil()
+(* ****** ****** *)
+val
 the_sortenv = topmap_make_nil()
 val
 the_sexpenv = topmap_make_nil()
@@ -255,6 +260,9 @@ the_dexpenv = topmap_make_nil()
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
+//
+#implfun
+the_gmacenv_pvs() = (the_gmacenv)
 //
 #implfun
 the_sortenv_pvs() = (the_sortenv)
@@ -276,11 +284,63 @@ in//local
 (* ****** ****** *)
 
 #implfun
+the_gmacenv_pvsmrgw(map) =
+let
+//
+#typedef
+kxs_t =
+@(sint, list(g1mac))
+//
+val
+kxss = topmap_strmize(map)
+in//let
+//
+(
+  auxloop(env0, kxss)) where
+{
+//
+val env0 = the_gmacenv_pvs()
+//
+fun
+auxkxs1
+( env0
+: gmacenv, kxs1: kxs_t): void =
+let
+val (k1, xs1) = kxs1
+val-
+~optn_vt_cons(k1) =
+the_xsymbls_search(k1)
+val-list_cons(x1, xs1) = xs1
+in//let
+  topmap_insert_any(env0, k1, x1)
+end (*let*) // end of [auxkxs1(env0,kxs1)]
+//
+fun
+auxloop
+( env0: gmacenv
+, kxss: strm_vt(kxs_t)): void =
+(
+case+ !kxss of
+| ~
+strmcon_vt_nil() => ()
+| ~
+strmcon_vt_cons(kxs1, kxss) =>
+(
+  auxkxs1(env0, kxs1); auxloop(env0, kxss))
+)
+} (*where*) // end of [auxloop(env0, kxss)]
+//
+end (*let*) // end of [the_gmacenv_pvsmrgw(map)]
+
+(* ****** ****** *)
+
+#implfun
 the_sortenv_pvsmrgw(map) =
 let
 //
 #typedef
-kxs_t = @(sint, list(s2tex))
+kxs_t =
+@(sint, list(s2tex))
 //
 val
 kxss = topmap_strmize(map)
@@ -330,7 +390,8 @@ the_sexpenv_pvsmrgw(map) =
 let
 //
 #typedef
-kxs_t = @(sint, list(s2itm))
+kxs_t =
+@(sint, list(s2itm))
 //
 val
 kxss = topmap_strmize(map)
@@ -415,7 +476,8 @@ the_dexpenv_pvsmrgw(map) =
 let
 //
 #typedef
-kxs_t = @(sint, list(d2itm))
+kxs_t =
+@(sint, list(d2itm))
 //
 val
 kxss = topmap_strmize(map)
@@ -746,6 +808,21 @@ f0_pvsload
 (0(*sta*), "/prelude/SATS/gint000.sats") }
 // end of [if]
 end (*let*) // end of [the_tr12env_pvsload(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+the_gmacenv_pvsfind
+  (   key   ) =
+if
+(the_times[] = 0)
+then
+optn_vt_nil(*void*) else
+let
+val topmap = the_gmacenv_pvs()
+in//let
+  topmap_search_opt(topmap, key)
+end (*let*) // [the_gmacenv_pvsfind]
 //
 (* ****** ****** *)
 //

@@ -69,9 +69,12 @@ fixtyopt_vt = optn_vt(fixty)
 //
 #staload
 S1E = "./staexp1.sats"
+#staload
+G1M = "./gmacro1.sats"
 //
 #typedef sort1 = $S1E.sort1
 #typedef s1exp = $S1E.s1exp
+#typedef g1mac = $G1M.g1mac
 //
 (* ****** ****** *)
 //
@@ -119,6 +122,12 @@ the_tr12env_pvsload
 (* ****** ****** *)
 //
 fun
+the_gmacenv_pvs
+  ((*void*)): topmap(g1mac)
+//
+(* ****** ****** *)
+//
+fun
 the_sortenv_pvs
   ((*void*)): topmap(s2tex)
 fun
@@ -131,6 +140,10 @@ the_dexpenv_pvs
 (* ****** ****** *)
 //
 fun
+the_gmacenv_pvsmrgw
+  (map: topmap(g1mac)): void
+//
+fun
 the_sortenv_pvsmrgw
   (map: topmap(s2tex)): void
 fun
@@ -141,6 +154,10 @@ the_dexpenv_pvsmrgw
   (map: topmap(d2itm)): void
 //
 (* ****** ****** *)
+//
+fun
+the_gmacenv_pvsfind
+  (key: sym_t): optn_vt(g1mac)
 //
 fun
 the_sortenv_pvsfind

@@ -65,7 +65,9 @@ TR11ENV of
 
 #absimpl tr11env_vtbx = tr11env
 
+(* ****** ****** *)
 in//local
+(* ****** ****** *)
 
 (*
 fun
@@ -78,6 +80,45 @@ TR11ENV(topmap, stkmap) where
   val topmap = topmap_make_nil()
   val stkmap = stkmap_make_nil()
 } (*where*) // end of [tr11env_make_nil()]
+
+(* ****** ****** *)
+
+#implfun
+tr11env_search_opt
+  (env0, k0) = let
+//
+val+
+TR11ENV
+(topmap, stkmap) = env0
+//
+val opt =
+stkmap_search_opt(stkmap, k0)
+//
+in//let
+//
+case+ opt of
+| !
+optn_vt_cons
+(   gmac   ) => opt
+| ~
+optn_vt_nil() =>
+let
+val opt =
+topmap_search_opt(topmap,k0)
+in//let
+(
+case+ opt of
+| !
+optn_vt_cons
+(   gmac   ) => opt
+| ~
+optn_vt_nil() => the_gmacenv_pvsfind(k0)
+)
+end (*let*)//end-of-[optn_nil()]
+//
+end (*let*)//end-of-[tr11env_search_opt(env0,k0)]
+
+(* ****** ****** *)
 
 end (*local*) // end of [local(tr11env)]
 
