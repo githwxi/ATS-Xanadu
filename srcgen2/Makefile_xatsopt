@@ -481,6 +481,9 @@ nmspace_dats: ; $(XATSOPT) --dynamic DATS/nmspace.dats
 
 ######
 all_dats:: \
+trans11_myenv0_dats
+trans11_myenv0_dats: ; $(XATSOPT) --dynamic DATS/trans11_myenv0.dats
+all_dats:: \
 trans11_gmacro_dats
 trans11_gmacro_dats: ; $(XATSOPT) --dynamic DATS/trans11_gmacro.dats
 ######
