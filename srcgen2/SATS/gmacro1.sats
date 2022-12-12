@@ -156,12 +156,26 @@ g1mac_fprint:(FILR,g1mac)->void
 fun
 g1env_fprint:(FILR,g1env)->void
 (* ****** ****** *)
+(*
+// HX-2022-12-09:
+// For trans11-functions
+*)
+(* ****** ****** *)
 #absvtbx tr11env_vtbx
-#vwtpdef tr11env = tr11env_vtbx
+#vwtpdef
+tr11env = tr11env_vtbx
+(* ****** ****** *)
+#staload
+MAP = "./xsymmap.sats"
+(* ****** ****** *)
+#typedef
+gmacmap = $MAP.topmap(g1mac)
 (* ****** ****** *)
 //
 fun
 tr11env_make_nil(): tr11env
+fun
+tr11env_free_top(tr11env): gmacmap
 //
 (* ****** ****** *)
 //

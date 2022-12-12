@@ -83,6 +83,9 @@ S1E = "./staexp1.sats"
 #staload
 D1E = "./dynexp1.sats"
 #staload
+G1M = "./gmacro1.sats"
+(* ****** ****** *)
+#staload
 S2E = "./staexp2.sats"
 (* ****** ****** *)
 #typedef s1qid = $S1E.s1qid
@@ -93,6 +96,8 @@ S2E = "./staexp2.sats"
 #typedef d1pat = $D1E.d1pat
 #typedef d1exp = $D1E.d1exp
 #typedef d1ecl = $D1E.d1ecl
+(* ****** ****** *)
+#typedef g1mac = $G1M.g1mac
 (* ****** ****** *)
 #typedef sort2 = $S2E.sort2
 #typedef s2tex = $S2E.s2tex
@@ -1200,7 +1205,8 @@ d2cstdcl_make_args
 datatype
 d2topenv =
 D2TOPENV of
-( $MAP.topmap(s2tex)
+( $MAP.topmap(g1mac)
+, $MAP.topmap(s2tex)
 , $MAP.topmap(s2itm)
 , $MAP.topmap(d2itm))
 //

@@ -53,6 +53,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"
 (* ****** ****** *)
+#staload "./../SATS/gmacro1.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
@@ -827,6 +829,7 @@ datavwtp
 tr12env =
 TR12ENV of
 (
+tr11env,
 sortenv, sexpenv, dexpenv)
 #absimpl tr12env_vtbx = tr12env
 
@@ -839,8 +842,10 @@ tr12env_make_nil
   ( (*void*) ) =
 (
 TR12ENV
-(tenv,senv,denv)) where
+(tr11
+,tenv,senv,denv)) where
 {
+  val tr11 = tr11env_make_nil()
   val tenv = sortenv_make_nil()
   val senv = sexpenv_make_nil()
   val denv = dexpenv_make_nil()
@@ -852,6 +857,9 @@ TR12ENV
 tr12env_free_top
   (  env0  ) = let
 //
+val tr11 =
+tr11env_free_top(tr11)
+//
 val tmap =
 sortenv_free_top(tenv)
 val smap =
@@ -860,11 +868,11 @@ val dmap =
 dexpenv_free_top(denv)
 //
 in//let
-  D2TOPENV(tmap, smap, dmap)
-end where
+D2TOPENV
+(tr11, tmap, smap, dmap) end where
 {
 val+
-~TR12ENV(tenv, senv, denv) = env0
+~TR12ENV(tr11, tenv, senv, denv) = env0
 } (*where*)//end-of(tr12env_free_top(tenv))
 //
 (* ****** ****** *)
@@ -875,7 +883,8 @@ tr12env_poplam0
 //
 val+
 TR12ENV
-(tenv, senv, denv) = env0
+( tr11
+, tenv, senv, denv) = env0
 //
 val () = sortenv_poplam0(tenv)
 val () = sexpenv_poplam0(senv)
@@ -892,7 +901,8 @@ tr12env_pshlam0
 //
 val+
 TR12ENV
-(tenv, senv, denv) = env0
+( tr11
+, tenv, senv, denv) = env0
 //
 val () = sortenv_pshlam0(tenv)
 val () = sexpenv_pshlam0(senv)
@@ -910,7 +920,8 @@ tr12env_poplet0
 //
 val+
 TR12ENV
-(tenv, senv, denv) = env0
+( tr11
+, tenv, senv, denv) = env0
 //
 val () = sortenv_poplet0(tenv)
 val () = sexpenv_poplet0(senv)
@@ -927,7 +938,8 @@ tr12env_pshlet0
 //
 val+
 TR12ENV
-(tenv, senv, denv) = env0
+( tr11
+, tenv, senv, denv) = env0
 //
 val () = sortenv_pshlet0(tenv)
 val () = sexpenv_pshlet0(senv)
@@ -945,7 +957,8 @@ tr12env_pshloc1
 //
 val+
 TR12ENV
-(tenv, senv, denv) = env0
+( tr11
+, tenv, senv, denv) = env0
 //
 val () = sortenv_pshloc1(tenv)
 val () = sexpenv_pshloc1(senv)
@@ -961,7 +974,8 @@ tr12env_pshloc2
 //
 val+
 TR12ENV
-(tenv, senv, denv) = env0
+( tr11
+, tenv, senv, denv) = env0
 //
 val () = sortenv_pshloc2(tenv)
 val () = sexpenv_pshloc2(senv)
@@ -979,7 +993,8 @@ tr12env_locjoin
 //
 val+
 TR12ENV
-(tenv, senv, denv) = env0
+( tr11
+, tenv, senv, denv) = env0
 //
 val () = sortenv_locjoin(tenv)
 val () = sexpenv_locjoin(senv)
@@ -998,7 +1013,8 @@ let
 //
 val+
 TR12ENV
-(tenv, senv, denv) = env0
+( tr11
+, tenv, senv, denv) = env0
 //
 val () =
 sortenv_insert_any(tenv, k0, x0)
@@ -1030,7 +1046,8 @@ let
 //
 val+
 TR12ENV
-(tenv, senv, denv) = env0
+( tr11
+, tenv, senv, denv) = env0
 //
 val () =
 sexpenv_insert_any(senv, k0, x0)
@@ -1062,7 +1079,8 @@ let
 //
 val+
 TR12ENV
-(tenv, senv, denv) = env0
+( tr11
+, tenv, senv, denv) = env0
 //
 val () =
 dexpenv_insert_any(denv, k0, x0)
@@ -1094,7 +1112,8 @@ tr12env_find_s2tex
 sortenv_search_opt(tenv, k0)) where
 {
 //
-  val+TR12ENV(tenv, senv, denv) = env0
+  val+
+  TR12ENV(tr11, tenv, senv, denv) = env0
 //
 } (*where*) // end of [tr12env_find_s2tex(env0,k0)]
 
@@ -1107,7 +1126,8 @@ tr12env_find_s2itm
 sexpenv_search_opt(senv, k0)) where
 {
 //
-  val+TR12ENV(tenv, senv, denv) = env0
+  val+
+  TR12ENV(tr11, tenv, senv, denv) = env0
 //
 } (*where*) // end of [tr12env_find_s2itm(env0,k0)]
 
@@ -1120,7 +1140,8 @@ tr12env_find_d2itm
 dexpenv_search_opt(denv, k0)) where
 {
 //
-  val+TR12ENV(tenv, senv, denv) = env0
+  val+
+  TR12ENV(tr11, tenv, senv, denv) = env0
 //
 } (*where*) // end of [tr12env_find_d2itm(env0,k0)]
 
