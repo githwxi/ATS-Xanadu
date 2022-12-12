@@ -1007,6 +1007,39 @@ end (*let*)//end-of-[tr12env_locjoin(env0)]
 (* ****** ****** *)
 
 #implfun
+tr12env_add0_g1mac
+( env0 , k0 , x0 ) =
+let
+//
+val+
+TR12ENV
+( tr11
+, tenv, senv, denv) = env0
+//
+val () =
+tr11env_insert_any(tr11, k0, x0)
+//
+(*
+val () =
+the_tr11env_allist_add0( k0, x0 )
+val () =
+the_tr11env_allist_prerr((*void*))
+*)
+//
+in//let
+end where
+{
+(*
+  val () =
+  prerrln("tr12env_add0_g1mac: k0 = ", k0)
+  val () =
+  prerrln("tr12env_add0_g1mac: x0 = ", x0)
+*)
+} (*where*)//end-[tr12env_add0_g1mac(env0,k0,x0)]
+
+(* ****** ****** *)
+
+#implfun
 tr12env_add0_s2tex
 ( env0 , k0 , x0 ) =
 let
