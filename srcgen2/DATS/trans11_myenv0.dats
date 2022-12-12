@@ -130,6 +130,27 @@ end (*let*)//end-of-[optn_nil()]
 end (*let*)//end-of-[tr11env_search_opt(env0,k0)]
 
 (* ****** ****** *)
+//
+#implfun
+tr11env_insert_any
+  (tenv, k0, x0) = let
+//
+val+
+@TR11ENV
+(topmap, !stkmap) = tenv
+//
+in//let
+//
+if
+stkmap_nilq(stkmap)
+then
+topmap_insert_any(topmap, k0, x0)//top
+else
+stkmap_insert_any(stkmap, k0, x0)//inner
+//
+end (*let*)//end-of(tr11env_insert_any(tenv,k0,x0))
+//
+(* ****** ****** *)
 
 end (*local*) // end of [local(tr11env)]
 
