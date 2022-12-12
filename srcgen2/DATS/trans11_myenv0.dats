@@ -83,15 +83,145 @@ TR11ENV(topmap, stkmap) where
 
 #implfun
 tr11env_free_top
-  (  tenv  ) = topmap where
+  (  tr11  ) = topmap where
 {
   val () =
   stkmap_free_nil(stkmap)} where
 {
   val+
-  ~TR11ENV(topmap, stkmap) = tenv
-} (*where*)//end-of(tr11env_free_top(tenv))
+  ~TR11ENV(topmap, stkmap) = tr11
+} (*where*)//end-of(tr11env_free_top(tr11))
 
+(* ****** ****** *)
+//
+#implfun
+tr11env_poplam0
+(     tr11     ) = let
+//
+val+
+@TR11ENV
+(topmap, !stkmap) = tr11
+//
+in//let
+//
+let
+val nerr =
+stkmap_poplam0(stkmap) in $fold(tr11)
+end (*let*)
+//
+end (*let*)//end-of-(tr11env_poplam0(tr11))
+//
+#implfun
+tr11env_pshlam0
+(     tr11     ) = let
+val+
+@TR11ENV
+(topmap, !stkmap) = tr11
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshlam0(stkmap) in $fold(tr11)
+end (*let*)
+//
+end (*let*)//end-of-(tr11env_pshlam0(tr11))
+//
+(* ****** ****** *)
+//
+#implfun
+tr11env_poplet0
+(     tr11     ) = let
+//
+val+
+@TR11ENV
+(topmap, !stkmap) = tr11
+//
+in//let
+//
+let
+val nerr =
+stkmap_poplet0(stkmap) in $fold(tr11)
+end (*let*)
+//
+end (*let*)//end-of-(tr11env_poplet0(tr11))
+//
+#implfun
+tr11env_pshlet0
+(     tr11     ) = let
+//
+val+
+@TR11ENV
+(topmap, !stkmap) = tr11
+//
+in//let
+//
+stkmap_pshlet0(stkmap); $fold(tr11)
+//
+end (*let*)//end-of-(tr11env_pshlet0(tr11))
+//
+(* ****** ****** *)
+//
+#implfun
+tr11env_pshloc1
+(     tr11     ) = let
+//
+val+
+@TR11ENV
+(topmap, !stkmap) = tr11
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshloc1(stkmap) in $fold(tr11)
+end (*let*)
+//
+end (*let*)//end-of-(tr11env_pshloc1(tr11))
+//
+#implfun
+tr11env_pshloc2
+(     tr11     ) = let
+//
+val+
+@TR11ENV
+(topmap, !stkmap) = tr11
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshloc2(stkmap) in $fold(tr11)
+end (*let*)
+//
+end (*let*)//end-of-(tr11env_pshloc2(tr11))
+//
+(* ****** ****** *)
+//
+#implfun
+tr11env_locjoin
+(     tr11     ) = let
+//
+val+
+@TR11ENV
+(topmap, !stkmap) = tr11
+//
+in//let
+//
+$fold(tr11) where
+{
+val
+(nerr, kxs) =
+stkmap_poploc0(stkmap)
+val
+((*void*)) =
+if
+stkmap_nilq(stkmap)
+then topmap_insert_kxs(topmap, kxs)
+else stkmap_insert_kxs(stkmap, kxs) }
+//
+end (*let*)//end-of-(tr11env_locjoin(tr11))
+//
 (* ****** ****** *)
 
 #implfun
@@ -133,11 +263,11 @@ end (*let*)//end-of-[tr11env_search_opt(env0,k0)]
 //
 #implfun
 tr11env_insert_any
-  (tenv, k0, x0) = let
+  (tr11, k0, x0) = let
 //
 val+
 @TR11ENV
-(topmap, !stkmap) = tenv
+(topmap, !stkmap) = tr11
 //
 in//let
 //
@@ -148,7 +278,7 @@ topmap_insert_any(topmap, k0, x0)//top
 else
 stkmap_insert_any(stkmap, k0, x0)//inner
 //
-end (*let*)//end-of(tr11env_insert_any(tenv,k0,x0))
+end (*let*)//end-of(tr11env_insert_any(tr11,k0,x0))
 //
 (* ****** ****** *)
 

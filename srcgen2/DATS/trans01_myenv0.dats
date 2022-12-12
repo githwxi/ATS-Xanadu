@@ -162,8 +162,6 @@ end (*let*)
 //
 end (*let*)//end-of-(tr01env_poplet0(tenv))
 //
-(* ****** ****** *)
-//
 #implfun
 tr01env_pshlet0
 (     tenv     ) = let
@@ -196,8 +194,6 @@ stkmap_pshloc1(stkmap) in $fold(tenv)
 end (*let*)
 //
 end (*let*)//end-of-(tr01env_pshloc1(tenv))
-//
-(* ****** ****** *)
 //
 #implfun
 tr01env_pshloc2
