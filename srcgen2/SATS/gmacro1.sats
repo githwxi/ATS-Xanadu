@@ -182,6 +182,27 @@ tr11env_free_top(tr11env): gmacmap
 #vwtpdef
 g1macopt_vt = optn_vt(g1mac)
 //
+(* ****** ****** *)
+fun
+tr11env_poplam0(env0: !tr11env): void
+fun
+tr11env_pshlam0(env0: !tr11env): void
+(* ****** ****** *)
+//
+fun
+tr11env_poplet0(env0: !tr11env): void
+fun
+tr11env_pshlet0(env0: !tr11env): void
+fun
+tr11env_pshloc1(env0: !tr11env): void
+fun
+tr11env_pshloc2(env0: !tr11env): void
+//
+fun
+tr11env_locjoin(env0: !tr11env): void
+//
+(* ****** ****** *)
+//
 fun
 tr11env_search_opt
 ( env0:
@@ -209,8 +230,8 @@ trans11_g1mac
 //
 fun
 trans11_g1mac_apps
-( env0: !tr11env
-, g1f0: g1mac, g1ms: g1maclst): g1mac
+( env0:
+! tr11env, g1f0: g1mac, g1ms: g1maclst): g1mac
 //
 (* ****** ****** *)
 

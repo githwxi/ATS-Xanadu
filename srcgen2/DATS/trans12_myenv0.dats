@@ -886,6 +886,7 @@ TR12ENV
 ( tr11
 , tenv, senv, denv) = env0
 //
+val () = tr11env_poplam0(tr11)
 val () = sortenv_poplam0(tenv)
 val () = sexpenv_poplam0(senv)
 val () = dexpenv_poplam0(denv)
@@ -904,6 +905,7 @@ TR12ENV
 ( tr11
 , tenv, senv, denv) = env0
 //
+val () = tr11env_pshlam0(tr11)
 val () = sortenv_pshlam0(tenv)
 val () = sexpenv_pshlam0(senv)
 val () = dexpenv_pshlam0(denv)
@@ -923,6 +925,7 @@ TR12ENV
 ( tr11
 , tenv, senv, denv) = env0
 //
+val () = tr11env_poplet0(tr11)
 val () = sortenv_poplet0(tenv)
 val () = sexpenv_poplet0(senv)
 val () = dexpenv_poplet0(denv)
@@ -941,6 +944,7 @@ TR12ENV
 ( tr11
 , tenv, senv, denv) = env0
 //
+val () = tr11env_pshlet0(tr11)
 val () = sortenv_pshlet0(tenv)
 val () = sexpenv_pshlet0(senv)
 val () = dexpenv_pshlet0(denv)
@@ -960,6 +964,7 @@ TR12ENV
 ( tr11
 , tenv, senv, denv) = env0
 //
+val () = tr11env_pshloc1(tr11)
 val () = sortenv_pshloc1(tenv)
 val () = sexpenv_pshloc1(senv)
 val () = dexpenv_pshloc1(denv)
@@ -977,6 +982,7 @@ TR12ENV
 ( tr11
 , tenv, senv, denv) = env0
 //
+val () = tr11env_pshloc2(tr11)
 val () = sortenv_pshloc2(tenv)
 val () = sexpenv_pshloc2(senv)
 val () = dexpenv_pshloc2(denv)
@@ -996,6 +1002,7 @@ TR12ENV
 ( tr11
 , tenv, senv, denv) = env0
 //
+val () = tr11env_locjoin(tr11)
 val () = sortenv_locjoin(tenv)
 val () = sexpenv_locjoin(senv)
 val () = dexpenv_locjoin(denv)

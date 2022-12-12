@@ -367,30 +367,33 @@ fun
 tr01env_free_top(tr01env):d1topenv
 //
 (* ****** ****** *)
+//
+fun
+tr01env_poplet0(env0: !tr01env): void
+fun
+tr01env_pshlet0(env0: !tr01env): void
+fun
+tr01env_pshloc1(env0: !tr01env): void
+fun
+tr01env_pshloc2(env0: !tr01env): void
+//
+fun
+tr01env_locjoin(env0: !tr01env): void
+//
+(* ****** ****** *)
+//
 fun
 tr01env_search_opt
-( env:
+( env0:
 ! tr01env, key: sym_t): fixtyopt_vt
 fun
 tr01env_insert_any
-( env:
+( env0:
 ! tr01env, key: sym_t, itm: fixty): void
 fun
 tr01env_insmix_any
-( env:
+( env0:
 ! tr01env, key: sym_t, itm: fixty): void
-//
-fun
-tr01env_poplet0( env: !tr01env ): void
-fun
-tr01env_pshlet0( env: !tr01env ): void
-fun
-tr01env_pshloc1( env: !tr01env ): void
-fun
-tr01env_pshloc2( env: !tr01env ): void
-//
-fun
-tr01env_locjoin( env: !tr01env ): void
 //
 (* ****** ****** *)
 
@@ -774,7 +777,8 @@ trans01_d0cstdclist:
 //
 fun
 trans01_d0eclistopt
-(env: !tr01env, opt: d0eclistopt): d1eclistopt
+( env0
+: !tr01env, opt: d0eclistopt): d1eclistopt
 //
 (* ****** ****** *)
 (* end of [ATS3/XATSOPT_srcgen2_trans01.sats] *)
