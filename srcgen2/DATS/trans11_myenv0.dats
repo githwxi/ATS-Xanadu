@@ -53,6 +53,8 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp1.sats"
 #staload "./../SATS/gmacro1.sats"
 (* ****** ****** *)
+#staload "./../SATS/xglobal.sats"
+(* ****** ****** *)
 
 local
 
@@ -69,10 +71,6 @@ TR11ENV of
 in//local
 (* ****** ****** *)
 
-(*
-fun
-tr11env_make_nil((*void*)): tr11env
-*)
 #implfun
 tr11env_make_nil() =
 TR11ENV(topmap, stkmap) where
@@ -80,6 +78,19 @@ TR11ENV(topmap, stkmap) where
   val topmap = topmap_make_nil()
   val stkmap = stkmap_make_nil()
 } (*where*) // end of [tr11env_make_nil()]
+
+(* ****** ****** *)
+
+#implfun
+tr11env_free_top
+  (  tenv  ) = topmap where
+{
+  val () =
+  stkmap_free_nil(stkmap)} where
+{
+  val+
+  ~TR11ENV(topmap, stkmap) = tenv
+} (*where*)//end-of(tr11env_free_top(tenv))
 
 (* ****** ****** *)
 

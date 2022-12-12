@@ -742,9 +742,13 @@ in//let
 let
 val+
 D2TOPENV
-(tenv, senv, denv) = dpar.t2penv()
+(tr11
+,tenv,senv,denv) = dpar.t2penv()
 //
 // (*
+val () =
+prerrln("\
+the_tr12env_pvsload:tr11=\n", tr11)
 val () =
 prerrln("\
 the_tr12env_pvsload:tenv=\n", tenv)

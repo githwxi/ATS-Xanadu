@@ -169,6 +169,8 @@
 "./../../DATS/tread01_errmsg.dats"
 (* ****** ****** *)
 #include
+"./../../DATS/trans11_myenv0.dats"
+#include
 "./../../DATS/trans11_gmacro.dats"
 (* ****** ****** *)
 #include
