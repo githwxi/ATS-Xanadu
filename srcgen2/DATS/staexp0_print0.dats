@@ -179,7 +179,8 @@ S0YMBdtlab of (token, l0abl)
 *)
 |
 S0YMBbrckt(tk1, tk2) =>
-print("S0YMBbrckt(", tk1, ";", tk2, ")")
+print
+("S0YMBbrckt(", tk1, ";", tk2, ")")
 end (*let*) // end of [s0ymb_fprint]
 
 (* ****** ****** *)
@@ -323,6 +324,34 @@ G0Eerrck
 (lvl(*err*),ge1) => print("G0Eerrck(",lvl,";",ge1,")")
 //
 end (*let*) // end of [g0exp_fprint(out,g0e)]
+
+(* ****** ****** *)
+
+#implfun
+g0mag_fprint
+(out, gma) =
+(
+case+
+gma.node() of
+|
+G0MAGnone(tok) =>
+print("G0MAGnone(",tok,")")
+|
+G0MAGsarg
+(tbeg,g0as,tend) =>
+print
+("G0MAGsarg("
+,tbeg,";",g0as,";",tend,")")
+|
+G0MAGdarg
+(tbeg,g0as,tend) =>
+print
+("G0MAGdarg("
+,tbeg,";",g0as,";",tend,")")
+) where
+{
+  #impltmp g_print$out<>() = out
+} (*where*) // end of [g0mag_fprint(out,gma)]
 
 (* ****** ****** *)
 

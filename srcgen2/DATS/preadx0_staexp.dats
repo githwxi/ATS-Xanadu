@@ -280,6 +280,8 @@ _(*otherwise*) =>
 ) where // end-of(case(g0e.node()))
 {
 //
+(* ****** ****** *)
+//
 fun
 f0_apps
 ( g0e
@@ -297,6 +299,8 @@ if
 then (g0e)
 else g0exp_apps_errck(g0e.lctn(), ges)
 end (*let*) // end of [f0_apps]
+//
+(* ****** ****** *)
 //
 fun
 f0_lpar
@@ -328,6 +332,8 @@ if
 then (g0e) else
 g0exp_lpar_errck(g0e.lctn(), tkb, ges, tke)
 end (*let*) // end of [f0_lpar]
+//
+(* ****** ****** *)
 //
 fun
 f0_if0
@@ -412,6 +418,8 @@ g0exp_if0_errck
 (g0e.lctn(), tif0, g0e1, gthn, gels, tend)
 end (*let*) // end of [f_if0(g0e,err)]
 //
+(* ****** ****** *)
+//
 } (*where*) // end of [preadx0_g0exp(g0e,err)]
 
 (* ****** ****** *)
@@ -462,7 +470,7 @@ val (  ) =
 (
 case+
 tend.node() of
-| T_RBRACE() => ()
+| T_RPAREN() => ()
 | _ => (err := err+1)): void
 //
 in//let
