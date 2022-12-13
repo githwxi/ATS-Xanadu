@@ -382,6 +382,32 @@ val-
 D1Pid0(sym1) = d1p0.node()
 //
 val
+gopt =
+tr12env_find_g1mac(env0,sym1)
+//
+in//let
+case+ gopt of
+| ~optn_vt_nil() =>
+(
+  f0_id0_d1pid(env0, d1p0))
+| ~optn_vt_cons(gmac) =>
+(
+  d2pat(loc0, D2Pg1mac(gmac)))
+end (*let*) // end of [f0_id0(env0,d1p0)]
+//
+and
+f0_id0_d1pid
+( env0:
+! tr12env
+, d1p0: d1pat): d2pat =
+let
+//
+val loc0 = d1p0.lctn()
+//
+val-
+D1Pid0(sym1) = d1p0.node()
+//
+val
 dopt =
 tr12env_find_d2itm(env0,sym1)
 //
@@ -393,7 +419,7 @@ f0_id0_d1sym(env0, d1p0, sym1)
 | ~
 optn_vt_cons(d2i1) =>
 f0_id0_d2itm(env0, d1p0, d2i1)
-end (*let*) // end of [f0_id0(env0,d1p0)]
+end (*let*) // end of [f0_id0_d1pid(...)]
 //
 and
 f0_id0_d1sym
@@ -1340,6 +1366,32 @@ f0_id0
 let
 //
 val loc0 = d1e0.lctn()
+//
+val-
+D1Eid0(sym1) = d1e0.node()
+val
+gopt =
+tr12env_find_g1mac(env0,sym1)
+//
+in//let
+case+ gopt of
+| ~optn_vt_nil() =>
+(
+  f0_id0_d1eid(env0, d1e0))
+| ~optn_vt_cons(gmac) =>
+(
+  d2exp(loc0, D2Eg1mac(gmac)))
+end (*let*) // end of [f0_id0(env0,d1e0)]
+//
+and
+f0_id0_d1eid
+( env0:
+! tr12env
+, d1e0: d1exp): d2exp =
+let
+//
+val loc0 = d1e0.lctn()
+//
 val-
 D1Eid0(sym1) = d1e0.node()
 val
@@ -1354,7 +1406,7 @@ f0_id0_d1sym(env0, d1e0, sym1)
 | ~
 optn_vt_cons(d2i1) =>
 f0_id0_d2itm(env0, d1e0, d2i1)
-end (*let*) // end of [f0_id0(env0,d1e0)]
+end (*let*) // end of [f0_id0_d1eid(...)]
 //
 and
 f0_id0_d1sym

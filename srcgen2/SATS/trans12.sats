@@ -298,6 +298,7 @@ LEX = "./lexing0.sats"
 #typedef sort2lstlst = list(sort2lst)
 #typedef s2varlstlst = list(s2varlst)
 (* ****** ****** *)
+#vwtpdef g1macopt_vt = optn_vt(g1mac)
 #vwtpdef s2texopt_vt = optn_vt(s2tex)
 #vwtpdef s2itmopt_vt = optn_vt(s2itm)
 #vwtpdef d2itmopt_vt = optn_vt(d2itm)
@@ -389,6 +390,11 @@ tr12env_add0_d2itm
 , key: sym_t, itm: d2itm): void
 //
 (* ****** ****** *)
+//
+fun
+tr12env_find_g1mac
+( env:
+! tr12env, sym: sym_t): g1macopt_vt
 //
 fun
 tr12env_find_s2tex
