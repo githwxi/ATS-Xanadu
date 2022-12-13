@@ -1286,11 +1286,11 @@ trans11_g1mac_subs
 (*
 val () =
 println!
-("trans11_g1mac_env: g1m0 = ", g1m0)
+("trans11_g1mac_subs: g1m0 = ", g1m0)
 *)
 }(*where*)//end of [trans11_g1mac_subs]
 
-end // end of [local]
+end // end of [local(trans11_g1mac_subs)]
 
 (* ****** ****** *)
 
