@@ -5,6 +5,8 @@
 (* ****** ****** *)
 #define one 1
 #define two 2
+#define add(x, y) = x + y
+#define mul(x, y) = x * y
 (* ****** ****** *)
 ////
 (* ****** ****** *)

@@ -54,6 +54,12 @@ _(*?*) = "./lexing0_print0.dats"
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 (* ****** ****** *)
+#symload lctn with g1arg_get_lctn
+#symload node with g1arg_get_node
+(* ****** ****** *)
+#symload lctn with g1mag_get_lctn
+#symload node with g1mag_get_node
+(* ****** ****** *)
 #symload lctn with g1exp_get_lctn
 #symload node with g1exp_get_node
 (* ****** ****** *)
@@ -92,6 +98,21 @@ _(*?*) = "./lexing0_print0.dats"
 #symload lctn with d1typ_get_lctn
 #symload node with d1typ_get_node
 (* ****** ****** *)
+
+#implfun
+g1arg_fprint
+(out, g1a) =
+(
+case+
+g1a.node() of
+G1ARGnode(tok) =>
+print("G1ARGnode(",tok,")")
+) where
+{
+  #impltmp g_print$out<>() = out
+} (*where*) // end of [g1arg_fprint]
+
+(* ****** ****** *)
 //
 #implfun
 s1qid_fprint
@@ -126,6 +147,25 @@ D1QIDsome(tok, id1) =>
 print
 ("D1QIDsome(", tok, ";", id1, ")")
 end (*let*) // end of [d1qid_fprint]
+//
+(* ****** ****** *)
+//
+#implfun
+g1mag_fprint
+(out, gma) =
+(
+case+
+gma.node() of
+|
+G1MAGsarg(g1as) =>
+print("G1MAGsarg(",g1as,")")
+|
+G1MAGdarg(g1as) =>
+print("G1MAGdarg(",g1as,")")
+) where
+{
+  #impltmp g_print$out<>() = out
+} (*where*) // end of [g1mag_fprint]
 //
 (* ****** ****** *)
 
