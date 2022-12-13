@@ -124,6 +124,24 @@ list_cons(@(gid1, g1m1), genv) }
 // end of [g1env_extends(genv,...)]
 
 (* ****** ****** *)
+//
+fun
+g1env_search_opt
+( genv
+: g1env, x0: g1id0): g1macopt_vt =
+(
+case+ genv of
+|
+list_nil() =>
+optn_vt_nil()
+|
+list_cons((x1, v1), genv) =>
+( if
+  (x0 = x1)
+  then optn_vt_cons(v1)
+  else g1env_search_opt(genv, x0)))
+//
+(* ****** ****** *)
 
 end (*local*) // end of [local(g1env)]
 
@@ -481,6 +499,210 @@ prerrln("trans11_g1mac_apps: g1ms = ", g1ms)
 (* ****** ****** *)
 
 end (*local*) // end of [local(trans11_g1mac/apps)]
+
+(* ****** ****** *)
+
+local
+
+(* ****** ****** *)
+
+fun
+f0_g1m0
+( env0:
+! tr11env
+, g1m0: g1mac
+, genv: g1env): g1mac =
+(
+case+ g1m0 of
+//
+| G1Mint _ => g1m0
+| G1Mbtf _ => g1m0
+| G1Mstr _ => g1m0
+//
+|
+G1Mid0 _ =>
+f0_gmid(env0, g1m0, genv)
+//
+|
+G1Mif0 _ =>
+f0_cond(env0, g1m0, genv)
+//
+|
+G1Mapps _ =>
+f0_apps(env0, g1m0, genv)
+//
+|
+_(*otherwise*) => G1Msubs(g1m0, genv)
+//
+) (*case+*) // end of [f0_g1m0(...)]
+//
+and
+f0_g1ms
+( env0:
+! tr11env
+, g1ms
+: g1maclst
+, genv: g1env): g1maclst =
+(
+list_map_e1nv
+<x0 >< y0><e1>
+( g1ms , env0 )) where
+{
+//
+#typedef x0 = g1mac
+#typedef y0 = g1mac
+#vwtpdef e1 = tr11env
+//
+#impltmp
+map$fopr_e1nv
+<x0><y0><e1>(x0, e1) = f0_g1m0(e1, x0, genv)
+} (*where*) // end of [f0_g1ms(...)]
+//
+(* ****** ****** *)
+//
+and
+f0_gmid
+( env0:
+! tr11env
+, g1m0: g1mac
+, genv: g1env): g1mac =
+let
+//
+val-
+G1Mid0(sym1) = g1m0
+//
+val
+opt1 =
+g1env_search_opt(genv, sym1)
+//
+in
+case+ opt1 of
+| ~
+optn_vt_cons
+(   g1m1   ) => g1m1
+|
+~optn_vt_nil
+( (*void*) ) => let
+//
+val
+opt1 =
+tr11env_search_opt(env0, sym1)
+//
+in//let
+case+ opt1 of
+| ~
+optn_vt_nil() => g1m0
+| ~
+optn_vt_cons
+(   g1m1   ) => trans11_g1mac(env0, g1m1)
+end // end of [None_vt]
+//
+end (*let*) // end of [f0_gmid(...)]
+//
+(* ****** ****** *)
+
+and
+f0_cond
+( env0:
+! tr11env
+, g1m0: g1mac
+, genv: g1env): g1mac =
+let
+//
+val-
+G1Mif0
+( g1m1
+, g1m2, g1m3) = g1m0
+//
+val
+g1m1 =
+f0_g1m0(env0, g1m1, genv)
+//
+in//let
+//
+case+ g1m1 of
+//
+|
+G1Mbtf(btf) =>
+(
+if
+(btf)
+then f0_g1m0(env0, g1m2, genv)
+else f0_g1m0(env0, g1m3, genv))
+//
+|
+G1Mint(int) =>
+(
+if
+(int != 0)
+then f0_g1m0(env0, g1m2, genv)
+else f0_g1m0(env0, g1m3, genv))
+//
+|
+G1Mstr(str) =>
+(
+if
+(str != "")
+then f0_g1m0(env0, g1m2, genv)
+else f0_g1m0(env0, g1m3, genv))
+//
+|
+_(*non-if-redex*) =>
+(
+G1Mif0
+(g1m1, g1m2, g1m3)) where
+{
+  val g1m2 = G1Msubs(g1m2, genv)
+  val g1m3 = G1Msubs(g1m3, genv)
+} (*where*) // end-of-(non-if-redex)
+//
+end (*let*) // end of [f0_cond(...)]
+
+(* ****** ****** *)
+//
+and
+f0_apps
+( env0:
+! tr11env
+, g1m0: g1mac
+, genv: g1env): g1mac =
+let
+//
+val-
+G1Mapps
+(g1f0, g1ms) = g1m0
+//
+val
+g1f0 = f0_g1m0(env0, g1f0, genv)
+val
+g1ms = f0_g1ms(env0, g1ms, genv)
+//
+in//let
+trans11_g1mac_apps(env0, g1f0, g1ms)
+end (*let*) // end of [f0_apps(...)]
+//
+(* ****** ****** *)
+in(* in-of-local *)
+(* ****** ****** *)
+
+#implfun
+trans11_g1mac_subs
+(env0, g1m0, genv) =
+(
+f0_g1m0
+(env0, g1m0, genv)) where
+{
+(*
+val () =
+prerrln
+("trans11_g1mac_subs: g1m0 = ", g1m0)
+val () =
+prerrln
+("trans11_g1mac_subs: env0 = ", env0)
+*)
+} (*where*) // end of [trans11_g1mac_subs]
+
+end (*local*) // end of [local(trans11_g1mac_subs)]
 
 (* ****** ****** *)
 
