@@ -109,6 +109,8 @@ FIL = "./filpath.sats"
 #typedef g0exp = $S0E.g0exp
 #typedef g1exp = $S1E.g1exp
 //
+#typedef g0arg = $S0E.g0arg
+#typedef g1arg = $S1E.g1arg
 #typedef g0mag = $S0E.g0mag
 #typedef g1mag = $S1E.g1mag
 //
@@ -123,6 +125,8 @@ FIL = "./filpath.sats"
 #typedef g1explst = $S1E.g1explst
 #typedef g1expopt = $S1E.g1expopt
 //
+#typedef g0arglst = $S0E.g0arglst
+#typedef g1arglst = $S1E.g1arglst
 #typedef g0maglst = $S0E.g0maglst
 #typedef g1maglst = $S1E.g1maglst
 //
@@ -480,8 +484,15 @@ fun trans01_g0nam:
   (!tr01env, g0nam)->g1nam
 fun trans01_g0exp:
   (!tr01env, g0exp)->g1exp
+//
+(* ****** ****** *)
+//
+fun trans01_g0arg:
+  (!tr01env, g0arg)->g1arg
 fun trans01_g0mag:
   (!tr01env, g0mag)->g1mag
+//
+(* ****** ****** *)
 //
 fun
 trans01_g0namlst:
@@ -492,6 +503,11 @@ trans01_g0explst:
 fun
 trans01_g0expopt:
   (!tr01env, g0expopt)->g1expopt
+(* ****** ****** *)
+//
+fun
+trans01_g0arglst:
+  (!tr01env, g0arglst)->g1arglst
 fun
 trans01_g0maglst:
   (!tr01env, g0maglst)->g1maglst

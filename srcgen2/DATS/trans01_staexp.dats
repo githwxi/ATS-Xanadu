@@ -916,13 +916,26 @@ end (*let*) // end of [trans01_g0exp(g0e0)]
 endloc(*local*)//end-of-[local(trans01_g0exp)]
 
 (* ****** ****** *)
+//
+#implfun
+trans01_g0arg
+( tenv,garg ) =
+let
+val tok1 =
+trans01_i0dnt(tenv, garg)
+in//let
+g1arg(tok1.lctn(), G1ARGnode(tok1))
+end (*let*) // end of [trans01_g0arg]
+//
+(* ****** ****** *)
 
 #implfun
 trans01_g0mag
-(tenv, g0ma) =
+( tenv,g0ma ) =
 (
 case+
 g0ma.node() of
+//
 |
 G0MAGnone(tok) =>
 let
@@ -930,6 +943,27 @@ val g1as = list_nil() // error
 in//let
 g1mag(g0ma.lctn(), G1MAGdarg(g1as))
 end (*let*) // end of [G0MAGnone(...)]
+//
+|
+G0MAGsarg
+(tbeg,g0as,tend) =>
+let
+val g1as =
+trans01_g0arglst(tenv, g0as)
+in//let
+g1mag(g0ma.lctn(), G1MAGsarg(g1as))
+end (*let*) // end of [G0MAGsarg(...)]
+//
+|
+G0MAGdarg
+(tbeg,g0as,tend) =>
+let
+val g1as =
+trans01_g0arglst(tenv, g0as)
+in//let
+g1mag(g0ma.lctn(), G1MAGdarg(g1as))
+end (*let*) // end of [G0MAGdarg(...)]
+//
 ) where
 {
 (*
@@ -942,7 +976,7 @@ prerrln("trans01_g0mag: g0ma = ", g0ma)
 
 #implfun
 trans01_sort0
-(tenv, s0t0) = let
+( tenv,s0t0 ) = let
 (* ****** ****** *)
 (*
 //
@@ -1116,7 +1150,7 @@ map$fopr_e1nv
 
 #implfun
 trans01_s0exp
-(tenv, s0e0) = let
+( tenv,s0e0 ) = let
 (* ****** ****** *)
 //
 (*
@@ -1976,6 +2010,12 @@ trans01_g0expopt
 optn_trans01_fnp(tenv, opt0, trans01_g0exp))
 //
 (* ****** ****** *)
+//
+#implfun
+trans01_g0arglst
+  (tenv, g0as) =
+(
+list_trans01_fnp(tenv, g0as, trans01_g0arg))
 //
 #implfun
 trans01_g0maglst

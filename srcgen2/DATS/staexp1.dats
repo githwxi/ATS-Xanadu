@@ -135,6 +135,37 @@ endloc (*local*)//end-[local(g1exp)]
 local
 //
 datatype
+g1arg =
+G1ARG of
+(
+loctn, g1arg_node)
+//
+#absimpl g1arg_tbox = g1arg
+//
+in (* in-of-local *)
+//
+#implfun
+g1arg_make_node
+(   loc,nod   ) = G1ARG(loc,nod)
+//
+#implfun
+g1arg_get_lctn(g1a) =
+let
+  val+G1ARG(loc,nod) = g1a in loc
+end
+#implfun
+g1arg_get_node(g1a) =
+let
+  val+G1ARG(loc,nod) = g1a in nod
+end
+//
+endloc (*local*)//end-[local(g1arg)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 g1mag =
 G1MAG of
 (
@@ -149,14 +180,14 @@ g1mag_make_node
 (   loc,nod   ) = G1MAG(loc,nod)
 //
 #implfun
-g1mag_get_lctn(g1e) =
+g1mag_get_lctn(gma) =
 let
-  val+G1MAG(loc,nod) = g1e in loc
+  val+G1MAG(loc,nod) = gma in loc
 end
 #implfun
-g1mag_get_node(g1e) =
+g1mag_get_node(gma) =
 let
-  val+G1MAG(loc,nod) = g1e in nod
+  val+G1MAG(loc,nod) = gma in nod
 end
 //
 endloc (*local*)//end-[local(g1mag)]
