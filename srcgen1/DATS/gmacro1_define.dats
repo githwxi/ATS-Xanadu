@@ -473,6 +473,7 @@ in
 //
 case+
 d1e0.node() of
+//
 | D1Eid0 _ => auxid0(d1e0)
 | D1Eint _ => auxint(d1e0)
 //
