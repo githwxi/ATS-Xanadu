@@ -234,8 +234,8 @@ val g1f0 = f0_gexp(g1f0)
 val g1e1 = f0_gexp(g1e1)
 val g1e2 = f0_gexp(g1e2)
 in//let
-G1Mapps
-(g1f0, list_pair(g1e1, g1e2))
+  G1Mapps
+  (g1f0, list_pair(g1e1, g1e2))
 end (*let*) // end of [G1Ea2pp(...)]
 //
 ) where

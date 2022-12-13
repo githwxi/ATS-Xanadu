@@ -79,6 +79,10 @@ D1E = "./dynexp1.sats"
 #typedef d1pat = $D1E.d1pat
 #typedef d1exp = $D1E.d1exp
 //
+#typedef s1explst = $S1E.s1explst
+#typedef d1patlst = $D1E.d1patlst
+#typedef d1explst = $D1E.d1explst
+//
 (* ****** ****** *)
 (*
 #abstype g1id0_tbox // ptr
@@ -221,6 +225,21 @@ fun
 trans11_gmdef
 ( gmas
 : g1maglst, def1: g1expopt): g1mac
+//
+(* ****** ****** *)
+//
+fun
+trg1mac_s1exp(s1e0: s1exp): g1mac
+fun
+trg1mac_d1pat(d1p0: d1pat): g1mac
+fun
+trg1mac_d1exp(d1e0: d1exp): g1mac
+fun
+trg1mac_s1explst(s1es: s1explst): g1maclst
+fun
+trg1mac_d1patlst(d1ps: d1patlst): g1maclst
+fun
+trg1mac_d1explst(d1es: d1explst): g1maclst
 //
 (* ****** ****** *)
 //

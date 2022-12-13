@@ -58,6 +58,7 @@ _(*TRANS12*) = "./trans12.dats"
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
+#staload "./../SATS/gmacro1.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
@@ -1654,6 +1655,77 @@ D1Ea1pp
 val d2f0 =
 trans12_d1exp(env0, d1f0)
 //
+in//let
+//
+case+
+d2f0.node() of
+|
+D2Eg1mac _ =>
+f0_a1pp_els1(env0, d1e0, d2f0)
+|
+_(*non-D2Eg1mac*) =>
+f0_a1pp_els2(env0, d1e0, d2f0)
+//
+end (*let*) // end of [f0_a1pp_else(_,_)]
+
+and
+f0_a1pp_els1
+( env0:
+! tr12env
+, d1e0: d1exp
+, d2f0: d2exp): d2exp =
+let
+//
+val
+D1Ea1pp
+(d1f0,d1e1) = d1e0.node()
+//
+val g1f0 =
+(
+case-
+d2f0.node() of
+|
+D2Eg1mac(g1f0) => g1f0): g1mac
+//
+val d1es =
+(
+case+
+d1e1.node() of
+|
+D1El1st(d1es) => d1es
+|
+D1El2st(des1, des2) =>
+list_append(des1, des2)
+|
+_(*non-D2Elist*) => list_sing(d1e1)
+) : d1explst // end-of-[ val(d1es) ]
+//
+in//let
+//
+let
+val
+g1ms = trg1mac_d1explst(d1es) in//let
+trd2exp_g1mac
+( d1e0.lctn()
+, trans12_g1mac_apps(env0, g1f0, g1ms))
+end (*let*)
+//
+end (*let*) // end of [f0_a1pp_els1(_,_)]
+
+and
+f0_a1pp_els2
+( env0:
+! tr12env
+, d1e0: d1exp
+, d2f0: d2exp): d2exp =
+let
+//
+val loc0 = d1e0.lctn()
+//
+val
+D1Ea1pp
+(d1f0,d1e1) = d1e0.node()
+//
 val npf1 =
 (
 case+
@@ -1691,7 +1763,7 @@ in
 //
 my_d2exp_dapp(loc0, d2f0, npf1, d2es)
 //
-end (*let*) // end of [f0_a1pp_else(_,_)]
+end (*let*) // end of [f0_a1pp_els2(_,_)]
 
 (* ****** ****** *)
 
