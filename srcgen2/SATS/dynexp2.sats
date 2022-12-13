@@ -523,9 +523,9 @@ token(*knd*), sint(*npf*), l2d2plst)
 D2Pannot of
 (d2pat,s1exp(*given*),s2exp(*trans*))
 //
-(*
-|D2Pg1mac of (g1mac) // HX: it is an error!
-*)
+|
+D2Pg1mac of
+(g1mac(*unknown*)) // HX: temp or error!
 //
 |
 D2Pnone0 of ((*void*)) | D2Pnone1 of (d1pat)
@@ -810,6 +810,10 @@ D2Eannot of
 |
 D2Eexists of
 (s2explst(*witness*), d2exp(*scoped*))
+//
+|
+D2Eg1mac of
+(g1mac(*unknown*)) // HX: temp or error!
 //
 |
 D2Enone0 of ((*void*)) | D2Enone1 of (d1exp)

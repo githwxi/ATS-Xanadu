@@ -165,6 +165,8 @@ LEX = "./lexing0.sats"
 #typedef teqd1exp = $D1E.teqd1exp
 #typedef teqd2exp = $D2E.teqd2exp
 (* ****** ****** *)
+#typedef g1maclst = $G1M.g1maclst
+(* ****** ****** *)
 #typedef sort1lst = $S1E.sort1lst
 #typedef sort1opt = $S1E.sort1opt
 (* ****** ****** *)
@@ -341,6 +343,16 @@ fun
 d2parsed_from_trans
 ( dpar : d1parsed ): (d2parsed)
 //
+(* ****** ****** *)
+fun
+trs2exp_g1mac
+(loc0:loc_t,g1m0:g1mac):(s2exp)
+fun
+trd2pat_g1mac
+(loc0:loc_t,g1m0:g1mac):(d2pat)
+fun
+trd2exp_g1mac
+(loc0:loc_t,g1m0:g1mac):(d2exp)
 (* ****** ****** *)
 //
 fun
@@ -777,30 +789,23 @@ trans12_d1expseq
 ! tr12env
 , loc0: loc_t, d1es: d1explst): d2exp
 (* ****** ****** *)
-//
 (*
+//
+// HX-2022-12-12:
+// These cases are somewhat special!
+//
 fun
 trans12_d1valdcl
 (env0: !tr12env, dval: d1valdcl): d2valdcl
-*)
-//
 fun
 trans12_d1vardcl
 (env0: !tr12env, dvar: d1vardcl): d2vardcl
 //
-(*
 fun
 trans12_d1fundcl
 (env0: !tr12env, dfun: d1fundcl): d2fundcl
-*)
 //
-(* ****** ****** *)
-fun
-trans12_d1cstdcl
-( env0:
-! tr12env
-, tknd: (token)
-, d1cs: d1cstdcl, tqas: t2qaglst): d2cstdcl
+*)
 (* ****** ****** *)
 //
 fun
@@ -828,6 +833,23 @@ trans12_d1tcnlst
 ! tr12env
 , tcns: d1tcnlst
 , s2c0: s2cst, svss: s2varlstlst): d2conlst
+//
+(* ****** ****** *)
+//
+(*
+// HX-2022-12-12:
+// These functions are built
+// on top of theri trans11-version
+*)
+//
+fun
+trans12_g1mac
+(env0: !tr12env, g1m0: g1mac): g1mac
+//
+fun
+trans12_g1mac_apps
+( env0:
+! tr12env, g1f0: g1mac, g1ms: g1maclst): g1mac
 //
 (* ****** ****** *)
 //
@@ -901,6 +923,9 @@ trans12_d1valdclist
 (* ****** ****** *)
 //
 fun
+trans12_d1vardcl
+(env0: !tr12env, dvar: d1vardcl): d2vardcl
+fun
 trans12_d1vardclist
 (env0: !tr12env, d1vs: d1vardclist): d2vardclist
 //
@@ -918,6 +943,13 @@ trans12_d1fundclist
 , d2vs: d2varlst,d1fs: d1fundclist): d2fundclist
 //
 (* ****** ****** *)
+//
+fun
+trans12_d1cstdcl
+( env0:
+! tr12env
+, tknd: (token)
+, d1cs: d1cstdcl, tqas: t2qaglst): d2cstdcl
 //
 fun
 trans12_d1cstdclist
