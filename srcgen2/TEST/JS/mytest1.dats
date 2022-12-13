@@ -8,6 +8,8 @@
 #define add(x, y) = x + y
 #define mul(x, y) = x * y
 (* ****** ****** *)
+fun square(x) = mul(x, x)
+(* ****** ****** *)
 ////
 (* ****** ****** *)
 datatype

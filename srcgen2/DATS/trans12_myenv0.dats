@@ -1136,12 +1136,26 @@ in//let
 end where
 {
 (*
-  val () =
-  prerrln("tr12env_add0_d2itm: k0 = ", k0)
-  val () =
-  prerrln("tr12env_add0_d2itm: x0 = ", x0)
+val () =
+prerrln("tr12env_add0_d2itm: k0 = ", k0)
+val () =
+prerrln("tr12env_add0_d2itm: x0 = ", x0)
 *)
 } (*where*)//end-[tr12env_add0_d2itm(env0,k0,x0)]
+
+(* ****** ****** *)
+
+#implfun
+tr12env_find_g1mac
+  ( env0, k0 ) =
+(
+tr11env_search_opt(tr11, k0)) where
+{
+//
+  val+
+  TR12ENV(tr11, tenv, senv, denv) = env0
+//
+} (*where*) // end of [tr12env_find_g1mac(env0,k0)]
 
 (* ****** ****** *)
 
