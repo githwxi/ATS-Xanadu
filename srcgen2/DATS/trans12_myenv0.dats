@@ -1200,6 +1200,31 @@ dexpenv_search_opt(denv, k0)) where
 } (*where*) // end of [tr12env_find_d2itm(env0,k0)]
 
 (* ****** ****** *)
+//
+#implfun
+trans12_g1mac
+( env0,g1m0 ) =
+(
+trans11_g1mac
+(tr11 , g1m0)) where
+{
+val+
+TR12ENV
+(tr11, tenv, senv, denv) = env0
+} (*where*) // end of [trans12_g1mac(env0,g1m0)]
+//
+#implfun
+trans12_g1mac_apps
+(env0, g1f0, g1ms) =
+let
+val+
+TR12ENV
+(tr11, tenv, senv, denv) = env0
+in//let
+  trans11_g1mac_apps(tr11, g1f0, g1ms)
+end (*let*) // end of [trans12_g1mac_apps(env0,...)]
+//
+(* ****** ****** *)
 
 endloc (*local*) // end of [ local(tr12env) ]
 
