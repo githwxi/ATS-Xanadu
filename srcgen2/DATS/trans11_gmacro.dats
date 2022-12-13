@@ -200,6 +200,44 @@ val chr = token2schr(tok)
 |
 G1Eid0(gid) => G1Mid0(gid)
 //
+|
+G1Ea1pp
+(g1f0, g1e1) =>
+let
+val
+g1f0 = f0_gexp(g1f0)
+in
+  G1Mapps(g1f0, g1ms) where
+{
+val
+g1ms =
+(
+case+
+g1e1.node() of
+|
+G1Elist(g1es) => f0_g1es(g1es)
+|
+_(*non-G1Elist*) =>
+let
+val
+g1m1 =
+f0_gexp(g1e1) in list_sing(g1m1) end
+)
+}
+end (*let*) // end of [G1Ea1pp(...)]
+//
+|
+G1Ea2pp
+(g1f0, g1e1, g1e2) =>
+let
+val g1f0 = f0_gexp(g1f0)
+val g1e1 = f0_gexp(g1e1)
+val g1e2 = f0_gexp(g1e2)
+in//let
+G1Mapps
+(g1f0, list_pair(g1e1, g1e2))
+end (*let*) // end of [G1Ea2pp(...)]
+//
 ) where
 {
 val () =
@@ -208,7 +246,7 @@ prerrln("f0_gexp: g1e0 = ", g1e0)
 
 (* ****** ****** *)
 
-fun
+and
 f0_g1es
 ( g1es
 : g1explst): g1maclst =

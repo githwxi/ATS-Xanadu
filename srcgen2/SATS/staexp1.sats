@@ -264,9 +264,13 @@ g1mag_get_node(g1mag): g1mag_node
 #symload node with g1mag_get_node
 (* ****** ****** *)
 fun
+g1arg_make_node
+(loc:loc_t,nod:g1arg_node): g1arg
+fun
 g1mag_make_node
 (loc:loc_t,nod:g1mag_node): g1mag
 (* ****** ****** *)
+#symload g1arg with g1arg_make_node
 #symload g1mag with g1mag_make_node
 (* ****** ****** *)
 //
