@@ -2481,6 +2481,126 @@ local
 fun
 f0_id0
 ( loc0: loc_t
+, g1m0: g1mac): d1pat =
+let
+val-
+G1Mid0(sym) = g1m0 in
+d1pat(loc0, D1Pid0(sym)) end
+//
+(* ****** ****** *)
+//
+fun
+f0_int
+( loc0: loc_t
+, g1m0: g1mac): d2pat =
+let
+val-
+G1Mint(int) = g1m0 in
+d2pat(loc0, D2Pi00(int)) end
+//
+fun
+f0_btf
+( loc0: loc_t
+, g1m0: g1mac): d2pat =
+let
+val-
+G1Mbtf(btf) = g1m0 in
+d2pat(loc0, D2Pb00(btf)) end
+//
+fun
+f0_chr
+( loc0: loc_t
+, g1m0: g1mac): d2pat =
+let
+val-
+G1Mchr(chr) = g1m0 in
+d2pat(loc0, D2Pc00(chr)) end
+//
+fun
+f0_str
+( loc0: loc_t
+, g1m0: g1mac): d2pat =
+let
+val-
+G1Mstr(str) = g1m0 in
+d2pat(loc0, D2Ps00(str)) end
+//
+(* ****** ****** *)
+
+fun
+f0_apps
+( env0:
+! tr12env
+, loc0: loc_t
+, g1m0: g1mac): d2pat =
+let
+//
+val npf1 = (-1)
+//
+val-
+G1Mapps
+(g1f0, g1ms) = g1m0
+//
+val
+d2f0 =
+trd2pat_g1mac(env0,loc0,g1f0)
+val
+d2ps =
+trd2pat_g1maclst(env0,loc0,g1ms)
+//
+in//let
+d2pat_make_node
+(loc0, D2Pdapp(d2f0, npf1, d2ps))
+end (*let*) // end of [f0_apps(...)]
+
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+//
+#implfun
+trd2pat_g1mac
+( env0
+, loc0, g1m0) =
+(
+case+ g1m0 of
+//
+|
+G1Mid0 _ =>
+trans12_d1pat
+(env0, f0_id0(loc0, g1m0))
+//
+|
+G1Mint _ => f0_int(loc0, g1m0)
+|
+G1Mbtf _ => f0_btf(loc0, g1m0)
+|
+G1Mchr _ => f0_chr(loc0, g1m0)
+|
+G1Mstr _ => f0_str(loc0, g1m0)
+//
+|
+G1Mapps _ => f0_apps(env0, loc0, g1m0)
+//
+|
+_(*else*) => d2pat(loc0, D2Pg1mac(g1m0))
+) where
+{
+  val () =
+  prerrln("trd2pat_g1mac: loc0 = ", loc0)
+  val () =
+  prerrln("trd2pat_g1mac: g1m0 = ", g1m0)
+} (*where*) // end of [trd2pat_g1mac(...)]
+//
+end (*local*) // end of [local(trd2pat_g1mac)]
+
+(* ****** ****** *)
+local
+
+(* ****** ****** *)
+//
+fun
+f0_id0
+( loc0: loc_t
 , g1m0: g1mac): d1exp =
 let
 val-
@@ -2593,6 +2713,46 @@ _(*else*) => d2exp(loc0, D2Eg1mac(g1m0))
 //
 end (*local*) // end of [local(trd2exp_g1mac)]
 
+(* ****** ****** *)
+//
+#implfun
+trd2pat_g1maclst
+( env0, loc0, d1es ) =
+(
+list_map_e1nv
+<x0><y0>< e1 >
+(d1es , env0)) where
+{
+//
+#typedef x0 = g1mac
+#typedef y0 = d2pat
+#vwtpdef e1 = tr12env
+//
+#impltmp
+map$fopr_e1nv
+<x0><y0>< e1 >(x0, e1) = trd2pat_g1mac(e1,loc0,x0)
+} (*where*) // end of [ trd2pat_g1maclst(env0,...) ]
+//
+(* ****** ****** *)
+//
+#implfun
+trd2exp_g1maclst
+( env0, loc0, d1es ) =
+(
+list_map_e1nv
+<x0><y0>< e1 >
+(d1es , env0)) where
+{
+//
+#typedef x0 = g1mac
+#typedef y0 = d2exp
+#vwtpdef e1 = tr12env
+//
+#impltmp
+map$fopr_e1nv
+<x0><y0>< e1 >(x0, e1) = trd2exp_g1mac(e1,loc0,x0)
+} (*where*) // end of [ trd2exp_g1maclst(env0,...) ]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans12_dynexp.dats] *)
