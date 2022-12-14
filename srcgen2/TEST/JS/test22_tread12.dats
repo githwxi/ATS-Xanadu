@@ -171,6 +171,8 @@
 #include
 "./../../DATS/gmacro1.dats"
 #include
+"./../../DATS/gmacro1_print0.dats"
+#include
 "./../../DATS/trans11_myenv0.dats"
 #include
 "./../../DATS/trans11_gmacro.dats"

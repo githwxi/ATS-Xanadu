@@ -345,16 +345,6 @@ d2parsed_from_trans
 ( dpar : d1parsed ): (d2parsed)
 //
 (* ****** ****** *)
-fun
-trs2exp_g1mac
-(loc0:loc_t,g1m0:g1mac):(s2exp)
-fun
-trd2pat_g1mac
-(loc0:loc_t,g1m0:g1mac):(d2pat)
-fun
-trd2exp_g1mac
-(loc0:loc_t,g1m0:g1mac):(d2exp)
-(* ****** ****** *)
 //
 fun
 tr12env_make_nil
@@ -842,10 +832,40 @@ trans12_d1tcnlst
 //
 (* ****** ****** *)
 //
+fun
+trs2exp_g1mac
+( env0
+: !tr12env, loc_t, g1mac): s2exp
+fun
+trd2pat_g1mac
+( env0
+: !tr12env, loc_t, g1mac): d2pat
+fun
+trd2exp_g1mac
+( env0
+: !tr12env, loc_t, g1mac): d2exp
+//
+fun
+trs2exp_g1maclst
+( env0: !tr12env
+, loc0
+: loc_t, g1ms: g1maclst): s2explst
+fun
+trd2pat_g1maclst
+( env0: !tr12env
+, loc0
+: loc_t, g1ms: g1maclst): d2patlst
+fun
+trd2exp_g1maclst
+( env0: !tr12env
+, loc0
+: loc_t, g1ms: g1maclst): d2explst
+//
+(* ****** ****** *)
 (*
 // HX-2022-12-12:
 // These functions are built
-// on top of theri trans11-version
+// on top of their trans11-version
 *)
 //
 fun

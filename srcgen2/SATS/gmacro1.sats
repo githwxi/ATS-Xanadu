@@ -228,6 +228,17 @@ trans11_gmdef
 //
 (* ****** ****** *)
 //
+(*
+fun
+trs1exp_g1mac(g1m0: g1mac): s1exp
+fun
+trd1exp_g1mac(g1m0: g1mac): d1exp
+fun
+trd1pat_g1mac(g1m0: g1mac): d1pat
+*)
+//
+(* ****** ****** *)
+//
 fun
 trg1mac_s1exp(s1e0: s1exp): g1mac
 fun

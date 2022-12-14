@@ -1758,7 +1758,8 @@ let
 val
 g1ms = trg1mac_d1explst(d1es) in//let
 trd2exp_g1mac
-( d1e0.lctn()
+( env0
+, d1e0.lctn()
 , trans12_g1mac_apps(env0, g1f0, g1ms))
 end (*let*)
 //
@@ -2471,6 +2472,127 @@ trans12_d1expopt
 ( env0, dopt ) =
 optn_trans12_fnp(env0, dopt, trans12_d1exp)
 //
+(* ****** ****** *)
+
+local
+
+(* ****** ****** *)
+//
+fun
+f0_id0
+( loc0: loc_t
+, g1m0: g1mac): d1exp =
+let
+val-
+G1Mid0(sym) = g1m0 in
+d1exp(loc0, D1Eid0(sym)) end
+//
+(* ****** ****** *)
+//
+fun
+f0_int
+( loc0: loc_t
+, g1m0: g1mac): d2exp =
+let
+val-
+G1Mint(int) = g1m0 in
+d2exp(loc0, D2Ei00(int)) end
+//
+fun
+f0_btf
+( loc0: loc_t
+, g1m0: g1mac): d2exp =
+let
+val-
+G1Mbtf(btf) = g1m0 in
+d2exp(loc0, D2Eb00(btf)) end
+//
+fun
+f0_chr
+( loc0: loc_t
+, g1m0: g1mac): d2exp =
+let
+val-
+G1Mchr(chr) = g1m0 in
+d2exp(loc0, D2Ec00(chr)) end
+//
+fun
+f0_str
+( loc0: loc_t
+, g1m0: g1mac): d2exp =
+let
+val-
+G1Mstr(str) = g1m0 in
+d2exp(loc0, D2Es00(str)) end
+//
+(* ****** ****** *)
+
+fun
+f0_apps
+( env0:
+! tr12env
+, loc0: loc_t
+, g1m0: g1mac): d2exp =
+let
+//
+val npf1 = (-1)
+//
+val-
+G1Mapps
+(g1f0, g1ms) = g1m0
+//
+val
+d2f0 =
+trd2exp_g1mac(env0,loc0,g1f0)
+val
+d2es =
+trd2exp_g1maclst(env0,loc0,g1ms)
+//
+in//let
+d2exp_make_node
+(loc0, D2Edapp(d2f0, npf1, d2es))
+end (*let*) // end of [f0_apps(...)]
+
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+//
+#implfun
+trd2exp_g1mac
+( env0
+, loc0, g1m0) =
+(
+case+ g1m0 of
+//
+|
+G1Mid0 _ =>
+trans12_d1exp
+(env0, f0_id0(loc0, g1m0))
+//
+|
+G1Mint _ => f0_int(loc0, g1m0)
+|
+G1Mbtf _ => f0_btf(loc0, g1m0)
+|
+G1Mchr _ => f0_chr(loc0, g1m0)
+|
+G1Mstr _ => f0_str(loc0, g1m0)
+//
+|
+G1Mapps _ => f0_apps(env0, loc0, g1m0)
+//
+|
+_(*else*) => d2exp(loc0, D2Eg1mac(g1m0))
+) where
+{
+  val () =
+  prerrln("trd2exp_g1mac: loc0 = ", loc0)
+  val () =
+  prerrln("trd2exp_g1mac: g1m0 = ", g1m0)
+} (*where*) // end of [trd2exp_g1mac(...)]
+//
+end (*local*) // end of [local(trd2exp_g1mac)]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans12_dynexp.dats] *)
