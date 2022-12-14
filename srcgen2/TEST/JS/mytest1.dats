@@ -8,6 +8,9 @@
 #define add(x, y) = x + y
 #define mul(x, y) = x * y
 (* ****** ****** *)
+fun
+badd(x, y) = add(y, x)
+(* ****** ****** *)
 fun square(x) = mul(x, x)
 (* ****** ****** *)
 ////

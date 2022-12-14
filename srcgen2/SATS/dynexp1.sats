@@ -290,11 +290,16 @@ d1pat_node =
 //
 |
 D1Pannot of
-( d1pat, s1exp(*annot*) ) // HX: type-annot
+(d1pat, s1exp(*annot*))//HX:type-annot
 //
 |
 D1Pqual0 of
-( token(*NS*), d1pat(*dpid*) ) //qual-d1pat
+(token(*NS*), d1pat(*dpid*))//qual-d1pat
+//
+(*
+|
+D1Pg1mac of (g1mac) // HX: temp or error!
+*)
 //
 |
 D1Pnone0 of ((*void*)) | D1Pnone1 of (d0pat)
@@ -559,20 +564,25 @@ D1Etry0 of
 //
 |
 D1Eannot of
-( d1exp, s1exp(*annot*) ) // HX: type-annot
+(d1exp, s1exp(*annot*))//HX:type-annot
 //
 |
 D1Equal0 of
-( token(*NS*), d1exp(*deid*) ) //qual-d1exp
+(token(*NS*), d1exp(*deid*))//qual-d1exp
+//
+(*
+|
+D1Eg1mac of (g1mac) // HX: temp or error!
+*)
 //
 | // HX: for temp-names that are
 D1Eextnam of (token, g1nam) // to be expanded
 |
-D1Eexists of // HX-2021-01-14: $exists{..}..{..}
-(token, d1explst(*D1Esarglst*), d1exp) // (d1exp)
+D1Eexists of
+( // HX-2021-01-14: $exists{..}..{..}(d1exp)
+token, d1explst(*D1Esarglst*), d1exp(*scope*))
 //
-|
-D1Enone0 of ((*void*)) | D1Enone1 of (d0exp)
+| D1Enone0 of ((*void*)) | D1Enone1 of (d0exp)
 //
 |
 D1Eerrck of (sint(*lvl*), d1exp)//HX:tread01-error

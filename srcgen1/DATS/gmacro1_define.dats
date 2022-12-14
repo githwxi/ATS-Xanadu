@@ -1582,7 +1582,7 @@ d2exp_make_node
 (loc0, D2Edapp(d2f0, (~1), d2es))
 end
 //
-end // end of [auxapp]
+end // end of [auxapps]
 //
 in
 //
