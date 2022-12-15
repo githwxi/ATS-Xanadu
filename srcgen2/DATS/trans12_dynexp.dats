@@ -2559,6 +2559,92 @@ optn_trans12_fnp(env0, dopt, trans12_d1exp)
 //
 (* ****** ****** *)
 
+#implfun
+trans12_d1expseq
+(env0, loc0, d1es) =
+let
+//
+(*
+val () =
+prerrln("trans12_d1expseq: loc0 = ", loc0)
+val () =
+prerrln("trans12_d1expseq: d1es = ", d1es)
+*)
+//
+fun
+auxlst1
+( env0:
+! tr12env
+, d1es
+: d1explst)
+: (d2explst, d2exp) =
+(
+case+ d1es of
+|
+list_nil() =>
+let
+val
+d2e1 =
+d2exp_none0(loc0)
+in//let
+(list_nil(), d2e1) end
+|
+list_cons
+(d1e1, d1es) =>
+auxlst2
+(env0, d1e1, d1es, list_vt_nil())
+)
+//
+and
+auxlst2
+( env0:
+! tr12env
+, d1e1
+: d1exp
+, d1es
+: d1explst
+, d2es
+: d2explst_vt)
+: (d2explst, d2exp) =
+(
+case+ d1es of
+|
+list_nil() =>
+(d2es, d2e1) where
+{
+val d2e1 =
+trans12_d1exp(env0, d1e1)
+val d2es =
+list_vt2t(list_vt_reverse0(d2es))
+}
+|
+list_cons
+(d1e2, d1es) =>
+(
+auxlst2
+(env0, d1e2, d1es, d2es)) where
+{
+val d2e1 =
+trans12_d1exp(env0, d1e1)
+val d2es = list_vt_cons(d2e1, d2es)
+}
+) (*case+*) // end of [auxlst2(...)]
+//
+val (d2es, d2e1) = auxlst1(env0, d1es)
+//
+in//let
+//
+case+ d2es of
+|
+list_nil _ => d2e1
+|
+list_cons _ =>
+d2exp_make_node(loc0, D2Eseqn(d2es, d2e1))
+//
+end (*let*) // end of [trans12_dexpseq(...)]
+
+(* ****** ****** *)
+
 local
 
 (* ****** ****** *)
