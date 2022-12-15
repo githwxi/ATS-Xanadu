@@ -3,19 +3,20 @@
 #infixr -> of 10
 *)
 (* ****** ****** *)
-#define one 1
-#define two 2
+#define ONE 1
+#define TWO 2
 #define add(x, y) = x + y
 #define mul(x)(y) = x * y
+#define addmul(x,y)(z) = (x*z + y*z)
+#define muladd(x)(y,z) = (x*y + x*z)
 (* ****** ****** *)
-(*
+val one = ONE
+val two = TWO
+(* ****** ****** *)
 fun
 badd(x, y) = add(y, x)
-*)
 (* ****** ****** *)
 fun square(x) = mul(x)(x)
-(* ****** ****** *)
-////
 (* ****** ****** *)
 datatype
 AB2(a:t0, i0) =

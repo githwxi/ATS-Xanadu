@@ -883,6 +883,11 @@ d2p0.node() of
 |D2Pvar _ => d2p0
 |D2Pany _ => d2p0
 //
+|D2Pi00 _ => d2p0
+|D2Pb00 _ => d2p0
+|D2Pc00 _ => d2p0
+|D2Ps00 _ => d2p0
+//
 |D2Pint _ => d2p0
 |D2Pbtf _ => d2p0
 |D2Pchr _ => d2p0
@@ -1211,6 +1216,11 @@ case+
 d2e0.node() of
 //
 |D2Evar _ => d2e0
+//
+|D2Ei00 _ => d2e0
+|D2Eb00 _ => d2e0
+|D2Ec00 _ => d2e0
+|D2Es00 _ => d2e0
 //
 |D2Eint _ => d2e0
 |D2Ebtf _ => d2e0

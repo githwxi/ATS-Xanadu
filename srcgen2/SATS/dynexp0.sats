@@ -868,12 +868,22 @@ D0Cstatic of (token, d0ecl)
 |
 D0Cextern of (token, d0ecl)
 //
+(*
+HX-2022-12-15:
+This one uses dyn-binding.
+Level-1 resolution is performed.
+*)
 |
 D0Cdefine of
 (
 token(*tknd*),
 g0eid(* fun *),
 g0maglst(*arg*), g0edf(*def*))
+(*
+HX-2022-12-15:
+This one uses sta-binding.
+Level-2 resolution is performed.
+*)
 |
 D0Cmacdef of
 (
