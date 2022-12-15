@@ -142,7 +142,7 @@ G1Mapps of
 , g1maclst(*args*))
 (* ****** ****** *)
 |
-G1Mlist of g1maclst
+G1Mlist of (g1maclst)
 (* ****** ****** *)
 //
 |G1Msubs of
