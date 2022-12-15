@@ -141,6 +141,9 @@ G1Mapps of
 ( g1mac(*fun*)
 , g1maclst(*args*))
 (* ****** ****** *)
+|
+G1Mlist of g1maclst
+(* ****** ****** *)
 //
 |G1Msubs of
 (g1mac, g1env(*subs*))

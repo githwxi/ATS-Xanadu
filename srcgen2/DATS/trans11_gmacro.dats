@@ -280,10 +280,42 @@ in//let
   (g1f0, list_pair(g1e1, g1e2))
 end (*let*) // end of [G1Ea2pp(...)]
 //
+|
+G1Elist(g1es) =>
+(
+case+ g1es of
+|
+list_nil() => G1Mnone0()
+|
+list_cons(g1e1, g1es) =>
+let
+val g1m1 = f0_gexp(g1e1)
+in//let
+G1Mlist
+(list_cons(g1m1, f0_g1es(g1es)))
+end (*let*) // end-(list_cons(...))
+)
+//
+and
+f0_g1es
+( g1es
+: g1explst): g1maclst =
+(
+list_map(g1es)) where
+{
+#typedef x0 = g1exp
+#typedef y0 = g1mac
+#impltmp map$fopr<x0><y0> = f0_gexp
+} (*where*) // end of [f0_g1es(...)]
+//
 ) where
 {
-val () =
-prerrln("f0_gexp: g1e0 = ", g1e0)
+  val
+  loc0 = g1e0.lctn()
+  val () =
+  prerrln("f0_gexp: loc0 = ", loc0)
+  val () =
+  prerrln("f0_gexp: g1e0 = ", g1e0)
 } (*where*) // end of [f0_gexp(g1e0)]
 
 (* ****** ****** *)

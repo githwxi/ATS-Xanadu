@@ -95,6 +95,10 @@ G1Mapps(g1f0,g1ms) =>
 print("G1Mapps(", g1f0, ";", g1ms, ")")
 //
 |
+G1Mlist(g1ms) =>
+print("G1Mlist(", g1ms, ")")
+//
+|
 G1Msubs(g1e1,genv) =>
 print("G1Msubs(", g1e1, ";", genv, ")")
 //
