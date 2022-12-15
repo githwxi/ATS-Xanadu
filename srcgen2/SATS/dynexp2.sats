@@ -222,6 +222,9 @@ S2E = "./staexp2.sats"
 (* ****** ****** *)
 #typedef d2eclistopt = optn(d2eclist)
 (* ****** ****** *)
+#vwtpdef d2patlst_vt = list_vt(d2pat)
+#vwtpdef d2explst_vt = list_vt(d2exp)
+(* ****** ****** *)
 //
 datatype
 d2lab(x0:type) =

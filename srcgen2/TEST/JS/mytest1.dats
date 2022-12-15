@@ -5,7 +5,8 @@
 (* ****** ****** *)
 #define ONE 1
 #define TWO 2
-#define add(x, y) = x + y
+(* ****** ****** *)
+#define add(x)(y) = x + y
 #define mul(x)(y) = x * y
 #define
 addmul(x,y)(z) = (x*z + y*z)
@@ -16,10 +17,14 @@ val one = ONE
 val two = TWO
 (* ****** ****** *)
 fun
-badd(x, y) = add(y, x)
+badd(x, y) = add y x
 (* ****** ****** *)
 //
-fun square(x) = mul(x)(x)
+fun
+square(x) = mul(x)(x)
+//
+fun sumsqr(x, y) =
+(square(x) + square(y))
 //
 fun sqrsum(x, y) =
 let
@@ -31,8 +36,6 @@ datatype
 AB2(a:t0, i0) =
 | A(a, 0) of (a)
 | {n:int} B(a, n) of (a, 0)
-(* ****** ****** *)
-////
 (* ****** ****** *)
 //
 (*
