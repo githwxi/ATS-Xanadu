@@ -90,6 +90,9 @@ _(*TRANS12*) = "./trans12.dats"
 #symload name with d2var_get_name
 #symload stmp with d2var_get_stmp
 (* ****** ****** *)
+#symload node with d2pat_get_node
+#symload node with d2exp_get_node
+(* ****** ****** *)
 //
 (*
 HX-2020-07:
@@ -386,13 +389,20 @@ gopt =
 tr12env_find_g1mac(env0,sym1)
 //
 in//let
+//
 case+ gopt of
-| ~optn_vt_nil() =>
-(
-  f0_id0_d1pid(env0, d1p0))
-| ~optn_vt_cons(gmac) =>
-(
-  d2pat(loc0, D2Pg1mac(gmac)))
+| ~
+optn_vt_nil() =>
+f0_id0_d1pid(env0, d1p0)
+| ~
+optn_vt_cons(gmac) =>
+let
+val
+gmac =
+trans12_g1mac(env0, gmac)
+in//let
+trd2pat_g1mac(env0, loc0, gmac) end
+//
 end (*let*) // end of [f0_id0(env0,d1p0)]
 //
 and
@@ -645,7 +655,7 @@ println("f0_app1: s2vs = ", s2vs)
 *)
 *)
 //
-in
+in//let
   my_d2pat_sapp(loc0, d2f0, s2vs)
 end (*let*) // end of [D1Psarg(s1as)]
 //
@@ -663,16 +673,86 @@ f0_a1pp_else
 , d1p0: d1pat): d2pat =
 let
 //
+val loc0 = d1p0.lctn()
+//
 val
-loc0 = d1p0.lctn()
+D1Pa1pp
+(d1f0,d1p1) = d1p0.node()
+//
+val d2f0 =
+trans12_d1pat(env0, d1f0)
+//
+in//let
+//
+case+
+d2f0.node() of
+|
+D2Pg1mac _ =>
+f0_a1pp_els1(env0, d1p0, d2f0)
+|
+_(*non-D2Eg1mac*) =>
+f0_a1pp_els2(env0, d1p0, d2f0)
+//
+end (*let*) // end of [f0_a1pp_else(_,_)]
+//
+and
+f0_a1pp_els1
+( env0:
+! tr12env
+, d1p0: d1pat
+, d2f0: d2pat): d2pat =
+let
+//
+val
+D1Pa1pp
+(d1f0,d1p1) = d1p0.node()
+//
+val g1f0 =
+(
+case-
+d2f0.node() of
+|
+D2Pg1mac(g1f0) => g1f0): g1mac
+//
+val d1ps =
+(
+case+
+d1p1.node() of
+|
+D1Pl1st(d1ps) => d1ps
+|
+D1Pl2st(dps1, dps2) =>
+list_append(dps1, dps2)
+|
+_(*otherwise*) => list_sing(d1p1)
+) : d1patlst // end-of-[val(d1ps)]
+//
+in//let
+//
+let
+val
+g1ms = trg1mac_d1patlst(d1ps) in//let
+trd2pat_g1mac
+( env0
+, d1p0.lctn()
+, trans12_g1mac_apps(env0, g1f0, g1ms))
+end (*let*)
+//
+end (*let*) // end of [f0_a1pp_els1(_,_)]
+//
+and
+f0_a1pp_els2
+( env0:
+! tr12env
+, d1p0: d1pat
+, d2f0: d2pat): d2pat =
+let
+//
+val loc0 = d1p0.lctn()
 //
 val-
 D1Pa1pp
-( d1f0
-, d1p1) = d1p0.node()
-//
-val
-d2f0 = f0_main(env0, d1f0)
+(d1f0, d1p1) = d1p0.node()
 //
 val npf1 =
 (
@@ -717,7 +797,7 @@ end (*let*) // end-of(non-D2Plist)
 //
 in//let
   my_d2pat_dapp(loc0, d2f0, npf1, d2ps)
-end (*let*) // end of [f0_a1pp_else(_, _)]
+end (*let*) // end of [f0_a1pp_els2(_, _)]
 //
 (* ****** ****** *)
 //
@@ -1375,12 +1455,17 @@ tr12env_find_g1mac(env0,sym1)
 //
 in//let
 case+ gopt of
-| ~optn_vt_nil() =>
-(
-  f0_id0_d1eid(env0, d1e0))
-| ~optn_vt_cons(gmac) =>
-(
-  d2exp(loc0, D2Eg1mac(gmac)))
+| ~
+optn_vt_nil() =>
+f0_id0_d1eid(env0, d1e0)
+| ~
+optn_vt_cons(gmac) =>
+let
+val
+gmac =
+trans12_g1mac(env0, gmac)
+in//let
+trd2exp_g1mac(env0, loc0, gmac) end
 end (*let*) // end of [f0_id0(env0,d1e0)]
 //
 and
@@ -1749,8 +1834,8 @@ D1El1st(d1es) => d1es
 D1El2st(des1, des2) =>
 list_append(des1, des2)
 |
-_(*non-D2Elist*) => list_sing(d1e1)
-) : d1explst // end-of-[ val(d1es) ]
+_(*otherwise*) => list_sing(d1e1)
+) : d1explst // end-of-[val(d1es)]
 //
 in//let
 //
@@ -2594,6 +2679,7 @@ _(*else*) => d2pat(loc0, D2Pg1mac(g1m0))
 end (*local*) // end of [local(trd2pat_g1mac)]
 
 (* ****** ****** *)
+
 local
 
 (* ****** ****** *)

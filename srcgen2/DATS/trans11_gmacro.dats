@@ -287,13 +287,16 @@ fun
 f0_gmag
 (g1ma: g1mag): g1ids =
 (
-case-
+case+
 g1ma.node() of
+//
 (*
-|G1MAGsarg(g1as) => list_nil()
+|G1MAGnone() => list_nil()
 *)
+|G1MAGsarg(g1as) => f0_g1as(g1as)
 |G1MAGdarg(g1as) => f0_g1as(g1as)
-) (*case-*) // end of [f0_mag(g1ma)]
+//
+) (*case+*) // end of [f0_gmag(g1ma)]
 
 (* ****** ****** *)
 
