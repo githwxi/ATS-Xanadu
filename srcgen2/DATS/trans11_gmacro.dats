@@ -427,8 +427,28 @@ trans11_g1mac_subs
   val genv =
   g1env_addlst(genv, gmas, g1ms)
 }
+//
+|
+G1Msubs
+(g1f1, genv) =>
+(
+case+ g1f1 of
+|
+G1Mlam0
+(gmas, body) =>
+(
+trans11_g1mac_subs
+(env0, body, genv)) where
+{
+  val genv =
+  g1env_addlst(genv, gmas, g1ms)
+}
 | _(*non-G1Mlam*) => G1Mapps(g1f0, g1ms)
 )
+//
+| _(*non-G1Mlam*) => G1Mapps(g1f0, g1ms)
+//
+) (*case+*) // end of [f0_apps_els2(...)]
 
 (* ****** ****** *)
 //
