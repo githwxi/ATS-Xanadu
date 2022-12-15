@@ -296,18 +296,6 @@ G1Mlist
 end (*let*) // end-(list_cons(...))
 )
 //
-and
-f0_g1es
-( g1es
-: g1explst): g1maclst =
-(
-list_map(g1es)) where
-{
-#typedef x0 = g1exp
-#typedef y0 = g1mac
-#impltmp map$fopr<x0><y0> = f0_gexp
-} (*where*) // end of [f0_g1es(...)]
-//
 ) where
 {
   val
