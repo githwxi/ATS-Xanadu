@@ -88,15 +88,22 @@ list@(g1id0, g1mac)
 in//local
 
 (* ****** ****** *)
-
+//
+fun
+g1env_decode
+(genv: g1env):
+list@(g1id0, g1mac) = (genv)
+//
+(* ****** ****** *)
+//
 fun
 g1env_nil
 ((*void*)): g1env = list_nil()
-
+//
 (* ****** ****** *)
 
 fun
-g1env_extends
+g1env_addlst
 ( genv: g1env
 , gids: g1ids
 , g1ms: g1maclst) =
@@ -113,7 +120,7 @@ list_nil() => genv
 |
 list_cons
 (g1m1, g1ms) =>
-g1env_extends
+g1env_addlst
 (genv, gids, g1ms) where
 {
 val
@@ -121,7 +128,7 @@ genv =
 list_cons(@(gid1, g1m1), genv) }
 )
 ) (*case+*)
-// end of [g1env_extends(genv,...)]
+// end of [g1env_addlst(genv,...)]
 
 (* ****** ****** *)
 //
@@ -136,15 +143,32 @@ list_nil() =>
 optn_vt_nil()
 |
 list_cons((x1, v1), genv) =>
-( if
-  (x0 = x1)
-  then optn_vt_cons(v1)
-  else g1env_search_opt(genv, x0)))
+(
+if
+(x0 = x1)
+then optn_vt_cons(v1)
+else g1env_search_opt(genv, x0)))
 //
 (* ****** ****** *)
 
 end (*local*) // end of [local(g1env)]
 
+(* ****** ****** *)
+//
+#implfun
+g1env_fprint
+( out, genv ) =
+let
+val
+genv =
+g1env_decode(genv)
+in//let
+print("G1ENV(", genv, ")")
+end where
+{
+  #impltmp g_print$out<>() = out
+} (*where*) // end of [g1env_fprint]
+//
 (* ****** ****** *)
 
 local
@@ -401,7 +425,7 @@ trans11_g1mac_subs
   val genv =
   g1env_nil((*void*))
   val genv =
-  g1env_extends(genv, gmas, g1ms)
+  g1env_addlst(genv, gmas, g1ms)
 }
 | _(*non-G1Mlam*) => G1Mapps(g1f0, g1ms)
 )
