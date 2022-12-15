@@ -107,26 +107,29 @@ D1E = "./dynexp1.sats"
 //
 datatype g1mac =
 //
-| G1Mint of sint
-| G1Mbtf of bool
-| G1Mchr of char
-| G1Mflt of dflt
-| G1Mstr of strn
+(* ****** ****** *)
+|G1Mint of sint
+|G1Mbtf of bool
+|G1Mchr of char
+|G1Mflt of dflt
+|G1Mstr of strn
+(* ****** ****** *)
 //
-| G1Mid0 of g1id0
+|G1Mid0 of g1id0
 //
 (* ****** ****** *)
 //
-| G1Msexp of s1exp
-| G1Mdpat of d1pat
-| G1Mdexp of d1exp
+|G1Msexp of s1exp
+|G1Mdpat of d1pat
+|G1Mdexp of d1exp
 //
 (* ****** ****** *)
 //
-| G1Mif0 of
-  ( g1mac(*cond*)
-  , g1mac(*then*)
-  , g1mac(*else*) )
+|
+G1Mif0 of
+( g1mac(*cond*)
+, g1mac(*then*)
+, g1mac(*else*) )
 //
 (* ****** ****** *)
 |
@@ -139,18 +142,17 @@ G1Mapps of
 , g1maclst(*args*))
 (* ****** ****** *)
 //
-| G1Msubs of
-  ( g1mac
-  , g1env(*subs*) )
+|G1Msubs of
+(g1mac, g1env(*subs*))
 //
 (* ****** ****** *)
-//
-| G1Mnone0 of () // HX: EMPTY
-| G1Mnone1 of (g1exp) // HX: ERROR!
+|G1Mnone0 of () //HX:EMPTY!
+|G1Mnone1 of g1exp //HX:ERROR!
+(* ****** ****** *)
 //
 where
 {
-#typedef g1maclst = list(g1mac) // lists
+#typedef g1maclst = list(g1mac)
 }
 //
 (* ****** ****** *)
