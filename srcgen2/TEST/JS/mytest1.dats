@@ -97,19 +97,19 @@ datatype AB1 = A | B
 datatype
 AB2(x:type) =
 | A of (x) | B of (x, x)
-////
+//
 datatype
 AB3
 (a:type, n:sint) =
 | A of (a) | B of (a, a)
 //
 (* ****** ****** *)
-////
+//
 (* ****** ****** *)
 datatype A(int) =
 | A("0") of () | B(1) of ()
 (* ****** ****** *)
-////
+//
 (* ****** ****** *)
 //
 var a1: int = 0

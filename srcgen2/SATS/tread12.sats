@@ -93,6 +93,8 @@ D2E = "./dynexp2.sats"
 #typedef d2gpt = $D2E.d2gpt
 #typedef d2cls = $D2E.d2cls
 (* ****** ****** *)
+#typedef d2arg = $D2E.d2arg
+(* ****** ****** *)
 #typedef d2ecl = $D2E.d2ecl
 (* ****** ****** *)
 #typedef s2qag = $D2E.s2qag
@@ -116,6 +118,8 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 #typedef d2gualst = $D2E.d2gualst
 #typedef d2clslst = $D2E.d2clslst
+(* ****** ****** *)
+#typedef d2arglst = $D2E.d2arglst
 (* ****** ****** *)
 #typedef d2eclist = $D2E.d2eclist
 (* ****** ****** *)
@@ -215,6 +219,8 @@ fun tread12_d2gua: ftread12(d2gua)
 fun tread12_d2gpt: ftread12(d2gpt)
 fun tread12_d2cls: ftread12(d2cls)
 (* ****** ****** *)
+fun tread12_d2arg: ftread01(d2arg)
+(* ****** ****** *)
 fun tread12_d2ecl: ftread12(d2ecl)
 (* ****** ****** *)
 fun tread12_s2qag: ftread12(s2qag)
@@ -237,6 +243,8 @@ fun tread12_f2arglst: ftread12(f2arglst)
 (* ****** ****** *)
 fun tread12_d2gualst: ftread12(d2gualst)
 fun tread12_d2clslst: ftread12(d2clslst)
+(* ****** ****** *)
+fun tread12_d2arglst: ftread12(d2arglst)
 (* ****** ****** *)
 fun tread12_d2eclist: ftread12(d2eclist)
 (* ****** ****** *)
