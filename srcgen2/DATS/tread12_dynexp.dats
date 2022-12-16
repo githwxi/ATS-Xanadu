@@ -2121,6 +2121,65 @@ endlet // end-of-[ D2CLScls(_,_,_) ]
 (* ****** ****** *)
 //
 #implfun
+tread12_d2arg
+  (darg, err) =
+(
+case+
+darg.node() of
+|
+D2ARGsta0
+(s2vs, s2es) =>
+let
+//
+val e00 = err
+//
+val s2es =
+tread12_s2explst(s2es, err)
+//
+in//let
+if
+(e00=err)
+then darg else
+d2arg_make_node
+(darg.lctn(),D2ARGsta0(s2vs,s2es))
+end (*let*) // end of [D2ARGsta0(...)]
+|
+D2ARGdyn1(s2e1) =>
+let
+//
+val e00 = err
+//
+val
+s2e1 =
+tread12_s2exp(s2e1, err)
+//
+in//let
+if
+(e00=err)
+then darg else
+d2arg(darg.lctn(), D2ARGdyn1(s2e1))
+end (*let*) // end of [D2ARGdyn1(...)]
+|
+D2ARGdyn2(npf1, s2es) =>
+let
+//
+val e00 = err
+//
+val s2es =
+tread12_s2explst(s2es, err)
+//
+in//let
+if
+(e00=err)
+then darg else
+d2arg_make_node
+(darg.lctn(), D2ARGdyn2(npf1,s2es))
+end (*let*) // end of [D2ARGdyn2(...)]
+) (*case+*)//end-of-[tread12_d2arg(darg,err)]
+//
+(* ****** ****** *)
+//
+#implfun
 tread12_s2res
   (sres, err) =
 (
@@ -2211,6 +2270,13 @@ list_tread12_fnp(d2gs, err, tread12_d2gua)
 tread12_d2clslst
   (  dcls, err  ) =
 list_tread12_fnp(dcls, err, tread12_d2cls)
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_d2arglst
+  (  d2as, err  ) =
+list_tread12_fnp(d2as, err, tread12_d2arg)
 //
 (* ****** ****** *)
 

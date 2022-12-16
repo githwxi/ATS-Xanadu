@@ -155,6 +155,20 @@ end (*let*) // end of [d2ecl_abssort_errck]
 (* ****** ****** *)
 //
 fun
+d2ecl_stacst0_errck
+( loc0: loc_t
+, s2c1: s2cst
+, s2t2: sort2): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1,d2ecl(loc0,D2Cstacst0(s2c1,s2t2)))
+end (*let*) // end of [d2ecl_stacst0_errck]
+//
+(* ****** ****** *)
+//
+fun
 d2ecl_sexpdef_errck
 ( loc0: loc_t
 , s2c1: s2cst
@@ -329,6 +343,9 @@ D2Clocal0 _ => f0_local0(d2cl, err)
 D2Cabssort _ => f0_abssort(d2cl, err)
 //
 |
+D2Cstacst0 _ => f0_stacst0(d2cl, err)
+//
+|
 D2Csortdef _ => f0_sortdef(d2cl, err)
 |
 D2Csexpdef _ => f0_sexpdef(d2cl, err)
@@ -465,6 +482,31 @@ if
 then dcl else
 d2ecl_abssort_errck( dcl.lctn(), sym1 )
 end (*let*) // end of [ f0_abssort(dcl,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_stacst0
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D2Cstacst0
+(s2c1, s2t2) = dcl.node()
+//
+val
+s2t2 = tread12_sort2(s2t2, err)
+//
+in//let
+if
+(e00=err)
+then dcl else
+d2ecl_stacst0_errck(loc, s2c1, s2t2)
+end (*let*) // end of [ f0_stacst0(dcl,err) ]
 //
 (* ****** ****** *)
 //
