@@ -1014,6 +1014,41 @@ endlet // end-of-[tread12_d2fundcl(out,dfun)]
 (* ****** ****** *)
 //
 #implfun
+tread12_d2cstdcl
+  (dcst, err) =
+let
+//
+val e00 = err
+//
+val loc = dcst.lctn()
+//
+val
+dpid = d2cstdcl_get_dpid(dcst)
+val
+darg = d2cstdcl_get_darg(dcst)
+val
+sres = d2cstdcl_get_sres(dcst)
+val
+dres = d2cstdcl_get_dres(dcst)
+//
+val
+darg =
+tread12_d2arglst(darg, err)
+val
+sres = tread12_s2res(sres, err)
+val
+dres = tread12_teqd2exp(dres, err)
+//
+in//let
+if
+(e00=err)
+then (dcst)
+else d2cstdcl(loc, dpid, darg, sres, dres)
+endlet // end-of-[tread12_d2cstdcl(out,dcst)]
+//
+(* ****** ****** *)
+//
+#implfun
 tread12_d2eclist
   (  dcls, err  ) =
 list_tread12_fnp(dcls, err, tread12_d2ecl)
