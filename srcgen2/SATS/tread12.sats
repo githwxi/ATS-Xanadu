@@ -289,6 +289,10 @@ fun sort2_fpemsg(FILR, sort2): void
 fun s2exp_fpemsg(FILR, s2exp): void
 fun l2s2e_fpemsg(FILR, l2s2e): void
 (* ****** ****** *)
+fun sort2lst_fpemsg(FILR, sort2lst): void
+fun s2explst_fpemsg(FILR, s2explst): void
+fun l2s2elst_fpemsg(FILR, l2s2elst): void
+(* ****** ****** *)
 fun d2pat_fpemsg(FILR, d2pat): void
 fun d2exp_fpemsg(FILR, d2exp): void
 fun l2d2p_fpemsg(FILR, l2d2p): void

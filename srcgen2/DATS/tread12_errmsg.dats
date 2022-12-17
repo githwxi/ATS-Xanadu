@@ -71,4 +71,80 @@ ATS_PACKNAME
 #symload fpemsg with d2ecl_fpemsg
 (* ****** ****** *)
 
+local
+
+fun
+auxmain
+( out: FILR
+, s2t: sort2): void =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case s2t of
+//
+|S2Tid0 _ => ()
+|S2Tint _ => ()
+|S2Tbas _ => ()
+//
+|
+S2Ttup(s2ts) =>
+(
+sort2lst_fpemsg(out, s2ts))
+//
+|S2Tfun0 _ => ()
+|
+S2Tfun1
+(s2ts, sres) =>
+(
+sort2_fpemsg
+( out, sres )) where
+{
+val () =
+sort2lst_fpemsg(out, s2ts) }
+//
+|
+S2Tapps
+(s2f0, s2ts) =>
+(
+sort2_fpemsg
+( out, s2f0 )) where
+{
+val () =
+sort2lst_fpemsg(out, s2ts) }
+//
+|S2Tnone0() => ((*void*))
+|S2Tnone1(s0t1) => ((*void*))
+//
+|
+S2Terrck _ => sort2_fpemsg(out, s2t)
+end(*let*)//end-of-(auxmain(out,s2t))
+//
+in//local
+//
+#implfun
+sort2_fpemsg
+( out, s2t0 ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ s2t0 of
+|
+S2Terrck(lvl, s2t1) =>
+(
+auxmain( out, s2t1 ); 
+if
+(lvl
+>FPEMSG_ERRVL) then () else
+println("TREAD12-ERROR:",s2t0))
+| _(* otherwise *) => (  (* skipped *)  )
+//
+end(*let*)//end-of(sort2_fpemsg(out,s2t0))
+//
+endloc(*local*)//end-of(local(sort2_fpemsg))
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_tread12_errmsg.dats] *)
