@@ -2089,6 +2089,7 @@ prerrln
 in//local
 (* ****** ****** *)
 //
+(*
 #implfun
 trans12_d1typ
 (env0, d1t0, s2t0) =
@@ -2150,6 +2151,61 @@ val () = s2cst_set_d2cs(s2c0, d2cs)
 end//let2
 //
 end(*let1*) // end of [trans12_d1typ(env0,...)]
+//
+*)
+//
+#implfun
+trans12_d1typ
+(env0, d1t0, s2t0) =
+let//let1
+//
+val+
+D1TYPnode
+( tok0, tmas
+, sres, tcns) = d1t0.node()
+//
+val
+sres =
+(
+case+ sres of
+|
+optn_nil() =>
+(
+  s2t0//tbox|vtbx
+)
+|
+optn_cons(s1t0) =>
+(
+trans12_sort1(env0, s1t0)
+)
+) : sort2 // end-of-val(sres)
+//
+in//let1
+//
+let//let2
+//
+val
+ltok = tok0.lctn()
+val
+sid0 = sexpid_sym(tok0)
+val
+s2t0 =
+f0_tmas(env0, tmas, sres)
+val
+s2c0 =
+s2cst_make_idst(ltok, sid0, s2t0)
+//
+in//let2
+//
+let
+val () =
+tr12env_add1_s2cst(env0, s2c1) in s2c0
+end//let
+//
+end//let2
+//
+end(*let1*) // end of [trans12_d1typ(env0,...)]
+//
 //
 end (*local*) // end of [ local(trans12_d1typ) ]
 
