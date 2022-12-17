@@ -815,6 +815,19 @@ trans12_d1typlst
 ! tr12env
 , d1ts: d1typlst, s2t0: sort2): s2cstlst
 //
+(* ****** ****** *)
+//
+fun
+trans12_d1tsc
+( env0:
+! tr12env
+, d1t0: d1typ, s2c0: s2cst): void
+fun
+trans12_d1tsclst
+( env0:
+! tr12env
+, d1ts: d1typlst, s2cs: s2cstlst): void
+//
 fun
 trans12_d1tcn
 ( env0:

@@ -28,7 +28,7 @@ fun sumsqr(x, y) =
 //
 fun sqrsum(x, y) =
 let
-val xy = add(x, y) in square(xy)
+val xy = add(x)(y) in square(xy)
 end
 //
 (* ****** ****** *)
