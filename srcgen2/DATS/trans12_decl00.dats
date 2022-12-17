@@ -1929,7 +1929,7 @@ trans12_s1exp_stck(env0, s1e1, tres)
 (* ****** ****** *)
 
 local
-
+//
 (*
 datatype
 d1typ_node =
@@ -1939,70 +1939,6 @@ D1TYPnode of
 , t1maglst
 , sort1opt(*res*), d1tcnlst)
 *)
-
-in//local
-
-#implfun
-trans12_d1typ
-(env0, d1t0, s2t0) =
-let
-//
-val+
-D1TYPnode
-( tok0, tmas
-, sres, tcns) = d1t0.node()
-//
-val
-sres =
-(
-case+ sres of
-|
-optn_nil() =>
-(
-  s2t0//tbox|vtbx
-)
-|
-optn_cons(s1t0) =>
-(
-trans12_sort1(env0, s1t0)
-)
-) : sort2 // end-of-val(sres)
-//
-val () = tr12env_pshlam0(env0)
-//
-in//let1
-//
-let
-//
-val
-ltok = tok0.lctn()
-val
-sid0 = sexpid_sym(tok0)
-val
-s2t0 =
-f0_tmas(env0, tmas, sres)
-val
-svss = f1_svss(tmas, s2t0)
-val
-s2c0 =
-s2cst_make_idst(ltok, sid0, s2t0)
-//
-in//let2
-//
-s2c0 where
-{
-val
-d2cs =
-trans12_d1tcnlst
-(env0, tcns, s2c0, svss)
-val () = tr12env_poplam0(env0)
-val () = s2cst_set_d2cs(s2c0, d2cs)
-}
-//
-end//let2
-//
-end(*let1*)where
-{
 //
 fun
 f0_t1as
@@ -2056,7 +1992,9 @@ S2Tfun1
 //
 fun
 f1_s2vs
-( t1as
+( env0:
+! tr12env
+, t1as
 : t1arglst
 , s2ts
 : sort2lst): s2varlst =
@@ -2093,7 +2031,8 @@ val (  ) =
 tr12env_add0_s2var(env0, s2v1)
 //
 in//let
-list_cons(s2v1, f1_s2vs(t1as, s2ts))
+list_cons
+(s2v1, f1_s2vs(env0, t1as, s2ts))
 end (*let*) // end of [T1ARGsome(...)]
 //
 end (*let*) // end of [list_cons(...)]
@@ -2104,11 +2043,13 @@ val () =
 prerrln
 ("trans12_d1typ: f1_s2vs: t1as = ", t1as)
 *)
-} (*where*) // end of [f1_s2vs(t1as,s2ts)]
+}(*where*)//end-of-[f1_s2vs(env0,t1as,s2ts)]
 //
 fun
 f1_svss
-( tmas
+( env0:
+! tr12env
+, tmas
 : t1maglst
 , tres: sort2): s2varlstlst =
 (
@@ -2126,9 +2067,11 @@ case+
 t1ma.node() of
 T1MAGlist(t1as) =>
 let
-val s2vs = f1_s2vs(t1as, s2ts)
+val s2vs =
+f1_s2vs(env0, t1as, s2ts)
 in//let
-list_cons(s2vs, f1_svss(tmas, tres))
+list_cons
+(s2vs, f1_svss(env0, tmas, tres))
 end (*let*) // end of [T1MAGlist(...)]
 //
 end (*let*) // end of [list_cons(...)]
@@ -2140,9 +2083,73 @@ val () =
 prerrln
 ("trans12_d1typ: f1_svss: tmas = ", tmas)
 *)
-} (*where*) // end of [f1_svss(tmag,tres)]
+}(*where*)//end-of-[f1_svss(env0,tmag,tres)]
 //
-} (*where*) // end of [trans12_d1typ(env0,...)]
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+//
+#implfun
+trans12_d1typ
+(env0, d1t0, s2t0) =
+let//let1
+//
+val+
+D1TYPnode
+( tok0, tmas
+, sres, tcns) = d1t0.node()
+//
+val
+sres =
+(
+case+ sres of
+|
+optn_nil() =>
+(
+  s2t0//tbox|vtbx
+)
+|
+optn_cons(s1t0) =>
+(
+trans12_sort1(env0, s1t0)
+)
+) : sort2 // end-of-val(sres)
+//
+val () = tr12env_pshlam0(env0)
+//
+in//let1
+//
+let//let2
+//
+val
+ltok = tok0.lctn()
+val
+sid0 = sexpid_sym(tok0)
+val
+s2t0 =
+f0_tmas(env0, tmas, sres)
+val
+svss =
+f1_svss(env0, tmas, s2t0)
+val
+s2c0 =
+s2cst_make_idst(ltok, sid0, s2t0)
+//
+in//let2
+//
+s2c0 where
+{
+val
+d2cs =
+trans12_d1tcnlst
+(env0, tcns, s2c0, svss)
+val () = tr12env_poplam0(env0)
+val () = s2cst_set_d2cs(s2c0, d2cs)
+}
+//
+end//let2
+//
+end(*let1*) // end of [trans12_d1typ(env0,...)]
 //
 end (*local*) // end of [ local(trans12_d1typ) ]
 
