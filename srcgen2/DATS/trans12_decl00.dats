@@ -1717,6 +1717,9 @@ else the_sort2_vtbx):sort2 }
 val
 dcls = f0_wdeclseq(env0, wdcs)
 //
+val () = // HX: processing [d2cs]
+trans12_d1tsclst(env0, d1ts, s2cs)
+//
 in//let
   d2ecl(loc0, D2Cdatatype(d1cl, s2cs))
 end (*let*) // end of [f0_datatype(env0,d1cl)]
@@ -2199,13 +2202,50 @@ in//let2
 //
 let
 val () =
-tr12env_add1_s2cst(env0, s2c1) in s2c0
+tr12env_add1_s2cst(env0, s2c0) in s2c0
 end//let
 //
 end//let2
 //
 end(*let1*) // end of [trans12_d1typ(env0,...)]
 //
+(* ****** ****** *)
+//
+#implfun
+trans12_d1tsc
+(env0, d1t0, s2c0) =
+let//let1
+//
+val+
+D1TYPnode
+( tok0, tmas
+, sres, tcns) = d1t0.node()
+//
+val () = tr12env_pshlam0(env0)
+//
+in//let1
+//
+let//let2
+//
+val
+s2t0 = s2c0.sort()
+val
+svss = f1_svss(env0, tmas, s2t0)
+//
+in//let2
+//
+let
+val
+d2cs =
+trans12_d1tcnlst
+(env0, tcns, s2c0, svss)
+val () = tr12env_poplam0(env0)
+val () = s2cst_set_d2cs(s2c0, d2cs)
+end//let
+//
+end//let2
+//
+end(*let1*) // end of [trans12_d1tsc(env0,...)]
 //
 end (*local*) // end of [ local(trans12_d1typ) ]
 
@@ -2847,6 +2887,29 @@ map$fopr_e1nv
 //
 } (*where*) // end of [trans12_d1typlst(...)]
 
+(* ****** ****** *)
+//
+#implfun
+trans12_d1tsclst
+(env0, d1ts, s2cs) =
+(
+case+ d1ts of
+|
+list_nil() => ((*void*))
+|
+list_cons(d1t1, d1ts) =>
+(
+case- s2cs of
+|
+list_cons(s2c1, s2cs) =>
+let
+val () =
+trans12_d1tsc(env0, d1t1, s2c1)
+in//let
+trans12_d1tsclst(env0, d1ts, s2cs) end
+)
+) (*case+*) // end of [trans12_d1tsclst(...)]
+//
 (* ****** ****** *)
 
 local
