@@ -101,17 +101,14 @@ sort2_fpemsg
 ( out, sres )) where
 {
 val () =
-sort2lst_fpemsg(out, s2ts) }
+sort2lst_fpemsg(out, s2ts)}
 //
 |
 S2Tapps
 (s2f0, s2ts) =>
 (
-sort2_fpemsg
-( out, s2f0 )) where
-{
-val () =
-sort2lst_fpemsg(out, s2ts) }
+sort2_fpemsg(out, s2f0);
+sort2lst_fpemsg(out, s2ts))
 //
 |S2Tnone0() => ((*void*))
 |S2Tnone1(s0t1) => ((*void*))
@@ -138,13 +135,162 @@ auxmain( out, s2t1 );
 if
 (lvl
 >FPEMSG_ERRVL) then () else
-println("TREAD12-ERROR:",s2t0))
+println("TREAD12-ERROR:", s2t0))
 | _(* otherwise *) => (  (* skipped *)  )
 //
 end(*let*)//end-of(sort2_fpemsg(out,s2t0))
 //
 endloc(*local*)//end-of(local(sort2_fpemsg))
 
+(* ****** ****** *)
+
+local
+
+fun
+auxmain
+( out: FILR
+, s2e: s2exp): void =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case s2e of
+//
+|S2Eint _ => ()
+|S2Ebtf _ => ()
+|S2Echr _ => ()
+|S2Estr _ => ()
+//
+|S2Ecst _ => ()
+//
+|S2Evar _ => ()
+//
+|S2Eany _ => ()
+//
+|
+S2Etop0(s2e1) =>
+s2exp_fpemsg(out, s2e1)
+|
+S2Etopz(s2e1) =>
+s2exp_fpemsg(out, s2e1)
+//
+| // HX: unresolved list of
+S2Ecsts(s2cs) => ()
+//
+|
+S2Eapps
+(s2f0, s2es) =>
+(
+s2exp_fpemsg(out, s2f0);
+s2explst_fpemsg(out, s2es))
+//
+|
+S2Elam0
+(s2vs, s2e1) =>
+(
+s2exp_fpemsg(out, s2e1))
+//
+|
+S2Efun1
+(f2cl,npf1,s2es,sres) =>
+(
+s2exp_fpemsg
+( out, sres )) where
+{
+val () =
+s2explst_fpemsg(out, s2es)}
+//
+|
+S2Emet0
+(s2es, s2e1) =>
+(
+s2exp_fpemsg
+( out, s2e1 )) where
+{
+val () =
+s2explst_fpemsg(out, s2es)}
+//
+|
+S2Eexi0
+(s2vs,s2ps,s2e1) =>
+(
+s2exp_fpemsg
+( out, s2e1 )) where
+{
+val () =
+s2explst_fpemsg(out, s2ps)}
+|
+S2Euni0
+(s2vs,s2ps,s2e1) =>
+(
+s2exp_fpemsg
+( out, s2e1 )) where
+{
+val () =
+s2explst_fpemsg(out, s2ps)}
+//
+|
+S2Elist(s2es) =>
+(
+s2explst_fpemsg(out, s2es))
+//
+|
+S2Etrcd
+(tknd,npf1,lses) =>
+(
+l2s2elst_fpemsg(out, lses))
+//
+|S2Enone0() => ( (*void*) )
+|S2Enone1(s1e1) => ( (*void*) )
+|S2Enone1(s2e1) => ( (*void*) )
+//
+|
+S2Eerrck _ => s2exp_fpemsg(out, s2e)
+endlet where
+{
+(*
+  val ( ) =
+  prerrln("auxmain: s2e = ", s2e)
+*)
+} (*where*)//end-of-(auxmain(out,s2e))
+//
+in//local
+//
+#implfun
+s2exp_fpemsg
+( out, s2e0 ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ s2e0 of
+|
+S2Eerrck(lvl, s2e1) =>
+(
+auxmain( out, s2e1 ); 
+if
+(lvl
+>FPEMSG_ERRVL) then () else
+println("TREAD12-ERROR:", s2e0)
+)
+| _(* otherwise *) => (  (* skipped *)  )
+//
+end(*let*)//end-of(s2exp_fpemsg(out,s2e0))
+//
+endloc(*local*)//end-of(local(s2exp_fpemsg))
+
+(* ****** ****** *)
+//
+#implfun
+l2s2e_fpemsg
+(out, lse0) =
+(
+case+ lse0 of
+|
+S2LAB(lab,s2e1) => s2exp_fpemsg(out,s2e1)
+) (*case+*)//end-of-(l2s2e_fpemsg(out,lse0))
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread12_errmsg.dats] *)
