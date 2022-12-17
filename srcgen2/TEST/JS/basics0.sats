@@ -963,7 +963,7 @@ stropt1_vt
 #abstbox
 lazy_t0_x0(a: type+) <= p0tr
 #typedef
-lazy(a:type) = lazy_t0_x0( a )
+lazy(a:type) = lazy_t0_x0(a)
 //
 #absvtbx
 lazy_vt_vx(a: vwtp+) <= p0tr

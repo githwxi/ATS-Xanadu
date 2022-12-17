@@ -1014,13 +1014,13 @@ stropt1_vt
 //
 #abstbox
 lazy_t0_x0
-(a: type+) <= p0tr
+(elt:type+) <= p0tr
 #typedef
-lazy(a:t0) = lazy_t0_x0( a )
+lazy(a:t0) = lazy_t0_x0(a)
 //
 #absvtbx
 lazy_vt_vx
-(a: vwtp+) <= p0tr
+(elt:vwtp+) <= p0tr
 #vwtpdef
 lazy_vt(a:vt) = lazy_vt_vx(a)
 //

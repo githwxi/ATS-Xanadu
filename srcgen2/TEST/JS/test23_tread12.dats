@@ -257,7 +257,7 @@ in//local
 //
 val dpar =
 d0parsed_from_fpath
-(0(*sta*), "./basics0.sats")
+(0(*sta*), "./gint000.sats")
 //
 val
 dpar = d0parsed_preadx0(dpar)
@@ -284,7 +284,7 @@ end
 //
 val (  ) =
 prerrln
-("d0parsed_from_fpath(\"./basics0.sats\") =\n", dpar)
+("d0parsed_from_fpath(\"./gint000.sats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
@@ -299,7 +299,7 @@ dpar = d2parsed_tread12(dpar)
 //
 val (  ) =
 prerrln
-("d0parsed_from_fpath(\"./basics0.sats\") =\n", dpar)
+("d0parsed_from_fpath(\"./gint000.sats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
