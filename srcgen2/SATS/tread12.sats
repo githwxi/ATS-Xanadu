@@ -101,8 +101,14 @@ D2E = "./dynexp2.sats"
 #typedef t2qag = $D2E.t2qag
 #typedef t2iag = $D2E.t2iag
 (* ****** ****** *)
+#typedef a2tdf = $D2E.a2tdf
+(* ****** ****** *)
+#typedef simpl = $D2E.simpl
+#typedef dimpl = $D2E.dimpl
+(* ****** ****** *)
 #typedef d2conlst = $D2E.d2conlst
 #typedef d2cstlst = $D2E.d2cstlst
+(* ****** ****** *)
 #typedef d2varlst = $D2E.d2varlst
 (* ****** ****** *)
 #typedef d2patlst = $D2E.d2patlst
@@ -227,7 +233,13 @@ fun tread12_s2qag: ftread12(s2qag)
 fun tread12_t2qag: ftread12(t2qag)
 fun tread12_t2iag: ftread12(t2iag)
 (* ****** ****** *)
+fun tread12_a2tdf: ftread12(a2tdf)
+(* ****** ****** *)
+fun tread12_simpl: ftread12(simpl)
+fun tread12_dimpl: ftread12(dimpl)
+(* ****** ****** *)
 fun tread12_d2conlst: ftread12(d2conlst)
+fun tread12_d2cstlst: ftread12(d2cstlst)
 (* ****** ****** *)
 fun tread12_d2varlst: ftread12(d2varlst)
 (* ****** ****** *)

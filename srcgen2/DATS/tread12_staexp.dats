@@ -967,10 +967,10 @@ end (*let*) // end of [ f0_cast(s2e,err) ]
 //
 (* ****** ****** *)
 //
-// (*
+(*
 val (  ) =
 prerrln("tread12_s2exp: s2e0 = ", s2e0)
-// *)
+*)
 //
 } (*where*)//end[ tread12_s2exp(s2e0,err) ]
 //

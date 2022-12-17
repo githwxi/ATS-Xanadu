@@ -549,7 +549,7 @@ in//local
 s2exp_apps
 (loc0, s2f0, s2es) = let
 //
-// (*
+(*
 val () =
 prerrln
 ("s2exp_apps: s2f0 = ", s2f0)
@@ -559,7 +559,7 @@ prerrln
 val () =
 prerrln
 ("s2exp_apps: s2f0.sort = ", s2f0.sort())
-// *)
+*)
 //
 val s2f0 =
 (

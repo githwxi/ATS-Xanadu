@@ -183,6 +183,50 @@ end (*let*) // end of [d2ecl_sexpdef_errck]
 (* ****** ****** *)
 //
 fun
+d2ecl_abstype_errck
+( loc0: loc_t
+, s2c1: s2cst
+, atdf: a2tdf): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1,d2ecl(loc0,D2Cabstype(s2c1,atdf)))
+end (*let*) // end of [d2ecl_abstype_errck]
+//
+(* ****** ****** *)
+//
+fun
+d2ecl_absopen_errck
+( loc0: loc_t
+, tknd: token
+, simp: simpl): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1,d2ecl(loc0,D2Cabsopen(tknd,simp)))
+end (*let*) // end of [d2ecl_absopen_errck]
+//
+(* ****** ****** *)
+//
+fun
+d2ecl_absimpl_errck
+( loc0: loc_t
+, tknd: token
+, simp: simpl
+, sdef: s2exp): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1
+,d2ecl(loc0, D2Cabsimpl(tknd,simp,sdef)))
+end (*let*) // end of [d2ecl_absimpl_errck]
+//
+(* ****** ****** *)
+//
+fun
 d2ecl_symload_errck
 ( loc0: loc_t
 , tknd: token
@@ -365,6 +409,13 @@ D2Cstacst0 _ => f0_stacst0(d2cl, err)
 D2Csortdef _ => f0_sortdef(d2cl, err)
 |
 D2Csexpdef _ => f0_sexpdef(d2cl, err)
+//
+|
+D2Cabstype _ => f0_abstype(d2cl, err)
+|
+D2Cabsopen _ => f0_absopen(d2cl, err)
+|
+D2Cabsimpl _ => f0_absimpl(d2cl, err)
 //
 |
 D2Csymload _ => f0_symload(d2cl, err)
@@ -576,6 +627,84 @@ if
 then (dcl) else
 d2ecl_sexpdef_errck( loc, s2c1, def2 )
 end (*let*) // end of [f0_sexpdef(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_abstype
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D2Cabstype
+(s2c1, atdf) = dcl.node()
+//
+val
+atdf = tread12_a2tdf(atdf, err)
+//
+in//let
+if
+(e00=err)
+then (dcl) else
+d2ecl_abstype_errck( loc, s2c1, atdf )
+end (*let*) // end of [f0_abstype(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_absopen
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D2Cabsopen
+(tknd, simp) = dcl.node()
+//
+val
+simp = tread12_simpl(simp, err)
+//
+in//let
+if
+(e00=err)
+then (dcl) else
+d2ecl_absopen_errck( loc, tknd, simp )
+end (*let*) // end of [f0_absopen(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_absimpl
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D2Cabsimpl
+( tknd
+, simp, sdef) = dcl.node()
+//
+val
+simp = tread12_simpl(simp, err)
+val
+sdef = tread12_s2exp(sdef, err)
+//
+in//let
+if
+(e00=err)
+then (dcl) else
+d2ecl_absimpl_errck(loc,tknd,simp,sdef)
+end (*let*) // end of [f0_absimpl(dcl,err)]
 //
 (* ****** ****** *)
 //

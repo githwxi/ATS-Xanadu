@@ -2241,6 +2241,7 @@ trans12_d1tcnlst
 (env0, tcns, s2c0, svss)
 val () = tr12env_poplam0(env0)
 val () = s2cst_set_d2cs(s2c0, d2cs)
+val () = tr12env_add1_d2cs(env0, d2cs)
 end//let
 //
 end//let2
