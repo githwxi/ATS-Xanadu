@@ -279,5 +279,67 @@ fun tread12_d2cstdclist: ftread12(d2cstdclist)
 (* ****** ****** *)
 fun tread12_d2eclistopt: ftread12(d2eclistopt)
 (* ****** ****** *)
+(*
+//
+//HX-2022-12-16: printing errmsgs
+//
+*)
+(* ****** ****** *)
+fun sort2_fpemsg(FILR, sort2): void
+fun s2exp_fpemsg(FILR, s2exp): void
+fun l2s2e_fpemsg(FILR, l2s2e): void
+(* ****** ****** *)
+fun d2pat_fpemsg(FILR, d2pat): void
+fun d2exp_fpemsg(FILR, d2exp): void
+fun l2d2p_fpemsg(FILR, l2d2p): void
+fun l2d2e_fpemsg(FILR, l2d2e): void
+(* ****** ****** *)
+fun f2arg_fpemsg:(FILR,f2arg)->void
+(* ****** ****** *)
+fun d2gua_fpemsg:(FILR,d2gua)->void
+fun d2gpt_fpemsg:(FILR,d2gpt)->void
+fun d2cls_fpemsg:(FILR,d2cls)->void
+(* ****** ****** *)
+fun s2res_fpemsg:(FILR,s2res)->void
+(* ****** ****** *)
+fun s2qag_fpemsg:(FILR,s2qag)->void
+fun t2qag_fpemsg:(FILR,t2qag)->void
+fun t2iag_fpemsg:(FILR,t2iag)->void
+(* ****** ****** *)
+fun d2ecl_fpemsg(FILR, d2ecl): void
+(* ****** ****** *)
+fun d2patlst_fpemsg(FILR, d2patlst): void
+(* ****** ****** *)
+fun d2explst_fpemsg(FILR, d2explst): void
+fun d2expopt_fpemsg(FILR, d2expopt): void
+(* ****** ****** *)
+fun l2d2plst_fpemsg(FILR, l2d2plst): void
+fun l2d2elst_fpemsg(FILR, l2d2elst): void
+(* ****** ****** *)
+fun d2valdcl_fpemsg(FILR, d2valdcl): void
+fun d2vardcl_fpemsg(FILR, d2vardcl): void
+fun d2fundcl_fpemsg(FILR, d2fundcl): void
+fun d2cstdcl_fpemsg(FILR, d2cstdcl): void
+(* ****** ****** *)
+fun
+d2valdclist_fpemsg(FILR, d2valdclist): void
+(* ****** ****** *)
+fun
+d2vardclist_fpemsg(FILR, d2vardclist): void
+(* ****** ****** *)
+fun
+d2fundclist_fpemsg(FILR, d2fundclist): void
+(* ****** ****** *)
+fun
+d2cstdclist_fpemsg(FILR, d2cstdclist): void
+(* ****** ****** *)
+//
+fun
+d2parsed_fpemsg
+( out: FILR, dpar: d2parsed ): void
+fun
+d2eclistopt_fpemsg(FILR, d2eclistopt): void
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread12.sats] *)

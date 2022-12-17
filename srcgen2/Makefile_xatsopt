@@ -504,6 +504,9 @@ trans12_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trans12_dynexp.dats
 all_dats:: \
 trans12_decl00_dats
 trans12_decl00_dats: ; $(XATSOPT) --dynamic DATS/trans12_decl00.dats
+all_dats:: \
+tread12_errmsg_dats
+tread12_errmsg_dats: ; $(XATSOPT) --dynamic DATS/tread12_errmsg.dats
 ######
 
 ######

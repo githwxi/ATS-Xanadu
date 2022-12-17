@@ -1083,6 +1083,44 @@ end (*let*) // end-of-[tread12_t2iag(t2i0,err)]
 (* ****** ****** *)
 //
 #implfun
+tread12_simpl
+  (simp, err) =
+(
+case+ simp of
+|
+SIMPLall1
+(sqid, s2cs) => simp where
+{
+val () =
+(
+case+ s2cs of
+|list_nil() =>
+(err := err+1) | list_cons _ => ())
+}
+|SIMPLopt2(sqid, s2cs, sopt) => simp
+) (*case+*) // end-of-[tread12_simpl(simp,err)]
+//
+#implfun
+tread12_dimpl
+  (dimp, err) =
+(
+case+ dimp of
+|
+DIMPLall1
+(dqid, d2cs) => dimp where
+{
+val () =
+(
+case+ d2cs of
+|list_nil() =>
+(err := err+1) | list_cons _ => ())
+}
+|DIMPLopt2(dqid, d2cs, dopt) => dimp
+) (*case+*) // end-of-[tread12_dimpl(dimp,err)]
+//
+(* ****** ****** *)
+//
+#implfun
 tread12_teqd2exp
   (tdxp, err) =
 (
