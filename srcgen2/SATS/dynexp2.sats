@@ -387,11 +387,11 @@ d2var_get_stmp:(d2var) -> stamp
 datatype
 d2itm =
 //
-| D2ITMvar of (d2var)
-| D2ITMcon of (d2conlst)
-| D2ITMcst of (d2cstlst)
+|D2ITMvar of (d2var)
+|D2ITMcon of (d2conlst)
+|D2ITMcst of (d2cstlst)
 //
-| D2ITMsym of (sym_t, d2ptmlst)
+|D2ITMsym of (sym_t, d2ptmlst)
 //
 and // datatype
 d2ptm =

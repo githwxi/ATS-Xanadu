@@ -183,6 +183,22 @@ end (*let*) // end of [d2ecl_sexpdef_errck]
 (* ****** ****** *)
 //
 fun
+d2ecl_symload_errck
+( loc0: loc_t
+, tknd: token
+, sym1: sym_t
+, dptm: d2ptm): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1
+,d2ecl(loc0, D2Csymload(tknd,sym1,dptm)))
+end (*let*) // end of [d2ecl_symload_errck]
+//
+(* ****** ****** *)
+//
+fun
 d2ecl_datasort_errck
 ( loc0: loc_t
 , d1cl: d1ecl
@@ -349,6 +365,9 @@ D2Cstacst0 _ => f0_stacst0(d2cl, err)
 D2Csortdef _ => f0_sortdef(d2cl, err)
 |
 D2Csexpdef _ => f0_sexpdef(d2cl, err)
+//
+|
+D2Csymload _ => f0_symload(d2cl, err)
 //
 |
 D2Cdatasort _ => f0_datasort(d2cl, err)
@@ -560,8 +579,40 @@ end (*let*) // end of [f0_sexpdef(dcl,err)]
 //
 (* ****** ****** *)
 //
+fun
+f0_symload
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D2Csymload
+( tknd
+, sym1, dptm) = dcl.node()
+//
+val () =
+(
+case+ dptm of
+|
+D2PTMnone(dqid) => (err := err+1)
+|
+D2PTMsome(pval,d2i1) => ((*void*))
+) (*case+*) // end of [val(*void*)]
+//
+in//let
+if
+(e00=err)
+then (dcl) else
+d2ecl_symload_errck(loc,tknd,sym1,dptm)
+end (*let*) // end of [f0_symload(dcl,err)]
+//
+(* ****** ****** *)
+//
 local
-
+//
 (* ****** ****** *)
 //
 fun

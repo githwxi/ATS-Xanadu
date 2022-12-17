@@ -1181,7 +1181,7 @@ in//let
 tr12env_find_d2itm(env0,did1)
 end (*let*) // D1QIDnone(...)
 |
-D1QIDsome(tqua, tok1) =>
+D1QIDsome(tqua,tok1) =>
 let
 val
 did1 = dexpid_sym(tok1)
