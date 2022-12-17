@@ -519,6 +519,11 @@ tr12env_add0_sqas with tr12env_add0_s2qaglst
 tr12env_add0_tqas with tr12env_add0_t2qaglst
 (* ****** ****** *)
 #symload
+tr12env_add1_d2cs with tr12env_add1_d2conlst
+#symload
+tr12env_add1_d2cs with tr12env_add1_d2cstlst
+(* ****** ****** *)
+#symload
 tr12env_add0_d2vs with tr12env_add0_d2varlst
 (* ****** ****** *)
 #symload

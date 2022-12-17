@@ -2211,6 +2211,10 @@ endlet // end of [S2RESsome(seff,s2e1)]
 tread12_d2conlst
   (  d2cs, err  ) =
 list_tread12_fnp(d2cs, err, tread12_d2con)
+#implfun
+tread12_d2cstlst
+  (  d2cs, err  ) =
+list_tread12_fnp(d2cs, err, tread12_d2cst)
 //
 (* ****** ****** *)
 //
