@@ -292,6 +292,58 @@ S2LAB(lab,s2e1) => s2exp_fpemsg(out,s2e1)
 ) (*case+*)//end-of-(l2s2e_fpemsg(out,ls2e))
 //
 (* ****** ****** *)
+local
+
+fun
+auxmain
+( out: FILR
+, d2p: d2pat): void =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+d2p.node() of
+|
+D2Perrck(_,_) => d2pat_fpemsg(out, d2p)
+//
+end (*let*) // end-of-(auxmain(out,d2p))
+
+(* ****** ****** *)
+in(* in-of-local *)
+(* ****** ****** *)
+//
+#implfun
+d2pat_fpemsg
+( out, d2p0 ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+d2p0.node() of
+|
+D2Perrck(lvl, d2p1) =>
+(
+auxmain( out, d2p1 ); 
+if
+(lvl
+>FPEMSG_ERRVL) then () else
+let
+val loc0 = d2p0.lctn() in
+println
+("TREAD12-ERROR:",loc0,":",d2p0)
+end
+)
+| _(* otherwise *) => (  (* skipped *)  )
+//
+end(*let*)//end-of(d2pat_fpemsg(out,d2p0))
+//
+endloc(*local*)//end-of(local(d2pat_fpemsg))
+//
+(* ****** ****** *)
 //
 #implfun
 l2d2p_fpemsg
@@ -422,6 +474,27 @@ val () = d2gpt_fpemsg(out, dgpt)
 val () = d2exp_fpemsg(out, d2e2)
 endlet // end of [ D2CLScls(_,_,_) ]
 ) (*case*) // end-of(d2cls_fpemsg(out,dcls))
+//
+(* ****** ****** *)
+//
+#implfun
+s2res_fpemsg
+  (out, sres) =
+(
+case+ sres of
+|
+S2RESnone() => ()
+|
+S2RESsome(seff,s2e1) =>
+let
+(*
+val
+seff = s2eff_fpemsg(out, seff)
+*)
+val
+s2e1 = s2exp_fpemsg(out, s2e1)
+endlet // end of [S2RESsome(seff,s2e1)]
+) (*case+*)//end-of[s2res_fpemsg(out,sres)]
 //
 (* ****** ****** *)
 
