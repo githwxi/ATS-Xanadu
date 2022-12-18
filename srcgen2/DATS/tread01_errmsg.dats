@@ -818,7 +818,9 @@ endlet where
 *)
 } (*where*)//end-of-(auxmain(out,d1e))
 //
-in//local
+(* ****** ****** *)
+in(* in-of-local *)
+(* ****** ****** *)
 //
 #implfun
 d1exp_fpemsg
@@ -1115,7 +1117,9 @@ D1Cerrck(_,_) => d1ecl_fpemsg(out, dcl)
 //
 end (*let*) // end-of-(auxmain(out,dcl))
 
-in(*in-of-local*)
+(* ****** ****** *)
+in(* in-of-local *)
+(* ****** ****** *)
 
 #implfun
 d1ecl_fpemsg
@@ -1209,6 +1213,10 @@ T1IAGsome(s1es) =>
 s1explst_fpemsg(out, s1es)
 ) (*case+*)//end-of-[t1iag_fpemsg(out,t1i0)]
 //
+(* ****** ****** *)
+(*
+HX-2022-12-12: for various list/optn-derivatives
+*)
 (* ****** ****** *)
 //
 #implfun
