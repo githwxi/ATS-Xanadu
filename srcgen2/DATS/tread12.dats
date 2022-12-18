@@ -156,5 +156,35 @@ tread12_d2eclistopt
 optn_tread12_fnp(dopt, err0, tread12_d2eclist)
 //
 (* ****** ****** *)
+//
+#implfun
+d2parsed_fpemsg
+  (out, dpar) = let
+//
+val nerror =
+d2parsed_get_nerror(dpar)
+//
+in//let
+if
+(nerror > 0) then
+let
+val parsed =
+d2parsed_get_parsed(dpar)
+in
+d2eclistopt_fpemsg(out, parsed) end else ()
+end (*let*)//end-of-[d2parsed_fpemsg(out,dpar)]
+//
+(* ****** ****** *)
+//
+#implfun
+d2eclistopt_fpemsg
+  (out, dopt) =
+(
+case+ dopt of
+| optn_nil() => ((*void*))
+| optn_cons(d2cs) => d2eclist_fpemsg(out, d2cs)
+)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread12.dats] *)

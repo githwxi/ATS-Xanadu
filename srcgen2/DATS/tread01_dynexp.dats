@@ -1892,6 +1892,7 @@ endlet // end of [T1QUAsome(loc0,s1qs)]
 ) (*case+*) // end of [tread01_t1qua(t1q0,err)]
 //
 (* ****** ****** *)
+//
 #implfun
 tread01_t1inv
   (tinv, err) =
@@ -1915,6 +1916,7 @@ if
 then tinv else T1INVsome(loc0, t1qs, d1ps)
 endlet // end of [T1INVsom(loc0,t1qs,d1ps)]
 ) (*case+*) // end of [tread01_t1inv(tinv,err)]
+//
 (* ****** ****** *)
 //
 #implfun

@@ -215,6 +215,8 @@
 "./../../DATS/tread12_dynexp.dats"
 #include
 "./../../DATS/tread12_decl00.dats"
+#include
+"./../../DATS/tread12_errmsg.dats"
 (* ****** ****** *)
 //
 local
@@ -296,6 +298,13 @@ d2parsed_from_trans(dpar)
 //
 val
 dpar = d2parsed_tread12(dpar)
+//
+val (  ) =
+let
+  val out = g_stderr()
+in
+  d2parsed_fpemsg( out, dpar )
+end
 //
 (* ****** ****** *)
 //
