@@ -1024,6 +1024,22 @@ val () = s1tdf_fpemsg(out, tdf1)
 endlet // end-of-(D1Csortdef(...))
 //
 |
+D1Csexpdef
+(tknd, seid
+,smas, tres, s1e1) =>
+let
+(*
+val () =
+s1eid_fpemsg(out, seid)
+*)
+val () =
+s1maglst_fpemsg(out, smas)
+val () =
+sort1opt_fpemsg(out, tres)
+val () = s1exp_fpemsg(out, s1e1)
+endlet // end-of-(D0Csexpdef(...))
+//
+|
 D1Csymload
 ( tknd
 , symb, dqid, gopt) =>
@@ -1552,6 +1568,7 @@ val (  ) =
 //
 endlet where
 {
+//
   val dpat = d1valdcl_get_dpat(dval)
   val tdxp = d1valdcl_get_tdxp(dval)
   val wsxp = d1valdcl_get_wsxp(dval)
@@ -1573,10 +1590,12 @@ val (  ) =
 //
 endlet where
 {
+//
 (*
   val dpid = d1vardcl_get_dpid(dvar)
   val vpid = d1vardcl_get_vpid(dvar)
 *)
+//
   val sres = d1vardcl_get_sres(dvar)
   val dini = d1vardcl_get_dini(dvar)
 //
@@ -1603,13 +1622,16 @@ val (  ) =
 //
 endlet where
 {
+//
 (*
   val dpid = d1fundcl_get_dpid(dfun)
 *)
+//
   val fags = d1fundcl_get_farg(dfun)
   val sres = d1fundcl_get_sres(dfun)
   val tdxp = d1fundcl_get_tdxp(dfun)
   val wsxp = d1fundcl_get_wsxp(dfun)
+//
 } (*where*)//end-of-[d1fundcl_fpemsg(out,dfun)]
 //
 (* ****** ****** *)
@@ -1629,12 +1651,15 @@ val (  ) = // d1res=teqd1exp
 //
 endlet where
 {
+//
 (*
   val dpid = d1cstdcl_get_dpid(dcst)
 *)
+//
   val dags = d1cstdcl_get_darg(dcst)
   val sres = d1cstdcl_get_sres(dcst)
   val dres = d1cstdcl_get_dres(dcst)
+//
 } (*where*)//end-of-[d1cstdcl_fpemsg(out,dcst)]
 //
 (* ****** ****** *)

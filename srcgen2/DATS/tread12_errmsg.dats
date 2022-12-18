@@ -512,6 +512,73 @@ in//let
 case+
 dcl.node() of
 |
+D2Cstatic(tknd,dcl1) =>
+let
+val () =
+d2ecl_fpemsg(out, dcl1)
+endlet//end-of(D2Cstatic(_,_))
+|
+D2Cextern(tknd,dcl1) =>
+let
+val () =
+d2ecl_fpemsg(out, dcl1)
+endlet//end-of(D2Cextern(_,_))
+//
+|
+D2Clocal0(dcs1,dcs2) =>
+let
+val () =
+d2eclist_fpemsg(out, dcs1)
+val () =
+d2eclist_fpemsg(out, dcs2)
+endlet // end of [D2Clocal0(...)]
+//
+|
+D2Cabssort _ => ( (*void*) )
+//
+|
+D2Csortdef
+(sym1, stex) => let
+//
+  val () =
+  s2tex_fpemsg(out, stex)
+//
+endlet // end-of-(D2Csortdef)
+|
+D2Csexpdef
+(s2c1, sdef) => let
+//
+  val () =
+  s2exp_fpemsg(out, sdef)
+//
+endlet // end-of-(D2Csexpdef)
+//
+|
+D2Cvaldclst
+(tknd, d2cs) => let
+val () =
+  d2valdclist_fpemsg(out, d2cs)
+endlet // end-of-(D2Cvaldclst(_,_,_))
+|
+D2Cvardclst
+(tknd, d2cs) => let
+val () =
+  d2vardclist_fpemsg(out, d2cs)
+endlet // end-of-(D2Cvardclst(_,_,_))
+//
+|
+D2Cfundclst
+( tknd
+, tqas, d2cs) => let
+val () =
+  t2qaglst_fpemsg(out, tqas)
+val () =
+  d2fundclist_fpemsg(out, d2cs)
+endlet // end-of-(D2Cfundclst(_,_,_))
+//
+| D2Cnone0() => ( (*void*) )
+| D2Cnone1(d1cl) => ( (*void*) )
+|
 D2Cerrck(_,_) => d2ecl_fpemsg(out, dcl)
 //
 end (*let*) // end-of-(auxmain(out,dcl))
@@ -529,6 +596,7 @@ g_print$out<>() = out
 in//let
 case+
 dcl0.node() of
+//
 |
 D2Cerrck(lvl, d2cl)  =>
 (
@@ -780,6 +848,7 @@ val (  ) =
 //
 endlet where
 {
+//
   val dpat = d2valdcl_get_dpat(dval)
   val tdxp = d2valdcl_get_tdxp(dval)
   val wsxp = d2valdcl_get_wsxp(dval)
@@ -801,10 +870,12 @@ val (  ) =
 //
 endlet where
 {
+//
 (*
   val dpid = d2vardcl_get_dpid(dvar)
   val vpid = d2vardcl_get_vpid(dvar)
 *)
+//
   val sres = d2vardcl_get_sres(dvar)
   val dini = d2vardcl_get_dini(dvar)
 //
@@ -831,13 +902,16 @@ val (  ) =
 //
 endlet where
 {
+//
 (*
   val dpid = d2fundcl_get_dpid(dfun)
 *)
+//
   val fags = d2fundcl_get_farg(dfun)
   val sres = d2fundcl_get_sres(dfun)
   val tdxp = d2fundcl_get_tdxp(dfun)
   val wsxp = d2fundcl_get_wsxp(dfun)
+//
 } (*where*)//end-of-[d2fundcl_fpemsg(out,dfun)]
 //
 (* ****** ****** *)
@@ -857,12 +931,15 @@ val (  ) = // d2res=teqd2exp
 //
 endlet where
 {
+//
 (*
   val dpid = d2cstdcl_get_dpid(dcst)
 *)
+//
   val dags = d2cstdcl_get_darg(dcst)
   val sres = d2cstdcl_get_sres(dcst)
   val dres = d2cstdcl_get_dres(dcst)
+//
 } (*where*)//end-of-[d2cstdcl_fpemsg(out,dcst)]
 //
 (* ****** ****** *)

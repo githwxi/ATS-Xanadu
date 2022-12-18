@@ -209,7 +209,7 @@ dpar = d1parsed_from_trans(dpar)
 val (  ) =
 prerrln
 ("\
-d0parsed_from_fpath\
+d1parsed_from_fpath\
 (\"./../../../prelude/DATS/char000.dats\") =\n", dpar)
 //
 (* ****** ****** *)
