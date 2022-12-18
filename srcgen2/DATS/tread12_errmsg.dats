@@ -292,5 +292,115 @@ S2LAB(lab,s2e1) => s2exp_fpemsg(out,s2e1)
 ) (*case+*)//end-of-(l2s2e_fpemsg(out,lse0))
 //
 (* ****** ****** *)
+//
+#implfun
+t2iaglst_fpemsg
+(out, tias) =
+list_foreach<t2iag>(tias) where
+{
+#impltmp
+foreach$work<t2iag>(tia1) = t2iag_fpemsg(out,tia1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d2arglst_fpemsg
+(out, d2as) =
+list_foreach<d2arg>(d2as) where
+{
+#impltmp
+foreach$work<d2arg>(d2a1) = d2arg_fpemsg(out,d2a1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+teqd2exp_fpemsg
+  (out, tdxp) =
+(
+case+ tdxp of
+|
+TEQD2EXPnone() => ()
+|
+TEQD2EXPsome(teq1, d2e2) =>
+let
+val d2e2 = d2exp_fpemsg(out, d2e2)
+endlet // end of [TEQD2EXPsome(_,_)]
+) (*case+*)//end-(teqd2exp_fpemsg(out,tdxp))
+//
+#implfun
+wths2exp_fpemsg
+  (out, wsxp) =
+(
+case+ wsxp of
+|
+WTHS2EXPnone() => ()
+|
+WTHS2EXPsome(twth, s2e1) =>
+let
+val s2e1 = s2exp_fpemsg(out, s2e1)
+endlet // end of [WTHS2EXPsome(_,_)]
+) (*case+*)//end-(wths2exp_fpemsg(out,wsxp))
+//
+(* ****** ****** *)
+//
+#implfun
+d2cstdcl_fpemsg
+(out, dcst) =
+let
+//
+val (  ) =
+  d2arglst_fpemsg(out, dags)
+//
+val (  ) =
+  s2res_fpemsg( out , sres )
+val (  ) = // d2res=teqd2exp
+  teqd2exp_fpemsg( out, dres )
+//
+endlet where
+{
+(*
+  val dpid = d2cstdcl_get_dpid(dcst)
+*)
+  val dags = d2cstdcl_get_darg(dcst)
+  val sres = d2cstdcl_get_sres(dcst)
+  val dres = d2cstdcl_get_dres(dcst)
+} (*where*)//end-of-[d2cstdcl_fpemsg(out,dcst)]
+//
+(* ****** ****** *)
+//
+#implfun
+d2vardclist_fpemsg
+(out, d2vs) =
+list_foreach<d2vardcl>(d2vs) where
+{
+#impltmp
+foreach$work<d2vardcl>(dvar) = d2vardcl_fpemsg(out,dvar)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d2fundclist_fpemsg
+(out, d2fs) =
+list_foreach<d2fundcl>(d2fs) where
+{
+#impltmp
+foreach$work<d2fundcl>(dfun) = d2fundcl_fpemsg(out,dfun)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d2cstdclist_fpemsg
+(out, d2cs) =
+list_foreach<d2cstdcl>(d2cs) where
+{
+#impltmp
+foreach$work<d2cstdcl>(dcst) = d2cstdcl_fpemsg(out,dcst)
+}
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread12_errmsg.dats] *)

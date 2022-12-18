@@ -310,6 +310,12 @@ fun s2qag_fpemsg:(FILR,s2qag)->void
 fun t2qag_fpemsg:(FILR,t2qag)->void
 fun t2iag_fpemsg:(FILR,t2iag)->void
 (* ****** ****** *)
+fun s2qag_fpemsg:(FILR,s2qag)->void
+fun t2qag_fpemsg:(FILR,t2qag)->void
+fun t2iag_fpemsg:(FILR,t2iag)->void
+(* ****** ****** *)
+fun d2arg_fpemsg(FILR, d2arg): void
+(* ****** ****** *)
 fun d2ecl_fpemsg(FILR, d2ecl): void
 (* ****** ****** *)
 fun d2patlst_fpemsg(FILR, d2patlst): void
@@ -319,6 +325,17 @@ fun d2expopt_fpemsg(FILR, d2expopt): void
 (* ****** ****** *)
 fun l2d2plst_fpemsg(FILR, l2d2plst): void
 fun l2d2elst_fpemsg(FILR, l2d2elst): void
+(* ****** ****** *)
+fun s2qaglst_fpemsg(FILR, s2qaglst): void
+fun t2qaglst_fpemsg(FILR, t2qaglst): void
+fun t2iaglst_fpemsg(FILR, t2iaglst): void
+(* ****** ****** *)
+fun d2arglst_fpemsg(FILR, d2arglst): void
+(* ****** ****** *)
+fun d2ecllst_fpemsg(FILR, d2ecllst): void
+(* ****** ****** *)
+fun teqd2exp_fpemsg(FILR, teqd2exp): void
+fun wths2exp_fpemsg(FILR, wths2exp): void
 (* ****** ****** *)
 fun d2valdcl_fpemsg(FILR, d2valdcl): void
 fun d2vardcl_fpemsg(FILR, d2vardcl): void
