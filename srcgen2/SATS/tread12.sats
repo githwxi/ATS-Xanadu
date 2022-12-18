@@ -289,13 +289,6 @@ fun sort2_fpemsg(FILR, sort2): void
 fun s2exp_fpemsg(FILR, s2exp): void
 fun l2s2e_fpemsg(FILR, l2s2e): void
 (* ****** ****** *)
-fun sort2lst_fpemsg(FILR, sort2lst): void
-(* ****** ****** *)
-fun s2explst_fpemsg(FILR, s2explst): void
-fun s2expopt_fpemsg(FILR, s2expopt): void
-(* ****** ****** *)
-fun l2s2elst_fpemsg(FILR, l2s2elst): void
-(* ****** ****** *)
 fun d2pat_fpemsg(FILR, d2pat): void
 fun d2exp_fpemsg(FILR, d2exp): void
 fun l2d2p_fpemsg(FILR, l2d2p): void
@@ -321,6 +314,14 @@ fun d2arg_fpemsg(FILR, d2arg): void
 (* ****** ****** *)
 fun d2ecl_fpemsg(FILR, d2ecl): void
 (* ****** ****** *)
+fun sort2lst_fpemsg(FILR, sort2lst): void
+fun sort2opt_fpemsg(FILR, sort2opt): void
+(* ****** ****** *)
+fun s2explst_fpemsg(FILR, s2explst): void
+fun s2expopt_fpemsg(FILR, s2expopt): void
+(* ****** ****** *)
+fun l2s2elst_fpemsg(FILR, l2s2elst): void
+(* ****** ****** *)
 fun d2patlst_fpemsg(FILR, d2patlst): void
 (* ****** ****** *)
 fun d2explst_fpemsg(FILR, d2explst): void
@@ -328,6 +329,11 @@ fun d2expopt_fpemsg(FILR, d2expopt): void
 (* ****** ****** *)
 fun l2d2plst_fpemsg(FILR, l2d2plst): void
 fun l2d2elst_fpemsg(FILR, l2d2elst): void
+(* ****** ****** *)
+fun f2arglst_fpemsg(FILR, f2arglst): void
+(* ****** ****** *)
+fun d2gualst_fpemsg:(FILR,d2gualst)->void
+fun d2clslst_fpemsg:(FILR,d2clslst)->void
 (* ****** ****** *)
 fun s2qaglst_fpemsg(FILR, s2qaglst): void
 fun t2qaglst_fpemsg(FILR, t2qaglst): void

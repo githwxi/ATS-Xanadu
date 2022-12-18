@@ -284,12 +284,220 @@ endloc(*local*)//end-of(local(s2exp_fpemsg))
 //
 #implfun
 l2s2e_fpemsg
-(out, lse0) =
+(out, ls2e) =
 (
-case+ lse0 of
+case+ ls2e of
 |
 S2LAB(lab,s2e1) => s2exp_fpemsg(out,s2e1)
-) (*case+*)//end-of-(l2s2e_fpemsg(out,lse0))
+) (*case+*)//end-of-(l2s2e_fpemsg(out,ls2e))
+//
+(* ****** ****** *)
+//
+#implfun
+l2d2p_fpemsg
+(out, ld2p) =
+(
+case+ ld2p of
+|
+D2LAB(lab,d2p1) => d2pat_fpemsg(out,d2p1)
+) (*case+*)//end-of-(l2d2p_fpemsg(out,ld2p))
+//
+(* ****** ****** *)
+
+local
+
+fun
+auxmain
+( out: FILR
+, d2e: d2exp): void =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+d2e.node() of
+|
+D2Eerrck(_,_) => d2exp_fpemsg(out, d2e)
+//
+end (*let*) // end-of-(auxmain(out,d2e))
+
+(* ****** ****** *)
+in(* in-of-local *)
+(* ****** ****** *)
+//
+#implfun
+d2exp_fpemsg
+( out, d2e0 ) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+d2e0.node() of
+|
+D2Eerrck(lvl, d2e1) =>
+(
+auxmain( out, d2e1 ); 
+if
+(lvl
+>FPEMSG_ERRVL) then () else
+let
+val loc0 = d2e0.lctn() in
+println
+("TREAD12-ERROR:",loc0,":",d2e0)
+end
+)
+| _(* otherwise *) => (  (* skipped *)  )
+//
+end(*let*)//end-of(d2exp_fpemsg(out,d2e0))
+//
+endloc(*local*)//end-of(local(d2exp_fpemsg))
+
+(* ****** ****** *)
+//
+#implfun
+l2d2e_fpemsg
+(out, ld2e) =
+(
+case+ ld2e of
+|
+D2LAB(lab,d2e1) => d2exp_fpemsg(out,d2e1)
+) (*case+*)//end-of-(l2d2e_fpemsg(out,ld2e))
+//
+(* ****** ****** *)
+//
+#implfun
+d2gua_fpemsg
+(out, dgua) =
+(
+case+
+dgua.node() of
+|
+D2GUAexp(d2e1) =>
+d2exp_fpemsg(out, d2e1)
+|
+D2GUAmat(d2e1,d2p2) =>
+let
+val () = d2exp_fpemsg(out, d2e1)
+val () = d2pat_fpemsg(out, d2p2)
+endlet // end of [D2GUAmat(_,_,_)]
+) (*case*) // end-of(d2gua_fpemsg(out,dgua))
+//
+(* ****** ****** *)
+//
+#implfun
+d2gpt_fpemsg
+(out, dgpt) =
+(
+case+
+dgpt.node() of
+|
+D2GPTpat(d2p1) =>
+d2pat_fpemsg(out, d2p1)
+|
+D2GPTgua(d2p1,d2gs) =>
+let
+val () = d2pat_fpemsg(out, d2p1)
+val () = d2gualst_fpemsg(out, d2gs)
+endlet // end of [ D2GPTgua(_,_,_) ]
+) (*case*) // end-of(d2gpt_fpemsg(out,dgpt))
+//
+(* ****** ****** *)
+//
+#implfun
+d2cls_fpemsg
+(out, dcls) =
+(
+case+
+dcls.node() of
+|
+D2CLSgpt(dgpt) =>
+d2gpt_fpemsg(out, dgpt)
+|
+D2CLScls(dgpt,d2e2) =>
+let
+val () = d2gpt_fpemsg(out, dgpt)
+val () = d2exp_fpemsg(out, d2e2)
+endlet // end of [ D2CLScls(_,_,_) ]
+) (*case*) // end-of(d2cls_fpemsg(out,dcls))
+//
+(* ****** ****** *)
+
+local
+
+fun
+auxmain
+( out: FILR
+, dcl: d2ecl): void =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+dcl.node() of
+|
+D2Cerrck(_,_) => d2ecl_fpemsg(out, dcl)
+//
+end (*let*) // end-of-(auxmain(out,dcl))
+
+(* ****** ****** *)
+in(* in-of-local *)
+(* ****** ****** *)
+
+#implfun
+d2ecl_fpemsg
+(out, dcl0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+dcl0.node() of
+|
+D2Cerrck(lvl, d2cl)  =>
+(
+auxmain( out, d2cl );
+if
+(lvl
+>FPEMSG_ERRVL) then () else
+let
+val loc0 = dcl0.lctn() in
+println
+("TREAD12-ERROR:",loc0,":",dcl0)
+end
+)
+//
+| _(* otherwise *) => (   (*skipped*)   )
+end (*let*)//end-of(d2ecl_fpemsg(out,dcl0))
+//
+endloc(*local*)//end-of(local(d2ecl_fpemsg))
+
+(* ****** ****** *)
+(*
+HX-2022-12-12: for various list/optn-derivatives
+*)
+(* ****** ****** *)
+//
+#implfun
+sort2lst_fpemsg
+(out, s2ts) =
+list_foreach<sort2>(s2ts) where
+{
+#impltmp
+foreach$work<sort2>(s2t1) = sort2_fpemsg(out,s2t1)
+}
+//
+#implfun
+sort2opt_fpemsg
+(out, topt) =
+optn_foreach<sort2>(topt) where
+{
+#impltmp
+foreach$work<sort2>(s2t1) = sort2_fpemsg(out,s2t1)
+}
 //
 (* ****** ****** *)
 //
@@ -368,6 +576,17 @@ foreach$work<l2d2e>(ld2e) = l2d2e_fpemsg(out,ld2e)
 (* ****** ****** *)
 //
 #implfun
+f2arglst_fpemsg
+(out, f2as) =
+list_foreach<f2arg>(f2as) where
+{
+#impltmp
+foreach$work<f2arg>(f2a1) = f2arg_fpemsg(out,f2a1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
 s2qaglst_fpemsg
 (out, sqas) =
 list_foreach<s2qag>(sqas) where
@@ -401,12 +620,21 @@ foreach$work<t2iag>(tia1) = t2iag_fpemsg(out,tia1)
 (* ****** ****** *)
 //
 #implfun
-d2arglst_fpemsg
-(out, d2as) =
-list_foreach<d2arg>(d2as) where
+d2gualst_fpemsg
+(out, d2gs) =
+list_foreach<d2gua>(d2gs) where
 {
 #impltmp
-foreach$work<d2arg>(d2a1) = d2arg_fpemsg(out,d2a1)
+foreach$work<d2gua>(dgua) = d2gua_fpemsg(out,dgua)
+}
+//
+#implfun
+d2clslst_fpemsg
+(out, d2cs) =
+list_foreach<d2cls>(d2cs) where
+{
+#impltmp
+foreach$work<d2cls>(d2cl) = d2cls_fpemsg(out,d2cl)
 }
 //
 (* ****** ****** *)
@@ -418,6 +646,17 @@ list_foreach<d2ecl>(dcls) where
 {
 #impltmp
 foreach$work<d2ecl>(d2cl) = d2ecl_fpemsg(out,d2cl)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d2arglst_fpemsg
+(out, d2as) =
+list_foreach<d2arg>(d2as) where
+{
+#impltmp
+foreach$work<d2arg>(d2a1) = d2arg_fpemsg(out,d2a1)
 }
 //
 (* ****** ****** *)
@@ -497,6 +736,36 @@ endlet where
   val dini = d2vardcl_get_dini(dvar)
 //
 } (*where*)//end-of-[d2vardcl_fpemsg(out,dval)]
+//
+(* ****** ****** *)
+//
+#implfun
+d2fundcl_fpemsg
+(out, dfun) =
+let
+//
+val (  ) =
+  f2arglst_fpemsg(out, fags)
+//
+val (  ) =
+  s2res_fpemsg( out , sres )
+//
+val (  ) =
+  teqd2exp_fpemsg(out, tdxp)
+//
+val (  ) =
+  wths2exp_fpemsg(out, wsxp)
+//
+endlet where
+{
+(*
+  val dpid = d2fundcl_get_dpid(dfun)
+*)
+  val fags = d2fundcl_get_farg(dfun)
+  val sres = d2fundcl_get_sres(dfun)
+  val tdxp = d2fundcl_get_tdxp(dfun)
+  val wsxp = d2fundcl_get_wsxp(dfun)
+} (*where*)//end-of-[d2fundcl_fpemsg(out,dfun)]
 //
 (* ****** ****** *)
 //
