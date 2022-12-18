@@ -217,7 +217,7 @@ end
 //
 val (  ) =
 prerrln
-("dparsed_from_fpath(\"./basics0.sats\") =\n", dpar)
+("d1parsed_from_fpath(\"./basics0.sats\") =\n", dpar)
 //
 (* ****** ****** *)
 //

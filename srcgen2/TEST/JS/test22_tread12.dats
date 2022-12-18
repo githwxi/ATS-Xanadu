@@ -288,7 +288,7 @@ end
 //
 val (  ) =
 prerrln
-("d0parsed_from_fpath(\"./mytest1.dats\") =\n", dpar)
+("d1parsed_from_fpath(\"./mytest1.dats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
@@ -310,7 +310,7 @@ end
 //
 val (  ) =
 prerrln
-("d0parsed_from_fpath(\"./mytest1.dats\") =\n", dpar)
+("d2parsed_from_fpath(\"./mytest1.dats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
