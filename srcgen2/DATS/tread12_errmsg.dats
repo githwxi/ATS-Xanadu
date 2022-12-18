@@ -294,6 +294,102 @@ S2LAB(lab,s2e1) => s2exp_fpemsg(out,s2e1)
 (* ****** ****** *)
 //
 #implfun
+s2explst_fpemsg
+(out, s2es) =
+list_foreach<s2exp>(s2es) where
+{
+#impltmp
+foreach$work<s2exp>(s2e1) = s2exp_fpemsg(out,s2e1)
+}
+#implfun
+s2expopt_fpemsg
+(out, sopt) =
+optn_foreach<s2exp>(sopt) where
+{
+#impltmp
+foreach$work<s2exp>(s2e1) = s2exp_fpemsg(out,s2e1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+l2s2elst_fpemsg
+(out, lses) =
+list_foreach<l2s2e>(lses) where
+{
+#impltmp
+foreach$work<l2s2e>(ls2e) = l2s2e_fpemsg(out,ls2e)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d2patlst_fpemsg
+(out, d2ps) =
+list_foreach<d2pat>(d2ps) where
+{
+#impltmp
+foreach$work<d2pat>(d2p1) = d2pat_fpemsg(out,d2p1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+l2d2plst_fpemsg
+(out, ldps) =
+list_foreach<l2d2p>(ldps) where
+{
+#impltmp
+foreach$work<l2d2p>(ld2p) = l2d2p_fpemsg(out,ld2p)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d2explst_fpemsg
+(out, d2es) =
+list_foreach<d2exp>(d2es) where
+{
+#impltmp
+foreach$work<d2exp>(d2e1) = d2exp_fpemsg(out,d2e1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+l2d2elst_fpemsg
+(out, ldes) =
+list_foreach<l2d2e>(ldes) where
+{
+#impltmp
+foreach$work<l2d2e>(ld2e) = l2d2e_fpemsg(out,ld2e)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+s2qaglst_fpemsg
+(out, sqas) =
+list_foreach<s2qag>(sqas) where
+{
+#impltmp
+foreach$work<s2qag>(sqa1) = s2qag_fpemsg(out,sqa1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+t2qaglst_fpemsg
+(out, tqas) =
+list_foreach<t2qag>(tqas) where
+{
+#impltmp
+foreach$work<t2qag>(tqa1) = t2qag_fpemsg(out,tqa1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
 t2iaglst_fpemsg
 (out, tias) =
 list_foreach<t2iag>(tias) where
@@ -311,6 +407,17 @@ list_foreach<d2arg>(d2as) where
 {
 #impltmp
 foreach$work<d2arg>(d2a1) = d2arg_fpemsg(out,d2a1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d2eclist_fpemsg
+(out, dcls) =
+list_foreach<d2ecl>(dcls) where
+{
+#impltmp
+foreach$work<d2ecl>(d2cl) = d2ecl_fpemsg(out,d2cl)
 }
 //
 (* ****** ****** *)
@@ -342,6 +449,54 @@ let
 val s2e1 = s2exp_fpemsg(out, s2e1)
 endlet // end of [WTHS2EXPsome(_,_)]
 ) (*case+*)//end-(wths2exp_fpemsg(out,wsxp))
+//
+(* ****** ****** *)
+//
+#implfun
+d2valdcl_fpemsg
+(out, dval) =
+let
+//
+val (  ) =
+  d2pat_fpemsg(out, dpat)
+//
+val (  ) =
+  teqd2exp_fpemsg(out, tdxp)
+//
+val (  ) =
+  wths2exp_fpemsg(out, wsxp)
+//
+endlet where
+{
+  val dpat = d2valdcl_get_dpat(dval)
+  val tdxp = d2valdcl_get_tdxp(dval)
+  val wsxp = d2valdcl_get_wsxp(dval)
+//
+} (*where*)//end-of-[d2valdcl_fpemsg(out,dval)]
+//
+(* ****** ****** *)
+//
+#implfun
+d2vardcl_fpemsg
+(out, dvar) =
+let
+//
+val (  ) =
+  s2expopt_fpemsg(out, sres)
+//
+val (  ) =
+  teqd2exp_fpemsg(out, dini)
+//
+endlet where
+{
+(*
+  val dpid = d2vardcl_get_dpid(dvar)
+  val vpid = d2vardcl_get_vpid(dvar)
+*)
+  val sres = d2vardcl_get_sres(dvar)
+  val dini = d2vardcl_get_dini(dvar)
+//
+} (*where*)//end-of-[d2vardcl_fpemsg(out,dval)]
 //
 (* ****** ****** *)
 //
