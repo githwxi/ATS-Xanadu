@@ -67,8 +67,6 @@ AB2(a:t0, i0) =
 #sexpdef
 foo(a:int) = a + a
 (* ****** ****** *)
-////
-(* ****** ****** *)
 //
 #sexpdef
 fint1 =
@@ -104,7 +102,7 @@ AB2(x:type) =
 //
 datatype
 AB3
-(a:type, n:sint) =
+(a:t0, n:i0) =
 | A of (a) | B of (a, a)
 //
 (* ****** ****** *)

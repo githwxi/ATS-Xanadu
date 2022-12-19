@@ -623,6 +623,23 @@ val () = s2res_fpemsg(out, sres)
 val () = d2exp_fpemsg(out, d2e1)
 endlet // end of [ D2Cimplmnt0(...) ]
 //
+|
+D2Cexcptcon
+(d1cl, d2cs) =>
+let
+(*
+val () = d2conlst_fpemsg(out, d2cs)
+*)
+endlet
+|
+D2Cdatatype
+(d1cl, s2cs) =>
+let
+(*
+val () = s2cstlst_fpemsg(out, s2cs)
+*)
+endlet
+//
 | D2Cnone0() => ( (*void*) )
 | D2Cnone1(d1cl) => ( (*void*) )
 |
@@ -638,9 +655,16 @@ in(* in-of-local *)
 d2ecl_fpemsg
 (out, dcl0) =
 let
+//
 #impltmp
 g_print$out<>() = out
+//
+val () =
+prerrln
+("d2ecl_fpemsg: dcl0 = ", dcl0)
+//
 in//let
+//
 case+
 dcl0.node() of
 //
@@ -659,10 +683,43 @@ end
 )
 //
 | _(* otherwise *) => (   (*skipped*)   )
+//
 end (*let*)//end-of(d2ecl_fpemsg(out,dcl0))
 //
 endloc(*local*)//end-of(local(d2ecl_fpemsg))
 
+(* ****** ****** *)
+//
+#implfun
+s2qag_fpemsg
+  (out, s2qa) = ( (*void*) )
+//(*case+*)//end-of-[t2iag_fpemsg(out,s2qa)]
+#implfun
+t2qag_fpemsg
+  (out, t2qa) = ( (*void*) )
+//(*case+*)//end-of-[t2iag_fpemsg(out,t2qa)]
+//
+(* ****** ****** *)
+//
+#implfun
+t2iag_fpemsg
+  (out, t2ia) =
+(
+s2explst_fpemsg(out, t2ia.s2es())
+) (*case+*)//end-of-[t2iag_fpemsg(out,t2ia)]
+//
+(* ****** ****** *)
+//
+#implfun
+a2tdf_fpemsg
+  (out, atdf) =
+(
+case+ atdf of
+|A2TDFsome() => ((*void*))
+|A2TDFlteq(s2e1) => s2exp_fpemsg(out, s2e1)
+|A2TDFeqeq(s2e1) => s2exp_fpemsg(out, s2e1)
+) (*case+*)//end-of-[a1tdf_fpemsg(out,atdf)]
+//
 (* ****** ****** *)
 (*
 HX-2022-12-12: for various list/optn-derivatives
@@ -745,6 +802,14 @@ foreach$work<l2d2p>(ld2p) = l2d2p_fpemsg(out,ld2p)
 d2explst_fpemsg
 (out, d2es) =
 list_foreach<d2exp>(d2es) where
+{
+#impltmp
+foreach$work<d2exp>(d2e1) = d2exp_fpemsg(out,d2e1)
+}
+#implfun
+d2expopt_fpemsg
+(out, dopt) =
+optn_foreach<d2exp>(dopt) where
 {
 #impltmp
 foreach$work<d2exp>(d2e1) = d2exp_fpemsg(out,d2e1)

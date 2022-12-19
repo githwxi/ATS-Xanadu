@@ -286,13 +286,20 @@ d2con_get_stmp:(d2con) -> stamp
 //
 fun
 d2con_set_sexp
-(d2c0: d2con,s2e0: s2exp): void
+(d2c0: d2con, s2e0: s2exp): void
 fun
 d2con_set_type
-(d2c0: d2con,t2p0: s2typ): void
+(d2c0: d2con, t2p0: s2typ): void
 //
 #symload sexp with d2con_set_sexp
 #symload type with d2con_set_type
+//
+(* ****** ****** *)
+//
+fun
+d2con_get_narg(d2c0:d2con): sint
+//
+#symload narg with d2con_get_narg
 //
 (* ****** ****** *)
 //
@@ -556,14 +563,15 @@ fun
 d2pat_none1(d1p0:d1pat): d2pat
 (* ****** ****** *)
 fun
-d2pat_var
-(loc0: loc_t, d2v1: d2var): d2pat
-fun
 d2pat_btf
 (loc0: loc_t, sym1: sym_t): d2pat
+(* ****** ****** *)
 fun
 d2pat_any
 (loc0: loc_t, sym1: sym_t): d2pat
+fun
+d2pat_var
+(loc0: loc_t, d2v1: d2var): d2pat
 (* ****** ****** *)
 //
 fun
@@ -578,6 +586,13 @@ d2pat_dapp
 , npf0: (sint)
 , d2ps: d2patlst(*arg*) ) : d2pat
 //
+(* ****** ****** *)
+fun
+d2pat_con
+(loc0: loc_t, d2c1: d2con): d2pat
+fun
+d2pat_cons
+(loc0: loc_t, d2cs: d2conlst): d2pat
 (* ****** ****** *)
 fun
 d2pat_make_node

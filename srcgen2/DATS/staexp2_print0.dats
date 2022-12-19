@@ -296,8 +296,7 @@ print("S2Etext(",name,";",s2es,")")
 |
 S2Etrcd
 (knd0, npf1, lses) =>
-print
-("S2Etrcd(",knd0,";",npf1,";",lses)
+print("S2Etrcd(",knd0,";",npf1,";",lses,")")
 //
 |
 S2Eimpr(loc0,s2e1) =>

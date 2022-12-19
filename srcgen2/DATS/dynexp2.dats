@@ -71,6 +71,8 @@ ATS_PACKNAME
 #symload lctn with d1exp_get_lctn
 #symload lctn with d1ecl_get_lctn
 (* ****** ****** *)
+#symload node with s2exp_get_node
+(* ****** ****** *)
 //
 #implfun
 d2pat_none0
@@ -99,7 +101,19 @@ d2pat_any
 d2pat_var
 (loc0, dvar) =
 (
- d2pat(loc0, D2Pvar(dvar)))
+d2pat(loc0, D2Pvar(dvar)))
+//
+(* ****** ****** *)
+//
+#implfun
+d2pat_con
+(loc0, dcon) =
+(
+d2pat(loc0, D2Pcon(dcon)))
+#implfun
+d2pat_cons
+(loc0, d2cs) =
+d2pat(loc0, D2Pcons(d2cs))
 //
 (* ****** ****** *)
 #implfun
@@ -346,6 +360,47 @@ D2CON
 ,tqas
 ,s2e0
 ,t2p0,stmp) = d2c0 in stmp end
+//
+(* ****** ****** *)
+//
+#implfun
+d2con_get_narg
+  (  d2c0  ) =
+let
+val+
+D2CON
+(loc0
+,sym0
+,ctag
+,tqas
+,s2e0
+,t2p0
+,stmp) = d2c0 in auxmain(s2e0)
+end where
+{
+fun
+auxmain
+(s2e0: s2exp): sint =
+(
+case-
+s2e0.node() of
+//
+|
+S2Euni0
+(s2vs
+,s2ps,s2e1) => auxmain(s2e1)
+//
+|
+S2Efun1
+(f2cl,npf1
+,s2es,s2e1) => list_length(s2es)
+//
+(*
+| _(*otherwise*) => (-1)//HX:error!
+*)
+//
+)
+} (*where*) // end of [d2con_get_narg]
 //
 (* ****** ****** *)
 //
