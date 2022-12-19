@@ -323,6 +323,87 @@ in//let
 //
 case+
 d2p.node() of
+//
+|D2Pvar _ => ()
+//
+|D2Pint _ => ()
+|D2Pbtf _ => ()
+|D2Pchr _ => ()
+|D2Pflt _ => ()
+|D2Pstr _ => ()
+//
+|D2Pi00 _ => ()
+|D2Pb00 _ => ()
+|D2Pc00 _ => ()
+|D2Ps00 _ => ()
+//
+|D2Pcon _ => ()
+//
+|
+D2Pbang
+( d2p1 ) =>
+d2pat_fpemsg(out, d2p1)
+|
+D2Pflat
+( d2p1 ) =>
+d2pat_fpemsg(out, d2p1)
+|
+D2Pfree
+( d2p1 ) =>
+d2pat_fpemsg(out, d2p1)
+//
+|
+D2Psapp
+(d2p1, s2vs) =>
+let
+val () =
+d2pat_fpemsg(out, d2p1)
+endlet
+//
+|
+D2Pdap0(d2p1) =>
+let
+val () =
+d2pat_fpemsg(out, d2p1)
+endlet
+|
+D2Pdap1(d2p1) =>
+let
+val () =
+d2pat_fpemsg(out, d2p1)
+endlet
+//
+|
+D2Pdapp
+(d2f0,npf1,d2ps) =>
+let
+  val () =
+  d2pat_fpemsg(out, d2f0)
+  val () =
+  d2patlst_fpemsg(out, d2ps)
+endlet
+//
+|
+D2Ptup0
+(npf1, d2ps) =>
+let
+val () = d2patlst_fpemsg(out, d2ps)
+endlet
+|
+D2Ptup1
+(tknd,npf1,d2ps) =>
+let
+val () = d2patlst_fpemsg(out, d2ps)
+endlet
+|
+D2Prcd2
+(tknd,npf1,ldps) =>
+let
+val () = l2d2plst_fpemsg(out, ldps)
+endlet
+//
+|D2Pnone0() => (   (*void*)   )
+|D2Pnone1(d1e1) => (   (*void*)   )
 |
 D2Perrck(_,_) => d2pat_fpemsg(out, d2p)
 //
