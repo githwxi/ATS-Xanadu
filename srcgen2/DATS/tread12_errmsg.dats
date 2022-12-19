@@ -381,7 +381,7 @@ let
   d2pat_fpemsg(out, d2f0)
   val () =
   d2patlst_fpemsg(out, d2ps)
-endlet
+end (*let*) // end-of-(D2Pdapp)
 //
 |
 D2Ptup0
@@ -402,7 +402,17 @@ let
 val () = l2d2plst_fpemsg(out, ldps)
 endlet
 //
-|D2Pnone0() => (   (*void*)   )
+|
+D2Pannot
+(d2p1,s1e2,s2e2) =>
+let
+val () = d2pat_fpemsg( out , d2p1 )
+val () = s2exp_fpemsg( out , s2e2 )
+endlet
+//
+|D2Pg1mac(gmac) => (   (*void*)   )
+//
+|D2Pnone0(    ) => (   (*void*)   )
 |D2Pnone1(d1e1) => (   (*void*)   )
 |
 D2Perrck(_,_) => d2pat_fpemsg(out, d2p)
@@ -547,6 +557,15 @@ val () = d2exp_fpemsg(out, d2e1)
 val () = d2expopt_fpemsg(out, dthn)
 val () = d2expopt_fpemsg(out, dels)
 endlet
+//
+|
+D2Ecas0
+(tknd,d2e1,dcls) =>
+let
+val () = d2exp_fpemsg(out, d2e1)
+val () = d2clslst_fpemsg(out, dcls)
+endlet
+//
 |
 D2Etup0
 (npf1, d2es) =>
@@ -566,7 +585,58 @@ let
 val () = l2d2elst_fpemsg(out, ldes)
 endlet
 //
-|D2Enone0() => (   (*void*)   )
+|
+D2Elam0
+(tknd,f2as
+,sres,arrw,d2e1) =>
+let
+//
+  val () =
+  f2arglst_fpemsg(out, f2as)
+//
+  val () = s2res_fpemsg(out , sres)
+  val () = d2exp_fpemsg(out , d2e1)
+//
+endlet // end of [D1Elam0(tknd,...)]
+|
+D2Efix0
+(tknd,dpid,f2as
+,sres,arrw,d2e1) =>
+let
+//
+  val () =
+  f2arglst_fpemsg(out, f2as)
+//
+  val () = s2res_fpemsg( out, sres)
+  val () = d2exp_fpemsg( out, d2e1)
+//
+endlet // end of [D1Elam0(tknd,...)]
+//
+|
+D2Etry0
+(tknd,d2e1,dcls) =>
+let
+val () = d2exp_fpemsg(out, d2e1)
+val () = d2clslst_fpemsg(out, dcls)
+endlet
+//
+|D2Eaddr(d2e1) => fpemsg(out, d2e1)
+|D2Efold(d2e1) => fpemsg(out, d2e1)
+|D2Eeval(d2e1) => fpemsg(out, d2e1)
+|D2Efree(d2e1) => fpemsg(out, d2e1)
+|
+D2Eraise(d2e1) => fpemsg(out, d2e1)
+|
+D2Elazy0(d2e1) => fpemsg(out, d2e1)
+|
+D2Elazy1
+( d2e1, d2es ) =>
+let
+val () = d2exp_fpemsg(out, d2e1)
+val () = d2explst_fpemsg(out, d2es)
+endlet // end-(D2Elazy1(d2e1,d2es))
+//
+|D2Enone0(    ) => (   (*void*)   )
 |D2Enone1(d1e1) => (   (*void*)   )
 |
 D2Eerrck(_,_) => d2exp_fpemsg(out, d2e)
