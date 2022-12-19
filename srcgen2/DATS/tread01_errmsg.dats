@@ -803,7 +803,7 @@ val
 endlet // end of [D1Eexists(...)]
 //
 |D1Enone0() => (  (*void*)  )
-|D1Enone1(s0e1) => (  (*void*)  )
+|D1Enone1(d0e1) => (  (*void*)  )
 //
 |
 D1Eerrck _ => d1exp_fpemsg(out, d1e)

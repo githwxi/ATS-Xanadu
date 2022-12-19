@@ -336,8 +336,14 @@ in(* in-of-local *)
 d2pat_fpemsg
 ( out, d2p0 ) =
 let
+//
 #impltmp
 g_print$out<>() = out
+//
+val () =
+prerrln
+("d2pat_fpemsg: d2p0 = ", d2p0)
+//
 in//let
 //
 case+
@@ -387,6 +393,100 @@ in//let
 //
 case+
 d2e.node() of
+//
+|D2Eint _ => ()
+|D2Ebtf _ => ()
+|D2Echr _ => ()
+|D2Eflt _ => ()
+|D2Estr _ => ()
+//
+|D2Etop _ => ()
+//
+|D2Evar _ => ()
+//
+|D2Econ _ => ()
+|D2Ecst _ => ()
+//
+|
+D2Esapp
+(d2e1, s2es) =>
+let
+val () =
+d2exp_fpemsg(out, d2e1)
+val () =
+s2explst_fpemsg(out, s2es)
+endlet
+|D2Etapp
+(d2e1, s2es) =>
+let
+val () =
+d2exp_fpemsg(out, d2e1)
+val () =
+s2explst_fpemsg(out, s2es)
+endlet
+//
+|
+D2Edap0(d2e1) =>
+let
+  val () =
+  d2exp_fpemsg(out, d2e1)
+endlet
+|
+D2Edapp
+(d2f0,npf1,d2es) =>
+let
+  val () =
+  d2exp_fpemsg(out, d2f0)
+  val () =
+  d2explst_fpemsg(out, d2es)
+endlet
+//
+|
+D2Elet0
+(dcls, d2e1) =>
+let
+val () =
+d2eclist_fpemsg(out, dcls)
+val () = d2exp_fpemsg(out, d2e1)
+endlet
+|
+D2Ewhere
+(d2e1, dcls) =>
+let
+val () =
+d2eclist_fpemsg(out, dcls)
+val () = d2exp_fpemsg(out, d2e1)
+endlet
+//
+|
+D2Eif0
+(d2e1,dthn,dels) =>
+let
+val () = d2exp_fpemsg(out, d2e1)
+val () = d2expopt_fpemsg(out, dthn)
+val () = d2expopt_fpemsg(out, dels)
+endlet
+|
+D2Etup0
+(npf1, d2es) =>
+let
+val () = d2explst_fpemsg(out, d2es)
+endlet
+|
+D2Etup1
+(tknd,npf1,d2es) =>
+let
+val () = d2explst_fpemsg(out, d2es)
+endlet
+|
+D2Ercd2
+(tknd,npf1,ldes) =>
+let
+val () = l2d2elst_fpemsg(out, ldes)
+endlet
+//
+|D2Enone0() => (   (*void*)   )
+|D2Enone1(d1e1) => (   (*void*)   )
 |
 D2Eerrck(_,_) => d2exp_fpemsg(out, d2e)
 //
@@ -400,8 +500,14 @@ in(* in-of-local *)
 d2exp_fpemsg
 ( out, d2e0 ) =
 let
+//
 #impltmp
 g_print$out<>() = out
+//
+val () =
+prerrln
+("d2exp_fpemsg: d2e0 = ", d2e0)
+//
 in//let
 //
 case+
@@ -1053,6 +1159,17 @@ endlet where
   val dres = d2cstdcl_get_dres(dcst)
 //
 } (*where*)//end-of-[d2cstdcl_fpemsg(out,dcst)]
+//
+(* ****** ****** *)
+//
+#implfun
+d2valdclist_fpemsg
+(out, d2vs) =
+list_foreach<d2valdcl>(d2vs) where
+{
+#impltmp
+foreach$work<d2valdcl>(dvar) = d2valdcl_fpemsg(out,dvar)
+}
 //
 (* ****** ****** *)
 //
