@@ -292,6 +292,24 @@ S2LAB(lab,s2e1) => s2exp_fpemsg(out,s2e1)
 ) (*case+*)//end-of-(l2s2e_fpemsg(out,ls2e))
 //
 (* ****** ****** *)
+//
+#implfun
+s2tex_fpemsg
+(out, s2tx) =
+(
+case+ s2tx of
+|S2TEXsrt(s2t1) =>
+let
+val () = sort2_fpemsg(out, s2t1)
+endlet // end of [S2TEXsrt(...)]
+|S2TEXsub(s2v1, s2ps) =>
+let
+val () = s2explst_fpemsg(out, s2ps)
+endlet // end of [S2TEXsub(s2v1,s2ps)]
+) (*case+*)//end-of-(s2tex-fpemsg(out,s2tx))
+//
+(* ****** ****** *)
+
 local
 
 fun
@@ -540,18 +558,28 @@ D2Cabssort _ => ( (*void*) )
 D2Csortdef
 (sym1, stex) => let
 //
-  val () =
-  s2tex_fpemsg(out, stex)
+val
+( ) = s2tex_fpemsg(out, stex)
 //
 endlet // end-of-(D2Csortdef)
 |
 D2Csexpdef
 (s2c1, sdef) => let
 //
-  val () =
-  s2exp_fpemsg(out, sdef)
+val
+( ) = s2exp_fpemsg(out, sdef)
 //
 endlet // end-of-(D2Csexpdef)
+//
+|
+D2Cabstype
+(s2c1, atdf) => let
+val
+( ) = a2tdf_fpemsg(out, atdf)
+endlet // end-of-(D2Cabstype)
+//
+|
+D2Cdatasort(d1cl, s2ts) => ()
 //
 |
 D2Cvaldclst
@@ -575,6 +603,25 @@ val () =
 val () =
   d2fundclist_fpemsg(out, d2cs)
 endlet // end-of-(D2Cfundclst(_,_,_))
+//
+|
+D2Cimplmnt0
+( tknd
+, sqas, tqas
+, dimp, tias
+, f2as, sres, d2e1) =>
+let
+val () =
+  s2qaglst_fpemsg(out, sqas)
+val () =
+  t2qaglst_fpemsg(out, tqas)
+val () =
+  t2iaglst_fpemsg(out, tias)
+val () =
+  f2arglst_fpemsg(out, f2as)
+val () = s2res_fpemsg(out, sres)
+val () = d2exp_fpemsg(out, d2e1)
+endlet // end of [ D2Cimplmnt0(...) ]
 //
 | D2Cnone0() => ( (*void*) )
 | D2Cnone1(d1cl) => ( (*void*) )

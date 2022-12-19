@@ -298,23 +298,21 @@ fun l2d2e_fpemsg(FILR, l2d2e): void
 (* ****** ****** *)
 fun f2arg_fpemsg:(FILR,f2arg)->void
 (* ****** ****** *)
+fun s2res_fpemsg:(FILR,s2res)->void
+(* ****** ****** *)
 fun d2gua_fpemsg:(FILR,d2gua)->void
 fun d2gpt_fpemsg:(FILR,d2gpt)->void
 fun d2cls_fpemsg:(FILR,d2cls)->void
 (* ****** ****** *)
-fun s2res_fpemsg:(FILR,s2res)->void
-(* ****** ****** *)
-fun s2qag_fpemsg:(FILR,s2qag)->void
-fun t2qag_fpemsg:(FILR,t2qag)->void
-fun t2iag_fpemsg:(FILR,t2iag)->void
-(* ****** ****** *)
-fun s2qag_fpemsg:(FILR,s2qag)->void
-fun t2qag_fpemsg:(FILR,t2qag)->void
-fun t2iag_fpemsg:(FILR,t2iag)->void
-(* ****** ****** *)
 fun d2arg_fpemsg(FILR, d2arg): void
 (* ****** ****** *)
 fun d2ecl_fpemsg(FILR, d2ecl): void
+(* ****** ****** *)
+fun s2qag_fpemsg:(FILR,s2qag)->void
+fun t2qag_fpemsg:(FILR,t2qag)->void
+fun t2iag_fpemsg:(FILR,t2iag)->void
+(* ****** ****** *)
+fun a2tdf_fpemsg(FILR, a2tdf): void
 (* ****** ****** *)
 fun sort2lst_fpemsg(FILR, sort2lst): void
 fun sort2opt_fpemsg(FILR, sort2opt): void

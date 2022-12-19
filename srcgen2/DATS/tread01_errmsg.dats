@@ -1040,6 +1040,32 @@ val () = s1exp_fpemsg(out, s1e1)
 endlet // end-of-(D0Csexpdef(...))
 //
 |
+D1Cabstype
+( tknd
+, seid
+, tmas, tres, atdf) =>
+let
+val () =
+t1maglst_fpemsg(out, tmas)
+val () =
+sort1opt_fpemsg(out, tres)
+val () = a1tdf_fpemsg(out, atdf)
+endlet // end-of-(D0Cabstype(...))
+//
+|
+D1Cabsimpl
+( tknd
+, sqid
+, smas, tres, s1e1) =>
+let
+val () =
+s1maglst_fpemsg(out, smas)
+val () =
+sort1opt_fpemsg(out, tres)
+val () = s1exp_fpemsg(out, s1e1)
+endlet // end-of-(D0Cabsimpl(...))
+//
+|
 D1Csymload
 ( tknd
 , symb, dqid, gopt) =>
