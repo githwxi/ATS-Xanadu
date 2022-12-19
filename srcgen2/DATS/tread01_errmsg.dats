@@ -1247,13 +1247,23 @@ t1iag_fpemsg
 case+
 t1i0.node() of
 (*
-|
-T1IAGnone(tok) =>
+|T1IAGnone(tok) =>
 *)
-|
-T1IAGsome(s1es) => 
-s1explst_fpemsg(out, s1es)
+|T1IAGsome
+(  s1es  ) => s1explst_fpemsg(out, s1es)
 ) (*case+*)//end-of-[t1iag_fpemsg(out,t1i0)]
+//
+(* ****** ****** *)
+//
+#implfun
+a1tdf_fpemsg
+  (out, atdf) =
+(
+case+ atdf of
+|A1TDFsome() => ((*void*))
+|A1TDFlteq(s1e1) => s1exp_fpemsg(out, s1e1)
+|A1TDFeqeq(s1e1) => s1exp_fpemsg(out, s1e1)
+) (*case+*)//end-of-[a1tdf_fpemsg(out,atdf)]
 //
 (* ****** ****** *)
 (*

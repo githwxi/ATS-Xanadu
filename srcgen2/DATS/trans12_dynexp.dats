@@ -114,6 +114,26 @@ d2exp
 //
 (* ****** ****** *)
 //
+//
+fun
+my_d2pat_con
+( loc0: loc_t
+, d2c0: d2con): d2pat =
+let  
+//
+val
+narg = d2c0.narg()
+val
+d2p0 = d2pat_con(loc0, d2c0)
+//
+in//let
+if
+(narg > 0)
+then d2p0 else d2pat_dap0(d2p0)
+end (*let*) // end of [my_d2pat_con]
+//
+(* ****** ****** *)
+//
 fun
 my_d2pat_sapp
 ( loc0: loc_t
@@ -472,13 +492,13 @@ case- d2i1 of
 |
 D2ITMvar(d2v1) =>
 f0_id0_d2var(env0, d1p0, d2v1)
-(*
 |
 D2ITMcon(d2cs) =>
-f0_id0_d2con(env0, d1e0, d2cs)
+f0_id0_d2con(env0, d1p0, d2cs)
 |
 D2ITMcst(d2cs) =>
-f0_id0_d2cst(env0, d1e0, d2cs)
+f0_id0_d2cst(env0, d1p0, d2cs)
+(*
 |
 D2ITMsym(_, dpis) =>
 f0_id0_d2sym(env0, d1e0, dpis)
@@ -491,8 +511,45 @@ f0_id0_d2var
 ! tr12env
 , d1p0: d1pat
 , d2v1: d2var): d2pat =
-(
-f0_id0_d1sym(env0, d1p0, d2v1.name()))
+let
+val-
+D1Pid0(sym1) = d1p0.node() in
+f0_id0_d1sym(env0, d1p0, sym1) end
+//
+and
+f0_id0_d2con
+( env0:
+! tr12env
+, d1p0: d1pat
+, d2cs: d2conlst): d2pat =
+if
+list_singq(d2cs)
+then
+let
+val
+loc0 = d1p0.lctn()
+val
+d2c0 = d2cs.head()
+in//let
+my_d2pat_con(loc0, d2c0)
+end // then
+else
+let
+val
+loc0 = d1p0.lctn() in//let
+  d2pat_cons(loc0, d2cs) end
+//(*let*) // end of [f0_id0_d2con]
+//
+and
+f0_id0_d2cst
+( env0:
+! tr12env
+, d1p0: d1pat
+, d2cs: d2cstlst): d2pat =
+let
+val-
+D1Pid0(sym1) = d1p0.node() in
+f0_id0_d1sym(env0, d1p0, sym1) end
 //
 (* ****** ****** *)
 //
