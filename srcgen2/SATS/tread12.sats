@@ -154,7 +154,7 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 //
 fun
-d2parsed_tread12
+d2parsed_of_tread12
 (dpar: d2parsed): (d2parsed)
 //
 (* ****** ****** *)

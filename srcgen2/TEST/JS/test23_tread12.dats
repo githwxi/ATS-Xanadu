@@ -28,6 +28,8 @@
 "./../../SATS/staexp1.sats"
 #staload
 "./../../SATS/dynexp1.sats"
+#staload
+"./../../SATS/gmacro1.sats"
 (* ****** ****** *)
 #staload
 "./../../SATS/staexp2.sats"
@@ -213,6 +215,8 @@
 "./../../DATS/tread12_dynexp.dats"
 #include
 "./../../DATS/tread12_decl00.dats"
+#include
+"./../../DATS/tread12_errmsg.dats"
 (* ****** ****** *)
 //
 local
@@ -260,46 +264,49 @@ d0parsed_from_fpath
 (0(*sta*), "./gint000.sats")
 //
 val
-dpar = d0parsed_preadx0(dpar)
+dpar =
+d0parsed_of_preadx0(dpar)
 //
-val (  ) =
-let
-  val out = g_stderr()
-in
-  d0parsed_fpemsg( out, dpar )
-end
+val
+(  ) = let
+val out = g_stderr()
+in//let
+d0parsed_fpemsg( out, dpar )
+end // let
 //
 val
 dpar =
-d1parsed_from_trans(dpar)
-val
-dpar = d1parsed_tread01(dpar)
-//
-val (  ) =
-let
-  val out = g_stderr()
-in
-  d1parsed_fpemsg( out, dpar )
-end
-//
-val (  ) =
-prerrln
-("d0parsed_from_fpath(\"./gint000.sats\") =\n", dpar)
-//
-(* ****** ****** *)
-//
+d1parsed_of_trans01(dpar)
 val
 dpar =
-d2parsed_from_trans(dpar)
+d1parsed_of_tread01(dpar)
 //
 val
-dpar = d2parsed_tread12(dpar)
+(  ) = let
+val out = g_stderr()
+in//let
+d1parsed_fpemsg( out, dpar )
+end // let
 //
 (* ****** ****** *)
 //
 val (  ) =
 prerrln
-("d0parsed_from_fpath(\"./gint000.sats\") =\n", dpar)
+("d1parsed_from_fpath(\"./gint000.sats\") =\n", dpar)
+//
+(* ****** ****** *)
+//
+val
+dpar = d2parsed_of_trans12(dpar)
+//
+val
+dpar = d2parsed_of_tread12(dpar)
+//
+(* ****** ****** *)
+//
+val (  ) =
+prerrln
+("d2parsed_from_fpath(\"./gint000.sats\") =\n", dpar)
 //
 (* ****** ****** *)
 //

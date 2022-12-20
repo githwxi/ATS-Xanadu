@@ -28,6 +28,8 @@
 "./../../SATS/staexp1.sats"
 #staload
 "./../../SATS/dynexp1.sats"
+#staload
+"./../../SATS/gmacro1.sats"
 (* ****** ****** *)
 #staload
 "./../../SATS/staexp2.sats"
@@ -167,6 +169,15 @@
 "./../../DATS/tread01_errmsg.dats"
 (* ****** ****** *)
 #include
+"./../../DATS/gmacro1.dats"
+#include
+"./../../DATS/gmacro1_print0.dats"
+#include
+"./../../DATS/trans11_myenv0.dats"
+#include
+"./../../DATS/trans11_gmacro.dats"
+(* ****** ****** *)
+#include
 "./../../DATS/staexp2.dats"
 #include
 "./../../DATS/statyp2.dats"
@@ -230,7 +241,8 @@ d0parsed_from_fpath
 (0(*sta*), "./mytest1.sats")
 //
 val
-dpar = d0parsed_preadx0(dpar)
+dpar =
+d0parsed_of_preadx0(dpar)
 //
 val (  ) =
 let
@@ -241,9 +253,10 @@ end
 //
 val
 dpar =
-d1parsed_from_trans(dpar)
+d1parsed_of_trans01(dpar)
 val
-dpar = d1parsed_tread01(dpar)
+dpar =
+d1parsed_of_tread01(dpar)
 //
 val (  ) =
 let
@@ -260,7 +273,7 @@ prerrln
 //
 val
 dpar =
-d2parsed_from_trans(dpar)
+d2parsed_of_trans12(dpar)
 //
 (* ****** ****** *)
 //

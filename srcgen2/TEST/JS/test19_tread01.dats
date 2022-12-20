@@ -193,7 +193,8 @@ d0parsed_from_fpath
 (0(*sta*), "./basics0.sats")
 //
 val
-dpar = d0parsed_preadx0(dpar)
+dpar =
+d0parsed_of_preadx0(dpar)
 //
 val (  ) =
 let
@@ -204,9 +205,10 @@ end
 //
 val
 dpar =
-d1parsed_from_trans(dpar)
+d1parsed_of_trans01(dpar)
 val
-dpar = d1parsed_tread01(dpar)
+dpar =
+d1parsed_of_tread01(dpar)
 //
 val (  ) =
 let

@@ -104,7 +104,7 @@ endlet // end of [auxlst(lst,err)]
 (* ****** ****** *)
 //
 #implfun
-d0parsed_preadx0
+d0parsed_of_preadx0
   (dpar) =
 let
 //
@@ -122,7 +122,7 @@ preadx0_d0eclistopt(parsed, nerror)
 //
 in//let
 d0parsed(stadyn,nerror,source,parsed)
-end (*let*) // end of [d0parsed_preadx0(dpar)]
+end(*let*)//end-of(d0parsed_of_preadx0(dpar))
 //
 (* ****** ****** *)
 #implfun

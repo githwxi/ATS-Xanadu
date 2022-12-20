@@ -176,7 +176,7 @@ d0parsed_from_fpath
 (0(*sta*), "./mytest1.sats")
 //
 val
-dpar = d0parsed_preadx0(dpar)
+dpar = d0parsed_of_preadx0(dpar)
 //
 val (  ) =
 let
@@ -185,7 +185,8 @@ in
   d0parsed_fpemsg( out, dpar )
 end
 //
-val dpar = d1parsed_from_trans(dpar)
+val
+dpar = d1parsed_of_trans01(dpar)
 //
 val (  ) =
 prerrln
