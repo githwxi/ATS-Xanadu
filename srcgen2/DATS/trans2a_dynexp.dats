@@ -69,5 +69,17 @@ trans2a_d2explst
 list_trans2a_fnp(env0, d2es, trans2a_d2exp)
 //
 (* ****** ****** *)
+//
+#implfun
+trans2a_d2gualst
+( env0, d2gs ) =
+list_trans2a_fnp(env0, d2gs, trans2a_d2gua)
+//
+#implfun
+trans2a_d2clslst
+( env0, dcls ) =
+list_trans2a_fnp(env0, dcls, trans2a_d2cls)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans2a_dynexp.dats] *)
