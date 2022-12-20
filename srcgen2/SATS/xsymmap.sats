@@ -124,6 +124,13 @@ stkmap_free_nil
 (* ****** ****** *)
 //
 fun
+stkmap_poptop0
+  {itm:tbox}
+(map: &stkmap(itm) >> _): sint
+//
+(* ****** ****** *)
+//
+fun
 stkmap_poplam0
   {itm:tbox}
 (map: &stkmap(itm) >> _): sint

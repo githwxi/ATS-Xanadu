@@ -128,6 +128,47 @@ case- map of ~stkmap_nil() => ())
 (* ****** ****** *)
 //
 #implfun
+stkmap_poptop0
+  {itm}(map) = let
+//
+fnx
+loop
+( kxs
+: stkmap(itm)
+, err: &sint >> _): stkmap(itm) =
+(
+case+ kxs of
+| !
+stkmap_nil() => kxs // err = 0
+| ~
+stkmap_cons
+(k1, x1, kxs) => loop(kxs, err)
+//
+| !
+stkmap_lam0 _ => (err := 1; kxs)
+//
+| !
+stkmap_let0 _ => (err := 1; kxs)
+//
+| !
+stkmap_loc1 _ => (err := 1; kxs)
+| !
+stkmap_loc2 _ => (err := 1; kxs)
+//
+)
+//
+in//let
+let
+var
+err: sint = 0
+val
+( ) =
+(map := loop(map, err)) in err end
+end (*let*) // [ stkmap_poptop0(map) ]
+//
+(* ****** ****** *)
+//
+#implfun
 stkmap_pshlam0
   {itm}(map) =
 (
