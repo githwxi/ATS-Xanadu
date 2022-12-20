@@ -96,9 +96,124 @@ tr2aenv_free_top
 case+ env0 of
 ~TR2AENV(stkmap) =>
 let
-val () =
+val nerr =
+stkmap_poptop0(stkmap)
+val (  ) =
 stkmap_free_nil(stkmap) in () end//let
 ) (*case+*)//end-of-(tr2aenv_free_top(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr2aenv_poplet0
+(     env0     ) = let
+//
+val+
+@TR2AENV(!stkmap) = env0
+//
+in//let
+//
+let
+val nerr =
+stkmap_poplet0(stkmap) in $fold(env0)
+end (*let*)
+//
+end (*let*)//end-of-(tr2aenv_poplet0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr2aenv_pshlet0
+(     env0     ) = let
+//
+val+
+@TR2AENV(!stkmap) = env0
+//
+in//let
+//
+stkmap_pshlet0(stkmap); $fold(env0)
+//
+end (*let*)//end-of-(tr2aenv_pshlet0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr2aenv_pshloc1
+(     env0     ) = let
+//
+val+
+@TR2AENV(!stkmap) = env0
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshloc1(stkmap) in $fold(env0)
+end (*let*)
+//
+end (*let*)//end-of-(tr2aenv_pshloc1(env0))
+//
+#implfun
+tr2aenv_pshloc2
+(     env0     ) = let
+//
+val+
+@TR2AENV(!stkmap) = env0
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshloc2(stkmap) in $fold(env0)
+end (*let*)
+//
+end (*let*)//end-of-(tr2aenv_pshloc2(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr2aenv_locjoin
+(     env0     ) = let
+//
+val+
+@TR2AENV(!stkmap) = env0
+//
+in//let
+//
+$fold(env0) where
+{
+val
+(nerr, kxs) =
+stkmap_poploc0(stkmap)
+val
+( (*nil*) ) =
+stkmap_insert_kxs(stkmap, kxs) }
+//
+end (*let*)//end-of-(tr2aenv_locjoin(env0))
+//
+(* ****** ****** *)
+
+#implfun
+tr2aenv_search_opt
+  (env0, k0) = let
+//
+val+
+TR2AENV(stkmap) = env0 in
+stkmap_search_opt(stkmap, k0) end
+//
+(*let*)//end-of-[tr2aenv_search_opt(env0,k0)]
+
+(* ****** ****** *)
+//
+#implfun
+tr2aenv_insert_any
+  (tenv, k0, x0) = let
+//
+val+
+@TR2AENV(!stkmap) = tenv in
+stkmap_insert_any(stkmap, k0, x0) end
+//
+(*let*)//end-of(tr2aenv_insert_any(tenv,k0,x0))
 //
 (* ****** ****** *)
 
