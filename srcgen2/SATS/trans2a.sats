@@ -66,10 +66,13 @@ LAB = "./xlabel0.sats"
 #staload
 LOC = "./locinfo.sats"
 #staload
+SYM = "./xsymbol.sats"
+#staload
 LEX = "./lexing0.sats"
 //
 #typedef lab_t = $LAB.lab_t
 #typedef loc_t = $LOC.loc_t
+#typedef sym_t = $SYM.sym_t
 #typedef token = $LEX.token
 //
 (* ****** ****** *)
@@ -100,6 +103,8 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef d2parsed = $D2E.d2parsed
 (* ****** ****** *)
+#vwtpdef s2typopt_vt = optn_vt(s2typ)
+(* ****** ****** *)
 //
 fun
 d2parsed_of_trans2a
@@ -116,6 +121,31 @@ tr2aenv_free_top(tr2aenv):(void)
 fun
 tr2aenv_free_top(tr2aenv):md2ct2p
 *)
+//
+(* ****** ****** *)
+//
+fun
+tr2aenv_poplet0(env0: !tr2aenv): void
+fun
+tr2aenv_pshlet0(env0: !tr2aenv): void
+fun
+tr2aenv_pshloc1(env0: !tr2aenv): void
+fun
+tr2aenv_pshloc2(env0: !tr2aenv): void
+//
+fun
+tr2aenv_locjoin(env0: !tr2aenv): void
+//
+(* ****** ****** *)
+//
+fun
+tr2aenv_search_opt
+( env0:
+! tr2aenv, key: sym_t): s2typopt_vt
+fun
+tr2aenv_insert_any
+( env0:
+! tr2aenv, key: sym_t, itm: s2typ): void
 //
 (* ****** ****** *)
 //
