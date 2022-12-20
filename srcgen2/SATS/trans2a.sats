@@ -84,6 +84,26 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef d2eclist = $D2E.d2eclist
 (* ****** ****** *)
+#typedef d2parsed = $D2E.d2parsed
+(* ****** ****** *)
+#abstbox d2cstenv_tbox // = ptr
+#typedef d2cstenv = d2cstenv_tbox
+(* ****** ****** *)
+//
+fun
+d2parsed_of_trans2a
+( dpar : d2parsed ): (d2parsed)
+//
+(* ****** ****** *)
+//
+fun
+tr2aenv_make_nil
+  ( (*void*) ) : tr2aenv
+fun
+tr2aenv_free_top
+( env0 : tr2aenv ) : (d2cstenv)
+//
+(* ****** ****** *)
 //
 fun
 <x0:t0>
@@ -92,7 +112,8 @@ list_trans2a_fnp
 ( e1:
 ! tr2aenv
 , xs: list(x0)
-, (!tr2aenv, x0) -> y0): list(y0)
+, fopr
+: (!tr2aenv, x0) -> y0): list(y0)
 fun
 <x0:t0>
 <y0:t0>
@@ -100,7 +121,8 @@ optn_trans2a_fnp
 ( e1:
 ! tr2aenv
 , xs: optn(x0)
-, (!tr2aenv, x0) -> y0): optn(y0)
+, fopr
+: (!tr2aenv, x0) -> y0): optn(y0)
 //
 (* ****** ****** *)
 //
