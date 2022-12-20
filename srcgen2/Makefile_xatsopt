@@ -529,6 +529,9 @@ all_dats:: \
 trans2a_dats
 trans2a_dats: ; $(XATSOPT) --dynamic DATS/trans2a.dats
 all_dats:: \
+trans2a_myenv0_dats
+trans2a_myenv0_dats: ; $(XATSOPT) --dynamic DATS/trans2a_myenv0.dats
+all_dats:: \
 trans2a_dynexp_dats
 trans2a_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trans2a_dynexp.dats
 all_dats:: \

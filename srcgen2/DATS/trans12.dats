@@ -416,7 +416,7 @@ end (*let*) // end of [s1exp_get_s2cstlst(...)]
 (* ****** ****** *)
 
 #implfun
-d2parsed_from_trans
+d2parsed_of_trans12
   (dpar) =
 let
 val stadyn =

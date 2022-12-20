@@ -634,7 +634,7 @@ D2Elazy1
 let
 val () = d2exp_fpemsg(out, d2e1)
 val () = d2explst_fpemsg(out, d2es)
-endlet // end-(D2Elazy1(d2e1,d2es))
+endlet//end-of(D2Elazy1(d2e1,d2es))
 //
 |D2Enone0(    ) => (   (*void*)   )
 |D2Enone1(d1e1) => (   (*void*)   )

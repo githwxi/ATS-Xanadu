@@ -206,7 +206,7 @@ d0parsed_from_fpath
 //
 val
 dpar =
-d1parsed_from_trans(dpar)
+d1parsed_of_trans01(dpar)
 //
 val
 tenv =
@@ -733,9 +733,9 @@ val
 dpar =
 d0parsed_from_fpath(knd0, fpth)
 val
-dpar = d1parsed_from_trans(dpar)
+dpar = d1parsed_of_trans01(dpar)
 val
-dpar = d2parsed_from_trans(dpar)
+dpar = d2parsed_of_trans12(dpar)
 //
 in//let
 //

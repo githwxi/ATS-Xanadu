@@ -341,7 +341,7 @@ s2cst_selects_list
 (* ****** ****** *)
 //
 fun
-d2parsed_from_trans
+d2parsed_of_trans12
 ( dpar : d1parsed ): (d2parsed)
 //
 (* ****** ****** *)

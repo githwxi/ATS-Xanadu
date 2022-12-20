@@ -357,7 +357,7 @@ d0exp_ELSE = $D0E.d0exp_ELSE
 (* ****** ****** *)
 //
 fun
-d1parsed_from_trans
+d1parsed_of_trans01
 (  dpar: d0parsed  ): d1parsed
 //
 (* ****** ****** *)

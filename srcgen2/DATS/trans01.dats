@@ -369,7 +369,7 @@ map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 (* ****** ****** *)
 
 #implfun
-d1parsed_from_trans
+d1parsed_of_trans01
   (dpar) =
 let
 val stadyn =
