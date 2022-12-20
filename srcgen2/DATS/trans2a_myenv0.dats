@@ -61,4 +61,49 @@ ATS_PACKNAME
 #staload "./../SATS/trans2a.sats"
 (* ****** ****** *)
 
+local
+//
+(*
+#absimpl // s2cst->s2typ
+ms2ct2p_tbox = topmap(s2typ)
+*)
+//
+datavwtp
+tr2aenv =
+TR2AENV of (stkmap(s2typ))
+#absimpl tr2aenv_vtbx = tr2aenv
+//
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+//
+#implfun
+tr2aenv_make_nil
+  ( (*void*) ) = let
+//
+val
+stkmap =
+stkmap_make_nil() in TR2AENV(stkmap)
+//
+end (*let*) // end of [tr2aenv_make_nil()]
+//
+(* ****** ****** *)
+//
+#implfun
+tr2aenv_free_top
+  (  env0  ) =
+(
+case+ env0 of
+~TR2AENV(stkmap) =>
+let
+val () =
+stkmap_free_nil(stkmap) in () end//let
+) (*case+*)//end-of-(tr2aenv_free_top(env0))
+//
+(* ****** ****** *)
+
+end (*local*) // end of [ local(tr2aenv) ]
+//
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_trans2a_myenv0.dats] *)

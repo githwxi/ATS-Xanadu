@@ -38,6 +38,14 @@
 #staload
 "./../../SATS/dynexp2.sats"
 (* ****** ****** *)
+#staload
+"./../../SATS/trans12.sats"
+#staload
+"./../../SATS/tread12.sats"
+(* ****** ****** *)
+#staload
+"./../../SATS/trans2a.sats"
+(* ****** ****** *)
 #include
 "./../../DATS/xbasics.dats"
 #include
@@ -218,6 +226,15 @@
 #include
 "./../../DATS/tread12_errmsg.dats"
 (* ****** ****** *)
+#include
+"./../../DATS/trans2a.dats"
+#include
+"./../../DATS/trans2a_myenv0.dats"
+#include
+"./../../DATS/trans2a_dynexp.dats"
+#include
+"./../../DATS/trans2a_decl00.dats"
+(* ****** ****** *)
 //
 local
 //
@@ -281,26 +298,39 @@ val
 dpar =
 d1parsed_of_tread01(dpar)
 //
-val
-(  ) = let
+val () =
+let
 val out = g_stderr()
 in//let
-d1parsed_fpemsg( out, dpar )
-end // let
+d1parsed_fpemsg( out, dpar ) end // let
 //
 (* ****** ****** *)
 //
-val (  ) =
+val
+(  ) =
 prerrln
 ("d1parsed_from_fpath(\"./gint000.sats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
 val
-dpar = d2parsed_of_trans12(dpar)
+dpar =
+d2parsed_of_trans12(dpar)
+val
+dpar =
+d2parsed_of_tread12(dpar)
+//
+val () =
+let
+val out = g_stderr()
+in//let
+d2parsed_fpemsg( out, dpar ) end // let
+//
+(* ****** ****** *)
 //
 val
-dpar = d2parsed_of_tread12(dpar)
+dpar =
+d2parsed_of_trans2a(dpar)
 //
 (* ****** ****** *)
 //

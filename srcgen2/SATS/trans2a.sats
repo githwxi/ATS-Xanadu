@@ -50,9 +50,15 @@ is for resolving overloaded symbols!
 *)
 (* ****** ****** *)
 #absvtbx
-tr2aenv_vtbx
+tr2aenv_vtbx // = ptr
 #vwtpdef
 tr2aenv = tr2aenv_vtbx
+(*
+#abstbox
+ms2ct2p_tbox // = ptr
+#typedef
+ms2ct2p = ms2ct2p_tbox
+*)
 (* ****** ****** *)
 //
 #staload
@@ -94,9 +100,6 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef d2parsed = $D2E.d2parsed
 (* ****** ****** *)
-#abstbox d2cstenv_tbox // = ptr
-#typedef d2cstenv = d2cstenv_tbox
-(* ****** ****** *)
 //
 fun
 d2parsed_of_trans2a
@@ -105,11 +108,14 @@ d2parsed_of_trans2a
 (* ****** ****** *)
 //
 fun
-tr2aenv_make_nil
-  ( (*void*) ) : tr2aenv
+tr2aenv_make_nil((*nil*)):tr2aenv
+//
 fun
-tr2aenv_free_top
-( env0 : tr2aenv ) : (d2cstenv)
+tr2aenv_free_top(tr2aenv):(void)
+(*
+fun
+tr2aenv_free_top(tr2aenv):md2ct2p
+*)
 //
 (* ****** ****** *)
 //
