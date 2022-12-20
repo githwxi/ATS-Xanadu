@@ -75,12 +75,20 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
+(* ****** ****** *)
+#typedef d2gua = $D2E.d2gua
+#typedef d2gpt = $D2E.d2gpt
+#typedef d2cls = $D2E.d2cls
+(* ****** ****** *)
 #typedef d2ecl = $D2E.d2ecl
 (* ****** ****** *)
 #typedef d2patlst = $D2E.d2patlst
 (* ****** ****** *)
 #typedef d2explst = $D2E.d2explst
 #typedef d2expopt = $D2E.d2expopt
+(* ****** ****** *)
+#typedef d2gualst = $D2E.d2gualst
+#typedef d2clslst = $D2E.d2clslst
 (* ****** ****** *)
 #typedef d2eclist = $D2E.d2eclist
 (* ****** ****** *)
@@ -128,19 +136,35 @@ optn_trans2a_fnp
 //
 fun
 trans2a_d2pat
-(env0:
-!tr2aenv, d2p0: d2pat): d2pat
+( env0:
+! tr2aenv, d2p0: d2pat): d2pat
+//
 fun
 trans2a_d2exp
-(env0:
-!tr2aenv, d2e0: d2exp): d2exp
+( env0:
+! tr2aenv, d2e0: d2exp): d2exp
+//
+(* ****** ****** *)
+//
+fun
+trans2a_d2gua
+( env0:
+! tr2aenv, dgua: d2gua): d2gua
+fun
+trans2a_d2gpt
+( env0:
+! tr2aenv, dgpt: d2gpt): d2gpt
+fun
+trans2a_d2cls
+( env0:
+! tr2aenv, dcls: d2cls): d2cls
 //
 (* ****** ****** *)
 //
 fun
 trans2a_d2ecl
-(env0:
-!tr2aenv, d2cl: d2ecl): d2ecl
+( env0:
+! tr2aenv, d2cl: d2ecl): d2ecl
 //
 (* ****** ****** *)
 //
@@ -160,6 +184,17 @@ fun
 trans2a_d2explst
 ( env0:
 ! tr2aenv, d2es: d2explst): d2explst
+//
+(* ****** ****** *)
+//
+fun
+trans2a_d2gualst
+( env0:
+! tr2aenv, d2gs: d2gualst): d2gualst
+fun
+trans2a_d2clslst
+( env0:
+! tr2aenv, dcls: d2clslst): d2clslst
 //
 (* ****** ****** *)
 //
