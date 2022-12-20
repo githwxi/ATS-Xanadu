@@ -171,7 +171,7 @@ d0eclseq_WHERE = $D0E.d0eclseq_WHERE
 (* ****** ****** *)
 //
 fun
-d0parsed_preadx0
+d0parsed_of_preadx0
 (prgm: d0parsed): d0parsed
 //
 (* ****** ****** *)
@@ -179,7 +179,7 @@ d0parsed_preadx0
 #typedef
 fpreadx0
 (syn: tx) =
-(syn , &sint >> _) -> syn
+(syn , &sint >> _) -> (syn)
 //
 (* ****** ****** *)
 (*

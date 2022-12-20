@@ -264,7 +264,8 @@ d0parsed_from_fpath
 (1(*dyn*), "./mytest1.dats")
 //
 val
-dpar = d0parsed_preadx0(dpar)
+dpar =
+d0parsed_of_preadx0(dpar)
 //
 val (  ) =
 let
@@ -275,9 +276,10 @@ end
 //
 val
 dpar =
-d1parsed_from_trans(dpar)
+d1parsed_of_trans01(dpar)
 val
-dpar = d1parsed_tread01(dpar)
+dpar =
+d1parsed_of_tread01(dpar)
 //
 val (  ) =
 let
@@ -294,10 +296,11 @@ prerrln
 //
 val
 dpar =
-d2parsed_from_trans(dpar)
+d2parsed_of_trans12(dpar)
 //
 val
-dpar = d2parsed_tread12(dpar)
+dpar =
+d2parsed_of_tread12(dpar)
 //
 val (  ) =
 let

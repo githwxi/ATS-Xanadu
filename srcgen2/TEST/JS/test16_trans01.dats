@@ -184,9 +184,9 @@ d0parsed_from_fpath
 ( 1(*dyn*)
 , "./../../../prelude/DATS/bool000.dats")
 val
-dpar = d0parsed_preadx0(dpar)
+dpar = d0parsed_of_preadx0(dpar)
 val
-dpar = d1parsed_from_trans(dpar)
+dpar = d1parsed_of_trans01(dpar)
 //
 val (  ) =
 prerrln
@@ -202,9 +202,9 @@ d0parsed_from_fpath
 ( 1(*dyn*)
 , "./../../../prelude/DATS/char000.dats")
 val
-dpar = d0parsed_preadx0(dpar)
+dpar = d0parsed_of_preadx0(dpar)
 val
-dpar = d1parsed_from_trans(dpar)
+dpar = d1parsed_of_trans01(dpar)
 //
 val (  ) =
 prerrln

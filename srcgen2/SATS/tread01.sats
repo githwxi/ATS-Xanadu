@@ -185,7 +185,7 @@ D1E = "./dynexp1.sats"
 (* ****** ****** *)
 //
 fun
-d1parsed_tread01
+d1parsed_of_tread01
 (dpar: d1parsed): (d1parsed)
 //
 (* ****** ****** *)

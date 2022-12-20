@@ -116,7 +116,7 @@ endlet // end of [optn_cons(tm1)]
 (* ****** ****** *)
 
 #implfun
-d2parsed_tread12
+d2parsed_of_tread12
   (dpar) =
 let
 //
@@ -146,7 +146,7 @@ then (dpar) else
 d2parsed
 (stadyn,nerror,source,t1penv,t2penv,parsed)
 //
-end (*let*) // end of [d2parsed_tread12(dpar)]
+end(*let*)//end-of(d2parsed_of_tread12(dpar))
 
 (* ****** ****** *)
 //
