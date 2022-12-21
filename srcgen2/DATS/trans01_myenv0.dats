@@ -294,7 +294,7 @@ topmap_insert_any(topmap, k0, x0)//top
 else
 stkmap_insert_any(stkmap, k0, x0)//inner
 //
-end (*let*)//end-of(tr01env_insert_any(tenv,k0,x0))
+end(*let*)//end-of(tr01env_insert_any(tenv,k0,x0))
 //
 (* ****** ****** *)
 //
@@ -317,7 +317,7 @@ topmap_insmix_any(topmap, k0, x0, mix)//top
 else
 stkmap_insmix_any(stkmap, k0, x0, mix)//inner
 //
-end (*let*)//end-of(tr01env_insmix_any(tenv,k0,x0))
+end(*let*)//end-of(tr01env_insmix_any(tenv,k0,x0))
 //
 (* ****** ****** *)
 

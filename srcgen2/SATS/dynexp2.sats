@@ -1004,10 +1004,12 @@ D2Cimplmnt0 of
 (token(*fnk//vlk*), t2qaglst, d2cstdclist)
 //
 |
-D2Cnone0 of ((*void*)) | D2Cnone1 of (d1ecl)
+D2Cnone0 of ((*nil*))
+|
+D2Cnone1 of ( d1ecl ) | D2Cnone2 of ( d2ecl )
 //
 |
-D2Cerrck of (sint(*lvl*), d2ecl)//tread01-error
+D2Cerrck of (sint(*lvl*), d2ecl)//tread12-error
 //
 // HX-2022-??-??: end-of-[ datatype(d2ecl_node) ]
 //

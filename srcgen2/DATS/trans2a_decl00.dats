@@ -48,7 +48,40 @@ ATS_PACKNAME
 #staload
 _(*TRANS2a*) = "./trans2a.dats"
 (* ****** ****** *)
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
+(* ****** ****** *)
 #staload "./../SATS/trans2a.sats"
+(* ****** ****** *)
+//
+#implfun
+trans2a_d2ecl
+( env0, d2cl ) = let
+//
+(*
+val
+loc0 = d2cl.lctn()
+val () =
+prerrln
+("trans2a_d2ecl: d2cl = ", d2cl)
+*)
+//
+in//let
+//
+case+
+d2cl.node() of
+|_(*otherwise*) =>
+let
+  val loc0 = d2cl.lctn()
+in//let
+  d2ecl_make_node(loc0, D2Cnone2( d2cl ))
+end (*let*) // end of [_(*otherwise*)] // temp
+//
+end where
+{
+
+} (*where*) // end of [trans12_d1ecl(env0,d1cl)]
+//
 (* ****** ****** *)
 //
 #implfun

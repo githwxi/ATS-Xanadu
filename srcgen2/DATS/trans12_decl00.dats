@@ -332,7 +332,7 @@ loc0 = darg.lctn()
 (*
 val () =
 prerrln
-("trans12_d1ecl: darg = ", darg)
+("trans12_d1arg: darg = ", darg)
 *)
 //
 in
