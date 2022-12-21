@@ -157,6 +157,18 @@ d2exp(loc0, D2Evar(dvar)))
 //
 (* ****** ****** *)
 #implfun
+d2exp_con
+(loc0, dcon) =
+(
+d2exp(loc0, D2Econ(dcon)))
+(* ****** ****** *)
+#implfun
+d2exp_cst
+(loc0, dcst) =
+(
+d2exp(loc0, D2Ecst(dcst)))
+(* ****** ****** *)
+#implfun
 d2exp_sym0
 (loc0, d1e0, dpis) =
 d2exp_make_node

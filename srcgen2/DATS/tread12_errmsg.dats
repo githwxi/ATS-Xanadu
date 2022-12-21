@@ -897,6 +897,13 @@ val () = s2cstlst_fpemsg(out, s2cs)
 *)
 endlet
 //
+|
+D2Cdynconst
+(tknd,t2as,d2cs) =>
+let
+val () = d2cstdclist_fpemsg(out, d2cs)
+endlet
+//
 | D2Cnone0() => ( (*void*) )
 | D2Cnone1(d1cl) => ( (*void*) )
 |
@@ -964,6 +971,26 @@ t2iag_fpemsg
 (
 s2explst_fpemsg(out, t2ia.s2es())
 ) (*case+*)//end-of-[t2iag_fpemsg(out,t2ia)]
+//
+(* ****** ****** *)
+//
+#implfun
+d2arg_fpemsg
+  (out, darg) =
+(
+case+
+darg.node() of
+|
+D2ARGsta0
+(s2vs,s2ps) =>
+s2explst_fpemsg(out, s2ps(*prop*))
+|
+D2ARGdyn1
+(  s2e1  ) => s2exp_fpemsg(out, s2e1)
+|
+D2ARGdyn2
+(npf1,s2es) => s2explst_fpemsg(out, s2es)
+) (*case+*)//end-of-[d2arg_fpemsg(out,darg)]
 //
 (* ****** ****** *)
 //
