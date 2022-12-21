@@ -96,8 +96,13 @@ tr2aenv_free_top
 case+ env0 of
 ~TR2AENV(stkmap) =>
 let
+//
+var
+stkmap = stkmap
+//
 val nerr =
 stkmap_poptop0(stkmap)
+//
 val (  ) =
 stkmap_free_nil(stkmap) in () end//let
 ) (*case+*)//end-of-(tr2aenv_free_top(env0))
