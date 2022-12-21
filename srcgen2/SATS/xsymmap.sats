@@ -119,7 +119,7 @@ topmap_insert_kxs
 //
 fun
 stkmap_free_nil
-{itm:tbox}(map: stkmap(itm)): void
+{itm:tbox}(stkmap(itm)): void
 //
 (* ****** ****** *)
 //
