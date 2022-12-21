@@ -114,7 +114,6 @@ d2exp
 //
 (* ****** ****** *)
 //
-//
 fun
 my_d2pat_con
 ( loc0: loc_t
@@ -218,6 +217,29 @@ d2pat_dapp(loc0, d2f0, npf1, d2as)
 ) (*case+*) // end of [non-D2Pdap0]
 //
 end (*let*) // end-of-[my_d2pat_dapp]
+//
+(* ****** ****** *)
+(*
+HX-2022-12-20: for constructing d2exp
+*)
+(* ****** ****** *)
+//
+fun
+my_d2exp_con
+( loc0: loc_t
+, d2c0: d2con): d2exp =
+let  
+//
+val
+narg = d2c0.narg()
+val
+d2e0 = d2exp_con(loc0, d2c0)
+//
+in//let
+if
+(narg > 0)
+then d2e0 else d2exp_dap0(d2e0)
+end (*let*) // end of [my_d2exp_con]
 //
 (* ****** ****** *)
 //
@@ -1580,15 +1602,13 @@ f0_id0_d2itm
 , d1e0: d1exp
 , d2i1: d2itm): d2exp =
 (
-case- d2i1 of
+case+ d2i1 of
 | D2ITMvar(d2v1) =>
   f0_id0_d2var(env0, d1e0, d2v1)
-(*
 | D2ITMcon(d2cs) =>
   f0_id0_d2con(env0, d1e0, d2cs)
 | D2ITMcst(d2cs) =>
   f0_id0_d2cst(env0, d1e0, d2cs)
-*)
 | D2ITMsym(_, dpis) =>
   f0_id0_d2sym(env0, d1e0, dpis)
 ) (*case+*) // end of [f0_id0_d2itm(...)]
@@ -1602,6 +1622,49 @@ f0_id0_d2var
 (
   d2exp_var(d1e0.lctn(), d2v1)
 )
+//
+and
+f0_id0_d2con
+( env0:
+! tr12env
+, d1e0: d1exp
+, d2cs: d2conlst): d2exp =
+if
+list_singq(d2cs)
+then
+let
+val
+loc0 = d1e0.lctn()
+val
+d2c0 = d2cs.head()
+in//let
+my_d2exp_con(loc0, d2c0)
+end // then
+else
+let
+val
+loc0 = d1e0.lctn() in//let
+  d2exp_cons(loc0, d2cs) end
+//(*let*) // end of [f0_id0_d2con(...)]
+//
+and
+f0_id0_d2cst
+( env0:
+! tr12env
+, d1e0: d1exp
+, d2cs: d2cstlst): d2exp =
+if
+list_singq(d2cs)
+then
+let
+val loc0 = d1e0.lctn()
+val d2c1 = d2cs.head()
+in//let
+  d2exp_cst(loc0, d2c1) end
+else
+d2exp_csts(d1e0.lctn(), d2cs)
+//(*let*) // end of [f0_id0_d2cst(...)]
+//
 and
 f0_id0_d2sym
 ( env0:

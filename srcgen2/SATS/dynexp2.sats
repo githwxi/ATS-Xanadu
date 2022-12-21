@@ -573,6 +573,13 @@ fun
 d2pat_var
 (loc0: loc_t, d2v1: d2var): d2pat
 (* ****** ****** *)
+fun
+d2pat_con
+(loc0: loc_t, d2c1: d2con): d2pat
+fun
+d2pat_cons
+(loc0: loc_t, d2cs: d2conlst): d2pat
+(* ****** ****** *)
 //
 fun
 d2pat_sapp
@@ -586,13 +593,6 @@ d2pat_dapp
 , npf0: (sint)
 , d2ps: d2patlst(*arg*) ) : d2pat
 //
-(* ****** ****** *)
-fun
-d2pat_con
-(loc0: loc_t, d2c1: d2con): d2pat
-fun
-d2pat_cons
-(loc0: loc_t, d2cs: d2conlst): d2pat
 (* ****** ****** *)
 fun
 d2pat_make_node
@@ -902,6 +902,19 @@ d2exp_sym0
 , dpis: d2ptmlst(*opts*) ): d2exp
 (* ****** ****** *)
 fun
+d2exp_con
+(loc0: loc_t, d2c1: d2con): d2exp
+fun
+d2exp_cons
+(loc0: loc_t, d2cs: d2conlst): d2exp
+fun
+d2exp_cst
+(loc0: loc_t, d2c1: d2cst): d2exp
+fun
+d2exp_csts
+(loc0: loc_t, d2cs: d2cstlst): d2exp
+(* ****** ****** *)
+fun
 d2exp_sapp
 ( loc0: loc_t
 , d2f0: d2exp(*fun*)
@@ -923,10 +936,13 @@ d2exp_dapp
 , d2f0: d2exp
 , npf1: (sint), d2es: d2explst): d2exp
 (* ****** ****** *)
+//
 fun
 d2exp_make_node
 (loc:loc_t,nod:d2exp_node): d2exp
+//
 #symload d2exp with d2exp_make_node
+//
 (* ****** ****** *)
 //
 datatype

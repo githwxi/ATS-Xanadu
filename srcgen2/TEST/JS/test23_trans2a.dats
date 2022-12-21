@@ -278,7 +278,7 @@ in//local
 //
 val dpar =
 d0parsed_from_fpath
-(0(*sta*), "./gint000.sats")
+(1(*dyn*), "./mytest1.dats")
 //
 val
 dpar =
@@ -309,7 +309,7 @@ d1parsed_fpemsg( out, dpar ) end // let
 val
 (  ) =
 prerrln
-("d1parsed_from_fpath(\"./gint000.sats\") =\n", dpar)
+("d1parsed_from_fpath(\"./mytest1.dats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
@@ -336,7 +336,7 @@ d2parsed_of_trans2a(dpar)
 //
 val (  ) =
 prerrln
-("d2parsed_from_fpath(\"./gint000.sats\") =\n", dpar)
+("d2parsed_from_fpath(\"./mytest1.dats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
@@ -344,4 +344,4 @@ endloc (*local*) // end-of-[local]
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_TEST_JS_test22_trans12.dats] *)
+(* end of [ATS3/XATSOPT_TEST_JS_test23_trans2a.dats] *)
