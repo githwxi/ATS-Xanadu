@@ -53,6 +53,9 @@ _(*TRANS2a*) = "./trans2a.dats"
 (* ****** ****** *)
 #staload "./../SATS/trans2a.sats"
 (* ****** ****** *)
+#symload name with s2cst_get_name
+#symload type with s2cst_get_type
+(* ****** ****** *)
 //
 #implfun
 trans2a_d2ecl
@@ -72,20 +75,26 @@ case+
 d2cl.node() of
 //
 | D2Cdefine _ => d2cl
-| D1Cmacdef _ => d2cl
+| D2Cmacdef _ => d2cl
 //
 |
-D1Clocal0 _ =>
+D2Clocal0 _ =>
 (
 f0_local0(env0, d2cl))
 //
-| D1Cabssort _ => d2cl
-| D1Cstacst0 _ => d2cl
+| D2Cabssort _ => d2cl
+| D2Cstacst0 _ => d2cl
 //
-| D1Csortdef _ => d2cl
-| D1Csexpdef _ => d2cl
+| D2Csortdef _ => d2cl
+| D2Csexpdef _ => d2cl
 //
-| D1Cabstype _ => d2cl
+| D2Cabstype _ => d2cl
+(*
+| D2Cabsopen _ => d2cl
+*)
+| D2Cabsimpl _ =>
+(
+f0_absimpl(env0, d2cl))
 //
 | _(*otherwise*) =>
 let
@@ -126,6 +135,41 @@ val (  ) = tr2aenv_locjoin(env0)
 in//let
   d2ecl(loc0, D2Clocal0(head, body))
 end (*let*) // end of [f0_local0(env0,d2cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_absimpl
+( env0:
+! tr2aenv
+, d2cl: d2ecl): d2ecl =
+let
+//
+val-
+D2Cabsimpl
+( tknd
+, simp, sdef) = d2cl.node()
+//
+in//let
+let
+val () =
+case+ simp of
+|
+SIMPLall1
+(sqid, s2cs) => ()
+|
+SIMPLopt2
+(sqid, scs1, scs2) =>
+(
+case+ scs2 of
+|list_nil() => ()
+|list_cons(s2c1, _) =>
+(
+tr2aenv_insert_any
+(env0, s2c1.name(), s2c1.type()))) in simp
+end (*let*)
+//
+end (*let*) // end of [f0_absimpl(env0,d2cl)]
 //
 (* ****** ****** *)
 //

@@ -1086,19 +1086,26 @@ end (*let*) // end-of-[tread12_t2iag(t2i0,err)]
 tread12_simpl
   (simp, err) =
 (
-case+ simp of
-|
-SIMPLall1
-(sqid, s2cs) => simp where
+case- simp of
+(*
+|SIMPLall1
+(sqid, s2cs) =>
+let
+val () =
+(err := err+1) in simp end
+*)
+|SIMPLopt2
+(sqid, scs1, scs2) => simp where
 {
 val () =
 (
-case+ s2cs of
+case+ scs2 of
 |list_nil() =>
 (err := err+1) | list_cons _ => ())
 }
-|SIMPLopt2(sqid, s2cs, sopt) => simp
 ) (*case+*) // end-of-[tread12_simpl(simp,err)]
+//
+(* ****** ****** *)
 //
 #implfun
 tread12_dimpl
