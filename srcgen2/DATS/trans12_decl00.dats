@@ -589,7 +589,7 @@ trans12_d1eclist(env0, body)
 val (  ) = tr12env_locjoin(env0)
 //
 in//let
-d2ecl(loc0, D2Clocal0(head, body))
+  d2ecl(loc0, D2Clocal0(head, body))
 end (*let*) // end of [f0_local0(env0,d1cl)]
 //
 (* ****** ****** *)
@@ -2938,6 +2938,8 @@ then f1_s2vs(s2vs)
 else list_cons(s2v1, f1_s2vs(s2vs))
 )
 ) (*case+*) // end of [f1_s2vs(s2vs)]
+
+(* ****** ****** *)
 
 fun
 f1_tqas

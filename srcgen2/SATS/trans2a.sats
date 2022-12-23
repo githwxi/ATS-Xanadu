@@ -91,6 +91,12 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef d2ecl = $D2E.d2ecl
 (* ****** ****** *)
+#typedef s2qag = $D2E.s2qag
+#typedef t2qag = $D2E.t2qag
+#typedef t2iag = $D2E.t2iag
+(* ****** ****** *)
+#typedef d2arg = $D2E.d2arg
+(* ****** ****** *)
 #typedef d2patlst = $D2E.d2patlst
 (* ****** ****** *)
 #typedef d2explst = $D2E.d2explst
@@ -100,6 +106,12 @@ LEX = "./lexing0.sats"
 #typedef d2clslst = $D2E.d2clslst
 (* ****** ****** *)
 #typedef d2eclist = $D2E.d2eclist
+(* ****** ****** *)
+#typedef s2qaglst = $D2E.s2qaglst
+#typedef t2qaglst = $D2E.t2qaglst
+#typedef t2iaglst = $D2E.t2iaglst
+(* ****** ****** *)
+#typedef d2arglst = $D2E.d2arglst
 (* ****** ****** *)
 #typedef d2parsed = $D2E.d2parsed
 (* ****** ****** *)
@@ -205,6 +217,29 @@ trans2a_d2ecl
 (* ****** ****** *)
 //
 fun
+trans2a_s2qag
+( env0:
+! tr2aenv, s2qa: s2qag): s2qag
+fun
+trans2a_t2qag
+( env0:
+! tr2aenv, t2qa: t2qag): t2qag
+//
+fun
+trans2a_t2iag
+( env0:
+! tr2aenv, t2ia: t2iag): t2iag
+//
+(* ****** ****** *)
+//
+fun
+trans2a_d2arg
+( env0:
+! tr2aenv, darg: d2arg): d2arg
+//
+(* ****** ****** *)
+//
+fun
 trans2a_d2patlst
 ( env0:
 ! tr2aenv, d2ps: d2patlst): d2patlst
@@ -238,6 +273,28 @@ fun
 trans2a_d2eclist
 ( env0:
 ! tr2aenv, dcls: d2eclist): d2eclist
+//
+(* ****** ****** *)
+//
+fun
+trans2a_s2qaglst
+( env0:
+! tr2aenv, sqas: s2qaglst): s2qaglst
+fun
+trans2a_t2qaglst
+( env0:
+! tr2aenv, tqas: t2qaglst): t2qaglst
+//
+fun
+trans2a_t2iaglst
+( env0:
+! tr2aenv, tias: t2iaglst): t2iaglst
+//
+(* ****** ****** *)
+fun
+trans2a_d2arglst
+( env0:
+! tr2aenv, d2as: d2arglst): d2arglst
 //
 (* ****** ****** *)
 #typedef d2eclistopt = $D2E.d2eclistopt
