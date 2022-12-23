@@ -793,9 +793,9 @@ SIMPLall1
 print("SIMPLall1(",sqid,";",s2cs,")")
 |
 SIMPLopt2
-(sqid,s2cs,sopt) =>
+(sqid,scs1,scs2) =>
 print
-("SIMPLopt2(",sqid,";",s2cs,";",sopt,")")
+("SIMPLopt2(",sqid,";",scs1,";",scs2,")")
 end (*let*) // end of [simpl_fprint(...)]
 //
 (* ****** ****** *)
@@ -814,9 +814,9 @@ DIMPLall1
 print("DIMPLall1(",dqid,";",d2cs,")")
 |
 DIMPLopt2
-(dqid,d2cs,dopt) =>
+(dqid,dcs1,dcs2) =>
 print
-("DIMPLopt2(",dqid,";",d2cs,";",dopt,")")
+("DIMPLopt2(",dqid,";",dcs1,";",dcs2,")")
 end (*let*) // end of [dimpl_fprint(...)]
 //
 (* ****** ****** *)

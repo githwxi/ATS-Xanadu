@@ -1012,6 +1012,7 @@ val sid1 =
 sexpid_sym(tok1)
 val opt1 =
 tr12env_qfind_s2itm(env0, tqua, sid1)
+//
 in//let
 //
 case+ opt1 of
@@ -1088,8 +1089,8 @@ in//let
 end (*let*) // end of [list_cons(s2vs,svss)
 )
 //
-in//let
-
+(* ****** ****** *)
+in//local
 (* ****** ****** *)
 
 fun
@@ -1129,7 +1130,7 @@ D1Cabsimpl
 , sqid
 , smas
 , tres
-, s1e2) = d1cl.node()
+, sdef) = d1cl.node()
 //
 val
 sqid = f1_sqid(env0, sqid)
@@ -1139,13 +1140,30 @@ svss = f1_smas(env0, smas)
 val () =
 tr12env_pshlam0(env0)
 val
-s2e2 =
-f1_lams(env0,svss,tres,s1e2)
+sdef =
+f1_lams(env0,svss,tres,sdef)
 //
 val () = tr12env_poplam0(env0)
 //
-in
-d2ecl(loc0, D2Cabsimpl(tknd, sqid, s2e2))
+val sqid =
+let
+val-
+SIMPLall1
+(sqid, s2cs) = sqid
+val sopt =
+list_filter<x0>(s2cs) where
+{
+#typedef x0 = s2cst
+#impltmp
+filter$test<x0>(s2c1) =
+(sdef.sort() <= s2c1.sort()) }
+//
+in//let
+  SIMPLopt2( sqid, s2cs, sopt )
+end (*let*) // end of [val(sqid)]
+//
+in//let
+d2ecl(loc0, D2Cabsimpl(tknd, sqid, sdef))
 end (*let*) // end of [f0_absimpl(env0,d1cl)]
 
 (* ****** ****** *)

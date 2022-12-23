@@ -307,9 +307,11 @@ case+
 
 (* ****** ****** *)
 #impltmp
-g_lte<sort2> = lte_sort2_sort2
+g_lte // <=
+<sort2> = lte_sort2_sort2
 #impltmp
-g_lte<sort2lst> = lte_sort2lst_sort2lst
+g_lte // <=
+<sort2lst> = lte_sort2lst_sort2lst
 (* ****** ****** *)
 //
 #implfun

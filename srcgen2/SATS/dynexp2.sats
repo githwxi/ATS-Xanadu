@@ -1037,7 +1037,7 @@ SIMPLall1 of
 (s1qid, s2cstlst)
 |
 SIMPLopt2 of
-(s1qid, s2cstlst, s2cstopt)
+(s1qid, s2cstlst, s2cstlst)
 //
 and dimpl =
 |
@@ -1045,7 +1045,7 @@ DIMPLall1 of
 (d1qid, d2cstlst)
 |
 DIMPLopt2 of
-(d1qid, d2cstlst, d2cstopt)
+(d1qid, d2cstlst, d2cstlst)
 //
 (* ****** ****** *)
 //
