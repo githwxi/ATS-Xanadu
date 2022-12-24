@@ -349,6 +349,10 @@ s2var_get_stmp(s2v:s2var):stamp
 #symload sort with s2var_get_sort
 #symload stmp with s2var_get_stmp
 //
+fun
+s2var_set_sort(s2var,sort2): void
+#symload sort with s2var_set_sort
+//
 (* ****** ****** *)
 //
 fun

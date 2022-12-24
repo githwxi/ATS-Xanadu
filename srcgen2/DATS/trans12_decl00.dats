@@ -973,6 +973,70 @@ local
 #typedef
 s2vss = list(s2varlst)
 //
+(* ****** ****** *)
+//
+fun
+f2_svar
+( s2v1: s2var
+, s2t1: sort2): void =
+(
+case
+s2v1.sort() of
+|
+S2Tnone0() =>
+s2v1.sort(s2t1)
+|
+_(*non-S2Tnone0*) => ())
+//
+and
+f2_s2vs
+( s2vs
+: s2varlst
+, s2ts
+: sort2lst): void =
+(
+case+ s2vs of
+|
+list_nil() => ()
+|
+list_cons(s2v1, s2vs) =>
+(
+case+ s2ts of
+|
+list_nil() => ()
+|
+list_cons(s2t1, s2ts) =>
+(
+  f2_s2vs(s2vs, s2ts)) where
+{
+  val () = f2_svar(s2v1, s2t1) }
+)
+)
+//
+fun
+f2_svss
+( svss: s2vss
+, tres: sort2): void =
+(
+case+ svss of
+|
+list_nil() => ()
+|
+list_cons
+(s2vs, svss) =>
+(
+case+ tres of
+|
+S2Tfun1(s2ts, tres) =>
+let
+val () =
+f2_s2vs(s2vs, s2ts)
+in//let
+f2_svss(svss, tres) end
+|_(*non-S2Tfun1*) => ((*void*))))
+//
+(* ****** ****** *)
+//
 fun
 f1_sqid
 ( env0:
@@ -1051,6 +1115,8 @@ map$fopr_e1nv
 < x0><y0 ><e1>
 (   x0, e1   ) = trans12_s1mag(e1, x0)
 } (* where *) // end of [f1_smas(env0,...)]
+//
+(* ****** ****** *)
 //
 fun
 f1_lams
@@ -1138,6 +1204,22 @@ val
 svss = f1_smas(env0, smas)
 //
 val () =
+let
+val-
+SIMPLall1
+(sqid, s2cs) = sqid
+in//let
+if
+list_singq(s2cs)
+then
+let
+val s2c1 = s2cs.head()
+in
+  f2_svss(svss, s2c1.sort())
+end // then // end-of-[ if ]
+end (*let*) // end of [val()]
+//
+val () =
 tr12env_pshlam0(env0)
 val
 sdef =
@@ -1152,15 +1234,14 @@ SIMPLall1
 (sqid, s2cs) = sqid
 val sopt =
 list_filter<x0>(s2cs) where
-{
-#typedef x0 = s2cst
-#impltmp
-filter$test<x0>(s2c1) =
-(sdef.sort() <= s2c1.sort()) }
+{ #typedef x0 = s2cst
+  #impltmp
+  filter$test<x0>(s2c1) =
+  (sdef.sort() <= s2c1.sort()) }
 //
 in//let
-  SIMPLopt2( sqid, s2cs, sopt )
-end (*let*) // end of [val(sqid)]
+  SIMPLopt2( sqid , s2cs , sopt )
+end (*let*) // end of [ val(sqid) ]
 //
 in//let
 d2ecl(loc0, D2Cabsimpl(tknd, sqid, sdef))
