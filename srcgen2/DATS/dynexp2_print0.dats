@@ -625,6 +625,14 @@ print("D2Csexpdef(",s2c1,";",s2e2,")")
 |
 D2Cabstype(s2c1,atdf) =>
 print("D2Cabstype(",s2c1,";",atdf,")")
+|
+D2Cabsopen(tknd,simp) =>
+print("D2Cabsopen(",tknd,";",simp,")")
+|
+D2Cabsimpl
+( tknd , simp , sdef ) =>
+( print("D2Cabsimpl(")
+; print( tknd,";", simp,";",sdef,")"))
 //
 |
 D2Csymload

@@ -388,11 +388,15 @@ if
 //
 | _ (* rest-of-sort2 *) => false
 (*
-| S2Tfun0() => false
-| S2Tnone0() => false | S2Tnone(s1t1) => false 
+|S2Tfun0() => false
+|S2Tnone0() => false |S2Tnone(s1t1) => false 
 *)
 //
-) (* case+ *) // end of [lte_sort2_sort2(...)]
+) where
+{
+val () = prerrln("lte_sort2_sort2: x1 = ", x1)
+val () = prerrln("lte_sort2_sort2: x2 = ", x2)
+} (*where*) // end of [lte_sort2_sort2(x1,x2)]
 
 (* ****** ****** *)
 //
@@ -412,7 +416,7 @@ list_cons(x1, xs1) =>
 (
 case+ xs2 of
 |list_nil() => false
-|list_cons(x2, xs1) =>
+|list_cons(x2, xs2) =>
  (if x1 <= x2 then xs1 <= xs2 else false))
 ) (*case+*) // end of [lte_sort2lst_sort2lst(...)]
 //

@@ -1128,6 +1128,40 @@ case+ d2cs of
 (* ****** ****** *)
 //
 #implfun
+tread12_a2tdf
+  (atdf, err) =
+(
+case- atdf of
+|A2TDFsome
+((*void*)) => atdf
+(*
+|A2TDFdefn(  sdef  ) => atdf
+*)
+|A2TDFlteq
+(  sdef  ) =>
+let
+val e00 = err
+val sdef =
+tread12_s2exp(sdef, err)
+in//let
+if
+(e00=err)
+then atdf else A2TDFlteq(sdef) end
+|A2TDFeqeq
+(  sdef  ) =>
+let
+val e00 = err
+val sdef =
+tread12_s2exp(sdef, err)
+in//let
+if
+(e00=err)
+then atdf else A2TDFeqeq(sdef) end
+) (*case+*) // end-of-[tread12_a2tdf(atdf,err)]
+//
+(* ****** ****** *)
+//
+#implfun
 tread12_teqd2exp
   (tdxp, err) =
 (
