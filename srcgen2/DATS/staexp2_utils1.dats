@@ -394,8 +394,12 @@ if
 //
 ) where
 {
-val () = prerrln("lte_sort2_sort2: x1 = ", x1)
-val () = prerrln("lte_sort2_sort2: x2 = ", x2)
+(*
+  val () =
+  prerrln("lte_sort2_sort2: x1 = ", x1)
+  val () =
+  prerrln("lte_sort2_sort2: x2 = ", x2)
+*)
 } (*where*) // end of [lte_sort2_sort2(x1,x2)]
 
 (* ****** ****** *)
