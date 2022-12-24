@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sat 24 Dec 2022 12:26:37 PM EST
+Sat 24 Dec 2022 12:34:55 PM EST
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -52,6 +52,67 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
+(* ****** ****** *)
+
+#implfun
+s2typlst_hnfize_flag
+   ( t2ps, flag ) =
+(
+//
+case+ t2ps of
+|
+list_nil() =>
+list_nil()
+|
+list_cons
+(t2p1, tps2) =>
+let
+//
+val fval = flag
+//
+val t2p1 =
+s2typ_hnfize_flag(t2p1, flag)
+val tps2 =
+s2typlst_hnfize_flag(tps2, flag)
+//
+in//let
+if
+flag > fval
+then list_cons(t2p1, tps2) else t2ps
+end (*let*) // end of [list_cons(...)]
+//
+) (*case+*) // end of [s2typlst_hnfize_flag(...)]
+
+(* ****** ****** *)
+
+#implfun
+l2t2plst_hnfize_flag
+   ( ltps, flag ) =
+(
+//
+case+ ltps of
+|
+list_nil() => list_nil()
+|
+list_cons
+(ltp1, lts2) =>
+let
+//
+val fval = flag
+//
+val ltp1 =
+l2t2p_hnfize_flag(ltp1, flag)
+val lts2 =
+l2t2plst_hnfize_flag(lts2, flag)
+//
+in//let
+if
+flag > fval
+then list_cons(ltp1, lts2) else ltps
+end (*let*) // end of [list_cons(...)]
+//
+) (*case+*) // end of [l2t2plst_hnfize_flag(...)]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_statyp2_utils2.dats] *)

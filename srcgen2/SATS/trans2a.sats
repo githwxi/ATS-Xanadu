@@ -81,6 +81,8 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
+#typedef l2s2e = $S2E.l2s2e
+#typedef l2t2p = $S2E.l2t2p
 (* ****** ****** *)
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
@@ -96,6 +98,11 @@ LEX = "./lexing0.sats"
 #typedef t2iag = $D2E.t2iag
 (* ****** ****** *)
 #typedef d2arg = $D2E.d2arg
+(* ****** ****** *)
+#typedef s2explst = $S2E.s2explst
+#typedef s2typlst = $S2E.s2typlst
+#typedef l2s2elst = $S2E.l2s2elst
+#typedef l2t2plst = $S2E.l2t2plst
 (* ****** ****** *)
 #typedef d2patlst = $D2E.d2patlst
 (* ****** ****** *)
@@ -153,12 +160,35 @@ tr2aenv_locjoin(env0: !tr2aenv): void
 fun
 tr2aenv_search_opt
 ( env0:
-! tr2aenv, key: sym_t): s2typopt_vt
+! tr2aenv
+, key: sym_t): s2typopt_vt
 fun
 tr2aenv_insert_any
 ( env0:
-! tr2aenv, key: sym_t, itm: s2typ): void
+! tr2aenv
+, key: sym_t, itm: s2typ): void
 //
+(* ****** ****** *)
+//
+fun
+tr2aenv_hnfize_s2typ
+(!tr2aenv, s2typ): s2typ
+fun
+tr2aenv_hnfize_s2typlst
+( env0:
+! tr2aenv, s2typlst): s2typlst
+fun
+tr2aenv_hnfize_l2t2plst
+( env0:
+! tr2aenv, l2t2plst): l2t2plst
+//
+(* ****** ****** *)
+#symload
+hnfize with tr2aenv_hnfize_s2typ
+#symload
+hnfize with tr2aenv_hnfize_s2typlst
+#symload
+hnfize with tr2aenv_hnfize_l2t2plst
 (* ****** ****** *)
 //
 fun

@@ -446,8 +446,7 @@ l2s2elst_revar_flag
 //
 case+ lses of
 |
-list_nil() =>
-list_nil()
+list_nil() => list_nil()
 |
 list_cons
 (lse1, lss2) =>
@@ -457,7 +456,7 @@ val fval = flag
 //
 val lse1 =
 l2s2e_revar_flag(lse1, s2v0, s2v1, flag)
-val ses2 =
+val lss2 =
 l2s2elst_revar_flag(lss2, s2v0, s2v1, flag)
 //
 in//let
