@@ -55,14 +55,35 @@ ATS_PACKNAME
 (* ****** ****** *)
 
 #implfun
+l2t2p_hnfize_flag
+  (lt2p, flag) =
+(
+//
+case+ lt2p of
+|
+S2LAB(l0, t2p1) =>
+let
+val fval = flag
+val t2p1 =
+s2typ_hnfize_flag(t2p1, flag)
+in//let
+if
+flag > fval
+then S2LAB(l0, t2p1) else lt2p
+end (*let*) // end of [S2LAB(...)]
+//
+) (*case+*)//end-of-[l2t2p_hnfize_flag(...)]
+
+(* ****** ****** *)
+
+#implfun
 s2typlst_hnfize_flag
    ( t2ps, flag ) =
 (
 //
 case+ t2ps of
 |
-list_nil() =>
-list_nil()
+list_nil() => list_nil()
 |
 list_cons
 (t2p1, tps2) =>
