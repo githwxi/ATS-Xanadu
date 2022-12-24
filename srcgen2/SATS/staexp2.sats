@@ -886,7 +886,7 @@ l2s2elst_revar
 //
 fun
 s2exp_revar_flag
-( s2e0: s2exp
+( s2e0 : s2exp
 , s2var, s2var, flag: &sint >> _): s2exp
 fun
 l2s2e_revar_flag
@@ -895,11 +895,11 @@ l2s2e_revar_flag
 //
 fun
 s2explst_revar_flag
-( s2es: s2explst
+( s2es : s2explst
 , s2var, s2var, flag: &sint >> _): s2explst
 fun
 l2s2elst_revar_flag
-( lses: l2s2elst
+( lses : l2s2elst
 , s2var, s2var, flag: &sint >> _): l2s2elst
 //
 (* ****** ****** *)

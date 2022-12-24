@@ -36,6 +36,9 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsafex.sats"
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
