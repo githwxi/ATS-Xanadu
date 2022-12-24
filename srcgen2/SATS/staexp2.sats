@@ -321,6 +321,7 @@ s2cst_fprint:(FILR,s2cst)->void
 fun
 s2var_fprint:(FILR,s2var)->void
 (* ****** ****** *)
+//
 fun
 s2cst_get_lctn(s2c:s2cst):loc_t
 fun
@@ -329,13 +330,73 @@ fun
 s2cst_get_sort(s2c:s2cst):sort2
 fun
 s2cst_get_stmp(s2c:s2cst):stamp
+//
+#symload name with s2cst_get_lctn
+#symload name with s2cst_get_name
+#symload sort with s2cst_get_sort
+#symload stmp with s2cst_get_stmp
+//
 (* ****** ****** *)
+//
 fun
 s2var_get_name(s2v:s2var):sym_t
 fun
 s2var_get_sort(s2v:s2var):sort2
 fun
 s2var_get_stmp(s2v:s2var):stamp
+//
+#symload name with s2var_get_name
+#symload sort with s2var_get_sort
+#symload stmp with s2var_get_stmp
+//
+(* ****** ****** *)
+//
+fun
+s2cst_make_idst
+(
+loc0: loc_t,
+sid1: sym_t, s2t2: sort2): s2cst
+//
+(* ****** ****** *)
+//
+fun
+s2var_make_name
+(   name: sym_t    ): (s2var)
+fun
+s2var_make_sort
+(   s2t0: sort2    ): (s2var)
+fun
+s2var_make_idst
+(sid1: sym_t, s2t2: sort2): s2var
+//
+(* ****** ****** *)
+//
+#symload s2cst with s2cst_make_idst
+#symload s2var with s2var_make_idst
+//
+(* ****** ****** *)
+//
+fun
+the_excptn_s2cst
+(   (*void*)   ): ( s2cst )
+//
+(* ****** ****** *)
+//
+(*
+//
+HX-2022-12-23:
+Both are in [dynexp2.sats]
+//
+fun
+s2cst_get_atdf
+(s2c0: s2cst): optn_vt(a2tdf)
+fun
+s2cst_set_atdf
+(s2c0: s2cst, atdf: a2tdf):void
+#symload atdf with s2cst_get_atdf
+#symload atdf with s2cst_set_atdf
+*)
+//
 (* ****** ****** *)
 //
 (*
@@ -352,47 +413,10 @@ fun
 s2cst_set_d2cs
 (s2c0:s2cst,d2cs:d2conlst):void
 //
+#symload atdf with s2cst_get_d2cs
+#symload atdf with s2cst_set_d2cs
+//
 *)
-//
-(* ****** ****** *)
-//
-fun
-the_excptn_s2cst
-(   (*void*)   ): ( s2cst )
-//
-(* ****** ****** *)
-//
-fun
-s2cst_make_idst
-(
-loc0: loc_t,
-sid1: sym_t, s2t2: sort2): s2cst
-//
-(* ****** ****** *)
-//
-fun
-s2var_make_name
-(   name: sym_t    ): s2var
-fun
-s2var_make_sort
-(   s2t0: sort2    ): s2var
-fun
-s2var_make_idst
-(sid1: sym_t, s2t2: sort2): s2var
-//
-(* ****** ****** *)
-//
-#symload name with s2cst_get_lctn
-#symload name with s2cst_get_name
-#symload sort with s2cst_get_sort
-#symload stmp with s2cst_get_stmp
-//
-#symload name with s2var_get_name
-#symload sort with s2var_get_sort
-#symload stmp with s2var_get_stmp
-//
-#symload s2cst with s2cst_make_idst
-#symload s2var with s2var_make_idst
 //
 (* ****** ****** *)
 (*

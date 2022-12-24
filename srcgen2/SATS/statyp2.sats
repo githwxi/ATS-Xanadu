@@ -154,5 +154,15 @@ s2typ_make_node
 (srt:sort2,nod:s2typ_node): s2typ
 #symload s2typ with s2typ_make_node
 (* ****** ****** *)
+//
+fun
+s2typ_hnfize(t2p0:s2typ): s2typ
+fun
+s2exp_typize(s2e0:s2exp): s2typ
+//
+#symload hnfize with s2typ_hnfize
+#symload typize with s2exp_typize
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_statyp2.sats] *)

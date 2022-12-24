@@ -727,6 +727,7 @@ a2tdf_fprint
 let
 #impltmp
 g_print$out<>() = out
+//
 in//let
 //
 case+ tdf of
@@ -739,6 +740,9 @@ print("A2TDFlteq(",s2e1,")")
 |
 A2TDFeqeq(s2e1) =>
 print("A2TDFeqeq(",s2e1,")")
+|
+A2TDFdefn(s2e1) =>
+print("A2TDFdefn(",s2e1,")")
 //
 end (*let*) // end of [a2tdf_fprint]
 //
