@@ -235,8 +235,8 @@ sort2_none1(s1t0) = S2Tnone1(s1t0)
 
 local
 //
-datatype s2cst =
-S2CST of
+datatype
+s2cst = S2CST of
 ( loc_t
 , sym_t
 , sort2
@@ -319,14 +319,14 @@ endloc (*local*) // end of [local(s2cst)]
 
 local
 //
-datatype s2var =
+datatype
+s2var =
 S2VAR of
 (sym_t, sort2, stamp)
-(*
-datavwtp s2var_vt =
+datavwtp
+s2var_vt =
 S2VAR_vt of
 (sym_t, sort2, stamp)
-*)
 //
 #absimpl s2var_tbox = s2var
 //
@@ -352,6 +352,21 @@ let
 val
 S2VAR(sym, s2t, tmp) = s2v in tmp
 end (*let*) // end of [s2var_get_stmp]
+
+(* ****** ****** *)
+
+#implfun
+s2var_set_sort
+( s2v0, s2t1 ) =
+let
+val
+s2v0 =
+$UN.castlin10{s2var_vt}(s2v0)
+val+
+@S2VAR_vt
+(sym0,
+!s2t0,stmp) = s2v0 in (s2t0 := s2t1)
+end (*let*) // end of [s2var_set_sort]
 
 (* ****** ****** *)
 //
