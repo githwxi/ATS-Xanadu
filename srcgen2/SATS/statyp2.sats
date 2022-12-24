@@ -164,10 +164,13 @@ s2exp_typize(s2e0:s2exp): s2typ
 fun
 s2typ_hnfize(t2p0:s2typ): s2typ
 fun
+l2t2p_hnfize(lt2p:l2t2p): l2t2p
+fun
 s2typlst_hnfize(s2typlst): s2typlst
 fun
 l2t2plst_hnfize(l2t2plst): l2t2plst
 #symload hnfize with s2typ_hnfize
+#symload hnfize with l2t2p_hnfize
 #symload hnfize with s2typlst_hnfize
 #symload hnfize with l2t2plst_hnfize
 //
@@ -177,11 +180,14 @@ fun
 s2typ_hnfize_flag
 (t2p0: s2typ, flag: &sint >> _): s2typ
 fun
+l2t2p_hnfize_flag
+(lt2p: l2t2p, flag: &sint >> _): l2t2p
+fun
 s2typlst_hnfize_flag
 (t2ps: s2typlst, flag: &sint >> _): s2typlst
 fun
 l2t2plst_hnfize_flag
-(ltps: s2typlst, flag: &sint >> _): l2t2plst
+(ltps: l2t2plst, flag: &sint >> _): l2t2plst
 //
 (* ****** ****** *)
 
