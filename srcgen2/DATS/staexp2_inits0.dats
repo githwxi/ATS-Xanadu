@@ -198,6 +198,33 @@ name with s2cst_get_name
 //
 val
 mymap =
+topmap_make_nil{a2tdf}()
+//
+in//local
+//
+#implfun
+s2cst_get_atdf(s2c0) =
+topmap_search_opt(mymap, s2c0.name())
+#implfun
+s2cst_set_atdf(s2c0, atdf) =
+topmap_insert_any(mymap, s2c0.name(), atdf)
+//
+end (*local*) // end of [local(the_s2cst_a2tdf)]
+
+(* ****** ****** *)
+
+local
+//
+(* ****** ****** *)
+#staload
+"./../SATS/dynexp2.sats"
+(* ****** ****** *)
+#symload
+name with s2cst_get_name
+(* ****** ****** *)
+//
+val
+mymap =
 topmap_make_nil{d2conlst}()
 //
 in//local

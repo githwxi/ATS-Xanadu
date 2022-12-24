@@ -273,7 +273,7 @@ d2con_get_tqas:(d2con) -> t2qas
 fun
 d2con_get_sexp:(d2con) -> s2exp
 fun
-d2con_get_type:(d2con) -> s2typ
+d2con_get_styp:(d2con) -> s2typ
 fun
 d2con_get_stmp:(d2con) -> stamp
 //
@@ -281,7 +281,7 @@ d2con_get_stmp:(d2con) -> stamp
 #symload name with d2con_get_name
 #symload tqas with d2con_get_tqas
 #symload sexp with d2con_get_sexp
-#symload type with d2con_get_type
+#symload type with d2con_get_styp
 #symload stmp with d2con_get_stmp
 //
 fun
@@ -304,18 +304,6 @@ d2con_get_narg(d2c0:d2con): sint
 (* ****** ****** *)
 //
 fun
-s2cst_get_d2cs
-( s2c0
-: s2cst ): optn_vt(d2conlst)
-fun
-s2cst_set_d2cs
-(s2c0:s2cst,d2cs:d2conlst):void
-#symload d2cs with s2cst_get_d2cs
-#symload d2cs with s2cst_set_d2cs
-//
-(* ****** ****** *)
-//
-fun
 d2cst_get_lctn:(d2cst) -> loc_t
 fun
 d2cst_get_name:(d2cst) -> sym_t
@@ -326,7 +314,7 @@ d2cst_get_tqas:(d2cst) -> t2qas
 fun
 d2cst_get_sexp:(d2cst) -> s2exp
 fun
-d2cst_get_type:(d2cst) -> s2typ
+d2cst_get_styp:(d2cst) -> s2typ
 fun
 d2cst_get_stmp:(d2cst) -> stamp
 //
@@ -335,7 +323,7 @@ d2cst_get_stmp:(d2cst) -> stamp
 #symload tknd with d2cst_get_tknd
 #symload tqas with d2cst_get_tqas
 #symload sexp with d2cst_get_sexp
-#symload type with d2cst_get_type
+#symload type with d2cst_get_styp
 #symload stmp with d2cst_get_stmp
 //
 fun
@@ -871,13 +859,13 @@ d2exp_get_node(d2exp): d2exp_node
 (* ****** ****** *)
 //
 fun
-d2exp_get_type:(d2exp)->s2typ
+d2exp_get_styp:(d2exp)->s2typ
 fun
-d2exp_set_type
+d2exp_set_styp
 (d2e0: d2exp, t2p0: s2typ): void
 //
-#symload type with d2exp_get_type
-#symload type with d2exp_set_type
+#symload type with d2exp_get_styp
+#symload type with d2exp_set_styp
 //
 (* ****** ****** *)
 fun
@@ -1056,13 +1044,12 @@ A2TDFsome of ()//unspecified
 A2TDFlteq of s2exp//ty-erasure
 |
 A2TDFeqeq of s2exp//definition
+|
+A2TDFdefn of s2exp//definition
 //
 (* ****** ****** *)
 fun
 d2ecl_fprint:(FILR,d2ecl)->void
-(* ****** ****** *)
-fun
-a2tdf_fprint:(FILR,a2tdf)->void
 (* ****** ****** *)
 fun
 simpl_fprint:(FILR,simpl)->void
@@ -1070,12 +1057,12 @@ fun
 dimpl_fprint:(FILR,dimpl)->void
 (* ****** ****** *)
 fun
+a2tdf_fprint:(FILR,a2tdf)->void
+(* ****** ****** *)
+fun
 d2ecl_get_lctn(d2ecl): loc_t
 fun
 d2ecl_get_node(d2ecl): d2ecl_node
-(* ****** ****** *)
-#symload lctn with d2ecl_get_lctn
-#symload node with d2ecl_get_node
 (* ****** ****** *)
 fun
 d2ecl_none1(d1cl:d1ecl): d2ecl
@@ -1083,6 +1070,10 @@ d2ecl_none1(d1cl:d1ecl): d2ecl
 fun
 d2ecl_make_node
 (loc:loc_t,nod:d2ecl_node): d2ecl
+(* ****** ****** *)
+#symload lctn with d2ecl_get_lctn
+#symload node with d2ecl_get_node
+(* ****** ****** *)
 #symload d2ecl with d2ecl_make_node
 (* ****** ****** *)
 //
@@ -1119,16 +1110,42 @@ d2arg_make_node
 (loc:loc_t,nod:d2arg_node): d2arg
 #symload d2arg with d2arg_make_node
 (* ****** ****** *)
+//
 fun
-d2valdcl_fprint:(FILR,d2valdcl)->void
+s2cst_get_atdf
+( s2c0
+: s2cst ): optn_vt(a2tdf)
 fun
-d2vardcl_fprint:(FILR,d2vardcl)->void
+s2cst_set_atdf
+(s2c0: s2cst, atdf: a2tdf):void
+#symload atdf with s2cst_get_atdf
+#symload atdf with s2cst_set_atdf
+//
+fun
+s2cst_get_d2cs
+( s2c0
+: s2cst ): optn_vt(d2conlst)
+fun
+s2cst_set_d2cs
+(s2c0:s2cst,d2cs:d2conlst):void
+#symload d2cs with s2cst_get_d2cs
+#symload d2cs with s2cst_set_d2cs
+//
 (* ****** ****** *)
 fun
-d2fundcl_fprint:(FILR,d2fundcl)->void
+d2valdcl_fprint
+(out: FILR, dval: d2valdcl): void
+fun
+d2vardcl_fprint
+(out: FILR, dvar: d2vardcl): void
 (* ****** ****** *)
 fun
-d2cstdcl_fprint:(FILR,d2cstdcl)->void
+d2fundcl_fprint
+(out: FILR, dfun: d2fundcl): void
+(* ****** ****** *)
+fun
+d2cstdcl_fprint
+(out: FILR, dcst: d2cstdcl): void
 (* ****** ****** *)
 fun
 d2valdcl_get_lctn:(d2valdcl)->loc_t
@@ -1136,10 +1153,13 @@ fun
 d2vardcl_get_lctn:(d2vardcl)->loc_t
 fun
 d2fundcl_get_lctn:(d2fundcl)->loc_t
+fun
+d2cstdcl_get_lctn:(d2cstdcl)->loc_t
 (* ****** ****** *)
 #symload lctn with d2valdcl_get_lctn
 #symload lctn with d2vardcl_get_lctn
 #symload lctn with d2fundcl_get_lctn
+#symload lctn with d2cstdcl_get_lctn
 (* ****** ****** *)
 fun
 d2valdcl_get_dpat:(d2valdcl)->d2pat
@@ -1210,13 +1230,10 @@ d2fundcl_make_args
 //
 (* ****** ****** *)
 //
-#typedef
-d2res = teqd2exp
+#typedef d2res = teqd2exp
 //
 (* ****** ****** *)
 //
-fun
-d2cstdcl_get_lctn:(d2cstdcl)->loc_t
 fun
 d2cstdcl_get_dpid:(d2cstdcl)->d2cst
 fun
@@ -1226,7 +1243,6 @@ d2cstdcl_get_sres:(d2cstdcl)->s2res(*opt*)
 fun
 d2cstdcl_get_dres:(d2cstdcl)->d2res(*opt*)
 //
-#symload lctn with d2cstdcl_get_lctn
 #symload dpid with d2cstdcl_get_dpid
 #symload darg with d2cstdcl_get_darg(*lst*)
 #symload sres with d2cstdcl_get_sres(*opt*)

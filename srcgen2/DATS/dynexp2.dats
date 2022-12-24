@@ -348,7 +348,7 @@ D2CON
 ,t2p0,stmp) = d2c0 in s2e0 end
 //
 #implfun
-d2con_get_type
+d2con_get_styp
   (  d2c0  ) =
 let
 val+
@@ -559,7 +559,7 @@ D2CST
 ,t2p0,stmp) = d2c0 in s2e0 end
 //
 #implfun
-d2cst_get_type
+d2cst_get_styp
   (  d2c0  ) =
 let
 val+
@@ -866,7 +866,7 @@ let
 val+D2EXP(loc,t2p,nod) = d2e in loc
 end
 #implfun
-d2exp_get_type(d2e) =
+d2exp_get_styp(d2e) =
 let
 val+D2EXP(loc,t2p,nod) = d2e in t2p
 end

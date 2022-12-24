@@ -49,12 +49,12 @@ ATS_PACKNAME
 _(*TRANS2a*) = "./trans2a.dats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans2a.sats"
 (* ****** ****** *)
 #symload name with s2cst_get_name
-#symload type with s2cst_get_type
 (* ****** ****** *)
 //
 #implfun
@@ -164,9 +164,12 @@ SIMPLopt2
 case+ scs2 of
 |list_nil() => ()
 |list_cons(s2c1, _) =>
-(
+let
+val
+sdef = s2exp_typize(sdef)
+val () =
 tr2aenv_insert_any
-(env0, s2c1.name(), s2c1.type()))) in simp
+(env0, s2c1.name(), sdef) end) in d2cl
 end (*let*)
 //
 end (*let*) // end of [f0_absimpl(env0,d2cl)]
