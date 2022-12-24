@@ -3,6 +3,11 @@
 #infixr -> of 10
 *)
 (* ****** ****** *)
+#abstype myint2(a:i0)
+#absimpl myint2(a) = @(sint, sint)
+(* ****** ****** *)
+////
+(* ****** ****** *)
 #define ONE 1
 #define TWO 2
 (* ****** ****** *)

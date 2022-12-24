@@ -312,6 +312,9 @@ fun s2qag_fpemsg:(FILR,s2qag)->void
 fun t2qag_fpemsg:(FILR,t2qag)->void
 fun t2iag_fpemsg:(FILR,t2iag)->void
 (* ****** ****** *)
+fun simpl_fpemsg(FILR, simpl): void
+fun dimpl_fpemsg(FILR, dimpl): void
+(* ****** ****** *)
 fun a2tdf_fpemsg(FILR, a2tdf): void
 (* ****** ****** *)
 fun sort2lst_fpemsg(FILR, sort2lst): void

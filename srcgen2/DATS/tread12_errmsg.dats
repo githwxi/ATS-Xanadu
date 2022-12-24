@@ -836,6 +836,16 @@ val
 endlet // end-of-(D2Cabstype)
 //
 |
+D2Cabsimpl
+( tknd
+, simp, sdef) => let
+val
+( ) = simpl_fpemsg(out, simp)
+val
+( ) = s2exp_fpemsg(out, sdef)
+endlet // end-of-(D2Cabsimpl)
+//
+|
 D2Cdatasort(d1cl, s2ts) => ()
 //
 |
@@ -991,6 +1001,31 @@ D2ARGdyn1
 D2ARGdyn2
 (npf1,s2es) => s2explst_fpemsg(out, s2es)
 ) (*case+*)//end-of-[d2arg_fpemsg(out,darg)]
+//
+(* ****** ****** *)
+//
+#implfun
+simpl_fpemsg
+  (out, simp) =
+(
+case+ simp of
+|SIMPLall1
+(sqid, s2cs) => ()
+|SIMPLopt2
+(sqid, scs1, scs2) =>
+(
+case+ scs2 of
+|
+list_nil() =>
+println
+("TREAD12-ERROR:", simp)
+|
+list_cons(s2c1, scs2) => ()
+)
+) where
+{
+  #impltmp g_print$out<>() = out }
+//(*where*)//end-of-[simpl_fpemsg(out,darg)]
 //
 (* ****** ****** *)
 //
