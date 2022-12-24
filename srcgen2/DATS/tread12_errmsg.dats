@@ -154,7 +154,8 @@ let
 #impltmp
 g_print$out<>() = out
 in//let
-case s2e of
+case+
+s2e.node() of
 //
 |S2Eint _ => ()
 |S2Ebtf _ => ()
@@ -180,15 +181,20 @@ S2Ecsts(s2cs) => ()
 |
 S2Eapps
 (s2f0, s2es) =>
-(
-s2exp_fpemsg(out, s2f0);
-s2explst_fpemsg(out, s2es))
+let
+val () =
+s2exp_fpemsg(out, s2f0)
+in//let
+s2explst_fpemsg(out, s2es)
+endlet // end-of-(S2Eapps)
 //
 |
 S2Elam0
 (s2vs, s2e1) =>
-(
-s2exp_fpemsg(out, s2e1))
+let
+  val () =
+  s2exp_fpemsg(out, s2e1)
+endlet // end-of-[S2Elam0]
 //
 |
 S2Efun1
@@ -240,9 +246,19 @@ S2Etrcd
 (
 l2s2elst_fpemsg(out, lses))
 //
-|S2Enone0() => ( (*void*) )
-|S2Enone1(s1e1) => ( (*void*) )
-|S2Enone1(s2e1) => ( (*void*) )
+|
+S2Ecast
+(loc0,s2e1,s2t2) =>
+let
+val
+( ) = s2exp_fpemsg(out, s2e1)
+val
+( ) = sort2_fpemsg(out, s2t2)
+endlet // end of [S2Ecast(...)]
+//
+| S2Enone0() => ( (*void*) )
+| S2Enone1(s1e1) => ( (*void*) )
+| S2Enone1(s2e1) => ( (*void*) )
 //
 |
 S2Eerrck _ => s2exp_fpemsg(out, s2e)
@@ -264,7 +280,8 @@ let
 g_print$out<>() = out
 in//let
 //
-case+ s2e0 of
+case+
+s2e0.node() of
 |
 S2Eerrck(lvl, s2e1) =>
 (

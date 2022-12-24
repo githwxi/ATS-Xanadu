@@ -314,6 +314,39 @@ s1explst_fpemsg(out, ses1);
 s1explst_fpemsg(out, ses2))
 //
 |
+S1Er1cd(tknd,lses) =>
+l1s1elst_fpemsg(out, lses)
+|
+S1Er2cd
+(tknd, lss1, lss2) =>
+(
+l1s1elst_fpemsg(out, lss1);
+l1s1elst_fpemsg(out, lss2))
+//
+|
+S1Euni0(s1qs) =>
+(
+s1qualst_fpemsg(out, s1qs))
+|
+S1Eexi0(tknd,s1qs) =>
+(
+s1qualst_fpemsg(out, s1qs))
+//
+|
+S1Elam0
+(smas, tres, s1e1) =>
+let
+val
+( ) =
+s1maglst_fpemsg(out, smas)
+val
+( ) =
+sort1opt_fpemsg(out, tres)
+val
+( ) = s1exp_fpemsg(out, s1e1)
+endlet // end of [S1Elam0(...)]
+//
+|
 S1Eannot(s1e1,s1t2) =>
 let
 val

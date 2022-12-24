@@ -3,8 +3,11 @@
 #infixr -> of 10
 *)
 (* ****** ****** *)
-#abstype myint2(a:i0)
-#absimpl myint2(a) = @(sint, sint)
+#abstbox
+myint2(i0,i0)
+#absimpl
+myint2(a1,a2) =
+@(sint(a1), sint(a1+a3))
 (* ****** ****** *)
 ////
 (* ****** ****** *)
