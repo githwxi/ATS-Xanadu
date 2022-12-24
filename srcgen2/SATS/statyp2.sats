@@ -156,12 +156,32 @@ s2typ_make_node
 (* ****** ****** *)
 //
 fun
+s2exp_typize(s2e0:s2exp): s2typ
+#symload typize with s2exp_typize
+//
+(* ****** ****** *)
+//
+fun
 s2typ_hnfize(t2p0:s2typ): s2typ
 fun
-s2exp_typize(s2e0:s2exp): s2typ
-//
+s2typlst_hnfize(s2typlst): s2typlst
+fun
+l2t2plst_hnfize(l2t2plst): l2t2plst
 #symload hnfize with s2typ_hnfize
-#symload typize with s2exp_typize
+#symload hnfize with s2typlst_hnfize
+#symload hnfize with l2t2plst_hnfize
+//
+(* ****** ****** *)
+//
+fun
+s2typ_hnfize_flag
+(t2p0: s2typ, flag: &sint >> _): s2typ
+fun
+s2typlst_hnfize_flag
+(t2ps: s2typlst, flag: &sint >> _): s2typlst
+fun
+l2t2plst_hnfize_flag
+(ltps: s2typlst, flag: &sint >> _): l2t2plst
 //
 (* ****** ****** *)
 
