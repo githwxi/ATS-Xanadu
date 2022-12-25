@@ -120,7 +120,7 @@ s2typ_make_node
   val tres = s2exp_stpize(sres) }
 //
 | _(*otherwise*) =>
-s2typ_make_node(s2t0, T2Psexp(s2e0))
+s2typ_make_node(s2t0, T2Ps2exp(s2e0))
 //
 end (*let*) // end of [f0_impr(s2e0)]
 
@@ -134,11 +134,13 @@ in//let
 if
 sort2_imprq(s2t0)
 then f0_impr(s2e0) else
-s2typ_make_node(s2t0, T2Psexp(s2e0))
+s2typ_make_node(s2t0, T2Ps2exp(s2e0))
 endlet where
 {
+(*
 val () =
 prerrln("s2exp_stpize: s2e0 = ", s2e0)
+*)
 } (*where*) // end of [s2exp_stpize(s2e0)]
 
 end (*local*) // end of [local(s2exp_stpize)]

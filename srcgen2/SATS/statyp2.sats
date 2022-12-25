@@ -115,7 +115,7 @@ T2Pfun1 of
 | T2Ptrcd of
   (trcdknd(*knd*), int(*npf*), l2t2plst)
 //
-| T2Pnone of ((*0*)) | T2Psexp of (s2exp)
+| T2Pnone0 of ((*0*)) | T2Ps2exp of (s2exp)
 //
 // HX-2022-11-04: end of [datatype(s2typ_node)
 //
@@ -144,9 +144,9 @@ s2typ_f2cl(f2clknd): s2typ
 (* ****** ****** *)
 //
 fun
-s2typ_none((*void*)): s2typ
+s2typ_none0((*void*)): s2typ
 fun
-s2typ_sexp(s2e0:s2exp): s2typ
+s2typ_s2exp(s2e0:s2exp): s2typ
 //
 (* ****** ****** *)
 fun

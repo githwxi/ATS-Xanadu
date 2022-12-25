@@ -77,18 +77,18 @@ s2typ
 (* ****** ****** *)
 //
 #implfun
-s2typ_none1(s2e0) =
+s2typ_s2exp(s2e0) =
 let
 //
   val s2t0 = s2e0.sort()
 //
 (*
 val (  ) = prerrln
-("s2typ_none1: s2e0 = ", s2e0)
+("s2typ_s2exp: s2e0 = ", s2e0)
 *)
 in//let
-  s2typ(s2t0, T2Pnone1(s2e0))
-end (*let*) // end of [s2typ_none1(s2e0)]
+  s2typ(s2t0, T2Ps2exp(s2e0))
+end (*let*) // end of [s2typ_s2exp(s2e0)]
 //
 (* ****** ****** *)
 
