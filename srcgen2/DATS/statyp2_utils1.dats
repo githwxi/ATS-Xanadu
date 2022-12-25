@@ -54,20 +54,64 @@ ATS_PACKNAME
 #staload "./../SATS/statyp2.sats"
 (* ****** ****** *)
 
-#implfun
-s2exp_stpize(s2e0) =
+local
+
+fun
+f0_impr
+(s2e0: s2exp): s2typ =
 let
 val s2t0 = s2e0.sort()
 in//let
 case+
 s2e0.node() of
+//
+|S2Ecst(s2c1) =>
+s2typ_make_node
+(s2t0, T2Pcst(s2c1))
+|S2Evar(s2v1) =>
+s2typ_make_node
+(s2t0, T2Pvar(s2v1))
+//
+|S2Etop0(s2e1) => f0_impr(s2e1)
+|S2Etopz(s2e1) => f0_impr(s2e1)
+//
+|
+S2Eapps(s2f0, s2es) =>
+s2typ_make_node
+( s2t0
+, T2Papps(s2f0, t2ps)) where
+{
+val s2f0 = f0_impr(s2f0)
+val t2ps = s2explst_stpize(s2es) }
+//
+|
+S2Elam0(s2vs, s2e1) =>
+s2typ_make_node
+( s2t0
+, T2Plam0(s2vs, f0_impr(s2e1)))
+//
 | _(*otherwise*) =>
-s2typ_make_node(s2t0, T2Pnone1(s2e0))
+s2typ_make_node(s2t0, T2Psexp(s2e0))
+end (*let*) // end of [f0_impr(s2e0)]
+
+in//local
+
+#implfun
+s2exp_stpize(s2e0) =
+let
+val s2t0 = s2e0.sort()
+in//let
+if
+sort2_imprq(s2t0)
+then f0_impr(s2e0) else
+s2typ_make_node(s2t0, T2Psexp(s2e0))
 endlet where
 {
 val () =
 prerrln("s2exp_stpize: s2e0 = ", s2e0)
 } (*where*) // end of [s2exp_stpize(s2e0)]
+
+end (*local*) // end of [local(s2exp_stpize)]
 
 (* ****** ****** *)
 

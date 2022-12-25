@@ -112,9 +112,9 @@ print
 ("T2Ptrcd(", knd0, ";", npf1, ";", lses)
 //
 |
-T2Pnone0() => print("T2Pnone0(",")")
+T2Pnone() => print("T2Pnone(",")")
 |
-T2Pnone1(s2e1) => print("T2Pnone1(",s2e1,")")
+T2Psexp(s2e1) => print("T2Psexp(",s2e1,")")
 //
 end (*let*) // end of [s2typ_fprint(out,t2p0)]
 
