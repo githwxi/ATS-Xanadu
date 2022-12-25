@@ -99,10 +99,10 @@ T2Plam0 of
 |
 T2Pf2cl of f2clknd
 |
-T2Pfun0 of
+T2Pfun1 of
 ( s2typ // f2clknd
 , sint(*npf*),s2typlst(*arg*),s2typ(*res*)
-) (* end of T2Pfun0 *)
+) (* end of T2Pfun1 *)
 //
 | T2Pexi0 of // exists quantifier
   (s2varlst(*vars*), s2typ(*body*))
@@ -139,6 +139,9 @@ l2t2p_get_node(l2t2p): s2typ_node
 #symload node with s2typ_get_node
 #symload node with l2t2p_get_node
 (* ****** ****** *)
+fun
+s2typ_f2cl(f2clknd): s2typ
+(* ****** ****** *)
 //
 fun
 s2typ_none((*void*)): s2typ
@@ -156,8 +159,11 @@ fun
 s2exp_stpize(s2e0:s2exp): s2typ
 fun
 s2explst_stpize(s2explst): s2typlst
+fun
+l2s2elst_stpize(l2s2elst): l2t2plst
 #symload stpize with s2exp_stpize
 #symload stpize with s2explst_stpize
+#symload stpize with l2s2elst_stpize
 //
 (* ****** ****** *)
 //
