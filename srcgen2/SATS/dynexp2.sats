@@ -281,7 +281,7 @@ d2con_get_stmp:(d2con) -> stamp
 #symload name with d2con_get_name
 #symload tqas with d2con_get_tqas
 #symload sexp with d2con_get_sexp
-#symload type with d2con_get_styp
+#symload styp with d2con_get_styp
 #symload stmp with d2con_get_stmp
 //
 fun
@@ -292,7 +292,7 @@ d2con_set_type
 (d2c0: d2con, t2p0: s2typ): void
 //
 #symload sexp with d2con_set_sexp
-#symload type with d2con_set_type
+#symload styp with d2con_set_type
 //
 (* ****** ****** *)
 //
@@ -323,7 +323,7 @@ d2cst_get_stmp:(d2cst) -> stamp
 #symload tknd with d2cst_get_tknd
 #symload tqas with d2cst_get_tqas
 #symload sexp with d2cst_get_sexp
-#symload type with d2cst_get_styp
+#symload styp with d2cst_get_styp
 #symload stmp with d2cst_get_stmp
 //
 fun
@@ -334,7 +334,7 @@ d2cst_set_type
 (d2c0: d2cst,t2p0: s2typ): void
 //
 #symload sexp with d2cst_set_sexp
-#symload type with d2cst_set_type
+#symload styp with d2cst_set_type
 //
 (* ****** ****** *)
 //
@@ -526,7 +526,9 @@ D2Pg1mac of
 (g1mac(*unknown*)) // HX: temp or error!
 //
 |
-D2Pnone0 of ((*void*)) | D2Pnone1 of (d1pat)
+D2Pnone0 of ((*0*))
+|
+D2Pnone1 of (d1pat) | D2Pnone2 of (d2pat)
 //
 |
 D2Perrck of (sint(*lvl*), d2pat)//HX:tread12-error
@@ -549,6 +551,8 @@ fun
 d2pat_none0(loc0:loc_t): d2pat
 fun
 d2pat_none1(d1p0:d1pat): d2pat
+fun
+d2pat_none2(d2p0:d2pat): d2pat
 (* ****** ****** *)
 fun
 d2pat_btf
@@ -822,7 +826,9 @@ D2Eg1mac of
 (g1mac(*unknown*)) // HX: temp or error!
 //
 |
-D2Enone0 of ((*void*)) | D2Enone1 of (d1exp)
+D2Enone0 of ((*0*))
+|
+D2Enone1 of (d1exp) | D2Enone2 of (d2exp)
 //
 |
 D2Eerrck of (sint(*lvl*), d2exp)//HX:tread12-error
@@ -864,14 +870,16 @@ fun
 d2exp_set_styp
 (d2e0: d2exp, t2p0: s2typ): void
 //
-#symload type with d2exp_get_styp
-#symload type with d2exp_set_styp
+#symload styp with d2exp_get_styp
+#symload styp with d2exp_set_styp
 //
 (* ****** ****** *)
 fun
 d2exp_none0(loc0:loc_t): d2exp
 fun
 d2exp_none1(d1e0:d1exp): d2exp
+fun
+d2exp_none2(d2e0:d2exp): d2exp
 (* ****** ****** *)
 fun
 d2exp_var

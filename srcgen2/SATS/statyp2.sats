@@ -79,6 +79,17 @@ LEX = "./lexing0.sats"
 #staload "./staexp2.sats"
 (* ****** ****** *)
 //
+fun
+s2typ_sint((*void*)): s2typ
+fun
+s2typ_bool((*void*)): s2typ
+fun
+s2typ_char((*void*)): s2typ
+fun
+s2typ_strn((*void*)): s2typ
+//
+(* ****** ****** *)
+//
 datatype
 s2typ_node =
 //

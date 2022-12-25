@@ -48,7 +48,71 @@ ATS_PACKNAME
 #staload
 _(*TRANS2a*) = "./trans2a.dats"
 (* ****** ****** *)
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
+#staload "./../SATS/dynexp2.sats"
+(* ****** ****** *)
 #staload "./../SATS/trans2a.sats"
+(* ****** ****** *)
+//
+#implfun
+trans2a_d2pat
+( env0, d2p0 ) =
+let
+//
+val () =
+prerrln
+("trans2a_d2pat: d2p0 = ", d2p0)
+//
+in//let
+//
+case+
+d2p0.node() of
+| _(* otherwise *) => d2pat_none2(d2p0)
+//
+endlet where
+{
+} (*where*) // end of [trans2a_d2pat(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans2a_d2exp
+( env0, d2e0 ) =
+let
+//
+val () =
+prerrln
+("trans2a_d2exp: d2e0 = ", d2e0)
+//
+in//let
+//
+case+
+d2e0.node() of
+//
+|
+D2Eint _ => d2e0 where
+{ val () =
+  d2e0.styp(s2typ_sint()) }
+|
+D2Ebtf _ => d2e0 where
+{ val () =
+  d2e0.styp(s2typ_bool()) }
+|
+D2Echr _ => d2e0 where
+{ val () =
+  d2e0.styp(s2typ_char()) }
+|
+D2Estr _ => d2e0 where
+{ val () =
+  d2e0.styp(s2typ_strn()) }
+//
+| _(* otherwise *) => d2exp_none2(d2e0)
+//
+endlet where
+{
+} (*where*) // end of [trans2a_d2exp(...)]
+//
 (* ****** ****** *)
 //
 #implfun
