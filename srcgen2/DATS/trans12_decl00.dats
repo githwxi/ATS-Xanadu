@@ -63,6 +63,7 @@ _(*TRANS12*) = "./trans12.dats"
 #staload "./../SATS/trans01.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans12.sats"
@@ -871,18 +872,26 @@ val () = tr12env_poplam0(env0)
 val
 s2c1 = s2c1 where
 {
+//
 val s2t2 = sdef.sort()
 val sid1 = sexpid_sym(tok1)
+val styp = s2exp_stpize(sdef)
+//
 val s2c1 =
 s2cst_make_idst(loc0, sid1, s2t2)
+//
 val (  ) = s2cst_set_sexp(s2c1,sdef)
-}
+val (  ) = s2cst_set_styp(s2c1,styp)
+//
+} (*where*) // end of [ val(s2c1) ]
 //
 (*
 val () =
 prerrln("f0_sexpdef: s2c1 = ", s2c1)
 val () =
 prerrln("f0_sexpdef: sdef = ", sdef)
+val () =
+prerrln("f0_sexpdef: styp = ", styp)
 *)
 //
 in//let

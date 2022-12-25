@@ -423,7 +423,7 @@ let
 val ctag = (-1)
 val loc0 = tok0.lctn()
 val sym0 = dconid_sym(tok0)
-val t2p0 = s2typ_none2(sexp)
+val t2p0 = s2typ_none1(sexp)
 val stmp = the_d2con_stamp_new()
 in//let
   D2CON
@@ -594,7 +594,7 @@ let
 val loc0 = tok0.lctn()
 val tknd = T_EOF((*void*))
 val sym0 = dcstid_sym(tok0)
-val t2p0 = s2typ_none2(sexp)
+val t2p0 = s2typ_none1(sexp)
 val stmp = the_d2cst_stamp_new()
 //
 in//let
