@@ -76,7 +76,8 @@ s2typ_make_node
 |S2Etopz(s2e1) => f0_impr(s2e1)
 //
 |
-S2Eapps(s2f0, s2es) =>
+S2Eapps
+(s2f0, s2es) =>
 s2typ_make_node
 ( s2t0
 , T2Papps(s2f0, t2ps)) where
@@ -85,13 +86,42 @@ val s2f0 = f0_impr(s2f0)
 val t2ps = s2explst_stpize(s2es) }
 //
 |
-S2Elam0(s2vs, s2e1) =>
+S2Elam0
+(s2vs, s2e1) =>
 s2typ_make_node
 ( s2t0
 , T2Plam0(s2vs, f0_impr(s2e1)))
 //
+|
+S2Etrcd
+( tknd
+, npf1, lses) =>
+s2typ_make_node
+(s2t0
+,T2Ptrcd(tknd,npf1,ltps)) where
+{
+val ltps = l2s2elst_stpize(lses) }
+//
+|
+S2Efun1
+( f2cl, npf1
+, s2es, sres) =>
+s2typ_make_node
+(s2t0
+,T2Pfun1
+ (f2cl, npf1, t2ps, tres)) where
+{
+//
+  val
+  f2cl = s2typ_f2cl(f2cl)
+  val
+  t2ps = s2explst_stpize(s2es)
+//
+  val tres = s2exp_stpize(sres) }
+//
 | _(*otherwise*) =>
 s2typ_make_node(s2t0, T2Psexp(s2e0))
+//
 end (*let*) // end of [f0_impr(s2e0)]
 
 in//local
@@ -112,6 +142,33 @@ prerrln("s2exp_stpize: s2e0 = ", s2e0)
 } (*where*) // end of [s2exp_stpize(s2e0)]
 
 end (*local*) // end of [local(s2exp_stpize)]
+
+(* ****** ****** *)
+
+#implfun
+s2explst_stpize(s2es) =
+list_map<x0><y0>(s2es) where
+{
+#typedef x0 = s2exp
+#typedef y0 = s2typ
+#implfun map$fopr<x0><y0> = s2exp_stpize
+} (*where*) // end of [s2explst_stpize(s2es)]
+
+(* ****** ****** *)
+
+#implfun
+l2s2elst_stpize(lses) =
+list_map<lx><ly>(lses) where
+{
+#typedef lx = l2s2e
+#typedef ly = l2t2p
+#implfun
+map$fopr<lx><ly>(lx) =
+let
+val+
+S2LAB(l0,x0) = lx in S2LAB(l0,stpize(x0))
+end (*let*)
+} (*where*) // end of [l2s2elst_stpize(lses)]
 
 (* ****** ****** *)
 

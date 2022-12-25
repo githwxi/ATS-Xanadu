@@ -95,6 +95,15 @@ T2Plam0(s2vs, tres) =>
 print("T2Plam0(", s2vs, ";", tres, ")")
 //
 |
+T2Pfun1
+( f2cl
+, npf1, t2ps, tres) =>
+(
+print
+("T2Pfun1(", f2cl, ";");
+print(npf1, ";", t2ps, ";", tres, ")"))
+//
+|
 T2Pexi0(s2vs, t2p1) =>
 print("T2Pexi0(", s2vs, ";", t2p1, ")")
 |
