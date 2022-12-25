@@ -54,4 +54,21 @@ ATS_PACKNAME
 #staload "./../SATS/statyp2.sats"
 (* ****** ****** *)
 
+#implfun
+s2exp_stpize(s2e0) =
+let
+val s2t0 = s2e0.sort()
+in//let
+case+
+s2e0.node() of
+| _(*otherwise*) =>
+s2typ_make_node(s2t0, T2Pnone1(s2e0))
+endlet where
+{
+val () =
+prerrln("s2exp_stpize: s2e0 = ", s2e0)
+} (*where*) // end of [s2exp_stpize(s2e0)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_statyp2_utils1.dats] *)
