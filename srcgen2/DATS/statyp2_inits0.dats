@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sat 24 Dec 2022 12:34:55 PM EST
+Tue 25 Oct 2022 05:29:15 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -47,93 +47,38 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
-#staload "./../SATS/xlabel0.sats"
+#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
+#staload "./../SATS/xsymmap.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 (* ****** ****** *)
 
+local
+//
+(* ****** ****** *)
+#symload
+name with s2cst_get_name
+(* ****** ****** *)
+//
+val
+mymap =
+topmap_make_nil{s2typ}()
+//
+in//local
+//
 #implfun
-l2t2p_hnfize_flag
-  (lt2p, flag) =
-(
+s2cst_get_styp(s2c0) =
+topmap_search_opt(mymap, s2c0.name())
+#implfun
+s2cst_set_styp(s2c0, styp) =
+topmap_insert_any(mymap, s2c0.name(), styp)
 //
-case+ lt2p of
-|
-S2LAB(l0, t2p1) =>
-let
-val fval = flag
-val t2p1 =
-s2typ_hnfize_flag(t2p1, flag)
-in//let
-if
-flag > fval
-then S2LAB(l0, t2p1) else lt2p
-end (*let*) // end of [S2LAB(...)]
-//
-) (*case+*) // end-of-[l2t2p_hnfize_flag(...)]
+end (*local*) // end of [local(the_s2cst_s2typ)]
 
 (* ****** ****** *)
 
-#implfun
-s2typlst_hnfize_flag
-   ( t2ps, flag ) =
-(
-//
-case+ t2ps of
-|
-list_nil() => list_nil()
-|
-list_cons
-(t2p1, tps2) =>
-let
-//
-val fval = flag
-//
-val t2p1 =
-s2typ_hnfize_flag(t2p1, flag)
-val tps2 =
-s2typlst_hnfize_flag(tps2, flag)
-//
-in//let
-if
-flag > fval
-then list_cons(t2p1, tps2) else t2ps
-end (*let*) // end of [list_cons(...)]
-//
-) (*case+*) // end of [s2typlst_hnfize_flag(...)]
-
-(* ****** ****** *)
-
-#implfun
-l2t2plst_hnfize_flag
-   ( ltps, flag ) =
-(
-//
-case+ ltps of
-|
-list_nil() => list_nil()
-|
-list_cons
-(ltp1, lts2) =>
-let
-//
-val fval = flag
-//
-val ltp1 =
-l2t2p_hnfize_flag(ltp1, flag)
-val lts2 =
-l2t2plst_hnfize_flag(lts2, flag)
-//
-in//let
-if
-flag > fval
-then list_cons(ltp1, lts2) else ltps
-end (*let*) // end of [list_cons(...)]
-//
-) (*case+*) // end of [l2t2plst_hnfize_flag(...)]
-
-(* ****** ****** *)
-
-(* end of [ATS3/XATSOPT_srcgen2_statyp2_utils2.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_statyp2_inits0.dats] *)

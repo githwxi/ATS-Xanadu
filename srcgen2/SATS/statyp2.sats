@@ -156,8 +156,8 @@ s2typ_make_node
 (* ****** ****** *)
 //
 fun
-s2exp_typize(s2e0:s2exp): s2typ
-#symload typize with s2exp_typize
+s2exp_stpize(s2e0:s2exp): s2typ
+#symload stpize with s2exp_stpize
 //
 (* ****** ****** *)
 //

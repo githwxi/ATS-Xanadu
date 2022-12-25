@@ -189,6 +189,30 @@ endloc (*local*) // end of [local(predefined)]
 local
 //
 (* ****** ****** *)
+#symload
+name with s2cst_get_name
+(* ****** ****** *)
+//
+val
+mymap =
+topmap_make_nil{s2exp}()
+//
+in//local
+//
+#implfun
+s2cst_get_sexp(s2c0) =
+topmap_search_opt(mymap, s2c0.name())
+#implfun
+s2cst_set_sexp(s2c0, sexp) =
+topmap_insert_any(mymap, s2c0.name(), sexp)
+//
+end (*local*) // end of [local(the_s2cst_s2exp)]
+
+(* ****** ****** *)
+
+local
+//
+(* ****** ****** *)
 #staload
 "./../SATS/dynexp2.sats"
 (* ****** ****** *)
