@@ -56,6 +56,26 @@ ATS_PACKNAME
 
 local
 
+(* ****** ****** *)
+
+fun
+f0_s2vs
+( s2vs
+: s2varlst
+)
+: s2varlst =
+let
+#typedef x0 = s2var
+#impltmp
+filter$test
+< x0 >(s2v) =
+sort2_imprq(s2v.sort())
+in
+  list_filter<x0>(s2vs) end
+// (*let*) // end of [f2_s2vs(s2vs)]
+
+(* ****** ****** *)
+
 fun
 f0_impr
 (s2e0: s2exp): s2typ =
@@ -93,6 +113,74 @@ s2typ_make_node
 , T2Plam0(s2vs, f0_impr(s2e1)))
 //
 |
+S2Efun1
+( f2cl, npf1
+, s2es, sres) =>
+s2typ_make_node
+(s2t0
+,T2Pfun1
+ ( f2cl
+ , npf1, t2ps, tres)) where
+{
+//
+  val
+  f2cl = s2typ_f2cl(f2cl)
+  val
+  t2ps = s2explst_stpize(s2es)
+//
+  val tres = s2exp_stpize(sres) }
+//
+|
+S2Eexi0
+( s2vs
+, s2ps, s2e1) =>
+let
+val
+t2p1 = f0_impr(s2e1)
+val
+s2vs = f0_s2vs(s2vs)
+in//let
+case+ s2vs of
+|
+list_nil() => t2p1
+|
+list_cons _ =>
+s2typ_make_node
+(s2t0, T2Pexi0(s2vs, t2p1))
+end (*let*) // end of [S2Eexi0]
+|
+S2Euni0
+( s2vs
+, s2ps, s2e1) =>
+let
+val
+t2p1 = f0_impr(s2e1)
+val
+s2vs = f0_s2vs(s2vs)
+in//let
+case+ s2vs of
+|
+list_nil() => t2p1
+|
+list_cons _ =>
+s2typ_make_node
+(s2t0, T2Puni0(s2vs, t2p1))
+end (*let*) // end of [S2Euni0]
+//
+(*
+| S2Etype(t2p1) => t2p1
+*)
+//
+|
+S2Etext(name, s2es) =>
+s2typ_make_node
+( s2t0
+, T2Ptext(name, t2ps)) where
+{
+val t2ps = s2explst_stpize(s2es)
+}
+//
+|
 S2Etrcd
 ( tknd
 , npf1, lses) =>
@@ -103,28 +191,14 @@ s2typ_make_node
 val ltps = l2s2elst_stpize(lses) }
 //
 |
-S2Efun1
-( f2cl, npf1
-, s2es, sres) =>
-s2typ_make_node
-(s2t0
-,T2Pfun1
- (f2cl, npf1, t2ps, tres)) where
-{
-//
-  val
-  f2cl = s2typ_f2cl(f2cl)
-  val
-  t2ps = s2explst_stpize(s2es)
-//
-  val tres = s2exp_stpize(sres) }
-//
-| _(*otherwise*) =>
+_(*otherwise*) =>
 s2typ_make_node(s2t0, T2Ps2exp(s2e0))
 //
 end (*let*) // end of [f0_impr(s2e0)]
 
+(* ****** ****** *)
 in//local
+(* ****** ****** *)
 
 #implfun
 s2exp_stpize(s2e0) =
@@ -153,7 +227,7 @@ list_map<x0><y0>(s2es) where
 {
 #typedef x0 = s2exp
 #typedef y0 = s2typ
-#implfun map$fopr<x0><y0> = s2exp_stpize
+#impltmp map$fopr<x0><y0> = s2exp_stpize
 } (*where*) // end of [s2explst_stpize(s2es)]
 
 (* ****** ****** *)
@@ -164,7 +238,7 @@ list_map<lx><ly>(lses) where
 {
 #typedef lx = l2s2e
 #typedef ly = l2t2p
-#implfun
+#impltmp
 map$fopr<lx><ly>(lx) =
 let
 val+

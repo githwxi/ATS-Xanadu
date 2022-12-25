@@ -67,6 +67,17 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #implfun
+s2typ_f2cl
+(  f2cl  ) =
+s2typ_make_node
+(s2t0, T2Pf2cl(f2cl)) where
+{
+  val s2t0 = sort2_none0()
+} (*where*) // end of [s2typ_f2cl(...)]
+//
+(* ****** ****** *)
+//
+#implfun
 s2typ_none0() =
 s2typ
 (s2t0, T2Pnone0()) where
