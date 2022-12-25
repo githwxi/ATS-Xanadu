@@ -167,7 +167,7 @@ case+ scs2 of
 |list_cons(s2c1, _) =>
 let
 val
-sdef = s2exp_typize(sdef)
+sdef = s2exp_stpize(sdef)
 val () =
 tr2aenv_insert_any
 (env0, s2c1.name(), sdef) end) in d2cl
