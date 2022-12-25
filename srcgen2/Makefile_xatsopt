@@ -457,6 +457,9 @@ all_dats:: \
 staexp2_inits0_dats
 staexp2_inits0_dats: ; $(XATSOPT) --dynamic DATS/staexp2_inits0.dats
 all_dats:: \
+statyp2_inits0_dats
+statyp2_inits0_dats: ; $(XATSOPT) --dynamic DATS/statyp2_inits0.dats
+all_dats:: \
 staexp2_utils1_dats
 staexp2_utils1_dats: ; $(XATSOPT) --dynamic DATS/staexp2_utils1.dats
 all_dats:: \

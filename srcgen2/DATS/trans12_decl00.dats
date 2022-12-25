@@ -868,12 +868,15 @@ sdef = s2exp_lam0(s2vs, sdef)
 //
 val () = tr12env_poplam0(env0)
 //
-val s2c1 =
-s2cst_make_idst
-(loc0, sid1, s2t2) where
+val
+s2c1 = s2c1 where
 {
-  val s2t2 = sdef.sort()
-  val sid1 = sexpid_sym(tok1) }
+val s2t2 = sdef.sort()
+val sid1 = sexpid_sym(tok1)
+val s2c1 =
+s2cst_make_idst(loc0, sid1, s2t2)
+val (  ) = s2cst_set_sexp(s2c1,sdef)
+}
 //
 (*
 val () =
@@ -887,8 +890,8 @@ in//let
 d2ecl_make_node
 ( loc0
 , D2Csexpdef(s2c1, sdef)) where
-{ val () =
-  tr12env_add1_s2cst(env0, s2c1) }
+{
+val () = tr12env_add1_s2cst(env0, s2c1) }
 //
 end (*let*) // end of [f0_sexpdef(env0,d1cl)]
 //

@@ -337,6 +337,23 @@ s2cst_get_stmp(s2c:s2cst):stamp
 #symload stmp with s2cst_get_stmp
 //
 (* ****** ****** *)
+fun
+s2cst_get_sexp
+( s2c0:s2cst ): s2expopt_vt
+fun
+s2cst_get_styp
+( s2c0:s2cst ): s2typopt_vt
+fun
+s2cst_set_sexp
+(s2c0: s2cst, sdef: s2exp): void
+fun
+s2cst_set_styp
+(s2c0: s2cst, sdef: s2typ): void
+#symload sexp with s2cst_get_sexp
+#symload styp with s2cst_get_styp
+#symload sexp with s2cst_set_sexp
+#symload styp with s2cst_set_styp
+(* ****** ****** *)
 //
 fun
 s2var_get_name(s2v:s2var):sym_t
