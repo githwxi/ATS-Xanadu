@@ -95,4 +95,4 @@ the_s2exp_a0p1tr(*void*) = a0ptr_view
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_xsetup0.sats] *)
+(* end of [ATS3/XANADU_srcgen2_INIT_xsetup0.sats] *)
