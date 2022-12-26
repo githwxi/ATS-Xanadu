@@ -32,43 +32,22 @@
 //
 (* ****** ****** *)
 //
-// single precision
-#typedef the_sflt_ctype = sflt
-// double precision
-#typedef the_dflt_ctype = dflt
-//
-// ldouble precision
-#typedef the_ldflt_ctype = ldflt
-//
-(* ****** ****** *)
-
-#typedef the_sint0_ctype = sint0
-#typedef the_uint0_ctype = uint0
-//
-#typedef the_bool0_ctype = bool0
-#typedef the_char0_ctype = char0
-//
-#typedef the_slint0_ctype = slint0
-#typedef the_ulint0_ctype = ulint0
-//
-#typedef the_sllint0_ctype = sllint0
-#typedef the_ullint0_ctype = ullint0
-//
-#typedef the_string0_ctype = string0
+#typedef
+the_s2exp_sint1(i:int) = sint1(i)
+#typedef
+the_s2exp_uint1(i:int) = uint1(i)
 //
 (* ****** ****** *)
 //
-#typedef the_sint1_ctype(i:int) = sint1(i)
-#typedef the_uint1_ctype(i:int) = uint1(i)
+#typedef
+the_s2exp_bool1(b:bool) = bool1(b)
+#typedef
+the_s2exp_char1(c:char) = char1(c)
 //
 (* ****** ****** *)
 //
-#typedef the_bool1_ctype(b:bool) = bool1(b)
-#typedef the_char1_ctype(c:char) = char1(c)
-//
-(* ****** ****** *)
-//
-#typedef the_string1_ctype(n:int) = string1(n)
+#typedef
+the_s2exp_string1(n:int) = string1(n)
 //
 (* ****** ****** *)
 

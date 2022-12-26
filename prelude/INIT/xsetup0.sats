@@ -27,14 +27,46 @@
 
 (* ****** ****** *)
 //
-// HX-2019-09-09:
-// These can be re-defined
+(*
+HX-2019-09-09:
+These types should
+be able to be re-defined!
+*)
 //
 (* ****** ****** *)
-
+//
 #typedef
 the_void_ctype = void
-
+//
+(* ****** ****** *)
+//
+#typedef
+the_sint_ctype = sint0
+#typedef
+the_uint_ctype = uint0
+//
+(* ****** ****** *)
+//
+#typedef
+the_bool_ctype = bool0
+#typedef
+the_char_ctype = char0
+//
+(* ****** ****** *)
+//
+#typedef
+the_slint_ctype = slint0
+#typedef
+the_ulint_ctype = ulint0
+//
+#typedef
+the_sllint_ctype = sllint0
+#typedef
+the_ullint_ctype = ullint0
+//
+#typedef
+the_string_ctype = string0
+//
 (* ****** ****** *)
 //
 #typedef
@@ -44,10 +76,26 @@ the_p2tr_ctype(a:vt) = p2tr(a)
 //
 (* ****** ****** *)
 //
+// single precision
+#typedef the_sflt_ctype = sflt
+// double precision
+#typedef the_dflt_ctype = dflt
+// ldouble precision
+#typedef the_ldflt_ctype = ldflt
+//
+(* ****** ****** *)
+//
 #typedef
 the_list_ctype(a:t0) = list(a)
 #vwtpdef
 the_llist_ctype(a:vt) = list_vt(a)
+//
+(* ****** ****** *)
+//
+#typedef
+the_optn_ctype(a:t0) = optn(a)
+#vwtpdef
+the_loptn_ctype(a:vt) = optn_vt(a)
 //
 (* ****** ****** *)
 //

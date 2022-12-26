@@ -45,28 +45,40 @@ the_s2exp_p2tr(a:vt) = p2tr(a)
 (* ****** ****** *)
 //
 // single precision
-#typedef the_s2exp_sflt = sflt
+#typedef
+the_s2exp_sflt = sflt
 // double precision
-#typedef the_s2exp_dflt = dflt
+#typedef
+the_s2exp_dflt = dflt
 //
 // ldouble precision
-#typedef the_s2exp_ldflt = ldflt
+#typedef
+the_s2exp_ldflt = ldflt
 //
 (* ****** ****** *)
 //
-#typedef the_s2exp_sint0 = sint0
-#typedef the_s2exp_uint0 = uint0
-#typedef the_s2exp_bool0 = bool0
-#typedef the_s2exp_char0 = char0
-#typedef the_s2exp_strn0 = strn0
+#typedef
+the_s2exp_sint0 = sint0
+#typedef
+the_s2exp_uint0 = uint0
+#typedef
+the_s2exp_bool0 = bool0
+#typedef
+the_s2exp_char0 = char0
+#typedef
+the_s2exp_strn0 = strn0
 //
 (* ****** ****** *)
 //
-#typedef the_s2exp_slint0 = slint0
-#typedef the_s2exp_ulint0 = ulint0
+#typedef
+the_s2exp_slint0 = slint0
+#typedef
+the_s2exp_ulint0 = ulint0
 //
-#typedef the_s2exp_sllint0 = sllint0
-#typedef the_s2exp_ullint0 = ullint0
+#typedef
+the_s2exp_sllint0 = sllint0
+#typedef
+the_s2exp_ullint0 = ullint0
 //
 (* ****** ****** *)
 //
@@ -74,6 +86,20 @@ the_s2exp_p2tr(a:vt) = p2tr(a)
 the_s2exp_lazy(a:t0) = lazy(a)
 #vwtpdef
 the_s2exp_llazy(a:vt) = lazy_vt(a)
+//
+(* ****** ****** *)
+//
+#typedef
+the_s2exp_list0(a:t0) = list(a)
+#vwtpdef
+the_s2exp_llist0(a:vt) = list_vt(a)
+//
+(* ****** ****** *)
+//
+#typedef
+the_s2exp_optn0(a:t0) = optn(a)
+#vwtpdef
+the_s2exp_loptn0(a:vt) = optn_vt(a)
 //
 (* ****** ****** *)
 //
