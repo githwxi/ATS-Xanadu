@@ -288,11 +288,11 @@ fun
 d2con_set_sexp
 (d2c0: d2con, s2e0: s2exp): void
 fun
-d2con_set_type
+d2con_set_styp
 (d2c0: d2con, t2p0: s2typ): void
 //
 #symload sexp with d2con_set_sexp
-#symload styp with d2con_set_type
+#symload styp with d2con_set_styp
 //
 (* ****** ****** *)
 //
@@ -330,11 +330,11 @@ fun
 d2cst_set_sexp
 (d2c0: d2cst,s2e0: s2exp): void
 fun
-d2cst_set_type
+d2cst_set_styp
 (d2c0: d2cst,t2p0: s2typ): void
 //
 #symload sexp with d2cst_set_sexp
-#symload styp with d2cst_set_type
+#symload styp with d2cst_set_styp
 //
 (* ****** ****** *)
 //

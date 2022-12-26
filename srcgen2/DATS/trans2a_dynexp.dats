@@ -95,7 +95,15 @@ D2Eint _ => d2e0 where
 { val () =
   d2e0.styp(s2typ_sint()) }
 |
+D2Ei00 _ => d2e0 where
+{ val () =
+  d2e0.styp(s2typ_sint()) }
+|
 D2Ebtf _ => d2e0 where
+{ val () =
+  d2e0.styp(s2typ_bool()) }
+|
+D2Eb00 _ => d2e0 where
 { val () =
   d2e0.styp(s2typ_bool()) }
 |
@@ -103,7 +111,23 @@ D2Echr _ => d2e0 where
 { val () =
   d2e0.styp(s2typ_char()) }
 |
+D2Ec00 _ => d2e0 where
+{ val () =
+  d2e0.styp(s2typ_char()) }
+|
+D2Eflt _ => d2e0 where
+{ val () =
+  d2e0.styp(s2typ_dflt()) }
+|
+D2Ef00 _ => d2e0 where
+{ val () =
+  d2e0.styp(s2typ_dflt()) }
+|
 D2Estr _ => d2e0 where
+{ val () =
+  d2e0.styp(s2typ_strn()) }
+|
+D2Es00 _ => d2e0 where
 { val () =
   d2e0.styp(s2typ_strn()) }
 //
