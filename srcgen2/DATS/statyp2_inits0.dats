@@ -56,6 +56,70 @@ ATS_PACKNAME
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 (* ****** ****** *)
+#staload "./../SATS/xglobal.sats"
+(* ****** ****** *)
+
+local
+
+(* ****** ****** *)
+val
+t2pr_sint =
+a0ref_make_1val
+<s2typ>(s2typ_none0())
+val
+the_bool =
+a0ref_make_1val
+<s2typ>(s2typ_none0())
+(* ****** ****** *)
+
+in//local
+
+#implfun
+s2typ_sint() =
+let
+val
+t2p0 =
+a0ref_get(t2pr_sint)
+in//let
+case+
+t2p0.node() of
+|
+T2Pnone0() =>
+let
+val sym1 =
+symbl("the_s2typ_sint")
+val opt1 =
+the_sexpenv_pvsfind(sym1)
+in//let
+case+ opt1 of
+| ~
+optn_vt_nil() => t2p0
+| ~
+optn_vt_cons(s2i1) =>
+(
+case+ s2i1 of
+|
+S2ITMcst(s2cs) =>
+let
+val
+t2p1 =
+s2typ_cst(s2c1) where
+{
+val-
+list_cons(s2c1, _) = s2cs
+}
+in//let
+t2pr_sint[] := t2p1; t2p1
+end
+| _(*non-S2ITMcst*) => t2p0
+)
+end (*let*) // end of [T2Pnone0]
+| _(*non-T2Pnone0*) => t2p0
+end (*let*) // end of [s2typ_sint()]
+
+end (*local*) // end of [local(the_s2typs)]
+
+(* ****** ****** *)
 
 local
 //
