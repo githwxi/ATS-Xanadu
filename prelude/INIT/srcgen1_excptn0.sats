@@ -1,1 +1,0 @@
-../../srcgen1/INIT/excptn0.sats
