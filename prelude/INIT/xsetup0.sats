@@ -31,45 +31,36 @@
 // These can be re-defined
 //
 (* ****** ****** *)
+
+#typedef
+the_void_ctype = void
+
+(* ****** ****** *)
 //
-// single precision
-#typedef the_sflt_ctype = sflt
-// double precision
-#typedef the_dflt_ctype = dflt
+#typedef
+the_p1tr_ctype = p1tr0
+#typedef
+the_p2tr_ctype(a:vt) = p2tr(a)
 //
-// ldouble precision
-#typedef the_ldflt_ctype = ldflt
+(* ****** ****** *)
+//
+#typedef
+the_list_ctype(a:t0) = list(a)
+#vwtpdef
+the_llist_ctype(a:vt) = list_vt(a)
+//
+(* ****** ****** *)
+//
+#typedef
+the_lazy_ctype(a:t0) = lazy(a)
+#vwtpdef
+the_llazy_ctype(a:vt) = lazy_vt(a)
+//
+(* ****** ****** *)
+//
+#vwtpdef
+the_excptn_ctype(*void*) = excptn_vt
 //
 (* ****** ****** *)
 
-#typedef the_sint0_ctype = sint0
-#typedef the_uint0_ctype = uint0
-//
-#typedef the_bool0_ctype = bool0
-#typedef the_char0_ctype = char0
-//
-#typedef the_slint0_ctype = slint0
-#typedef the_ulint0_ctype = ulint0
-//
-#typedef the_sllint0_ctype = sllint0
-#typedef the_ullint0_ctype = ullint0
-//
-#typedef the_string0_ctype = string0
-//
-(* ****** ****** *)
-//
-#typedef the_sint1_ctype(i:int) = sint1(i)
-#typedef the_uint1_ctype(i:int) = uint1(i)
-//
-(* ****** ****** *)
-//
-#typedef the_bool1_ctype(b:bool) = bool1(b)
-#typedef the_char1_ctype(c:char) = char1(c)
-//
-(* ****** ****** *)
-//
-#typedef the_string1_ctype(n:int) = string1(n)
-//
-(* ****** ****** *)
-
-(* end of [ATS3/XANADU_srcgen1_INIT_xsetup0.sats] *)
+(* end of [ATS3/XANADU_prelude_INIT_xsetup0.sats] *)

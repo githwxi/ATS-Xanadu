@@ -798,11 +798,12 @@ val () =
 f0_pvsload
 (0(*sta*), "/prelude/basics0.sats") 
 //
-(*
 val () =
 f0_pvsload
-(0(*sta*), "/prelude/excptn0.sats")
-*)
+(0(*sta*), "/prelude/INIT/xsetup0.sats")
+val () =
+f0_pvsload
+(0(*sta*), "/prelude/INIT/excptn0.sats")
 //
 val () =
 f0_pvsload
