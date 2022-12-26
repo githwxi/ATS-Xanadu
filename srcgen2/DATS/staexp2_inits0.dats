@@ -159,14 +159,13 @@ in//local
 the_excptn_s2cst
   ( (*void*) ) =
 (
-case+
-s2cr[] of
+case+ s2cr[] of
 //
 |
 optn_cons
 (  s2c1  ) => s2c1
 //
-| optn_nil() =>
+|optn_nil() =>
 let
 val s2c1 =
 s2cst_make_idst

@@ -65,12 +65,22 @@ ATS_PACKNAME
 #symload lctn with s1exp_get_lctn
 #symload node with s1exp_get_node
 (* ****** ****** *)
+#implfun
+s2typ_var(s2v) =
+s2typ_make_node
+(s2v.sort(), T2Pvar(s2v))
+#implfun
+s2typ_cst(s2c) =
+s2typ_make_node
+(s2c.sort(), T2Pcst(s2c))
+(* ****** ****** *)
 //
 #implfun
 s2typ_f2cl
 (  f2cl  ) =
 s2typ_make_node
-(s2t0, T2Pf2cl(f2cl)) where
+( s2t0
+, T2Pf2cl(f2cl)) where
 {
   val s2t0 = sort2_none0()
 } (*where*) // end of [s2typ_f2cl(...)]

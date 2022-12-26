@@ -152,8 +152,15 @@ l2t2p_get_node(l2t2p): s2typ_node
 #symload node with s2typ_get_node
 #symload node with l2t2p_get_node
 (* ****** ****** *)
+//
 fun
-s2typ_f2cl(f2clknd): s2typ
+s2typ_var(s2v: s2var): s2typ
+fun
+s2typ_cst(s2c: s2cst): s2typ
+//
+(* ****** ****** *)
+fun
+s2typ_f2cl( f2clknd ): s2typ
 (* ****** ****** *)
 //
 fun
