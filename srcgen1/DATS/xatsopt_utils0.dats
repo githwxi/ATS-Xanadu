@@ -520,16 +520,7 @@ the_basics_load
 , 0(*static*)
 , "prelude/basics0.sats")
 //
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/xsetup0.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/excptn0.sats")
+(* ****** ****** *)
 //
 val () =
 the_prelude_load
@@ -686,6 +677,17 @@ the_prelude_load
 , "prelude/SATS/VT/synoug0_vt.sats")
 //
 (* ****** ****** *)
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "prelude/INIT/srcgen1/excptn0.sats")
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "prelude/INIT/srcgen1_xsetup0.sats")
+(* ****** ****** *)
 //
 (*
 val () =
@@ -693,7 +695,9 @@ println!
 ("//[the_preludes_load] is finished.")
 *)
 //
-} (* end of [the_preludes_load] *)
+(* ****** ****** *)
+//
+} (* end of [the_preludes_load(XATSENV_] *)
 
 (* ****** ****** *)
 //

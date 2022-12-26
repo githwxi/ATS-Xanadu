@@ -1,0 +1,1 @@
+../../srcgen2/INIT/xsetup0.sats
