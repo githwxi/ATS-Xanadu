@@ -33,76 +33,65 @@
 (* ****** ****** *)
 
 #typedef
-the_void_ctype = void
+the_s2exp_void = void
 
 (* ****** ****** *)
 //
 #typedef
-the_p1tr_ctype = p1tr0
+the_s2exp_p1tr = p1tr0
 #typedef
-the_p2tr_ctype(a:vt) = p2tr(a)
-//
-(* ****** ****** *)
-//
-#typedef
-the_sint_ctype(i:int) = sint1(i)
-#typedef
-the_uint_ctype(i:int) = uint1(i)
-//
-(* ****** ****** *)
-//
-#typedef
-the_bool_ctype(b:bool) = bool1(b)
-#typedef
-the_char_ctype(c:char) = char1(c)
+the_s2exp_p2tr(a:vt) = p2tr(a)
 //
 (* ****** ****** *)
 //
 // single precision
-#typedef the_sflt_ctype = sflt
+#typedef the_s2exp_sflt = sflt
 // double precision
-#typedef the_dflt_ctype = dflt
+#typedef the_s2exp_dflt = dflt
 //
 // ldouble precision
-#typedef the_ldflt_ctype = ldflt
+#typedef the_s2exp_ldflt = ldflt
 //
 (* ****** ****** *)
 //
-#typedef the_slint_ctype = slint0
-#typedef the_ulint_ctype = ulint0
-//
-#typedef the_sllint_ctype = sllint0
-#typedef the_ullint_ctype = ullint0
-//
-(* ****** ****** *)
-//
-#typedef
-the_string_ctype(n:int) = string1(n)
+#typedef the_s2exp_sint0 = sint0
+#typedef the_s2exp_uint0 = uint0
+#typedef the_s2exp_bool0 = bool0
+#typedef the_s2exp_char0 = char0
+#typedef the_s2exp_strn0 = strn0
 //
 (* ****** ****** *)
-
-#typedef the_sint0_ctype = sint0
-#typedef the_uint0_ctype = uint0
-#typedef the_bool0_ctype = bool0
-#typedef the_char0_ctype = char0
-#typedef the_string0_ctype = string0
-
+//
+#typedef the_s2exp_slint0 = slint0
+#typedef the_s2exp_ulint0 = ulint0
+//
+#typedef the_s2exp_sllint0 = sllint0
+#typedef the_s2exp_ullint0 = ullint0
+//
 (* ****** ****** *)
 //
 #typedef
-the_lazy_ctype(a:t0) = lazy(a)
+the_s2exp_lazy(a:t0) = lazy(a)
 #vwtpdef
-the_llazy_ctype(a:vt) = lazy_vt(a)
+the_s2exp_llazy(a:vt) = lazy_vt(a)
 //
 (* ****** ****** *)
 //
 #vwtpdef
-the_excptn_ctype(*void*) = excptn_vt
+the_s2exp_excptn(*void*) = excptn_vt
 //
 (* ****** ****** *)
 //
 #viewdef
-the_a0p1tr_cview(*void*) = a0ptr_view
+the_s2exp_a0p1tr(*void*) = a0ptr_view
+//
+(* ****** ****** *)
+//
+#typedef the_s2exp_sint1(i:i0) = sint1(i)
+#typedef the_s2exp_uint1(i:i0) = uint1(i)
+#typedef the_s2exp_bool1(b:b0) = bool1(b)
+#typedef the_s2exp_char1(c:c0) = char1(c)
+#typedef the_s2exp_strn1(n:i0) = strn1(n)
 //
 (* ****** ****** *)
 

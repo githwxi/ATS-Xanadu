@@ -63,33 +63,42 @@ local
 
 (* ****** ****** *)
 val
-t2pr_sint =
+sint_name =
+symbl
+("the_s2exp_sint0")
+val
+bool_name =
+symbl
+("the_s2exp_bool0")
+(* ****** ****** *)
+val
+sint_t2pr =
 a0ref_make_1val
 <s2typ>(s2typ_none0())
 val
-the_bool =
+bool_t2pr =
 a0ref_make_1val
 <s2typ>(s2typ_none0())
 (* ****** ****** *)
 
-in//local
-
-#implfun
-s2typ_sint() =
+fun
+s2typ_name_t2pr
+( name
+: sym_t
+, t2pr
+: a0ref(s2typ)): s2typ =
 let
 val
-t2p0 =
-a0ref_get(t2pr_sint)
+t2p0 = t2pr[]
 in//let
 case+
 t2p0.node() of
 |
 T2Pnone0() =>
 let
-val sym1 =
-symbl("the_s2typ_sint")
 val opt1 =
-the_sexpenv_pvsfind(sym1)
+the_sexpenv_pvsfind
+(       name       )
 in//let
 case+ opt1 of
 | ~
@@ -109,14 +118,36 @@ val-
 list_cons(s2c1, _) = s2cs
 }
 in//let
-t2pr_sint[] := t2p1; t2p1
-end
-| _(*non-S2ITMcst*) => t2p0
+  (t2pr[] := t2p1; t2p1) end
+//
+| _(*non-S2ITMcst*) => (t2p0)
 )
 end (*let*) // end of [T2Pnone0]
-| _(*non-T2Pnone0*) => t2p0
-end (*let*) // end of [s2typ_sint()]
+| _(*non-T2Pnone0*) => (t2p0)
+end (*let*) // end of [s2typ_t2pr()]
 
+(* ****** ****** *)
+in//loca
+(* ****** ****** *)
+//
+#implfun
+s2typ_sint() =
+s2typ_name_t2pr(sint_name, sint_t2pr)
+#implfun
+s2typ_bool() =
+s2typ_name_t2pr(bool_name, bool_t2pr)
+(*
+#implfun
+s2typ_char() =
+s2typ_name_t2pr(char_name, char_t2pr)
+#implfun
+s2typ_dflt() =
+s2typ_name_t2pr(dflt_name, dflt_t2pr)
+#implfun
+s2typ_strn() =
+s2typ_name_t2pr(strn_name, strn_t2pr)
+*)
+//
 end (*local*) // end of [local(the_s2typs)]
 
 (* ****** ****** *)

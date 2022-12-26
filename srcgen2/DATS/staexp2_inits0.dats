@@ -174,7 +174,7 @@ s2cst_make_idst
 val loc0 =
 loctn_dummy()
 val name =
-symbl("excptn_vt")
+symbl("the_s2exp_excptn")
 val s2t1 = the_sort2_vtbx }
 in//let
 s2cr[] := optn_cons(s2c1); s2c1
