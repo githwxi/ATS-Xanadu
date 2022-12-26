@@ -73,6 +73,9 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload node with s2exp_get_node
 (* ****** ****** *)
+#symload lctn with d2pat_get_lctn
+#symload lctn with d2exp_get_lctn
+(* ****** ****** *)
 //
 #implfun
 d2pat_none0

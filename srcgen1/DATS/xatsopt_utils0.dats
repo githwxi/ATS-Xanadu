@@ -681,12 +681,12 @@ val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/INIT/srcgen1/excptn0.sats")
+, "prelude/INIT/srcgen1_xsetup0.sats")
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/INIT/srcgen1_xsetup0.sats")
+, "prelude/INIT/srcgen1_excptn0.sats")
 (* ****** ****** *)
 //
 (*

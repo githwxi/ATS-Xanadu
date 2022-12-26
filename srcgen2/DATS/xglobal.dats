@@ -797,9 +797,12 @@ val () = f0_pvsinit((*void*))
 val () =
 f0_pvsload
 (0(*sta*), "/prelude/basics0.sats") 
+//
+(*
 val () =
 f0_pvsload
 (0(*sta*), "/prelude/excptn0.sats")
+*)
 //
 val () =
 f0_pvsload
