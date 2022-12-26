@@ -86,6 +86,8 @@ s2typ_bool((*void*)): s2typ
 fun
 s2typ_char((*void*)): s2typ
 fun
+s2typ_dflt((*void*)): s2typ
+fun
 s2typ_strn((*void*)): s2typ
 //
 (* ****** ****** *)
