@@ -248,13 +248,13 @@ ifcase
   the_p2tr_ctype.type()
 //
 | sym=XATS_SINT_T =>
-  the_sint0_ctype.type()
+  the_sint_ctype.type()
 | sym=XATS_UINT_T =>
-  the_uint0_ctype.type()
+  the_uint_ctype.type()
 | sym=XATS_BOOL_T =>
-  the_bool0_ctype.type()
+  the_bool_ctype.type()
 | sym=XATS_CHAR_T =>
-  the_char0_ctype.type()
+  the_char_ctype.type()
 //
 | sym=XATS_SFLT_T =>
   the_sflt_ctype.type()
@@ -273,7 +273,7 @@ ifcase
   the_ullint_ctype.type()
 //
 | sym=XATS_STRING_T =>
-  the_string0_ctype.type()
+  the_string_ctype.type()
 //
 | sym=XATS_LAZY_T =>
   the_lazy_ctype.type((*void*))
