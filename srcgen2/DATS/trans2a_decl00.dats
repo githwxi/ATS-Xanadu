@@ -61,24 +61,29 @@ _(*TRANS2a*) = "./trans2a.dats"
 trans2a_d2ecl
 ( env0, d2cl ) = let
 //
-(*
+// (*
 val
 loc0 = d2cl.lctn()
 val () =
 prerrln
 ("trans2a_d2ecl: d2cl = ", d2cl)
-*)
+// *)
 //
 in//let
 //
 case+
 d2cl.node() of
 //
-| D2Cdefine _ => d2cl
-| D2Cmacdef _ => d2cl
+| D2Cd1ecl _ => d2cl
 //
-|
-D2Clocal0 _ =>
+| D2Cstatic _ =>
+(
+f0_static(env0, d2cl))
+| D2Cextern _ =>
+(
+f0_extern(env0, d2cl))
+//
+| D2Clocal0 _ =>
 (
 f0_local0(env0, d2cl))
 //
@@ -97,6 +102,8 @@ D2Cabsimpl _ => f0_absimpl(env0, d2cl)
 //
 |
 D2Cvaldclst _ => f0_valdclst(env0, d2cl)
+|
+D2Cvardclst _ => f0_vardclst(env0, d2cl)
 //
 | _(*otherwise*) =>
 let
@@ -107,6 +114,44 @@ end (*let*) // end of [_(*otherwise*)] // temp
 //
 end where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_static
+( env0:
+! tr2aenv
+, d2cl: d2ecl): d2ecl =
+let
+//
+val
+loc0 = d2cl.lctn()
+val-
+D2Cstatic
+(tknd, dcl1) =  d2cl.node()
+val
+dcl1 = trans2a_d2ecl(env0, dcl1)
+in//let
+  d2ecl(loc0, D2Cstatic(tknd, dcl1))
+end (*let*) // end of [f0_static(env0,d2cl)]
+//
+fun
+f0_extern
+( env0:
+! tr2aenv
+, d2cl: d2ecl): d2ecl =
+let
+//
+val
+loc0 = d2cl.lctn()
+val-
+D2Cextern
+(tknd, dcl1) = d2cl.node()
+val
+dcl1 = trans2a_d2ecl(env0, dcl1)
+in//let
+  d2ecl(loc0, D2Cextern(tknd, dcl1))
+end (*let*) // end of [f0_extern(env0,d2cl)]
 //
 (* ****** ****** *)
 //
@@ -192,6 +237,10 @@ val-
 D2Cvaldclst
 (tknd, d2vs) = d2cl.node()
 //
+val () =
+prerrln
+("f0_valdclst: d2cl = ", d2cl)
+//
 val
 d2vs =
 trans2a_d2valdclist(env0, d2vs)
@@ -202,13 +251,40 @@ end (*let*) // end of [f0_valdclst(env0,d2cl)]
 //
 (* ****** ****** *)
 //
+fun
+f0_vardclst
+( env0:
+! tr2aenv
+, d2cl: d2ecl): d2ecl =
+let
+//
+val
+loc0 = d2cl.lctn()
+val-
+D2Cvardclst
+(tknd, d2vs) = d2cl.node()
+//
+val () =
+prerrln
+("f0_vardclst: d2cl = ", d2cl)
+//
+val
+d2vs =
+trans2a_d2vardclist(env0, d2vs)
+//
+in//let
+  d2ecl(loc0, D2Cvardclst(tknd, d2vs))
+end (*let*) // end of [f0_vardclst(env0,d2cl)]
+//
+(* ****** ****** *)
+//
 } (*where*) // end of [trans2a_d2ecl(env0,d2cl)]
 //
 (* ****** ****** *)
 //
 #implfun
 trans2a_d2eclist
-( env0, dcls ) =
+  (env0, dcls) =
 list_trans2a_fnp(env0, dcls, trans2a_d2ecl)
 //
 (* ****** ****** *)

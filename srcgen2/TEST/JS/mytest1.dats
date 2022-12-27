@@ -3,16 +3,19 @@
 #infixr -> of 10
 *)
 (* ****** ****** *)
-(*
+val x = 1
+and y = 2
+(* ****** ****** *)
+////
+(* ****** ****** *)
+#define ONE 1
+#define TWO 2
+(* ****** ****** *)
 #abstbox
 myint2(i0,i0)
 #absimpl
 myint2(a1,a2) =
 @(sint(a1), sint(a1+a3))
-*)
-(* ****** ****** *)
-#define ONE 1
-#define TWO 2
 (* ****** ****** *)
 #define add(x)(y) = x + y
 #define mul(x)(y) = x * y
