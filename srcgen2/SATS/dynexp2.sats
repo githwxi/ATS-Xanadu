@@ -547,6 +547,17 @@ d2pat_get_node(d2pat): d2pat_node
 #symload lctn with d2pat_get_lctn
 #symload node with d2pat_get_node
 (* ****** ****** *)
+//
+fun
+d2pat_get_styp:(d2pat)->s2typ
+fun
+d2pat_set_styp
+(d2p0: d2pat, t2p0: s2typ): void
+//
+#symload styp with d2pat_get_styp
+#symload styp with d2pat_set_styp
+//
+(* ****** ****** *)
 fun
 d2pat_none0(loc0:loc_t): d2pat
 fun
