@@ -196,8 +196,7 @@ in//let
 (
 case+
 t2p0.node() of
-|
-T2Pnone0() =>
+|T2Pnone0() =>
 let
 val
 xtp1 = x2t2p(d2v1)
@@ -230,6 +229,8 @@ d2e0.node() of
 //
 |D2Eint _ => f0_int(env0, d2e0)
 |D2Ei00 _ => f0_i00(env0, d2e0)
+//
+|D2Evar _ => f0_var(env0, d2e0)
 //
 |D2Etup0 _ => f0_tup0(env0, d2e0)
 //
@@ -271,6 +272,23 @@ val loc0 = d2e0.lctn()
 val-
 D2Ei00(int) = d2e0.node()
 val t2p0 = the_s2typ_sint() }
+//
+(* ****** ****** *)
+//
+fun
+f0_var
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+(
+d2exp_make_styp_node
+( loc0
+, t2p0, D2Evar(d2v1))) where
+{
+val loc0 = d2e0.lctn()
+val-
+D2Evar(d2v1) = d2e0.node()
+val t2p0 = d2v1.styp((*nil*)) }
 //
 (* ****** ****** *)
 //

@@ -435,6 +435,25 @@ S2Efun1
 (* ****** ****** *)
 //
 #implfun
+d2con_set_sexp
+( d2c0, s2e0 ) =
+let
+val
+d2c0 =
+$UN.castlin10{d2con_vt}(d2c0)
+val+
+@D2CON_vt
+(loc0,
+ sym0,
+ ctag,
+ tqas,
+!sexp,
+ t2p0,stmp) = d2c0 in (sexp := s2e0)
+end (*let*) // end of [d2con_set_sexp]
+//
+(* ****** ****** *)
+//
+#implfun
 d2con_make_idtp
 (tok0,tqas,sexp) =
 let
@@ -451,23 +470,6 @@ in//let
 end (*let*) // end of [d2con_make_idtp]
 //
 (* ****** ****** *)
-//
-#implfun
-d2con_set_sexp
-( d2c0, sexp ) =
-let
-val
-d2c0 =
-$UN.castlin10{d2con_vt}(d2c0)
-val+
-@D2CON_vt
-(loc0,
- sym0,
- ctag,
- tqas,
-!s2e0,
- t2p0,stmp) = d2c0 in (s2e0 := sexp)
-end (*let*) // end of [d2con_set_sexp]
 //
 end (*local*) // end of [local(d2con_tbox)]
 
@@ -643,6 +645,16 @@ D2VAR of
 , s2typ // type
 , stamp // stmp // unicity
 ) (* end of [d2var] *)
+datavwtp
+d2var_vt =
+D2VAR_vt of
+( loc_t // lctn
+, sym_t // name
+, t2qas // tqas
+, s2exp // sexp
+, s2typ // type
+, stamp // stmp // unicity
+) (* end of [d2var] *)
 //
 #absimpl d2var_tbox = d2var
 //
@@ -673,6 +685,18 @@ D2VAR
 ,t2p0,stmp) = d2v0 in sym0 end
 //
 #implfun
+d2var_get_styp
+  (  d2v0  ) =
+let
+val+
+D2VAR
+(loc0
+,sym0
+,tqas
+,s2e0
+,t2p0,stmp) = d2v0 in t2p0 end
+//
+#implfun
 d2var_get_stmp
   (  d2v0  ) =
 let
@@ -683,6 +707,24 @@ D2VAR
 ,tqas
 ,s2e0
 ,t2p0,stmp) = d2v0 in stmp end
+//
+(* ****** ****** *)
+//
+#implfun
+d2var_set_styp
+( d2v0, t2p0 ) =
+let
+val
+d2v0 =
+$UN.castlin10{d2var_vt}(d2v0)
+val+
+@D2VAR_vt
+(loc0,
+ sym0,
+ tqas,
+ s2e0,
+!styp,stmp) = d2v0 in (styp := t2p0)
+end (*let*) // end of [d2var_set_styp]
 //
 (* ****** ****** *)
 //
@@ -709,7 +751,13 @@ local
 datatype
 d2pat =
 D2PAT of
-(loctn, d2pat_node)
+( loctn
+, s2typ, d2pat_node)
+datavwtp
+d2pat_vt =
+D2PAT_vt of
+( loctn
+, s2typ, d2pat_node)
 //
 #absimpl d2pat_tbox = d2pat
 //
@@ -717,18 +765,44 @@ in (* in-of-local *)
 //
 #implfun
 d2pat_make_node
-(   loc,nod   ) = D2PAT(loc,nod)
+(   loc,nod   ) =
+let
+val t2p =
+s2typ_none0() in
+D2PAT(loc, t2p, nod) end
 //
 #implfun
 d2pat_get_lctn(d2p) =
 let
-  val+D2PAT(loc,nod) = d2p in loc
+val+
+D2PAT(loc,t2p,nod) = d2p in loc
 end
 #implfun
 d2pat_get_node(d2p) =
 let
-  val+D2PAT(loc,nod) = d2p in nod
+val+
+D2PAT(loc,t2p,nod) = d2p in nod
 end
+#implfun
+d2pat_get_styp(d2p) =
+let
+val+
+D2PAT(loc,t2p,nod) = d2p in t2p
+end
+//
+#implfun
+d2pat_set_styp
+( d2p0, t2p0 ) =
+let
+//
+val
+d2p0 =
+$UN.castlin10{d2pat_vt}(d2p0)
+val+
+@D2PAT_vt
+(loc0,
+!styp,node) = d2p0 in styp := t2p0
+end (*let*) // end of [d2pat_set_styp]
 //
 endloc (*local*) // end of [local(d2pat)]
 
@@ -865,6 +939,11 @@ d2exp =
 D2EXP of
 ( loctn
 , s2typ, d2exp_node)
+datavwtp
+d2exp_vt =
+D2EXP_vt of
+( loctn
+, s2typ, d2exp_node)
 //
 #absimpl d2exp_tbox = d2exp
 //
@@ -881,18 +960,35 @@ D2EXP(loc, t2p, nod) end
 #implfun
 d2exp_get_lctn(d2e) =
 let
-val+D2EXP(loc,t2p,nod) = d2e in loc
+val+
+D2EXP(loc,t2p,nod) = d2e in loc
 end
 #implfun
 d2exp_get_styp(d2e) =
 let
-val+D2EXP(loc,t2p,nod) = d2e in t2p
+val+
+D2EXP(loc,t2p,nod) = d2e in t2p
 end
 #implfun
 d2exp_get_node(d2e) =
 let
-val+D2EXP(loc,t2p,nod) = d2e in nod
+val+
+D2EXP(loc,t2p,nod) = d2e in nod
 end
+//
+#implfun
+d2exp_set_styp
+( d2e0, t2p0 ) =
+let
+//
+val
+d2e0 =
+$UN.castlin10{d2exp_vt}(d2e0)
+val+
+@D2EXP_vt
+(loc0,
+!styp,node) = d2e0 in styp := t2p0
+end (*let*) // end of [d2exp_set_styp]
 //
 endloc (*local*) // end of [local(d2exp)]
 
@@ -1030,6 +1126,8 @@ T2IAG
 t2iag_make_s2es
 ( loc0 , s2es ) = T2IAG(loc0, s2es)
 //
+(* ****** ****** *)
+//
 #implfun
 t2iag_set_s2es
 (t2ia, ses2) =
@@ -1041,6 +1139,8 @@ val+
 @T2IAG_vt
 (loc0, !s2es) = t2ia in s2es := ses2
 end (*let*) // end of [t2iag_set_s2es]
+//
+(* ****** ****** *)
 //
 end (*local*) // end of [local(t2iag)]
 
