@@ -64,21 +64,39 @@ local
 (* ****** ****** *)
 val
 sint_name =
-symbl
-("the_s2exp_sint0")
+symbl("the_s2exp_sint0")
 val
 bool_name =
-symbl
-("the_s2exp_bool0")
+symbl("the_s2exp_bool0")
+val
+char_name =
+symbl("the_s2exp_char0")
+val
+dflt_name =
+symbl("the_s2exp_dflt0")
+val
+strn_name =
+symbl("the_s2exp_strn0")
 (* ****** ****** *)
+local
+val t2p0 = s2typ_none0()
+in//local
 val
 sint_t2pr =
-a0ref_make_1val
-<s2typ>(s2typ_none0())
+a0ref_make_1val<s2typ>(t2p0)
 val
 bool_t2pr =
-a0ref_make_1val
-<s2typ>(s2typ_none0())
+a0ref_make_1val<s2typ>(t2p0)
+val
+char_t2pr =
+a0ref_make_1val<s2typ>(t2p0)
+val
+dflt_t2pr =
+a0ref_make_1val<s2typ>(t2p0)
+val
+strn_t2pr =
+a0ref_make_1val<s2typ>(t2p0)
+end (*local*) // end-of-(local)
 (* ****** ****** *)
 
 fun
@@ -124,29 +142,27 @@ in//let
 )
 end (*let*) // end of [T2Pnone0]
 | _(*non-T2Pnone0*) => (t2p0)
-end (*let*) // end of [s2typ_t2pr()]
+end (*let*) // end of [s2typ_name_t2pr()]
 
 (* ****** ****** *)
-in//loca
+in//local
 (* ****** ****** *)
 //
 #implfun
-s2typ_sint() =
+the_s2typ_sint() =
 s2typ_name_t2pr(sint_name, sint_t2pr)
 #implfun
-s2typ_bool() =
+the_s2typ_bool() =
 s2typ_name_t2pr(bool_name, bool_t2pr)
-(*
 #implfun
-s2typ_char() =
+the_s2typ_char() =
 s2typ_name_t2pr(char_name, char_t2pr)
 #implfun
-s2typ_dflt() =
+the_s2typ_dflt() =
 s2typ_name_t2pr(dflt_name, dflt_t2pr)
 #implfun
-s2typ_strn() =
+the_s2typ_strn() =
 s2typ_name_t2pr(strn_name, strn_t2pr)
-*)
 //
 end (*local*) // end of [local(the_s2typs)]
 

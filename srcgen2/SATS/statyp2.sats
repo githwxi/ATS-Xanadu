@@ -78,17 +78,22 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #staload "./staexp2.sats"
 (* ****** ****** *)
+
+#abstbox x2t2p_tbox
+#typedef x2t2p = x2t2p_tbox
+
+(* ****** ****** *)
 //
 fun
-s2typ_sint((*void*)): s2typ
+the_s2typ_sint((*void*)): s2typ
 fun
-s2typ_bool((*void*)): s2typ
+the_s2typ_bool((*void*)): s2typ
 fun
-s2typ_char((*void*)): s2typ
+the_s2typ_char((*void*)): s2typ
 fun
-s2typ_dflt((*void*)): s2typ
+the_s2typ_dflt((*void*)): s2typ
 fun
-s2typ_strn((*void*)): s2typ
+the_s2typ_strn((*void*)): s2typ
 //
 (* ****** ****** *)
 //
@@ -101,6 +106,8 @@ s2typ_node =
 | T2Pvar of s2var // variable
 //
 | T2Plft of (s2typ) // left-value
+//
+| T2Pxtv of (x2t2p) // exist. var.
 //
 |
 T2Papps of
@@ -168,6 +175,10 @@ s2typ_none0((*void*)): s2typ
 fun
 s2typ_s2exp(s2e0:s2exp): s2typ
 //
+(* ****** ****** *)
+fun
+s2typ_tup0
+(npf1:sint,t2ps:s2typlst): s2typ
 (* ****** ****** *)
 fun
 s2typ_make_node
