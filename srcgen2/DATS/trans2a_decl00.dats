@@ -281,6 +281,30 @@ end (*let*) // end of [f0_vardclst(env0,d2cl)]
 } (*where*) // end of [trans2a_d2ecl(env0,d2cl)]
 //
 (* ****** ****** *)
+
+#implfun
+trans2a_d2valdcl
+  (env0, dval) = let
+//
+val loc0 =
+d2valdcl_get_lctn(dval)
+//
+val dpat =
+d2valdcl_get_dpat(dval)
+val dpat =
+trans2a_d2pat(env0, dpat)
+//
+val tdxp =
+d2valdcl_get_tdxp(dval)
+val wsxp =
+d2valdcl_get_wsxp(dval)
+//
+in//let
+d2valdcl_make_args(loc0, dpat, tdxp, wsxp)
+end//let
+(*let*)//end-of-[trans2a_d2valdcl(env0,dval)]
+
+(* ****** ****** *)
 //
 #implfun
 trans2a_d2eclist
