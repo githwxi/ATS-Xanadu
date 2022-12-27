@@ -96,6 +96,12 @@ f0_local0(env0, d2cl))
 (
 f0_absimpl(env0, d2cl))
 //
+(*
+| D2Cvaldclst _ =>
+(
+f0_valdclst(env0, d2cl))
+*)
+//
 | _(*otherwise*) =>
 let
   val loc0 = d2cl.lctn()

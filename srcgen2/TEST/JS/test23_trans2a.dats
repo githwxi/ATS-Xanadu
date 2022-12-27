@@ -197,7 +197,11 @@
 #include
 "./../../DATS/staexp2_inits0.dats"
 #include
+"./../../DATS/statyp2_inits0.dats"
+#include
 "./../../DATS/staexp2_utils1.dats"
+#include
+"./../../DATS/statyp2_utils1.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/dynexp2.dats"

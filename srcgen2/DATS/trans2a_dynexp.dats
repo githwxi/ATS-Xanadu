@@ -55,6 +55,41 @@ _(*TRANS2a*) = "./trans2a.dats"
 #staload "./../SATS/trans2a.sats"
 (* ****** ****** *)
 //
+fun
+s2typlst_of_d2explst
+( d2es
+: d2explst ): s2typlst =
+(
+list_map<x0><y0>(d2es)) where
+{
+#typedef x0 = d2exp
+#typedef y0 = s2typ
+#impltmp
+map$fopr<x0><y0>(d2e) = d2e.styp()
+}
+// end of [ s2typlst_of_d2explst ]
+//
+#symload
+s2typlst with s2typlst_of_d2explst
+//
+(* ****** ****** *)
+//
+fun
+d2exp_make_styp_node
+( loc0: loc_t
+, t2p0: s2typ
+, node: d2exp_node): d2exp =
+let
+val
+d2e0 = d2exp(loc0, node)
+in
+  (d2e0.styp(t2p0); d2e0) end
+//
+#symload
+d2exp with d2exp_make_styp_node
+//
+(* ****** ****** *)
+//
 #implfun
 trans2a_d2pat
 ( env0, d2p0 ) =
@@ -68,7 +103,7 @@ in//let
 //
 case+
 d2p0.node() of
-| _(* otherwise *) => d2pat_none2(d2p0)
+| _(*otherwise*) => d2pat_none2(d2p0)
 //
 endlet where
 {
@@ -90,51 +125,52 @@ in//let
 case+
 d2e0.node() of
 //
-|
-D2Eint _ => d2e0 where
-{ val () =
-  d2e0.styp(s2typ_sint()) }
-|
-D2Ei00 _ => d2e0 where
-{ val () =
-  d2e0.styp(s2typ_sint()) }
-|
-D2Ebtf _ => d2e0 where
-{ val () =
-  d2e0.styp(s2typ_bool()) }
-|
-D2Eb00 _ => d2e0 where
-{ val () =
-  d2e0.styp(s2typ_bool()) }
-|
-D2Echr _ => d2e0 where
-{ val () =
-  d2e0.styp(s2typ_char()) }
-|
-D2Ec00 _ => d2e0 where
-{ val () =
-  d2e0.styp(s2typ_char()) }
-|
-D2Eflt _ => d2e0 where
-{ val () =
-  d2e0.styp(s2typ_dflt()) }
-|
-D2Ef00 _ => d2e0 where
-{ val () =
-  d2e0.styp(s2typ_dflt()) }
-|
-D2Estr _ => d2e0 where
-{ val () =
-  d2e0.styp(s2typ_strn()) }
-|
-D2Es00 _ => d2e0 where
-{ val () =
-  d2e0.styp(s2typ_strn()) }
+|D2Eint _ => f0_int(env0, d2e0)
 //
-| _(* otherwise *) => d2exp_none2(d2e0)
+|D2Etup0 _ => f0_tup0(env0, d2e0)
+//
+| _(*otherwise*) => d2exp_none2(d2e0)
 //
 endlet where
 {
+//
+fun
+f0_int
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+(
+d2exp_make_styp_node
+( loc0
+, t2p0, D2Eint(tok1))) where
+{
+val loc0 = d2e0.lctn()
+val-
+D2Eint(tok1) = d2e0.node()
+val t2p0 = the_s2typ_sint() }
+//
+(* ****** ****** *)
+//
+fun
+f0_tup0
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+(
+d2exp_make_styp_node
+( loc0, t2p0
+, D2Etup0(npf1, d2es))) where
+{
+val loc0 = d2e0.lctn()
+val-
+D2Etup0
+(npf1, d2es) = d2e0.node()
+val
+d2es = trans2a_d2explst(env0, d2es)
+val
+t2p0 = s2typ_tup0(npf1, s2typlst(d2es))
+} (*where*) // end of [f0_tup0(env0,d2e0)]
+//
 } (*where*) // end of [trans2a_d2exp(...)]
 //
 (* ****** ****** *)

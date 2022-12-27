@@ -38,18 +38,18 @@ the_s2exp_void = void
 (* ****** ****** *)
 //
 #typedef
-the_s2exp_p1tr = p1tr0
+the_s2exp_p1tr0 = p1tr0
 #typedef
-the_s2exp_p2tr(a:vt) = p2tr(a)
+the_s2exp_p2tr0(a:vt) = p2tr(a)
 //
 (* ****** ****** *)
 //
 // single precision
 #typedef
-the_s2exp_sflt = sflt
+the_s2exp_sflt0 = sflt
 // double precision
 #typedef
-the_s2exp_dflt = dflt
+the_s2exp_dflt0 = dflt
 //
 // ldouble precision
 #typedef
