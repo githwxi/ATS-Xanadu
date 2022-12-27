@@ -77,12 +77,19 @@ LEX = "./lexing0.sats"
 //
 (* ****** ****** *)
 #staload S2E = "./staexp2.sats"
+#staload T2P = "./statyp2.sats"
 #staload D2E = "./dynexp2.sats"
 (* ****** ****** *)
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
 #typedef l2s2e = $S2E.l2s2e
 #typedef l2t2p = $S2E.l2t2p
+(* ****** ****** *)
+#typedef x2t2p = $T2P.x2t2p
+(* ****** ****** *)
+#typedef d2con = $D2E.d2con
+#typedef d2cst = $D2E.d2cst
+#typedef d2var = $D2E.d2var
 (* ****** ****** *)
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
@@ -135,6 +142,14 @@ LEX = "./lexing0.sats"
 #typedef d2cstdclist = $D2E.d2cstdclist
 (* ****** ****** *)
 #typedef d2eclistopt = $D2E.d2eclistopt
+(* ****** ****** *)
+//
+fun
+x2t2p_make_dvar
+( d2v0 : d2var): x2t2p
+#symload
+x2t2p with x2t2p_make_dvar
+//
 (* ****** ****** *)
 //
 fun

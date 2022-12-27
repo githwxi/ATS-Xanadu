@@ -106,14 +106,6 @@ x2t2p_make_lctn
 #symload
 x2t2p with x2t2p_make_lctn
 //
-(*
-fun
-x2t2p_make_dvar
-( d2v0 : d2var): x2t2p
-#symload
-x2t2p with x2t2p_make_dvar
-*)
-//
 (* ****** ****** *)
 //
 fun
@@ -196,6 +188,11 @@ fun
 s2typ_var(s2v: s2var): s2typ
 fun
 s2typ_cst(s2c: s2cst): s2typ
+//
+(* ****** ****** *)
+//
+fun
+s2typ_xtv(xtp: x2t2p): s2typ
 //
 (* ****** ****** *)
 fun

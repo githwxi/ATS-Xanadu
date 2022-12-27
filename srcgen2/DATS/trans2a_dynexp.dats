@@ -54,6 +54,17 @@ _(*TRANS2a*) = "./trans2a.dats"
 (* ****** ****** *)
 #staload "./../SATS/trans2a.sats"
 (* ****** ****** *)
+#symload node with s2typ_get_node
+(* ****** ****** *)
+#symload styp with d2var_get_styp
+#symload styp with d2var_set_styp
+(* ****** ****** *)
+#symload styp with d2pat_get_styp
+#symload styp with d2pat_set_styp
+(* ****** ****** *)
+#symload styp with d2exp_get_styp
+#symload styp with d2exp_set_styp
+(* ****** ****** *)
 //
 fun
 s2typlst_of_d2explst
@@ -171,19 +182,31 @@ f0_var
 (
 d2pat_make_styp_node
 ( loc0
-, t2p0, D2Pvar(d2v))) where
+, t2p0, D2Pvar(d2v1))) where
 {
+//
 val loc0 = d2p0.lctn()
 val-
-D2Pvar(d2v) = d2p0.node()
+D2Pvar(d2v1) = d2p0.node()
+//
 val t2p0 =
+let
+val t2p0 = d2v1.styp((*nil*))
+in//let
 (
 case+
-d2v.styp() of
+t2p0.node() of
 |
 T2Pnone0() =>
-|
-t2p0(*non-T2Pnone0*) => t2p0) }
+let
+val
+xtp1 = x2t2p(d2v1)
+val
+t2p0 = s2typ_xtv(xtp1)
+in//let
+  (d2v1.styp(t2p0); t2p0) end
+//(*let*) // end-of-[T2Pnone0]
+| _(* non-T2Pnone0 *) => t2p0) end }
 //
 (* ****** ****** *)
 //
