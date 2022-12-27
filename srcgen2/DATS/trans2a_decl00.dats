@@ -92,15 +92,11 @@ f0_local0(env0, d2cl))
 (*
 | D2Cabsopen _ => d2cl
 *)
-| D2Cabsimpl _ =>
-(
-f0_absimpl(env0, d2cl))
+|
+D2Cabsimpl _ => f0_absimpl(env0, d2cl)
 //
-(*
-| D2Cvaldclst _ =>
-(
-f0_valdclst(env0, d2cl))
-*)
+|
+D2Cvaldclst _ => f0_valdclst(env0, d2cl)
 //
 | _(*otherwise*) =>
 let
@@ -183,6 +179,29 @@ end (*let*) // end of [f0_absimpl(env0,d2cl)]
 //
 (* ****** ****** *)
 //
+fun
+f0_valdclst
+( env0:
+! tr2aenv
+, d2cl: d2ecl): d2ecl =
+let
+//
+val
+loc0 = d2cl.lctn()
+val-
+D2Cvaldclst
+(tknd, d2vs) = d2cl.node()
+//
+val
+d2vs =
+trans2a_d2valdclist(env0, d2vs)
+//
+in//let
+  d2ecl(loc0, D2Cvaldclst(tknd, d2vs))
+end (*let*) // end of [f0_valdclst(env0,d2cl)]
+//
+(* ****** ****** *)
+//
 } (*where*) // end of [trans2a_d2ecl(env0,d2cl)]
 //
 (* ****** ****** *)
@@ -214,6 +233,25 @@ list_trans2a_fnp(env0, tias, trans2a_t2iag)
 trans2a_d2arglst
   (env0, d2as) =
 list_trans2a_fnp(env0, d2as, trans2a_d2arg)
+//
+(* ****** ****** *)
+//
+#implfun
+trans2a_d2valdclist
+  (env0, dcls) =
+list_trans2a_fnp(env0, dcls, trans2a_d2valdcl)
+#implfun
+trans2a_d2vardclist
+  (env0, dcls) =
+list_trans2a_fnp(env0, dcls, trans2a_d2vardcl)
+#implfun
+trans2a_d2fundclist
+  (env0, dcls) =
+list_trans2a_fnp(env0, dcls, trans2a_d2fundcl)
+#implfun
+trans2a_d2cstdclist
+  (env0, dcls) =
+list_trans2a_fnp(env0, dcls, trans2a_d2cstdcl)
 //
 (* ****** ****** *)
 //

@@ -3,13 +3,13 @@
 #infixr -> of 10
 *)
 (* ****** ****** *)
+(*
 #abstbox
 myint2(i0,i0)
 #absimpl
 myint2(a1,a2) =
 @(sint(a1), sint(a1+a3))
-(* ****** ****** *)
-////
+*)
 (* ****** ****** *)
 #define ONE 1
 #define TWO 2
@@ -36,8 +36,10 @@ fun sumsqr(x, y) =
 //
 fun sqrsum(x, y) =
 let
-val xy = add(x)(y) in square(xy)
-end
+val
+xy0 =
+add(x)(y) in square(xy0)
+end (*let*) // end-of-fun
 //
 (* ****** ****** *)
 datatype
