@@ -75,6 +75,17 @@ s2typlst with s2typlst_of_d2explst
 (* ****** ****** *)
 //
 fun
+d2pat_make_styp_node
+( loc0: loc_t
+, t2p0: s2typ
+, node: d2pat_node): d2pat =
+let
+val
+d2p0 = d2pat(loc0, node)
+in
+  (d2p0.styp(t2p0); d2p0) end
+//
+fun
 d2exp_make_styp_node
 ( loc0: loc_t
 , t2p0: s2typ
@@ -85,6 +96,8 @@ d2e0 = d2exp(loc0, node)
 in
   (d2e0.styp(t2p0); d2e0) end
 //
+#symload
+d2pat with d2pat_make_styp_node
 #symload
 d2exp with d2exp_make_styp_node
 //
@@ -103,10 +116,77 @@ in//let
 //
 case+
 d2p0.node() of
+//
+|D2Pvar _ => f0_var(env0, d2p0)
+//
+|D2Pint _ => f0_int(env0, d2p0)
+|D2Pi00 _ => f0_i00(env0, d2p0)
+//
 | _(*otherwise*) => d2pat_none2(d2p0)
 //
 endlet where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_int
+( env0:
+! tr2aenv
+, d2p0: d2pat): d2pat =
+(
+d2pat_make_styp_node
+( loc0
+, t2p0, D2Pint(tok))) where
+{
+val loc0 = d2p0.lctn()
+val-
+D2Pint(tok) = d2p0.node()
+val t2p0 = the_s2typ_sint() }
+//
+(* ****** ****** *)
+//
+fun
+f0_i00
+( env0:
+! tr2aenv
+, d2p0: d2pat): d2pat =
+(
+d2pat_make_styp_node
+( loc0
+, t2p0, D2Pi00(int))) where
+{
+val loc0 = d2p0.lctn()
+val-
+D2Pi00(int) = d2p0.node()
+val t2p0 = the_s2typ_sint() }
+//
+(* ****** ****** *)
+//
+fun
+f0_var
+( env0:
+! tr2aenv
+, d2p0: d2pat): d2pat =
+(
+d2pat_make_styp_node
+( loc0
+, t2p0, D2Pvar(d2v))) where
+{
+val loc0 = d2p0.lctn()
+val-
+D2Pvar(d2v) = d2p0.node()
+val t2p0 =
+(
+case+
+d2v.styp() of
+|
+T2Pnone0() =>
+|
+t2p0(*non-T2Pnone0*) => t2p0) }
+//
+(* ****** ****** *)
+//
 } (*where*) // end of [trans2a_d2pat(...)]
 //
 (* ****** ****** *)

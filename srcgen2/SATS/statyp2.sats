@@ -78,10 +78,42 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #staload "./staexp2.sats"
 (* ****** ****** *)
-
+//
 #abstbox x2t2p_tbox
 #typedef x2t2p = x2t2p_tbox
-
+//
+(* ****** ****** *)
+//
+fun
+x2t2p_get_lctn
+(xt2p : x2t2p): loc_t
+fun
+x2t2p_get_styp
+(xt2p : x2t2p): s2typ
+fun
+x2t2p_set_styp
+(xt2p:x2t2p,t2p0:s2typ): void
+//
+#symload lctn with x2t2p_get_lctn
+#symload styp with x2t2p_get_styp
+#symload styp with x2t2p_set_styp
+//
+(* ****** ****** *)
+//
+fun
+x2t2p_make_lctn
+( loc0 : loc_t): x2t2p
+#symload
+x2t2p with x2t2p_make_lctn
+//
+(*
+fun
+x2t2p_make_dvar
+( d2v0 : d2var): x2t2p
+#symload
+x2t2p with x2t2p_make_dvar
+*)
+//
 (* ****** ****** *)
 //
 fun
