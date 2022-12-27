@@ -357,16 +357,6 @@ d2cst_make_idtp
 (* ****** ****** *)
 //
 fun
-d2var_new1_tokn
-(tok0: token): d2var
-fun
-d2var_new2_name
-(loc0: loc_t, name: sym_t): d2var
-//
-#symload d2var with d2var_new1_tokn
-#symload d2var with d2var_new2_name
-(* ****** ****** *)
-fun
 d2var_get_lctn:(d2var) -> loc_t
 fun
 d2var_get_name:(d2var) -> sym_t
@@ -377,6 +367,28 @@ d2var_get_stmp:(d2var) -> stamp
 #symload name with d2var_get_name
 #symload stmp with d2var_get_stmp
 //
+(* ****** ****** *)
+//
+fun
+d2var_get_styp:(d2var) -> s2typ
+fun
+d2var_set_styp
+(d2v0: d2var, t2p0: s2typ): void
+//
+#symload styp with d2var_get_styp
+#symload styp with d2var_set_styp
+//
+(* ****** ****** *)
+//
+fun
+d2var_new1_tokn
+(tok0: token): d2var
+fun
+d2var_new2_name
+(loc0: loc_t, name: sym_t): d2var
+//
+#symload d2var with d2var_new1_tokn
+#symload d2var with d2var_new2_name
 (* ****** ****** *)
 //
 datatype
