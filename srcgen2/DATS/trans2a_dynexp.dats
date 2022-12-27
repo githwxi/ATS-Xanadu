@@ -126,6 +126,7 @@ case+
 d2e0.node() of
 //
 |D2Eint _ => f0_int(env0, d2e0)
+|D2Ei00 _ => f0_i00(env0, d2e0)
 //
 |D2Etup0 _ => f0_tup0(env0, d2e0)
 //
@@ -133,6 +134,8 @@ d2e0.node() of
 //
 endlet where
 {
+//
+(* ****** ****** *)
 //
 fun
 f0_int
@@ -142,11 +145,28 @@ f0_int
 (
 d2exp_make_styp_node
 ( loc0
-, t2p0, D2Eint(tok1))) where
+, t2p0, D2Eint(tok))) where
 {
 val loc0 = d2e0.lctn()
 val-
-D2Eint(tok1) = d2e0.node()
+D2Eint(tok) = d2e0.node()
+val t2p0 = the_s2typ_sint() }
+//
+(* ****** ****** *)
+//
+fun
+f0_i00
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+(
+d2exp_make_styp_node
+( loc0
+, t2p0, D2Ei00(int))) where
+{
+val loc0 = d2e0.lctn()
+val-
+D2Ei00(int) = d2e0.node()
 val t2p0 = the_s2typ_sint() }
 //
 (* ****** ****** *)

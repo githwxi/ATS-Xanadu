@@ -120,9 +120,21 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef d2arglst = $D2E.d2arglst
 (* ****** ****** *)
+#typedef d2valdcl = $D2E.d2valdcl
+#typedef d2vardcl = $D2E.d2vardcl
+#typedef d2fundcl = $D2E.d2fundcl
+#typedef d2cstdcl = $D2E.d2cstdcl
+(* ****** ****** *)
 #typedef d2parsed = $D2E.d2parsed
 (* ****** ****** *)
 #vwtpdef s2typopt_vt = optn_vt(s2typ)
+(* ****** ****** *)
+#typedef d2valdclist = $D2E.d2valdclist
+#typedef d2vardclist = $D2E.d2vardclist
+#typedef d2fundclist = $D2E.d2fundclist
+#typedef d2cstdclist = $D2E.d2cstdclist
+(* ****** ****** *)
+#typedef d2eclistopt = $D2E.d2eclistopt
 (* ****** ****** *)
 //
 fun
@@ -327,7 +339,47 @@ trans2a_d2arglst
 ! tr2aenv, d2as: d2arglst): d2arglst
 //
 (* ****** ****** *)
-#typedef d2eclistopt = $D2E.d2eclistopt
+//
+fun
+trans2a_d2valdcl
+( env0: 
+! tr2aenv, dval: d2valdcl): d2valdcl
+fun
+trans2a_d2vardcl
+( env0: 
+! tr2aenv, dvar: d2vardcl): d2vardcl
+//
+fun
+trans2a_d2fundcl
+( env0: 
+! tr2aenv, dfun: d2fundcl): d2fundcl
+//
+fun
+trans2a_d2cstdcl
+( env0: 
+! tr2aenv, dcst: d2cstdcl): d2cstdcl
+//
+(* ****** ****** *)
+//
+fun
+trans2a_d2valdclist
+( env0:
+! tr2aenv, d2vs: d2valdclist): d2valdclist
+fun
+trans2a_d2vardclist
+( env0:
+! tr2aenv, d2vs: d2vardclist): d2vardclist
+//
+fun
+trans2a_d2fundclist
+( env0:
+! tr2aenv, d2fs: d2fundclist): d2fundclist
+//
+fun
+trans2a_d2cstdclist
+( env0:
+! tr2aenv, d2cs: d2cstdclist): d2cstdclist
+//
 (* ****** ****** *)
 //
 fun
