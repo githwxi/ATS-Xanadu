@@ -76,6 +76,16 @@ s2typ_make_node
 (* ****** ****** *)
 //
 #implfun
+s2typ_xtv(xtp) =
+s2typ
+(s2t0, T2Pxtv(xtp)) where
+{
+val
+s2t0 = sort2_none0((*nil*)) }
+//
+(* ****** ****** *)
+//
+#implfun
 s2typ_f2cl
 (  f2cl  ) =
 s2typ_make_node
@@ -154,6 +164,74 @@ l2t2p_get_sort
 l2t2p_get_node
 (   lx   ) = s2typ_get_node(lx.itm())
 //
+(* ****** ****** *)
+//
+local
+val
+stamper = stamper_new()
+in//local
+fun
+the_x2t2p_stamp_new
+( (*void*) ): stamp = stamper.getinc()
+endloc // end of [the_x2t2p_stamp_new]
+//
+(* ****** ****** *)
+
+local
+//
+datatype
+x2t2p =
+X2T2P of
+( loc_t // lctn
+, s2exp // sexp
+, s2typ // type
+, stamp // stmp // unicity
+) (* end of [x2t2p] *)
+//
+#absimpl x2t2p_tbox = x2t2p
+//
+in//local
+//
+#implfun
+x2t2p_get_lctn
+  (  xt2p  ) =
+let
+val+
+X2T2P
+(loc0
+,s2e0
+,t2p0,stmp) = xt2p in loc0 end
+//
+#implfun
+x2t2p_get_styp
+  (  xt2p  ) =
+let
+val+
+X2T2P
+(loc0
+,s2e0
+,t2p0,stmp) = xt2p in t2p0 end
+//
+(* ****** ****** *)
+//
+#implfun
+x2t2p_make_lctn
+  (  loc0  ) =
+let
+val
+s2e0 = s2exp_none0()
+val
+t2p0 = s2typ_none0()
+val
+stmp = the_x2t2p_stamp_new()
+in//let
+  X2T2P(loc0, s2e0, t2p0, stmp)
+end (*let*) // end of [x2t2p_make_lctn]
+//
+(* ****** ****** *)
+//
+end (*local*) // end of [local(x2t2p_tbox)]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_statyp2.dats] *)

@@ -53,6 +53,15 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trans2a.sats"
 (* ****** ****** *)
+#symload lctn with d2var_get_lctn
+(* ****** ****** *)
+//
+#implfun
+x2t2p_make_dvar
+  (  d2v0  ) =
+x2t2p_make_lctn(d2v0.lctn())
+//
+(* ****** ****** *)
 
 #impltmp
 <x0><y0>
