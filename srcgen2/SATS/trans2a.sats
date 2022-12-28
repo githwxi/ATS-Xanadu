@@ -187,35 +187,12 @@ tr2aenv_locjoin(env0: !tr2aenv): void
 fun
 tr2aenv_search_opt
 ( env0:
-! tr2aenv
-, key: sym_t): s2typopt_vt
+! tr2aenv, key: sym_t): s2typopt_vt
 fun
 tr2aenv_insert_any
 ( env0:
-! tr2aenv
-, key: sym_t, itm: s2typ): void
+! tr2aenv, key: sym_t, itm: s2typ): void
 //
-(* ****** ****** *)
-//
-fun
-tr2aenv_hnfize_s2typ
-(!tr2aenv, s2typ): s2typ
-fun
-tr2aenv_hnfize_s2typlst
-( env0:
-! tr2aenv, s2typlst): s2typlst
-fun
-tr2aenv_hnfize_l2t2plst
-( env0:
-! tr2aenv, l2t2plst): l2t2plst
-//
-(* ****** ****** *)
-#symload
-hnfize with tr2aenv_hnfize_s2typ
-#symload
-hnfize with tr2aenv_hnfize_s2typlst
-#symload
-hnfize with tr2aenv_hnfize_l2t2plst
 (* ****** ****** *)
 //
 fun
@@ -236,6 +213,13 @@ optn_trans2a_fnp
 , xs: optn(x0)
 , fopr
 : (!tr2aenv, x0) -> y0): optn(y0)
+//
+(* ****** ****** *)
+//
+fun
+tr2aenv_s2typ
+( env0:
+! tr2aenv, t2p0: s2typ): s2typ
 //
 (* ****** ****** *)
 //
@@ -294,6 +278,15 @@ trans2a_d2arg
 ( env0:
 ! tr2aenv, darg: d2arg): d2arg
 //
+(* ****** ****** *)
+fun
+tr2aenv_s2typlst
+( env0:
+! tr2aenv, t2p0: s2typlst): s2typlst
+fun
+tr2aenv_l2t2plst
+( env0:
+! tr2aenv, ltps: l2t2plst): l2t2plst
 (* ****** ****** *)
 //
 fun
@@ -407,22 +400,24 @@ trans2a_d2eclistopt
 fun
 unify2a_s2typ_s2typ // effectful
 ( env0:
-! tr2aenv, t2p1: s2typ, t2p2: s2typ): bool
+! tr2aenv, t2p1:s2typ, t2p2:s2typ): bool
 fun
 match2a_s2typ_s2typ // testing-only
 ( env0:
-! tr2aenv, t2p1: s2typ, t2p2: s2typ): bool
+! tr2aenv, t2p1:s2typ, t2p2:s2typ): bool
 //
+#symload unify2a with unify2a_s2typ_s2typ
+#symload match2a with match2a_s2typ_s2typ
 (* ****** ****** *)
 //
 fun
 trans2a_d2pat_tpck
 ( env0:
-! tr2aenv, d2p0: d2pat, t2p0: s2typ): d2pat
+! tr2aenv, d2p0:d2pat, t2p0:s2typ): d2pat
 fun
 trans2a_d2exp_tpck
 ( env0:
-! tr2aenv, d2e0: d2exp, t2p0: s2typ): d2exp
+! tr2aenv, d2e0:d2exp, t2p0:s2typ): d2exp
 //
 (* ****** ****** *)
 

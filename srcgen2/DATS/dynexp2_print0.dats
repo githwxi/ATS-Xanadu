@@ -235,6 +235,11 @@ print("D2Pannot(",d2p1,";",s1e2,";",s2e2,")")
 //
 |D2Pg1mac(g1m1) => print("D2Pg1mac(",g1m1,")")
 //
+|
+D2Pt2pck(d2p1,t2p2) =>
+(
+print("D2Pt2pck(",d2p1,";",t2p2,")") )
+//
 |D2Pnone0() => print( "D2Pnone0(",")" )
 |D2Pnone1(d1p1) => print("D2Pnone1(",d1p1,")")
 |D2Pnone2(d2p1) => print("D2Pnone2(",d2p1,")")
@@ -519,11 +524,15 @@ D2Eannot
 //
 |
 D2Eexists
-(s2es,d2e1) =>
+( s2es , d2e1 ) =>
 (
 print("D2Eexists(",s2es,";",d2e1,")"))
 //
 |D2Eg1mac(g1m1) => print("D2Eg1mac(",g1m1,")")
+//
+|D2Et2pck
+( d2e1 , t2p2 ) =>
+(print("D2Et2pck(",d2e1,";",t2p2,")"))
 //
 |D2Enone0() => print( "D2Enone0(",")" )
 |D2Enone1(d1e1) => print("D2Enone1(",d1e1,")")
