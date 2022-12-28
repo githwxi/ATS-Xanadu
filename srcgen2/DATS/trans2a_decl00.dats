@@ -301,15 +301,19 @@ val tdxp =
 (
 case+ tdxp of
 |
-TEQD2EXPnone() =>
+TEQD2EXPnone
+( (*void*) ) =>
 TEQD2EXPnone((*void*))
 |
-TEQD2EXPsome(teq1, d2e2) =>
-let
-val d2e2 =
-trans2a_d2exp(env0, d2e2)
-in//let
-  TEQD2EXPsome(teq1, d2e2) end
+TEQD2EXPsome
+(teq1, d2e2) =>
+(
+TEQD2EXPsome
+(teq1, d2e2)) where
+{
+val
+d2e2 =
+trans2a_d2exp(env0, d2e2) }
 ) : teqd2exp // end-[val(tdxp)]
 //
 in//let

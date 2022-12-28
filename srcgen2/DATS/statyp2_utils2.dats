@@ -54,9 +54,10 @@ ATS_PACKNAME
 #staload "./../SATS/statyp2.sats"
 (* ****** ****** *)
 
-#implfun
-l2t2p_hnfize_flag
-  (lt2p, flag) =
+#impltmp
+< e1nv >
+l2t2p_hnfizx_e1nv
+(e1nv, lt2p, flag) =
 (
 //
 case+ lt2p of
@@ -65,20 +66,20 @@ S2LAB(l0, t2p1) =>
 let
 val fval = flag
 val t2p1 =
-s2typ_hnfize_flag(t2p1, flag)
+s2typ_hnfizx_e1nv(e1nv, t2p1, flag)
 in//let
-if
-flag > fval
-then S2LAB(l0, t2p1) else lt2p
+if // if
+flag > fval then S2LAB(l0, t2p1) else lt2p
 end (*let*) // end of [S2LAB(...)]
 //
-) (*case+*) // end-of-[l2t2p_hnfize_flag(...)]
+) (*case+*) // end-of-[l2t2p_hnfizx(e1nv,...)]
 
 (* ****** ****** *)
 
-#implfun
-s2typlst_hnfize_flag
-   ( t2ps, flag ) =
+#impltmp
+< e1nv >
+s2typlst_hnfizx_e1nv
+( e1nv, t2ps, flag ) =
 (
 //
 case+ t2ps of
@@ -92,23 +93,23 @@ let
 val fval = flag
 //
 val t2p1 =
-s2typ_hnfize_flag(t2p1, flag)
+s2typ_hnfizx_e1nv(e1nv, t2p1, flag)
 val tps2 =
-s2typlst_hnfize_flag(tps2, flag)
+s2typlst_hnfizx_e1nv(e1nv, tps2, flag)
 //
 in//let
-if
-flag > fval
-then list_cons(t2p1, tps2) else t2ps
+if // if
+flag > fval then list_cons(t2p1, tps2) else t2ps
 end (*let*) // end of [list_cons(...)]
 //
-) (*case+*) // end of [s2typlst_hnfize_flag(...)]
+) (*case+*) // end of [s2typlst_hnfizx(e1nv,...)]
 
 (* ****** ****** *)
 
-#implfun
-l2t2plst_hnfize_flag
-   ( ltps, flag ) =
+#impltmp
+< e1nv >
+l2t2plst_hnfizx_e1nv
+( e1nv, ltps, flag ) =
 (
 //
 case+ ltps of
@@ -122,17 +123,16 @@ let
 val fval = flag
 //
 val ltp1 =
-l2t2p_hnfize_flag(ltp1, flag)
+l2t2p_hnfizx_e1nv(e1nv, ltp1, flag)
 val lts2 =
-l2t2plst_hnfize_flag(lts2, flag)
+l2t2plst_hnfizx_e1nv(e1nv, lts2, flag)
 //
 in//let
-if
-flag > fval
-then list_cons(ltp1, lts2) else ltps
+if // if
+flag > fval then list_cons(ltp1, lts2) else ltps
 end (*let*) // end of [list_cons(...)]
 //
-) (*case+*) // end of [l2t2plst_hnfize_flag(...)]
+) (*case+*) // end of [l2t2plst_hnfizx(e1nv,...)]
 
 (* ****** ****** *)
 

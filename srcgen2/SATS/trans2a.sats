@@ -403,5 +403,27 @@ trans2a_d2eclistopt
 ! tr2aenv, dopt: d2eclistopt): d2eclistopt
 //
 (* ****** ****** *)
+//
+fun
+unify2a_s2typ_s2typ // effectful
+( env0:
+! tr2aenv, t2p1: s2typ, t2p2: s2typ): bool
+fun
+match2a_s2typ_s2typ // testing-only
+( env0:
+! tr2aenv, t2p1: s2typ, t2p2: s2typ): bool
+//
+(* ****** ****** *)
+//
+fun
+trans2a_d2pat_tpck
+( env0:
+! tr2aenv, d2p0: d2pat, t2p0: s2typ): d2pat
+fun
+trans2a_d2exp_tpck
+( env0:
+! tr2aenv, d2e0: d2exp, t2p0: s2typ): d2exp
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans2a.sats] *)

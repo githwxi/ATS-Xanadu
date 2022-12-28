@@ -885,40 +885,40 @@ l2s2elst_make_l2st
 (* ****** ****** *)
 //
 fun
-s2exp_revar
+s2exp_revar0
 ( s2e0: s2exp
 , s2v0: s2var, s2v1: s2var): s2exp
 fun
-l2s2e_revar
+l2s2e_revar0
 ( ls2e: l2s2e
 , s2v0: s2var, s2v1: s2var): l2s2e
 //
 fun
-s2explst_revar
+s2explst_revar0
 ( s2es: s2explst
 , s2v0: s2var, s2v1: s2var): s2explst
 fun
-l2s2elst_revar
+l2s2elst_revar0
 ( lses: l2s2elst
 , s2v0: s2var, s2v1: s2var): l2s2elst
 //
 (* ****** ****** *)
 //
 fun
-s2exp_revar_flag
+s2exp_revarx
 ( s2e0 : s2exp
 , s2var, s2var, flag: &sint >> _): s2exp
 fun
-l2s2e_revar_flag
+l2s2e_revarx
 ( ls2e: l2s2e
 , s2var, s2var, flag: &sint >> _): l2s2e
 //
 fun
-s2explst_revar_flag
+s2explst_revarx
 ( s2es : s2explst
 , s2var, s2var, flag: &sint >> _): s2explst
 fun
-l2s2elst_revar_flag
+l2s2elst_revarx
 ( lses : l2s2elst
 , s2var, s2var, flag: &sint >> _): l2s2elst
 //

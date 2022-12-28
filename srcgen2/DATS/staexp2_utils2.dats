@@ -54,47 +54,47 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #implfun
-s2exp_revar
+s2exp_revar0
 (s2e0, s2v0, s2v1) =
 let
 var flag: sint = 0
 in//let
-s2exp_revar_flag(s2e0, s2v0, s2v1, flag)
-end (*let*) // end of [s2exp_revar(...)]
+s2exp_revarx(s2e0, s2v0, s2v1, flag)
+end (*let*) // end of [s2exp_revar0(...)]
 //
 #implfun
-l2s2e_revar
+l2s2e_revar0
 (ls2e, s2v0, s2v1) =
 let
 var flag: sint = 0
 in//let
-l2s2e_revar_flag(ls2e, s2v0, s2v1, flag)
-end (*let*) // end of [l2s2e_revar(...)]
+l2s2e_revarx(ls2e, s2v0, s2v1, flag)
+end (*let*) // end of [l2s2e_revar0(...)]
 //
 (* ****** ****** *)
 //
 #implfun
-s2explst_revar
+s2explst_revar0
 (s2es, s2v0, s2v1) =
 let
 var flag: sint = 0
 in//let
-s2explst_revar_flag(s2es, s2v0, s2v1, flag)
-end (*let*) // end of [s2explst_revar(...)]
+s2explst_revarx(s2es, s2v0, s2v1, flag)
+end (*let*) // end of [s2explst_revar0(...)]
 //
 #implfun
-l2s2elst_revar
+l2s2elst_revar0
 (lses, s2v0, s2v1) =
 let
 var flag: sint = 0
 in//let
-l2s2elst_revar_flag(lses, s2v0, s2v1, flag)
-end (*let*) // end of [l2s2elst_revar(...)]
+l2s2elst_revarx(lses, s2v0, s2v1, flag)
+end (*let*) // end of [l2s2elst_revar0(...)]
 //
 (* ****** ****** *)
 
 #implfun
-s2exp_revar_flag
+s2exp_revarx
 ( s2e0
 , s2v0, s2v1, flag) =
 (
@@ -172,7 +172,7 @@ val fval = flag
 val s2e1 =
 f0_main(s2e1, flag)
 val s2es =
-s2explst_revar_flag
+s2explst_revarx
 (s2es, s2v0, s2v1, flag)
 in//let
 if
@@ -208,7 +208,7 @@ val fval = flag
 val s2e1 =
 f0_main(s2e1, flag)
 val s2es =
-s2explst_revar_flag
+s2explst_revarx
 (s2es, s2v0, s2v1, flag)
 //
 in//let
@@ -230,7 +230,7 @@ val fval = flag
 val s2e1 =
 f0_main(s2e1, flag)
 val s2es =
-s2explst_revar_flag
+s2explst_revarx
 (s2es, s2v0, s2v1, flag)
 //
 in//let
@@ -251,7 +251,7 @@ val fval = flag
 val s2e1 =
 f0_main(s2e1, flag)
 val s2ps =
-s2explst_revar_flag
+s2explst_revarx
 (s2ps, s2v0, s2v1, flag)
 //
 in//let
@@ -273,7 +273,7 @@ val fval = flag
 val s2e1 =
 f0_main(s2e1, flag)
 val s2ps =
-s2explst_revar_flag
+s2explst_revarx
 (s2ps, s2v0, s2v1, flag)
 //
 in//let
@@ -293,7 +293,7 @@ val fval = flag
 val s2t0 = s2e0.sort()
 //
 val s2es =
-s2explst_revar_flag
+s2explst_revarx
 (s2es, s2v0, s2v1, flag)
 in//let
 s2exp_make_node(s2t0,S2Elist(s2es))
@@ -307,7 +307,7 @@ let
 val fval = flag
 //
 val s2es =
-s2explst_revar_flag
+s2explst_revarx
 (s2es, s2v0, s2v1, flag)
 in//let
 s2exp_make_node
@@ -322,7 +322,7 @@ let
 val fval = flag
 //
 val lses =
-l2s2elst_revar_flag
+l2s2elst_revarx
 (lses, s2v0, s2v1, flag)
 in//let
 s2exp_make_node
@@ -388,12 +388,12 @@ end (*let*) // end of [S2Ecast(...)]
 | _(* rest-of-s2exp *) => s2exp_none2(s2e0)
 )
 //
-} (*where*) // end of [s2exp_revar_flag(...)]
+} (*where*) // end of [s2exp_revarx(...)]
 
 (* ****** ****** *)
 //
 #implfun
-l2s2e_revar_flag
+l2s2e_revarx
 ( ls2e
 , s2v0, s2v1, flag) =
 let
@@ -401,16 +401,16 @@ val fval = flag
 val+
 S2LAB(l0, s2e0) = ls2e
 val s2e0 =
-s2exp_revar_flag(s2e0, s2v0, s2v1, flag)
+s2exp_revarx(s2e0, s2v0, s2v1, flag)
 in//let
 if
 flag > fval then S2LAB(l0, s2e0) else ls2e
-end (*let*) // end of [l2s2e_revar_flag(...)]
+end (*let*) // end of [l2s2e_revarx(...)]
 //
 (* ****** ****** *)
 
 #implfun
-s2explst_revar_flag
+s2explst_revarx
 ( s2es
 , s2v0, s2v1, flag) =
 (
@@ -426,20 +426,20 @@ let
 val fval = flag
 //
 val s2e1 =
-s2exp_revar_flag(s2e1, s2v0, s2v1, flag)
+s2exp_revarx(s2e1, s2v0, s2v1, flag)
 val ses2 =
-s2explst_revar_flag(ses2, s2v0, s2v1, flag)
+s2explst_revarx(ses2, s2v0, s2v1, flag)
 //
 in//let
 if
 flag > fval then list_cons(s2e1, ses2) else s2es
 end (*let*) // end of [list_cons(...)]
-) (*case+*) // end of [s2explst_revar_flag(...)]
+) (*case+*) // end of [s2explst_revarx(...)]
 
 (* ****** ****** *)
 
 #implfun
-l2s2elst_revar_flag
+l2s2elst_revarx
 ( lses
 , s2v0, s2v1, flag) =
 (
@@ -455,16 +455,16 @@ let
 val fval = flag
 //
 val lse1 =
-l2s2e_revar_flag(lse1, s2v0, s2v1, flag)
+l2s2e_revarx(lse1, s2v0, s2v1, flag)
 val lss2 =
-l2s2elst_revar_flag(lss2, s2v0, s2v1, flag)
+l2s2elst_revarx(lss2, s2v0, s2v1, flag)
 //
 in//let
 if
 flag > fval then list_cons(lse1, lss2) else lses
 end (*let*) // end of [list_cons(...)]
 //
-) (*case+*) // end of [l2s2elst_revar_flag(...)]
+) (*case+*) // end of [l2s2elst_revarx(...)]
 
 (* ****** ****** *)
 
