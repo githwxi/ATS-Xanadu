@@ -56,6 +56,9 @@ _(*TRANS2a*) = "./trans2a.dats"
 (* ****** ****** *)
 #symload name with s2cst_get_name
 (* ****** ****** *)
+#symload styp with d2pat_get_styp
+#symload styp with d2exp_get_styp
+(* ****** ****** *)
 //
 #implfun
 trans2a_d2ecl
@@ -295,8 +298,6 @@ d2valdcl_get_tdxp(dval)
 val wsxp =
 d2valdcl_get_wsxp(dval)
 //
-val dpat =
-trans2a_d2pat(env0, dpat)
 val tdxp =
 (
 case+ tdxp of
@@ -315,6 +316,19 @@ val
 d2e2 =
 trans2a_d2exp(env0, d2e2) }
 ) : teqd2exp // end-[val(tdxp)]
+//
+val dpat =
+(
+case+ tdxp of
+|
+TEQD2EXPnone
+( (*void*) ) =>
+trans2a_d2pat(env0, dpat)
+|
+TEQD2EXPsome
+(teq1, d2e2) =>
+trans2a_d2pat_tpck
+(env0, dpat, d2e2.styp())): d2pat
 //
 in//let
 d2valdcl_make_args(loc0, dpat, tdxp, wsxp)

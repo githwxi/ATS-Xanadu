@@ -471,6 +471,9 @@ statyp2_utils1_dats: ; $(XATSOPT) --dynamic DATS/statyp2_utils1.dats
 all_dats:: \
 statyp2_utils2_dats
 statyp2_utils2_dats: ; $(XATSOPT) --dynamic DATS/statyp2_utils2.dats
+all_dats:: \
+statyp2_tmplib_dats
+statyp2_tmplib_dats: ; $(XATSOPT) --dynamic DATS/statyp2_tmplib.dats
 ######
 
 ######
@@ -540,6 +543,9 @@ trans2a_dats: ; $(XATSOPT) --dynamic DATS/trans2a.dats
 all_dats:: \
 trans2a_myenv0_dats
 trans2a_myenv0_dats: ; $(XATSOPT) --dynamic DATS/trans2a_myenv0.dats
+all_dats:: \
+trans2a_utils0_dats
+trans2a_utils0_dats: ; $(XATSOPT) --dynamic DATS/trans2a_utils0.dats
 all_dats:: \
 trans2a_dynexp_dats
 trans2a_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trans2a_dynexp.dats

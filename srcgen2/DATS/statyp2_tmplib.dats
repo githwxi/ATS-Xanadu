@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sat 19 Nov 2022 01:59:01 PM EST
+Wed 28 Dec 2022 04:16:43 PM EST
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -45,84 +45,95 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload "./../SATS/staexp1.sats"
-#staload "./../SATS/dynexp1.sats"
+#staload "./../SATS/xbasics.sats"
+(* ****** ****** *)
+#staload "./../SATS/xlabel0.sats"
+#staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
-#staload "./../SATS/dynexp2.sats"
-(* ****** ****** *)
-#staload "./../SATS/trans2a.sats"
-(* ****** ****** *)
-#symload lctn with d2var_get_lctn
-(* ****** ****** *)
-//
-#implfun
-x2t2p_make_dvar
-  (  d2v0  ) =
-x2t2p_make_lctn(d2v0.lctn())
-//
 (* ****** ****** *)
 
 #impltmp
-<x0><y0>
-list_trans2a_fnp
-( e1, xs, fopr ) =
+< e1nv >
+l2t2p_hnfizx_e1nv
+(e1nv, lt2p, flag) =
 (
-list_map_e1nv<x0><y0><e1>(xs, e1)) where
-{
-#vwtpdef e1 = tr2aenv
-#impltmp
-map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [list_trans2a_fnp(e1,xs,fopr)]
-
-(* ****** ****** *)
-
-#impltmp
-<x0><y0>
-optn_trans2a_fnp
-( e1, xs, fopr ) =
-(
-optn_map_e1nv<x0><y0><e1>(xs, e1)) where
-{
-#vwtpdef e1 = tr2aenv
-#impltmp
-map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [optn_trans2a_fnp(e1,xs,fopr)]
-
-(* ****** ****** *)
-
-#implfun
-d2parsed_of_trans2a
-  (dpar) =
+//
+case+ lt2p of
+|
+S2LAB(l0, t2p1) =>
 let
-val stadyn =
-d2parsed_get_stadyn(dpar)
-val nerror =
-d2parsed_get_nerror(dpar)
-val source =
-d2parsed_get_source(dpar)
-val t1penv =
-d2parsed_get_t1penv(dpar)
-val t2penv =
-d2parsed_get_t2penv(dpar)
-val parsed =
-d2parsed_get_parsed(dpar)
+val fval = flag
+val t2p1 =
+s2typ_hnfizx_e1nv(e1nv, t2p1, flag)
+in//let
+if // if
+flag > fval then S2LAB(l0, t2p1) else lt2p
+end (*let*) // end of [S2LAB(...)]
 //
-val env0 = tr2aenv_make_nil()
+) (*case+*) // end-of-[l2t2p_hnfizx(e1nv,...)]
+
+(* ****** ****** *)
+
+#impltmp
+< e1nv >
+s2typlst_hnfizx_e1nv
+( e1nv, t2ps, flag ) =
+(
 //
-val parsed =
-trans2a_d2eclistopt(env0, parsed)
+case+ t2ps of
+|
+list_nil() => list_nil()
+|
+list_cons
+(t2p1, tps2) =>
+let
+//
+val fval = flag
+//
+val t2p1 =
+s2typ_hnfizx_e1nv(e1nv, t2p1, flag)
+val tps2 =
+s2typlst_hnfizx_e1nv(e1nv, tps2, flag)
 //
 in//let
-let
-val d2cenv = tr2aenv_free_top(env0)
-in//let
-d2parsed
-(stadyn,nerror,source,t1penv,t2penv,parsed)
-end
-end (*let*) // end of [d2parsed_trans2a(dpar)]
+if // if
+flag > fval then list_cons(t2p1, tps2) else t2ps
+end (*let*) // end of [list_cons(...)]
+//
+) (*case+*) // end of [s2typlst_hnfizx(e1nv,...)]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans2a.dats] *)
+#impltmp
+< e1nv >
+l2t2plst_hnfizx_e1nv
+( e1nv, ltps, flag ) =
+(
+//
+case+ ltps of
+|
+list_nil() => list_nil()
+|
+list_cons
+(ltp1, lts2) =>
+let
+//
+val fval = flag
+//
+val ltp1 =
+l2t2p_hnfizx_e1nv(e1nv, ltp1, flag)
+val lts2 =
+l2t2plst_hnfizx_e1nv(e1nv, lts2, flag)
+//
+in//let
+if // if
+flag > fval then list_cons(ltp1, lts2) else ltps
+end (*let*) // end of [list_cons(...)]
+//
+) (*case+*) // end of [l2t2plst_hnfizx(e1nv,...)]
+
+(* ****** ****** *)
+
+(* end of [ATS3/XATSOPT_srcgen2_statyp2_tmplib.dats] *)
