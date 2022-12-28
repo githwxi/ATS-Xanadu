@@ -209,7 +209,7 @@ in//let
 //
 (* ****** ****** *)
 //
-} (*where*) // end of [trans2a_d2pat(...)]
+} (*where*) // end of [trans2a_d2pat(env0,d2p0)]
 //
 (* ****** ****** *)
 //
@@ -312,7 +312,26 @@ val
 t2p0 = s2typ_tup0(npf1, s2typlst(d2es))
 } (*where*) // end of [f0_tup0(env0,d2e0)]
 //
-} (*where*) // end of [trans2a_d2exp(...)]
+} (*where*) // end of [trans2a_d2exp(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+(*
+#implfun
+trans2a_teqd2exp
+  (env0, tdxp) =
+(
+case+ tdxp of
+|
+TEQD2EXPnone() =>
+TEQD2EXPnone((*void*))
+|
+TEQD2EXPsome(teq1, d2e2) =>
+TEQD2EXPsome(teq1, d2e2) where
+{ val
+  d2e2 = trans2a_d2exp(env0, d2e2) }
+) (*case+*)//end-of(trans2a_teqd0exp(...))
+*)
 //
 (* ****** ****** *)
 //

@@ -796,14 +796,23 @@ val () = f0_pvsinit((*void*))
 //
 val () =
 f0_pvsload
-(0(*sta*), "/prelude/basics0.sats") 
+(0(*sta*),"/prelude/basics0.sats") 
+//
+(* ****** ****** *)
 //
 val () =
 f0_pvsload
-(0(*sta*), "/prelude/INIT/xsetup0.sats")
+(0(*sta*),"/prelude/INIT/excptn0.sats")
 val () =
 f0_pvsload
-(0(*sta*), "/prelude/INIT/excptn0.sats")
+(0(*sta*),"/prelude/INIT/xsetup0.sats")
+//
+val () =
+f0_pvsload
+( 0(*sta*)
+, "/prelude/INIT/srcgen2_xsetup0.sats")
+//
+(* ****** ****** *)
 //
 val () =
 f0_pvsload
@@ -814,7 +823,9 @@ f0_pvsload
 val () =
 f0_pvsload
 (0(*sta*), "/prelude/SATS/gint000.sats") }
-// end of [if]
+//
+// end of [if-then-else]
+//
 end (*let*) // end of [the_tr12env_pvsload(...)]
 //
 (* ****** ****** *)
