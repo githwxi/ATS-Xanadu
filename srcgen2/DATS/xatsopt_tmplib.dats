@@ -69,6 +69,8 @@ ATS_PACKNAME
 #symload stmp with s2cst_get_stmp
 #symload stmp with s2var_get_stmp
 (* ****** ****** *)
+#symload stmp with x2t2p_get_stmp
+(* ****** ****** *)
 #symload stmp with d2var_get_stmp
 (* ****** ****** *)
 //
@@ -1094,12 +1096,18 @@ s2cst_fprint(g_print$out<>(), s2c)
 #impltmp
 g_print<s2var>(s2v) =
 s2var_fprint(g_print$out<>(), s2v)
+//
+(* ****** ****** *)
+//
 #impltmp
 g_print<s2exp>(s2e) =
 s2exp_fprint(g_print$out<>(), s2e)
 #impltmp
 g_print<s2typ>(stp) =
 s2typ_fprint(g_print$out<>(), stp)
+#impltmp
+g_print<x2t2p>(xtp) =
+x2t2p_fprint(g_print$out<>(), xtp)
 //
 (* ****** ****** *)
 #impltmp
@@ -1250,6 +1258,30 @@ print("WTHS2EXPnone(", ")")
 |
 WTHS2EXPsome(tok0, s2e1) =>
 print("WTHS2EXPsome(", tok0, ";", s2e1, ")"))
+//
+(* ****** ****** *)
+(*
+HX-2022-12-28: For debugging purpose
+*)
+(* ****** ****** *)
+//
+#impltmp
+g_print<d2pat>(d2p0) =
+let
+val out = g_print$out<>()
+in//let
+  strn_fprint(out, "("); d2pat_fprint(out, d2p0)
+; strn_fprint(out, ":"); s2typ_fprint(out, d2p0.styp()); strn_fprint(out, ")")
+end (*let*) // end of [g_print<d2pat>(d2p0)]
+//
+#impltmp
+g_print<d2exp>(d2e0) =
+let
+val out = g_print$out<>()
+in//let
+  strn_fprint(out, "("); d2exp_fprint(out, d2e0)
+; strn_fprint(out, ":"); s2typ_fprint(out, d2e0.styp()); strn_fprint(out, ")")
+end (*let*) // end of [g_print<d2exp>(d2e0)]
 //
 (* ****** ****** *)
 

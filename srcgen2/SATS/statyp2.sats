@@ -76,6 +76,8 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #staload "./xbasics.sats"
 (* ****** ****** *)
+#staload "./xstamp0.sats"
+(* ****** ****** *)
 #staload "./staexp2.sats"
 (* ****** ****** *)
 //
@@ -88,6 +90,9 @@ fun
 x2t2p_get_lctn
 (xt2p : x2t2p): loc_t
 fun
+x2t2p_get_stmp
+(xt2p : x2t2p): stamp
+fun
 x2t2p_get_styp
 (xt2p : x2t2p): s2typ
 fun
@@ -95,6 +100,7 @@ x2t2p_set_styp
 (xt2p:x2t2p,t2p0:s2typ): void
 //
 #symload lctn with x2t2p_get_lctn
+#symload stmp with x2t2p_get_stmp
 #symload styp with x2t2p_get_styp
 #symload styp with x2t2p_set_styp
 //
@@ -106,6 +112,9 @@ x2t2p_make_lctn
 #symload
 x2t2p with x2t2p_make_lctn
 //
+(* ****** ****** *)
+fun
+x2t2p_fprint(FILR,x2t2p): void
 (* ****** ****** *)
 //
 fun

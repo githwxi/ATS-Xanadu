@@ -203,6 +203,16 @@ X2T2P
 ,t2p0,stmp) = xt2p in loc0 end
 //
 #implfun
+x2t2p_get_stmp
+  (  xt2p  ) =
+let
+val+
+X2T2P
+(loc0
+,s2e0
+,t2p0,stmp) = xt2p in stmp end
+//
+#implfun
 x2t2p_get_styp
   (  xt2p  ) =
 let

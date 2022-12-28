@@ -288,16 +288,19 @@ trans2a_d2valdcl
 //
 val loc0 =
 d2valdcl_get_lctn(dval)
-//
 val dpat =
 d2valdcl_get_dpat(dval)
-val dpat =
-trans2a_d2pat(env0, dpat)
-//
 val tdxp =
 d2valdcl_get_tdxp(dval)
 val wsxp =
 d2valdcl_get_wsxp(dval)
+//
+val dpat =
+trans2a_d2pat(env0, dpat)
+(*
+val tdxp =
+trans2a_teqd2exp(env0, tdxp)
+*)
 //
 in//let
 d2valdcl_make_args(loc0, dpat, tdxp, wsxp)
