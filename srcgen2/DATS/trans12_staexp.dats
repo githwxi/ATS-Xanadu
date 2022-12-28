@@ -1882,7 +1882,7 @@ S2TEXsub
   val s2v1 =
   s2var_make_idst(sid1, s2t1)
   val sps1 =
-  s2explst_revar(sps0,s2v0,s2v1) }
+  s2explst_revar0(sps0,s2v0,s2v1) }
 //
 end (*let*) // end of [optn_cons(...)]
 end (*let*) // end of [S1ARGsome(...)]

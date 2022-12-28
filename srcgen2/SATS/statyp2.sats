@@ -237,32 +237,60 @@ l2s2elst_stpize(l2s2elst): l2t2plst
 (* ****** ****** *)
 //
 fun
-s2typ_hnfize(t2p0:s2typ): s2typ
+s2typ_hnfiz0(t2p0:s2typ): s2typ
 fun
-l2t2p_hnfize(lt2p:l2t2p): l2t2p
+l2t2p_hnfiz0(lt2p:l2t2p): l2t2p
 fun
-s2typlst_hnfize(s2typlst): s2typlst
+s2typlst_hnfiz0(s2typlst): s2typlst
 fun
-l2t2plst_hnfize(l2t2plst): l2t2plst
-#symload hnfize with s2typ_hnfize
-#symload hnfize with l2t2p_hnfize
-#symload hnfize with s2typlst_hnfize
-#symload hnfize with l2t2plst_hnfize
+l2t2plst_hnfiz0(l2t2plst): l2t2plst
+//
+#symload hnfiz0 with s2typ_hnfiz0
+#symload hnfiz0 with l2t2p_hnfiz0
+#symload hnfiz0 with s2typlst_hnfiz0
+#symload hnfiz0 with l2t2plst_hnfiz0
 //
 (* ****** ****** *)
 //
 fun
-s2typ_hnfize_flag
-(t2p0: s2typ, flag: &sint >> _): s2typ
+<e1nv:vwtp>
+s2typ_hnfiz0_e1nv
+(e1nv: !e1nv, t2p0: s2typ): s2typ
 fun
-l2t2p_hnfize_flag
-(lt2p: l2t2p, flag: &sint >> _): l2t2p
+<e1nv:vwtp>
+l2t2p_hnfiz0_e1nv
+(e1nv: !e1nv, lt2p: l2t2p): l2t2p
 fun
-s2typlst_hnfize_flag
-(t2ps: s2typlst, flag: &sint >> _): s2typlst
+<e1nv:vwtp>
+s2typlst_hnfiz0_e1nv
+(e1nv: !e1nv, t2ps: s2typlst): s2typlst
 fun
-l2t2plst_hnfize_flag
-(ltps: l2t2plst, flag: &sint >> _): l2t2plst
+<e1nv:vwtp>
+l2t2plst_hnfiz0_e1nv
+(e1nv: !e1nv, ltps: l2t2plst): l2t2plst
+//
+(* ****** ****** *)
+//
+fun
+<e1nv:vwtp>
+s2typ_hnfizx_e1nv
+( e1nv: !e1nv
+, t2p0: s2typ, flag: &sint >> _): s2typ
+fun
+<e1nv:vwtp>
+l2t2p_hnfizx_e1nv
+( e1nv: !e1nv
+, lt2p: l2t2p, flag: &sint >> _): l2t2p
+fun
+<e1nv:vwtp>
+s2typlst_hnfizx_e1nv
+( e1nv: !e1nv
+, t2ps: s2typlst, flag: &sint >> _): s2typlst
+fun
+<e1nv:vwtp>
+l2t2plst_hnfizx_e1nv
+( e1nv: !e1nv
+, ltps: l2t2plst, flag: &sint >> _): l2t2plst
 //
 (* ****** ****** *)
 
