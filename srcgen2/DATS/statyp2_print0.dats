@@ -60,10 +60,33 @@ _(*?*) = "./lexing0_print0.dats"
 #symload node with s2typ_get_node
 #symload sort with s2typ_get_sort
 (* ****** ****** *)
-
+//
+#implfun
+x2t2p_fprint
+(out , xt2p) =
+let
+val
+t2p0 = xt2p.styp()
+in//let
+case+
+t2p0.node() of
+|
+T2Pnone0() =>
+print
+("[", xt2p.stmp(), "]")
+| _(*non-T2Pnone0*) =>
+print
+("[", xt2p.styp(), "]")
+end where
+{
+  #impltmp g_print$out<>() = out
+} (*where*) // end of [x2t2p_fprint(out,xt2p)]
+//
+(* ****** ****** *)
+//
 #implfun
 s2typ_fprint
-(out, t2p0) =
+(out , t2p0) =
 let
 #impltmp
 g_print$out<>() = out
@@ -86,6 +109,10 @@ print("T2Pvar(", s2v1, ")")
 |
 T2Plft(t2p1) =>
 print("T2Plft(", t2p1, ")")
+//
+|
+T2Pxtv(xtp1) =>
+print("T2Pxtv(", xtp1, ")")
 //
 |
 T2Papps(tfun, t2ps) =>
@@ -126,7 +153,7 @@ T2Pnone0() => print("T2Pnone0(",")")
 T2Ps2exp(s2e1) => print("T2Ps2exp(",s2e1,")")
 //
 end (*let*) // end of [s2typ_fprint(out,t2p0)]
-
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_statyp2_print0.dats] *)
