@@ -151,6 +151,8 @@ print
 T2Pnone0() => print("T2Pnone0(",")")
 |
 T2Ps2exp(s2e1) => print("T2Ps2exp(",s2e1,")")
+|
+T2Pnone1(t2p1) => print("T2Pnone1(",t2p1,")")
 //
 end (*let*) // end of [s2typ_fprint(out,t2p0)]
 //

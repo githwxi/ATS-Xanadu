@@ -53,11 +53,13 @@ ATS_PACKNAME
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 (* ****** ****** *)
-
-local
-
+#staload _ = "./DATS/statyp2_tmplib.dats"
 (* ****** ****** *)
-
+//
+local
+//
+(* ****** ****** *)
+//
 fun
 f0_s2vs
 ( s2vs
@@ -73,9 +75,9 @@ sort2_imprq(s2v.sort())
 in
   list_filter<x0>(s2vs) end
 // (*let*) // end of [f2_s2vs(s2vs)]
-
+//
 (* ****** ****** *)
-
+//
 fun
 f0_impr
 (s2e0: s2exp): s2typ =
@@ -195,11 +197,11 @@ _(*otherwise*) =>
 s2typ_make_node(s2t0, T2Ps2exp(s2e0))
 //
 end (*let*) // end of [f0_impr(s2e0)]
-
+//
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
-
+//
 #implfun
 s2exp_stpize(s2e0) =
 let
@@ -216,9 +218,9 @@ val () =
 prerrln("s2exp_stpize: s2e0 = ", s2e0)
 *)
 } (*where*) // end of [s2exp_stpize(s2e0)]
-
+//
 end (*local*) // end of [local(s2exp_stpize)]
-
+//
 (* ****** ****** *)
 
 #implfun
@@ -245,6 +247,9 @@ val+
 S2LAB(l0,x0) = lx in S2LAB(l0,stpize(x0))
 end (*let*)
 } (*where*) // end of [l2s2elst_stpize(lses)]
+
+(* ****** ****** *)
+
 
 (* ****** ****** *)
 
