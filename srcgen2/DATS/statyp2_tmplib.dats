@@ -56,6 +56,67 @@ ATS_PACKNAME
 
 #impltmp
 < e1nv >
+s2typ_hnfizx_e1nv
+(e1nv, t2p0, flag) =
+(
+case+
+t2p0.node() of
+//
+|T2Pbas _ => t2p0
+//
+|T2Pcst _ =>
+f0_cst(e1nv, t2p0, flag)
+|T2Pvar _ =>
+f0_var(e1nv, t2p0, flag)
+//
+) where
+{
+//
+(*
+val () =
+prerrln("s2typ_hnfizx_e1nv: t2p0 = ", t2p0)
+*)
+//
+(* ****** ****** *)
+//
+fun
+f0_cst
+( e1nv: !e1nv
+, t2p0: s2typ
+, flag: &sint >> _): s2typ =
+let
+val-T2Pcst(s2c1) = t2p0.node()
+val tval =
+s2typ_eval$s2cst<e1nv>(e1nv, s2c1, flag)
+in//let
+case+
+tval.node() of
+|T2Pnone0() => t2p0 |_(*T2Pnone0*) => tval
+end (*let*) // end of [f0_cst(e1nv,t2p0,flag)]
+//
+fun
+f0_var
+( e1nv: !e1nv
+, t2p0: s2typ
+, flag: &sint >> _): s2typ =
+let
+val-T2Pvar(s2v1) = t2p0.node()
+val tval =
+s2typ_eval$s2var<e1nv>(e1nv, s2v1, flag)
+in//let
+case+
+tval.node() of
+|T2Pnone0() => t2p0 |_(*T2Pnone0*) => tval
+end (*let*) // end of [f0_cst(e1nv,t2p0,flag)]
+//
+(* ****** ****** *)
+//
+} (*where*) // end of [s2typ_hnfizx_e1nv(...)]
+
+(* ****** ****** *)
+
+#impltmp
+< e1nv >
 l2t2p_hnfizx_e1nv
 (e1nv, lt2p, flag) =
 (
@@ -72,7 +133,7 @@ if // if
 flag > fval then S2LAB(l0, t2p1) else lt2p
 end (*let*) // end of [S2LAB(...)]
 //
-) (*case+*) // end-of-[l2t2p_hnfizx(e1nv,...)]
+) (*case+*) // end-of-[l2t2p_hnfizx_e1nv(...)]
 
 (* ****** ****** *)
 
@@ -102,7 +163,7 @@ if // if
 flag > fval then list_cons(t2p1, tps2) else t2ps
 end (*let*) // end of [list_cons(...)]
 //
-) (*case+*) // end of [s2typlst_hnfizx(e1nv,...)]
+) (*case+*) // end of [s2typlst_hnfizx_e1nv(...)]
 
 (* ****** ****** *)
 
@@ -132,7 +193,7 @@ if // if
 flag > fval then list_cons(ltp1, lts2) else ltps
 end (*let*) // end of [list_cons(...)]
 //
-) (*case+*) // end of [l2t2plst_hnfizx(e1nv,...)]
+) (*case+*) // end of [l2t2plst_hnfizx_e1nv(...)]
 
 (* ****** ****** *)
 

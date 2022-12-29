@@ -556,12 +556,6 @@ S2Elist of s2explst // HX: temporary use
 //
 | S2Enone1 of ( s1exp ) // HX: error indication
 | S2Enone2 of ( s2exp ) // HX: error indication
-(*
-| S2Enone1 of
-  (loc_t, s1exp(*src*)) // HX: error indication
-| S2Enone2 of
-  (loc_t, s2exp(*src*)) // HX: error indication
-*)
 //
 | S2Eerrck of (int(*lvl*), s2exp)//HX:tread-error
 //

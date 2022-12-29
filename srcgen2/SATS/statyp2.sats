@@ -168,7 +168,8 @@ T2Pfun1 of
 | T2Ptrcd of
   (trcdknd(*knd*), int(*npf*), l2t2plst)
 //
-| T2Pnone0 of ((*0*)) | T2Ps2exp of (s2exp)
+| T2Pnone0 of ((*0*)) // HX: optional
+| T2Ps2exp of (s2exp) | T2Pnone1 of (s2typ)
 //
 // HX-2022-11-04: end of [datatype(s2typ_node)
 //
@@ -268,6 +269,19 @@ fun
 <e1nv:vwtp>
 l2t2plst_hnfiz0_e1nv
 (e1nv: !e1nv, ltps: l2t2plst): l2t2plst
+//
+(* ****** ****** *)
+//
+fun
+<e1nv:vwtp>
+s2typ_eval$s2cst
+( e1nv: !e1nv
+, s2c0: s2cst, flag: &sint >> _): s2typ
+fun
+<e1nv:vwtp>
+s2typ_eval$s2var
+( e1nv: !e1nv
+, s2v0: s2var, flag: &sint >> _): s2typ
 //
 (* ****** ****** *)
 //
