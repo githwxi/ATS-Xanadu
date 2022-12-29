@@ -59,4 +59,9 @@ unify2a_s2typ_s2typ(env0, t2p1, t2p2) = false
 
 (* ****** ****** *)
 
+#implfun
+match2a_s2typ_s2typ(env0, t2p1, t2p2) = false
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_trans2a_utils0.dats] *)

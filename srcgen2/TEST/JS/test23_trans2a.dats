@@ -201,7 +201,9 @@
 #include
 "./../../DATS/staexp2_utils1.dats"
 #include
-"./../../DATS/statyp2_utils1.dats"
+"./../../DATS/staexp2_utils2.dats"
+#include
+"./../../DATS/statyp2_utils0.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/dynexp2.dats"
@@ -234,6 +236,8 @@
 "./../../DATS/trans2a.dats"
 #include
 "./../../DATS/trans2a_myenv0.dats"
+#include
+"./../../DATS/trans2a_utils0.dats"
 #include
 "./../../DATS/trans2a_dynexp.dats"
 #include

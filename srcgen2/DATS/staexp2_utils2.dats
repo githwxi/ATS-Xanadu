@@ -118,8 +118,8 @@ s2e0.node() of
 //
 |S2Evar(svar) =>
 (
-if
-~(svar=s2v0)
+if ~
+(svar=s2v0)
 then s2e0 else
 (
 flag := flag+1;
@@ -341,7 +341,7 @@ val s2e1 =
 f0_main(s2e1, flag)
 //
 in//let
-if
+if // if
 flag <= fval
 then s2e0 else
 s2exp_make_node
@@ -359,7 +359,7 @@ val s2e1 =
 f0_main(s2e1, flag)
 //
 in//let
-if
+if // if
 flag <= fval
 then s2e0 else
 s2exp_make_node
@@ -377,7 +377,7 @@ val s2e1 =
 f0_main(s2e1, flag)
 //
 in//let
-if
+if // if
 flag <= fval
 then s2e0 else
 s2exp_make_node
@@ -385,8 +385,9 @@ s2exp_make_node
 s2e0.sort(),S2Ecast(loc0,s2e1,s2t2))
 end (*let*) // end of [S2Ecast(...)]
 //
-| _(* rest-of-s2exp *) => s2exp_none2(s2e0)
-)
+|
+_(*rest-of-s2exp*) => s2exp_none2(s2e0)
+) (*case+*) // end-[ f0_main(s2e0,flag) ]
 //
 } (*where*) // end of [s2exp_revarx(...)]
 
@@ -401,10 +402,12 @@ val fval = flag
 val+
 S2LAB(l0, s2e0) = ls2e
 val s2e0 =
-s2exp_revarx(s2e0, s2v0, s2v1, flag)
+s2exp_revarx
+(s2e0, s2v0, s2v1, flag)
 in//let
-if
-flag > fval then S2LAB(l0, s2e0) else ls2e
+if // if
+flag <= fval
+then ls2e else S2LAB(l0, s2e0)
 end (*let*) // end of [l2s2e_revarx(...)]
 //
 (* ****** ****** *)
@@ -417,7 +420,7 @@ s2explst_revarx
 case+ s2es of
 |
 list_nil() =>
-list_nil()
+list_nil((*void*))
 |
 list_cons
 (s2e1, ses2) =>
@@ -426,13 +429,16 @@ let
 val fval = flag
 //
 val s2e1 =
-s2exp_revarx(s2e1, s2v0, s2v1, flag)
+s2exp_revarx
+(s2e1, s2v0, s2v1, flag)
 val ses2 =
-s2explst_revarx(ses2, s2v0, s2v1, flag)
+s2explst_revarx
+(ses2, s2v0, s2v1, flag)
 //
 in//let
-if
-flag > fval then list_cons(s2e1, ses2) else s2es
+if // if
+flag <= fval
+then s2es else list_cons(s2e1, ses2)
 end (*let*) // end of [list_cons(...)]
 ) (*case+*) // end of [s2explst_revarx(...)]
 
@@ -446,7 +452,8 @@ l2s2elst_revarx
 //
 case+ lses of
 |
-list_nil() => list_nil()
+list_nil() =>
+list_nil((*void*))
 |
 list_cons
 (lse1, lss2) =>
@@ -455,13 +462,16 @@ let
 val fval = flag
 //
 val lse1 =
-l2s2e_revarx(lse1, s2v0, s2v1, flag)
+l2s2e_revarx
+(lse1, s2v0, s2v1, flag)
 val lss2 =
-l2s2elst_revarx(lss2, s2v0, s2v1, flag)
+l2s2elst_revarx
+(lss2, s2v0, s2v1, flag)
 //
 in//let
-if
-flag > fval then list_cons(lse1, lss2) else lses
+if // if
+flag <= fval
+then lses else list_cons(lse1, lss2)
 end (*let*) // end of [list_cons(...)]
 //
 ) (*case+*) // end of [l2s2elst_revarx(...)]
