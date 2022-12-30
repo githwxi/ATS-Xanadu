@@ -54,6 +54,39 @@ ATS_PACKNAME
 #staload "./../SATS/statyp2.sats"
 (* ****** ****** *)
 
+#implfun
+< e1nv >
+s2typ_hnfiz0_e1nv
+(e1nv, t2p0) =
+let
+var flag: sint = 0 in
+s2typ_hnfizx_e1nv<e1nv>(e1nv,t2p0,flag)
+end (*let*) // end of [s2typ_hnfiz0_e1nv]
+
+(* ****** ****** *)
+
+#implfun
+< e1nv >
+s2typlst_hnfiz0_e1nv
+(e1nv, t2ps) =
+let
+var flag: sint = 0 in
+s2typlst_hnfizx_e1nv<e1nv>(e1nv,t2ps,flag)
+end (*let*) // end of [s2typlst_hnfiz0_e1nv]
+
+(* ****** ****** *)
+
+#implfun
+< e1nv >
+l2t2plst_hnfiz0_e1nv
+(e1nv, ltps) =
+let
+var flag: sint = 0 in
+l2t2plst_hnfizx_e1nv<e1nv>(e1nv,ltps,flag)
+end (*let*) // end of [l2t2plst_hnfiz0_e1nv]
+
+(* ****** ****** *)
+
 #impltmp
 < e1nv >
 s2typ_hnfizx_e1nv
@@ -68,6 +101,11 @@ t2p0.node() of
 f0_cst(e1nv, t2p0, flag)
 |T2Pvar _ =>
 f0_var(e1nv, t2p0, flag)
+//
+|T2Pnone0 _ => t2p0
+|T2Pnone1 _ => t2p0
+//
+|_(*otherwise*) => s2typ_none1(t2p0)
 //
 ) where
 {
@@ -84,30 +122,39 @@ f0_cst
 ( e1nv: !e1nv
 , t2p0: s2typ
 , flag: &sint >> _): s2typ =
-let
+(
+case+ opt1 of
+| ~
+optn_vt_nil() => t2p0
+| ~
+optn_vt_cons(t2p1) => t2p1)
+where
+{
+//
 val-T2Pcst(s2c1) = t2p0.node()
-val tval =
-s2typ_eval$s2cst<e1nv>(e1nv, s2c1, flag)
-in//let
-case+
-tval.node() of
-|T2Pnone0() => t2p0 |_(*T2Pnone0*) => tval
-end (*let*) // end of [f0_cst(e1nv,t2p0,flag)]
+//
+val opt1 =
+s2typ_eval$s2cst<e1nv>(e1nv, s2c1)
+//
+} (*where*) // end of [f0_cst(e1nv,t2p0,flag)]
 //
 fun
 f0_var
 ( e1nv: !e1nv
 , t2p0: s2typ
 , flag: &sint >> _): s2typ =
-let
+(
+case+ opt1 of
+| ~
+optn_vt_nil() => t2p0
+| ~
+optn_vt_cons(t2p1) => t2p1)
+where
+{
 val-T2Pvar(s2v1) = t2p0.node()
-val tval =
-s2typ_eval$s2var<e1nv>(e1nv, s2v1, flag)
-in//let
-case+
-tval.node() of
-|T2Pnone0() => t2p0 |_(*T2Pnone0*) => tval
-end (*let*) // end of [f0_cst(e1nv,t2p0,flag)]
+val opt1 =
+s2typ_eval$s2var<e1nv>(e1nv, s2v1)
+} (*where*) // end of [f0_cst(e1nv,t2p0,flag)]
 //
 (* ****** ****** *)
 //
@@ -141,29 +188,41 @@ end (*let*) // end of [S2LAB(...)]
 < e1nv >
 s2typlst_hnfizx_e1nv
 ( e1nv, t2ps, flag ) =
-(
+f0_t2ps
+(e1nv, t2ps, flag) where
+{
 //
+fun
+f0_t2ps
+( e1nv
+: !e1nv
+, t2ps
+: s2typlst
+, flag
+: &sint >> _): s2typlst  =
+(
 case+ t2ps of
 |
-list_nil() => list_nil()
+list_nil() =>
+list_nil((*void*))
 |
-list_cons
-(t2p1, tps2) =>
+list_cons(t2p1, tps2) =>
 let
 //
 val fval = flag
 //
 val t2p1 =
-s2typ_hnfizx_e1nv(e1nv, t2p1, flag)
-val tps2 =
-s2typlst_hnfizx_e1nv(e1nv, tps2, flag)
+s2typ_hnfizx_e1nv
+<e1nv>(e1nv, t2p1, flag)
+//
+val tps2 = f0_t2ps(e1nv, tps2, flag)
 //
 in//let
 if // if
 flag > fval then list_cons(t2p1, tps2) else t2ps
 end (*let*) // end of [list_cons(...)]
-//
-) (*case+*) // end of [s2typlst_hnfizx_e1nv(...)]
+)
+} (*where*) // end of [s2typlst_hnfizx_e1nv(...)]
 
 (* ****** ****** *)
 
@@ -171,29 +230,106 @@ end (*let*) // end of [list_cons(...)]
 < e1nv >
 l2t2plst_hnfizx_e1nv
 ( e1nv, ltps, flag ) =
-(
+( f0_ltps
+  (e1nv, ltps, flag)) where
+{
 //
+fun
+f0_ltps
+( e1nv
+: !e1nv
+, ltps
+: l2t2plst
+, flag
+: &sint >> _): l2t2plst  =
+(
 case+ ltps of
 |
-list_nil() => list_nil()
+list_nil() =>
+list_nil((*void*))
 |
-list_cons
-(ltp1, lts2) =>
+list_cons(ltp1, lts2) =>
 let
 //
 val fval = flag
 //
 val ltp1 =
-l2t2p_hnfizx_e1nv(e1nv, ltp1, flag)
-val lts2 =
-l2t2plst_hnfizx_e1nv(e1nv, lts2, flag)
+l2t2p_hnfizx_e1nv
+<e1nv>(e1nv, ltp1, flag)
+//
+val tps2 = f0_ltps(e1nv, lts2, flag)
 //
 in//let
 if // if
 flag > fval then list_cons(ltp1, lts2) else ltps
 end (*let*) // end of [list_cons(...)]
+)
+} (*where*) // end of [l2t2plst_hnfizx_e1nv(...)]
+
+(* ****** ****** *)
+
+#impltmp
+<e1nv:vwtp>
+unify00_s2typ_e1nv
+(e1nv, t2p1, t2p2) = false
+#impltmp
+<e1nv:vwtp>
+match00_s2typ_e1nv
+(e1nv, t2p1, t2p2) = false
+
+(* ****** ****** *)
+
+#impltmp
+<e1nv:vwtp>
+unify00_s2typ_e1nv
+(e1nv, t2p1, t2p2) =
+unify00_s2typ
+(e1nv, t2p1, t2p2) where
+{
 //
-) (*case+*) // end of [l2t2plst_hnfizx_e1nv(...)]
+(* ****** ****** *)
+//
+fun
+s2typ_hnfiz0
+( e1nv: !e1nv
+, t2p0: s2typ): s2typ =
+s2typ_hnfiz0_e1nv<e1nv>(e1nv, t2p0)
+//
+(* ****** ****** *)
+//
+fun
+unify00_s2typ
+( e1nv: !e1nv
+, t2p1: s2typ
+, t2p2: s2typ): bool =
+(
+case+
+t2p1.node() of
+|
+T2Pbas(tbs1) =>
+(
+case+
+t2p2.node() of
+|
+T2Pbas(tbs2) =>
+(tbs1 = tbs2) | _ => false)
+//
+) where
+{
+//
+val t2p1 = s2typ_hnfiz0(e1nv, t2p1)
+val t2p2 = s2typ_hnfiz0(e1nv, t2p2)
+//
+val (  ) =
+prerrln("unify00_s2typ: t2p1 = ", t2p1)
+val (  ) =
+prerrln("unify00_s2typ: t2p2 = ", t2p2)
+//
+} (*where*) // end of [unify00_s2typ(e1nv,...)]
+//
+(* ****** ****** *)
+//
+} (*where*) // end of [unify00_s2typ_e1nv(e1nv,...)]
 
 (* ****** ****** *)
 
