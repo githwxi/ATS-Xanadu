@@ -398,16 +398,32 @@ trans2a_d2eclistopt
 (* ****** ****** *)
 //
 fun
-unify2a_s2typ_s2typ // effectful
+unify2a_s2typ // effectful
 ( env0:
-! tr2aenv, t2p1:s2typ, t2p2:s2typ): bool
+! tr2aenv
+, t2p1:s2typ, t2p2:s2typ): bool
 fun
-match2a_s2typ_s2typ // testing-only
+unify2a_s2typlst // effectful
 ( env0:
-! tr2aenv, t2p1:s2typ, t2p2:s2typ): bool
+! tr2aenv
+, tps1:s2typlst, tps2:s2typ): bool
 //
-#symload unify2a with unify2a_s2typ_s2typ
-#symload match2a with match2a_s2typ_s2typ
+fun
+match2a_s2typ // testing-only
+( env0:
+! tr2aenv
+, t2p1:s2typ, t2p2:s2typ): bool
+fun
+match2a_s2typlst // testing-only
+( env0:
+! tr2aenv
+, tps1:s2typlst, tps2:s2typlst): bool
+//
+#symload unify2a with unify2a_s2typ
+#symload match2a with match2a_s2typ
+#symload unify2a with unify2a_s2typlst
+#symload match2a with match2a_s2typlst
+//
 (* ****** ****** *)
 //
 fun

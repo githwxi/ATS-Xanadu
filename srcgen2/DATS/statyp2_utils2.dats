@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Fri 04 Nov 2022 06:53:23 PM EDT
+Thu 29 Dec 2022 06:20:02 PM EST
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -45,117 +45,59 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload
-_(*?*) = "./lexing0_print0.dats"
+#staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
-#staload "./../SATS/lexing0.sats"
-(* ****** ****** *)
-#staload "./../SATS/staexp0.sats"
-(* ****** ****** *)
-#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/xlabel0.sats"
+#staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 (* ****** ****** *)
-#symload node with s2typ_get_node
-#symload sort with s2typ_get_sort
-(* ****** ****** *)
-//
-#implfun
-x2t2p_fprint
-(out , xt2p) =
-let
-val
-t2p0 = xt2p.styp()
-in//let
-case+
-t2p0.node() of
-|
-T2Pnone0() =>
-print
-("[", xt2p.stmp(), "]")
-| _(*non-T2Pnone0*) =>
-print
-("[", xt2p.styp(), "]")
-end where
-{
-  #impltmp g_print$out<>() = out
-} (*where*) // end of [x2t2p_fprint(out,xt2p)]
-//
-(* ****** ****** *)
-//
-#implfun
-s2typ_fprint
-(out , t2p0) =
-let
-#impltmp
-g_print$out<>() = out
-in//let
-//
-case+
-t2p0.node() of
-//
-|
-T2Pbas(sym1) =>
-print("T2Pbas(", sym1, ")")
-//
-|
-T2Pcst(s2c1) =>
-print("T2Pcst(", s2c1, ")")
-|
-T2Pvar(s2v1) =>
-print("T2Pvar(", s2v1, ")")
-//
-|
-T2Plft(t2p1) =>
-print("T2Plft(", t2p1, ")")
-//
-|
-T2Pxtv(xtp1) =>
-print("T2Pxtv(", xtp1, ")")
-//
-|
-T2Papps(tfun, t2ps) =>
-print("T2Papps(", tfun, ";", t2ps, ")")
-|
-T2Plam0(s2vs, tres) =>
-print("T2Plam0(", s2vs, ";", tres, ")")
-//
-|
-T2Pfun1
-( f2cl
-, npf1, t2ps, tres) =>
-(
-print
-("T2Pfun1(", f2cl, ";");
-print(npf1, ";", t2ps, ";", tres, ")"))
-//
-|
-T2Pexi0(s2vs, t2p1) =>
-print("T2Pexi0(", s2vs, ";", t2p1, ")")
-|
-T2Puni0(s2vs, t2p1) =>
-print("T2Puni0(", s2vs, ";", t2p1, ")")
-//
-|
-T2Ptext(name, t2ps) =>
-print("T2Ptext(", name, ";", t2ps, ")")
-//
-|
-T2Ptrcd
-(knd0, npf1, lses) =>
-print
-("T2Ptrcd(", knd0, ";", npf1, ";", lses)
-//
-|
-T2Pnone0() => print("T2Pnone0(",")")
-|
-T2Pnone1(t2p1) => print("T2Pnone1(",t2p1,")")
-|
-T2Ps2exp(s2e1) => print("T2Ps2exp(",s2e1,")")
-//
-end (*let*) // end of [s2typ_fprint(out,t2p0)]
-//
+#staload _ = "./statyp2_tmplib.dats"
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_statyp2_print0.dats] *)
+#implfun
+s2typ_hnfiz0(t2p0) =
+let
+//
+#typedef
+e1nv = sint
+//
+val env0: e1nv = 0
+//
+#impltmp
+s2typ_eval$s2cst
+<e1nv>(env0,s2c0) = s2c0.styp()
+#impltmp
+s2typ_eval$s2var
+<e1nv>(env0,s2v0) = optn_vt_nil()
+//
+in//let
+s2typ_hnfiz0_e1nv<e1nv>(env0, t2p0)
+end (*let*) // end of [s2typ_hnfiz0(t2p0)]
+
+(* ****** ****** *)
+
+#implfun
+s2typlst_hnfiz0(t2ps) =
+let
+//
+#typedef
+e1nv = sint
+//
+val env0: e1nv = 0
+//
+#impltmp
+s2typ_eval$s2cst
+<e1nv>(env0,s2c0) = s2c0.styp()
+#impltmp
+s2typ_eval$s2var
+<e1nv>(env0,s2v0) = optn_vt_nil()
+//
+in//let
+s2typlst_hnfiz0_e1nv<e1nv>(env0, t2ps)
+end (*let*) // end of [s2typlst_hnfiz0(t2ps)]
+
+(* ****** ****** *)
+
+(* end of [ATS3/XATSOPT_srcgen2_statyp2_utils2.dats] *)

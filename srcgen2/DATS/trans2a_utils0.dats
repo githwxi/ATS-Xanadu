@@ -55,12 +55,54 @@ ATS_PACKNAME
 (* ****** ****** *)
 
 #implfun
-unify2a_s2typ_s2typ(env0, t2p1, t2p2) = false
+unify2a_s2typ
+(env0, t2p1, t2p2) =
+let
+//
+#vwtpdef e1nv = tr2aenv
+//
+#impltmp
+s2typ_eval$s2cst
+<e1nv>(env0,s2c0) =
+s2cst_get_styp(s2c0)
+#impltmp
+s2typ_eval$s2var
+<e1nv>(env0,s2v0) = optn_vt_nil()
+//
+val () =
+prerrln("unify2a_s2typ: t2p1 = ", t2p1)
+val () =
+prerrln("unify2a_s2typ: t2p2 = ", t2p2)
+//
+in//let
+unify00_s2typ_e1nv<e1nv>(env0, t2p1, t2p2)
+end (*let*) // end of [unify2a_s2typ(env0,...)]
 
 (* ****** ****** *)
 
 #implfun
-match2a_s2typ_s2typ(env0, t2p1, t2p2) = false
+match2a_s2typ
+(env0, t2p1, t2p2) =
+let
+//
+#vwtpdef e1nv = tr2aenv
+//
+#impltmp
+s2typ_eval$s2cst
+<e1nv>(env0,s2c0) =
+s2cst_get_styp(s2c0)
+#impltmp
+s2typ_eval$s2var
+<e1nv>(env0,s2v0) = optn_vt_nil()
+//
+val () =
+prerrln("match2a_s2typ: t2p1 = ", t2p1)
+val () =
+prerrln("match2a_s2typ: t2p2 = ", t2p2)
+//
+in//let
+match00_s2typ_e1nv<e1nv>(env0, t2p1, t2p2)
+end (*let*) // end of [match2a_s2typ(env0,...)]
 
 (* ****** ****** *)
 

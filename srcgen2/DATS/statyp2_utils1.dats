@@ -53,7 +53,7 @@ ATS_PACKNAME
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 (* ****** ****** *)
-#staload _ = "./DATS/statyp2_tmplib.dats"
+#staload _ = "./statyp2_tmplib.dats"
 (* ****** ****** *)
 //
 local
@@ -238,19 +238,19 @@ list_map<x0><y0>(s2es) where
 l2s2elst_stpize(lses) =
 list_map<lx><ly>(lses) where
 {
+//
 #typedef lx = l2s2e
 #typedef ly = l2t2p
+//
 #impltmp
 map$fopr<lx><ly>(lx) =
 let
 val+
 S2LAB(l0,x0) = lx in S2LAB(l0,stpize(x0))
 end (*let*)
+//
 } (*where*) // end of [l2s2elst_stpize(lses)]
 
 (* ****** ****** *)
 
-
-(* ****** ****** *)
-
-(* end of [ATS3/XATSOPT_srcgen2_statyp2_utils0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_statyp2_utils1.dats] *)

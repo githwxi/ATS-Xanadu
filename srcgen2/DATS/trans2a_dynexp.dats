@@ -370,17 +370,27 @@ list_trans2a_fnp(env0, dcls, trans2a_d2cls)
 trans2a_d2pat_tpck
 (env0, d2p0, t2p0) =
 let
+//
 val d2p0 =
 trans2a_d2pat(env0, d2p0)
 val ubtf =
-unify2a(env0, d2p0.styp(), t2p0)
+unify2a_s2typ(env0, d2p0.styp(), t2p0)
+//
 in//let
 if
 ubtf then d2p0 else
 let
 val loc0 = d2p0.lctn() in
 d2pat(loc0, t2p0, D2Pt2pck(d2p0,t2p0)) end
-end (*let*) // end of [trans2a_d2pat_tpck(...)]
+end where
+{
+//
+val () =
+prerrln("trans2a_d2pat_tpck: d2p0 = ", d2p0)
+val () =
+prerrln("trans2a_d2pat_tpck: t2p0 = ", t2p0)
+//
+} (*where*) // end of [trans2a_d2pat_tpck(...)]
 //
 (* ****** ****** *)
 //
@@ -391,14 +401,22 @@ let
 val d2e0 =
 trans2a_d2exp(env0, d2e0)
 val ubtf =
-unify2a(env0, d2e0.styp(), t2p0)
+unify2a_s2typ(env0, d2e0.styp(), t2p0)
 in//let
 if
 ubtf then d2e0 else
 let
 val loc0 = d2e0.lctn() in
 d2exp(loc0, t2p0, D2Et2pck(d2e0,t2p0)) end
-end (*let*) // end of [trans2a_d2exp_tpck(...)]
+end where
+{
+//
+val () =
+prerrln("trans2a_d2exp_tpck: d2e0 = ", d2e0)
+val () =
+prerrln("trans2a_d2exp_tpck: t2p0 = ", t2p0)
+//
+} (*where*) // end of [trans2a_d2exp_tpck(...)]
 //
 (* ****** ****** *)
 

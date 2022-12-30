@@ -108,6 +108,22 @@ s2typ
 (* ****** ****** *)
 //
 #implfun
+s2typ_none1(t2p0) =
+let
+//
+  val s2t0 = t2p0.sort()
+//
+(*
+val (  ) = prerrln
+("s2typ_none1: t2p0 = ", t2p0)
+*)
+in//let
+  s2typ(s2t0, T2Pnone1(t2p0))
+end (*let*) // end of [s2typ_none1(t2p0)]
+//
+(* ****** ****** *)
+//
+#implfun
 s2typ_s2exp(s2e0) =
 let
 //

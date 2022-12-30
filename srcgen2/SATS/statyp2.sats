@@ -169,7 +169,7 @@ T2Pfun1 of
   (trcdknd(*knd*), int(*npf*), l2t2plst)
 //
 | T2Pnone0 of ((*0*)) // HX: optional
-| T2Ps2exp of (s2exp) | T2Pnone1 of (s2typ)
+| T2Pnone1 of (s2typ) | T2Ps2exp of (s2exp)
 //
 // HX-2022-11-04: end of [datatype(s2typ_node)
 //
@@ -211,6 +211,8 @@ s2typ_f2cl( f2clknd ): s2typ
 //
 fun
 s2typ_none0((*void*)): s2typ
+fun
+s2typ_none1(t2p0:s2typ): s2typ
 fun
 s2typ_s2exp(s2e0:s2exp): s2typ
 //
@@ -276,12 +278,12 @@ fun
 <e1nv:vwtp>
 s2typ_eval$s2cst
 ( e1nv: !e1nv
-, s2c0: s2cst, flag: &sint >> _): s2typ
+, s2c0: s2cst): s2typopt_vt
 fun
 <e1nv:vwtp>
 s2typ_eval$s2var
 ( e1nv: !e1nv
-, s2v0: s2var, flag: &sint >> _): s2typ
+, s2v0: s2var): s2typopt_vt
 //
 (* ****** ****** *)
 //
@@ -305,6 +307,52 @@ fun
 l2t2plst_hnfizx_e1nv
 ( e1nv: !e1nv
 , ltps: l2t2plst, flag: &sint >> _): l2t2plst
+//
+(* ****** ****** *)
+//
+fun
+<e1nv:vwtp>
+unify00_s2typ_e1nv
+( e1nv: !e1nv
+, t2p1: s2typ, t2p2: s2typ): bool
+fun
+<e1nv:vwtp>
+unify00_l2t2p_e1nv
+( e1nv: !e1nv
+, ltp1: l2t2p, ltp2: l2t2p): bool
+fun
+<e1nv:vwtp>
+unify00_s2typlst_e1nv
+( e1nv: !e1nv
+, tps1: s2typlst, tps2: s2typlst): bool
+fun
+<e1nv:vwtp>
+unify00_l2t2plst_e1nv
+( e1nv: !e1nv
+, lts1: l2t2plst, lts2: l2t2plst): bool
+//
+(* ****** ****** *)
+//
+fun
+<e1nv:vwtp>
+match00_s2typ_e1nv
+( e1nv: !e1nv
+, t2p1: s2typ, t2p2: s2typ): bool
+fun
+<e1nv:vwtp>
+match00_l2t2p_e1nv
+( e1nv: !e1nv
+, ltp1: l2t2p, ltp2: l2t2p): bool
+fun
+<e1nv:vwtp>
+match00_s2typlst_e1nv
+( e1nv: !e1nv
+, tps1: s2typlst, tps2: s2typlst): bool
+fun
+<e1nv:vwtp>
+match00_l2t2plst_e1nv
+( e1nv: !e1nv
+, lts1: l2t2plst, lts2: l2t2plst): bool
 //
 (* ****** ****** *)
 
