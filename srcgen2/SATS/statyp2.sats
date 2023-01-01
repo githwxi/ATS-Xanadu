@@ -227,6 +227,19 @@ s2typ_make_node
 #symload s2typ with s2typ_make_node
 (* ****** ****** *)
 //
+#typedef
+s2vts = list@(s2var, s2typ)
+//
+(* ****** ****** *)
+//
+fun
+s2vts_make_s2vs_t2ps
+(s2varlst, s2typlst): s2vts
+#symload
+s2vts with s2vts_make_s2vs_t2ps
+//
+(* ****** ****** *)
+//
 fun
 s2exp_stpize(s2e0:s2exp): s2typ
 fun
@@ -241,36 +254,6 @@ l2s2elst_stpize(l2s2elst): l2t2plst
 //
 fun
 s2typ_hnfiz0(t2p0:s2typ): s2typ
-fun
-l2t2p_hnfiz0(lt2p:l2t2p): l2t2p
-fun
-s2typlst_hnfiz0(s2typlst): s2typlst
-fun
-l2t2plst_hnfiz0(l2t2plst): l2t2plst
-//
-#symload hnfiz0 with s2typ_hnfiz0
-#symload hnfiz0 with l2t2p_hnfiz0
-#symload hnfiz0 with s2typlst_hnfiz0
-#symload hnfiz0 with l2t2plst_hnfiz0
-//
-(* ****** ****** *)
-//
-fun
-<e1nv:vwtp>
-s2typ_hnfiz0_e1nv
-(e1nv: !e1nv, t2p0: s2typ): s2typ
-fun
-<e1nv:vwtp>
-l2t2p_hnfiz0_e1nv
-(e1nv: !e1nv, lt2p: l2t2p): l2t2p
-fun
-<e1nv:vwtp>
-s2typlst_hnfiz0_e1nv
-(e1nv: !e1nv, t2ps: s2typlst): s2typlst
-fun
-<e1nv:vwtp>
-l2t2plst_hnfiz0_e1nv
-(e1nv: !e1nv, ltps: l2t2plst): l2t2plst
 //
 (* ****** ****** *)
 //
@@ -289,24 +272,8 @@ s2typ_eval$s2var
 //
 fun
 <e1nv:vwtp>
-s2typ_hnfizx_e1nv
-( e1nv: !e1nv
-, t2p0: s2typ, flag: &sint >> _): s2typ
-fun
-<e1nv:vwtp>
-l2t2p_hnfizx_e1nv
-( e1nv: !e1nv
-, lt2p: l2t2p, flag: &sint >> _): l2t2p
-fun
-<e1nv:vwtp>
-s2typlst_hnfizx_e1nv
-( e1nv: !e1nv
-, t2ps: s2typlst, flag: &sint >> _): s2typlst
-fun
-<e1nv:vwtp>
-l2t2plst_hnfizx_e1nv
-( e1nv: !e1nv
-, ltps: l2t2plst, flag: &sint >> _): l2t2plst
+s2typ_hnfiz0_e1nv
+(e1nv: !e1nv, t2p0: s2typ): s2typ
 //
 (* ****** ****** *)
 //
@@ -314,45 +281,20 @@ fun
 <e1nv:vwtp>
 unify00_s2typ_e1nv
 ( e1nv: !e1nv
-, t2p1: s2typ, t2p2: s2typ): bool
+, t2p1: s2typ, t2p2: s2typ): (bool)
 fun
 <e1nv:vwtp>
-unify00_l2t2p_e1nv
+match00_s2typ_e1nv
 ( e1nv: !e1nv
-, ltp1: l2t2p, ltp2: l2t2p): bool
-fun
-<e1nv:vwtp>
-unify00_s2typlst_e1nv
-( e1nv: !e1nv
-, tps1: s2typlst, tps2: s2typlst): bool
-fun
-<e1nv:vwtp>
-unify00_l2t2plst_e1nv
-( e1nv: !e1nv
-, lts1: l2t2plst, lts2: l2t2plst): bool
+, t2p1: s2typ, t2p2: s2typ): (bool)
 //
 (* ****** ****** *)
 //
 fun
 <e1nv:vwtp>
-match00_s2typ_e1nv
+s2typ_hnfizx_e1nv
 ( e1nv: !e1nv
-, t2p1: s2typ, t2p2: s2typ): bool
-fun
-<e1nv:vwtp>
-match00_l2t2p_e1nv
-( e1nv: !e1nv
-, ltp1: l2t2p, ltp2: l2t2p): bool
-fun
-<e1nv:vwtp>
-match00_s2typlst_e1nv
-( e1nv: !e1nv
-, tps1: s2typlst, tps2: s2typlst): bool
-fun
-<e1nv:vwtp>
-match00_l2t2plst_e1nv
-( e1nv: !e1nv
-, lts1: l2t2plst, lts2: l2t2plst): bool
+, t2p0: s2typ, flag: &sint >> _): s2typ
 //
 (* ****** ****** *)
 

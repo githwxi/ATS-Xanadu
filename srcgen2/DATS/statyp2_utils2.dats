@@ -78,26 +78,4 @@ end (*let*) // end of [s2typ_hnfiz0(t2p0)]
 
 (* ****** ****** *)
 
-#implfun
-s2typlst_hnfiz0(t2ps) =
-let
-//
-#typedef
-e1nv = sint
-//
-val env0: e1nv = 0
-//
-#impltmp
-s2typ_eval$s2cst
-<e1nv>(env0,s2c0) = s2c0.styp()
-#impltmp
-s2typ_eval$s2var
-<e1nv>(env0,s2v0) = optn_vt_nil()
-//
-in//let
-s2typlst_hnfiz0_e1nv<e1nv>(env0, t2ps)
-end (*let*) // end of [s2typlst_hnfiz0(t2ps)]
-
-(* ****** ****** *)
-
 (* end of [ATS3/XATSOPT_srcgen2_statyp2_utils2.dats] *)

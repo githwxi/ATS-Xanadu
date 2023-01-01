@@ -1265,6 +1265,41 @@ HX-2022-12-28: For debugging purpose
 *)
 (* ****** ****** *)
 //
+(*
+#impltmp
+g_print<s2cst>(s2c0) =
+let
+val out = g_print$out<>()
+in//let
+  strn_fprint(out, "("); s2cst_fprint(out, s2c0)
+; strn_fprint(out, ":"); sort2_fprint(out, s2c0.sort()); strn_fprint(out, ")")
+end (*let*) // end of [g_print<s2cst>(s2c0)]
+*)
+//
+(*
+#impltmp
+g_print<s2var>(s2v0) =
+let
+val out = g_print$out<>()
+in//let
+  strn_fprint(out, "("); s2var_fprint(out, s2v0)
+; strn_fprint(out, ":"); sort2_fprint(out, s2v0.sort()); strn_fprint(out, ")")
+end (*let*) // end of [g_print<s2var>(s2v0)]
+*)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<s2exp>(s2e0) =
+let
+val out = g_print$out<>()
+in//let
+  strn_fprint(out, "("); s2exp_fprint(out, s2e0)
+; strn_fprint(out, ":"); sort2_fprint(out, s2e0.sort()); strn_fprint(out, ")")
+end (*let*) // end of [g_print<s2exp>(s2e0)]
+//
+(* ****** ****** *)
+//
 #impltmp
 g_print<d2pat>(d2p0) =
 let

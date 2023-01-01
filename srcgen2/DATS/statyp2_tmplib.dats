@@ -65,32 +65,19 @@ end (*let*) // end of [s2typ_hnfiz0_e1nv]
 
 (* ****** ****** *)
 
-#implfun
-< e1nv >
-s2typlst_hnfiz0_e1nv
-(e1nv, t2ps) =
-let
-var flag: sint = 0 in
-s2typlst_hnfizx_e1nv<e1nv>(e1nv,t2ps,flag)
-end (*let*) // end of [s2typlst_hnfiz0_e1nv]
-
-(* ****** ****** *)
-
-#implfun
-< e1nv >
-l2t2plst_hnfiz0_e1nv
-(e1nv, ltps) =
-let
-var flag: sint = 0 in
-l2t2plst_hnfizx_e1nv<e1nv>(e1nv,ltps,flag)
-end (*let*) // end of [l2t2plst_hnfiz0_e1nv]
-
-(* ****** ****** *)
-
 #impltmp
 < e1nv >
 s2typ_hnfizx_e1nv
 (e1nv, t2p0, flag) =
+s2typ_hnfizx
+(e1nv, t2p0, flag) where
+{
+//
+fun
+s2typ_hnfizx
+( e1nv: !e1nv
+, t2p0: s2typ
+, flag: &sint >> _): s2typ =
 (
 case+
 t2p0.node() of
@@ -102,6 +89,14 @@ f0_cst(e1nv, t2p0, flag)
 |T2Pvar _ =>
 f0_var(e1nv, t2p0, flag)
 //
+|T2Pxtv _ =>
+f0_xtv(e1nv, t2p0, flag)
+//
+|T2Plam0 _ => t2p0
+//
+|T2Papps _ =>
+f0_apps(e1nv, t2p0, flag)
+//
 |T2Pnone0 _ => t2p0
 |T2Pnone1 _ => t2p0
 //
@@ -109,11 +104,6 @@ f0_var(e1nv, t2p0, flag)
 //
 ) where
 {
-//
-(*
-val () =
-prerrln("s2typ_hnfizx_e1nv: t2p0 = ", t2p0)
-*)
 //
 (* ****** ****** *)
 //
@@ -127,8 +117,13 @@ case+ opt1 of
 | ~
 optn_vt_nil() => t2p0
 | ~
-optn_vt_cons(t2p1) => t2p1)
-where
+optn_vt_cons(t2p1) =>
+let
+val () = (flag := flag+1)
+in//let
+s2typ_hnfizx(e1nv, t2p1, flag)
+endlet
+) where
 {
 //
 val-T2Pcst(s2c1) = t2p0.node()
@@ -136,7 +131,9 @@ val-T2Pcst(s2c1) = t2p0.node()
 val opt1 =
 s2typ_eval$s2cst<e1nv>(e1nv, s2c1)
 //
-} (*where*) // end of [f0_cst(e1nv,t2p0,flag)]
+} (*where*) // end of [f0_cst(e1nv,...)]
+//
+(* ****** ****** *)
 //
 fun
 f0_var
@@ -148,59 +145,112 @@ case+ opt1 of
 | ~
 optn_vt_nil() => t2p0
 | ~
-optn_vt_cons(t2p1) => t2p1)
-where
+optn_vt_cons(t2p1) =>
+let
+val () = (flag := flag+1)
+in//let
+s2typ_hnfizx(e1nv, t2p1, flag)
+endlet
+) where
 {
+//
 val-T2Pvar(s2v1) = t2p0.node()
+//
 val opt1 =
 s2typ_eval$s2var<e1nv>(e1nv, s2v1)
-} (*where*) // end of [f0_cst(e1nv,t2p0,flag)]
+//
+} (*where*) // end of [f0_cst(e1nv,...)]
 //
 (* ****** ****** *)
-//
-} (*where*) // end of [s2typ_hnfizx_e1nv(...)]
-
-(* ****** ****** *)
-
-#impltmp
-< e1nv >
-l2t2p_hnfizx_e1nv
-(e1nv, lt2p, flag) =
-(
-//
-case+ lt2p of
-|
-S2LAB(l0, t2p1) =>
-let
-val fval = flag
-val t2p1 =
-s2typ_hnfizx_e1nv(e1nv, t2p1, flag)
-in//let
-if // if
-flag > fval then S2LAB(l0, t2p1) else lt2p
-end (*let*) // end of [S2LAB(...)]
-//
-) (*case+*) // end-of-[l2t2p_hnfizx_e1nv(...)]
-
-(* ****** ****** *)
-
-#impltmp
-< e1nv >
-s2typlst_hnfizx_e1nv
-( e1nv, t2ps, flag ) =
-f0_t2ps
-(e1nv, t2ps, flag) where
-{
 //
 fun
-f0_t2ps
-( e1nv
-: !e1nv
-, t2ps
-: s2typlst
-, flag
-: &sint >> _): s2typlst  =
+f0_xtv
+( e1nv: !e1nv
+, t2p0: s2typ
+, flag: &sint >> _): s2typ =
+let
+val t2p1 = xtp1.styp()
+in//let
+case+
+t2p1.node() of
+|
+T2Pnone0() => t2p0
+|
+_(*T2Pnone0*) =>
+let
+val () = (flag := flag+1)
+val t2p1 =
+s2typ_hnfizx(e1nv, t2p1, flag)
+in//let
+let
+val () = xtp1.styp(t2p1) in t2p1
+end//let
+end//let
+end where
+{
+  val-T2Pxtv(xtp1) = t2p0.node() }
+//(*where*) // end of [f0_xtv(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_apps
+( e1nv: !e1nv
+, t2p0: s2typ
+, flag: &sint >> _): s2typ =
+let
+//
+val fval = flag
+//
+val t2f0 =
+s2typ_hnfizx(e1nv, t2f0, flag)
+val t2ps =
+s2typlst_hnfizx(e1nv, t2ps, flag)
+//
+in//let
+//
+case+
+t2f0.node() of
+|
+T2Plam0
+(s2vs, t2p1) =>
+let
+val
+() = (flag := flag+1)
+val
+svts = s2vts(s2vs, t2ps)
+val tres =
+s2typ_substx
+(e1nv, svts, t2p1, flag)
+in//let
+s2typ_hnfizx(e1nv, tres, flag)
+end (*let*) // end of [T2Plam0]
+|_(*non-T2Plam0*) =>
+if
+(flag <= fval)
+then t2p0 else
+s2typ_make_node
+(t2p0.sort(), T2Papps(t2f0, t2ps))
+//
+end where
+{
+val-T2Papps(t2f0, t2ps) = t2p0.node()
+}
+//(*where*) // end of [f0_apps(e1nv,...)]
+//
+(* ****** ****** *)
+//
+} (*where*) // end of [s2typ_hnfizx(e1nv,...)]
+//
+(* ****** ****** *)
+//
+and
+s2typlst_hnfizx
+( e1nv: !e1nv
+, t2ps: s2typlst
+, flag: &sint >> _): s2typlst  =
 (
+//
 case+ t2ps of
 |
 list_nil() =>
@@ -211,60 +261,38 @@ let
 //
 val fval = flag
 //
-val t2p1 =
-s2typ_hnfizx_e1nv
-<e1nv>(e1nv, t2p1, flag)
-//
-val tps2 = f0_t2ps(e1nv, tps2, flag)
+val
+t2p1 =
+s2typ_hnfizx(e1nv, t2p1, flag)
+val
+tps2 =
+s2typlst_hnfizx(e1nv, tps2, flag)
 //
 in//let
 if // if
-flag > fval then list_cons(t2p1, tps2) else t2ps
+(flag <= fval)
+then t2ps else list_cons(t2p1, tps2)
 end (*let*) // end of [list_cons(...)]
-)
-} (*where*) // end of [s2typlst_hnfizx_e1nv(...)]
-
+//
+) (*case+*) // end of [s2typlst_hnfizx(...)]
+//
 (* ****** ****** *)
-
-#impltmp
-< e1nv >
-l2t2plst_hnfizx_e1nv
-( e1nv, ltps, flag ) =
-( f0_ltps
-  (e1nv, ltps, flag)) where
-{
+and
+s2typ_substx
+( e1nv: !e1nv
+, svts: s2vts
+, t2p0: s2typ
+, flag: &sint >> _): s2typ = t2p0
+(* ****** ****** *)
+and
+s2typlst_substx
+( e1nv: !e1nv
+, svts: s2vts
+, t2ps: s2typlst
+, flag: &sint >> _): s2typlst = t2ps
+(* ****** ****** *)
 //
-fun
-f0_ltps
-( e1nv
-: !e1nv
-, ltps
-: l2t2plst
-, flag
-: &sint >> _): l2t2plst  =
-(
-case+ ltps of
-|
-list_nil() =>
-list_nil((*void*))
-|
-list_cons(ltp1, lts2) =>
-let
-//
-val fval = flag
-//
-val ltp1 =
-l2t2p_hnfizx_e1nv
-<e1nv>(e1nv, ltp1, flag)
-//
-val tps2 = f0_ltps(e1nv, lts2, flag)
-//
-in//let
-if // if
-flag > fval then list_cons(ltp1, lts2) else ltps
-end (*let*) // end of [list_cons(...)]
-)
-} (*where*) // end of [l2t2plst_hnfizx_e1nv(...)]
+} (*where*) // end of [s2typ_hnfizx_e1nv(e1nv,...)]
 
 (* ****** ****** *)
 
@@ -301,7 +329,7 @@ fun
 unify00_s2typ
 ( e1nv: !e1nv
 , t2p1: s2typ
-, t2p2: s2typ): bool =
+, t2p2: s2typ): (bool) =
 (
 case+
 t2p1.node() of
