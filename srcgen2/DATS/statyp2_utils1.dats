@@ -57,6 +57,30 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #implfun
+s2vts_search_opt
+  (svts, s2v0) =
+(
+  auxmain(svts) ) where
+{
+fun
+auxmain
+(svts: s2vts): s2typopt_vt =
+(
+case+ svts of
+|
+list_nil() => optn_vt_nil()
+|
+list_cons(svt1, svts) =>
+if
+(s2v0 = svt1.0)
+then
+optn_vt_cons(svt1.1) else auxmain(svts)
+)
+} (*where*) // end of [s2vts_search_opt]
+//
+(* ****** ****** *)
+//
+#implfun
 s2vts_make_s2vs_t2ps
 ( s2vs, t2ps ) =
 (

@@ -768,30 +768,29 @@ s1f0.node() of
 //
 (*
 | _ when
-  isCBV0(s1e1) =>
+  isCBV0(s1f0) =>
   f0_a1pp_cbv0( env0, s1e0 )
 | _ when
-  isCBV1(s1e1) =>
+  isCBV1(s1f0) =>
   f0_a1pp_cbv1( env0, s1e0 )
 | _ when
-  isCBRF(s1e1) =>
+  isCBRF(s1f0) =>
   f0_a1pp_cbrf( env0, s1e0 )
 *)
 //
 (*
 | _ when
-  isTOP0(s1e1) =>
+  isTOP0(s1f0) =>
   f0_a1pp_top0( env0, s1e0 )
 | _ when
-  isTOP1(s1e1) =>
+  isTOP1(s1f0) =>
   f0_a1pp_top1( env0, s1e0 )
 //
 *)
-(*
 | _ when
-  isEXTP(s1e1) =>
-  f0_a1pp_extp( env0, s1e0 )
-*)
+  isEXTP(s1f0) =>
+(
+  f0_a1pp_extp( env0, s1e0 ))
 //
 |
 _(*S1E...*) => f0_a1pp_else(env0, s1e0)
@@ -878,6 +877,77 @@ in
 //
 s2exp_exi0(s2vs, s2ps, s2e1(*body*))
 end (*let*) // end of [f0_a1pp_exi0(...)]
+
+(* ****** ****** *)
+
+and
+f0_a1pp_extp
+( env0:
+! tr12env
+, s1e0: s1exp): s2exp =
+let
+//
+val-
+S1Ea1pp
+(s1f0, s1e1) = s1e0.node()
+//
+val
+targ = the_sort2_type
+//
+val tres =
+let
+val-
+S1Eid0(sid1) = s1f0.node()
+in//let
+if
+(
+sid1 =
+DLR_EXTBOX_symbl)
+then the_sort2_tbox
+else the_sort2_type end : sort2
+//
+val s1es =
+(
+case+
+s1e1.node() of
+|
+S1El1st(s1es) => s1es
+|
+_(*non-list*) => list_sing(s1e1)
+) : s1explst // end [ val(s1es) ]
+//
+val
+tnm1 =
+(
+case+ s1es of
+|
+list_nil() => "*ERROR*"
+|
+list_cons
+(s1nm, s1es) =>
+(
+case+ s1nm.node() of
+|
+S1Estr(s0) =>
+token2sstr(s0) | _ => "*ERROR*")
+) : string // end of [ val(tnm1) ]
+//
+val
+s2es =
+(
+case+ s1es of
+|
+list_nil() =>
+list_nil()
+|
+list_cons
+(s1nm, s1es) =>
+trans12_s1explst_stck1(env0,s1es,targ))
+: s2explst // end of [ val(s2es) ]
+//
+in//let
+s2exp_make_node(tres,S2Etext(tnm1,s2es))
+end (*let*) // end of [f0_a1pp_extp(...)]
 
 (* ****** ****** *)
 

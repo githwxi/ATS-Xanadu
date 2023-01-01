@@ -1289,6 +1289,7 @@ end (*let*) // end of [g_print<s2var>(s2v0)]
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 g_print<s2exp>(s2e0) =
 let
@@ -1297,6 +1298,18 @@ in//let
   strn_fprint(out, "("); s2exp_fprint(out, s2e0)
 ; strn_fprint(out, ":"); sort2_fprint(out, s2e0.sort()); strn_fprint(out, ")")
 end (*let*) // end of [g_print<s2exp>(s2e0)]
+*)
+//
+(*
+#impltmp
+g_print<s2typ>(t2p0) =
+let
+val out = g_print$out<>()
+in//let
+  strn_fprint(out, "("); s2typ_fprint(out, t2p0)
+; strn_fprint(out, ":"); sort2_fprint(out, t2p0.sort()); strn_fprint(out, ")")
+end (*let*) // end of [g_print<s2typ>(t2p0)]
+*)
 //
 (* ****** ****** *)
 //
