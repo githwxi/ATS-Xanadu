@@ -119,5 +119,10 @@ HX-2022-10-01: Various symbols
 #implval DLLAZY_symbl = symbl("$llazy")
 #implval DRAISE_symbl = symbl("$raise")
 (* ****** ****** *)
+//
+#implval DLR_EXTBOX_symbl = symbl("$extbox")
+#implval DLR_EXTYPE_symbl = symbl("$extype")
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xsymbol_inits0.dats] *)
