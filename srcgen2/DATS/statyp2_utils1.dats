@@ -56,6 +56,37 @@ ATS_PACKNAME
 #staload _ = "./statyp2_tmplib.dats"
 (* ****** ****** *)
 //
+#implfun
+s2vts_make_s2vs_t2ps
+( s2vs, t2ps ) =
+(
+auxmain(s2vs, t2ps)) where
+{
+//
+fun
+auxmain
+( s2vs: s2varlst
+, t2ps: s2typlst): s2vts =
+(
+case+ s2vs of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(s2v1, s2vs) =>
+let
+val-
+list_cons(t2p1, t2ps) = t2ps
+in
+list_cons
+((s2v1, t2p1), auxmain(s2vs, t2ps))
+end (*let*)
+) (*case+*)//end-[auxmain(s2vs,t2ps)]
+//
+} (*where*)//end-[s2vts_make_s2vs_t2ps]
+//
+(* ****** ****** *)
+//
 local
 //
 (* ****** ****** *)

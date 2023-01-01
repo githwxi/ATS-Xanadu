@@ -196,7 +196,9 @@ let
 g_print$out<>() = out
 in//let
   print(s2cst_get_name(s2c0))
+(*
 ; print(":", s2cst_get_sort(s2c0))
+*)
 end (*let*)//end of [s2cst_fprint(out, s2c0)]
 
 (* ****** ****** *)
@@ -209,7 +211,9 @@ let
 g_print$out<>() = out
 in//let
   print(s2var_get_name(s2v0))
+(*
 ; print(":", s2var_get_sort(s2v0))
+*)
 end (*let*) // end of [s2var_fprint(out, s2v0)]
 
 (* ****** ****** *)
