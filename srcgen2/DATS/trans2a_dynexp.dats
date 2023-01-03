@@ -239,6 +239,8 @@ d2e0.node() of
 //
 |D2Evar _ => f0_var(env0, d2e0)
 //
+|D2Esym0 _ => f0_sym0(env0, d2e0)
+//
 |D2Edapp _ => f0_dapp(env0, d2e0)
 //
 |D2Etup0 _ => f0_tup0(env0, d2e0)
@@ -298,6 +300,27 @@ val loc0 = d2e0.lctn()
 val-
 D2Evar(d2v1) = d2e0.node()
 val t2p0 = d2v1.styp((*nil*)) }
+//
+(* ****** ****** *)
+//
+fun
+f0_sym0
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Esym0
+(d1e1, dpis) = d2e0.node()
+//
+val t2p0 = s2typ_new1_x2tp(loc0)
+//
+in//let
+d2exp_make_styp_node
+(loc0, t2p0, D2Esym0(d1e1, dpis) )
+end (*let*) // end of [f0_sym0(env1,...)]
 //
 (* ****** ****** *)
 //

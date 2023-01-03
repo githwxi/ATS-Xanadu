@@ -101,6 +101,9 @@ f0_xtv(e1nv, t2p0, flag)
 |T2Papps _ =>
 f0_apps(e1nv, t2p0, flag)
 //
+|T2Pfun1 _ =>
+f0_fun1(e1nv, t2p0, flag)
+//
 |T2Ptrcd _ =>
 f0_trcd(e1nv, t2p0, flag)
 //
@@ -271,6 +274,39 @@ val-
 T2Ptrcd(tknd, npf1, ltps) = t2p0.node()
 }
 //(*where*) // end of [f0_trcd(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fun1
+( e1nv: !e1nv
+, t2p0: s2typ
+, flag: &sint >> _): s2typ =
+let
+//
+val fval = flag
+//
+val f2cl =
+s2typ_hnfizx(e1nv, f2cl, flag)
+val tres =
+s2typ_hnfizx(e1nv, tres, flag)
+val targ =
+s2typlst_hnfizx(e1nv, targ, flag)
+//
+in//let
+if
+(flag <= fval)
+then t2p0 else
+s2typ_make_node
+( t2p0.sort()
+, T2Pfun1(f2cl, npf1, targ, tres))
+end where
+{
+val-
+T2Pfun1
+(f2cl,npf1,targ,tres) = t2p0.node()
+}
+//(*where*) // end of [f0_fun1(e1nv,...)]
 //
 (* ****** ****** *)
 //
