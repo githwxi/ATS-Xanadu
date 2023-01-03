@@ -101,6 +101,9 @@ f0_xtv(e1nv, t2p0, flag)
 |T2Papps _ =>
 f0_apps(e1nv, t2p0, flag)
 //
+|T2Ptrcd _ =>
+f0_trcd(e1nv, t2p0, flag)
+//
 |T2Ptext _ =>
 f0_text(e1nv, t2p0, flag)
 //
@@ -245,6 +248,33 @@ val-T2Papps(t2f0, t2ps) = t2p0.node()
 (* ****** ****** *)
 //
 fun
+f0_trcd
+( e1nv: !e1nv
+, t2p0: s2typ
+, flag: &sint >> _): s2typ =
+let
+//
+val fval = flag
+//
+val ltps =
+l2t2plst_hnfizx(e1nv, ltps, flag)
+//
+in//let
+if
+(flag <= fval)
+then t2p0 else
+s2typ_make_node
+(t2p0.sort(),T2Ptrcd(tknd,npf1,ltps))
+end where
+{
+val-
+T2Ptrcd(tknd, npf1, ltps) = t2p0.node()
+}
+//(*where*) // end of [f0_trcd(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
 f0_text
 ( e1nv: !e1nv
 , t2p0: s2typ
@@ -271,6 +301,25 @@ val-T2Ptext(tnm1, t2ps) = t2p0.node()
 (* ****** ****** *)
 //
 } (*where*) // end of [s2typ_hnfizx(e1nv,...)]
+//
+(* ****** ****** *)
+//
+and
+l2t2p_hnfizx
+( e1nv: !e1nv
+, ltp0: l2t2p
+, flag: &sint >> _): l2t2p  =
+let
+//
+val fval = flag
+val+S2LAB(l0, t2p0) = ltp0
+val t2p0 = 
+s2typ_hnfizx(e1nv, t2p0, flag)
+//
+in//let
+if
+flag <= fval then ltp0 else S2LAB(l0, t2p0)
+end (*let*) // end of [l2t2p_hnfizx(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -305,6 +354,40 @@ then t2ps else list_cons(t2p1, tps2)
 end (*let*) // end of [list_cons(...)]
 //
 ) (*case+*) // end of [s2typlst_hnfizx(...)]
+//
+(* ****** ****** *)
+//
+and
+l2t2plst_hnfizx
+( e1nv: !e1nv
+, ltps: l2t2plst
+, flag: &sint >> _): l2t2plst  =
+(
+//
+case+ ltps of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons(ltp1, lts2) =>
+let
+//
+val fval = flag
+//
+val
+ltp1 =
+l2t2p_hnfizx(e1nv, ltp1, flag)
+val
+lts2 =
+l2t2plst_hnfizx(e1nv, lts2, flag)
+//
+in//let
+if // if
+(flag <= fval)
+then ltps else list_cons(ltp1, lts2)
+end (*let*) // end of [list_cons(...)]
+//
+) (*case+*) // end of [l2t2plst_hnfizx(...)]
 //
 (* ****** ****** *)
 //
@@ -444,6 +527,14 @@ unify00_s2typ
 (* ****** ****** *)
 //
 fun
+isXTV(t2p0: s2typ): bool =
+(
+case+ t2p0.node() of
+| T2Pxtv _ => true | _ => false)
+//
+(* ****** ****** *)
+//
+fun
 s2typ_hnfiz0
 ( e1nv: !e1nv
 , t2p0: s2typ): s2typ =
@@ -457,8 +548,20 @@ unify00_s2typ
 , t2p1: s2typ
 , t2p2: s2typ): (bool) =
 (
+if
+isXTV(t2p1)
+then
+f0_xtv1(e1nv, t2p1, t2p2)
+else
+(
+if
+isXTV(t2p2)
+then
+f0_xtv2(e1nv, t2p1, t2p2)
+else
 case+
 t2p1.node() of
+//
 |
 T2Pbas(tbs1) =>
 (
@@ -468,8 +571,48 @@ t2p2.node() of
 T2Pbas(tbs2) =>
 (tbs1 = tbs2) | _ => false)
 //
+)
 ) where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_xtv1
+( e1nv: !e1nv
+, t2p1: s2typ
+, t2p2: s2typ): (bool) =
+let
+val-T2Pxtv(xtp1) = t2p1.node()
+in//let
+case+
+t2p2.node() of
+|T2Pxtv(xtp2) =>
+if
+(xtp1 = xtp2)
+then true else (xtp1.styp(t2p2); true)
+|_(*non-T2Pxtv*) =>
+if
+s2typ_xtpck0(t2p2, xtp1)
+then false else (xtp1.styp(t2p2); true)
+end (*let*) // end of [f0_xtv1(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_xtv2
+( e1nv: !e1nv
+, t2p1: s2typ
+, t2p2: s2typ): (bool) =
+let
+val-T2Pxtv(xtp2) = t2p2.node()
+in//let
+if
+s2typ_xtpck0(t2p1, xtp2)
+then false else (xtp2.styp(t2p1); true)
+end (*let*) // end of [f0_xtv2(e1nv,...)]
+//
+(* ****** ****** *)
 //
 val t2p1 = s2typ_hnfiz0(e1nv, t2p1)
 val t2p2 = s2typ_hnfiz0(e1nv, t2p2)

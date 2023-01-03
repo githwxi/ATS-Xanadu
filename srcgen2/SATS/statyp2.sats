@@ -238,9 +238,21 @@ s2vts_search_opt
 //
 fun
 s2vts_make_s2vs_t2ps
-(s2varlst, s2typlst): s2vts
+(s2varlst, s2typlst): (s2vts)
 #symload
 s2vts with s2vts_make_s2vs_t2ps
+//
+(* ****** ****** *)
+//
+fun // HX: for
+s2typ_xtpck0 // occurs-check
+(t2p0:s2typ, xtp0:x2t2p): bool
+fun // HX: for
+s2typlst_xtpck0 // occurs-check
+(t2ps:s2typlst, xtp0:x2t2p): bool
+fun // HX: for
+l2t2plst_xtpck0 // occurs-check
+(ltps:l2t2plst, xtp0:x2t2p): bool
 //
 (* ****** ****** *)
 //
