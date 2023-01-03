@@ -36,6 +36,9 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsafex.sats"
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
@@ -47,10 +50,11 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
-#staload "./../SATS/locinfo.sats"
-(* ****** ****** *)
+#staload "./../SATS/xlabel0.sats"
 #staload "./../SATS/xstamp0.sats"
 #staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
+#staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
@@ -95,6 +99,43 @@ s2typ_make_node
   val s2t0 = sort2_none0()
 } (*where*) // end of [s2typ_f2cl(...)]
 //
+(* ****** ****** *)
+
+#implfun
+s2typ_tup0
+(npf1, t2ps) =
+let
+val s2t0 =
+the_sort2_type(*0*)
+val tknd = TRCDflt0
+val ltps =
+f0_labelize(t2ps, 0(*i0*))
+in//let
+s2typ_make_node
+(s2t0,T2Ptrcd(tknd,npf1,ltps))
+end where
+{
+//
+fun
+f0_labelize
+( t2ps
+: s2typlst, i0: sint): l2t2plst =
+(
+case+ t2ps of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons(t2p1, t2ps) =>
+let
+val ltp1 = S2LAB(LABint(i0),t2p1)
+in//let
+list_cons(ltp1,f0_labelize(t2ps,i0+1))
+end (*let*)
+) (*case+*) // end-[f0_labelize(...)]
+//
+} (*where*) // end of [s2typ_tup0(...)]
+
 (* ****** ****** *)
 //
 #implfun
@@ -203,6 +244,14 @@ X2T2P of
 , s2typ // type
 , stamp // stmp // unicity
 ) (* end of [x2t2p] *)
+datavwtp
+x2t2p_vt =
+X2T2P_vt of
+( loc_t // lctn
+, s2exp // sexp
+, s2typ // type
+, stamp // stmp // unicity
+) (* end of [x2t2p] *)
 //
 #absimpl x2t2p_tbox = x2t2p
 //
@@ -254,6 +303,24 @@ in//let
   X2T2P(loc0, s2e0, t2p0, stmp)
 end (*let*) // end of [x2t2p_make_lctn]
 //
+(* ****** ****** *)
+
+#implfun
+x2t2p_set_styp
+( xt2p, t2p0 ) =
+let
+//
+val
+xt2p =
+$UN.castlin10{x2t2p_vt}(xt2p)
+val+
+@X2T2P_vt
+(loc0,
+ s2e0,
+!styp,stmp) = xt2p in (styp := t2p0)
+//
+end (*let*) // end of [ x2t2p_set_styp ]
+
 (* ****** ****** *)
 //
 end (*local*) // end of [local(x2t2p_tbox)]

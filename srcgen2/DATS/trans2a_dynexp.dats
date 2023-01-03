@@ -67,6 +67,13 @@ _(*TRANS2a*) = "./trans2a.dats"
 (* ****** ****** *)
 //
 fun
+s2typ_new1_x2tp
+( loc0: loc_t ): s2typ =
+s2typ_xtv(x2t2p_make_lctn(loc0))
+//
+(* ****** ****** *)
+//
+fun
 s2typlst_of_d2explst
 ( d2es
 : d2explst ): s2typlst =
@@ -232,6 +239,8 @@ d2e0.node() of
 //
 |D2Evar _ => f0_var(env0, d2e0)
 //
+|D2Edapp _ => f0_dapp(env0, d2e0)
+//
 |D2Etup0 _ => f0_tup0(env0, d2e0)
 //
 | _(*otherwise*) => d2exp_none2(d2e0)
@@ -290,6 +299,50 @@ val-
 D2Evar(d2v1) = d2e0.node()
 val t2p0 = d2v1.styp((*nil*)) }
 //
+(* ****** ****** *)
+//
+fun
+f0_dapp
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+val loc0 = d2e0.lctn()
+val-
+D2Edapp
+( d2f0
+, npf1, d2es) = d2e0.node()
+//
+val
+tres =
+s2typ_new1_x2tp(loc0)
+val
+d2es =
+trans2a_d2explst(env0, d2es)
+//
+val tfun =
+let
+val f2cl =
+s2typ_new1_x2tp(loc0)
+val
+t2ps =
+s2typlst_of_d2explst(d2es)
+in//let
+s2typ_make_node
+(sort2_none0()
+,T2Pfun1(f2cl,npf1,t2ps,tres))
+end (*let*) // end-of-[val(tfun)]
+//
+val d2f0 =
+trans2a_d2exp_tpck(env0,d2f0,tfun)
+//
+in//let
+//
+d2exp_make_styp_node
+(loc0, tres, D2Edapp(d2f0,npf1,d2es))
+//
+end (*let*) // end of [f0_dapp(env0,...)]
+
 (* ****** ****** *)
 //
 fun

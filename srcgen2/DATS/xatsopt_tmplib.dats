@@ -977,7 +977,14 @@ g_cmp<s2var>
 (
 s2v1.stmp() \cmp s2v2.stmp())
 //
+#impltmp
+g_cmp<x2t2p>
+(xtp1, xtp2) =
+(
+xtp1.stmp() \cmp xtp2.stmp())
+//
 (* ****** ****** *)
+//
 #impltmp
 g_cmp<d2var>
 (d2v1, d2v2) =
