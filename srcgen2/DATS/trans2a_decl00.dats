@@ -336,34 +336,48 @@ end//let
 (*let*)//end-of-[trans2a_d2valdcl(env0,dval)]
 
 (* ****** ****** *)
+
+#implfun
+trans2a_d2fundcl
+  (env0, dfun) = let
+in//let
+end
+(*let*)//end-of-[trans2a_d2fundcl(env0,dfun)]
+
+(* ****** ****** *)
 //
 #implfun
 trans2a_d2eclist
   (env0, dcls) =
-list_trans2a_fnp(env0, dcls, trans2a_d2ecl)
+(
+  list_trans2a_fnp(env0, dcls, trans2a_d2ecl))
 //
 (* ****** ****** *)
 //
 #implfun
 trans2a_s2qaglst
   (env0, sqas) =
-list_trans2a_fnp(env0, sqas, trans2a_s2qag)
+(
+  list_trans2a_fnp(env0, sqas, trans2a_s2qag))
 #implfun
 trans2a_t2qaglst
   (env0, tqas) =
-list_trans2a_fnp(env0, tqas, trans2a_t2qag)
+(
+  list_trans2a_fnp(env0, tqas, trans2a_t2qag))
 //
 #implfun
 trans2a_t2iaglst
   (env0, tias) =
-list_trans2a_fnp(env0, tias, trans2a_t2iag)
+(
+  list_trans2a_fnp(env0, tias, trans2a_t2iag))
 //
 (* ****** ****** *)
 //
 #implfun
 trans2a_d2arglst
   (env0, d2as) =
-list_trans2a_fnp(env0, d2as, trans2a_d2arg)
+(
+  list_trans2a_fnp(env0, d2as, trans2a_d2arg))
 //
 (* ****** ****** *)
 //
