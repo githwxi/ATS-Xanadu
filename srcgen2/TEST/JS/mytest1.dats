@@ -8,7 +8,10 @@ and y = 2
 val xy = (x + y)
 (* ****** ****** *)
 fun
-ff(x: sint): sint = x + x
+id{a:tx}(x: a): a = x
+(* ****** ****** *)
+fun
+fa(x: sint): sint = x + fa(x)
 (* ****** ****** *)
 ////
 (* ****** ****** *)

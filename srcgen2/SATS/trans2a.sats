@@ -157,6 +157,20 @@ x2t2p with x2t2p_make_dvar
 (* ****** ****** *)
 //
 fun
+s2typlst_of_d2patlst
+( d2ps: d2patlst ): s2typlst
+#symload
+s2typlst with s2typlst_of_d2patlst
+//
+fun
+s2typlst_of_d2explst
+( d2es: d2explst ): s2typlst
+#symload
+s2typlst with s2typlst_of_d2explst
+//
+(* ****** ****** *)
+//
+fun
 d2parsed_of_trans2a
 ( dpar : d2parsed ): (d2parsed)
 //

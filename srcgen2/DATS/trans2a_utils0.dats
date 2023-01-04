@@ -53,6 +53,36 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload _ = "./statyp2_tmplib.dats"
 (* ****** ****** *)
+//
+#implfun
+s2typlst_of_d2patlst
+( d2ps ) =
+(
+list_map<x0><y0>(d2ps)) where
+{
+#typedef x0 = d2pat
+#typedef y0 = s2typ
+#impltmp
+map$fopr<x0><y0>(d2p) = d2p.styp()
+}
+// end of [ s2typlst_of_d2patlst ]
+//
+(* ****** ****** *)
+//
+#implfun
+s2typlst_of_d2explst
+( d2es ) =
+(
+list_map<x0><y0>(d2es)) where
+{
+#typedef x0 = d2exp
+#typedef y0 = s2typ
+#impltmp
+map$fopr<x0><y0>(d2e) = d2e.styp()
+}
+// end of [ s2typlst_of_d2explst ]
+//
+(* ****** ****** *)
 
 #implfun
 unify2a_s2typ

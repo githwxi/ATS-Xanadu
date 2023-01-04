@@ -122,6 +122,9 @@ T2Plam0(s2vs, tres) =>
 print("T2Plam0(", s2vs, ";", tres, ")")
 //
 |
+T2Pf2cl(f2cl) =>
+print("T2Pf2cl(", f2cl, ")")
+|
 T2Pfun1
 ( f2cl
 , npf1, t2ps, tres) =>
