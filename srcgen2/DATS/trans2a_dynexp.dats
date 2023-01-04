@@ -76,44 +76,6 @@ s2typ_xtv(x2t2p_make_lctn(loc0))
 (* ****** ****** *)
 //
 fun
-s2typlst_of_d2patlst
-( d2ps
-: d2patlst ): s2typlst =
-(
-list_map<x0><y0>(d2ps)) where
-{
-#typedef x0 = d2pat
-#typedef y0 = s2typ
-#impltmp
-map$fopr<x0><y0>(d2p) = d2p.styp()
-}
-// end of [ s2typlst_of_d2patlst ]
-//
-#symload
-s2typlst with s2typlst_of_d2patlst
-//
-(* ****** ****** *)
-//
-fun
-s2typlst_of_d2explst
-( d2es
-: d2explst ): s2typlst =
-(
-list_map<x0><y0>(d2es)) where
-{
-#typedef x0 = d2exp
-#typedef y0 = s2typ
-#impltmp
-map$fopr<x0><y0>(d2e) = d2e.styp()
-}
-// end of [ s2typlst_of_d2explst ]
-//
-#symload
-s2typlst with s2typlst_of_d2explst
-//
-(* ****** ****** *)
-//
-fun
 d2pat_make_styp_node
 ( loc0: loc_t
 , t2p0: s2typ

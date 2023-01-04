@@ -48,6 +48,8 @@ ATS_PACKNAME
 #staload
 _(*TRANS2a*) = "./trans2a.dats"
 (* ****** ****** *)
+#staload "./../SATS/xbasics.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
@@ -58,6 +60,42 @@ _(*TRANS2a*) = "./trans2a.dats"
 (* ****** ****** *)
 #symload styp with d2pat_get_styp
 #symload styp with d2exp_get_styp
+(* ****** ****** *)
+//
+fun
+s2typ_new0_x2tp
+( loc0: loc_t ): s2typ =
+s2typ_xtv(x2t2p_make_lctn(loc0))
+//
+(* ****** ****** *)
+//
+fun
+s2typ_fun1
+( f2cl
+: f2clknd
+, npf1: sint
+, t2ps
+: s2typlst, tres: s2typ): s2typ =
+let
+val s2t0 =
+(
+case f2cl of
+|
+F2CLfun() =>
+the_sort2_tbox
+|
+F2CLclo(knd) =>
+(
+case+ knd of
+| 0 => the_sort2_type
+| 1 => the_sort2_vtbx
+| _ => the_sort2_tbox))
+val f2cl = s2typ_f2cl(f2cl)
+in//let
+s2typ_make_node
+(s2t0, T2Pfun1(f2cl,npf1,t2ps,tres))
+end (*let*) // end of [s2typ_fun1(...)]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -376,7 +414,7 @@ d2fundcl_get_lctn(dfun)
 //
 val dvar =
 d2fundcl_get_dpid(dfun)
-val farg =
+val f2as =
 d2fundcl_get_farg(dfun)
 val sres =
 d2fundcl_get_sres(dfun)
@@ -385,12 +423,122 @@ d2fundcl_get_tdxp(dfun)
 val wsxp =
 d2fundcl_get_wsxp(dfun)
 //
-val farg = trans2a_f2arglst(env0, farg)
+val f2as =
+trans2a_f2arglst(env0, f2as)
+//
+val tres =
+(
+case+ sres of
+|
+S2RESnone() =>
+s2typ_new0_x2tp(loc0)
+|
+S2RESsome(seff,s2e1) =>
+s2typ_hnfiz0(s2exp_stpize(s2e1))
+) : s2typ // end of [ val(tres) ]
+//
+val tfun =
+f0_f2as(f2as, f1_ndyn(f2as), tres)
+//
+val (  ) =
+d2var_set_styp(dvar, tfun)
+//
+val (  ) =
+prerrln
+("trans2a_d2fundcl: tfun = ", tfun)
+//
+val tdxp =
+(
+case+ tdxp of
+|
+TEQD2EXPnone
+( (*void*) ) =>
+TEQD2EXPnone((*void*))
+|
+TEQD2EXPsome
+(teq1, d2e2) =>
+(
+TEQD2EXPsome
+(teq1, d2e2)) where
+{
+val
+d2e2 =
+trans2a_d2exp_tpck(env0,d2e2,tres)
+}
+) : teqd2exp // end-[val(tdxp)]
 //
 in//let
-d2fundcl(loc0, dvar, farg, sres, tdxp, wsxp)
-end//let
-(*let*)//end-of-[trans2a_d2fundcl(env0,dfun)]
+d2fundcl(loc0,dvar,f2as,sres,tdxp,wsxp)
+end where
+{
+//
+fun
+f0_f2as
+( f2as
+: f2arglst
+, ndyn: sint
+, tres: s2typ): s2typ =
+(
+case+ f2as of
+|
+list_nil() => tres
+|
+list_cons(f2a1, f2as) =>
+(
+case+
+f2a1.node() of
+|
+F2ARGmet0 _ =>
+f0_f2as(f2as, ndyn, tres)
+|
+F2ARGsta0
+(s2vs, s2ps) =>
+let
+val s2t0 = tres.sort()
+in//let
+s2typ
+(s2t0,T2Puni0(s2vs, tres))
+end where
+{
+val
+tres =
+f0_f2as(f2as, ndyn, tres) }
+|
+F2ARGdyn0(npf1, d2ps) =>
+(
+s2typ_fun1
+(f2cl,npf1,t2ps,tres)) where
+{
+val ndyn = ndyn - 1
+val tres =
+f0_f2as(f2as, ndyn, tres)
+val t2ps =
+s2typlst_of_d2patlst(d2ps)
+val f2cl =
+if
+(ndyn <= 0)
+then F2CLfun() else F2CLclo(1) } )
+)(*case+*)//end-of-[f0_f2as(f2as,...)]
+//
+and
+f1_ndyn(xs: f2arglst): sint =
+(
+case+ xs of
+|
+list_nil() => 0
+|
+list_cons(x1, xs) =>
+(
+case+ x1.node() of
+|F2ARGdyn0 _ =>
+ f1_ndyn(xs) + 1 | _ => f1_ndyn(xs)))
+//
+(*
+val () =
+prerrln("trans2a_d2fundcl: dfun = ", dfun)
+*)
+//
+}(*where*)//end-of-[trans2a_d2fundcl(env0,dfun)]
 
 (* ****** ****** *)
 //

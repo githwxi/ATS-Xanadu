@@ -595,6 +595,7 @@ isXTV(t2p2)
 then
 f0_xtv2(e1nv, t2p1, t2p2)
 else
+(
 case+
 t2p1.node() of
 //
@@ -607,8 +608,23 @@ t2p2.node() of
 T2Pbas(tbs2) =>
 (tbs1 = tbs2) | _ => false)
 //
-)
-) where
+|
+T2Pvar(s2v1) =>
+(
+case+
+t2p2.node() of
+|
+T2Pvar(s2v2) =>
+(s2v1 = s2v2) | _ => false)
+//
+|
+T2Pfun1 _ =>
+(
+  f0_fun1(e1nv, t2p1, t2p2))
+//
+) // case+ t2p1.node of
+) // if // end-(if2-then-else)
+) where // end-(if1-then-else)
 {
 //
 (* ****** ****** *)
@@ -619,7 +635,8 @@ f0_xtv1
 , t2p1: s2typ
 , t2p2: s2typ): (bool) =
 let
-val-T2Pxtv(xtp1) = t2p1.node()
+val-
+T2Pxtv(xtp1) = t2p1.node()
 in//let
 case+
 t2p2.node() of
@@ -641,13 +658,48 @@ f0_xtv2
 , t2p1: s2typ
 , t2p2: s2typ): (bool) =
 let
-val-T2Pxtv(xtp2) = t2p2.node()
+val-
+T2Pxtv(xtp2) = t2p2.node()
 in//let
 if
 s2typ_xtpck0(t2p1, xtp2)
 then false else (xtp2.styp(t2p1); true)
 end (*let*) // end of [f0_xtv2(e1nv,...)]
 //
+(* ****** ****** *)
+//
+fun
+f0_fun1
+( e1nv: !e1nv
+, t2p1: s2typ
+, t2p2: s2typ): (bool) =
+let
+val-T2Pfun1
+( fcl1, npf1
+, tps1, trs1) = t2p1.node()
+in//let
+//
+case+
+t2p2.node() of
+|
+T2Pfun1
+( fcl2, npf2
+, tps2, trs2) =>
+let
+val btf1 =
+unify00_s2typ(e1nv, fcl1, fcl2)
+val btf2 =
+unify00_s2typ(e1nv, trs1, trs2)
+val btf3 =
+unify00_s2typlst(e1nv, tps2, tps1)
+in//let
+if btf1 then
+(if btf2 then btf3 else false) else false
+end (*let*) // end of [T2Pfun1(...)]
+| _ (* non-T2Pfun1 *) => (  false  )
+//
+end (*let*) // end of [f0_fun1(e1nv,...)]
+
 (* ****** ****** *)
 //
 val t2p1 = s2typ_hnfiz0(e1nv, t2p1)
@@ -659,6 +711,38 @@ val (  ) =
 prerrln("unify00_s2typ: t2p2 = ", t2p2)
 //
 } (*where*) // end of [unify00_s2typ(e1nv,...)]
+//
+(* ****** ****** *)
+//
+and
+unify00_s2typlst
+( e1nv: !e1nv
+, tps1: s2typlst
+, tps2: s2typlst): (bool) =
+(
+case+ tps1 of
+|
+list_nil() =>
+(
+case+ tps2 of
+|list_nil() => true
+|list_cons _ => false)
+|
+list_cons(t2p1, tps1) =>
+(
+case+ tps2 of
+|list_nil() => true
+|list_cons(t2p2, tps2) =>
+(
+if btf1
+then btf2 else false) where
+{
+val btf1 =
+unify00_s2typ(e1nv, t2p1, t2p2)
+val btf2 =
+unify00_s2typlst(e1nv, tps1, tps2) }
+)
+) (*case+*) // end of [unif00_s2typlst(e1nv,...)]
 //
 (* ****** ****** *)
 //
