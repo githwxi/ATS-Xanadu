@@ -1272,7 +1272,7 @@ HX-2022-12-28: For debugging purpose
 *)
 (* ****** ****** *)
 //
-(*
+// (*
 #impltmp
 g_print<s2cst>(s2c0) =
 let
@@ -1281,7 +1281,7 @@ in//let
   strn_fprint(out, "("); s2cst_fprint(out, s2c0)
 ; strn_fprint(out, ":"); sort2_fprint(out, s2c0.sort()); strn_fprint(out, ")")
 end (*let*) // end of [g_print<s2cst>(s2c0)]
-*)
+// *)
 //
 (*
 #impltmp

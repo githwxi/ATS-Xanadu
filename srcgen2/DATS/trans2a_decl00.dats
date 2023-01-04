@@ -107,6 +107,8 @@ D2Cabsimpl _ => f0_absimpl(env0, d2cl)
 D2Cvaldclst _ => f0_valdclst(env0, d2cl)
 |
 D2Cvardclst _ => f0_vardclst(env0, d2cl)
+|
+D2Cfundclst _ => f0_fundclst(env0, d2cl)
 //
 | _(*otherwise*) =>
 let
@@ -281,6 +283,34 @@ end (*let*) // end of [f0_vardclst(env0,d2cl)]
 //
 (* ****** ****** *)
 //
+fun
+f0_fundclst
+( env0:
+! tr2aenv
+, d2cl: d2ecl): d2ecl =
+let
+//
+val
+loc0 = d2cl.lctn()
+val-
+D2Cfundclst
+(tknd
+,tqas, d2fs) = d2cl.node()
+//
+val () =
+prerrln
+("f0_fundclst: d2cl = ", d2cl)
+//
+val
+d2fs =
+trans2a_d2fundclist(env0, d2fs)
+//
+in//let
+d2ecl(loc0, D2Cfundclst(tknd, tqas, d2fs))
+end (*let*) // end of [f0_fundclst(env0,d2cl)]
+//
+(* ****** ****** *)
+//
 } (*where*) // end of [trans2a_d2ecl(env0,d2cl)]
 //
 (* ****** ****** *)
@@ -340,8 +370,26 @@ end//let
 #implfun
 trans2a_d2fundcl
   (env0, dfun) = let
+//
+val loc0 =
+d2fundcl_get_lctn(dfun)
+//
+val dvar =
+d2fundcl_get_dpid(dfun)
+val farg =
+d2fundcl_get_farg(dfun)
+val sres =
+d2fundcl_get_sres(dfun)
+val tdxp =
+d2fundcl_get_tdxp(dfun)
+val wsxp =
+d2fundcl_get_wsxp(dfun)
+//
+val farg = trans2a_f2arglst(env0, farg)
+//
 in//let
-end
+d2fundcl(loc0, dvar, farg, sres, tdxp, wsxp)
+end//let
 (*let*)//end-of-[trans2a_d2fundcl(env0,dfun)]
 
 (* ****** ****** *)

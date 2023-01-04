@@ -165,6 +165,8 @@ d2p0.node() of
 //
 |D2Pdapp _ => f0_dapp(env0, d2p0)
 //
+|D2Pannot _ => f0_annot(env0, d2p0)
+//
 | _(*otherwise*) => d2pat_none2(d2p0)
 //
 endlet where
@@ -304,6 +306,32 @@ d2pat_make_styp_node
 //
 end (*let*) // end of [f0_dapp(env0,...)]
 //
+(* ****** ****** *)
+
+fun
+f0_annot
+( env0:
+! tr2aenv
+, d2p0: d2pat): d2pat =
+let
+//
+val loc0 = d2p0.lctn()
+val-
+D2Pannot
+( d2p1
+, s1e2, s2e2) = d2p0.node()
+//
+val t2p2 = s2exp_stpize(s2e2)
+val t2p2 = s2typ_hnfiz0(t2p2)
+//
+val d2p1 =
+trans2a_d2pat_tpck(env0, d2p1, t2p2)
+//
+in//let
+d2pat_make_styp_node
+(loc0, t2p2, D2Pannot(d2p1,s1e2,s2e2))
+end (*let*) // end of [f0_annot(env0,...)]
+
 (* ****** ****** *)
 //
 } (*where*) // end of [trans2a_d2pat(env0,d2p0)]

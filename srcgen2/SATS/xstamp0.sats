@@ -87,5 +87,39 @@ stamper_tmpset(stamper, sint): void
 #symload getinc with stamper_getinc
 #symload tmpset with stamper_tmpset
 (* ****** ****** *)
+//
+#abstbox
+tmpmap_tbox(x0:t0) // ptr
+#typedef
+tmpmap(x0:t0) = tmpmap_tbox(x0)
+//
+(* ****** ****** *)
+#typedef key = stamp
+(* ****** ****** *)
+fun
+tmpmap_make_nil
+{itm:tbox}((*void*)): tmpmap(itm)
+(* ****** ****** *)
+fun
+tmpmap_strmize
+{itm:tbox}
+(tmpmap(itm)): strm_vt(@(sint,itm))
+(* ****** ****** *)
+//
+fun
+tmpmap_search_opt
+{itm:tbox}
+( map:
+  tmpmap(itm), key: key): optn_vt(itm)
+//
+(* ****** ****** *)
+//
+fun
+tmpmap_insert_any
+{itm:tbox}
+( map:
+  tmpmap(itm), key: key, itm: itm): void
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xstamp0.sats] *)

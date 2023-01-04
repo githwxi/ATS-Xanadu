@@ -82,38 +82,18 @@ stkmap_make_nil
 fun
 topmap_strmize
 {itm:tbox}
-(topmap(itm))
-: strm_vt(@(sint,list(itm)))
+( map
+: topmap(itm))
+: strm_vt( @(sint,list(itm)) )
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
-topmap_fprint(FILR, topmap(x0)):void
+topmap_fprint(FILR,topmap(x0)):void
 fun
 <x0:t0>
 stkmap_fprint1(FILR,!stkmap(x0)):void
-//
-(* ****** ****** *)
-//
-fun
-topmap_search_opt
-{itm:tbox}
-( map:
-  topmap(itm), key: key): optn_vt(itm)
-//
-(* ****** ****** *)
-//
-fun
-topmap_insert_any
-{itm:tbox}
-( map:
-  topmap(itm), key: key, itm: itm): void
-fun
-topmap_insert_kxs
-{itm:tbox}
-( map:
-  topmap(itm), kxs: list_vt@(key,itm)): void
 //
 (* ****** ****** *)
 //
@@ -171,10 +151,31 @@ stkmap_pshloc2
 (* ****** ****** *)
 //
 fun
+topmap_search_opt
+{itm:tbox}
+( map:
+  topmap(itm), key: key): optn_vt(itm)
+//
+(* ****** ****** *)
+//
+fun
 stkmap_search_opt
 {itm:tbox}
 ( map:
 ! stkmap(itm), key: key): optn_vt(itm)
+//
+(* ****** ****** *)
+//
+fun
+topmap_insert_any
+{itm:tbox}
+( map:
+  topmap(itm), key: key, itm: itm): void
+fun
+topmap_insert_kxs
+{itm:tbox}
+( map:
+  topmap(itm), kxs: list_vt@(key,itm)): void
 //
 (* ****** ****** *)
 //

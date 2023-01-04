@@ -118,11 +118,11 @@ list_nil() =>
 (
   f0_test2(s2cs))
 |
-list_cons(x0, xs) =>
+list_cons(x1, xs) =>
 if
-sort2_funq(x0.sort())
+sort2_funq(x1.sort())
 then
-f0_test1(xs) else optn_vt_cons(x0))
+f0_test1(xs) else optn_vt_cons(x1))
 //
 and
 f0_test2
@@ -132,7 +132,7 @@ xs: s2cstlst
 (
 case+ xs of
 |list_nil() => optn_vt_nil()
-|list_cons(x0, xs) => optn_vt_cons(x0)
+|list_cons(x1, xs) => optn_vt_cons(x1)
 ) (*case+*) // end of [ f0_test2(xs) ]
 //
 } (*where*) // end of [s2cst_select_any(...)]

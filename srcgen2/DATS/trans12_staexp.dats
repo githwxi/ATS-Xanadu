@@ -560,8 +560,7 @@ case+
 s1e0.node() of
 | S1Eid0(sid1) =>
   (sid1 = WCARD_symbl)
-| _(*non-S1Eid0*) => false
-)
+| _(*non-S1Eid0*) => false)
 (* ****** ****** *)
 //
 fun
@@ -617,6 +616,14 @@ f0_id0_s2c
 , s1e0: s1exp
 , s2cs: s2cstlst): s2exp =
 let
+//
+val () =
+prerrln
+("f0_id0_s2c: s1e0 = ", s1e0)
+val () =
+prerrln
+("f0_id0_s2c: s2cs = ", s2cs)
+//
 val
 opt0 = s2cst_select_any(s2cs)
 in//let

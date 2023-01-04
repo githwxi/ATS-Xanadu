@@ -73,10 +73,18 @@ case+ tbas of
 #implfun
 sort2_funq
 (  s2t0  ) =
+let
+(*
+val () =
+prerrln
+("sort2_funq: s2t0 = ", s2t0)
+*)
+in//let
 (
 case+ s2t0 of
 | S2Tfun0 _ => true
 | S2Tfun1 _ => true | _ => false )
+end (*let*) // end of [ sort2_funq ]
 //
 (* ****** ****** *)
 //
