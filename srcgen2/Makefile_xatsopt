@@ -186,6 +186,9 @@ xstamp0_dats: ; $(XATSOPT) --dynamic DATS/xstamp0.dats
 all_dats:: \
 xstamp0_print0_dats
 xstamp0_print0_dats: ; $(XATSOPT) --dynamic DATS/xstamp0_print0.dats
+all_dats:: \
+xstamp0_tmpmap_dats
+xstamp0_tmpmap_dats: ; $(XATSOPT) --dynamic DATS/xstamp0_tmpmap.dats
 ######
 
 ######

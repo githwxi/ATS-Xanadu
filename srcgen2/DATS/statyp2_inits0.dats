@@ -49,8 +49,9 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
-#staload "./../SATS/xsymbol.sats"
+#staload "./../SATS/xstamp0.sats"
 (* ****** ****** *)
+#staload "./../SATS/xsymbol.sats"
 #staload "./../SATS/xsymmap.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
@@ -177,16 +178,16 @@ name with s2cst_get_name
 //
 val
 mymap =
-topmap_make_nil{s2typ}()
+tmpmap_make_nil{s2typ}()
 //
 in//local
 //
 #implfun
 s2cst_get_styp(s2c0) =
-topmap_search_opt(mymap, s2c0.name())
+tmpmap_search_opt(mymap, s2c0.stmp())
 #implfun
 s2cst_set_styp(s2c0, styp) =
-topmap_insert_any(mymap, s2c0.name(), styp)
+tmpmap_insert_any(mymap, s2c0.stmp(), styp)
 //
 end (*local*) // end of [local(the_s2cst_s2typ)]
 

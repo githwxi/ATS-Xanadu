@@ -7,6 +7,9 @@ val x = 1
 and y = 2
 val xy = (x + y)
 (* ****** ****** *)
+fun
+ff(x: sint): sint = x + x
+(* ****** ****** *)
 ////
 (* ****** ****** *)
 #define ONE 1
