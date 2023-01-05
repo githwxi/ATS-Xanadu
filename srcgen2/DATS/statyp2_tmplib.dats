@@ -609,6 +609,15 @@ T2Pbas(tbs2) =>
 (tbs1 = tbs2) | _ => false)
 //
 |
+T2Pcst(s2c1) =>
+(
+case+
+t2p2.node() of
+|
+T2Pcst(s2c2) =>
+(s2c1 = s2c2) | _ => false)
+//
+|
 T2Pvar(s2v1) =>
 (
 case+
@@ -618,13 +627,38 @@ T2Pvar(s2v2) =>
 (s2v1 = s2v2) | _ => false)
 //
 |
+T2Papps _ =>
+(
+  f0_apps(e1nv, t2p1, t2p2))
+//
+|
 T2Pfun1 _ =>
 (
   f0_fun1(e1nv, t2p1, t2p2))
 //
+|
+T2Ptext _ =>
+(
+  f0_text(e1nv, t2p1, t2p2))
+//
+|T2Pnone0 _ =>
+(
+case+
+t2p2.node() of
+|T2Pnone0 _ => true
+|T2Ps2exp _ => true | _ => false
+)
+|T2Ps2exp _ =>
+(
+case+
+t2p2.node() of
+|T2Pnone0 _ => true
+|T2Ps2exp _ => true | _ => false
+)
+//
 ) // case+ t2p1.node of
-) // if // end-(if2-then-else)
-) where // end-(if1-then-else)
+) // if // end-of-(if2-then-else)
+) where // end-of-(if1-then-else)
 {
 //
 (* ****** ****** *)
@@ -669,6 +703,35 @@ end (*let*) // end of [f0_xtv2(e1nv,...)]
 (* ****** ****** *)
 //
 fun
+f0_apps
+( e1nv: !e1nv
+, t2p1: s2typ
+, t2p2: s2typ): (bool) =
+let
+val-
+T2Papps
+( t2f1, tps1) = t2p1.node()
+in//let
+//
+case+
+t2p2.node() of
+|
+T2Papps(t2f2, tps2) =>
+let
+val btf1 =
+unify00_s2typ(e1nv, t2f1, t2f2)
+val btf2 =
+unify00_s2typlst(e1nv, tps1, tps2)
+in//let
+  if btf1 then btf2 else false
+end (*let*) // end of [T2Papps(...)]
+| _ (* non-T2Papps *) => (  false  )
+//
+end (*let*) // end of [f0_apps(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
 f0_fun1
 ( e1nv: !e1nv
 , t2p1: s2typ
@@ -699,7 +762,35 @@ end (*let*) // end of [T2Pfun1(...)]
 | _ (* non-T2Pfun1 *) => (  false  )
 //
 end (*let*) // end of [f0_fun1(e1nv,...)]
-
+//
+(* ****** ****** *)
+//
+fun
+f0_text
+( e1nv: !e1nv
+, t2p1: s2typ
+, t2p2: s2typ): (bool) =
+let
+val-
+T2Ptext
+(tnm1, tps1) = t2p1.node()
+in//let
+//
+case+
+t2p2.node() of
+|
+T2Ptext
+(tnm2, tps2) =>
+(
+if
+(tnm1 = tnm2)
+then
+unify00_s2typlst
+(e1nv, tps1, tps2) else false)
+| _ (* non-T2Ptext *) => (  false  )
+//
+end (*let*) // end of [f0_text(e1nv,...)]
+//
 (* ****** ****** *)
 //
 val t2p1 = s2typ_hnfiz0(e1nv, t2p1)
