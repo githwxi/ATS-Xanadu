@@ -61,11 +61,18 @@ _(*TRANS2a*) = "./trans2a.dats"
 #symload styp with d2var_get_styp
 #symload styp with d2var_set_styp
 (* ****** ****** *)
+#symload lctn with d2pat_get_lctn
+#symload node with d2pat_get_node
 #symload styp with d2pat_get_styp
 #symload styp with d2pat_set_styp
 (* ****** ****** *)
+#symload lctn with d2exp_get_lctn
+#symload node with d2exp_get_node
 #symload styp with d2exp_get_styp
 #symload styp with d2exp_set_styp
+(* ****** ****** *)
+#symload lctn with d2gua_get_lctn
+#symload node with d2gua_get_node
 (* ****** ****** *)
 //
 fun
@@ -330,9 +337,7 @@ d2e0.node() of
 |D2Edapp _ => f0_dapp(env0, d2e0)
 //
 |D2Eif0 _ => f0_if0(env0, d2e0)
-(*
 |D2Ecas0 _ => f0_cas0(env0, d2e0)
-*)
 //
 |D2Etup0 _ => f0_tup0(env0, d2e0)
 //
@@ -581,6 +586,37 @@ end (*let*) // end of [f0_if0(env0,...)]
 (* ****** ****** *)
 //
 fun
+f0_cas0
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Ecas0
+( tknd
+, d2e1, d2cs) = d2e0.node()
+//
+val d2e1 =
+trans2a_d2exp(env0, d2e1)
+val targ = d2e1.styp((*void*))
+val tres = s2typ_new0_x2tp(loc0)
+//
+in//let
+let
+val d2cs =
+trans2a_d2clslst_tpck1
+(env0, d2cs, targ, tres)
+in//let
+d2exp_make_styp_node
+(loc0, tres, D2Ecas0(tknd, d2e1, d2cs))
+end (*let*)
+end (*let*) // end of [f0_cas0(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
 f0_tup0
 ( env0:
 ! tr2aenv
@@ -630,6 +666,51 @@ end (*let*) // end of [F2ARGdyn0]
 //
 end (*let*) // end of [trans2a_f2arg(env0,farg)]
 //
+(* ****** ****** *)
+//
+#implfun
+trans2a_d2gua
+  (env0, dgua) =
+(
+case+
+dgua.node() of
+//
+|D2GUAexp(d2e1) =>
+d2gua
+(loc0, D2GUAexp(d2e1)) where
+{
+val loc0 = dgua.lctn()
+val t2p1 = the_s2typ_bool()
+val d2e1 =
+trans2a_d2exp_tpck(env0, d2e1, t2p1) }
+//
+|D2GUAmat(d2e1, d2p2) =>
+d2gua
+( loc0
+, D2GUAmat(d2e1, d2p2)) where
+{
+val loc0 = dgua.lctn()
+val d2e1 = 
+trans2a_d2exp(env0, d2e1)
+val t2p1 = d2e1.styp((*void*))
+val d2p2 =
+trans2a_d2pat_tpck(env0, d2p2, t2p1) }
+//
+) (*case+*) // end of [trans2a_d2gua(...)]
+//
+(* ****** ****** *)
+(*
+datatype
+d2cls_node =
+| D2CLSgpt of d2gpt
+| D2CLScls of (d2gpt, d2exp)
+*)
+(* ****** ****** *)
+(*
+d2gpt_node =
+| D2GPTpat of (d2pat)
+| D2GPTgua of (d2pat, d2gualst)
+*)
 (* ****** ****** *)
 //
 (*
@@ -682,10 +763,23 @@ trans2a_d2gualst
 ( env0, d2gs ) =
 list_trans2a_fnp(env0, d2gs, trans2a_d2gua)
 //
+(* ****** ****** *)
+//
 #implfun
-trans2a_d2clslst
-( env0, dcls ) =
-list_trans2a_fnp(env0, dcls, trans2a_d2cls)
+trans2a_d2clslst_tpck1
+( env0, dcls
+, targ, tres ) =
+(
+list_map_e1nv
+<x0><y0><e1>(dcls, env0)) where
+{
+#typedef x0 = d2cls
+#typedef y0 = d2cls
+#vwtpdef e1 = tr2aenv
+#impltmp
+map$fopr_e1nv<x0><y0><e1>
+(x0, e1) = trans2a_d2cls_tpck(e1,x0,targ,tres)
+} (*where*)//end of [list_trans2a_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 //

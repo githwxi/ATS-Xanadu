@@ -265,13 +265,16 @@ trans2a_d2gua
 ( env0:
 ! tr2aenv, dgua: d2gua): d2gua
 fun
-trans2a_d2gpt
+trans2a_d2gpt_tpck
 ( env0:
-! tr2aenv, dgpt: d2gpt): d2gpt
+! tr2aenv
+, dgpt: d2gpt, targ: s2typ): d2gpt
 fun
-trans2a_d2cls
+trans2a_d2cls_tpck
 ( env0:
-! tr2aenv, dcls: d2cls): d2cls
+! tr2aenv
+, dcls: d2cls
+, targ: s2typ, tres: s2typ): d2cls
 //
 (* ****** ****** *)
 //
@@ -345,9 +348,11 @@ trans2a_d2gualst
 ( env0:
 ! tr2aenv, d2gs: d2gualst): d2gualst
 fun
-trans2a_d2clslst
+trans2a_d2clslst_tpck1
 ( env0:
-! tr2aenv, dcls: d2clslst): d2clslst
+! tr2aenv
+, dcls: d2clslst
+, targ: s2typ, tres: s2typ): d2clslst
 //
 (* ****** ****** *)
 //
