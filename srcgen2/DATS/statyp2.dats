@@ -90,6 +90,15 @@ s2t0 = sort2_none0((*nil*)) }
 (* ****** ****** *)
 //
 #implfun
+s2typ_lft(t2p) =
+s2typ
+(s2t0, T2Plft(t2p)) where
+{
+val s2t0 = t2p.sort((*nil*)) }
+//
+(* ****** ****** *)
+//
+#implfun
 s2typ_f2cl
 (  f2cl  ) =
 s2typ_make_node

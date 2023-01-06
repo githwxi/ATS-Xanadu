@@ -373,9 +373,66 @@ val dpat =
 trans2a_d2pat(env0, dpat)
 //
 in//let
-d2valdcl_make_args(loc0, dpat, tdxp, wsxp)
+d2valdcl_make_args(loc0,dpat,tdxp,wsxp)
 end//let
 (*let*)//end-of-[trans2a_d2valdcl(env0,dval)]
+
+(* ****** ****** *)
+
+#implfun
+trans2a_d2vardcl
+  (env0, dvar) = let
+//
+val loc0 =
+d2vardcl_get_lctn(dvar)
+val dpid =
+d2vardcl_get_dpid(dvar)
+val vpid =
+d2vardcl_get_vpid(dvar)
+val sres =
+d2vardcl_get_sres(dvar)
+val dini =
+d2vardcl_get_dini(dvar)
+//
+val tres =
+(
+case+ sres of
+|optn_nil
+((*void*)) =>
+s2typ_new0_x2tp(loc0)
+|optn_cons
+(  s2e1  ) =>
+s2typ_hnfiz0(s2exp_stpize(s2e1))
+) : s2typ // end-of-[ val(tres) ]
+val (  ) =
+let
+val tlft =
+s2typ_lft(tres) in dpid.styp(tlft)
+end (*let*)
+//
+val dini =
+(
+case+ dini of
+|
+TEQD2EXPnone
+( (*void*) ) =>
+TEQD2EXPnone((*void*))
+|
+TEQD2EXPsome
+(teq1, d2e2) =>
+(
+TEQD2EXPsome
+(teq1, d2e2)) where
+{
+val d2e2 =
+trans2a_d2exp_tpck(env0,d2e2,tres)
+}
+) : teqd2exp // end of [val(dini)]
+//
+in//let
+d2vardcl(loc0, dpid, vpid, sres, dini)
+end//let
+(*let*)//end-of-[trans2a_d2vardcl(env0,dvar)]
 
 (* ****** ****** *)
 
