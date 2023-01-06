@@ -735,7 +735,7 @@ datatype
 d2exp_node =
 //
 |D2Eint of token
-|D2Ebtf of token
+|D2Ebtf of sym_t
 |D2Echr of token
 |D2Eflt of token
 |D2Estr of token
@@ -913,6 +913,7 @@ d2exp_none2(d2e0:d2exp): d2exp
 fun
 d2exp_var
 (loc0: loc_t, d2v1: d2var): d2exp
+(* ****** ****** *)
 fun
 d2exp_btf
 (loc0: loc_t, sym1: sym_t): d2exp

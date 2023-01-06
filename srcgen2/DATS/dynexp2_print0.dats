@@ -350,8 +350,8 @@ d2e0.node() of
 //
 |D2Eint(tok) =>
 print("D2Eint(",tok,")")
-|D2Ebtf(tok) =>
-print("D2Ebtf(",tok,")")
+|D2Ebtf(sym) =>
+print("D2Ebtf(",sym,")")
 |D2Echr(tok) =>
 print("D2Echr(",tok,")")
 |D2Estr(tok) =>

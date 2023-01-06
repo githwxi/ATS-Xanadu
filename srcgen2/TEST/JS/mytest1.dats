@@ -7,7 +7,8 @@ val x = 1
 and y = 2
 val xy = (x + y)
 (* ****** ****** *)
-var x0: int = "0"
+var x1: sint = "0"
+var x2: sint = true
 (* ****** ****** *)
 fun
 id{a:tx}(x: a): a = x
@@ -16,6 +17,9 @@ fun
 fa(x: sint): sint = x + fb(x)
 and
 fb(x: bool): bool = x + fa(x)
+(* ****** ****** *)
+fun
+fc(x: bool): bool = if x then x else ~x
 (* ****** ****** *)
 ////
 (* ****** ****** *)
