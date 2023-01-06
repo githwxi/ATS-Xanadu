@@ -200,10 +200,11 @@ fun
 s2typ_cst(s2c: s2cst): s2typ
 //
 (* ****** ****** *)
-//
 fun
 s2typ_xtv(xtp: x2t2p): s2typ
-//
+(* ****** ****** *)
+fun
+s2typ_lft(t2p: s2typ): s2typ
 (* ****** ****** *)
 fun
 s2typ_f2cl( f2clknd ): s2typ
