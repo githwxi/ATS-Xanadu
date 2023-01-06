@@ -329,6 +329,11 @@ d2e0.node() of
 //
 |D2Edapp _ => f0_dapp(env0, d2e0)
 //
+|D2Eif0 _ => f0_if0(env0, d2e0)
+(*
+|D2Ecas0 _ => f0_cas0(env0, d2e0)
+*)
+//
 |D2Etup0 _ => f0_tup0(env0, d2e0)
 //
 | _(*otherwise*) => d2exp_none2(d2e0)
@@ -378,11 +383,11 @@ f0_btf
 (
 d2exp_make_styp_node
 ( loc0
-, t2p0, D2Ebtf(tok))) where
+, t2p0, D2Ebtf(sym))) where
 {
 val loc0 = d2e0.lctn()
 val-
-D2Ebtf(tok) = d2e0.node()
+D2Ebtf(sym) = d2e0.node()
 val t2p0 = the_s2typ_bool() }
 //
 fun
@@ -513,6 +518,65 @@ d2exp_make_styp_node
 (loc0, tres, D2Edapp(d2f0,npf1,d2es))
 //
 end (*let*) // end of [f0_dapp(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_if0
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+val loc0 = d2e0.lctn()
+val-
+D2Eif0
+( d2e1
+, dthn, dels) = d2e0.node()
+//
+val t2p1 = the_s2typ_bool()
+val d2e1 =
+trans2a_d2exp_tpck(env0, d2e1, t2p1)
+//
+val t2p0 =
+(
+case+ dels of
+|
+optn_nil() => the_s2typ_void()
+|
+optn_cons _ =>
+(
+case+ dthn of
+|
+optn_nil() => the_s2typ_void()
+|
+optn_cons _ => s2typ_new0_x2tp(loc0))
+)
+//
+val dthn =
+(
+case+ dthn of
+|
+optn_nil() => optn_nil()
+|
+optn_cons(d2e2) =>
+optn_cons(
+trans2a_d2exp_tpck(env0, d2e2, t2p0))
+)
+val dels =
+(
+case+ dels of
+|
+optn_nil() => optn_nil()
+|
+optn_cons(d2e3) =>
+optn_cons(
+trans2a_d2exp_tpck(env0, d2e3, t2p0))
+)
+//
+in//let
+d2exp_make_styp_node
+(loc0, t2p0, D2Eif0(d2e1, dthn, dels))
+end (*let*) // end of [f0_if0(env0,...)]
 //
 (* ****** ****** *)
 //

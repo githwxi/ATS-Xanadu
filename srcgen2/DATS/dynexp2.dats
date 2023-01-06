@@ -174,6 +174,14 @@ d2exp_var
 d2exp(loc0, D2Evar(dvar)))
 //
 (* ****** ****** *)
+//
+#implfun
+d2exp_btf
+(loc0, sym1) =
+(
+d2exp(loc0, D2Ebtf(sym1)))
+//
+(* ****** ****** *)
 #implfun
 d2exp_con
 (loc0, dcon) =

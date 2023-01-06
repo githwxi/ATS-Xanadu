@@ -63,6 +63,11 @@ ATS_PACKNAME
 local
 
 (* ****** ****** *)
+//
+val
+void_name =
+symbl("the_s2exp_void")
+//
 val
 sint_name =
 symbl("the_s2exp_sint0")
@@ -78,10 +83,14 @@ symbl("the_s2exp_dflt0")
 val
 strn_name =
 symbl("the_s2exp_strn0")
+//
 (* ****** ****** *)
 local
 val t2p0 = s2typ_none0()
 in//local
+val
+void_t2pr =
+a0ref_make_1val<s2typ>(t2p0)
 val
 sint_t2pr =
 a0ref_make_1val<s2typ>(t2p0)
@@ -148,6 +157,10 @@ end (*let*) // end of [s2typ_name_t2pr()]
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
+//
+#implfun
+the_s2typ_void() =
+s2typ_name_t2pr(void_name, void_t2pr)
 //
 #implfun
 the_s2typ_sint() =

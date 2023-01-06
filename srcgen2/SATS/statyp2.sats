@@ -118,6 +118,9 @@ x2t2p_fprint(FILR,x2t2p): void
 (* ****** ****** *)
 //
 fun
+the_s2typ_void((*void*)): s2typ
+//
+fun
 the_s2typ_sint((*void*)): s2typ
 fun
 the_s2typ_bool((*void*)): s2typ
