@@ -389,10 +389,14 @@ trans2a_d2vardcl
 ( env0: 
 ! tr2aenv, dvar: d2vardcl): d2vardcl
 //
+(* ****** ****** *)
+//
 fun
 trans2a_d2fundcl
 ( env0: 
 ! tr2aenv, dfun: d2fundcl): d2fundcl
+//
+(* ****** ****** *)
 //
 fun
 trans2a_d2cstdcl

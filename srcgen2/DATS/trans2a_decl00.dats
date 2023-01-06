@@ -57,6 +57,9 @@ _(*TRANS2a*) = "./trans2a.dats"
 #staload "./../SATS/trans2a.sats"
 (* ****** ****** *)
 #symload name with s2cst_get_name
+#symload name with s2var_get_name
+(* ****** ****** *)
+#symload node with s2typ_get_node
 (* ****** ****** *)
 #symload styp with d2pat_get_styp
 #symload styp with d2exp_get_styp
@@ -366,37 +369,8 @@ d2valdcl_get_tdxp(dval)
 val wsxp =
 d2valdcl_get_wsxp(dval)
 //
-val tdxp =
-(
-case+ tdxp of
-|
-TEQD2EXPnone
-( (*void*) ) =>
-TEQD2EXPnone((*void*))
-|
-TEQD2EXPsome
-(teq1, d2e2) =>
-(
-TEQD2EXPsome
-(teq1, d2e2)) where
-{
-val
-d2e2 =
-trans2a_d2exp(env0, d2e2) }
-) : teqd2exp // end-[val(tdxp)]
-//
 val dpat =
-(
-case+ tdxp of
-|
-TEQD2EXPnone
-( (*void*) ) =>
 trans2a_d2pat(env0, dpat)
-|
-TEQD2EXPsome
-(teq1, d2e2) =>
-trans2a_d2pat_tpck
-(env0, dpat, d2e2.styp())): d2pat
 //
 in//let
 d2valdcl_make_args(loc0, dpat, tdxp, wsxp)
@@ -439,36 +413,18 @@ s2typ_hnfiz0(s2exp_stpize(s2e1))
 //
 val tfun =
 f0_f2as(f2as, f1_ndyn(f2as), tres)
-//
-val (  ) =
-d2var_set_styp(dvar, tfun)
-//
 val (  ) =
 prerrln
 ("trans2a_d2fundcl: tfun = ", tfun)
 //
-val tdxp =
-(
-case+ tdxp of
-|
-TEQD2EXPnone
-( (*void*) ) =>
-TEQD2EXPnone((*void*))
-|
-TEQD2EXPsome
-(teq1, d2e2) =>
-(
-TEQD2EXPsome
-(teq1, d2e2)) where
-{
-val
-d2e2 =
-trans2a_d2exp_tpck(env0,d2e2,tres)
-}
-) : teqd2exp // end-[val(tdxp)]
-//
 in//let
+//
+let
+val (  ) =
+d2var_set_styp(dvar, tfun) in//let
 d2fundcl(loc0,dvar,f2as,sres,tdxp,wsxp)
+end
+//
 end where
 {
 //
@@ -577,18 +533,181 @@ trans2a_d2arglst
 //
 (* ****** ****** *)
 //
+local
+//
+fun
+f0_d2valdcl
+( env0:
+! tr2aenv
+, dval
+: d2valdcl): d2valdcl =
+let
+//
+val loc0 =
+d2valdcl_get_lctn(dval)
+val dpat =
+d2valdcl_get_dpat(dval)
+val tdxp =
+d2valdcl_get_tdxp(dval)
+//
+val tdxp =
+(
+case+ tdxp of
+|
+TEQD2EXPnone
+( (*void*) ) =>
+TEQD2EXPnone((*void*))
+|
+TEQD2EXPsome
+(teq1, d2e2) =>
+(
+TEQD2EXPsome
+(teq1, d2e2)) where
+{
+//
+val tres = dpat.styp()
+//
+val (  ) =
+prerrln
+("f0_d2valdcl: dpat = ", dpat)
+val (  ) =
+prerrln
+("f0_d2valdcl: tres = ", tres)
+//
+val d2e2 =
+trans2a_d2exp_tpck(env0,d2e2,tres)
+}
+) : teqd2exp // end-[val(tdxp)]
+//
+val wsxp = d2valdcl_get_wsxp(dval)
+//
+in//let
+d2valdcl_make_args(loc0,dpat,tdxp,wsxp)
+end//let//end-of-[f0_d2valdcl(env0,...)]
+//
+in//local
+//
 #implfun
 trans2a_d2valdclist
   (env0, dcls) =
-list_trans2a_fnp(env0, dcls, trans2a_d2valdcl)
+(
+list_trans2a_fnp
+(env0, dcls, f0_d2valdcl)) where
+{
+//
+val dcls =
+list_trans2a_fnp(env0,dcls,trans2a_d2valdcl)}
+//
+endloc // end of [local(trans2a_d2valdclist)]
+//
+(* ****** ****** *)
+//
 #implfun
 trans2a_d2vardclist
   (env0, dcls) =
 list_trans2a_fnp(env0, dcls, trans2a_d2vardcl)
+//
+(* ****** ****** *)
+//
+local
+//
+fun
+f0_tres
+( f2as
+: f2arglst
+, tres: s2typ): s2typ =
+(
+case+ f2as of
+|list_nil() => tres
+|list_cons(f2a1, f2as) =>
+(
+case+
+f2a1.node() of
+|F2ARGdyn0 _ =>
+let
+val-
+T2Pfun1
+(f2cl,npf1
+,t2ps,tres) =
+tres.node() in
+f0_tres(f2as, tres) end//F2ARGdyn0
+|F2ARGsta0 _ =>
+let
+val-
+T2Puni0
+(s2vs,tres) =
+tres.node() in
+f0_tres(f2as, tres) end//F2ARGsta0
+|F2ARGmet0 _ => f0_tres(f2as, tres))
+) (*case+*) // end-of-[f0_tres(...)]
+//
+fun
+f0_d2fundcl
+( env0:
+! tr2aenv
+, dfun
+: d2fundcl): d2fundcl =
+let
+//
+val loc0 =
+d2fundcl_get_lctn(dfun)
+val dvar =
+d2fundcl_get_dpid(dfun)
+val f2as =
+d2fundcl_get_farg(dfun)
+val tdxp =
+d2fundcl_get_tdxp(dfun)
+//
+val tdxp =
+(
+case+ tdxp of
+|
+TEQD2EXPnone
+( (*void*) ) =>
+TEQD2EXPnone((*void*))
+|
+TEQD2EXPsome
+(teq1, d2e2) =>
+(
+TEQD2EXPsome(teq1, d2e2)) where
+{
+val tres =
+f0_tres(f2as, dvar.styp())
+val (  ) =
+prerrln
+("f0_d2fundcl: dvar = ", dvar)
+val (  ) =
+prerrln
+("f0_d2fundcl: tres = ", tres)
+val d2e2 =
+trans2a_d2exp_tpck(env0,d2e2,tres)
+}
+) : teqd2exp // end-[val(tdxp)]
+//
+val sres = d2fundcl_get_sres(dfun)
+val wsxp = d2fundcl_get_wsxp(dfun)
+//
+in//let
+d2fundcl(loc0,dvar,f2as,sres,tdxp,wsxp)
+end//let//end-of-[f0_d2fundcl(env0,...)]
+//
+in//local
+//
 #implfun
 trans2a_d2fundclist
   (env0, dcls) =
-list_trans2a_fnp(env0, dcls, trans2a_d2fundcl)
+(
+list_trans2a_fnp
+(env0, dcls, f0_d2fundcl)) where
+{
+//
+val dcls =
+list_trans2a_fnp(env0,dcls,trans2a_d2fundcl)}
+//
+endloc // end of [local(trans2a_d2fundclist)]
+//
+(* ****** ****** *)
+//
 #implfun
 trans2a_d2cstdclist
   (env0, dcls) =
