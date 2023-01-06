@@ -11,7 +11,9 @@ fun
 id{a:tx}(x: a): a = x
 (* ****** ****** *)
 fun
-fa(x: sint): sint = x + fa(x)
+fa(x: sint): sint = x + fb(x)
+and
+fb(x: bool): bool = x + fa(x)
 (* ****** ****** *)
 ////
 (* ****** ****** *)
