@@ -73,6 +73,10 @@ _(*TRANS2a*) = "./trans2a.dats"
 (* ****** ****** *)
 #symload lctn with d2gua_get_lctn
 #symload node with d2gua_get_node
+#symload lctn with d2gpt_get_lctn
+#symload node with d2gpt_get_node
+#symload lctn with d2cls_get_lctn
+#symload node with d2cls_get_node
 (* ****** ****** *)
 //
 fun
@@ -130,6 +134,9 @@ d2p0.node() of
 |D2Pint _ => f0_int(env0, d2p0)
 |D2Pi00 _ => f0_i00(env0, d2p0)
 //
+|D2Pbtf _ => f0_btf(env0, d2p0)
+|D2Pb00 _ => f0_b00(env0, d2p0)
+//
 |D2Psym0 _ => f0_sym0(env0, d2p0)
 //
 |D2Pdapp _ => f0_dapp(env0, d2p0)
@@ -158,8 +165,6 @@ val-
 D2Pint(tok) = d2p0.node()
 val t2p0 = the_s2typ_sint() }
 //
-(* ****** ****** *)
-//
 fun
 f0_i00
 ( env0:
@@ -174,6 +179,38 @@ val loc0 = d2p0.lctn()
 val-
 D2Pi00(int) = d2p0.node()
 val t2p0 = the_s2typ_sint() }
+//
+(* ****** ****** *)
+//
+fun
+f0_btf
+( env0:
+! tr2aenv
+, d2p0: d2pat): d2pat =
+(
+d2pat_make_styp_node
+( loc0
+, t2p0, D2Pbtf(sym))) where
+{
+val loc0 = d2p0.lctn()
+val-
+D2Pbtf(sym) = d2p0.node()
+val t2p0 = the_s2typ_bool() }
+//
+fun
+f0_b00
+( env0:
+! tr2aenv
+, d2p0: d2pat): d2pat =
+(
+d2pat_make_styp_node
+( loc0
+, t2p0, D2Pb00(btf))) where
+{
+val loc0 = d2p0.lctn()
+val-
+D2Pb00(btf) = d2p0.node()
+val t2p0 = the_s2typ_bool() }
 //
 (* ****** ****** *)
 //
@@ -699,18 +736,76 @@ trans2a_d2pat_tpck(env0, d2p2, t2p1) }
 ) (*case+*) // end of [trans2a_d2gua(...)]
 //
 (* ****** ****** *)
-(*
-datatype
-d2cls_node =
-| D2CLSgpt of d2gpt
-| D2CLScls of (d2gpt, d2exp)
-*)
+//
+#implfun
+trans2a_d2gpt_tpck
+( env0
+, dgpt, targ) =
+(
+case+
+dgpt.node() of
+//
+|
+D2GPTpat(d2p1) =>
+let
+val
+loc0 = dgpt.lctn()
+val d2p1 =
+trans2a_d2pat_tpck
+(env0, d2p1, targ) in
+d2gpt(loc0, D2GPTpat(d2p1)) end
+//
+|
+D2GPTgua
+( d2p1, d2gs ) =>
+let
+val
+loc0 = dgpt.lctn()
+val d2p1 =
+trans2a_d2pat_tpck
+(env0, d2p1, targ)
+val d2gs =
+trans2a_d2gualst(env0, d2gs) in
+d2gpt(loc0, D2GPTgua(d2p1, d2gs)) end
+//
+) (*case+*) // end of [trans2a_d2gpt(...)]
+//
 (* ****** ****** *)
-(*
-d2gpt_node =
-| D2GPTpat of (d2pat)
-| D2GPTgua of (d2pat, d2gualst)
-*)
+//
+#implfun
+trans2a_d2cls_tpck
+( env0, dcls
+, targ, tres) =
+(
+case+
+dcls.node() of
+//
+|
+D2CLSgpt(dgpt) =>
+let
+val
+loc0 = dcls.lctn()
+val dgpt =
+trans2a_d2gpt_tpck
+(env0, dgpt, targ) in
+d2cls(loc0, D2CLSgpt(dgpt)) end
+//
+|
+D2CLScls
+( dgpt, d2e1 ) =>
+let
+val
+loc0 = dcls.lctn()
+val dgpt =
+trans2a_d2gpt_tpck
+(env0, dgpt, targ)
+val d2e1 =
+trans2a_d2exp_tpck
+(env0, d2e1, tres) in
+d2cls(loc0, D2CLScls(dgpt, d2e1)) end
+//
+) (*case+*) // end of [trans2a_d2cls(...)]
+//
 (* ****** ****** *)
 //
 (*

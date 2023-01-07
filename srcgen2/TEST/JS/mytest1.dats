@@ -19,7 +19,11 @@ and
 fb(x: bool): bool = x + fa(x)
 (* ****** ****** *)
 fun
-fc(x: bool): bool = if x then x else ~x
+fc(x: bool): bool = if x then x
+(* ****** ****** *)
+fun
+fd(x: bool): bool =
+case+ x of true => x | false => ~x
 (* ****** ****** *)
 ////
 (* ****** ****** *)

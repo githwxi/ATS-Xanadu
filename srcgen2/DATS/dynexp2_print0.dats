@@ -166,8 +166,8 @@ print("D2Pvar(",d2v,")")
 //
 |D2Pint(tok) =>
 print("D2Pint(",tok,")")
-|D2Pbtf(tok) =>
-print("D2Pbtf(",tok,")")
+|D2Pbtf(sym) =>
+print("D2Pbtf(",sym,")")
 |D2Pchr(tok) =>
 print("D2Pchr(",tok,")")
 |D2Pstr(tok) =>
