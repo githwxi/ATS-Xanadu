@@ -485,7 +485,7 @@ d2pat_node =
 |D2Pvar of d2var
 //
 |D2Pint of token
-|D2Pbtf of token
+|D2Pbtf of sym_t
 |D2Pchr of token
 |D2Pflt of token
 |D2Pstr of token

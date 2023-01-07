@@ -116,6 +116,14 @@ d2pat(loc0, D2Pvar(dvar)))
 (* ****** ****** *)
 //
 #implfun
+d2pat_btf
+(loc0, sym1) =
+(
+d2pat(loc0, D2Pbtf(sym1)))
+//
+(* ****** ****** *)
+//
+#implfun
 d2pat_con
 (loc0, dcon) =
 (
