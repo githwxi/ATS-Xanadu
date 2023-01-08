@@ -220,6 +220,7 @@ S2E = "./staexp2.sats"
 #typedef i2mpldclist = list(i2mpldcl)
 #typedef d2cstdclist = list(d2cstdcl)
 (* ****** ****** *)
+#typedef d2explstopt = optn(d2explst)
 #typedef d2eclistopt = optn(d2eclist)
 (* ****** ****** *)
 #vwtpdef d2patlst_vt = list_vt(d2pat)
@@ -772,17 +773,16 @@ d2exp_node =
 |
 D2Eassgn of
 (d2exp(*l-val*), d2exp(*r-val*))
-//
 |
 D2Ebrckt of
 (d2ptmlst(*[]*), d2explst(*arg*))
-(*
+//
 |
 D2Edtsel of
-(label
+(token
+,label
 ,d2ptmlst
 ,sint(*npf*), d2explstopt(*arg*))
-*)
 //
 |
 D2Eif0 of

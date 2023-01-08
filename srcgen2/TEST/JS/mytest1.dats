@@ -5,7 +5,11 @@
 (* ****** ****** *)
 val x = 1
 and y = 2
-val xy = (x + y)
+(* ****** ****** *)
+val x0 = xy.0
+val y1 = xy.1
+(* ****** ****** *)
+////
 (* ****** ****** *)
 var x1: sint = "0"
 var x2: sint = true
@@ -19,10 +23,15 @@ and
 fb(x: bool): bool = x + fa(x)
 (* ****** ****** *)
 fun
-fc(x: bool): bool = if x then x
+fc(x: sint): bool =
+let
+val xx = x + x in xx > xx end
 (* ****** ****** *)
 fun
-fd(x: bool): bool =
+fd(x: bool): bool = if x then x
+(* ****** ****** *)
+fun
+fe(x: bool): bool =
 case+ x of true => x | false => ~x
 (* ****** ****** *)
 ////

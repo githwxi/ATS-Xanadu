@@ -287,10 +287,11 @@ LEX = "./lexing0.sats"
 #typedef d2fundclist = list(d2fundcl)
 #typedef d2cstdclist = list(d2cstdcl)
 (* ****** ****** *)
-//
+#typedef d1explstopt = optn(d1explst)
+#typedef d2explstopt = optn(d2explst)
+(* ****** ****** *)
 #typedef d1eclistopt = optn(d1eclist)
 #typedef d2eclistopt = optn(d2eclist)
-//
 (* ****** ****** *)
 #vwtpdef s2varopt_vt = optn_vt(s2var)
 #vwtpdef s2cstopt_vt = optn_vt(s2cst)

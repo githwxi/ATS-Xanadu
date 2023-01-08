@@ -974,9 +974,9 @@ d2exp_node =
 //
 | D2Eassgn of
   ( d2exp(*l-val*), d2exp(*r-val*) )
-//
 | D2Ebrack of
   (d2pitmlst(*[]*), d2explst(*arg*))
+//
 | D2Edtsel of
   ( label
   , d2pitmlst

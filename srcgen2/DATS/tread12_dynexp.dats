@@ -585,6 +585,33 @@ endlet // end of [d2exp_assgn_errck(...)]
 (* ****** ****** *)
 //
 fun
+d2exp_dtsel_errck
+( loc0: loc_t
+, tknd: token
+, lab1: label
+, dpis: d2ptmlst
+, npf1: (sint)
+, dopt: d2explstopt): d2exp =
+let
+val lvl0 =
+(
+case+ dopt of
+|
+optn_nil() => 0
+|
+optn_cons(d2es) => errvl(d2es))
+in//let
+d2exp_errck
+(
+lvl0+1,
+d2exp_make_node
+(loc0
+,D2Edtsel(tknd,lab1,dpis,npf1,dopt)))
+endlet // end of [d2exp_dtsel_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d2exp_seqn_errck
 ( loc0: loc_t
 , d2es: d2explst
@@ -1250,6 +1277,9 @@ D2Ewhere _ => f0_where(d2e0, err)
 D2Eassgn _ => f0_assgn(d2e0, err)
 //
 |
+D2Edtsel _ => f0_dtsel(d2e0, err)
+//
+|
 D2Eif0
 (
 d2e1,
@@ -1495,6 +1525,38 @@ val loc = d2e.lctn() in
 d2exp_assgn_errck(loc, d2el, d2er)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_assgn(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dtsel
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+val-
+D2Edtsel
+(tknd
+,lab1, dpis
+,npf1, darg) = d2e.node()
+//
+val
+darg =
+tread12_d2explstopt(darg, err)
+//
+in//let
+if
+(e00=err)
+then (d2e) else
+let
+val
+loc = d2e.lctn()
+in//let
+d2exp_dtsel_errck
+(loc, tknd, lab1, dpis, npf1, darg)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_dtsel(d2e,err)]
 //
 (* ****** ****** *)
 //
