@@ -376,6 +376,8 @@ d2e0.node() of
 |D2Elet0 _ => f0_let0(env0, d2e0)
 |D2Ewhere _ => f0_where(env0, d2e0)
 //
+|D2Edtsel _ => f0_dtsel(env0, d2e0)
+//
 |D2Eif0 _ => f0_if0(env0, d2e0)
 |D2Ecas0 _ => f0_cas0(env0, d2e0)
 //
@@ -623,6 +625,27 @@ d2exp_make_styp_node
 ( loc0
 , d2e1.styp(), D2Ewhere(d2e1, d2cs))
 end (*let*) // end of [f0_where(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dtsel
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+val loc0 = d2e0.lctn()
+val-
+D2Edtsel
+( tknd
+, lab1, dpis
+, npf1, darg) = d2e0.node()
+val t2p0 = s2typ_new0_x2tp(loc0)
+in//let
+d2exp_make_styp_node
+( loc0, t2p0
+, D2Edtsel(tknd,lab1,dpis,npf1,darg))
+end (*let*) // end of [f0_dtsel(env0,...)]
 //
 (* ****** ****** *)
 //
