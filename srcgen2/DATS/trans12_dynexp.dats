@@ -52,6 +52,8 @@ _(*TRANS12*) = "./trans12.dats"
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
+#staload "./../SATS/xlabel0.sats"
+(* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
@@ -1467,6 +1469,9 @@ D1Es2eq _ => f0_s2eq(env0, d1e0)
 |
 D1Ewhere _ => f0_where(env0, d1e0)
 //
+|
+D1Edtsel _ => f0_dtsel(env0, d1e0)
+//
 |D1Et1up _ => f0_t1up(env0, d1e0)
 |D1Et2up _ => f0_t2up(env0, d1e0)
 //
@@ -2253,11 +2258,16 @@ D1Elet0
 (d1cs, d1e1) = d1e0.node()
 //
 val
+(  ) = tr12env_pshlet0(env0)
+//
+val
 d2cs =
 trans12_d1eclist(env0, d1cs)
 //
 val
 d2e1 = trans12_d1exp(env0, d1e1)
+//
+val (  ) = tr12env_poplet0(env0)
 //
 in//let
 let
@@ -2281,11 +2291,16 @@ D1Ewhere
 (d1e1, d1cs) = d1e0.node()
 //
 val
+(  ) = tr12env_pshlet0(env0)
+//
+val
 d2cs =
 trans12_d1eclist(env0, d1cs)
 //
 val
 d2e1 = trans12_d1exp(env0, d1e1)
+//
+val (  ) = tr12env_poplet0(env0)
 //
 in//let
 let
@@ -2294,6 +2309,104 @@ in//let
   d2exp(loc0, D2Ewhere(d2e1, d2cs))
 end//let
 end (*let*) // end of [f0_where(env0,d1e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dtsel
+( env0:
+! tr12env
+, d1e0: d1exp): d2exp =
+let
+//
+val loc0 = d1e0.lctn()
+//
+val-
+D1Edtsel
+( tknd
+, lab1, darg) = d1e0.node()
+//
+val dpis =
+(
+case+ lab1 of
+|LABint _ =>
+list_nil(*void*)
+|LABsym(sym1) =>
+let
+val dopt =
+tr12env_find_d2itm(env0,sym1)
+in//let
+//
+case+ dopt of
+| ~
+optn_vt_nil() =>
+list_nil((*void*))
+| ~
+optn_vt_cons(d2i1) =>
+(
+case+ d2i1 of
+|D2ITMsym(sym1, dpis) => dpis
+|_(*non-D2ITMsym*) => list_nil())
+//
+end (*let*) // end-of-[LABsym]
+) : d2ptmlst // end-of-[val(dpis)]
+//
+val npf1 =
+(
+case+ darg of
+|optn_nil() => (-1)
+|optn_cons(d1e1) =>
+(
+case+ d1e1.node() of
+|D1El2st
+(des1, des2) =>
+list_length(des1) | _ => (-1))
+) : sint // end-of-[ val(npf1) ]
+//
+val darg =
+(
+case+ darg of
+|optn_nil() =>
+optn_nil(*void*)
+|optn_cons(d1e1) =>
+(
+optn_cons(d2es)) where
+{
+val d2es =
+(
+case+
+d1e1.node() of
+|
+D1El1st(des1) =>
+trans12_d1explst(env0, des1)
+|
+D1El2st
+(des1, des2) =>
+(
+list_append
+(des1, des2)) where
+{
+val des1 =
+trans12_d1explst(env0, des1)
+val des2 =
+trans12_d1explst(env0, des2) }
+|
+_(*non-D1Elist*) =>
+let
+val d2e1 =
+trans12_d1exp
+(env0 , d1e1) in list_sing(d2e1)
+end (*let*) // end-[non-D1Elist]
+//
+) : d2explst // end of [val(d2es)]
+}
+) : d2explstopt // end of [val(darg)]
+//
+in//let
+d2exp_make_node
+( loc0
+, D2Edtsel(tknd, lab1, dpis, npf1, darg))
+end (*let*) // end of [f0_dtsel(env0,d1e0)]
 //
 (* ****** ****** *)
 //

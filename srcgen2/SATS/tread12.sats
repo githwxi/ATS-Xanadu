@@ -150,6 +150,7 @@ D2E = "./dynexp2.sats"
 #typedef d2fundclist = $D2E.d2fundclist
 #typedef d2cstdclist = $D2E.d2cstdclist
 (* ****** ****** *)
+#typedef d2explstopt = $D2E.d2explstopt
 #typedef d2eclistopt = $D2E.d2eclistopt
 (* ****** ****** *)
 //
@@ -277,6 +278,7 @@ fun tread12_d2vardclist: ftread12(d2vardclist)
 fun tread12_d2fundclist: ftread12(d2fundclist)
 fun tread12_d2cstdclist: ftread12(d2cstdclist)
 (* ****** ****** *)
+fun tread12_d2explstopt: ftread12(d2explstopt)
 fun tread12_d2eclistopt: ftread12(d2eclistopt)
 (* ****** ****** *)
 (*
@@ -371,6 +373,10 @@ fun
 d2parsed_fpemsg
 ( out: FILR, dpar: d2parsed ): void
 //
+(* ****** ****** *)
+//
+fun
+d2explstopt_fpemsg(FILR, d2explstopt): void
 fun
 d2eclistopt_fpemsg(FILR, d2eclistopt): void
 //

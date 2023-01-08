@@ -151,6 +151,13 @@ end(*let*)//end-of(d2parsed_of_tread12(dpar))
 (* ****** ****** *)
 //
 #implfun
+tread12_d2explstopt
+  (  dopt, err0  ) =
+optn_tread12_fnp(dopt, err0, tread12_d2explst)
+//
+(* ****** ****** *)
+//
+#implfun
 tread12_d2eclistopt
   (  dopt, err0  ) =
 optn_tread12_fnp(dopt, err0, tread12_d2eclist)
@@ -173,6 +180,17 @@ d2parsed_get_parsed(dpar)
 in
 d2eclistopt_fpemsg(out, parsed) end else ()
 end (*let*)//end-of-[d2parsed_fpemsg(out,dpar)]
+//
+(* ****** ****** *)
+//
+#implfun
+d2explstopt_fpemsg
+  (out, dopt) =
+(
+case+ dopt of
+| optn_nil() => ((*void*))
+| optn_cons(d2es) => d2explst_fpemsg(out, d2es)
+)
 //
 (* ****** ****** *)
 //

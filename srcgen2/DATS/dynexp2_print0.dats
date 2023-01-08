@@ -425,6 +425,15 @@ D2Ebrckt
 (dpis, d2es) =>
 print("D2Ebrckt(",dpis,";",d2es,")")
 //
+|
+D2Edtsel
+(tknd,lab1
+,dpis,npf1,opt2) =>
+(
+print("D2Edtsel(");
+print(tknd,";", lab1,";");
+print(dpis,";", npf1,";", opt2,")"))
+//
 |D2Eif0
 (d2e1,dthn,dels) =>
 ( print("D2Eif0(")
