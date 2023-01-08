@@ -856,7 +856,9 @@ val loc0 = d0e0.lctn()
 val d1es =
 trans01_d0explst(tenv, d0es)
 in // let
-FXITMatm(d1exp(loc0, D1Ebrckt(d1es)))
+FXITMopr(d1e0, brckt_fixty) where
+{ val
+  d1e0 = d1exp(loc0, D1Ebrckt(d1es)) }
 end (*let*) // end of [D0Ebrckt(_,_,_)]
 //
 |
@@ -880,8 +882,10 @@ val
 dopt = trans01_d0expopt(tenv, dopt)
 //
 in // let
-FXITMatm
-(d1exp(loc0,D1Edtsel(tknd,lab1,dopt)))
+FXITMopr(d1e0, dtsel_fixty) where
+{
+val d1e0 =
+d1exp(loc0,D1Edtsel(tknd,lab1,dopt)) }
 end (*let*) // end of [D0Edtsel(_,_,_)]
 //
 |
