@@ -145,6 +145,7 @@ LEX = "./lexing0.sats"
 #typedef d2fundclist = $D2E.d2fundclist
 #typedef d2cstdclist = $D2E.d2cstdclist
 (* ****** ****** *)
+#typedef d2explstopt = $D2E.d2explstopt
 #typedef d2eclistopt = $D2E.d2eclistopt
 (* ****** ****** *)
 //
@@ -430,6 +431,11 @@ trans2a_d2cstdclist
 ! tr2aenv, d2cs: d2cstdclist): d2cstdclist
 //
 (* ****** ****** *)
+//
+fun
+trans2a_d2explstopt
+( env0:
+! tr2aenv, dopt: d2explstopt): d2explstopt
 //
 fun
 trans2a_d2eclistopt

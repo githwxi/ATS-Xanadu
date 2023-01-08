@@ -585,6 +585,21 @@ endlet // end of [d2exp_assgn_errck(...)]
 (* ****** ****** *)
 //
 fun
+d2exp_brckt_errck
+( loc0: loc_t
+, dpis: d2ptmlst
+, d2es: d2explst): d2exp =
+let
+val lvl0 = d2exp_errvl(d2es)
+in//let
+d2exp_errck
+(
+lvl0+1,d2exp(loc0,D2Ebrckt(dpis,d2es)))
+endlet // end of [d2exp_brckt_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d2exp_dtsel_errck
 ( loc0: loc_t
 , tknd: token
@@ -1275,7 +1290,8 @@ D2Ewhere _ => f0_where(d2e0, err)
 //
 |
 D2Eassgn _ => f0_assgn(d2e0, err)
-//
+|
+D2Ebrckt _ => f0_brckt(d2e0, err)
 |
 D2Edtsel _ => f0_dtsel(d2e0, err)
 //
@@ -1525,6 +1541,35 @@ val loc = d2e.lctn() in
 d2exp_assgn_errck(loc, d2el, d2er)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_assgn(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_brckt
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+val-
+D2Ebrckt
+(dpis, d2es) = d2e.node()
+//
+val
+d2es =
+tread12_d2explst(d2es, err)
+//
+in//let
+if
+(e00=err)
+then (d2e) else
+let
+val
+loc = d2e.lctn()
+in//let
+d2exp_brckt_errck(loc, dpis, d2es)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_brckt(d2e,err)]
 //
 (* ****** ****** *)
 //

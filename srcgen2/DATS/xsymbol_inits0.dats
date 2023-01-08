@@ -83,6 +83,7 @@ HX-2022-10-01: Various symbols
 //
 (* ****** ****** *)
 #implval ASSGN_symbl = symbl(":=")
+#implval BRCKT_symbl = symbl("[]")
 (* ****** ****** *)
 #implval PFLAT_symbl = symbl("@")
 #implval PFREE_symbl = symbl("~")
