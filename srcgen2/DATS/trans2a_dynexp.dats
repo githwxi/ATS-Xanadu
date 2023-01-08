@@ -376,12 +376,13 @@ d2e0.node() of
 |D2Elet0 _ => f0_let0(env0, d2e0)
 |D2Ewhere _ => f0_where(env0, d2e0)
 //
-|D2Edtsel _ => f0_dtsel(env0, d2e0)
-//
 |D2Eif0 _ => f0_if0(env0, d2e0)
 |D2Ecas0 _ => f0_cas0(env0, d2e0)
 //
 |D2Etup0 _ => f0_tup0(env0, d2e0)
+//
+|D2Ebrckt _ => f0_brckt(env0, d2e0)
+|D2Edtsel _ => f0_dtsel(env0, d2e0)
 //
 | _(*otherwise*) => d2exp_none2(d2e0)
 //
@@ -629,6 +630,26 @@ end (*let*) // end of [f0_where(env0,...)]
 (* ****** ****** *)
 //
 fun
+f0_brckt
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+val loc0 = d2e0.lctn()
+val-
+D2Ebrckt
+( dpis, d2es) = d2e0.node()
+val d2es =
+trans2a_d2explst(env0, d2es)
+val t2p0 = s2typ_new0_x2tp(loc0)
+in//let
+d2exp_make_styp_node
+( loc0, t2p0, D2Ebrckt(dpis, d2es))
+end (*let*) // end of [f0_brckt(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
 f0_dtsel
 ( env0:
 ! tr2aenv
@@ -640,6 +661,8 @@ D2Edtsel
 ( tknd
 , lab1, dpis
 , npf1, darg) = d2e0.node()
+val darg =
+trans2a_d2explstopt(env0, darg)
 val t2p0 = s2typ_new0_x2tp(loc0)
 in//let
 d2exp_make_styp_node
@@ -1015,6 +1038,13 @@ val () =
 prerrln("trans2a_d2exp_tpck: t2p0 = ", t2p0)
 //
 } (*where*) // end of [trans2a_d2exp_tpck(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans2a_d2explstopt
+( env0, dopt ) =
+optn_trans2a_fnp(env0, dopt, trans2a_d2explst)
 //
 (* ****** ****** *)
 

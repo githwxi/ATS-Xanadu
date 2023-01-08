@@ -1470,6 +1470,8 @@ D1Es2eq _ => f0_s2eq(env0, d1e0)
 D1Ewhere _ => f0_where(env0, d1e0)
 //
 |
+D1Ebrckt _ => f0_brckt(env0, d1e0)
+|
 D1Edtsel _ => f0_dtsel(env0, d1e0)
 //
 |D1Et1up _ => f0_t1up(env0, d1e0)
@@ -2313,6 +2315,47 @@ end (*let*) // end of [f0_where(env0,d1e0)]
 (* ****** ****** *)
 //
 fun
+f0_brckt
+( env0:
+! tr12env
+, d1e0: d1exp): d2exp =
+let
+//
+val loc0 = d1e0.lctn()
+//
+val-
+D1Ebrckt
+( d1es ) = d1e0.node((*0*))
+val d2es =
+trans12_d1explst(env0, d1es)
+//
+val sym1 = BRCKT_symbl(*void*)
+val dpis =
+let
+val dopt =
+tr12env_find_d2itm(env0,sym1)
+in//let
+//
+case+ dopt of
+| ~
+optn_vt_nil() =>
+list_nil((*void*))
+| ~
+optn_vt_cons(d2i1) =>
+(
+case+ d2i1 of
+|D2ITMsym(sym1, dpis) => dpis
+|_(*non-D2ITMsym*) => list_nil())
+//
+end (*let*) // end of [val(dpis)]
+//
+in//let
+  d2exp(loc0, D2Ebrckt(dpis, d2es))
+end (*let*) // end of [f0_brckt(env0,d1e0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_dtsel
 ( env0:
 ! tr12env
@@ -2405,7 +2448,7 @@ end (*let*) // end-[non-D1Elist]
 in//let
 d2exp_make_node
 ( loc0
-, D2Edtsel(tknd, lab1, dpis, npf1, darg))
+, D2Edtsel(tknd,lab1,dpis,npf1,darg))
 end (*let*) // end of [f0_dtsel(env0,d1e0)]
 //
 (* ****** ****** *)
