@@ -3,10 +3,19 @@
 #infixr -> of 10
 *)
 (* ****** ****** *)
+val x = 1 - 2
+////
+(* ****** ****** *)
 val x = 1
 and y = 2
 var z: strn = 3
 val () = z := "0"
+(* ****** ****** *)
+#extern
+fun fact(x: sint): sint
+#implfun
+fact(x: sint) =
+if x > 0 then x * fact(x-1) else 1
 (* ****** ****** *)
 ////
 (* ****** ****** *)

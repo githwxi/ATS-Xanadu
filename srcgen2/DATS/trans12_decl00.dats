@@ -1346,6 +1346,10 @@ val
 ditm =
 D2ITMsym
 (sym1, list_cons(dptm, d2ps))
+//
+val () =
+prerrln("f0_symload: ditm = ", ditm)
+//
 val () =
 tr12env_add0_d2itm(env0, sym1, ditm)
 in

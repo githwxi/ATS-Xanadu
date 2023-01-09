@@ -1618,7 +1618,13 @@ case+ d2i1 of
   f0_id0_d2cst(env0, d1e0, d2cs)
 | D2ITMsym(_, dpis) =>
   f0_id0_d2sym(env0, d1e0, dpis)
-) (*case+*) // end of [f0_id0_d2itm(...)]
+) where
+{
+// (*
+val () =
+prerrln("f0_id0_d2itm: d2i1 = ", d2i1)
+// *)
+} (*where*) // end of [f0_id0_d2itm(...)]
 //
 and
 f0_id0_d2var
@@ -1680,9 +1686,17 @@ f0_id0_d2sym
 , dpis: d2ptmlst): d2exp =
 let
 val loc0 = d1e0.lctn()
-in
+in//let
   d2exp_sym0(loc0, d1e0, dpis)
-end (*let*) // end of [f0_id0_d2sym(...)]
+end where
+{
+// (*
+val (  ) =
+prerrln("f0_id0_d2sym: d1e0 = ", d1e0)
+val (  ) =
+prerrln("f0_id0_d2sym: dpis = ", dpis)
+// *)
+} (*where*) // end of [f0_id0_d2sym(...)]
 //
 (* ****** ****** *)
 //
