@@ -182,15 +182,6 @@ the_dexpenv_allist
   ( (*void*) ): list@(sym_t, d2itm)
 //
 (* ****** ****** *)
-//
-fun
-the_sortenv_allist_add0(sym_t, s2tex): void
-fun
-the_sexpenv_allist_add0(sym_t, s2itm): void
-fun
-the_dexpenv_allist_add0(sym_t, d2itm): void
-//
-(* ****** ****** *)
 fun
 the_sortenv_allist_print(): void
 fun
@@ -211,6 +202,15 @@ fun
 the_dexpenv_allist_prerr(): void
 fun
 the_dexpenv_allist_fprint( out:FILR ): void
+(* ****** ****** *)
+//
+fun
+the_sortenv_allist_add0(sym_t, s2tex): void
+fun
+the_sexpenv_allist_add0(sym_t, s2itm): void
+fun
+the_dexpenv_allist_add0(sym_t, d2itm): void
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xglobal.sats] *)
