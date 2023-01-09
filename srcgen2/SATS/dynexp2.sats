@@ -833,10 +833,10 @@ D2Etry0 of
 //
 |
 D2Elazy0 of
-(d2exp(*thunk*)) // non-linear
+( d2exp(*thunk*) ) // non-linear
 |
 D2Elazy1 of // linear-lazy-eval
-(d2exp(*thunk*), d2explst(*frees*))
+( d2exp(*thunk*), d2explst(*frees*))
 //
 |
 D2Eannot of

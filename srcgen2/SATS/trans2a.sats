@@ -483,5 +483,12 @@ trans2a_d2exp_tpck
 ! tr2aenv, d2e0:d2exp, t2p0:s2typ): d2exp
 //
 (* ****** ****** *)
+//
+fun
+trans2a_d2explst_tpck1
+( env0:
+! tr2aenv,d2es:d2explst,t2p0:s2typ): d2explst
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans2a.sats] *)

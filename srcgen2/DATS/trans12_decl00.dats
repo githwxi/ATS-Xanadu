@@ -1939,7 +1939,7 @@ D1Cimplmnt0
 , sres, dexp) = d1cl.node()
 //
 val
-dqid = f1_dqid(env0, dqid)
+dimp = f1_dqid(env0, dqid)
 //
 val sqas =
 trans12_s1qaglst(env0, sqas)
@@ -1971,7 +1971,7 @@ d2ecl
 (
 loc0,
 D2Cimplmnt0
-(tknd,sqas,tqas,dqid,tias,f2as,sres,dexp))
+(tknd,sqas,tqas,dimp,tias,f2as,sres,dexp))
 end (*let*) // end of [f0_implmnt0(env0,d1cl)]
 //
 end (*local*) // end of [ local(f0_implmnt0) ]

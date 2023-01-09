@@ -965,6 +965,9 @@ stropt1
 #sexpdef strn = string0
 #sexpdef strn = string1
 //
+#sexpdef strn0 = string0
+#sexpdef strn1 = string1
+//
 #typedef string = string0
 #typedef string(n:i0) = string1(n)
 //

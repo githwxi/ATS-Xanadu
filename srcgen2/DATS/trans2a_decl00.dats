@@ -151,6 +151,9 @@ D2Cvardclst _ => f0_vardclst(env0, d2cl)
 |
 D2Cfundclst _ => f0_fundclst(env0, d2cl)
 //
+|
+D2Cimplmnt0 _ => f0_implmnt0(env0, d2cl)
+//
 | _(*otherwise*) =>
 let
   val loc0 = d2cl.lctn()
@@ -349,6 +352,56 @@ trans2a_d2fundclist(env0, d2fs)
 in//let
 d2ecl(loc0, D2Cfundclst(tknd, tqas, d2fs))
 end (*let*) // end of [f0_fundclst(env0,d2cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_implmnt0
+( env0:
+! tr2aenv
+, d2cl: d2ecl): d2ecl =
+let
+//
+val
+loc0 = d2cl.lctn()
+val-
+D2Cimplmnt0
+( tknd
+, sqas, tqas
+, dimp//dcst
+, tias, f2as
+, sres, dexp) = d2cl.node()
+//
+(*
+val () =
+prerrln
+("f0_implmnt0: d2cl = ", d2cl)
+*)
+//
+val
+f2as = trans2a_f2arglst(env0, f2as)
+//
+val
+dexp =
+(
+case+ sres of
+|S2RESnone() =>
+trans2a_d2exp(env0, dexp)
+|S2RESsome(seff, sexp) =>
+let
+val
+tres = s2exp_stpize(sexp) in
+trans2a_d2exp_tpck(env0, dexp, tres)
+end (*let*) // end of [S2RESsome(...)]
+)
+//
+in
+d2ecl
+(
+loc0,
+D2Cimplmnt0
+(tknd,sqas,tqas,dimp,tias,f2as,sres,dexp))
+end (*let*) // end of [f0_implmnt0(env0,d2cl)]
 //
 (* ****** ****** *)
 //
