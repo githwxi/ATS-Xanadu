@@ -559,7 +559,7 @@ loop0
 (xs, cons_vt(xx2, res)) where
 {
 val xx2 =
-token_make_node(loc, T_TRCD10(0))
+token_make_node(loc,T_TRCD10(0))
 }
 end (*let*) // end of [T_LPAREN]
 |
@@ -572,7 +572,7 @@ loop0
 (xs, cons_vt(xx2, res)) where
 {
 val xx2 =
-token_make_node(loc, T_TRCD20(0))
+token_make_node(loc,T_TRCD20(0))
 }
 end (*let*) // end of [T_LBRACE]
 //
@@ -640,7 +640,7 @@ loop0
 (xs, cons_vt(xx2, res)) where
 {
 val xx2 =
-token_make_node(loc, T_TRCD10(1))
+token_make_node(loc,T_TRCD10(1))
 }
 end (*let*) // end of [T_LPAREN]
 |
@@ -653,7 +653,7 @@ loop0
 (xs, cons_vt(xx2, res)) where
 {
 val xx2 =
-token_make_node(loc, T_TRCD20(1))
+token_make_node(loc,T_TRCD20(1))
 }
 end (*let*) // end of [T_LBRACE]
 //
@@ -1206,7 +1206,7 @@ strmcon_vt_cons
 (xx2, auxmain0(xs)) where
 {
 val xx2 =
-token_make_node(loc, T_TRCD20(0))
+token_make_node(loc,T_TRCD20(0))
 }
 end (*let*) // end of [T_LBRACE]
 //
@@ -1278,7 +1278,7 @@ strmcon_vt_cons
 (xx2, auxmain0(xs)) where
 {
 val xx2 =
-token_make_node(loc, T_TRCD10(1))
+token_make_node(loc,T_TRCD10(1))
 }
 end (*let*) // end of [T_LPAREN]
 |
@@ -1291,7 +1291,7 @@ strmcon_vt_cons
 (xx2, auxmain0(xs)) where
 {
 val xx2 =
-token_make_node(loc, T_TRCD20(1))
+token_make_node(loc,T_TRCD20(1))
 }
 end (*let*) // end of [T_LBRACE]
 //

@@ -50,11 +50,15 @@ _(*TRANS2a*) = "./trans2a.dats"
 (* ****** ****** *)
 #staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
+#staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans2a.sats"
+(* ****** ****** *)
+#symload node with token_get_node
 (* ****** ****** *)
 #symload node with s2typ_get_node
 (* ****** ****** *)
@@ -411,6 +415,7 @@ d2e0.node() of
 |D2Eseqn _ => f0_seqn(env0, d2e0)
 //
 |D2Etup0 _ => f0_tup0(env0, d2e0)
+|D2Etup1 _ => f0_tup1(env0, d2e0)
 //
 |D2Eassgn _ => f0_assgn(env0, d2e0)
 |D2Ebrckt _ => f0_brckt(env0, d2e0)
@@ -787,6 +792,39 @@ the_s2typ_void()
 |list_cons _ =>
 s2typ_tup0(npf1, s2typlst(d2es))): s2typ
 } (*where*) // end of [f0_tup0(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup1
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+(
+d2exp_make_styp_node
+(
+loc0, t2p0,
+D2Etup1(tknd, npf1, d2es))) where
+{
+val loc0 = d2e0.lctn()
+val-
+D2Etup1
+( tknd
+, npf1, d2es) = d2e0.node()
+val
+d2es = trans2a_d2explst(env0, d2es)
+val
+trcd =
+(
+case-
+tknd.node() of
+|T_TRCD10(0) => TRCDflt0(*void*)
+|T_TRCD10(_) => TRCDbox0(*void*)
+)
+val
+t2p0 =
+s2typ_tup1(trcd, npf1, s2typlst(d2es))
+} (*where*) // end of [f0_tup1(env0,d2e0)]
 //
 (* ****** ****** *)
 //

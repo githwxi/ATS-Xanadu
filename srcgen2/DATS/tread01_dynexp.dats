@@ -1681,6 +1681,27 @@ prerrln("tread01_d1exp: d1e0 = ", d1e0)
 } (*where*)//end(tread01_d1exp(d1e0,err))
 
 (* ****** ****** *)
+
+#implfun
+tread01_l1d1e
+  (ld1e, err) =
+let
+//
+val e00 = err
+//
+val+
+D1LAB(lab0, d1e1) = ld1e
+//
+val
+d1e1 = tread01_d1exp(d1e1, err)
+//
+in//let
+if // if
+(e00=err)
+then (ld1e) else D1LAB(lab0, d1e1)
+end (*let*)//end(tread01_d1exp(ld1e,err))
+
+(* ****** ****** *)
 //
 #implfun
 tread01_f1arg

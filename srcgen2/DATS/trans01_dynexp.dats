@@ -1671,6 +1671,31 @@ f0_d0es
 } (*where*)//end-of[trans01_d0exp(tenv,d0e0)]
 
 (* ****** ****** *)
+//
+#implfun
+trans01_l0d0e
+( tenv, ld0e ) =
+let
+//
+val+
+D0LAB
+( l0ab
+, teq1, d0e1) = ld0e
+//
+val lab0 =
+(
+case+
+l0ab.node() of
+|
+L0ABLsome(lab1) => lab1
+| // HX:error
+L0ABLnone(tok1) => label_none())
+//
+in//let
+D1LAB(lab0, trans01_d0exp(tenv, d0e1))
+end (*let*)//end-of[trans01_l0d0e(tenv,ld0e)]
+//
+(* ****** ****** *)
 
 #implfun
 trans01_f0arg

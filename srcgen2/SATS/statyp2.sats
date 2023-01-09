@@ -224,6 +224,10 @@ s2typ_s2exp(s2e0:s2exp): s2typ
 fun
 s2typ_tup0
 (npf1:sint,t2ps:s2typlst): s2typ
+fun
+s2typ_tup1
+(trcdknd(*tknd*)
+,npf1:sint,t2ps:s2typlst): s2typ
 (* ****** ****** *)
 fun
 s2typ_make_node

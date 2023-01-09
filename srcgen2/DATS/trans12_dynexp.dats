@@ -1116,274 +1116,20 @@ end
 end (*local*) // end of [ local(trans12_d1pat) ]
 
 (* ****** ****** *)
-
+//
 #implfun
-trans12_f1arg
-( env0,f1a0 ) =
-(
-//
-case+
-f1a0.node() of
-|
-F1ARGdyn0 _ => f0_dyn0(env0, f1a0)
-|
-F1ARGsta0 _ => f0_sta0(env0, f1a0)
-|
-F1ARGmet0 _ => f0_met0(env0, f1a0)
-//
-) where
-{
-//
-(* ****** ****** *)
-//
-fun
-f0_sta0
-( env0:
-! tr12env
-, f1a0: f1arg): f2arg =
+trans12_l1d1p
+( env0,ld1p ) =
 let
 //
-val-
-F1ARGsta0
-(  s1qs  ) = f1a0.node()
-//
-val
-(s2vs, s2ps) =
-trans12_s1qualst(env0, s1qs)
-//
-in
-//
-f2arg(f1a0.lctn(), F2ARGsta0(s2vs, s2ps))
-//
-end (*let*) // end of [f0_sta0(env0,f1a0)]
-//
-(* ****** ****** *)
-//
-fun
-f0_dyn0
-( env0
-: !tr12env
-, f1a0: f1arg): f2arg =
-let
-//
-var
-npf1: sint = -1
-//
-val-
-F1ARGdyn0
-(  d1p0  ) = f1a0.node()
-//
-val
-d2ps =
-(
-case+
-d1p0.node() of
-|
-D1Pl1st
-( d1ps ) =>
-trans12_d1patlst(env0, d1ps)
-|
-D1Pl2st
-(dps1, dps2) =>
-(
-npf1 :=
-list_length(dps1);
-list_append(dps1, dps2)
-) where
-{
-val
-dps1 =
-trans12_d1patlst(env0, dps1)
-val
-dps2 =
-trans12_d1patlst(env0, dps2) }
-| _(*non-D1Plist*) =>
-(
-list_sing(trans12_d1pat(env0, d1p0)))
-) : d2patlst // end of [val]
+val+
+D1LAB
+(lab0, d1p1) = ld1p
 //
 in//let
+D2LAB(lab0, trans12_d1pat(env0, d1p1))
+end (*let*)//end-of[trans12_l1d1p(env0,ld1p)]
 //
-f2arg(f1a0.lctn(), F2ARGdyn0(npf1, d2ps))
-//
-end (*let*) // end of [f0_dyn0(env0,f1a0)]
-//
-(* ****** ****** *)
-//
-fun
-f0_met0
-( env0:
-! tr12env
-, f1a0: f1arg): f2arg =
-let
-//
-val-
-F1ARGmet0
-(  s1es  ) = f1a0.node()
-//
-in//let
-let
-val s2es =
-trans12_s1explst(env0, s1es)
-in//let
-  f2arg(f1a0.lctn(), F2ARGmet0(s2es))
-end (*let*)
-end (*let*) // end of [f0_met0(env0,f1a0)]
-//
-(* ****** ****** *)
-//
-} (*where*) // end of [trans12_f1arg(env0,f1a0)]
-
-(* ****** ****** *)
-
-#implfun
-trans12_d1gua
-( env0,d1g0 ) = let
-//
-val
-loc0 = d1g0.lctn()
-//
-(*
-val
-val () =
-prerrln
-("trans12_d1gua: d1g0 = ", d1g0)
-*)
-//
-in//let
-//
-case+
-d1g0.node() of
-|
-D1GUAexp(d1e1) =>
-d2gua_make_node
-( loc0
-, D2GUAexp(d2e1)) where
-{
-val d2e1 =
-trans12_d1exp(env0, d1e1)
-}
-|
-D1GUAmat(d1e1, d1p2) =>
-d2gua_make_node
-( loc0
-, D2GUAmat(d2e1, d2p2)) where
-{
-val
-d2e1 = trans12_d1exp(env0, d1e1)
-val
-d2p2 = trans12_d1pat(env0, d1p2)
-}
-//
-end (*let*) // end of [trans12_d1gua(env0,d1g0)]
-
-(* ****** ****** *)
-
-#implfun
-trans12_d1gpt
-( env0,dgpt ) = let
-//
-val
-loc0 = dgpt.lctn()
-//
-(*
-val
-val () =
-prerrln
-("trans12_d1gpt: dgpt = ", dgpt)
-*)
-//
-in//let
-//
-case+
-dgpt.node() of
-//
-|
-D1GPTpat(d1p1) =>
-d2gpt_make_node
-( loc0
-, D2GPTpat(d2p1)) where
-{
-val d2p1 =
-trans12_d1pat(env0, d1p1)
-}
-|
-D1GPTgua(d1p1, d1gs) =>
-d2gpt_make_node
-( loc0
-, D2GPTgua(d2p1, d2gs)) where
-{
-val
-d2p1 = trans12_d1pat(env0, d1p1)
-val
-d2gs = trans12_d1gualst(env0, d1gs)
-}
-//
-end (*let*) // end of [trans12_d1gpt(env0,dgpt)]
-
-(* ****** ****** *)
-
-#implfun
-trans12_d1cls
-( env0,d1c0 ) = let
-//
-val
-loc0 = d1c0.lctn()
-//
-(*
-val
-val () =
-prerrln
-("trans12_d1cls: d1c0 = ", d1c0)
-*)
-//
-in//let
-//
-case+
-d1c0.node() of
-|
-D1CLSgpt(dgpt) =>
-d2cls_make_node
-( loc0
-, D2CLSgpt(dgpt)) where
-{
-//
-val () =
-tr12env_pshlam0(env0)
-//
-val
-dgpt =
-trans12_d1gpt(env0, dgpt)
-//
-val//exit
-((*void*)) = tr12env_poplam0(env0)
-//
-}
-|
-D1CLScls(dgpt, d1e1) =>
-d2cls_make_node
-( loc0
-, D2CLScls(dgpt, d2e1)) where
-{
-//
-val () =
-tr12env_pshlam0(env0)
-//
-val
-dgpt =
-trans12_d1gpt(env0, dgpt)
-val () =
-tr12env_add0_d2gpt(env0, dgpt)
-val
-d2e1 = trans12_d1exp(env0, d1e1)
-//
-val//exit
-((*void*)) = tr12env_poplam0(env0)
-//
-} (*where*) // end of [D1CLScls(dgpt,d1e1)]
-//
-end (*let*) // end of [trans12_d1cls(env0,d1c0)]
-
 (* ****** ****** *)
 
 #implfun
@@ -2731,6 +2477,290 @@ end (*let*) // end of [f0_annot(env0,d1e0)]
 (* ****** ****** *)
 //
 #implfun
+trans12_l1d1e
+( env0,ld1e ) =
+let
+//
+val+
+D1LAB
+(lab0, d1e1) = ld1e
+//
+in//let
+D2LAB(lab0, trans12_d1exp(env0, d1e1))
+end (*let*)//end-of[trans12_l1d1e(env0,ld1e)]
+//
+(* ****** ****** *)
+
+#implfun
+trans12_f1arg
+( env0,f1a0 ) =
+(
+//
+case+
+f1a0.node() of
+|
+F1ARGdyn0 _ => f0_dyn0(env0, f1a0)
+|
+F1ARGsta0 _ => f0_sta0(env0, f1a0)
+|
+F1ARGmet0 _ => f0_met0(env0, f1a0)
+//
+) where
+{
+//
+(* ****** ****** *)
+//
+fun
+f0_sta0
+( env0:
+! tr12env
+, f1a0: f1arg): f2arg =
+let
+//
+val-
+F1ARGsta0
+(  s1qs  ) = f1a0.node()
+//
+val
+(s2vs, s2ps) =
+trans12_s1qualst(env0, s1qs)
+//
+in
+//
+f2arg(f1a0.lctn(), F2ARGsta0(s2vs, s2ps))
+//
+end (*let*) // end of [f0_sta0(env0,f1a0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dyn0
+( env0
+: !tr12env
+, f1a0: f1arg): f2arg =
+let
+//
+var
+npf1: sint = -1
+//
+val-
+F1ARGdyn0
+(  d1p0  ) = f1a0.node()
+//
+val
+d2ps =
+(
+case+
+d1p0.node() of
+|
+D1Pl1st
+( d1ps ) =>
+trans12_d1patlst(env0, d1ps)
+|
+D1Pl2st
+(dps1, dps2) =>
+(
+npf1 :=
+list_length(dps1);
+list_append(dps1, dps2)
+) where
+{
+val
+dps1 =
+trans12_d1patlst(env0, dps1)
+val
+dps2 =
+trans12_d1patlst(env0, dps2) }
+| _(*non-D1Plist*) =>
+(
+list_sing(trans12_d1pat(env0, d1p0)))
+) : d2patlst // end of [val]
+//
+in//let
+//
+f2arg(f1a0.lctn(), F2ARGdyn0(npf1, d2ps))
+//
+end (*let*) // end of [f0_dyn0(env0,f1a0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_met0
+( env0:
+! tr12env
+, f1a0: f1arg): f2arg =
+let
+//
+val-
+F1ARGmet0
+(  s1es  ) = f1a0.node()
+//
+in//let
+let
+val s2es =
+trans12_s1explst(env0, s1es)
+in//let
+  f2arg(f1a0.lctn(), F2ARGmet0(s2es))
+end (*let*)
+end (*let*) // end of [f0_met0(env0,f1a0)]
+//
+(* ****** ****** *)
+//
+} (*where*) // end of [trans12_f1arg(env0,f1a0)]
+
+(* ****** ****** *)
+
+#implfun
+trans12_d1gua
+( env0,d1g0 ) = let
+//
+val
+loc0 = d1g0.lctn()
+//
+(*
+val
+val () =
+prerrln
+("trans12_d1gua: d1g0 = ", d1g0)
+*)
+//
+in//let
+//
+case+
+d1g0.node() of
+|
+D1GUAexp(d1e1) =>
+d2gua_make_node
+( loc0
+, D2GUAexp(d2e1)) where
+{
+val d2e1 =
+trans12_d1exp(env0, d1e1)
+}
+|
+D1GUAmat(d1e1, d1p2) =>
+d2gua_make_node
+( loc0
+, D2GUAmat(d2e1, d2p2)) where
+{
+val
+d2e1 = trans12_d1exp(env0, d1e1)
+val
+d2p2 = trans12_d1pat(env0, d1p2)
+}
+//
+end (*let*) // end of [trans12_d1gua(env0,d1g0)]
+
+(* ****** ****** *)
+
+#implfun
+trans12_d1gpt
+( env0,dgpt ) = let
+//
+val
+loc0 = dgpt.lctn()
+//
+(*
+val
+val () =
+prerrln
+("trans12_d1gpt: dgpt = ", dgpt)
+*)
+//
+in//let
+//
+case+
+dgpt.node() of
+//
+|
+D1GPTpat(d1p1) =>
+d2gpt_make_node
+( loc0
+, D2GPTpat(d2p1)) where
+{
+val d2p1 =
+trans12_d1pat(env0, d1p1)
+}
+|
+D1GPTgua(d1p1, d1gs) =>
+d2gpt_make_node
+( loc0
+, D2GPTgua(d2p1, d2gs)) where
+{
+val
+d2p1 = trans12_d1pat(env0, d1p1)
+val
+d2gs = trans12_d1gualst(env0, d1gs)
+}
+//
+end (*let*) // end of [trans12_d1gpt(env0,dgpt)]
+
+(* ****** ****** *)
+
+#implfun
+trans12_d1cls
+( env0,d1c0 ) = let
+//
+val
+loc0 = d1c0.lctn()
+//
+(*
+val
+val () =
+prerrln
+("trans12_d1cls: d1c0 = ", d1c0)
+*)
+//
+in//let
+//
+case+
+d1c0.node() of
+|
+D1CLSgpt(dgpt) =>
+d2cls_make_node
+( loc0
+, D2CLSgpt(dgpt)) where
+{
+//
+val () =
+tr12env_pshlam0(env0)
+//
+val
+dgpt =
+trans12_d1gpt(env0, dgpt)
+//
+val//exit
+((*void*)) = tr12env_poplam0(env0)
+//
+}
+|
+D1CLScls(dgpt, d1e1) =>
+d2cls_make_node
+( loc0
+, D2CLScls(dgpt, d2e1)) where
+{
+//
+val () =
+tr12env_pshlam0(env0)
+//
+val
+dgpt =
+trans12_d1gpt(env0, dgpt)
+val () =
+tr12env_add0_d2gpt(env0, dgpt)
+val
+d2e1 = trans12_d1exp(env0, d1e1)
+//
+val//exit
+((*void*)) = tr12env_poplam0(env0)
+//
+} (*where*) // end of [D1CLScls(dgpt,d1e1)]
+//
+end (*let*) // end of [trans12_d1cls(env0,d1c0)]
+
+(* ****** ****** *)
+//
+#implfun
 trans12_s1eff
 ( env0,seff ) =
 (
@@ -2779,7 +2809,7 @@ TEQD1EXPsome(teq1, d1e2) =>
 TEQD2EXPsome(teq1, d2e2) where
 { val
   d2e2 = trans12_d1exp(env0, d1e2) }
-) (*case+*)//end-of(trans12_teqd0exp(...))
+) (*case+*)//end-of(trans12_teqd1exp(...))
 //
 (* ****** ****** *)
 //
@@ -2820,6 +2850,13 @@ optn_trans12_fnp(env0, dopt, trans12_d1pat)
 (* ****** ****** *)
 //
 #implfun
+trans12_l1d1plst
+( env0, ldps ) =
+list_trans12_fnp(env0, ldps, trans12_l1d1p)
+//
+(* ****** ****** *)
+//
+#implfun
 trans12_f1arglst
 ( env0, f1as ) =
 list_trans12_fnp(env0, f1as, trans12_f1arg)
@@ -2846,6 +2883,13 @@ list_trans12_fnp(env0, d1es, trans12_d1exp)
 trans12_d1expopt
 ( env0, dopt ) =
 optn_trans12_fnp(env0, dopt, trans12_d1exp)
+//
+(* ****** ****** *)
+//
+#implfun
+trans12_l1d1elst
+( env0, ldes ) =
+list_trans12_fnp(env0, ldes, trans12_l1d1e)
 //
 (* ****** ****** *)
 
