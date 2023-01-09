@@ -408,6 +408,8 @@ d2e0.node() of
 |D2Eif0 _ => f0_if0(env0, d2e0)
 |D2Ecas0 _ => f0_cas0(env0, d2e0)
 //
+|D2Eseqn _ => f0_seqn(env0, d2e0)
+//
 |D2Etup0 _ => f0_tup0(env0, d2e0)
 //
 |D2Eassgn _ => f0_assgn(env0, d2e0)
@@ -543,8 +545,8 @@ in//let
 (
 case+
 t2p0.node() of
-| T2Plft(t2p1) => t2p1
-| _(*non-T2Plft*) => t2p0) end
+|T2Plft(t2p1) => t2p1
+|_(*non-T2Plft*) => t2p0) endlet
 //
 } (*where*) // end of [f0_var(...)]
 //
@@ -732,6 +734,31 @@ d2exp_make_styp_node
 (loc0, tres, D2Ecas0(tknd, d2e1, d2cs))
 end (*let*)
 end (*let*) // end of [f0_cas0(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_seqn
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+(
+d2exp_make_styp_node
+( loc0
+, d2e1.styp()
+, D2Eseqn(d2es, d2e1))) where
+{
+val loc0 = d2e0.lctn()
+val-
+D2Eseqn
+(d2es, d2e1) = d2e0.node()
+val
+d2es =
+trans2a_d2explst_tpck1
+(env0, d2es, the_s2typ_void())
+val
+d2e1 = trans2a_d2exp(env0, d2e1)
+} (*where*) // end of [f0_seqn(env0,d2e0)]
 //
 (* ****** ****** *)
 //
@@ -1054,24 +1081,6 @@ list_trans2a_fnp(env0, d2gs, trans2a_d2gua)
 (* ****** ****** *)
 //
 #implfun
-trans2a_d2clslst_tpck1
-( env0, dcls
-, targ, tres ) =
-(
-list_map_e1nv
-<x0><y0><e1>(dcls, env0)) where
-{
-#typedef x0 = d2cls
-#typedef y0 = d2cls
-#vwtpdef e1 = tr2aenv
-#impltmp
-map$fopr_e1nv<x0><y0><e1>
-(x0, e1) = trans2a_d2cls_tpck(e1,x0,targ,tres)
-} (*where*)//end of [list_trans2a_fnp(e1,xs,fopr)]
-//
-(* ****** ****** *)
-//
-#implfun
 trans2a_d2pat_tpck
 (env0, d2p0, t2p0) =
 let
@@ -1122,6 +1131,42 @@ val () =
 prerrln("trans2a_d2exp_tpck: t2p0 = ", t2p0)
 //
 } (*where*) // end of [trans2a_d2exp_tpck(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans2a_d2explst_tpck1
+( env0
+, d2es, t2p0 ) =
+(
+list_map_e1nv
+<x0><y0><e1>(d2es, env0)) where
+{
+#typedef x0 = d2exp
+#typedef y0 = d2exp
+#vwtpdef e1 = tr2aenv
+#impltmp
+map$fopr_e1nv<x0><y0><e1>
+(x0, e1) = trans2a_d2exp_tpck(e1, x0, t2p0)
+} (*where*)//end of [list_trans2a_fnp(e1,xs,fopr)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans2a_d2clslst_tpck1
+( env0, dcls
+, targ, tres ) =
+(
+list_map_e1nv
+<x0><y0><e1>(dcls, env0)) where
+{
+#typedef x0 = d2cls
+#typedef y0 = d2cls
+#vwtpdef e1 = tr2aenv
+#impltmp
+map$fopr_e1nv<x0><y0><e1>
+(x0, e1) = trans2a_d2cls_tpck(e1,x0,targ,tres)
+} (*where*)//end of [list_trans2a_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 //
