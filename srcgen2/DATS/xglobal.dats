@@ -658,6 +658,76 @@ end (*let*)
 end (*let*) // end of [f0_pvsload(knd0,fpth)]
 
 (* ****** ****** *)
+//
+fun
+f0_pvsfini(): bool =
+let
+val ans =
+f1_dexpenv() in ans end
+//
+and
+f1_dexpenv(): bool =
+let
+//
+#typedef
+kx0 =
+@(sint,list(d2itm))
+#vwtpdef
+kxs = strm_vt
+@(sint,list(d2itm))
+//
+fun
+auxmain
+( kxs: kxs
+, ans: bool): bool =
+(
+case+ !kxs of
+| ~
+strmcon_vt_nil
+  ((*void*)) => ans
+| ~
+strmcon_vt_cons
+  (kx1 , kxs) =>
+(
+auxmain
+(kxs, fopr(kx1))) where
+{
+fun
+fopr(kx1: kx0) =
+let
+val dis = kx1.1
+in//let
+if // if
+list_length(dis) <= 1
+then ans else
+(
+case+ dis.head() of
+|
+D2ITMvar(d2v) =>
+true(*fail*) where
+{
+val loc =
+d2v.lctn((*nil*))
+val ( ) = prerrln
+("TREAD12-WARNING: the_tr12env_pvsload: f0_pvsfini: loc = ", loc)
+val ( ) = prerrln
+("TREAD12-WARNING: the_tr12env_pvsload: f0_pvsfini: d2v = ", d2v)
+}
+|_(*non-D2ITMvar*) => ans(*pass*)
+)
+end (*let*) // end of [fopr(...)]
+}
+)
+in
+//
+auxmain(kxs, false) where
+{
+val kxs =
+topmap_strmize(the_dexpenv_pvs()) }
+//
+end (*let*) // end of [f1_dexpenv(...)]
+//
+(* ****** ****** *)
 in//local
 (* ****** ****** *)
 //
@@ -675,6 +745,8 @@ if
 (n0 > 0)
 then (0) else (1) where
 {
+//
+(* ****** ****** *)
 //
 val () = f0_pvsinit((*void*))
 //
@@ -708,9 +780,17 @@ f0_pvsload
 (0(*sta*), "/prelude/SATS/char000.sats")
 val () =
 f0_pvsload
-(0(*sta*), "/prelude/SATS/gint000.sats") }
+(0(*sta*), "/prelude/SATS/gint000.sats")
 //
-// end of [if-then-else]
+(* ****** ****** *)
+//
+// HX-2023-01-09:
+val // Issuing warnings for shadowed
+ans = f0_pvsfini() // top-level declarations
+//
+(* ****** ****** *)
+//
+} (*where*) // if-then-else(the_times[] > 0)
 //
 end (*let*) // end of [the_tr12env_pvsload(...)]
 //
