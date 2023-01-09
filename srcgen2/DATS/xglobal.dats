@@ -307,12 +307,18 @@ auxkxs1
 : gmacenv, kxs1: kxs_t): void =
 let
 val (k1, xs1) = kxs1
-val-
-~optn_vt_cons(k1) =
-the_xsymbls_search(k1)
 val-list_cons(x1, xs1) = xs1
 in//let
-  topmap_insert_any(env0, k1, x1)
+//
+(
+case- opt of
+| ~
+optn_vt_cons(k1) =>
+topmap_insert_any(env0, k1, x1))
+where
+{
+  val opt = the_xsymbls_search(k1) }
+//
 end (*let*) // end of [auxkxs1(env0,kxs1)]
 //
 fun
@@ -409,47 +415,17 @@ auxkxs1
 : sexpenv, kxs1: kxs_t): void =
 let
 val (k1, xs1) = kxs1
-val-
-~optn_vt_cons(k1) =
-the_xsymbls_search(k1)
 val-list_cons(x1, xs1) = xs1
 in//let
 (
 case+ x1 of
-|
-S2ITMvar(s2v1) =>
-topmap_insert_any
-( env0 , k1 , x1 )
-|
-S2ITMcst(s2cs) => let
-//
-val
-opt0 =
-topmap_search_opt(env0, k1)
-//
-in//let
-//
-case+ opt0 of
-| ~
-optn_vt_nil() =>
-topmap_insert_any(env0, k1, x1)
-| ~
-optn_vt_cons(s2i0) =>
-(
-case+ s2i0 of
-|S2ITMcst(scs0) =>
-let
-val x1 =
-S2ITMcst
-(list_append(scs0, s2cs))
-in//let
-topmap_insert_any(env0, k1, x1)
-end (*let*) // end of [S2ITMcst]
-|_(*non-S2ITMcst*) =>
-(topmap_insert_any(env0, k1, x1)))
-//
-end (*let*) // end of [S2ITMcst(s2cs)]
-)
+|_(*S2ITM-else*) =>
+topmap_insert_any(env0, k1, x1))
+where
+{
+val- ~
+optn_vt_cons(k1) = the_xsymbls_search(k1)
+}
 end (*let*) // end of [auxkxs1(env0,kxs1)]
 //
 fun
@@ -465,7 +441,7 @@ strmcon_vt_cons(kxs1, kxss) =>
 (
   auxkxs1(env0, kxs1); auxloop(env0, kxss))
 )
-} (*where*) // end of [auxloop(env0, kxss)]
+} (*where*) // end of [ auxloop(env0, kxss) ]
 //
 end (*let*) // end of [the_sexpenv_pvsmrgw(map)]
 
@@ -495,110 +471,18 @@ auxkxs1
 : dexpenv, kxs1: kxs_t): void =
 let
 val (k1, xs1) = kxs1
-val-
-~optn_vt_cons(k1) =
-the_xsymbls_search(k1)
 val-list_cons(x1, xs1) = xs1
 in//let
 (
 case+ x1 of
-//
-|
-D2ITMvar(d2v1) =>
-topmap_insert_any
-( env0 , k1 , x1 )
-//
-|
-D2ITMcon(d2cs) => let
-//
-val
-opt0 =
-topmap_search_opt(env0, k1)
-//
-in//let
-//
-case+ opt0 of
-| ~
-optn_vt_nil() =>
-topmap_insert_any(env0, k1, x1)
-| ~
-optn_vt_cons(d2i0) =>
-(
-case+ d2i0 of
-|D2ITMcon(dcs0) =>
-let
-val x1 =
-D2ITMcon
-(list_append(dcs0, d2cs))
-in//let
-topmap_insert_any(env0, k1, x1)
-end (*let*) // end of [D2ITMcon]
-|_(*non-D2ITMcon*) =>
-(topmap_insert_any(env0, k1, x1)))
-//
-end (*let*) // end of [D2ITMcon(d2cs)]
-//
-|
-D2ITMcst(d2cs) => let
-//
-val
-opt0 =
-topmap_search_opt(env0, k1)
-//
-in//let
-//
-case+ opt0 of
-| ~
-optn_vt_nil() =>
-topmap_insert_any(env0, k1, x1)
-| ~
-optn_vt_cons(d2i0) =>
-(
-case+ d2i0 of
-|D2ITMcst(dcs0) =>
-let
-val x1 =
-D2ITMcst
-(list_append(dcs0, d2cs))
-in//let
-topmap_insert_any(env0, k1, x1)
-end (*let*) // end of [D2ITMcst]
-|_(*non-D2ITMcst*) =>
-(topmap_insert_any(env0, k1, x1)))
-//
-end (*let*) // end of [D2ITMcst(d2cs)]
-//
-|
-D2ITMsym(sym1,d2ps) => let
-val
-opt0 =
-topmap_search_opt(env0, k1)
-//
-in//let
-case+ opt0 of
-| ~
-optn_vt_nil() =>
-topmap_insert_any(env0, k1, x1)
-| ~
-optn_vt_cons(d2i0) =>
-(
-case+ d2i0 of
-|D2ITMsym(sym1,dps2) =>
-let
-val x1 =
-D2ITMsym
-( sym1
-, list_append(d2ps, dps2))
-in//let
-topmap_insert_any(env0, k1, x1)
-end (*let*) // end of [D2ITMsym]
-|_(*non-D2ITMcst*) =>
-(topmap_insert_any(env0, k1, x1)))
-//
-end (*let*) // end of [D2ITMsym(sym1,d2ps)]
-//
-) (*case+*)
-end (*let*) // end of [ auxkxs1(env0, kxs1) ]
+|_(*D2ITM-else*) =>
+topmap_insert_any(env0, k1, x1))
+where
+{
+val- ~
+optn_vt_cons(k1) = the_xsymbls_search(k1)
+}
+end (*let*) // end of [auxkxs1(env0, kxs1)]
 //
 fun
 auxloop
@@ -794,6 +678,8 @@ then (0) else (1) where
 //
 val () = f0_pvsinit((*void*))
 //
+(* ****** ****** *)
+//
 val () =
 f0_pvsload
 (0(*sta*),"/prelude/basics0.sats") 
@@ -856,7 +742,16 @@ let
 val topmap = the_sortenv_pvs()
 in//let
   topmap_search_opt(topmap, key)
-end (*let*) // [the_sortenv_pvsfind]
+end where
+{
+(*
+val () =
+prerrln
+("the_sortenv_pvsfind: key = ", key)
+*)
+} (*where*) // [the_sortenv_pvsfind]
+//
+(* ****** ****** *)
 //
 #implfun
 the_sexpenv_pvsfind
@@ -869,7 +764,16 @@ let
 val topmap = the_sexpenv_pvs()
 in//let
   topmap_search_opt(topmap, key)
-end (*let*) // [the_sexpenv_pvsfind]
+end where
+{
+(*
+val () =
+prerrln
+("the_sexpenv_pvsfind: key = ", key)
+*)
+} (*where*) // [the_sexpenv_pvsfind]
+//
+(* ****** ****** *)
 //
 #implfun
 the_dexpenv_pvsfind
@@ -882,7 +786,14 @@ let
 val topmap = the_dexpenv_pvs()
 in//let
   topmap_search_opt(topmap, key)
-end (*let*) // [the_dexpenv_pvsfind]
+end where
+{
+(*
+val () =
+prerrln
+("the_dexpenv_pvsfind: key = ", key)
+*)
+} (*where*) // [the_dexpenv_pvsfind]
 //
 (* ****** ****** *)
 //

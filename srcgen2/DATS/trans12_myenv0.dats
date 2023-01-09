@@ -790,7 +790,7 @@ case+ opt of
 optn_vt_cons _ => opt
 | ~
 optn_vt_nil( ) => the_dexpenv_pvsfind(k0)
-end (*let*)//end-of-[opt_vt_nil()]
+end (*let*)//end-of-[optn_vt_nil()]
 //
 end (*let*)//end-of-[dexpenv_search_opt(denv,k0)]
 
@@ -1135,12 +1135,12 @@ the_dexpenv_allist_prerr((*void*))
 in//let
 end where
 {
-(*
+// (*
 val () =
 prerrln("tr12env_add0_d2itm: k0 = ", k0)
 val () =
 prerrln("tr12env_add0_d2itm: x0 = ", x0)
-*)
+// *)
 } (*where*)//end-[tr12env_add0_d2itm(env0,k0,x0)]
 
 (* ****** ****** *)

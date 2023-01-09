@@ -713,6 +713,25 @@ D2LAB(lab,d2e1) => d2exp_fpemsg(out,d2e1)
 (* ****** ****** *)
 //
 #implfun
+f2arg_fpemsg
+(out, farg) =
+(
+case+
+farg.node() of
+|F2ARGdyn0
+(npf1, d2ps) =>
+d2patlst_fpemsg(out, d2ps)
+//
+|F2ARGsta0
+(s2vs, s2es) =>
+s2explst_fpemsg(out, s2es)
+|F2ARGmet0(s2es) =>
+s2explst_fpemsg(out, s2es)
+) (*case+*)//end-of-(f2arg_fpemsg(out,farg)]
+//
+(* ****** ****** *)
+//
+#implfun
 d2gua_fpemsg
 (out, dgua) =
 (

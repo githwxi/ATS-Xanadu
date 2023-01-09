@@ -383,9 +383,9 @@ print("D2Econs(", d2cs, ")")
 print("D2Ecsts(", d2cs, ")")
 //
 |
-D2Esym0(d1e0, dpis) =>
+D2Esym0(d1e1, dpis) =>
 print
-("D2Esym0(",d1e0,";",dpis,")")
+("D2Esym0(",d1e1,";",dpis,")")
 //
 |
 D2Esapp
