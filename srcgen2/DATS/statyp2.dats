@@ -109,21 +109,18 @@ s2typ_make_node
 } (*where*) // end of [s2typ_f2cl(...)]
 //
 (* ****** ****** *)
-
-#implfun
-s2typ_tup0
-(npf1, t2ps) =
-let
-val s2t0 =
-the_sort2_type(*0*)
-val tknd = TRCDflt0
-val ltps =
-f0_labelize(t2ps, 0(*i0*))
-in//let
-s2typ_make_node
-(s2t0,T2Ptrcd(tknd,npf1,ltps))
-end where
-{
+//
+local
+//
+fun
+f0_trcdknd
+(tknd: trcdknd): sort2 =
+(
+case+ tknd of
+|TRCDbox0() => the_sort2_tbox
+|TRCDbox1() => the_sort2_tbox
+|
+_(*otherwise*) => the_sort2_type)
 //
 fun
 f0_labelize
@@ -143,8 +140,38 @@ list_cons(ltp1,f0_labelize(t2ps,i0+1))
 end (*let*)
 ) (*case+*) // end-[f0_labelize(...)]
 //
-} (*where*) // end of [s2typ_tup0(...)]
-
+in//local
+//
+#implfun
+s2typ_tup0
+(npf1, t2ps) =
+let
+val s2t0 =
+the_sort2_type(*0*)
+val trcd = TRCDflt0
+val ltps =
+f0_labelize(t2ps, 0(*i0*))
+in//let
+s2typ_make_node
+(s2t0,T2Ptrcd(trcd,npf1,ltps))
+end // end of [s2typ_tup0(...)]
+//
+#implfun
+s2typ_tup1
+( tknd
+, npf1, t2ps) =
+let
+val s2t0 =
+f0_trcdknd(tknd)
+val ltps =
+f0_labelize(t2ps, 0(*i0*))
+in//let
+s2typ_make_node
+(s2t0,T2Ptrcd(tknd,npf1,ltps))
+end // end of [s2typ_tup1(...)]
+//
+endloc // end of [local(s2typ_tup0/tup1)]
+//
 (* ****** ****** *)
 //
 #implfun
