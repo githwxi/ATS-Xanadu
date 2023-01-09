@@ -147,6 +147,8 @@ g_print<symbl>(sym) =
 symbl_fprint(g_print$out<>(), sym)
 (* ****** ****** *)
 #impltmp
+g_cmp<label> = label_cmp
+#impltmp
 g_print<label>(lab) =
 label_fprint(g_print$out<>(), lab)
 (* ****** ****** *)
@@ -990,6 +992,18 @@ g_cmp<d2var>
 (d2v1, d2v2) =
 (
 d2v1.stmp() \cmp d2v2.stmp())
+//
+(* ****** ****** *)
+//
+#impltmp
+{x0:t0}
+g_cmp<s2lab(x0)>
+(  slx1, slx2  ) =
+(
+g_cmp<label>(l1, l2) where
+{
+val+S2LAB(l1, itm1) = slx1
+val+S2LAB(l2, itm2) = slx2} )
 //
 (* ****** ****** *)
 (*

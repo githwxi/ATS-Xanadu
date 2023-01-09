@@ -51,5 +51,23 @@ label_none
 ((*void*)) = LABsym(symbl("*NONE*"))
 //
 (* ****** ****** *)
+//
+#implfun
+label_cmp(lab1, lab2) =
+(
+case+ lab1 of
+|LABint(i1) =>
+(
+case+ lab2 of
+|LABint(i2) =>
+g_cmp<sint>(i1, i2)
+|LABsym(s2) => ( -1 )) // lt
+|LABsym(s1) =>
+(
+case+ lab2 of
+|LABint(i2) => (  1  ) // gt
+|LABsym(s2) => symbl_cmp(s1, s2)))//end
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xlabel0.dats] *)

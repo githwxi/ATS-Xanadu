@@ -94,6 +94,9 @@ LEX = "./lexing0.sats"
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
 (* ****** ****** *)
+#typedef l2d2p = $D2E.l2d2p
+#typedef l2d2e = $D2E.l2d2e
+(* ****** ****** *)
 #typedef f2arg = $D2E.f2arg
 (* ****** ****** *)
 #typedef d2gua = $D2E.d2gua
@@ -117,6 +120,9 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef d2explst = $D2E.d2explst
 #typedef d2expopt = $D2E.d2expopt
+(* ****** ****** *)
+#typedef l2d2plst = $D2E.l2d2plst
+#typedef l2d2elst = $D2E.l2d2elst
 (* ****** ****** *)
 #typedef f2arglst = $D2E.f2arglst
 (* ****** ****** *)
@@ -168,6 +174,20 @@ s2typlst_of_d2explst
 ( d2es: d2explst ): s2typlst
 #symload
 s2typlst with s2typlst_of_d2explst
+//
+(* ****** ****** *)
+//
+fun
+l2t2plst_of_l2d2plst
+( ldps: l2d2plst ): l2t2plst
+#symload
+l2t2plst with l2t2plst_of_l2d2plst
+//
+fun
+l2t2plst_of_l2d2elst
+( ldes: l2d2elst ): l2t2plst
+#symload
+l2t2plst with l2t2plst_of_l2d2elst
 //
 (* ****** ****** *)
 //
@@ -255,6 +275,18 @@ trans2a_d2exp
 (* ****** ****** *)
 //
 fun
+trans2a_l2d2p
+( env0:
+! tr2aenv, ld2p: l2d2p): l2d2p
+//
+fun
+trans2a_l2d2e
+( env0:
+! tr2aenv, ld2e: l2d2e): l2d2e
+//
+(* ****** ****** *)
+//
+fun
 trans2a_f2arg
 ( env0:
 ! tr2aenv, f2a0: f2arg): f2arg
@@ -326,6 +358,13 @@ trans2a_d2patlst
 (* ****** ****** *)
 //
 fun
+trans2a_l2d2plst
+( env0:
+! tr2aenv, ldps: l2d2plst): l2d2plst
+//
+(* ****** ****** *)
+//
+fun
 trans2a_d2expopt
 ( env0:
 ! tr2aenv, dopt: d2expopt): d2expopt
@@ -334,6 +373,13 @@ fun
 trans2a_d2explst
 ( env0:
 ! tr2aenv, d2es: d2explst): d2explst
+//
+(* ****** ****** *)
+//
+fun
+trans2a_l2d2elst
+( env0:
+! tr2aenv, ldes: l2d2elst): l2d2elst
 //
 (* ****** ****** *)
 //

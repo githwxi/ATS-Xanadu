@@ -374,7 +374,22 @@ end (*let*) // end of [f0_annot(env0,...)]
 
 (* ****** ****** *)
 //
-} (*where*) // end of [trans2a_d2pat(env0,d2p0)]
+} (*where*)//end-of-[trans2a_d2pat(env0,d2p0)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans2a_l2d2p
+( env0,ld2p ) =
+let
+//
+val+
+D2LAB
+(lab0, d2p1) = ld2p
+//
+in//let
+D2LAB(lab0, trans2a_d2pat(env0, d2p1))
+end (*let*)//end-of-[trans2a_l2d2p(env0,ld2p)]
 //
 (* ****** ****** *)
 //
@@ -416,6 +431,7 @@ d2e0.node() of
 //
 |D2Etup0 _ => f0_tup0(env0, d2e0)
 |D2Etup1 _ => f0_tup1(env0, d2e0)
+|D2Ercd2 _ => f0_rcd2(env0, d2e0)
 //
 |D2Eassgn _ => f0_assgn(env0, d2e0)
 |D2Ebrckt _ => f0_brckt(env0, d2e0)
@@ -812,7 +828,8 @@ D2Etup1
 ( tknd
 , npf1, d2es) = d2e0.node()
 val
-d2es = trans2a_d2explst(env0, d2es)
+d2es =
+trans2a_d2explst(env0, d2es)
 val
 trcd =
 (
@@ -825,6 +842,40 @@ val
 t2p0 =
 s2typ_tup1(trcd, npf1, s2typlst(d2es))
 } (*where*) // end of [f0_tup1(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_rcd2
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+(
+d2exp_make_styp_node
+(
+loc0, t2p0,
+D2Ercd2(tknd, npf1, ldes))) where
+{
+val loc0 = d2e0.lctn()
+val-
+D2Ercd2
+( tknd
+, npf1, ldes) = d2e0.node()
+val
+ldes =
+trans2a_l2d2elst(env0, ldes)
+val
+trcd =
+(
+case-
+tknd.node() of
+|T_TRCD20(0) => TRCDflt0(*void*)
+|T_TRCD20(_) => TRCDbox0(*void*)
+)
+val
+t2p0 =
+s2typ_rcd2(trcd, npf1, l2t2plst(ldes))
+} (*where*) // end of [f0_rcd2(env0,d2e0)]
 //
 (* ****** ****** *)
 //
@@ -932,6 +983,21 @@ end (*let*) // end of [f0_where(env0,...)]
 (* ****** ****** *)
 //
 } (*where*) // end of [trans2a_d2exp(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans2a_l2d2e
+( env0,ld2e ) =
+let
+//
+val+
+D2LAB
+(lab0, d2e1) = ld2e
+//
+in//let
+D2LAB(lab0, trans2a_d2exp(env0, d2e1))
+end (*let*) // end-of-[trans2a_l2d2e(env0,ld2e)]
 //
 (* ****** ****** *)
 //
@@ -1093,6 +1159,13 @@ list_trans2a_fnp(env0, d2ps, trans2a_d2pat)
 (* ****** ****** *)
 //
 #implfun
+trans2a_l2d2plst
+( env0, ldps ) =
+list_trans2a_fnp(env0, ldps, trans2a_l2d2p)
+//
+(* ****** ****** *)
+//
+#implfun
 trans2a_d2expopt
 ( env0, dopt ) =
 optn_trans2a_fnp(env0, dopt, trans2a_d2exp)
@@ -1101,6 +1174,13 @@ optn_trans2a_fnp(env0, dopt, trans2a_d2exp)
 trans2a_d2explst
 ( env0, d2es ) =
 list_trans2a_fnp(env0, d2es, trans2a_d2exp)
+//
+(* ****** ****** *)
+//
+#implfun
+trans2a_l2d2elst
+( env0, ldes ) =
+list_trans2a_fnp(env0, ldes, trans2a_l2d2e)
 //
 (* ****** ****** *)
 //

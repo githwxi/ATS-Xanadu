@@ -1251,6 +1251,27 @@ prerrln("tread12_d2pat: d2p0 = ", d2p0)
 (* ****** ****** *)
 //
 #implfun
+tread12_l2d2p
+  (ld2p, err) =
+let
+//
+val e00 = err
+//
+val+
+D2LAB(lab0, d2p1) = ld2p
+//
+val
+d2p1 = tread12_d2pat(d2p1, err)
+//
+in//let
+if // if
+(e00=err)
+then (ld2p) else D2LAB(lab0, d2p1)
+end (*let*)//end-(tread12_l2d2p(ld2p,err))
+//
+(* ****** ****** *)
+//
+#implfun
 tread12_d2exp
 ( d2e0, err ) =
 (
@@ -2035,6 +2056,27 @@ prerrln("tread12_d2exp: d2e0 = ", d2e0)
 *)
 //
 } (*where*)//end-[tread12_d2exp(d2e0,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread12_l2d2e
+  (ld2e, err) =
+let
+//
+val e00 = err
+//
+val+
+D2LAB(lab0, d2e1) = ld2e
+//
+val
+d2e1 = tread12_d2exp(d2e1, err)
+//
+in//let
+if // if
+(e00=err)
+then (ld2e) else D2LAB(lab0, d2e1)
+end (*let*)//end-(tread12_l2d2e(ld2e,err))
 //
 (* ****** ****** *)
 //
