@@ -776,7 +776,6 @@ D2Eassgn of
 |
 D2Ebrckt of
 (d2ptmlst(*[]*), d2explst(*arg*))
-//
 |
 D2Edtsel of
 (token
