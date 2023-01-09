@@ -687,8 +687,8 @@ case+ xs of
 |list_cons(x1, xs) =>
 (
   if
-  g_cmp<x0>(x0,x1) > 0
-  then false else loop(x1, xs) ) )
+  g_cmp<x0>(x0,x1) <= 0
+  then loop(x1, xs) else false ) )
 } (*where*) // end-of-[list_sortedq(xs)]
 //
 (* ****** ****** *)
