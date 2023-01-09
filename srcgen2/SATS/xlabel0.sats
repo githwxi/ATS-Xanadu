@@ -60,6 +60,15 @@ datatype label =
 fun label_none(): label
 (* ****** ****** *)
 //
+(*
+fun
+label_eq(label, label): bool
+*)
+fun
+label_cmp(label, label): sint
+//
+(* ****** ****** *)
+//
 fun
 label_fprint(FILR, label): void
 //

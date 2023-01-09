@@ -122,6 +122,8 @@ case+ tknd of
 |
 _(*otherwise*) => the_sort2_type)
 //
+(* ****** ****** *)
+//
 fun
 f0_labelize
 ( t2ps
@@ -139,6 +141,35 @@ in//let
 list_cons(ltp1,f0_labelize(t2ps,i0+1))
 end (*let*)
 ) (*case+*) // end-[f0_labelize(...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_orderize
+(ltps: l2t2plst): l2t2plst =
+let
+//
+#typedef x0 = l2t2p
+//
+fun
+f1_test
+( ltps
+: list(x0)): bool =
+list_sortedq<x0>(ltps)
+fun
+f1_sort
+( ltps
+: l2t2plst): l2t2plst =
+list_mergesort<x0>(ltps)
+//
+in//let
+//
+(
+  if // if
+  f1_test(ltps)
+  then ltps else f1_sort(ltps) )
+//
+end (*let*) // end-[f0_orderize(...)]
 //
 in//local
 //
@@ -165,6 +196,20 @@ val s2t0 =
 f0_trcdknd(tknd)
 val ltps =
 f0_labelize(t2ps, 0(*i0*))
+in//let
+s2typ_make_node
+(s2t0,T2Ptrcd(tknd,npf1,ltps))
+end // end of [s2typ_tup1(...)]
+//
+#implfun
+s2typ_rcd2
+( tknd
+, npf1, ltps) =
+let
+val s2t0 =
+f0_trcdknd(tknd)
+val ltps =
+f0_orderize(ltps)
 in//let
 s2typ_make_node
 (s2t0,T2Ptrcd(tknd,npf1,ltps))

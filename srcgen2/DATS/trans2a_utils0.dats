@@ -83,6 +83,46 @@ map$fopr<x0><y0>(d2e) = d2e.styp()
 // end of [ s2typlst_of_d2explst ]
 //
 (* ****** ****** *)
+//
+#implfun
+l2t2plst_of_l2d2plst
+( ldps ) =
+(
+list_map<x0><y0>(ldps)) where
+{
+//
+#typedef x0 = l2d2p
+#typedef y0 = l2t2p
+//
+#impltmp
+map$fopr<x0><y0>(ldp) =
+S2LAB
+(l0, d2p.styp()) where
+{
+  val+D2LAB(l0, d2p) = ldp } }
+// end of [ l2t2plst_of_l2d2plst ]
+//
+(* ****** ****** *)
+//
+#implfun
+l2t2plst_of_l2d2elst
+( ldes ) =
+(
+list_map<x0><y0>(ldes)) where
+{
+//
+#typedef x0 = l2d2e
+#typedef y0 = l2t2p
+//
+#impltmp
+map$fopr<x0><y0>(lde) =
+S2LAB
+(l0, d2e.styp()) where
+{
+  val+D2LAB(l0, d2e) = lde } }
+// end of [ l2t2plst_of_l2d2elst ]
+//
+(* ****** ****** *)
 
 #implfun
 unify2a_s2typ

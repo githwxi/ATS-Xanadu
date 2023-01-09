@@ -228,6 +228,10 @@ fun
 s2typ_tup1
 (trcdknd(*tknd*)
 ,npf1:sint,t2ps:s2typlst): s2typ
+fun
+s2typ_rcd2
+(trcdknd(*tknd*)
+,npf1:sint,ltps:l2t2plst): s2typ
 (* ****** ****** *)
 fun
 s2typ_make_node

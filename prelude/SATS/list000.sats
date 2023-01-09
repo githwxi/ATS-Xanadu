@@ -296,6 +296,13 @@ list_foreach(xs: list(x0)): void
 (* ****** ****** *)
 //
 fun
+<a:t0>
+list_sortedq
+  {n:i0}(xs: list(a, n)): (bool)
+//
+(* ****** ****** *)
+//
+fun
 <x0:t0>
 list_listize
 {n:int}

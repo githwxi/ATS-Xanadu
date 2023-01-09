@@ -668,6 +668,33 @@ case+ xs of
 //
 #impltmp
 <x0>(*tmp*)
+list_sortedq(xs) =
+(
+case+ xs of
+|list_nil
+((*void*)) => true
+|list_cons
+( x0, xs ) => loop(x0, xs)
+) where
+{
+fnx
+loop
+( x0: x0
+, xs: list(x0)): bool =
+(
+case+ xs of
+|list_nil() => true
+|list_cons(x1, xs) =>
+(
+  if
+  g_cmp<x0>(x0,x1) > 0
+  then false else loop(x1, xs) ) )
+} (*where*) // end-of-[list_sortedq(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
 list_listize = list_copy_vt<x0>
 #impltmp
 <x0>(*tmp*)

@@ -522,6 +522,27 @@ prerrln("tread01_d1pat: d1p0 = ", d1p0)
 
 (* ****** ****** *)
 //
+#implfun
+tread01_l1d1p
+  (ld1p, err) =
+let
+//
+val e00 = err
+//
+val+
+D1LAB(lab0, d1p1) = ld1p
+//
+val
+d1p1 = tread01_d1pat(d1p1, err)
+//
+in//let
+if // if
+(e00=err)
+then (ld1p) else D1LAB(lab0, d1p1)
+end (*let*)//end(tread01_l1d1p(ld1p,err))
+//
+(* ****** ****** *)
+//
 fun
 d1exp_errck
 (lvl: sint
@@ -1699,7 +1720,7 @@ in//let
 if // if
 (e00=err)
 then (ld1e) else D1LAB(lab0, d1e1)
-end (*let*)//end(tread01_d1exp(ld1e,err))
+end (*let*)//end(tread01_l1d1e(ld1e,err))
 
 (* ****** ****** *)
 //
