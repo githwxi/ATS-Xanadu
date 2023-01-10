@@ -146,6 +146,8 @@ d2p0.node() of
 |D2Pdapp _ => f0_dapp(env0, d2p0)
 //
 |D2Ptup0 _ => f0_tup0(env0, d2p0)
+|D2Ptup1 _ => f0_tup1(env0, d2p0)
+|D2Prcd2 _ => f0_rcd2(env0, d2p0)
 //
 |D2Pannot _ => f0_annot(env0, d2p0)
 //
@@ -345,6 +347,74 @@ the_s2typ_void()
 |list_cons _ =>
 s2typ_tup0(npf1, s2typlst(d2ps))): s2typ
 } (*where*) // end of [f0_tup0(env0,d2p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup1
+( env0:
+! tr2aenv
+, d2p0: d2pat): d2pat =
+(
+d2pat_make_styp_node
+(
+loc0, t2p0,
+D2Ptup1(tknd, npf1, d2ps))) where
+{
+val loc0 = d2p0.lctn()
+val-
+D2Ptup1
+( tknd
+, npf1, d2ps) = d2p0.node()
+val
+d2ps =
+trans2a_d2patlst(env0, d2ps)
+val
+trcd =
+(
+case-
+tknd.node() of
+|T_TRCD10(0) => TRCDflt0(*void*)
+|T_TRCD10(_) => TRCDbox0(*void*)
+)
+val
+t2p0 =
+s2typ_tup1(trcd, npf1, s2typlst(d2ps))
+} (*where*) // end of [f0_tup1(env0,d2p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_rcd2
+( env0:
+! tr2aenv
+, d2p0: d2pat): d2pat =
+(
+d2pat_make_styp_node
+(
+loc0, t2p0,
+D2Prcd2(tknd, npf1, ldps))) where
+{
+val loc0 = d2p0.lctn()
+val-
+D2Prcd2
+( tknd
+, npf1, ldps) = d2p0.node()
+val
+ldps =
+trans2a_l2d2plst(env0, ldps)
+val
+trcd =
+(
+case-
+tknd.node() of
+|T_TRCD20(0) => TRCDflt0(*void*)
+|T_TRCD20(_) => TRCDbox0(*void*)
+)
+val
+t2p0 =
+s2typ_rcd2(trcd, npf1, l2t2plst(ldps))
+} (*where*) // end of [f0_rcd2(env0,d2p0)]
 //
 (* ****** ****** *)
 
