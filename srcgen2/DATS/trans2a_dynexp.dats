@@ -503,11 +503,18 @@ d2e0.node() of
 |D2Etup1 _ => f0_tup1(env0, d2e0)
 |D2Ercd2 _ => f0_rcd2(env0, d2e0)
 //
+|D2Plam0 _ => f0_lam0(env0, d2e0)
+(*
+|D2Pfix0 _ => f0_fix0(env0, d2e0)
+*)
+//
 |D2Eassgn _ => f0_assgn(env0, d2e0)
 |D2Ebrckt _ => f0_brckt(env0, d2e0)
 |D2Edtsel _ => f0_dtsel(env0, d2e0)
 //
 |D2Ewhere _ => f0_where(env0, d2e0)
+//
+|D2Eannot _ => f0_annot(env0, d2e0)
 //
 | _(*otherwise*) => d2exp_none2(d2e0)
 //
@@ -950,6 +957,58 @@ s2typ_rcd2(trcd, npf1, l2t2plst(ldes))
 (* ****** ****** *)
 //
 fun
+f0_lam0
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+(
+d2exp_make_styp_node
+(
+loc0,
+tfun,
+D2Elam0
+( tknd, f2as
+, sres, arrw, dexp))) where
+{
+//
+val loc0 = d2e0.lctn()
+//
+val-
+D2Elam0
+( tknd
+, f2as, sres
+, arrw, dexp) = d2e0.node()
+//
+val f2as =
+trans2a_f2arglst(env0, f2as)
+//
+val dexp =
+(
+case+ sres of
+|
+S2RESnone((*void*)) =>
+trans2a_d2exp(env0, dexp)
+|
+S2RESsome(seff, sexp) =>
+let
+val
+tres =
+s2exp_stpize(sexp) in
+trans2a_d2exp_tpck(env0,dexp,tres)
+end (*let*) // end of [ S2RESsome ]
+) : (d2exp) // end of [ val(dexp) ]
+//
+val tres = dexp.styp((*void*))
+val tfun =
+s2typ_fun1_f2as_tres(f2as, tres)
+val (  ) = prerrln
+("trans2a_d2exp: f0_lam0: tfun = ", tfun)
+//
+} (*where*) // end of [f0_lam0(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_assgn
 ( env0:
 ! tr2aenv
@@ -1050,6 +1109,32 @@ d2exp_make_styp_node
 , d2e1.styp(), D2Ewhere(d2e1, d2cs))
 end (*let*) // end of [f0_where(env0,...)]
 //
+(* ****** ****** *)
+
+fun
+f0_annot
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Eannot
+( d2e1
+, s1e2, s2e2) = d2e0.node()
+//
+val t2p2 = s2exp_stpize(s2e2)
+val t2p2 = s2typ_hnfiz0(t2p2)
+//
+val d2e1 =
+trans2a_d2exp_tpck(env0, d2e1, t2p2)
+//
+in//let
+d2exp_make_styp_node
+(loc0, t2p2, D2Eannot(d2e1,s1e2,s2e2))
+end (*let*) // end of [f0_annot(env0,...)]
+
 (* ****** ****** *)
 //
 } (*where*) // end of [trans2a_d2exp(env0,d2e0)]

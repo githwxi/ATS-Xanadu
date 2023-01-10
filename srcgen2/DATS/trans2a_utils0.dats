@@ -45,6 +45,8 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/xbasics.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
@@ -52,6 +54,111 @@ ATS_PACKNAME
 #staload "./../SATS/trans2a.sats"
 (* ****** ****** *)
 #staload _ = "./statyp2_tmplib.dats"
+(* ****** ****** *)
+//
+fun
+s2typ_fun1
+( f2cl
+: f2clknd
+, npf1: sint
+, t2ps
+: s2typlst, tres: s2typ): s2typ =
+let
+val s2t0 =
+(
+case f2cl of
+|
+F2CLfun() =>
+the_sort2_tbox
+|
+F2CLclo(knd) =>
+(
+case+ knd of
+| 0 => the_sort2_type
+| 1 => the_sort2_vtbx
+| _ => the_sort2_tbox))
+val f2cl = s2typ_f2cl(f2cl)
+in//let
+s2typ_make_node
+(s2t0, T2Pfun1(f2cl,npf1,t2ps,tres))
+end (*let*) // end of [s2typ_fun1(...)]
+//
+(* ****** ****** *)
+
+#implfun
+s2typ_fun1_f2as_tres
+  (f2as, tres) =
+let
+val
+ndyn = f1_ndyn(f2as)
+in//let
+f0_f2as(f2as, ndyn, tres)
+end where
+{
+//
+fun
+f0_f2as
+( f2as
+: f2arglst
+, ndyn: sint
+, tres: s2typ): s2typ =
+(
+case+ f2as of
+|
+list_nil() => tres
+|
+list_cons(f2a1, f2as) =>
+(
+case+
+f2a1.node() of
+|
+F2ARGmet0 _ =>
+f0_f2as(f2as, ndyn, tres)
+|
+F2ARGsta0
+(s2vs, s2ps) =>
+let
+val s2t0 = tres.sort()
+in//let
+s2typ
+(s2t0,T2Puni0(s2vs, tres))
+end where
+{
+val
+tres =
+f0_f2as(f2as, ndyn, tres) }
+|
+F2ARGdyn0(npf1, d2ps) =>
+(
+s2typ_fun1
+(f2cl,npf1,t2ps,tres)) where
+{
+val ndyn = ndyn - 1
+val tres =
+f0_f2as(f2as, ndyn, tres)
+val t2ps =
+s2typlst_of_d2patlst(d2ps)
+val f2cl =
+if
+(ndyn <= 0)
+then F2CLfun() else F2CLclo(1) } )
+)(*case+*)//end-of-[f0_f2as(f2as,...)]
+//
+and
+f1_ndyn(xs: f2arglst): sint =
+(
+case+ xs of
+|
+list_nil() => 0
+|
+list_cons(x1, xs) =>
+(
+case+ x1.node() of
+|F2ARGdyn0 _ =>
+ f1_ndyn(xs) + 1 | _ => f1_ndyn(xs)))
+//
+}(*where*)//end-[s2typ_fun1_f2as_tres]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -65,7 +172,7 @@ list_map<x0><y0>(d2ps)) where
 #impltmp
 map$fopr<x0><y0>(d2p) = d2p.styp()
 }
-// end of [ s2typlst_of_d2patlst ]
+// end of [s2typlst_of_d2patlst(d2ps)]
 //
 (* ****** ****** *)
 //
@@ -80,7 +187,7 @@ list_map<x0><y0>(d2es)) where
 #impltmp
 map$fopr<x0><y0>(d2e) = d2e.styp()
 }
-// end of [ s2typlst_of_d2explst ]
+// end of [s2typlst_of_d2explst(d2es)]
 //
 (* ****** ****** *)
 //
@@ -100,7 +207,7 @@ S2LAB
 (l0, d2p.styp()) where
 {
   val+D2LAB(l0, d2p) = ldp } }
-// end of [ l2t2plst_of_l2d2plst ]
+// end of [l2t2plst_of_l2d2plst(ldps)]
 //
 (* ****** ****** *)
 //
@@ -120,7 +227,7 @@ S2LAB
 (l0, d2e.styp()) where
 {
   val+D2LAB(l0, d2e) = lde } }
-// end of [ l2t2plst_of_l2d2elst ]
+// end of [l2t2plst_of_l2d2elst(ldes)]
 //
 (* ****** ****** *)
 

@@ -164,6 +164,12 @@ x2t2p with x2t2p_make_dvar
 (* ****** ****** *)
 //
 fun
+s2typ_fun1_f2as_tres
+(f2as:f2arglst,tres:s2typ):s2typ
+//
+(* ****** ****** *)
+//
+fun
 s2typlst_of_d2patlst
 ( d2ps: d2patlst ): s2typlst
 #symload
