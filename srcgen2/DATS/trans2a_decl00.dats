@@ -72,35 +72,6 @@ s2typ_xtv(x2t2p_make_lctn(loc0))
 //
 (* ****** ****** *)
 //
-fun
-s2typ_fun1
-( f2cl
-: f2clknd
-, npf1: sint
-, t2ps
-: s2typlst, tres: s2typ): s2typ =
-let
-val s2t0 =
-(
-case f2cl of
-|
-F2CLfun() =>
-the_sort2_tbox
-|
-F2CLclo(knd) =>
-(
-case+ knd of
-| 0 => the_sort2_type
-| 1 => the_sort2_vtbx
-| _ => the_sort2_tbox))
-val f2cl = s2typ_f2cl(f2cl)
-in//let
-s2typ_make_node
-(s2t0, T2Pfun1(f2cl,npf1,t2ps,tres))
-end (*let*) // end of [s2typ_fun1(...)]
-//
-(* ****** ****** *)
-//
 #implfun
 trans2a_d2ecl
 ( env0, d2cl ) = let
@@ -390,7 +361,8 @@ trans2a_d2exp(env0, dexp)
 |S2RESsome(seff, sexp) =>
 let
 val
-tres = s2exp_stpize(sexp) in
+tres =
+s2exp_stpize(sexp) in
 trans2a_d2exp_tpck(env0, dexp, tres)
 end (*let*) // end of [S2RESsome(...)]
 )
@@ -522,7 +494,7 @@ s2typ_hnfiz0(s2exp_stpize(s2e1))
 ) : s2typ // end of [ val(tres) ]
 //
 val tfun =
-f0_f2as(f2as, f1_ndyn(f2as), tres)
+s2typ_fun1_f2as_tres(f2as, tres)
 val (  ) =
 prerrln
 ("trans2a_d2fundcl: tfun = ", tfun)
@@ -537,67 +509,6 @@ end
 //
 end where
 {
-//
-fun
-f0_f2as
-( f2as
-: f2arglst
-, ndyn: sint
-, tres: s2typ): s2typ =
-(
-case+ f2as of
-|
-list_nil() => tres
-|
-list_cons(f2a1, f2as) =>
-(
-case+
-f2a1.node() of
-|
-F2ARGmet0 _ =>
-f0_f2as(f2as, ndyn, tres)
-|
-F2ARGsta0
-(s2vs, s2ps) =>
-let
-val s2t0 = tres.sort()
-in//let
-s2typ
-(s2t0,T2Puni0(s2vs, tres))
-end where
-{
-val
-tres =
-f0_f2as(f2as, ndyn, tres) }
-|
-F2ARGdyn0(npf1, d2ps) =>
-(
-s2typ_fun1
-(f2cl,npf1,t2ps,tres)) where
-{
-val ndyn = ndyn - 1
-val tres =
-f0_f2as(f2as, ndyn, tres)
-val t2ps =
-s2typlst_of_d2patlst(d2ps)
-val f2cl =
-if
-(ndyn <= 0)
-then F2CLfun() else F2CLclo(1) } )
-)(*case+*)//end-of-[f0_f2as(f2as,...)]
-//
-and
-f1_ndyn(xs: f2arglst): sint =
-(
-case+ xs of
-|
-list_nil() => 0
-|
-list_cons(x1, xs) =>
-(
-case+ x1.node() of
-|F2ARGdyn0 _ =>
- f1_ndyn(xs) + 1 | _ => f1_ndyn(xs)))
 //
 (*
 val () =
