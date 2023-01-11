@@ -86,8 +86,8 @@ end (*let*) // end of [s2typ_fun1(...)]
 (* ****** ****** *)
 
 #implfun
-s2typ_fun1_f2as_tres
-  (f2as, tres) =
+s2typ_fun1_f2arglst
+( f2as, f2cl, tres ) =
 let
 val
 ndyn = f1_ndyn(f2as)
@@ -141,7 +141,7 @@ s2typlst_of_d2patlst(d2ps)
 val f2cl =
 if
 (ndyn <= 0)
-then F2CLfun() else F2CLclo(1) } )
+then (f2cl) else F2CLclo(1) } )
 )(*case+*)//end-of-[f0_f2as(f2as,...)]
 //
 and

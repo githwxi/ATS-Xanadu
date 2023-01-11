@@ -11,6 +11,11 @@ val () = z := "0"
 val ab = @(1,2)
 val ab = @{b=2,a=1}
 (* ****** ****** *)
+val ff =
+lam(x: int, y: int) => x + y
+val gg =
+fix f(x: int, y: int) => x + y
+(* ****** ****** *)
 ////
 (* ****** ****** *)
 #extern

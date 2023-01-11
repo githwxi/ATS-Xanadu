@@ -60,6 +60,11 @@ ms2ct2p_tbox // = ptr
 ms2ct2p = ms2ct2p_tbox
 *)
 (* ****** ****** *)
+#staload
+BAS = "./xbasics.sats"
+#typedef
+f2clknd = $BAS.f2clknd
+(* ****** ****** *)
 //
 #staload
 LAB = "./xlabel0.sats"
@@ -164,8 +169,10 @@ x2t2p with x2t2p_make_dvar
 (* ****** ****** *)
 //
 fun
-s2typ_fun1_f2as_tres
-(f2as:f2arglst,tres:s2typ):s2typ
+s2typ_fun1_f2arglst
+(f2as
+:f2arglst
+,f2cl:f2clknd,tres:s2typ):s2typ
 //
 (* ****** ****** *)
 //
