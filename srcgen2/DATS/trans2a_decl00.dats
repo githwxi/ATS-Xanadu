@@ -482,19 +482,22 @@ d2fundcl_get_wsxp(dfun)
 val f2as =
 trans2a_f2arglst(env0, f2as)
 //
+val f2cl = F2CLfun(*void*)
+//
 val tres =
 (
 case+ sres of
 |
-S2RESnone() =>
+S2RESnone((*0*)) =>
 s2typ_new0_x2tp(loc0)
 |
-S2RESsome(seff,s2e1) =>
+S2RESsome(seff, s2e1) =>
 s2typ_hnfiz0(s2exp_stpize(s2e1))
 ) : s2typ // end of [ val(tres) ]
 //
 val tfun =
-s2typ_fun1_f2as_tres(f2as, tres)
+s2typ_fun1_f2arglst(f2as,f2cl,tres)
+//
 val (  ) =
 prerrln
 ("trans2a_d2fundcl: tfun = ", tfun)
