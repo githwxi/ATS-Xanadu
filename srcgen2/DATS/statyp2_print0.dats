@@ -148,7 +148,7 @@ print("T2Ptext(", name, ";", t2ps, ")")
 T2Ptrcd
 (knd0, npf1, lses) =>
 print
-("T2Ptrcd(", knd0, ";", npf1, ";", lses)
+("T2Ptrcd(", knd0, ";", npf1, ";", lses, ")")
 //
 |
 T2Pnone0() => print("T2Pnone0(",")")
