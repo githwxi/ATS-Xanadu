@@ -60,5 +60,73 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+//
+#implfun
+list_tread2a_fnp
+{  syn:tx  }
+(  lst , err , fpr  ) =
+(
+  auxlst(lst, err)) where
+{
+//
+fun
+auxlst
+( lst: list(syn)
+, err: &sint >> _): list(syn) =
+case+ lst of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(syn, tms) =>
+let
+val e00 = err
+val syn = fpr(syn, err)
+val tm2 = auxlst(tms, err)
+in//let
+if
+(err = e00)
+then lst else list_cons(syn,tm2)
+endlet // end of [auxlst(lst,err)]
+//
+}(*where*)//end(list_tread2a_fnp(lst,err,fpr))
+//
+(* ****** ****** *)
+//
+#implfun
+optn_tread2a_fnp
+{  syn:tx  }
+(  opt , err , fpr  ) =
+(
+case+ opt of
+|
+optn_nil() => opt
+|
+optn_cons(syn) =>
+let
+val e00 = err
+val syn = fpr(syn, err)
+in // let
+if
+(err=e00)
+then opt else optn_cons(syn)
+endlet // end of [optn_cons(syn)]
+)(*case+*)//end(optn_tread2a_fnp(opt,err,fpr)
+//
+(* ****** ****** *)
+//
+#implfun
+tread2a_d2explstopt
+  (  dopt, err0  ) =
+optn_tread2a_fnp(dopt, err0, tread2a_d2explst)
+//
+(* ****** ****** *)
+//
+#implfun
+tread2a_d2eclistopt
+  (  dopt, err0  ) =
+optn_tread2a_fnp(dopt, err0, tread2a_d2eclist)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread2a.dats] *)

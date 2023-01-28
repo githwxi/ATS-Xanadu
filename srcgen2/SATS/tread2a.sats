@@ -194,5 +194,8 @@ fun tread2a_d2explst: ftread2a(d2explst)
 (* ****** ****** *)
 fun tread2a_d2eclist: ftread2a(d2eclist)
 (* ****** ****** *)
+fun tread2a_d2explstopt: ftread2a(d2explstopt)
+fun tread2a_d2eclistopt: ftread2a(d2eclistopt)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread2a.sats] *)

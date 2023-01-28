@@ -78,15 +78,15 @@ case+ lst of
 list_nil() =>
 list_nil()
 |
-list_cons(tm1, tms) =>
+list_cons(syn, tms) =>
 let
 val e00 = err
-val tm1 = fpr(tm1, err)
+val syn = fpr(syn, err)
 val tm2 = auxlst(tms, err)
 in//let
 if
 (err = e00)
-then lst else list_cons(tm1,tm2)
+then lst else list_cons(syn,tm2)
 endlet // end of [auxlst(lst,err)]
 //
 }(*where*)//end(list_tread12_fnp(lst,err,fpr))
@@ -102,15 +102,15 @@ case+ opt of
 |
 optn_nil() => opt
 |
-optn_cons(tm1) =>
+optn_cons(syn) =>
 let
 val e00 = err
-val tm1 = fpr(tm1, err)
+val syn = fpr(syn, err)
 in // let
 if
 (err=e00)
-then opt else optn_cons(tm1)
-endlet // end of [optn_cons(tm1)]
+then opt else optn_cons(syn)
+endlet // end of [optn_cons(syn)]
 )(*case+*)//end(optn_tread12_fnp(opt,err,fpr)
 //
 (* ****** ****** *)
