@@ -150,6 +150,10 @@ trans2a_sats
 trans2a_sats: ; $(XATSOPT) --static SATS/trans2a.sats
 ######
 all_sats:: \
+trans2a_sats
+trans2a_sats: ; $(XATSOPT) --static SATS/trans2a.sats
+######
+all_sats:: \
 xglobal_sats
 xglobal_sats: ; $(XATSOPT) --static SATS/xglobal.sats
 ######
