@@ -182,5 +182,17 @@ optn_tread2a_fnp
 , fpr: ftread2a(syn)): optn(syn)
 //
 (* ****** ****** *)
+fun tread2a_d2pat: ftread2a(d2pat)
+fun tread2a_d2exp: ftread2a(d2exp)
+fun tread2a_l2d2p: ftread2a(l2d2p)
+fun tread2a_l2d2e: ftread2a(l2d2e)
+(* ****** ****** *)
+fun tread2a_d2ecl: ftread2a(d2ecl)
+(* ****** ****** *)
+fun tread2a_d2patlst: ftread2a(d2patlst)
+fun tread2a_d2explst: ftread2a(d2explst)
+(* ****** ****** *)
+fun tread2a_d2eclist: ftread2a(d2eclist)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread2a.sats] *)
