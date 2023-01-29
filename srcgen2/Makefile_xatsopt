@@ -154,6 +154,10 @@ tread22_sats
 tread22_sats: ; $(XATSOPT) --static SATS/tread22.sats
 ######
 all_sats:: \
+fperr22_sats
+fperr22_sats: ; $(XATSOPT) --static SATS/fperr22.sats
+######
+all_sats:: \
 xglobal_sats
 xglobal_sats: ; $(XATSOPT) --static SATS/xglobal.sats
 ######

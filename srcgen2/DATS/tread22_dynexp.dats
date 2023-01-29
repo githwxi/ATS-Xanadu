@@ -213,6 +213,12 @@ d2p0.node() of
 |D2Pcon _ => d2p0
 |D2Pcons _ => d2p0
 //
+|D2Ptup0 _ => f0_tup0(d2p0, err)
+(*
+|D2Ptup1 _ => f0_tup1(d2p0, err)
+|D2Prcd2 _ => f0_rcd2(d2p0, err)
+*)
+//
 | _(*otherwise*) =>
 let
 val lvl0 = 1
@@ -223,6 +229,37 @@ endlet // end of [ _(* otherwise *) ]
 //
 ) where // end-of-[(*case+(d2p0)-of*)]
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_tup0
+(d2p: d2pat
+,err: &sint >> _): d2pat =
+let
+//
+val e00 = err
+//
+val-
+D2Ptup0
+(npf1, d2ps) = d2p.node()
+//
+val
+d2ps =
+tread22_d2patlst(d2ps, err)
+//
+in//let
+if
+(e00=err)
+then (d2p) else
+let
+val loc = d2p.lctn() in
+d2pat_tup0_errck(loc, npf1, d2ps)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_tup0(d2p,err)]
+//
+(* ****** ****** *)
+//
 } (*where*)//end[tread22_d2pat(d2p0,err)]
 //
 (* ****** ****** *)
@@ -262,6 +299,9 @@ d2e0.node() of
 |D2Ercd2 _ => f0_rcd2(d2e0, err)
 *)
 //
+|
+D2Eassgn _ => f0_assgn(d2e0, err)
+//
 | _(*otherwise*) =>
 let
 val lvl0 = 1
@@ -272,6 +312,35 @@ endlet // end of [ _(* otherwise *) ]
 //
 ) where // end-of-[(*case+(d2e0)-of*)]
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_assgn
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Eassgn
+(d2el, d2er) = d2e.node()
+//
+val
+d2el = tread22_d2exp(d2el, err)
+val
+d2er = tread22_d2exp(d2er, err)
+//
+in//let
+if
+(e00=err)
+then (d2e) else
+let
+val loc = d2e.lctn() in
+d2exp_assgn_errck(loc, d2el, d2er)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_assgn(d2e,err)]
 //
 (* ****** ****** *)
 //
