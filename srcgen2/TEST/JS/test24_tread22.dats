@@ -45,8 +45,9 @@
 (* ****** ****** *)
 #staload
 "./../../SATS/trans2a.sats"
+(* ****** ****** *)
 #staload
-"./../../SATS/tread2a.sats"
+"./../../SATS/tread22.sats"
 (* ****** ****** *)
 #include
 "./../../DATS/xbasics.dats"
@@ -250,11 +251,11 @@
 "./../../DATS/trans2a_decl00.dats"
 (* ****** ****** *)
 #include
-"./../../DATS/tread2a.dats"
+"./../../DATS/tread22.dats"
 #include
-"./../../DATS/tread2a_dynexp.dats"
+"./../../DATS/tread22_dynexp.dats"
 #include
-"./../../DATS/tread2a_decl00.dats"
+"./../../DATS/tread22_decl00.dats"
 (* ****** ****** *)
 //
 local
@@ -350,11 +351,12 @@ d2parsed_fpemsg( out, dpar ) end // let
 (* ****** ****** *)
 //
 val
-dpar =
-d2parsed_of_trans2a(dpar)
+dpar = d2parsed_of_trans2a(dpar)
+//
+(* ****** ****** *)
+//
 val
-dpar =
-d2parsed_of_tread2a(dpar)
+dpar = d2parsed_of_tread22(dpar)
 //
 (* ****** ****** *)
 //
@@ -368,4 +370,4 @@ endloc (*local*) // end-of-[local]
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_TEST_JS_test24_trans2a.dats] *)
+(* end of [ATS3/XATSOPT_TEST_JS_test24_tread22.dats] *)

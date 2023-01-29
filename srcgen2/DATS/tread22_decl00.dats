@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2022 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2023 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -55,7 +55,7 @@ ATS_PACKNAME
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
-#staload "./../SATS/tread2a.sats"
+#staload "./../SATS/tread22.sats"
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
@@ -162,7 +162,7 @@ end (*let*) // end of [d2ecl_vardclst_errck]
 (* ****** ****** *)
 
 #implfun
-tread2a_d2ecl
+tread22_d2ecl
   (d2cl, err) =
 (
 case+
@@ -203,7 +203,7 @@ endlet // end of [  _(* otherwise *)  ]
 (* ****** ****** *)
 (*
 val (  ) =
-prerrln("tread2a_d2ecl: d2cl = ", d2cl)
+prerrln("tread22_d2ecl: d2cl = ", d2cl)
 *)
 (* ****** ****** *)
 //
@@ -219,7 +219,7 @@ val-
 D2Cstatic
 ( tknd, dcl1) = dcl.node()
 //
-val dcl1 = tread2a_d2ecl(dcl1, err)
+val dcl1 = tread22_d2ecl(dcl1, err)
 //
 in
 if
@@ -240,7 +240,7 @@ val-
 D2Cextern
 ( tknd, dcl1) = dcl.node()
 //
-val dcl1 = tread2a_d2ecl(dcl1, err)
+val dcl1 = tread22_d2ecl(dcl1, err)
 //
 in
 if
@@ -264,9 +264,9 @@ D2Clocal0
 (dcs1, dcs2) = dcl.node()
 //
 val dcs1 =
-tread2a_d2eclist(dcs1, err)
+tread22_d2eclist(dcs1, err)
 val dcs2 =
-tread2a_d2eclist(dcs2, err)
+tread22_d2eclist(dcs2, err)
 //
 in
 if
@@ -291,9 +291,9 @@ D2Clocal0
 (dcs1, dcs2) = dcl.node()
 //
 val dcs1 =
-tread2a_d2eclist(dcs1, err)
+tread22_d2eclist(dcs1, err)
 val dcs2 =
-tread2a_d2eclist(dcs2, err)
+tread22_d2eclist(dcs2, err)
 //
 in
 if
@@ -317,7 +317,7 @@ D2Cvaldclst
 (tknd, d2vs) = dcl.node()
 //
 val d2vs =
-tread2a_d2valdclist(d2vs, err)
+tread22_d2valdclist(d2vs, err)
 //
 in//let
 if
@@ -341,7 +341,7 @@ D2Cvardclst
 (tknd, d2vs) = dcl.node()
 //
 val d2vs =
-tread2a_d2vardclist(d2vs, err)
+tread22_d2vardclist(d2vs, err)
 //
 in//let
 if
@@ -352,12 +352,38 @@ end (*let*) // end of [f0_vardclst(dcl,err)]
 //
 (* ****** ****** *)
 //
-} (*where*) // end of [tread2a_d2ecl(d2cl,err)]
+} (*where*) // end of [tread22_d2ecl(d2cl,err)]
 
 (* ****** ****** *)
 //
 #implfun
-tread2a_d2valdcl
+tread22_teqd2exp
+  (tdxp, err) =
+(
+case+ tdxp of
+|
+TEQD2EXPnone() => tdxp
+|
+TEQD2EXPsome(teq1, d2e2) =>
+let
+val e00 = err
+(*
+val ( ) =
+prerrln
+("tread22_teqd2exp: d2e2 = ", d2e2)
+*)
+val d2e2 = tread22_d2exp(d2e2, err)
+in//letp
+if
+(e00=err)
+then tdxp else TEQD2EXPsome(teq1, d2e2)
+endlet // end of [ TEQD2EXPsome( _,_ ) ]
+) (*case+*)//end-(tread22_teqd2exp(tdxp,err))
+//
+(* ****** ****** *)
+//
+#implfun
+tread22_d2valdcl
   (dval, err) =
 let
 //
@@ -373,12 +399,12 @@ val
 wsxp = d2valdcl_get_wsxp(dval)
 //
 val
-dpat = tread2a_d2pat(dpat,err)
+dpat = tread22_d2pat(dpat,err)
 val
-tdxp = tread2a_teqd2exp(tdxp,err)
+tdxp = tread22_teqd2exp(tdxp,err)
 (*
 val
-wsxp = tread2a_wths2exp(wsxp,err)
+wsxp = tread22_wths2exp(wsxp,err)
 *)
 //
 in//let
@@ -386,30 +412,64 @@ if
 (e00=err)
 then (dval)
 else d2valdcl( loc, dpat, tdxp, wsxp )
-endlet // end-of-[tread2a_d2valdcl(out,dval)]
+endlet // end-of-[tread22_d2valdcl(out,dval)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread2a_d2eclist
+tread22_d2vardcl
+  (dvar, err) =
+let
+//
+val e00 = err
+//
+val loc = dvar.lctn()
+//
+val
+dpid = d2vardcl_get_dpid(dvar)
+val
+vpid = d2vardcl_get_vpid(dvar)
+val
+sres = d2vardcl_get_sres(dvar)
+val
+dini = d2vardcl_get_dini(dvar)
+//
+(*
+val
+sres = tread22_s2expopt(sres,err)
+*)
+val
+dini = tread22_teqd2exp(dini,err)
+//
+in//let
+if
+(e00=err)
+then (dvar)
+else d2vardcl(loc,dpid,vpid,sres,dini)
+endlet // end-of-[tread22_d2vardcl(out,dvar)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread22_d2eclist
   (  dcls, err  ) =
-list_tread2a_fnp(dcls, err, tread2a_d2ecl)
+list_tread22_fnp(dcls, err, tread22_d2ecl)
 //
 (* ****** ****** *)
 #implfun
-tread2a_d2valdclist
+tread22_d2valdclist
   (  d2vs, err  ) =
-list_tread2a_fnp(d2vs, err, tread2a_d2valdcl)
+list_tread22_fnp(d2vs, err, tread22_d2valdcl)
 (* ****** ****** *)
 #implfun
-tread2a_d2vardclist
+tread22_d2vardclist
   (  d2vs, err  ) =
-list_tread2a_fnp(d2vs, err, tread2a_d2vardcl)
+list_tread22_fnp(d2vs, err, tread22_d2vardcl)
 (* ****** ****** *)
 #implfun
-tread2a_d2fundclist
+tread22_d2fundclist
   (  d2fs, err  ) =
-list_tread2a_fnp(d2fs, err, tread2a_d2fundcl)
+list_tread22_fnp(d2fs, err, tread22_d2fundcl)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_tread2a_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_tread22_decl00.dats] *)

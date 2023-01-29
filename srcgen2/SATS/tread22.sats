@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2022 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2023 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -155,61 +155,61 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 //
 fun
-d2parsed_of_tread2a
+d2parsed_of_tread22
 (dpar: d2parsed): (d2parsed)
 //
 (* ****** ****** *)
 //
 #typedef
-ftread2a
+ftread22
 (syn: tx) =
 (syn , &sint >> _) -> ( syn )
 //
 (* ****** ****** *)
 //
 fun
-list_tread2a_fnp
+list_tread22_fnp
 {syn:tx}
 ( lst: list(syn)
 , err: &sint >> _
-, fpr: ftread2a(syn)): list(syn)
+, fpr: ftread22(syn)): list(syn)
 //
 fun
-optn_tread2a_fnp
+optn_tread22_fnp
 {syn:tx}
 ( opt: optn(syn)
 , err: &sint >> _
-, fpr: ftread2a(syn)): optn(syn)
+, fpr: ftread22(syn)): optn(syn)
 //
 (* ****** ****** *)
-fun tread2a_d2pat: ftread2a(d2pat)
-fun tread2a_d2exp: ftread2a(d2exp)
-fun tread2a_l2d2p: ftread2a(l2d2p)
-fun tread2a_l2d2e: ftread2a(l2d2e)
+fun tread22_d2pat: ftread22(d2pat)
+fun tread22_d2exp: ftread22(d2exp)
+fun tread22_l2d2p: ftread22(l2d2p)
+fun tread22_l2d2e: ftread22(l2d2e)
 (* ****** ****** *)
-fun tread2a_d2ecl: ftread2a(d2ecl)
+fun tread22_d2ecl: ftread22(d2ecl)
 (* ****** ****** *)
-fun tread2a_d2patlst: ftread2a(d2patlst)
-fun tread2a_d2explst: ftread2a(d2explst)
-fun tread2a_l2d2plst: ftread2a(l2d2plst)
-fun tread2a_l2d2elst: ftread2a(l2d2elst)
+fun tread22_d2patlst: ftread22(d2patlst)
+fun tread22_d2explst: ftread22(d2explst)
+fun tread22_l2d2plst: ftread22(l2d2plst)
+fun tread22_l2d2elst: ftread22(l2d2elst)
 (* ****** ****** *)
-fun tread2a_d2eclist: ftread2a(d2eclist)
+fun tread22_d2eclist: ftread22(d2eclist)
 (* ****** ****** *)
-fun tread2a_teqd2exp: ftread2a(teqd2exp)
+fun tread22_teqd2exp: ftread22(teqd2exp)
 (* ****** ****** *)
-fun tread2a_d2valdcl: ftread2a(d2valdcl)
-fun tread2a_d2vardcl: ftread2a(d2vardcl)
-fun tread2a_d2fundcl: ftread2a(d2fundcl)
-fun tread2a_d2cstdcl: ftread2a(d2cstdcl)
+fun tread22_d2valdcl: ftread22(d2valdcl)
+fun tread22_d2vardcl: ftread22(d2vardcl)
+fun tread22_d2fundcl: ftread22(d2fundcl)
+fun tread22_d2cstdcl: ftread22(d2cstdcl)
 (* ****** ****** *)
-fun tread2a_d2valdclist: ftread2a(d2valdclist)
-fun tread2a_d2vardclist: ftread2a(d2vardclist)
-fun tread2a_d2fundclist: ftread2a(d2fundclist)
-fun tread2a_d2cstdclist: ftread2a(d2cstdclist)
+fun tread22_d2valdclist: ftread22(d2valdclist)
+fun tread22_d2vardclist: ftread22(d2vardclist)
+fun tread22_d2fundclist: ftread22(d2fundclist)
+fun tread22_d2cstdclist: ftread22(d2cstdclist)
 (* ****** ****** *)
-fun tread2a_d2explstopt: ftread2a(d2explstopt)
-fun tread2a_d2eclistopt: ftread2a(d2eclistopt)
+fun tread22_d2explstopt: ftread22(d2explstopt)
+fun tread22_d2eclistopt: ftread22(d2eclistopt)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_tread2a.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_tread22.sats] *)
