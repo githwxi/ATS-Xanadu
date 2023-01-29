@@ -116,6 +116,41 @@ endlet // end of [optn_cons(syn)]
 (* ****** ****** *)
 //
 #implfun
+d2parsed_of_tread2a
+  (dpar) =
+let
+//
+var nerror: sint = 0
+//
+val stadyn =
+d2parsed_get_stadyn(dpar)
+val source =
+d2parsed_get_source(dpar)
+//
+val t1penv =
+d2parsed_get_t1penv(dpar)
+val t2penv =
+d2parsed_get_t2penv(dpar)
+//
+val parsed =
+d2parsed_get_parsed(dpar)
+//
+val parsed =
+tread2a_d2eclistopt(parsed, nerror)
+//
+in//let
+//
+if
+(nerror=0)
+then (dpar) else
+d2parsed
+(stadyn,nerror,source,t1penv,t2penv,parsed)
+//
+end(*let*)//end-of(d2parsed_of_tread2a(dpar))
+//
+(* ****** ****** *)
+//
+#implfun
 tread2a_d2explstopt
   (  dopt, err0  ) =
 optn_tread2a_fnp(dopt, err0, tread2a_d2explst)

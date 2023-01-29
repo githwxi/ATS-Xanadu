@@ -88,6 +88,10 @@ list_tread2a_fnp(d2ps, err, tread2a_d2pat)
 tread2a_d2explst
   (  d2es, err  ) =
 list_tread2a_fnp(d2es, err, tread2a_d2exp)
+#implfun
+tread2a_l2d2elst
+  (  ldes, err  ) =
+list_tread2a_fnp(ldes, err, tread2a_l2d2e)
 //
 (* ****** ****** *)
 
