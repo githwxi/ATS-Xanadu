@@ -150,8 +150,8 @@ trans2a_sats
 trans2a_sats: ; $(XATSOPT) --static SATS/trans2a.sats
 ######
 all_sats:: \
-trans2a_sats
-trans2a_sats: ; $(XATSOPT) --static SATS/trans2a.sats
+tread2a_sats
+tread2a_sats: ; $(XATSOPT) --static SATS/tread2a.sats
 ######
 all_sats:: \
 xglobal_sats
@@ -567,24 +567,15 @@ tread2a_dats
 tread2a_dats: ; $(XATSOPT) --dynamic DATS/tread2a.dats
 all_dats:: \
 tread2a_dynexp_dats
-tread2a_dynexp.dats: ; $(XATSOPT) --dynamic DATS/tread2a_dynexp.dats
+tread2a_dynexp_dats: ; $(XATSOPT) --dynamic DATS/tread2a_dynexp.dats
 all_dats:: \
 tread2a_decl00_dats
-tread2a_decl00.dats: ; $(XATSOPT) --dynamic DATS/tread2a_decl00.dats
+tread2a_decl00_dats: ; $(XATSOPT) --dynamic DATS/tread2a_decl00.dats
 ######
 
 ######
 all_dats:: \
 xatsopt_tmplib_dats
-
-
-
-
-
-
-
-
-
 xatsopt_tmplib_dats: ; $(XATSOPT) --dynamic DATS/xatsopt_tmplib.dats
 ######
 
