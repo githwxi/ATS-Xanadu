@@ -448,9 +448,9 @@ val lvl0 = 1
 in//let
 (
 err := err+1; d2ecl_errck(lvl0, d2cl))
-endlet // end of [ _ (* otherwise *) ]
+endlet // end of [  _(* otherwise *)  ]
 //
-) where // end of [case+(d2cl.node())]
+) where// end of [ case+(d2cl.node()) ]
 {
 (* ****** ****** *)
 (*

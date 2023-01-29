@@ -551,6 +551,15 @@ match00_s2typ_e1nv
 (e1nv, t2p1, t2p2) = false
 
 (* ****** ****** *)
+//
+#impltmp
+<(*void*)>
+unify00_s2typ$xset
+  (xtp1, t2p2) =
+(
+x2t2p_set_styp(xtp1,t2p2))
+//
+(* ****** ****** *)
 
 #impltmp
 <e1nv:vwtp>
@@ -664,6 +673,14 @@ t2p2.node() of
 (* ****** ****** *)
 //
 fun
+f1_xset
+( xtp1: x2t2p
+, t2p2: s2typ): void =
+unify00_s2typ$xset<>(xtp1, t2p2)
+//
+(* ****** ****** *)
+//
+fun
 f0_xtv1
 ( e1nv: !e1nv
 , t2p1: s2typ
@@ -677,11 +694,14 @@ t2p2.node() of
 |T2Pxtv(xtp2) =>
 if
 (xtp1 = xtp2)
-then true else (xtp1.styp(t2p2); true)
+then true else
+(f1_xset(xtp1, t2p2); true)
 |_(*non-T2Pxtv*) =>
 if
-s2typ_xtpck0(t2p2, xtp1)
-then false else (xtp1.styp(t2p2); true)
+s2typ_xtpck0
+( t2p2, xtp1 )
+then false else
+(f1_xset(xtp1, t2p2); true)
 end (*let*) // end of [f0_xtv1(e1nv,...)]
 //
 (* ****** ****** *)

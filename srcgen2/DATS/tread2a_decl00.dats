@@ -70,6 +70,36 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 fun
+d2ecl_errck
+(lvl0: sint
+,d2cl: d2ecl): d2ecl =
+let
+val loc0 = d2cl.lctn()
+in//let
+d2ecl_make_node
+(loc0, D2Cerrck(lvl0, d2cl))
+end (*let*) // end-of(d2ecl_errck)
+//
+(* ****** ****** *)
+//
+fun
+d2ecl_local0_errck
+( loc0
+: loc_t
+, dcs1
+: d2eclist
+, dcs2
+: d2eclist): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1,d2ecl(loc0,D2Clocal0(dcs1,dcs2)))
+end (*let*) // end of [d2ecl_local0_errck]
+//
+(* ****** ****** *)
+//
+fun
 d2ecl_static_errck
 ( loc0: loc_t
 , tknd: token
@@ -96,6 +126,23 @@ d2ecl_errck
 end (*let*)//end-of-[d2ecl_extern_errck]
 //
 (* ****** ****** *)
+//
+fun
+d2ecl_valdclst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, d2vs
+: d2valdclist): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1, d2ecl(loc0,D2Cvaldclst(tknd,d2vs)))
+end (*let*) // end of [d2ecl_valdclst_errck]
+//
+(* ****** ****** *)
 
 #implfun
 tread2a_d2ecl
@@ -104,8 +151,10 @@ tread2a_d2ecl
 case+
 d2cl.node() of
 //
-|
-D2Cd1ecl _ => d2cl
+|D2Cd1ecl _ => d2cl
+|D2Cabssort _ => d2cl
+|D2Cstacst0 _ => d2cl
+|D2Csortdef _ => d2cl
 //
 |
 D2Cstatic _ => f0_static(d2cl, err)
@@ -113,15 +162,26 @@ D2Cstatic _ => f0_static(d2cl, err)
 D2Cextern _ => f0_extern(d2cl, err)
 //
 |
+D2Clocal0 _ => f0_local0(d2cl, err)
+//
+|
+D2Cvaldclst _ => f0_valdclst(d2cl, err)
+(*
+|
+D2Cvardclst _ => f0_vardclst(d2cl, err)
+|
+D2Cfundclst _ => f0_fundclst(d2cl, err)
+*)
+//
+|
 _(*otherwise*) =>
 let
 val lvl0 = 1
 in//let
-(
-err := err+1; d2ecl_errck(lvl0, d2cl))
-endlet // end of [ _ (* otherwise *) ]
+(err := err+1; d2ecl_errck(lvl0, d2cl))
+endlet // end of [  _(* otherwise *)  ]
 //
-) where // end of [case+(d2cl.node())]
+) where// end of [ case+(d2cl.node()) ]
 {
 (* ****** ****** *)
 (*
@@ -129,7 +189,6 @@ val (  ) =
 prerrln("tread2a_d2ecl: d2cl = ", d2cl)
 *)
 (* ****** ****** *)
-//
 //
 fun
 f0_static
@@ -173,6 +232,83 @@ then dcl else
 d2ecl_extern_errck(dcl.lctn(),tknd,dcl1)
 end (*let*) // end of [ f0_extern(dcl,err) ]
 //
+//
+fun
+f0_local0
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D2Clocal0
+(dcs1, dcs2) = dcl.node()
+//
+val dcs1 =
+tread2a_d2eclist(dcs1, err)
+val dcs2 =
+tread2a_d2eclist(dcs2, err)
+//
+in
+if
+(e00=err)
+then dcl else
+d2ecl_local0_errck( loc, dcs1, dcs2 )
+end (*let*) // end of [ f0_local0(dcl,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_local0
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D2Clocal0
+(dcs1, dcs2) = dcl.node()
+//
+val dcs1 =
+tread2a_d2eclist(dcs1, err)
+val dcs2 =
+tread2a_d2eclist(dcs2, err)
+//
+in
+if
+(e00=err)
+then dcl else
+d2ecl_local0_errck( loc, dcs1, dcs2 )
+end (*let*) // end of [ f0_local0(dcl,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_valdclst
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+//
+val-
+D2Cvaldclst
+(tknd, d2vs) = dcl.node()
+//
+val d2vs =
+tread2a_d2valdclist(d2vs, err)
+//
+in//let
+if
+(e00=err)
+then (dcl) else
+d2ecl_valdclst_errck(dcl.lctn(),tknd,d2vs)
+end (*let*) // end of [f0_valdclst(dcl,err)]
+//
 (* ****** ****** *)
 //
 } (*where*) // end of [tread2a_d2ecl(d2cl,err)]
@@ -184,6 +320,21 @@ tread2a_d2eclist
   (  dcls, err  ) =
 list_tread2a_fnp(dcls, err, tread2a_d2ecl)
 //
+(* ****** ****** *)
+#implfun
+tread2a_d2valdclist
+  (  d2vs, err  ) =
+list_tread2a_fnp(d2vs, err, tread2a_d2valdcl)
+(* ****** ****** *)
+#implfun
+tread2a_d2vardclist
+  (  d2vs, err  ) =
+list_tread2a_fnp(d2vs, err, tread2a_d2vardcl)
+(* ****** ****** *)
+#implfun
+tread2a_d2fundclist
+  (  d2fs, err  ) =
+list_tread2a_fnp(d2fs, err, tread2a_d2fundcl)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread2a_decl00.dats] *)
