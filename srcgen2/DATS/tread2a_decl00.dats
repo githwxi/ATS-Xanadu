@@ -69,6 +69,116 @@ ATS_PACKNAME
 #symload lctn with d2cstdcl_get_lctn
 (* ****** ****** *)
 //
+fun
+d2ecl_static_errck
+( loc0: loc_t
+, tknd: token
+, dcl1: d2ecl): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+( lvl+1
+, d2ecl(loc0, D2Cstatic(tknd, dcl1)) )
+end (*let*)//end-of-[d2ecl_static_errck]
+//
+fun
+d2ecl_extern_errck
+( loc0: loc_t
+, tknd: token
+, dcl1: d2ecl): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+( lvl+1
+, d2ecl(loc0, D2Cextern(tknd, dcl1)) )
+end (*let*)//end-of-[d2ecl_extern_errck]
+//
+(* ****** ****** *)
+
+#implfun
+tread2a_d2ecl
+  (d2cl, err) =
+(
+case+
+d2cl.node() of
+//
+|
+D2Cd1ecl _ => d2cl
+//
+|
+D2Cstatic _ => f0_static(d2cl, err)
+|
+D2Cextern _ => f0_extern(d2cl, err)
+//
+|
+_(*otherwise*) =>
+let
+val lvl0 = 1
+in//let
+(
+err := err+1; d2ecl_errck(lvl0, d2cl))
+endlet // end of [ _ (* otherwise *) ]
+//
+) where // end of [case+(d2cl.node())]
+{
+(* ****** ****** *)
+(*
+val (  ) =
+prerrln("tread2a_d2ecl: d2cl = ", d2cl)
+*)
+(* ****** ****** *)
+//
+//
+fun
+f0_static
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+//
+val-
+D2Cstatic
+( tknd, dcl1) = dcl.node()
+//
+val dcl1 = tread2a_d2ecl(dcl1, err)
+//
+in
+if
+(e00=err)
+then dcl else
+d2ecl_static_errck(dcl.lctn(),tknd,dcl1)
+end (*let*) // end of [ f0_static(dcl,err) ]
+//
+fun
+f0_extern
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+//
+val-
+D2Cextern
+( tknd, dcl1) = dcl.node()
+//
+val dcl1 = tread2a_d2ecl(dcl1, err)
+//
+in
+if
+(e00=err)
+then dcl else
+d2ecl_extern_errck(dcl.lctn(),tknd,dcl1)
+end (*let*) // end of [ f0_extern(dcl,err) ]
+//
+(* ****** ****** *)
+//
+} (*where*) // end of [tread2a_d2ecl(d2cl,err)]
+
+(* ****** ****** *)
+//
 #implfun
 tread2a_d2eclist
   (  dcls, err  ) =

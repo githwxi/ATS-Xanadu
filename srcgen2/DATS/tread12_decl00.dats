@@ -452,11 +452,11 @@ endlet // end of [ _ (* otherwise *) ]
 //
 ) where // end of [case+(d2cl.node())]
 {
+(* ****** ****** *)
 (*
 val (  ) =
 prerrln("tread12_d2ecl: d2cl = ", d2cl)
 *)
-//
 (* ****** ****** *)
 //
 fun
