@@ -101,6 +101,94 @@ end (*let*)//end-of(d2exp_errck)
 //
 (* ****** ****** *)
 //
+fun
+d2exp_errvl_a1
+(d2e0: d2exp): sint =
+(
+case+ d2e0.node() of
+|
+D2Eerrck
+(lvl0, _) => lvl0 | _ => 0
+)
+#symload
+d2exp_errvl with d2exp_errvl_a1
+#symload errvl with d2exp_errvl_a1
+//
+(* ****** ****** *)
+//
+fun
+d2exp_errvl_a2
+(d2e1: d2exp
+,d2e2: d2exp): sint =
+gmax
+(errvl(d2e1),errvl(d2e2))
+#symload
+d2exp_errvl with d2exp_errvl_a2
+#symload errvl with d2exp_errvl_a2
+//
+(* ****** ****** *)
+//
+#extern
+fun
+d2exp_errvl_lst
+(d2es: d2explst): sint
+//
+#implfun
+d2exp_errvl_lst
+(  d2es  ) =
+(
+case+ d2es of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(d2e1,d2es) =>
+gmax
+(
+errvl(d2e1),d2exp_errvl_lst(d2es))
+endcas // end of [ case+( d2es ) ]
+)
+//
+#symload
+d2exp_errvl with d2exp_errvl_lst
+#symload errvl with d2exp_errvl_lst
+//
+(* ****** ****** *)
+//
+#extern
+fun
+d2exp_errvl_opt
+(dopt: d2expopt): sint
+//
+#implfun
+d2exp_errvl_opt
+(  dopt  ) =
+(
+case+ dopt of
+| optn_nil() => 0
+| optn_cons(d2e1) => errvl(d2e1)
+endcas // end of [ case+( d2es ) ]
+)
+//
+#symload
+d2exp_errvl with d2exp_errvl_opt
+#symload errvl with d2exp_errvl_opt
+//
+(* ****** ****** *)
+//
+fun
+d2exp_tup0_errck
+( loc0: loc_t
+, npf1: (sint)
+, d2es: d2explst): d2exp =
+let
+val lvl0 = errvl(d2es) in//let
+d2exp_errck
+( lvl0+1
+, d2exp( loc0, D2Etup0( npf1, d2es )))
+endlet // end of [d2exp_tup0_errck(...)]
+//
+(* ****** ****** *)
+//
 #implfun
 tread22_d2pat
 ( d2p0, err ) =
@@ -168,6 +256,12 @@ d2e0.node() of
 //
 |D2Esym0 _ => d2e0
 //
+|D2Etup0 _ => f0_tup0(d2e0, err)
+(*
+|D2Etup1 _ => f0_tup1(d2e0, err)
+|D2Ercd2 _ => f0_rcd2(d2e0, err)
+*)
+//
 | _(*otherwise*) =>
 let
 val lvl0 = 1
@@ -178,6 +272,34 @@ endlet // end of [ _(* otherwise *) ]
 //
 ) where // end-of-[(*case+(d2e0)-of*)]
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_tup0
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Etup0
+(npf1, d2es) = d2e.node()
+//
+val
+d2es =
+tread22_d2explst(d2es, err)
+//
+in//let
+if
+(e00=err)
+then (d2e) else
+let
+val loc = d2e.lctn() in
+d2exp_tup0_errck(loc, npf1, d2es)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_tup0(d2e,err)]
 //
 (* ****** ****** *)
 //
