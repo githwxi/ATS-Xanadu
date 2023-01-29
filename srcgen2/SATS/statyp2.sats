@@ -305,6 +305,10 @@ s2typ_hnfiz0_e1nv
 //
 (* ****** ****** *)
 //
+fun<>
+unify00_s2typ$xset
+(xt2p: x2t2p, t2p2: s2typ): (void)
+//
 fun
 <e1nv:vwtp>
 unify00_s2typ_e1nv
