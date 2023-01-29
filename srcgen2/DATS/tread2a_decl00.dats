@@ -143,6 +143,23 @@ d2ecl_errck
 end (*let*) // end of [d2ecl_valdclst_errck]
 //
 (* ****** ****** *)
+//
+fun
+d2ecl_vardclst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, d2vs
+: d2vardclist): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1, d2ecl(loc0,D2Cvardclst(tknd,d2vs)))
+end (*let*) // end of [d2ecl_vardclst_errck]
+//
+(* ****** ****** *)
 
 #implfun
 tread2a_d2ecl
@@ -166,9 +183,9 @@ D2Clocal0 _ => f0_local0(d2cl, err)
 //
 |
 D2Cvaldclst _ => f0_valdclst(d2cl, err)
-(*
 |
 D2Cvardclst _ => f0_vardclst(d2cl, err)
+(*
 |
 D2Cfundclst _ => f0_fundclst(d2cl, err)
 *)
@@ -311,8 +328,66 @@ end (*let*) // end of [f0_valdclst(dcl,err)]
 //
 (* ****** ****** *)
 //
+fun
+f0_vardclst
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+//
+val-
+D2Cvardclst
+(tknd, d2vs) = dcl.node()
+//
+val d2vs =
+tread2a_d2vardclist(d2vs, err)
+//
+in//let
+if
+(e00=err)
+then (dcl) else
+d2ecl_vardclst_errck(dcl.lctn(),tknd,d2vs)
+end (*let*) // end of [f0_vardclst(dcl,err)]
+//
+(* ****** ****** *)
+//
 } (*where*) // end of [tread2a_d2ecl(d2cl,err)]
 
+(* ****** ****** *)
+//
+#implfun
+tread2a_d2valdcl
+  (dval, err) =
+let
+//
+val e00 = err
+//
+val loc = dval.lctn()
+//
+val
+dpat = d2valdcl_get_dpat(dval)
+val
+tdxp = d2valdcl_get_tdxp(dval)
+val
+wsxp = d2valdcl_get_wsxp(dval)
+//
+val
+dpat = tread2a_d2pat(dpat,err)
+val
+tdxp = tread2a_teqd2exp(tdxp,err)
+(*
+val
+wsxp = tread2a_wths2exp(wsxp,err)
+*)
+//
+in//let
+if
+(e00=err)
+then (dval)
+else d2valdcl( loc, dpat, tdxp, wsxp )
+endlet // end-of-[tread2a_d2valdcl(out,dval)]
+//
 (* ****** ****** *)
 //
 #implfun
