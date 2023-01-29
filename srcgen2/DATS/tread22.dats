@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2022 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2023 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sat 28 Jan 2023 04:13:08 PM EST
+Sat 28 Jan 2023 04:03:29 PM EST
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -55,44 +55,113 @@ ATS_PACKNAME
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
-#staload "./../SATS/tread2a.sats"
-(* ****** ****** *)
-//
+#staload "./../SATS/tread22.sats"
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
-#symload sexp with d2con_get_sexp
-#symload sexp with d2cst_get_sexp
-(* ****** ****** *)
-#symload lctn with d2pat_get_lctn
-#symload node with d2pat_get_node
-(* ****** ****** *)
-#symload lctn with d2exp_get_lctn
-#symload node with d2exp_get_node
-(* ****** ****** *)
-#symload lctn with f2arg_get_lctn
-#symload node with f2arg_get_node
-(* ****** ****** *)
+//
+#implfun
+list_tread22_fnp
+{  syn:tx  }
+(  lst , err , fpr  ) =
+(
+  auxlst(lst, err)) where
+{
+//
+fun
+auxlst
+( lst: list(syn)
+, err: &sint >> _): list(syn) =
+case+ lst of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(syn, tms) =>
+let
+val e00 = err
+val syn = fpr(syn, err)
+val tm2 = auxlst(tms, err)
+in//let
+if
+(err = e00)
+then lst else list_cons(syn,tm2)
+endlet // end of [auxlst(lst,err)]
+//
+}(*where*)//end(list_tread22_fnp(lst,err,fpr))
 //
 (* ****** ****** *)
 //
 #implfun
-tread2a_d2patlst
-  (  d2ps, err  ) =
-list_tread2a_fnp(d2ps, err, tread2a_d2pat)
+optn_tread22_fnp
+{  syn:tx  }
+(  opt , err , fpr  ) =
+(
+case+ opt of
+|
+optn_nil() => opt
+|
+optn_cons(syn) =>
+let
+val e00 = err
+val syn = fpr(syn, err)
+in // let
+if
+(err=e00)
+then opt else optn_cons(syn)
+endlet // end of [optn_cons(syn)]
+)(*case+*)//end(optn_tread22_fnp(opt,err,fpr)
 //
 (* ****** ****** *)
 //
 #implfun
-tread2a_d2explst
-  (  d2es, err  ) =
-list_tread2a_fnp(d2es, err, tread2a_d2exp)
+d2parsed_of_tread22
+  (dpar) =
+let
+//
+var nerror: sint = 0
+//
+val stadyn =
+d2parsed_get_stadyn(dpar)
+val source =
+d2parsed_get_source(dpar)
+//
+val t1penv =
+d2parsed_get_t1penv(dpar)
+val t2penv =
+d2parsed_get_t2penv(dpar)
+//
+val parsed =
+d2parsed_get_parsed(dpar)
+//
+val parsed =
+tread22_d2eclistopt(parsed, nerror)
+//
+in//let
+//
+if
+(nerror=0)
+then (dpar) else
+d2parsed
+(stadyn,nerror,source,t1penv,t2penv,parsed)
+//
+end(*let*)//end-of(d2parsed_of_tread22(dpar))
+//
+(* ****** ****** *)
+//
 #implfun
-tread2a_l2d2elst
-  (  ldes, err  ) =
-list_tread2a_fnp(ldes, err, tread2a_l2d2e)
+tread22_d2explstopt
+  (  dopt, err0  ) =
+optn_tread22_fnp(dopt, err0, tread22_d2explst)
+//
+(* ****** ****** *)
+//
+#implfun
+tread22_d2eclistopt
+  (  dopt, err0  ) =
+optn_tread22_fnp(dopt, err0, tread22_d2eclist)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_tread2a_dynexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_tread22.dats] *)

@@ -1185,6 +1185,8 @@ then tdxp else TEQD2EXPsome(teq1, d2e2)
 endlet // end of [ TEQD2EXPsome( _,_ ) ]
 ) (*case+*)//end-(tread12_teqd2exp(tdxp,err))
 //
+(* ****** ****** *)
+//
 #implfun
 tread12_wths2exp
   (wsxp, err) =
