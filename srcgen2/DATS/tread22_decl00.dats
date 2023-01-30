@@ -169,6 +169,8 @@ case+
 d2cl.node() of
 //
 |D2Cd1ecl _ => d2cl
+|D2Cerrck _ => d2cl
+//
 |D2Cabssort _ => d2cl
 |D2Cstacst0 _ => d2cl
 |D2Csortdef _ => d2cl
