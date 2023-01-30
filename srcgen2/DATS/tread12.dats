@@ -78,15 +78,15 @@ case+ lst of
 list_nil() =>
 list_nil()
 |
-list_cons(syn, tms) =>
+list_cons(tm1, tms) =>
 let
 val e00 = err
-val syn = fpr(syn, err)
-val tm2 = auxlst(tms, err)
+val tm1 = fpr(tm1, err)
+val tms = auxlst(tms, err)
 in//let
 if
 (err = e00)
-then lst else list_cons(syn,tm2)
+then lst else list_cons(tm1, tms)
 endlet // end of [auxlst(lst,err)]
 //
 }(*where*)//end(list_tread12_fnp(lst,err,fpr))

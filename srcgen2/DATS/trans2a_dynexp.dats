@@ -151,6 +151,8 @@ d2p0.node() of
 //
 |D2Pannot _ => f0_annot(env0, d2p0)
 //
+|D2Perrck _ => f0_errck(env0, d2p0)
+//
 | _(*otherwise*) => d2pat_none2(d2p0)
 //
 endlet where
@@ -444,6 +446,13 @@ end (*let*) // end of [f0_annot(env0,...)]
 
 (* ****** ****** *)
 //
+fun
+f0_errck
+( env0:
+! tr2aenv, d2p0: d2pat): d2pat = (d2p0)
+//
+(* ****** ****** *)
+//
 } (*where*)//end-of-[trans2a_d2pat(env0,d2p0)]
 //
 (* ****** ****** *)
@@ -513,6 +522,8 @@ d2e0.node() of
 |D2Ewhere _ => f0_where(env0, d2e0)
 //
 |D2Eannot _ => f0_annot(env0, d2e0)
+//
+|D2Eerrck _ => f0_errck(env0, d2e0)
 //
 | _(*otherwise*) => d2exp_none2(d2e0)
 //
@@ -1188,6 +1199,13 @@ d2exp_make_styp_node
 (loc0, t2p2, D2Eannot(d2e1,s1e2,s2e2))
 end (*let*) // end of [f0_annot(env0,...)]
 
+(* ****** ****** *)
+//
+fun
+f0_errck
+( env0:
+! tr2aenv, d2e0: d2exp): d2exp = (d2e0)
+//
 (* ****** ****** *)
 //
 } (*where*) // end of [trans2a_d2exp(env0,d2e0)]

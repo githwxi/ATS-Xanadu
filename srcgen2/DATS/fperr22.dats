@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sun 29 Jan 2023 06:46:30 PM EST
+Sun 29 Jan 2023 11:33:18 PM EST
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -38,67 +38,29 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
-ATS_PACKNAME // namespace
+ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload
-LEX = "./lexing0.sats"
-(* ****** ****** *)
-#staload
-S2E = "./staexp2.sats"
-#staload
-D2E = "./dynexp2.sats"
-(* ****** ****** *)
-#typedef token = $LEX.token
-(* ****** ****** *)
-#typedef d2pat = $D2E.d2pat
-#typedef d2exp = $D2E.d2exp
-#typedef l2d2p = $D2E.l2d2p
-#typedef l2d2e = $D2E.l2d2e
-(* ****** ****** *)
-#typedef d2ecl = $D2E.d2ecl
-(* ****** ****** *)
-#typedef d2patlst = $D2E.d2patlst
-#typedef d2patopt = $D2E.d2patopt
-(* ****** ****** *)
-#typedef d2explst = $D2E.d2explst
-#typedef d2expopt = $D2E.d2expopt
-(* ****** ****** *)
-#typedef l2d2plst = $D2E.l2d2plst
-#typedef l2d2elst = $D2E.l2d2elst
-(* ****** ****** *)
-(*
-//
-//HX-2023-01-29: printing errmsgs
-//
-*)
-(* ****** ****** *)
-#typedef
-fperr22_t
-(syn:tbox) = (FILR, syn)->void
+#staload "./../SATS/fperr22.sats"
 (* ****** ****** *)
 //
-fun
+#implfun
 list_fperr22_fnp
-{ syn:tbox }
-( out: FILR,
-  list(syn), fperr22_t(syn)): void
-fun
-optn_fperr22_fnp
-{ syn:tbox }
-( out: FILR,
-  optn(syn), fperr22_t(syn)): void
+{  syn:tx  }
+(  out, lst, fpr  ) =
+(
+list_foreach<syn>(lst)) where
+{
 //
-(* ****** ****** *)
-fun fperr22_d2pat(FILR, d2pat): void
-fun fperr22_d2exp(FILR, d2exp): void
-(* ****** ****** *)
-fun fperr22_d2ecl(FILR, d2ecl): void
-(* ****** ****** *)
-fun fperr22_d2patlst(FILR, d2patlst): void
-fun fperr22_d2explst(FILR, d2explst): void
+#impltmp
+foreach$work<syn>(syn) = fpr(out, syn)
+//
+}(*where*)//end(list_fperr22_fnp(lst,err,fpr))
+//
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_fperr22.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_fperr22.dats] *)

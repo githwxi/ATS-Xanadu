@@ -577,6 +577,17 @@ tread22_decl00_dats
 tread22_decl00_dats: ; $(XATSOPT) --dynamic DATS/tread22_decl00.dats
 ######
 
+all_dats:: \
+fperr22_dats
+fperr22_dats: ; $(XATSOPT) --dynamic DATS/fperr22.dats
+all_dats:: \
+fperr22_dynexp_dats
+fperr22_dynexp_dats: ; $(XATSOPT) --dynamic DATS/fperr22_dynexp.dats
+all_dats:: \
+fperr22_decl00_dats
+fperr22_decl00_dats: ; $(XATSOPT) --dynamic DATS/fperr22_decl00.dats
+######
+
 ######
 all_dats:: \
 xatsopt_tmplib_dats
