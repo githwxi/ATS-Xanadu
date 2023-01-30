@@ -90,6 +90,7 @@ case+
 d2cl.node() of
 //
 | D2Cd1ecl _ => d2cl
+| D2Cerrck _ => d2cl
 //
 | D2Cstatic _ =>
 (
