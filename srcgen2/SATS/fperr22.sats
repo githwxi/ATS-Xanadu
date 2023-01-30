@@ -58,11 +58,16 @@ D2E = "./dynexp2.sats"
 #typedef l2d2p = $D2E.l2d2p
 #typedef l2d2e = $D2E.l2d2e
 (* ****** ****** *)
+#typedef d2ecl = $D2E.d2ecl
+(* ****** ****** *)
 #typedef d2patlst = $D2E.d2patlst
 #typedef d2patopt = $D2E.d2patopt
 (* ****** ****** *)
 #typedef d2explst = $D2E.d2explst
 #typedef d2expopt = $D2E.d2expopt
+(* ****** ****** *)
+#typedef l2d2plst = $D2E.l2d2plst
+#typedef l2d2elst = $D2E.l2d2elst
 (* ****** ****** *)
 (*
 //
@@ -72,6 +77,8 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 fun fperr22_d2pat(FILR, d2pat): void
 fun fperr22_d2exp(FILR, d2exp): void
+(* ****** ****** *)
+fun fperr22_d2ecl(FILR, d2ecl): void
 (* ****** ****** *)
 fun fperr22_d2patlst(FILR, d2patlst): void
 fun fperr22_d2explst(FILR, d2explst): void
