@@ -54,10 +54,10 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/tread12.sats"
 (* ****** ****** *)
+#define FPEMSG_ERRVL 2
+(* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
-(* ****** ****** *)
-#define FPEMSG_ERRVL 2
 (* ****** ****** *)
 #symload fpemsg with sort2_fpemsg
 #symload fpemsg with s2exp_fpemsg
