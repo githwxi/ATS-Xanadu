@@ -71,6 +71,25 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 #typedef d2eclist = $D2E.d2eclist
 (* ****** ****** *)
+#typedef teqd2exp = $D2E.teqd2exp
+(* ****** ****** *)
+#typedef d2valdcl = $D2E.d2valdcl
+#typedef d2vardcl = $D2E.d2vardcl
+#typedef d2fundcl = $D2E.d2fundcl
+#typedef d2cstdcl = $D2E.d2cstdcl
+(* ****** ****** *)
+//
+#typedef d2parsed = $D2E.d2parsed
+//
+(* ****** ****** *)
+#typedef d2valdclist = $D2E.d2valdclist
+#typedef d2vardclist = $D2E.d2vardclist
+#typedef d2fundclist = $D2E.d2fundclist
+#typedef d2cstdclist = $D2E.d2cstdclist
+(* ****** ****** *)
+#typedef d2explstopt = $D2E.d2explstopt
+#typedef d2eclistopt = $D2E.d2eclistopt
+(* ****** ****** *)
 (*
 //
 //HX-2023-01-29: printing errmsgs
@@ -103,6 +122,19 @@ fun fperr22_d2patlst(FILR, d2patlst): void
 fun fperr22_d2explst(FILR, d2explst): void
 (* ****** ****** *)
 fun fperr22_d2eclist(FILR, d2eclist): void
+(* ****** ****** *)
+//
+fun
+fperr22_d2parsed
+( out: FILR, dpar: d2parsed ): void
+//
+(* ****** ****** *)
+//
+fun
+fperr22_d2explstopt(FILR, d2explstopt): void
+fun
+fperr22_d2eclistopt(FILR, d2eclistopt): void
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_fperr22.sats] *)
