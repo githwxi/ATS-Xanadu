@@ -36,5 +36,24 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
+(* ****** ****** *)
+#staload "./../SATS/fperr22.sats"
+(* ****** ****** *)
+//
+#implfun
+fperr22_d2patlst
+  (out, d2ps) =
+list_fperr22_fnp(out, d2ps, fperr22_d2pat)
+//
+(* ****** ****** *)
+//
+#implfun
+fperr22_d2explst
+  (out, d2es) =
+list_fperr22_fnp(out, d2es, fperr22_d2exp)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_fperr22_dynexp.dats] *)

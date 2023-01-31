@@ -62,5 +62,20 @@ foreach$work<syn>(syn) = fpr(out, syn)
 }(*where*)//end(list_fperr22_fnp(lst,err,fpr))
 //
 (* ****** ****** *)
+//
+#implfun
+optn_fperr22_fnp
+{  syn:tx  }
+(  out, opt, fpr  ) =
+(
+optn_foreach<syn>(opt)) where
+{
+//
+#impltmp
+foreach$work<syn>(syn) = fpr(out, syn)
+//
+}(*where*)//end(optn_fperr22_fnp(opt,err,fpr))
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_fperr22.dats] *)
