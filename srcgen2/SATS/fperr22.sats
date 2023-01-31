@@ -69,6 +69,8 @@ D2E = "./dynexp2.sats"
 #typedef l2d2plst = $D2E.l2d2plst
 #typedef l2d2elst = $D2E.l2d2elst
 (* ****** ****** *)
+#typedef d2eclist = $D2E.d2eclist
+(* ****** ****** *)
 (*
 //
 //HX-2023-01-29: printing errmsgs
@@ -99,6 +101,8 @@ fun fperr22_d2ecl(FILR, d2ecl): void
 (* ****** ****** *)
 fun fperr22_d2patlst(FILR, d2patlst): void
 fun fperr22_d2explst(FILR, d2explst): void
+(* ****** ****** *)
+fun fperr22_d2eclist(FILR, d2eclist): void
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_fperr22.sats] *)
