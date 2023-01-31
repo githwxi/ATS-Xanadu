@@ -49,6 +49,9 @@
 #staload
 "./../../SATS/tread22.sats"
 (* ****** ****** *)
+#staload
+"./../../SATS/fperr22.sats"
+(* ****** ****** *)
 #include
 "./../../DATS/xbasics.dats"
 #include
@@ -257,6 +260,13 @@
 #include
 "./../../DATS/tread22_decl00.dats"
 (* ****** ****** *)
+#include
+"./../../DATS/fperr22.dats"
+#include
+"./../../DATS/fperr22_dynexp.dats"
+#include
+"./../../DATS/fperr22_decl00.dats"
+(* ****** ****** *)
 //
 local
 //
@@ -357,6 +367,9 @@ dpar = d2parsed_of_trans2a(dpar)
 //
 val
 dpar = d2parsed_of_tread22(dpar)
+//
+val (  ) =
+fperr22_d2parsed(g_stderr(), dpar)
 //
 (* ****** ****** *)
 //

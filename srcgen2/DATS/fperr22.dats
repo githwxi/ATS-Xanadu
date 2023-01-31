@@ -45,6 +45,13 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
+#staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
+(* ****** ****** *)
 #staload "./../SATS/fperr22.sats"
 (* ****** ****** *)
 //
@@ -75,6 +82,51 @@ optn_foreach<syn>(opt)) where
 foreach$work<syn>(syn) = fpr(out, syn)
 //
 }(*where*)//end(optn_fperr22_fnp(opt,err,fpr))
+//
+(* ****** ****** *)
+//
+#implfun
+fperr22_d2parsed
+  (out, dpar) = let
+//
+val nerror =
+d2parsed_get_nerror(dpar)
+//
+in//let
+if
+(nerror > 0) then
+let
+val parsed =
+d2parsed_get_parsed(dpar)
+in
+fperr22_d2eclistopt(out, parsed) end else ()
+end (*let*)//end-of-[fperr22_d2parsed(out,dpar)]
+//
+(* ****** ****** *)
+//
+#implfun
+fperr22_d2explstopt
+  (out, dopt) =
+(
+case+ dopt of
+|
+optn_nil() => ((*void*))
+|
+optn_cons(d2es) => fperr22_d2explst(out, d2es)
+)
+//
+(* ****** ****** *)
+//
+#implfun
+fperr22_d2eclistopt
+  (out, dopt) =
+(
+case+ dopt of
+|
+optn_nil() => ((*void*))
+|
+optn_cons(d2cs) => fperr22_d2eclist(out, d2cs)
+)
 //
 (* ****** ****** *)
 
