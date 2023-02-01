@@ -123,6 +123,21 @@ fun fperr22_d2explst(FILR, d2explst): void
 (* ****** ****** *)
 fun fperr22_d2eclist(FILR, d2eclist): void
 (* ****** ****** *)
+fun fperr22_teqd2exp(FILR, teqd2exp): void
+(* ****** ****** *)
+fun fperr22_d2valdcl(FILR, d2valdcl): void
+fun fperr22_d2vardcl(FILR, d2vardcl): void
+fun fperr22_d2fundcl(FILR, d2fundcl): void
+(* ****** ****** *)
+fun
+fperr22_d2valdclist(FILR, d2valdclist): void
+(* ****** ****** *)
+fun
+fperr22_d2vardclist(FILR, d2vardclist): void
+(* ****** ****** *)
+fun
+fperr22_d2fundclist(FILR, d2fundclist): void
+(* ****** ****** *)
 //
 fun
 fperr22_d2parsed
