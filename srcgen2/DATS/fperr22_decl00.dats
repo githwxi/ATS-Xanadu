@@ -86,6 +86,19 @@ val () =
 fperr22_d2ecl(out, dcl1)
 endlet//end-of(D2Cextern(_,_))
 //
+|
+D2Cvaldclst
+(tknd, d2cs) => let
+val () =
+  fperr22_d2valdclist(out, d2cs)
+endlet // end-of-(D2Cvaldclst(_,_,_))
+|
+D2Cvardclst
+(tknd, d2cs) => let
+val () =
+  fperr22_d2vardclist(out, d2cs)
+endlet // end-of-(D2Cvardclst(_,_,_))
+//
 | D2Cnone0() => ( (*void*) )
 | D2Cnone1(d1cl) => ( (*void*) )
 |
@@ -140,6 +153,86 @@ endloc(*local*)//end-of(local(fperr22_d2ecl))
 fperr22_d2eclist
   (out, dcls) =
 list_fperr22_fnp(out, dcls, fperr22_d2ecl)
+//
+(* ****** ****** *)
+//
+#implfun
+fperr22_teqd2exp
+  (out, tdxp) =
+(
+case+ tdxp of
+|
+TEQD2EXPnone() => ()
+|
+TEQD2EXPsome(teq1, d2e2) =>
+let
+val d2e2 = fperr22_d2exp(out, d2e2)
+endlet // end of [TEQD2EXPsome(_,_)]
+) (*case+*)//end-(fperr22_teqd2exp(out,tdxp))
+//
+(* ****** ****** *)
+//
+#implfun
+fperr22_d2valdcl
+(out, dval) =
+let
+//
+val (  ) =
+fperr22_d2pat(out, dpat)
+//
+val (  ) =
+fperr22_teqd2exp(out, tdxp)
+//
+endlet where
+{
+//
+  val dpat = d2valdcl_get_dpat(dval)
+  val tdxp = d2valdcl_get_tdxp(dval)
+//
+(*
+  val wsxp = d2valdcl_get_wsxp(dval)
+*)
+//
+} (*where*)//end-of-[fperr22_d2valdcl(out,dval)]
+//
+(* ****** ****** *)
+//
+#implfun
+fperr22_d2vardcl
+(out, dvar) =
+let
+//
+val (  ) =
+fperr22_teqd2exp(out, dini)
+//
+endlet where
+{
+//
+(*
+  val dpid = d2vardcl_get_dpid(dvar)
+  val vpid = d2vardcl_get_vpid(dvar)
+  val sres = d2vardcl_get_sres(dvar)
+*)
+//
+  val dini = d2vardcl_get_dini(dvar)
+//
+} (*where*)//end-of-[fperr22_d2vardcl(out,dval)]
+//
+(* ****** ****** *)
+//
+#implfun
+fperr22_d2valdclist
+  (out, d2vs) =
+list_fperr22_fnp(out, d2vs, fperr22_d2valdcl)
+#implfun
+fperr22_d2vardclist
+  (out, d2vs) =
+list_fperr22_fnp(out, d2vs, fperr22_d2vardcl)
+//
+#implfun
+fperr22_d2fundclist
+  (out, d2fs) =
+list_fperr22_fnp(out, d2fs, fperr22_d2fundcl)
 //
 (* ****** ****** *)
 
