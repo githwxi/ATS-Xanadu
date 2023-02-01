@@ -102,6 +102,33 @@ end (*let*)//end-of(d2exp_errck)
 (* ****** ****** *)
 //
 fun
+d2pat_errvl_a1
+(d2p0: d2pat): sint =
+(
+case+ d2p0.node() of
+|
+D2Perrck
+(lvl0, _) => lvl0 | _ => 0
+)
+#symload
+d2pat_errvl with d2pat_errvl_a1
+#symload errvl with d2pat_errvl_a1
+//
+(* ****** ****** *)
+//
+fun
+d2pat_errvl_a2
+(d2p1: d2pat
+,d2p2: d2pat): sint =
+gmax
+(errvl(d2p1),errvl(d2p2))
+#symload
+d2pat_errvl with d2pat_errvl_a2
+#symload errvl with d2pat_errvl_a2
+//
+(* ****** ****** *)
+//
+fun
 d2exp_errvl_a1
 (d2e0: d2exp): sint =
 (
@@ -125,6 +152,32 @@ gmax
 #symload
 d2exp_errvl with d2exp_errvl_a2
 #symload errvl with d2exp_errvl_a2
+//
+(* ****** ****** *)
+//
+#extern
+fun
+d2pat_errvl_lst
+(d2ps: d2patlst): sint
+//
+#implfun
+d2pat_errvl_lst
+(  d2ps  ) =
+(
+case+ d2ps of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(d2p1,d2ps) =>
+gmax
+(
+errvl(d2p1),d2pat_errvl_lst(d2ps))
+endcas // end of [ case+( d2ps ) ]
+)
+//
+#symload
+d2pat_errvl with d2pat_errvl_lst
+#symload errvl with d2pat_errvl_lst
 //
 (* ****** ****** *)
 //
@@ -176,6 +229,20 @@ d2exp_errvl with d2exp_errvl_opt
 (* ****** ****** *)
 //
 fun
+d2pat_tup0_errck
+( loc0: loc_t
+, npf1: (sint)
+, d2ps: d2patlst): d2pat =
+let
+val lvl0 = errvl(d2ps) in//let
+d2pat_errck
+( lvl0+1
+, d2pat( loc0, D2Ptup0( npf1, d2ps )))
+endlet // end of [d2pat_tup0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d2exp_tup0_errck
 ( loc0: loc_t
 , npf1: (sint)
@@ -186,6 +253,21 @@ d2exp_errck
 ( lvl0+1
 , d2exp( loc0, D2Etup0( npf1, d2es )))
 endlet // end of [d2exp_tup0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d2exp_assgn_errck
+( loc0: loc_t
+, d2el: d2exp
+, d2er: d2exp): d2exp =
+let
+val lvl0 = gmax
+(errvl(d2el), errvl(d2er)) in//let
+d2exp_errck
+( lvl0+1
+, d2exp( loc0, D2Eassgn( d2el, d2er ) ))
+endlet // end of [d2exp_assgn_errck(...)]
 //
 (* ****** ****** *)
 //

@@ -59,6 +59,14 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with d2pat_get_lctn
+#symload node with d2pat_get_node
+#symload lctn with d2exp_get_lctn
+#symload node with d2exp_get_node
+(* ****** ****** *)
+#symload lctn with d2ecl_get_lctn
+#symload node with d2ecl_get_node
+(* ****** ****** *)
 
 local
 

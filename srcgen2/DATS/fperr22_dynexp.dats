@@ -59,6 +59,11 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with d2pat_get_lctn
+#symload node with d2pat_get_node
+#symload lctn with d2exp_get_lctn
+#symload node with d2exp_get_node
+(* ****** ****** *)
 
 local
 
@@ -134,6 +139,20 @@ in//let
 //
 case+
 d2e.node() of
+//
+|
+D2Eassgn
+(d2el, d2er) =>
+let
+val () = fperr22_d2exp(out, d2el)
+val () = fperr22_d2exp(out, d2er)
+endlet
+|
+D2Et2pck
+(d2e1, t2p2) =>
+let
+val () = fperr22_d2exp(out, d2e1)
+endlet
 //
 |D2Enone0(    ) => (   (*void*)   )
 |D2Enone1(d1e1) => (   (*void*)   )
