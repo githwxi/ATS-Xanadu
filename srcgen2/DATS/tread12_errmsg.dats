@@ -886,25 +886,25 @@ D2Cdatasort(d1cl, s2ts) => ()
 //
 |
 D2Cvaldclst
-(tknd, d2cs) => let
+(tknd, d2vs) => let
 val () =
-  d2valdclist_fpemsg(out, d2cs)
+  d2valdclist_fpemsg(out, d2vs)
 endlet // end-of-(D2Cvaldclst(_,_,_))
 |
 D2Cvardclst
-(tknd, d2cs) => let
+(tknd, d2vs) => let
 val () =
-  d2vardclist_fpemsg(out, d2cs)
+  d2vardclist_fpemsg(out, d2vs)
 endlet // end-of-(D2Cvardclst(_,_,_))
 //
 |
 D2Cfundclst
 ( tknd
-, tqas, d2cs) => let
+, tqas, d2fs) => let
 val () =
   t2qaglst_fpemsg(out, tqas)
 val () =
-  d2fundclist_fpemsg(out, d2cs)
+  d2fundclist_fpemsg(out, d2fs)
 endlet // end-of-(D2Cfundclst(_,_,_))
 //
 |
