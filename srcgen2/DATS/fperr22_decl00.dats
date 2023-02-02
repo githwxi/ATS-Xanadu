@@ -96,16 +96,28 @@ endlet//end-of(D2Cextern(_,_))
 //
 |
 D2Cvaldclst
-(tknd, d2cs) => let
+(tknd, d2vs) => let
 val () =
-  fperr22_d2valdclist(out, d2cs)
+  fperr22_d2valdclist(out, d2vs)
 endlet // end-of-(D2Cvaldclst(_,_,_))
 |
 D2Cvardclst
-(tknd, d2cs) => let
+(tknd, d2vs) => let
 val () =
-  fperr22_d2vardclist(out, d2cs)
+  fperr22_d2vardclist(out, d2vs)
 endlet // end-of-(D2Cvardclst(_,_,_))
+//
+|
+D2Cfundclst
+( tknd
+, tqas, d2fs) => let
+(*
+val () =
+  fperr22_t2qaglst(out, tqas)
+*)
+val () =
+  fperr22_d2fundclist(out, d2fs)
+endlet // end-of-(D2Cfundclst(_,_,_))
 //
 | D2Cnone0() => ( (*void*) )
 | D2Cnone1(d1cl) => ( (*void*) )

@@ -72,8 +72,10 @@ auxmain
 ( out: FILR
 , d2p: d2pat): void =
 let
+//
 #impltmp
 g_print$out<>() = out
+//
 in//let
 //
 case+
@@ -133,8 +135,10 @@ auxmain
 ( out: FILR
 , d2e: d2exp): void =
 let
+//
 #impltmp
 g_print$out<>() = out
+//
 in//let
 //
 case+
