@@ -229,6 +229,38 @@ endlet where
 (* ****** ****** *)
 //
 #implfun
+fperr22_d2fundcl
+(out, dfun) =
+let
+//
+val (  ) =
+fperr22_f2arglst(out, fags)
+//
+val (  ) =
+fperr22_teqd2exp(out, tdxp)
+//
+endlet where
+{
+//
+(*
+  val dpid = d2fundcl_get_dpid(dfun)
+*)
+//
+  val fags = d2fundcl_get_farg(dfun)
+(*
+  val sres = d2fundcl_get_sres(dfun)
+*)
+  val tdxp = d2fundcl_get_tdxp(dfun)
+//
+(*
+  val wsxp = d2fundcl_get_wsxp(dfun)
+*)
+//
+} (*where*)//end-of-[fperr22_d2fundcl(out,dfun)]
+//
+(* ****** ****** *)
+//
+#implfun
 fperr22_d2valdclist
   (out, d2vs) =
 list_fperr22_fnp(out, d2vs, fperr22_d2valdcl)

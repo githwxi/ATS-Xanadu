@@ -202,16 +202,55 @@ endloc(*local*)//end-of(local(fperr22_d2exp))
 (* ****** ****** *)
 //
 #implfun
+fperr22_f2arg
+(out, farg) =
+(
+case+
+farg.node() of
+//
+|F2ARGdyn0
+(npf1, d2ps) =>
+fperr22_d2patlst(out, d2ps)
+//
+|F2ARGsta0
+(s2vs, s2es) => ( (*void*) )
+|F2ARGmet0(s2es) => ( (*void*) )
+//
+) (*case+*)//end-of-(fperr22_f2arg(out,farg)]
+//
+(* ****** ****** *)
+//
+#implfun
 fperr22_d2patlst
   (out, d2ps) =
-list_fperr22_fnp(out, d2ps, fperr22_d2pat)
+(
+  list_fperr22_fnp(out, d2ps, fperr22_d2pat))
+#implfun
+fperr22_l2d2plst
+  (out, ldps) =
+(
+  list_fperr22_fnp(out, ldps, fperr22_l2d2p))
 //
 (* ****** ****** *)
 //
 #implfun
 fperr22_d2explst
   (out, d2es) =
-list_fperr22_fnp(out, d2es, fperr22_d2exp)
+(
+  list_fperr22_fnp(out, d2es, fperr22_d2exp))
+#implfun
+fperr22_l2d2elst
+  (out, ldes) =
+(
+  list_fperr22_fnp(out, ldes, fperr22_l2d2e))
+//
+(* ****** ****** *)
+//
+#implfun
+fperr22_f2arglst
+  (out, f2as) =
+(
+  list_fperr22_fnp(out, f2as, fperr22_f2arg))
 //
 (* ****** ****** *)
 
