@@ -195,24 +195,32 @@ print("D2Pflat(",d2p1,")")
 print("D2Pfree(",d2p1,")")
 //
 |
-D2Psym0(d1p1,d2is) =>
-print("D2Psym0(",d1p1,";",d2is,")")
+D2Psym0
+(drpt,d1p1,d2is) =>
+print
+( "D2Psym0("
+, drpt,";",d1p1,";",d2is,")")
 //
 |
-D2Psapp(d2f0,s2vs) =>
-print("D2Psapp(",d2f0,";",s2vs,")")
+D2Psapp
+(d2f0, s2vs) =>
+print
+("D2Psapp(",d2f0,";",s2vs,")")
 //
 |
 D2Pdap0(d1p1) =>
-print("D2Pdap0(", d1p1, ")")
+(
+print("D2Pdap0(", d1p1, ")") )
 |
 D2Pdap1(d1p1) =>
-print("D2Pdap1(", d1p1, ")")
+(
+print("D2Pdap1(", d1p1, ")") )
 |
 D2Pdapp
 (d2f0, npf1, d2ps) =>
-( print("D2Pdapp(")
-; print(d2f0,";",npf1,";",d2ps,")") )
+(
+print("D2Pdapp(");
+print(d2f0,";",npf1,";",d2ps,")") )
 //
 |
 D2Ptup0(npf1, d2ps) =>
@@ -384,9 +392,12 @@ print("D2Econs(", d2cs, ")")
 print("D2Ecsts(", d2cs, ")")
 //
 |
-D2Esym0(d1e1, dpis) =>
+D2Esym0
+( drxp
+, d1e1, dpis) =>
 print
-("D2Esym0(",d1e1,";",dpis,")")
+( "D2Esym0("
+, drxp,";",d1e1,";",dpis,")")
 //
 |
 D2Esapp

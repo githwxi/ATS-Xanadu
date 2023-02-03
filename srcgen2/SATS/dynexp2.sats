@@ -121,9 +121,15 @@ S2E = "./staexp2.sats"
 (* ****** ****** *)
 #abstbox d2pat_tbox // ptr
 #abstbox d2exp_tbox // ptr
-#abstbox d2ecl_tbox // ptr
 #typedef d2pat = d2pat_tbox
 #typedef d2exp = d2exp_tbox
+(* ****** ****** *)
+#abstbox d2rpt_tbox // ptr
+#abstbox d2rxp_tbox // ptr
+#typedef d2rpt = d2rpt_tbox
+#typedef d2rxp = d2rxp_tbox
+(* ****** ****** *)
+#abstbox d2ecl_tbox // ptr
 #typedef d2ecl = d2ecl_tbox
 (* ****** ****** *)
 #abstbox f2arg_tbox // ptr
@@ -504,7 +510,8 @@ d2pat_node =
 |D2Pfree of (d2pat) // ~
 //
 |D2Psym0 of
- (d1pat(*sym*), d2itmlst)
+( d2rpt(*ref*)
+, d1pat(*sym*), d2itmlst)
 //
 |D2Psapp of
  (d2pat, s2varlst(*sarg*))
@@ -554,6 +561,8 @@ D2Perrck of (sint(*lvl*), d2pat)//HX:tread12-error
 (* ****** ****** *)
 fun
 d2pat_fprint:(FILR,d2pat)->void
+fun
+d2rpt_fprint:(FILR,d2rpt)->void
 (* ****** ****** *)
 fun
 d2pat_get_lctn(d2pat): loc_t
@@ -758,7 +767,8 @@ d2exp_node =
 |D2Ecsts of (d2cstlst)
 //
 |D2Esym0 of
-( d1exp(*sym*), d2ptmlst )
+( d2rxp(*ref*)
+, d1exp(*sym*), d2ptmlst )
 //
 |D2Esapp of (d2exp, s2explst)
 |D2Etapp of (d2exp, s2explst)
@@ -877,6 +887,8 @@ s2res =
 (* ****** ****** *)
 fun
 d2exp_fprint:(FILR,d2exp)->void
+fun
+d2rxp_fprint:(FILR,d2rxp)->void
 (* ****** ****** *)
 fun
 s2eff_fprint:(FILR,s2eff)->void

@@ -10,7 +10,7 @@ val () = (z := "0")
 (* ****** ****** *)
 fun
 fact0(x: sint): sint =
-if x > 0 then x * fact0(x-1) else 1
+if x > 0 then x * fact0(x-1) else "1"
 (* ****** ****** *)
 ////
 (* ****** ****** *)
