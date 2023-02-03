@@ -347,6 +347,9 @@ d2p0.node() of
 |D2Prcd2 _ => f0_rcd2(d2p0, err)
 *)
 //
+|
+D2Pannot _ => f0_annot(d2p0, err)
+//
 | _(*otherwise*) =>
 let
 val lvl0 = 1
@@ -385,6 +388,38 @@ val loc = d2p.lctn() in
 d2pat_tup0_errck(loc, npf1, d2ps)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_tup0(d2p,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_annot
+(d2p: d2pat
+,err: &sint >> _): d2pat =
+let
+//
+val e00 = err
+//
+val-
+D2Pannot
+(d2p1
+,s1e2, s2e2) = d2p.node()
+//
+val
+d2p1 = tread22_d2pat(d2p1, err)
+(*
+val
+s2e2 = tread22_s2exp(s2e2, err)
+*)
+//
+in//let
+if
+(e00=err)
+then (d2p) else
+let
+val loc = d2p.lctn() in
+d2pat_annot_errck(loc,d2p1,s1e2,s2e2)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_annot(d2p,err)]
 //
 (* ****** ****** *)
 //
