@@ -1165,6 +1165,9 @@ d2ptm_fprint(g_print$out<>(), dpi)
 #impltmp
 g_print<d2pat>(d2p) =
 d2pat_fprint(g_print$out<>(), d2p)
+#impltmp
+g_print<d2rpt>(drf) =
+d2rpt_fprint(g_print$out<>(), drf)
 //
 (* ****** ****** *)
 #impltmp
@@ -1188,6 +1191,9 @@ d2cls_fprint(g_print$out<>(), dcl)
 #impltmp
 g_print<d2exp>(d2e) =
 d2exp_fprint(g_print$out<>(), d2e)
+#impltmp
+g_print<d2rxp>(drf) =
+d2rxp_fprint(g_print$out<>(), drf)
 //
 (* ****** ****** *)
 //
