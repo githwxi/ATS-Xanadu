@@ -574,6 +574,9 @@ d2pat_get_node(d2pat): d2pat_node
 (* ****** ****** *)
 //
 fun
+d2rpt_new1(loc:loc_t): d2rpt
+//
+fun
 d2rpt_get_dpat(d2rpt): d2pat
 fun
 d2rpt_set_dpat
@@ -913,10 +916,14 @@ d2exp_get_node(d2exp): d2exp_node
 #symload lctn with d2exp_get_lctn
 #symload node with d2exp_get_node
 (* ****** ****** *)
+//
+fun
+d2rxp_new1(loc:loc_t): d2rxp
+//
 fun
 d2rxp_get_dexp(d2rxp): d2exp
 fun
-d2rxp_set_dpat
+d2rxp_set_dexp
 (drxp: d2rxp, d2e0: d2exp): void
 #symload dexp with d2rxp_get_dexp
 #symload dexp with d2rxp_set_dexp
