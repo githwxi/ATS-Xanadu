@@ -204,9 +204,11 @@ d2exp(loc0, D2Ecst(dcst)))
 (* ****** ****** *)
 #implfun
 d2exp_sym0
-(loc0, d1e0, dpis) =
+( loc0
+, drxp, d1e0, dpis) =
 d2exp_make_node
-(loc0, D2Esym0(d1e0, dpis))
+( loc0
+, D2Esym0(drxp,d1e0,dpis))
 (* ****** ****** *)
 //
 #implfun
@@ -821,6 +823,52 @@ val+
 end (*let*) // end of [d2pat_set_styp]
 //
 endloc (*local*) // end of [local(d2pat)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d2rpt =
+D2RPT of (d2pat)
+datavwtp
+d2rpt_vt =
+D2RPT_vt of (d2pat)
+//
+#absimpl d2rpt_tbox = d2rpt
+//
+in (* in-of-local *)
+//
+#implfun
+d2rpt_get_dpat(drpt) =
+let
+val+
+D2RPT(dpat) = drpt in dpat end
+//
+endloc (*local*) // end of [local(d2rpt)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d2rxp =
+D2RXP of (d2exp)
+datavwtp
+d2rxp_vt =
+D2RXP_vt of (d2exp)
+//
+#absimpl d2rxp_tbox = d2rxp
+//
+in (* in-of-local *)
+//
+#implfun
+d2rxp_get_dexp(drxp) =
+let
+val+
+D2RXP(dexp) = drxp in dexp end
+//
+endloc (*local*) // end of [local(d2rxp)]
 
 (* ****** ****** *)
 
