@@ -336,20 +336,6 @@ print("D0Elet0(",tknd,";");
 print(dcls,";",topt,";",d0es,";",tend,")"))
 //
 |
-D0Ewhere(d0e1,dcl2) =>
-print
-("D0Ewhere(",d0e1,";",dcl2,")")
-//
-|
-D0Ebrckt(tbeg,d0es,tend) =>
-print
-( "D0Ebrckt(" ,tbeg,";",d0es,";",tend,")" )
-|
-D0Edtsel(tknd,lab1,opt2) =>
-print
-( "D0Edtsel(" ,tknd,";",lab1,";",opt2,")" )
-//
-|
 D0Etry0
 (tknd,d0e1,twth,tbar,dcls,tend) =>
 //
@@ -373,6 +359,20 @@ print
 ("D0Efix0(");
 print(tknd,";",fid0,";",farg,";");
 print(sres,";",arrw,";",body,";",tend,")"))
+//
+|
+D0Ewhere(d0e1,dcl2) =>
+print
+("D0Ewhere(",d0e1,";",dcl2,")")
+//
+|
+D0Ebrckt(tbeg,d0es,tend) =>
+print
+( "D0Ebrckt(" ,tbeg,";",d0es,";",tend,")" )
+|
+D0Edtsel(tknd,lab1,opt2) =>
+print
+( "D0Edtsel(" ,tknd,";",lab1,";",opt2,")" )
 //
 |
 D0Eannot(d0e1,s0e2) =>

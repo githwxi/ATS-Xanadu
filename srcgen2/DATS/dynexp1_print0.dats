@@ -348,20 +348,6 @@ print(tknd,";",d1e1,";",d1cs,")"))
 D1Elet0
 (d1cs,d1e1) =>
 print("D1Elet0(",d1cs,";",d1e1,")")
-|
-D1Ewhere
-(d1e1,d1cs) =>
-print("D1Ewhere(",d1e1,";",d1cs,")")
-//
-|
-D1Ebrckt
-(  d1es  ) =>
-print("D1Ebrckt(",d1es,")")
-|
-D1Edtsel
-(tknd,lab1,dopt) =>
-(print("D1Edtsel(");
- print(tknd,";",lab1,";",dopt,")"))
 //
 |
 D1Et1up
@@ -411,6 +397,21 @@ D1Etry0
 (
 print("D1Etry0(");
 print(tknd,";",d1e1,";",d1cs,")"))
+//
+|
+D1Ewhere
+(d1e1,d1cs) =>
+print("D1Ewhere(",d1e1,";",d1cs,")")
+//
+|
+D1Ebrckt
+(  d1es  ) =>
+print("D1Ebrckt(",d1es,")")
+|
+D1Edtsel
+(tknd,lab1,dopt) =>
+( print("D1Edtsel(")
+; print(tknd,";",lab1,";",dopt,")") )
 //
 |
 D1Eannot
