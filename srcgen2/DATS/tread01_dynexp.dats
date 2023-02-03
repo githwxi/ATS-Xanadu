@@ -1431,58 +1431,6 @@ d1exp_let0_errck(loc0 , d1cs , d1e1)
 endlet // end of [D1Elet0(d1cs,d1e1)]
 //
 |
-D1Ewhere
-(d1e1, d1cs) =>
-let
-//
-val e00 = err
-//
-val
-d1cs =
-tread01_d1eclist(d1cs, err)
-val
-d1e1 = tread01_d1exp(d1e1, err)
-//
-in//let
-if
-(e00=err)
-then (d1e0) else
-d1exp_where_errck(loc0 , d1e1 , d1cs)
-endlet // end of [D1Ewhere(d1cs,d1es)]
-//
-|
-D1Ebrckt(d1es) =>
-let
-//
-val e00 = err
-//
-val d1es =
-tread01_d1explst(d1es, err)
-//
-in//let
-if
-(e00=err)
-then (d1e0)
-else d1exp_brckt_errck( loc0 , d1es )
-endlet // end of [ D1Ebrckt(  d1es  ) ]
-|
-D1Edtsel
-(tknd,lab1,dopt) =>
-let
-//
-val e00 = err
-//
-val dopt =
-tread01_d1expopt(dopt, err)
-//
-in//let
-if
-(e00=err)
-then (d1e0) else
-d1exp_dtsel_errck(loc0,tknd,lab1,dopt)
-endlet//end-of(D1Edtsel(tknd,lab1,dopt))
-//
-|
 D1Et1up(tknd,d1es) =>
 let
 //
@@ -1619,6 +1567,64 @@ tread01_d1clslst(d1cs, err)
 in//let
 d1exp_try0_errck(loc0,tknd,d1e1,d1cs)
 endlet // end(D1Etry0(tknd,d1e1,d1cs))
+//
+(* ****** ****** *)
+//
+|
+D1Ewhere
+(d1e1, d1cs) =>
+let
+//
+val e00 = err
+//
+val
+d1cs =
+tread01_d1eclist(d1cs, err)
+val
+d1e1 = tread01_d1exp(d1e1, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_where_errck(loc0 , d1e1 , d1cs)
+endlet // end of [D1Ewhere(d1cs,d1es)]
+//
+(* ****** ****** *)
+//
+|
+D1Ebrckt(d1es) =>
+let
+//
+val e00 = err
+//
+val d1es =
+tread01_d1explst(d1es, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0)
+else d1exp_brckt_errck( loc0 , d1es )
+endlet // end of [ D1Ebrckt(  d1es  ) ]
+|
+D1Edtsel
+(tknd,lab1,dopt) =>
+let
+//
+val e00 = err
+//
+val dopt =
+tread01_d1expopt(dopt, err)
+//
+in//let
+if
+(e00=err)
+then (d1e0) else
+d1exp_dtsel_errck(loc0,tknd,lab1,dopt)
+endlet//end-of(D1Edtsel(tknd,lab1,dopt))
+//
+(* ****** ****** *)
 //
 |
 D1Eannot(d1e1,s1e2) =>
