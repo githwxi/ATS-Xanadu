@@ -128,7 +128,10 @@ fun fperr22_f2arg(FILR, f2arg): void
 fun fperr22_d2ecl(FILR, d2ecl): void
 (* ****** ****** *)
 fun fperr22_d2patlst(FILR, d2patlst): void
+fun fperr22_d2patopt(FILR, d2patopt): void
+(* ****** ****** *)
 fun fperr22_d2explst(FILR, d2explst): void
+fun fperr22_d2expopt(FILR, d2expopt): void
 (* ****** ****** *)
 fun fperr22_l2d2plst(FILR, l2d2plst): void
 fun fperr22_l2d2elst(FILR, l2d2elst): void
