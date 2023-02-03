@@ -840,10 +840,27 @@ D2RPT_vt of (d2pat)
 in (* in-of-local *)
 //
 #implfun
+d2rpt_new1(loc0) =
+D2RPT(d2pat_none0(loc0))
+//
+#implfun
 d2rpt_get_dpat(drpt) =
 let
 val+
 D2RPT(dpat) = drpt in dpat end
+//
+#implfun
+d2rpt_set_dpat
+( drpt, d2p0 ) =
+let
+//
+val
+drpt =
+$UN.castlin10{d2rpt_vt}(drpt)
+val+
+@D2RPT_vt
+( !dpat ) = drpt in dpat := d2p0
+end (*let*) // end of [d2rpt_set_dpat]
 //
 endloc (*local*) // end of [local(d2rpt)]
 
@@ -863,10 +880,27 @@ D2RXP_vt of (d2exp)
 in (* in-of-local *)
 //
 #implfun
+d2rxp_new1(loc0) =
+D2RXP(d2exp_none0(loc0))
+//
+#implfun
 d2rxp_get_dexp(drxp) =
 let
 val+
 D2RXP(dexp) = drxp in dexp end
+//
+#implfun
+d2rxp_set_dexp
+( drxp, d2e0 ) =
+let
+//
+val
+drxp =
+$UN.castlin10{d2rxp_vt}(drxp)
+val+
+@D2RXP_vt
+( !dexp ) = drxp in dexp := d2e0
+end (*let*) // end of [d2rxp_set_dexp]
 //
 endloc (*local*) // end of [local(d2rxp)]
 
