@@ -233,7 +233,8 @@ D2Pannot
 (d2p1, s1e2, s2e2) =>
 print("D2Pannot(",d2p1,";",s1e2,";",s2e2,")")
 //
-|D2Pg1mac(g1m1) => print("D2Pg1mac(",g1m1,")")
+|
+D2Pg1mac(g1m1) => print("D2Pg1mac(",g1m1,")")
 //
 |
 D2Pt2pck(d2p1,t2p2) =>

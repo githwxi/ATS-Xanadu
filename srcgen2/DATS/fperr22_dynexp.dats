@@ -81,6 +81,16 @@ in//let
 case+
 d2p.node() of
 //
+|
+D2Pannot
+(d2p1,s1e2,s2e2) =>
+let
+val () = fperr22_d2pat(out, d2p1)
+(*
+val () = fperr22_s2exp(out, s2e2)
+*)
+endlet
+//
 |D2Pnone0(    ) => (   (*void*)   )
 |D2Pnone1(d1p1) => (   (*void*)   )
 |D2Pnone2(d2p1) => (   (*void*)   )
@@ -99,6 +109,13 @@ let
 #impltmp
 g_print$out<>() = out
 //
+val () =
+let
+val loc0 = d2p0.lctn()
+in
+prerrln
+("fperr22_d2pat: loc0 = ", loc0)
+end
 val () =
 prerrln
 ("fperr22_d2pat: d2p0 = ", d2p0)
@@ -145,6 +162,17 @@ case+
 d2e.node() of
 //
 |
+D2Eif0
+(d2e1,dthn,dels) =>
+let
+val () =
+fperr22_d2exp(out, d2e1)
+val () =
+fperr22_d2expopt(out, dthn)
+val () =
+fperr22_d2expopt(out, dels) end
+//
+|
 D2Eassgn
 (d2el, d2er) =>
 let
@@ -176,6 +204,13 @@ let
 #impltmp
 g_print$out<>() = out
 //
+val () =
+let
+val loc0 = d2e0.lctn()
+in
+prerrln
+("fperr22_d2exp: loc0 = ", loc0)
+end
 val () =
 prerrln
 ("fperr22_d2exp: d2e0 = ", d2e0)
@@ -230,6 +265,12 @@ fperr22_d2patlst
 (
   list_fperr22_fnp(out, d2ps, fperr22_d2pat))
 #implfun
+fperr22_d2patopt
+  (out, dopt) =
+(
+  optn_fperr22_fnp(out, dopt, fperr22_d2pat))
+//
+#implfun
 fperr22_l2d2plst
   (out, ldps) =
 (
@@ -242,6 +283,12 @@ fperr22_d2explst
   (out, d2es) =
 (
   list_fperr22_fnp(out, d2es, fperr22_d2exp))
+#implfun
+fperr22_d2expopt
+  (out, dopt) =
+(
+  optn_fperr22_fnp(out, dopt, fperr22_d2exp))
+//
 #implfun
 fperr22_l2d2elst
   (out, ldes) =

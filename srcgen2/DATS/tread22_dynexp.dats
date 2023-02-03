@@ -128,6 +128,46 @@ d2pat_errvl with d2pat_errvl_a2
 //
 (* ****** ****** *)
 //
+#extern
+fun
+d2pat_errvl_lst
+(d2ps: d2patlst): sint
+//
+#implfun
+d2pat_errvl_lst
+(  d2ps  ) =
+(
+case+ d2ps of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(d2p1,d2ps) =>
+gmax
+(
+errvl(d2p1),d2pat_errvl_lst(d2ps))
+endcas // end of [ case+( d2ps ) ]
+)
+//
+#symload
+d2pat_errvl with d2pat_errvl_lst
+#symload errvl with d2pat_errvl_lst
+//
+(* ****** ****** *)
+//
+fun
+d2pat_tup0_errck
+( loc0: loc_t
+, npf1: (sint)
+, d2ps: d2patlst): d2pat =
+let
+val lvl0 = errvl(d2ps) in//let
+d2pat_errck
+( lvl0+1
+, d2pat( loc0, D2Ptup0( npf1, d2ps )))
+endlet // end of [d2pat_tup0_errck(...)]
+//
+(* ****** ****** *)
+//
 fun
 d2exp_errvl_a1
 (d2e0: d2exp): sint =
@@ -152,32 +192,6 @@ gmax
 #symload
 d2exp_errvl with d2exp_errvl_a2
 #symload errvl with d2exp_errvl_a2
-//
-(* ****** ****** *)
-//
-#extern
-fun
-d2pat_errvl_lst
-(d2ps: d2patlst): sint
-//
-#implfun
-d2pat_errvl_lst
-(  d2ps  ) =
-(
-case+ d2ps of
-|
-list_nil((*nil*)) => 0
-|
-list_cons(d2p1,d2ps) =>
-gmax
-(
-errvl(d2p1),d2pat_errvl_lst(d2ps))
-endcas // end of [ case+( d2ps ) ]
-)
-//
-#symload
-d2pat_errvl with d2pat_errvl_lst
-#symload errvl with d2pat_errvl_lst
 //
 (* ****** ****** *)
 //
@@ -229,16 +243,20 @@ d2exp_errvl with d2exp_errvl_opt
 (* ****** ****** *)
 //
 fun
-d2pat_tup0_errck
+d2exp_if0_errck
 ( loc0: loc_t
-, npf1: (sint)
-, d2ps: d2patlst): d2pat =
+, d2e1: d2exp
+, opt1: d2expopt
+, opt2: d2expopt): d2exp =
 let
-val lvl0 = errvl(d2ps) in//let
-d2pat_errck
+val lvl0 =
+gmax
+(errvl(d2e1)
+,errvl(opt1), errvl(opt2)) in//let
+d2exp_errck
 ( lvl0+1
-, d2pat( loc0, D2Ptup0( npf1, d2ps )))
-endlet // end of [d2pat_tup0_errck(...)]
+, d2exp(loc0,D2Eif0(d2e1,opt1,opt2)))
+endlet // end of [d2exp_if0_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -346,6 +364,27 @@ end (*let*) // end of [f0_tup0(d2p,err)]
 //
 (* ****** ****** *)
 //
+#implfun
+tread22_l2d2p
+  (ld2p, err) =
+let
+//
+val e00 = err
+//
+val+
+D2LAB(lab0, d2p1) = ld2p
+//
+val
+d2p1 = tread22_d2pat(d2p1, err)
+//
+in//let
+if // if
+(e00=err)
+then (ld2p) else D2LAB(lab0, d2p1)
+end (*let*)//end-(tread22_l2d2p(ld2p,err))
+//
+(* ****** ****** *)
+//
 //
 #implfun
 tread22_d2exp
@@ -383,6 +422,30 @@ d2e0.node() of
 //
 |
 D2Eassgn _ => f0_assgn(d2e0, err)
+//
+|
+D2Eif0
+(
+d2e1,
+dthn,dels) =>
+let
+//
+val e00 = err
+//
+val d2e1 =
+tread22_d2exp(d2e1, err)
+val dthn =
+tread22_d2expopt(dthn, err)
+val dels =
+tread22_d2expopt(dels, err)
+//
+in//let
+if
+(e00=err)
+then (d2e0) else
+d2exp_if0_errck
+(d2e0.lctn(), d2e1, dthn, dels)
+endlet // [ D1Eif0(d1e1,dthn,dels) ]
 //
 | _(*otherwise*) =>
 let
@@ -466,6 +529,93 @@ prerrln("tread22_d2exp: d2e0 = ", d2e0)
 (* ****** ****** *)
 //
 #implfun
+tread22_l2d2e
+  (ld2e, err) =
+let
+//
+val e00 = err
+//
+val+
+D2LAB(lab0, d2e1) = ld2e
+//
+val
+d2e1 = tread22_d2exp(d2e1, err)
+//
+in//let
+if // if
+(e00=err)
+then (ld2e) else D2LAB(lab0, d2e1)
+end (*let*)//end-(tread22_l2d2e(ld2e,err))
+//
+(* ****** ****** *)
+//
+(* ****** ****** *)
+//
+#implfun
+tread22_f2arg
+  (farg, err) =
+(
+case+
+farg.node() of
+//
+(*
+| F2ARGnone of (token)
+*)
+//
+|
+F2ARGsta0
+(s2vs, s2es) =>
+let
+val e00 = err
+(*
+val s2es =
+tread22_s2explst(s2es, err)
+*)
+in//let
+if
+(e00=err)
+then (farg) else
+f2arg
+(farg.lctn(), F2ARGsta0(s2vs, s2es))
+endlet // end of [F2ARGsta0(s2vs,s2es)]
+//
+|
+F2ARGdyn0
+(npf1, d2ps) =>
+let
+val e00 = err
+val d2ps =
+tread22_d2patlst(d2ps, err)
+in//let
+if
+(e00=err)
+then (farg) else
+f2arg
+(farg.lctn(), F2ARGdyn0(npf1, d2ps))
+endlet // end of [F2ARGdyn0(npf1,d2ps)]
+//
+|
+F2ARGmet0(s2es) =>
+let
+//
+val e00 = err
+//
+(*
+val s2es =
+tread22_s2explst(s2es, err)
+*)
+in//let
+if
+(e00=err)
+then (farg) else
+f2arg( farg.lctn(), F2ARGmet0(s2es) )
+endlet // end of [ F2ARGmet0(  s2es  ) ]
+//
+) (*case+*)//end-[tread22_f2arg(farg,err)]
+//
+(* ****** ****** *)
+//
+#implfun
 tread22_d2patlst
   (  d2ps, err  ) =
 list_tread22_fnp(d2ps, err, tread22_d2pat)
@@ -476,10 +626,29 @@ list_tread22_fnp(d2ps, err, tread22_d2pat)
 tread22_d2explst
   (  d2es, err  ) =
 list_tread22_fnp(d2es, err, tread22_d2exp)
+//
+#implfun
+tread22_d2expopt
+  (  dopt, err  ) =
+optn_tread22_fnp(dopt, err, tread22_d2exp)
+//
+(* ****** ****** *)
+//
+#implfun
+tread22_l2d2plst
+  (  ldps, err  ) =
+list_tread22_fnp(ldps, err, tread22_l2d2p)
 #implfun
 tread22_l2d2elst
   (  ldes, err  ) =
 list_tread22_fnp(ldes, err, tread22_l2d2e)
+//
+(* ****** ****** *)
+//
+#implfun
+tread22_f2arglst
+  (  f2as, err  ) =
+list_tread22_fnp(f2as, err, tread22_f2arg)
 //
 (* ****** ****** *)
 
