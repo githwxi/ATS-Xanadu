@@ -402,6 +402,7 @@ datatype
 d2itm =
 //
 |D2ITMvar of (d2var)
+//
 |D2ITMcon of (d2conlst)
 |D2ITMcst of (d2cstlst)
 //
@@ -510,7 +511,7 @@ d2pat_node =
 |D2Pfree of (d2pat) // ~
 //
 |D2Psym0 of
-(d1pat(*sym*), d2itmlst)
+(d1pat(*sym*), d2ptmlst)
 //
 |D2Psapp of
  (d2pat, s2varlst(*sarg*))
@@ -612,6 +613,12 @@ d2pat_any
 fun
 d2pat_var
 (loc0: loc_t, d2v1: d2var): d2pat
+(* ****** ****** *)
+fun
+d2pat_sym0
+( loc0: loc_t
+, d1p0: d1pat(*sym*)
+, dpis: d2ptmlst(*opts*) ): d2pat
 (* ****** ****** *)
 fun
 d2pat_con

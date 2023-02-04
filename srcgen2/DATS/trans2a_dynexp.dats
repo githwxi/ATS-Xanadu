@@ -837,8 +837,8 @@ val d2cs =
 trans2a_d2clslst_tpck1
 (env0, d2cs, targ, tres)
 in//let
-d2exp_make_styp_node
-(loc0, tres, D2Ecas0(tknd, d2e1, d2cs))
+  d2exp_make_styp_node
+  (loc0,tres,D2Ecas0(tknd,d2e1,d2cs))
 end (*let*)
 end (*let*) // end of [f0_cas0(env0,...)]
 //
