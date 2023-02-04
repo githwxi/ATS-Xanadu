@@ -510,6 +510,7 @@ end (*let*) // end of [f0_apps(e1nv,...)]
 } (*where*) // end of [s2typ_substx(e1nv,...)]
 //
 (* ****** ****** *)
+//
 and
 s2typlst_substx
 ( e1nv: !e1nv
@@ -535,6 +536,7 @@ if // if
 flag <= fval then t2ps else list_cons(t2p1,tps2)
 end (*let*)
 ) (*case+*) // end of [s2typlst_substx(e1nv,...)]
+//
 (* ****** ****** *)
 //
 } (*where*) // end of [s2typ_hnfizx_e1nv(e1nv,...)]
