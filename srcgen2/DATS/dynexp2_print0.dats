@@ -199,9 +199,9 @@ print("D2Pfree(",d2p1,")")
 //
 |
 D2Psym0
-(d1p1, d2is) =>
+(d1p1, dpis) =>
 print
-("D2Psym0(",d1p1,";",d2is,")")
+("D2Psym0(",d1p1,";",dpis,")")
 //
 |
 D2Psapp

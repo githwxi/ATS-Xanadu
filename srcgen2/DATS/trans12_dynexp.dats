@@ -522,11 +522,11 @@ f0_id0_d2con(env0, d1p0, d2cs)
 |
 D2ITMcst(d2cs) =>
 f0_id0_d2cst(env0, d1p0, d2cs)
-(*
+//
 |
 D2ITMsym(_, dpis) =>
-f0_id0_d2sym(env0, d1e0, dpis)
-*)
+f0_id0_d2sym(env0, d1p0, dpis)
+//
 ) (*case+*) // end of [f0_id0_d2itm(...)]
 //
 and
@@ -577,12 +577,35 @@ f0_id0_d1sym(env0, d1p0, sym1) end
 //
 (* ****** ****** *)
 //
+and
+f0_id0_d2sym
+( env0:
+! tr12env
+, d1p0: d1pat
+, dpis: d2ptmlst): d2pat =
+let
+val loc0 = d1p0.lctn()
+in//let
+  d2pat_sym0(loc0, d1p0, dpis)
+end where
+{
+(*
+val (  ) =
+prerrln("f0_id0_d2sym: d1p0 = ", d1p0)
+val (  ) =
+prerrln("f0_id0_d2sym: dpis = ", dpis)
+*)
+} (*where*) // end of [f0_id0_d2sym(...)]
+//
+(* ****** ****** *)
+//
 fun
 f0_main
 ( env0:
 ! tr12env
 , d1p0: d1pat): d2pat =
 let
+//
 (*
 val
 loc0 = d1p0.lctn()
@@ -1101,7 +1124,7 @@ f1_d2pat
 case+
 d2p0.node() of
 |
-D2Psym0(d1p0, d2is) =>
+D2Psym0(d1p0, dpis) =>
 let
 val-
 D1Pid0(sym1) = d1p0.node()
@@ -1441,12 +1464,12 @@ d2exp_sym0(loc0, drxp, d1e0, dpis)
 end
 end where
 {
-// (*
+(*
 val (  ) =
 prerrln("f0_id0_d2sym: d1e0 = ", d1e0)
 val (  ) =
 prerrln("f0_id0_d2sym: dpis = ", dpis)
-// *)
+*)
 } (*where*) // end of [f0_id0_d2sym(...)]
 //
 (* ****** ****** *)

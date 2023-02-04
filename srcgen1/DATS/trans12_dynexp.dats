@@ -1115,8 +1115,7 @@ d1p0.node() of
   ( tok
   , xs1, xs2) => auxtrcd12(d1p0)
 //
-|
- D1Panno
+| D1Panno
 (d1p1, s1e2) =>
 (
   d2pat_make_node
