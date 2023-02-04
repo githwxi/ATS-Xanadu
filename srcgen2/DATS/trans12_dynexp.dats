@@ -586,7 +586,12 @@ f0_id0_d2sym
 let
 val loc0 = d1p0.lctn()
 in//let
-  d2pat_sym0(loc0, d1p0, dpis)
+let
+val
+drpt = d2rpt_new1(loc0)
+in
+d2pat_sym0(loc0, drpt, d1p0, dpis)
+end
 end where
 {
 (*
@@ -1123,14 +1128,17 @@ f1_d2pat
 (
 case+
 d2p0.node() of
+(*
 |
-D2Psym0(d1p0, dpis) =>
+D2Psym0
+(drpt, d1p0, dpis) =>
 let
 val-
 D1Pid0(sym1) = d1p0.node()
 in//let
 f0_id0_d1sym(env0, d1p0, sym1)
 end
+*)
 | _(* non-D2Psym0 *) => ( d2p0 )
 ) (*case+*) // end-of-[f1_d2pat(env0,d2p0)]
 //

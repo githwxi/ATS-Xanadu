@@ -511,7 +511,8 @@ d2pat_node =
 |D2Pfree of (d2pat) // ~
 //
 |D2Psym0 of
-(d1pat(*sym*), d2ptmlst)
+( d2rpt(*ref*)
+, d1pat(*sym*), d2ptmlst)
 //
 |D2Psapp of
  (d2pat, s2varlst(*sarg*))
@@ -617,6 +618,7 @@ d2pat_var
 fun
 d2pat_sym0
 ( loc0: loc_t
+, drpt: d2rpt(*ref*)
 , d1p0: d1pat(*sym*)
 , dpis: d2ptmlst(*opts*) ): d2pat
 (* ****** ****** *)
