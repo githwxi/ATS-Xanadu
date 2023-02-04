@@ -9,7 +9,7 @@ var z: strn = 3
 val () = (z := "0")
 (* ****** ****** *)
 fun
-fact0(x: sint): sint =
+fact0(x: sint): strn =
 if x > 0 then x * fact0(x-1) else "1"
 (* ****** ****** *)
 ////

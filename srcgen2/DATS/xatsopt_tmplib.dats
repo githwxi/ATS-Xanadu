@@ -1340,6 +1340,7 @@ end (*let*) // end of [g_print<s2typ>(t2p0)]
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 g_print<d2pat>(d2p0) =
 let
@@ -1348,7 +1349,11 @@ in//let
   strn_fprint(out, "("); d2pat_fprint(out, d2p0)
 ; strn_fprint(out, ":"); s2typ_fprint(out, d2p0.styp()); strn_fprint(out, ")")
 end (*let*) // end of [g_print<d2pat>(d2p0)]
+*)
 //
+(* ****** ****** *)
+//
+(*
 #impltmp
 g_print<d2exp>(d2e0) =
 let
@@ -1357,6 +1362,7 @@ in//let
   strn_fprint(out, "("); d2exp_fprint(out, d2e0)
 ; strn_fprint(out, ":"); s2typ_fprint(out, d2e0.styp()); strn_fprint(out, ")")
 end (*let*) // end of [g_print<d2exp>(d2e0)]
+*)
 //
 (* ****** ****** *)
 
