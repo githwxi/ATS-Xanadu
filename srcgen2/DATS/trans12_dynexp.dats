@@ -1433,7 +1433,12 @@ f0_id0_d2sym
 let
 val loc0 = d1e0.lctn()
 in//let
-  d2exp_sym0(loc0, d1e0, dpis)
+let
+val
+drxp = d2rxp_new1(loc0)
+in
+d2exp_sym0(loc0, drxp, d1e0, dpis)
+end
 end where
 {
 // (*

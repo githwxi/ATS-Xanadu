@@ -100,6 +100,10 @@ d2exp_make_node
 end (*let*)//end-of(d2exp_errck)
 //
 (* ****** ****** *)
+(*
+HX-2023-02-03: For d2pat-handling
+*)
+(* ****** ****** *)
 //
 fun
 d2pat_errvl_a1
@@ -166,6 +170,27 @@ d2pat_errck
 , d2pat( loc0, D2Ptup0( npf1, d2ps )))
 endlet // end of [d2pat_tup0_errck(...)]
 //
+(* ****** ****** *)
+//
+//
+fun
+d2pat_annot_errck
+( loc0: loc_t
+, d2p1: d2pat
+, s1e2: s1exp
+, s2e2
+: s2exp(*annot*)): d2pat =
+let
+val lvl0 = errvl(d2p1) in//let
+d2pat_errck
+( lvl0+1
+, d2pat(loc0,D2Pannot(d2p1,s1e2,s2e2)))
+endlet // end of [d2pat_annot_errck(...)]
+//
+(* ****** ****** *)
+(*
+HX-2023-02-03: For d2exp-handling
+*)
 (* ****** ****** *)
 //
 fun

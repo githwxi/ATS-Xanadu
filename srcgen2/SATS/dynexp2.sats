@@ -510,8 +510,7 @@ d2pat_node =
 |D2Pfree of (d2pat) // ~
 //
 |D2Psym0 of
-( d2rpt(*ref*)
-, d1pat(*sym*), d2itmlst)
+(d1pat(*sym*), d2itmlst)
 //
 |D2Psapp of
  (d2pat, s2varlst(*sarg*))

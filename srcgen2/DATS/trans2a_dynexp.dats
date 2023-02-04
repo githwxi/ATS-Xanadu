@@ -669,13 +669,13 @@ let
 val loc0 = d2e0.lctn()
 val-
 D2Esym0
-(d1e1, dpis) = d2e0.node()
+(drxp,d1e1,dpis) = d2e0.node()
 //
 val t2p0 = s2typ_new0_x2tp(loc0)
 //
 in//let
 d2exp_make_styp_node
-(loc0, t2p0, D2Esym0(d1e1, dpis))
+(loc0, t2p0, D2Esym0(drxp,d1e1,dpis))
 end (*let*) // end of [f0_sym0(env1,...)]
 //
 (* ****** ****** *)

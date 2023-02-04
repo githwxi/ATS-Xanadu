@@ -59,6 +59,8 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload node with s2exp_get_node
+(* ****** ****** *)
 #symload fpemsg with sort2_fpemsg
 #symload fpemsg with s2exp_fpemsg
 #symload fpemsg with l2s2e_fpemsg
