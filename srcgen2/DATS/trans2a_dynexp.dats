@@ -269,13 +269,14 @@ let
 val loc0 = d2p0.lctn()
 val-
 D2Psym0
-(d1p1, d2is) = d2p0.node()
+(drpt,
+ d1p1, d2is) = d2p0.node()
 //
 val t2p0 = s2typ_new0_x2tp(loc0)
 //
 in//let
 d2pat_make_styp_node
-(loc0, t2p0, D2Psym0(d1p1, d2is))
+(loc0, t2p0, D2Psym0(drpt,d1p1,d2is))
 end (*let*) // end of [f0_sym0(env1,...)]
 //
 (* ****** ****** *)
