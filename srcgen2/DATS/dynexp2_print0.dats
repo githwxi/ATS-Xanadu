@@ -85,6 +85,9 @@ _(*?*) = "./lexing0_print0.dats"
 #symload lctn with d2arg_get_lctn
 #symload node with d2arg_get_node
 (* ****** ****** *)
+#symload dpat with d2rpt_get_dpat
+#symload dexp with d2rxp_get_dexp
+(* ****** ****** *)
 
 #implfun
 d2con_fprint
