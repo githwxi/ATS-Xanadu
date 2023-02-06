@@ -231,7 +231,7 @@ val
 svts = s2vts(s2vs, t2ps)
 val tres =
 s2typ_substx
-(e1nv, svts, t2p1, flag)
+(e1nv, t2p1, svts, flag)
 in//let
 s2typ_hnfizx(e1nv, tres, flag)
 end (*let*) // end of [T2Plam0]
@@ -430,8 +430,8 @@ end (*let*) // end of [list_cons(...)]
 and
 s2typ_substx
 ( e1nv: !e1nv
-, svts: s2vts
 , t2p0: s2typ
+, svts: s2vts
 , flag: &sint >> _): s2typ =
 (
 case+
@@ -494,9 +494,9 @@ val fval = flag
 val-
 T2Papps(t2f0, t2ps) = t2p0.node()
 val t2f0 =
-s2typ_substx(e1nv, svts, t2f0, flag)
+s2typ_substx(e1nv, t2f0, svts, flag)
 val t2ps =
-s2typlst_substx(e1nv, svts, t2ps, flag)
+s2typlst_substx(e1nv, t2ps, svts, flag)
 //
 in//let
 if
@@ -513,9 +513,11 @@ end (*let*) // end of [f0_apps(e1nv,...)]
 //
 and
 s2typlst_substx
-( e1nv: !e1nv
+( e1nv:
+! e1nv
+, t2ps
+: s2typlst
 , svts: s2vts
-, t2ps: s2typlst
 , flag: &sint >> _): s2typlst =
 (
 case+ t2ps of
@@ -527,9 +529,9 @@ let
 val fval = flag
 //
 val t2p1 =
-s2typ_substx(e1nv, svts, t2p1, flag)
+s2typ_substx(e1nv, t2p1, svts, flag)
 val tps2 =
-s2typlst_substx(e1nv, svts, tps2, flag)
+s2typlst_substx(e1nv, tps2, svts, flag)
 //
 in//let
 if // if

@@ -498,9 +498,7 @@ d2e0.node() of
 //
 |D2Evar _ => f0_var(env0, d2e0)
 //
-(*
 |D2Econ _ => f0_con(env0, d2e0)
-*)
 |D2Ecst _ => f0_cst(env0, d2e0)
 //
 |D2Esym0 _ => f0_sym0(env0, d2e0)
@@ -666,6 +664,28 @@ t2p0.node() of
 (* ****** ****** *)
 //
 fun
+f0_con
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+(
+d2exp_make_styp_node
+( loc0
+, t2p0, D2Econ(d2c1))) where
+{
+//
+val loc0 = d2e0.lctn()
+//
+val-
+D2Econ(d2c1) = d2e0.node()
+//
+val t2p0 = s2typ_none0((*void*))
+//
+} (*where*) // end of [f0_con(...)]
+//
+(* ****** ****** *)
+//
+fun
 f0_cst
 ( env0:
 ! tr2aenv
@@ -680,6 +700,8 @@ val loc0 = d2e0.lctn()
 //
 val-
 D2Ecst(d2c1) = d2e0.node()
+//
+val t2p0 = s2typ_none0((*void*))
 //
 } (*where*) // end of [f0_cst(...)]
 //
