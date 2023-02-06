@@ -329,5 +329,14 @@ s2typ_hnfizx_e1nv
 , t2p0: s2typ, flag: &sint >> _): s2typ
 //
 (* ****** ****** *)
+//
+fun
+<e1nv:vwtp>
+s2typ_substx_e1nv
+( e1nv: !e1nv
+, t2p0: s2typ
+, svts: s2vts, flag: &sint >> _): s2typ
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_statyp2.sats] *)
