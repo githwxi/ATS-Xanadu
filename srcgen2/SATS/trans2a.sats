@@ -92,9 +92,12 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef x2t2p = $T2P.x2t2p
 (* ****** ****** *)
+#typedef d2var = $D2E.d2var
 #typedef d2con = $D2E.d2con
 #typedef d2cst = $D2E.d2cst
-#typedef d2var = $D2E.d2var
+(* ****** ****** *)
+#typedef d2itm = $D2E.d2itm
+#typedef d2ptm = $D2E.d2ptm
 (* ****** ****** *)
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
@@ -120,6 +123,9 @@ LEX = "./lexing0.sats"
 #typedef s2typlst = $S2E.s2typlst
 #typedef l2s2elst = $S2E.l2s2elst
 #typedef l2t2plst = $S2E.l2t2plst
+(* ****** ****** *)
+#typedef d2itmopt = $D2E.d2itmopt
+#typedef d2ptmopt = $D2E.d2ptmopt
 (* ****** ****** *)
 #typedef d2patlst = $D2E.d2patlst
 (* ****** ****** *)
@@ -529,6 +535,44 @@ match2a_s2typlst // testing-only
 #symload match2a with match2a_s2typ
 #symload unify2a with unify2a_s2typlst
 #symload match2a with match2a_s2typlst
+//
+(* ****** ****** *)
+
+(*
+HX-2023-02-08:
+Various matching functions
+for resolving overloaded symbols
+*)
+(* ****** ****** *)
+//
+fun
+match2a_d2var
+( env0:
+! tr2aenv
+, d2v0:d2var, t2p0:s2typ): bool
+fun
+match2a_d2con
+( env0:
+! tr2aenv
+, d2c0:d2con, t2p0:s2typ): bool
+fun
+match2a_d2cst
+( env0:
+! tr2aenv
+, d2c0:d2cst, t2p0:s2typ): bool
+//
+(* ****** ****** *)
+//
+fun
+match2a_d2itm
+( env0:
+! tr2aenv
+, ditm:d2itm, t2p0:s2typ): d2itmopt
+fun
+match2a_d2ptm
+( env0:
+! tr2aenv
+, dptm:d2ptm, t2p0:s2typ): d2ptmopt
 //
 (* ****** ****** *)
 //

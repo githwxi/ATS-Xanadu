@@ -413,27 +413,28 @@ d2ptm =
 |
 D2PTMnone of (d1qid)
 |
-D2PTMsome of (int(*pval*), d2itm)
+D2PTMsome of (int(*pval*),d2itm)
 //
 where
 {
 #typedef d2itmlst = list(d2itm)
 #typedef d2itmopt = optn(d2itm)
 #typedef d2ptmlst = list(d2ptm)
-}
+#typedef d2ptmopt = optn(d2ptm)
+} (*where*) //end-of-(  d2ptm  )
 //
 (* ****** ****** *)
 fun
-d2itm_fprint:(FILR,d2itm)->void
+d2itm_fprint: (FILR,d2itm)->void
 fun
-d2ptm_fprint:(FILR,d2ptm)->void
+d2ptm_fprint: (FILR,d2ptm)->void
 (* ****** ****** *)
 fun
-s2qag_fprint:(FILR,s2qag)->void
+s2qag_fprint: (FILR,s2qag)->void
 fun
-t2qag_fprint:(FILR,t2qag)->void
+t2qag_fprint: (FILR,t2qag)->void
 fun
-t2iag_fprint:(FILR,t2iag)->void
+t2iag_fprint: (FILR,t2iag)->void
 (* ****** ****** *)
 //
 fun
