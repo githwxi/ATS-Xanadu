@@ -668,10 +668,14 @@ f0_con
 ( env0:
 ! tr2aenv
 , d2e0: d2exp): d2exp =
-(
+let
+val
+t2p0 = d2c1.styp()
+in//let
 d2exp_make_styp_node
 ( loc0
-, t2p0, D2Econ(d2c1))) where
+, t2p0, D2Econ(d2c1))
+end where // end-of-[let]
 {
 //
 val loc0 = d2e0.lctn()
@@ -679,7 +683,10 @@ val loc0 = d2e0.lctn()
 val-
 D2Econ(d2c1) = d2e0.node()
 //
-val t2p0 = s2typ_none0((*void*))
+val (  ) =
+prerrln("f0_con: d2c1 = ", d2c1)
+val (  ) =
+prerrln("f0_con: tqas = ", d2c1.tqas())
 //
 } (*where*) // end of [f0_con(...)]
 //
@@ -690,10 +697,14 @@ f0_cst
 ( env0:
 ! tr2aenv
 , d2e0: d2exp): d2exp =
-(
+let
+val
+t2p0 = d2c1.styp()
+in//let
 d2exp_make_styp_node
 ( loc0
-, t2p0, D2Ecst(d2c1))) where
+, t2p0, D2Ecst(d2c1))
+end where // end-of-[let]
 {
 //
 val loc0 = d2e0.lctn()
@@ -701,7 +712,10 @@ val loc0 = d2e0.lctn()
 val-
 D2Ecst(d2c1) = d2e0.node()
 //
-val t2p0 = s2typ_none0((*void*))
+val (  ) =
+prerrln("f0_cst: d2c1 = ", d2c1)
+val (  ) =
+prerrln("f0_cst: tqas = ", d2c1.tqas())
 //
 } (*where*) // end of [f0_cst(...)]
 //

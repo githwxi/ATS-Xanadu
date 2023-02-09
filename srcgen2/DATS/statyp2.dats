@@ -321,7 +321,9 @@ datatype
 x2t2p =
 X2T2P of
 ( loc_t // lctn
+(*
 , s2exp // sexp
+*)
 , s2typ // type
 , stamp // stmp // unicity
 ) (* end of [x2t2p] *)
@@ -329,7 +331,9 @@ datavwtp
 x2t2p_vt =
 X2T2P_vt of
 ( loc_t // lctn
+(*
 , s2exp // sexp
+*)
 , s2typ // type
 , stamp // stmp // unicity
 ) (* end of [x2t2p] *)
@@ -345,7 +349,9 @@ let
 val+
 X2T2P
 (loc0
+(*
 ,s2e0
+*)
 ,t2p0,stmp) = xt2p in loc0 end
 //
 #implfun
@@ -355,7 +361,9 @@ let
 val+
 X2T2P
 (loc0
+(*
 ,s2e0
+*)
 ,t2p0,stmp) = xt2p in stmp end
 //
 #implfun
@@ -365,7 +373,9 @@ let
 val+
 X2T2P
 (loc0
+(*
 ,s2e0
+*)
 ,t2p0,stmp) = xt2p in t2p0 end
 //
 (* ****** ****** *)
@@ -373,16 +383,16 @@ X2T2P
 #implfun
 x2t2p_make_lctn
   (  loc0  ) =
-let
-val
-s2e0 = s2exp_none0()
-val
-t2p0 = s2typ_none0()
-val
-stmp = the_x2t2p_stamp_new()
-in//let
-  X2T2P(loc0, s2e0, t2p0, stmp)
-end (*let*) // end of [x2t2p_make_lctn]
+(
+X2T2P
+(loc0, t2p0, stmp)) where
+{
+(*
+val s2e0 = s2exp_none0()
+*)
+val t2p0 = s2typ_none0()
+val stmp = the_x2t2p_stamp_new()
+} (*where*) // end of [x2t2p_make_lctn]
 //
 (* ****** ****** *)
 
@@ -397,7 +407,9 @@ $UN.castlin10{x2t2p_vt}(xt2p)
 val+
 @X2T2P_vt
 (loc0,
+(*
  s2e0,
+*)
 !styp,stmp) = xt2p in (styp := t2p0)
 //
 end (*let*) // end of [ x2t2p_set_styp ]
