@@ -172,7 +172,6 @@ endlet // end of [d2pat_tup0_errck(...)]
 //
 (* ****** ****** *)
 //
-//
 fun
 d2pat_annot_errck
 ( loc0: loc_t
@@ -500,7 +499,7 @@ d2e0.node() of
 |D2Econs _ => d2e0
 |D2Ecsts _ => d2e0
 //
-|D2Esym0 _ => d2e0
+|D2Esym0 _ => f0_sym0(d2e0, err)
 //
 |D2Edap0 _ => f0_dap0(d2e0, err)
 |D2Edapp _ => f0_dapp(d2e0, err)
@@ -548,6 +547,50 @@ endlet // end of [ _(* otherwise *) ]
 //
 ) where // end-of-[(*case+(d2e0)-of*)]
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_sym0
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Esym0
+( drxp
+, d1e1, dpis) = d2e.node()
+//
+val d2e1 = drxp.dexp((*void*))
+//
+in//let
+//
+case+
+d2e1.node() of
+|
+D2Enone0() =>
+let
+val lvl0 = 1
+in // HX: left-error
+err := err+1; d2exp_errck(lvl0,d2e)
+end (*let*) // end of [D2Enone0]
+| _(*non-D2Enone0*) =>
+let
+val d2e1 =
+tread22_d2exp(d2e1, err)
+in//let
+if
+(e00=err)
+then (d2e) else
+let
+val lvl0 = errvl(d2e1) in
+drxp.dexp(d2e1);d2exp_errck(lvl0+1,d2e)
+end (*let*) // end of [else]
+end (*let*) // end of [non-D2Enone0]
+//
+end (*let*) // end of [f0_sym0(d2e,err)]
 //
 (* ****** ****** *)
 //

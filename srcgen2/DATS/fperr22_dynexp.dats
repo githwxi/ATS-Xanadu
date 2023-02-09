@@ -162,6 +162,24 @@ case+
 d2e.node() of
 //
 |
+D2Esym0
+(drxp,d1e1,dpis) =>
+let
+val () =
+fperr22_d2exp
+(out, drxp.dexp((*void*))) end
+//
+|
+D2Edapp
+(d2f0,npf1,d2es) =>
+let
+val () =
+val () =
+fperr22_d2exp(out, d2f0
+val () =
+fperr22_d2explst(out, d2es) end
+//
+|
 D2Eif0
 (d2e1,dthn,dels) =>
 let

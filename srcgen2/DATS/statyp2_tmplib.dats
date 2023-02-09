@@ -36,6 +36,9 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsafex.sats"
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
@@ -427,7 +430,33 @@ end (*let*) // end of [list_cons(...)]
 //
 (* ****** ****** *)
 //
-and
+} where {
+//
+fun
+s2typ_substx
+( e1nv: !e1nv
+, t2p0: s2typ
+, svts: s2vts
+, flag: &sint >> _): s2typ =
+s2typ_substx_e1nv<e1nv>(e1nv, t2p0, svts, flag)
+//
+} (*where*) // end of [s2typ_hnfizx_e1nv(e1nv,...)]
+
+(* ****** ****** *)
+
+#impltmp
+< e1nv >
+s2typ_substx_e1nv
+( e1nv
+, t2p0, s2vtx, flag) =
+s2typ_substx
+( e1nv
+, t2p0, s2vtx, flag) where
+{
+//
+(* ****** ****** *)
+//
+fun
 s2typ_substx
 ( e1nv: !e1nv
 , t2p0: s2typ
@@ -541,7 +570,7 @@ end (*let*)
 //
 (* ****** ****** *)
 //
-} (*where*) // end of [s2typ_hnfizx_e1nv(e1nv,...)]
+} (*where*) // end of [s2typ_subst_e1nv(e1nv,...)]
 
 (* ****** ****** *)
 
@@ -862,6 +891,99 @@ unify00_s2typlst(e1nv, tps1, tps2) }
 (* ****** ****** *)
 //
 } (*where*) // end of [unify00_s2typ_e1nv(e1nv,...)]
+
+(* ****** ****** *)
+
+local
+//
+datatype x2stk =
+X2STK of list(x2t2p)
+datavwtp x2stk_vt =
+X2STK_vt of list_vt(x2t2p)
+//
+(* ****** ****** *)
+//
+fun
+x2stk_push
+( xstk: x2stk
+, xtp0: x2t2p): void =
+let
+val xstk =
+$UN.castlin10
+{x2stk_vt}(xstk)
+val+
+@X2STK_vt(!xref) = (xstk)
+in//let
+xref := list_vt_cons(xtp0, xref)
+end (*let*) // end of [x2stk_push]
+//
+(* ****** ****** *)
+//
+fun
+x2stk_free_all
+( xstk: x2stk ): void =
+let
+val xstk =
+$UN.castlin10
+{x2stk_vt}(xstk)
+val+
+@X2STK_vt(!xref) = (xstk)
+in//let
+(
+  auxfree(xtps)) where
+{
+val xtps = xref
+val (  ) = (xref := list_vt_nil)}
+end where
+{
+fun
+auxfree
+(xtps: list_vt(x2t2p)): void =
+(
+case+ xtps of
+| ~
+list_vt_nil() => ()
+| ~
+list_vt_cons(xtp1, xtps) =>
+let
+val t2p0 =
+s2typ_none0() in
+xtp1.styp(t2p0); auxfree(xtps) end)
+} (*where*) // end of [x2stk_free_all]
+//
+(* ****** ****** *)
+//
+in//local
+
+#impltmp
+<e1nv:vwtp>
+match00_s2typ_e1nv
+(e1nv, t2p1, t2p2) =
+let
+//
+val
+xstk = X2STK(list_nil)
+//
+#impltmp
+<(*void*)>
+unify00_s2typ$xset
+  (xtp1, t2p2) =
+let
+val () =
+x2stk_push(xstk, xtp1)
+in//let
+x2t2p_set_styp(xtp1, t2p2) end
+//
+in//let
+//
+(
+x2stk_free_all(xstk); ans) where
+{ val ans =
+  unify00_s2typ_e1nv(e1nv, t2p1, t2p2) }
+//
+end (*let*) // end of [match00_s2typ_e1nv]
+
+end (*local*) // end of [match00_s2typ_e1nv]
 
 (* ****** ****** *)
 

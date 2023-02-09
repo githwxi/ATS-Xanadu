@@ -1170,10 +1170,13 @@ d1e0.node() of
 | D1Eflt _ => d1e0
 | D1Estr _ => d1e0
 //
-| D1Eb0sh() =>
+| D1Eb0sh() => d1e0
+(*
 ( err := err+1
 ; d1exp_b0sh_errck(loc0))
-| D1Eb1sh(d1e1) =>
+*)
+| D1Eb1sh(d1e1) => d1e0
+(*
 let
 //
 val d1e1 =
@@ -1183,6 +1186,7 @@ in//let
 ( err := err+1
 ; d1exp_b1sh_errck(loc0,d1e1))
 endlet // end of [D1Eb1sh(d1e1)]
+*)
 //
 | D1Ea0pp() =>
 (
