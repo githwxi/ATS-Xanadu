@@ -283,6 +283,36 @@ end (*let*) // end of [match2a_s2typ(env0,...)]
 
 (* ****** ****** *)
 
+#implfun
+match2a_d2var
+(env0, d2v1, t2p2) =
+match2a_s2typ
+(env0, t2p1, t2p2) where
+{
+  val t2p1 = d2var_get_styp(d2v1)
+} (*where*) // end of [match2a_d2var(env0,...)]
+
+(* ****** ****** *)
+
+#implfun
+match2a_d2con
+(env0, d2c1, t2p2) =
+match2a_s2typ
+(env0, t2p1, t2p2) where
+{
+  val t2p1 = d2con_get_styp(d2c1)
+} (*where*) // end of [match2a_d2con(env0,...)]
+
+(* ****** ****** *)
+
+#implfun
+match2a_d2cst
+(env0, d2c1, t2p2) =
+match2a_s2typ
+(env0, t2p1, t2p2) where
+{
+  val t2p1 = d2cst_get_styp(d2c1)
+} (*where*) // end of [match2a_d2cst(env0,...)]
 
 (* ****** ****** *)
 
