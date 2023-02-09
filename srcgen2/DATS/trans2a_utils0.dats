@@ -316,4 +316,43 @@ match2a_s2typ
 
 (* ****** ****** *)
 
+#implfun
+match2a_d2itm
+(env0, d2i1, t2p2) =
+(
+case+
+//
+|D2ITMvar _ =>
+f0_d2var(env0, d2i1, t2p2)
+//
+|D2ITMcon _ =>
+f0_d2con(env0, d2i1, t2p2)
+|D2ITMcst _ =>
+f0_d2cst(env0, d2i1, t2p2)
+//
+|D2ITMsym _ =>
+f0_d2sym(env0, d2i1, t2p2)
+//
+) where
+{
+//
+(* ****** ****** *)
+//
+fun
+f0_d2var
+( env0:
+! trraenv
+, d2i1: d2itm
+, t2p2: s2typ): d2itmopt =
+if
+match2a_d2var
+(env0, d2v1, t2p2)
+then optn_cons(d2i1) else optn_nil()
+//
+(* ****** ****** *)
+//
+} (*where+*) // end of [match2a_d2itm(env0,...)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_trans2a_utils0.dats] *)
