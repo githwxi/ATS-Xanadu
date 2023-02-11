@@ -320,7 +320,7 @@ match2a_s2typ
 match2a_d2itm
 (env0, d2i1, t2p2) =
 (
-case+
+case+ d2i1 of
 //
 |D2ITMvar _ =>
 f0_d2var(env0, d2i1, t2p2)
@@ -330,10 +330,12 @@ f0_d2con(env0, d2i1, t2p2)
 |D2ITMcst _ =>
 f0_d2cst(env0, d2i1, t2p2)
 //
+(*
 |D2ITMsym _ =>
 f0_d2sym(env0, d2i1, t2p2)
+*)
 //
-) where
+) (*case+*) where
 {
 //
 (* ****** ****** *)
@@ -341,13 +343,116 @@ f0_d2sym(env0, d2i1, t2p2)
 fun
 f0_d2var
 ( env0:
-! trraenv
+! tr2aenv
 , d2i1: d2itm
 , t2p2: s2typ): d2itmopt =
+let
+val-
+D2ITMvar(d2v1) = d2i1
+in//let
 if
 match2a_d2var
 (env0, d2v1, t2p2)
 then optn_cons(d2i1) else optn_nil()
+end (*let*) // end of [f0_d2var(env0,d2i1,t2p2)]
+//
+(* ****** ****** *)
+//
+fun
+f0_d2con
+( env0:
+! tr2aenv
+, d2i1: d2itm
+, t2p2: s2typ): d2itmopt =
+let
+val-
+D2ITMcon(d2cs) = d2i1
+val d2cs =
+f1_d2conlst(env0, d2cs, t2p2)
+in//let
+case+ d2cs of
+|
+list_nil _ => optn_nil()
+|
+list_cons _ =>
+let
+val d2i1 =
+D2ITMcon(d2cs) in optn_cons(d2i1) end
+end where
+{
+//
+fun
+f1_d2conlst
+( env0:
+! tr2aenv
+, d2cs:d2conlst, t2p0:s2typ): d2conlst =
+(
+case+ d2cs of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(d2c1, d2cs) => 
+let
+val d2cs =
+f1_d2conlst(env0, d2cs, t2p0)
+in
+if
+match2a_d2con
+(env0, d2c1, t2p2)
+then list_cons(d2c1, d2cs) else d2cs end
+)
+//
+} (*where*) // end of [f0_d2con(env0,d2i1,t2p2)]
+//
+(* ****** ****** *)
+//
+fun
+f0_d2cst
+( env0:
+! tr2aenv
+, d2i1: d2itm
+, t2p2: s2typ): d2itmopt =
+let
+val-
+D2ITMcst(d2cs) = d2i1
+val d2cs =
+f1_d2cstlst(env0, d2cs, t2p2)
+in//let
+case+ d2cs of
+|
+list_nil _ => optn_nil()
+|
+list_cons _ =>
+let
+val d2i1 =
+D2ITMcst(d2cs) in optn_cons(d2i1) end
+end where
+{
+//
+fun
+f1_d2cstlst
+( env0:
+! tr2aenv
+, d2cs:d2cstlst, t2p0:s2typ): d2cstlst =
+(
+case+ d2cs of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(d2c1, d2cs) => 
+let
+val d2cs =
+f1_d2cstlst(env0, d2cs, t2p0)
+in
+if
+match2a_d2cst
+(env0, d2c1, t2p2)
+then list_cons(d2c1, d2cs) else d2cs end
+)
+//
+} (*where*) // end of [f0_d2cst(env0,d2i1,t2p2)]
 //
 (* ****** ****** *)
 //
