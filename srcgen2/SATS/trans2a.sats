@@ -124,6 +124,10 @@ LEX = "./lexing0.sats"
 #typedef l2s2elst = $S2E.l2s2elst
 #typedef l2t2plst = $S2E.l2t2plst
 (* ****** ****** *)
+#typedef d2varlst = $D2E.d2varlst
+#typedef d2conlst = $D2E.d2conlst
+#typedef d2cstlst = $D2E.d2cstlst
+(* ****** ****** *)
 #typedef d2itmopt = $D2E.d2itmopt
 #typedef d2ptmopt = $D2E.d2ptmopt
 (* ****** ****** *)
@@ -550,6 +554,9 @@ match2a_d2var
 ( env0:
 ! tr2aenv
 , d2v0: d2var, t2p0: s2typ): bool
+//
+(* ****** ****** *)
+//
 fun
 match2a_d2con
 ( env0:
