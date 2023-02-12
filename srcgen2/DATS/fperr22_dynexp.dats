@@ -174,8 +174,7 @@ D2Edapp
 (d2f0,npf1,d2es) =>
 let
 val () =
-val () =
-fperr22_d2exp(out, d2f0
+fperr22_d2exp(out, d2f0)
 val () =
 fperr22_d2explst(out, d2es) end
 //
