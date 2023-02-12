@@ -60,6 +60,27 @@ _(*TRSYM2A*) = "./trsym2a.dats"
 (* ****** ****** *)
 //
 #implfun
+trsym2a_d2patlst
+( env0, d2ps ) =
+list_trsym2a_fnp(env0, d2ps, trsym2a_d2pat)
+//
+(* ****** ****** *)
+//
+#implfun
+trsym2a_d2explst
+( env0, d2es ) =
+list_trsym2a_fnp(env0, d2es, trsym2a_d2exp)
+//
+(* ****** ****** *)
+//
+#implfun
+trsym2a_d2eclist
+( env0, d2cs ) =
+list_trsym2a_fnp(env0, d2cs, trsym2a_d2ecl)
+//
+(* ****** ****** *)
+//
+#implfun
 trsym2a_d2eclistopt
 ( env0, dopt ) =
 optn_trsym2a_fnp(env0, dopt, trsym2a_d2eclist)
