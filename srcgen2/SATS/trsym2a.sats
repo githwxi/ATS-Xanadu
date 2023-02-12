@@ -50,30 +50,7 @@ is for resolving overloaded symbols!
 This one is a continuation of [trans2a]
 *)
 (* ****** ****** *)
-#staload
-BAS = "./xbasics.sats"
-#typedef
-f2clknd = $BAS.f2clknd
-(* ****** ****** *)
-//
-#staload
-LAB = "./xlabel0.sats"
-#staload
-LOC = "./locinfo.sats"
-#staload
-SYM = "./xsymbol.sats"
-#staload
-LEX = "./lexing0.sats"
-//
-#typedef lab_t = $LAB.lab_t
-#typedef loc_t = $LOC.loc_t
-#typedef sym_t = $SYM.sym_t
-#typedef token = $LEX.token
-//
-(* ****** ****** *)
-#staload S2E = "./staexp2.sats"
-#staload T2P = "./statyp2.sats"
-#staload D2E = "./dynexp2.sats"
+#staload "./trans2a.sats"
 (* ****** ****** *)
 //
 fun
@@ -108,11 +85,72 @@ trsym2a_f2arg
 (* ****** ****** *)
 //
 fun
-trans2a_d2gua
+trsym2a_d2gua
 (env0: !tr2aenv, dgua: d2gua): void
 fun
-trans2a_d2gpt
+trsym2a_d2gpt
 (env0: !tr2aenv, dgpt: d2gpt): void
+//
+(* ****** ****** *)
+//
+fun
+trsym2a_d2ecl
+(env0: !tr2aenv, d2cl: d2ecl): void
+//
+(* ****** ****** *)
+//
+fun
+trsym2a_d2patlst
+(env0: !tr2aenv, d2ps: d2patlst): void
+fun
+trsym2a_d2expopt
+(env0: !tr2aenv, dopt: d2expopt): void
+fun
+trsym2a_d2explst
+(env0: !tr2aenv, d2es: d2explst): void
+//
+(* ****** ****** *)
+//
+fun
+trsym2a_l2d2plst
+(env0: !tr2aenv, ldps: l2d2plst): void
+fun
+trsym2a_l2d2elst
+(env0: !tr2aenv, ldes: l2d2elst): void
+//
+(* ****** ****** *)
+//
+fun
+trsym2a_f2arglst
+(env0: !tr2aenv, f2as: f2arglst): void
+//
+(* ****** ****** *)
+//
+fun
+trsym2a_d2gualst
+(env0: !tr2aenv, d2gs: d2gualst): void
+//
+fun
+trsym2a_d2clslst
+(env0: !tr2aenv, dcls: d2clslst): void
+//
+(* ****** ****** *)
+//
+fun
+trsym2a_d2eclist
+(env0: !tr2aenv, d2cs: d2eclist): void
+//
+(* ****** ****** *)
+//
+fun
+trsym2a_d2valdcl
+(env0: !tr2aenv, dval: d2valdcl): void
+fun
+trsym2a_d2vardcl
+(env0: !tr2aenv, dvar: d2vardcl): void
+fun
+trsym2a_d2fundcl
+(env0: !tr2aenv, dfun: d2fundcl): void
 //
 (* ****** ****** *)
 

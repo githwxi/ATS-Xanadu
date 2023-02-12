@@ -381,13 +381,6 @@ trans2a_d2patlst
 (* ****** ****** *)
 //
 fun
-trans2a_l2d2plst
-( env0:
-! tr2aenv, ldps: l2d2plst): l2d2plst
-//
-(* ****** ****** *)
-//
-fun
 trans2a_d2expopt
 ( env0:
 ! tr2aenv, dopt: d2expopt): d2expopt
@@ -398,6 +391,11 @@ trans2a_d2explst
 ! tr2aenv, d2es: d2explst): d2explst
 //
 (* ****** ****** *)
+//
+fun
+trans2a_l2d2plst
+( env0:
+! tr2aenv, ldps: l2d2plst): l2d2plst
 //
 fun
 trans2a_l2d2elst
@@ -448,6 +446,7 @@ trans2a_t2iaglst
 ! tr2aenv, tias: t2iaglst): t2iaglst
 //
 (* ****** ****** *)
+//
 fun
 trans2a_d2arglst
 ( env0:
