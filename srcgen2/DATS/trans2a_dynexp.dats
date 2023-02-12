@@ -46,7 +46,7 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 #staload
-_(*TRANS2a*) = "./trans2a.dats"
+_(*TRANS2A*) = "./trans2a.dats"
 (* ****** ****** *)
 #staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
