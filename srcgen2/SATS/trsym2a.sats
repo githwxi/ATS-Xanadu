@@ -54,6 +54,12 @@ This one is a continuation of [trans2a]
 (* ****** ****** *)
 //
 fun
+trsym2a_d2parsed
+( dpar : d2parsed ): (void)
+//
+(* ****** ****** *)
+//
+fun
 <x0:t0>
 list_trsym2a_fnp
 ( e1:
