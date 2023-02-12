@@ -45,6 +45,8 @@
 (* ****** ****** *)
 #staload
 "./../../SATS/trans2a.sats"
+#staload
+"./../../SATS/trsym2a.sats"
 (* ****** ****** *)
 #staload
 "./../../SATS/tread22.sats"
@@ -254,6 +256,13 @@
 "./../../DATS/trans2a_decl00.dats"
 (* ****** ****** *)
 #include
+"./../../DATS/trsym2a.dats"
+#include
+"./../../DATS/trsym2a_dynexp.dats"
+#include
+"./../../DATS/trsym2a_decl00.dats"
+(* ****** ****** *)
+#include
 "./../../DATS/tread22.dats"
 #include
 "./../../DATS/tread22_dynexp.dats"
@@ -362,6 +371,12 @@ d2parsed_fpemsg( out, dpar ) end // let
 //
 val
 dpar = d2parsed_of_trans2a(dpar)
+//
+val
+dpar =
+let
+val () =
+trsym2a_d2parsed(dpar) in dpar end
 //
 (* ****** ****** *)
 //

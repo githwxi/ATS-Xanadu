@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sun 12 Feb 2023 09:36:32 AM EST
+Sun 12 Feb 2023 12:17:13 PM EST
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -45,6 +45,9 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload
+_(*TRSYM2A*) = "./trsym2a.dats"
+(* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
@@ -57,57 +60,36 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #implfun
-<x0>(*tmp*)
-list_trsym2a_fnp
-( e1, xs, work ) =
-(
-  loop(e1, xs) ) where
-{
-fun
-loop
-( e1: !tr2aenv
-, xs: list(x0)): void =
-(
-case+ xs of
-| list_nil() => ()
-| list_cons(x1, xs) =>
-  (work(e1, x1); loop(e1, xs)))
-}(*where*)//end(list_trsym2a_fnp(e1,xs,work))
+trsym2a_d2eclist
+( env0, d2cs ) =
+list_trsym2a_fnp(env0, d2cs, trsym2a_d2ecl)
 //
 (* ****** ****** *)
 //
 #implfun
-<x0>(*tmp*)
-optn_trsym2a_fnp
-( e1, xs, work ) =
-(
-case+ xs of
-| optn_nil() => ()
-| optn_cons(x1) => work(e1, x1)
-)(*case+*)//end(optn_trsym2a_fnp(e1,xs,work))
+trsym2a_d2valdclist
+( env0, d2vs ) =
+list_trsym2a_fnp(env0, d2vs, trsym2a_d2valdcl)
+//
+#implfun
+trsym2a_d2vardclist
+( env0, d2vs ) =
+list_trsym2a_fnp(env0, d2vs, trsym2a_d2vardcl)
 //
 (* ****** ****** *)
-
+//
 #implfun
-trsym2a_d2parsed(dpar) =
-let
+trsym2a_d2fundclist
+( env0, d2fs ) =
+list_trsym2a_fnp(env0, d2fs, trsym2a_d2fundcl)
 //
-val
-parsed =
-d2parsed_get_parsed(dpar)
+(* ****** ****** *)
 //
-val
-env0 = tr2aenv_make_nil()
+#implfun
+trsym2a_d2eclistopt
+( env0, dopt ) =
+optn_trsym2a_fnp(env0, dopt, trsym2a_d2eclist)
 //
-val () =
-trsym2a_d2eclistopt(env0, parsed)
-//
-in//let
-let
-val d2cenv = tr2aenv_free_top(env0)
-end
-end (*let*) // end of [trsym2a_d2parsed(dpar)]
-
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trsym2a.dats] *)
