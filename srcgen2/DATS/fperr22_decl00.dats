@@ -96,6 +96,15 @@ fperr22_d2ecl(out, dcl1)
 endlet//end-of(D2Cextern(_,_))
 //
 |
+D2Clocal0(dcs1,dcs2) =>
+let
+val () =
+fperr22_d2eclist(out, dcs1)
+val () =
+fperr22_d2eclist(out, dcs2)
+endlet // end of [D2Clocal0(...)]
+//
+|
 D2Cvaldclst
 (tknd, d2vs) => let
 val () =
