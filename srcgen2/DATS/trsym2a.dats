@@ -88,4 +88,25 @@ case+ xs of
 //
 (* ****** ****** *)
 
+#implfun
+trsym2a_d2parsed
+  (dpar) =
+let
+//
+val parsed =
+d2parsed_get_parsed(dpar)
+//
+val env0 = tr2aenv_make_nil()
+//
+val parsed =
+trans2a_d2eclistopt(env0, parsed)
+//
+in//let
+let
+val d2cenv = tr2aenv_free_top(env0)
+end
+end (*let*) // end of [trsym2a_d2parsed(dpar)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_trsym2a.dats] *)

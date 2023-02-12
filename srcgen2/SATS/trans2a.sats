@@ -540,7 +540,6 @@ match2a_s2typlst // testing-only
 #symload match2a with match2a_s2typlst
 //
 (* ****** ****** *)
-
 (*
 HX-2023-02-08:
 Various matching functions
