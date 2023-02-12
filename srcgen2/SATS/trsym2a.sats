@@ -54,33 +54,46 @@ This one is a continuation of [trans2a]
 (* ****** ****** *)
 //
 fun
+<x0:t0>
+list_trsym2a_fnp
+( e1:
+! tr2aenv
+, xs: list(x0)
+, (!tr2aenv, x0) -> void): void
+fun
+<x0:t0>
+<y0:t0>
+optn_trsym2a_fnp
+( e1:
+! tr2aenv
+, xs: optn(x0)
+, (!tr2aenv, x0) -> void): void
+//
+(* ****** ****** *)
+//
+fun
 trsym2a_d2pat
-( env0:
-! tr2aenv, d2p0: d2pat): void
+(env0: !tr2aenv, d2p0: d2pat): void
 //
 fun
 trsym2a_d2exp
-( env0:
-! tr2aenv, d2e0: d2exp): void
+(env0: !tr2aenv, d2e0: d2exp): void
 //
 (* ****** ****** *)
 //
 fun
 trsym2a_l2d2p
-( env0:
-! tr2aenv, ld2p: l2d2p): void
+(env0: !tr2aenv, ld2p: l2d2p): void
 //
 fun
 trsym2a_l2d2e
-( env0:
-! tr2aenv, ld2e: l2d2e): void
+(env0: !tr2aenv, ld2e: l2d2e): void
 //
 (* ****** ****** *)
 //
 fun
 trsym2a_f2arg
-( env0:
-! tr2aenv, f2a0: f2arg): void
+(env0: !tr2aenv, f2a0: f2arg): void
 //
 (* ****** ****** *)
 //
@@ -152,6 +165,22 @@ fun
 trsym2a_d2fundcl
 (env0: !tr2aenv, dfun: d2fundcl): void
 //
+(* ****** ****** *)
+//
+fun
+trsym2a_d2valdclist
+(env0: !tr2aenv, d2vs: d2valdclist): void
+fun
+trsym2a_d2vardclist
+(env0: !tr2aenv, d2vs: d2vardclist): void
+fun
+trsym2a_d2fundclist
+(env0: !tr2aenv, d2fs: d2fundclist): void
+//
+(* ****** ****** *)
+fun
+trsym2a_d2eclistopt
+(env0: !tr2aenv, dopt: d2eclistopt): void
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trsym2a.sats] *)
