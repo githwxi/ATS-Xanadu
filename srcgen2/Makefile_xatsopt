@@ -570,6 +570,12 @@ trans2a_decl00_dats: ; $(XATSOPT) --dynamic DATS/trans2a_decl00.dats
 
 ######
 all_dats:: \
+trsym2a_dats
+trsym2a_dats: ; $(XATSOPT) --dynamic DATS/trsym2a.dats
+######
+
+######
+all_dats:: \
 tread22_dats
 tread22_dats: ; $(XATSOPT) --dynamic DATS/tread22.dats
 all_dats:: \
