@@ -64,12 +64,26 @@ trsym2a_d2patlst
 ( env0, d2ps ) =
 list_trsym2a_fnp(env0, d2ps, trsym2a_d2pat)
 //
+#implfun
+trsym2a_l2d2plst
+( env0, ldps ) =
+list_trsym2a_fnp(env0, ldps, trsym2a_l2d2p)
+//
 (* ****** ****** *)
 //
 #implfun
 trsym2a_d2explst
 ( env0, d2es ) =
 list_trsym2a_fnp(env0, d2es, trsym2a_d2exp)
+#implfun
+trsym2a_d2expopt
+( env0, dopt ) =
+optn_trsym2a_fnp(env0, dopt, trsym2a_d2exp)
+//
+#implfun
+trsym2a_l2d2elst
+( env0, ldes ) =
+list_trsym2a_fnp(env0, ldes, trsym2a_l2d2e)
 //
 (* ****** ****** *)
 //
@@ -77,6 +91,25 @@ list_trsym2a_fnp(env0, d2es, trsym2a_d2exp)
 trsym2a_d2eclist
 ( env0, d2cs ) =
 list_trsym2a_fnp(env0, d2cs, trsym2a_d2ecl)
+//
+(* ****** ****** *)
+//
+#implfun
+trsym2a_d2valdclist
+( env0, d2vs ) =
+list_trsym2a_fnp(env0, d2vs, trsym2a_d2valdcl)
+//
+#implfun
+trsym2a_d2vardclist
+( env0, d2vs ) =
+list_trsym2a_fnp(env0, d2vs, trsym2a_d2vardcl)
+//
+(* ****** ****** *)
+//
+#implfun
+trsym2a_d2fundclist
+( env0, d2fs ) =
+list_trsym2a_fnp(env0, d2fs, trsym2a_d2fundcl)
 //
 (* ****** ****** *)
 //
