@@ -60,35 +60,80 @@ _(*TRSYM2A*) = "./trsym2a.dats"
 (* ****** ****** *)
 //
 #implfun
-trsym2a_d2eclist
-( env0, d2cs ) =
-list_trsym2a_fnp(env0, d2cs, trsym2a_d2ecl)
+trsym2a_d2pat
+( env0, d2p0 ) =
+let
+//
+val () =
+prerrln
+("trsym2a_d2pat: d2p0 = ", d2p0)
+//
+in//let
+//
+case+
+d2p0.node() of
+//
+| _(* otherwise *) => (   (*skipped*)   )
+//
+endlet where
+{
+//
+(* ****** ****** *)
+//
+} (*where*) // end of [trsym2a_d2pat(env0,d2p0)]
 //
 (* ****** ****** *)
 //
 #implfun
-trsym2a_d2valdclist
-( env0, d2vs ) =
-list_trsym2a_fnp(env0, d2vs, trsym2a_d2valdcl)
+trsym2a_d2exp
+( env0, d2e0 ) =
+let
 //
-#implfun
-trsym2a_d2vardclist
-( env0, d2vs ) =
-list_trsym2a_fnp(env0, d2vs, trsym2a_d2vardcl)
+val () =
+prerrln
+("trsym2a_d2exp: d2e0 = ", d2e0)
+//
+in//let
+//
+case+
+d2e0.node() of
+//
+| _(* otherwise *) => (   (*skipped*)   )
+//
+endlet where
+{
+//
+(* ****** ****** *)
+//
+} (*where*) // end of [trsym2a_d2exp(env0,d2e0)]
 //
 (* ****** ****** *)
 //
 #implfun
-trsym2a_d2fundclist
-( env0, d2fs ) =
-list_trsym2a_fnp(env0, d2fs, trsym2a_d2fundcl)
+trsym2a_d2patlst
+( env0, d2ps ) =
+list_trsym2a_fnp(env0, d2ps, trsym2a_d2pat)
+//
+#implfun
+trsym2a_l2d2plst
+( env0, ldps ) =
+list_trsym2a_fnp(env0, ldps, trsym2a_l2d2p)
 //
 (* ****** ****** *)
 //
 #implfun
-trsym2a_d2eclistopt
+trsym2a_d2explst
+( env0, d2es ) =
+list_trsym2a_fnp(env0, d2es, trsym2a_d2exp)
+#implfun
+trsym2a_d2expopt
 ( env0, dopt ) =
-optn_trsym2a_fnp(env0, dopt, trsym2a_d2eclist)
+optn_trsym2a_fnp(env0, dopt, trsym2a_d2exp)
+//
+#implfun
+trsym2a_l2d2elst
+( env0, ldes ) =
+list_trsym2a_fnp(env0, ldes, trsym2a_l2d2e)
 //
 (* ****** ****** *)
 
