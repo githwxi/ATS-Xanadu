@@ -81,6 +81,7 @@ in//let
 case+
 //
 dcl.node() of
+//
 |
 D2Cstatic(tknd,dcl1) =>
 let
