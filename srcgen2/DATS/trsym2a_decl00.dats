@@ -58,6 +58,61 @@ _(*TRSYM2A*) = "./trsym2a.dats"
 #staload "./../SATS/trans2a.sats"
 #staload "./../SATS/trsym2a.sats"
 (* ****** ****** *)
+
+local
+
+(* ****** ****** *)
+in(* in-of-local *)
+(* ****** ****** *)
+
+#implfun
+trsym2a_d2ecl
+( env0, dcl0 ) =
+let
+//
+val () =
+prerrln
+("trsym2a_d2ecl: dcl0 = ", dcl0)
+//
+in//let
+case+
+dcl0.node() of
+//
+|
+D2Cvaldclst
+(tknd, d2vs) => let
+val () =
+  trsym2a_d2valdclist(env0, d2vs)
+endlet // end-of-(D2Cvaldclst(_,_,_))
+|
+D2Cvardclst
+(tknd, d2vs) => let
+val () =
+  trsym2a_d2vardclist(env0, d2vs)
+endlet // end-of-(D2Cvardclst(_,_,_))
+//
+|
+D2Cfundclst
+( tknd
+, tqas, d2fs) => let
+(*
+val () =
+  trsym2a_t2qaglst(out, tqas)
+*)
+val () =
+  trsym2a_d2fundclist(env0, d2fs)
+endlet // end-of-(D2Cfundclst(_,_,_))
+//
+| D2Cnone0() => ( (*void*) )
+| D2Cnone1(d1cl) => ( (*void*) )
+//
+| _(* otherwise *) => (   (*skipped*)   )
+//
+end(*let*)//end-of(trsym2a_d2ecl(env0,dcl0))
+//
+endloc(*local*)//end-of(local(trsym2a_d2ecl))
+
+(* ****** ****** *)
 //
 #implfun
 trsym2a_d2eclist
