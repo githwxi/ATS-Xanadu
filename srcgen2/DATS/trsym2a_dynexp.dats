@@ -98,6 +98,43 @@ in//let
 case+
 d2e0.node() of
 //
+(*
+| D2Eint _ => ()
+| D2Ebtf _ => ()
+| D2Echr _ => ()
+| D2Eflt _ => ()
+| D2Estr _ => ()
+*)
+//
+(*
+| D2Evar _ => ()
+| D2Econ _ => ()
+| D2Ecst _ => ()
+*)
+//
+|D2Esym0 _ =>
+f0_sym0(env0, d2e0)
+//
+|
+D2Edapp
+(d2f0,npf1,d2es) =>
+let
+val () =
+trsym2a_d2exp(env0, d2f0)
+val () =
+trsym2a_d2explst(env0, d2es) end
+//
+|
+D2Eif0
+(d2e1,dthn,dels) =>
+let
+val () =
+trsym2a_d2exp(env0, d2e1)
+val () =
+trsym2a_d2expopt(env0, dthn)
+val () =
+trsym2a_d2expopt(env0, dels) end
+//
 | _(* otherwise *) => (   (*skipped*)   )
 //
 endlet where
@@ -105,7 +142,56 @@ endlet where
 //
 (* ****** ****** *)
 //
+fun
+f0_sym0
+( env0:
+! tr2aenv
+, d2e0: d2exp): void =
+let
+//
+val-
+D2Esym0
+( drxp
+, d1e1, dpis) = d2e0.node()
+//
+val loc0 = d2e0.lctn((*void*))
+val t2p1 = d2e0.styp((*void*))
+//
+val () =
+prerrln
+("trsym2a_d2exp: f0_sym0: loc0 = ", loc0)
+val () =
+prerrln
+("trsym2a_d2exp: f0_sym0: d2e0 = ", d2e0)
+val () =
+prerrln
+("trsym2a_d2exp: f0_sym0: d2e0.styp = ", t2p1)
+//
+in//let
+end (*let*) // end of [f0_sym0(env0, d2e0)]
+//
+(* ****** ****** *)
+//
 } (*where*) // end of [trsym2a_d2exp(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+#implfun
+trsym2a_f2arg
+(env0, farg) =
+(
+case+
+farg.node() of
+//
+|F2ARGdyn0
+(npf1, d2ps) =>
+trsym2a_d2patlst(env0, d2ps)
+//
+|F2ARGsta0
+(s2vs, s2es) => ( (*void*) )
+|F2ARGmet0(s2es) => ( (*void*) )
+//
+) (*case+*)//end-of-(trsym2a_f2arg(env0,farg)]
 //
 (* ****** ****** *)
 //
@@ -134,6 +220,13 @@ optn_trsym2a_fnp(env0, dopt, trsym2a_d2exp)
 trsym2a_l2d2elst
 ( env0, ldes ) =
 list_trsym2a_fnp(env0, ldes, trsym2a_l2d2e)
+//
+(* ****** ****** *)
+//
+#implfun
+trsym2a_f2arglst
+( env0, f2as ) =
+list_trsym2a_fnp(env0, f2as, trsym2a_f2arg)
 //
 (* ****** ****** *)
 
