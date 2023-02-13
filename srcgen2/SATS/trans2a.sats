@@ -542,46 +542,6 @@ match2a_s2typlst // testing-only
 #symload match2a with match2a_s2typlst
 //
 (* ****** ****** *)
-(*
-HX-2023-02-08:
-Various matching functions
-for resolving overloaded symbols
-*)
-(* ****** ****** *)
-//
-fun
-match2a_d2var
-( env0:
-! tr2aenv
-, d2v0: d2var, t2p0: s2typ): bool
-//
-(* ****** ****** *)
-//
-fun
-match2a_d2con
-( env0:
-! tr2aenv
-, d2c0: d2con, t2p0: s2typ): bool
-fun
-match2a_d2cst
-( env0:
-! tr2aenv
-, d2c0: d2cst, t2p0: s2typ): bool
-//
-(* ****** ****** *)
-//
-fun
-match2a_d2itm
-( env0:
-! tr2aenv
-, ditm: d2itm, t2p0: s2typ): d2itmopt
-fun
-match2a_d2ptm
-( env0:
-! tr2aenv
-, dptm: d2ptm, t2p0: s2typ): d2ptmopt
-//
-(* ****** ****** *)
 //
 fun
 trans2a_d2pat_tpck

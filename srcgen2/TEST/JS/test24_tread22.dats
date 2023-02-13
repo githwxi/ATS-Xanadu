@@ -258,6 +258,8 @@
 #include
 "./../../DATS/trsym2a.dats"
 #include
+"./../../DATS/trsym2a_utils0.dats"
+#include
 "./../../DATS/trsym2a_dynexp.dats"
 #include
 "./../../DATS/trsym2a_decl00.dats"
