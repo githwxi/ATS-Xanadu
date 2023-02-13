@@ -573,6 +573,9 @@ all_dats:: \
 trsym2a_dats
 trsym2a_dats: ; $(XATSOPT) --dynamic DATS/trsym2a.dats
 all_dats:: \
+trsym2a_utils0_dats
+trsym2a_utils0_dats: ; $(XATSOPT) --dynamic DATS/trsym2a_utils0.dats
+all_dats:: \
 trsym2a_dynexp_dats
 trsym2a_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trsym2a_dynexp.dats
 all_dats:: \
