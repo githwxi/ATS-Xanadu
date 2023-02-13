@@ -119,7 +119,7 @@ D2Cfundclst
 , tqas, d2fs) => let
 (*
 val () =
-  trsym2a_t2qaglst(out, tqas)
+  trsym2a_t2qaglst(env0, tqas)
 *)
 val () =
   trsym2a_d2fundclist(env0, d2fs)
@@ -137,35 +137,136 @@ endloc(*local*)//end-of(local(trsym2a_d2ecl))
 (* ****** ****** *)
 //
 #implfun
+trsym2a_teqd2exp
+  (env0, tdxp) =
+(
+case+ tdxp of
+|
+TEQD2EXPnone() => ()
+|
+TEQD2EXPsome(teq1, d2e2) =>
+let
+val () = trsym2a_d2exp(env0, d2e2)
+end
+) (*case+*)//end-of(trsym2a_teqd0exp(...))
+//
+(* ****** ****** *)
+//
+#implfun
+trsym2a_d2valdcl
+(env0, dval) =
+let
+//
+val (  ) =
+trsym2a_d2pat(env0, dpat)
+//
+val (  ) =
+trsym2a_teqd2exp(env0, tdxp)
+//
+endlet where
+{
+//
+  val dpat = d2valdcl_get_dpat(dval)
+  val tdxp = d2valdcl_get_tdxp(dval)
+//
+(*
+  val wsxp = d2valdcl_get_wsxp(dval)
+*)
+//
+} (*where*)//end-of-[trsym2a_d2valdcl(env0,dval)]
+//
+(* ****** ****** *)
+//
+#implfun
+trsym2a_d2vardcl
+(env0, dvar) =
+let
+//
+val (  ) =
+trsym2a_teqd2exp(env0, dini)
+//
+endlet where
+{
+//
+(*
+  val dpid = d2vardcl_get_dpid(dvar)
+  val vpid = d2vardcl_get_vpid(dvar)
+  val sres = d2vardcl_get_sres(dvar)
+*)
+//
+  val dini = d2vardcl_get_dini(dvar)
+//
+} (*where*)//end-of-[trsym2a_d2vardcl(env0,dval)]
+//
+(* ****** ****** *)
+//
+#implfun
+trsym2a_d2fundcl
+(env0, dfun) =
+let
+//
+val (  ) =
+trsym2a_f2arglst(env0, fags)
+//
+val (  ) =
+trsym2a_teqd2exp(env0, tdxp)
+//
+endlet where
+{
+//
+(*
+  val dpid = d2fundcl_get_dpid(dfun)
+*)
+//
+  val fags = d2fundcl_get_farg(dfun)
+(*
+  val sres = d2fundcl_get_sres(dfun)
+*)
+  val tdxp = d2fundcl_get_tdxp(dfun)
+//
+(*
+  val wsxp = d2fundcl_get_wsxp(dfun)
+*)
+//
+} (*where*)//end-of-[trsym2a_d2fundcl(env0,dfun)]
+//
+(* ****** ****** *)
+//
+#implfun
 trsym2a_d2eclist
 ( env0, d2cs ) =
-list_trsym2a_fnp(env0, d2cs, trsym2a_d2ecl)
+(
+  list_trsym2a_fnp(env0, d2cs, trsym2a_d2ecl))
 //
 (* ****** ****** *)
 //
 #implfun
 trsym2a_d2valdclist
 ( env0, d2vs ) =
-list_trsym2a_fnp(env0, d2vs, trsym2a_d2valdcl)
+(
+  list_trsym2a_fnp(env0, d2vs, trsym2a_d2valdcl))
 //
 #implfun
 trsym2a_d2vardclist
 ( env0, d2vs ) =
-list_trsym2a_fnp(env0, d2vs, trsym2a_d2vardcl)
+(
+  list_trsym2a_fnp(env0, d2vs, trsym2a_d2vardcl))
 //
 (* ****** ****** *)
 //
 #implfun
 trsym2a_d2fundclist
 ( env0, d2fs ) =
-list_trsym2a_fnp(env0, d2fs, trsym2a_d2fundcl)
+(
+  list_trsym2a_fnp(env0, d2fs, trsym2a_d2fundcl))
 //
 (* ****** ****** *)
 //
 #implfun
 trsym2a_d2eclistopt
 ( env0, dopt ) =
-optn_trsym2a_fnp(env0, dopt, trsym2a_d2eclist)
+(
+  optn_trsym2a_fnp(env0, dopt, trsym2a_d2eclist))
 //
 (* ****** ****** *)
 

@@ -381,6 +381,25 @@ end (*let*) // end of [f0_implmnt0(env0,d2cl)]
 } (*where*) // end of [trans2a_d2ecl(env0,d2cl)]
 //
 (* ****** ****** *)
+//
+(*
+#implfun
+trans2a_teqd2exp
+  (env0, tdxp) =
+(
+case+ tdxp of
+|
+TEQD2EXPnone() =>
+TEQD2EXPnone((*void*))
+|
+TEQD2EXPsome(teq1, d2e2) =>
+TEQD2EXPsome(teq1, d2e2) where
+{ val
+  d2e2 = trans2a_d2exp(env0, d2e2) }
+) (*case+*)//end-of(trans2a_teqd0exp(...))
+*)
+//
+(* ****** ****** *)
 
 #implfun
 trans2a_d2valdcl

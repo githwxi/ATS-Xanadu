@@ -160,6 +160,10 @@ trsym2a_d2eclist
 (env0: !tr2aenv, d2cs: d2eclist): void
 //
 (* ****** ****** *)
+fun
+trsym2a_teqd2exp
+(env0: !tr2aenv, tdxp: teqd2exp): void
+(* ****** ****** *)
 //
 fun
 trsym2a_d2valdcl

@@ -119,6 +119,8 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef d2arg = $D2E.d2arg
 (* ****** ****** *)
+#typedef teqd2exp = $D2E.teqd2exp
+(* ****** ****** *)
 #typedef s2explst = $S2E.s2explst
 #typedef s2typlst = $S2E.s2typlst
 #typedef l2s2elst = $S2E.l2s2elst
