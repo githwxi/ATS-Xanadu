@@ -164,8 +164,27 @@ f2clknd_linq(f2cl) =
 (
 case+ f2cl of
 | F2CLfun() => false
-| F2CLclo(knd0) => (knd0 >= LINCLOFLT)
-)
+| F2CLclo(knd0) => (knd0 >= LINCLOFLT))
+
+(* ****** ****** *)
+
+#implfun
+f2clknd_equal
+(fcl1, fcl2) =
+(
+case+ fcl1 of
+|
+F2CLfun() =>
+(
+case+ fcl2 of
+|
+F2CLfun() => true | F2CLclo(k2) => false)
+|
+F2CLclo(k1) =>
+(
+case+ fcl2 of
+|
+F2CLfun() => false | F2CLclo(k2) => (k1 = k2)))
 
 (* ****** ****** *)
 

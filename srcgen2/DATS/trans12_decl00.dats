@@ -2837,8 +2837,7 @@ f1_d2as
 (
 case+ d2as of
 |
-list_nil
-((*nil*)) => f1_sres(i0, sres)
+list_nil() => f1_sres(i0, sres)
 |
 list_cons
 (d2a1, d2as) =>
@@ -2846,46 +2845,49 @@ list_cons
 //
 case+ d2as of
 |
-list_nil
-((*void*)) =>
+list_nil() =>
 f1_d2a1(i0, d2a1, sres)
 |
 list_cons _ =>
-let
-val
-fres =
-f1_d2as(i0+1, d2as, sres)
-in//let
-//
+(
 case+
 d2a1.node() of
 |
 D2ARGsta0
 (s2vs, s2ps) =>
-s2exp_uni0(s2vs, s2ps, fres)
+let
+val
+fres =
+f1_d2as(i0+0, d2as, sres)
+in//let
+  s2exp_uni0(s2vs, s2ps, fres)
+end (*let*) // end of [D2ARGsta0(...)]
 |
-D2ARGdyn1
-(   s2e1   ) =>
-s2exp_fun1_full
-( f2cl
-, npf1, s2es, fres) where
-{
+D2ARGdyn1(s2e1) =>
+let
 val npf1 = (-1)
 val f2cl = f1_f2cl(i0)
-val s2es = list_sing(s2e1) }
+val s2es = list_sing(s2e1)
+val
+fres = f1_d2as(i0+1, d2as, sres)
+in//let
+s2exp_fun1_full(f2cl, npf1, s2es, fres)
+end (*let*) // end of [D2ARGdyn1(s2e1)]
 |
 D2ARGdyn2
 (npf1, s2es) =>
 let
 val f2cl = f1_f2cl(i0)
+val
+fres = f1_d2as(i0+1, d2as, sres)
 in//let
-  s2exp_fun1_full
-  (f2cl, npf1, s2es, fres) end
-//
-end (*let*) // end of [list_cons]
+s2exp_fun1_full(f2cl, npf1, s2es, fres)
+end (*let*) // end of [D2ARGdyn2(npf1,s2es)]
 //
 ) (*case+*) // end of [list_cons]
-) (*case+*) // end of [f1_d2as(...)]
+//
+) (*case+*) // end of [list_cons]
+) (*case+*) // end of [f1_d2as(i0,d2as,sres)]
 
 in//local
 

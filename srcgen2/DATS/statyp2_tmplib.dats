@@ -87,6 +87,8 @@ t2p0.node() of
 //
 |T2Pbas _ => t2p0
 //
+|T2Pf2cl _ => t2p0
+//
 |T2Plam0 _ => t2p0
 //
 |T2Pnone0 _ => t2p0
@@ -605,7 +607,8 @@ unify00_s2typ
 (* ****** ****** *)
 //
 fun
-isXTV(t2p0: s2typ): bool =
+isXTV
+(t2p0: s2typ): bool =
 (
 case+ t2p0.node() of
 | T2Pxtv _ => true | _ => false)
@@ -649,6 +652,16 @@ t2p2.node() of
 |
 T2Pbas(tbs2) =>
 (tbs1 = tbs2) | _ => false)
+//
+|
+T2Pf2cl(fcl1) =>
+(
+case+
+t2p2.node() of
+|
+T2Pf2cl(fcl2) =>
+f2clknd_equal
+(fcl1 , fcl2) | _ => false)
 //
 |
 T2Pcst(s2c1) =>
@@ -771,12 +784,15 @@ t2p2.node() of
 |
 T2Papps(t2f2, tps2) =>
 let
-val btf1 =
-unify00_s2typ(e1nv, t2f1, t2f2)
-val btf2 =
-unify00_s2typlst(e1nv, tps1, tps2)
+val
+btf1 =
+unify00_s2typ
+(e1nv, t2f1, t2f2)
 in//let
-  if btf1 then btf2 else false
+if btf1
+then
+unify00_s2typlst
+(e1nv, tps1, tps2) else false
 end (*let*) // end of [T2Papps(...)]
 | _ (* non-T2Papps *) => (  false  )
 //
@@ -875,7 +891,7 @@ case+ tps2 of
 list_cons(t2p1, tps1) =>
 (
 case+ tps2 of
-|list_nil() => true
+|list_nil() => false
 |list_cons(t2p2, tps2) =>
 (
 if btf1
@@ -900,6 +916,37 @@ datatype x2stk =
 X2STK of list(x2t2p)
 datavwtp x2stk_vt =
 X2STK_vt of list_vt(x2t2p)
+//
+in//local
+
+#impltmp
+<e1nv:vwtp>
+match00_s2typ_e1nv
+(e1nv, t2p1, t2p2) =
+let
+//
+val
+xstk = X2STK(list_nil)
+//
+#impltmp
+<(*void*)>
+unify00_s2typ$xset
+  (xtp1, t2p2) =
+let
+val () =
+x2stk_push(xstk, xtp1)
+in//let
+x2t2p_set_styp(xtp1, t2p2) end
+//
+in//let
+//
+(
+x2stk_free_all(xstk); ans) where
+{ val ans =
+  unify00_s2typ_e1nv(e1nv, t2p1, t2p2) }
+//
+end where
+{
 //
 (* ****** ****** *)
 //
@@ -953,35 +1000,7 @@ xtp1.styp(t2p0); auxfree(xtps) end)
 //
 (* ****** ****** *)
 //
-in//local
-
-#impltmp
-<e1nv:vwtp>
-match00_s2typ_e1nv
-(e1nv, t2p1, t2p2) =
-let
-//
-val
-xstk = X2STK(list_nil)
-//
-#impltmp
-<(*void*)>
-unify00_s2typ$xset
-  (xtp1, t2p2) =
-let
-val () =
-x2stk_push(xstk, xtp1)
-in//let
-x2t2p_set_styp(xtp1, t2p2) end
-//
-in//let
-//
-(
-x2stk_free_all(xstk); ans) where
-{ val ans =
-  unify00_s2typ_e1nv(e1nv, t2p1, t2p2) }
-//
-end (*let*) // end of [match00_s2typ_e1nv]
+} (*where*) // end of [match00_s2typ_e1nv]
 
 end (*local*) // end of [match00_s2typ_e1nv]
 

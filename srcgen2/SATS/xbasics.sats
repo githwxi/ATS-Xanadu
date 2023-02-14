@@ -247,6 +247,10 @@ fun
 f2clknd_linq(f2cl: f2clknd): bool
 (* ****** ****** *)
 fun
+f2clknd_equal
+(fcl1:f2clknd, fcl2:f2clknd): bool
+(* ****** ****** *)
+fun
 f2clknd_fprint: (FILR, f2clknd)->void
 (* ****** ****** *)
 datatype

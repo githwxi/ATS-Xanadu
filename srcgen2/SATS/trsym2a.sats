@@ -228,5 +228,12 @@ match2a_d2ptm
 ! tr2aenv, dptm:d2ptm, t2p0:s2typ): d2ptmopt
 //
 (* ****** ****** *)
+//
+fun
+match2a_d2ptmlst
+( env0:
+! tr2aenv, dpis:d2ptmlst, t2p0:s2typ): d2ptmlst
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trsym2a.sats] *)

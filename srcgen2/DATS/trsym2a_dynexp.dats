@@ -58,6 +58,101 @@ _(*TRSYM2A*) = "./trsym2a.dats"
 #staload "./../SATS/trans2a.sats"
 #staload "./../SATS/trsym2a.sats"
 (* ****** ****** *)
+#symload dexp with d2rxp_get_dexp
+#symload dexp with d2rxp_set_dexp
+(* ****** ****** *)
+
+fun
+d2exp_make_dpis
+( loc0
+: loc_t
+, d1e0
+: d1exp
+, dpis
+: d2ptmlst
+, t2p1: s2typ): d2exp =
+(
+case+ dpis of
+|
+list_nil() =>
+f0_else(loc0, dpis, t2p1)
+|
+list_cons(dpi1, d2ps) =>
+(
+case+ d2ps of
+|
+list_nil() =>
+f0_sing(loc0, dpi1, t2p1)
+|
+list_cons _ =>
+f0_else(loc0, dpis, t2p1))
+) (*case+*) where
+{
+//
+fun
+f0_sing
+( loc0: loc_t
+, dpi1: d2ptm
+, t2p1: s2typ): d2exp =
+(
+case- dpi1 of
+|
+D2PTMsome
+(pval, d2i1) =>
+(
+case- d2i1 of
+|D2ITMvar(d2v1) =>
+let
+val
+d2e1 =
+d2exp_var(loc0, d2v1)
+in//let
+d2e1.styp(t2p1); d2e1 end
+|D2ITMcon(d2cs) =>
+let
+val
+d2e1 =
+d2exp_cons(loc0, d2cs)
+in//let
+(d2e1.styp(t2p1); d2e1) end
+|D2ITMcst(d2cs) =>
+let
+val
+d2e1 =
+d2exp_csts(loc0, d2cs)
+in//let
+(d2e1.styp(t2p1); d2e1) end
+//
+(*
+|D2ITMsym(sym1, dpis) => ...
+*)
+//
+)
+) (*case+*) // end of [f0_sing(...)]
+//
+fun
+f0_else
+( loc0
+: loc_t
+, dpis
+: d2ptmlst
+, t2p1: s2typ): d2exp =
+let
+val
+drxp = d2rxp_new1(loc0)
+val
+dexp =
+d2exp_sym0
+(loc0, drxp, d1e0, dpis)
+in
+let
+val () = dexp.styp(t2p1) in dexp
+end
+end (*let*) // end of [f0_else(...)]
+//
+} (*where*) // end of [d2exp_make_dpis]
+
+(* ****** ****** *)
 //
 #implfun
 trsym2a_d2pat
@@ -152,10 +247,11 @@ let
 val-
 D2Esym0
 ( drxp
-, d1e1, dpis) = d2e0.node()
+, d1e0, dpis) = d2e0.node()
 //
 val loc0 = d2e0.lctn((*void*))
 val t2p1 = d2e0.styp((*void*))
+val dexp = drxp.dexp((*void*))
 //
 val () =
 prerrln
@@ -165,10 +261,105 @@ prerrln
 ("trsym2a_d2exp: f0_sym0: d2e0 = ", d2e0)
 val () =
 prerrln
-("trsym2a_d2exp: f0_sym0: d2e0.styp = ", t2p1)
+("trsym2a_d2exp: f0_sym0: styp = ", t2p1)
 //
 in//let
-end (*let*) // end of [f0_sym0(env0, d2e0)]
+case+
+dexp.node() of
+|
+D2Enone0() =>
+let
+//
+val dpis =
+match2a_d2ptmlst
+(env0, dpis, t2p1)
+//
+val dsym =
+d2exp_make_dpis
+( loc0
+, d1e0, dpis, t2p1) where
+{
+val dpis =
+(
+case+ dpis of
+|
+list_nil() =>
+list_nil(*void*)
+|
+list_cons _ =>
+f1_maxes(dpis)): d2ptmlst }
+//
+in//let
+  d2rxp_set_dexp(drxp, dsym)
+end (*let*) // end of [D2Enone0]
+|
+_(*otherwise*) => trsym2a_d2exp(env0, dexp)
+end where
+{
+//
+(* ****** ****** *)
+//
+fun
+f1_maxes
+( dpis
+: d2ptmlst): d2ptmlst =
+(
+auxtake(pmax, dpis)) where
+{
+val
+pmax =
+(
+case- dpis of
+|
+list_cons
+(dpi1, d2ps) =>
+(
+case- dpi1 of
+|
+D2PTMsome(pval, _) =>
+  auxpmax(pval, d2ps))): sint
+}
+//
+and
+auxpmax
+( pmax: sint
+, dpis: d2ptmlst): sint =
+(
+case+ dpis of
+|
+list_nil() => pmax
+|
+list_cons(dpi1, dpis) =>
+(
+case- dpi1 of
+|
+D2PTMsome(pval, _) =>
+auxpmax(max(pmax, pval), dpis)))
+//
+and
+auxtake
+( pmax: sint
+, dpis: d2ptmlst): d2ptmlst =
+(
+case+ dpis of
+|
+list_nil() =>
+list_nil(*void*)
+|
+list_cons(dpi1, dpis) =>
+(
+case- dpi1 of
+|
+D2PTMsome(pval, d2i1) =>
+if
+(pval < pmax)
+then auxtake(pmax, dpis)
+else list_cons(dpi1, auxtake(pmax, dpis)))
+)
+//
+(* ****** ****** *)
+//
+} (*where*) // end of [f0_sym0(env0, d2e0)]
 //
 (* ****** ****** *)
 //

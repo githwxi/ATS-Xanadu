@@ -157,7 +157,7 @@ case+ x1.node() of
 |F2ARGdyn0 _ =>
  f1_ndyn(xs) + 1 | _ => f1_ndyn(xs)))
 //
-}(*where*)//end-[s2typ_fun1_f2as_tres]
+}(*where*)//end-[s2typ_fun1_f2arglst]
 //
 (* ****** ****** *)
 //
