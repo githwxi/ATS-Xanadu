@@ -10,15 +10,15 @@ var z: strn = 3
 val () = (z := "0")
 *)
 (* ****** ****** *)
+fun
+fact0(x: sint) =
+if x > 0 then x * fact0(x-1) else 1
+(* ****** ****** *)
+////
+(* ****** ****** *)
 #extern
 fun
 mymul: (sint, sint) -> sint
-(* ****** ****** *)
-fun
-fact0(x: sint): sint =
-if x > 0 then x \mymul fact0(x-1) else 1
-(* ****** ****** *)
-////
 (* ****** ****** *)
 fun
 fact0(x: sint): strn =

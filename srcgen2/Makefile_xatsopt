@@ -161,6 +161,10 @@ fperr22_sats
 fperr22_sats: ; $(XATSOPT) --static SATS/fperr22.sats
 ######
 all_sats:: \
+trans23_sats
+trans23_sats: ; $(XATSOPT) --static SATS/trans23.sats
+######
+all_sats:: \
 xglobal_sats
 xglobal_sats: ; $(XATSOPT) --static SATS/xglobal.sats
 ######
@@ -604,6 +608,12 @@ fperr22_dynexp_dats: ; $(XATSOPT) --dynamic DATS/fperr22_dynexp.dats
 all_dats:: \
 fperr22_decl00_dats
 fperr22_decl00_dats: ; $(XATSOPT) --dynamic DATS/fperr22_decl00.dats
+######
+
+######
+all_dats:: \
+trans23_dats
+trans23_dats: ; $(XATSOPT) --dynamic DATS/trans23.dats
 ######
 
 ######
