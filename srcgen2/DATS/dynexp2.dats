@@ -202,17 +202,55 @@ d2exp_btf
 d2exp(loc0, D2Ebtf(sym1)))
 //
 (* ****** ****** *)
+//
 #implfun
 d2exp_con
 (loc0, dcon) =
 (
 d2exp(loc0, D2Econ(dcon)))
-(* ****** ****** *)
+//
 #implfun
 d2exp_cst
 (loc0, dcst) =
 (
 d2exp(loc0, D2Ecst(dcst)))
+//
+(* ****** ****** *)
+//
+#implfun
+d2exp_cons
+(loc0, d2cs) =
+(
+case+ d2cs of
+|list_nil() =>
+d2exp
+(loc0, D2Econs(d2cs))
+|list_cons(d2c1, dcs2) =>
+(
+case+ dcs2 of
+|list_nil() =>
+d2exp(loc0, D2Econ(d2c1))
+|list_cons _ =>
+d2exp(loc0, D2Econs(d2cs)))
+)
+//
+#implfun
+d2exp_csts
+(loc0, d2cs) =
+(
+case+ d2cs of
+|list_nil() =>
+d2exp
+(loc0, D2Ecsts(d2cs))
+|list_cons(d2c1, dcs2) =>
+(
+case+ dcs2 of
+|list_nil() =>
+d2exp(loc0, D2Ecst(d2c1))
+|list_cons _ =>
+d2exp(loc0, D2Ecsts(d2cs)))
+)
+//
 (* ****** ****** *)
 #implfun
 d2exp_sym0

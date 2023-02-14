@@ -131,7 +131,10 @@ LEX = "./lexing0.sats"
 #typedef d2cstlst = $D2E.d2cstlst
 (* ****** ****** *)
 #typedef d2itmopt = $D2E.d2itmopt
+#typedef d2itmlst = $D2E.d2itmlst
+(* ****** ****** *)
 #typedef d2ptmopt = $D2E.d2ptmopt
+#typedef d2ptmlst = $D2E.d2ptmlst
 (* ****** ****** *)
 #typedef d2patlst = $D2E.d2patlst
 (* ****** ****** *)

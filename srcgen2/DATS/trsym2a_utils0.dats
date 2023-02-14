@@ -52,6 +52,7 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans2a.sats"
+#staload "./../SATS/trsym2a.sats"
 (* ****** ****** *)
 #staload _ = "./statyp2_tmplib.dats"
 (* ****** ****** *)
@@ -230,6 +231,55 @@ then list_cons(d2c1, d2cs) else d2cs end
 (* ****** ****** *)
 //
 } (*where+*) // end of [match2a_d2itm(env0,...)]
+
+(* ****** ****** *)
+
+#implfun
+match2a_d2ptm
+(env0, dptm, t2p2) =
+(
+case+ dptm of
+|
+D2PTMnone(dqid) => optn_nil()
+|
+D2PTMsome(pval, ditm) =>
+let
+val
+dopt =
+match2a_d2itm(env0, ditm, t2p2)
+in//let
+case+ dopt
+| optn_nil() =>
+  optn_nil(*void*)
+| optn_cons(ditm) =>
+  optn_cons(D2PTMsome(pval, ditm))
+) (*case+*) // end of [match2a_d2ptm(env0,...)]
+
+(* ****** ****** *)
+
+#implfun
+match2a_d2ptmlst
+(env0, dpis, t2p2) =
+(
+case+ dpis of
+|
+list_nil() =>
+list_nil(*void*)
+|
+list_cons(dpi1, dpis) =>
+let
+val dopt =
+match2a_d2ptm(env0, dpi1, t2p2)
+in//let
+case+ dopt of
+|
+optn_nil() =>
+match2a_d2ptmlst(env0, dpis, t2p2)
+|
+optn_cons(dpi1) =>
+list_cons
+(dpi1, match2a_d2ptmlst(env0, dpis, t2p2)) end
+) (*case+*) // end of [match2a_d2ptmlst(env0,...)]
 
 (* ****** ****** *)
 
