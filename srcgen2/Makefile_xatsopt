@@ -161,6 +161,10 @@ fperr22_sats
 fperr22_sats: ; $(XATSOPT) --static SATS/fperr22.sats
 ######
 all_sats:: \
+dynexp3_sats
+dynexp3_sats: ; $(XATSOPT) --static SATS/dynexp3.sats
+######
+all_sats:: \
 trans23_sats
 trans23_sats: ; $(XATSOPT) --static SATS/trans23.sats
 ######
