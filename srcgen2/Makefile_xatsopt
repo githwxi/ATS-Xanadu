@@ -616,6 +616,15 @@ fperr22_decl00_dats: ; $(XATSOPT) --dynamic DATS/fperr22_decl00.dats
 
 ######
 all_dats:: \
+dynexp3_dats
+dynexp3_dats: ; $(XATSOPT) --dynamic DATS/dynexp3.dats
+all_dats:: \
+dynexp3_print0_dats
+dynexp3_print0_dats: ; $(XATSOPT) --dynamic DATS/dynexp3_print0.dats
+######
+
+######
+all_dats:: \
 trans23_dats
 trans23_dats: ; $(XATSOPT) --dynamic DATS/trans23.dats
 ######
