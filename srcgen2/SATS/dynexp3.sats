@@ -95,9 +95,9 @@ datatype
 d3pat_node =
 //
 |
-D3Perrck of (sint(*lvl*), d3pat)//HX:tread23-error
+D3Perrck of (sint(*lvl*),d3pat)//tread23-error
 //
-// end of [d1exp_node] // end of [ datatype(...) ]
+// HX-2022-??-??: end-of-[datatype(d3pat_node)]
 //
 (* ****** ****** *)
 fun
@@ -126,10 +126,32 @@ d3pat_set_styp
 datatype
 d3exp_node =
 //
-|
-D3Eerrck of (sint(*lvl*), d3exp)//HX:tread23-error
+|D3Eint of token
+|D3Ebtf of sym_t
+|D3Echr of token
+|D3Eflt of token
+|D3Estr of token
 //
-// end of [d1exp_node] // end of [ datatype(...) ]
+|D3Ei00 of (sint) // sint
+|D3Eb00 of (bool) // bool
+|D3Ec00 of (char) // char
+|D3Ef00 of (char) // float
+|D3Es00 of (strn) // string
+//
+|D3Etop of (token)
+//
+|D3Evar of (d2var)
+//
+|D3Econ of (d2con)
+|D3Ecst of (d2cst)
+//
+|D3Esapp of (d3exp, s2explst)
+|D3Etapp of (d3exp, s2explst)
+//
+|
+D3Eerrck of (sint(*lvl*),d3exp)//tread23-error
+//
+// HX-2022-??-??: end-of-[datatype(d3exp_node)]
 //
 (* ****** ****** *)
 fun
@@ -152,6 +174,22 @@ d3exp_set_styp
 //
 #symload styp with d3exp_get_styp
 #symload styp with d3exp_set_styp
+//
+(* ****** ****** *)
+//
+datatype
+d3ecl_node =
+//
+|D3Cd1ecl of (d1ecl)
+//
+|D3Cstatic of
+ (token(*STATIC*), d3ecl)
+|D3Cextern of
+ (token(*EXTERN*), d3ecl)
+|
+D3Cerrck of (sint(*lvl*),d3ecl)//tread23-error
+//
+// HX-2022-??-??: end-of-[datatype(d3ecl_node)]
 //
 (* ****** ****** *)
 
