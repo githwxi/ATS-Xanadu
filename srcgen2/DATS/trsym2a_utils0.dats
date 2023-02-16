@@ -248,11 +248,12 @@ val
 dopt =
 match2a_d2itm(env0, ditm, t2p2)
 in//let
-case+ dopt
+case+ dopt of
 | optn_nil() =>
   optn_nil(*void*)
 | optn_cons(ditm) =>
   optn_cons(D2PTMsome(pval, ditm))
+end (*let*) // end of [D2PTMsome(...)]
 ) (*case+*) // end of [match2a_d2ptm(env0,...)]
 
 (* ****** ****** *)
