@@ -66,6 +66,8 @@ ATS_PACKNAME
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
+#staload "./../SATS/dynexp3.sats"
+(* ****** ****** *)
 #symload stmp with s2cst_get_stmp
 #symload stmp with s2var_get_stmp
 (* ****** ****** *)
@@ -1290,6 +1292,28 @@ print("WTHS2EXPnone(", ")")
 |
 WTHS2EXPsome(tok0, s2e1) =>
 print("WTHS2EXPsome(", tok0, ";", s2e1, ")"))
+//
+(* ****** ****** *)
+(*
+HX: for level-2 syntax
+*)
+(* ****** ****** *)
+//
+#impltmp
+g_print<d3pat>(d3p) =
+d3pat_fprint(g_print$out<>(), d3p)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<d3exp>(d3e) =
+d3exp_fprint(g_print$out<>(), d3e)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<d3ecl>(dcl) =
+d3ecl_fprint(g_print$out<>(), dcl)
 //
 (* ****** ****** *)
 (*
