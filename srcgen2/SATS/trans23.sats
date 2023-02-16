@@ -70,5 +70,41 @@ LEX = "./lexing0.sats"
 #typedef token = $LEX.token
 //
 (* ****** ****** *)
+#staload S2E = "./staexp2.sats"
+#staload D2E = "./dynexp2.sats"
+(* ****** ****** *)
+#staload D3E = "./dynexp3.sats"
+(* ****** ****** *)
+#typedef s2exp = $S2E.s2exp
+#typedef s2typ = $S2E.s2typ
+(* ****** ****** *)
+#typedef d2pat = $D2E.d2pat
+#typedef d2exp = $D2E.d2exp
+(* ****** ****** *)
+#typedef d3pat = $D3E.d3pat
+#typedef d3exp = $D3E.d3exp
+(* ****** ****** *)
+//
+fun
+trans23_d2pat
+(env0: !tr23env, d2p0: d2exp): d3pat
+(*
+fun
+trans23_l2d2p
+(env0: !tr23env, ld2p: l2d2p): l3d3p
+*)
+//
+(* ****** ****** *)
+//
+fun
+trans23_d2exp
+(env0: !tr23env, d2e0: d2exp): d3exp
+(*
+fun
+trans23_l2d2e
+(env0: !tr23env, ld2e: l2d2e): l3d3e
+*)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans23.sats] *)
