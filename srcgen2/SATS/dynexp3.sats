@@ -90,8 +90,11 @@ S2E = "./staexp2.sats"
 #staload
 D2E = "./dynexp2.sats"
 (* ****** ****** *)
-#typedef s2typ = $S2E.s2typ
+#typedef s2cst = $S2E.s2cst
+#typedef s2var = $S2E.s2var
+(* ****** ****** *)
 #typedef s2exp = $S2E.s2exp
+#typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
 #typedef d2var = $D2E.d2var
 #typedef d2con = $D2E.d2con
@@ -118,17 +121,53 @@ D2E = "./dynexp2.sats"
 #abstbox d3cstdcl_tbox // ptr
 //
 (* ****** ****** *)
+#typedef s2varlst = list(s2var)
+(* ****** ****** *)
 #typedef s2explst = list(s2exp)
 (* ****** ****** *)
-#typedef d2patlst = list(d2pat)
-#typedef d2explst = list(d2exp)
-#typedef d2eclist = list(d2ecl)
+#typedef d3patlst = list(d3pat)
+#typedef d3explst = list(d3exp)
+#typedef d3eclist = list(d3ecl)
 (* ****** ****** *)
 #typedef d3eclist = list(d3ecl)
+(* ****** ****** *)
+#typedef d3valdcl = d3valdcl_tbox
+#typedef d3vardcl = d3vardcl_tbox
+#typedef d3fundcl = d3fundcl_tbox
+#typedef i3mpldcl = i3mpldcl_tbox
+#typedef d3cstdcl = d3cstdcl_tbox
+(* ****** ****** *)
+#typedef d3valdclist = list(d3valdcl)
+#typedef d3vardclist = list(d3vardcl)
+#typedef d3fundclist = list(d3fundcl)
+#typedef i3mpldclist = list(i3mpldcl)
+#typedef d3cstdclist = list(d3cstdcl)
+(* ****** ****** *)
+#typedef d3explstopt = optn(d3explst)
+#typedef d3eclistopt = optn(d3eclist)
 (* ****** ****** *)
 //
 datatype
 d3pat_node =
+//
+|D3Pvar of d2var
+//
+|D3Pint of token
+|D3Pbtf of sym_t
+|D3Pchr of token
+|D3Pflt of token
+|D3Pstr of token
+//
+|D3Pcon of (d2con)
+//
+|D3Psapp of
+ (d3pat, s2varlst(*sarg*))
+//
+|
+D3Pdapp of
+( d3pat
+, sint(*npf*), d3patlst(*darg*)
+) (* D3Pdapp *)
 //
 |
 D3Perrck of (sint(*lvl*),d3pat)//tread23-error
@@ -255,6 +294,21 @@ d3ecl_get_node(d3ecl): d3ecl_node
 (* ****** ****** *)
 #symload lctn with d3ecl_get_lctn
 #symload node with d3ecl_get_node
+(* ****** ****** *)
+fun
+d3valdcl_fprint
+(out: FILR, dval: d3valdcl): void
+fun
+d3vardcl_fprint
+(out: FILR, dvar: d3vardcl): void
+(* ****** ****** *)
+fun
+d3fundcl_fprint
+(out: FILR, dfun: d3fundcl): void
+(* ****** ****** *)
+fun
+d3cstdcl_fprint
+(out: FILR, dcst: d3cstdcl): void
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_dynexp3.sats] *)
