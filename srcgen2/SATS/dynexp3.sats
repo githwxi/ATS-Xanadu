@@ -90,6 +90,42 @@ S2E = "./staexp2.sats"
 #staload
 D2E = "./dynexp2.sats"
 (* ****** ****** *)
+#typedef s2typ = $S2E.s2typ
+#typedef s2exp = $S2E.s2exp
+(* ****** ****** *)
+#typedef d2var = $D2E.d2var
+#typedef d2con = $D2E.d2con
+#typedef d2cst = $D2E.d2cst
+(* ****** ****** *)
+#typedef d2pat = $D2E.d2pat
+#typedef d2exp = $D2E.d2exp
+#typedef d2ecl = $D2E.d2ecl
+(* ****** ****** *)
+#abstbox d3pat_tbox // ptr
+#typedef d3pat = d3pat_tbox
+(* ****** ****** *)
+#abstbox d3exp_tbox // ptr
+#typedef d3exp = d3exp_tbox
+(* ****** ****** *)
+#abstbox d3ecl_tbox // ptr
+#typedef d3ecl = d3ecl_tbox
+(* ****** ****** *)
+//
+#abstbox d3valdcl_tbox // ptr
+#abstbox d3vardcl_tbox // ptr
+#abstbox d3fundcl_tbox // ptr
+#abstbox i3mpldcl_tbox // ptr
+#abstbox d3cstdcl_tbox // ptr
+//
+(* ****** ****** *)
+#typedef s2explst = list(s2exp)
+(* ****** ****** *)
+#typedef d2patlst = list(d2pat)
+#typedef d2explst = list(d2exp)
+#typedef d2eclist = list(d2ecl)
+(* ****** ****** *)
+#typedef d3eclist = list(d3ecl)
+(* ****** ****** *)
 //
 datatype
 d3pat_node =
@@ -97,7 +133,7 @@ d3pat_node =
 |
 D3Perrck of (sint(*lvl*),d3pat)//tread23-error
 //
-// HX-2022-??-??: end-of-[datatype(d3pat_node)]
+// HX-2023-??-??: end-of-[datatype(d3pat_node)]
 //
 (* ****** ****** *)
 fun
@@ -151,7 +187,7 @@ d3exp_node =
 |
 D3Eerrck of (sint(*lvl*),d3exp)//tread23-error
 //
-// HX-2022-??-??: end-of-[datatype(d3exp_node)]
+// HX-2023-??-??: end-of-[datatype(d3exp_node)]
 //
 (* ****** ****** *)
 fun
@@ -180,17 +216,45 @@ d3exp_set_styp
 datatype
 d3ecl_node =
 //
-|D3Cd1ecl of (d1ecl)
+|D3Cd2ecl of (d2ecl)
 //
 |D3Cstatic of
  (token(*STATIC*), d3ecl)
 |D3Cextern of
  (token(*EXTERN*), d3ecl)
+//
+|D3Clocal0 of
+ ( d3eclist(*local-head*)
+ , d3eclist(*local-body*))
+//
+(*
 |
-D3Cerrck of (sint(*lvl*),d3ecl)//tread23-error
+D3Cvaldclst of
+(token(*VAL(vlk)*),d3valdclist )
+|
+D3Cvardclst of
+(token(*VAR(vrk)*), d3vardclist)
+|
+D3Cfundclst of
+(token(*FUN(fnk)*), t2qaglst, d3fundclist)
+*)
 //
-// HX-2022-??-??: end-of-[datatype(d3ecl_node)]
+|
+D3Cerrck of (sint(*lvl*), d3ecl)//tread23-error
 //
+//HX-2023-??-??: end-of-[datatype( d3ecl_node )]
+//
+(* ****** ****** *)
+fun
+d3ecl_fprint:(FILR,d3ecl)->void
+(* ****** ****** *)
+fun
+d3ecl_get_lctn(d3ecl): loc_t
+fun
+d3ecl_get_node(d3ecl): d3ecl_node
+(* ****** ****** *)
+#symload lctn with d3ecl_get_lctn
+#symload node with d3ecl_get_node
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_dynexp3.sats] *)
