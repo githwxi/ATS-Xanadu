@@ -138,6 +138,68 @@ endloc (*local*) // end of [local(d3pat)]
 local
 //
 datatype
+d3exp =
+D3EXP of
+( loctn
+, s2typ, d3exp_node)
+datavwtp
+d3exp_vt =
+D3EXP_vt of
+( loctn
+, s2typ, d3exp_node)
+//
+#absimpl d3exp_tbox = d3exp
+//
+in (* in-of-local *)
+//
+#implfun
+d3exp_make_node
+(   loc,nod   ) =
+let
+val t2p =
+s2typ_none0() in
+D3EXP(loc, t2p, nod) end
+//
+#implfun
+d3exp_get_lctn(d3e) =
+let
+val+
+D3EXP(loc,t2p,nod) = d3e in loc
+end
+#implfun
+d3exp_get_styp(d3e) =
+let
+val+
+D3EXP(loc,t2p,nod) = d3e in t2p
+end
+#implfun
+d3exp_get_node(d3e) =
+let
+val+
+D3EXP(loc,t2p,nod) = d3e in nod
+end
+//
+#implfun
+d3exp_set_styp
+( d3e0, t2p0 ) =
+let
+//
+val
+d3e0 =
+$UN.castlin10{d3exp_vt}(d3e0)
+val+
+@D3EXP_vt
+(loc0,
+!styp,node) = d3e0 in styp := t2p0
+end (*let*) // end of [d3exp_set_styp]
+//
+endloc (*local*) // end of [local(d3exp)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 d3ecl =
 D3ECL of
 (loctn, d3ecl_node)
