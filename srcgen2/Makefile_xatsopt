@@ -627,6 +627,12 @@ dynexp3_print0_dats: ; $(XATSOPT) --dynamic DATS/dynexp3_print0.dats
 all_dats:: \
 trans23_dats
 trans23_dats: ; $(XATSOPT) --dynamic DATS/trans23.dats
+all_dats:: \
+trans23_dynexp_dats
+trans23_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trans23_dynexp.dats
+all_dats:: \
+trans23_decl00_dats
+trans23_decl00_dats: ; $(XATSOPT) --dynamic DATS/trans23_decl00.dats
 ######
 
 ######

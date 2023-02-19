@@ -66,7 +66,10 @@ LOC = "./locinfo.sats"
 LEX = "./lexing0.sats"
 //
 #typedef lab_t = $LAB.lab_t
+#typedef label = $LAB.label
+//
 #typedef loc_t = $LOC.loc_t
+//
 #typedef token = $LEX.token
 //
 (* ****** ****** *)
@@ -79,31 +82,85 @@ LEX = "./lexing0.sats"
 #typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
 #typedef d2pat = $D2E.d2pat
+#typedef l2d2p = $D2E.l2d2p
 #typedef d2exp = $D2E.d2exp
+#typedef l2d2e = $D2E.l2d2e
+(* ****** ****** *)
+#typedef d2ecl = $D2E.d2ecl
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
+#typedef l3d3p = $D3E.l3d3p
 #typedef d3exp = $D3E.d3exp
+#typedef l3d3e = $D3E.l3d3e
+(* ****** ****** *)
+#typedef d3ecl = $D3E.d3ecl
+(* ****** ****** *)
+//
+#typedef s2explst = $S2E.s2explst
+#typedef s2typlst = $S2E.s2typlst
+//
+(* ****** ****** *)
+//
+#typedef d2patlst = $D2E.d2patlst
+#typedef d2explst = $D2E.d2explst
+#typedef l2d2plst = $D2E.l2d2plst
+#typedef l2d2elst = $D2E.l2d2elst
+//
+(* ****** ****** *)
+//
+#typedef d3patlst = $D3E.d3patlst
+#typedef d3explst = $D3E.d3explst
+#typedef l3d3plst = $D3E.l3d3plst
+#typedef l3d3elst = $D3E.l3d3elst
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:t0>
+list_trans23_fnp
+( e1:
+! tr23env
+, xs: list(x0)
+, (!tr23env, x0) -> y0): list(y0)
+fun
+<x0:t0>
+<y0:t0>
+optn_trans23_fnp
+( e1:
+! tr23env
+, xs: optn(x0)
+, (!tr23env, x0) -> y0): optn(y0)
+//
 (* ****** ****** *)
 //
 fun
 trans23_d2pat
 (env0: !tr23env, d2p0: d2exp): d3pat
-(*
 fun
 trans23_l2d2p
 (env0: !tr23env, ld2p: l2d2p): l3d3p
-*)
 //
 (* ****** ****** *)
 //
 fun
 trans23_d2exp
 (env0: !tr23env, d2e0: d2exp): d3exp
-(*
 fun
 trans23_l2d2e
 (env0: !tr23env, ld2e: l2d2e): l3d3e
-*)
+//
+(* ****** ****** *)
+//
+fun
+trans23_d2ecl
+(env0: !tr23env, d3cl: d2ecl): d3ecl
+//
+(* ****** ****** *)
+//
+fun
+trans23_d2eclist
+(env0: !tr23env, dcls: d2eclist): d3eclist
 //
 (* ****** ****** *)
 
