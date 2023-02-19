@@ -63,7 +63,7 @@ g_lte<sort2> = lte_sort2_sort2
 g_lte<sort2lst> = lte_sort2lst_sort2lst
 //
 (* ****** ****** *)
-
+//
 #impltmp
 <x0><y0>
 list_trans12_fnp
@@ -75,9 +75,9 @@ list_map_e1nv<x0><y0><e1>(xs, e1)) where
 #impltmp
 map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 } (*where*)//end of [list_trans12_fnp(e1,xs,fopr)]
-
+//
 (* ****** ****** *)
-
+//
 #impltmp
 <x0><y0>
 optn_trans12_fnp
@@ -89,7 +89,7 @@ optn_map_e1nv<x0><y0><e1>(xs, e1)) where
 #impltmp
 map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 } (*where*)//end of [optn_trans12_fnp(e1,xs,fopr)]
-
+//
 (* ****** ****** *)
 //
 (*

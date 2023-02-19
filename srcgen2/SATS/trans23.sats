@@ -102,17 +102,26 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 //
 #typedef d2patlst = $D2E.d2patlst
-#typedef d2explst = $D2E.d2explst
+#typedef d2patopt = $D2E.d2patopt
 #typedef l2d2plst = $D2E.l2d2plst
+//
+#typedef d2explst = $D2E.d2explst
+#typedef d2expopt = $D2E.d2expopt
 #typedef l2d2elst = $D2E.l2d2elst
 //
 (* ****** ****** *)
 //
 #typedef d3patlst = $D3E.d3patlst
-#typedef d3explst = $D3E.d3explst
+#typedef d3patopt = $D3E.d3patopt
 #typedef l3d3plst = $D3E.l3d3plst
+//
+#typedef d3explst = $D3E.d3explst
+#typedef d3expopt = $D3E.d3expopt
 #typedef l3d3elst = $D3E.l3d3elst
 //
+(* ****** ****** *)
+#typedef d2eclist = $D2E.d2eclist
+#typedef d3eclist = $D3E.d3eclist
 (* ****** ****** *)
 //
 fun
