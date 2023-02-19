@@ -136,7 +136,7 @@ optn_trans23_fnp
 //
 fun
 trans23_d2pat
-(env0: !tr23env, d2p0: d2exp): d3pat
+(env0: !tr23env, d2p0: d2pat): d3pat
 fun
 trans23_l2d2p
 (env0: !tr23env, ld2p: l2d2p): l3d3p
@@ -155,6 +155,18 @@ trans23_l2d2e
 fun
 trans23_d2ecl
 (env0: !tr23env, d3cl: d2ecl): d3ecl
+//
+(* ****** ****** *)
+//
+fun
+trans23_d2patlst
+(env0: !tr23env, d2ps: d2patlst): d3patlst
+//
+(* ****** ****** *)
+//
+fun
+trans23_d2explst
+(env0: !tr23env, d2es: d2explst): d3explst
 //
 (* ****** ****** *)
 //
