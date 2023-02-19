@@ -1316,6 +1316,10 @@ g_print<d3ecl>(dcl) =
 d3ecl_fprint(g_print$out<>(), dcl)
 //
 (* ****** ****** *)
+#impltmp
+g_print<d3parsed>(dpar) =
+d3parsed_fprint(g_print$out<>(), dpar)
+(* ****** ****** *)
 (*
 HX-2022-12-28: For debugging purpose
 *)

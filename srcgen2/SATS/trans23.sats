@@ -145,11 +145,23 @@ d3parsed_of_trans23
 (* ****** ****** *)
 //
 fun
-tr23env_make_nil
-  ( (*void*) ) : tr23env
+tr23env_make_nil((*nil*)):tr23env
 fun
-tr23env_free_top
-( env0 : tr23env ) : (d2topenv)
+tr23env_free_top(tr23env): (void)
+//
+(* ****** ****** *)
+//
+fun
+tr23env_poplet0(env0: !tr23env): void
+fun
+tr23env_pshlet0(env0: !tr23env): void
+fun
+tr23env_pshloc1(env0: !tr23env): void
+fun
+tr23env_pshloc2(env0: !tr23env): void
+//
+fun
+tr23env_locjoin(env0: !tr23env): void
 //
 (* ****** ****** *)
 //
