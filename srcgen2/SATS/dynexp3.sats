@@ -367,5 +367,61 @@ fun
 d3cstdcl_fprint
 (out: FILR, dcst: d3cstdcl): void
 (* ****** ****** *)
+(*
+//
+HX-2023-02-19:
+Note that [d3parsed] is for storing
+results obtained from template resolution.
+It is a suitable datatype for JSONIZATION.
+//
+*)
+(* ****** ****** *)
+//
+#abstbox d3parsed_tbox // ptr
+#typedef d3parsed = d3parsed_tbox
+//
+(* ****** ****** *)
+//
+fun
+d3parsed_fprint
+(out: FILR, dpar: d3parsed): void
+//
+(* ****** ****** *)
+#typedef d1topenv = $D1E.d1topenv
+#typedef d2topenv = $D2E.d2topenv
+(* ****** ****** *)
+//
+fun
+d3parsed_get_stadyn:(d3parsed)->sint
+fun
+d3parsed_get_nerror:(d3parsed)->sint
+fun
+d3parsed_get_source:(d3parsed)->lcsrc
+fun
+d3parsed_get_t1penv:(d3parsed)->d1topenv
+fun
+d3parsed_get_t2penv:(d3parsed)->d2topenv
+fun
+d3parsed_get_parsed:(d3parsed)->d3eclistopt
+//
+#symload stadyn with d3parsed_get_stadyn
+#symload nerror with d3parsed_get_nerror
+#symload source with d3parsed_get_source
+#symload t1penv with d3parsed_get_t1penv
+#symload t2penv with d3parsed_get_t2penv
+#symload parsed with d3parsed_get_parsed
+//
+fun
+d3parsed_make_args
+( stadyn:sint
+, nerror:sint
+, source:lcsrc
+, t1penv:d1topenv
+, t2penv:d2topenv
+, parsed:d3eclistopt): d3parsed//end-fun
+//
+#symload d3parsed with d3parsed_make_args
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_dynexp3.sats] *)
