@@ -81,4 +81,37 @@ map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 //
 (* ****** ****** *)
 
+#implfun
+d3parsed_of_trans23
+  (dpar) =
+let
+val stadyn =
+d2parsed_get_stadyn(dpar)
+val nerror =
+d2parsed_get_nerror(dpar)
+val source =
+d2parsed_get_source(dpar)
+val t1penv =
+d2parsed_get_t1penv(dpar)
+val t2penv =
+d2parsed_get_t2penv(dpar)
+val parsed =
+d2parsed_get_parsed(dpar)
+//
+val env0 = tr23env_make_nil()
+//
+val parsed =
+trans23_d2eclistopt(env0, parsed)
+//
+in//let
+let
+val t2penv = tr23env_free_top(env0)
+in//let
+d3parsed
+(stadyn,nerror,source,t1penv,t2penv,parsed)
+end
+end (*let*) // end of [d2parsed_trans23(dpar)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_trans23.dats] *)
