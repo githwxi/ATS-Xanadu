@@ -96,6 +96,10 @@ D2E = "./dynexp2.sats"
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
+#typedef s2qag = $D2E.s2qag
+#typedef t2qag = $D2E.t2qag
+#typedef t2iag = $D2E.t2iag
+(* ****** ****** *)
 #typedef d2var = $D2E.d2var
 #typedef d2con = $D2E.d2con
 #typedef d2cst = $D2E.d2cst
@@ -124,6 +128,10 @@ D2E = "./dynexp2.sats"
 #typedef s2varlst = list(s2var)
 (* ****** ****** *)
 #typedef s2explst = list(s2exp)
+(* ****** ****** *)
+#typedef s2qaglst = list(s2qag)
+#typedef t2qaglst = list(t2qag)
+#typedef t2iaglst = list(t2iag)
 (* ****** ****** *)
 #typedef d3patlst = list(d3pat)
 #typedef d3patopt = optn(d3pat)
@@ -299,7 +307,6 @@ d3ecl_node =
  ( d3eclist(*local-head*)
  , d3eclist(*local-body*))
 //
-(*
 |
 D3Cvaldclst of
 (token(*VAL(vlk)*),d3valdclist )
@@ -309,7 +316,6 @@ D3Cvardclst of
 |
 D3Cfundclst of
 (token(*FUN(fnk)*), t2qaglst, d3fundclist)
-*)
 //
 |
 D3Cerrck of (sint(*lvl*), d3ecl)//tread23-error
