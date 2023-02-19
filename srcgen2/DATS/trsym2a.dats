@@ -89,8 +89,8 @@ case+ xs of
 (* ****** ****** *)
 
 #implfun
-trsym2a_d2parsed(dpar) =
-let
+trsym2a_at_d2parsed
+  (dpar) = let
 //
 val
 parsed =
@@ -106,7 +106,7 @@ in//let
 let
 val d2cenv = tr2aenv_free_top(env0)
 end
-end (*let*) // end of [trsym2a_d2parsed(dpar)]
+end (*let*)//end-of-[trsym2a_at_d2parsed(dpar)]
 
 (* ****** ****** *)
 

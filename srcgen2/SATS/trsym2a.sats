@@ -54,7 +54,7 @@ This one is a continuation of [trans2a]
 (* ****** ****** *)
 //
 fun
-trsym2a_d2parsed
+trsym2a_at_d2parsed
 ( dpar : d2parsed ): (void)
 //
 (* ****** ****** *)

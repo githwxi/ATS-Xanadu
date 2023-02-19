@@ -106,13 +106,22 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
+(* ****** ****** *)
 #typedef d2ecl = $D2E.d2ecl
+(* ****** ****** *)
+#typedef s2res = $D2E.s2res
+(* ****** ****** *)
+#typedef simpl = $D2E.simpl
+#typedef dimpl = $D2E.dimpl
 (* ****** ****** *)
 #abstbox d3pat_tbox // ptr
 #typedef d3pat = d3pat_tbox
 (* ****** ****** *)
 #abstbox d3exp_tbox // ptr
 #typedef d3exp = d3exp_tbox
+(* ****** ****** *)
+#abstbox f3arg_tbox // ptr
+#typedef f3arg = f3arg_tbox
 (* ****** ****** *)
 #abstbox d3ecl_tbox // ptr
 #typedef d3ecl = d3ecl_tbox
@@ -138,6 +147,8 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 #typedef d3explst = list(d3exp)
 #typedef d3expopt = optn(d3exp)
+(* ****** ****** *)
+#typedef f3arglst = list(f3arg)
 (* ****** ****** *)
 #typedef d3eclist = list(d3ecl)
 (* ****** ****** *)
@@ -316,6 +327,13 @@ D3Cvardclst of
 |
 D3Cfundclst of
 (token(*FUN(fnk)*), t2qaglst, d3fundclist)
+//
+|
+D3Cimplmnt0 of
+( token(*impkind*)
+, s2qaglst // s2vs
+, t2qaglst // s2vs+t2is
+, dimpl, t2iaglst, f3arglst, s2res, d3exp)
 //
 |
 D3Cerrck of (sint(*lvl*), d3ecl)//tread23-error
