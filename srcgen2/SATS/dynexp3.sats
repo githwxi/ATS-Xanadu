@@ -148,6 +148,37 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 //
 datatype
+d3lab(x0:type) =
+|
+D3LAB of
+(label, x0(*elt*))
+//
+fun
+<x0:t0>
+d3lab_get_itm
+(dlab: d3lab(x0)): x0
+#symload
+itm with d3lab_get_itm
+//
+(* ****** ****** *)
+#typedef
+d2lab(x0:t0)=$D2E.d2lab(x0)
+(* ****** ****** *)
+//
+fun
+<x0:type>
+d3lab_fprint
+(out: FILR, lab: d3lab(x0)): void
+//
+(* ****** ****** *)
+#typedef l3d3p = d3lab(d3pat)
+#typedef l3d3e = d3lab(d3exp)
+(* ****** ****** *)
+#typedef l3d3plst = list(l3d3p)
+#typedef l3d3elst = list(l3d3e)
+(* ****** ****** *)
+//
+datatype
 d3pat_node =
 //
 |D3Pvar of d2var
