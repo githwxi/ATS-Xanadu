@@ -123,6 +123,27 @@ LEX = "./lexing0.sats"
 #typedef d2eclist = $D2E.d2eclist
 #typedef d3eclist = $D3E.d3eclist
 (* ****** ****** *)
+#typedef d2parsed = $D2E.d2parsed
+#typedef d3parsed = $D3E.d3parsed
+(* ****** ****** *)
+#typedef d2eclistopt = $D2E.d2eclistopt
+#typedef d3eclistopt = $D3E.d3eclistopt
+(* ****** ****** *)
+//
+fun
+d3parsed_of_trans23
+( dpar : d2parsed ): (d3parsed)
+//
+(* ****** ****** *)
+//
+fun
+tr23env_make_nil
+  ( (*void*) ) : tr23env
+fun
+tr23env_free_top
+( env0 : tr23env ) : (d2topenv)
+//
+(* ****** ****** *)
 //
 fun
 <x0:t0>
@@ -182,6 +203,12 @@ trans23_d2explst
 fun
 trans23_d2eclist
 (env0: !tr23env, dcls: d2eclist): d3eclist
+//
+(* ****** ****** *)
+//
+fun
+trans23_d2eclistopt
+(env0: !tr23env, dopt: d2eclistopt): d3eclistopt
 //
 (* ****** ****** *)
 
