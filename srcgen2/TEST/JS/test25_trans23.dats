@@ -282,7 +282,14 @@
 "./../../DATS/fperr22_decl00.dats"
 (* ****** ****** *)
 #include
+"./../../DATS/dynexp3.dats"
+#include
+"./../../DATS/dynexp3_print0.dats"
+(* ****** ****** *)
+#include
 "./../../DATS/trans23.dats"
+#include
+"./../../DATS/trans23_myenv0.dats"
 #include
 "./../../DATS/trans23_dynexp.dats"
 #include
