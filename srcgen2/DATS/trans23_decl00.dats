@@ -75,5 +75,13 @@ trans23_d2eclist
 list_trans23_fnp(env0, dcls, trans23_d2ecl))
 
 (* ****** ****** *)
+//
+#implfun
+trans23_d2eclistopt
+  (  env0,dopt  ) =
+(
+optn_trans23_fnp(env0, dopt, trans23_d2eclist))
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans23_decl00.dats] *)
