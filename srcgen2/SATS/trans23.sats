@@ -73,6 +73,11 @@ LEX = "./lexing0.sats"
 #typedef token = $LEX.token
 //
 (* ****** ****** *)
+(*
+#staload S1E = "./staexp1.sats"
+*)
+#staload D1E = "./dynexp1.sats"
+(* ****** ****** *)
 #staload S2E = "./staexp2.sats"
 #staload D2E = "./dynexp2.sats"
 (* ****** ****** *)
@@ -122,6 +127,9 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef d2eclist = $D2E.d2eclist
 #typedef d3eclist = $D3E.d3eclist
+(* ****** ****** *)
+#typedef d1topenv = $D1E.d1topenv
+#typedef d2topenv = $D2E.d2topenv
 (* ****** ****** *)
 #typedef d2parsed = $D2E.d2parsed
 #typedef d3parsed = $D3E.d3parsed
