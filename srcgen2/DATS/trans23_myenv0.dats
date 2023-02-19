@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2022 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2023 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Mon 19 Dec 2022 05:53:02 PM EST
+Sun 19 Feb 2023 12:37:27 PM EST
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -57,8 +57,9 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
+#staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
-#staload "./../SATS/trans2a.sats"
+#staload "./../SATS/trans23.sats"
 (* ****** ****** *)
 
 local
@@ -69,32 +70,32 @@ ms2ct2p_tbox = topmap(s2typ)
 *)
 //
 datavwtp
-tr2aenv =
-TR2AENV of (stkmap(s2typ))
-#absimpl tr2aenv_vtbx = tr2aenv
+tr23env =
+TR23ENV of (stkmap(s2typ))
+#absimpl tr23env_vtbx = tr23env
 //
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
 //
 #implfun
-tr2aenv_make_nil
+tr23env_make_nil
   ( (*void*) ) = let
 //
 val
 stkmap =
-stkmap_make_nil() in TR2AENV(stkmap)
+stkmap_make_nil() in TR23ENV(stkmap)
 //
-end (*let*) // end of [tr2aenv_make_nil()]
+end (*let*) // end of [tr23env_make_nil()]
 //
 (* ****** ****** *)
 //
 #implfun
-tr2aenv_free_top
+tr23env_free_top
   (  env0  ) =
 (
 case+ env0 of
-~TR2AENV(stkmap) =>
+~TR23ENV(stkmap) =>
 let
 //
 var
@@ -105,125 +106,12 @@ stkmap_poptop0(stkmap)
 //
 val (  ) =
 stkmap_free_nil(stkmap) in () end//let
-) (*case+*)//end-of-(tr2aenv_free_top(env0))
+) (*case+*)//end-of-(tr23env_free_top(env0))
 //
 (* ****** ****** *)
 //
-#implfun
-tr2aenv_poplet0
-(     env0     ) = let
-//
-val+
-@TR2AENV(!stkmap) = env0
-//
-in//let
-//
-let
-val nerr =
-stkmap_poplet0(stkmap) in $fold(env0)
-end (*let*)
-//
-end (*let*)//end-of-(tr2aenv_poplet0(env0))
-//
-(* ****** ****** *)
-//
-#implfun
-tr2aenv_pshlet0
-(     env0     ) = let
-//
-val+
-@TR2AENV(!stkmap) = env0
-//
-in//let
-//
-stkmap_pshlet0(stkmap); $fold(env0)
-//
-end (*let*)//end-of-(tr2aenv_pshlet0(env0))
-//
-(* ****** ****** *)
-//
-#implfun
-tr2aenv_pshloc1
-(     env0     ) = let
-//
-val+
-@TR2AENV(!stkmap) = env0
-//
-in//let
-//
-let
-val nerr =
-stkmap_pshloc1(stkmap) in $fold(env0)
-end (*let*)
-//
-end (*let*)//end-of-(tr2aenv_pshloc1(env0))
-//
-#implfun
-tr2aenv_pshloc2
-(     env0     ) = let
-//
-val+
-@TR2AENV(!stkmap) = env0
-//
-in//let
-//
-let
-val nerr =
-stkmap_pshloc2(stkmap) in $fold(env0)
-end (*let*)
-//
-end (*let*)//end-of-(tr2aenv_pshloc2(env0))
-//
-(* ****** ****** *)
-//
-#implfun
-tr2aenv_locjoin
-(     env0     ) = let
-//
-val+
-@TR2AENV(!stkmap) = env0
-//
-in//let
-//
-$fold(env0) where
-{
-val
-(nerr, kxs) =
-stkmap_poploc0(stkmap)
-val
-( (*nil*) ) =
-stkmap_insert_kxs(stkmap, kxs) }
-//
-end (*let*)//end-of-(tr2aenv_locjoin(env0))
+end (*local*) // end of [ local(tr23env) ]
 //
 (* ****** ****** *)
 
-#implfun
-tr2aenv_search_opt
-  (env0, k0) = let
-//
-val+
-TR2AENV(stkmap) = env0 in
-stkmap_search_opt(stkmap, k0) end
-//
-(*let*)//end-of-[tr2aenv_search_opt(env0,k0)]
-
-(* ****** ****** *)
-//
-#implfun
-tr2aenv_insert_any
-  (tenv, k0, x0) = let
-//
-val+
-@TR2AENV(!stkmap) = tenv in
-stkmap_insert_any(stkmap, k0, x0) end
-//
-(*let*)//end-of(tr2aenv_insert_any(tenv,k0,x0))
-//
-(* ****** ****** *)
-//
-end (*local*) // end of [ local(tr2aenv) ]
-//
-(* ****** ****** *)
-
-(* end of [ATS3/XATSOPT_srcgen2_trans2a_myenv0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_trans23_myenv0.dats] *)
