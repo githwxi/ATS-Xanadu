@@ -67,6 +67,41 @@ _(*TRANS23*) = "./trans23.dats"
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with d2ecl_get_lctn
+#symload node with d2ecl_get_node
+(* ****** ****** *)
+//
+#implfun
+trans23_d2ecl
+( env0, d2cl ) = let
+//
+// (*
+val
+loc0 = d2cl.lctn()
+val () =
+prerrln
+("trans23_d2ecl: d2cl = ", d2cl)
+// *)
+//
+in//let
+//
+case+
+d2cl.node() of
+//
+| _(*otherwise*) =>
+let
+  val loc0 = d2cl.lctn()
+in//let
+  d3ecl_make_node(loc0, D3Cnone1( d2cl ))
+end (*let*) // end of [_(*otherwise*)] // temp
+//
+end where {
+//
+(* ****** ****** *)
+//
+} (*where*) // end of [trans23_d2ecl(env0,d2cl)]
+
+(* ****** ****** *)
 
 #implfun
 trans23_d2eclist

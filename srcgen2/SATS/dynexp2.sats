@@ -885,10 +885,8 @@ D2Eg1mac of
 |
 D2Et2pck of (d2exp, s2typ)//HX: casting
 //
-|
-D2Enone0 of ((*0*))
-|
-D2Enone1 of (d1exp) | D2Enone2 of (d2exp)
+|D2Enone0 of ((*0*))
+|D2Enone1 of (d1exp) | D2Enone2 of (d2exp)
 //
 |
 D2Eerrck of (sint(*lvl*), d2exp)//HX:tread12-error

@@ -73,4 +73,96 @@ ATS_PACKNAME
 #symload lctn with d2ecl_get_lctn
 (* ****** ****** *)
 
+local
+//
+datatype
+d3pat =
+D3PAT of
+( loctn
+, s2typ, d3pat_node)
+datavwtp
+d3pat_vt =
+D3PAT_vt of
+( loctn
+, s2typ, d3pat_node)
+//
+#absimpl d3pat_tbox = d3pat
+//
+in (* in-of-local *)
+//
+#implfun
+d3pat_make_node
+(   loc,nod   ) =
+let
+val t2p =
+s2typ_none0() in
+D3PAT(loc, t2p, nod) end
+//
+#implfun
+d3pat_get_lctn(d3p) =
+let
+val+
+D3PAT(loc,t2p,nod) = d3p in loc
+end
+#implfun
+d3pat_get_node(d3p) =
+let
+val+
+D3PAT(loc,t2p,nod) = d3p in nod
+end
+#implfun
+d3pat_get_styp(d3p) =
+let
+val+
+D3PAT(loc,t2p,nod) = d3p in t2p
+end
+//
+#implfun
+d3pat_set_styp
+( d3p0, t2p0 ) =
+let
+//
+val
+d3p0 =
+$UN.castlin10{d3pat_vt}(d3p0)
+val+
+@D3PAT_vt
+(loc0,
+!styp,node) = d3p0 in styp := t2p0
+end (*let*) // end of [d3pat_set_styp]
+//
+endloc (*local*) // end of [local(d3pat)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d3ecl =
+D3ECL of
+(loctn, d3ecl_node)
+//
+#absimpl d3ecl_tbox = d3ecl
+//
+in (* in-of-local *)
+//
+#implfun
+d3ecl_make_node
+(   loc,nod   ) = D3ECL(loc,nod)
+//
+#implfun
+d3ecl_get_lctn(dcl) =
+let
+  val+D3ECL(loc,nod) = dcl in loc
+end
+#implfun
+d3ecl_get_node(dcl) =
+let
+  val+D3ECL(loc,nod) = dcl in nod
+end
+//
+endloc (*local*) // end of [local(d3ecl)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_dynexp3.dats] *)

@@ -250,6 +250,14 @@ d3pat_set_styp
 //
 (* ****** ****** *)
 //
+fun
+d3pat_make_node
+(loc:loc_t,nod:d3pat_node): d3pat
+//
+#symload d3pat with d3pat_make_node
+//
+(* ****** ****** *)
+//
 datatype
 d3exp_node =
 //
@@ -274,6 +282,9 @@ d3exp_node =
 //
 |D3Esapp of (d3exp, s2explst)
 |D3Etapp of (d3exp, s2explst)
+//
+|D3Cnone0 of ((*0*))
+|D3Cnone1 of (d2exp) | D3Enone2 of (d3exp)
 //
 |
 D3Eerrck of (sint(*lvl*),d3exp)//tread23-error
@@ -301,6 +312,14 @@ d3exp_set_styp
 //
 #symload styp with d3exp_get_styp
 #symload styp with d3exp_set_styp
+//
+(* ****** ****** *)
+//
+fun
+d3exp_make_node
+(loc:loc_t,nod:d3exp_node): d3exp
+//
+#symload d3exp with d3exp_make_node
 //
 (* ****** ****** *)
 //
@@ -336,6 +355,11 @@ D3Cimplmnt0 of
 , dimpl, t2iaglst, f3arglst, s2res, d3exp)
 //
 |
+D3Cnone0 of ((*nil*))
+|
+D3Cnone1 of ( d2ecl ) | D3Cnone2 of ( d3ecl )
+//
+|
 D3Cerrck of (sint(*lvl*), d3ecl)//tread23-error
 //
 //HX-2023-??-??: end-of-[datatype( d3ecl_node )]
@@ -349,8 +373,14 @@ d3ecl_get_lctn(d3ecl): loc_t
 fun
 d3ecl_get_node(d3ecl): d3ecl_node
 (* ****** ****** *)
+fun
+d3ecl_make_node
+(loc:loc_t,nod:d3ecl_node): d3ecl
+(* ****** ****** *)
 #symload lctn with d3ecl_get_lctn
 #symload node with d3ecl_get_node
+(* ****** ****** *)
+#symload d3ecl with d3ecl_make_node
 (* ****** ****** *)
 fun
 d3valdcl_fprint
