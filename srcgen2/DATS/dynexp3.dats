@@ -227,4 +227,143 @@ endloc (*local*) // end of [local(d3ecl)]
 
 (* ****** ****** *)
 
+local
+//
+datatype
+d3parsed =
+D3PARSED of
+(
+sint  // stadyn
+,
+sint  // nerror
+,
+lcsrc // source
+,
+d1topenv // t1penv
+,
+d2topenv // t2penv
+,
+d3eclistopt)//program
+//
+#absimpl
+d3parsed_tbox = d3parsed
+//
+in//local
+
+(* ****** ****** *)
+
+#implfun
+d3parsed_get_stadyn
+  (dpar) =
+(
+  stadyn ) where
+{
+val+
+D3PARSED
+( stadyn
+, nerror, source
+, t1penv, t2penv, parsed) = dpar
+} (*where*)//end-of-[d3parsed_get_stadyn]
+
+(* ****** ****** *)
+
+#implfun
+d3parsed_get_nerror
+  (dpar) =
+(
+  nerror ) where
+{
+val+
+D3PARSED
+( stadyn
+, nerror, source
+, t1penv, t2penv, parsed) = dpar
+} (*where*)//end-of-[d3parsed_get_nerror]
+
+(* ****** ****** *)
+
+#implfun
+d3parsed_get_source
+  (dpar) =
+(
+  source ) where
+{
+val+
+D3PARSED
+( stadyn
+, nerror, source
+, t1penv, t2penv, parsed) = dpar
+} (*where*)//end-of-[d3parsed_get_source]
+
+(* ****** ****** *)
+
+#implfun
+d3parsed_get_t1penv
+  (dpar) =
+(
+  t1penv ) where
+{
+val+
+D3PARSED
+( stadyn
+, nerror, source
+, t1penv, t2penv, parsed) = dpar
+} (*where*)//end-of-[d3parsed_get_topenv]
+
+(* ****** ****** *)
+
+#implfun
+d3parsed_get_t2penv
+  (dpar) =
+(
+  t2penv ) where
+{
+val+
+D3PARSED
+( stadyn
+, nerror, source
+, t1penv, t2penv, parsed) = dpar
+} (*where*)//end-of-[d3parsed_get_topenv]
+
+(* ****** ****** *)
+
+#implfun
+d3parsed_get_parsed
+  (dpar) =
+(
+  parsed ) where
+{
+val+
+D3PARSED
+( stadyn
+, nerror, source
+, t1penv, t2penv, parsed) = dpar
+} (*where*)//end-of-[d3parsed_get_parsed]
+
+(* ****** ****** *)
+//
+#implfun
+d3parsed_make_args
+(stadyn
+,nerror, source
+,t1penv, t2penv, parsed) =
+(
+D3PARSED
+(stadyn,nerror
+,source,t1penv,t2penv,parsed)
+) where
+{
+(*
+val () =
+prerrln
+("d3parsed_make_args:nerror=",nerror)
+*)
+} (*where*) // end-of-[d3parsed_make_args]
+//
+(* ****** ****** *)
+
+endloc (*local*) // end of [ local(d3parsed) ]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_dynexp3.dats] *)
