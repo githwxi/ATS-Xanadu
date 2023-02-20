@@ -137,6 +137,7 @@ D2E = "./dynexp2.sats"
 #typedef s2varlst = list(s2var)
 (* ****** ****** *)
 #typedef s2explst = list(s2exp)
+#typedef s2typlst = list(s2typ)
 (* ****** ****** *)
 #typedef s2qaglst = list(s2qag)
 #typedef t2qaglst = list(t2qag)

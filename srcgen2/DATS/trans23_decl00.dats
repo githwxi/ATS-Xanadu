@@ -88,6 +88,9 @@ in//let
 case+
 d2cl.node() of
 //
+|
+D2Cfundclst _ => f0_fundclst(env0, d2cl)
+//
 | _(*otherwise*) =>
 let
   val loc0 = d2cl.lctn()
@@ -96,6 +99,34 @@ in//let
 end (*let*) // end of [_(*otherwise*)] // temp
 //
 end where {
+//
+(* ****** ****** *)
+//
+fun
+f0_fundclst
+( env0:
+! tr23env
+, d2cl: d2ecl): d3ecl =
+let
+//
+val
+loc0 = d2cl.lctn()
+val-
+D2Cfundclst
+(tknd
+,tqas, d2fs) = d2cl.node()
+//
+val () =
+prerrln
+("f0_fundclst: d2cl = ", d2cl)
+//
+val
+d3fs =
+trans23_d2fundclist(env0, d2fs)
+//
+in//let
+d3ecl(loc0, D3Cfundclst(tknd, tqas, d3fs))
+end (*let*) // end of [f0_fundclst(env0,d2cl)]
 //
 (* ****** ****** *)
 //
