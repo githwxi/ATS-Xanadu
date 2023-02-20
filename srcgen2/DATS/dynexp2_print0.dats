@@ -418,8 +418,7 @@ print
 |
 D2Esapp
 (d2e1, s2es) =>
-print
-("D2Esapp(",d2e1,";",s2es,")")
+print("D2Esapp(",d2e1,";",s2es,")")
 |
 D2Etapp
 (d2e1, s2es) =>

@@ -104,6 +104,11 @@ D3Psapp
 (d3f0, s2vs) =>
 print
 ("D3Psapp(",d3f0,";",s2vs,")")
+|
+D3Psapq
+(d3f0, s2vs) =>
+print
+("D3Psapq(",d3f0,";",s2vs,")")
 //
 |
 D3Pdapp
@@ -167,12 +172,20 @@ print("D3Ecst(", d2c, ")")
 |
 D3Esapp
 (d3e1, s2es) =>
-print
-("D3Esapp(",d3e1,";",s2es,")")
+print("D3Esapp(",d3e1,";",s2es,")")
+|
+D3Esapq
+(d3e1, t2ps) =>
+print("D3Esapq(",d3e1,";",t2ps,")")
+//
 |
 D3Etapp
 (d3e1, s2es) =>
 print("D3Etapp(",d3e1,";",s2es,")")
+|
+D3Etapq
+(d3e1, t2ps) =>
+print("D3Etapq(",d3e1,";",t2ps,")")
 //
 (*
 |
