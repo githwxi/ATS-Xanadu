@@ -1316,9 +1316,26 @@ g_print<d3ecl>(dcl) =
 d3ecl_fprint(g_print$out<>(), dcl)
 //
 (* ****** ****** *)
+//
+#impltmp
+g_print<d3valdcl>(dval) =
+d3valdcl_fprint(g_print$out<>(), dval)
+#impltmp
+g_print<d3vardcl>(dvar) =
+d3vardcl_fprint(g_print$out<>(), dvar)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<d3fundcl>(dfun) =
+d3fundcl_fprint(g_print$out<>(), dfun)
+//
+(* ****** ****** *)
+//
 #impltmp
 g_print<d3parsed>(dpar) =
 d3parsed_fprint(g_print$out<>(), dpar)
+//
 (* ****** ****** *)
 (*
 HX-2022-12-28: For debugging purpose

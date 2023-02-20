@@ -165,6 +165,23 @@ end (*let*) // end of [f0_fundclst(env0,d2cl)]
 (* ****** ****** *)
 
 #implfun
+trans23_teqd2exp
+  (env0, tdxp) =
+(
+case+ tdxp of
+|
+TEQD2EXPnone() =>
+TEQD3EXPnone((*void*))
+|
+TEQD2EXPsome(teq1, d2e2) =>
+TEQD3EXPsome(teq1, d3e2) where
+{ val
+  d3e2 = trans23_d2exp(env0, d2e2) }
+) (*case+*)//end-of(trans23_teqd2exp(...))
+
+(* ****** ****** *)
+
+#implfun
 trans23_d2valdcl
   (env0, dval) = let
 //

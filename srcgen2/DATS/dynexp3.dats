@@ -259,6 +259,69 @@ endloc (*local*) // end of [local(d3ecl)]
 local
 //
 datatype
+d3valdcl =
+D3VALDCL of
+( loc_t
+, d3pat
+, teqd3exp, wths2exp)
+//
+#absimpl
+d3valdcl_tbox = d3valdcl
+//
+in//local
+
+#implfun
+d3valdcl_get_lctn
+  (  dval  ) = let
+val+
+D3VALDCL
+( lctn
+, dpat
+, tdxp, wsxp) = dval in lctn end
+
+#implfun
+d3valdcl_get_dpat
+  (  dval  ) = let
+val+
+D3VALDCL
+( lctn
+, dpat
+, tdxp, wsxp) = dval in dpat end
+
+#implfun
+d3valdcl_get_tdxp
+  (  dval  ) = let
+val+
+D3VALDCL
+( lctn
+, dpat
+, tdxp, wsxp) = dval in tdxp end
+
+#implfun
+d3valdcl_get_wsxp
+  (  dval  ) = let
+val+
+D3VALDCL
+( lctn
+, dpat
+, tdxp, wsxp) = dval in wsxp end
+
+(* ****** ****** *)
+
+#implfun
+d3valdcl_make_args
+(lctn, dpat, tdxp, wsxp) =
+(
+  D3VALDCL(lctn, dpat, tdxp, wsxp)
+)
+
+endloc (*local*) // end of [local(d3valdcl)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 d3parsed =
 D3PARSED of
 (

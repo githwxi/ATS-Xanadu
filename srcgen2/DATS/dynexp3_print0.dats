@@ -232,6 +232,21 @@ print("D3Cextern(",tknd,";",dcl1,")")
 D3Clocal0(head, body) =>
 print( "D3Clocal(",head,";",body,")" )
 //
+|
+D3Cvaldclst
+(  tknd, d3vs  ) =>
+print("D3Cvaldclst(",tknd,";",d3vs,")")
+|
+D3Cvardclst
+(  tknd, d3vs  ) =>
+print("D3Cvardclst(",tknd,";",d3vs,")")
+//
+|
+D3Cfundclst
+(tknd,tqas,d3fs) =>
+print("D3Cfundclst(",tknd,";",tqas,";",d3fs,")")
+//
+//
 |D3Cnone0() => print( "D3Cnone0(", ")" )
 |D3Cnone1(d2cl) => print( "D3Cnone1(",d2cl,")" )
 |D3Cnone2(d3cl) => print( "D3Cnone2(",d3cl,")" )
