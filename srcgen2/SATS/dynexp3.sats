@@ -214,6 +214,8 @@ d3pat_node =
 //
 |D3Psapp of
  (d3pat, s2varlst(*sarg*))
+|D3Psapq of
+ (d3pat, s2varlst(*sarg*))
 //
 |
 D3Pdapp of
@@ -284,7 +286,10 @@ d3exp_node =
 |D3Ecst of (d2cst)
 //
 |D3Esapp of (d3exp, s2explst)
+|D3Esapq of (d3exp, s2typlst)
+//
 |D3Etapp of (d3exp, s2explst)
+|D3Etapq of (d3exp, s2typlst)
 //
 |D3Enone0 of ((*0*))
 |D3Enone1 of (d2exp) | D3Enone2 of (d3exp)

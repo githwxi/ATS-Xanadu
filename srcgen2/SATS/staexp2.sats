@@ -489,7 +489,7 @@ s2exp_node =
 //
 (*
 |
-S2Extv of (s2xtv) // ext-variable
+S2Extv of (x2s2e) // ext-variable
 *)
 //
 |
