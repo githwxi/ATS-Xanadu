@@ -112,6 +112,28 @@ list_trans23_fnp(env0, dcls, trans23_d2ecl))
 (* ****** ****** *)
 //
 #implfun
+trans23_d2valdclist
+  (env0, d2vs) =
+(
+list_trans23_fnp(env0, d2vs, trans23_d2valdcl))
+//
+#implfun
+trans23_d2vardclist
+  (env0, d2vs) =
+(
+list_trans23_fnp(env0, d2vs, trans23_d2vardcl))
+//
+(* ****** ****** *)
+//
+#implfun
+trans23_d2fundclist
+  (env0, d2fs) =
+(
+list_trans23_fnp(env0, d2fs, trans23_d2fundcl))
+//
+(* ****** ****** *)
+//
+#implfun
 trans23_d2eclistopt
   (  env0,dopt  ) =
 (

@@ -128,6 +128,14 @@ LEX = "./lexing0.sats"
 #typedef d2eclist = $D2E.d2eclist
 #typedef d3eclist = $D3E.d3eclist
 (* ****** ****** *)
+#typedef d2valdcl = $D2E.d2valdcl
+#typedef d2vardcl = $D2E.d2vardcl
+#typedef d2fundcl = $D2E.d2fundcl
+(* ****** ****** *)
+#typedef d3valdcl = $D3E.d3valdcl
+#typedef d3vardcl = $D3E.d3vardcl
+#typedef d3fundcl = $D3E.d3fundcl
+(* ****** ****** *)
 #typedef d1topenv = $D1E.d1topenv
 #typedef d2topenv = $D2E.d2topenv
 (* ****** ****** *)
@@ -236,6 +244,24 @@ trans23_d2explst
 fun
 trans23_d2eclist
 (env0: !tr23env, dcls: d2eclist): d3eclist
+//
+(* ****** ****** *)
+//
+fun
+trans23_d2valdcl
+( env0: 
+! tr23env, dval: d2valdcl): d3valdcl
+fun
+trans23_d2vardcl
+( env0: 
+! tr23env, dvar: d2vardcl): d3vardcl
+//
+(* ****** ****** *)
+//
+fun
+trans23_d2fundcl
+( env0: 
+! tr23env, dfun: d2fundcl): d3fundcl
 //
 (* ****** ****** *)
 //
