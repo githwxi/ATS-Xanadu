@@ -131,17 +131,21 @@ D2E = "./dynexp2.sats"
 #abstbox d3vardcl_tbox // ptr
 #abstbox d3fundcl_tbox // ptr
 #abstbox i3mpldcl_tbox // ptr
-#abstbox d3cstdcl_tbox // ptr
 //
 (* ****** ****** *)
 #typedef s2varlst = list(s2var)
 (* ****** ****** *)
 #typedef s2explst = list(s2exp)
+#typedef s2expopt = optn(s2exp)
+(* ****** ****** *)
 #typedef s2typlst = list(s2typ)
+#typedef s2typopt = optn(s2typ)
 (* ****** ****** *)
 #typedef s2qaglst = list(s2qag)
 #typedef t2qaglst = list(t2qag)
 #typedef t2iaglst = list(t2iag)
+(* ****** ****** *)
+#typedef d2varopt = optn(d2var)
 (* ****** ****** *)
 #typedef d3patlst = list(d3pat)
 #typedef d3patopt = optn(d3pat)
@@ -153,17 +157,17 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 #typedef d3eclist = list(d3ecl)
 (* ****** ****** *)
+#typedef wths2exp = $D2E.wths2exp
+(* ****** ****** *)
 #typedef d3valdcl = d3valdcl_tbox
 #typedef d3vardcl = d3vardcl_tbox
 #typedef d3fundcl = d3fundcl_tbox
 #typedef i3mpldcl = i3mpldcl_tbox
-#typedef d3cstdcl = d3cstdcl_tbox
 (* ****** ****** *)
 #typedef d3valdclist = list(d3valdcl)
 #typedef d3vardclist = list(d3vardcl)
 #typedef d3fundclist = list(d3fundcl)
 #typedef i3mpldclist = list(i3mpldcl)
-#typedef d3cstdclist = list(d3cstdcl)
 (* ****** ****** *)
 #typedef d3explstopt = optn(d3explst)
 #typedef d3eclistopt = optn(d3eclist)
@@ -333,6 +337,15 @@ d3exp_make_node
 (* ****** ****** *)
 //
 datatype
+teqd3exp =
+|
+TEQD3EXPnone of ((*void*))
+|
+TEQD3EXPsome of (token(*EQ0*), d3exp)
+//
+(* ****** ****** *)
+//
+datatype
 d3ecl_node =
 //
 |D3Cd2ecl of (d2ecl)
@@ -403,8 +416,83 @@ d3fundcl_fprint
 (out: FILR, dfun: d3fundcl): void
 (* ****** ****** *)
 fun
-d3cstdcl_fprint
-(out: FILR, dcst: d3cstdcl): void
+d3valdcl_get_lctn:(d3valdcl)->loc_t
+fun
+d3vardcl_get_lctn:(d3vardcl)->loc_t
+fun
+d3fundcl_get_lctn:(d3fundcl)->loc_t
+(* ****** ****** *)
+#symload lctn with d3valdcl_get_lctn
+#symload lctn with d3vardcl_get_lctn
+#symload lctn with d3fundcl_get_lctn
+(* ****** ****** *)
+fun
+d3valdcl_get_dpat:(d3valdcl)->d3pat
+fun
+d3valdcl_get_tdxp:(d3valdcl)->teqd3exp
+fun
+d3valdcl_get_wsxp:(d3valdcl)->wths2exp
+(* ****** ****** *)
+#symload dpat with d3valdcl_get_dpat
+#symload tdxp with d3valdcl_get_tdxp(*opt*)
+#symload wsxp with d3valdcl_get_wsxp(*opt*)
+(* ****** ****** *)
+fun
+d3vardcl_get_dpid:(d3vardcl)->d2var
+fun
+d3vardcl_get_vpid:(d3vardcl)->d2varopt
+fun
+d3vardcl_get_sres:(d3vardcl)->s2expopt
+fun
+d3vardcl_get_dini:(d3vardcl)->teqd3exp
+(* ****** ****** *)
+#symload dpid with d3vardcl_get_dpid
+#symload vpid with d3vardcl_get_vpid(*opt*)
+#symload sres with d3vardcl_get_sres(*opt*)
+#symload dini with d3vardcl_get_dini(*opt*)
+(* ****** ****** *)
+fun
+d3fundcl_get_dpid:(d3fundcl)->d2var
+fun
+d3fundcl_get_farg:(d3fundcl)->f3arglst
+fun
+d3fundcl_get_sres:(d3fundcl)->s2res
+fun
+d3fundcl_get_tdxp:(d3fundcl)->teqd3exp
+fun
+d3fundcl_get_wsxp:(d3fundcl)->wths2exp
+(* ****** ****** *)
+#symload dpid with d3fundcl_get_dpid
+#symload farg with d3fundcl_get_farg(*lst*)
+#symload sres with d3fundcl_get_sres(*opt*)
+#symload tdxp with d3fundcl_get_tdxp(*opt*)
+#symload wsxp with d3fundcl_get_wsxp(*opt*)
+(* ****** ****** *)
+//
+fun
+d3valdcl_make_args
+( lctn:loc_t
+, dpat:d3pat
+, tdxp:teqd3exp, wsxp:wths2exp):d3valdcl
+fun
+d3vardcl_make_args
+( lctn:loc_t
+, dpid:d2var
+, vpid:d2varopt
+, sres:s2expopt, dini:teqd3exp):d3vardcl
+//
+fun
+d3fundcl_make_args
+( lctn:loc_t
+, dpid:d2var
+, farg:f3arglst
+, sres:s2res
+, tdxp:teqd3exp, wsxp:wths2exp):d3fundcl
+//
+#symload d3valdcl with d3valdcl_make_args
+#symload d3vardcl with d3vardcl_make_args
+#symload d3fundcl with d3fundcl_make_args
+//
 (* ****** ****** *)
 (*
 //

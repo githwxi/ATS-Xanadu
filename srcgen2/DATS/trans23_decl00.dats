@@ -89,6 +89,9 @@ case+
 d2cl.node() of
 //
 |
+D2Cvaldclst _ => f0_valdclst(env0, d2cl)
+//
+|
 D2Cfundclst _ => f0_fundclst(env0, d2cl)
 //
 | _(*otherwise*) =>
@@ -99,6 +102,33 @@ in//let
 end (*let*) // end of [_(*otherwise*)] // temp
 //
 end where {
+//
+(* ****** ****** *)
+//
+fun
+f0_valdclst
+( env0:
+! tr23env
+, d2cl: d2ecl): d3ecl =
+let
+//
+val
+loc0 = d2cl.lctn()
+val-
+D2Cvaldclst
+(tknd, d2vs) = d2cl.node()
+//
+val () =
+prerrln
+("f0_valdclst: d2cl = ", d2cl)
+//
+val
+d3vs =
+trans23_d2valdclist(env0, d2vs)
+//
+in//let
+  d3ecl(loc0, D3Cvaldclst(tknd, d3vs))
+end (*let*) // end of [f0_valdclst(env0,d2cl)]
 //
 (* ****** ****** *)
 //
@@ -131,6 +161,31 @@ end (*let*) // end of [f0_fundclst(env0,d2cl)]
 (* ****** ****** *)
 //
 } (*where*) // end of [trans23_d2ecl(env0,d2cl)]
+
+(* ****** ****** *)
+
+#implfun
+trans23_d2valdcl
+  (env0, dval) = let
+//
+val loc0 =
+d2valdcl_get_lctn(dval)
+val dpat =
+d2valdcl_get_dpat(dval)
+val tdxp =
+d2valdcl_get_tdxp(dval)
+val wsxp =
+d2valdcl_get_wsxp(dval)
+//
+val dpat =
+trans23_d2pat(env0, dpat)
+val tdxp =
+trans23_teqd2exp(env0, tdxp)
+//
+in//let
+d3valdcl_make_args(loc0,dpat,tdxp,wsxp)
+end//let
+(*let*)//end-of-[trans23_d2valdcl(env0,dval)]
 
 (* ****** ****** *)
 
