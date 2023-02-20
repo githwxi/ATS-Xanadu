@@ -169,6 +169,7 @@ LEX = "./lexing0.sats"
 #typedef d2valdclist = $D2E.d2valdclist
 #typedef d2vardclist = $D2E.d2vardclist
 #typedef d2fundclist = $D2E.d2fundclist
+(* ****** ****** *)
 #typedef d2cstdclist = $D2E.d2cstdclist
 (* ****** ****** *)
 #typedef d2explstopt = $D2E.d2explstopt
@@ -497,6 +498,8 @@ fun
 trans2a_d2fundclist
 ( env0:
 ! tr2aenv, d2fs: d2fundclist): d2fundclist
+//
+(* ****** ****** *)
 //
 fun
 trans2a_d2cstdclist

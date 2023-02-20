@@ -134,6 +134,19 @@ LEX = "./lexing0.sats"
 #typedef d2parsed = $D2E.d2parsed
 #typedef d3parsed = $D3E.d3parsed
 (* ****** ****** *)
+#typedef d2valdclist = $D2E.d2valdclist
+#typedef d2vardclist = $D2E.d2vardclist
+#typedef d2fundclist = $D2E.d2fundclist
+(* ****** ****** *)
+#typedef d3valdclist = $D3E.d3valdclist
+#typedef d3vardclist = $D3E.d3vardclist
+#typedef d3fundclist = $D3E.d3fundclist
+(* ****** ****** *)
+(*
+#typedef d2cstdclist = $D2E.d2cstdclist
+#typedef d3cstdclist = $D3E.d3cstdclist
+*)
+(* ****** ****** *)
 #typedef d2eclistopt = $D2E.d2eclistopt
 #typedef d3eclistopt = $D3E.d3eclistopt
 (* ****** ****** *)
@@ -223,6 +236,31 @@ trans23_d2explst
 fun
 trans23_d2eclist
 (env0: !tr23env, dcls: d2eclist): d3eclist
+//
+(* ****** ****** *)
+//
+fun
+trans23_d2valdclist
+( env0:
+! tr23env, d2vs: d2valdclist): d3valdclist
+fun
+trans23_d2vardclist
+( env0:
+! tr23env, d2vs: d2vardclist): d3vardclist
+//
+fun
+trans23_d2fundclist
+( env0:
+! tr23env, d2fs: d2fundclist): d3fundclist
+//
+(* ****** ****** *)
+//
+(*
+fun
+trans23_d2cstdclist
+( env0:
+! tr23env, d2cs: d2cstdclist): d3cstdclist
+*)
 //
 (* ****** ****** *)
 //
