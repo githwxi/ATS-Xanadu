@@ -67,12 +67,68 @@ _(*TRANS23*) = "./trans23.dats"
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with d2pat_get_lctn
+#symload node with d2pat_get_node
+(* ****** ****** *)
+#symload lctn with d2exp_get_lctn
+#symload node with d2exp_get_node
+(* ****** ****** *)
+//
+#implfun
+trans23_d2pat
+( env0, d2p0 ) =
+let
+//
+val () =
+prerrln
+("trans23_d2pat: d2p0 = ", d2p0)
+//
+in//let
+//
+case+
+d2p0.node() of
+//
+| _(*otherwise*) => d3pat_none1(d2p0)
+//
+endlet where
+{
+//
+(* ****** ****** *)
+//
+} (*where*)//end-of-[trans23_d2pat(env0,d2p0)]
+
+(* ****** ****** *)
 
 #implfun
 trans23_d2patlst
   (env0, d2ps) =
 (
 list_trans23_fnp(env0, d2ps, trans23_d2pat))
+
+(* ****** ****** *)
+//
+#implfun
+trans23_d2exp
+( env0, d2e0 ) =
+let
+//
+val () =
+prerrln
+("trans23_d2exp: d2e0 = ", d2e0)
+//
+in//let
+//
+case+
+d2e0.node() of
+//
+| _(*otherwise*) => d3exp_none1(d2e0)
+//
+endlet where
+{
+//
+(* ****** ****** *)
+//
+} (*where*)//end-of-[trans23_d2exp(env0,d2e0)]
 
 (* ****** ****** *)
 

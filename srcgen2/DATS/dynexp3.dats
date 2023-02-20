@@ -72,6 +72,35 @@ ATS_PACKNAME
 #symload lctn with d2exp_get_lctn
 #symload lctn with d2ecl_get_lctn
 (* ****** ****** *)
+//
+#implfun
+d3pat_none0
+(  loc0  ) =
+d3pat_make_node
+(loc0,D3Pnone0((*void*)))
+#implfun
+d3pat_none1
+(  dpat  ) =
+d3pat_make_node
+(
+dpat.lctn(),D3Pnone1(dpat))
+//
+(* ****** ****** *)
+//
+#implfun
+d3exp_none0
+(  loc0  ) =
+d3exp_make_node
+(loc0,D3Enone0((*void*)))
+#implfun
+d3exp_none1
+(  dexp  ) =
+d3exp_make_node
+(
+dexp.lctn(),D3Enone1(dexp)
+)
+//
+(* ****** ****** *)
 
 local
 //

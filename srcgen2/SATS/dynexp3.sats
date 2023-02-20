@@ -259,6 +259,11 @@ d3pat_set_styp
 #symload styp with d3pat_set_styp
 //
 (* ****** ****** *)
+fun
+d3pat_none0(loc0:loc_t): d3pat
+fun
+d3pat_none1(d2p0:d2pat): d3pat
+(* ****** ****** *)
 //
 fun
 d3pat_make_node
@@ -326,6 +331,11 @@ d3exp_set_styp
 #symload styp with d3exp_get_styp
 #symload styp with d3exp_set_styp
 //
+(* ****** ****** *)
+fun
+d3exp_none0(loc0:loc_t): d3exp
+fun
+d3exp_none1(d2e0:d2exp): d3exp
 (* ****** ****** *)
 //
 fun

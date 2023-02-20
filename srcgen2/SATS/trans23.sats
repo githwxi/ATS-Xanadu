@@ -87,8 +87,9 @@ LEX = "./lexing0.sats"
 #typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
 #typedef d2pat = $D2E.d2pat
-#typedef l2d2p = $D2E.l2d2p
 #typedef d2exp = $D2E.d2exp
+(* ****** ****** *)
+#typedef l2d2p = $D2E.l2d2p
 #typedef l2d2e = $D2E.l2d2e
 (* ****** ****** *)
 #typedef d2ecl = $D2E.d2ecl
