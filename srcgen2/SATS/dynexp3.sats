@@ -221,6 +221,9 @@ D3Pdapp of
 , sint(*npf*), d3patlst(*darg*)
 ) (* D3Pdapp *)
 //
+|D3Pnone0 of ((*0*))
+|D3Pnone1 of (d2pat) | D3Pnone2 of (d3pat)
+//
 |
 D3Perrck of (sint(*lvl*),d3pat)//tread23-error
 //
@@ -283,8 +286,8 @@ d3exp_node =
 |D3Esapp of (d3exp, s2explst)
 |D3Etapp of (d3exp, s2explst)
 //
-|D3Cnone0 of ((*0*))
-|D3Cnone1 of (d2exp) | D3Enone2 of (d3exp)
+|D3Enone0 of ((*0*))
+|D3Enone1 of (d2exp) | D3Enone2 of (d3exp)
 //
 |
 D3Eerrck of (sint(*lvl*),d3exp)//tread23-error
