@@ -396,7 +396,7 @@ TEQD2EXPsome(teq1, d2e2) =>
 TEQD2EXPsome(teq1, d2e2) where
 { val
   d2e2 = trans2a_d2exp(env0, d2e2) }
-) (*case+*)//end-of(trans2a_teqd0exp(...))
+) (*case+*)//end-of(trans2a_teqd2exp(...))
 *)
 //
 (* ****** ****** *)
