@@ -83,7 +83,8 @@ d3pat_none1
 (  dpat  ) =
 d3pat_make_node
 (
-dpat.lctn(),D3Pnone1(dpat))
+dpat.lctn(),D3Pnone1(dpat)
+)
 //
 (* ****** ****** *)
 //
