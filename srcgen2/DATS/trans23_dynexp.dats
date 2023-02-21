@@ -133,6 +133,14 @@ d3pat_make_styp_node
 D2Pint(tok) =>
 d3pat_make_styp_node
 (loc0, t2p0, D3Pint(tok))
+|
+D2Pbtf(sym) =>
+d3pat_make_styp_node
+(loc0, t2p0, D3Pbtf(sym))
+|
+D2Pchr(tok) =>
+d3pat_make_styp_node
+(loc0, t2p0, D3Pchr(tok))
 //
 | _(*otherwise*) => d3pat_none1(d2p0)
 //
@@ -173,6 +181,14 @@ d2e0.node() of
 D2Eint(tok) =>
 d3exp_make_styp_node
 (loc0, t2p0, D3Eint(tok))
+|
+D2Ebtf(sym) =>
+d3exp_make_styp_node
+(loc0, t2p0, D3Ebtf(sym))
+|
+D2Echr(tok) =>
+d3exp_make_styp_node
+(loc0, t2p0, D3Echr(tok))
 //
 | _(*otherwise*) => d3exp_none1(d2e0)
 //
