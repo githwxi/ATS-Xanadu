@@ -141,6 +141,14 @@ d3pat_make_styp_node
 D2Pchr(tok) =>
 d3pat_make_styp_node
 (loc0, t2p0, D3Pchr(tok))
+|
+D2Pflt(tok) =>
+d3pat_make_styp_node
+(loc0, t2p0, D3Pflt(tok))
+|
+D2Pstr(tok) =>
+d3pat_make_styp_node
+(loc0, t2p0, D3Pstr(tok))
 //
 | _(*otherwise*) => d3pat_none1(d2p0)
 //
@@ -189,6 +197,14 @@ d3exp_make_styp_node
 D2Echr(tok) =>
 d3exp_make_styp_node
 (loc0, t2p0, D3Echr(tok))
+|
+D2Eflt(tok) =>
+d3exp_make_styp_node
+(loc0, t2p0, D3Eflt(tok))
+|
+D2Estr(tok) =>
+d3exp_make_styp_node
+(loc0, t2p0, D3Estr(tok))
 //
 | _(*otherwise*) => d3exp_none1(d2e0)
 //
