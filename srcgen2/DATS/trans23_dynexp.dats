@@ -69,9 +69,14 @@ _(*TRANS23*) = "./trans23.dats"
 (* ****** ****** *)
 #symload lctn with d2pat_get_lctn
 #symload node with d2pat_get_node
+#symload styp with d2pat_get_styp
 (* ****** ****** *)
 #symload lctn with d2exp_get_lctn
 #symload node with d2exp_get_node
+#symload styp with d2exp_get_styp
+(* ****** ****** *)
+#symload styp with d3pat_set_styp
+#symload styp with d3exp_set_styp
 (* ****** ****** *)
 //
 fun
@@ -108,14 +113,26 @@ trans23_d2pat
 ( env0, d2p0 ) =
 let
 //
-val () =
-prerrln
+val loc0 = d2p0.lctn()
+val t2p0 = d2p0.styp()
+//
+val (  ) = prerrln
 ("trans23_d2pat: d2p0 = ", d2p0)
 //
 in//let
 //
 case+
 d2p0.node() of
+//
+|
+D2Pvar(d2v) =>
+d3pat_make_styp_node
+(loc0, t2p0, D3Pvar(d2v))
+//
+|
+D2Pint(tok) =>
+d3pat_make_styp_node
+(loc0, t2p0, D3Pint(tok))
 //
 | _(*otherwise*) => d3pat_none1(d2p0)
 //
@@ -141,14 +158,21 @@ trans23_d2exp
 ( env0, d2e0 ) =
 let
 //
-val () =
-prerrln
+val loc0 = d2e0.lctn()
+val t2p0 = d2e0.styp()
+//
+val (  ) = prerrln
 ("trans23_d2exp: d2e0 = ", d2e0)
 //
 in//let
 //
 case+
 d2e0.node() of
+//
+|
+D2Eint(tok) =>
+d3exp_make_styp_node
+(loc0, t2p0, D3Eint(tok))
 //
 | _(*otherwise*) => d3exp_none1(d2e0)
 //

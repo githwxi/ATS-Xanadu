@@ -129,9 +129,6 @@ S2E = "./staexp2.sats"
 #typedef d2rpt = d2rpt_tbox
 #typedef d2rxp = d2rxp_tbox
 (* ****** ****** *)
-#abstbox d2ecl_tbox // ptr
-#typedef d2ecl = d2ecl_tbox
-(* ****** ****** *)
 #abstbox f2arg_tbox // ptr
 #typedef f2arg = f2arg_tbox
 (* ****** ****** *)
@@ -141,6 +138,9 @@ S2E = "./staexp2.sats"
 #typedef d2gua = d2gua_tbox
 #typedef d2gpt = d2gpt_tbox
 #typedef d2cls = d2cls_tbox
+(* ****** ****** *)
+#abstbox d2ecl_tbox // ptr
+#typedef d2ecl = d2ecl_tbox
 (* ****** ****** *)
 //
 (*

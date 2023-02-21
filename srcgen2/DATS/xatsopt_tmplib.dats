@@ -1177,9 +1177,20 @@ g_print<d2rpt>(drf) =
 d2rpt_fprint(g_print$out<>(), drf)
 //
 (* ****** ****** *)
+//
+#impltmp
+g_print<d2exp>(d2e) =
+d2exp_fprint(g_print$out<>(), d2e)
+#impltmp
+g_print<d2rxp>(drf) =
+d2rxp_fprint(g_print$out<>(), drf)
+//
+(* ****** ****** *)
+//
 #impltmp
 g_print<f2arg>(f2a) =
 f2arg_fprint(g_print$out<>(), f2a)
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -1192,15 +1203,6 @@ d2gpt_fprint(g_print$out<>(), d2g)
 #impltmp
 g_print<d2cls>(dcl) =
 d2cls_fprint(g_print$out<>(), dcl)
-//
-(* ****** ****** *)
-//
-#impltmp
-g_print<d2exp>(d2e) =
-d2exp_fprint(g_print$out<>(), d2e)
-#impltmp
-g_print<d2rxp>(drf) =
-d2rxp_fprint(g_print$out<>(), drf)
 //
 (* ****** ****** *)
 //
@@ -1308,6 +1310,12 @@ d3pat_fprint(g_print$out<>(), d3p)
 #impltmp
 g_print<d3exp>(d3e) =
 d3exp_fprint(g_print$out<>(), d3e)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<f3arg>(f3a) =
+f3arg_fprint(g_print$out<>(), f3a)
 //
 (* ****** ****** *)
 //
