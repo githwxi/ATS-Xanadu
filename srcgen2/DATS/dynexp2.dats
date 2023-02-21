@@ -88,14 +88,16 @@ d2pat_none1
 (  dpat  ) =
 d2pat_make_node
 (
-dpat.lctn(),D2Pnone1(dpat))
+dpat.lctn(),D2Pnone1(dpat)
+)
 #implfun
 //
 d2pat_none2
 (  dpat  ) =
 d2pat_make_node
 (
-dpat.lctn(),D2Pnone2(dpat))
+dpat.lctn(),D2Pnone2(dpat)
+)
 //
 (* ****** ****** *)
 //

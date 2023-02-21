@@ -74,6 +74,35 @@ _(*TRANS23*) = "./trans23.dats"
 #symload node with d2exp_get_node
 (* ****** ****** *)
 //
+fun
+d3pat_make_styp_node
+( loc0: loc_t
+, t2p0: s2typ
+, node: d3pat_node): d3pat =
+let
+val
+d3p0 = d3pat(loc0, node)
+in
+  (d3p0.styp(t2p0); d3p0) end
+//
+fun
+d3exp_make_styp_node
+( loc0: loc_t
+, t2p0: s2typ
+, node: d3exp_node): d3exp =
+let
+val
+d3e0 = d3exp(loc0, node)
+in
+  (d3e0.styp(t2p0); d3e0) end
+//
+#symload
+d3pat with d3pat_make_styp_node
+#symload
+d3exp with d3exp_make_styp_node
+//
+(* ****** ****** *)
+//
 #implfun
 trans23_d2pat
 ( env0, d2p0 ) =
