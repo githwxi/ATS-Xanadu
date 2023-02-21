@@ -274,6 +274,47 @@ d3pat_make_node
 (* ****** ****** *)
 //
 datatype
+f3arg_node =
+//
+(*
+| F3ARGnone of (token)
+*)
+//
+|
+F3ARGsta0 of
+( s2varlst(*s2vs*)
+, s2explst(*s2ps*)) // static
+//
+|
+F3ARGdyn0 of
+(int(*npf*), d3patlst(*farglst*))
+//
+|
+F3ARGmet0 of (s2explst(*metrics*))
+//
+(* ****** ****** *)
+//
+fun
+f3arg_fprint:(FILR,f3arg)->void
+//
+(* ****** ****** *)
+fun
+f3arg_get_lctn(f3arg): loc_t
+fun
+f3arg_get_node(f3arg): f3arg_node
+(* ****** ****** *)
+#symload lctn with f3arg_get_lctn
+#symload node with f3arg_get_node
+(* ****** ****** *)
+//
+fun
+f3arg_make_node
+(loc0:loc_t,node:f3arg_node):f3arg
+#symload f3arg with f3arg_make_node
+//
+(* ****** ****** *)
+
+datatype
 d3exp_node =
 //
 |D3Eint of token
