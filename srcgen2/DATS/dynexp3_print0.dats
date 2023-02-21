@@ -260,6 +260,73 @@ end (*let*) // end of [d3ecl_fprint(out, dcl0)]
 (* ****** ****** *)
 
 #implfun
+d3valdcl_fprint
+  (out, dval) = let
+//
+val dpat =
+d3valdcl_get_dpat(dval)
+val tdxp =
+d3valdcl_get_tdxp(dval)
+val wsxp =
+d3valdcl_get_wsxp(dval)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+print("D3VALDCL(",dpat,";",tdxp,",",wsxp,")")
+end(*let*)//end-of-[d3valdcl_fprint(out,dval)]
+
+(* ****** ****** *)
+//
+#implfun
+d3vardcl_fprint
+  (out, dvar) = let
+//
+val dpid =
+d3vardcl_get_dpid(dvar)
+val vpid =
+d3vardcl_get_vpid(dvar)
+val sres =
+d3vardcl_get_sres(dvar)
+val dini =
+d3vardcl_get_dini(dvar)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print("D3VARDCL(");
+print(dpid,";",vpid,";",sres,",",dini,")"))
+end(*let*)//end-of-[d3vardcl_fprint(out,dvar)]
+//
+(* ****** ****** *)
+
+#implfun
+d3fundcl_fprint
+  (out, dfun) = let
+//
+val dpid =
+d3fundcl_get_dpid(dfun)
+val farg =
+d3fundcl_get_farg(dfun)
+val sres =
+d3fundcl_get_sres(dfun)
+val tdxp =
+d3fundcl_get_tdxp(dfun)
+val wsxp =
+d3fundcl_get_wsxp(dfun)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print("D3FUNDCL(",dpid,";");
+print(farg,";",sres,";",tdxp,",",wsxp,")"))
+end(*let*)//end-of-[d3fundcl_fprint(out,dfun)]
+
+(* ****** ****** *)
+
+#implfun
 d3parsed_fprint
   (out, dpar) = let
 //
