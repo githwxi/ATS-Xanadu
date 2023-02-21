@@ -1337,6 +1337,20 @@ g_print<d3parsed>(dpar) =
 d3parsed_fprint(g_print$out<>(), dpar)
 //
 (* ****** ****** *)
+//
+#impltmp
+g_print
+<teqd3exp>(tdxp) =
+(
+case+ tdxp of
+|
+TEQD3EXPnone() =>
+print("TEQD3EXPnone(", ")")
+|
+TEQD3EXPsome(tok0, d3e1) =>
+print("TEQD3EXPsome(", tok0, ";", d3e1, ")"))
+//
+(* ****** ****** *)
 (*
 HX-2022-12-28: For debugging purpose
 *)
