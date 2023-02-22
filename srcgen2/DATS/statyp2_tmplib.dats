@@ -942,8 +942,10 @@ in//let
 //
 (
 x2stk_free_all(xstk); ans) where
-{ val ans =
-  unify00_s2typ_e1nv(e1nv, t2p1, t2p2) }
+{
+val ans =
+unify00_s2typ_e1nv<e1nv>(e1nv, t2p1, t2p2)
+}
 //
 end where
 {
@@ -995,8 +997,8 @@ list_vt_cons(xtp1, xtps) =>
 let
 val t2p0 =
 s2typ_none0() in
-xtp1.styp(t2p0); auxfree(xtps) end)
-} (*where*) // end of [x2stk_free_all]
+xtp1.styp(t2p0); auxfree(xtps) end) }
+// (*where*) // end of [x2stk_free_all]
 //
 (* ****** ****** *)
 //
