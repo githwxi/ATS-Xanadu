@@ -722,7 +722,16 @@ fun
 f1_xset
 ( xtp1: x2t2p
 , t2p2: s2typ): void =
+let
+val () =
+prerrln
+("f1_xset: xtp1 = ", xtp1)
+val () =
+prerrln
+("f1_xset: t2p2 = ", t2p2)
+in//let
 unify00_s2typ$xset<>(xtp1, t2p2)
+end (*let*) // end of [f1_xset(...)]
 //
 (* ****** ****** *)
 //
@@ -762,8 +771,10 @@ val-
 T2Pxtv(xtp2) = t2p2.node()
 in//let
 if
-s2typ_xtpck0(t2p1, xtp2)
-then false else (xtp2.styp(t2p1); true)
+s2typ_xtpck0
+( t2p1, xtp2 )
+then false else
+(f1_xset(xtp2, t2p1); true)
 end (*let*) // end of [f0_xtv2(e1nv,...)]
 //
 (* ****** ****** *)
