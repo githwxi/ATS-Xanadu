@@ -206,12 +206,33 @@ D2Estr(tok) =>
 d3exp_make_styp_node
 (loc0, t2p0, D3Estr(tok))
 //
+|D2Esym0 _ => f0_sym0(env0, d2e0)
+//
 |D2Edapp _ => f0_dapp(env0, d2e0)
 //
 | _(*otherwise*) => d3exp_none1(d2e0)
 //
 endlet where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_sym0
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+val loc0 = d2e0.lctn()
+//
+val-
+D2Esym0
+( drxp
+, d1e1, dpis) = d2e0.node()
+//
+in//let
+  trans23_d2exp(env0, drxp.dexp())
+end (*let*)//end-of-[f0_sym0(env0,d2e0)]
 //
 (* ****** ****** *)
 //
