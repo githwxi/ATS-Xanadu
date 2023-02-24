@@ -342,6 +342,12 @@ d3exp_node =
 |D3Etapp of (d3exp, s2explst)
 |D3Etapq of (d3exp, s2typlst)
 //
+|D3Edapp of
+(d3exp, sint(*npf*), d3explst)
+//
+|D3Elet0 of (d3eclist, d3exp)
+|D3Ewhere of (d3exp, d3eclist)
+//
 |D3Enone0 of ((*0*))
 |D3Enone1 of (d2exp) | D3Enone2 of (d3exp)
 //

@@ -221,6 +221,9 @@ f0_dapp
 ! tr23env
 , d2e0: d2exp): d3exp =
 let
+//
+val loc0 = d2e0.lctn()
+//
 val-
 D2Edapp
 ( d2f0
@@ -230,6 +233,8 @@ val d3f0 =
   trans23_d2exp(env0, d2f0)
 val d3es =
   trans23_d2explst(env0, d2es)
+//
+val t2p0 = s2typ_none0((*void*))
 //
 in
 d3exp_make_styp_node
