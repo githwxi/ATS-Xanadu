@@ -218,13 +218,21 @@ D3Etapq
 (d3e1, t2ps) =>
 print("D3Etapq(",d3e1,";",t2ps,")")
 //
-(*
 |
 D3Edapp
 (d3f0,npf1,d3es) =>
 ( print("D3Edapp(")
 ; print(d3f0,";",npf1,";",d3es,")"))
-*)
+//
+|
+D3Elet0
+(dcls, d3e1) =>
+(
+print("D3Elet0(",dcls,";",d3e1,")"))
+|
+D3Ewhere
+(d3e1, dcls) =>
+print("D3Ewhere(",d3e1,";",dcls,")")
 //
 |D3Enone0() => print( "D3Enone0(",")" )
 |D3Enone1(d1e1) => print("D3Enone1(",d1e1,")")
