@@ -86,6 +86,9 @@ _(*TRANS23*) = "./trans23.dats"
 #symload node with d2exp_get_node
 #symload styp with d2exp_get_styp
 (* ****** ****** *)
+#symload lctn with f2arg_get_lctn
+#symload node with f2arg_get_node
+(* ****** ****** *)
 #symload styp with d3pat_get_styp
 #symload styp with d3pat_set_styp
 (* ****** ****** *)
@@ -490,6 +493,44 @@ end (*let*) // end of [f0_assgn(env0,d2e0)]
 (* ****** ****** *)
 //
 } (*where*)//end-of-[trans23_d2exp(env0,d2e0)]
+
+(* ****** ****** *)
+//
+#implfun
+trans23_f2arg
+( env0, farg ) =
+let
+//
+val loc0 = farg.lctn()
+//
+val () =
+prerrln
+("trans23_f2arg: loc0 = ", loc0)
+val () =
+prerrln
+("trans23_f2arg: farg = ", farg)
+//
+in//let
+//
+case+
+farg.node() of
+|
+F2ARGsta0(s2vs, s2ps) =>
+f3arg
+(loc0,F3ARGsta0(s2vs,s2ps))
+|
+F2ARGdyn0(npf1, d2ps) =>
+let
+val loc0 = farg.lctn()
+val d3ps =
+trans23_d2patlst(env0, d2ps)
+in//let
+f3arg(loc0,F3ARGdyn0(npf1,d3ps))
+end (*let*) // end of [F2ARGdyn0]
+|
+F2ARGmet0(s2es) => f3arg(loc0,F3ARGmet0(s2es))
+//
+end (*let*) // end of [trans23_f2arg(env0,farg)]
 
 (* ****** ****** *)
 
