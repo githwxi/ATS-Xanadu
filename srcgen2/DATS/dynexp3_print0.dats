@@ -134,6 +134,11 @@ D3Prcd2
 ( print("D3Prcd2(")
 ; print(tknd,";",npf1,";",ldps,")") )
 //
+|
+D3Eassgn
+(d3el, d3er) =>
+print("D3Eassgn(",d3el,";",d3er,")")
+//
 |D3Pnone0() => print( "D3Pnone0(",")" )
 |D3Pnone1(d1p1) => print("D3Pnone1(",d1p1,")")
 |D3Pnone2(d3p1) => print("D3Pnone2(",d3p1,")")

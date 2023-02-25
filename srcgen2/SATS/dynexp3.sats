@@ -366,6 +366,10 @@ d3exp_node =
 |D3Ewhere of (d3exp, d3eclist)
 //
 |
+D3Eassgn of
+(d3exp(*l-val*), d3exp(*r-val*))
+//
+|
 D3Et2pck of (d3exp, s2typ)//HX: casting
 //
 |D3Enone0 of ((*0*))
