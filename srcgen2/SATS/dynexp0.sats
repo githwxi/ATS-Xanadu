@@ -399,12 +399,12 @@ D0Elpar of
 (token, d0explst, d0exp_RPAREN)
 //
 |
-D0Eif0 of
+D0Eift0 of
 ( token
 , d0exp
 , d0exp_THEN, d0exp_ELSE(*opt*))
 |
-D0Eif1 of
+D0Eift1 of
 ( token
 , d0exp
 , d0exp_THEN, d0exp_ELSE, t0inv)

@@ -331,10 +331,10 @@ print
 ("D1Es2eq(",des1,";",des2,")")
 //
 |
-D1Eif0
+D1Eift0
 (d1e1,dthn,dels) =>
 (
-print("D1Eif0(");
+print("D1Eift0(");
 print(d1e1,";",dthn,";",dels,")"))
 //
 |

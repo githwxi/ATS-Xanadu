@@ -593,7 +593,7 @@ G0Eflt _ => f0_flt(tenv, g0e0)
 G0Estr _ => f0_str(tenv, g0e0)
 //
 |
-G0Eif0 _ => f0_if0(tenv, g0e0)
+G0Eift0 _ => f0_ift0(tenv, g0e0)
 //
 |
 G0Eapps _ => f0_apps(tenv, g0e0)
@@ -796,7 +796,7 @@ map$fopr_e1nv
 (* ****** ****** *)
 //
 fun
-f0_if0
+f0_ift0
 ( tenv:
 ! tr01env
 , g0e0: g0exp): g1efx =
@@ -805,7 +805,7 @@ let
 val loc0 = g0e0.lctn()
 //
 val-
-G0Eif0
+G0Eift0
 (tknd
 ,g0e1,g0e2
 ,g0e3,tend) = g0e0.node()
@@ -833,8 +833,8 @@ in
 FXITMatm
 (
 g1exp
-(loc0, G1Eif0(g1e1, g1e2, g1e3)))
-endlet // end of [ f0_if0(g0e0) ]
+(loc0, G1Eift0(g1e1, g1e2, g1e3)))
+endlet // end of [ f0_ift0(g0e0) ]
 //
 (* ****** ****** *)
 //

@@ -126,7 +126,7 @@ datatype g1mac =
 (* ****** ****** *)
 //
 |
-G1Mif0 of
+G1Mift0 of
 ( g1mac(*cond*)
 , g1mac(*then*)
 , g1mac(*else*) )

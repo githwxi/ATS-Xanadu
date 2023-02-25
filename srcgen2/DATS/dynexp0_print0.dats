@@ -287,18 +287,18 @@ print
 ( "D0Elpar(",tbeg,";",d0es,";",tend,")" )
 //
 |
-D0Eif0
+D0Eift0
 (tknd,d0e1,dthn,dels) =>
 (
 print
-("D0Eif0(", tknd,";");
+("D0Eift0(", tknd,";");
 print(d0e1,";",dthn,";",dels,")"))
 |
-D0Eif1
+D0Eift1
 (tknd,d0e1,dthn,dels,tinv) =>
 (
 print
-("D0Eif1(",tknd,";");
+("D0Eift1(",tknd,";");
 print(d0e1,";",dthn,";",dels,";",tinv,")"))
 //
 |

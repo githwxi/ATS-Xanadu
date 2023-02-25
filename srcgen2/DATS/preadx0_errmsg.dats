@@ -1059,15 +1059,15 @@ D0Elpar
 fpemsg(out, des); fpemsg(out, drp))
 //
 |
-D0Eif0
-(tif0
+D0Eift0
+(tift
 ,d0e1,dthn,dels) =>
 (
 fpemsg(out, d0e1);
 fpemsg(out, dthn); fpemsg(out, dels))
 |
-D0Eif1
-(tif0
+D0Eift1
+(tift
 ,d0e1
 ,dthn,dels,tinv) =>
 (

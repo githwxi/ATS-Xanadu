@@ -1232,9 +1232,9 @@ D1Es1eq _ => f0_s1eq(env0, d1e0)
 |
 D1Es2eq _ => f0_s2eq(env0, d1e0)
 //
-| D1Eif0 _ => f0_if0(env0, d1e0)
+|D1Eift0 _ => f0_ift0(env0, d1e0)
 (*
-| D1Eif1 _ => f0_if1(env0, d1e0)
+|D1Eift1 _ => f0_ift1(env0, d1e0)
 *)
 //
 |D1Ecas0 _ => f0_cas0(env0, d1e0)
@@ -1243,13 +1243,6 @@ D1Es2eq _ => f0_s2eq(env0, d1e0)
 *)
 //
 |D1Elet0 _ => f0_let0(env0, d1e0)
-|
-D1Ewhere _ => f0_where(env0, d1e0)
-//
-|
-D1Ebrckt _ => f0_brckt(env0, d1e0)
-|
-D1Edtsel _ => f0_dtsel(env0, d1e0)
 //
 |D1Et1up _ => f0_t1up(env0, d1e0)
 |D1Et2up _ => f0_t2up(env0, d1e0)
@@ -1259,6 +1252,17 @@ D1Edtsel _ => f0_dtsel(env0, d1e0)
 //
 |D1Elam0 _ => f0_lam0(env0, d1e0)
 |D1Efix0 _ => f0_fix0(env0, d1e0)
+//
+|
+D1Ewhere _ => f0_where(env0, d1e0)
+//
+(*
+HX-2023-02-25:
+There is no D1Eassgn!
+|D1Eassgn _ => f0_assgn(env0, d1e0)
+*)
+|D1Ebrckt _ => f0_brckt(env0, d1e0)
+|D1Edtsel _ => f0_dtsel(env0, d1e0)
 //
 |D1Eannot _ => f0_annot(env0, d1e0)
 //
@@ -1991,7 +1995,7 @@ end (*let*) // end of [f0_l2st(env0,d1e0)]
 (* ****** ****** *)
 //
 fun
-f0_if0//inv-less
+f0_ift0//inv-less
 ( env0:
 ! tr12env
 , d1e0: d1exp): d2exp =
@@ -2000,7 +2004,7 @@ let
 val loc0 = d1e0.lctn()
 //
 val-
-D1Eif0
+D1Eift0
 (d1e1
 ,opt2,opt3) = d1e0.node()
 //
@@ -2012,8 +2016,8 @@ val
 opt3 = trans12_d1expopt(env0, opt3)
 //
 in//let
-  d2exp(loc0, D2Eif0(d2e1, opt2, opt3))
-end (*let*) // end of [f0_if0(env0,d1e0)]
+  d2exp(loc0, D2Eift0(d2e1, opt2, opt3))
+end (*let*) // end of [f0_ift0(env0,d1e0)]
 //
 (* ****** ****** *)
 //

@@ -506,11 +506,11 @@ d1exp_node =
   (d1explst, d1explst)//sequencing
 //
 |
-D1Eif0 of
+D1Eift0 of
 ( d1exp(*cond*)
 , d1expopt, d1expopt(*else*))
 |
-D1Eif1 of
+D1Eift1 of
 ( d1exp(*cond*)
 , d1expopt, d1expopt(*else*), t1inv)
 //

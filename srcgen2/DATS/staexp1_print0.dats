@@ -262,10 +262,10 @@ G1Elist(g1es) =>
 print("G1Elist(",g1es,")")
 //
 |
-G1Eif0
+G1Eift0
 (g1e1, g1e2, g1e3) =>
 print
-("G1Eif0(",g1e1,";",g1e2,";",g1e3,")")
+("G1Eift0(",g1e1,";",g1e2,";",g1e3,")")
 //
 |
 G1Enone0() => print("G1Enone0(",")")

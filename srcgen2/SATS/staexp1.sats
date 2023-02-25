@@ -188,7 +188,7 @@ g1exp_node =
 | G1Elist of g1explst (*temp*)
 //
 |
-G1Eif0 of
+G1Eift0 of
 ( g1exp(*cond*)
 , g1exp(*then*), g1exp(*else*))
 //

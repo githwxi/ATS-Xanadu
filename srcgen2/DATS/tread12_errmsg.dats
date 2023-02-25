@@ -569,7 +569,7 @@ val () = d2exp_fpemsg(out, d2e1)
 endlet
 //
 |
-D2Eif0
+D2Eift0
 (d2e1,dthn,dels) =>
 let
 val () = d2exp_fpemsg(out, d2e1)

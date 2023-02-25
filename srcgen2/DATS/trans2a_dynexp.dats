@@ -507,7 +507,7 @@ d2e0.node() of
 //
 |D2Elet0 _ => f0_let0(env0, d2e0)
 //
-|D2Eif0 _ => f0_if0(env0, d2e0)
+|D2Eift0 _ => f0_ift0(env0, d2e0)
 |D2Ecas0 _ => f0_cas0(env0, d2e0)
 //
 |D2Eseqn _ => f0_seqn(env0, d2e0)
@@ -817,14 +817,14 @@ end (*let*) // end of [f0_let0(env0,...)]
 (* ****** ****** *)
 //
 fun
-f0_if0
+f0_ift0
 ( env0:
 ! tr2aenv
 , d2e0: d2exp): d2exp =
 let
 val loc0 = d2e0.lctn()
 val-
-D2Eif0
+D2Eift0
 ( d2e1
 , dthn, dels) = d2e0.node()
 //
@@ -870,8 +870,8 @@ trans2a_d2exp_tpck(env0, d2e3, t2p0))
 //
 in//let
 d2exp_make_styp_node
-(loc0, t2p0, D2Eif0(d2e1, dthn, dels))
-end (*let*) // end of [f0_if0(env0,...)]
+(loc0, t2p0, D2Eift0(d2e1, dthn, dels))
+end (*let*) // end of [f0_ift0(env0,...)]
 //
 (* ****** ****** *)
 //

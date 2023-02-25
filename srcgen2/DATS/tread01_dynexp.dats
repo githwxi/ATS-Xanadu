@@ -820,7 +820,7 @@ endlet // end of [d1exp_s2eq_errck(...)]
 (* ****** ****** *)
 //
 fun
-d1exp_if0_errck
+d1exp_ift0_errck
 ( loc
 : loc_t
 , d1e1
@@ -836,11 +836,11 @@ val lvl = gmax
 in//let
 d1exp_errck
 ( lvl+1
-, d1exp(loc,D1Eif0(d1e1, dthn, dels)))
-endlet // end of [d1exp_if0_errck(...)]
+, d1exp(loc,D1Eift0(d1e1, dthn, dels)))
+endlet // end of [d1exp_ift0_errck(...)]
 //
 fun
-d1exp_if1_errck
+d1exp_ift1_errck
 ( loc
 : loc_t
 , d1e1
@@ -859,8 +859,8 @@ d1exp_errck
 (
 lvl+1,
 d1exp
-(loc, D1Eif1(d1e1, dthn, dels, tinv)))
-endlet // end of [d1exp_if1_errck(...)]
+(loc, D1Eift1(d1e1, dthn, dels, tinv)))
+endlet // end of [d1exp_ift1_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1328,7 +1328,7 @@ d1exp_s2eq_errck(loc0, des1, des2)
 endlet // end of [D1Es2eq(des1,des2)]
 //
 |
-D1Eif0
+D1Eift0
 (d1e1, dthn, dels) =>
 let
 //
@@ -1345,10 +1345,10 @@ in//let
 if
 (e00=err)
 then (d1e0) else
-d1exp_if0_errck(loc0,d1e1,dthn,dels)
-endlet//end-[D1Eif0(d1e1,dthn,dels)]
+d1exp_ift0_errck(loc0,d1e1,dthn,dels)
+endlet//end-[D1Eift0(d1e1,dthn,dels)]
 |
-D1Eif1
+D1Eift1
 ( d1e1
 , dthn, dels, tinv) =>
 let
@@ -1369,9 +1369,9 @@ in//let
 if
 (e00=err)
 then (d1e0) else
-d1exp_if1_errck
+d1exp_ift1_errck
 ( loc0 , d1e1 , dthn , dels , tinv )
-endlet//end-[D1Eif1(d1e1,dthn,dels)]
+endlet//end-[D1Eift1(d1e1,dthn,dels)]
 //
 |
 D1Ecas0
