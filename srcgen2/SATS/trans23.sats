@@ -306,8 +306,28 @@ trans23_d2cstdclist
 //
 fun
 trans23_d2eclistopt
-(env0: !tr23env, dopt: d2eclistopt): d3eclistopt
+( env0
+: !tr23env, dopt: d2eclistopt): d3eclistopt
 //
+(* ****** ****** *)
+(*
+HX-2023-02-25:
+For type-checking level-3 dynexps
+*)
+(* ****** ****** *)
+fun
+trans23_d3exp_tpck
+( env0: !tr23env
+, d3e0: d3exp, t2p0: s2typ): d3exp
+(* ****** ****** *)
+fun
+trans23_d3explst_tpck1
+( env0: !tr23env
+, d3es: d3explst, t2p0: s2typ): d3explst
+fun
+trans23_d3explst_tpcks
+( env0: !tr23env
+, d3es: d3explst, t2ps: s2typlst): d3explst
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans23.sats] *)
