@@ -261,6 +261,38 @@ end//let
 (* ****** ****** *)
 
 #implfun
+trans23_d2fundcl
+  (env0, dfun) = let
+//
+val loc0 =
+d2fundcl_get_lctn(dfun)
+//
+val dvar =
+d2fundcl_get_dpid(dfun)
+val f2as =
+d2fundcl_get_farg(dfun)
+val sres =
+d2fundcl_get_sres(dfun)
+val tdxp =
+d2fundcl_get_tdxp(dfun)
+val wsxp =
+d2fundcl_get_wsxp(dfun)
+//
+val f3as =
+trans23_f2arglst(env0, f2as)
+val tdxp =
+trans23_teqd2exp(env0, tdxp)
+//
+val f2cl = F2CLfun(*void*)
+//
+in//let
+d3fundcl(loc0,dvar,f3as,sres,tdxp,wsxp)
+end//let
+(*let*)//end-of-[trans23_d2fundcl(env0,dfun)]
+
+(* ****** ****** *)
+
+#implfun
 trans23_d2eclist
   (env0, dcls) =
 (

@@ -501,4 +501,12 @@ list_trans23_fnp(env0, d2es, trans23_d2exp))
 
 (* ****** ****** *)
 
+#implfun
+trans23_f2arglst
+  (env0, f2as) =
+(
+list_trans23_fnp(env0, f2as, trans23_f2arg))
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_trans23_dynexp.dats] *)

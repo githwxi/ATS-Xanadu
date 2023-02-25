@@ -87,10 +87,11 @@ LEX = "./lexing0.sats"
 #typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
 #typedef d2pat = $D2E.d2pat
-#typedef d2exp = $D2E.d2exp
-(* ****** ****** *)
 #typedef l2d2p = $D2E.l2d2p
+#typedef d2exp = $D2E.d2exp
 #typedef l2d2e = $D2E.l2d2e
+(* ****** ****** *)
+#typedef f2arg = $D2E.f2arg
 (* ****** ****** *)
 #typedef d2ecl = $D2E.d2ecl
 (* ****** ****** *)
@@ -98,6 +99,8 @@ LEX = "./lexing0.sats"
 #typedef l3d3p = $D3E.l3d3p
 #typedef d3exp = $D3E.d3exp
 #typedef l3d3e = $D3E.l3d3e
+(* ****** ****** *)
+#typedef f3arg = $D3E.f3arg
 (* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
@@ -125,6 +128,9 @@ LEX = "./lexing0.sats"
 #typedef d3expopt = $D3E.d3expopt
 #typedef l3d3elst = $D3E.l3d3elst
 //
+(* ****** ****** *)
+#typedef f2arglst = $D2E.f2arglst
+#typedef f3arglst = $D3E.f3arglst
 (* ****** ****** *)
 #typedef d2eclist = $D2E.d2eclist
 #typedef d3eclist = $D3E.d3eclist
@@ -242,6 +248,12 @@ trans23_l2d2e
 (* ****** ****** *)
 //
 fun
+trans23_f2arg
+(env0: !tr23env, f2a0: f2arg): f3arg
+//
+(* ****** ****** *)
+//
+fun
 trans23_d2ecl
 (env0: !tr23env, d3cl: d2ecl): d3ecl
 //
@@ -263,6 +275,13 @@ fun
 trans23_d2expopt
 (env0:
 ! tr23env, dopt: d2expopt): d3expopt
+//
+(* ****** ****** *)
+//
+fun
+trans23_f2arglst
+( env0:
+! tr23env, f2as: f2arglst): f3arglst
 //
 (* ****** ****** *)
 //
