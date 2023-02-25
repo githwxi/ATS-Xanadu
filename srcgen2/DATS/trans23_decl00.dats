@@ -90,6 +90,8 @@ d2cl.node() of
 //
 |
 D2Cvaldclst _ => f0_valdclst(env0, d2cl)
+|
+D2Cvardclst _ => f0_vardclst(env0, d2cl)
 //
 |
 D2Cfundclst _ => f0_fundclst(env0, d2cl)
@@ -129,6 +131,33 @@ trans23_d2valdclist(env0, d2vs)
 in//let
   d3ecl(loc0, D3Cvaldclst(tknd, d3vs))
 end (*let*) // end of [f0_valdclst(env0,d2cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_vardclst
+( env0:
+! tr23env
+, d2cl: d2ecl): d3ecl =
+let
+//
+val
+loc0 = d2cl.lctn()
+val-
+D2Cvardclst
+(tknd, d2vs) = d2cl.node()
+//
+val () =
+prerrln
+("f0_vardclst: d2cl = ", d2cl)
+//
+val
+d3vs =
+trans23_d2vardclist(env0, d2vs)
+//
+in//let
+  d3ecl(loc0, D3Cvardclst(tknd, d3vs))
+end (*let*) // end of [f0_vardclst(env0,d2cl)]
 //
 (* ****** ****** *)
 //
@@ -203,6 +232,31 @@ in//let
 d3valdcl_make_args(loc0,dpat,tdxp,wsxp)
 end//let
 (*let*)//end-of-[trans23_d2valdcl(env0,dval)]
+
+(* ****** ****** *)
+
+#implfun
+trans23_d2vardcl
+  (env0, dvar) = let
+//
+val loc0 =
+d2vardcl_get_lctn(dvar)
+val dpid =
+d2vardcl_get_dpid(dvar)
+val vpid =
+d2vardcl_get_vpid(dvar)
+val sres =
+d2vardcl_get_sres(dvar)
+val dini =
+d2vardcl_get_dini(dvar)
+//
+val dini =
+trans23_teqd2exp(env0, dini)
+//
+in//let
+d3vardcl_make_args(loc0,dpid,vpid,sres,dini)
+end//let
+(*let*)//end-of-[trans23_d2vardcl(env0,dvar)]
 
 (* ****** ****** *)
 
