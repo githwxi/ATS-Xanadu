@@ -74,13 +74,25 @@ ATS_PACKNAME
 (* ****** ****** *)
 
 #implfun
+trans23_d2exp_tpck
+(env0, d2e0, t2p0) =
+let
+val
+d3e0 = trans23_d2exp(env0, d2e0)
+in
+trans23_d3exp_tpck(env0,d3e0,t2p0)
+end (*let*) // end of [trans23_d3exp_tpck(...)]
+
+(* ****** ****** *)
+
+#implfun
 trans23_d3exp_tpck
 (env0, d3e0, t2p0) =
 let
 val loc0 = d3e0.lctn()
 in//let
 d3exp_make_styp_node
-( loc0, t2p0, D3Et2pck(d3e0, t2p0))
+( loc0, t2p0, D3Et2pck(d3e0, t2p0) )
 end (*let*) // end of [trans23_d3exp_tpck(...)]
 
 (* ****** ****** *)
