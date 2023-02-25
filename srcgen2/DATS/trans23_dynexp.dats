@@ -67,10 +67,15 @@ _(*TRANS23*) = "./trans23.dats"
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
-#symload styp with d2con_get_lctn
+#symload node with s2typ_get_node
+(* ****** ****** *)
+#symload lctn with d2var_get_lctn
+#symload styp with d2var_get_styp
+(* ****** ****** *)
+#symload lctn with d2con_get_lctn
 #symload styp with d2con_get_styp
 (* ****** ****** *)
-#symload styp with d2cst_get_lctn
+#symload lctn with d2cst_get_lctn
 #symload styp with d2cst_get_styp
 (* ****** ****** *)
 #symload lctn with d2pat_get_lctn
@@ -135,8 +140,7 @@ D2Pstr(tok) =>
 d3pat_make_styp_node
 (loc0, t2p0, D3Pstr(tok))
 //
-|
-D2Ptup0 _ => f0_tup0(env0, d2p0)
+|D2Ptup0 _ => f0_tup0(env0, d2p0)
 //
 | _(*otherwise*) => d3pat_none1(d2p0)
 //
@@ -149,8 +153,8 @@ endlet where
 fun
 f0_tup0
 ( env0:
-! tr2aenv
-, d2p0: d2pat): d2pat =
+! tr23env
+, d2p0: d2pat): d3pat =
 (
 d3pat_make_styp_node
 ( loc0, t2p0
@@ -230,6 +234,8 @@ d3exp_make_styp_node
 |D2Esym0 _ => f0_sym0(env0, d2e0)
 //
 |D2Edapp _ => f0_dapp(env0, d2e0)
+//
+|D2Eassgn _ => f0_assgn(env0, d2e0)
 //
 | _(*otherwise*) => d3exp_none1(d2e0)
 //
@@ -359,6 +365,39 @@ d3exp_make_styp_node
 (loc0, tres, D3Edapp(d3f0, npf1, d3es))
 end (*let*)
 end (*let*)//end of [f0_dapp(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_assgn
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Eassgn
+(d2el, d2er) = d2e0.node()
+//
+val
+d3el =
+trans23_d2exp(env0, d2el)
+val
+t2pl = d3el.styp((*void*))
+//
+val t2p0 = the_s2typ_void()
+//
+val
+d3er = trans23_d2exp(env0, d2er)
+val
+d3er =
+trans23_d3exp_tpck(env0,d3er,t2pl)
+//
+in//let
+d3exp_make_styp_node
+( loc0, t2p0, D3Eassgn(d3el, d3er) )
+end (*let*) // end of [f0_assgn(env0,d2e0)]
 //
 (* ****** ****** *)
 //
