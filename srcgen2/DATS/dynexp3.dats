@@ -347,6 +347,80 @@ endloc (*local*) // end of [local(d3valdcl)]
 local
 //
 datatype
+d3vardcl =
+D3VARDCL of
+( loc_t
+, d2var
+, d2varopt
+, s2expopt, teqd3exp)
+//
+#absimpl
+d3vardcl_tbox = d3vardcl
+//
+in//local
+
+#implfun
+d3vardcl_get_lctn
+  (  dvar  ) = let
+val+
+D3VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in lctn end
+
+#implfun
+d3vardcl_get_dpid
+  (  dvar  ) = let
+val+
+D3VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in dpid end
+
+#implfun
+d3vardcl_get_vpid
+  (  dvar  ) = let
+val+
+D3VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in vpid end
+
+#implfun
+d3vardcl_get_sres
+  (  dvar  ) = let
+val+
+D3VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in sres end
+
+#implfun
+d3vardcl_get_dini
+  (  dvar  ) = let
+val+
+D3VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in dini end
+
+(* ****** ****** *)
+
+#implfun
+d3vardcl_make_args
+( lctn
+, dpid, vpid, sres, dini) =
+(
+D3VARDCL(lctn, dpid, vpid, sres, dini)
+)
+
+endloc (*local*) // end of [ local(d3vardcl) ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 d3parsed =
 D3PARSED of
 (

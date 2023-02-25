@@ -135,10 +135,42 @@ D2Pstr(tok) =>
 d3pat_make_styp_node
 (loc0, t2p0, D3Pstr(tok))
 //
+|
+D2Ptup0 _ => f0_tup0(env0, d2p0)
+//
 | _(*otherwise*) => d3pat_none1(d2p0)
 //
 endlet where
 {
+//
+(* ****** ****** *)
+//
+//
+fun
+f0_tup0
+( env0:
+! tr2aenv
+, d2p0: d2pat): d2pat =
+(
+d3pat_make_styp_node
+( loc0, t2p0
+, D3Ptup0(npf1, d3ps))) where
+{
+val loc0 = d2p0.lctn()
+val-
+D2Ptup0
+(npf1, d2ps) = d2p0.node()
+val
+d3ps = trans23_d2patlst(env0, d2ps)
+val
+t2p0 =
+(
+case+ d3ps of
+|list_nil() =>
+the_s2typ_void()
+|list_cons _ =>
+s2typ_tup0(npf1, s2typlst(d3ps))): s2typ
+} (*where*) // end of [f0_tup0(env0,d2p0)]
 //
 (* ****** ****** *)
 //

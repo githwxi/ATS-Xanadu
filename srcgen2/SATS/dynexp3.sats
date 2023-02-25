@@ -228,6 +228,18 @@ D3Pdapp of
 , sint(*npf*), d3patlst(*darg*)
 ) (* D3Pdapp *)
 //
+|
+D3Ptup0 of (sint(*npf*), d3patlst)
+//
+|
+D3Ptup1 of
+(
+token(*knd*), sint(*npf*), d3patlst)
+|
+D3Prcd2 of
+(
+token(*knd*), sint(*npf*), l3d3plst)
+//
 |D3Pnone0 of ((*0*))
 |D3Pnone1 of (d2pat) | D3Pnone2 of (d3pat)
 //

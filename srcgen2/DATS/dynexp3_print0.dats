@@ -120,6 +120,20 @@ D3Pdapp
 print("D3Pdapp(");
 print(d3f0,";",npf1,";",d3ps,")") )
 //
+|
+D3Ptup0(npf1, d3ps) =>
+print("D3Ptup0(",npf1,";",d3ps,")")
+|
+D3Ptup1
+( tknd, npf1, d3ps ) =>
+( print("D3Ptup1(")
+; print(tknd,";",npf1,";",d3ps,")") )
+|
+D3Prcd2
+( tknd, npf1, ldps ) =>
+( print("D3Prcd2(")
+; print(tknd,";",npf1,";",ldps,")") )
+//
 |D3Pnone0() => print( "D3Pnone0(",")" )
 |D3Pnone1(d1p1) => print("D3Pnone1(",d1p1,")")
 |D3Pnone2(d3p1) => print("D3Pnone2(",d3p1,")")

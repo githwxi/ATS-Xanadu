@@ -164,6 +164,20 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 //
 fun
+s2typlst_of_d3patlst
+( d3ps: d3patlst ): s2typlst
+#symload
+s2typlst with s2typlst_of_d3patlst
+//
+fun
+s2typlst_of_d3explst
+( d3es: d3explst ): s2typlst
+#symload
+s2typlst with s2typlst_of_d3explst
+//
+(* ****** ****** *)
+//
+fun
 d3parsed_of_trans23
 ( dpar : d2parsed ): (d3parsed)
 //

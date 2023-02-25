@@ -1297,8 +1297,52 @@ print("WTHS2EXPsome(", tok0, ";", s2e1, ")"))
 //
 (* ****** ****** *)
 (*
-HX: for level-2 syntax
+HX: for level-3 syntax
 *)
+(* ****** ****** *)
+//
+(*
+fun
+<x0:t0>
+d3lab_get_itm
+(dlab: d3lab(x0)): x0
+*)
+#impltmp
+<x0>
+d3lab_get_itm(dlab) =
+(
+case+
+dlab of D3LAB(l0, x0) => (x0))
+//
+(* ****** ****** *)
+//
+(*
+fun
+<x0:type>
+d3lab_fprint
+(out: FILR, lab: d3lab(x0)): void
+*)
+//
+#impltmp
+<x0>
+d3lab_fprint
+  (out, lab) = let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+case+ lab of
+|
+D3LAB(l01, x02) =>
+print("D3LAB(",l01,";",x02,")")
+end(*let*)//end-of-[d3lab_fprint]
+//
+#impltmp
+{x0:t0}
+g_print<d3lab(x0)>(lab) =
+d3lab_fprint(g_print$out<>(), lab)
+//
 (* ****** ****** *)
 //
 #impltmp
