@@ -254,6 +254,37 @@ end(*let*)//end-of-[d3exp_make_styp_node]
 local
 //
 datatype
+f3arg =
+F3ARG of
+(
+loctn, f3arg_node)
+#absimpl
+f3arg_tbox = f3arg
+//
+in (* in-of-local *)
+//
+#implfun
+f3arg_make_node
+(   loc,nod   ) = F3ARG(loc,nod)
+//
+#implfun
+f3arg_get_lctn(f3a) =
+let
+  val+F3ARG(loc,nod) = f3a in loc
+end
+#implfun
+f3arg_get_node(f3a) =
+let
+  val+F3ARG(loc,nod) = f3a in nod
+end
+//
+endloc (*local*) // end of [local(f3arg)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 d3ecl =
 D3ECL of
 (loctn, d3ecl_node)
@@ -415,6 +446,99 @@ D3VARDCL(lctn, dpid, vpid, sres, dini)
 )
 
 endloc (*local*) // end of [ local(d3vardcl) ]
+
+(* ****** ****** *)
+
+
+local
+//
+datatype
+d3fundcl =
+D3FUNDCL of
+( loc_t
+, d2var
+, f3arglst
+, s2res
+, teqd3exp, wths2exp)
+//
+#absimpl
+d3fundcl_tbox = d3fundcl
+//
+in//local
+
+#implfun
+d3fundcl_get_lctn
+  (  dfun  ) = let
+val+
+D3FUNDCL
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in lctn end
+
+#implfun
+d3fundcl_get_dpid
+  (  dfun  ) = let
+val+
+D3FUNDCL
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in dpid end
+
+#implfun
+d3fundcl_get_farg
+  (  dfun  ) = let
+val+
+D3FUNDCL
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in farg end
+
+#implfun
+d3fundcl_get_sres
+  (  dfun  ) = let
+val+
+D3FUNDCL
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in sres end
+
+(* ****** ****** *)
+
+#implfun
+d3fundcl_get_tdxp
+  (  dfun  ) = let
+val+
+D3FUNDCL
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in tdxp end
+
+#implfun
+d3fundcl_get_wsxp
+  (  dfun  ) = let
+val+
+D3FUNDCL
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in wsxp end
+
+(* ****** ****** *)
+
+#implfun
+d3fundcl_make_args
+( lctn
+, dpid, farg, sres, tdxp, wsxp) =
+(
+D3FUNDCL
+(lctn, dpid, farg, sres, tdxp, wsxp))
+
+endloc (*local*) // end of [ local(d3fundcl) ]
 
 (* ****** ****** *)
 

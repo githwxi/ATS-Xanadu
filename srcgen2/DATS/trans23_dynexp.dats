@@ -184,14 +184,6 @@ s2typ_tup0(npf1, s2typlst(d3ps))): s2typ
 } (*where*)//end-of-[trans23_d2pat(env0,d2p0)]
 
 (* ****** ****** *)
-
-#implfun
-trans23_d2patlst
-  (env0, d2ps) =
-(
-list_trans23_fnp(env0, d2ps, trans23_d2pat))
-
-(* ****** ****** *)
 //
 #implfun
 trans23_d2exp
@@ -535,11 +527,25 @@ end (*let*) // end of [trans23_f2arg(env0,farg)]
 (* ****** ****** *)
 
 #implfun
+trans23_d2patlst
+  (env0, d2ps) =
+(
+list_trans23_fnp(env0, d2ps, trans23_d2pat))
+
+(* ****** ****** *)
+//
+#implfun
 trans23_d2explst
   (env0, d2es) =
 (
 list_trans23_fnp(env0, d2es, trans23_d2exp))
-
+//
+#implfun
+trans23_d2expopt
+  (env0, dopt) =
+(
+optn_trans23_fnp(env0, dopt, trans23_d2exp))
+//
 (* ****** ****** *)
 
 #implfun
