@@ -235,8 +235,8 @@ d3exp_make_styp_node
 //
 |D2Edapp _ => f0_dapp(env0, d2e0)
 //
-(*
 |D2Eift0 _ => f0_ift0(env0, d2e0)
+(*
 |D2Ecas0 _ => f0_cas0(env0, d2e0)
 *)
 //
@@ -385,6 +385,80 @@ end (*let*)//end of [f0_dapp(env0,d2e0)]
 (* ****** ****** *)
 //
 fun
+f0_ift0
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+val loc0 = d2e0.lctn()
+val-
+D2Eift0
+(d2e1
+,dthn, dels) = d2e0.node()
+//
+val d3e1 =
+trans23_d2exp_tpck
+( env0, d2e1, t2p1 ) where
+{
+val t2p1 = the_s2typ_bool()
+}
+//
+val dthn =
+trans23_d2expopt(env0, dthn)
+//
+val tres =
+(
+case+ dthn of
+|
+optn_nil() => the_s2typ_void()
+|
+optn_cons(d3e2) =>
+(
+case+ dels of
+|
+optn_nil() => the_s2typ_void()
+|
+optn_cons(d2e3) => d3e2.styp((*0*))))
+//
+in//let
+//
+case+ dels of
+|
+optn_nil() =>
+let
+val dels = optn_nil()
+val dthn =
+(
+case+ dthn of
+|
+optn_nil() => dthn
+|
+optn_cons(d3e2) =>
+optn_cons
+(
+trans23_d3exp_tpck(env0, d3e2, tres))
+)
+in
+d3exp_make_styp_node
+(loc0, tres, D3Eift0(d3e1, dthn, dels))
+end
+|
+optn_cons(d2e3) =>
+let
+val dels =
+optn_cons
+(
+trans23_d2exp_tpck(env0, d2e3, tres))
+in
+d3exp_make_styp_node
+(loc0, tres, D3Eift0(d3e1, dthn, dels))
+end
+//
+end (*let*) // end of [f0_ift0(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
 f0_assgn
 ( env0:
 ! tr23env
@@ -405,10 +479,8 @@ t2pl = d3el.styp((*void*))
 val t2p0 = the_s2typ_void()
 //
 val
-d3er = trans23_d2exp(env0, d2er)
-val
 d3er =
-trans23_d3exp_tpck(env0,d3er,t2pl)
+trans23_d2exp_tpck(env0,d2er,t2pl)
 //
 in//let
 d3exp_make_styp_node

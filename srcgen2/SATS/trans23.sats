@@ -259,6 +259,11 @@ trans23_d2explst
 (env0:
 ! tr23env, d2es: d2explst): d3explst
 //
+fun
+trans23_d2expopt
+(env0:
+! tr23env, dopt: d2expopt): d3expopt
+//
 (* ****** ****** *)
 //
 fun
@@ -328,6 +333,11 @@ trans23_d2eclistopt
 HX-2023-02-25:
 For type-checking level-3 dynexps
 *)
+(* ****** ****** *)
+fun
+trans23_d2exp_tpck
+( env0: !tr23env
+, d2e0: d2exp, t2p0: s2typ): d3exp
 (* ****** ****** *)
 fun
 trans23_d3exp_tpck
