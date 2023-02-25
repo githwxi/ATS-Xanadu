@@ -67,6 +67,12 @@ _(*TRANS23*) = "./trans23.dats"
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload styp with d2con_get_lctn
+#symload styp with d2con_get_styp
+(* ****** ****** *)
+#symload styp with d2cst_get_lctn
+#symload styp with d2cst_get_styp
+(* ****** ****** *)
 #symload lctn with d2pat_get_lctn
 #symload node with d2pat_get_node
 #symload styp with d2pat_get_styp
@@ -206,6 +212,8 @@ D2Estr(tok) =>
 d3exp_make_styp_node
 (loc0, t2p0, D3Estr(tok))
 //
+|D2Ecst _ => f0_cst(env0, d2e0)
+//
 |D2Esym0 _ => f0_sym0(env0, d2e0)
 //
 |D2Edapp _ => f0_dapp(env0, d2e0)
@@ -214,6 +222,27 @@ d3exp_make_styp_node
 //
 endlet where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_cst
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+val loc0 = d2e0.lctn()
+//
+val-
+D2Ecst(d2c1) = d2e0.node()
+//
+in//let
+d3exp_make_styp_node
+( loc0
+, t2p0, D3Ecst(d2c1)) where
+{
+val t2p0 = d2c1.styp((*void*)) }
+end (*let*)//end-of-[f0_sym0(env0,d2e0)]
 //
 (* ****** ****** *)
 //
