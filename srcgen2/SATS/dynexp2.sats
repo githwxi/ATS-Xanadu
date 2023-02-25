@@ -816,7 +816,7 @@ D2Edtsel of
 ,sint(*npf*), d2explstopt(*arg*))
 //
 |
-D2Eif0 of
+D2Eift0 of
 (d2exp(*cond*)
 ,d2expopt(*then*),d2expopt(*else*))
 //

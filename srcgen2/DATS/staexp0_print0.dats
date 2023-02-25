@@ -310,10 +310,10 @@ print
 ("G0Elpar(", tkb, ";", ges, ",", tke, ")")
 //
 |
-G0Eif0
+G0Eift0
 (tknd,g0e1,g0e2,g0e3,topt) =>
 (
-print("G0Eif0(",tknd,";");
+print("G0Eift0(",tknd,";");
 print(g0e1,";",g0e2,";",g0e3,";",topt,")"))
 //
 |

@@ -134,11 +134,6 @@ D3Prcd2
 ( print("D3Prcd2(")
 ; print(tknd,";",npf1,";",ldps,")") )
 //
-|
-D3Eassgn
-(d3el, d3er) =>
-print("D3Eassgn(",d3el,";",d3er,")")
-//
 |D3Pnone0() => print( "D3Pnone0(",")" )
 |D3Pnone1(d1p1) => print("D3Pnone1(",d1p1,")")
 |D3Pnone2(d3p1) => print("D3Pnone2(",d3p1,")")
@@ -252,6 +247,16 @@ print("D3Elet0(",dcls,";",d3e1,")"))
 D3Ewhere
 (d3e1, dcls) =>
 print("D3Ewhere(",d3e1,";",dcls,")")
+//
+|
+D3Eassgn
+(d3el, d3er) =>
+print("D3Eassgn(",d3el,";",d3er,")")
+//
+|D3Eift0
+(d3e1,dthn,dels) =>
+( print("D3Eift0(")
+; print(d3e1,";",dthn,";",dels,")"))
 //
 |D3Et2pck
 ( d3e1 , t2p2 ) =>

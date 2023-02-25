@@ -220,7 +220,7 @@ val () =
 trsym2a_d2explst(env0, d2es) end
 //
 |
-D2Eif0
+D2Eift0
 (d2e1,dthn,dels) =>
 let
 val () =

@@ -699,17 +699,12 @@ end (*let*) // end of [d0exp_lpar_errck]
 (* ****** ****** *)
 //
 fun
-d0exp_if0_errck
-( loc
-: loc_t
-, tif0
-: token
-, d0e1
-: d0exp
-, dthn
-: d0exp_THEN
-, dels
-: d0exp_ELSE): d0exp =
+d0exp_ift0_errck
+( loc: loc_t
+, tift: token
+, d0e1: d0exp
+, dthn: d0exp_THEN
+, dels: d0exp_ELSE): d0exp =
 let
 val lvl =
 (
@@ -720,24 +715,19 @@ in//let
 d0exp_errck
 ( lvl+1
 , d0exp
-  (loc, D0Eif0(tif0,d0e1,dthn,dels)) )
-end (*let*) // end of [d0exp_if0_errck]
+  (loc, D0Eift0(tift,d0e1,dthn,dels)))
+end (*let*) // end of [d0exp_ift0_errck]
 //
 (* ****** ****** *)
 //
 fun
-d0exp_if1_errck
-( loc
-: loc_t
-, tif0
-: token
-, d0e1
-: d0exp
-, dthn
-: d0exp_THEN
-, dels
-: d0exp_ELSE
-, tinv: t0inv): d0exp =
+d0exp_ift1_errck
+( loc: loc_t
+, tift: token
+, d0e1: d0exp
+, dthn: d0exp_THEN
+, dels: d0exp_ELSE
+, tinv: t0inv(*st*)): d0exp =
 let
 val lvl =
 (
@@ -749,8 +739,8 @@ d0exp_errck
 ( lvl+1
 , d0exp
   (loc
-  ,D0Eif1(tif0,d0e1,dthn,dels,tinv)) )
-end (*let*) // end of [d0exp_if1_errck]
+  ,D0Eift1(tift,d0e1,dthn,dels,tinv)))
+end (*let*) // end of [d0exp_ift1_errck]
 //
 (* ****** ****** *)
 //
@@ -1347,12 +1337,12 @@ D0Etarg _ => f0_targ(d0e, err)
 D0Elpar _ => f0_lpar(d0e, err)
 //
 |
-D0Eif0
-(_,_,_,_) => f0_if0( d0e, err )
+D0Eift0
+(_,_,_,_) => f0_ift0(d0e, err)
 |
-D0Eif1
+D0Eift1
 (_
-,_,_,_,_) => f0_if1( d0e, err )
+,_,_,_,_) => f0_ift1(d0e, err)
 //
 |
 D0Ecas0 _ => f0_cas0(d0e, err)
@@ -1534,7 +1524,7 @@ end (*let*) // end of [f0_lpar(d0e,err)]
 (* ****** ****** *)
 //
 fun
-f0_if0
+f0_ift0
 ( d0e
 : d0exp
 , err
@@ -1546,8 +1536,8 @@ val e00 = err
 val loc = d0e.lctn()
 //
 val-
-D0Eif0
-( tif0
+D0Eift0
+( tift
 , d0e1
 , dthn, dels) = d0e.node()
 //
@@ -1562,14 +1552,14 @@ in
 if
 (err=e00)
 then (d0e) else
-d0exp_if0_errck
-(d0e.lctn(), tif0, d0e1, dthn, dels)
-end (*let*) // end of [f0_if0(d0e, err)]
+d0exp_ift0_errck
+(d0e.lctn(), tift, d0e1, dthn, dels)
+end (*let*) // end of [f0_ift0(d0e, err)]
 //
 (* ****** ****** *)
 //
 fun
-f0_if1
+f0_ift1
 ( d0e
 : d0exp
 , err
@@ -1579,8 +1569,8 @@ let
 val e00 = err
 //
 val-
-D0Eif1
-( tif0
+D0Eift1
+( tift
 , d0e1, dthn
 , dels, tinv) = d0e.node()
 //
@@ -1598,9 +1588,9 @@ in
 if
 (err=e00)
 then (d0e) else
-d0exp_if1_errck
-(d0e.lctn(),tif0,d0e1,dthn,dels,tinv)
-end (*let*) // end of [f0_if1(d0e, err)]
+d0exp_ift1_errck
+(d0e.lctn(),tift,d0e1,dthn,dels,tinv)
+end (*let*) // end of [f0_ift1(d0e, err)]
 //
 (* ****** ****** *)
 //

@@ -225,10 +225,10 @@ end (*let*) // end of [g0exp_lpar_errck]
 (* ****** ****** *)
 //
 fun
-g0exp_if0_errck
+g0exp_ift0_errck
 ( loc
 : loc_t
-, tif0
+, tift
 : token
 , g0e1
 : g0exp
@@ -243,8 +243,8 @@ val lvl = 0 // errvl(ges)
 in//let
 g0exp_errck
 ( lvl+1
-, g0exp(loc,G0Eif0(tif0,g0e1,gthn,gels,tend)))
-end (*let*) // end of [g0exp_if0_errck]
+, g0exp(loc,G0Eift0(tift,g0e1,gthn,gels,tend)))
+end (*let*) // end of [g0exp_ift0_errck]
 //
 (* ****** ****** *)
 
@@ -267,7 +267,7 @@ G0Eapps _ => f0_apps(g0e, err)
 |
 G0Elpar _ => f0_lpar(g0e, err)
 //
-|G0Eif0 _ => f0_if0( g0e, err )
+|G0Eift0 _ => f0_ift0( g0e, err )
 //
 |
 G0Etkerr _ =>
@@ -336,7 +336,7 @@ end (*let*) // end of [f0_lpar]
 (* ****** ****** *)
 //
 fun
-f0_if0
+f0_ift0
 ( g0e
 : g0exp
 , err
@@ -346,8 +346,8 @@ let
 val e00 = err
 //
 val-
-G0Eif0
-( tif0
+G0Eift0
+( tift
 , g0e1
 , gthn
 , gels
@@ -414,9 +414,9 @@ in//let
 if
 (err=e00)
 then (g0e) else
-g0exp_if0_errck
-(g0e.lctn(), tif0, g0e1, gthn, gels, tend)
-end (*let*) // end of [f_if0(g0e,err)]
+g0exp_ift0_errck
+(g0e.lctn(), tift, g0e1, gthn, gels, tend)
+end (*let*) // end of [ f_ift0(g0e, err) ]
 //
 (* ****** ****** *)
 //

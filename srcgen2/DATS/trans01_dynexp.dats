@@ -839,8 +839,8 @@ D0Etarg _ => f0_targ(tenv, d0e0)
 |
 D0Elpar _ => f0_lpar(tenv, d0e0)
 //
-|D0Eif0 _ => f0_if0( tenv, d0e0 )
-|D0Eif1 _ => f0_if1( tenv, d0e0 )
+|D0Eift0 _ => f0_ift0(tenv, d0e0)
+|D0Eift1 _ => f0_ift1(tenv, d0e0)
 //
 |D0Ecas0 _ => f0_cas0(tenv, d0e0)
 |D0Ecas1 _ => f0_cas1(tenv, d0e0)
@@ -1313,7 +1313,7 @@ endlet // end of [ D0Elpar(_,_,_) ]
 (* ****** ****** *)
 
 and
-f0_if0
+f0_ift0
 ( tenv:
 ! tr01env
 , d0e0: d0exp): d1efx =
@@ -1323,8 +1323,8 @@ val
 loc0 = d0e0.lctn()
 //
 val-
-D0Eif0
-(tif0
+D0Eift0
+(tift
 ,d0e1
 ,dthn,dels) = d0e0.node()
 //
@@ -1339,14 +1339,14 @@ in//let
 FXITMatm(d1e0) where
 {
 val d1e0 = d1exp
-(loc0, D1Eif0(d1e1, dthn, dels)) }
+(loc0, D1Eift0(d1e1, dthn, dels)) }
 //
-end (*let*)//end-of(f0_if0(tenv,d0e0))
+end (*let*)//end-of(f0_ift0(tenv,d0e0))
 
 (* ****** ****** *)
 
 and
-f0_if1
+f0_ift1
 ( tenv:
 ! tr01env
 , d0e0: d0exp): d1efx =
@@ -1356,8 +1356,8 @@ val
 loc0 = d0e0.lctn()
 //
 val-
-D0Eif1
-(tif0
+D0Eift1
+(tift
 ,d0e1,dthn
 ,dels,tinv) = d0e0.node()
 //
@@ -1374,9 +1374,9 @@ in//let
 FXITMatm(d1e0) where
 {
 val d1e0 = d1exp
-(loc0, D1Eif1(d1e1,dthn,dels,tinv)) }
+(loc0, D1Eift1(d1e1,dthn,dels,tinv)) }
 //
-end (*let*)//end-of(f0_if1(tenv,d0e0))
+end (*let*)//end-of(f0_ift1(tenv,d0e0))
 
 (* ****** ****** *)
 

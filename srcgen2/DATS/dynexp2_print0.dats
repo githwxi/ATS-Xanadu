@@ -461,9 +461,9 @@ print("D2Edtsel(");
 print(tknd,";", lab1,";");
 print(dpis,";", npf1,";", opt2,")"))
 //
-|D2Eif0
+|D2Eift0
 (d2e1,dthn,dels) =>
-( print("D2Eif0(")
+( print("D2Eift0(")
 ; print(d2e1,";",dthn,";",dels,")"))
 //
 |

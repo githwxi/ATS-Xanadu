@@ -235,6 +235,11 @@ d3exp_make_styp_node
 //
 |D2Edapp _ => f0_dapp(env0, d2e0)
 //
+(*
+|D2Eift0 _ => f0_ift0(env0, d2e0)
+|D2Ecas0 _ => f0_cas0(env0, d2e0)
+*)
+//
 |D2Eassgn _ => f0_assgn(env0, d2e0)
 //
 | _(*otherwise*) => d3exp_none1(d2e0)
@@ -244,24 +249,35 @@ endlet where
 //
 (* ****** ****** *)
 //
+//
 fun
 f0_var
 ( env0:
 ! tr23env
 , d2e0: d2exp): d3exp =
-let
+(
+d3exp_make_styp_node
+( loc0
+, t2p0, D3Evar(d2v1))) where
+{
+//
 val loc0 = d2e0.lctn()
 //
 val-
 D2Evar(d2v1) = d2e0.node()
 //
+val t2p0 =
+let
+val
+t2p0 = d2v1.styp((*nil*))
 in//let
-d3exp_make_styp_node
-( loc0
-, t2p0, D3Evar(d2v1)) where
-{
-val t2p0 = d2v1.styp((*void*)) }
-end (*let*)//end-of-[f0_var(env0,d2e0)]
+(
+case+
+t2p0.node() of
+|T2Plft(t2p1) => t2p1
+|_(*non-T2Plft*) => t2p0) endlet
+//
+} (*where*) // end of [f0_var(...)]
 //
 (* ****** ****** *)
 //

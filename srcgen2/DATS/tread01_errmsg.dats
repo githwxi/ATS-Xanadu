@@ -133,7 +133,7 @@ g1exp_fpemsg(out, g1e2))
 G1Elist(g1es) =>
 g1explst_fpemsg(out, g1es)
 |
-G1Eif0
+G1Eift0
 (g1e1,g1e2,g1e3) =>
 (
 g1exp_fpemsg(out, g1e1);
@@ -714,7 +714,7 @@ d1explst_fpemsg(out, des1);
 d1explst_fpemsg(out, des2))
 //
 |
-D1Eif0
+D1Eift0
 (d1e1, dthn, dels) =>
 (
 d1exp_fpemsg(out, d1e1);

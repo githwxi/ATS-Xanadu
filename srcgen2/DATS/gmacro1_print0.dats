@@ -81,10 +81,10 @@ print("G1Mdpat(", g1m, ")")
 print("G1Mdexp(", g1m, ")")
 //
 |
-G1Mif0
+G1Mift0
 (g1m1,g1m2,g1m3) =>
 print
-("G1Mif0("
+("G1Mift0("
 , g1m1, ";", g1m2, ";", g1m3, ")")
 //
 |

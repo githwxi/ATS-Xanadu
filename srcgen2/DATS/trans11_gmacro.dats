@@ -494,7 +494,7 @@ G1Mid0 _ => f0_gid0(env0, g1m0)
 //
 (*
 |
-G1Mif0 _ => f0_cond(env0, g1m0)
+G1Mift0 _ => f0_cond(env0, g1m0)
 *)
 //
 |
@@ -591,7 +591,7 @@ G1Mid0 _ =>
 f0_gmid(env0, g1m0, genv)
 //
 |
-G1Mif0 _ =>
+G1Mift0 _ =>
 f0_cond(env0, g1m0, genv)
 //
 |
@@ -677,7 +677,7 @@ f0_cond
 let
 //
 val-
-G1Mif0
+G1Mift0
 ( g1m1
 , g1m2, g1m3) = g1m0
 //
@@ -716,7 +716,7 @@ else f0_g1m0(env0, g1m3, genv))
 |
 _(*non-if-redex*) =>
 (
-G1Mif0
+G1Mift0
 (g1m1, g1m2, g1m3)) where
 {
   val g1m2 = G1Msubs(g1m2, genv)

@@ -806,12 +806,13 @@ case+ tinv of
 |
 T0ENDINVnone _ =>
 d0exp_make_node
-(lres, D0Eif0(tknd, d0e1, d0e2, d0e3))
+( lres
+, D0Eift0(tknd, d0e1, d0e2, d0e3))
 |
 T0ENDINVsome(_, tinv) =>
 d0exp_make_node
 ( lres
-, D0Eif1(tknd, d0e1, d0e2, d0e3, tinv))
+, D0Eift1(tknd,d0e1,d0e2,d0e3,tinv))
 )
 end (*let*) // end of [ T_IF0(...) ]
 //
@@ -839,7 +840,7 @@ val tinv = p1_t0endinv(buf, err)
 //
 val lres =
 let
-  val lknd = tknd.lctn()
+val lknd = tknd.lctn( (*void*) )
 in//let
 case+ tinv of
 |
@@ -851,8 +852,7 @@ case+ dcls of
 list_nil() =>
 (
 case+ tbar of
-|
-optn_nil() => lknd+tof0.lctn()
+|optn_nil() => lknd+tof0.lctn()
 |
 optn_cons(tbar) => lknd+tbar.lctn()
 )
@@ -2535,7 +2535,7 @@ d0eclseq_WHERE
 )(*case*)//end-of(f0_whrs(d0e1,wdcs))
 //
 fun
-pk_if01
+pk_if0
 ( tok:
   token
 , buf:
@@ -2592,15 +2592,15 @@ case+ tinv of
 T0ENDINVnone _ =>
 d0exp_make_node
 ( lres
-, D0Eif0(tknd, d0e1, d0e2, d0e3))
+, D0Eift0(tknd, d0e1, d0e2, d0e3))
 |
 T0ENDINVsome(_, tinv) =>
 d0exp_make_node
 ( lres
-, D0Eif1
+, D0Eift1
   (tknd, d0e1, d0e2, d0e3, tinv))
 )
-end(*let*)//end-of-[pk_if01(tok,buf,err)]
+end(*let*)//end-of-[pk_if0(tok,buf,err)]
 //
 and
 p1_then
@@ -2772,7 +2772,7 @@ case+
 tok.node() of
 |
 T_IF0() =>
-pk_if01(tok, buf, err)
+pk_if0(tok, buf, err)
 (*
 | // HX: case-exp should reside in
 T_CASE _ => // a pair of parentheses

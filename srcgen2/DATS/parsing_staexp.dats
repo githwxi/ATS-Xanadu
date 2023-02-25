@@ -1039,7 +1039,7 @@ in
 err := e00;
 g0exp_make_node
 ( lres
-, G0Eif0(tok, g0e1, g0e2, g0e3, topt))
+, G0Eift0(tok, g0e1, g0e2, g0e3, topt))
 end (*let*) // end of [T_IF0]
 //
 | _ (* rest-of-token *) =>

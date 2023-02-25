@@ -571,7 +571,7 @@ endlet // end of [d2exp_seqn_errck(...)]
 (* ****** ****** *)
 //
 fun
-d2exp_if0_errck
+d2exp_ift0_errck
 ( loc0: loc_t
 , d2e1: d2exp
 , opt1: d2expopt
@@ -583,8 +583,8 @@ gmax
 ,errvl(opt1), errvl(opt2)) in//let
 d2exp_errck
 ( lvl0+1
-, d2exp(loc0,D2Eif0(d2e1,opt1,opt2)))
-endlet // end of [d2exp_if0_errck(...)]
+, d2exp(loc0,D2Eift0(d2e1,opt1,opt2)))
+endlet // end of [d2exp_ift0_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1308,7 +1308,7 @@ d2e0.node() of
 |D2Elet0 _ => f0_let0(d2e0, err)
 //
 |
-D2Eif0
+D2Eift0
 (
 d2e1,
 dthn,dels) =>
@@ -1327,9 +1327,9 @@ in//let
 if
 (e00=err)
 then (d2e0) else
-d2exp_if0_errck
+d2exp_ift0_errck
 (d2e0.lctn(), d2e1, dthn, dels)
-endlet//[D1Eif0(d1e1,dthn,dels)]
+endlet//[D1Eift0(d1e1,dthn,dels)]
 //
 |D2Ecas0 _ => f0_cas0(d2e0, err)
 //

@@ -217,7 +217,7 @@ val lvl = gmax
 , errvl(ge2), errvl(ge3))
 in//let
 g1exp_errck
-(lvl+1, g1exp(loc,G1Eif0(ge1,ge2,ge3)))
+(lvl+1, g1exp(loc,G1Eift0(ge1,ge2,ge3)))
 endlet // end of [g1exp_cond_errck(...)]
 (* ****** ****** *)
 
@@ -260,7 +260,7 @@ g1exp_a0pp_errck(loc0)
 //
 |G1Elist _ => f0_list(g1e0, err)
 //
-|G1Eif0(_,_,_) => f0_cond(g1e0, err)
+|G1Eift0(_,_,_) => f0_cond(g1e0, err)
 //
 | _(*otherwise*) =>
 let
@@ -362,7 +362,7 @@ val e00 = err
 val loc = g1e.lctn()
 //
 val-
-G1Eif0
+G1Eift0
 (g1e1,g1e2,g1e3) = g1e.node()
 //
 val
