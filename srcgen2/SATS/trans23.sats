@@ -322,11 +322,15 @@ trans23_d3exp_tpck
 (* ****** ****** *)
 fun
 trans23_d3explst_tpck1
-( env0: !tr23env
+( env0:
+! tr23env
+, loc0: loc_t
 , d3es: d3explst, t2p0: s2typ): d3explst
 fun
 trans23_d3explst_tpcks
-( env0: !tr23env
+( env0:
+! tr23env
+, loc0: loc_t
 , d3es: d3explst, t2ps: s2typlst): d3explst
 (* ****** ****** *)
 

@@ -268,8 +268,13 @@ d3pat_none1(d2p0:d2pat): d3pat
 fun
 d3pat_make_node
 (loc:loc_t,nod:d3pat_node): d3pat
+fun
+d3pat_make_styp_node
+(loc:loc_t
+,t2p:s2typ,nod:d3pat_node): d3pat
 //
 #symload d3pat with d3pat_make_node
+#symload d3pat with d3pat_make_styp_node
 //
 (* ****** ****** *)
 //
@@ -391,8 +396,13 @@ d3exp_none1(d2e0:d2exp): d3exp
 fun
 d3exp_make_node
 (loc:loc_t,nod:d3exp_node): d3exp
+fun
+d3exp_make_styp_node
+(loc:loc_t
+,t2p:s2typ,nod:d3exp_node): d3exp
 //
 #symload d3exp with d3exp_make_node
+#symload d3exp with d3exp_make_styp_node
 //
 (* ****** ****** *)
 //

@@ -164,6 +164,18 @@ end (*let*) // end of [d3pat_set_styp]
 endloc (*local*) // end of [local(d3pat)]
 
 (* ****** ****** *)
+//
+#implfun
+d3pat_make_styp_node
+( loc0, t2p0, node ) =
+let
+  val
+  d3p0 = d3pat(loc0, node)
+in
+  (d3pat_set_styp(d3p0, t2p0); d3p0)
+end(*let*)//end-of-[d3pat_make_styp_node]
+//
+(* ****** ****** *)
 
 local
 //
@@ -225,6 +237,18 @@ end (*let*) // end of [d3exp_set_styp]
 //
 endloc (*local*) // end of [local(d3exp)]
 
+(* ****** ****** *)
+//
+#implfun
+d3exp_make_styp_node
+( loc0, t2p0, node ) =
+let
+  val
+  d3e0 = d3exp(loc0, node)
+in
+  (d3exp_set_styp(d3e0, t2p0); d3e0)
+end(*let*)//end-of-[d3exp_make_styp_node]
+//
 (* ****** ****** *)
 
 local

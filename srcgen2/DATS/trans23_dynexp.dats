@@ -81,37 +81,11 @@ _(*TRANS23*) = "./trans23.dats"
 #symload node with d2exp_get_node
 #symload styp with d2exp_get_styp
 (* ****** ****** *)
+#symload styp with d3pat_get_styp
 #symload styp with d3pat_set_styp
-#symload styp with d3exp_set_styp
 (* ****** ****** *)
-//
-fun
-d3pat_make_styp_node
-( loc0: loc_t
-, t2p0: s2typ
-, node: d3pat_node): d3pat =
-let
-val
-d3p0 = d3pat(loc0, node)
-in
-  (d3p0.styp(t2p0); d3p0) end
-//
-fun
-d3exp_make_styp_node
-( loc0: loc_t
-, t2p0: s2typ
-, node: d3exp_node): d3exp =
-let
-val
-d3e0 = d3exp(loc0, node)
-in
-  (d3e0.styp(t2p0); d3e0) end
-//
-#symload
-d3pat with d3pat_make_styp_node
-#symload
-d3exp with d3exp_make_styp_node
-//
+#symload styp with d3exp_get_styp
+#symload styp with d3exp_set_styp
 (* ****** ****** *)
 //
 #implfun
@@ -132,8 +106,13 @@ d2p0.node() of
 //
 |
 D2Pvar(d2v) =>
+let
+val
+t2p0 = d2v.styp((*void*))
+in
 d3pat_make_styp_node
 (loc0, t2p0, D3Pvar(d2v))
+end
 //
 |
 D2Pint(tok) =>
@@ -212,6 +191,8 @@ D2Estr(tok) =>
 d3exp_make_styp_node
 (loc0, t2p0, D3Estr(tok))
 //
+|D2Evar _ => f0_var(env0, d2e0)
+//
 |D2Ecst _ => f0_cst(env0, d2e0)
 //
 |D2Esym0 _ => f0_sym0(env0, d2e0)
@@ -222,6 +203,27 @@ d3exp_make_styp_node
 //
 endlet where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_var
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+val loc0 = d2e0.lctn()
+//
+val-
+D2Evar(d2v1) = d2e0.node()
+//
+in//let
+d3exp_make_styp_node
+( loc0
+, t2p0, D3Evar(d2v1)) where
+{
+val t2p0 = d2v1.styp((*void*)) }
+end (*let*)//end-of-[f0_var(env0,d2e0)]
 //
 (* ****** ****** *)
 //
@@ -242,7 +244,7 @@ d3exp_make_styp_node
 , t2p0, D3Ecst(d2c1)) where
 {
 val t2p0 = d2c1.styp((*void*)) }
-end (*let*)//end-of-[f0_sym0(env0,d2e0)]
+end (*let*)//end-of-[f0_cst(env0,d2e0)]
 //
 (* ****** ****** *)
 //
@@ -284,11 +286,46 @@ val d3f0 =
 val d3es =
   trans23_d2explst(env0, d2es)
 //
-val t2p0 = s2typ_none0((*void*))
+val tfun = d3exp_get_styp(d3f0)
 //
+val targ =
+(
+case+
+tfun.node() of
+|
+T2Pfun1
+( f2cl, npf1
+, t2ps, tres) => t2ps
+|_ (*else*) => list_nil()): s2typlst
+val tres =
+(
+case+
+tfun.node() of
+|
+T2Pfun1
+( f2cl
+, npf1, t2ps, tres) => tres
+| _(* non-T2Pfun1 *) => tfun): s2typ
+//
+val () =
+prerrln
+("trans23_d2exp:f0_dapp:tfun = ",tfun)
+val () =
+prerrln
+("trans23_d2exp:f0_dapp:targ = ",targ)
+val () =
+prerrln
+("trans23_d2exp:f0_dapp:tres = ",tres)
+//
+in//let
+let
+val d3es =
+trans23_d3explst_tpcks
+(env0, loc0, d3es, targ)
 in
 d3exp_make_styp_node
-(loc0, t2p0, D3Edapp(d3f0, npf1, d3es))
+(loc0, tres, D3Edapp(d3f0, npf1, d3es))
+end (*let*)
 end (*let*)//end of [f0_dapp(env0,d2e0)]
 //
 (* ****** ****** *)
