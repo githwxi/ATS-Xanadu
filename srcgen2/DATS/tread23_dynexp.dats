@@ -80,6 +80,11 @@ tread23_d3patlst
 list_tread23_fnp(d3ps, err, tread23_d3pat)
 (* ****** ****** *)
 #implfun
+tread23_d3patopt
+  (  dopt, err  ) =
+optn_tread23_fnp(dopt, err, tread23_d3pat)
+(* ****** ****** *)
+#implfun
 tread23_l3d3plst
   (  ldps, err  ) =
 list_tread23_fnp(ldps, err, tread23_l3d3p)
@@ -90,9 +95,24 @@ tread23_d3explst
 list_tread23_fnp(d3es, err, tread23_d3exp)
 (* ****** ****** *)
 #implfun
+tread23_d3expopt
+  (  dopt, err  ) =
+optn_tread23_fnp(dopt, err, tread23_d3exp)
+(* ****** ****** *)
+#implfun
 tread23_l3d3elst
   (  ldes, err  ) =
 list_tread23_fnp(ldes, err, tread23_l3d3e)
+(* ****** ****** *)
+#implfun
+tread23_f3arglst
+  (  f3as, err  ) =
+list_tread23_fnp(f3as, err, tread23_f3arg)
+(* ****** ****** *)
+#implfun
+tread23_d3eclist
+  (  dcls, err  ) =
+list_tread23_fnp(dcls, err, tread23_d3ecl)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread23_dynexp.dats] *)

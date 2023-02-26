@@ -61,6 +61,8 @@ ATS_PACKNAME // namespace
 (* ****** ****** *)
 #typedef f3arg = $D3E.f3arg
 (* ****** ****** *)
+#typedef d3ecl = $D3E.d3ecl
+(* ****** ****** *)
 #typedef d2conlst = $D2E.d2conlst
 #typedef d2cstlst = $D2E.d2cstlst
 (* ****** ****** *)
@@ -76,6 +78,8 @@ ATS_PACKNAME // namespace
 #typedef l3d3elst = $D3E.l3d3elst
 (* ****** ****** *)
 #typedef f3arglst = $D3E.f3arglst
+(* ****** ****** *)
+#typedef d3eclist = $D3E.d3eclist
 (* ****** ****** *)
 #typedef teqd3exp = $D3E.teqd3exp
 (* ****** ****** *)
@@ -129,11 +133,21 @@ fun tread23_l3d3p: ftread23(l3d3p)
 fun tread23_d3exp: ftread23(d3exp)
 fun tread23_l3d3e: ftread23(l3d3e)
 (* ****** ****** *)
+fun tread23_f3arg: ftread23(f3arg)
+(* ****** ****** *)
+fun tread23_d3ecl: ftread23(d3ecl)
+(* ****** ****** *)
 fun tread23_d3patlst: ftread23(d3patlst)
+fun tread23_d3patopt: ftread23(d3patopt)
 fun tread23_l3d3plst: ftread23(l3d3plst)
 (* ****** ****** *)
 fun tread23_d3explst: ftread23(d3explst)
+fun tread23_d3expopt: ftread23(d3expopt)
 fun tread23_l3d3elst: ftread23(l3d3elst)
+(* ****** ****** *)
+fun tread23_f3arglst: ftread23(f3arglst)
+(* ****** ****** *)
+fun tread23_d3eclist: ftread23(d3eclist)
 (* ****** ****** *)
 fun tread23_d3valdcl: ftread23(d3valdcl)
 fun tread23_d3vardcl: ftread23(d3vardcl)
@@ -145,6 +159,61 @@ fun tread23_d3fundclist: ftread23(d3fundclist)
 (* ****** ****** *)
 fun tread23_d3explstopt: ftread23(d3explstopt)
 fun tread23_d3eclistopt: ftread23(d3eclistopt)
+(* ****** ****** *)
+(*
+//
+//HX-2023-02-26: printing errmsgs
+//
+*)
+(* ****** ****** *)
+fun d3pat_fpemsg(FILR, d3pat): void
+fun d3exp_fpemsg(FILR, d3exp): void
+fun l3d3p_fpemsg(FILR, l3d3p): void
+fun l3d3e_fpemsg(FILR, l3d3e): void
+(* ****** ****** *)
+fun f3arg_fpemsg:(FILR,f3arg)->void
+(* ****** ****** *)
+fun d3ecl_fpemsg(FILR, d3ecl): void
+(* ****** ****** *)
+fun d3patlst_fpemsg(FILR, d3patlst): void
+(* ****** ****** *)
+fun d3explst_fpemsg(FILR, d3explst): void
+fun d3expopt_fpemsg(FILR, d3expopt): void
+(* ****** ****** *)
+fun l3d3plst_fpemsg(FILR, l3d3plst): void
+fun l3d3elst_fpemsg(FILR, l3d3elst): void
+(* ****** ****** *)
+fun f3arglst_fpemsg(FILR, f3arglst): void
+(* ****** ****** *)
+fun d3eclist_fpemsg(FILR, d3eclist): void
+(* ****** ****** *)
+fun teqd3exp_fpemsg(FILR, teqd3exp): void
+(* ****** ****** *)
+fun d3valdcl_fpemsg(FILR, d3valdcl): void
+fun d3vardcl_fpemsg(FILR, d3vardcl): void
+fun d3fundcl_fpemsg(FILR, d3fundcl): void
+(* ****** ****** *)
+fun
+d3valdclist_fpemsg(FILR, d3valdclist): void
+(* ****** ****** *)
+fun
+d3vardclist_fpemsg(FILR, d3vardclist): void
+(* ****** ****** *)
+fun
+d3fundclist_fpemsg(FILR, d3fundclist): void
+(* ****** ****** *)
+//
+fun
+d3parsed_fpemsg
+( out: FILR, dpar: d3parsed ): void
+//
+(* ****** ****** *)
+//
+fun
+d3explstopt_fpemsg(FILR, d3explstopt): void
+fun
+d3eclistopt_fpemsg(FILR, d3eclistopt): void
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread23.sats] *)
