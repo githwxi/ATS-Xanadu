@@ -169,6 +169,10 @@ trans23_sats
 trans23_sats: ; $(XATSOPT) --static SATS/trans23.sats
 ######
 all_sats:: \
+tread23_sats
+tread23_sats: ; $(XATSOPT) --static SATS/tread23.sats
+######
+all_sats:: \
 xglobal_sats
 xglobal_sats: ; $(XATSOPT) --static SATS/xglobal.sats
 ######
