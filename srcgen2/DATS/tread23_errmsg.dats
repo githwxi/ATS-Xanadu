@@ -279,6 +279,116 @@ D3LAB(lab,d3e1) => d3exp_fpemsg(out,d3e1)
 //
 (* ****** ****** *)
 //
+local
+
+fun
+auxmain
+( out: FILR
+, dcl: d3ecl): void =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+dcl.node() of
+|
+D3Cstatic(tknd,dcl1) =>
+let
+val () =
+d3ecl_fpemsg(out, dcl1)
+endlet//end-of(D3Cstatic(_,_))
+|
+D3Cextern(tknd,dcl1) =>
+let
+val () =
+d3ecl_fpemsg(out, dcl1)
+endlet//end-of(D3Cextern(_,_))
+//
+|
+D3Clocal0(dcs1,dcs2) =>
+let
+val () =
+d3eclist_fpemsg(out, dcs1)
+val () =
+d3eclist_fpemsg(out, dcs2)
+endlet // end of [D3Clocal0(...)]
+//
+|
+D3Cvaldclst
+(tknd, d3vs) => let
+val () =
+  d3valdclist_fpemsg(out, d3vs)
+endlet // end-of-(D3Cvaldclst(_,_,_))
+|
+D3Cvardclst
+(tknd, d3vs) => let
+val () =
+  d3vardclist_fpemsg(out, d3vs)
+endlet // end-of-(D3Cvardclst(_,_,_))
+//
+|
+D3Cfundclst
+( tknd
+, tqas, d3fs) => let
+(*
+val () =
+  t2qaglst_fpemsg(out, tqas)
+*)
+val () =
+  d3fundclist_fpemsg(out, d3fs)
+endlet // end-of-(D3Cfundclst(_,_,_))
+//
+| D3Cnone0() => ( (*void*) )
+| D3Cnone1(d2cl) => ( (*void*) )
+|
+D3Cerrck(_,_) => d3ecl_fpemsg(out, dcl)
+//
+end (*let*) // end-of-(auxmain(out,dcl))
+
+(* ****** ****** *)
+in(* in-of-local *)
+(* ****** ****** *)
+
+#implfun
+d3ecl_fpemsg
+(out, dcl0) =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+val () =
+prerrln
+("d3ecl_fpemsg: dcl0 = ", dcl0)
+//
+in//let
+//
+case+
+dcl0.node() of
+//
+|
+D3Cerrck(lvl, d3cl)  =>
+(
+auxmain( out, d3cl );
+if
+(lvl
+>FPEMSG_ERRVL) then () else
+let
+val loc0 = dcl0.lctn() in
+println
+("TREAD12-ERROR:",loc0,":",dcl0)
+end
+)
+//
+| _(* otherwise *) => (   (*skipped*)   )
+//
+end (*let*)//end-of(d3ecl_fpemsg(out,dcl0))
+//
+endloc(*local*)//end-of(local(d3ecl_fpemsg))
+//
+(* ****** ****** *)
+//
 #implfun
 d3patlst_fpemsg
 (out, d3ps) =
