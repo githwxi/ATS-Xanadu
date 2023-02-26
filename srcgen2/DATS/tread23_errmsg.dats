@@ -278,5 +278,71 @@ D3LAB(lab,d3e1) => d3exp_fpemsg(out,d3e1)
 ) (*case+*)//end-of-(l3d3e_fpemsg(out,ld3e))
 //
 (* ****** ****** *)
+//
+#implfun
+d3patlst_fpemsg
+(out, d3ps) =
+list_foreach<d3pat>(d3ps) where
+{
+#impltmp
+foreach$work<d3pat>(d3p1) = d3pat_fpemsg(out,d3p1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d3explst_fpemsg
+(out, d3es) =
+list_foreach<d3exp>(d3es) where
+{
+#impltmp
+foreach$work<d3exp>(d3e1) = d3exp_fpemsg(out,d3e1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d3eclist_fpemsg
+(out, dcls) =
+list_foreach<d3ecl>(dcls) where
+{
+#impltmp
+foreach$work<d3ecl>(dcl1) = d3ecl_fpemsg(out,dcl1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d3valdclist_fpemsg
+(out, d3vs) =
+list_foreach<d3valdcl>(d3vs) where
+{
+#impltmp
+foreach$work<d3valdcl>(dvar) = d3valdcl_fpemsg(out,dvar)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d3vardclist_fpemsg
+(out, d3vs) =
+list_foreach<d3vardcl>(d3vs) where
+{
+#impltmp
+foreach$work<d3vardcl>(dvar) = d3vardcl_fpemsg(out,dvar)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d3fundclist_fpemsg
+(out, d3fs) =
+list_foreach<d3fundcl>(d3fs) where
+{
+#impltmp
+foreach$work<d3fundcl>(dfun) = d3fundcl_fpemsg(out,dfun)
+}
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread23_errmsg.dats] *)
