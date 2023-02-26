@@ -297,6 +297,13 @@
 #include
 "./../../DATS/trans23_decl00.dats"
 (* ****** ****** *)
+#include
+"./../../DATS/tread23.dats"
+#include
+"./../../DATS/tread23_dynexp.dats"
+#include
+"./../../DATS/tread23_decl00.dats"
+(* ****** ****** *)
 //
 local
 //
@@ -413,10 +420,11 @@ fperr22_d2parsed(g_stderr(), dpar)
 val
 dpar = d3parsed_of_trans23(dpar)
 //
-(*
-val (  ) =
-fperr23_d3parsed(g_stderr(), dpar)
-*)
+val () =
+let
+val out = g_stderr()
+in//let
+d3parsed_fpemsg( out, dpar ) end // let
 //
 (* ****** ****** *)
 //
@@ -430,4 +438,4 @@ endloc (*local*) // end-of-[local]
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_TEST_JS_test24_tread22.dats] *)
+(* end of [ATS3/XATSOPT_TEST_JS_test25_tread23.dats] *)
