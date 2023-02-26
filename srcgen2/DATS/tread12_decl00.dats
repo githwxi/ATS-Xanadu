@@ -83,23 +83,6 @@ end (*let*) // end-of(d2ecl_errck)
 (* ****** ****** *)
 //
 fun
-d2ecl_local0_errck
-( loc0
-: loc_t
-, dcs1
-: d2eclist
-, dcs2
-: d2eclist): d2ecl =
-let
-val lvl = 0
-in//let
-d2ecl_errck
-(lvl+1,d2ecl(loc0,D2Clocal0(dcs1,dcs2)))
-end (*let*) // end of [d2ecl_local0_errck]
-//
-(* ****** ****** *)
-//
-fun
 d2ecl_static_errck
 ( loc0: loc_t
 , tknd: token
@@ -124,6 +107,23 @@ d2ecl_errck
 ( lvl+1
 , d2ecl(loc0, D2Cextern(tknd, dcl1)) )
 end (*let*)//end-of-[d2ecl_extern_errck]
+//
+(* ****** ****** *)
+//
+fun
+d2ecl_local0_errck
+( loc0
+: loc_t
+, dcs1
+: d2eclist
+, dcs2
+: d2eclist): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(lvl+1,d2ecl(loc0,D2Clocal0(dcs1,dcs2)))
+end (*let*) // end of [d2ecl_local0_errck]
 //
 (* ****** ****** *)
 //

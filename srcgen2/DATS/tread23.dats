@@ -58,5 +58,46 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+//
+#implfun
+d3parsed_fpemsg
+  (out, dpar) = let
+//
+val nerror =
+d3parsed_get_nerror(dpar)
+//
+in//let
+if
+(nerror > 0) then
+let
+val parsed =
+d3parsed_get_parsed(dpar)
+in
+d3eclistopt_fpemsg(out, parsed) end else ()
+end (*let*)//end-of-[d3parsed_fpemsg(out,dpar)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3explstopt_fpemsg
+  (out, dopt) =
+(
+case+ dopt of
+| optn_nil() => ((*void*))
+| optn_cons(d3es) => d3explst_fpemsg(out, d3es)
+)
+//
+(* ****** ****** *)
+//
+#implfun
+d3eclistopt_fpemsg
+  (out, dopt) =
+(
+case+ dopt of
+| optn_nil() => ((*void*))
+| optn_cons(d3cs) => d3eclist_fpemsg(out, d3cs)
+)
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread23.dats] *)
