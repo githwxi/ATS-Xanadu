@@ -54,7 +54,7 @@ ATS_PACKNAME // namespace
 #typedef d2cst = $D2E.d2cst
 #typedef d2var = $D2E.d2var
 (* ****** ****** *)
-#typedef d3pat = $D3E.d2pat
+#typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
 #typedef l3d3p = $D3E.l3d3p
 #typedef l3d3e = $D3E.l3d3e
@@ -82,7 +82,6 @@ ATS_PACKNAME // namespace
 #typedef d3valdcl = $D3E.d3valdcl
 #typedef d3vardcl = $D3E.d3vardcl
 #typedef d3fundcl = $D3E.d3fundcl
-#typedef d3cstdcl = $D3E.d3cstdcl
 (* ****** ****** *)
 //
 #typedef d3parsed = $D3E.d3parsed
@@ -91,7 +90,6 @@ ATS_PACKNAME // namespace
 #typedef d3valdclist = $D3E.d3valdclist
 #typedef d3vardclist = $D3E.d3vardclist
 #typedef d3fundclist = $D3E.d3fundclist
-#typedef d3cstdclist = $D3E.d3cstdclist
 (* ****** ****** *)
 #typedef d3explstopt = $D3E.d3explstopt
 #typedef d3eclistopt = $D3E.d3eclistopt
@@ -124,6 +122,29 @@ optn_tread23_fnp
 , err: &sint >> _
 , fpr: ftread23(syn)): optn(syn)
 //
+(* ****** ****** *)
+fun tread23_d3pat: ftread23(d3pat)
+fun tread23_l3d3p: ftread23(l3d3p)
+(* ****** ****** *)
+fun tread23_d3exp: ftread23(d3exp)
+fun tread23_l3d3e: ftread23(l3d3e)
+(* ****** ****** *)
+fun tread23_d3patlst: ftread23(d3patlst)
+fun tread23_l3d3plst: ftread23(l3d3plst)
+(* ****** ****** *)
+fun tread23_d3explst: ftread23(d3explst)
+fun tread23_l3d3elst: ftread23(l3d3elst)
+(* ****** ****** *)
+fun tread23_d3valdcl: ftread23(d3valdcl)
+fun tread23_d3vardcl: ftread23(d3vardcl)
+fun tread23_d3fundcl: ftread23(d3fundcl)
+(* ****** ****** *)
+fun tread23_d3valdclist: ftread23(d3valdclist)
+fun tread23_d3vardclist: ftread23(d3vardclist)
+fun tread23_d3fundclist: ftread23(d3fundclist)
+(* ****** ****** *)
+fun tread23_d3explstopt: ftread23(d3explstopt)
+fun tread23_d3eclistopt: ftread23(d3eclistopt)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread23.sats] *)
