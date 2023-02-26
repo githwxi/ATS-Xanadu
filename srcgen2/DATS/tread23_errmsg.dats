@@ -67,6 +67,94 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload fpemsg with d3ecl_fpemsg
 (* ****** ****** *)
+
+local
+
+fun
+auxmain
+( out: FILR
+, d3p: d3pat): void =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+d3p.node() of
+//
+|D3Pvar _ => ()
+//
+|D3Pint _ => ()
+|D3Pbtf _ => ()
+|D3Pchr _ => ()
+|D3Pflt _ => ()
+|D3Pstr _ => ()
+//
+|
+D3Pdapp
+(d3f0,npf1,d3ps) =>
+let
+  val () =
+  d3pat_fpemsg(out, d3f0)
+  val () =
+  d3patlst_fpemsg(out, d3ps)
+end (*let*) // end-of-(D3Pdapp)
+//
+|
+D3Ptup0
+(npf1, d3ps) =>
+let
+val () = d3patlst_fpemsg(out, d3ps)
+endlet
+//
+|D3Pnone0(    ) => (   (*void*)   )
+|D3Pnone1(d2p1) => (   (*void*)   )
+//
+|
+D3Perrck(_,_) => d3pat_fpemsg(out, d3p)
+//
+end (*let*) // end-of-(auxmain(out,d3p))
+
+(* ****** ****** *)
+in(* in-of-local *)
+(* ****** ****** *)
+//
+#implfun
+d3pat_fpemsg
+( out, d3p0 ) =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+val () =
+prerrln
+("d3pat_fpemsg: d3p0 = ", d3p0)
+//
+in//let
+//
+case+
+d3p0.node() of
+|
+D3Perrck(lvl, d3p1) =>
+(
+auxmain( out, d3p1 ); 
+if
+(lvl
+>FPEMSG_ERRVL) then () else
+let
+val loc0 = d3p0.lctn() in
+println
+("TREAD12-ERROR:",loc0,":",d3p0)
+end
+)
+| _(* otherwise *) => (  (* skipped *)  )
+//
+end(*let*)//end-of(d3pat_fpemsg(out,d3p0))
+//
+endloc(*local*)//end-of(local(d3pat_fpemsg))
+//
+(* ****** ****** *)
 //
 #implfun
 l3d3p_fpemsg
@@ -76,6 +164,107 @@ case+ ld3p of
 |
 D3LAB(lab,d3p1) => d3pat_fpemsg(out,d3p1)
 ) (*case+*)//end-of-(l3d3p_fpemsg(out,ld3p))
+//
+(* ****** ****** *)
+//
+local
+
+fun
+auxmain
+( out: FILR
+, d3e: d3exp): void =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+d3e.node() of
+//
+|D3Eint _ => ()
+|D3Ebtf _ => ()
+|D3Echr _ => ()
+|D3Eflt _ => ()
+|D3Estr _ => ()
+//
+|D3Etop _ => ()
+//
+|D3Evar _ => ()
+//
+|D3Econ _ => ()
+|D3Ecst _ => ()
+//
+|
+D3Edapp
+(d3f0,npf1,d3es) =>
+let
+  val () =
+  d3exp_fpemsg(out, d3f0)
+  val () =
+  d3explst_fpemsg(out, d3es)
+endlet
+//
+|
+D3Eift0
+(d3e1,dthn,dels) =>
+let
+val () = d3exp_fpemsg(out, d3e1)
+val () = d3expopt_fpemsg(out, dthn)
+val () = d3expopt_fpemsg(out, dels)
+endlet
+//
+|
+D3Etup0
+(npf1, d3es) =>
+let
+val () = d3explst_fpemsg(out, d3es)
+endlet
+//
+|D3Enone0(    ) => (   (*void*)   )
+|D3Enone1(d1e1) => (   (*void*)   )
+|
+D3Eerrck(_,_) => d3exp_fpemsg(out, d3e)
+//
+end (*let*) // end-of-(auxmain(out,d3e))
+
+(* ****** ****** *)
+in(* in-of-local *)
+(* ****** ****** *)
+//
+#implfun
+d3exp_fpemsg
+( out, d3e0 ) =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+val () =
+prerrln
+("d3exp_fpemsg: d3e0 = ", d3e0)
+//
+in//let
+//
+case+
+d3e0.node() of
+|
+D3Eerrck(lvl, d3e1) =>
+(
+auxmain( out, d3e1 ); 
+if
+(lvl
+>FPEMSG_ERRVL) then () else
+let
+val loc0 = d3e0.lctn() in
+println
+("TREAD12-ERROR:",loc0,":",d3e0)
+end
+)
+| _(* otherwise *) => (  (* skipped *)  )
+//
+end(*let*)//end-of(d3exp_fpemsg(out,d3e0))
+//
+endloc(*local*)//end-of(local(d3exp_fpemsg))
 //
 (* ****** ****** *)
 //

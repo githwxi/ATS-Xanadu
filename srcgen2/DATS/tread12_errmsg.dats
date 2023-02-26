@@ -328,7 +328,7 @@ endlet // end of [S2TEXsub(s2v1,s2ps)]
 ) (*case+*)//end-of-(s2tex-fpemsg(out,s2tx))
 //
 (* ****** ****** *)
-
+//
 local
 
 fun
@@ -432,7 +432,7 @@ endlet
 |D2Pg1mac(gmac) => (   (*void*)   )
 //
 |D2Pnone0(    ) => (   (*void*)   )
-|D2Pnone1(d1e1) => (   (*void*)   )
+|D2Pnone1(d1p1) => (   (*void*)   )
 |
 D2Perrck(_,_) => d2pat_fpemsg(out, d2p)
 //
@@ -489,7 +489,7 @@ D2LAB(lab,d2p1) => d2pat_fpemsg(out,d2p1)
 ) (*case+*)//end-of-(l2d2p_fpemsg(out,ld2p))
 //
 (* ****** ****** *)
-
+//
 local
 
 fun
@@ -700,7 +700,7 @@ end
 end(*let*)//end-of(d2exp_fpemsg(out,d2e0))
 //
 endloc(*local*)//end-of(local(d2exp_fpemsg))
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -810,7 +810,7 @@ endlet // end of [S2RESsome(seff,s2e1)]
 ) (*case+*)//end-of[s2res_fpemsg(out,sres)]
 //
 (* ****** ****** *)
-
+//
 local
 
 fun
@@ -999,7 +999,7 @@ end
 end (*let*)//end-of(d2ecl_fpemsg(out,dcl0))
 //
 endloc(*local*)//end-of(local(d2ecl_fpemsg))
-
+//
 (* ****** ****** *)
 //
 #implfun

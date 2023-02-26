@@ -362,6 +362,7 @@ d3exp_node =
 |D3Edapp of
 (d3exp, sint(*npf*), d3explst)
 //
+//
 |D3Elet0 of (d3eclist, d3exp)
 |D3Ewhere of (d3exp, d3eclist)
 //
@@ -373,6 +374,8 @@ D3Eassgn of
 D3Eift0 of
 (d3exp(*cond*)
 ,d3expopt(*then*),d3expopt(*else*))
+//
+|D3Etup0 of (sint(*npf*), d3explst)
 //
 |
 D3Et2pck of (d3exp, s2typ)//HX: casting
