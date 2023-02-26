@@ -12,11 +12,11 @@ var z3: strn = "0"
 val () = (z3 := "1")
 //
 (* ****** ****** *)
+(*
 fun
 fact0(x: sint) =
 if x > 0 then x * fact0(x-1) else 1
-(* ****** ****** *)
-////
+*)
 (* ****** ****** *)
 #extern
 fun

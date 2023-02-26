@@ -88,11 +88,20 @@ in//let
 case+
 d2cl.node() of
 //
+|D2Cd1ecl _ =>
+let
+val loc0 = d2cl.lctn()
+in//let
+d3ecl(loc0, D3Cd2ecl(d2cl))
+end (*let*) // end of [D2Cd1ecl]
+//
+|D2Cstatic _ => f0_static(env0, d2cl)
+|D2Cextern _ => f0_extern(env0, d2cl)
+//
 |
 D2Cvaldclst _ => f0_valdclst(env0, d2cl)
 |
 D2Cvardclst _ => f0_vardclst(env0, d2cl)
-//
 |
 D2Cfundclst _ => f0_fundclst(env0, d2cl)
 //
@@ -104,6 +113,44 @@ in//let
 end (*let*) // end of [_(*otherwise*)] // temp
 //
 end where {
+//
+(* ****** ****** *)
+//
+fun
+f0_static
+( env0:
+! tr23env
+, d2cl: d2ecl): d3ecl =
+let
+//
+val
+loc0 = d2cl.lctn()
+val-
+D2Cstatic
+(tknd, dcl1) =  d2cl.node()
+val
+dcl1 = trans23_d2ecl(env0, dcl1)
+in//let
+  d3ecl(loc0, D3Cstatic(tknd, dcl1))
+end (*let*) // end of [f0_static(env0,d2cl)]
+//
+fun
+f0_extern
+( env0:
+! tr23env
+, d2cl: d2ecl): d3ecl =
+let
+//
+val
+loc0 = d2cl.lctn()
+val-
+D2Cextern
+(tknd, dcl1) = d2cl.node()
+val
+dcl1 = trans23_d2ecl(env0, dcl1)
+in//let
+  d3ecl(loc0, D3Cextern(tknd, dcl1))
+end (*let*) // end of [f0_extern(env0,d2cl)]
 //
 (* ****** ****** *)
 //
