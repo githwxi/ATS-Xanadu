@@ -907,7 +907,7 @@ D2Cfundclst
 //
 (*
 val tqas =
-tread12_t1qaglst(tqas, err)
+tread12_t2qaglst(tqas, err)
 *)
 val d2fs =
 tread12_d2fundclist(d2fs, err)

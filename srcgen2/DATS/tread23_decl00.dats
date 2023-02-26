@@ -164,6 +164,26 @@ d3ecl_errck
 end (*let*) // end of [d3ecl_vardclst_errck]
 //
 (* ****** ****** *)
+//
+fun
+d3ecl_fundclst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, tqas
+: t2qaglst
+, d3fs
+: d3fundclist): d3ecl =
+let
+val lvl = 0
+in//let
+d3ecl_errck
+( lvl+1
+, d3ecl(loc0,D3Cfundclst(tknd,tqas,d3fs)) )
+end (*let*) // end of [d3ecl_fundclst_errck]
+//
+(* ****** ****** *)
 
 #implfun
 tread23_d3ecl
@@ -185,12 +205,10 @@ D3Clocal0 _ => f0_local0(d3cl, err)
 //
 |
 D3Cvaldclst _ => f0_valdclst(d3cl, err)
-(*
 |
 D3Cvardclst _ => f0_vardclst(d3cl, err)
 |
 D3Cfundclst _ => f0_fundclst(d3cl, err)
-*)
 //
 |
 _(*otherwise*) =>
@@ -322,6 +340,36 @@ if
 then (dcl) else
 d3ecl_vardclst_errck(dcl.lctn(),tknd,d3vs)
 end (*let*) // end of [f0_vardclst(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fundclst
+( dcl: d3ecl
+, err: &sint >> _): d3ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D3Cfundclst
+(tknd
+,tqas, d3fs) = dcl.node()
+//
+(*
+val tqas =
+tread23_t2qaglst(tqas, err)
+*)
+val d3fs =
+tread23_d3fundclist(d3fs, err)
+//
+in//let
+if
+(e00=err)
+then (dcl) else
+d3ecl_fundclst_errck(loc, tknd, tqas, d3fs)
+end (*let*) // end of [f0_fundclst(dcl,err)]
 //
 (* ****** ****** *)
 //
