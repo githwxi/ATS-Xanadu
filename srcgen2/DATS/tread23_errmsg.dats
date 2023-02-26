@@ -60,14 +60,34 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
-#symload node with s2exp_get_node
-(* ****** ****** *)
 #symload fpemsg with d3pat_fpemsg
 #symload fpemsg with l3d3p_fpemsg
 #symload fpemsg with d3exp_fpemsg
 #symload fpemsg with l3d3e_fpemsg
 (* ****** ****** *)
 #symload fpemsg with d3ecl_fpemsg
+(* ****** ****** *)
+//
+#implfun
+l3d3p_fpemsg
+(out, ld3p) =
+(
+case+ ld3p of
+|
+D3LAB(lab,d3p1) => d3pat_fpemsg(out,d3p1)
+) (*case+*)//end-of-(l3d3p_fpemsg(out,ld3p))
+//
+(* ****** ****** *)
+//
+#implfun
+l3d3e_fpemsg
+(out, ld3e) =
+(
+case+ ld3e of
+|
+D3LAB(lab,d3e1) => d3exp_fpemsg(out,d3e1)
+) (*case+*)//end-of-(l3d3e_fpemsg(out,ld3e))
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread23_errmsg.dats] *)
