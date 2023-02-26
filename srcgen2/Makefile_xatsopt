@@ -647,6 +647,18 @@ trans23_decl00_dats: ; $(XATSOPT) --dynamic DATS/trans23_decl00.dats
 
 ######
 all_dats:: \
+tread23_dats
+tread23_dats: ; $(XATSOPT) --dynamic DATS/tread23.dats
+all_dats:: \
+tread23_dynexp_dats
+tread23_dynexp_dats: ; $(XATSOPT) --dynamic DATS/tread23_dynexp.dats
+all_dats:: \
+tread23_decl00_dats
+tread23_decl00_dats: ; $(XATSOPT) --dynamic DATS/tread23_decl00.dats
+######
+
+######
+all_dats:: \
 xatsopt_tmplib_dats
 xatsopt_tmplib_dats: ; $(XATSOPT) --dynamic DATS/xatsopt_tmplib.dats
 ######
