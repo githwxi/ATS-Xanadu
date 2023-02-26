@@ -2002,6 +2002,53 @@ gseq_x2imap_strm_c4fr
   (nint, x0, nint, y0)-<cfr>z0): strm_vt(z0)
 (* ****** ****** *)
 //
+// HX: Some third-order gseq-functions
+//
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+gseq_forall_of_strmize
+(strmize: strmize(xs, x0)): forall(xs, x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_forall_of_foreach
+(foreach: foreach(xs, x0)): forall(xs, x0)
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+gseq_foreach_of_strmize
+(strmize: strmize(xs, x0)): foreach(xs, x0)
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_foldl_of_strmize
+(strmize: strmize(xs, x0)): foldl(xs, x0, r0)
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_foldr_of_strmize
+(strmize: strmize(xs, x0)): foldr(xs, x0, r0)
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_foldl_of_foreach
+(foreach: foreach(xs, x0)): foldl(xs, x0, r0)
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_foldr_of_foreach
+(foreach: foreach(xs, x0)): foldr(xs, x0, r0)
+(* ****** ****** *)
+//
 // HX-2020-05-30:
 // symbol overloading for gseq-operations
 //
