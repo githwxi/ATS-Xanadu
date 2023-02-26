@@ -72,5 +72,26 @@ ATS_PACKNAME
 #symload lctn with f3arg_get_lctn
 #symload node with f3arg_get_node
 (* ****** ****** *)
+#symload lctn with d3valdcl_get_lctn
+#symload lctn with d3vardcl_get_lctn
+#symload lctn with d3fundcl_get_lctn
+(* ****** ****** *)
+// 
+(* ****** ****** *)
+#implfun
+tread23_d3valdclist
+  (  d3vs, err  ) =
+list_tread23_fnp(d3vs, err, tread23_d3valdcl)
+(* ****** ****** *)
+#implfun
+tread23_d3vardclist
+  (  d3vs, err  ) =
+list_tread23_fnp(d3vs, err, tread23_d3vardcl)
+(* ****** ****** *)
+#implfun
+tread23_d3fundclist
+  (  d3fs, err  ) =
+list_tread23_fnp(d3fs, err, tread23_d3fundcl)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread23_decl00.dats] *)
