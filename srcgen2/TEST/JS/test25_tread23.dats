@@ -303,6 +303,8 @@
 "./../../DATS/tread23_dynexp.dats"
 #include
 "./../../DATS/tread23_decl00.dats"
+#include
+"./../../DATS/tread23_errmsg.dats"
 (* ****** ****** *)
 //
 local
