@@ -395,6 +395,37 @@ end (*let*)//end-(tread23_l3d3e(ld3e,err))
 (* ****** ****** *)
 //
 #implfun
+tread23_f3arg
+  (farg, err) =
+(
+case+
+farg.node() of
+//
+|F3ARGsta0 _ => farg
+|F3ARGmet0 _ => farg
+//
+|
+F3ARGdyn0
+(npf1, d3ps) =>
+let
+val e00 = err
+val d3ps =
+tread23_d3patlst(d3ps, err)
+in//let
+if
+(e00=err)
+then (farg) else
+f3arg
+(farg.lctn(), F3ARGdyn0(npf1, d3ps))
+endlet // end of [F3ARGdyn0(npf1,d3ps)]
+//
+) (*case+*)//end-[tread23_f3arg(farg,err)]
+//
+(* ****** ****** *)
+//
+(* ****** ****** *)
+//
+#implfun
 tread23_d3patlst
   (  d3ps, err  ) =
 list_tread23_fnp(d3ps, err, tread23_d3pat)

@@ -390,6 +390,92 @@ endloc(*local*)//end-of(local(d3ecl_fpemsg))
 (* ****** ****** *)
 //
 #implfun
+d3valdcl_fpemsg
+(out, dval) =
+let
+//
+val (  ) =
+  d3pat_fpemsg(out, dpat)
+//
+val (  ) =
+  teqd3exp_fpemsg(out, tdxp)
+//
+(*
+val (  ) =
+  wths2exp_fpemsg(out, wsxp)
+*)
+//
+endlet where
+{
+//
+  val dpat = d3valdcl_get_dpat(dval)
+  val tdxp = d3valdcl_get_tdxp(dval)
+//
+(*
+  val wsxp = d3valdcl_get_wsxp(dval)
+*)
+//
+} (*where*)//end-of-[d3valdcl_fpemsg(out,dval)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3vardcl_fpemsg
+(out, dvar) =
+let
+//
+val (  ) =
+  teqd3exp_fpemsg(out, dini)
+//
+endlet where
+{
+//
+(*
+  val dpid = d3vardcl_get_dpid(dvar)
+  val vpid = d3vardcl_get_vpid(dvar)
+*)
+//
+(*
+  val sres = d3vardcl_get_sres(dvar)
+*)
+//
+  val dini = d3vardcl_get_dini(dvar)
+//
+} (*where*)//end-of-[d3vardcl_fpemsg(out,dval)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3fundcl_fpemsg
+(out, dfun) =
+let
+//
+val (  ) =
+  f3arglst_fpemsg(out, fags)
+val (  ) =
+  teqd3exp_fpemsg(out, tdxp)
+//
+endlet where
+{
+//
+(*
+  val dpid = d3fundcl_get_dpid(dfun)
+*)
+//
+  val fags = d3fundcl_get_farg(dfun)
+(*
+  val sres = d3fundcl_get_sres(dfun)
+*)
+  val tdxp = d3fundcl_get_tdxp(dfun)
+(*
+  val wsxp = d3fundcl_get_wsxp(dfun)
+*)
+//
+} (*where*)//end-of-[d3fundcl_fpemsg(out,dfun)]
+//
+(* ****** ****** *)
+//
+#implfun
 d3patlst_fpemsg
 (out, d3ps) =
 list_foreach<d3pat>(d3ps) where
