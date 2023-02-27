@@ -378,6 +378,32 @@ end (*let*) // end of [f0_fundclst(dcl,err)]
 (* ****** ****** *)
 //
 #implfun
+tread23_teqd3exp
+  (tdxp, err) =
+(
+case+ tdxp of
+|
+TEQD3EXPnone() => tdxp
+|
+TEQD3EXPsome(teq1, d3e2) =>
+let
+val e00 = err
+(*
+val ( ) =
+prerrln
+("tread23_teqd3exp: d3e2 = ", d3e2)
+*)
+val d3e2 = tread23_d3exp(d3e2, err)
+in//letp
+if
+(e00=err)
+then tdxp else TEQD3EXPsome(teq1, d3e2)
+endlet // end of [ TEQD3EXPsome( _,_ ) ]
+) (*case+*)//end-(tread23_teqd3exp(tdxp,err))
+//
+(* ****** ****** *)
+//
+#implfun
 tread23_d3valdcl
   (dval, err) =
 let
@@ -408,6 +434,83 @@ if
 then (dval)
 else d3valdcl( loc, dpat, tdxp, wsxp )
 endlet // end-of-[tread23_d3valdcl(out,dval)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread23_d3vardcl
+  (dvar, err) =
+let
+//
+val e00 = err
+//
+val loc = dvar.lctn()
+//
+val
+dpid = d3vardcl_get_dpid(dvar)
+val
+vpid = d3vardcl_get_vpid(dvar)
+val
+sres = d3vardcl_get_sres(dvar)
+val
+dini = d3vardcl_get_dini(dvar)
+//
+(*
+val
+sres = tread23_s2expopt(sres,err)
+*)
+val
+dini = tread23_teqd3exp(dini,err)
+//
+in//let
+if
+(e00=err)
+then (dvar)
+else d3vardcl(loc,dpid,vpid,sres,dini)
+endlet // end-of-[tread23_d3vardcl(out,dvar)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread23_d3fundcl
+  (dfun, err) =
+let
+//
+val e00 = err
+//
+val loc = dfun.lctn()
+//
+val
+dpid = d3fundcl_get_dpid(dfun)
+val
+farg = d3fundcl_get_farg(dfun)
+val
+sres = d3fundcl_get_sres(dfun)
+val
+tdxp = d3fundcl_get_tdxp(dfun)
+val
+wsxp = d3fundcl_get_wsxp(dfun)
+//
+val
+farg =
+tread23_f3arglst(farg, err)
+(*
+val
+sres = tread23_s2res(sres,err)
+*)
+val
+tdxp = tread23_teqd3exp(tdxp,err)
+(*
+val
+wsxp = tread23_wths2exp(wsxp,err)
+*)
+//
+in//let
+if
+(e00=err)
+then (dfun)
+else d3fundcl(loc,dpid,farg,sres,tdxp,wsxp)
+endlet // end-of-[tread23_d3fundcl(out,dfun)]
 //
 (* ****** ****** *)
 #implfun
