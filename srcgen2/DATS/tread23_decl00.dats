@@ -376,6 +376,40 @@ end (*let*) // end of [f0_fundclst(dcl,err)]
 } (*where*) // end of [tread23_d3ecl(d3cl,err)]
 
 (* ****** ****** *)
+//
+#implfun
+tread23_d3valdcl
+  (dval, err) =
+let
+//
+val e00 = err
+//
+val loc = dval.lctn()
+//
+val
+dpat = d3valdcl_get_dpat(dval)
+val
+tdxp = d3valdcl_get_tdxp(dval)
+val
+wsxp = d3valdcl_get_wsxp(dval)
+//
+val
+dpat = tread23_d3pat(dpat,err)
+val
+tdxp = tread23_teqd3exp(tdxp,err)
+(*
+val
+wsxp = tread23_wths2exp(wsxp,err)
+*)
+//
+in//let
+if
+(e00=err)
+then (dval)
+else d3valdcl( loc, dpat, tdxp, wsxp )
+endlet // end-of-[tread23_d3valdcl(out,dval)]
+//
+(* ****** ****** *)
 #implfun
 tread23_d3eclist
   (  dcls, err  ) =

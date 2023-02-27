@@ -60,6 +60,109 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #implfun
+list_tread23_fnp
+{  syn:tx  }
+(  lst , err , fpr  ) =
+(
+  auxlst(lst, err)) where
+{
+//
+fun
+auxlst
+( lst: list(syn)
+, err: &sint >> _): list(syn) =
+case+ lst of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(tm1, tms) =>
+let
+val e00 = err
+val tm1 = fpr(tm1, err)
+val tms = auxlst(tms, err)
+in//let
+if
+(err = e00)
+then lst else list_cons(tm1, tms)
+endlet // end of [auxlst(lst,err)]
+//
+}(*where*)//end(list_tread23_fnp(lst,err,fpr))
+//
+(* ****** ****** *)
+//
+#implfun
+optn_tread23_fnp
+{  syn:tx  }
+(  opt , err , fpr  ) =
+(
+case+ opt of
+|
+optn_nil() => opt
+|
+optn_cons(syn) =>
+let
+val e00 = err
+val syn = fpr(syn, err)
+in // let
+if
+(err=e00)
+then opt else optn_cons(syn)
+endlet // end of [optn_cons(syn)]
+)(*case+*)//end(optn_tread23_fnp(opt,err,fpr)
+//
+(* ****** ****** *)
+
+#implfun
+d3parsed_of_tread23
+  (dpar) =
+let
+//
+var nerror: sint = 0
+//
+val stadyn =
+d3parsed_get_stadyn(dpar)
+val source =
+d3parsed_get_source(dpar)
+//
+val t1penv =
+d3parsed_get_t1penv(dpar)
+val t2penv =
+d3parsed_get_t2penv(dpar)
+//
+val parsed =
+d3parsed_get_parsed(dpar)
+//
+val parsed =
+tread23_d3eclistopt(parsed, nerror)
+//
+in//let
+//
+if
+(nerror=0)
+then (dpar) else
+d3parsed
+(stadyn,nerror,source,t1penv,t2penv,parsed)
+//
+end(*let*)//end-of(d3parsed_of_tread23(dpar))
+
+(* ****** ****** *)
+//
+#implfun
+tread23_d3explstopt
+  (  dopt, err0  ) =
+optn_tread23_fnp(dopt, err0, tread23_d3explst)
+//
+(* ****** ****** *)
+//
+#implfun
+tread23_d3eclistopt
+  (  dopt, err0  ) =
+optn_tread23_fnp(dopt, err0, tread23_d3eclist)
+//
+(* ****** ****** *)
+//
+#implfun
 d3parsed_fpemsg
   (out, dpar) = let
 //
