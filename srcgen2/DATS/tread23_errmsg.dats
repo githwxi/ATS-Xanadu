@@ -220,8 +220,16 @@ let
 val () = d3explst_fpemsg(out, d3es)
 endlet
 //
+|
+D3Eassgn
+(d3el, d3er) =>
+let
+  val () = d3exp_fpemsg(out, d3el)
+  val () = d3exp_fpemsg(out, d3er)
+endlet
+//
 |D3Enone0(    ) => (   (*void*)   )
-|D3Enone1(d1e1) => (   (*void*)   )
+|D3Enone1(d2e1) => (   (*void*)   )
 |
 D3Eerrck(_,_) => d3exp_fpemsg(out, d3e)
 //
@@ -386,6 +394,22 @@ end
 end (*let*)//end-of(d3ecl_fpemsg(out,dcl0))
 //
 endloc(*local*)//end-of(local(d3ecl_fpemsg))
+//
+(* ****** ****** *)
+//
+#implfun
+teqd3exp_fpemsg
+  (out, tdxp) =
+(
+case+ tdxp of
+|
+TEQD3EXPnone() => ()
+|
+TEQD3EXPsome(teq1, d3e2) =>
+let
+val d3e2 = d3exp_fpemsg(out, d3e2)
+endlet // end of [TEQD3EXPsome(_,_)]
+) (*case+*)//end-(teqd3exp_fpemsg(out,tdxp))
 //
 (* ****** ****** *)
 //
