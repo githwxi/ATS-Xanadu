@@ -419,6 +419,8 @@ fperr22_d2parsed(g_stderr(), dpar)
 //
 val
 dpar = d3parsed_of_trans23(dpar)
+val
+dpar = d3parsed_of_tread23(dpar)
 //
 val () =
 let
