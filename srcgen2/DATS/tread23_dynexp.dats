@@ -74,30 +74,353 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 (* ****** ****** *)
+//
+fun
+d3pat_errck
+(lvl0: sint
+,d3p0: d3pat): d3pat =
+let
+val loc0 = d3p0.lctn()
+in//let
+d3pat_make_node
+(loc0, D3Perrck(lvl0, d3p0))
+end (*let*)//end-of(d3pat_errck)
+//
+(* ****** ****** *)
+//
+fun
+d3exp_errck
+(lvl0: sint
+,d3e0: d3exp): d3exp =
+let
+val loc0 = d3e0.lctn()
+in//let
+d3exp_make_node
+(loc0, D3Eerrck(lvl0, d3e0))
+end (*let*)//end-of(d3exp_errck)
+//
+(* ****** ****** *)
+//
+fun
+d3pat_errvl_a1
+(d3p0: d3pat): sint =
+(
+case+ d3p0.node() of
+|
+D3Perrck
+(lvl0, _) => lvl0 | _ => 0
+)
+#symload
+d3pat_errvl with d3pat_errvl_a1
+#symload errvl with d3pat_errvl_a1
+//
+(* ****** ****** *)
+//
+fun
+d3pat_errvl_a2
+(d3p1: d3pat
+,d3p2: d3pat): sint =
+gmax
+(errvl(d3p1),errvl(d3p2))
+#symload
+d3pat_errvl with d3pat_errvl_a2
+#symload errvl with d3pat_errvl_a2
+//
+(* ****** ****** *)
+//
+#extern
+fun
+d3pat_errvl_lst
+(d3ps: d3patlst): sint
+//
+#implfun
+d3pat_errvl_lst
+(  d3ps  ) =
+(
+case+ d3ps of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(d3p1,d3ps) =>
+gmax
+(
+errvl(d3p1),d3pat_errvl_lst(d3ps))
+endcas // end of [ case+( d3ps ) ]
+)
+//
+#symload
+d3pat_errvl with d3pat_errvl_lst
+#symload errvl with d3pat_errvl_lst
+//
+(* ****** ****** *)
+//
+#extern
+fun
+l3d3p_errvl_ldps
+(ldps: l3d3plst): sint
+//
+#implfun
+l3d3p_errvl_ldps
+(   ldps   ) =
+(
+case+ ldps of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(ldp1,ldps) =>
+let
+val+
+D3LAB(lab, dp1) = ldp1 in
+gmax
+( errvl(dp1)
+, l3d3p_errvl_ldps(ldps)) end
+endcas // end of [ case+(ldps) ]
+)
+//
+#symload errvl with l3d3p_errvl_ldps
+//
+(* ****** ****** *)
+//
+fun
+d3exp_errvl_a1
+(d3e0: d3exp): sint =
+(
+case+ d3e0.node() of
+|
+D3Eerrck
+(lvl0, _) => lvl0 | _ => 0
+)
+#symload
+d3exp_errvl with d3exp_errvl_a1
+#symload errvl with d3exp_errvl_a1
+//
+(* ****** ****** *)
+//
+fun
+d3exp_errvl_a2
+(d3e1: d3exp
+,d3e2: d3exp): sint =
+gmax
+(errvl(d3e1),errvl(d3e2))
+#symload
+d3exp_errvl with d3exp_errvl_a2
+#symload errvl with d3exp_errvl_a2
+//
+(* ****** ****** *)
+//
+#extern
+fun
+d3exp_errvl_lst
+(d3es: d3explst): sint
+//
+#implfun
+d3exp_errvl_lst
+(  d3es  ) =
+(
+case+ d3es of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(d3e1,d3es) =>
+gmax
+(
+errvl(d3e1),d3exp_errvl_lst(d3es))
+endcas // end of [ case+( d3es ) ]
+)
+//
+#symload
+d3exp_errvl with d3exp_errvl_lst
+#symload errvl with d3exp_errvl_lst
+//
+(* ****** ****** *)
+//
+#extern
+fun
+d3exp_errvl_opt
+(dopt: d3expopt): sint
+//
+#implfun
+d3exp_errvl_opt
+(  dopt  ) =
+(
+case+ dopt of
+| optn_nil() => 0
+| optn_cons(d3e1) => errvl(d3e1)
+endcas // end of [ case+( d3es ) ]
+)
+//
+#symload
+d3exp_errvl with d3exp_errvl_opt
+#symload errvl with d3exp_errvl_opt
+//
+(* ****** ****** *)
+//
+#extern
+fun
+l3d3e_errvl_ldes
+(ldes: l3d3elst): sint
+//
+#implfun
+l3d3e_errvl_ldes
+(   ldes   ) =
+(
+case+ ldes of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(lde1,ldes) =>
+let
+val+
+D3LAB(lab, de1) = lde1 in
+gmax
+( errvl(de1)
+, l3d3e_errvl_ldes(ldes)) end
+endcas // end of [ case+(ldes) ]
+)
+//
+#symload errvl with l3d3e_errvl_ldes
+//
+(* ****** ****** *)
+//
+(*
+HX-2022-11-23:
+A placeholder for the moment
+but it may actually just be okay!
+*)
+fun
+d3ecl_errvl_lst
+(dcs: d3eclist): sint = 0
+#symload errvl with d3ecl_errvl_lst
+//
+(* ****** ****** *)
+//
+#implfun
+tread23_d3pat
+( d3p0, err ) =
+(
+case+
+d3p0.node() of
+//
+|D3Pvar _ => d3p0
+//
+|D3Pint _ => d3p0
+|D3Pbtf _ => d3p0
+|D3Pchr _ => d3p0
+|D3Pflt _ => d3p0
+|D3Pstr _ => d3p0
+//
+| _(*otherwise*) =>
+let
+val lvl0 = 1
+in//let
+(
+err := err+1; d3pat_errck(lvl0,d3p0))
+endlet // end of [ _(* otherwise *) ]
+//
+) where // end-of-[(*case+(d3p0)-of*)]
+{
+} (*where*)//end[tread23_d3pat(d3p0,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread23_l3d3p
+  (ld3p, err) =
+let
+//
+val e00 = err
+//
+val+
+D3LAB(lab0, d3p1) = ld3p
+//
+val
+d3p1 = tread23_d3pat(d3p1, err)
+//
+in//let
+if // if
+(e00=err)
+then (ld3p) else D3LAB(lab0, d3p1)
+end (*let*)//end-(tread23_l3d3p(ld3p,err))
+//
+(* ****** ****** *)
+//
+#implfun
+tread23_d3exp
+( d3e0, err ) =
+(
+case+
+d3e0.node() of
+//
+|D3Evar _ => d3e0
+//
+|D3Eint _ => d3e0
+|D3Ebtf _ => d3e0
+|D3Echr _ => d3e0
+|D3Eflt _ => d3e0
+|D3Estr _ => d3e0
+//
+| _(*otherwise*) =>
+let
+val lvl0 = 1
+in//let
+(
+err := err+1; d3exp_errck(lvl0,d3e0))
+endlet // end of [ _(* otherwise *) ]
+//
+) where // end-of-[(*case+(d3e0)-of*)]
+{
+} (*where*)//end[tread23_d3exp(d3e0,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread23_l3d3e
+  (ld3e, err) =
+let
+//
+val e00 = err
+//
+val+
+D3LAB(lab0, d3e1) = ld3e
+//
+val
+d3e1 = tread23_d3exp(d3e1, err)
+//
+in//let
+if // if
+(e00=err)
+then (ld3e) else D3LAB(lab0, d3e1)
+end (*let*)//end-(tread23_l3d3e(ld3e,err))
+//
+(* ****** ****** *)
+//
 #implfun
 tread23_d3patlst
   (  d3ps, err  ) =
 list_tread23_fnp(d3ps, err, tread23_d3pat)
-(* ****** ****** *)
+//
 #implfun
 tread23_d3patopt
   (  dopt, err  ) =
 optn_tread23_fnp(dopt, err, tread23_d3pat)
+//
 (* ****** ****** *)
 #implfun
 tread23_l3d3plst
   (  ldps, err  ) =
 list_tread23_fnp(ldps, err, tread23_l3d3p)
 (* ****** ****** *)
+//
 #implfun
 tread23_d3explst
   (  d3es, err  ) =
 list_tread23_fnp(d3es, err, tread23_d3exp)
-(* ****** ****** *)
+//
 #implfun
 tread23_d3expopt
   (  dopt, err  ) =
 optn_tread23_fnp(dopt, err, tread23_d3exp)
+//
 (* ****** ****** *)
 #implfun
 tread23_l3d3elst
