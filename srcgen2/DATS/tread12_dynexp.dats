@@ -334,6 +334,8 @@ Various 'errck' functions for
 constructing d2pat/d2exp-values
 *)
 (* ****** ****** *)
+//
+(* ****** ****** *)
 (*
 Various
 errck-functions for d2pat-values
@@ -479,6 +481,8 @@ d2pat_errck
 ( lvl0+1
 , d2pat(loc0,D2Pannot(d2p1,s1e2,s2e2)))
 endlet // end of [d2pat_annot_errck(...)]
+//
+(* ****** ****** *)
 //
 (* ****** ****** *)
 (*
@@ -880,6 +884,8 @@ d2exp_errck
 ( lvl0+1
 , d2exp(loc0,D2Eannot(d2e1,s1e2,s2e2)))
 endlet // end of [d2exp_annot_errck(...)]
+//
+(* ****** ****** *)
 //
 (* ****** ****** *)
 (*

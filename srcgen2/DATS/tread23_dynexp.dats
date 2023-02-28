@@ -319,6 +319,44 @@ endlet // end of [d3pat_tup0_errck(...)]
 //
 (* ****** ****** *)
 //
+(* ****** ****** *)
+(*
+Various
+errck-functions for d3exp-values
+*)
+(* ****** ****** *)
+//
+fun
+d3exp_tup0_errck
+( loc0: loc_t
+, npf1: (sint)
+, d3es: d3explst): d3exp =
+let
+val lvl0 = errvl(d3es) in//let
+d3exp_errck
+( lvl0+1
+, d3exp( loc0, D3Etup0( npf1, d3es )))
+endlet // end of [d3exp_tup0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_assgn_errck
+( loc0: loc_t
+, d3el: d3exp
+, d3er: d3exp): d3exp =
+let
+val lvl0 = gmax
+(errvl(d3el), errvl(d3er)) in//let
+d3exp_errck
+( lvl0+1
+, d3exp( loc0, D3Eassgn( d3el, d3er ) ))
+endlet // end of [d3exp_assgn_errck(...)]
+//
+(* ****** ****** *)
+//
+(* ****** ****** *)
+//
 #implfun
 tread23_d3pat
 ( d3p0, err ) =
@@ -417,6 +455,9 @@ d3e0.node() of
 |D3Eflt _ => d3e0
 |D3Estr _ => d3e0
 //
+|D3Etup0 _ => f0_tup0(d3e0, err)
+//
+|D3Eassgn _ => f0_assgn(d3e0, err)
 //
 | _(*otherwise*) =>
 let
@@ -428,6 +469,66 @@ endlet // end of [ _(* otherwise *) ]
 //
 ) where // end-of-[(*case+(d3e0)-of*)]
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_tup0
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val-
+D3Etup0
+(npf1, d3es) = d3e.node()
+//
+val
+d3es =
+tread23_d3explst(d3es, err)
+//
+in//let
+if
+(e00=err)
+then (d3e) else
+let
+val loc = d3e.lctn() in
+d3exp_tup0_errck(loc, npf1, d3es)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_tup0(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_assgn
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val-
+D3Eassgn
+(d3el, d3er) = d3e.node()
+//
+val
+d3el = tread23_d3exp(d3el, err)
+val
+d3er = tread23_d3exp(d3er, err)
+//
+in//let
+if
+(e00=err)
+then (d3e) else
+let
+val loc = d3e.lctn() in
+d3exp_assgn_errck(loc, d3el, d3er)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_assgn(d3e,err)]
+//
+(* ****** ****** *)
+//
 } (*where*)//end[tread23_d3exp(d3e0,err)]
 //
 (* ****** ****** *)
