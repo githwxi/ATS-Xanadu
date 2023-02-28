@@ -228,6 +228,13 @@ let
   val () = d3exp_fpemsg(out, d3er)
 endlet
 //
+|
+D3Et2pck
+(d3e1, t2p2) =>
+let
+  val () = d3exp_fpemsg(out, d3e1)
+endlet
+//
 |D3Enone0(    ) => (   (*void*)   )
 |D3Enone1(d2e1) => (   (*void*)   )
 |
