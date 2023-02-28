@@ -145,7 +145,7 @@ if
 let
 val loc0 = d3p0.lctn() in
 println
-("TREAD12-ERROR:",loc0,":",d3p0)
+("TREAD23-ERROR:",loc0,":",d3p0)
 end
 )
 | _(* otherwise *) => (  (* skipped *)  )
@@ -265,7 +265,7 @@ if
 let
 val loc0 = d3e0.lctn() in
 println
-("TREAD12-ERROR:",loc0,":",d3e0)
+("TREAD23-ERROR:",loc0,":",d3e0)
 end
 )
 | _(* otherwise *) => (  (* skipped *)  )
@@ -385,7 +385,7 @@ if
 let
 val loc0 = dcl0.lctn() in
 println
-("TREAD12-ERROR:",loc0,":",dcl0)
+("TREAD23-ERROR:",loc0,":",dcl0)
 end
 )
 //

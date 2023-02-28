@@ -293,6 +293,31 @@ d3ecl_errvl_lst
 #symload errvl with d3ecl_errvl_lst
 //
 (* ****** ****** *)
+(*
+HX-2023-02-27:
+Various 'errck' functions for
+constructing d3pat/d3exp-values
+*)
+(* ****** ****** *)
+(*
+Various
+errck-functions for d3pat-values
+*)
+(* ****** ****** *)
+//
+fun
+d3pat_tup0_errck
+( loc0: loc_t
+, npf1: (sint)
+, d3ps: d3patlst): d3pat =
+let
+val lvl0 = errvl(d3ps) in//let
+d3pat_errck
+( lvl0+1
+, d3pat( loc0, D3Ptup0( npf1, d3ps )))
+endlet // end of [d3pat_tup0_errck(...)]
+//
+(* ****** ****** *)
 //
 #implfun
 tread23_d3pat
@@ -309,6 +334,8 @@ d3p0.node() of
 |D3Pflt _ => d3p0
 |D3Pstr _ => d3p0
 //
+|D3Ptup0 _ => f0_tup0(d3p0, err)
+//
 | _(*otherwise*) =>
 let
 val lvl0 = 1
@@ -319,6 +346,37 @@ endlet // end of [ _(* otherwise *) ]
 //
 ) where // end-of-[(*case+(d3p0)-of*)]
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_tup0
+(d3p: d3pat
+,err: &sint >> _): d3pat =
+let
+//
+val e00 = err
+//
+val-
+D3Ptup0
+(npf1, d3ps) = d3p.node()
+//
+val
+d3ps =
+tread23_d3patlst(d3ps, err)
+//
+in//let
+if
+(e00=err)
+then (d3p) else
+let
+val loc = d3p.lctn() in
+d3pat_tup0_errck(loc, npf1, d3ps)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_tup0(d3p,err)]
+//
+(* ****** ****** *)
+//
 } (*where*)//end[tread23_d3pat(d3p0,err)]
 //
 (* ****** ****** *)
