@@ -348,6 +348,37 @@ trans23_d2eclistopt
 : !tr23env, dopt: d2eclistopt): d3eclistopt
 //
 (* ****** ****** *)
+//
+fun
+unify23_s2typ // effectful
+( env0:
+! tr23env
+, t2p1:s2typ, t2p2:s2typ): bool
+fun
+unify23_s2typlst // effectful
+( env0:
+! tr23env
+, tps1:s2typlst, tps2:s2typ): bool
+//
+(* ****** ****** *)
+//
+fun
+match23_s2typ // testing-only
+( env0:
+! tr23env
+, t2p1:s2typ, t2p2:s2typ): bool
+fun
+match23_s2typlst // testing-only
+( env0:
+! tr23env
+, tps1:s2typlst, tps2:s2typlst): bool
+//
+#symload unify23 with unify23_s2typ
+#symload match23 with match23_s2typ
+#symload unify23 with unify23_s2typlst
+#symload match23 with match23_s2typlst
+//
+(* ****** ****** *)
 (*
 HX-2023-02-25:
 For type-checking level-3 dynexps

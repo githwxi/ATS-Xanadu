@@ -556,4 +556,107 @@ list_trans23_fnp(env0, f2as, trans23_f2arg))
 
 (* ****** ****** *)
 
+#implfun
+trans23_d2exp_tpck
+(env0, d2e0, t2p0) =
+let
+val
+d3e0 = trans23_d2exp(env0, d2e0)
+in
+trans23_d3exp_tpck(env0,d3e0,t2p0)
+end (*let*) // end of [trans23_d3exp_tpck(...)]
+
+(* ****** ****** *)
+
+#implfun
+trans23_d3exp_tpck
+(env0, d3e0, t2p0) =
+let
+val loc0 = d3e0.lctn()
+in//let
+d3exp_make_styp_node
+( loc0, t2p0, D3Et2pck(d3e0, t2p0) )
+end (*let*) // end of [trans23_d3exp_tpck(...)]
+
+(* ****** ****** *)
+
+#implfun
+trans23_d3explst_tpck1
+( env0 
+, loc0, d3es , t2p0 ) =
+(
+case+ d3es of
+|
+list_nil() => list_nil()
+|
+list_cons(d3e1, d3es) =>
+list_cons(d3e1, d3es) where
+{
+val d3e1 =
+trans23_d3exp_tpck(env0, d3e1, t2p0)
+val d3es =
+trans23_d3explst_tpck1(env0, loc0, d3es, t2p0)
+}
+) (*case+*) // end of [trans23_d3explst_tpck1(...)]
+
+(* ****** ****** *)
+
+#implfun
+trans23_d3explst_tpcks
+( env0
+, loc0, d3es , t2ps ) =
+(
+case+ d3es of
+|
+list_nil() =>
+(
+case+ t2ps of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons(t2p1, t2ps) =>
+list_cons(d3e1, d3es) where
+{
+//
+val
+d3e1 = d3exp_none0(loc0)
+//
+val d3e1 =
+trans23_d3exp_tpck(env0, d3e1, t2p1)
+val d3es =
+trans23_d3explst_tpcks(env0, loc0, d3es, t2ps)
+}
+)
+|
+list_cons(d3e1, d3es) =>
+(
+case+ t2ps of
+|
+list_nil() =>
+list_cons(d3e1, d3es) where
+{
+//
+val
+t2p1 = s2typ_none0((*void*))
+//
+val d3e1 =
+trans23_d3exp_tpck(env0, d3e1, t2p1)
+val d3es =
+trans23_d3explst_tpcks(env0, loc0, d3es, t2ps)
+}
+|
+list_cons(t2p1, t2ps) =>
+list_cons(d3e1, d3es) where
+{
+val d3e1 =
+trans23_d3exp_tpck(env0, d3e1, t2p1)
+val d3es =
+trans23_d3explst_tpcks(env0, loc0, d3es, t2ps)
+}
+)
+) (*case+*) // end of [trans23_d3explst_tpcks(...)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_trans23_dynexp.dats] *)
