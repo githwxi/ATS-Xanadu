@@ -74,105 +74,28 @@ ATS_PACKNAME
 (* ****** ****** *)
 
 #implfun
-trans23_d2exp_tpck
-(env0, d2e0, t2p0) =
+unify23_s2typ
+(env0, t2p1, t2p2) =
 let
-val
-d3e0 = trans23_d2exp(env0, d2e0)
-in
-trans23_d3exp_tpck(env0,d3e0,t2p0)
-end (*let*) // end of [trans23_d3exp_tpck(...)]
-
-(* ****** ****** *)
-
-#implfun
-trans23_d3exp_tpck
-(env0, d3e0, t2p0) =
-let
-val loc0 = d3e0.lctn()
+//
+#vwtpdef e1nv = tr23env
+//
+#impltmp
+s2typ_eval$s2cst
+<e1nv>(env0,s2c0) =
+s2cst_get_styp(s2c0)
+#impltmp
+s2typ_eval$s2var
+<e1nv>(env0,s2v0) = optn_vt_nil()
+//
+val () =
+prerrln("unify23_s2typ: t2p1 = ", t2p1)
+val () =
+prerrln("unify23_s2typ: t2p2 = ", t2p2)
+//
 in//let
-d3exp_make_styp_node
-( loc0, t2p0, D3Et2pck(d3e0, t2p0) )
-end (*let*) // end of [trans23_d3exp_tpck(...)]
-
-(* ****** ****** *)
-
-#implfun
-trans23_d3explst_tpck1
-( env0 
-, loc0, d3es , t2p0 ) =
-(
-case+ d3es of
-|
-list_nil() => list_nil()
-|
-list_cons(d3e1, d3es) =>
-list_cons(d3e1, d3es) where
-{
-val d3e1 =
-trans23_d3exp_tpck(env0, d3e1, t2p0)
-val d3es =
-trans23_d3explst_tpck1(env0, loc0, d3es, t2p0)
-}
-) (*case+*) // end of [trans23_d3explst_tpck1(...)]
-
-(* ****** ****** *)
-
-#implfun
-trans23_d3explst_tpcks
-( env0
-, loc0, d3es , t2ps ) =
-(
-case+ d3es of
-|
-list_nil() =>
-(
-case+ t2ps of
-|
-list_nil() =>
-list_nil((*void*))
-|
-list_cons(t2p1, t2ps) =>
-list_cons(d3e1, d3es) where
-{
-//
-val
-d3e1 = d3exp_none0(loc0)
-//
-val d3e1 =
-trans23_d3exp_tpck(env0, d3e1, t2p1)
-val d3es =
-trans23_d3explst_tpcks(env0, loc0, d3es, t2ps)
-}
-)
-|
-list_cons(d3e1, d3es) =>
-(
-case+ t2ps of
-|
-list_nil() =>
-list_cons(d3e1, d3es) where
-{
-//
-val
-t2p1 = s2typ_none0((*void*))
-//
-val d3e1 =
-trans23_d3exp_tpck(env0, d3e1, t2p1)
-val d3es =
-trans23_d3explst_tpcks(env0, loc0, d3es, t2ps)
-}
-|
-list_cons(t2p1, t2ps) =>
-list_cons(d3e1, d3es) where
-{
-val d3e1 =
-trans23_d3exp_tpck(env0, d3e1, t2p1)
-val d3es =
-trans23_d3explst_tpcks(env0, loc0, d3es, t2ps)
-}
-)
-) (*case+*) // end of [trans23_d3explst_tpcks(...)]
+unify00_s2typ_e1nv<e1nv>(env0, t2p1, t2p2)
+end (*let*) // end of [unify23_s2typ(env0,...)]
 
 (* ****** ****** *)
 
