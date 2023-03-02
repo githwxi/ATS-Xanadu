@@ -572,11 +572,23 @@ end (*let*) // end of [trans23_d3exp_tpck(...)]
 trans23_d3exp_tpck
 (env0, d3e0, t2p0) =
 let
-val loc0 = d3e0.lctn()
+val ubtf =
+unify23_s2typ(env0,d3e0.styp(),t2p0)
 in//let
-d3exp_make_styp_node
-( loc0, t2p0, D3Et2pck(d3e0, t2p0) )
-end (*let*) // end of [trans23_d3exp_tpck(...)]
+if
+ubtf then d3e0 else
+let
+val loc0 = d3e0.lctn() in
+d3exp(loc0, t2p0, D3Et2pck(d3e0,t2p0)) end
+end where
+{
+//
+val () =
+prerrln("trans23_d3exp_tpck: d3e0 = ", d3e0)
+val () =
+prerrln("trans23_d3exp_tpck: t2p0 = ", t2p0)
+//
+} (*where*) // end of [trans23_d3exp_tpck(...)]
 
 (* ****** ****** *)
 

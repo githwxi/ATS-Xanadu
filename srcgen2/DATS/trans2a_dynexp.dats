@@ -1500,9 +1500,9 @@ trans2a_d2exp_tpck
 (env0, d2e0, t2p0) =
 let
 val d2e0 =
-trans2a_d2exp(env0, d2e0)
+trans2a_d2exp(env0,d2e0)
 val ubtf =
-unify2a_s2typ(env0, d2e0.styp(), t2p0)
+unify2a_s2typ(env0,d2e0.styp(),t2p0)
 in//let
 if
 ubtf then d2e0 else
