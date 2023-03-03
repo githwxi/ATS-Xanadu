@@ -463,13 +463,16 @@ tread23_d3exp
 case+
 d3e0.node() of
 //
-|D3Evar _ => d3e0
-//
 |D3Eint _ => d3e0
 |D3Ebtf _ => d3e0
 |D3Echr _ => d3e0
 |D3Eflt _ => d3e0
 |D3Estr _ => d3e0
+//
+|D3Evar _ => d3e0
+//
+|D3Ecst _ => d3e0
+|D3Econ _ => d3e0
 //
 |D3Edapp _ => f0_dapp(d3e0, err)
 //
