@@ -294,6 +294,24 @@ D3LAB(lab,d3e1) => d3exp_fpemsg(out,d3e1)
 //
 (* ****** ****** *)
 //
+#implfun
+f3arg_fpemsg
+(out, farg) =
+(
+case+
+farg.node() of
+//
+|F3ARGsta0
+(s2vs, s2es) => ((*skipped*))
+|F3ARGmet0(s2es) => ((*skipped*))
+//
+|F3ARGdyn0
+(npf1, d3ps) => d3patlst_fpemsg(out, d3ps)
+//
+) (*case+*)//end-of-(f3arg_fpemsg(out,farg)]
+//
+(* ****** ****** *)
+//
 local
 
 fun
@@ -532,6 +550,15 @@ foreach$work<l3d3p>(ld3p) = l3d3p_fpemsg(out,ld3p)
 d3explst_fpemsg
 (out, d3es) =
 list_foreach<d3exp>(d3es) where
+{
+#impltmp
+foreach$work<d3exp>(d3e1) = d3exp_fpemsg(out,d3e1)
+}
+//
+#implfun
+d3expopt_fpemsg
+(out, dopt) =
+optn_foreach<d3exp>(dopt) where
 {
 #impltmp
 foreach$work<d3exp>(d3e1) = d3exp_fpemsg(out,d3e1)

@@ -145,13 +145,14 @@ d3pat_make_styp_node
 //
 |D2Ptup0 _ => f0_tup0(env0, d2p0)
 //
+|D2Pannot _ => f0_annot(env0, d2p0)
+//
 | _(*otherwise*) => d3pat_none1(d2p0)
 //
 endlet where
 {
 //
 (* ****** ****** *)
-//
 //
 fun
 f0_tup0
@@ -181,7 +182,45 @@ s2typ_tup0(npf1, s2typlst(d3ps))): s2typ
 //
 (* ****** ****** *)
 //
-} (*where*)//end-of-[trans23_d2pat(env0,d2p0)]
+fun
+f0_annot
+( env0:
+! tr23env
+, d2p0: d2pat): d3pat =
+let
+//
+val loc0 = d2p0.lctn()
+val-
+D2Pannot
+( d2p1
+, s1e2, s2e2) = d2p0.node()
+//
+(*
+val t2p2 = s2exp_stpize(s2e2)
+val t2p2 = s2typ_hnfiz0(t2p2)
+*)
+val t2p2 = d2p0.styp((*void*))
+//
+val d3p1 =
+(
+case+
+d2p1.node() of
+|
+D2Pvar _ => 
+trans23_d2pat(env0, d2p1)
+|
+_(*non-D2Pvar*) =>
+trans23_d2pat_tpck(env0, d2p1, t2p2)
+) : d3pat // end of [val d3p1]
+//
+in//let
+d3pat_make_styp_node
+(loc0, t2p2, D3Pannot(d3p1,s1e2,s2e2))
+end (*let*) // end of [f0_annot(env0,...)]
+//
+(* ****** ****** *)
+//
+} (*where*)//end-of-[trans23_d3pat(env0,d3p0)]
 
 (* ****** ****** *)
 //
@@ -557,6 +596,18 @@ list_trans23_fnp(env0, f2as, trans23_f2arg))
 (* ****** ****** *)
 
 #implfun
+trans23_d2pat_tpck
+(env0, d2p0, t2p0) =
+let
+val
+d3p0 = trans23_d2pat(env0, d2p0)
+in
+trans23_d3pat_tpck(env0,d3p0,t2p0)
+end (*let*) // end of [trans23_d2pat_tpck(...)]
+
+(* ****** ****** *)
+
+#implfun
 trans23_d2exp_tpck
 (env0, d2e0, t2p0) =
 let
@@ -564,7 +615,31 @@ val
 d3e0 = trans23_d2exp(env0, d2e0)
 in
 trans23_d3exp_tpck(env0,d3e0,t2p0)
-end (*let*) // end of [trans23_d3exp_tpck(...)]
+end (*let*) // end of [trans23_d2exp_tpck(...)]
+
+(* ****** ****** *)
+
+#implfun
+trans23_d3pat_tpck
+(env0, d3p0, t2p0) =
+let
+val ubtf =
+unify23_s2typ(env0,d3p0.styp(),t2p0)
+in//let
+if
+ubtf then d3p0 else
+let
+val loc0 = d3p0.lctn() in
+d3pat(loc0, t2p0, D3Pt2pck(d3p0,t2p0)) end
+end where
+{
+//
+val () =
+prerrln("trans23_d3pat_tpck: d3p0 = ", d3p0)
+val () =
+prerrln("trans23_d3pat_tpck: t2p0 = ", t2p0)
+//
+} (*where*) // end of [trans23_d3pat_tpck(...)]
 
 (* ****** ****** *)
 
