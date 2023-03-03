@@ -1313,30 +1313,7 @@ d2e0.node() of
 //
 |D2Elet0 _ => f0_let0(d2e0, err)
 //
-|
-D2Eift0
-(
-d2e1,
-dthn,dels) =>
-let
-//
-val e00 = err
-//
-val d2e1 =
-tread12_d2exp(d2e1, err)
-val dthn =
-tread12_d2expopt(dthn, err)
-val dels =
-tread12_d2expopt(dels, err)
-//
-in//let
-if
-(e00=err)
-then (d2e0) else
-d2exp_ift0_errck
-(d2e0.lctn(), d2e1, dthn, dels)
-endlet//[D1Eift0(d1e1,dthn,dels)]
-//
+|D2Eift0 _ => f0_ift0(d2e0, err)
 |D2Ecas0 _ => f0_cas0(d2e0, err)
 //
 |D2Eseqn _ => f0_seqn(d2e0, err)
@@ -1539,6 +1516,36 @@ val loc = d2e.lctn() in
 d2exp_seqn_errck(loc, d2es, d2e1)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_seqn(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_ift0
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Eift0
+( d2e1
+, dthn, dels) = d2e.node()
+//
+val d2e1 =
+tread12_d2exp(d2e1, err)
+val dthn =
+tread12_d2expopt(dthn, err)
+val dels =
+tread12_d2expopt(dels, err)
+//
+in//let
+if
+(e00=err)
+then (d2e0) else
+d2exp_ift0_errck
+(d2e0.lctn(), d2e1, dthn, dels)
+end (*let*) // end of [f0_ift0(d2e,err)]
 //
 (* ****** ****** *)
 //

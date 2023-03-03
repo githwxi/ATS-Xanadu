@@ -385,9 +385,19 @@ For type-checking level-3 dynexps
 *)
 (* ****** ****** *)
 fun
+trans23_d2pat_tpck
+( env0: !tr23env
+, d2p0: d2pat, t2p0: s2typ): d3pat
+(* ****** ****** *)
+fun
 trans23_d2exp_tpck
 ( env0: !tr23env
 , d2e0: d2exp, t2p0: s2typ): d3exp
+(* ****** ****** *)
+fun
+trans23_d3pat_tpck
+( env0: !tr23env
+, d3p0: d3pat, t2p0: s2typ): d3pat
 (* ****** ****** *)
 fun
 trans23_d3exp_tpck

@@ -86,6 +86,8 @@ D1E = "./dynexp1.sats"
 G1M = "./gmacro1.sats"
 (* ****** ****** *)
 #staload
+S1E = "./staexp1.sats"
+#staload
 S2E = "./staexp2.sats"
 #staload
 D2E = "./dynexp2.sats"
@@ -93,6 +95,7 @@ D2E = "./dynexp2.sats"
 #typedef s2cst = $S2E.s2cst
 #typedef s2var = $S2E.s2var
 (* ****** ****** *)
+#typedef s1exp = $S1E.s1exp
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
@@ -239,6 +242,13 @@ token(*knd*), sint(*npf*), d3patlst)
 D3Prcd2 of
 (
 token(*knd*), sint(*npf*), l3d3plst)
+//
+|
+D3Pannot of
+(d3pat,s1exp(*given*),s2exp(*trans*))
+//
+|
+D3Pt2pck of (d3pat, s2typ)//HX: casting
 //
 |D3Pnone0 of ((*0*))
 |D3Pnone1 of (d2pat) | D3Pnone2 of (d3pat)
