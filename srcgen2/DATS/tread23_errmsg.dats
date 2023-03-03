@@ -107,6 +107,13 @@ let
 val () = d3patlst_fpemsg(out, d3ps)
 endlet
 //
+|
+D3Pannot
+(d3p1,s1e2,s2e2) =>
+let
+val () = d3pat_fpemsg( out , d3p1 )
+endlet
+//
 |D3Pnone0(    ) => (   (*void*)   )
 |D3Pnone1(d2p1) => (   (*void*)   )
 //
