@@ -518,12 +518,45 @@ foreach$work<d3pat>(d3p1) = d3pat_fpemsg(out,d3p1)
 (* ****** ****** *)
 //
 #implfun
+l3d3plst_fpemsg
+(out, ldps) =
+list_foreach<l3d3p>(ldps) where
+{
+#impltmp
+foreach$work<l3d3p>(ld3p) = l3d3p_fpemsg(out,ld3p)
+}
+//
+(* ****** ****** *)
+//
+#implfun
 d3explst_fpemsg
 (out, d3es) =
 list_foreach<d3exp>(d3es) where
 {
 #impltmp
 foreach$work<d3exp>(d3e1) = d3exp_fpemsg(out,d3e1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+l3d3elst_fpemsg
+(out, ldes) =
+list_foreach<l3d3e>(ldes) where
+{
+#impltmp
+foreach$work<l3d3e>(ld3e) = l3d3e_fpemsg(out,ld3e)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+f3arglst_fpemsg
+(out, f3as) =
+list_foreach<f3arg>(f3as) where
+{
+#impltmp
+foreach$work<f3arg>(f3a1) = f3arg_fpemsg(out,f3a1)
 }
 //
 (* ****** ****** *)
