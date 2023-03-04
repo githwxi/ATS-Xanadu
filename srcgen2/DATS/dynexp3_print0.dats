@@ -75,6 +75,18 @@ _(*?*) = "./lexing0_print0.dats"
 #symload lctn with d3ecl_get_lctn
 #symload node with d3ecl_get_node
 (* ****** ****** *)
+//
+#implfun
+t2jag_fprint
+(out, tja) =
+let
+#impltmp
+g_print$out<>() = out
+in//in-of-let
+  print("T2JAG(", tja.t2ps(), ")")
+end (*let*) // end of [t2jag_fprint(out,tja)]
+//
+(* ****** ****** *)
 
 #implfun
 d3pat_fprint
@@ -238,8 +250,8 @@ D3Etapp
 print("D3Etapp(",d3e1,";",s2es,")")
 |
 D3Etapq
-(d3e1, t2ps) =>
-print("D3Etapq(",d3e1,";",t2ps,")")
+(d3e1, tjas) =>
+print("D3Etapq(",d3e1,";",tjas,")")
 //
 |
 D3Edapp

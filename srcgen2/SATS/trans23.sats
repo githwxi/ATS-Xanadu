@@ -86,6 +86,10 @@ LEX = "./lexing0.sats"
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
+#typedef d2var = $D2E.d2var
+#typedef d2con = $D2E.d2con
+#typedef d2cst = $D2E.d2cst
+(* ****** ****** *)
 #typedef d2pat = $D2E.d2pat
 #typedef l2d2p = $D2E.l2d2p
 #typedef d2exp = $D2E.d2exp
@@ -108,6 +112,10 @@ LEX = "./lexing0.sats"
 #typedef s2explst = $S2E.s2explst
 #typedef s2typlst = $S2E.s2typlst
 //
+(* ****** ****** *)
+#typedef d2varlst = $D2E.d2varlst
+#typedef d2conlst = $D2E.d2conlst
+#typedef d2cstlst = $D2E.d2cstlst
 (* ****** ****** *)
 //
 #typedef d2patlst = $D2E.d2patlst
@@ -350,15 +358,24 @@ trans23_d2eclistopt
 (* ****** ****** *)
 //
 fun
+d2con23_tapqize
+(loc0: loc_t, dcon: d2con): d3exp
+fun
+d2cst23_tapqize
+(loc0: loc_t, dcst: d2cst): d3exp
+//
+(* ****** ****** *)
+//
+fun
 unify23_s2typ // effectful
 ( env0:
 ! tr23env
-, t2p1:s2typ, t2p2:s2typ): bool
+, t2p1: s2typ, t2p2: s2typ): bool
 fun
 unify23_s2typlst // effectful
 ( env0:
 ! tr23env
-, tps1:s2typlst, tps2:s2typ): bool
+, tps1: s2typlst, tps2: s2typ): bool
 //
 (* ****** ****** *)
 //
