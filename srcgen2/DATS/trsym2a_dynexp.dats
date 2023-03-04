@@ -168,10 +168,26 @@ in//let
 case+
 d2p0.node() of
 //
+|
+D2Et2pck _ => f0_t2pck(env0, d2p0)
+//
 | _(* otherwise *) => (   (*skipped*)   )
 //
 endlet where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_t2pck
+( env0:
+! tr2aenv
+, d2p0: d2pat): void =
+(
+trsym2a_d2pat(env0, d2p1)) where
+{
+  val-D2Pt2pck(d2p1, t2p2) = d2p0.node()
+} (*where*) // end of [f0_t2pck(env0, d2p0)]
 //
 (* ****** ****** *)
 //
@@ -229,6 +245,9 @@ val () =
 trsym2a_d2expopt(env0, dthn)
 val () =
 trsym2a_d2expopt(env0, dels) end
+//
+|
+D2Et2pck _ => f0_t2pck(env0, d2e0)
 //
 | _(* otherwise *) => (   (*skipped*)   )
 //
@@ -360,6 +379,19 @@ else list_cons(dpi1, auxtake(pmax, dpis)))
 (* ****** ****** *)
 //
 } (*where*) // end of [f0_sym0(env0, d2e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_t2pck
+( env0:
+! tr2aenv
+, d2e0: d2exp): void =
+(
+trsym2a_d2exp(env0, d2e1)) where
+{
+  val-D2Et2pck(d2e1, t2p2) = d2e0.node()
+} (*where*) // end of [f0_t2pck(env0, d2e0)]
 //
 (* ****** ****** *)
 //
