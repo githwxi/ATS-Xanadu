@@ -276,6 +276,8 @@ d3exp_make_styp_node
 //
 |D2Eassgn _ => f0_assgn(env0, d2e0)
 //
+|D2Et2pck _ => f0_t2pck(env0, d2e0)
+//
 | _(*otherwise*) => d3exp_none1(d2e0)
 //
 endlet where
@@ -520,6 +522,23 @@ in//let
 d3exp_make_styp_node
 ( loc0, t2p0, D3Eassgn(d3el, d3er) )
 end (*let*) // end of [f0_assgn(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_t2pck
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val-
+D2Et2pck
+(d2e1, t2p2) = d2e0.node()
+//
+in//let
+trans23_d2exp_tpck(env0, d2e1, t2p2)
+end (*let*) // end of [f0_t2pck(env0,d2e0)]
 //
 (* ****** ****** *)
 //

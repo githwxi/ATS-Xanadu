@@ -341,6 +341,36 @@ endlet // end of [d2exp_assgn_errck(...)]
 //
 (* ****** ****** *)
 //
+fun
+d2exp_annot_errck
+( loc0: loc_t
+, d2e1: d2exp
+, s1e2: s1exp
+, s2e2
+: s2exp(*annot*)): d2exp =
+let
+val lvl0 = errvl(d2e1) in//let
+d2exp_errck
+( lvl0+1
+, d2exp(loc0,D2Eannot(d2e1,s1e2,s2e2)))
+endlet // end of [d2exp_annot_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d2exp_t2pck_errck
+( loc0: loc_t
+, d2e1: d2exp
+, t2p2: s2typ): d2exp =
+let
+val lvl0 = errvl(d2e1) in//let
+d2exp_errck
+( lvl0+1
+, d2exp( loc0, D2Et2pck( d2e1, t2p2 ) ))
+endlet // end of [d2exp_t2pck_errck(...)]
+//
+(* ****** ****** *)
+//
 #implfun
 tread22_d2pat
 ( d2p0, err ) =
@@ -537,6 +567,12 @@ endlet // [ D1Eift0(d1e1,dthn,dels) ]
 |
 D2Eassgn _ => f0_assgn(d2e0, err)
 //
+|
+D2Eannot _ => f0_annot(d2e0, err)
+//
+|
+D2Et2pck _ => f0_t2pck(d2e0, err)
+//
 | _(*otherwise*) =>
 let
 val lvl0 = 1
@@ -697,6 +733,65 @@ val loc = d2e.lctn() in
 d2exp_assgn_errck(loc, d2el, d2er)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_assgn(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_annot
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Eannot
+(d2e1
+,s1e2, s2e2) = d2e.node()
+//
+val
+d2e1 = tread22_d2exp(d2e1, err)
+(*
+val
+s2e2 = tread22_s2exp(s2e2, err)
+*)
+//
+in//let
+if
+(e00=err)
+then (d2e) else
+let
+val loc = d2e.lctn() in
+d2exp_annot_errck(loc,d2e1,s1e2,s2e2)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_annot(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_t2pck
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Et2pck
+(d2e1, t2p2) = d2e.node()
+//
+val
+d2e1 = tread22_d2exp(d2e1, err)
+//
+in//let
+if
+(e00=err)
+then (d2e) else
+let
+val loc = d2e.lctn() in
+d2exp_t2pck_errck(loc, d2e1, t2p2)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_t2pck(d2e,err)]
 //
 (* ****** ****** *)
 //
