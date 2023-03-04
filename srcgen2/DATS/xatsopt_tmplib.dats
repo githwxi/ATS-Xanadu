@@ -1340,32 +1340,38 @@ end(*let*)//end-of-[d3lab_fprint]
 //
 #impltmp
 {x0:t0}
-g_print<d3lab(x0)>(lab) =
-d3lab_fprint(g_print$out<>(), lab)
+g_print<d3lab(x0)>(l3ab) =
+d3lab_fprint(g_print$out<>(), l3ab)
 //
 (* ****** ****** *)
 //
 #impltmp
-g_print<d3pat>(d3p) =
-d3pat_fprint(g_print$out<>(), d3p)
+g_print<t2jag>(tjag) =
+t2jag_fprint(g_print$out<>(), tjag)
 //
 (* ****** ****** *)
 //
 #impltmp
-g_print<d3exp>(d3e) =
-d3exp_fprint(g_print$out<>(), d3e)
+g_print<d3pat>(dpat) =
+d3pat_fprint(g_print$out<>(), dpat)
 //
 (* ****** ****** *)
 //
 #impltmp
-g_print<f3arg>(f3a) =
-f3arg_fprint(g_print$out<>(), f3a)
+g_print<d3exp>(dexp) =
+d3exp_fprint(g_print$out<>(), dexp)
 //
 (* ****** ****** *)
 //
 #impltmp
-g_print<d3ecl>(dcl) =
-d3ecl_fprint(g_print$out<>(), dcl)
+g_print<f3arg>(farg) =
+f3arg_fprint(g_print$out<>(), farg)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<d3ecl>(d3cl) =
+d3ecl_fprint(g_print$out<>(), d3cl)
 //
 (* ****** ****** *)
 //

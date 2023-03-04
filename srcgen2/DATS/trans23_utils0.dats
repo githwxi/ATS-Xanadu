@@ -73,29 +73,66 @@ ATS_PACKNAME
 #symload styp with d3exp_set_styp
 (* ****** ****** *)
 
+local
+//
 fun
-d2cst_t2qag_t2jag
-( dcst: d2cst
-, loc0: loc_t
-, t2qa: t2qag): t2jag =
+f0_tqag_tjag
+( loc0: loc_t
+, tqag: t2qag): t2jag =
 let
 //
 #typedef x0 = s2var
 #typedef y0 = s2typ
 //
 #impltmp
-map$fopr<x0><y0>(s2v) =
+map$fopr
+<x0><y0>(s2v) =
+let
+val s2t = s2v.sort()
+in//let
 s2typ_xtv
 (x2t2p_make_lctn(loc0))
-in
+end // end of [map$fopr<x0><y0>]
+//
+in//let
 let
-val s2vs = t2qa.s2vs()
-val t2ps =
-list_map<x0><y0>(s2vs)
+val s2vs = tqag.s2vs()
 in
-  t2jag_make_t2ps(loc0, t2ps)
+  t2jag_make_t2ps
+  (loc0, list_map<x0><y0>( s2vs ))
 end
-end(*let*)//end-of-[d2cst-t2qag-t2jag]
+end(*let*)//end-of-[f0-tqag-tjag(...)]
+//
+in//local
+
+#implfun
+d2cst23_tapqize
+( loc0, dcst ) =
+let
+val t2qs =
+d2cst_get_tqas(dcst)
+val t2js =
+let
+#impltmp
+map$fopr
+<t2qag><t2jag>(tqag) =
+f0_tqag_tjag(loc0, tqag)
+in//let
+list_map<t2qag><t2jag>(t2qs)
+end (*let*)//end-of-[val(t2js)]
+//
+val
+t2p0 = d2cst_get_styp(dcst)
+val
+d3e0 =
+d3exp_make_node(loc0, D3Ecst(dcst))
+//
+in//let
+d3exp_make_styp_node
+(loc0, t2p0, D3Etapq(d3e0, t2js))
+end (*let*) // end of [d2cst23_tapqize(...)]
+
+endloc // end of [local(d2con23/d2cst23_tapqize)]
 
 (* ****** ****** *)
 

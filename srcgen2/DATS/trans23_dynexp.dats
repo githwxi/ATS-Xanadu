@@ -330,12 +330,8 @@ val-
 D2Econ(d2c1) = d2e0.node()
 //
 in//let
-d3exp_make_styp_node
-( loc0
-, t2p0, D3Econ(d2c1)) where
-{
-val t2p0 = d2c1.styp((*void*)) }
-end (*let*)//end-of-[f0_con(env0,d2e0)]
+  d2con23_tapqize(loc0, d2c1) endlet
+//(*let*)//end-of-[f0_con(env0,d2e0)]
 //
 (* ****** ****** *)
 //
@@ -351,12 +347,8 @@ val-
 D2Ecst(d2c1) = d2e0.node()
 //
 in//let
-d3exp_make_styp_node
-( loc0
-, t2p0, D3Ecst(d2c1)) where
-{
-val t2p0 = d2c1.styp((*void*)) }
-end (*let*)//end-of-[f0_cst(env0,d2e0)]
+  d2cst23_tapqize(loc0, d2c1) endlet
+//(*let*)//end-of-[f0_cst(env0,d2e0)]
 //
 (* ****** ****** *)
 //
