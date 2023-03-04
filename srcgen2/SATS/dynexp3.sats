@@ -103,6 +103,11 @@ D2E = "./dynexp2.sats"
 #typedef t2qag = $D2E.t2qag
 #typedef t2iag = $D2E.t2iag
 (* ****** ****** *)
+//
+#abstbox t2jag_tbox // ptr
+#typedef t2jag = t2jag_tbox
+//
+(* ****** ****** *)
 #typedef d2var = $D2E.d2var
 #typedef d2con = $D2E.d2con
 #typedef d2cst = $D2E.d2cst
@@ -147,6 +152,8 @@ D2E = "./dynexp2.sats"
 #typedef s2qaglst = list(s2qag)
 #typedef t2qaglst = list(t2qag)
 #typedef t2iaglst = list(t2iag)
+(* ****** ****** *)
+#typedef t2jaglst = list(t2jag)
 (* ****** ****** *)
 #typedef d2varopt = optn(d2var)
 (* ****** ****** *)
@@ -205,6 +212,11 @@ d3lab_fprint
 (* ****** ****** *)
 #typedef l3d3plst = list(l3d3p)
 #typedef l3d3elst = list(l3d3e)
+(* ****** ****** *)
+fun
+t2jag_make_t2ps
+(loc0:loc_t,t2ps:s2typlst):t2jag
+#symload t2jag with t2jag_make_t2ps
 (* ****** ****** *)
 //
 datatype
