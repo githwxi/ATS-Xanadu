@@ -73,6 +73,32 @@ ATS_PACKNAME
 #symload styp with d3exp_set_styp
 (* ****** ****** *)
 
+fun
+d2cst_t2qag_t2jag
+( dcst: d2cst
+, loc0: loc_t
+, t2qa: t2qag): t2jag =
+let
+//
+#typedef x0 = s2var
+#typedef y0 = s2typ
+//
+#impltmp
+map$fopr<x0><y0>(s2v) =
+s2typ_xtv
+(x2t2p_make_lctn(loc0))
+in
+let
+val s2vs = t2qa.s2vs()
+val t2ps =
+list_map<x0><y0>(s2vs)
+in
+  t2jag_make_t2ps(loc0, t2ps)
+end
+end(*let*)//end-of-[d2cst-t2qag-t2jag]
+
+(* ****** ****** *)
+
 #implfun
 unify23_s2typ
 (env0, t2p1, t2p2) =

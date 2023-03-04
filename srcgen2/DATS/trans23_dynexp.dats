@@ -263,6 +263,7 @@ d3exp_make_styp_node
 //
 |D2Evar _ => f0_var(env0, d2e0)
 //
+|D2Econ _ => f0_con(env0, d2e0)
 |D2Ecst _ => f0_cst(env0, d2e0)
 //
 |D2Esym0 _ => f0_sym0(env0, d2e0)
@@ -314,6 +315,27 @@ t2p0.node() of
 |_(*non-T2Plft*) => t2p0) endlet
 //
 } (*where*) // end of [f0_var(...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_con
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+val loc0 = d2e0.lctn()
+//
+val-
+D2Econ(d2c1) = d2e0.node()
+//
+in//let
+d3exp_make_styp_node
+( loc0
+, t2p0, D3Econ(d2c1)) where
+{
+val t2p0 = d2c1.styp((*void*)) }
+end (*let*)//end-of-[f0_con(env0,d2e0)]
 //
 (* ****** ****** *)
 //
