@@ -343,6 +343,34 @@ errck-functions for d3exp-values
 (* ****** ****** *)
 //
 fun
+d3exp_tapp_errck
+(loc0: loc_t
+,d3f0: d3exp
+,s2es: s2explst): d3exp =
+let
+val lvl0 = errvl(d3f0) in//let
+d3exp_errck
+(lvl0+1
+,d3exp(loc0, D3Etapp( d3f0 , s2es )))
+endlet // end of [d3exp_tapp_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_tapq_errck
+(loc0: loc_t
+,d3f0: d3exp
+,tjas: t2jaglst): d3exp =
+let
+val lvl0 = errvl(d3f0) in//let
+d3exp_errck
+(lvl0+1
+,d3exp(loc0, D3Etapq( d3f0 , tjas )))
+endlet // end of [d3exp_tapq_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3exp_dapp_errck
 (loc0: loc_t
 ,d3f0: d3exp
@@ -556,6 +584,9 @@ d3e0.node() of
 |D3Ecst _ => d3e0
 |D3Econ _ => d3e0
 //
+|D3Etapp _ => f0_tapp(d3e0, err)
+|D3Etapq _ => f0_tapq(d3e0, err)
+//
 |D3Edapp _ => f0_dapp(d3e0, err)
 //
 |D3Eift0 _ => f0_ift0(d3e0, err)
@@ -576,6 +607,50 @@ endlet // end of [ _(* otherwise *) ]
 //
 ) where // end-of-[(*case+(d3e0)-of*)]
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_tapp
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val-
+D3Etapp
+(d3f0, s2es) = d3e.node()
+val
+d3f0 = tread23_d3exp(d3f0, err)
+in//let
+if
+(e00=err)
+then (d3e) else
+d3exp_tapp_errck(d3e.lctn(),d3f0,s2es)
+end (*let*) // end of [f0_tapp(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tapq
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val-
+D3Etapq
+(d3f0, tjas) = d3e.node()
+val
+d3f0 = tread23_d3exp(d3f0, err)
+in//let
+if
+(e00=err)
+then (d3e) else
+d3exp_tapq_errck(d3e.lctn(),d3f0,tjas)
+end (*let*) // end of [f0_tapq(d3e,err)]
 //
 (* ****** ****** *)
 //
@@ -601,7 +676,7 @@ if
 then (d3e) else
 let
 val loc = d3e.lctn() in
-d3exp_dapp_errck(loc,d3f0,npf1,d3es)
+d3exp_dapp_errck( loc,d3f0,npf1,d3es )
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_dapp(d3e,err)]
 //
@@ -630,9 +705,11 @@ tread23_d3expopt(dels, err)
 in//let
 if
 (e00=err)
-then (d3e0) else
-d3exp_ift0_errck
-(d3e0.lctn(), d3e1, dthn, dels)
+then (d3e) else
+let
+val loc = d3e.lctn() in//let
+d3exp_ift0_errck(loc,d3e1,dthn,dels)
+end
 end (*let*) // end of [f0_ift0(d3e,err)]
 //
 (* ****** ****** *)
@@ -658,8 +735,8 @@ if
 (e00=err)
 then (d3e) else
 let
-val loc = d3e.lctn() in
-d3exp_tup0_errck(loc, npf1, d3es)
+val loc = d3e.lctn() in//let
+d3exp_tup0_errck( loc, npf1, d3es )
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_tup0(d3e,err)]
 //
@@ -688,7 +765,7 @@ if
 then (d3e) else
 let
 val loc = d3e.lctn() in
-d3exp_assgn_errck(loc, d3el, d3er)
+d3exp_assgn_errck( loc, d3el, d3er )
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_assgn(d3e,err)]
 //
@@ -721,7 +798,7 @@ if
 then (d3e) else
 let
 val loc = d3e.lctn() in
-d3exp_t2pck_errck(loc, d3e1, t2p2)
+d3exp_t2pck_errck( loc, d3e1, t2p2 )
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_t2pck(d3e,err)]
 //
