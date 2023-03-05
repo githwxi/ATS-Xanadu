@@ -195,6 +195,11 @@ in//let
 //
 case+ f2cl of
 //
+(*
+| F2CLcon() =>
+    print( "F2CLcon" )
+*)
+//
 | F2CLfun() =>
     print( "F2CLfun" )
 | F2CLclo(knd) =>

@@ -180,6 +180,37 @@ end(*let*)//end-of-[f0-tqag-tjag(...)]
 //
 in//local
 
+(* ****** ****** *)
+
+#implfun
+d2con23_tapqize
+( loc0, dcon ) =
+let
+val t2qs =
+d2con_get_tqas(dcon)
+val t2js =
+let
+#impltmp
+map$fopr
+<t2qag><t2jag>(tqag) =
+f0_tqag_tjag(loc0, tqag)
+in//let
+list_map<t2qag><t2jag>(t2qs)
+end (*let*)//end-of-[val(t2js)]
+//
+val
+t2p0 = d2con_get_styp(dcon)
+val
+d3e0 =
+d3exp_make_node(loc0, D3Econ(dcon))
+//
+in//let
+d3exp_make_styp_node
+(loc0, t2p0, D3Etapq(d3e0, t2js))
+end (*let*) // end of [d2con23_tapqize(...)]
+
+(* ****** ****** *)
+
 #implfun
 d2cst23_tapqize
 ( loc0, dcst ) =
@@ -206,6 +237,8 @@ in//let
 d3exp_make_styp_node
 (loc0, t2p0, D3Etapq(d3e0, t2js))
 end (*let*) // end of [d2cst23_tapqize(...)]
+
+(* ****** ****** *)
 
 endloc // end of [local(d2con23/d2cst23_tapqize)]
 
