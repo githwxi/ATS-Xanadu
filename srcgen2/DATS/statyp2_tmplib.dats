@@ -488,10 +488,13 @@ t2p0.node() of
 |T2Pcst _ => t2p0
 //
 |T2Pvar _ =>
-f0_var(e1nv, svts, t2p0, flag)
+f0_var(e1nv, t2p0, svts, flag)
 //
 |T2Papps _ =>
-f0_apps(e1nv, svts, t2p0, flag)
+f0_apps(e1nv, t2p0, svts, flag)
+//
+|T2Pfun1 _ =>
+f0_fun1(e1nv, t2p0, svts, flag)
 //
 |T2Pnone0 _ => t2p0
 |T2Pnone1 _ => t2p0
@@ -507,8 +510,8 @@ f0_apps(e1nv, svts, t2p0, flag)
 fun
 f0_var
 ( e1nv: !e1nv
-, svts: s2vts
 , t2p0: s2typ
+, svts: s2vts
 , flag: &sint >> _): s2typ =
 let
 //
@@ -530,8 +533,8 @@ end (*let*) // end of [f0_var(e1nv,...)]
 fun
 f0_apps
 ( e1nv: !e1nv
-, svts: s2vts
 , t2p0: s2typ
+, svts: s2vts
 , flag: &sint >> _): s2typ =
 let
 //
@@ -542,13 +545,44 @@ T2Papps(t2f0, t2ps) = t2p0.node()
 val t2f0 =
 s2typ_substx(e1nv, t2f0, svts, flag)
 val t2ps =
-s2typlst_substx(e1nv, t2ps, svts, flag)
+s2typlst_substx(e1nv,t2ps,svts,flag)
 //
 in//let
 if
 flag <= fval
 then t2p0 else
 s2typ(t2p0.sort(), T2Papps(t2f0, t2ps))
+end (*let*) // end of [f0_apps(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fun1
+( e1nv: !e1nv
+, t2p0: s2typ
+, svts: s2vts
+, flag: &sint >> _): s2typ =
+let
+//
+val fval = flag
+//
+val-
+T2Pfun1
+( f2cl
+, npf1, t2ps, tres) = t2p0.node()
+val t2ps =
+s2typlst_substx(e1nv,t2ps,svts,flag)
+val tres =
+s2typ_substx(e1nv, tres, svts, flag)
+//
+in//let
+if
+flag <= fval
+then t2p0 else
+let
+val s2t0 = t2p0.sort() in
+s2typ(s2t0, T2Pfun1(f2cl,npf1,t2ps,tres))
+end (*let*) // end-of-[else]
 end (*let*) // end of [f0_apps(e1nv,...)]
 //
 (* ****** ****** *)
