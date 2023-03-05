@@ -202,45 +202,59 @@ d3e.node() of
 |D3Ecst _ => ()
 //
 |
+D3Etapp
+(d3f0, s2es) =>
+let
+val () =
+d3exp_fpemsg(out, d3f0) endlet
+|
+D3Etapq
+(d3f0, tjas) =>
+let
+val () =
+d3exp_fpemsg(out, d3f0) endlet
+//
+|
 D3Edapp
 (d3f0,npf1,d3es) =>
 let
-  val () =
-  d3exp_fpemsg(out, d3f0)
-  val () =
-  d3explst_fpemsg(out, d3es)
-endlet
+val () =
+d3exp_fpemsg(out, d3f0)
+val () =
+d3explst_fpemsg(out, d3es) endlet
 //
 |
 D3Eift0
 (d3e1,dthn,dels) =>
 let
-val () = d3exp_fpemsg(out, d3e1)
-val () = d3expopt_fpemsg(out, dthn)
-val () = d3expopt_fpemsg(out, dels)
-endlet
+val () =
+d3exp_fpemsg(out, d3e1)
+val () =
+d3expopt_fpemsg(out, dthn)
+val () =
+d3expopt_fpemsg(out, dels) endlet
 //
 |
 D3Etup0
 (npf1, d3es) =>
 let
-val () = d3explst_fpemsg(out, d3es)
-endlet
+val () =
+d3explst_fpemsg(out, d3es) endlet
 //
 |
 D3Eassgn
 (d3el, d3er) =>
 let
-  val () = d3exp_fpemsg(out, d3el)
-  val () = d3exp_fpemsg(out, d3er)
-endlet
+val () = d3exp_fpemsg(out, d3el)
+val () = d3exp_fpemsg(out, d3er)
+endlet // end of [D3Eassgn(_, _)]
 //
 |
 D3Et2pck
 (d3e1, t2p2) =>
 let
-  val () = d3exp_fpemsg(out, d3e1)
-endlet
+val () = d3exp_fpemsg(out, d3e1)
+endlet // end of [D3Et2pck(_, _)]
 //
 |D3Enone0(    ) => (   (*void*)   )
 |D3Enone1(d2e1) => (   (*void*)   )
