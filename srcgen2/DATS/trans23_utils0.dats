@@ -178,6 +178,59 @@ in
 end
 end(*let*)//end-of-[f0-tqag-tjag(...)]
 //
+fun
+f0_make_svts
+( t2qs: t2qaglst
+, t2js: t2jaglst): s2vts =
+(
+case+ t2qs of
+|
+list_nil() =>
+list_nil(*void*)
+|
+list_cons(t2q1, t2qs) =>
+(
+case+ t2js of
+|
+list_nil() =>
+list_nil(*void*)
+|
+list_cons(t2j1, t2js) =>
+let
+val svts =
+f0_make_svts(t2qs, t2js)
+in//let
+f1_make_svts
+(t2q1.s2vs(), t2j1.t2ps(), svts)
+end
+) where
+{
+//
+fun
+f1_make_svts
+( s2vs
+: s2varlst
+, t2ps
+: s2typlst, svts: s2vts): s2vts =
+(
+case+ s2vs of
+|
+list_nil() => svts
+|
+list_cons(s2v1, s2vs) =>
+(
+case+ t2ps of
+|
+list_nil() => svts
+|
+list_cons(t2p1, t2ps) =>
+list_cons
+( @(s2v1, t2p1)
+, f1_make_svts(s2vs, t2ps, svts))))
+//
+} (*where*)
+) (*case+*)//end-of-[f0_make_svts(...)]
+//
 in//local
 
 (* ****** ****** *)
@@ -200,6 +253,11 @@ end (*let*)//end-of-[val(t2js)]
 //
 val
 t2p0 = d2con_get_styp(dcon)
+val
+svts = f0_make_svts(t2qs, t2js)
+val
+t2p0 = s2typ_subst0(t2p0, svts)
+//
 val
 d3e0 =
 d3exp_make_node(loc0, D3Econ(dcon))
@@ -229,6 +287,11 @@ end (*let*)//end-of-[val(t2js)]
 //
 val
 t2p0 = d2cst_get_styp(dcst)
+val
+svts = f0_make_svts(t2qs, t2js)
+val
+t2p0 = s2typ_subst0(t2p0, svts)
+//
 val
 d3e0 =
 d3exp_make_node(loc0, D3Ecst(dcst))
