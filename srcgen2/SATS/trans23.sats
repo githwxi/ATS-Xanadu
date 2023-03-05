@@ -284,20 +284,30 @@ trans23_d2ecl
 //
 fun
 trans23_d2patlst
-(env0:
+( env0:
 ! tr23env, d2ps: d2patlst): d3patlst
+//
+fun
+trans23_l2d2plst
+( env0:
+! tr23env, ldps: l2d2plst): l3d3plst
 //
 (* ****** ****** *)
 //
 fun
 trans23_d2explst
-(env0:
+( env0:
 ! tr23env, d2es: d2explst): d3explst
 //
 fun
 trans23_d2expopt
-(env0:
+( env0:
 ! tr23env, dopt: d2expopt): d3expopt
+//
+fun
+trans23_l2d2elst
+( env0:
+! tr23env, ldes: l2d2elst): l3d3elst
 //
 (* ****** ****** *)
 //
@@ -310,7 +320,7 @@ trans23_f2arglst
 //
 fun
 trans23_d2eclist
-(env0:
+( env0:
 ! tr23env, dcls: d2eclist): d3eclist
 //
 (* ****** ****** *)

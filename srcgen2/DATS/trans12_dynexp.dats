@@ -1140,11 +1140,11 @@ f0_id0_d1sym(env0, d1p0, sym1)
 end
 *)
 | _(* non-D2Psym0 *) => ( d2p0 )
-) (*case+*) // end-of-[f1_d2pat(env0,d2p0)]
+) (*case+*)//end-of-[f1_d2pat(env0,d2p0)]
 //
-} (*where*) // end of [trans12_d1pat(env0,d1p0)
+} (*where*)//end of [trans12_d1pat(env0,d1p0)
 //
-end (*local*) // end of [ local(trans12_d1pat) ]
+end (*local*)//end of [local( trans12_d1pat )]
 
 (* ****** ****** *)
 //
@@ -1159,7 +1159,7 @@ D1LAB
 //
 in//let
 D2LAB(lab0, trans12_d1pat(env0, d1p1))
-end (*let*)//end-of[trans12_l1d1p(env0,ld1p)]
+end (*let*)//end-of-[trans12_l1d1p(env0,ld1p)]
 //
 (* ****** ****** *)
 
@@ -2508,11 +2508,11 @@ trans12_s1exp_impr(env0, s1e2)
 //
 in//let
   d2exp(loc0, D2Eannot(d2e1, s1e2, s2e2))
-end (*let*) // end of [f0_annot(env0,d1e0)]
+end (*let*)//end of [f0_annot(env0,d1e0)]
 
 (* ****** ****** *)
 //
-} (*where*) // end of [trans12_d1exp(env0,d1e0)]
+} (*where*)//end of [trans12_d1exp(env0,d1e0)]
 
 (* ****** ****** *)
 //
@@ -2527,7 +2527,7 @@ D1LAB
 //
 in//let
 D2LAB(lab0, trans12_d1exp(env0, d1e1))
-end (*let*)//end-of[trans12_l1d1e(env0,ld1e)]
+end (*let*)//end-of-[trans12_l1d1e(env0,ld1e)]
 //
 (* ****** ****** *)
 
