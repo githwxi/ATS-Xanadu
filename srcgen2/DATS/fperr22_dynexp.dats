@@ -82,6 +82,27 @@ case+
 d2p.node() of
 //
 |
+D2Ptup0
+(npf1, d2ps) =>
+let
+val () =
+fperr22_d2patlst(out, d2ps) end
+|
+D2Ptup1
+( tknd
+, npf1, d2ps) =>
+let
+val () =
+fperr22_d2patlst(out, d2ps) end
+|
+D2Prcd2
+( tknd
+, npf1, ldps) =>
+let
+val () =
+fperr22_l2d2plst(out, ldps) end
+//
+|
 D2Pannot
 (d2p1,s1e2,s2e2) =>
 let
@@ -144,6 +165,17 @@ end(*let*)//end-of(fperr22_d2pat(out,d2p0))
 endloc(*local*)//end-of(local(fperr22_d2pat))
 
 (* ****** ****** *)
+//
+#implfun
+fperr22_l2d2p
+(out, ld2p) =
+(
+case+ ld2p of
+|
+D2LAB(lab,d2p1) => fperr22_d2pat(out,d2p1)
+) (*case+*)//end-of-(fperr22_d2pat(out,ld2p))
+//
+(* ****** ****** *)
 
 local
 
@@ -188,6 +220,27 @@ val () =
 fperr22_d2expopt(out, dthn)
 val () =
 fperr22_d2expopt(out, dels) end
+//
+|
+D2Etup0
+(npf1, d2es) =>
+let
+val () =
+fperr22_d2explst(out, d2es) end
+|
+D2Etup1
+( tknd
+, npf1, d2es) =>
+let
+val () =
+fperr22_d2explst(out, d2es) end
+|
+D2Ercd2
+( tknd
+, npf1, ldes) =>
+let
+val () =
+fperr22_l2d2elst(out, ldes) end
 //
 |
 D2Eassgn
@@ -255,6 +308,17 @@ end(*let*)//end-of(fperr22_d2exp(out,d2e0))
 //
 endloc(*local*)//end-of(local(fperr22_d2exp))
 
+(* ****** ****** *)
+//
+#implfun
+fperr22_l2d2e
+(out, ld2e) =
+(
+case+ ld2e of
+|
+D2LAB(lab,d2e1) => fperr22_d2exp(out,d2e1)
+) (*case+*)//end-of-(fperr22_d2exp(out,ld2e))
+//
 (* ****** ****** *)
 //
 #implfun
