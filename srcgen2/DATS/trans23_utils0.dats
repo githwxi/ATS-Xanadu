@@ -257,6 +257,12 @@ val
 svts = f0_make_svts(t2qs, t2js)
 val
 t2p0 = s2typ_subst0(t2p0, svts)
+val () =
+prerrln
+("d2con23_tapqize: svts: ", svts)
+val () =
+prerrln
+("d2con23_tapqize: t2p0: ", t2p0)
 //
 val
 d3e0 =
