@@ -240,6 +240,12 @@ D3Etup0
 let
 val () =
 d3explst_fpemsg(out, d3es) endlet
+|
+D3Etup1
+(tknd,npf1,d3es) =>
+let
+val () =
+d3explst_fpemsg(out, d3es) endlet
 //
 |
 D3Eassgn

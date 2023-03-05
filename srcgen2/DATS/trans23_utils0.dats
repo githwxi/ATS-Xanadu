@@ -67,10 +67,85 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with d3pat_get_lctn
+#symload node with d3pat_get_node
+#symload styp with d3pat_get_styp
+#symload styp with d3pat_set_styp
+(* ****** ****** *)
 #symload lctn with d3exp_get_lctn
 #symload node with d3exp_get_node
 #symload styp with d3exp_get_styp
 #symload styp with d3exp_set_styp
+(* ****** ****** *)
+//
+#implfun
+s2typlst_of_d3patlst
+( d3ps ) =
+(
+list_map<x0><y0>(d3ps)) where
+{
+#typedef x0 = d3pat
+#typedef y0 = s2typ
+#impltmp
+map$fopr<x0><y0>(d3p) = d3p.styp()
+}
+// end of [s2typlst_of_d3patlst(d3ps)]
+//
+(* ****** ****** *)
+//
+#implfun
+s2typlst_of_d3explst
+( d3es ) =
+(
+list_map<x0><y0>(d3es)) where
+{
+#typedef x0 = d3exp
+#typedef y0 = s2typ
+#impltmp
+map$fopr<x0><y0>(d3e) = d3e.styp()
+}
+// end of [s2typlst_of_d3explst(d3es)]
+//
+(* ****** ****** *)
+//
+#implfun
+l2t2plst_of_l3d3plst
+( ldps ) =
+(
+list_map<x0><y0>(ldps)) where
+{
+//
+#typedef x0 = l3d3p
+#typedef y0 = l2t2p
+//
+#impltmp
+map$fopr<x0><y0>(ldp) =
+S2LAB
+(l0, d3p.styp()) where
+{
+  val+D3LAB(l0, d3p) = ldp } }
+// end of [l2t2plst_of_l3d3plst(ldps)]
+//
+(* ****** ****** *)
+//
+#implfun
+l2t2plst_of_l3d3elst
+( ldes ) =
+(
+list_map<x0><y0>(ldes)) where
+{
+//
+#typedef x0 = l3d3e
+#typedef y0 = l2t2p
+//
+#impltmp
+map$fopr<x0><y0>(lde) =
+S2LAB
+(l0, d3e.styp()) where
+{
+  val+D3LAB(l0, d3e) = lde } }
+// end of [l2t2plst_of_l3d3elst(ldes)]
+//
 (* ****** ****** *)
 
 local

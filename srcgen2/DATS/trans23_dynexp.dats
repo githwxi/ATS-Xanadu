@@ -276,6 +276,7 @@ d3exp_make_styp_node
 *)
 //
 |D2Etup0 _ => f0_tup0(env0, d2e0)
+|D2Etup1 _ => f0_tup1(env0, d2e0)
 //
 |D2Eassgn _ => f0_assgn(env0, d2e0)
 //
