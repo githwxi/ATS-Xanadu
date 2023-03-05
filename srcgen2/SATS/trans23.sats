@@ -111,6 +111,7 @@ LEX = "./lexing0.sats"
 //
 #typedef s2explst = $S2E.s2explst
 #typedef s2typlst = $S2E.s2typlst
+#typedef l2t2plst = $S2E.l2t2plst
 //
 (* ****** ****** *)
 #typedef d2varlst = $D2E.d2varlst
@@ -188,6 +189,20 @@ s2typlst_of_d3explst
 ( d3es: d3explst ): s2typlst
 #symload
 s2typlst with s2typlst_of_d3explst
+//
+(* ****** ****** *)
+//
+fun
+l2t2plst_of_l3d3plst
+( ldps: l3d3plst ): l2t2plst
+#symload
+l2t2plst with l2t2plst_of_l3d3plst
+//
+fun
+l2t2plst_of_l3d3elst
+( ldes: l3d3elst ): l2t2plst
+#symload
+l2t2plst with l2t2plst_of_l3d3elst
 //
 (* ****** ****** *)
 //
