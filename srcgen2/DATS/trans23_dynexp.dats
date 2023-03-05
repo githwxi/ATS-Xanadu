@@ -225,6 +225,21 @@ end (*let*) // end of [f0_annot(env0,...)]
 (* ****** ****** *)
 //
 #implfun
+trans23_l2d2p
+( env0,ld2p ) =
+let
+//
+val+
+D2LAB
+(lab0, d2p1) = ld2p
+//
+in//let
+D3LAB(lab0, trans23_d2pat(env0, d2p1))
+end (*let*)//end-of-[trans23_l2d2p(env0,ld2p)]
+//
+(* ****** ****** *)
+//
+#implfun
 trans23_d2exp
 ( env0, d2e0 ) =
 let
@@ -277,6 +292,7 @@ d3exp_make_styp_node
 //
 |D2Etup0 _ => f0_tup0(env0, d2e0)
 |D2Etup1 _ => f0_tup1(env0, d2e0)
+|D2Ercd2 _ => f0_rcd2(env0, d2e0)
 //
 |D2Eassgn _ => f0_assgn(env0, d2e0)
 //
@@ -573,6 +589,39 @@ s2typ_tup1(trcd , npf1 , s2typlst(d3es))
 (* ****** ****** *)
 //
 fun
+f0_rcd2
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+(
+d3exp_make_styp_node
+( loc0, t2p0
+, D3Ercd2
+  (tknd, npf1, ldes))) where
+{
+val loc0 = d2e0.lctn()
+val-
+D2Ercd2
+( tknd
+, npf1, ldes) = d2e0.node()
+val
+ldes = trans23_l2d2elst(env0, ldes)
+val
+trcd =
+(
+case-
+tknd.node() of
+|T_TRCD20(0) => TRCDflt0(*void*)
+|T_TRCD20(_) => TRCDbox0(*void*)
+)
+val
+t2p0 =
+s2typ_rcd2(trcd , npf1 , l2t2plst(ldes))
+} (*where*) // end of [f0_rcd2(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_assgn
 ( env0:
 ! tr23env
@@ -625,6 +674,21 @@ end (*let*) // end of [f0_t2pck(env0,d2e0)]
 (* ****** ****** *)
 //
 #implfun
+trans23_l2d2e
+( env0,ld2e ) =
+let
+//
+val+
+D2LAB
+(lab0, d2e1) = ld2e
+//
+in//let
+D3LAB(lab0, trans23_d2exp(env0, d2e1))
+end (*let*)//end-of-[trans23_l2d2e(env0,ld2e)]
+//
+(* ****** ****** *)
+//
+#implfun
 trans23_f2arg
 ( env0, farg ) =
 let
@@ -661,13 +725,19 @@ F2ARGmet0(s2es) => f3arg(loc0,F3ARGmet0(s2es))
 end (*let*) // end of [trans23_f2arg(env0,farg)]
 
 (* ****** ****** *)
-
+//
 #implfun
 trans23_d2patlst
   (env0, d2ps) =
 (
 list_trans23_fnp(env0, d2ps, trans23_d2pat))
-
+//
+#implfun
+trans23_l2d2plst
+  (env0, ldps) =
+(
+list_trans23_fnp(env0, ldps, trans23_l2d2p))
+//
 (* ****** ****** *)
 //
 #implfun
@@ -681,6 +751,12 @@ trans23_d2expopt
   (env0, dopt) =
 (
 optn_trans23_fnp(env0, dopt, trans23_d2exp))
+//
+#implfun
+trans23_l2d2elst
+  (env0, ldes) =
+(
+list_trans23_fnp(env0, ldes, trans23_l2d2e))
 //
 (* ****** ****** *)
 
