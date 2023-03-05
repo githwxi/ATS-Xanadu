@@ -417,6 +417,12 @@ D3Eift0 of
 ,d3expopt(*then*),d3expopt(*else*))
 //
 |D3Etup0 of (sint(*npf*), d3explst)
+|D3Etup1 of
+(
+token(*knd*), sint(*npf*), d3explst)
+|D3Ercd2 of
+(
+token(*knd*), sint(*npf*), l3d3elst)
 //
 |
 D3Et2pck of (d3exp, s2typ)//HX: casting

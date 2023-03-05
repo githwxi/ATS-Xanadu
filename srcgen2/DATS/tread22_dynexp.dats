@@ -173,6 +173,21 @@ endlet // end of [d2pat_tup0_errck(...)]
 (* ****** ****** *)
 //
 fun
+d2pat_tup1_errck
+( loc0: loc_t
+, tknd: token
+, npf1: (sint)
+, d2ps: d2patlst): d2pat =
+let
+val lvl0 = errvl(d2ps) in//let
+d2pat_errck
+( lvl0+1
+, d2pat(loc0,D2Ptup1(tknd,npf1,d2ps)))
+endlet // end of [d2pat_tup1_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d2pat_annot_errck
 ( loc0: loc_t
 , d2p1: d2pat
@@ -327,6 +342,21 @@ endlet // end of [d2exp_tup0_errck(...)]
 (* ****** ****** *)
 //
 fun
+d2exp_tup1_errck
+( loc0: loc_t
+, tknd: token
+, npf1: (sint)
+, d2es: d2explst): d2exp =
+let
+val lvl0 = errvl(d2es) in//let
+d2exp_errck
+( lvl0+1
+, d2exp(loc0, D2Etup1(tknd,npf1,d2es)))
+endlet // end of [d2exp_tup1_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d2exp_assgn_errck
 ( loc0: loc_t
 , d2el: d2exp
@@ -396,8 +426,8 @@ d2p0.node() of
 |D2Pcons _ => d2p0
 //
 |D2Ptup0 _ => f0_tup0(d2p0, err)
-(*
 |D2Ptup1 _ => f0_tup1(d2p0, err)
+(*
 |D2Prcd2 _ => f0_rcd2(d2p0, err)
 *)
 //
@@ -442,6 +472,33 @@ val loc = d2p.lctn() in
 d2pat_tup0_errck(loc, npf1, d2ps)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_tup0(d2p,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup1
+(d2p: d2pat
+,err: &sint >> _): d2pat =
+let
+//
+val e00 = err
+//
+val-
+D2Ptup1
+( tknd
+, npf1, d2ps) = d2p.node()
+//
+val
+d2ps =
+tread22_d2patlst(d2ps, err)
+//
+in//let
+if
+(e00=err)
+then (d2p) else
+d2pat_tup1_errck
+(d2p.lctn() , tknd , npf1 , d2ps)
+end (*let*) // end of [f0_tup1(d2p,err)]
 //
 (* ****** ****** *)
 //
@@ -535,8 +592,8 @@ d2e0.node() of
 |D2Edapp _ => f0_dapp(d2e0, err)
 //
 |D2Etup0 _ => f0_tup0(d2e0, err)
-(*
 |D2Etup1 _ => f0_tup1(d2e0, err)
+(*
 |D2Ercd2 _ => f0_rcd2(d2e0, err)
 *)
 //
@@ -704,6 +761,33 @@ val loc = d2e.lctn() in
 d2exp_tup0_errck(loc, npf1, d2es)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_tup0(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup1
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Etup1
+( tknd
+, npf1, d2es) = d2e.node()
+//
+val
+d2es =
+tread22_d2explst(d2es, err)
+//
+in//let
+if
+(e00=err)
+then (d2e) else
+d2exp_tup1_errck
+(d2e.lctn() , tknd , npf1 , d2es)
+end (*let*) // end of [f0_tup1(d2e,err)]
 //
 (* ****** ****** *)
 //
