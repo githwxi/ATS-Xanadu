@@ -264,6 +264,27 @@ D3Elet0
 (dcls, d3e1) =>
 (
 print("D3Elet0(",dcls,";",d3e1,")"))
+//
+|D3Eift0
+(d3e1,dthn,dels) =>
+( print("D3Eift0(")
+; print(d3e1,";",dthn,";",dels,")"))
+//
+|D3Etup0
+(npf1, d3es) =>
+(
+print("D3Etup0(",npf1,";",d3es,")"))
+|
+D3Etup1
+(tknd,npf1,d3es) =>
+( print("D3Etup1(")
+; print(tknd,";",npf1,";",d3es,")") )
+|
+D3Ercd2
+(tknd,npf1,ldes) =>
+( print("D3Ercd2(")
+; print(tknd,";",npf1,";",ldes,")") )
+//
 |
 D3Ewhere
 (d3e1, dcls) =>
@@ -273,11 +294,6 @@ print("D3Ewhere(",d3e1,";",dcls,")")
 D3Eassgn
 (d3el, d3er) =>
 print("D3Eassgn(",d3el,";",d3er,")")
-//
-|D3Eift0
-(d3e1,dthn,dels) =>
-( print("D3Eift0(")
-; print(d3e1,";",dthn,";",dels,")"))
 //
 |D3Et2pck
 ( d3e1 , t2p2 ) =>
