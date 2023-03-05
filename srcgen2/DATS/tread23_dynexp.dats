@@ -320,6 +320,36 @@ endlet // end of [d3pat_tup0_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3pat_tup1_errck
+( loc0: loc_t
+, tknd: token
+, npf1: (sint)
+, d3ps: d3patlst): d3pat =
+let
+val lvl0 = errvl(d3ps) in//let
+d3pat_errck
+( lvl0+1
+, d3pat(loc0,D3Ptup1(tknd,npf1,d3ps)))
+endlet // end of [d3pat_tup1_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3pat_rcd2_errck
+( loc0: loc_t
+, tknd: token
+, npf1: (sint)
+, ldps: l3d3plst): d3pat =
+let
+val lvl0 = errvl(ldps) in//let
+d3pat_errck
+( lvl0+1
+, d3pat(loc0,D3Prcd2(tknd,npf1,ldps)))
+endlet // end of [d3pat_rcd2_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3pat_annot_errck
 ( loc0: loc_t
 , d3p1: d3pat
@@ -434,6 +464,21 @@ endlet // end of [d3exp_tup1_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3exp_rcd2_errck
+( loc0: loc_t
+, tknd: token
+, npf1: (sint)
+, ldes: l3d3elst): d3exp =
+let
+val lvl0 = errvl(ldes) in//let
+d3exp_errck
+( lvl0+1
+, d3exp(loc0,D3Ercd2(tknd,npf1,ldes)))
+endlet // end of [d3exp_rcd2_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3exp_assgn_errck
 ( loc0: loc_t
 , d3el: d3exp
@@ -480,6 +525,8 @@ d3p0.node() of
 |D3Pstr _ => d3p0
 //
 |D3Ptup0 _ => f0_tup0(d3p0, err)
+|D3Ptup1 _ => f0_tup1(d3p0, err)
+|D3Prcd2 _ => f0_rcd2(d3p0, err)
 //
 |D3Pannot _ => f0_annot(d3p0, err)
 //
@@ -521,6 +568,64 @@ val loc = d3p.lctn() in
 d3pat_tup0_errck(loc, npf1, d3ps)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_tup0(d3p,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup1
+(d3p: d3pat
+,err: &sint >> _): d3pat =
+let
+//
+val e00 = err
+//
+val-
+D3Ptup1
+( tknd
+, npf1, d3ps) = d3p.node()
+//
+val
+d3ps =
+tread23_d3patlst(d3ps, err)
+//
+in//let
+if
+(e00=err)
+then (d3p) else
+let
+val loc = d3p.lctn() in//let
+d3pat_tup1_errck(loc,tknd,npf1,d3ps)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_tup1(d3p,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_rcd2
+(d3p: d3pat
+,err: &sint >> _): d3pat =
+let
+//
+val e00 = err
+//
+val-
+D3Prcd2
+( tknd
+, npf1, ldps) = d3p.nodp()
+//
+val
+ldps =
+tread23_l3d3plst(ldps, err)
+//
+in//let
+if
+(e00=err)
+then (d3p) else
+let
+val loc = d3p.lctn() in//let
+d3pat_rcd2_errck(loc,tknd,npf1,ldps)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_rcd2(d3p,err)]
 //
 (* ****** ****** *)
 //
@@ -608,6 +713,7 @@ d3e0.node() of
 //
 |D3Etup0 _ => f0_tup0(d3e0, err)
 |D3Etup1 _ => f0_tup1(d3e0, err)
+|D3Ercd2 _ => f0_rcd2(d3e0, err)
 //
 |D3Eassgn _ => f0_assgn(d3e0, err)
 //
@@ -784,6 +890,35 @@ val loc = d3e.lctn() in//let
 d3exp_tup1_errck(loc,tknd,npf1,d3es)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_tup1(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_rcd2
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val-
+D3Ercd2
+( tknd
+, npf1, ldes) = d3e.node()
+//
+val
+ldes =
+tread23_l3d3elst(ldes, err)
+//
+in//let
+if
+(e00=err)
+then (d3e) else
+let
+val loc = d3e.lctn() in//let
+d3exp_rcd2_errck(loc,tknd,npf1,ldes)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_rcd2(d3e,err)]
 //
 (* ****** ****** *)
 //
