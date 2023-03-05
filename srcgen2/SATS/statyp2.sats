@@ -281,7 +281,11 @@ l2s2elst_stpize(l2s2elst): l2t2plst
 (* ****** ****** *)
 //
 fun
-s2typ_hnfiz0(t2p0:s2typ): s2typ
+s2typ_hnfiz0(s2typ): s2typ
+//
+fun
+s2typ_subst0
+(t2p0:s2typ,svts:s2vts): s2typ
 //
 (* ****** ****** *)
 //
@@ -302,6 +306,11 @@ fun
 <e1nv:vwtp>
 s2typ_hnfiz0_e1nv
 (e1nv: !e1nv, t2p0: s2typ): s2typ
+fun
+<e1nv:vwtp>
+s2typ_subst0_e1nv
+( e1nv: !e1nv
+, t2p0: s2typ, svts: s2vts): s2typ
 //
 (* ****** ****** *)
 //

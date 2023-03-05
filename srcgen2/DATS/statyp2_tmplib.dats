@@ -62,9 +62,24 @@ ATS_PACKNAME
 s2typ_hnfiz0_e1nv
 (e1nv, t2p0) =
 let
-var flag: sint = 0 in
-s2typ_hnfizx_e1nv<e1nv>(e1nv,t2p0,flag)
+var flag: sint = 0
+in//let
+s2typ_hnfizx_e1nv
+<e1nv>(e1nv, t2p0, flag)
 end (*let*) // end of [s2typ_hnfiz0_e1nv]
+
+(* ****** ****** *)
+
+#implfun
+< e1nv >
+s2typ_subst0_e1nv
+(e1nv, t2p0, svts) =
+let
+var flag: sint = 0
+in//let
+s2typ_substx_e1nv
+<e1nv>(e1nv, t2p0, svts, flag)
+end (*let*) // end of [s2typ_subst0_e1nv]
 
 (* ****** ****** *)
 

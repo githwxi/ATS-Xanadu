@@ -57,7 +57,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 
 #implfun
-s2typ_hnfiz0(t2p0) =
+s2typ_hnfiz0
+(   t2p0   ) =
 let
 //
 #typedef
@@ -75,6 +76,29 @@ s2typ_eval$s2var
 in//let
 s2typ_hnfiz0_e1nv<e1nv>(env0, t2p0)
 end (*let*) // end of [s2typ_hnfiz0(t2p0)]
+
+(* ****** ****** *)
+
+#implfun
+s2typ_subst0
+(t2p0, svts) =
+let
+//
+#typedef
+e1nv = sint
+//
+val env0: e1nv = 0
+//
+#impltmp
+s2typ_eval$s2cst
+<e1nv>(env0,s2c0) = s2c0.styp()
+#impltmp
+s2typ_eval$s2var
+<e1nv>(env0,s2v0) = optn_vt_nil()
+//
+in//let
+s2typ_subst0_e1nv<e1nv>(env0, t2p0, svts)
+end (*let*) // end of [s2typ_subst0(t2p0,svts)]
 
 (* ****** ****** *)
 
