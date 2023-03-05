@@ -239,6 +239,9 @@ f2clknd =
 //
 // func/clos-kind
 //
+(*
+| D2CLcon of ((*con*))
+*)
 | F2CLfun of ((*fun*))
 | F2CLclo of int(*knd*)
   // closure: knd=1/0/~1: ptr/flt/ref
