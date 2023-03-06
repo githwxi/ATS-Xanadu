@@ -60,6 +60,9 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 #typedef f2arg = $D2E.f2arg
 (* ****** ****** *)
+#typedef d2gua = $D2E.d2gua
+#typedef d2cls = $D2E.d2cls
+(* ****** ****** *)
 #typedef d2ecl = $D2E.d2ecl
 (* ****** ****** *)
 #typedef d2patlst = $D2E.d2patlst
@@ -72,6 +75,9 @@ D2E = "./dynexp2.sats"
 #typedef l2d2elst = $D2E.l2d2elst
 (* ****** ****** *)
 #typedef f2arglst = $D2E.f2arglst
+(* ****** ****** *)
+#typedef d2gualst = $D2E.d2gualst
+#typedef d2clslst = $D2E.d2clslst
 (* ****** ****** *)
 #typedef d2eclist = $D2E.d2eclist
 (* ****** ****** *)
@@ -125,6 +131,10 @@ fun fperr22_l2d2e(FILR, l2d2e): void
 (* ****** ****** *)
 fun fperr22_f2arg(FILR, f2arg): void
 (* ****** ****** *)
+fun fperr22_d2gua(FILR, d2gua): void
+fun fperr22_d2gpt(FILR, d2gpt): void
+fun fperr22_d2cls(FILR, d2cls): void
+(* ****** ****** *)
 fun fperr22_d2ecl(FILR, d2ecl): void
 (* ****** ****** *)
 fun fperr22_d2patlst(FILR, d2patlst): void
@@ -137,6 +147,9 @@ fun fperr22_l2d2plst(FILR, l2d2plst): void
 fun fperr22_l2d2elst(FILR, l2d2elst): void
 (* ****** ****** *)
 fun fperr22_f2arglst(FILR, f2arglst): void
+(* ****** ****** *)
+fun fperr22_d2gualst(FILR, d2gualst): void
+fun fperr22_d2clslst(FILR, d2clslst): void
 (* ****** ****** *)
 fun fperr22_d2eclist(FILR, d2eclist): void
 (* ****** ****** *)

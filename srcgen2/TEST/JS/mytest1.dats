@@ -9,8 +9,20 @@ and y2 = 2
 val xy = x1 + y2
 *)
 (* ****** ****** *)
+(*
 val xs = list_nil()
 val ys = list_cons(1, xs)
+val zs = list_cons("1", ys)
+*)
+(* ****** ****** *)
+
+fun len(xs) =
+(
+case+ xs of
+| list_nil() => 0
+| list_cons(_, xs) => len(xs)+1
+)
+
 (* ****** ****** *)
 ////
 (* ****** ****** *)
