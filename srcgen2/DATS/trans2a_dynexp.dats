@@ -784,6 +784,11 @@ s2typ_make_node
 ,T2Pfun1(f2cl,npf1,t2ps,tres))
 end (*let*) // end-of-[val(tfun)]
 //
+val () =
+prerrln("f0_dapp: d2f0 = ", d2f0)
+val () =
+prerrln("f0_dapp: tfun = ", tfun)
+//
 val d2f0 =
 trans2a_d2exp_tpck(env0,d2f0,tfun)
 //

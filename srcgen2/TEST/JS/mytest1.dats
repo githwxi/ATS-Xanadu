@@ -3,9 +3,11 @@
 #infixr -> of 10
 *)
 (* ****** ****** *)
+(*
 val x1 = 1
 and y2 = 2
 val xy = x1 + y2
+*)
 (* ****** ****** *)
 val xs = list_nil()
 val ys = list_cons(1, xs)
