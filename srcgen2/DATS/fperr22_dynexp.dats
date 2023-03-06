@@ -64,6 +64,16 @@ ATS_PACKNAME
 #symload lctn with d2exp_get_lctn
 #symload node with d2exp_get_node
 (* ****** ****** *)
+#symload lctn with f2arg_get_lctn
+#symload node with f2arg_get_node
+(* ****** ****** *)
+#symload lctn with d2gua_get_lctn
+#symload node with d2gua_get_node
+#symload lctn with d2gpt_get_lctn
+#symload node with d2gpt_get_node
+#symload lctn with d2cls_get_lctn
+#symload node with d2cls_get_node
+(* ****** ****** *)
 
 local
 
@@ -346,6 +356,63 @@ fperr22_d2patlst(out, d2ps)
 |F2ARGmet0(s2es) => ( (*void*) )
 //
 ) (*case+*)//end-of-(fperr22_f2arg(out,farg)]
+//
+(* ****** ****** *)
+//
+#implfun
+fperr22_d2gua
+(out, dgua) =
+(
+case+
+dgua.node() of
+|
+D2GUAexp(d2e1) =>
+fperr22_d2exp(out, d2e1)
+|
+D2GUAmat(d2e1,d2p2) =>
+let
+val () = fperr22_d2exp(out, d2e1)
+val () = fperr22_d2pat(out, d2p2)
+endlet // end of [D2GUAmat(_,_,_)]
+) (*case*) // end-of(fperr22_d2gua(out,dgua))
+//
+(* ****** ****** *)
+//
+#implfun
+fperr22_d2gpt
+(out, dgpt) =
+(
+case+
+dgpt.node() of
+|
+D2GPTpat(d2p1) =>
+fperr22_d2pat(out, d2p1)
+|
+D2GPTgua(d2p1,d2gs) =>
+let
+val () = fperr22_d2pat(out, d2p1)
+val () = fperr22_d2gualst(out, d2gs)
+endlet // end of [ D2GPTgua(_,_,_) ]
+) (*case*) // end-of(fperr22_d2gpt(out,dgpt))
+//
+(* ****** ****** *)
+//
+#implfun
+fperr22_d2cls
+(out, dcls) =
+(
+case+
+dcls.node() of
+|
+D2CLSgpt(dgpt) =>
+fperr22_d2gpt(out, dgpt)
+|
+D2CLScls(dgpt,d2e2) =>
+let
+val () = fperr22_d2gpt(out, dgpt)
+val () = fperr22_d2exp(out, d2e2)
+endlet // end of [ D2CLScls(_,_,_) ]
+) (*case*) // end-of(fperr22_d2cls(out,dcls))
 //
 (* ****** ****** *)
 //
