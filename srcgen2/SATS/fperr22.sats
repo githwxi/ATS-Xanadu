@@ -61,6 +61,7 @@ D2E = "./dynexp2.sats"
 #typedef f2arg = $D2E.f2arg
 (* ****** ****** *)
 #typedef d2gua = $D2E.d2gua
+#typedef d2gpt = $D2E.d2gpt
 #typedef d2cls = $D2E.d2cls
 (* ****** ****** *)
 #typedef d2ecl = $D2E.d2ecl
