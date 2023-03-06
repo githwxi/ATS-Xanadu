@@ -256,21 +256,29 @@ t2p0 = d2con_get_styp(dcon)
 val
 svts = f0_make_svts(t2qs, t2js)
 val
-t2p0 = s2typ_subst0(t2p0, svts)
+t2p0 =
+(
+case+ svts of
+|list_nil() => t2p0
+|list_cons _ =>
+ s2typ_subst0(t2p0, svts)): s2typ
+//
+(*
 val () =
 prerrln
 ("d2con23_tapqize: svts: ", svts)
 val () =
 prerrln
 ("d2con23_tapqize: t2p0: ", t2p0)
+*)
 //
 val
 d3e0 =
 d3exp_make_node(loc0, D3Econ(dcon))
 //
 in//let
-d3exp_make_styp_node
-(loc0, t2p0, D3Etapq(d3e0, t2js))
+  d3exp_make_styp_node
+  (loc0, t2p0, D3Etapq(d3e0, t2js))
 end (*let*) // end of [d2con23_tapqize(...)]
 
 (* ****** ****** *)
@@ -296,15 +304,29 @@ t2p0 = d2cst_get_styp(dcst)
 val
 svts = f0_make_svts(t2qs, t2js)
 val
-t2p0 = s2typ_subst0(t2p0, svts)
+t2p0 =
+(
+case+ svts of
+|list_nil() => t2p0
+|list_cons _ =>
+ s2typ_subst0(t2p0, svts)): s2typ
+//
+(*
+val () =
+prerrln
+("d2cst23_tapqize: svts: ", svts)
+val () =
+prerrln
+("d2cst23_tapqize: t2p0: ", t2p0)
+*)
 //
 val
 d3e0 =
 d3exp_make_node(loc0, D3Ecst(dcst))
 //
 in//let
-d3exp_make_styp_node
-(loc0, t2p0, D3Etapq(d3e0, t2js))
+  d3exp_make_styp_node
+  (loc0, t2p0, D3Etapq(d3e0, t2js))
 end (*let*) // end of [d2cst23_tapqize(...)]
 
 (* ****** ****** *)

@@ -521,10 +521,19 @@ trans2a_d2eclistopt
 (* ****** ****** *)
 //
 fun
+d2con2a_s2typize
+(loc0:loc_t, dcon:d2con): s2typ
+fun
+d2cst2a_s2typize
+(loc0:loc_t, dcst:d2cst): s2typ
+//
+(* ****** ****** *)
+//
+fun
 unify2a_s2typ // effectful
 ( env0:
 ! tr2aenv
-, t2p1:s2typ, t2p2:s2typ): bool
+, t2p1:s2typ, t2p2:s2typ): (bool)
 fun
 unify2a_s2typlst // effectful
 ( env0:
