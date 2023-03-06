@@ -272,8 +272,21 @@ d2valdcl_get_wsxp(dval)
 //
 val dpat =
 trans23_d2pat(env0, dpat)
+//
 val tdxp =
-trans23_teqd2exp(env0, tdxp)
+(
+case tdxp of
+|
+TEQD2EXPnone() =>
+TEQD3EXPnone(*void*)
+|
+TEQD2EXPsome(teq1, dexp) =>
+TEQD3EXPsome(teq1, dexp) where
+{
+val tpat = dpat.styp()
+val dexp =
+trans23_d2exp_tpck(env0, dexp, tpat)}
+)
 //
 in//let
 d3valdcl_make_args(loc0,dpat,tdxp,wsxp)
