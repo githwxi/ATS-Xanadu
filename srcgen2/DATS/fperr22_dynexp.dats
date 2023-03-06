@@ -222,6 +222,15 @@ val () =
 fperr22_d2expopt(out, dels) end
 //
 |
+D2Ecas0
+(tknd,d2e1,dcls) =>
+let
+val () =
+fperr22_d2exp(out, d2e1)
+val () =
+fperr22_d2clslst(out, dcls) end
+//
+|
 D2Etup0
 (npf1, d2es) =>
 let
@@ -383,6 +392,22 @@ fperr22_f2arglst
   (out, f2as) =
 (
   list_fperr22_fnp(out, f2as, fperr22_f2arg))
+//
+(* ****** ****** *)
+//
+#implfun
+fperr22_d2gualst
+  (out, d2gs) =
+(
+  list_fperr22_fnp(out, d2gs, fperr22_d2gua))
+//
+(* ****** ****** *)
+//
+#implfun
+fperr22_d2clslst
+  (out, d2cs) =
+(
+  list_fperr22_fnp(out, d2cs, fperr22_d2cls))
 //
 (* ****** ****** *)
 
