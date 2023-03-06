@@ -231,6 +231,86 @@ S2LAB
 //
 (* ****** ****** *)
 
+local
+
+fun
+f0_make_svts
+( loc0: loc_t
+, t2qs: t2qaglst): s2vts =
+(
+case+ t2qs of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons(t2q1, t2qs) =>
+f1_make_svts
+( t2q1.s2vs()
+, f0_make_svts(loc0, t2qs))
+) where
+{
+fun
+f1_make_svts
+( s2vs
+: s2varlst
+, svts: s2vts): s2vts =
+(
+case+ s2vs of
+|list_nil() => svts
+|list_cons(s2v1, s2vs) =>
+(
+list_cons
+( @(s2v1, xtv1)
+, f1_make_svts(s2vs, svts))
+) where
+{ val xtv1 =
+  s2typ_xtv(x2t2p_make_lctn(loc0)) }
+//(*where*) // end of [list_cons(...)]
+)
+} (*where*) // end of [f0_make_svts(...)]
+
+in//local
+//
+#implfun
+d2con2a_s2typize
+(  loc0, dcon  ) =
+(
+case+ svts of
+|
+list_nil() => t2p0
+|
+list_cons _ =>
+(
+s2typ_subst0(t2p0, svts))
+) where
+{
+val t2p0 = dcon.styp((*void*))
+val t2qs = d2con_get_tqas(dcon)
+val svts = f0_make_svts(loc0, t2qs)}
+//(*where*) // end of [d2con2a_s2typize(...)]
+//
+#implfun
+d2cst2a_s2typize
+(  loc0, dcst  ) =
+(
+case+ svts of
+|
+list_nil() => t2p0
+|
+list_cons _ =>
+(
+s2typ_subst0(t2p0, svts))
+) where
+{
+val t2p0 = dcst.styp((*void*))
+val t2qs = d2cst_get_tqas(dcst)
+val svts = f0_make_svts(loc0, t2qs)}
+//(*where*) // end of [d2cst2a_s2typize(...)]
+//
+endloc//end-of[local(d2con22/d2cst22_s2typize)]
+
+(* ****** ****** *)
+
 #implfun
 unify2a_s2typ
 (env0, t2p1, t2p2) =
