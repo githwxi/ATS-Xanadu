@@ -417,20 +417,10 @@ d2valdcl_get_wsxp(dval)
 val dpat =
 trans2a_d2pat(env0, dpat)
 //
-val tdxp =
-(
-case tdxp of
-|
-TEQD2EXPnone() =>
-TEQD2EXPnone(*void*)
-|
-TEQD2EXPsome(teq1, dexp) =>
-TEQD2EXPsome(teq1, dexp) where
-{
-val tpat = dpat.styp()
-val dexp =
-trans2a_d2exp_tpck(env0, dexp, tpat)}
-)
+(*
+val tdxp = ...
+(*handled in trans2a_d2valdclist*)
+*)
 //
 in//let
 d2valdcl_make_args(loc0,dpat,tdxp,wsxp)
@@ -514,10 +504,10 @@ d2fundcl_get_tdxp(dfun)
 val wsxp =
 d2fundcl_get_wsxp(dfun)
 //
+val f2cl = F2CLfun(*void*)
+//
 val f2as =
 trans2a_f2arglst(env0, f2as)
-//
-val f2cl = F2CLfun(*void*)
 //
 val tres =
 (
@@ -536,6 +526,12 @@ s2typ_fun1_f2arglst(f2as,f2cl,tres)
 val (  ) =
 prerrln
 ("trans2a_d2fundcl: tfun = ", tfun)
+//
+(*
+HX-2023:
+type-checking the body of the function
+is performed in [ trans2a_d2fundclist ]
+*)
 //
 in//let
 //
