@@ -74,6 +74,14 @@ ATS_PACKNAME
 #symload lctn with f2arg_get_lctn
 #symload node with f2arg_get_node
 (* ****** ****** *)
+#symload dpat with d2rpt_get_dpat
+#symload dpat with d2rpt_set_dpat
+(* ****** ****** *)
+#symload dexp with d2rxp_get_dexp
+#symload dexp with d2rxp_set_dexp
+(* ****** ****** *)
+//
+(* ****** ****** *)
 //
 fun
 d2pat_errck
@@ -571,19 +579,21 @@ d2p0.node() of
 |D2Pvar _ => d2p0
 |D2Pany _ => d2p0
 //
-|D2Pi00 _ => d2p0
-|D2Pb00 _ => d2p0
-|D2Pc00 _ => d2p0
-|D2Ps00 _ => d2p0
-//
 |D2Pint _ => d2p0
 |D2Pbtf _ => d2p0
 |D2Pchr _ => d2p0
 |D2Pflt _ => d2p0
 |D2Pstr _ => d2p0
 //
+|D2Pi00 _ => d2p0
+|D2Pb00 _ => d2p0
+|D2Pc00 _ => d2p0
+|D2Ps00 _ => d2p0
+//
 |D2Pcon _ => d2p0
 |D2Pcons _ => d2p0
+//
+|D2Psym0 _ => f0_sym0(d2p0, err)
 //
 |D2Pdapp _ => f0_dapp(d2p0, err)
 //
@@ -604,6 +614,49 @@ endlet // end of [ _(* otherwise *) ]
 //
 ) where // end-of-[(*case+(d2p0)-of*)]
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_sym0
+(d2p: d2pat
+,err: &sint >> _): d2pat =
+let
+//
+val e00 = err
+//
+val-
+D2Psym0
+( drpt
+, d1e1, dpis) = d2p.node()
+//
+val d2p1 = drpt.dpat((*void*))
+//
+in//let
+//
+case+
+d2p1.node() of
+|
+D2Pnone0() =>
+let
+val lvl0 = 1
+in // HX: left-error
+err := err+1;d2pat_errck(lvl0,d2p)
+end (*let*) // end of [ D2Pnone0 ]
+| _(*non-D2Pnone0*) =>
+let
+val d2p1 = tread22_d2pat(d2p1, err)
+in//let
+if
+(e00=err)
+then (d2p) else
+let
+val lvl0 = errvl(d2p1) in
+drpt.dpat(d2p1);d2pat_errck(lvl0+1,d2p)
+end (*let*) // end of [else]
+end (*let*) // end of [non-D2Pnone0]
+//
+end (*let*) // end of [f0_sym0(d2p,err)]
 //
 (* ****** ****** *)
 //
@@ -784,16 +837,16 @@ d2e0.node() of
 //
 |D2Evar _ => d2e0
 //
-|D2Ei00 _ => d2e0
-|D2Eb00 _ => d2e0
-|D2Ec00 _ => d2e0
-|D2Es00 _ => d2e0
-//
 |D2Eint _ => d2e0
 |D2Ebtf _ => d2e0
 |D2Echr _ => d2e0
 |D2Eflt _ => d2e0
 |D2Estr _ => d2e0
+//
+|D2Ei00 _ => d2e0
+|D2Eb00 _ => d2e0
+|D2Ec00 _ => d2e0
+|D2Es00 _ => d2e0
 //
 |D2Econ _ => d2e0
 |D2Ecst _ => d2e0
@@ -859,12 +912,11 @@ D2Enone0() =>
 let
 val lvl0 = 1
 in // HX: left-error
-err := err+1; d2exp_errck(lvl0,d2e)
-end (*let*) // end of [D2Enone0]
+err := err+1;d2exp_errck(lvl0,d2e)
+end (*let*) // end of [D2Enone0()]
 | _(*non-D2Enone0*) =>
 let
-val d2e1 =
-tread22_d2exp(d2e1, err)
+val d2e1 = tread22_d2exp(d2e1, err)
 in//let
 if
 (e00=err)
