@@ -348,6 +348,20 @@ errck-functions for d3pat-values
 (* ****** ****** *)
 //
 fun
+d3pat_sapp_errck
+(loc0: loc_t
+,d3f0: d3pat
+,s2es: s2explst): d3pat =
+let
+val lvl0 = errvl(d3f0) in//let
+d3pat_errck
+(lvl0+1
+,d3pat(loc0, D3Psapp( d3f0 , s2es )))
+endlet // end of [d3pat_sapp_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3pat_tapq_errck
 (loc0: loc_t
 ,d3f0: d3pat
@@ -442,6 +456,20 @@ endlet // end of [d3pat_annot_errck(...)]
 Various
 errck-functions for d3exp-values
 *)
+(* ****** ****** *)
+//
+fun
+d3exp_sapp_errck
+(loc0: loc_t
+,d3f0: d3exp
+,s2es: s2explst): d3exp =
+let
+val lvl0 = errvl(d3f0) in//let
+d3exp_errck
+(lvl0+1
+,d3exp(loc0, D3Esapp( d3f0 , s2es )))
+endlet // end of [d3exp_sapp_errck(...)]
+//
 (* ****** ****** *)
 //
 fun
@@ -617,6 +645,8 @@ d3p0.node() of
 //
 |D3Pcon _ => d3p0
 //
+|D3Psapp _ => f0_sapp(d3p0, err)
+//
 |D3Ptapq _ => f0_tapq(d3p0, err)
 //
 |D3Pdapp _ => f0_dapp(d3p0, err)
@@ -637,6 +667,28 @@ endlet // end of [ _(* otherwise *) ]
 //
 ) where // end-of-[(*case+(d3p0)-of*)]
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_sapp
+(d3p: d3pat
+,err: &sint >> _): d3pat =
+let
+//
+val e00 = err
+//
+val-
+D3Psapp
+(d3f0, s2es) = d3p.node()
+val
+d3f0 = tread23_d3pat(d3f0, err)
+in//let
+if
+(e00=err)
+then (d3p) else
+d3pat_sapp_errck(d3p.lctn(),d3f0,s2es)
+end (*let*) // end of [f0_sapp(d3p,err)]
 //
 (* ****** ****** *)
 //
@@ -848,8 +900,10 @@ d3e0.node() of
 //
 |D3Evar _ => d3e0
 //
-|D3Ecst _ => d3e0
 |D3Econ _ => d3e0
+|D3Ecst _ => d3e0
+//
+|D3Esapp _ => f0_sapp(d3e0, err)
 //
 |D3Etapp _ => f0_tapp(d3e0, err)
 |D3Etapq _ => f0_tapq(d3e0, err)
@@ -877,6 +931,28 @@ endlet // end of [ _(* otherwise *) ]
 //
 ) where // end-of-[(*case+(d3e0)-of*)]
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_sapp
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val-
+D3Esapp
+(d3f0, s2es) = d3e.node()
+val
+d3f0 = tread23_d3exp(d3f0, err)
+in//let
+if
+(e00=err)
+then (d3e) else
+d3exp_sapp_errck(d3e.lctn(),d3f0,s2es)
+end (*let*) // end of [f0_sapp(d3e,err)]
 //
 (* ****** ****** *)
 //
