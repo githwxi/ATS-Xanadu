@@ -90,14 +90,23 @@ d3p.node() of
 |D3Pflt _ => ()
 |D3Pstr _ => ()
 //
+|D3Pcon _ => ()
+//
+|
+D3Ptapq
+(d3f0, tjas) =>
+let
+val () =
+d3pat_fpemsg(out, d3f0) endlet
+//
 |
 D3Pdapp
 (d3f0,npf1,d3ps) =>
 let
-  val () =
-  d3pat_fpemsg(out, d3f0)
-  val () =
-  d3patlst_fpemsg(out, d3ps)
+val () =
+d3pat_fpemsg(out, d3f0)
+val () =
+d3patlst_fpemsg(out, d3ps)
 end (*let*) // end-of-(D3Pdapp)
 //
 |
