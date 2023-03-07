@@ -109,6 +109,9 @@ trsym2a_d2gua
 fun
 trsym2a_d2gpt
 (env0: !tr2aenv, dgpt: d2gpt): void
+fun
+trsym2a_d2cls
+(env0: !tr2aenv, dcls: d2cls): void
 //
 (* ****** ****** *)
 //

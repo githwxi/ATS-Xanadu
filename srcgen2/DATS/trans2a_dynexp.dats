@@ -1440,9 +1440,10 @@ D2GPTpat(d2p1) =>
 let
 val
 loc0 = dgpt.lctn()
-val d2p1 =
+val
+d2p1 =
 trans2a_d2pat_tpck
-(env0, d2p1, targ) in
+(env0 , d2p1 , targ) in
 d2gpt(loc0, D2GPTpat(d2p1)) end
 //
 |
@@ -1451,10 +1452,12 @@ D2GPTgua
 let
 val
 loc0 = dgpt.lctn()
-val d2p1 =
+val
+d2p1 =
 trans2a_d2pat_tpck
-(env0, d2p1, targ)
-val d2gs =
+(env0 , d2p1 , targ)
+val
+d2gs =
 trans2a_d2gualst(env0, d2gs) in
 d2gpt(loc0, D2GPTgua(d2p1, d2gs)) end
 //
@@ -1486,12 +1489,14 @@ D2CLScls
 let
 val
 loc0 = dcls.lctn()
-val dgpt =
+val
+dgpt =
 trans2a_d2gpt_tpck
-(env0, dgpt, targ)
-val d2e1 =
+(env0 , dgpt , targ)
+val
+d2e1 =
 trans2a_d2exp_tpck
-(env0, d2e1, tres) in
+(env0 , d2e1 , tres) in
 d2cls(loc0, D2CLScls(dgpt, d2e1)) end
 //
 ) (*case+*) // end of [trans2a_d2cls(...)]
