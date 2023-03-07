@@ -103,6 +103,8 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef d2ecl = $D2E.d2ecl
 (* ****** ****** *)
+#typedef t2jag = $D3E.t2jag
+(* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef l3d3p = $D3E.l3d3p
 #typedef d3exp = $D3E.d3exp
@@ -135,6 +137,8 @@ LEX = "./lexing0.sats"
 #typedef d2expopt = $D2E.d2expopt
 #typedef l2d2elst = $D2E.l2d2elst
 //
+(* ****** ****** *)
+#typedef t2jaglst = $D3E.t2jaglst
 (* ****** ****** *)
 //
 #typedef d3patlst = $D3E.d3patlst
@@ -269,8 +273,13 @@ optn_trans23_fnp
 (* ****** ****** *)
 //
 fun
+d2con23_tjagize
+( loc0: loc_t
+, dcon: d2con): (t2jaglst, s2typ)
+fun
 d2con23_tapqize
 (loc0: loc_t, dcon: d2con): d3exp
+//
 fun
 d2cst23_tapqize
 (loc0: loc_t, dcst: d2cst): d3exp
@@ -496,6 +505,19 @@ fun
 trans23_d3exp_tpck
 ( env0: !tr23env
 , d3e0: d3exp, t2p0: s2typ): d3exp
+(* ****** ****** *)
+fun
+trans23_d3patlst_tpck1
+( env0:
+! tr23env
+, loc0: loc_t
+, d3ps: d3patlst, t2p0: s2typ): d3patlst
+fun
+trans23_d3patlst_tpcks
+( env0:
+! tr23env
+, loc0: loc_t
+, d3ps: d3patlst, t2ps: s2typlst): d3patlst
 (* ****** ****** *)
 fun
 trans23_d3explst_tpck1

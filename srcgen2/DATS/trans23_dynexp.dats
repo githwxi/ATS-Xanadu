@@ -157,6 +157,10 @@ D2Pstr(tok) =>
 d3pat_make_styp_node
 (loc0, t2p0, D3Pstr(tok))
 //
+|D2Pcon _ => f0_con(env0, d2p0)
+//
+|D2Pdapp _ => f0_dapp(env0, d2p0)
+//
 |D2Ptup0 _ => f0_tup0(env0, d2p0)
 //
 |D2Pannot _ => f0_annot(env0, d2p0)
@@ -165,6 +169,94 @@ d3pat_make_styp_node
 //
 endlet where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_con
+( env0:
+! tr23env
+, d2p0: d2pat): d3pat =
+let
+val loc0 = d2p0.lctn()
+//
+val-
+D2Pcon(d2c1) = d2p0.node()
+//
+val (t2js, t2p0) =
+d2con23_tjagize(loc0, d2c1)
+//
+val
+d3p0 =
+d3pat_make_node(loc0, D3Pcon(d2c1))
+//
+in//let
+  d3pat_make_styp_node
+  (loc0, t2p0, D3Ptapq(d3p0, t2js))
+end(*let*)//end-of-[f0_con(env0,d2p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dapp
+( env0:
+! tr23env
+, d2p0: d2pat): d3pat =
+let
+//
+val loc0 = d2p0.lctn()
+//
+val-
+D2Pdapp
+( d2f0
+, npf1, d2ps) = d2p0.node()
+//
+val d3f0 =
+  trans23_d2pat(env0, d2f0)
+val d3ps =
+  trans23_d2patlst(env0, d2ps)
+//
+val tfun = d3pat_get_styp(d3f0)
+//
+val targ =
+(
+case+
+tfun.node() of
+|
+T2Pfun1
+( f2cl, npf1
+, t2ps, tres) => t2ps
+|_ (*else*) => list_nil()): s2typlst
+val tres =
+(
+case+
+tfun.node() of
+|
+T2Pfun1
+( f2cl
+, npf1, t2ps, tres) => tres
+| _(* non-T2Pfun1 *) => tfun): s2typ
+//
+val () =
+prerrln
+("trans23_d2pat:f0_dapp:tfun = ",tfun)
+val () =
+prerrln
+("trans23_d2pat:f0_dapp:targ = ",targ)
+val () =
+prerrln
+("trans23_d2pat:f0_dapp:tres = ",tres)
+//
+in//let
+let
+val d3ps =
+trans23_d3patlst_tpcks
+(env0, loc0, d3ps, targ)
+in
+  d3pat_make_styp_node
+  (loc0, tres, D3Pdapp(d3f0,npf1,d3ps))
+end (*let*)
+end (*let*) // end of [f0_dapp(env0,d2p0)]
 //
 (* ****** ****** *)
 //
@@ -458,10 +550,10 @@ val d3es =
 trans23_d3explst_tpcks
 (env0, loc0, d3es, targ)
 in
-d3exp_make_styp_node
-(loc0, tres, D3Edapp(d3f0, npf1, d3es))
+  d3exp_make_styp_node
+  (loc0, tres, D3Edapp(d3f0,npf1,d3es))
 end (*let*)
-end (*let*)//end of [f0_dapp(env0,d2e0)]
+end (*let*) // end of [f0_dapp(env0,d2e0)]
 //
 (* ****** ****** *)
 //
@@ -997,6 +1089,85 @@ prerrln("trans23_d3exp_tpck: t2p0 = ", t2p0)
 (* ****** ****** *)
 
 #implfun
+trans23_d3patlst_tpck1
+( env0 
+, loc0, d3ps , t2p0 ) =
+(
+case+ d3ps of
+|
+list_nil() => list_nil()
+|
+list_cons(d3p1, d3ps) =>
+list_cons(d3p1, d3ps) where
+{
+val d3p1 =
+trans23_d3pat_tpck(env0, d3p1, t2p0)
+val d3ps =
+trans23_d3patlst_tpck1(env0, loc0, d3ps, t2p0)
+}
+) (*case+*) // end of [trans23_d3patlst_tpck1(...)]
+
+(* ****** ****** *)
+
+#implfun
+trans23_d3patlst_tpcks
+( env0
+, loc0, d3ps , t2ps ) =
+(
+case+ d3ps of
+|
+list_nil() =>
+(
+case+ t2ps of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons(t2p1, t2ps) =>
+list_cons(d3p1, d3ps) where
+{
+//
+val
+d3p1 = d3pat_none0(loc0)
+//
+val d3p1 =
+trans23_d3pat_tpck(env0, d3p1, t2p1)
+val d3ps =
+trans23_d3patlst_tpcks(env0, loc0, d3ps, t2ps)
+}
+)
+|
+list_cons(d3p1, d3ps) =>
+(
+case+ t2ps of
+|
+list_nil() =>
+list_cons(d3p1, d3ps) where
+{
+//
+val
+t2p1 = s2typ_none0((*void*))
+//
+val d3p1 =
+trans23_d3pat_tpck(env0, d3p1, t2p1)
+val d3ps =
+trans23_d3patlst_tpcks(env0, loc0, d3ps, t2ps)
+}
+|
+list_cons(t2p1, t2ps) =>
+list_cons(d3p1, d3ps) where
+{
+val d3p1 =
+trans23_d3pat_tpck(env0, d3p1, t2p1)
+val d3ps =
+trans23_d3patlst_tpcks(env0, loc0, d3ps, t2ps)
+}
+)
+) (*case+*) // end of [trans23_d3patlst_tpcks(...)]
+
+(* ****** ****** *)
+
+#implfun
 trans23_d3explst_tpck1
 ( env0 
 , loc0, d3es , t2p0 ) =
@@ -1089,14 +1260,15 @@ list_map_e1nv
 #impltmp
 map$fopr_e1nv<x0><y0><e1>
 (x0, e1) = trans23_d2cls_tpck(e1,x0,targ,tres)
-} (*where*)//end of [list_trans23_fnp(e1,xs,fopr)]
+} (*where*) // end of [list_trans23_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 //
 #implfun
 trans23_d2explstopt
 ( env0, dopt ) =
-optn_trans23_fnp(env0, dopt, trans23_d2explst)
+(
+  optn_trans23_fnp(env0, dopt, trans23_d2explst))
 //
 (* ****** ****** *)
 
