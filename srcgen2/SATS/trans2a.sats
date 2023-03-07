@@ -423,10 +423,10 @@ trans2a_d2gualst
 ! tr2aenv, d2gs: d2gualst): d2gualst
 fun
 trans2a_d2clslst_tpck1
-( env0:
-! tr2aenv
-, dcls: d2clslst
-, targ: s2typ, tres: s2typ): d2clslst
+(env0:
+!tr2aenv
+,dcls: d2clslst
+,targ: s2typ, tres: s2typ): d2clslst
 //
 (* ****** ****** *)
 //
