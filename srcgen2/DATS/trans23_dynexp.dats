@@ -96,6 +96,13 @@ _(*TRANS23*) = "./trans23.dats"
 #symload styp with d3exp_set_styp
 (* ****** ****** *)
 //
+fun
+s2typ_new0_x2tp
+( loc0: loc_t ): s2typ =
+s2typ_xtv(x2t2p_make_lctn(loc0))
+//
+(* ****** ****** *)
+//
 #implfun
 trans23_d2pat
 ( env0, d2p0 ) =
@@ -540,7 +547,7 @@ D2Ecas0
 //
 val d3e1 =
 trans23_d2exp(env0, d2e1)
-val targ = d231.styp((*void*))
+val targ = d3e1.styp((*void*))
 val tres = s2typ_new0_x2tp(loc0)
 //
 in//let

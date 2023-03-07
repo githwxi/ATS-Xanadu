@@ -72,6 +72,15 @@ ATS_PACKNAME
 #symload lctn with f3arg_get_lctn
 #symload node with f3arg_get_node
 (* ****** ****** *)
+#symload lctn with d3gua_get_lctn
+#symload node with d3gua_get_node
+(* ****** ****** *)
+#symload lctn with d3gpt_get_lctn
+#symload node with d3gpt_get_node
+(* ****** ****** *)
+#symload lctn with d3cls_get_lctn
+#symload node with d3cls_get_node
+(* ****** ****** *)
 //
 (* ****** ****** *)
 //
@@ -282,6 +291,39 @@ endcas // end of [ case+(ldes) ]
 //
 (* ****** ****** *)
 //
+fun
+d3cls_errvl_a1
+(dcl: d3cls): sint =
+(
+case+ dcl.node() of
+|
+D3CLSgpt(dgpt) => 0
+|
+D3CLScls(dgpt,d3e1) => errvl(d3e1)
+)
+#symload errvl with d3cls_errvl_a1
+//
+(* ****** ****** *)
+//
+#extern
+fun
+d3cls_errvl_lst
+(dcls: d3clslst): sint
+#symload errvl with d3cls_errvl_lst
+//
+#implfun
+d3cls_errvl_lst(dcls) =
+(
+case+ dcls of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(dcl1,dcls) => gmax
+(errvl(dcl1), d3cls_errvl_lst(dcls))
+) (*case+*)//end-of-(d3cls_errvl_lst)
+//
+(* ****** ****** *)
+//
 (*
 HX-2022-11-23:
 A placeholder for the moment
@@ -431,6 +473,23 @@ d3exp_errck
 ( lvl0+1
 , d3exp(loc0,D3Eift0(d3e1,opt1,opt2)))
 endlet // end of [d3exp_ift0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_cas0_errck
+(loc0: loc_t
+,tknd: token
+,d3e1: d3exp
+,d3cs: d3clslst): d3exp =
+let
+val lvl = gmax
+(errvl(d3e1), errvl(d3cs))
+in//let
+d3exp_errck
+( lvl+1
+, d3exp(loc0,D3Ecas0(tknd,d3e1,d3cs)))
+endlet // end of [d3exp_cas0_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -710,6 +769,7 @@ d3e0.node() of
 |D3Edapp _ => f0_dapp(d3e0, err)
 //
 |D3Eift0 _ => f0_ift0(d3e0, err)
+|D3Ecas0 _ => f0_cas0(d3e0, err)
 //
 |D3Etup0 _ => f0_tup0(d3e0, err)
 |D3Etup1 _ => f0_tup1(d3e0, err)
@@ -833,6 +893,38 @@ val loc = d3e.lctn() in//let
 d3exp_ift0_errck(loc,d3e1,dthn,dels)
 end
 end (*let*) // end of [f0_ift0(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_cas0
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val-
+D3Ecas0
+( tknd
+, d3e1, d3cs) = d3e.node()
+//
+val
+d3e1 =
+tread23_d3exp(d3e1, err)
+val
+d3cs =
+tread23_d3clslst(d3cs, err)
+//
+in//let
+if
+(e00=err)
+then (d3e) else
+let
+val loc = d3e.lctn() in
+d3exp_cas0_errck(loc,tknd,d3e1,d3cs)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_cas0(d3e,err)]
 //
 (* ****** ****** *)
 //
