@@ -292,6 +292,17 @@ tr2aenv_s2typ
 (* ****** ****** *)
 //
 fun
+d2con2a_s2typ
+(
+loc0:loc_t, dcon:d2con): s2typ
+fun
+d2cst2a_s2typ
+(
+loc0:loc_t, dcst:d2cst): s2typ
+//
+(* ****** ****** *)
+//
+fun
 trans2a_d2pat
 ( env0:
 ! tr2aenv, d2p0: d2pat): d2pat
@@ -517,15 +528,6 @@ fun
 trans2a_d2eclistopt
 ( env0:
 ! tr2aenv, dopt: d2eclistopt): d2eclistopt
-//
-(* ****** ****** *)
-//
-fun
-d2con2a_s2typize
-(loc0:loc_t, dcon:d2con): s2typ
-fun
-d2cst2a_s2typize
-(loc0:loc_t, dcst:d2cst): s2typ
 //
 (* ****** ****** *)
 //

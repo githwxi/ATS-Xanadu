@@ -187,6 +187,9 @@ LEX = "./lexing0.sats"
 #typedef d3cstdclist = $D3E.d3cstdclist
 *)
 (* ****** ****** *)
+#typedef d2explstopt = $D2E.d2explstopt
+#typedef d3explstopt = $D3E.d3explstopt
+(* ****** ****** *)
 #typedef d2eclistopt = $D2E.d2eclistopt
 #typedef d3eclistopt = $D3E.d3eclistopt
 (* ****** ****** *)
@@ -266,6 +269,15 @@ optn_trans23_fnp
 (* ****** ****** *)
 //
 fun
+d2con23_tapqize
+(loc0: loc_t, dcon: d2con): d3exp
+fun
+d2cst23_tapqize
+(loc0: loc_t, dcst: d2cst): d3exp
+//
+(* ****** ****** *)
+//
+fun
 trans23_d2pat
 (env0: !tr23env, d2p0: d2pat): d3pat
 fun
@@ -286,6 +298,23 @@ trans23_l2d2e
 fun
 trans23_f2arg
 (env0: !tr23env, f2a0: f2arg): f3arg
+//
+(* ****** ****** *)
+//
+fun
+trans23_d2gua
+(env0: !tr23env, d2g0: d2gua): d3gua
+fun
+trans23_d2gpt_tpck
+( env0:
+! tr23env
+, dgpt : d2gpt, targ : s2typ): d3gpt
+fun
+trans23_d2cls_tpck
+( env0:
+! tr23env
+, dcls : d2cls
+, targ : s2typ, tres : s2typ): d3cls
 //
 (* ****** ****** *)
 //
@@ -402,18 +431,14 @@ trans23_d2cstdclist
 (* ****** ****** *)
 //
 fun
+trans23_d2explstopt
+( env0:
+! tr23env, dopt: d2explstopt): d3explstopt
+//
+fun
 trans23_d2eclistopt
-( env0
-: !tr23env, dopt: d2eclistopt): d3eclistopt
-//
-(* ****** ****** *)
-//
-fun
-d2con23_tapqize
-(loc0: loc_t, dcon: d2con): d3exp
-fun
-d2cst23_tapqize
-(loc0: loc_t, dcst: d2cst): d3exp
+( env0:
+! tr23env, dopt: d2eclistopt): d3eclistopt
 //
 (* ****** ****** *)
 //

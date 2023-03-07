@@ -278,91 +278,6 @@ end (*let*) // end of [d2rpt_fprint(out, drpt)]
 (* ****** ****** *)
 
 #implfun
-f2arg_fprint
-(out, farg) =
-let
-#impltmp
-g_print$out<>() = out
-in//let
-//
-case+
-farg.node() of
-|
-F2ARGsta0
-(s2vs,s2ps) =>
-print
-("F2ARGsta0(",s2vs,";",s2ps,")")
-|
-F2ARGdyn0
-(npf1,d2ps) =>
-print
-("F2ARGdyn0(",npf1,";",d2ps,")")
-|
-F2ARGmet0
-(   s2es   ) => print("F2ARGmet0(",s2es,")")
-//
-end (*let*) // end of [f2arg_fprint(out,farg)]
-
-(* ****** ****** *)
-
-#implfun
-d2gua_fprint
-(out, dgua) =
-let
-#impltmp
-g_print$out<>() = out
-in//let
-//
-case+
-dgua.node() of
-|
-D2GUAexp(d2e1) =>
-print("D2GUAexp(",d2e1,")")
-|
-D2GUAmat(d2e1,d2p2) =>
-print("D2GUAmat(",d2e1,";",d2p2,")")
-//
-end (*let*) // end of [d2gua_fprint(out,dgua)]
-
-(* ****** ****** *)
-//
-#implfun
-d2cls_fprint
-(out, dcls) =
-let
-#impltmp
-g_print$out<>() = out
-in//let
-case+
-dcls.node() of
-|
-D2CLSgpt(dgpt) =>
-print("D2CLSgpt(",dgpt,")")
-|
-D2CLScls(d2g1,d2e2) =>
-print("D2CLScls(",d2g1,";",d2e2,")")
-end (*let*) // end of [d2cls_fprint(out,dcls)]
-//
-#implfun
-d2gpt_fprint
-(out, dgpt) =
-let
-#impltmp
-g_print$out<>() = out
-in//let
-case+
-dgpt.node() of
-|
-D2GPTpat(d2p1) =>
-print("D2GPTpat(",d2p1,")")
-|
-D2GPTgua(d2p1,d2gs) =>
-print("D2GPTgua(",d2p1,";",d2gs,")")
-end (*let*) // end of [d2gpt_fprint(out,dgpt)]
-//
-(* ****** ****** *)
-
-#implfun
 d2exp_fprint
 (out, d2e0) =
 let
@@ -592,6 +507,91 @@ in//let
   print("D2RXP(", drxp.dexp(), ")")
 end (*let*) // end of [d2rxp_fprint(out, drxp)]
 
+(* ****** ****** *)
+
+#implfun
+f2arg_fprint
+(out, farg) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+farg.node() of
+|
+F2ARGsta0
+(s2vs,s2ps) =>
+print
+("F2ARGsta0(",s2vs,";",s2ps,")")
+|
+F2ARGdyn0
+(npf1,d2ps) =>
+print
+("F2ARGdyn0(",npf1,";",d2ps,")")
+|
+F2ARGmet0
+(   s2es   ) => print("F2ARGmet0(",s2es,")")
+//
+end (*let*) // end of [f2arg_fprint(out,farg)]
+
+(* ****** ****** *)
+
+#implfun
+d2gua_fprint
+(out, dgua) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+dgua.node() of
+|
+D2GUAexp(d2e1) =>
+print("D2GUAexp(",d2e1,")")
+|
+D2GUAmat(d2e1,d2p2) =>
+print("D2GUAmat(",d2e1,";",d2p2,")")
+//
+end (*let*) // end of [d2gua_fprint(out,dgua)]
+
+(* ****** ****** *)
+//
+#implfun
+d2gpt_fprint
+(out, dgpt) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+dgpt.node() of
+|
+D2GPTpat(d2p1) =>
+print("D2GPTpat(",d2p1,")")
+|
+D2GPTgua(d2p1,d2gs) =>
+print("D2GPTgua(",d2p1,";",d2gs,")")
+end (*let*) // end of [d2gpt_fprint(out,dgpt)]
+//
+#implfun
+d2cls_fprint
+(out, dcls) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+dcls.node() of
+|
+D2CLSgpt(dgpt) =>
+print("D2CLSgpt(",dgpt,")")
+|
+D2CLScls(d2g1,d2e2) =>
+print("D2CLScls(",d2g1,";",d2e2,")")
+end (*let*) // end of [d2cls_fprint(out,dcls)]
+//
 (* ****** ****** *)
 
 #implfun

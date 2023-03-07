@@ -305,16 +305,13 @@ val-
 D2Pcon(d2c1) = d2p0.node()
 //
 val t2p0 =
-d2con2a_s2typize(loc0, d2c1)
+d2con2a_s2typ( loc0, d2c1 )
 //
 val (  ) =
-prerrln
-("f0_con: d2c1 = ", d2c1)
+prerrln("f0_con: d2c1 = ", d2c1)
 val (  ) =
-prerrln
-("f0_con: tqas = ", d2c1.tqas()) }
-//
-//(*where*) // end of [f0_con(env0,...)]
+prerrln("f0_con: tqas = ", d2c1.tqas())
+} (*where*) // end of [f0_con(env0,...)]
 //
 (* ****** ****** *)
 //
@@ -745,7 +742,7 @@ val-
 D2Econ(d2c1) = d2e0.node()
 //
 val t2p0 =
-d2con2a_s2typize(loc0, d2c1)
+d2con2a_s2typ(loc0, d2c1)
 //
 val (  ) =
 prerrln
@@ -781,16 +778,13 @@ val-
 D2Ecst(d2c1) = d2e0.node()
 //
 val t2p0 =
-d2cst2a_s2typize(loc0, d2c1)
+d2cst2a_s2typ( loc0, d2c1 )
 //
 val (  ) =
-prerrln
-("f0_cst: d2c1 = ", d2c1)
+prerrln("f0_cst: d2c1 = ", d2c1)
 val (  ) =
-prerrln
-("f0_cst: tqas = ", d2c1.tqas()) }
-//
-//(*where*) // end of [f0_cst(env0,...)]
+prerrln("f0_cst: tqas = ", d2c1.tqas())
+} (*where*) // end of [f0_cst(env0,...)]
 //
 (* ****** ****** *)
 //
@@ -1407,8 +1401,10 @@ d2gua
 (loc0, D2GUAexp(d2e1)) where
 {
 val loc0 = dgua.lctn()
-val t2p1 = the_s2typ_bool()
-val d2e1 =
+val
+t2p1 = the_s2typ_bool()
+val
+d2e1 =
 trans2a_d2exp_tpck(env0, d2e1, t2p1) }
 //
 |D2GUAmat(d2e1, d2p2) =>
@@ -1417,13 +1413,16 @@ d2gua
 , D2GUAmat(d2e1, d2p2)) where
 {
 val loc0 = dgua.lctn()
-val d2e1 = 
+val
+d2e1 = 
 trans2a_d2exp(env0, d2e1)
-val t2p1 = d2e1.styp((*void*))
-val d2p2 =
+val
+t2p1 = d2e1.styp((*void*))
+val
+d2p2 =
 trans2a_d2pat_tpck(env0, d2p2, t2p1) }
 //
-) (*case+*) // end of [trans2a_d2gua(...)]
+) (*case+*) // end of [trans2a_d2gua(env0,...)]
 //
 (* ****** ****** *)
 //
@@ -1461,7 +1460,7 @@ d2gs =
 trans2a_d2gualst(env0, d2gs) in
 d2gpt(loc0, D2GPTgua(d2p1, d2gs)) end
 //
-) (*case+*) // end of [trans2a_d2gpt(...)]
+) (*case+*) // end of [trans2a_d2gpt_tpck(env0,...)]
 //
 (* ****** ****** *)
 //
@@ -1499,7 +1498,7 @@ trans2a_d2exp_tpck
 (env0 , d2e1 , tres) in
 d2cls(loc0, D2CLScls(dgpt, d2e1)) end
 //
-) (*case+*) // end of [trans2a_d2cls(...)]
+) (*case+*) // end of [trans2a_d2cls_tpck(env0,...)]
 //
 (* ****** ****** *)
 //

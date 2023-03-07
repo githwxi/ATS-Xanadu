@@ -89,6 +89,13 @@ _(*TRANS23*) = "./trans23.dats"
 #symload lctn with f2arg_get_lctn
 #symload node with f2arg_get_node
 (* ****** ****** *)
+#symload lctn with d2gua_get_lctn
+#symload lctn with d2gpt_get_lctn
+#symload lctn with d2cls_get_lctn
+#symload node with d2gpt_get_node
+#symload node with d2gua_get_node
+#symload node with d2cls_get_node
+(* ****** ****** *)
 #symload styp with d3pat_get_styp
 #symload styp with d3pat_set_styp
 (* ****** ****** *)
@@ -759,7 +766,120 @@ end (*let*) // end of [F2ARGdyn0]
 F2ARGmet0(s2es) => f3arg(loc0,F3ARGmet0(s2es))
 //
 end (*let*) // end of [trans23_f2arg(env0,farg)]
-
+//
+(* ****** ****** *)
+//
+#implfun
+trans23_d2gua
+(env0 , dgua) =
+(
+case+
+dgua.node() of
+//
+|D2GUAexp(d2e1) =>
+d3gua
+(loc0, D3GUAexp(d3e1)) where
+{
+val loc0 = dgua.lctn()
+val
+t2p1 = the_s2typ_bool()
+val
+d3e1 =
+trans23_d2exp_tpck(env0, d2e1, t2p1) }
+//
+|D2GUAmat(d2e1, d2p2) =>
+d3gua
+( loc0
+, D3GUAmat(d3e1, d3p2)) where
+{
+val loc0 = dgua.lctn()
+val
+d3e1 = 
+trans23_d2exp(env0, d2e1)
+val
+t2p1 = d3e1.styp((*void*))
+val
+d3p2 =
+trans23_d2pat_tpck(env0, d2p2, t2p1) }
+//
+) (*case+*) // end of [trans23_d2gua(env0,...)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans23_d2gpt_tpck
+( env0
+, dgpt, targ) =
+(
+case+
+dgpt.node() of
+//
+|
+D2GPTpat(d2p1) =>
+let
+val
+loc0 = dgpt.lctn()
+val
+d3p1 =
+trans23_d2pat_tpck
+(env0 , d2p1 , targ) in
+d3gpt(loc0, D3GPTpat(d3p1)) end
+//
+|
+D2GPTgua
+( d2p1, d2gs ) =>
+let
+val
+loc0 = dgpt.lctn()
+val
+d3p1 =
+trans23_d2pat_tpck
+(env0 , d2p1 , targ)
+val
+d3gs =
+trans23_d2gualst(env0, d2gs) in
+d3gpt(loc0, D3GPTgua(d3p1, d3gs)) end
+//
+) (*case+*) // end of [trans23_d2gpt_tpck(env0,...)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans23_d2cls_tpck
+( env0, dcls
+, targ, tres) =
+(
+case+
+dcls.node() of
+//
+|
+D2CLSgpt(dgpt) =>
+let
+val
+loc0 = dcls.lctn()
+val dgpt =
+trans23_d2gpt_tpck
+(env0, dgpt, targ) in
+d3cls(loc0, D3CLSgpt(dgpt)) end
+//
+|
+D2CLScls
+( dgpt, d2e1 ) =>
+let
+val
+loc0 = dcls.lctn()
+val
+dgpt =
+trans23_d2gpt_tpck
+(env0 , dgpt , targ)
+val
+d3e1 =
+trans23_d2exp_tpck
+(env0 , d2e1 , tres) in
+d3cls(loc0, D3CLScls(dgpt, d3e1)) end
+//
+) (*case+*) // end of [trans23_d2cls_tpck(env0,...)]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -953,6 +1073,31 @@ trans23_d3explst_tpcks(env0, loc0, d3es, t2ps)
 )
 ) (*case+*) // end of [trans23_d3explst_tpcks(...)]
 
+(* ****** ****** *)
+//
+#implfun
+trans23_d2clslst_tpck1
+( env0, dcls
+, targ, tres ) =
+(
+list_map_e1nv
+<x0><y0><e1>(dcls, env0)) where
+{
+#typedef x0 = d2cls
+#typedef y0 = d3cls
+#vwtpdef e1 = tr23env
+#impltmp
+map$fopr_e1nv<x0><y0><e1>
+(x0, e1) = trans23_d2cls_tpck(e1,x0,targ,tres)
+} (*where*)//end of [list_trans23_fnp(e1,xs,fopr)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans23_d2explstopt
+( env0, dopt ) =
+optn_trans23_fnp(env0, dopt, trans23_d2explst)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans23_dynexp.dats] *)
