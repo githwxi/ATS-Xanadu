@@ -1130,6 +1130,133 @@ endlet // end of [F3ARGdyn0(npf1,d3ps)]
 //
 (* ****** ****** *)
 //
+#implfun
+tread23_d3gua
+  (dgua, err) =
+(
+case+
+dgua.node() of
+|
+D3GUAexp
+( d3e1 ) => let
+//
+val e00 = err
+//
+val
+d3e1 = tread23_d3exp(d3e1, err)
+//
+in//let
+if
+(err = e00)
+then (dgua) else
+d3gua(dgua.lctn(), D3GUAexp(d3e1))
+endlet // end of [ D3GUAexp(d3e1) ]
+|
+D3GUAmat
+(d3e1,d3p2) =>
+let
+//
+val e00 = err
+//
+val
+d3e1 = tread23_d3exp(d3e1, err)
+//
+val d3p2 = tread23_d3pat(d3p2, err)
+//
+in//let
+if
+(err = e00)
+then (dgua) else
+d3gua(dgua.lctn(), D3GUAmat(d3e1,d3p2))
+endlet // end of [ D3GPTgua(_,_,_) ]
+) (*case+*)//end-of-[tread23_d3gua(dgua,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread23_d3gpt
+  (dgpt, err) =
+(
+case+
+dgpt.node() of
+|
+D3GPTpat
+( d3p1 ) => let
+//
+val e00 = err
+//
+val
+d3p1 = tread23_d3pat(d3p1, err)
+//
+in//let
+if
+(err = e00)
+then (dgpt) else
+d3gpt(dgpt.lctn(), D3GPTpat(d3p1))
+endlet // end of [ D3GPTpat(d3p1) ]
+|
+D3GPTgua
+(d3p1,d3gs) =>
+let
+//
+val e00 = err
+//
+val d3p1 = tread23_d3pat(d3p1, err)
+//
+val d3gs = tread23_d3gualst(d3gs, err)
+//
+in//let
+if
+(err = e00)
+then (dgpt) else
+d3gpt(dgpt.lctn(), D3GPTgua(d3p1,d3gs))
+endlet // end of [ D3GPTgua(_,_,_) ]
+) (*case+*)//end-of-[tread23_d3gpt(dgpt,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread23_d3cls
+  (dcls, err) =
+(
+case+
+dcls.node() of
+|
+D3CLSgpt
+( dgpt ) => let
+//
+val e00 = err
+//
+val dgpt =
+tread23_d3gpt(dgpt, err)
+in//let
+if
+(err=e00)
+then (dcls)
+else
+d3cls(dcls.lctn(), D3CLSgpt(dgpt))
+end (*let*)//end-of[D3CLSgpt(dgpt)]
+|
+D3CLScls
+(dgpt,d3e1) =>
+let
+//
+val e00 = err
+//
+val dgpt = tread23_d3gpt(dgpt, err)
+val d3e1 = tread23_d3exp(d3e1, err)
+//
+in//let
+if
+(err=e00)
+then (dcls)
+else
+d3cls(dcls.lctn(), D3CLScls(dgpt,d3e1))
+endlet // end-of-[ D3CLScls(_,_,_) ]
+) (*case+*)//end-of-[tread23_d3cls(dcls,err)]
+//
+(* ****** ****** *)
+//
 (* ****** ****** *)
 //
 #implfun
@@ -1165,15 +1292,30 @@ tread23_l3d3elst
   (  ldes, err  ) =
 list_tread23_fnp(ldes, err, tread23_l3d3e)
 (* ****** ****** *)
+//
 #implfun
 tread23_f3arglst
   (  f3as, err  ) =
 list_tread23_fnp(f3as, err, tread23_f3arg)
+//
 (* ****** ****** *)
+//
+#implfun
+tread23_d3gualst
+  (  d3gs, err  ) =
+list_tread23_fnp(d3gs, err, tread23_d3gua)
+#implfun
+tread23_d3clslst
+  (  d3cs, err  ) =
+list_tread23_fnp(d3cs, err, tread23_d3cls)
+//
+(* ****** ****** *)
+//
 #implfun
 tread23_d3eclist
   (  dcls, err  ) =
 list_tread23_fnp(dcls, err, tread23_d3ecl)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread23_dynexp.dats] *)

@@ -189,6 +189,10 @@ fun l3d3e_fpemsg(FILR, l3d3e): void
 (* ****** ****** *)
 fun f3arg_fpemsg:(FILR,f3arg)->void
 (* ****** ****** *)
+fun d3gua_fpemsg:(FILR,d3gua)->void
+fun d3gpt_fpemsg:(FILR,d3gpt)->void
+fun d3cls_fpemsg:(FILR,d3cls)->void
+(* ****** ****** *)
 fun d3ecl_fpemsg(FILR, d3ecl): void
 (* ****** ****** *)
 fun d3patlst_fpemsg(FILR, d3patlst): void
@@ -200,6 +204,9 @@ fun l3d3plst_fpemsg(FILR, l3d3plst): void
 fun l3d3elst_fpemsg(FILR, l3d3elst): void
 (* ****** ****** *)
 fun f3arglst_fpemsg(FILR, f3arglst): void
+(* ****** ****** *)
+fun d3gualst_fpemsg(FILR, d3gualst): void
+fun d3clslst_fpemsg(FILR, d3clslst): void
 (* ****** ****** *)
 fun d3eclist_fpemsg(FILR, d3eclist): void
 (* ****** ****** *)

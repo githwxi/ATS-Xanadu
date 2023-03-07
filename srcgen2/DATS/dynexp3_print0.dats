@@ -249,6 +249,12 @@ print("D3Elet0(",dcls,";",d3e1,")"))
 ( print("D3Eift0(")
 ; print(d3e1,";",dthn,";",dels,")"))
 //
+|
+D3Ecas0
+(tknd,d3e1,d3cs) =>
+( print("D3Ecas0(");
+  print(tknd,";",d3e1,";",d3cs,")"))
+//
 |D3Etup0
 (npf1, d3es) =>
 (
