@@ -421,14 +421,14 @@ f0arg_fprint(g_print$out<>(), f0a)
 (* ****** ****** *)
 //
 #impltmp
-g_print<d0cls>(d0c) =
-d0cls_fprint(g_print$out<>(), d0c)
-#impltmp
 g_print<d0gua>(d0g) =
 d0gua_fprint(g_print$out<>(), d0g)
 #impltmp
 g_print<d0gpt>(dgt) =
 d0gpt_fprint(g_print$out<>(), dgt)
+#impltmp
+g_print<d0cls>(d0c) =
+d0cls_fprint(g_print$out<>(), d0c)
 //
 (* ****** ****** *)
 //
@@ -799,7 +799,6 @@ d1gua_fprint(g_print$out<>(), d1g)
 #impltmp
 g_print<d1gpt>(d1g) =
 d1gpt_fprint(g_print$out<>(), d1g)
-//
 #impltmp
 g_print<d1cls>(dcl) =
 d1cls_fprint(g_print$out<>(), dcl)
@@ -1199,7 +1198,6 @@ d2gua_fprint(g_print$out<>(), d2g)
 #impltmp
 g_print<d2gpt>(d2g) =
 d2gpt_fprint(g_print$out<>(), d2g)
-//
 #impltmp
 g_print<d2cls>(dcl) =
 d2cls_fprint(g_print$out<>(), dcl)
@@ -1366,6 +1364,18 @@ d3exp_fprint(g_print$out<>(), dexp)
 #impltmp
 g_print<f3arg>(farg) =
 f3arg_fprint(g_print$out<>(), farg)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<d3gua>(dgua) =
+d3gua_fprint(g_print$out<>(), dgua)
+#impltmp
+g_print<d3gpt>(dgpt) =
+d3gpt_fprint(g_print$out<>(), dgpt)
+#impltmp
+g_print<d3cls>(dcls) =
+d3cls_fprint(g_print$out<>(), dcls)
 //
 (* ****** ****** *)
 //

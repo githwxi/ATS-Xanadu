@@ -272,7 +272,7 @@ list_cons
 in//local
 //
 #implfun
-d2con2a_s2typize
+d2con2a_s2typ
 (  loc0, dcon  ) =
 (
 case+ svts of
@@ -287,10 +287,10 @@ s2typ_subst0(t2p0, svts))
 val t2p0 = dcon.styp((*void*))
 val t2qs = d2con_get_tqas(dcon)
 val svts = f0_make_svts(loc0, t2qs)}
-//(*where*) // end of [d2con2a_s2typize(...)]
+//(*where*) // end of [d2con2a_s2typ(...)]
 //
 #implfun
-d2cst2a_s2typize
+d2cst2a_s2typ
 (  loc0, dcst  ) =
 (
 case+ svts of
@@ -305,9 +305,9 @@ s2typ_subst0(t2p0, svts))
 val t2p0 = dcst.styp((*void*))
 val t2qs = d2cst_get_tqas(dcst)
 val svts = f0_make_svts(loc0, t2qs)}
-//(*where*) // end of [d2cst2a_s2typize(...)]
+//(*where*) // end of [d2cst2a_s2typ(...)]
 //
-endloc//end-of[local(d2con22/d2cst22_s2typize)]
+endloc//end-of[local(d2con22/d2cst22_s2typ)]
 
 (* ****** ****** *)
 
