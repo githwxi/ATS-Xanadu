@@ -247,6 +247,15 @@ val () =
 trsym2a_d2expopt(env0, dels) end
 //
 |
+D2Ecas0
+(tknd,d2e1,d2cs) =>
+let
+val () =
+trsym2a_d2exp(env0, d2e1)
+val () =
+trsym2a_d2clslst(env0, d2cs) end
+//
+|
 D2Et2pck _ => f0_t2pck(env0, d2e0)
 //
 | _(* otherwise *) => (   (*skipped*)   )
@@ -401,7 +410,7 @@ trsym2a_d2exp(env0, d2e1)) where
 //
 #implfun
 trsym2a_f2arg
-(env0, farg) =
+(env0 , farg) =
 (
 case+
 farg.node() of
@@ -415,6 +424,69 @@ trsym2a_d2patlst(env0, d2ps)
 |F2ARGmet0(s2es) => ( (*void*) )
 //
 ) (*case+*)//end-of-(trsym2a_f2arg(env0,farg)]
+//
+(* ****** ****** *)
+//
+#implfun
+trsym2a_d2gua
+(env0 , dgua) =
+(
+case+
+dgua.node() of
+|
+D2GUAexp
+( d2e1 ) =>
+trsym2a_d2exp(env0, d2e1)
+|
+D2GUAmat
+(d2e1,d2p2) =>
+let
+val () =
+trsym2a_d2exp(env0, d2e1)
+val () =
+trsym2a_d2pat(env0, d2p2) endlet
+) (*case+*)//end-of-(trsym2a_d2gua(env0,farg)]
+//
+(* ****** ****** *)
+//
+#implfun
+trsym2a_d2gpt
+(env0 , dgpt) =
+(
+case+
+dgpt.node() of
+|
+D2GPTpat
+( d2p1 ) => 
+trsym2a_d2pat(env0, d2p1)
+|
+D2GPTgua
+(d2p1,d2gs) =>
+let
+val () =
+trsym2a_d2pat(env0, d2p1)
+val () =
+trsym2a_d2gualst(env0, d2gs) endlet
+) (*case+*)//end-of-(trsym2a_d2gpt(env0,farg)]
+//
+(* ****** ****** *)
+//
+#implfun
+trsym2a_d2cls
+(env0 , dcls) =
+(
+case+
+dcls.node() of
+|
+D2CLSgpt(dgpt) =>
+trsym2a_d2gpt(env0, dgpt)
+|
+D2CLScls(dgpt,d2e2) =>
+let
+val () = trsym2a_d2gpt(env0, dgpt)
+val () = trsym2a_d2exp(env0, d2e2)
+endlet // end of [ D2CLScls(_,_,_) ]
+) (*case*) // end-of(trsym2a_d2cls(env0,dcls))
 //
 (* ****** ****** *)
 //
@@ -450,6 +522,18 @@ list_trsym2a_fnp(env0, ldes, trsym2a_l2d2e)
 trsym2a_f2arglst
 ( env0, f2as ) =
 list_trsym2a_fnp(env0, f2as, trsym2a_f2arg)
+//
+(* ****** ****** *)
+//
+#implfun
+trsym2a_d2gualst
+( env0, d2gs ) =
+list_trsym2a_fnp(env0, d2gs, trsym2a_d2gua)
+//
+#implfun
+trsym2a_d2clslst
+( env0, d2cs ) =
+list_trsym2a_fnp(env0, d2cs, trsym2a_d2cls)
 //
 (* ****** ****** *)
 
