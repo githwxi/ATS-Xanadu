@@ -339,6 +339,99 @@ endloc (*local*) // end of [local(f3arg)]
 local
 //
 datatype
+d3gua =
+D3GUA of
+(
+loctn, d3gua_node)
+#absimpl
+d3gua_tbox = d3gua
+//
+in (* in-of-local *)
+//
+#implfun
+d3gua_make_node
+(   loc,nod   ) = D3GUA(loc,nod)
+//
+#implfun
+d3gua_get_lctn(d3g) =
+let
+  val+D3GUA(loc,nod) = d3g in loc
+end
+#implfun
+d3gua_get_node(d3g) =
+let
+  val+D3GUA(loc,nod) = d3g in nod
+end
+//
+endloc (*local*) // end of [local(d3gua)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d3gpt =
+D3GPT of
+(
+loctn, d3gpt_node)
+#absimpl
+d3gpt_tbox = d3gpt
+//
+in (* in-of-local *)
+//
+#implfun
+d3gpt_make_node
+(   loc,nod   ) = D3GPT(loc,nod)
+//
+#implfun
+d3gpt_get_lctn(gpt) =
+let
+  val+D3GPT(loc,nod) = gpt in loc
+end
+#implfun
+d3gpt_get_node(gpt) =
+let
+  val+D3GPT(loc,nod) = gpt in nod
+end
+//
+endloc (*local*) // end of [local(d3gpt)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d3cls =
+D3CLS of
+(
+loctn, d3cls_node)
+#absimpl
+d3cls_tbox = d3cls
+//
+in (* in-of-local *)
+//
+#implfun
+d3cls_make_node
+(   loc,nod   ) = D3CLS(loc,nod)
+//
+#implfun
+d3cls_get_lctn(cls) =
+let
+  val+D3CLS(loc,nod) = cls in loc
+end
+#implfun
+d3cls_get_node(cls) =
+let
+  val+D3CLS(loc,nod) = cls in nod
+end
+//
+endloc (*local*) // end of [local(d3cls)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 d3ecl =
 D3ECL of
 (loctn, d3ecl_node)

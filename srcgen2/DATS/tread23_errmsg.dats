@@ -104,15 +104,22 @@ end (*let*) // end-of-(D3Pdapp)
 D3Ptup0
 (npf1, d3ps) =>
 let
-val () = d3patlst_fpemsg(out, d3ps)
-endlet
+val () =
+d3patlst_fpemsg(out, d3ps) endlet
 //
 |
 D3Pannot
 (d3p1,s1e2,s2e2) =>
 let
-val () = d3pat_fpemsg( out , d3p1 )
+val () = d3pat_fpemsg(out , d3p1)
 endlet
+//
+|
+D3Pt2pck
+(d3p1, t2p2) =>
+let
+val () = d3pat_fpemsg(out , d3p1)
+endlet // end of [ D3Pt2pck(_, _) ]
 //
 |D3Pnone0(    ) => (   (*void*)   )
 |D3Pnone1(d2p1) => (   (*void*)   )
@@ -235,6 +242,15 @@ val () =
 d3expopt_fpemsg(out, dels) endlet
 //
 |
+D3Ecas0
+(tknd,d3e1,dcls) =>
+let
+val () =
+d3exp_fpemsg(out, d3e1)
+val () =
+d3clslst_fpemsg(out, dcls) endlet
+//
+|
 D3Etup0
 (npf1, d3es) =>
 let
@@ -251,16 +267,16 @@ d3explst_fpemsg(out, d3es) endlet
 D3Eassgn
 (d3el, d3er) =>
 let
-val () = d3exp_fpemsg(out, d3el)
-val () = d3exp_fpemsg(out, d3er)
-endlet // end of [D3Eassgn(_, _)]
+val () = d3exp_fpemsg(out , d3el)
+val () = d3exp_fpemsg(out , d3er)
+endlet // end of [ D3Eassgn(_, _) ]
 //
 |
 D3Et2pck
 (d3e1, t2p2) =>
 let
-val () = d3exp_fpemsg(out, d3e1)
-endlet // end of [D3Et2pck(_, _)]
+val () = d3exp_fpemsg(out , d3e1)
+endlet // end of [ D3Et2pck(_, _) ]
 //
 |D3Enone0(    ) => (   (*void*)   )
 |D3Enone1(d2e1) => (   (*void*)   )
@@ -336,6 +352,63 @@ farg.node() of
 (npf1, d3ps) => d3patlst_fpemsg(out, d3ps)
 //
 ) (*case+*)//end-of-(f3arg_fpemsg(out,farg)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3gua_fpemsg
+(out, dgua) =
+(
+case+
+dgua.node() of
+|
+D3GUAexp(d3e1) =>
+d3exp_fpemsg(out, d3e1)
+|
+D3GUAmat(d3e1,d3p2) =>
+let
+val () = d3exp_fpemsg(out, d3e1)
+val () = d3pat_fpemsg(out, d3p2)
+endlet // end of [D3GUAmat(_,_,_)]
+) (*case*) // end-of(d3gua_fpemsg(out,dgua))
+//
+(* ****** ****** *)
+//
+#implfun
+d3gpt_fpemsg
+(out, dgpt) =
+(
+case+
+dgpt.node() of
+|
+D3GPTpat(d3p1) =>
+d3pat_fpemsg(out, d3p1)
+|
+D3GPTgua(d3p1,d3gs) =>
+let
+val () = d3pat_fpemsg(out, d3p1)
+val () = d3gualst_fpemsg(out, d3gs)
+endlet // end of [ D3GPTgua(_,_,_) ]
+) (*case*) // end-of(d3gpt_fpemsg(out,dgpt))
+//
+(* ****** ****** *)
+//
+#implfun
+d3cls_fpemsg
+(out, dcls) =
+(
+case+
+dcls.node() of
+|
+D3CLSgpt(dgpt) =>
+d3gpt_fpemsg(out, dgpt)
+|
+D3CLScls(dgpt,d3e2) =>
+let
+val () = d3gpt_fpemsg(out, dgpt)
+val () = d3exp_fpemsg(out, d3e2)
+endlet // end of [ D3CLScls(_,_,_) ]
+) (*case*) // end-of(d3cls_fpemsg(out,dcls))
 //
 (* ****** ****** *)
 //
@@ -611,6 +684,26 @@ list_foreach<f3arg>(f3as) where
 {
 #impltmp
 foreach$work<f3arg>(f3a1) = f3arg_fpemsg(out,f3a1)
+}
+//
+(* ****** ****** *)
+//
+#implfun
+d3gualst_fpemsg
+(out, d3gs) =
+list_foreach<d3gua>(d3gs) where
+{
+#impltmp
+foreach$work<d3gua>(d3g1) = d3gua_fpemsg(out,d3g1)
+}
+//
+#implfun
+d3clslst_fpemsg
+(out, d3cs) =
+list_foreach<d3cls>(d3cs) where
+{
+#impltmp
+foreach$work<d3cls>(d3c1) = d3cls_fpemsg(out,d3c1)
 }
 //
 (* ****** ****** *)
