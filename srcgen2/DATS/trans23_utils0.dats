@@ -236,13 +236,17 @@ in//local
 (* ****** ****** *)
 
 #implfun
-d2con23_tapqize
+d2con23_tjagize
 ( loc0, dcon ) =
-let
-val t2qs =
+( t2js, t2p0 ) where
+{
+//
+val
+t2qs =
 d2con_get_tqas(dcon)
-val t2js =
-let
+//
+val
+t2js = let
 #impltmp
 map$fopr
 <t2qag><t2jag>(tqag) =
@@ -266,11 +270,21 @@ case+ svts of
 (*
 val () =
 prerrln
-("d2con23_tapqize: svts: ", svts)
+("d2con23_tjagize: svts: ", svts)
 val () =
 prerrln
-("d2con23_tapqize: t2p0: ", t2p0)
+("d2con23_tjagize: t2p0: ", t2p0)
 *)
+//
+} (*where*) // end of [d2con23_tjagize(...)]
+
+#implfun
+d2con23_tapqize
+( loc0, dcon ) =
+let
+//
+val (t2js, t2p0) =
+d2con23_tjagize(loc0, dcon)
 //
 val
 d3e0 =

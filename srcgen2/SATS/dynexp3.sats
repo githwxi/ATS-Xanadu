@@ -267,6 +267,8 @@ d3pat_node =
 |D3Psapq of
  (d3pat, s2varlst(*sarg*))
 //
+|D3Ptapq of (d3pat, t2jaglst)
+//
 |
 D3Pdapp of
 ( d3pat
