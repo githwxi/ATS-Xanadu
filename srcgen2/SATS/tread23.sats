@@ -61,6 +61,10 @@ ATS_PACKNAME // namespace
 (* ****** ****** *)
 #typedef f3arg = $D3E.f3arg
 (* ****** ****** *)
+#typedef d3gua = $D3E.d3gua
+#typedef d3gpt = $D3E.d3gpt
+#typedef d3cls = $D3E.d3cls
+(* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
 #typedef d2conlst = $D2E.d2conlst
@@ -78,6 +82,9 @@ ATS_PACKNAME // namespace
 #typedef l3d3elst = $D3E.l3d3elst
 (* ****** ****** *)
 #typedef f3arglst = $D3E.f3arglst
+(* ****** ****** *)
+#typedef d3gualst = $D3E.d3gualst
+#typedef d3clslst = $D3E.d3clslst
 (* ****** ****** *)
 #typedef d3eclist = $D3E.d3eclist
 (* ****** ****** *)
@@ -135,6 +142,10 @@ fun tread23_l3d3e: ftread23(l3d3e)
 (* ****** ****** *)
 fun tread23_f3arg: ftread23(f3arg)
 (* ****** ****** *)
+fun tread23_d3gua: ftread23(d3gua)
+fun tread23_d3gpt: ftread23(d3gpt)
+fun tread23_d3cls: ftread23(d3cls)
+(* ****** ****** *)
 fun tread23_d3ecl: ftread23(d3ecl)
 (* ****** ****** *)
 fun tread23_d3patlst: ftread23(d3patlst)
@@ -146,6 +157,9 @@ fun tread23_d3expopt: ftread23(d3expopt)
 fun tread23_l3d3elst: ftread23(l3d3elst)
 (* ****** ****** *)
 fun tread23_f3arglst: ftread23(f3arglst)
+(* ****** ****** *)
+fun tread23_d3gualst: ftread23(d3gualst)
+fun tread23_d3clslst: ftread23(d3clslst)
 (* ****** ****** *)
 fun tread23_d3eclist: ftread23(d3eclist)
 (* ****** ****** *)
