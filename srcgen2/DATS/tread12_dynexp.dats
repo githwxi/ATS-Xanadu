@@ -953,7 +953,6 @@ d2p0.node() of
 //
 |D2Pdap0 _ => f0_dap0(d2p0, err)
 |D2Pdap1 _ => f0_dap1(d2p0, err)
-//
 |D2Pdapp _ => f0_dapp(d2p0, err)
 //
 |D2Ptup0 _ => f0_tup0(d2p0, err)
