@@ -286,9 +286,7 @@ d3exp_make_styp_node
 |D2Edapp _ => f0_dapp(env0, d2e0)
 //
 |D2Eift0 _ => f0_ift0(env0, d2e0)
-(*
 |D2Ecas0 _ => f0_cas0(env0, d2e0)
-*)
 //
 |D2Etup0 _ => f0_tup0(env0, d2e0)
 |D2Etup1 _ => f0_tup1(env0, d2e0)
@@ -524,6 +522,37 @@ d3exp_make_styp_node
 end
 //
 end (*let*) // end of [f0_ift0(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_cas0
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Ecas0
+( tknd
+, d2e1, d2cs) = d2e0.node()
+//
+val d3e1 =
+trans23_d2exp(env0, d2e1)
+val targ = d231.styp((*void*))
+val tres = s2typ_new0_x2tp(loc0)
+//
+in//let
+let
+val d3cs =
+trans23_d2clslst_tpck1
+(env0, d2cs, targ, tres)
+in//let
+  d3exp_make_styp_node
+  (loc0,tres,D3Ecas0(tknd,d3e1,d3cs))
+end (*let*)
+end (*let*) // end of [f0_cas0(env0,...)]
 //
 (* ****** ****** *)
 //

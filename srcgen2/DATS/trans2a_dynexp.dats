@@ -135,11 +135,15 @@ d2p0.node() of
 //
 |D2Pvar _ => f0_var(env0, d2p0)
 //
+|D2Pany _ => f0_any(env0, d2p0)
+//
 |D2Pint _ => f0_int(env0, d2p0)
 |D2Pi00 _ => f0_i00(env0, d2p0)
 //
 |D2Pbtf _ => f0_btf(env0, d2p0)
 |D2Pb00 _ => f0_b00(env0, d2p0)
+//
+|D2Pcon _ => f0_con(env0, d2p0)
 //
 |D2Psym0 _ => f0_sym0(env0, d2p0)
 //
@@ -225,6 +229,25 @@ val t2p0 = the_s2typ_bool() }
 (* ****** ****** *)
 //
 fun
+f0_any
+( env0:
+! tr2aenv
+, d2p0: d2pat): d2pat =
+(
+d2pat_make_styp_node
+(loc0,t2p0,D2Pany())) where
+{
+//
+val loc0 = d2p0.lctn()
+//
+val-D2Pany() = d2p0.node()
+//
+val t2p0 = s2typ_new0_x2tp(loc0) }
+//(*where*) // end-of-[f0_any(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
 f0_var
 ( env0:
 ! tr2aenv
@@ -260,6 +283,42 @@ in//let
 (* ****** ****** *)
 //
 fun
+f0_con
+( env0:
+! tr2aenv
+, d2p0: d2pat): d2pat =
+let
+(*
+val
+t2p0 = d2c1.styp()
+*)
+in//let
+d2pat_make_styp_node
+( loc0
+, t2p0, D2Pcon(d2c1))
+end where // end-of-[let]
+{
+//
+val loc0 = d2p0.lctn()
+//
+val-
+D2Pcon(d2c1) = d2p0.node()
+//
+val t2p0 =
+d2con2a_s2typize(loc0, d2c1)
+//
+val (  ) =
+prerrln
+("f0_con: d2c1 = ", d2c1)
+val (  ) =
+prerrln
+("f0_con: tqas = ", d2c1.tqas()) }
+//
+//(*where*) // end of [f0_con(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
 f0_sym0
 ( env0:
 ! tr2aenv
@@ -277,7 +336,7 @@ val t2p0 = s2typ_new0_x2tp(loc0)
 in//let
 d2pat_make_styp_node
 (loc0, t2p0, D2Psym0(drpt,d1p1,d2is))
-end (*let*) // end of [f0_sym0(env1,...)]
+end (*let*) // end of [f0_sym0(env0,...)]
 //
 (* ****** ****** *)
 //
@@ -659,7 +718,7 @@ t2p0.node() of
 |T2Plft(t2p1) => t2p1
 |_(*non-T2Plft*) => t2p0) endlet
 //
-} (*where*) // end of [f0_var(...)]
+} (*where*) // end of [f0_var(env0,...)]
 //
 (* ****** ****** *)
 //
@@ -689,11 +748,13 @@ val t2p0 =
 d2con2a_s2typize(loc0, d2c1)
 //
 val (  ) =
-prerrln("f0_con: d2c1 = ", d2c1)
+prerrln
+("f0_con: d2c1 = ", d2c1)
 val (  ) =
-prerrln("f0_con: tqas = ", d2c1.tqas())
+prerrln
+("f0_con: tqas = ", d2c1.tqas()) }
 //
-} (*where*) // end of [f0_con(...)]
+//(*where*) // end of [f0_con(env0,...)]
 //
 (* ****** ****** *)
 //
@@ -723,11 +784,13 @@ val t2p0 =
 d2cst2a_s2typize(loc0, d2c1)
 //
 val (  ) =
-prerrln("f0_cst: d2c1 = ", d2c1)
+prerrln
+("f0_cst: d2c1 = ", d2c1)
 val (  ) =
-prerrln("f0_cst: tqas = ", d2c1.tqas())
+prerrln
+("f0_cst: tqas = ", d2c1.tqas()) }
 //
-} (*where*) // end of [f0_cst(...)]
+//(*where*) // end of [f0_cst(env0,...)]
 //
 (* ****** ****** *)
 //
@@ -748,7 +811,7 @@ val t2p0 = s2typ_new0_x2tp(loc0)
 in//let
 d2exp_make_styp_node
 (loc0, t2p0, D2Esym0(drxp,d1e1,dpis))
-end (*let*) // end of [f0_sym0(env1,...)]
+end (*let*) // end of [f0_sym0(env0,...)]
 //
 (* ****** ****** *)
 //

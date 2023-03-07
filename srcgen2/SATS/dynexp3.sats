@@ -131,6 +131,13 @@ D2E = "./dynexp2.sats"
 #abstbox f3arg_tbox // ptr
 #typedef f3arg = f3arg_tbox
 (* ****** ****** *)
+#abstbox d3gua_tbox // ptr
+#abstbox d3gpt_tbox // ptr
+#abstbox d3cls_tbox // ptr
+#typedef d3gua = d3gua_tbox
+#typedef d3gpt = d3gpt_tbox
+#typedef d3cls = d3cls_tbox
+(* ****** ****** *)
 #abstbox d3ecl_tbox // ptr
 #typedef d3ecl = d3ecl_tbox
 (* ****** ****** *)
@@ -164,6 +171,10 @@ D2E = "./dynexp2.sats"
 #typedef d3expopt = optn(d3exp)
 (* ****** ****** *)
 #typedef f3arglst = list(f3arg)
+(* ****** ****** *)
+#typedef d3gptlst = list(d3gpt)
+#typedef d3gualst = list(d3gua)
+#typedef d3clslst = list(d3cls)
 (* ****** ****** *)
 #typedef d3eclist = list(d3ecl)
 (* ****** ****** *)
