@@ -943,7 +943,10 @@ d2p0.node() of
 |D2Pstr _ => d2p0
 //
 |D2Pcon _ => d2p0
+//
 |D2Pcons _ => d2p0
+//
+|D2Psym0 _ => d2p0
 //
 |D2Pbang _ => f0_bang(d2p0, err)
 |D2Pflat _ => f0_flat(d2p0, err)

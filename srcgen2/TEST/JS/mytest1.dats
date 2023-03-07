@@ -26,7 +26,7 @@ fun
 len(xs: list(a)) =
 (
 case+ xs of
-| nil() => 0
+| list_nil() => 0
 | list_cons(_, xs) => len(xs) + 1
 )
 

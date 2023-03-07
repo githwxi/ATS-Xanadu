@@ -344,6 +344,7 @@ case+
 d2p.node() of
 //
 |D2Pvar _ => ()
+|D2Pany _ => ()
 //
 |D2Pint _ => ()
 |D2Pbtf _ => ()

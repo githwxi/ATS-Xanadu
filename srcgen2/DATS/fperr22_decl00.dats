@@ -131,6 +131,7 @@ endlet // end-of-(D2Cfundclst(_,_,_))
 //
 | D2Cnone0() => ( (*void*) )
 | D2Cnone1(d1cl) => ( (*void*) )
+| D2Cnone2(d2cl) => ( (*void*) )
 |
 D2Cerrck(_,_) => fperr22_d2ecl(out, dcl)
 //

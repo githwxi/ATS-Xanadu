@@ -92,6 +92,14 @@ case+
 d2p.node() of
 //
 |
+D2Psym0
+(drpt,d1p1,dpis) =>
+let
+val () =
+fperr22_d2pat
+(out, drpt.dpat((*void*))) end
+//
+|
 D2Pdapp
 ( d2f0
 , npf1, d2ps) =>
