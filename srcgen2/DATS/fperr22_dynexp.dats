@@ -92,8 +92,18 @@ case+
 d2p.node() of
 //
 |
+D2Pdapp
+( d2f0
+, npf1, d2ps) =>
+let
+val () =
+fperr22_d2pat(out, d2f0)
+val () =
+fperr22_d2patlst(out, d2ps) end
+//
+|
 D2Ptup0
-(npf1, d2ps) =>
+( npf1, d2ps) =>
 let
 val () =
 fperr22_d2patlst(out, d2ps) end
@@ -120,6 +130,13 @@ val () = fperr22_d2pat(out, d2p1)
 (*
 val () = fperr22_s2exp(out, s2e2)
 *)
+endlet
+//
+|
+D2Pt2pck
+(d2p1, t2p2) =>
+let
+val () = fperr22_d2pat(out, d2p1)
 endlet
 //
 |D2Pnone0(    ) => (   (*void*)   )
