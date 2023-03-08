@@ -509,6 +509,9 @@ dynexp2_dats: ; $(XATSOPT) --dynamic DATS/dynexp2.dats
 all_dats:: \
 dynexp2_print0_dats
 dynexp2_print0_dats: ; $(XATSOPT) --dynamic DATS/dynexp2_print0.dats
+all_dats:: \
+dynexp2_utils0_dats
+dynexp2_utils0_dats: ; $(XATSOPT) --dynamic DATS/dynexp2_utils0.dats
 ######
 
 ######

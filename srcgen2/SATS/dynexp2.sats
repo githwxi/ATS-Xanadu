@@ -87,6 +87,8 @@ G1M = "./gmacro1.sats"
 (* ****** ****** *)
 #staload
 S2E = "./staexp2.sats"
+#staload
+T2P = "./statyp2.sats"
 (* ****** ****** *)
 #typedef s1qid = $S1E.s1qid
 #typedef d1qid = $S1E.d1qid
@@ -108,6 +110,8 @@ S2E = "./staexp2.sats"
 #typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
 #typedef s2itm = $S2E.s2itm
+(* ****** ****** *)
+#typedef s2vts = $T2P.s2vts
 (* ****** ****** *)
 #abstbox d2con_tbox // ptr
 #abstbox d2cst_tbox // ptr
@@ -263,12 +267,21 @@ d2lab_fprint
 #typedef l2d2plst = list(l2d2p)
 #typedef l2d2elst = list(l2d2e)
 (* ****** ****** *)
+//
+fun
+s2vts_make_lctn_tqas
+( loc0: ( loctn )
+, tqas: t2qaglst): (s2vts)
+#symload
+s2vts with s2vts_make_lctn_tqas
+//
+(* ****** ****** *)
+fun
+d2var_fprint:(FILR,d2var)->void
 fun
 d2con_fprint:(FILR,d2con)->void
 fun
 d2cst_fprint:(FILR,d2cst)->void
-fun
-d2var_fprint:(FILR,d2var)->void
 (* ****** ****** *)
 //
 fun

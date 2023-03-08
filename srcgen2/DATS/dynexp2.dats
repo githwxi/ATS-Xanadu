@@ -362,8 +362,9 @@ D2CON of
 , tag_t // ctag
 , t2qas // tqas
 , s2exp // sexp
-, s2typ // type
 , stamp // stmp // unicity
+, s2typ // styp // erasure
+, s2typ // xtyp // matching
 )
 datavwtp
 d2con_vt =
@@ -373,8 +374,9 @@ D2CON_vt of
 , tag_t // ctag
 , t2qas // tqas
 , s2exp // sexp
-, s2typ // type
 , stamp // stmp // unicity
+, s2typ // styp // erasure
+, s2typ // xtyp // matching
 )
 //
 #absimpl d2con_tbox = d2con
@@ -392,9 +394,9 @@ D2CON
 (loc0
 ,sym0
 ,ctag
-,tqas
-,s2e0
-,t2p0,stmp) = d2c0 in loc0 end
+,tqas,s2e0
+,stmp
+,t2p0,xt2p) = d2c0 in loc0 end
 //
 #implfun
 d2con_get_name
@@ -405,9 +407,9 @@ D2CON
 (loc0
 ,sym0
 ,ctag
-,tqas
-,s2e0
-,t2p0,stmp) = d2c0 in sym0 end
+,tqas,s2e0
+,stmp
+,t2p0,xt2p) = d2c0 in sym0 end
 //
 #implfun
 d2con_get_tqas
@@ -418,9 +420,9 @@ D2CON
 (loc0
 ,sym0
 ,ctag
-,tqas
-,s2e0
-,t2p0,stmp) = d2c0 in tqas end
+,tqas,s2e0
+,stmp
+,t2p0,xt2p) = d2c0 in tqas end
 //
 #implfun
 d2con_get_sexp
@@ -431,9 +433,9 @@ D2CON
 (loc0
 ,sym0
 ,ctag
-,tqas
-,s2e0
-,t2p0,stmp) = d2c0 in s2e0 end
+,tqas,s2e0
+,stmp
+,t2p0,xt2p) = d2c0 in s2e0 end
 //
 #implfun
 d2con_get_styp
@@ -444,9 +446,22 @@ D2CON
 (loc0
 ,sym0
 ,ctag
-,tqas
-,s2e0
-,t2p0,stmp) = d2c0 in t2p0 end
+,tqas,s2e0
+,stmp
+,t2p0,xt2p) = d2c0 in t2p0 end
+//
+#implfun
+d2con_get_xtyp
+  (  d2c0  ) =
+let
+val+
+D2CON
+(loc0
+,sym0
+,ctag
+,tqas,s2e0
+,stmp
+,t2p0,xt2p) = d2c0 in xt2p end
 //
 #implfun
 d2con_get_stmp
@@ -457,9 +472,9 @@ D2CON
 (loc0
 ,sym0
 ,ctag
-,tqas
-,s2e0
-,t2p0,stmp) = d2c0 in stmp end
+,tqas,s2e0
+,stmp
+,t2p0,xt2p) = d2c0 in stmp end
 //
 (* ****** ****** *)
 //
@@ -474,8 +489,9 @@ D2CON
 ,ctag
 ,tqas
 ,s2e0
+,stmp
 ,t2p0
-,stmp) = d2c0 in auxmain(s2e0)
+,xt2p) = d2c0 in auxmain(s2e0)
 end where
 {
 fun
@@ -487,16 +503,15 @@ s2e0.node() of
 //
 |
 S2Euni0
-(s2vs
-,s2ps,s2e1) => auxmain(s2e1)
+(s2vs,s2ps,s2e1) => auxmain(s2e1)
 //
 |
 S2Efun1
-(f2cl,npf1
-,s2es,s2e1) => list_length(s2es)
+(f2cl
+,npf1,s2es,s2e1) => list_length(s2es)
 //
 (*
-| _(*otherwise*) => (-1)//HX:error!
+| _(*otherwise*) => (-1) // HX: ERROR!
 *)
 //
 )
@@ -518,7 +533,8 @@ val+
  ctag,
  tqas,
 !sexp,
- t2p0,stmp) = d2c0 in (sexp := s2e0)
+ stmp,
+ t2p0,xt2p) = d2c0 in (sexp := s2e0)
 end (*let*) // end of [d2con_set_sexp]
 //
 (* ****** ****** *)
@@ -527,16 +543,26 @@ end (*let*) // end of [d2con_set_sexp]
 d2con_make_idtp
 (tok0,tqas,sexp) =
 let
+//
 val ctag = (-1)
+//
 val loc0 = tok0.lctn()
 val sym0 = dconid_sym(tok0)
 val t2p0 = s2exp_stpize(sexp)
 val stmp = the_d2con_stamp_new()
+//
+val xt2p =
+(
+s2typ_subst0(t2p0, svts)) where
+{
+val svts =
+s2vts_make_lctn_tqas(loc0, tqas)}
+//
 in//let
-  D2CON
-  ( loc0
-  , sym0
-  , ctag, tqas, sexp, t2p0, stmp)
+D2CON
+( loc0
+, sym0
+, ctag, tqas, sexp, stmp, t2p0, xt2p)
 end (*let*) // end of [d2con_make_idtp]
 //
 (* ****** ****** *)
@@ -573,8 +599,9 @@ D2CST of
 , tnode // tknd
 , t2qas // tqas
 , s2exp // sexp
-, s2typ // type
 , stamp // stmp // unicity
+, s2typ // styp // erasure
+, s2typ // xtyp // matching
 )
 //
 #absimpl d2cst_tbox = d2cst
@@ -592,9 +619,9 @@ D2CST
 (loc0
 ,sym0
 ,tknd
-,tqas
-,s2e0
-,t2p0,stmp) = d2c0 in loc0 end
+,tqas,s2e0
+,stmp
+,t2p0,xt2p) = d2c0 in loc0 end
 //
 #implfun
 d2cst_get_name
@@ -605,9 +632,9 @@ D2CST
 (loc0
 ,sym0
 ,tknd
-,tqas
-,s2e0
-,t2p0,stmp) = d2c0 in sym0 end
+,tqas,s2e0
+,stmp
+,t2p0,xt2p) = d2c0 in sym0 end
 //
 #implfun
 d2cst_get_tknd
@@ -618,9 +645,9 @@ D2CST
 (loc0
 ,sym0
 ,tknd
-,tqas
-,s2e0
-,t2p0,stmp) = d2c0 in tknd end
+,tqas,s2e0
+,stmp
+,t2p0,xt2p) = d2c0 in tknd end
 //
 #implfun
 d2cst_get_tqas
@@ -631,9 +658,9 @@ D2CST
 (loc0
 ,sym0
 ,tknd
-,tqas
-,s2e0
-,t2p0,stmp) = d2c0 in tqas end
+,tqas,s2e0
+,stmp
+,t2p0,xt2p) = d2c0 in tqas end
 //
 #implfun
 d2cst_get_sexp
@@ -644,9 +671,9 @@ D2CST
 (loc0
 ,sym0
 ,tknd
-,tqas
-,s2e0
-,t2p0,stmp) = d2c0 in s2e0 end
+,tqas,s2e0
+,stmp
+,t2p0,xt2p) = d2c0 in s2e0 end
 //
 #implfun
 d2cst_get_styp
@@ -657,9 +684,9 @@ D2CST
 (loc0
 ,sym0
 ,tknd
-,tqas
-,s2e0
-,t2p0,stmp) = d2c0 in t2p0 end
+,tqas,s2e0
+,stmp
+,t2p0,xt2p) = d2c0 in t2p0 end
 //
 #implfun
 d2cst_get_stmp
@@ -670,9 +697,9 @@ D2CST
 (loc0
 ,sym0
 ,tknd
-,tqas
-,s2e0
-,t2p0,stmp) = d2c0 in stmp end
+,tqas,s2e0
+,stmp
+,t2p0,xt2p) = d2c0 in stmp end
 //
 (* ****** ****** *)
 //
@@ -687,11 +714,18 @@ val sym0 = dcstid_sym(tok0)
 val t2p0 = s2exp_stpize(sexp)
 val stmp = the_d2cst_stamp_new()
 //
+val xt2p =
+(
+s2typ_subst0(t2p0, svts)) where
+{
+val svts =
+s2vts_make_lctn_tqas(loc0, tqas)}
+//
 in//let
-  D2CST
-  ( loc0
-  , sym0
-  , tknd, tqas, sexp, t2p0, stmp)
+D2CST
+( loc0
+, sym0
+, tknd, tqas, sexp, stmp, t2p0, xt2p)
 end (*let*) // end of [d2cst_make_idtp]
 //
 end (*local*) // end of [local(d2cst_tbox)]
@@ -712,9 +746,9 @@ D2VAR of
 , sym_t // name
 , t2qas // tqas
 , s2exp // sexp
-, s2typ // type
 , stamp // stmp // unicity
-) (* end of [d2var] *)
+, s2typ // styp // erasure
+)
 datavwtp
 d2var_vt =
 D2VAR_vt of
@@ -722,9 +756,9 @@ D2VAR_vt of
 , sym_t // name
 , t2qas // tqas
 , s2exp // sexp
-, s2typ // type
 , stamp // stmp // unicity
-) (* end of [d2var] *)
+, s2typ // styp // erasure
+)
 //
 #absimpl d2var_tbox = d2var
 //
@@ -738,9 +772,8 @@ val+
 D2VAR
 (loc0
 ,sym0
-,tqas
-,s2e0
-,t2p0,stmp) = d2v0 in loc0 end
+,tqas,s2e0
+,stmp,t2p0) = d2v0 in loc0 end
 //
 #implfun
 d2var_get_name
@@ -750,9 +783,8 @@ val+
 D2VAR
 (loc0
 ,sym0
-,tqas
-,s2e0
-,t2p0,stmp) = d2v0 in sym0 end
+,tqas,s2e0
+,stmp,t2p0) = d2v0 in sym0 end
 //
 #implfun
 d2var_get_styp
@@ -762,9 +794,8 @@ val+
 D2VAR
 (loc0
 ,sym0
-,tqas
-,s2e0
-,t2p0,stmp) = d2v0 in t2p0 end
+,tqas,s2e0
+,stmp,t2p0) = d2v0 in t2p0 end
 //
 #implfun
 d2var_get_stmp
@@ -774,9 +805,8 @@ val+
 D2VAR
 (loc0
 ,sym0
-,tqas
-,s2e0
-,t2p0,stmp) = d2v0 in stmp end
+,tqas,s2e0
+,stmp,t2p0) = d2v0 in stmp end
 //
 (* ****** ****** *)
 //
@@ -789,11 +819,12 @@ d2v0 =
 $UN.castlin10{d2var_vt}(d2v0)
 val+
 @D2VAR_vt
-(loc0,
- sym0,
- tqas,
- s2e0,
-!styp,stmp) = d2v0 in (styp := t2p0)
+( loc0,
+  sym0,
+  tqas,
+  s2e0,
+  stmp,
+! styp ) = d2v0 in styp := t2p0
 end (*let*) // end of [d2var_set_styp]
 //
 (* ****** ****** *)
@@ -803,13 +834,13 @@ d2var_new2_name
 (  loc0,sym0  ) =
 let
 val tqas = list_nil()
-val t2p0 = s2typ_none0()
 val s2e0 = s2exp_none0()
+val t2p0 = s2typ_none0()
 val stmp = the_d2var_stamp_new()
 in//let
   D2VAR
   ( loc0
-  , sym0, tqas, s2e0, t2p0, stmp)
+  , sym0, tqas, s2e0, stmp, t2p0 )
 end (*let*) // end of [d2var_new2_name]
 //
 end (*local*) // end of [local(d2var_tbox)]
