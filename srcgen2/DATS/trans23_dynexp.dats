@@ -86,6 +86,9 @@ _(*TRANS23*) = "./trans23.dats"
 #symload node with d2exp_get_node
 #symload styp with d2exp_get_styp
 (* ****** ****** *)
+#symload dpat with d2rpt_get_dpat
+#symload dexp with d2rxp_get_dexp
+(* ****** ****** *)
 #symload lctn with f2arg_get_lctn
 #symload node with f2arg_get_node
 (* ****** ****** *)
@@ -426,12 +429,16 @@ d3exp_make_styp_node
 //
 |D2Edapp _ => f0_dapp(env0, d2e0)
 //
+|D2Elet0 _ => f0_let0(env0, d2e0)
+//
 |D2Eift0 _ => f0_ift0(env0, d2e0)
 |D2Ecas0 _ => f0_cas0(env0, d2e0)
 //
 |D2Etup0 _ => f0_tup0(env0, d2e0)
 |D2Etup1 _ => f0_tup1(env0, d2e0)
 |D2Ercd2 _ => f0_rcd2(env0, d2e0)
+//
+|D2Ewhere _ => f0_where(env0, d2e0)
 //
 |D2Eassgn _ => f0_assgn(env0, d2e0)
 //
@@ -589,6 +596,36 @@ in
   (loc0, tres, D3Edapp(d3f0,npf1,d3es))
 end (*let*)
 end (*let*) // end of [f0_dapp(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_let0
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+val loc0 = d2e0.lctn()
+val-
+D2Elet0
+( d2cs, d2e1) = d2e0.node()
+//
+val
+(  ) = tr23env_pshlet0(env0)
+//
+val d3cs =
+trans23_d2eclist(env0, d2cs)
+//
+val
+d3e1 = trans23_d2exp(env0, d2e1)
+//
+val (  ) = tr23env_poplet0(env0)
+//
+in//let
+d3exp_make_styp_node
+( loc0
+, d3e1.styp(), D3Elet0(d3cs, d3e1))
+end (*let*) // end of [f0_let0(env0,...)]
 //
 (* ****** ****** *)
 //
@@ -788,6 +825,37 @@ val
 t2p0 =
 s2typ_rcd2(trcd , npf1 , l2t2plst(ldes))
 } (*where*) // end of [f0_rcd2(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_where
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Ewhere
+( d2e1, d2cs) = d2e0.node()
+//
+val
+(  ) = tr23env_pshlet0(env0)
+//
+val d3cs =
+trans23_d2eclist(env0, d2cs)
+//
+val
+d3e1 = trans23_d2exp(env0, d2e1)
+//
+val (  ) = tr23env_poplet0(env0)
+//
+in//let
+d3exp_make_styp_node
+( loc0
+, d3e1.styp(), D3Ewhere(d3e1, d3cs))
+end (*let*) // end of [f0_where(env0,...)]
 //
 (* ****** ****** *)
 //
