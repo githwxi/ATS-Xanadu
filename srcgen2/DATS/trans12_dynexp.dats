@@ -660,6 +660,7 @@ end (*let*) // end of [D1Pstr(tok)]
 |D1Pb1sh _ => f0_b1sh(env0, d1p0)
 //
 |D1Pa1pp _ => f0_a1pp(env0, d1p0)
+|D1Pa2pp _ => f0_a2pp(env0, d1p0)
 //
 |D1Pl1st _ => f0_l1st(env0, d1p0)
 |D1Pl2st _ => f0_l2st(env0, d1p0)
@@ -907,6 +908,33 @@ end (*let*) // end-of(non-D2Plist)
 in//let
   my_d2pat_dapp(loc0, d2f0, npf1, d2ps)
 end (*let*) // end of [f0_a1pp_els2(_, _)]
+//
+(* ****** ****** *)
+//
+fun
+f0_a2pp
+( env0:
+! tr12env
+, d1p0: d1pat): d2pat =
+let
+//
+val loc0 = d1p0.lctn()
+//
+val-
+D1Pa2pp
+( d1f0
+, d1p1, d1p2) = d1p0.node()
+//
+val
+d2f0 = trans12_d1pat(env0, d1f0)
+val
+d2p1 = trans12_d1pat(env0, d1p1)
+val
+d2p2 = trans12_d1pat(env0, d1p2)
+//
+in//let
+d2pat_a2pp(loc0, d2f0, d2p1, d2p2)
+end (*let*) // end of [f0_a2pp(env0,d1p0)]
 //
 (* ****** ****** *)
 //
