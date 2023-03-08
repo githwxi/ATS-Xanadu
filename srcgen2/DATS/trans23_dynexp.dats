@@ -127,37 +127,48 @@ case+
 d2p0.node() of
 //
 |
+D2Pany() =>
+d3pat_make_styp_node
+(loc0, t2p0, D3Pany(*0*))
+|
 D2Pvar(d2v) =>
 let
 val
 t2p0 = d2v.styp((*void*))
-in
+in//let
 d3pat_make_styp_node
 (loc0, t2p0, D3Pvar(d2v))
-end
+end//end-of-[D2Pvar(d2v)]
 //
 |
 D2Pint(tok) =>
+(
 d3pat_make_styp_node
-(loc0, t2p0, D3Pint(tok))
+(loc0, t2p0, D3Pint(tok)))
 |
 D2Pbtf(sym) =>
+(
 d3pat_make_styp_node
-(loc0, t2p0, D3Pbtf(sym))
+(loc0, t2p0, D3Pbtf(sym)))
 |
 D2Pchr(tok) =>
+(
 d3pat_make_styp_node
-(loc0, t2p0, D3Pchr(tok))
+(loc0, t2p0, D3Pchr(tok)))
 |
 D2Pflt(tok) =>
+(
 d3pat_make_styp_node
-(loc0, t2p0, D3Pflt(tok))
+(loc0, t2p0, D3Pflt(tok)))
 |
 D2Pstr(tok) =>
+(
 d3pat_make_styp_node
-(loc0, t2p0, D3Pstr(tok))
+(loc0, t2p0, D3Pstr(tok)))
 //
 |D2Pcon _ => f0_con(env0, d2p0)
+//
+|D2Psym0 _ => f0_sym0(env0, d2p0)
 //
 |D2Pdapp _ => f0_dapp(env0, d2p0)
 //
@@ -194,6 +205,25 @@ in//let
   d3pat_make_styp_node
   (loc0, t2p0, D3Ptapq(d3p0, t2js))
 end(*let*)//end-of-[f0_con(env0,d2p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_sym0
+( env0:
+! tr23env
+, d2p0: d2pat): d3pat =
+let
+val loc0 = d2p0.lctn()
+//
+val-
+D2Psym0
+( drpt
+, d1p1, dpis) = d2p0.node()
+//
+in//let
+  trans23_d2pat(env0, drpt.dpat())
+end (*let*)//end-of-[f0_sym0(env0,d2p0)]
 //
 (* ****** ****** *)
 //
@@ -363,24 +393,29 @@ d2e0.node() of
 //
 |
 D2Eint(tok) =>
+(
 d3exp_make_styp_node
-(loc0, t2p0, D3Eint(tok))
+(loc0, t2p0, D3Eint(tok)))
 |
 D2Ebtf(sym) =>
+(
 d3exp_make_styp_node
-(loc0, t2p0, D3Ebtf(sym))
+(loc0, t2p0, D3Ebtf(sym)))
 |
 D2Echr(tok) =>
+(
 d3exp_make_styp_node
-(loc0, t2p0, D3Echr(tok))
+(loc0, t2p0, D3Echr(tok)))
 |
 D2Eflt(tok) =>
+(
 d3exp_make_styp_node
-(loc0, t2p0, D3Eflt(tok))
+(loc0, t2p0, D3Eflt(tok)))
 |
 D2Estr(tok) =>
+(
 d3exp_make_styp_node
-(loc0, t2p0, D3Estr(tok))
+(loc0, t2p0, D3Estr(tok)))
 //
 |D2Evar _ => f0_var(env0, d2e0)
 //

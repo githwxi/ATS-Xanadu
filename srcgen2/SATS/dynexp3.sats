@@ -252,6 +252,7 @@ t2jag_make_t2ps
 datatype
 d3pat_node =
 //
+|D3Pany of ()
 |D3Pvar of d2var
 //
 |D3Pint of token

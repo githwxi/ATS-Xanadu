@@ -106,6 +106,9 @@ in//let
 case+
 d3p0.node() of
 //
+|D3Pany() =>
+print("D3Pany(",")")
+//
 |D3Pvar(d2v) =>
 print("D3Pvar(",d2v,")")
 //
