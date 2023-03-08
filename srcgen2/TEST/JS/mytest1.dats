@@ -29,14 +29,32 @@ cons with list_cons
 cons with strmcon_cons
 (* ****** ****** *)
 //
+(*
 fun
 <a:t0>
-len(xs: list(a)) =
+length(xs: list(a)) =
 (
 case+ xs of
 | nil0() => 0
-| (_ :: xs) => len(xs) + 1)
+| (_ :: xs) => length(xs) + 1)
+*)
 //
+(* ****** ****** *)
+
+fun
+<a:t0>
+length
+(xs: list(a)) =
+(
+  loop(xs, 0)) where
+{
+fun
+loop(xs, res) =
+case+ xs of
+| nil0() => res
+| (_ :: xs) => loop(xs, res+1)
+}
+
 (* ****** ****** *)
 ////
 (* ****** ****** *)

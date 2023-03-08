@@ -234,7 +234,8 @@ D2Esym0
 let
 val () =
 fperr22_d2exp
-(out, drxp.dexp((*void*))) end
+(out, drxp.dexp((*void*)))
+endlet
 //
 |
 D2Edapp
@@ -243,27 +244,51 @@ let
 val () =
 fperr22_d2exp(out, d2f0)
 val () =
-fperr22_d2explst(out, d2es) end
+fperr22_d2explst(out, d2es)
+endlet
+//
+|
+D2Elet0
+(dcls, d2e1) =>
+(
+fperr22_d2exp(out, d2e1))
+where
+{
+val () =
+fperr22_d2eclist(out, dcls)
+}(*where*)//end-of-[D2Elet0]
+|
+D2Ewhere
+(d2e1, dcls) =>
+(
+fperr22_d2exp(out, d2e1))
+where
+{
+val () =
+fperr22_d2eclist(out, dcls)
+}(*where*)//end-of-[D2Ewhere]
 //
 |
 D2Eift0
 (d2e1,dthn,dels) =>
 let
-val () =
-fperr22_d2exp(out, d2e1)
-val () =
-fperr22_d2expopt(out, dthn)
-val () =
-fperr22_d2expopt(out, dels) end
+  val () =
+  fperr22_d2exp(out, d2e1)
+  val () =
+  fperr22_d2expopt(out, dthn)
+  val () =
+  fperr22_d2expopt(out, dels)
+endlet
 //
 |
 D2Ecas0
 (tknd,d2e1,dcls) =>
 let
-val () =
-fperr22_d2exp(out, d2e1)
-val () =
-fperr22_d2clslst(out, dcls) end
+  val () =
+  fperr22_d2exp(out, d2e1)
+  val () =
+  fperr22_d2clslst(out, dcls)
+endlet
 //
 |
 D2Etup0

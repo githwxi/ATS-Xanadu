@@ -482,6 +482,23 @@ val () =
 trsym2a_d2explst(env0, d2es) end
 //
 |
+D2Elet0
+(dcls, d2e1) =>
+(
+trsym2a_d2exp(env0, d2e1))
+where
+{ val () =
+  trsym2a_d2eclist(env0, dcls) }
+|
+D2Ewhere
+(d2e1, dcls) =>
+(
+trsym2a_d2exp(env0, d2e1))
+where
+{ val () =
+  trsym2a_d2eclist(env0, dcls) }
+//
+|
 D2Eift0
 (d2e1,dthn,dels) =>
 let
