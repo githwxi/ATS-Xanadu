@@ -653,22 +653,31 @@ d2pat_sym0
 fun
 d2pat_con
 (loc0: loc_t, d2c1: d2con): d2pat
+(* ****** ****** *)
 fun
 d2pat_cons
-(loc0: loc_t, d2cs: d2conlst): d2pat
+( loc0: loc_t
+, d2cs: d2conlst (*amb*) ): d2pat
 (* ****** ****** *)
 //
 fun
 d2pat_sapp
 ( loc0: loc_t
 , d2f0: d2pat(*fun*)
-, s2vs: s2varlst(*arg*) ) : d2pat
+, s2vs: s2varlst (*arg*) ): d2pat
+//
+(* ****** ****** *)
+fun
+d2pat_a2pp
+( loc0: loc_t
+, d2f0: d2pat
+, d2p1: d2pat,d2p2: d2pat): d2pat
 fun
 d2pat_dapp
 ( loc0: loc_t
 , d2f0: d2pat(*fun*)
 , npf0: (sint)
-, d2ps: d2patlst(*arg*) ) : d2pat
+, d2ps: d2patlst (*arg*) ): d2pat
 //
 (* ****** ****** *)
 fun

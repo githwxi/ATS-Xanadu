@@ -168,36 +168,49 @@ d2pat_make_node
 (* ****** ****** *)
 //
 #implfun
+d2pat_a2pp
+(loc0,d2f0,d2a1,d2a2) =
+(
 d2pat_dapp
-(loc0, d2f0, npf1, d2as) =
+(loc0,d2f0,npf1,d2as)
+) where
+{
+val
+npf1 = -1
+val
+d2as =
+list_pair( d2a1, d2a2 ) }
+//
+#implfun
+d2pat_dapp
+(loc0,d2f0,npf1,d2as) =
 (
 d2pat_make_node
 ( loc0
-, D2Pdapp(d2f0, npf1, d2as)))
+, D2Pdapp(d2f0,npf1,d2as)))
 //
 (* ****** ****** *)
 //
 #implfun
 d2exp_none0
 (  loc0  ) =
+(
 d2exp_make_node
-(loc0,D2Enone0((*void*)))
+(loc0, D2Enone0((*void*))))
 //
 #implfun
 d2exp_none1
 (  dexp  ) =
 d2exp_make_node
 (
-dexp.lctn(),D2Enone1(dexp)
-)
+dexp.lctn(),D2Enone1(dexp))
 //
 #implfun
 d2exp_none2
 (  dexp  ) =
 d2exp_make_node
 (
-dexp.lctn(),D2Enone2(dexp)
-)
+dexp.lctn(),D2Enone2(dexp))
 //
 (* ****** ****** *)
 //
@@ -205,7 +218,7 @@ dexp.lctn(),D2Enone2(dexp)
 d2exp_var
 (loc0, dvar) =
 (
-d2exp(loc0, D2Evar(dvar)))
+  d2exp(loc0, D2Evar(dvar)))
 //
 (* ****** ****** *)
 //
@@ -213,7 +226,7 @@ d2exp(loc0, D2Evar(dvar)))
 d2exp_btf
 (loc0, sym1) =
 (
-d2exp(loc0, D2Ebtf(sym1)))
+  d2exp(loc0, D2Ebtf(sym1)))
 //
 (* ****** ****** *)
 //
@@ -221,13 +234,13 @@ d2exp(loc0, D2Ebtf(sym1)))
 d2exp_con
 (loc0, dcon) =
 (
-d2exp(loc0, D2Econ(dcon)))
+  d2exp(loc0, D2Econ(dcon)))
 //
 #implfun
 d2exp_cst
 (loc0, dcst) =
 (
-d2exp(loc0, D2Ecst(dcst)))
+  d2exp(loc0, D2Ecst(dcst)))
 //
 (* ****** ****** *)
 //
@@ -245,8 +258,7 @@ case+ dcs2 of
 |list_nil() =>
 d2exp(loc0, D2Econ(d2c1))
 |list_cons _ =>
-d2exp(loc0, D2Econs(d2cs)))
-)
+d2exp(loc0, D2Econs(d2cs))))
 //
 #implfun
 d2exp_csts
@@ -262,8 +274,7 @@ case+ dcs2 of
 |list_nil() =>
 d2exp(loc0, D2Ecst(d2c1))
 |list_cons _ =>
-d2exp(loc0, D2Ecsts(d2cs)))
-)
+d2exp(loc0, D2Ecsts(d2cs))))
 //
 (* ****** ****** *)
 #implfun
@@ -290,20 +301,18 @@ d2exp_make_node
 //
 #implfun
 d2exp_a2pp
-(loc0, d2f0, d2a1, d2a2) =
-(
+(loc0,d2f0,d2a1,d2a2) =
 d2exp_dapp
-(loc0, d2f0, npf1, d2as)
-) where
+(loc0,d2f0,npf1,d2as) where
 {
 val
 npf1 = -1
 val
-d2as = list_pair(d2a1, d2a2)}
+d2as = list_pair(d2a1,d2a2)}
 //
 #implfun
 d2exp_dapp
-(loc0, d2f0, npf1, d2as) =
+(loc0,d2f0,npf1,d2as) =
 (
 d2exp_make_node
 ( loc0
