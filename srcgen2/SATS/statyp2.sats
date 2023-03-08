@@ -248,9 +248,12 @@ fun
 s2vts_search_opt
 ( s2vts, s2var ): s2typopt_vt
 //
+(* ****** ****** *)
+//
 fun
 s2vts_make_s2vs_t2ps
-(s2varlst, s2typlst): (s2vts)
+( s2vs: s2varlst,
+  t2ps: s2typlst): (s2vts)
 #symload
 s2vts with s2vts_make_s2vs_t2ps
 //
