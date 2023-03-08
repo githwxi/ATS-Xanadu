@@ -90,15 +90,47 @@ d2cl.node() of
 //
 |D2Cd1ecl _ =>
 let
-val loc0 = d2cl.lctn()
+val
+loc0 = d2cl.lctn()
 in//let
-d3ecl(loc0, D3Cd2ecl(d2cl))
-end (*let*) // end of [D2Cd1ecl]
+d3ecl_make_node
+(loc0, D3Cd2ecl(d2cl))
+end//end-of-[D2Cd1ecl]
 //
-|D2Cstatic _ => f0_static(env0, d2cl)
-|D2Cextern _ => f0_extern(env0, d2cl)
 //
-|D2Clocal0 _ => f0_local0(env0, d2cl)
+|D2Cstatic _ =>
+(
+  f0_static(env0, d2cl))
+|D2Cextern _ =>
+(
+  f0_extern(env0, d2cl))
+//
+|D2Clocal0 _ =>
+(
+  f0_local0(env0, d2cl))
+//
+|
+D2Cabssort _ =>
+d3ecl_make_node
+(d2cl.lctn(), D3Cd2ecl(d2cl))
+|
+D2Cstacst0 _ =>
+d3ecl_make_node
+(d2cl.lctn(), D3Cd2ecl(d2cl))
+//
+|
+D2Csortdef _ =>
+d3ecl_make_node
+(d2cl.lctn(), D3Cd2ecl(d2cl))
+|
+D2Csexpdef _ =>
+d3ecl_make_node
+(d2cl.lctn(), D3Cd2ecl(d2cl))
+//
+|
+D2Csymload _ =>
+d3ecl_make_node
+(d2cl.lctn(), D3Cd2ecl(d2cl))
 //
 |
 D2Cvaldclst _ => f0_valdclst(env0, d2cl)

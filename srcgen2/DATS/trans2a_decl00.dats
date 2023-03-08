@@ -89,29 +89,38 @@ in//let
 case+
 d2cl.node() of
 //
-| D2Cd1ecl _ => d2cl
-| D2Cerrck _ => d2cl
+|D2Cd1ecl _ => d2cl
+|D2Cerrck _ => d2cl
 //
-| D2Cstatic _ =>
+|D2Cstatic _ =>
 (
 f0_static(env0, d2cl))
-| D2Cextern _ =>
+|D2Cextern _ =>
 (
 f0_extern(env0, d2cl))
 //
-| D2Clocal0 _ =>
+|D2Clocal0 _ =>
 (
 f0_local0(env0, d2cl))
 //
-| D2Cabssort _ => d2cl
-| D2Cstacst0 _ => d2cl
+|D2Cabssort _ => d2cl
+|D2Cstacst0 _ => d2cl
 //
-| D2Csortdef _ => d2cl
-| D2Csexpdef _ => d2cl
+|D2Csortdef _ => d2cl
+|D2Csexpdef _ => d2cl
 //
-| D2Cabstype _ => d2cl
+|D2Cabstype _ => d2cl
+//
+|D2Csymload _ => d2cl
+//
+|D2Cdatasort _ => d2cl
+//
+|D2Cexcptcon _ => d2cl
+|D2Cdatatype _ => d2cl
+//
 (*
-| D2Cabsopen _ => d2cl
+|
+D2Cabsopen _ => f0_absopen(env0, d2cl)
 *)
 |
 D2Cabsimpl _ => f0_absimpl(env0, d2cl)

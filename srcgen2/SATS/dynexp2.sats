@@ -282,6 +282,8 @@ d2con_get_sexp:(d2con) -> s2exp
 fun
 d2con_get_styp:(d2con) -> s2typ
 fun
+d2con_get_xtyp:(d2con) -> s2typ
+fun
 d2con_get_stmp:(d2con) -> stamp
 //
 #symload lctn with d2con_get_lctn
@@ -289,6 +291,7 @@ d2con_get_stmp:(d2con) -> stamp
 #symload tqas with d2con_get_tqas
 #symload sexp with d2con_get_sexp
 #symload styp with d2con_get_styp
+#symload xtyp with d2con_get_xtyp
 #symload stmp with d2con_get_stmp
 //
 fun
@@ -297,9 +300,13 @@ d2con_set_sexp
 fun
 d2con_set_styp
 (d2c0: d2con, t2p0: s2typ): void
+fun
+d2con_set_xtyp
+(d2c0: d2con, t2p0: s2typ): void
 //
 #symload sexp with d2con_set_sexp
 #symload styp with d2con_set_styp
+#symload xtyp with d2con_set_xtyp
 //
 (* ****** ****** *)
 //
@@ -323,6 +330,8 @@ d2cst_get_sexp:(d2cst) -> s2exp
 fun
 d2cst_get_styp:(d2cst) -> s2typ
 fun
+d2cst_get_xtyp:(d2cst) -> s2typ
+fun
 d2cst_get_stmp:(d2cst) -> stamp
 //
 #symload lctn with d2cst_get_lctn
@@ -331,6 +340,7 @@ d2cst_get_stmp:(d2cst) -> stamp
 #symload tqas with d2cst_get_tqas
 #symload sexp with d2cst_get_sexp
 #symload styp with d2cst_get_styp
+#symload xtyp with d2cst_get_xtyp
 #symload stmp with d2cst_get_stmp
 //
 fun
@@ -339,9 +349,13 @@ d2cst_set_sexp
 fun
 d2cst_set_styp
 (d2c0: d2cst,t2p0: s2typ): void
+fun
+d2cst_set_xtyp
+(d2c0: d2cst,t2p0: s2typ): void
 //
 #symload sexp with d2cst_set_sexp
 #symload styp with d2cst_set_styp
+#symload xtyp with d2cst_set_xtyp
 //
 (* ****** ****** *)
 //

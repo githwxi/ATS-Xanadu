@@ -50,7 +50,9 @@ ATS_PACKNAME
 symbl_fprint
 (out, sym) =
 ( print(sym.name())
+(*
 ; print("(", sym.stmp(), ")")
+*)
 ) where
 {
   #impltmp g_print$out<>() = out
