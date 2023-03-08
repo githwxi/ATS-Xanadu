@@ -17,19 +17,16 @@ val zs = list_cons("1", ys)
 (* ****** ****** *)
 #symload nil with list_nil
 #symload cons with list_cons
-#symload nil_vt with list_vt_nil
-#symload cons_vt with list_vt_cons
 (* ****** ****** *)
-
+//
 fun
 <a:t0>
 len(xs: list(a)) =
 (
 case+ xs of
-| list_nil() => 0
-| list_cons(_, xs) => len(xs) + 1
-)
-
+| nil() => 0
+| cons(_, xs) => len(xs) + 1)
+//
 (* ****** ****** *)
 ////
 (* ****** ****** *)

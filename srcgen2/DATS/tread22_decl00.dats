@@ -193,7 +193,11 @@ d2cl.node() of
 //
 |D2Cabssort _ => d2cl
 |D2Cstacst0 _ => d2cl
+//
 |D2Csortdef _ => d2cl
+|D2Csexpdef _ => d2cl
+//
+|D2Csymload _ => d2cl
 //
 |
 D2Cstatic _ => f0_static(d2cl, err)
