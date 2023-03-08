@@ -133,7 +133,19 @@ d2pat(loc0, D2Pcon(dcon)))
 #implfun
 d2pat_cons
 (loc0, d2cs) =
-d2pat(loc0, D2Pcons(d2cs))
+(
+case+ d2cs of
+|list_nil() =>
+d2pat
+(loc0, D2Pcons(d2cs))
+|list_cons(d2c1, dcs2) =>
+(
+case+ dcs2 of
+|list_nil() =>
+d2pat(loc0, D2Pcon(d2c1))
+|list_cons _ =>
+d2pat(loc0, D2Pcons(d2cs)))
+)
 //
 (* ****** ****** *)
 //
@@ -438,6 +450,19 @@ D2CON
 ,t2p0,xt2p) = d2c0 in s2e0 end
 //
 #implfun
+d2con_get_stmp
+  (  d2c0  ) =
+let
+val+
+D2CON
+(loc0
+,sym0
+,ctag
+,tqas,s2e0
+,stmp
+,t2p0,xt2p) = d2c0 in stmp end
+//
+#implfun
 d2con_get_styp
   (  d2c0  ) =
 let
@@ -462,19 +487,6 @@ D2CON
 ,tqas,s2e0
 ,stmp
 ,t2p0,xt2p) = d2c0 in xt2p end
-//
-#implfun
-d2con_get_stmp
-  (  d2c0  ) =
-let
-val+
-D2CON
-(loc0
-,sym0
-,ctag
-,tqas,s2e0
-,stmp
-,t2p0,xt2p) = d2c0 in stmp end
 //
 (* ****** ****** *)
 //
@@ -676,6 +688,19 @@ D2CST
 ,t2p0,xt2p) = d2c0 in s2e0 end
 //
 #implfun
+d2cst_get_stmp
+  (  d2c0  ) =
+let
+val+
+D2CST
+(loc0
+,sym0
+,tknd
+,tqas,s2e0
+,stmp
+,t2p0,xt2p) = d2c0 in stmp end
+//
+#implfun
 d2cst_get_styp
   (  d2c0  ) =
 let
@@ -689,7 +714,7 @@ D2CST
 ,t2p0,xt2p) = d2c0 in t2p0 end
 //
 #implfun
-d2cst_get_stmp
+d2cst_get_xtyp
   (  d2c0  ) =
 let
 val+
@@ -699,7 +724,7 @@ D2CST
 ,tknd
 ,tqas,s2e0
 ,stmp
-,t2p0,xt2p) = d2c0 in stmp end
+,t2p0,xt2p) = d2c0 in xt2p end
 //
 (* ****** ****** *)
 //
