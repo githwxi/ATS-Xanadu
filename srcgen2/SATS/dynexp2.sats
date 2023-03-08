@@ -667,6 +667,7 @@ d2pat_sapp
 , s2vs: s2varlst (*arg*) ): d2pat
 //
 (* ****** ****** *)
+//
 fun
 d2pat_a2pp
 ( loc0: loc_t
