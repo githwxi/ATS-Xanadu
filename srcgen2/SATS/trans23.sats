@@ -178,6 +178,8 @@ LEX = "./lexing0.sats"
 #typedef d2parsed = $D2E.d2parsed
 #typedef d3parsed = $D3E.d3parsed
 (* ****** ****** *)
+#vwtpdef s2typopt_vt = optn_vt(s2typ)
+(* ****** ****** *)
 #typedef d2valdclist = $D2E.d2valdclist
 #typedef d2vardclist = $D2E.d2vardclist
 #typedef d2fundclist = $D2E.d2fundclist
@@ -250,6 +252,17 @@ tr23env_pshloc2(env0: !tr23env): void
 //
 fun
 tr23env_locjoin(env0: !tr23env): void
+//
+(* ****** ****** *)
+//
+fun
+tr23env_search_opt
+( env0:
+! tr23env, key: sym_t): s2typopt_vt
+fun
+tr23env_insert_any
+( env0:
+! tr23env, key: sym_t, itm: s2typ): void
 //
 (* ****** ****** *)
 //

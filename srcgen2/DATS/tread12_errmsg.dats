@@ -555,11 +555,11 @@ endlet
 |
 D2Elet0
 (dcls, d2e1) =>
-let
-val () =
-d2eclist_fpemsg(out, dcls)
-val () = d2exp_fpemsg(out, d2e1)
-endlet
+(
+d2exp_fpemsg
+( out, d2e1 )) where
+{ val () =
+  d2eclist_fpemsg(out, dcls) }
 |
 D2Ewhere
 (d2e1, dcls) =>

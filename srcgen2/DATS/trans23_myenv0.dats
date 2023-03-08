@@ -110,6 +110,119 @@ stkmap_free_nil(stkmap) in () end//let
 //
 (* ****** ****** *)
 //
+#implfun
+tr23env_poplet0
+(     env0     ) = let
+//
+val+
+@TR23ENV(!stkmap) = env0
+//
+in//let
+//
+let
+val nerr =
+stkmap_poplet0(stkmap) in $fold(env0)
+end (*let*)
+//
+end (*let*)//end-of-(tr23env_poplet0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr23env_pshlet0
+(     env0     ) = let
+//
+val+
+@TR23ENV(!stkmap) = env0
+//
+in//let
+//
+stkmap_pshlet0(stkmap); $fold(env0)
+//
+end (*let*)//end-of-(tr23env_pshlet0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr23env_pshloc1
+(     env0     ) = let
+//
+val+
+@TR23ENV(!stkmap) = env0
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshloc1(stkmap) in $fold(env0)
+end (*let*)
+//
+end (*let*)//end-of-(tr23env_pshloc1(env0))
+//
+#implfun
+tr23env_pshloc2
+(     env0     ) = let
+//
+val+
+@TR23ENV(!stkmap) = env0
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshloc2(stkmap) in $fold(env0)
+end (*let*)
+//
+end (*let*)//end-of-(tr23env_pshloc2(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr23env_locjoin
+(     env0     ) = let
+//
+val+
+@TR23ENV(!stkmap) = env0
+//
+in//let
+//
+$fold(env0) where
+{
+val
+(nerr, kxs) =
+stkmap_poploc0(stkmap)
+val
+( (*nil*) ) =
+stkmap_insert_kxs(stkmap, kxs) }
+//
+end (*let*)//end-of-(tr23env_locjoin(env0))
+//
+(* ****** ****** *)
+
+#implfun
+tr23env_search_opt
+  (env0, k0) = let
+//
+val+
+TR23ENV(stkmap) = env0 in
+stkmap_search_opt(stkmap, k0) end
+//
+(*let*)//end-of-[tr23env_search_opt(env0,k0)]
+
+(* ****** ****** *)
+//
+#implfun
+tr23env_insert_any
+  (tenv, k0, x0) = let
+//
+val+
+@TR23ENV(!stkmap) = tenv in
+stkmap_insert_any(stkmap, k0, x0) end
+//
+(*let*)//end-of(tr23env_insert_any(tenv,k0,x0))
+//
+(* ****** ****** *)
+//
 end (*local*) // end of [ local(tr23env) ]
 //
 (* ****** ****** *)
