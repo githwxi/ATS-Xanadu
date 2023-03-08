@@ -240,6 +240,24 @@ val () =
 d3explst_fpemsg(out, d3es) endlet
 //
 |
+D3Elet0
+(d3cs, d3e1) =>
+(
+d3exp_fpemsg
+(out, d3e1)) where
+{
+val
+( ) = d3eclist_fpemsg(out, d3cs)}
+|
+D3Ewhere
+(d2e1, dcls) =>
+let
+val () =
+d3eclist_fpemsg(out, dcls)
+val () = d3exp_fpemsg(out , d2e1)
+endlet
+//
+|
 D3Eift0
 (d3e1,dthn,dels) =>
 let
