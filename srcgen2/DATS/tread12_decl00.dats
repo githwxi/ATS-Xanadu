@@ -1086,13 +1086,11 @@ end (*let*) // end-of-[tread12_t2iag(t2i0,err)]
 tread12_simpl
   (simp, err) =
 (
-case- simp of
+case-
+simp.node() of
 (*
-|SIMPLall1
-(sqid, s2cs) =>
-let
-val () =
-(err := err+1) in simp end
+|SIMPLone0 _ => simp
+|SIMPLall1 _ => simp
 *)
 |SIMPLopt2
 (sqid, scs1, scs2) => simp where
@@ -1111,7 +1109,11 @@ case+ scs2 of
 tread12_dimpl
   (dimp, err) =
 (
-case+ dimp of
+case+
+dimp.node() of
+|
+DIMPLone0 _ => dimp
+//
 |
 DIMPLall1
 (dqid, d2cs) => dimp where
@@ -1122,7 +1124,9 @@ case+ d2cs of
 |list_nil() =>
 (err := err+1) | list_cons _ => ())
 }
+//
 |DIMPLopt2(dqid, d2cs, dopt) => dimp
+//
 ) (*case+*) // end-of-[tread12_dimpl(dimp,err)]
 //
 (* ****** ****** *)

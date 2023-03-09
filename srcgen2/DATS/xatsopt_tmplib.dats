@@ -1227,6 +1227,10 @@ t2qag_fprint(g_print$out<>(), tqag)
 g_print<t2iag>(tiag) =
 t2iag_fprint(g_print$out<>(), tiag)
 //
+#impltmp
+g_print<t2jag>(tjag) =
+t2jag_fprint(g_print$out<>(), tjag)
+//
 (* ****** ****** *)
 #impltmp
 g_print<a2tdf>(atdf) =
@@ -1340,12 +1344,6 @@ end(*let*)//end-of-[d3lab_fprint]
 {x0:t0}
 g_print<d3lab(x0)>(l3ab) =
 d3lab_fprint(g_print$out<>(), l3ab)
-//
-(* ****** ****** *)
-//
-#impltmp
-g_print<t2jag>(tjag) =
-t2jag_fprint(g_print$out<>(), tjag)
 //
 (* ****** ****** *)
 //

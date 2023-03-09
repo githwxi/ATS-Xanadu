@@ -71,6 +71,9 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with s1qid_get_lctn
+#symload lctn with d1qid_get_lctn
+(* ****** ****** *)
 #symload lctn with sort1_get_lctn
 #symload node with sort1_get_node
 (* ****** ****** *)
@@ -1054,8 +1057,9 @@ f1_sqid
 ( env0:
 ! tr12env
 , sqid: s1qid): simpl =
-(
-SIMPLall1(sqid, s2cs)) where
+simpl
+(sqid.lctn()
+,SIMPLall1(sqid,s2cs)) where
 {
 val s2cs =
 (
@@ -1219,13 +1223,14 @@ val () =
 let
 val-
 SIMPLall1
-(sqid, s2cs) = sqid
+(sqid, s2cs) = sqid.node()
 in//let
 if
 list_singq(s2cs)
 then
 let
-val s2c1 = s2cs.head()
+  val
+  s2c1 = s2cs.head((*nil*))
 in
   f2_svss(svss, s2c1.sort())
 end // then // end-of-[ if ]
@@ -1243,7 +1248,7 @@ val sqid =
 let
 val-
 SIMPLall1
-(sqid, s2cs) = sqid
+(sqid, s2cs) = sqid.node()
 val sopt =
 list_filter<x0>(s2cs) where
 { #typedef x0 = s2cst
@@ -1252,7 +1257,19 @@ list_filter<x0>(s2cs) where
   (sdef.sort() <= s2c1.sort()) }
 //
 in//let
-  SIMPLopt2( sqid , s2cs , sopt )
+if
+list_singq(s2cs)
+then
+let
+val s2c1 = s2cs.head()
+in
+  simpl
+  (sqid.lctn(), SIMPLone0(s2c1))
+end else
+(
+  simpl
+  ( sqid.lctn()
+  , SIMPLopt2(sqid, s2cs, sopt)))
 end (*let*) // end of [ val(sqid) ]
 //
 in//let
@@ -1863,8 +1880,9 @@ f1_dqid
 ( env0:
 ! tr12env
 , dqid: d1qid): dimpl =
-(
-DIMPLall1(dqid, d2cs)) where
+dimpl
+(dqid.lctn()
+,DIMPLall1(dqid, d2cs)) where
 {
 //
 (*

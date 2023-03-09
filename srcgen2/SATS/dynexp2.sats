@@ -164,6 +164,16 @@ T2P = "./statyp2.sats"
 #typedef t2ias = list(t2iag)
 //
 (* ****** ****** *)
+//
+#abstbox t2jag_tbox // ptr
+#typedef t2jag = t2jag_tbox
+//
+(* ****** ****** *)
+#abstbox simpl_tbox // ptr
+#abstbox dimpl_tbox // ptr
+#typedef simpl = simpl_tbox
+#typedef dimpl = dimpl_tbox
+(* ****** ****** *)
 #abstbox d2arg_tbox // ptr
 #typedef d2arg = d2arg_tbox
 (* ****** ****** *)
@@ -180,6 +190,7 @@ T2P = "./statyp2.sats"
 #typedef s2cstlst = list(s2cst)
 #typedef s2varlst = list(s2var)
 #typedef s2explst = list(s2exp)
+#typedef s2typlst = list(s2typ)
 (* ****** ****** *)
 #typedef s2cstopt = optn(s2cst)
 #typedef s2varopt = optn(s2var)
@@ -199,6 +210,7 @@ T2P = "./statyp2.sats"
 #typedef s2qaglst = list(s2qag)
 #typedef t2qaglst = list(t2qag)
 #typedef t2iaglst = list(t2iag)
+#typedef t2jaglst = list(t2jag)
 (* ****** ****** *)
 #typedef d2patlst = list(d2pat)
 #typedef d2patopt = optn(d2pat)
@@ -462,6 +474,8 @@ fun
 t2qag_fprint: (FILR,t2qag)->void
 fun
 t2iag_fprint: (FILR,t2iag)->void
+fun
+t2jag_fprint: (FILR,t2jag)->void
 (* ****** ****** *)
 //
 fun
@@ -497,6 +511,20 @@ t2iag_set_s2es
 #symload s2es with t2iag_set_s2es
 //
 (* ****** ****** *)
+//
+fun
+t2jag_get_lctn:(t2jag)->loc_t
+fun
+t2jag_get_t2ps:(t2jag)->s2typlst
+fun
+t2jag_set_t2ps
+(t2i0:t2jag,t2ps:s2typlst): void
+//
+#symload lctn with t2jag_get_lctn
+#symload t2ps with t2jag_get_t2ps
+#symload t2ps with t2jag_set_t2ps
+//
+(* ****** ****** *)
 fun
 s2qag_make_s2vs
 (loc0:loc_t,s2vs:s2varlst):s2qag
@@ -509,6 +537,10 @@ fun
 t2iag_make_s2es
 (loc0:loc_t,s2es:s2explst):t2iag
 #symload t2iag with t2iag_make_s2es
+fun
+t2jag_make_t2ps
+(loc0:loc_t,t2ps:s2typlst):t2jag
+#symload t2jag with t2jag_make_t2ps
 (* ****** ****** *)
 //
 datatype
@@ -1138,15 +1170,23 @@ D2Cerrck of (sint(*lvl*), d2ecl)//tread12-error
 //
 (* ****** ****** *)
 //
-and simpl =
+and
+simpl_node =
+|
+SIMPLone0 of
+(s2cst(*res*))
 |
 SIMPLall1 of
-(s1qid, s2cstlst)
+(s1qid, s2cstlst(*all*))
 |
 SIMPLopt2 of
 (s1qid, s2cstlst, s2cstlst)
 //
-and dimpl =
+and
+dimpl_node =
+|
+DIMPLone0 of
+(d2cst, t2jaglst)
 |
 DIMPLall1 of
 (d1qid, d2cstlst)
@@ -1194,6 +1234,44 @@ d2ecl_make_node
 #symload node with d2ecl_get_node
 (* ****** ****** *)
 #symload d2ecl with d2ecl_make_node
+(* ****** ****** *)
+//
+fun
+simpl_get_lctn
+(simp: simpl): loc_t
+fun
+simpl_get_node
+(simp: simpl): simpl_node
+fun
+simpl_set_node
+(simpl, simpl_node): void
+#symload node with simpl_get_node
+#symload node with simpl_set_node
+//
+fun
+dimpl_get_lctn
+(dimp: dimpl): loc_t
+fun
+dimpl_get_node
+(dimp: dimpl): dimpl_node
+fun
+dimpl_set_node
+(dimpl, dimpl_node): void
+#symload node with dimpl_get_node
+#symload node with dimpl_set_node
+//
+(* ****** ****** *)
+//
+fun
+simpl_make_node
+(loc:loc_t,nod:simpl_node): simpl
+fun
+dimpl_make_node
+(loc:loc_t,nod:dimpl_node): dimpl
+//
+#symload simpl with simpl_make_node
+#symload dimpl with dimpl_make_node
+//
 (* ****** ****** *)
 //
 datatype
