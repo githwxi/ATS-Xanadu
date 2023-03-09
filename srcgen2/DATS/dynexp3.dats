@@ -106,60 +106,6 @@ dexp.lctn(),D3Enone1(dexp)
 local
 //
 datatype
-t2jag =
-T2JAG of (loc_t, s2typlst)
-//
-#absimpl t2jag_tbox = t2jag
-//
-datatype
-t2jag_vt =
-T2JAG_vt of (loc_t, s2typlst)
-//
-in (* in-of-local *)
-//
-#implfun
-t2jag_get_lctn
-  (  t2ja  ) =
-let
-val+
-T2JAG
-(loc0, t2ps) = t2ja in loc0 end
-//
-#implfun
-t2jag_get_t2ps
-  (  t2ja  ) =
-let
-val+
-T2JAG
-(loc0, t2ps) = t2ja in t2ps end
-//
-#implfun
-t2jag_make_t2ps
-( loc0 , t2ps ) = T2JAG(loc0, t2ps)
-//
-(* ****** ****** *)
-//
-#implfun
-t2jag_set_t2ps
-(t2ja, ses2) =
-let
-val
-t2ja =
-$UN.castlin10{t2jag_vt}(t2ja)
-val+
-@T2JAG_vt
-(loc0, !t2ps) = t2ja in t2ps := ses2
-end (*let*) // end of [t2jag_set_t2ps]
-//
-(* ****** ****** *)
-//
-end (*local*) // end of [local(t2jag)]
-
-(* ****** ****** *)
-
-local
-//
-datatype
 d3pat =
 D3PAT of
 ( loctn

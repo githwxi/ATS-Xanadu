@@ -1364,6 +1364,122 @@ end (*local*) // end of [local(t2iag)]
 local
 //
 datatype
+t2jag =
+T2JAG of (loc_t, s2typlst)
+//
+#absimpl t2jag_tbox = t2jag
+//
+datatype
+t2jag_vt =
+T2JAG_vt of (loc_t, s2typlst)
+//
+in (* in-of-local *)
+//
+#implfun
+t2jag_get_lctn
+  (  t2ja  ) =
+let
+val+
+T2JAG
+(loc0, t2ps) = t2ja in loc0 end
+//
+#implfun
+t2jag_get_t2ps
+  (  t2ja  ) =
+let
+val+
+T2JAG
+(loc0, t2ps) = t2ja in t2ps end
+//
+#implfun
+t2jag_make_t2ps
+( loc0 , t2ps ) = T2JAG(loc0, t2ps)
+//
+(* ****** ****** *)
+//
+#implfun
+t2jag_set_t2ps
+(t2ja, ses2) =
+let
+val
+t2ja =
+$UN.castlin10{t2jag_vt}(t2ja)
+val+
+@T2JAG_vt
+(loc0, !t2ps) = t2ja in t2ps := ses2
+end (*let*) // end of [t2jag_set_t2ps]
+//
+(* ****** ****** *)
+//
+end (*local*) // end of [local(t2jag)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+simpl =
+SIMPL of
+(
+loctn, simpl_node)
+#absimpl
+simpl_tbox = simpl
+//
+in (* in-of-local *)
+//
+#implfun
+simpl_make_node
+(   loc,nod   ) = SIMPL(loc,nod)
+//
+#implfun
+simpl_get_lctn(s2i) =
+let
+  val+SIMPL(loc,nod) = s2i in loc
+end
+#implfun
+simpl_get_node(s2i) =
+let
+  val+SIMPL(loc,nod) = s2i in nod
+end
+//
+end (*local*) // end of [local(simpl)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+dimpl =
+DIMPL of
+(
+loctn, dimpl_node)
+#absimpl
+dimpl_tbox = dimpl
+//
+in (* in-of-local *)
+//
+#implfun
+dimpl_make_node
+(   loc,nod   ) = DIMPL(loc,nod)
+//
+#implfun
+dimpl_get_lctn(d2i) =
+let
+  val+DIMPL(loc,nod) = d2i in loc
+end
+#implfun
+dimpl_get_node(d2i) =
+let
+  val+DIMPL(loc,nod) = d2i in nod
+end
+//
+end (*local*) // end of [local(dimpl)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 d2arg =
 D2ARG of
 (
