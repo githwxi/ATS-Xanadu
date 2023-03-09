@@ -54,6 +54,8 @@ ATS_PACKNAME
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/staexp1.sats"
 (* ****** ****** *)
+#symload lctn with token_get_lctn
+(* ****** ****** *)
 #symload lctn with g0exp_get_lctn
 #symload lctn with sort0_get_lctn
 #symload lctn with s0exp_get_lctn
@@ -99,6 +101,36 @@ s1exp_make_node
 (
 s0e0.lctn(),S1Enone1(s0e0))
 
+(* ****** ****** *)
+//
+#implfun
+s1qid_get_lctn
+(  sqid  ) =
+(
+case+ sqid of
+|
+S1QIDnone
+(sid0) => sid0.lctn()
+|
+S1QIDsome
+(tok0, sid1) =>
+(tok0.lctn() + sid1.lctn()))
+//
+(* ****** ****** *)
+//
+#implfun
+d1qid_get_lctn
+(  dqid  ) =
+(
+case+ dqid of
+|
+D1QIDnone
+(did0) => did0.lctn()
+|
+D1QIDsome
+(tok0, did1) =>
+(tok0.lctn() + did1.lctn()))
+//
 (* ****** ****** *)
 
 local

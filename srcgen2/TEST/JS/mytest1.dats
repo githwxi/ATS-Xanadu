@@ -40,7 +40,7 @@ case+ xs of
 *)
 //
 (* ****** ****** *)
-
+(*
 fun
 <a:t0>
 length
@@ -50,6 +50,23 @@ length
 {
 fun
 loop(xs, res) =
+case+ xs of
+| nil0() => res
+| (_ :: xs) => loop(xs, res+1)
+}
+*)
+(* ****** ****** *)
+
+#impltmp
+{x0:t0}
+list_length<x0>
+( xs ) =
+(
+  loop(xs, 0)) where
+{
+fun
+loop
+(xs, res) =
 case+ xs of
 | nil0() => res
 | (_ :: xs) => loop(xs, res+1)
