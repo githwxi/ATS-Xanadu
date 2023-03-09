@@ -82,18 +82,6 @@ _(*?*) = "./lexing0_print0.dats"
 #symload lctn with d3ecl_get_lctn
 #symload node with d3ecl_get_node
 (* ****** ****** *)
-//
-#implfun
-t2jag_fprint
-(out, tja) =
-let
-#impltmp
-g_print$out<>() = out
-in//in-of-let
-  print("T2JAG(", tja.t2ps(), ")")
-end (*let*) // end of [t2jag_fprint(out,tja)]
-//
-(* ****** ****** *)
 
 #implfun
 d3pat_fprint

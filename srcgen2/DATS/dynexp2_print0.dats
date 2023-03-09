@@ -82,6 +82,11 @@ _(*?*) = "./lexing0_print0.dats"
 #symload lctn with d2ecl_get_lctn
 #symload node with d2ecl_get_node
 (* ****** ****** *)
+#symload lctn with simpl_get_lctn
+#symload node with simpl_get_node
+#symload lctn with dimpl_get_lctn
+#symload node with dimpl_get_node
+(* ****** ****** *)
 #symload lctn with d2arg_get_lctn
 #symload node with d2arg_get_node
 (* ****** ****** *)
@@ -789,6 +794,18 @@ end (*let*) // end of [t2iag_fprint(out,tia)]
 (* ****** ****** *)
 //
 #implfun
+t2jag_fprint
+(out, tja) =
+let
+#impltmp
+g_print$out<>() = out
+in//in-of-let
+  print("T2JAG(", tja.t2ps(), ")")
+end (*let*) // end of [t2jag_fprint(out,tja)]
+//
+(* ****** ****** *)
+//
+#implfun
 a2tdf_fprint
 (out, tdf) =
 let
@@ -852,16 +869,21 @@ end (*let*) // end of [s2res_fprint]
 //
 #implfun
 simpl_fprint
-(out, s2i0) =
+(out, simp) =
 let
 #implfun
 g_print$out<>() = out
 in//let
-case+ s2i0 of
+case+
+simp.node() of
+|
+SIMPLone0(s2c1) =>
+print("SIMPLone0(",s2c1,")")
 |
 SIMPLall1
 (sqid,s2cs) =>
-print("SIMPLall1(",sqid,";",s2cs,")")
+print
+("SIMPLall1(",sqid,";",s2cs,")")
 |
 SIMPLopt2
 (sqid,scs1,scs2) =>
@@ -873,16 +895,23 @@ end (*let*) // end of [simpl_fprint(...)]
 //
 #implfun
 dimpl_fprint
-(out, d2i0) =
+(out, dimp) =
 let
 #implfun
 g_print$out<>() = out
 in//let
-case+ d2i0 of
+case+
+dimp.node() of
+|
+DIMPLone0
+(d2c1,tjas) =>
+print
+("DIMPLone0(",d2c1,";",tjas,")")
 |
 DIMPLall1
 (dqid,d2cs) =>
-print("DIMPLall1(",dqid,";",d2cs,")")
+print
+("DIMPLall1(",dqid,";",d2cs,")")
 |
 DIMPLopt2
 (dqid,dcs1,dcs2) =>
