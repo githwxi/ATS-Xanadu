@@ -129,6 +129,29 @@ val () =
   fperr22_d2fundclist(out, d2fs)
 endlet // end-of-(D2Cfundclst(_,_,_))
 //
+|
+D2Cimplmnt0
+( tknd
+, sqas, tqas
+, dimp, tias
+, f2as, sres, d2e1) =>
+let
+(*
+val () =
+  fperr22_s2qaglst(out, sqas)
+val () =
+  fperr22_t2qaglst(out, tqas)
+val () =
+  fperr22_t2iaglst(out, tias)
+*)
+val () =
+  fperr22_f2arglst(out, f2as)
+(*
+val () = fperr22_s2res(out, sres)
+*)
+val () = fperr22_d2exp(out, d2e1)
+endlet // end of [ D2Cimplmnt0(...) ]
+//
 | D2Cnone0() => ( (*void*) )
 | D2Cnone1(d1cl) => ( (*void*) )
 | D2Cnone2(d2cl) => ( (*void*) )

@@ -125,6 +125,26 @@ val () =
   trsym2a_d2fundclist(env0, d2fs)
 endlet // end-of-(D2Cfundclst(_,_,_))
 //
+|
+D2Cimplmnt0
+( tknd
+, sqas, tqas
+, dimp
+, tias, f2as
+, sres, dexp) =>
+let
+val () =
+trsym2a_d2exp(env0, dexp)
+val () =
+trsym2a_f2arglst(env0, f2as)
+endlet where
+{
+val () =
+trsym2a_dimpl_filt(env0,dimp,f2as,dexp)
+val () =
+trsym2a_dimpl_tpck(env0,dimp,f2as,dexp)
+}(*where*)//end-of-(D2Cimplmnt0(...8...))
+//
 | D2Cnone0() => ( (*void*) )
 | D2Cnone1(d1cl) => ( (*void*) )
 //
@@ -270,4 +290,116 @@ trsym2a_d2eclistopt
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trsym2a.dats] *)
+#implfun
+trsym2a_dimpl_filt
+( env0
+, dimp, f2as, dexp) =
+(
+case-
+dimp.node() of
+|
+DIMPLall1
+(dqid, d2cs) =>
+(
+if
+list_singq(d2cs)
+then
+let
+val d2c1 =
+d2cs.head((*void*))
+val tjas = list_nil()
+in(*let*)
+dimpl_set_node
+( dimp
+, DIMPLone0(d2c1, tjas))
+end // then
+else
+let
+val dopt =
+f0_filt(d2cs, f2as, dexp)
+in//let
+//
+if
+list_singq(dopt)
+then let
+val d2c1 =
+dopt.head((*void*))
+val tjas = list_nil()
+in(*let*)
+dimpl_set_node
+(dimp, DIMPLone0(d2c1, tjas))
+end // then
+else
+(
+dimpl_set_node
+(dimp, DIMPLopt2(dqid, d2cs, dopt)))
+//
+end (*let*) // end of [D1MPLall1(...)]
+//
+(*
+| _(*non-D2IMPLall1*) => ( (*unreachable*) )
+*)
+)
+) where
+{
+//
+val () =
+prerrln
+("trsym2a_dimpl_filt: dimp = ", dimp)
+val () =
+prerrln
+("trsym2a_dimpl_filt: f2as = ", f2as)
+val () =
+prerrln
+("trsym2a_dimpl_filt: dexp = ", dexp)
+//
+fun
+f0_filt
+( d2cs
+: d2cstlst
+, f2as
+: f2arglst, dexp: d2exp): d2cstlst = d2cs
+//
+} (*where*) // end-of-[trsym2a_dimpl_filt(env0,...)]
+
+(* ****** ****** *)
+
+#implfun
+trsym2a_implmnt0_tpck
+( env0 , d2cl ) =
+let
+//
+val-
+D2Cimplmnt0
+( tknd
+, sqas, tqas
+, dimp
+, tias, f2as
+, sres, dexp) = d2cl.node()
+//
+in//let
+//
+(
+case+
+dimp.node() of
+|
+DIMPLone0 _ => ()
+|
+_(*non-DIMPLone0*) => ((*skipped*))
+) where { // end-of-case
+//
+val () =
+prerrln
+("trsym2a_implmnt0_tpck: dimp = ", dimp)
+val () =
+prerrln
+("trsym2a_implmnt0_tpck: f2as = ", f2as)
+val () =
+prerrln
+("trsym2a_implmnt0_tpck: dexp = ", dexp) }
+//
+end (*let*) // end-of-[trsym2a_dimpl_tpck(env0,...)]
+
+(* ****** ****** *)
+
+(* end of [ATS3/XATSOPT_srcgen2_trsym2a_decl00.dats] *)

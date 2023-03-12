@@ -312,13 +312,20 @@ end (*let*) // end of [d2ecl_fundclst_errck]
 //
 fun
 d2ecl_implmnt0_errck
-( loc0: loc_t
-, tknd: token
-, sqas: s2qaglst
-, tqas: t2qaglst
-, dqid: dimpl
-, tias: t2iaglst
-, fags: f2arglst
+( loc0
+: loc_t
+, tknd
+: token
+, sqas
+: s2qaglst
+, tqas
+: t2qaglst
+, dqid
+: dimpl
+, tias
+: t2iaglst
+, fags
+: f2arglst
 , sres: s2res(*tret*)
 , d2e1: d2exp(*body*)): d2ecl =
 let
