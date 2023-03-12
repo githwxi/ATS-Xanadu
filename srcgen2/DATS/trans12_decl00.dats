@@ -1249,27 +1249,41 @@ let
 val-
 SIMPLall1
 (sqid, s2cs) = sqid.node()
+in//let
+//
+if//if1
+list_singq(s2cs)
+then let // if1
+val s2c1 = s2cs.head()
+in // let
+simpl
+(sqid.lctn(), SIMPLone0(s2c1))
+end else // if1
+let
 val sopt =
 list_filter<x0>(s2cs) where
 { #typedef x0 = s2cst
   #impltmp
   filter$test<x0>(s2c1) =
   (sdef.sort() <= s2c1.sort()) }
-//
 in//let
-if
-list_singq(s2cs)
-then
-let
-val s2c1 = s2cs.head()
-in
+//
+if//if2
+list_singq(sopt)
+then let // if2
+val s2c1 = sopt.head()
+in // let
   simpl
   (sqid.lctn(), SIMPLone0(s2c1))
-end else
+end else // if2
 (
   simpl
   ( sqid.lctn()
   , SIMPLopt2(sqid, s2cs, sopt)))
+// end of [ if2-then-else ]
+//
+end (*let*) // end of [ if1(s2cs) ]
+//
 end (*let*) // end of [ val(sqid) ]
 //
 in//let

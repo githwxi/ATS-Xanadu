@@ -180,6 +180,40 @@ d2ecl_errck
 end (*let*) // end of [d2ecl_fundclst_errck]
 //
 (* ****** ****** *)
+//
+fun
+d2ecl_implmnt0_errck
+( loc0
+: loc_t
+, tknd
+: token
+, sqas
+: s2qaglst
+, tqas
+: t2qaglst
+, dqid
+: dimpl
+, tias
+: t2iaglst
+, fags
+: f2arglst
+, sres: s2res(*tret*)
+, d2e1: d2exp(*body*)): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(
+lvl+1
+,
+d2ecl_make_node
+( loc0
+, D2Cimplmnt0
+  ( tknd
+  , sqas,tqas,dqid,tias,fags,sres,d2e1 ) ))
+end (*let*) // end of [d2ecl_implmnt0_errck]
+//
+(* ****** ****** *)
 
 #implfun
 tread22_d2ecl
@@ -213,6 +247,9 @@ D2Cvaldclst _ => f0_valdclst(d2cl, err)
 D2Cvardclst _ => f0_vardclst(d2cl, err)
 |
 D2Cfundclst _ => f0_fundclst(d2cl, err)
+//
+|
+D2Cimplmnt0 _ => f0_implmnt0(d2cl, err)
 //
 |
 _(*otherwise*) =>
@@ -403,6 +440,51 @@ if
 then (dcl) else
 d2ecl_fundclst_errck(loc, tknd, tqas, d2fs)
 end (*let*) // end of [f0_fundclst(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_implmnt0
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+//
+val-
+D2Cimplmnt0
+(tknd
+,sqas,tqas
+,dqid
+,tias,fags
+,sres,body) = dcl.node()
+//
+(*
+val sqas =
+  tread22_s2qaglst(sqas, err)
+val tqas =
+  tread22_t2qaglst(tqas, err)
+val tias =
+  tread22_t2iaglst(tias, err)
+*)
+//
+val fags =
+  tread22_f2arglst(fags, err)
+//
+(*
+val sres = tread22_s2res(sres, err)
+*)
+//
+val body = tread22_d2exp(body, err)
+//
+in//let
+if
+(err=e00)
+then (dcl) else
+d2ecl_implmnt0_errck
+(dcl.lctn(), tknd
+,sqas, tqas, dqid, tias, fags, sres, body)
+end (*let*) // end of [f0_implmnt0(dcl,err)]
 //
 (* ****** ****** *)
 //
