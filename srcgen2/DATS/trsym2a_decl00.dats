@@ -364,42 +364,4 @@ f0_filt
 
 (* ****** ****** *)
 
-#implfun
-trsym2a_implmnt0_tpck
-( env0 , d2cl ) =
-let
-//
-val-
-D2Cimplmnt0
-( tknd
-, sqas, tqas
-, dimp
-, tias, f2as
-, sres, dexp) = d2cl.node()
-//
-in//let
-//
-(
-case+
-dimp.node() of
-|
-DIMPLone0 _ => ()
-|
-_(*non-DIMPLone0*) => ((*skipped*))
-) where { // end-of-case
-//
-val () =
-prerrln
-("trsym2a_implmnt0_tpck: dimp = ", dimp)
-val () =
-prerrln
-("trsym2a_implmnt0_tpck: f2as = ", f2as)
-val () =
-prerrln
-("trsym2a_implmnt0_tpck: dexp = ", dexp) }
-//
-end (*let*) // end-of-[trsym2a_dimpl_tpck(env0,...)]
-
-(* ****** ****** *)
-
 (* end of [ATS3/XATSOPT_srcgen2_trsym2a_decl00.dats] *)
