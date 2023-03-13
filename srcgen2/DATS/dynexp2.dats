@@ -1453,6 +1453,12 @@ dimpl =
 DIMPL of
 (
 loctn, dimpl_node)
+datatype
+dimpl_vt =
+DIMPL_vt of
+(
+loctn, dimpl_node)
+//
 #absimpl
 dimpl_tbox = dimpl
 //
@@ -1472,6 +1478,23 @@ dimpl_get_node(d2i) =
 let
   val+DIMPL(loc,nod) = d2i in nod
 end
+//
+(* ****** ****** *)
+//
+#implfun
+dimpl_set_node
+  (dimp, ndx2) = let
+//
+val
+dimp =
+$UN.castlin10{dimpl_vt}(dimp)
+//
+val+
+@DIMPL_vt
+(loc0, !node) = dimp in node := ndx2
+end (*let*) // end of [dimpl_set_node]
+//
+(* ****** ****** *)
 //
 end (*local*) // end of [local(dimpl)]
 
