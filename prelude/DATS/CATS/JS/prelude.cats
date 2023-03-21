@@ -62,7 +62,7 @@ XATS2JS_a0ref_get0
 //
 function
 XATS2JS_UN_a0ref_set0
-  (A0)
+  (A0, x0)
 {
   return (A0[0] = x0); }
 //
