@@ -238,18 +238,5 @@ match2a_d2ptmlst
 ! tr2aenv, dpis:d2ptmlst, t2p0:s2typ): d2ptmlst
 //
 (* ****** ****** *)
-//
-fun
-trsym2a_dimpl_filt
-( env0:
-! tr2aenv
-, dqid:dimpl, f2as:f2arglst, dexp:d2exp): void
-fun
-trsym2a_dimpl_tpck
-( env0:
-! tr2aenv
-, dqid:dimpl, f2as:f2arglst, dexp:d2exp): void
-//
-(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trsym2a.sats] *)
