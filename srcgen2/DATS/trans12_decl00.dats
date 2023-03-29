@@ -1990,17 +1990,34 @@ val (  ) =
 tr12env_add0_tqas(env0, tqas)
 //
 val tias =
-trans12_t1iaglst(env0, tias)
+  trans12_t1iaglst(env0, tias)
 val f2as =
-trans12_f1arglst(env0, f1as)
+  trans12_f1arglst(env0, f1as)
 //
 val (  ) =
-tr12env_add0_f2as(env0, f2as)
+tr12env_add0_f2as( env0, f2as )
 //
-val sres = trans12_s1res(env0, sres)
-val dexp = trans12_d1exp(env0, dexp)
+val
+sres = trans12_s1res(env0, sres)
+val
+dexp = trans12_d1exp(env0, dexp)
 //
 val (  ) = tr12env_poplam0(env0)
+//
+val () =
+prerrln("f0_implmnt0: dimp = ", dimp)
+val () =
+prerrln("f0_implmnt0: sqas = ", sqas)
+val () =
+prerrln("f0_implmnt0: tqas = ", tqas)
+val () =
+prerrln("f0_implmnt0: tias = ", tias)
+val () =
+prerrln("f0_implmnt0: f2as = ", f2as)
+val () =
+prerrln("f0_implmnt0: sres = ", sres)
+val () =
+prerrln("f0_implmnt0: dexp = ", dexp)
 //
 in//let
 d2ecl
