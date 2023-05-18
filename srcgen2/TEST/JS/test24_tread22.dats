@@ -221,6 +221,8 @@
 "./../../DATS/dynexp2.dats"
 #include
 "./../../DATS/dynexp2_print0.dats"
+#include
+"./../../DATS/dynexp2_utils0.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/trans12.dats"

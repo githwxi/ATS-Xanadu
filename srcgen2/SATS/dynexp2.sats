@@ -1156,7 +1156,7 @@ D2Cimplmnt1 of
 ( token(*impkind*)
 , s2qaglst // s2vs
 , t2qaglst // s2vs+t2is
-, d2cst, t2iaglst, f2arglst, s2res, d2exp)
+, dimpl, t2iaglst, f2arglst, s2res, d2exp)
 //
 |D2Cexcptcon of (d1ecl, d2conlst)
 |D2Cdatatype of (d1ecl, s2cstlst)
