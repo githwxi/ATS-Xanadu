@@ -736,12 +736,12 @@ print(dqid,";",tias,";",farg,";",sres,";",body,")"))
 D2Cimplmnt1
 (tknd
 ,sqas,tqas
-,d2c1,tias
+,dqid,tias
 ,farg,sres,body) =>
 (
 print("D2Cimplmnt1(");
 print(tknd,";",sqas,";",tqas,";");
-print(d2c1,";",tias,";",farg,";",sres,";",body,")"))
+print(dqid,";",tias,";",farg,";",sres,";",body,")"))
 //
 |
 D2Cexcptcon(d1cl,d2cs) =>
