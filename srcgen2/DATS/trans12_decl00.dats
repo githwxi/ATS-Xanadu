@@ -1257,7 +1257,7 @@ then let // if1
 val s2c1 = s2cs.head()
 in // let
 simpl
-(sqid.lctn(), SIMPLone0(s2c1))
+(sqid.lctn(), SIMPLone1(s2c1))
 end else // if1
 let
 val sopt =
@@ -1274,7 +1274,7 @@ then let // if2
 val s2c1 = sopt.head()
 in // let
   simpl
-  (sqid.lctn(), SIMPLone0(s2c1))
+  (sqid.lctn(), SIMPLone1(s2c1))
 end else // if2
 (
   simpl
