@@ -1096,7 +1096,7 @@ tread12_simpl
 case-
 simp.node() of
 (*
-|SIMPLone0 _ => simp
+|SIMPLone1 _ => simp
 |SIMPLall1 _ => simp
 *)
 |SIMPLopt2
@@ -1119,7 +1119,7 @@ tread12_dimpl
 case+
 dimp.node() of
 |
-DIMPLone0 _ => dimp
+DIMPLone1 _ => dimp
 //
 |
 DIMPLall1

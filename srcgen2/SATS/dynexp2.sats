@@ -723,7 +723,8 @@ datatype
 f2arg_node =
 //
 (*
-| F2ARGnone of (token)
+|
+F2ARGnone of (token)
 *)
 //
 |
@@ -1179,7 +1180,7 @@ D2Cerrck of (sint(*lvl*), d2ecl)//tread12-error
 and
 simpl_node =
 |
-SIMPLone0 of
+SIMPLone1 of
 (s2cst(*res*))
 |
 SIMPLall1 of
@@ -1191,7 +1192,7 @@ SIMPLopt2 of
 and
 dimpl_node =
 |
-DIMPLone0 of
+DIMPLone1 of
 (d2cst, t2jaglst)
 |
 DIMPLall1 of

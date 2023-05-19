@@ -887,8 +887,8 @@ in//let
 case+
 simp.node() of
 |
-SIMPLone0(s2c1) =>
-print("SIMPLone0(",s2c1,")")
+SIMPLone1(s2c1) =>
+print("SIMPLone1(",s2c1,")")
 |
 SIMPLall1
 (sqid,s2cs) =>
@@ -913,10 +913,10 @@ in//let
 case+
 dimp.node() of
 |
-DIMPLone0
+DIMPLone1
 (d2c1,tjas) =>
 print
-("DIMPLone0(",d2c1,";",tjas,")")
+("DIMPLone1(",d2c1,";",tjas,")")
 |
 DIMPLall1
 (dqid,d2cs) =>
