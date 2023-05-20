@@ -53,6 +53,11 @@ This one is a continuation of [trans2a]
 #staload "./trans2a.sats"
 (* ****** ****** *)
 //
+(*
+HX-2023-05-20:
+Note that the name is
+not [d2parsed_of_trsym2a]
+*)
 fun
 trsym2a_at_d2parsed
 ( dpar : d2parsed ): (void)
