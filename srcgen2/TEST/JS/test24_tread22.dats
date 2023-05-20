@@ -374,7 +374,8 @@ d2parsed_fpemsg( out, dpar ) end // let
 (* ****** ****** *)
 //
 val
-dpar = d2parsed_of_trans2a(dpar)
+dpar =
+d2parsed_of_trans2a(dpar)
 //
 val
 dpar =
