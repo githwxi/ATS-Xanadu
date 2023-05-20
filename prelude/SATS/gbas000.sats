@@ -823,18 +823,27 @@ foreach0(xs:vt, x0:t0) = (~xs, x0 -<cfr> void) -<cfr> void
 #typedef
 foreach1(xs:vt, x0:t0) = (!xs, x0 -<cfr> void) -<cfr> void
 (* ****** ****** *)
+//
 #typedef
-foldl(xs:t0,x0:t0,r0:vt) = (xs, r0, (r0, x0) -<cfr> r0) -<cfr> r0
+foldl
+(xs:t0,x0:t0,r0:vt) = (xs, r0, (r0, x0) -<cfr> r0) -<cfr> r0
 #typedef
-foldr(xs:t0,x0:t0,r0:vt) = (xs, r0, (x0, r0) -<cfr> r0) -<cfr> r0
+foldr
+(xs:t0,x0:t0,r0:vt) = (xs, r0, (x0, r0) -<cfr> r0) -<cfr> r0
+//
 #typedef
-foldl0(xs:vt,x0:vt,r0:vt) = (~xs, r0, (r0, x0) -<cfr> r0) -<cfr> r0
+foldl0
+(xs:vt,x0:vt,r0:vt) = (~xs, r0, (r0, x0) -<cfr> r0) -<cfr> r0
 #typedef
-foldr0(xs:vt,x0:t0,r0:vt) = (~xs, r0, (x0, r0) -<cfr> r0) -<cfr> r0
+foldr0
+(xs:vt,x0:t0,r0:vt) = (~xs, r0, (x0, r0) -<cfr> r0) -<cfr> r0
 #typedef
-foldl1(xs:vt,x0:vt,r0:vt) = (!xs, r0, (r0, x0) -<cfr> r0) -<cfr> r0
+foldl1
+(xs:vt,x0:vt,r0:vt) = (!xs, r0, (r0, x0) -<cfr> r0) -<cfr> r0
 #typedef
-foldr1(xs:vt,x0:t0,r0:vt) = (!xs, r0, (x0, r0) -<cfr> r0) -<cfr> r0
+foldr1
+(xs:vt,x0:t0,r0:vt) = (!xs, r0, (x0, r0) -<cfr> r0) -<cfr> r0
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gbas000.sats] *)
