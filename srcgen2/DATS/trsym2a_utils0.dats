@@ -64,12 +64,14 @@ match2a_s2typ
 (env0, t2p1, t2p2) where
 {
   val t2p1 = d2var_get_styp(d2v1)
+(*
   val (  ) =
   prerrln("match2a_d2var: d2v1 = ", d2v1)
   val (  ) =
   prerrln("match2a_d2var: t2p1 = ", t2p1)
   val (  ) =
   prerrln("match2a_d2var: t2p2 = ", t2p2)
+*)
 } (*where*) // end of [match2a_d2var(env0,...)]
 
 (* ****** ****** *)
@@ -81,12 +83,14 @@ match2a_s2typ
 (env0, t2p1, t2p2) where
 {
   val t2p1 = d2con_get_xtyp(d2c1)
+(*
   val (  ) =
   prerrln("match2a_d2con: d2c1 = ", d2c1)
   val (  ) =
   prerrln("match2a_d2con: t2p1 = ", t2p1)
   val (  ) =
   prerrln("match2a_d2con: t2p2 = ", t2p2)
+*)
 } (*where*) // end of [match2a_d2con(env0,...)]
 
 (* ****** ****** *)
@@ -98,12 +102,14 @@ match2a_s2typ
 (env0, t2p1, t2p2) where
 {
   val t2p1 = d2cst_get_xtyp(d2c1)
+(*
   val (  ) =
   prerrln("match2a_d2cst: d2c1 = ", d2c1)
   val (  ) =
   prerrln("match2a_d2cst: t2p1 = ", t2p1)
   val (  ) =
   prerrln("match2a_d2cst: t2p2 = ", t2p2)
+*)
 } (*where*) // end of [match2a_d2cst(env0,...)]
 
 (* ****** ****** *)

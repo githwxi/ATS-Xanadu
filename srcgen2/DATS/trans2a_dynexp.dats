@@ -124,9 +124,16 @@ trans2a_d2pat
 ( env0, d2p0 ) =
 let
 //
+(*
+val
+loc0 = d2p0.lctn()
+val () =
+prerrln
+("trans2a_d2pat: loc0 = ", loc0)
 val () =
 prerrln
 ("trans2a_d2pat: d2p0 = ", d2p0)
+*)
 //
 in//let
 //
@@ -307,10 +314,12 @@ D2Pcon(d2c1) = d2p0.node()
 val t2p0 =
 d2con2a_s2typ( loc0, d2c1 )
 //
+(*
 val (  ) =
 prerrln("f0_con: d2c1 = ", d2c1)
 val (  ) =
 prerrln("f0_con: tqas = ", d2c1.tqas())
+*)
 } (*where*) // end of [f0_con(env0,...)]
 //
 (* ****** ****** *)
@@ -534,9 +543,16 @@ trans2a_d2exp
 ( env0, d2e0 ) =
 let
 //
+(*
+val
+loc0 = d2e0.lctn()
+val () =
+prerrln
+("trans2a_d2exp: loc0 = ", loc0)
 val () =
 prerrln
 ("trans2a_d2exp: d2e0 = ", d2e0)
+*)
 //
 in//let
 //
@@ -744,14 +760,14 @@ D2Econ(d2c1) = d2e0.node()
 val t2p0 =
 d2con2a_s2typ(loc0, d2c1)
 //
-val (  ) =
-prerrln
+(*
+val (  ) = prerrln
 ("f0_con: d2c1 = ", d2c1)
-val (  ) =
-prerrln
-("f0_con: tqas = ", d2c1.tqas()) }
+val (  ) = prerrln
+("f0_con: tqas = ", d2c1.tqas())
+*)
 //
-//(*where*) // end of [f0_con(env0,...)]
+}(*where*) // end of [f0_con(env0,...)]
 //
 (* ****** ****** *)
 //
@@ -780,11 +796,13 @@ D2Ecst(d2c1) = d2e0.node()
 val t2p0 =
 d2cst2a_s2typ( loc0, d2c1 )
 //
-val (  ) =
-prerrln("f0_cst: d2c1 = ", d2c1)
-val (  ) =
-prerrln("f0_cst: tqas = ", d2c1.tqas())
-} (*where*) // end of [f0_cst(env0,...)]
+(*
+val (  ) = prerrln
+("f0_cst: d2c1 = ", d2c1)
+val (  ) = prerrln
+("f0_cst: tqas = ", d2c1.tqas())
+*)
+}(*where*) // end of [f0_cst(env0,...)]
 //
 (* ****** ****** *)
 //
@@ -841,10 +859,12 @@ s2typ_make_node
 ,T2Pfun1(f2cl,npf1,t2ps,tres))
 end (*let*) // end-of-[val(tfun)]
 //
+(*
 val () =
 prerrln("f0_dapp: d2f0 = ", d2f0)
 val () =
 prerrln("f0_dapp: tfun = ", tfun)
+*)
 //
 val d2f0 =
 trans2a_d2exp_tpck(env0,d2f0,tfun)
@@ -1145,8 +1165,10 @@ val f2cl = F2CLfun(*void*)
 val tres = dexp.styp((*void*))
 val tfun =
 s2typ_fun1_f2arglst(f2as, f2cl, tres)
+(*
 val (  ) = prerrln
 ("trans2a_d2exp: f0_lam0: tfun = ", tfun)
+*)
 //
 } (*where*) // end of [f0_lam0(env0,d2e0)]
 //
@@ -1199,8 +1221,10 @@ val (  ) = dvar.styp(tfun)
 val dexp =
 trans2a_d2exp_tpck(env0, dexp, tres)
 //
+(*
 val (  ) = prerrln
 ("trans2a_d2exp: f0_fix0: tfun = ", tfun)
+*)
 //
 } (*where*) // end of [f0_fix0(env0,d2e0)]
 //
@@ -1367,9 +1391,16 @@ trans2a_f2arg
 ( env0, farg ) =
 let
 //
+(*
+val
+loc0 = farg.lctn()
+val () =
+prerrln
+("trans2a_f2arg: loc0 = ", loc0)
 val () =
 prerrln
 ("trans2a_f2arg: farg = ", farg)
+*)
 //
 in//let
 //
@@ -1569,10 +1600,12 @@ d2pat(loc0, t2p0, D2Pt2pck(d2p0,t2p0)) end
 end where
 {
 //
+(*
 val () =
 prerrln("trans2a_d2pat_tpck: d2p0 = ", d2p0)
 val () =
 prerrln("trans2a_d2pat_tpck: t2p0 = ", t2p0)
+*)
 //
 } (*where*) // end of [trans2a_d2pat_tpck(...)]
 //
@@ -1595,10 +1628,12 @@ d2exp(loc0, t2p0, D2Et2pck(d2e0,t2p0)) end
 end where
 {
 //
+(*
 val () =
 prerrln("trans2a_d2exp_tpck: d2e0 = ", d2e0)
 val () =
 prerrln("trans2a_d2exp_tpck: t2p0 = ", t2p0)
+*)
 //
 } (*where*) // end of [trans2a_d2exp_tpck(...)]
 //

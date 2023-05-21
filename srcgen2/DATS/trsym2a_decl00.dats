@@ -70,9 +70,16 @@ trsym2a_d2ecl
 ( env0, dcl0 ) =
 let
 //
+(*
+val
+loc = dcl0.lctn()
+val () =
+prerrln
+("trsym2a_d2ecl: loc0 = ", loc0)
 val () =
 prerrln
 ("trsym2a_d2ecl: dcl0 = ", dcl0)
+*)
 //
 in//let
 case+

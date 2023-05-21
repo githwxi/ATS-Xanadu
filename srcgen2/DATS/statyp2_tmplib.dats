@@ -772,12 +772,14 @@ f1_xset
 ( xtp1: x2t2p
 , t2p2: s2typ): void =
 let
+(*
 val () =
 prerrln
 ("f1_xset: xtp1 = ", xtp1)
 val () =
 prerrln
 ("f1_xset: t2p2 = ", t2p2)
+*)
 in//let
 unify00_s2typ$xset<>(xtp1, t2p2)
 end (*let*) // end of [f1_xset(...)]
@@ -925,10 +927,12 @@ end (*let*) // end of [f0_text(e1nv,...)]
 val t2p1 = s2typ_hnfiz0(e1nv, t2p1)
 val t2p2 = s2typ_hnfiz0(e1nv, t2p2)
 //
+(*
 val (  ) =
 prerrln("unify00_s2typ: t2p1 = ", t2p1)
 val (  ) =
 prerrln("unify00_s2typ: t2p2 = ", t2p2)
+*)
 //
 } (*where*) // end of [unify00_s2typ(e1nv,...)]
 //
