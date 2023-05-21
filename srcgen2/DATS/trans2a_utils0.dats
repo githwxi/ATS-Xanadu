@@ -97,22 +97,6 @@ end where
 {
 //
 fun
-f0_s2vs
-( s2vs
-: s2varlst
-)
-: s2varlst =
-let
-#typedef x0 = s2var
-#impltmp
-filter$test
-< x0 >(s2v) =
-sort2_imprq(s2v.sort())
-in
-  list_filter<x0>(s2vs) end
-//(*let*)//end-of-[f0_s2vs(s2vs)]
-//
-fun
 f0_f2as
 ( f2as
 : f2arglst
@@ -145,7 +129,8 @@ s2typ(s2t0,T2Puni0(s2vs, tres))
 end where
 {
 //
-val s2vs = f0_s2vs(s2vs)
+val
+s2vs = s2varlst_imprq(s2vs)
 //
 val
 tres = f0_f2as(f2as, ndyn, tres)
