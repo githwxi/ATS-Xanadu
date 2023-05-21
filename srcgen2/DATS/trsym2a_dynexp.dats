@@ -258,9 +258,16 @@ trsym2a_d2pat
 ( env0, d2p0 ) =
 let
 //
+(*
+val
+loc0 = d2p0.lctn()
+val () =
+prerrln
+("trsym2a_d2pat: loc0 = ", loc0)
 val () =
 prerrln
 ("trsym2a_d2pat: d2p0 = ", d2p0)
+*)
 //
 in//let
 //
@@ -314,6 +321,7 @@ val loc0 = d2p0.lctn((*void*))
 val t2p1 = d2p0.styp((*void*))
 val dpat = drpt.dpat((*void*))
 //
+(*
 val () =
 prerrln
 ("trsym2a_d2pat: f0_sym0: loc0 = ", loc0)
@@ -323,6 +331,7 @@ prerrln
 val () =
 prerrln
 ("trsym2a_d2pat: f0_sym0: styp = ", t2p1)
+*)
 //
 in//let
 case+
@@ -446,9 +455,16 @@ trsym2a_d2exp
 ( env0, d2e0 ) =
 let
 //
+(*
+val
+loc0 = d2e0.lctn()
+val () =
+prerrln
+("trsym2a_d2exp: loc0 = ", loc0)
 val () =
 prerrln
 ("trsym2a_d2exp: d2e0 = ", d2e0)
+*)
 //
 in//let
 //
@@ -544,6 +560,7 @@ val loc0 = d2e0.lctn((*void*))
 val t2p1 = d2e0.styp((*void*))
 val dexp = drxp.dexp((*void*))
 //
+(*
 val () =
 prerrln
 ("trsym2a_d2exp: f0_sym0: loc0 = ", loc0)
@@ -553,6 +570,7 @@ prerrln
 val () =
 prerrln
 ("trsym2a_d2exp: f0_sym0: styp = ", t2p1)
+*)
 //
 in//let
 case+

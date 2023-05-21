@@ -173,8 +173,19 @@ let
 g_print$out<>() = out
 //
 val () =
+let
+val loc0 = dcl0.lctn()
+in//let
+(*
+prerrln
+("fperr22_d2pat: loc0 = ", loc0)
+*)
+end//let
+(*
+val () =
 prerrln
 ("fperr22_d2ecl: dcl0 = ", dcl0)
+*)
 //
 in//let
 //

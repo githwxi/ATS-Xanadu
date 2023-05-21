@@ -168,13 +168,17 @@ g_print$out<>() = out
 val () =
 let
 val loc0 = d2p0.lctn()
-in
+in//let
+(*
 prerrln
 ("fperr22_d2pat: loc0 = ", loc0)
-end
+*)
+end//let
+(*
 val () =
 prerrln
 ("fperr22_d2pat: d2p0 = ", d2p0)
+*)
 //
 in//let
 //
@@ -186,12 +190,16 @@ D2Perrck(lvl, d2p1) =>
 auxmain( out, d2p1 ); 
 if
 (lvl
->FPERR22_ERRVL) then () else
+>FPERR22_ERRVL)
+then ((*void*)) else
 let
-val loc0 = d2p0.lctn() in
-println
+val loc0 = d2p0.lctn()
+in//let
+(*
+prerrln
 ("FPERR22-ERROR:",loc0,":",d2p0)
-end
+*)
+end//let
 )
 | _(* otherwise *) => (  (* skipped *)  )
 //
@@ -346,13 +354,17 @@ g_print$out<>() = out
 val () =
 let
 val loc0 = d2e0.lctn()
-in
+in//let
+(*
 prerrln
 ("fperr22_d2exp: loc0 = ", loc0)
-end
+*)
+end//let
+(*
 val () =
 prerrln
 ("fperr22_d2exp: d2e0 = ", d2e0)
+*)
 //
 in//let
 //
@@ -364,12 +376,16 @@ D2Eerrck(lvl, d2e1) =>
 auxmain( out, d2e1 ); 
 if
 (lvl
->FPERR22_ERRVL) then () else
+>FPERR22_ERRVL)
+then ((*void*)) else
 let
-val loc0 = d2e0.lctn() in
-println
+val loc0 = d2e0.lctn()
+in//let
+(*
+prerrln
 ("FPERR22-ERROR:",loc0,":",d2e0)
-end
+*)
+end//let
 )
 | _(* otherwise *) => (  (* skipped *)  )
 //

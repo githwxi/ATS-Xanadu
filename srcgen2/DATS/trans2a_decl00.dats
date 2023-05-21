@@ -76,13 +76,16 @@ s2typ_xtv(x2t2p_make_lctn(loc0))
 trans2a_d2ecl
 ( env0, d2cl ) = let
 //
-// (*
+(*
 val
 loc0 = d2cl.lctn()
 val () =
 prerrln
+("trans2a_d2ecl: loc0 = ", loc0)
+val () =
+prerrln
 ("trans2a_d2ecl: d2cl = ", d2cl)
-// *)
+*)
 //
 in//let
 //
@@ -267,9 +270,14 @@ val-
 D2Cvaldclst
 (tknd, d2vs) = d2cl.node()
 //
+(*
+val () =
+prerrln
+("f0_valdclst: loc0 = ", loc0)
 val () =
 prerrln
 ("f0_valdclst: d2cl = ", d2cl)
+*)
 //
 val
 d2vs =
@@ -294,9 +302,14 @@ val-
 D2Cvardclst
 (tknd, d2vs) = d2cl.node()
 //
+(*
+val () =
+prerrln
+("f0_vardclst: loc0 = ", loc0)
 val () =
 prerrln
 ("f0_vardclst: d2cl = ", d2cl)
+*)
 //
 val
 d2vs =
@@ -322,9 +335,14 @@ D2Cfundclst
 (tknd
 ,tqas, d2fs) = d2cl.node()
 //
+(*
+val () =
+prerrln
+("f0_fundclst: loc0 = ", loc0)
 val () =
 prerrln
 ("f0_fundclst: d2cl = ", d2cl)
+*)
 //
 val
 d2fs =
@@ -354,6 +372,9 @@ D2Cimplmnt0
 , sres, dexp) = d2cl.node()
 //
 (*
+val () =
+prerrln
+("f0_implmnt0: loc0 = ", loc0)
 val () =
 prerrln
 ("f0_implmnt0: d2cl = ", d2cl)
@@ -532,9 +553,10 @@ s2typ_hnfiz0(s2exp_stpize(s2e1))
 val tfun =
 s2typ_fun1_f2arglst(f2as,f2cl,tres)
 //
-val (  ) =
-prerrln
+(*
+val (  ) = prerrln
 ("trans2a_d2fundcl: tfun = ", tfun)
+*)
 //
 (*
 HX-2023:
@@ -631,12 +653,12 @@ TEQD2EXPsome
 //
 val tres = dpat.styp()
 //
-val (  ) =
-prerrln
+(*
+val (  ) = prerrln
 ("f0_d2valdcl: dpat = ", dpat)
-val (  ) =
-prerrln
+val (  ) = prerrln
 ("f0_d2valdcl: tres = ", tres)
+*)
 //
 val d2e2 =
 trans2a_d2exp_tpck(env0,d2e2,tres)
@@ -737,12 +759,12 @@ TEQD2EXPsome(teq1, d2e2)) where
 {
 val tres =
 f0_tres(f2as, dvar.styp())
-val (  ) =
-prerrln
+(*
+val (  ) = prerrln
 ("f0_d2fundcl: dvar = ", dvar)
-val (  ) =
-prerrln
+val (  ) = prerrln
 ("f0_d2fundcl: tres = ", tres)
+*)
 val d2e2 =
 trans2a_d2exp_tpck(env0,d2e2,tres)
 }
