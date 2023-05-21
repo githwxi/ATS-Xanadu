@@ -273,6 +273,14 @@ l2t2plst_xtpck0 // occurs-check
 (ltps:l2t2plst, xtp0:x2t2p): bool
 //
 (* ****** ****** *)
+(*
+HX-2023-05-21:
+For eliminating
+non-impredicative quantifiers
+*)
+fun
+s2varlst_imprq(s2varlst): s2varlst
+(* ****** ****** *)
 //
 fun
 s2exp_stpize(s2e0:s2exp): s2typ

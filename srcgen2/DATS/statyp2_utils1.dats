@@ -196,29 +196,28 @@ forall$test
 < x0 >( lx ) =
 case+ lx of
 S2LAB(l0, x0) => s2typ_xtpck0(x0, xtp0)
-} (*where*) // end-[l2t2plst_xtpck0(...)]
+}(*where*)//end-of[l2t2plst_xtpck0(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+s2varlst_imprq(s2vs) =
+(
+list_filter<x0>(s2vs)) where
+{
+//
+#typedef x0 = s2var
+//
+#impltmp
+filter$test<x0>(s2v) =
+let
+val s2t = s2v.sort() in sort2_imprq(s2t)
+end//let
+}(*where*)//end-of-[s2varlst_imprq(...)]
 //
 (* ****** ****** *)
 //
 local
-//
-(* ****** ****** *)
-//
-fun
-f0_s2vs
-( s2vs
-: s2varlst
-)
-: s2varlst =
-let
-#typedef x0 = s2var
-#impltmp
-filter$test
-< x0 >(s2v) =
-sort2_imprq(s2v.sort())
-in
-  list_filter<x0>(s2vs) end
-// (*let*) // end of [f0_s2vs(s2vs)]
 //
 (* ****** ****** *)
 //
@@ -284,7 +283,7 @@ let
 val
 t2p1 = f0_impr(s2e1)
 val
-s2vs = f0_s2vs(s2vs)
+s2vs = s2varlst_imprq(s2vs)
 in//let
 case+ s2vs of
 |
@@ -302,7 +301,7 @@ let
 val
 t2p1 = f0_impr(s2e1)
 val
-s2vs = f0_s2vs(s2vs)
+s2vs = s2varlst_imprq(s2vs)
 in//let
 case+ s2vs of
 |
