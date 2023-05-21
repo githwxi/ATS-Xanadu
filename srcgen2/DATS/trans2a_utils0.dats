@@ -97,6 +97,22 @@ end where
 {
 //
 fun
+f0_s2vs
+( s2vs
+: s2varlst
+)
+: s2varlst =
+let
+#typedef x0 = s2var
+#impltmp
+filter$test
+< x0 >(s2v) =
+sort2_imprq(s2v.sort())
+in
+  list_filter<x0>(s2vs) end
+//(*let*)//end-of-[f0_s2vs(s2vs)]
+//
+fun
 f0_f2as
 ( f2as
 : f2arglst
@@ -120,13 +136,20 @@ F2ARGsta0
 let
 val s2t0 = tres.sort()
 in//let
-s2typ
-(s2t0,T2Puni0(s2vs, tres))
+//
+case+ s2vs of
+|list_nil() => tres
+|list_cons _ =>
+s2typ(s2t0,T2Puni0(s2vs, tres))
+//
 end where
 {
+//
+val s2vs = f0_s2vs(s2vs)
+//
 val
-tres =
-f0_f2as(f2as, ndyn, tres) }
+tres = f0_f2as(f2as, ndyn, tres)
+}
 |
 F2ARGdyn0(npf1, d2ps) =>
 (
@@ -134,30 +157,27 @@ s2typ_fun1
 (f2cl,npf1,t2ps,tres)) where
 {
 val ndyn = ndyn - 1
-val tres =
-f0_f2as(f2as, ndyn, tres)
-val t2ps =
-s2typlst_of_d2patlst(d2ps)
+val tres = f0_f2as(f2as, ndyn, tres)
+val t2ps = s2typlst_of_d2patlst(d2ps)
 val f2cl =
 if
-(ndyn <= 0)
-then (f2cl) else F2CLclo(1) } )
+(ndyn <= 0) then f2cl else F2CLclo(1)
+}
+)
 )(*case+*)//end-of-[f0_f2as(f2as,...)]
 //
 and
 f1_ndyn(xs: f2arglst): sint =
 (
 case+ xs of
-|
-list_nil() => 0
-|
-list_cons(x1, xs) =>
+|list_nil() => 0
+|list_cons(x1, xs) =>
 (
 case+ x1.node() of
 |F2ARGdyn0 _ =>
  f1_ndyn(xs) + 1 | _ => f1_ndyn(xs)))
 //
-}(*where*)//end-[s2typ_fun1_f2arglst]
+} (*where*) // end-[s2typ_fun1_f2arglst]
 //
 (* ****** ****** *)
 //
@@ -171,7 +191,7 @@ list_map<x0><y0>(d2ps)) where
 #typedef y0 = s2typ
 #impltmp
 map$fopr<x0><y0>(d2p) = d2p.styp()
-}
+}(*where*)
 // end of [s2typlst_of_d2patlst(d2ps)]
 //
 (* ****** ****** *)
@@ -186,7 +206,7 @@ list_map<x0><y0>(d2es)) where
 #typedef y0 = s2typ
 #impltmp
 map$fopr<x0><y0>(d2e) = d2e.styp()
-}
+}(*where*)
 // end of [s2typlst_of_d2explst(d2es)]
 //
 (* ****** ****** *)

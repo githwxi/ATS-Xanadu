@@ -717,13 +717,26 @@ T2Pfun1
 ,t2ps,tres) =
 tres.node() in
 f0_tres(f2as, tres) end//F2ARGdyn0
+//
 |F2ARGsta0 _ =>
+(*
 let
 val-
 T2Puni0
 (s2vs,tres) =
 tres.node() in
 f0_tres(f2as, tres) end//F2ARGsta0
+*)
+f0_tres(f2as, tres) where
+{
+val tres =
+(
+case+
+tres.node() of
+|
+T2Puni0
+(s2vs,tres) => tres | _ => tres) }
+//
 |F2ARGmet0 _ => f0_tres(f2as, tres))
 ) (*case+*) // end-of-[f0_tres(...)]
 //

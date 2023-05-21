@@ -218,7 +218,7 @@ filter$test
 sort2_imprq(s2v.sort())
 in
   list_filter<x0>(s2vs) end
-// (*let*) // end of [f2_s2vs(s2vs)]
+// (*let*) // end of [f0_s2vs(s2vs)]
 //
 (* ****** ****** *)
 //
@@ -293,7 +293,7 @@ list_nil() => t2p1
 list_cons _ =>
 s2typ_make_node
 (s2t0, T2Pexi0(s2vs, t2p1))
-end (*let*) // end of [S2Eexi0]
+end (*let*) // end of [S2Eexi0(...)]
 |
 S2Euni0
 ( s2vs
@@ -311,7 +311,7 @@ list_nil() => t2p1
 list_cons _ =>
 s2typ_make_node
 (s2t0, T2Puni0(s2vs, t2p1))
-end (*let*) // end of [S2Euni0]
+end (*let*) // end of [S2Euni0(...)]
 //
 (*
 | S2Etype(t2p1) => t2p1

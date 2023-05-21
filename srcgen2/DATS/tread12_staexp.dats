@@ -956,10 +956,20 @@ val
 s2t2 = tread12_sort2(s2t2, err)
 //
 in//let
+(*
 if
 (e00 = err)
 then (s2e) else
+*)
 let
+//
+(*
+HX-2023-05-21:
+S2Ecast is treated as an error
+*)
+val ( ) =
+(err := err + 1)
+//
 val s2t = s2e.sort() in
 s2exp_cast_errck(s2t,loc1,s2e1,s2t2)
 end (*let*) // else // end-of-(if)

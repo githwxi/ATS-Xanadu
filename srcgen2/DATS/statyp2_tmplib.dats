@@ -927,12 +927,12 @@ end (*let*) // end of [f0_text(e1nv,...)]
 val t2p1 = s2typ_hnfiz0(e1nv, t2p1)
 val t2p2 = s2typ_hnfiz0(e1nv, t2p2)
 //
-(*
+// (*
 val (  ) =
 prerrln("unify00_s2typ: t2p1 = ", t2p1)
 val (  ) =
 prerrln("unify00_s2typ: t2p2 = ", t2p2)
-*)
+// *)
 //
 } (*where*) // end of [unify00_s2typ(e1nv,...)]
 //
