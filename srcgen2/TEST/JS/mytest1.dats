@@ -31,12 +31,15 @@ cons with strmcon_cons
 //
 fun
 <a:t0>
-length(xs: list(a)) =
+length{n:i0}
+(xs: list(a, n)) =
 (
 case+ xs of
 | nil0() => 0
 | (_ :: xs) => length(xs) + 1)
 //
+(* ****** ****** *)
+////
 (* ****** ****** *)
 (*
 fun
