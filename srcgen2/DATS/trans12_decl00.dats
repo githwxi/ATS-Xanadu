@@ -1888,18 +1888,34 @@ WD1CSsome
 (* ****** ****** *)
 
 local
-
+//
 fun
 f1_dqid
 ( env0:
 ! tr12env
 , dqid: d1qid): dimpl =
+(
+if
+list_singq(d2cs)
+then
+let
+val
+d2c1 = d2cs.head()
+in
 dimpl
-(dqid.lctn()
-,DIMPLall1(dqid, d2cs)) where
+(loc0,DIMPLone1(d2c1))
+end
+else
+dimpl
+(loc0, DIMPLall1(dqid, d2cs))
+) where
 {
 //
+val loc0 = dqid.lctn()
+//
 (*
+val () =
+prerrln("f1_dqid: loc0 = ", loc0)
 val () =
 prerrln("f1_dqid: dqid = ", dqid)
 *)
@@ -1910,33 +1926,11 @@ case+ dqid of
 |
 D1QIDnone(tok1) =>
 let
-val sym1 =
-dexpid_sym(tok1)
-val opt1 =
-tr12env_find_d2itm(env0, sym1)
+  val sym1 = dexpid_sym(tok1)
+  val opt1 =
+  tr12env_find_d2itm(env0, sym1)
 in//let
-case+ opt1 of
-| ~
-optn_vt_nil() =>
-list_nil((*void*))
-| ~
-optn_vt_cons(d2i1) =>
-(
-case+ d2i1 of
-|
-D2ITMcst
-( d2cs ) => d2cs | _ => list_nil()
-) (*case+*) // end of [optn_vt_cons]
-end (*let*) // end of [D1QIDnone(tok1)]
-|
-D1QIDsome(tqua, tok1) =>
-let
-val
-sym1 = dexpid_sym(tok1)
-val
-opt1 =
-tr12env_qfind_d2itm(env0, tqua, sym1)
-in//let
+//
 case+ opt1 of
 | ~
 optn_vt_nil() =>
@@ -1950,10 +1944,33 @@ D2ITMcst
 ( d2cs ) => d2cs | _ => list_nil()
 ) (*case+*) // end of [optn_vt_cons]
 //
-end (*let*) // end of [D1QIDsome(...)]
-) : d2cstlst // end-of-val-(   s2cs   )
+end (*let*) // end of [D1QIDnone(tok1)]
+|
+D1QIDsome(tqua, tok1) =>
+let
+val
+sym1 = dexpid_sym(tok1)
+val
+opt1 =
+tr12env_qfind_d2itm(env0, tqua, sym1)
+in//let
+//
+case+ opt1 of
+| ~
+optn_vt_nil
+((*0*)) => list_nil((*void*))
+| ~
+optn_vt_cons(d2i1) =>
+(
+case+ d2i1 of
+|
+D2ITMcst(d2cs)=>d2cs | _ => list_nil())
+//
+end (*let*) // end of [ D1QIDsome(...) ]
+) : d2cstlst // end-of-val-(    d2cs    )
+//
 } (* where *) // end of [f1_dqid(env0,dqid)]
-
+//
 in//local
 //
 fun

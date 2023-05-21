@@ -787,6 +787,15 @@ f0_pvsload
 //
 (* ****** ****** *)
 //
+val () =
+f0_pvsload
+(0(*sta*), "/prelude/SATS/optn000.sats")
+val () =
+f0_pvsload
+(0(*sta*), "/prelude/SATS/list000.sats")
+//
+(* ****** ****** *)
+//
 // HX-2023-01-09:
 val // Issuing warnings for shadowed
 ans = f0_pvsfini() // top-level declarations

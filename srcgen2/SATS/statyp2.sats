@@ -157,19 +157,22 @@ T2Pf2cl of f2clknd
 |
 T2Pfun1 of
 ( s2typ // f2clknd
-, sint(*npf*),s2typlst(*arg*),s2typ(*res*)
-) (* end of T2Pfun1 *)
+, sint(*npf*)
+, s2typlst(*arg*), s2typ(*res*))
+// (* end of T2Pfun1 *)
+|
+T2Pexi0 of // exists quantifier
+(s2varlst(*vars*), s2typ(*body*))
+|
+T2Puni0 of // forall quantifier
+(s2varlst(*vars*), s2typ(*body*))
 //
-| T2Pexi0 of // exists quantifier
-  (s2varlst(*vars*), s2typ(*body*))
-| T2Puni0 of // forall quantifier
-  (s2varlst(*vars*), s2typ(*body*))
+| // external
+T2Ptext of (string(*name*), s2typlst)
 //
-| T2Ptext of
-  (string(*name*), s2typlst) // external
-//
-| T2Ptrcd of
-  (trcdknd(*knd*), int(*npf*), l2t2plst)
+|
+T2Ptrcd of
+(trcdknd(*knd*), int(*npf*), l2t2plst)
 //
 | T2Pnone0 of ((*0*)) // HX: optional
 | T2Pnone1 of (s2typ) | T2Ps2exp of (s2exp)

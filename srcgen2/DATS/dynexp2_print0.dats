@@ -732,6 +732,7 @@ D2Cimplmnt0
 print("D2Cimplmnt0(");
 print(tknd,";",sqas,";",tqas,";");
 print(dqid,";",tias,";",farg,";",sres,";",body,")"))
+(*
 |
 D2Cimplmnt1
 (tknd
@@ -742,6 +743,7 @@ D2Cimplmnt1
 print("D2Cimplmnt1(");
 print(tknd,";",sqas,";",tqas,";");
 print(dqid,";",tias,";",farg,";",sres,";",body,")"))
+*)
 //
 |
 D2Cexcptcon(d1cl,d2cs) =>
@@ -913,15 +915,18 @@ in//let
 case+
 dimp.node() of
 |
-DIMPLone1
-(d2c1,tjas) =>
-print
-("DIMPLone1(",d2c1,";",tjas,")")
+DIMPLone1(d2c1) =>
+print("DIMPLone1(",d2c1,")")
 |
 DIMPLall1
 (dqid,d2cs) =>
 print
 ("DIMPLall1(",dqid,";",d2cs,")")
+|
+DIMPLone2
+(d2c1,tjas) =>
+print
+("DIMPLone2(",d2c1,";",tjas,")")
 |
 DIMPLopt2
 (dqid,dcs1,dcs2) =>
