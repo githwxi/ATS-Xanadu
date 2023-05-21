@@ -1152,12 +1152,14 @@ D2Cimplmnt0 of
 , s2qaglst // s2vs
 , t2qaglst // s2vs+t2is
 , dimpl, t2iaglst, f2arglst, s2res, d2exp)
+(*
 |
 D2Cimplmnt1 of
 ( token(*impkind*)
 , s2qaglst // s2vs
 , t2qaglst // s2vs+t2is
 , dimpl, t2iaglst, f2arglst, s2res, d2exp)
+*)
 //
 |D2Cexcptcon of (d1ecl, d2conlst)
 |D2Cdatatype of (d1ecl, s2cstlst)
@@ -1193,10 +1195,13 @@ and
 dimpl_node =
 |
 DIMPLone1 of
-(d2cst, t2jaglst)
+(d2cst(*res*))
 |
 DIMPLall1 of
-(d1qid, d2cstlst)
+(d1qid, d2cstlst(*all*))
+|
+DIMPLone2 of
+(d2cst(*res*), t2jaglst)
 |
 DIMPLopt2 of
 (d1qid, d2cstlst, d2cstlst)
