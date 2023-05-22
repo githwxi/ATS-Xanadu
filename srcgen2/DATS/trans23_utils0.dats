@@ -285,7 +285,8 @@ d2con23_tapqize
 ( loc0, dcon ) =
 let
 //
-val (t2js, t2p0) =
+val
+(t2js, t2p0) =
 d2con23_tjagize(loc0, dcon)
 //
 val

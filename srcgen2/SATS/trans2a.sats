@@ -117,6 +117,9 @@ LEX = "./lexing0.sats"
 #typedef t2qag = $D2E.t2qag
 #typedef t2iag = $D2E.t2iag
 (* ****** ****** *)
+#typedef t2qas = $D2E.t2qas
+#typedef t2ias = $D2E.t2ias
+(* ****** ****** *)
 #typedef d2arg = $D2E.d2arg
 (* ****** ****** *)
 #typedef dimpl = $D2E.dimpl
@@ -577,6 +580,21 @@ fun
 trans2a_d2explst_tpck1
 ( env0:
 ! tr2aenv,d2es:d2explst,t2p0:s2typ): d2explst
+//
+(* ****** ****** *)
+//
+fun
+trans2a_d2cst_elim
+( env0:
+! tr2aenv
+, d2c0: d2cst
+, tqas: t2qas, tias: t2ias): s2typ
+//
+fun
+trans2a_f2arglst_elim
+( env0:
+! tr2aenv
+, f2as:f2arglst, tfun:s2typ): (f2arglst,s2typ)
 //
 (* ****** ****** *)
 
