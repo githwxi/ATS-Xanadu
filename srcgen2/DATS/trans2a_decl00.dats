@@ -381,7 +381,8 @@ prerrln
 *)
 //
 val
-f2as = trans2a_f2arglst(env0, f2as)
+f2as =
+trans2a_f2arglst( env0, f2as )
 //
 val
 dexp =
@@ -392,8 +393,7 @@ trans2a_d2exp(env0, dexp)
 |S2RESsome(seff, sexp) =>
 let
 val
-tres =
-s2exp_stpize(sexp) in
+tres = s2exp_stpize(sexp) in
 trans2a_d2exp_tpck(env0, dexp, tres)
 end (*let*) // end of [S2RESsome(...)]
 )
