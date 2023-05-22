@@ -57,9 +57,10 @@ case+ xs of
 (* ****** ****** *)
 
 #impltmp
-{x0:t0}
-list_length
-<x0>{n}(xs) =
+< x0:t0 >
+//{x0:t0}
+list_length(xs) =
+//<x0>{n}(xs) =
 //(xs: list(x0)) =
 (
   loop(xs, 0)) where

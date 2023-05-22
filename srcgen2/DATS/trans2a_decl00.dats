@@ -371,14 +371,14 @@ D2Cimplmnt0
 , tias, f2as
 , sres, dexp) = d2cl.node()
 //
-(*
+// (*
 val () =
 prerrln
 ("f0_implmnt0: loc0 = ", loc0)
 val () =
 prerrln
 ("f0_implmnt0: d2cl = ", d2cl)
-*)
+// *)
 //
 val
 f2as =
