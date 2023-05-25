@@ -584,16 +584,30 @@ trans2a_d2explst_tpck1
 (* ****** ****** *)
 //
 fun
+trans2a_d2patlst_tpcks
+( env0:
+! tr2aenv,d2ps:d2patlst,t2ps:s2typlst): d2patlst
+//
+fun
+trans2a_d2explst_tpcks
+( env0:
+! tr2aenv,d2es:d2explst,t2ps:s2typlst): d2explst
+//
+(* ****** ****** *)
+//
+fun
 trans2a_d2cst_elim
 ( env0:
 ! tr2aenv
+, loc0: loc_t
 , d2c0: d2cst
-, tqas: t2qas, tias: t2ias): s2typ
+, tqas: t2qas, tias: t2ias): s2typ(*tfun*)
 //
 fun
 trans2a_f2arglst_elim
 ( env0:
 ! tr2aenv
+, loc0: loc_t
 , f2as:f2arglst, tfun:s2typ): (f2arglst,s2typ)
 //
 (* ****** ****** *)
