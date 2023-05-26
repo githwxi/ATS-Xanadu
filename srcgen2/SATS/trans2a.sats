@@ -588,10 +588,12 @@ trans2a_d2patlst_tpcks
 ( env0:
 ! tr2aenv,d2ps:d2patlst,t2ps:s2typlst): d2patlst
 //
+(*
 fun
 trans2a_d2explst_tpcks
 ( env0:
 ! tr2aenv,d2es:d2explst,t2ps:s2typlst): d2explst
+*)
 //
 (* ****** ****** *)
 //
