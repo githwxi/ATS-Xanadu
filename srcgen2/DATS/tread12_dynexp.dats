@@ -992,7 +992,7 @@ val
 d2p1 = tread12_d2pat(d2p1, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2p) else
 d2pat_bang_errck(d2p.lctn(), d2p1)
 end (*let*) // end of [f0_bang(d2p,err)]
@@ -1013,7 +1013,7 @@ val
 d2p1 = tread12_d2pat(d2p1, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2p) else
 d2pat_flat_errck(d2p.lctn(), d2p1)
 end (*let*) // end of [f0_flat(d2p,err)]
@@ -1034,7 +1034,7 @@ val
 d2p1 = tread12_d2pat(d2p1, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2p) else
 d2pat_free_errck(d2p.lctn(), d2p1)
 end (*let*) // end of [f0_free(d2p,err)]
@@ -1056,7 +1056,7 @@ val
 d2f0 = tread12_d2pat(d2f0, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2p) else
 d2pat_sapp_errck(d2p.lctn(),d2f0,s2vs)
 end (*let*) // end of [f0_sapp(d2p,err)]
@@ -1077,7 +1077,7 @@ val
 d2p1 = tread12_d2pat(d2p1, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2p) else
 d2pat_dap0_errck(d2p.lctn(), d2p1)
 end (*let*) // end of [f0_dap0(d2p,err)]
@@ -1098,7 +1098,7 @@ val
 d2p1 = tread12_d2pat(d2p1, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2p) else
 d2pat_dap1_errck(d2p.lctn(), d2p1)
 end (*let*) // end of [f0_dap1(d2p,err)]
@@ -1123,7 +1123,7 @@ val
 d2ps = tread12_d2patlst(d2ps, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2p) else
 let
 val loc = d2p.lctn() in
@@ -1151,7 +1151,7 @@ tread12_d2patlst(d2ps, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2p) else
 let
 val loc = d2p.lctn() in
@@ -1180,7 +1180,7 @@ tread12_d2patlst(d2ps, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2p) else
 let
 val loc = d2p.lctn() in
@@ -1209,7 +1209,7 @@ tread12_l2d2plst(ldps, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2p) else
 let
 val loc = d2p.lctn() in
@@ -1239,7 +1239,7 @@ s2e2 = tread12_s2exp(s2e2, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2p) else
 let
 val loc = d2p.lctn() in
@@ -1273,7 +1273,7 @@ d2p1 = tread12_d2pat(d2p1, err)
 //
 in//let
 if // if
-(e00=err)
+(err=e00)
 then (ld2p) else D2LAB(lab0, d2p1)
 end (*let*)//end-(tread12_l2d2p(ld2p,err))
 //
@@ -1381,7 +1381,7 @@ val
 s2es = tread12_s2explst(s2es, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 d2exp_sapp_errck(d2e.lctn(),d2f0,s2es)
 end (*let*) // end of [f0_sapp(d2e,err)]
@@ -1405,7 +1405,7 @@ val
 s2es = tread12_s2explst(s2es, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 d2exp_tapp_errck(d2e.lctn(),d2f0,s2es)
 end (*let*) // end of [f0_tapp(d2e,err)]
@@ -1426,7 +1426,7 @@ val
 d2e1 = tread12_d2exp(d2e1, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 d2exp_dap0_errck(d2e.lctn(), d2e1)
 end (*let*) // end of [f0_dap0(d2e,err)]
@@ -1451,7 +1451,7 @@ val
 d2es = tread12_d2explst(d2es, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 let
 val loc = d2e.lctn() in
@@ -1481,7 +1481,7 @@ d2e1 = tread12_d2exp(d2e1, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 let
 val loc = d2e.lctn() in
@@ -1511,7 +1511,7 @@ d2e1 = tread12_d2exp(d2e1, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 let
 val loc = d2e.lctn() in
@@ -1543,7 +1543,7 @@ tread12_d2expopt(dels, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e0) else
 d2exp_ift0_errck
 (d2e0.lctn(), d2e1, dthn, dels)
@@ -1573,7 +1573,7 @@ tread12_d2clslst(d2cs, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 let
 val loc = d2e.lctn() in
@@ -1601,7 +1601,7 @@ tread12_d2explst(d2es, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 let
 val loc = d2e.lctn() in
@@ -1630,7 +1630,7 @@ tread12_d2explst(d2es, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 let
 val loc = d2e.lctn() in
@@ -1659,7 +1659,7 @@ tread12_l2d2elst(ldes, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 let
 val loc = d2e.lctn() in
@@ -1693,7 +1693,7 @@ d2e1 = tread12_d2exp(d2e1, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 d2exp_lam0_errck
 (d2e.lctn(),tknd,f2as,sres,arrw,d2e1)
@@ -1726,7 +1726,7 @@ d2e1 = tread12_d2exp(d2e1, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 d2exp_fix0_errck
 ( d2e.lctn()
@@ -1757,7 +1757,7 @@ tread12_d2clslst(d2cs, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 let
 val loc = d2e.lctn() in
@@ -1781,7 +1781,7 @@ val
 d2e1 = tread12_d2exp(d2e1, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 d2exp_addr_errck(d2e.lctn(), d2e1)
 end (*let*) // end of [f0_addr(d2e,err)]
@@ -1802,7 +1802,7 @@ val
 d2e1 = tread12_d2exp(d2e1, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 d2exp_fold_errck(d2e.lctn(), d2e1)
 end (*let*) // end of [f0_fold(d2e,err)]
@@ -1823,7 +1823,7 @@ val
 d2e1 = tread12_d2exp(d2e1, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 d2exp_eval_errck(d2e.lctn(), d2e1)
 end (*let*) // end of [f0_eval(d2e,err)]
@@ -1844,7 +1844,7 @@ val
 d2e1 = tread12_d2exp(d2e1, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 d2exp_free_errck(d2e.lctn(), d2e1)
 end (*let*) // end of [f0_free(d2e,err)]
@@ -1872,7 +1872,7 @@ tread12_d2eclist(dcls, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 let
 val loc = d2e.lctn() in
@@ -1901,7 +1901,7 @@ d2er = tread12_d2exp(d2er, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 let
 val loc = d2e.lctn() in
@@ -1928,7 +1928,7 @@ tread12_d2explst(d2es, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 let
 val
@@ -1959,7 +1959,7 @@ tread12_d2explstopt(darg, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 let
 val
@@ -1986,7 +1986,7 @@ val
 d2e1 = tread12_d2exp(d2e1, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 d2exp_raise_errck(d2e.lctn(), d2e1)
 end (*let*) // end of [f0_raise(d2e,err)]
@@ -2007,7 +2007,7 @@ val
 d2e1 = tread12_d2exp(d2e1, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 d2exp_lazy0_errck(d2e.lctn(), d2e1)
 end (*let*) // end of [f0_lazy0(d2e,err)]
@@ -2029,7 +2029,7 @@ val
 d2es = tread12_d2explst(d2es, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 d2exp_lazy1_errck(d2e.lctn(),d2e1,d2es)
 end (*let*) // end of [f0_lazy1(d2e,err)]
@@ -2056,7 +2056,7 @@ s2e2 = tread12_s2exp(s2e2, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d2e) else
 let
 val loc = d2e.lctn() in
@@ -2092,7 +2092,7 @@ d2e1 = tread12_d2exp(d2e1, err)
 //
 in//let
 if // if
-(e00=err)
+(err=e00)
 then (ld2e) else D2LAB(lab0, d2e1)
 end (*let*)//end-(tread12_l2d2e(ld2e,err))
 //
@@ -2120,7 +2120,7 @@ val s2es =
 tread12_s2explst(s2es, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (farg) else
 f2arg
 (farg.lctn(), F2ARGsta0(s2vs, s2es))
@@ -2135,7 +2135,7 @@ val d2ps =
 tread12_d2patlst(d2ps, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (farg) else
 f2arg
 (farg.lctn(), F2ARGdyn0(npf1, d2ps))
@@ -2151,7 +2151,7 @@ val s2es =
 tread12_s2explst(s2es, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (farg) else
 f2arg( farg.lctn(), F2ARGmet0(s2es) )
 endlet // end of [ F2ARGmet0(  s2es  ) ]
@@ -2305,7 +2305,7 @@ tread12_s2explst(s2es, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then darg else
 d2arg_make_node
 (darg.lctn(),D2ARGsta0(s2vs,s2es))
@@ -2322,7 +2322,7 @@ tread12_s2exp(s2e1, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then darg else
 d2arg(darg.lctn(), D2ARGdyn1(s2e1))
 end (*let*) // end of [D2ARGdyn1(...)]
@@ -2337,7 +2337,7 @@ tread12_s2explst(s2es, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then darg else
 d2arg_make_node
 (darg.lctn(), D2ARGdyn2(npf1,s2es))
@@ -2367,7 +2367,7 @@ val s2e1 =
 tread12_s2exp(s2e1, err)
 in
 if
-(e00=err)
+(err=e00)
 then (sres) else S2RESsome(seff, s2e1)
 endlet // end of [S2RESsome(seff,s2e1)]
 ) (*case+*)//end-of[tread12_s2res(sres,err)]

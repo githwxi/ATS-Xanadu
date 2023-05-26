@@ -284,7 +284,7 @@ val dcl1 = tread22_d2ecl(dcl1, err)
 //
 in
 if
-(e00=err)
+(err=e00)
 then dcl else
 d2ecl_static_errck(dcl.lctn(),tknd,dcl1)
 end (*let*) // end of [ f0_static(dcl,err) ]
@@ -305,7 +305,7 @@ val dcl1 = tread22_d2ecl(dcl1, err)
 //
 in
 if
-(e00=err)
+(err=e00)
 then dcl else
 d2ecl_extern_errck(dcl.lctn(),tknd,dcl1)
 end (*let*) // end of [ f0_extern(dcl,err) ]
@@ -331,7 +331,7 @@ tread22_d2eclist(dcs2, err)
 //
 in
 if
-(e00=err)
+(err=e00)
 then dcl else
 d2ecl_local0_errck( loc, dcs1, dcs2 )
 end (*let*) // end of [ f0_local0(dcl,err) ]
@@ -358,7 +358,7 @@ tread22_d2eclist(dcs2, err)
 //
 in
 if
-(e00=err)
+(err=e00)
 then dcl else
 d2ecl_local0_errck( loc, dcs1, dcs2 )
 end (*let*) // end of [ f0_local0(dcl,err) ]
@@ -382,7 +382,7 @@ tread22_d2valdclist(d2vs, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dcl) else
 d2ecl_valdclst_errck(dcl.lctn(),tknd,d2vs)
 end (*let*) // end of [f0_valdclst(dcl,err)]
@@ -406,7 +406,7 @@ tread22_d2vardclist(d2vs, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dcl) else
 d2ecl_vardclst_errck(dcl.lctn(),tknd,d2vs)
 end (*let*) // end of [f0_vardclst(dcl,err)]
@@ -436,7 +436,7 @@ tread22_d2fundclist(d2fs, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dcl) else
 d2ecl_fundclst_errck(loc, tknd, tqas, d2fs)
 end (*let*) // end of [f0_fundclst(dcl,err)]
@@ -511,7 +511,7 @@ prerrln
 val d2e2 = tread22_d2exp(d2e2, err)
 in//letp
 if
-(e00=err)
+(err=e00)
 then tdxp else TEQD2EXPsome(teq1, d2e2)
 endlet // end of [ TEQD2EXPsome( _,_ ) ]
 ) (*case+*)//end-(tread22_teqd2exp(tdxp,err))
@@ -545,7 +545,7 @@ wsxp = tread22_wths2exp(wsxp,err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dval)
 else d2valdcl( loc, dpat, tdxp, wsxp )
 endlet // end-of-[tread22_d2valdcl(out,dval)]
@@ -579,7 +579,7 @@ dini = tread22_teqd2exp(dini,err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dvar)
 else d2vardcl(loc,dpid,vpid,sres,dini)
 endlet // end-of-[tread22_d2vardcl(out,dvar)]
@@ -622,7 +622,7 @@ wsxp = tread22_wths2exp(wsxp,err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dfun)
 else d2fundcl(loc,dpid,farg,sres,tdxp,wsxp)
 endlet // end-of-[tread22_d2fundcl(out,dfun)]

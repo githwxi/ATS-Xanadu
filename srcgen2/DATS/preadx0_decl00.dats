@@ -1249,7 +1249,7 @@ val atps =
 preadx0_a0typlst(atps, err)
 in
 if
-(e00=err)
+(err=e00)
 then opt2 else optn_cons(atps)
 endlet // end of [optn_cons(atps)]
 ) : a0typlstopt // end of [val(opt2)]
@@ -1590,7 +1590,7 @@ g0e1 =
 preadx0_g0exp( g0e1, err )
 in//let
 if
-(e00=err)
+(err=e00)
 then gedf else
 G0EDFsome(topt, g0e1) end): g0edf
 //
@@ -1637,7 +1637,7 @@ d0e1 =
 preadx0_d0exp( d0e1, err )
 in//let
 if
-(e00=err)
+(err=e00)
 then dedf else
 D0EDFsome(topt, d0e1) end): d0edf
 //

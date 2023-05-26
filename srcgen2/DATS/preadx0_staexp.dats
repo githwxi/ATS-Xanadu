@@ -451,7 +451,7 @@ tend.node() of
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then gma else
 g0mag_make_node
 (gma.lctn(),G0MAGsarg(tbeg, g0as, tend))
@@ -475,7 +475,7 @@ tend.node() of
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then gma else
 g0mag_make_node
 (gma.lctn(), G0MAGsarg(tbeg, g0as, tend))
@@ -1700,7 +1700,7 @@ val s0t =
 preadx0_sort0(s0t, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (tdf) else
 s0tdf(tdf.lctn(), S0TDFsort(s0t))
 end
@@ -1731,7 +1731,7 @@ tend.node() of
 T_RBRACE() => () | _ => (err := err+1))
 in//let
 if
-(e00=err)
+(err=e00)
 then (tdf) else
 s0tdf_make_node
 (

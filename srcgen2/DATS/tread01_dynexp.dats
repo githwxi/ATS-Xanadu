@@ -374,7 +374,7 @@ d1p2 = tread01_d1pat(d1p2, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1p0) else
 d1pat_a1pp_errck(loc0, d1p1, d1p2)
 endlet // end of [D1Pa1pp(d1p1,d1p2)]
@@ -395,7 +395,7 @@ d1p3 = tread01_d1pat(d1p3, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1p0) else
 d1pat_a2pp_errck
 ( loc0  ,  d1p1  ,  d1p2  ,  d1p3 )
@@ -412,7 +412,7 @@ val d1ps =
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1p0)
 else d1pat_l1st_errck(loc0, d1ps )
 endlet // end of [ D1Pl1st( d1ps ) ]
@@ -429,7 +429,7 @@ val dps2 =
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1p0) else
 d1pat_l2st_errck(loc0, dps1, dps2)
 endlet // end of [D1Pl2st(dps1,dps2)]
@@ -445,7 +445,7 @@ val d1ps =
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1p0) else
 d1pat_t1up_errck(loc0, tknd, d1ps)
 endlet // end of [D1Pt1up(tknd,d1ps)]
@@ -463,7 +463,7 @@ val dps2 =
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1p0) else
 d1pat_t2up_errck(loc0,tknd,dps1,dps2)
 endlet // end(D1Pt2up(tknd,dps1,dps2))
@@ -481,7 +481,7 @@ tread01_s1exp(s1e2, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1p0) else
 d1pat_annot_errck( loc0, d1p1, s1e2 )
 endlet // end of [D1Pannot(d1p1,s1e2)]
@@ -497,7 +497,7 @@ d1p2 = tread01_d1pat(d1p2, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1p0) else
 d1pat_qual0_errck( loc0, tok1, d1p2 )
 endlet // end of [D1Pqual0(tok1,d1p2)]
@@ -537,7 +537,7 @@ d1p1 = tread01_d1pat(d1p1, err)
 //
 in//let
 if // if
-(e00=err)
+(err=e00)
 then (ld1p) else D1LAB(lab0, d1p1)
 end (*let*)//end(tread01_l1d1p(ld1p,err))
 //
@@ -1206,7 +1206,7 @@ d1e2 = tread01_d1exp(d1e2, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0) else
 d1exp_a1pp_errck(loc0, d1e1, d1e2)
 endlet // end of [D1Ea1pp(d1e1,d1e2)]
@@ -1227,7 +1227,7 @@ d1e3 = tread01_d1exp(d1e3, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0) else
 d1exp_a2pp_errck(loc0,d1e1,d1e2,d1e3)
 endlet//end-(D1Ea2pp(d1e1,d1e2,d1e3))
@@ -1242,7 +1242,7 @@ val s1es =
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0)
 else d1exp_sarg_errck(loc0, s1es )
 endlet // end of [ D1Esarg( s1es ) ]
@@ -1256,7 +1256,7 @@ val s1es =
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0)
 else d1exp_targ_errck(loc0, s1es )
 endlet // end of [ D1Etarg( s1es ) ]
@@ -1272,7 +1272,7 @@ val d1es =
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0)
 else d1exp_l1st_errck(loc0, d1es )
 endlet // end of [ D1El1st( d1es ) ]
@@ -1289,7 +1289,7 @@ val des2 =
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0) else
 d1exp_l2st_errck(loc0, des1, des2)
 endlet // end of [D1El2st(des1,des2)]
@@ -1305,7 +1305,7 @@ val d1es =
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0) else
 d1exp_s1eq_errck( loc0, d1es )
 endlet // end of [D1Es1eq(d1es)]
@@ -1322,7 +1322,7 @@ val des2 =
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0) else
 d1exp_s2eq_errck(loc0, des1, des2)
 endlet // end of [D1Es2eq(des1,des2)]
@@ -1343,7 +1343,7 @@ tread01_d1expopt(dels, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0) else
 d1exp_ift0_errck(loc0,d1e1,dthn,dels)
 endlet//end-[D1Eift0(d1e1,dthn,dels)]
@@ -1367,7 +1367,7 @@ tinv = tread01_t1inv(tinv, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0) else
 d1exp_ift1_errck
 ( loc0 , d1e1 , dthn , dels , tinv )
@@ -1387,7 +1387,7 @@ tread01_d1clslst(dcls, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0) else
 d1exp_cas0_errck(loc0,tknd,d1e1,dcls)
 endlet//end-(D1Ecas0(tknd,d1e1,dcls))
@@ -1409,7 +1409,7 @@ tinv = tread01_t1inv(tinv, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0) else
 d1exp_cas1_errck
 ( loc0 , tknd , d1e1 , dcls , tinv )
@@ -1429,7 +1429,7 @@ d1e1 = tread01_d1exp(d1e1, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0) else
 d1exp_let0_errck(loc0 , d1cs , d1e1)
 endlet // end of [D1Elet0(d1cs,d1e1)]
@@ -1445,7 +1445,7 @@ val d1es =
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0) else
 d1exp_t1up_errck(loc0 , tknd , d1es)
 endlet // end of [ D1Et1up(tknd,d1es) ]
@@ -1463,7 +1463,7 @@ val des2 =
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0) else
 d1exp_t2up_errck(loc0,tknd,des1,des2)
 endlet // end(D1Et2up(tknd,des1,des2))
@@ -1479,7 +1479,7 @@ val ldes =
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0) else
 d1exp_r1cd_errck( loc0 , tknd , ldes )
 endlet // end of [ D1Er1cd(tknd,ldes) ]
@@ -1497,7 +1497,7 @@ lss2 = tread01_l1d1elst(lss2, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0) else
 d1exp_r2cd_errck(loc0,tknd,lss1,lss2)
 endlet // end(D1Er2cd(tknd,lss1,lss2))
@@ -1523,7 +1523,7 @@ d1e1 = tread01_d1exp(d1e1, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0) else
 d1exp_lam0_errck
 (loc0, tknd, f1as, sres, arrw, d1e1)
@@ -1550,7 +1550,7 @@ d1e1 = tread01_d1exp(d1e1, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0) else
 d1exp_fix0_errck
 (loc0,tknd,deid,f1as,sres,arrw,d1e1)
@@ -1589,7 +1589,7 @@ d1e1 = tread01_d1exp(d1e1, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0) else
 d1exp_where_errck(loc0 , d1e1 , d1cs)
 endlet // end of [D1Ewhere(d1cs,d1es)]
@@ -1607,7 +1607,7 @@ tread01_d1explst(d1es, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0)
 else d1exp_brckt_errck( loc0 , d1es )
 endlet // end of [ D1Ebrckt(  d1es  ) ]
@@ -1623,7 +1623,7 @@ tread01_d1expopt(dopt, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0) else
 d1exp_dtsel_errck(loc0,tknd,lab1,dopt)
 endlet//end-of(D1Edtsel(tknd,lab1,dopt))
@@ -1643,7 +1643,7 @@ tread01_s1exp(s1e2, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0) else
 d1exp_annot_errck( loc0, d1e1, s1e2 )
 endlet // end of [D1Eannot(d1e1,s1e2)]
@@ -1659,7 +1659,7 @@ d1e2 = tread01_d1exp(d1e2, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0) else
 d1exp_qual0_errck( loc0, tok1, d1e2 )
 endlet // end of [D1Equal0(tok1,d1e2)]
@@ -1683,7 +1683,7 @@ d1e1 = tread01_d1exp(d1e1, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d1e0) else
 d1exp_exists_errck(loc0,tknd,d1es,d1e1)
 endlet//end-[D1Eexists(tknd,d1es,d1e1)]
@@ -1728,7 +1728,7 @@ d1e1 = tread01_d1exp(d1e1, err)
 //
 in//let
 if // if
-(e00=err)
+(err=e00)
 then (ld1e) else D1LAB(lab0, d1e1)
 end (*let*)//end(tread01_l1d1e(ld1e,err))
 
@@ -1753,7 +1753,7 @@ val d1p1 =
 tread01_d1pat(d1p1, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (farg) else
 f1arg
 (farg.lctn(), F1ARGdyn0(d1p1))
@@ -1769,7 +1769,7 @@ tread01_s1qualst(s1qs, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (farg) else
 f1arg
 (farg.lctn(), F1ARGsta0(s1qs))
@@ -1785,7 +1785,7 @@ tread01_s1explst(s1es, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (farg) else
 f1arg
 (farg.lctn(), F1ARGmet0(s1es))
@@ -1938,7 +1938,7 @@ tread01_s1qualst(s1qs, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then t1q0 else T1QUAsome(loc0, s1qs)
 endlet // end of [T1QUAsome(loc0,s1qs)]
 ) (*case+*) // end of [tread01_t1qua(t1q0,err)]
@@ -1964,7 +1964,7 @@ tread01_d1patlst(d1ps, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then tinv else T1INVsome(loc0, t1qs, d1ps)
 endlet // end of [T1INVsom(loc0,t1qs,d1ps)]
 ) (*case+*) // end of [tread01_t1inv(tinv,err)]
@@ -1990,7 +1990,7 @@ val e00 = err
 val s1e1 = tread01_s1exp(s1e1, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (a1t0) else
 a1typ
 (a1t0.lctn(), A1TYPsome(s1e1,topt))
@@ -2020,7 +2020,7 @@ tread01_s1qualst(s1qs, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (darg) else
 d1arg
 (darg.lctn(), D1ARGsta0(s1qs))
@@ -2040,7 +2040,7 @@ tread01_a1typlstopt(opt2, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (darg) else
 d1arg
 (darg.lctn(), D1ARGdyn2(ats1,opt2))
@@ -2070,7 +2070,7 @@ val s1e1 =
 tread01_s1exp(s1e1, err)
 in
 if
-(e00=err)
+(err=e00)
 then (sres) else S1RESsome(seff, s1e1)
 endlet // end of [S1RESsome(seff,s1e1)]
 ) (*case+*)//end-of[tread01_s1res(sres,err)]
@@ -2135,7 +2135,7 @@ tread01_s1explst(s1es, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then arrw else F1UNARRWlist(loc0, s1es)
 endlet // end of [F1UNARRWlist(...)]
 ) (*case+*)//end-of(tread01_f1unarrw(...))

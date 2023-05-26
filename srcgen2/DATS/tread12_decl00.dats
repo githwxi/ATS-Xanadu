@@ -482,7 +482,7 @@ val dcl1 = tread12_d2ecl(dcl1, err)
 //
 in
 if
-(e00=err)
+(err=e00)
 then dcl else
 d2ecl_static_errck(dcl.lctn(),tknd,dcl1)
 end (*let*) // end of [ f0_static(dcl,err) ]
@@ -503,7 +503,7 @@ val dcl1 = tread12_d2ecl(dcl1, err)
 //
 in
 if
-(e00=err)
+(err=e00)
 then dcl else
 d2ecl_extern_errck(dcl.lctn(),tknd,dcl1)
 end (*let*) // end of [ f0_extern(dcl,err) ]
@@ -530,7 +530,7 @@ tread12_d2eclist(dcs2, err)
 //
 in
 if
-(e00=err)
+(err=e00)
 then dcl else
 d2ecl_local0_errck( loc, dcs1, dcs2 )
 end (*let*) // end of [ f0_local0(dcl,err) ]
@@ -555,7 +555,7 @@ HX-2022-11-26: checking symbol-error!
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then dcl else
 d2ecl_abssort_errck( dcl.lctn(), sym1 )
 end (*let*) // end of [ f0_abssort(dcl,err) ]
@@ -580,7 +580,7 @@ s2t2 = tread12_sort2(s2t2, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then dcl else
 d2ecl_stacst0_errck(loc, s2c1, s2t2)
 end (*let*) // end of [ f0_stacst0(dcl,err) ]
@@ -605,7 +605,7 @@ def2 = tread12_s2tex(def2, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dcl) else
 d2ecl_sortdef_errck( loc, sym1, def2 )
 end (*let*) // end of [f0_sortdef(dcl,err)]
@@ -630,7 +630,7 @@ def2 = tread12_s2exp(def2, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dcl) else
 d2ecl_sexpdef_errck( loc, s2c1, def2 )
 end (*let*) // end of [f0_sexpdef(dcl,err)]
@@ -655,7 +655,7 @@ atdf = tread12_a2tdf(atdf, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dcl) else
 d2ecl_abstype_errck( loc, s2c1, atdf )
 end (*let*) // end of [f0_abstype(dcl,err)]
@@ -680,7 +680,7 @@ simp = tread12_simpl(simp, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dcl) else
 d2ecl_absopen_errck( loc, tknd, simp )
 end (*let*) // end of [f0_absopen(dcl,err)]
@@ -708,7 +708,7 @@ sdef = tread12_s2exp(sdef, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dcl) else
 d2ecl_absimpl_errck(loc,tknd,simp,sdef)
 end (*let*) // end of [f0_absimpl(dcl,err)]
@@ -740,7 +740,7 @@ D2PTMsome(pval,d2i1) => ((*void*))
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dcl) else
 d2ecl_symload_errck(loc,tknd,sym1,dptm)
 end (*let*) // end of [f0_symload(dcl,err)]
@@ -841,7 +841,7 @@ s2ts = tread12_sort2lst(s2ts, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dcl) else
 d2ecl_datasort_errck( loc, d1cl, s2ts )
 end (*let*) // end of [f0_datasort(dcl,err)]
@@ -867,7 +867,7 @@ tread12_d2valdclist(d2vs, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dcl) else
 d2ecl_valdclst_errck(dcl.lctn(),tknd,d2vs)
 end (*let*) // end of [f0_valdclst(dcl,err)]
@@ -891,7 +891,7 @@ tread12_d2vardclist(d2vs, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dcl) else
 d2ecl_vardclst_errck(dcl.lctn(),tknd,d2vs)
 end (*let*) // end of [f0_vardclst(dcl,err)]
@@ -921,7 +921,7 @@ tread12_d2fundclist(d2fs, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dcl) else
 d2ecl_fundclst_errck(loc, tknd, tqas, d2fs)
 end (*let*) // end of [f0_fundclst(dcl,err)]
@@ -1038,7 +1038,7 @@ val d2cs =
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dcl) else
 d2ecl_dynconst_errck(loc, tknd, tqas, d2cs)
 end (*let*) // end of [f0_dynconst(dcl,err)]
@@ -1156,7 +1156,7 @@ val sdef =
 tread12_s2exp(sdef, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then atdf else A2TDFlteq(sdef) end
 |A2TDFeqeq
 (  sdef  ) =>
@@ -1166,7 +1166,7 @@ val sdef =
 tread12_s2exp(sdef, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then atdf else A2TDFeqeq(sdef) end
 ) (*case+*) // end-of-[tread12_a2tdf(atdf,err)]
 //
@@ -1191,7 +1191,7 @@ prerrln
 val d2e2 = tread12_d2exp(d2e2, err)
 in//letp
 if
-(e00=err)
+(err=e00)
 then tdxp else TEQD2EXPsome(teq1, d2e2)
 endlet // end of [ TEQD2EXPsome( _,_ ) ]
 ) (*case+*)//end-(tread12_teqd2exp(tdxp,err))
@@ -1217,7 +1217,7 @@ prerrln
 val s2e1 = tread12_s2exp(s2e1, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then wsxp else WTHS2EXPsome(twth, s2e1)
 endlet // end of [ WTHS2EXPsome( _,_ ) ]
 ) (*case+*)//end-(tread12_wths2exp(wsxp,err))
@@ -1249,7 +1249,7 @@ wsxp = tread12_wths2exp(wsxp,err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dval)
 else d2valdcl( loc, dpat, tdxp, wsxp )
 endlet // end-of-[tread12_d2valdcl(out,dval)]
@@ -1281,7 +1281,7 @@ dini = tread12_teqd2exp(dini,err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dvar)
 else d2vardcl(loc,dpid,vpid,sres,dini)
 endlet // end-of-[tread12_d2vardcl(out,dvar)]
@@ -1320,7 +1320,7 @@ wsxp = tread12_wths2exp(wsxp,err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dfun)
 else d2fundcl(loc,dpid,farg,sres,tdxp,wsxp)
 endlet // end-of-[tread12_d2fundcl(out,dfun)]
@@ -1355,7 +1355,7 @@ dres = tread12_teqd2exp(dres, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dcst)
 else d2cstdcl(loc, dpid, darg, sres, dres)
 endlet // end-of-[tread12_d2cstdcl(out,dcst)]
