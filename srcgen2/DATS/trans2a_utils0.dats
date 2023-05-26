@@ -737,6 +737,7 @@ auxmain
 , tfun: s2typ
 , fres: f2arglst): (f2arglst, s2typ) =
 (
+//
 case+ f2as of
 |list_nil() =>
 (fres, tfun) where
@@ -750,7 +751,8 @@ val
 in//let
 auxmain(env0, f2as, tres, list_cons(f2a1, fres))
 end//let
-)
+//
+) (*case+*) // end of [auxmain(env0,f2as,tfun,fres)]
 //
 (* ****** ****** *)
 //

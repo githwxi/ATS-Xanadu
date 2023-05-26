@@ -1653,8 +1653,51 @@ list_map_e1nv
 #impltmp
 map$fopr_e1nv<x0><y0><e1>
 (x0, e1) = trans2a_d2exp_tpck(e1, x0, t2p0)
-} (*where*)//end of [list_trans2a_fnp(e1,xs,fopr)]
+} (*where*)//end of [trans2a_d2explst_tpck1(...)]
 //
+(* ****** ****** *)
+//
+#implfun
+trans2a_d2patlst_tpcks
+( env0
+, d2ps, t2ps ) =
+(
+case+ d2ps of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons(d2p1, d2ps) =>
+(
+case+ t2ps of
+|
+list_nil() =>
+let
+val t2p1 = s2typ_none0()
+val d2p1 =
+trans2a_d2pat_tpck(env0, d2p1, t2p1)
+in//let
+list_cons(d2p1, d2ps) where
+{
+val d2ps =
+trans2a_d2patlst_tpcks(env0, d2ps, t2ps)
+}
+end//let//end-of-[list_nil()]
+|
+list_cons(t2p1, t2ps) =>
+let
+val d2p1 =
+trans2a_d2pat_tpck(env0, d2p1, t2p1)
+in//let
+list_cons(d2p1, d2ps) where
+{
+val d2ps =
+trans2a_d2patlst_tpcks(env0, d2ps, t2ps)
+}
+end//let//end-of-[list_cons(t2p1, t2ps)]
+)
+) (*where*)//end of [trans2a_d2patlst_tpcks(...)]
+
 (* ****** ****** *)
 //
 #implfun

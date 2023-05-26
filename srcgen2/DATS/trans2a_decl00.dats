@@ -72,6 +72,35 @@ s2typ_xtv(x2t2p_make_lctn(loc0))
 //
 (* ****** ****** *)
 //
+fun
+d2pat_make_styp_node
+( loc0: loc_t
+, t2p0: s2typ
+, node: d2pat_node): d2pat =
+let
+val
+d2p0 = d2pat(loc0, node)
+in
+  (d2p0.styp(t2p0); d2p0) end
+//
+fun
+d2exp_make_styp_node
+( loc0: loc_t
+, t2p0: s2typ
+, node: d2exp_node): d2exp =
+let
+val
+d2e0 = d2exp(loc0, node)
+in
+  (d2e0.styp(t2p0); d2e0) end
+//
+#symload
+d2pat with d2pat_make_styp_node
+#symload
+d2exp with d2exp_make_styp_node
+//
+(* ****** ****** *)
+//
 #implfun
 trans2a_d2ecl
 ( env0, d2cl ) = let
@@ -371,19 +400,65 @@ D2Cimplmnt0
 , tias, f2as
 , sres, dexp) = d2cl.node()
 //
-// (*
+(*
 val () =
 prerrln
 ("f0_implmnt0: loc0 = ", loc0)
 val () =
 prerrln
 ("f0_implmnt0: d2cl = ", d2cl)
-// *)
+*)
 //
+in//let
+//
+case+
+dimp.node() of
+|
+DIMPLone1(d2c0) =>
+let
+val
+tfun =
+trans2a_d2cst_elim
+( env0
+, loc0, d2c0, tqas, tias)
+val
+(f2as, tres) =
+trans2a_f2arglst_elim
+( env0, loc0, f2as, tfun)
+val
+dexp =
+trans2a_d2exp_tpck(env0, dexp, tres)
+val
+dexp =
+(
+case+ sres of
+|S2RESnone() => dexp
+|S2RESsome(seff, sexp) =>
+let
+val
+tann = s2exp_stpize(sexp)
+val
+ubtf =
+unify2a_s2typ(env0,tres,tann)
+in
+if
+ubtf then dexp else
+d2exp(loc0, tann, D2Et2pck(dexp,tann))
+end (*let*) // end of [S2RESsome(...)]
+)
+in//let
+d2ecl
+(
+loc0,
+D2Cimplmnt0
+(tknd,sqas,tqas,dimp,tias,f2as,sres,dexp))
+end//let//end-of-[DIMPLone1]
+|
+_ (*non-DIMPone1*) =>
+let
 val
 f2as =
-trans2a_f2arglst( env0, f2as )
-//
+trans2a_f2arglst(env0, f2as)
 val
 dexp =
 (
@@ -404,6 +479,8 @@ d2ecl
 loc0,
 D2Cimplmnt0
 (tknd,sqas,tqas,dimp,tias,f2as,sres,dexp))
+end//let//end-of-[non-DIMPone1]
+
 end (*let*) // end of [f0_implmnt0(env0,d2cl)]
 //
 (* ****** ****** *)
