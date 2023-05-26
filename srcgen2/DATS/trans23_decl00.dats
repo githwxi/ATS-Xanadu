@@ -139,6 +139,9 @@ D2Cvardclst _ => f0_vardclst(env0, d2cl)
 |
 D2Cfundclst _ => f0_fundclst(env0, d2cl)
 //
+|
+D2Cimplmnt0 _ => f0_implmnt0(env0, d2cl)
+//
 | _(*otherwise*) =>
 let
   val loc0 = d2cl.lctn()
@@ -297,6 +300,38 @@ trans23_d2fundclist(env0, d2fs)
 in//let
 d3ecl(loc0, D3Cfundclst(tknd, tqas, d3fs))
 end (*let*) // end of [f0_fundclst(env0,d2cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_implmnt0
+( env0:
+! tr23env
+, d2cl: d2ecl): d3ecl =
+let
+//
+val
+loc0 = d2cl.lctn()
+val-
+D2Cimplmnt0
+( tknd
+, sqas, tqas
+, dimp//dcst
+, tias, f2as
+, sres, dexp) = d2cl.node()
+//
+val f3as =
+trans23_f2arglst(env0, f2as)
+//
+val dexp = trans23_d2exp(env0, dexp)
+//
+in//let
+d3ecl
+(
+loc0,
+D3Cimplmnt0
+(tknd,sqas,tqas,dimp,tias,f3as,sres,dexp))
+end (*let*) // end of [f0_implmnt0(env0,d2cl)]
 //
 (* ****** ****** *)
 //

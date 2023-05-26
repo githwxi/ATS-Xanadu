@@ -29,6 +29,7 @@ cons with list_cons
 cons with strmcon_cons
 (* ****** ****** *)
 //
+(*
 fun
 <a:t0>
 length{n:i0}
@@ -37,6 +38,7 @@ length{n:i0}
 case+ xs of
 | nil0() => 0
 | (_ :: xs) => length(xs) + 1)
+*)
 //
 (* ****** ****** *)
 (*

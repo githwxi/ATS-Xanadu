@@ -724,7 +724,11 @@ trans2a_f2arg(env0, f2a1) in (f2a1, tfun) end
 //
 end//let//end-of-[ F2ARGdyn0(...) ]
 //
-) (*case+*) // end of [f0_f2a1(env0,f2a1,tfun)]
+) where
+{
+  val () = prerrln("f0_f2a1: f2a1 = ", f2a1)
+  val () = prerrln("f0_f2a1: tfun = ", tfun)
+} (*where*) // end of [f0_f2a1(env0,f2a1,tfun)]
 //
 (* ****** ****** *)
 //

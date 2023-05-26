@@ -132,12 +132,54 @@ val () =
   trsym2a_d2fundclist(env0, d2fs)
 endlet // end-of-(D2Cfundclst(_,_,_))
 //
-| D2Cnone0() => (   (*void*)   )
-| D2Cnone1(d1cl) => (   (*void*)   )
+|
+D2Cimplmnt0 _ => f0_implmnt0(env0, dcl0)
 //
 | _(* otherwise *) => (   (*skipped*)   )
 //
-end(*let*)//end-of(trsym2a_d2ecl(env0,dcl0))
+end where
+{
+//
+fun
+f0_implmnt0
+( env0:
+! tr2aenv
+, dcl0: d2ecl): void =
+let
+//
+val
+loc0 = dcl0.lctn()
+//
+(*
+val () =
+prerrln
+("f0_implmnt0: loc0 = ", loc0)
+*)
+//
+val-
+D2Cimplmnt0
+( tknd
+, sqas, tqas
+, dimp//dcst
+, tias, f2as
+, sres, dexp) = dcl0.node()
+//
+(*
+val () =
+prerrln
+("f0_implmnt0: dcl0 = ", dcl0)
+*)
+//
+val () =
+trsym2a_f2arglst(env0, f2as)
+//
+val () = trsym2a_d2exp(env0, dexp)
+//
+in//let
+  // nothing else for [f0_implmnt0]
+end//let//end-of-[f0_implmnt0(env0,...)]
+//
+}(*where*)//end-of(trsym2a_d2ecl(env0,dcl0))
 //
 endloc(*local*)//end-of(local(trsym2a_d2ecl))
 
