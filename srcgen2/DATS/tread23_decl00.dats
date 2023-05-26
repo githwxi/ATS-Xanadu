@@ -184,6 +184,40 @@ d3ecl_errck
 end (*let*) // end of [d3ecl_fundclst_errck]
 //
 (* ****** ****** *)
+//
+fun
+d3ecl_implmnt0_errck
+( loc0
+: loc_t
+, tknd
+: token
+, sqas
+: s2qaglst
+, tqas
+: t2qaglst
+, dqid
+: dimpl
+, tias
+: t2iaglst
+, fags
+: f3arglst
+, sres: s2res(*tret*)
+, dexp: d3exp(*body*)): d3ecl =
+let
+val lvl = 0
+in//let
+d3ecl_errck
+(
+lvl+1
+,
+d3ecl_make_node
+( loc0
+, D3Cimplmnt0
+  ( tknd
+  , sqas,tqas,dqid,tias,fags,sres,dexp ) ))
+end (*let*) // end of [d3ecl_implmnt0_errck]
+//
+(* ****** ****** *)
 
 #implfun
 tread23_d3ecl
@@ -211,15 +245,18 @@ D3Cvardclst _ => f0_vardclst(d3cl, err)
 D3Cfundclst _ => f0_fundclst(d3cl, err)
 //
 |
+D3Cimplmnt0 _ => f0_implmnt0(d3cl, err)
+//
+|
 _(*otherwise*) =>
 let
 val lvl0 = 1
 in//let
 (
-err := err+1; d3ecl_errck(lvl0, d3cl))
-endlet // end of [  _(* otherwise *)  ]
+err := err + 1; d3ecl_errck(lvl0, d3cl))
+endlet // end-of-otherwise
 //
-) where// end of [ case+(d3cl.node()) ]
+) where // end of [ case+(d3cl.node()) ]
 {
 //
 (* ****** ****** *)
@@ -240,7 +277,7 @@ val dcl1 = tread23_d3ecl(dcl1, err)
 //
 in
 if
-(e00=err)
+(err=e00)
 then dcl else
 d3ecl_static_errck(dcl.lctn(),tknd,dcl1)
 end (*let*) // end of [ f0_static(dcl,err) ]
@@ -261,7 +298,7 @@ val dcl1 = tread23_d3ecl(dcl1, err)
 //
 in
 if
-(e00=err)
+(err=e00)
 then dcl else
 d3ecl_extern_errck(dcl.lctn(),tknd,dcl1)
 end (*let*) // end of [ f0_extern(dcl,err) ]
@@ -288,7 +325,7 @@ tread23_d3eclist(dcs2, err)
 //
 in
 if
-(e00=err)
+(err=e00)
 then dcl else
 d3ecl_local0_errck( loc, dcs1, dcs2 )
 end (*let*) // end of [ f0_local0(dcl,err) ]
@@ -312,7 +349,7 @@ tread23_d3valdclist(d3vs, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dcl) else
 d3ecl_valdclst_errck(dcl.lctn(),tknd,d3vs)
 end (*let*) // end of [f0_valdclst(dcl,err)]
@@ -336,7 +373,7 @@ tread23_d3vardclist(d3vs, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dcl) else
 d3ecl_vardclst_errck(dcl.lctn(),tknd,d3vs)
 end (*let*) // end of [f0_vardclst(dcl,err)]
@@ -366,10 +403,46 @@ tread23_d3fundclist(d3fs, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dcl) else
 d3ecl_fundclst_errck(loc, tknd, tqas, d3fs)
 end (*let*) // end of [f0_fundclst(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_implmnt0
+( dcl: d3ecl
+, err: &sint >> _): d3ecl =
+let
+//
+val e00 = err
+//
+val-
+D3Cimplmnt0
+(tknd
+,sqas,tqas
+,dqid
+,tias,f3as
+,sres,dexp) = dcl.node()
+//
+val f3as =
+  tread23_f3arglst(f3as, err)
+//
+(*
+val sres = tread23_s2res(sres, err)
+*)
+//
+val dexp = tread23_d3exp(dexp, err)
+//
+in//let
+if
+(err=e00)
+then (dcl) else
+d3ecl_implmnt0_errck
+(dcl.lctn(), tknd
+,sqas, tqas, dqid, tias, f3as, sres, dexp)
+end (*let*) // end of [f0_implmnt0(dcl,err)]
 //
 (* ****** ****** *)
 //
@@ -396,7 +469,7 @@ prerrln
 val d3e2 = tread23_d3exp(d3e2, err)
 in//letp
 if
-(e00=err)
+(err=e00)
 then tdxp else TEQD3EXPsome(teq1, d3e2)
 endlet // end of [ TEQD3EXPsome( _,_ ) ]
 ) (*case+*)//end-(tread23_teqd3exp(tdxp,err))
@@ -430,7 +503,7 @@ wsxp = tread23_wths2exp(wsxp,err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dval)
 else d3valdcl( loc, dpat, tdxp, wsxp )
 endlet // end-of-[tread23_d3valdcl(out,dval)]
@@ -464,7 +537,7 @@ dini = tread23_teqd3exp(dini,err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dvar)
 else d3vardcl(loc,dpid,vpid,sres,dini)
 endlet // end-of-[tread23_d3vardcl(out,dvar)]
@@ -507,7 +580,7 @@ wsxp = tread23_wths2exp(wsxp,err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (dfun)
 else d3fundcl(loc,dpid,farg,sres,tdxp,wsxp)
 endlet // end-of-[tread23_d3fundcl(out,dfun)]

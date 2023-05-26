@@ -744,7 +744,7 @@ val
 d3f0 = tread23_d3pat(d3f0, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3p) else
 d3pat_sapp_errck(d3p.lctn(),d3f0,s2vs)
 end (*let*) // end of [f0_sapp(d3p,err)]
@@ -766,7 +766,7 @@ val
 d3f0 = tread23_d3pat(d3f0, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3p) else
 d3pat_sapq_errck(d3p.lctn(),d3f0,s2vs)
 end (*let*) // end of [f0_sapq(d3p,err)]
@@ -788,7 +788,7 @@ val
 d3f0 = tread23_d3pat(d3f0, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3p) else
 d3pat_tapq_errck(d3p.lctn(),d3f0,tjas)
 end (*let*) // end of [f0_tapq(d3p,err)]
@@ -813,7 +813,7 @@ val
 d3ps = tread23_d3patlst(d3ps, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3p) else
 let
 val loc = d3p.lctn() in
@@ -841,7 +841,7 @@ tread23_d3patlst(d3ps, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3p) else
 let
 val loc = d3p.lctn() in
@@ -870,7 +870,7 @@ tread23_d3patlst(d3ps, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3p) else
 let
 val loc = d3p.lctn() in//let
@@ -899,7 +899,7 @@ tread23_l3d3plst(ldps, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3p) else
 let
 val loc = d3p.lctn() in//let
@@ -931,7 +931,7 @@ s2e2 = tread23_s2exp(s2e2, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3p) else
 let
 val loc = d3p.lctn() in
@@ -960,7 +960,7 @@ d3p1 = tread23_d3pat(d3p1, err)
 //
 in//let
 if // if
-(e00=err)
+(err=e00)
 then (ld3p) else D3LAB(lab0, d3p1)
 end (*let*)//end-(tread23_l3d3p(ld3p,err))
 //
@@ -1035,7 +1035,7 @@ val
 d3f0 = tread23_d3exp(d3f0, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3e) else
 d3exp_sapp_errck(d3e.lctn(),d3f0,s2es)
 end (*let*) // end of [f0_sapp(d3e,err)]
@@ -1057,7 +1057,7 @@ val
 d3f0 = tread23_d3exp(d3f0, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3e) else
 d3exp_sapq_errck(d3e.lctn(),d3f0,t2ps)
 end (*let*) // end of [f0_sapq(d3e,err)]
@@ -1079,7 +1079,7 @@ val
 d3f0 = tread23_d3exp(d3f0, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3e) else
 d3exp_tapp_errck(d3e.lctn(),d3f0,s2es)
 end (*let*) // end of [f0_tapp(d3e,err)]
@@ -1101,7 +1101,7 @@ val
 d3f0 = tread23_d3exp(d3f0, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3e) else
 d3exp_tapq_errck(d3e.lctn(),d3f0,tjas)
 end (*let*) // end of [f0_tapq(d3e,err)]
@@ -1126,7 +1126,7 @@ val
 d3es = tread23_d3explst(d3es, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3e) else
 let
 val loc = d3e.lctn() in
@@ -1156,7 +1156,7 @@ d3e1 = tread23_d3exp(d3e1, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3e) else
 let
 val loc = d3e.lctn() in
@@ -1188,7 +1188,7 @@ tread23_d3expopt(dels, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3e) else
 let
 val loc = d3e.lctn() in//let
@@ -1220,7 +1220,7 @@ tread23_d3clslst(d3cs, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3e) else
 let
 val loc = d3e.lctn() in
@@ -1248,7 +1248,7 @@ tread23_d3explst(d3es, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3e) else
 let
 val loc = d3e.lctn() in//let
@@ -1277,7 +1277,7 @@ tread23_d3explst(d3es, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3e) else
 let
 val loc = d3e.lctn() in//let
@@ -1306,7 +1306,7 @@ tread23_l3d3elst(ldes, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3e) else
 let
 val loc = d3e.lctn() in//let
@@ -1337,7 +1337,7 @@ tread23_d3eclist(dcls, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3e) else
 let
 val loc = d3e.lctn() in
@@ -1366,7 +1366,7 @@ d3er = tread23_d3exp(d3er, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3e) else
 let
 val loc = d3e.lctn() in
@@ -1399,7 +1399,7 @@ d3e1 = tread23_d3exp(d3e1, err)
 //
 in//let
 if
-(e00=err)
+(err=e00)
 then (d3e) else
 let
 val loc = d3e.lctn() in
@@ -1428,7 +1428,7 @@ d3e1 = tread23_d3exp(d3e1, err)
 //
 in//let
 if // if
-(e00=err)
+(err=e00)
 then (ld3e) else D3LAB(lab0, d3e1)
 end (*let*)//end-(tread23_l3d3e(ld3e,err))
 //
@@ -1453,7 +1453,7 @@ val d3ps =
 tread23_d3patlst(d3ps, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (farg) else
 f3arg
 (farg.lctn(), F3ARGdyn0(npf1, d3ps))

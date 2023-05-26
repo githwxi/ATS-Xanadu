@@ -416,6 +416,16 @@ D3Cfundclst
 (tknd,tqas,d3fs) =>
 print("D3Cfundclst(",tknd,";",tqas,";",d3fs,")")
 //
+|
+D3Cimplmnt0
+(tknd
+,sqas,tqas
+,dqid,tias
+,farg,sres,body) =>
+(
+print("D3Cimplmnt0(");
+print(tknd,";",sqas,";",tqas,";");
+print(dqid,";",tias,";",farg,";",sres,";",body,")"))
 //
 |D3Cnone0() => print( "D3Cnone0(", ")" )
 |D3Cnone1(d2cl) => print( "D3Cnone1(",d2cl,")" )

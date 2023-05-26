@@ -211,7 +211,7 @@ val
 s2t1 = tread12_sort2(s2t1, err)
 in//let
 if
-(e00=err)
+(err=e00)
 then (s2t0)
 else (sort2_fun1_errck(s2ts, s2t1))
 end (*let*) // end of [S2Tfun1(...)]
@@ -999,7 +999,7 @@ val s2e = tread12_s2exp(s2e, err)
 //
 in//let
 if
-(e00=err) then ls2e else S2LAB(lab,s2e)
+(err=e00) then ls2e else S2LAB(lab,s2e)
 endlet // end of [tread12_l2s2e(ls2e,err)]
 //
 (* ****** ****** *)
