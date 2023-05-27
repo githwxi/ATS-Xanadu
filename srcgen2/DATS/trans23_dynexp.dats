@@ -121,8 +121,10 @@ let
 val loc0 = d2p0.lctn()
 val t2p0 = d2p0.styp()
 //
+(*
 val (  ) = prerrln
 ("trans23_d2pat: d2p0 = ", d2p0)
+*)
 //
 in//let
 //
@@ -270,6 +272,7 @@ T2Pfun1
 , npf1, t2ps, tres) => tres
 | _(* non-T2Pfun1 *) => tfun): s2typ
 //
+(*
 val () =
 prerrln
 ("trans23_d2pat:f0_dapp:tfun = ",tfun)
@@ -279,6 +282,7 @@ prerrln
 val () =
 prerrln
 ("trans23_d2pat:f0_dapp:tres = ",tres)
+*)
 //
 in//let
 let
@@ -386,8 +390,10 @@ let
 val loc0 = d2e0.lctn()
 val t2p0 = d2e0.styp()
 //
+(*
 val (  ) = prerrln
 ("trans23_d2exp: d2e0 = ", d2e0)
+*)
 //
 in//let
 //
@@ -576,6 +582,7 @@ T2Pfun1
 , npf1, t2ps, tres) => tres
 | _(* non-T2Pfun1 *) => tfun): s2typ
 //
+(*
 val () =
 prerrln
 ("trans23_d2exp:f0_dapp:tfun = ",tfun)
@@ -585,6 +592,7 @@ prerrln
 val () =
 prerrln
 ("trans23_d2exp:f0_dapp:tres = ",tres)
+*)
 //
 in//let
 let
@@ -933,12 +941,14 @@ let
 //
 val loc0 = farg.lctn()
 //
+(*
 val () =
 prerrln
 ("trans23_f2arg: loc0 = ", loc0)
 val () =
 prerrln
 ("trans23_f2arg: farg = ", farg)
+*)
 //
 in//let
 //
@@ -1158,10 +1168,12 @@ d3pat(loc0, t2p0, D3Pt2pck(d3p0,t2p0)) end
 end where
 {
 //
+(*
 val () =
 prerrln("trans23_d3pat_tpck: d3p0 = ", d3p0)
 val () =
 prerrln("trans23_d3pat_tpck: t2p0 = ", t2p0)
+*)
 //
 } (*where*) // end of [trans23_d3pat_tpck(...)]
 
@@ -1182,10 +1194,12 @@ d3exp(loc0, t2p0, D3Et2pck(d3e0,t2p0)) end
 end where
 {
 //
+(*
 val () =
 prerrln("trans23_d3exp_tpck: d3e0 = ", d3e0)
 val () =
 prerrln("trans23_d3exp_tpck: t2p0 = ", t2p0)
+*)
 //
 } (*where*) // end of [trans23_d3exp_tpck(...)]
 

@@ -1698,10 +1698,12 @@ end//let//end-of-[list_cons(t2p1, t2ps)]
 )
 ) where
 {
+(*
 val () =
 prerrln("trans2a_d2patlst_tpcks: d2ps = ", d2ps)
 val () =
 prerrln("trans2a_d2patlst_tpcks: t2ps = ", t2ps)
+*)
 }(*where*)//end of [trans2a_d2patlst_tpcks(...)]
 
 (* ****** ****** *)
