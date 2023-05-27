@@ -1135,12 +1135,12 @@ the_dexpenv_allist_prerr((*void*))
 in//let
 end where
 {
-// (*
+(*
 val () =
 prerrln("tr12env_add0_d2itm: k0 = ", k0)
 val () =
 prerrln("tr12env_add0_d2itm: x0 = ", x0)
-// *)
+*)
 } (*where*)//end-[tr12env_add0_d2itm(env0,k0,x0)]
 
 (* ****** ****** *)
@@ -1408,9 +1408,11 @@ end//let
 end where
 {
 //
+(*
   val () =
   prerrln
   ("tr12env_add1_d2con: d2c0 = ", d2c0)
+*)
 //
 } (*where*)//end[tr12env_add1_d2con(env0,d2c0)]
 //
@@ -1460,9 +1462,11 @@ end//let
 end where
 {
 //
+(*
   val () =
   prerrln
   ("tr12env_add1_d2cst: d2c0 = ", d2c0)
+*)
 //
 } (*where*)//end[tr12env_add1_d2cst(env0,d2c0)]
 //

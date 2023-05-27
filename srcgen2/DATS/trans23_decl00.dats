@@ -75,13 +75,16 @@ _(*TRANS23*) = "./trans23.dats"
 trans23_d2ecl
 ( env0, d2cl ) = let
 //
-// (*
+(*
 val
 loc0 = d2cl.lctn()
 val () =
 prerrln
+("trans23_d2ecl: loc0 = ", loc0)
+val () =
+prerrln
 ("trans23_d2ecl: d2cl = ", d2cl)
-// *)
+*)
 //
 in//let
 //
