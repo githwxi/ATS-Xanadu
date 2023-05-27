@@ -931,9 +931,9 @@ endlet // end of [S0TDFtsub]
 //
 (*
 val () =
-println!("f0_sortdef: tid0 = ", tid0)
+prerrln("f0_sortdef: tid0 = ", tid0)
 val () =
-println!("f0_sortdef: stdf = ", stdf)
+prerrln("f0_sortdef: stdf = ", stdf)
 *)
 //
 in
@@ -954,7 +954,7 @@ val loc0 = d0cl.lctn()
 //
 (*
 val () =
-println!
+prerrln
 ("trans01_d0ecl: d0cl = ", d0cl)
 *)
 //
@@ -981,13 +981,13 @@ s1e2 = trans01_s0exp(tenv, s0e2)
 //
 (*
 val () =
-println!("f0_sexpdef: seid = ", seid)
+prerrln("f0_sexpdef: seid = ", seid)
 val () =
-println!("f0_sexpdef: smas = ", smas)
+prerrln("f0_sexpdef: smas = ", smas)
 val () =
-println!("f0_sexpdef: tres = ", tres)
+prerrln("f0_sexpdef: tres = ", tres)
 val () =
-println!("f0_sexpdef: s1e2 = ", s1e2)
+prerrln("f0_sexpdef: s1e2 = ", s1e2)
 *)
 //
 in
@@ -1008,7 +1008,7 @@ val loc0 = d0cl.lctn()
 //
 (*
 val () =
-println!
+prerrln
 ("trans01_d0ecl: d0cl = ", d0cl)
 *)
 //
@@ -1056,7 +1056,7 @@ val loc0 = d0cl.lctn()
 //
 (*
 val () =
-println!
+prerrln
 ("trans01_d0ecl: d0cl = ", d0cl)
 *)
 //
@@ -1083,7 +1083,7 @@ val loc0 = d0cl.lctn()
 //
 (*
 val () =
-println!
+prerrln
 ("trans01_d0ecl: d0cl = ", d0cl)
 *)
 //
@@ -1121,7 +1121,7 @@ val loc0 = d0cl.lctn()
 //
 (*
 val () =
-println!
+prerrln
 ("trans01_d0ecl: d0cl = ", d0cl)
 *)
 //
@@ -1174,14 +1174,6 @@ f0_include
 , d0cl: d0ecl): d1ecl =
 let
 //
-val loc0 = d0cl.lctn()
-//
-(*
-val () =
-println!
-("trans01_d0ecl: d0cl = ", d0cl)
-*)
-//
 val-
 D0Cinclude
 (tknd, g0e1) = d0cl.node()
@@ -1190,7 +1182,16 @@ val g1e1 = trans01_g0exp(tenv, g0e1)
 //
 in//let
   d1ecl(loc0, D1Cinclude(tknd, g1e1))
-end (*let*) // end of [f0_include(tenv,d0cl)]
+end where
+{
+//
+val loc0 = d0cl.lctn()
+//
+val () =
+prerrln
+("trans01_d0ecl: f0_include: d0cl = ", d0cl)
+//
+} (*where*) // end of [f0_include(tenv,d0cl)]
 
 (* ****** ****** *)
 
@@ -1201,14 +1202,6 @@ f0_staload
 , d0cl: d0ecl): d1ecl =
 let
 //
-val loc0 = d0cl.lctn()
-//
-(*
-val () =
-println!
-("trans01_d0ecl: d0cl = ", d0cl)
-*)
-//
 val-
 D0Cstaload
 (tknd, g0e1) = d0cl.node()
@@ -1217,7 +1210,15 @@ val g1e1 = trans01_g0exp(tenv, g0e1)
 //
 in//let
   d1ecl(loc0, D1Cstaload(tknd, g1e1))
-end (*let*) // end of [f0_staload(tenv,d0cl)]
+end where
+{
+//
+val loc0 = d0cl.lctn()
+//
+val () =
+prerrln
+("trans01_d0ecl: f0_staload: d0cl = ", d0cl)
+} (*where*) // end of [f0_staload(tenv,d0cl)]
 
 (* ****** ****** *)
 
@@ -1228,14 +1229,6 @@ f0_dyninit
 , d0cl: d0ecl): d1ecl =
 let
 //
-val loc0 = d0cl.lctn()
-//
-(*
-val () =
-println!
-("trans01_d0ecl: d0cl = ", d0cl)
-*)
-//
 val-
 D0Cdyninit
 (tknd, g0e1) = d0cl.node()
@@ -1244,7 +1237,15 @@ val g1e1 = trans01_g0exp(tenv, g0e1)
 //
 in//let
   d1ecl(loc0, D1Cdyninit(tknd, g1e1))
-end (*let*) // end of [f0_dyninit(tenv,d0cl)]
+end where
+{
+//
+val loc0 = d0cl.lctn()
+//
+val () = prerrln
+("trans01_d0ecl: f0_dyninit: d0cl = ", d0cl)
+//
+} (*where*) // end of [f0_dyninit(tenv,d0cl)]
 
 (* ****** ****** *)
 
@@ -1259,7 +1260,7 @@ val loc0 = d0cl.lctn()
 //
 (*
 val () =
-println!
+prerrln
 ("trans01_d0ecl: d0cl = ", d0cl)
 *)
 //
@@ -1287,7 +1288,7 @@ val loc0 = d0cl.lctn()
 //
 (*
 val () =
-println!
+prerrln
 ("trans01_d0ecl: d0cl = ", d0cl)
 *)
 //
@@ -1315,7 +1316,7 @@ val loc0 = d0cl.lctn()
 //
 (*
 val () =
-println!
+prerrln
 ("trans01_d0ecl: d0cl = ", d0cl)
 *)
 //
@@ -1343,7 +1344,7 @@ val loc0 = d0cl.lctn()
 //
 (*
 val () =
-println!
+prerrln
 ("trans01_d0ecl: d0cl = ", d0cl)
 *)
 //
@@ -1418,7 +1419,7 @@ val loc0 = d0cl.lctn()
 //
 (*
 val () =
-println!
+prerrln
 ("trans01_d0ecl: d0cl = ", d0cl)
 *)
 //
@@ -1446,7 +1447,7 @@ val loc0 = d0cl.lctn()
 //
 (*
 val () =
-println!
+prerrln
 ("trans01_d0ecl: d0cl = ", d0cl)
 *)
 //
@@ -1475,7 +1476,7 @@ val loc0 = d0cl.lctn()
 //
 (*
 val () =
-println!
+prerrln
 ("trans01_d0ecl: d0cl = ", d0cl)
 *)
 //
