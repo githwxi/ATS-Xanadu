@@ -646,6 +646,17 @@ s2exp_make_node
 #symload s2exp with s2exp_make_node
 (* ****** ****** *)
 //
+#abstbox
+f2env_tbox <= ptr
+#typedef
+f2env = f2env_tbox
+#typedef
+f2envopt = optn(f2env)
+#vwtpdef
+f2envopt_vt = optn_vt(f2env)
+//
+(* ****** ****** *)
+//
 datatype s2itm =
 //
 | S2ITMvar of (s2var)
@@ -655,13 +666,11 @@ datatype s2itm =
 | S2ITMcst of (s2cstlst)
 //
 (*
-|
-S2ITMexp of (g1exp) // for generic stuff
+| S2ITMexp of (g1exp) // for generics
 *)
 //
 (*
-|
-S2ITMfmodenv of (fmodenv) // for name space
+| S2ITMenv of (f2env) // for name space
 *)
 //
 (* ****** ****** *)

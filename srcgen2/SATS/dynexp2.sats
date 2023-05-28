@@ -78,6 +78,16 @@ LEX = "./lexing0.sats"
 #typedef token = $LEX.token
 //
 (* ****** ****** *)
+//
+#staload
+FP0 = "./filpath.sats"
+//
+#typedef
+fpath = $FP0.fpath
+#typedef
+fpathopt = $FP0.fpathopt
+//
+(* ****** ****** *)
 #staload
 S1E = "./staexp1.sats"
 #staload
@@ -89,6 +99,8 @@ G1M = "./gmacro1.sats"
 S2E = "./staexp2.sats"
 #staload
 T2P = "./statyp2.sats"
+(* ****** ****** *)
+#typedef g1exp = $G1M.g1exp
 (* ****** ****** *)
 #typedef s1qid = $S1E.s1qid
 #typedef d1qid = $S1E.d1qid
@@ -145,6 +157,10 @@ T2P = "./statyp2.sats"
 (* ****** ****** *)
 #abstbox d2ecl_tbox // ptr
 #typedef d2ecl = d2ecl_tbox
+(* ****** ****** *)
+//
+#typedef f2env = $S2E.f2env
+//
 (* ****** ****** *)
 //
 (*
@@ -224,6 +240,8 @@ T2P = "./statyp2.sats"
 #typedef d2expopt = optn(d2exp)
 (* ****** ****** *)
 #typedef d2eclist = list(d2ecl)
+(* ****** ****** *)
+#typedef f2envopt = optn(f2env)
 (* ****** ****** *)
 #typedef d2arglst = list(d2arg)
 (* ****** ****** *)
@@ -452,7 +470,8 @@ d2ptm =
 |
 D2PTMnone of (d1qid)
 |
-D2PTMsome of (int(*pval*),d2itm)
+D2PTMsome of
+(sint(*pval*), d2itm(*...*))
 //
 where
 {
@@ -1134,7 +1153,24 @@ d2ecl_node =
 D2Csymload of
 (token, sym_t(*loaded*), d2ptm)
 //
-|D2Cdatasort of (d1ecl, sort2lst)
+|
+D2Cinclude of
+( token
+, g1exp // src
+, sint(*stadyn: 0/1*)
+, fpathopt
+, d2eclistopt) // file inclusion
+//
+|
+D2Cstaload of
+( token
+, g1exp // src
+, sint(*stadyn: 0/1*)
+, fpathopt
+, sint(*shared: 0/1*), f2envopt)
+//
+|
+D2Cdatasort of (d1ecl, sort2lst)
 //
 |
 D2Cvaldclst of
