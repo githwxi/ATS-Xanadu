@@ -45,25 +45,26 @@ ATS_PACKNAME
 (* ****** ****** *)
 
 local
-
+//
 datatype
 drpth =
 DRPTH of
 (strn(*name*))
+//
 #absimpl drpth_tbox = drpth
-
-in//local
+//
+in(*in-of-local*)
 
 #implfun
 drpth_get_name(dpx) =
 let
-val+DRPTH(nam) = dpx in nam
+val+DRPTH(dnm) = dpx in dnm
 end // end of [drpth_get_name]
 
 #impltmp
-drpth_make_name(nam) = DRPTH(nam)
+drpth_make_name(dnm) = DRPTH(dnm)
 
-end (*local*) // end of [local]
+end (*local*) // end of [local(drpth)]
 
 (* ****** ****** *)
 

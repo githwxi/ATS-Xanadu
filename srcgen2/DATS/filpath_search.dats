@@ -58,16 +58,14 @@ fpth =
 fpath_make_absolute(base)
 }
 //
-(*
 #implfun
-fsrch_current
-
+fsrch_dcurrent
+  (base) = let
   val
   dir0 = the_drpath_get()
 in
   fsrch_dir1base(dir0, base)
-end // end-of-[fsrch_current(base)]
-*)
+end // end-of-[fsrch_dcurrent(base)]
 //
 (*
 #implfun
@@ -108,10 +106,11 @@ if
 then
 (
 if
-base[i0] = cdir[0]
+cdir[i0]=base[i0]
 then
 loop(i0+1, n0) else false)
-else base[i0+1] = theDirSep_get()
+else
+(base[i0]=theDirSep_get())
 //
 in
 let
@@ -130,24 +129,14 @@ in (*in-of-local*)
 fsrch_combined(fnm0) =
 let
 //
-(*
-val () =
-prerrln
-("fsrch_combined: base = ", base)
-*)
 //
 val
 base =
 (
 case+
 fnm0 of
-|FNMbase(fnm) => fnm) : strn
-//
-(*
-val () =
-prerrln
-("fsrch_combined: fknd = ", fknd)
-*)
+|FNMbase(name) => name
+) : strn // end-of-[val(base)]
 //
 val
 fknd =
@@ -155,7 +144,17 @@ fknd =
 if
 fkndq0(base) then 0
 else if
-fkndq1(base) then 1 else -1): sint
+fkndq1(base) then 1 else -1
+) : sint // end-of-[val(fknd)]
+//
+// (*
+val () =
+prerrln
+("fsrch_combined: fnm0 = ", fnm0)
+val () =
+prerrln
+("fsrch_combined: fknd = ", fknd)
+// *)
 //
 in
 //

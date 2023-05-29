@@ -83,6 +83,20 @@ drpth_make_name
 #symload
 drpth with drpth_make_name
 (* ****** ****** *)
+//
+val
+the_drpth_nil: drpth
+fun
+the_drpth_get(): drpth
+fun
+the_drpthlst_get(): drpthlst
+//
+fun
+the_drpth_fprint(FILR): void
+fun
+the_drpthlst_fprint(FILR): void
+//
+(* ****** ****** *)
 fun
 fpath_get_gvn0
 (fpx: fpath): strn // given
@@ -128,7 +142,8 @@ fnameopt = optn(fname)
 fnameopt_vt = optn_vt(fname)
 //
 (* ****** ****** *)
-fun fname_fprint(FILR, fname): void
+fun
+fname_fprint(FILR, fname): void
 (* ****** ****** *)
 fun
 fsrch_absolute(base: strn): fpathopt

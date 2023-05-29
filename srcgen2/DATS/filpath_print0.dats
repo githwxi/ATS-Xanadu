@@ -83,5 +83,34 @@ print("FNMbase(", name, ")")
 }
 //
 (* ****** ****** *)
+//
+#implfun
+the_drpth_fprint
+  (out) =
+drpth_fprint
+( out, dir0 ) where
+{
+val
+dir0 = the_drpth_get() }
+//
+#implfun
+the_drpthlst_fprint
+  (out) = let
+//
+val
+dirs =
+the_drpthlst_get()
+//
+in//let
+(
+  list_foreach(dirs)) where
+{
+#impltmp
+foreach$work
+<drpth>(dir) = drpth_fprint(out, dir)
+}
+end//let//end-of-[the_drpthlst_fprint]
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_filpath_print0.dats] *)
