@@ -1168,6 +1168,10 @@ end (*let*) // end of [f0_symload(tenv,d0cl)]
 
 (* ****** ****** *)
 
+local
+
+in(*in-of-local*)
+
 fun
 f0_include
 ( tenv:
@@ -1196,6 +1200,8 @@ prerrln
 // *)
 //
 } (*where*) // end of [f0_include(tenv,d0cl)]
+
+end (*local*) // end of [f0_include(tenv,d0cl)]
 
 (* ****** ****** *)
 

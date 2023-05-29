@@ -837,9 +837,20 @@ D1Csymload of
 , sym_t
 , d1qid(*qual-id*), g1expopt )
 //
+// (*
 |
 D1Cinclude of
-(sint(*s/d*), token, g1exp)//inclusion
+( sint(*s/d*)
+, token, g1exp(*src*)) // inclusion
+// *)
+(*
+|
+D1Cinclude of
+( sint(*s/d*)
+, token, g1exp // src
+, fpathopt, d1eclistopt) // inclusion
+*)
+//
 |
 D1Cstaload of
 (sint(*s/d*), token, g1exp)//staloading
