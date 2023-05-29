@@ -141,7 +141,7 @@ base =
 (
 case+
 fnm0 of
-|FNMstrn(fnm) => fnm) : strn
+|FNMbase(fnm) => fnm) : strn
 //
 (*
 val () =

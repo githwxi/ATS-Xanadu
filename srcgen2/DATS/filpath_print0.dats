@@ -75,8 +75,8 @@ fname_fprint(out, fnm) =
 (
 case+ fnm of
 |
-FNMstrn(name) =>
-print("FNMstrn(", name, ")")
+FNMbase(name) =>
+print("FNMbase(", name, ")")
 ) where
 {
   #impltmp g_print$out<>() = out
