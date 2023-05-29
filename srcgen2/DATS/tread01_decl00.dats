@@ -292,13 +292,15 @@ end (*let*) // end of [d1ecl_symload_errck]
 fun
 d1ecl_include_errck
 ( loc0: loc_t
+, knd0: sint
 , tknd: token
 , g1e1: g1exp) : d1ecl =
 let
 val lvl = 0
 in//let
 d1ecl_errck
-(lvl+1, d1ecl(loc0, D1Cinclude(tknd, g1e1)))
+( lvl+1
+, d1ecl(loc0, D1Cinclude(knd0, tknd, g1e1)))
 end (*let*) // end of [d1ecl_include_errck]
 //
 (* ****** ****** *)
@@ -306,13 +308,15 @@ end (*let*) // end of [d1ecl_include_errck]
 fun
 d1ecl_staload_errck
 ( loc0: loc_t
+, knd0: sint
 , tknd: token
 , g1e1: g1exp) : d1ecl =
 let
 val lvl = 0
 in//let
 d1ecl_errck
-(lvl+1, d1ecl(loc0, D1Cstaload(tknd, g1e1)))
+( lvl+1
+, d1ecl(loc0, D1Cstaload(knd0, tknd, g1e1)))
 end (*let*) // end of [d1ecl_staload_errck]
 //
 (* ****** ****** *)
@@ -860,16 +864,19 @@ let
 //
 val e00 = err
 //
+val loc = dcl.lctn()
+//
 val-
 D1Cinclude
-(tknd, g1e1) = dcl.node()
+( knd0
+, tknd, g1e1) = dcl.node()
 //
 val g1e1 = tread01_g1exp(g1e1, err)
 //
 if
 (err=e00)
 then (dcl) else
-d1ecl_include_errck(dcl.lctn(),tknd,g1e1)
+d1ecl_include_errck(loc,knd0,tknd,g1e1)
 end (*let*) // end of [f0_include(dcl,err)]
 //
 (* ****** ****** *)
@@ -882,16 +889,19 @@ let
 //
 val e00 = err
 //
+val loc = dcl.lctn()
+//
 val-
 D1Cstaload
-(tknd, g1e1) = dcl.node()
+( knd0
+, tknd, g1e1) = dcl.node()
 //
 val g1e1 = tread01_g1exp(g1e1, err)
 //
 if
 (err=e00)
 then (dcl) else
-d1ecl_staload_errck(dcl.lctn(),tknd,g1e1)
+d1ecl_staload_errck(loc,knd0,tknd,g1e1)
 end (*let*) // end of [f0_staload(dcl,err)]
 //
 (* ****** ****** *)

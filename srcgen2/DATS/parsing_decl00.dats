@@ -926,8 +926,9 @@ in
 (
 err := e00;
 d0ecl_make_node
-( lres
-, D0Csymload(tknd, symb, twth, dqid, opt1)))
+(
+lres,
+D0Csymload(tknd, symb, twth, dqid, opt1)))
 end (*let*) // end of [T_SRP_SYMLOAD(...)]
 //
 (* ****** ****** *)
@@ -935,24 +936,28 @@ end (*let*) // end of [T_SRP_SYMLOAD(...)]
 |
 T_SRP_INCLUDE() =>
 let
+  val knd0 = f00
   val tknd = tok
   val (  ) = buf.skip1()
   val g0e1 = p1_g0exp(buf, err)
   val lres = tknd.lctn()+g0e1.lctn()
 in//let
 err := e00;
-d0ecl_make_node(lres, D0Cinclude(tknd, g0e1))
+d0ecl_make_node
+(lres, D0Cinclude(knd0(*s/d*), tknd, g0e1))
 end (*let*) // end of [T_SRP_INCLUDE(...)]
 |
 T_SRP_STALOAD() =>
 let
+  val knd0 = f00
   val tknd = tok
   val (  ) = buf.skip1()
   val g0e1 = p1_g0exp(buf, err)
   val lres = tknd.lctn()+g0e1.lctn()
 in//let
 err := e00;
-d0ecl_make_node(lres, D0Cstaload(tknd, g0e1))
+d0ecl_make_node
+(lres, D0Cstaload(knd0(*s/d*), tknd, g0e1))
 end (*let*) // end of [T_SRP_STALOAD(...)]
 //
 (* ****** ****** *)

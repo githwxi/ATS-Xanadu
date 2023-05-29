@@ -943,9 +943,11 @@ D0Csymload of
 , d0qid(*qual-id*), g0expopt(*prec*))
 //
 |
-D0Cinclude of (token, g0exp)//inclusion
+D0Cinclude of
+(sint(*s/d*), token, g0exp)//inclusion
 |
-D0Cstaload of (token, g0exp)//staloading
+D0Cstaload of
+(sint(*s/d*), token, g0exp)//staloading
 |
 D0Cdyninit of (token, g0exp)//initization
 //
