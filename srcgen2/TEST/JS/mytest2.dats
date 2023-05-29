@@ -1,5 +1,5 @@
 (* ****** ****** *)
-#staload "./mytest1.sats"
+#include "./mytest1.sats"
 (* ****** ****** *)
 #staload MYTEST2 = "./mytest2.sats"
 (* ****** ****** *)

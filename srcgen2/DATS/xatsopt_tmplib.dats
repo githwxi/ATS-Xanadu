@@ -167,6 +167,10 @@ g_print<fpath>(fpx) =
 fpath_fprint(g_print$out<>(), fpx)
 (* ****** ****** *)
 #impltmp
+g_print<fname>(fnm) =
+fname_fprint(g_print$out<>(), fnm)
+(* ****** ****** *)
+#impltmp
 g_cmp<postn> = postn_cmp
 #impltmp
 g_cmp<loctn> = loctn_cmp

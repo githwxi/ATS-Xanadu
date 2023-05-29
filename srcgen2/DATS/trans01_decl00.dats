@@ -1186,14 +1186,12 @@ in//let
 strn_tabulate_cfr
 ( ln-2
 , lam i0 => src0[i0+1]
-) end//let//[xstrunqtize]
+) end//let//[xstrunqtize(src0,ln)]
 (* ****** ****** *)
 fun
-xstrnormize
-(base: strn): strn = base
+xstrnormize(base: strn): strn = base
 fun
-xstrevalize
-(base: strn): strn = base
+xstrevalize(base: strn): strn = base
 (* ****** ****** *)
 
 fun
@@ -1258,6 +1256,7 @@ g1e1 = trans01_g0exp(tenv, g0e1)
 //
 in//let
 let
+//
 val opt0 =
 f0_g1e1(g1e1): fnameopt
 val opt1 =
@@ -1267,6 +1266,12 @@ case+ opt0 of
  optn_nil()
 |optn_cons(fnm0) =>
  fsrch_combined(fnm0)): fpathopt
+//
+val (  ) =
+prerrln("f0_include: opt0 = ", opt0)
+val (  ) =
+prerrln("f0_include: opt1 = ", opt1)
+//
 in//let
 d1ecl(loc0, D1Cinclude(knd0, tknd, g1e1))
 end//let
@@ -1782,26 +1787,31 @@ WD1CSsome(trans01_d0eclist(tenv, dcls))
 #implfun
 trans01_d0valdclist
   (  tenv,dcls  ) =
-list_trans01_fnp(tenv, dcls, trans01_d0valdcl)
+(
+  list_trans01_fnp(tenv, dcls, trans01_d0valdcl))
 #implfun
 trans01_d0vardclist
   (  tenv,dcls  ) =
-list_trans01_fnp(tenv, dcls, trans01_d0vardcl)
+(
+  list_trans01_fnp(tenv, dcls, trans01_d0vardcl))
 #implfun
 trans01_d0fundclist
   (  tenv,dcls  ) =
-list_trans01_fnp(tenv, dcls, trans01_d0fundcl)
+(
+  list_trans01_fnp(tenv, dcls, trans01_d0fundcl))
 #implfun
 trans01_d0cstdclist
   (  tenv,dcls  ) =
-list_trans01_fnp(tenv, dcls, trans01_d0cstdcl)
+(
+  list_trans01_fnp(tenv, dcls, trans01_d0cstdcl))
 //
 (* ****** ****** *)
 //
 #implfun
 trans01_d0eclistopt
   (  tenv,dopt  ) =
-optn_trans01_fnp(tenv, dopt, trans01_d0eclist)
+(
+  optn_trans01_fnp(tenv, dopt, trans01_d0eclist))
 //
 (* ****** ****** *)
 
