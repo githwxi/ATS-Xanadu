@@ -61,10 +61,36 @@ let
 val+DRPTH(dnm) = dpx in dnm
 end // end of [drpth_get_name]
 
+(* ****** ****** *)
+
 #impltmp
 drpth_make_name(dnm) = DRPTH(dnm)
 
 end (*local*) // end of [local(drpth)]
+
+(* ****** ****** *)
+
+local
+//
+val
+the_drpth_nil =
+drpth_make_name("")
+//
+val
+the_drpth_ref =
+a0ref_make_1val(the_drpth_nil)
+val
+the_drpthlst_ref =
+a0ref_make_1val(list_nil(*void*))
+//
+in//local
+
+#implfun
+the_drpth_get() = !the_drpth_ref
+#implfun
+the_drpthlst_get() = !the_drpthlst_ref
+
+end (*local*) // end of [the_drpth/the_drpthlst]
 
 (* ****** ****** *)
 
