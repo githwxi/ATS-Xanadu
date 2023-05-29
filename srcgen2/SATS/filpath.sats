@@ -118,7 +118,7 @@ fun fpath_fprint(FILR, fpath): void
 //
 datatype
 fname =
-| FNMstrn of strn
+| FNMbase of strn
 (*
 HX: other kinds of fnames?
 *)

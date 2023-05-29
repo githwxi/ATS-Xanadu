@@ -52,6 +52,8 @@ _(*TRANS01*) = "./trans01.dats"
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
+#staload "./../SATS/filpath.sats"
+(* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
@@ -1170,6 +1172,73 @@ end (*let*) // end of [f0_symload(tenv,d0cl)]
 
 local
 
+(* ****** ****** *)
+fun
+xstrunqtize
+( src0
+: strn, ln: sint): strn =
+let
+(*
+val ln =
+strn_length(src0)
+*)
+in//let
+strn_tabulate_cfr
+( ln-2
+, lam i0 => src0[i0+1]
+) end//let//[xstrunqtize]
+(* ****** ****** *)
+fun
+xstrnormize
+(base: strn): strn = base
+fun
+xstrevalize
+(base: strn): strn = base
+(* ****** ****** *)
+
+fun
+f0_g1e1
+(g1e1: g1exp): fnameopt =
+let
+(*
+val () =
+prerrln
+("f0_g1e1: g1e1 = ", g1e1)
+*)
+in
+case+
+g1e1.node() of
+|G1Estr _ => f1_gstr(g1e1)
+|_(*non-G1Estr*) => optn_nil()
+endlet // end of [f0_g1e1(g1e1)]
+//
+and
+f1_gstr
+(g1e1: g1exp): fnameopt =
+(
+  f1_tokn(tok1)) where
+{
+  val-
+  G1Estr(tok1) = g1e1.node() }
+//
+and
+f1_tokn
+(tok1: token): fnameopt =
+(
+case+
+tok1.node() of
+|
+T_STRN1_clsd(base, ln) =>
+( optn_cons
+  (FNMbase(base))) where
+{ val base =
+  xstrunqtize(base, ln)
+  val base = xstrnormize(base)
+  val base = xstrevalize(base) }
+|
+_(*otherwise*) => optn_nil((*void*))
+)
+
 in(*in-of-local*)
 
 fun
@@ -1184,10 +1253,23 @@ D0Cinclude
 ( knd0
 , tknd, g0e1) = d0cl.node()
 //
-val g1e1 = trans01_g0exp(tenv, g0e1)
+val
+g1e1 = trans01_g0exp(tenv, g0e1)
 //
 in//let
+let
+val opt0 =
+f0_g1e1(g1e1): fnameopt
+val opt1 =
+(
+case+ opt0 of
+|optn_nil() =>
+ optn_nil()
+|optn_cons(fnm0) =>
+ fsrch_combined(fnm0)): fpathopt
+in//let
 d1ecl(loc0, D1Cinclude(knd0, tknd, g1e1))
+end//let
 end where
 {
 //

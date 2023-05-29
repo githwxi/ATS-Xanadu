@@ -2733,15 +2733,15 @@ let
 (*
 val () =
 println!
-("auxd1e: d1e = ", d1e)
+("auxg1e: g1e = ", g1e)
 *)
 in
 case+
 g1e.node() of
 | G1Estr _ => auxstr(g1e)
 |
-_(*non-D1Estr*) => None_vt()
-end // end of [auxd1e]
+_(*non-G1Estr*) => None_vt()
+end // end of [auxg1e]
 and
 auxstr
 (g1e: g1exp): fopt =
