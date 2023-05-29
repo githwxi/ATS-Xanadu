@@ -1112,12 +1112,12 @@ endlet // end-of-( D0Csymload(...) )
 //
 |
 D1Cinclude
-(tknd, g1e1) =>
+(knd0,tknd,g1e1) =>
 (
   g1exp_fpemsg(out, g1e1))
 |
 D1Cstaload
-(tknd, g1e1) =>
+(knd0,tknd,g1e1) =>
 (
   g1exp_fpemsg(out, g1e1))
 |

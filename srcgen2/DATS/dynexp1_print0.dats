@@ -541,23 +541,30 @@ D1Cabsimpl
 (tknd,sid1
 ,smas,tres,sdef) =>
 (
-print("D1Cabsimpl(",tknd,";");
-print(sid1,";",smas,";",tres,";",sdef,")"))
+print
+("D1Cabsimpl(",tknd,";");
+print
+(sid1,";",smas,";",tres,";",sdef,")"))
 //
 |
 D1Csymload
 (tknd
 ,deid,dqid,gopt) =>
 (
-print("D1Csymload(");
-print(tknd,";",deid,";",dqid,";",gopt,")"))
+print
+("D1Csymload(");
+print
+(tknd,";",deid,";",dqid,";",gopt,")"))
 //
 |
-D1Cinclude(tknd,g1e1) =>
-print("D1Cinclude(",tknd,";",g1e1,")")
+D1Cinclude(knd0,tknd,g1e1) =>
+print
+("D1Cinclude(",knd0,";",tknd,";",g1e1,")")
 |
-D1Cstaload(tknd,g1e1) =>
-print("D1Cstaload(",tknd,";",g1e1,")")
+D1Cstaload(knd0,tknd,g1e1) =>
+print
+("D1Cstaload(",knd0,";",tknd,";",g1e1,")")
+//
 |
 D1Cdyninit(tknd,g1e1) =>
 print("D1Cdyninit(",tknd,";",g1e1,")")

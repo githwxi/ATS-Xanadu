@@ -399,6 +399,7 @@ f0_include(tenv, d0cl)
 |
 D0Cstaload _ =>
 f0_staload(tenv, d0cl)
+//
 |
 D0Cdyninit _ =>
 f0_dyninit(tenv, d0cl)
@@ -1176,20 +1177,23 @@ let
 //
 val-
 D0Cinclude
-(tknd, g0e1) = d0cl.node()
+( knd0
+, tknd, g0e1) = d0cl.node()
 //
 val g1e1 = trans01_g0exp(tenv, g0e1)
 //
 in//let
-  d1ecl(loc0, D1Cinclude(tknd, g1e1))
+d1ecl(loc0, D1Cinclude(knd0, tknd, g1e1))
 end where
 {
 //
 val loc0 = d0cl.lctn()
 //
+// (*
 val () =
 prerrln
 ("trans01_d0ecl: f0_include: d0cl = ", d0cl)
+// *)
 //
 } (*where*) // end of [f0_include(tenv,d0cl)]
 
@@ -1204,20 +1208,23 @@ let
 //
 val-
 D0Cstaload
-(tknd, g0e1) = d0cl.node()
+( knd0
+, tknd, g0e1) = d0cl.node()
 //
 val g1e1 = trans01_g0exp(tenv, g0e1)
 //
 in//let
-  d1ecl(loc0, D1Cstaload(tknd, g1e1))
+d1ecl(loc0, D1Cstaload(knd0, tknd, g1e1))
 end where
 {
 //
 val loc0 = d0cl.lctn()
 //
+(*
 val () =
 prerrln
 ("trans01_d0ecl: f0_staload: d0cl = ", d0cl)
+*)
 } (*where*) // end of [f0_staload(tenv,d0cl)]
 
 (* ****** ****** *)

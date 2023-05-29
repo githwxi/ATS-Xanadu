@@ -1615,16 +1615,16 @@ endlet // end of [D0Clocal0(...)]
 //
 |
 D0Cabssort
-(knd, tid) => let
-  val () = fpemsg(out, tid)
+(tknd, tid0) => let
+  val () = fpemsg(out, tid0)
 endlet // end-of(D0Cabssort(...))
 //
 |
 D0Cstacst0
-( knd, sid
+( tknd, sid0
 , tmas, tcln, s0t1) =>
 let
-  val () = fpemsg(out, sid)
+  val () = fpemsg(out, sid0)
   val () =
   t0maglst_fpemsg(out, tmas)
   val () = fpemsg(out, s0t1)
@@ -1632,10 +1632,10 @@ endlet // end-of-(D0Cstacst0(...))
 //
 |
 D0Csortdef
-( knd
-, tid, teq1, tdf2) =>
+( tknd
+, tid0, teq1, tdf2) =>
 let
-val () = fpemsg(out, tid)
+val () = fpemsg(out, tid0)
 val () =
 token_EQ0_fpemsg(out, teq1)
 val () = s0tdf_fpemsg(out, tdf2)
@@ -1643,7 +1643,7 @@ endlet // end-of-(D0Csortdef(...))
 //
 |
 D0Csymload
-( knd, symb
+( tknd, symb
 , twth, dqid, gopt) =>
 let
 val () = fpemsg(out, symb)
@@ -1653,43 +1653,43 @@ endlet // end-of-(D0Csymload(...))
 //
 |
 D0Cinclude
-(knd, g0e) =>
+(knd0,tknd,g0e1) =>
 (
-  g0exp_fpemsg(out, g0e))
+  g0exp_fpemsg(out, g0e1))
 |
 D0Cstaload
-(knd, g0e) =>
+(knd0,tknd,g0e1) =>
 (
-  g0exp_fpemsg(out, g0e))
+  g0exp_fpemsg(out, g0e1))
 |
 D0Cdyninit
-(knd, g0e) =>
+(tknd, g0e1) =>
 (
-  g0exp_fpemsg(out, g0e))
+  g0exp_fpemsg(out, g0e1))
 //
 |
 D0Cdatasort
-(knd, d0ts) => let
+(tknd, d0ts) => let
   val () =
   d0tstlst_fpemsg(out, d0ts)
 endlet // end-of-(D0Cdatasort(_,_))
 //
 |
 D0Cvaldclst
-( knd, d0cs) => let
+(tknd, d0cs) => let
 val () =
   d0valdclist_fpemsg(out, d0cs)
 endlet // end-of-(D0Cvaldclst(_,_,_))
 |
 D0Cvardclst
-( knd, d0cs) => let
+(tknd, d0cs) => let
 val () =
   d0vardclist_fpemsg(out, d0cs)
 endlet // end-of-(D0Cvardclst(_,_,_))
 //
 |
 D0Cfundclst
-( knd
+( tknd
 , tqas, d0cs) => let
 val () =
   t0qaglst_fpemsg(out, tqas)
@@ -1699,7 +1699,7 @@ endlet // end-of-(D0Cfundclst(_,_,_))
 //
 |
 D0Cdatatype
-( knd
+( tknd
 , d0ts, wdcs) => let
 val () =
   d0typlst_fpemsg(out, d0ts)
@@ -1709,7 +1709,7 @@ endlet // end-of-(D0Cdatatype(_,_,_))
 //
 |
 D0Cdynconst
-( knd
+( tknd
 , tqas, d0cs) => let
 val () =
   t0qaglst_fpemsg(out, tqas)

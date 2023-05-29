@@ -838,9 +838,12 @@ D1Csymload of
 , d1qid(*qual-id*), g1expopt )
 //
 |
-D1Cinclude of (token, g1exp)//inclusion
+D1Cinclude of
+(sint(*s/d*), token, g1exp)//inclusion
 |
-D1Cstaload of (token, g1exp)//staloading
+D1Cstaload of
+(sint(*s/d*), token, g1exp)//staloading
+//
 |
 D1Cdyninit of (token, g1exp)//initization
 //

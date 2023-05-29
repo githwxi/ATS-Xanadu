@@ -685,11 +685,16 @@ print
 (symb,";",twth,";",dqid,";",pval,")"))
 //
 |
-D0Cinclude(tknd,g0e1) =>
-print("D0Cinclude(",tknd,";",g0e1,")")
+D0Cinclude
+(knd0,tknd,g0e1) =>
+print
+("D0Cinclude(",knd0,";",tknd,";",g0e1,")")
 |
-D0Cstaload(tknd,g0e1) =>
-print("D0Cstaload(",tknd,";",g0e1,")")
+D0Cstaload
+(knd0,tknd,g0e1) =>
+print
+("D0Cstaload(",knd0,";",tknd,";",g0e1,")")
+//
 |
 D0Cdyninit(tknd,g0e1) =>
 print("D0Cdyninit(",tknd,";",g0e1,")")
