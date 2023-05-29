@@ -58,6 +58,8 @@ FPATH of
 
 in//local
 
+(* ****** ****** *)
+
 #implfun
 fpath_get_gvn0(fpx) =
 let
@@ -84,6 +86,41 @@ FPATH
 ( gvn0
 , fnm1, fnm2) = fpx in fnm2
 end // end of [fpath_get_fnm2]
+
+(* ****** ****** *)
+
+#implfun
+fpath_make_absolute
+  (fnm1) =
+(
+FPATH
+(gvn0, fnm1, fnm2)) where
+{
+//
+val gvn0 = fnm1
+val fnm1 = fpath_normize(fnm1)
+//
+val fnm2 = symbl_make_name(fnm1)
+//
+} (*where*)//end-[fpath_make_absolute]
+
+(* ****** ****** *)
+
+#implfun
+fpath_make_relative
+  (gvn0, fnm1) =
+(
+FPATH
+(gvn0, fnm1, fnm2)) where
+{
+//
+val fnm1 = fpath_normize(fnm1)
+//
+val fnm2 = symbl_make_name(fnm1)
+//
+} (*where*)//end-[fpath_make_relative]
+
+(* ****** ****** *)
 
 end (*local*) // end of [local]
 
