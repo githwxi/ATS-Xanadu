@@ -260,6 +260,10 @@ all_dats:: \
 filpath_print0_dats
 filpath_print0_dats: ; $(XATSOPT) --dynamic DATS/filpath_print0.dats
 ######
+all_dats:: \
+filpath_search_dats
+filpath_search_dats: ; $(XATSOPT) --dynamic DATS/filpath_search.dats
+######
 
 ######
 all_dats:: \

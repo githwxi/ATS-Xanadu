@@ -106,4 +106,23 @@ fun fpath_fprint(FILR, fpath): void
 //
 (* ****** ****** *)
 
+datatype
+fname = FNMstrn of strn
+#typedef fnameopt = optn(fname)
+
+(* ****** ****** *)
+fun fname_fprint(FILR, fname): void
+(* ****** ****** *)
+fun
+fsrch_absolut(base: strn): fpathopt
+fun
+fsrch_current(base: strn): fpathopt
+(* ****** ****** *)
+fun
+fsrch_includes(base: strn): fpathopt
+(* ****** ****** *)
+fun
+fsrch_combined(fnm0: fname): fpathopt
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_filpath.sats] *)
