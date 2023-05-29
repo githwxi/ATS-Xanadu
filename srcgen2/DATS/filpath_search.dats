@@ -94,8 +94,35 @@ then false else
 
 fun
 fkndq1
-(base: strn): bool = false
-
+(base: strn): bool =
+let
+//
+val
+cdir = theCurDir_get()
+//
+fun
+loop
+(i0: int, n0: int): bool =
+if
+(i0 < n0)
+then
+(
+if
+base[i0] = cdir[0]
+then
+loop(i0+1, n0) else false)
+else base[i0+1] = theDirSep_get()
+//
+in
+let
+  val n0 = strn_length(cdir)
+  and n1 = strn_length(base)
+in//let
+  if
+  (n0 < n1)
+  then loop(0(*i0*), n0) else false
+end//let
+end (*let*) // end of [fkndq1(base)]
 
 in (*in-of-local*)
 
