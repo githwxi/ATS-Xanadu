@@ -96,33 +96,60 @@ fpath_get_fnm2
 (fpx: fpath): symbl // fnorm
 #symload fnm2 with fpath_get_fnm2
 (* ****** ****** *)
+//
 fun
-fpath_make_name(name: strn): fpath
-#symload fpath with fpath_make_name
+fpath_make_absolute
+(fnm1: strn): fpath // absolute
+fun
+fpath_make_relative
+( gvn0: strn
+, fnm1: strn): fpath // relative
+#symload
+fpath with fpath_make_absolute of 0
+#symload
+fpath with fpath_make_relative of 0
+//
 (* ****** ****** *)
 //
 fun drpth_fprint(FILR, drpth): void
 fun fpath_fprint(FILR, fpath): void
 //
 (* ****** ****** *)
-
+//
 datatype
-fname = FNMstrn of strn
-#typedef fnameopt = optn(fname)
-
+fname =
+| FNMstrn of strn
+(*
+HX: other kinds of fnames?
+*)
+#typedef
+fnameopt = optn(fname)
+#vwtpdef
+fnameopt_vt = optn_vt(fname)
+//
 (* ****** ****** *)
 fun fname_fprint(FILR, fname): void
 (* ****** ****** *)
 fun
-fsrch_absolut(base: strn): fpathopt
+fsrch_absolute(base: strn): fpathopt
 fun
-fsrch_current(base: strn): fpathopt
+fsrch_dcurrent(base: strn): fpathopt
 (* ****** ****** *)
 fun
 fsrch_includes(base: strn): fpathopt
 (* ****** ****** *)
 fun
 fsrch_combined(fnm0: fname): fpathopt
+(* ****** ****** *)
+//
+fun
+fsrch_dir1base
+(dir0: drpth, base: strn): optn(fpath)
+fun
+fsrch_dirsbase
+( dirs
+: list(drpth), base: strn): optn(fpath)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_filpath.sats] *)

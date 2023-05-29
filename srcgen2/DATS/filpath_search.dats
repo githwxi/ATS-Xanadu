@@ -45,5 +45,105 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/filpath.sats"
 (* ****** ****** *)
+//
+#implfun
+fsrch_absolute
+  (base) =
+(
+  optn_cons(fpth)
+) where
+{
+val
+fpth =
+fpath_make_absolute(base)
+}
+//
+(*
+#implfun
+fsrch_current
 
-(* end of [ATS3/XATSOPT_srcgen2_filpath_fsrch.dats] *)
+  val
+  dir0 = the_drpath_get()
+in
+  fsrch_dir1base(dir0, base)
+end // end-of-[fsrch_current(base)]
+*)
+//
+(*
+#implfun
+fsrch_includes
+  (base) = let
+  val
+  dirs = the_includes_get()
+in
+  fsrch_dirsbase(dirs, base)
+end // end-of-[fsrch_includes(base)]
+*)
+//
+(* ****** ****** *)
+
+local
+
+fun
+fkndq0
+(base: strn): bool =
+if
+strn_nilq(base)
+then false else
+(base[0] = theDirSep_get())
+
+fun
+fkndq1
+(base: strn): bool = false
+
+
+in (*in-of-local*)
+
+#implmnt
+fsrch_combined(fnm0) =
+let
+//
+(*
+val () =
+prerrln
+("fsrch_combined: base = ", base)
+*)
+//
+val
+base =
+(
+case+
+fnm0 of
+|FNMstrn(fnm) => fnm) : strn
+//
+(*
+val () =
+prerrln
+("fsrch_combined: fknd = ", fknd)
+*)
+//
+val
+fknd =
+(
+if
+fkndq0(base) then 0
+else if
+fkndq1(base) then 1 else -1): sint
+//
+in
+//
+if
+(fknd = 0)
+then fsrch_absolute(base)//("/")
+else if
+(fknd = 1)
+then fsrch_dcurrent(base)//("./")
+else fsrch_includes(base)//otherwise
+//
+endlet // end of [fsrch_combined(fnm0)]
+
+endloc // end of [fsrch_combined(fnm0)]
+
+(* ****** ****** *)
+
+(* end of [ATS3/XATSOPT_srcgen2_filpath_search.dats] *)

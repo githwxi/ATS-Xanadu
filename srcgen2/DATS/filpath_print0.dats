@@ -45,6 +45,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/filpath.sats"
 (* ****** ****** *)
+//
 #impltmp
 drpth_fprint(out, dpx) =
 (
@@ -54,7 +55,9 @@ print
 {
   #impltmp g_print$out<>() = out
 }
+//
 (* ****** ****** *)
+//
 #impltmp
 fpath_fprint(out, fpx) =
 (
@@ -64,6 +67,21 @@ print
 {
   #impltmp g_print$out<>() = out
 }
+//
+(* ****** ****** *)
+//
+#impltmp
+fname_fprint(out, fnm) =
+(
+case+ fnm of
+|
+FNMstrn(name) =>
+print("FNMstrn(", name, ")")
+) where
+{
+  #impltmp g_print$out<>() = out
+}
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_filpath_print0.dats] *)
