@@ -37,6 +37,16 @@ g_stderr< > = XATS2JS_NODE_g_stderr
 
 #impltmp
 <>(*tmp*)
+fpath_exists
+  (path) =
+let
+val
+opt = XATS2JS_NODE_fs_access
+
+(* ****** ****** *)
+
+#impltmp
+<>(*tmp*)
 fpath_strmize_char
   (path) =
 let

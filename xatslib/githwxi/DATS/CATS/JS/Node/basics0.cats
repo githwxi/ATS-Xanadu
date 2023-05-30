@@ -87,6 +87,22 @@ return ; // XATS2JS_NODE_gflt_fprint_dflt
 /* ****** ****** */
 //
 function
+XATS2JS_NODE_fs_rexists
+  (path)
+{
+let // local var
+R_OK = XATS2JS_NODE_fs.constants.R_OK;
+try {
+  XATS2JS_NODE_fs.accessSync(path, R_OK)
+  return 1; // HX: [path] is R-available
+} catch(err) {
+  return 0; // HX: [path] is R-unavailable
+}
+} // end-of-[XATS2JS_NODE_fs_rexists(path)]
+//
+/* ****** ****** */
+//
+function
 XATS2JS_NODE_fs_readFileSync
   (path)
 {

@@ -35,6 +35,8 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 #include
+"./../HATS/xatsopt_sats.hats"
+#include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
@@ -62,7 +64,7 @@ fpath_make_absolute(base)
 fsrch_dcurrent
   (base) = let
   val
-  dir0 = the_drpath_get()
+  dir0 = the_drpth_get()
 in
   fsrch_dir1base(dir0, base)
 end // end-of-[fsrch_dcurrent(base)]
@@ -169,6 +171,58 @@ else fsrch_includes(base)//otherwise
 endlet // end of [fsrch_combined(fnm0)]
 
 endloc // end of [fsrch_combined(fnm0)]
+
+(* ****** ****** *)
+
+#implfun
+fsrch_dir1base
+  (dir0, base) =
+let
+val
+dir0 = dir0.name()
+val
+fnm1 =
+fname_dirbase(dir0, base)
+val
+isexi =
+(
+  fname_rexists(fnm1)) where
+{
+(*
+HX-2023-05-29:
+[fpath_rexists]
+is implemented in
+xatslib/githwxi/f00path.dats
+*)
+val
+fname_rexists = fpath_rexists
+//
+(*
+val
+((*void*)) =
+prerrln
+("fsrch_dir1base: fname = ", fname)
+*)
+//
+}
+in(* in-of-let *)
+//
+if
+isexi
+then
+(
+optn_cons
+(fpath(base, fnm1))
+) where
+{
+(*
+val ((*void*)) =
+prerrln("fsrch_dir1base: fname = ", fname)  
+*)
+}
+else optn_nil(*void*)
+//
+end (*let*)//end-[fsrch_dir1base(dir0, base)]
 
 (* ****** ****** *)
 
