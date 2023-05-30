@@ -35,6 +35,16 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
+(*
+HX: R-available
+*)
+//
+fun<>
+fpath_rexists
+(path: strn): bool
+//
+(* ****** ****** *)
+//
 fun<>
 fpath_strmize_char
 (path: strn): strm_vt(char)

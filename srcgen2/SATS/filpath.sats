@@ -91,6 +91,14 @@ the_drpth_get(): drpth
 fun
 the_drpthlst_get(): drpthlst
 //
+(* ****** ****** *)
+fun
+the_drpth_pop0(drpth): void
+fun
+the_drpth_pop1(drpth): void
+fun
+the_drpth_push(drpth): void
+(* ****** ****** *)
 fun
 the_drpth_fprint(FILR): void
 fun
