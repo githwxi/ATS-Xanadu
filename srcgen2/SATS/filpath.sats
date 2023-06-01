@@ -166,6 +166,10 @@ fsrch_combined(fnm0: fname): fpathopt
 (* ****** ****** *)
 //
 fun
+fname_dirbase
+(dir0: drpth, base: strn): strn
+//
+fun
 fsrch_dir1base
 (dir0: drpth, base: strn): optn(fpath)
 fun
