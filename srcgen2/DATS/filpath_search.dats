@@ -47,6 +47,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/filpath.sats"
 (* ****** ****** *)
+#symload name with drpth_get_name
+(* ****** ****** *)
 //
 #implfun
 fsrch_absolute
@@ -179,10 +181,11 @@ fsrch_dir1base
   (dir0, base) =
 let
 val
-dir0 = dir0.name()
+dir0 =
+drpth_get_name(dir0)
 val
 fnm1 =
-fname_dirbase(dir0, base)
+fname_dbjoin(dir0, base)
 val
 isexi =
 (

@@ -85,20 +85,24 @@ a0ref_make_1val(list_nil(*void*))
 //
 in//local
 
+(* ****** ****** *)
+
 #implfun
 the_drpth_get
-  ( (*void*) ) = !the_drpth_ref
+  ( (*void*) ) = the_drpth_ref[]
 #implfun
 the_drpthlst_get
-  ( (*void*) ) = !the_drpthlst_ref
+  ( (*void*) ) = the_drpthlst_ref[]
 
 (* ****** ****** *)
 
 #implfun
 the_drpth_pop0() =
 let
-val dpx0 = !the_drpth_ref
-val dpxs = !the_drpthlst_ref
+val dpx0 =
+a0ref_get(the_drpth_ref)
+val dpxs =
+a0ref_get(the_drpthlst_ref)
 in//let
 case- dpxs of
 |
@@ -111,10 +115,25 @@ end//let//end-of-[the_drpth_pop0(...)]
 (* ****** ****** *)
 
 #implfun
+the_drpth_push(dpth) =
+let
+val dpx0 = the_drpth_ref[]
+val (  ) = the_drpth_ref[] := dpth
+in//let
+(
+  the_drpthlst_ref[] :=
+  list_cons(dpx0, the_drpthlst_ref[]))
+end//let//end-of-[the_drpth_push(dpth)]
+
+(* ****** ****** *)
+
+#implfun
 the_drpth_pop1() =
 let
-val dpx0 = !the_drpth_ref
-val dpxs = !the_drpthlst_ref
+val dpx0 =
+a0ref_get(the_drpth_ref)
+val dpxs =
+a0ref_get(the_drpthlst_ref)
 in//let
 case- dpxs of
 |
@@ -125,17 +144,6 @@ the_drpthlst_ref[] := dpxs; dpx0 )
 end//let//end-of-[the_drpth_pop1(...)]
 
 (* ****** ****** *)
-
-#implfun
-the_drpth_push(dpth) =
-let
-val dpx0 = !the_drpth_ref
-val (  ) = !the_drpth_ref := dpth
-in//let
-(
-  the_drpthlst_ref[] :=
-  list_cons(dpx0, !the_drpthlst_ref))
-end//let//end-of-[the_drpth_push(dpth)]
 
 end (*local*) // end of [the_drpth/the_drpthlst]
 

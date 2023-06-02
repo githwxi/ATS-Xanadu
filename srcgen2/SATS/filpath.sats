@@ -95,9 +95,10 @@ the_drpthlst_get(): drpthlst
 fun
 the_drpth_pop0(drpth): void
 fun
-the_drpth_pop1(drpth): void
-fun
 the_drpth_push(drpth): void
+(* ****** ****** *)
+fun
+the_drpth_pop1(drpth): drpth
 (* ****** ****** *)
 fun
 the_drpth_fprint(FILR): void
@@ -166,8 +167,8 @@ fsrch_combined(fnm0: fname): fpathopt
 (* ****** ****** *)
 //
 fun
-fname_dirbase
-(dir0: drpth, base: strn): strn
+fname_dbjoin
+(dir0: strn, base: strn): strn
 //
 fun
 fsrch_dir1base
