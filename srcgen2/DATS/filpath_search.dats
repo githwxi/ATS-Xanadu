@@ -177,6 +177,36 @@ endloc // end of [fsrch_combined(fnm0)]
 (* ****** ****** *)
 
 #implfun
+fname_dbjoin
+(dir0, base) = let
+//
+val n0 = strn_length(dir0)
+//
+in//let
+if
+n0 <= 0
+then base else
+let
+val c1 = dir0[n0-1]
+val n1 = 
+(if
+ c1 !=
+ theDirSep_get()
+ then n0 else n0-1): sint
+val nb = strn_length(base)
+in//let
+strn_tabulate_cfr
+( n1+nb
+, lam i0 =>
+  if
+  i0 < n1
+  then dir0[i0] else base[i0-n1])
+end // else // end-of-if
+end (*let*) // end of [fname_dbjoin]
+
+(* ****** ****** *)
+
+#implfun
 fsrch_dir1base
   (dir0, base) =
 let
@@ -197,8 +227,15 @@ HX-2023-05-29:
 is implemented in
 xatslib/githwxi/f00path.dats
 *)
-val
-fname_rexists = fpath_rexists
+fun
+fname_rexists
+(name: strn) =
+fpath_rexists(name) where
+{
+val () =
+prerrln
+("fname_rexists: name = ", name)
+}
 //
 (*
 val
