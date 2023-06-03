@@ -163,10 +163,17 @@ d1lab_fprint
 *)
 //
 (* ****** ****** *)
+(*
+#typedef
+d0parsed = $D0E.d0parsed
+*)
+(* ****** ****** *)
 //
 #typedef d0pat = $D0E.d0pat
 #typedef d0exp = $D0E.d0exp
 #typedef d0ecl = $D0E.d0ecl
+//
+(* ****** ****** *)
 //
 #typedef d1pat = d1pat_tbox
 #typedef d1exp = d1exp_tbox
@@ -841,33 +848,29 @@ D1Csymload of
 |
 D1Cinclude of
 ( sint(*s/d*)
-, token, g1exp(*src*)) // inclusion
+, token
+, g1exp(*src*), d1eclistopt)//include
 // *)
-(*
-|
-D1Cinclude of
-( sint(*s/d*)
-, token, g1exp // src
-, fpathopt, d1eclistopt) // inclusion
-*)
-//
 |
 D1Cstaload of
-(sint(*s/d*), token, g1exp)//staloading
+( sint(*s/d*)
+, token
+, g1exp(*src*), d1eclistopt)//staload
 //
 |
-D1Cdyninit of (token, g1exp)//initization
+D1Cdyninit of
+(token(*DYNLOAD*), g1exp(*fpath*))
 //
 |
 D1Cdatasort of
-(token(*DATASORT*), d1tstlst )
+(token(*DATASORT*), d1tstlst(*def*))
 //
 |
 D1Cvaldclst of
-(token(*VAL(vlk)*), d1valdclist)
+(token(*VAL(vlk)*), d1valdclist(*def*))
 |
 D1Cvardclst of
-(token(*VAR(vrk)*), d1vardclist)
+(token(*VAR(vrk)*), d1vardclist(*def*))
 |
 D1Cfundclst of
 (token(*FUN(fnk)*), t1qaglst, d1fundclist)

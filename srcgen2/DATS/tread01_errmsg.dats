@@ -1112,19 +1112,71 @@ endlet // end-of-( D0Csymload(...) )
 //
 |
 D1Cinclude
-(knd0,tknd,g1e1) =>
-(
-  g1exp_fpemsg(out, g1e1))
+( knd0
+, tknd, g1e1, dopt) =>
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case dopt of
+|
+optn_nil() =>
+let
+val
+loc0 = dcl.lctn()
+val
+loc1 = g1e1.lctn() in
+println(
+"TREAD01-ERROR:",
+loc0,":","D1Cinclude(...)");
+println(
+"TREAD01-ERROR:",loc1,":",g1e1
+)(*println*)
+end//let//end-of-[optn_nil()]
+|
+optn_cons(dcls) =>
+let
+val () =
+  d1eclist_fpemsg(out, dcls)
+endlet
+endlet // end-of-( D1Cinclude )
+//
 |
 D1Cstaload
-(knd0,tknd,g1e1) =>
-(
-  g1exp_fpemsg(out, g1e1))
+( knd0
+, tknd, g1e1, dopt) =>
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case dopt of
+|
+optn_nil() =>
+let
+val
+loc0 = dcl.lctn()
+val
+loc1 = g1e1.lctn() in
+println(
+"TREAD01-ERROR:",
+loc0,":","D1Cstaload(...)");
+println(
+"TREAD01-ERROR:",loc1,":",g1e1
+)(*println*)
+end//let//end-of-[optn_nil()]
+|
+optn_cons(dcls) =>
+let
+val () =
+  d1eclist_fpemsg(out, dcls)
+endlet
+endlet // end-of-( D1Cstaload )
 |
 D1Cdyninit
 (tknd, g1e1) =>
-(
-  g1exp_fpemsg(out, g1e1))
+let
+val () = g1exp_fpemsg(out, g1e1)
+endlet // end-of-( D1Cdyninit )
 //
 |
 D1Cdatasort

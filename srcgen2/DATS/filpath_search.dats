@@ -177,6 +177,52 @@ endloc // end of [fsrch_combined(fnm0)]
 (* ****** ****** *)
 
 #implfun
+fname_stadyn
+(   name   ) = let
+//
+val n0 =
+strn_length(name)
+//
+fun f0_ats(): bool =
+(
+if
+(
+name[n0-3] != 'a'
+) then false else
+(
+if
+(name[n0-2] != 't')
+then
+false else (name[n0-1] != 's'))
+)
+//
+in//let
+if
+n0 <= 4
+then -1 else
+(
+if
+name[n0-5] != '.' then -1 else
+(
+let
+val c4 = name[n0-4]
+in//let
+if c4 = 'd'
+then
+(if f0_ats() then 1 else -1)
+else
+(
+if c4 = 's'
+then
+(if f0_ats() then 0 else -1) else -1)
+end(*let*)
+)
+)
+end(*let*)//end-of-[fname_stadyn(name)]
+
+(* ****** ****** *)
+
+#implfun
 fname_dbjoin
 (dir0, base) = let
 //

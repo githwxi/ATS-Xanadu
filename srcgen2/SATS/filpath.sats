@@ -167,6 +167,8 @@ fsrch_combined(fnm0: fname): fpathopt
 (* ****** ****** *)
 //
 fun
+fname_stadyn(name: strn): sint
+fun
 fname_dbjoin
 (dir0: strn, base: strn): strn
 //
