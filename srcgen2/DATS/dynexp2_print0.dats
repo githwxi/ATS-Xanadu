@@ -694,15 +694,24 @@ D2Cabsopen(tknd,simp) =>
 print("D2Cabsopen(",tknd,";",simp,")")
 |
 D2Cabsimpl
-( tknd , simp , sdef ) =>
+( tknd , simp , sdef) =>
 ( print("D2Cabsimpl(")
 ; print( tknd,";", simp,";",sdef,")"))
 //
 |
 D2Csymload
-( tknd , sym0 , dptm ) =>
+( tknd , sym0 , dptm) =>
 ( print("D2Csymload(")
 ; print( tknd,";",sym0,";",dptm,")" ))
+//
+|
+D2Cinclude
+( knd0, tknd
+, gsrc, fopt, dopt ) =>
+(
+print("D2Cinclude(");
+print
+(knd0,";",tknd,";",gsrc,";",fopt,")"))
 //
 |
 D2Cdatasort(d1cl,s2cs) =>

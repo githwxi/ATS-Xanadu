@@ -558,7 +558,8 @@ print
 //
 |
 D1Cinclude
-(knd0,tknd,g1e1,dopt) =>
+(knd0,tknd
+,g1e1,fopt,dopt) =>
 (
 // (*
 print("\n");
@@ -570,11 +571,13 @@ print("\n");
 {
 val () =
 print
-("D1Cinclude(",knd0,";",tknd,";",g1e1,")")
+("D1Cinclude("
+, knd0,";",tknd,";",g1e1,";",fopt,")")
 }
 |
 D1Cstaload
-(knd0,tknd,g1e1,dopt) =>
+(knd0,tknd
+,g1e1,fopt,dopt) =>
 (
 // (*
 print("\n");
@@ -586,7 +589,8 @@ print("\n");
 {
 val () =
 print
-("D1Cstaload(",knd0,";",tknd,";",g1e1,")")
+("D1Cstaload("
+, knd0,";",tknd,";",g1e1,";",fopt,")")
 }
 //
 |

@@ -295,8 +295,8 @@ d1ecl_include_errck
 , knd0: sint
 , tknd: token
 , g1e1: g1exp
-, dopt:
-  d1eclistopt): d1ecl =
+, fopt: fpathopt
+, dopt: d1eclistopt): d1ecl =
 let
 val lvl = 0
 in//let
@@ -304,7 +304,8 @@ d1ecl_errck
 (
 lvl+1,
 d1ecl_make_node
-(loc0, D1Cinclude(knd0,tknd,g1e1,dopt)))
+( loc0
+, D1Cinclude(knd0,tknd,g1e1,fopt,dopt)))
 end (*let*) // end of [d1ecl_include_errck]
 //
 (* ****** ****** *)
@@ -315,8 +316,8 @@ d1ecl_staload_errck
 , knd0: sint
 , tknd: token
 , g1e1: g1exp
-, dopt:
-  optn(d1parsed)): d1ecl =
+, fopt: fpathopt
+, dopt: optn(d1parsed)): d1ecl =
 let
 val lvl = 0
 in//let
@@ -324,7 +325,8 @@ d1ecl_errck
 (
 lvl+1,
 d1ecl_make_node
-(loc0, D1Cstaload(knd0,tknd,g1e1,dopt)))
+( loc0
+, D1Cstaload(knd0,tknd,g1e1,fopt,dopt)))
 end (*let*) // end of [d1ecl_staload_errck]
 //
 (* ****** ****** *)
@@ -875,16 +877,27 @@ val e00 = err
 val-
 D1Cinclude
 ( knd0
-, tknd
-, g1e1, dopt) = dcl.node()
+, tknd, g1e1
+, fopt, dopt) = dcl.node()
 //
-val g1e1 = tread01_g1exp(g1e1, err)
+val
+g1e1 = tread01_g1exp(g1e1, err)
+val
+dopt =
+(
+case+ dopt of
+|optn_nil() =>
+ (err := err+1; optn_nil())
+|optn_cons(dcls) =>
+ optn_cons
+ (tread01_d1eclist(dcls, err)))
+: d1eclistopt // end of [val(dopt)]
 //
 if
 (err=e00)
 then (dcl) else
 d1ecl_include_errck
-( dcl.lctn(), knd0, tknd, g1e1, dopt )
+( dcl.lctn(), knd0,tknd,g1e1,fopt,dopt )
 end (*let*) // end of [f0_include(dcl,err)]
 //
 (* ****** ****** *)
@@ -900,8 +913,8 @@ val e00 = err
 val-
 D1Cstaload
 ( knd0
-, tknd
-, g1e1, dopt) = dcl.node()
+, tknd, g1e1
+, fopt, dopt) = dcl.node()
 //
 val g1e1 = tread01_g1exp(g1e1, err)
 //
@@ -909,7 +922,7 @@ if
 (err=e00)
 then (dcl) else
 d1ecl_staload_errck
-( dcl.lctn(), knd0, tknd, g1e1, dopt )
+( dcl.lctn(),knd0,tknd,g1e1,fopt,dopt )
 end (*let*) // end of [f0_staload(dcl,err)]
 //
 (* ****** ****** *)

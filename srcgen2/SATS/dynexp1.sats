@@ -852,13 +852,15 @@ D1Csymload of
 D1Cinclude of
 ( sint(*s/d*)
 , token
-, g1exp(*src*), d1eclistopt)//include
+, g1exp(*src*)
+, fpathopt, d1eclistopt)//include
 // *)
 |
 D1Cstaload of
 ( sint(*s/d*)
 , token
-, g1exp(*src*), optn(d1parsed))//staload
+, g1exp(*src*)
+, fpathopt, optn(d1parsed))//staload
 //
 |
 D1Cdyninit of

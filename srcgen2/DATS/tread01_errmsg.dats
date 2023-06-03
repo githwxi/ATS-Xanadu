@@ -1112,13 +1112,13 @@ endlet // end-of-( D0Csymload(...) )
 //
 |
 D1Cinclude
-( knd0
-, tknd, g1e1, dopt) =>
+( knd0, tknd
+, g1e1, fopt, dopt) =>
 let
 #impltmp
 g_print$out<>() = out
 in//let
-case dopt of
+case+ dopt of
 |
 optn_nil() =>
 let
@@ -1139,17 +1139,17 @@ let
 val () =
   d1eclist_fpemsg(out, dcls)
 endlet
-endlet // end-of-( D1Cinclude )
+endlet // end-of-( D1Cinclude(...) )
 //
 |
 D1Cstaload
-( knd0
-, tknd, g1e1, dopt) =>
+( knd0, tknd
+, g1e1, fopt, dopt) =>
 let
 #impltmp
 g_print$out<>() = out
 in//let
-case dopt of
+case+ dopt of
 |
 optn_nil() =>
 let
@@ -1170,13 +1170,14 @@ let
 val () =
   d1parsed_fpemsg(out, dpar)
 endlet
-endlet // end-of-( D1Cstaload )
+endlet // end-of-( D1Cstaload(...) )
+//
 |
 D1Cdyninit
 (tknd, g1e1) =>
 let
 val () = g1exp_fpemsg(out, g1e1)
-endlet // end-of-( D1Cdyninit )
+endlet // end-of-( D1Cdyninit(...) )
 //
 |
 D1Cdatasort

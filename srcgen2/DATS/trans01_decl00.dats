@@ -1311,8 +1311,9 @@ trans01_d0eclistopt
 ) : optn(d1eclist) // end-of-[val(dopt)]
 //
 in//let
-d1ecl
-(loc0, D1Cinclude(knd0, tknd, g1e1, dopt))
+d1ecl_make_node
+(loc0,
+ D1Cinclude(knd0, tknd, g1e1, opt1, dopt))
 end//let
 end where
 {
@@ -1484,7 +1485,8 @@ end//end-of-let
 //
 in//let
 d1ecl
-(loc0, D1Cstaload(knd0, tknd, g1e1, dopt))
+(loc0,
+ D1Cstaload(knd0, tknd, g1e1, opt1, dopt))
 end//let
 end where
 {

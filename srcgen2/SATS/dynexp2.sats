@@ -1155,9 +1155,9 @@ D2Csymload of
 //
 |
 D2Cinclude of
-( token
+( sint(*s/d*)
+, token
 , g1exp // src
-, sint(*stadyn: 0/1*)
 , fpathopt
 , d2eclistopt) // file inclusion
 //
