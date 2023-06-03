@@ -252,6 +252,9 @@ d0parsed = $D0E.d0parsed
 #typedef d1cstdcl = d1cstdcl_tbox
 //
 (* ****** ****** *)
+#abstbox d1parsed_tbox // ptr
+#typedef d1parsed = d1parsed_tbox
+(* ****** ****** *)
 //
 #vwtpdef d1eclist_vt = list_vt(d1ecl)
 #typedef d1eclistopt = optn(d1eclist)
@@ -855,7 +858,7 @@ D1Cinclude of
 D1Cstaload of
 ( sint(*s/d*)
 , token
-, g1exp(*src*), d1eclistopt)//staload
+, g1exp(*src*), optn(d1parsed))//staload
 //
 |
 D1Cdyninit of
@@ -1165,11 +1168,6 @@ D1TOPENV of
 #typedef d1topenv = d1topenv_tbox
 *)
 //
-(* ****** ****** *)
-
-#abstbox d1parsed_tbox // ptr
-#typedef d1parsed = d1parsed_tbox
-
 (* ****** ****** *)
 //
 fun

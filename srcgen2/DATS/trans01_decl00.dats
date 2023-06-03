@@ -1331,6 +1331,102 @@ end (*local*) // end of [f0_include(tenv,d0cl)]
 
 (* ****** ****** *)
 
+local
+
+(* ****** ****** *)
+fun
+xstrunqtize
+( src0
+: strn, ln: sint): strn =
+let
+(*
+val ln =
+strn_length(src0)
+*)
+in//let
+strn_tabulate_cfr
+( ln-2
+, lam i0 => src0[i0+1]
+) end//let//[xstrunqtize(src0,ln)]
+(* ****** ****** *)
+fun
+xstrnormize(base: strn): strn = base
+fun
+xstrevalize(base: strn): strn = base
+(* ****** ****** *)
+
+fun
+f0_g1e1
+(g1e1: g1exp): fnameopt =
+let
+(*
+val () =
+prerrln
+("f0_g1e1: g1e1 = ", g1e1)
+*)
+in
+case+
+g1e1.node() of
+|G1Estr _ => f1_gstr(g1e1)
+|G1Ea2pp _ => f1_a2pp(g1e1)
+|_(*non-G1Estr*) => optn_nil()
+endlet // end of [f0_g1e1(g1e1)]
+//
+and
+f1_gstr
+(g1e1: g1exp): fnameopt =
+(
+  f1_tokn(tok1)) where
+{
+  val-
+  G1Estr(tok1) = g1e1.node() }
+//
+and
+f1_tokn
+(tok1: token): fnameopt =
+(
+case+
+tok1.node() of
+|
+T_STRN1_clsd(base, ln) =>
+( optn_cons
+  (FNMbase(base))) where
+{ val base =
+  xstrunqtize(base, ln)
+  val base = xstrnormize(base)
+  val base = xstrevalize(base) }
+|
+_(*otherwise*) => optn_nil((*void*))
+)
+and
+f1_a2pp
+(gapp: g1exp): fnameopt =
+(
+case-
+gapp.node() of
+|
+G1Ea2pp
+(g1f0,g1e1,g1e2) =>
+(
+case+
+g1f0.node() of
+|
+G1Eid0(id0) =>
+if
+(id0 != EQ0_symbl)
+then optn_nil(*0*) else
+(
+case+
+g1e2.node() of
+|
+G1Estr _ =>
+f1_gstr(g1e2) | _ => optn_nil())
+|
+_(* non-G1Eid0 *) => optn_nil())
+) (*case-*) // end of [f1_a2pp(gapp)] 
+
+in(*in-of-local*)
+
 fun
 f0_staload
 ( tenv:
@@ -1345,11 +1441,51 @@ D0Cstaload
 //
 val g1e1 = trans01_g0exp(tenv, g0e1)
 //
-val dopt = optn_nil((*void*)) // FIXME!
+in
+let
+//
+val opt0 =
+f0_g1e1(g1e1): fnameopt
+val opt1 =
+(
+case+ opt0 of
+|optn_nil() =>
+ optn_nil()
+|optn_cons(fnm0) =>
+ fsrch_combined(fnm0)): fpathopt
+//
+val (  ) =
+prerrln("f0_staload: opt0 = ", opt0)
+val (  ) =
+prerrln("f0_staload: opt1 = ", opt1)
+//
+val dopt =
+(
+case+ opt1 of
+|
+optn_nil() =>
+optn_nil()
+|
+optn_cons(fpth) =>
+let
+//
+val fnm1 =
+fpath_get_fnm1(fpth)
+//
+val knd1 = 0(*static*)
+//
+val dpar =
+d0parsed_from_fpath(knd1, fnm1)
+//
+in//in-of-let
+optn_cons(d1parsed_of_trans01(dpar))
+end//end-of-let
+) : optn(d1parsed) // end-of-[val(dopt)]
 //
 in//let
 d1ecl
 (loc0, D1Cstaload(knd0, tknd, g1e1, dopt))
+end//let
 end where
 {
 //
@@ -1361,6 +1497,8 @@ prerrln
 ("trans01_d0ecl: f0_staload: d0cl = ", d0cl)
 *)
 } (*where*) // end of [f0_staload(tenv,d0cl)]
+
+end (*local*) // end of [f0_staload(tenv,d0cl)]
 
 (* ****** ****** *)
 
