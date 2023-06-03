@@ -557,13 +557,37 @@ print
 (tknd,";",deid,";",dqid,";",gopt,")"))
 //
 |
-D1Cinclude(knd0,tknd,g1e1) =>
+D1Cinclude
+(knd0,tknd,g1e1,dopt) =>
+(
+// (*
+print("\n");
+print
+("D1Cinclude: dopt =\n", dopt);
+print("\n");
+// *)
+) where
+{
+val () =
 print
 ("D1Cinclude(",knd0,";",tknd,";",g1e1,")")
+}
 |
-D1Cstaload(knd0,tknd,g1e1) =>
+D1Cstaload
+(knd0,tknd,g1e1,dopt) =>
+(
+(*
+print("\n");
+print
+("D1Cstaload: dopt =\n", dopt);
+print("\n");
+*)
+) where
+{
+val () =
 print
 ("D1Cstaload(",knd0,";",tknd,";",g1e1,")")
+}
 //
 |
 D1Cdyninit(tknd,g1e1) =>

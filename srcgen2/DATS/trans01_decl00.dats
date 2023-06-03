@@ -63,6 +63,8 @@ _(*TRANS01*) = "./trans01.dats"
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
 (* ****** ****** *)
+#staload "./../SATS/parsing.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
@@ -1275,8 +1277,42 @@ prerrln("f0_include: opt0 = ", opt0)
 val (  ) =
 prerrln("f0_include: opt1 = ", opt1)
 //
+val dopt =
+(
+case+ opt1 of
+|
+optn_nil() =>
+optn_nil()
+|
+optn_cons(fpth) =>
+let
+//
+val fnm1 =
+fpath_get_fnm1(fpth)
+//
+val knd1 =
+(
+if
+knd0 <= 0
+then knd0 else
+let
+val knd1 =
+fname_stadyn(fnm1) in
+if
+knd1 < 0
+then knd0 else knd1 end)
+//
+val dpar =
+d0parsed_from_fpath(knd1, fnm1)
+//
+in//in-of-let
+trans01_d0eclistopt
+(tenv, d0parsed_get_parsed(dpar)) end
+) : optn(d1eclist) // end-of-[val(dopt)]
+//
 in//let
-d1ecl(loc0, D1Cinclude(knd0, tknd, g1e1))
+d1ecl
+(loc0, D1Cinclude(knd0, tknd, g1e1, dopt))
 end//let
 end where
 {
@@ -1309,8 +1345,11 @@ D0Cstaload
 //
 val g1e1 = trans01_g0exp(tenv, g0e1)
 //
+val dopt = optn_nil((*void*)) // FIXME!
+//
 in//let
-d1ecl(loc0, D1Cstaload(knd0, tknd, g1e1))
+d1ecl
+(loc0, D1Cstaload(knd0, tknd, g1e1, dopt))
 end where
 {
 //
