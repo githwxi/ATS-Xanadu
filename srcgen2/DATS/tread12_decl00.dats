@@ -416,8 +416,8 @@ tread12_d2ecl
 case+
 d2cl.node() of
 //
-|
-D2Cd1ecl _ => d2cl
+|D2Cnone0 _ => d2cl
+|D2Cd1ecl _ => d2cl
 //
 |
 D2Cstatic _ => f0_static(d2cl, err)

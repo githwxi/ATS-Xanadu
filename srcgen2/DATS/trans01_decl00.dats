@@ -440,6 +440,13 @@ f0_datatype(tenv, d0cl)
 D0Cdynconst _ =>
 f0_dynconst(tenv, d0cl)
 //
+|D0Ctkerr(tok) =>
+(
+case+ tok.node() of
+|T_EOF() =>
+ d1ecl_none0(d0cl.lctn())
+|_(*else*) => d1ecl_none1(d0cl))
+//
 |
 _ (*otherwise*) => d1ecl_none1(d0cl)
 //

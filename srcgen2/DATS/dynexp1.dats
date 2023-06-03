@@ -96,14 +96,18 @@ d1exp_make_node
 dexp.lctn(),D1Enone1(dexp))
 
 (* ****** ****** *)
-
+//
+#implfun
+d1ecl_none0
+(  loc0  ) =
+d1ecl_make_node
+(loc0,D1Cnone0((*void*)))
 #implfun
 d1ecl_none1
 (  d0cl  ) =
 d1ecl_make_node
-(
-d0cl.lctn(),D1Cnone1(d0cl))
-
+(d0cl.lctn(),D1Cnone1(d0cl))
+//
 (* ****** ****** *)
 
 local

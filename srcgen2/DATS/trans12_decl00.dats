@@ -509,6 +509,9 @@ D1Cimplmnt0 _ => f0_implmnt0(env0, d1cl)
 |
 D1Cdynconst _ => f0_dynconst(env0, d1cl)
 //
+|D1Cnone0 // HX: it is an unharmful decl
+ ( (*void*) ) => d2ecl_none0(d1cl.lctn())
+//
 |_(*otherwise*) =>
 let
   val loc0 = d1cl.lctn()
