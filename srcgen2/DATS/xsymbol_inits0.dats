@@ -54,6 +54,7 @@ HX-2022-10-01: Various symbols
 #implval BAR_symbl = symbl("|")
 #implval CLN_symbl = symbl(":")
 #implval DOT_symbl = symbl(".")
+#implval EQ0_symbl = symbl("=")
 //
 #implval DLR_symbl = symbl("$")
 #implval SRP_symbl = symbl("#")

@@ -101,6 +101,7 @@ val AMP_symbl: symbl//symbl("&")
 val BAR_symbl: symbl//symbl("|")
 val CLN_symbl: symbl//symbl(":")
 val DOT_symbl: symbl//symbl(".")
+val EQ0_symbl: symbl//symbl("=")
 //
 val DLR_symbl: symbl//symbl("$")
 val SRP_symbl: symbl//symbl("#")

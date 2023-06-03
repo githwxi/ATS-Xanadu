@@ -316,7 +316,7 @@ d1ecl_staload_errck
 , tknd: token
 , g1e1: g1exp
 , dopt:
-  d1eclistopt): d1ecl =
+  optn(d1parsed)): d1ecl =
 let
 val lvl = 0
 in//let

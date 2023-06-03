@@ -1165,10 +1165,10 @@ println(
 )(*println*)
 end//let//end-of-[optn_nil()]
 |
-optn_cons(dcls) =>
+optn_cons(dpar) =>
 let
 val () =
-  d1eclist_fpemsg(out, dcls)
+  d1parsed_fpemsg(out, dpar)
 endlet
 endlet // end-of-( D1Cstaload )
 |
