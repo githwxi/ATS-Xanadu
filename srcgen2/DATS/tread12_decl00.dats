@@ -243,6 +243,27 @@ end (*let*) // end of [d2ecl_symload_errck]
 (* ****** ****** *)
 //
 fun
+d2ecl_include_errck
+( loc0: loc_t
+, knd0: sint
+, tknd: token
+, g1e1: g1exp
+, fopt: fpathopt
+, dopt: d2eclistopt): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(
+lvl+1,
+d2ecl_make_node
+( loc0
+, D2Cinclude(knd0,tknd,g1e1,fopt,dopt)))
+end (*let*) // end of [d2ecl_include_errck]
+//
+(* ****** ****** *)
+//
+fun
 d2ecl_datasort_errck
 ( loc0: loc_t
 , d1cl: d1ecl
@@ -426,6 +447,13 @@ D2Cabsimpl _ => f0_absimpl(d2cl, err)
 //
 |
 D2Csymload _ => f0_symload(d2cl, err)
+//
+|
+D2Cinclude _ => f0_include(d2cl, err)
+(*
+|
+D2Cstaload _ => f0_staload(d2cl, err)
+*)
 //
 |
 D2Cdatasort _ => f0_datasort(d2cl, err)
@@ -745,6 +773,43 @@ then (dcl) else
 d2ecl_symload_errck(loc,tknd,sym1,dptm)
 end (*let*) // end of [f0_symload(dcl,err)]
 //
+(* ****** ****** *)
+
+fun
+f0_include
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+(*
+val loc = dcl.lctn()
+*)
+//
+val-
+D2Cinclude
+( knd0
+, tknd, gsrc
+, fopt, dopt) = dcl.node()
+//
+val dopt =
+(
+case+ dopt of
+|optn_nil() =>
+ (err := err+1; optn_nil())
+|optn_cons(dcls) =>
+ optn_cons
+ (tread12_d2eclist(dcls, err)))
+: d2eclistopt // end of [val(dopt)]
+//
+in//let
+if
+(err=e00)
+then (dcl) else
+d2ecl_include_errck
+( dcl.lctn(), knd0,tknd,gsrc,fopt,dopt )
+end (*let*) // end of [f0_include(dcl,err)]
+
 (* ****** ****** *)
 //
 local

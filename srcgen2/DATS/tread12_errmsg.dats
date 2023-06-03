@@ -893,6 +893,22 @@ val
 endlet // end-of-(D2Cabsimpl)
 //
 |
+D2Cinclude
+( knd0, tknd
+, g1e1, fopt, dopt) =>
+(
+case+ dopt of
+|
+optn_nil() => ()
+|
+optn_cons(dcls) =>
+let
+val () =
+  d2eclist_fpemsg(out, dcls)
+endlet
+) (*case+*)//end-(D2Cinclude(...))
+//
+|
 D2Cdatasort(d1cl, s2ts) => ()
 //
 |
