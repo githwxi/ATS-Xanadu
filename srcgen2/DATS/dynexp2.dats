@@ -1208,6 +1208,19 @@ end (*let*) // end of [d2exp_set_styp]
 endloc (*local*) // end of [local(d2exp)]
 
 (* ****** ****** *)
+//
+#implfun
+d2ecl_none0
+(  loc0  ) =
+d2ecl_make_node
+(loc0,D2Cnone0((*void*)))
+#implfun
+d2ecl_none1
+(  d2cl  ) =
+d2ecl_make_node
+(d2cl.lctn(),D2Cnone1(d2cl))
+//
+(* ****** ****** *)
 
 local
 //

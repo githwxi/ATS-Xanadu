@@ -507,8 +507,8 @@ tread01_d1ecl
 case+
 d1cl.node() of
 //
-|
-D1Cd0ecl _ => d1cl
+|D1Cnone0 _ => d1cl
+|D1Cd0ecl _ => d1cl
 //
 |
 D1Cstatic _ => f0_static(d1cl, err)

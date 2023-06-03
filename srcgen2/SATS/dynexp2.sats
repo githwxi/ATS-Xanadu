@@ -1272,6 +1272,8 @@ fun
 d2ecl_get_node(d2ecl): d2ecl_node
 (* ****** ****** *)
 fun
+d2ecl_none0(loc0:loc_t): d2ecl
+fun
 d2ecl_none1(d1cl:d1ecl): d2ecl
 (* ****** ****** *)
 fun

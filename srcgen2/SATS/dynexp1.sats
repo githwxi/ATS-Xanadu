@@ -953,6 +953,8 @@ d1ecl_get_node(d1ecl): d1ecl_node
 (* ****** ****** *)
 //
 fun
+d1ecl_none0(loc0:loc_t): d1ecl
+fun
 d1ecl_none1(d0cl:d0ecl): d1ecl
 //
 fun
