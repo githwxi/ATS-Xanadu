@@ -201,6 +201,10 @@ T2P = "./statyp2.sats"
 #abstbox d2cstdcl_tbox // ptr
 //
 (* ****** ****** *)
+//
+#abstbox d2parsed_tbox // ptr
+//
+(* ****** ****** *)
 #typedef sort2lst = list(sort2)
 (* ****** ****** *)
 #typedef s2cstlst = list(s2cst)
@@ -253,6 +257,8 @@ T2P = "./statyp2.sats"
 #typedef d2fundcl = d2fundcl_tbox
 #typedef i2mpldcl = i2mpldcl_tbox
 #typedef d2cstdcl = d2cstdcl_tbox
+(* ****** ****** *)
+#typedef d2parsed = d2parsed_tbox
 (* ****** ****** *)
 #typedef d2valdclist = list(d2valdcl)
 #typedef d2vardclist = list(d2vardcl)
@@ -1159,15 +1165,15 @@ D2Cinclude of
 , token
 , g1exp // src
 , fpathopt
-, d2eclistopt) // file inclusion
+, d2eclistopt) // inclusion
 //
 |
 D2Cstaload of
-( token
+( sint(*s/d*)
+, token
 , g1exp // src
-, sint(*stadyn: 0/1*)
-, fpathopt
-, sint(*shared: 0/1*), f2envopt)
+, fpathopt, optn // staload
+  @(sint(*shared*), d2parsed))
 //
 |
 D2Cdatasort of (d1ecl, sort2lst)
@@ -1512,11 +1518,6 @@ D2TOPENV of
 , $MAP.topmap(s2tex)
 , $MAP.topmap(s2itm)
 , $MAP.topmap(d2itm))
-//
-(* ****** ****** *)
-//
-#abstbox d2parsed_tbox // ptr
-#typedef d2parsed = d2parsed_tbox
 //
 (* ****** ****** *)
 //

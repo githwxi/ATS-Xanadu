@@ -71,6 +71,8 @@ fixtyopt_vt = optn_vt(fixty)
 S1E = "./staexp1.sats"
 #staload
 G1M = "./gmacro1.sats"
+#staload
+D1E = "./dynexp1.sats"
 //
 #typedef sort1 = $S1E.sort1
 #typedef s1exp = $S1E.s1exp
@@ -139,6 +141,10 @@ the_dexpenv_pvs
 //
 (* ****** ****** *)
 //
+(*
+HX: funs for merging with
+*)
+//
 fun
 the_gmacenv_pvsmrgw
   (map: topmap(g1mac)): void
@@ -168,6 +174,37 @@ the_sexpenv_pvsfind
 fun
 the_dexpenv_pvsfind
   (key: sym_t): optn_vt(d2itm)
+//
+(* ****** ****** *)
+//
+(*
+HX-2023-06-02: for static loading
+*)
+//
+(* ****** ****** *)
+#typedef d1parsed = $D1E.d1parsed
+#typedef d2parsed = $D2E.d2parsed
+(* ****** ****** *)
+//
+fun
+the_d1parenv_pvs
+  ((*void*)): topmap(d1parsed)
+fun
+the_d1parenv_pvsfind
+  (key: sym_t): optn_vt(d1parsed)
+fun
+the_d1parenv_pvsadd0
+  (key: sym_t, itm: d1parsed): void
+//
+fun
+the_d2parenv_pvs
+  ((*void*)): topmap(d2parsed)
+fun
+the_d2parenv_pvsfind
+  (key: sym_t): optn_vt(d2parsed)
+fun
+the_d2parenv_pvsadd0
+  (key: sym_t, itm: d2parsed): void
 //
 (* ****** ****** *)
 //
