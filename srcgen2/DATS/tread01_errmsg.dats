@@ -1165,9 +1165,10 @@ println(
 )(*println*)
 end//let//end-of-[optn_nil()]
 |
-optn_cons(dpar) =>
+optn_cons@(shrd, dpar) =>
 let
 val () =
+if (shrd > 0) then
   d1parsed_fpemsg(out, dpar)
 endlet
 endlet // end-of-( D1Cstaload(...) )

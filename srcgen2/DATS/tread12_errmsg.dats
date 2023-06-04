@@ -909,6 +909,22 @@ endlet
 ) (*case+*)//end-(D2Cinclude(...))
 //
 |
+D2Cstaload
+( knd0, tknd
+, g1e1, fopt, dopt) =>
+(
+case+ dopt of
+|
+optn_nil() => ()
+|
+optn_cons@(shrd, dpar) =>
+let
+val () =
+  d2parsed_fpemsg(out, dpar)
+endlet
+) (*case+*)//end-(D2Cstaload(...))
+//
+|
 D2Cdatasort(d1cl, s2ts) => ()
 //
 |

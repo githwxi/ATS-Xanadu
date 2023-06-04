@@ -860,7 +860,8 @@ D1Cstaload of
 ( sint(*s/d*)
 , token
 , g1exp(*src*)
-, fpathopt, optn(d1parsed))//staload
+, fpathopt, optn
+  @(sint(*shared*), d1parsed))//staload
 //
 |
 D1Cdyninit of
