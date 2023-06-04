@@ -1522,8 +1522,13 @@ D2TOPENV of
 (* ****** ****** *)
 //
 fun
+f2env_of_d2topenv(d2topenv):f2env
+//
+(* ****** ****** *)
+//
+fun
 d2parsed_fprint
-(out: FILR, dpar: d2parsed): void
+(out: FILR, dpar: d2parsed):(void)
 //
 (* ****** ****** *)
 //

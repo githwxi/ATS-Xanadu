@@ -651,26 +651,33 @@ f2env_tbox <= ptr
 #typedef
 f2env = f2env_tbox
 #typedef
+f2envlst = list(f2env)
+#typedef
 f2envopt = optn(f2env)
+(*
 #vwtpdef
 f2envopt_vt = optn_vt(f2env)
+*)
 //
 (* ****** ****** *)
 //
 datatype s2itm =
 //
-| S2ITMvar of (s2var)
+|S2ITMvar of s2var
 //
 // HX-2022-10-23:
 // supporting overload
-| S2ITMcst of (s2cstlst)
+|
+S2ITMcst of
+( s2cstlst ) // static consts
+//
+//
+|S2ITMenv of
+( f2envlst ) // for name space
 //
 (*
-| S2ITMexp of (g1exp) // for generics
-*)
-//
-(*
-| S2ITMenv of (f2env) // for name space
+// HX: this one is for
+|S2ITMexp of g1exp // generics
 *)
 //
 (* ****** ****** *)
