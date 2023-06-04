@@ -52,6 +52,8 @@ _(*TRANS12*) = "./trans12.dats"
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
+#staload "./../SATS/filpath.sats"
+(* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
@@ -67,6 +69,8 @@ _(*TRANS12*) = "./trans12.dats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans12.sats"
+(* ****** ****** *)
+#staload "./../SATS/xglobal.sats"
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
@@ -409,6 +413,46 @@ end (*let*) // end of [trans12_d1arg(...)]
 
 end (*local*)//end-of-[local(trans12_d1arg)]
 
+(* ****** ****** *)
+//
+fun
+s2taload_from_fpath
+( fpth: fpath
+, dpar: d1parsed)
+: @(sint, d2parsed) =
+let
+//
+val fnm2 =
+fpath_get_fnm2(fpth)
+val opt2 =
+the_d2parenv_pvsfind(fnm2)
+//
+in//in-of-let
+//
+case+ opt2 of
+| ~
+optn_vt_nil() =>
+let
+//
+(*
+val
+dpar =
+d1parsed_of_tread01(dpar)
+*)
+//
+in(*let*)
+(0, dpar) where
+{
+val dpar =
+d2parsed_of_trans12(dpar)
+val (  ) =
+the_d2parenv_pvsadd0(fnm2, dpar) }
+end//let//end-of-[ optn_vt_nil() ]
+//
+| ~optn_vt_cons(dpar) => @(1(*shared*),dpar)
+//
+end(*let*)//end-of-[s1taload_from_fpath(fpth)]
+//
 (* ****** ****** *)
 
 #implfun
@@ -1453,14 +1497,27 @@ D1Cstaload
 , tknd, gsrc
 , fopt, dopt) = d1cl.node()
 //
-val dopt = optn_nil((*void*))
+val dopt =
+(
+case+ fopt of
+|
+optn_nil() =>
+optn_nil((*void*))
+|
+optn_cons(fpth) =>
+let
+val-
+optn_cons@(shrd, dpar) = dopt
+in
+optn_cons
+(s2taload_from_fpath(fpth, dpar)) end
+) : optn@(sint, d2parsed) // [val(dopt)]
 //
 in//let
 d2ecl_make_node
 (loc0,
- D2Cstaload
- (knd0, tknd, gsrc, fopt, dopt))
-end (*let*) // end of [f0_staload(...)]
+ D2Cstaload(knd0, tknd, gsrc, fopt, dopt))
+end (*let*) // end of [f0_staload(env0, d1cl)]
 //
 (* ****** ****** *)
 //

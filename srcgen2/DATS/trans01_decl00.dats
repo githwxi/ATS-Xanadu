@@ -65,6 +65,8 @@ _(*TRANS01*) = "./trans01.dats"
 (* ****** ****** *)
 #staload "./../SATS/parsing.sats"
 (* ****** ****** *)
+#staload "./../SATS/preadx0.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
@@ -316,7 +318,8 @@ end (*let*) // end of [trans01_d0arg(tenv,d0a0)]
 //
 fun
 s1taload_from_fpath
-(fpth: fpath): d1parsed =
+( fpth: fpath)
+: @(sint, d1parsed) =
 let
 //
 val fnm2 =
@@ -342,7 +345,7 @@ val
 dpar = d0parsed_of_preadx0(dpar)
 //
 in(*let*)
-dpar where
+(0, dpar) where
 {
 val dpar =
 d1parsed_of_trans01(dpar)
@@ -350,7 +353,7 @@ val (  ) =
 the_d1parenv_pvsadd0(fnm2, dpar) }
 end//let//end-of-[ optn_vt_nil() ]
 //
-| ~optn_vt_cons(dpar) => (  dpar  )
+| ~optn_vt_cons(dpar) => @(1(*shared*),dpar)
 //
 end(*let*)//end-of-[s1taload_from_fpath(fpth)]
 //
@@ -1520,7 +1523,7 @@ optn_nil((*void*))
 |
 optn_cons(fpth) =>
 optn_cons(s1taload_from_fpath(fpth))
-) : optn(d1parsed) // end-of-[val(dopt)]
+) : optn@(sint, d1parsed) // [val(dopt)]
 //
 in//let
 d1ecl

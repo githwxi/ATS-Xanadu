@@ -317,7 +317,8 @@ d1ecl_staload_errck
 , tknd: token
 , g1e1: g1exp
 , fopt: fpathopt
-, dopt: optn(d1parsed)): d1ecl =
+, dopt: optn@(
+  sint(*shared*), d1parsed)): d1ecl =
 let
 val lvl = 0
 in//let
