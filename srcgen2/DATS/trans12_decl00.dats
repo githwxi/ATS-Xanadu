@@ -449,9 +449,10 @@ val (  ) =
 the_d2parenv_pvsadd0(fnm2, dpar) }
 end//let//end-of-[ optn_vt_nil() ]
 //
-| ~optn_vt_cons(dpar) => @(1(*shared*),dpar)
+| ~
+optn_vt_cons(dpar) => @(1(*shared*),dpar)
 //
-end(*let*)//end-of-[s1taload_from_fpath(fpth)]
+end(*let*)//end-of-[s2taload_from_fpath(...)]
 //
 (* ****** ****** *)
 

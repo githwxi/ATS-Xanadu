@@ -321,6 +321,32 @@ d2exp_make_node
 (* ****** ****** *)
 //
 local
+//
+datatype
+f2env = F2ENV of
+( $MAP.topmap(s2tex)
+, $MAP.topmap(s2itm)
+, $MAP.topmap(d2itm))
+//
+#absimpl f2env_tbox = f2env
+//
+in//local
+//
+#implfun
+f2env_of_d2topenv
+  (d2env) =
+(
+F2ENV(s2tex, s2itm, d2itm)) where
+{ val
+  D2TOPENV
+  (g2mac, s2tex, s2itm, d2itm) = d2env
+}
+//
+endloc (*local*) // end of [ local( f2env ) ]
+//
+(* ****** ****** *)
+//
+local
 val
 stamper = stamper_new()
 in//local

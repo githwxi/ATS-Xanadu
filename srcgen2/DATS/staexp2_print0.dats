@@ -347,6 +347,10 @@ print("S2ITMvar(", s2v1, ")")
 S2ITMcst(s2cs) =>
 print("S2ITMcst(", s2cs, ")")
 //
+|
+S2ITMenv(envs) =>
+print("S2ITMenv(", "...", ")")
+//
 end (*let*) // end of [s2itm_fprint(out, s2i0)]
 
 (* ****** ****** *)
