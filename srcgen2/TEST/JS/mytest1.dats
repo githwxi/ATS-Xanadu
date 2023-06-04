@@ -9,11 +9,11 @@ and y2 = 2
 val xy = x1 + y2
 *)
 (* ****** ****** *)
-(*
+// (*
 val xs = list_nil()
 val ys = list_cons(1, xs)
 val zs = list_cons("1", ys)
-*)
+// *)
 (* ****** ****** *)
 #symload
 :: with list_cons

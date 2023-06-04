@@ -487,6 +487,8 @@ D1Csymload _ => f0_symload(env0, d1cl)
 //
 |
 D1Cinclude _ => f0_include(env0, d1cl)
+|
+D1Cstaload _ => f0_staload(env0, d1cl)
 //
 |
 D1Cdatasort _ => f0_datasort(env0, d1cl)
@@ -1433,7 +1435,32 @@ d2ecl_make_node
 (loc0,
  D2Cinclude
  (knd0, tknd, gsrc, fopt, dopt))
-end (*let*) // end of [f0_include]
+end (*let*) // end of [f0_include(...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_staload
+( env0:
+! tr12env
+, d1cl: d1ecl): d2ecl =
+let
+val
+loc0 = d1cl.lctn()
+val-
+D1Cstaload
+( knd0
+, tknd, gsrc
+, fopt, dopt) = d1cl.node()
+//
+val dopt = optn_nil((*void*))
+//
+in//let
+d2ecl_make_node
+(loc0,
+ D2Cstaload
+ (knd0, tknd, gsrc, fopt, dopt))
+end (*let*) // end of [f0_staload(...)]
 //
 (* ****** ****** *)
 //

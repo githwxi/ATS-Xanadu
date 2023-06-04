@@ -921,6 +921,41 @@ end (*local*) // end of [local(the_sortenv_allist)]
 
 local
 
+(* ****** ****** *)
+val
+the_d1parenv = topmap_make_nil()
+val
+the_d2parenv = topmap_make_nil()
+(* ****** ****** *)
+
+in//local
+
+(* ****** ****** *)
+#implfun
+the_d1parenv_pvs() = (the_d1parenv)
+#implfun
+the_d2parenv_pvs() = (the_d2parenv)
+(* ****** ****** *)
+#implfun
+the_d1parenv_pvsfind(key) =
+topmap_search_opt(the_d1parenv, key)
+#implfun
+the_d2parenv_pvsfind(key) =
+topmap_search_opt(the_d2parenv, key)
+(* ****** ****** *)
+#implfun
+the_d1parenv_pvsadd0(key, itm) =
+topmap_insert_any(the_d1parenv, key, itm)
+#implfun
+the_d2parenv_pvsadd0(key, itm) =
+topmap_insert_any(the_d2parenv, key, itm)
+(* ****** ****** *)
+end (*local*) // end-[local(the_d1parenv/d2parenv)]
+
+(* ****** ****** *)
+
+local
+
 val
 the_list =
 a0ref_make_1val(list_nil())

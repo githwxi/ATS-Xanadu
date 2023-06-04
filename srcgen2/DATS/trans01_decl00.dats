@@ -70,6 +70,8 @@ _(*TRANS01*) = "./trans01.dats"
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
 (* ****** ****** *)
+#staload "./../SATS/xglobal.sats"
+(* ****** ****** *)
 #symload name with drpth_get_name
 #symload name with symbl_get_name
 (* ****** ****** *)
@@ -310,6 +312,48 @@ end (*let*) // end of [D0ARGdyn2(_,a0ts,aopt,_)]
 //
 end (*let*) // end of [trans01_d0arg(tenv,d0a0)]
 
+(* ****** ****** *)
+//
+fun
+s1taload_from_fpath
+(fpth: fpath): d1parsed =
+let
+//
+val fnm2 =
+fpath_get_fnm2(fpth)
+val opt2 =
+the_d1parenv_pvsfind(fnm2)
+//
+in//in-of-let
+//
+case+ opt2 of
+| ~
+optn_vt_nil() =>
+let
+//
+val fnm1 =
+fpath_get_fnm1(fpth)
+val knd1 = 0(*static*)
+//
+val
+dpar =
+d0parsed_from_fpath(knd1, fnm1)
+val
+dpar = d0parsed_of_preadx0(dpar)
+//
+in(*let*)
+dpar where
+{
+val dpar =
+d1parsed_of_trans01(dpar)
+val (  ) =
+the_d1parenv_pvsadd0(fnm2, dpar) }
+end//let//end-of-[ optn_vt_nil() ]
+//
+| ~optn_vt_cons(dpar) => (  dpar  )
+//
+end(*let*)//end-of-[s1taload_from_fpath(fpth)]
+//
 (* ****** ****** *)
 
 #implfun
@@ -1472,22 +1516,10 @@ val dopt =
 case+ opt1 of
 |
 optn_nil() =>
-optn_nil()
+optn_nil((*void*))
 |
 optn_cons(fpth) =>
-let
-//
-val fnm1 =
-fpath_get_fnm1(fpth)
-//
-val knd1 = 0(*static*)
-//
-val dpar =
-d0parsed_from_fpath(knd1, fnm1)
-//
-in//in-of-let
-optn_cons(d1parsed_of_trans01(dpar))
-end//end-of-let
+optn_cons(s1taload_from_fpath(fpth))
 ) : optn(d1parsed) // end-of-[val(dopt)]
 //
 in//let

@@ -714,6 +714,15 @@ print
 (knd0,";",tknd,";",gsrc,";",fopt,")"))
 //
 |
+D2Cstaload
+( knd0, tknd
+, gsrc, fopt, dopt ) =>
+(
+print("D2Cstaload(");
+print
+(knd0,";",tknd,";",gsrc,";",fopt,")"))
+//
+|
 D2Cdatasort(d1cl,s2cs) =>
 print("D2Cdatasort(",d1cl,";",s2cs,")")
 //
