@@ -78,6 +78,8 @@ LEX = "./lexing0.sats"
 #staload S2E = "./staexp2.sats"
 #staload D2E = "./dynexp2.sats"
 (* ****** ****** *)
+#typedef g1exp = $S1E.g1exp
+(* ****** ****** *)
 #typedef sort1 = $S1E.sort1
 (* ****** ****** *)
 #typedef s1arg = $S1E.s1arg
@@ -309,6 +311,12 @@ s1exp_get_s2cstlst
 ( env0:
 ! tr12env
 , s1e0: s1exp): s2cstlst
+(* ****** ****** *)
+//
+fun
+g1exp_nmspace
+(g1e0: g1exp): optn(sym_t)
+//
 (* ****** ****** *)
 //
 fun

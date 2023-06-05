@@ -234,6 +234,7 @@ x0.node() of
   (sym = $SYM.EQ_symbol)
 | _(*non-G1Eid0*) => false
 )
+//
 in (* in-of-local *)
 //
 implement

@@ -75,6 +75,8 @@ _(*TRANS12*) = "./trans12.dats"
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload node with g1exp_get_node
+(* ****** ****** *)
 #symload lctn with s1qid_get_lctn
 #symload lctn with d1qid_get_lctn
 (* ****** ****** *)
@@ -191,6 +193,64 @@ sexpdef_sort2
   val-T_SEXPDEF(knd0) = tknd.node()
 } (*where*) // end of [sexpdef_sort2(tknd)]
 //
+(* ****** ****** *)
+
+local
+//
+fun
+DLR
+(nm0: strn): strn =
+strn_append("$", nm0)
+//
+fun
+iseq
+(x0: g1exp): bool =
+(
+case+
+x0.node() of
+| G1Eid0(sym) =>
+  (sym = $SYM.EQ0_symbl)
+| _(*non-G1Eid0*) => false
+)
+//
+in(*in-of-local*)
+
+#implfun
+g1exp_nmspace
+  (g1e0) =
+(
+case+
+g1e0.node() of
+|
+G1Ea2pp
+(x0, x1, x2) =>
+(
+if
+iseq(x0)
+then
+(
+case+
+x1.node() of
+|
+G1Eid0(sym) =>
+let
+val nm0 =
+$SYM.symbl_get_name(sym)
+in//let
+optn_cons
+(
+$SYM.symbl_make_name(DLR(nm0)))
+end (*let*) // end of [G1Eid0(sym)]
+|
+_(*non-G1Eid0*) => optn_nil(*void*))
+else optn_nil((*void*)) // not(iseq)
+)
+|
+_(*non-G2Ea2pp*) => optn_nil((*void*))
+) (*case+*) // end of [g1exp_nmspace(g1e0)]
+//
+end (*local*) // end of [local(g1exp_nmspace)]
+
 (* ****** ****** *)
 
 #implfun
