@@ -1584,10 +1584,9 @@ g1exp_nmspace(gsrc) of
 //
 val (  ) =
 (
-case+ fopt of
+case+ dopt of
 |optn_nil() => ()
-|
-optn_cons
+|optn_cons
 @(shrd, dpar) =>
 tr12env_add1_f2env
 (env0, gsym, fenv) where
