@@ -1146,6 +1146,62 @@ prerrln("tr12env_add0_d2itm: x0 = ", x0)
 (* ****** ****** *)
 
 #implfun
+tr12env_add1_f2env
+  (env0, k0, x0) =
+let
+//
+val gsym = k0
+val fenv = x0
+//
+val sopt =
+tr12env_find_s2itm(env0, gsym)
+//
+in//let
+//
+case+ sopt of
+| ~
+optn_vt_nil() =>
+tr12env_add0_s2itm
+(env0, gsym, sitm) where
+{
+val
+sitm = S2ITMenv(list_sing(fenv))
+}
+| ~
+optn_vt_cons(sitm) =>
+(
+case+ sitm of
+|
+S2ITMenv(envs) =>
+let
+val
+sitm =
+S2ITMenv
+(list_cons(fenv, envs)) in
+tr12env_add0_s2itm(env0, gsym, sitm)
+end//let
+| _(*non-S2ITMcst*) =>
+let
+val
+sitm =
+S2ITMenv(list_sing(fenv)) in
+tr12env_add0_s2itm(env0, gsym, sitm)
+end//let
+) (*case+*)//end-of-[optn_vt_cons(...)]
+//
+end where
+{
+val () =
+prerrln("tr12env_add1_f2env: gsym = ", k0)
+(*
+val () =
+prerrln("tr12env_add1_f2env: fenv = ", x0)
+*)
+} (*where*)//end[tr12env_add1_f2env(env0,k0,x0)]
+
+(* ****** ****** *)
+
+#implfun
 tr12env_find_g1mac
   ( env0, k0 ) =
 (
@@ -1229,7 +1285,7 @@ end (*let*) // end of [trans12_g1mac_apps(env0,...)]
 endloc (*local*) // end of [ local(tr12env) ]
 
 (* ****** ****** *)
-
+//
 #implfun
 tr12env_add1_s2cst
   (env0, s2c0) =
@@ -1271,7 +1327,7 @@ end//let
 ) (*case+*)//end-of-[optn_vt_cons(...)]
 //
 end (*let*)//end[tr12env_add0_s2cst(env0,s2c0)]
-
+//
 (* ****** ****** *)
 //
 #implfun
