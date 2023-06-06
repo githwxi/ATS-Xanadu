@@ -1574,6 +1574,28 @@ optn_cons
 (s2taload_from_fpath(fpth, dpar)) end
 ) : optn@(sint, d2parsed) // [val(dopt)]
 //
+val gsym =
+(
+case
+g1exp_nmspace(gsrc) of
+|optn_nil() =>
+ $SYM.DLR_symbl
+|optn_cons(gsym) => gsym): sym_t
+//
+val (  ) =
+(
+case+ fopt of
+|optn_nil() => ()
+|
+optn_cons
+@(shrd, dpar) =>
+tr12env_add1_f2env
+(env0, gsym, fenv) where
+{
+val fenv =
+f2env_of_d2topenv(dpar.t2penv()) }
+)
+//
 in//let
 d2ecl_make_node
 (loc0,

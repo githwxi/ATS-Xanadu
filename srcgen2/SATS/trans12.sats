@@ -107,6 +107,8 @@ LEX = "./lexing0.sats"
 #typedef s2itm = $S2E.s2itm
 #typedef s2tex = $S2E.s2tex
 (* ****** ****** *)
+#typedef f2env = $S2E.f2env
+(* ****** ****** *)
 #typedef q1arg = $D1E.q1arg
 #typedef s1qag = $D1E.s1qag
 #typedef t1qag = $D1E.t1qag
@@ -389,6 +391,12 @@ tr12env_add0_d2itm
 , key: sym_t, itm: d2itm): void
 //
 (* ****** ****** *)
+fun
+tr12env_add1_f2env
+( env0:
+! tr12env
+, gsym: sym_t, fenv: f2env): void
+(* ****** ****** *)
 //
 fun
 tr12env_find_g1mac
@@ -456,21 +464,21 @@ fun // HX: it does accumulative
 tr12env_add1_s2cst // insertion
 (env0: !tr12env , s2c0: s2cst): void
 (* ****** ****** *)
-fun
-tr12env_add0_s2var
+fun // HX: insertion is not
+tr12env_add0_s2var // accumulative
 (env0: !tr12env , s2v0: s2var): void
-fun
-tr12env_add0_s2qag
+fun // HX: insertion is not
+tr12env_add0_s2qag // accumulative
 (env0: !tr12env , sqa0: s2qag): void
-fun
-tr12env_add0_t2qag
+fun // HX: insertion is not
+tr12env_add0_t2qag // accumulative
 (env0: !tr12env , tqa0: t2qag): void
 (* ****** ****** *)
-fun // HX: it does accumulative
-tr12env_add1_d2con // insertion
+fun // HX: insertion is done
+tr12env_add1_d2con // accumulatively
 (env0: !tr12env , d2c0: d2con): void
-fun // HX: it does accumulative
-tr12env_add1_d2cst // insertion
+fun // HX: insertion is done
+tr12env_add1_d2cst // accumulatively
 (env0: !tr12env , d2c0: d2cst): void
 (* ****** ****** *)
 fun
