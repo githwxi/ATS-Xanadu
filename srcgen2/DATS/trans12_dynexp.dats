@@ -2556,8 +2556,64 @@ prerrln("f0_qual0: d1e2 = ", d1e2)
 in//let
 case+
 tok1.node() of
+|
+T_IDQUA(name) =>
+let
+val
+sym1 =
+symbl_make_name(name)
+val
+opt1 =
+tr12env_find_s2itm(env0, sym1)
+val () =
+prerrln("f0_qual0: opt1 = ", opt1)
+in//let
+case+ opt1 of
+| ~
+optn_vt_nil() =>
+d2exp_none1(d1e0)
+| ~
+optn_vt_cons(s2i1) =>
+(
+case+ s2i1 of
+| S2ITMenv(envs) =>
+  f1_d2exp(envs, d1e2)
+|
+_(*non-S2ITMenv*) => d2exp_none1(d1e0)
+)
+end (*let*)//end-of-[T_IDQUA(...)]
 |_(*non-T_IDQUA*) => d2exp_none1(d1e0)
-end (*let*)//end of [f0_annot(env0,d1e0)]
+end where
+{
+fun
+f1_d2exp
+( envs
+: f2envlst, dexp: d1exp): d2exp =
+(
+case+
+dexp.node() of
+|D1Eid0(deid) =>
+let
+val dopt =
+f2envlst_find_d2itm(envs, deid)
+in//let
+case+ dopt of
+| ~
+optn_vt_nil() => d2exp_none1(dexp)
+| ~
+optn_vt_cons(ditm) =>
+(
+case+ ditm of
+|D2ITMcon(d2cs) =>
+ d2exp_cons(dexp.lctn(), d2cs)
+|D2ITMcst(d2cs) =>
+ d2exp_csts(dexp.lctn(), d2cs)
+|_(*non-con-cst*) => d2exp_none1(dexp)
+)
+end(*let*)//end of [ D1Eid0(deid) ]
+|_(* otherwise *) => d2exp_none1(dexp)
+)
+}(*where*)//end of [f0_qual0(env0,d1e0)]
 
 (* ****** ****** *)
 

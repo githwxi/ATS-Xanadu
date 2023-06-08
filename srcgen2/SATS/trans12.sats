@@ -202,6 +202,8 @@ LEX = "./lexing0.sats"
 #typedef s2varopt = $S2E.s2varopt
 #typedef s2expopt = $S2E.s2expopt
 (* ****** ****** *)
+#typedef f2envlst = $S2E.f2envlst
+(* ****** ****** *)
 #typedef q1arglst = $D1E.q1arglst
 #typedef s1qaglst = $D1E.s1qaglst
 #typedef t1qaglst = $D1E.t1qaglst
@@ -418,6 +420,16 @@ tr12env_find_d2itm
 ( env:
 ! tr12env, sym: sym_t): d2itmopt_vt
 //
+(* ****** ****** *)
+fun
+f2envlst_find_s2tex
+(f2envlst, key0:sym_t): s2texopt_vt
+fun
+f2envlst_find_s2itm
+(f2envlst, key0:sym_t): s2itmopt_vt
+fun
+f2envlst_find_d2itm
+(f2envlst, key0:sym_t): d2itmopt_vt
 (* ****** ****** *)
 //
 fun
