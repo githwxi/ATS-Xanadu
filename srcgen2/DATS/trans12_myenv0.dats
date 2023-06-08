@@ -1256,6 +1256,32 @@ dexpenv_search_opt(denv, k0)) where
 } (*where*) // end of [tr12env_find_d2itm(env0,k0)]
 
 (* ****** ****** *)
+
+#implfun
+f2envlst_find_d2itm
+  (envs, k0) =
+(
+case+ envs of
+|
+list_nil() =>
+optn_vt_nil((*void*))
+|
+list_cons(fenv, envs) =>
+(
+case+
+dopt of
+| ~
+optn_vt_nil() =>
+f2envlst_find_d2itm
+( envs(*rest*), k0 )
+| !
+optn_vt_cons _ => dopt) where
+{
+val dopt =
+topmap_search_opt(fenv.d2expenv(), k0) }
+) (*case+*) // end of [f2envlst_find_d1itm(env0,k0)]
+
+(* ****** ****** *)
 //
 #implfun
 trans12_g1mac
