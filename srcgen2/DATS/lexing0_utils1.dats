@@ -84,10 +84,10 @@ IDSYMq(ch: char): bool
 (* ****** ****** *)
 #extern
 fun
-SYSRPq(ch: char): bool
+SYDLRq(ch: char): bool
 #extern
 fun
-SYDLRq(ch: char): bool
+SYSRPq(ch: char): bool
 (* ****** ****** *)
 #extern
 fun
@@ -194,9 +194,9 @@ symseq = "%&+-*/.:=@~`^|!?<>#"
 
 (* ****** ****** *)
 #implfun
-SYSRPq(ch) = ( ch = '#' )
-#implfun
 SYDLRq(ch) = ( ch = '$' )
+#implfun
+SYSRPq(ch) = ( ch = '#' )
 (* ****** ****** *)
 //
 #implfun
@@ -299,8 +299,8 @@ case+ 0 of
 //
 | _ when IDFSTq(cc0) => f0_IDFST(buf, ci0)
 //
-| _ when SYSRPq(cc0) => f0_SYSRP(buf, ci0)
 | _ when SYDLRq(cc0) => f0_SYDLR(buf, ci0)
+| _ when SYSRPq(cc0) => f0_SYSRP(buf, ci0)
 //
 | _ when IDSYMq(cc0) => f0_IDSYM(buf, ci0)
 //
@@ -502,6 +502,80 @@ end // end of [loop(buf:!obj)]
 (* ****** ****** *)
 
 and
+f0_SYDLR
+( buf: !obj
+, ci0: sint): tnode =
+(
+loop(buf, 0)) where
+{
+//
+fnx
+loop
+( buf: !obj
+, kk0: sint): tnode =
+let
+//
+val ci1 = 
+gobj_lexing$getc1<obj>(buf)
+val cc1 = char_make_code(ci1)
+//
+(*
+val () =
+println
+("f0_SYDLR: loop: cc0 = ", cc0)
+*)
+//
+in//let
+//
+if
+IDRSTq(cc1)
+then
+loop(buf, kk0+1)
+else
+(
+if
+(kk0 > 0)
+then
+(
+if
+(cc1 = '.')
+then
+(
+(*
+HX-2023-06-08:
+The DOT must follow
+immediately to indicate
+namespace selection!
+*)
+T_IDQUA
+(gobj_lexing$fcseg(buf))
+) // end of [then]
+else
+let
+val
+cix =
+gobj_lexing$unget(buf, ci1)
+in
+T_IDDLR(gobj_lexing$fcseg(buf))
+end//end-of(else)//end-of(if)
+) (* then *)
+else
+(
+  f0_IDSYM(buf, ci0) where
+{
+  val
+  cix =
+  gobj_lexing$unget(buf, ci1) }
+) (* else *)
+) (* else *) // end-of-( if )
+//
+end // end-of-[loop(buf, kk0)]
+//
+} (*where*) // end of [f0_SYDLR]
+
+(* ****** ****** *)
+
+and
 f0_SYSRP
 ( buf: !obj
 , ci0: sint): tnode =
@@ -544,75 +618,7 @@ end (*let*) // end of [else]
 //
 end // end of [loop(buf, kk0)]
 //
-} (*where*) // end of [f0_SHARP]
-
-(* ****** ****** *)
-
-and
-f0_SYDLR
-( buf: !obj
-, ci0: sint): tnode =
-(
-loop(buf, 0)) where
-{
-//
-fnx
-loop
-( buf: !obj
-, kk0: sint): tnode =
-let
-//
-val ci1 = 
-gobj_lexing$getc1<obj>(buf)
-val cc1 = char_make_code(ci1)
-//
-(*
-val () =
-println
-("f0_SYDLR: loop: cc0 = ", cc0)
-*)
-//
-in//let
-//
-if
-IDRSTq(cc1)
-then
-loop(buf, kk0+1)
-else
-(
-if
-(kk0 > 0)
-then
-(
-if
-(cc1 = '.')
-then
-(
-T_IDQUA
-(gobj_lexing$fcseg(buf))
-) // end of [then]
-else
-let
-val
-cix =
-gobj_lexing$unget(buf, ci1)
-in
-T_IDDLR(gobj_lexing$fcseg(buf))
-end //endof(else)//end-of(if)
-) (* then *)
-else
-(
-  f0_IDSYM(buf, ci0) where
-{
-  val
-  cix =
-  gobj_lexing$unget(buf, ci1) }
-) (* else *)
-) (* else *) // end-of-( if )
-//
-end // end-of-[loop(buf, kk0)]
-//
-} (*where*) // end of [f0_SYDLR]
+} (*where*) // end of [f0_SYSRP]
 
 (* ****** ****** *)
 
