@@ -11,7 +11,7 @@ MYTEST2 = "./mytest2.sats"
 (* ****** ****** *)
 
 val
-xyz_myint = $MYTEST2 . xyz_myint
+xyz_myint = $MYTEST2.xyz_myint
 
 (* ****** ****** *)
 

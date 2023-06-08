@@ -142,6 +142,10 @@ val PFLAT_symbl: symbl //=symbl("@")
 val PFREE_symbl: symbl //=symbl("!")
 (* ****** ****** *)
 //
+val DLRDT_symbl: symbl // symbl("$.")
+//
+(* ****** ****** *)
+//
 val ASSGN_symbl: symbl //=symbl(":=")
 val BRCKT_symbl: symbl //=symbl("[]")
 //
