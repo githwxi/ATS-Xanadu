@@ -1,14 +1,17 @@
 (* ****** ****** *)
 (*
 #include "./mytest1.sats"
+#include "./mytest1.dats"
 *)
 (* ****** ****** *)
-#include "./mytest1.dats"
+#staload "./mytest2.sats"
 (* ****** ****** *)
-#staload MYTEST2 = "./mytest2.sats"
+#staload
+MYTEST2 = "./mytest2.sats"
 (* ****** ****** *)
 
-val xs2 = (xs, xs1)
+val
+xyz_myint = $MYTEST2 . xyz_myint
 
 (* ****** ****** *)
 

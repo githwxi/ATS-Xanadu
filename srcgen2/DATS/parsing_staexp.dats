@@ -635,7 +635,7 @@ T_IDDLR _ =>
 let
 val () =
 buf.skip1() in i0dnt_some(tok)
-end // T_IDDIR
+end // T_IDDLR
 //
 (*
 |
