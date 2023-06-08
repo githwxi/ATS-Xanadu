@@ -83,6 +83,8 @@ HX-2022-10-01: Various symbols
 #implval MSGT_symbl = symbl("->")
 //
 (* ****** ****** *)
+#implval DLRDT_symbl = symbl("$.")
+(* ****** ****** *)
 #implval ASSGN_symbl = symbl(":=")
 #implval BRCKT_symbl = symbl("[]")
 (* ****** ****** *)

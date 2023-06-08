@@ -198,20 +198,33 @@ sexpdef_sort2
 local
 //
 fun
-DLR
+DLRDT
 (nm0: strn): strn =
-strn_append("$", nm0)
+strn_tabulate_cfr
+( n0 + 2
+, lam i0 => fopr i0
+) where
+{
+val n0 =
+strn_length(nm0)
+fun
+fopr(i0: sint): char =
+if
+i0 = 0 then '$' else
+(
+if
+i0 <= n0
+then nm0[i0-1] else '.') }
 //
 fun
-iseq
+iseq0
 (x0: g1exp): bool =
 (
 case+
 x0.node() of
 | G1Eid0(sym) =>
   (sym = $SYM.EQ0_symbl)
-| _(*non-G1Eid0*) => false
-)
+| _(*non-G1Eid0*) => false)
 //
 in(*in-of-local*)
 
@@ -226,7 +239,7 @@ G1Ea2pp
 (x0, x1, x2) =>
 (
 if
-iseq(x0)
+iseq0(x0)
 then
 (
 case+
@@ -239,11 +252,11 @@ $SYM.symbl_get_name(sym)
 in//let
 optn_cons
 (
-$SYM.symbl_make_name(DLR(nm0)))
+$SYM.symbl_make_name(DLRDT(nm0)))
 end (*let*) // end of [G1Eid0(sym)]
 |
 _(*non-G1Eid0*) => optn_nil(*void*))
-else optn_nil((*void*)) // not(iseq)
+else optn_nil((*void*)) // not(iseq0)
 )
 |
 _(*non-G2Ea2pp*) => optn_nil((*void*))
@@ -1579,7 +1592,7 @@ val gsym =
 case
 g1exp_nmspace(gsrc) of
 |optn_nil() =>
- $SYM.DLR_symbl
+ $SYM.DLRDT_symbl
 |optn_cons(gsym) => gsym): sym_t
 //
 val (  ) =
