@@ -1522,7 +1522,25 @@ D2TOPENV of
 (* ****** ****** *)
 //
 fun
-f2env_of_d2topenv(d2topenv):f2env
+f2env_of_d2topenv
+( denv: d2topenv ): f2env
+//
+fun
+f2env_get_sort2env
+(fenv:f2env): $MAP.topmap(s2tex)
+fun
+f2env_get_s2expenv
+(fenv:f2env): $MAP.topmap(s2itm)
+fun
+f2env_get_d2expenv
+(fenv:f2env): $MAP.topmap(d2itm)
+//
+#symload
+sort2env with f2env_get_sort2env
+#symload
+s2expenv with f2env_get_s2expenv
+#symload
+d2expenv with f2env_get_d2expenv
 //
 (* ****** ****** *)
 //

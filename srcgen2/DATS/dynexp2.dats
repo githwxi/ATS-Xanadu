@@ -342,6 +342,30 @@ F2ENV(s2tex, s2itm, d2itm)) where
   (g2mac, s2tex, s2itm, d2itm) = d2env
 }
 //
+#implfun
+f2env_get_sort2env
+  (f2env) =
+let
+val+
+F2ENV
+(s2tex, s2itm, d2itm) = f2env in s2tex end
+//
+#implfun
+f2env_get_s2expenv
+  (f2env) =
+let
+val+
+F2ENV
+(s2tex, s2itm, d2itm) = f2env in s2itm end
+//
+#implfun
+f2env_get_d2expenv
+  (f2env) =
+let
+val+
+F2ENV
+(s2tex, s2itm, d2itm) = f2env in d2itm end
+//
 endloc (*local*) // end of [ local( f2env ) ]
 //
 (* ****** ****** *)
