@@ -385,14 +385,49 @@ end (*local*)//end-of-[local(s2cst_select/s_list)]
 
 (* ****** ****** *)
 
+local
+
+fun
+f0_s1exp
+( envs
+: f2envlst
+, sexp: s1exp): s2cstlst =
+(
+case+
+sexp.node() of
+|
+S1Eid0(seid) =>
+let
+val dopt =
+f2envlst_find_d2itm(envs, seid)
+in//let
+case+ dopt of
+| ~
+optn_vt_nil() => list_nil((*void*))
+| ~
+optn_vt_cons(sitm) =>
+(
+case+ sitm of
+|
+S2ITMcst(s2cs) => list_nil((*void*))
+| _(*otherwise*) => list_nil((*void*))
+)
+end(*let*) // end of [ S1Eid0(seid) ]
+| _(*otherwise*) => list_nil((*void*))
+//
+) (*case+*) // end of [f0_s1exp(envs,sexp)]
+
+in (*in-of-local*)
+
 #implfun
 s1exp_get_s2cstlst
   (env0, s1e0) =
 let
 (*
-val () =
-prerrln
-("s1exp_get_s2cstlst: s1e0 = ", s1e0)
+val () = prerrln
+(
+"s1exp_get_s2cstlst: s1e0 = ", s1e0
+)
 *)
 in
 case+
@@ -418,8 +453,8 @@ case+ s2i1 of
 )
 end (*let*) // end of [S1Eid0(sid1)]
 //
-|S1Equal0
-(tok1, s1e2) =>
+|
+S1Equal0(tok1, s1e2) =>
 (
 case+
 tok1.node() of
@@ -434,7 +469,7 @@ opt1 =
 tr12env_find_s2itm(env0, sym1)
 val () =
 prerrln
-("s1exp_get_s2cst: opt1 = ", opt1)
+("s1exp_get_s2cstlst: opt1 = ", opt1)
 in//let
 case+ opt1 of
 | ~
@@ -444,45 +479,19 @@ list_nil((*void*))
 optn_vt_cons(s2i1) =>
 (
 case+ s2i1 of
-| S2ITMenv(envs) =>
-  f0_s1exp(envs, s1e2)
-| _(*otherwise*) => list_nil(*void*)
-)
-end (*let*)//end-of-[T_IDQUA(...)]
-| _(*non-T_IDQUA*) => list_nil(*void*)
-) where // end-of-[case+]
-{
-fun
-f0_s1exp
-( envs
-: f2envlst, sexp: s1exp): s2cstlst =
-(
-case+
-sexp.node() of
-|S1Eid0(seid) =>
-let
-val dopt =
-f2envlst_find_d2itm(envs, seid)
-in//let
-case+ dopt of
-| ~
-optn_vt_nil() => list_nil((*void*))
-| ~
-optn_vt_cons(sitm) =>
-(
-case+ sitm of
 |
-S2ITMcst(s2cs) => list_nil((*void*))
-| _(*otherwise*) => list_nil((*void*))
-)
-end(*let*)//end of [ S1Eid0(seid) ]
-| _(* otherwise *) => list_nil((*void*))
-)(*case+*)//end of [f0_s1exp(envs,sexp)]
-}(*where*)//end of [S1Equal0(tok1,s1e2)]
+S2ITMenv(envs) => f0_s1exp(envs,s1e2)
+|_(*otherwise*) => list_nil((*void*)))
+end (*let*) // end-of-[ T_IDQUA(...) ]
+|
+_(*non-T_IDQUA*) => list_nil((*void*)))
 //
-| _(* otherwise *) => list_nil((*void*))
+|
+_(*non-S1Eid0(seid)*) => list_nil((*void*))
 //
 end (*let*) // end of [s1exp_get_s2cstlst(...)]
+
+end (*loc*) // end of [s1exp_get_s2cstlst(...)]
 
 (* ****** ****** *)
 
