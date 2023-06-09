@@ -489,13 +489,13 @@ prerrln("trans12_t1mag: t1ma = ", t1ma)
 trans12_s1exp
 ( env0,s1e0 ) = let
 //
-(*
+// (*
 val
 loc0 = s1e0.lctn()
 val () =
 prerrln
 ("trans12_s1exp: s1e0 = ", s1e0)
-*)
+// *)
 //
 in//let
 //
@@ -1548,10 +1548,22 @@ let
 //
 val loc0 = s1e0.lctn()
 //
+val (  ) =
+prerrln
+("f0_qual0: loc0 = ", loc0)
+val (  ) =
+prerrln
+("f0_qual0: s1e0 = ", s1e0)
+//
 val s2cs =
 s1exp_get_s2cstlst(env0, s1e0)
 //
 val sopt = s2cst_select_any(s2cs)
+//
+val (  ) =
+prerrln("f0_qual0: s2cs = ", s2cs)
+val (  ) =
+prerrln("f0_qual0: sopt = ", sopt)
 //
 in//let
 case+ sopt of
