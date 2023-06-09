@@ -674,9 +674,9 @@ end (*let*) // end of [D1Pstr(tok)]
 |D1Pr1cd _ => f0_r1cd(env0, d1p0)
 |D1Pr2cd _ => f0_r2cd(env0, d1p0)
 //
-|D1Pqual0 _ => f0_qual0(env0, d1p0)
-//
 |D1Pannot _ => f0_annot(env0, d1p0)
+//
+|D1Pqual0 _ => f0_qual0(env0, d1p0)
 //
 | _(* otherwise *) => d2pat_none1(d1p0)
 //
@@ -1104,7 +1104,31 @@ d2pat(loc0, D2Prcd2(tknd, npf1, ldps))
 end (*let*) // end of [f0_r2cd(env0,d1p0)]
 //
 (* ****** ****** *)
-
+//
+fun
+f0_annot
+( env0:
+! tr12env
+, d1p0: d1pat): d2pat =
+let
+//
+val loc0 = d1p0.lctn()
+//
+val-
+D1Pannot
+(d1p1, s1e2) = d1p0.node()
+//
+val d2p1 =
+trans12_d1pat(env0, d1p1)
+val s2e2 =
+trans12_s1exp_impr(env0, s1e2)
+//
+in//let
+  d2pat(loc0, D2Pannot(d2p1, s1e2, s2e2))
+end (*let*) // end of [f0_annot(env0,d1p0)]
+//
+(* ****** ****** *)
+//
 fun
 f0_qual0
 ( env0:
@@ -1182,30 +1206,6 @@ end(*let*)//end of [ D1Pid0(dpid) ]
 |
 _(* otherwise *) => d2pat_none1(dpat))
 }(*where*)//end of [f0_qual0(env0,d1p0)]
-
-(* ****** ****** *)
-//
-fun
-f0_annot
-( env0:
-! tr12env
-, d1p0: d1pat): d2pat =
-let
-//
-val loc0 = d1p0.lctn()
-//
-val-
-D1Pannot
-(d1p1, s1e2) = d1p0.node()
-//
-val d2p1 =
-trans12_d1pat(env0, d1p1)
-val s2e2 =
-trans12_s1exp_impr(env0, s1e2)
-//
-in//let
-  d2pat(loc0, D2Pannot(d2p1, s1e2, s2e2))
-end (*let*) // end of [f0_annot(env0,d1p0)]
 //
 (* ****** ****** *)
 //
@@ -1391,9 +1391,9 @@ There is no D1Eassgn!
 |D1Ebrckt _ => f0_brckt(env0, d1e0)
 |D1Edtsel _ => f0_dtsel(env0, d1e0)
 //
-|D1Equal0 _ => f0_qual0(env0, d1e0)
-//
 |D1Eannot _ => f0_annot(env0, d1e0)
+//
+|D1Equal0 _ => f0_qual0(env0, d1e0)
 //
 | _(* otherwise *) => d2exp_none1(d1e0)
 //
@@ -2618,6 +2618,30 @@ end (*let*) // end of [f0_fix0(env0,d1e0)]
 (* ****** ****** *)
 
 fun
+f0_annot
+( env0:
+! tr12env
+, d1e0: d1exp): d2exp =
+let
+//
+val loc0 = d1e0.lctn()
+//
+val-
+D1Eannot
+(d1e1, s1e2) = d1e0.node()
+//
+val d2e1 =
+trans12_d1exp(env0, d1e1)
+val s2e2 =
+trans12_s1exp_impr(env0, s1e2)
+//
+in//let
+  d2exp(loc0, D2Eannot(d2e1, s1e2, s2e2))
+end (*let*)//end of [f0_annot(env0,d1e0)]
+
+(* ****** ****** *)
+
+fun
 f0_qual0
 ( env0:
 ! tr12env
@@ -2696,30 +2720,6 @@ end(*let*)//end of [ D1Eid0(deid) ]
 |_(* otherwise *) => d2exp_none1(dexp)
 )
 }(*where*)//end of [f0_qual0(env0,d1e0)]
-
-(* ****** ****** *)
-
-fun
-f0_annot
-( env0:
-! tr12env
-, d1e0: d1exp): d2exp =
-let
-//
-val loc0 = d1e0.lctn()
-//
-val-
-D1Eannot
-(d1e1, s1e2) = d1e0.node()
-//
-val d2e1 =
-trans12_d1exp(env0, d1e1)
-val s2e2 =
-trans12_s1exp_impr(env0, s1e2)
-//
-in//let
-  d2exp(loc0, D2Eannot(d2e1, s1e2, s2e2))
-end (*let*)//end of [f0_annot(env0,d1e0)]
 
 (* ****** ****** *)
 //
