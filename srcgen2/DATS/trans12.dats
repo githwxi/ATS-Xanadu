@@ -45,6 +45,10 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
+#staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
@@ -52,6 +56,9 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans12.sats"
+(* ****** ****** *)
+#symload lctn with token_get_lctn
+#symload node with token_get_node
 (* ****** ****** *)
 #symload lctn with s1exp_get_lctn
 #symload node with s1exp_get_node
@@ -399,18 +406,81 @@ in//let
 case+ opt1 of
 | ~
 optn_vt_nil
-( (*void*) ) => list_nil((*void*))
+( (*void*) ) => list_nil(*void*)
 | ~
 optn_vt_cons
 (   s2i1   ) =>
 (
 case+ s2i1 of
 | S2ITMcst
-(   s2cs   ) => s2cs | _ => list_nil()
+(   s2cs   ) => s2cs
+| _(*non-S2ITMcst*) => list_nil()
 )
-end // end of [S1Eid0]
+end (*let*) // end of [S1Eid0(sid1)]
 //
-| _(* non-S1Eid0 *) => list_nil((*void*))
+|S1Equal0
+(tok1, s1e2) =>
+(
+case+
+tok1.node() of
+|
+T_IDQUA(name) =>
+let
+val
+sym1 =
+symbl_make_name(name)
+val
+opt1 =
+tr12env_find_s2itm(env0, sym1)
+val () =
+prerrln
+("s1exp_get_s2cst: opt1 = ", opt1)
+in//let
+case+ opt1 of
+| ~
+optn_vt_nil() =>
+list_nil((*void*))
+| ~
+optn_vt_cons(s2i1) =>
+(
+case+ s2i1 of
+| S2ITMenv(envs) =>
+  f0_s1exp(envs, s1e2)
+| _(*otherwise*) => list_nil(*void*)
+)
+end (*let*)//end-of-[T_IDQUA(...)]
+| _(*non-T_IDQUA*) => list_nil(*void*)
+) where // end-of-[case+]
+{
+fun
+f0_s1exp
+( envs
+: f2envlst, sexp: s1exp): s2cstlst =
+(
+case+
+sexp.node() of
+|S1Eid0(seid) =>
+let
+val dopt =
+f2envlst_find_d2itm(envs, seid)
+in//let
+case+ dopt of
+| ~
+optn_vt_nil() => list_nil((*void*))
+| ~
+optn_vt_cons(sitm) =>
+(
+case+ sitm of
+|
+S2ITMcst(s2cs) => list_nil((*void*))
+| _(*otherwise*) => list_nil((*void*))
+)
+end(*let*)//end of [ S1Eid0(seid) ]
+| _(* otherwise *) => list_nil((*void*))
+)(*case+*)//end of [f0_s1exp(envs,sexp)]
+}(*where*)//end of [S1Equal0(tok1,s1e2)]
+//
+| _(* otherwise *) => list_nil((*void*))
 //
 end (*let*) // end of [s1exp_get_s2cstlst(...)]
 
