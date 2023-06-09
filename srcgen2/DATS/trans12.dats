@@ -398,38 +398,40 @@ sexp.node() of
 |
 S1Eid0(seid) =>
 let
-val dopt =
-f2envlst_find_d2itm(envs, seid)
+val sopt =
+f2envlst_find_s2itm(envs, seid)
+//
+val (  ) =
+prerrln("f0_s1exp: sopt = ", sopt)
+//
 in//let
-case+ dopt of
+case+ sopt of
 | ~
 optn_vt_nil() => list_nil((*void*))
 | ~
 optn_vt_cons(sitm) =>
 (
 case+ sitm of
-|
-S2ITMcst(s2cs) => list_nil((*void*))
+| S2ITMcst(s2cs) => s2cs//HX:found!
 | _(*otherwise*) => list_nil((*void*))
 )
 end(*let*) // end of [ S1Eid0(seid) ]
 | _(*otherwise*) => list_nil((*void*))
 //
-) (*case+*) // end of [f0_s1exp(envs,sexp)]
+) where
+{
+// (*
+  val () =
+  prerrln("f0_s1exp: sexp = ", sexp)
+// *)
+} (*where*) // end of [f0_s1exp(envs,sexp)]
 
 in (*in-of-local*)
 
 #implfun
 s1exp_get_s2cstlst
   (env0, s1e0) =
-let
-(*
-val () = prerrln
 (
-"s1exp_get_s2cstlst: s1e0 = ", s1e0
-)
-*)
-in
 case+
 s1e0.node() of
 |
@@ -441,7 +443,7 @@ in//let
 case+ opt1 of
 | ~
 optn_vt_nil
-( (*void*) ) => list_nil(*void*)
+( (*void*) ) => list_nil((*void*))
 | ~
 optn_vt_cons
 (   s2i1   ) =>
@@ -449,7 +451,7 @@ optn_vt_cons
 case+ s2i1 of
 | S2ITMcst
 (   s2cs   ) => s2cs
-| _(*non-S2ITMcst*) => list_nil()
+| _(*non-S2ITMcst*) => list_nil(*0*)
 )
 end (*let*) // end of [S1Eid0(sid1)]
 //
@@ -489,9 +491,15 @@ _(*non-T_IDQUA*) => list_nil((*void*)))
 |
 _(*non-S1Eid0(seid)*) => list_nil((*void*))
 //
-end (*let*) // end of [s1exp_get_s2cstlst(...)]
+) where
+{
+// (*
+val () =
+prerrln("s1exp_get_s2cstlst: s1e0 = ", s1e0)
+// *)
+} (*where*) // end of [s1exp_get_s2cstlst(...)]
 
-end (*loc*) // end of [s1exp_get_s2cstlst(...)]
+end (*local*) // end of [s1exp_get_s2cstlst(...)]
 
 (* ****** ****** *)
 
