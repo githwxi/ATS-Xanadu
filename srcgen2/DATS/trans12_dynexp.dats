@@ -674,6 +674,8 @@ end (*let*) // end of [D1Pstr(tok)]
 |D1Pr1cd _ => f0_r1cd(env0, d1p0)
 |D1Pr2cd _ => f0_r2cd(env0, d1p0)
 //
+|D1Pqual0 _ => f0_qual0(env0, d1p0)
+//
 |D1Pannot _ => f0_annot(env0, d1p0)
 //
 | _(* otherwise *) => d2pat_none1(d1p0)
@@ -1101,6 +1103,86 @@ in//let
 d2pat(loc0, D2Prcd2(tknd, npf1, ldps))
 end (*let*) // end of [f0_r2cd(env0,d1p0)]
 //
+(* ****** ****** *)
+
+fun
+f0_qual0
+( env0:
+! tr12env
+, d1p0: d1pat): d2pat =
+let
+//
+val loc0 = d1p0.lctn()
+//
+val-
+D1Pqual0
+(tok1, d1p2) = d1p0.node()
+//
+val () =
+prerrln("f0_qual0: tok1 = ", tok1)
+val () =
+prerrln("f0_qual0: d1p2 = ", d1p2)
+//
+in//let
+case+
+tok1.node() of
+|
+T_IDQUA(name) =>
+let
+val
+sym1 =
+symbl_make_name(name)
+val
+opt1 =
+tr12env_find_s2itm(env0, sym1)
+val () =
+prerrln("f0_qual0: opt1 = ", opt1)
+in//let
+case+ opt1 of
+| ~
+optn_vt_nil() =>
+d2pat_none1(d1p0)
+| ~
+optn_vt_cons(s2i1) =>
+(
+case+ s2i1 of
+| S2ITMenv(envs) =>
+  f1_d2pat(envs, d1p2)
+| _(* else*) => d2pat_none1(d1p0)
+)
+end (*let*)//end-of-[T_IDQUA(...)]
+|
+_(*non-T_IDQUA*) => d2pat_none1(d1p0)
+end where
+{
+fun
+f1_d2pat
+( envs
+: f2envlst, dpat: d1pat): d2pat =
+(
+case+
+dpat.node() of
+|D1Pid0(dpid) =>
+let
+val dopt =
+f2envlst_find_d2itm(envs, dpid)
+in//let
+case+ dopt of
+| ~
+optn_vt_nil() => d2pat_none1(dpat)
+| ~
+optn_vt_cons(ditm) =>
+(
+case+ ditm of
+|D2ITMcon(d2cs) =>
+ d2pat_cons(dpat.lctn(), d2cs)
+|_(* else *) => d2pat_none1(dpat)
+)
+end(*let*)//end of [ D1Pid0(dpid) ]
+|
+_(* otherwise *) => d2pat_none1(dpat))
+}(*where*)//end of [f0_qual0(env0,d1p0)]
+
 (* ****** ****** *)
 //
 fun
