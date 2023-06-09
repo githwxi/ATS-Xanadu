@@ -96,7 +96,7 @@ map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 HX-2019-02:
 Please note that
 a non-functional s2cst is
-preferred over the functional ones
+preferred over functional ones
 *)
 //
 #implfun
@@ -399,16 +399,17 @@ in//let
 case+ opt1 of
 | ~
 optn_vt_nil
-( (*void*) ) => list_nil()
+( (*void*) ) => list_nil((*void*))
 | ~
 optn_vt_cons
 (   s2i1   ) =>
 (
 case+ s2i1 of
-|
-S2ITMcst(s2cs) => s2cs | _ => list_nil()
+| S2ITMcst
+(   s2cs   ) => s2cs | _ => list_nil()
 )
 end // end of [S1Eid0]
+//
 | _(* non-S1Eid0 *) => list_nil((*void*))
 //
 end (*let*) // end of [s1exp_get_s2cstlst(...)]
