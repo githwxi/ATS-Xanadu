@@ -545,6 +545,9 @@ S1Elam0 _ => f0_lam0(env0, s1e0)
 |
 S1Eannot _ => f0_annot(env0, s1e0)
 //
+|
+S1Equal0 _ => f0_qual0(env0, s1e0)
+//
 | _(* otherwise *) => s2exp_none1(s1e0)
 //
 end where
@@ -1536,8 +1539,97 @@ end (*let*) // end of [f0_annot(env0, s1e0)]
 //
 (* ****** ****** *)
 //
-} (*where*) // end of [trans12_s1exp(env0,s1e0)]
+fun
+f0_qual0
+( env0:
+! tr12env
+, s1e0: s1exp): s2exp =
+let
+//
+val loc0 = s1e0.lctn()
+//
+val-
+S1Equal0
+(tok1, s1e2) = s1e0.node()
+//
+val () =
+prerrln("f0_qual0: tok1 = ", tok1)
+val () =
+prerrln("f0_qual0: s1e2 = ", s1e2)
+//
+in//let
+case+
+tok1.node() of
+|
+T_IDQUA(name) =>
+let
+val
+sym1 =
+symbl_make_name(name)
+val
+opt1 =
+tr12env_find_s2itm(env0, sym1)
+val () =
+prerrln("f0_qual0: opt1 = ", opt1)
+in//let
+case+ opt1 of
+| ~
+optn_vt_nil() =>
+s2exp_none1(s1e0)
+| ~
+optn_vt_cons(s2i1) =>
+(
+case+ s2i1 of
+| S2ITMenv(envs) =>
+  f1_s2exp(envs, s1e2)
+|
+_(*non-S2ITMenv*) => s2exp_none1(s1e0)
+)
+end (*let*)//end-of-[T_IDQUA(...)]
+|_(*non-T_IDQUA*) => s2exp_none1(s1e0)
+end where
+{
+fun
+f1_s2exp
+( envs
+: f2envlst, sexp: s1exp): s2exp =
+(
+case+
+sexp.node() of
+|S1Eid0(seid) =>
+let
+val dopt =
+f2envlst_find_d2itm(envs, seid)
+in//let
+case+ dopt of
+| ~
+optn_vt_nil() => s2exp_none1(sexp)
+| ~
+optn_vt_cons(sitm) =>
+(
+case+ sitm of
+|S2ITMcst(s2cs) =>
+let
+val
+sopt = s2cst_select_any(s2cs)
+in//let
+case+ sopt of
+| ~
+optn_vt_nil() => s2exp_none1(sexp)
+| ~
+optn_vt_cons(scst) => s2exp_cst(scst)
+end
+|_(*non-con-cst*) => s2exp_none1(sexp)
+)
+end(*let*)//end of [ S1Eid0(seid) ]
+|_(* otherwise *) => s2exp_none1(sexp)
+)
+}(*where*)//end of [f0_qual0(env0,s1e0)]
 
+(* ****** ****** *)
+//
+} (*where*)//end of [trans12_s1exp(env0,s1e0)]
+//
 (* ****** ****** *)
 
 #implfun
