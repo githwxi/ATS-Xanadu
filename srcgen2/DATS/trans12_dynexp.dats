@@ -1142,10 +1142,12 @@ val-
 D1Pqual0
 (tok1, d1p2) = d1p0.node()
 //
+(*
 val () =
 prerrln("f0_qual0: tok1 = ", tok1)
 val () =
 prerrln("f0_qual0: d1p2 = ", d1p2)
+*)
 //
 in//let
 case+
@@ -1159,8 +1161,10 @@ symbl_make_name(name)
 val
 opt1 =
 tr12env_find_s2itm(env0, sym1)
+(*
 val () =
 prerrln("f0_qual0: opt1 = ", opt1)
+*)
 in//let
 case+ opt1 of
 | ~
@@ -1530,10 +1534,10 @@ case+ d2i1 of
   f0_id0_d2sym(env0, d1e0, dpis)
 ) where
 {
-// (*
+(*
 val () =
 prerrln("f0_id0_d2itm: d2i1 = ", d2i1)
-// *)
+*)
 } (*where*) // end of [f0_id0_d2itm(...)]
 //
 and
@@ -2654,10 +2658,12 @@ val-
 D1Equal0
 (tok1, d1e2) = d1e0.node()
 //
+(*
 val () =
 prerrln("f0_qual0: tok1 = ", tok1)
 val () =
 prerrln("f0_qual0: d1e2 = ", d1e2)
+*)
 //
 in//let
 case+
@@ -2671,8 +2677,10 @@ symbl_make_name(name)
 val
 opt1 =
 tr12env_find_s2itm(env0, sym1)
+(*
 val () =
 prerrln("f0_qual0: opt1 = ", opt1)
+*)
 in//let
 case+ opt1 of
 | ~
@@ -3151,9 +3159,11 @@ let
 //
 (*
 val () =
-prerrln("trans12_d1expseq: loc0 = ", loc0)
+prerrln
+("trans12_d1expseq: loc0 = ", loc0)
 val () =
-prerrln("trans12_d1expseq: d1es = ", d1es)
+prerrln
+("trans12_d1expseq: d1es = ", d1es)
 *)
 //
 fun
@@ -3341,10 +3351,12 @@ G1Mapps _ => f0_apps(env0, loc0, g1m0)
 _(*else*) => d2pat(loc0, D2Pg1mac(g1m0))
 ) where
 {
+(*
   val () =
   prerrln("trd2pat_g1mac: loc0 = ", loc0)
   val () =
   prerrln("trd2pat_g1mac: g1m0 = ", g1m0)
+*)
 } (*where*) // end of [trd2pat_g1mac(...)]
 //
 end (*local*) // end of [local(trd2pat_g1mac)]
@@ -3462,10 +3474,12 @@ G1Mapps _ => f0_apps(env0, loc0, g1m0)
 _(*else*) => d2exp(loc0, D2Eg1mac(g1m0))
 ) where
 {
+(*
   val () =
   prerrln("trd2exp_g1mac: loc0 = ", loc0)
   val () =
   prerrln("trd2exp_g1mac: g1m0 = ", g1m0)
+*)
 } (*where*) // end of [trd2exp_g1mac(...)]
 //
 end (*local*) // end of [local(trd2exp_g1mac)]
