@@ -399,56 +399,75 @@ tr12env_add1_f2env
 ! tr12env
 , gsym: sym_t, fenv: f2env): void
 (* ****** ****** *)
+fun
+f2envlst_find_s2tex
+(f2envlst, key:sym_t): s2texopt_vt
+fun
+f2envlst_find_s2itm
+(f2envlst, key:sym_t): s2itmopt_vt
+fun
+f2envlst_find_d2itm
+(f2envlst, key:sym_t): d2itmopt_vt
+(* ****** ****** *)
 //
 fun
 tr12env_find_g1mac
 ( env:
-! tr12env, sym: sym_t): g1macopt_vt
+! tr12env, key:sym_t): g1macopt_vt
 //
 fun
 tr12env_find_s2tex
 ( env:
-! tr12env, sym: sym_t): s2texopt_vt
+! tr12env, key:sym_t): s2texopt_vt
 //
+fun
+tr12env_find_s2env
+( env:
+! tr12env, key:sym_t): s2itmopt_vt
 fun
 tr12env_find_s2itm
 ( env:
-! tr12env, sym: sym_t): s2itmopt_vt
+! tr12env, key:sym_t): s2itmopt_vt
 //
 fun
 tr12env_find_d2itm
 ( env:
-! tr12env, sym: sym_t): d2itmopt_vt
+! tr12env, key:sym_t): d2itmopt_vt
 //
 (* ****** ****** *)
+//
 fun
-f2envlst_find_s2tex
-(f2envlst, key0:sym_t): s2texopt_vt
+tr12env_ofind_s2tex
+( env:
+! tr12env, key:sym_t): s2texopt_vt
 fun
-f2envlst_find_s2itm
-(f2envlst, key0:sym_t): s2itmopt_vt
+tr12env_ofind_s2itm
+( env:
+! tr12env, key:sym_t): s2itmopt_vt
 fun
-f2envlst_find_d2itm
-(f2envlst, key0:sym_t): d2itmopt_vt
+tr12env_ofind_d2itm
+( env:
+! tr12env, key:sym_t): d2itmopt_vt
+//
 (* ****** ****** *)
 //
 fun
 tr12env_qfind_s2tex
 ( env:
 ! tr12env
-, qua:token,sym:sym_t): s2texopt_vt
+, qua:token,key:sym_t): s2texopt_vt
 //
 fun
 tr12env_qfind_s2itm
 ( env:
 ! tr12env
-, qua:token,sym:sym_t): s2itmopt_vt
+, qua:token,key:sym_t): s2itmopt_vt
 //
 fun
 tr12env_qfind_d2itm
 ( env:
 ! tr12env
-, qua:token,sym:sym_t): d2itmopt_vt
+, qua:token,key:sym_t): d2itmopt_vt
 //
 (* ****** ****** *)
 //
