@@ -54,21 +54,34 @@ ATS_PACKNAME
 fsrch_absolute
   (base) =
 (
-  optn_cons(fpth)
-) where
+  optn_cons(fpth)) where
 {
-val
-fpth =
-fpath_make_absolute(base)
-}
+  val
+  fpth =
+  fpath_make_absolute(base)
+}(*where*) // fsrch_absolute(base)
 //
 #implfun
 fsrch_dcurrent
   (base) = let
-  val
-  dir0 = the_drpth_get()
+//
+val
+dir0 = the_drpth_get()
+//
 in
+(
   fsrch_dir1base(dir0, base)
+) where
+{
+//
+val () =
+prerrln
+("fsrch_dcurrent: dir0 = ", dir0)
+val () =
+prerrln
+("fsrch_dcurrent: base = ", base)
+//
+} (*where*) // end-(fsrch_dir1base)
 end // end-of-[fsrch_dcurrent(base)]
 //
 (*
