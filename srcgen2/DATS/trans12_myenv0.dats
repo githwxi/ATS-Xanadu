@@ -1845,6 +1845,32 @@ foreach$work_e1nv
 (* ****** ****** *)
 
 #implfun
+tr12env_ofind_s2tex
+  ( env0, key0 ) =
+let
+val sopt =
+tr12env_find_s2env
+(env0, $SYM.DLRDT_symbl)
+in//let
+//
+case+ sopt of
+| ~
+optn_vt_nil() =>
+optn_vt_nil((*void*))
+| ~
+optn_vt_cons(sitm) =>
+(
+case+ sitm of
+| S2ITMenv(envs) =>
+  f2envlst_find_s2tex(envs, key0)
+| _(*non-S2ITMenv*) => optn_vt_nil((*void*))
+)
+//
+end (*let*)//end of [tr12env_ofind_s2tex(env0,key0)]
+
+(* ****** ****** *)
+
+#implfun
 tr12env_ofind_s2itm
   ( env0, key0 ) =
 let
