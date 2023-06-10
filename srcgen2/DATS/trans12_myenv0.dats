@@ -47,6 +47,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
+#staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
 #staload "./../SATS/xsymmap.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
@@ -781,16 +783,7 @@ case+ opt of
 optn_vt_cons _ => opt
 | ~
 optn_vt_nil( ) =>
-let
-val opt =
 topmap_search_opt(topmap, k0)
-in//let
-case+ opt of
-| !
-optn_vt_cons _ => opt
-| ~
-optn_vt_nil( ) => the_dexpenv_pvsfind(k0)
-end (*let*)//end-of-[optn_vt_nil()]
 //
 end (*let*)//end-of-[dexpenv_search_opt(denv,k0)]
 
@@ -1042,7 +1035,7 @@ end where
   val () =
   prerrln("tr12env_add0_g1mac: x0 = ", x0)
 *)
-} (*where*)//end-[tr12env_add0_g1mac(env0,k0,x0)]
+} (*where*)//end-[tr12env_add0_g1mac(env0,...)]
 
 (* ****** ****** *)
 
@@ -1075,7 +1068,7 @@ end where
   val () =
   prerrln("tr12env_add0_s2tex: x0 = ", x0)
 *)
-} (*where*)//end-[tr12env_add0_s2tex(env0,k0,x0)]
+} (*where*)//end-[tr12env_add0_s2tex(env0,...)]
 
 (* ****** ****** *)
 
@@ -1108,7 +1101,7 @@ prerrln("tr12env_add0_s2itm: k0 = ", k0)
 val () =
 prerrln("tr12env_add0_s2itm: x0 = ", x0)
 *)
-} (*where*)//end-[tr12env_add0_s2itm(env0,k0,x0)]
+} (*where*)//end-[tr12env_add0_s2itm(env0,...)]
 
 (* ****** ****** *)
 
@@ -1141,7 +1134,7 @@ prerrln("tr12env_add0_d2itm: k0 = ", k0)
 val () =
 prerrln("tr12env_add0_d2itm: x0 = ", x0)
 *)
-} (*where*)//end-[tr12env_add0_d2itm(env0,k0,x0)]
+} (*where*)//end-[tr12env_add0_d2itm(env0,...)]
 
 (* ****** ****** *)
 
@@ -1197,63 +1190,7 @@ prerrln("tr12env_add1_f2env: gsym = ", k0)
 val () =
 prerrln("tr12env_add1_f2env: fenv = ", x0)
 *)
-} (*where*)//end[tr12env_add1_f2env(env0,k0,x0)]
-
-(* ****** ****** *)
-
-#implfun
-tr12env_find_g1mac
-  ( env0, k0 ) =
-(
-tr11env_search_opt(tr11, k0)) where
-{
-//
-  val+
-  TR12ENV(tr11, tenv, senv, denv) = env0
-//
-} (*where*) // end of [tr12env_find_g1mac(env0,k0)]
-
-(* ****** ****** *)
-
-#implfun
-tr12env_find_s2tex
-  ( env0, k0 ) =
-(
-sortenv_search_opt(tenv, k0)) where
-{
-//
-  val+
-  TR12ENV(tr11, tenv, senv, denv) = env0
-//
-} (*where*) // end of [tr12env_find_s2tex(env0,k0)]
-
-(* ****** ****** *)
-
-#implfun
-tr12env_find_s2itm
-  ( env0, k0 ) =
-(
-sexpenv_search_opt(senv, k0)) where
-{
-//
-  val+
-  TR12ENV(tr11, tenv, senv, denv) = env0
-//
-} (*where*) // end of [tr12env_find_s2itm(env0,k0)]
-
-(* ****** ****** *)
-
-#implfun
-tr12env_find_d2itm
-  ( env0, k0 ) =
-(
-dexpenv_search_opt(denv, k0)) where
-{
-//
-  val+
-  TR12ENV(tr11, tenv, senv, denv) = env0
-//
-} (*where*) // end of [tr12env_find_d2itm(env0,k0)]
+} (*where*)//end[tr12env_add1_f2env(env0,...)]
 
 (* ****** ****** *)
 
@@ -1279,7 +1216,7 @@ optn_vt_cons _ => dopt) where
 {
 val dopt =
 topmap_search_opt(fenv.s2expenv(), k0) }
-) (*case+*) // end of [f2envlst_find_s2itm(env0,k0)]
+) (*case+*)//end-[f2envlst_find_s2itm(env0,k0)]
 
 (* ****** ****** *)
 
@@ -1305,7 +1242,138 @@ optn_vt_cons _ => dopt) where
 {
 val dopt =
 topmap_search_opt(fenv.d2expenv(), k0) }
-) (*case+*) // end of [f2envlst_find_d2itm(env0,k0)]
+) (*case+*)//end-[f2envlst_find_d2itm(env0,k0)]
+
+(* ****** ****** *)
+
+#implfun
+tr12env_find_g1mac
+  ( env0, k0 ) =
+(
+tr11env_search_opt(tr11, k0)) where
+{
+//
+  val+
+  TR12ENV(tr11, tenv, senv, denv) = env0
+//
+}(*where*)//end-of-[tr12env_find_g1mac(env0,k0)]
+
+(* ****** ****** *)
+
+#implfun
+tr12env_find_s2tex
+  ( env0, k0 ) =
+let
+val opt =
+sortenv_search_opt(tenv, k0)
+in//let
+//
+case+ opt of
+| !
+optn_vt_cons _ => opt
+| ~
+optn_vt_nil((*0*)) =>
+let
+val opt =
+tr12env_ofind_s2tex(env0, k0)
+in//let
+//
+case+ opt of
+| !
+optn_vt_cons _ => opt
+| ~
+optn_vt_nil((*0*))=>the_sortenv_pvsfind(k0)
+//
+end
+//
+end where // end-of-[let-val(opt)]
+{
+//
+  val+TR12ENV(tr11, tenv, senv, denv) = env0
+//
+}(*where*)//end-of-[tr12env_find_s2tex(env0,k0)]
+
+(* ****** ****** *)
+//
+#implfun
+tr12env_find_s2env
+  ( env0, k0 ) =
+(
+sexpenv_search_opt(senv, k0)
+) where
+{
+//
+  val+TR12ENV(tr11, tenv, senv, denv) = env0
+//
+}(*where*)//end-of-[tr12env_find_s2env(env0,k0)]
+//
+#implfun
+tr12env_find_s2itm
+  ( env0, k0 ) =
+let
+val opt =
+sexpenv_search_opt(senv, k0)
+in//let
+//
+case+ opt of
+| !
+optn_vt_cons _ => opt
+| ~
+optn_vt_nil((*0*)) =>
+let
+val opt =
+tr12env_ofind_s2itm(env0, k0)
+in//let
+//
+case+ opt of
+| !
+optn_vt_cons _ => opt
+| ~
+optn_vt_nil((*0*))=>the_sexpenv_pvsfind(k0)
+//
+end
+//
+end where // end-of-[let-val(opt)]
+{
+//
+  val+TR12ENV(tr11, tenv, senv, denv) = env0
+//
+}(*where*)//end-of-[tr12env_find_s2itm(env0,k0)]
+//
+(* ****** ****** *)
+
+#implfun
+tr12env_find_d2itm
+  ( env0, k0 ) =
+let
+val opt =
+dexpenv_search_opt(denv, k0)
+in//let
+//
+case+ opt of
+| !
+optn_vt_cons _ => opt
+| ~
+optn_vt_nil((*0*)) =>
+let
+val opt =
+tr12env_ofind_d2itm(env0, k0)
+in//let
+//
+case+ opt of
+| !
+optn_vt_cons _ => opt
+| ~
+optn_vt_nil((*0*))=>the_dexpenv_pvsfind(k0)
+//
+end
+//
+end where // end-of-[let-val(opt)]
+{
+//
+  val+TR12ENV(tr11, tenv, senv, denv) = env0
+//
+}(*where*)//end-of-[tr12env_find_d2itm(env0,k0)]
 
 (* ****** ****** *)
 //
@@ -1774,6 +1842,58 @@ foreach$work_e1nv
 < x0 ><e1>(x0, e1) = tr12env_add0_f2arg(e1, x0)
 } (*where*)//end(tr12env_add0_f2arglst(env0,...))
 //
+(* ****** ****** *)
+
+#implfun
+tr12env_ofind_s2itm
+  ( env0, key0 ) =
+let
+val sopt =
+tr12env_find_s2env
+(env0, $SYM.DLRDT_symbl)
+in//let
+//
+case+ sopt of
+| ~
+optn_vt_nil() =>
+optn_vt_nil((*void*))
+| ~
+optn_vt_cons(sitm) =>
+(
+case+ sitm of
+| S2ITMenv(envs) =>
+  f2envlst_find_s2itm(envs, key0)
+| _(*non-S2ITMenv*) => optn_vt_nil((*void*))
+)
+//
+end (*let*)//end of [tr12env_ofind_s2itm(env0,key0)]
+
+(* ****** ****** *)
+
+#implfun
+tr12env_ofind_d2itm
+  ( env0, key0 ) =
+let
+val sopt =
+tr12env_find_s2env
+(env0, $SYM.DLRDT_symbl)
+in//let
+//
+case+ sopt of
+| ~
+optn_vt_nil() =>
+optn_vt_nil((*void*))
+| ~
+optn_vt_cons(sitm) =>
+(
+case+ sitm of
+| S2ITMenv(envs) =>
+  f2envlst_find_d2itm(envs, key0)
+| _(*non-S2ITMenv*) => optn_vt_nil((*void*))
+)
+//
+end (*let*)//end of [tr12env_ofind_d2itm(env0,key0)]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans12_myenv0.dats] *)

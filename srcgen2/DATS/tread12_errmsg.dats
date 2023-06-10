@@ -249,6 +249,21 @@ S2Etrcd
 l2s2elst_fpemsg(out, lses))
 //
 |
+S2Eimpr
+( loc1, s2e2 ) =>
+let
+val
+( ) = s2exp_fpemsg(out, s2e2)
+endlet // end of [S2Eimpr(...)]
+|
+S2Eprgm
+( loc1, s2e2 ) =>
+let
+val
+( ) = s2exp_fpemsg(out, s2e2)
+endlet // end of [S2Eprgm(...)]
+//
+|
 S2Ecast
 (loc0,s2e1,s2t2) =>
 let
@@ -266,10 +281,10 @@ endlet // end of [S2Ecast(...)]
 S2Eerrck _ => s2exp_fpemsg(out, s2e)
 endlet where
 {
-(*
+// (*
   val ( ) =
   prerrln("auxmain: s2e = ", s2e)
-*)
+// *)
 } (*where*)//end-of-(auxmain(out,s2e))
 //
 in//local
@@ -662,7 +677,16 @@ D2Eassgn
 let
   val () = d2exp_fpemsg(out, d2el)
   val () = d2exp_fpemsg(out, d2er)
-endlet
+endlet//end-of(D2Eassgn(d2el,d2er))
+//
+|
+D2Eannot
+( d2e1
+, s1e2, s2e2) =>
+let
+  val () = d2exp_fpemsg(out, d2e1)
+  val () = s2exp_fpemsg(out, s2e2)
+endlet//end-of-[D2Eannot(d2e1,...)]
 //
 |D2Enone0(    ) => (   (*void*)   )
 |D2Enone1(d1e1) => (   (*void*)   )
