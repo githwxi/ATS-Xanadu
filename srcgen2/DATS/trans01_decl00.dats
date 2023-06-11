@@ -336,19 +336,28 @@ let
 //
 val fnm1 =
 fpath_get_fnm1(fpth)
-val knd1 = 0(*static*)
+val knd1 =
+let
+val knd1 =
+  fname_stadyn(fnm1)
+in//let
+if
+knd1 < 0 then 0 else knd1
+end // end of [ val(knd1) ]
 //
 val
 dpar =
 d0parsed_from_fpath(knd1, fnm1)
-val
+//
+// HX-2023-06-10: for 
+val // basic error checking
 dpar = d0parsed_of_preadx0(dpar)
 //
 in(*let*)
 (0, dpar) where
 {
-val dpar =
-d1parsed_of_trans01(dpar)
+val
+dpar = d1parsed_of_trans01(dpar)
 val (  ) =
 the_d1parenv_pvsadd0(fnm2, dpar) }
 end//let//end-of-[ optn_vt_nil() ]
@@ -1316,8 +1325,8 @@ D0Cinclude
 ( knd0
 , tknd, g0e1) = d0cl.node()
 //
-val
-g1e1 = trans01_g0exp(tenv, g0e1)
+val g1e1 =
+  trans01_g0exp(tenv, g0e1)
 //
 in//let
 let
@@ -1332,6 +1341,8 @@ case+ opt0 of
 |optn_cons(fnm0) =>
  fsrch_combined(fnm0)): fpathopt
 //
+val (  ) =
+prerrln("f0_include: g1e1 = ", g1e1)
 val (  ) =
 prerrln("f0_include: opt0 = ", opt0)
 val (  ) =
@@ -1500,9 +1511,11 @@ D0Cstaload
 ( knd0
 , tknd, g0e1) = d0cl.node()
 //
-val g1e1 = trans01_g0exp(tenv, g0e1)
+val g1e1 =
+  trans01_g0exp(tenv, g0e1)
 //
-in
+in//let
+//
 let
 //
 val opt0 =
@@ -1515,6 +1528,8 @@ case+ opt0 of
 |optn_cons(fnm0) =>
  fsrch_combined(fnm0)): fpathopt
 //
+val (  ) =
+prerrln("f0_staload: g1e1 = ", g1e1)
 val (  ) =
 prerrln("f0_staload: opt0 = ", opt0)
 val (  ) =
@@ -1536,6 +1551,7 @@ d1ecl
 (loc0,
  D1Cstaload(knd0, tknd, g1e1, opt1, dopt))
 end//let
+//
 end where
 {
 //

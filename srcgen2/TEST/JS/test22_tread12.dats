@@ -287,7 +287,9 @@ in//local
 //
 val dpar =
 d0parsed_from_fpath
-(1(*dyn*), "./mytest2.dats")
+(
+1(*dyn*),
+"./DATA/mytest2.dats")
 //
 val
 dpar =
@@ -316,7 +318,7 @@ end
 //
 val (  ) =
 prerrln
-("d1parsed_from_fpath(\"./mytest2.dats\") =\n", dpar)
+("d1parsed_from_fpath(\"./DATA/mytest2.dats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
@@ -339,7 +341,7 @@ end
 //
 val (  ) =
 prerrln
-("d2parsed_from_fpath(\"./mytest2.dats\") =\n", dpar)
+("d2parsed_from_fpath(\"./DATA/mytest2.dats\") =\n", dpar)
 //
 (* ****** ****** *)
 //

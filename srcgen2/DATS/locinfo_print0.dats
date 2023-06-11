@@ -58,9 +58,11 @@ case+ src of
 |
 LCSRCnone0() => print("()")
 |
-LCSRCfpath(fpx) => print(fpx)
+LCSRCfpath(fpx) =>
+print("LCSRCfpath(", fpx, ")")
 |
-LCSRCsome1(txt) => print("(", txt, ")")
+LCSRCsome1(txt) =>
+print("LCSRCsome1(", txt, ")")
 end (*let*) // end of [lcsrc_fprint]
 //
 (* ****** ****** *)

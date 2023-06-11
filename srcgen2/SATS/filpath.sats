@@ -50,6 +50,7 @@ fun theParDir_get(): strn
 //
 (* ****** ****** *)
 //
+// HX-2023-06-10:
 fun // for directory name
 fpath_dpart(fpx: strn): strn
 //
@@ -97,13 +98,15 @@ fun
 the_drpthlst_get(): drpthlst
 //
 (* ****** ****** *)
+//
 fun
-the_drpth_pop0(drpth): void
+the_drpth_pop0(): void
+fun
+the_drpth_pop1(): drpth
+//
 fun
 the_drpth_push(drpth): void
-(* ****** ****** *)
-fun
-the_drpth_pop1(drpth): drpth
+//
 (* ****** ****** *)
 fun
 the_drpth_fprint(FILR): void
