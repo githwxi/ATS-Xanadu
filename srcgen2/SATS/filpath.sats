@@ -50,6 +50,11 @@ fun theParDir_get(): strn
 //
 (* ****** ****** *)
 //
+fun // for directory name
+fpath_dpart(fpx: strn): strn
+//
+(* ****** ****** *)
+//
 fun
 fpath_normq(fpx: strn): bool
 fun

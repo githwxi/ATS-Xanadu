@@ -73,6 +73,39 @@ end (*local*) // end of [local]
 (* ****** ****** *)
 
 #implfun
+fpath_dpart
+(   fpx   ) =
+let
+val sep =
+theDirSep_get()
+val len =
+strn_length(fpx)
+val pos =
+loop(0, -1) where
+{
+fun loop
+( i0: sint
+, r0: sint): sint =
+if
+i0 >= len
+then r0 else
+(
+if
+sep = fpx[i0]
+then
+loop(i0+1, i0) else loop(i0+1, r0))
+}
+in//let
+if
+pos >= 0
+then
+strn_tabulate_cfr
+(pos+1, lam i0 => fpx[i0]) else ("")
+end (*let*) // end of [fpath_dpart(fpx)]
+
+(* ****** ****** *)
+
+#implfun
 fpath_normq
 (   fpx   ) = let
 //
@@ -134,7 +167,7 @@ group$test<cgtz>(ch) = (ch != DS) }
 //
 in//let
   ftest(nms, 0(*npd*))
-end (*let*) // end of [fpath_normq]
+end (*let*) // end of [fpath_normq(fpx)]
 
 (* ****** ****** *)
 
@@ -261,7 +294,7 @@ group$test<cgtz>(ch) = (ch != DS) }
 //
 in
 strn_make_llist(fcats(fmain(nms,0,nil_vt())))
-end (*let*) // end-of-(fpath_normize)
+end (*let*) // end-of-(fpath_normize(fpx))
 
 (* ****** ****** *)
 
