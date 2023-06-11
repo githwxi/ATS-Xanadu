@@ -493,10 +493,10 @@ _(*non-S1Eid0(seid)*) => list_nil((*void*))
 //
 ) where
 {
-// (*
+(*
 val () =
 prerrln("s1exp_get_s2cstlst: s1e0 = ", s1e0)
-// *)
+*)
 } (*where*) // end of [s1exp_get_s2cstlst(...)]
 
 end (*local*) // end of [s1exp_get_s2cstlst(...)]

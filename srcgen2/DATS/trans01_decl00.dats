@@ -355,7 +355,13 @@ end//let//end-of-[ optn_vt_nil() ]
 //
 | ~optn_vt_cons(dpar) => @(1(*shared*),dpar)
 //
-end(*let*)//end-of-[s1taload_from_fpath(fpth)]
+end where
+{
+//
+val () =
+prerrln("s1taload_from_fpath: fpth = ", fpth)
+//
+}(*where*)//end-of-[s1taload_from_fpath(fpth)]
 //
 (* ****** ****** *)
 
