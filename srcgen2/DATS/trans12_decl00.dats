@@ -508,9 +508,7 @@ optn_vt_nil() =>
 let
 //
 (*
-val
-dpar =
-d1parsed_of_tread01(dpar)
+// HX: nothing yet
 *)
 //
 in(*let*)
@@ -525,7 +523,13 @@ end//let//end-of-[ optn_vt_nil() ]
 | ~
 optn_vt_cons(dpar) => @(1(*shared*),dpar)
 //
-end(*let*)//end-of-[s2taload_from_fpath(...)]
+end where
+{
+(*
+val () =
+prerrln("s2taload_from_fpath: dpar = ", dpar)
+*)
+}(*where*)//end-of-[s2taload_from_fpath(...)]
 //
 (* ****** ****** *)
 

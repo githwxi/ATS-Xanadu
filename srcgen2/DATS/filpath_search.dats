@@ -239,7 +239,18 @@ end(*let*)//end-of-[fname_stadyn(name)]
 fname_dbjoin
 (dir0, base) = let
 //
+val sp = theDirSep_get()
+//
 val n0 = strn_length(dir0)
+//
+(*
+val () =
+prerrln
+("fname_dbjoin: dir0 = ", dir0)
+val () =
+prerrln
+("fname_dbjoin: base = ", base)
+*)
 //
 in//let
 if
@@ -249,8 +260,7 @@ let
 val c1 = dir0[n0-1]
 val n1 = 
 (if
- c1 !=
- theDirSep_get()
+ c1 != sp
  then n0 else n0-1): sint
 val nb = strn_length(base)
 in//let
@@ -259,7 +269,9 @@ strn_tabulate_cfr
 , lam i0 =>
   if
   i0 < n1
-  then dir0[i0] else base[i0-n1])
+  then dir0[i0] else
+  (if i0 <= n1
+   then sp else base[i0-n1]) )
 end // else // end-of-if
 end (*let*) // end of [fname_dbjoin]
 

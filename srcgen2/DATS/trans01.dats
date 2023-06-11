@@ -50,6 +50,8 @@ SYM = "./../SATS/xsymbol.sats"
 #staload
 LAM = "./../SATS/xlabel0.sats"
 (* ****** ****** *)
+#staload "./../SATS/filpath.sats"
+(* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
@@ -368,6 +370,72 @@ map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 
 (* ****** ****** *)
 
+fun
+the_drpth_push_lcsrc
+  (source: lcsrc): void =
+(
+case+ source of
+//
+|LCSRCnone0() => ()
+//
+|LCSRCsome1(name) =>
+let
+val
+dir1 = fpath_dpart(name)
+val
+(  ) =
+the_drpth_push(dir1) where
+{
+val
+dir1 = drpth_make_name(dir1)
+}
+endlet // end of [LCSRCsome1(name)]
+//
+|LCSRCfpath(fpth) =>
+let
+val
+fnm1 =
+fpath_get_fnm1(fpth)
+val
+dir1 = fpath_dpart(fnm1)
+val
+(  ) =
+the_drpth_push(dir1) where
+{
+val
+dir1 = drpth_make_name(dir1)
+}
+endlet // end of [LCSRCfpath(fpth)]
+//
+) where
+{
+val () =
+prerrln
+("the_drpth_push_lcsrc: source = ", source)
+} (*where*) // end-of-(the_drpth_push_lcsrc)
+
+(* ****** ****** *)
+
+fun
+the_drpth_pop0_lcsrc
+  (source: lcsrc): void =
+(
+case+ source of
+|
+LCSRCnone0 _ => ()
+|
+LCSRCsome1(name) => the_drpth_pop0()
+|
+LCSRCfpath(fpth) => the_drpth_pop0()
+) where
+{
+val () =
+prerrln
+("the_drpth_pop0_lcsrc: source = ", source)
+} (*where*) // end-of-(the_drpth_pop0_lcsrc)
+
+(* ****** ****** *)
+
 #implfun
 d1parsed_of_trans01
   (dpar) =
@@ -381,10 +449,15 @@ d0parsed_get_source(dpar)
 val parsed =
 d0parsed_get_parsed(dpar)
 //
-val env0 = tr01env_make_nil()
+val (   ) =
+the_drpth_push_lcsrc(source)
 //
+val env0 = tr01env_make_nil()
 val parsed =
 trans01_d0eclistopt(env0, parsed)
+//
+val (   ) =
+the_drpth_pop0_lcsrc(source)
 //
 in//let
 //
@@ -393,9 +466,8 @@ in//let
   topenv = tr01env_free_top(env0)
   in//let
   d1parsed
-  (stadyn,nerror,source,topenv,parsed)
+  (stadyn,nerror,source,topenv,parsed) end
 //
-end
 end (*let*) // end of [d1parsed_trans01(dpar)]
 
 (* ****** ****** *)
