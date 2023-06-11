@@ -243,14 +243,14 @@ val sp = theDirSep_get()
 //
 val n0 = strn_length(dir0)
 //
-(*
+// (*
 val () =
 prerrln
 ("fname_dbjoin: dir0 = ", dir0)
 val () =
 prerrln
 ("fname_dbjoin: base = ", base)
-*)
+// *)
 //
 in//let
 if
@@ -265,13 +265,13 @@ val n1 =
 val nb = strn_length(base)
 in//let
 strn_tabulate_cfr
-( n1+nb
+( n1+nb+1
 , lam i0 =>
   if
   i0 < n1
   then dir0[i0] else
   (if i0 <= n1
-   then sp else base[i0-n1]) )
+   then sp else base[i0-n1-1]) )
 end // else // end-of-if
 end (*let*) // end of [fname_dbjoin]
 
