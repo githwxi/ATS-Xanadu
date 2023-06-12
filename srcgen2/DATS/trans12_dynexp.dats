@@ -2658,12 +2658,12 @@ val-
 D1Equal0
 (tok1, d1e2) = d1e0.node()
 //
-(*
+// (*
 val () =
 prerrln("f0_qual0: tok1 = ", tok1)
 val () =
 prerrln("f0_qual0: d1e2 = ", d1e2)
-*)
+// *)
 //
 in//let
 case+
@@ -2706,6 +2706,7 @@ f1_d2exp
 (
 case+
 dexp.node() of
+//
 |D1Eid0(deid) =>
 let
 val dopt =
@@ -2725,8 +2726,59 @@ case+ ditm of
 |_(*non-con-cst*) => d2exp_none1(dexp)
 )
 end(*let*)//end of [ D1Eid0(deid) ]
+//
+|D1Equal0
+( tok1,d1e2 ) =>
+(
+f1_d2exp(env1, d1e2)
+) where
+{
+  val env1 = f1_qual0(envs, tok1)
+} (*where*)//end of [D1Equal0( ... )]
+//
 |_(* otherwise *) => d2exp_none1(dexp)
-)
+//
+) (*case+*) // end of [f1_d2exp( ... )]
+//
+and
+f1_qual0
+( envs
+: f2envlst, tok1: token): f2envlst =
+(
+case+
+tok1.node() of
+|
+T_IDQUA(name) =>
+let
+val
+sym1 =
+symbl_make_name(name)
+val
+opt1 =
+tr12env_find_s2itm(env0, sym1)
+(*
+val () =
+prerrln("f1_qual0: opt1 = ", opt1)
+*)
+in//let
+case+ opt1 of
+| ~
+optn_vt_nil() =>
+list_nil((*void*))
+| ~
+optn_vt_cons(s2i1) =>
+(
+case+ s2i1 of
+|
+S2ITMenv(envs) => envs
+|
+_(*non-S2ITMenv*) => list_nil())
+end (*let*) // end of [ T_IDQUA ]
+//
+|_(* non-T_IDQUA *) => list_nil()
+//
+) (*case+*) // end of [f1_qual0( ... )]
+//
 }(*where*)//end of [f0_qual0(env0,d1e0)]
 
 (* ****** ****** *)

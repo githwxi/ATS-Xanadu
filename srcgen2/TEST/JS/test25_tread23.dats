@@ -7,6 +7,9 @@
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #staload
+"./../../SATS/filpath.sats"
+(* ****** ****** *)
+#staload
 "./../../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload
@@ -85,6 +88,17 @@
 "./../../DATS/xlabel0.dats"
 #include
 "./../../DATS/xlabel0_print0.dats"
+(* ****** ****** *)
+#include
+"./../../DATS/filpath.dats"
+#include
+"./../../DATS/filpath_drpth0.dats"
+#include
+"./../../DATS/filpath_fpath0.dats"
+#include
+"./../../DATS/filpath_print0.dats"
+#include
+"./../../DATS/filpath_search.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/locinfo.dats"
