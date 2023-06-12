@@ -2690,8 +2690,17 @@ d2exp_none1(d1e0)
 optn_vt_cons(s2i1) =>
 (
 case+ s2i1 of
+//
 | S2ITMenv(envs) =>
+let
+val dopt =
   f1_d2exp(envs, d1e2)
+in
+  case+ dopt of
+  | optn_nil() =>
+    d2exp_none1(d1e0)
+  | optn_cons(d2e0) => d2e0 end
+//
 |
 _(*non-S2ITMenv*) => d2exp_none1(d1e0)
 )
@@ -2702,7 +2711,8 @@ end where
 fun
 f1_d2exp
 ( envs
-: f2envlst, dexp: d1exp): d2exp =
+: f2envlst
+, dexp: d1exp): d2expopt =
 (
 case+
 dexp.node() of
@@ -2714,29 +2724,30 @@ f2envlst_find_d2itm(envs, deid)
 in//let
 case+ dopt of
 | ~
-optn_vt_nil() => d2exp_none1(dexp)
+optn_vt_nil() => optn_nil()
 | ~
 optn_vt_cons(ditm) =>
 (
 case+ ditm of
 |D2ITMcon(d2cs) =>
- d2exp_cons(dexp.lctn(), d2cs)
+ optn_cons
+ (d2exp_cons(dexp.lctn(), d2cs))
 |D2ITMcst(d2cs) =>
- d2exp_csts(dexp.lctn(), d2cs)
-|_(*non-con-cst*) => d2exp_none1(dexp)
+ optn_cons
+ (d2exp_csts(dexp.lctn(), d2cs))
+|_(*non-con-cst*) => optn_nil(*0*)
 )
 end(*let*)//end of [ D1Eid0(deid) ]
 //
 |D1Equal0
 ( tok1,d1e2 ) =>
 (
-f1_d2exp(env1, d1e2)
-) where
+  f1_d2exp(envs, d1e2)) where
 {
-  val env1 = f1_qual0(envs, tok1)
+  val envs = f1_qual0(envs, tok1)
 } (*where*)//end of [D1Equal0( ... )]
 //
-|_(* otherwise *) => d2exp_none1(dexp)
+|_(* otherwise *) => optn_nil(*void*)
 //
 ) (*case+*) // end of [f1_d2exp( ... )]
 //
@@ -2755,7 +2766,7 @@ sym1 =
 symbl_make_name(name)
 val
 opt1 =
-tr12env_find_s2itm(env0, sym1)
+f2envlst_find_s2itm(envs, sym1)
 (*
 val () =
 prerrln("f1_qual0: opt1 = ", opt1)
@@ -2779,7 +2790,7 @@ end (*let*) // end of [ T_IDQUA ]
 //
 ) (*case+*) // end of [f1_qual0( ... )]
 //
-}(*where*)//end of [f0_qual0(env0,d1e0)]
+} (*where*) // end of [f0_qual0(env0,d1e0)]
 
 (* ****** ****** *)
 //
