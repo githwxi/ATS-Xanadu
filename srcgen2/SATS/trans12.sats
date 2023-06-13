@@ -425,6 +425,11 @@ tr12env_find_s2env
 ( env:
 ! tr12env, key:sym_t): s2itmopt_vt
 fun
+tr12env_find_s2qua
+( env:
+! tr12env, key:sym_t): s2itmopt_vt
+//
+fun
 tr12env_find_s2itm
 ( env:
 ! tr12env, key:sym_t): s2itmopt_vt

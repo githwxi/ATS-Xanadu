@@ -126,6 +126,7 @@ case+ tnd of
 //
 | T_IDALP _ => true
 | T_IDSYM _ => true
+| T_IDDLR _ => true
 //
 | T_EQ0((*nil*)) => true
 //
