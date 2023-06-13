@@ -62,6 +62,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trans12.sats"
 (* ****** ****** *)
+#symload name with symbl_get_name
+(* ****** ****** *)
 #symload name with s2cst_get_name
 #symload name with s2var_get_name
 (* ****** ****** *)
@@ -1306,6 +1308,141 @@ sexpenv_search_opt(senv, k0)
   val+TR12ENV(tr11, tenv, senv, denv) = env0
 //
 }(*where*)//end-of-[tr12env_find_s2env(env0,k0)]
+//
+(* ****** ****** *)
+//
+#implfun
+tr12env_find_s2qua
+  ( env0, k0 ) =
+let
+val opt0 =
+tr12env_find_s2itm(env0, k0)
+in//let
+//
+case+ opt0 of
+| ~
+optn_vt_nil() =>
+f0_main(env0, k0.name()) | _ => opt0
+//
+end where
+{
+fun
+f0_main
+( env0:
+! tr12env
+, name: strn): s2itmopt_vt =
+let
+val n0 =
+strn_length(name)
+//
+fun
+f1_next
+(i1: sint): sint =
+if
+i1 >= n0
+then i1 else
+(
+if
+name[i1] = '$'
+then i1
+else f1_next(i1+1))
+//
+fun
+f1_sub0
+( i0: sint
+, i1: sint): strn =
+let
+val df = i1-i0
+in//let
+strn_tabulate_cfr
+( df
+, lam j => name[i0+j])
+end//let//f1_sub0(i0, i1)
+fun
+f1_sub1
+( i0: sint
+, i1: sint): strn =
+let
+val df = i1-i0
+in//let
+strn_tabulate_cfr
+( df+1
+, lam j =>
+  if j < df then
+  name[i0+j] else '.')
+end//let//f1_sub1(i0, i1)
+//
+fun
+f1_envs
+(
+envs:
+f2envlst,
+i0: sint): s2itmopt_vt =
+let
+val i1 = f1_next(i0 + 1)
+val k1 =
+(
+if i1 >= n0
+then
+symbl
+(f1_sub0(i0, i1))
+else
+symbl
+(f1_sub1(i0, i1))): sym_t
+val opt1 =
+f2envlst_find_s2itm(envs, k1)
+in//let
+case+ opt1 of
+| ~
+optn_vt_nil() =>
+optn_vt_nil()
+| ~
+optn_vt_cons(s2i1) =>
+(
+case+ s2i1 of
+|
+S2ITMenv(envs) =>
+(
+if
+i1 < n0
+then f1_envs(envs, i1)
+else optn_vt_cons(s2i1))
+| _
+(*non-S2ITMenv*)=>optn_vt_nil)
+end//let//end of [f1_env1(...)]
+//
+val i0 = 0
+val i1 = f1_next(i0 + 1)
+//
+in//let
+if
+i1 >= n0
+then
+optn_vt_nil() else
+let
+val k1 =
+symbl(f1_sub1(i0, i1))
+val opt1 =
+tr12env_find_s2itm(env0,k1)
+in//let
+case+ opt1 of
+| ~
+optn_vt_nil() =>
+optn_vt_nil()
+| ~
+optn_vt_cons(s2i1) => 
+(
+case+ s2i1 of
+|
+S2ITMenv(envs) => f1_envs(envs, i1)
+|
+_(*non-S2ITMenv*) => optn_vt_nil((*0*))
+)
+end//let
+end(*let*)//end-of-[ f0_main(env0,name) ]
+}(*where*)//end-of-[tr12env_find_s2qua(env0,k0)]
+//
+(* ****** ****** *)
 //
 #implfun
 tr12env_find_s2itm
