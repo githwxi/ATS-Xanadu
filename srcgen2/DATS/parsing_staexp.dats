@@ -322,6 +322,13 @@ i0dnt_some(tok) where
 }
 //
 |
+T_IDDLR _ =>
+i0dnt_some(tok) where
+{
+  val () = buf.skip1()
+}
+//
+|
 T_AT0() =>
 i0dnt_some(tok) where
 {
@@ -1023,16 +1030,16 @@ val topt = optn_nil{token}()
 val lres =
 (
 case+ topt of
-| optn_nil() =>
-  (
-  case g0e3 of
-  |
-  g0exp_ELSE
-  (tels, g0e3) =>
-  (tknd.lctn() + g0e3.lctn())
-  )
-| optn_cons(tok1) =>
-  (tknd.lctn() + tok1.lctn())
+|optn_nil() =>
+ (
+ case g0e3 of
+ |
+ g0exp_ELSE
+ (tels, g0e3) =>
+ (tknd.lctn() + g0e3.lctn())
+ )
+|optn_cons(tok1) =>
+ (tknd.lctn() + tok1.lctn())
 ) : loc_t // end of [val(lres)]
 //
 in
@@ -1043,10 +1050,11 @@ g0exp_make_node
 end (*let*) // end of [T_IF0]
 //
 | _ (* rest-of-token *) =>
-(err := e00 + 1;
+(
+err := e00 + 1;
 g0exp_make_node(tok.lctn(), G0Etkerr(tok)))
 //
-end (*let*) // end of [p1_napps(buf,err)]
+end (*let*) // end of [ p1_napps(buf,err) ]
 
 in//local
 
@@ -1067,14 +1075,14 @@ list_cons
 (g0e1, ges1) =>
 (
 case+ ges1 of
-| list_nil() => g0e1
-| list_cons _ =>
-  let
-    val g0e2 = list_last(ges1)
-  in//let
-    g0exp_make_node
-    (g0e1.lctn()+g0e2.lctn(), G0Eapps(g0es))
-  end // end of [list_cons]
+|list_nil() => g0e1
+|list_cons _ =>
+ let
+   val g0e2 = list_last(ges1)
+ in//let
+   g0exp_make_node
+   (g0e1.lctn()+g0e2.lctn(), G0Eapps(g0es))
+ end // end of [list_cons]
 ) (*case*) // end of [list_cons]
 //
 end (*let*) // end of [p1_g0exp]

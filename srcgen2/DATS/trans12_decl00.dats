@@ -1600,6 +1600,11 @@ g1exp_nmspace(gsrc) of
 |optn_cons(gsym) => gsym): sym_t
 //
 val (  ) =
+prerrln("f0_staload: gsym = ", gsym)
+val (  ) =
+prerrln("f0_staload: gsrc = ", gsrc)
+//
+val (  ) =
 (
 case+ dopt of
 |optn_nil() => ()
@@ -1608,8 +1613,8 @@ case+ dopt of
 tr12env_add1_f2env
 (env0, gsym, fenv) where
 {
-val fenv =
-f2env_of_d2topenv(dpar.t2penv()) }
+val
+fenv = f2env_of_d2topenv(dpar.t2penv()) }
 )
 //
 in//let

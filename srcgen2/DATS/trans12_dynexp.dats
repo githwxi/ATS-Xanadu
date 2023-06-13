@@ -2676,7 +2676,7 @@ sym1 =
 symbl_make_name(name)
 val
 opt1 =
-tr12env_find_s2itm(env0, sym1)
+tr12env_find_s2qua(env0, sym1)
 (*
 val () =
 prerrln("f0_qual0: opt1 = ", opt1)
