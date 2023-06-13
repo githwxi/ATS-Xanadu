@@ -1441,7 +1441,7 @@ case+
 g1e1.node() of
 |G1Estr _ => f1_gstr(g1e1)
 |G1Ea2pp _ => f1_a2pp(g1e1)
-|_(*non-G1Estr*) => optn_nil()
+|_(*otherwise*) => optn_nil()
 endlet // end of [f0_g1e1(g1e1)]
 //
 and
