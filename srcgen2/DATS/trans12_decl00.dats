@@ -72,6 +72,8 @@ _(*TRANS12*) = "./trans12.dats"
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"
 (* ****** ****** *)
+#symload name with symbl_get_name
+(* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
@@ -1607,7 +1609,49 @@ prerrln("f0_staload: gsrc = ", gsrc)
 val (  ) =
 (
 case+ dopt of
-|optn_nil() => ()
+//
+|optn_nil() =>
+let
+val
+gopt = f1_geid(gsrc)
+in//let
+//
+case+ gopt of
+|
+optn_nil() => ()
+|
+optn_cons(sym0) =>
+let
+//
+val
+name = sym0.name()
+val
+sym1 =
+symbl(strn_append(name, "."))
+val
+sopt =
+tr12env_find_s2qua(env0, sym1)
+//
+in//let
+case+ sopt of
+| ~
+optn_vt_nil() => ()
+| ~
+optn_vt_cons(s2i0) =>
+(
+case+ s2i0 of
+|
+S2ITMenv(envs) =>
+tr12env_add1_f2env
+(env0, gsym, fenv) where
+{ val-
+  list_cons(fenv, _) = envs }
+|
+_(* non-S2ITMenv *) => ((*0*)))
+endlet//end-of-[optn_cons(sym0)]
+//
+end (*let*) // end of [optn_nil()]
+//
 |optn_cons
 @(shrd, dpar) =>
 tr12env_add1_f2env
@@ -1621,7 +1665,38 @@ in//let
 d2ecl_make_node
 (loc0,
  D2Cstaload(knd0, tknd, gsrc, fopt, dopt))
-end (*let*) // end of [f0_staload(env0, d1cl)]
+end where
+{
+fun
+f1_geid
+(gexp: g1exp): optn(sym_t) =
+(
+case+
+gexp.node() of
+|G1Eid0(sym1) =>
+optn_cons(sym1)
+|G1Ea2pp
+(g1f0,g1e1,g1e2) =>
+(
+case+
+g1f0.node() of
+|
+G1Eid0(id0) =>
+if
+(id0 != EQ0_symbl)
+then optn_nil(*0*) else
+(
+case+
+g1e2.node() of
+|
+G1Eid0(sym2) =>
+optn_cons(sym2)
+| _ => optn_nil((*void*)))//if
+| _(*non-G1Eid0*) => optn_nil())
+//
+| _(* otherwise *) => optn_nil()) // f1_geid
+//
+} (*where*) // end of [f0_staload(env0, d1cl)]
 //
 (* ****** ****** *)
 //
