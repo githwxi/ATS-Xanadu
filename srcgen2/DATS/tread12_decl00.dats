@@ -264,6 +264,27 @@ end (*let*) // end of [d2ecl_include_errck]
 (* ****** ****** *)
 //
 fun
+d2ecl_staload_errck
+( loc0: loc_t
+, knd0: sint
+, tknd: token
+, g1e1: g1exp
+, fopt: fpathopt
+, dres: s2taloadopt): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(
+lvl+1,
+d2ecl_make_node
+( loc0
+, D2Cstaload(knd0,tknd,g1e1,fopt,dres)))
+end (*let*) // end of [d2ecl_staload_errck]
+//
+(* ****** ****** *)
+//
+fun
 d2ecl_datasort_errck
 ( loc0: loc_t
 , d1cl: d1ecl
@@ -450,10 +471,8 @@ D2Csymload _ => f0_symload(d2cl, err)
 //
 |
 D2Cinclude _ => f0_include(d2cl, err)
-(*
 |
 D2Cstaload _ => f0_staload(d2cl, err)
-*)
 //
 |
 D2Cdatasort _ => f0_datasort(d2cl, err)
@@ -809,6 +828,41 @@ then (dcl) else
 d2ecl_include_errck
 ( dcl.lctn(), knd0,tknd,gsrc,fopt,dopt )
 end (*let*) // end of [f0_include(dcl,err)]
+
+(* ****** ****** *)
+
+fun
+f0_staload
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val e00 = err
+(*
+val loc = dcl.lctn()
+*)
+//
+val-
+D2Cstaload
+( knd0
+, tknd, gsrc
+, fopt, dres) = dcl.node()
+//
+val fknd =
+(
+case+ dres of
+|S2TALOADnone _ =>
+ (err := err+1; 0)
+|S2TALOADfenv _ => 1
+|S2TALOADdpar _ => 2): sint//val(fknd)
+//
+in//let
+if
+(err=e00)
+then (dcl) else
+d2ecl_staload_errck
+( dcl.lctn(), knd0,tknd,gsrc,fopt,dres )
+end (*let*) // end of [f0_staload(dcl,err)]
 
 (* ****** ****** *)
 //

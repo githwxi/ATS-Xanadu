@@ -1569,6 +1569,7 @@ f0_staload
 ! tr12env
 , d1cl: d1ecl): d2ecl =
 let
+//
 val
 loc0 = d1cl.lctn()
 val-
@@ -1576,6 +1577,10 @@ D1Cstaload
 ( knd0
 , tknd, gsrc
 , fopt, dopt) = d1cl.node()
+//
+var
+dres:
+s2taloadopt = S2TALOADnone(*0*)
 //
 val dopt =
 (
@@ -1586,12 +1591,14 @@ optn_nil((*void*))
 |
 optn_cons(fpth) =>
 let
-val-
-optn_cons@(shrd, dpar) = dopt
-in
+  val-
+  optn_cons@(shrd, dpar) = dopt
+in//let
 optn_cons
-(s2taload_from_fpath(fpth, dpar)) end
-) : optn@(sint, d2parsed) // [val(dopt)]
+(s2taload_from_fpath(fpth, dpar))
+end // let
+) :
+optn@(sint,d2parsed)//[val(dopt)]
 //
 val gsym =
 (
@@ -1640,14 +1647,16 @@ optn_vt_nil() => ()
 optn_vt_cons(s2i0) =>
 (
 case+ s2i0 of
-|
-S2ITMenv(envs) =>
+|S2ITMenv(envs) =>
+(
 tr12env_add1_f2env
-(env0, gsym, fenv) where
-{ val-
-  list_cons(fenv, _) = envs }
-|
-_(* non-S2ITMenv *) => ((*0*)))
+(env0, gsym, fenv)) where
+{val-
+ // HX: [envs] not empty
+ list_cons(fenv, _) = envs
+ val () =
+ (dres := S2TALOADfenv(fenv)) }
+|_(* non-S2ITMenv *) => ((*0*)))
 endlet//end-of-[optn_cons(sym0)]
 //
 end (*let*) // end of [optn_nil()]
@@ -1658,14 +1667,18 @@ tr12env_add1_f2env
 (env0, gsym, fenv) where
 {
 val
-fenv = f2env_of_d2topenv(dpar.t2penv()) }
+fenv =
+f2env_of_d2topenv(dpar.t2penv())
+val () =
+(dres := S2TALOADdpar(shrd, dpar)) }
 )
 //
 in//let
 d2ecl_make_node
-(loc0,
- D2Cstaload(knd0, tknd, gsrc, fopt, dopt))
-end where
+(
+loc0,
+D2Cstaload(knd0, tknd, gsrc, fopt, dres))
+end where // end-of-[f0_staload(env0,...)]
 {
 fun
 f1_geid

@@ -1172,8 +1172,8 @@ D2Cstaload of
 ( sint(*s/d*)
 , token
 , g1exp // src
-, fpathopt, optn // staload
-  @(sint(*shared*), d2parsed))
+, fpathopt
+, s2taloadopt) // staloading
 //
 |
 D2Cdatasort of (d1ecl, sort2lst)
@@ -1259,6 +1259,17 @@ A2TDFlteq of s2exp//ty-erasure
 A2TDFeqeq of s2exp//definition
 |
 A2TDFdefn of s2exp//definition
+//
+(* ****** ****** *)
+//
+and
+s2taloadopt =
+|
+S2TALOADnone of ()
+|
+S2TALOADfenv of (f2env)
+|
+S2TALOADdpar of (sint, d2parsed)
 //
 (* ****** ****** *)
 fun
