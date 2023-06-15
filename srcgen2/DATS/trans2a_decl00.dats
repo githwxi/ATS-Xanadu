@@ -158,6 +158,13 @@ D2Cabsopen _ => f0_absopen(env0, d2cl)
 D2Cabsimpl _ => f0_absimpl(env0, d2cl)
 //
 |
+D2Cinclude _ => f0_include(env0, d2cl)
+(*
+|
+D2Cstaload _ => f0_staload(env0, d2cl)
+*)
+//
+|
 D2Cvaldclst _ => f0_valdclst(env0, d2cl)
 |
 D2Cvardclst _ => f0_vardclst(env0, d2cl)
@@ -283,6 +290,39 @@ tr2aenv_insert_any
 end (*let*)
 //
 end (*let*) // end of [f0_absimpl(env0,d2cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_include
+( env0:
+! tr2aenv
+, d2cl: d2ecl): d2ecl =
+let
+val
+loc0 = d2cl.lctn()
+val-
+D2Cinclude
+( knd0
+, tknd, gsrc
+, fopt, dopt) = d2cl.node()
+//
+val dopt =
+(
+case+ dopt of
+|
+optn_nil() => optn_nil(*nil*)
+|
+optn_cons(dcls) =>
+optn_cons
+(trans2a_d2eclist(env0, dcls)))
+//
+in//let
+d2ecl_make_node
+(loc0,
+ D2Cinclude
+ (knd0, tknd, gsrc, fopt, dopt))
+end (*let*) // end of [f0_include(...)]
 //
 (* ****** ****** *)
 //

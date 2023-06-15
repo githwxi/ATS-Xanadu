@@ -2658,12 +2658,12 @@ val-
 D1Equal0
 (tok1, d1e2) = d1e0.node()
 //
-// (*
+(*
 val () =
 prerrln("f0_qual0: tok1 = ", tok1)
 val () =
 prerrln("f0_qual0: d1e2 = ", d1e2)
-// *)
+*)
 //
 in//let
 case+
