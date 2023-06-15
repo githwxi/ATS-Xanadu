@@ -86,26 +86,39 @@ case+
 dcl0.node() of
 //
 |
-D2Cstatic(tknd,dcl1) =>
+D2Cstatic
+(tknd, dcl1) =>
 let
 val () =
 trsym2a_d2ecl(env0, dcl1)
 endlet//end-of(D2Cstatic(_,_))
 |
-D2Cextern(tknd,dcl1) =>
+D2Cextern
+(tknd, dcl1) =>
 let
 val () =
 trsym2a_d2ecl(env0, dcl1)
 endlet//end-of(D2Cextern(_,_))
 //
 |
-D2Clocal0(dcs1,dcs2) =>
+D2Clocal0
+(dcs1, dcs2) =>
 let
 val () =
 trsym2a_d2eclist(env0, dcs1)
 val () =
 trsym2a_d2eclist(env0, dcs2)
 endlet // end of [D2Clocal0(...)]
+//
+|
+D2Cinclude
+( knd0
+, tknd, gsrc
+, fopt, dopt) =>
+let
+val () =
+trsym2a_d2eclistopt(env0, dopt)
+endlet // end of [D2Cinclude(...)]
 //
 |
 D2Cvaldclst
