@@ -243,6 +243,7 @@ tread22_d2ecl
 case+
 d2cl.node() of
 //
+|D2Cnone0 _ => d2cl
 |D2Cd1ecl _ => d2cl
 |D2Cerrck _ => d2cl
 //
@@ -383,11 +384,15 @@ D2Cinclude
 , tknd, gsrc
 , fopt, dopt) = dcl.node()
 //
+val () =
+prerrln
+("f0_include: dopt = ", dopt)
+//
 val dopt =
 (
 case+ dopt of
 |optn_nil() =>
- (err := err+1; optn_nil())
+ (err := err+1; optn_nil(*0*))
 |optn_cons(dcls) =>
  optn_cons
  (tread22_d2eclist(dcls, err)))

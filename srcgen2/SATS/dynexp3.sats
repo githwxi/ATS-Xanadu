@@ -620,6 +620,9 @@ fun
 d3ecl_get_node(d3ecl): d3ecl_node
 (* ****** ****** *)
 fun
+d3ecl_none0(loc0:loc_t): d3ecl
+(* ****** ****** *)
+fun
 d3ecl_make_node
 (loc:loc_t,nod:d3ecl_node): d3ecl
 (* ****** ****** *)

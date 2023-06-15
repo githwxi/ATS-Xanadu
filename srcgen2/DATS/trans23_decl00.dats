@@ -91,6 +91,14 @@ in//let
 case+
 d2cl.node() of
 //
+|D2Cnone0 _ =>
+let
+val
+loc0 = d2cl.lctn()
+in//let
+d3ecl_none0( loc0 )
+end//end-of-[D2Cnone0]
+//
 |D2Cd1ecl _ =>
 let
 val
