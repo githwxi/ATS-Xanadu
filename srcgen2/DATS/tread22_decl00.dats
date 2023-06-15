@@ -128,6 +128,27 @@ end (*let*)//end-of-[d2ecl_extern_errck]
 (* ****** ****** *)
 //
 fun
+d2ecl_include_errck
+( loc0: loc_t
+, knd0: sint
+, tknd: token
+, g1e1: g1exp
+, fopt: fpathopt
+, dopt: d2eclistopt): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(
+lvl+1,
+d2ecl_make_node
+( loc0
+, D2Cinclude(knd0,tknd,g1e1,fopt,dopt)))
+end (*let*) // end of [d2ecl_include_errck]
+//
+(* ****** ****** *)
+//
+fun
 d2ecl_valdclst_errck
 ( loc0
 : loc_t
@@ -242,6 +263,13 @@ D2Cextern _ => f0_extern(d2cl, err)
 D2Clocal0 _ => f0_local0(d2cl, err)
 //
 |
+D2Cinclude _ => f0_include(d2cl, err)
+(*
+|
+D2Cstaload _ => f0_staload(d2cl, err)
+*)
+//
+|
 D2Cvaldclst _ => f0_valdclst(d2cl, err)
 |
 D2Cvardclst _ => f0_vardclst(d2cl, err)
@@ -339,29 +367,39 @@ end (*let*) // end of [ f0_local0(dcl,err) ]
 (* ****** ****** *)
 //
 fun
-f0_local0
+f0_include
 ( dcl: d2ecl
 , err: &sint >> _): d2ecl =
 let
 //
 val e00 = err
+(*
 val loc = dcl.lctn()
+*)
 //
 val-
-D2Clocal0
-(dcs1, dcs2) = dcl.node()
+D2Cinclude
+( knd0
+, tknd, gsrc
+, fopt, dopt) = dcl.node()
 //
-val dcs1 =
-tread22_d2eclist(dcs1, err)
-val dcs2 =
-tread22_d2eclist(dcs2, err)
+val dopt =
+(
+case+ dopt of
+|optn_nil() =>
+ (err := err+1; optn_nil())
+|optn_cons(dcls) =>
+ optn_cons
+ (tread22_d2eclist(dcls, err)))
+: d2eclistopt // end of [val(dopt)]
 //
-in
+in//let
 if
 (err=e00)
-then dcl else
-d2ecl_local0_errck( loc, dcs1, dcs2 )
-end (*let*) // end of [ f0_local0(dcl,err) ]
+then (dcl) else
+d2ecl_include_errck
+( dcl.lctn(), knd0,tknd,gsrc,fopt,dopt )
+end (*let*) // end of [f0_include(dcl,err)]
 //
 (* ****** ****** *)
 //

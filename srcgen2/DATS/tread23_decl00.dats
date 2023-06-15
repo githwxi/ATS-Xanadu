@@ -237,6 +237,13 @@ D3Cextern _ => f0_extern(d3cl, err)
 |
 D3Clocal0 _ => f0_local0(d3cl, err)
 //
+(*
+|
+D3Cinclude _ => f0_include(d3cl, err)
+|
+D3Cstaload _ => f0_staload(d3cl, err)
+*)
+//
 |
 D3Cvaldclst _ => f0_valdclst(d3cl, err)
 |

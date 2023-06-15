@@ -365,7 +365,7 @@ in//local
 //
 val dpar =
 d0parsed_from_fpath
-(1(*dyn*), "./mytest1.dats")
+(1(*dyn*), "./DATA/myfact.dats")
 //
 val
 dpar =
@@ -396,7 +396,7 @@ d1parsed_fpemsg( out, dpar ) end // let
 val
 (  ) =
 prerrln
-("d1parsed_from_fpath(\"./mytest1.dats\") =\n", dpar)
+("d1parsed_from_fpath(\"./DATA/myfact.dats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
@@ -451,7 +451,7 @@ d3parsed_fpemsg( out, dpar ) end // let
 //
 val (  ) =
 prerrln
-("d3parsed_from_fpath(\"./mytest1.dats\") =\n", dpar)
+("d3parsed_from_fpath(\"./DATA/myfact.dats\") =\n", dpar)
 //
 (* ****** ****** *)
 //

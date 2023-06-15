@@ -281,10 +281,10 @@ endlet // end of [S2Ecast(...)]
 S2Eerrck _ => s2exp_fpemsg(out, s2e)
 endlet where
 {
-// (*
+(*
   val ( ) =
   prerrln("auxmain: s2e = ", s2e)
-// *)
+*)
 } (*where*)//end-of-(auxmain(out,s2e))
 //
 in//local
@@ -466,9 +466,11 @@ let
 #impltmp
 g_print$out<>() = out
 //
+(*
 val () =
 prerrln
 ("d2pat_fpemsg: d2p0 = ", d2p0)
+*)
 //
 in//let
 //
@@ -707,9 +709,11 @@ let
 #impltmp
 g_print$out<>() = out
 //
+(*
 val () =
 prerrln
 ("d2exp_fpemsg: d2e0 = ", d2e0)
+*)
 //
 in//let
 //
@@ -1036,9 +1040,11 @@ let
 #impltmp
 g_print$out<>() = out
 //
+(*
 val () =
 prerrln
 ("d2ecl_fpemsg: dcl0 = ", dcl0)
+*)
 //
 in//let
 //

@@ -1510,8 +1510,10 @@ ditm =
 D2ITMsym
 (sym1, list_cons(dptm, d2ps))
 //
+(*
 val () =
 prerrln("f0_symload: ditm = ", ditm)
+*)
 //
 val () =
 tr12env_add0_d2itm(env0, sym1, ditm)
@@ -1608,10 +1610,12 @@ g1exp_nmspace(gsrc) of
  $SYM.DLRDT_symbl
 |optn_cons(gsym) => gsym): sym_t
 //
+(*
 val (  ) =
 prerrln("f0_staload: gsym = ", gsym)
 val (  ) =
 prerrln("f0_staload: gsrc = ", gsrc)
+*)
 //
 val (  ) =
 (
@@ -1848,6 +1852,7 @@ tfun = S2Tfun1(targ, s2t0)
 val
 s2c1 =
 s2cst_make_idst(loc1, sid1, tfun)
+//
 (*
 val () =
 prerrln("f2_d1t0: tok1 = ", tok1)
@@ -1856,7 +1861,8 @@ prerrln("f2_d1t0: tfun = ", tfun)
 val () =
 prerrln("f2_d1t0: s2c1 = ", s2c1)
 *)
-in
+//
+in//let
   loop(env0, tcns, s2cs) where
 {
 //
@@ -2336,6 +2342,7 @@ dexp = trans12_d1exp(env0, dexp)
 //
 val (  ) = tr12env_poplam0(env0)
 //
+(*
 val () =
 prerrln("f0_implmnt0: dimp = ", dimp)
 val () =
@@ -2350,6 +2357,7 @@ val () =
 prerrln("f0_implmnt0: sres = ", sres)
 val () =
 prerrln("f0_implmnt0: dexp = ", dexp)
+*)
 //
 in//let
 d2ecl

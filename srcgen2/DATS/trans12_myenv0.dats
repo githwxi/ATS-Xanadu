@@ -1186,8 +1186,10 @@ end//let
 //
 end where
 {
+(*
 val () =
 prerrln("tr12env_add1_f2env: gsym = ", k0)
+*)
 (*
 val () =
 prerrln("tr12env_add1_f2env: fenv = ", x0)
