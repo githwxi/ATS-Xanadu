@@ -83,8 +83,7 @@ d3pat_none1
 (  dpat  ) =
 d3pat_make_node
 (
-dpat.lctn(),D3Pnone1(dpat)
-)
+dpat.lctn(),D3Pnone1(dpat))
 //
 (* ****** ****** *)
 //
@@ -98,8 +97,7 @@ d3exp_none1
 (  dexp  ) =
 d3exp_make_node
 (
-dexp.lctn(),D3Enone1(dexp)
-)
+dexp.lctn(),D3Enone1(dexp))
 //
 (* ****** ****** *)
 //
@@ -108,6 +106,12 @@ d3ecl_none0
 (  loc0  ) =
 d3ecl_make_node
 (loc0,D3Cnone0((*void*)))
+#implfun
+d3ecl_none1
+(  d2cl  ) =
+d3ecl_make_node
+(
+d2cl.lctn(),D3Cnone1(d2cl))
 //
 (* ****** ****** *)
 
