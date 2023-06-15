@@ -453,26 +453,45 @@ in//let
 case+
 dcl.node() of
 |
-D3Cstatic(tknd,dcl1) =>
+D3Cstatic
+(tknd, dcl1) =>
 let
 val () =
 d3ecl_fpemsg(out, dcl1)
 endlet//end-of(D3Cstatic(_,_))
 |
-D3Cextern(tknd,dcl1) =>
+D3Cextern
+(tknd, dcl1) =>
 let
 val () =
 d3ecl_fpemsg(out, dcl1)
 endlet//end-of(D3Cextern(_,_))
 //
 |
-D3Clocal0(dcs1,dcs2) =>
+D3Clocal0
+(dcs1, dcs2) =>
 let
 val () =
 d3eclist_fpemsg(out, dcs1)
 val () =
 d3eclist_fpemsg(out, dcs2)
 endlet // end of [D3Clocal0(...)]
+//
+|
+D3Cinclude
+(knd0,tknd
+,g1e1,fopt,dopt) =>
+(
+case+ dopt of
+|
+optn_nil() => ()
+|
+optn_cons(dcls) =>
+let
+val () =
+  d3eclist_fpemsg(out, dcls)
+endlet
+) (*case+*)//end-(D3Cinclude(...))
 //
 |
 D3Cvaldclst

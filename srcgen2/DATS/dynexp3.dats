@@ -102,6 +102,14 @@ dexp.lctn(),D3Enone1(dexp)
 )
 //
 (* ****** ****** *)
+//
+#implfun
+d3ecl_none0
+(  loc0  ) =
+d3ecl_make_node
+(loc0,D3Cnone0((*void*)))
+//
+(* ****** ****** *)
 
 local
 //
