@@ -811,11 +811,15 @@ D2Cinclude
 , tknd, gsrc
 , fopt, dopt) = dcl.node()
 //
+val () =
+prerrln
+("f0_include: dopt = ", dopt)
+//
 val dopt =
 (
 case+ dopt of
 |optn_nil() =>
- (err := err+1; optn_nil())
+ (err := err+1; optn_nil(*0*))
 |optn_cons(dcls) =>
  optn_cons
  (tread12_d2eclist(dcls, err)))

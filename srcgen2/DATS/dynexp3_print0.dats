@@ -403,6 +403,15 @@ D3Clocal0(head, body) =>
 print( "D3Clocal(",head,";",body,")" )
 //
 |
+D3Cinclude
+( knd0, tknd
+, gsrc, fopt, dopt ) =>
+(
+print("D3Cinclude(");
+print
+(knd0,";",tknd,";",gsrc,";",fopt,")"))
+//
+|
 D3Cvaldclst
 (  tknd, d3vs  ) =>
 print("D3Cvaldclst(",tknd,";",d3vs,")")

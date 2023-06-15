@@ -1538,6 +1538,7 @@ f0_include
 ! tr12env
 , d1cl: d1ecl): d2ecl =
 let
+//
 val
 loc0 = d1cl.lctn()
 val-
@@ -1545,6 +1546,10 @@ D1Cinclude
 ( knd0
 , tknd, gsrc
 , fopt, dopt) = d1cl.node()
+//
+val () =
+prerrln
+("f0_include: dopt = ", dopt)
 //
 val dopt =
 (

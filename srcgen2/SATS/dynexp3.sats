@@ -67,15 +67,23 @@ SYM = "./xsymbol.sats"
 #staload
 MAP = "./xsymmap.sats"
 //
-#typedef sym_t = $SYM.sym_t
+#typedef
+sym_t = $SYM.sym_t
+//
+(* ****** ****** *)
+//
+#staload
+FP0 = "./filpath.sats"
+//
+#typedef
+fpath = $FP0.fpath
+#typedef
+fpathopt = $FP0.fpathopt
 //
 (* ****** ****** *)
 //
 #staload
 LEX = "./lexing0.sats"
-//
-#typedef tnode = $LEX.tnode
-#typedef token = $LEX.token
 //
 (* ****** ****** *)
 #staload
@@ -92,10 +100,15 @@ S2E = "./staexp2.sats"
 #staload
 D2E = "./dynexp2.sats"
 (* ****** ****** *)
+#typedef tnode = $LEX.tnode
+#typedef token = $LEX.token
+(* ****** ****** *)
+#typedef g1exp = $S1E.g1exp
+#typedef s1exp = $S1E.s1exp
+(* ****** ****** *)
 #typedef s2cst = $S2E.s2cst
 #typedef s2var = $S2E.s2var
 (* ****** ****** *)
-#typedef s1exp = $S1E.s1exp
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
@@ -562,6 +575,13 @@ d3ecl_node =
 |D3Clocal0 of
  ( d3eclist(*local-head*)
  , d3eclist(*local-body*))
+//
+|D3Cinclude of
+( sint(*s/d*)
+, token
+, g1exp // src
+, fpathopt
+, d3eclistopt) // inclusion
 //
 |
 D3Cvaldclst of

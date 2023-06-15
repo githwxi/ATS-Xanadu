@@ -136,6 +136,9 @@ d3ecl_make_node
 (d2cl.lctn(), D3Cd2ecl(d2cl))
 //
 |
+D2Cinclude _ => f0_include(env0, d2cl)
+//
+|
 D2Cvaldclst _ => f0_valdclst(env0, d2cl)
 |
 D2Cvardclst _ => f0_vardclst(env0, d2cl)
@@ -221,6 +224,39 @@ val (  ) = tr23env_locjoin(env0)
 in//let
   d3ecl(loc0, D3Clocal0(head, body))
 end (*let*) // end of [f0_local0(env0,d2cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_include
+( env0:
+! tr23env
+, d2cl: d2ecl): d3ecl =
+let
+val
+loc0 = d2cl.lctn()
+val-
+D2Cinclude
+( knd0
+, tknd, gsrc
+, fopt, dopt) = d2cl.node()
+//
+val dopt =
+(
+case+ dopt of
+|
+optn_nil() => optn_nil(*nil*)
+|
+optn_cons(dcls) =>
+optn_cons
+(trans23_d2eclist(env0, dcls)))
+//
+in//let
+d3ecl_make_node
+(loc0,
+ D3Cinclude
+ (knd0, tknd, gsrc, fopt, dopt))
+end (*let*) // end of [f0_include(...)]
 //
 (* ****** ****** *)
 //
