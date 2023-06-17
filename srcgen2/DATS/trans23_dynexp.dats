@@ -433,6 +433,8 @@ d3exp_make_styp_node
 //
 |D2Esym0 _ => f0_sym0(env0, d2e0)
 //
+|D2Etapp _ => f0_tapp(env0, d2e0)
+//
 |D2Edapp _ => f0_dapp(env0, d2e0)
 //
 |D2Elet0 _ => f0_let0(env0, d2e0)
@@ -540,6 +542,27 @@ in//let
   trans23_d2exp(env0, drxp.dexp())
 end (*let*)//end-of-[f0_sym0(env0,d2e0)]
 //
+(* ****** ****** *)
+//
+fun
+f0_tapp
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+//
+val-
+D2Etapp
+(d2f0, s2es) = d2e0.node()
+//
+val d3f0 = trans23_d2exp(env0, d2f0)
+//
+in//let
+d3exp_make_styp_node
+(loc0, d3f0.styp(), D3Etapp(d3f0,s2es))
+end (*let*) // end of [f0_tapp(env0,d2e0)]
 (* ****** ****** *)
 //
 fun

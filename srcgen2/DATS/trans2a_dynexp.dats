@@ -82,11 +82,26 @@ _(*TRANS2A*) = "./trans2a.dats"
 #symload lctn with d2cls_get_lctn
 #symload node with d2cls_get_node
 (* ****** ****** *)
+#symload s2vs with s2qag_get_s2vs
+#symload s2vs with t2qag_get_s2vs
+(* ****** ****** *)
 //
 fun
 s2typ_new0_x2tp
 ( loc0: loc_t ): s2typ =
 s2typ_xtv(x2t2p_make_lctn(loc0))
+//
+(* ****** ****** *)
+//
+fn0
+s2typ_subst0
+( t2p0: s2typ
+, svts: s2vts): s2typ =
+(
+case+ svts of
+|list_nil() => t2p0 // identity
+|list_cons _ => s2typ_subst0(t2p0, svts)
+)
 //
 (* ****** ****** *)
 //
@@ -863,6 +878,164 @@ d2exp_make_styp_node
 end(*let*)//end-of-[D2Etapp]
 |_(*non-D2Etapp*) => ( d2f0 ))
 //
+fun
+f1_type
+( d2e0: d2exp): s2typ =
+let
+val d2f0 = f1_root(d2e0)
+in
+case+
+d2f0.node() of
+|
+D2Econ(d2c0) =>
+let
+val
+tqas = d2c0.tqas()
+val
+tfun = d2c0.styp() in//let
+f1_tqas_tfun(d2e0, tqas, tfun)
+end(*let*)//end of [D2Econ(d2c0)]
+|
+D2Ecst(d2c0) =>
+let
+val
+tqas = d2c0.tqas()
+val
+tfun = d2c0.styp() in//let
+f1_tqas_tfun(d2e0, tqas, tfun)
+end(*let*)//end of [D2Ecst(d2c0)]
+|
+_ (* otherwise *) => s2typ_none0()
+end
+//
+and
+f1_tqas
+( d2e0: d2exp
+, tqas: t2qas): s2vts =
+let
+val
+loc0 = d2e0.lctn()
+val
+svts = list_nil(*0*)
+in
+  f2_tqas
+  (loc0, tqas, svts) where
+{ val
+  @(tqas, svts) =
+    f2_main(d2e0, tqas, svts) }
+end where // end of [f1_tqas(...)]
+{
+//
+fun
+f2_main
+( d2e0: d2exp
+, tqas: t2qas
+, svts: s2vts)
+: @(t2qas, s2vts) =
+(
+case+ tqas of
+|
+list_nil() => @(tqas, svts)
+|
+list_cons _ =>
+(
+case+
+d2e0.node() of
+|D2Etapp
+(d2e1, s2es) =>
+let
+//
+val+
+@(tqas, svts) =
+  f2_main(d2e1, tqas, svts)
+//
+in//let
+case+ tqas of
+|list_nil() => @(tqas, svts)
+|list_cons
+(tqa1, tqas) =>
+let
+val
+loc0 = d2e0.lctn()
+val
+s2vs = tqa1.s2vs()
+in//let
+  @(tqas, svts) where
+{
+val svts =
+f2_s2vs(loc0, s2vs, s2es, svts) }
+end(*let*) // end-of-[ list_cons ]
+end(*let*) // end-of-[D2Etapp(...)]
+//
+| _(*non-D2Etapp*) => @(tqas, svts)
+//
+) (*case+*) // end of [ list_cons ]
+//
+) (*case+*) // end of [f2_main(...)]
+//
+and
+f2_s2vs
+( loc0
+: loc_t
+, s2vs
+: s2varlst
+, s2es
+: s2explst
+, svts: s2vts): s2vts =
+(
+case+ s2vs of
+|list_nil
+((*void*)) => svts
+|list_cons
+(s2v1, s2vs) =>
+(
+case+ s2es of
+//
+|
+list_nil() =>
+(
+list_cons
+(
+@(s2v1, t2p1), svts)) where
+{
+val
+t2p1 = s2typ_new0_x2tp(loc0)
+val svts =
+f2_s2vs(loc0, s2vs, s2es, svts) }
+//
+|
+list_cons(s2e1, s2es) =>
+(
+list_cons
+(
+@(s2v1, t2p1), svts)) where
+{
+val t2p1 = s2exp_stpize(s2e1)
+val svts =
+f2_s2vs(loc0, s2vs, s2es, svts) }
+//
+) (*case+*) // end-of-[list_cons]
+) (*case+*) // end of [f2_s2vs(...)]
+//
+fun
+f2_tqas
+( loc0: loc_t
+, tqas: t2qas
+, svts: s2vts): s2vts = svts // f2_tqas
+//
+} (*where*)//end-of-[f1_tqas(d2e0,tqas)]
+//
+and
+f1_tqas_tfun
+( d2e0: d2exp
+, tqas: t2qas
+, tfun: s2typ): s2typ =
+let
+val
+svts = f1_tqas(d2e0, tqas)
+in//let
+  s2typ_subst0(tfun, svts) end//let
+//
 in//local
 
 fun
@@ -879,13 +1052,20 @@ D2Etapp
 //
 in//let
 //
-(
-  f1_make(d2e0, d2f0)) where
+( f1_make
+  (d2e0, d2f0) ) where
 {
+//
+  val d2f0 = f1_root(d2f0)
+  val tfun = f1_type(d2e0)
+//
   val
-  d2f0 = f1_root(d2f0)
-  val
-  d2f0 = trans2a_d2exp(env0, d2f0) }
+  d2f0 =
+  trans2a_d2exp(env0, d2f0)
+//
+  val t2p0 = d2f0.styp((*void*))
+  val ubtf =
+  unify2a_s2typ(env0, tfun, t2p0) }
 //
 end (*let*) // end of [f0_tapp(env0,...)]
 //
