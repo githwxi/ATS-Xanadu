@@ -246,6 +246,29 @@ fperr22_d2exp
 endlet
 //
 |
+D2Esapp
+(d2f0,s2es) =>
+let
+val () =
+fperr22_d2exp(out, d2f0)
+(*
+val () =
+fperr22_s2explst(out, s2es)
+*)
+endlet
+|
+D2Etapp
+(d2f0,s2es) =>
+let
+val () =
+fperr22_d2exp(out, d2f0)
+(*
+val () =
+fperr22_s2explst(out, s2es)
+*)
+endlet
+//
+|
 D2Edapp
 (d2f0,npf1,d2es) =>
 let
