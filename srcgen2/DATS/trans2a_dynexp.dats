@@ -836,11 +836,32 @@ f1_root
 (d2f0: d2exp): d2exp =
 (
 case+
-d2e0.node() of
+d2f0.node() of
 |
 D2Etapp
 (d2f0, _) => f1_root(d2f0)
 |_(*non-D2Etapp*) => (d2f0))
+//
+fun
+f1_make
+( d2e0: d2exp
+, d2f0: d2exp): d2exp =
+(
+case+
+d2e0.node() of
+|
+D2Etapp
+(d2e1, s2es) => let
+val
+d2e1 =
+f1_make(d2e1, d2f0)
+in//let
+d2exp_make_styp_node
+( d2e1.lctn()
+, d2e1.styp()
+, D2Etapp(d2e1, s2es) )
+end(*let*)//end-of-[D2Etapp]
+|_(*non-D2Etapp*) => ( d2f0 ))
 //
 in//local
 
@@ -856,20 +877,15 @@ val-
 D2Etapp
 (d2f0, s2es) = d2e0.node()
 //
-val
-d2f0 =
-(
-trans2a_d2exp
-(env0 , d2f0)) where
-{
-  val d2f0 = f1_root(d2f0) }
-//
-val tfun = d2f0.styp((*void*))
-//
 in//let
 //
-d2exp_make_styp_node
-(loc0, tfun, D2Etapp(d2f0, s2es))
+(
+  f1_make(d2e0, d2f0)) where
+{
+  val
+  d2f0 = f1_root(d2f0)
+  val
+  d2f0 = trans2a_d2exp(env0, d2f0) }
 //
 end (*let*) // end of [f0_tapp(env0,...)]
 //
