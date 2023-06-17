@@ -99,9 +99,21 @@ case+ knd of
 | _ => the_sort2_tbox))
 val f2cl = s2typ_f2cl(f2cl)
 in//let
-s2typ_make_node
-(s2t0, T2Pfun1(f2cl,npf1,t2ps,tres))
+  s2typ_make_node
+  (s2t0, T2Pfun1(f2cl,npf1,t2ps,tres))
 end (*let*) // end of [s2typ_fun1(...)]
+//
+(* ****** ****** *)
+//
+fn0
+s2typ_subst0
+( t2p0: s2typ
+, svts: s2vts): s2typ =
+(
+case+ svts of
+|list_nil() => t2p0 // identity
+|list_cons _ => s2typ_subst0(t2p0, svts)
+)
 //
 (* ****** ****** *)
 //
