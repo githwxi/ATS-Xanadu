@@ -1533,8 +1533,8 @@ D2TOPENV of
 (* ****** ****** *)
 //
 fun
-f2env_of_d2topenv
-( denv: d2topenv ): f2env
+f2env_of_d2parsed
+( dpar:d2parsed ): f2env
 //
 fun
 f2env_get_sort2env

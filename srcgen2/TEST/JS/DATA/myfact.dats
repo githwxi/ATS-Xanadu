@@ -1,8 +1,4 @@
 (* ****** ****** *)
-val btf = 0 > 1
-(* ****** ****** *)
-////
-(* ****** ****** *)
 (*
 HX-2023-06-12:
 [fact1] is defined:
@@ -61,6 +57,14 @@ list_extend
 #typedef y0 = sint
 #impltmp
 map$fopr<x0><y0>(x0) = fact2(x0) }
+
+(* ****** ****** *)
+
+fun
+fact4(x: nint) = 
+(
+case+ x of 0 => 1 | _ => x * fact4(x-1)
+)
 
 (* ****** ****** *)
 

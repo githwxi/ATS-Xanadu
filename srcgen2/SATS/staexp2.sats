@@ -676,8 +676,8 @@ datatype s2itm =
 S2ITMcst of
 ( s2cstlst ) // static consts
 //
-//
-|S2ITMenv of
+|
+S2ITMenv of
 ( f2envlst ) // for name space
 //
 (*

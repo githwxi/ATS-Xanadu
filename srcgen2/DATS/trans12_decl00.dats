@@ -1722,9 +1722,10 @@ end (*let*) // end of [optn_nil()]
 tr12env_add1_f2env
 (env0, gsym, fenv) where
 {
+//
 val
-fenv =
-f2env_of_d2topenv(dpar.t2penv())
+fenv = f2env_of_d2parsed(dpar)
+//
 val () =
 (dres := S2TALOADdpar(shrd, dpar)) }
 )
