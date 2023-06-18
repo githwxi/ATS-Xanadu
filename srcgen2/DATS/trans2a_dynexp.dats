@@ -1004,15 +1004,31 @@ val svts =
 f2_s2vs(loc0, s2vs, s2es, svts) }
 //
 |
-list_cons(s2e1, s2es) =>
+list_cons(s2e1, ses2) =>
 (
 list_cons
 (
 @(s2v1, t2p1), svts)) where
 {
-val t2p1 = s2exp_stpize(s2e1)
+//
+val t2p1 =
+(
+case+
+s2e1.node() of
+|S2Eany _ =>
+ s2typ_new0_x2tp(loc0)
+|_(*else*) => s2exp_stpize(s2e1))
+//
+val s2es =
+(
+case+
+s2e1.node() of
+|S2Eany(k0) =>
+ if k0 <= 1 // sing
+ then s2es else ses2 | _ => ses2)
+//
 val svts =
-f2_s2vs(loc0, s2vs, s2es, svts) }
+  f2_s2vs(loc0, s2vs, s2es, svts) }
 //
 ) (*case+*) // end-of-[list_cons]
 ) (*case+*) // end of [f2_s2vs(...)]

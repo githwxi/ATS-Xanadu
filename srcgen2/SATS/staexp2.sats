@@ -591,6 +591,11 @@ fun
 s2exp_str(s0: string): s2exp
 (* ****** ****** *)
 fun
+s2exp_any1((*void*)): s2exp
+fun
+s2exp_anys(knd0:sint): s2exp
+(* ****** ****** *)
+fun
 s2exp_none0((*void*)): s2exp
 fun
 s2exp_none1(s1e0:s1exp): s2exp

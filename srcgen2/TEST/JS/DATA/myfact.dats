@@ -32,7 +32,7 @@ list_facts
 if
 n0 > 0
 then
-list_extend<sint>
+list_extend<_>
 (list_facts(n0-1), fact3(n0-1))
 else list_nil((*void*))//end(list_facts)
 
