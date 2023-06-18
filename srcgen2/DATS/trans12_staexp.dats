@@ -565,9 +565,20 @@ isANY
 (
 case+
 s1e0.node() of
-| S1Eid0(sid1) =>
-  (sid1 = WCARD_symbl)
-| _(*non-S1Eid0*) => false)
+|S1Eid0(sid1) =>
+ (sid1 = WCARD_symbl)
+|_(*non-S1Eid0*) => false)
+(* ****** ****** *)
+fun
+isANYS
+( s1e0
+: s1exp): sint =
+(
+case+
+s1e0.node() of
+|S1Eid0(sid1) =>
+ symbl_wcard_kind(sid1)
+|_(*non-S1Eid0*) => ( -1 ))
 (* ****** ****** *)
 //
 fun
@@ -585,7 +596,17 @@ in//let
 case+ sopt of
 | ~
 optn_vt_nil
-() => s2exp_none1(s1e0)
+() =>
+let
+val
+knd0 = isANYS(s1e0)
+in//let
+(
+  if
+  knd0 > 0
+  then s2exp_anys(knd0)
+  else s2exp_none1(s1e0) )
+end//let//end-of-[optn_vt_nil()]
 | ~
 optn_vt_cons
 (s2i0) => f0_id0_s2i(env0,s1e0,s2i0)

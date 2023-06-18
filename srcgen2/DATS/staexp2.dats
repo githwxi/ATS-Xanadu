@@ -235,6 +235,17 @@ sort2_none0() = S2Tnone0()
 sort2_none1(s1t0) = S2Tnone1(s1t0)
 //
 (* ****** ****** *)
+//
+#implfun
+s2var_make_sort
+  (  s2t  ) =
+let
+val
+id0 = SRP_symbl in//let
+s2var_make_idst(id0, s2t)
+endlet//end-of-[s2var_make_sort(s2t)]
+//
+(* ****** ****** *)
 
 local
 //
@@ -258,9 +269,11 @@ s2cst_make_idst
 (
 S2CST
 (loc, sym, s2t, tmp)) where
-{ val
-  tmp = the_s2cst_stamp_new((*void*))
-} (*where*) // end of [s2cst_make_idst(...)]
+{
+val
+tmp =
+the_s2cst_stamp_new((*void*)) }
+// end of [s2cst_make_idst(...)]
 
 (* ****** ****** *)
 
@@ -335,6 +348,8 @@ S2VAR_vt of
 //
 in//local
 
+(* ****** ****** *)
+
 #implfun
 s2var_get_name(s2v) =
 let
@@ -400,41 +415,32 @@ endloc (*local*) // end of [local(s2var)]
 
 (* ****** ****** *)
 #implfun
-s2var_make_sort
-  (   s2t   ) = let
-//
-val id0 =
-SRP_symbl in s2var_make_idst(id0, s2t)
-//
-end (*let*) // end-[s2var_make_sort(s2t)]
-(* ****** ****** *)
-#implfun
 s2exp_int(int) =
 let
 val s2t0 = the_sort2_int in
 s2exp_make_node(s2t0, S2Eint(int))
-end (*let*) // end of [ s2exp_int(int) ]
+end (*let*) // end of [s2exp_int(int)]
 (* ****** ****** *)
 #implfun
 s2exp_btf(btf) =
 let
 val s2t0 = the_sort2_bool in
 s2exp_make_node(s2t0, S2Ebtf(btf))
-end (*let*) // end of [ s2exp_btf(btf) ]
+end (*let*) // end of [s2exp_btf(btf)]
 (* ****** ****** *)
 #implfun
 s2exp_chr(chr) =
 let
 val s2t0 = the_sort2_char in
 s2exp_make_node(s2t0, S2Echr(chr))
-end (*let*) // end of [ s2exp_chr(chr) ]
+end (*let*) // end of [s2exp_chr(chr)]
 (* ****** ****** *)
 #implfun
 s2exp_str(str) =
 let
 val s2t0 = the_sort2_strn in
 s2exp_make_node(s2t0, S2Estr(str))
-end (*let*) // end of [ s2exp_chr(chr) ]
+end (*let*) // end of [s2exp_chr(chr)]
 (* ****** ****** *)
 //
 #implfun
@@ -442,7 +448,7 @@ s2exp_var(s2v0) =
 let
 val s2t0 = s2v0.sort() in
 s2exp_make_node(s2t0, S2Evar(s2v0))
-end (*let*) // end of [ s2exp_var(s2v0) ]
+end (*let*) // end of [s2exp_var(s2v0)]
 //
 (* ****** ****** *)
 //
@@ -451,7 +457,7 @@ s2exp_cst(s2c0) =
 let
 val s2t0 = s2c0.sort() in
 s2exp_make_node(s2t0, S2Ecst(s2c0))
-end (*let*) // end of [ s2exp_cst(s2c0) ]
+end (*let*) // end of [s2exp_cst(s2c0)]
 //
 (* ****** ****** *)
 //
@@ -472,7 +478,39 @@ list_nil() => s2exp_cst(s2c1)
 |
 list_cons _ =>
 s2exp(S2Tnone0(), S2Ecsts(s2cs)))
-) (*case+*) // end of [ s2exp_csts(s2cs) ]
+) (*case+*) // end of [s2exp_csts(s2cs)]
+//
+(* ****** ****** *)
+//
+#implfun
+s2exp_impr
+(loc0, s2e0) =
+let
+val
+s2t0 = the_sort2_type
+in
+s2exp
+(s2t0, S2Eimpr(loc0, s2e0))
+end (*let*)//end-of-[s2exp_impr]
+//
+#implfun
+s2exp_prgm
+(loc0, s2e0) =
+let
+val
+s2t0 = the_sort2_type
+in
+s2exp
+(s2t0, S2Eprgm(loc0, s2e0))
+end (*let*)//end-of-[s2exp_prgm]
+//
+(* ****** ****** *)
+//
+#implfun
+s2exp_cast
+(loc0, s2e1, s2t2) =
+s2exp
+(s2t2, S2Ecast(loc0, s2e1, s2t2))
 //
 (* ****** ****** *)
 //
@@ -1290,7 +1328,7 @@ if linq then (the_sort2_vwtp)
 T_TRCD20(3) => the_sort2_type
 | // $tup_t0(...)
 T_TRCD20(4) => the_sort2_vwtp
-) : sort2 // end of [val s2t2]
+) : sort2 // end of [val(s2t2)]
 //
 (*
 HX-2022-10-28:
@@ -1334,6 +1372,19 @@ end (*let*) // end of [s2exp_r2cd(loc0,...)]
 (* ****** ****** *)
 //
 #implfun
+s2exp_any1() =
+s2exp_anys( 1 )
+#implfun
+s2exp_anys(knd0) =
+s2exp
+(s2t0, S2Eany(knd0)) where
+{
+  val s2t0 = sort2_none0()
+} (*where*) // end of [s2exp_anys(...)]
+//
+(* ****** ****** *)
+//
+#implfun
 s2exp_none0() =
 s2exp
 (s2t0, S2Enone0()) where
@@ -1357,38 +1408,6 @@ in//let
 end (*let*) // end of [s2exp_none1(s1e0)]
 //
 (* ****** ****** *)
-//
-#implfun
-s2exp_impr
-(loc0, s2e0) =
-let
-val
-s2t0 = the_sort2_type
-in
-s2exp
-(s2t0, S2Eimpr(loc0, s2e0))
-end (*let*)//end-of-[s2exp_impr]
-//
-#implfun
-s2exp_prgm
-(loc0, s2e0) =
-let
-val
-s2t0 = the_sort2_type
-in
-s2exp
-(s2t0, S2Eprgm(loc0, s2e0))
-end (*let*)//end-of-[s2exp_prgm]
-//
-(* ****** ****** *)
-//
-#implfun
-s2exp_cast
-(loc0, s2e1, s2t2) =
-s2exp
-(s2t2, S2Ecast(loc0, s2e1, s2t2))
-//
-(* ****** ****** *)
 
 local
 //
@@ -1398,6 +1417,8 @@ S2EXP of (sort2,s2exp_node)
 #absimpl s2exp_tbox = s2exp
 //
 in//local
+//
+(* ****** ****** *)
 //
 #implfun
 s2exp_get_sort
@@ -1420,16 +1441,18 @@ end (*let*) // end of [s2exp_get_node]
 s2exp_make_node
 ( s2t0 , node ) = S2EXP(s2t0, node)
 //
+(* ****** ****** *)
+//
 endloc (*local*) // end of [local(s2exp)]
 //
 (* ****** ****** *)
 //
 #implfun
 l2s2e_get_sort
-(   lx   ) = s2exp_get_sort(lx.itm())
+  (   lx   ) = s2exp_get_sort(lx.itm())
 #implfun
 l2s2e_get_node
-(   lx   ) = s2exp_get_node(lx.itm())
+  (   lx   ) = s2exp_get_node(lx.itm())
 //
 (* ****** ****** *)
 

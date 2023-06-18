@@ -197,5 +197,11 @@ val
 DLR_EXTYPE_symbl: symbl //=symbl("$extype")
 //
 (* ****** ****** *)
+//
+fun
+symbl_wcard_kind
+( sym: symbl ) : sint // HX: true/false: -1|0+
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xsymbol.sats] *)

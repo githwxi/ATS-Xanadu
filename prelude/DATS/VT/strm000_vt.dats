@@ -1845,7 +1845,7 @@ auxmain
 : strm_vt(@(nint, a)) =
 $llazy
 (
-$free(xs);
+g_free(xs);
 case+ !xs of
 | ~
 strmcon_vt_nil
@@ -1876,7 +1876,7 @@ auxmain
 : strm_vt(@(nint, a)) =
 $llazy
 (
-$free(xs);
+g_free(xs);
 case+ !xs of
 | ~
 strxcon_vt_cons

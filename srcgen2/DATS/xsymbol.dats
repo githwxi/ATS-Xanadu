@@ -140,4 +140,33 @@ symbl_nilq(sym) = (sym = the_symbl_nil)
 symbl_neqz(sym) = (sym != the_symbl_nil)
 (* ****** ****** *)
 
+#implfun
+symbl_wcard_kind
+  (sym) =
+(
+  loop(cs, 0)) where
+{
+//
+val cs =
+strn_strmize(sym.name())
+//
+fun
+loop
+( cs
+: strm_vt(cgtz), r0: sint): sint =
+(
+case+ !cs of
+| ~
+strmcon_vt_nil() => r0
+| ~
+strmcon_vt_cons(c0, cs) =>
+if
+(c0 = '_') then
+loop(cs, r0+1) else (g_free(cs); -1)
+)
+//
+} (*where*) // end of [symbl_wcard_kind(sym)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_xsymbol.dats] *)
