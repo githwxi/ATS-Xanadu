@@ -771,6 +771,13 @@ f0_pvsload
 , "/prelude/INIT/srcgen2_xsetup0.sats")
 //
 (* ****** ****** *)
+val () =
+f0_pvsload
+(0(*sta*), "/prelude/SATS/gbas000.sats")
+val () =
+f0_pvsload
+(0(*sta*), "/prelude/SATS/gord000.sats")
+(* ****** ****** *)
 //
 val () =
 f0_pvsload

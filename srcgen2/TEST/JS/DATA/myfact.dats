@@ -38,4 +38,26 @@ else list_nil((*void*))//end(list_facts)
 
 (* ****** ****** *)
 
+fun
+list_facts
+(n0: sint): list(sint) =
+list_map
+(sint_listize(n0)) where
+{
+//
+fun
+sint_listize(n0) =
+if
+n0 <= 0
+then list_nil() else
+list_extend
+(sint_listize(n0-1), n0-1)
+//
+#typedef x0 = sint
+#typedef y0 = bool
+#impltmp
+map$fopr<x0><y0>(x0) = fact2(x0) }
+
+(* ****** ****** *)
+
 (* end of [DATA/myfact.dats] *)
