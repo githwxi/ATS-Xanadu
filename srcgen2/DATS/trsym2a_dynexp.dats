@@ -404,7 +404,13 @@ case- dpi1 of
 |
 D2PTMsome(pval, _) =>
   auxpmax(pval, d2ps))): sint
-}
+//
+(*
+val () =
+prerrln("f1_maxes: pmax = ", pmax)
+*)
+//
+} (*where*) // end of [f1_maxes(...)]
 //
 and
 auxpmax
@@ -420,7 +426,8 @@ list_cons(dpi1, dpis) =>
 case- dpi1 of
 |
 D2PTMsome(pval, _) =>
-auxpmax(max(pmax, pval), dpis)))
+auxpmax(max(pmax, pval), dpis))
+) (*case+*) // end of [auxpmax( ... )]
 //
 and
 auxtake
@@ -441,7 +448,7 @@ if
 (pval < pmax)
 then auxtake(pmax, dpis) else
 list_cons(dpi1, auxtake(pmax, dpis)))
-)
+) (*case+*) // end of [auxtake( ... )]
 //
 (* ****** ****** *)
 //
@@ -656,8 +663,10 @@ case- dpi1 of
 D2PTMsome(pval, _) =>
   auxpmax(pval, dpis))): sint
 //
+(*
 val () =
 prerrln("f1_maxes: pmax = ", pmax)
+*)
 //
 } (*where*) // end of [f1_maxes(...)]
 //
@@ -675,7 +684,7 @@ list_cons(dpi1, dpis) =>
 case- dpi1 of
 | D2PTMsome(pval, _) =>
   auxpmax(max(pmax, pval), dpis))
-) (*case+*) // end of [auxpmax( ... ) ]
+) (*case+*) // end of [auxpmax( ... )]
 //
 and
 auxtake
@@ -696,7 +705,7 @@ if
 (pval < pmax)
 then auxtake(pmax, dpis) else
 list_cons(dpi1, auxtake(pmax, dpis)))
-) (*case+*) // end of [auxtake( ... ) ]
+) (*case+*) // end of [auxtake( ... )]
 //
 (* ****** ****** *)
 //
