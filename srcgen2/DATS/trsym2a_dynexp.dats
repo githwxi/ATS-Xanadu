@@ -423,8 +423,8 @@ case- dpi1 of
 D2PTMsome(pval, d2i1) =>
 if
 (pval < pmax)
-then auxtake(pmax, dpis)
-else list_cons(dpi1, auxtake(pmax, dpis)))
+then auxtake(pmax, dpis) else
+list_cons(dpi1, auxtake(pmax, dpis)))
 )
 //
 (* ****** ****** *)
@@ -608,7 +608,7 @@ list_nil() =>
 list_nil(*void*)
 |
 list_cons _ =>
-f1_maxes(dpis)): d2ptmlst }
+f1_maxes( dpis )):d2ptmlst }
 //
 in//let
   d2rxp_set_dexp(drxp, dsym)
