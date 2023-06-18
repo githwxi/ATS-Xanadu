@@ -148,6 +148,29 @@ end (*let*) // end of [d2ecl_include_errck]
 //
 (* ****** ****** *)
 //
+(*
+fun
+d2ecl_staload_errck
+( loc0: loc_t
+, knd0: sint
+, tknd: token
+, g1e1: g1exp
+, fopt: fpathopt
+, dopt: s2taloadopt): d2ecl =
+let
+val lvl = 0
+in//let
+d2ecl_errck
+(
+lvl+1,
+d2ecl_make_node
+( loc0
+, D2Cstaload(knd0,tknd,g1e1,fopt,dopt)))
+end (*let*) // end of [d2ecl_staload_errck]
+*)
+//
+(* ****** ****** *)
+//
 fun
 d2ecl_valdclst_errck
 ( loc0
@@ -265,10 +288,8 @@ D2Clocal0 _ => f0_local0(d2cl, err)
 //
 |
 D2Cinclude _ => f0_include(d2cl, err)
-(*
 |
 D2Cstaload _ => f0_staload(d2cl, err)
-*)
 //
 |
 D2Cvaldclst _ => f0_valdclst(d2cl, err)
@@ -374,9 +395,7 @@ f0_include
 let
 //
 val e00 = err
-(*
 val loc = dcl.lctn()
-*)
 //
 val-
 D2Cinclude
@@ -403,8 +422,29 @@ if
 (err=e00)
 then (dcl) else
 d2ecl_include_errck
-( dcl.lctn(), knd0,tknd,gsrc,fopt,dopt )
+( loc, knd0, tknd, gsrc, fopt, dopt )
 end (*let*) // end of [f0_include(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_staload
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+(*
+HX-2023-06-21:
+Staloads are shared and
+Checking for them is done elsewhere
+*)
+//
+val-
+D2Cstaload
+( knd0
+, tknd, gsrc
+, fopt, dopt) = dcl.node() in ( dcl )
+end (*let*) // end of [f0_staload(dcl,err)]
 //
 (* ****** ****** *)
 //
