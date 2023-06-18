@@ -1,4 +1,4 @@
-(***********************************************************************)
+***********************************************************************)
 (*                                                                     *)
 (*                         Applied Type System                         *)
 (*                                                                     *)
@@ -202,6 +202,8 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 #typedef d3explstopt = optn(d3explst)
 #typedef d3eclistopt = optn(d3eclist)
+(* ****** ****** *)
+#typedef s2taloadopt = $D2E.s2taloadopt
 (* ****** ****** *)
 //
 datatype
@@ -582,6 +584,13 @@ d3ecl_node =
 , g1exp // src
 , fpathopt
 , d3eclistopt) // inclusion
+//
+|D3Cstaload of
+( sint(*s/d*)
+, token
+, g1exp // src
+, fpathopt
+, s2taloadopt) // staloading
 //
 |
 D3Cvaldclst of

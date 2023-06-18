@@ -261,10 +261,8 @@ D3Clocal0 _ => f0_local0(d3cl, err)
 //
 |
 D3Cinclude _ => f0_include(d3cl, err)
-(*
 |
 D3Cstaload _ => f0_staload(d3cl, err)
-*)
 //
 |
 D3Cvaldclst _ => f0_valdclst(d3cl, err)
@@ -360,6 +358,7 @@ d3ecl_local0_errck( loc, dcs1, dcs2 )
 end (*let*) // end of [ f0_local0(dcl,err) ]
 //
 (* ****** ****** *)
+//
 fun
 f0_include
 ( dcl: d3ecl
@@ -398,6 +397,27 @@ then (dcl) else
 d3ecl_include_errck
 ( dcl.lctn(), knd0,tknd,gsrc,fopt,dopt )
 end (*let*) // end of [f0_include(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_staload
+( dcl: d3ecl
+, err: &sint >> _): d3ecl =
+let
+//
+(*
+HX-2023-06-21:
+Staloads are shared and
+Checking for them is done elsewhere
+*)
+//
+val-
+D3Cstaload
+( knd0
+, tknd, gsrc
+, fopt, dopt) = dcl.node() in ( dcl )
+end (*let*) // end of [f0_staload(dcl,err)]
 //
 (* ****** ****** *)
 //

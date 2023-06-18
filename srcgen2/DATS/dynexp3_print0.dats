@@ -412,6 +412,15 @@ print
 (knd0,";",tknd,";",gsrc,";",fopt,")"))
 //
 |
+D3Cstaload
+( knd0, tknd
+, gsrc, fopt, dopt ) =>
+(
+print("D3Cstaload(");
+print
+(knd0,";",tknd,";",gsrc,";",fopt,")"))
+//
+|
 D3Cvaldclst
 (  tknd, d3vs  ) =>
 print("D3Cvaldclst(",tknd,";",d3vs,")")
