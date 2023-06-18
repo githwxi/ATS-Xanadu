@@ -143,6 +143,23 @@ _(*TRANS12*) = "./trans12.dats"
 #symload name with s2var_get_name
 (* ****** ****** *)
 //
+//
+fun
+fint_rep_bas
+( rep
+: strn
+, bas
+: sint): sint =
+gseq_foldl
+<strn><cgtz><sint>(rep, 0) where
+{
+#impltmp
+foldl$fopr
+<cgtz><sint>(r0, c0) = r0*bas+(c0-'0')
+}
+//
+(* ****** ****** *)
+//
 fun
 sort2_ofknd
 (knd0: sint): sort2 =
@@ -1526,7 +1543,36 @@ end where
 {
 //
 fun
-f1_pval(gopt: g1expopt): sint = 0 // FIXME!
+f1_pval
+(gopt: g1expopt): sint =
+(
+case+ gopt of
+|optn_nil
+ ((*void*)) => 0 // default
+|optn_cons(gexp) =>
+(
+case+ gexp of
+|G1Eint(tint) =>
+(
+prerrln
+("f1_pval: tint = ", tint);
+case-
+tint.node() of
+| T_INT01(rep) =>
+  fint_rep_bas(rep, 10)
+| T_INT02(bas, rep) =>
+  fint_rep_bas(rep, bas)
+| T_INT03(bas, rep, _) =>
+  fint_rep_bas(rep, bas) )
+|_(*non-G1Eint*) => ( -1 ) // HX:error
+)
+) where
+{
+// (*
+val () = prerrln
+("f0_symload: f1_pval: gopt = ", gopt)
+// *)
+} (*where*) // end of [ f1_pval(gopt) ]
 //
 } (*where*) // end of [f0_symload(env0,d1cl)]
 //

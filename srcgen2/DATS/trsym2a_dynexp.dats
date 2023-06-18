@@ -152,8 +152,15 @@ end
 end (*let*) // end of [f0_else(...)]
 //
 (* ****** ****** *)
+val () =
+prerrln("d2pat_make_dpis: loc0 = ", loc0)
+val () =
+prerrln("d2pat_make_dpis: d1p0 = ", d1p0)
+val () =
+prerrln("d2pat_make_dpis: dpis = ", dpis)
+(* ****** ****** *)
 //
-} (*where*) // end of [d2pat_make_dpis]
+} (*where*) // end of [d2pat_make_dpis(...)]
 //
 (* ****** ****** *)
 //
@@ -169,10 +176,12 @@ d2exp_make_dpis
 (
 case+ dpis of
 |
-list_nil() =>
+list_nil
+((*void*)) =>
 f0_else(loc0, dpis, t2p1)
 |
-list_cons(dpi1, dps2) =>
+list_cons
+(dpi1, dps2) =>
 (
 case+ dps2 of
 |list_nil() =>
@@ -248,8 +257,15 @@ end
 end (*let*) // end of [f0_else(...)]
 //
 (* ****** ****** *)
+val () =
+prerrln("d2exp_make_dpis: loc0 = ", loc0)
+val () =
+prerrln("d2exp_make_dpis: d1e0 = ", d1e0)
+val () =
+prerrln("d2exp_make_dpis: dpis = ", dpis)
+(* ****** ****** *)
 //
-} (*where*) // end of [d2exp_make_dpis]
+} (*where*) // end of [d2exp_make_dpis(...)]
 //
 (* ****** ****** *)
 //
@@ -357,7 +373,7 @@ list_nil() =>
 list_nil(*void*)
 |
 list_cons _ =>
-f1_maxes(dpis)): d2ptmlst }
+f1_maxes( dpis )):d2ptmlst }
 //
 in//let
   d2rpt_set_dpat(drpt, dsym)
@@ -639,7 +655,11 @@ case- dpi1 of
 |
 D2PTMsome(pval, _) =>
   auxpmax(pval, dpis))): sint
-}
+//
+val () =
+prerrln("f1_maxes: pmax = ", pmax)
+//
+} (*where*) // end of [f1_maxes(...)]
 //
 and
 auxpmax
@@ -653,9 +673,9 @@ list_nil() => pmax
 list_cons(dpi1, dpis) =>
 (
 case- dpi1 of
-|
-D2PTMsome(pval, _) =>
-auxpmax(max(pmax, pval), dpis)))
+| D2PTMsome(pval, _) =>
+  auxpmax(max(pmax, pval), dpis))
+) (*case+*) // end of [auxpmax( ... ) ]
 //
 and
 auxtake
@@ -674,9 +694,9 @@ case- dpi1 of
 D2PTMsome(pval, d2i1) =>
 if
 (pval < pmax)
-then auxtake(pmax, dpis)
-else list_cons(dpi1, auxtake(pmax, dpis)))
-)
+then auxtake(pmax, dpis) else
+list_cons(dpi1, auxtake(pmax, dpis)))
+) (*case+*) // end of [auxtake( ... ) ]
 //
 (* ****** ****** *)
 //
