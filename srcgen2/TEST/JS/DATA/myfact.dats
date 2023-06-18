@@ -1,18 +1,22 @@
 (* ****** ****** *)
+val btf = 0 > 1
+(* ****** ****** *)
+////
+(* ****** ****** *)
 (*
 HX-2023-06-12:
 [fact1] is defined:
 *)
 #include "./myfact.hats"
 (* ****** ****** *)
-
+//
 (*
 val fact2 = fact1
 *)
 fun
 fact2(x: sint): sint =
 if x > 0 then x * fact1(x-1) else 1
-
+//
 (* ****** ****** *)
 
 fun
@@ -54,7 +58,7 @@ list_extend
 (sint_listize(n0-1), n0-1)
 //
 #typedef x0 = sint
-#typedef y0 = bool
+#typedef y0 = sint
 #impltmp
 map$fopr<x0><y0>(x0) = fact2(x0) }
 

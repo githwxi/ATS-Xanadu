@@ -518,8 +518,32 @@ val () =
   d3fundclist_fpemsg(out, d3fs)
 endlet // end-of-(D3Cfundclst(_,_,_))
 //
+|
+D3Cimplmnt0
+( tknd
+, sqas, tqas
+, dimp, tias
+, f3as, sres, d3e1) =>
+let
+(*
+val () =
+  s2qaglst_fpemsg(out, sqas)
+val () =
+  t2qaglst_fpemsg(out, tqas)
+val () =
+  t2iaglst_fpemsg(out, tias)
+*)
+val () =
+  f3arglst_fpemsg(out, f3as)
+(*
+val () = s2res_fpemsg(out, sres)
+*)
+val () = d3exp_fpemsg(out, d3e1)
+endlet // end of [ D3Cimplmnt0(...) ]
+//
 | D3Cnone0() => ( (*void*) )
 | D3Cnone1(d2cl) => ( (*void*) )
+//
 |
 D3Cerrck(_,_) => d3ecl_fpemsg(out, dcl)
 //
@@ -557,7 +581,7 @@ let
 val loc0 = dcl0.lctn() in
 println
 ("TREAD23-ERROR:",loc0,":",dcl0)
-end
+end(*let*)
 )
 //
 | _(* otherwise *) => (   (*skipped*)   )
