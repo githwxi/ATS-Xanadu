@@ -1551,7 +1551,8 @@ case+ gopt of
  ((*void*)) => 0 // default
 |optn_cons(gexp) =>
 (
-case+ gexp of
+case+
+gexp.node() of
 |G1Eint(tint) =>
 (
 prerrln
