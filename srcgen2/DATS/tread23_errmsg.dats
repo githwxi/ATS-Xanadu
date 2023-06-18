@@ -494,6 +494,11 @@ endlet
 ) (*case+*)//end-(D3Cinclude(...))
 //
 |
+D3Cstaload
+(knd0,tknd
+,g1e1,fopt,dopt) => ((*void*))
+//
+|
 D3Cvaldclst
 (tknd, d3vs) => let
 val () =

@@ -160,10 +160,8 @@ D2Cabsimpl _ => f0_absimpl(env0, d2cl)
 //
 |
 D2Cinclude _ => f0_include(env0, d2cl)
-(*
 |
 D2Cstaload _ => f0_staload(env0, d2cl)
-*)
 //
 |
 D2Cvaldclst _ => f0_valdclst(env0, d2cl)
@@ -324,6 +322,21 @@ d2ecl_make_node
  D2Cinclude
  (knd0, tknd, gsrc, fopt, dopt))
 end (*let*) // end of [f0_include(...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_staload
+( env0:
+! tr2aenv
+, d2cl: d2ecl): d2ecl =
+let
+val-
+D2Cstaload
+( knd0
+, tknd, gsrc
+, fopt, dopt) = d2cl.node() in d2cl
+end (*let*) // end of [f0_staload(...)]
 //
 (* ****** ****** *)
 //

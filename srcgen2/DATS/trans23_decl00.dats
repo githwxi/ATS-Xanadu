@@ -145,6 +145,8 @@ d3ecl_make_node
 //
 |
 D2Cinclude _ => f0_include(env0, d2cl)
+|
+D2Cstaload _ => f0_staload(env0, d2cl)
 //
 |
 D2Cvaldclst _ => f0_valdclst(env0, d2cl)
@@ -265,6 +267,28 @@ d3ecl_make_node
  D3Cinclude
  (knd0, tknd, gsrc, fopt, dopt))
 end (*let*) // end of [f0_include(...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_staload
+( env0:
+! tr23env
+, d2cl: d2ecl): d3ecl =
+let
+val
+loc0 = d2cl.lctn()
+val-
+D2Cstaload
+( knd0
+, tknd, gsrc
+, fopt, dopt) = d2cl.node()
+in//let
+d3ecl_make_node
+(loc0,
+ D3Cstaload
+ (knd0, tknd, gsrc, fopt, dopt))
+end (*let*) // end of [f0_staload(...)]
 //
 (* ****** ****** *)
 //
