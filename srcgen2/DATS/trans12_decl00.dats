@@ -540,13 +540,14 @@ the_d2parenv_pvsadd0(fnm2, dpar) }
 end//let//end-of-[ optn_vt_nil() ]
 //
 | ~
-optn_vt_cons(dpar) => @(1(*shared*),dpar)
+optn_vt_cons(dpar) => @(1(*shr*),dpar)
 //
 end where
 {
 (*
-val () =
-prerrln("s2taload_from_fpath: dpar = ", dpar)
+  val () =
+  prerrln
+  ("s2taload_from_fpath: dpar = ", dpar)
 *)
 }(*where*)//end-of-[s2taload_from_fpath(...)]
 //
@@ -2131,14 +2132,14 @@ trans12_d1pid(env0,dpid) end
 //
 (*
 val () =
-prerrln
-("f0_fundclst:tknd = ", tknd)
+prerrln(
+"f0_fundclst: tknd = ", tknd)
 val () =
-prerrln
-("f0_fundclst:recq = ", recq)
+prerrln(
+"f0_fundclst: recq = ", recq)
 val () =
-prerrln
-("f0_fundclst:d2vs = ", d2vs)
+prerrln(
+"f0_fundclst: d2vs = ", d2vs)
 *)
 //
 val (  ) =
@@ -2163,6 +2164,18 @@ val (  ) =
 if
 not(recq)
 then tr12env_add0_d2vs(env0, d2vs)
+//
+val d2cs =
+list_map(d2vs) where
+{
+#impltmp
+map$fopr
+< d2var >
+< d2cst >(x0) = d2cst_make_dvar(x0)
+}
+//
+val () =
+prerrln("f0_fundclst: d2cs = ", d2cs)
 //
 in//let
 d2ecl(loc0, D2Cfundclst(tknd, tqas, d2fs))

@@ -465,6 +465,15 @@ val
 dopt =
 tr12env_find_d2itm(env0,sym1)
 //
+(*
+val () =
+prerrln(
+"f0_id0_d1pid: d1p0 = ", d1p0)
+val () =
+prerrln(
+"f0_id0_d1pid: dopt = ", dopt)
+*)
+//
 in//let
 case+ dopt of
 | ~
@@ -1482,6 +1491,15 @@ D1Eid0(sym1) = d1e0.node()
 val
 dopt =
 tr12env_find_d2itm(env0,sym1)
+//
+(*
+val () =
+prerrln(
+"f0_id0_d1eid: d1e0 = ", d1e0)
+val () =
+prerrln(
+"f0_id0_d1eid: dopt = ", dopt)
+*)
 //
 in//let
 case+ dopt of

@@ -204,9 +204,10 @@ name[n0-3] != 'a'
 ) then false else
 (
 if
-(name[n0-2] != 't')
-then
-false else (name[n0-1] != 's'))
+(
+name[n0-2] != 't'
+) then false else
+(name[n0-1] = 's'))
 )
 //
 in//let
@@ -215,7 +216,9 @@ n0 <= 4
 then -1 else
 (
 if
-name[n0-5] != '.' then -1 else
+(
+name[n0-5] != '.'
+) then (-1) else
 (
 let
 val c4 = name[n0-4]

@@ -59,12 +59,18 @@ list_extend
 map$fopr<x0><y0>(x0) = fact2(x0) }
 
 (* ****** ****** *)
-
-fun
+//
+fun<>
 fact4(x: nint) = 
 (
-case+ x of 0 => 1 | _ => x * fact4(x-1)
-)
+case+ x of
+  | 0 => 1 | _ => x * fact4(x-1) )
+//
+(* ****** ****** *)
+
+fun
+fact5(x: nint) =
+if x > 0 then x * fact4(x-1) else 1
 
 (* ****** ****** *)
 

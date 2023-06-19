@@ -345,6 +345,17 @@ if
 knd1 < 0 then 0 else knd1
 end // end of [ val(knd1) ]
 //
+(*
+val (  ) =
+prerrln(
+"s1taload_from_fpath:\
+ knd1 = ", knd1 (*stadyn*)  )
+val (  ) =
+prerrln(
+"s1taload_from_fpath:\
+ fnm1 = ", fnm1 (*fname1*)  )
+*)
+//
 val
 dpar =
 d0parsed_from_fpath(knd1, fnm1)
@@ -362,13 +373,17 @@ val (  ) =
 the_d1parenv_pvsadd0(fnm2, dpar) }
 end//let//end-of-[ optn_vt_nil() ]
 //
-| ~optn_vt_cons(dpar) => @(1(*shared*),dpar)
+| ~
+optn_vt_cons(dpar) => @(1(*shr*),dpar)
 //
 end where
 {
 //
-val () =
-prerrln("s1taload_from_fpath: fpth = ", fpth)
+(*
+  val () =
+  prerrln
+  ("s1taload_from_fpath: fpth = ", fpth)
+*)
 //
 }(*where*)//end-of-[s1taload_from_fpath(fpth)]
 //
