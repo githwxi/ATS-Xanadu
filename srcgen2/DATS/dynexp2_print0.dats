@@ -657,57 +657,68 @@ in//let
 case+
 dcl0.node() of
 //
-|D2Cd1ecl(d1cl) =>
+|D2Cd1ecl
+(  d1cl  ) =>
 print("D2Cd1ecl(",d1cl,")")
 //
 |
-D2Cstatic(tknd,dcl1) =>
+D2Cstatic
+( tknd , dcl1 ) =>
 print("D2Cstatic(",tknd,";",dcl1,")")
 |
-D2Cextern(tknd,dcl1) =>
+D2Cextern
+( tknd , dcl1 ) =>
 print("D2Cextern(",tknd,";",dcl1,")")
 //
 |
-D2Clocal0(head, body) =>
+D2Clocal0
+( head , body ) =>
 print( "D2Clocal(",head,";",body,")" )
 //
-|D2Cabssort(tid0) =>
+|
+D2Cabssort
+(  tid0  ) =>
 print("D2Cabssort(",tid0,")")
 //
 |
-D2Cstacst0(s2c1,s2t2) =>
+D2Cstacst0
+( s2c1 , s2t2 ) =>
 print("D2Cstacst0(",s2c1,";",s2t2,")")
 //
 |
-D2Csortdef(tid1,s2tx) =>
+D2Csortdef
+( tid1 , s2tx ) =>
 print("D2Csortdef(",tid1,";",s2tx,")")
 //
 |
-D2Csexpdef(s2c1,s2e2) =>
+D2Csexpdef
+( s2c1 , s2e2 ) =>
 print("D2Csexpdef(",s2c1,";",s2e2,")")
 //
 |
-D2Cabstype(s2c1,atdf) =>
+D2Cabstype
+( s2c1 , atdf ) =>
 print("D2Cabstype(",s2c1,";",atdf,")")
 |
-D2Cabsopen(tknd,simp) =>
+D2Cabsopen
+( tknd , simp ) =>
 print("D2Cabsopen(",tknd,";",simp,")")
 |
 D2Cabsimpl
-( tknd , simp , sdef) =>
+(tknd,simp,sdef) =>
 ( print("D2Cabsimpl(")
 ; print( tknd,";", simp,";",sdef,")"))
 //
 |
 D2Csymload
-( tknd , sym0 , dptm) =>
+(tknd,sym0,dptm) =>
 ( print("D2Csymload(")
 ; print( tknd,";",sym0,";",dptm,")" ))
 //
 |
 D2Cinclude
-( knd0, tknd
-, gsrc, fopt, dopt ) =>
+(knd0,tknd
+,gsrc,fopt,dopt) =>
 (
 print("D2Cinclude(");
 print
@@ -715,30 +726,34 @@ print
 //
 |
 D2Cstaload
-( knd0, tknd
-, gsrc, fopt, dopt ) =>
+(knd0,tknd
+,gsrc,fopt,dopt) =>
 (
 print("D2Cstaload(");
 print
 (knd0,";",tknd,";",gsrc,";",fopt,")"))
 //
 |
-D2Cdatasort(d1cl,s2cs) =>
+D2Cdatasort
+( d1cl , s2cs ) =>
 print("D2Cdatasort(",d1cl,";",s2cs,")")
 //
 |
 D2Cvaldclst
-(  tknd, d2vs  ) =>
+( tknd , d2vs ) =>
 print("D2Cvaldclst(",tknd,";",d2vs,")")
 |
 D2Cvardclst
-(  tknd, d2vs  ) =>
+( tknd , d2vs ) =>
 print("D2Cvardclst(",tknd,";",d2vs,")")
 //
 |
 D2Cfundclst
-(tknd,tqas,d2fs) =>
-print("D2Cfundclst(",tknd,";",tqas,";",d2fs,")")
+(tknd
+,tqas,d2cs,d2fs) =>
+(
+print("D2Cfundclst(");
+print(tknd,";",tqas,";",d2cs,";",d2fs,")"))
 //
 |
 D2Cimplmnt0
@@ -764,10 +779,12 @@ print(dqid,";",tias,";",farg,";",sres,";",body,")"))
 *)
 //
 |
-D2Cexcptcon(d1cl,d2cs) =>
+D2Cexcptcon
+( d1cl , d2cs ) =>
 print("D2Cexcptcon(",d1cl,";",d2cs,")")
 |
-D2Cdatatype(d1cl,s2cs) =>
+D2Cdatatype
+( d1cl , s2cs ) =>
 print("D2Cdatatype(",d1cl,";",s2cs,")")
 //
 |

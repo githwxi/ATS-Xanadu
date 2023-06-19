@@ -971,7 +971,8 @@ endlet // end-of-(D2Cvardclst(_,_,_))
 |
 D2Cfundclst
 ( tknd
-, tqas, d2fs) => let
+, tqas
+, d2cs, d2fs) => let
 val () =
   t2qaglst_fpemsg(out, tqas)
 val () =

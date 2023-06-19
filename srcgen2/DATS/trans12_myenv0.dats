@@ -1952,6 +1952,22 @@ foreach$work_e1nv
 (* ****** ****** *)
 //
 #implfun
+tr12env_add1_d2cstlst
+  (env0, d2cs) =
+(
+list_foreach_e1nv
+<   x0  ><  e1   >(d2cs, env0)) where
+{
+#typedef x0 = d2cst
+#vwtpdef e1 = tr12env
+#impltmp
+foreach$work_e1nv
+< x0 ><e1>(x0, e1) = tr12env_add1_d2cst(e1, x0)
+} (*where*)//end(tr12env_add0_d2cstlst(env0,...))
+//
+(* ****** ****** *)
+//
+#implfun
 tr12env_add0_d2varlst
   (env0, d2vs) =
 (

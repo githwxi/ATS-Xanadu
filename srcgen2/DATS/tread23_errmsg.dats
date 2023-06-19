@@ -514,7 +514,8 @@ endlet // end-of-(D3Cvardclst(_,_,_))
 |
 D3Cfundclst
 ( tknd
-, tqas, d3fs) => let
+, tqas
+, d2cs, d3fs) => let
 (*
 val () =
   t2qaglst_fpemsg(out, tqas)

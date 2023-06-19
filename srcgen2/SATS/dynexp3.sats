@@ -1,4 +1,4 @@
-***********************************************************************)
+(***********************************************************************)
 (*                                                                     *)
 (*                         Applied Type System                         *)
 (*                                                                     *)
@@ -172,7 +172,11 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 #typedef t2jaglst = list(t2jag)
 (* ****** ****** *)
+#typedef d2conlst = list(d2con)
+#typedef d2cstlst = list(d2cst)
+(* ****** ****** *)
 #typedef d2varopt = optn(d2var)
+#typedef d2varlst = list(d2var)
 (* ****** ****** *)
 #typedef d3patlst = list(d3pat)
 #typedef d3patopt = optn(d3pat)
@@ -594,13 +598,14 @@ d3ecl_node =
 //
 |
 D3Cvaldclst of
-(token(*VAL(vlk)*),d3valdclist )
+(token(*VAL(vlk)*), d3valdclist)
 |
 D3Cvardclst of
 (token(*VAR(vrk)*), d3vardclist)
 |
 D3Cfundclst of
-(token(*FUN(fnk)*), t2qaglst, d3fundclist)
+( token(*FUN(fnk)*)
+, t2qaglst, d2cstlst, d3fundclist)
 //
 |
 D3Cimplmnt0 of

@@ -431,8 +431,11 @@ print("D3Cvardclst(",tknd,";",d3vs,")")
 //
 |
 D3Cfundclst
-(tknd,tqas,d3fs) =>
-print("D3Cfundclst(",tknd,";",tqas,";",d3fs,")")
+(tknd
+,tqas,d2cs,d3fs) =>
+(
+print("D3Cfundclst(");
+print(tknd,";",tqas,";",d2cs,";",d3fs,")"))
 //
 |
 D3Cimplmnt0

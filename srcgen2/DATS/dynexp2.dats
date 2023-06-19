@@ -73,6 +73,11 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload node with s2exp_get_node
 (* ****** ****** *)
+#symload lctn with d2var_get_lctn
+#symload name with d2var_get_name
+#symload styp with d2var_get_styp
+#symload sexp with d2var_get_sexp
+(* ****** ****** *)
 #symload lctn with d2pat_get_lctn
 #symload lctn with d2exp_get_lctn
 (* ****** ****** *)
@@ -799,6 +804,34 @@ D2CST
 (* ****** ****** *)
 //
 #implfun
+d2cst_make_dvar
+( d2v0 , tqas ) =
+let
+//
+val loc0 = d2v0.lctn()
+val tknd = T_EOF((*void*))
+val sym0 = d2v0.name((*0*))
+val t2p0 = d2v0.styp((*0*))
+val sexp = d2v0.sexp((*0*))
+val stmp = the_d2cst_stamp_new()
+//
+val xt2p =
+(
+s2typ_subst0(t2p0, svts)) where
+{
+val svts =
+s2vts_make_lctn_tqas(loc0, tqas)}
+//
+in//let
+D2CST
+( loc0
+, sym0
+, tknd, tqas, sexp, stmp, t2p0, xt2p)
+end (*let*) // end of [d2cst_make_dvar]
+//
+(* ****** ****** *)
+//
+#implfun
 d2cst_make_idtp
 (tok0,tqas,sexp) =
 let
@@ -882,6 +915,17 @@ D2VAR
 ,stmp,t2p0) = d2v0 in sym0 end
 //
 #implfun
+d2var_get_sexp
+  (  d2v0  ) =
+let
+val+
+D2VAR
+(loc0
+,sym0
+,tqas,s2e0
+,stmp,t2p0) = d2v0 in s2e0 end
+//
+#implfun
 d2var_get_styp
   (  d2v0  ) =
 let
@@ -902,6 +946,25 @@ D2VAR
 ,sym0
 ,tqas,s2e0
 ,stmp,t2p0) = d2v0 in stmp end
+//
+(* ****** ****** *)
+//
+#implfun
+d2var_set_sexp
+( d2v0, s2e0 ) =
+let
+val
+d2v0 =
+$UN.castlin10{d2var_vt}(d2v0)
+val+
+@D2VAR_vt
+( loc0,
+  sym0,
+  tqas,
+! sexp,
+  stmp,
+  t2p0 ) = d2v0 in sexp := s2e0
+end (*let*) // end of [d2var_set_sexp]
 //
 (* ****** ****** *)
 //
