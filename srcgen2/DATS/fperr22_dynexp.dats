@@ -322,6 +322,16 @@ let
 endlet
 //
 |
+D2Eseqn
+(d2es, d2e1) =>
+(
+fperr22_d2exp
+( out , d2e1 )) where
+{
+val () =
+fperr22_d2explst(out, d2es) }
+//
+|
 D2Etup0
 (npf1, d2es) =>
 let
