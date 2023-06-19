@@ -301,10 +301,10 @@ case+ opt of
 | !
 optn_vt_cons _ => opt
 | ~
-optn_vt_nil( ) => the_sortenv_pvsfind(k0)
-end (*let*)//end-of-[opt_vt_nil()]
+optn_vt_nil((*0*))=>the_sortenv_pvsfind(k0)
+endlet//end-of-[opt_vt_nil()]
 //
-end (*let*)//end-of-[sortenv_search_opt(tenv,k0)]
+endlet//end-of-[sortenv_search_opt(tenv,k0)]
 
 (* ****** ****** *)
 //
@@ -317,6 +317,15 @@ sortenv_insert_any
 val+
 @SORTENV
 (topmap, !stkmap) = tenv
+//
+(*
+val () =
+prerrln
+("sortenv_insert_any: k0 = ", k0)
+val () =
+prerrln
+("sortenv_insert_any: x0 = ", x0)
+*)
 //
 in//let
 //
@@ -548,10 +557,10 @@ case+ opt of
 | !
 optn_vt_cons _ => opt
 | ~
-optn_vt_nil( ) => the_sexpenv_pvsfind(k0)
-end (*let*)//end-of-[opt_vt_nil()]
+optn_vt_nil((*0*))=>the_sexpenv_pvsfind(k0)
+endlet//end-of-[opt_vt_nil()]
 //
-end (*let*)//end-of-[sexpenv_search_opt(senv,k0)]
+endlet//end-of-[sexpenv_search_opt(senv,k0)]
 
 (* ****** ****** *)
 //
@@ -564,6 +573,15 @@ sexpenv_insert_any
 val+
 @SEXPENV
 (topmap, !stkmap) = senv
+//
+(*
+val () =
+prerrln
+("sexpenv_insert_any: k0 = ", k0)
+val () =
+prerrln
+("sexpenv_insert_any: x0 = ", x0)
+*)
 //
 in//let
 //
@@ -762,7 +780,7 @@ stkmap_nilq(stkmap)
 then topmap_insert_kxs(topmap, kxs)
 else stkmap_insert_kxs(stkmap, kxs) }
 //
-end (*let*)//end-of-(dexpenv_locjoin(denv))
+endlet//end-of-(dexpenv_locjoin(denv))
 //
 (* ****** ****** *)
 
@@ -787,7 +805,8 @@ optn_vt_cons _ => opt
 optn_vt_nil( ) =>
 topmap_search_opt(topmap, k0)
 //
-end (*let*)//end-of-[dexpenv_search_opt(denv,k0)]
+endlet
+//end-of-[dexpenv_search_opt(denv,k0)]
 
 (* ****** ****** *)
 //
@@ -801,6 +820,15 @@ val+
 @DEXPENV
 (topmap, !stkmap) = denv
 //
+(*
+val () =
+prerrln
+("dexpenv_insert_any: k0 = ", k0)
+val () =
+prerrln
+("dexpenv_insert_any: x0 = ", x0)
+*)
+//
 in//let
 //
 if
@@ -810,7 +838,8 @@ topmap_insert_any(topmap, k0, x0)//top
 else
 stkmap_insert_any(stkmap, k0, x0)//inner
 //
-end (*let*)//end-of(dexpenv_insert_any(denv,k0,x0))
+endlet
+//end-of(dexpenv_insert_any(denv,k0,x0))
 //
 (* ****** ****** *)
 

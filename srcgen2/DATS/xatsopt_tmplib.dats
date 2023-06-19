@@ -1474,6 +1474,23 @@ end (*let*) // end of [g_print<s2typ>(t2p0)]
 //
 (* ****** ****** *)
 //
+// (*
+#impltmp
+g_print<d2var>(d2v0) =
+let
+//
+val out = g_print$out<>()
+//
+#symload styp with d2var_get_styp
+//
+in//let
+  strn_fprint(out, "("); d2var_fprint(out, d2v0)
+; strn_fprint(out, ":"); s2typ_fprint(out, d2v0.styp()); strn_fprint(out, ")")
+end (*let*) // end of [g_print<d2var>(d2v0)]
+// *)
+//
+(* ****** ****** *)
+//
 (*
 #impltmp
 g_print<d2pat>(d2p0) =
