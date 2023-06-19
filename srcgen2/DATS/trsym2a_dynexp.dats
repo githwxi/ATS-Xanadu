@@ -541,15 +541,6 @@ where
 { val () =
   trsym2a_d2eclist(env0, dcls) }
 |
-D2Ewhere
-(d2e1, dcls) =>
-(
-trsym2a_d2exp(env0, d2e1))
-where
-{ val () =
-  trsym2a_d2eclist(env0, dcls) }
-//
-|
 D2Eift0
 (d2e1,dthn,dels) =>
 let
@@ -568,6 +559,33 @@ val () =
 trsym2a_d2exp(env0, d2e1)
 val () =
 trsym2a_d2clslst(env0, d2cs) end
+//
+|
+D2Eseqn
+(d2es, d2e1) =>
+(
+trsym2a_d2exp(env0, d2e1))
+where
+{ val () =
+  trsym2a_d2explst(env0, d2es) }
+//
+|
+D2Ewhere
+(d2e1, dcls) =>
+(
+trsym2a_d2exp(env0, d2e1))
+where
+{ val () =
+  trsym2a_d2eclist(env0, dcls) }
+//
+|
+D2Eassgn
+(d2el, d2er) =>
+let
+val () =
+trsym2a_d2exp(env0, d2el)
+val () =
+trsym2a_d2exp(env0, d2er) endlet
 //
 |
 D2Et2pck _ => f0_t2pck(env0, d2e0)
