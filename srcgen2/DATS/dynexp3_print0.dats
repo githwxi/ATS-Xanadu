@@ -251,6 +251,11 @@ D3Ecas0
 ( print("D3Ecas0(");
   print(tknd,";",d3e1,";",d3cs,")"))
 //
+|D3Eseqn
+(d3es, d3e1) =>
+(
+print("D3Eseqn(",d3es,";",d3e1,")"))
+//
 |D3Etup0
 (npf1, d3es) =>
 (

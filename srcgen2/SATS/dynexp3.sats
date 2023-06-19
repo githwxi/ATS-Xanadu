@@ -498,6 +498,10 @@ D3Eift0 of
 D3Ecas0 of
 ( token(*+/0/-*), d3exp, d3clslst )
 //
+|
+D3Eseqn of
+( d3explst(*init*), d3exp(*last*) )
+//
 |D3Etup0 of (sint(*npf*), d3explst)
 |D3Etup1 of
 (

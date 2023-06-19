@@ -278,6 +278,15 @@ val () =
 d3clslst_fpemsg(out, dcls) endlet
 //
 |
+D3Eseqn
+(d3es, d3e1) =>
+(
+  d3exp_fpemsg(out, d3e1)
+) where
+{ val () =
+  d3explst_fpemsg( out, d3es ) }
+//
+|
 D3Etup0
 (npf1, d3es) =>
 let
