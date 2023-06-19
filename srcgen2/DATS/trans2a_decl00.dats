@@ -415,8 +415,9 @@ val
 loc0 = d2cl.lctn()
 val-
 D2Cfundclst
-(tknd
-,tqas, d2fs) = d2cl.node()
+( tknd
+, tqas
+, d2cs, d2fs) = d2cl.node()
 //
 (*
 val () =
@@ -432,7 +433,9 @@ d2fs =
 trans2a_d2fundclist(env0, d2fs)
 //
 in//let
-d2ecl(loc0, D2Cfundclst(tknd, tqas, d2fs))
+d2ecl_make_node
+( loc0
+, D2Cfundclst(tknd, tqas, d2cs, d2fs) )
 end (*let*) // end of [f0_fundclst(env0,d2cl)]
 //
 (* ****** ****** *)

@@ -2156,7 +2156,7 @@ val (  ) =
 tr12env_add0_tqas(env0, tqas)
 //
 val d2fs =
-trans12_d1fundclist(env0, d2vs, d1fs)
+trans12_d1fundclist(env0,d2vs,d1fs)
 //
 val (  ) = tr12env_poplam0(env0)
 //
@@ -2168,17 +2168,27 @@ then tr12env_add0_d2vs(env0, d2vs)
 val d2cs =
 list_map(d2vs) where
 {
+#typedef
+x0 = d2var
+#typedef
+y0 = d2cst
 #impltmp
-map$fopr
-< d2var >
-< d2cst >(x0) = d2cst_make_dvar(x0)
+map$fopr<x0><y0>
+( dvar )=d2cst_make_dvar(dvar,tqas)
 }
+//
+val () =
+(if
+ list_consq(tqas)
+ then tr12env_add1_d2cs(env0, d2cs))
 //
 val () =
 prerrln("f0_fundclst: d2cs = ", d2cs)
 //
 in//let
-d2ecl(loc0, D2Cfundclst(tknd, tqas, d2fs))
+d2ecl_make_node
+( loc0
+, D2Cfundclst(tknd, tqas, d2cs, d2fs) )
 end (*let*) // end of [f0_fundclst(env0,d1cl)]
 //
 (* ****** ****** *)
@@ -2209,7 +2219,7 @@ let
 val () =
 tr12env_add1_d2conlst(env0, d2cs)
 in//let
-d2ecl(loc0, D2Cexcptcon(d1cl, d2cs))
+  d2ecl(loc0, D2Cexcptcon(d1cl, d2cs))
 end (*let*)
 //
 end (*let*) // end of [f0_excptcon(env0,d1cl)]

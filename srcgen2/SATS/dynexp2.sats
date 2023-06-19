@@ -410,7 +410,7 @@ d2cst_set_xtyp
 //
 fun
 d2cst_make_dvar
-( dvar: d2var ): d2cst
+(dvar: d2var, tqas: t2qas): d2cst
 fun
 d2con_make_idtp
 (tok0: token
@@ -440,10 +440,19 @@ d2var_get_stmp:(d2var) -> stamp
 (* ****** ****** *)
 //
 fun
+d2var_get_sexp:(d2var) -> s2exp
+fun
 d2var_get_styp:(d2var) -> s2typ
+//
+fun
+d2var_set_sexp
+(d2v0: d2var, s2e0: s2exp): void
 fun
 d2var_set_styp
 (d2v0: d2var, t2p0: s2typ): void
+//
+#symload sexp with d2var_get_sexp
+#symload sexp with d2var_set_sexp
 //
 #symload styp with d2var_get_styp
 #symload styp with d2var_set_styp
@@ -1186,7 +1195,8 @@ D2Cvardclst of
 (token(*VAR(vrk)*), d2vardclist)
 |
 D2Cfundclst of
-(token(*FUN(fnk)*), t2qaglst, d2fundclist)
+( token(*FUN(fnk)*)
+, t2qaglst, d2cstlst, d2fundclist)
 //
 |
 D2Cimplmnt0 of

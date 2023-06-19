@@ -136,7 +136,8 @@ endlet // end-of-(D2Cvardclst(_,_,_))
 |
 D2Cfundclst
 ( tknd
-, tqas, d2fs) => let
+, tqas
+, d2cs, d2fs) => let
 (*
 val () =
   trsym2a_t2qaglst(env0, tqas)

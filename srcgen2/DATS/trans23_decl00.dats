@@ -357,19 +357,24 @@ val
 loc0 = d2cl.lctn()
 val-
 D2Cfundclst
-(tknd
-,tqas, d2fs) = d2cl.node()
+( tknd
+, tqas
+, d2cs, d2fs) = d2cl.node()
 //
+(*
 val () =
 prerrln
 ("f0_fundclst: d2cl = ", d2cl)
+*)
 //
 val
 d3fs =
 trans23_d2fundclist(env0, d2fs)
 //
 in//let
-d3ecl(loc0, D3Cfundclst(tknd, tqas, d3fs))
+d3ecl_make_node
+( loc0
+, D3Cfundclst(tknd, tqas, d2cs, d3fs) )
 end (*let*) // end of [f0_fundclst(env0,d2cl)]
 //
 (* ****** ****** *)

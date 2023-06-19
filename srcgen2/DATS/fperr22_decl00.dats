@@ -130,10 +130,14 @@ endlet // end-of-(D2Cvardclst(_,_,_))
 //
 |
 D2Cfundclst
-(tknd, tqas, d2fs) => let
+( tknd
+, tqas
+, d2cs, d2fs) => let
 (*
 val () =
   fperr22_t2qaglst(out, tqas)
+val () =
+  fperr22_d2cstlst(out, d2cs)
 *)
 val () =
   fperr22_d2fundclist(out, d2fs)

@@ -194,6 +194,8 @@ d3ecl_fundclst_errck
 : token
 , tqas
 : t2qaglst
+, d2cs
+: d2cstlst
 , d3fs
 : d3fundclist): d3ecl =
 let
@@ -201,7 +203,8 @@ val lvl = 0
 in//let
 d3ecl_errck
 ( lvl+1
-, d3ecl(loc0,D3Cfundclst(tknd,tqas,d3fs)) )
+, d3ecl
+  (loc0,D3Cfundclst(tknd,tqas,d2cs,d3fs)))
 end (*let*) // end of [d3ecl_fundclst_errck]
 //
 (* ****** ****** *)
@@ -481,7 +484,8 @@ val loc = dcl.lctn()
 val-
 D3Cfundclst
 (tknd
-,tqas, d3fs) = dcl.node()
+,tqas
+,d2cs, d3fs) = dcl.node()
 //
 (*
 val tqas =
@@ -494,7 +498,8 @@ in//let
 if
 (err=e00)
 then (dcl) else
-d3ecl_fundclst_errck(loc, tknd, tqas, d3fs)
+d3ecl_fundclst_errck
+( dcl.lctn() , tknd , tqas , d2cs , d3fs )
 end (*let*) // end of [f0_fundclst(dcl,err)]
 //
 (* ****** ****** *)
