@@ -54,4 +54,16 @@ if i < x then loop@(i+1, i*r+r) else r
 
 (* ****** ****** *)
 
+fun
+fact25(x: sint) =
+(
+  loop $(0, 1) ) where
+{
+fun
+loop $(i, r) =
+if i < x then loop $(i+1, i*r+r) else r
+}
+
+(* ****** ****** *)
+
 (* end of [DATA/myfact2.dats] *)

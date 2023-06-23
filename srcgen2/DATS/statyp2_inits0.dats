@@ -181,6 +181,12 @@ s2typ_name_t2pr(strn_name, strn_t2pr)
 end (*local*) // end of [local(the_s2typs)]
 
 (* ****** ****** *)
+//
+#implfun
+the_s2typ_excptn() =
+s2typ_cst(the_s2cst_excptn((*void*)))
+//
+(* ****** ****** *)
 
 local
 //

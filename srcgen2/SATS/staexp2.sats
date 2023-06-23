@@ -401,7 +401,7 @@ s2var_make_idst
 (* ****** ****** *)
 //
 fun
-the_excptn_s2cst
+the_s2cst_excptn
 (   (*void*)   ): ( s2cst )
 //
 (* ****** ****** *)
