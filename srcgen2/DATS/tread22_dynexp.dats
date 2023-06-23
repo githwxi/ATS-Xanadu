@@ -607,6 +607,18 @@ endlet // end of [d2exp_assgn_errck(...)]
 (* ****** ****** *)
 //
 fun
+d2exp_raise_errck
+( loc0: loc_t
+, d2e1: d2exp): d2exp =
+let
+val lvl0 = errvl(d2e1) in//let
+d2exp_errck
+( lvl0+1, d2exp(loc0, D2Eraise( d2e1 )))
+endlet // end of [d2exp_raise_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d2exp_annot_errck
 ( loc0: loc_t
 , d2e1: d2exp
@@ -944,6 +956,9 @@ D2Ewhere _ => f0_where(d2e0, err)
 //
 |
 D2Eassgn _ => f0_assgn(d2e0, err)
+//
+|
+D2Eraise _ => f0_raise(d2e0, err)
 //
 |
 D2Eannot _ => f0_annot(d2e0, err)
@@ -1346,6 +1361,29 @@ val loc = d2e.lctn() in
 d2exp_assgn_errck(loc, d2el, d2er)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_assgn(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_raise
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Eraise(d2e1) = d2e.node()
+//
+val
+d2e1 = tread22_d2exp(d2e1, err)
+//
+in//let
+if
+(err=e00)
+then (d2e) else
+d2exp_raise_errck(d2e.lctn(), d2e1)
+end (*let*) // end of [f0_raise(d2e,err)]
 //
 (* ****** ****** *)
 //

@@ -510,6 +510,8 @@ token(*knd*), sint(*npf*), d3explst)
 (
 token(*knd*), sint(*npf*), l3d3elst)
 //
+| D3Eraise of d3exp(*lin-exn*)
+//
 |
 D3Et2pck of (d3exp, s2typ)//HX: casting
 //

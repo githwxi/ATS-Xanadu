@@ -281,9 +281,14 @@ D3Eassgn
 (d3el, d3er) =>
 print("D3Eassgn(",d3el,";",d3er,")")
 //
+|
+D3Eraise
+( d3e1 ) => print("D3Eraise(",d3e1,")")
+//
 |D3Et2pck
 ( d3e1 , t2p2 ) =>
-(print("D3Et2pck(",d3e1,";",t2p2,")"))
+(
+  print("D3Et2pck(",d3e1,";",t2p2,")"))
 //
 |D3Enone0() => print( "D3Enone0(",")" )
 |D3Enone1(d1e1) => print("D3Enone1(",d1e1,")")

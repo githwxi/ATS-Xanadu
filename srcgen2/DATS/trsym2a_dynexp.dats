@@ -601,7 +601,13 @@ val () =
 trsym2a_d2exp(env0, d2er) endlet
 //
 |
-D2Et2pck _ => f0_t2pck(env0, d2e0)
+D2Eraise(d2e1) =>
+let
+val () =
+trsym2a_d2exp(env0, d2e1) endlet
+//
+|
+D2Et2pck(_, _) => f0_t2pck(env0, d2e0)
 //
 | _(* otherwise *) => (   (*skipped*)   )
 //
