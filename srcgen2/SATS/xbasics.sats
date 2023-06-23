@@ -270,6 +270,10 @@ trcdknd =
 // end of [ datatype(trcdknd) ]
 (* ****** ****** *)
 fun
+trcdknd_equal
+(knd1:trcdknd, knd2:trcdknd): bool
+(* ****** ****** *)
+fun
 trcdknd_fprint: (FILR, trcdknd)->void
 (* ****** ****** *)
 

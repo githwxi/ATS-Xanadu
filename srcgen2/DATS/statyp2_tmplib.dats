@@ -745,6 +745,11 @@ T2Ptext _ =>
 (
   f0_text(e1nv, t2p1, t2p2))
 //
+|
+T2Ptrcd _ =>
+(
+  f0_trcd(e1nv, t2p1, t2p2))
+//
 |T2Pnone0 _ =>
 (
 case+
@@ -924,15 +929,46 @@ end (*let*) // end of [f0_text(e1nv,...)]
 //
 (* ****** ****** *)
 //
+fun
+f0_trcd
+( e1nv: !e1nv
+, t2p1: s2typ
+, t2p2: s2typ): (bool) =
+let
+val-
+T2Ptrcd
+( knd1
+, npf1, lts1) = t2p1.node()
+in//let
+case+
+t2p2.node() of
+|
+T2Ptrcd
+( knd2
+, npf2, lts2) =>
+(
+if
+trcdknd_equal
+(knd1 , knd2)
+*
+(npf1 = npf2)
+then
+unify00_l2t2plst
+(e1nv, lts1, lts2) else false)
+| _ (* non-T2Ptrcd *) => (  false  )
+end (*let*) // end of [f0_trcd(e1nv,...)]
+//
+(* ****** ****** *)
+//
 val t2p1 = s2typ_hnfiz0(e1nv, t2p1)
 val t2p2 = s2typ_hnfiz0(e1nv, t2p2)
 //
-(*
+// (*
 val (  ) =
 prerrln("unify00_s2typ: t2p1 = ", t2p1)
 val (  ) =
 prerrln("unify00_s2typ: t2p2 = ", t2p2)
-*)
+// *)
 //
 } (*where*) // end of [unify00_s2typ(e1nv,...)]
 //
@@ -967,6 +1003,88 @@ val btf2 =
 unify00_s2typlst(e1nv, tps1, tps2) }
 )
 ) (*case+*) // end of [unif00_s2typlst(e1nv,...)]
+//
+(* ****** ****** *)
+//
+and
+unify00_l2t2plst
+( e1nv: !e1nv
+, lts1: l2t2plst
+, lts2: l2t2plst): (bool) =
+let
+//
+fun
+f1_labck
+( lts1: l2t2plst
+, lts2: l2t2plst): (bool) =
+(
+case+ lts1 of
+|list_nil() =>
+(
+case+ lts2 of
+|list_nil _ => true
+|list_cons _ => false)
+|list_cons(ltp1, lts1) =>
+(
+case+ lts2 of
+|
+list_nil() => false
+|
+list_cons(ltp2, lts2) =>
+let
+val+S2LAB(l1, t2p1) = ltp1
+val+S2LAB(l2, t2p2) = ltp2
+in//let
+if
+(l1 != l2)
+then false
+else f1_labck(lts1, lts2) endlet
+)
+) (*case+*) // end of [f1_labck(...)]
+//
+fun
+f1_unify
+( e1nv: !e1nv
+, lts1: l2t2plst
+, lts2: l2t2plst): (bool) =
+(
+case+ lts1 of
+|
+list_nil() =>
+(
+case+ lts2 of
+|list_nil() => true
+|list_cons(_, _) => false
+)
+|
+list_cons
+(ltp1, lts1) =>
+(
+case+ lts2 of
+|list_nil() => false
+|list_cons(ltp2, lts2) =>
+(
+if btf1
+then btf2 else false) where
+{
+val+S2LAB(l1, t2p1) = ltp1
+val+S2LAB(l2, t2p2) = ltp2
+val
+btf1 =
+(
+if
+l1 != l2 then false else
+unify00_s2typ(e1nv,t2p1,t2p2))
+val
+btf2 = f1_unify(e1nv,lts1,lts2) }
+)
+) (*case+*) // end of [f1_unify(...)]
+//
+in//let
+if
+f1_labck(lts1, lts2)
+then f1_unify(e1nv,lts1,lts2) else false
+end//let//end-of-[unify00_l2t2plst( ... )]
 //
 (* ****** ****** *)
 //

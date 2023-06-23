@@ -570,6 +570,19 @@ where
   trsym2a_d2explst(env0, d2es) }
 //
 |
+D2Etup0
+(npf1,d2es) =>
+let
+val () =
+trsym2a_d2explst(env0, d2es) end
+|
+D2Etup1
+(tknd,npf1,d2es) =>
+let
+val () =
+trsym2a_d2explst(env0, d2es) end
+//
+|
 D2Ewhere
 (d2e1, dcls) =>
 (

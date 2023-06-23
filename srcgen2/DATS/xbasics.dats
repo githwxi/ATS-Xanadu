@@ -187,5 +187,35 @@ case+ fcl2 of
 F2CLfun() => false | F2CLclo(k2) => (k1 = k2)))
 
 (* ****** ****** *)
+//
+#implfun
+trcdknd_equal
+(knd1, knd2) =
+(
+case+ knd1 of
+//
+|TRCDbox0() =>
+(
+case+ knd2 of
+|TRCDbox0() => true | _ => false)
+//
+|TRCDbox1() =>
+(
+case+ knd2 of
+|TRCDbox1() => true | _ => false)
+//
+|TRCDflt0() =>
+(
+case+ knd2 of
+|TRCDflt0() => true | _ => false)
+//
+|TRCDflt2(tnm1) =>
+(
+case+ knd2 of
+|TRCDflt2(tnm2) => (tnm1=tnm2) | _ => false)
+//
+)(*case+*)//end-of-[trcdknd_equal(knd1,knd2)]
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xbasics.dats] *)

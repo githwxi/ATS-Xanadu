@@ -127,6 +127,11 @@ f2clknd_fprint
 (* ****** ****** *)
 //
 #impltmp
+g_equal
+<trcdknd>(k1, k2) =
+trcdknd_equal(k1, k2)
+//
+#impltmp
 g_print
 <trcdknd>(knd) =
 trcdknd_fprint

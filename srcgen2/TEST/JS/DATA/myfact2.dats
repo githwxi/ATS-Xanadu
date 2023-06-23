@@ -33,12 +33,23 @@ fact24(x: sint) =
 (
   loop(0); res) where
 {
-var
-res = 1
-fun
+var res = 1
+fnx
 loop(i: int): void =
 if i < x then
 (res := res * (i+1); loop(i+1))
+}
+
+(* ****** ****** *)
+
+fun
+fact25(x: sint) =
+(
+  loop@(0, 1) ) where
+{
+fun
+loop@(i, r) =
+if i < x then loop@(i+1, i*r+r) else r
 }
 
 (* ****** ****** *)
