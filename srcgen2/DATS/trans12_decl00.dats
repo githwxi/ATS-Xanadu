@@ -2210,7 +2210,7 @@ trans12_d1tcnlst
 (env0, tcns, s2c0, svss) where
 {
   val svss = list_nil(*void*)
-  val s2c0 = the_excptn_s2cst()
+  val s2c0 = the_s2cst_excptn()
 }
 //
 in//let
