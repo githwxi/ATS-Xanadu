@@ -149,6 +149,15 @@ D1Pl2st(dps1, dps2) =>
 print("D1Pl2st(", dps1, ";", dps2 ,")")
 //
 |
+D1Pt1up(tok0, d1ps) =>
+print
+("D1Pt1up(", tok0, ";", d1ps ,")")
+|
+D1Pt2up(tok0, dps1, dps2) =>
+print
+("D1Pt2up(",tok0,";",dps1,";",dps2,")")
+//
+|
 D1Pannot(d1p1,s1e2) =>
 print("D1Pannot(",d1p1,";",s1e2,")")
 |

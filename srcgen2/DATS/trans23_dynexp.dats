@@ -178,6 +178,7 @@ d3pat_make_styp_node
 |D2Pdapp _ => f0_dapp(env0, d2p0)
 //
 |D2Ptup0 _ => f0_tup0(env0, d2p0)
+|D2Ptup1 _ => f0_tup1(env0, d2p0)
 //
 |D2Pannot _ => f0_annot(env0, d2p0)
 //
@@ -322,6 +323,40 @@ the_s2typ_void()
 |list_cons _ =>
 s2typ_tup0(npf1, s2typlst(d3ps))): s2typ
 } (*where*) // end of [f0_tup0(env0,d2p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup1
+( env0:
+! tr23env
+, d2p0: d2pat): d3pat =
+(
+d3pat_make_styp_node
+(
+loc0, t2p0,
+D3Ptup1(tknd, npf1, d3ps))) where
+{
+val loc0 = d2p0.lctn()
+val-
+D2Ptup1
+( tknd
+, npf1, d2ps) = d2p0.node()
+val
+d3ps =
+trans23_d2patlst(env0, d2ps)
+val
+trcd =
+(
+case-
+tknd.node() of
+|T_TRCD10(0) => TRCDflt0(*void*)
+|T_TRCD10(_) => TRCDbox0(*void*)
+)
+val
+t2p0 =
+s2typ_tup1(trcd, npf1, s2typlst(d3ps))
+} (*where*) // end of [f0_tup1(env0,d2p0)]
 //
 (* ****** ****** *)
 //
