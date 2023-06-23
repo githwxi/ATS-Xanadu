@@ -36,6 +36,12 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(*
+HX-2023-06-23:
+linearity is erased
+but boxity is not erases!!!
+*)
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 (* ****** ****** *)
@@ -131,6 +137,9 @@ the_s2typ_dflt((*void*)): s2typ
 fun
 the_s2typ_strn((*void*)): s2typ
 //
+(* ****** ****** *)
+fun
+the_s2typ_excptn((*void*)): s2typ
 (* ****** ****** *)
 //
 datatype

@@ -156,7 +156,7 @@ a0ref_make_1val
 in//local
 //
 #implfun
-the_excptn_s2cst
+the_s2cst_excptn
   ( (*void*) ) =
 (
 case+ s2cr[] of
@@ -179,7 +179,7 @@ val s2t1 = the_sort2_vtbx }
 in//let
 s2cr[] := optn_cons(s2c1); s2c1
 end (*let*) // end of [optn_nil()]
-) (*case+*) // end of [the_excptn_s2cst]
+) (*case+*) // end of [the_s2cst_excptn]
 //
 endloc (*local*) // end of [local(predefined)]
 
