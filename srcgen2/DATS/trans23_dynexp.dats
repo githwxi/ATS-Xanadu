@@ -1001,15 +1001,15 @@ val t2p1 = the_s2typ_excptn()
 //
 in//let
 let
-val
-t2p0 = d2e0.styp((*0*))
 (*
 val
-t2p0 = s2typ_hnfiz0(t2p2)
+t2p0 = d2e0.styp((*0*))
 *)
+val
+t2p0 = s2typ_new0_x2tp(loc0)
 in//let
 d3exp_make_styp_node
-(loc0, t2p0, D3Eraise(d3e1))
+( loc0, t2p0, D3Eraise(d3e1) )
 end where // end-of-let
 {
 val
