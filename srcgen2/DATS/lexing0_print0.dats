@@ -410,6 +410,10 @@ T_WITHTYPE(knd) =>
 print("T_WITHTYPE(", knd, ")")
 //
 |
+T_DLR_RAISE() =>
+print("T_DLR_RAISE(", ")")
+//
+|
 T_DLR_EXTNAM() =>
 print("T_DLR_EXTNAM(", ")")
 |

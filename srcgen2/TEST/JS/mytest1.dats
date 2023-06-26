@@ -28,6 +28,8 @@ cons with list_cons
 #symload
 cons with strmcon_cons
 (* ****** ****** *)
+val _ = $raise abc + xyz
+(* ****** ****** *)
 //
 (*
 fun

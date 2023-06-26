@@ -166,6 +166,21 @@ val () = fperr22_s2res(out, sres)
 val () = fperr22_d2exp(out, d2e1)
 endlet // end of [ D2Cimplmnt0(...) ]
 //
+|D2Cexcptcon
+(d1cl, d2cs) =>
+let
+(*
+val () = fperr22_d2conlst(d2cs)
+*)
+endlet // end of [ D2Cexcptcon(...) ]
+|D2Cdatatype
+(d1cl, s2cs) =>
+let
+(*
+val () = fperr22_s2cstlst(s2cs)
+*)
+endlet // end of [ D2Cdatatype(...) ]
+//
 | D2Cnone0() => ( (*void*) )
 | D2Cnone1(d1cl) => ( (*void*) )
 | D2Cnone2(d2cl) => ( (*void*) )
