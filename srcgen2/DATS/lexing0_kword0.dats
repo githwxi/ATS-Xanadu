@@ -317,6 +317,8 @@ val () = kwdins("$rec_t0", T0TRCD23)//tbox
 val () = kwdins("$tup_vt", T0TRCD14)//vtbx
 val () = kwdins("$rec_vt", T0TRCD24)//vtbx
 //
+val () = kwdins("$raise", T_DLR_RAISE)
+//
 val () = kwdins("$extnam", T_DLR_EXTNAM)
 val () = kwdins("$exists", T_DLR_EXISTS)
 //

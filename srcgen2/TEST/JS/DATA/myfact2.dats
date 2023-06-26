@@ -14,6 +14,16 @@ fact21(x: sint): sint =
 if x > 0 then x * fact2(x-1) else 1
 *)
 (* ****** ****** *)
+
+excptcon FACTexn of ()
+
+fun
+fact21
+(x
+: sint
+) : sint = $raise FACTexn
+
+(* ****** ****** *)
 //
 fun
 fact22(x: sint) =
@@ -55,7 +65,7 @@ if i < x then loop@(i+1, i*r+r) else r
 (* ****** ****** *)
 
 fun
-fact25(x: sint) =
+fact26(x: sint) =
 (
   loop $(0, 1) ) where
 {

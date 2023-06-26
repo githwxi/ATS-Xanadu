@@ -241,6 +241,8 @@ datatype tnode =
 //
   | T_WITHTYPE of int(*kind*)
 //
+  | T_DLR_RAISE of () // $raise
+//
   | T_DLR_EXTNAM of () // $exname
   | T_DLR_EXISTS of () // $exists
 //
