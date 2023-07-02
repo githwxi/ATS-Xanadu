@@ -1188,6 +1188,10 @@ in//let
 endlet // end of [D0Efix0(_,_,_,_,_,_,_)]
 //
 |
+D0Eraise
+(tknd, d0e1) => fpemsg(out, d0e1)
+//
+|
 D0Eannot
 (d0e1, s0e2) =>
 (
@@ -1199,7 +1203,7 @@ D0Equal0
 //
 |
 D0Eextnam
-(tok1, gnm2) => ()//fpemsg(out, gnm2)
+(tok1, gnm2) => () // fpemsg(out, gnm2)
 //
 |
 D0Eexists
@@ -1208,7 +1212,7 @@ D0Eexists
   fpemsg(out, d0es); fpemsg(out, d0e1))
 //
 |
-D0Etkerr(tok1) => ()//fpemsg(out,tok1)
+D0Etkerr(tok1) => () // fpemsg(out,tok1)
 //
 // HX-2022-11-23:
 | // [d0exp_fpemsg] should be called here:

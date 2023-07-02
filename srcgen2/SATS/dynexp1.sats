@@ -573,6 +573,10 @@ D1Etry0 of
 // D1Etry0
 //
 |
+D1Eraise of
+(token, d1exp(*excpt*))//HX:raising
+//
+|
 D1Eannot of
 (d1exp, s1exp(*annot*))//HX:type-annot
 //

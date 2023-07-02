@@ -808,6 +808,13 @@ d1clslst_fpemsg( out , d1cs )
 endlet // end of [D1Etry0(...)]
 //
 |
+D1Eraise(tknd,d1e1) =>
+let
+val
+( ) = d1exp_fpemsg(out, d1e1)
+endlet // end of [D1Eraise(...)]
+//
+|
 D1Eannot(d1e1,s1e2) =>
 let
 val
