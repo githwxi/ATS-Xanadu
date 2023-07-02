@@ -1005,6 +1005,21 @@ end (*let*) // end of [d0exp_fix0_errck]
 (* ****** ****** *)
 //
 fun
+d0exp_raise_errck
+( loc
+: loc_t
+, tknd: token
+, d0e1: d0exp): d0exp =
+let
+val lvl = d0exp_errvl(d0e1)
+in//let
+d0exp_errck
+(lvl+1, d0exp(loc,D0Eraise(tknd,d0e1)))
+end (*let*) // end of [d0exp_raise_errck]
+//
+(* ****** ****** *)
+//
+fun
 d0exp_annot_errck
 ( loc
 : loc_t
@@ -1368,6 +1383,8 @@ D0Edtsel _ => f0_dtsel(d0e, err)
 //
 |D0Elam0 _ => f0_lam0( d0e, err )
 |D0Efix0 _ => f0_fix0( d0e, err )
+//
+|D0Eraise _ => f0_raise( d0e, err )
 //
 |D0Eannot _ => f0_annot( d0e, err )
 //
@@ -1988,6 +2005,29 @@ then (d0e) else
 d0exp_fix0_errck
 (loc,tknd,dpid,fags,sres,arrw,body,tend)
 end (*let*) // end of [f0_fix0(d0e, err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_raise
+( d0e: d0exp
+, err: &sint >> _): d0exp =
+let
+//
+val e00 = err
+//
+val-
+D0Eraise
+( tknd, d0e1) = d0e.node()
+//
+val d0e1 = preadx0_d0exp(d0e1, err)
+//
+in//let
+if
+(err=e00)
+then (d0e) else
+d0exp_raise_errck(d0e.lctn(),tknd,d0e1)
+end (*let*) // end of [f0_raise(d0e,err)]
 //
 (* ****** ****** *)
 //

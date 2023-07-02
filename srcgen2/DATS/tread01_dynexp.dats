@@ -1111,6 +1111,22 @@ endlet // end of [d1exp_try0_errck(...)]
 (* ****** ****** *)
 //
 fun
+d1exp_raise_errck
+( loc: loc_t
+, tknd: token
+, d1e1: d1exp): d1exp =
+let
+//
+val lvl = errvl(d1e1)
+//
+in//let
+d1exp_errck
+(lvl+1, d1exp(loc,D1Eraise(tknd,d1e1)))
+endlet // end of [d1exp_raise_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d1exp_annot_errck
 ( loc: loc_t
 , d1e1: d1exp
@@ -1627,6 +1643,24 @@ if
 then (d1e0) else
 d1exp_dtsel_errck(loc0,tknd,lab1,dopt)
 endlet//end-of(D1Edtsel(tknd,lab1,dopt))
+//
+(* ****** ****** *)
+//
+|
+D1Eraise(tknd,d1e1) =>
+let
+//
+val e00 = err
+//
+val d1e1 =
+tread01_d1exp(d1e1, err)
+//
+in//let
+if
+(err=e00)
+then (d1e0) else
+d1exp_raise_errck( loc0, tknd, d1e1 )
+endlet // end of [D1Eraise(tknd,d1e1)]
 //
 (* ****** ****** *)
 //

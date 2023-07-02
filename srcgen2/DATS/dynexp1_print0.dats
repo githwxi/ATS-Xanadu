@@ -420,7 +420,12 @@ print("D1Ebrckt(",d1es,")")
 D1Edtsel
 (tknd,lab1,dopt) =>
 ( print("D1Edtsel(")
-; print(tknd,";",lab1,";",dopt,")") )
+; print(tknd,";",lab1,";",dopt,")"))
+//
+|
+D1Eraise
+(tknd,d1e1) =>
+print("D1Eraise(",tknd,";",d1e1,")")
 //
 |
 D1Eannot

@@ -968,6 +968,20 @@ D0Efix0 _ => f0_fix0(tenv, d0e0)
 D0Etry0 _ => f0_try0(tenv, d0e0)
 //
 |
+D0Eraise
+(tknd, d0e1) =>
+let
+val d1e1 =
+  trans01_d0exp(tenv, d0e1)
+in // let
+//
+FXITMatm(d1e0) where
+{ val d1e0 = d1exp_make_node
+  (d0e0.lctn(), D1Eraise(tknd, d1e1)) }
+//
+end (*let*)//end of [D0Eraise(tknd,d0e1)]
+//
+|
 D0Eannot
 (d0e1, s0e2) =>
 let
