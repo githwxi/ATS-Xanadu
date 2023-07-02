@@ -1602,6 +1602,21 @@ in
 end (*let*) // end-of-[  T_IDQUA(_)  ]
 //
 |
+T_DLR_RAISE _ =>
+let
+  val tok0 = tok
+  val (  ) = buf.skip1()
+  val d0e1 = p1_d0exp_app(buf, err)
+in//let
+  err := e00
+; d0exp_make_node
+  (lres, D0Eraise(tok0, d0e1)) where
+  {
+    val lres = tok0.lctn()+d0e1.lctn()
+  }
+end (*let*) // end of [  T_DLR_RAISE  ]
+//
+|
 T_DLR_EXTNAM _ =>
 let
   val tok0 = tok

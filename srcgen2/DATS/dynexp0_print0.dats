@@ -337,7 +337,8 @@ print(dcls,";",topt,";",d0es,";",tend,")"))
 //
 |
 D0Etry0
-(tknd,d0e1,twth,tbar,dcls,tend) =>
+(tknd
+,d0e1,twth,tbar,dcls,tend) =>
 //
 (
 print
@@ -345,7 +346,8 @@ print
 print(twth,";",tbar,";",dcls,";",tend,")"))
 |
 D0Elam0
-(tknd,farg,sres,arrw,body,tend) =>
+(tknd
+,farg,sres,arrw,body,tend) =>
 (
 print
 ("D0Elam0(",tknd,";",farg,";");
@@ -353,7 +355,8 @@ print(sres,";",arrw,";",body,";",tend,")"))
 //
 |
 D0Efix0
-(tknd,fid0,farg,sres,arrw,body,tend) =>
+(tknd,fid0
+,farg,sres,arrw,body,tend) =>
 (
 print
 ("D0Efix0(");
@@ -366,26 +369,34 @@ print
 ("D0Ewhere(",d0e1,";",dcl2,")")
 //
 |
-D0Ebrckt(tbeg,d0es,tend) =>
+D0Ebrckt
+(tbeg, d0es, tend) =>
 print
-( "D0Ebrckt(" ,tbeg,";",d0es,";",tend,")" )
+( "D0Ebrckt("
+, tbeg , ";" , d0es , ";" , tend , ")")
 |
-D0Edtsel(tknd,lab1,opt2) =>
+D0Edtsel
+(tknd, lab1, opt2) =>
 print
-( "D0Edtsel(" ,tknd,";",lab1,";",opt2,")" )
+( "D0Edtsel("
+, tknd , ";" , lab1 , ";" , opt2 , ")")
+//
+|
+D0Eraise(tknd,d0e1) =>
+print("D0Eraise(", tknd, ";", d0e1, ")")
 //
 |
 D0Eannot(d0e1,s0e2) =>
-print("D0Eannot(",d0e1,";",s0e2,")")
+print("D0Eannot(", d0e1, ";", s0e2, ")")
 //
 |
 D0Equal0(tok1,d0e2) =>
-print("D0Equal0(",tok1,";",d0e2,")")
+print("D0Equal0(", tok1, ";", d0e2, ")")
 //
 |
 D0Eextnam
 (tknd,gnam) =>
-print("D0Eextnam(",tknd,";",gnam,")")
+print("D0Eextnam(", tknd, ";", gnam, ")")
 |
 D0Eexists
 (tknd,d0es,d0e1) =>

@@ -468,6 +468,9 @@ D0Efix0 of
 , s0res, f0unarrw, d0exp, tokenopt )
 //
 |
+D0Eraise of (token, d0exp) // HX: raising
+//
+|
 D0Eannot of (d0exp, s0exp) // HX: annotation
 | // qualified-id
 D0Equal0 of (token, d0exp) // HX: qual-d0exp
