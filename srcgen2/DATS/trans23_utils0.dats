@@ -303,8 +303,13 @@ d3exp_make_node(loc0, D3Econ(dcon))
 in//let
 //
 case+ t2js of
-|list_nil _ => d3e0
-|list_cons _ =>
+|
+list_nil _ =>
+let
+  val () = d3e0.styp(t2p0) in d3e0
+end
+|
+list_cons _ =>
 (
   d3exp_make_styp_node
   (loc0, t2p0, D3Etapq(d3e0, t2js)) )
@@ -353,7 +358,10 @@ in//let
 //
 case+ t2js of
 |
-list_nil _ => d3e0
+list_nil _ =>
+let
+  val () = d3e0.styp(t2p0) in d3e0
+end
 |
 list_cons _ =>
 (
@@ -383,12 +391,12 @@ s2cst_get_styp(s2c0)
 s2typ_eval$s2var
 <e1nv>(env0,s2v0) = optn_vt_nil()
 //
-(*
+// (*
 val () =
 prerrln("unify23_s2typ: t2p1 = ", t2p1)
 val () =
 prerrln("unify23_s2typ: t2p2 = ", t2p2)
-*)
+// *)
 //
 in//let
 unify00_s2typ_e1nv<e1nv>(env0, t2p1, t2p2)

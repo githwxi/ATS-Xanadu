@@ -21,7 +21,7 @@ fun
 fact21
 (x
 : sint
-) : sint = $raise FACTexn
+) : sint = $raise FACTexn()
 
 (* ****** ****** *)
 //

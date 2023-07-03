@@ -305,6 +305,11 @@ D2Cfundclst _ => f0_fundclst(d2cl, err)
 D2Cimplmnt0 _ => f0_implmnt0(d2cl, err)
 //
 |
+D2Cexcptcon _ => f0_excptcon(d2cl, err)
+|
+D2Cdatatype _ => f0_datatype(d2cl, err)
+//
+|
 _(*otherwise*) =>
 let
 val lvl0 = 1
@@ -573,6 +578,26 @@ d2ecl_implmnt0_errck
 (dcl.lctn(), tknd
 ,sqas, tqas, dqid, tias, fags, sres, body)
 end (*let*) // end of [f0_implmnt0(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_excptcon
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+val-
+D2Cexcptcon
+(d1cl, d2cs) = dcl.node() in (  dcl  ) end
+//
+fun
+f0_datatype
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+val-
+D2Cdatatype
+(d1cl, s2cs) = dcl.node() in (  dcl  ) end
 //
 (* ****** ****** *)
 //

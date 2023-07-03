@@ -601,7 +601,8 @@ val () =
 trsym2a_d2exp(env0, d2er) endlet
 //
 |
-D2Eraise(d2e1) =>
+D2Eraise
+(tknd, d2e1) =>
 let
 val () =
 trsym2a_d2exp(env0, d2e1) endlet

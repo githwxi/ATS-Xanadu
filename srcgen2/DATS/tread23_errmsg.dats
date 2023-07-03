@@ -308,6 +308,13 @@ val () = d3exp_fpemsg(out , d3er)
 endlet // end of [ D3Eassgn(_, _) ]
 //
 |
+D3Eraise
+(tknd, d3e1) =>
+let
+val () = d3exp_fpemsg(out , d3e1)
+endlet // end of [ D3Eraise(_, _) ]
+//
+|
 D3Et2pck
 (d3e1, t2p2) =>
 let

@@ -965,14 +965,17 @@ D2Etry0 of
 | D2Eeval of d2exp(*ptr/lazy*)
 | D2Efree of d2exp(*free-con*)
 //
-| D2Eraise of d2exp(*lin-exn*)
+|
+D2Eraise of
+( token(*$RAISE*), d2exp(*lin-exn*))
 //
 |
 D2Elazy0 of
-( d2exp(*thunk*) ) // non-linear
+( token(*$LAZY0*), d2exp(*thunk*) )//nonlin
 |
 D2Elazy1 of // linear-lazy-eval
-( d2exp(*thunk*), d2explst(*frees*))
+( token
+, d2exp(*thunk*), d2explst(*frees*))//linear
 //
 |
 D2Eannot of
