@@ -839,11 +839,13 @@ endlet // end of [d2exp_dtsel_errck(...)]
 fun
 d2exp_raise_errck
 (loc0: loc_t
+,tknd: token
 ,d2e1: d2exp): d2exp =
 let
 val lvl0 = errvl(d2e1) in//let
 d2exp_errck
-(lvl0+1, d2exp(loc0, D2Eraise(d2e1)))
+( lvl0+1
+, d2exp(loc0, D2Eraise(tknd, d2e1)))
 endlet // end of [d2exp_raise_errck(...)]
 //
 (* ****** ****** *)
@@ -851,23 +853,27 @@ endlet // end of [d2exp_raise_errck(...)]
 fun
 d2exp_lazy0_errck
 (loc0: loc_t
+,tknd: token
 ,d2e1: d2exp): d2exp =
 let
 val lvl0 = errvl(d2e1) in//let
 d2exp_errck
-(lvl0+1, d2exp(loc0, D2Elazy0(d2e1)))
+( lvl0+1
+, d2exp(loc0, D2Elazy0(tknd, d2e1)))
 endlet // end of [d2exp_lazy0_errck(...)]
 //
 fun
 d2exp_lazy1_errck
 (loc0: loc_t
+,tknd: token
 ,d2e1: d2exp
 ,d2es: d2explst): d2exp =
 let
 val lvl0 = errvl(d2e1) in//let
 d2exp_errck
-(lvl0+1,d2exp(loc0,D2Elazy1(d2e1,d2es)))
-endlet // end of [d2exp_llazy1_errck(...)]
+(lvl0+1
+,d2exp(loc0,D2Elazy1(tknd,d2e1,d2es)))
+endlet // end of [d2exp_lazy1_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1981,14 +1987,15 @@ let
 val e00 = err
 //
 val-
-D2Eraise(d2e1) = d2e.node()
+D2Eraise
+(tknd, d2e1) = d2e.node()
 val
 d2e1 = tread12_d2exp(d2e1, err)
 in//let
 if
 (err=e00)
 then (d2e) else
-d2exp_raise_errck(d2e.lctn(), d2e1)
+d2exp_raise_errck(d2e.lctn(),tknd,d2e1)
 end (*let*) // end of [f0_raise(d2e,err)]
 //
 (* ****** ****** *)
@@ -2002,14 +2009,15 @@ let
 val e00 = err
 //
 val-
-D2Elazy0(d2e1) = d2e.node()
+D2Elazy0
+(tknd, d2e1) = d2e.node()
 val
 d2e1 = tread12_d2exp(d2e1, err)
 in//let
 if
 (err=e00)
 then (d2e) else
-d2exp_lazy0_errck(d2e.lctn(), d2e1)
+d2exp_lazy0_errck(d2e.lctn(),tknd,d2e1)
 end (*let*) // end of [f0_lazy0(d2e,err)]
 //
 fun
@@ -2022,7 +2030,8 @@ val e00 = err
 //
 val-
 D2Elazy1
-(d2e1, d2es) = d2e.node()
+( tknd
+, d2e1, d2es) = d2e.node()
 val
 d2e1 = tread12_d2exp(d2e1, err)
 val
@@ -2031,7 +2040,11 @@ in//let
 if
 (err=e00)
 then (d2e) else
-d2exp_lazy1_errck(d2e.lctn(),d2e1,d2es)
+let
+val loc = d2e.lctn()
+in//let
+d2exp_lazy1_errck(loc, tknd, d2e1, d2es)
+end (*let*)
 end (*let*) // end of [f0_lazy1(d2e,err)]
 //
 (* ****** ****** *)

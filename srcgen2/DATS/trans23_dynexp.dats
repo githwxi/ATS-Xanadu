@@ -487,7 +487,7 @@ d3exp_make_styp_node
 //
 |D2Eassgn _ => f0_assgn(env0, d2e0)
 //
-|D2Et2pck _ => f0_raise(env0, d2e0)
+|D2Eraise _ => f0_raise(env0, d2e0)
 //
 |D2Et2pck _ => f0_t2pck(env0, d2e0)
 //
@@ -995,7 +995,8 @@ let
 //
 val loc0 = d2e0.lctn()
 val-
-D2Eraise(d2e1) = d2e0.node()
+D2Eraise
+(tknd, d2e1) = d2e0.node()
 //
 val t2p1 = the_s2typ_excptn()
 //
@@ -1009,7 +1010,8 @@ val
 t2p0 = s2typ_new0_x2tp(loc0)
 in//let
 d3exp_make_styp_node
-( loc0, t2p0, D3Eraise(d3e1) )
+( loc0
+, t2p0, D3Eraise( tknd , d3e1) )
 end where // end-of-let
 {
 val

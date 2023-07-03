@@ -1610,7 +1610,8 @@ let
 val loc0 = d2e0.lctn()
 //
 val-
-D2Eraise(d2e1) = d2e0.node()
+D2Eraise
+(tknd, d2e1) = d2e0.node()
 //
 val t2p1 = the_s2typ_excptn()
 val d2e1 =
@@ -1619,7 +1620,9 @@ trans2a_d2exp_tpck(env0,d2e1,t2p1)
 in//let
 //
 d2exp_make_styp_node
-(loc0, t2p0, D2Eraise(d2e1)) where
+( loc0
+, t2p0, D2Eraise(tknd, d2e1))
+where
 {
   val t2p0 = s2typ_new0_x2tp(loc0) }
 //

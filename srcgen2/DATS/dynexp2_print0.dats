@@ -457,20 +457,24 @@ D2Efree(d2e1) =>
   print("D2Efree(", d2e1, ")"))
 //
 |
-D2Eraise(d2e1) =>
-(
-  print("D2Eraise(", d2e1, ")"))
-//
-|
-D2Elazy0(d2e1) =>
-(
-  print("D2Elazy0(", d2e1, ")"))
-|
-D2Elazy1
-( d2e1 , d2es ) =>
+D2Eraise
+( tknd, d2e1 ) =>
 (
 print
-("D2Elazy1(", d2e1, ";", d2es, ")"))
+("D2Eraise(", tknd, ";", d2e1, ")"))
+//
+|
+D2Elazy0
+( tknd, d2e1 ) =>
+(
+print
+("D2Elazy0(", tknd, ";", d2e1, ")"))
+|
+D2Elazy1
+( tknd
+, d2e1 , d2es ) =>
+( print("D2Elazy1(")
+; print(tknd,";",d2e1,";",d2es,")") )
 //
 |
 D2Eannot

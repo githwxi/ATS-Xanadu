@@ -283,7 +283,8 @@ print("D3Eassgn(",d3el,";",d3er,")")
 //
 |
 D3Eraise
-( d3e1 ) => print("D3Eraise(",d3e1,")")
+(tknd, d3e1) =>
+print("D3Eraise(",tknd,";",d3e1,")")
 //
 |D3Et2pck
 ( d3e1 , t2p2 ) =>

@@ -1404,6 +1404,8 @@ There is no D1Eassgn!
 |D1Ebrckt _ => f0_brckt(env0, d1e0)
 |D1Edtsel _ => f0_dtsel(env0, d1e0)
 //
+|D1Eraise _ => f0_raise(env0, d1e0)
+//
 |D1Eannot _ => f0_annot(env0, d1e0)
 //
 |D1Equal0 _ => f0_qual0(env0, d1e0)
@@ -2636,6 +2638,28 @@ loc0,
 D2Efix0
 (tknd, d2v1, f2as, sres, arrw, body))
 end (*let*) // end of [f0_fix0(env0,d1e0)]
+
+(* ****** ****** *)
+
+fun
+f0_raise
+( env0:
+! tr12env
+, d1e0: d1exp): d2exp =
+let
+//
+val loc0 = d1e0.lctn()
+//
+val-
+D1Eraise
+(tknd, d1e1) = d1e0.node()
+//
+in//let
+d2exp_make_node
+(loc0, D2Eraise(tknd, d2e1)) where
+{
+val d2e1 = trans12_d1exp(env0, d1e1) }
+end (*let*)//end of [f0_raise(env0,d1e0)]
 
 (* ****** ****** *)
 

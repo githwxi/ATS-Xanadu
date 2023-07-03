@@ -359,6 +359,14 @@ let
 val () = fperr22_d2exp(out, d2el)
 val () = fperr22_d2exp(out, d2er)
 endlet
+//
+|
+D2Eraise
+(tknd, d2e1) =>
+let
+val () = fperr22_d2exp(out, d2e1)
+endlet
+//
 |
 D2Et2pck
 (d2e1, t2p2) =>

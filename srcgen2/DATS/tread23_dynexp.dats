@@ -687,11 +687,13 @@ endlet // end of [d3exp_assgn_errck(...)]
 fun
 d3exp_raise_errck
 ( loc0: loc_t
+, tknd: token
 , d3e1: d3exp): d3exp =
 let
 val lvl0 = errvl(d3e1) in//let
 d3exp_errck
-( lvl0+1, d3exp(loc0, D3Eraise( d3e1 )))
+( lvl0+1
+, d3exp( loc0, D3Eraise( tknd, d3e1 ) ))
 endlet // end of [d3exp_raise_errck(...)]
 //
 (* ****** ****** *)
@@ -1447,7 +1449,8 @@ let
 val e00 = err
 //
 val-
-D3Eraise(d3e1) = d3e.node()
+D3Eraise
+(tknd, d3e1) = d3e.node()
 //
 val
 d3e1 = tread23_d3exp(d3e1, err)
@@ -1456,7 +1459,10 @@ in//let
 if
 (err=e00)
 then (d3e) else
-d3exp_raise_errck( d3e.lctn(), d3e1 )
+let
+val loc = d3e.lctn() in
+d3exp_raise_errck( loc, tknd, d3e1 )
+end (*let*) // end-of-[else]
 end (*let*) // end of [f0_raise(d3e,err)]
 //
 (* ****** ****** *)

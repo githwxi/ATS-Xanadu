@@ -662,16 +662,25 @@ endlet
 |D2Eeval(d2e1) => fpemsg(out, d2e1)
 |D2Efree(d2e1) => fpemsg(out, d2e1)
 |
-D2Eraise(d2e1) => fpemsg(out, d2e1)
+D2Eraise
+(tknd, d2e1) =>
+let
+  val () = d2exp_fpemsg(out, d2e1)
+endlet//end-of(D2Eraise(tknd,d2e1))
 |
-D2Elazy0(d2e1) => fpemsg(out, d2e1)
+D2Elazy0
+(tknd, d2e1) =>
+let
+  val () = d2exp_fpemsg(out, d2e1)
+endlet//end-of(D2Elazy0(tknd,d2e1))
 |
 D2Elazy1
-( d2e1, d2es ) =>
+( tknd
+, d2e1, d2es ) =>
 let
 val () = d2exp_fpemsg(out, d2e1)
 val () = d2explst_fpemsg(out, d2es)
-endlet//end-of(D2Elazy1(d2e1,d2es))
+endlet//end-of(D2Elazy1(tknd, ...))
 //
 |
 D2Eassgn
