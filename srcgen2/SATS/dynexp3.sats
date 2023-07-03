@@ -478,6 +478,7 @@ d3exp_node =
 |D3Etapp of (d3exp, s2explst)
 |D3Etapq of (d3exp, t2jaglst)
 //
+|D3Edap0 of (d3exp)
 |D3Edapp of
 (d3exp, sint(*npf*), d3explst)
 //

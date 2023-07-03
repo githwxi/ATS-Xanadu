@@ -231,6 +231,11 @@ val () =
 d3exp_fpemsg(out, d3f0) endlet
 //
 |
+D3Edap0(d3f0) =>
+let
+val () =
+d3exp_fpemsg(out, d3f0) endlet
+|
 D3Edapp
 (d3f0,npf1,d3es) =>
 let

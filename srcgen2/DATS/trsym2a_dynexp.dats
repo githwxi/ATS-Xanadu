@@ -523,6 +523,9 @@ trsym2a_s2explst(env0, s2es)
 *)
 endlet // end of [D2Etapp(...)]
 //
+(*
+|D2Edap0 _ => ...
+*)
 |
 D2Edapp
 (d2f0,npf1,d2es) =>
