@@ -529,6 +529,15 @@ endlet // end of [d3exp_tapq_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3exp_dap0_errck
+(loc0: loc_t
+,d3f0: d3exp): d3exp =
+let
+val lvl0 = errvl(d3f0) in//let
+d3exp_errck
+(lvl0+1, d3exp(loc0, D3Edap0( d3f0 )))
+endlet // end of [d3exp_dap0_errck(...)]
+fun
 d3exp_dapp_errck
 (loc0: loc_t
 ,d3f0: d3exp
@@ -1020,6 +1029,7 @@ d3e0.node() of
 |D3Etapp _ => f0_tapp(d3e0, err)
 |D3Etapq _ => f0_tapq(d3e0, err)
 //
+|D3Edap0 _ => f0_dap0(d3e0, err)
 |D3Edapp _ => f0_dapp(d3e0, err)
 //
 |D3Elet0 _ => f0_let0(d3e0, err)
@@ -1141,6 +1151,25 @@ d3exp_tapq_errck(d3e.lctn(),d3f0,tjas)
 end (*let*) // end of [f0_tapq(d3e,err)]
 //
 (* ****** ****** *)
+//
+fun
+f0_dap0
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val-
+D3Edap0(d3f0) = d3e.node()
+val
+d3f0 = tread23_d3exp(d3f0, err)
+in//let
+if
+(err=e00)
+then (d3e) else
+d3exp_dap0_errck( d3e.lctn(), d3f0 )
+end (*let*) // end of [f0_dap0(d3e,err)]
 //
 fun
 f0_dapp

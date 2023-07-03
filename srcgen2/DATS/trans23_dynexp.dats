@@ -105,6 +105,11 @@ _(*TRANS23*) = "./trans23.dats"
 #symload styp with d3exp_get_styp
 #symload styp with d3exp_set_styp
 (* ****** ****** *)
+#symload
+  d3exp with d3exp_make_node
+#symload
+  d3exp with d3exp_make_styp_node
+(* ****** ****** *)
 //
 fun
 s2typ_new0_x2tp
@@ -470,6 +475,7 @@ d3exp_make_styp_node
 //
 |D2Etapp _ => f0_tapp(env0, d2e0)
 //
+|D2Edap0 _ => f0_dap0(env0, d2e0)
 |D2Edapp _ => f0_dapp(env0, d2e0)
 //
 |D2Elet0 _ => f0_let0(env0, d2e0)
@@ -605,6 +611,37 @@ end (*let*) // end of [f0_tapp(env0,d2e0)]
 (* ****** ****** *)
 //
 fun
+f0_dap0
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+//
+val-
+D2Edap0(d2f0) = d2e0.node()
+//
+val d3f0 =
+  trans23_d2exp(env0, d2f0)
+val tfun = d3exp_get_styp(d3f0)
+//
+val tres =
+(
+case+
+tfun.node() of
+| T2Pfun1
+( f2cl
+, npf1, t2ps, tres) => tres
+| _(* non-T2Pfun1 *) => tfun): s2typ
+//
+in//let
+  d3exp(loc0, tres, D3Edap0( d3f0 ))
+end (*let*) // end of [f0_dap0(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_dapp
 ( env0:
 ! tr23env
@@ -629,8 +666,7 @@ val targ =
 (
 case+
 tfun.node() of
-|
-T2Pfun1
+| T2Pfun1
 ( f2cl, npf1
 , t2ps, tres) => t2ps
 |_ (*else*) => list_nil()): s2typlst
@@ -638,8 +674,7 @@ val tres =
 (
 case+
 tfun.node() of
-|
-T2Pfun1
+| T2Pfun1
 ( f2cl
 , npf1, t2ps, tres) => tres
 | _(* non-T2Pfun1 *) => tfun): s2typ

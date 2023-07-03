@@ -593,6 +593,7 @@ d2e0.node() of
 //
 |D2Etapp _ => f0_tapp(env0, d2e0)
 //
+|D2Edap0 _ => f0_dap0(env0, d2e0)
 |D2Edapp _ => f0_dapp(env0, d2e0)
 //
 |D2Elet0 _ => f0_let0(env0, d2e0)
@@ -1089,6 +1090,42 @@ in//let
 end (*let*) // end of [f0_tapp(env0,...)]
 //
 end (*local*)//end of [f0_tapp(env0,...)] 
+//
+(* ****** ****** *)
+//
+fun
+f0_dap0
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Edap0(d2f0) = d2e0.node()
+//
+val npf1 = (-1)
+val tres =
+s2typ_new0_x2tp(loc0)
+//
+val tfun =
+let
+val f2cl =
+s2typ_new0_x2tp(loc0)
+val
+t2ps = list_nil((*void*))
+in//let
+s2typ_make_node
+(sort2_none0()
+,T2Pfun1(f2cl,npf1,t2ps,tres))
+end (*let*) // end-of-[val(tfun)]
+//
+val d2f0 =
+trans2a_d2exp_tpck(env0,d2f0,tfun)
+//
+in//let
+  d2exp(loc0, tres, D2Edap0( d2f0 ))
+end (*let*) // end of [f0_dap0(env0,...)]
 //
 (* ****** ****** *)
 //

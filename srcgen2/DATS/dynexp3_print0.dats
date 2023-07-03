@@ -229,6 +229,9 @@ D3Etapq
 print("D3Etapq(",d3e1,";",tjas,")")
 //
 |
+D3Edap0(d3f0) =>
+print( "D3Edap0(", d3f0, ")" )
+|
 D3Edapp
 (d3f0,npf1,d3es) =>
 ( print("D3Edapp(")

@@ -19,10 +19,10 @@ excptcon FACTexn of ()
 
 fun
 fact21
-(x
+( x
 : sint
-) : sint = $raise FACTexn()
-
+) : sint = $raise FACTexn
+////
 (* ****** ****** *)
 //
 fun
