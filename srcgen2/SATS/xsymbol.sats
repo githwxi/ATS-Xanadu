@@ -204,4 +204,11 @@ symbl_wcard_kind
 //
 (* ****** ****** *)
 
+val
+P1TR_TBOX_symbl: symbl //=symbl("p1tr_tbox")
+val
+P2TR_TBOX_symbl: symbl //=symbl("p2tr_tbox")
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_xsymbol.sats] *)

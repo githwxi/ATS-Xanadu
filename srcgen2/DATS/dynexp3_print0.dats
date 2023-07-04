@@ -267,12 +267,25 @@ print("D3Etup0(",npf1,";",d3es,")"))
 D3Etup1
 (tknd,npf1,d3es) =>
 ( print("D3Etup1(")
-; print(tknd,";",npf1,";",d3es,")") )
+; print(tknd,";",npf1,";",d3es,")"))
 |
 D3Ercd2
 (tknd,npf1,ldes) =>
 ( print("D3Ercd2(")
-; print(tknd,";",npf1,";",ldes,")") )
+; print(tknd,";",npf1,";",ldes,")"))
+//
+|
+D3Eaddr
+(   d3e1   ) =>
+print("D3Eaddr(",d3e1,")")//left-val
+|
+D3Efold
+(   d3e1   ) =>
+print("D3Efold(",d3e1,")")//open-con
+|
+D3Efree
+(   d3e1   ) =>
+print("D3Efree(",d3e1,")")//free-con
 //
 |
 D3Ewhere

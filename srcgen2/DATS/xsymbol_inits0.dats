@@ -128,5 +128,10 @@ HX-2022-10-01: Various symbols
 #implval DLR_EXTYPE_symbl = symbl("$extype")
 //
 (* ****** ****** *)
+//
+#implval P1TR_TBOX_symbl = symbl("p1tr_tbox")
+#implval P2TR_TBOX_symbl = symbl("p2tr_tbox")
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xsymbol_inits0.dats] *)

@@ -489,6 +489,8 @@ d3exp_make_styp_node
 |D2Etup1 _ => f0_tup1(env0, d2e0)
 |D2Ercd2 _ => f0_rcd2(env0, d2e0)
 //
+|D2Eaddr _ => f0_addr(env0, d2e0)
+//
 |D2Ewhere _ => f0_where(env0, d2e0)
 //
 |D2Eassgn _ => f0_assgn(env0, d2e0)
@@ -956,6 +958,31 @@ val
 t2p0 =
 s2typ_rcd2(trcd , npf1 , l2t2plst(ldes))
 } (*where*) // end of [f0_rcd2(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_addr
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Eaddr(d2e1) = d2e0.node()
+//
+val
+d3e1 = trans23_d2exp(env0, d2e1)
+//
+in//let
+let
+val telt = d3e1.styp((*void*))
+val t2p0 = the_s2typ_p2tr1(telt)
+in//let
+  d3exp(loc0, t2p0, D3Eaddr(d3e1))
+end (*let*)
+end (*let*) // end of [f0_addr(env0,...)]
 //
 (* ****** ****** *)
 //

@@ -305,6 +305,17 @@ val () =
 d3explst_fpemsg(out, d3es) endlet
 //
 |
+D3Eaddr d3e1 =>
+let
+val () = d3exp_fpemsg(out , d3e1)
+endlet // end of [ D3Eaddr(d3e1) ]
+|
+D3Efree d3e1 =>
+let
+val () = d3exp_fpemsg(out , d3e1)
+endlet // end of [ D3Efree(d3e1) ]
+//
+|
 D3Eassgn
 (d3el, d3er) =>
 let
@@ -330,6 +341,9 @@ endlet // end of [ D3Et2pck(_, _) ]
 |D3Enone1(d2e1) => (   (*void*)   )
 |
 D3Eerrck(_,_) => d3exp_fpemsg(out, d3e)
+//
+|
+_(*otherwise*) => d3exp_fpemsg(out, d3e)
 //
 end (*let*) // end-of-(auxmain(out,d3e))
 

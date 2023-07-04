@@ -611,6 +611,7 @@ d2e0.node() of
 |D2Efix0 _ => f0_fix0(env0, d2e0)
 //
 |D2Eaddr _ => f0_addr(env0, d2e0)
+|D2Eeval _ => f0_eval(env0, d2e0)
 //
 |D2Ewhere _ => f0_where(env0, d2e0)
 //
@@ -1541,6 +1542,7 @@ f0_addr
 ! tr2aenv
 , d2e0: d2exp): d2exp =
 let
+//
 val loc0 = d2e0.lctn()
 val-
 D2Eaddr(d2e1) = d2e0.node()
@@ -1555,6 +1557,72 @@ the_s2typ_p2tr1(d2e1.styp())
 in//let
   d2exp(loc0, t2p0, D2Eaddr(d2e1))
 end (*let*) // end of [f0_addr(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_eval
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Eeval
+(  d2e1  ) = d2e0.node()
+//
+val
+d2e1 =
+trans2a_d2exp(env0, d2e1)
+//
+val
+t2p1 = d2e1.styp((*nil*))
+val
+t2p1 = s2typ_hnfiz0(t2p1)
+//
+val
+t2p0 =
+(
+if
+isP2TR(t2p1)
+then
+(
+case-
+t2p1.node() of
+|T2Papps
+(t2f1, t2ps) =>
+(
+  telt ) where
+{
+val-
+list_cons(telt, _) = t2ps }
+)
+else
+let
+val t2p0 =
+s2typ_new0_x2tp(loc0) in t2p0
+endlet//end-of-else//end-of-if
+) : s2typ // end of [ val(t2p0) ]
+//
+val () =
+prerrln("f0_eval: loc0 = ", loc0)
+val () =
+prerrln("f0_eval: t2p1 = ", t2p1)
+val () =
+prerrln("f0_eval: t2p0 = ", t2p0)
+//
+in//let
+  d2exp(loc0, t2p0, D2Eeval(d2e1))
+end where
+{
+//
+fun
+isP2TR
+( t2p1
+: s2typ): bool = s2typ_p2tr1q(t2p1)
+//
+}(*where*) // end of [f0_eval(env0,...)]
 //
 (* ****** ****** *)
 //
