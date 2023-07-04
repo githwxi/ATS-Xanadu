@@ -55,6 +55,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 (* ****** ****** *)
+#staload "./../SATS/xglobal.sats"
+(* ****** ****** *)
 
 local
 //
@@ -156,20 +158,29 @@ a0ref_make_1val
 in//local
 //
 #implfun
-the_s2cst_p2tr
+the_s2cst_p1tr0
   ( (*void*) ) =
 (
 case+ s2cr[] of
 //
 |
-optn_cons
-(  s2c1  ) => s2c1
-//
-|optn_nil() =>
+optn_nil() =>
 let
 val s2c1 =
-s2cst_make_idst
-(loc0, name, s2t1) where
+(
+case- opt1 of
+| ~
+optn_vt_cons(s2i1) =>
+(
+case+ s2i1 of
+|
+S2ITMcst(s2cs) =>
+(
+  s2c1 ) where
+{
+val-
+list_cons(s2c1, _) = s2cs } )
+) where // end of [val(s2c1)]
 {
 //
 val
@@ -179,12 +190,16 @@ val
 name =
 symbl("the_s2exp_p1tr0")
 //
-val s2t1 = the_sort2_tbox }
+val opt1 =
+the_sexpenv_pvsfind(name) }
 //
 in//let
 (s2cr[] := optn_cons(s2c1); s2c1)
 end (*let*) // end of [optn_nil()]
-) (*case+*) // end of [the_s2cst_p1tr]
+//
+| optn_cons(  s2c1  ) => (  s2c1  )
+//
+) (*case+*) // end of [the_s2cst_p1tr0]
 //
 endloc (*local*) // end of [local(predefined)]
 
@@ -201,20 +216,29 @@ a0ref_make_1val
 in//local
 //
 #implfun
-the_s2cst_p2tr
+the_s2cst_p2tr0
   ( (*void*) ) =
 (
 case+ s2cr[] of
 //
 |
-optn_cons
-(  s2c1  ) => s2c1
-//
-|optn_nil() =>
+optn_nil() =>
 let
 val s2c1 =
-s2cst_make_idst
-(loc0, name, s2t1) where
+(
+case- opt1 of
+| ~
+optn_vt_cons(s2i1) =>
+(
+case+ s2i1 of
+|
+S2ITMcst(s2cs) =>
+(
+  s2c1 ) where
+{
+val-
+list_cons(s2c1, _) = s2cs } )
+) where // end of [val(s2c1)]
 {
 //
 val
@@ -224,15 +248,16 @@ val
 name =
 symbl("the_s2exp_p2tr0")
 //
-val targ = the_sort2_vtbx
-val tres = the_sort2_tbox
-val s2t1 =
-S2Tfun1(list_sing(targ), tres)}
+val opt1 =
+the_sexpenv_pvsfind(name) }
 //
 in//let
 (s2cr[] := optn_cons(s2c1); s2c1)
 end (*let*) // end of [optn_nil()]
-) (*case+*) // end of [the_s2cst_p2tr]
+//
+| optn_cons(  s2c1  ) => (  s2c1  )
+//
+) (*case+*) // end of [the_s2cst_p2tr0]
 //
 endloc (*local*) // end of [local(predefined)]
 

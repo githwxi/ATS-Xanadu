@@ -40,7 +40,7 @@ the_s2exp_void = void
 #typedef
 the_s2exp_p1tr0 = p1tr0
 #typedef
-the_s2exp_p2tr0(a:vt) = p2tr(a)
+the_s2exp_p2tr0(a:vt) = p2tr0(a)
 //
 (* ****** ****** *)
 //
@@ -103,8 +103,10 @@ the_s2exp_loptn0(a:vt) = optn_vt(a)
 //
 (* ****** ****** *)
 //
+(*
 #vwtpdef
 the_s2exp_excptn(*void*) = excptn_vt
+*)
 //
 (* ****** ****** *)
 //
