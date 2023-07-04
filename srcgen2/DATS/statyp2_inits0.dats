@@ -60,6 +60,11 @@ ATS_PACKNAME
 #staload "./../SATS/xglobal.sats"
 (* ****** ****** *)
 
+#symload name with s2cst_get_name
+#symload sort with s2cst_get_sort
+
+(* ****** ****** *)
+
 local
 
 (* ****** ****** *)
@@ -121,8 +126,7 @@ t2p0 = t2pr[]
 in//let
 case+
 t2p0.node() of
-|
-T2Pnone0() =>
+|T2Pnone0() =>
 let
 val opt1 =
 the_sexpenv_pvsfind
@@ -135,8 +139,7 @@ optn_vt_nil() => t2p0
 optn_vt_cons(s2i1) =>
 (
 case+ s2i1 of
-|
-S2ITMcst(s2cs) =>
+|S2ITMcst(s2cs) =>
 let
 val
 t2p1 =
@@ -148,10 +151,10 @@ list_cons(s2c1, _) = s2cs
 in//let
   (t2pr[] := t2p1; t2p1) end
 //
-| _(*non-S2ITMcst*) => (t2p0)
+|_(*non-S2ITMcst*) => ( t2p0 )
 )
 end (*let*) // end of [T2Pnone0]
-| _(*non-T2Pnone0*) => (  t2p0  )
+|_(*non-T2Pnone0*) => (   t2p0   )
 end (*let*) // end of [s2typ_name_t2pr()]
 
 (* ****** ****** *)
@@ -181,57 +184,6 @@ s2typ_name_t2pr(strn_name, strn_t2pr)
 end (*local*) // end of [local(the_s2typs)]
 
 (* ****** ****** *)
-//
-local
-//
-val
-t2p0 = s2typ_none0()
-val
-excptn_t2pr =
-a0ref_make_1val<s2typ>(t2p0)
-//
-in//local
-//
-#implfun
-the_s2typ_excptn() =
-let
-val
-t2p0 = excptn_t2pr[]
-in//let
-case+
-t2p0.node() of
-| T2Pnone0() =>
-(
-let
-val s2c0 =
-the_s2cst_excptn((*void*))
-val opt1 =
-the_sexpenv_pvsfind(s2c0.name())
-in//let
-case+ opt1 of
-|
-S2ITMcst(s2cs) =>
-let
-val t2p1 =
-s2typ_cst(s2c1) where
-{
-val-
-list_cons(s2c1, _) = s2cs }
-in//let
-(excptn_t2pr[] := t2p1; t2p1) end
-//
-| _(*non-S2ITMcst*) => (  t2p0  )
-//
-end (*let*) // end of [T2Pnone0()]
-)
-//
-| _(*non-T2Pnone0*) => (  t2p0  )
-//
-end (*let*) // end of [the_s2typ_excptn()]
-//
-end (*local*) // end of [local(the_s2typ_excptn)]
-//
-(* ****** ****** *)
 
 local
 //
@@ -255,6 +207,129 @@ tmpmap_insert_any(mymap, s2c0.stmp(), styp)
 //
 end (*local*) // end of [local(the_s2cst_s2typ)]
 
+(* ****** ****** *)
+//
+local
+//
+val
+t2p0 = s2typ_none0()
+val
+p1tr0_t2pr =
+a0ref_make_1val<s2typ>(t2p0)
+//
+in//local
+//
+#implfun
+the_s2typ_p1tr0() =
+let
+val t2p0 = p1tr0_t2pr[]
+in//let
+case+
+t2p0.node() of
+//
+|T2Pnone0() =>
+let
+val t2p1 =
+s2typ_cst(s2c1) where
+{
+val
+s2c1 = the_s2cst_p1tr0() }
+in//let
+(p1tr0_t2pr[] := t2p1; t2p1) end
+//
+|_(*non-T2Pnone0*) => (   t2p0   )
+//
+end (*let*) // end of [the_s2typ_p1tr0()]
+//
+end (*local*) // end of [local(the_s2typ_p1tr0)]
+//
+(* ****** ****** *)
+//
+local
+//
+val
+t2p0 = s2typ_none0()
+val
+p2tr0_t2pr =
+a0ref_make_1val<s2typ>(t2p0)
+//
+in//local
+//
+#implfun
+the_s2typ_p2tr0() =
+let
+val t2p0 = p2tr0_t2pr[]
+in//let
+case+
+t2p0.node() of
+//
+|T2Pnone0() =>
+let
+val t2p1 =
+s2typ_cst(s2c1) where
+{
+val
+s2c1 = the_s2cst_p2tr0() }
+in//let
+(p2tr0_t2pr[] := t2p1; t2p1) end
+//
+|_(*non-T2Pnone0*) => (   t2p0   )
+//
+end (*let*) // end of [the_s2typ_p2tr0()]
+//
+end (*local*) // end of [local(the_s2typ_p2tr0)]
+//
+(* ****** ****** *)
+//
+local
+in//local
+#implfun
+the_s2typ_p2tr1(telt) =
+let
+val s2t0 = the_sort2_tbox
+val tfun = the_s2typ_p2tr0()
+in//let
+s2typ(s2t0, T2Papps(tfun, list_sing(telt)))
+end (*let*) // end of [the_s2typ_p2tr1(telt)]
+end (*local*) // end of [local(the_s2typ_p2tr1)]
+//
+(* ****** ****** *)
+//
+local
+//
+val
+t2p0 = s2typ_none0()
+val
+excptn_t2pr =
+a0ref_make_1val<s2typ>(t2p0)
+//
+in//local
+//
+#implfun
+the_s2typ_excptn() =
+let
+val
+t2p0 = excptn_t2pr[]
+in//let
+case+
+t2p0.node() of
+|T2Pnone0() =>
+(
+let
+val s2c0 =
+the_s2cst_excptn((*void*))
+val t2p0 = s2typ_cst(s2c0)
+in//let
+(excptn_t2pr[] := t2p0; t2p0)
+end (*let*) // end of [T2Pnone0()]
+)
+//
+|_(*non-T2Pnone0*) => (   t2p0   )
+//
+end (*let*) // end of [the_s2typ_excptn()]
+//
+end (*local*) // end of [local(the_s2typ_excptn)]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_statyp2_inits0.dats] *)

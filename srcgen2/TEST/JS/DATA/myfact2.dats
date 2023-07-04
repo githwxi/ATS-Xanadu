@@ -75,7 +75,7 @@ if i < x then loop $(i+1, i*r+r) else r
 }
 
 (* ****** ****** *)
-////
+
 fun
 fact27(x: sint) =
 (
@@ -93,8 +93,7 @@ prs = $addr(res)
 fnx
 loop(i: int): void =
 if i < x then
-(!prs := !prs * (i+1); loop(i+1))
-} (* end of [fact27(x: sint)] *)
+(!prs := !prs * (i+1); loop(i+1)) }//fun
 
 (* ****** ****** *)
 

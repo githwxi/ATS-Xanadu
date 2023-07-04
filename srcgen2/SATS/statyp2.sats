@@ -139,7 +139,11 @@ the_s2typ_strn((*void*)): s2typ
 //
 (* ****** ****** *)
 fun
-the_s2typ_p2tr(elt:s2typ): s2typ
+the_s2typ_p1tr0((*void*)): s2typ
+fun
+the_s2typ_p2tr0((*void*)): s2typ
+fun
+the_s2typ_p2tr1(elt:s2typ): s2typ
 (* ****** ****** *)
 fun
 the_s2typ_excptn((*void*)): s2typ

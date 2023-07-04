@@ -1007,12 +1007,14 @@ stropt1_vt
 #vwtpdef stropt_vt(n:i0) = stropt1_vt(n)
 //
 (* ****** ****** *)
+(*
 //
 // HX:
 // For exceptions:
 //
 #absvwtp excptn_vt <= p0tr
 //
+*)
 (* ****** ****** *)
 //
 #abstbox

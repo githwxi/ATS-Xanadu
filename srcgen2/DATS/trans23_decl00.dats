@@ -158,6 +158,11 @@ D2Cfundclst _ => f0_fundclst(env0, d2cl)
 |
 D2Cimplmnt0 _ => f0_implmnt0(env0, d2cl)
 //
+|
+D2Cexcptcon _ => f0_excptcon(env0, d2cl)
+|
+D2Cdatatype _ => f0_datatype(env0, d2cl)
+//
 | _(*otherwise*) =>
 let
   val loc0 = d2cl.lctn()
@@ -408,6 +413,30 @@ loc0,
 D3Cimplmnt0
 (tknd,sqas,tqas,dimp,tias,f3as,sres,dexp))
 end (*let*) // end of [f0_implmnt0(env0,d2cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_excptcon
+( env0:
+! tr23env
+, d2cl: d2ecl): d3ecl =
+let
+val-D2Cexcptcon _ = d2cl.node()
+in//let
+d3ecl_make_node(d2cl.lctn(), D3Cd2ecl(d2cl))
+end (*let*) // end of [f0_excptcon(env0,d2cl)]
+//
+fun
+f0_datatype
+( env0:
+! tr23env
+, d2cl: d2ecl): d3ecl =
+let
+val-D2Cdatatype _ = d2cl.node()
+in//let
+d3ecl_make_node(d2cl.lctn(), D3Cd2ecl(d2cl))
+end (*let*) // end of [f0_datatype(env0,d2cl)]
 //
 (* ****** ****** *)
 //

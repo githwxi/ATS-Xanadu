@@ -401,10 +401,10 @@ s2var_make_idst
 (* ****** ****** *)
 //
 fun
-the_s2cst_p1tr
+the_s2cst_p1tr0
 (   (*void*)   ): ( s2cst )
 fun
-the_s2cst_p2tr
+the_s2cst_p2tr0
 (   (*void*)   ): ( s2cst )
 //
 (* ****** ****** *)

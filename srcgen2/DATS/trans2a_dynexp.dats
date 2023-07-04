@@ -1546,9 +1546,11 @@ val-
 D2Eaddr(d2e1) = d2e0.node()
 //
 val
-d2e1 = trans2a_d2exp(env0, d2e1)
+d2e1 =
+trans2a_d2exp(env0, d2e1)
 val
-t2p0 = the_s2typ_p2tr(d2e1.styp())
+t2p0 =
+the_s2typ_p2tr1(d2e1.styp())
 //
 in//let
   d2exp(loc0, t2p0, D2Eaddr(d2e1))

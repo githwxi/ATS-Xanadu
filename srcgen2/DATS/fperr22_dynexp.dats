@@ -377,8 +377,12 @@ endlet
 |D2Enone0(    ) => (   (*void*)   )
 |D2Enone1(d1e1) => (   (*void*)   )
 |D2Enone2(d2e1) => (   (*void*)   )
+//
 |
 D2Eerrck(_,_) => fperr22_d2exp(out, d2e)
+//
+|
+_(*otherwise*) => fperr22_d2exp(out, d2e)
 //
 end (*let*) // end-of-(auxmain(out, d2e))
 
