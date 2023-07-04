@@ -75,7 +75,7 @@ if i < x then loop $(i+1, i*r+r) else r
 }
 
 (* ****** ****** *)
-
+////
 fun
 fact27(x: sint) =
 (
