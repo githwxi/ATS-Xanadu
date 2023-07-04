@@ -55,6 +55,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload _ = "./statyp2_tmplib.dats"
 (* ****** ****** *)
+#symload name with s2cst_get_name
+(* ****** ****** *)
 //
 #implfun
 s2vts_search_opt
@@ -108,6 +110,53 @@ end (*let*)
 ) (*case+*)//end-[auxmain(s2vs,t2ps)]
 //
 } (*where*)//end-[s2vts_make_s2vs_t2ps]
+//
+(* ****** ****** *)
+//
+local
+//
+fun
+isP1TR
+(s2c0: s2cst): bool =
+(s2c0.name() = P1TR_TBOX_symbl)
+fun
+isP2TR
+(s2c0: s2cst): bool =
+(s2c0.name() = P2TR_TBOX_symbl)
+//
+in//local
+//
+#implfun
+s2typ_p1tr0q(t2p0) =
+(
+case+
+t2p0.node() of
+|
+T2Pcst(s2c0) =>
+isP2TR(s2c0) | _(*else*) => false)
+//
+#implfun
+s2typ_p2tr0q(t2p0) =
+(
+case+
+t2p0.node() of
+|
+T2Pcst(s2c0) =>
+isP2TR(s2c0) | _(*else*) => false)
+//
+end//end of [local(s2typ_p1tr0q/p2tr0q]
+//
+(* ****** ****** *)
+//
+#implfun
+s2typ_p2tr1q(t2p0) =
+(
+case+
+t2p0.node() of
+|
+T2Papps
+(t2f0, _) =>
+s2typ_p2tr0q(t2f0) | _(*else*) => false)
 //
 (* ****** ****** *)
 

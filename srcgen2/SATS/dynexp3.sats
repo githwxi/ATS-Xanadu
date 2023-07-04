@@ -482,9 +482,14 @@ d3exp_node =
 |D3Edapp of
 (d3exp, sint(*npf*), d3explst)
 //
-//
 |D3Elet0 of (d3eclist, d3exp)
-|D3Ewhere of (d3exp, d3eclist)
+//
+|D3Eaddr of (d3exp)//left-val
+|D3Efold of (d3exp)//open-con
+|D3Efree of (d3exp)//free-con
+//
+|
+D3Ewhere of (d3exp, d3eclist)
 //
 |
 D3Eassgn of

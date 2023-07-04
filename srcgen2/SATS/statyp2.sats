@@ -277,6 +277,13 @@ s2vts_make_s2vs_t2ps
 s2vts with s2vts_make_s2vs_t2ps
 //
 (* ****** ****** *)
+fun
+s2typ_p1tr0q(t2p0:s2typ): bool
+fun
+s2typ_p2tr0q(t2p0:s2typ): bool
+fun
+s2typ_p2tr1q(t2p0:s2typ): bool
+(* ****** ****** *)
 //
 fun // HX: for
 s2typ_xtpck0 // occurs-check
@@ -299,7 +306,7 @@ s2varlst_imprq(s2varlst): s2varlst
 (* ****** ****** *)
 //
 fun
-s2exp_stpize(s2e0:s2exp): s2typ
+s2exp_stpize(s2e0:s2exp): ( s2typ )
 fun
 s2explst_stpize(s2explst): s2typlst
 fun

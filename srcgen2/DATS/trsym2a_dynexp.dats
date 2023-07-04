@@ -586,6 +586,31 @@ val () =
 trsym2a_d2explst(env0, d2es) end
 //
 |
+D2Eaddr
+(   d2e1   ) =>
+let
+val () =
+  trsym2a_d2exp(env0 , d2e1) end
+|
+D2Efold
+(   d2e1   ) =>
+let
+val () =
+  trsym2a_d2exp(env0 , d2e1) end
+|
+D2Eeval
+(   d2e1   ) =>
+let
+val () =
+  trsym2a_d2exp(env0 , d2e1) end
+|
+D2Efree
+(   d2e1   ) =>
+let
+val () =
+  trsym2a_d2exp(env0 , d2e1) end
+//
+|
 D2Ewhere
 (d2e1, dcls) =>
 (
