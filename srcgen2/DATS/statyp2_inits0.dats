@@ -151,7 +151,7 @@ in//let
 | _(*non-S2ITMcst*) => (t2p0)
 )
 end (*let*) // end of [T2Pnone0]
-| _(*non-T2Pnone0*) => (t2p0)
+| _(*non-T2Pnone0*) => (  t2p0  )
 end (*let*) // end of [s2typ_name_t2pr()]
 
 (* ****** ****** *)
@@ -182,9 +182,54 @@ end (*local*) // end of [local(the_s2typs)]
 
 (* ****** ****** *)
 //
+local
+//
+val
+t2p0 = s2typ_none0()
+val
+excptn_t2pr =
+a0ref_make_1val<s2typ>(t2p0)
+//
+in//local
+//
 #implfun
 the_s2typ_excptn() =
-s2typ_cst(the_s2cst_excptn((*void*)))
+let
+val
+t2p0 = excptn_t2pr[]
+in//let
+case+
+t2p0.node() of
+| T2Pnone0() =>
+(
+let
+val s2c0 =
+the_s2cst_excptn((*void*))
+val opt1 =
+the_sexpenv_pvsfind(s2c0.name())
+in//let
+case+ opt1 of
+|
+S2ITMcst(s2cs) =>
+let
+val t2p1 =
+s2typ_cst(s2c1) where
+{
+val-
+list_cons(s2c1, _) = s2cs }
+in//let
+(excptn_t2pr[] := t2p1; t2p1) end
+//
+| _(*non-S2ITMcst*) => (  t2p0  )
+//
+end (*let*) // end of [T2Pnone0()]
+)
+//
+| _(*non-T2Pnone0*) => (  t2p0  )
+//
+end (*let*) // end of [the_s2typ_excptn()]
+//
+end (*local*) // end of [local(the_s2typ_excptn)]
 //
 (* ****** ****** *)
 
