@@ -604,6 +604,16 @@ val () = d2clslst_fpemsg(out, dcls)
 endlet
 //
 |
+D2Eseqn
+(d2es, d2e1) =>
+let
+//
+val () =
+d2explst_fpemsg(out, d2es)
+//
+in d2exp_fpemsg( out, d2e1 ) endlet
+//
+|
 D2Etup0
 (npf1, d2es) =>
 let
@@ -704,7 +714,11 @@ endlet//end-of-[D2Eannot(d2e1,...)]
 |
 D2Eerrck(_,_) => d2exp_fpemsg(out, d2e)
 //
-end (*let*) // end-of-(auxmain(out,d2e))
+end where
+{
+  val
+  ( ) = prerrln("auxmain: d2e = ", d2e)
+} (*where*) // end-of-(auxmain(out,d2e))
 
 (* ****** ****** *)
 in(* in-of-local *)

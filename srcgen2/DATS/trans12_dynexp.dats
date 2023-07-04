@@ -1781,7 +1781,7 @@ D1Ea1pp
 in//let
 //
 if
-isAMP0(d1e1)
+isAMP0(d1f0)
 then
 let
 val d2e1 =
@@ -1792,7 +1792,7 @@ end (*let*) // end-of-then
 else
 (
 if
-isBANG(d1e1)
+isBANG(d1f0)
 then
 let
 val d2e1 =
@@ -1803,7 +1803,7 @@ end (*let*) // end-of-then
 else
 (
 if
-isADDR(d1e1)
+isADDR(d1f0)
 then
 let
 val d2e1 =
@@ -1814,7 +1814,7 @@ end (*let*) // end-of-then
 else
 (
 if
-isEVAL(d1e1)
+isEVAL(d1f0)
 then
 let
 val d2e1 =

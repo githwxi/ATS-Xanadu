@@ -610,6 +610,8 @@ d2e0.node() of
 |D2Elam0 _ => f0_lam0(env0, d2e0)
 |D2Efix0 _ => f0_fix0(env0, d2e0)
 //
+|D2Eaddr _ => f0_addr(env0, d2e0)
+//
 |D2Ewhere _ => f0_where(env0, d2e0)
 //
 |D2Eassgn _ => f0_assgn(env0, d2e0)
@@ -1530,6 +1532,27 @@ val (  ) = prerrln
 *)
 //
 } (*where*) // end of [f0_fix0(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_addr
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+val loc0 = d2e0.lctn()
+val-
+D2Eaddr(d2e1) = d2e0.node()
+//
+val
+d2e1 = trans2a_d2exp(env0, d2e1)
+val
+t2p0 = the_s2typ_p2tr(d2e1.styp())
+//
+in//let
+  d2exp(loc0, t2p0, D2Eaddr(d2e1))
+end (*let*) // end of [f0_addr(env0,...)]
 //
 (* ****** ****** *)
 //

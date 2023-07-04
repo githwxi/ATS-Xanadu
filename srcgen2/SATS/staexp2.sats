@@ -401,6 +401,15 @@ s2var_make_idst
 (* ****** ****** *)
 //
 fun
+the_s2cst_p1tr
+(   (*void*)   ): ( s2cst )
+fun
+the_s2cst_p2tr
+(   (*void*)   ): ( s2cst )
+//
+(* ****** ****** *)
+//
+fun
 the_s2cst_excptn
 (   (*void*)   ): ( s2cst )
 //
