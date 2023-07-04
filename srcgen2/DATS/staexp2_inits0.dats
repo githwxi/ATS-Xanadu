@@ -156,6 +156,99 @@ a0ref_make_1val
 in//local
 //
 #implfun
+the_s2cst_p2tr
+  ( (*void*) ) =
+(
+case+ s2cr[] of
+//
+|
+optn_cons
+(  s2c1  ) => s2c1
+//
+|optn_nil() =>
+let
+val s2c1 =
+s2cst_make_idst
+(loc0, name, s2t1) where
+{
+//
+val
+loc0 =
+loctn_dummy((*void*))
+val
+name =
+symbl("the_s2exp_p1tr0")
+//
+val s2t1 = the_sort2_tbox }
+//
+in//let
+(s2cr[] := optn_cons(s2c1); s2c1)
+end (*let*) // end of [optn_nil()]
+) (*case+*) // end of [the_s2cst_p1tr]
+//
+endloc (*local*) // end of [local(predefined)]
+
+(* ****** ****** *)
+
+local
+//
+val
+s2cr =
+a0ref_make_1val
+<s2cstopt>
+(optn_nil(*void*))
+//
+in//local
+//
+#implfun
+the_s2cst_p2tr
+  ( (*void*) ) =
+(
+case+ s2cr[] of
+//
+|
+optn_cons
+(  s2c1  ) => s2c1
+//
+|optn_nil() =>
+let
+val s2c1 =
+s2cst_make_idst
+(loc0, name, s2t1) where
+{
+//
+val
+loc0 =
+loctn_dummy((*void*))
+val
+name =
+symbl("the_s2exp_p2tr0")
+//
+val targ = the_sort2_vtbx
+val tres = the_sort2_tbox
+val s2t1 =
+S2Tfun1(list_sing(targ), tres)}
+//
+in//let
+(s2cr[] := optn_cons(s2c1); s2c1)
+end (*let*) // end of [optn_nil()]
+) (*case+*) // end of [the_s2cst_p2tr]
+//
+endloc (*local*) // end of [local(predefined)]
+
+(* ****** ****** *)
+
+local
+//
+val
+s2cr =
+a0ref_make_1val
+<s2cstopt>
+(optn_nil(*void*))
+//
+in//local
+//
+#implfun
 the_s2cst_excptn
   ( (*void*) ) =
 (
@@ -171,13 +264,18 @@ val s2c1 =
 s2cst_make_idst
 (loc0, name, s2t1) where
 {
-val loc0 =
-loctn_dummy()
-val name =
+//
+val
+loc0 =
+loctn_dummy((*void*))
+val
+name =
 symbl("the_s2exp_excptn")
+//
 val s2t1 = the_sort2_vtbx }
+//
 in//let
-s2cr[] := optn_cons(s2c1); s2c1
+(s2cr[] := optn_cons(s2c1); s2c1)
 end (*let*) // end of [optn_nil()]
 ) (*case+*) // end of [the_s2cst_excptn]
 //
