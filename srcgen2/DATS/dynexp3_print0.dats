@@ -279,9 +279,15 @@ D3Eaddr
 (   d3e1   ) =>
 print("D3Eaddr(",d3e1,")")//left-val
 |
+D3Eflat
+(   d3e1   ) =>
+print("D3Eflat(",d3e1,")")//left-val
+//
+|
 D3Efold
 (   d3e1   ) =>
 print("D3Efold(",d3e1,")")//open-con
+//
 |
 D3Eeval
 (   d3e1   ) =>

@@ -484,8 +484,15 @@ d3exp_node =
 //
 |D3Elet0 of (d3eclist, d3exp)
 //
+(*
+HX-2023-07-05:
+two attributes of left values
+*)
 |D3Eaddr of (d3exp)//left-val
+|D3Eflat of (d3exp)//left-val
+//
 |D3Efold of (d3exp)//open-con
+//
 |D3Eeval of (d3exp)//eval-fun
 |D3Efree of (d3exp)//free-con
 //
