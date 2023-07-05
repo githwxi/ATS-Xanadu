@@ -513,29 +513,29 @@ f0_var
 ( env0:
 ! tr23env
 , d2e0: d2exp): d3exp =
-(
-d3exp_make_styp_node
-( loc0
-, t2p0, D3Evar(d2v1))) where
-{
+let
 //
 val loc0 = d2e0.lctn()
 //
 val-
 D2Evar(d2v1) = d2e0.node()
 //
-val t2p0 =
-let
-val
-t2p0 = d2v1.styp((*nil*))
+val t2p1 = d2v1.styp((*0*))
+//
+val d3e1 =
+d3exp_make_styp_node
+( loc0, t2p1, D3Evar(d2v1) )
+//
 in//let
 (
 case+
-t2p0.node() of
-|T2Plft(t2p1) => t2p1
-|_(*non-T2Plft*) => t2p0) endlet
+t2p1.node() of
+| T2Plft(t2p1) =>
+d3exp_make_styp_node
+( loc0, t2p1, D3Eflat(d3e1) )
+| _(*non-T2Plft*) => ( d3e1 ) )
 //
-} (*where*) // end of [f0_var(...)]
+end (*let*) // end of [f0_var(...)]
 //
 (* ****** ****** *)
 //
