@@ -486,10 +486,20 @@ d3exp_node =
 //
 |D3Eaddr of (d3exp)//left-val
 |D3Efold of (d3exp)//open-con
+|D3Eeval of (d3exp)//eval-fun
 |D3Efree of (d3exp)//free-con
 //
 |
-D3Ewhere of (d3exp, d3eclist)
+D3Edp2tr of (d3exp)//p2tr-eval
+(*
+|
+D3Edlaz0 of (d3exp)//laz0-eval
+|
+D3Edlaz1 of (d3exp)//laz0-eval
+*)
+//
+|
+D3Ewhere of ( d3exp, d3eclist )
 //
 |
 D3Eassgn of

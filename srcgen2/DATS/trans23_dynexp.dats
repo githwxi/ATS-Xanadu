@@ -490,6 +490,7 @@ d3exp_make_styp_node
 |D2Ercd2 _ => f0_rcd2(env0, d2e0)
 //
 |D2Eaddr _ => f0_addr(env0, d2e0)
+|D2Eeval _ => f0_eval(env0, d2e0)
 //
 |D2Ewhere _ => f0_where(env0, d2e0)
 //
@@ -983,6 +984,66 @@ in//let
   d3exp(loc0, t2p0, D3Eaddr(d3e1))
 end (*let*)
 end (*let*) // end of [f0_addr(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_eval
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Eeval(d2e1) = d2e0.node()
+//
+val
+d3e1 = trans23_d2exp(env0, d2e1)
+//
+in//let
+//
+let
+val
+t2p1 = d3e1.styp((*0*))
+val
+t2p1 = s2typ_hnfiz0(t2p1)
+in//let
+//
+if
+isP2TR(t2p1)
+then
+(
+case-
+t2p1.node() of
+|T2Papps
+(t2f1, t2ps) =>
+let
+val-
+list_cons(telt, _) = t2ps
+in//let
+d3exp
+(loc0, telt, D3Edp2tr(d3e1))
+end
+) (* end-of-then *)
+else
+let
+val t2p0 =
+s2typ_new0_x2tp(loc0) in
+d3exp(loc0, t2p0, D3Eeval(d3e1))
+endlet // end-of-else // end-of-[if]
+//
+end//let
+//
+end where // end-of-let
+{
+//
+  fun
+  isP2TR
+  ( t2p1
+  : s2typ): bool = s2typ_p2tr1q(t2p1)
+//
+}(*where*) // end of [f0_eval(env0,...)]
 //
 (* ****** ****** *)
 //

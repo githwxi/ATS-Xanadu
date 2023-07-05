@@ -310,10 +310,27 @@ let
 val () = d3exp_fpemsg(out , d3e1)
 endlet // end of [ D3Eaddr(d3e1) ]
 |
+D3Efold d3e1 =>
+let
+val () = d3exp_fpemsg(out , d3e1)
+endlet // end of [ D3Efold(d3e1) ]
+|
+D3Eeval d3e1 =>
+let
+val () = d3exp_fpemsg(out , d3e1)
+endlet // end of [ D3Eeval(d3e1) ]
+|
 D3Efree d3e1 =>
 let
 val () = d3exp_fpemsg(out , d3e1)
 endlet // end of [ D3Efree(d3e1) ]
+//
+|
+D3Edp2tr
+(   d3e1   ) =>
+let
+val () = d3exp_fpemsg(out , d3e1)
+endlet // end of [ D3Edp2tr(d3e1) ]
 //
 |
 D3Eassgn

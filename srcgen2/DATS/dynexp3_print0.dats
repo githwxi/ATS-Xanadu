@@ -283,9 +283,18 @@ D3Efold
 (   d3e1   ) =>
 print("D3Efold(",d3e1,")")//open-con
 |
+D3Eeval
+(   d3e1   ) =>
+print("D3Eeval(",d3e1,")")//eval-fun
+|
 D3Efree
 (   d3e1   ) =>
 print("D3Efree(",d3e1,")")//free-con
+//
+|
+D3Edp2tr
+(   d3e1   ) =>
+print("D3Edp2tr(",d3e1,")")//de-p2tr
 //
 |
 D3Ewhere
