@@ -640,6 +640,10 @@ D2Pannot of
 D2Pg1mac of
 (g1mac(*unknown*))//HX: temp or error!
 //
+(*
+|
+D2Pl2bck of (d2pat, label)//HX: casting
+*)
 |
 D2Pt2pck of (d2pat, s2typ)//HX: casting
 //
@@ -995,6 +999,8 @@ D2Eexists of
 D2Eg1mac of
 (g1mac(*unknown*))//HX: temp or error!
 //
+|
+D2El2bck of (d2exp, label)//HX: casting
 |
 D2Et2pck of (d2exp, s2typ)//HX: casting
 //

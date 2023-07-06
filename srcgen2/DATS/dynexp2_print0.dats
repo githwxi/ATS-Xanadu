@@ -500,6 +500,10 @@ print("D2Eexists(",s2es,";",d2e1,")"))
 //
 |D2Eg1mac(g1m1) => print("D2Eg1mac(",g1m1,")")
 //
+|D2El2bck
+( d2e1 , lab2 ) =>
+(
+ print("D2El2bck(",d2e1,";",lab2,")") )
 |D2Et2pck
 ( d2e1 , t2p2 ) =>
 (

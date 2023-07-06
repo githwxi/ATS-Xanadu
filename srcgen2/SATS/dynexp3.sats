@@ -537,6 +537,8 @@ token(*knd*), sint(*npf*), l3d3elst)
 D3Eraise of (token, d3exp(*lin-exn*))
 //
 |
+D3El2bck of (d3exp, label)//HX: casting
+|
 D3Et2pck of (d3exp, s2typ)//HX: casting
 //
 |D3Enone0 of ((*0*))
