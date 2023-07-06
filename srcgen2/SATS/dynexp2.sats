@@ -903,6 +903,10 @@ d2exp_node =
 |D2Edapp of
 (d2exp, sint(*npf*), d2explst)
 //
+|
+D2Eproj of
+(token,d2rxp,label,d2exp(*tup*))
+//
 |D2Elet0 of (d2eclist, d2exp)
 |
 D2Eift0 of
@@ -949,9 +953,6 @@ D2Etry0 of
 | D2Efold of d2exp(*open-con*)
 | D2Eeval of d2exp(*ptr/lazy*)
 | D2Efree of d2exp(*free-con*)
-//
-| D2Eproj of
-  (d2exp(*t1up/r2cd*), label)
 //
 | D2Ewhere of (d2exp, d2eclist)
 //
@@ -1118,10 +1119,17 @@ d2exp_dapp
 , d2f0: d2exp
 , npf1: (sint), d2es: d2explst): d2exp
 (* ****** ****** *)
+fun
+d2exp_proj
+( loc0: loc_t
+, tknd: token
+, drxp: d2rxp
+, dlab: label, dtup: d2exp): d2exp
+(* ****** ****** *)
 //
 fun
 d2exp_make_node
-(loc:loc_t,nod:d2exp_node): d2exp
+(loc0:loc_t,nod1:d2exp_node): d2exp
 //
 #symload d2exp with d2exp_make_node
 //
