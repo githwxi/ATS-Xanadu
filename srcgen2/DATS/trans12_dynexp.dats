@@ -1624,10 +1624,10 @@ in//let
 let
 val
 drxp = d2rxp_new1(loc0)
-in
+in//let
 d2exp_sym0(loc0, drxp, d1e0, dpis)
-end
-end where
+end//let
+end where // end-of-let
 {
 (*
 val (  ) =
@@ -2399,9 +2399,17 @@ end (*let*) // end-[non-D1Elist]
 ) : d2explstopt // end of [val(darg)]
 //
 in//let
-d2exp_make_node
-( loc0
-, D2Edtsel(tknd,lab1,dpis,npf1,darg))
+//
+let
+val drxp =
+d2rxp_new1(loc0)
+in//let
+d2exp_make_node(
+loc0,
+D2Edtsel
+(tknd, drxp, lab1, dpis, npf1, darg))
+end (*let*)
+//
 end (*let*) // end of [f0_dtsel(env0,d1e0)]
 //
 (* ****** ****** *)
@@ -2420,7 +2428,7 @@ D1Es1eq
 ( d1es ) = d1e0.node()
 //
 in
-  trans12_d1expseq(env0, loc0, d1es)
+  trans12_d1expseq( env0, loc0, d1es )
 end (*let*) // end of [f0_s1eq(env0,d1e0)]
 //
 fun
@@ -2439,7 +2447,7 @@ D1Es2eq
 val d1es = list_append(des1, des2)
 //
 in
-  trans12_d1expseq(env0, loc0, d1es)
+  trans12_d1expseq( env0, loc0, d1es )
 end (*let*) // end of [f0_s2eq(env0,d1e0)]
 //
 (* ****** ****** *)

@@ -1717,15 +1717,18 @@ val loc0 = d2e0.lctn()
 val-
 D2Edtsel
 ( tknd
+, drxp
 , lab1, dpis
 , npf1, darg) = d2e0.node()
 val darg =
 trans2a_d2explstopt(env0, darg)
 val t2p0 = s2typ_new0_x2tp(loc0)
 in//let
-d2exp_make_styp_node
-( loc0, t2p0
-, D2Edtsel(tknd,lab1,dpis,npf1,darg))
+d2exp_make_styp_node(
+loc0,
+t2p0,
+D2Edtsel
+(tknd, drxp, lab1, dpis, npf1, darg))
 end (*let*) // end of [f0_dtsel(env0,...)]
 //
 (* ****** ****** *)

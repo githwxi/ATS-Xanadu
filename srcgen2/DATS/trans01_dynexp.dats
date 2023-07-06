@@ -878,10 +878,11 @@ L0ABLsome(lab1) => lab1
 L0ABLnone(tok1) => label_none()
 ) : label // end of [val(lab1)]
 //
-val
-dopt = trans01_d0expopt(tenv, dopt)
+val dopt =
+(
+  trans01_d0expopt(tenv, dopt))
 //
-in // let
+in // let // HX: postfix
 FXITMopr(d1e0, dtsel_fixty) where
 {
 val d1e0 =
