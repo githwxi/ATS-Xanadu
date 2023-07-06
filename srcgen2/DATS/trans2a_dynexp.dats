@@ -1218,8 +1218,54 @@ D2Eproj
 , drxp
 , dlab, dtup) = d2e0.node()
 //
+val dtup =
+trans2a_d2exp(env0,dtup)
+val ttup =
+s2typ_hnfiz0(dtup.styp())
+//
+(*
+//
+val () =
+prerrln
+("f0_proj: dtup = ", dtup)
+val () =
+prerrln
+("f0_proj: dlab = ", dlab)
+//
+val () =
+prerrln
+("f0_proj: ttup = ", ttup)
+//
+*)
+//
 val
-tprj = s2typ_new0_x2tp(loc0)
+topt =
+s2typ_prjout_opt(ttup, dlab)
+//
+val
+dtup =
+(
+case+ topt of
+| !
+optn_vt_nil() =>
+d2exp_make_styp_node
+( loc0
+, ttup
+, D2El2bck(dtup, dlab))
+| !
+optn_vt_cons(tprj) => dtup
+) : d2exp // end of [val(dtup)]
+//
+val
+tprj =
+(
+case+ topt of
+| ~
+optn_vt_nil() =>
+s2typ_new0_x2tp(loc0)
+| ~
+optn_vt_cons(tprj) => tprj
+) : s2typ // end of [val(tprj)]
 //
 in//let
 d2exp_make_styp_node
