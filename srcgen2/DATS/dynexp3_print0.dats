@@ -317,6 +317,10 @@ D3Eraise
 (tknd, d3e1) =>
 print("D3Eraise(",tknd,";",d3e1,")")
 //
+|D3El2bck
+( d3e1 , lab2 ) =>
+(
+  print("D3El2bck(",d3e1,";",lab2,")"))
 |D3Et2pck
 ( d3e1 , t2p2 ) =>
 (

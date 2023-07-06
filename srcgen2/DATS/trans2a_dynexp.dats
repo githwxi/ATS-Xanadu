@@ -596,6 +596,8 @@ d2e0.node() of
 |D2Edap0 _ => f0_dap0(env0, d2e0)
 |D2Edapp _ => f0_dapp(env0, d2e0)
 //
+|D2Eproj _ => f0_proj(env0, d2e0)
+//
 |D2Elet0 _ => f0_let0(env0, d2e0)
 //
 |D2Eift0 _ => f0_ift0(env0, d2e0)
@@ -1200,6 +1202,30 @@ d2exp_make_styp_node
 (loc0, tres, D2Edapp(d2f0,npf1,d2es))
 //
 end (*let*) // end of [f0_dapp_else(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_proj
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+val loc0 = d2e0.lctn()
+val-
+D2Eproj
+( tknd
+, drxp
+, dlab, dtup) = d2e0.node()
+//
+val
+tprj = s2typ_new0_x2tp(loc0)
+//
+in//let
+d2exp_make_styp_node
+( loc0, tprj
+, D2Eproj(tknd, drxp, dlab, dtup))
+end (*let*) // end of [f0_proj(env0,...)]
 //
 (* ****** ****** *)
 //

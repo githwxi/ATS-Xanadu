@@ -570,6 +570,15 @@ let
 endlet
 //
 |
+D2Eproj
+(tknd
+,drxp,dlab,dtup) =>
+let
+  val () =
+  d2exp_fpemsg( out, dtup )
+endlet
+//
+|
 D2Elet0
 (dcls, d2e1) =>
 (
