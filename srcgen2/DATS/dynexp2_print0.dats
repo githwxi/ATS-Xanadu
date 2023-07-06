@@ -435,6 +435,35 @@ D2Efree(d2e1) =>
   print("D2Efree(", d2e1, ")"))
 //
 |
+D2Eproj
+(d2e1, lab2) =>
+print("D2Eproj(",d2e1,";",lab2,")")
+//
+|
+D2Ewhere
+(d2e1, dcls) =>
+print("D2Ewhere(",d2e1,";",dcls,")")
+//
+|
+D2Eassgn
+(d2el, d2er) =>
+print("D2Eassgn(",d2el,";",d2er,")")
+|
+D2Ebrckt
+(dpis, d2es) =>
+print("D2Ebrckt(",dpis,";",d2es,")")
+//
+|
+D2Edtsel
+(tknd
+,drxp,lab1
+,dpis,npf1,opt2) =>
+(
+print("D2Edtsel(");
+print(tknd,";", drxp,";", lab1,";");
+print(dpis,";", npf1,";", opt2,")"))
+//
+|
 D2Eraise
 ( tknd, d2e1 ) =>
 (
@@ -453,29 +482,6 @@ D2Elazy1
 , d2e1 , d2es ) =>
 ( print("D2Elazy1(")
 ; print(tknd,";",d2e1,";",d2es,")") )
-//
-|
-D2Ewhere
-(d2e1, dcls) =>
-print("D2Ewhere(",d2e1,";",dcls,")")
-//
-|
-D2Eassgn
-(d2el, d2er) =>
-print("D2Eassgn(",d2el,";",d2er,")")
-|
-D2Ebrckt
-(dpis, d2es) =>
-print("D2Ebrckt(",dpis,";",d2es,")")
-//
-|
-D2Edtsel
-(tknd,lab1
-,dpis,npf1,opt2) =>
-(
-print("D2Edtsel(");
-print(tknd,";", lab1,";");
-print(dpis,";", npf1,";", opt2,")"))
 //
 |
 D2Eannot

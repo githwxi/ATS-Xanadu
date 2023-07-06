@@ -803,8 +803,8 @@ let
 val lvl0 = d2exp_errvl(d2es)
 in//let
 d2exp_errck
-(
-lvl0+1,d2exp(loc0,D2Ebrckt(dpis,d2es)))
+( lvl0+1
+, d2exp(loc0, D2Ebrckt(dpis, d2es)) )
 endlet // end of [d2exp_brckt_errck(...)]
 //
 (* ****** ****** *)
@@ -813,6 +813,7 @@ fun
 d2exp_dtsel_errck
 ( loc0: loc_t
 , tknd: token
+, drxp: d2rxp
 , lab1: label
 , dpis: d2ptmlst
 , npf1: (sint)
@@ -829,9 +830,10 @@ in//let
 d2exp_errck
 (
 lvl0+1,
-d2exp_make_node
-(loc0
-,D2Edtsel(tknd,lab1,dpis,npf1,dopt)))
+d2exp_make_node(
+loc0,
+D2Edtsel
+(tknd, drxp, lab1, dpis, npf1, dopt)))
 endlet // end of [d2exp_dtsel_errck(...)]
 //
 (* ****** ****** *)
@@ -845,7 +847,7 @@ let
 val lvl0 = errvl(d2e1) in//let
 d2exp_errck
 ( lvl0+1
-, d2exp(loc0, D2Eraise(tknd, d2e1)))
+, d2exp(loc0, D2Eraise(tknd, d2e1)) )
 endlet // end of [d2exp_raise_errck(...)]
 //
 (* ****** ****** *)
@@ -859,7 +861,7 @@ let
 val lvl0 = errvl(d2e1) in//let
 d2exp_errck
 ( lvl0+1
-, d2exp(loc0, D2Elazy0(tknd, d2e1)))
+, d2exp(loc0, D2Elazy0(tknd, d2e1)) )
 endlet // end of [d2exp_lazy0_errck(...)]
 //
 fun
@@ -1956,6 +1958,7 @@ val e00 = err
 val-
 D2Edtsel
 (tknd
+,drxp
 ,lab1, dpis
 ,npf1, darg) = d2e.node()
 //
@@ -1967,13 +1970,10 @@ in//let
 if
 (err=e00)
 then (d2e) else
-let
-val
-loc = d2e.lctn()
-in//let
 d2exp_dtsel_errck
-(loc, tknd, lab1, dpis, npf1, darg)
-end (*let*) // end-of-[else]
+(
+d2e.lctn(),
+tknd, drxp, lab1, dpis, npf1, darg)
 end (*let*) // end of [f0_dtsel(d2e,err)]
 //
 (* ****** ****** *)

@@ -14,6 +14,18 @@ fact21(x: sint): sint =
 if x > 0 then x * fact2(x-1) else 1
 *)
 (* ****** ****** *)
+fun
+fact28(x: sint) =
+(
+  loop@(0, 1) ) where
+{
+fun
+loop ir =
+if i < x
+then loop@(ir.0+1, (ir.0+1)*ir.1) else ir.1
+}
+////
+(* ****** ****** *)
 
 excptcon FACTexn of ()
 
@@ -94,6 +106,9 @@ fnx
 loop(i: int): void =
 if i < x then
 (!prs := !prs * (i+1); loop(i+1)) }//fun
+
+(* ****** ****** *)
+
 
 (* ****** ****** *)
 

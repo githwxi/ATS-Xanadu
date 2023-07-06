@@ -904,21 +904,6 @@ d2exp_node =
 (d2exp, sint(*npf*), d2explst)
 //
 |D2Elet0 of (d2eclist, d2exp)
-|D2Ewhere of (d2exp, d2eclist)
-//
-|
-D2Eassgn of
-(d2exp(*l-val*), d2exp(*r-val*))
-|
-D2Ebrckt of
-(d2ptmlst(*[]*), d2explst(*arg*))
-|
-D2Edtsel of
-(token
-,label
-,d2ptmlst
-,sint(*npf*), d2explstopt(*arg*))
-//
 |
 D2Eift0 of
 (d2exp(*cond*)
@@ -965,21 +950,41 @@ D2Etry0 of
 | D2Eeval of d2exp(*ptr/lazy*)
 | D2Efree of d2exp(*free-con*)
 //
+| D2Eproj of
+  (d2exp(*t1up/r2cd*), label)
+//
+| D2Ewhere of (d2exp, d2eclist)
+//
+|
+D2Eassgn of
+(d2exp(*l-val*), d2exp(*r-val*))
+|
+D2Ebrckt of
+(d2ptmlst(*[]*), d2explst(*arg*))
+|
+D2Edtsel of
+( token
+, d2rxp
+, label
+, d2ptmlst
+, sint(*npf*), d2explstopt(*arg*))
+//
 |
 D2Eraise of
 ( token(*$RAISE*), d2exp(*lin-exn*))
 //
 |
-D2Elazy0 of
-( token(*$LAZY0*), d2exp(*thunk*) )//nonlin
+D2Elazy0 of // nonlin-lazy-eval
+( token(*$LAZY0*), d2exp(*non-thunk*))
 |
 D2Elazy1 of // linear-lazy-eval
-( token
-, d2exp(*thunk*), d2explst(*frees*))//linear
+( token(*$LAZY1*)
+, d2exp(*lin-thunk*), d2explst(*frees*))
 //
 |
 D2Eannot of
-(d2exp,s1exp(*given*),s2exp(*trans*))
+( d2exp
+, s1exp(*given*), s2exp(*trans*))
 //
 |
 D2Eexists of
