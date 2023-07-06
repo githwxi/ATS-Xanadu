@@ -1145,6 +1145,25 @@ D2Edapp
 ( d2f0
 , npf1, d2es) = d2e0.node()
 //
+in//let
+case+
+d2f0.node() of
+|_(* else *) => f0_dapp_else(env0, d2e0)
+end (*let*) // end of [f0_dapp(env0,...)]
+
+and
+f0_dapp_else
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Edapp
+( d2f0
+, npf1, d2es) = d2e0.node()
+//
 val
 tres =
 s2typ_new0_x2tp(loc0)
@@ -1180,7 +1199,7 @@ in//let
 d2exp_make_styp_node
 (loc0, tres, D2Edapp(d2f0,npf1,d2es))
 //
-end (*let*) // end of [f0_dapp(env0,...)]
+end (*let*) // end of [f0_dapp_else(env0,...)]
 //
 (* ****** ****** *)
 //

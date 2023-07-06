@@ -354,6 +354,14 @@ D2Edapp
 ; print(d2f0,";",npf1,";",d2es,")"))
 //
 |
+D2Eproj
+(tknd
+,drxp,dlab,dtup) =>
+( print
+  ("D2Eproj(",tknd,";")
+; print(drxp,";",dlab,";",dtup,")"))
+//
+|
 D2Elet0
 (dcls, d2e1) =>
 (
@@ -435,11 +443,6 @@ D2Efree(d2e1) =>
   print("D2Efree(", d2e1, ")"))
 //
 |
-D2Eproj
-(d2e1, lab2) =>
-print("D2Eproj(",d2e1,";",lab2,")")
-//
-|
 D2Ewhere
 (d2e1, dcls) =>
 print("D2Ewhere(",d2e1,";",dcls,")")
@@ -499,7 +502,8 @@ print("D2Eexists(",s2es,";",d2e1,")"))
 //
 |D2Et2pck
 ( d2e1 , t2p2 ) =>
-(print("D2Et2pck(",d2e1,";",t2p2,")"))
+(
+ print("D2Et2pck(",d2e1,";",t2p2,")") )
 //
 |D2Enone0() => print( "D2Enone0(",")" )
 |D2Enone1(d1e1) => print("D2Enone1(",d1e1,")")

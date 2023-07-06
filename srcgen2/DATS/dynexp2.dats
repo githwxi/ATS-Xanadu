@@ -325,6 +325,18 @@ d2exp_make_node
 //
 (* ****** ****** *)
 //
+#implfun
+d2exp_proj
+(loc0
+,tknd,drxp,dlab,dtup) =
+(
+d2exp_make_node
+( loc0
+, D2Eproj
+  (tknd, drxp, dlab, dtup)) )
+//
+(* ****** ****** *)
+//
 local
 //
 datatype
