@@ -277,6 +277,12 @@ s2vts_make_s2vs_t2ps
 s2vts with s2vts_make_s2vs_t2ps
 //
 (* ****** ****** *)
+//
+fun
+s2typ_prjout_opt
+( s2typ, label ): s2typopt_vt
+//
+(* ****** ****** *)
 fun
 s2typ_p1tr0q(t2p0:s2typ): bool
 fun

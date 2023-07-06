@@ -57,6 +57,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload name with s2cst_get_name
 (* ****** ****** *)
+#symload node with s2typ_get_node
+(* ****** ****** *)
 //
 #implfun
 s2vts_search_opt
@@ -111,6 +113,49 @@ end (*let*)
 //
 } (*where*)//end-[s2vts_make_s2vs_t2ps]
 //
+(* ****** ****** *)
+
+#implfun
+s2typ_prjout_opt
+  (t2p0, lab0) =
+(
+case+
+t2p0.node() of
+|
+T2Ptrcd
+(knd0
+,npf1,ltps) => auxloop(ltps)
+|
+_(*non-T2Ptrcd*) => optn_vt_nil()
+) where
+{
+//
+fun
+auxloop
+( ltps
+: l2t2plst): s2typopt_vt =
+(
+case+ ltps of
+|
+list_nil() =>
+optn_vt_nil((*void*))
+|
+list_cons(ltp1, ltps) =>
+let
+  val+
+  S2LAB
+  (lab1, t2p1) = ltp1
+in//let
+if // if
+label_cmp
+(lab0,lab1) = 0
+then
+optn_vt_cons(t2p1) else auxloop(ltps)
+end // end-of-[  list_cons(...)  ]
+)(*case+*)//end-of-[  auxloop(ltps)  ]
+//
+}(*where*)//end-of-[s2typ_search_opt(...)]
+
 (* ****** ****** *)
 //
 local
