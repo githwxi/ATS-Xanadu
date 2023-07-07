@@ -270,7 +270,8 @@ endlet
 //
 |
 D2Edapp
-(d2f0,npf1,d2es) =>
+(d2f0
+,npf1, d2es) =>
 let
 val () =
 fperr22_d2exp(out, d2f0)
@@ -279,10 +280,20 @@ fperr22_d2explst(out, d2es)
 endlet
 //
 |
+D2Eproj
+(tknd
+,drxp
+,dlab, dtup) =>
+let
+val () =
+  fperr22_d2exp(out, dtup)
+endlet // end-of-[D2Eproj]
+//
+|
 D2Elet0
 (dcls, d2e1) =>
 (
-fperr22_d2exp(out, d2e1))
+  fperr22_d2exp(out, d2e1))
 where
 {
 val () =
@@ -292,7 +303,7 @@ fperr22_d2eclist(out, dcls)
 D2Ewhere
 (d2e1, dcls) =>
 (
-fperr22_d2exp(out, d2e1))
+  fperr22_d2exp(out, d2e1))
 where
 {
 val () =

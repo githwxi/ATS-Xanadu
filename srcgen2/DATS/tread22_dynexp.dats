@@ -467,6 +467,23 @@ endlet // end of [d2exp_dapp_errck(...)]
 (* ****** ****** *)
 //
 fun
+d2exp_proj_errck
+( loc0: loc_t
+, tknd: token
+, drxp: d2rxp
+, dlab: label
+, dtup: d2exp): d2exp =
+let
+val lvl0 = errvl(dtup) in//let
+d2exp_errck
+( lvl0+1,
+  d2exp
+  (loc0,D2Eproj(tknd,drxp,dlab,dtup)))
+endlet // end of [d2exp_proj_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d2exp_let0_errck
 ( loc0: loc_t
 , dcls: d2eclist
@@ -669,6 +686,20 @@ d2exp_errck
 ( lvl0+1
 , d2exp(loc0,D2Eannot(d2e1,s1e2,s2e2)))
 endlet // end of [d2exp_annot_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d2exp_l2bck_errck
+( loc0: loc_t
+, d2e1: d2exp
+, lab2: label): d2exp =
+let
+val lvl0 = errvl(d2e1) in//let
+d2exp_errck
+( lvl0+1
+, d2exp( loc0, D2El2bck( d2e1, lab2 ) ))
+endlet // end of [d2exp_l2bck_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -978,6 +1009,8 @@ d2e0.node() of
 |D2Edap0 _ => f0_dap0(d2e0, err)
 |D2Edapp _ => f0_dapp(d2e0, err)
 //
+|D2Eproj _ => f0_proj(d2e0, err)
+//
 |D2Elet0 _ => f0_let0(d2e0, err)
 //
 |D2Eift0 _ => f0_ift0(d2e0, err)
@@ -1005,6 +1038,8 @@ D2Eraise _ => f0_raise(d2e0, err)
 |
 D2Eannot _ => f0_annot(d2e0, err)
 //
+|
+D2El2bck _ => f0_l2bck(d2e0, err)
 |
 D2Et2pck _ => f0_t2pck(d2e0, err)
 //
@@ -1139,6 +1174,31 @@ val loc = d2e.lctn() in
 d2exp_dapp_errck(loc,d2f0,npf1,d2es)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_dapp(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_proj
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Eproj
+(tknd
+,drxp
+,dlab, dtup) = d2e.node()
+val
+dtup = tread22_d2exp(dtup, err)
+in//let
+if
+(err=e00)
+then (d2e) else
+d2exp_proj_errck
+(d2e.lctn(), tknd, drxp, dlab, dtup)
+end (*let*) // end of [f0_proj(d2e,err)]
 //
 (* ****** ****** *)
 //
@@ -1534,6 +1594,33 @@ val loc = d2e.lctn() in
 d2exp_annot_errck(loc,d2e1,s1e2,s2e2)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_annot(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_l2bck
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2El2bck
+(d2e1, lab2) = d2e.node()
+//
+val
+d2e1 = tread22_d2exp(d2e1, err)
+//
+in//let
+if
+(err=e00)
+then (d2e) else
+let
+val loc = d2e.lctn() in
+d2exp_l2bck_errck(loc, d2e1, lab2)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_l2bck(d2e,err)]
 //
 (* ****** ****** *)
 //
