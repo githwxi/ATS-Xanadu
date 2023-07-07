@@ -500,6 +500,7 @@ d3exp_make_styp_node
 //
 |D2Eraise _ => f0_raise(env0, d2e0)
 //
+|D2El2bck _ => f0_l2bck(env0, d2e0)
 |D2Et2pck _ => f0_t2pck(env0, d2e0)
 //
 | _(*otherwise*) => d3exp_none1(d2e0)
@@ -1186,6 +1187,44 @@ d3e1 =
 trans23_d2exp_tpck(env0, d2e1, t2p1)
 }
 end (*let*) // end of [f0_raise(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_l2bck
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2El2bck
+(d2e1, lab2) = d2e0.node()
+//
+val
+d3e1 =
+trans23_d2exp(env0, d2e1)
+//
+val t2p1 =
+(
+ s2typ_hnfiz0(d3e1.styp()))
+//
+val topt =
+s2typ_prjout_opt(t2p1, lab2)
+//
+in//let
+//
+(
+case+ topt of
+| ~
+optn_vt_nil() =>
+d3exp_make_styp_node
+( loc0
+, t2p1, D3El2bck(d3e1, lab2))
+| ~optn_vt_cons(tprj) => d3e1 ): d3exp
+//
+end (*let*) // end of [f0_l2bck(env0,d2e0)]
 //
 (* ****** ****** *)
 //
