@@ -480,7 +480,10 @@ d3exp_node =
 //
 |D3Edap0 of (d3exp)
 |D3Edapp of
-(d3exp, sint(*npf*), d3explst)
+ (d3exp,sint(*npf*),d3explst)
+//
+|D3Eproj of
+ (token, label, d3exp(*tup*))
 //
 |D3Elet0 of (d3eclist, d3exp)
 //

@@ -554,6 +554,21 @@ endlet // end of [d3exp_dapp_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3exp_proj_errck
+( loc0: loc_t
+, tknd: token
+, dlab: label
+, dtup: d3exp): d3exp =
+let
+val lvl0 = errvl(dtup) in//let
+d3exp_errck
+(lvl0+1
+,d3exp(loc0, D3Eproj(tknd,dlab,dtup)))
+endlet // end of [d3exp_proj_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3exp_let0_errck
 ( loc0: loc_t
 , dcls: d3eclist
@@ -1080,6 +1095,8 @@ d3e0.node() of
 |D3Edap0 _ => f0_dap0(d3e0, err)
 |D3Edapp _ => f0_dapp(d3e0, err)
 //
+|D3Eproj _ => f0_proj(d3e0, err)
+//
 |D3Elet0 _ => f0_let0(d3e0, err)
 //
 |D3Eift0 _ => f0_ift0(d3e0, err)
@@ -1251,6 +1268,31 @@ val loc = d3e.lctn() in
 d3exp_dapp_errck( loc,d3f0,npf1,d3es )
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_dapp(d3e,err)]
+//
+(* ****** ****** *)
+fun
+f0_proj
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val-
+D3Eproj
+(tknd
+,dlab, dtup) = d3e.node()
+val
+dtup = tread23_d3exp(dtup, err)
+in//let
+if
+(err=e00)
+then (d3e) else
+let
+val loc = d3e.lctn() in
+d3exp_proj_errck( loc,tknd,dlab,dtup )
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_proj(d3e,err)]
 //
 (* ****** ****** *)
 //

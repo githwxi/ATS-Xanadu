@@ -238,6 +238,12 @@ D3Edapp
 ; print(d3f0,";",npf1,";",d3es,")"))
 //
 |
+D3Eproj
+(tknd,dlab,dtup) =>
+( print("D3Eproj(")
+; print(tknd,";",dlab,";",dtup,")"))
+//
+|
 D3Elet0
 (dcls, d3e1) =>
 (
