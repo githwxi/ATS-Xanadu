@@ -296,35 +296,61 @@ my_d2exp_dapp
 (
 case+
 d2f0.node() of
-|
-D2Edap0(d2f0) =>
-d2exp_dapp(loc0, d2f0, npf1, d2as)
-|
-D2Edtsel
+//
+|D2Edap0(d2f0) =>
+d2exp_dapp(loc0,d2f0,npf1,d2as)
+//
+|D2Edtsel
 (tknd
 ,drxp,lab1
 ,dpis,npf1,opt2) =>
 (
 case+ opt2 of
+//
 |optn_nil() =>
 (
 d2exp_proj
-( loc0
-, tknd, drxp, lab1, d2a1)) where
+(loc0
+,tknd,drxp,lab1,d2a1)) where
 {
 val d2a1 =
 (
 case+ d2as of
-| list_nil() =>
-  d2exp_none0(loc0)
-| list_cons(d2a1, d2as) => d2a1 )
-}
-|optn_cons _ =>
-d2exp_dapp(loc0, d2f0, npf1, d2as)
+|list_nil() =>
+ d2exp_none0(loc0)
+|list_cons(d2a1, d2as) => d2a1)}
+//
+|optn_cons(d2es) =>
+(
+case+ dpis of
+|list_nil() =>
+let
+val dprj =
+(
+d2exp_proj
+(loc0
+,tknd,drxp,lab1,d2a1)) where
+{
+val d2a1 =
+(
+case+ d2as of
+|list_nil() =>
+ d2exp_none0(loc0)
+|list_cons(d2a1, d2as) => d2a1)}
+in
+d2exp_dapp(loc0, dprj, npf1, d2es)
+end (*let*) // end of [list_nil()]
+|list_cons _ =>
+(
+d2exp_dapp(loc0, d2f0, npf1, d2as))
 )
+//
+) (* end of [D2Edtsel(tknd,...)] *)
+//
 |_(* otherwise *) =>
-d2exp_dapp(loc0, d2f0, npf1, d2as)
-)
+(
+  d2exp_dapp(loc0, d2f0, npf1, d2as))
+) (*case+*) // end of [my_d2exp_dapp(...)]
 //
 (* ****** ****** *)
 //
