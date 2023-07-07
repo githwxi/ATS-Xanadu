@@ -1,0 +1,185 @@
+(*
+Sun 26 Feb 2023 02:49:30 PM EST
+*)
+##################################################################
+
+Hi, there,
+
+HX-2023-07-07:
+
+##################################################################
+
+HX-2023-02-26:
+
+>> Partially finishing trans2a and trsym2a (for resolving overloaded
+>> symbols), I have now started trans23 (performing type-checking) and
+>> tread23 (reporting error message for type-checking). The total number
+>> of lines of ATS3 code in ATS3/Xanadu is now above 100K. My rough
+>> estimate is that some kind of running compiler can be produced when
+>> the total line number reaches 150K.
+
+I have been working on trans23 adn tread23. The total number of lines of
+ATS3 code is now above 120K. The next major phase is TEMPLATE RESOLUTION!
+
+##################################################################
+wc -l \
+HATS/*.hats SATS/*.sats DATS/*.dats
+     50 HATS/xatsopt_dats.hats
+     23 HATS/xatsopt_sats.hats
+   1377 SATS/dynexp0.sats
+   1215 SATS/dynexp1.sats
+   1629 SATS/dynexp2.sats
+    832 SATS/dynexp3.sats
+    193 SATS/filpath.sats
+    186 SATS/fperr22.sats
+    273 SATS/gmacro1.sats
+    150 SATS/lexbuf0.sats
+    426 SATS/lexing0.sats
+    147 SATS/locinfo.sats
+     68 SATS/nmspace.sats
+    631 SATS/parsing.sats
+    529 SATS/preadx0.sats
+   1006 SATS/staexp0.sats
+    847 SATS/staexp1.sats
+    951 SATS/staexp2.sats
+    394 SATS/statyp2.sats
+    800 SATS/trans01.sats
+   1064 SATS/trans12.sats
+    549 SATS/trans23.sats
+    617 SATS/trans2a.sats
+    513 SATS/tread01.sats
+    385 SATS/tread12.sats
+    232 SATS/tread22.sats
+    242 SATS/tread23.sats
+    247 SATS/trsym2a.sats
+    280 SATS/xbasics.sats
+     61 SATS/xerrory.sats
+    241 SATS/xfixity.sats
+    253 SATS/xglobal.sats
+     77 SATS/xlabel0.sats
+    125 SATS/xstamp0.sats
+    214 SATS/xsymbol.sats
+     67 SATS/xsymenv.sats
+    230 SATS/xsymmap.sats
+     38 SATS/xsynoug.sats
+    933 DATS/dynexp0.dats
+   1201 DATS/dynexp0_print0.dats
+    963 DATS/dynexp1.dats
+   1022 DATS/dynexp1_print0.dats
+   2135 DATS/dynexp2.dats
+   1139 DATS/dynexp2_print0.dats
+    104 DATS/dynexp2_utils0.dats
+    789 DATS/dynexp3.dats
+    611 DATS/dynexp3_print0.dats
+    301 DATS/filpath.dats
+    152 DATS/filpath_drpth0.dats
+    129 DATS/filpath_fpath0.dats
+    116 DATS/filpath_print0.dats
+    343 DATS/filpath_search.dats
+    133 DATS/fperr22.dats
+    365 DATS/fperr22_decl00.dats
+    603 DATS/fperr22_dynexp.dats
+    272 DATS/gmacro1.dats
+    114 DATS/gmacro1_print0.dats
+     49 DATS/lexbuf0.dats
+    294 DATS/lexbuf0_cstrx1.dats
+    418 DATS/lexbuf0_cstrx2.dats
+    147 DATS/lexing0.dats
+    378 DATS/lexing0_kword0.dats
+    101 DATS/lexing0_mymap0.dats
+    496 DATS/lexing0_print0.dats
+    112 DATS/lexing0_token0.dats
+   1647 DATS/lexing0_utils1.dats
+   1631 DATS/lexing0_utils2.dats
+    202 DATS/locinfo.dats
+    106 DATS/locinfo_print0.dats
+    348 DATS/nmspace.dats
+     88 DATS/parsing.dats
+    988 DATS/parsing_basics.dats
+   2405 DATS/parsing_decl00.dats
+   2925 DATS/parsing_dynexp.dats
+   3007 DATS/parsing_staexp.dats
+    183 DATS/parsing_tokbuf.dats
+    143 DATS/parsing_utils0.dats
+    164 DATS/preadx0.dats
+   2546 DATS/preadx0_decl00.dats
+   2960 DATS/preadx0_dynexp.dats
+   2814 DATS/preadx0_errmsg.dats
+   1889 DATS/preadx0_staexp.dats
+    835 DATS/staexp0.dats
+    789 DATS/staexp0_print0.dats
+    641 DATS/staexp1.dats
+    667 DATS/staexp1_print0.dats
+   1459 DATS/staexp2.dats
+    389 DATS/staexp2_inits0.dats
+    358 DATS/staexp2_print0.dats
+    711 DATS/staexp2_utils1.dats
+    481 DATS/staexp2_utils2.dats
+    423 DATS/statyp2.dats
+    335 DATS/statyp2_inits0.dats
+    164 DATS/statyp2_print0.dats
+   1193 DATS/statyp2_tmplib.dats
+    493 DATS/statyp2_utils1.dats
+    105 DATS/statyp2_utils2.dats
+    475 DATS/trans01.dats
+   2079 DATS/trans01_decl00.dats
+   2202 DATS/trans01_dynexp.dats
+    328 DATS/trans01_myenv0.dats
+   2143 DATS/trans01_staexp.dats
+    776 DATS/trans11_gmacro.dats
+    289 DATS/trans11_myenv0.dats
+    537 DATS/trans12.dats
+   3695 DATS/trans12_decl00.dats
+   3664 DATS/trans12_dynexp.dats
+   2109 DATS/trans12_myenv0.dats
+   2064 DATS/trans12_staexp.dats
+    117 DATS/trans23.dats
+    597 DATS/trans23_decl00.dats
+   1722 DATS/trans23_dynexp.dats
+    230 DATS/trans23_myenv0.dats
+    407 DATS/trans23_utils0.dats
+    129 DATS/trans2a.dats
+    960 DATS/trans2a_decl00.dats
+   2256 DATS/trans2a_dynexp.dats
+    229 DATS/trans2a_myenv0.dats
+    779 DATS/trans2a_utils0.dats
+    186 DATS/tread01.dats
+   1717 DATS/tread01_decl00.dats
+   2208 DATS/tread01_dynexp.dats
+   1841 DATS/tread01_errmsg.dats
+   1621 DATS/tread01_staexp.dats
+    208 DATS/tread12.dats
+   1532 DATS/tread12_decl00.dats
+   2513 DATS/tread12_dynexp.dats
+   1564 DATS/tread12_errmsg.dats
+   1103 DATS/tread12_staexp.dats
+    167 DATS/tread22.dats
+    767 DATS/tread22_decl00.dats
+   1930 DATS/tread22_dynexp.dats
+    206 DATS/tread23.dats
+    704 DATS/tread23_decl00.dats
+   1967 DATS/tread23_dynexp.dats
+    883 DATS/tread23_errmsg.dats
+    113 DATS/trsym2a.dats
+    336 DATS/trsym2a_decl00.dats
+    928 DATS/trsym2a_dynexp.dats
+    311 DATS/trsym2a_utils0.dats
+   1525 DATS/xatsopt_tmplib.dats
+    221 DATS/xbasics.dats
+    240 DATS/xbasics_print0.dats
+     75 DATS/xerrory.dats
+    778 DATS/xfixity.dats
+   1078 DATS/xglobal.dats
+     73 DATS/xlabel0.dats
+     70 DATS/xlabel0_print0.dats
+    110 DATS/xstamp0.dats
+     60 DATS/xstamp0_print0.dats
+    119 DATS/xstamp0_tmpmap.dats
+    172 DATS/xsymbol.dats
+    137 DATS/xsymbol_inits0.dats
+    101 DATS/xsymbol_mymap0.dats
+     63 DATS/xsymbol_print0.dats
+    594 DATS/xsymmap_stkmap.dats
+    305 DATS/xsymmap_topmap.dats
+     44 DATS/xsynoug.dats
+ 120028 total
