@@ -584,16 +584,31 @@ where
 //
 |
 D2Etup0
-(npf1,d2es) =>
+( npf1, d2es) =>
 let
 val () =
 trsym2a_d2explst(env0, d2es) end
 |
 D2Etup1
-(tknd,npf1,d2es) =>
+( tknd
+, npf1, d2es) =>
 let
 val () =
 trsym2a_d2explst(env0, d2es) end
+//
+|
+D2Elam0
+( tknd
+, f2as, sres
+, arrw, dexp) =>
+let
+//
+val () =
+trsym2a_f2arglst(env0, f2as)
+//
+val () =
+(
+  trsym2a_d2exp(env0, dexp)) end
 //
 |
 D2Eaddr

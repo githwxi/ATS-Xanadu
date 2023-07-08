@@ -192,6 +192,8 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 #typedef d3eclist = list(d3ecl)
 (* ****** ****** *)
+#typedef f1unarrw = $D1E.f1unarrw
+(* ****** ****** *)
 #typedef wths2exp = $D2E.wths2exp
 (* ****** ****** *)
 #typedef d3valdcl = d3valdcl_tbox
@@ -487,6 +489,32 @@ d3exp_node =
 //
 |D3Elet0 of (d3eclist, d3exp)
 //
+|D3Eift0 of
+(d3exp(*cond*)
+,d3expopt(*then*),d3expopt(*else*))
+//
+|D3Ecas0 of
+( token(*+/0/-*), d3exp, d3clslst )
+//
+|D3Eseqn of
+( d3explst(*init*), d3exp(*last*) )
+//
+|D3Etup0 of (sint(*npf*), d3explst)
+|D3Etup1 of
+(
+token(*knd*), sint(*npf*), d3explst)
+|D3Ercd2 of
+(
+token(*knd*), sint(*npf*), l3d3elst)
+//
+|D3Elam0 of
+( token(*knd*)
+, f3arglst, s2res, f1unarrw, d3exp )
+|D3Efix0 of
+( token(*knd*)
+, d2var(*fid*)
+, f3arglst, s2res, f1unarrw, d3exp )
+//
 (*
 HX-2023-07-05:
 two attributes of left values
@@ -499,45 +527,18 @@ two attributes of left values
 |D3Eeval of (d3exp)//eval-fun
 |D3Efree of (d3exp)//free-con
 //
-|
-D3Edp2tr of (d3exp)//p2tr-eval
+|D3Edp2tr of (d3exp)//p2tr-eval
 (*
-|
-D3Edlaz0 of (d3exp)//laz0-eval
-|
-D3Edlaz1 of (d3exp)//laz0-eval
+|D3Edlaz0 of (d3exp)//laz0-eval
+|D3Edlaz1 of (d3exp)//laz0-eval
 *)
 //
-|
-D3Ewhere of ( d3exp, d3eclist )
+|D3Ewhere of ( d3exp, d3eclist )
 //
-|
-D3Eassgn of
-(d3exp(*l-val*), d3exp(*r-val*))
+|D3Eassgn of
+( d3exp(*l-val*), d3exp(*r-val*) )
 //
-|
-D3Eift0 of
-(d3exp(*cond*)
-,d3expopt(*then*),d3expopt(*else*))
-//
-|
-D3Ecas0 of
-( token(*+/0/-*), d3exp, d3clslst )
-//
-|
-D3Eseqn of
-( d3explst(*init*), d3exp(*last*) )
-//
-|D3Etup0 of (sint(*npf*), d3explst)
-|D3Etup1 of
-(
-token(*knd*), sint(*npf*), d3explst)
-|D3Ercd2 of
-(
-token(*knd*), sint(*npf*), l3d3elst)
-//
-|
-D3Eraise of (token, d3exp(*lin-exn*))
+|D3Eraise of (token, d3exp(*lin-exn*))
 //
 |
 D3El2bck of (d3exp, label)//HX: casting

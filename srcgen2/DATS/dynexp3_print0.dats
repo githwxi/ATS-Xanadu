@@ -281,47 +281,70 @@ D3Ercd2
 ; print(tknd,";",npf1,";",ldes,")"))
 //
 |
+D3Elam0
+(tknd,f3as
+,sres,arrw,body) =>
+(
+print
+("D3Elam0(",tknd,";");
+print
+(f3as,";",sres,";",arrw,";",body,")"))
+//
+|
+D3Efix0
+(tknd,fid0,f3as
+,sres,arrw,body) =>
+(
+print
+("D3Efix0(",tknd,";",fid0,";");
+print
+(f3as,";",sres,";",arrw,";",body,")"))
+//
+|
 D3Eaddr
 (   d3e1   ) =>
-print("D3Eaddr(",d3e1,")")//left-val
+print("D3Eaddr(",d3e1,")") // left-val
 |
 D3Eflat
 (   d3e1   ) =>
-print("D3Eflat(",d3e1,")")//left-val
+print("D3Eflat(",d3e1,")") // left-val
 //
 |
 D3Efold
 (   d3e1   ) =>
-print("D3Efold(",d3e1,")")//open-con
+print("D3Efold(",d3e1,")") // open-con
 //
 |
 D3Eeval
 (   d3e1   ) =>
-print("D3Eeval(",d3e1,")")//eval-fun
+print("D3Eeval(",d3e1,")") // eval-fun
 |
 D3Efree
 (   d3e1   ) =>
-print("D3Efree(",d3e1,")")//free-con
+print("D3Efree(",d3e1,")") // free-con
 //
 |
 D3Edp2tr
 (   d3e1   ) =>
-print("D3Edp2tr(",d3e1,")")//de-p2tr
+print("D3Edp2tr(",d3e1,")") // de-p2tr
 //
 |
 D3Ewhere
 (d3e1, dcls) =>
-print("D3Ewhere(",d3e1,";",dcls,")")
+(
+  print("D3Ewhere(",d3e1,";",dcls,")"))
 //
 |
 D3Eassgn
 (d3el, d3er) =>
-print("D3Eassgn(",d3el,";",d3er,")")
+(
+  print("D3Eassgn(",d3el,";",d3er,")"))
 //
 |
 D3Eraise
 (tknd, d3e1) =>
-print("D3Eraise(",tknd,";",d3e1,")")
+(
+  print("D3Eraise(",tknd,";",d3e1,")"))
 //
 |D3El2bck
 ( d3e1 , lab2 ) =>

@@ -365,7 +365,7 @@ in//local
 //
 val dpar =
 d0parsed_from_fpath
-(1(*dyn*), "./DATA/myt1up.dats")
+(1(*dyn*), "./DATA/myl1am.dats")
 //
 val
 dpar =
@@ -396,7 +396,7 @@ d1parsed_fpemsg( out, dpar ) end // let
 val
 (  ) =
 prerrln
-("d1parsed_from_fpath(\"./DATA/myt1up.dats\") =\n", dpar)
+("d1parsed_from_fpath(\"./DATA/myl1am.dats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
@@ -451,7 +451,7 @@ d3parsed_fpemsg( out, dpar ) end // let
 //
 val (  ) =
 prerrln
-("d3parsed_from_fpath(\"./DATA/myt1up.dats\") =\n", dpar)
+("d3parsed_from_fpath(\"./DATA/myl1am.dats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
@@ -459,4 +459,4 @@ endloc (*local*) // end-of-[local]
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_TEST_JS_test27_tread23.dats] *)
+(* end of [ATS3/XATSOPT_TEST_JS_test28_tread23.dats] *)

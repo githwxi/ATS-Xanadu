@@ -48,6 +48,12 @@ tr23env_vtbx
 #vwtpdef
 tr23env = tr23env_vtbx
 (* ****** ****** *)
+#staload
+BAS = "./xbasics.sats"
+#typedef
+f2clknd = $BAS.f2clknd
+//
+(* ****** ****** *)
 //
 #staload
 SYM = "./xsymbol.sats"
@@ -198,6 +204,14 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #typedef d2eclistopt = $D2E.d2eclistopt
 #typedef d3eclistopt = $D3E.d3eclistopt
+(* ****** ****** *)
+//
+fun
+s2typ_fun1_f3arglst
+(f3as
+:f3arglst
+,f2cl:f2clknd,tres:s2typ):s2typ
+//
 (* ****** ****** *)
 //
 fun
