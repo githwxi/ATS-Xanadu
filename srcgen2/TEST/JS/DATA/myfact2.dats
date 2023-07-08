@@ -14,6 +14,7 @@ fact21(x: sint): sint =
 if x > 0 then x * fact2(x-1) else 1
 *)
 (* ****** ****** *)
+
 fun
 fact28(x: sint) =
 (
@@ -21,7 +22,7 @@ fact28(x: sint) =
 {
 fun
 loop ir =
-if i < x
+if ir.0 < x
 then loop@(ir.0+1, (ir.0+1)*ir.1) else ir.1
 }
 ////
@@ -109,6 +110,16 @@ if i < x then
 
 (* ****** ****** *)
 
+fun
+fact28(x: sint) =
+(
+  loop@(0, 1) ) where
+{
+fun
+loop ir =
+if ir.0 < x
+then loop@(ir.0+1, (ir.0+1)*ir.1) else ir.1
+}
 
 (* ****** ****** *)
 
