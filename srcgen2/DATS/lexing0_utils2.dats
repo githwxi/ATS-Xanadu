@@ -631,6 +631,35 @@ f0_DLR
 case+
 x1.node() of
 |
+T_LBRCKT() => let
+val loc =
+x0.lctn()+x1.lctn()
+in
+loop0
+(xs, cons_vt(xx2, res)) where
+{
+val xx2 =
+token_make_node(loc, T_EXISTS(1))
+}
+end // end of [T_LBRCKT]
+|
+_(*rest-of-tnode*) =>
+(
+loop1(x1, xs, list_vt_cons(x0, res)))
+)(*case*)//end-of(f0_DLR(x0,x1,xs,res))
+
+(* ****** ****** *)
+
+fun
+f0_SRP
+( x0: token
+, x1: token
+, xs: tklst
+, res: tklst): tklst =
+(
+case+
+x1.node() of
+|
 T_LPAREN() =>
 let
 val loc =
@@ -658,35 +687,6 @@ token_make_node(loc,T_TRCD20(1))
 end (*let*) // end of [T_LBRACE]
 //
 | _(*rest-of-tnode*) =>
-(
-loop1(x1, xs, list_vt_cons(x0, res)))
-)(*case*)//end-of(f0_DLR(x0,x1,xs,res))
-
-(* ****** ****** *)
-
-fun
-f0_SRP
-( x0: token
-, x1: token
-, xs: tklst
-, res: tklst): tklst =
-(
-case+
-x1.node() of
-|
-T_LBRCKT() => let
-val loc =
-x0.lctn()+x1.lctn()
-in
-loop0
-(xs, cons_vt(xx2, res)) where
-{
-val xx2 =
-token_make_node(loc, T_EXISTS(1))
-}
-end // end of [T_LBRCKT]
-|
-_(*rest-of-tnode*) =>
 (
 loop1(x1, xs, list_vt_cons(x0, res)))
 )(*case*)//end-of(f0_SRP(x0,x1,xs,res))
@@ -1269,6 +1269,34 @@ f0_DLR
 case+
 x1.node() of
 |
+T_LBRCKT() => let
+val loc =
+x0.lctn()+x1.lctn()
+in
+strmcon_vt_cons
+(xx2, auxmain0(xs)) where
+{
+val xx2 =
+token_make_node(loc, T_EXISTS(1))
+}
+end // end of [T_LBRCKT]
+|
+_(*rest-of-tnode*) =>
+(
+strmcon_vt_cons(x0, auxmain1(x1,xs)))
+)(*case*)//end-of(f0_DLR(x0,x1,xs,res))
+
+(* ****** ****** *)
+
+fun
+f0_SRP
+( x0: token
+, x1: token
+, xs: tklst): tktcn =
+(
+case+
+x1.node() of
+|
 T_LPAREN() =>
 let
 val loc =
@@ -1296,34 +1324,6 @@ token_make_node(loc,T_TRCD20(1))
 end (*let*) // end of [T_LBRACE]
 //
 | _(*rest-of-tnode*) =>
-(
-strmcon_vt_cons(x0, auxmain1(x1,xs)))
-)(*case*)//end-of(f0_DLR(x0,x1,xs,res))
-
-(* ****** ****** *)
-
-fun
-f0_SRP
-( x0: token
-, x1: token
-, xs: tklst): tktcn =
-(
-case+
-x1.node() of
-|
-T_LBRCKT() => let
-val loc =
-x0.lctn()+x1.lctn()
-in
-strmcon_vt_cons
-(xx2, auxmain0(xs)) where
-{
-val xx2 =
-token_make_node(loc, T_EXISTS(1))
-}
-end // end of [T_LBRCKT]
-|
-_(*rest-of-tnode*) =>
 (
 strmcon_vt_cons(x0, auxmain1(x1,xs)))
 )(*case*)//end-of(f0_SRP(x0,x1,xs,res))
