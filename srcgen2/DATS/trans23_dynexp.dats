@@ -492,6 +492,7 @@ d3exp_make_styp_node
 |D2Ercd2 _ => f0_rcd2(env0, d2e0)
 //
 |D2Elam0 _ => f0_lam0(env0, d2e0)
+|D2Efix0 _ => f0_fix0(env0, d2e0)
 //
 |D2Eaddr _ => f0_addr(env0, d2e0)
 |D2Eeval _ => f0_eval(env0, d2e0)
@@ -1061,6 +1062,60 @@ end (*let*) // end of [f0_lam0(env0,...)]
 (* ****** ****** *)
 //
 fun
+f0_fix0
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+val t2p0 = d2e0.styp()
+//
+val-
+D2Efix0
+( tknd
+, d2v0
+, f2as, sres
+, arrw, dexp) = d2e0.node()
+//
+val f3as =
+(
+  trans23_f2arglst(env0, f2as))
+//
+val dexp =
+(
+case+ sres of
+|
+S2RESnone((*void*)) =>
+trans23_d2exp(env0, dexp)
+|
+S2RESsome(seff, sexp) =>
+let
+val
+tres =
+s2exp_stpize(sexp) in
+trans23_d2exp_tpck(env0,dexp,tres)
+end (*let*) // end of [ S2RESsome ]
+) : (d3exp) // end of [ val(dexp) ]
+//
+val tres = dexp.styp((*void*))
+val tfun =
+s2typ_fun1_f3arglst(f3as,t2p0,tres)
+//
+in//let
+//
+d3exp_make_styp_node
+(
+loc0,
+tfun,
+D3Efix0
+(tknd, d2v0, f3as, sres, arrw, dexp) )
+//
+end (*let*) // end of [f0_fix0(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
 f0_addr
 ( env0:
 ! tr23env
@@ -1079,7 +1134,7 @@ let
 val telt = d3e1.styp((*void*))
 val t2p0 = the_s2typ_p2tr1(telt)
 in//let
-  d3exp(loc0, t2p0, D3Eaddr(d3e1))
+  d3exp( loc0, t2p0, D3Eaddr( d3e1 ) )
 end (*let*)
 end (*let*) // end of [f0_addr(env0,...)]
 //
