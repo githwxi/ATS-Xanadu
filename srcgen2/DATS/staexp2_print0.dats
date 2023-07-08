@@ -313,8 +313,14 @@ print("S2Eprgm(",loc0,";",s2e1,")")
 |
 S2Ecast
 (loc0, s2e1, s2t2) =>
-( print("S2Ecast(")
-; print(loc0,";",s2e1,";",s2t2,")"))
+let
+val
+s2t1 = s2e1.sort()
+in
+  print // print
+  ("S2Ecast(",loc0,";")
+; print(s2e1,";",s2t1,";",s2t2,")")
+endlet
 //
 |
 S2Enone0() => print("S2Enone0(",")")

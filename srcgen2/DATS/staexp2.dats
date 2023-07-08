@@ -1226,14 +1226,16 @@ end (*let*) // T_TRCD20(0)
 T_TRCD20(1) => the_sort2_vwtp
 | // $tup(...)
 T_TRCD20(2) =>
+(
 if linq
-then (the_sort2_vwtp)
-else (the_sort2_type)
+then (the_sort2_vwtp) // then
+else (the_sort2_type) // else
+)
 | // $tup_t0(...)
 T_TRCD20(3) => the_sort2_type
 | // $tup_t0(...)
 T_TRCD20(4) => the_sort2_vwtp
-) : sort2 // end of [val s2t0]
+) : sort2 // end of [val(s2t0)]
 //
 (*
 HX-2022-10-28:

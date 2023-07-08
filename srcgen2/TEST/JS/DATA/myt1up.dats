@@ -19,7 +19,7 @@ proj3 // fi.0(123) -> (fi.0)(123)
 (* ****** ****** *)
 
 #typedef point = @{x=dflt, y=dflt}
-#typedef point = #{x=dflt, y=dflt}
+#typedef point = $rec{x=dflt, y=dflt}
 
 (* ****** ****** *)
 
