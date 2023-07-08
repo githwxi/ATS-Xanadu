@@ -108,6 +108,18 @@ fperr22_d2eclist(out, dcs2)
 endlet // end of [D2Clocal0(...)]
 //
 |
+D2Cabssort _ => ( (*nil*) )
+|
+D2Cstacst0
+(s2c1, s2t2) => ( (*nil*) )
+|
+D2Csortdef
+(sym1, s2tx) => ( (*nil*) )
+|
+D2Csexpdef
+(s2c1, s2e2) => ( (*nil*) )
+//
+|
 D2Cinclude
 ( knd0, tknd
 , gsrc, fopt, dopt) => let
@@ -187,7 +199,18 @@ endlet // end of [ D2Cdatatype(...) ]
 |
 D2Cerrck(_,_) => fperr22_d2ecl(out, dcl)
 //
-end (*let*) // end-of-(auxmain(out, dcl))
+|
+_(*otherwise*) =>
+let
+ val
+ loc = dcl.lctn()
+ val () = prerrln
+ ("fperr22_d2ecl: auxmain: loc = ", loc)
+ val () = prerrln
+ ("fperr22_d2ecl: auxmain: dcl = ", dcl)
+endlet
+//
+end (*let*) // end-of-[ auxmain(out,dcl) ]
 
 (* ****** ****** *)
 in(* in-of-local *)
