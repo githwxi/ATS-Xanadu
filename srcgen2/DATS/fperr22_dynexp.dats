@@ -153,7 +153,18 @@ endlet
 |
 D2Perrck(_,_) => fperr22_d2pat(out, d2p)
 //
-end (*let*) // end-of-(auxmain(out, d2p))
+|
+_(*otherwise*) =>
+let
+ val
+ loc = d2p.lctn()
+ val () = prerrln
+ ("fperr22_d2pat: auxmain: loc = ", loc)
+ val () = prerrln
+ ("fperr22_d2pat: auxmain: d2p = ", d2p)
+endlet
+//
+end (*let*) // end-of-[ auxmain(out,d2p) ]
 
 in//local
 //
@@ -393,9 +404,17 @@ endlet
 D2Eerrck(_,_) => fperr22_d2exp(out, d2e)
 //
 |
-_(*otherwise*) => fperr22_d2exp(out, d2e)
+_(*otherwise*) =>
+let
+ val
+ loc = d2e.lctn()
+ val () = prerrln
+ ("fperr22_d2exp: auxmain: loc = ", loc)
+ val () = prerrln
+ ("fperr22_d2exp: auxmain: d2e = ", d2e)
+endlet
 //
-end (*let*) // end-of-(auxmain(out, d2e))
+end (*let*) // end-of-[ auxmain(out,d2e) ]
 
 in//local
 //
