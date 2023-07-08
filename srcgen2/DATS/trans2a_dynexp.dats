@@ -1221,7 +1221,7 @@ D2Eproj
 val dtup =
 trans2a_d2exp(env0,dtup)
 val ttup =
-s2typ_hnfiz0(dtup.styp())
+  s2typ_hnfiz0(dtup.styp())
 //
 (*
 //
@@ -1240,7 +1240,7 @@ prerrln
 //
 val
 topt =
-s2typ_prjout_opt(ttup, dlab)
+s2typ_prjout_opt(ttup,dlab)
 //
 val
 dtup =
@@ -1253,8 +1253,8 @@ d2exp_make_styp_node
 , ttup
 , D2El2bck(dtup, dlab))
 | !
-optn_vt_cons(tprj) => dtup
-) : d2exp // end of [val(dtup)]
+optn_vt_cons(tprj) => dtup )
+: d2exp // end of [val(dtup)]
 //
 val
 tprj =
@@ -1264,8 +1264,8 @@ case+ topt of
 optn_vt_nil() =>
 s2typ_new0_x2tp(loc0)
 | ~
-optn_vt_cons(tprj) => tprj
-) : s2typ // end of [val(tprj)]
+optn_vt_cons(tprj) => tprj )
+: s2typ // end of [val(tprj)]
 //
 in//let
 d2exp_make_styp_node

@@ -529,11 +529,21 @@ endlet // end of [D2Etapp(...)]
 |
 D2Edapp
 (d2f0,npf1,d2es) =>
+(*
+HX-2023-07-07:
+Handling arguments first!
+*)
 let
-val () =
-trsym2a_d2exp(env0, d2f0)
-val () =
-trsym2a_d2explst(env0, d2es) end
+  val () =
+  trsym2a_d2exp(env0, d2f0)
+end where
+{
+  val () =
+  trsym2a_d2explst(env0, d2es)
+} (*where*) // end of [D2Edapp]
+//
+|
+D2Eproj _ => f0_proj(env0, d2e0)
 //
 |
 D2Elet0
@@ -636,6 +646,8 @@ val () =
 trsym2a_d2exp(env0, d2e1) endlet
 //
 |
+D2El2bck(_, _) => f0_l2bck(env0, d2e0)
+|
 D2Et2pck(_, _) => f0_t2pck(env0, d2e0)
 //
 | _(* otherwise *) => (   (*skipped*)   )
@@ -661,7 +673,7 @@ val loc0 = d2e0.lctn((*void*))
 val t2p1 = d2e0.styp((*void*))
 val dexp = drxp.dexp((*void*))
 //
-(*
+// (*
 val () =
 prerrln
 ("trsym2a_d2exp: f0_sym0: loc0 = ", loc0)
@@ -671,7 +683,7 @@ prerrln
 val () =
 prerrln
 ("trsym2a_d2exp: f0_sym0: styp = ", t2p1)
-*)
+// *)
 //
 in//let
 case+
@@ -776,6 +788,71 @@ list_cons(dpi1, auxtake(pmax, dpis)))
 (* ****** ****** *)
 //
 } (*where*) // end of [f0_sym0(env0, d2e0)]
+//
+(* ****** ****** *)
+
+fun
+f0_proj
+( env0:
+! tr2aenv
+, d2e0: d2exp): void =
+let
+//
+val loc0 = d2e0.lctn()
+val () =
+prerrln
+("f0_proj: loc0 = ", loc0)
+val () =
+prerrln
+("f0_proj: d2e0 = ", d2e0)
+//
+val-
+D2Eproj
+( tknd
+, drxp
+, dlab, dtup) = d2e0.node()
+//
+val () =
+(
+ trsym2a_d2exp(env0, dtup))
+//
+val ttup =
+let
+val
+ttup = dtup.styp()
+in//let
+  s2typ_hnfiz0(ttup) endlet
+//
+val topt =
+s2typ_prjout_opt(ttup, dlab)
+//
+in//let
+//
+case+ topt of
+| ~
+optn_vt_nil() => ( (*void*) )
+| ~
+optn_vt_cons(tprj) => 
+let
+  val t2p0 = d2e0.styp((*0*))
+  val ubtf =
+  unify2a_s2typ(env0, tprj, t2p0)
+end (*let*)
+//
+end (*let*) // end of [f0_proj(env0, d2e0)]
+
+(* ****** ****** *)
+//
+fun
+f0_l2bck
+( env0:
+! tr2aenv
+, d2e0: d2exp): void =
+(
+trsym2a_d2exp(env0, d2e1)) where
+{
+  val-D2El2bck(d2e1, lab2) = d2e0.node()
+} (*where*) // end of [f0_l2bck(env0, d2e0)]
 //
 (* ****** ****** *)
 //
