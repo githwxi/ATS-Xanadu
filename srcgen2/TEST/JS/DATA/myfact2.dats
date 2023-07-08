@@ -15,19 +15,6 @@ if x > 0 then x * fact2(x-1) else 1
 *)
 (* ****** ****** *)
 
-fun
-fact28(x: sint) =
-(
-  loop@(0, 1) ) where
-{
-fun
-loop ir =
-if ir.0 < x
-then loop@(ir.0+1, (ir.0+1)*ir.1) else ir.1
-}
-////
-(* ****** ****** *)
-
 excptcon FACTexn of ()
 
 fun
@@ -118,8 +105,26 @@ fact28(x: sint) =
 fun
 loop ir =
 if ir.0 < x
-then loop@(ir.0+1, (ir.0+1)*ir.1) else ir.1
+then
+loop@(ir.0+1, (ir.0+1)*ir.1) else ir.1
 }
+
+(* ****** ****** *)
+
+fun
+fact29(x: sint) =
+(
+  loop@(0, 1) ) where
+{
+fun
+loop ir =
+let
+  val (i, r) = ir
+in//let
+(
+ if i < x
+ then loop@(i+1, (i+1)*r) else r ) end
+} (*where*) // end of [fact29(x: sint)]
 
 (* ****** ****** *)
 
