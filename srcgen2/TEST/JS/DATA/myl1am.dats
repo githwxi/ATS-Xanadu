@@ -8,7 +8,7 @@ lam(x: sint, y: sint) => x * y
 (* ****** ****** *)
 
 val myfact =
-fix f(x: sint) =>
+fix f(x: sint): bool =>
 (if x > 0 then x * f(x-1) else 1)
 
 (* ****** ****** *)
