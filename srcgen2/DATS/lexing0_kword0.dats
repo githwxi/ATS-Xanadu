@@ -313,8 +313,8 @@ val () = kwdins("withvtype", T0WITHVTYPE)
 val () = kwdins("$tup", T0TRCD12)//_t0/vt
 val () = kwdins("$rec", T0TRCD22)//_t0/vt
 val () = kwdins("$tup_t0", T0TRCD13)//tbox
-val () = kwdins("$rec_t0", T0TRCD23)//tbox
 val () = kwdins("$tup_vt", T0TRCD14)//vtbx
+val () = kwdins("$rec_t0", T0TRCD23)//tbox
 val () = kwdins("$rec_vt", T0TRCD24)//vtbx
 //
 val () = kwdins("$raise", T_DLR_RAISE)

@@ -31,4 +31,13 @@ if i > 0 then f@(i-1,i*r) else r))@(i,1)
 
 (* ****** ****** *)
 
+val myfact4 =
+lam(i: sint) =>
+(
+fix f#(i,r) =>
+(
+if i > 0 then f#(i-1,i*r) else r))#(i,1)
+
+(* ****** ****** *)
+
 (* end of [DATA/myl1am.dats] *)
