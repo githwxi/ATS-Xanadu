@@ -67,6 +67,9 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload sort with s2typ_get_sort
+#symload node with s2typ_get_node
+(* ****** ****** *)
 #symload lctn with d3pat_get_lctn
 #symload node with d3pat_get_node
 #symload styp with d3pat_get_styp
@@ -88,6 +91,95 @@ case+ svts of
 |list_cons _ =>
  s2typ_subst0(t2p0, svts) )//end-fn0
 //
+(* ****** ****** *)
+
+#implfun
+s2typ_fun1_f3arglst
+( f3as, tfun, tres ) =
+(
+  auxmain(f3as, tfun)) where
+{
+//
+fun
+f1_imprq
+(s2vs
+:s2varlst): bool =
+(
+case+ s2vs of
+|list_nil() => false
+|list_cons(s2v1, s2vs) =>
+if
+sort2_imprq(s2v1.sort())
+then true else f1_imprq(s2vs))
+//
+fun
+auxmain
+(f3as
+:f3arglst, tfun:s2typ): s2typ =
+(
+case+ f3as of
+|list_nil() => tres
+|list_cons(f3a1, f3as) =>
+(
+//
+case+ f3a1.node() of
+//
+|F3ARGmet0 _ =>
+(
+  auxmain(f3as, tfun))
+//
+|F3ARGsta0(s2vs, s2ps) =>
+(
+if
+not
+(f1_imprq(s2vs))
+then
+auxmain(f3as, tfun)
+else
+let
+val-
+T2Puni0
+(s2vs, tfun) = tfun.node()
+//
+val
+s2t0 = tfun.sort()
+val
+tres = auxmain(f3as, tfun)
+//
+in//let
+s2typ_make_node
+(s2t0, T2Puni0(s2vs, tres))
+endlet // end-of-[else]
+) (* end of [F3ARGsta0(...) *)
+//
+|
+F3ARGdyn0(npf1, d3ps) =>
+let
+val-
+T2Pfun1
+(f2cl
+,npf1
+,targ, tfun) = tfun.node()
+//
+val
+s2t0 = tfun.sort()
+val
+tres = auxmain(f3as, tfun)
+//
+val
+t2ps =
+s2typlst_of_d3patlst(d3ps)
+//
+in//let
+s2typ_make_node
+( s2t0
+, T2Pfun1(f2cl,npf1,t2ps,tres))
+end (*let*) // end of [F3ARGdyn0]
+//
+) (* end of [list_cons(...)] *)
+) (*case+*) // end of [auxmain(...)]
+} // end of [s2typ_fun1_f3arglst(...)]
+
 (* ****** ****** *)
 //
 #implfun

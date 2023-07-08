@@ -1017,6 +1017,8 @@ f0_lam0
 let
 //
 val loc0 = d2e0.lctn()
+val t2p0 = d2e0.styp()
+//
 val-
 D2Elam0
 ( tknd
@@ -1043,10 +1045,9 @@ trans23_d2exp_tpck(env0,dexp,tres)
 end (*let*) // end of [ S2RESsome ]
 ) : (d3exp) // end of [ val(dexp) ]
 //
-val f2cl = F2CLfun(*void*)
 val tres = dexp.styp((*void*))
 val tfun =
-s2typ_fun1_f3arglst(f3as, f2cl, tres)
+s2typ_fun1_f3arglst(f3as,t2p0,tres)
 //
 in//let
 //

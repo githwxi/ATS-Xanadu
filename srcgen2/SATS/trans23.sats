@@ -206,11 +206,16 @@ LEX = "./lexing0.sats"
 #typedef d3eclistopt = $D3E.d3eclistopt
 (* ****** ****** *)
 //
+(*
+HX:
+[tfun] is for providing
+funclo information here:
+*)
 fun
 s2typ_fun1_f3arglst
 (f3as
 :f3arglst
-,f2cl:f2clknd,tres:s2typ):s2typ
+,tfun:s2typ,tres:s2typ): s2typ
 //
 (* ****** ****** *)
 //
