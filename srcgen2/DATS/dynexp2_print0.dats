@@ -226,37 +226,50 @@ D2Pdap1(d1p1) =>
 print("D2Pdap1(", d1p1, ")") )
 |
 D2Pdapp
-(d2f0, npf1, d2ps) =>
+( d2f0
+, npf1, d2ps) =>
 (
 print("D2Pdapp(");
 print(d2f0,";",npf1,";",d2ps,")") )
 //
 |
-D2Ptup0(npf1, d2ps) =>
+D2Ptup0
+( npf1, d2ps) =>
 print("D2Ptup0(",npf1,";",d2ps,")")
 |
 D2Ptup1
-( tknd, npf1, d2ps ) =>
+( tknd
+, npf1, d2ps) =>
 ( print("D2Ptup1(")
 ; print(tknd,";",npf1,";",d2ps,")") )
 |
 D2Prcd2
-( tknd, npf1, ldps ) =>
+( tknd
+, npf1, ldps) =>
 ( print("D2Prcd2(")
 ; print(tknd,";",npf1,";",ldps,")") )
 //
 |
 D2Pannot
-(d2p1, s1e2, s2e2) =>
-print("D2Pannot(",d2p1,";",s1e2,";",s2e2,")")
+( d2p1
+, s1e2, s2e2) =>
+( print("D2Pannot(")
+; print( d2p1,";",s1e2,";",s2e2,")" ))
 //
-|
-D2Pg1mac(g1m1) => print("D2Pg1mac(",g1m1,")")
-//
-|
-D2Pt2pck(d2p1,t2p2) =>
+|D2Pg1mac
+ (   g1m1   ) =>
 (
-print("D2Pt2pck(",d2p1,";",t2p2,")") )
+ print("D2Pg1mac(",g1m1,")"))//D2Pg1mac
+//
+|D2Pt2pck
+( d2p1 , t2p2 ) =>
+let
+val
+t2p1 = d2p1.styp() in
+(
+  print("D2Pt2pck(")
+; print( d2p1,";",t2p1,";",t2p2,")") )
+endlet // end of [ D2Pt2pck(d2p1, t2p2) ]
 //
 |D2Pnone0() => print( "D2Pnone0(",")" )
 |D2Pnone1(d1p1) => print("D2Pnone1(",d1p1,")")
@@ -498,16 +511,28 @@ D2Eexists
 (
 print("D2Eexists(",s2es,";",d2e1,")"))
 //
-|D2Eg1mac(g1m1) => print("D2Eg1mac(",g1m1,")")
+|D2Eg1mac(g1m1) =>
+(
+print("D2Eg1mac(",g1m1,")"))//D2Eg1mac
 //
 |D2El2bck
 ( d2e1 , lab2 ) =>
+let
+val
+t2p1 = d2e1.styp() in
 (
- print("D2El2bck(",d2e1,";",lab2,")") )
+  print("D2El2bck(")
+; print( d2e1,";",t2p1,";",lab2,")") )
+endlet // end of [ D2El2bck(d2e1, lab2) ]
 |D2Et2pck
 ( d2e1 , t2p2 ) =>
+let
+val
+t2p1 = d2e1.styp() in
 (
- print("D2Et2pck(",d2e1,";",t2p2,")") )
+  print("D2Et2pck(")
+; print( d2e1,";",t2p1,";",t2p2,")") )
+endlet // end of [ D2Et2pck(d2e1, t2p2) ]
 //
 |D2Enone0() => print( "D2Enone0(",")" )
 |D2Enone1(d1e1) => print("D2Enone1(",d1e1,")")

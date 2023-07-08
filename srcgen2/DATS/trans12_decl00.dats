@@ -933,6 +933,7 @@ let
 //
 val
 loc0 = d1cl.lctn()
+//
 val-
 D1Csexpdef
 ( tknd
@@ -941,12 +942,12 @@ D1Csexpdef
 , topt, sdef) = d1cl.node()
 //
 (*
-val () =
-prerrln
-("f0_sexpdef: smas=", smas)
-val () =
-prerrln
-("f0_sexpdef: sdef=", sdef)
+val () = prerrln
+("\
+f0_sexpdef: smas = ", smas)
+val () = prerrln
+("\
+f0_sexpdef: sdef = ", sdef)
 *)
 //
 val () =
@@ -985,13 +986,14 @@ _(*non-S2Tnone0*) =>
 s2exp_stck(loc0, sdef, tres)
 ) where
 {
-  val tres = sexpdef_sort2(tknd) }
+val tres = sexpdef_sort2(tknd)
+}
 ) : s2exp // end of [val(sdef)]
 //
 (*
 val () =
 prerrln
-("f0_sexpdef: sdef=", sdef)
+( "f0_sexpdef: sdef = ", sdef )
 *)
 //
 val sdef =
