@@ -611,6 +611,21 @@ val () =
   trsym2a_d2exp(env0, dexp)) end
 //
 |
+D2Efix0
+( tknd
+, d2v0
+, f2as, sres
+, arrw, dexp) =>
+let
+//
+val () =
+trsym2a_f2arglst(env0, f2as)
+//
+val () =
+(
+  trsym2a_d2exp(env0, dexp)) end
+//
+|
 D2Eaddr
 (   d2e1   ) =>
 let
