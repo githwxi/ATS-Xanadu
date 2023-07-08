@@ -600,16 +600,16 @@ d2exp_lam0_errck
 , f2as: f2arglst
 , sres: s2res
 , arrw: f1unarrw
-, d2e1
+, dexp
 : d2exp(*body*)): d2exp =
 let
-val lvl = d2exp_errvl(d2e1)
+val lvl = d2exp_errvl(dexp)
 in//let
 d2exp_errck
 ( lvl+1
-, d2exp
+, d2exp_make_node
   (loc0
-  ,D2Elam0(tknd,f2as,sres,arrw,d2e1)))
+  ,D2Elam0(tknd,f2as,sres,arrw,dexp)))
 endlet // end of [d2exp_lam0_errck(...)]
 //
 (* ****** ****** *)
