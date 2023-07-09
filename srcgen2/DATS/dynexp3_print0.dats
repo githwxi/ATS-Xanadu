@@ -348,12 +348,22 @@ D3Eraise
 //
 |D3El2bck
 ( d3e1 , lab2 ) =>
+let
+val
+t2p1 = d3e1.styp() in
 (
-  print("D3El2bck(",d3e1,";",lab2,")"))
+  print("D3El2bck(")
+; print( d3e1,";",t2p1,";",lab2,")") )
+endlet // end of [ D3El2bck(d3e1, lab2) ]
 |D3Et2pck
 ( d3e1 , t2p2 ) =>
+let
+val
+t2p1 = d3e1.styp() in
 (
-  print("D3Et2pck(",d3e1,";",t2p2,")"))
+  print("D3Et2pck(")
+; print( d3e1,";",t2p1,";",t2p2,")") )
+endlet // end of [ D3Et2pck(d3e1, t2p2) ]
 //
 |D3Enone0() => print( "D3Enone0(",")" )
 |D3Enone1(d1e1) => print("D3Enone1(",d1e1,")")
