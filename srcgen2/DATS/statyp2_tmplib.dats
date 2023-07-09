@@ -53,6 +53,8 @@ ATS_PACKNAME
 #staload "./../SATS/xlabel0.sats"
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
+#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 (* ****** ****** *)
@@ -553,6 +555,9 @@ f0_apps(e1nv, t2p0, svts, flag)
 |T2Pfun1 _ =>
 f0_fun1(e1nv, t2p0, svts, flag)
 //
+|T2Ptext _ =>
+f0_text(e1nv, t2p0, svts, flag)
+//
 |T2Pnone0 _ => t2p0
 |T2Pnone1 _ => t2p0
 |T2Ps2exp _ => t2p0
@@ -644,6 +649,30 @@ end (*let*) // end of [f0_apps(e1nv,...)]
 //
 (* ****** ****** *)
 //
+fun
+f0_text
+( e1nv: !e1nv
+, t2p0: s2typ
+, svts: s2vts
+, flag: &sint >> _): s2typ =
+let
+//
+val fval = flag
+//
+val-
+T2Ptext(name, t2ps) = t2p0.node()
+val t2ps =
+s2typlst_substx(e1nv,t2ps,svts,flag)
+//
+in//let
+if
+flag <= fval
+then t2p0 else
+s2typ(t2p0.sort(), T2Ptext(name, t2ps))
+end (*let*) // end of [f0_text(e1nv,...)]
+//
+(* ****** ****** *)
+//
 } (*where*) // end of [s2typ_substx(e1nv,...)]
 //
 (* ****** ****** *)
@@ -726,6 +755,89 @@ s2typ_hnfiz0
 ( e1nv: !e1nv
 , t2p0: s2typ): s2typ =
 s2typ_hnfiz0_e1nv<e1nv>(e1nv, t2p0)
+//
+fun
+s2typ_subst0
+( e1nv: !e1nv
+, t2p0: s2typ
+, svts: s2vts): s2typ =
+s2typ_subst0_e1nv<e1nv>(e1nv,t2p0,svts)
+//
+(* ****** ****** *)
+fun
+s2typ_exi0_abst
+( e1nv: !e1nv
+, t2p0: s2typ): s2typ = t2p0
+fun
+s2typ_uni0_abst
+( e1nv: !e1nv
+, t2p0: s2typ): s2typ = t2p0
+(* ****** ****** *)
+//
+local
+//
+fun
+f0_inst_s2vs
+( s2vs
+: s2varlst): s2vts =
+(
+list_map
+<x0><y0>(s2vs)) where
+{
+//
+fun
+x2t2p_make() =
+x2t2p_make_lctn
+(loctn_dummy((*void*)))
+//
+#typedef x0 = s2var
+#typedef y0 = (s2var, s2typ)
+#impltmp
+map$fopr
+<x0><y0>(s2v1) =
+(s2v1, s2typ_xtv(x2t2p_make()))
+//
+}(*where*)//end of [f0_inst_s2vs]
+//
+in//local
+//
+fun
+s2typ_exi0_inst
+( e1nv: !e1nv
+, t2p0: s2typ): s2typ =
+(
+case+
+t2p0.node() of
+|
+T2Pexi0
+(s2vs, t2p1) =>
+let
+val svts =
+f0_inst_s2vs(s2vs) in
+s2typ_subst0(e1nv, t2p1, svts)
+endlet // end of [T2Pexi0(...)]
+| _(* non-T2Pexi0 *) => (  t2p0  )
+)(*case+*)//end-of-[s2typ_exi0_inst]
+//
+fun
+s2typ_uni0_inst
+( e1nv: !e1nv
+, t2p0: s2typ): s2typ =
+(
+case+
+t2p0.node() of
+|
+T2Puni0
+(s2vs, t2p1) =>
+let
+val svts =
+f0_inst_s2vs(s2vs) in
+s2typ_subst0(e1nv, t2p1, svts)
+endlet // end of [T2Puni0(...)]
+| _(* non-T2Puni0 *) => (  t2p0  )
+)(*case+*)//end-of-[s2typ_uni0_inst]
+//
+endloc // end-of-[s2typ_exi0/uni0_inst]
 //
 (* ****** ****** *)
 //
@@ -1017,8 +1129,15 @@ end (*let*) // end of [f0_trcd(e1nv,...)]
 //
 (* ****** ****** *)
 //
-val t2p1 = s2typ_hnfiz0(e1nv, t2p1)
-val t2p2 = s2typ_hnfiz0(e1nv, t2p2)
+val
+t2p1 = s2typ_hnfiz0(e1nv, t2p1)
+val
+t2p2 = s2typ_hnfiz0(e1nv, t2p2)
+//
+val
+t2p1 = s2typ_uni0_inst(e1nv, t2p1)
+val
+t2p2 = s2typ_uni0_inst(e1nv, t2p2)
 //
 // (*
 val (  ) =
