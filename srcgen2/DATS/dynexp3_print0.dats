@@ -65,9 +65,11 @@ _(*?*) = "./lexing0_print0.dats"
 (* ****** ****** *)
 #symload lctn with d3pat_get_lctn
 #symload node with d3pat_get_node
+#symload styp with d3pat_get_styp
 (* ****** ****** *)
 #symload lctn with d3exp_get_lctn
 #symload node with d3exp_get_node
+#symload styp with d3exp_get_styp
 (* ****** ****** *)
 #symload lctn with f3arg_get_lctn
 #symload node with f3arg_get_node
