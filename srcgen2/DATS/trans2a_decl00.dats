@@ -61,8 +61,15 @@ _(*TRANS2a*) = "./trans2a.dats"
 (* ****** ****** *)
 #symload node with s2typ_get_node
 (* ****** ****** *)
+#symload styp with d2var_get_styp
+(* ****** ****** *)
+#symload styp with d2cst_get_styp
+#symload styp with d2cst_set_styp
+(* ****** ****** *)
 #symload styp with d2pat_get_styp
 #symload styp with d2exp_get_styp
+(* ****** ****** *)
+#symload dpid with d2fundcl_get_dpid
 (* ****** ****** *)
 //
 fun
@@ -197,8 +204,14 @@ loc0 = d2cl.lctn()
 val-
 D2Cstatic
 (tknd, dcl1) =  d2cl.node()
+//
+val () =
+prerrln
+("f0_static: d2cl = ", d2cl)
+//
 val
 dcl1 = trans2a_d2ecl(env0, dcl1)
+//
 in//let
   d2ecl(loc0, D2Cstatic(tknd, dcl1))
 end (*let*) // end of [f0_static(env0,d2cl)]
@@ -215,8 +228,14 @@ loc0 = d2cl.lctn()
 val-
 D2Cextern
 (tknd, dcl1) = d2cl.node()
+//
+val () =
+prerrln
+("f0_extern: d2cl = ", d2cl)
+//
 val
 dcl1 = trans2a_d2ecl(env0, dcl1)
+//
 in//let
   d2ecl(loc0, D2Cextern(tknd, dcl1))
 end (*let*) // end of [f0_extern(env0,d2cl)]
@@ -419,23 +438,25 @@ D2Cfundclst
 , tqas
 , d2cs, d2fs) = d2cl.node()
 //
-(*
+// (*
 val () =
 prerrln
 ("f0_fundclst: loc0 = ", loc0)
 val () =
 prerrln
 ("f0_fundclst: d2cl = ", d2cl)
-*)
+// *)
 //
 val
 d2fs =
 trans2a_d2fundclist(env0, d2fs)
 //
 in//let
+//
 d2ecl_make_node
 ( loc0
 , D2Cfundclst(tknd, tqas, d2cs, d2fs) )
+//
 end (*let*) // end of [f0_fundclst(env0,d2cl)]
 //
 (* ****** ****** *)
@@ -689,10 +710,10 @@ s2typ_hnfiz0(s2exp_stpize(s2e1))
 val tfun =
 s2typ_fun1_f2arglst(f2as,f2cl,tres)
 //
-(*
+// (*
 val (  ) = prerrln
 ("trans2a_d2fundcl: tfun = ", tfun)
-*)
+// *)
 //
 (*
 HX-2023:
@@ -711,10 +732,10 @@ end
 end where
 {
 //
-(*
+// (*
 val () =
 prerrln("trans2a_d2fundcl: dfun = ", dfun)
-*)
+// *)
 //
 }(*where*)//end-of-[trans2a_d2fundcl(env0,dfun)]
 

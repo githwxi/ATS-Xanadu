@@ -702,6 +702,18 @@ D2CST of
 , s2typ // styp // erasure
 , s2typ // xtyp // matching
 )
+datavwtp
+d2cst_vt =
+D2CST_vt of
+( loc_t // lctn
+, sym_t // name
+, tnode // tknd
+, t2qas // tqas
+, s2exp // sexp
+, stamp // stmp // unicity
+, s2typ // styp // erasure
+, s2typ // xtyp // matching
+)
 //
 #absimpl d2cst_tbox = d2cst
 //

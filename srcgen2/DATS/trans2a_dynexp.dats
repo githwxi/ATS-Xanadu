@@ -1846,6 +1846,11 @@ s2typ_make_node
 (sort2_none0()
 ,T2Pfun1(f2cl,npf1,t2ps,tres))
 //
+val () =
+prerrln("f0_brset: d2es = ", d2es)
+val () =
+prerrln("f0_brset: tfun = ", tfun)
+//
 val name =
 BRCKT_symbl(*void*)//(A[i]:=x)
 val dsym =
