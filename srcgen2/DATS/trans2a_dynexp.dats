@@ -618,7 +618,8 @@ d2e0.node() of
 |D2Ewhere _ => f0_where(env0, d2e0)
 //
 |D2Eassgn _ => f0_assgn(env0, d2e0)
-|D2Ebrckt _ => f0_brckt(env0, d2e0)
+|D2Ebrget _ => f0_brget(env0, d2e0)
+|D2Ebrset _ => f0_brset(env0, d2e0)
 |D2Edtsel _ => f0_dtsel(env0, d2e0)
 //
 |D2Eraise _ => f0_raise(env0, d2e0)
@@ -1779,22 +1780,40 @@ end (*let*) // end of [f0_assgn(env0,d2e0)]
 (* ****** ****** *)
 //
 fun
-f0_brckt
+f0_brget
 ( env0:
 ! tr2aenv
 , d2e0: d2exp): d2exp =
 let
 val loc0 = d2e0.lctn()
 val-
-D2Ebrckt
+D2Ebrget
 ( dpis, d2es) = d2e0.node()
 val d2es =
 trans2a_d2explst(env0, d2es)
 val t2p0 = s2typ_new0_x2tp(loc0)
 in//let
 d2exp_make_styp_node
-( loc0, t2p0, D2Ebrckt(dpis, d2es))
-end (*let*) // end of [f0_brckt(env0,...)]
+( loc0, t2p0, D2Ebrget(dpis, d2es))
+end (*let*) // end of [f0_brget(env0,...)]
+//
+fun
+f0_brset
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+val loc0 = d2e0.lctn()
+val-
+D2Ebrset
+( dpis, d2es) = d2e0.node()
+val d2es =
+trans2a_d2explst(env0, d2es)
+val t2p0 = the_s2typ_void((*0*))
+in//let
+d2exp_make_styp_node
+( loc0, t2p0, D2Ebrset(dpis, d2es))
+end (*let*) // end of [f0_brset(env0,...)]
 //
 (* ****** ****** *)
 //

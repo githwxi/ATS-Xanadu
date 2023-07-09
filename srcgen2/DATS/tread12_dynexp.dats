@@ -814,7 +814,7 @@ endlet // end of [d2exp_assgn_errck(...)]
 (* ****** ****** *)
 //
 fun
-d2exp_brckt_errck
+d2exp_brget_errck
 ( loc0: loc_t
 , dpis: d2ptmlst
 , d2es: d2explst): d2exp =
@@ -823,8 +823,21 @@ val lvl0 = d2exp_errvl(d2es)
 in//let
 d2exp_errck
 ( lvl0+1
-, d2exp(loc0, D2Ebrckt(dpis, d2es)) )
-endlet // end of [d2exp_brckt_errck(...)]
+, d2exp(loc0, D2Ebrget(dpis, d2es)) )
+endlet // end of [d2exp_brget_errck(...)]
+//
+fun
+d2exp_brset_errck
+( loc0: loc_t
+, dpis: d2ptmlst
+, d2es: d2explst): d2exp =
+let
+val lvl0 = d2exp_errvl(d2es)
+in//let
+d2exp_errck
+( lvl0+1
+, d2exp(loc0, D2Ebrset(dpis, d2es)) )
+endlet // end of [d2exp_brset_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1369,7 +1382,9 @@ D2Ewhere _ => f0_where(d2e0, err)
 |
 D2Eassgn _ => f0_assgn(d2e0, err)
 |
-D2Ebrckt _ => f0_brckt(d2e0, err)
+D2Ebrget _ => f0_brget(d2e0, err)
+|
+D2Ebrset _ => f0_brset(d2e0, err)
 |
 D2Edtsel _ => f0_dtsel(d2e0, err)
 //
@@ -1966,14 +1981,14 @@ end (*let*) // end of [f0_assgn(d2e,err)]
 (* ****** ****** *)
 //
 fun
-f0_brckt
+f0_brget
 (d2e: d2exp
 ,err: &sint >> _): d2exp =
 let
 //
 val e00 = err
 val-
-D2Ebrckt
+D2Ebrget
 (dpis, d2es) = d2e.node()
 //
 val
@@ -1988,9 +2003,36 @@ let
 val
 loc = d2e.lctn()
 in//let
-d2exp_brckt_errck(loc, dpis, d2es)
+d2exp_brget_errck(loc, dpis, d2es)
 end (*let*) // end-of-[else]
-end (*let*) // end of [f0_brckt(d2e,err)]
+end (*let*) // end of [f0_brget(d2e,err)]
+//
+fun
+f0_brset
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+val-
+D2Ebrset
+(dpis, d2es) = d2e.node()
+//
+val
+d2es =
+tread12_d2explst(d2es, err)
+//
+in//let
+if
+(err=e00)
+then (d2e) else
+let
+val
+loc = d2e.lctn()
+in//let
+d2exp_brset_errck(loc, dpis, d2es)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_brset(d2e,err)]
 //
 (* ****** ****** *)
 //

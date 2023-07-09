@@ -646,10 +646,10 @@ in//let
 let
 val
 drpt = d2rpt_new1(loc0)
-in
+in//let
 d2pat_sym0(loc0, drpt, d1p0, dpis)
-end
-end where
+end//let
+endlet where // end of [let]
 {
 (*
 val (  ) =
@@ -2071,7 +2071,7 @@ D2Edapp
 case+
 d2f1.node() of
 |
-D2Ebrckt(dpis, d2es) =>
+D2Ebrget(dpis, d2es) =>
 let
 //
 (*
@@ -2083,14 +2083,14 @@ list_extend(d2es, d2e2)
 val d2f1 =
 d2exp_make_node
 ( loc0
-, D2Ebrckt(dpis, d2es) )
+, D2Ebrset(dpis, d2es) )
 in//let
 d2exp_make_node
 ( loc0
 , D2Edapp(d2f1, npf1, darg) )
-end // end of [D2Ebrckt]
+end // end of [D2Ebrget]
 |
-_(*non-D2Ebrckt*) =>
+_(*non-D2Ebrget*) =>
 (
 d2exp_make_node
 (loc0, D2Eassgn(d2e1, d2e2)))
@@ -2351,7 +2351,7 @@ case+ d2i1 of
 end (*let*) // end of [val(dpis)]
 //
 in//let
-  d2exp(loc0, D2Ebrckt(dpis, d2es))
+  d2exp(loc0, D2Ebrget(dpis, d2es))
 end (*let*) // end of [f0_brckt(env0,d1e0)]
 //
 (* ****** ****** *)
