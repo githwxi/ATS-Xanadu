@@ -2,16 +2,18 @@
 //
 #extern
 fun
-<a:t0>
 myget_at
+{a:t0}
 ( xs
 : list(a), i0: nint): a
 #extern
 fun
-<a:t0>
 myset_at
+{a:t0}
 ( xs: list(a)
 , i0: nint, x0: a): void
+//
+#symload [] with myget_at
 #symload [] with myset_at
 //
 (* ****** ****** *)

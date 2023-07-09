@@ -2149,7 +2149,7 @@ if
 (recq) then
 tr12env_add0_d2vs(env0, d2vs)
 //
-val (  ) =
+val (  ) = // enter
 tr12env_pshlam0(env0)
 //
 val tqas =
@@ -2158,9 +2158,12 @@ val (  ) =
 tr12env_add0_tqas(env0, tqas)
 //
 val d2fs =
-trans12_d1fundclist(env0,d2vs,d1fs)
+trans12_d1fundclist
+( env0
+, d2vs(*names*), d1fs(*impls*))
 //
-val (  ) = tr12env_poplam0(env0)
+val (  ) =
+tr12env_poplam0(env0) // leave
 //
 val (  ) =
 if
@@ -2180,7 +2183,8 @@ map$fopr<x0><y0>
 }
 //
 val () =
-(if
+(
+ if//HX: [d2cs] only for templates
  list_consq(tqas)
  then tr12env_add1_d2cs(env0, d2cs))
 //
@@ -3224,7 +3228,9 @@ tdxp = trans12_teqd1exp(env0, tdxp)
 val () = tr12env_poplam0(env0)//exit
 //
 in//let
-d2fundcl(loc0, dvar, farg, sres, tdxp, wsxp)
+(
+  d2fundcl_make_args
+  (loc0, dvar, farg, sres, tdxp, wsxp) )
 end//let
 (*let*)//end-of-[trans12_d1fundcl(env0,dfun)]
 

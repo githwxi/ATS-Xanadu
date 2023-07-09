@@ -130,6 +130,11 @@ f0_trcd(e1nv, t2p0, flag)
 |T2Ptext _ =>
 f0_text(e1nv, t2p0, flag)
 //
+|T2Pexi0 _ =>
+f0_exi0(e1nv, t2p0, flag)
+|T2Puni0 _ =>
+f0_uni0(e1nv, t2p0, flag)
+//
 |_(*otherwise*) => s2typ_none1(t2p0)
 //
 ) where
@@ -353,6 +358,58 @@ end where
 val-T2Ptext(tnm1, t2ps) = t2p0.node()
 }
 //(*where*) // end of [f0_text(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_exi0
+( e1nv: !e1nv
+, t2p0: s2typ
+, flag: &sint >> _): s2typ =
+let
+//
+val fval = flag
+//
+val t2p1 =
+s2typ_hnfizx(e1nv, t2p1, flag)
+//
+in//let
+if
+(flag <= fval)
+then t2p0 else
+s2typ_make_node
+(t2p0.sort(), T2Pexi0(s2vs, t2p1))
+end where
+{
+val-T2Pexi0(s2vs, t2p1) = t2p0.node()
+}
+//(*where*) // end of [f0_exi0(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_uni0
+( e1nv: !e1nv
+, t2p0: s2typ
+, flag: &sint >> _): s2typ =
+let
+//
+val fval = flag
+//
+val t2p1 =
+s2typ_hnfizx(e1nv, t2p1, flag)
+//
+in//let
+if
+(flag <= fval)
+then t2p0 else
+s2typ_make_node
+(t2p0.sort(), T2Puni0(s2vs, t2p1))
+end where
+{
+val-T2Puni0(s2vs, t2p1) = t2p0.node()
+}
+//(*where*) // end of [f0_uni0(e1nv,...)]
 //
 (* ****** ****** *)
 //
