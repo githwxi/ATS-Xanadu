@@ -190,6 +190,15 @@ x2t2p with x2t2p_make_dvar
 (* ****** ****** *)
 //
 fun
+d2exp_sym0_styp
+( loc0:loc_t
+, name:sym_t
+, dpis
+: d2ptmlst, t2p0:s2typ):d2exp
+//
+(* ****** ****** *)
+//
+fun
 s2typ_fun1_f2arglst
 (f2as
 :f2arglst

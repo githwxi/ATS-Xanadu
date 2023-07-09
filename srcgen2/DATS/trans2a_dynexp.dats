@@ -50,6 +50,8 @@ _(*TRANS2A*) = "./trans2a.dats"
 (* ****** ****** *)
 #staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
+#staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
@@ -1791,10 +1793,29 @@ D2Ebrget
 ( dpis, d2es) = d2e0.node()
 val d2es =
 trans2a_d2explst(env0, d2es)
-val t2p0 = s2typ_new0_x2tp(loc0)
+//
+val npf1 = (-1)
+val f2cl =
+s2typ_new0_x2tp(loc0)
+val tres =
+s2typ_new0_x2tp(loc0)
+val t2ps =
+  s2typlst_of_d2explst(d2es)
+//
+val
+tfun =
+s2typ_make_node
+(sort2_none0()
+,T2Pfun1(f2cl,npf1,t2ps,tres))
+//
+val name =
+BRCKT_symbl(*void*)//"A[i]"
+val dsym =
+d2exp_sym0_styp(loc0,name,dpis,tfun)
+//
 in//let
 d2exp_make_styp_node
-( loc0, t2p0, D2Ebrget(dpis, d2es))
+(loc0, tres, D2Edapp(dsym, npf1, d2es))
 end (*let*) // end of [f0_brget(env0,...)]
 //
 fun
@@ -1809,10 +1830,30 @@ D2Ebrset
 ( dpis, d2es) = d2e0.node()
 val d2es =
 trans2a_d2explst(env0, d2es)
-val t2p0 = the_s2typ_void((*0*))
+//
+val npf1 = (-1)
+val f2cl =
+s2typ_new0_x2tp(loc0)
+//
+val tres =
+  the_s2typ_void((*0*))
+val t2ps =
+  s2typlst_of_d2explst(d2es)
+//
+val
+tfun =
+s2typ_make_node
+(sort2_none0()
+,T2Pfun1(f2cl,npf1,t2ps,tres))
+//
+val name =
+BRCKT_symbl(*void*)//(A[i]:=x)
+val dsym =
+d2exp_sym0_styp(loc0,name,dpis,tfun)
+//
 in//let
 d2exp_make_styp_node
-( loc0, t2p0, D2Ebrset(dpis, d2es))
+(loc0, tres, D2Edapp(dsym, npf1, d2es))
 end (*let*) // end of [f0_brset(env0,...)]
 //
 (* ****** ****** *)
