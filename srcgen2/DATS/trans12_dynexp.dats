@@ -299,14 +299,16 @@ d2f0.node() of
 //
 |D2Edap0
 (   d2f0   ) =>
-d2exp_dapp(loc0,d2f0,npf1,d2as)
+(
+  d2exp_dapp
+  (loc0,d2f0,npf1,d2as) )
 //
 |D2Ebrget
 (dpis, d2es) =>
 let
 val
 d2es =
-list_extend(d2es, d2a1) where
+list_cons(d2a1, d2es) where
 {
 val d2a1 =
 (

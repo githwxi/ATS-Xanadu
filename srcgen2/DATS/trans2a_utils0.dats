@@ -47,6 +47,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
+#staload "./../SATS/dynexp1.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
@@ -208,21 +210,44 @@ val t2p2 =
 s2typ_var
 (s2var_copy(s2v1))
 in//let
-list_cons
-((s2v1, t2p2), f0_svs1_svs2(svs1, svs2))
-end//let//end-of[list_nil()]
+  list_cons
+  ( (s2v1, t2p2)
+  , f0_svs1_svs2(svs1, svs2) )
+end // let // end-of[list_nil()]
 |list_cons(s2v2, svs2) =>
 let
 val t2p2 = s2typ_var(s2v2)
 in//let
 list_cons
-((s2v1, t2p2), f0_svs1_svs2(svs1, svs2))
-end//let//end-of-[list_cons(s2v2, svs2)]
+((s2v1,t2p2),f0_svs1_svs2(svs1,svs2))
+end//let//end-of-[list_cons(s2v2,svs2)]
 )
-)(*case+*)//end-of-[f0_svs1_svs2(svs1,svs2)]
+)(*case+*)//end-of-[ f0_svs1_svs2(...) ]
 }(*where*)
 //
-end(*let*)//end-[s2typ_elim_s2vs(t2p0,s2vs)]
+end(*let*)//end-of-[s2typ_elim_s2vs(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+d2exp_sym0_styp
+( loc0
+, name, dpis, t2p0) =
+let
+val
+drxp =
+d2rxp_new1(loc0)
+val
+d1e1 =
+d1exp_make_node
+(loc0,D1Eid0(name)) in//let
+(
+  d2e0.styp(t2p0); d2e0) where
+{
+  val d2e0 =
+  d2exp_make_node
+  (loc0, D2Esym0(drxp, d1e1, dpis)) }
+end(*let*)//end-of-[d2exp_sym0_styp(...)]
 //
 (* ****** ****** *)
 
@@ -303,7 +328,7 @@ case+ x1.node() of
 |F2ARGdyn0 _ =>
  f1_ndyn(xs) + 1 | _ => f1_ndyn(xs)))
 //
-} (*where*) // end-[s2typ_fun1_f2arglst]
+} (*whr*)//end-[s2typ_fun1_f2arglst(...)]
 //
 (* ****** ****** *)
 //
@@ -317,8 +342,7 @@ list_map<x0><y0>(d2ps)) where
 #typedef y0 = s2typ
 #impltmp
 map$fopr<x0><y0>(d2p) = d2p.styp()
-}(*where*)
-// end of [s2typlst_of_d2patlst(d2ps)]
+}(*whr*)//end-[s2typlst_of_d2patlst(d2ps)]
 //
 (* ****** ****** *)
 //
@@ -332,8 +356,7 @@ list_map<x0><y0>(d2es)) where
 #typedef y0 = s2typ
 #impltmp
 map$fopr<x0><y0>(d2e) = d2e.styp()
-}(*where*)
-// end of [s2typlst_of_d2explst(d2es)]
+}(*whr*)//end-[s2typlst_of_d2explst(d2es)]
 //
 (* ****** ****** *)
 //
@@ -353,7 +376,7 @@ S2LAB
 (l0, d2p.styp()) where
 {
   val+D2LAB(l0, d2p) = ldp } }
-// end of [l2t2plst_of_l2d2plst(ldps)]
+(*whr*)//end-[l2t2plst_of_l2d2plst(ldps)]
 //
 (* ****** ****** *)
 //
@@ -373,7 +396,7 @@ S2LAB
 (l0, d2e.styp()) where
 {
   val+D2LAB(l0, d2e) = lde } }
-// end of [l2t2plst_of_l2d2elst(ldes)]
+(*whr*)//end-[l2t2plst_of_l2d2elst(ldes)]
 //
 (* ****** ****** *)
 
@@ -405,8 +428,9 @@ val t2p0 = dcon.styp((*void*))
 val t2qs = d2con_get_tqas(dcon)
 //
 val
-svts = s2vts_make_lctn_tqas(loc0, t2qs) }
-//(*where*) // end of [d2con2a_s2typ(...)]
+svts =
+s2vts_make_lctn_tqas(loc0, t2qs) }
+// (*whr*) // end of [d2con2a_s2typ(...)]
 //
 #implfun
 d2cst2a_s2typ
@@ -426,8 +450,9 @@ val t2p0 = dcst.styp((*void*))
 val t2qs = d2cst_get_tqas(dcst)
 //
 val
-svts = s2vts_make_lctn_tqas(loc0, t2qs)}
-//(*where*) // end of [d2cst2a_s2typ(...)]
+svts =
+s2vts_make_lctn_tqas(loc0, t2qs) }
+// (*whr*) // end of [d2cst2a_s2typ(...)]
 //
 endloc//end-of[local(d2con2a/d2cst2a_s2typ)]
 
