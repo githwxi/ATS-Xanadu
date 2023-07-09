@@ -464,10 +464,15 @@ print("D2Ewhere(",d2e1,";",dcls,")")
 D2Eassgn
 (d2el, d2er) =>
 print("D2Eassgn(",d2el,";",d2er,")")
+//
 |
-D2Ebrckt
+D2Ebrget
 (dpis, d2es) =>
-print("D2Ebrckt(",dpis,";",d2es,")")
+print("D2Ebrget(",dpis,";",d2es,")")
+|
+D2Ebrset
+(dpis, d2es) =>
+print("D2Ebrset(",dpis,";",d2es,")")
 //
 |
 D2Edtsel
