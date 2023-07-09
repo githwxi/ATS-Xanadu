@@ -297,8 +297,26 @@ my_d2exp_dapp
 case+
 d2f0.node() of
 //
-|D2Edap0(d2f0) =>
+|D2Edap0
+(   d2f0   ) =>
 d2exp_dapp(loc0,d2f0,npf1,d2as)
+//
+|D2Ebrget
+(dpis, d2es) =>
+let
+val
+d2es =
+list_extend(d2es, d2a1) where
+{
+val d2a1 =
+(
+case+ d2as of
+|list_nil() =>
+ d2exp_none0(loc0)
+|list_cons(d2a1, d2as) => d2a1)}
+in//let
+d2exp(loc0, D2Ebrget(dpis, d2es))
+end // end of [D2Ebrget(dpis,d2es)]
 //
 |D2Edtsel
 (tknd
@@ -345,7 +363,7 @@ end (*let*) // end of [list_nil()]
 d2exp_dapp(loc0, d2f0, npf1, d2as))
 )
 //
-) (* end of [D2Edtsel(tknd,...)] *)
+) (*case+*) // end of [D2Edtsel(...)]
 //
 |_(* otherwise *) =>
 (
@@ -2064,13 +2082,6 @@ in//let
 case+
 d2e1.node() of
 |
-D2Edapp
-( d2f1
-, npf1, darg) =>
-(
-case+
-d2f1.node() of
-|
 D2Ebrget(dpis, d2es) =>
 let
 //
@@ -2080,26 +2091,15 @@ HX: A[idx] := itm
 //
 val d2es =
 list_extend(d2es, d2e2)
-val d2f1 =
-d2exp_make_node
-( loc0
-, D2Ebrset(dpis, d2es) )
 in//let
 d2exp_make_node
-( loc0
-, D2Edapp(d2f1, npf1, darg) )
-end // end of [D2Ebrget]
+(loc0, D2Ebrset(dpis, d2es))
+end // end of [D2Ebrget(...)]
 |
 _(*non-D2Ebrget*) =>
 (
-d2exp_make_node
-(loc0, D2Eassgn(d2e1, d2e2)))
-) (*case+*) // end(D2Edapp)
-|
-_(* non-D2Edapp *) =>
-(
-d2exp_make_node
-(loc0, D2Eassgn(d2e1, d2e2)))
+  d2exp_make_node
+  (loc0, D2Eassgn(d2e1, d2e2)) )
 //
 end (*let*) // end-of-then(ASSGN)
 //
