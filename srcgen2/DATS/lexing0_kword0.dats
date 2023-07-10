@@ -331,8 +331,10 @@ val () = kwdins("#prefix", T0SRP_PREFIX)
 val () = kwdins("#pstfix", T0SRP_PSTFIX)
 val () = kwdins("#nonfix", T_SRP_NONFIX)
 //
-val () = kwdins("#extern", T_SRP_EXTERN)
 val () = kwdins("#static", T_SRP_STATIC)
+val () = kwdins("#extern", T_SRP_EXTERN)
+val () = kwdins("#staval", T_SRP_STAVAL)
+val () = kwdins("#extval", T_SRP_EXTVAL)
 //
 val () = kwdins("#define", T_SRP_DEFINE)
 val () = kwdins("#macdef", T_SRP_MACDEF)

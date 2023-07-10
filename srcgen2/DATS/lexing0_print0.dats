@@ -443,12 +443,14 @@ print("T_SRP_NONFIX(", ")")
 T_SRP_FIXITY(knd) =>
 print("T_SRP_FIXITY(", knd, ")")
 //
-|
-T_SRP_STATIC() =>
+|T_SRP_STATIC() =>
 print("T_SRP_STATIC(", ")")
-|
-T_SRP_EXTERN() =>
+|T_SRP_EXTERN() =>
 print("T_SRP_EXTERN(", ")")
+|T_SRP_STAVAL() =>
+print("T_SRP_STAVAL(", ")")
+|T_SRP_EXTVAL() =>
+print("T_SRP_EXTVAL(", ")")
 //
 |
 T_SRP_DEFINE() =>
