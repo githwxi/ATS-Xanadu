@@ -394,6 +394,9 @@ pk_fun(r0:type) =
 //
 #extern
 fun
+p1_dynconst: p1_fun(d0ecl)
+#extern
+fun
 pk_dynconst: pk_fun(d0ecl)
 //
 (* ****** ****** *)
@@ -797,7 +800,7 @@ end (*let*) // end of [ T_DATATYPE( k0 ) ]
 //
 (* ****** ****** *)
 //
-|
+| // HX: f00=0
 _ when
 t0_dctkind(tnd) => pk_dynconst(tok, buf, err)
 //
@@ -833,6 +836,34 @@ in
 err := e00;
 d0ecl_make_node(lres, D0Cextern(tknd, dcl0)))
 end (*let*) // end of [T_SRP_EXTERN]
+//
+(* ****** ****** *)
+//
+|
+T_SRP_STAVAL() => let
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+  val dcl0 = p1_dynconst(buf, err)
+  val lres = tknd.lctn()+dcl0.lctn()
+in//let
+(
+err := e00;
+d0ecl_make_node(lres, D0Cstatic(tknd, dcl0)))
+end (*let*) // end of [T_SRP_STAVAL]
+//
+|
+T_SRP_EXTVAL() => let
+//
+  val tknd = tok
+  val (  ) = buf.skip1()
+  val dcl0 = p1_dynconst(buf, err)
+  val lres = tknd.lctn()+dcl0.lctn()
+in//let
+(
+err := e00;
+d0ecl_make_node(lres, D0Cextern(tknd, dcl0)))
+end (*let*) // end of [T_SRP_EXTVAL]
 //
 (* ****** ****** *)
 //
