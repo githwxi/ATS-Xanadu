@@ -14,7 +14,7 @@ myset_at
 , i0: nint, x0: a): void
 //
 #symload [] with myget_at
-#symload [] with myset_at
+#symload [] with myset_at of 1000
 //
 (* ****** ****** *)
 
@@ -43,7 +43,7 @@ myset2_at
 , i0: nint, x0: a): void
 //
 #symload [] with myget2_at
-#symload [] with myset2_at
+#symload [] with myset2_at of 1001
 //
 (* ****** ****** *)
 

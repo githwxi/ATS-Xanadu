@@ -180,6 +180,9 @@ D2Cfundclst _ => f0_fundclst(env0, d2cl)
 |
 D2Cimplmnt0 _ => f0_implmnt0(env0, d2cl)
 //
+|
+D2Cdynconst _ => f0_dynconst(env0, d2cl)
+//
 | _(*otherwise*) =>
 let
   val loc0 = d2cl.lctn()
@@ -562,6 +565,24 @@ D2Cimplmnt0
 end//let//end-of-[non-DIMPone1]
 //
 end (*let*) // end of [f0_implmnt0(env0,d2cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dynconst
+( env0:
+! tr2aenv
+, d2cl: d2ecl): d2ecl =
+let
+//
+(*
+val
+loc0 = d2cl.lctn()
+*)
+//
+val-
+D2Cdynconst
+(tknd,tqas,d2cs) = d2cl.node() in d2cl endlet
 //
 (* ****** ****** *)
 //
