@@ -163,6 +163,9 @@ D2Cexcptcon _ => f0_excptcon(env0, d2cl)
 |
 D2Cdatatype _ => f0_datatype(env0, d2cl)
 //
+|
+D2Cdynconst _ => f0_dynconst(env0, d2cl)
+//
 | _(*otherwise*) =>
 let
   val loc0 = d2cl.lctn()
@@ -437,6 +440,22 @@ val-D2Cdatatype _ = d2cl.node()
 in//let
 d3ecl_make_node(d2cl.lctn(), D3Cd2ecl(d2cl))
 end (*let*) // end of [f0_datatype(env0,d2cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dynconst
+( env0:
+! tr23env
+, d2cl: d2ecl): d3ecl =
+let
+//
+val
+loc0 = d2cl.lctn()
+val-D2Cdynconst _ = d2cl.node()
+in//let
+d3ecl_make_node(d2cl.lctn(), D3Cd2ecl(d2cl))
+end (*let*) // end of [f0_dynconst(env0,d2cl)]
 //
 (* ****** ****** *)
 //

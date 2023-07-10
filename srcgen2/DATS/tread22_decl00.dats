@@ -310,6 +310,9 @@ D2Cexcptcon _ => f0_excptcon(d2cl, err)
 D2Cdatatype _ => f0_datatype(d2cl, err)
 //
 |
+D2Cdynconst _ => f0_dynconst(d2cl, err)
+//
+|
 _(*otherwise*) =>
 let
 val lvl0 = 1
@@ -598,6 +601,17 @@ let
 val-
 D2Cdatatype
 (d1cl, s2cs) = dcl.node() in (  dcl  ) end
+//
+(* ****** ****** *)
+//
+fun
+f0_dynconst
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+val-
+D2Cdynconst
+(tknd,tqas,d2cs) = dcl.node() in (dcl) end
 //
 (* ****** ****** *)
 //
