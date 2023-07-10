@@ -895,7 +895,7 @@ f1_type
 ( d2e0: d2exp): s2typ =
 let
 val d2f0 = f1_root(d2e0)
-in
+in//let
 case+
 d2f0.node() of
 |
@@ -918,7 +918,7 @@ f1_tqas_tfun(d2e0, tqas, tfun)
 end(*let*)//end of [D2Ecst(d2c0)]
 |
 _ (* otherwise *) => s2typ_none0()
-end
+end (*let*)//end-of-[f1_type(d2e0)]
 //
 and
 f1_tqas
@@ -929,7 +929,7 @@ val
 loc0 = d2e0.lctn()
 val
 svts = list_nil(*0*)
-in
+in//let
   f2_tqas
   (loc0, tqas, svts) where
 { val
@@ -947,7 +947,8 @@ f2_main
 (
 case+ tqas of
 |
-list_nil() => @(tqas, svts)
+list_nil
+((*void*)) => @(tqas, svts)
 |
 list_cons _ =>
 (
@@ -959,7 +960,8 @@ let
 //
 val+
 @(tqas, svts) =
-  f2_main(d2e1, tqas, svts)
+(
+ f2_main(d2e1, tqas, svts))
 //
 in//let
 case+ tqas of
@@ -1062,7 +1064,7 @@ let
 val
 svts = f1_tqas(d2e0, tqas)
 in//let
-  s2typ_subst0(tfun, svts) end//let
+  s2typ_subst0(tfun, svts) end//let//fun
 //
 in//local
 
