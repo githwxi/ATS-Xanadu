@@ -1694,6 +1694,17 @@ end (*let*) // end of [ p1_d0res(buf, err) ]
 (* ****** ****** *)
 
 #implfun
+p1_dynconst
+( buf, err ) =
+let
+val tok = buf.getk0()
+in//let
+  pk_dynconst(tok, buf, err)
+end (*let*) // end of [ p1_dyncons(buf,err)]
+
+(* ****** ****** *)
+
+#implfun
 pk_dynconst
 (tok, buf, err) = let
 //
