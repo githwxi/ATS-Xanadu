@@ -258,6 +258,9 @@ datatype tnode =
   | T_SRP_STATIC of () // #static
   | T_SRP_EXTERN of () // #extern
 //
+  | T_SRP_STAVAL of () // #staval
+  | T_SRP_EXTVAL of () // #extval
+//
   | T_SRP_DEFINE of () // #define
   | T_SRP_MACDEF of () // #macdef
 //
