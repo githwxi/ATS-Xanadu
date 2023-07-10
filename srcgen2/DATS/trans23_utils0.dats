@@ -301,11 +301,14 @@ list_nil(*void*)
 |
 list_cons(t2j1, t2js) =>
 let
-val svts =
+//
+val
+svts =
 f0_make_svts(t2qs, t2js)
+//
 in//let
 f1_make_svts
-(t2q1.s2vs(), t2j1.t2ps(), svts)
+(t2q1.s2vs(),t2j1.t2ps(),svts)
 end
 ) where
 {
@@ -328,12 +331,16 @@ case+ t2ps of
 list_nil() => svts
 |
 list_cons(t2p1, t2ps) =>
-list_cons
-( @(s2v1, t2p1)
-, f1_make_svts(s2vs, t2ps, svts))))
+(
+f1_make_svts
+(s2vs, t2ps, svts)) where
+{ val svts =
+  list_cons(@(s2v1, t2p1), svts) }
+)
+) (*case+*) // end of [f1_make_svts]
 //
 } (*where*)
-) (*case+*)//end-of-[f0_make_svts(...)]
+) (*case+*) // end-of-[f0_make_svts(...)]
 //
 in//local
 
@@ -484,7 +491,8 @@ let
 val t2ps =
 f0_s2vs(s2vs)
 val svts =
-f0_s2vs_t2ps(s2vs, t2ps)
+f0_s2vs_t2ps
+(s2vs, t2ps, list_nil())
 //
 val t2p1 = s2typ_subst0(t2p1, svts)
 //
@@ -499,7 +507,8 @@ end where
 //
 fun
 f0_s2vs
-(s2vs: s2varlst): s2typlst =
+( s2vs
+: s2varlst): s2typlst =
 (
   list_map<x0><y0>(s2vs) ) where
 {
@@ -519,20 +528,25 @@ map$fopr
 //
 fun
 f0_s2vs_t2ps
-( s2vs: s2varlst
-, t2ps: s2typlst): s2vts =
+( s2vs
+: s2varlst
+, t2ps
+: s2typlst
+, svts: s2vts): s2vts =
 (
 case+ s2vs of
 |
-list_nil() => list_nil(*void*)
+list_nil() => svts
 |
 list_cons
 (s2v1, s2vs) =>
-list_cons
-( (s2v1, t2p1)
-, f0_s2vs_t2ps(s2vs, t2ps)) where
+( f0_s2vs_t2ps
+  (s2vs, t2ps, svts)) where
 {
-  val-list_cons(t2p1, t2ps) = t2ps }
+val-
+list_cons(t2p1, t2ps) = t2ps
+val
+svts = list_cons(@(s2v1, t2p1), svts) }
 ) (*case+*) // end of [f0_s2vs_t2ps(...)]
 //
 } (*where*) // end of [ d3exp_sapqize(d3e0) ]

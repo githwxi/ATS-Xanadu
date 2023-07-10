@@ -11,7 +11,8 @@ val fact2 = fact1
 *)
 fun
 fact2(x: sint): sint =
-if x > 0 then x * fact1(x-1) else 1
+if
+x > 0 then x * fact1(x-1) else 1
 //
 (* ****** ****** *)
 
@@ -21,8 +22,9 @@ fact3(x: sint): sint =
 loop(0(*i*), 1(*r*)) ) where
 {
 fun loop(i, r) =
-if i < x then loop(i+1, i*r+r) else r
-} (* where *) // end of [fact3(x:sint)]
+if
+i < x then loop(i+1, i*r+r) else r
+} (*where*) // end of [fact3(x:sint)]
 
 (* ****** ****** *)
 
