@@ -469,6 +469,77 @@ endloc // end of [local(d2con23/d2cst23_tapqize)]
 (* ****** ****** *)
 
 #implfun
+d3exp_sapqize
+(    d3e0    ) =
+let
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+in//let
+case+
+t2p0.node() of
+|
+T2Puni0(s2vs, t2p1) =>
+let
+//
+val t2ps =
+f0_s2vs(s2vs)
+val svts =
+f0_s2vs_t2ps(s2vs, t2ps)
+//
+val t2p1 = s2typ_subst0(t2p1, svts)
+//
+in//let
+(
+d3exp_sapqize
+(d3exp(loc0,t2p1,D3Esapq(d3e0,t2ps))))
+end (*let*) // end of [ T2Puni0(s2vs,t2p1) ]
+|_(* non-T2Puni0 *) => (     d3e0     )
+end where
+{
+//
+fun
+f0_s2vs
+(s2vs: s2varlst): s2typlst =
+(
+  list_map<x0><y0>(s2vs) ) where
+{
+//
+fun
+x2t2p_make() =
+x2t2p_make_lctn
+(loctn_dummy((*void*)))
+//
+#typedef x0 = s2var
+#typedef y0 = s2typ // S2Extv
+//
+#impltmp
+map$fopr
+<x0><y0>
+( s2v1 ) = s2typ_xtv(x2t2p_make()) }
+//
+fun
+f0_s2vs_t2ps
+( s2vs: s2varlst
+, t2ps: s2typlst): s2vts =
+(
+case+ s2vs of
+|
+list_nil() => list_nil(*void*)
+|
+list_cons
+(s2v1, s2vs) =>
+list_cons
+( (s2v1, t2p1)
+, f0_s2vs_t2ps(s2vs, t2ps)) where
+{
+  val-list_cons(t2p1, t2ps) = t2ps }
+) (*case+*) // end of [f0_s2vs_t2ps(...)]
+//
+} (*where*) // end of [ d3exp_sapqize(d3e0) ]
+
+(* ****** ****** *)
+
+#implfun
 unify23_s2typ
 (env0, t2p1, t2p2) =
 let
