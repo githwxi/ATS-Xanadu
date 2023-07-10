@@ -781,21 +781,21 @@ f0_inst_s2vs
 ( s2vs
 : s2varlst): s2vts =
 (
-list_map
-<x0><y0>(s2vs)) where
+list_maprev
+< x0 >< y0 >(s2vs)) where
 {
-//
-fun
-x2t2p_make() =
-x2t2p_make_lctn
-(loctn_dummy((*void*)))
 //
 #typedef x0 = s2var
 #typedef y0 = (s2var, s2typ)
+//
+fun
+x2t2p_make() =
+x2t2p_make_lctn(loctn_dummy())
+//
 #impltmp
 map$fopr
 <x0><y0>(s2v1) =
-(s2v1, s2typ_xtv(x2t2p_make()))
+@(s2v1, s2typ_xtv(x2t2p_make()))
 //
 }(*where*)//end of [f0_inst_s2vs]
 //

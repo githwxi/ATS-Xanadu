@@ -965,7 +965,8 @@ val+
 //
 in//let
 case+ tqas of
-|list_nil() => @(tqas, svts)
+|list_nil
+( (*void*) ) => @(tqas, svts)
 |list_cons
 (tqa1, tqas) =>
 let
@@ -977,7 +978,8 @@ in//let
   @(tqas, svts) where
 {
 val svts =
-f2_s2vs(loc0, s2vs, s2es, svts) }
+f2_s2vs_s2es(loc0,s2vs,s2es,svts)
+}
 end(*let*) // end-of-[ list_cons ]
 end(*let*) // end-of-[D2Etapp(...)]
 //
@@ -988,7 +990,46 @@ end(*let*) // end-of-[D2Etapp(...)]
 ) (*case+*) // end of [f2_main(...)]
 //
 and
+f2_tqas
+( loc0: loc_t
+, tqas: t2qas
+, svts: s2vts): s2vts =
+(
+case+ tqas of
+|list_nil() => svts
+|list_cons(tqa1, tqas) =>
+(
+f2_tqas
+(loc0, tqas, svts)) where
+{
+val s2vs = tqa1.s2vs()
+val svts = f2_s2vs(loc0,s2vs,svts)
+}
+) (*case+*) // end of [f2_tqas(...)]
+//
+and
 f2_s2vs
+( loc0
+: loc_t
+, s2vs
+: s2varlst
+, svts: s2vts): s2vts =
+(
+case+ s2vs of
+|list_nil() => svts
+|list_cons(s2v1, s2vs) =>
+(
+f2_s2vs
+(loc0,s2vs,svts)) where
+{
+val t2p1 =
+  s2typ_new0_x2tp(loc0)
+val svts =
+  list_cons(@(s2v1, t2p1), svts) }
+) (*case+*) // end of [f2_s2vs(...)]
+//
+and
+f2_s2vs_s2es
 ( loc0
 : loc_t
 , s2vs
@@ -998,31 +1039,29 @@ f2_s2vs
 , svts: s2vts): s2vts =
 (
 case+ s2vs of
-|list_nil
-((*void*)) => svts
-|list_cons
-(s2v1, s2vs) =>
+|list_nil() => svts
+|list_cons(s2v1, s2vs) =>
 (
 case+ s2es of
 //
 |
 list_nil() =>
 (
-list_cons
-(
-@(s2v1, t2p1), svts)) where
+f2_s2vs_s2es
+(loc0,s2vs,s2es,svts)) where
 {
 val
 t2p1 = s2typ_new0_x2tp(loc0)
-val svts =
-f2_s2vs(loc0, s2vs, s2es, svts) }
+val
+svts =
+list_cons(@(s2v1, t2p1), svts)
+}
 //
 |
 list_cons(s2e1, ses2) =>
 (
-list_cons
-(
-@(s2v1, t2p1), svts)) where
+f2_s2vs_s2es
+(loc0,s2vs,s2es,svts)) where
 {
 //
 val t2p1 =
@@ -1031,27 +1070,24 @@ case+
 s2e1.node() of
 |S2Eany _ =>
  s2typ_new0_x2tp(loc0)
-|_(*else*) => s2exp_stpize(s2e1))
+|
+_(*else*) => s2exp_stpize(s2e1))
+//
+val svts =
+(
+  list_cons(@(s2v1,t2p1), svts))
 //
 val s2es =
 (
 case+
 s2e1.node() of
-|S2Eany(k0) =>
- if k0 <= 1 // sing
- then s2es else ses2 | _ => ses2)
+|
+S2Eany(k0) =>
+if k0 <= 1 // sing
+then s2es else ses2 | _ => ses2) }
 //
-val svts =
-  f2_s2vs(loc0, s2vs, s2es, svts) }
-//
-) (*case+*) // end-of-[list_cons]
-) (*case+*) // end of [f2_s2vs(...)]
-//
-fun
-f2_tqas
-( loc0: loc_t
-, tqas: t2qas
-, svts: s2vts): s2vts = svts // f2_tqas
+) (*case+*)//end-of-[list_cons(...)]
+) (*case+*)//end-of-[f2_s2vs_s2es(...)]
 //
 } (*where*)//end-of-[f1_tqas(d2e0,tqas)]
 //

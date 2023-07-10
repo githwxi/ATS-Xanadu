@@ -113,9 +113,10 @@ s2typ_subst0
 , svts: s2vts): s2typ =
 (
 case+ svts of
-|list_nil() => t2p0 // identity
-|list_cons _ => s2typ_subst0(t2p0, svts)
-)
+|
+list_nil() => t2p0 // identity
+|
+list_cons _ => s2typ_subst0(t2p0, svts))
 //
 (* ****** ****** *)
 //
@@ -128,7 +129,7 @@ t2p0.node() of
 |T2Puni0(svs1, t2p1) =>
 let
 val svts = f0_svs1(svs1)
-in
+in//let
 s2typ_elim_unis
 (s2typ_subst0(t2p1, svts))
 end
@@ -139,20 +140,19 @@ fun
 f0_svs1
 (svs1: s2varlst): s2vts =
 (
-case+ svs1 of
-|
-list_nil() =>
-list_nil()
-|
-list_cons(s2v1, svs1) =>
-let
-val t2p2 =
-s2typ_var
-(s2var_copy(s2v1))
-in//let
-list_cons((s2v1, t2p2), f0_svs1(svs1))
-end//let//end-of[list_cons(s2v1,svs1)]
-)
+list_maprev
+< x0 >< y0 >(svs1)) where
+{
+#typedef x0 = s2var
+#typedef y0 = (s2var, s2typ)
+#impltmp
+map$fopr
+<x0><y0>
+( s2v1 ) =
+@(s2v1, t2p2) where
+{ val t2p2 =
+  s2typ_var(s2var_copy(s2v1)) }
+}(*where*) // end of [f0_svs1(...)]
 }(*where*) // end of [s2typ_elim_unis(t2p0)]
 //
 (* ****** ****** *)
@@ -182,44 +182,63 @@ case+ s2vs of
 case+ t2p0.node() of
 |
 T2Puni0(svs1, t2p1) =>
-let
+(
+s2typ_subst0
+(t2p1, svts) ) where
+{
+val svts = list_nil()
 val svts =
-f0_svs1_svs2(svs1, svs2)
-in
-  s2typ_subst0(t2p1, svts)
-end
+f0_svs1_svs2(svs1,svs2,svts)
+} (*where*) // end-(T2Puni0)
 | _ (* non-T2Puni0 *) => t2p0)
 ) where
 {
 fun
 f0_svs1_svs2
-( svs1: s2varlst
-, svs2: s2varlst): s2vts =
+( svs1
+: s2varlst
+, svs2
+: s2varlst
+, svts: s2vts): s2vts =
 (
 case+ svs1 of
 |
-list_nil() =>
-list_nil()
+list_nil() => svts
 |
 list_cons(s2v1, svs1) =>
 (
 case+ svs2 of
-|list_nil() =>
+|
+list_nil() =>
 let
-val t2p2 =
-s2typ_var
-(s2var_copy(s2v1))
+//
+val
+s2v2 =
+s2var_copy(s2v1)
+val
+t2p2 = s2typ_var(s2v2)
+//
 in//let
-  list_cons
-  ( (s2v1, t2p2)
-  , f0_svs1_svs2(svs1, svs2) )
+//
+f0_svs1_svs2
+(svs1, svs2, svts) where
+{
+val svts =
+list_cons(@(s2v1,t2p2),svts) }
+//
 end // let // end-of[list_nil()]
-|list_cons(s2v2, svs2) =>
+|
+list_cons(s2v2, svs2) =>
 let
-val t2p2 = s2typ_var(s2v2)
+val
+t2p2 = s2typ_var(s2v2)
 in//let
-list_cons
-((s2v1,t2p2),f0_svs1_svs2(svs1,svs2))
+//
+f0_svs1_svs2
+(svs1, svs2, svts) where
+{ val svts =
+  list_cons(@(s2v1,t2p2),svts) }
+//
 end//let//end-of-[list_cons(s2v2,svs2)]
 )
 )(*case+*)//end-of-[ f0_svs1_svs2(...) ]
