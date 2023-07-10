@@ -59,25 +59,34 @@ ATS_PACKNAME
 //
 #implfun
 s2vts_make_lctn_tqas
-( loc0, t2qs ) =
+  (  loc0, t2qs  ) =
 (
-f0_make(loc0, t2qs)) where
+f0_make
+(loc0, t2qs, svts)) where
 {
+//
+val svts = list_nil(*void*)
+//
 fun
 f0_make
 ( loc0: loc_t
-, t2qs: t2qaglst): s2vts =
+, t2qs
+: t2qaglst, svts: s2vts): s2vts =
 (
 case+ t2qs of
 |
-list_nil() =>
-list_nil((*void*))
+list_nil() => svts
 |
-list_cons(t2q1, t2qs) =>
-f1_make
-( t2q1.s2vs()
-, f0_make(loc0, t2qs))) where
-{
+list_cons
+(t2q1, t2qs) =>
+(
+f0_make
+(loc0, t2qs, svts))
+where {
+  val
+  svts =
+  f1_make(t2q1.s2vs(), svts) }
+where {
 fun
 f1_make
 ( s2vs
@@ -87,16 +96,21 @@ case+ s2vs of
 |
 list_nil() => svts
 |
-list_cons(s2v1, s2vs) =>
-(
 list_cons
-( @(s2v1, xtv1)
-, f1_make(s2vs, svts))) where
-{ val xtv1 =
-  s2typ_xtv(x2t2p_make_lctn(loc0)) }
+(s2v1, s2vs) =>
+(
+f1_make(s2vs, svts)) where
+{
+  val xtv1 =
+  s2typ_xtv
+  (x2t2p_make_lctn(loc0))
+  val svts =
+  list_cons(@(s2v1, xtv1), svts) }
 //(*where*) // end of [list_cons(...)]
-)
-} (*where*) // end of [f0_make(loc0,t2qs)]
+) (*case+*) // end of [f1_make(s2vs,svts)]
+} (*where*)
+) (*case+*) // end of [f0_make(loc0,t2qs)]
+//
 } (*where*) // end of [s2vts_make_lctn_tqas(...)]
 //
 (* ****** ****** *)

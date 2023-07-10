@@ -284,34 +284,31 @@ end(*let*)//end-of-[f0-tqag-tjag(...)]
 //
 fun
 f0_make_svts
-( t2qs: t2qaglst
-, t2js: t2jaglst): s2vts =
+( t2qs
+: t2qaglst
+, t2js
+: t2jaglst
+, svts: s2vts): s2vts =
 (
 case+ t2qs of
 |
-list_nil() =>
-list_nil(*void*)
+list_nil() => svts
 |
 list_cons(t2q1, t2qs) =>
 (
 case+ t2js of
 |
-list_nil() =>
-list_nil(*void*)
+list_nil() => svts
 |
 list_cons(t2j1, t2js) =>
-let
-//
-val
-svts =
-f0_make_svts(t2qs, t2js)
-//
-in//let
+(
+f0_make_svts
+(t2qs, t2js, svts))
+where {
+val svts =
 f1_make_svts
-(t2q1.s2vs(),t2j1.t2ps(),svts)
-end
-) where
-{
+(t2q1.s2vs(),t2j1.t2ps(),svts) }
+) where {
 //
 fun
 f1_make_svts
@@ -367,9 +364,12 @@ list_map<t2qag><t2jag>(t2qs)
 end (*let*)//end-of-[val(t2js)]
 //
 val
+svts = list_nil((*void*))
+val
 t2p0 = d2con_get_styp(dcon)
 val
-svts = f0_make_svts(t2qs, t2js)
+svts =
+f0_make_svts(t2qs, t2js, svts)
 val
 t2p0 = s2typ_subst0(t2p0, svts)
 //
@@ -434,9 +434,12 @@ list_map<t2qag><t2jag>(t2qs)
 end (*let*)//end-of-[val(t2js)]
 //
 val
+svts = list_nil((*void*))
+val
 t2p0 = d2cst_get_styp(dcst)
 val
-svts = f0_make_svts(t2qs, t2js)
+svts =
+f0_make_svts(t2qs, t2js, svts)
 val
 t2p0 = s2typ_subst0(t2p0, svts)
 //
@@ -488,11 +491,10 @@ t2p0.node() of
 T2Puni0(s2vs, t2p1) =>
 let
 //
-val t2ps =
-f0_s2vs(s2vs)
+val svts = list_nil()
+val t2ps = f0_s2vs(s2vs)
 val svts =
-f0_s2vs_t2ps
-(s2vs, t2ps, list_nil())
+f0_s2vs_t2ps(s2vs, t2ps, svts)
 //
 val t2p1 = s2typ_subst0(t2p1, svts)
 //
