@@ -319,6 +319,11 @@ d2cst23_tapqize
 (* ****** ****** *)
 //
 fun
+d3exp_sapqize(d3e0: d3exp): d3exp
+//
+(* ****** ****** *)
+//
+fun
 trans23_d2pat
 (env0: !tr23env, d2p0: d2pat): d3pat
 fun
