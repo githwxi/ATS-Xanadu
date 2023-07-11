@@ -1843,6 +1843,27 @@ d2exp_make_node
 (loc0, D2Elazy0(d1f0, d2e1)))//fun
 //
 fun
+f1_mklaz1
+( loc0: loc_t
+, d1f0: d1exp
+, d2e1: d2exp): d2exp =
+(
+case+
+d2e1.node() of
+|
+D2Eseqn(d2es, d2e1) =>
+d2exp_make_node
+(loc0, D2Elazy1(d1f0, d2e1, d2es))
+|_(* non-D2Eseqn *) =>
+let
+val
+d2es = list_nil() in//let
+d2exp_make_node
+(loc0, D2Elazy1(d1f0, d2e1, d2es))
+endlet
+)(*case+*)//end of [f1_mklaz1(...)]
+//
+fun
 f0_a1pp
 ( env0:
 ! tr12env
@@ -1912,6 +1933,17 @@ f1_mklaz0(loc0, d1f0, d2e1)
 end (*let*) // end-of-then
 else
 (
+if
+isLLAZY(d1f0)
+then
+let
+val d2e1 =
+trans12_d1exp(env0, d1e1)
+in//let
+f1_mklaz1(loc0, d1f0, d2e1)
+end (*let*) // end-of-then
+else
+(
 case+
 d1e1.node() of
 //
@@ -1937,11 +1969,12 @@ in
 end (*let*) // end of [D1Etarg(s1es)]
 |
 _(*d1exp-rest*) => f0_a1pp_else(env0,d1e0)
-) (*else*) // end-of-if(isLAZY)
-) (*else*) // end-of-if(isEVAL)
-) (*else*) // end-of-if(isADDR)
-) (*else*) // end-of-if(isBANG)
-) (*else*) // end-of-if(isAMP0)
+) (*else*) // end-of-if(isLLAZY )
+) (*else*) // end-of-if( isLAZY )
+) (*else*) // end-of-if( isEVAL )
+) (*else*) // end-of-if( isADDR )
+) (*else*) // end-of-if( isBANG )
+) (*else*) // end-of-if( isAMP0 )
 //
 end (*let*) // end of [f0_a1pp(env0,d1e0)]
 
