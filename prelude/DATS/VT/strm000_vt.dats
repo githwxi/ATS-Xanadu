@@ -820,8 +820,8 @@ let
   map0$fopr<x0><y0>(x0)
 in
   strmcon_vt_cons(y0, auxmain(xs))
-end
-)
+end//let//end-[strmcon_vt_cons]
+) (*llazy*) // end of [auxmain]
 } (*where*) // end-of(strm_vt_map0)
 
 (* ****** ****** *)
