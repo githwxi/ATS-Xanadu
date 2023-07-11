@@ -733,19 +733,25 @@ optn_vt_i0_vx
   | optn_vt_nil(a, ff) of ()
   | optn_vt_cons(a, tt) of (a)
 //
-// end of [optn_vt_i0_vx]
+// end of [optn_vt_i0_vtbx]
 //
 (* ****** ****** *)
 //
 (*
 #symload nil with optn_nil
 #symload cons with optn_cons
-#symload nil_vt with optn_vt_nil
-#symload cons_vt with optn_vt_cons
+#symload lnil with optn_vt_nil
+#symload lcons with optn_vt_cons
 *)
 (*
-#symload none with optn_nil
+#symload none with optn_nil0
 #symload some with optn_cons
+#symload lnone with optn_vt_nil
+#symload lsome with optn_vt_cons
+*)
+(*
+#symload nil_vt with optn_vt_nil
+#symload cons_vt with optn_vt_cons
 #symload none_vt with optn_vt_nil
 #symload some_vt with optn_vt_cons
 *)
@@ -753,7 +759,10 @@ optn_vt_i0_vx
 (* ****** ****** *)
 //
 #sexpdef optn = optn_t0_i0_x0
+#sexpdef loptn = optn_vt_i0_vx
 #sexpdef optn_vt = optn_vt_i0_vx
+//
+(* ****** ****** *)
 //
 #typedef
 optn
@@ -763,6 +772,15 @@ optn0
 (a:t0) = [b:b0] optn(a, b)
 #typedef
 optn1(a:t0,b:b0) = optn(a, b)
+//
+#vwtpdef
+loptn
+(a:vt) = [b:b0] loptn(a, b)
+#vwtpdef
+loptn0
+(a:vt) = [b:b0] loptn(a, b)
+#vwtpdef
+loptn1(a:vt,b:b0) = loptn(a, b)
 //
 #vwtpdef
 optn_vt
@@ -823,6 +841,8 @@ list_vt_cons
 (*
 #symload nil with list_nil
 #symload cons with list_cons
+#symload lnil with list_vt_nil
+#symload lcons with list_vt_cons
 #symload nil_vt with list_vt_nil
 #symload cons_vt with list_vt_cons
 *)
@@ -830,6 +850,7 @@ list_vt_cons
 (* ****** ****** *)
 //
 #sexpdef list = list_t0_i0_x0
+#sexpdef llist = list_vt_i0_vx
 #sexpdef list_vt = list_vt_i0_vx
 //
 (* ****** ****** *)
@@ -864,6 +885,42 @@ listbtw
 listbtwe
 ( a:t0
 , m:i0, n:i0) = [k:nat | m <= k; k <= n] list(a, k)
+//
+(* ****** ****** *)
+//
+//
+#vwtpdef
+llist(a:vt) =
+[n:i0] llist(a, n)
+//
+#vwtpdef
+llist0(a:vt) =
+[n:i0 | n >= 0] llist(a, n)
+#vwtpdef
+llist1(a:vt) =
+[n:i0 | n >= 1] llist(a, n)
+//
+#vwtpdef
+llistlt
+(a:vt, n:i0) = [k:nat | k < n] llist(a, k)
+#vwtpdef
+llistgt
+(a:vt, n:i0) = [k:int | k > n] llist(a, k)
+#vwtpdef
+llistlte
+(a:vt, n:i0) = [k:nat | k <= n] llist(a, k)
+#vwtpdef
+llistgte
+(a:vt, n:i0) = [k:int | k >= n] llist(a, k)
+//
+#vwtpdef
+llistbtw
+( a:vt
+, m:i0, n:i0) = [k:i0 | m <= k; k < n] llist(a, k)
+#vwtpdef
+llistbtwe
+( a:vt
+, m:i0, n:i0) = [k:i0 | m <= k; k <= n] llist(a, k)
 //
 (* ****** ****** *)
 //
@@ -997,11 +1054,19 @@ stropt1_vt
 //
 (* ****** ****** *)
 //
+#sexpdef lstrn = string0_vt
+#sexpdef lstrn = string1_vt
+//
 #sexpdef strn_vt = string0_vt
 #sexpdef strn_vt = string1_vt
 //
 #vwtpdef string_vt = string0_vt
 #vwtpdef string_vt(n:i0) = string1_vt(n)
+//
+(* ****** ****** *)
+//
+#vwtpdef lstropt = stropt0_vt
+#vwtpdef lstropt(n:i0) = stropt1_vt(n)
 //
 #vwtpdef stropt_vt = stropt0_vt
 #vwtpdef stropt_vt(n:i0) = stropt1_vt(n)
@@ -1088,6 +1153,7 @@ strmcon_vt(a:vwtp+) =
 strmcon_vt_nil of ((*void*))
 |
 strmcon_vt_cons of (a, stream_vt(a))
+//
 and//datavwtp
 strxcon_vt(a:vwtp+) =
 |
@@ -1095,26 +1161,45 @@ strxcon_vt_cons of (a, streax_vt(a))
 //
 where
 {
+//
 #vwtpdef
 stream_vt
 ( a: vt ) = lazy_vt( strmcon_vt(a) )
 #vwtpdef
 streax_vt
 ( a: vt ) = lazy_vt( strxcon_vt(a) )
+//
 } (*where*)//end-of-[strmcon/strxcon]
 //
 (* ****** ****** *)
+//
 #sexpdef
-strm_vt(* a,n *) = stream_vt(* a,n *)
+lstrm(*a:vt*) = stream_vt(* a:vt *)
 #sexpdef
-strx_vt(* a,n *) = streax_vt(* a,n *)
+lstrx(*a:vt*) = streax_vt(* a:vt *)
+//
+#sexpdef
+strm_vt(*a:vt*) = stream_vt(* a:vt *)
+#sexpdef
+strx_vt(*a:vt*) = streax_vt(* a:vt *)
+//
 (* ****** ****** *)
 //
 (*
 #symload nil with strmcon_nil
 #symload cons with strmcon_cons
+#symload lnil with strmcon_vt_nil
+#symload lcons with strmcon_vt_cons
 #symload nil_vt with strmcon_vt_nil
 #symload cons_vt with strmcon_vt_cons
+*)
+(*
+#symload nil with strxcon_nil
+#symload cons with strxcon_cons
+#symload lnil with strxcon_vt_nil
+#symload lcons with strxcon_vt_cons
+#symload nil_vt with strxcon_vt_nil
+#symload cons_vt with strxcon_vt_cons
 *)
 //
 (* ****** ****** *)
@@ -1146,13 +1231,30 @@ strqcon_vt_cons
 where
 {
 #vwtpdef
-streaq_vt(a:vt,n:i0) = lazy_vt(strqcon_vt(a,n))
+streaq_vt
+( a:vt,n:i0 ) = lazy_vt(strqcon_vt(a,n))
 } (* where *)//end-of-[strqcon_vt(a, n)]
 (* ****** ****** *)
+//
+(*
+#symload nil with strqcon_nil
+#symload cons with strqcon_cons
+#symload lnil with strqcon_vt_nil
+#symload lcons with strqcon_vt_cons
+#symload nil_vt with strqcon_vt_nil
+#symload cons_vt with strqcon_vt_cons
+*)
+//
+(* ****** ****** *)
+//
 #sexpdef
-strq(*(a0,ln)*) = streaq(* (a0,ln) *)
+strq(*a:vt,n:i0*) = streaq(*(a, n)*)
+//
 #sexpdef
-strq_vt(*(a0,ln)*) = streaq_vt(*(a0,ln)*)
+lstrq(*a:vt,n:i0*) = streaq_vt(*(a, n)*)
+#sexpdef
+strq_vt(*a:vt,n:i0*) = streaq_vt(*(a, n)*)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_basics0.sats] *)
