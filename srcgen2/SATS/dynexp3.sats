@@ -257,6 +257,9 @@ d3pat_node =
 //
 |D3Pcon of (d2con)
 //
+|D3Pbang of (d3pat)
+|D3Pfree of (d3pat)
+//
 |D3Psapp of
  (d3pat, s2varlst(*sarg*))
 |D3Psapq of

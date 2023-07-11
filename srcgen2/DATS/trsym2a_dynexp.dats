@@ -304,6 +304,17 @@ d2p0.node() of
 f0_sym0(env0, d2p0)
 //
 |
+D2Pbang(d2p1) =>
+let
+val () =
+trsym2a_d2pat(env0, d2p1) endlet
+|
+D2Pfree(d2p1) =>
+let
+val () =
+trsym2a_d2pat(env0, d2p1) endlet
+//
+|
 D2Pdapp
 (d2f0,npf1,d2ps) =>
 let

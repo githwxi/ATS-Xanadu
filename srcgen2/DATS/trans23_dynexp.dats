@@ -185,6 +185,8 @@ d3pat_make_styp_node
 |D2Ptup0 _ => f0_tup0(env0, d2p0)
 |D2Ptup1 _ => f0_tup1(env0, d2p0)
 //
+|D2Pfree _ => f0_free(env0, d2p0)
+//
 |D2Pannot _ => f0_annot(env0, d2p0)
 //
 | _(*otherwise*) => d3pat_none1(d2p0)
@@ -216,6 +218,52 @@ in//let
   d3pat_make_styp_node
   (loc0, t2p0, D3Ptapq(d3p0, t2js))
 end(*let*)//end-of-[f0_con(env0,d2p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_bang
+( env0:
+! tr23env
+, d2p0: d2pat): d3pat =
+let
+//
+val loc0 = d2p0.lctn()
+val-
+D2Pbang(d2p1) = d2p0.node()
+//
+val
+d3p1 = trans23_d2pat(env0, d2p1)
+//
+in//let
+let
+val
+t2p1 = d3p1.styp((*void*)) in//let
+  d3pat(loc0, t2p1, D3Pbang( d3p1 ))
+end (*let*)
+end (*let*) // end of [f0_bang(env0,...)]
+//
+fun
+f0_free
+( env0:
+! tr23env
+, d2p0: d2pat): d3pat =
+let
+//
+val loc0 = d2p0.lctn()
+val-
+D2Pfree(d2p1) = d2p0.node()
+//
+val
+d3p1 = trans23_d2pat(env0, d2p1)
+//
+in//let
+let
+val
+t2p1 = d3p1.styp((*void*)) in//let
+  d3pat(loc0, t2p1, D3Pfree( d3p1 ))
+end (*let*)
+end (*let*) // end of [f0_free(env0,...)]
 //
 (* ****** ****** *)
 //
