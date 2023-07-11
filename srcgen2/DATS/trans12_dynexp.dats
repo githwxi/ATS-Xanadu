@@ -1805,7 +1805,7 @@ then true else false
 _(* non-D1Eid0 *) => false
 ) (*case+*) // end of [isFREE]
 fun
-isLAZY
+isL0AZY
 (d1e: d1exp): bool =
 (
 case+
@@ -1817,9 +1817,9 @@ if
 then true else false
 |
 _(* non-D1Eid0 *) => false
-) (*case+*) // end of [isLAZY]
+) (*case+*) // end of [isL0AZY]
 fun
-isLLAZY
+isL1AZY
 (d1e: d1exp): bool =
 (
 case+
@@ -1831,7 +1831,7 @@ if
 then true else false
 |
 _(* non-D1Eid0 *) => false
-) (*case+*) // end of [isLLAZY]
+) (*case+*) // end of [isL1AZY]
 //
 fun
 f1_mklaz0
@@ -1840,7 +1840,7 @@ f1_mklaz0
 , d2e1: d2exp): d2exp =
 (
 d2exp_make_node
-(loc0, D2Elazy0(d1f0, d2e1)))//fun
+(loc0, D2El0azy(d1f0, d2e1)))//fun
 //
 fun
 f1_mklaz1
@@ -1853,13 +1853,13 @@ d2e1.node() of
 |
 D2Eseqn(d2es, d2e1) =>
 d2exp_make_node
-(loc0, D2Elazy1(d1f0, d2e1, d2es))
+(loc0, D2El1azy(d1f0, d2e1, d2es))
 |_(* non-D2Eseqn *) =>
 let
 val
 d2es = list_nil() in//let
 d2exp_make_node
-(loc0, D2Elazy1(d1f0, d2e1, d2es))
+(loc0, D2El1azy(d1f0, d2e1, d2es))
 endlet
 )(*case+*)//end of [f1_mklaz1(...)]
 //
@@ -1945,7 +1945,7 @@ end (*let*) // end-of-then
 else
 (
 if
-isLAZY(d1f0)
+isL0AZY(d1f0)
 then
 let
 val d2e1 =
@@ -1956,7 +1956,7 @@ end (*let*) // end-of-then
 else
 (
 if
-isLLAZY(d1f0)
+isL1AZY(d1f0)
 then
 let
 val d2e1 =
@@ -1991,8 +1991,8 @@ in
 end (*let*) // end of [D1Etarg(s1es)]
 | _ // HX: for regular level-2 dynexps
 (*d1exp-rest*) => f0_a1pp_else(env0,d1e0)
-) (*end-of-else*) // end-of-if( isLLAZY )
-) (*end-of-else*) // end-of-if( isLAZY0 )
+) (*end-of-else*) // end-of-if( isL1AZY )
+) (*end-of-else*) // end-of-if( isL0AZY )
 ) (*end-of-else*) // end-of-if( isFREE0 )
 ) (*end-of-else*) // end-of-if( isEVAL0 )
 ) (*end-of-else*) // end-of-if( isFOLD0 )

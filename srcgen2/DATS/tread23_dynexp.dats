@@ -844,7 +844,7 @@ endlet // end of [d3exp_raise_errck(...)]
 (* ****** ****** *)
 //
 fun
-d3exp_lazy0_errck
+d3exp_l0azy_errck
 ( loc0: loc_t
 , dsym: d1exp
 , d3e1: d3exp): d3exp =
@@ -852,13 +852,13 @@ let
 val lvl0 = errvl(d3e1) in//let
 d3exp_errck
 ( lvl0+1
-, d3exp( loc0, D3Elazy0( dsym, d3e1 ) ))
-endlet // end of [d3exp_lazy0_errck(...)]
+, d3exp( loc0, D3El0azy( dsym, d3e1 ) ))
+endlet // end of [d3exp_l0azy_errck(...)]
 //
 (* ****** ****** *)
 //
 fun
-d3exp_lazy1_errck
+d3exp_l1azy_errck
 ( loc0: loc_t
 , dsym: d1exp
 , d3e1: d3exp
@@ -868,8 +868,8 @@ val lvl0 = gmax
 (errvl(d3e1), errvl(d3es)) in//let
 d3exp_errck
 ( lvl0+1
-, d3exp(loc0,D3Elazy1(dsym,d3e1,d3es)))
-endlet // end of [d3exp_lazy1_errck(...)]
+, d3exp(loc0,D3El1azy(dsym,d3e1,d3es)))
+endlet // end of [d3exp_l1azy_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1284,8 +1284,8 @@ d3e0.node() of
 //
 |D3Eraise _ => f0_raise(d3e0, err)
 //
-|D3Elazy0 _ => f0_lazy0(d3e0, err)
-|D3Elazy1 _ => f0_lazy1(d3e0, err)
+|D3El0azy _ => f0_l0azy(d3e0, err)
+|D3El1azy _ => f0_l1azy(d3e0, err)
 //
 |D3El2bck _ => f0_l2bck(d3e0, err)
 |D3Et2pck _ => f0_t2pck(d3e0, err)
@@ -1923,7 +1923,7 @@ end (*let*) // end of [f0_raise(d3e,err)]
 (* ****** ****** *)
 //
 fun
-f0_lazy0
+f0_l0azy
 (d3e: d3exp
 ,err: &sint >> _): d3exp =
 let
@@ -1931,7 +1931,7 @@ let
 val e00 = err
 //
 val-
-D3Elazy0
+D3El0azy
 (dsym, d3e1) = d3e.node()
 //
 val
@@ -1943,14 +1943,14 @@ if
 then (d3e) else
 let
 val loc = d3e.lctn() in
-d3exp_lazy0_errck( loc, dsym, d3e1 )
+d3exp_l0azy_errck( loc, dsym, d3e1 )
 end (*let*) // end-of-[else]
-end (*let*) // end of [f0_lazy0(d3e,err)]
+end (*let*) // end of [f0_l0azy(d3e,err)]
 //
 (* ****** ****** *)
 //
 fun
-f0_lazy1
+f0_l1azy
 (d3e: d3exp
 ,err: &sint >> _): d3exp =
 let
@@ -1958,7 +1958,7 @@ let
 val e00 = err
 //
 val-
-D3Elazy1
+D3El1azy
 (dsym
 ,d3e1, d3es) = d3e.node()
 //
@@ -1973,9 +1973,9 @@ if
 then (d3e) else
 let
 val loc = d3e.lctn() in
-d3exp_lazy1_errck(loc,dsym,d3e1,d3es)
+d3exp_l1azy_errck(loc,dsym,d3e1,d3es)
 end (*let*) // end-of-[else]
-end (*let*) // end of [f0_lazy1(d3e,err)]
+end (*let*) // end of [f0_l1azy(d3e,err)]
 //
 (* ****** ****** *)
 //

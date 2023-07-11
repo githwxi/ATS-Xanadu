@@ -949,25 +949,28 @@ D2Efix0 of
 |
 D2Etry0 of
 ( token(*TRY*)
-, d2exp(*norm*), d2clslst(*excptn*))
+, d2exp(*norm*), d2clslst(*handles*))
 //
 | D2Eaddr of d2exp(*left-val*)
 | D2Efold of d2exp(*open-con*)
 | D2Eeval of d2exp(*ptr/lazy*)
 | D2Efree of d2exp(*free-con*)
 //
-| D2Ewhere of (d2exp, d2eclist)
+|
+D2Ewhere of
+( d2exp//let(binds)in(scope)end 
+  (*scope*), d2eclist(*binds*) )//whr
 //
 |
 D2Eassgn of
-(d2exp(*l-val*), d2exp(*r-val*))
+(d2exp(*l-val*), d2exp(*r-val*))//(:=)
 //
 |
 D2Ebrget of
-(d2ptmlst(*[]*), d2explst(*arg*))
+(d2ptmlst(*[]*), d2explst(*arg*))//([])
 |
 D2Ebrset of
-(d2ptmlst(*[]*), d2explst(*arg*))
+(d2ptmlst(*[]*), d2explst(*arg*))//([])
 //
 |
 D2Edtsel of
@@ -982,11 +985,11 @@ D2Eraise of
 ( token(*$RAISE*), d2exp(*lin-exn*))
 //
 |
-D2Elazy0 of // nonlin-lazy-eval
-( d1exp(*$LAZY0*), d2exp(*non-thunk*))
+D2El0azy of // nonlin-lazy-eval
+( d1exp(*$lazy*), d2exp(*non-thunk*))
 |
-D2Elazy1 of // linear-lazy-eval
-( d1exp(*$LAZY1*)
+D2El1azy of // linear-lazy-eval
+( d1exp(*$llazy*)
 , d2exp(*lin-thunk*), d2explst(*frees*))
 //
 |

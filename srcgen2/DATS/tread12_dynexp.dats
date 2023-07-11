@@ -885,7 +885,7 @@ endlet // end of [d2exp_raise_errck(...)]
 (* ****** ****** *)
 //
 fun
-d2exp_lazy0_errck
+d2exp_l0azy_errck
 (loc0: loc_t
 ,dsym: d1exp
 ,d2e1: d2exp): d2exp =
@@ -893,11 +893,11 @@ let
 val lvl0 = errvl(d2e1) in//let
 d2exp_errck
 ( lvl0+1
-, d2exp(loc0, D2Elazy0(dsym, d2e1)) )
-endlet // end of [d2exp_lazy0_errck(...)]
+, d2exp(loc0, D2El0azy(dsym, d2e1)) )
+endlet // end of [d2exp_l0azy_errck(...)]
 //
 fun
-d2exp_lazy1_errck
+d2exp_l1azy_errck
 (loc0: loc_t
 ,dsym: d1exp
 ,d2e1: d2exp
@@ -906,8 +906,8 @@ let
 val lvl0 = errvl(d2e1) in//let
 d2exp_errck
 (lvl0+1
-,d2exp(loc0,D2Elazy1(dsym,d2e1,d2es)))
-endlet // end of [d2exp_lazy1_errck(...)]
+,d2exp(loc0,D2El1azy(dsym,d2e1,d2es)))
+endlet // end of [d2exp_l1azy_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1390,8 +1390,8 @@ D2Edtsel _ => f0_dtsel(d2e0, err)
 //
 |D2Eraise _ => f0_raise(d2e0, err)
 //
-|D2Elazy0 _ => f0_lazy0(d2e0, err)
-|D2Elazy1 _ => f0_lazy1(d2e0, err)
+|D2El0azy _ => f0_l0azy(d2e0, err)
+|D2El1azy _ => f0_l1azy(d2e0, err)
 //
 |D2Eannot _ => f0_annot(d2e0, err)
 //
@@ -2089,7 +2089,7 @@ end (*let*) // end of [f0_raise(d2e,err)]
 (* ****** ****** *)
 //
 fun
-f0_lazy0
+f0_l0azy
 (d2e: d2exp
 ,err: &sint >> _): d2exp =
 let
@@ -2097,7 +2097,7 @@ let
 val e00 = err
 //
 val-
-D2Elazy0
+D2El0azy
 (dsym, d2e1) = d2e.node()
 val
 d2e1 = tread12_d2exp(d2e1, err)
@@ -2105,11 +2105,11 @@ in//let
 if
 (err=e00)
 then (d2e) else
-d2exp_lazy0_errck(d2e.lctn(),dsym,d2e1)
-end (*let*) // end of [f0_lazy0(d2e,err)]
+d2exp_l0azy_errck(d2e.lctn(),dsym,d2e1)
+end (*let*) // end of [f0_l0azy(d2e,err)]
 //
 fun
-f0_lazy1
+f0_l1azy
 (d2e: d2exp
 ,err: &sint >> _): d2exp =
 let
@@ -2117,7 +2117,7 @@ let
 val e00 = err
 //
 val-
-D2Elazy1
+D2El1azy
 ( dsym
 , d2e1, d2es) = d2e.node()
 val
@@ -2131,9 +2131,9 @@ then (d2e) else
 let
 val loc = d2e.lctn()
 in//let
-d2exp_lazy1_errck(loc, dsym, d2e1, d2es)
+d2exp_l1azy_errck(loc, dsym, d2e1, d2es)
 end (*let*)
-end (*let*) // end of [f0_lazy1(d2e,err)]
+end (*let*) // end of [f0_l1azy(d2e,err)]
 //
 (* ****** ****** *)
 //

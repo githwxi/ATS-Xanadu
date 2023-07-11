@@ -410,10 +410,10 @@ the_s2cst_p2tr0
 (* ****** ****** *)
 //
 fun
-the_s2cst_lazy0
+the_s2cst_l0azy0
 (   (*void*)   ): ( s2cst )
 fun
-the_s2cst_llazy0
+the_s2cst_l1azy0
 (   (*void*)   ): ( s2cst )
 //
 (* ****** ****** *)

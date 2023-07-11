@@ -300,15 +300,15 @@ local
 val
 t2p0 = s2typ_none0()
 val
-lazy0_t2pr =
+l0azy0_t2pr =
 a0ref_make_1val<s2typ>(t2p0)
 //
 in//local
 //
 #implfun
-the_s2typ_lazy0() =
+the_s2typ_l0azy0() =
 let
-val t2p0 = lazy0_t2pr[]
+val t2p0 = l0azy0_t2pr[]
 in//let
 case+
 t2p0.node() of
@@ -319,29 +319,29 @@ val t2p1 =
 s2typ_cst(s2c1) where
 {
 val
-s2c1 = the_s2cst_lazy0() }
+s2c1 = the_s2cst_l0azy0() }
 in//let
-(lazy0_t2pr[] := t2p1; t2p1) end
+(l0azy0_t2pr[] := t2p1; t2p1) end
 //
 |_(*non-T2Pnone0*) => (   t2p0   )
 //
-end (*let*) // end of [the_s2typ_lazy0()]
+end (*let*) // end of [the_s2typ_l0azy0()]
 //
-end (*local*) // end of [local(the_s2typ_lazy0)]
+end (*local*) // end of [local(the_s2typ_l0azy0)]
 //
 (* ****** ****** *)
 //
 local
 in//local
 #implfun
-the_s2typ_lazy1(telt) =
+the_s2typ_l0azy1(telt) =
 let
 val s2t0 = the_sort2_tbox
-val tfun = the_s2typ_lazy0()
+val tfun = the_s2typ_l0azy0()
 in//let
 s2typ(s2t0, T2Papps(tfun, list_sing(telt)))
-end (*let*) // end of [the_s2typ_lazy1(telt)]
-end (*local*) // end of [local(the_s2typ_lazy1)]
+end (*let*) // end of [the_s2typ_l0azy1(telt)]
+end (*local*) // end of [local(the_s2typ_l0azy1)]
 //
 (* ****** ****** *)
 //
@@ -350,15 +350,15 @@ local
 val
 t2p0 = s2typ_none0()
 val
-llazy0_t2pr =
+l1azy0_t2pr =
 a0ref_make_1val<s2typ>(t2p0)
 //
 in//local
 //
 #implfun
-the_s2typ_llazy0() =
+the_s2typ_l1azy0() =
 let
-val t2p0 = llazy0_t2pr[]
+val t2p0 = l1azy0_t2pr[]
 in//let
 case+
 t2p0.node() of
@@ -369,29 +369,29 @@ val t2p1 =
 s2typ_cst(s2c1) where
 {
 val
-s2c1 = the_s2cst_llazy0() }
+s2c1 = the_s2cst_l1azy0() }
 in//let
-(llazy0_t2pr[] := t2p1; t2p1) end
+(l1azy0_t2pr[] := t2p1; t2p1) end
 //
 |_(*non-T2Pnone0*) => (   t2p0   )
 //
-end (*let*) // end of [the_s2typ_llazy0()]
+end (*let*) // end of [the_s2typ_l1azy0()]
 //
-end (*local*) // end of [local(the_s2typ_llazy0)]
+end (*local*) // end of [local(the_s2typ_l1azy0)]
 //
 (* ****** ****** *)
 //
 local
 in//local
 #implfun
-the_s2typ_llazy1(telt) =
+the_s2typ_l1azy1(telt) =
 let
 val s2t0 = the_sort2_tbox
-val tfun = the_s2typ_llazy0()
+val tfun = the_s2typ_l1azy0()
 in//let
 s2typ(s2t0, T2Papps(tfun, list_sing(telt)))
-end (*let*) // end of [the_s2typ_llazy1(telt)]
-end (*local*) // end of [local(the_s2typ_llazy1)]
+end (*let*) // end of [the_s2typ_l1azy1(telt)]
+end (*local*) // end of [local(the_s2typ_l1azy1)]
 //
 (* ****** ****** *)
 //

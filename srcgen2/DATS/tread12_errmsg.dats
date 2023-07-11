@@ -687,19 +687,19 @@ let
   val () = d2exp_fpemsg(out, d2e1)
 endlet//end-of(D2Eraise(tknd,d2e1))
 |
-D2Elazy0
+D2El0azy
 (dsym, d2e1) =>
 let
   val () = d2exp_fpemsg(out, d2e1)
-endlet//end-of(D2Elazy0(dsym,d2e1))
+endlet//end-of(D2El0azy(dsym,d2e1))
 |
-D2Elazy1
+D2El1azy
 ( dsym
 , d2e1, d2es ) =>
 let
 val () = d2exp_fpemsg(out, d2e1)
 val () = d2explst_fpemsg(out, d2es)
-endlet//end-of(D2Elazy1(dsym, ...))
+endlet//end-of(D2El1azy(dsym, ...))
 //
 |
 D2Eassgn

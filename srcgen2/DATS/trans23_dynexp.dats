@@ -551,8 +551,8 @@ d3exp_make_styp_node
 //
 |D2Eraise _ => f0_raise(env0, d2e0)
 //
-|D2Elazy0 _ => f0_lazy0(env0, d2e0)
-|D2Elazy1 _ => f0_lazy1(env0, d2e0)
+|D2El0azy _ => f0_l0azy(env0, d2e0)
+|D2El1azy _ => f0_l1azy(env0, d2e0)
 //
 |D2El2bck _ => f0_l2bck(env0, d2e0)
 |D2Et2pck _ => f0_t2pck(env0, d2e0)
@@ -1352,7 +1352,7 @@ end (*let*) // end of [f0_raise(env0,d2e0)]
 (* ****** ****** *)
 //
 fun
-f0_lazy0
+f0_l0azy
 ( env0:
 ! tr23env
 , d2e0: d2exp): d3exp =
@@ -1360,7 +1360,7 @@ let
 //
 val loc0 = d2e0.lctn()
 val-
-D2Elazy0
+D2El0azy
 (dsym, d2e1) = d2e0.node()
 //
 val
@@ -1370,18 +1370,18 @@ in//let
 (
 d3exp_make_styp_node
 ( loc0
-, t2p0, D3Elazy0( dsym , d3e1) )
+, t2p0, D3El0azy( dsym , d3e1) )
 ) where
 {
   val
-  t2p0 = the_s2typ_lazy1(d3e1.styp())
+  t2p0 = the_s2typ_l1azy1(d3e1.styp())
 }
-end (*let*) // end of [f0_lazy0(env0,d2e0)]
+end (*let*) // end of [f0_l0azy(env0,d2e0)]
 //
 (* ****** ****** *)
 //
 fun
-f0_lazy1
+f0_l1azy
 ( env0:
 ! tr23env
 , d2e0: d2exp): d3exp =
@@ -1389,7 +1389,7 @@ let
 //
 val loc0 = d2e0.lctn()
 val-
-D2Elazy1
+D2El1azy
 (dsym
 ,d2e1, d2es) = d2e0.node()
 //
@@ -1404,13 +1404,13 @@ in//let
 (
 d3exp_make_styp_node
 ( loc0
-, t2p0, D3Elazy1(dsym,d3e1,d3es))
+, t2p0, D3El1azy(dsym,d3e1,d3es))
 ) where
 {
   val
-  t2p0 = the_s2typ_lazy1(d3e1.styp())
+  t2p0 = the_s2typ_l1azy1(d3e1.styp())
 }
-end (*let*) // end of [f0_lazy1(env0,d2e0)]
+end (*let*) // end of [f0_l1azy(env0,d2e0)]
 //
 (* ****** ****** *)
 //

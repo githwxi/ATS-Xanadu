@@ -274,7 +274,7 @@ a0ref_make_1val
 in//local
 //
 #implfun
-the_s2cst_lazy0
+the_s2cst_l0azy0
   ( (*void*) ) =
 (
 case+ s2cr[] of
@@ -315,9 +315,9 @@ end (*let*) // end of [optn_nil()]
 //
 | optn_cons(  s2c1  ) => (  s2c1  )
 //
-) (*case+*) // end of [the_s2cst_lazy0]
+) (*case+*) // end of [the_s2cst_l0azy0]
 //
-end(*local*)//end-of-[local(the_s2cst_lazy0)]
+end(*local*)//end-of-[local(the_s2cst_l0azy0)]
 
 (* ****** ****** *)
 
@@ -332,7 +332,7 @@ a0ref_make_1val
 in//local
 //
 #implfun
-the_s2cst_llazy0
+the_s2cst_l1azy0
   ( (*void*) ) =
 (
 case+ s2cr[] of
@@ -373,9 +373,9 @@ end (*let*) // end of [optn_nil()]
 //
 | optn_cons(  s2c1  ) => (  s2c1  )
 //
-) (*case+*) // end of [the_s2cst_llazy0]
+) (*case+*) // end of [the_s2cst_l1azy0]
 //
-end(*local*)//end-of-[local(the_s2cst_llazy0)]
+end(*local*)//end-of-[local(the_s2cst_l1azy0)]
 
 (* ****** ****** *)
 

@@ -531,10 +531,8 @@ two attributes of left values
 |D3Efree of (d3exp)//free-con
 //
 |D3Edp2tr of (d3exp)//p2tr-eval
-(*
-|D3Edlaz0 of (d3exp)//laz0-eval
-|D3Edlaz1 of (d3exp)//laz0-eval
-*)
+|D3Edl0az of (d3exp)//l0azy-eval
+|D3Edl1az of (d3exp)//l1azy-eval
 //
 |D3Ewhere of ( d3exp, d3eclist )
 //
@@ -543,10 +541,10 @@ two attributes of left values
 //
 |D3Eraise of (token, d3exp(*lin-exn*))
 //
-|D3Elazy0 of // nonlin-lazy-eval
-( d1exp(*$LAZY0*), d3exp(*non-thunk*))
-|D3Elazy1 of // linear-lazy-eval
-( d1exp(*$LAZY1*)
+|D3El0azy of // nonlin-lazy-eval
+( d1exp(*$L0AZY*), d3exp(*non-thunk*))
+|D3El1azy of // linear-lazy-eval
+( d1exp(*$LLAZY*)
 , d3exp(*lin-thunk*), d3explst(*frees*))
 //
 |D3El2bck of (d3exp, label)//HX: casting

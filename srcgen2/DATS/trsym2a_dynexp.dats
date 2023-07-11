@@ -687,13 +687,13 @@ val () =
 trsym2a_d2exp(env0, d2e1) endlet
 //
 |
-D2Elazy0
+D2El0azy
 (dsym, d2e1) =>
 let
 val () =
 trsym2a_d2exp(env0, d2e1) endlet
 |
-D2Elazy1
+D2El1azy
 ( dsym
 , d2e1, d2es) =>
 let
