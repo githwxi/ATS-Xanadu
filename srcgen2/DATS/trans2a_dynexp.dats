@@ -627,6 +627,7 @@ d2e0.node() of
 |D2Eraise _ => f0_raise(env0, d2e0)
 //
 |D2Elazy0 _ => f0_lazy0(env0, d2e0)
+|D2Elazy1 _ => f0_lazy1(env0, d2e0)
 //
 |D2Eannot _ => f0_annot(env0, d2e0)
 //
@@ -1989,6 +1990,41 @@ where
 end (*let*) // end of [f0_lazy0(env0,...)]
 //
 (* ****** ****** *)
+//
+fun
+f0_lazy1
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+//
+val loc0 = d2e0.lctn()
+//
+val-
+D2Elazy1
+(dsym
+,d2e1, d2es) = d2e0.node()
+//
+val
+d2e1 =
+trans2a_d2exp( env0, d2e1 )
+//
+val
+d2es = // HX: frees
+trans2a_d2explst_tpck1
+(env0, d2es, the_s2typ_void())
+//
+in//let
+d2exp_make_styp_node
+( loc0
+, t2p0
+, D2Elazy1(dsym,d2e1,d2es)) where
+{
+  val t2p1 = d2e1.styp((*0*))
+  val t2p0 = the_s2typ_llazy1(t2p1) }
+end (*let*) // end of [f0_lazy1(env0,...)]
+//
+(* ****** ****** *)
 
 fun
 f0_annot
@@ -2000,8 +2036,8 @@ let
 val loc0 = d2e0.lctn()
 val-
 D2Eannot
-( d2e1
-, s1e2, s2e2) = d2e0.node()
+(d2e1
+,s1e2, s2e2) = d2e0.node()
 //
 val t2p2 = s2exp_stpize(s2e2)
 val t2p2 = s2typ_hnfiz0(t2p2)

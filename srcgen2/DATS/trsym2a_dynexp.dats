@@ -681,6 +681,15 @@ D2Elazy0
 let
 val () =
 trsym2a_d2exp(env0, d2e1) endlet
+|
+D2Elazy1
+( dsym
+, d2e1, d2es) =>
+let
+val () =
+trsym2a_d2exp(env0, d2e1)
+val () =
+trsym2a_d2explst(env0, d2es) endlet
 //
 |
 D2El2bck(_, _) => f0_l2bck(env0, d2e0)

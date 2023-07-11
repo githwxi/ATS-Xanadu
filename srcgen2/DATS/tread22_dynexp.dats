@@ -733,6 +733,22 @@ endlet // end of [d2exp_lazy0_errck(...)]
 (* ****** ****** *)
 //
 fun
+d2exp_lazy1_errck
+( loc0: loc_t
+, dsym: d1exp
+, d2e1: d2exp
+, d2es: d2explst): d2exp =
+let
+val lvl0 = gmax
+(errvl(d2e1), errvl(d2es)) in//let
+d2exp_errck
+( lvl0+1
+, d2exp(loc0,D2Elazy1(dsym,d2e1,d2es)))
+endlet // end of [d2exp_lazy1_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d2exp_annot_errck
 ( loc0: loc_t
 , d2e1: d2exp
@@ -1088,25 +1104,19 @@ d2e0.node() of
 |D2Eeval _ => f0_eval(d2e0, err)
 |D2Efree _ => f0_free(d2e0, err)
 //
-|
-D2Ewhere _ => f0_where(d2e0, err)
+|D2Ewhere _ => f0_where(d2e0, err)
 //
-|
-D2Eassgn _ => f0_assgn(d2e0, err)
+|D2Eassgn _ => f0_assgn(d2e0, err)
 //
-|
-D2Eraise _ => f0_raise(d2e0, err)
+|D2Eraise _ => f0_raise(d2e0, err)
 //
-|
-D2Elazy0 _ => f0_lazy0(d2e0, err)
+|D2Elazy0 _ => f0_lazy0(d2e0, err)
+|D2Elazy1 _ => f0_lazy1(d2e0, err)
 //
-|
-D2Eannot _ => f0_annot(d2e0, err)
+|D2Eannot _ => f0_annot(d2e0, err)
 //
-|
-D2El2bck _ => f0_l2bck(d2e0, err)
-|
-D2Et2pck _ => f0_t2pck(d2e0, err)
+|D2El2bck _ => f0_l2bck(d2e0, err)
+|D2Et2pck _ => f0_t2pck(d2e0, err)
 //
 | _(*otherwise*) =>
 let
@@ -1717,6 +1727,36 @@ if
 then (d2e) else
 d2exp_lazy0_errck(d2e.lctn(),dsym,d2e1)
 end (*let*) // end of [f0_lazy0(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_lazy1
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Elazy1
+(dsym
+,d2e1,d2es) = d2e.node()
+//
+val
+d2e1 = tread22_d2exp(d2e1, err)
+val
+d2es = tread22_d2explst(d2es, err)
+//
+in//let
+if
+(err=e00)
+then (d2e) else
+let
+val loc = d2e.lctn() in
+d2exp_lazy1_errck(loc,dsym,d2e1,d2es)
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_lazy1(d2e,err)]
 //
 (* ****** ****** *)
 //
