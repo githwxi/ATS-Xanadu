@@ -170,6 +170,9 @@ d2p0.node() of
 //
 |D2Pcon _ => f0_con(env0, d2p0)
 //
+|D2Pbang _ => f0_bang(env0, d2p0)
+|D2Pfree _ => f0_free(env0, d2p0)
+//
 |D2Psym0 _ => f0_sym0(env0, d2p0)
 //
 |D2Pdapp _ => f0_dapp(env0, d2p0)
@@ -177,8 +180,6 @@ d2p0.node() of
 |D2Ptup0 _ => f0_tup0(env0, d2p0)
 |D2Ptup1 _ => f0_tup1(env0, d2p0)
 |D2Prcd2 _ => f0_rcd2(env0, d2p0)
-//
-|D2Pfree _ => f0_free(env0, d2p0)
 //
 |D2Pannot _ => f0_annot(env0, d2p0)
 //
@@ -345,6 +346,52 @@ prerrln("f0_con: tqas = ", d2c1.tqas())
 (* ****** ****** *)
 //
 fun
+f0_bang
+( env0:
+! tr2aenv
+, d2p0: d2pat): d2pat =
+let
+//
+val loc0 = d2p0.lctn()
+val-
+D2Pbang(d2p1) = d2p0.node()
+//
+val
+d2p1 = trans2a_d2pat(env0, d2p1)
+//
+in//let
+let
+val
+t2p1 = d2p1.styp((*void*)) in//let
+  d2pat(loc0, t2p1, D2Pbang( d2p1 ))
+end (*let*)
+end (*let*) // end of [f0_bang(env0,...)]
+//
+fun
+f0_free
+( env0:
+! tr2aenv
+, d2p0: d2pat): d2pat =
+let
+//
+val loc0 = d2p0.lctn()
+val-
+D2Pfree(d2p1) = d2p0.node()
+//
+val
+d2p1 = trans2a_d2pat(env0, d2p1)
+//
+in//let
+let
+val
+t2p1 = d2p1.styp((*void*)) in//let
+  d2pat(loc0, t2p1, D2Pfree( d2p1 ))
+end (*let*)
+end (*let*) // end of [f0_free(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
 f0_sym0
 ( env0:
 ! tr2aenv
@@ -504,30 +551,6 @@ t2p0 =
 s2typ_rcd2(trcd, npf1, l2t2plst(ldps))
 } (*where*) // end of [f0_rcd2(env0,d2p0)]
 //
-(* ****** ****** *)
-
-fun
-f0_free
-( env0:
-! tr2aenv
-, d2p0: d2pat): d2pat =
-let
-//
-val loc0 = d2p0.lctn()
-val-
-D2Pfree(d2p1) = d2p0.node()
-//
-val
-d2p1 = trans2a_d2pat(env0, d2p1)
-//
-in//let
-let
-val
-t2p1 = d2p1.styp((*void*)) in//let
-  d2pat(loc0, t2p1, D2Pfree( d2p1 ))
-end (*let*)
-end (*let*) // end of [f0_free(env0,...)]
-
 (* ****** ****** *)
 
 fun
