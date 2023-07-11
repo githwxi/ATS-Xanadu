@@ -146,7 +146,17 @@ fun
 the_s2typ_p2tr1(elt:s2typ): s2typ
 (* ****** ****** *)
 fun
-the_s2typ_excptn((*void*)): s2typ
+the_s2typ_lazy0((*void*)): s2typ
+fun
+the_s2typ_lazy1(elt:s2typ): s2typ
+(* ****** ****** *)
+fun
+the_s2typ_llazy0((*void*)): s2typ
+fun
+the_s2typ_llazy1(elt:s2typ): s2typ
+(* ****** ****** *)
+fun
+the_s2typ_excptn( (*void*) ): s2typ
 (* ****** ****** *)
 //
 datatype
