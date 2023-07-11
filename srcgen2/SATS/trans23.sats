@@ -544,10 +544,14 @@ trans23_d3exp_tpck
 , d3e0: d3exp, t2p0: s2typ): d3exp
 (* ****** ****** *)
 fun
+trans23_d2patlst_tpck1
+( env0:
+! tr23env
+, d2ps: d2patlst, t2p0: s2typ): d3patlst
+fun
 trans23_d3patlst_tpck1
 ( env0:
 ! tr23env
-, loc0: loc_t
 , d3ps: d3patlst, t2p0: s2typ): d3patlst
 fun
 trans23_d3patlst_tpcks
@@ -557,10 +561,14 @@ trans23_d3patlst_tpcks
 , d3ps: d3patlst, t2ps: s2typlst): d3patlst
 (* ****** ****** *)
 fun
+trans23_d2explst_tpck1
+( env0:
+! tr23env
+, d2es: d2explst, t2p0: s2typ): d3explst
+fun
 trans23_d3explst_tpck1
 ( env0:
 ! tr23env
-, loc0: loc_t
 , d3es: d3explst, t2p0: s2typ): d3explst
 fun
 trans23_d3explst_tpcks
