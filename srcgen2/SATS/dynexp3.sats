@@ -94,8 +94,6 @@ D1E = "./dynexp1.sats"
 G1M = "./gmacro1.sats"
 (* ****** ****** *)
 #staload
-S1E = "./staexp1.sats"
-#staload
 S2E = "./staexp2.sats"
 #staload
 D2E = "./dynexp2.sats"
@@ -105,6 +103,8 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 #typedef g1exp = $S1E.g1exp
 #typedef s1exp = $S1E.s1exp
+(* ****** ****** *)
+#typedef d1exp = $D1E.d1exp
 (* ****** ****** *)
 #typedef s2cst = $S2E.s2cst
 #typedef s2var = $S2E.s2var
@@ -540,10 +540,14 @@ two attributes of left values
 //
 |D3Eraise of (token, d3exp(*lin-exn*))
 //
-|
-D3El2bck of (d3exp, label)//HX: casting
-|
-D3Et2pck of (d3exp, s2typ)//HX: casting
+|D3Elazy0 of // nonlin-lazy-eval
+( d1exp(*$LAZY0*), d3exp(*non-thunk*))
+|D3Elazy1 of // linear-lazy-eval
+( d1exp(*$LAZY1*)
+, d3exp(*lin-thunk*), d3explst(*frees*))
+//
+|D3El2bck of (d3exp, label)//HX: casting
+|D3Et2pck of (d3exp, s2typ)//HX: casting
 //
 |D3Enone0 of ((*0*))
 |D3Enone1 of (d2exp) | D3Enone2 of (d3exp)

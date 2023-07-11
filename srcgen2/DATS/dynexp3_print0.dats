@@ -334,19 +334,32 @@ print("D3Edp2tr(",d3e1,")") // de-p2tr
 D3Ewhere
 (d3e1, dcls) =>
 (
-  print("D3Ewhere(",d3e1,";",dcls,")"))
+print("D3Ewhere(",d3e1,";",dcls,")"))
 //
 |
 D3Eassgn
 (d3el, d3er) =>
 (
-  print("D3Eassgn(",d3el,";",d3er,")"))
+print("D3Eassgn(",d3el,";",d3er,")"))
 //
 |
 D3Eraise
 (tknd, d3e1) =>
 (
-  print("D3Eraise(",tknd,";",d3e1,")"))
+print("D3Eraise(",tknd,";",d3e1,")"))
+//
+|
+D3Elazy0
+( dsym, d3e1 ) =>
+(
+print("D3Elazy0(",dsym,";",d3e1,")"))
+|
+D3Elazy1
+( dsym
+, d3e1 , d3es ) =>
+(
+  print("D3Elazy1(")
+; print( dsym,";",d3e1,";",d3es,")") )
 //
 |D3El2bck
 ( d3e1 , lab2 ) =>
