@@ -300,6 +300,56 @@ local
 val
 t2p0 = s2typ_none0()
 val
+lazy0_t2pr =
+a0ref_make_1val<s2typ>(t2p0)
+//
+in//local
+//
+#implfun
+the_s2typ_lazy0() =
+let
+val t2p0 = lazy0_t2pr[]
+in//let
+case+
+t2p0.node() of
+//
+|T2Pnone0() =>
+let
+val t2p1 =
+s2typ_cst(s2c1) where
+{
+val
+s2c1 = the_s2cst_lazy0() }
+in//let
+(lazy0_t2pr[] := t2p1; t2p1) end
+//
+|_(*non-T2Pnone0*) => (   t2p0   )
+//
+end (*let*) // end of [the_s2typ_lazy0()]
+//
+end (*local*) // end of [local(the_s2typ_lazy0)]
+//
+(* ****** ****** *)
+//
+local
+in//local
+#implfun
+the_s2typ_lazy1(telt) =
+let
+val s2t0 = the_sort2_tbox
+val tfun = the_s2typ_lazy0()
+in//let
+s2typ(s2t0, T2Papps(tfun, list_sing(telt)))
+end (*let*) // end of [the_s2typ_lazy1(telt)]
+end (*local*) // end of [local(the_s2typ_lazy1)]
+//
+(* ****** ****** *)
+//
+local
+//
+val
+t2p0 = s2typ_none0()
+val
 excptn_t2pr =
 a0ref_make_1val<s2typ>(t2p0)
 //

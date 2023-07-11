@@ -49,8 +49,13 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
+(* ****** ****** *)
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
 #staload "./../SATS/tread23.sats"
@@ -817,6 +822,20 @@ endlet // end of [d3exp_raise_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3exp_lazy0_errck
+( loc0: loc_t
+, dsym: d1exp
+, d3e1: d3exp): d3exp =
+let
+val lvl0 = errvl(d3e1) in//let
+d3exp_errck
+( lvl0+1
+, d3exp( loc0, D3Elazy0( dsym, d3e1 ) ))
+endlet // end of [d3exp_lazy0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3exp_t2pck_errck
 ( loc0: loc_t
 , d3e1: d3exp
@@ -1169,6 +1188,8 @@ d3e0.node() of
 |D3Eassgn _ => f0_assgn(d3e0, err)
 //
 |D3Eraise _ => f0_raise(d3e0, err)
+//
+|D3Elazy0 _ => f0_lazy0(d3e0, err)
 //
 |D3Et2pck _ => f0_t2pck(d3e0, err)
 //
@@ -1801,6 +1822,33 @@ val loc = d3e.lctn() in
 d3exp_raise_errck( loc, tknd, d3e1 )
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_raise(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_lazy0
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val-
+D3Elazy0
+(dsym, d3e1) = d3e.node()
+//
+val
+d3e1 = tread23_d3exp(d3e1, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+let
+val loc = d3e.lctn() in
+d3exp_lazy0_errck( loc, dsym, d3e1 )
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_lazy0(d3e,err)]
 //
 (* ****** ****** *)
 //

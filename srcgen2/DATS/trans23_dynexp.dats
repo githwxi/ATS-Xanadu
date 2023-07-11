@@ -503,6 +503,8 @@ d3exp_make_styp_node
 //
 |D2Eraise _ => f0_raise(env0, d2e0)
 //
+|D2Elazy0 _ => f0_lazy0(env0, d2e0)
+//
 |D2El2bck _ => f0_l2bck(env0, d2e0)
 |D2Et2pck _ => f0_t2pck(env0, d2e0)
 //
@@ -1297,6 +1299,35 @@ d3e1 =
 trans23_d2exp_tpck(env0, d2e1, t2p1)
 }
 end (*let*) // end of [f0_raise(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_lazy0
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Elazy0
+(dsym, d2e1) = d2e0.node()
+//
+val
+d3e1 = trans23_d2exp(env0, d2e1)
+//
+in//let
+(
+d3exp_make_styp_node
+( loc0
+, t2p0, D3Elazy0( dsym , d3e1) )
+) where
+{
+  val
+  t2p0 = the_s2typ_lazy1(d3e1.styp())
+}
+end (*let*) // end of [f0_lazy0(env0,d2e0)]
 //
 (* ****** ****** *)
 //

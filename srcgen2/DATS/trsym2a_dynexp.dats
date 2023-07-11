@@ -676,6 +676,13 @@ val () =
 trsym2a_d2exp(env0, d2e1) endlet
 //
 |
+D2Elazy0
+(dsym, d2e1) =>
+let
+val () =
+trsym2a_d2exp(env0, d2e1) endlet
+//
+|
 D2El2bck(_, _) => f0_l2bck(env0, d2e0)
 |
 D2Et2pck(_, _) => f0_t2pck(env0, d2e0)
