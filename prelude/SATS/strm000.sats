@@ -437,63 +437,92 @@ strmize with strm_strmize of 1000
 //
 (* ****** ****** *)
 //
-#symload map with strm_map of 1000
-#symload map with strx_map of 1000
-#symload map_vt with strm_map_vt of 1000
-#symload map_vt with strx_map_vt of 1000
+#symload
+map with strm_map of 1000
+#symload
+map with strx_map of 1000
+#symload
+map_vt with strm_map_vt of 1000
+#symload
+map_vt with strx_map_vt of 1000
 //
 (* ****** ****** *)
 //
-#symload sieve with strm_sieve of 1000
-#symload sieve with strx_sieve of 1000
-#symload sieve_vt with strm_sieve_vt of 1000
-#symload sieve_vt with strx_sieve_vt of 1000
+#symload
+sieve with strm_sieve of 1000
+#symload
+sieve with strx_sieve of 1000
+#symload
+sieve_vt with strm_sieve_vt of 1000
+#symload
+sieve_vt with strx_sieve_vt of 1000
 //
 (* ****** ****** *)
 //
-#symload filter with strm_filter of 1000
-#symload filter with strx_filter of 1000
-#symload filter_vt with strm_filter_vt of 1000
-#symload filter_vt with strx_filter_vt of 1000
+#symload
+filter with strm_filter of 1000
+#symload
+filter with strx_filter of 1000
+#symload
+filter_vt with strm_filter_vt of 1000
+#symload
+filter_vt with strx_filter_vt of 1000
 //
 (* ****** ****** *)
-#symload dropif with strm_dropif of 1000
-#symload dropif with strx_dropif of 1000
+#symload
+dropif with strm_dropif of 1000
+#symload
+dropif with strx_dropif of 1000
 (* ****** ****** *)
 //
-#symload takeif with strm_takeif of 1000
+#symload
+takeif with strm_takeif of 1000
 //
-#symload takeif_vt with strm_takeif_vt of 1000
-//
-(* ****** ****** *)
-//
-#symload mapopt with strm_mapopt of 1000
-#symload mapopt_vt with strm_mapopt_vt of 1000
-//
-(* ****** ****** *)
-//
-#symload imap with strm_imap of 1000
-#symload imap with strx_imap of 1000
-//
-#symload imap_vt with strm_imap_vt of 1000
-#symload imap_vt with strx_imap_vt of 1000
+#symload
+takeif_vt with strm_takeif_vt of 1000
 //
 (* ****** ****** *)
 //
-#symload ifilter with strm_ifilter of 1000
-#symload ifilter with strx_ifilter of 1000
-//
-#symload ifilter_vt with strm_ifilter_vt of 1000
-#symload ifilter_vt with strx_ifilter_vt of 1000
+#symload
+mapopt with strm_mapopt of 1000
+#symload
+mapopt_vt with strm_mapopt_vt of 1000
 //
 (* ****** ****** *)
-#symload idropif with strm_idropif of 1000
-#symload idropif with strx_idropif of 1000
+//
+#symload
+imap with strm_imap of 1000
+#symload
+imap with strx_imap of 1000
+//
+#symload
+imap_vt with strm_imap_vt of 1000
+#symload
+imap_vt with strx_imap_vt of 1000
+//
 (* ****** ****** *)
 //
-#symload itakeif with strm_itakeif of 1000
+#symload
+ifilter with strm_ifilter of 1000
+#symload
+ifilter with strx_ifilter of 1000
 //
-#symload itakeif_vt with strm_itakeif_vt of 1000
+#symload
+ifilter_vt with strm_ifilter_vt of 1000
+#symload
+ifilter_vt with strx_ifilter_vt of 1000
+//
+(* ****** ****** *)
+#symload
+idropif with strm_idropif of 1000
+#symload
+idropif with strx_idropif of 1000
+(* ****** ****** *)
+//
+#symload
+itakeif with strm_itakeif of 1000
+#symload
+itakeif_vt with strm_itakeif_vt of 1000
 //
 (* ****** ****** *)
 

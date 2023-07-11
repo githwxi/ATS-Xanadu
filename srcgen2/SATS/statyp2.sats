@@ -146,14 +146,14 @@ fun
 the_s2typ_p2tr1(elt:s2typ): s2typ
 (* ****** ****** *)
 fun
-the_s2typ_lazy0((*void*)): s2typ
+the_s2typ_l0azy0((*void*)): s2typ
 fun
-the_s2typ_lazy1(elt:s2typ): s2typ
+the_s2typ_l0azy1(elt:s2typ): s2typ
 (* ****** ****** *)
 fun
-the_s2typ_llazy0((*void*)): s2typ
+the_s2typ_l1azy0((*void*)): s2typ
 fun
-the_s2typ_llazy1(elt:s2typ): s2typ
+the_s2typ_l1azy1(elt:s2typ): s2typ
 (* ****** ****** *)
 fun
 the_s2typ_excptn( (*void*) ): s2typ
@@ -293,12 +293,26 @@ s2typ_prjout_opt
 ( s2typ, label ): s2typopt_vt
 //
 (* ****** ****** *)
+//
 fun
 s2typ_p1tr0q(t2p0:s2typ): bool
+//
 fun
 s2typ_p2tr0q(t2p0:s2typ): bool
 fun
 s2typ_p2tr1q(t2p0:s2typ): bool
+(* ****** ****** *)
+//
+fun
+s2typ_l0azy0q(t2p0:s2typ): bool
+fun
+s2typ_l0azy1q(t2p0:s2typ): bool
+//
+fun
+s2typ_l1azy0q(t2p0:s2typ): bool
+fun
+s2typ_l1azy1q(t2p0:s2typ): bool
+//
 (* ****** ****** *)
 //
 fun // HX: for

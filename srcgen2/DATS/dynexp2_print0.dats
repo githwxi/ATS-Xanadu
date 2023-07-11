@@ -492,21 +492,22 @@ print
 ("D2Eraise(", tknd, ";", d2e1, ")"))
 //
 |
-D2Elazy0
+D2El0azy
 ( dsym, d2e1 ) =>
 (
 print
-("D2Elazy0(", dsym, ";", d2e1, ")"))
+("D2El0azy(", dsym, ";", d2e1, ")"))
 |
-D2Elazy1
+D2El1azy
 ( dsym
 , d2e1 , d2es ) =>
-( print("D2Elazy1(")
+( print("D2El1azy(")
 ; print(dsym,";",d2e1,";",d2es,")") )
 //
 |
 D2Eannot
-(d2e1,s1e2,s2e2) =>
+( d2e1
+, s1e2 , s2e2 ) =>
 ( print("D2Eannot(")
 ; print(d2e1,";",s1e2,";",s2e2,")") )
 //

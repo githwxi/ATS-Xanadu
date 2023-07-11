@@ -204,6 +204,30 @@ T2Papps
 s2typ_p2tr0q(t2f0) | _(*else*) => false)
 //
 (* ****** ****** *)
+//
+#implfun
+s2typ_l0azy1q(t2p0) =
+(
+case+
+t2p0.node() of
+|
+T2Papps
+(t2f0, _) =>
+s2typ_l0azy0q(t2f0) | _(*else*) => false)
+//
+(* ****** ****** *)
+//
+#implfun
+s2typ_l1azy1q(t2p0) =
+(
+case+
+t2p0.node() of
+|
+T2Papps
+(t2f0, _) =>
+s2typ_l1azy0q(t2f0) | _(*else*) => false)
+//
+(* ****** ****** *)
 
 #implfun
 s2typ_xtpck0
