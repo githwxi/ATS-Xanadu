@@ -493,16 +493,16 @@ print
 //
 |
 D2Elazy0
-( tknd, d2e1 ) =>
+( dsym, d2e1 ) =>
 (
 print
-("D2Elazy0(", tknd, ";", d2e1, ")"))
+("D2Elazy0(", dsym, ";", d2e1, ")"))
 |
 D2Elazy1
-( tknd
+( dsym
 , d2e1 , d2es ) =>
 ( print("D2Elazy1(")
-; print(tknd,";",d2e1,";",d2es,")") )
+; print(dsym,";",d2e1,";",d2es,")") )
 //
 |
 D2Eannot

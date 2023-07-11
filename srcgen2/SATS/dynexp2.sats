@@ -647,13 +647,11 @@ D2Pl2bck of (d2pat, label)//HX: casting
 |
 D2Pt2pck of (d2pat, s2typ)//HX: casting
 //
-|
-D2Pnone0 of ((*0*))
-|
-D2Pnone1 of (d1pat) | D2Pnone2 of (d2pat)
+|D2Pnone0 of ((*0*))
+|D2Pnone1 of (d1pat) | D2Pnone2 of (d2pat)
 //
-|
-D2Perrck of (sint(*lvl*), d2pat)//HX:tread12-error
+|D2Perrck of
+(sint(*lvl*), d2pat(*err*))//HX:tread12-error
 //
 // end of [d1exp_node] // end of [ datatype(...) ]
 //
@@ -985,10 +983,10 @@ D2Eraise of
 //
 |
 D2Elazy0 of // nonlin-lazy-eval
-( token(*$LAZY0*), d2exp(*non-thunk*))
+( d1exp(*$LAZY0*), d2exp(*non-thunk*))
 |
 D2Elazy1 of // linear-lazy-eval
-( token(*$LAZY1*)
+( d1exp(*$LAZY1*)
 , d2exp(*lin-thunk*), d2explst(*frees*))
 //
 |
@@ -1012,8 +1010,8 @@ D2Et2pck of (d2exp, s2typ)//HX: casting
 |D2Enone0 of ((*0*))
 |D2Enone1 of (d1exp) | D2Enone2 of (d2exp)
 //
-|
-D2Eerrck of (sint(*lvl*), d2exp)//HX:tread12-error
+|D2Eerrck of
+ (sint(*lvl*), d2exp(*err*))//HX:tread12-error
 //
 // end of [d1exp_node] // end of [ datatype(...) ]
 //
@@ -1251,8 +1249,8 @@ D2Cnone0 of ((*nil*))
 |
 D2Cnone1 of ( d1ecl ) | D2Cnone2 of ( d2ecl )
 //
-|
-D2Cerrck of (sint(*lvl*), d2ecl)//tread12-error
+|D2Cerrck of
+ (sint(*lvl*), d2ecl(*err*))//HX:tread12-error
 //
 // HX-2022-??-??: end-of-[ datatype(d2ecl_node) ]
 //

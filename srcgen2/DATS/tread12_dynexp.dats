@@ -887,26 +887,26 @@ endlet // end of [d2exp_raise_errck(...)]
 fun
 d2exp_lazy0_errck
 (loc0: loc_t
-,tknd: token
+,dsym: d1exp
 ,d2e1: d2exp): d2exp =
 let
 val lvl0 = errvl(d2e1) in//let
 d2exp_errck
 ( lvl0+1
-, d2exp(loc0, D2Elazy0(tknd, d2e1)) )
+, d2exp(loc0, D2Elazy0(dsym, d2e1)) )
 endlet // end of [d2exp_lazy0_errck(...)]
 //
 fun
 d2exp_lazy1_errck
 (loc0: loc_t
-,tknd: token
+,dsym: d1exp
 ,d2e1: d2exp
 ,d2es: d2explst): d2exp =
 let
 val lvl0 = errvl(d2e1) in//let
 d2exp_errck
 (lvl0+1
-,d2exp(loc0,D2Elazy1(tknd,d2e1,d2es)))
+,d2exp(loc0,D2Elazy1(dsym,d2e1,d2es)))
 endlet // end of [d2exp_lazy1_errck(...)]
 //
 (* ****** ****** *)
@@ -2098,14 +2098,14 @@ val e00 = err
 //
 val-
 D2Elazy0
-(tknd, d2e1) = d2e.node()
+(dsym, d2e1) = d2e.node()
 val
 d2e1 = tread12_d2exp(d2e1, err)
 in//let
 if
 (err=e00)
 then (d2e) else
-d2exp_lazy0_errck(d2e.lctn(),tknd,d2e1)
+d2exp_lazy0_errck(d2e.lctn(),dsym,d2e1)
 end (*let*) // end of [f0_lazy0(d2e,err)]
 //
 fun
@@ -2118,7 +2118,7 @@ val e00 = err
 //
 val-
 D2Elazy1
-( tknd
+( dsym
 , d2e1, d2es) = d2e.node()
 val
 d2e1 = tread12_d2exp(d2e1, err)
@@ -2131,7 +2131,7 @@ then (d2e) else
 let
 val loc = d2e.lctn()
 in//let
-d2exp_lazy1_errck(loc, tknd, d2e1, d2es)
+d2exp_lazy1_errck(loc, dsym, d2e1, d2es)
 end (*let*)
 end (*let*) // end of [f0_lazy1(d2e,err)]
 //
@@ -2161,7 +2161,7 @@ if
 then (d2e) else
 let
 val loc = d2e.lctn() in
-d2exp_annot_errck(loc,d2e1,s1e2,s2e2)
+d2exp_annot_errck(loc, d2e1, s1e2, s2e2)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_annot(d2e,err)]
 //

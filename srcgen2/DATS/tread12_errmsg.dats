@@ -688,18 +688,18 @@ let
 endlet//end-of(D2Eraise(tknd,d2e1))
 |
 D2Elazy0
-(tknd, d2e1) =>
+(dsym, d2e1) =>
 let
   val () = d2exp_fpemsg(out, d2e1)
-endlet//end-of(D2Elazy0(tknd,d2e1))
+endlet//end-of(D2Elazy0(dsym,d2e1))
 |
 D2Elazy1
-( tknd
+( dsym
 , d2e1, d2es ) =>
 let
 val () = d2exp_fpemsg(out, d2e1)
 val () = d2explst_fpemsg(out, d2es)
-endlet//end-of(D2Elazy1(tknd, ...))
+endlet//end-of(D2Elazy1(dsym, ...))
 //
 |
 D2Eassgn

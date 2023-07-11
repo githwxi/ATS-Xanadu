@@ -480,7 +480,7 @@ if
 then true else false
 |
 _(* non-D1Pid0 *) => false
-) (*case+*) // end of [isFLAT]
+) (*case+*) // end of [isFREE]
 //
 (* ****** ****** *)
 //
@@ -839,9 +839,9 @@ trans12_s1arglst(env0, s1as)
 //
 (*
 val () =
-println("f0_app1: d2f0 = ", d2f0)
+println("f0_a1pp: d2f0 = ", d2f0)
 val () =
-println("f0_app1: s2vs = ", s2vs)
+println("f0_a1pp: s2vs = ", s2vs)
 (*
 //HX: s2vs needs to be re-sorted!
 *)
@@ -1834,6 +1834,15 @@ _(* non-D1Eid0 *) => false
 ) (*case+*) // end of [isLLAZY]
 //
 fun
+f1_mklaz0
+( loc0: loc_t
+, d1f0: d1exp
+, d2e1: d2exp): d2exp =
+(
+d2exp_make_node
+(loc0, D2Elazy0(d1f0, d2e1)))//fun
+//
+fun
 f0_a1pp
 ( env0:
 ! tr12env
@@ -1892,6 +1901,17 @@ d2exp(loc0, D2Eeval(d2e1))
 end (*let*) // end-of-then
 else
 (
+if
+isLAZY(d1f0)
+then
+let
+val d2e1 =
+trans12_d1exp(env0, d1e1)
+in//let
+f1_mklaz0(loc0, d1f0, d2e1)
+end (*let*) // end-of-then
+else
+(
 case+
 d1e1.node() of
 //
@@ -1899,9 +1919,9 @@ d1e1.node() of
 D1Esarg(s1es) =>
 let
 val d2f0 =
-trans12_d1exp(env0, d1f0)
+  trans12_d1exp(env0, d1f0)
 val s2es =
-trans12_s1explst(env0, s1es)
+  trans12_s1explst(env0, s1es)
 in
   my_d2exp_sapp(loc0, d2f0, s2es)
 end (*let*) // end of [D1Esarg(s1es)]
@@ -1917,6 +1937,7 @@ in
 end (*let*) // end of [D1Etarg(s1es)]
 |
 _(*d1exp-rest*) => f0_a1pp_else(env0,d1e0)
+) (*else*) // end-of-if(isLAZY)
 ) (*else*) // end-of-if(isEVAL)
 ) (*else*) // end-of-if(isADDR)
 ) (*else*) // end-of-if(isBANG)
