@@ -1912,6 +1912,17 @@ end (*let*) // end-of-then
 else
 (
 if
+isFOLD(d1f0)
+then
+let
+val d2e1 =
+trans12_d1exp(env0, d1e1)
+in//let
+d2exp(loc0, D2Efold(d2e1))
+end (*let*) // end-of-then
+else
+(
+if
 isEVAL(d1f0)
 then
 let
@@ -1919,6 +1930,17 @@ val d2e1 =
 trans12_d1exp(env0, d1e1)
 in//let
 d2exp(loc0, D2Eeval(d2e1))
+end (*let*) // end-of-then
+else
+(
+if
+isFREE(d1f0)
+then
+let
+val d2e1 =
+trans12_d1exp(env0, d1e1)
+in//let
+d2exp(loc0, D2Efree(d2e1))
 end (*let*) // end-of-then
 else
 (
@@ -1967,14 +1989,16 @@ trans12_s1explst(env0, s1es)
 in
   my_d2exp_tapp(loc0, d2f0, s2es)
 end (*let*) // end of [D1Etarg(s1es)]
-|
-_(*d1exp-rest*) => f0_a1pp_else(env0,d1e0)
-) (*else*) // end-of-if(isLLAZY )
-) (*else*) // end-of-if( isLAZY )
-) (*else*) // end-of-if( isEVAL )
-) (*else*) // end-of-if( isADDR )
-) (*else*) // end-of-if( isBANG )
-) (*else*) // end-of-if( isAMP0 )
+| _ // HX: for regular level-2 dynexps
+(*d1exp-rest*) => f0_a1pp_else(env0,d1e0)
+) (*end-of-else*) // end-of-if( isLLAZY )
+) (*end-of-else*) // end-of-if( isLAZY0 )
+) (*end-of-else*) // end-of-if( isFREE0 )
+) (*end-of-else*) // end-of-if( isEVAL0 )
+) (*end-of-else*) // end-of-if( isFOLD0 )
+) (*end-of-else*) // end-of-if( isADDR0 )
+) (*end-of-else*) // end-of-if( isBANG0 )
+) (*end-of-else*) // end-of-if( isAMP00 )
 //
 end (*let*) // end of [f0_a1pp(env0,d1e0)]
 
