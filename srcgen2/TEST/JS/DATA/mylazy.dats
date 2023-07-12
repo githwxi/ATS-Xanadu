@@ -40,7 +40,7 @@ $lazy(cons(n, sint_strm_from(n+1)))
 fun
 sint_lstrm_from
 (n: sint): lstrm(sint) =
-$llazy(lcons(n, sint_lstrm_from(n+1)))
+$llazy(cons(n, sint_lstrm_from(n+1)))
 //
 (* ****** ****** *)
 
