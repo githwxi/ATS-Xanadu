@@ -178,7 +178,7 @@ case+
 t2p0.node() of
 |
 T2Pcst(s2c0) =>
-isP2TR(s2c0) | _(*else*) => false)
+isP1TR(s2c0) | _(*else*) => false)
 //
 #implfun
 s2typ_p2tr0q(t2p0) =
@@ -205,6 +205,41 @@ s2typ_p2tr0q(t2f0) | _(*else*) => false)
 //
 (* ****** ****** *)
 //
+local
+//
+fun
+isL0AZY
+(s2c0: s2cst): bool =
+(s2c0.name() = L0AZY_TBOX_symbl)
+fun
+isL1AZY
+(s2c0: s2cst): bool =
+(s2c0.name() = L1AZY_VTBX_symbl)
+//
+in//local
+//
+#implfun
+s2typ_l0azy0q(t2p0) =
+(
+case+
+t2p0.node() of
+|
+T2Pcst(s2c0) =>
+isL0AZY(s2c0) | _(*else*) => false)
+//
+#implfun
+s2typ_l1azy0q(t2p0) =
+(
+case+
+t2p0.node() of
+|
+T2Pcst(s2c0) =>
+isL1AZY(s2c0) | _(*else*) => false)
+//
+end//end of [local(s2typ_l0azy0q/l1azy0q]
+//
+(* ****** ****** *)
+//
 #implfun
 s2typ_l0azy1q(t2p0) =
 (
@@ -214,8 +249,6 @@ t2p0.node() of
 T2Papps
 (t2f0, _) =>
 s2typ_l0azy0q(t2f0) | _(*else*) => false)
-//
-(* ****** ****** *)
 //
 #implfun
 s2typ_l1azy1q(t2p0) =

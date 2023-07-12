@@ -800,6 +800,28 @@ endlet // end of [d3exp_dp2tr_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3exp_dl0az_errck
+( loc0: loc_t
+, d3e1: d3exp): d3exp =
+let
+val lvl0 = errvl(d3e1) in//let
+d3exp_errck
+( lvl0+1, d3exp(loc0, D3Edl0az(d3e1)) )
+endlet // end of [d3exp_dl0az_errck(...)]
+//
+fun
+d3exp_dl1az_errck
+( loc0: loc_t
+, d3e1: d3exp): d3exp =
+let
+val lvl0 = errvl(d3e1) in//let
+d3exp_errck
+( lvl0+1, d3exp(loc0, D3Edl1az(d3e1)) )
+endlet // end of [d3exp_dl1az_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3exp_where_errck
 ( loc0: loc_t
 , d3e1: d3exp
@@ -1277,6 +1299,8 @@ d3e0.node() of
 |D3Eeval _ => f0_eval(d3e0, err)
 //
 |D3Edp2tr _ => f0_dp2tr(d3e0, err)
+|D3Edl0az _ => f0_dl0az(d3e0, err)
+|D3Edl1az _ => f0_dl1az(d3e0, err)
 //
 |D3Ewhere _ => f0_where(d3e0, err)
 //
@@ -1832,6 +1856,52 @@ if
 then (d3e) else
 d3exp_dp2tr_errck(d3e.lctn(), d3e1)
 end (*let*) // end of [f0_dp2tr(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dl0az
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val-
+D3Edl0az
+(   d3e1   ) = d3e.node()
+//
+val
+d3e1 = tread23_d3exp(d3e1, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+d3exp_dl0az_errck(d3e.lctn(), d3e1)
+end (*let*) // end of [f0_dl0az(d3e,err)]
+//
+fun
+f0_dl1az
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val-
+D3Edl1az
+(   d3e1   ) = d3e.node()
+//
+val
+d3e1 = tread23_d3exp(d3e1, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+d3exp_dl1az_errck(d3e.lctn(), d3e1)
+end (*let*) // end of [f0_dl1az(d3e,err)]
 //
 (* ****** ****** *)
 //

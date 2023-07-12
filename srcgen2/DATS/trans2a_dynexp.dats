@@ -1786,38 +1786,73 @@ val-
 list_cons(telt, _) = t2ps }
 )
 else
+(
+if
+isL0AZY(t2p1)
+then
+(
+case-
+t2p1.node() of
+|T2Papps
+(t2f1, t2ps) =>
+(
+  telt ) where
+{
+val-
+list_cons(telt, _) = t2ps }
+)
+else
+(
+if
+isL1AZY(t2p1)
+then
+(
+case-
+t2p1.node() of
+|T2Papps
+(t2f1, t2ps) =>
+(
+  telt ) where
+{
+val-
+list_cons(telt, _) = t2ps }
+)
+else
+(
 let
 val t2p0 =
 s2typ_new0_x2tp(loc0) in t2p0
-endlet//end-of-else//end-of-if
-) : s2typ // end of [ val(t2p0) ]
+endlet
+) // else // end-of-[if(isL1AZY)]
+) // else // end-of-[if(isL0AZY)]
+) // else // end-of-[if(isP2TR1)]
+) : s2typ // end of [val( t2p0 )]
 //
+in//let
+let
 val () =
 prerrln("f0_eval: loc0 = ", loc0)
 val () =
 prerrln("f0_eval: t2p1 = ", t2p1)
 val () =
 prerrln("f0_eval: t2p0 = ", t2p0)
-//
 in//let
-  d2exp(loc0, t2p0, D2Eeval(d2e1))
-end where
+d2exp( loc0, t2p0, D2Eeval( d2e1 ) )
+end//let
+end where // end-of-let[f0_eval(...)]
 {
 //
 fun
 isP2TR
-( t2p1
-: s2typ): bool = s2typ_p2tr1q(t2p1)
+(t2p1: s2typ): bool = s2typ_p2tr1q(t2p1)
 fun
 isL0AZY
-( t2p1
-: s2typ): bool = s2typ_l0azy1q(t2p1)
+(t2p1: s2typ): bool = s2typ_l0azy1q(t2p1)
 fun
 isL1AZY
-( t2p1
-: s2typ): bool = s2typ_l1azy1q(t2p1)
+(t2p1: s2typ): bool = s2typ_l1azy1q(t2p1)
 //
-}(*where*) // end of [f0_eval(env0,...)]
+} (*where*) // end of [f0_eval(env0,...)]
 //
 (* ****** ****** *)
 //
