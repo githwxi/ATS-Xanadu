@@ -1214,6 +1214,20 @@ val s1e0 =
 (*where*) // end of [S0Eapps(...)]
 //
 |
+S0Efimp
+(tbeg,s0es,tend) =>
+let
+val loc0 = s0e0.lctn()
+val s1es =
+trans01_s0explst(tenv, s0es)
+in//let
+FXITMopr
+(s1e0, imp_fixty) where
+{ val s1e0 =
+  s1exp(loc0, S1Earrw(s1es)) }
+endlet // end of [ S0Efimp(_,_,_) ]
+//
+|
 S0Elpar
 (tbeg,ses1,tend) =>
 let
