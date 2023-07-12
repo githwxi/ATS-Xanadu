@@ -283,7 +283,7 @@ TEQD2EXPnone() => ()
 |
 TEQD2EXPsome(teq1, d2e2) =>
 let
-val d2e2 = fperr22_d2exp(out, d2e2)
+val (  ) = fperr22_d2exp(out, d2e2)
 endlet // end of [TEQD2EXPsome(_,_)]
 ) (*case+*)//end-(fperr22_teqd2exp(out,tdxp))
 //

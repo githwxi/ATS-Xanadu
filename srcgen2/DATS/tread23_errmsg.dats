@@ -166,12 +166,14 @@ if
 (lvl
 >FPEMSG_ERRVL) then () else
 let
-val loc0 = d3p0.lctn() in
+val
+loc0 = d3p0.lctn() in // let
 println
 ("TREAD23-ERROR:",loc0,":",d3p0)
-end
-)
-| _(* otherwise *) => (  (* skipped *)  )
+end // let // else // end-of-[if]
+) (* end-of-[ D3Perrck(lvl,d2p1) ] *)
+| // non-D3Cerrck // ... // ... // ...
+_ (* otherwise *) => (  (* skipped *)  )
 //
 end(*let*)//end-of(d3pat_fpemsg(out,d3p0))
 //
@@ -253,14 +255,6 @@ d3exp_fpemsg
 {
 val
 ( ) = d3eclist_fpemsg(out, d3cs)}
-|
-D3Ewhere
-(d2e1, dcls) =>
-let
-val () =
-d3eclist_fpemsg(out, dcls)
-val () = d3exp_fpemsg(out , d2e1)
-endlet
 //
 |
 D3Eift0
@@ -331,6 +325,27 @@ D3Edp2tr
 let
 val () = d3exp_fpemsg(out , d3e1)
 endlet // end of [ D3Edp2tr(d3e1) ]
+|
+D3Edl0az
+(   d3e1   ) =>
+let
+val () = d3exp_fpemsg(out , d3e1)
+endlet // end of [ D3Edl0az(d3e1) ]
+|
+D3Edl1az
+(   d3e1   ) =>
+let
+val () = d3exp_fpemsg(out , d3e1)
+endlet // end of [ D3Edl1az(d3e1) ]
+//
+|
+D3Ewhere
+(d2e1, dcls) =>
+let
+val () =
+d3eclist_fpemsg(out, dcls)
+val () = d3exp_fpemsg(out , d2e1)
+endlet
 //
 |
 D3Eassgn
@@ -392,12 +407,14 @@ if
 (lvl
 >FPEMSG_ERRVL) then () else
 let
-val loc0 = d3e0.lctn() in
+val
+loc0 = d3e0.lctn() in // let
 println
 ("TREAD23-ERROR:",loc0,":",d3e0)
-end
-)
-| _(* otherwise *) => (  (* skipped *)  )
+end // let // else // end-of-[if]
+) (* end-of-[ D3Eerrck(lvl,d2e1) ] *)
+| // non-D3Cerrck // ... // ... // ...
+_ (* otherwise *) => (  (* skipped *)  )
 //
 end(*let*)//end-of(d3exp_fpemsg(out,d3e0))
 //
@@ -636,15 +653,16 @@ if
 (lvl
 >FPEMSG_ERRVL) then () else
 let
-val loc0 = dcl0.lctn() in
+val
+loc0 = dcl0.lctn() in // let
 println
 ("TREAD23-ERROR:",loc0,":",dcl0)
-end(*let*)
-)
+end // let // else // end-of-[if]
+) (* end-of-[ D3Cerrck(lvl,dcl0) ] *)
+| // non-D3Cerrck // ... // ... // ...
+_ (* otherwise *) => (  (* skipped *)  )
 //
-| _(* otherwise *) => (   (*skipped*)   )
-//
-end (*let*)//end-of(d3ecl_fpemsg(out,dcl0))
+end(*let*)//end-of(d3ecl_fpemsg(out,dcl0))
 //
 endloc(*local*)//end-of(local(d3ecl_fpemsg))
 //

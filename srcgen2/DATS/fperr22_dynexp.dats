@@ -253,7 +253,7 @@ D2Esym0
 let
 val () =
 fperr22_d2exp
-(out, drxp.dexp((*void*)))
+(out, drxp.dexp((*0*)))
 endlet
 //
 |
@@ -375,6 +375,22 @@ val () =
 fperr22_l2d2elst(out, ldes) end
 //
 |
+D2Eaddr(d2e1) =>
+let
+val () = fperr22_d2exp(out, d2e1)
+endlet
+|
+D2Eeval(d2e1) =>
+let
+val () = fperr22_d2exp(out, d2e1)
+endlet
+|
+D2Efree(d2e1) =>
+let
+val () = fperr22_d2exp(out, d2e1)
+endlet
+//
+|
 D2Eassgn
 (d2el, d2er) =>
 let
@@ -389,6 +405,29 @@ let
 val () = fperr22_d2exp(out, d2e1)
 endlet
 //
+|
+D2El0azy
+(dsym, d2e1) =>
+let
+val () = fperr22_d2exp(out, d2e1)
+endlet
+|
+D2El1azy
+(dsym
+,d2e1, d2es) =>
+(
+  fperr22_d2explst(out, d2es)
+) where
+{
+val () = fperr22_d2exp(out, d2e1)
+}
+//
+|
+D2El2bck
+(d2e1, lab2) =>
+let
+val () = fperr22_d2exp(out, d2e1)
+endlet
 |
 D2Et2pck
 (d2e1, t2p2) =>
@@ -448,21 +487,23 @@ d2e0.node() of
 |
 D2Eerrck(lvl, d2e1) =>
 (
+//
 auxmain( out, d2e1 ); 
+//
 if
 (lvl
 >FPERR22_ERRVL)
 then ((*void*)) else
 let
-val loc0 = d2e0.lctn()
-in//let
-(*
-prerrln
+val
+loc0 = d2e0.lctn() in // let
+println
 ("FPERR22-ERROR:",loc0,":",d2e0)
-*)
-end//let
-)
-| _(* otherwise *) => (  (* skipped *)  )
+end // let // else // end-of-[if]
+//
+) (* end-of-[D2Eerrck(lvl, d2e1)] *)
+| // non-D2Eerrck // ... // ... // ...
+_ (* otherwise *) => (  (* skipped *)  )
 //
 end(*let*)//end-of(fperr22_d2exp(out,d2e0))
 //
