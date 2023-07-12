@@ -734,6 +734,15 @@ s1exp_errck
 (1, s1exp(loc, S1Eb1sh(s1e)))
 (* ****** ****** *)
 fun
+s1exp_arrw_errck
+( loc: loc_t
+, ses
+: s1explst ): s1exp =
+(
+s1exp_errck
+(1, s1exp(loc, S1Earrw(ses))))
+(* ****** ****** *)
+fun
 s1exp_a0pp_errck
 (loc: loc_t): s1exp =
 s1exp_errck(1,s1exp(loc,S1Ea0pp()))
@@ -969,6 +978,9 @@ s1exp_a0pp_errck(loc0)
 { val () = ( err := err + 1 ) }
 //
 |
+S1Earrw _ => f0_arrw(s1e0, err)
+//
+|
 S1Ea1pp _ => f0_a1pp(s1e0, err)
 |
 S1Ea2pp _ => f0_a2pp(s1e0, err)
@@ -1060,6 +1072,34 @@ endlet // end of [ _(* otherwise *) ]
 (* ****** ****** *)
 //
 val loc0 = s1e0.lctn()
+//
+(* ****** ****** *)
+//
+fun
+f0_arrw
+( s1e: s1exp
+, err: &sint >> _): s1exp =
+let
+//
+val e00 = err
+val loc = s1e.lctn()
+//
+val-
+S1Earrw
+(  s1es  ) = s1e.node() 
+//
+(*
+HX-2023-07-12:
+Checking on [s1es] is needed
+*)
+//
+in//let
+if
+(err=e00)
+then (s1e) else
+(
+  s1exp_arrw_errck(loc0, s1es))
+endlet // end of [S1Earrw(s1es)]
 //
 (* ****** ****** *)
 //

@@ -4,10 +4,12 @@ excptcon TrueExn
 excptcon FalseExn
 
 (* ****** ****** *)
-
+//
+(*
 #typedef
 map(a:t0, b:t0) = a -> b
-////
+*)
+//
 (* ****** ****** *)
 
 #typedef

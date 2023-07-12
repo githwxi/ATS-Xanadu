@@ -280,6 +280,10 @@ S1Eb1sh(s1e1) =>
 s1exp_fpemsg(out, s1e1)
 //
 |
+S1Earrw(s1es) =>
+s1explst_fpemsg(out, s1es)
+//
+|
 S1Ea0pp() => ()
 |
 S1Ea1pp(s1f0,s1e1) =>
@@ -367,6 +371,10 @@ endlet // end of [S1Equal0(...)]
 //
 |
 S1Eerrck _ => s1exp_fpemsg(out, s1e)
+//
+|
+_(*otherwise*) => s1exp_fpemsg(out, s1e)
+//
 endlet where
 {
 (*

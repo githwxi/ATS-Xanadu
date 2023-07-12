@@ -1145,10 +1145,11 @@ isAXCG
 (
 case+
 s1e0.node() of
-| S1Eid0(sid1) =>
-  (sid1 = AXCG_symbl)
-| _(*non-S1Eid0*) => false
-)
+//
+|S1Eid0(sid1) =>
+ (sid1 = AXCG_symbl)
+//
+|_(*non-S1Eid0*) => false )
 fun
 isARRW
 ( s1e0
@@ -1156,10 +1157,12 @@ isARRW
 (
 case+
 s1e0.node() of
-| S1Eid0(sid1) =>
-  (sid1 = MSGT_symbl)
-| _(*non-S1Eid0*) => false
-)
+//
+|S1Eid0(sid1) =>
+ (sid1 = MSGT_symbl)
+|S1Earrw(s1es) => (true)
+//
+|_(*non-S1Eid0*) => false )
 //
 (* ****** ****** *)
 //
@@ -1246,22 +1249,22 @@ case+
 s1e1.node() of
 |
 S1El1st(s1es) =>
-trans12_s1explst_impr(env0, s1es)
+trans12_s1explst_impr(env0,s1es)
 |
 S1El2st(ses1, ses2) =>
 (
 list_append(ses1, ses2)) where
 {
 val ses1 =
-trans12_s1explst_impr(env0, ses1)
+trans12_s1explst_impr(env0,ses1)
 val ses2 =
-trans12_s1explst_prgm(env0, ses2)
+trans12_s1explst_prgm(env0,ses2)
 }
 | _(*non-S1El?st*) =>
 list_sing
 (
-trans12_s1exp_impr(env0, s1e1))
-) : s2explst // end-of-val(s2es)
+  trans12_s1exp_impr(env0, s1e1) )
+) : s2explst // end-of-[val(s2es)]
 //
 val npf1 =
 (
@@ -1289,9 +1292,10 @@ val
 s2f0 =
 trans12_s1exp(env0, s1f0)
 in//let
-  f0_a2pp_els1(env0, s1e0, s2f0)
+(
+f0_a2pp_els1( env0 , s1e0 , s2f0 ))
 end (*let*) // end of [non-S2Earrw]
-) (*case+*) // end of [else]
+) (*case+*) // end of-else // end-of-if
 //
 end (*let*) // end of [f0_a2pp_els0(...)]
 
