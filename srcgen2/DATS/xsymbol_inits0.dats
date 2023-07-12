@@ -133,5 +133,10 @@ HX-2022-10-01: Various symbols
 #implval P2TR_TBOX_symbl = symbl("p2tr_tbox")
 //
 (* ****** ****** *)
+//
+#implval L0AZY_TBOX_symbl = symbl("lazy_t0_x0")
+#implval L1AZY_VTBX_symbl = symbl("lazy_vt_vx")
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xsymbol_inits0.dats] *)

@@ -211,4 +211,11 @@ P2TR_TBOX_symbl: symbl //=symbl("p2tr_tbox")
 
 (* ****** ****** *)
 
+val
+L0AZY_TBOX_symbl: symbl //=symbl("lazy_t0_x0")
+val
+L1AZY_VTBX_symbl: symbl //=symbl("lazy_vt_vx")
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_xsymbol.sats] *)

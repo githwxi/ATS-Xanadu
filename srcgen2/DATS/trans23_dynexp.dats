@@ -1233,23 +1233,68 @@ d3exp
 end
 ) (* end-of-then *)
 else
+(
+if
+isL0AZY(t2p1)
+then
+(
+case-
+t2p1.node() of
+|T2Papps
+(t2f1, t2ps) =>
+let
+val-
+list_cons(telt, _) = t2ps
+in//let
+d3exp
+(loc0, telt, D3Edl0az(d3e1))
+end
+)
+else
+(
+if
+isL1AZY(t2p1)
+then
+(
+case-
+t2p1.node() of
+|T2Papps
+(t2f1, t2ps) =>
+let
+val-
+list_cons(telt, _) = t2ps
+in//let
+d3exp
+(loc0, telt, D3Edl1az(d3e1))
+end
+)
+else
+(
 let
 val t2p0 =
 s2typ_new0_x2tp(loc0) in
 d3exp(loc0, t2p0, D3Eeval(d3e1))
-endlet // end-of-else // end-of-[if]
+endlet
+) // else // end-of-[if(isL1AZY)]
+) // else // end-of-[if(isL0AZY)]
+) // else // end-of-[if(isP2TR1)]
 //
 end//let
 //
 end where // end-of-let
 {
 //
-  fun
-  isP2TR
-  ( t2p1
-  : s2typ): bool = s2typ_p2tr1q(t2p1)
+fun
+isP2TR
+(t2p1: s2typ): bool = s2typ_p2tr1q(t2p1)
+fun
+isL0AZY
+(t2p1: s2typ): bool = s2typ_l0azy1q(t2p1)
+fun
+isL1AZY
+(t2p1: s2typ): bool = s2typ_l1azy1q(t2p1)
 //
-}(*where*) // end of [f0_eval(env0,...)]
+} (*where*) // end of [f0_eval(env0,...)]
 //
 (* ****** ****** *)
 //
