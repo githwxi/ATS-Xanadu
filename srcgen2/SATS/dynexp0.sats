@@ -451,7 +451,7 @@ D0Edtsel of
 |
 D0Etry0 of
 ( token
-, d0exp
+, d0explst // SMCLN-sequence
 , token(*WITH*)
 , tokenopt(*BAR*), d0clslst, token )
 //

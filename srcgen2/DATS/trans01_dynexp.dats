@@ -916,12 +916,11 @@ optn_cons(tkin) =>
 ) : loc_t // end of [val loc1]
 //
 val d1e1 =
-d1exp
+d1exp_make_node
 (loc1, D1Es1eq(d1es)) where
 {
   val d1es =
-  trans01_d0explst(tenv, d0es)
-}
+  trans01_d0explst(tenv, d0es) }
 //
 val (  ) = tr01env_poplet0(tenv)
 //
@@ -1654,12 +1653,21 @@ val loc0 = d0e0.lctn()
 val-
 D0Etry0
 (tknd
-,d0e1
+,d0es
 ,twth,tbar
 ,d0cs,tend) = d0e0.node()
 //
-val d1e1 =
-trans01_d0exp(tenv, d0e1)
+val
+d1e1 =
+d1exp
+(loc1, D1Es1eq(d1es)) where
+{
+val loc1 =
+(tknd.lctn() + twth.lctn())
+val d1es =
+trans01_d0explst(tenv, d0es)
+}
+//
 val d1cs =
 trans01_d0clslst(tenv, d0cs)
 //

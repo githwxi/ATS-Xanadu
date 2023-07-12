@@ -1513,8 +1513,12 @@ T_TRY() => let
   val tok1 = tok
   val (  ) = buf.skip1()
 //
+(*
   val d0e1 =
     p1_d0exp_app(buf, err)
+*)
+  val d0es =
+  p1_d0expseq_SMCLN(buf, err)
 //
   val tok2 = p1_WITH(buf, err)
 //
@@ -1532,7 +1536,7 @@ in
 ; d0exp_make_node
   ( lres
   , D0Etry0
-    (tok1, d0e1, tok2, tbar, dcls, tend))
+    (tok1, d0es, tok2, tbar, dcls, tend))
 end (*let*) // end-of-[ T_TRY() ]
 //
 (*

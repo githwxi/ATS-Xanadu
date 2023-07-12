@@ -338,11 +338,11 @@ print(dcls,";",topt,";",d0es,";",tend,")"))
 |
 D0Etry0
 (tknd
-,d0e1,twth,tbar,dcls,tend) =>
+,d0es,twth,tbar,dcls,tend) =>
 //
 (
 print
-("D0Etry0(",tknd,";",d0e1,";");
+("D0Etry0(",tknd,";",d0es,";");
 print(twth,";",tbar,";",dcls,";",tend,")"))
 |
 D0Elam0
