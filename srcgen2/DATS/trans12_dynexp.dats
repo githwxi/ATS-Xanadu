@@ -116,6 +116,7 @@ d2exp
 //
 (* ****** ****** *)
 //
+(*
 fun
 my_d2pat_con
 ( loc0: loc_t
@@ -131,7 +132,18 @@ in//let
 if
 (narg > 0)
 then d2p0 else d2pat_dap0(d2p0)
-end (*let*) // end of [my_d2pat_con]
+end(*let*) // end of [my_d2pat_con]
+*)
+//
+fun
+my_d2pat_con
+( loc0: loc_t
+, d2c0: d2con): d2pat =
+(
+  d2pat_dap0(d2p0)) where
+{
+val d2p0 = d2pat_con(loc0, d2c0)
+}(*where*) // end of [my_d2pat_con]
 //
 (* ****** ****** *)
 //
@@ -226,6 +238,7 @@ HX-2022-12-20: for constructing d2exp
 *)
 (* ****** ****** *)
 //
+(*
 fun
 my_d2exp_con
 ( loc0: loc_t
@@ -241,7 +254,18 @@ in//let
 if
 (narg > 0)
 then d2e0 else d2exp_dap0(d2e0)
-end (*let*) // end of [my_d2exp_con]
+end(*let*) // end of [my_d2exp_con]
+*)
+//
+fun
+my_d2exp_con
+( loc0: loc_t
+, d2c0: d2con): d2exp =
+(
+  d2exp_dap0(d2p0)) where
+{
+val d2p0 = d2exp_con(loc0, d2c0)
+}(*where*) // end of [my_d2exp_con]
 //
 (* ****** ****** *)
 //
@@ -667,7 +691,9 @@ let
 val
 drpt = d2rpt_new1(loc0)
 in//let
-d2pat_sym0(loc0, drpt, d1p0, dpis)
+d2pat_dap0
+(
+d2pat_sym0(loc0,drpt,d1p0,dpis))
 end//let
 endlet where // end of [let]
 {

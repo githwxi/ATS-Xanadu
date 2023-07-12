@@ -740,6 +740,8 @@ optn_vt_i0_vx
 (*
 #symload nil with optn_nil
 #symload cons with optn_cons
+#symload nil with optn_vt_nil
+#symload cons with optn_vt_cons
 #symload lnil with optn_vt_nil
 #symload lcons with optn_vt_cons
 *)
@@ -841,6 +843,8 @@ list_vt_cons
 (*
 #symload nil with list_nil
 #symload cons with list_cons
+#symload nil with list_vt_nil
+#symload cons with list_vt_cons
 #symload lnil with list_vt_nil
 #symload lcons with list_vt_cons
 #symload nil_vt with list_vt_nil
@@ -1188,17 +1192,17 @@ strx_vt(*a:vt*) = streax_vt(* a:vt *)
 (*
 #symload nil with strmcon_nil
 #symload cons with strmcon_cons
+#symload nil with strmcon_vt_nil
+#symload cons with strmcon_vt_cons
 #symload lnil with strmcon_vt_nil
 #symload lcons with strmcon_vt_cons
 #symload nil_vt with strmcon_vt_nil
 #symload cons_vt with strmcon_vt_cons
 *)
 (*
-#symload nil with strxcon_nil
 #symload cons with strxcon_cons
-#symload lnil with strxcon_vt_nil
+#symload cons with strxcon_vt_cons
 #symload lcons with strxcon_vt_cons
-#symload nil_vt with strxcon_vt_nil
 #symload cons_vt with strxcon_vt_cons
 *)
 //
@@ -1239,6 +1243,8 @@ streaq_vt
 (*
 #symload nil with strqcon_nil
 #symload cons with strqcon_cons
+#symload nil with strqcon_vt_nil
+#symload cons with strqcon_vt_cons
 #symload lnil with strqcon_vt_nil
 #symload lcons with strqcon_vt_cons
 #symload nil_vt with strqcon_vt_nil
