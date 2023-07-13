@@ -762,9 +762,10 @@ loc0 = d1p0.lctn()
 val
 drpt = d2rpt_new1(loc0)
 in//let
+d2pat_dap0//argless nullarity
 (
-d2pat_make_node
-(loc0, D2Pcons(drpt, d2cs)))
+  d2pat_make_node
+  (loc0, D2Pcons(drpt, d2cs)))
 end(*let*)//end-of-[f0_id0_d2con]
 //
 and
@@ -1395,6 +1396,7 @@ optn_vt_cons(ditm) =>
 (
 case+ ditm of
 |D2ITMcon(d2cs) =>
+d2pat_dap0//argless nullarity
 (
   d2pat_cons(dpat.lctn(), d2cs))
 |
