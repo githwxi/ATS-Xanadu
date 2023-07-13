@@ -759,7 +759,7 @@ else
 let
 val
 loc0 = d1p0.lctn() in//let
-  d2pat_cons(loc0, d2cs) end
+  d2pat_cons(loc0, d2cs) end//let
 //(*let*) // end of [f0_id0_d2con]
 //
 and

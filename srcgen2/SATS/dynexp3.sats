@@ -256,6 +256,10 @@ d3pat_node =
 |D3Pstr of token
 //
 |D3Pcon of (d2con)
+(*
+|D3Pcons of
+ (d2conlst(*~(1)*))
+*)
 //
 |D3Pbang of (d3pat)
 |D3Pfree of (d3pat)
