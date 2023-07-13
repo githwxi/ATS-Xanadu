@@ -310,6 +310,13 @@ print
 (f3as,";",sres,";",arrw,";",body,")"))
 //
 |
+D3Etry0
+( tknd
+, d3e1, dcls) =>
+(print("D3Etry0(")
+;print( tknd, ";",d3e1, ";",dcls,")"))
+//
+|
 D3Eaddr
 (   d3e1   ) =>
 print("D3Eaddr(",d3e1,")") // left-val

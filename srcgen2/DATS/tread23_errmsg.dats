@@ -299,6 +299,15 @@ val () =
 d3explst_fpemsg(out, d3es) endlet
 //
 |
+D3Etry0
+(tknd,d3e1,dcls) =>
+let
+val () =
+d3exp_fpemsg(out, d3e1)
+val () =
+d3clslst_fpemsg(out, dcls) endlet
+//
+|
 D3Eaddr d3e1 =>
 let
 val () = d3exp_fpemsg(out , d3e1)
