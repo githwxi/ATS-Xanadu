@@ -1581,6 +1581,8 @@ D1Es2eq _ => f0_s2eq(env0, d1e0)
 |D1Elam0 _ => f0_lam0(env0, d1e0)
 |D1Efix0 _ => f0_fix0(env0, d1e0)
 //
+|D1Etry0 _ => f0_try0(env0, d1e0)
+//
 |
 D1Ewhere _ => f0_where(env0, d1e0)
 //
@@ -2894,6 +2896,31 @@ loc0,
 D2Efix0
 (tknd, d2v1, f2as, sres, arrw, body))
 end (*let*) // end of [f0_fix0(env0,d1e0)]
+
+(* ****** ****** *)
+
+fun
+f0_try0
+( env0:
+! tr12env
+, d1e0: d1exp): d2exp =
+let
+//
+val loc0 = d1e0.lctn()
+//
+val-
+D1Etry0
+( tknd
+, d1e1, dcls) = d1e0.node()
+//
+val
+d2e1 = trans12_d1exp(env0, d1e1)
+val
+dcls = trans12_d1clslst(env0, dcls)
+//
+in//let
+d2exp(loc0, D2Etry0(tknd, d2e1, dcls))
+end (*let*) // end of [f0_try0(env0,d1e0)]
 
 (* ****** ****** *)
 

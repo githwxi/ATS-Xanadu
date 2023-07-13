@@ -724,6 +724,8 @@ d2e0.node() of
 |D2Elam0 _ => f0_lam0(env0, d2e0)
 |D2Efix0 _ => f0_fix0(env0, d2e0)
 //
+|D2Etry0 _ => f0_try0(env0, d2e0)
+//
 |D2Eaddr _ => f0_addr(env0, d2e0)
 |D2Eeval _ => f0_eval(env0, d2e0)
 //
@@ -1532,7 +1534,7 @@ val loc0 = d2e0.lctn()
 val-
 D2Ecas0
 ( tknd
-, d2e1, d2cs) = d2e0.node()
+, d2e1, dcls) = d2e0.node()
 //
 val d2e1 =
 trans2a_d2exp(env0, d2e1)
@@ -1541,12 +1543,12 @@ val tres = s2typ_new0_x2tp(loc0)
 //
 in//let
 let
-val d2cs =
+val dcls =
 trans2a_d2clslst_tpck1
-(env0, d2cs, targ, tres)
+(env0, dcls, targ, tres)
 in//let
   d2exp_make_styp_node
-  (loc0,tres,D2Ecas0(tknd,d2e1,d2cs))
+  (loc0,tres,D2Ecas0(tknd,d2e1,dcls))
 end (*let*)
 end (*let*) // end of [f0_cas0(env0,...)]
 //
@@ -1781,6 +1783,36 @@ val (  ) = prerrln
 *)
 //
 } (*where*) // end of [f0_fix0(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_try0
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Etry0
+( tknd
+, d2e1, dcls) = d2e0.node()
+//
+val d2e1 =
+trans2a_d2exp(env0, d2e1)
+//
+val targ =
+the_s2typ_excptn((*void*))
+val tres = d2e1.styp((*0*))
+val dcls =
+trans2a_d2clslst_tpck1
+( env0 , dcls , targ , tres )
+//
+in//let
+d2exp_make_styp_node
+(loc0, tres, D2Etry0(tknd, d2e1, dcls))
+end (*let*) // end of [f0_try0(env0,...)]
 //
 (* ****** ****** *)
 //
