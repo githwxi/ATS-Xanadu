@@ -192,8 +192,6 @@ print("D2Ps00(",str,")")
 //
 |D2Pcon(d2c) =>
 print("D2Pcon(",d2c,")")
-|D2Pcons(d2cs) =>
-print("D2Pcons(",d2cs,")")
 //
 |D2Pbang(d2p1) =>
 print("D2Pbang(",d2p1,")")
@@ -211,6 +209,12 @@ print
 ( "D2Psym0("
 , drpt,";",d1p1,";",dpis,")" )
 *)
+//
+|
+D2Pcons
+(drpt, d2cs) =>
+print
+("D2Pcons(",drpt,";",d2cs,")")
 //
 |
 D2Psapp

@@ -170,14 +170,14 @@ d2p0.node() of
 //
 |D2Pcon _ => f0_con(env0, d2p0)
 //
-|D2Pcons _ => f0_cons(env0, d2p0)
-//
 |D2Pbang _ => f0_bang(env0, d2p0)
 |D2Pfree _ => f0_free(env0, d2p0)
 //
 (*
 |D2Psym0 _ => f0_sym0(env0, d2p0)
 *)
+//
+|D2Pcons _ => f0_cons(env0, d2p0)
 //
 |D2Pdap0 _ => f0_dap0(env0, d2p0)
 |D2Pdapp _ => f0_dapp(env0, d2p0)
@@ -417,6 +417,32 @@ d2pat_make_styp_node
 (loc0, t2p0, D2Psym0(drpt,d1p1,d2is))
 end (*let*) // end of [f0_sym0(env0,...)]
 *)
+//
+(* ****** ****** *)
+//
+fun
+f0_cons
+( env0:
+! tr2aenv
+, d2p0: d2pat): d2pat =
+let
+//
+val loc0 = d2p0.lctn()
+//
+val-
+D2Pcons
+(drpt, d2cs) = d2p0.node()
+//
+in//let
+//
+d2pat_make_styp_node
+( loc0
+, t2p0
+, D2Pcons(drpt, d2cs)) where
+{
+  val t2p0 = s2typ_new0_x2tp(loc0) }
+//
+end (*let*) // end of [f0_cons(env0,...)]
 //
 (* ****** ****** *)
 //

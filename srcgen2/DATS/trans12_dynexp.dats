@@ -758,9 +758,14 @@ end // then
 else
 let
 val
-loc0 = d1p0.lctn() in//let
-  d2pat_cons(loc0, d2cs) end//let
-//(*let*) // end of [f0_id0_d2con]
+loc0 = d1p0.lctn()
+val
+drpt = d2rpt_new1(loc0)
+in//let
+(
+d2pat_make_node
+(loc0, D2Pcons(drpt, d2cs)))
+end(*let*)//end-of-[f0_id0_d2con]
 //
 and
 f0_id0_d2cst
@@ -1381,18 +1386,24 @@ f2envlst_find_d2itm(envs, dpid)
 in//let
 case+ dopt of
 | ~
-optn_vt_nil() => d2pat_none1(dpat)
+optn_vt_nil
+( (*nil*) ) =>
+(
+d2pat_none1(dpat))
 | ~
 optn_vt_cons(ditm) =>
 (
 case+ ditm of
 |D2ITMcon(d2cs) =>
- d2pat_cons(dpat.lctn(), d2cs)
-|_(* else *) => d2pat_none1(dpat)
+(
+  d2pat_cons(dpat.lctn(), d2cs))
+|
+_(*non-D2ITMcon*) => d2pat_none1(dpat)
 )
 end(*let*)//end of [ D1Pid0(dpid) ]
-|
-_(* otherwise *) => d2pat_none1(dpat))
+//
+|_(* otherwise *) => d2pat_none1(dpat))
+//
 }(*where*)//end of [f0_qual0(env0,d1p0)]
 //
 (* ****** ****** *)

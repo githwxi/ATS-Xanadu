@@ -182,6 +182,8 @@ d3pat_make_styp_node
 |D2Psym0 _ => f0_sym0(env0, d2p0)
 *)
 //
+|D2Pcons _ => f0_cons(env0, d2p0)
+//
 |D2Pdapp _ => f0_dapp(env0, d2p0)
 //
 |D2Ptup0 _ => f0_tup0(env0, d2p0)
@@ -287,6 +289,24 @@ in//let
   trans23_d2pat(env0, drpt.dpat())
 end (*let*)//end-of-[f0_sym0(env0,d2p0)]
 *)
+//
+(* ****** ****** *)
+//
+fun
+f0_cons
+( env0:
+! tr23env
+, d2p0: d2pat): d3pat =
+let
+val loc0 = d2p0.lctn()
+//
+val-
+D2Pcons
+( drpt, d2cs) = d2p0.node()
+//
+in//let
+  trans23_d2pat(env0, drpt.dpat())
+end (*let*)//end-of-[f0_cons(env0,d2p0)]
 //
 (* ****** ****** *)
 //
