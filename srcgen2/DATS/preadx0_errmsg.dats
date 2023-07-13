@@ -1150,11 +1150,11 @@ D0Edtsel
 //
 |
 D0Etry0
-(tknd,d0e1,twth
+(tknd,d0es,twth
 ,tbar,dcls,tend) =>
 let
 val () =
-  d0exp_fpemsg(out, d0e1)
+  d0explst_fpemsg(out, d0es)
 val () =
   token_WITH_fpemsg(out, twth)
 val () =

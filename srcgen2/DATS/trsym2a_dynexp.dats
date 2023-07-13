@@ -62,6 +62,7 @@ _(*TRSYM2A*) = "./trsym2a.dats"
 #symload dexp with d2rxp_set_dexp
 (* ****** ****** *)
 //
+(*
 fun
 d2pat_make_dpis
 ( loc0
@@ -161,6 +162,7 @@ prerrln("d2pat_make_dpis: dpis = ", dpis)
 (* ****** ****** *)
 //
 } (*where*) // end of [d2pat_make_dpis(...)]
+*)
 //
 (* ****** ****** *)
 //
@@ -300,8 +302,10 @@ d2p0.node() of
 |D2Pstr _ => ()
 *)
 //
+(*
 |D2Psym0 _ =>
 f0_sym0(env0, d2p0)
+*)
 //
 |
 D2Pbang(d2p1) =>
@@ -332,6 +336,7 @@ endlet where
 //
 (* ****** ****** *)
 //
+(*
 fun
 f0_sym0
 ( env0:
@@ -464,6 +469,7 @@ list_cons(dpi1, auxtake(pmax, dpis)))
 (* ****** ****** *)
 //
 } (*where*) // end of [f0_sym0(env0, d2p0)]
+*)
 //
 (* ****** ****** *)
 //

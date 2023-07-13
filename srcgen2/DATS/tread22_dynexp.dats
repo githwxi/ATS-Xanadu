@@ -841,7 +841,9 @@ d2p0.node() of
 |D2Pbang _ => f0_bang(d2p0, err)
 |D2Pfree _ => f0_free(d2p0, err)
 //
+(*
 |D2Psym0 _ => f0_sym0(d2p0, err)
+*)
 //
 |D2Pdapp _ => f0_dapp(d2p0, err)
 //
@@ -905,6 +907,7 @@ end (*let*) // end of [f0_free(d2p,err)]
 //
 (* ****** ****** *)
 //
+(*
 fun
 f0_sym0
 (d2p: d2pat
@@ -945,6 +948,7 @@ end (*let*) // end of [else]
 end (*let*) // end of [non-D2Pnone0]
 //
 end (*let*) // end of [f0_sym0(d2p,err)]
+*)
 //
 (* ****** ****** *)
 //

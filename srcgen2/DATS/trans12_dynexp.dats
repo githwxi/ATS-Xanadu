@@ -118,6 +118,91 @@ d2exp
 //
 (*
 fun
+d2itm_conq
+(ditm: d2itm): (bool) =
+(
+case+ ditm of
+|
+D2ITMcon _ => true | _ => false
+)(*case+*)//end of [d2itm_conq]
+fun
+d2ptm_conq
+(dptm: d2ptm): (bool) =
+(
+case+ dptm of
+|D2PTMnone(dqid) => false
+|D2PTMsome
+(pval,ditm) => d2itm_conq(ditm))
+//
+fun
+d2ptmlst_conq
+(dpis: d2ptmlst): bool =
+list_exists(dpis) where
+{
+#impltmp
+exists$test<d2ptm> = d2ptm_conq }
+*)
+//
+(* ****** ****** *)
+//
+fun
+d2ptm_uncon
+(dptm: d2ptm): d2conlst =
+(
+case+ dptm of
+|D2PTMnone
+ (  dqid  ) => list_nil(*void*)
+|D2PTMsome
+(pval,ditm) => d2itm_uncon(ditm))
+//
+and
+d2itm_uncon
+(ditm: d2itm): d2conlst =
+(
+case+ ditm of
+|D2ITMcon(d2cs) => d2cs
+|_(*non-D2ITMcon*) => list_nil())
+//
+fun
+d2ptmlst_uncon
+( dpis
+: d2ptmlst): d2conlst =
+let
+//
+fun
+auxmain
+( dptm
+: d2ptm
+, dpis
+: d2ptmlst): d2conlst =
+let
+//
+val d2cs = d2ptm_uncon(dptm)
+//
+in//let
+case+ dpis of
+|list_nil
+((*void*)) => d2cs
+|list_cons
+(dptm, dpis) =>
+list_append
+(d2cs, auxmain(dptm, dpis)) endlet
+//
+in//let
+//
+case+ dpis of
+|
+list_nil
+((*void*)) => list_nil()
+|list_cons
+(dptm, dpis) => auxmain(dptm, dpis)
+//
+end//end-of-let[d2ptmlst_uncon(dpis)]
+//
+(* ****** ****** *)
+//
+(*
+fun
 my_d2pat_con
 ( loc0: loc_t
 , d2c0: d2con): d2pat =
@@ -614,6 +699,7 @@ f0_id0_d2itm
 , d2i1: d2itm): d2pat =
 (
 case- d2i1 of
+//
 |
 D2ITMvar(d2v1) =>
 f0_id0_d2var(env0, d1p0, d2v1)
@@ -626,7 +712,18 @@ f0_id0_d2cst(env0, d1p0, d2cs)
 //
 |
 D2ITMsym(_, dpis) =>
+let
+val
+d2cs =
+d2ptmlst_uncon(dpis)
+in
+case+ d2cs of
+|
+list_nil() =>
 f0_id0_d2sym(env0, d1p0, dpis)
+|list_cons _ =>
+f0_id0_d2con(env0, d1p0, d2cs)
+end (*let*) // end of [D2ITMsym(...)]
 //
 ) (*case+*) // end of [f0_id0_d2itm(...)]
 //
@@ -685,25 +782,9 @@ f0_id0_d2sym
 , d1p0: d1pat
 , dpis: d2ptmlst): d2pat =
 let
-val loc0 = d1p0.lctn()
-in//let
-let
-val
-drpt = d2rpt_new1(loc0)
-in//let
-d2pat_dap0
-(
-d2pat_sym0(loc0,drpt,d1p0,dpis))
-end//let
-endlet where // end of [let]
-{
-(*
-val (  ) =
-prerrln("f0_id0_d2sym: d1p0 = ", d1p0)
-val (  ) =
-prerrln("f0_id0_d2sym: dpis = ", dpis)
-*)
-} (*where*) // end of [f0_id0_d2sym(...)]
+val-
+D1Pid0(sym1) = d1p0.node() in
+f0_id0_d1sym(env0, d1p0, sym1) end
 //
 (* ****** ****** *)
 //
