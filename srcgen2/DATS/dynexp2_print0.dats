@@ -445,6 +445,13 @@ print
 (f2as,";",sres,";",arrw,";",body,")"))
 //
 |
+D2Etry0
+( tknd
+, d2e1, dcls) =>
+(print("D2Etry0(")
+;print( tknd, ";",d2e1, ";",dcls,")"))
+//
+|
 D2Eaddr(d2e1) =>
 (
   print("D2Eaddr(", d2e1, ")"))

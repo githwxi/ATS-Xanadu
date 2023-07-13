@@ -29,7 +29,7 @@ foreach_to_forall
 , foreach
 : myforeach(xs, x0)): myforall(xs, x0) =
 try
-foreach(xs, x0); true with FalseExn() => false
+  foreach(xs); true with FalseExn() => false
 end
 
 (* ****** ****** *)

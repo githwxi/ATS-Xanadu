@@ -708,6 +708,17 @@ val () =
   trsym2a_d2exp(env0, dexp)) end
 //
 |
+D2Etry0
+( tknd
+, d2e1, dcls) =>
+let
+val () =
+trsym2a_d2exp(env0, d2e1)//val
+val () =
+trsym2a_d2clslst(env0, dcls)//val
+endlet // end-[D2Etry0(tknd,...)]
+//
+|
 D2Eaddr
 (   d2e1   ) =>
 let
