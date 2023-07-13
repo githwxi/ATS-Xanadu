@@ -238,6 +238,11 @@ match2a_d2ptm
 (* ****** ****** *)
 //
 fun
+match2a_d2conlst
+( env0:
+! tr2aenv, d2cs:d2conlst, t2p0:s2typ): d2conlst
+//
+fun
 match2a_d2ptmlst
 ( env0:
 ! tr2aenv, dpis:d2ptmlst, t2p0:s2typ): d2ptmlst

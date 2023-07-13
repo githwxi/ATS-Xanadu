@@ -283,6 +283,35 @@ end (*let*) // end of [D2PTMsome(...)]
 (* ****** ****** *)
 
 #implfun
+match2a_d2conlst
+(env0, d2cs, t2p2) =
+(
+case+ d2cs of
+|
+list_nil() =>
+list_nil(*void*)
+|
+list_cons(d2c1, d2cs) =>
+let
+val dopt =
+match2a_d2con(env0, d2c1, t2p2)
+in//let
+if
+dopt // true or false
+then
+list_cons
+(
+d2c1,
+match2a_d2conlst(env0, d2cs, t2p2))
+else
+(
+match2a_d2conlst(env0, d2cs, t2p2))
+end (*let*) // end of [list_cons(d2c1,d2cs)]
+) (*case+*) // end of [match2a_d2conlst(env0,...)]
+
+(* ****** ****** *)
+
+#implfun
 match2a_d2ptmlst
 (env0, dpis, t2p2) =
 (

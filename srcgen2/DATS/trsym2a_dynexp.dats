@@ -75,10 +75,12 @@ d2pat_make_dpis
 (
 case+ dpis of
 |
-list_nil() =>
+list_nil
+((*void*)) =>
 f0_else(loc0, dpis, t2p1)
 |
-list_cons(dpi1, dps2) =>
+list_cons
+(dpi1, dps2) =>
 (
 case+ dps2 of
 |list_nil() =>
@@ -108,7 +110,7 @@ val
 d2p1 =
 d2pat_var(loc0, d2v1)
 in//let
-d2p1.styp(t2p1); d2p1 end
+(d2p1.styp(t2p1); d2p1) end
 |D2ITMcon(d2cs) =>
 let
 val
@@ -213,7 +215,7 @@ val
 d2e1 =
 d2exp_var(loc0, d2v1)
 in//let
-d2e1.styp(t2p1); d2e1 end
+(d2e1.styp(t2p1); d2e1) end
 |D2ITMcon(d2cs) =>
 let
 val
@@ -295,16 +297,15 @@ d2p0.node() of
 |D2Pvar _ => ()
 //
 (*
+//
 |D2Pint _ => ()
 |D2Pbtf _ => ()
 |D2Pchr _ => ()
 |D2Pflt _ => ()
 |D2Pstr _ => ()
-*)
 //
-(*
-|D2Psym0 _ =>
-f0_sym0(env0, d2p0)
+|D2Pcon _ => ()
+//
 *)
 //
 |
@@ -318,14 +319,20 @@ let
 val () =
 trsym2a_d2pat(env0, d2p1) endlet
 //
+(*
+|D2Psym0 _ => f0_sym0(env0, d2p0)
+*)
+//
+|D2Pcons _ => f0_cons(env0, d2p0)
+//
 |
 D2Pdapp
 (d2f0,npf1,d2ps) =>
 let
 val () =
-trsym2a_d2pat(env0, d2f0)
+  trsym2a_d2pat(env0, d2f0)
 val () =
-trsym2a_d2patlst(env0, d2ps) end
+  trsym2a_d2patlst(env0, d2ps) end
 //
 |D2Pt2pck _ => f0_t2pck(env0, d2p0)
 //
@@ -470,6 +477,64 @@ list_cons(dpi1, auxtake(pmax, dpis)))
 //
 } (*where*) // end of [f0_sym0(env0, d2p0)]
 *)
+//
+(* ****** ****** *)
+//
+fun
+f0_cons
+( env0:
+! tr2aenv
+, d2p0: d2pat): void =
+let
+//
+val loc0 = d2p0.lctn()
+//
+val-
+D2Pcons
+(drpt, d2cs) = d2p0.node()
+//
+val t2p1 = d2p0.styp((*void*))
+val dpat = drpt.dpat((*void*))
+//
+(*
+val () =
+prerrln
+("trsym2a_d2pat: f0_cons: loc0 = ", loc0)
+val () =
+prerrln
+("trsym2a_d2pat: f0_cons: d2p0 = ", d2p0)
+val () =
+prerrln
+("trsym2a_d2pat: f0_cons: styp = ", t2p1)
+*)
+//
+in//let
+//
+case+
+dpat.node() of
+|
+D2Pnone0() =>
+let
+//
+val d2cs =
+match2a_d2conlst
+(env0, d2cs, t2p1)//val(d2cs)
+//
+val () = prerrln
+("\
+trsym2a_d2pat: \
+f0_cons: d2cs(*matched*) = ", d2cs)
+//
+in//let
+(
+  d2rpt_set_dpat(drpt,dcon)) where
+{
+  val dcon = d2pat_cons(loc0, d2cs) }
+end//end-of-let//end-of-[D2Pnone0(...)]
+| _
+(*otherwise*) => trsym2a_d2pat(env0, dpat)
+//
+end (*let*) // end of [f0_cons(env0, d2p0)]
 //
 (* ****** ****** *)
 //

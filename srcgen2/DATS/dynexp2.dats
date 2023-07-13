@@ -130,30 +130,6 @@ d2pat(loc0, D2Pbtf(sym1)))
 //
 (* ****** ****** *)
 //
-#implfun
-d2pat_con
-(loc0, dcon) =
-(
-d2pat(loc0, D2Pcon(dcon)))
-#implfun
-d2pat_cons
-(loc0, d2cs) =
-(
-case+ d2cs of
-|list_nil() =>
-d2pat
-(loc0, D2Pcons(d2cs))
-|list_cons(d2c1, dcs2) =>
-(
-case+ dcs2 of
-|list_nil() =>
-d2pat(loc0, D2Pcon(d2c1))
-|list_cons _ =>
-d2pat(loc0, D2Pcons(d2cs)))
-)
-//
-(* ****** ****** *)
-//
 (*
 #implfun
 d2pat_sym0
@@ -167,10 +143,51 @@ d2pat_make_node
 (* ****** ****** *)
 //
 #implfun
+d2pat_con
+(loc0, dcon) =
+(
+d2pat(loc0, D2Pcon(dcon)))
+#implfun
+d2pat_cons
+(loc0, d2cs) =
+(
+case+ d2cs of
+//
+|list_nil
+((*nil*)) =>
+let
+val
+drpt = d2rpt_new1(loc0)
+in//let
+d2pat_make_node
+(loc0, D2Pcons(drpt, d2cs))
+end//let
+//
+|list_cons
+(d2c1, dcs2) =>
+(
+case+ dcs2 of
+|list_nil() =>
+d2pat(loc0, D2Pcon(d2c1))
+|list_cons _ =>
+let
+val
+drpt = d2rpt_new1(loc0)
+in//let
+d2pat_make_node
+(loc0, D2Pcons(drpt, d2cs))
+end//let
+) (*end-[list_cons(...)]*)
+) (*case+*)//d2pat_cons(...)
+//
+(* ****** ****** *)
+//
+#implfun
 d2pat_sapp
 (loc0, d2f0, s2vs) =
+(
 d2pat_make_node
-(loc0, D2Psapp(d2f0, s2vs))
+(loc0, D2Psapp(d2f0, s2vs)))
 //
 (* ****** ****** *)
 //

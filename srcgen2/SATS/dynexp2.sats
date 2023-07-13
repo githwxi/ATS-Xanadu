@@ -598,8 +598,6 @@ d2pat_node =
 |D2Ps00 of (strn) // string
 //
 |D2Pcon of (d2con)
-|D2Pcons of
- (d2conlst(*~(1)*))
 //
 |D2Pbang of (d2pat) // !
 |D2Pflat of (d2pat) // @
@@ -610,6 +608,9 @@ d2pat_node =
 ( d2rpt(*ref*)
 , d1pat(*sym*), d2ptmlst)
 *)
+//
+|D2Pcons of
+ (d2rpt, d2conlst(*~(1)*))
 //
 |D2Psapp of
  (d2pat, s2varlst(*sarg*))
