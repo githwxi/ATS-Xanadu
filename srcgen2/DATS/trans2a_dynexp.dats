@@ -170,6 +170,8 @@ d2p0.node() of
 //
 |D2Pcon _ => f0_con(env0, d2p0)
 //
+|D2Pcons _ => f0_cons(env0, d2p0)
+//
 |D2Pbang _ => f0_bang(env0, d2p0)
 |D2Pfree _ => f0_free(env0, d2p0)
 //
