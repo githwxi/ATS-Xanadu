@@ -954,29 +954,32 @@ D2Efix0 of
 //
 |
 D2Etry0 of
-( token(*TRY*)
+( token(*$TRY*)
 , d2exp(*norm*), d2clslst(*handles*))
 //
-| D2Eaddr of d2exp(*left-val*)
-| D2Efold of d2exp(*open-con*)
-| D2Eeval of d2exp(*ptr/lazy*)
-| D2Efree of d2exp(*free-con*)
+|D2Eaddr of (d2exp)//left-val//$addr
+|D2Efold of (d2exp)//open-con//$fold
+|D2Eeval of (d2exp)//eval-fun//$eval
+|D2Efree of (d2exp)//free-fun//$free
 //
 |
 D2Ewhere of
-( d2exp//let(binds)in(scope)end 
-  (*scope*), d2eclist(*binds*) )//whr
+(
+d2exp//let(binds)in(scope)end 
+(*scope*), d2eclist(*binds*) )//whr
 //
 |
 D2Eassgn of
-(d2exp(*l-val*), d2exp(*r-val*))//(:=)
+(d2exp(*l-val*), d2exp(*r-val*))//:=
 //
 |
 D2Ebrget of
-(d2ptmlst(*[]*), d2explst(*arg*))//([])
+(
+d2ptmlst(*[]*), d2explst(*arg*))//[]
 |
 D2Ebrset of
-(d2ptmlst(*[]*), d2explst(*arg*))//([])
+(
+d2ptmlst(*[]*), d2explst(*arg*))//[]
 //
 |
 D2Edtsel of
@@ -984,19 +987,22 @@ D2Edtsel of
 , d2rxp
 , label
 , d2ptmlst
-, sint(*npf*), d2explstopt(*arg*))
+, sint(*npf*), d2explstopt(*arg*) )
 //
 |
 D2Eraise of
-( token(*$RAISE*), d2exp(*lin-exn*))
+(
+token(*$RAISE*), d2exp(*lin-exn*) )
 //
 |
 D2El0azy of // nonlin-lazy-eval
-( d1exp(*$lazy*), d2exp(*non-thunk*))
+(
+d1exp(*$LAZY0*), d2exp(*non-thunk*))
 |
 D2El1azy of // linear-lazy-eval
-( d1exp(*$llazy*)
-, d2exp(*lin-thunk*), d2explst(*frees*))
+(
+d1exp(*$LLAZY*),
+d2exp(*lin-thunk*), d2explst(*frees*))
 //
 |
 D2Eannot of

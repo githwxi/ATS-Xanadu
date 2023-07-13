@@ -498,7 +498,7 @@ d3exp_node =
 //
 |D3Eift0 of
 (d3exp(*cond*)
-,d3expopt(*then*),d3expopt(*else*))
+,d3expopt(*thn*), d3expopt(*els*) )
 //
 |D3Ecas0 of
 ( token(*+/0/-*), d3exp, d3clslst )
@@ -522,31 +522,35 @@ token(*knd*), sint(*npf*), l3d3elst)
 , d2var(*fid*)
 , f3arglst, s2res, f1unarrw, d3exp )
 //
+|D3Etry0 of
+( token(*$TRY*)
+, d3exp(*norm*), d3clslst(*handles*))
+//
 (*
 HX-2023-07-05:
 two attributes of left values
 *)
-|D3Eaddr of (d3exp)//left-val
-|D3Eflat of (d3exp)//left-val
+|D3Eaddr of (d3exp)//left-val-address
+|D3Eflat of (d3exp)//left-val-content
 //
-|D3Efold of (d3exp)//open-con
+|D3Efold of (d3exp)//open-con-folding
 //
-|D3Eeval of (d3exp)//eval-fun
-|D3Efree of (d3exp)//free-con
+|D3Eeval of (d3exp)//eval-builtin-fun
+|D3Efree of (d3exp)//free-builtin-fun
 //
-|D3Edp2tr of (d3exp)//p2tr-eval
-|D3Edl0az of (d3exp)//l0azy-eval
-|D3Edl1az of (d3exp)//l1azy-eval
+|D3Edp2tr of (d3exp)//p2tr-dereference
+|D3Edl0az of (d3exp)//l0azy-eval-thunk
+|D3Edl1az of (d3exp)//l1azy-eval-thunk
 //
 |D3Ewhere of ( d3exp, d3eclist )
 //
 |D3Eassgn of
 ( d3exp(*l-val*), d3exp(*r-val*) )
 //
-|D3Eraise of (token, d3exp(*lin-exn*))
+|D3Eraise of (token, d3exp(*lin-exn*) )
 //
 |D3El0azy of // nonlin-lazy-eval
-( d1exp(*$L0AZY*), d3exp(*non-thunk*))
+( d1exp(*$L0AZY*), d3exp(*non-thunk*) )
 |D3El1azy of // linear-lazy-eval
 ( d1exp(*$LLAZY*)
 , d3exp(*lin-thunk*), d3explst(*frees*))
