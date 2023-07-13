@@ -324,12 +324,17 @@ D2Pdapp
 ( d2f0
 , npf1, d2ps) = d2p0.node()
 //
-val d3f0 =
-  trans23_d2pat(env0, d2f0)
-val d3ps =
-  trans23_d2patlst(env0, d2ps)
+val
+d3f0 =
+trans23_d2pat(env0, d2f0)
+val
+d3f0 = d3pat_sapqize(d3f0)
 //
-val tfun = d3pat_get_styp(d3f0)
+val d3ps =
+trans23_d2patlst(env0, d2ps)
+//
+val tfun = d3f0.styp((*nil*))
+val tfun = s2typ_hnfiz0(tfun)
 //
 val targ =
 (
@@ -741,14 +746,17 @@ D2Edapp
 ( d2f0
 , npf1, d2es) = d2e0.node()
 //
-val d3f0 =
-  trans23_d2exp(env0, d2f0)
-val d3f0 = d3exp_sapqize(d3f0)
+val
+d3f0 =
+trans23_d2exp(env0, d2f0)
+val
+d3f0 = d3exp_sapqize(d3f0)
 //
 val d3es =
-  trans23_d2explst(env0, d2es)
+trans23_d2explst(env0, d2es)
 //
-val tfun = d3exp_get_styp(d3f0)
+val tfun = d3f0.styp((*nil*))
+val tfun = s2typ_hnfiz0(tfun)
 //
 val targ =
 (

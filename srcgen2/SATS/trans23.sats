@@ -319,6 +319,8 @@ d2cst23_tapqize
 (* ****** ****** *)
 //
 fun
+d3pat_sapqize(d3p0: d3pat): d3pat
+fun
 d3exp_sapqize(d3e0: d3exp): d3exp
 //
 (* ****** ****** *)
