@@ -939,21 +939,21 @@ fun
 d0exp_try0_errck
 ( loc: loc_t
 , tknd: token
-, d0e1: d0exp
+, d0es: d0explst
 , twth: token
 , tbar: tokenopt
 , dcls: d0clslst
 , tend: token   ): d0exp =
 let
 val lvl =
-gmax(errvl(d0e1),errvl(dcls))
+gmax(errvl(d0es),errvl(dcls))
 in//let
 d0exp_errck
 ( lvl+1,
   d0exp_make_node
   ( loc
   , D0Etry0
-    (tknd,d0e1,twth,tbar,dcls,tend)) )
+    (tknd,d0es,twth,tbar,dcls,tend)) )
 end (*let*) // end of [d0exp_try0_errck]
 //
 (* ****** ****** *)
@@ -1893,12 +1893,13 @@ val loc = d0e.lctn()
 val-
 D0Etry0
 ( tknd
-, d0e1
+, d0es
 , twth, tbar
 , dcls, tend) = d0e.node()
 //
 val
-d0e1 = preadx0_d0exp(d0e1, err)
+d0es =
+preadx0_d0explst(d0es, err)
 //
 val (  ) =
 (
@@ -1927,7 +1928,7 @@ if
 (err=e00)
 then (d0e) else
 d0exp_try0_errck
-(loc, tknd, d0e1, twth, tbar, dcls, tend)
+(loc, tknd, d0es, twth,tbar, dcls, tend)
 end (*let*) // end of [f0_try0(d0e, err)]
 
 (* ****** ****** *)

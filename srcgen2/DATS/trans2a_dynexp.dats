@@ -173,7 +173,9 @@ d2p0.node() of
 |D2Pbang _ => f0_bang(env0, d2p0)
 |D2Pfree _ => f0_free(env0, d2p0)
 //
+(*
 |D2Psym0 _ => f0_sym0(env0, d2p0)
+*)
 //
 |D2Pdap0 _ => f0_dap0(env0, d2p0)
 |D2Pdapp _ => f0_dapp(env0, d2p0)
@@ -392,6 +394,7 @@ end (*let*) // end of [f0_free(env0,...)]
 //
 (* ****** ****** *)
 //
+(*
 fun
 f0_sym0
 ( env0:
@@ -411,6 +414,7 @@ in//let
 d2pat_make_styp_node
 (loc0, t2p0, D2Psym0(drpt,d1p1,d2is))
 end (*let*) // end of [f0_sym0(env0,...)]
+*)
 //
 (* ****** ****** *)
 //

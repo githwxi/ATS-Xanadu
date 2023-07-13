@@ -178,7 +178,9 @@ d3pat_make_styp_node
 //
 |D2Pcon _ => f0_con(env0, d2p0)
 //
+(*
 |D2Psym0 _ => f0_sym0(env0, d2p0)
+*)
 //
 |D2Pdapp _ => f0_dapp(env0, d2p0)
 //
@@ -267,6 +269,7 @@ end (*let*) // end of [f0_free(env0,...)]
 //
 (* ****** ****** *)
 //
+(*
 fun
 f0_sym0
 ( env0:
@@ -283,6 +286,7 @@ D2Psym0
 in//let
   trans23_d2pat(env0, drpt.dpat())
 end (*let*)//end-of-[f0_sym0(env0,d2p0)]
+*)
 //
 (* ****** ****** *)
 //

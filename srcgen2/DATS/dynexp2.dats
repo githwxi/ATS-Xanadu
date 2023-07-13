@@ -154,6 +154,7 @@ d2pat(loc0, D2Pcons(d2cs)))
 //
 (* ****** ****** *)
 //
+(*
 #implfun
 d2pat_sym0
 (loc0,
@@ -161,6 +162,7 @@ d2pat_sym0
 d2pat_make_node
 ( loc0
 , D2Psym0(drpt,d1e0,dpis))
+*)
 //
 (* ****** ****** *)
 //
