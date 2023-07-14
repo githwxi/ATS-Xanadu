@@ -1333,6 +1333,8 @@ d3e0.node() of
 |D3El2bck _ => f0_l2bck(d3e0, err)
 |D3Et2pck _ => f0_t2pck(d3e0, err)
 //
+|D3Enone0 _ => f0_none0(d3e0, err)
+//
 | _(*otherwise*) =>
 let
 val lvl0 = 1
@@ -2161,6 +2163,15 @@ val loc = d3e.lctn() in
 d3exp_t2pck_errck( loc, d3e1, t2p2 )
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_t2pck(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_none0
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+val-D3Enone0() = d3e.node() in (d3e) end
 //
 (* ****** ****** *)
 //

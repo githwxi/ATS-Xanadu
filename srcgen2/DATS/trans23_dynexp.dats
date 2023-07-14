@@ -593,6 +593,8 @@ d3exp_make_styp_node
 |D2El2bck _ => f0_l2bck(env0, d2e0)
 |D2Et2pck _ => f0_t2pck(env0, d2e0)
 //
+|D2Enone0 _ => f0_none0(env0, d2e0)
+//
 | _(*otherwise*) => d3exp_none1(d2e0)
 //
 endlet where
@@ -1589,6 +1591,18 @@ D2Et2pck
 in//let
 trans23_d2exp_tpck(env0, d2e1, t2p2)
 end (*let*) // end of [f0_t2pck(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_none0
+( env0:
+! tr23env, d2e0: d2exp): d3exp =
+let
+val t2p0 = the_s2typ_void((*0*))
+in//let
+d3exp(d2e0.lctn(), t2p0, D3Enone0(*0*))
+end (*let*) // end of [f0_none0(env0,...)]
 //
 (* ****** ****** *)
 //
