@@ -477,35 +477,13 @@ end (*let*) // end of [d2cst23_tapqize(...)]
 endloc // end of [local(d2con23/d2cst23_tapqize)]
 
 (* ****** ****** *)
-
+//
 #implfun
-d3exp_sapqize
-(    d3e0    ) =
-let
-val loc0 = d3e0.lctn()
-val t2p0 = d3e0.styp()
-in//let
-case+
-t2p0.node() of
-|
-T2Puni0(s2vs, t2p1) =>
-let
+d3pat_sapqize(d3p0) = d3p0
 //
-val svts = list_nil()
-val t2ps = f0_s2vs(s2vs)
-val svts =
-f0_s2vs_t2ps(s2vs, t2ps, svts)
-//
-val t2p1 = s2typ_subst0(t2p1, svts)
-//
-in//let
-(
-d3exp_sapqize
-(d3exp(loc0,t2p1,D3Esapq(d3e0,t2ps))))
-end (*let*) // end of [ T2Puni0(s2vs,t2p1) ]
-|_(* non-T2Puni0 *) => (     d3e0     )
-end where
-{
+(* ****** ****** *)
+
+local
 //
 fun
 f0_s2vs
@@ -551,7 +529,37 @@ val
 svts = list_cons(@(s2v1, t2p1), svts) }
 ) (*case+*) // end of [f0_s2vs_t2ps(...)]
 //
-} (*where*) // end of [ d3exp_sapqize(d3e0) ]
+in//local
+
+#implfun
+d3exp_sapqize
+(    d3e0    ) =
+let
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+in//let
+case+
+t2p0.node() of
+|
+T2Puni0(s2vs, t2p1) =>
+let
+//
+val svts = list_nil()
+val t2ps = f0_s2vs(s2vs)
+val svts =
+f0_s2vs_t2ps(s2vs, t2ps, svts)
+//
+val t2p1 = s2typ_subst0(t2p1, svts)
+//
+in//let
+(
+d3exp_sapqize
+(d3exp(loc0,t2p1,D3Esapq(d3e0,t2ps))))
+end (*let*) // end of [ T2Puni0(s2vs,t2p1) ]
+|_(* non-T2Puni0 *) => (     d3e0     )
+end (*let*) // end of [ d3exp_sapqize(d3e0) ]
+
+end (*local*) // end of [d3pat/d3exp_sapqize]
 
 (* ****** ****** *)
 
