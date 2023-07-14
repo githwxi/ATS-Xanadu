@@ -1205,6 +1205,8 @@ d2e0.node() of
 |D2El2bck _ => f0_l2bck(d2e0, err)
 |D2Et2pck _ => f0_t2pck(d2e0, err)
 //
+|D2Enone0 _ => f0_none0(d2e0, err)
+//
 | _(*otherwise*) =>
 let
 val lvl0 = 1
@@ -1964,9 +1966,20 @@ end (*let*) // end of [f0_t2pck(d2e,err)]
 //
 (* ****** ****** *)
 //
+fun
+f0_none0
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+val-D2Enone0() = d2e.node() in (d2e) end
+//
+(* ****** ****** *)
+//
 (*
 val (  ) =
-prerrln("tread22_d2exp: d2e0 = ", d2e0)
+(
+  prerrln("tread22_d2exp: d2e0 = ", d2e0)
+)
 *)
 //
 (* ****** ****** *)

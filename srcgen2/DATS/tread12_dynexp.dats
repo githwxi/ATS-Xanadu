@@ -1395,6 +1395,8 @@ D2Edtsel _ => f0_dtsel(d2e0, err)
 //
 |D2Eannot _ => f0_annot(d2e0, err)
 //
+|D2Enone0 _ => f0_none0(d2e0, err)
+//
 | _(*otherwise*) =>
 let
 val lvl0 = 1
@@ -2167,9 +2169,20 @@ end (*let*) // end of [f0_annot(d2e,err)]
 //
 (* ****** ****** *)
 //
+fun
+f0_none0
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+val-D2Enone0() = d2e.node() in (d2e) end
+//
+(* ****** ****** *)
+//
 // (*
 val (  ) =
-prerrln("tread12_d2exp: d2e0 = ", d2e0)
+(
+  prerrln("tread12_d2exp: d2e0 = ", d2e0)
+)
 // *)
 //
 (* ****** ****** *)
