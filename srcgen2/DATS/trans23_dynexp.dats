@@ -145,7 +145,10 @@ D2Pvar(d2v) =>
 let
 val
 t2p0 = d2v.styp((*void*))
+val
+t2p0 = s2typ_hnfiz0(t2p0)
 in//let
+d2v.styp(t2p0);
 d3pat_make_styp_node
 (loc0, t2p0, D3Pvar(d2v))
 end//end-of-[D2Pvar(d2v)]
@@ -334,7 +337,9 @@ val d3ps =
 trans23_d2patlst(env0, d2ps)
 //
 val tfun = d3f0.styp((*nil*))
+(*
 val tfun = s2typ_hnfiz0(tfun)
+*)
 //
 val targ =
 (
@@ -756,7 +761,9 @@ val d3es =
 trans23_d2explst(env0, d2es)
 //
 val tfun = d3f0.styp((*nil*))
+(*
 val tfun = s2typ_hnfiz0(tfun)
+*)
 //
 val targ =
 (
@@ -1279,10 +1286,10 @@ d3e1 = trans23_d2exp(env0, d2e1)
 in//let
 //
 let
-val
-t2p1 = d3e1.styp((*0*))
-val
-t2p1 = s2typ_hnfiz0(t2p1)
+val t2p1 = d3e1.styp((*0*))
+(*
+val t2p1 = s2typ_hnfiz0(t2p1)
+*)
 in//let
 //
 if
@@ -1297,8 +1304,7 @@ let
 val-
 list_cons(telt, _) = t2ps
 in//let
-d3exp
-(loc0, telt, D3Edp2tr(d3e1))
+d3exp(loc0, telt, D3Edp2tr(d3e1))
 end
 ) (* end-of-then *)
 else
@@ -1315,8 +1321,7 @@ let
 val-
 list_cons(telt, _) = t2ps
 in//let
-d3exp
-(loc0, telt, D3Edl0az(d3e1))
+d3exp(loc0, telt, D3Edl0az(d3e1))
 end
 )
 else
@@ -1333,8 +1338,7 @@ let
 val-
 list_cons(telt, _) = t2ps
 in//let
-d3exp
-(loc0, telt, D3Edl1az(d3e1))
+d3exp(loc0, telt, D3Edl1az(d3e1))
 end
 )
 else
@@ -1342,7 +1346,8 @@ else
 let
 val t2p0 =
 s2typ_new0_x2tp(loc0) in
-d3exp(loc0, t2p0, D3Eeval(d3e1))
+(
+d3exp(loc0, t2p0, D3Eeval(d3e1)))
 endlet
 ) // else // end-of-[if(isL1AZY)]
 ) // else // end-of-[if(isL0AZY)]
@@ -1542,11 +1547,15 @@ D2El2bck
 //
 val
 d3e1 =
-trans23_d2exp(env0, d2e1)
-//
-val t2p1 =
 (
- s2typ_hnfiz0(d3e1.styp()))
+trans23_d2exp(env0, d2e1))
+//
+val
+t2p1 = d3e1.styp((*void*))
+(*
+val
+t2p1 = s2typ_hnfiz0( t2p1 )
+*)
 //
 val topt =
 s2typ_prjout_opt(t2p1, lab2)
