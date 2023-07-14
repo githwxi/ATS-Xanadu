@@ -1977,9 +1977,7 @@ val-D2Enone0() = d2e.node() in (d2e) end
 //
 (*
 val (  ) =
-(
-  prerrln("tread22_d2exp: d2e0 = ", d2e0)
-)
+(prerrln("tread22_d2exp: d2e0 = ", d2e0))
 *)
 //
 (* ****** ****** *)
