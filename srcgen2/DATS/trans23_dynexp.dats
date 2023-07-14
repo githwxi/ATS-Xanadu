@@ -138,13 +138,15 @@ d2p0.node() of
 //
 |
 D2Pany() =>
+(
 d3pat_make_styp_node
-(loc0, t2p0, D3Pany(*0*))
+( loc0
+, t2p0, D3Pany(*0*)))
 |
 D2Pvar(d2v) =>
 let
 val
-t2p0 = d2v.styp((*void*))
+t2p0 = d2v.styp((*0*))
 val
 t2p0 = s2typ_hnfiz0(t2p0)
 in//let
@@ -476,7 +478,7 @@ trans23_d2pat(env0, d2p1)
 |
 _(*non-D2Pvar*) =>
 trans23_d2pat_tpck(env0, d2p1, t2p2)
-) : d3pat // end of [val d3p1]
+) : d3pat // end of [val(d3p1)]
 //
 in//let
 d3pat_make_styp_node
@@ -829,7 +831,9 @@ val dtup =
   trans23_d2exp(env0, dtup))
 //
 val ttup = dtup.styp()
+(*
 val ttup = s2typ_hnfiz0(ttup)
+*)
 val topt =
 (
   s2typ_prjout_opt(ttup, dlab))
