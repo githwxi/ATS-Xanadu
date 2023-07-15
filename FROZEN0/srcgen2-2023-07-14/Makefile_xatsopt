@@ -1,0 +1,706 @@
+########################################################################
+#
+# For building xatsopt
+#
+########################################################################
+
+AR=ar
+CP=cp
+MV=mv
+CC=gcc
+SED=sed
+CPF=cp -f
+MVF=mv -f
+RMF=rm -f
+WCL=wc -l
+
+######
+#
+XATSOPT=$(XATSHOME)/bin/xatsopt
+#
+######
+all::
+######
+all:: all_sats
+######
+all:: all_dats
+######
+
+######
+#
+# HX: processing SATS-files
+#
+######
+
+######
+all_sats:: \
+xbasics_sats
+xbasics_sats: ; $(XATSOPT) --static SATS/xbasics.sats
+######
+all_sats:: \
+xsynoug_sats
+xsynoug_sats: ; $(XATSOPT) --static SATS/xsynoug.sats
+######
+all_sats:: \
+xerrory_sats
+xerrory_sats: ; $(XATSOPT) --static SATS/xerrory.sats
+######
+all_sats:: \
+xstamp0_sats
+xstamp0_sats: ; $(XATSOPT) --static SATS/xstamp0.sats
+######
+all_sats:: \
+xsymbol_sats
+xsymbol_sats: ; $(XATSOPT) --static SATS/xsymbol.sats
+######
+all_sats:: \
+xlabel0_sats
+xlabel0_sats: ; $(XATSOPT) --static SATS/xlabel0.sats
+######
+all_sats:: \
+filpath_sats
+filpath_sats: ; $(XATSOPT) --static SATS/filpath.sats
+######
+all_sats:: \
+locinfo_sats
+locinfo_sats: ; $(XATSOPT) --static SATS/locinfo.sats
+######
+all_sats:: \
+lexbuf0_sats
+lexbuf0_sats: ; $(XATSOPT) --static SATS/lexbuf0.sats
+######
+all_sats:: \
+lexing0_sats
+lexing0_sats: ; $(XATSOPT) --static SATS/lexing0.sats
+######
+all_sats:: \
+staexp0_sats
+staexp0_sats: ; $(XATSOPT) --static SATS/staexp0.sats
+######
+all_sats:: \
+dynexp0_sats
+dynexp0_sats: ; $(XATSOPT) --static SATS/dynexp0.sats
+######
+all_sats:: \
+parsing_sats
+parsing_sats: ; $(XATSOPT) --static SATS/parsing.sats
+######
+all_sats:: \
+preadx0_sats
+preadx0_sats: ; $(XATSOPT) --static SATS/preadx0.sats
+######
+all_sats:: \
+staexp1_sats
+staexp1_sats: ; $(XATSOPT) --static SATS/staexp1.sats
+######
+all_sats:: \
+dynexp1_sats
+dynexp1_sats: ; $(XATSOPT) --static SATS/dynexp1.sats
+######
+all_sats:: \
+gmacro1_sats
+gmacro1_sats: ; $(XATSOPT) --static SATS/gmacro1.sats
+######
+all_sats:: \
+xsymmap_sats
+xsymmap_sats: ; $(XATSOPT) --static SATS/xsymmap.sats
+######
+all_sats:: \
+xsymenv_sats
+xsymenv_sats: ; $(XATSOPT) --static SATS/xsymenv.sats
+######
+all_sats:: \
+xfixity_sats
+xfixity_sats: ; $(XATSOPT) --static SATS/xfixity.sats
+######
+all_sats:: \
+trans01_sats
+trans01_sats: ; $(XATSOPT) --static SATS/trans01.sats
+######
+all_sats:: \
+tread01_sats
+tread01_sats: ; $(XATSOPT) --static SATS/tread01.sats
+######
+all_sats:: \
+staexp2_sats
+staexp2_sats: ; $(XATSOPT) --static SATS/staexp2.sats
+######
+all_sats:: \
+statyp2_sats
+statyp2_sats: ; $(XATSOPT) --static SATS/statyp2.sats
+######
+all_sats:: \
+dynexp2_sats
+dynexp2_sats: ; $(XATSOPT) --static SATS/dynexp2.sats
+######
+all_sats:: \
+nmspace_sats
+nmspace_sats: ; $(XATSOPT) --static SATS/nmspace.sats
+######
+all_sats:: \
+trans12_sats
+trans12_sats: ; $(XATSOPT) --static SATS/trans12.sats
+######
+all_sats:: \
+tread12_sats
+tread12_sats: ; $(XATSOPT) --static SATS/tread12.sats
+######
+all_sats:: \
+trans2a_sats
+trans2a_sats: ; $(XATSOPT) --static SATS/trans2a.sats
+all_sats:: \
+trsym2a_sats
+trsym2a_sats: ; $(XATSOPT) --static SATS/trsym2a.sats
+######
+all_sats:: \
+tread22_sats
+tread22_sats: ; $(XATSOPT) --static SATS/tread22.sats
+######
+all_sats:: \
+fperr22_sats
+fperr22_sats: ; $(XATSOPT) --static SATS/fperr22.sats
+######
+all_sats:: \
+dynexp3_sats
+dynexp3_sats: ; $(XATSOPT) --static SATS/dynexp3.sats
+######
+all_sats:: \
+trans23_sats
+trans23_sats: ; $(XATSOPT) --static SATS/trans23.sats
+######
+all_sats:: \
+tread23_sats
+tread23_sats: ; $(XATSOPT) --static SATS/tread23.sats
+######
+all_sats:: \
+xglobal_sats
+xglobal_sats: ; $(XATSOPT) --static SATS/xglobal.sats
+######
+
+######
+#
+# HX: processing DATS-files
+#
+######
+
+######
+all_dats:: \
+xbasics_dats
+xbasics_dats: ; $(XATSOPT) --dynamic DATS/xbasics.dats
+######
+all_dats:: \
+xbasics_print0_dats
+xbasics_print0_dats: ; $(XATSOPT) --dynamic DATS/xbasics_print0.dats
+######
+
+######
+all_dats:: \
+xsynoug_dats
+xsynoug_dats: ; $(XATSOPT) --dynamic DATS/xsynoug.dats
+######
+
+######
+all_dats:: \
+xerrory_dats
+xerrory_dats: ; $(XATSOPT) --dynamic DATS/xerrory.dats
+######
+
+######
+all_dats:: \
+xstamp0_dats
+xstamp0_dats: ; $(XATSOPT) --dynamic DATS/xstamp0.dats
+######
+all_dats:: \
+xstamp0_print0_dats
+xstamp0_print0_dats: ; $(XATSOPT) --dynamic DATS/xstamp0_print0.dats
+all_dats:: \
+xstamp0_tmpmap_dats
+xstamp0_tmpmap_dats: ; $(XATSOPT) --dynamic DATS/xstamp0_tmpmap.dats
+######
+
+######
+all_dats:: \
+xsymbol_dats
+xsymbol_dats: ; $(XATSOPT) --dynamic DATS/xsymbol.dats
+######
+all_dats:: \
+xsymbol_inits0_dats
+xsymbol_inits0_dats: ; $(XATSOPT) --dynamic DATS/xsymbol_inits0.dats
+all_dats:: \
+xsymbol_print0_dats
+xsymbol_print0_dats: ; $(XATSOPT) --dynamic DATS/xsymbol_print0.dats
+######
+
+######
+all_dats:: \
+xlabel0_dats
+xlabel0_dats: ; $(XATSOPT) --dynamic DATS/xlabel0.dats
+######
+all_dats:: \
+xlabel0_print0_dats
+xlabel0_print0_dats: ; $(XATSOPT) --dynamic DATS/xlabel0_print0.dats
+######
+
+######
+all_dats:: \
+xglobal_dats
+xglobal_dats: ; $(XATSOPT) --dynamic DATS/xglobal.dats
+######
+
+######
+all_dats:: \
+filpath_dats
+filpath_dats: ; $(XATSOPT) --dynamic DATS/filpath.dats
+######
+all_dats:: \
+filpath_drpth0_dats
+filpath_drpth0_dats: ; $(XATSOPT) --dynamic DATS/filpath_drpth0.dats
+######
+all_dats:: \
+filpath_fpath0_dats
+filpath_fpath0_dats: ; $(XATSOPT) --dynamic DATS/filpath_fpath0.dats
+######
+all_dats:: \
+filpath_print0_dats
+filpath_print0_dats: ; $(XATSOPT) --dynamic DATS/filpath_print0.dats
+######
+all_dats:: \
+filpath_search_dats
+filpath_search_dats: ; $(XATSOPT) --dynamic DATS/filpath_search.dats
+######
+
+######
+all_dats:: \
+locinfo_dats
+locinfo_dats: ; $(XATSOPT) --dynamic DATS/locinfo.dats
+######
+all_dats:: \
+locinfo_print0_dats
+locinfo_print0_dats: ; $(XATSOPT) --dynamic DATS/locinfo_print0.dats
+######
+
+######
+all_dats:: \
+xsymmap_topmap_dats
+xsymmap_topmap_dats: ; $(XATSOPT) --dynamic DATS/xsymmap_topmap.dats
+all_dats:: \
+xsymmap_stkmap_dats
+xsymmap_stkmap_dats: ; $(XATSOPT) --dynamic DATS/xsymmap_stkmap.dats
+######
+
+######
+all_dats:: \
+lexbuf0_dats
+lexbuf0_dats: ; $(XATSOPT) --dynamic DATS/lexbuf0.dats
+######
+all_dats:: \
+lexbuf0_cstrx1_dats
+lexbuf0_cstrx1_dats: ; $(XATSOPT) --dynamic DATS/lexbuf0_cstrx1.dats
+all_dats:: \
+lexbuf0_cstrx2_dats
+lexbuf0_cstrx2_dats: ; $(XATSOPT) --dynamic DATS/lexbuf0_cstrx2.dats
+######
+
+######
+all_dats:: \
+lexing0_dats
+lexing0_dats: ; $(XATSOPT) --dynamic DATS/lexing0.dats
+######
+all_dats:: \
+lexing0_kword0_dats
+lexing0_kword0_dats: ; $(XATSOPT) --dynamic DATS/lexing0_kword0.dats
+######
+all_dats:: \
+lexing0_token0_dats
+lexing0_token0_dats: ; $(XATSOPT) --dynamic DATS/lexing0_token0.dats
+######
+all_dats:: \
+lexing0_print0_dats
+lexing0_print0_dats: ; $(XATSOPT) --dynamic DATS/lexing0_print0.dats
+######
+all_dats:: \
+lexing0_mymap0_dats
+lexing0_mymap0_dats: ; $(XATSOPT) --dynamic DATS/lexing0_mymap0.dats
+######
+all_dats:: \
+lexing0_utils1_dats
+lexing0_utils1_dats: ; $(XATSOPT) --dynamic DATS/lexing0_utils1.dats
+all_dats:: \
+lexing0_utils2_dats
+lexing0_utils2_dats: ; $(XATSOPT) --dynamic DATS/lexing0_utils2.dats
+######
+
+######
+all_dats:: \
+staexp0_dats
+staexp0_dats: ; $(XATSOPT) --dynamic DATS/staexp0.dats
+######
+all_dats:: \
+staexp0_print0_dats
+staexp0_print0_dats: ; $(XATSOPT) --dynamic DATS/staexp0_print0.dats
+######
+
+######
+all_dats:: \
+dynexp0_dats
+dynexp0_dats: ; $(XATSOPT) --dynamic DATS/dynexp0.dats
+######
+all_dats:: \
+dynexp0_print0_dats
+dynexp0_print0_dats: ; $(XATSOPT) --dynamic DATS/dynexp0_print0.dats
+######
+
+######
+all_dats:: \
+parsing_dats
+parsing_dats: ; $(XATSOPT) --dynamic DATS/parsing.dats
+######
+all_dats:: \
+parsing_tokbuf_dats
+parsing_tokbuf_dats: ; $(XATSOPT) --dynamic DATS/parsing_tokbuf.dats
+######
+all_dats:: \
+parsing_basics_dats
+parsing_basics_dats: ; $(XATSOPT) --dynamic DATS/parsing_basics.dats
+######
+all_dats:: \
+parsing_utils0_dats
+parsing_utils0_dats: ; $(XATSOPT) --dynamic DATS/parsing_utils0.dats
+######
+all_dats:: \
+parsing_staexp_dats
+parsing_staexp_dats: ; $(XATSOPT) --dynamic DATS/parsing_staexp.dats
+######
+all_dats:: \
+parsing_dynexp_dats
+parsing_dynexp_dats: ; $(XATSOPT) --dynamic DATS/parsing_dynexp.dats
+######
+all_dats:: \
+parsing_decl00_dats
+parsing_decl00_dats: ; $(XATSOPT) --dynamic DATS/parsing_decl00.dats
+######
+
+######
+all_dats:: \
+preadx0_dats
+preadx0_dats: ; $(XATSOPT) --dynamic DATS/preadx0.dats
+######
+all_dats:: \
+preadx0_staexp_dats
+preadx0_staexp_dats: ; $(XATSOPT) --dynamic DATS/preadx0_staexp.dats
+######
+all_dats:: \
+preadx0_dynexp_dats
+preadx0_dynexp_dats: ; $(XATSOPT) --dynamic DATS/preadx0_dynexp.dats
+######
+all_dats:: \
+preadx0_decl00_dats
+preadx0_decl00_dats: ; $(XATSOPT) --dynamic DATS/preadx0_decl00.dats
+######
+all_dats:: \
+preadx0_errmsg_dats
+preadx0_errmsg_dats: ; $(XATSOPT) --dynamic DATS/preadx0_errmsg.dats
+######
+
+######
+all_dats:: \
+xfixity_dats
+xfixity_dats: ; $(XATSOPT) --dynamic DATS/xfixity.dats
+######
+
+######
+all_dats:: \
+staexp1_dats
+staexp1_dats: ; $(XATSOPT) --dynamic DATS/staexp1.dats
+######
+all_dats:: \
+staexp1_print0_dats
+staexp1_print0_dats: ; $(XATSOPT) --dynamic DATS/staexp1_print0.dats
+######
+
+######
+all_dats:: \
+dynexp1_dats
+dynexp1_dats: ; $(XATSOPT) --dynamic DATS/dynexp1.dats
+######
+all_dats:: \
+dynexp1_print0_dats
+dynexp1_print0_dats: ; $(XATSOPT) --dynamic DATS/dynexp1_print0.dats
+######
+
+######
+all_dats:: \
+gmacro1_dats
+gmacro1_dats: ; $(XATSOPT) --dynamic DATS/gmacro1.dats
+######
+all_dats:: \
+gmacro1_print0_dats
+gmacro1_print0_dats: ; $(XATSOPT) --dynamic DATS/gmacro1_print0.dats
+######
+
+######
+all_dats:: \
+trans01_dats
+trans01_dats: ; $(XATSOPT) --dynamic DATS/trans01.dats
+all_dats:: \
+trans01_myenv0_dats
+trans01_myenv0_dats: ; $(XATSOPT) --dynamic DATS/trans01_myenv0.dats
+all_dats:: \
+trans01_staexp_dats
+trans01_staexp_dats: ; $(XATSOPT) --dynamic DATS/trans01_staexp.dats
+all_dats:: \
+trans01_dynexp_dats
+trans01_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trans01_dynexp.dats
+all_dats:: \
+trans01_decl00_dats
+trans01_decl00_dats: ; $(XATSOPT) --dynamic DATS/trans01_decl00.dats
+######
+
+######
+all_dats:: \
+tread01_dats
+tread01_dats: ; $(XATSOPT) --dynamic DATS/tread01.dats
+all_dats:: \
+tread01_staexp_dats
+tread01_staexp_dats: ; $(XATSOPT) --dynamic DATS/tread01_staexp.dats
+all_dats:: \
+tread01_dynexp_dats
+tread01_dynexp_dats: ; $(XATSOPT) --dynamic DATS/tread01_dynexp.dats
+all_dats:: \
+tread01_decl00_dats
+tread01_decl00_dats: ; $(XATSOPT) --dynamic DATS/tread01_decl00.dats
+all_dats:: \
+tread01_errmsg_dats
+tread01_errmsg_dats: ; $(XATSOPT) --dynamic DATS/tread01_errmsg.dats
+######
+
+######
+all_dats:: \
+staexp2_dats
+staexp2_dats: ; $(XATSOPT) --dynamic DATS/staexp2.dats
+all_dats:: \
+statyp2_dats
+statyp2_dats: ; $(XATSOPT) --dynamic DATS/statyp2.dats
+all_dats:: \
+staexp2_print0_dats
+staexp2_print0_dats: ; $(XATSOPT) --dynamic DATS/staexp2_print0.dats
+all_dats:: \
+statyp2_print0_dats
+statyp2_print0_dats: ; $(XATSOPT) --dynamic DATS/statyp2_print0.dats
+all_dats:: \
+staexp2_inits0_dats
+staexp2_inits0_dats: ; $(XATSOPT) --dynamic DATS/staexp2_inits0.dats
+all_dats:: \
+statyp2_inits0_dats
+statyp2_inits0_dats: ; $(XATSOPT) --dynamic DATS/statyp2_inits0.dats
+all_dats:: \
+staexp2_utils1_dats
+staexp2_utils1_dats: ; $(XATSOPT) --dynamic DATS/staexp2_utils1.dats
+all_dats:: \
+staexp2_utils2_dats
+staexp2_utils2_dats: ; $(XATSOPT) --dynamic DATS/staexp2_utils2.dats
+all_dats:: \
+statyp2_utils1_dats
+statyp2_utils1_dats: ; $(XATSOPT) --dynamic DATS/statyp2_utils1.dats
+all_dats:: \
+statyp2_utils2_dats
+statyp2_utils2_dats: ; $(XATSOPT) --dynamic DATS/statyp2_utils2.dats
+all_dats:: \
+statyp2_tmplib_dats
+statyp2_tmplib_dats: ; $(XATSOPT) --dynamic DATS/statyp2_tmplib.dats
+######
+
+######
+all_dats:: \
+dynexp2_dats
+dynexp2_dats: ; $(XATSOPT) --dynamic DATS/dynexp2.dats
+all_dats:: \
+dynexp2_print0_dats
+dynexp2_print0_dats: ; $(XATSOPT) --dynamic DATS/dynexp2_print0.dats
+all_dats:: \
+dynexp2_utils0_dats
+dynexp2_utils0_dats: ; $(XATSOPT) --dynamic DATS/dynexp2_utils0.dats
+######
+
+######
+all_dats:: \
+nmspace_dats
+nmspace_dats: ; $(XATSOPT) --dynamic DATS/nmspace.dats
+######
+
+######
+all_dats:: \
+trans11_myenv0_dats
+trans11_myenv0_dats: ; $(XATSOPT) --dynamic DATS/trans11_myenv0.dats
+all_dats:: \
+trans11_gmacro_dats
+trans11_gmacro_dats: ; $(XATSOPT) --dynamic DATS/trans11_gmacro.dats
+######
+
+######
+all_dats:: \
+trans12_dats
+trans12_dats: ; $(XATSOPT) --dynamic DATS/trans12.dats
+all_dats:: \
+trans12_myenv0_dats
+trans12_myenv0_dats: ; $(XATSOPT) --dynamic DATS/trans12_myenv0.dats
+all_dats:: \
+trans12_staexp_dats
+trans12_staexp_dats: ; $(XATSOPT) --dynamic DATS/trans12_staexp.dats
+all_dats:: \
+trans12_dynexp_dats
+trans12_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trans12_dynexp.dats
+all_dats:: \
+trans12_decl00_dats
+trans12_decl00_dats: ; $(XATSOPT) --dynamic DATS/trans12_decl00.dats
+all_dats:: \
+tread12_errmsg_dats
+tread12_errmsg_dats: ; $(XATSOPT) --dynamic DATS/tread12_errmsg.dats
+######
+
+######
+all_dats:: \
+tread12_dats
+tread12_dats: ; $(XATSOPT) --dynamic DATS/tread12.dats
+all_dats:: \
+tread12_staexp_dats
+tread12_staexp_dats: ; $(XATSOPT) --dynamic DATS/tread12_staexp.dats
+all_dats:: \
+tread12_dynexp_dats
+tread12_dynexp_dats: ; $(XATSOPT) --dynamic DATS/tread12_dynexp.dats
+all_dats:: \
+tread12_decl00_dats
+tread12_decl00_dats: ; $(XATSOPT) --dynamic DATS/tread12_decl00.dats
+######
+
+######
+all_dats:: \
+trans2a_dats
+trans2a_dats: ; $(XATSOPT) --dynamic DATS/trans2a.dats
+all_dats:: \
+trans2a_myenv0_dats
+trans2a_myenv0_dats: ; $(XATSOPT) --dynamic DATS/trans2a_myenv0.dats
+all_dats:: \
+trans2a_utils0_dats
+trans2a_utils0_dats: ; $(XATSOPT) --dynamic DATS/trans2a_utils0.dats
+all_dats:: \
+trans2a_dynexp_dats
+trans2a_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trans2a_dynexp.dats
+all_dats:: \
+trans2a_decl00_dats
+trans2a_decl00_dats: ; $(XATSOPT) --dynamic DATS/trans2a_decl00.dats
+######
+
+######
+all_dats:: \
+trsym2a_dats
+trsym2a_dats: ; $(XATSOPT) --dynamic DATS/trsym2a.dats
+all_dats:: \
+trsym2a_utils0_dats
+trsym2a_utils0_dats: ; $(XATSOPT) --dynamic DATS/trsym2a_utils0.dats
+all_dats:: \
+trsym2a_dynexp_dats
+trsym2a_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trsym2a_dynexp.dats
+all_dats:: \
+trsym2a_decl00_dats
+trsym2a_decl00_dats: ; $(XATSOPT) --dynamic DATS/trsym2a_decl00.dats
+######
+
+######
+all_dats:: \
+tread22_dats
+tread22_dats: ; $(XATSOPT) --dynamic DATS/tread22.dats
+all_dats:: \
+tread22_dynexp_dats
+tread22_dynexp_dats: ; $(XATSOPT) --dynamic DATS/tread22_dynexp.dats
+all_dats:: \
+tread22_decl00_dats
+tread22_decl00_dats: ; $(XATSOPT) --dynamic DATS/tread22_decl00.dats
+######
+
+all_dats:: \
+fperr22_dats
+fperr22_dats: ; $(XATSOPT) --dynamic DATS/fperr22.dats
+all_dats:: \
+fperr22_dynexp_dats
+fperr22_dynexp_dats: ; $(XATSOPT) --dynamic DATS/fperr22_dynexp.dats
+all_dats:: \
+fperr22_decl00_dats
+fperr22_decl00_dats: ; $(XATSOPT) --dynamic DATS/fperr22_decl00.dats
+######
+
+######
+all_dats:: \
+dynexp3_dats
+dynexp3_dats: ; $(XATSOPT) --dynamic DATS/dynexp3.dats
+all_dats:: \
+dynexp3_print0_dats
+dynexp3_print0_dats: ; $(XATSOPT) --dynamic DATS/dynexp3_print0.dats
+######
+
+######
+all_dats:: \
+trans23_dats
+trans23_dats: ; $(XATSOPT) --dynamic DATS/trans23.dats
+all_dats:: \
+trans23_myenv0_dats
+trans23_myenv0_dats: ; $(XATSOPT) --dynamic DATS/trans23_myenv0.dats
+all_dats:: \
+trans23_utils0_dats
+trans23_utils0_dats: ; $(XATSOPT) --dynamic DATS/trans23_utils0.dats
+all_dats:: \
+trans23_dynexp_dats
+trans23_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trans23_dynexp.dats
+all_dats:: \
+trans23_decl00_dats
+trans23_decl00_dats: ; $(XATSOPT) --dynamic DATS/trans23_decl00.dats
+######
+
+######
+all_dats:: \
+tread23_dats
+tread23_dats: ; $(XATSOPT) --dynamic DATS/tread23.dats
+all_dats:: \
+tread23_dynexp_dats
+tread23_dynexp_dats: ; $(XATSOPT) --dynamic DATS/tread23_dynexp.dats
+all_dats:: \
+tread23_decl00_dats
+tread23_decl00_dats: ; $(XATSOPT) --dynamic DATS/tread23_decl00.dats
+all_dats:: \
+tread23_errmsg_dats
+tread23_errmsg_dats: ; $(XATSOPT) --dynamic DATS/tread23_errmsg.dats
+######
+
+######
+all_dats:: \
+xatsopt_tmplib_dats
+xatsopt_tmplib_dats: ; $(XATSOPT) --dynamic DATS/xatsopt_tmplib.dats
+######
+
+########################################################################
+
+testall:: ; make all > /dev/null
+
+########################################################################
+
+######
+srclines:: ; wc -l \
+HATS/*.hats SATS/*.sats DATS/*.dats
+######
+srclines_sats:: ; wc -l SATS/*.sats
+srclines_dats:: ; wc -l DATS/*.dats
+######
+
+########################################################################
+
+######
+clean:: ; rm -f */SATS/*~
+clean:: ; rm -f */DATS/*~
+clean:: ; rm -f */HATS/*~
+clean:: ; rm -f */DATS/CATS/CC/*~
+clean:: ; rm -f */DATS/CATS/JS/*~
+######
+cleanall:: clean
+######
+
+######################## end of [Makefile] ##############################

@@ -1,0 +1,39 @@
+########################################################################
+#
+# Overview of ATS3/Xanadu Design
+#
+########################################################################
+
+Like 'foot', 'interpreter' is also a measurement unit.
+
+ATS3/Xanadu consists of a series of interpreters and it is expected to
+be further extended with interpreters so as to accommodate more features.
+
+########################################################################
+
+Level-0 syntax:
+staexp0.sats and dynexp0.sats
+
+The level-0 syntax is for parsing (one form of) ATS3 source.
+
+########################################################################
+
+Level-1 syntax:
+staexp1.sats and dynexp1.sats
+
+The level-1 syntax is for resolving operator fixities. In ATS3, there
+is support for prefix, infix, and postfix operators.
+
+########################################################################
+
+Level-2 syntax:
+staexp2.sats and dynexp2.sats
+
+The level-2 syntax is for resolving name bindings of all sorts.
+
+########################################################################
+
+Level-3 syntax:
+only dynexp3.sats for dynamics
+
+########################################################################
