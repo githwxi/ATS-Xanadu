@@ -672,6 +672,12 @@ tread23_errmsg_dats: ; $(XATSOPT) --dynamic DATS/tread23_errmsg.dats
 ######
 
 ######
+all_sats:: \
+xatsopt_sats
+xatsopt_sats: ; $(XATSOPT) --static SATS/xatsopt.sats
+######
+
+######
 all_dats:: \
 xatsopt_tmplib_dats
 xatsopt_tmplib_dats: ; $(XATSOPT) --dynamic DATS/xatsopt_tmplib.dats
