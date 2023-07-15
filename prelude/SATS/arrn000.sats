@@ -213,7 +213,7 @@ fun
 a1ref_get0_at
 {n:i0}
 ( A0:
-  a1ref(a, n), i0: nintlt(n)): ?!a
+  a1ref(a, n), i0: nintlt(n)): (?!a)
 //
 (* ****** ****** *)
 //
