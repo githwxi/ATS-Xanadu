@@ -519,11 +519,18 @@ S2Etopz of (s2exp) // delineared
 S2Ecsts of (s2cstlst)//constants
 //
 |
+S2Earg1 of // HX: knd: 0/1/-1: 
+(sint(*knd*), s2exp) // cbv0/v1/rf
+|
+S2Eatx2 of // HX: bef: 0/1/-1:
+(s2exp(*bef*), s2exp(*aft*))//trans
+//
+|
 S2Eapps of
-(s2exp(*fun*), s2explst)//apply.
+( s2exp(*fun*), s2explst(*arg*) )
 |
 S2Elam0 of
-(s2varlst(*arg*), s2exp)//abstr.
+( s2varlst(*arg*), s2exp(*body*) )
 //
 |
 S2Efun1 of

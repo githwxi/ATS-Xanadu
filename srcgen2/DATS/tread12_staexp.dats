@@ -397,6 +397,33 @@ s2exp_errck
 end (*let*) // end of [s2exp_topz_errck]
 //
 (* ****** ****** *)
+//
+fun
+s2exp_arg1_errck
+(s2t0: sort2
+,knd0: (int)
+,s2e1: s2exp): s2exp =
+let
+val lvl0 = errvl(s2e1) in//let
+s2exp_errck
+( lvl0+1
+, s2exp(s2t0, S2Earg1( knd0, s2e1 )))
+end (*let*) // end of [s2exp_arg1_errck]
+//
+fun
+s2exp_atx2_errck
+(s2t0: sort2
+,s2e1: s2exp
+,s2e2: s2exp): s2exp =
+let
+val lvl0 = errvl(s2e1) in//let
+s2exp_errck
+( lvl0+1
+, s2exp(s2t0, S2Eatx2( s2e1, s2e2 )))
+end (*let*) // end of [s2exp_atx2_errck]
+//
+(* ****** ****** *)
+//
 fun
 s2exp_apps_errck
 (s2t0: sort2
@@ -409,7 +436,9 @@ in//let
 s2exp_errck
 (lvl0+1,s2exp(s2t0,S2Eapps(s2f0,s2es)))
 endlet // end of [s2exp_apps_errck(...)]
+//
 (* ****** ****** *)
+//
 fun
 s2exp_lam0_errck
 ( s2t0: sort2
@@ -421,6 +450,7 @@ val lvl0 = errvl(s2e1) in//let
 s2exp_errck
 (lvl0+1,s2exp(s2t0,S2Elam0(s2vs,s2e1)))
 endlet // end of [s2exp_lam0_errck(...)]
+//
 (* ****** ****** *)
 fun
 s2exp_fun1_errck
@@ -567,6 +597,9 @@ s2e0.node() of
 |S2Etop0 _ => f0_top0(s2e0, err)
 |S2Etopz _ => f0_topz(s2e0, err)
 //
+|S2Earg1 _ => f0_arg1(s2e0, err)
+|S2Eatx2 _ => f0_atx2(s2e0, err)
+//
 |S2Eapps _ => f0_apps(s2e0, err)
 |S2Elam0 _ => f0_lam0(s2e0, err)
 //
@@ -698,6 +731,60 @@ let
 val s2t = s2e.sort() in
   s2exp_topz_errck(s2t, s2e1) end
 end (*let*) // end of [ f0_topz(s2e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_arg1
+(s2e: s2exp
+,err: &sint >> _): s2exp =
+let
+//
+val e00 = err
+//
+val-
+S2Earg1
+(knd0, s2e1) = s2e.node()
+//
+val
+s2e1 = tread12_s2exp(s2e1, err)
+//
+in//let
+if
+(e00 = err)
+then (s2e) else
+let
+val s2t = s2e.sort() in
+  s2exp_arg1_errck(s2t, knd0, s2e1)
+end // end-of-else // end of [ if ]
+end (*let*) // end of [ f0_arg1(s2e,err) ]
+//
+fun
+f0_atx2
+(s2e: s2exp
+,err: &sint >> _): s2exp =
+let
+//
+val e00 = err
+//
+val-
+S2Eatx2
+(s2e1, s2e2) = s2e.node()
+//
+val
+s2e1 = tread12_s2exp(s2e1, err)
+val
+s2e2 = tread12_s2exp(s2e2, err)
+//
+in//let
+if
+(e00 = err)
+then (s2e) else
+let
+val s2t = s2e.sort() in
+  s2exp_atx2_errck(s2t, s2e1, s2e2)
+end // end-of-else // end of [ if ]
+end (*let*) // end of [ f0_atx2(s2e,err) ]
 //
 (* ****** ****** *)
 //

@@ -769,6 +769,31 @@ end (*let*) // end of [f0_l2st(env0, s1e0)]
 (* ****** ****** *)
 //
 fun
+isCBV0
+( s1e0
+: s1exp): bool =
+(
+case+
+s1e0.node() of
+| S1Eid0(sid1) =>
+(
+  sid1 = CBV0_symbl )
+| _(*non-S1Eid0*) => false
+) (*case+*) // end-of-(isCBV0)
+fun
+isCBV1
+( s1e0
+: s1exp): bool =
+(
+case+
+s1e0.node() of
+| S1Eid0(sid1) =>
+(
+  sid1 = CBV1_symbl )
+| _(*non-S1Eid0*) => false
+) (*case+*) // end-of-(isCBV1)
+//
+fun
 isEXTP
 ( s1e0
 : s1exp): bool =
@@ -803,17 +828,19 @@ case+
 s1f0.node() of
 //
 | S1Euni0 _ =>
-  f0_a1pp_uni0( env0, s1e0 )
+(
+  f0_a1pp_uni0(env0, s1e0) )
 | S1Eexi0 _ =>
-  f0_a1pp_exi0( env0, s1e0 )
+(
+  f0_a1pp_exi0(env0, s1e0) )
 //
-(*
 | _ when
   isCBV0(s1f0) =>
   f0_a1pp_cbv0( env0, s1e0 )
 | _ when
   isCBV1(s1f0) =>
   f0_a1pp_cbv1( env0, s1e0 )
+(*
 | _ when
   isCBRF(s1f0) =>
   f0_a1pp_cbrf( env0, s1e0 )
@@ -831,7 +858,7 @@ s1f0.node() of
 | _ when
   isEXTP(s1f0) =>
 (
-  f0_a1pp_extp( env0, s1e0 ))
+  f0_a1pp_extp(env0, s1e0) )
 //
 |
 _(*S1E...*) => f0_a1pp_else(env0, s1e0)
@@ -922,6 +949,50 @@ s2exp_exi0(s2vs, s2ps, s2e1(*body*))
 end (*let*) // end of [f0_a1pp_exi0(...)]
 
 (* ****** ****** *)
+//
+and
+f0_a1pp_cbv0
+( env0:
+! tr12env
+, s1e0: s1exp): s2exp =
+let
+//
+val-
+S1Ea1pp
+(s1f0, s1e1) = s1e0.node()
+//
+val s2e1 =
+trans12_s1exp_impr(env0, s1e1)
+//
+val knd0 = (0)
+val s2t1 = s2e1.sort()
+//
+in//let
+s2exp_make_node(s2t1,S2Earg1(knd0,s2e1))
+end (*let*) // end of [f0_a1pp_cbv0(...)]
+//
+and
+f0_a1pp_cbv1
+( env0:
+! tr12env
+, s1e0: s1exp): s2exp =
+let
+//
+val-
+S1Ea1pp
+(s1f0, s1e1) = s1e0.node()
+//
+val s2e1 =
+trans12_s1exp_impr(env0, s1e1)
+//
+val knd0 = (1)
+val s2t1 = s2e1.sort()
+//
+in//let
+s2exp_make_node(s2t1,S2Earg1(knd0,s2e1))
+end (*let*) // end of [f0_a1pp_cbv1(...)]
+//
+(* ****** ****** *)
 
 and
 f0_a1pp_extp
@@ -942,7 +1013,7 @@ let
 val-
 S1Eid0(sid1) = s1f0.node()
 in//let
-if
+if // if
 (
 sid1 =
 DLR_EXTBOX_symbl)
@@ -1139,18 +1210,6 @@ end (*let*) // end of [f0_a1pp_els2(...)]
 (* ****** ****** *)
 //
 fun
-isAXCG
-( s1e0
-: s1exp): bool =
-(
-case+
-s1e0.node() of
-//
-|S1Eid0(sid1) =>
- (sid1 = AXCG_symbl)
-//
-|_(*non-S1Eid0*) => false )
-fun
 isARRW
 ( s1e0
 : s1exp): bool =
@@ -1161,6 +1220,19 @@ s1e0.node() of
 |S1Eid0(sid1) =>
  (sid1 = MSGT_symbl)
 |S1Earrw(s1es) => (true)
+//
+|_(*non-S1Eid0*) => false )
+//
+fun
+isAXCG
+( s1e0
+: s1exp): bool =
+(
+case+
+s1e0.node() of
+//
+|S1Eid0(sid1) =>
+ (sid1 = AXCG_symbl)
 //
 |_(*non-S1Eid0*) => false )
 //
