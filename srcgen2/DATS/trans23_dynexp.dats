@@ -71,6 +71,7 @@ _(*TRANS23*) = "./trans23.dats"
 (* ****** ****** *)
 #symload lctn with d2var_get_lctn
 #symload styp with d2var_get_styp
+#symload styp with d2var_set_styp
 (* ****** ****** *)
 #symload lctn with d2con_get_lctn
 #symload styp with d2con_get_styp
@@ -146,11 +147,13 @@ d3pat_make_styp_node
 D2Pvar(d2v) =>
 let
 val
-t2p0 = d2v.styp((*0*))
+t2p0 =
+d2v.styp((*0*))
 val
-t2p0 = s2typ_hnfiz0(t2p0)
+t2p0 =
+s2typ_hnfiz0(t2p0)
 in//let
-d2v.styp(t2p0);
+d2v.styp( t2p0 );
 d3pat_make_styp_node
 (loc0, t2p0, D3Pvar(d2v))
 end//end-of-[D2Pvar(d2v)]
