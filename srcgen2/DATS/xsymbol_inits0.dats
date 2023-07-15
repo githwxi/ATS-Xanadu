@@ -76,6 +76,14 @@ HX-2022-10-01: Various symbols
 //
 (* ****** ****** *)
 //
+#implval CBV0_symbl = symbl("~")
+#implval CBV1_symbl = symbl("!")
+#implval CBRF_symbl = symbl("&")
+//
+#implval AXCG_symbl = symbl(">>")
+//
+(* ****** ****** *)
+//
 #implval EQLT_symbl = symbl("=<")
 #implval EQGT_symbl = symbl("=>")
 //
