@@ -328,6 +328,18 @@
 "./../../DATS/xatsopt_utils0.dats"
 (* ****** ****** *)
 //
+val ret =
+the_fxtyenv_pvsload()
+val (  ) =
+prerrln("the_fxtyenv_pvsload() = ", ret)
+//
+val ret =
+the_tr12env_pvsload()
+val (  ) =
+prerrln("the_tr12env_pvsload() = ", ret)
+//
+(* ****** ****** *)
+//
 val dpar =
 d3parsed_of_filsats
 ("./../../../prelude/SATS/arrn000.sats")
