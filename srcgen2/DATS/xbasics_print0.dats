@@ -155,6 +155,8 @@ in//let
 case+ csk of
 // case
 | CSKcas0() => print( "CSKcas0" )
+// case1
+| CSKcas1() => print( "CSKcas1" )
 // case+
 | CSKcasp() => print( "CSKcasp" )
 // case-

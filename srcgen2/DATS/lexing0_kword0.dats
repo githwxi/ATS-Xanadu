@@ -48,7 +48,9 @@ ATS_PACKNAME
 (* ****** ****** *)
 
 val
-T0CASE = T_CASE(CSKcas0)
+T0CAS0 = T_CASE(CSKcas0)
+val
+T0CAS1 = T_CASE(CSKcas1)
 val
 T0CASP = T_CASE(CSKcasp)
 val
@@ -213,8 +215,11 @@ val () = kwdins("else", T_ELSE)
 val () = kwdins("when", T_WHEN)
 val () = kwdins("with", T_WITH)
 //
-val () = kwdins("case", T0CASE)
+val () = kwdins("case", T0CAS0)
 val () = kwdins("scas", T_SCAS)
+//
+val () = kwdins("case0", T0CAS0)
+val () = kwdins("case1", T0CAS1)
 //
 val () = kwdins("endst", T_ENDST)
 //
