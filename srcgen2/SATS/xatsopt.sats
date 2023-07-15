@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2023 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -27,20 +27,28 @@
 
 (* ****** ****** *)
 //
-// Author: Hongwei Xi
-// Start Time: November, 2020
-// Authoremail: gmhwxiATgmailDOTcom
+(*
+Author: Hongwei Xi
+(*
+Sat 15 Jul 2023 12:01:12 AM EDT
+*)
+Authoremail: gmhwxiATgmailDOTcom
+*)
 //
+(* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
 (* ****** ****** *)
 #define
 ATS_PACKNAME
-"ATS3.XANADU.xatsopt"
+"ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-//
-fun
-xatsopt_version
-  (out: FILEref): void
-//
+#staload
+S0E = "./../SATS/staexp0.sats"
+#staload
+S1E = "./../SATS/staexp1.sats"
+#staload
+S2E = "./../SATS/staexp2.sats"
 (* ****** ****** *)
 #staload
 D0E = "./../SATS/dynexp0.sats"
@@ -51,118 +59,45 @@ D2E = "./../SATS/dynexp2.sats"
 #staload
 D3E = "./../SATS/dynexp3.sats"
 (* ****** ****** *)
-#staload
-HIR = "./../SATS/intrep0.sats"
-(* ****** ****** *)
 //
-typedef
+#typedef
 d0parsed = $D0E.d0parsed
-typedef
-d1transd = $D1E.d1transd
-typedef
-d2transd = $D2E.d2transd
-typedef
-d3transd = $D3E.d3transd
+#typedef
+d1parsed = $D1E.d1parsed
+#typedef
+d2parsed = $D2E.d2parsed
+#typedef
+d3parsed = $D3E.d3parsed
 //
-typedef
-h0comped = $HIR.h0comped
-//
+(* ****** ****** *)
+
+#absvwtp
+argv_i0_vx(n:i0) <= p0tr
+#vwtpdef
+argv(n:i0) = argv_i0_vx(n:i0)
+
 (* ****** ****** *)
 //
 fun
-trans01_package
-  (p0kg: d0parsed): d1transd
-//
-(* ****** ****** *)
-//
-fun
-trans02_package
-  (p0kg: d0parsed): d2transd
-//
-(* ****** ****** *)
-//
-fun
-trans03_package
-  (p0kg: d0parsed): d3transd
-//
-(* ****** ****** *)
-//
-(*
-HX-2022-02-19:
-[tread30] is skipped
-[tread3x] is skipped
-*)
-fun
-trs03cmp30_package
-  (p0kg: d0parsed): h0comped
-//
-(* ****** ****** *)
-//
-fun
-the_fixity_load
-(
-  XATSENV: string
-) : void =
-  "ext#libxatsopt_the_fixity_load"
-//
-(* ****** ****** *)
-//
-fun
-the_basics_load
-( XATSENV: string
-, stadyn: int, given: string
-) : void =
-  "ext#libxatsopt_the_basics_load"
-//
-(* ****** ****** *)
-fun
-the_prelude_load
-( XATSENV: string
-, stadyn: int, given: string
-) : void =
-  "ext#libxatsopt_the_prelude_load"
-//
-(* ****** ****** *)
-//
-fun
-the_preludes_load
-(
-  XATSENV: string
-) : void =
-  "ext#libxatsopt_the_preludes_load"
-fun
-the_preludes_load_if
-(
-  XATSENV: string, flag: &int
-) : void =
-  "ext#libxatsopt_the_preludes_load_if"
-//
-(* ****** ****** *)
-//
-(*
-HX-2022-05-20:
-*)
-// This one is already
-// declared in [xglobal.sats]:
-(*
-fun
-the_XATSHOME_get((*void*)): string
-*)
+xatsopt_main0
+{n:int|n >= 1}
+(argc: sint(n), argv: !argv(n)): void
 //
 (* ****** ****** *)
 //
 fun
 echo_argc_argv
   {n:nat}
-( out: FILEref
-, argc: int(n), argv: !argv(n)): void
+( out0: FILEref
+, argc: sint(n), argv: !argv(n)): void
 //
 (* ****** ****** *)
 //
 fun
-xatsopt_main0
-{n:int | n >= 1}(int(n), !argv(n)): void
+xatsopt_version(): string
+fun
+xatsopt_fprint_version(out: FILEref): void
 //
 (* ****** ****** *)
 
-(* end of [xats_xatsopt.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_xatsopt.sats] *)
