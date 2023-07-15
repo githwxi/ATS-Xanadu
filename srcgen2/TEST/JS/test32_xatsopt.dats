@@ -322,141 +322,36 @@
 #include
 "./../../DATS/tread23_errmsg.dats"
 (* ****** ****** *)
-//
-local
-//
-(* ****** ****** *)
-//
-#impltmp
-optn_print$beg<>() = ()
-#impltmp
-optn_print$end<>() = ()
-//
-#impltmp
-list_print$beg<>() = ()
-#impltmp
-list_print$end<>() = ()
-#impltmp
-list_print$sep<>() = print("\n")
-//
-(* ****** ****** *)
-//
-(*
-#impltmp
-g_print<token>(tok) =
-print(tok.lctn(), ":", tok.node())
-*)
-//
-(* ****** ****** *)
-//
-val ret =
-the_fxtyenv_pvsload()
-val (  ) =
-prerrln("the_fxtyenv_pvsload() = ", ret)
-//
-val ret =
-the_tr12env_pvsload()
-val (  ) =
-prerrln("the_tr12env_pvsload() = ", ret)
-//
-(* ****** ****** *)
-in//local
+#include
+"./../../DATS/xatsopt.dats"
+#include
+"./../../DATS/xatsopt_utils0.dats"
 (* ****** ****** *)
 //
 val dpar =
-d0parsed_from_fpath
-(1(*dyn*), "./DATA/mybrckt.dats")
-//
-val
-dpar =
-d0parsed_of_preadx0(dpar)
-//
-val
-(  ) = let
-val out = g_stderr()
-in//let
-d0parsed_fpemsg( out, dpar )
-end // let
-//
-val
-dpar =
-d1parsed_of_trans01(dpar)
-val
-dpar =
-d1parsed_of_tread01(dpar)
-//
-val () =
-let
-val out = g_stderr()
-in//let
-d1parsed_fpemsg( out, dpar ) end // let
-//
-(* ****** ****** *)
-//
-val
-(  ) =
-prerrln
-("d1parsed_from_fpath(\"./DATA/mybrckt.dats\") =\n", dpar)
-//
-(* ****** ****** *)
-//
-val
-dpar =
-d2parsed_of_trans12(dpar)
-val
-dpar =
-d2parsed_of_tread12(dpar)
-//
-val () =
-let
-val out = g_stderr()
-in//let
-d2parsed_fpemsg( out, dpar ) end // let
-//
-(* ****** ****** *)
-//
-val
-dpar =
-d2parsed_of_trans2a(dpar)
-//
-val
-dpar =
-let
-val () =
-d2parsed_at_trsym2a(dpar) in dpar
-end
-//
-(* ****** ****** *)
-//
-val
-dpar = d2parsed_of_tread22(dpar)
-//
+d3parsed_of_filsats
+("./../../../prelude/SATS/arrn000.sats")
 val (  ) =
-fperr22_d2parsed(g_stderr(), dpar)
+d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
 //
-(* ****** ****** *)
-//
-val
-dpar = d3parsed_of_trans23(dpar)
-val
-dpar = d3parsed_of_tread23(dpar)
-//
-val () =
-let
-val out = g_stderr()
-in//let
-d3parsed_fpemsg( out, dpar ) end // let
-//
-(* ****** ****** *)
-//
+val dpar =
+d3parsed_of_filsats
+("./../../../prelude/SATS/bool000.sats")
 val (  ) =
-prerrln
-("d3parsed_from_fpath(\"./DATA/mybrckt.dats\") =\n", dpar)
+d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
 //
-(* ****** ****** *)
+val dpar =
+d3parsed_of_filsats
+("./../../../prelude/SATS/char000.sats")
+val (  ) =
+d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
 //
-endloc (*local*) // end-of-[local]
+val dpar =
+d3parsed_of_filsats
+("./../../../prelude/SATS/gint000.sats")
+val (  ) =
+d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_TEST_JS_test29_tread23.dats] *)
+(* end of [ATS3/XATSOPT_TEST_JS_test32_xatsopt.dats] *)

@@ -683,6 +683,12 @@ xatsopt_tmplib_dats
 xatsopt_tmplib_dats: ; $(XATSOPT) --dynamic DATS/xatsopt_tmplib.dats
 ######
 
+######
+all_dats:: \
+xatsopt_utils0_dats
+xatsopt_utils0_dats: ; $(XATSOPT) --dynamic DATS/xatsopt_utils0.dats
+######
+
 ########################################################################
 
 testall:: ; make all > /dev/null

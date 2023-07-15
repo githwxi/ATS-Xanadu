@@ -1270,11 +1270,15 @@ tread12_a2tdf
   (atdf, err) =
 (
 case- atdf of
+//
 |A2TDFsome
 ((*void*)) => atdf
+//
 (*
-|A2TDFdefn(  sdef  ) => atdf
+|A2TDFdefn
+(  sdef  ) => atdf
 *)
+//
 |A2TDFlteq
 (  sdef  ) =>
 let
@@ -1285,6 +1289,7 @@ in//let
 if
 (err=e00)
 then atdf else A2TDFlteq(sdef) end
+//
 |A2TDFeqeq
 (  sdef  ) =>
 let
@@ -1295,7 +1300,8 @@ in//let
 if
 (err=e00)
 then atdf else A2TDFeqeq(sdef) end
-) (*case+*) // end-of-[tread12_a2tdf(atdf,err)]
+//
+) (*case-*) // end-of-[tread12_a2tdf(atdf,err)]
 //
 (* ****** ****** *)
 //

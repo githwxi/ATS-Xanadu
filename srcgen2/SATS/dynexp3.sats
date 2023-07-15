@@ -628,8 +628,14 @@ d3ecl_node =
  (token(*EXTERN*), d3ecl)
 //
 |D3Clocal0 of
- ( d3eclist(*local-head*)
- , d3eclist(*local-body*))
+( d3eclist(*local-head*)
+, d3eclist(*local-body*))
+//
+|D3Cabsopen of
+(token(*ABSOPEN*), simpl)
+|D3Cabsimpl of
+(token(*ABSIMPL*)
+,simpl(*s2c*),s2exp(*def*))
 //
 |D3Cinclude of
 ( sint(*s/d*)

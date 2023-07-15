@@ -139,9 +139,19 @@ d3ecl_make_node
 (d2cl.lctn(), D3Cd2ecl(d2cl))
 //
 |
+D2Cabstype _ =>
+d3ecl_make_node
+(d2cl.lctn(), D3Cd2ecl(d2cl))
+//
+|
 D2Csymload _ =>
 d3ecl_make_node
 (d2cl.lctn(), D3Cd2ecl(d2cl))
+//
+|
+D2Cabsopen _ => f0_absopen(env0, d2cl)
+|
+D2Cabsimpl _ => f0_absimpl(env0, d2cl)
 //
 |
 D2Cinclude _ => f0_include(env0, d2cl)
@@ -242,6 +252,42 @@ val (  ) = tr23env_locjoin(env0)
 in//let
   d3ecl(loc0, D3Clocal0(head, body))
 end (*let*) // end of [f0_local0(env0,d2cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_absopen
+( env0:
+! tr23env
+, d2cl: d2ecl): d3ecl =
+let
+val
+loc0 = d2cl.lctn()
+val-
+D2Cabsopen
+(tknd, simp) = d2cl.node()
+//
+in//let
+d3ecl(loc0, D3Cabsopen(tknd, simp))
+end (*let*) // end of [f0_absopen(...)]
+//
+fun
+f0_absimpl
+( env0:
+! tr23env
+, d2cl: d2ecl): d3ecl =
+let
+val
+loc0 = d2cl.lctn()
+val-
+D2Cabsimpl
+( tknd
+, simp, sexp) = d2cl.node()
+//
+in//let
+d3ecl_make_node
+(loc0, D3Cabsimpl(tknd, simp, sexp))
+end (*let*) // end of [f0_absimpl(...)]
 //
 (* ****** ****** *)
 //

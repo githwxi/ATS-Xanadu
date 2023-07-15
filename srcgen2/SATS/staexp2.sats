@@ -714,8 +714,13 @@ s2itm_fprint:(FILR,s2itm)->void
 (* ****** ****** *)
 fun
 sort2_intq(s2t0: sort2): bool
+(* ****** ****** *)
 fun
 sort2_funq(s2t0: sort2): bool
+(* ****** ****** *)
+fun
+sort2_boxq(s2t0: sort2): bool
+(* ****** ****** *)
 fun
 sort2_linq(s2t0: sort2): bool
 fun
