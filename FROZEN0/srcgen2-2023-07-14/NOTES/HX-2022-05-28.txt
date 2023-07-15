@@ -1,0 +1,13 @@
+Hi, there,
+
+HX-2022-05-28:
+
+##################################################################
+
+Here is my current plan:
+
+First, I need to implement ATS3 in ATS2. After [xats2cc] (from ATS3
+to C/C++) is functioning, I plan to implement ATS3 in ATS3, fine-tuning
+ATS3. Is this actually a realistic plan?
+
+##################################################################

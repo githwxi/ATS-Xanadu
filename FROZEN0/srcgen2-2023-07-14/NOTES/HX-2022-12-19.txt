@@ -1,0 +1,150 @@
+(*
+Mon 19 Dec 2022 03:55:35 PM EST
+*)
+##################################################################
+
+Hi, there,
+
+HX-2022-12-19:
+
+##################################################################
+
+>>HX-2022-11-20:
+>>By the end of 2022-11-12, I have implemented trans12 and started
+>>working on tread12 and trans2a. Note that trans2a is the phase of
+>>pre-type-inference (performed on level-2 syntax); it is primarily for
+>>resolving overloaded symbols.
+
+It took a lot longer than I had expected. The tread12-implementation has
+now largely been completed. It is time for me to start working on trans2a,
+which is the phase of pre-type-inference (performed on level-2 syntax); it
+is primarily for resolving overloaded symbols.
+
+Cheers!
+
+##################################################################
+wc -l \
+HATS/*.hats SATS/*.sats DATS/*.dats
+     50 HATS/xatsopt_dats.hats
+     23 HATS/xatsopt_sats.hats
+   1372 SATS/dynexp0.sats
+   1191 SATS/dynexp1.sats
+   1281 SATS/dynexp2.sats
+    109 SATS/filpath.sats
+    273 SATS/gmacro1.sats
+    150 SATS/lexbuf0.sats
+    424 SATS/lexing0.sats
+    147 SATS/locinfo.sats
+     68 SATS/nmspace.sats
+    631 SATS/parsing.sats
+    529 SATS/preadx0.sats
+   1006 SATS/staexp0.sats
+    847 SATS/staexp1.sats
+    879 SATS/staexp2.sats
+    158 SATS/statyp2.sats
+    800 SATS/trans01.sats
+   1011 SATS/trans12.sats
+    160 SATS/trans2a.sats
+    513 SATS/tread01.sats
+    376 SATS/tread12.sats
+    269 SATS/xbasics.sats
+     61 SATS/xerrory.sats
+    241 SATS/xfixity.sats
+    216 SATS/xglobal.sats
+     68 SATS/xlabel0.sats
+     91 SATS/xstamp0.sats
+    195 SATS/xsymbol.sats
+     67 SATS/xsymenv.sats
+    222 SATS/xsymmap.sats
+     38 SATS/xsynoug.sats
+    933 DATS/dynexp0.dats
+   1185 DATS/dynexp0_print0.dats
+    959 DATS/dynexp1.dats
+    972 DATS/dynexp1_print0.dats
+   1502 DATS/dynexp2.dats
+    969 DATS/dynexp2_print0.dats
+    268 DATS/filpath.dats
+     70 DATS/filpath_drpth0.dats
+     92 DATS/filpath_fpath0.dats
+     69 DATS/filpath_print0.dats
+    272 DATS/gmacro1.dats
+    114 DATS/gmacro1_print0.dats
+     49 DATS/lexbuf0.dats
+    294 DATS/lexbuf0_cstrx1.dats
+    418 DATS/lexbuf0_cstrx2.dats
+    147 DATS/lexing0.dats
+    376 DATS/lexing0_kword0.dats
+    101 DATS/lexing0_mymap0.dats
+    492 DATS/lexing0_print0.dats
+    112 DATS/lexing0_token0.dats
+   1641 DATS/lexing0_utils1.dats
+   1631 DATS/lexing0_utils2.dats
+    202 DATS/locinfo.dats
+    104 DATS/locinfo_print0.dats
+    348 DATS/nmspace.dats
+     88 DATS/parsing.dats
+    987 DATS/parsing_basics.dats
+   2400 DATS/parsing_decl00.dats
+   2910 DATS/parsing_dynexp.dats
+   2999 DATS/parsing_staexp.dats
+    183 DATS/parsing_tokbuf.dats
+    143 DATS/parsing_utils0.dats
+    164 DATS/preadx0.dats
+   2536 DATS/preadx0_decl00.dats
+   2930 DATS/preadx0_dynexp.dats
+   2810 DATS/preadx0_errmsg.dats
+   1889 DATS/preadx0_staexp.dats
+    835 DATS/staexp0.dats
+    789 DATS/staexp0_print0.dats
+    609 DATS/staexp1.dats
+    667 DATS/staexp1_print0.dats
+   1418 DATS/staexp2.dats
+    216 DATS/staexp2_inits0.dats
+    349 DATS/staexp2_print0.dats
+    693 DATS/staexp2_utils1.dats
+    472 DATS/staexp2_utils2.dats
+    155 DATS/statyp2.dats
+    125 DATS/statyp2_print0.dats
+    403 DATS/trans01.dats
+   1712 DATS/trans01_decl00.dats
+   2158 DATS/trans01_dynexp.dats
+    328 DATS/trans01_myenv0.dats
+   2143 DATS/trans01_staexp.dats
+    776 DATS/trans11_gmacro.dats
+    289 DATS/trans11_myenv0.dats
+    449 DATS/trans12.dats
+   3111 DATS/trans12_decl00.dats
+   2987 DATS/trans12_dynexp.dats
+   1667 DATS/trans12_myenv0.dats
+   1899 DATS/trans12_staexp.dats
+     85 DATS/trans2a.dats
+     68 DATS/trans2a_decl00.dats
+     73 DATS/trans2a_dynexp.dats
+    186 DATS/tread01.dats
+   1685 DATS/tread01_decl00.dats
+   2122 DATS/tread01_dynexp.dats
+   1747 DATS/tread01_errmsg.dats
+   1621 DATS/tread01_staexp.dats
+    190 DATS/tread12.dats
+   1351 DATS/tread12_decl00.dats
+   2287 DATS/tread12_dynexp.dats
+   1360 DATS/tread12_errmsg.dats
+   1093 DATS/tread12_staexp.dats
+   1256 DATS/xatsopt_tmplib.dats
+    172 DATS/xbasics.dats
+    235 DATS/xbasics_print0.dats
+     75 DATS/xerrory.dats
+    778 DATS/xfixity.dats
+   1016 DATS/xglobal.dats
+     55 DATS/xlabel0.dats
+     70 DATS/xlabel0_print0.dats
+    110 DATS/xstamp0.dats
+     60 DATS/xstamp0_print0.dats
+    143 DATS/xsymbol.dats
+    123 DATS/xsymbol_inits0.dats
+    101 DATS/xsymbol_mymap0.dats
+     61 DATS/xsymbol_print0.dats
+    553 DATS/xsymmap_stkmap.dats
+    305 DATS/xsymmap_topmap.dats
+     44 DATS/xsynoug.dats
+  90100 total
