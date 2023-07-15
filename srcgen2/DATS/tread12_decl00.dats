@@ -1071,19 +1071,24 @@ D2Cimplmnt0
 ,tias,fags
 ,sres,body) = dcl.node()
 //
-val sqas =
-  tread12_s2qaglst(sqas, err)
-val tqas =
-  tread12_t2qaglst(tqas, err)
+val
+sqas =
+tread12_s2qaglst(sqas, err)
+val
+tqas =
+tread12_t2qaglst(tqas, err)
 //
-val tias =
-  tread12_t2iaglst(tias, err)
-val fags =
-  tread12_f2arglst(fags, err)
+val
+tias =
+tread12_t2iaglst(tias, err)
+val
+fags =
+tread12_f2arglst(fags, err)
 //
-val sres = tread12_s2res(sres, err)
-//
-val body = tread12_d2exp(body, err)
+val
+sres = tread12_s2res(sres, err)
+val
+body = tread12_d2exp(body, err)
 //
 in//let
 if
@@ -1444,6 +1449,7 @@ wsxp = d2fundcl_get_wsxp(dfun)
 val
 farg =
 tread12_f2arglst(farg, err)
+//
 val
 sres = tread12_s2res(sres,err)
 val
