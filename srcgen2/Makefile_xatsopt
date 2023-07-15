@@ -188,6 +188,10 @@ all_dats:: \
 xbasics_dats
 xbasics_dats: ; $(XATSOPT) --dynamic DATS/xbasics.dats
 ######
+all_dats:: \
+xbasics_print0_dats
+xbasics_print0_dats: ; $(XATSOPT) --dynamic DATS/xbasics_print0.dats
+######
 
 ######
 all_dats:: \

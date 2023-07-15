@@ -198,6 +198,9 @@ datatype
 caskind =
 // case
 | CSKcas0//warning only
+// case1
+// HX: dependent type-checking
+| CSKcas1//stopping with errors
 // case+
 | CSKcasp//stopping with errors
 // case- 
