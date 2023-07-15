@@ -49,6 +49,8 @@ S0E = "./../SATS/staexp0.sats"
 S1E = "./../SATS/staexp1.sats"
 #staload
 S2E = "./../SATS/staexp2.sats"
+#staload
+T2P = "./../SATS/statyp2.sats"
 (* ****** ****** *)
 #staload
 D0E = "./../SATS/dynexp0.sats"
@@ -60,22 +62,18 @@ D2E = "./../SATS/dynexp2.sats"
 D3E = "./../SATS/dynexp3.sats"
 (* ****** ****** *)
 //
-#typedef
-d0parsed = $D0E.d0parsed
-#typedef
-d1parsed = $D1E.d1parsed
-#typedef
-d2parsed = $D2E.d2parsed
-#typedef
-d3parsed = $D3E.d3parsed
-//
-(* ****** ****** *)
-
 #absvwtp
 argv_i0_vx(n:i0) <= p0tr
 #vwtpdef
 argv(n:i0) = argv_i0_vx(n:i0)
-
+//
+(* ****** ****** *)
+//
+#typedef d0parsed = $D0E.d0parsed
+#typedef d1parsed = $D1E.d1parsed
+#typedef d2parsed = $D2E.d2parsed
+#typedef d3parsed = $D3E.d3parsed
+//
 (* ****** ****** *)
 //
 fun
@@ -97,6 +95,26 @@ fun
 xatsopt_version(): string
 fun
 xatsopt_fprint_version(out: FILEref): void
+//
+(* ****** ****** *)
+//
+fun
+d2parsed_of_filsats(fpth: string): d2parsed
+fun
+d2parsed_of_fildats(fpth: string): d2parsed
+//
+fun
+d2parsed_of_trans02(dpar: d0parsed): d2parsed
+//
+(* ****** ****** *)
+//
+fun
+d3parsed_of_filsats(fpth: string): d3parsed
+fun
+d3parsed_of_fildats(fpth: string): d3parsed
+//
+fun
+d3parsed_of_trans03(dpar: d0parsed): d3parsed
 //
 (* ****** ****** *)
 

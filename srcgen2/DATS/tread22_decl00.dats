@@ -279,6 +279,8 @@ d2cl.node() of
 |D2Csortdef _ => d2cl
 |D2Csexpdef _ => d2cl
 //
+|D2Cabstype _ => d2cl
+//
 |D2Csymload _ => d2cl
 //
 |

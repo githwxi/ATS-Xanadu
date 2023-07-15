@@ -526,6 +526,16 @@ D3Clocal0(head, body) =>
 print( "D3Clocal(",head,";",body,")" )
 //
 |
+D3Cabsopen
+( tknd , simp ) =>
+print("D3Cabsopen(",tknd,";",simp,")")
+|
+D3Cabsimpl
+(tknd,simp,sdef) =>
+( print("D3Cabsimpl(")
+; print( tknd,";", simp,";",sdef,")"))
+//
+|
 D3Cinclude
 ( knd0, tknd
 , gsrc, fopt, dopt ) =>

@@ -89,6 +89,27 @@ end (*let*) // end of [ sort2_funq ]
 (* ****** ****** *)
 //
 #implfun
+sort2_boxq
+  (s2t0) =
+(
+case+ s2t0 of
+|
+S2Tbas(s2tb) =>
+(
+ case+ s2tb of
+ |
+ T2Bimpr
+ (knd, _) =>
+ (sortbox(knd) > 0)
+ |
+ _(*non-T2Bimpr*) => false
+)
+| _(*non-S2Tbas*) => false
+) (* case+ *) // end of [sort2_boxq]
+//
+(* ****** ****** *)
+//
+#implfun
 sort2_linq
   (s2t0) =
 (

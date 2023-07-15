@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sun 12 Feb 2023 09:36:32 AM EST
+Sat 15 Jul 2023 10:26:59 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -45,69 +45,77 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/staexp0.sats"
 #staload "./../SATS/staexp1.sats"
-#staload "./../SATS/dynexp1.sats"
-(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
+(* ****** ****** *)
+#staload "./../SATS/dynexp0.sats"
+#staload "./../SATS/dynexp1.sats"
 #staload "./../SATS/dynexp2.sats"
+#staload "./../SATS/dynexp3.sats"
+(* ****** ****** *)
+#staload "./../SATS/parsing.sats"
+(* ****** ****** *)
+#staload "./../SATS/trans01.sats"
+#staload "./../SATS/tread01.sats"
+(* ****** ****** *)
+#staload "./../SATS/trans12.sats"
+#staload "./../SATS/tread12.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans2a.sats"
 #staload "./../SATS/trsym2a.sats"
+#staload "./../SATS/tread22.sats"
 (* ****** ****** *)
-//
-#implfun
-<x0>(*tmp*)
-list_trsym2a_fnp
-( e1, xs, work ) =
-(
-  loop(e1, xs) ) where
-{
-fun
-loop
-( e1: !tr2aenv
-, xs: list(x0)): void =
-(
-case+ xs of
-| list_nil() => ()
-| list_cons(x1, xs) =>
-  (work(e1, x1); loop(e1, xs)))
-}(*where*)//end(list_trsym2a_fnp(e1,xs,work))
-//
+#staload "./../SATS/trans23.sats"
+#staload "./../SATS/tread23.sats"
 (* ****** ****** *)
-//
-#implfun
-<x0>(*tmp*)
-optn_trsym2a_fnp
-( e1, xs, work ) =
-(
-case+ xs of
-| optn_nil() => ()
-| optn_cons(x1) => work(e1, x1)
-)(*case+*)//end(optn_trsym2a_fnp(e1,xs,work))
-//
+#staload "./../SATS/xatsopt.sats"
 (* ****** ****** *)
 
 #implfun
-d2parsed_at_trsym2a
-  (dpar) = let
-//
-val
-parsed =
-d2parsed_get_parsed(dpar)
-//
-val
-env0 = tr2aenv_make_nil()
-//
-val () =
-trsym2a_d2eclistopt(env0, parsed)
-//
-in//let
+d2parsed_of_filsats(fpth) =
+d2parsed_of_trans02
+(d0parsed_from_fpath(0(*sta*), fpth))
+#implfun
+d2parsed_of_fildats(fpth) =
+d2parsed_of_trans02
+(d0parsed_from_fpath(1(*dyn*), fpth))
+
+(* ****** ****** *)
+
+#implfun
+d3parsed_of_filsats(fpth) =
+d3parsed_of_trans03
+(d0parsed_from_fpath(0(*sta*), fpth))
+#implfun
+d3parsed_of_fildats(fpth) =
+d3parsed_of_trans03
+(d0parsed_from_fpath(1(*dyn*), fpth))
+
+(* ****** ****** *)
+
+#implfun
+d2parsed_of_trans02(dpar) =
 let
-val d2cenv = tr2aenv_free_top(env0)
-end
-end (*let*)//end-of-[d2parsed_at_trsym2a(dpar)]
+val dpar = d1parsed_of_trans01(dpar)
+val dpar = d2parsed_of_trans12(dpar)
+val dpar = d2parsed_of_tread12(dpar)
+val dpar = d2parsed_of_trans2a(dpar)
+val (  ) = d2parsed_at_trsym2a(dpar)
+val dpar = d2parsed_of_tread22(dpar) in dpar
+end (*let*) // end of [d2parsed_of_trans02(dpar)]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trsym2a.dats] *)
+#implfun
+d3parsed_of_trans03(dpar) =
+let
+val dpar = d2parsed_of_trans02(dpar)
+val dpar = d3parsed_of_trans23(dpar)
+val dpar = d3parsed_of_tread23(dpar) in dpar
+end (*let*) // end of [d3parsed_of_trans03(dpar)]
+
+(* ****** ****** *)
+
+(* end of [ATS3/XATSOPT_srcgen2_xatsopt.dats] *)
