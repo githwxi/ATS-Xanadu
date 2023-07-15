@@ -287,9 +287,11 @@ tread12_sort2(s2c0.sort(), err)
 }
 ) (*let*) where
 {
+(*
 val () =
 prerrln
 ("tread12_s2cst: s2c0 = ", s2c0)
+*)
 }
 //(* end-of-[tread12_s2cst(...)] *)
 //
@@ -556,10 +558,11 @@ s2e0.node() of
 |S2Echr _ => s2e0
 |S2Estr _ => s2e0
 //
-|S2Ecst _ => s2e0
-|S2Evar _ => s2e0
-//
 |S2Eany _ => s2e0
+//
+|S2Ecst _ => f0_cst(s2e0, err)
+//
+|S2Evar _ => f0_var(s2e0, err)
 //
 |S2Etop0 _ => f0_top0(s2e0, err)
 |S2Etopz _ => f0_topz(s2e0, err)
@@ -593,6 +596,63 @@ endlet // end of [ _(* otherwise *) ]
 //
 (* ****** ****** *)
 //
+//
+fun
+f0_cst
+(s2e: s2exp
+,err: &sint >> _): s2exp =
+let
+//
+val e00 = err
+//
+val-
+S2Ecst(s2c) = s2e.node()
+//
+val
+s2t = s2c.sort((*void*))
+val
+s2t = tread12_sort2(s2t, err)
+//
+in//let
+if
+(e00 = err)
+then (s2e) else
+let
+val lvl = errvl(s2t) in//let
+  s2exp(s2t, S2Eerrck(lvl, s2e))
+end // end-of-else // end-of-[if]
+end (*let*) // end of [ f0_cst(s2e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_var
+(s2e: s2exp
+,err: &sint >> _): s2exp =
+let
+//
+val e00 = err
+//
+val-
+S2Evar(s2v) = s2e.node()
+//
+val
+s2t = s2v.sort((*void*))
+val
+s2t = tread12_sort2(s2t, err)
+//
+in//let
+if
+(e00 = err)
+then (s2e) else
+let
+val lvl = errvl(s2t) in//let
+  s2exp(s2t, S2Eerrck(lvl, s2e))
+end // end-of-else // end-of-[if]
+end (*let*) // end of [ f0_var(s2e,err) ]
+//
+(* ****** ****** *)
+//
 fun
 f0_top0
 (s2e: s2exp
@@ -613,7 +673,7 @@ if
 then (s2e) else
 let
 val s2t = s2e.sort() in
-s2exp_top0_errck(s2t, s2e1) end
+  s2exp_top0_errck(s2t, s2e1) end
 end (*let*) // end of [ f0_top0(s2e,err) ]
 //
 fun
@@ -636,7 +696,7 @@ if
 then (s2e) else
 let
 val s2t = s2e.sort() in
-s2exp_topz_errck(s2t, s2e1) end
+  s2exp_topz_errck(s2t, s2e1) end
 end (*let*) // end of [ f0_topz(s2e,err) ]
 //
 (* ****** ****** *)
@@ -653,8 +713,7 @@ val-
 S2Eapps
 (s2f0, s2es) = s2e.node()
 //
-val
-s2f0 =
+val s2f0 =
 tread12_s2exp(s2f0, err)
 val s2es =
 tread12_s2explst(s2es, err)

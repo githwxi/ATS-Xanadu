@@ -99,7 +99,7 @@ a0ref_make_1val(a): a0ref(a)
 //
 fun
 <a:t0>
-a0ref_get(a0ref(a)): a
+a0ref_get(a0ref(a)): a//non
 fun
 <a:t0>
 a0ref_set(a0ref(a), a): void

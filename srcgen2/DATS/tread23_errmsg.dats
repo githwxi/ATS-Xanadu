@@ -136,6 +136,11 @@ endlet // end of [ D3Pt2pck(_, _) ]
 |
 D3Perrck(_,_) => d3pat_fpemsg(out, d3p)
 //
+(*
+| _
+(*otherwise*) => d3pat_fpemsg(out, d3p)
+*)
+//
 end (*let*) // end-of-(auxmain(out,d3p))
 
 (* ****** ****** *)
@@ -172,7 +177,7 @@ println
 ("TREAD23-ERROR:",loc0,":",d3p0)
 end // let // else // end-of-[if]
 ) (* end-of-[ D3Perrck(lvl,d2p1) ] *)
-| // non-D3Cerrck // ... // ... // ...
+| // non-D3Perrck // ... // ... // ...
 _ (* otherwise *) => (  (* skipped *)  )
 //
 end(*let*)//end-of(d3pat_fpemsg(out,d3p0))
@@ -383,8 +388,10 @@ endlet // end of [ D3Et2pck(_, _) ]
 |
 D3Eerrck(_,_) => d3exp_fpemsg(out, d3e)
 //
-|
-_(*otherwise*) => d3exp_fpemsg(out, d3e)
+(*
+| _
+(*otherwise*) => d3exp_fpemsg(out, d3e)
+*)
 //
 end (*let*) // end-of-(auxmain(out,d3e))
 
@@ -422,7 +429,7 @@ println
 ("TREAD23-ERROR:",loc0,":",d3e0)
 end // let // else // end-of-[if]
 ) (* end-of-[ D3Eerrck(lvl,d2e1) ] *)
-| // non-D3Cerrck // ... // ... // ...
+| // non-D3Eerrck // ... // ... // ...
 _ (* otherwise *) => (  (* skipped *)  )
 //
 end(*let*)//end-of(d3exp_fpemsg(out,d3e0))
@@ -530,6 +537,9 @@ in//let
 //
 case+
 dcl.node() of
+//
+D3Cd2ecl _ => ((*void*))
+//
 |
 D3Cstatic
 (tknd, dcl1) =>
@@ -631,6 +641,11 @@ endlet // end of [ D3Cimplmnt0(...) ]
 |
 D3Cerrck(_,_) => d3ecl_fpemsg(out, dcl)
 //
+(*
+| _
+(*otherwise*) => d3ecl_fpemsg(out, dcl)
+*)
+//
 end (*let*) // end-of-(auxmain(out,dcl))
 
 (* ****** ****** *)
@@ -645,9 +660,11 @@ let
 #impltmp
 g_print$out<>() = out
 //
+(*
 val () =
 prerrln
 ("d3ecl_fpemsg: dcl0 = ", dcl0)
+*)
 //
 in//let
 //
