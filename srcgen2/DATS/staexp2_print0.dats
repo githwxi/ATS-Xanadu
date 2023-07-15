@@ -257,12 +257,14 @@ print("S2Etopz(",s2e,")")
 S2Ecsts(s2cs) =>
 print("S2Ecsts(",s2cs,")")
 //
+(*
 |
 S2Earg1(knd0,s2e1) =>
 print("S2Earg1(",knd0,";",s2e1,")")
 |
 S2Eatx2(s2e1,s2e2) =>
-print("S2Earg1(",s2e1,";",s2e2,")")
+print("S2Eatx2(",s2e1,";",s2e2,")")
+*)
 //
 |
 S2Eapps(s2f0,s2es) =>

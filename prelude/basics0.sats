@@ -417,12 +417,21 @@ ofs(a:vt,l:cs) = offset_vt_cs(a,l)
 (*
 #abssort vwtp // viewtype: linear type
 #abssort vtbx // viewtbox: linear tbox
+*)
 (*
 #abssort vtype // viewtype: linear type
 #abssort vtbox // viewtbox: linear tbox
 #abssort vtflt // viewtflt: linear tflt
 *)
-*)
+//
+(* ****** ****** *)
+//
+#absvwtp
+arg0_vt_vt(a: vt) <= a
+#absvwtp
+arg1_vt_vt(a: vt) <= a
+#sexpdef ~ = arg0_vt_vt
+#sexpdef ! = arg1_vt_vt
 //
 (* ****** ****** *)
 #typedef

@@ -768,6 +768,7 @@ end (*let*) // end of [f0_l2st(env0, s1e0)]
 //
 (* ****** ****** *)
 //
+(*
 fun
 isCBV0
 ( s1e0
@@ -780,6 +781,8 @@ s1e0.node() of
   sid1 = CBV0_symbl )
 | _(*non-S1Eid0*) => false
 ) (*case+*) // end-of-(isCBV0)
+*)
+(*
 fun
 isCBV1
 ( s1e0
@@ -792,6 +795,7 @@ s1e0.node() of
   sid1 = CBV1_symbl )
 | _(*non-S1Eid0*) => false
 ) (*case+*) // end-of-(isCBV1)
+*)
 //
 fun
 isEXTP
@@ -834,13 +838,13 @@ s1f0.node() of
 (
   f0_a1pp_exi0(env0, s1e0) )
 //
+(*
 | _ when
   isCBV0(s1f0) =>
   f0_a1pp_cbv0( env0, s1e0 )
 | _ when
   isCBV1(s1f0) =>
   f0_a1pp_cbv1( env0, s1e0 )
-(*
 | _ when
   isCBRF(s1f0) =>
   f0_a1pp_cbrf( env0, s1e0 )
@@ -950,6 +954,7 @@ end (*let*) // end of [f0_a1pp_exi0(...)]
 
 (* ****** ****** *)
 //
+(*
 and
 f0_a1pp_cbv0
 ( env0:
@@ -970,7 +975,9 @@ val s2t1 = s2e1.sort()
 in//let
 s2exp_make_node(s2t1,S2Earg1(knd0,s2e1))
 end (*let*) // end of [f0_a1pp_cbv0(...)]
+*)
 //
+(*
 and
 f0_a1pp_cbv1
 ( env0:
@@ -991,6 +998,7 @@ val s2t1 = s2e1.sort()
 in//let
 s2exp_make_node(s2t1,S2Earg1(knd0,s2e1))
 end (*let*) // end of [f0_a1pp_cbv1(...)]
+*)
 //
 (* ****** ****** *)
 
