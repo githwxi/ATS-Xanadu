@@ -729,24 +729,39 @@ s2exp_apps_pq
 (loc0, s2f0, s2es) =
 (
 case+ 0 of
+//
 | _ when
   isTOP0(s2f0) =>
   f0_top0(loc0, s2es)
 | _ when
   isTOPZ(s2f0) =>
   f0_topz(loc0, s2es)
-(*
+//
 | _ when
   isCBV0(s2f0) =>
   f0_cbv0(loc0, s2es)
 | _ when
   isCBV1(s2f0) =>
   f0_cbv1(loc0, s2es)
-*)
+//
 | _(*otherwise*) =>
   s2exp_apps(loc0, s2f0, s2es)
+//
 ) where // end-of-[case+]
 {
+//
+fun
+S2Ecbv0
+( s2e1
+: s2exp): s2exp_node =
+(
+  S2Earg1(0(*knd*), s2e1))
+fun
+S2Ecbv1
+( s2e1
+: s2exp): s2exp_node =
+(
+  S2Earg1(1(*knd*), s2e1))
 //
 fun
 isTOP0
@@ -773,9 +788,27 @@ S2Ecst(s2c1) =>
 )
 //
 fun
-isCBV0(s2f0: s2exp): bool = false
+isCBV0
+(s2f0: s2exp): bool =
+(
+case+
+s2f0.node() of
+|
+S2Ecst(s2c1) =>
+(s2c1.name() = CBV0_VT_VT_symbl)
+| _(*non-S2Ecst*) => (  false  )
+)
 fun
-isCBV1(s2f0: s2exp): bool = false
+isCBV1
+(s2f0: s2exp): bool =
+(
+case+
+s2f0.node() of
+|
+S2Ecst(s2c1) =>
+(s2c1.name() = CBV1_VT_VT_symbl)
+| _(*non-S2Ecst*) => (  false  )
+)
 //
 fun
 f0_top0
@@ -818,6 +851,36 @@ else the_sort2_type(*void*)): sort2
 in//let
 s2exp_make_node(s2t0, S2Etopz(s2e1))
 end (*let*) // end of [f0_topz(...)]
+//
+fun
+f0_cbv0
+( loc0: loc_t
+, s2es: s2explst): s2exp =
+let
+val s2e1 =
+(
+case- s2es of
+|
+list_cons(s2e1, _) => s2e1): s2exp
+in//let
+s2exp_make_node
+(s2e1.sort((*void*)), S2Ecbv0(s2e1))
+end (*let*) // end of [f0_cbv0(...)]
+//
+fun
+f0_cbv1
+( loc0: loc_t
+, s2es: s2explst): s2exp =
+let
+val s2e1 =
+(
+case- s2es of
+|
+list_cons(s2e1, _) => s2e1): s2exp
+in//let
+s2exp_make_node
+(s2e1.sort((*void*)), S2Ecbv1(s2e1))
+end (*let*) // end of [f0_cbv1(...)]
 //
 } (*where*) // end of [s2exp_apps_pq(...)]
 
