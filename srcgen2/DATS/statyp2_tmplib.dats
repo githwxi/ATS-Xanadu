@@ -120,6 +120,9 @@ f0_var(e1nv, t2p0, flag)
 |T2Pxtv _ =>
 f0_xtv(e1nv, t2p0, flag)
 //
+|T2Parg1 _ =>
+f0_arg1(e1nv, t2p0, flag)
+//
 |T2Papps _ =>
 f0_apps(e1nv, t2p0, flag)
 //
@@ -227,6 +230,33 @@ end where
 {
   val-T2Pxtv(xtp1) = t2p0.node() }
 //(*where*) // end of [f0_xtv(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_arg1
+( e1nv: !e1nv
+, t2p0: s2typ
+, flag: &sint >> _): s2typ =
+let
+//
+val fval = flag
+//
+val t2p1 =
+s2typ_hnfizx(e1nv, t2p1, flag)
+//
+in//let
+//
+if
+(flag <= fval)
+then t2p0 else
+s2typ_make_node
+(t2p0.sort(), T2Parg1( knd0, t2p1 ))
+//
+end where
+{
+val-T2Parg1(knd0, t2p1) = t2p0.node() }
+//(*where*) // end of [f0_apps(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -1128,6 +1158,11 @@ unify00_l2t2plst
 end (*let*) // end of [f0_trcd(e1nv,...)]
 //
 (* ****** ****** *)
+//
+val
+t2p1 = s2typ_unarg1(t2p1)
+val
+t2p2 = s2typ_unarg1(t2p2)
 //
 val
 t2p1 = s2typ_hnfiz0(e1nv, t2p1)

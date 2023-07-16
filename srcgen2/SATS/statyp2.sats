@@ -267,6 +267,9 @@ s2typ_rcd2
 ,npf1:sint,ltps:l2t2plst): s2typ
 (* ****** ****** *)
 fun
+s2typ_unarg1(t2p0: s2typ): s2typ
+(* ****** ****** *)
+fun
 s2typ_make_node
 (srt:sort2,nod:s2typ_node): s2typ
 #symload s2typ with s2typ_make_node
