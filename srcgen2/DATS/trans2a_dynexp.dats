@@ -168,6 +168,9 @@ d2p0.node() of
 |D2Pbtf _ => f0_btf(env0, d2p0)
 |D2Pb00 _ => f0_b00(env0, d2p0)
 //
+|D2Pstr _ => f0_str(env0, d2p0)
+|D2Ps00 _ => f0_s00(env0, d2p0)
+//
 |D2Pcon _ => f0_con(env0, d2p0)
 //
 |D2Pbang _ => f0_bang(env0, d2p0)
@@ -258,6 +261,38 @@ val loc0 = d2p0.lctn()
 val-
 D2Pb00(btf) = d2p0.node()
 val t2p0 = the_s2typ_bool() }
+//
+(* ****** ****** *)
+//
+fun
+f0_str
+( env0:
+! tr2aenv
+, d2p0: d2pat): d2pat =
+(
+d2pat_make_styp_node
+( loc0
+, t2p0, D2Pstr(tok))) where
+{
+val loc0 = d2p0.lctn()
+val-
+D2Pstr(tok) = d2p0.node()
+val t2p0 = the_s2typ_strn() }
+//
+fun
+f0_s00
+( env0:
+! tr2aenv
+, d2p0: d2pat): d2pat =
+(
+d2pat_make_styp_node
+( loc0
+, t2p0, D2Ps00(str))) where
+{
+val loc0 = d2p0.lctn()
+val-
+D2Ps00(str) = d2p0.node()
+val t2p0 = the_s2typ_strn() }
 //
 (* ****** ****** *)
 //
