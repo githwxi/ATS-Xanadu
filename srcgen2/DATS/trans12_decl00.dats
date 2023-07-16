@@ -299,23 +299,22 @@ let
 //
 val
 opt2 =
-trans12_sort1opt(env0, opt2)
+trans12_sort1opt(env0,opt2)
 //
 val s2t2 =
 (
 case+ opt2 of
-|
-optn_nil() => S2Tnone0()
-|
-optn_cons(s2t2) => (s2t2)
-) : sort2 // end of [val(s2t2)]
+| optn_nil() =>
+( // S2Tnone0()
+  the_sort2_type(*void*) )
+| optn_cons(s2t2) => (s2t2)): sort2
 //
 in//let
 //
 let
 val sid1 = sexpid_sym(tok1)
 in//let
-  s2var_make_idst(sid1, s2t2) end
+  s2var_make_idst(sid1, s2t2) endlet
 //
 end (*let*) // end of [Q1ARGsome(...)]
 ) (*case+*) // end of [trans12_q1arg(...)]
@@ -2413,6 +2412,31 @@ f0_implmnt0_one1
 , d1cl: d1ecl
 , dimp: dimpl): d2ecl =
 let
+//
+val
+loc0 = d1cl.lctn()
+//
+val d2c1 =
+(
+case-
+dimp.node() of
+|DIMPLone1(d2c1) => d2c1)
+//
+val-
+D1Cimplmnt0
+( tknd
+, sqas, tqas
+, dqid
+, tias, f1as
+, sres, dexp) = d1cl.node()
+//
+(*
+val sqas =
+trans12_s1qaglst(env0, sqas)
+val tqas =
+trans12_t1qaglst(env0, tqas)
+*)
+//
 in//let
   f0_implmnt0_all1(env0, d1cl, dimp)
 end (*end*)//end-[f0_implmnt0_one1(env0,...)]
