@@ -162,14 +162,18 @@ the_s2typ_excptn( (*void*) ): s2typ
 datatype
 s2typ_node =
 //
-| T2Pbas of sym_t // type
+|T2Pbas of sym_t // type
 //
-| T2Pcst of s2cst // constant
-| T2Pvar of s2var // variable
+|T2Pcst of s2cst // constant
+|T2Pvar of s2var // variable
 //
-| T2Plft of (s2typ) // left-value
+|T2Plft of (s2typ) // left-value
 //
-| T2Pxtv of (x2t2p) // exist. var.
+|T2Pxtv of (x2t2p) // exist. var.
+//
+|
+T2Parg1 of // HX: knd: 0/1/-1: 
+(sint(*knd*), s2typ) // cbv0/v1/rf
 //
 |
 T2Papps of

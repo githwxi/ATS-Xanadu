@@ -393,19 +393,32 @@ s2typ_make_node
 |S2Etopz
 (  s2e1  ) => f0_impr(s2e1)
 //
-(*
 |S2Earg1
-(knd0, s2e1) => f0_impr(s2e1)
+(knd0, s2e1) =>
+let
+val t2p1 = f0_impr(s2e1)
+val s2t1 = t2p1.sort((*0*))
+in//let
+s2typ_make_node
+( s2t1, T2Parg1(knd0, t2p1) )
+end (*let*) // end of [S2Earg1]
+//
+(*
 |S2Eatx2
-(s2e1, s2e2) => f0_impr(s2e1)
+(s2e1, s2e2) =>
+let
+val
+t2p1 = f0_impr(s2e1) in t2p1
+end (*let*) // end of [S2Eatx2]
 *)
 //
 |
 S2Eapps
 (s2f0, s2es) =>
 s2typ_make_node
-( s2t0
-, T2Papps(s2f0, t2ps)) where
+(
+  s2t0, T2Papps(s2f0, t2ps)
+) where
 {
 val s2f0 = f0_impr(s2f0)
 val t2ps = s2explst_stpize(s2es) }

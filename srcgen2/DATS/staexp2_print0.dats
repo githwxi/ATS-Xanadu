@@ -56,8 +56,12 @@ _(*?*) = "./lexing0_print0.dats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 (* ****** ****** *)
+#symload node with s2arg_get_node
+(* ****** ****** *)
 #symload node with s2exp_get_node
 #symload sort with s2exp_get_sort
+(* ****** ****** *)
+#symload node with l2s2e_get_node
 (* ****** ****** *)
 
 #implfun
@@ -169,6 +173,25 @@ end (*let*) // end of [sort2_fprint(out, s2t0)]
 (* ****** ****** *)
 
 #implfun
+s2arg_fprint
+(out, s2a0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+s2a0.node() of
+|S2Avar(s2v1) =>
+print("S2Avar(", s2v1, ")")
+|S2Atck(s2v1, s2t2) =>
+print("S2Atck(",s2v1,";",s2t2,")")
+//
+end (*let*) // end of [s2arg_fprint(out, s2a0)]
+//
+(* ****** ****** *)
+
+#implfun
 s2tex_fprint
 (out, s2tx) =
 let
@@ -257,10 +280,10 @@ print("S2Etopz(",s2e,")")
 S2Ecsts(s2cs) =>
 print("S2Ecsts(",s2cs,")")
 //
-(*
 |
 S2Earg1(knd0,s2e1) =>
 print("S2Earg1(",knd0,";",s2e1,")")
+(*
 |
 S2Eatx2(s2e1,s2e2) =>
 print("S2Eatx2(",s2e1,";",s2e2,")")

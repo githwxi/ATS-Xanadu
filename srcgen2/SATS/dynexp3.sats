@@ -109,6 +109,8 @@ D2E = "./dynexp2.sats"
 #typedef s2cst = $S2E.s2cst
 #typedef s2var = $S2E.s2var
 (* ****** ****** *)
+#typedef s2arg = $S2E.s2arg
+(* ****** ****** *)
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
@@ -159,6 +161,8 @@ D2E = "./dynexp2.sats"
 //
 (* ****** ****** *)
 #typedef s2varlst = list(s2var)
+(* ****** ****** *)
+#typedef s2arglst = list(s2arg)
 (* ****** ****** *)
 #typedef s2explst = list(s2exp)
 #typedef s2expopt = optn(s2exp)

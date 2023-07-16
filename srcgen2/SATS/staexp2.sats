@@ -487,17 +487,24 @@ s2arg_node =
 fun
 s2arg_fprint:(FILR,s2arg)->void
 (* ****** ****** *)
+(*
 fun
 s2arg_get_lctn:(s2arg)->loc_t
+#symload lctn with s2arg_get_lctn
+*)
+(* ****** ****** *)
 fun
 s2arg_get_sort:(s2arg)->sort2
 fun
 s2arg_get_node(s2arg):s2arg_node
 (* ****** ****** *)
-#symload lctn with s2arg_get_lctn
 #symload sort with s2arg_get_sort
 #symload node with s2arg_get_node
 (* ****** ****** *)
+fun
+s2arg_make_node
+(s2t0:sort2,node:s2arg_node): s2arg
+#symload s2arg with s2arg_make_node
 //
 (*
 HX:
@@ -542,10 +549,10 @@ S2Etopz of (s2exp) // delineared
 | // HX: unresolved list of
 S2Ecsts of (s2cstlst)//constants
 //
-(*
 |
 S2Earg1 of // HX: knd: 0/1/-1: 
 (sint(*knd*), s2exp) // cbv0/v1/rf
+(*
 |
 S2Eatx2 of // HX: bef: 0/1/-1:
 (s2exp(*bef*), s2exp(*aft*))//trans
