@@ -106,6 +106,9 @@ itm with s2lab_get_itm
 #typedef s2cst = s2cst_tbox
 #typedef s2var = s2var_tbox
 (* ****** ****** *)
+#abstbox s2arg_tbox // ptr
+#typedef s2arg = s2arg_tbox
+(* ****** ****** *)
 #abstbox s2exp_tbox // ptr
 #abstbox s2hnf_tbox // ptr
 #abstbox s2typ_tbox // ptr
@@ -138,6 +141,8 @@ s1lab(x0:t0)=$S1E.s1lab(x0)
 (* ****** ****** *)
 #typedef s2varlst = list(s2var)
 #typedef s2varopt = optn(s2var)
+(* ****** ****** *)
+#typedef s2arglst = list(s2arg)
 (* ****** ****** *)
 #typedef s2explst = list(s2exp)
 #typedef s2expopt = optn(s2exp)
@@ -395,32 +400,29 @@ s2var_make_idst
 //
 (* ****** ****** *)
 //
-#symload s2cst with s2cst_make_idst
-#symload s2var with s2var_make_idst
+#symload
+s2cst with s2cst_make_idst//#symld
+#symload
+s2var with s2var_make_idst//#symld
 //
 (* ****** ****** *)
 //
 fun
-the_s2cst_p1tr0
-(   (*void*)   ): ( s2cst )
+the_s2cst_p1tr0:((*void*)) -> s2cst
 fun
-the_s2cst_p2tr0
-(   (*void*)   ): ( s2cst )
+the_s2cst_p2tr0:((*void*)) -> s2cst
 //
 (* ****** ****** *)
 //
 fun
-the_s2cst_l0azy0
-(   (*void*)   ): ( s2cst )
+the_s2cst_l0azy0:((*void*)) -> s2cst
 fun
-the_s2cst_l1azy0
-(   (*void*)   ): ( s2cst )
+the_s2cst_l1azy0:((*void*)) -> s2cst
 //
 (* ****** ****** *)
 //
 fun
-the_s2cst_excptn
-(   (*void*)   ): ( s2cst )
+the_s2cst_excptn:((*void*)) -> s2cst
 //
 (* ****** ****** *)
 //
@@ -474,6 +476,27 @@ the_s2varmap_insert_any(s2var): void
 fun
 the_s2varmap_search_opt(sym_t): s2varopt_vt
 *)
+(* ****** ****** *)
+//
+datatype
+s2arg_node =
+|S2Avar of s2var
+|S2Atck of (s2var, sort2)
+//
+(* ****** ****** *)
+fun
+s2arg_fprint:(FILR,s2arg)->void
+(* ****** ****** *)
+fun
+s2arg_get_lctn:(s2arg)->loc_t
+fun
+s2arg_get_sort:(s2arg)->sort2
+fun
+s2arg_get_node(s2arg):s2arg_node
+(* ****** ****** *)
+#symload lctn with s2arg_get_lctn
+#symload sort with s2arg_get_sort
+#symload node with s2arg_get_node
 (* ****** ****** *)
 //
 (*
