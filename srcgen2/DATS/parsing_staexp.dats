@@ -283,7 +283,7 @@ i0dnt_some(tok) where
   val () = buf.skip1()
 }
 |
-T_IDENT_sym _ =>
+T_IDSYM _ =>
 i0dnt_some(tok) where
 {
   val () = buf.skip1()
@@ -429,11 +429,11 @@ val e00 = err
 val tok = buf.getk0()
 val tnd = tok.tnode()
 //
-in
+in//let
 //
 case+ tnd of
 |
-T_IDENT_alp _ =>
+T_IDALP _ =>
 i0dnt_some(tok) where
 {
   val () = buf.skip1()
@@ -553,7 +553,7 @@ val ( ) = buf.skip1()
 val id0 = p1_s0eid(buf, err)
 in
 (err := e00; S0QIDsome(tok, id0))
-end // end of [T_IDENT_qual]
+end // end of [T_IDQUA]
 //
 |
 _(*non-T_IDQUA*) =>
@@ -746,7 +746,7 @@ val ( ) = buf.skip1()
 val id0 = p1_d0eid(buf, err)
 in
 (err := e00; D0QIDsome(tok, id0))
-end // end of [T_IDENT_qual]
+end // end of [T_IDQUA]
 //
 |
 _(*non-T_IDQUA*) =>
