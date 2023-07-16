@@ -69,6 +69,14 @@ ATS_PACKNAME
 #symload lctn with s1exp_get_lctn
 #symload node with s1exp_get_node
 (* ****** ****** *)
+#symload sort with s2var_get_sort
+(* ****** ****** *)
+#symload sort with s2cst_get_sort
+#symload name with s2cst_get_name
+(* ****** ****** *)
+#symload sort with s2exp_get_sort
+#symload node with s2exp_get_node
+(* ****** ****** *)
 //
 local
 val
@@ -602,6 +610,19 @@ in//local
 (* ****** ****** *)
 //
 #implfun
+s2exp_a2pp
+( loc0
+, s2f0, s2e1, s2e2) =
+(
+s2exp_apps
+(loc0, s2f0, s2es)) where
+{
+val s2es = list_pair(s2e1, s2e2)
+} (*where*) // end of [s2exp_a2pp(...)]
+//
+(* ****** ****** *)
+//
+#implfun
 s2exp_apps
 (loc0, s2f0, s2es) = let
 //
@@ -670,16 +691,102 @@ end (*loca*) // end of [local(s2exp_apps)]
 (* ****** ****** *)
 //
 #implfun
-s2exp_a2pp
-( loc0
-, s2f0, s2e1, s2e2) =
+s2exp_apps_pq
+(loc0, s2f0, s2es) =
 (
-s2exp_apps
-(loc0, s2f0, s2es)) where
+case+ 0 of
+| _ when
+  isTOP0(s2f0) =>
+  f0_top0(loc0, s2es)
+| _ when
+  isTOPZ(s2f0) =>
+  f0_topz(loc0, s2es)
+(*
+| _ when
+  isCBV0(s2f0) =>
+  f0_cbv0(loc0, s2es)
+| _ when
+  isCBV1(s2f0) =>
+  f0_cbv1(loc0, s2es)
+*)
+| _(*otherwise*) =>
+  s2exp_apps(loc0, s2f0, s2es)
+) where // end-of-[case+]
 {
-val s2es = list_pair(s2e1, s2e2)
-} (*where*) // end of [s2exp_a2pp(...)]
 //
+fun
+isTOP0
+(s2f0: s2exp): bool =
+(
+case+
+s2f0.node() of
+|
+S2Ecst(s2c1) =>
+(s2c1.name() = TOP0_VT_T0_symbl)
+| _(*non-S2Ecst*) => (  false  )
+//
+)
+fun
+isTOPZ
+(s2f0: s2exp): bool =
+(
+case+
+s2f0.node() of
+|
+S2Ecst(s2c1) =>
+(s2c1.name() = TOPZ_VT_T0_symbl)
+| _(*non-S2Ecst*) => (  false  )
+)
+//
+fun
+isCBV0(s2f0: s2exp): bool = false
+fun
+isCBV1(s2f0: s2exp): bool = false
+//
+fun
+f0_top0
+( loc0: loc_t
+, s2es: s2explst): s2exp =
+let
+val s2e1 =
+(
+case- s2es of
+|
+list_cons(s2e1, _) => s2e1): s2exp
+val s2t0 =
+(
+if
+sort2_boxq
+(s2e1.sort())
+then the_sort2_tbox(*void*)
+else the_sort2_type(*void*)): sort2
+in//let
+s2exp_make_node(s2t0, S2Etop0(s2e1))
+end (*let*) // end of [f0_top0(...)]
+//
+fun
+f0_topz
+( loc0: loc_t
+, s2es: s2explst): s2exp =
+let
+val s2e1 =
+(
+case- s2es of
+|
+list_cons(s2e1, _) => s2e1): s2exp
+val s2t0 =
+(
+if
+sort2_boxq
+(s2e1.sort())
+then the_sort2_tbox(*void*)
+else the_sort2_type(*void*)): sort2
+in//let
+s2exp_make_node(s2t0, S2Etopz(s2e1))
+end (*let*) // end of [f0_topz(...)]
+//
+} (*where*) // end of [s2exp_apps_pq(...)]
+
 (* ****** ****** *)
 
 #implfun

@@ -146,5 +146,15 @@ HX-2022-10-01: Various symbols
 #implval L1AZY_VTBX_symbl = symbl("lazy_vt_vx")
 //
 (* ****** ****** *)
+//
+#implval CBV0_VT_VT_symbl = symbl("cbv0_vt_vt")
+#implval CBV1_VT_VT_symbl = symbl("cbv1_vt_vt")
+//
+(* ****** ****** *)
+//
+#implval TOP0_VT_T0_symbl = symbl("top0_vt_t0")
+#implval TOPZ_VT_T0_symbl = symbl("topz_vt_t0")
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xsymbol_inits0.dats] *)
