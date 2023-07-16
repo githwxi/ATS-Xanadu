@@ -857,8 +857,8 @@ s1f0.node() of
 | _ when
   isTOP1(s1f0) =>
   f0_a1pp_top1( env0, s1e0 )
-//
 *)
+//
 | _ when
   isEXTP(s1f0) =>
 (

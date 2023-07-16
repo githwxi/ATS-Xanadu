@@ -71,6 +71,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload sort with s2var_get_sort
 #symload sort with s2cst_get_sort
+(* ****** ****** *)
+#symload node with s2typ_get_node
 #symload sort with s2typ_get_sort
 (* ****** ****** *)
 #implfun
@@ -219,7 +221,7 @@ s2typ_make_node
 (s2t0,T2Ptrcd(tknd,npf1,ltps))
 end // end of [s2typ_tup1(...)]
 //
-endloc // end of [local(s2typ_tup0/tup1)]
+endloc//end of [local(s2typ_tup0/tup1)]
 //
 (* ****** ****** *)
 //
@@ -264,6 +266,17 @@ in//let
 end (*let*) // end of [s2typ_s2exp(s2e0)]
 //
 (* ****** ****** *)
+//
+#implfun
+s2typ_unarg1(t2p0) =
+(
+case+
+t2p0.node() of
+|T2Parg1
+(knd0, t2p1) => t2p1 | _ => t2p0
+) (*case+*) // end of [s2typ_unarg1(t2p0)]
+//
+(* ****** ****** *)
 
 local
 //
@@ -295,7 +308,7 @@ end (*let*) // end of [s2typ_get_node]
 s2typ_make_node
 ( s2t0 , node ) = S2TYP(s2t0, node)
 //
-endloc (*local*) // end of [local(s2typ)]
+end (*local*) // end of [local(s2typ_tbox)]
 //
 (* ****** ****** *)
 //
