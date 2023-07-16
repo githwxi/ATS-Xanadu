@@ -73,6 +73,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload sort with s2cst_get_sort
 #symload name with s2cst_get_name
+#symload sexp with s2cst_get_sexp
 (* ****** ****** *)
 #symload sort with s2exp_get_sort
 #symload node with s2exp_get_node
@@ -764,51 +765,52 @@ S2Ecbv1
   S2Earg1(1(*knd*), s2e1))
 //
 fun
-isTOP0
-(s2f0: s2exp): bool =
+f1_test
+( s2f0: s2exp
+, name: sym_t): bool =
 (
 case+
 s2f0.node() of
 |
 S2Ecst(s2c1) =>
-(s2c1.name() = TOP0_VT_T0_symbl)
-| _(*non-S2Ecst*) => (  false  )
-//
+let
+val
+opt1 = s2c1.sexp()
+in//let
+case+ opt1 of
+| ~optn_vt_nil() =>
+(
+ name =
+ s2cst_get_name(s2c1)
 )
+| ~optn_vt_cons(s2f0) =>
+(
+  f1_test(s2f0, name)) end
+//let//end-of-[S2Ecst(...)]
+|_(* non-S2Ecst *) => (false)
+)(*case+*)//end-of-[f1_test(...)]
+//
+fun
+isTOP0
+(s2f0: s2exp): bool =
+f1_test
+(s2f0, TOP0_VT_T0_symbl)
 fun
 isTOPZ
 (s2f0: s2exp): bool =
-(
-case+
-s2f0.node() of
-|
-S2Ecst(s2c1) =>
-(s2c1.name() = TOPZ_VT_T0_symbl)
-| _(*non-S2Ecst*) => (  false  )
-)
+f1_test
+(s2f0, TOPZ_VT_T0_symbl)
 //
 fun
 isCBV0
 (s2f0: s2exp): bool =
-(
-case+
-s2f0.node() of
-|
-S2Ecst(s2c1) =>
-(s2c1.name() = CBV0_VT_VT_symbl)
-| _(*non-S2Ecst*) => (  false  )
-)
+f1_test
+(s2f0, CBV0_VT_VT_symbl)
 fun
 isCBV1
 (s2f0: s2exp): bool =
-(
-case+
-s2f0.node() of
-|
-S2Ecst(s2c1) =>
-(s2c1.name() = CBV1_VT_VT_symbl)
-| _(*non-S2Ecst*) => (  false  )
-)
+f1_test
+(s2f0, CBV1_VT_VT_symbl)
 //
 fun
 f0_top0
