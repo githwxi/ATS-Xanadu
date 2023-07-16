@@ -631,18 +631,23 @@ s2exp_none2(s2e0:s2exp): s2exp
 (* ****** ****** *)
 //
 fun
-s2exp_apps
-( loc0
-: loc_t
-, s2f0
-: s2exp, s2es: s2explst): s2exp
-//
-fun
 s2exp_a2pp
 ( loc0
 : loc_t
 , s2f0: s2exp
 , s2e1: s2exp, s2e2: s2exp): s2exp
+//
+fun
+s2exp_apps
+( loc0
+: loc_t
+, s2f0:s2exp, s2es:s2explst): s2exp
+//
+fun
+s2exp_apps_pq//for post-processing
+( loc0
+: loc_t
+, s2f0:s2exp, s2es:s2explst): s2exp
 //
 (* ****** ****** *)
 fun
