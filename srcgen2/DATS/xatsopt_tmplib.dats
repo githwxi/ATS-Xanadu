@@ -1136,6 +1136,12 @@ s2var_fprint(g_print$out<>(), s2v)
 (* ****** ****** *)
 //
 #impltmp
+g_print<s2arg>(s2a) =
+s2arg_fprint(g_print$out<>(), s2a)
+//
+(* ****** ****** *)
+//
+#impltmp
 g_print<s2exp>(s2e) =
 s2exp_fprint(g_print$out<>(), s2e)
 #impltmp

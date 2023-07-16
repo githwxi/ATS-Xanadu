@@ -422,6 +422,40 @@ S2VAR(sid, s2t, tmp)) where
 endloc (*local*) // end of [local(s2var)]
 
 (* ****** ****** *)
+
+local
+//
+datatype s2arg =
+S2ARG of (sort2,s2arg_node)
+//
+#absimpl s2arg_tbox = s2arg
+//
+in//local
+//
+#implfun
+s2arg_get_sort
+   ( s2a0 ) = let
+//
+val
+S2ARG(s2t0, node) = s2a0 in s2t0
+//
+end (*let*) // end of [s2arg_get_sort]
+#implfun
+s2arg_get_node
+   ( s2a0 ) = let
+//
+val
+S2ARG(s2t0, node) = s2a0 in node
+//
+end (*let*) // end of [s2arg_get_node]
+//
+#implfun
+s2arg_make_node
+( s2t0 , node ) = S2ARG(s2t0, node)
+//
+endloc (*local*) // end of [local(s2arg)]
+
+(* ****** ****** *)
 #implfun
 s2exp_int(int) =
 let
