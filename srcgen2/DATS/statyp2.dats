@@ -69,6 +69,10 @@ ATS_PACKNAME
 #symload lctn with s1exp_get_lctn
 #symload node with s1exp_get_node
 (* ****** ****** *)
+#symload sort with s2var_get_sort
+#symload sort with s2cst_get_sort
+#symload sort with s2typ_get_sort
+(* ****** ****** *)
 #implfun
 s2typ_var(s2v) =
 s2typ_make_node
