@@ -1765,7 +1765,13 @@ d1ecl_make_node
 ( loc0
 , D1Cimplmnt0
   (tknd,sqas,tqas,dqid,tias,f1as,sres,body))
-end (*let*) // end of [f0_implmnt0(tenv,d0cl)]
+end where // end-of-let
+{
+//
+  val
+  ( ) = prerrln("f0_implmnt0: d0cl = ", d0cl)
+//
+} (*where*) // end of [f0_implmnt0(tenv,d0cl)]
 
 (* ****** ****** *)
 

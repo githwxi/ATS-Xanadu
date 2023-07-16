@@ -1408,7 +1408,7 @@ T_LT0() => let
   val q0as =
   p1_q0argseq_COMMA(buf, err)
   val tend = p1_GT0(buf, err)
-  val lres = tbeg.lctn() + tend.lctn()
+  val lres = tbeg.lctn()+tend.lctn()
 in//let
   err := e00
 ; t0qag_make_node

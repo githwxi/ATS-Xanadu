@@ -306,18 +306,23 @@ val s2t2 =
 case+ opt2 of
 | optn_nil() =>
 ( // S2Tnone0()
-  the_sort2_type(*void*) )
-| optn_cons(s2t2) => (s2t2)): sort2
+  the_sort2_type (*void*) )
+| optn_cons(s2t2) => s2t2 ): sort2
 //
 in//let
 //
 let
-val sid1 = sexpid_sym(tok1)
+  val sid1 = sexpid_sym(tok1)
 in//let
   s2var_make_idst(sid1, s2t2) endlet
 //
 end (*let*) // end of [Q1ARGsome(...)]
-) (*case+*) // end of [trans12_q1arg(...)]
+) where
+{
+val () =
+prerrln("trans12_q1arg: q1a0 = ", q1a0)
+//
+} (*where*) // end of [trans12_q1arg(...)]
 
 (* ****** ****** *)
 //
@@ -2383,6 +2388,7 @@ f0_implmnt0
 ! tr12env
 , d1cl: d1ecl): d2ecl =
 let
+//
 val-
 D1Cimplmnt0
 ( tknd
@@ -2510,12 +2516,11 @@ d2ecl
 loc0,
 D2Cimplmnt0
 (tknd,sqas,tqas,dimp,tias,f2as,sres,dexp))
-end where
+end where // end-of-let
 {
 //
-val
-( ) =
-prerrln("f0_implmnt0_all1: d1cl = ", d1cl)
+  val () =
+  prerrln("f0_implmnt0_all1: d1cl = ", d1cl)
 //
 } (*where*)//end-[f0_implmnt0_all1(env0,...)]
 //

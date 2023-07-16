@@ -70,7 +70,7 @@ bool2sint(b0) =
 (* ****** ****** *)
 //
 #impltmp
-< a:t0 >
+<xy>(*tmp*)
 bool_ifval
 (b0, x1, y2) =
 (if b0 then x1 else y2)
