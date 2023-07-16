@@ -393,10 +393,12 @@ s2typ_make_node
 |S2Etopz
 (  s2e1  ) => f0_impr(s2e1)
 //
+(*
 |S2Earg1
 (knd0, s2e1) => f0_impr(s2e1)
 |S2Eatx2
 (s2e1, s2e2) => f0_impr(s2e1)
+*)
 //
 |
 S2Eapps

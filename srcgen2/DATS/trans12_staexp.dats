@@ -1125,8 +1125,8 @@ val-
 S1Ea1pp
 (s1f0, s1e1) = s1e0.node()
 //
-val
-s2f0 = trans12_s1exp(env0, s1f0)
+val s2f0 =
+  trans12_s1exp(env0, s1f0)
 //
 in//let
   f0_a1pp_els1(env0, s1e0, s2f0)
@@ -1165,14 +1165,14 @@ _(*non-S2Tfun1*) => list_nil(*nil*)
 ) : sort2lst // end of [val (s2ts) ]
 //
 in//let
-( s2exp_apps
+( s2exp_apps_pq
   (loc0, s2f0, s2es) ) where
 {
 //
 val loc0 = s1e0.lctn()
 //
 val s2es =
-trans12_s1explst_stcks(env0, s1es, s2ts) }
+trans12_s1explst_stcks(env0,s1es,s2ts) }
 //
 end (*let*) // end of [f0_a1pp_els1(...)]
 

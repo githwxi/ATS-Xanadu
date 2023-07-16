@@ -433,6 +433,14 @@ arg1_vt_vt(a: vt) <= a
 #sexpdef ~ = arg0_vt_vt
 #sexpdef ! = arg1_vt_vt
 //
+#abstype
+top0_vt_t0(a: vt) <= a
+#abstype
+topz_vt_t0(a: vt) <= a
+//
+#sexpdef ?  = top0_vt_t0
+#sexpdef ?! = topz_vt_t0
+//
 (* ****** ****** *)
 #typedef
 void = $extype("xats_void_t")
