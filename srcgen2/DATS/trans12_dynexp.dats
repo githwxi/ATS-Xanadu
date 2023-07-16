@@ -3145,14 +3145,12 @@ trans12_f1arg
 //
 case+
 f1a0.node() of
-|
-F1ARGdyn0 _ => f0_dyn0(env0, f1a0)
-|
-F1ARGsta0 _ => f0_sta0(env0, f1a0)
-|
-F1ARGmet0 _ => f0_met0(env0, f1a0)
-//
-) where
+|F1ARGsta0 _ =>
+f0_sta0(env0, f1a0)
+|F1ARGdyn0 _ =>
+f0_dyn0(env0, f1a0)
+|F1ARGmet0 _ =>
+f0_met0(env0, f1a0)) where
 {
 //
 (* ****** ****** *)
@@ -3172,7 +3170,7 @@ val
 (s2vs, s2ps) =
 trans12_s1qualst(env0, s1qs)
 //
-in
+in//let
 //
 f2arg(f1a0.lctn(), F2ARGsta0(s2vs, s2ps))
 //

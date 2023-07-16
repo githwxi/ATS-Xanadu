@@ -112,7 +112,7 @@ d2exp with d2exp_make_styp_node
 trans2a_d2ecl
 ( env0, d2cl ) = let
 //
-(*
+// (*
 val
 loc0 = d2cl.lctn()
 val () =
@@ -121,7 +121,7 @@ prerrln
 val () =
 prerrln
 ("trans2a_d2ecl: d2cl = ", d2cl)
-*)
+// *)
 //
 in//let
 //
