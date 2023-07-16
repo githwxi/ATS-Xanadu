@@ -63,14 +63,14 @@ case+ rep of
 (* ****** ****** *)
 //
 #impltmp
-<>(*tmp*)
-bool2sint(b) =
-(if b then 1 else 0)
+<(*tmp*)>
+bool2sint(b0) =
+(if b0 then 1 else 0)
 //
 (* ****** ****** *)
 //
 #impltmp
-<a>(*tmp*)
+< a:t0 >
 bool_ifval
 (b0, x1, y2) =
 (if b0 then x1 else y2)

@@ -142,6 +142,8 @@ _(*TRANS12*) = "./trans12.dats"
 (* ****** ****** *)
 #symload name with s2var_get_name
 (* ****** ****** *)
+#symload node with dimpl_get_node
+(* ****** ****** *)
 //
 //
 fun
@@ -2382,6 +2384,46 @@ f0_implmnt0
 ! tr12env
 , d1cl: d1ecl): d2ecl =
 let
+val-
+D1Cimplmnt0
+( tknd
+, sqas, tqas
+, dqid
+, tias, f1as
+, sres, dexp) = d1cl.node()
+//
+val dimp = f1_dqid(env0, dqid)
+//
+in//let
+case+
+dimp.node() of
+| DIMPLone1 _ =>
+(
+  f0_implmnt0_one1(env0, d1cl, dimp) )
+|
+_(* DIMPLall1 *) =>
+(
+  f0_implmnt0_all1(env0, d1cl, dimp) )
+end (*end*)//end-of-[f0_implmnt0(env0,d1cl)]
+
+and
+f0_implmnt0_one1
+( env0:
+! tr12env
+, d1cl: d1ecl
+, dimp: dimpl): d2ecl =
+let
+in//let
+  f0_implmnt0_all1(env0, d1cl, dimp)
+end (*end*)//end-[f0_implmnt0_one1(env0,...)]
+
+and
+f0_implmnt0_all1
+( env0:
+! tr12env
+, d1cl: d1ecl
+, dimp: dimpl): d2ecl =
+let
 //
 val
 loc0 = d1cl.lctn()
@@ -2393,9 +2435,6 @@ D1Cimplmnt0
 , dqid
 , tias, f1as
 , sres, dexp) = d1cl.node()
-//
-val
-dimp = f1_dqid(env0, dqid)
 //
 val sqas =
 trans12_s1qaglst(env0, sqas)
@@ -2447,9 +2486,16 @@ d2ecl
 loc0,
 D2Cimplmnt0
 (tknd,sqas,tqas,dimp,tias,f2as,sres,dexp))
-end (*let*) // end of [f0_implmnt0(env0,d1cl)]
+end where
+{
 //
-end (*local*) // end of [ local(f0_implmnt0) ]
+val
+( ) =
+prerrln("f0_implmnt0_all1: d1cl = ", d1cl)
+//
+} (*where*)//end-[f0_implmnt0_all1(env0,...)]
+//
+endloc (*local*) // end of [local(f0_implmnt0)]
 
 (* ****** ****** *)
 //
