@@ -132,18 +132,6 @@ HX-2022-10-01: Various symbols
 #implval DRAISE_symbl = symbl("$raise")
 (* ****** ****** *)
 //
-#implval
-CBV0_VT_VT_symbl = symbl("~")//cbv0_vt_vt
-#implval
-CBV1_VT_VT_symbl = symbl("!")//cbv1_vt_vt
-//
-#implval
-TOP0_VT_T0_symbl = symbl("?")//top0_vt_t0
-#implval
-TOPZ_VT_T0_symbl = symbl("?!")//topz_vt_t0
-//
-(* ****** ****** *)
-//
 #implval DLR_EXTBOX_symbl = symbl("$extbox")
 #implval DLR_EXTYPE_symbl = symbl("$extype")
 //
@@ -156,6 +144,14 @@ TOPZ_VT_T0_symbl = symbl("?!")//topz_vt_t0
 //
 #implval L0AZY_TBOX_symbl = symbl("lazy_t0_x0")
 #implval L1AZY_VTBX_symbl = symbl("lazy_vt_vx")
+//
+(* ****** ****** *)
+//
+#implval CBV0_VT_VT_symbl = symbl("cbv0_vt_vt")
+#implval CBV1_VT_VT_symbl = symbl("cbv1_vt_vt")
+//
+#implval TOP0_VT_T0_symbl = symbl("top0_vt_t0")
+#implval TOPZ_VT_T0_symbl = symbl("topz_vt_t0")
 //
 (* ****** ****** *)
 

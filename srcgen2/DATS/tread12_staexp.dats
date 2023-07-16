@@ -398,7 +398,6 @@ end (*let*) // end of [s2exp_topz_errck]
 //
 (* ****** ****** *)
 //
-(*
 fun
 s2exp_arg1_errck
 (s2t0: sort2
@@ -411,6 +410,7 @@ s2exp_errck
 , s2exp(s2t0, S2Earg1( knd0, s2e1 )))
 end (*let*) // end of [s2exp_arg1_errck]
 //
+(*
 fun
 s2exp_atx2_errck
 (s2t0: sort2
@@ -599,8 +599,8 @@ s2e0.node() of
 |S2Etop0 _ => f0_top0(s2e0, err)
 |S2Etopz _ => f0_topz(s2e0, err)
 //
-(*
 |S2Earg1 _ => f0_arg1(s2e0, err)
+(*
 |S2Eatx2 _ => f0_atx2(s2e0, err)
 *)
 //
@@ -738,7 +738,6 @@ end (*let*) // end of [ f0_topz(s2e,err) ]
 //
 (* ****** ****** *)
 //
-(*
 fun
 f0_arg1
 (s2e: s2exp
@@ -763,7 +762,6 @@ val s2t = s2e.sort() in
   s2exp_arg1_errck(s2t, knd0, s2e1)
 end // end-of-else // end of [ if ]
 end (*let*) // end of [ f0_arg1(s2e,err) ]
-*)
 //
 (*
 fun
