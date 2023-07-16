@@ -511,7 +511,8 @@ S2TEXsub of
 //
 (* ****** ****** *)
 fun
-s2tex_fprint:(FILR,s2tex)->void
+s2tex_fprint
+( out: FILR, stex: s2tex ): void
 (* ****** ****** *)
 //
 datatype
