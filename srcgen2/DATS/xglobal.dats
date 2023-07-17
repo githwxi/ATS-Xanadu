@@ -802,16 +802,34 @@ f0_pvsload
 val () =
 f0_pvsload
 (0(*sta*), "/prelude/SATS/list000.sats")
+val () =
+f0_pvsload
+(0(*sta*), "/prelude/SATS/strm000.sats")
+//
+(* ****** ****** *)
+//
+val () =
+f0_pvsload
+( 0(*sta*)
+, "/prelude/SATS/VT/optn000_vt.sats"(*src*))
+val () =
+f0_pvsload
+( 0(*sta*)
+, "/prelude/SATS/VT/list000_vt.sats"(*src*))
+val () =
+f0_pvsload
+( 0(*sta*)
+, "/prelude/SATS/VT/strm000_vt.sats"(*src*))
 //
 (* ****** ****** *)
 //
 // HX-2023-01-09:
-val // Issuing warnings for shadowed
-ans = f0_pvsfini() // top-level declarations
+val ans = // Issuing warnings for shadowed
+f0_pvsfini((*nil*)) // top-level declarations
 //
 (* ****** ****** *)
 //
-} (*where*) // if-then-else(the_times[] > 0)
+} (*where*) // if-then-else( the_times[] > 0 )
 //
 end (*let*) // end of [the_tr12env_pvsload(...)]
 //
