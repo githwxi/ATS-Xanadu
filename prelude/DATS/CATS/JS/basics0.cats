@@ -461,10 +461,10 @@ XATS2JS_gint_parse_uint(rep)
 //
 /* ****** ****** */
 function
-XATS2JS_gflt_i_dflt
+XATS2JS_gflt_si_dflt
   (x0)
 {
-  return x0 ; // (i)
+  return x0 ; // sint
 }
 /* ****** ****** */
 function

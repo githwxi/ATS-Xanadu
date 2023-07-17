@@ -266,16 +266,16 @@ XATS2CC_gint_div_sint_sint
 //
 /* ****** ****** */
 sflt_t
-XATS2CC_gflt_i_sflt
+XATS2CC_gflt_si_sflt
   (sint_t x0)
 {
-  return x0; // int
+  return x0; // sint
 }
 dflt_t
-XATS2CC_gflt_i_dflt
+XATS2CC_gflt_si_dflt
   (sint_t x0)
 {
-  return x0; // int
+  return x0; // sint
 }
 /* ****** ****** */
 sflt_t
