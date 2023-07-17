@@ -741,17 +741,20 @@ case+
 f2a1.node() of
 |
 F2ARGsta0
-(s2vs,s2ps) =>
+(s2vs, s2ps) =>
 (f2a1, tfun) where
-{
-val tfun =
-s2typ_elim_s2vs(tfun, s2vs) }
+{ val tfun =
+  s2typ_elim_s2vs(tfun, s2vs) }
 //
 |
-F2ARGmet0(s2es) => (f2a1, tfun)
+F2ARGmet0
+(   s2es   ) =>
+(f2a1, tfun) // metrics ignored
 //
 |
-F2ARGdyn0(npf1, d2ps) => let
+F2ARGdyn0
+(npf1, d2ps) =>
+let
 //
 val tfun = s2typ_elim_unis(tfun)
 //
@@ -767,16 +770,16 @@ T2Pfun1
 {
 val loc1 = f2a1.lctn()
 val d2ps =
-trans2a_d2patlst_tpcks(env0, d2ps, t2ps)
+trans2a_d2patlst_tpkcs(env0, d2ps, t2ps)
 val f2a1 =
-f2arg_make_node(loc1, F2ARGdyn0(npf1, d2ps))
+f2arg_make_node(loc1,F2ARGdyn0(npf1,d2ps))
 }
 |
 _(*non-T2fun1*) =>
 let
 val
 f2a1 =
-trans2a_f2arg(env0, f2a1) in (f2a1, tfun) end
+trans2a_f2arg(env0,f2a1) in (f2a1,tfun) end
 //
 end//let//end-of-[ F2ARGdyn0(...) ]
 //
