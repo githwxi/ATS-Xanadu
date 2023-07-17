@@ -102,9 +102,11 @@ s2typ_subst0
 , svts: s2vts): s2typ =
 (
 case+ svts of
-|list_nil() => t2p0 // identity
-|list_cons _ => s2typ_subst0(t2p0, svts)
-)
+|list_nil() => ( t2p0 )
+|list_cons _ =>
+(
+s2typ_subst0(t2p0, svts))
+)(*case+*) // s2typ_subst0
 //
 (* ****** ****** *)
 //

@@ -39,16 +39,16 @@
 (* ****** ****** *)
 
 fun<>
-gflt_i_sflt(sint): sflt
+gflt_si_sflt(sint): sflt
 fun<>
-gflt_u_sflt(uint): sflt
+gflt_ui_sflt(uint): sflt
 
 (* ****** ****** *)
 
 fun<>
-gflt_i_dflt(sint): dflt
+gflt_si_dflt(sint): dflt
 fun<>
-gflt_u_dflt(uint): dflt
+gflt_ui_dflt(uint): dflt
 
 (* ****** ****** *)
 //

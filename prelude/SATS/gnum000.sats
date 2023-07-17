@@ -60,10 +60,10 @@ g_5((*void*)): (a)
 
 fun
 <a:t0>
-g_i(i0: sint): (a)
+g_si(i0: sint): (a)
 fun
 <a:t0>
-g_u(u0: uint): (a)
+g_ui(u0: uint): (a)
 
 (* ****** ****** *)
 //

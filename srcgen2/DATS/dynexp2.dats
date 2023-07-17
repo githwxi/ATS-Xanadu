@@ -82,27 +82,39 @@ ATS_PACKNAME
 #symload lctn with d2exp_get_lctn
 (* ****** ****** *)
 //
+fn0
+s2typ_subst0
+( t2p0: s2typ
+, svts: s2vts): s2typ =
+(
+case+ svts of
+|list_nil() => t2p0
+|list_cons _ =>
+(
+s2typ_subst0(t2p0, svts))
+)(*case+*) // s2typ_subst0
+//
+(* ****** ****** *)
+//
 #implfun
 d2pat_none0
 (  loc0  ) =
 d2pat_make_node
-(loc0,D2Pnone0((*void*)))
+(loc0, D2Pnone0((*void*)))
 //
 #implfun
 d2pat_none1
 (  dpat  ) =
 d2pat_make_node
 (
-dpat.lctn(),D2Pnone1(dpat)
-)
+dpat.lctn(),D2Pnone1(dpat))
 #implfun
 //
 d2pat_none2
 (  dpat  ) =
 d2pat_make_node
 (
-dpat.lctn(),D2Pnone2(dpat)
-)
+dpat.lctn(),D2Pnone2(dpat))
 //
 (* ****** ****** *)
 //
@@ -110,7 +122,7 @@ dpat.lctn(),D2Pnone2(dpat)
 d2pat_any
 (  loc0  ) =
 (
- d2pat(loc0, D2Pany()))
+d2pat(loc0, D2Pany((*0*))))
 //
 (* ****** ****** *)
 //
@@ -118,7 +130,7 @@ d2pat_any
 d2pat_var
 (loc0, dvar) =
 (
-d2pat(loc0, D2Pvar(dvar)))
+ d2pat(loc0, D2Pvar(dvar)))
 //
 (* ****** ****** *)
 //
@@ -126,7 +138,7 @@ d2pat(loc0, D2Pvar(dvar)))
 d2pat_btf
 (loc0, sym1) =
 (
-d2pat(loc0, D2Pbtf(sym1)))
+ d2pat(loc0, D2Pbtf(sym1)))
 //
 (* ****** ****** *)
 //
@@ -136,8 +148,8 @@ d2pat_sym0
 (loc0,
  drpt, d1e0, dpis) =
 d2pat_make_node
-( loc0
-, D2Psym0(drpt,d1e0,dpis))
+(loc0
+,D2Psym0(drpt, d1e0, dpis))
 *)
 //
 (* ****** ****** *)
@@ -146,7 +158,7 @@ d2pat_make_node
 d2pat_con
 (loc0, dcon) =
 (
-d2pat(loc0, D2Pcon(dcon)))
+ d2pat(loc0, D2Pcon(dcon)))
 #implfun
 d2pat_cons
 (loc0, d2cs) =
@@ -168,14 +180,16 @@ end//let
 (
 case+ dcs2 of
 |list_nil() =>
-d2pat(loc0, D2Pcon(d2c1))
+(
+ d2pat(loc0, D2Pcon(d2c1)))
 |list_cons _ =>
 let
 val
 drpt = d2rpt_new1(loc0)
 in//let
+(
 d2pat_make_node
-(loc0, D2Pcons(drpt, d2cs))
+(loc0, D2Pcons(drpt, d2cs)))
 end//let
 ) (*end-[list_cons(...)]*)
 ) (*case+*)//d2pat_cons(...)
@@ -210,8 +224,8 @@ d2pat_dapp
 (loc0,d2f0,npf1,d2as) =
 (
 d2pat_make_node
-( loc0
-, D2Pdapp(d2f0,npf1,d2as)))
+(loc0
+,D2Pdapp(d2f0, npf1, d2as)))
 //
 (* ****** ****** *)
 //

@@ -11,22 +11,22 @@
 //
 #impltmp
 {a:t0}
-g_0<a>() = g_i<a>(0)
+g_0<a>() = g_si<a>(0)
 #impltmp
 {a:t0}
-g_1<a>() = g_i<a>(1)
+g_1<a>() = g_si<a>(1)
 #impltmp
 {a:t0}
-g_2<a>() = g_i<a>(2)
+g_2<a>() = g_si<a>(2)
 #impltmp
 {a:t0}
-g_3<a>() = g_i<a>(3)
+g_3<a>() = g_si<a>(3)
 #impltmp
 {a:t0}
-g_4<a>() = g_i<a>(4)
+g_4<a>() = g_si<a>(4)
 #impltmp
 {a:t0}
-g_5<a>() = g_i<a>(5)
+g_5<a>() = g_si<a>(5)
 //
 (* ****** ****** *)
 
