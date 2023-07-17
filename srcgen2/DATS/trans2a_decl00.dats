@@ -510,7 +510,7 @@ trans2a_f2arglst_elim
 ( env0, loc0, f2as, tfun)
 val
 dexp =
-trans2a_d2exp_tpck(env0, dexp, tres)
+trans2a_d2exp_tpck(env0,dexp,tres)
 val
 dexp =
 (
@@ -534,14 +534,17 @@ d2ecl
 (
 loc0,
 D2Cimplmnt0
-(tknd,sqas,tqas,dimp,tias,f2as,sres,dexp))
+( tknd
+, sqas,tqas,dimp,tias,f2as,sres,dexp))
 end//let//end-of-[DIMPLone1]
 |
 _ (*non-DIMPone1*) =>
 let
+//
 val
 f2as =
 trans2a_f2arglst(env0, f2as)
+//
 val
 dexp =
 (
@@ -551,18 +554,22 @@ trans2a_d2exp(env0, dexp)
 |S2RESsome(seff, sexp) =>
 let
 val
-tres = s2exp_stpize(sexp) in
-trans2a_d2exp_tpck(env0, dexp, tres)
+tres = s2exp_stpize(sexp)
+in//let
+  trans2a_d2exp_tpck(env0,dexp,tres)
 end (*let*) // end of [S2RESsome(...)]
 )
 //
 in
+//
 d2ecl
 (
 loc0,
 D2Cimplmnt0
-(tknd,sqas,tqas,dimp,tias,f2as,sres,dexp))
-end//let//end-of-[non-DIMPone1]
+( tknd
+, sqas,tqas,dimp,tias,f2as,sres,dexp) )
+//
+end//let//end-of-[ non-DIMPone1( ... ) ]
 //
 end (*let*) // end of [f0_implmnt0(env0,d2cl)]
 //
