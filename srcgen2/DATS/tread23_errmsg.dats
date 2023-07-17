@@ -244,12 +244,21 @@ val () =
 d3exp_fpemsg(out, d3f0) endlet
 |
 D3Edapp
-(d3f0,npf1,d3es) =>
+( d3f0
+, npf1, d3es) =>
 let
 val () =
 d3exp_fpemsg(out, d3f0)
 val () =
 d3explst_fpemsg(out, d3es) endlet
+//
+|
+D3Eproj
+( tknd
+, lab1, d3e2) =>
+let
+val () =
+  d3exp_fpemsg(out, d3e2) endlet
 //
 |
 D3Elet0
@@ -376,6 +385,12 @@ let
 val () = d3exp_fpemsg(out , d3e1)
 endlet // end of [ D3Eraise(_, _) ]
 //
+|
+D3El2bck
+(d3e1, lab2) =>
+let
+val () = d3exp_fpemsg(out , d3e1)
+endlet // end of [ D3El2bck(_, _) ]
 |
 D3Et2pck
 (d3e1, t2p2) =>

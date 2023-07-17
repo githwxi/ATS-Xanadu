@@ -206,9 +206,10 @@ let
 val xs = pred(xs)
 in//let
 if
-rforall$test<x0>(xs) then loop(xs) else false
-end
-else true // end of [else]
+rforall$test<x0>(xs)
+then loop(xs) else false
+end(*let*)// end-of-[then]
+else true // end-of-[else]
 } (* end of [gint_rforall_sint] *)
 //
 (* ****** ****** *)
@@ -317,6 +318,7 @@ strmcon_vt_cons
 }(*where*)//end-of(gint_strmize_nint)
 
 (* ****** ****** *)
+//
 #impltmp
 <>(*tmp*)
 gint_strmize_sint
@@ -324,9 +326,9 @@ gint_strmize_sint
 (
 if
 (i0 <= 0)
-then
-strm_vt_nil() else gint_strmize_nint(i0)
-)
+then strm_vt_nil((*void*))
+else gint_strmize_nint(i0))//#impltmp
+//
 (* ****** ****** *)
 //
 // HX:

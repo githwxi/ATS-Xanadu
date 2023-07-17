@@ -1997,7 +1997,10 @@ tvar =
 case+ topt of
 |
 optn_nil() =>
+(*
 sort2_none0()
+*)
+the_sort2_int(*void*)
 |
 optn_cons(s2t0) => s2t0):sort2
 //
