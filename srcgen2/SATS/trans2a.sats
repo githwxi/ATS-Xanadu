@@ -575,9 +575,14 @@ match2a_s2typlst // testing-only
 (* ****** ****** *)
 //
 fun
-trans2a_d2pat_tpck
+trans2a_d2pat_tpck // regular
 ( env0:
 ! tr2aenv, d2p0:d2pat, t2p0:s2typ): d2pat
+fun
+trans2a_d2pat_tpkc // reversed
+( env0:
+! tr2aenv, d2p0:d2pat, t2p0:s2typ): d2pat
+//
 fun
 trans2a_d2exp_tpck
 ( env0:
@@ -593,7 +598,11 @@ trans2a_d2explst_tpck1
 (* ****** ****** *)
 //
 fun
-trans2a_d2patlst_tpcks
+trans2a_d2patlst_tpcks// HX: regular
+( env0:
+! tr2aenv,d2ps:d2patlst,t2ps:s2typlst): d2patlst
+fun
+trans2a_d2patlst_tpkcs // HX: reversed
 ( env0:
 ! tr2aenv,d2ps:d2patlst,t2ps:s2typlst): d2patlst
 //

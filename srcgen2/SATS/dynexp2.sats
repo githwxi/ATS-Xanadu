@@ -650,6 +650,8 @@ D2Pl2bck of (d2pat, label)//HX: casting
 *)
 |
 D2Pt2pck of (d2pat, s2typ)//HX: casting
+|
+D2Pt2pkc of (d2pat, s2typ)//HX: reversed
 //
 |D2Pnone0 of ((*0*))
 |D2Pnone1 of (d1pat) | D2Pnone2 of (d2pat)
@@ -890,7 +892,7 @@ d2exp_node =
 |D2Ef00 of (char) // float
 |D2Es00 of (strn) // string
 //
-|D2Etop of (token)
+|D2Etop of (sym_t)
 //
 |D2Evar of (d2var)
 //

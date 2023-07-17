@@ -252,6 +252,12 @@ d2exp_btf
 (
   d2exp(loc0, D2Ebtf(sym1)))
 //
+#implfun
+d2exp_top
+(loc0, sym1) =
+(
+  d2exp(loc0, D2Etop(sym1)))
+//
 (* ****** ****** *)
 //
 #implfun

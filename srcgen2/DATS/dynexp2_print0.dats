@@ -277,6 +277,16 @@ t2p1 = d2p1.styp() in
 ; print( d2p1,";",t2p1,";",t2p2,")") )
 endlet // end of [ D2Pt2pck(d2p1, t2p2) ]
 //
+|D2Pt2pkc
+( d2p1 , t2p2 ) =>
+let
+val
+t2p1 = d2p1.styp() in
+(
+  print("D2Pt2pkc(")
+; print( d2p1,";",t2p1,";",t2p2,")") )
+endlet // end of [ D2Pt2pkc(d2p1, t2p2) ]
+//
 |D2Pnone0() => print( "D2Pnone0(",")" )
 |D2Pnone1(d1p1) => print("D2Pnone1(",d1p1,")")
 |D2Pnone2(d2p1) => print("D2Pnone2(",d2p1,")")
@@ -330,8 +340,8 @@ print("D2Ec00(",chr,")")
 |D2Es00(str) =>
 print("D2Es00(",str,")")
 //
-|D2Etop(tok) =>
-print("D2Etop(", tok, ")")
+|D2Etop(sym) =>
+print("D2Etop(", sym, ")")
 //
 |D2Evar(d2v) =>
 print("D2Evar(", d2v, ")")

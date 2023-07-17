@@ -40,36 +40,55 @@
 #typedef strn = string
 *)
 (* ****** ****** *)
+val
+the_bool_true:bool(tt)
+val
+the_bool_false:bool(ff)
+(* ****** ****** *)
 //
 fun<>
 bool_neg
 {b:bool}
-(x: bool(b)): bool(~b)
+(x0: bool(b)): bool(~b)
 //
 (* ****** ****** *)
 //
 fun<>
 bool_add
 {b1,b2:bool}
-( x: bool(b1)
-, y: bool(b2)): bool(b1+b2)
+(x1: bool(b1)
+,y2: bool(b2)): bool(b1+b2)
 fun<>
 bool_mul
 {b1,b2:bool}
-( x: bool(b1)
-, y: bool(b2)): bool(b1*b2)
+(x1: bool(b1)
+,y2: bool(b2)): bool(b1*b2)
 //
 (* ****** ****** *)
 fun<>
 bool2sint
 {b:bool}
-(x: bool(b)): sint(b2i(b))
+(x0: bool(b)): sint(b2i(b))
 (* ****** ****** *)
 //
 fun<>
 bool_print(btf: bool): void
+//
 fun<>
 bool_parse(rep: strn): bool
+//
+(* ****** ****** *)
+//
+(*
+HX: torep for parsing
+*)
+fun<>
+bool_torep(btf: bool): strn
+(*
+HX: tostr for debugging
+*)
+fun<>
+bool_tostr(btf: bool): strn
 //
 (* ****** ****** *)
 //
@@ -77,7 +96,7 @@ fun
 <a:t0>
 bool_ifval
 {b:b0}
-(b: bool(b), x: a, y: a): a
+(b: bool(b), x: a, y: a): (a)
 //
 (* ****** ****** *)
 //
