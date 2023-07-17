@@ -111,7 +111,7 @@ list_make_lstrm_vt(strm_vt(a)): list_vt(a)
 //
 fun<>
 list_nilq
-{a:type}{n:int}
+{a:t0}{n:i0}
 (xs: list(a, n)): bool( n=0 )
 fun<>
 list_consq
@@ -122,12 +122,12 @@ list_consq
 fun
 <a:t0>
 list_singq
-{a:type}{n:int}
+{ n:int }
 (xs: list(a, n)): bool( n=1 )
 fun
 <a:t0>
 list_pairq
-{a:type}{n:int}
+{ n:int }
 (xs: list(a, n)): bool( n=2 )
 (* ****** ****** *)
 //

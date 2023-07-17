@@ -65,6 +65,21 @@ ATS_PACKNAME
 #symload tqas with d2con_get_tqas
 #symload tqas with d2cst_get_tqas
 (* ****** ****** *)
+//
+fn0
+s2typ_subst0
+( t2p0: s2typ
+, svts: s2vts): s2typ =
+(
+case+ svts of
+|list_nil() => (t2p0)
+|list_cons _ =>
+(
+s2typ_subst0(t2p0, svts))
+)(*case+*) // s2typ_subst0
+//
+(* ****** ****** *)
+//
 fun
 s2var_copy
 (s2v0: s2var): s2var =
@@ -104,19 +119,6 @@ in//let
   s2typ_make_node
   (s2t0, T2Pfun1(f2cl,npf1,t2ps,tres))
 end (*let*) // end of [s2typ_fun1(...)]
-//
-(* ****** ****** *)
-//
-fn0
-s2typ_subst0
-( t2p0: s2typ
-, svts: s2vts): s2typ =
-(
-case+ svts of
-|
-list_nil() => t2p0 // identity
-|
-list_cons _ => s2typ_subst0(t2p0, svts))
 //
 (* ****** ****** *)
 //
@@ -812,10 +814,16 @@ let
 val
 (f2a1, tres) = f0_f2a1(env0, f2a1, tfun)
 in//let
-auxmain(env0, f2as, tres, list_cons(f2a1, fres))
+  auxmain
+  (env0, f2as, tres, list_cons(f2a1, fres))
 end//let
 //
-) (*case+*) // end of [auxmain(env0,f2as,tfun,fres)]
+) where
+{
+  val () = prerrln("auxmain: f2as = ", f2as)
+  val () = prerrln("auxmain: tfun = ", tfun)
+  val () = prerrln("auxmain: fres = ", fres)
+}(*where*) // end of [auxmain(env0,f2as,tfun,fres)]
 //
 (* ****** ****** *)
 //

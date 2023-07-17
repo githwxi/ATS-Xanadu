@@ -70,7 +70,7 @@ if
 then r0 else
 loop(i0+1, r0) where
 {
-val x0 = g_i<a>(i0)
+val x0 = g_si<a>(i0)
 val r0 = list_vt_cons(x0, r0)
 } (*where*) // end-of(loop(i0,r0))
 //
@@ -93,7 +93,7 @@ loop
 ( i0: sint
 , r0: alst): alst =
 let
-val x0 = g_i<a>(i0)
+val x0 = g_si<a>(i0)
 val r0 = list_vt_cons(x0, r0)
 in//let
 if
@@ -1138,6 +1138,7 @@ For gmap-operations
 *)
 //
 (* ****** ****** *)
+//
 #impltmp
 {k0:t0}
 {x0:t0}
@@ -1145,9 +1146,10 @@ gmap_make_nil
 <list@(k0,x0)><k0><x0>
   ((*void*)) =
 (
-  list_nil( (*void*) )
-)
+  list_nil((*void*)) )
+//
 (* ****** ****** *)
+//
 #impltmp
 {k0:t0}
 {x0:t0}
@@ -1171,8 +1173,10 @@ if
 g_equal<k0>
 (key, kx1.0) then true else loop(kxs)
 )
-} (*where*) // end of [gmap_keyq]
+} (*where*) // end of [gmap_keyq(...)]
+//
 (* ****** ****** *)
+//
 #impltmp
 {k0:t0}
 {x0:t0}
@@ -1199,7 +1203,9 @@ g_equal<k0>
 then optn_vt_cons(kx1.1) else loop(kxs)
 )
 } (*where*)//end-of-[gmap_search_opt(...)]
+//
 (* ****** ****** *)
+//
 #impltmp
 {k0:t0}
 {x0:t0}
@@ -1211,6 +1217,7 @@ optn_vt_nil(*void*) where
 val () =
 ( kxs := list_cons((key, itm), kxs) )
 } (*where*)//end-of-[gmap_insert_opt(...)]
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -1241,7 +1248,7 @@ gmap_strmize_itm
 }
 //
 (* ****** ****** *)
-//
+////
 (*
 For gseqn-operations
 *)

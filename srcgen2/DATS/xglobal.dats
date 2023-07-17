@@ -777,6 +777,9 @@ f0_pvsload
 (0(*sta*), "/prelude/SATS/gbas000.sats")
 val () =
 f0_pvsload
+(0(*sta*), "/prelude/SATS/gnum000.sats")
+val () =
+f0_pvsload
 (0(*sta*), "/prelude/SATS/gord000.sats")
 //
 (* ****** ****** *)
@@ -810,16 +813,19 @@ f0_pvsload
 //
 val () =
 f0_pvsload
-( 0(*sta*)
-, "/prelude/SATS/VT/optn000_vt.sats"(*src*))
+(
+0(*static*),
+"/prelude/SATS/VT/optn000_vt.sats"(*src*))
 val () =
 f0_pvsload
-( 0(*sta*)
-, "/prelude/SATS/VT/list000_vt.sats"(*src*))
+(
+0(*static*),
+"/prelude/SATS/VT/list000_vt.sats"(*src*))
 val () =
 f0_pvsload
-( 0(*sta*)
-, "/prelude/SATS/VT/strm000_vt.sats"(*src*))
+(
+0(*static*),
+"/prelude/SATS/VT/strm000_vt.sats"(*src*))
 //
 (* ****** ****** *)
 //
