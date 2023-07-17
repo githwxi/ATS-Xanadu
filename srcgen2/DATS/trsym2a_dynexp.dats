@@ -578,10 +578,15 @@ d2e0.node() of
 //
 (*
 | D2Eint _ => ()
+| D2Ei00 _ => ()
 | D2Ebtf _ => ()
+| D2Eb00 _ => ()
 | D2Echr _ => ()
+| D2Ec00 _ => ()
 | D2Eflt _ => ()
+| D2Ef00 _ => ()
 | D2Estr _ => ()
+| D2Es00 _ => ()
 *)
 //
 (*
@@ -821,7 +826,7 @@ prerrln
 ("trsym2a_d2exp: f0_sym0: d2e0 = ", d2e0)
 val () =
 prerrln
-("trsym2a_d2exp: f0_sym0: styp = ", t2p1)
+("trsym2a_d2exp: f0_sym0: t2p1 = ", t2p1)
 // *)
 //
 in//let
@@ -848,14 +853,19 @@ list_nil() =>
 list_nil(*void*)
 |
 list_cons _ =>
-f1_maxes( dpis )):d2ptmlst }
+f1_maxes( dpis )): d2ptmlst }
 //
 in//let
-  d2rxp_set_dexp(drxp, dsym)
+let
+val () =
+f1_sympp(env0, dsym)
+in//let
+  d2rxp_set_dexp( drxp, dsym )
+end//let
 end (*let*) // end of [D2Enone0]
 |
-_(*otherwise*) => trsym2a_d2exp(env0, dexp)
-end where
+_(* else *) => trsym2a_d2exp(env0, dexp)
+end where // end-of-let // D2Enone0(...)
 {
 //
 (* ****** ****** *)
@@ -923,6 +933,52 @@ if
 then auxtake(pmax, dpis) else
 list_cons(dpi1, auxtake(pmax, dpis)))
 ) (*case+*) // end of [auxtake( ... )]
+//
+(* ****** ****** *)
+//
+fun
+f1_sympp
+( env0:
+! tr2aenv, dsym: d2exp): void =
+let
+//
+val loc0 = dsym.lctn()
+val tsym = dsym.styp()
+//
+val (  ) =
+prerrln("f1_sympp: dsym = ", dsym)
+//
+in//let
+case+
+dsym.node() of
+//
+|D2Evar(d2v1) =>
+let
+val t2p1 =
+d2v1.styp((*0*))
+val ubtf =
+unify2a_s2typ(env0, t2p1, tsym)
+end//let//end-of-[D2Evar(d2v1)]
+//
+|D2Econ(d2c1) =>
+let
+val t2p1 =
+d2con2a_s2typ(loc0, d2c1)
+val ubtf =
+unify2a_s2typ(env0, t2p1, tsym)
+end//let//end-of-[D2Econ(d2c1)]
+//
+|D2Ecst(d2c1) =>
+let
+val t2p1 =
+d2cst2a_s2typ(loc0, d2c1)
+val ubtf =
+unify2a_s2typ(env0, t2p1, tsym)
+end//let//end-of-[D2Ecst(d2c1)]
+//
+| _(*otherwise*) => (  (*nothing*)  )
+//
+end (*let*) // end of [ f1_sympp(...) ]
 //
 (* ****** ****** *)
 //

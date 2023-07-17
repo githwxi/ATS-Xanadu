@@ -728,6 +728,9 @@ d2e0.node() of
 |D2Ebtf _ => f0_btf(env0, d2e0)
 |D2Eb00 _ => f0_b00(env0, d2e0)
 //
+|D2Echr _ => f0_chr(env0, d2e0)
+|D2Ec00 _ => f0_c00(env0, d2e0)
+//
 |D2Estr _ => f0_str(env0, d2e0)
 |D2Es00 _ => f0_s00(env0, d2e0)
 //
@@ -850,6 +853,38 @@ val loc0 = d2e0.lctn()
 val-
 D2Eb00(btf) = d2e0.node()
 val t2p0 = the_s2typ_bool() }
+//
+(* ****** ****** *)
+//
+fun
+f0_chr
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+(
+d2exp_make_styp_node
+( loc0
+, t2p0, D2Echr(tok))) where
+{
+val loc0 = d2e0.lctn()
+val-
+D2Echr(tok) = d2e0.node()
+val t2p0 = the_s2typ_char() }
+//
+fun
+f0_c00
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+(
+d2exp_make_styp_node
+( loc0
+, t2p0, D2Ec00(chr))) where
+{
+val loc0 = d2e0.lctn()
+val-
+D2Ec00(chr) = d2e0.node()
+val t2p0 = the_s2typ_char() }
 //
 (* ****** ****** *)
 //
