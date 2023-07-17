@@ -339,14 +339,20 @@ val (  ) =
 prerrln("the_tr12env_pvsload() = ", ret)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 val dpar =
 d3parsed_of_filsats
 ("./DATA/mysats.sats")
 val (  ) =
 d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
+val dpar =
+d3parsed_of_fildats
+("./DATA/mydats.dats")
+val (  ) =
+d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
-//
+(* ****** ****** *)
 val dpar =
 d3parsed_of_filsats
 ("./../../../prelude/SATS/arrn000.sats")
@@ -377,6 +383,14 @@ d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
 val dpar =
 d3parsed_of_fildats
 ("./../../../prelude/DATS/bool000.dats")
+val (  ) =
+d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
+//
+(* ****** ****** *)
+//
+val dpar =
+d3parsed_of_fildats
+("./../../../prelude/DATS/char000.dats")
 val (  ) =
 d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
 //
