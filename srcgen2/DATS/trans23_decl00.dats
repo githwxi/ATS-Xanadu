@@ -442,6 +442,7 @@ let
 //
 val
 loc0 = d2cl.lctn()
+//
 val-
 D2Cimplmnt0
 ( tknd
@@ -460,8 +461,15 @@ d3ecl
 (
 loc0,
 D3Cimplmnt0
-(tknd,sqas,tqas,dimp,tias,f3as,sres,dexp))
-end (*let*) // end of [f0_implmnt0(env0,d2cl)]
+( tknd
+, sqas,tqas,dimp,tias,f3as,sres,dexp) )
+end where // end-of-[let]
+{
+//
+  val () =
+  prerrln("f0_implmnt0: d2cl = ", d2cl)
+//
+} (*where*) // end of [f0_implmnt0(env0,d2cl)]
 //
 (* ****** ****** *)
 //

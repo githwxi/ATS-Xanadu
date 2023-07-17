@@ -579,6 +579,9 @@ t2p0.node() of
 |T2Pvar _ =>
 f0_var(e1nv, t2p0, svts, flag)
 //
+|T2Parg1 _ =>
+f0_arg1(e1nv, t2p0, svts, flag)
+//
 |T2Papps _ =>
 f0_apps(e1nv, t2p0, svts, flag)
 //
@@ -619,6 +622,30 @@ optn_vt_nil() => t2p0
 | ~
 optn_vt_cons(t2p1) => (flag := flag+1; t2p1)
 end (*let*) // end of [f0_var(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_arg1
+( e1nv: !e1nv
+, t2p0: s2typ
+, svts: s2vts
+, flag: &sint >> _): s2typ =
+let
+//
+val fval = flag
+//
+val-
+T2Parg1(knd0, t2p1) = t2p0.node()
+val t2p1 =
+s2typ_substx(e1nv, t2p1, svts, flag)
+//
+in//let
+if
+flag <= fval
+then t2p0 else
+s2typ(t2p0.sort(), T2Parg1(knd0, t2p1))
+end (*let*) // end of [f0_arg1(e1nv,...)]
 //
 (* ****** ****** *)
 //
