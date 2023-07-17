@@ -464,10 +464,10 @@ gint_mod_sint_sint<> = XINTERP_gint_mod_sint_sint
 //
 #extern
 fun
-XINTERP_gflt_i_dflt
+XINTERP_gflt_si_dflt
 ( x0: sint ): dflt = $extnam()
 #impltmp
-gflt_i_dflt<> = XINTERP_gflt_i_dflt
+gflt_si_dflt<> = XINTERP_gflt_si_dflt
 //
 (* ****** ****** *)
 //

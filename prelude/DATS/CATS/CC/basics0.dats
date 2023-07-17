@@ -345,10 +345,10 @@ gint_mod_sint_sint<> = XATS2CC_gint_mod_sint_sint
 //
 #extern
 fun
-XATS2CC_gflt_i_dflt
+XATS2CC_gflt_si_dflt
 ( x0: sint ): dflt = $extnam()
 #impltmp
-gflt_i_dflt<> = XATS2CC_gflt_i_dflt
+gflt_si_dflt<> = XATS2CC_gflt_si_dflt
 //
 (* ****** ****** *)
 //

@@ -559,10 +559,10 @@ gint_mod_sint_sint<> = XATS2JS_gint_mod_sint_sint
 //
 #extern
 fun
-XATS2JS_gflt_i_dflt
+XATS2JS_gflt_si_dflt
 ( x0: sint ): dflt = $extnam()
 #impltmp
-gflt_i_dflt<> = XATS2JS_gflt_i_dflt
+gflt_si_dflt<> = XATS2JS_gflt_si_dflt
 //
 (* ****** ****** *)
 //
