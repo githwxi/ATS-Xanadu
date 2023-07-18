@@ -522,14 +522,24 @@ val loc0 = d2p0.lctn()
 val-
 D2Pdap1(d2f0) = d2p0.node()
 //
-val
-d2f0 = trans2a_d2pat(env0,d2f0)
+val d2f0 =
+(
+  trans2a_d2pat(env0,d2f0))
+val t2f0 = d2f0.styp((*nil*))
+//
+val tres =
+(
+case+
+t2f0.node() of
+| T2Pfun1
+( f2cl, npf1
+, targ, tres) => tres
+| _(* else *) =>
+(
+  s2typ_new0_x2tp(loc0))): s2typ
 //
 in//let
-d2pat_make_styp_node
-(loc0, tres, D2Pdap1(d2f0)) where
-{
-  val tres = s2typ_new0_x2tp(loc0) }
+  d2pat(loc0, tres, D2Pdap1(d2f0))
 end (*let*) // end of [f0_dap1(env0,...)]
 //
 (* ****** ****** *)
