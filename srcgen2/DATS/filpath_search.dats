@@ -47,6 +47,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/filpath.sats"
 (* ****** ****** *)
+#staload "./../SATS/xglobal.sats"
+(* ****** ****** *)
 #symload name with drpth_get_name
 (* ****** ****** *)
 //
@@ -82,18 +84,29 @@ prerrln
 ("fsrch_dcurrent: base = ", base)
 //
 } (*where*) // end-(fsrch_dir1base)
-end // end-of-[fsrch_dcurrent(base)]
+endlet // end-of-[fsrch_dcurrent(base)]
 //
-(*
 #implfun
 fsrch_includes
   (base) = let
-  val
-  dirs = the_includes_get()
-in
-  fsrch_dirsbase(dirs, base)
-end // end-of-[fsrch_includes(base)]
-*)
+//
+val
+dirs = the_xatsopt_include()
+val
+fopt = fsrch_dnmsbase(dirs, base)
+//
+in//let
+//
+case+ fopt of
+|optn_nil() => 
+(
+  fsrch_dnm1base(dir0, base)
+) where
+{ val
+  dir0 = the_XATSHOME((*nil*)) }
+|optn_cons _ => (      fopt      )
+//
+endlet // end-of-[fsrch_includes(base)]
 //
 (* ****** ****** *)
 
@@ -280,13 +293,12 @@ end (*let*) // end of [fname_dbjoin]
 
 (* ****** ****** *)
 
-#implfun
-fsrch_dir1base
-  (dir0, base) =
+local
+//
+fun
+auxmain
+(dir0, base) =
 let
-val
-dir0 =
-drpth_get_name(dir0)
 val
 fnm1 =
 fname_dbjoin(dir0, base)
@@ -314,8 +326,7 @@ prerrln
 (*
 val
 ((*void*)) =
-prerrln
-("fsrch_dir1base: fname = ", fname)
+prerrln("auxmain: fname = ", fname)
 *)
 //
 }
@@ -331,17 +342,39 @@ optn_cons
 {
 (*
 val ((*void*)) =
-prerrln("fsrch_dir1base: fname = ", fname)  
+prerrln("auxmain: fname = ", fname)
 *)
 }
 else optn_nil(*void*)
 //
-end (*let*)//end-[fsrch_dir1base(dir0, base)]
+end (*let*)//end-of-[auxmain(dir0, base)]
+//
+in//local
 
 (* ****** ****** *)
 
 #implfun
-fsrch_dirsbase
+fsrch_dnm1base
+  (dir0, base) =
+(
+  auxmain(dir0, base))
+//end-[fsrch_dnm1base(dirs,base)]
+
+(* ****** ****** *)
+
+#implfun
+fsrch_dir1base
+  (dir0, base) =
+(
+  auxmain(dir0, base)
+) where {
+  val dir0 = drpth_get_name(dir0)
+}(*where*)//end-[fsrch_dir1base(dirs,base)]
+
+(* ****** ****** *)
+
+#implfun
+fsrch_dnmsbase
   (dirs, base) =
 (
 case+ dirs of
@@ -349,16 +382,19 @@ case+ dirs of
  optn_nil((*void*))
 |list_cons(dir1, dirs) =>
 let
-val fopt =
-fsrch_dir1base(dir1, base)
+val fopt = auxmain(dir1, base)
 in//let
 case+ fopt of
 |
 optn_nil() =>
-fsrch_dirsbase
+fsrch_dnmsbase
 ( dirs, base ) | optn_cons _ => fopt
-end (*let*) // end of [list_cons(...)]
-) (*case+*)//end-[fsrch_dirsbase(dirs, base)]
+end(*let*) // end of [list_cons(...)]
+)(*case+*)//end-[fsrch_dnmsbase(dirs,base)]
+
+(* ****** ****** *)
+
+end (*local*) // end of [local(fsrch_dirsbase)]
 
 (* ****** ****** *)
 

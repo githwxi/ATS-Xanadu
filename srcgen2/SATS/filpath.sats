@@ -180,13 +180,21 @@ fun
 fname_dbjoin
 (dir0: strn, base: strn): strn
 //
+(* ****** ****** *)
+//
+fun
+fsrch_dnm1base
+(dir0: strn, base: strn): optn(fpath)
+fun
+fsrch_dnmsbase
+( dirs
+: list(strn), base: strn): optn(fpath)
+//
+(* ****** ****** *)
+//
 fun
 fsrch_dir1base
 (dir0: drpth, base: strn): optn(fpath)
-fun
-fsrch_dirsbase
-( dirs
-: list(drpth), base: strn): optn(fpath)
 //
 (* ****** ****** *)
 
