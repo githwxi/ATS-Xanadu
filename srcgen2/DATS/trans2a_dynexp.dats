@@ -185,6 +185,7 @@ d2p0.node() of
 |D2Pcons _ => f0_cons(env0, d2p0)
 //
 |D2Pdap0 _ => f0_dap0(env0, d2p0)
+|D2Pdap1 _ => f0_dap1(env0, d2p0)
 |D2Pdapp _ => f0_dapp(env0, d2p0)
 //
 |D2Ptup0 _ => f0_tup0(env0, d2p0)
@@ -508,6 +509,28 @@ d2p0 =
 d2pat_dapp(loc0,d2f0,npf1,d2ps) }
 end
 end (*let*) // end of [f0_dap0(env0,...)]
+//
+(* ****** ****** *)
+//
+and
+f0_dap1
+( env0:
+! tr2aenv
+, d2p0: d2pat): d2pat =
+let
+val loc0 = d2p0.lctn()
+val-
+D2Pdap1(d2f0) = d2p0.node()
+//
+val
+d2f0 = trans2a_d2pat(env0,d2f0)
+//
+in//let
+d2pat_make_styp_node
+(loc0, tres, D2Pdap1(d2f0)) where
+{
+  val tres = s2typ_new0_x2tp(loc0) }
+end (*let*) // end of [f0_dap1(env0,...)]
 //
 (* ****** ****** *)
 //

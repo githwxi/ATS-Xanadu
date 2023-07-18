@@ -221,11 +221,21 @@ endlet // end of [d2pat_free_errck(...)]
 (* ****** ****** *)
 //
 fun
+d2pat_dap1_errck
+( loc0: loc_t
+, d2f0: d2pat): d2pat =
+let
+val lvl0 = errvl(d2f0) in//let
+d2pat_errck
+(lvl0+1,d2pat(loc0, D2Pdap1(d2f0)))
+endlet // end of [d2pat_dap1_errck(...)]
+//
+fun
 d2pat_dapp_errck
-(loc0: loc_t
-,d2f0: d2pat
-,npf1: (sint)
-,d2ps: d2patlst): d2pat =
+( loc0: loc_t
+, d2f0: d2pat
+, npf1: (sint)
+, d2ps: d2patlst): d2pat =
 let
 val lvl0 = gmax
 (errvl(d2f0), errvl(d2ps)) in//let
@@ -861,6 +871,7 @@ d2p0.node() of
 |D2Psym0 _ => f0_sym0(d2p0, err)
 *)
 //
+|D2Pdap1 _ => f0_dap1(d2p0, err)
 |D2Pdapp _ => f0_dapp(d2p0, err)
 //
 |D2Ptup0 _ => f0_tup0(d2p0, err)
@@ -965,6 +976,28 @@ end (*let*) // end of [non-D2Pnone0]
 //
 end (*let*) // end of [f0_sym0(d2p,err)]
 *)
+//
+(* ****** ****** *)
+//
+fun
+f0_dap1
+(d2p: d2pat
+,err: &sint >> _): d2pat =
+let
+//
+val e00 = err
+//
+val-
+D2Pdap1(d2f0) = d2p.node()
+val
+d2f0 = tread22_d2pat(d2f0, err)
+//
+in//let
+if
+(err=e00)
+then (d2p) else
+d2pat_dap1_errck(d2p.lctn(), d2f0)
+end (*let*) // end of [f0_dap1(d2p,err)]
 //
 (* ****** ****** *)
 //

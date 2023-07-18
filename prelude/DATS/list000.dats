@@ -173,8 +173,8 @@ list_nilq
   (xs) =
 (
 case+ xs of
-| list_nil() => true
-| list_cons(_, _) => false
+|list_nil() => true
+|list_cons(_, _) => false
 ) (*case*) // end-of-[list_nilq(xs)]
 #impltmp
 <>(*tmp*)
@@ -182,8 +182,8 @@ list_consq
   (xs) =
 (
 case+ xs of
-| list_nil() => false
-| list_cons(_, _) => (true)
+|list_nil() => false
+|list_cons(_, _) => (true)
 ) (*case*) // end-of-[list_consq(xs)]
 //
 (* ****** ****** *)

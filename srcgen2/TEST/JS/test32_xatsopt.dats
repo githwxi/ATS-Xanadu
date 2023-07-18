@@ -352,6 +352,7 @@ d3parsed_of_fildats
 val (  ) =
 d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
+////
 (* ****** ****** *)
 val dpar =
 d3parsed_of_filsats
@@ -402,6 +403,16 @@ d3parsed_of_fildats
 val (  ) =
 d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
 //
+(* ****** ****** *)
+//
+val dpar =
+d3parsed_of_fildats
+("./../../../prelude/DATS/strn000.dats")
+val (  ) =
+d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
+//
+(* ****** ****** *)
+////
 (* ****** ****** *)
 //
 val dpar =
