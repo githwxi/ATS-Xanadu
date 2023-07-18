@@ -223,23 +223,28 @@ list_head(xs) =
 let
 val+
 list_cons
-(x0, xs) = xs in x0 end
+(x0 , xs) = xs in x0 end
 #impltmp
 <a:type>
 list_tail(xs) =
 let
 val+
 list_cons
-(x0, xs) = xs in xs end
+(x0 , xs) = xs in xs end
 //
+(*
 #impltmp
 <a:type>
 list_head_raw(xs) = (xs.0)
 (* end of [list_head_raw(xs)] *)
+*)
+//
+(*
 #impltmp
 <a:type>
 list_tail_raw(xs) = (xs.1)
 (* end of [list_tail_raw(xs)] *)
+*)
 //
 (* ****** ****** *)
 //
@@ -287,28 +292,35 @@ loop
 , ys: list(a)): sint =
 (
 case+ xs of
+//
 |
 list_nil() =>
 (
 case+ ys of
-| list_nil() => 0
-| list_cons _ => -1
-)
+|
+list_nil() => (0)
+|
+list_cons _ => (-1))
+//
 |
 list_cons(x1, xs) =>
 (
 case+ ys of
-| list_nil() => 1
-| list_cons(y1, ys) =>
-  let
-  val sgn = g_cmp<a>(x1, y1)
-  in // let
-    if
-    (sgn = 0)
-    then loop(xs, ys) else sgn
-  end
-)
-)(*end-of-[loop(xs,ys)]*)
+|
+list_nil() => (1)
+|
+list_cons(y1, ys) =>
+let
+  val
+  sgn = g_cmp<a>(x1, y1)
+in // let
+  if
+  (sgn = 0)
+  then loop(xs, ys) else sgn
+end(*let*)//end-of-[list_cons]
+)(*case+*)//end-of-[list_cons]
+//
+)(*case+*)//end-of-[loop(xs,ys)]
 }(*where*)//end-of-[list_cmp(xs,ys)]
 //
 (* ****** ****** *)
@@ -329,11 +341,13 @@ loop{i,j:int}
 (
 case+ xs of
 |
-list_nil() => j0
+list_nil
+((*nil*)) => j0
 |
-list_cons(_, xs) => loop(xs, j0+1)
-)(*case+*)//end-of(loop(xs,j0))
-}(*where*)//end-of(list_length(xs))
+list_cons
+( _, xs ) => loop(xs, j0+1)
+)(*case+*)//end-of-(loop(xs, j0))
+}(*where*)//end-of-(list_length(xs))
 //
 (* ****** ****** *)
 //
@@ -360,7 +374,7 @@ if
 (i0 > 0)
 then
 loop(xs, pred(i0)) else x0
-endif // end-of(list_cons)
+endif // end-of-(list_cons)
 )(*case+*)//end-(loop(xs,i0))
 }(*where*)//end-(list_get_at(xs,i0))
 //
@@ -399,8 +413,8 @@ val ys =
 list_vt_cons(x1,ys) in auxmain(xs,i0,ys)
 end // end of [else]
 //
-end // end of [auxmain]
-} (*where*) // end of [list_fset_at]
+end // end of [auxmain(xs,i0,ys) ]
+}(*where*)//end-of-[list_fset_at(xs,i0,x0)]
 
 (* ****** ****** *)
 //
@@ -595,14 +609,14 @@ list_rappendx0_vt<a>(xs, list_vt_nil())
 #impltmp
 <x0>
 <r0>(*tmp*)
-list_foldl =
-gseq_foldl<list(x0)><x0>
+list_foldl(*(xs,r0)*) =
+gseq_foldl<list(x0)><x0><r0>(*(xs,r0)*)
 (* ****** ****** *)
 #impltmp
 <x0>
 <r0>(*tmp*)
-list_foldr =
-gseq_foldr<list(x0)><x0>
+list_foldr(*(xs,r0)*) =
+gseq_foldr<list(x0)><x0><r0>(*(xs,r0)*)
 (* ****** ****** *)
 //
 #impltmp
@@ -776,8 +790,7 @@ end (*let*) // end of [list_map_vt(xs)]
 list_maprev(xs) =
 (
 list_vt2t
-(list_maprev_vt<x0><y0>(xs))
-)
+(list_maprev_vt<x0><y0>(xs)))
 //
 #impltmp
 <x0><y0>
@@ -793,8 +806,8 @@ loop
 ( xs
 : list(x0, i)
 , ys
-: list_vt(y0, j)
-) : list_vt(y0, i+j) =
+: list_vt(y0, j))
+: list_vt(y0, i+j) =
 (
 case+ xs of
 |
@@ -808,9 +821,8 @@ list_cons(x0, xs) =>
   val y0 =
   map$fopr<x0><y0>(x0)
   val ys =
-  list_vt_cons( y0, ys )
-}
-) (* end of [loop] *)
+  list_vt_cons( y0, ys ) }
+) (* end of [loop(xs, ys)] *)
 //
 }(*where*)//end-(list_maprev_vt(xs))
 //
@@ -835,7 +847,7 @@ list_maprev_vt<a><a>(xs)
 ) where
 {
 #impltmp map$fopr<a><a>(x0) = x0
-}
+}(*where*)//end-of-[list_rcopy_vt]
 
 (* ****** ****** *)
 //
@@ -852,8 +864,8 @@ list_filter_vt(xs) =
 let
 #typedef xs = list(x0)
 in // let
-gseq_filter_list<xs><x0>(xs)
-end (*let*) // list_filter_vt
+  gseq_filter_list<xs><x0>(xs)
+end(*let*)//end-of-[list_filter_vt]
 //
 (* ****** ****** *)
 //
@@ -875,7 +887,7 @@ in
 end (*let*) // end of [list_tabulate_cfr]
 //
 (* ****** ****** *)
-
+//
 #impltmp
 <a>(*tmp*)
 list_mergesort
@@ -886,7 +898,7 @@ list_vt2t(list_mergesort_vt<a>(xs))
 list_mergesort_vt
   (xs) =
 list_vt_mergesort0<a>(list_copy_vt<a>(xs))
-
+//
 (* ****** ****** *)
 //
 #impltmp
