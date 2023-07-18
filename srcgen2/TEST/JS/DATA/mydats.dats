@@ -13,8 +13,7 @@ list_nilq
   (xs) =
 (
 case+ xs of
-|list_nil _ => true
-|list_cons _ => false
+|nil _ => true |cons _ => false
 ) (*case*) // end-of-[list_nilq(xs)]
 (* ****** ****** *)
 

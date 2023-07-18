@@ -224,6 +224,16 @@ fun
 match2a_d2con
 ( env0:
 ! tr2aenv, d2c0:d2con, t2p0:s2typ): bool
+//
+(* ****** ****** *)
+//
+fun
+match2a_d2ap1
+( env0:
+! tr2aenv, d2c0:d2con, tres:s2typ): bool
+//
+(* ****** ****** *)
+//
 fun
 match2a_d2cst
 ( env0:
@@ -246,6 +256,13 @@ fun
 match2a_d2conlst
 ( env0:
 ! tr2aenv, d2cs:d2conlst, t2p0:s2typ): d2conlst
+//
+fun
+match2a_d2ap1lst
+( env0:
+! tr2aenv, d2cs:d2conlst, t2p0:s2typ): d2conlst
+//
+(* ****** ****** *)
 //
 fun
 match2a_d2ptmlst

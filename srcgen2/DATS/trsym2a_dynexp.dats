@@ -325,6 +325,8 @@ trsym2a_d2pat(env0, d2p1) endlet
 //
 |D2Pcons _ => f0_cons(env0, d2p0)
 //
+|D2Pdap1 _ => f0_dap1(env0, d2p0)
+//
 |
 D2Pdapp
 (d2f0,npf1,d2ps) =>
@@ -493,8 +495,8 @@ val-
 D2Pcons
 (drpt, d2cs) = d2p0.node()
 //
-val t2p1 = d2p0.styp((*void*))
-val dpat = drpt.dpat((*void*))
+val t2p1 = d2p0.styp((*nil*))
+val dpat = drpt.dpat((*nil*))
 //
 (*
 val () =
@@ -517,8 +519,9 @@ D2Pnone0() =>
 let
 //
 val d2cs =
-match2a_d2conlst
-(env0, d2cs, t2p1)//val(d2cs)
+(
+  match2a_d2conlst
+  (env0, d2cs, t2p1) )//val(d2cs)
 //
 val () = prerrln
 ("\
@@ -535,6 +538,61 @@ end//end-of-let//end-of-[D2Pnone0(...)]
 (*otherwise*) => trsym2a_d2pat(env0, dpat)
 //
 end (*let*) // end of [f0_cons(env0, d2p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dap1
+( env0:
+! tr2aenv
+, d2p0: d2pat): void =
+let
+//
+val loc0 = d2p0.lctn()
+//
+val-
+D2Pdap1(d2f0) = d2p0.node()
+//
+in//let
+case+
+d2f0.node() of
+|D2Pcons
+(drpt, d2cs) =>
+let
+//
+val tres = d2p0.styp((*nil*))
+val dpat = drpt.dpat((*nil*))
+//
+in//let
+//
+case+
+dpat.node() of
+|
+D2Pnone0() =>
+let
+//
+val d2cs =
+(
+  match2a_d2ap1lst
+  (env0, d2cs, tres) )//val(d2cs)
+//
+val () = prerrln
+("\
+trsym2a_d2pat: \
+f0_dap1: d2cs(*matched*) = ", d2cs)
+//
+in//let
+(
+  d2rpt_set_dpat(drpt,dcon)) where
+{
+  val dcon = d2pat_cons(loc0, d2cs) }
+end (*let*) // end-of-[ D2Pnone0(...) ]
+| _
+(*otherwise*) => trsym2a_d2pat(env0, dpat)
+//
+end (*let*) // end of [  D2Pcons(...)  ]
+|_(*non-D2Pcons*) => (    (*nothing*)    )
+end (*let*) // end of [f0_dap1(env0, d2p0)]
 //
 (* ****** ****** *)
 //
