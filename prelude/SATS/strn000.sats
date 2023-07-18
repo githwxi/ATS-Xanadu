@@ -37,8 +37,10 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+(*
 #sexpdef strn = string0
 #sexpdef strn = string1
+*)
 (* ****** ****** *)
 //
 #typedef cgtz =

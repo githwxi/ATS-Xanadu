@@ -392,6 +392,24 @@ val () = d3exp_fpemsg(out , d3e1)
 endlet // end of [ D3Eraise(_, _) ]
 //
 |
+D3El0azy
+(dsym, d3e1) =>
+let
+val () = d3exp_fpemsg(out , d3e1)
+endlet // end of [ D3El0azy(_, _) ]
+|
+D3El1azy
+( dsym
+, d3e1, d3es) =>
+let
+  val () =
+  d3explst_fpemsg(out , d3es)
+endlet where
+{
+val () = d3exp_fpemsg(out , d3e1)
+}(*whr*)//end-[ D3El1azy(_, _, _) ]
+//
+|
 D3El2bck
 (d3e1, lab2) =>
 let
