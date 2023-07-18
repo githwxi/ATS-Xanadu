@@ -124,19 +124,20 @@ case+
 d1cl.node() of
 //
 |
+D1Cd0ecl(d0cl) => ()
+//
+|
 D1Cstatic
 (tok, d1c1) =>
 {
   val () =
-  tread01_d1ecl(d1c1)
-}
+  tread01_d1ecl(d1c1) }
 |
 D1Cextern
 (tok, d1c1) =>
 {
   val () =
-  tread01_d1ecl(d1c1)
-}
+  tread01_d1ecl(d1c1) }
 //
 |
 D1Cdefine
@@ -148,22 +149,20 @@ D1Cdefine
   val () =
   tread01_g0eid(geid)
 *)
-  val () =
-  tread01_g1marglst(gmas)
-  val () =
-  (
-    tread01_g1expopt(def1)
-  )
+val () =
+tread01_g1marglst(gmas)
+val () =
+(
+ tread01_g1expopt(def1))
 }
 |
 D1Clocal(head, body) =>
 {
-  val () =
-    tread01_d1eclist(head)
-  val () =
-    tread01_d1eclist(body)
+val () =
+  tread01_d1eclist(head)
+val () =
+  tread01_d1eclist(body)
 } (* end of [D1Clocal] *)
-//
 //
 |
 D1Cinclude
