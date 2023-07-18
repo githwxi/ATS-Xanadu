@@ -417,6 +417,18 @@ endlet // end of [d3pat_tapq_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3pat_dap1_errck
+(loc0: loc_t
+,d3f0: d3pat): d3pat =
+let
+val lvl0 = errvl(d3f0) in//let
+d3pat_errck
+(lvl0+1, d3pat(loc0, D3Pdap1( d3f0 )))
+endlet // end of [d3pat_dap1_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3pat_dapp_errck
 (loc0: loc_t
 ,d3f0: d3pat
@@ -564,6 +576,7 @@ val lvl0 = errvl(d3f0) in//let
 d3exp_errck
 (lvl0+1, d3exp(loc0, D3Edap0( d3f0 )))
 endlet // end of [d3exp_dap0_errck(...)]
+//
 fun
 d3exp_dapp_errck
 (loc0: loc_t
@@ -969,6 +982,7 @@ d3p0.node() of
 //
 |D3Ptapq _ => f0_tapq(d3p0, err)
 //
+|D3Pdap1 _ => f0_dap1(d3p0, err)
 |D3Pdapp _ => f0_dapp(d3p0, err)
 //
 |D3Ptup0 _ => f0_tup0(d3p0, err)
@@ -1095,8 +1109,41 @@ in//let
 if
 (err=e00)
 then (d3p) else
-d3pat_tapq_errck(d3p.lctn(),d3f0,tjas)
+let
+val loc = d3p.lctn() in
+d3pat_tapq_errck(loc, d3f0, tjas)
+end (*let*) // end-of-[else]
 end (*let*) // end of [f0_tapq(d3p,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dap1
+(d3p: d3pat
+,err: &sint >> _): d3pat =
+let
+//
+val e00 = err
+//
+val-
+D3Pdap1(d3f0) = d3p.node()
+//
+val
+d3f0 = tread23_d3pat(d3f0, err)
+//
+val () =
+(
+case+
+d3f0.node() of
+|D3Pcon(d2c1) => ( (*void*) )
+|_(*non-D3Pcon*) => err := err+1)
+//
+in//let
+if
+(err=e00)
+then (d3p) else
+d3pat_dap1_errck(d3p.lctn(), d3f0)
+end (*let*) // end of [f0_dap1(d3p,err)]
 //
 (* ****** ****** *)
 //
@@ -1122,7 +1169,7 @@ if
 then (d3p) else
 let
 val loc = d3p.lctn() in
-d3pat_dapp_errck( loc,d3f0,npf1,d3ps )
+d3pat_dapp_errck(loc,d3f0,npf1,d3ps)
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_dapp(d3p,err)]
 //

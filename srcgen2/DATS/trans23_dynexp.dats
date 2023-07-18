@@ -192,6 +192,7 @@ d3pat_make_styp_node
 //
 |D2Pcons _ => f0_cons(env0, d2p0)
 //
+|D2Pdap1 _ => f0_dap1(env0, d2p0)
 |D2Pdapp _ => f0_dapp(env0, d2p0)
 //
 |D2Ptup0 _ => f0_tup0(env0, d2p0)
@@ -315,6 +316,41 @@ D2Pcons
 in//let
   trans23_d2pat(env0, drpt.dpat())
 end (*let*)//end-of-[f0_cons(env0,d2p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dap1
+( env0:
+! tr23env
+, d2p0: d2pat): d3pat =
+let
+//
+val loc0 = d2p0.lctn()
+//
+val-
+D2Pdap1(d2f0) = d2p0.node()
+//
+val
+d3f0 =
+trans23_d2pat(env0, d2f0)
+val
+d3f0 = d3pat_sapqize(d3f0)
+//
+val tfun = d3f0.styp((*nil*))
+//
+val tres =
+(
+case+
+tfun.node() of
+| T2Pfun1
+(_, _, _, tres) => tres
+| _
+(*non-T2Pfun1*) => s2typ_none0())
+//
+in//let
+  d3pat(loc0, tres, D3Pdap1(d3f0))
+end (*let*) // end of [f0_dap1(env0,d2p0)]
 //
 (* ****** ****** *)
 //

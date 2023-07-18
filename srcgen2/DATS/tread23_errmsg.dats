@@ -100,6 +100,12 @@ val () =
 d3pat_fpemsg(out, d3f0) endlet
 //
 |
+D3Pdap1(d3f0) =>
+let
+val () =
+d3pat_fpemsg(out, d3f0) endlet
+//
+|
 D3Pdapp
 (d3f0,npf1,d3ps) =>
 let

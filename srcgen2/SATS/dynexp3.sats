@@ -275,6 +275,8 @@ d3pat_node =
 //
 |D3Ptapq of (d3pat, t2jaglst)
 //
+|D3Pdap1 of (d3pat) // argless
+//
 |
 D3Pdapp of
 ( d3pat
