@@ -96,6 +96,35 @@ match2a_s2typ
 (* ****** ****** *)
 
 #implfun
+match2a_d2ap1
+(env0, d2c1, t2p2) =
+match2a_s2typ
+(env0, t2p1, t2p2) where
+{
+//
+  val tfun = d2con_get_xtyp(d2c1)
+//
+  val t2p1 = // [t2p1] is the result
+  (
+  case- tfun.node() of
+  |T2Pfun1(_,_,_,tres) => tres): s2typ
+//
+(*
+  val (  ) =
+  prerrln("match2a_d2ap1: d2c1 = ", d2c1)
+  val (  ) =
+  prerrln("match2a_d2ap1: tfun = ", tfun)
+  val (  ) =
+  prerrln("match2a_d2ap1: t2p1 = ", t2p1)
+  val (  ) =
+  prerrln("match2a_d2ap1: t2p2 = ", t2p2)
+*)
+//
+} (*where*) // end of [match2a_d2ap1(env0,...)]
+
+(* ****** ****** *)
+
+#implfun
 match2a_d2cst
 (env0, d2c1, t2p2) =
 match2a_s2typ
@@ -284,7 +313,7 @@ end (*let*) // end of [D2PTMsome(...)]
 
 #implfun
 match2a_d2conlst
-(env0, d2cs, t2p2) =
+(env0, d2cs, tfun) =
 (
 case+ d2cs of
 |
@@ -294,7 +323,7 @@ list_nil(*void*)
 list_cons(d2c1, d2cs) =>
 let
 val dopt =
-match2a_d2con(env0, d2c1, t2p2)
+match2a_d2con(env0, d2c1, tfun)
 in//let
 if
 dopt // true or false
@@ -302,18 +331,47 @@ then
 list_cons
 (
 d2c1,
-match2a_d2conlst(env0, d2cs, t2p2))
+match2a_d2conlst(env0, d2cs, tfun))
 else
 (
-match2a_d2conlst(env0, d2cs, t2p2))
+match2a_d2conlst(env0, d2cs, tfun))
 end (*let*) // end of [list_cons(d2c1,d2cs)]
 ) (*case+*) // end of [match2a_d2conlst(env0,...)]
 
 (* ****** ****** *)
 
 #implfun
+match2a_d2ap1lst
+(env0, d2cs, tres) =
+(
+case+ d2cs of
+|
+list_nil() =>
+list_nil(*void*)
+|
+list_cons(d2c1, d2cs) =>
+let
+val dopt =
+match2a_d2ap1(env0, d2c1, tres)
+in//let
+if
+dopt // true or false
+then
+list_cons
+(
+d2c1,
+match2a_d2ap1lst(env0, d2cs, tres))
+else
+(
+match2a_d2ap1lst(env0, d2cs, tres))
+end (*let*) // end of [list_cons(d2c1,d2cs)]
+) (*case+*) // end of [match2a_d2ap1lst(env0,...)]
+
+(* ****** ****** *)
+
+#implfun
 match2a_d2ptmlst
-(env0, dpis, t2p2) =
+(env0, dpis, t2p0) =
 (
 case+ dpis of
 |
@@ -323,16 +381,16 @@ list_nil(*void*)
 list_cons(dpi1, dpis) =>
 let
 val dopt =
-match2a_d2ptm(env0, dpi1, t2p2)
+match2a_d2ptm(env0, dpi1, t2p0)
 in//let
 case+ dopt of
 |
 optn_nil() =>
-match2a_d2ptmlst(env0, dpis, t2p2)
+match2a_d2ptmlst(env0, dpis, t2p0)
 |
 optn_cons(dpi1) =>
 list_cons
-(dpi1, match2a_d2ptmlst(env0, dpis, t2p2)) end
+(dpi1, match2a_d2ptmlst(env0, dpis, t2p0)) end
 ) (*case+*) // end of [match2a_d2ptmlst(env0,...)]
 
 (* ****** ****** *)

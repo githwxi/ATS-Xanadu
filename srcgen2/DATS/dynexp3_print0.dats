@@ -138,6 +138,11 @@ D3Ptapq
 print("D3Ptapq(",d3p1,";",tjas,")")
 //
 |
+D3Pdap1(d3f0) =>
+(
+  print("D3Pdap1(", d3f0, ")"))
+//
+|
 D3Pdapp
 (d3f0, npf1, d3ps) =>
 (
