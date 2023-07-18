@@ -149,11 +149,26 @@ val map = the_xsymbls
 //
 in//let
 XATS2JS_jsobjmap_insert_any<key>(map,k0,x0)
-end (*let*) // end of [the_xsymbls_insert(sym)]
+end (*let*)//end of [the_xsymbls_insert(sym)]
 
 (* ****** ****** *)
 
-end (*local*) // end of [local(the_xsymbls)]
+end (*local*) // end of [local(the_xsymbls_...)]
+
+(* ****** ****** *)
+
+local
+
+(*
+HX-2023-07-18; nothing
+*)
+
+in//local
+
+#implfun
+the_xatsopt_include() = list_nil( (*void*) )
+
+end (*local*) // end-[local(the_xatsopt_include)]
 
 (* ****** ****** *)
 
@@ -239,8 +254,7 @@ in//let
   topmap_search_opt(topmap, key)
 end (*let*) // [the_fxtyenv_pvsfind]
 //
-end (*local*)
-// end of [the_fxtyenv_pvs(load|find)]
+endloc // end of [the_fxtyenv_pvs(load|find)]
 //
 (* ****** ****** *)
 
@@ -271,7 +285,7 @@ the_sexpenv_pvs() = (the_sexpenv)
 #implfun
 the_dexpenv_pvs() = (the_dexpenv)
 //
-end (*local*) // end of [local(the_(tsd)env_pvs)]
+end(*loc*) // end of [local(the_(tsd)env_pvs)]
 
 (* ****** ****** *)
 
@@ -503,7 +517,7 @@ end (*let*) // end of [the_dexpenv_pvsmrgw(map)]
 
 (* ****** ****** *)
 
-end (*local*) // end of [local(the_(tsd)env_pvsmrgw)]
+end(*loc*) // end of [local(the_(tsd)env_pvsmrgw)]
 
 (* ****** ****** *)
 
@@ -922,7 +936,7 @@ prerrln
 //
 (* ****** ****** *)
 //
-end (*local*) // end of [the_tr12env_pvs(load|find)]
+end(*loc*) // end of [the_tr12env_pvs(load|find)]
 
 (* ****** ****** *)
 
@@ -946,9 +960,9 @@ val kxs = a0ref_get(the_list)
 in
 a0ref_set
 (the_list, list_cons(@(k0, x0), kxs))
-end (*let*)//end-[the_sortenv_allist_add0]
+end(*let*) // end-[the_sortenv_allist_add0]
 //
-end (*local*) // end of [local(the_sortenv_allist)]
+end(*loc*) // end of [local(the_sortenv_allist)]
 
 (* ****** ****** *)
 
@@ -983,7 +997,7 @@ topmap_insert_any(the_d1parenv, key, itm)
 the_d2parenv_pvsadd0(key, itm) =
 topmap_insert_any(the_d2parenv, key, itm)
 (* ****** ****** *)
-end (*local*) // end-[local(the_d1parenv/d2parenv)]
+end (*loc*) // end-[local(the_d1parenv/d2parenv)]
 
 (* ****** ****** *)
 
@@ -1009,7 +1023,7 @@ a0ref_set
 (the_list, list_cons(@(k0, x0), kxs))
 end (*let*)//end-[the_sexpenv_allist_add0]
 //
-end (*local*) // end of [local(the_sexpenv_allist)]
+end (*loc*) // end of [local(the_sexpenv_allist)]
 
 (* ****** ****** *)
 
@@ -1035,7 +1049,7 @@ a0ref_set
 (the_list, list_cons(@(k0, x0), kxs))
 end (*let*)//end-[the_dexpenv_allist_add0]
 //
-end (*local*) // end of [local(the_dexpenv_allist)]
+end (*loc*) // end of [local(the_dexpenv_allist)]
 
 (* ****** ****** *)
 #implfun
