@@ -1135,7 +1135,8 @@ val () =
 (
 case+
 d3f0.node() of
-|D3Pcon(d2c1) => ( (*void*) )
+|D3Pcon _ => ( (*void*) )
+|D3Ptapq _ => ( (*void*) )
 |_(*non-D3Pcon*) => err := err+1)
 //
 in//let

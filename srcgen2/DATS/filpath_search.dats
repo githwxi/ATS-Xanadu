@@ -340,4 +340,26 @@ end (*let*)//end-[fsrch_dir1base(dir0, base)]
 
 (* ****** ****** *)
 
+#implfun
+fsrch_dirsbase
+  (dirs, base) =
+(
+case+ dirs of
+|list_nil() =>
+ optn_nil((*void*))
+|list_cons(dir1, dirs) =>
+let
+val fopt =
+fsrch_dir1base(dir1, base)
+in//let
+case+ fopt of
+|
+optn_nil() =>
+fsrch_dirsbase
+( dirs, base ) | optn_cons _ => fopt
+end (*let*) // end of [list_cons(...)]
+) (*case+*)//end-[fsrch_dirsbase(dirs, base)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_filpath_search.dats] *)
