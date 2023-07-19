@@ -794,14 +794,16 @@ D2Eaddr
 let
 val () =
   trsym2a_d2exp(env0 , d2e1) end
+//
 |
-D2Efold
+D2Eeval
 (   d2e1   ) =>
 let
 val () =
   trsym2a_d2exp(env0 , d2e1) end
+//
 |
-D2Eeval
+D2Efold
 (   d2e1   ) =>
 let
 val () =
