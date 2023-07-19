@@ -1271,7 +1271,8 @@ in//let
 //
 if
 isARRW(s1f0)
-then let
+then
+let//let
 //
 val s2es =
 (
@@ -1290,10 +1291,12 @@ trans12_s1explst_impr(env0,ses1)
 val ses2 =
 trans12_s1explst_prgm(env0,ses2)
 }
-| _(*non-S1El?st*) =>
+|
+_(*non-S1El?st*) =>
 list_sing
 (
-  trans12_s1exp_impr(env0, s1e1) )
+  trans12_s1exp_impr(env0, s1e1)
+)
 ) : s2explst // end-of-[val(s2es)]
 //
 val npf1 =
@@ -1302,7 +1305,9 @@ case+
 s1e1.node() of
 |
 S1El2st(xs, _) =>
-list_length(xs) | _ => -1): sint
+list_length(xs)
+|
+_(*non-S1El2st*) => (-1) ): sint
 //
 in//let
   s2exp_fun1_all
@@ -1313,19 +1318,38 @@ in//let
 end // end of [then]
 else
 (
+if
+isAXCG(s1f0)
+then
+(
+s2exp_make_node
+( s2t0
+, S2Eatx2(s2e1, s2e2))) where
+{
+  val
+  s2t0 = the_sort2_vwtp(*0*)
+  val
+  s2e1 =
+  trans12_s1exp_impr(env0, s1e1)
+  val
+  s2e2 =
+  trans12_s1exp_impr(env0, s1e2)
+} (* end of [then] *)
+else
+(
 case+
 s1f0.node() of
 |
-_ (* non-S2Earrw(...) *) =>
+_(*non-ARRW-AXCG*) =>
 let
 val
 s2f0 =
 trans12_s1exp(env0, s1f0)
 in//let
-(
-f0_a2pp_els1( env0 , s1e0 , s2f0 ))
+  f0_a2pp_els1(env0, s1e0, s2f0)
 end (*let*) // end of [non-S2Earrw]
-) (*case+*) // end of-else // end-of-if
+) // end-of-else // end-of-if(isAXCG)
+) // end-of-else // end-of-if(isARRW)
 //
 end (*let*) // end of [f0_a2pp_els0(...)]
 

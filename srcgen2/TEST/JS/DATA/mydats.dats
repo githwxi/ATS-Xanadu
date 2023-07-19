@@ -5,7 +5,8 @@ mycopy(x0: !x0): x0 = x0
 (* ****** ****** *)
 fun
 <x0:vt>
-mycprf(x0: &x0): x0 = x0
+mycprf
+(x0: &x0 >> x0): x0 = x0
 (* ****** ****** *)
 fun
 <x0:vt>

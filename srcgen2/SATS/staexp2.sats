@@ -552,11 +552,10 @@ S2Ecsts of (s2cstlst)//constants
 |
 S2Earg1 of // HX: knd: 0/1/-1: 
 (sint(*knd*), s2exp) // cbv0/v1/rf
-(*
+//
 |
 S2Eatx2 of // HX: bef: 0/1/-1:
 (s2exp(*bef*), s2exp(*aft*))//trans
-*)
 //
 |
 S2Eapps of

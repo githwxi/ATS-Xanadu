@@ -445,6 +445,17 @@ topz_vt_t0(a: vt) <= a
 #sexpdef ?! = topz_vt_t0
 //
 (* ****** ****** *)
+(*
+//
+HX-2023-07-18:
+This is not working due
+to the special use of (_)
+//
+#absvwtp
+atx2_vt_vt_vt(a:vt,b:vt)<=a
+#sexpdef >> = atx2_vt_vt_vt
+*)
+(* ****** ****** *)
 #typedef
 void = $extype("xats_void_t")
 (* ****** ****** *)
