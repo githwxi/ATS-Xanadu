@@ -497,6 +497,8 @@ d3exp_node =
 |D3Edapp of
  (d3exp,sint(*npf*),d3explst)
 //
+|D3Epcon of
+ (token, label, d3exp(*tup*))
 |D3Eproj of
  (token, label, d3exp(*tup*))
 //

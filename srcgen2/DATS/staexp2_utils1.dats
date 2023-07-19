@@ -454,19 +454,36 @@ case+ xs2 of
 ) (*case+*) // end of [lte_sort2lst_sort2lst(...)]
 //
 (* ****** ****** *)
+#implfun
+s2cst_linq(s2c0) =
+sort2_linq(s2c0.sort())
+#implfun
+s2cst_prfq(s2c0) =
+sort2_prfq(s2c0.sort())
+#implfun
+s2cst_imprq(s2c0) =
+sort2_imprq(s2c0.sort())
+#implfun
+s2cst_prgmq(s2c0) =
+sort2_prgmq(s2c0.sort())
+(* ****** ****** *)
 //
 #implfun
 s2exp_linq(s2e0) =
-sort2_linq(s2e0.sort())
+(
+sort2_linq(s2e0.sort()))
 #implfun
 s2exp_prfq(s2e0) =
-sort2_prfq(s2e0.sort())
+(
+sort2_prfq(s2e0.sort()))
 #implfun
 s2exp_imprq(s2e0) =
-sort2_imprq(s2e0.sort())
+(
+sort2_imprq(s2e0.sort()))
 #implfun
 s2exp_prgmq(s2e0) =
-sort2_prgmq(s2e0.sort())
+(
+sort2_prgmq(s2e0.sort()))
 //
 #implfun
 s2explst_linq(s2es) =

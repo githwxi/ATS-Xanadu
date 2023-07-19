@@ -915,9 +915,10 @@ d2exp_node =
 //
 |
 D2Eproj of
-(token,d2rxp,label,d2exp(*tup*))
+( token
+, d2rxp, label, d2exp(*tup*) )
 //
-|D2Elet0 of (d2eclist, d2exp)
+|D2Elet0 of ( d2eclist, d2exp )
 |
 D2Eift0 of
 (d2exp(*cond*)
