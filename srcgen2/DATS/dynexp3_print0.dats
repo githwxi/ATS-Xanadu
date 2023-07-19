@@ -213,8 +213,8 @@ print("D3Ec00(",chr,")")
 |D3Es00(str) =>
 print("D3Es00(",str,")")
 //
-|D3Etop(tok) =>
-print("D3Etop(", tok, ")")
+|D3Etop(sym) =>
+print("D3Etop(", sym, ")")
 //
 |D3Evar(d2v) =>
 print("D3Evar(", d2v, ")")
@@ -331,14 +331,14 @@ D3Eflat
 print("D3Eflat(",d3e1,")") // left-val
 //
 |
-D3Efold
-(   d3e1   ) =>
-print("D3Efold(",d3e1,")") // open-con
-//
-|
 D3Eeval
 (   d3e1   ) =>
 print("D3Eeval(",d3e1,")") // eval-fun
+//
+|
+D3Efold
+(   d3e1   ) =>
+print("D3Efold(",d3e1,")") // open-con
 |
 D3Efree
 (   d3e1   ) =>

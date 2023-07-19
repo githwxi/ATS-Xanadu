@@ -960,8 +960,8 @@ D2Etry0 of
 , d2exp(*norm*), d2clslst(*handles*))
 //
 |D2Eaddr of (d2exp)//left-val//$addr
-|D2Efold of (d2exp)//open-con//$fold
 |D2Eeval of (d2exp)//eval-fun//$eval
+|D2Efold of (d2exp)//open-con//$fold
 |D2Efree of (d2exp)//free-fun//$free
 //
 |
