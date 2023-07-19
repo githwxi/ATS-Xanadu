@@ -515,7 +515,8 @@ in
 end
 |
 S2Efun
-(fc2, npf, s2es, s2e1) =>
+( fc2
+, npf, s2es, s2e1) =>
 let
 val
 s2es =
@@ -531,8 +532,14 @@ in
   ( s2t0, S2Efun( fc2, npf, s2es, s2e1 ) )
 end
 //
+(*
+HX-2023-07-18:
+should casts be handled?
+*)
+//
 |
-S2Eexi(s2vs, s2ps, body) =>
+S2Eexi
+(s2vs, s2ps, body) =>
 if
 s2varlst_ismem
 ( s2vs, s2v1 )
