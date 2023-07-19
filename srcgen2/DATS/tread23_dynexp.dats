@@ -1395,6 +1395,7 @@ d3e0.node() of
 //
 |D3Eeval _ => f0_eval(d3e0, err)
 //
+|D3Efold _ => f0_fold(d3e0, err)
 |D3Efree _ => f0_free(d3e0, err)
 //
 |D3Edp2tr _ => f0_dp2tr(d3e0, err)
