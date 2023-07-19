@@ -174,6 +174,11 @@ s2typ_node =
 |
 T2Parg1 of // HX: knd: 0/1/-1: 
 (sint(*knd*), s2typ) // cbv0/v1/rf
+(*
+|
+T2Patx2 of // HX: knd: 0/1/-1: 
+(s2typ(*bef*), s2typ) // cbv0/v1/rf
+*)
 //
 |
 T2Papps of
