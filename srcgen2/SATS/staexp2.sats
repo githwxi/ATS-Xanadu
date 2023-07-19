@@ -843,6 +843,23 @@ mat_sort2lst_sort2lst:
 (* ****** ****** *)
 (*
 // HX-2022-10-25:
+// s2cst-utility functions
+*)
+//
+fun
+s2cst_linq(s2cst): bool
+fun
+s2cst_prfq(s2cst): bool
+fun
+s2cst_dataq(s2cst): bool
+fun
+s2cst_imprq(s2cst): bool
+fun
+s2cst_prgmq(s2cst): bool
+//
+(* ****** ****** *)
+(*
+// HX-2022-10-25:
 // s2exp-utility functions
 *)
 (* ****** ****** *)
