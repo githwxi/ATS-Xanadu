@@ -403,14 +403,12 @@ s2typ_make_node
 ( s2t1, T2Parg1(knd0, t2p1) )
 end (*let*) // end of [S2Earg1]
 //
-(*
 |S2Eatx2
 (s2e1, s2e2) =>
 let
 val
 t2p1 = f0_impr(s2e1) in t2p1
 end (*let*) // end of [S2Eatx2]
-*)
 //
 |
 S2Eapps

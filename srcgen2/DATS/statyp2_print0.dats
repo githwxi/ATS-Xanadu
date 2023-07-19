@@ -116,7 +116,14 @@ print("T2Pxtv(", xtp1, ")")
 //
 |
 T2Parg1(knd0,t2p1) =>
-print("T2Parg1(",knd0,";",t2p1,")")
+(
+  print("T2Parg1(",knd0,";",t2p1,")"))
+(*
+|
+T2Patx2(tbef,taft) =>
+(
+  print("T2Patx1(",tbef,";",taft,")"))
+*)
 //
 |
 T2Papps(tfun, t2ps) =>
