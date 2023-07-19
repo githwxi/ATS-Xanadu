@@ -802,9 +802,10 @@ d2e0.node() of
 |D2Etry0 _ => f0_try0(env0, d2e0)
 //
 |D2Eaddr _ => f0_addr(env0, d2e0)
-(*
+//
 |D2Efold _ => f0_fold(env0, d2e0)
-*)
+|D2Efree _ => f0_free(env0, d2e0)
+//
 |D2Eeval _ => f0_eval(env0, d2e0)
 //
 |D2Ewhere _ => f0_where(env0, d2e0)
@@ -1972,6 +1973,56 @@ the_s2typ_p2tr1(d2e1.styp())
 in//let
   d2exp(loc0, t2p0, D2Eaddr(d2e1))
 end (*let*) // end of [f0_addr(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fold
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Efold
+(  d2e1  ) = d2e0.node()
+//
+val
+d2e1 =
+trans2a_d2exp(env0, d2e1)
+//
+val
+t2p0 = the_s2typ_void((*0*))
+//
+in//let
+  d2exp(loc0, t2p0, D2Efold(d2e1))
+end (*let*) // end of [f0_fold(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_free
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Efree
+(  d2e1  ) = d2e0.node()
+//
+val
+d2e1 =
+trans2a_d2exp(env0, d2e1)
+//
+val
+t2p0 = the_s2typ_void((*0*))
+//
+in//let
+  d2exp(loc0, t2p0, D2Efree(d2e1))
+end (*let*) // end of [f0_free(env0,...)]
 //
 (* ****** ****** *)
 //
