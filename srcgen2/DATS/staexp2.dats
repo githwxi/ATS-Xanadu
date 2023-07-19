@@ -744,6 +744,9 @@ case+ 0 of
 | _ when
   isCBV1(s2f0) =>
   f0_cbv1(loc0, s2es)
+| _ when
+  isCBRF(s2f0) =>
+  f0_cbrf(loc0, s2es)
 //
 | _(*otherwise*) =>
   s2exp_apps(loc0, s2f0, s2es)
@@ -756,13 +759,20 @@ S2Ecbv0
 ( s2e1
 : s2exp): s2exp_node =
 (
-  S2Earg1(0(*knd*), s2e1))
+ S2Earg1(0(*knd*), s2e1))
 fun
 S2Ecbv1
 ( s2e1
 : s2exp): s2exp_node =
 (
-  S2Earg1(1(*knd*), s2e1))
+ S2Earg1(1(*knd*), s2e1))
+fun
+S2Ecbrf
+( s2e1
+: s2exp): s2exp_node =
+(
+ S2Earg1(-1(*knd*), s2e1)
+)(*end-of-[S2Ecbrf(s2e1)]*)
 //
 fun
 f1_test
@@ -811,6 +821,11 @@ isCBV1
 (s2f0: s2exp): bool =
 f1_test
 (s2f0, CBV1_VT_VT_symbl)
+fun
+isCBRF
+(s2f0: s2exp): bool =
+f1_test
+(s2f0, CBRF_VT_VT_symbl)
 //
 fun
 f0_top0
@@ -883,6 +898,21 @@ in//let
 s2exp_make_node
 (s2e1.sort((*void*)), S2Ecbv1(s2e1))
 end (*let*) // end of [f0_cbv1(...)]
+//
+fun
+f0_cbrf
+( loc0: loc_t
+, s2es: s2explst): s2exp =
+let
+val s2e1 =
+(
+case- s2es of
+|
+list_cons(s2e1, _) => s2e1): s2exp
+in//let
+s2exp_make_node
+(s2e1.sort((*void*)), S2Ecbrf(s2e1))
+end (*let*) // end of [f0_cbrf(...)]
 //
 val () =
 prerrln("s2exp_apps_pq: s2f0 = ", s2f0)

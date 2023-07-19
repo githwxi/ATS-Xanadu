@@ -430,8 +430,11 @@ ofs(a:vt,l:cs) = offset_vt_cs(a,l)
 cbv0_vt_vt(a: vt) <= a
 #absvwtp
 cbv1_vt_vt(a: vt) <= a
+#absvwtp
+cbrf_vt_vt(a: vt) <= a
 #sexpdef ~ = cbv0_vt_vt
 #sexpdef ! = cbv1_vt_vt
+#sexpdef & = cbrf_vt_vt
 //
 #abstype
 top0_vt_t0(a: vt) <= a

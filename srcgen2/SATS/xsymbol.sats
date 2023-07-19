@@ -217,16 +217,19 @@ val
 L1AZY_VTBX_symbl: symbl //=symbl("lazy_vt_vx")
 
 (* ****** ****** *)
-
+//
 val
 CBV0_VT_VT_symbl: symbl //=symbl("cbv0_vt_vt")
 val
 CBV1_VT_VT_symbl: symbl //=symbl("cbv1_vt_vt")
 val
+CBRF_VT_VT_symbl: symbl //=symbl("cbrf_vt_vt")
+//
+val
 TOP0_VT_T0_symbl: symbl //=symbl("top0_vt_t0")
 val
 TOPZ_VT_T0_symbl: symbl //=symbl("topz_vt_t0")
-
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xsymbol.sats] *)
