@@ -1342,6 +1342,8 @@ d2e0.node() of
 |D2Econ _ => d2e0
 |D2Ecst _ => d2e0
 //
+|D2Etop _ => d2e0
+//
 |D2Econs _ => d2e0
 |D2Ecsts _ => d2e0
 //

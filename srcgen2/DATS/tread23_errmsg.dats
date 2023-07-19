@@ -223,12 +223,12 @@ d3e.node() of
 |D3Eflt _ => ()
 |D3Estr _ => ()
 //
-|D3Etop _ => ()
-//
 |D3Evar _ => ()
 //
 |D3Econ _ => ()
 |D3Ecst _ => ()
+//
+|D3Etop _ => ()
 //
 |
 D3Etapp

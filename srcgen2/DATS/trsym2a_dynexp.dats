@@ -635,6 +635,10 @@ case+
 d2e0.node() of
 //
 (*
+| D2Evar _ => ()
+*)
+//
+(*
 | D2Eint _ => ()
 | D2Ei00 _ => ()
 | D2Ebtf _ => ()
@@ -648,9 +652,12 @@ d2e0.node() of
 *)
 //
 (*
-| D2Evar _ => ()
 | D2Econ _ => ()
 | D2Ecst _ => ()
+*)
+//
+(*
+| D2Etop _ => ()
 *)
 //
 |D2Esym0 _ =>

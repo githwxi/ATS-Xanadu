@@ -757,6 +757,8 @@ in//let
 case+
 d2e0.node() of
 //
+|D2Evar _ => f0_var(env0, d2e0)
+//
 |D2Eint _ => f0_int(env0, d2e0)
 |D2Ei00 _ => f0_i00(env0, d2e0)
 //
@@ -769,10 +771,10 @@ d2e0.node() of
 |D2Estr _ => f0_str(env0, d2e0)
 |D2Es00 _ => f0_s00(env0, d2e0)
 //
-|D2Evar _ => f0_var(env0, d2e0)
-//
 |D2Econ _ => f0_con(env0, d2e0)
 |D2Ecst _ => f0_cst(env0, d2e0)
+//
+|D2Etop _ => f0_top(env0, d2e0)
 //
 |D2Esym0 _ => f0_sym0(env0, d2e0)
 //
@@ -800,6 +802,9 @@ d2e0.node() of
 |D2Etry0 _ => f0_try0(env0, d2e0)
 //
 |D2Eaddr _ => f0_addr(env0, d2e0)
+(*
+|D2Efold _ => f0_fold(env0, d2e0)
+*)
 |D2Eeval _ => f0_eval(env0, d2e0)
 //
 |D2Ewhere _ => f0_where(env0, d2e0)
@@ -1054,6 +1059,29 @@ val (  ) = prerrln
 ("f0_cst: tqas = ", d2c1.tqas())
 *)
 }(*where*) // end of [f0_cst(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_top
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+//
+val loc0 = d2e0.lctn()
+//
+val-
+D2Etop(sym1) = d2e0.node()
+//
+in//let
+(
+d2exp_make_styp_node
+( loc0
+, t2p0, D2Etop(sym1))) where
+{ val
+  t2p0 = s2typ_new0_x2tp(loc0) }
+end (*let*) // end of [f0_top(env0,...)]
 //
 (* ****** ****** *)
 //

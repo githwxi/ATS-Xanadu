@@ -480,7 +480,7 @@ d3exp_node =
 |D3Ef00 of (char) // float
 |D3Es00 of (strn) // string
 //
-|D3Etop of (token)
+|D3Etop of (sym_t)
 //
 |D3Evar of (d2var)
 //
@@ -539,9 +539,9 @@ two attributes of left values
 |D3Eaddr of (d3exp)//left-val-address
 |D3Eflat of (d3exp)//left-val-content
 //
-|D3Efold of (d3exp)//open-con-folding
-//
 |D3Eeval of (d3exp)//eval-builtin-fun
+//
+|D3Efold of (d3exp)//open-con-folding
 |D3Efree of (d3exp)//free-builtin-fun
 //
 |D3Edp2tr of (d3exp)//p2tr-dereference

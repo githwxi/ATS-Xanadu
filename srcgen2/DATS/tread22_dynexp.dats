@@ -711,6 +711,18 @@ endlet // end of [d2exp_eval_errck(...)]
 (* ****** ****** *)
 //
 fun
+d2exp_fold_errck
+( loc0: loc_t
+, d2e1: d2exp): d2exp =
+let
+val lvl0 = errvl(d2e1) in//let
+d2exp_errck
+( lvl0+1, d2exp(loc0, D2Efold( d2e1 )))
+endlet // end of [d2exp_fold_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d2exp_free_errck
 ( loc0: loc_t
 , d2e1: d2exp): d2exp =
@@ -1192,6 +1204,8 @@ d2e0.node() of
 |D2Econ _ => d2e0
 |D2Ecst _ => d2e0
 //
+|D2Etop _ => d2e0
+//
 |D2Econs _ => d2e0
 |D2Ecsts _ => d2e0
 //
@@ -1221,7 +1235,10 @@ d2e0.node() of
 |D2Etry0 _ => f0_try0(d2e0, err)
 //
 |D2Eaddr _ => f0_addr(d2e0, err)
+//
 |D2Eeval _ => f0_eval(d2e0, err)
+//
+|D2Efold _ => f0_fold(d2e0, err)
 |D2Efree _ => f0_free(d2e0, err)
 //
 |D2Ewhere _ => f0_where(d2e0, err)
@@ -1747,6 +1764,31 @@ if
 then (d2e) else
 d2exp_eval_errck( d2e.lctn(), d2e1 )
 end (*let*) // end of [f0_eval(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fold
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Efold
+(  d2e1  ) = d2e.node()
+//
+val
+d2e1 =
+tread22_d2exp(d2e1, err)
+//
+in//let
+if
+(err=e00)
+then (d2e) else
+d2exp_fold_errck( d2e.lctn(), d2e1 )
+end (*let*) // end of [f0_fold(d2e,err)]
 //
 (* ****** ****** *)
 //

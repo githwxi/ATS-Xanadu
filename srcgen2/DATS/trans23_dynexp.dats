@@ -564,6 +564,11 @@ case+
 d2e0.node() of
 //
 |
+D2Evar _ =>
+(
+  f0_var(env0, d2e0))
+//
+|
 D2Eint(tok) =>
 (
 d3exp_make_styp_node
@@ -589,10 +594,10 @@ D2Estr(tok) =>
 d3exp_make_styp_node
 (loc0, t2p0, D3Estr(tok)))
 //
-|D2Evar _ => f0_var(env0, d2e0)
-//
 |D2Econ _ => f0_con(env0, d2e0)
 |D2Ecst _ => f0_cst(env0, d2e0)
+//
+|D2Etop _ => f0_top(env0, d2e0)
 //
 |D2Esym0 _ => f0_sym0(env0, d2e0)
 //
@@ -642,7 +647,6 @@ endlet where
 {
 //
 (* ****** ****** *)
-//
 //
 fun
 f0_var
@@ -706,6 +710,29 @@ D2Ecst(d2c1) = d2e0.node()
 in//let
   d2cst23_tapqize(loc0, d2c1) endlet
 //(*let*)//end-of-[f0_cst(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_top
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+//
+val-
+D2Etop(sym1) = d2e0.node()
+//
+in//let
+(
+d3exp_make_styp_node
+( loc0
+, t2p0, D3Etop(sym1))) where
+{ val
+  t2p0 = s2typ_new0_x2tp(loc0) }
+end (*let*) // end of [f0_top(env0,...)]
 //
 (* ****** ****** *)
 //
