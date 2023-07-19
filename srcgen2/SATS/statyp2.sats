@@ -215,6 +215,13 @@ T2Ptrcd of
 // HX-2022-11-04: end of [datatype(s2typ_node)
 //
 (* ****** ****** *)
+fun
+s2typ_linq(s2typ): bool
+fun
+s2typ_prfq(s2typ): bool
+fun
+s2typ_dataq(s2typ): bool
+(* ****** ****** *)
 //
 fun
 s2typ_fprint:(FILR,s2typ)->void

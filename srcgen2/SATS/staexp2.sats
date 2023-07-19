@@ -851,11 +851,12 @@ s2cst_linq(s2cst): bool
 fun
 s2cst_prfq(s2cst): bool
 fun
-s2cst_dataq(s2cst): bool
-fun
 s2cst_imprq(s2cst): bool
 fun
 s2cst_prgmq(s2cst): bool
+//
+fun
+s2cst_dataq(s2cst): bool
 //
 (* ****** ****** *)
 (*
@@ -872,6 +873,9 @@ fun
 s2exp_imprq(s2exp): bool
 fun
 s2exp_prgmq(s2exp): bool
+//
+fun
+s2exp_dataq(s2exp): bool
 //
 fun
 s2explst_linq(s2explst): bool

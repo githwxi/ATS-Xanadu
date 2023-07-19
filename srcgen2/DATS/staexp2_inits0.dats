@@ -492,6 +492,14 @@ topmap_make_nil{d2conlst}()
 in//local
 //
 #implfun
+s2cst_dataq(s2c0) =
+(
+case+
+s2c0.d2cs() of
+| ~optn_vt_nil _ => false
+| ~optn_vt_cons _ => (true))
+//
+#implfun
 s2cst_get_d2cs(s2c0) =
 topmap_search_opt(mymap, s2c0.name())
 #implfun

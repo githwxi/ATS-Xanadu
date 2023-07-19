@@ -894,33 +894,50 @@ val-
 D2Eproj
 ( tknd
 , drxp
-, dlab, dtup) = d2e0.node()
+, dlab
+, dtup) = d2e0.node()
 //
 val dtup =
-(
-  trans23_d2exp(env0, dtup))
+trans23_d2exp(env0, dtup)
 //
-val ttup = dtup.styp()
-(*
-val ttup = s2typ_hnfiz0(ttup)
-*)
-val topt =
-(
-  s2typ_prjout_opt(ttup, dlab))
+val
+ttup = dtup.styp((*nil*))
+val
+ttup = s2typ_hnfiz0(ttup)
+//
+in//let
+
+if
+s2typ_dataq(ttup)
+then
+let//let
+val tprj =
+s2typ_new0_x2tp(loc0)
+in//let
+d3exp_make_styp_node
+(loc0
+,tprj
+,D3Epcon(tknd,dlab,dtup)) end//then
+else
+let//let
 //
 val tprj =
 (
 case+ topt of
 | ~
 optn_vt_nil() =>
-s2typ_none0()
+s2typ_none0( (*void*) )
 | ~
-optn_vt_cons(tprj)=>tprj): s2typ
+optn_vt_cons(tprj) => tprj)
+where
+{val
+ topt =
+ s2typ_prjout_opt(ttup,dlab)}
 //
 in//let
 d3exp_make_styp_node
-( loc0
-, tprj, D3Eproj(tknd, dlab, dtup) )
+(loc0
+,tprj,D3Eproj(tknd,dlab,dtup)) end//else
 end (*let*) // end of [f0_proj(env0,d2e0)]
 //
 (* ****** ****** *)
@@ -1678,24 +1695,27 @@ trans23_d2exp(env0, d2e1))
 //
 val
 t2p1 = d3e1.styp((*void*))
-(*
 val
 t2p1 = s2typ_hnfiz0( t2p1 )
-*)
-//
-val topt =
-s2typ_prjout_opt(t2p1, lab2)
 //
 in//let
 //
-(
+if
+s2typ_dataq
+(   t2p1   )
+then d3e1 else // if
+let//let
+val topt =
+s2typ_prjout_opt(t2p1, lab2)
+in//let
 case+ topt of
 | ~
 optn_vt_nil() =>
+(
 d3exp_make_styp_node
 ( loc0
-, t2p1, D3El2bck(d3e1, lab2))
-| ~optn_vt_cons(tprj) => d3e1 ): d3exp
+, t2p1, D3El2bck(d3e1, lab2)))
+| ~optn_vt_cons(tprj) => (d3e1) end//let
 //
 end (*let*) // end of [f0_l2bck(env0,d2e0)]
 //
