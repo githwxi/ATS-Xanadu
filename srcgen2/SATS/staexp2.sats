@@ -875,6 +875,8 @@ fun
 s2exp_prgmq(s2exp): bool
 //
 fun
+s2exp_cbrfq(s2exp): bool
+fun
 s2exp_dataq(s2exp): bool
 //
 fun

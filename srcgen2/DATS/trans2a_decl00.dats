@@ -740,6 +740,8 @@ s2typ_fun1_f2arglst(f2as,f2cl,tres)
 //
 // (*
 val (  ) = prerrln
+("trans2a_d2fundcl: dfun = ", dfun)
+val (  ) = prerrln
 ("trans2a_d2fundcl: tfun = ", tfun)
 // *)
 //

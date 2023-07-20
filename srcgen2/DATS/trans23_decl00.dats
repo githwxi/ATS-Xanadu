@@ -620,7 +620,14 @@ trans23_f2arglst(env0, f2as)
 val tdxp =
 trans23_teqd2exp(env0, tdxp)
 //
-val f2cl = F2CLfun(*void*)
+(*
+val f2cl = F2CLfun((*void*))
+*)
+//
+val (  ) = prerrln
+("trans23_d2fundcl: f3as = ", f3as)
+val (  ) = prerrln
+("trans23_d2fundcl: tdxp = ", tdxp)
 //
 in//let
 d3fundcl(loc0,dvar,f3as,sres,tdxp,wsxp)

@@ -117,27 +117,39 @@ f0_cst(e1nv, t2p0, flag)
 |T2Pvar _ =>
 f0_var(e1nv, t2p0, flag)
 //
-|T2Pxtv _ =>
+|
+T2Plft _ =>
+f0_lft(e1nv, t2p0, flag)
+//
+|
+T2Pxtv _ =>
 f0_xtv(e1nv, t2p0, flag)
 //
-|T2Parg1 _ =>
+|
+T2Parg1 _ =>
 f0_arg1(e1nv, t2p0, flag)
 //
-|T2Papps _ =>
+|
+T2Papps _ =>
 f0_apps(e1nv, t2p0, flag)
 //
-|T2Pfun1 _ =>
+|
+T2Pfun1 _ =>
 f0_fun1(e1nv, t2p0, flag)
 //
-|T2Ptrcd _ =>
+|
+T2Ptrcd _ =>
 f0_trcd(e1nv, t2p0, flag)
 //
-|T2Ptext _ =>
+|
+T2Ptext _ =>
 f0_text(e1nv, t2p0, flag)
 //
-|T2Pexi0 _ =>
+|
+T2Pexi0 _ =>
 f0_exi0(e1nv, t2p0, flag)
-|T2Puni0 _ =>
+|
+T2Puni0 _ =>
 f0_uni0(e1nv, t2p0, flag)
 //
 |_(*otherwise*) => s2typ_none1(t2p0)
@@ -204,19 +216,50 @@ s2typ_eval$s2var<e1nv>(e1nv, s2v1)
 (* ****** ****** *)
 //
 fun
+f0_lft
+( e1nv: !e1nv
+, t2p0: s2typ
+, flag: &sint >> _): s2typ =
+let
+//
+val fval = flag
+//
+val t2p1 =
+s2typ_hnfizx(e1nv, t2p1, flag)
+//
+in//let
+//
+if
+(flag <= fval)
+then t2p0 else
+s2typ(t2p0.sort(), T2Plft(t2p1))
+//
+end where
+{
+  val-T2Plft(t2p1) = t2p0.node() }
+//(*where*) // end of [f0_lft(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
 f0_xtv
 ( e1nv: !e1nv
 , t2p0: s2typ
 , flag: &sint >> _): s2typ =
 let
+//
+(*
+val fval = flag
+*)
+//
 val t2p1 = xtp1.styp()
+//
 in//let
+//
 case+
 t2p1.node() of
-|
-T2Pnone0() => t2p0
-|
-_(*T2Pnone0*) =>
+| T2Pnone0() => ( t2p0 )
+| _(*T2Pnone0*) =>
 let
 val () = (flag := flag+1)
 val t2p1 =
@@ -256,7 +299,7 @@ s2typ_make_node
 end where
 {
 val-T2Parg1(knd0, t2p1) = t2p0.node() }
-//(*where*) // end of [f0_apps(e1nv,...)]
+//(*where*) // end of [f0_arg1(e1nv,...)]
 //
 (* ****** ****** *)
 //

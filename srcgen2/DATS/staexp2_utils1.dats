@@ -485,6 +485,21 @@ s2exp_prgmq(s2e0) =
 (
 sort2_prgmq(s2e0.sort()))
 //
+(* ****** ****** *)
+//
+#implfun
+s2exp_cbrfq(s2e0) =
+(
+case+
+s2e0.node() of
+|S2Earg1
+(knd0, _) => (knd0 < 0)
+|S2Eatx2
+(s2e1, _) => s2exp_cbrfq(s2e1)
+|_(* otherwise *) => ( false ))
+//
+(* ****** ****** *)
+//
 #implfun
 s2explst_linq(s2es) =
 (
