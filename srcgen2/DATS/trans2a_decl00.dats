@@ -69,6 +69,9 @@ _(*TRANS2a*) = "./trans2a.dats"
 #symload styp with d2pat_get_styp
 #symload styp with d2exp_get_styp
 (* ****** ****** *)
+#symload lctn with dimpl_get_lctn
+#symload node with dimpl_get_node
+(* ****** ****** *)
 #symload dpid with d2fundcl_get_dpid
 (* ****** ****** *)
 //
@@ -487,6 +490,7 @@ dimp.node() of
 |
 DIMPLone1(d2c0) =>
 let
+//
 val
 (svts, tfun) =
 trans2a_d2cst_elim
@@ -496,6 +500,16 @@ val
 (f2as, tres) =
 trans2a_f2arglst_elim
 ( env0, loc0, f2as, tfun)
+//
+val
+dimp =
+let
+val
+loc1 =
+dimp.lctn() in//let
+dimpl_make_node
+(loc1, DIMPLone2(d2c0, svts)) end
+//
 val
 dexp =
 trans2a_d2exp_tpck(env0,dexp,tres)
