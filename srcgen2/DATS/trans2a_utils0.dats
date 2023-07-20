@@ -541,7 +541,7 @@ trans2a_d2cst_elim
 ( env0:
 ! tr2aenv
 , d2c0: d2cst
-, tqas: t2qas, tias: t2ias): s2typ(*tfun*)
+, tqas: t2qas, tias: t2ias): @(s2vts, s2typ)
 *)
 #implfun
 trans2a_d2cst_elim
@@ -549,14 +549,10 @@ trans2a_d2cst_elim
 , loc0
 , d2c0, tqas, tias) =
 let
-val t2p0 = d2c0.styp()
-in//let
-s2typ_subst0(t2p0, svts)
-end where // end-of-[let]
-{
-//
+(* ****** ****** *)
 #typedef s2vs = s2varlst
 #typedef s2es = s2explst
+(* ****** ****** *)
 //
 fun
 f0_svs1_svs2
@@ -702,12 +698,25 @@ end//let
 )
 ) (*case+*) // end of [f0_tqs1_tqs2(...)]
 //
+in//let
+//
+let//let2
+//
+val t2p0 = d2c0.styp()
 val svts = list_nil((*nil*))
 val tqs1 = d2cst_get_tqas(d2c0)
-val svts =
-f0_tqs1_tqs2_tis2(tqs1, tqas, tias, svts)
 //
-} (*where*) // end of [trans2a_d2cst_elim(env0,...)]
+in//let2
+//
+let
+  val tfun =
+  s2typ_subst0(t2p0, svts) in (svts, tfun)
+end where // end-of-[let(val(tfun))]
+{
+  val svts =
+  f0_tqs1_tqs2_tis2(tqs1, tqas, tias, svts) }
+end//let2
+end (*let*) // end of [trans2a_d2cst_elim(env0,...)]
 //
 (* ****** ****** *)
 //
