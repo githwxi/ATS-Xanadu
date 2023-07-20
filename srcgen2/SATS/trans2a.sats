@@ -91,6 +91,7 @@ LEX = "./lexing0.sats"
 #typedef l2t2p = $S2E.l2t2p
 (* ****** ****** *)
 #typedef x2t2p = $T2P.x2t2p
+#typedef s2vts = $T2P.s2vts
 (* ****** ****** *)
 #typedef d2var = $D2E.d2var
 #typedef d2con = $D2E.d2con
@@ -621,7 +622,7 @@ trans2a_d2cst_elim
 ! tr2aenv
 , loc0: loc_t
 , d2c0: d2cst
-, tqas: t2qas, tias: t2ias): s2typ(*tfun*)
+, tqas: t2qas, tias: t2ias): (s2vts, s2typ)
 //
 fun
 trans2a_f2arglst_elim

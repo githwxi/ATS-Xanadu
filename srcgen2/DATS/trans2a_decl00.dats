@@ -488,7 +488,7 @@ dimp.node() of
 DIMPLone1(d2c0) =>
 let
 val
-tfun =
+(svts, tfun) =
 trans2a_d2cst_elim
 ( env0
 , loc0, d2c0, tqas, tias)
