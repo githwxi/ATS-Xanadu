@@ -471,18 +471,6 @@ f0_implmnt0
 , d2cl: d2ecl): d2ecl =
 let
 //
-val
-loc0 = d2cl.lctn()
-//
-// (*
-val () =
-prerrln
-("f0_implmnt0: loc0 = ", loc0)
-val () =
-prerrln
-("f0_implmnt0: d2cl = ", d2cl)
-// *)
-//
 val-
 D2Cimplmnt0
 ( tknd
@@ -571,7 +559,19 @@ D2Cimplmnt0
 //
 end//let//end-of-[ non-DIMPone1( ... ) ]
 //
-end (*let*) // end of [f0_implmnt0(env0,d2cl)]
+end where
+{
+//
+val loc0 = d2cl.lctn()
+//
+// (*
+val (  ) =
+prerrln("f0_implmnt0(2a): loc0 = ", loc0)
+val (  ) =
+prerrln("f0_implmnt0(2a): d2cl = ", d2cl)
+// *)
+//
+} (*where*) // end of [f0_implmnt0(env0,d2cl)]
 //
 (* ****** ****** *)
 //

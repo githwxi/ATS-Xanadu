@@ -2409,7 +2409,21 @@ dimp.node() of
 _(* DIMPLall1 *) =>
 (
   f0_implmnt0_all1(env0, d1cl, dimp) )
-end (*end*)//end-of-[f0_implmnt0(env0,d1cl)]
+end where
+{
+//
+val loc0 = d1cl.lctn()
+//
+// (*
+val (  ) =
+prerrln("f0_implmnt0(12): loc0 = ", loc0)
+val (  ) =
+prerrln("f0_implmnt0(12): d2cl = ", d2cl)
+// *)
+//
+} (*where*)//end-of-[f0_implmnt0(env0,d1cl)]
+
+(* ****** ****** *)
 
 and
 f0_implmnt0_one1
@@ -2446,6 +2460,8 @@ trans12_t1qaglst(env0, tqas)
 in//let
   f0_implmnt0_all1(env0, d1cl, dimp)
 end (*end*)//end-[f0_implmnt0_one1(env0,...)]
+
+(* ****** ****** *)
 
 and
 f0_implmnt0_all1
@@ -2524,7 +2540,7 @@ end where // end-of-let
 //
 } (*where*)//end-[f0_implmnt0_all1(env0,...)]
 //
-endloc (*local*) // end of [local(f0_implmnt0)]
+end (*local*) // end of [local(f0_implmnt0...)]
 
 (* ****** ****** *)
 //
