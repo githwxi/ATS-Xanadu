@@ -1288,15 +1288,17 @@ SIMPLopt2 of
 //
 and
 dimpl_node =
+//
 |
 DIMPLone1 of
 (d2cst(*res*))
 |
+DIMPLone2 of
+(d2cst(*res*), s2vts)
+//
+|
 DIMPLall1 of
 (d1qid, d2cstlst(*all*))
-|
-DIMPLone2 of
-(d2cst(*res*), t2jaglst)
 |
 DIMPLopt2 of
 (d1qid, d2cstlst, d2cstlst)
