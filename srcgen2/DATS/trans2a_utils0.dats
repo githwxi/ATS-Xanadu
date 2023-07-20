@@ -710,7 +710,7 @@ f0_tqs1_tqs2_tis2(tqs1, tqas, tias, svts)
 } (*where*) // end of [trans2a_d2cst_elim(env0,...)]
 //
 (* ****** ****** *)
-
+//
 (*
 fun
 trans2a_f2arglst_elim
@@ -766,15 +766,20 @@ case+
 tfun.node() of
 |
 T2Pfun1
-( f2cl, npf2
+( f2cl, npf1
 , t2ps, tres) =>
-(f2a1, tres) where
-{
-val loc1 = f2a1.lctn()
-val d2ps =
-trans2a_d2patlst_tpkcs(env0, d2ps, t2ps)
+let
 val f2a1 =
-f2arg_make_node(loc1,F2ARGdyn0(npf1,d2ps))
+f2arg_make_node
+(
+loc1,
+F2ARGdyn0
+( npf1 , d2ps )) in (f2a1,tres)
+end where//end-of-let[val(f2a1)]
+{
+val loc1 = f2a1.lctn( (*void*) )
+val d2ps =
+trans2a_d2patlst_tpkcs(env0,d2ps,t2ps)
 }
 |
 _(*non-T2fun1*) =>
@@ -824,6 +829,64 @@ end//let
   val () = prerrln("auxmain: tfun = ", tfun)
   val () = prerrln("auxmain: fres = ", fres)
 }(*where*) // end of [auxmain(env0,f2as,tfun,fres)]
+//
+(* ****** ****** *)
+//
+} where { // endwhr
+//
+(* ****** ****** *)
+//
+fun
+d2var_lftize
+(d2v0: d2var): void =
+(
+  d2v0.styp(tlft)) where
+{
+  val t2p0 = d2v0.styp()
+  val tlft = s2typ_lft(t2p0) }
+//(*where*)//end-of-[d2var_lftize(d2v0)]
+//
+(* ****** ****** *)
+//
+fun
+d2patlst_lftize_tpkcs
+( d2ps: d2patlst
+, t2ps: s2typlst): void =
+(
+case+ d2ps of
+|
+list_nil() => ( (*void*) )
+|
+list_cons
+(d2p1, d2ps) =>
+(
+case+ t2ps of
+//
+|
+list_nil
+((*void*)) => ( (*void*) )
+//
+|
+list_cons
+(t2p1, t2ps) =>
+let
+val () =
+if
+s2typ_cbrfq(t2p1)
+then
+(
+case+
+d2p1.node() of
+|
+D2Pvar(d2v1) =>
+d2var_lftize(d2v1)
+|_(*otherwise*) =>  ((*void*)))
+in//let
+d2patlst_lftize_tpkcs(d2ps, t2ps)
+end//let//end-of-[list_cons(...)]
+//
+) (*case+*) // end [list_cons(...)]
+) (*case+*) // end [d2patlst_lftize_tpkcs(...)]
 //
 (* ****** ****** *)
 //

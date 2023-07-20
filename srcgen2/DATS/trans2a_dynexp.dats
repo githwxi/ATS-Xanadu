@@ -2491,7 +2491,7 @@ trans2a_d2patlst(env0, d2ps)
 in//let
 let
 val (  ) =
-d2patlst_leftize(d2ps) in//let
+d2patlst_lftize(d2ps) in//let
 f2arg(loc0,F2ARGdyn0(npf1,d2ps))
 end (*let*)
 end (*let*) // end of [F2ARGdyn0]
@@ -2500,17 +2500,22 @@ end (*let*) // end of [F2ARGdyn0]
 end where
 {
 //
+(* ****** ****** *)
+//
 fun
-d2var_leftize
+d2var_lftize
 (d2v0: d2var): void =
 (
   d2v0.styp(tlft)) where
 {
   val t2p0 = d2v0.styp()
   val tlft = s2typ_lft(t2p0) }
+//(*where*)//end-of-[d2var_lftize]
+//
+(* ****** ****** *)
 //
 fun
-d2pat_leftize
+d2pat_lftize
 (d2p0: d2pat): void =
 (
 case+
@@ -2525,18 +2530,21 @@ d2p1.node() of
 if
 s2exp_cbrfq(s2e2)
 then
-d2var_leftize(d2v1) else ())
-|_(* otherwise *) =>  ( (*void*) )
+d2var_lftize(d2v1) else ())
+|_(* otherwise *) =>  ((*void*))
 )
-|_(*non-D2Pannot*) => ( (*void*) )
-)
+|_(*non-D2Pannot*) => ((*void*)))
+//(*case+*)//end-of-[d2var_lftize]
 fun
-d2patlst_leftize
+d2patlst_lftize
 (d2ps: d2patlst): void =
 list_foreach(d2ps) where
 {
 #impltmp
-foreach$work<d2pat> = d2pat_leftize }
+foreach$work<d2pat> = d2pat_lftize }
+//
+(* ****** ****** *)
+//
 }(*where*) // end of [trans2a_f2arg(env0,farg)]
 //
 (* ****** ****** *)

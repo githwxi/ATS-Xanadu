@@ -61,6 +61,17 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #implfun
+s2typ_cbrfq(t2p0) =
+(
+case+
+t2p0.node() of
+|T2Parg1
+(knd0, _) => (knd0 < 0)
+|_(* otherwise *) => ( false ))
+//
+(* ****** ****** *)
+//
+#implfun
 s2typ_dataq
   (t2p0) =
 (
