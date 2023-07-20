@@ -440,9 +440,6 @@ f0_implmnt0
 , d2cl: d2ecl): d3ecl =
 let
 //
-val
-loc0 = d2cl.lctn()
-//
 val-
 D2Cimplmnt0
 ( tknd
@@ -466,8 +463,14 @@ D3Cimplmnt0
 end where // end-of-[let]
 {
 //
-  val () =
-  prerrln("f0_implmnt0: d2cl = ", d2cl)
+val loc0 = d2cl.lctn()
+//
+// (*
+val (  ) =
+prerrln("f0_implmnt0(23): loc0 = ", loc0)
+val (  ) =
+prerrln("f0_implmnt0(23): d2cl = ", d2cl)
+// *)
 //
 } (*where*) // end of [f0_implmnt0(env0,d2cl)]
 //

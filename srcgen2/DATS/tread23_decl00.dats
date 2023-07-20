@@ -536,7 +536,19 @@ then (dcl) else
 d3ecl_implmnt0_errck
 (dcl.lctn(), tknd
 ,sqas, tqas, dqid, tias, f3as, sres, dexp)
-end (*let*) // end of [f0_implmnt0(dcl,err)]
+end where
+{
+//
+val loc0 = d3cl.lctn()
+//
+// (*
+val (  ) =
+prerrln("f0_implmnt0(23): loc0 = ", loc0)
+val (  ) =
+prerrln("f0_implmnt0(23): d3cl = ", d3cl)
+// *)
+//
+} (*where*) // end of [f0_implmnt0(dcl,err)]
 //
 (* ****** ****** *)
 //
