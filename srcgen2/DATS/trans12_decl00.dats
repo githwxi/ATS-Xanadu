@@ -2418,7 +2418,7 @@ val loc0 = d1cl.lctn()
 val (  ) =
 prerrln("f0_implmnt0(12): loc0 = ", loc0)
 val (  ) =
-prerrln("f0_implmnt0(12): d2cl = ", d2cl)
+prerrln("f0_implmnt0(12): d2cl = ", d1cl)
 // *)
 //
 } (*where*)//end-of-[f0_implmnt0(env0,d1cl)]
