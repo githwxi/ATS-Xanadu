@@ -5,13 +5,15 @@ fun
 mycopy(x0: !x0): x0 = x0
 fun
 <x0:vt>
-mycprf
-(x0: &x0 >> x0): x0 = x0
-fun
-<x0:vt>
 myfree(x0: ~x0): void = ()
 *)
 (* ****** ****** *)
+fun
+<x0:vt>
+mycprf
+(x0: &x0 >> x0): x0 = x0
+(* ****** ****** *)
+////
 (* ****** ****** *)
 (*
 #impltmp

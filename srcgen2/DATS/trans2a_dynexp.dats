@@ -701,7 +701,7 @@ val t2p2 = s2exp_stpize(s2e2)
 val t2p2 = s2typ_hnfiz0(t2p2)
 //
 val d2p1 =
-trans2a_d2pat_tpck(env0, d2p1, t2p2)
+trans2a_d2pat_tpck(env0,d2p1,t2p2)
 //
 in//let
 d2pat_make_styp_node
@@ -2466,7 +2466,7 @@ trans2a_f2arg
 ( env0, farg ) =
 let
 //
-(*
+// (*
 val
 loc0 = farg.lctn()
 val () =
@@ -2475,7 +2475,7 @@ prerrln
 val () =
 prerrln
 ("trans2a_f2arg: farg = ", farg)
-*)
+// *)
 //
 in//let
 //
@@ -2487,12 +2487,57 @@ let
 val loc0 = farg.lctn()
 val d2ps =
 trans2a_d2patlst(env0, d2ps)
+//
 in//let
+let
+val (  ) =
+d2patlst_leftize(d2ps) in//let
 f2arg(loc0,F2ARGdyn0(npf1,d2ps))
+end (*let*)
 end (*let*) // end of [F2ARGdyn0]
 | _(* otherwise *) => (  farg  )
 //
-end (*let*) // end of [trans2a_f2arg(env0,farg)]
+end where
+{
+//
+fun
+d2var_leftize
+(d2v0: d2var): void =
+(
+  d2v0.styp(tlft)) where
+{
+  val t2p0 = d2v0.styp()
+  val tlft = s2typ_lft(t2p0) }
+//
+fun
+d2pat_leftize
+(d2p0: d2pat): void =
+(
+case+
+d2p0.node() of
+|D2Pannot
+(d2p1,s1e1,s2e2) =>
+(
+case+
+d2p1.node() of
+|D2Pvar(d2v1) =>
+(
+if
+s2exp_cbrfq(s2e2)
+then
+d2var_leftize(d2v1) else ())
+|_(* otherwise *) =>  ( (*void*) )
+)
+|_(*non-D2Pannot*) => ( (*void*) )
+)
+fun
+d2patlst_leftize
+(d2ps: d2patlst): void =
+list_foreach(d2ps) where
+{
+#impltmp
+foreach$work<d2pat> = d2pat_leftize }
+}(*where*) // end of [trans2a_f2arg(env0,farg)]
 //
 (* ****** ****** *)
 //
