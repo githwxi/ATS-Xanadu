@@ -506,7 +506,9 @@ dimp =
 let
 val
 loc1 =
-dimp.lctn() in//let
+dimp.lctn()
+val svts =
+list_reverse(svts) in//let
 dimpl_make_node
 (loc1, DIMPLone2(d2c0, svts)) end
 //
