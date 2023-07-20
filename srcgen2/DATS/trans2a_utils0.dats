@@ -769,12 +769,14 @@ T2Pfun1
 ( f2cl, npf1
 , t2ps, tres) =>
 let
+val (  ) =
+d2patlst_lftize(d2ps, t2ps)
 val f2a1 =
 f2arg_make_node
+(loc1, F2ARGdyn0(npf1, d2ps))
+in
 (
-loc1,
-F2ARGdyn0
-( npf1 , d2ps )) in (f2a1,tres)
+ f2a1(*first*), tres(*rests*) )
 end where//end-of-let[val(f2a1)]
 {
 val loc1 = f2a1.lctn( (*void*) )
@@ -819,8 +821,9 @@ let
 val
 (f2a1, tres) = f0_f2a1(env0, f2a1, tfun)
 in//let
-  auxmain
-  (env0, f2as, tres, list_cons(f2a1, fres))
+(
+auxmain
+(env0, f2as, tres, list_cons(f2a1, fres)))
 end//let
 //
 ) where
@@ -849,7 +852,7 @@ d2var_lftize
 (* ****** ****** *)
 //
 fun
-d2patlst_lftize_tpkcs
+d2patlst_lftize
 ( d2ps: d2patlst
 , t2ps: s2typlst): void =
 (
@@ -880,9 +883,9 @@ d2p1.node() of
 |
 D2Pvar(d2v1) =>
 d2var_lftize(d2v1)
-|_(*otherwise*) =>  ((*void*)))
+|_(*otherwise*) =>  ((*0*)) )
 in//let
-d2patlst_lftize_tpkcs(d2ps, t2ps)
+  d2patlst_lftize( d2ps, t2ps )
 end//let//end-of-[list_cons(...)]
 //
 ) (*case+*) // end [list_cons(...)]

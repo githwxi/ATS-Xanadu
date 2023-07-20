@@ -8,10 +8,30 @@ fun
 myfree(x0: ~x0): void = ()
 *)
 (* ****** ****** *)
+(*
+//
 fun
 <x0:vt>
 mycprf
-(x0: &x0 >> x0): x0 = x0
+( x0 :
+& x0 >> x0): x0 = x0
+//
+#extval
+fun
+<a:vt>
+mycprf2
+(x0: &a >> a): a
+#impltmp
+{x0: vt}
+mycprf2<x0>( x0 ) = x0
+//
+*)
+(* ****** ****** *)
+fun
+<a0:vt>
+myswap
+(x0: &a0, y0: &a0): void =
+let val a0 = x0 in (x0 := y0; y0 := a0)
 (* ****** ****** *)
 ////
 (* ****** ****** *)
