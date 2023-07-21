@@ -295,7 +295,7 @@ in//let
 let
 val () =
 (
-case- simp of
+case+ simp of
 //
 |SIMPLone1
 (   s2c1   ) =>
