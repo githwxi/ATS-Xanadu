@@ -295,7 +295,8 @@ in//let
 let
 val () =
 (
-case+ simp of
+case+
+simp.node() of
 //
 |SIMPLone1
 (   s2c1   ) =>
@@ -303,6 +304,8 @@ let
 val
 sdef =
 s2exp_stpize(sdef)
+val () =
+s2abs_set_styp(s2c1,sdef)
 val () =
 tr2aenv_insert_any(env0,s2c1)
 end//let//end-of-[SIMPLone1(...)]
@@ -318,13 +321,23 @@ val
 sdef =
 s2exp_stpize(sdef)
 val () =
+s2abs_set_styp(s2c1,sdef)
+val () =
 tr2aenv_insert_any(env0,s2c1) end)
 //let//end-of-[SIMPLopt2(sqid,...)]
 //
-|SIMPLall1
-(sqid, s2cs) => ((*deadcode*))) in d2cl end
+|
+SIMPLall1
+(sqid, s2cs) => ((*deadcode*))//case+
+)
+in//let
+d2cl end(*let*) // end-of-[case+(simp)]
 //
-end (*let*) // end of [f0_absimpl(env0,d2cl)]
+end where
+{
+  val () =
+  prerrln("f0_absimpl(2a): d2cl = ", d2cl)
+} (*where*) // end of [f0_absimpl(env0,d2cl)]
 //
 (* ****** ****** *)
 //

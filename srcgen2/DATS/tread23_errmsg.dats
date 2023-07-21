@@ -604,6 +604,9 @@ val () =
 d3eclist_fpemsg(out, dcs2)
 endlet // end of [D3Clocal0(...)]
 //
+|D3Cabsopen _ => ( (*void*) )
+|D3Cabsimpl _ => ( (*void*) )
+//
 |
 D3Cinclude
 (knd0,tknd

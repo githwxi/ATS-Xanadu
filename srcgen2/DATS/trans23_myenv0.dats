@@ -61,6 +61,9 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trans23.sats"
 (* ****** ****** *)
+#symload name with s2cst_get_name
+#symload styp with s2cst_get_styp
+(* ****** ****** *)
 
 local
 //
@@ -71,7 +74,8 @@ ms2ct2p_tbox = topmap(s2typ)
 //
 datavwtp
 tr23env =
-TR23ENV of (stkmap(s2typ))
+TR23ENV of
+(stkmap(s2cstlst))
 #absimpl tr23env_vtbx = tr23env
 //
 (* ****** ****** *)
@@ -198,28 +202,63 @@ stkmap_insert_kxs(stkmap, kxs) }
 end (*let*)//end-of-(tr23env_locjoin(env0))
 //
 (* ****** ****** *)
-
+//
 #implfun
 tr23env_search_opt
-  (env0, k0) = let
+  (env0, s2c0) = let
+//
+val k0 = s2c0.name()
 //
 val+
-TR23ENV(stkmap) = env0 in
-stkmap_search_opt(stkmap, k0) end
+TR23ENV(stkmap) = env0
+val opt1 =
+stkmap_search_opt(stkmap, k0)
 //
-(*let*)//end-of-[tr23env_search_opt(env0,k0)]
-
+val () =
+prerrln
+("tr23env_search_opt: k0 = ", k0)
+//
+in//let
+//
+case+ opt1 of
+| ~optn_vt_nil() => list_nil()
+| ~optn_vt_cons(s2cs) => ( s2cs )
+//
+end(*let*)//end-of-(tr23env_search_opt(...))
+//
 (* ****** ****** *)
+//
 //
 #implfun
 tr23env_insert_any
-  (tenv, k0, x0) = let
+  (env0, s2c0) = let
+//
+val s2cs =
+(
+list_cons(s2c0, s2cs)) where
+{
+val s2cs =
+tr23env_search_opt(env0, s2c0) }
+//
+in//let
+//
+let
+//
+val x0 = s2cs
+val k0 = s2c0.name()
+//
+val () =
+prerrln
+("tr23env_insert_any: k0 = ", k0)
+val () =
+prerrln
+("tr23env_insert_any: x0 = ", x0)
 //
 val+
-@TR23ENV(!stkmap) = tenv in
+@TR23ENV(!stkmap) = env0 in//let
 stkmap_insert_any(stkmap, k0, x0) end
 //
-(*let*)//end-of(tr23env_insert_any(tenv,k0,x0))
+endlet//end-of(tr23env_insert_any(env0,s2c0))
 //
 (* ****** ****** *)
 //

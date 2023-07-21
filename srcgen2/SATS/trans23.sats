@@ -89,6 +89,7 @@ LEX = "./lexing0.sats"
 (* ****** ****** *)
 #staload D3E = "./dynexp3.sats"
 (* ****** ****** *)
+#typedef s2cst = $S2E.s2cst
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
@@ -125,6 +126,7 @@ LEX = "./lexing0.sats"
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
 //
+#typedef s2cstlst = $S2E.s2cstlst
 #typedef s2explst = $S2E.s2explst
 #typedef s2typlst = $S2E.s2typlst
 #typedef l2t2plst = $S2E.l2t2plst
@@ -277,11 +279,16 @@ tr23env_locjoin(env0: !tr23env): void
 fun
 tr23env_search_opt
 ( env0:
-! tr23env, key: sym_t): s2typopt_vt
+! tr23env
+, s2c0: s2cst): s2cstlst
 fun
 tr23env_insert_any
+( env0: !tr23env, s2c0: s2cst): void
+//
+fun
+tr23env_evstyp_cst
 ( env0:
-! tr23env, key: sym_t, itm: s2typ): void
+! tr23env, s2c0: s2cst): s2typopt_vt
 //
 (* ****** ****** *)
 //

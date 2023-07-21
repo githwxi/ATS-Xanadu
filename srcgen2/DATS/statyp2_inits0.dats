@@ -208,6 +208,30 @@ tmpmap_insert_any(mymap, s2c0.stmp(), styp)
 end (*local*) // end of [local(the_s2cst_s2typ)]
 
 (* ****** ****** *)
+
+local
+//
+(* ****** ****** *)
+#symload
+name with s2cst_get_name
+(* ****** ****** *)
+//
+val
+mymap =
+tmpmap_make_nil{s2typ}()
+//
+in//local
+//
+#implfun
+s2abs_get_styp(s2c0) =
+tmpmap_search_opt(mymap, s2c0.stmp())
+#implfun
+s2abs_set_styp(s2c0, styp) =
+tmpmap_insert_any(mymap, s2c0.stmp(), styp)
+//
+end (*local*) // end of [local(the_s2abs_s2typ)]
+
+(* ****** ****** *)
 //
 local
 //
