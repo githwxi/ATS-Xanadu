@@ -84,6 +84,7 @@ gmap_strmize<gmap><key><itm>(map)
   #typedef gmap = jsobjmap(key, itm) }
 //
 (* ****** ****** *)
+//
 #implfun
 tmpmap_search_opt
   {itm}(map, key) =
@@ -95,8 +96,10 @@ in//let
 //
 XATS2JS_jsobjmap_search_opt<key>{itm}(map,key)
 //
-end (*let*) // end of [tmpmap_search_opt(...]
+end (*let*) // end of [tmpmap_search_opt(...)]
+//
 (* ****** ****** *)
+//
 #implfun
 tmpmap_insert_any
   {itm}
@@ -110,6 +113,7 @@ in//let
 XATS2JS_jsobjmap_insert_any<key>{itm}(map,key,itm)
 //
 end (*let*) // end of [tmpmap_insert_any(...)]
+//
 (* ****** ****** *)
 
 endloc (*local*) // end of [  local(topmap)  ]

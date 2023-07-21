@@ -250,6 +250,34 @@ list_tail_raw(xs) = (xs.1)
 //
 #impltmp
 <a:type>
+list_head_opt(xs) =
+(
+case+ xs of
+|
+list_nil
+((*nil*)) => optn_vt_nil()
+|
+list_cons
+(x0 , xs) => optn_vt_cons(x0))
+(* end of [list_head_opt(xs)] *)
+//
+#impltmp
+<a:type>
+list_tail_opt(xs) =
+(
+case+ xs of
+|
+list_nil
+((*nil*)) => optn_vt_nil()
+|
+list_cons
+(x0 , xs) => optn_vt_cons(xs))
+(* end of [list_tail_opt(xs)] *)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a:type>
 list_last(xs) =
 (
 list_last_ini<a>(x0, xs)
