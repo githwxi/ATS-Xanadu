@@ -69,6 +69,9 @@ _(*TRANS2a*) = "./trans2a.dats"
 #symload styp with d2pat_get_styp
 #symload styp with d2exp_get_styp
 (* ****** ****** *)
+#symload lctn with simpl_get_lctn
+#symload node with simpl_get_node
+(* ****** ****** *)
 #symload lctn with dimpl_get_lctn
 #symload node with dimpl_get_node
 (* ****** ****** *)

@@ -570,10 +570,27 @@ let
 //
 #vwtpdef e1nv = tr23env
 //
+(*
 #impltmp
 s2typ_eval$s2cst
 <e1nv>(env0,s2c0) =
+*)
 s2cst_get_styp(s2c0)
+#impltmp
+s2typ_eval$s2cst
+<e1nv>(env0,s2c0) =
+let
+val opt1 =
+s2cst_get_styp(s2c0)
+in//let
+case+ opt1 of
+| ~
+optn_vt_nil() =>
+tr23env_evstyp_cst(env0,s2c0)
+| !
+optn_vt_cons(t2p1) => ( opt1 )
+end//end-of-[s2typ_eval$s2cst(...)]
+//
 #impltmp
 s2typ_eval$s2var
 <e1nv>(env0,s2v0) = optn_vt_nil()
