@@ -54,8 +54,12 @@ ATS_PACKNAME
 #staload "./../SATS/xsymmap.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"
+(* ****** ****** *)
+#symload atdf with s2cst_get_atdf
+#symload d2cs with s2cst_get_d2cs
 (* ****** ****** *)
 
 local
@@ -463,6 +467,14 @@ mymap =
 topmap_make_nil{a2tdf}()
 //
 in//local
+//
+#implfun
+s2cst_abstq(s2c0) =
+(
+case+
+s2c0.atdf() of
+| ~optn_vt_nil _ => false
+| ~optn_vt_cons _ => (true))
 //
 #implfun
 s2cst_get_atdf(s2c0) =

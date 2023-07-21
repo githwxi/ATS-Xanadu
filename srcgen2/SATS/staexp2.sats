@@ -856,6 +856,8 @@ fun
 s2cst_prgmq(s2cst): bool
 //
 fun
+s2cst_abstq(s2cst): bool
+fun
 s2cst_dataq(s2cst): bool
 //
 (* ****** ****** *)

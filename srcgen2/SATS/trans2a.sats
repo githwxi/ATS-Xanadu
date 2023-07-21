@@ -85,6 +85,8 @@ LEX = "./lexing0.sats"
 #staload T2P = "./statyp2.sats"
 #staload D2E = "./dynexp2.sats"
 (* ****** ****** *)
+#typedef s2cst = $S2E.s2cst
+(* ****** ****** *)
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
 #typedef l2s2e = $S2E.l2s2e
@@ -126,6 +128,8 @@ LEX = "./lexing0.sats"
 #typedef dimpl = $D2E.dimpl
 (* ****** ****** *)
 #typedef teqd2exp = $D2E.teqd2exp
+(* ****** ****** *)
+#typedef s2cstlst = $S2E.s2cstlst
 (* ****** ****** *)
 #typedef s2explst = $S2E.s2explst
 #typedef s2typlst = $S2E.s2typlst
@@ -169,6 +173,8 @@ LEX = "./lexing0.sats"
 #typedef d2cstdcl = $D2E.d2cstdcl
 (* ****** ****** *)
 #typedef d2parsed = $D2E.d2parsed
+(* ****** ****** *)
+#vwtpdef s2cstopt_vt = optn_vt(s2cst)
 (* ****** ****** *)
 #vwtpdef s2typopt_vt = optn_vt(s2typ)
 (* ****** ****** *)
@@ -270,11 +276,11 @@ tr2aenv_locjoin(env0: !tr2aenv): void
 fun
 tr2aenv_search_opt
 ( env0:
-! tr2aenv, key: sym_t): s2typopt_vt
+! tr2aenv
+, s2c0: s2cst): s2cstlst
 fun
 tr2aenv_insert_any
-( env0:
-! tr2aenv, key: sym_t, itm: s2typ): void
+( env0: !tr2aenv, s2c0: s2cst): void
 //
 (* ****** ****** *)
 //

@@ -304,9 +304,8 @@ val
 sdef =
 s2exp_stpize(sdef)
 val () =
-tr2aenv_insert_any
-(env0, s2c1.name(), sdef) end
-//let//end-of-[SIMPLone1(...)]
+tr2aenv_insert_any(env0,s2c1)
+end//let//end-of-[SIMPLone1(...)]
 //
 |SIMPLopt2
 (sqid,scs1,scs2) =>
@@ -319,9 +318,8 @@ val
 sdef =
 s2exp_stpize(sdef)
 val () =
-tr2aenv_insert_any
-(env0, s2c1.name(), sdef) end)
-//let//end-of-[SIMPLopt2(...)]
+tr2aenv_insert_any(env0,s2c1) end)
+//let//end-of-[SIMPLopt2(sqid,...)]
 //
 |SIMPLall1
 (sqid, s2cs) => ((*deadcode*))) in d2cl end
