@@ -218,16 +218,57 @@ name with s2cst_get_name
 //
 val
 mymap =
-tmpmap_make_nil{s2typ}()
+tmpmap_make_nil{s2typlst}()
 //
 in//local
 //
 #implfun
-s2abs_get_styp(s2c0) =
-tmpmap_search_opt(mymap, s2c0.stmp())
+s2abs_get_styp
+(    s2c0    ) =
+let
+//
+val tmp1 =
+s2c0.stmp((*void*))
+val opt1 =
+tmpmap_search_opt(mymap, tmp1)
+//
+in//let
+//
+case+ opt1 of
+| ~
+optn_vt_nil() => optn_vt_nil()
+| ~
+optn_vt_cons(xs) => list_head_opt(xs)
+//
+end//let//end-of-[s2abs_get_styp(s2c0)]
+//
+(* ****** ****** *)
+//
 #implfun
-s2abs_set_styp(s2c0, styp) =
-tmpmap_insert_any(mymap, s2c0.stmp(), styp)
+s2abs_set_styp
+( s2c0, t2p0 ) =
+let
+//
+val tmp1 =
+s2c0.stmp((*void*))
+val opt1 =
+tmpmap_search_opt(mymap, tmp1)
+//
+val t2ps =
+(
+case+ opt1 of
+| ~
+optn_vt_nil
+(  (*0*)  ) =>
+list_sing(t2p0)
+| ~
+optn_vt_cons
+(   t2ps   ) =>
+list_cons(t2p0,t2ps)): s2typlst//val
+//
+in//in
+  tmpmap_insert_any(mymap, tmp1, t2ps)
+end//let//end-of-[s2abs_set_styp(s2c0)]
 //
 end (*local*) // end of [local(the_s2abs_s2typ)]
 
