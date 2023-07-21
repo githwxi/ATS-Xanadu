@@ -17,7 +17,7 @@ local
 in//local
 
 #implfun
-foo1(x1) = (x1, x1 + 1)
+foo1(x1) = (x1+0, x1+1)
 
 endloc // end-of-[local]
 
