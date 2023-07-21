@@ -1437,7 +1437,7 @@ s2cst_get_atdf
 : s2cst ): optn_vt(a2tdf)
 fun
 s2cst_set_atdf
-(s2c0: s2cst, atdf: a2tdf):void
+(s2c0:s2cst, atdf:a2tdf): void
 #symload atdf with s2cst_get_atdf
 #symload atdf with s2cst_set_atdf
 //
@@ -1447,7 +1447,7 @@ s2cst_get_d2cs
 : s2cst ): optn_vt(d2conlst)
 fun
 s2cst_set_d2cs
-(s2c0:s2cst,d2cs:d2conlst):void
+(s2c0:s2cst,d2cs:d2conlst): void
 #symload d2cs with s2cst_get_d2cs
 #symload d2cs with s2cst_set_d2cs
 //
