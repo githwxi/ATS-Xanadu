@@ -536,6 +536,7 @@ let
 s2typ_eval$s2cst
 <e1nv>(env0,s2c0) =
 s2cst_get_styp(s2c0)
+//
 #impltmp
 s2typ_eval$s2var
 <e1nv>(env0,s2v0) = optn_vt_nil()
