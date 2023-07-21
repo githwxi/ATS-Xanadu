@@ -67,6 +67,12 @@ _(*TRANS23*) = "./trans23.dats"
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with simpl_get_lctn
+#symload node with simpl_get_node
+(* ****** ****** *)
+#symload lctn with dimpl_get_lctn
+#symload node with dimpl_get_node
+(* ****** ****** *)
 #symload lctn with d2ecl_get_lctn
 #symload node with d2ecl_get_node
 (* ****** ****** *)
@@ -283,6 +289,25 @@ val-
 D2Cabsimpl
 ( tknd
 , simp, sexp) = d2cl.node()
+//
+val () =
+(
+case+
+simp.node() of
+|SIMPLone1
+(s2c1) =>
+tr23env_insert_any(env0,s2c1)
+//
+|SIMPLopt2
+(sqid,scs1,scs2) =>
+(
+case+ scs2 of
+|list_nil() => ()
+|list_cons(s2c1, _) =>
+tr23env_insert_any(env0,s2c1))
+//
+|SIMPLall1
+(sqid, s2cs) => ((*deadcode*)))
 //
 in//let
 d3ecl_make_node
