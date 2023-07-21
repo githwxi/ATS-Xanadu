@@ -294,24 +294,37 @@ in//let
 //
 let
 val () =
-case+ simp of
-|
-SIMPLall1
-(sqid, s2cs) => ()
-|
-SIMPLopt2
-(sqid, scs1, scs2) =>
+(
+case- simp of
+//
+|SIMPLone1
+(   s2c1   ) =>
+let
+val
+sdef =
+s2exp_stpize(sdef)
+val () =
+tr2aenv_insert_any
+(env0, s2c1.name(), sdef) end
+//let//end-of-[SIMPLone1(...)]
+//
+|SIMPLopt2
+(sqid,scs1,scs2) =>
 (
 case+ scs2 of
 |list_nil() => ()
 |list_cons(s2c1, _) =>
 let
 val
-sdef = s2exp_stpize(sdef)
+sdef =
+s2exp_stpize(sdef)
 val () =
 tr2aenv_insert_any
-(env0, s2c1.name(), sdef) end) in d2cl
-end (*let*)
+(env0, s2c1.name(), sdef) end)
+//let//end-of-[SIMPLopt2(...)]
+//
+|SIMPLall1
+(sqid, s2cs) => ((*deadcode*))) in d2cl end
 //
 end (*let*) // end of [f0_absimpl(env0,d2cl)]
 //
@@ -512,9 +525,18 @@ list_reverse(svts) in//let
 dimpl_make_node
 (loc1, DIMPLone2(d2c0, svts)) end
 //
-val
-dexp =
-trans2a_d2exp_tpck(env0,dexp,tres)
+local
+//
+val dexp =
+trans2a_d2exp(env0, dexp)
+val ubtf =
+unify2a_s2typ
+(env0, dexp.styp(), tres) in//loc
+//
+val dexp =
+d2exp(loc0,tres,D2Et2pck(dexp,tres))
+end (*loc*) // end-of-local[val(dexp)]
+//
 val
 dexp =
 (
@@ -527,10 +549,12 @@ tann = s2exp_stpize(sexp)
 val
 ubtf =
 unify2a_s2typ(env0,tres,tann)
-in
+in//let
+(*
 if
 ubtf then dexp else
-d2exp(loc0, tann, D2Et2pck(dexp,tann))
+*)
+d2exp(loc0,tann,D2Et2pck(dexp,tann))
 end (*let*) // end of [S2RESsome(...)]
 )
 in//let

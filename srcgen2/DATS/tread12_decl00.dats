@@ -60,6 +60,9 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with simpl_get_lctn
+#symload node with simpl_get_node
+(* ****** ****** *)
 #symload lctn with d2ecl_get_lctn
 #symload node with d2ecl_get_node
 (* ****** ****** *)
@@ -1225,12 +1228,16 @@ end (*let*) // end-of-[tread12_t2iag(t2i0,err)]
 tread12_simpl
   (simp, err) =
 (
-case-
+case+
 simp.node() of
-(*
+//
 |SIMPLone1 _ => simp
-|SIMPLall1 _ => simp
-*)
+//
+|SIMPLall1 _ => simp where
+{
+// HX-2023-07-20: deadcode
+  val () = (err := err + 1) }
+//
 |SIMPLopt2
 (sqid, scs1, scs2) => simp where
 {
@@ -1240,7 +1247,17 @@ case+ scs2 of
 |list_nil() =>
 (err := err+1) | list_cons _ => ())
 }
-) (*case+*) // end-of-[tread12_simpl(simp,err)]
+) where
+{
+//
+  val loc0 = simp.lctn()
+//
+  val (  ) =
+  prerrln("tread12_simpl: loc0 = ", loc0)
+  val (  ) =
+  prerrln("tread12_simpl: simp = ", simp)
+//
+} (*where*) // end-of-[tread12_simpl(simp,err)]
 //
 (* ****** ****** *)
 //
