@@ -362,6 +362,14 @@ s2cst_set_styp
 #symload sexp with s2cst_set_sexp
 #symload styp with s2cst_set_styp
 (* ****** ****** *)
+(*
+HX-2023-07-21:
+absimpl history
+*)
+fun
+s2abs_get_t2ps
+(s2cst): optn_vt(s2typlst)
+(* ****** ****** *)
 fun
 s2abs_get_sexp
 ( s2c0:s2cst ): s2expopt_vt
