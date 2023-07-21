@@ -254,6 +254,9 @@ d3cl.node() of
 |D3Cd2ecl _ => d3cl
 |D3Cerrck _ => d3cl
 //
+|D3Cabsopen _ => d3cl
+|D3Cabsimpl _ => d3cl
+//
 |
 D3Cstatic _ => f0_static(d3cl, err)
 |
