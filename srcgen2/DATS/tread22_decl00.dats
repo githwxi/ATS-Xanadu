@@ -281,6 +281,9 @@ d2cl.node() of
 //
 |D2Cabstype _ => d2cl
 //
+|D2Cabsopen _ => d2cl
+|D2Cabsimpl _ => d2cl
+//
 |D2Csymload _ => d2cl
 //
 |
