@@ -282,6 +282,17 @@ fun
 tr2aenv_insert_any
 ( env0: !tr2aenv, s2c0: s2cst): void
 //
+fun
+tr2aenv_evstyp_cst
+( env0:
+! tr2aenv, s2c0: s2cst): s2typopt_vt
+(*
+fun
+tr2aenv_evsexp_cst
+( env0:
+! tr2aenv, s2c0: s2cst): s2expopt_vt
+*)
+//
 (* ****** ****** *)
 //
 fun
