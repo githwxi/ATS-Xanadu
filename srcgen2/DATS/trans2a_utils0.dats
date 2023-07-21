@@ -478,6 +478,24 @@ s2vts_make_lctn_tqas(loc0, t2qs) }
 endloc//end-of[local(d2con2a/d2cst2a_s2typ)]
 
 (* ****** ****** *)
+//
+fun
+s2cst_get2a_styp
+( env0:
+! tr2aenv
+, s2c0: s2cst): s2typopt_vt =
+let
+val
+opt1 = s2cst_get_styp(s2c0)
+in//let
+case+ opt1 of
+| ~optn_vt_nil() =>
+(
+  tr2aenv_evstyp_cst(env0,s2c0) )
+| !optn_vt_cons(t2p1) => ( opt1 )
+end//end-of-[s2cst_get2a_styp(...)]
+//
+(* ****** ****** *)
 
 #implfun
 unify2a_s2typ
@@ -494,17 +512,18 @@ s2typ_eval$s2cst
 #impltmp
 s2typ_eval$s2cst
 <e1nv>(env0,s2c0) =
-let
-val opt1 =
-s2cst_get_styp(s2c0)
-in//let
-case+ opt1 of
-| ~
-optn_vt_nil() =>
-tr2aenv_evstyp_cst(env0,s2c0)
-| !
-optn_vt_cons(t2p1) => ( opt1 )
-end//end-of-[s2typ_eval$s2cst(...)]
+(
+s2cst_get2a_styp
+(  env0 , s2c0  ) ) where
+{
+(*
+val () =
+prerrln
+("\
+unify2a_s2typ: \
+s2typ_eval$s2cst: s2c0 = ", s2c0)
+*)
+}(*where*)//end-of-[s2typ_eval$s2cst]
 //
 #impltmp
 s2typ_eval$s2var
@@ -535,11 +554,22 @@ let
 #impltmp
 s2typ_eval$s2cst
 <e1nv>(env0,s2c0) =
-s2cst_get_styp(s2c0)
+(
+s2cst_get2a_styp
+(  env0 , s2c0  ) ) where
+{
+(*
+val () =
+prerrln
+("\
+match2a_s2typ: \
+s2typ_eval$s2cst: s2c0 = ", s2c0)
+*)
+}(*where*)//end-of-[s2typ_eval$s2cst]
 //
 #impltmp
 s2typ_eval$s2var
-<e1nv>(env0,s2v0) = optn_vt_nil()
+<e1nv>(env0,s2v0) = optn_vt_nil((*0*))
 //
 (*
 val () =
