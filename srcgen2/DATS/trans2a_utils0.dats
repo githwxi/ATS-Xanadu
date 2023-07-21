@@ -489,11 +489,24 @@ let
 #impltmp
 s2typ_eval$s2cst
 <e1nv>(env0,s2c0) =
+let
+val opt1 =
 s2cst_get_styp(s2c0)
+in//let
+case+ opt1 of
+| ~
+optn_vt_nil() =>
+tr2aenv_evstyp_cst(env0,s2c0)
+| !
+optn_vt_cons(t2p1) => ( opt1 )
+end//end-of-[s2typ_eval$s2cst(...)]
+//
 #impltmp
 s2typ_eval$s2var
-<e1nv>(env0,s2v0) = optn_vt_nil()
-//
+<e1nv>(env0,s2v0) =
+( // HX-2023-07-21: support for
+  optn_vt_nil((*void*)) // GRDT?
+) // end-of-[s2typ_eval$s2var(...)]
 (*
 val () =
 prerrln("unify2a_s2typ: t2p1 = ", t2p1)
