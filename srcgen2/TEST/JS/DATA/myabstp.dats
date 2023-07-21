@@ -5,7 +5,8 @@
 (* ****** ****** *)
 
 #extval
-fun f1(T1): T1
+fun
+foo1(T1): @(T1, sint)
 
 (* ****** ****** *)
 
@@ -15,9 +16,10 @@ local
 
 in//local
 
-#implfun f1(x1) = (1)
+#implfun
+foo1(x1) = (x1, x1 + 1)
 
-end // end-of-[local]
+endloc // end-of-[local]
 
 (* ****** ****** *)
 
