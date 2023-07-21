@@ -1364,11 +1364,10 @@ simpl_get_lctn
 fun
 simpl_get_node
 (simp: simpl): simpl_node
-fun
-simpl_set_node
-(simpl, simpl_node): void
+#symload lctn with simpl_get_lctn
 #symload node with simpl_get_node
-#symload node with simpl_set_node
+//
+(* ****** ****** *)
 //
 fun
 dimpl_get_lctn
@@ -1376,10 +1375,12 @@ dimpl_get_lctn
 fun
 dimpl_get_node
 (dimp: dimpl): dimpl_node
+#symload lctn with dimpl_get_lctn
+#symload node with dimpl_get_node
+//
 fun
 dimpl_set_node
 (dimpl, dimpl_node): void
-#symload node with dimpl_get_node
 #symload node with dimpl_set_node
 //
 (* ****** ****** *)
