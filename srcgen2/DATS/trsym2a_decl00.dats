@@ -85,6 +85,11 @@ in//let
 case+
 dcl0.node() of
 //
+(*
+|D2Cnone0 _ => ()
+|D2Cd1ecl _ => ()
+|D2Cerrck _ => ()
+*)
 |
 D2Cstatic
 (tknd, dcl1) =>
@@ -109,6 +114,35 @@ trsym2a_d2eclist(env0, dcs1)
 val () =
 trsym2a_d2eclist(env0, dcs2)
 endlet // end of [D2Clocal0(...)]
+//
+(*
+|D2Cabssort _ => ( (*void*) )
+|D2Cstacst0 _ => ( (*void*) )
+*)
+//
+(*
+|D2Csortdef _ => ( (*void*) )
+|D2Csexpdef _ => ( (*void*) )
+*)
+//
+(*
+|D2Cabstype _ => ( (*void*) )
+*)
+//
+(*
+|D2Csymload _ => ( (*void*) )
+*)
+//
+(*
+|D2Cabsopen _ => ( (*void*) )
+|D2Cabsimpl _ => ( (*void*) )
+*)
+//
+(*
+|D2Cdatasort _ => ( (*void*) )
+|D2Cexcptcon _ => ( (*void*) )
+|D2Cdatatype _ => ( (*void*) )
+*)
 //
 |
 D2Cinclude

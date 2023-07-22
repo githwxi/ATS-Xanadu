@@ -799,7 +799,7 @@ d2ecl_symload_errck(loc,tknd,sym1,dptm)
 end (*let*) // end of [f0_symload(dcl,err)]
 //
 (* ****** ****** *)
-
+//
 fun
 f0_include
 ( dcl: d2ecl
@@ -838,9 +838,9 @@ then (dcl) else
 d2ecl_include_errck
 ( dcl.lctn(), knd0,tknd,gsrc,fopt,dopt )
 end (*let*) // end of [f0_include(dcl,err)]
-
+//
 (* ****** ****** *)
-
+//
 fun
 f0_staload
 ( dcl: d2ecl
@@ -873,7 +873,7 @@ then (dcl) else
 d2ecl_staload_errck
 ( dcl.lctn(), knd0,tknd,gsrc,fopt,dres )
 end (*let*) // end of [f0_staload(dcl,err)]
-
+//
 (* ****** ****** *)
 //
 local

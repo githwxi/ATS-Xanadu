@@ -273,6 +273,15 @@ val-
 D2Cabsopen
 (tknd, simp) = d2cl.node()
 //
+val () =
+(
+case+
+simp.node() of
+|SIMPLone1
+(s2c1) =>
+tr23env_insert_any(env0,s2c1)
+|_(*otherwise*) => ( (*void*) ))
+//
 in//let
 d3ecl(loc0, D3Cabsopen(tknd, simp))
 end (*let*) // end of [f0_absopen(...)]

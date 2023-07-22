@@ -26,8 +26,16 @@ endloc // end-of-[local]
 
 (* ****** ****** *)
 
+local
+
+#absopen T0 // = sint
+
+in//local
+
 #implfun
 foo2(x2) = (x2+0, x2+1)
+
+endloc // end-of-[local]
 
 (* ****** ****** *)
 
