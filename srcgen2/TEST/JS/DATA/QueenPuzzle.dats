@@ -163,7 +163,6 @@ then loop(i0+1, boardlst_extend(xss)) else xss
 }
 
 (* ****** ****** *)
-////
 (* ****** ****** *)
 
 fun
@@ -175,14 +174,16 @@ xss = qsolve()
 //
 val () =
 (
-iforeach(xss)) where
+gseq_iforeach(xss)) where
 {
-impltmp
-iforeach$work<board>(i0, xs) =
-(println("Solution#", i0+1, ":"); println(xs))
-}
-}
+#impltmp
+iforeach$work<board>(i0, xs) = ()
+//(
+//println
+//("Solution#", i0+1, ":"); println(xs))
+} (* where *)
+} (* where *) // end of [ main0() ]
 
 (* ****** ****** *)
 
-(* end of [QueenPuzzle.dats] *)
+(* end of [TEST/JSDATA/QueenPuzzle.dats] *)
