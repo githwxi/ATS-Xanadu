@@ -201,9 +201,11 @@ in//local
 #implfun
 s2cst_get_styp(s2c0) =
 let
+(*
 val () =
 prerrln
 ("s2cst_get_styp: s2c0 = ", s2c0)
+*)
 in//let
 tmpmap_search_opt(mymap, s2c0.stmp())
 end//let//end-of-[s2cst_get_styp(s2c0)]
@@ -211,12 +213,14 @@ end//let//end-of-[s2cst_get_styp(s2c0)]
 #implfun
 s2cst_set_styp(s2c0, styp) =
 let
+(*
 val () =
 prerrln
 ("s2cst_set_styp: s2c0 = ", s2c0)
 val () =
 prerrln
 ("s2cst_set_styp: styp = ", styp)
+*)
 in//let
 tmpmap_insert_any(mymap, s2c0.stmp(), styp)
 end//let//end-of-[s2cst_set_styp(s2c0,styp)]

@@ -613,12 +613,12 @@ s2typ_eval$s2cst: s2c0 = ", s2c0)
 s2typ_eval$s2var
 <e1nv>(env0,s2v0) = optn_vt_nil()
 //
-// (*
+(*
 val () =
 prerrln("unify23_s2typ: t2p1 = ", t2p1)
 val () =
 prerrln("unify23_s2typ: t2p2 = ", t2p2)
-// *)
+*)
 //
 in//let
 unify00_s2typ_e1nv<e1nv>(env0, t2p1, t2p2)
