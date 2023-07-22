@@ -1346,9 +1346,31 @@ D1Cabsopen
 (tknd, sqid) = d1cl.node()
 in//let
 let
-val sqid = f1_sqid(env0, sqid)
+//
+val
+simp = f1_sqid(env0, sqid)
+//
+val
+simp =
+(
+case-
+simp.node() of
+(*
+|
+SIMPLone1 _ => simp
+*)
+|
+SIMPLall1
+(sqid, s2cs) =>
+if
+list_singq(s2cs)
+then
+simpl_make_node
+( simp.lctn()
+, SIMPLone1(s2cs.head())) else simp)
+//
 in//let
-  d2ecl(loc0, D2Cabsopen(tknd, sqid))
+  d2ecl(loc0, D2Cabsopen(tknd, simp))
 end (*let*)
 end (*let*) // end of [f0_absopen(env0,d1cl)]
 
@@ -1385,7 +1407,7 @@ SIMPLall1
 in//let
 if
 list_singq(s2cs)
-then
+then // HX: sort-checking
 let
   val
   s2c1 = s2cs.head((*nil*))

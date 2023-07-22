@@ -164,10 +164,8 @@ f0_local0(env0, d2cl))
 |D2Cexcptcon _ => d2cl
 |D2Cdatatype _ => d2cl
 //
-(*
 |
 D2Cabsopen _ => f0_absopen(env0, d2cl)
-*)
 |
 D2Cabsimpl _ => f0_absimpl(env0, d2cl)
 //
@@ -278,6 +276,48 @@ val (  ) = tr2aenv_locjoin(env0)
 in//let
   d2ecl(loc0, D2Clocal0(head, body))
 end (*let*) // end of [f0_local0(env0,d2cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_absopen
+( env0:
+! tr2aenv
+, d2cl: d2ecl): d2ecl =
+let
+//
+val-
+D2Cabsopen
+( tknd, simp) = d2cl.node()
+//
+in//let
+//
+case+
+simp.node() of
+//
+|SIMPLone1
+(   s2c1   ) => d2cl
+where {
+val () =
+tr2aenv_insert_any(env0,s2c1)}
+//
+|SIMPLopt2
+(sqid,scs1,scs2) =>
+(
+case+ scs2 of
+|
+list_nil() => d2cl
+|
+list_cons(s2c1, _) => d2cl
+where {
+val () =
+tr2aenv_insert_any(env0,s2c1)})
+//
+end where
+{
+  val () =
+  prerrln("f0_absopen(2a): d2cl = ", d2cl)
+} (*where*) // end of [f0_absopen(env0,d2cl)]
 //
 (* ****** ****** *)
 //
