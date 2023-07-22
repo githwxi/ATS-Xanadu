@@ -760,15 +760,15 @@ d2e0.node() of
 |D2Evar _ => f0_var(env0, d2e0)
 //
 |D2Eint _ => f0_int(env0, d2e0)
-|D2Ei00 _ => f0_i00(env0, d2e0)
-//
 |D2Ebtf _ => f0_btf(env0, d2e0)
-|D2Eb00 _ => f0_b00(env0, d2e0)
-//
 |D2Echr _ => f0_chr(env0, d2e0)
-|D2Ec00 _ => f0_c00(env0, d2e0)
-//
+|D2Eflt _ => f0_flt(env0, d2e0)
 |D2Estr _ => f0_str(env0, d2e0)
+//
+|D2Ei00 _ => f0_i00(env0, d2e0)
+|D2Eb00 _ => f0_b00(env0, d2e0)
+|D2Ec00 _ => f0_c00(env0, d2e0)
+|D2Ef00 _ => f0_f00(env0, d2e0)
 |D2Es00 _ => f0_s00(env0, d2e0)
 //
 |D2Econ _ => f0_con(env0, d2e0)
@@ -926,6 +926,38 @@ val loc0 = d2e0.lctn()
 val-
 D2Ec00(chr) = d2e0.node()
 val t2p0 = the_s2typ_char() }
+//
+(* ****** ****** *)
+//
+fun
+f0_flt
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+(
+d2exp_make_styp_node
+( loc0
+, t2p0, D2Eflt(tok))) where
+{
+val loc0 = d2e0.lctn()
+val-
+D2Eflt(tok) = d2e0.node()
+val t2p0 = the_s2typ_dflt() }
+//
+fun
+f0_f00
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+(
+d2exp_make_styp_node
+( loc0
+, t2p0, D2Ef00(flt))) where
+{
+val loc0 = d2e0.lctn()
+val-
+D2Ef00(flt) = d2e0.node()
+val t2p0 = the_s2typ_dflt() }
 //
 (* ****** ****** *)
 //

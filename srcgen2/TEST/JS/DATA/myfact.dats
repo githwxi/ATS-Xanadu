@@ -72,7 +72,7 @@ case+ x of
 
 fun
 fact5(x: nint) =
-if x > 0 then x * fact4(x-1) else 1
+if x > 0 then x * fact5(x-1) else 1
 
 (* ****** ****** *)
 

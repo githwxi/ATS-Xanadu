@@ -201,6 +201,8 @@ print("D3Eint(",tok,")")
 print("D3Ebtf(",sym,")")
 |D3Echr(tok) =>
 print("D3Echr(",tok,")")
+|D3Eflt(tok) =>
+print("D3Eflt(",tok,")")
 |D3Estr(tok) =>
 print("D3Estr(",tok,")")
 //
@@ -210,6 +212,8 @@ print("D3Ei00(",int,")")
 print("D3Eb00(",btf,")")
 |D3Ec00(chr) =>
 print("D3Ec00(",chr,")")
+|D3Ef00(flt) =>
+print("D3Ef00(",flt,")")
 |D3Es00(str) =>
 print("D3Es00(",str,")")
 //

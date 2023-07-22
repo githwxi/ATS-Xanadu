@@ -1199,6 +1199,7 @@ d2e0.node() of
 |D2Ei00 _ => d2e0
 |D2Eb00 _ => d2e0
 |D2Ec00 _ => d2e0
+|D2Ef00 _ => d2e0
 |D2Es00 _ => d2e0
 //
 |D2Econ _ => d2e0
