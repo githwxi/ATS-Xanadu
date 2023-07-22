@@ -73,6 +73,12 @@ s2typ_eval$s2cst
 s2typ_eval$s2var
 <e1nv>(env0,s2v0) = optn_vt_nil()
 //
+(*
+val () =
+prerrln
+("s2typ_hnfiz0: t2p0 = ", t2p0)
+*)
+//
 in//let
 s2typ_hnfiz0_e1nv<e1nv>(env0, t2p0)
 end (*let*) // end of [s2typ_hnfiz0(t2p0)]

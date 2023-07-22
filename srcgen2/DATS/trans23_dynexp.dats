@@ -139,10 +139,19 @@ d2p0.node() of
 //
 |
 D2Pany() =>
-(
-d3pat_make_styp_node
+let
+(*
+val () =
+prerrln
+("\
+trans23_d2pat: \
+D2Pany: t2p0 = ", t2p0)
+*)
+in//let
+d3pat
 ( loc0
-, t2p0, D3Pany(*0*)))
+, t2p0, D3Pany(*void*))
+end//let//end-of-[D2Pany]
 |
 D2Pvar(d2v) =>
 let
@@ -152,8 +161,17 @@ d2v.styp((*0*))
 val
 t2p0 =
 s2typ_hnfiz0(t2p0)
+//
+(*
+val () =
+prerrln
+("\
+trans23_d2pat: \
+D2Pvar: t2p0 = ", t2p0)
+*)
+//
 in//let
-d2v.styp( t2p0 );
+d2v.styp(  t2p0  );
 d3pat_make_styp_node
 (loc0, t2p0, D3Pvar(d2v))
 end//end-of-[D2Pvar(d2v)]
@@ -502,10 +520,17 @@ D2Pannot
 , s1e2, s2e2) = d2p0.node()
 //
 (*
-val t2p2 = s2exp_stpize(s2e2)
-val t2p2 = s2typ_hnfiz0(t2p2)
+val
+t2p2 = s2exp_stpize(s2e2)
+val
+t2p2 = s2typ_hnfiz0(t2p2)
 *)
-val t2p2 = d2p0.styp((*void*))
+val
+t2p2 = d2p0.styp((*void*))
+//
+val () =
+prerrln
+("f0_annot(23): t2p2 = ", t2p2)
 //
 val d3p1 =
 (
@@ -2018,8 +2043,9 @@ prerrln("trans23_d3pat_tpck: t2p0 = ", t2p0)
 trans23_d3exp_tpck
 (env0, d3e0, t2p0) =
 let
+val t2p1 = d3e0.styp()
 val ubtf =
-unify23_s2typ(env0,d3e0.styp(),t2p0)
+unify23_s2typ(env0, t2p1, t2p0)
 in//let
 if
 ubtf then d3e0 else
@@ -2029,12 +2055,12 @@ d3exp(loc0, t2p0, D3Et2pck(d3e0,t2p0)) end
 end where
 {
 //
-(*
+// (*
 val () =
 prerrln("trans23_d3exp_tpck: d3e0 = ", d3e0)
 val () =
 prerrln("trans23_d3exp_tpck: t2p0 = ", t2p0)
-*)
+// *)
 //
 } (*where*) // end of [trans23_d3exp_tpck(...)]
 
