@@ -216,9 +216,11 @@ TR2AENV(stkmap) = env0
 val opt1 =
 stkmap_search_opt(stkmap, k0)
 //
+(*
 val () =
 prerrln
 ("tr2aenv_search_opt: k0 = ", k0)
+*)
 //
 in//let
 //
@@ -248,12 +250,14 @@ let
 val x0 = s2cs
 val k0 = s2c0.name()
 //
+(*
 val () =
 prerrln
 ("tr2aenv_insert_any: k0 = ", k0)
 val () =
 prerrln
 ("tr2aenv_insert_any: x0 = ", x0)
+*)
 //
 val+
 @TR2AENV(!stkmap) = env0 in//let
@@ -274,12 +278,14 @@ tr2aenv_evstyp_cst
 val s2cs =
 tr2aenv_search_opt(env0, s2c0)
 //
+(*
 val (  ) =
 prerrln
 ("tr2aenv_evstyp_cst: s2c0 = ", s2c0)
 val (  ) =
 prerrln
 ("tr2aenv_evstyp_cst: s2cs = ", s2cs)
+*)
 //
 in//let
 (

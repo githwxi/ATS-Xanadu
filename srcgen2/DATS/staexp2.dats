@@ -914,10 +914,12 @@ s2exp_make_node
 (s2e1.sort((*void*)), S2Ecbrf(s2e1))
 end (*let*) // end of [f0_cbrf(...)]
 //
+(*
 val () =
 prerrln("s2exp_apps_pq: s2f0 = ", s2f0)
 val () =
 prerrln("s2exp_apps_pq: s2es = ", s2es)
+*)
 //
 } (*where*) // end of [s2exp_apps_pq(...)]
 

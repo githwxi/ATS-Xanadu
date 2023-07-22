@@ -852,8 +852,10 @@ end//let//end-of-[ F2ARGdyn0(...) ]
 //
 ) where
 {
+(*
   val () = prerrln("f0_f2a1: f2a1 = ", f2a1)
   val () = prerrln("f0_f2a1: tfun = ", tfun)
+*)
 } (*where*) // end of [f0_f2a1(env0,f2a1,tfun)]
 //
 (* ****** ****** *)
@@ -886,9 +888,11 @@ end//let
 //
 ) where
 {
+(*
   val () = prerrln("auxmain: f2as = ", f2as)
   val () = prerrln("auxmain: tfun = ", tfun)
   val () = prerrln("auxmain: fres = ", fres)
+*)
 }(*where*) // end of [auxmain(env0,f2as,tfun,fres)]
 //
 (* ****** ****** *)
