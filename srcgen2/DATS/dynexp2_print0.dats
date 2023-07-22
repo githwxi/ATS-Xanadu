@@ -328,6 +328,9 @@ print("D2Eint(",tok,")")
 print("D2Ebtf(",sym,")")
 |D2Echr(tok) =>
 print("D2Echr(",tok,")")
+//
+|D2Eflt(tok) =>
+print("D2Eflt(",tok,")")
 |D2Estr(tok) =>
 print("D2Estr(",tok,")")
 //
@@ -337,6 +340,9 @@ print("D2Ei00(",int,")")
 print("D2Eb00(",btf,")")
 |D2Ec00(chr) =>
 print("D2Ec00(",chr,")")
+//
+|D2Ef00(flt) =>
+print("D2Ef00(",flt,")")
 |D2Es00(str) =>
 print("D2Es00(",str,")")
 //

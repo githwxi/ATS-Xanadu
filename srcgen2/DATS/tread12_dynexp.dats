@@ -1328,16 +1328,17 @@ d2e0.node() of
 //
 |D2Evar _ => d2e0
 //
-|D2Ei00 _ => d2e0
-|D2Eb00 _ => d2e0
-|D2Ec00 _ => d2e0
-|D2Es00 _ => d2e0
-//
 |D2Eint _ => d2e0
 |D2Ebtf _ => d2e0
 |D2Echr _ => d2e0
 |D2Eflt _ => d2e0
 |D2Estr _ => d2e0
+//
+|D2Ei00 _ => d2e0
+|D2Eb00 _ => d2e0
+|D2Ec00 _ => d2e0
+|D2Ef00 _ => d2e0
+|D2Es00 _ => d2e0
 //
 |D2Econ _ => d2e0
 |D2Ecst _ => d2e0
