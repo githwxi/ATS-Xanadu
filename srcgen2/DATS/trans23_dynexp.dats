@@ -528,9 +528,11 @@ t2p2 = s2typ_hnfiz0(t2p2)
 val
 t2p2 = d2p0.styp((*void*))
 //
+(*
 val () =
 prerrln
 ("f0_annot(23): t2p2 = ", t2p2)
+*)
 //
 val d3p1 =
 (
@@ -2007,7 +2009,7 @@ trans23_d2exp_tpck
 let
 val
 d3e0 = trans23_d2exp(env0, d2e0)
-in
+in//let
 trans23_d3exp_tpck(env0,d3e0,t2p0)
 end (*let*) // end of [trans23_d2exp_tpck(...)]
 
@@ -2055,12 +2057,12 @@ d3exp(loc0, t2p0, D3Et2pck(d3e0,t2p0)) end
 end where
 {
 //
-// (*
+(*
 val () =
 prerrln("trans23_d3exp_tpck: d3e0 = ", d3e0)
 val () =
 prerrln("trans23_d3exp_tpck: t2p0 = ", t2p0)
-// *)
+*)
 //
 } (*where*) // end of [trans23_d3exp_tpck(...)]
 

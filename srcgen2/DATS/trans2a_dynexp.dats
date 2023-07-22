@@ -1889,6 +1889,7 @@ val f2cl = F2CLfun(*void*)
 val tres = dexp.styp((*void*))
 val tfun =
 s2typ_fun1_f2arglst(f2as, f2cl, tres)
+//
 (*
 val (  ) = prerrln
 ("trans2a_d2exp: f0_lam0: tfun = ", tfun)
@@ -2141,12 +2142,14 @@ endlet
 //
 in//let
 let
+(*
 val () =
 prerrln("f0_eval: loc0 = ", loc0)
 val () =
 prerrln("f0_eval: t2p1 = ", t2p1)
 val () =
 prerrln("f0_eval: t2p0 = ", t2p0)
+*)
 in//let
 d2exp( loc0, t2p0, D2Eeval( d2e1 ) )
 end//let
@@ -2293,10 +2296,12 @@ s2typ_make_node
 (sort2_none0()
 ,T2Pfun1(f2cl,npf1,t2ps,tres))
 //
+(*
 val () =
 prerrln("f0_brset: d2es = ", d2es)
 val () =
 prerrln("f0_brset: tfun = ", tfun)
+*)
 //
 val name =
 BRCKT_symbl(*void*)//(A[i]:=x)
@@ -2498,7 +2503,7 @@ trans2a_f2arg
 ( env0, farg ) =
 let
 //
-// (*
+(*
 val
 loc0 = farg.lctn()
 val () =
@@ -2507,7 +2512,7 @@ prerrln
 val () =
 prerrln
 ("trans2a_f2arg: farg = ", farg)
-// *)
+*)
 //
 in//let
 //
