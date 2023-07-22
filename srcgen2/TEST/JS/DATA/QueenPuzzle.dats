@@ -100,22 +100,22 @@ print "Q " else print ". "; loop(i0+1))
 } (* where *) // end of [g_print<board>]
 
 (* ****** ****** *)
-////
 (* ****** ****** *)
 
 fun
 board_check
-(x0: int, xs: board): bool =
+(xs: board, x0: int): bool =
 (
-iforall(xs)) where
+gseq_iforall(xs)) where
 {
-impltmp
+#impltmp
 iforall$test<int>(i1, x1) =
 if
 (x0 != x1)
 then (abs(x0 - x1) != i1 + 1) else false
 } (* end of [board_check] *)
 
+(* ****** ****** *)
 (* ****** ****** *)
 
 fun
@@ -124,14 +124,12 @@ board_extend
 (
 list_vt2t
 (
-mapopt_list(N)
-)
-) where
+gseq_mapopt_list(N))) where
 {
 #impltmp
 map$fopr(x0) = board_cons(x0, xs)
 #impltmp
-filter$test(x0) = board_check(x0, xs)
+filter$test(x0) = board_check(xs, x0)
 } (* end of [board_extend] *)
 
 fun
@@ -139,7 +137,7 @@ boardlst_extend
 ( xss
 : list(board)): list(board) =
 (
-foldr
+gseq_foldr
 (xss, list_nil())) where
 {
 #typedef xs = board
@@ -149,6 +147,7 @@ foldr$fopr<xs><r0>(xs, r0) = append(board_extend(xs), r0)
 } (* end of [boardlst_extend] *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 
 fun
 qsolve(): list(board) =
@@ -156,12 +155,15 @@ qsolve(): list(board) =
   loop(0, list_sing(board_nil()))
 ) where
 {
-  fun
-  loop
-  (i0: int, xss: list(board)): list(board) =
-  if i0 < N then loop(i0+1, boardlst_extend(xss)) else xss
+fun
+loop
+(i0: int, xss: list(board)): list(board) =
+if i0 < N
+then loop(i0+1, boardlst_extend(xss)) else xss
 }
 
+(* ****** ****** *)
+////
 (* ****** ****** *)
 
 fun
