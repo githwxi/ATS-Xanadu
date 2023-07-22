@@ -387,15 +387,9 @@ f0_valdclst
 , d2cl: d2ecl): d3ecl =
 let
 //
-val
-loc0 = d2cl.lctn()
 val-
 D2Cvaldclst
 (tknd, d2vs) = d2cl.node()
-//
-val () =
-prerrln
-("f0_valdclst: d2cl = ", d2cl)
 //
 val
 d3vs =
@@ -403,7 +397,16 @@ trans23_d2valdclist(env0, d2vs)
 //
 in//let
   d3ecl(loc0, D3Cvaldclst(tknd, d3vs))
-end (*let*) // end of [f0_valdclst(env0,d2cl)]
+end where
+{
+//
+val loc0 = d2cl.lctn()
+(*
+val (  ) =
+prerrln("f0_valdclst(23): d2cl = ", d2cl)
+*)
+//
+}(*where*) // end of [f0_valdclst(env0,d2cl)]
 //
 (* ****** ****** *)
 //
@@ -414,15 +417,9 @@ f0_vardclst
 , d2cl: d2ecl): d3ecl =
 let
 //
-val
-loc0 = d2cl.lctn()
 val-
 D2Cvardclst
 (tknd, d2vs) = d2cl.node()
-//
-val () =
-prerrln
-("f0_vardclst: d2cl = ", d2cl)
 //
 val
 d3vs =
@@ -430,7 +427,16 @@ trans23_d2vardclist(env0, d2vs)
 //
 in//let
   d3ecl(loc0, D3Cvardclst(tknd, d3vs))
-end (*let*) // end of [f0_vardclst(env0,d2cl)]
+end where
+{
+//
+val loc0 = d2cl.lctn()
+(*
+val (  ) =
+prerrln("f0_vardclst(23): d2cl = ", d2cl)
+*)
+//
+}(*where*) // end of [f0_vardclst(env0,d2cl)]
 //
 (* ****** ****** *)
 //
@@ -441,19 +447,11 @@ f0_fundclst
 , d2cl: d2ecl): d3ecl =
 let
 //
-val
-loc0 = d2cl.lctn()
 val-
 D2Cfundclst
 ( tknd
 , tqas
 , d2cs, d2fs) = d2cl.node()
-//
-(*
-val () =
-prerrln
-("f0_fundclst: d2cl = ", d2cl)
-*)
 //
 val
 d3fs =
@@ -463,7 +461,16 @@ in//let
 d3ecl_make_node
 ( loc0
 , D3Cfundclst(tknd, tqas, d2cs, d3fs) )
-end (*let*) // end of [f0_fundclst(env0,d2cl)]
+end where
+{
+//
+val loc0 = d2cl.lctn()
+(*
+val (  ) =
+prerrln("f0_fundclst(23): d2cl = ", d2cl)
+*)
+//
+}(*where*) // end of [f0_fundclst(env0,d2cl)]
 //
 (* ****** ****** *)
 //
@@ -652,6 +659,13 @@ d2fundcl_get_tdxp(dfun)
 val wsxp =
 d2fundcl_get_wsxp(dfun)
 //
+(*
+val (  ) = prerrln
+("trans23_d2fundcl: f2as = ", f2as)
+val (  ) = prerrln
+("trans23_d2fundcl: tdxp = ", tdxp)
+*)
+//
 val f3as =
 trans23_f2arglst(env0, f2as)
 val tdxp =
@@ -661,10 +675,12 @@ trans23_teqd2exp(env0, tdxp)
 val f2cl = F2CLfun((*void*))
 *)
 //
+(*
 val (  ) = prerrln
 ("trans23_d2fundcl: f3as = ", f3as)
 val (  ) = prerrln
 ("trans23_d2fundcl: tdxp = ", tdxp)
+*)
 //
 in//let
 d3fundcl(loc0,dvar,f3as,sres,tdxp,wsxp)

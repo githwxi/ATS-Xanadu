@@ -382,10 +382,6 @@ s2abs_set_sexp
 fun
 s2abs_set_styp
 (s2c0: s2cst, sdef: s2typ): void
-#symload sexp with s2abs_get_sexp
-#symload styp with s2abs_get_styp
-#symload sexp with s2abs_set_sexp
-#symload styp with s2abs_set_styp
 (* ****** ****** *)
 //
 fun

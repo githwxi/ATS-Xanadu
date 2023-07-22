@@ -342,9 +342,9 @@ prerrln("the_tr12env_pvsload() = ", ret)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
-("./DATA/myabstp.dats")
+("./DATA/QueenPuzzle.dats")
 val (  ) =
 d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_TEST_JS_test35_xatsopt.dats] *)
+(* end of [ATS3/XATSOPT_TEST_JS_test36_xatsopt.dats] *)
