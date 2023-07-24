@@ -54,5 +54,34 @@ BAS = "./xbasics.sats"
 f2clknd = $BAS.f2clknd
 //
 (* ****** ****** *)
+//
+#staload
+SYM = "./xsymbol.sats"
+//
+(*
+#staload
+MAP = "./xsymmap.sats"
+*)
+//
+(* ****** ****** *)
+#typedef sym_t = $SYM.sym_t
+(* ****** ****** *)
+#staload S2E = "./staexp2.sats"
+(* ****** ****** *)
+#staload D2E = "./dynexp2.sats"
+#staload D3E = "./dynexp3.sats"
+(* ****** ****** *)
+#typedef s2cst = $S2E.s2cst
+#typedef s2exp = $S2E.s2exp
+#typedef s2typ = $S2E.s2typ
+(* ****** ****** *)
+#typedef d2var = $D2E.d2var
+#typedef d2con = $D2E.d2con
+#typedef d2cst = $D2E.d2cst
+(* ****** ****** *)
+#typedef d3pat = $D3E.d3pat
+#typedef d3exp = $D3E.d3exp
+#typedef d3ecl = $D3E.d3ecl
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans3a.sats] *)
