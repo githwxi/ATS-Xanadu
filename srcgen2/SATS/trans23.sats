@@ -57,8 +57,11 @@ f2clknd = $BAS.f2clknd
 //
 #staload
 SYM = "./xsymbol.sats"
+//
+(*
 #staload
 MAP = "./xsymmap.sats"
+*)
 //
 (* ****** ****** *)
 #typedef sym_t = $SYM.sym_t
@@ -85,8 +88,8 @@ LEX = "./lexing0.sats"
 #staload D1E = "./dynexp1.sats"
 (* ****** ****** *)
 #staload S2E = "./staexp2.sats"
-#staload D2E = "./dynexp2.sats"
 (* ****** ****** *)
+#staload D2E = "./dynexp2.sats"
 #staload D3E = "./dynexp3.sats"
 (* ****** ****** *)
 #typedef s2cst = $S2E.s2cst
