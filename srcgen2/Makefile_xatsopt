@@ -173,6 +173,10 @@ tread23_sats
 tread23_sats: ; $(XATSOPT) --static SATS/tread23.sats
 ######
 all_sats:: \
+trans3a_sats
+trans3a_sats: ; $(XATSOPT) --static SATS/trans3a.sats
+######
+all_sats:: \
 xglobal_sats
 xglobal_sats: ; $(XATSOPT) --static SATS/xglobal.sats
 ######
@@ -669,6 +673,12 @@ tread23_decl00_dats: ; $(XATSOPT) --dynamic DATS/tread23_decl00.dats
 all_dats:: \
 tread23_errmsg_dats
 tread23_errmsg_dats: ; $(XATSOPT) --dynamic DATS/tread23_errmsg.dats
+######
+
+######
+all_dats:: \
+trans3a_dats
+trans3a_dats: ; $(XATSOPT) --dynamic DATS/trans3a.dats
 ######
 
 ######
