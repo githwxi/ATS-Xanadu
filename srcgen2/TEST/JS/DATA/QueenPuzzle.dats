@@ -24,11 +24,6 @@ board = board_tbox
 
 (* ****** ****** *)
 #extval
-fun println(): void
-#symload
-print with strn_print
-(* ****** ****** *)
-#extval
 fun
 board_nil(): board
 #extval
@@ -41,6 +36,8 @@ board_cons
 (* ****** ****** *)
 #staload
 "prelude/SATS/gseq000.sats"
+#staload
+"prelude/SATS/synoug0.sats"
 (* ****** ****** *)
 
 local
@@ -163,6 +160,7 @@ then loop(i0+1, boardlst_extend(xss)) else xss
 }
 
 (* ****** ****** *)
+////
 (* ****** ****** *)
 
 fun
@@ -177,10 +175,10 @@ val () =
 gseq_iforeach(xss)) where
 {
 #impltmp
-iforeach$work<board>(i0, xs) = ()
-//(
-//println
-//("Solution#", i0+1, ":"); println(xs))
+iforeach$work<board>(i0, xs) =
+(
+println
+("Solution#", i0+1, ":"); println(xs))
 } (* where *)
 } (* where *) // end of [ main0() ]
 

@@ -319,8 +319,10 @@ in//let
 end (*let*) // end of [Q1ARGsome(...)]
 ) where
 {
+(*
 val () =
 prerrln("trans12_q1arg: q1a0 = ", q1a0)
+*)
 //
 } (*where*) // end of [trans12_q1arg(...)]
 
@@ -435,6 +437,7 @@ trans12_d1arg
 //
 val
 loc0 = darg.lctn()
+//
 (*
 val () =
 prerrln
@@ -956,8 +959,8 @@ val () = prerrln
 f0_sexpdef: sdef = ", sdef)
 *)
 //
-val () =
-tr12env_pshlam0(env0)
+val
+( ) = tr12env_pshlam0(env0)
 //
 val
 svss =
@@ -1586,8 +1589,10 @@ case+
 gexp.node() of
 |G1Eint(tint) =>
 (
+(*
 prerrln
 ("f1_pval: tint = ", tint);
+*)
 case-
 tint.node() of
 | T_INT01(rep) =>
@@ -1600,10 +1605,10 @@ tint.node() of
 )
 ) where
 {
-// (*
+(*
 val () = prerrln
 ("f0_symload: f1_pval: gopt = ", gopt)
-// *)
+*)
 } (*where*) // end of [ f1_pval(gopt) ]
 //
 } (*where*) // end of [f0_symload(env0,d1cl)]
@@ -1625,9 +1630,11 @@ D1Cinclude
 , tknd, gsrc
 , fopt, dopt) = d1cl.node()
 //
+(*
 val () =
 prerrln
 ("f0_include: dopt = ", dopt)
+*)
 //
 val dopt =
 (
@@ -2216,8 +2223,10 @@ val () =
  list_consq(tqas)
  then tr12env_add1_d2cs(env0, d2cs))
 //
+(*
 val () =
 prerrln("f0_fundclst: d2cs = ", d2cs)
+*)
 //
 in//let
 d2ecl_make_node
@@ -2436,12 +2445,12 @@ end where
 //
 val loc0 = d1cl.lctn()
 //
-// (*
+(*
 val (  ) =
 prerrln("f0_implmnt0(12): loc0 = ", loc0)
 val (  ) =
 prerrln("f0_implmnt0(12): d2cl = ", d1cl)
-// *)
+*)
 //
 } (*where*)//end-of-[f0_implmnt0(env0,d1cl)]
 
@@ -2557,8 +2566,10 @@ D2Cimplmnt0
 end where // end-of-let
 {
 //
-  val () =
-  prerrln("f0_implmnt0_all1: d1cl = ", d1cl)
+(*
+val () =
+prerrln("f0_implmnt0_all1: d1cl = ", d1cl)
+*)
 //
 } (*where*)//end-[f0_implmnt0_all1(env0,...)]
 //
