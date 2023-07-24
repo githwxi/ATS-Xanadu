@@ -1288,7 +1288,7 @@ gmap_strmize_itm
 }
 //
 (* ****** ****** *)
-////
+//
 (*
 For gseqn-operations
 *)
