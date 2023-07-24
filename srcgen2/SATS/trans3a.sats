@@ -83,5 +83,31 @@ MAP = "./xsymmap.sats"
 #typedef d3exp = $D3E.d3exp
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:t0>
+list_trans3a_fnp
+( e1:
+! tr3aenv
+, xs: list(x0)
+, (!tr3aenv, x0) -> y0): list(y0)
+fun
+<x0:t0>
+<y0:t0>
+optn_trans3a_fnp
+( e1:
+! tr3aenv
+, xs: optn(x0)
+, (!tr3aenv, x0) -> y0): optn(y0)
+//
+(* ****** ****** *)
+//
+fun
+tr3aenv_poplam0(env0: !tr3aenv): void
+fun
+tr3aenv_pshlam0(env0: !tr3aenv): void
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans3a.sats] *)

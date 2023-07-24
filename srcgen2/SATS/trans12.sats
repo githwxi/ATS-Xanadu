@@ -310,11 +310,13 @@ LEX = "./lexing0.sats"
 #vwtpdef s2itmopt_vt = optn_vt(s2itm)
 #vwtpdef d2itmopt_vt = optn_vt(d2itm)
 (* ****** ****** *)
+//
 fun
 s1exp_get_s2cstlst
 ( env0:
 ! tr12env
 , s1e0: s1exp): s2cstlst
+//
 (* ****** ****** *)
 //
 fun
@@ -370,7 +372,7 @@ tr12env_free_top
 //
 fun
 tr12env_add0_g1mac
-( env:
+( env0:
 ! tr12env
 , key: sym_t, itm: g1mac): void
 //
