@@ -86,13 +86,26 @@ fun
 <xs:t0>
 <x0:t0>
 <ln:i0>
-gseqn_unlist(xs:list(x0,ln)): (xs)
+gseqn_unlist(list(x0,ln)): (xs)
 fun
 <xs:t0>
 <x0:t0>
 <ln:i0>
-gseqn_unrlist(xs:list(x0,ln)): (xs)
+gseqn_unrlist(list(x0,ln)): (xs)
 
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<ln:i0>
+gseqn_unlist_vt(list_vt(x0,ln)): (xs)
+fun
+<xs:t0>
+<x0:t0>
+<ln:i0>
+gseqn_unrlist_vt(list_vt(x0,ln)): (xs)
+//
 (* ****** ****** *)
 //
 fun
