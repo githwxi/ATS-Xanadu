@@ -59,9 +59,9 @@ _(*TRANS3a*) = "./trans3a.dats"
 //
 #implfun
 trans3a_d3patlst
-  (env0, dcls) =
+  (env0, d3ps) =
 (
-  list_trans3a_fnp(env0, dcls, trans3a_d3pat))
+  list_trans3a_fnp(env0, d3ps, trans3a_d3pat))
 //
 (* ****** ****** *)
 //
@@ -73,21 +73,23 @@ trans3a_d3expopt
 //
 #implfun
 trans3a_d3explst
-  (env0, dcls) =
+  (env0, d3es) =
 (
-  list_trans3a_fnp(env0, dcls, trans3a_d3exp))
+  list_trans3a_fnp(env0, d3es, trans3a_d3exp))
 //
 (* ****** ****** *)
 //
 #implfun
 trans3a_l3d3plst
 ( env0, ldps ) =
-list_trans3a_fnp(env0, ldps, trans3a_l3d3p)
+(
+  list_trans3a_fnp(env0, ldps, trans3a_l3d3p))
 //
 #implfun
 trans3a_l3d3elst
 ( env0, ldes ) =
-list_trans3a_fnp(env0, ldes, trans3a_l3d3e)
+(
+  list_trans3a_fnp(env0, ldes, trans3a_l3d3e))
 //
 (* ****** ****** *)
 
