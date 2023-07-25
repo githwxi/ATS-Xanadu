@@ -277,6 +277,32 @@ fun
 <xs:
 i0->t0>
 <x0:t0>
+gseqn1_append
+{n1,n2:int}
+(xs1:xs(n1), xs2:xs(n2)): xs(n1+n2)
+//
+(* ****** ****** *)
+//
+fun
+<xs:
+i0->t0>
+<x0:t0>
+gseqn1_reverse
+{ln:int}(xs:xs(ln)): xs(ln)
+fun
+<xs:
+i0->t0>
+<x0:t0>
+gseqn1_rappend
+{n1,n2:int}
+(xs1:xs(n1), xs2:xs(n2)): xs(n1+n2)
+//
+(* ****** ****** *)
+//
+fun
+<xs:
+i0->t0>
+<x0:t0>
 <ys:
 i0->t0>
 <y0:t0>
