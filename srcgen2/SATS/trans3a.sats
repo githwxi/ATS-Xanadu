@@ -81,7 +81,19 @@ MAP = "./xsymmap.sats"
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
+(* ****** ****** *)
+#typedef l3d3p = $D3E.l3d3p
+#typedef l3d3e = $D3E.l3d3e
+(* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
+(* ****** ****** *)
+#typedef d3patlst = $D3E.d3patlst
+#typedef d3explst = $D3E.d3explst
+(* ****** ****** *)
+#typedef l3d3plst = $D3E.l3d3plst
+#typedef l3d3elst = $D3E.l3d3elst
+(* ****** ****** *)
+#typedef d3eclist = $D3E.d3eclist
 (* ****** ****** *)
 //
 fun
@@ -104,9 +116,61 @@ optn_trans3a_fnp
 (* ****** ****** *)
 //
 fun
+tr3aenv_poplet0(env0: !tr3aenv): void
+fun
+tr3aenv_pshlet0(env0: !tr3aenv): void
+fun
+tr3aenv_pshloc1(env0: !tr3aenv): void
+fun
+tr3aenv_pshloc2(env0: !tr3aenv): void
+//
+fun
+tr3aenv_locjoin(env0: !tr3aenv): void
+//
+(* ****** ****** *)
+//
+fun
 tr3aenv_poplam0(env0: !tr3aenv): void
 fun
 tr3aenv_pshlam0(env0: !tr3aenv): void
+//
+(* ****** ****** *)
+//
+fun
+trans3a_d3pat
+( env0:
+! tr3aenv, d3p0: d3pat): d3pat
+//
+fun
+trans3a_d3exp
+( env0:
+! tr3aenv, d3e0: d3exp): d3exp
+//
+(* ****** ****** *)
+//
+fun
+trans3a_l3d3p
+( env0:
+! tr3aenv, ld3p: l3d3p): l3d3p
+//
+fun
+trans3a_l3d3e
+( env0:
+! tr3aenv, ld3e: l3d3e): l3d3e
+//
+(* ****** ****** *)
+//
+fun
+trans3a_d3ecl
+( env0:
+! tr3aenv, d3cl: d3ecl): d3ecl
+//
+(* ****** ****** *)
+//
+fun
+trans3a_d3eclist
+( env0:
+! tr3aenv, dcls: d3eclist): d3eclist
 //
 (* ****** ****** *)
 
