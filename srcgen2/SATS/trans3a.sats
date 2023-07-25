@@ -137,6 +137,17 @@ tr3aenv_pshlam0(env0: !tr3aenv): void
 (* ****** ****** *)
 //
 fun
+trans3a_s2exp
+( env0:
+! tr3aenv, s2e0: s2exp): s2exp
+fun
+trans3a_s2typ
+( env0:
+! tr3aenv, t2p0: s2typ): s2typ
+//
+(* ****** ****** *)
+//
+fun
 trans3a_d3pat
 ( env0:
 ! tr3aenv, d3p0: d3pat): d3pat
@@ -157,6 +168,13 @@ fun
 trans3a_l3d3e
 ( env0:
 ! tr3aenv, ld3e: l3d3e): l3d3e
+//
+(* ****** ****** *)
+//
+fun
+trans3a_d3explst
+( env0:
+! tr3aenv, d3es: d3explst): d3explst
 //
 (* ****** ****** *)
 //
