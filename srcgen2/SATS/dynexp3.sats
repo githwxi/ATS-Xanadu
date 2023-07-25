@@ -675,7 +675,12 @@ D3Cimplmnt0 of
 ( token(*impkind*)
 , s2qaglst // s2vs
 , t2qaglst // s2vs+t2is
-, dimpl, t2iaglst, f3arglst, s2res, d3exp)
+, dimpl // HX: impl-d2cst
+, t2iaglst, f3arglst, s2res, d3exp)
+//
+|
+D3Ctmplocal of
+( d3ecl(*fun/impl*), d3eclist(*local*))
 //
 |
 D3Cnone0 of ((*nil*))
