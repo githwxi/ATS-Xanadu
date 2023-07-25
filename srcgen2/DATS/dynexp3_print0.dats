@@ -570,11 +570,13 @@ print
 |
 D3Cvaldclst
 (  tknd, d3vs  ) =>
-print("D3Cvaldclst(",tknd,";",d3vs,")")
+(
+print("D3Cvaldclst(",tknd,";",d3vs,")"))
 |
 D3Cvardclst
 (  tknd, d3vs  ) =>
-print("D3Cvardclst(",tknd,";",d3vs,")")
+(
+print("D3Cvardclst(",tknd,";",d3vs,")"))
 //
 |
 D3Cfundclst
@@ -594,6 +596,12 @@ D3Cimplmnt0
 print("D3Cimplmnt0(");
 print(tknd,";",sqas,";",tqas,";");
 print(dqid,";",tias,";",farg,";",sres,";",body,")"))
+//
+|
+D3Ctmplocal
+(  dtmp, dcls ) =>
+(
+print("D3Ctmplocal(",dtmp,";",dcls,")"))
 //
 |D3Cnone0() => print( "D3Cnone0(", ")" )
 |D3Cnone1(d2cl) => print( "D3Cnone1(",d2cl,")" )
