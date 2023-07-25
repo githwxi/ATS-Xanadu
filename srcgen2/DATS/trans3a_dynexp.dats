@@ -66,10 +66,28 @@ trans3a_d3patlst
 (* ****** ****** *)
 //
 #implfun
+trans3a_d3expopt
+( env0, dopt ) =
+(
+  optn_trans3a_fnp(env0, dopt, trans3a_d3exp))
+//
+#implfun
 trans3a_d3explst
   (env0, dcls) =
 (
   list_trans3a_fnp(env0, dcls, trans3a_d3exp))
+//
+(* ****** ****** *)
+//
+#implfun
+trans3a_l3d3plst
+( env0, ldps ) =
+list_trans3a_fnp(env0, ldps, trans3a_l3d3p)
+//
+#implfun
+trans3a_l3d3elst
+( env0, ldes ) =
+list_trans3a_fnp(env0, ldes, trans3a_l3d3e)
 //
 (* ****** ****** *)
 
