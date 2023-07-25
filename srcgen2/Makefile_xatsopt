@@ -679,6 +679,12 @@ tread23_errmsg_dats: ; $(XATSOPT) --dynamic DATS/tread23_errmsg.dats
 all_dats:: \
 trans3a_dats
 trans3a_dats: ; $(XATSOPT) --dynamic DATS/trans3a.dats
+all_dats:: \
+trans3a_dynexp_dats
+trans3a_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trans3a_dynexp.dats
+all_dats:: \
+trans3a_decl00_dats
+trans3a_decl00_dats: ; $(XATSOPT) --dynamic DATS/trans3a_decl00.dats
 ######
 
 ######
