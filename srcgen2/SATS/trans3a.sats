@@ -172,9 +172,33 @@ trans3a_l3d3e
 (* ****** ****** *)
 //
 fun
+trans3a_d3patlst
+( env0:
+! tr3aenv, d3ps: d3patlst): d3patlst
+//
+(* ****** ****** *)
+//
+fun
+trans3a_d3expopt
+( env0:
+! tr3aenv, dopt: d3expopt): d3expopt
+//
+fun
 trans3a_d3explst
 ( env0:
 ! tr3aenv, d3es: d3explst): d3explst
+//
+(* ****** ****** *)
+//
+fun
+trans3a_l3d3plst
+( env0:
+! tr3aenv, ldps: l3d3plst): l3d3plst
+//
+fun
+trans3a_l3d3elst
+( env0:
+! tr3aenv, ldes: l3d3elst): l3d3elst
 //
 (* ****** ****** *)
 //

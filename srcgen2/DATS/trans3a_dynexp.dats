@@ -58,6 +58,14 @@ _(*TRANS3a*) = "./trans3a.dats"
 (* ****** ****** *)
 //
 #implfun
+trans3a_d3patlst
+  (env0, dcls) =
+(
+  list_trans3a_fnp(env0, dcls, trans3a_d3pat))
+//
+(* ****** ****** *)
+//
+#implfun
 trans3a_d3explst
   (env0, dcls) =
 (
