@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sun 29 Jan 2023 11:33:18 PM EST
+Wed 26 Jul 2023 01:08:16 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -51,12 +51,13 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
+#staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
-#staload "./../SATS/fperr22.sats"
+#staload "./../SATS/fperr33.sats"
 (* ****** ****** *)
 //
 #implfun
-list_fperr22_fnp
+list_fperr33_fnp
 {  syn:tx  }
 (  out, lst, fpr  ) =
 (
@@ -66,12 +67,12 @@ list_foreach<syn>(lst)) where
 #impltmp
 foreach$work<syn>(syn) = fpr(out, syn)
 //
-}(*where*)//end(list_fperr22_fnp(lst,err,fpr))
+}(*where*)//end(list_fperr33_fnp(lst,err,fpr))
 //
 (* ****** ****** *)
 //
 #implfun
-optn_fperr22_fnp
+optn_fperr33_fnp
 {  syn:tx  }
 (  out, opt, fpr  ) =
 (
@@ -81,53 +82,53 @@ optn_foreach<syn>(opt)) where
 #impltmp
 foreach$work<syn>(syn) = fpr(out, syn)
 //
-}(*where*)//end(optn_fperr22_fnp(opt,err,fpr))
+}(*where*)//end(optn_fperr33_fnp(opt,err,fpr))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr22_d2parsed
+fperr33_d3parsed
   (out, dpar) = let
 //
 val nerror =
-d2parsed_get_nerror(dpar)
+d3parsed_get_nerror(dpar)
 //
 in//let
 if
 (nerror > 0) then
 let
 val parsed =
-d2parsed_get_parsed(dpar)
+d3parsed_get_parsed(dpar)
 in//let
-fperr22_d2eclistopt(out, parsed) end else ()
-end (*let*)//end-of-[fperr22_d2parsed(out,dpar)]
+fperr33_d3eclistopt(out, parsed) end else ()
+end (*let*)//end-of-[fperr33_d3parsed(out,dpar)]
 //
 (* ****** ****** *)
 //
 #implfun
-fperr22_d2explstopt
+fperr33_d3explstopt
   (out, dopt) =
 (
 case+ dopt of
 |
 optn_nil() => ((*void*))
 |
-optn_cons(d2es) => fperr22_d2explst(out, d2es)
+optn_cons(d3es) => fperr33_d3explst(out, d3es)
 )
 //
 (* ****** ****** *)
 //
 #implfun
-fperr22_d2eclistopt
+fperr33_d3eclistopt
   (out, dopt) =
 (
 case+ dopt of
 |
 optn_nil() => ((*void*))
 |
-optn_cons(d2cs) => fperr22_d2eclist(out, d2cs)
+optn_cons(d3cs) => fperr33_d3eclist(out, d3cs)
 )
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_fperr22.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_fperr33.dats] *)
