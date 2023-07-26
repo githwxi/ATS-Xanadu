@@ -61,6 +61,8 @@ D3E = "./dynexp3.sats"
 #typedef d3patlst = $D3E.d3patlst
 #typedef d3explst = $D3E.d3explst
 (* ****** ****** *)
+#typedef d3parsed = $D3E.d3parsed
+(* ****** ****** *)
 #typedef d3explstopt = $D3E.d3explstopt
 #typedef d3eclistopt = $D3E.d3eclistopt
 (* ****** ****** *)
