@@ -106,6 +106,20 @@ MAP = "./xsymmap.sats"
  d3parsed  =  $D3E.d3parsed
 (* ****** ****** *)
 #typedef
+ d3valdcl  =  $D3E.d3valdcl
+#typedef
+ d3vardcl  =  $D3E.d3vardcl
+#typedef
+ d3fundcl  =  $D3E.d3fundcl
+(* ****** ****** *)
+#typedef
+d3valdclist = $D3E.d3valdclist
+#typedef
+d3vardclist = $D3E.d3vardclist
+#typedef
+d3fundclist = $D3E.d3fundclist
+(* ****** ****** *)
+#typedef
 d3explstopt = $D3E.d3explstopt
 #typedef
 d3eclistopt = $D3E.d3eclistopt
@@ -252,6 +266,42 @@ fun
 trans3a_d3eclist
 ( env0:
 ! tr3aenv,dcls:d3eclist):d3eclist
+//
+(* ****** ****** *)
+//
+fun
+trans3a_d3valdcl
+( env0:
+! tr3aenv,dval:d3valdcl):d3valdcl
+fun
+trans3a_d3vardcl
+( env0:
+! tr3aenv,dvar:d3vardcl):d3vardcl
+//
+(* ****** ****** *)
+//
+fun
+trans3a_d3fundcl
+( env0:
+! tr3aenv,dfun:d3fundcl):d3fundcl
+//
+(* ****** ****** *)
+//
+fun
+trans3a_d3valdclist
+( env0:
+! tr3aenv,d3vs:d3valdclist):d3valdclist
+fun
+trans3a_d3vardclist
+( env0:
+! tr3aenv,d3vs:d3vardclist):d3vardclist
+//
+(* ****** ****** *)
+//
+fun
+trans3a_d3fundclist
+( env0:
+! tr3aenv,d3fs:d3fundclist):d3fundclist
 //
 (* ****** ****** *)
 //
