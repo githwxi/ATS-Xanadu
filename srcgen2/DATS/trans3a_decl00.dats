@@ -70,9 +70,7 @@ d3ecl_tmplocal
 ( tmps
 : d3eclist
 , dtmp: d3ecl): d3ecl =
-if
-list_nilq(tmps)
-then dtmp else let
+let
 val
 loc0 = dtmp.lctn() in//let
 d3ecl_make_node
@@ -153,6 +151,9 @@ filter$test<x0> = d3ecl_impltmpq
 }(*where*) // end of [val(tmps)]
 //
 val body =
+if
+list_nilq(tmps)
+then body else
 (
   list_map(body) ) where
 {
@@ -167,8 +168,7 @@ map$fopr<x0><y0>(x0) =
   d3ecl_impltmpq(x0)
   then
   d3ecl_tmplocal(tmps, x0) else x0)
-//
-}(*where*) // end of [ val(body) ]
+}
 //
 in//let
   d3ecl(loc0, D3Clocal0(head, body))
