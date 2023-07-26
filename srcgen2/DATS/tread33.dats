@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sun 29 Jan 2023 11:33:18 PM EST
+Wed 26 Jul 2023 01:13:09 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -49,85 +49,120 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
+#staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
-#staload "./../SATS/fperr22.sats"
+#staload "./../SATS/tread33.sats"
+(* ****** ****** *)
+#symload lctn with token_get_lctn
+#symload node with token_get_node
 (* ****** ****** *)
 //
 #implfun
-list_fperr22_fnp
+list_tread33_fnp
 {  syn:tx  }
-(  out, lst, fpr  ) =
+(  lst , err , fpr  ) =
 (
-list_foreach<syn>(lst)) where
+  auxlst(lst, err)) where
 {
 //
-#impltmp
-foreach$work<syn>(syn) = fpr(out, syn)
-//
-}(*where*)//end(list_fperr22_fnp(lst,err,fpr))
-//
-(* ****** ****** *)
-//
-#implfun
-optn_fperr22_fnp
-{  syn:tx  }
-(  out, opt, fpr  ) =
-(
-optn_foreach<syn>(opt)) where
-{
-//
-#impltmp
-foreach$work<syn>(syn) = fpr(out, syn)
-//
-}(*where*)//end(optn_fperr22_fnp(opt,err,fpr))
-//
-(* ****** ****** *)
-//
-#implfun
-fperr22_d2parsed
-  (out, dpar) = let
-//
-val nerror =
-d2parsed_get_nerror(dpar)
-//
+fun
+auxlst
+( lst: list(syn)
+, err: &sint >> _): list(syn) =
+case+ lst of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(tm1, tms) =>
+let
+val e00 = err
+val tm1 = fpr(tm1, err)
+val tms = auxlst(tms, err)
 in//let
 if
-(nerror > 0) then
+(err = e00)
+then lst else list_cons(tm1, tms)
+endlet // end of [auxlst(lst,err)]
+//
+}(*where*)//end(list_tread33_fnp(lst,err,fpr))
+//
+(* ****** ****** *)
+//
+#implfun
+optn_tread33_fnp
+{  syn:tx  }
+(  opt , err , fpr  ) =
+(
+case+ opt of
+|
+optn_nil() => opt
+|
+optn_cons(syn) =>
 let
+val e00 = err
+val syn = fpr(syn, err)
+in // let
+if
+(err=e00)
+then opt else optn_cons(syn)
+endlet // end of [optn_cons(syn)]
+)(*case+*)//end(optn_tread33_fnp(opt,err,fpr)
+//
+(* ****** ****** *)
+//
+#implfun
+d3parsed_of_tread33
+  (dpar) =
+let
+//
+var nerror: sint = 0
+//
+val stadyn =
+d3parsed_get_stadyn(dpar)
+val source =
+d3parsed_get_source(dpar)
+//
+val t1penv =
+d3parsed_get_t1penv(dpar)
+val t3penv =
+d3parsed_get_t3penv(dpar)
+//
 val parsed =
-d2parsed_get_parsed(dpar)
+d3parsed_get_parsed(dpar)
+//
+val parsed =
+tread33_d3eclistopt(parsed, nerror)
+//
 in//let
-fperr22_d2eclistopt(out, parsed) end else ()
-end (*let*)//end-of-[fperr22_d2parsed(out,dpar)]
+//
+if
+(nerror=0)
+then (dpar) else
+d3parsed
+(stadyn,nerror,source,t1penv,t3penv,parsed)
+//
+end(*let*)//end-of(d3parsed_of_tread33(dpar))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr22_d2explstopt
-  (out, dopt) =
-(
-case+ dopt of
-|
-optn_nil() => ((*void*))
-|
-optn_cons(d2es) => fperr22_d2explst(out, d2es)
-)
+tread33_d3explstopt
+  (  dopt, err0  ) =
+optn_tread33_fnp(dopt, err0, tread33_d3explst)
 //
 (* ****** ****** *)
 //
 #implfun
-fperr22_d2eclistopt
-  (out, dopt) =
-(
-case+ dopt of
-|
-optn_nil() => ((*void*))
-|
-optn_cons(d2cs) => fperr22_d2eclist(out, d2cs)
-)
+tread33_d3eclistopt
+  (  dopt, err0  ) =
+optn_tread33_fnp(dopt, err0, tread33_d3eclist)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_fperr22.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_tread33.dats] *)
