@@ -248,10 +248,10 @@ d2parsed_of_trans2a
 (* ****** ****** *)
 //
 fun
-tr2aenv_make_nil((*nil*)):tr2aenv
+tr2aenv_make_nil((*0*)):tr2aenv
 //
 fun
-tr2aenv_free_top(tr2aenv): (void)
+tr2aenv_free_top(tr2aenv):(void)
 (*
 fun
 tr2aenv_free_top(tr2aenv):md2ct2p
@@ -260,32 +260,37 @@ tr2aenv_free_top(tr2aenv):md2ct2p
 (* ****** ****** *)
 //
 fun
-tr2aenv_poplet0(env0: !tr2aenv): void
+tr2aenv_poplet0
+(env0: !tr2aenv): void//end-fun
 fun
-tr2aenv_pshlet0(env0: !tr2aenv): void
+tr2aenv_pshlet0
+(env0: !tr2aenv): void//end-fun
 fun
-tr2aenv_pshloc1(env0: !tr2aenv): void
+tr2aenv_pshloc1
+(env0: !tr2aenv): void//end-fun
 fun
-tr2aenv_pshloc2(env0: !tr2aenv): void
+tr2aenv_pshloc2
+(env0: !tr2aenv): void//end-fun
 //
 fun
-tr2aenv_locjoin(env0: !tr2aenv): void
+tr2aenv_locjoin
+(env0: !tr2aenv): void//end-fun
 //
 (* ****** ****** *)
 //
 fun
 tr2aenv_search_opt
 ( env0:
-! tr2aenv
-, s2c0: s2cst): s2cstlst
+! tr2aenv,s2c0:s2cst): s2cstlst
 fun
 tr2aenv_insert_any
-( env0: !tr2aenv, s2c0: s2cst): void
+( env0:
+! tr2aenv,s2c0:s2cst): ( void )
 //
 fun
 tr2aenv_evstyp_cst
 ( env0:
-! tr2aenv, s2c0: s2cst): s2typopt_vt
+! tr2aenv,s2c0:s2cst): s2typopt_vt
 //
 (* ****** ****** *)
 //
@@ -295,115 +300,119 @@ fun
 list_trans2a_fnp
 ( e1:
 ! tr2aenv
-, xs: list(x0)
-, fopr
-: (!tr2aenv, x0) -> y0): list(y0)
+, xs
+: list(x0)
+, fopr:
+  (!tr2aenv,x0)->y0): list(y0)
 fun
 <x0:t0>
 <y0:t0>
 optn_trans2a_fnp
 ( e1:
 ! tr2aenv
-, xs: optn(x0)
-, fopr
-: (!tr2aenv, x0) -> y0): optn(y0)
+, xs
+: optn(x0)
+, fopr:
+  (!tr2aenv,x0)->y0): optn(y0)
 //
 (* ****** ****** *)
 //
 fun
 tr2aenv_s2typ
 ( env0:
-! tr2aenv, t2p0: s2typ): s2typ
+! tr2aenv,t2p0:s2typ):s2typ//fun
 //
 (* ****** ****** *)
 //
 fun
 d2con2a_s2typ
 (
-loc0:loc_t, dcon:d2con): s2typ
+loc0:loc_t,dcon:d2con):s2typ//fun
 fun
 d2cst2a_s2typ
 (
-loc0:loc_t, dcst:d2cst): s2typ
+loc0:loc_t,dcst:d2cst):s2typ//fun
 //
 (* ****** ****** *)
 //
 fun
 trans2a_d2pat
 ( env0:
-! tr2aenv, d2p0: d2pat): d2pat
+! tr2aenv,d2p0:d2pat):d2pat//fun
 //
 fun
 trans2a_d2exp
 ( env0:
-! tr2aenv, d2e0: d2exp): d2exp
+! tr2aenv,d2e0:d2exp):d2exp//fun
 //
 (* ****** ****** *)
 //
 fun
 trans2a_l2d2p
 ( env0:
-! tr2aenv, ld2p: l2d2p): l2d2p
+! tr2aenv,ld2p:l2d2p):l2d2p//fun
 //
 fun
 trans2a_l2d2e
 ( env0:
-! tr2aenv, ld2e: l2d2e): l2d2e
+! tr2aenv,ld2e:l2d2e):l2d2e//fun
 //
 (* ****** ****** *)
 //
 fun
 trans2a_f2arg
 ( env0:
-! tr2aenv, f2a0: f2arg): f2arg
+! tr2aenv,f2a0:f2arg):f2arg//fun
 //
 (* ****** ****** *)
 //
 fun
 trans2a_d2gua
 ( env0:
-! tr2aenv, dgua: d2gua): d2gua
+! tr2aenv,dgua:d2gua):d2gua//fun
+//
 fun
 trans2a_d2gpt_tpck
 ( env0:
 ! tr2aenv
-, dgpt: d2gpt, targ: s2typ): d2gpt
+, dgpt:d2gpt,targ:s2typ):d2gpt//f
+//
 fun
 trans2a_d2cls_tpck
 ( env0:
 ! tr2aenv
-, dcls: d2cls
-, targ: s2typ, tres: s2typ): d2cls
+, dcls:d2cls
+, targ:s2typ,tres:s2typ):d2cls//f
 //
 (* ****** ****** *)
 //
 fun
 trans2a_d2ecl
 ( env0:
-! tr2aenv, d2cl: d2ecl): d2ecl
+! tr2aenv,d2cl:d2ecl):d2ecl//fun
 //
 (* ****** ****** *)
 //
 fun
 trans2a_s2qag
 ( env0:
-! tr2aenv, s2qa: s2qag): s2qag
+! tr2aenv,s2qa:s2qag):s2qag//fun
 fun
 trans2a_t2qag
 ( env0:
-! tr2aenv, t2qa: t2qag): t2qag
+! tr2aenv,t2qa:t2qag):t2qag//fun
 //
 fun
 trans2a_t2iag
 ( env0:
-! tr2aenv, t2ia: t2iag): t2iag
+! tr2aenv,t2ia:t2iag):t2iag//fun
 //
 (* ****** ****** *)
 //
 fun
 trans2a_d2arg
 ( env0:
-! tr2aenv, darg: d2arg): d2arg
+! tr2aenv,darg:d2arg):d2arg//fun
 //
 (* ****** ****** *)
 fun

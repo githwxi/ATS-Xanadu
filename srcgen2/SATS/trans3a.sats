@@ -87,13 +87,70 @@ MAP = "./xsymmap.sats"
 (* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
-#typedef d3patlst = $D3E.d3patlst
-#typedef d3explst = $D3E.d3explst
+#typedef
+ d3patlst  =  $D3E.d3patlst
+#typedef
+ d3explst  =  $D3E.d3explst
+#typedef
+ d3expopt  =  $D3E.d3expopt
 (* ****** ****** *)
-#typedef l3d3plst = $D3E.l3d3plst
-#typedef l3d3elst = $D3E.l3d3elst
+#typedef
+ l3d3plst  =  $D3E.l3d3plst
+#typedef
+ l3d3elst  =  $D3E.l3d3elst
 (* ****** ****** *)
-#typedef d3eclist = $D3E.d3eclist
+#typedef
+ d3eclist  =  $D3E.d3eclist
+(* ****** ****** *)
+#typedef
+ d3parsed  =  $D3E.d3parsed
+(* ****** ****** *)
+#typedef
+d3explstopt = $D3E.d3explstopt
+#typedef
+d3eclistopt = $D3E.d3eclistopt
+(* ****** ****** *)
+//
+fun
+d3parsed_of_trans3a
+( dpar : d3parsed ): (d3parsed)
+//
+(* ****** ****** *)
+//
+fun
+tr3aenv_make_nil((*0*)):tr3aenv
+//
+fun
+tr3aenv_free_top(tr3aenv):(void)
+//
+(* ****** ****** *)
+//
+fun
+tr3aenv_poplet0
+(env0: !tr3aenv): void//end-fun
+fun
+tr3aenv_pshlet0
+(env0: !tr3aenv): void//end-fun
+fun
+tr3aenv_pshloc1
+(env0: !tr3aenv): void//end-fun
+fun
+tr3aenv_pshloc2
+(env0: !tr3aenv): void//end-fun
+//
+fun
+tr3aenv_locjoin
+(env0: !tr3aenv): void//end-fun
+//
+(* ****** ****** *)
+//
+fun
+tr3aenv_poplam0
+(env0: !tr3aenv): void//end-fun
+fun
+tr3aenv_pshlam0
+(env0: !tr3aenv): void//end-fun
+//
 (* ****** ****** *)
 //
 fun
@@ -102,8 +159,10 @@ fun
 list_trans3a_fnp
 ( e1:
 ! tr3aenv
-, xs: list(x0)
-, (!tr3aenv, x0) -> y0): list(y0)
+, xs
+: list(x0)
+, fopr:
+  (!tr3aenv,x0)->y0): list(y0)
 fun
 <x0:t0>
 <y0:t0>
@@ -111,108 +170,88 @@ optn_trans3a_fnp
 ( e1:
 ! tr3aenv
 , xs: optn(x0)
-, (!tr3aenv, x0) -> y0): optn(y0)
-//
-(* ****** ****** *)
-//
-fun
-tr3aenv_poplet0(env0: !tr3aenv): void
-fun
-tr3aenv_pshlet0(env0: !tr3aenv): void
-fun
-tr3aenv_pshloc1(env0: !tr3aenv): void
-fun
-tr3aenv_pshloc2(env0: !tr3aenv): void
-//
-fun
-tr3aenv_locjoin(env0: !tr3aenv): void
-//
-(* ****** ****** *)
-//
-fun
-tr3aenv_poplam0(env0: !tr3aenv): void
-fun
-tr3aenv_pshlam0(env0: !tr3aenv): void
+, fopr:
+  (!tr3aenv,x0)->y0): optn(y0)
 //
 (* ****** ****** *)
 //
 fun
 trans3a_s2exp
 ( env0:
-! tr3aenv, s2e0: s2exp): s2exp
+! tr3aenv,s2e0:s2exp):s2exp//fun
 fun
 trans3a_s2typ
 ( env0:
-! tr3aenv, t2p0: s2typ): s2typ
+! tr3aenv,t2p0:s2typ):s2typ//fun
 //
 (* ****** ****** *)
 //
 fun
 trans3a_d3pat
 ( env0:
-! tr3aenv, d3p0: d3pat): d3pat
+! tr3aenv,d3p0:d3pat):d3pat//fun
 //
 fun
 trans3a_d3exp
 ( env0:
-! tr3aenv, d3e0: d3exp): d3exp
+! tr3aenv,d3e0:d3exp):d3exp//fun
 //
 (* ****** ****** *)
 //
 fun
 trans3a_l3d3p
 ( env0:
-! tr3aenv, ld3p: l3d3p): l3d3p
+! tr3aenv,ld3p:l3d3p):l3d3p//fun
 //
 fun
 trans3a_l3d3e
 ( env0:
-! tr3aenv, ld3e: l3d3e): l3d3e
+! tr3aenv,ld3e:l3d3e):l3d3e//fun
 //
 (* ****** ****** *)
 //
 fun
 trans3a_d3patlst
 ( env0:
-! tr3aenv, d3ps: d3patlst): d3patlst
+! tr3aenv,d3ps:d3patlst):d3patlst
 //
 (* ****** ****** *)
 //
 fun
 trans3a_d3expopt
 ( env0:
-! tr3aenv, dopt: d3expopt): d3expopt
+! tr3aenv,dopt:d3expopt):d3expopt
 //
 fun
 trans3a_d3explst
 ( env0:
-! tr3aenv, d3es: d3explst): d3explst
+! tr3aenv,d3es:d3explst):d3explst
 //
 (* ****** ****** *)
 //
 fun
 trans3a_l3d3plst
 ( env0:
-! tr3aenv, ldps: l3d3plst): l3d3plst
+! tr3aenv,ldps:l3d3plst):l3d3plst
 //
 fun
 trans3a_l3d3elst
 ( env0:
-! tr3aenv, ldes: l3d3elst): l3d3elst
+! tr3aenv,ldes:l3d3elst):l3d3elst
 //
 (* ****** ****** *)
 //
 fun
 trans3a_d3ecl
 ( env0:
-! tr3aenv, d3cl: d3ecl): d3ecl
+! tr3aenv,d3cl:d3ecl):d3ecl//fun
 //
 (* ****** ****** *)
 //
 fun
 trans3a_d3eclist
 ( env0:
-! tr3aenv, dcls: d3eclist): d3eclist
+! tr3aenv,dcls:d3eclist):d3eclist
 //
 (* ****** ****** *)
 

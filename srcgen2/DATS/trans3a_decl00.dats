@@ -56,6 +56,28 @@ _(*TRANS3a*) = "./trans3a.dats"
 (* ****** ****** *)
 #staload "./../SATS/trans3a.sats"
 (* ****** ****** *)
+#symload tqas with d2cst_get_tqas
+(* ****** ****** *)
+#symload lctn with dimpl_get_lctn
+#symload node with dimpl_get_node
+(* ****** ****** *)
+#symload lctn with d3ecl_get_lctn
+#symload node with d3ecl_get_node
+(* ****** ****** *)
+//
+fun
+d3ecl_tmplocal
+( head
+: d3eclist
+, dtmp: d3ecl): d3ecl =
+let
+val
+loc0 = dtmp.lctn() in//let
+d3ecl_make_node
+(loc0, D3Ctmplocal(dtmp, head))
+end (*let*) // end-of-[d3ecl_tmplocal]
+//
+(* ****** ****** *)
 
 #implfun
 trans3a_d3ecl
@@ -85,6 +107,13 @@ d3cl.node() of
 (
 f0_local0(env0, d3cl))
 //
+| _(*otherwise*) =>
+let
+  val loc0 = d3cl.lctn()
+in//let
+  d3ecl_make_node(loc0, D3Cnone2( d3cl ))
+end (*let*) // end of [_(*otherwise*)] // temp
+//
 end where
 {
 //
@@ -101,13 +130,36 @@ val-
 D3Clocal0
 (head, body) = d3cl.node()
 //
-val head =
-  trans3a_d3eclist(env0, head)
+val
+head =
+trans3a_d3eclist(env0, head)
+val
+body =
+trans3a_d3eclist(env0, head)
+//
+in//let
+let
 val body =
-  trans3a_d3eclist(env0, head)
+(
+  list_map(body) ) where
+{
+//
+#typedef x0 = d3ecl//map<x0><y0>
+#typedef y0 = d3ecl//map<x0><y0>
+//
+#impltmp
+map$fopr<x0><y0>(x0) =
+(
+  if
+  d3ecl_impltmpq(x0)
+  then
+  d3ecl_tmplocal(head, x0) else x0)
+//
+}(*where*) // end of [ val(body) ]
 //
 in//let
   d3ecl(loc0, D3Clocal0(head, body))
+end(*let*)
 end(*let*)//end-of-[f0_local0(env0,d3cl)]
 //
 }(*where*)//end of [trans3a_d3ecl(env0,d3cl)]
