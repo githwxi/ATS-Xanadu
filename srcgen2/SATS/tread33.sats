@@ -61,6 +61,8 @@ D3E = "./dynexp3.sats"
 #typedef d3patlst = $D3E.d3patlst
 #typedef d3explst = $D3E.d3explst
 (* ****** ****** *)
+#typedef d3eclist = $D3E.d3eclist
+(* ****** ****** *)
 #typedef d3parsed = $D3E.d3parsed
 (* ****** ****** *)
 #typedef d3explstopt = $D3E.d3explstopt
@@ -78,6 +80,27 @@ ftread33
 (syn: tx) =
 (syn , &sint >> _) -> ( syn )
 //
+(* ****** ****** *)
+//
+fun
+list_tread33_fnp
+{syn:tx}
+( lst: list(syn)
+, err: &sint >> _
+, fpr: ftread33(syn)): list(syn)
+//
+fun
+optn_tread33_fnp
+{syn:tx}
+( opt: optn(syn)
+, err: &sint >> _
+, fpr: ftread33(syn)): optn(syn)
+//
+(* ****** ****** *)
+fun tread33_d3patlst: ftread33(d3patlst)
+fun tread33_d3explst: ftread33(d3explst)
+(* ****** ****** *)
+fun tread33_d3eclist: ftread33(d3eclist)
 (* ****** ****** *)
 fun tread33_d3explstopt: ftread33(d3explstopt)
 fun tread33_d3eclistopt: ftread33(d3eclistopt)
