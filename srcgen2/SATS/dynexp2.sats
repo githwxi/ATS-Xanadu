@@ -365,6 +365,11 @@ d2con_get_narg(d2c0:d2con): sint
 #symload narg with d2con_get_narg
 //
 (* ****** ****** *)
+fun
+d2cst_tmpq:(d2cst) -> bool
+fun
+d2cstlst_tmpq(d2cstlst): bool
+(* ****** ****** *)
 //
 fun
 d2cst_get_lctn:(d2cst) -> loc_t
@@ -1367,6 +1372,10 @@ simpl_get_node
 #symload lctn with simpl_get_lctn
 #symload node with simpl_get_node
 //
+(* ****** ****** *)
+fun
+dimpl_tmpq
+(dimp: dimpl): bool // end-of-fun
 (* ****** ****** *)
 //
 fun

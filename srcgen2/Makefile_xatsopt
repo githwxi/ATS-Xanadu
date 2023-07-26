@@ -640,6 +640,9 @@ dynexp3_dats: ; $(XATSOPT) --dynamic DATS/dynexp3.dats
 all_dats:: \
 dynexp3_print0_dats
 dynexp3_print0_dats: ; $(XATSOPT) --dynamic DATS/dynexp3_print0.dats
+all_dats:: \
+dynexp3_utils0_dats
+dynexp3_utils0_dats: ; $(XATSOPT) --dynamic DATS/dynexp3_utils0.dats
 ######
 
 ######

@@ -680,7 +680,7 @@ D3Cimplmnt0 of
 //
 |
 D3Ctmplocal of
-( d3ecl(*fun/impl*), d3eclist(*local*))
+( d3ecl(*impltmp*), d3eclist(*local*))
 //
 |
 D3Cnone0 of ((*nil*))
@@ -691,6 +691,11 @@ D3Cnone1 of ( d2ecl ) | D3Cnone2 of ( d3ecl )
 D3Cerrck of (sint(*lvl*), d3ecl)//tread23-error
 //
 //HX-2023-??-??: end-of-[datatype( d3ecl_node )]
+//
+(* ****** ****** *)
+//
+fun
+d3ecl_impltmpq(d3ecl): bool
 //
 (* ****** ****** *)
 fun
