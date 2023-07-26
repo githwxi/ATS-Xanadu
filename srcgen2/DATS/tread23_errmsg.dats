@@ -677,8 +677,16 @@ val () = s2res_fpemsg(out, sres)
 val () = d3exp_fpemsg(out, d3e1)
 endlet // end of [ D3Cimplmnt0(...) ]
 //
-| D3Cnone0() => ( (*void*) )
-| D3Cnone1(d2cl) => ( (*void*) )
+|
+D3Ctmplocal
+( dtmp, tmps) =>
+let
+val () = d3ecl_fpemsg(out, dtmp)
+val () = d3eclist_fpemsg(out, tmps)
+endlet // end of [ D3Ctmplocal(...) ]
+//
+|D3Cnone0 _ => ( (*skipped*) )
+|D3Cnone1 _ => ( ) | D3Cnone2 _ => ( )
 //
 |
 D3Cerrck(_,_) => d3ecl_fpemsg(out, dcl)
@@ -702,11 +710,11 @@ let
 #impltmp
 g_print$out<>() = out
 //
-(*
+// (*
 val () =
 prerrln
 ("d3ecl_fpemsg: dcl0 = ", dcl0)
-*)
+// *)
 //
 in//let
 //

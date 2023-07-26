@@ -69,6 +69,48 @@ ATS_PACKNAME
 #symload lctn with d3fundcl_get_lctn
 (* ****** ****** *)
 //
+fun
+d3ecl_errck
+(lvl0: sint
+,d3cl: d3ecl): d3ecl =
+let
+val loc0 = d3cl.lctn()
+in//let
+d3ecl_make_node
+(loc0, D3Cerrck(lvl0, d3cl))
+end (*let*) // end-of(d3ecl_errck)
+//
+(* ****** ****** *)
+//
+#implfun
+tread33_d3ecl
+  (d3cl, err) =
+(
+case+
+d3cl.node() of
+//
+|D3Cnone0 _ => d3cl
+|D3Cd2ecl _ => d3cl
+|D3Cerrck _ => d3cl
+//
+|
+_(*otherwise*) =>
+let
+val lvl0 = 1
+in//let
+(err := err+1; d3ecl_errck(lvl0, d3cl))
+endlet // end of [  _(* otherwise *)  ]
+//
+) where// end of [ case+(d3cl.node()) ]
+{
+(* ****** ****** *)
+val (  ) =
+prerrln("tread33_d3ecl: d3cl = ", d3cl)
+(* ****** ****** *)
+} (*where*) // end of [tread33_d3ecl(d3cl,err)]
+
+(* ****** ****** *)
+//
 #implfun
 tread33_d3eclist
   (  dcls, err  ) =
