@@ -53,12 +53,21 @@
 (* ****** ****** *)
 #staload
 "./../../SATS/tread22.sats"
-(* ****** ****** *)
 #staload
 "./../../SATS/fperr22.sats"
 (* ****** ****** *)
 #staload
 "./../../SATS/trans23.sats"
+#staload
+"./../../SATS/tread23.sats"
+(* ****** ****** *)
+#staload
+"./../../SATS/trans3a.sats"
+(* ****** ****** *)
+#staload
+"./../../SATS/tread33.sats"
+#staload
+"./../../SATS/fperr33.sats"
 (* ****** ****** *)
 #include
 "./../../DATS/xbasics.dats"
@@ -321,6 +330,18 @@
 "./../../DATS/tread23_decl00.dats"
 #include
 "./../../DATS/tread23_errmsg.dats"
+(* ****** ****** *)
+#include
+"./../../DATS/trans3a.dats"
+#include
+"./../../DATS/trans3a_dynexp.dats"
+#include
+"./../../DATS/trans3a_decl00.dats"
+(* ****** ****** *)
+#include
+"./../../DATS/tread33.dats"
+#include
+"./../../DATS/tread33_decl00.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/xatsopt.dats"
