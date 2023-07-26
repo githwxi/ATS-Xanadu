@@ -94,8 +94,8 @@ val source =
 d3parsed_get_source(dpar)
 val t1penv =
 d3parsed_get_t1penv(dpar)
-val t3penv =
-d3parsed_get_t3penv(dpar)
+val t2penv =
+d3parsed_get_t2penv(dpar)
 val parsed =
 d3parsed_get_parsed(dpar)
 //

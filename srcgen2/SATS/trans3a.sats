@@ -254,5 +254,12 @@ trans3a_d3eclist
 ! tr3aenv,dcls:d3eclist):d3eclist
 //
 (* ****** ****** *)
+//
+fun
+trans3a_d3eclistopt
+( env0:
+! tr3aenv,dopt:d3eclistopt):d3eclistopt
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans3a.sats] *)
