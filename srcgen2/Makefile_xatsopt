@@ -702,6 +702,9 @@ trans3a_decl00_dats: ; $(XATSOPT) --dynamic DATS/trans3a_decl00.dats
 all_dats:: \
 tread33_dats
 tread33_dats: ; $(XATSOPT) --dynamic DATS/tread33.dats
+all_dats:: \
+tread33_decl00_dats
+tread33_decl00_dats: ; $(XATSOPT) --dynamic DATS/tread33_decl00.dats
 ######
 
 ######
