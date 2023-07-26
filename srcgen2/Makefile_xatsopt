@@ -181,6 +181,10 @@ tread33_sats
 tread33_sats: ; $(XATSOPT) --static SATS/tread33.sats
 ######
 all_sats:: \
+fperr33_sats
+fperr33_sats: ; $(XATSOPT) --static SATS/fperr33.sats
+######
+all_sats:: \
 xglobal_sats
 xglobal_sats: ; $(XATSOPT) --static SATS/xglobal.sats
 ######
