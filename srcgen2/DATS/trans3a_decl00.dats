@@ -67,14 +67,16 @@ _(*TRANS3a*) = "./trans3a.dats"
 //
 fun
 d3ecl_tmplocal
-( head
+( tmps
 : d3eclist
 , dtmp: d3ecl): d3ecl =
-let
+if
+list_nilq(tmps)
+then dtmp else let
 val
 loc0 = dtmp.lctn() in//let
 d3ecl_make_node
-(loc0, D3Ctmplocal(dtmp, head))
+(loc0, D3Ctmplocal(dtmp, tmps))
 end (*let*) // end-of-[d3ecl_tmplocal]
 //
 (* ****** ****** *)
@@ -139,6 +141,17 @@ trans3a_d3eclist(env0, head)
 //
 in//let
 let
+//
+val tmps =
+(
+list_filter(head)
+)
+where {
+#typedef x0 = d3ecl
+#impltmp
+filter$test<x0> = d3ecl_impltmpq
+}(*where*) // end of [val(tmps)]
+//
 val body =
 (
   list_map(body) ) where
@@ -153,7 +166,7 @@ map$fopr<x0><y0>(x0) =
   if
   d3ecl_impltmpq(x0)
   then
-  d3ecl_tmplocal(head, x0) else x0)
+  d3ecl_tmplocal(tmps, x0) else x0)
 //
 }(*where*) // end of [ val(body) ]
 //
@@ -171,6 +184,14 @@ trans3a_d3eclist
   (env0, dcls) =
 (
   list_trans3a_fnp(env0, dcls, trans3a_d3ecl))
+//
+(* ****** ****** *)
+//
+#implfun
+trans3a_d3eclistopt
+  (env0, dopt) =
+(
+  optn_trans3a_fnp(env0, dopt, trans3a_d3eclist))
 //
 (* ****** ****** *)
 
