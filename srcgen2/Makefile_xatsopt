@@ -708,6 +708,9 @@ tread33_dats: ; $(XATSOPT) --dynamic DATS/tread33.dats
 all_dats:: \
 fperr33_dats
 fperr33_dats: ; $(XATSOPT) --dynamic DATS/fperr33.dats
+all_dats:: \
+fperr33_decl00_dats
+fperr33_decl00_dats: ; $(XATSOPT) --dynamic DATS/fperr33_decl00.dats
 ######
 
 ######
