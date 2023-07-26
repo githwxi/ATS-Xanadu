@@ -70,6 +70,9 @@ ATS_PACKNAME
 #staload "./../SATS/trans23.sats"
 #staload "./../SATS/tread23.sats"
 (* ****** ****** *)
+#staload "./../SATS/trans3a.sats"
+#staload "./../SATS/tread33.sats"
+(* ****** ****** *)
 #staload "./../SATS/xatsopt.sats"
 (* ****** ****** *)
 
@@ -114,7 +117,7 @@ let
 val dpar = d2parsed_of_trans02(dpar)
 val dpar = d3parsed_of_trans23(dpar)
 val dpar = d3parsed_of_tread23(dpar)
-val dpar = d3parsed_of_tread3a(dpar)
+val dpar = d3parsed_of_trans3a(dpar)
 val dpar = d3parsed_of_tread33(dpar) in dpar
 end (*let*) // end of [d3parsed_of_trans03(dpar)]
 
