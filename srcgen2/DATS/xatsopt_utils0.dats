@@ -113,7 +113,9 @@ d3parsed_of_trans03(dpar) =
 let
 val dpar = d2parsed_of_trans02(dpar)
 val dpar = d3parsed_of_trans23(dpar)
-val dpar = d3parsed_of_tread23(dpar) in dpar
+val dpar = d3parsed_of_tread23(dpar)
+val dpar = d3parsed_of_tread3a(dpar)
+val dpar = d3parsed_of_tread33(dpar) in dpar
 end (*let*) // end of [d3parsed_of_trans03(dpar)]
 
 (* ****** ****** *)
