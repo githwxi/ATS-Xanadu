@@ -285,13 +285,17 @@ _(*otherwise*) =>
 let
 val lvl0 = 1
 in//let
-(
-err := err + 1; d3ecl_errck(lvl0, d3cl))
+(err := err+1; d3ecl_errck(lvl0, d3cl))
 endlet // end-of-otherwise
 //
-) where // end of [ case+(d3cl.node()) ]
+) where // end of [ case+(d3cl.node())]
 {
 //
+(* ****** ****** *)
+(*
+val (  ) =
+prerrln("tread23_d3ecl: d3cl = ", d3cl)
+*)
 (* ****** ****** *)
 //
 fun

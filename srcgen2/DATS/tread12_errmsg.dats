@@ -1054,8 +1054,9 @@ let
 val () = d2cstdclist_fpemsg(out, d2cs)
 endlet
 //
-| D2Cnone0() => ( (*void*) )
-| D2Cnone1(d1cl) => ( (*void*) )
+|D2Cnone0 _ => ( (*skipped*) )
+|D2Cnone1 _ => ( ) | D2Cnone2 _ => ( )
+//
 |
 D2Cerrck(_,_) => d2ecl_fpemsg(out, dcl)
 //
