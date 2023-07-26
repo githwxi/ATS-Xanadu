@@ -691,6 +691,9 @@ all_dats:: \
 trans3a_dats
 trans3a_dats: ; $(XATSOPT) --dynamic DATS/trans3a.dats
 all_dats:: \
+trans3a_myenv0_dats
+trans3a_myenv0_dats: ; $(XATSOPT) --dynamic DATS/trans3a_myenv0.dats
+all_dats:: \
 trans3a_dynexp_dats
 trans3a_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trans3a_dynexp.dats
 all_dats:: \
@@ -702,6 +705,9 @@ trans3a_decl00_dats: ; $(XATSOPT) --dynamic DATS/trans3a_decl00.dats
 all_dats:: \
 tread33_dats
 tread33_dats: ; $(XATSOPT) --dynamic DATS/tread33.dats
+all_dats:: \
+tread33_dynexp_dats
+tread33_dynexp_dats: ; $(XATSOPT) --dynamic DATS/tread33_dynexp.dats
 all_dats:: \
 tread33_decl00_dats
 tread33_decl00_dats: ; $(XATSOPT) --dynamic DATS/tread33_decl00.dats

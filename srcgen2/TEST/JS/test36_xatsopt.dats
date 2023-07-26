@@ -310,6 +310,8 @@
 "./../../DATS/dynexp3.dats"
 #include
 "./../../DATS/dynexp3_print0.dats"
+#include
+"./../../DATS/dynexp3_utils0.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/trans23.dats"
@@ -333,6 +335,8 @@
 (* ****** ****** *)
 #include
 "./../../DATS/trans3a.dats"
+#include
+"./../../DATS/trans3a_myenv0.dats"
 #include
 "./../../DATS/trans3a_dynexp.dats"
 #include

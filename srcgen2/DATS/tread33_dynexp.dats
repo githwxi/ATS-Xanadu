@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Wed 26 Jul 2023 03:03:23 PM EDT
+Wed 26 Jul 2023 04:00:12 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -58,22 +58,19 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/tread33.sats"
 (* ****** ****** *)
-#symload lctn with token_get_lctn
-#symload node with token_get_node
-(* ****** ****** *)
-#symload lctn with d3ecl_get_lctn
-#symload node with d3ecl_get_node
-(* ****** ****** *)
-#symload lctn with d3valdcl_get_lctn
-#symload lctn with d3vardcl_get_lctn
-#symload lctn with d3fundcl_get_lctn
+//
+#implfun
+tread33_d3patlst
+  (  d3ps, err  ) =
+list_tread33_fnp(d3ps, err, tread33_d3pat)
+//
 (* ****** ****** *)
 //
 #implfun
-tread33_d3eclist
-  (  dcls, err  ) =
-list_tread33_fnp(dcls, err, tread33_d3ecl)
+tread33_d3explst
+  (  d3es, err  ) =
+list_tread33_fnp(d3es, err, tread33_d3exp)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_tread33_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_tread22_dynexp.dats] *)
