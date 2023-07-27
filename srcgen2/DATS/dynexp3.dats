@@ -72,6 +72,10 @@ ATS_PACKNAME
 #symload lctn with d2exp_get_lctn
 #symload lctn with d2ecl_get_lctn
 (* ****** ****** *)
+#symload lctn with d3pat_get_lctn
+#symload lctn with d3exp_get_lctn
+#symload lctn with d3ecl_get_lctn
+(* ****** ****** *)
 //
 #implfun
 d3pat_none0
