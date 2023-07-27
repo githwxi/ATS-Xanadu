@@ -337,6 +337,8 @@ fun
 d3pat_none0(loc0:loc_t): d3pat
 fun
 d3pat_none1(d2p0:d2pat): d3pat
+fun
+d3pat_none2(d3p0:d3pat): d3pat
 (* ****** ****** *)
 //
 fun
