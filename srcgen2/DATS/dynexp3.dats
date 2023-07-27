@@ -84,6 +84,12 @@ d3pat_none1
 d3pat_make_node
 (
 dpat.lctn(),D3Pnone1(dpat))
+#implfun
+d3pat_none2
+(  dpat  ) =
+d3pat_make_node
+(
+dpat.lctn(),D3Pnone2(dpat))
 //
 (* ****** ****** *)
 //
@@ -98,6 +104,12 @@ d3exp_none1
 d3exp_make_node
 (
 dexp.lctn(),D3Enone1(dexp))
+#implfun
+d3exp_none2
+(  dexp  ) =
+d3exp_make_node
+(
+dexp.lctn(),D3Enone2(dexp))
 //
 (* ****** ****** *)
 //
