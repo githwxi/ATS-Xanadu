@@ -374,6 +374,43 @@ end//let
 (*let*)//end-of-[trans3a_d3valdcl(env0,dval)]
 
 (* ****** ****** *)
+
+#implfun
+trans3a_d3fundcl
+  (env0, dfun) = let
+//
+val loc0 =
+d3fundcl_get_lctn(dfun)
+//
+val dvar =
+d3fundcl_get_dpid(dfun)
+val f3as =
+d3fundcl_get_farg(dfun)
+val sres =
+d3fundcl_get_sres(dfun)
+val tdxp =
+d3fundcl_get_tdxp(dfun)
+val wsxp =
+d3fundcl_get_wsxp(dfun)
+//
+val f3as =
+trans3a_f3arglst(env0, f3as)
+//
+in//let
+//
+d3fundcl(loc0,dvar,f3as,sres,tdxp,wsxp)
+//
+end where
+{
+//
+// (*
+val () =
+prerrln("trans3a_d3fundcl: dfun = ", dfun)
+// *)
+//
+}(*where*)//end-of-[trans3a_d3fundcl(env0,dfun)]
+
+(* ****** ****** *)
 //
 #implfun
 trans3a_d3eclist
