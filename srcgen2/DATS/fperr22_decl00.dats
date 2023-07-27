@@ -79,7 +79,6 @@ let
 g_print$out<>() = out
 in//let
 case+
-//
 dcl.node() of
 //
 |
@@ -202,15 +201,17 @@ D2Cerrck(_,_) => fperr22_d2ecl(out, dcl)
 |
 _(*otherwise*) =>
 let
- val
- loc = dcl.lctn()
- val () = prerrln
- ("fperr22_d2ecl: auxmain: loc = ", loc)
- val () = prerrln
- ("fperr22_d2ecl: auxmain: dcl = ", dcl)
+//
+  val
+  loc = dcl.lctn()
+  val () = prerrln
+  ("fperr22_d2ecl: auxmain: loc = ", loc)
+  val () = prerrln
+  ("fperr22_d2ecl: auxmain: dcl = ", dcl)
+//
 endlet
 //
-end (*let*) // end-of-[ auxmain(out,dcl) ]
+end (*let*) // end-of-[ auxmain(out, dcl) ]
 
 (* ****** ****** *)
 in(* in-of-local *)
@@ -230,7 +231,7 @@ val loc0 = dcl0.lctn()
 in//let
 (*
 prerrln
-("fperr22_d2pat: loc0 = ", loc0)
+("fperr22_d2ecl: loc0 = ", loc0)
 *)
 end//let
 (*
@@ -269,7 +270,8 @@ endloc(*local*)//end-of(local(fperr22_d2ecl))
 #implfun
 fperr22_d2eclist
   (out, dcls) =
-list_fperr22_fnp(out, dcls, fperr22_d2ecl)
+(
+  list_fperr22_fnp(out, dcls, fperr22_d2ecl))
 //
 (* ****** ****** *)
 //
