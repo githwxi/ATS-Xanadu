@@ -250,6 +250,16 @@ trans3a_d3gua
 ( env0:
 ! tr3aenv,dgua:d3gua):d3gua//fun
 //
+fun
+trans3a_d3gpt
+( env0:
+! tr3aenv,dgpt:d3gpt):d3gpt//fun
+//
+fun
+trans3a_d3cls
+( env0:
+! tr3aenv,dcls:d3cls):d3cls//fun
+//
 (* ****** ****** *)
 //
 fun

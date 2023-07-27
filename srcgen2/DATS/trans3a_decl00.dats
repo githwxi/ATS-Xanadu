@@ -346,6 +346,34 @@ prerrln("f0_implmnt0(3a): d3cl = ", d3cl)
 } (*where*) //end of [trans3a_d3ecl(env0,d3cl)]
 
 (* ****** ****** *)
+
+#implfun
+trans3a_d3valdcl
+  (env0, dval) = let
+//
+val loc0 =
+d3valdcl_get_lctn(dval)
+val dpat =
+d3valdcl_get_dpat(dval)
+val tdxp =
+d3valdcl_get_tdxp(dval)
+val wsxp =
+d3valdcl_get_wsxp(dval)
+//
+val dpat =
+trans3a_d3pat(env0, dpat)
+//
+(*
+val tdxp = ...
+(*handled in trans3a_d3valdclist*)
+*)
+//
+in//let
+d3valdcl_make_args(loc0,dpat,tdxp,wsxp)
+end//let
+(*let*)//end-of-[trans3a_d3valdcl(env0,dval)]
+
+(* ****** ****** *)
 //
 #implfun
 trans3a_d3eclist

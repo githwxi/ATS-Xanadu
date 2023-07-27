@@ -56,6 +56,37 @@ _(*TRANS3a*) = "./trans3a.dats"
 (* ****** ****** *)
 #staload "./../SATS/trans3a.sats"
 (* ****** ****** *)
+
+#implfun
+trans3a_d3pat
+(env0 , d3p0) =
+let
+//
+(*
+val
+loc0 = d3p0.lctn()
+val () =
+prerrln
+("trans3a_d3pat: loc0 = ", loc0)
+val () =
+prerrln
+("trans3a_d3pat: d3p0 = ", d3p0)
+*)
+//
+in//let
+case+
+d3p0.node() of
+| _(*otherwise*) => d3pat_none2(d3p0)
+//
+endlet where
+{
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+} (*where*)//end-of-[trans2a_d3pat(env0,d3p0)]
+
+(* ****** ****** *)
 //
 #implfun
 trans3a_d3patlst
