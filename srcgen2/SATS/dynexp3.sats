@@ -603,6 +603,8 @@ fun
 d3exp_none0(loc0:loc_t): d3exp
 fun
 d3exp_none1(d2e0:d2exp): d3exp
+fun
+d3exp_none2(d3e0:d3exp): d3exp
 (* ****** ****** *)
 //
 fun
