@@ -85,6 +85,12 @@ MAP = "./xsymmap.sats"
 #typedef l3d3p = $D3E.l3d3p
 #typedef l3d3e = $D3E.l3d3e
 (* ****** ****** *)
+#typedef f3arg = $D3E.f3arg
+(* ****** ****** *)
+#typedef d3gua = $D3E.d3gua
+#typedef d3gpt = $D3E.d3gpt
+#typedef d3cls = $D3E.d3cls
+(* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
 #typedef
@@ -98,6 +104,14 @@ MAP = "./xsymmap.sats"
  l3d3plst  =  $D3E.l3d3plst
 #typedef
  l3d3elst  =  $D3E.l3d3elst
+(* ****** ****** *)
+#typedef
+ f3arglst  =  $D3E.f3arglst
+(* ****** ****** *)
+#typedef
+ d3gualst  =  $D3E.d3gualst
+#typedef
+ d3clslst  =  $D3E.d3clslst
 (* ****** ****** *)
 #typedef
  d3eclist  =  $D3E.d3eclist
@@ -225,6 +239,20 @@ trans3a_l3d3e
 (* ****** ****** *)
 //
 fun
+trans3a_f3arg
+( env0:
+! tr3aenv,f3a0:f3arg):f3arg//fun
+//
+(* ****** ****** *)
+//
+fun
+trans3a_d3gua
+( env0:
+! tr3aenv,dgua:d3gua):d3gua//fun
+//
+(* ****** ****** *)
+//
+fun
 trans3a_d3patlst
 ( env0:
 ! tr3aenv,d3ps:d3patlst):d3patlst
@@ -252,6 +280,20 @@ fun
 trans3a_l3d3elst
 ( env0:
 ! tr3aenv,ldes:l3d3elst):l3d3elst
+//
+(* ****** ****** *)
+//
+fun
+trans3a_f3arglst
+( env0:
+! tr3aenv,f3as:f3arglst):f3arglst
+//
+(* ****** ****** *)
+//
+fun
+trans3a_d3gualst
+( env0:
+! tr3aenv,d3gs:d3gualst):d3gualst
 //
 (* ****** ****** *)
 //
