@@ -53,7 +53,7 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
-#staload "./../SATS/fperr22.sats"
+#staload "./../SATS/fperr33.sats"
 (* ****** ****** *)
 #define FPERR22_ERRVL 2
 (* ****** ****** *)
@@ -67,6 +67,13 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload lctn with d3ecl_get_lctn
 #symload node with d3ecl_get_node
+(* ****** ****** *)
+//
+#implfun
+fperr33_d3eclist
+  (out, dcls) =
+list_fperr33_fnp(out, dcls, fperr33_d3ecl)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_fperr33_decl00.dats] *)
