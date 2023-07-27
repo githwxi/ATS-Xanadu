@@ -120,8 +120,9 @@ D2Csexpdef
 //
 |
 D2Cinclude
-( knd0, tknd
-, gsrc, fopt, dopt) => let
+( knd0
+, tknd, gsrc
+, fopt, dopt) => let
 val () =
 fperr22_d2eclistopt(out, dopt)
 endlet // end-of-(D2Cinclude(...))

@@ -82,9 +82,71 @@ in//let
 case+
 dcl.node() of
 //
-| D3Cnone0() => ( (*void*) )
-| D3Cnone1(d2cl) => ( (*void*) )
-| D3Cnone2(d3cl) => ( (*void*) )
+|
+D3Cstatic
+(tknd, dcl1) =>
+let
+val () =
+fperr33_d3ecl(out, dcl1)
+endlet//end-of(D3Cstatic(_,_))
+|
+D3Cextern
+(tknd, dcl1) =>
+let
+val () =
+fperr33_d3ecl(out, dcl1)
+endlet//end-of(D3Cextern(_,_))
+//
+|
+D3Clocal0
+(dcs1, dcs2) =>
+let
+val () =
+fperr33_d3eclist(out, dcs1)
+val () =
+fperr33_d3eclist(out, dcs2)
+endlet // end of [D3Clocal0(...)]
+//
+|
+D3Cinclude
+( knd0
+, tknd, gsrc
+, fopt, dopt) => let
+val () =
+fperr33_d3eclistopt(out, dopt)
+endlet // end-of-(D3Cinclude(...))
+//
+|
+D3Cvaldclst
+(tknd, d3vs) => let
+val () =
+  fperr33_d3valdclist(out, d3vs)
+endlet // end-of-(D3Cvaldclst(_,_,_))
+|
+D3Cvardclst
+(tknd, d3vs) => let
+val () =
+  fperr33_d3vardclist(out, d3vs)
+endlet // end-of-(D3Cvardclst(_,_,_))
+//
+|
+D3Cfundclst
+( tknd
+, tqas
+, d2cs, d3fs) => let
+(*
+val () =
+  fperr33_t3qaglst(out, tqas)
+val () =
+  fperr33_d3cstlst(out, d3cs)
+*)
+val () =
+  fperr33_d3fundclist(out, d3fs)
+endlet // end-of-(D3Cfundclst(_,_,_))
+//
+|D3Cnone0 _ => ( (*void*) )
+|D3Cnone1 _ => () | D3Cnone2 _ => ()
+//
 |
 D3Cerrck(_,_) => fperr33_d3ecl(out, dcl)
 //
@@ -162,6 +224,28 @@ fperr33_d3eclist
   (out, dcls) =
 (
   list_fperr33_fnp(out, dcls, fperr33_d3ecl))
+//
+(* ****** ****** *)
+//
+#implfun
+fperr33_d3valdclist
+  (out, d3vs) =
+(
+list_fperr33_fnp(out, d3vs, fperr33_d3valdcl))
+//
+#implfun
+fperr33_d3vardclist
+  (out, d3vs) =
+(
+list_fperr33_fnp(out, d3vs, fperr33_d3vardcl))
+//
+(* ****** ****** *)
+//
+#implfun
+fperr33_d3fundclist
+  (out, d3fs) =
+(
+list_fperr33_fnp(out, d3fs, fperr33_d3fundcl))
 //
 (* ****** ****** *)
 
