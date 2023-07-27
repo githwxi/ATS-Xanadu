@@ -107,14 +107,16 @@ d3cl.node() of
 (
 f0_local0(env0, d3cl))
 //
-(*
+//
 |
 D3Cvaldclst _ => f0_valdclst(env0, d3cl)
 |
 D3Cvardclst _ => f0_vardclst(env0, d3cl)
-*)
 |
 D3Cfundclst _ => f0_fundclst(env0, d3cl)
+//
+|
+D3Cimplmnt0 _ => f0_implmnt0(env0, d3cl)
 //
 | _(*otherwise*) =>
 let
@@ -184,6 +186,71 @@ in//let
 end(*let*)
 end(*let*)//end-of-[f0_local0(env0,d3cl)]
 //
+(* ****** ****** *)
+//
+fun
+f0_valdclst
+( env0:
+! tr3aenv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Cvaldclst
+(tknd, d3vs) = d3cl.node()
+//
+(*
+val () =
+prerrln
+("f0_valdclst: loc0 = ", loc0)
+val () =
+prerrln
+("f0_valdclst: d3cl = ", d3cl)
+*)
+//
+val
+d3vs =
+trans3a_d3valdclist(env0, d3vs)
+//
+in//let
+  d3ecl(loc0, D3Cvaldclst(tknd, d3vs))
+end (*let*) // end of [f0_valdclst(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_vardclst
+( env0:
+! tr3aenv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Cvardclst
+(tknd, d3vs) = d3cl.node()
+//
+(*
+val () =
+prerrln
+("f0_vardclst: loc0 = ", loc0)
+val () =
+prerrln
+("f0_vardclst: d3cl = ", d3cl)
+*)
+//
+val
+d3vs =
+trans3a_d3vardclist(env0, d3vs)
+//
+in//let
+  d3ecl(loc0, D3Cvardclst(tknd, d3vs))
+end (*let*) // end of [f0_vardclst(env0,d3cl)]
+//
+(* ****** ****** *)
 //
 fun
 f0_fundclst
@@ -221,6 +288,61 @@ d3ecl_make_node
 //
 end (*let*) // end of [f0_fundclst(env0,d3cl)]
 //
+(* ****** ****** *)
+//
+//
+fun
+f0_implmnt0
+( env0:
+! tr3aenv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val-
+D3Cimplmnt0
+( tknd
+, sqas, tqas
+, dimp//dcst
+, tias, f3as
+, sres, dexp) = d3cl.node()
+//
+(*
+val
+tias =
+trans3a_t3iaglst(env0, tias)
+*)
+val
+f3as =
+trans3a_f3arglst(env0, f3as)
+//
+val
+dexp = trans3a_d3exp(env0, dexp)
+//
+in//let
+//
+d3ecl
+(
+loc0,
+D3Cimplmnt0
+( tknd
+, sqas,tqas,dimp,tias,f3as,sres,dexp) )
+//
+end where
+{
+//
+val loc0 = d3cl.lctn()
+//
+// (*
+val (  ) =
+prerrln("f0_implmnt0(3a): loc0 = ", loc0)
+val (  ) =
+prerrln("f0_implmnt0(3a): d3cl = ", d3cl)
+// *)
+//
+} (*where*) // end of [f0_implmnt0(env0,d3cl)]
+//
+(* ****** ****** *)
+//
 } (*where*) //end of [trans3a_d3ecl(env0,d3cl)]
 
 (* ****** ****** *)
@@ -230,6 +352,27 @@ trans3a_d3eclist
   (env0, dcls) =
 (
   list_trans3a_fnp(env0, dcls, trans3a_d3ecl))
+//
+(* ****** ****** *)
+//
+#implfun
+trans3a_d3valdclist
+  (env0, d3vs) =
+(
+  list_trans3a_fnp(env0, d3vs, trans3a_d3valdcl))
+#implfun
+trans3a_d3vardclist
+  (env0, d3vs) =
+(
+  list_trans3a_fnp(env0, d3vs, trans3a_d3vardcl))
+//
+(* ****** ****** *)
+//
+#implfun
+trans3a_d3fundclist
+  (env0, d3fs) =
+(
+  list_trans3a_fnp(env0, d3fs, trans3a_d3fundcl))
 //
 (* ****** ****** *)
 //

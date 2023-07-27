@@ -92,5 +92,21 @@ trans3a_l3d3elst
   list_trans3a_fnp(env0, ldes, trans3a_l3d3e))
 //
 (* ****** ****** *)
+//
+#implfun
+trans3a_f3arglst
+( env0, f3as ) =
+(
+  list_trans3a_fnp(env0, f3as, trans3a_f3arg))
+//
+(* ****** ****** *)
+//
+#implfun
+trans3a_d3gualst
+( env0, d3gs ) =
+(
+  list_trans3a_fnp(env0, d3gs, trans3a_d3gua))
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans3a_dynexp.dats] *)
