@@ -149,24 +149,23 @@ let
 val () = fperr22_d2pat(out, d2p1)
 endlet
 //
-|D2Pnone0(    ) => (   (*void*)   )
-|D2Pnone1(d1p1) => (   (*void*)   )
-|D2Pnone2(d2p1) => (   (*void*)   )
+|D2Pnone0 _ => (   (*void*)   )
+|D2Pnone1 _ => () | D2Pnone2 _ => ()
 |
 D2Perrck(_,_) => fperr22_d2pat(out, d2p)
 //
 |
 _(*otherwise*) =>
 let
- val
- loc = d2p.lctn()
- val () = prerrln
- ("fperr22_d2pat: auxmain: loc = ", loc)
- val () = prerrln
- ("fperr22_d2pat: auxmain: d2p = ", d2p)
+  val
+  loc = d2p.lctn()
+  val () = prerrln
+  ("fperr22_d2pat: auxmain: loc = ", loc)
+  val () = prerrln
+  ("fperr22_d2pat: auxmain: d2p = ", d2p)
 endlet
 //
-end (*let*) // end-of-[ auxmain(out,d2p) ]
+end (*let*) // end-of-[ auxmain(out, d2p) ]
 
 in//local
 //
@@ -180,7 +179,7 @@ g_print$out<>() = out
 //
 val () =
 let
-val loc0 = d2p0.lctn()
+val loc0 = d2p0.lctn((*0*))
 in//let
 (*
 prerrln
@@ -437,9 +436,8 @@ let
 val () = fperr22_d2exp(out, d2e1)
 endlet
 //
-|D2Enone0(    ) => (   (*void*)   )
-|D2Enone1(d1e1) => (   (*void*)   )
-|D2Enone2(d2e1) => (   (*void*)   )
+|D2Enone0 _ => (   (*void*)   )
+|D2Enone1 _ => () | D2Enone2 _ => ()
 //
 |
 D2Eerrck(_,_) => fperr22_d2exp(out, d2e)
@@ -447,15 +445,15 @@ D2Eerrck(_,_) => fperr22_d2exp(out, d2e)
 |
 _(*otherwise*) =>
 let
- val
- loc = d2e.lctn()
- val () = prerrln
- ("fperr22_d2exp: auxmain: loc = ", loc)
- val () = prerrln
- ("fperr22_d2exp: auxmain: d2e = ", d2e)
+  val
+  loc = d2e.lctn((*0*))
+  val () = prerrln
+  ("fperr22_d2exp: auxmain: loc = ", loc)
+  val () = prerrln
+  ("fperr22_d2exp: auxmain: d2e = ", d2e)
 endlet
 //
-end (*let*) // end-of-[ auxmain(out,d2e) ]
+end (*let*) // end-of-[ auxmain(out, d2e) ]
 
 in//local
 //
@@ -469,7 +467,7 @@ g_print$out<>() = out
 //
 val () =
 let
-val loc0 = d2e0.lctn()
+val loc0 = d2e0.lctn((*0*))
 in//let
 (*
 prerrln

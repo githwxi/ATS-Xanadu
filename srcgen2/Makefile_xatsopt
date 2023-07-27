@@ -718,6 +718,9 @@ all_dats:: \
 fperr33_dats
 fperr33_dats: ; $(XATSOPT) --dynamic DATS/fperr33.dats
 all_dats:: \
+fperr33_dynexp_dats
+fperr33_dynexp_dats: ; $(XATSOPT) --dynamic DATS/fperr33_dynexp.dats
+all_dats:: \
 fperr33_decl00_dats
 fperr33_decl00_dats: ; $(XATSOPT) --dynamic DATS/fperr33_decl00.dats
 ######
