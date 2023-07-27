@@ -228,6 +228,54 @@ fperr33_d3eclist
 (* ****** ****** *)
 //
 #implfun
+fperr33_d3valdcl
+(out, dval) =
+let
+//
+val (  ) =
+fperr33_d3pat(out, dpat)
+//
+val (  ) =
+fperr33_teqd3exp(out, tdxp)
+//
+endlet where
+{
+//
+val dpat = d3valdcl_get_dpat(dval)
+val tdxp = d3valdcl_get_tdxp(dval)
+//
+(*
+val wsxp = d3valdcl_get_wsxp(dval)
+*)
+//
+} (*where*)//end-of-[fperr33_d3valdcl(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+fperr33_d3vardcl
+(out, dvar) =
+let
+//
+val (  ) =
+fperr33_teqd3exp(out, dini)
+//
+endlet where
+{
+//
+(*
+val dpid = d3vardcl_get_dpid(dvar)
+val vpid = d3vardcl_get_vpid(dvar)
+val sres = d3vardcl_get_sres(dvar)
+*)
+//
+val dini = d3vardcl_get_dini(dvar)
+//
+} (*where*)//end-of-[fperr33_d3vardcl(...)]
+//
+(* ****** ****** *)
+//
+#implfun
 fperr33_d3valdclist
   (out, d3vs) =
 (
