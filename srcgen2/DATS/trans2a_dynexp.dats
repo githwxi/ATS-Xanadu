@@ -2524,7 +2524,6 @@ let
 val loc0 = farg.lctn()
 val d2ps =
 trans2a_d2patlst(env0, d2ps)
-//
 in//let
 let
 val (  ) =
