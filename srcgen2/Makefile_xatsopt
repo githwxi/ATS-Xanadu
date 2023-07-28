@@ -694,6 +694,9 @@ all_dats:: \
 trans3a_myenv0_dats
 trans3a_myenv0_dats: ; $(XATSOPT) --dynamic DATS/trans3a_myenv0.dats
 all_dats:: \
+trans3a_staexp_dats
+trans3a_staexp_dats: ; $(XATSOPT) --dynamic DATS/trans3a_staexp.dats
+all_dats:: \
 trans3a_dynexp_dats
 trans3a_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trans3a_dynexp.dats
 all_dats:: \
