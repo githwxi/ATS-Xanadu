@@ -112,6 +112,8 @@ d3cl.node() of
 //
 |
 D3Cvaldclst _ => f0_valdclst(d3cl, err)
+|
+D3Cvardclst _ => f0_vardclst(d3cl, err)
 //
 |
 _(*otherwise*) =>
@@ -130,6 +132,30 @@ prerrln("tread33_d3ecl: d3cl = ", d3cl)
 //
 fun
 f0_valdclst
+( dcl: d3ecl
+, err: &sint >> _): d3ecl =
+let
+//
+val e00 = err
+//
+val-
+D3Cvaldclst
+(tknd, d3vs) = dcl.node()
+//
+val d3vs =
+tread33_d3valdclist(d3vs, err)
+//
+in//let
+if
+(err=e00)
+then (dcl) else
+d3ecl_valdclst_errck(dcl.lctn(),tknd,d3vs)
+end (*let*) // end of [f0_valdclst(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_vardclst
 ( dcl: d3ecl
 , err: &sint >> _): d3ecl =
 let
