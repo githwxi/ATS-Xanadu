@@ -301,6 +301,8 @@
 "./../../DATS/dynexp3.dats"
 #include
 "./../../DATS/dynexp3_print0.dats"
+#include
+"./../../DATS/dynexp3_utils0.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/trans23.dats"
@@ -321,6 +323,22 @@
 "./../../DATS/tread23_decl00.dats"
 #include
 "./../../DATS/tread23_errmsg.dats"
+(* ****** ****** *)
+#include
+"./../../DATS/trans3a.dats"
+#include
+"./../../DATS/trans3a_myenv0.dats"
+#include
+"./../../DATS/trans3a_dynexp.dats"
+#include
+"./../../DATS/trans3a_decl00.dats"
+(* ****** ****** *)
+#include
+"./../../DATS/tread33.dats"
+#include
+"./../../DATS/tread33_dynexp.dats"
+#include
+"./../../DATS/tread33_decl00.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/xatsopt.dats"
