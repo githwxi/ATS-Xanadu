@@ -1691,13 +1691,14 @@ trans12_s1exp_impr
 ( env0,s1e0 ) = let
 val
 s2e0 =
-trans12_s1exp(env0, s1e0)
+trans12_s1exp
+(env0 , s1e0)
 val
-s2t0 = s2e0.sort((*void*))
+s2t0 = s2e0.sort((*0*))
 in//let
 if
 lte_sort2_sort2
-(s2t0, the_sort2_view)
+( s2t0, the_sort2_view )
 then s2e0 else
 s2exp_impr(s1e0.lctn(), s2e0)
 end (*let*)//end-of[trans12_s1exp_impr(env0,s1e0)]
@@ -1708,7 +1709,7 @@ trans12_l1s1e_impr
 (
 S2LAB(l0, s2e0)) where
 {
-val
+val+
 S1LAB(l0, s1e0) = ls1e
 val s2e0 =
 trans12_s1exp_impr(env0, s1e0)
@@ -1721,13 +1722,14 @@ trans12_s1exp_prgm
 ( env0,s1e0 ) = let
 val
 s2e0 =
-trans12_s1exp(env0, s1e0)
+trans12_s1exp
+(env0 , s1e0)
 val
-s2t0 = s2e0.sort((*void*))
+s2t0 = s2e0.sort((*0*))
 in//let
 if
 lte_sort2_sort2
-(s2t0, the_sort2_vwtp)
+( s2t0, the_sort2_vwtp )
 then s2e0 else
 s2exp_prgm(s1e0.lctn(), s2e0)
 end (*let*)//end-of[trans12_s1exp_impr(env0,s1e0)]

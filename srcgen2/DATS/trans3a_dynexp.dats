@@ -87,7 +87,7 @@ in//let
 case+
 d3p0.node() of
 //
-|D2Pvar _ => f0_var(env0, d3p0)
+|D3Pvar _ => f0_var(env0, d3p0)
 //
 | _(*otherwise*) => d3pat_none2(d3p0)
 //
