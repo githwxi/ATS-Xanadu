@@ -49,11 +49,15 @@ LEX = "./lexing0.sats"
 #staload
 S2E = "./staexp2.sats"
 #staload
+T2P = "./statyp2.sats"
+#staload
 D2E = "./dynexp2.sats"
 #staload
 D3E = "./dynexp3.sats"
 (* ****** ****** *)
 #typedef token = $LEX.token
+(* ****** ****** *)
+#typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
@@ -67,6 +71,8 @@ D3E = "./dynexp3.sats"
 #typedef d3cls = $D3E.d3cls
 (* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
+(* ****** ****** *)
+#typedef s2typlst = $S2E.s2typlst
 (* ****** ****** *)
 #typedef d3patlst = $D3E.d3patlst
 #typedef d3patopt = $D3E.d3patopt
@@ -130,8 +136,6 @@ HX: fperr33 for statics
 (* ****** ****** *)
 fun fperr33_s2typ(FILR, s2typ): void
 (* ****** ****** *)
-fun fperr33_s2typlst(FILR, s2typlst): void
-(* ****** ****** *)
 (*
 HX: fperr33 for dynamics
 *)
@@ -149,6 +153,8 @@ fun fperr33_d3gpt(FILR, d3gpt): void
 fun fperr33_d3cls(FILR, d3cls): void
 (* ****** ****** *)
 fun fperr33_d3ecl(FILR, d3ecl): void
+(* ****** ****** *)
+fun fperr33_s2typlst(FILR, s2typlst): void
 (* ****** ****** *)
 fun fperr33_d3patlst(FILR, d3patlst): void
 fun fperr33_d3patopt(FILR, d3patopt): void
