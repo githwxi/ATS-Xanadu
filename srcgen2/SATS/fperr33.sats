@@ -124,6 +124,18 @@ optn_fperr33_fnp
   optn(syn), fperr33_t(syn)): void
 //
 (* ****** ****** *)
+(*
+HX: fperr33 for statics
+*)
+(* ****** ****** *)
+fun fperr33_s2typ(FILR, s2typ): void
+(* ****** ****** *)
+fun fperr33_s2typlst(FILR, s2typlst): void
+(* ****** ****** *)
+(*
+HX: fperr33 for dynamics
+*)
+(* ****** ****** *)
 fun fperr33_d3pat(FILR, d3pat): void
 fun fperr33_d3exp(FILR, d3exp): void
 (* ****** ****** *)
