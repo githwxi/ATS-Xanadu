@@ -82,6 +82,23 @@ end (*let*) // end-of(d3ecl_errck)
 //
 (* ****** ****** *)
 //
+fun
+d3ecl_valdclst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, d3vs
+: d3valdclist): d3ecl =
+let
+val lvl = 0
+in//let
+d3ecl_errck
+(lvl+1, d3ecl(loc0,D3Cvaldclst(tknd,d3vs)))
+end (*let*) // end of [d3ecl_valdclst_errck]
+//
+(* ****** ****** *)
+//
 #implfun
 tread33_d3ecl
   (d3cl, err) =
@@ -92,6 +109,9 @@ d3cl.node() of
 |D3Cnone0 _ => d3cl
 |D3Cd2ecl _ => d3cl
 |D3Cerrck _ => d3cl
+//
+|
+D3Cvaldclst _ => f0_valdclst(d3cl, err)
 //
 |
 _(*otherwise*) =>
@@ -106,6 +126,32 @@ endlet // end of [  _(* otherwise *)  ]
 (* ****** ****** *)
 val (  ) =
 prerrln("tread33_d3ecl: d3cl = ", d3cl)
+(* ****** ****** *)
+//
+fun
+f0_valdclst
+( dcl: d3ecl
+, err: &sint >> _): d3ecl =
+let
+//
+val e00 = err
+//
+val-
+D3Cvaldclst
+(tknd, d3vs) = dcl.node()
+//
+val d3vs =
+tread33_d3valdclist(d3vs, err)
+//
+in//let
+if
+(err=e00)
+then (dcl) else
+d3ecl_valdclst_errck(dcl.lctn(),tknd,d3vs)
+end (*let*) // end of [f0_valdclst(dcl,err)]
+//
+(* ****** ****** *)
+//
 (* ****** ****** *)
 } (*where*) // end of [tread33_d3ecl(d3cl,err)]
 

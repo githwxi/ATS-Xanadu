@@ -53,5 +53,33 @@ _(*TRANS3a*) = "./trans3a.dats"
 (* ****** ****** *)
 #staload "./../SATS/trans3a.sats"
 (* ****** ****** *)
+//
+#implfun
+trans3a_s2typ
+( env0,t2p0 ) = let
+//
+val () =
+prerrln
+("trans3a_s2typ: t2p0 = ", t2p0)
+//
+in//let
+//
+case+
+t2p0.node() of
+| _(*otherwise*) => s2typ_none1(t2p0)
+//
+end where // end-of-let
+{
+} (*where*)//end of [trans3a_s2typ(env0,t2p0)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans3a_s2typlst
+( env0, t2ps ) =
+(
+  list_trans3a_fnp(env0, t2ps, trans3a_s2typ))
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans3a_staexp.dats] *)

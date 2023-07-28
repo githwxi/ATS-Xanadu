@@ -329,6 +329,8 @@
 #include
 "./../../DATS/trans3a_myenv0.dats"
 #include
+"./../../DATS/trans3a_staexp.dats"
+#include
 "./../../DATS/trans3a_dynexp.dats"
 #include
 "./../../DATS/trans3a_decl00.dats"

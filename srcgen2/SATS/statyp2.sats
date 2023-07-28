@@ -209,8 +209,8 @@ T2Ptext of (string(*name*), s2typlst)
 T2Ptrcd of
 (trcdknd(*knd*), int(*npf*), l2t2plst)
 //
-| T2Pnone0 of ((*0*)) // HX: optional
-| T2Pnone1 of (s2typ) | T2Ps2exp of (s2exp)
+|T2Pnone0 of ((*0*)) // HX: optional
+|T2Pnone1 of (s2typ) | T2Ps2exp of (s2exp)
 //
 // HX-2022-11-04: end of [datatype(s2typ_node)
 //

@@ -71,9 +71,13 @@ MAP = "./xsymmap.sats"
 #staload D2E = "./dynexp2.sats"
 #staload D3E = "./dynexp3.sats"
 (* ****** ****** *)
+//
 #typedef s2cst = $S2E.s2cst
+(*
 #typedef s2exp = $S2E.s2exp
+*)
 #typedef s2typ = $S2E.s2typ
+//
 (* ****** ****** *)
 #typedef d2var = $D2E.d2var
 #typedef d2con = $D2E.d2con
@@ -92,6 +96,9 @@ MAP = "./xsymmap.sats"
 #typedef d3cls = $D3E.d3cls
 (* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
+(* ****** ****** *)
+#typedef
+ s2typlst  =  $S2E.s2typlst
 (* ****** ****** *)
 #typedef
  d3patlst  =  $D3E.d3patlst
@@ -203,10 +210,12 @@ optn_trans3a_fnp
 //
 (* ****** ****** *)
 //
+(*
 fun
 trans3a_s2exp
 ( env0:
 ! tr3aenv,s2e0:s2exp):s2exp//fun
+*)
 fun
 trans3a_s2typ
 ( env0:
@@ -259,6 +268,13 @@ fun
 trans3a_d3cls
 ( env0:
 ! tr3aenv,dcls:d3cls):d3cls//fun
+//
+(* ****** ****** *)
+//
+fun
+trans3a_s2typlst
+( env0:
+! tr3aenv,t2ps:s2typlst):s2typlst
 //
 (* ****** ****** *)
 //
