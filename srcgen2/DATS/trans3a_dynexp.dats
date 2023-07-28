@@ -88,6 +88,7 @@ case+
 d3p0.node() of
 //
 |D3Pvar _ => f0_var(env0, d3p0)
+|D3Pany _ => f0_any(env0, d3p0)
 //
 | _(*otherwise*) => d3pat_none2(d3p0)
 //
@@ -116,6 +117,29 @@ val t2p0 = s2typ_hnfiz0(t2p0)
 val t2p0 = trans3a_s2typ(env0, t2p0)
 //
 } (*where*)//end-of-[f0_var(env0,d3p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_any
+( env0:
+! tr3aenv
+, d3p0: d3pat): d3pat =
+(
+d3pat_make_styp_node
+( loc0
+, t2p0, D3Pany((*0*)))) where
+{
+//
+val loc0 = d3p0.lctn()
+val-
+D3Pany((*0*)) = d3p0.node()
+//
+val t2p0 = d3p0.styp((*0*))
+val t2p0 = s2typ_hnfiz0(t2p0)
+val t2p0 = trans3a_s2typ(env0, t2p0)
+//
+} (*where*)//end-of-[f0_any(env0,d3p0)]
 //
 (* ****** ****** *)
 //

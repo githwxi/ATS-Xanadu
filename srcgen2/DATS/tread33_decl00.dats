@@ -203,7 +203,32 @@ end (*let*) // end of [f0_vardclst(dcl,err)]
 #implfun
 tread33_d3eclist
   (  dcls, err  ) =
-list_tread33_fnp(dcls, err, tread33_d3ecl)
+(
+  list_tread33_fnp(dcls, err, tread33_d3ecl))
+//
+(* ****** ****** *)
+//
+#implfun
+tread33_d3valdclist
+  (  d3vs, err  ) =
+(
+  list_tread33_fnp(d3vs, err, tread33_d3valdcl))
+//
+(* ****** ****** *)
+//
+#implfun
+tread33_d3vardclist
+  (  d3vs, err  ) =
+(
+  list_tread33_fnp(d3vs, err, tread33_d3vardcl))
+//
+(* ****** ****** *)
+//
+#implfun
+tread33_d3fundclist
+  (  d3fs, err  ) =
+(
+  list_tread33_fnp(d3fs, err, tread33_d3fundcl))
 //
 (* ****** ****** *)
 
