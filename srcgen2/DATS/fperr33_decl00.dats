@@ -228,6 +228,22 @@ fperr33_d3eclist
 (* ****** ****** *)
 //
 #implfun
+fperr33_teqd3exp
+  (out, tdxp) =
+(
+case+ tdxp of
+|
+TEQD3EXPnone() => ()
+|
+TEQD3EXPsome(teq1, d3e2) =>
+let
+val (  ) = fperr33_d3exp(out, d3e2)
+endlet // end of [TEQD3EXPsome(_,_)]
+) (*case+*)//end-(fperr33_teqd3exp(out,tdxp))
+//
+(* ****** ****** *)
+//
+#implfun
 fperr33_d3valdcl
 (out, dval) =
 let
@@ -272,6 +288,38 @@ val sres = d3vardcl_get_sres(dvar)
 val dini = d3vardcl_get_dini(dvar)
 //
 } (*where*)//end-of-[fperr33_d3vardcl(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+fperr33_d3fundcl
+(out, dfun) =
+let
+//
+val (  ) =
+fperr33_f3arglst(out, fags)
+//
+val (  ) =
+fperr33_teqd3exp(out, tdxp)
+//
+endlet where
+{
+//
+(*
+  val dpid = d3fundcl_get_dpid(dfun)
+*)
+//
+  val fags = d3fundcl_get_farg(dfun)
+(*
+  val sres = d3fundcl_get_sres(dfun)
+*)
+  val tdxp = d3fundcl_get_tdxp(dfun)
+//
+(*
+  val wsxp = d3fundcl_get_wsxp(dfun)
+*)
+//
+} (*where*)//end-of-[fperr33_d3fundcl(out,dfun)]
 //
 (* ****** ****** *)
 //
