@@ -1180,7 +1180,6 @@ end (*let*)//end-(tread22_l2d2p(ld2p,err))
 //
 (* ****** ****** *)
 //
-//
 #implfun
 tread22_d2exp
 ( d2e0, err ) =
