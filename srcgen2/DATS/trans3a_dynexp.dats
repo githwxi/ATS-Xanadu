@@ -56,6 +56,16 @@ _(*TRANS3a*) = "./trans3a.dats"
 (* ****** ****** *)
 #staload "./../SATS/trans3a.sats"
 (* ****** ****** *)
+#symload styp with d2var_get_styp
+(* ****** ****** *)
+#symload lctn with d3pat_get_lctn
+#symload node with d3pat_get_node
+#symload styp with d3pat_get_styp
+(* ****** ****** *)
+#symload lctn with d3exp_get_lctn
+#symload node with d3exp_get_node
+#symload styp with d3exp_get_styp
+(* ****** ****** *)
 
 #implfun
 trans3a_d3pat
@@ -76,15 +86,40 @@ prerrln
 in//let
 case+
 d3p0.node() of
+//
+|D2Pvar _ => f0_var(env0, d3p0)
+//
 | _(*otherwise*) => d3pat_none2(d3p0)
 //
 endlet where
 {
 //
 (* ****** ****** *)
+//
+fun
+f0_var
+( env0:
+! tr3aenv
+, d3p0: d3pat): d3pat =
+(
+d3pat_make_styp_node
+( loc0
+, t2p0, D3Pvar(d2v1))) where
+{
+//
+val loc0 = d3p0.lctn()
+val-
+D3Pvar(d2v1) = d3p0.node()
+//
+val t2p0 = d2v1.styp((*0*))
+val t2p0 = s2typ_hnfiz0(t2p0)
+val t2p0 = trans3a_s2typ(env0, t2p0)
+//
+} (*where*)//end-of-[f0_var(env0,d3p0)]
+//
 (* ****** ****** *)
 //
-} (*where*)//end-of-[trans2a_d3pat(env0,d3p0)]
+} (*where*)//end-of-[trans3a_d3pat(env0,d3p0)]
 
 (* ****** ****** *)
 
@@ -115,7 +150,7 @@ endlet where
 (* ****** ****** *)
 (* ****** ****** *)
 //
-} (*where*)//end-of-[trans2a_d3exp(env0,d3e0)]
+} (*where*)//end-of-[trans3a_d3exp(env0,d3e0)]
 
 (* ****** ****** *)
 //
@@ -155,7 +190,7 @@ end where
 (* ****** ****** *)
 (* ****** ****** *)
 //
-} (*where*)//end of [trans2a_f2arg(env0,farg)]
+} (*where*)//end of [trans3a_f3arg(env0,farg)]
 
 (* ****** ****** *)
 //
