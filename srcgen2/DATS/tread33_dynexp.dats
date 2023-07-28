@@ -59,6 +59,82 @@ ATS_PACKNAME
 #staload "./../SATS/tread33.sats"
 (* ****** ****** *)
 //
+fun
+d3pat_errck
+(lvl0: sint
+,d3p0: d3pat): d3pat =
+let
+val loc0 = d3p0.lctn()
+in//let
+d3pat_make_node
+(loc0, D3Perrck(lvl0, d3p0))
+end (*let*)//end-of(d3pat_errck)
+//
+(* ****** ****** *)
+//
+fun
+d3exp_errck
+(lvl0: sint
+,d3e0: d3exp): d3exp =
+let
+val loc0 = d3e0.lctn()
+in//let
+d3exp_make_node
+(loc0, D3Eerrck(lvl0, d3e0))
+end (*let*)//end-of(d3exp_errck)
+//
+(* ****** ****** *)
+//
+#implfun
+tread33_d3pat
+( d3p0, err ) =
+(
+case+
+d3p0.node() of
+//
+| _(*otherwise*) =>
+let
+val lvl0 = 1
+in//let
+(
+err := err+1; d3pat_errck(lvl0,d3p0))
+endlet // end of [ _(* otherwise *) ]
+//
+) where // end-of-[(*case+(d3p0)-of*)]
+{
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+} (*where*)//end[tread33_d3pat(d3p0,err)]
+
+(* ****** ****** *)
+//
+#implfun
+tread33_d3exp
+( d3e0, err ) =
+(
+case+
+d3e0.node() of
+//
+| _(*otherwise*) =>
+let
+val lvl0 = 1
+in//let
+(
+err := err+1; d3exp_errck(lvl0,d3e0))
+endlet // end of [ _(* otherwise *) ]
+//
+) where // end-of-[(*case+(d3e0)-of*)]
+{
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+} (*where*)//end-[tread33_d3exp(d3e0,err)]
+
+(* ****** ****** *)
+//
 #implfun
 tread33_d3patlst
   (  d3ps, err  ) =
@@ -73,4 +149,4 @@ list_tread33_fnp(d3es, err, tread33_d3exp)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_tread22_dynexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_tread33_dynexp.dats] *)

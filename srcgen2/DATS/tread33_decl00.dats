@@ -201,6 +201,66 @@ end (*let*) // end of [f0_vardclst(dcl,err)]
 (* ****** ****** *)
 //
 #implfun
+tread33_teqd3exp
+  (tdxp, err) =
+(
+case+ tdxp of
+|
+TEQD3EXPnone() => tdxp
+|
+TEQD3EXPsome(teq1, d3e2) =>
+let
+val e00 = err
+(*
+val ( ) =
+prerrln
+("tread33_teqd3exp: d3e2 = ", d3e2)
+*)
+val d3e2 = tread33_d3exp(d3e2, err)
+in//letp
+if
+(err=e00)
+then tdxp else TEQD3EXPsome(teq1, d3e2)
+endlet // end of [ TEQD3EXPsome( _,_ ) ]
+) (*case+*)//end-(tread33_teqd3exp(tdxp,err))
+//
+(* ****** ****** *)
+//
+#implfun
+tread33_d3valdcl
+  (dval, err) =
+let
+//
+val e00 = err
+//
+val loc = dval.lctn()
+//
+val
+dpat = d3valdcl_get_dpat(dval)
+val
+tdxp = d3valdcl_get_tdxp(dval)
+val
+wsxp = d3valdcl_get_wsxp(dval)
+//
+val
+dpat = tread33_d3pat(dpat,err)
+val
+tdxp = tread33_teqd3exp(tdxp,err)
+(*
+val
+wsxp = tread33_wths2exp(wsxp,err)
+*)
+//
+in//let
+if
+(err=e00)
+then (dval)
+else d3valdcl( loc, dpat, tdxp, wsxp )
+endlet // end-of-[tread33_d3valdcl(out,dval)]
+//
+(* ****** ****** *)
+//
+#implfun
 tread33_d3eclist
   (  dcls, err  ) =
 (
