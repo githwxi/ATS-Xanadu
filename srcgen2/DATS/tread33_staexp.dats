@@ -92,6 +92,36 @@ end//let//end-of(s2typ_lft_errck(...))
 //
 (* ****** ****** *)
 //
+fun
+s2typ_apps_errck
+(s2t0: sort2
+,t2f0: s2typ
+,t2ps: s2typlst): s2typ =
+let
+val lvl0 = 1
+in//let
+s2typ_errck
+( lvl0
+, s2typ(s2t0, T2Papps(t2f0, t2ps)))
+end//let//end-of(s2typ_apps_errck(...))
+//
+(* ****** ****** *)
+//
+fun
+s2typ_text_errck
+(s2t0: sort2
+,name: (strn)
+,t2ps: s2typlst): s2typ =
+let
+val lvl0 = 1
+in//let
+s2typ_errck
+( lvl0
+, s2typ(s2t0, T2Ptext(name, t2ps)))
+end//let//end-of(s2typ_text_errck(...))
+//
+(* ****** ****** *)
+//
 #implfun
 tread33_s2typ
 ( t2p0, err ) =
@@ -101,10 +131,17 @@ t2p0.node() of
 //
 |T2Pbas _ => t2p0
 |T2Pcst _ => t2p0
+|T2Pvar _ => t2p0
 //
 |T2Plft _ => f0_lft(t2p0, err)
 //
 |T2Pxtv _ => f0_xtv(t2p0, err)
+//
+|T2Papps _ => f0_apps(t2p0, err)
+//
+|T2Ptext _ => f0_text(t2p0, err)
+//
+|T2Ps2exp _ => f0_s2exp(t2p0, err)
 //
 |
 _(* otherwise *) =>
@@ -147,22 +184,70 @@ f0_xtv
 ( t2p: s2typ
 , err: &sint >> _): s2typ =
 let
+(*
+val e00 = err
+*)
 val-
 T2Pxtv(xtv1) = t2p.node()
 in//let
-let
-val
-t2p1 = xtv1.styp((*void*))
-in//let
-case+
-t2p1.node() of
-|T2Pnone0() =>
-let
-val
-lvl = 1 in s2typ_errck(lvl,t2p) end
-|_(*else*) => tread33_s2typ(t2p1,err)
-end(*let*)
+(
+tread33_s2typ(xtv1.styp((*0*)),err))
 end(*let*)// end-of-[ f0_xtv(t2p,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_apps
+( t2p: s2typ
+, err: &sint >> _): s2typ =
+let
+//
+val e00 = err
+val-
+T2Papps
+( t2f0, t2ps) = t2p.node()
+//
+val
+t2f0 = tread33_s2typ(t2f0, err)
+val
+t2ps = tread33_s2typlst(t2ps, err)
+//
+in//let
+if
+(err=e00)
+then (t2p) else
+s2typ_apps_errck(t2p.sort(),t2f0,t2ps)
+end(*let*)// end-of-[ f0_apps(t2p,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_text
+( t2p: s2typ
+, err: &sint >> _): s2typ =
+let
+//
+val e00 = err
+val-
+T2Ptext
+( name, t2ps) = t2p.node()
+//
+val
+t2ps = tread33_s2typlst(t2ps, err)
+//
+in//let
+if
+(err=e00)
+then (t2p) else
+s2typ_text_errck(t2p.sort(),name,t2ps)
+end(*let*)// end-of-[ f0_text(t2p,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_s2exp
+( t2p: s2typ
+, err: &sint >> _): s2typ = t2p//end-fun
 //
 (* ****** ****** *)
 //

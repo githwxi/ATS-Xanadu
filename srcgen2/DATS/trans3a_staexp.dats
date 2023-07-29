@@ -53,6 +53,11 @@ _(*TRANS3a*) = "./trans3a.dats"
 (* ****** ****** *)
 #staload "./../SATS/trans3a.sats"
 (* ****** ****** *)
+#symload styp with x2t2p_get_styp
+(* ****** ****** *)
+#symload node with s2typ_get_node
+#symload sort with s2typ_get_sort
+(* ****** ****** *)
 //
 #implfun
 trans3a_s2typ
@@ -66,11 +71,101 @@ in//let
 //
 case+
 t2p0.node() of
-| _(*otherwise*) => s2typ_none1(t2p0)
+//
+|T2Pcst _ => t2p0
+//
+|T2Pxtv _ => f0_xtv(env0, t2p0)
+//
+|T2Papps _ => f0_apps(env0, t2p0)
+|T2Ptext _ => f0_text(env0, t2p0)
+//
+|T2Ps2exp _ => f0_s2exp(env0, t2p0)
+//
+|
+_(* otherwise *) => s2typ_none1(t2p0)
 //
 end where // end-of-let
 {
-} (*where*)//end of [trans3a_s2typ(env0,t2p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_xtv
+( env0:
+! tr3aenv
+, t2p0: s2typ): s2typ =
+let
+val-
+T2Pxtv(xtv) = t2p0.node()
+in//let
+//
+let
+val t2p1 = xtv.styp((*0*))
+in//let
+case+
+t2p1.node() of
+//
+|
+T2Pnone0() => s2typ_none1(t2p0)
+//
+|_(*else*) => trans3a_s2typ(env0,t2p1)
+end(*let*)
+//
+end(*let*)//end-of-[ f0_xtv(env0,t2p0) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_apps
+( env0:
+! tr3aenv
+, t2p0: s2typ): s2typ =
+let
+//
+val-
+T2Papps
+( t2f0, t2ps) = t2p0.node()
+//
+val
+t2f0 = trans3a_s2typ(env0, t2f0)
+val
+t2ps = trans3a_s2typlst(env0, t2ps)
+//
+in//let
+s2typ(t2p0.sort(), T2Papps(t2f0, t2ps))
+end(*let*)//end-of-[ f0_apps(env0,t2p0) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_text
+( env0:
+! tr3aenv
+, t2p0: s2typ): s2typ =
+let
+//
+val-
+T2Ptext
+( name, t2ps) = t2p0.node()
+//
+val
+t2ps = trans3a_s2typlst(env0, t2ps)
+//
+in//let
+s2typ(t2p0.sort(), T2Ptext(name, t2ps))
+end(*let*)//end-of-[ f0_text(env0,t2p0) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_s2exp
+( env0:
+! tr3aenv
+, t2p0: s2typ): s2typ = t2p0 // end-of-fun
+//
+(* ****** ****** *)
+//
+}(*where*)//end of [trans3a_s2typ(env0,t2p0)]
 //
 (* ****** ****** *)
 //
