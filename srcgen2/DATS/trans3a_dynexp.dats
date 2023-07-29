@@ -90,10 +90,45 @@ d3p0.node() of
 |D3Pvar _ => f0_var(env0, d3p0)
 |D3Pany _ => f0_any(env0, d3p0)
 //
-| _(*otherwise*) => d3pat_none2(d3p0)
+|D3Pint _ => f0_int(env0, d3p0)
+|D3Pbtf _ => f0_int(env0, d3p0)
+|D3Pchr _ => f0_int(env0, d3p0)
+|D3Pflt _ => f0_int(env0, d3p0)
+|D3Pstr _ => f0_int(env0, d3p0)
+//
+|
+_(* otherwise *) => d3pat_none2(d3p0)
 //
 endlet where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_int
+( env0:
+! tr3aenv
+, d3p0: d3pat): d3pat = d3p0//end-of-fun
+fun
+f0_btf
+( env0:
+! tr3aenv
+, d3p0: d3pat): d3pat = d3p0//end-of-fun
+fun
+f0_chr
+( env0:
+! tr3aenv
+, d3p0: d3pat): d3pat = d3p0//end-of-fun
+fun
+f0_flt
+( env0:
+! tr3aenv
+, d3p0: d3pat): d3pat = d3p0//end-of-fun
+fun
+f0_str
+( env0:
+! tr3aenv
+, d3p0: d3pat): d3pat = d3p0//end-of-fun
 //
 (* ****** ****** *)
 //
@@ -166,12 +201,72 @@ prerrln
 in//let
 case+
 d3e0.node() of
-| _(*otherwise*) => d3exp_none2(d3e0)
+//
+|D3Evar _ => f0_var(env0, d3e0)
+//
+|D3Eint _ => f0_int(env0, d3e0)
+|D3Ebtf _ => f0_btf(env0, d3e0)
+|D3Echr _ => f0_chr(env0, d3e0)
+|D3Eflt _ => f0_flt(env0, d3e0)
+|D3Estr _ => f0_str(env0, d3e0)
+//
+|
+_(* otherwise *) => d3exp_none2(d3e0)
 //
 endlet where
 {
 //
 (* ****** ****** *)
+//
+fun
+f0_int
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp = d3e0//end-of-fun
+fun
+f0_btf
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp = d3e0//end-of-fun
+fun
+f0_chr
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp = d3e0//end-of-fun
+fun
+f0_flt
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp = d3e0//end-of-fun
+fun
+f0_str
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp = d3e0//end-of-fun
+//
+(* ****** ****** *)
+//
+fun
+f0_var
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp =
+(
+d3exp_make_styp_node
+( loc0
+, t2p0, D3Evar(d2v1))) where
+{
+//
+val loc0 = d3e0.lctn()
+val-
+D3Evar(d2v1) = d3e0.node()
+//
+val t2p0 = d2v1.styp((*0*))
+val t2p0 = s2typ_hnfiz0(t2p0)
+val t2p0 = trans3a_s2typ(env0, t2p0)
+//
+} (*where*)//end-of-[ f0_var(env0,d3e0) ]
+//
 (* ****** ****** *)
 //
 } (*where*)//end-of-[trans3a_d3exp(env0,d3e0)]
