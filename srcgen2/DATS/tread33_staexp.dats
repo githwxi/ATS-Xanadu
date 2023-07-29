@@ -58,12 +58,34 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 (* ****** ****** *)
-#symload node with s2exp_get_node
-#symload sort with s2exp_get_sort
-(* ****** ****** *)
 #symload node with s2typ_get_node
 #symload sort with s2typ_get_sort
 (* ****** ****** *)
+//
+(* ****** ****** *)
+//
+#implfun
+tread33_s2typ
+( t2p0, err ) =
+(
+case+
+t2p0.node() of
+//
+| _(* otherwise *) =>
+(
+  s2typ_none1(t2p0)) where
+{
+  val () = ( err := err + 1 )
+} // end of [ _(*    otherwise    *) ]
+) where // end-of-[(*case+(t2p0)-of*)]
+{
+//
+// (*
+val (  ) =
+prerrln("tread33_s2typ: t2p0 = ", t2p0)
+// *)
+//
+} (*where*)//end[ tread33_s2typ(t2p0,err) ]
 //
 (* ****** ****** *)
 
