@@ -49,11 +49,14 @@ LEX = "./lexing0.sats"
 #staload
 S2E = "./staexp2.sats"
 #staload
-D2E = "./dynexp2.sats"
+T2P = "./statyp2.sats"
+(* ****** ****** *)
 #staload
 D3E = "./dynexp3.sats"
 (* ****** ****** *)
 #typedef token = $LEX.token
+(* ****** ****** *)
+#typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
@@ -108,6 +111,8 @@ optn_tread33_fnp
 , err: &sint >> _
 , fpr: ftread33(syn)): optn(syn)
 //
+(* ****** ****** *)
+fun tread33_s2typ: ftread33(s2typ)
 (* ****** ****** *)
 fun tread33_d3pat: ftread33(d3pat)
 fun tread33_d3exp: ftread33(d3exp)
