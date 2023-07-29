@@ -84,7 +84,10 @@ tread33_s2typ
 case+
 t2p0.node() of
 //
-| _(* otherwise *) =>
+|T2Pxtv _ => f0_xtv(t2p0, err)
+//
+|
+_(* otherwise *) =>
 let
 val lvl0 = 1
 in//let
@@ -93,6 +96,32 @@ err := err+1; s2typ_errck(lvl0,t2p0))
 endlet // end of [ _(* otherwise *) ]
 ) where // end-of-[(*case+(t2p0)-of*)]
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_xtv
+( t2p: s2typ
+, err: &sint >> _): s2typ =
+let
+val-
+T2Pxtv(xtv1) = t2p.node()
+in//let
+let
+val
+t2p1 = xtv1.styp((*void*))
+in//let
+case+
+t2p1.node() of
+|T2Pnone0() =>
+let
+val
+lvl = 1 in s2typ_errck(lvl,t2p) end
+|_(*else*) => tread33_s2typ(t2p1,err)
+end(*let*)
+end(*let*)// end-of-[ f0_xtv(t2p,err) ]
+//
+(* ****** ****** *)
 //
 // (*
 val (  ) =
