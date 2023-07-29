@@ -192,14 +192,16 @@ endlet // end of [ _(* otherwise *) ]
 #implfun
 tread33_d3patlst
   (  d3ps, err  ) =
-list_tread33_fnp(d3ps, err, tread33_d3pat)
+(
+  list_tread33_fnp(d3ps, err, tread33_d3pat))
 //
 (* ****** ****** *)
 //
 #implfun
 tread33_d3explst
   (  d3es, err  ) =
-list_tread33_fnp(d3es, err, tread33_d3exp)
+(
+  list_tread33_fnp(d3es, err, tread33_d3exp))
 //
 (* ****** ****** *)
 

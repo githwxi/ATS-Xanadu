@@ -101,11 +101,15 @@ D3Perrck(_,_) => fperr33_d3pat(out, d3p)
 |
 _(*otherwise*) =>
 let
-  val
-  loc = d3p.lctn()
-  val () = prerrln
+//
+  val loc = d3p.lctn((*void*))
+  val t2p = d3p.styp((*void*))
+//
+  val ( ) = prerrln
   ("fperr33_d3pat: auxmain: loc = ", loc)
-  val () = prerrln
+  val ( ) = prerrln
+  ("fperr33_d3pat: auxmain: t2p = ", t2p)
+  val ( ) = prerrln
   ("fperr33_d3pat: auxmain: d3p = ", d3p)
 endlet
 //
@@ -203,12 +207,17 @@ D3Eerrck(_,_) => fperr33_d3exp(out, d3e)
 |
 _(*otherwise*) =>
 let
-  val
-  loc = d3e.lctn()
-  val () = prerrln
+//
+  val loc = d3e.lctn((*void*))
+  val t2p = d3e.styp((*void*))
+//
+  val ( ) = prerrln
   ("fperr33_d3exp: auxmain: loc = ", loc)
-  val () = prerrln
+  val ( ) = prerrln
+  ("fperr33_d3exp: auxmain: t2p = ", t2p)
+  val ( ) = prerrln
   ("fperr33_d3exp: auxmain: d3e = ", d3e)
+//
 endlet
 //
 end (*let*) // end-of-[ auxmain(out, d3e) ]
