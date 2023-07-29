@@ -212,7 +212,9 @@ T2Ptrcd of
 |T2Pnone0 of ((*0*)) // HX: optional
 |T2Pnone1 of (s2typ) | T2Ps2exp of (s2exp)
 //
-// HX-2022-11-04: end of [datatype(s2typ_node)
+|T2Perrck of (int(*lvl*), s2typ)//HX:tread-error
+//
+// end of [s2type_node] // end of [ datatype(...) ]
 //
 (* ****** ****** *)
 fun
