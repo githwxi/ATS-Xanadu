@@ -109,6 +109,25 @@ d3pat_errck
 endlet//end of [d3pat_var_errck(...)]
 //
 (* ****** ****** *)
+(*
+HX-2023:
+Various d3exp-errck functions
+*)
+(* ****** ****** *)
+//
+fun
+d3exp_var_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3v1: d2var): d3exp =
+let
+val lvl = 0 in//let
+d3exp_errck
+( lvl+1
+, d3exp(loc0, t2p0, D3Evar(d3v1)))
+endlet//end of [d3exp_var_errck(...)]
+//
+(* ****** ****** *)
 //
 #implfun
 tread33_d3pat
@@ -117,7 +136,15 @@ tread33_d3pat
 case+
 d3p0.node() of
 //
-|D3Pvar _ => f0_var(d3p0, err)
+|
+D3Pvar _ =>
+f0_var(d3p0, err)
+//
+|D3Pint _ => d3p0
+|D3Pbtf _ => d3p0
+|D3Pchr _ => d3p0
+|D3Pflt _ => d3p0
+|D3Pstr _ => d3p0
 //
 | _(*otherwise*) =>
 let
@@ -156,7 +183,7 @@ then (d3p) else
 let
 val loc = d3p.lctn() in
 d3pat_var_errck(loc, t2p, d2v1) endlet
-end (*let*) // end of [f0_var(d2p,err)]
+end (*let*) // end of [f0_var(d3p,err)]
 //
 (* ****** ****** *)
 //
@@ -171,10 +198,26 @@ tread33_d3exp
 case+
 d3e0.node() of
 //
-| _(*otherwise*) =>
+|
+D3Evar _ =>
+f0_var(d3e0, err)
+//
+|D3Eint _ => d3e0
+|D3Ebtf _ => d3e0
+|D3Echr _ => d3e0
+|D3Eflt _ => d3e0
+|D3Estr _ => d3e0
+//
+|D3Ei00 _ => d3e0
+|D3Eb00 _ => d3e0
+|D3Ec00 _ => d3e0
+|D3Ef00 _ => d3e0
+|D3Es00 _ => d3e0
+//
+|
+_(* otherwise *) =>
 let
-val lvl0 = 1
-in//let
+val lvl0 = 1 in//let
 (
 err := err+1; d3exp_errck(lvl0,d3e0))
 endlet // end of [ _(* otherwise *) ]
@@ -183,6 +226,33 @@ endlet // end of [ _(* otherwise *) ]
 {
 //
 (* ****** ****** *)
+//
+fun
+f0_var
+( d3e: d3exp
+, err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+//
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Evar(d2v1) = d3e.node()
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+let
+val loc = d3e.lctn() in
+d3exp_var_errck(loc, t2p, d2v1) endlet
+end (*let*) // end of [f0_var(d3e,err)]
+//
 (* ****** ****** *)
 //
 } (*where*)//end-[tread33_d3exp(d3e0,err)]
