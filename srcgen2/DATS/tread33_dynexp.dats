@@ -49,14 +49,20 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
-#staload "./../SATS/staexp1.sats"
-#staload "./../SATS/dynexp1.sats"
-(* ****** ****** *)
-#staload "./../SATS/staexp2.sats"
-#staload "./../SATS/dynexp2.sats"
+#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
 #staload "./../SATS/tread33.sats"
+(* ****** ****** *)
+#symload lctn with d3pat_get_lctn
+#symload node with d3pat_get_node
+#symload styp with d3pat_get_styp
+#symload styp with d3pat_set_styp
+(* ****** ****** *)
+#symload lctn with d3exp_get_lctn
+#symload node with d3exp_get_node
+#symload styp with d3exp_get_styp
+#symload styp with d3exp_set_styp
 (* ****** ****** *)
 //
 fun
@@ -67,8 +73,8 @@ let
 val loc0 = d3p0.lctn()
 in//let
 d3pat_make_node
-(loc0, D3Perrck(lvl0, d3p0))
-end (*let*)//end-of(d3pat_errck)
+(loc0, D3Perrck(lvl0,d3p0))
+end//let//end-of(d3pat_errck)
 //
 (* ****** ****** *)
 //
@@ -80,8 +86,27 @@ let
 val loc0 = d3e0.lctn()
 in//let
 d3exp_make_node
-(loc0, D3Eerrck(lvl0, d3e0))
-end (*let*)//end-of(d3exp_errck)
+(loc0, D3Eerrck(lvl0,d3e0))
+end//let//end-of(d3exp_errck)
+//
+(* ****** ****** *)
+(*
+HX-2023:
+Various d3pat-errck functions
+*)
+(* ****** ****** *)
+//
+fun
+d3pat_var_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3v1: d2var): d3pat =
+let
+val lvl = 0 in//let
+d3pat_errck
+( lvl+1
+, d3pat(loc0, t2p0, D3Pvar(d3v1)))
+endlet//end of [d3pat_var_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -91,6 +116,8 @@ tread33_d3pat
 (
 case+
 d3p0.node() of
+//
+|D3Pvar _ => f0_var(d3p0, err)
 //
 | _(*otherwise*) =>
 let
@@ -104,6 +131,33 @@ endlet // end of [ _(* otherwise *) ]
 {
 //
 (* ****** ****** *)
+//
+fun
+f0_var
+( d3p: d3pat
+, err: &sint >> _): d3pat =
+let
+//
+val e00 = err
+//
+val t2p = d3p.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+//
+val ( ) = d3p.styp(t2p)
+//
+val-
+D3Pvar(d2v1) = d3p.node()
+//
+in//let
+if
+(err=e00)
+then (d3p) else
+let
+val loc = d3p.lctn() in
+d3pat_var_errck(loc, t2p, d2v1) endlet
+end (*let*) // end of [f0_var(d2p,err)]
+//
 (* ****** ****** *)
 //
 } (*where*)//end[tread33_d3pat(d3p0,err)]

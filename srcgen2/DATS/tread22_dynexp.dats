@@ -205,7 +205,7 @@ d2pat_bang_errck
 let
 val lvl0 = errvl(d2p1) in//let
 d2pat_errck
-(lvl0+1,d2pat(loc0, D2Pbang(d2p1)))
+(lvl0+1, d2pat(loc0, D2Pbang(d2p1)))
 endlet // end of [d2pat_bang_errck(...)]
 //
 fun
@@ -215,7 +215,7 @@ d2pat_free_errck
 let
 val lvl0 = errvl(d2p1) in//let
 d2pat_errck
-(lvl0+1,d2pat(loc0, D2Pfree(d2p1)))
+(lvl0+1, d2pat(loc0, D2Pfree(d2p1)))
 endlet // end of [d2pat_free_errck(...)]
 //
 (* ****** ****** *)
@@ -227,7 +227,7 @@ d2pat_dap1_errck
 let
 val lvl0 = errvl(d2f0) in//let
 d2pat_errck
-(lvl0+1,d2pat(loc0, D2Pdap1(d2f0)))
+(lvl0+1, d2pat(loc0, D2Pdap1(d2f0)))
 endlet // end of [d2pat_dap1_errck(...)]
 //
 fun
