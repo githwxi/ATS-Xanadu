@@ -709,6 +709,9 @@ all_dats:: \
 tread33_dats
 tread33_dats: ; $(XATSOPT) --dynamic DATS/tread33.dats
 all_dats:: \
+tread33_staexp_dats
+tread33_staexp_dats: ; $(XATSOPT) --dynamic DATS/tread33_staexp.dats
+all_dats:: \
 tread33_dynexp_dats
 tread33_dynexp_dats: ; $(XATSOPT) --dynamic DATS/tread33_dynexp.dats
 all_dats:: \
