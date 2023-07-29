@@ -58,6 +58,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 (* ****** ****** *)
+#symload styp with x2t2p_get_styp
+(* ****** ****** *)
 #symload node with s2typ_get_node
 #symload sort with s2typ_get_sort
 (* ****** ****** *)
@@ -77,12 +79,30 @@ end//let//end-of(s2typ_errck)
 //
 (* ****** ****** *)
 //
+fun
+s2typ_lft_errck
+(s2t0: sort2
+,t2p1: s2typ): s2typ =
+let
+val lvl0 = 1
+in//let
+s2typ_errck
+(lvl0, s2typ(s2t0, T2Plft(t2p1)))
+end//let//end-of(s2typ_lft_errck(...))
+//
+(* ****** ****** *)
+//
 #implfun
 tread33_s2typ
 ( t2p0, err ) =
 (
 case+
 t2p0.node() of
+//
+|T2Pbas _ => t2p0
+|T2Pcst _ => t2p0
+//
+|T2Plft _ => f0_lft(t2p0, err)
 //
 |T2Pxtv _ => f0_xtv(t2p0, err)
 //
@@ -96,6 +116,29 @@ err := err+1; s2typ_errck(lvl0,t2p0))
 endlet // end of [ _(* otherwise *) ]
 ) where // end-of-[(*case+(t2p0)-of*)]
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_lft
+( t2p: s2typ
+, err: &sint >> _): s2typ =
+let
+//
+val e00 = err
+//
+val-
+T2Plft(t2p1) = t2p.node()
+//
+val
+t2p1 = tread33_s2typ(t2p1, err)
+in//let
+if
+(err=e00)
+then (t2p) else
+(
+  s2typ_lft_errck(t2p.sort(), t2p1))
+end(*let*)// end-of-[ f0_lft(t2p,err) ]
 //
 (* ****** ****** *)
 //
@@ -129,6 +172,14 @@ prerrln("tread33_s2typ: t2p0 = ", t2p0)
 // *)
 //
 } (*where*)//end[ tread33_s2typ(t2p0,err) ]
+//
+(* ****** ****** *)
+//
+#implfun
+tread33_s2typlst
+  (  t2ps, err  ) =
+(
+  list_tread33_fnp(t2ps, err, tread33_s2typ))
 //
 (* ****** ****** *)
 
