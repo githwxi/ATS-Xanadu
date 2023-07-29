@@ -64,6 +64,19 @@ ATS_PACKNAME
 //
 (* ****** ****** *)
 //
+fun
+s2typ_errck
+(lvl0: sint
+,t2p0: s2typ): s2typ =
+let
+val s2t0 = t2p0.sort()
+in//let
+s2typ_make_node
+(s2t0, T2Perrck(lvl0,t2p0))
+end//let//end-of(s2typ_errck)
+//
+(* ****** ****** *)
+//
 #implfun
 tread33_s2typ
 ( t2p0, err ) =
@@ -72,11 +85,12 @@ case+
 t2p0.node() of
 //
 | _(* otherwise *) =>
+let
+val lvl0 = 1
+in//let
 (
-  s2typ_none1(t2p0)) where
-{
-  val () = ( err := err + 1 )
-} // end of [ _(*    otherwise    *) ]
+err := err+1; s2typ_errck(lvl0,t2p0))
+endlet // end of [ _(* otherwise *) ]
 ) where // end-of-[(*case+(t2p0)-of*)]
 {
 //

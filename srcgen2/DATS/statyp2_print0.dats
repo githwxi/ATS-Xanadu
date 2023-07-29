@@ -168,6 +168,9 @@ T2Pnone1(t2p1) => print("T2Pnone1(",t2p1,")")
 |
 T2Ps2exp(s2e1) => print("T2Ps2exp(",s2e1,")")
 //
+|T2Perrck // HX: tread-error
+(lvl0,t2p1) => print("T2Perrck(",lvl0,";",t2p1,")")
+//
 end (*let*) // end of [s2typ_fprint(out,t2p0)]
 //
 (* ****** ****** *)
