@@ -146,6 +146,8 @@ f0_var(d3p0, err)
 |D3Pflt _ => d3p0
 |D3Pstr _ => d3p0
 //
+|D3Pcon _ => d3p0
+//
 | _(*otherwise*) =>
 let
 val lvl0 = 1
@@ -214,6 +216,8 @@ f0_var(d3e0, err)
 |D3Ef00 _ => d3e0
 |D3Es00 _ => d3e0
 //
+|D3Econ _ => d3e0
+|D3Ecst _ => d3e0
 |
 _(* otherwise *) =>
 let

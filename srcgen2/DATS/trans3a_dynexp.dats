@@ -314,6 +314,23 @@ end where
 (* ****** ****** *)
 //
 #implfun
+trans3a_teqd3exp
+  (env0, tdxp) =
+(
+case+ tdxp of
+|
+TEQD3EXPnone() =>
+TEQD3EXPnone((*void*))
+|
+TEQD3EXPsome(teq1, d3e2) =>
+TEQD3EXPsome(teq1, d3e2) where
+{ val
+  d3e2 = trans3a_d3exp(env0, d3e2) }
+) (*case+*)//end-of(trans3a_teqd3exp(...))
+//
+(* ****** ****** *)
+//
+#implfun
 trans3a_d3patlst
   (env0, d3ps) =
 (

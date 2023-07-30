@@ -343,6 +343,13 @@
 "./../../DATS/tread33_decl00.dats"
 (* ****** ****** *)
 #include
+"./../../DATS/fperr33.dats"
+#include
+"./../../DATS/fperr33_dynexp.dats"
+#include
+"./../../DATS/fperr33_decl00.dats"
+(* ****** ****** *)
+#include
 "./../../DATS/xatsopt.dats"
 #include
 "./../../DATS/xatsopt_utils0.dats"
@@ -364,7 +371,7 @@ val dpar =
 d3parsed_of_fildats
 ("./DATA/myabstp.dats")
 val (  ) =
-d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
+fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_TEST_JS_test35_xatsopt.dats] *)

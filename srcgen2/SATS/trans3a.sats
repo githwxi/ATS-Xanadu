@@ -101,6 +101,9 @@ MAP = "./xsymmap.sats"
  s2typlst  =  $S2E.s2typlst
 (* ****** ****** *)
 #typedef
+ teqd3exp  =  $D3E.teqd3exp
+(* ****** ****** *)
+#typedef
  d3patlst  =  $D3E.d3patlst
 #typedef
  d3explst  =  $D3E.d3explst
@@ -124,14 +127,14 @@ MAP = "./xsymmap.sats"
  d3eclist  =  $D3E.d3eclist
 (* ****** ****** *)
 #typedef
- d3parsed  =  $D3E.d3parsed
-(* ****** ****** *)
-#typedef
  d3valdcl  =  $D3E.d3valdcl
 #typedef
  d3vardcl  =  $D3E.d3vardcl
 #typedef
  d3fundcl  =  $D3E.d3fundcl
+(* ****** ****** *)
+#typedef
+ d3parsed  =  $D3E.d3parsed
 (* ****** ****** *)
 #typedef
 d3valdclist = $D3E.d3valdclist
@@ -327,6 +330,13 @@ fun
 trans3a_d3ecl
 ( env0:
 ! tr3aenv,d3cl:d3ecl):d3ecl//fun
+//
+(* ****** ****** *)
+//
+fun
+trans3a_teqd3exp
+( env0:
+! tr3aenv,tdxp:teqd3exp):teqd3exp
 //
 (* ****** ****** *)
 //

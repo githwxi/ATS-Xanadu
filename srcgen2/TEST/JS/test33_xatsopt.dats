@@ -327,6 +327,8 @@
 #include
 "./../../DATS/trans3a_myenv0.dats"
 #include
+"./../../DATS/trans3a_staexp.dats"
+#include
 "./../../DATS/trans3a_dynexp.dats"
 #include
 "./../../DATS/trans3a_decl00.dats"
@@ -334,9 +336,18 @@
 #include
 "./../../DATS/tread33.dats"
 #include
+"./../../DATS/tread33_staexp.dats"
+#include
 "./../../DATS/tread33_dynexp.dats"
 #include
 "./../../DATS/tread33_decl00.dats"
+(* ****** ****** *)
+#include
+"./../../DATS/fperr33.dats"
+#include
+"./../../DATS/fperr33_dynexp.dats"
+#include
+"./../../DATS/fperr33_decl00.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/xatsopt.dats"
@@ -360,7 +371,7 @@ val dpar =
 d3parsed_of_fildats
 ("./DATA/mygseq.dats")
 val (  ) =
-d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
+fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_TEST_JS_test33_xatsopt.dats] *)
