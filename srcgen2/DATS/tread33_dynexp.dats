@@ -129,6 +129,39 @@ endlet//end of [d3exp_var_errck(...)]
 //
 (* ****** ****** *)
 //
+fun
+d3exp_dap0_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3f0: d3exp): d3exp =
+let
+val lvl = 0 in//let
+d3exp_errck
+( lvl+1
+, d3exp(loc0, t2p0, D3Edap0(d3f0)))
+endlet//end of [d3exp_dap0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_dapp_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3f0: d3exp
+,npf1: (sint)
+,d3ps: d3explst): d3exp =
+let
+val lvl = 0 in//let
+d3exp_errck
+(
+lvl+1,
+d3exp_make_styp_node
+( loc0
+, t2p0, D3Edapp(d3f0, npf1, d3ps)))
+endlet//end of [d3exp_dapp_errck(...)]
+//
+(* ****** ****** *)
+//
 #implfun
 tread33_d3pat
 ( d3p0, err ) =
@@ -218,6 +251,10 @@ f0_var(d3e0, err)
 //
 |D3Econ _ => d3e0
 |D3Ecst _ => d3e0
+//
+|D3Edap0 _ => f0_dap0(d3e0, err)
+|D3Edapp _ => f0_dapp(d3e0, err)
+//
 |
 _(* otherwise *) =>
 let
@@ -242,7 +279,6 @@ val e00 = err
 val t2p = d3e.styp()
 val t2p =
 tread33_s2typ(t2p, err)
-//
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -256,6 +292,69 @@ let
 val loc = d3e.lctn() in
 d3exp_var_errck(loc, t2p, d2v1) endlet
 end (*let*) // end of [f0_var(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dap0
+( d3e: d3exp
+, err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Edap0(d3f0) = d3e.node()
+val
+d3f0 = tread33_d3exp(d3f0, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+let
+val loc = d3e.lctn() in
+d3exp_dap0_errck(loc, t2p, d3f0) endlet
+end (*let*) // end of [f0_dap0(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dapp
+( d3e: d3exp
+, err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Edapp
+( d3f0
+, npf1, d3ps) = d3e.node()
+val
+d3f0 = tread33_d3exp(d3f0, err)
+val
+d3ps = tread33_d3explst(d3ps, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+let
+val loc = d3e.lctn() in
+d3exp_dapp_errck(loc,t2p,d3f0,npf1,d3ps)
+end (*let*)
+end (*let*) // end of [ f0_dapp(d3e,err) ]
 //
 (* ****** ****** *)
 //
