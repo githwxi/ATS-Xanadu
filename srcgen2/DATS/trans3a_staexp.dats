@@ -74,7 +74,12 @@ t2p0.node() of
 //
 |T2Pcst _ => t2p0
 //
-|T2Pxtv _ => f0_xtv(env0, t2p0)
+|T2Pxtv _ =>
+f0_xtv(env0, t2p0)
+//
+|T2Pf2cl _ => t2p0
+|
+T2Pfun1 _ => f0_fun1(env0, t2p0)
 //
 |T2Papps _ => f0_apps(env0, t2p0)
 |T2Ptext _ => f0_text(env0, t2p0)
@@ -112,6 +117,35 @@ T2Pnone0() => s2typ_none1(t2p0)
 end(*let*)
 //
 end(*let*)//end-of-[ f0_xtv(env0,t2p0) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_fun1
+( env0:
+! tr3aenv
+, t2p0: s2typ): s2typ =
+let
+//
+val-
+T2Pfun1
+( f2cl, npf1
+, t2ps, tres) = t2p0.node()
+//
+val
+f2cl =
+trans3a_s2typ(env0, f2cl)
+val
+t2ps =
+trans3a_s2typlst(env0, t2ps)
+val
+tres = trans3a_s2typ(env0, tres)
+//
+in//let
+  s2typ_make_node
+  ( t2p0.sort()
+  , T2Pfun1(f2cl, npf1, t2ps, tres))
+end(*let*)//end-of-[ f0_fun1(env0,t2p0) ]
 //
 (* ****** ****** *)
 //

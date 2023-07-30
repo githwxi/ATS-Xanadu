@@ -108,6 +108,25 @@ end//let//end-of(s2typ_apps_errck(...))
 (* ****** ****** *)
 //
 fun
+s2typ_fun1_errck
+(s2t0: sort2
+,f2cl: s2typ
+,npf1: ( sint )
+,t2ps: s2typlst
+,tres: ( s2typ )): s2typ =
+let
+val lvl0 = 1
+in//let
+s2typ_errck
+( lvl0
+, s2typ_make_node
+  ( s2t0(*sort*)
+  , T2Pfun1(f2cl,npf1,t2ps,tres)))
+end//let//end-of(s2typ_fun1_errck(...))
+//
+(* ****** ****** *)
+//
+fun
 s2typ_text_errck
 (s2t0: sort2
 ,name: (strn)
@@ -138,6 +157,9 @@ t2p0.node() of
 |T2Pxtv _ => f0_xtv(t2p0, err)
 //
 |T2Papps _ => f0_apps(t2p0, err)
+//
+|T2Pf2cl _ => (     t2p0     )
+|T2Pfun1 _ => f0_fun1(t2p0, err)
 //
 |T2Ptext _ => f0_text(t2p0, err)
 //
@@ -193,6 +215,37 @@ in//let
 (
 tread33_s2typ(xtv1.styp((*0*)),err))
 end(*let*)// end-of-[ f0_xtv(t2p,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_fun1
+( t2p: s2typ
+, err: &sint >> _): s2typ =
+let
+//
+val e00 = err
+val-
+T2Pfun1
+( f2cl, npf1
+, t2ps, tres) = t2p.node()
+//
+val
+f2cl =
+tread33_s2typ(f2cl, err)
+val
+t2ps =
+tread33_s2typlst(t2ps, err)
+val
+tres = tread33_s2typ(tres, err)
+//
+in//let
+if
+(err=e00)
+then (t2p) else
+s2typ_fun1_errck
+(t2p.sort(), f2cl, npf1, t2ps, tres)
+end(*let*)// end-of-[ f0_fun1(t2p,err) ]
 //
 (* ****** ****** *)
 //
