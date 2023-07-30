@@ -1429,6 +1429,8 @@ d3e0.node() of
 |D3Et2pck _ => f0_t2pck(d3e0, err)
 //
 |D3Enone0 _ => f0_none0(d3e0, err)
+|D3Enone1 _ => f0_none1(d3e0, err)
+|D3Enone2 _ => f0_none2(d3e0, err)
 //
 | _(*otherwise*) =>
 let
@@ -2338,8 +2340,35 @@ fun
 f0_none0
 (d3e: d3exp
 ,err: &sint >> _): d3exp =
+let // HX: this is non-error
+val-D3Enone0() = d3e.node() in (d3e)
+end (*let*) // end of [f0_none0(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_none1
+(d3e: d3exp
+,err: &sint >> _): d3exp =
 let
-val-D3Enone0() = d3e.node() in (d3e) end
+val-
+D3Enone1(d2e1) = d3e.node()
+val lvl = 1 // HX: treated as error
+val d3e = d3exp_errck(lvl, d3e) in (d3e)
+end (*let*) // end of [f0_none1(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_none2
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+val-
+D3Enone2(d3e1) = d3e.node()
+val lvl = 1 // HX: treated as error
+val d3e = d3exp_errck(lvl, d3e) in (d3e)
+end (*let*) // end of [f0_none2(d3e,err)]
 //
 (* ****** ****** *)
 //

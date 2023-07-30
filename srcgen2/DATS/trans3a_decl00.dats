@@ -347,6 +347,9 @@ prerrln("f0_implmnt0(3a): d3cl = ", d3cl)
 
 (* ****** ****** *)
 
+
+(* ****** ****** *)
+
 #implfun
 trans3a_d3valdcl
   (env0, dval) = let
@@ -362,11 +365,8 @@ d3valdcl_get_wsxp(dval)
 //
 val dpat =
 trans3a_d3pat(env0, dpat)
-//
-(*
-val tdxp = ...
-(*handled in trans3a_d3valdclist*)
-*)
+val tdxp =
+trans3a_teqd3exp(env0, tdxp)
 //
 in//let
 d3valdcl_make_args(loc0,dpat,tdxp,wsxp)

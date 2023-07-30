@@ -327,6 +327,8 @@
 #include
 "./../../DATS/trans3a_myenv0.dats"
 #include
+"./../../DATS/trans3a_staexp.dats"
+#include
 "./../../DATS/trans3a_dynexp.dats"
 #include
 "./../../DATS/trans3a_decl00.dats"
@@ -334,9 +336,18 @@
 #include
 "./../../DATS/tread33.dats"
 #include
+"./../../DATS/tread33_staexp.dats"
+#include
 "./../../DATS/tread33_dynexp.dats"
 #include
 "./../../DATS/tread33_decl00.dats"
+(* ****** ****** *)
+#include
+"./../../DATS/fperr33.dats"
+#include
+"./../../DATS/fperr33_dynexp.dats"
+#include
+"./../../DATS/fperr33_decl00.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/xatsopt.dats"
@@ -360,13 +371,13 @@ val dpar =
 d3parsed_of_filsats
 ("./DATA/mysats.sats")
 val (  ) =
-d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
+fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
 ("./DATA/mydats.dats")
 val (  ) =
-d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
+fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 ////
 (* ****** ****** *)
@@ -374,25 +385,25 @@ val dpar =
 d3parsed_of_filsats
 ("./../../../prelude/SATS/arrn000.sats")
 val (  ) =
-d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
+fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 //
 val dpar =
 d3parsed_of_filsats
 ("./../../../prelude/SATS/bool000.sats")
 val (  ) =
-d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
+fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 //
 val dpar =
 d3parsed_of_filsats
 ("./../../../prelude/SATS/char000.sats")
 val (  ) =
-d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
+fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 //
 val dpar =
 d3parsed_of_filsats
 ("./../../../prelude/SATS/gint000.sats")
 val (  ) =
-d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
+fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 //
 (* ****** ****** *)
 ////
@@ -402,7 +413,7 @@ val dpar =
 d3parsed_of_fildats
 ("./../../../prelude/DATS/bool000.dats")
 val (  ) =
-d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
+fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 //
 (* ****** ****** *)
 //
@@ -410,7 +421,7 @@ val dpar =
 d3parsed_of_fildats
 ("./../../../prelude/DATS/char000.dats")
 val (  ) =
-d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
+fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 //
 (* ****** ****** *)
 //
@@ -418,7 +429,7 @@ val dpar =
 d3parsed_of_fildats
 ("./../../../prelude/DATS/gint000.dats")
 val (  ) =
-d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
+fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 //
 (* ****** ****** *)
 //
@@ -426,7 +437,7 @@ val dpar =
 d3parsed_of_fildats
 ("./../../../prelude/DATS/strn000.dats")
 val (  ) =
-d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
+fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 //
 (* ****** ****** *)
 ////
@@ -436,7 +447,7 @@ val dpar =
 d3parsed_of_fildats
 ("./../../../prelude/DATS/optn000.dats")
 val (  ) =
-d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
+fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 //
 (* ****** ****** *)
 //
@@ -444,7 +455,7 @@ val dpar =
 d3parsed_of_fildats
 ("./../../../prelude/DATS/list000.dats")
 val (  ) =
-d3parsed_fpemsg(g_stderr((*tmp*)), dpar)
+fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 //
 (* ****** ****** *)
 

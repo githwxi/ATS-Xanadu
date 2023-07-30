@@ -16,14 +16,16 @@
 (* ****** ****** *)
 val N = 8
 (* ****** ****** *)
-////
 (* ****** ****** *)
-
 #abstype
 board_tbox <= p0tr
 #typedef
 board = board_tbox
-
+(* ****** ****** *)
+#staload
+"prelude/SATS/gseq000.sats"
+#staload
+"prelude/SATS/synoug0.sats"
 (* ****** ****** *)
 #extval
 fun
@@ -35,11 +37,6 @@ board_cons
 (* ****** ****** *)
 #symload nil with board_nil
 #symload cons with board_cons
-(* ****** ****** *)
-#staload
-"prelude/SATS/gseq000.sats"
-#staload
-"prelude/SATS/synoug0.sats"
 (* ****** ****** *)
 
 local
