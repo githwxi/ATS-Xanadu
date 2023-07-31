@@ -66,6 +66,9 @@ _(*TRANS3a*) = "./trans3a.dats"
 #symload node with d3exp_get_node
 #symload styp with d3exp_get_styp
 (* ****** ****** *)
+#symload lctn with f3arg_get_lctn
+#symload node with f3arg_get_node
+(* ****** ****** *)
 
 #implfun
 trans3a_d3pat
@@ -213,6 +216,9 @@ d3e0.node() of
 |D3Edap0 _ => f0_dap0(env0, d3e0)
 |D3Edapp _ => f0_dapp(env0, d3e0)
 //
+|D3Elam0 _ => f0_lam0(env0, d3e0)
+|D3Efix0 _ => f0_fix0(env0, d3e0)
+//
 |
 _(* otherwise *) => d3exp_none2(d3e0)
 //
@@ -330,6 +336,104 @@ end (*let*)//end-of-[ f0_dapp(env0,d3e0) ]
 //
 (* ****** ****** *)
 //
+fun
+f0_lam0
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Elam0
+(tknd
+,f3as,sres
+,arrw,body) = d3e0.node()
+//
+val () =
+tr3aenv_pshlam0(env0)//enter
+//
+val
+f3as =
+trans3a_f3arglst(env0, f3as)
+(*
+val
+arrw =
+trans3a_f1unarrw(env0, arrw)
+*)
+(*
+val
+sres = trans3a_s2res(env0, sres)
+*)
+val
+body = trans3a_d3exp(env0, body)
+//
+val//exit
+((*void*)) = tr3aenv_poplam0(env0)
+//
+in//let
+d3exp_make_node
+( loc0
+, D3Elam0(tknd,f3as,sres,arrw,body))
+end (*let*) // end of [f0_lam0(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fix0
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Efix0
+(tknd
+,d2v1
+,f3as,sres
+,arrw,body) = d3e0.node()
+//
+//
+val () =
+tr3aenv_pshlam0(env0)//enter
+//
+(*
+val
+d2v1 =
+trans3a_d2var(env0, d2v1)
+*)
+//
+val
+f3as =
+trans3a_f3arglst(env0, f3as)
+(*
+val
+arrw =
+trans3a_f1unarrw(env0, arrw)
+*)
+(*
+val
+sres = trans3a_s2res(env0, sres)
+*)
+val
+body = trans3a_d3exp(env0, body)
+//
+val//exit
+((*void*)) = tr3aenv_poplam0(env0)
+//
+in//let
+d3exp_make_node
+(
+loc0,
+D3Efix0
+(tknd, d2v1, f3as, sres, arrw, body))
+end (*let*) // end of [f0_fix0(env0,d3e0)]
+//
+(* ****** ****** *)
+//
 } (*where*)//end-of-[trans3a_d3exp(env0,d3e0)]
 
 (* ****** ****** *)
@@ -355,19 +459,58 @@ in//let
 case+
 farg.node() of
 |
-F3ARGdyn0(npf1, d3ps) =>
-let
-val loc0 = farg.lctn()
-val d3ps =
-trans3a_d3patlst(env0, d3ps)
-in//let
-f3arg(loc0,F3ARGdyn0(npf1,d3ps))
-end (*let*) // end of [F3ARGdyn0]
+F3ARGsta0 _ => f0_sta0(env0,farg)
+|
+F3ARGdyn0 _ => f0_dyn0(env0,farg)
+|
+F3ARGmet0 _ => f0_met0(env0,farg)
 //
-end where
+end where // end-of-let
 {
 //
 (* ****** ****** *)
+fun
+f0_sta0
+( env0:
+! tr3aenv
+, farg: f3arg): f3arg =
+let
+val-
+F3ARGsta0
+(s2vs,s2es) = farg.node()
+val () =
+tr3aenv_s2vins_svs(env0, s2vs) in farg
+end (*let*) // end-of-[f0_sta0(env0,farg)]
+(* ****** ****** *)
+//
+fun
+f0_dyn0
+( env0:
+! tr3aenv
+, farg: f3arg): f3arg =
+let
+//
+val loc0 = farg.lctn()
+//
+val-
+F3ARGdyn0
+(npf1, d3ps) = farg.node()
+//
+val d3ps =
+trans3a_d3patlst(env0, d3ps)
+//
+in//let
+  f3arg(loc0,F3ARGdyn0(npf1,d3ps))
+end (*let*) // end of [f0_dyn0(env0,farg)]
+//
+(* ****** ****** *)
+//
+fun
+f0_met0
+( env0:
+! tr3aenv
+, farg: f3arg): f3arg = farg // end-of-fun
+//
 (* ****** ****** *)
 //
 } (*where*)//end of [trans3a_f3arg(env0,farg)]

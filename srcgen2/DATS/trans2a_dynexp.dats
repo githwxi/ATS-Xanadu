@@ -2507,11 +2507,11 @@ let
 val
 loc0 = farg.lctn()
 val () =
-prerrln
-("trans2a_f2arg: loc0 = ", loc0)
+prerrln(
+"trans2a_f2arg: loc0 = ", loc0)
 val () =
-prerrln
-("trans2a_f2arg: farg = ", farg)
+prerrln(
+"trans2a_f2arg: farg = ", farg)
 *)
 //
 in//let
@@ -2521,19 +2521,24 @@ farg.node() of
 |
 F2ARGdyn0(npf1, d2ps) =>
 let
+//
 val loc0 = farg.lctn()
 val d2ps =
 trans2a_d2patlst(env0, d2ps)
+//
 in//let
 let
 val (  ) =
 d2patlst_lftize(d2ps) in//let
-f2arg(loc0,F2ARGdyn0(npf1,d2ps))
+f2arg
+(loc0, F2ARGdyn0(npf1, d2ps))
 end (*let*)
-end (*let*) // end of [F2ARGdyn0]
-| _(* otherwise *) => (  farg  )
+end (*let*)//end of [F2ARGdyn0]
 //
-end where
+| //sta0//met0
+_ (* otherwise *) => (  farg  )
+//
+end where // end-of-let
 {
 //
 (* ****** ****** *)

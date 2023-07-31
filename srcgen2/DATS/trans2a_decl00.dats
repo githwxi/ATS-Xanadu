@@ -299,7 +299,7 @@ simp.node() of
 (   s2c1   ) => d2cl
 where {
 val () =
-tr2aenv_insert_any(env0,s2c1)}
+tr2aenv_s2cins_any(env0,s2c1)}
 //
 |SIMPLopt2
 (sqid,scs1,scs2) =>
@@ -311,7 +311,7 @@ list_nil() => d2cl
 list_cons(s2c1, _) => d2cl
 where {
 val () =
-tr2aenv_insert_any(env0,s2c1)})
+tr2aenv_s2cins_any(env0,s2c1)})
 //
 end where
 {
@@ -350,7 +350,7 @@ s2exp_stpize(sdef)
 val () =
 s2abs_set_styp(s2c1,sdef)
 val () =
-tr2aenv_insert_any(env0,s2c1)
+tr2aenv_s2cins_any(env0,s2c1)
 end//let//end-of-[SIMPLone1(...)]
 //
 |SIMPLopt2
@@ -366,7 +366,7 @@ s2exp_stpize(sdef)
 val () =
 s2abs_set_styp(s2c1,sdef)
 val () =
-tr2aenv_insert_any(env0,s2c1) end)
+tr2aenv_s2cins_any(env0,s2c1) end)
 //let//end-of-[SIMPLopt2(sqid,...)]
 //
 |
