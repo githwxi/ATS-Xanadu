@@ -442,5 +442,13 @@ tread33_d3explst
   list_tread33_fnp(d3es, err, tread33_d3exp))
 //
 (* ****** ****** *)
+//
+#implfun
+tread33_f3arglst
+  (  f3as, err  ) =
+(
+  list_tread33_fnp(f3as, err, tread33_f3arg))
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_tread33_dynexp.dats] *)
