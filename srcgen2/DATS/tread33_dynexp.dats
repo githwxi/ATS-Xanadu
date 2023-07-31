@@ -428,6 +428,34 @@ end (*let*) // end of [ f0_lam0(d3e,err) ]
 (* ****** ****** *)
 //
 #implfun
+tread33_f3arg
+  (farg, err) =
+(
+case+
+farg.node() of
+//
+|
+F3ARGdyn0
+(npf1, d3ps) =>
+let
+val e00 = err
+val d3ps =
+tread33_d3patlst(d3ps, err)
+in//let
+if
+(err=e00)
+then (farg) else
+f3arg
+(farg.lctn(), F3ARGdyn0(npf1, d3ps))
+endlet // end of [F3ARGdyn0(npf1,d3ps)]
+//
+| _ (*otherwise*) => (     farg     )
+//
+) (*case+*)//end-[tread33_f3arg(farg,err)]
+//
+(* ****** ****** *)
+//
+#implfun
 tread33_d3patlst
   (  d3ps, err  ) =
 (
