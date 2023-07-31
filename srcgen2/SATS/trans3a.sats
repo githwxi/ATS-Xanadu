@@ -83,6 +83,8 @@ MAP = "./xsymmap.sats"
 #typedef s2typ = $S2E.s2typ
 //
 (* ****** ****** *)
+#typedef t2jag = $D2E.t2jag
+(* ****** ****** *)
 #typedef d2var = $D2E.d2var
 #typedef d2con = $D2E.d2con
 #typedef d2cst = $D2E.d2cst
@@ -253,6 +255,13 @@ fun
 trans3a_s2typ
 ( env0:
 ! tr3aenv,t2p0:s2typ):s2typ//fun
+//
+(* ****** ****** *)
+//
+fun
+trans3a_t2jag
+( env0:
+! tr3aenv,tjag:t2jag):t2jag//fun
 //
 (* ****** ****** *)
 //

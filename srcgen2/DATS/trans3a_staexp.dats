@@ -210,5 +210,13 @@ trans3a_s2typlst
   list_trans3a_fnp(env0, t2ps, trans3a_s2typ))
 //
 (* ****** ****** *)
+//
+#implfun
+trans3a_t2jaglst
+( env0, t2js ) =
+(
+  list_trans3a_fnp(env0, t2js, trans3a_t2jag))
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans3a_staexp.dats] *)
