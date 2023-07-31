@@ -109,6 +109,25 @@ d3pat_errck
 endlet//end of [d3pat_var_errck(...)]
 //
 (* ****** ****** *)
+//
+fun
+d3pat_annot_errck
+( loc0: loc_t
+, t2p0: s2typ
+, d3p1: d3pat
+, s1e2: s1exp
+, s2e2
+: s2exp(*annot*)): d3pat =
+let
+val lvl = 0 in//let
+d3pat_errck
+(
+lvl+1,
+d3pat
+(loc0,t2p0,D3Pannot(d3p1,s1e2,s2e2)))
+endlet//end of [d3pat_annot_errck(...)]
+//
+(* ****** ****** *)
 (*
 HX-2023:
 Various d3exp-errck functions
@@ -208,6 +227,9 @@ f0_var(d3p0, err)
 //
 |D3Pcon _ => d3p0
 //
+|
+D3Pannot _ => f0_annot(d3p0, err)
+//
 | _(*otherwise*) =>
 let
 val lvl0 = 1
@@ -232,7 +254,6 @@ val e00 = err
 val t2p = d3p.styp()
 val t2p =
 tread33_s2typ(t2p, err)
-//
 val ( ) = d3p.styp(t2p)
 //
 val-
@@ -242,10 +263,40 @@ in//let
 if
 (err=e00)
 then (d3p) else
-let
-val loc = d3p.lctn() in
-d3pat_var_errck(loc, t2p, d2v1) endlet
+d3pat_var_errck(d3p.lctn(),t2p,d2v1)
 end (*let*) // end of [f0_var(d3p,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_annot
+( d3p: d3pat
+, err: &sint >> _): d3pat =
+let
+//
+val e00 = err
+//
+val t2p = d3p.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3p.styp(t2p)
+//
+val-
+D3Pannot
+( d3p1
+, s1e2, s2e2) = d3p.node()
+//
+val
+d3p1 = tread33_d3pat(d3p1, err)
+//
+in//let
+if
+(err=e00)
+then (d3p) else
+(
+  d3pat_annot_errck
+  (d3p.lctn(), t2p, d3p1, s1e2, s2e2) )
+end (*let*) // end of [f0_annot(d3p,err)]
 //
 (* ****** ****** *)
 //
