@@ -397,7 +397,7 @@ d2con23_tjagize(loc0, dcon)
 //
 val
 d3e0 =
-d3exp_make_node(loc0, D3Econ(dcon))
+d3exp_make_node(loc0,D3Econ(dcon))
 //
 in//let
 //
@@ -406,7 +406,7 @@ case+ t2js of
 list_nil _ =>
 let
   val () = d3e0.styp(t2p0) in d3e0
-end
+end // let // end of [list_nil(...)]
 |
 list_cons _ =>
 (
