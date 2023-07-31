@@ -50,6 +50,8 @@ LEX = "./lexing0.sats"
 S2E = "./staexp2.sats"
 #staload
 T2P = "./statyp2.sats"
+#staload
+D2E = "./dynexp2.sats"
 (* ****** ****** *)
 #staload
 D3E = "./dynexp3.sats"
@@ -57,6 +59,8 @@ D3E = "./dynexp3.sats"
 #typedef token = $LEX.token
 (* ****** ****** *)
 #typedef s2typ = $S2E.s2typ
+(* ****** ****** *)
+#typedef t2jag = $D2E.t2jag
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
@@ -66,6 +70,8 @@ D3E = "./dynexp3.sats"
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
 #typedef s2typlst = $S2E.s2typlst
+(* ****** ****** *)
+#typedef t2jaglst = $D2E.t2jaglst
 (* ****** ****** *)
 #typedef d3patlst = $D3E.d3patlst
 #typedef d3explst = $D3E.d3explst
@@ -120,6 +126,8 @@ optn_tread33_fnp
 (* ****** ****** *)
 fun tread33_s2typ: ftread33(s2typ)
 (* ****** ****** *)
+fun tread33_t2jag: ftread33(t2jag)
+(* ****** ****** *)
 fun tread33_d3pat: ftread33(d3pat)
 fun tread33_d3exp: ftread33(d3exp)
 (* ****** ****** *)
@@ -128,6 +136,8 @@ fun tread33_f3arg: ftread33(f3arg)
 fun tread33_d3ecl: ftread33(d3ecl)
 (* ****** ****** *)
 fun tread33_s2typlst: ftread33(s2typlst)
+(* ****** ****** *)
+fun tread33_t2jaglst: ftread33(t2jaglst)
 (* ****** ****** *)
 fun tread33_d3patlst: ftread33(d3patlst)
 fun tread33_d3explst: ftread33(d3explst)

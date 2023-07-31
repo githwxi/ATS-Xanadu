@@ -53,6 +53,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
+#staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/tread33.sats"
 (* ****** ****** *)
@@ -62,6 +63,9 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload node with s2typ_get_node
 #symload sort with s2typ_get_sort
+(* ****** ****** *)
+#symload lctn with t2jag_get_lctn
+#symload t2ps with t2jag_get_t2ps
 (* ****** ****** *)
 //
 (* ****** ****** *)
@@ -309,7 +313,25 @@ val (  ) =
 prerrln("tread33_s2typ: t2p0 = ", t2p0)
 // *)
 //
-} (*where*)//end[ tread33_s2typ(t2p0,err) ]
+}(*where*)//end-of[-tread33_s2typ(t2p0,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread33_t2jag
+( tjag, err ) =
+let
+//
+val e00 = err
+val t2ps = t2jag_get_t2ps(tjag)
+val t2ps = tread33_s2typlst(t2ps, err)
+//
+in//let
+if
+(err=e00)
+then (tjag) else
+t2jag_make_t2ps(tjag.lctn((*0*)), t2ps)
+end(*let*)//end-of-[tread33_t2jag(tjag,err)]
 //
 (* ****** ****** *)
 //
@@ -318,6 +340,14 @@ tread33_s2typlst
   (  t2ps, err  ) =
 (
   list_tread33_fnp(t2ps, err, tread33_s2typ))
+//
+(* ****** ****** *)
+//
+#implfun
+tread33_t2jaglst
+  (  t2js, err  ) =
+(
+  list_tread33_fnp(t2js, err, tread33_t2jag))
 //
 (* ****** ****** *)
 

@@ -369,7 +369,7 @@ let
 val loc0 = d3e0.lctn()
 val-
 D3Etapq
-(d3e1, t2js) = d3e0.node()
+(d3f0, t2js) = d3e0.node()
 //
 val t2p0 =
 d3e0.styp((*0*))
@@ -378,13 +378,17 @@ s2typ_hnfiz0(t2p0)
 val t2p0 =
 trans3a_s2typ(env0, t2p0)
 //
-val t2js =
+val
+t2js =
 trans3a_t2jaglst(env0, t2js)
+//
+val
+d3f0 = trans3a_d3exp(env0, d3f0)
 //
 in//let
 (
   d3exp_make_styp_node
-  (loc0, t2p0, D3Etapq(d3e0, t2js)) )
+  (loc0, t2p0, D3Etapq(d3f0, t2js)) )
 end(*let*)//end-of-[ f0_tapq(env0,d3e0) ]
 //
 (* ****** ****** *)
