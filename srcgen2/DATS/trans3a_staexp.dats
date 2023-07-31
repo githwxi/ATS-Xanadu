@@ -51,12 +51,17 @@ _(*TRANS3a*) = "./trans3a.dats"
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 (* ****** ****** *)
+#staload "./../SATS/dynexp2.sats"
+(* ****** ****** *)
 #staload "./../SATS/trans3a.sats"
 (* ****** ****** *)
 #symload styp with x2t2p_get_styp
 (* ****** ****** *)
 #symload node with s2typ_get_node
 #symload sort with s2typ_get_sort
+(* ****** ****** *)
+#symload lctn with t2jag_get_lctn
+#symload t2ps with t2jag_get_t2ps
 (* ****** ****** *)
 //
 #implfun
@@ -200,6 +205,19 @@ f0_s2exp
 (* ****** ****** *)
 //
 }(*where*)//end of [trans3a_s2typ(env0,t2p0)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans3a_t2jag
+( env0, tjag ) =
+let
+val loc0 = tjag.lctn()
+in//let
+t2jag_make_t2ps
+( loc0
+, trans3a_s2typlst(env0, tjag.t2ps((*0*))))
+end(*let*) // end-[trans3a_t2jag(env0,tjag)]
 //
 (* ****** ****** *)
 //
