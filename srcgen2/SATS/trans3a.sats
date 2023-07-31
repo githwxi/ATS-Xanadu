@@ -107,6 +107,9 @@ MAP = "./xsymmap.sats"
  s2typlst  =  $S2E.s2typlst
 (* ****** ****** *)
 #typedef
+ t2jaglst  =  $D2E.t2jaglst
+(* ****** ****** *)
+#typedef
  teqd3exp  =  $D3E.teqd3exp
 (* ****** ****** *)
 #typedef
@@ -314,6 +317,13 @@ fun
 trans3a_s2typlst
 ( env0:
 ! tr3aenv,t2ps:s2typlst):s2typlst
+//
+(* ****** ****** *)
+//
+fun
+trans3a_t2jaglst
+( env0:
+! tr3aenv,t2js:t2jaglst):t2jaglst
 //
 (* ****** ****** *)
 //

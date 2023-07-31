@@ -153,7 +153,7 @@ val loc0 = d3p0.lctn()
 val-
 D3Pvar(d2v1) = d3p0.node()
 //
-val t2p0 = d2v1.styp((*0*))
+val t2p0 = d3p0.styp((*0*))
 val t2p0 = s2typ_hnfiz0(t2p0)
 val t2p0 = trans3a_s2typ(env0, t2p0)
 //
@@ -243,6 +243,11 @@ d3e0.node() of
 |D3Eflt _ => f0_flt(env0, d3e0)
 |D3Estr _ => f0_str(env0, d3e0)
 //
+|D3Econ _ => f0_con(env0, d3e0)
+|D3Ecst _ => f0_cst(env0, d3e0)
+//
+|D3Etapq _ => f0_tapq(env0, d3e0)
+//
 |D3Edap0 _ => f0_dap0(env0, d3e0)
 |D3Edapp _ => f0_dapp(env0, d3e0)
 //
@@ -300,11 +305,87 @@ val loc0 = d3e0.lctn()
 val-
 D3Evar(d2v1) = d3e0.node()
 //
-val t2p0 = d2v1.styp((*0*))
+val t2p0 = d3e0.styp((*0*))
 val t2p0 = s2typ_hnfiz0(t2p0)
 val t2p0 = trans3a_s2typ(env0, t2p0)
 //
 }(*where*)//end-of-[ f0_var(env0,d3e0) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_con
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp =
+(
+d3exp_make_styp_node
+( loc0
+, t2p0, D3Econ(d2c1))) where
+{
+//
+val loc0 = d3e0.lctn()
+val-
+D3Econ(d2c1) = d3e0.node()
+//
+val t2p0 = d3e0.styp((*0*))
+val t2p0 = s2typ_hnfiz0(t2p0)
+val t2p0 = trans3a_s2typ(env0, t2p0)
+//
+}(*where*)//end-of-[ f0_con(env0,d3e0) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_cst
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp =
+(
+d3exp_make_styp_node
+( loc0
+, t2p0, D3Ecst(d2c1))) where
+{
+//
+val loc0 = d3e0.lctn()
+val-
+D3Ecst(d2c1) = d3e0.node()
+//
+val t2p0 = d3e0.styp((*0*))
+val t2p0 = s2typ_hnfiz0(t2p0)
+val t2p0 = trans3a_s2typ(env0, t2p0)
+//
+}(*where*)//end-of-[ f0_cst(env0,d3e0) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_tapq
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val-
+D3Etapq
+(d3e1, t2js) = d3e0.node()
+//
+val t2p0 =
+d3e0.styp((*0*))
+val t2p0 =
+s2typ_hnfiz0(t2p0)
+val t2p0 =
+trans3a_s2typ(env0, t2p0)
+//
+val t2js =
+trans3a_t2jaglst(env0, t2js)
+//
+in//let
+(
+  d3exp_make_styp_node
+  (loc0, t2p0, D3Etapq(d3e0, t2js)) )
+end(*let*)//end-of-[ f0_tapq(env0,d3e0) ]
 //
 (* ****** ****** *)
 //
