@@ -57,6 +57,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trans3a.sats"
 (* ****** ****** *)
+#symload name with s2var_get_name
+(* ****** ****** *)
 
 local
 
@@ -102,9 +104,241 @@ stkmap_free_nil(stkmap) in () end//let
 )(*case+*)//end-of-(tr3aenv_free_top(env0))
 //
 (* ****** ****** *)
+//
+#implfun
+tr3aenv_poplam0
+(     env0     ) = let
+//
+val+
+@TR3AENV(!stkmap) = env0
+//
+in//let
+//
+let
+val nerr =
+stkmap_poplam0(stkmap) in $fold(env0)
+end(*let*)
+//
+end(*let*)//end-of-(tr3aenv_poplam0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3aenv_pshlam0
+(     env0     ) = let
+//
+val+
+@TR3AENV(!stkmap) = env0
+//
+in//let
+//
+stkmap_pshlam0(stkmap); $fold(env0)
+//
+end(*let*)//end-of-(tr3aenv_pshlam0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3aenv_poplet0
+(     env0     ) = let
+//
+val+
+@TR3AENV(!stkmap) = env0
+//
+in//let
+//
+let
+val nerr =
+stkmap_poplet0(stkmap) in $fold(env0)
+end(*let*)
+//
+end(*let*)//end-of-(tr3aenv_poplet0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3aenv_pshlet0
+(     env0     ) = let
+//
+val+
+@TR3AENV(!stkmap) = env0
+//
+in//let
+//
+stkmap_pshlet0(stkmap); $fold(env0)
+//
+end(*let*)//end-of-(tr3aenv_pshlet0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3aenv_pshlet0
+(     env0     ) = let
+//
+val+
+@TR3AENV(!stkmap) = env0
+//
+in//let
+//
+stkmap_pshlet0(stkmap); $fold(env0)
+//
+end(*let*)//end-of-(tr3aenv_pshlet0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3aenv_pshloc1
+(     env0     ) = let
+//
+val+
+@TR3AENV(!stkmap) = env0
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshloc1(stkmap) in $fold(env0)
+end (*let*)
+//
+end(*let*)//end-of-(tr3aenv_pshloc1(env0))
+//
+#implfun
+tr3aenv_pshloc2
+(     env0     ) = let
+//
+val+
+@TR3AENV(!stkmap) = env0
+//
+in//let
+//
+let
+val nerr =
+stkmap_pshloc2(stkmap) in $fold(env0)
+end (*let*)
+//
+end(*let*)//end-of-(tr3aenv_pshloc2(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3aenv_locjoin
+(     env0     ) = let
+//
+val+
+@TR3AENV(!stkmap) = env0
+//
+in//let
+//
+$fold(env0) where
+{
+val
+(nerr, kxs) =
+stkmap_poploc0(stkmap)
+val
+( (*nil*) ) =
+stkmap_insert_kxs(stkmap, kxs) }
+//
+end(*let*)//end-of-(tr3aenv_locjoin(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3aenv_s2vrch_opt
+  (env0, s2v0) = let
+//
+val k0 = s2v0.name()
+//
+val+
+TR3AENV(stkmap) = env0
+val opt1 =
+stkmap_search_opt(stkmap, k0)
+//
+(*
+val () =
+prerrln
+("tr3aenv_search_opt: k0 = ", k0)
+*)
+//
+in//let
+//
+case+ opt1 of
+| ~optn_vt_nil() => list_nil()
+| ~optn_vt_cons(s2vs) => ( s2vs )
+//
+end(*let*)//end-of-(tr3aenv_s2vrch_opt(...))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3aenv_s2vins_any
+  (env0, s2v0) = let
+//
+val s2vs =
+(
+list_cons(s2v0, s2vs)) where
+{
+val s2vs =
+tr3aenv_s2vrch_opt(env0, s2v0) }
+//
+in//let
+//
+let
+//
+val x0 = s2vs
+val k0 = s2v0.name()
+//
+(*
+val () =
+prerrln
+("tr3aenv_s2vins_any: k0 = ", k0)
+val () =
+prerrln
+("tr3aenv_s2vins_any: x0 = ", x0)
+*)
+//
+val+
+@TR3AENV(!stkmap) = env0 in//let
+stkmap_insert_any(stkmap, k0, x0) end
+//
+endlet//end-of(tr3aenv_s2vins_any(env0,s2v0))
+//
+(* ****** ****** *)
 
 endloc (*local*) // end of [local(tr3aenv...)]
 
+(* ****** ****** *)
+//
+#implfun
+tr3aenv_s2vrch_btf
+  ( env0, s2v0 ) =
+(
+  list_exists(s2vs)) where
+{
+//
+val s2vs =
+tr3aenv_s2vrch_opt(env0, s2v0)
+//
+#typedef x0 = s2var
+#impltmp
+exists$test<x0>(s2v1) = (s2v0 = s2v1)
+//
+} (*where*) // end of [tr3aenv_s2vrch_btf(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+tr3aenv_s2vins_svs
+  ( env0, s2vs ) =
+(
+case+ s2vs of
+|list_nil
+( (*void*) ) => ( (*void*) )
+|list_cons
+(s2v1, s2vs) =>
+( tr3aenv_s2vins_any(env0, s2v1)
+; tr3aenv_s2vins_svs(env0, s2vs))
+) (*case+*) // end of [tr3aenv_s2vins_svs(...)]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans3a_myenv0.dats] *)

@@ -73,6 +73,10 @@ MAP = "./xsymmap.sats"
 (* ****** ****** *)
 //
 #typedef s2cst = $S2E.s2cst
+#typedef s2var = $S2E.s2var
+//
+(* ****** ****** *)
+//
 (*
 #typedef s2exp = $S2E.s2exp
 *)
@@ -97,6 +101,8 @@ MAP = "./xsymmap.sats"
 (* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
+#typedef
+ s2varlst  =  $S2E.s2varlst
 #typedef
  s2typlst  =  $S2E.s2typlst
 (* ****** ****** *)
@@ -164,6 +170,15 @@ tr3aenv_free_top(tr3aenv):(void)
 (* ****** ****** *)
 //
 fun
+tr3aenv_poplam0
+(env0: !tr3aenv): void//end-fun
+fun
+tr3aenv_pshlam0
+(env0: !tr3aenv): void//end-fun
+//
+(* ****** ****** *)
+//
+fun
 tr3aenv_poplet0
 (env0: !tr3aenv): void//end-fun
 fun
@@ -183,11 +198,23 @@ tr3aenv_locjoin
 (* ****** ****** *)
 //
 fun
-tr3aenv_poplam0
-(env0: !tr3aenv): void//end-fun
+tr3aenv_s2vrch_opt
+( env0:
+! tr3aenv
+, s2v0 : s2var) : s2varlst
 fun
-tr3aenv_pshlam0
-(env0: !tr3aenv): void//end-fun
+tr3aenv_s2vins_any
+( env0:
+! tr3aenv,s2v0:s2var): void
+//
+fun
+tr3aenv_s2vrch_btf
+( env0:
+! tr3aenv,s2v0:s2var): bool
+fun
+tr3aenv_s2vins_svs
+( env0:
+! tr3aenv,s2vs:s2varlst): void
 //
 (* ****** ****** *)
 //
@@ -223,6 +250,15 @@ fun
 trans3a_s2typ
 ( env0:
 ! tr3aenv,t2p0:s2typ):s2typ//fun
+//
+(* ****** ****** *)
+//
+(*
+fun
+trans3a_d2var
+( env0:
+! tr3aenv,dvar:d2var):d2var//fun
+*)
 //
 (* ****** ****** *)
 //

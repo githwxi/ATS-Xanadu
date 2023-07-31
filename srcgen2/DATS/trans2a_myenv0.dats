@@ -206,7 +206,7 @@ end(*let*)//end-of-(tr2aenv_locjoin(env0))
 (* ****** ****** *)
 //
 #implfun
-tr2aenv_search_opt
+tr2aenv_s2crch_opt
   (env0, s2c0) = let
 //
 val k0 = s2c0.name()
@@ -228,12 +228,12 @@ case+ opt1 of
 | ~optn_vt_nil() => list_nil()
 | ~optn_vt_cons(s2cs) => ( s2cs )
 //
-end(*let*)//end-of-(tr2aenv_search_opt(...))
+end(*let*)//end-of-(tr2aenv_s2crch_opt(...))
 //
 (* ****** ****** *)
 //
 #implfun
-tr2aenv_insert_any
+tr2aenv_s2cins_any
   (env0, s2c0) = let
 //
 val s2cs =
@@ -241,7 +241,7 @@ val s2cs =
 list_cons(s2c0, s2cs)) where
 {
 val s2cs =
-tr2aenv_search_opt(env0, s2c0) }
+tr2aenv_s2crch_opt(env0, s2c0) }
 //
 in//let
 //
@@ -253,17 +253,17 @@ val k0 = s2c0.name()
 (*
 val () =
 prerrln
-("tr2aenv_insert_any: k0 = ", k0)
+("tr2aenv_s2cins_any: k0 = ", k0)
 val () =
 prerrln
-("tr2aenv_insert_any: x0 = ", x0)
+("tr2aenv_s2cins_any: x0 = ", x0)
 *)
 //
 val+
 @TR2AENV(!stkmap) = env0 in//let
 stkmap_insert_any(stkmap, k0, x0) end
 //
-endlet//end-of(tr2aenv_insert_any(env0,s2c0))
+endlet//end-of(tr2aenv_s2cins_any(env0,s2c0))
 //
 (* ****** ****** *)
 //
@@ -276,7 +276,7 @@ tr2aenv_evstyp_cst
   (env0, s2c0) = let
 //
 val s2cs =
-tr2aenv_search_opt(env0, s2c0)
+tr2aenv_s2crch_opt(env0, s2c0)
 //
 (*
 val (  ) =
