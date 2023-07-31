@@ -61,12 +61,16 @@ D3E = "./dynexp3.sats"
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
 (* ****** ****** *)
+#typedef f3arg = $D3E.f3arg
+(* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
 #typedef s2typlst = $S2E.s2typlst
 (* ****** ****** *)
 #typedef d3patlst = $D3E.d3patlst
 #typedef d3explst = $D3E.d3explst
+(* ****** ****** *)
+#typedef f3arglst = $D3E.f3arglst
 (* ****** ****** *)
 #typedef d3eclist = $D3E.d3eclist
 (* ****** ****** *)
@@ -119,12 +123,16 @@ fun tread33_s2typ: ftread33(s2typ)
 fun tread33_d3pat: ftread33(d3pat)
 fun tread33_d3exp: ftread33(d3exp)
 (* ****** ****** *)
+fun tread33_f3arg: ftread33(f3arg)
+(* ****** ****** *)
 fun tread33_d3ecl: ftread33(d3ecl)
 (* ****** ****** *)
 fun tread33_s2typlst: ftread33(s2typlst)
 (* ****** ****** *)
 fun tread33_d3patlst: ftread33(d3patlst)
 fun tread33_d3explst: ftread33(d3explst)
+(* ****** ****** *)
+fun tread33_f3arglst: ftread33(f3arglst)
 (* ****** ****** *)
 fun tread33_d3eclist: ftread33(d3eclist)
 (* ****** ****** *)

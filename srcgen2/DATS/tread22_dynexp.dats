@@ -641,7 +641,7 @@ d2exp_errck
 lvl+1,
 d2exp_make_node
 ( loc0
-, D2Elam0(tknd,f2as,sres,arrw,dexp) ))
+, D2Elam0(tknd,f2as,sres,arrw,dexp) ) )
 endlet // end of [d2exp_lam0_errck(...)]
 //
 (* ****** ****** *)
@@ -655,7 +655,7 @@ d2exp_fix0_errck
 , sres: s2res
 , arrw: f1unarrw
 , dexp
-: d2exp(*body*)): d2exp =
+: d2exp (*body*)): d2exp =
 let
 val lvl = errvl(dexp) in//let
 d2exp_errck
@@ -664,7 +664,7 @@ d2exp_make_node
 (
 loc0,
 D2Efix0
-(tknd, d2v0, f2as, sres, arrw, dexp)))
+(tknd, d2v0, f2as, sres, arrw, dexp)) )
 endlet // end of [d2exp_fix0_errck(...)]
 //
 (* ****** ****** *)

@@ -162,6 +162,33 @@ endlet//end of [d3exp_dapp_errck(...)]
 //
 (* ****** ****** *)
 //
+fun
+d3exp_lam0_errck
+(loc0: loc_t
+,t2p0: s2typ
+,tknd: token
+,f3as: f3arglst
+,sres: s2res
+,arrw: f1unarrw
+,dexp
+:d3exp (*body*)): d3exp =
+let
+val lvl = 0 in//let
+d3exp_errck
+(
+lvl+1,
+d3exp_make_styp_node
+( loc0, t2p0
+, D3Elam0(tknd,f3as,sres,arrw,dexp) ))
+endlet // end of [d3exp_lam0_errck(...)]
+//
+(* ****** ****** *)
+(*
+HX-2023-07-30:
+for handling [d3pat] and [d3exp]
+*)
+(* ****** ****** *)
+//
 #implfun
 tread33_d3pat
 ( d3p0, err ) =
@@ -254,6 +281,8 @@ f0_var(d3e0, err)
 //
 |D3Edap0 _ => f0_dap0(d3e0, err)
 |D3Edapp _ => f0_dapp(d3e0, err)
+//
+|D3Elam0 _ => f0_lam0(d3e0, err)
 //
 |
 _(* otherwise *) =>
@@ -355,6 +384,42 @@ val loc = d3e.lctn() in
 d3exp_dapp_errck(loc,t2p,d3f0,npf1,d3ps)
 end (*let*)
 end (*let*) // end of [ f0_dapp(d3e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_lam0
+( d3e: d3exp
+, err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Elam0
+( tknd
+, f3as, sres
+, arrw, dexp) = d3e.node()
+//
+val f3as =
+tread33_f3arglst(f3as, err)
+(*
+val sres = tread33_s2res(sres, err)
+*)
+val dexp = tread33_d3exp(dexp, err)
+//
+in
+if
+(err=e00)
+then (d3e) else
+d3exp_lam0_errck
+(d3e.lctn(),t2p,tknd,f3as,sres,arrw,dexp)
+end (*let*) // end of [ f0_lam0(d3e,err) ]
 //
 (* ****** ****** *)
 //
