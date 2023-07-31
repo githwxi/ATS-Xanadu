@@ -323,8 +323,11 @@ tread33_t2jag
 let
 //
 val e00 = err
-val t2ps = t2jag_get_t2ps(tjag)
-val t2ps = tread33_s2typlst(t2ps, err)
+//
+val
+t2ps = t2jag_get_t2ps(tjag)
+val
+t2ps = tread33_s2typlst(t2ps, err)
 //
 in//let
 if
