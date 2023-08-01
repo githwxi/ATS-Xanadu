@@ -249,8 +249,78 @@ d3exp_errck
 lvl+1,
 d3exp_make_styp_node
 ( loc0, t2p0
-, D3Elam0(tknd,f3as,sres,arrw,dexp) ))
-endlet // end of [d3exp_lam0_errck(...)]
+, D3Elam0(tknd,f3as,sres,arrw,dexp)))
+endlet//end of [d3exp_lam0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_addr_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3e1: d3exp): d3exp =
+let
+val lvl = 0 in//let
+d3exp_errck
+( lvl+1
+, d3exp(loc0, t2p0, D3Eaddr(d3e1)) )
+endlet//end of [d3exp_addr_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_flat_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3e1: d3exp): d3exp =
+let
+val lvl = 0 in//let
+d3exp_errck
+( lvl+1
+, d3exp(loc0, t2p0, D3Eflat(d3e1)) )
+endlet//end of [d3exp_flat_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_eval_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3e1: d3exp): d3exp =
+let
+val lvl = 0 in//let
+d3exp_errck
+( lvl+1
+, d3exp(loc0, t2p0, D3Eeval(d3e1)) )
+endlet//end of [d3exp_eval_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_fold_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3e1: d3exp): d3exp =
+let
+val lvl = 0 in//let
+d3exp_errck
+( lvl+1
+, d3exp(loc0, t2p0, D3Efold(d3e1)) )
+endlet//end of [d3exp_fold_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_free_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3e1: d3exp): d3exp =
+let
+val lvl = 0 in//let
+d3exp_errck
+( lvl+1
+, d3exp(loc0, t2p0, D3Efree(d3e1)) )
+endlet//end of [d3exp_free_errck(...)]
 //
 (* ****** ****** *)
 (*
@@ -390,6 +460,14 @@ f0_var(d3e0, err)
 |D3Etup1 _ => f0_tup1(d3e0, err)
 //
 |D3Elam0 _ => f0_lam0(d3e0, err)
+//
+|D3Eaddr _ => f0_addr(d3e0, err)
+|D3Eflat _ => f0_flat(d3e0, err)
+//
+|D3Eeval _ => f0_eval(d3e0, err)
+//
+|D3Efold _ => f0_fold(d3e0, err)
+|D3Efree _ => f0_free(d3e0, err)
 //
 |
 _(* otherwise *) =>
@@ -624,6 +702,156 @@ then (d3e) else
 d3exp_lam0_errck
 (d3e.lctn(),t2p,tknd,f3as,sres,arrw,dexp)
 end (*let*) // end of [ f0_lam0(d3e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_addr
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Eaddr
+(  d3e1  ) = d3e.node()
+//
+val
+d3e1 =
+tread33_d3exp(d3e1, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+d3exp_addr_errck(d3e.lctn(),t2p,d3e1)
+end (*let*) // end of [f0_addr(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_flat
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Eflat
+(  d3e1  ) = d3e.node()
+//
+val
+d3e1 =
+tread33_d3exp(d3e1, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+d3exp_flat_errck(d3e.lctn(),t2p,d3e1)
+end (*let*) // end of [f0_flat(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_eval
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Eeval
+(  d3e1  ) = d3e.node()
+//
+val
+d3e1 =
+tread33_d3exp(d3e1, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+d3exp_eval_errck(d3e.lctn(),t2p,d3e1)
+end (*let*) // end of [f0_eval(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fold
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Efold
+(  d3e1  ) = d3e.node()
+//
+val
+d3e1 =
+tread33_d3exp(d3e1, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+d3exp_fold_errck(d3e.lctn(),t2p,d3e1)
+end (*let*) // end of [f0_fold(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_free
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Efree
+(  d3e1  ) = d3e.node()
+//
+val
+d3e1 =
+tread33_d3exp(d3e1, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+d3exp_free_errck(d3e.lctn(),t2p,d3e1)
+end (*let*) // end of [f0_free(d3e,err)]
 //
 (* ****** ****** *)
 //
