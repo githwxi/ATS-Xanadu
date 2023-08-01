@@ -199,6 +199,23 @@ endlet//end of [d3exp_dapp_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3exp_let0_errck
+(loc0: loc_t
+,t2p0: s2typ
+,dcls: d3eclist
+,d3e1
+:d3exp(*scope*)): d3exp =
+let
+val lvl = 0 in//let
+d3exp_errck
+( lvl+1
+, d3exp
+  (loc0, t2p0, D3Elet0(dcls, d3e1)))
+endlet//end of [d3exp_let0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3exp_tup0_errck
 (loc0: loc_t
 ,t2p0: s2typ
@@ -456,6 +473,8 @@ f0_var(d3e0, err)
 |D3Edap0 _ => f0_dap0(d3e0, err)
 |D3Edapp _ => f0_dapp(d3e0, err)
 //
+|D3Elet0 _ => f0_let0(d3e0, err)
+//
 |D3Etup0 _ => f0_tup0(d3e0, err)
 |D3Etup1 _ => f0_tup1(d3e0, err)
 //
@@ -608,6 +627,40 @@ end (*let*) // end of [ f0_dapp(d3e,err) ]
 (* ****** ****** *)
 //
 fun
+f0_let0
+( d3e: d3exp
+, err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Elet0
+( dcls, d3e1) = d3e.node()
+val
+dcls =
+tread33_d3eclist(dcls, err)
+val
+d3e1 = tread33_d3exp(d3e1, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+let
+val loc = d3e.lctn() in
+d3exp_let0_errck(loc, t2p, dcls, d3e1)
+end (*let*)
+end (*let*) // end of [ f0_let0(d3e,err) ]
+//
+(* ****** ****** *)
+//
+fun
 f0_tup0
 ( d3e: d3exp
 , err: &sint >> _): d3exp =
@@ -622,9 +675,9 @@ val ( ) = d3e.styp(t2p)
 //
 val-
 D3Etup0
-( npf1, d3ps) = d3e.node()
+( npf1, d3es) = d3e.node()
 val
-d3ps = tread33_d3explst(d3ps, err)
+d3es = tread33_d3explst(d3es, err)
 //
 in//let
 if
@@ -632,7 +685,7 @@ if
 then (d3e) else
 let
 val loc = d3e.lctn() in
-d3exp_tup0_errck(loc, t2p, npf1, d3ps)
+d3exp_tup0_errck(loc, t2p, npf1, d3es)
 end (*let*)
 end (*let*) // end of [ f0_tup0(d3e,err) ]
 //
@@ -654,9 +707,9 @@ val ( ) = d3e.styp(t2p)
 val-
 D3Etup1
 ( knd0
-, npf1, d3ps) = d3e.node()
+, npf1, d3es) = d3e.node()
 val
-d3ps = tread33_d3explst(d3ps, err)
+d3es = tread33_d3explst(d3es, err)
 //
 in//let
 if
@@ -664,7 +717,7 @@ if
 then (d3e) else
 (
   d3exp_tup1_errck
-  (d3e.lctn(), t2p, knd0, npf1, d3ps) )
+  (d3e.lctn(), t2p, knd0, npf1, d3es) )
 end (*let*) // end of [ f0_tup1(d3e,err) ]
 //
 (* ****** ****** *)
