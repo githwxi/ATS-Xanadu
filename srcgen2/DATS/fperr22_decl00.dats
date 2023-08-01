@@ -160,7 +160,7 @@ D2Cimplmnt0
 ( tknd
 , sqas, tqas
 , dimp, tias
-, f2as, sres, d2e1) =>
+, f2as, sres, dexp) =>
 let
 (*
 val () =
@@ -175,7 +175,7 @@ val () =
 (*
 val () = fperr22_s2res(out, sres)
 *)
-val () = fperr22_d2exp(out, d2e1)
+val () = fperr22_d2exp(out, dexp)
 endlet // end of [ D2Cimplmnt0(...) ]
 //
 |D2Cexcptcon
