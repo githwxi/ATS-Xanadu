@@ -114,10 +114,11 @@ val+
 //
 in//let
 //
-let
-val nerr =
-stkmap_poplam0(stkmap) in $fold(env0)
-end(*let*)
+(
+  $fold(env0) ) where
+{
+val
+nerr = stkmap_poplam0(stkmap) }
 //
 end(*let*)//end-of-(tr3aenv_poplam0(env0))
 //
@@ -132,113 +133,12 @@ val+
 //
 in//let
 //
-stkmap_pshlam0(stkmap); $fold(env0)
+(
+  $fold(env0) ) where
+{
+val () = stkmap_pshlam0(stkmap) }
 //
 end(*let*)//end-of-(tr3aenv_pshlam0(env0))
-//
-(* ****** ****** *)
-//
-#implfun
-tr3aenv_poplet0
-(     env0     ) = let
-//
-val+
-@TR3AENV(!stkmap) = env0
-//
-in//let
-//
-let
-val nerr =
-stkmap_poplet0(stkmap) in $fold(env0)
-end(*let*)
-//
-end(*let*)//end-of-(tr3aenv_poplet0(env0))
-//
-(* ****** ****** *)
-//
-#implfun
-tr3aenv_pshlet0
-(     env0     ) = let
-//
-val+
-@TR3AENV(!stkmap) = env0
-//
-in//let
-//
-stkmap_pshlet0(stkmap); $fold(env0)
-//
-end(*let*)//end-of-(tr3aenv_pshlet0(env0))
-//
-(* ****** ****** *)
-//
-#implfun
-tr3aenv_pshlet0
-(     env0     ) = let
-//
-val+
-@TR3AENV(!stkmap) = env0
-//
-in//let
-//
-stkmap_pshlet0(stkmap); $fold(env0)
-//
-end(*let*)//end-of-(tr3aenv_pshlet0(env0))
-//
-(* ****** ****** *)
-//
-#implfun
-tr3aenv_pshloc1
-(     env0     ) = let
-//
-val+
-@TR3AENV(!stkmap) = env0
-//
-in//let
-//
-let
-val nerr =
-stkmap_pshloc1(stkmap) in $fold(env0)
-end (*let*)
-//
-end(*let*)//end-of-(tr3aenv_pshloc1(env0))
-//
-#implfun
-tr3aenv_pshloc2
-(     env0     ) = let
-//
-val+
-@TR3AENV(!stkmap) = env0
-//
-in//let
-//
-let
-val nerr =
-stkmap_pshloc2(stkmap) in $fold(env0)
-end (*let*)
-//
-end(*let*)//end-of-(tr3aenv_pshloc2(env0))
-//
-(* ****** ****** *)
-//
-#implfun
-tr3aenv_locjoin
-(     env0     ) = let
-//
-val+
-@TR3AENV(!stkmap) = env0
-//
-in//let
-//
-$fold(env0) where
-{
-val
-(nerr, kxs) =
-stkmap_poploc0(stkmap)
-val
-( (*nil*) ) =
-stkmap_insert_kxs(stkmap, kxs) }
-//
-end(*let*)//end-of-(tr3aenv_locjoin(env0))
 //
 (* ****** ****** *)
 //
