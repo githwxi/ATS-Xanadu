@@ -416,6 +416,8 @@ d3fundcl_get_wsxp(dfun)
 //
 val f3as =
 trans3a_f3arglst(env0, f3as)
+val tdxp =
+trans3a_teqd3exp(env0, tdxp)
 //
 in//let
 //
