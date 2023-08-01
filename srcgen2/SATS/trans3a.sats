@@ -192,25 +192,6 @@ tr3aenv_pshlam0
 (* ****** ****** *)
 //
 fun
-tr3aenv_poplet0
-(env0: !tr3aenv): void//end-fun
-fun
-tr3aenv_pshlet0
-(env0: !tr3aenv): void//end-fun
-fun
-tr3aenv_pshloc1
-(env0: !tr3aenv): void//end-fun
-fun
-tr3aenv_pshloc2
-(env0: !tr3aenv): void//end-fun
-//
-fun
-tr3aenv_locjoin
-(env0: !tr3aenv): void//end-fun
-//
-(* ****** ****** *)
-//
-fun
 tr3aenv_s2vrch_opt
 ( env0:
 ! tr3aenv
