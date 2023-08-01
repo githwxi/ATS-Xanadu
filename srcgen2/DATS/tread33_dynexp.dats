@@ -216,6 +216,23 @@ endlet//end of [d3exp_let0_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3exp_seqn_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3es: d3explst
+,d3e1
+:d3exp (*last*)): d3exp =
+let
+val lvl = 0 in//let
+d3exp_errck
+( lvl+1
+, d3exp
+  (loc0, t2p0, D3Eseqn(d3es, d3e1)))
+endlet//end of [d3exp_seqn_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3exp_tup0_errck
 (loc0: loc_t
 ,t2p0: s2typ
@@ -340,6 +357,23 @@ d3exp_errck
 endlet//end of [d3exp_free_errck(...)]
 //
 (* ****** ****** *)
+//
+fun
+d3exp_assgn_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3el: d3exp
+,d3er: d3exp): d3exp =
+let
+val lvl = 0 in//let
+d3exp_errck
+(
+lvl+1,
+d3exp
+(loc0, t2p0, D3Eassgn(d3el, d3er)) )
+endlet//end of [d3exp_assgn_errck(...)]
+//
+(* ****** ****** *)
 (*
 HX-2023-07-30:
 for handling [d3pat] and [d3exp]
@@ -438,6 +472,11 @@ end (*let*) // end of [f0_annot(d3p,err)]
 //
 (* ****** ****** *)
 //
+val () =
+prerrln("tread33_d3pat: d3p0 = ", d3p0)
+//
+(* ****** ****** *)
+//
 } (*where*)//end[tread33_d3pat(d3p0,err)]
 
 (* ****** ****** *)
@@ -475,6 +514,8 @@ f0_var(d3e0, err)
 //
 |D3Elet0 _ => f0_let0(d3e0, err)
 //
+|D3Eseqn _ => f0_seqn(d3e0, err)
+//
 |D3Etup0 _ => f0_tup0(d3e0, err)
 |D3Etup1 _ => f0_tup1(d3e0, err)
 //
@@ -487,6 +528,9 @@ f0_var(d3e0, err)
 //
 |D3Efold _ => f0_fold(d3e0, err)
 |D3Efree _ => f0_free(d3e0, err)
+//
+|
+D3Eassgn _ => f0_assgn(d3e0, err)
 //
 |
 _(* otherwise *) =>
@@ -657,6 +701,40 @@ val loc = d3e.lctn() in
 d3exp_let0_errck(loc, t2p, dcls, d3e1)
 end (*let*)
 end (*let*) // end of [ f0_let0(d3e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_seqn
+( d3e: d3exp
+, err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Eseqn
+( d3es, d3e1) = d3e.node()
+val
+d3es =
+tread33_d3explst(d3es, err)
+val
+d3e1 = tread33_d3exp(d3e1, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+let
+val loc = d3e.lctn() in
+d3exp_seqn_errck(loc, t2p, d3es, d3e1)
+end (*let*)
+end (*let*) // end of [ f0_seqn(d3e,err) ]
 //
 (* ****** ****** *)
 //
@@ -905,6 +983,47 @@ if
 then (d3e) else
 d3exp_free_errck(d3e.lctn(),t2p,d3e1)
 end (*let*) // end of [f0_free(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_assgn
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Efree
+( d3el, d3er) = d3e.node()
+//
+val
+d3el = tread33_d3exp(d3el, err)
+val
+d3er = tread33_d3exp(d3er, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+let
+val loc = d3e.lctn() in
+d3exp_assgn_errck(loc, t2p, d3el, d3er)
+end (*let*)
+end (*let*) // end of [f0_assgn(d3e,err)]
+//
+(* ****** ****** *)
+//
+(*
+  val () =
+  prerrln("tread33_d3exp: d3e0 = ", d3e0)
+*)
 //
 (* ****** ****** *)
 //

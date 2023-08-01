@@ -36,7 +36,9 @@ fun
 <a0:vt>
 myswap
 (x0: &a0, y0: &a0): void =
-let val a0 = x0 in (x0 := y0; y0 := a0)
+let
+val a0 = x0 in (x0 := y0; y0 := a0)
+endlet
 (* ****** ****** *)
 ////
 (* ****** ****** *)
