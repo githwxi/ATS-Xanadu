@@ -77,12 +77,18 @@ in//let
 case+
 t2p0.node() of
 //
+|T2Pbas _ => t2p0
+//
 |T2Pcst _ => t2p0
+//
+|T2Pvar _ =>
+f0_var(env0, t2p0)
 //
 |T2Pxtv _ =>
 f0_xtv(env0, t2p0)
 //
-|T2Pf2cl _ => t2p0
+|
+T2Pf2cl _ => (t2p0)
 |
 T2Pfun1 _ => f0_fun1(env0, t2p0)
 //
@@ -100,17 +106,34 @@ end where // end-of-let
 (* ****** ****** *)
 //
 fun
+f0_var
+( env0:
+! tr3aenv
+, t2p0: s2typ): s2typ =
+let
+val-
+T2Pvar(s2v1) = t2p0.node()
+val test =
+tr3aenv_s2vrch_btf(env0, s2v1)
+in//let
+( if test
+  then t2p0 else s2typ_none1(t2p0) )
+end(*let*)//end-of-[ f0_var(env0,t2p0) ]
+//
+(* ****** ****** *)
+//
+fun
 f0_xtv
 ( env0:
 ! tr3aenv
 , t2p0: s2typ): s2typ =
 let
 val-
-T2Pxtv(xtv) = t2p0.node()
+T2Pxtv(xtv1) = t2p0.node()
 in//let
 //
 let
-val t2p1 = xtv.styp((*0*))
+val t2p1 = xtv1.styp((*0*))
 in//let
 case+
 t2p1.node() of
