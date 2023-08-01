@@ -225,7 +225,7 @@ d0pat_apps_errck
 , d0ps
 : d0patlst): d0pat =
 let
-  val lvl = d0pat_errvl(d0ps)
+val lvl = d0pat_errvl(d0ps)
 in//let
 d0pat_errck
 (lvl+1, d0pat(loc,D0Papps(d0ps)))
@@ -262,8 +262,8 @@ d0pat_lpar_errck
 , drp0
 : d0pat_RPAREN): d0pat =
 let
-  val lvl =
-  gmax(errvl(d0ps),errvl(drp0))
+val lvl =
+gmax(errvl(d0ps),errvl(drp0))
 in//let
 d0pat_errck
 ( lvl+1
@@ -285,8 +285,8 @@ d0pat_tup1_errck
 , tend
 : d0pat_RPAREN): d0pat =
 let
-  val lvl =
-  gmax(errvl(d0ps),errvl(tend))
+val lvl =
+gmax(errvl(d0ps),errvl(tend))
 in//let
 d0pat_errck
 (lvl+1,
@@ -309,8 +309,8 @@ d0pat_rcd2_errck
 , tend
 : l0d0p_RBRACE): d0pat =
 let
-  val lvl =
-  gmax(errvl(ldps),errvl(tend))
+val lvl =
+gmax(errvl(ldps),errvl(tend))
 in//let
 d0pat_errck
 (lvl+1,
@@ -327,7 +327,7 @@ d0pat_annot_errck
 , d0p1: d0pat
 , s0e2: s0exp): d0pat =
 let
-  val lvl = d0pat_errvl(d0p1)
+val lvl = d0pat_errvl(d0p1)
 in//let
 d0pat_errck
 (lvl+1, d0pat(loc,D0Pannot(d0p1,s0e2)))
@@ -619,8 +619,7 @@ d0exp_opid_errck
 , id0
 : d0eid): d0exp =
 let
-val
-lvl = 0 in
+val lvl = 0 in//let
 d0exp_errck
 (lvl+1, d0exp(loc, D0Eopid(id0)))
 end (*let*) // end of [d0exp_opid_errck]
@@ -652,8 +651,7 @@ d0exp_sarg_errck
 : s0explst
 , tke: token): d0exp =
 let
-val lvl = 0
-in//let
+val lvl = 0 in//let
 d0exp_errck
 (lvl+1,d0exp(loc,D0Esarg(tkb,ses,tke)))
 end (*let*) // end of [d0exp_sarg_errck]
@@ -670,8 +668,7 @@ d0exp_targ_errck
 : s0explst
 , tke: token): d0exp =
 let
-val lvl = 0
-in//let
+val lvl = 0 in//let
 d0exp_errck
 (lvl+1,d0exp(loc,D0Etarg(tkb,ses,tke)))
 end (*let*) // end of [d0exp_targ_errck]
