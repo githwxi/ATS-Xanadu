@@ -279,7 +279,7 @@ prerrln
 val () = 
 tr3aenv_pshlam0(env0)//enter
 //
-val ()
+val () =
 tr3aenv_s2vins_tqas(env0, tqas)
 //
 val

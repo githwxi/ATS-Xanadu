@@ -89,6 +89,10 @@ f0_xtv(env0, t2p0)
 //
 |
 T2Pf2cl _ => (t2p0)
+//
+|
+T2Parg1 _ => f0_arg1(env0, t2p0)
+//
 |
 T2Pfun1 _ => f0_fun1(env0, t2p0)
 //
@@ -145,6 +149,27 @@ T2Pnone0() => s2typ_none1(t2p0)
 end(*let*)
 //
 end(*let*)//end-of-[ f0_xtv(env0,t2p0) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_arg1
+( env0:
+! tr3aenv
+, t2p0: s2typ): s2typ =
+let
+//
+val-
+T2Parg1
+( knd0, t2p1) = t2p0.node()
+//
+val
+t2p1 = trans3a_s2typ(env0, t2p1)
+//
+in//let
+  s2typ_make_node
+  (t2p0.sort(), T2Parg1(knd0, t2p1))
+end(*let*)//end-of-[ f0_arg1(env0,t2p0) ]
 //
 (* ****** ****** *)
 //
