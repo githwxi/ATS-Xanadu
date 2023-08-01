@@ -529,7 +529,7 @@ D2Cfundclst
 //
 (*
 val tqas =
-tread22_t1qaglst(tqas, err)
+tread22_t2qaglst(tqas, err)
 *)
 val d2fs =
 tread22_d2fundclist(d2fs, err)
