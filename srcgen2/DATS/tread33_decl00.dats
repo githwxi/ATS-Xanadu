@@ -116,6 +116,29 @@ end (*let*) // end of [d3ecl_vardclst_errck]
 //
 (* ****** ****** *)
 //
+fun
+d3ecl_fundclst_errck
+( loc0
+: loc_t
+, tknd
+: token
+, tqas
+: t2qaglst
+, d2cs
+: d2cstlst
+, d3fs
+: d3fundclist): d3ecl =
+let
+val lvl = 0
+in//let
+d3ecl_errck
+( lvl+1
+, d3ecl
+  (loc0,D3Cfundclst(tknd,tqas,d2cs,d3fs)))
+end (*let*) // end of [d3ecl_fundclst_errck]
+//
+(* ****** ****** *)
+//
 #implfun
 tread33_d3ecl
   (d3cl, err) =
@@ -131,6 +154,8 @@ d3cl.node() of
 D3Cvaldclst _ => f0_valdclst(d3cl, err)
 |
 D3Cvardclst _ => f0_vardclst(d3cl, err)
+|
+D3Cfundclst _ => f0_fundclst(d3cl, err)
 //
 |
 _(*otherwise*) =>
@@ -192,6 +217,38 @@ if
 then (dcl) else
 d3ecl_vardclst_errck(dcl.lctn(),tknd,d3vs)
 end (*let*) // end of [f0_vardclst(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fundclst
+( dcl: d3ecl
+, err: &sint >> _): d3ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D3Cfundclst
+(tknd
+,tqas
+,d2cs, d3fs) = dcl.node()
+//
+(*
+val tqas =
+tread33_t2qaglst(tqas, err)
+*)
+val d3fs =
+tread33_d3fundclist(d3fs, err)
+//
+in//let
+if
+(err=e00)
+then (dcl) else
+d3ecl_fundclst_errck
+( dcl.lctn() , tknd , tqas , d2cs , d3fs )
+end (*let*) // end of [f0_fundclst(dcl,err)]
 //
 (* ****** ****** *)
 //
@@ -257,6 +314,49 @@ if
 then (dval)
 else d3valdcl( loc, dpat, tdxp, wsxp )
 endlet // end-of-[tread33_d3valdcl(out,dval)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread33_d3fundcl
+  (dfun, err) =
+let
+//
+val e00 = err
+//
+val loc = dfun.lctn()
+//
+val
+dpid = d3fundcl_get_dpid(dfun)
+val
+farg = d3fundcl_get_farg(dfun)
+val
+sres = d3fundcl_get_sres(dfun)
+val
+tdxp = d3fundcl_get_tdxp(dfun)
+val
+wsxp = d3fundcl_get_wsxp(dfun)
+//
+val
+farg =
+tread33_f3arglst(farg, err)
+(*
+val
+sres = tread33_s3res(sres,err)
+*)
+val
+tdxp = tread33_teqd3exp(tdxp,err)
+(*
+val
+wsxp = tread33_wths3exp(wsxp,err)
+*)
+//
+in//let
+if
+(err=e00)
+then (dfun)
+else d3fundcl(loc,dpid,farg,sres,tdxp,wsxp)
+endlet // end-of-[tread33_d3fundcl(out,dfun)]
 //
 (* ****** ****** *)
 //
