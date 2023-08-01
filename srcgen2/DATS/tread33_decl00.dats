@@ -83,6 +83,23 @@ end (*let*) // end-of(d3ecl_errck)
 (* ****** ****** *)
 //
 fun
+d3ecl_local0_errck
+( loc0
+: loc_t
+, dcs1
+: d3eclist
+, dcs2
+: d3eclist): d3ecl =
+let
+val lvl = 0
+in//let
+d3ecl_errck
+(lvl+1,d3ecl(loc0,D3Clocal0(dcs1,dcs2)))
+end (*let*) // end of [d3ecl_local0_errck]
+//
+(* ****** ****** *)
+//
+fun
 d3ecl_valdclst_errck
 ( loc0
 : loc_t
@@ -150,6 +167,11 @@ d3cl.node() of
 |D3Cd2ecl _ => d3cl
 |D3Cerrck _ => d3cl
 //
+|D3Cstatic _ => d3cl
+|D3Cexterm _ => d3cl
+//
+|D3Clocal0 _ => f0_local0(d3cl, err)
+//
 |
 D3Cvaldclst _ => f0_valdclst(d3cl, err)
 |
@@ -170,6 +192,33 @@ endlet // end of [  _(* otherwise *)  ]
 (* ****** ****** *)
 val (  ) =
 prerrln("tread33_d3ecl: d3cl = ", d3cl)
+(* ****** ****** *)
+//
+fun
+f0_local0
+( dcl: d3ecl
+, err: &sint >> _): d3ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D3Clocal0
+(dcs1, dcs2) = dcl.node()
+//
+val dcs1 =
+tread33_d3eclist(dcs1, err)
+val dcs2 =
+tread33_d3eclist(dcs2, err)
+//
+in
+if
+(err=e00)
+then dcl else
+d3ecl_local0_errck( loc, dcs1, dcs2 )
+end (*let*) // end of [ f0_local0(dcl,err) ]
+//
 (* ****** ****** *)
 //
 fun

@@ -376,6 +376,7 @@ then dcl else
 d2ecl_extern_errck(dcl.lctn(),tknd,dcl1)
 end (*let*) // end of [ f0_extern(dcl,err) ]
 //
+(* ****** ****** *)
 //
 fun
 f0_local0

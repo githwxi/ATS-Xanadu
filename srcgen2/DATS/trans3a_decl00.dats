@@ -103,6 +103,9 @@ d3cl.node() of
 |D3Cd2ecl _ => d3cl
 |D3Cerrck _ => d3cl
 //
+|D3Cstatic _ => d3cl
+|D3Cextern _ => d3cl
+//
 |D3Clocal0 _ =>
 (
 f0_local0(env0, d3cl))
