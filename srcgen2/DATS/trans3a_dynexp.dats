@@ -662,7 +662,7 @@ val-
 F3ARGsta0
 (s2vs,s2es) = farg.node()
 val () =
-tr3aenv_s2vins_svs(env0, s2vs) in farg
+tr3aenv_s2vins_s2vs(env0, s2vs) in farg
 end (*let*) // end-of-[f0_sta0(env0,farg)]
 (* ****** ****** *)
 //

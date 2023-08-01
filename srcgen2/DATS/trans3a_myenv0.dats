@@ -327,7 +327,7 @@ exists$test<x0>(s2v1) = (s2v0 = s2v1)
 (* ****** ****** *)
 //
 #implfun
-tr3aenv_s2vins_svs
+tr3aenv_s2vins_s2vs
   ( env0, s2vs ) =
 (
 case+ s2vs of
@@ -336,8 +336,26 @@ case+ s2vs of
 |list_cons
 (s2v1, s2vs) =>
 ( tr3aenv_s2vins_any(env0, s2v1)
-; tr3aenv_s2vins_svs(env0, s2vs))
-) (*case+*) // end of [tr3aenv_s2vins_svs(...)]
+; tr3aenv_s2vins_s2vs(env0, s2vs))
+) (*case+*) // end of [tr3aenv_s2vins_s2vs(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+tr3aenv_s2vins_tqas
+  ( env0, tqas ) =
+(
+case+ tqas of
+|list_nil
+( (*void*) ) => ( (*void*) )
+|list_cons
+(tqa1, tqas) =>
+let
+val s2vs = t2qag_get_s2vs(tqa1)
+in//let
+  tr3aenv_s2vins_s2vs(env0, s2vs)
+; tr3aenv_s2vins_tqas(env0, tqas) end
+) (*case+*) // end of [tr3aenv_s2vins_s2vs(...)]
 //
 (* ****** ****** *)
 

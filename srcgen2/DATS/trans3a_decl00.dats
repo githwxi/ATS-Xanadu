@@ -276,9 +276,18 @@ prerrln
 ("f0_fundclst: d3cl = ", d3cl)
 // *)
 //
+val () = 
+tr3aenv_pshlam0(env0)//enter
+//
+val ()
+tr3aenv_s2vins_tqas(env0, tqas)
+//
 val
 d3fs =
 trans3a_d3fundclist(env0, d3fs)
+//
+val//exit
+((*void*)) = tr3aenv_poplam0(env0)
 //
 in//let
 //
