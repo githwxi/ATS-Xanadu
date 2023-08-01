@@ -245,7 +245,7 @@ d2ecl_implmnt0_errck
 , fags
 : f2arglst
 , sres: s2res(*tret*)
-, d2e1: d2exp(*body*)): d2ecl =
+, dexp: d2exp(*body*)): d2ecl =
 let
 val lvl = 0
 in//let
@@ -257,7 +257,7 @@ d2ecl_make_node
 ( loc0
 , D2Cimplmnt0
   ( tknd
-  , sqas,tqas,dqid,tias,fags,sres,d2e1 ) ))
+  , sqas,tqas,dqid,tias,fags,sres,dexp ) ))
 end (*let*) // end of [d2ecl_implmnt0_errck]
 //
 (* ****** ****** *)
@@ -559,7 +559,7 @@ D2Cimplmnt0
 ,sqas,tqas
 ,dqid
 ,tias,fags
-,sres,body) = dcl.node()
+,sres,dexp) = dcl.node()
 //
 (*
 val sqas =
@@ -577,7 +577,7 @@ val fags =
 val sres = tread22_s2res(sres, err)
 *)
 //
-val body = tread22_d2exp(body, err)
+val dexp = tread22_d2exp(dexp, err)
 //
 in//let
 if
@@ -585,7 +585,7 @@ if
 then (dcl) else
 d2ecl_implmnt0_errck
 (dcl.lctn(), tknd
-,sqas, tqas, dqid, tias, fags, sres, body)
+,sqas, tqas, dqid, tias, fags, sres, dexp)
 end (*let*) // end of [f0_implmnt0(dcl,err)]
 //
 (* ****** ****** *)

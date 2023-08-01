@@ -2519,7 +2519,7 @@ val tqas =
 trans12_t1qaglst(env0, tqas)
 //
 val (  ) =
-tr12env_pshlam0(env0)
+tr12env_pshlam0(env0)//enter
 val (  ) =
 tr12env_add0_sqas(env0, sqas)
 val (  ) =
@@ -2538,6 +2538,7 @@ sres = trans12_s1res(env0, sres)
 val
 dexp = trans12_d1exp(env0, dexp)
 //
+// HX: poplam0: pshlam0 exit
 val (  ) = tr12env_poplam0(env0)
 //
 (*

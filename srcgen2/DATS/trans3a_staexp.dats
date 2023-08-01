@@ -87,6 +87,9 @@ f0_var(env0, t2p0)
 |T2Pxtv _ =>
 f0_xtv(env0, t2p0)
 //
+|T2Plft _ =>
+f0_lft(env0, t2p0)
+//
 |
 T2Pf2cl _ => (t2p0)
 //
@@ -149,6 +152,26 @@ T2Pnone0() => s2typ_none1(t2p0)
 end(*let*)
 //
 end(*let*)//end-of-[ f0_xtv(env0,t2p0) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_lft
+( env0:
+! tr3aenv
+, t2p0: s2typ): s2typ =
+let
+//
+val-
+T2Plft(t2p1) = t2p0.node()
+//
+val
+t2p1 = trans3a_s2typ(env0, t2p1)
+//
+in//let
+(
+  s2typ(t2p0.sort(), T2Plft(t2p1)) )
+end(*let*)//end-of-[ f0_lft(env0,t2p0) ]
 //
 (* ****** ****** *)
 //

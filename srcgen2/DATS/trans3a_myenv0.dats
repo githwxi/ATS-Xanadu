@@ -342,6 +342,24 @@ case+ s2vs of
 (* ****** ****** *)
 //
 #implfun
+tr3aenv_s2vins_sqas
+  ( env0, sqas ) =
+(
+case+ sqas of
+|list_nil
+( (*void*) ) => ( (*void*) )
+|list_cons
+(sqa1, sqas) =>
+let
+val s2vs = s2qag_get_s2vs(sqa1)
+in//let
+  tr3aenv_s2vins_s2vs(env0, s2vs)
+; tr3aenv_s2vins_sqas(env0, sqas) end
+) (*case+*) // end of [tr3aenv_s2vins_s2vs(...)]
+//
+(* ****** ****** *)
+//
+#implfun
 tr3aenv_s2vins_tqas
   ( env0, tqas ) =
 (

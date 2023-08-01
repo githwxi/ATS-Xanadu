@@ -83,6 +83,7 @@ MAP = "./xsymmap.sats"
 #typedef s2typ = $S2E.s2typ
 //
 (* ****** ****** *)
+#typedef s2qag = $D2E.s2qag
 #typedef t2qag = $D2E.t2qag
 (* ****** ****** *)
 #typedef t2jag = $D2E.t2jag
@@ -110,6 +111,8 @@ MAP = "./xsymmap.sats"
 #typedef
  s2typlst  =  $S2E.s2typlst
 (* ****** ****** *)
+#typedef
+ s2qaglst  =  $D2E.s2qaglst
 #typedef
  t2qaglst  =  $D2E.t2qaglst
 (* ****** ****** *)
@@ -225,6 +228,10 @@ fun
 tr3aenv_s2vins_s2vs
 ( env0:
 ! tr3aenv,s2vs:s2varlst): void
+fun
+tr3aenv_s2vins_sqas
+( env0:
+! tr3aenv,sqas:s2qaglst): void
 fun
 tr3aenv_s2vins_tqas
 ( env0:

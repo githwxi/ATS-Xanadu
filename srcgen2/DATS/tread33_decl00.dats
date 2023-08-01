@@ -156,6 +156,41 @@ end (*let*) // end of [d3ecl_fundclst_errck]
 //
 (* ****** ****** *)
 //
+fun
+d3ecl_implmnt0_errck
+( loc0
+: loc_t
+, tknd
+: token
+, sqas
+: s2qaglst
+, tqas
+: t2qaglst
+, dqid
+: dimpl
+, tias
+: t2iaglst
+, fags
+: f3arglst
+, sres: s2res(*tret*)
+, dexp: d3exp(*body*)): d3ecl =
+let
+val lvl = 0
+in//let
+d3ecl_errck
+(
+lvl+1
+,
+d3ecl_make_node
+( loc0
+, D3Cimplmnt0
+  ( tknd
+  , sqas,tqas,dqid,tias,fags,sres,dexp ) ))
+end (*let*) // end of [d3ecl_implmnt0_errck]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 tread33_d3ecl
   (d3cl, err) =
@@ -168,7 +203,7 @@ d3cl.node() of
 |D3Cerrck _ => d3cl
 //
 |D3Cstatic _ => d3cl
-|D3Cexterm _ => d3cl
+|D3Cextern _ => d3cl
 //
 |D3Clocal0 _ => f0_local0(d3cl, err)
 //
@@ -178,6 +213,9 @@ D3Cvaldclst _ => f0_valdclst(d3cl, err)
 D3Cvardclst _ => f0_vardclst(d3cl, err)
 |
 D3Cfundclst _ => f0_fundclst(d3cl, err)
+//
+|
+D3Cimplmnt0 _ => f0_implmnt0(d3cl, err)
 //
 |
 _(*otherwise*) =>
@@ -298,6 +336,51 @@ then (dcl) else
 d3ecl_fundclst_errck
 ( dcl.lctn() , tknd , tqas , d2cs , d3fs )
 end (*let*) // end of [f0_fundclst(dcl,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_implmnt0
+( dcl: d3ecl
+, err: &sint >> _): d3ecl =
+let
+//
+val e00 = err
+//
+val-
+D3Cimplmnt0
+(tknd
+,sqas,tqas
+,dqid
+,tias,fags
+,sres,dexp) = dcl.node()
+//
+(*
+val sqas =
+  tread33_s2qaglst(sqas, err)
+val tqas =
+  tread33_t2qaglst(tqas, err)
+val tias =
+  tread33_t2iaglst(tias, err)
+*)
+//
+val fags =
+  tread33_f3arglst(fags, err)
+//
+(*
+val sres = tread33_s2res(sres, err)
+*)
+//
+val dexp = tread33_d3exp(dexp, err)
+//
+in//let
+if
+(err=e00)
+then (dcl) else
+d3ecl_implmnt0_errck
+(dcl.lctn(), tknd
+,sqas, tqas, dqid, tias, fags, sres, dexp)
+end (*let*) // end of [f0_implmnt0(dcl,err)]
 //
 (* ****** ****** *)
 //

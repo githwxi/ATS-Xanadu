@@ -110,7 +110,6 @@ d3cl.node() of
 (
 f0_local0(env0, d3cl))
 //
-//
 |
 D3Cvaldclst _ => f0_valdclst(env0, d3cl)
 |
@@ -318,10 +317,17 @@ D3Cimplmnt0
 , tias, f3as
 , sres, dexp) = d3cl.node()
 //
+val () =
+tr3aenv_pshlam0(env0)//enter
+val () =
+tr3aenv_s2vins_sqas(env0, sqas)
+val () =
+tr3aenv_s2vins_tqas(env0, tqas)
+//
 (*
 val
 tias =
-trans3a_t3iaglst(env0, tias)
+trans3a_t2iaglst(env0, tias)
 *)
 val
 f3as =
@@ -329,6 +335,9 @@ trans3a_f3arglst(env0, f3as)
 //
 val
 dexp = trans3a_d3exp(env0, dexp)
+//
+// HX: poplam0: pshlam0 exit
+val (  ) = tr3aenv_poplam0(env0)
 //
 in//let
 //

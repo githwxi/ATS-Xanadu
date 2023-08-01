@@ -144,6 +144,29 @@ val () =
   fperr33_d3fundclist(out, d3fs)
 endlet // end-of-(D3Cfundclst(_,_,_))
 //
+|
+D3Cimplmnt0
+( tknd
+, sqas, tqas
+, dimp, tias
+, f3as, sres, dexp) =>
+let
+(*
+val () =
+  fperr33_s2qaglst(out, sqas)
+val () =
+  fperr33_t2qaglst(out, tqas)
+val () =
+  fperr33_t2iaglst(out, tias)
+*)
+val () =
+  fperr33_f3arglst(out, f3as)
+(*
+val () = fperr33_s2res(out, sres)
+*)
+val () = fperr33_d3exp(out, dexp)
+endlet // end of [ D3Cimplmnt0(...) ]
+//
 |D3Cnone0 _ => ( (*void*) )
 |D3Cnone1 _ => () | D3Cnone2 _ => ()
 //
