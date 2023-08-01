@@ -203,7 +203,8 @@ d2pat_bang_errck
 (loc0: loc_t
 ,d2p1: d2pat): d2pat =
 let
-val lvl0 = errvl(d2p1) in//let
+val
+lvl0 = errvl(d2p1) in//let
 d2pat_errck
 (lvl0+1, d2pat(loc0, D2Pbang(d2p1)))
 endlet // end of [d2pat_bang_errck(...)]
@@ -213,7 +214,8 @@ d2pat_free_errck
 (loc0: loc_t
 ,d2p1: d2pat): d2pat =
 let
-val lvl0 = errvl(d2p1) in//let
+val
+lvl0 = errvl(d2p1) in//let
 d2pat_errck
 (lvl0+1, d2pat(loc0, D2Pfree(d2p1)))
 endlet // end of [d2pat_free_errck(...)]
@@ -225,7 +227,8 @@ d2pat_dap1_errck
 ( loc0: loc_t
 , d2f0: d2pat): d2pat =
 let
-val lvl0 = errvl(d2f0) in//let
+val
+lvl0 = errvl(d2f0) in//let
 d2pat_errck
 (lvl0+1, d2pat(loc0, D2Pdap1(d2f0)))
 endlet // end of [d2pat_dap1_errck(...)]
@@ -237,7 +240,8 @@ d2pat_dapp_errck
 , npf1: (sint)
 , d2ps: d2patlst): d2pat =
 let
-val lvl0 = gmax
+val
+lvl0 = gmax
 (errvl(d2f0), errvl(d2ps)) in//let
 d2pat_errck
 (lvl0+1
@@ -252,7 +256,8 @@ d2pat_tup0_errck
 , npf1: (sint)
 , d2ps: d2patlst): d2pat =
 let
-val lvl0 = errvl(d2ps) in//let
+val
+lvl0 = errvl(d2ps) in//let
 d2pat_errck
 ( lvl0+1
 , d2pat( loc0, D2Ptup0( npf1, d2ps )))
@@ -267,7 +272,8 @@ d2pat_tup1_errck
 , npf1: (sint)
 , d2ps: d2patlst): d2pat =
 let
-val lvl0 = errvl(d2ps) in//let
+val
+lvl0 = errvl(d2ps) in//let
 d2pat_errck
 ( lvl0+1
 , d2pat(loc0,D2Ptup1(tknd,npf1,d2ps)))
@@ -282,7 +288,8 @@ d2pat_rcd2_errck
 , npf1: (sint)
 , ldps: l2d2plst): d2pat =
 let
-val lvl0 = errvl(ldps) in//let
+val
+lvl0 = errvl(ldps) in//let
 d2pat_errck
 ( lvl0+1
 , d2pat(loc0, D2Prcd2(tknd,npf1,ldps)))
@@ -298,7 +305,8 @@ d2pat_annot_errck
 , s2e2
 : s2exp(*annot*)): d2pat =
 let
-val lvl0 = errvl(d2p1) in//let
+val
+lvl0 = errvl(d2p1) in//let
 d2pat_errck
 ( lvl0+1
 , d2pat(loc0,D2Pannot(d2p1,s1e2,s2e2)))
@@ -446,7 +454,7 @@ list_cons(dcl1,dcls) => gmax
 //
 fun
 d2ecl_errvl_lst
-(dcs: d2eclist): sint = 0
+(dcls: d2eclist): sint = 0
 #symload errvl with d2ecl_errvl_lst
 //
 (* ****** ****** *)
@@ -461,7 +469,8 @@ d2exp_dap0_errck
 (loc0: loc_t
 ,d2e1: d2exp): d2exp =
 let
-val lvl0 = errvl(d2e1) in//let
+val
+lvl0 = errvl(d2e1) in//let
 d2exp_errck
 (lvl0+1, d2exp(loc0, D2Edap0( d2e1 )))
 endlet // end of [d2exp_dap0_errck(...)]
@@ -474,7 +483,8 @@ d2exp_tapp_errck
 ,d2f0: d2exp
 ,s2es: s2explst): d2exp =
 let
-val lvl0 = errvl(d2f0) in//let
+val
+lvl0 = errvl(d2f0) in//let
 d2exp_errck
 (lvl0+1
 ,d2exp(loc0, D2Etapp( d2f0 , s2es )))
@@ -489,11 +499,12 @@ d2exp_dapp_errck
 ,npf1: (sint)
 ,d2es: d2explst): d2exp =
 let
-val lvl0 = gmax
+val
+lvl0 = gmax
 (errvl(d2f0), errvl(d2es)) in//let
 d2exp_errck
 (lvl0+1
-,d2exp(loc0, D2Edapp(d2f0,npf1,d2es)))
+,d2exp(loc0,D2Edapp(d2f0,npf1,d2es)))
 endlet // end of [d2exp_dapp_errck(...)]
 //
 (* ****** ****** *)
@@ -506,11 +517,12 @@ d2exp_proj_errck
 , dlab: label
 , dtup: d2exp): d2exp =
 let
-val lvl0 = errvl(dtup) in//let
+val
+lvl0 = errvl(dtup) in//let
 d2exp_errck
-( lvl0+1,
-  d2exp
-  (loc0,D2Eproj(tknd,drxp,dlab,dtup)))
+(lvl0+1
+,d2exp
+ (loc0,D2Eproj(tknd,drxp,dlab,dtup)))
 endlet // end of [d2exp_proj_errck(...)]
 //
 (* ****** ****** *)
@@ -522,7 +534,8 @@ d2exp_let0_errck
 , d2e1
 : d2exp(*scope*)): d2exp =
 let
-val lvl0 = gmax
+val
+lvl0 = gmax
 (errvl(dcls), errvl(d2e1)) in//let
 d2exp_errck
 (lvl0+1,d2exp(loc0,D2Elet0(dcls,d2e1)))
@@ -537,8 +550,8 @@ d2exp_ift0_errck
 , opt1: d2expopt
 , opt2: d2expopt): d2exp =
 let
-val lvl0 =
-gmax
+val
+lvl0 = gmax
 (errvl(d2e1)
 ,errvl(opt1), errvl(opt2)) in//let
 d2exp_errck
@@ -555,11 +568,12 @@ d2exp_cas0_errck
 ,d2e1: d2exp
 ,d2cs: d2clslst): d2exp =
 let
-val lvl = gmax
+val
+lvl0 = gmax
 (errvl(d2e1), errvl(d2cs))
 in//let
 d2exp_errck
-( lvl+1
+( lvl0+1
 , d2exp(loc0,D2Ecas0(tknd,d2e1,d2cs)))
 endlet // end of [d2exp_cas0_errck(...)]
 //
@@ -572,7 +586,8 @@ d2exp_seqn_errck
 , d2e1
 : d2exp(* last *)): d2exp =
 let
-val lvl0 = gmax
+val
+lvl0 = gmax
 (errvl(d2es), errvl(d2e1)) in//let
 d2exp_errck
 ( lvl0+1
@@ -587,7 +602,8 @@ d2exp_tup0_errck
 , npf1: (sint)
 , d2es: d2explst): d2exp =
 let
-val lvl0 = errvl(d2es) in//let
+val
+lvl0 = errvl(d2es) in//let
 d2exp_errck
 ( lvl0+1
 , d2exp( loc0, D2Etup0( npf1, d2es )))
@@ -602,10 +618,11 @@ d2exp_tup1_errck
 , npf1: (sint)
 , d2es: d2explst): d2exp =
 let
-val lvl0 = errvl(d2es) in//let
+val
+lvl0 = errvl(d2es) in//let
 d2exp_errck
 ( lvl0+1
-, d2exp(loc0, D2Etup1(tknd,npf1,d2es)))
+, d2exp(loc0,D2Etup1(tknd,npf1,d2es)))
 endlet // end of [d2exp_tup1_errck(...)]
 //
 (* ****** ****** *)
@@ -617,10 +634,11 @@ d2exp_rcd2_errck
 , npf1: (sint)
 , ldes: l2d2elst): d2exp =
 let
-val lvl0 = errvl(ldes) in//let
+val
+lvl0 = errvl(ldes) in//let
 d2exp_errck
 ( lvl0+1
-, d2exp(loc0, D2Ercd2(tknd,npf1,ldes)))
+, d2exp(loc0,D2Ercd2(tknd,npf1,ldes)))
 endlet // end of [d2exp_rcd2_errck(...)]
 //
 (* ****** ****** *)
@@ -635,13 +653,14 @@ d2exp_lam0_errck
 , dexp
 : d2exp(*body*)): d2exp =
 let
-val lvl = errvl(dexp) in//let
+val
+lvl0 = errvl(dexp) in//let
 d2exp_errck
 (
-lvl+1,
+lvl0+1,
 d2exp_make_node
 ( loc0
-, D2Elam0(tknd,f2as,sres,arrw,dexp) ) )
+, D2Elam0(tknd,f2as,sres,arrw,dexp) ))
 endlet // end of [d2exp_lam0_errck(...)]
 //
 (* ****** ****** *)
@@ -657,14 +676,16 @@ d2exp_fix0_errck
 , dexp
 : d2exp (*body*)): d2exp =
 let
-val lvl = errvl(dexp) in//let
+val
+lvl0 = errvl(dexp) in//let
 d2exp_errck
-(lvl+1,
+(
+lvl0+1,
 d2exp_make_node
 (
 loc0,
 D2Efix0
-(tknd, d2v0, f2as, sres, arrw, dexp)) )
+(tknd, d2v0, f2as, sres, arrw, dexp)))
 endlet // end of [d2exp_fix0_errck(...)]
 //
 (* ****** ****** *)
@@ -676,12 +697,13 @@ d2exp_try0_errck
 , d2e1: d2exp
 , dcls: d2clslst): d2exp =
 let
-val lvl = gmax
+val
+lvl0 = gmax
 (errvl(d2e1), errvl(dcls))
 in//let
 d2exp_errck
-(lvl+1,
-d2exp(loc0, D2Etry0(tknd, d2e1, dcls)))
+(lvl0+1
+,d2exp(loc0, D2Etry0(tknd,d2e1,dcls)))
 endlet // end of [d2exp_try0_errck(...)]
 //
 (* ****** ****** *)
@@ -691,9 +713,10 @@ d2exp_addr_errck
 ( loc0: loc_t
 , d2e1: d2exp): d2exp =
 let
-val lvl0 = errvl(d2e1) in//let
+val
+lvl0 = errvl(d2e1) in//let
 d2exp_errck
-( lvl0+1, d2exp(loc0, D2Eaddr( d2e1 )))
+(lvl0+1, d2exp(loc0, D2Eaddr( d2e1 )))
 endlet // end of [d2exp_addr_errck(...)]
 //
 (* ****** ****** *)
@@ -703,9 +726,10 @@ d2exp_eval_errck
 ( loc0: loc_t
 , d2e1: d2exp): d2exp =
 let
-val lvl0 = errvl(d2e1) in//let
+val
+lvl0 = errvl(d2e1) in//let
 d2exp_errck
-( lvl0+1, d2exp(loc0, D2Eeval( d2e1 )))
+(lvl0+1, d2exp(loc0, D2Eeval( d2e1 )))
 endlet // end of [d2exp_eval_errck(...)]
 //
 (* ****** ****** *)
@@ -715,9 +739,10 @@ d2exp_fold_errck
 ( loc0: loc_t
 , d2e1: d2exp): d2exp =
 let
-val lvl0 = errvl(d2e1) in//let
+val
+lvl0 = errvl(d2e1) in//let
 d2exp_errck
-( lvl0+1, d2exp(loc0, D2Efold( d2e1 )))
+(lvl0+1, d2exp(loc0, D2Efold( d2e1 )))
 endlet // end of [d2exp_fold_errck(...)]
 //
 (* ****** ****** *)
@@ -727,9 +752,10 @@ d2exp_free_errck
 ( loc0: loc_t
 , d2e1: d2exp): d2exp =
 let
-val lvl0 = errvl(d2e1) in//let
+val
+lvl0 = errvl(d2e1) in//let
 d2exp_errck
-( lvl0+1, d2exp(loc0, D2Efree( d2e1 )))
+(lvl0+1, d2exp(loc0, D2Efree( d2e1 )))
 endlet // end of [d2exp_free_errck(...)]
 //
 (* ****** ****** *)
@@ -740,11 +766,12 @@ d2exp_where_errck
 , d2e1: d2exp
 , dcls: d2eclist): d2exp =
 let
-val lvl0 = gmax
+val
+lvl0 = gmax
 (errvl(d2e1), errvl(dcls)) in//let
 d2exp_errck
-( lvl0+1
-, d2exp( loc0, D2Ewhere( d2e1, dcls ) ))
+(lvl0+1
+,d2exp( loc0, D2Ewhere( d2e1, dcls ) ))
 endlet // end of [d2exp_where_errck(...)]
 //
 (* ****** ****** *)
@@ -755,11 +782,12 @@ d2exp_assgn_errck
 , d2el: d2exp
 , d2er: d2exp): d2exp =
 let
-val lvl0 = gmax
+val
+lvl0 = gmax
 (errvl(d2el), errvl(d2er)) in//let
 d2exp_errck
-( lvl0+1
-, d2exp( loc0, D2Eassgn( d2el, d2er ) ))
+(lvl0+1
+,d2exp( loc0, D2Eassgn( d2el, d2er ) ))
 endlet // end of [d2exp_assgn_errck(...)]
 //
 (* ****** ****** *)
@@ -770,10 +798,11 @@ d2exp_raise_errck
 , tknd: token
 , d2e1: d2exp): d2exp =
 let
-val lvl0 = errvl(d2e1) in//let
+val
+lvl0 = errvl(d2e1) in//let
 d2exp_errck
-( lvl0+1
-, d2exp( loc0, D2Eraise( tknd, d2e1 ) ))
+(lvl0+1
+,d2exp( loc0, D2Eraise( tknd, d2e1 ) ))
 endlet // end of [d2exp_raise_errck(...)]
 //
 (* ****** ****** *)
@@ -784,7 +813,8 @@ d2exp_l0azy_errck
 , dsym: d1exp
 , d2e1: d2exp): d2exp =
 let
-val lvl0 = errvl(d2e1) in//let
+val
+lvl0 = errvl(d2e1) in//let
 d2exp_errck
 ( lvl0+1
 , d2exp( loc0, D2El0azy( dsym, d2e1 ) ))
@@ -799,7 +829,8 @@ d2exp_l1azy_errck
 , d2e1: d2exp
 , d2es: d2explst): d2exp =
 let
-val lvl0 = gmax
+val
+lvl0 = gmax
 (errvl(d2e1), errvl(d2es)) in//let
 d2exp_errck
 ( lvl0+1
@@ -816,7 +847,8 @@ d2exp_annot_errck
 , s2e2
 : s2exp(*annot*)): d2exp =
 let
-val lvl0 = errvl(d2e1) in//let
+val
+lvl0 = errvl(d2e1) in//let
 d2exp_errck
 ( lvl0+1
 , d2exp(loc0,D2Eannot(d2e1,s1e2,s2e2)))
@@ -830,7 +862,8 @@ d2exp_l2bck_errck
 , d2e1: d2exp
 , lab2: label): d2exp =
 let
-val lvl0 = errvl(d2e1) in//let
+val
+lvl0 = errvl(d2e1) in//let
 d2exp_errck
 ( lvl0+1
 , d2exp( loc0, D2El2bck( d2e1, lab2 ) ))
@@ -844,7 +877,8 @@ d2exp_t2pck_errck
 , d2e1: d2exp
 , t2p2: s2typ): d2exp =
 let
-val lvl0 = errvl(d2e1) in//let
+val
+lvl0 = errvl(d2e1) in//let
 d2exp_errck
 ( lvl0+1
 , d2exp( loc0, D2Et2pck( d2e1, t2p2 ) ))

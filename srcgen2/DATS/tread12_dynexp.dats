@@ -602,11 +602,12 @@ d2exp_cas0_errck
 ,d2e1: d2exp
 ,d2cs: d2clslst): d2exp =
 let
-val lvl = gmax
+val
+lvl0 = gmax
 (errvl(d2e1), errvl(d2cs))
 in//let
 d2exp_errck
-( lvl+1
+( lvl0+1
 , d2exp(loc0,D2Ecas0(tknd,d2e1,d2cs)))
 endlet // end of [d2exp_cas0_errck(...)]
 //
@@ -682,11 +683,12 @@ d2exp_lam0_errck
 , d2e1
 : d2exp(*body*)): d2exp =
 let
-val lvl = d2exp_errvl(d2e1)
+val
+lvl0 = d2exp_errvl(d2e1)
 in//let
 d2exp_errck
-( lvl+1
-, d2exp
+( lvl0+1
+, d2exp_make_node
   (loc0
   ,D2Elam0(tknd,f2as,sres,arrw,d2e1)))
 endlet // end of [d2exp_lam0_errck(...)]
@@ -704,12 +706,13 @@ d2exp_fix0_errck
 , d2e1
 : d2exp(*body*)): d2exp =
 let
-val lvl = d2exp_errvl(d2e1)
+val
+lvl0 = d2exp_errvl(d2e1)
 in//let
 d2exp_errck
 (
-lvl+1,
-d2exp
+lvl0+1,
+d2exp_make_node
 (
 loc0,
 D2Efix0
@@ -725,11 +728,12 @@ d2exp_try0_errck
 ,d2e1: d2exp
 ,d2cs: d2clslst): d2exp =
 let
-val lvl = gmax
+val
+lvl0 = gmax
 (errvl(d2e1), errvl(d2cs))
 in//let
 d2exp_errck
-( lvl+1
+( lvl0+1
 , d2exp(loc0,D2Etry0(tknd,d2e1,d2cs)))
 endlet // end of [d2exp_try0_errck(...)]
 //

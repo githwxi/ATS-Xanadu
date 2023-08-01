@@ -194,9 +194,9 @@ d1pat_a1pp_errck
 ,dp1: d1pat
 ,dp2: d1pat): d1pat =
 let
-val lvl = gmax
-(errvl(dp1), errvl(dp2))
-in//let
+val
+lvl = gmax
+(errvl(dp1), errvl(dp2)) in//let
 d1pat_errck
 (lvl+1, d1pat(loc, D1Pa1pp(dp1, dp2)))
 endlet // end of [d1pat_a1pp_errck(...)]
@@ -210,8 +210,7 @@ d1pat_a2pp_errck
 let
 val lvl = gmax
 ( errvl(dp1)
-, errvl(dp2), errvl(dp3))
-in//let
+, errvl(dp2), errvl(dp3)) in//let
 d1pat_errck
 (lvl+1,d1pat(loc,D1Pa2pp(dp1,dp2,dp3)))
 endlet // end of [d1pat_a2pp_errck(...)]
@@ -223,8 +222,7 @@ d1pat_l1st_errck
 , dps
 : d1patlst ): d1pat =
 let
-val lvl = errvl(dps)
-in//let
+val lvl = errvl(dps) in//let
 d1pat_errck
 (lvl+1, d1pat( loc , D1Pl1st( dps ) ))
 endlet // end of [d1pat_l1st_errck(...)]
@@ -239,8 +237,7 @@ d1pat_l2st_errck
 : d1patlst ): d1pat =
 let
 val lvl = gmax
-(errvl(dps1), errvl(dps2))
-in//let
+(errvl(dps1), errvl(dps2)) in//let
 d1pat_errck
 (lvl+1, d1pat(loc, D1Pl2st(dps1,dps2)))
 endlet // end of [d1pat_l2st_errck(...)]
@@ -254,8 +251,7 @@ d1pat_t1up_errck
 , d1ps
 : d1patlst ): d1pat =
 let
-val lvl = errvl(d1ps)
-in//let
+val lvl = errvl(d1ps) in//let
 d1pat_errck
 (lvl+1, d1pat(loc, D1Pt1up(tknd,d1ps)))
 endlet // end of [d1pat_t1up_errck(...)]
@@ -271,7 +267,8 @@ d1pat_t2up_errck
 , dps2
 : d1patlst ): d1pat =
 let
-val lvl = gmax
+val
+lvl = gmax
 (errvl(dps1), errvl(dps2))
 in//let
 d1pat_errck
@@ -288,8 +285,7 @@ d1pat_r1cd_errck
 , ldps
 : l1d1plst ): d1pat =
 let
-val lvl = errvl(ldps)
-in//let
+val lvl = errvl(ldps) in//let
 d1pat_errck
 (lvl+1, d1pat(loc, D1Pr1cd(tknd,ldps)))
 endlet // end of [d1pat_r1cd_errck(...)]
@@ -305,7 +301,8 @@ d1pat_r2cd_errck
 , lss2
 : l1d1plst ): d1pat =
 let
-val lvl = gmax
+val
+lvl = gmax
 (errvl(lss1), errvl(lss2))
 in//let
 d1pat_errck
@@ -320,10 +317,7 @@ d1pat_annot_errck
 , d1p1: d1pat
 , s1e2: s1exp): d1pat =
 let
-//
-val lvl = errvl(d1p1)
-//
-in//let
+val lvl = errvl(d1p1) in//let
 d1pat_errck
 (lvl+1, d1pat(loc,D1Pannot(d1p1,s1e2)))
 endlet // end of [d1pat_annot_errck(...)]
@@ -335,8 +329,7 @@ d1pat_qual0_errck
 , tok1: token
 , d1p2: d1pat): d1pat =
 let
-val lvl = errvl(d1p2)
-in//let
+val lvl = errvl(d1p2) in//let
 d1pat_errck
 (lvl+1, d1pat(loc,D1Pqual0(tok1,d1p2)))
 endlet // end of [d1pat_qual0_errck(...)]
@@ -714,8 +707,7 @@ d1exp_a1pp_errck
 ,de2: d1exp): d1exp =
 let
 val lvl = gmax
-(errvl(de1), errvl(de2))
-in//let
+(errvl(de1), errvl(de2)) in//let
 d1exp_errck
 (lvl+1, d1exp(loc, D1Ea1pp(de1, de2)))
 endlet // end of [d1exp_a1pp_errck(...)]
@@ -729,8 +721,7 @@ d1exp_a2pp_errck
 let
 val lvl = gmax
 ( errvl(de1)
-, errvl(de2), errvl(de3))
-in//let
+, errvl(de2), errvl(de3)) in//let
 d1exp_errck
 (lvl+1,d1exp(loc,D1Ea2pp(de1,de2,de3)))
 endlet // end of [d1exp_a2pp_errck(...)]
@@ -742,8 +733,7 @@ d1exp_sarg_errck
 , ses
 : s1explst ): d1exp =
 let
-val lvl = errvl(ses)
-in//let
+val lvl = errvl(ses) in//let
 d1exp_errck
 (lvl+1, d1exp( loc , D1Esarg( ses ) ))
 endlet // end of [d1exp_sarg_errck(...)]
@@ -755,8 +745,7 @@ d1exp_targ_errck
 , ses
 : s1explst ): d1exp =
 let
-val lvl = errvl(ses)
-in//let
+val lvl = errvl(ses) in//let
 d1exp_errck
 (lvl+1, d1exp( loc , D1Etarg( ses ) ))
 endlet // end of [d1exp_targ_errck(...)]
@@ -768,8 +757,7 @@ d1exp_l1st_errck
 , des
 : d1explst ): d1exp =
 let
-val lvl = errvl(des)
-in//let
+val lvl = errvl(des) in//let
 d1exp_errck
 (lvl+1, d1exp( loc , D1El1st( des ) ))
 endlet // end of [d1exp_l1st_errck(...)]
@@ -784,8 +772,7 @@ d1exp_l2st_errck
 : d1explst ): d1exp =
 let
 val lvl = gmax
-(errvl(des1), errvl(des2))
-in//let
+(errvl(des1), errvl(des2)) in//let
 d1exp_errck
 (lvl+1, d1exp(loc, D1El2st(des1,des2)))
 endlet // end of [d1exp_l2st_errck(...)]
