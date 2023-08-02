@@ -107,10 +107,10 @@ d3p0.node() of
 //
 |D3Pcon _ => f0_con(env0, d3p0)
 //
+|D3Ptapq _ => f0_tapq(env0, d3p0)
+//
 |D3Pdap1 _ => f0_dap1(env0, d3p0)
 |D3Pdapp _ => f0_dapp(env0, d3p0)
-//
-|D3Ptapq _ => f0_tapq(env0, d3p0)
 //
 |
 D3Pannot _ => f0_annot(env0, d3p0)
@@ -248,7 +248,7 @@ let
 val loc0 = d3p0.lctn()
 //
 val-
-D3Pdap1(d3p1) = d3p0.node()
+D3Pdap1(d3f0) = d3p0.node()
 //
 val
 t2p0 = d3p0.styp((*0*))
@@ -258,11 +258,11 @@ val
 t2p0 = trans3a_s2typ(env0, t2p0)
 //
 val
-d3p1 = trans3a_d3pat(env0, d3p1)
+d3f0 = trans3a_d3pat(env0, d3f0)
 //
 in//let
 (
-  d3pat(loc0, t2p0, D3Pdap1(d3p1)) )
+  d3pat(loc0, t2p0, D3Pdap1(d3f0)) )
 end(*let*)//end-of-[f0_dap1(env0,d3p0)]
 //
 (* ****** ****** *)
