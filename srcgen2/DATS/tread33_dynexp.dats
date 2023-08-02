@@ -1369,6 +1369,131 @@ endlet // end of [F3ARGdyn0(npf1,d3ps)]
 (* ****** ****** *)
 //
 #implfun
+tread33_d3gua
+  (dgua, err) =
+(
+case+
+dgua.node() of
+|
+D3GUAexp
+( d3e1 ) => let
+//
+val e00 = err
+//
+val
+d3e1 = tread33_d3exp(d3e1, err)
+//
+in//let
+if
+(err=e00)
+then (dgua) else
+d3gua(dgua.lctn(), D3GUAexp(d3e1))
+endlet // end of [ D3GUAexp(d3e1) ]
+|
+D3GUAmat
+(d3e1,d3p2) =>
+let
+//
+val e00 = err
+//
+val d3e1 = tread33_d3exp(d3e1, err)
+val d3p2 = tread33_d3pat(d3p2, err)
+//
+in//let
+if
+(err=e00)
+then (dgua) else
+d3gua(dgua.lctn(), D3GUAmat(d3e1,d3p2))
+endlet // end of [ D3GPTgua(_,_,_) ]
+) (*case+*)//end-of-[tread33_d3gua(dgua,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread33_d3gpt
+  (dgpt, err) =
+(
+case+
+dgpt.node() of
+|
+D3GPTpat
+( d3p1 ) => let
+//
+val e00 = err
+//
+val
+d3p1 = tread33_d3pat(d3p1, err)
+//
+in//let
+if
+(err=e00)
+then (dgpt) else
+d3gpt(dgpt.lctn(), D3GPTpat(d3p1))
+endlet // end of [ D3GPTpat(d3p1) ]
+|
+D3GPTgua
+(d3p1,d3gs) =>
+let
+//
+val e00 = err
+//
+val d3p1 = tread33_d3pat(d3p1, err)
+//
+val d3gs = tread33_d3gualst(d3gs, err)
+//
+in//let
+if
+(err=e00)
+then (dgpt) else
+d3gpt(dgpt.lctn(), D3GPTgua(d3p1,d3gs))
+endlet // end of [ D3GPTgua(_,_,_) ]
+) (*case+*)//end-of-[tread33_d3gpt(dgpt,err)]
+//
+(* ****** ****** *)
+//
+#implfun
+tread33_d3cls
+  (dcls, err) =
+(
+case+
+dcls.node() of
+|
+D3CLSgpt
+( dgpt ) => let
+//
+val e00 = err
+//
+val dgpt =
+tread33_d3gpt(dgpt, err)
+in//let
+if
+(err=e00)
+then (dcls)
+else
+d3cls(dcls.lctn(), D3CLSgpt(dgpt))
+end (*let*)//end-of[D3CLSgpt(dgpt)]
+|
+D3CLScls
+(dgpt,d3e1) =>
+let
+//
+val e00 = err
+//
+val dgpt = tread33_d3gpt(dgpt, err)
+val d3e1 = tread33_d3exp(d3e1, err)
+//
+in//let
+if
+(err=e00)
+then (dcls)
+else
+d3cls(dcls.lctn(), D3CLScls(dgpt,d3e1))
+endlet // end-of-[ D3CLScls(_,_,_) ]
+) (*case+*)//end-of-[tread33_d3cls(dcls,err)]
+//
+(* ****** ****** *)
+//
+#implfun
 tread33_d3patlst
   (  d3ps, err  ) =
 (
