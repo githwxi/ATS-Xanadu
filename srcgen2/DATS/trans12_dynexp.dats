@@ -3335,8 +3335,7 @@ d2gpt_make_node
 val
 d2p1 = trans12_d1pat(env0, d1p1)
 val
-d2gs = trans12_d1gualst(env0, d1gs)
-}
+d2gs = trans12_d1gualst(env0, d1gs) }
 //
 end (*let*) // end of [trans12_d1gpt(env0,dgpt)]
 

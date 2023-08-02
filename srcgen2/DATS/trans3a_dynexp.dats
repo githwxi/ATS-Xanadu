@@ -69,6 +69,12 @@ _(*TRANS3a*) = "./trans3a.dats"
 #symload lctn with f3arg_get_lctn
 #symload node with f3arg_get_node
 (* ****** ****** *)
+#symload lctn with d3gua_get_lctn
+#symload node with d3gua_get_node
+(* ****** ****** *)
+#symload lctn with d3gpt_get_lctn
+#symload node with d3gpt_get_node
+(* ****** ****** *)
 
 #implfun
 trans3a_d3pat
@@ -944,6 +950,84 @@ f0_met0
 (* ****** ****** *)
 //
 #implfun
+trans3a_d3gua
+  (env0, dgua) =
+(
+case+
+dgua.node() of
+|
+D3GUAexp(d3e1) =>
+let
+val d3e1 =
+trans3a_d3exp(env0, d3e1)
+in//let
+d3gua(loc0, D3GUAexp(d3e1))
+end//let//end-of-[D3GUAexp(...)]
+|
+D3GUAmat(d3e1,d3p2) =>
+let
+val d3e1 =
+trans3a_d3exp(env0, d3e1)
+val d3p2 =
+trans3a_d3pat(env0, d3p2)
+in//let
+d3gua(loc0, D3GUAmat(d3e1, d3p2))
+end//let//end-of-[D3GUAmat(...)]
+) where
+{
+//
+  val loc0 = dgua.lctn()
+//
+  val (  ) =
+  prerrln("trans3a_d3gua: dgua = ", dgua)
+//
+}(*where*)//end-of-[trans3a_d3gua(env0,...)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans3a_d3gpt
+  (env0, dgpt) = let
+//
+val loc0 = dgpt.lctn()
+//
+(*
+val
+val () =
+prerrln
+("trans3a_d3gpt: dgpt = ", dgpt)
+*)
+//
+in//let
+//
+case+
+dgpt.node() of
+//
+|
+D3GPTpat(d3p1) =>
+d3gpt_make_node
+( loc0
+, D3GPTpat(d3p1)) where
+{
+val d3p1 =
+trans3a_d3pat(env0, d3p1)
+}
+|
+D3GPTgua(d3p1, d3gs) =>
+d3gpt_make_node
+( loc0
+, D3GPTgua(d3p1, d3gs)) where
+{
+val
+d3p1 = trans3a_d3pat(env0, d3p1)
+val
+d3gs = trans3a_d3gualst(env0, d3gs) }
+//
+end(*let*)//end-of-[trans3a_d3gpt(env0,dgpt)]
+//
+(* ****** ****** *)
+//
+#implfun
 trans3a_teqd3exp
   (env0, tdxp) =
 (
@@ -955,8 +1039,8 @@ TEQD3EXPnone((*void*))
 TEQD3EXPsome(teq1, d3e2) =>
 TEQD3EXPsome(teq1, d3e2) where
 { val
-  d3e2 = trans3a_d3exp(env0, d3e2) }
-) (*case+*)//end-of(trans3a_teqd3exp(...))
+  d3e2 = trans3a_d3exp(env0, d3e2) } )
+(*case+*)//end-of(trans3a_teqd3exp(env0,tdxp))
 //
 (* ****** ****** *)
 //
