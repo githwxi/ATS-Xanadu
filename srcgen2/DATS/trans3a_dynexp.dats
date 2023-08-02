@@ -1011,5 +1011,13 @@ trans3a_d3gualst
   list_trans3a_fnp(env0, d3gs, trans3a_d3gua))
 //
 (* ****** ****** *)
+//
+#implfun
+trans3a_d3clslst
+( env0, d3cs ) =
+(
+  list_trans3a_fnp(env0, d3cs, trans3a_d3cls))
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans3a_dynexp.dats] *)
