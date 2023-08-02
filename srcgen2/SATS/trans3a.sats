@@ -382,6 +382,11 @@ trans3a_d3gualst
 ( env0:
 ! tr3aenv,d3gs:d3gualst):d3gualst
 //
+fun
+trans3a_d3clslst
+( env0:
+! tr3aenv,d3cs:d3clslst):d3clslst
+//
 (* ****** ****** *)
 //
 fun
