@@ -182,15 +182,18 @@ tr3aenv_free_top(tr3aenv):(void)
 //
 (* ****** ****** *)
 //
+(*
 fun
 tr3aenv_poplam0
 (env0: !tr3aenv): void//end-fun
 fun
 tr3aenv_pshlam0
 (env0: !tr3aenv): void//end-fun
+*)
 //
 (* ****** ****** *)
 //
+(*
 fun
 tr3aenv_s2vrch_opt
 ( env0:
@@ -200,7 +203,9 @@ fun
 tr3aenv_s2vins_any
 ( env0:
 ! tr3aenv,s2v0:s2var): void
+*)
 //
+(*
 fun
 tr3aenv_s2vrch_btf
 ( env0:
@@ -217,6 +222,7 @@ fun
 tr3aenv_s2vins_tqas
 ( env0:
 ! tr3aenv,tqas:t2qaglst): void
+*)
 //
 (* ****** ****** *)
 //

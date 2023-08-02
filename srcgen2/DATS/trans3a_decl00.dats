@@ -269,27 +269,18 @@ D3Cfundclst
 , tqas
 , d3cs, d3fs) = d3cl.node()
 //
-// (*
+(*
 val () =
 prerrln
 ("f0_fundclst: loc0 = ", loc0)
 val () =
 prerrln
 ("f0_fundclst: d3cl = ", d3cl)
-// *)
-//
-val () = 
-tr3aenv_pshlam0(env0)//enter
-//
-val () =
-tr3aenv_s2vins_tqas(env0, tqas)
+*)
 //
 val
 d3fs =
 trans3a_d3fundclist(env0, d3fs)
-//
-val//exit
-((*void*)) = tr3aenv_poplam0(env0)
 //
 in//let
 //
@@ -317,27 +308,12 @@ D3Cimplmnt0
 , tias, f3as
 , sres, dexp) = d3cl.node()
 //
-val () =
-tr3aenv_pshlam0(env0)//enter
-val () =
-tr3aenv_s2vins_sqas(env0, sqas)
-val () =
-tr3aenv_s2vins_tqas(env0, tqas)
-//
-(*
-val
-tias =
-trans3a_t2iaglst(env0, tias)
-*)
 val
 f3as =
 trans3a_f3arglst(env0, f3as)
 //
 val
 dexp = trans3a_d3exp(env0, dexp)
-//
-// HX: poplam0: pshlam0 exit
-val (  ) = tr3aenv_poplam0(env0)
 //
 in//let
 //
@@ -353,21 +329,18 @@ end where
 //
 val loc0 = d3cl.lctn()
 //
-// (*
+(*
 val (  ) =
 prerrln("f0_implmnt0(3a): loc0 = ", loc0)
 val (  ) =
 prerrln("f0_implmnt0(3a): d3cl = ", d3cl)
-// *)
+*)
 //
 } (*where*) // end of [f0_implmnt0(env0,d3cl)]
 //
 (* ****** ****** *)
 //
 } (*where*) //end of [trans3a_d3ecl(env0,d3cl)]
-
-(* ****** ****** *)
-
 
 (* ****** ****** *)
 
@@ -397,6 +370,34 @@ end//let
 (* ****** ****** *)
 
 #implfun
+trans3a_d3vardcl
+  (env0, dvar) =
+let
+//
+val loc0 =
+d3vardcl_get_lctn(dvar)
+//
+val dpid =
+d3vardcl_get_dpid(dvar)
+val vpid =
+d3vardcl_get_vpid(dvar)
+//
+val sres =
+d3vardcl_get_sres(dvar)
+//
+val dini =
+d3vardcl_get_dini(dvar)
+val dini =
+trans3a_teqd3exp(env0, dini)
+//
+in//let
+d3vardcl_make_args(loc0,dpid,vpid,sres,dini)
+end//let
+(*let*)//end-of-[trans3a_d3vardcl(env0,dvar)]
+
+(* ****** ****** *)
+
+#implfun
 trans3a_d3fundcl
   (env0, dfun) = let
 //
@@ -414,16 +415,10 @@ d3fundcl_get_tdxp(dfun)
 val wsxp =
 d3fundcl_get_wsxp(dfun)
 //
-val (  ) =
-tr3aenv_pshlam0(env0)//enter
-//
 val f3as =
 trans3a_f3arglst(env0, f3as)
 val tdxp =
 trans3a_teqd3exp(env0, tdxp)
-//
-// HX-2023-08-02: exit
-val (  ) = tr3aenv_poplam0(env0)
 //
 in//let
 //
