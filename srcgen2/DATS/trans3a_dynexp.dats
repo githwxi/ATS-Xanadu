@@ -1028,6 +1028,55 @@ end(*let*)//end-of-[trans3a_d3gpt(env0,dgpt)]
 (* ****** ****** *)
 //
 #implfun
+trans3a_d3cls
+  (env0, d3c0) = let
+//
+val loc0 = d3c0.lctn()
+//
+(*
+val
+val () =
+prerrln
+("trans3a_d3cls: d3c0 = ", d3c0)
+*)
+//
+in//let
+//
+case+
+d3c0.node() of
+|
+D3CLSgpt
+(  dgpt  ) =>
+(
+d3cls_make_node
+( loc0
+, D3CLSgpt(dgpt))) where
+{
+//
+val
+dgpt =
+trans3a_d3gpt(env0, dgpt)
+//
+}(*where*)//end-of-[D3CLSgpt(...)]
+|
+D3CLScls
+(dgpt,d3e1) =>
+(
+d3cls_make_node
+( loc0
+, D3CLScls(dgpt, d3e1))) where
+{
+//
+val dgpt = trans3a_d3gpt(env0, dgpt)
+val d3e1 = trans3a_d3exp(env0, d3e1)
+//
+}(*where*)//end of [D3CLScls(dgpt,d3e1)]
+//
+end(*let*)//end-of-[trans3a_d3cls(env0,d3c0)]
+//
+(* ****** ****** *)
+//
+#implfun
 trans3a_teqd3exp
   (env0, tdxp) =
 (
