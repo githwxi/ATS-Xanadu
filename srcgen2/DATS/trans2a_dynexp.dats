@@ -2519,7 +2519,8 @@ in//let
 case+
 farg.node() of
 |
-F2ARGdyn0(npf1, d2ps) =>
+F2ARGdyn0
+(npf1, d2ps) =>
 let
 //
 val loc0 = farg.lctn()

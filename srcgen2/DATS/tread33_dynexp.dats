@@ -1511,7 +1511,7 @@ f3arg
 (farg.lctn(), F3ARGdyn0(npf1, d3ps))
 endlet // end of [F3ARGdyn0(npf1,d3ps)]
 //
-| _ (*otherwise*) => (     farg     )
+| _(* otherwise *) => (      farg      )
 //
 ) (*case+*)//end-[tread33_f3arg(farg,err)]
 //

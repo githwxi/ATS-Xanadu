@@ -275,14 +275,18 @@ d0pat_node =
 | D0Plpar of
   (token, d0patlst, d0pat_RPAREN)
 //
-| D0Ptup1 of
-  (token, tokenopt, d0patlst, d0pat_RPAREN)
-| D0Prcd2 of
-  (token, tokenopt, l0d0plst, l0d0p_RBRACE)
+|
+D0Ptup1 of
+(token, tokenopt, d0patlst, d0pat_RPAREN)
+|
+D0Prcd2 of
+(token, tokenopt, l0d0plst, l0d0p_RBRACE)
 //
-| D0Pannot of (d0pat, s0exp) // HX: annotation
+|
+D0Pannot of (d0pat, s0exp) // HX: annotation
 //
-| D0Pqual0 of (token, d0pat) // HX: qual-d0pat
+|
+D0Pqual0 of (token, d0pat) // HX: qual-d0pat
 //
 |
 (*
@@ -299,16 +303,20 @@ D0Perrck of (int(*lvl*), d0pat)//HX:pread-error
 and
 d0pat_RPAREN =
 |
-d0pat_RPAREN_cons0 of token
+d0pat_RPAREN_cons0 of
+(        token        )
 |
-d0pat_RPAREN_cons1 of (token, d0patlst, token)
+d0pat_RPAREN_cons1 of
+(token, d0patlst, token)
 //
 and
 l0d0p_RBRACE =
 |
-l0d0p_RBRACE_cons0 of token
+l0d0p_RBRACE_cons0 of
+(        token        )
 |
-l0d0p_RBRACE_cons1 of (token, l0d0plst, token)
+l0d0p_RBRACE_cons1 of
+(token, l0d0plst, token)
 //
 (* ****** ****** *)
 //
@@ -319,9 +327,11 @@ F0ARGnone of (token)
 |
 F0ARGdyn0 of (d0pat)
 |
-F0ARGsta0 of (token, s0qualst, token)
+F0ARGsta0 of
+(token, s0qualst,token)
 |
-F0ARGmet0 of (token, s0explst, token)
+F0ARGmet0 of
+(token, s0explst, token)
 //
 (* ****** ****** *)
 fun
