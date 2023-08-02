@@ -321,6 +321,39 @@ endcas // end of [ case+(ldes) ]
 (* ****** ****** *)
 //
 fun
+d3cls_errvl_a1
+(dcl: d3cls): sint =
+(
+case+ dcl.node() of
+|
+D3CLSgpt(dgpt) => 0
+|
+D3CLScls(dgpt,d3e1) => errvl(d3e1)
+)
+#symload errvl with d3cls_errvl_a1
+//
+(* ****** ****** *)
+//
+#extern
+fun
+d3cls_errvl_lst
+(dcls: d3clslst): sint
+#symload errvl with d3cls_errvl_lst
+//
+#implfun
+d3cls_errvl_lst(dcls) =
+(
+case+ dcls of
+|
+list_nil((*nil*)) => 0
+|
+list_cons(dcl1,dcls) => gmax
+(errvl(dcl1), d3cls_errvl_lst(dcls))
+) (*case+*)//end-of-(d3cls_errvl_lst)
+//
+(* ****** ****** *)
+//
+fun
 d3ecl_errvl_lst
 (dcls: d3eclist): sint = 0
 #symload errvl with d3ecl_errvl_lst
@@ -417,6 +450,27 @@ d3exp_errck
 ,d3exp_make_styp_node
  (loc0, t2p0, D3Elet0(dcls, d3e1)))
 endlet//end of [d3exp_let0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_cas0_errck
+(loc0: loc_t
+,t2p0: s2typ
+,tknd: token
+,d3e1: d3exp
+,d3cs: d3clslst): d3exp =
+let
+val
+lvl0 = gmax
+(errvl(d3e1), errvl(d3cs))
+in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_styp_node
+(loc0,t2p0,D3Ecas0(tknd,d3e1,d3cs)))
+endlet // end of [d3exp_cas0_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -731,9 +785,7 @@ f0_var(d3e0, err)
 //
 |D3Elet0 _ => f0_let0(d3e0, err)
 //
-(*
 |D3Ecas0 _ => f0_cas0(d3e0, err)
-*)
 //
 |D3Eseqn _ => f0_seqn(d3e0, err)
 //
@@ -922,6 +974,42 @@ val loc = d3e.lctn() in
 d3exp_let0_errck(loc, t2p, dcls, d3e1)
 end (*let*)
 end (*let*) // end of [ f0_let0(d3e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_cas0
+( d3e: d3exp
+, err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Ecas0
+( tknd
+, d3e1, d3cs) = d3e.node()
+//
+val
+d3e1 = tread33_d3exp(d3e1, err)
+val
+d3cs = tread33_d3clslst(d3cs, err)
+//
+in//let
+//
+if
+(err=e00)
+then (d3e) else
+(
+  d3exp_cas0_errck
+  (d3e.lctn(), t2p, tknd,d3e1,d3cs) )
+//
+end (*let*) // end of [ f0_cas0(d3e,err) ]
 //
 (* ****** ****** *)
 //
@@ -1301,6 +1389,20 @@ tread33_f3arglst
   (  f3as, err  ) =
 (
   list_tread33_fnp(f3as, err, tread33_f3arg))
+//
+(* ****** ****** *)
+//
+#implfun
+tread33_d3gualst
+  (  d3gs, err  ) =
+(
+  list_tread33_fnp(d3gs, err, tread33_d3gua))
+//
+#implfun
+tread33_d3clslst
+  (  d3cs, err  ) =
+(
+  list_tread33_fnp(d3cs, err, tread33_d3cls))
 //
 (* ****** ****** *)
 
