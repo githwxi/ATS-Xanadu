@@ -222,6 +222,11 @@ tr3aenv_s2vrch_opt(env0, s2v0)
 #impltmp
 exists$test<x0>(s2v1) = (s2v0 = s2v1)
 //
+val (  ) =
+prerrln("tr3aenv_s2vrch_btf: s2v0 = ", s2v0)
+val (  ) =
+prerrln("tr3aenv_s2vrch_btf: s2vs = ", s2vs)
+//
 } (*where*) // end of [tr3aenv_s2vrch_btf(...)]
 //
 (* ****** ****** *)
