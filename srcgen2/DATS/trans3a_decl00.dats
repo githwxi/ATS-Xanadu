@@ -414,10 +414,16 @@ d3fundcl_get_tdxp(dfun)
 val wsxp =
 d3fundcl_get_wsxp(dfun)
 //
+val (  ) =
+tr3aenv_pshlam0(env0)//enter
+//
 val f3as =
 trans3a_f3arglst(env0, f3as)
 val tdxp =
 trans3a_teqd3exp(env0, tdxp)
+//
+// HX-2023-08-02: exit
+val (  ) = tr3aenv_poplam0(env0)
 //
 in//let
 //
