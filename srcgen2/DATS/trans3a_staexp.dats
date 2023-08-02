@@ -115,6 +115,12 @@ end where // end-of-let
 (* ****** ****** *)
 //
 (*
+(*
+HX-2023-08-02:
+Not for now!!!
+This is to be done at
+dependent type-checking
+*)
 fun
 f0_var
 ( env0:
