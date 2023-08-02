@@ -37,7 +37,7 @@ fun
 myswap
 (x0: &a0, y0: &a0): void =
 let
-val a0 = x0 in (x0 := y0; y0 := a0)
+val a0 = x0 in (x0:=y0; y0:=a0)
 endlet
 (* ****** ****** *)
 (* ****** ****** *)
@@ -47,8 +47,8 @@ list_nilq{a:t0}
   (xs) =
 (
 case+ xs of
-|nil _ => true |cons _ => false
-) (*case*) // end-of-[list_nilq(xs)]
+| nil _ => true | cons _ => false )
+//(*case*) // end-of-[list_nilq(xs)]
 (* ****** ****** *)
 ////
 (* ****** ****** *)
