@@ -2199,7 +2199,7 @@ d2e1 = tread22_d2exp(d2e1, err)
 //
 in//let
 if
-(err = e00)
+(err=e00)
 then (dgua) else
 d2gua(dgua.lctn(), D2GUAexp(d2e1))
 endlet // end of [ D2GUAexp(d2e1) ]
@@ -2210,14 +2210,12 @@ let
 //
 val e00 = err
 //
-val
-d2e1 = tread22_d2exp(d2e1, err)
-//
+val d2e1 = tread22_d2exp(d2e1, err)
 val d2p2 = tread22_d2pat(d2p2, err)
 //
 in//let
 if
-(err = e00)
+(err=e00)
 then (dgua) else
 d2gua(dgua.lctn(), D2GUAmat(d2e1,d2p2))
 endlet // end of [ D2GPTgua(_,_,_) ]
@@ -2242,7 +2240,7 @@ d2p1 = tread22_d2pat(d2p1, err)
 //
 in//let
 if
-(err = e00)
+(err=e00)
 then (dgpt) else
 d2gpt(dgpt.lctn(), D2GPTpat(d2p1))
 endlet // end of [ D2GPTpat(d2p1) ]
@@ -2259,7 +2257,7 @@ val d2gs = tread22_d2gualst(d2gs, err)
 //
 in//let
 if
-(err = e00)
+(err=e00)
 then (dgpt) else
 d2gpt(dgpt.lctn(), D2GPTgua(d2p1,d2gs))
 endlet // end of [ D2GPTgua(_,_,_) ]
