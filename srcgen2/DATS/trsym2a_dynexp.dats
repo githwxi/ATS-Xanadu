@@ -1147,8 +1147,9 @@ farg.node() of
 trsym2a_d2patlst(env0, d2ps)
 //
 |F2ARGsta0
-(s2vs, s2es) => ( (*void*) )
-|F2ARGmet0(s2es) => ( (*void*) )
+(s2vs, s2es) => ( (*void*) ) // F2ARGsta0
+|F2ARGmet0
+(   s2es   ) => ( (*void*) ) // F2ARGmet0
 //
 ) (*case+*)//end-of-(trsym2a_f2arg(env0,farg)]
 //

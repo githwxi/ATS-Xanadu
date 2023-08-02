@@ -605,16 +605,18 @@ in//let
 //
 case+
 farg.node() of
-|
-F2ARGsta0
-(s2vs,s2ps) =>
-print
-("F2ARGsta0(",s2vs,";",s2ps,")")
+//
 |
 F2ARGdyn0
 (npf1,d2ps) =>
 print
 ("F2ARGdyn0(",npf1,";",d2ps,")")
+//
+|
+F2ARGsta0
+(s2vs,s2ps) =>
+print
+("F2ARGsta0(",s2vs,";",s2ps,")")
 |
 F2ARGmet0
 (   s2es   ) => print("F2ARGmet0(",s2es,")")

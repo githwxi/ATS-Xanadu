@@ -3145,36 +3145,13 @@ trans12_f1arg
 //
 case+
 f1a0.node() of
-|F1ARGsta0 _ =>
-f0_sta0(env0, f1a0)
 |F1ARGdyn0 _ =>
 f0_dyn0(env0, f1a0)
+|F1ARGsta0 _ =>
+f0_sta0(env0, f1a0)
 |F1ARGmet0 _ =>
 f0_met0(env0, f1a0)) where
 {
-//
-(* ****** ****** *)
-//
-fun
-f0_sta0
-( env0:
-! tr12env
-, f1a0: f1arg): f2arg =
-let
-//
-val-
-F1ARGsta0
-(  s1qs  ) = f1a0.node()
-//
-val
-(s2vs, s2ps) =
-trans12_s1qualst(env0, s1qs)
-//
-in//let
-//
-f2arg(f1a0.lctn(), F2ARGsta0(s2vs, s2ps))
-//
-end (*let*) // end of [f0_sta0(env0,f1a0)]
 //
 (* ****** ****** *)
 //
@@ -3226,6 +3203,29 @@ in//let
 f2arg(f1a0.lctn(), F2ARGdyn0(npf1, d2ps))
 //
 end (*let*) // end of [f0_dyn0(env0,f1a0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_sta0
+( env0:
+! tr12env
+, f1a0: f1arg): f2arg =
+let
+//
+val-
+F1ARGsta0
+(  s1qs  ) = f1a0.node()
+//
+val
+(s2vs, s2ps) =
+trans12_s1qualst(env0, s1qs)
+//
+in//let
+//
+f2arg(f1a0.lctn(), F2ARGsta0(s2vs, s2ps))
+//
+end (*let*) // end of [f0_sta0(env0,f1a0)]
 //
 (* ****** ****** *)
 //

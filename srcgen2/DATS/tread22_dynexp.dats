@@ -2126,8 +2126,23 @@ case+
 farg.node() of
 //
 (*
-| F2ARGnone of (token)
+|F2ARGnone of (token)
 *)
+//
+|
+F2ARGdyn0
+(npf1, d2ps) =>
+let
+val e00 = err
+val d2ps =
+tread22_d2patlst(d2ps, err)
+in//let
+if
+(err=e00)
+then (farg) else
+f2arg
+(farg.lctn(), F2ARGdyn0(npf1, d2ps))
+endlet // end of [F2ARGdyn0(npf1,d2ps)]
 //
 |
 F2ARGsta0
@@ -2147,22 +2162,8 @@ f2arg
 endlet // end of [F2ARGsta0(s2vs,s2es)]
 //
 |
-F2ARGdyn0
-(npf1, d2ps) =>
-let
-val e00 = err
-val d2ps =
-tread22_d2patlst(d2ps, err)
-in//let
-if
-(err=e00)
-then (farg) else
-f2arg
-(farg.lctn(), F2ARGdyn0(npf1, d2ps))
-endlet // end of [F2ARGdyn0(npf1,d2ps)]
-//
-|
-F2ARGmet0(s2es) =>
+F2ARGmet0
+(   s2es   ) =>
 let
 //
 val e00 = err
@@ -2171,11 +2172,12 @@ val e00 = err
 val s2es =
 tread22_s2explst(s2es, err)
 *)
+//
 in//let
 if
 (err=e00)
 then (farg) else
-f2arg( farg.lctn(), F2ARGmet0(s2es) )
+f2arg(farg.lctn(), F2ARGmet0( s2es ))
 endlet // end of [ F2ARGmet0(  s2es  ) ]
 //
 ) (*case+*)//end-[tread22_f2arg(farg,err)]
