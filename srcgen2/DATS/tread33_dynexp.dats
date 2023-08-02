@@ -102,8 +102,8 @@ d3pat_errvl_a1
 case+ d3p0.node() of
 |
 D3Perrck
-(lvl0, _) => lvl0 | _ => 0
-)
+(lvl0, _) => lvl0 | _ => 0)
+//
 #symload
 d3pat_errvl with d3pat_errvl_a1
 #symload errvl with d3pat_errvl_a1
@@ -226,8 +226,8 @@ d3exp_errvl_a1
 case+ d3e0.node() of
 |
 D3Eerrck
-(lvl0, _) => lvl0 | _ => 0
-)
+(lvl0, _) => lvl0 | _ => 0)
+//
 #symload
 d3exp_errvl with d3exp_errvl_a1
 #symload errvl with d3exp_errvl_a1

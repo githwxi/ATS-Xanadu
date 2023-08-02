@@ -120,8 +120,8 @@ d2pat_errvl_a1
 case+ d2p0.node() of
 |
 D2Perrck
-(lvl0, _) => lvl0 | _ => 0
-)
+(lvl0, _) => lvl0 | _ => 0)
+//
 #symload
 d2pat_errvl with d2pat_errvl_a1
 #symload errvl with d2pat_errvl_a1
@@ -325,8 +325,8 @@ d2exp_errvl_a1
 case+ d2e0.node() of
 |
 D2Eerrck
-(lvl0, _) => lvl0 | _ => 0
-)
+(lvl0, _) => lvl0 | _ => 0)
+//
 #symload
 d2exp_errvl with d2exp_errvl_a1
 #symload errvl with d2exp_errvl_a1
