@@ -731,6 +731,10 @@ f0_var(d3e0, err)
 //
 |D3Elet0 _ => f0_let0(d3e0, err)
 //
+(*
+|D3Ecas0 _ => f0_cas0(d3e0, err)
+*)
+//
 |D3Eseqn _ => f0_seqn(d3e0, err)
 //
 |D3Etup0 _ => f0_tup0(d3e0, err)
