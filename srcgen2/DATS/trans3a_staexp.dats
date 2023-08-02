@@ -81,8 +81,10 @@ t2p0.node() of
 //
 |T2Pcst _ => t2p0
 //
-|T2Pvar _ =>
+|T2Pvar _ => t2p0
+(*
 f0_var(env0, t2p0)
+*)
 //
 |T2Pxtv _ =>
 f0_xtv(env0, t2p0)
@@ -112,6 +114,7 @@ end where // end-of-let
 //
 (* ****** ****** *)
 //
+(*
 fun
 f0_var
 ( env0:
@@ -126,6 +129,7 @@ in//let
 ( if test
   then t2p0 else s2typ_none1(t2p0) )
 end(*let*)//end-of-[ f0_var(env0,t2p0) ]
+*)
 //
 (* ****** ****** *)
 //
