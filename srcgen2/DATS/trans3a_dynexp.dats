@@ -613,9 +613,6 @@ s2typ_hnfiz0(t2p0)
 val t2p0 =
 trans3a_s2typ(env0, t2p0)
 //
-val () =
-tr3aenv_pshlam0(env0)//enter
-//
 val
 f3as =
 trans3a_f3arglst(env0, f3as)
@@ -630,9 +627,6 @@ sres = trans3a_s2res(env0, sres)
 *)
 val
 body = trans3a_d3exp(env0, body)
-//
-val//exit
-((*void*)) = tr3aenv_poplam0(env0)
 //
 in//let
 d3exp_make_styp_node
@@ -665,9 +659,6 @@ s2typ_hnfiz0(t2p0)
 val t2p0 =
 trans3a_s2typ(env0, t2p0)
 //
-val () =
-tr3aenv_pshlam0(env0)//enter
-//
 (*
 val
 d2v1 =
@@ -688,9 +679,6 @@ sres = trans3a_s2res(env0, sres)
 *)
 val
 body = trans3a_d3exp(env0, body)
-//
-val//exit
-((*void*)) = tr3aenv_poplam0(env0)
 //
 in//let
 d3exp_make_node
@@ -905,28 +893,15 @@ in//let
 case+
 farg.node() of
 |
-F3ARGsta0 _ => f0_sta0(env0,farg)
-|
 F3ARGdyn0 _ => f0_dyn0(env0,farg)
+|
+F3ARGsta0 _ => f0_sta0(env0,farg)
 |
 F3ARGmet0 _ => f0_met0(env0,farg)
 //
 end where // end-of-let
 {
 //
-(* ****** ****** *)
-fun
-f0_sta0
-( env0:
-! tr3aenv
-, farg: f3arg): f3arg =
-let
-val-
-F3ARGsta0
-(s2vs,s2es) = farg.node()
-val () =
-tr3aenv_s2vins_s2vs(env0, s2vs) in farg
-end (*let*) // end-of-[f0_sta0(env0,farg)]
 (* ****** ****** *)
 //
 fun
@@ -951,6 +926,11 @@ end (*let*) // end of [f0_dyn0(env0,farg)]
 //
 (* ****** ****** *)
 //
+fun
+f0_sta0
+( env0:
+! tr3aenv
+, farg: f3arg): f3arg = farg // end-of-fun
 fun
 f0_met0
 ( env0:
