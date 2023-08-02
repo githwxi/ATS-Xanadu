@@ -92,6 +92,20 @@ in//let
 case+
 d3p.node() of
 //
+|
+D3Pdap1(d3f0) =>
+let
+val () =
+fperr33_d3pat(out, d3f0) end
+|
+D3Pdapp
+( d3f0
+, npf1, d3ps) =>
+let
+val () =
+fperr33_d3pat(out, d3f0)
+val () =
+fperr33_d3patlst(out, d3ps) end
 //
 |D3Pnone0 _ => (  (*void*)  )
 |D3Pnone1 _ => () | D3Pnone2 _ => ()
