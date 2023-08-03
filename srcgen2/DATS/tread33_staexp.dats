@@ -406,6 +406,24 @@ prerrln("tread33_s2typ: t2p0 = ", t2p0)
 (* ****** ****** *)
 //
 #implfun
+tread33_l2t2p
+  (lt2p, err) =
+let
+//
+val e00 = err
+//
+val+
+S2LAB(lab,t2p) = lt2p
+val t2p = tread33_s2typ(t2p, err)
+//
+in//let
+if
+(err=e00) then lt2p else S2LAB(lab,t2p)
+endlet // end of [tread33_l2t2p(lt2p,err)]
+//
+(* ****** ****** *)
+//
+#implfun
 tread33_t2jag
 ( tjag, err ) =
 let
