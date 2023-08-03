@@ -786,6 +786,7 @@ end (*let*)//end-of-[f0_sym0(env0,d2e0)]
 //
 (* ****** ****** *)
 //
+(*
 fun
 f0_tapp
 ( env0:
@@ -805,6 +806,159 @@ in//let
 d3exp_make_styp_node
 (loc0, d3f0.styp(), D3Etapp(d3f0,s2es))
 end (*let*) // end of [f0_tapp(env0,d2e0)]
+*)
+//
+local
+//
+fun
+f1_root
+(d2f0: d2exp): d2exp =
+(
+case+
+d2f0.node() of
+|D2Etapp
+(d2f1, s2es) =>
+f1_root( d2f1 ) | _ => d2f0 )
+//
+fun
+f1_d2fs
+( d2f0: d2exp
+, d2fs: d2explst): d2explst =
+(
+case+
+d2f0.node() of
+|D2Etapp
+(d2f1, _) =>
+f1_d2fs(d2f1, d2fs) where
+{
+val
+d2fs = list_cons(d2f0, d2fs) }
+| _(* non-D2Etapp *) => ( d2fs ) )
+//
+fun
+f1_tapp
+( d3f0: d3exp
+, d2f1: d2exp): d3exp =
+let
+//
+val
+loc1 = d2f1.lctn((*0*))
+val
+t2p0 = d3f0.styp((*0*))
+//
+val-
+D2Etapp
+(_, s2es) = d2f1.node((*0*))
+//
+in//let
+d3exp
+(loc1,t2p0,D3Etapp(d3f0,s2es))
+endlet // end of [ f1_tapp(...) ]
+//
+fun
+f1_wind
+( d3f0: d3exp
+, t2js: t2jaglst
+, d2fs: d2explst): d3exp =
+(
+case+ t2js of
+|list_nil
+((*void*)) =>
+(
+case+ d2fs of
+|list_nil
+((*void*)) => (d3f0)
+|list_cons
+(d2f1, d2fs) =>
+let
+//
+val
+d3f0 =
+f1_tapp(d3f0, d2f1)
+//
+in//let
+let
+val
+d3f0 = d3exp_none2(d3f0)
+in//let
+f1_wind(d3f0, t2js, d2fs) end
+end (*let*)//end-[list_cons(...)]
+)
+//
+|list_cons
+(t2j1, t2js) =>
+(
+case+ d2fs of
+|list_nil
+((*void*)) => (d3f0)
+|list_cons
+(d2f1, d2fs) =>
+let
+//
+val
+d3f0 =
+f1_tapp(d3f0, d2f1)
+//
+in//let
+(
+  f1_wind(d3f0, t2js, d2fs) )
+end (*let*)//end-[list_cons(...)]
+)
+) (*case+*) // end of [ f1_wind(...) ]
+//
+in//local
+//
+fun
+f0_tapp
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+//
+val-
+D2Etapp _ = d2e0.node()
+//
+val d2f0 =
+f1_root(d2e0)
+val d2fs =
+f1_d2fs(d2e0, list_nil)
+//
+val d3f0 =
+trans23_d2exp(env0, d2f0)
+//
+val t2js =
+(
+case+
+d3f0.node() of
+|
+D3Etapq
+(_, t2js) => t2js
+|
+_(*else*) => list_nil(*nil*))
+//
+(*
+val () =
+(
+  prerrln
+  ("f0_tapp: d3f0 = ", d3f0) )
+val () =
+(
+  prerrln
+  ("f0_tapp: t2js = ", t2js) )
+val () =
+(
+  prerrln
+  ("f0_tapp: d2fs = ", d2fs) )
+*)
+//
+in
+(
+  f1_wind(d3f0, t2js, d2fs)  )
+end (*let*) // end of [ f0_tapp(...) ]
+//
+end (*local*)//end of [f0_tapp(env0,d2e0)]
 //
 (* ****** ****** *)
 //

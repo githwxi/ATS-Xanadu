@@ -1410,20 +1410,21 @@ where {
 val t2p0 = f1_type(d2e0)
 //
 val d2f0 = f1_root(d2f0)
-val d2f0 =
-trans2a_d2exp(env0, d2f0)
+val d2f0 = trans2a_d2exp(env0, d2f0)
 //
 val ubtf =
 (
 case+
 t2p0.node() of
-|T2Pnone0() => false
-|_(*non-T2Pnone0*) =>
- unify2a_s2typ(env0,t2p0,d2f0.styp())) }
+|
+T2Pnone0((*0*)) => false
+|
+_(*non-T2Pnone0*) =>
+unify2a_s2typ(env0,t2p0,d2f0.styp())) }
 //
-end (*let*) // end of [f0_tapp(env0,...)]
+end (*let*) // end-of-[f0_tapp(env0,...)]
 //
-end (*local*)//end of [f0_tapp(env0,...)] 
+end (*local*)//end-of-[ f0_tapp(env0,...) ]
 //
 (* ****** ****** *)
 //
