@@ -10,12 +10,14 @@ gseq_set_at
 (xs := gseq_fset_at(xs, i0, x0))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 {x0: t0}
 gseq_append
 <list(x0)><x0> = list_append<x0>
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp

@@ -111,6 +111,9 @@ d3cl.node() of
 f0_local0(env0, d3cl))
 //
 |
+D3Cstaload _ => f0_staload(env0, d3cl)
+//
+|
 D3Cvaldclst _ => f0_valdclst(env0, d3cl)
 |
 D3Cvardclst _ => f0_vardclst(env0, d3cl)
@@ -191,6 +194,21 @@ end(*let*)//end-of-[f0_local0(env0,d3cl)]
 (* ****** ****** *)
 //
 fun
+f0_staload
+( env0:
+! tr3aenv
+, d3cl: d3ecl): d3ecl =
+let
+val-
+D3Cstaload
+( knd0
+, tknd, gsrc
+, fopt, dopt) = d3cl.node() in (d3cl)
+end(*let*)//end-of-[f0_staload(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
 f0_valdclst
 ( env0:
 ! tr3aenv
@@ -218,7 +236,7 @@ trans3a_d3valdclist(env0, d3vs)
 //
 in//let
   d3ecl(loc0, D3Cvaldclst(tknd, d3vs))
-end (*let*) // end of [f0_valdclst(env0,d3cl)]
+end(*let*)//end-of-[f0_valdclst(env0,d3cl)]
 //
 (* ****** ****** *)
 //
@@ -250,7 +268,7 @@ trans3a_d3vardclist(env0, d3vs)
 //
 in//let
   d3ecl(loc0, D3Cvardclst(tknd, d3vs))
-end (*let*) // end of [f0_vardclst(env0,d3cl)]
+end(*let*)//end-of-[f0_vardclst(env0,d3cl)]
 //
 (* ****** ****** *)
 //
@@ -288,7 +306,7 @@ d3ecl_make_node
 ( loc0
 , D3Cfundclst(tknd, tqas, d3cs, d3fs) )
 //
-end (*let*) // end of [f0_fundclst(env0,d3cl)]
+end(*let*)//end-of-[f0_fundclst(env0,d3cl)]
 //
 (* ****** ****** *)
 //
@@ -336,11 +354,11 @@ val (  ) =
 prerrln("f0_implmnt0(3a): d3cl = ", d3cl)
 *)
 //
-} (*where*) // end of [f0_implmnt0(env0,d3cl)]
+}(*where*)//end of [f0_implmnt0(env0,d3cl)]
 //
 (* ****** ****** *)
 //
-} (*where*) //end of [trans3a_d3ecl(env0,d3cl)]
+}(*where*)//end of [trans3a_d3ecl(env0,d3cl)]
 
 (* ****** ****** *)
 

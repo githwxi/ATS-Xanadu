@@ -366,6 +366,7 @@ d3e0.node() of
 |D3Econ _ => f0_con(env0, d3e0)
 |D3Ecst _ => f0_cst(env0, d3e0)
 //
+|D3Etapp _ => f0_tapp(env0, d3e0)
 |D3Etapq _ => f0_tapq(env0, d3e0)
 //
 |D3Edap0 _ => f0_dap0(env0, d3e0)
@@ -496,6 +497,29 @@ val t2p0 = s2typ_hnfiz0(t2p0)
 val t2p0 = trans3a_s2typ(env0, t2p0)
 //
 }(*where*)//end-of-[ f0_cst(env0,d3e0) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_tapp
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Etapp
+(d3f0, s2es) = d3e0.node()
+//
+val
+d3f0 = trans3a_d3exp(env0, d3f0)
+//
+in//let
+d3exp_make_styp_node
+(loc0, d3f0.styp(), D3Etapp(d3f0,s2es))
+end(*let*)//end-of-[ f0_tapp(env0,d3e0) ]
 //
 (* ****** ****** *)
 //
