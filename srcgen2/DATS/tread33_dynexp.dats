@@ -473,6 +473,42 @@ endlet//end of [d3exp_top_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3exp_sapp_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3f0: d3exp
+,s2es: s2explst): d3exp =
+let
+val
+lvl0 = errvl(d3f0) in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_styp_node
+(loc0, t2p0, D3Esapp(d3f0, s2es)) )
+endlet//end of [d3exp_sapp_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_sapq_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3f0: d3exp
+,t2ps: s2typlst): d3exp =
+let
+val
+lvl0 = errvl(d3f0) in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_styp_node
+(loc0, t2p0, D3Esapq(d3f0, t2ps)) )
+endlet//end of [d3exp_sapq_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3exp_tapp_errck
 (loc0: loc_t
 ,t2p0: s2typ
@@ -1177,6 +1213,9 @@ f0_var(d3e0, err)
 //
 |D3Etop _ => f0_top(d3e0, err)
 //
+|D3Esapp _ => f0_sapp(d3e0, err)
+|D3Esapq _ => f0_sapq(d3e0, err)
+//
 |D3Etapp _ => f0_tapp(d3e0, err)
 |D3Etapq _ => f0_tapq(d3e0, err)
 //
@@ -1278,6 +1317,74 @@ let
 val loc = d3e.lctn() in
 d3exp_top_errck(loc, t2p, sym1) endlet
 end (*let*) // end of [f0_top(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_sapp
+( d3e: d3exp
+, err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+(*
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+*)
+//
+val-
+D3Esapp
+( d3f0, s2es) = d3e.node()
+//
+val
+d3f0 = tread33_d3exp(d3f0, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+(
+  d3exp_sapp_errck
+  (d3e.lctn(),d3f0.styp(),d3f0,s2es) )
+end (*let*) // end of [f0_sapp(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_sapq
+( d3e: d3exp
+, err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Esapq
+( d3f0, t2ps) = d3e.node()
+//
+val
+t2ps =
+tread33_s2typlst(t2ps, err)
+val
+d3f0 = tread33_d3exp(d3f0, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+let
+val loc = d3e.lctn() in
+d3exp_sapq_errck(loc, t2p, d3f0, t2ps)
+end (*let*)
+end (*let*) // end of [f0_sapq(d3e,err)]
 //
 (* ****** ****** *)
 //
