@@ -810,6 +810,8 @@ end (*let*) // end of [f0_tapp(env0,d2e0)]
 //
 local
 //
+(* ****** ****** *)
+//
 fun
 f1_root
 (d2f0: d2exp): d2exp =
@@ -835,6 +837,8 @@ val
 d2fs = list_cons(d2f0, d2fs) }
 | _(* non-D2Etapp *) => ( d2fs ) )
 //
+(* ****** ****** *)
+//
 fun
 f1_tapp
 ( d3f0: d3exp
@@ -855,9 +859,76 @@ d3exp
 (loc1,t2p0,D3Etapp(d3f0,s2es))
 endlet // end of [ f1_tapp(...) ]
 //
+(* ****** ****** *)
+//
+fun
+f1_unif
+( env0:
+! tr23env
+, t2j1: t2jag
+, d2f1: d2exp): void =
+let
+//
+val
+t2ps =
+t2jag_get_t2ps(t2j1)
+val
+s2es =
+(
+case-
+d2f1.node() of
+|D2Etapp(_, s2es) => s2es)
+//
+in//let
+f2_t2ps_s2es(env0, t2ps, s2es)
+end where
+{
+//
+fun
+f2_t2p1_s2e1
+( env0:
+! tr23env
+, t2p1: s2typ
+, s2e1: s2exp): void =
+let
+val utbf =
+unify23_s2typ
+( env0
+, t2p1, s2exp_stpize(s2e1))
+endlet
+//
+fun
+f2_t2ps_s2es
+( env0:
+! tr23env
+, t2ps: s2typlst
+, s2es: s2explst): void =
+(
+case+ t2ps of
+|list_nil() => ()
+|list_cons(t2p1, t2ps) =>
+(
+case+ s2es of
+|list_nil() => ()
+|list_cons(s2e1, s2es) =>
+let
+val () =
+f2_t2p1_s2e1(env0, t2p1, s2e1)
+in//let
+f2_t2ps_s2es(env0, t2ps, s2es)
+end(*let*)
+)
+) (*case+*) // end-[f2_t2ps_s2es]
+//
+} (*where*) // end of [f1_unif(...)]
+//
+(* ****** ****** *)
+//
 fun
 f1_wind
-( d3f0: d3exp
+( env0:
+! tr23env
+, d3f0: d3exp
 , t2js: t2jaglst
 , d2fs: d2explst): d3exp =
 (
@@ -881,7 +952,8 @@ let
 val
 d3f0 = d3exp_none2(d3f0)
 in//let
-f1_wind(d3f0, t2js, d2fs) end
+f1_wind
+(env0, d3f0, t2js, d2fs) endlet
 end (*let*)//end-[list_cons(...)]
 )
 //
@@ -899,9 +971,12 @@ val
 d3f0 =
 f1_tapp(d3f0, d2f1)
 //
+val
+utbf = // HX: fail-safe!
+f1_unif(env0, t2j1, d2f1)
+//
 in//let
-(
-  f1_wind(d3f0, t2js, d2fs) )
+f1_wind(env0, d3f0, t2js, d2fs)
 end (*let*)//end-[list_cons(...)]
 )
 ) (*case+*) // end of [ f1_wind(...) ]
@@ -955,7 +1030,7 @@ val () =
 //
 in
 (
-  f1_wind(d3f0, t2js, d2fs)  )
+  f1_wind(env0, d3f0, t2js, d2fs)  )
 end (*let*) // end of [ f0_tapp(...) ]
 //
 end (*local*)//end of [f0_tapp(env0,d2e0)]
