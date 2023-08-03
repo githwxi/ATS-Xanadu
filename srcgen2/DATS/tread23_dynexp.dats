@@ -389,20 +389,6 @@ endlet // end of [d3pat_sapp_errck(...)]
 (* ****** ****** *)
 //
 fun
-d3pat_sapq_errck
-(loc0: loc_t
-,d3f0: d3pat
-,s2as: s2arglst): d3pat =
-let
-val lvl0 = errvl(d3f0) in//let
-d3pat_errck
-(lvl0+1
-,d3pat(loc0, D3Psapq( d3f0 , s2as )))
-endlet // end of [d3pat_sapq_errck(...)]
-//
-(* ****** ****** *)
-//
-fun
 d3pat_tapq_errck
 (loc0: loc_t
 ,d3f0: d3pat
@@ -1015,7 +1001,9 @@ d3p0.node() of
 |D3Pfree _ => f0_free(d3p0, err)
 //
 |D3Psapp _ => f0_sapp(d3p0, err)
+(*
 |D3Psapq _ => f0_sapq(d3p0, err)
+*)
 //
 |D3Ptapq _ => f0_tapq(d3p0, err)
 //
@@ -1100,32 +1088,6 @@ if
 then (d3p) else
 d3pat_sapp_errck(d3p.lctn(),d3f0,s2vs)
 end (*let*) // end of [f0_sapp(d3p,err)]
-//
-(* ****** ****** *)
-//
-fun
-f0_sapq
-(d3p: d3pat
-,err: &sint >> _): d3pat =
-let
-//
-val e00 = err
-//
-val-
-D3Psapq
-(d3f0, s2as) = d3p.node()
-val
-d3f0 = tread23_d3pat(d3f0, err)
-(*
-val
-s2as = tread23_s2arglst(s2as, err)
-*)
-in//let
-if
-(err=e00)
-then (d3p) else
-d3pat_sapq_errck(d3p.lctn(),d3f0,s2as)
-end (*let*) // end of [f0_sapq(d3p,err)]
 //
 (* ****** ****** *)
 //
