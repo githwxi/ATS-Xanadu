@@ -25,8 +25,6 @@ board = board_tbox
 #staload
 "prelude/SATS/gseq000.sats"
 #staload
-"prelude/SATS/list000.sats"
-#staload
 "prelude/SATS/synoug0.sats"
 (* ****** ****** *)
 #extval
@@ -130,20 +128,24 @@ map$fopr(x0) = board_cons(x0, xs)
 filter$test(x0) = board_check(xs, x0)
 } (* end of [board_extend] *)
 
+(* ****** ****** *)
+
 fun
 boardlst_extend
 ( xss
 : list(board)): list(board) =
 (
-gseq_foldr
+list_foldr
+< xs><r0 >
 (xss, list_nil())) where
 {
 #typedef xs = board
 #typedef r0 = list(board)
 #impltmp
 foldr$fopr
-<xs><r0>(xs, r0) =
-append(board_extend(xs), r0) }
+<xs><r0>(xs,r0) =
+(
+  list_append(board_extend(xs), r0)) }
 //(* end of [boardlst_extend] *)
 
 (* ****** ****** *)

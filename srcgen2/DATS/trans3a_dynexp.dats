@@ -459,6 +459,9 @@ d3e0.node() of
 //
 |D3Etop _ => f0_top(env0, d3e0)
 //
+|D3Esapp _ => f0_sapp(env0, d3e0)
+|D3Esapq _ => f0_sapq(env0, d3e0)
+//
 |D3Etapp _ => f0_tapp(env0, d3e0)
 |D3Etapq _ => f0_tapq(env0, d3e0)
 //
@@ -621,6 +624,63 @@ val t2p0 = s2typ_hnfiz0(t2p0)
 val t2p0 = trans3a_s2typ(env0, t2p0)
 //
 }(*where*)//end-of-[ f0_top(env0,d3e0) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_sapp
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Esapp
+(d3f0, s2es) = d3e0.node()
+//
+val
+d3f0 = trans3a_d3exp(env0, d3f0)
+//
+in//let
+d3exp_make_styp_node
+(loc0, d3f0.styp(), D3Esapp(d3f0,s2es))
+end(*let*)//end-of-[ f0_sapp(env0,d3e0) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_sapq
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val-
+D3Esapq
+(d3f0, t2ps) = d3e0.node()
+//
+val t2p0 =
+d3e0.styp((*0*))
+val t2p0 =
+s2typ_hnfiz0(t2p0)
+val t2p0 =
+trans3a_s2typ(env0, t2p0)
+//
+val
+t2ps =
+trans3a_s2typlst(env0, t2ps)
+//
+val
+d3f0 = trans3a_d3exp(env0, d3f0)
+//
+in//let
+(
+  d3exp_make_styp_node
+  (loc0, t2p0, D3Esapq(d3f0, t2ps)) )
+end(*let*)//end-of-[ f0_sapq(env0,d3e0) ]
 //
 (* ****** ****** *)
 //
