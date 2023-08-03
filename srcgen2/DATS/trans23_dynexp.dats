@@ -1816,21 +1816,25 @@ in//let
 //
 case+
 farg.node() of
+//
 |
-F2ARGsta0(s2vs, s2ps) =>
-f3arg
-(loc0,F3ARGsta0(s2vs,s2ps))
-|
-F2ARGdyn0(npf1, d2ps) =>
+F2ARGdapp(npf1, d2ps) =>
 let
 val loc0 = farg.lctn()
 val d3ps =
 trans23_d2patlst(env0, d2ps)
 in//let
-f3arg(loc0,F3ARGdyn0(npf1,d3ps))
-end (*let*) // end of [F2ARGdyn0]
+f3arg(loc0,F3ARGdapp(npf1,d3ps))
+end (*let*) // end of [F2ARGdapp]
+//
 |
-F2ARGmet0(s2es) => f3arg(loc0,F3ARGmet0(s2es))
+F2ARGsapp
+(s2vs, s2ps) =>
+(
+  f3arg(loc0,F3ARGsapp(s2vs,s2ps)))
+|
+F2ARGmets
+(   s2es   ) => f3arg(loc0,F3ARGmets(s2es))
 //
 end (*let*) // end of [trans23_f2arg(env0,farg)]
 //

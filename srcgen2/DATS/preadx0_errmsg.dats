@@ -1363,24 +1363,28 @@ farg.node() of
 |
 F0ARGnone(tok) => ()
 |
-F0ARGdyn0(dpat) =>
-d0pat_fpemsg(out, dpat)
+F0ARGdapp
+(   dpat   ) =>
+(
+  d0pat_fpemsg(out, dpat))
 |
-F0ARGsta0(tbeg,s0qs,tend) =>
+F0ARGsapp
+(tbeg,s0qs,tend) =>
 let
 val () =
 s0qualst_fpemsg(out, s0qs)
 val () =
 token_RBRACE_fpemsg(out, tend)
-endlet // end of [F0ARGsta0(_,_,_)]
+endlet // end of [F0ARGsapp(_,_,_)]
 |
-F0ARGmet0(tbeg,s0es,tend) =>
+F0ARGmets
+(tbeg,s0es,tend) =>
 let
 val () =
 s0explst_fpemsg(out, s0es)
 val () =
 token_GTDOT_fpemsg( out, tend )
-endlet // end of [F0ARGmet0(_,_,_)]
+endlet // end of [F0ARGmets(_,_,_)]
 )
 //
 (* ****** ****** *)

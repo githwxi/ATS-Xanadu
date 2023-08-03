@@ -2357,7 +2357,7 @@ f0_f0a0
 case+
 f0a0.node() of
 |
-F0ARGsta0
+F0ARGsapp
 (tbeg, s0qs, tend) =>
 (
   f0arg_make_node(loc0, node)
@@ -2366,7 +2366,7 @@ F0ARGsta0
   val loc0 = f0a0.lctn()
   val s0qs = auxs0qs(s0qs)
   val node =
-  F0ARGsta0(tbeg, s0qs, tend)
+  F0ARGsapp(tbeg, s0qs, tend)
 }
 | _ (* non-F0ARGsom_sta *) => f0a0
 )
@@ -2419,12 +2419,12 @@ list_cons(x1, xs) =>
 case+
 x1.node() of
 |
-F0ARGsta0
+F0ARGsapp
 (tbeg, s0qs, tend) =>
 if
 t0_s0qs(s0qs)
 then true else t0_f0as(xs)
-| _(*non-F0ARGsta0*) => t0_f0as(xs)
+| _(*non-F0ARGsapp*) => t0_f0as(xs)
 )
 )
 //

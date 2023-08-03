@@ -352,10 +352,10 @@ f1arg_node =
 | F1ARGnone of (token)
 *)
 //
-| F1ARGdyn0 of (d1pat)
+| F1ARGdapp of (d1pat)
 //
-| F1ARGsta0 of (s1qualst)
-| F1ARGmet0 of (s1explst)
+| F1ARGsapp of (s1qualst)
+| F1ARGmets of (s1explst)
 //
 (* ****** ****** *)
 fun

@@ -777,16 +777,16 @@ F2ARGnone of (token)
 *)
 //
 |
-F2ARGdyn0 of
+F2ARGdapp of
 (int(*npf*), d2patlst(*args*))
 //
 |
-F2ARGsta0 of
+F2ARGsapp of
 ( s2varlst(*s2vs*)
 , s2explst(*s2ps*) ) // static
 //
 |
-F2ARGmet0 of (s2explst(*mets*))
+F2ARGmets of (s2explst(*mets*))
 //
 (* ****** ****** *)
 //

@@ -56,7 +56,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload _ = "./statyp2_tmplib.dats"
 (* ****** ****** *)
-
+//
 #implfun
 match2a_d2var
 (env0, d2v1, t2p2) =
@@ -73,26 +73,29 @@ match2a_s2typ
   prerrln("match2a_d2var: t2p2 = ", t2p2)
 *)
 } (*where*) // end of [match2a_d2var(env0,...)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 match2a_d2con
 (env0, d2c1, t2p2) =
 match2a_s2typ
 (env0, t2p1, t2p2) where
 {
-  val t2p1 = d2con_get_xtyp(d2c1)
+//
+val
+t2p1 = d2con_get_xtyp(d2c1)
+//
 (*
-  val (  ) =
-  prerrln("match2a_d2con: d2c1 = ", d2c1)
-  val (  ) =
-  prerrln("match2a_d2con: t2p1 = ", t2p1)
-  val (  ) =
-  prerrln("match2a_d2con: t2p2 = ", t2p2)
+val (  ) =
+prerrln("match2a_d2con: d2c1 = ", d2c1)
+val (  ) =
+prerrln("match2a_d2con: t2p1 = ", t2p1)
+val (  ) =
+prerrln("match2a_d2con: t2p2 = ", t2p2)
 *)
 } (*where*) // end of [match2a_d2con(env0,...)]
-
+//
 (* ****** ****** *)
 
 #implfun
@@ -102,22 +105,28 @@ match2a_s2typ
 (env0, t2p1, t2p2) where
 {
 //
-  val tfun = d2con_get_xtyp(d2c1)
-//
-  val t2p1 = // [t2p1] is the result
-  (
-  case- tfun.node() of
-  |T2Pfun1(_,_,_,tres) => tres): s2typ
+val
+t2p1 = // [t2p1] is the result
+let
+  val
+  tfun = d2con_get_xtyp(d2c1)
+  val
+  tfnd = s2typ_get_node(tfun)
+in//let
+(
+  case- tfnd of
+  | T2Pfun1(_,_,_,tres) => tres): s2typ
+endlet // end of [ val(t2p1) ]
 //
 (*
-  val (  ) =
-  prerrln("match2a_d2ap1: d2c1 = ", d2c1)
-  val (  ) =
-  prerrln("match2a_d2ap1: tfun = ", tfun)
-  val (  ) =
-  prerrln("match2a_d2ap1: t2p1 = ", t2p1)
-  val (  ) =
-  prerrln("match2a_d2ap1: t2p2 = ", t2p2)
+val (  ) =
+prerrln("match2a_d2ap1: d2c1 = ", d2c1)
+val (  ) =
+prerrln("match2a_d2ap1: tfun = ", tfun)
+val (  ) =
+prerrln("match2a_d2ap1: t2p1 = ", t2p1)
+val (  ) =
+prerrln("match2a_d2ap1: t2p2 = ", t2p2)
 *)
 //
 } (*where*) // end of [match2a_d2ap1(env0,...)]
@@ -130,15 +139,18 @@ match2a_d2cst
 match2a_s2typ
 (env0, t2p1, t2p2) where
 {
-  val t2p1 = d2cst_get_xtyp(d2c1)
+//
+val t2p1 = d2cst_get_xtyp(d2c1)
+//
 (*
-  val (  ) =
-  prerrln("match2a_d2cst: d2c1 = ", d2c1)
-  val (  ) =
-  prerrln("match2a_d2cst: t2p1 = ", t2p1)
-  val (  ) =
-  prerrln("match2a_d2cst: t2p2 = ", t2p2)
+val (  ) =
+prerrln("match2a_d2cst: d2c1 = ", d2c1)
+val (  ) =
+prerrln("match2a_d2cst: t2p1 = ", t2p1)
+val (  ) =
+prerrln("match2a_d2cst: t2p2 = ", t2p2)
 *)
+//
 } (*where*) // end of [match2a_d2cst(env0,...)]
 
 (* ****** ****** *)

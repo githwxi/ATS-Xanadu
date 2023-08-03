@@ -919,20 +919,20 @@ f1arg_fpemsg
 case+
 farg.node() of
 |
-F1ARGdyn0(dpat) =>
+F1ARGdapp(dpat) =>
 d1pat_fpemsg(out, dpat)
 |
-F1ARGsta0(s1qs) =>
+F1ARGsapp(s1qs) =>
 let
 val () =
 s1qualst_fpemsg(out, s1qs)
-endlet // end of [F1ARGsta0(_,_,_)]
+endlet // end of [F1ARGsapp(_,_,_)]
 |
-F1ARGmet0(s1es) =>
+F1ARGmets(s1es) =>
 let
 val () =
 s1explst_fpemsg(out, s1es)
-endlet // end of [F1ARGmet0(_,_,_)]
+endlet // end of [F1ARGmets(_,_,_)]
 )
 //
 (* ****** ****** *)

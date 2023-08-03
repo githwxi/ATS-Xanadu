@@ -362,16 +362,16 @@ f3arg_node =
 *)
 //
 |
-F3ARGdyn0 of
+F3ARGdapp of
 (sint(*npf*), d3patlst(*args*))
 //
 |
-F3ARGsta0 of
+F3ARGsapp of
 ( s2varlst(*s2vs*)
 , s2explst(*s2ps*) ) // static
 //
 |
-F3ARGmet0 of (s2explst(*mets*))
+F3ARGmets of (s2explst(*mets*))
 //
 |
 F3ARGsapq of (s2varlst(*synd*))

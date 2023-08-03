@@ -310,15 +310,15 @@ fperr33_f3arg
 case+
 farg.node() of
 //
-|F3ARGdyn0
+|F3ARGdapp
 (npf1, d3ps) =>
 fperr33_d3patlst(out, d3ps)
 //
-|F3ARGsta0
-(s2vs, s2es) => (  (*void*)  )
-|F3ARGmet0(s2es) => (  (*void*)  )
-//
-) (*case+*)//end-of-(fperr33_f3arg(out,farg)]
+|F3ARGsapp
+(s2vs, s2es) => ( (*void*) )
+|F3ARGmets
+(   s2es   ) => ( (*void*) ) )//end-of-fun
+//(*case+*)//end-of-(fperr33_f3arg(out,farg)]
 //
 (* ****** ****** *)
 //

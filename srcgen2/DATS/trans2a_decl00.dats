@@ -990,23 +990,23 @@ case+ f2as of
 (
 case+
 f2a1.node() of
-|F2ARGdyn0 _ =>
+|F2ARGdapp _ =>
 let
 val-
 T2Pfun1
 (f2cl,npf1
 ,t2ps,tres) =
 tres.node() in
-f0_tres(f2as, tres) end//F2ARGdyn0
+f0_tres(f2as, tres) end//F2ARGdapp
 //
-|F2ARGsta0 _ =>
+|F2ARGsapp _ =>
 (*
 let
 val-
 T2Puni0
 (s2vs,tres) =
 tres.node() in
-f0_tres(f2as, tres) end//F2ARGsta0
+f0_tres(f2as, tres) end//F2ARGsapp
 *)
 f0_tres(f2as, tres) where
 {
@@ -1018,7 +1018,7 @@ tres.node() of
 T2Puni0
 (s2vs,tres) => tres | _ => tres) }
 //
-|F2ARGmet0 _ => f0_tres(f2as, tres))
+|F2ARGmets _ => f0_tres(f2as, tres))
 ) (*case+*) // end-of-[f0_tres(...)]
 //
 fun

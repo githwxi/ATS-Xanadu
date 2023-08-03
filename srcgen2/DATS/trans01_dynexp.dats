@@ -1745,36 +1745,36 @@ T_IDALP
 in//let
 f1arg
 (loc0
-,F1ARGdyn0(d1pat(loc,D1Pid0(sym))))
+,F1ARGdapp(d1pat(loc,D1Pid0(sym))))
 end (*let*) // end of [F0ARGnone(tok)]
 //
 |
-F0ARGdyn0(d0p1) =>
+F0ARGdapp(d0p1) =>
 let
 val
 d1p1 = trans01_d0pat(tenv, d0p1)
 in//let
-f1arg_make_node(loc0,F1ARGdyn0(d1p1))
-end (*let*) // end of [F0ARGdyn0(d0p1)]
+f1arg_make_node(loc0,F1ARGdapp(d1p1))
+end (*let*) // end of [F0ARGdapp(d0p1)]
 //
 |
-F0ARGsta0
+F0ARGsapp
 (tbeg,s0qs,tend) =>
 let
 val
 s1qs = trans01_s0qualst(tenv, s0qs)
 in//let
-f1arg_make_node(loc0,F1ARGsta0(s1qs))
-end (*let*) // end of [F0ARGsta0(_,_,_)]
+f1arg_make_node(loc0,F1ARGsapp(s1qs))
+end (*let*) // end of [F0ARGsapp(_,_,_)]
 |
-F0ARGmet0
+F0ARGmets
 (tbeg,s0es,tend) =>
 let
 val
 s1es = trans01_s0explst(tenv, s0es)
 in//let
-f1arg_make_node(loc0,F1ARGmet0(s1es))
-end (*let*) // end of [F0ARGmet0(_,_,_)]
+f1arg_make_node(loc0,F1ARGmets(s1es))
+end (*let*) // end of [F0ARGmets(_,_,_)]
 //
 end (*let*) // end of [trans01_f0arg(tenv,f0a0)]
 

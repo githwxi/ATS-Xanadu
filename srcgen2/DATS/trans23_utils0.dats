@@ -124,11 +124,11 @@ case+ f3as of
 //
 case+ f3a1.node() of
 //
-|F3ARGmet0 _ =>
+|F3ARGmets _ =>
 (
   auxmain(f3as, tfun))
 //
-|F3ARGsta0(s2vs, s2ps) =>
+|F3ARGsapp(s2vs, s2ps) =>
 (
 if
 not
@@ -150,10 +150,10 @@ in//let
 s2typ_make_node
 (s2t0, T2Puni0(s2vs, tres))
 endlet // end-of-[else]
-) (* end of [F3ARGsta0(...) *)
+) (* end of [F3ARGsapp(...) *)
 //
 |
-F3ARGdyn0(npf1, d3ps) =>
+F3ARGdapp(npf1, d3ps) =>
 let
 val-
 T2Pfun1
@@ -174,7 +174,7 @@ in//let
 s2typ_make_node
 ( s2t0
 , T2Pfun1(f2cl,npf1,t2ps,tres))
-end (*let*) // end of [F3ARGdyn0]
+end (*let*) // end of [F3ARGdapp]
 //
 ) (* end of [list_cons(...)] *)
 ) (*case+*) // end of [auxmain(...)]

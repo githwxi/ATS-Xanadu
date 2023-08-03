@@ -789,16 +789,16 @@ f2arg_fpemsg
 (
 case+
 farg.node() of
-|F2ARGdyn0
+|F2ARGdapp
 (npf1, d2ps) =>
 d2patlst_fpemsg(out, d2ps)
 //
-|F2ARGsta0
+|F2ARGsapp
 (s2vs, s2es) =>
 s2explst_fpemsg(out, s2es)
-|F2ARGmet0(s2es) =>
-s2explst_fpemsg(out, s2es)
-) (*case+*)//end-of-(f2arg_fpemsg(out,farg)]
+|F2ARGmets(s2es) =>
+s2explst_fpemsg(out, s2es) )//end-of-fun
+//(*case+*)//end-of-(f2arg_fpemsg(out,farg)]
 //
 (* ****** ****** *)
 //

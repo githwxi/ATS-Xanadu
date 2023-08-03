@@ -1911,11 +1911,11 @@ tr12env_add0_f2arg
 case+
 f2a0.node() of
 |
-F2ARGdyn0
+F2ARGdapp
 (npf1, d2ps) =>
 tr12env_add0_d2patlst(env0, d2ps)
-| F2ARGsta0 _ => () | F2ARGmet0 _ => ()
-) (*case+*)//end[tr12env_add0_f2arg(env0,f2a0)]
+|F2ARGsapp _ => () |F2ARGmets _ => () )
+//(*case+*)//end[tr12env_add0_f2arg(env0,f2a0)]
 //
 (* ****** ****** *)
 //

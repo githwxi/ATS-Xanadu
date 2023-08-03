@@ -1767,7 +1767,7 @@ farg.node() of
 F1ARGnone(tok)
 *)
 |
-F1ARGdyn0(d1p1) =>
+F1ARGdapp(d1p1) =>
 let
 val e00 = err
 val d1p1 =
@@ -1777,10 +1777,10 @@ if
 (err=e00)
 then (farg) else
 f1arg
-(farg.lctn(), F1ARGdyn0(d1p1))
-endlet // end of [F1ARGdyn0(d1p1)]
+(farg.lctn(), F1ARGdapp(d1p1))
+endlet // end of [F1ARGdapp(d1p1)]
 |
-F1ARGsta0(s1qs) =>
+F1ARGsapp(s1qs) =>
 let
 //
 val e00 = err
@@ -1793,10 +1793,10 @@ if
 (err=e00)
 then (farg) else
 f1arg
-(farg.lctn(), F1ARGsta0(s1qs))
-endlet // end of [F1ARGsta0(s1qs)]
+(farg.lctn(), F1ARGsapp(s1qs))
+endlet // end of [F1ARGsapp(s1qs)]
 |
-F1ARGmet0(s1es) =>
+F1ARGmets(s1es) =>
 let
 //
 val e00 = err
@@ -1809,8 +1809,8 @@ if
 (err=e00)
 then (farg) else
 f1arg
-(farg.lctn(), F1ARGmet0(s1es))
-endlet // end of [F1ARGmet0(s1es)]
+(farg.lctn(), F1ARGmets(s1es))
+endlet // end of [F1ARGmets(s1es)]
 //
 ) (*case+*)//end-of[tread01_f1arg(farg,err)]
 //
