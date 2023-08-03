@@ -212,6 +212,85 @@ in//let
 case+
 d3e.node() of
 //
+|
+D3Esapp
+(d3f0,s2es) =>
+let
+val () =
+fperr33_d3exp(out, d3f0)
+(*
+val () =
+fperr33_s2explst(out, s2es)
+*)
+endlet
+//
+|
+D3Etapp
+(d3f0,s2es) =>
+let
+val () =
+fperr33_d3exp(out, d3f0)
+(*
+val () =
+fperr33_s2explst(out, s2es)
+*)
+endlet
+//
+|
+D3Edapp
+(d3f0
+,npf1, d3es) =>
+let
+val () =
+fperr33_d3exp(out, d3f0)
+val () =
+fperr33_d3explst(out, d3es)
+endlet
+//
+|
+D3Elet0
+(dcls, d3e1) =>
+(
+  fperr33_d3exp(out, d3e1))
+where
+{
+val () =
+fperr33_d3eclist(out, dcls)
+}(*where*)//end-of-[D3Elet0]
+|
+D3Ewhere
+(d3e1, dcls) =>
+(
+  fperr33_d3exp(out, d3e1))
+where
+{
+val () =
+fperr33_d3eclist(out, dcls)
+}(*where*)//end-of-[D3Ewhere]
+//
+|
+D3Eift0
+(d3e1,dthn,dels) =>
+let
+  val () =
+  fperr33_d3exp(out, d3e1)
+  val () =
+  fperr33_d3expopt(out, dthn)
+  val () =
+  fperr33_d3expopt(out, dels)
+endlet
+//
+|
+D3Ecas0
+(tknd,d3e1,dcls) =>
+let
+  val () =
+  fperr33_d3exp(out, d3e1)
+  val () =
+  fperr33_d3clslst(out, dcls)
+endlet
+//
+(* ****** ****** *)
 //
 |D3Enone0 _ => (  (*void*)  )
 |D3Enone1 _ => () | D3Enone2 _ => ()

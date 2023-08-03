@@ -79,6 +79,7 @@ D3E = "./dynexp3.sats"
 (* ****** ****** *)
 #typedef d3patlst = $D3E.d3patlst
 #typedef d3explst = $D3E.d3explst
+#typedef d3expopt = $D3E.d3expopt
 (* ****** ****** *)
 #typedef f3arglst = $D3E.f3arglst
 (* ****** ****** *)
@@ -153,6 +154,7 @@ fun tread33_t2jaglst: ftread33(t2jaglst)
 (* ****** ****** *)
 fun tread33_d3patlst: ftread33(d3patlst)
 fun tread33_d3explst: ftread33(d3explst)
+fun tread33_d3expopt: ftread33(d3expopt)
 (* ****** ****** *)
 fun tread33_f3arglst: ftread33(f3arglst)
 (* ****** ****** *)

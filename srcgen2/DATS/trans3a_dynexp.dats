@@ -374,6 +374,7 @@ d3e0.node() of
 //
 |D3Elet0 _ => f0_let0(env0, d3e0)
 //
+|D3Eift0 _ => f0_ift0(env0, d3e0)
 |D3Ecas0 _ => f0_cas0(env0, d3e0)
 //
 |D3Eseqn _ => f0_seqn(env0, d3e0)
@@ -645,6 +646,41 @@ in//let
   d3exp_make_styp_node
   (loc0, t2p0, D3Elet0(dcls, d3e1)))
 end (*let*)//end-of-[ f0_let0(env0,d3e0) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_ift0
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Eift0
+(d3e1
+,dthn, dels) = d3e0.node()
+//
+val t2p0 =
+d3e0.styp((*0*))
+val t2p0 =
+s2typ_hnfiz0(t2p0)
+val t2p0 =
+trans3a_s2typ(env0, t2p0)
+//
+val d3e1 =
+trans3a_d3exp(env0, d3e1)
+val dthn =
+trans3a_d3expopt(env0, dthn)
+val dels =
+trans3a_d3expopt(env0, dels)
+//
+in//let
+d3exp_make_styp_node
+(loc0, t2p0, D3Eift0(d3e1, dthn, dels))
+end (*let*) // end of [f0_ift0(env0,d3e0)]
 //
 (* ****** ****** *)
 //

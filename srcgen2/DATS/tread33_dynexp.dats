@@ -532,6 +532,28 @@ endlet//end of [d3exp_let0_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3exp_ift0_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3e1: d3exp
+,dthn: d3expopt
+,dels: d3expopt): d3exp =
+let
+val
+lvl0 = gmax
+( errvl(d3e1)
+, errvl(dthn), errvl(dels))
+in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_styp_node
+(loc0,t2p0,D3Eift0(d3e1,dthn,dels)))
+endlet // end of [d3exp_ift0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3exp_cas0_errck
 (loc0: loc_t
 ,t2p0: s2typ
@@ -1021,6 +1043,7 @@ f0_var(d3e0, err)
 //
 |D3Elet0 _ => f0_let0(d3e0, err)
 //
+|D3Eift0 _ => f0_ift0(d3e0, err)
 |D3Ecas0 _ => f0_cas0(d3e0, err)
 //
 |D3Eseqn _ => f0_seqn(d3e0, err)
@@ -1244,6 +1267,44 @@ val loc = d3e.lctn() in
 d3exp_let0_errck(loc, t2p, dcls, d3e1)
 end (*let*)
 end (*let*) // end of [ f0_let0(d3e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_ift0
+( d3e: d3exp
+, err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Eift0
+( d3e1
+, dthn, dels) = d3e.node()
+//
+val
+d3e1 = tread33_d3exp(d3e1, err)
+val
+dthn = tread33_d3expopt(dthn, err)
+val
+dels = tread33_d3expopt(dels, err)
+//
+in//let
+//
+if
+(err=e00)
+then (d3e) else
+(
+  d3exp_ift0_errck
+  (d3e.lctn(), t2p, d3e1,dthn,dels) )
+//
+end (*let*) // end of [ f0_ift0(d3e,err) ]
 //
 (* ****** ****** *)
 //
@@ -1817,6 +1878,12 @@ tread33_d3explst
   (  d3es, err  ) =
 (
   list_tread33_fnp(d3es, err, tread33_d3exp))
+//
+#implfun
+tread33_d3expopt
+  (  dopt, err  ) =
+(
+  optn_tread33_fnp(dopt, err, tread33_d3exp))
 //
 (* ****** ****** *)
 //
