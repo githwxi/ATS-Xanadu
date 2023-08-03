@@ -43,12 +43,26 @@ endlet
 (* ****** ****** *)
 #impltmp
 <>(*tmp*)
-list_nilq{a:t0}
-  (xs) =
+list_nilq
+{a:t0}(xs) =
 (
 case+ xs of
-| nil _ => true | cons _ => false )
+|
+nil _ => true | cons _ => false)
 //(*case*) // end-of-[list_nilq(xs)]
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<a0:t0>
+list_length =
+fix
+length(xs) =>
+(
+case+ xs of
+| nil _ => 0
+| cons(_, xs) => length(xs))//end-fun
+//
 (* ****** ****** *)
 ////
 (* ****** ****** *)

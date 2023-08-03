@@ -453,6 +453,8 @@ svts =
 s2vts_make_lctn_tqas(loc0, t2qs) }
 // (*whr*) // end of [d2con2a_s2typ(...)]
 //
+(* ****** ****** *)
+//
 #implfun
 d2cst2a_s2typ
 (  loc0, dcst  ) =
