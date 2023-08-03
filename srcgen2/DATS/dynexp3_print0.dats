@@ -126,11 +126,13 @@ D3Psapp
 (d3f0, s2vs) =>
 print
 ("D3Psapp(",d3f0,";",s2vs,")")
+(*
 |
 D3Psapq
 (d3f0, s2as) =>
 print
 ("D3Psapq(",d3f0,";",s2as,")")
+*)
 //
 |
 D3Ptapq
@@ -452,9 +454,11 @@ print
 |
 F3ARGmets
 (   s2es   ) => print("F3ARGmets(",s2es,")")
+(*
 |
 F3ARGsapq
 (   s2vs   ) => print("F3ARGsapq(",s2vs,")")
+*)
 //
 end (*let*) // end of [f3arg_fprint(out,farg)]
 
