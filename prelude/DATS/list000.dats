@@ -905,14 +905,16 @@ Quite an informative example:
 #impltmp
 <a>(*tmp*)
 list_tabulate_cfr
-  {n}(n0, f0) = let
+  {n}(n0, f0) =
+(
+list_tabulate<a><n>(n0)
+) where
+{
 //
 #impltmp
 tabulate$fopr<a><n>(i0) = f0(i0)
 //
-in
-  list_tabulate<a><n>(n0)
-end (*let*) // end of [list_tabulate_cfr]
+} (*where*) // end of [list_tabulate_cfr]
 //
 (* ****** ****** *)
 //
