@@ -64,7 +64,6 @@ case+ xs of
 | cons(_, xs) => length(xs))//end-fun
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 #impltmp
 <a>(*tmp*)
