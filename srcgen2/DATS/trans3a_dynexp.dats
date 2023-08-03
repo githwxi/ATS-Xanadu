@@ -107,6 +107,11 @@ d3p0.node() of
 //
 |D3Pcon _ => f0_con(env0, d3p0)
 //
+(*
+|D3Psapp _ => f0_sapp(env0, d3p0)
+*)
+|D3Psapq _ => f0_sapq(env0, d3p0)
+//
 |D3Ptapq _ => f0_tapq(env0, d3p0)
 //
 |D3Pdap1 _ => f0_dap1(env0, d3p0)
@@ -205,6 +210,37 @@ val t2p0 = s2typ_hnfiz0(t2p0)
 val t2p0 = trans3a_s2typ(env0, t2p0)
 //
 }(*where*)//end-of-[f0_any(env0,d3p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_sapq
+( env0:
+! tr3aenv
+, d3p0: d3pat): d3pat =
+let
+//
+val loc0 = d3p0.lctn()
+//
+val-
+D3Psapq
+( d3p1, s2vs) = d3p0.node()
+//
+val
+t2p0 = d3p0.styp((*0*))
+val
+t2p0 = s2typ_hnfiz0(t2p0)
+val
+t2p0 = trans3a_s2typ(env0, t2p0)
+//
+val
+d3p1 = trans3a_d3pat(env0, d3p1)
+//
+in//let
+(
+  d3pat
+  (loc0, t2p0, D3Psapq(d3p1, s2vs)) )
+end(*let*)//end-of-[f0_sapq(env0,d3p0)]
 //
 (* ****** ****** *)
 //

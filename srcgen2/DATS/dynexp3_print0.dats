@@ -126,13 +126,11 @@ D3Psapp
 (d3f0, s2vs) =>
 print
 ("D3Psapp(",d3f0,";",s2vs,")")
-(*
 |
 D3Psapq
-(d3f0, s2as) =>
+(d3f0, s2vs) =>
 print
-("D3Psapq(",d3f0,";",s2as,")")
-*)
+("D3Psapq(",d3f0,";",s2vs,")")
 //
 |
 D3Ptapq
