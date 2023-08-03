@@ -1,6 +1,16 @@
 (* ****** ****** *)
 //
 fun
+proj0(ci: @(char, sint)) = ci.0
+////
+fun
+proj1(ci: @(char, sint)) = ci.1
+//
+(* ****** ****** *)
+////
+(* ****** ****** *)
+//
+fun
 fact29(x: sint) =
 (
   loop@(0, 1) ) where
@@ -16,7 +26,6 @@ in//let
 } (*where*) // end of [fact29(x: sint)]
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 fun
 <x0:vt>

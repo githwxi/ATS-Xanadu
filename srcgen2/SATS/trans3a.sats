@@ -81,6 +81,7 @@ MAP = "./xsymmap.sats"
 #typedef s2exp = $S2E.s2exp
 *)
 #typedef s2typ = $S2E.s2typ
+#typedef l2t2p = $S2E.l2t2p
 //
 (* ****** ****** *)
 #typedef s2qag = $D2E.s2qag
@@ -108,8 +109,11 @@ MAP = "./xsymmap.sats"
 (* ****** ****** *)
 #typedef
  s2varlst  =  $S2E.s2varlst
+(* ****** ****** *)
 #typedef
  s2typlst  =  $S2E.s2typlst
+#typedef
+ l2t2plst  =  $S2E.l2t2plst
 (* ****** ****** *)
 #typedef
  s2qaglst  =  $D2E.s2qaglst
@@ -259,6 +263,11 @@ trans3a_s2typ
 ( env0:
 ! tr3aenv,t2p0:s2typ):s2typ//fun
 //
+fun
+trans3a_l2t2p
+( env0:
+! tr3aenv,lt2p:l2t2p):l2t2p//fun
+//
 (* ****** ****** *)
 //
 fun
@@ -329,6 +338,11 @@ fun
 trans3a_s2typlst
 ( env0:
 ! tr3aenv,t2ps:s2typlst):s2typlst
+//
+fun
+trans3a_l2t2plst
+( env0:
+! tr3aenv,ltps:l2t2plst):l2t2plst
 //
 (* ****** ****** *)
 //

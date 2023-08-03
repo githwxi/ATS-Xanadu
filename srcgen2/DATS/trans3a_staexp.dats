@@ -104,6 +104,8 @@ T2Pfun1 _ => f0_fun1(env0, t2p0)
 |T2Papps _ => f0_apps(env0, t2p0)
 |T2Ptext _ => f0_text(env0, t2p0)
 //
+|T2Ptrcd _ => f0_trcd(env0, t2p0)
+//
 |T2Ps2exp _ => f0_s2exp(env0, t2p0)
 //
 |
@@ -252,7 +254,7 @@ val
 t2ps = trans3a_s2typlst(env0, t2ps)
 //
 in//let
-s2typ(t2p0.sort(), T2Papps(t2f0, t2ps))
+s2typ(t2p0.sort(), T2Papps(t2f0,t2ps))
 end(*let*)//end-of-[ f0_apps(env0,t2p0) ]
 //
 (* ****** ****** *)
@@ -272,8 +274,31 @@ val
 t2ps = trans3a_s2typlst(env0, t2ps)
 //
 in//let
-s2typ(t2p0.sort(), T2Ptext(name, t2ps))
+s2typ(t2p0.sort(), T2Ptext(name,t2ps))
 end(*let*)//end-of-[ f0_text(env0,t2p0) ]
+//
+(* ****** ****** *)
+//
+//
+fun
+f0_trcd
+( env0:
+! tr3aenv
+, t2p0: s2typ): s2typ =
+let
+//
+val-
+T2Ptrcd
+( tknd
+, npf1, ltps) = t2p0.node()
+//
+val
+ltps = trans3a_l2t2plst(env0, ltps)
+//
+in//let
+s2typ_make_node
+(t2p0.sort(), T2Ptrcd(tknd,npf1,ltps))
+end(*let*)//end-of-[ f0_trcd(env0,t2p0) ]
 //
 (* ****** ****** *)
 //
@@ -286,6 +311,20 @@ f0_s2exp
 (* ****** ****** *)
 //
 }(*where*)//end of [trans3a_s2typ(env0,t2p0)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans3a_l2t2p
+( env0,lt2p ) =
+(
+S2LAB(l0, t2p0)) where
+{
+val+
+S2LAB(l0, t2p0) = lt2p
+val
+t2p0 = trans3a_s2typ(env0, t2p0) }//end-fun
+//(*where*)//end-of[trans3a_l2t2p(env0,lt2p)]
 //
 (* ****** ****** *)
 //
@@ -307,6 +346,14 @@ trans3a_s2typlst
 ( env0, t2ps ) =
 (
   list_trans3a_fnp(env0, t2ps, trans3a_s2typ))
+//
+(* ****** ****** *)
+//
+#implfun
+trans3a_l2t2plst
+( env0, ltps ) =
+(
+  list_trans3a_fnp(env0, ltps, trans3a_l2t2p))
 //
 (* ****** ****** *)
 //

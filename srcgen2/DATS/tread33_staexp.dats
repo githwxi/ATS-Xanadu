@@ -160,6 +160,23 @@ end//let//end-of(s2typ_text_errck(...))
 //
 (* ****** ****** *)
 //
+fun
+s2typ_trcd_errck
+(s2t0: sort2
+,tknd: trcdknd
+,npf1: ( int )
+,ltps: l2t2plst): s2typ =
+let
+val lvl0 = 1
+in//let
+s2typ_errck
+( lvl0
+, s2typ
+  (s2t0, T2Ptrcd(tknd, npf1, ltps)))
+end//let//end-of(s2typ_trcd_errck(...))
+//
+(* ****** ****** *)
+//
 #implfun
 tread33_s2typ
 ( t2p0, err ) =
@@ -184,6 +201,8 @@ t2p0.node() of
 |T2Pfun1 _ => f0_fun1(t2p0, err)
 //
 |T2Ptext _ => f0_text(t2p0, err)
+//
+|T2Ptrcd _ => f0_trcd(t2p0, err)
 //
 |T2Ps2exp _ => f0_s2exp(t2p0, err)
 //
@@ -343,6 +362,34 @@ end(*let*)// end-of-[ f0_text(t2p,err) ]
 (* ****** ****** *)
 //
 fun
+f0_trcd
+( t2p: s2typ
+, err: &sint >> _): s2typ =
+let
+//
+val e00 = err
+//
+val-
+T2Ptrcd
+( tknd
+, npf1, ltps) = t2p.node()
+//
+val
+ltps = tread33_l2t2plst(ltps, err)
+//
+in//let
+if
+(err=e00)
+then (t2p) else
+let
+val s2t = t2p.sort() in//let
+s2typ_trcd_errck(s2t, tknd,npf1,ltps)
+end(*let*)// end-of-else // end-of-if
+end(*let*)// end-of-[ f0_trcd(t2p,err) ]
+//
+(* ****** ****** *)
+//
+fun
 f0_s2exp
 ( t2p: s2typ
 , err: &sint >> _): s2typ = t2p//end-fun
@@ -384,6 +431,14 @@ tread33_s2typlst
   (  t2ps, err  ) =
 (
   list_tread33_fnp(t2ps, err, tread33_s2typ))
+//
+(* ****** ****** *)
+//
+#implfun
+tread33_l2t2plst
+  (  ltps, err  ) =
+(
+  list_tread33_fnp(ltps, err, tread33_l2t2p))
 //
 (* ****** ****** *)
 //
