@@ -59,6 +59,7 @@ D3E = "./dynexp3.sats"
 #typedef token = $LEX.token
 (* ****** ****** *)
 #typedef s2typ = $S2E.s2typ
+#typedef l2t2p = $S2E.l2t2p
 (* ****** ****** *)
 #typedef t2jag = $D2E.t2jag
 (* ****** ****** *)
@@ -77,6 +78,7 @@ D3E = "./dynexp3.sats"
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
 #typedef s2typlst = $S2E.s2typlst
+#typedef l2t2plst = $S2E.l2t2plst
 (* ****** ****** *)
 #typedef t2jaglst = $D2E.t2jaglst
 (* ****** ****** *)
@@ -140,6 +142,7 @@ optn_tread33_fnp
 //
 (* ****** ****** *)
 fun tread33_s2typ: ftread33(s2typ)
+fun tread33_l2t2p: ftread33(l2t2p)
 (* ****** ****** *)
 fun tread33_t2jag: ftread33(t2jag)
 (* ****** ****** *)
@@ -158,6 +161,7 @@ fun tread33_d3cls: ftread33(d3cls)
 fun tread33_d3ecl: ftread33(d3ecl)
 (* ****** ****** *)
 fun tread33_s2typlst: ftread33(s2typlst)
+fun tread33_l2t2plst: ftread33(l2t2plst)
 (* ****** ****** *)
 fun tread33_t2jaglst: ftread33(t2jaglst)
 (* ****** ****** *)

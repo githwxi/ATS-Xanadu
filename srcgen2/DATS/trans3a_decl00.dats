@@ -110,22 +110,8 @@ d3cl.node() of
 (
 f0_local0(env0, d3cl))
 //
-|D3Cabssort _ => (d3cl)
-|D3Cstacst0 _ => (d3cl)
-//
-|D3Csortdef _ => (d3cl)
-|D3Csexpdef _ => (d3cl)
-//
-|D3Cabstype _ => (d3cl)
 |D3Cabsopen _ => (d3cl)
 |D3Cabsimpl _ => (d3cl)
-//
-|D3Csymload _ => (d3cl)
-//
-|D3Cdatasort _ => (d3cl)
-//
-|D3Cexcptcon _ => (d3cl)
-|D3Cdatatype _ => (d3cl)
 //
 |
 D3Cstaload _ => f0_staload(env0, d3cl)
