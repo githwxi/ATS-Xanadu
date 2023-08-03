@@ -584,11 +584,11 @@ endlet//end of [d3exp_proj_errck(...)]
 //
 fun
 d3exp_let0_errck
-(loc0: loc_t
-,t2p0: s2typ
-,dcls: d3eclist
-,d3e1
-:d3exp(*scope*)): d3exp =
+( loc0: loc_t
+, t2p0: s2typ
+, dcls // let
+: ( d3eclist )
+, d3e1: d3exp): d3exp =
 let
 val
 lvl0 = gmax
@@ -839,6 +839,24 @@ d3exp_errck
 ( lvl0+1
 , d3exp(loc0, t2p0, D3Efree(d3e1)) )
 endlet//end of [d3exp_free_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_where_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3e1: d3exp
+,dcls: d3eclist): d3exp =
+let
+val
+lvl0 = gmax
+(errvl(d3e1), errvl(dcls)) in//let
+d3exp_errck
+(lvl0+1
+,d3exp_make_styp_node
+ (loc0, t2p0, D3Ewhere(d3e1, dcls)))
+endlet//end of [d3exp_where_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1189,6 +1207,9 @@ f0_var(d3e0, err)
 //
 |D3Efold _ => f0_fold(d3e0, err)
 |D3Efree _ => f0_free(d3e0, err)
+//
+|
+D3Ewhere _ => f0_where(d3e0, err)
 //
 |
 D3Eassgn _ => f0_assgn(d3e0, err)
@@ -1912,6 +1933,41 @@ if
 then (d3e) else
 d3exp_free_errck(d3e.lctn(),t2p,d3e1)
 end (*let*) // end of [f0_free(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_where
+( d3e: d3exp
+, err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Ewhere
+( d3e1, dcls) = d3e.node()
+val
+dcls =
+tread33_d3eclist(dcls, err)
+val
+d3e1 = tread33_d3exp(d3e1, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+let
+val loc = d3e.lctn() in
+(
+  d3exp_where_errck(loc,t2p,d3e1,dcls))
+end (*let*)
+end (*let*) // end of [f0_where(d3e,err)]
 //
 (* ****** ****** *)
 //
