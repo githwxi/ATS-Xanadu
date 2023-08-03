@@ -478,6 +478,40 @@ endlet // end-of-[tread33_d3valdcl(out,dval)]
 (* ****** ****** *)
 //
 #implfun
+tread33_d3vardcl
+  (dvar, err) =
+let
+//
+val e00 = err
+//
+val loc = dvar.lctn()
+//
+val
+dpid = d3vardcl_get_dpid(dvar)
+val
+vpid = d3vardcl_get_vpid(dvar)
+val
+sres = d3vardcl_get_sres(dvar)
+val
+dini = d3vardcl_get_dini(dvar)
+//
+(*
+val
+sres = tread33_s2expopt(sres,err)
+*)
+val
+dini = tread33_teqd3exp(dini,err)
+//
+in//let
+if
+(err=e00)
+then (dvar)
+else d3vardcl(loc,dpid,vpid,sres,dini)
+endlet // end-of-[tread33_d3vardcl(out,dvar)]
+//
+(* ****** ****** *)
+//
+#implfun
 tread33_d3fundcl
   (dfun, err) =
 let
