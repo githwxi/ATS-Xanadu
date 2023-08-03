@@ -630,6 +630,25 @@ endlet//end of [d3exp_tup1_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3exp_rcd2_errck
+(loc0: loc_t
+,t2p0: s2typ
+,knd0: token
+,npf1: (sint)
+,ldes: l3d3elst): d3exp =
+let
+val
+lvl0 = errvl(ldes) in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_styp_node
+(loc0,t2p0,D3Ercd2(knd0,npf1,ldes)))
+endlet//end of [d3exp_rcd2_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3exp_lam0_errck
 (loc0: loc_t
 ,t2p0: s2typ
@@ -1050,6 +1069,7 @@ f0_var(d3e0, err)
 //
 |D3Etup0 _ => f0_tup0(d3e0, err)
 |D3Etup1 _ => f0_tup1(d3e0, err)
+|D3Ercd2 _ => f0_rcd2(d3e0, err)
 //
 |D3Elam0 _ => f0_lam0(d3e0, err)
 |D3Efix0 _ => f0_fix0(d3e0, err)
@@ -1441,6 +1461,37 @@ end (*let*) // end of [ f0_tup1(d3e,err) ]
 (* ****** ****** *)
 //
 fun
+f0_rcd2
+( d3e: d3exp
+, err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Ercd2
+( knd0
+, npf1, ldes) = d3e.node()
+val
+ldes = tread33_l3d3elst(ldes, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+(
+  d3exp_rcd2_errck
+  (d3e.lctn(), t2p, knd0, npf1, ldes) )
+end (*let*) // end of [ f0_rcd2(d3e,err) ]
+//
+(* ****** ****** *)
+//
+fun
 f0_lam0
 ( d3e: d3exp
 , err: &sint >> _): d3exp =
@@ -1713,6 +1764,27 @@ end (*let*) // end of [f0_assgn(d3e,err)]
 (* ****** ****** *)
 //
 #implfun
+tread33_l3d3e
+  (ld3e, err) =
+let
+//
+val e00 = err
+//
+val+
+D3LAB(lab0, d3e1) = ld3e
+//
+val
+d3e1 = tread33_d3exp(d3e1, err)
+//
+in//let
+if // if
+(err=e00)
+then (ld3e) else D3LAB(lab0, d3e1)
+end (*let*)//end-(tread33_l3d3e(ld3e,err))
+//
+(* ****** ****** *)
+//
+#implfun
 tread33_f3arg
   (farg, err) =
 (
@@ -1874,6 +1946,14 @@ tread33_d3patlst
 (* ****** ****** *)
 //
 #implfun
+tread33_l3d3plst
+  (  ldps, err  ) =
+(
+  list_tread33_fnp(ldps, err, tread33_l3d3p))
+//
+(* ****** ****** *)
+//
+#implfun
 tread33_d3explst
   (  d3es, err  ) =
 (
@@ -1884,6 +1964,14 @@ tread33_d3expopt
   (  dopt, err  ) =
 (
   optn_tread33_fnp(dopt, err, tread33_d3exp))
+//
+(* ****** ****** *)
+//
+#implfun
+tread33_l3d3elst
+  (  ldes, err  ) =
+(
+  list_tread33_fnp(ldes, err, tread33_l3d3e))
 //
 (* ****** ****** *)
 //
