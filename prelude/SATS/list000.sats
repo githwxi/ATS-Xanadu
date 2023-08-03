@@ -331,12 +331,12 @@ fun
 <x0:t0>
 <y0:t0>
 list_map
-{n:int}(list(x0, n)): list(y0, n)
+{n:int}(list(x0,n)): list(y0,n)
 fun
 <x0:t0>
 <y0:vt>
 list_map_vt
-{n:int}(list(x0, n)): list_vt(y0, n)
+{n:int}(list(x0,n)): list_vt(y0,n)
 //
 (* ****** ****** *)
 //
@@ -353,64 +353,89 @@ fun
 <x0:t0>
 <y0:t0>
 list_maprev
-{n:int}(list(x0, n)): list(y0, n)
+{n:int}(list(x0,n)): list(y0,n)
 fun
 <x0:t0>
 <y0:vt>
 list_maprev_vt
-{n:int}(list(x0, n)): list_vt(y0, n)
+{n:int}(list(x0,n)): list_vt(y0,n)
 //
 (* ****** ****** *)
 //
 fun
-<a:t0>
+<x0:t0>
 list_copy_vt
-{n:int}(xs:list(a, n)): list_vt(a,n)
+{n:int}(list(x0,n)): list_vt(x0,n)
 fun
-<a:t0>
+<x0:t0>
 list_rcopy_vt
-{n:int}(xs:list(a, n)): list_vt(a,n)
+{n:int}(list(x0,n)): list_vt(x0,n)
 //
 (* ****** ****** *)
 fun
-<a:t0>
+<x0:t0>
 list_filter
-{n:int}(list(a, n)): listlte(a,n)
+{n:int}(list(x0,n)): listlte(x0,n)
 fun
-<a:t0>
+<x0:t0>
 list_filter_vt
-{n:int}(list(a, n)): listlte_vt(a,n)
+{n:int}(list(x0,n)): listlte_vt(x0,n)
 (* ****** ****** *)
 //
 fun
-<a:t0>
-<n:i0>
-list_tabulate(n0: int(n)): list(a, n)
+<x0:t0>
+<n0:i0>
+list_tabulate
+(n0: nint(n0)): list(x0,n0)//end-fun
 fun
-<a:t0>
+<x0:t0>
 list_tabulate_cfr
-{n:nat}
-( n0: int(n)
-, f0: nintlt(n) -<cfr> a): list(a, n)
+{n:int}
+(n0: nint(n)
+,f0: nintlt(n) -<cfr> x0): list(x0,n)
+//
+(* ****** ****** *)
+//
+(*
+HX-2023-08-03:
+For list-i-operations
+*)
 //
 (* ****** ****** *)
 //
 fun
-<a:t0>
+<x0:t0>
+list_iforall
+{n:int}(xs: list(x0, n)): bool//fun
+//
+fun
+<x0:t0>
+list_iforeach
+{n:int}(xs: list(x0, n)): void//fun
+//
+(* ****** ****** *)
+(*
+HX-2023-08-03:
+Various special list-processing funs
+*)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
 list_mergesort
-  {n:int}(xs: list(a, n)): list(a, n)
+{n:int}(xs: list(x0,n)): list(x0,n)
 fun
-<a:t0>
+<x0:t0>
 list_mergesort_vt
-  {n:int}(xs: list(a, n)): list_vt(a, n)
+{n:int}(xs: list(x0,n)): list_vt(x0,n)
 //
 (* ****** ****** *)
 //
 fun
-<a:t0>
+<x0:t0>
 list_subsetize_vt
 {n:int}
-(xs: list(a, n)): strm_vt(listlte_vt(a, n))
+(xs: list(x0,n)): strm_vt(listlte_vt(x0,n))
 //
 (* ****** ****** *)
 //

@@ -25,6 +25,8 @@ board = board_tbox
 #staload
 "prelude/SATS/gseq000.sats"
 #staload
+"prelude/SATS/list000.sats"
+#staload
 "prelude/SATS/synoug0.sats"
 (* ****** ****** *)
 #extval
@@ -139,12 +141,14 @@ gseq_foldr
 #typedef xs = board
 #typedef r0 = list(board)
 #impltmp
-foldr$fopr<xs><r0>(xs, r0) = append(board_extend(xs), r0)
-} (* end of [boardlst_extend] *)
+foldr$fopr
+<xs><r0>(xs, r0) =
+append(board_extend(xs), r0) }
+//(* end of [boardlst_extend] *)
 
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 fun
 qsolve(): list(board) =
 (
@@ -153,13 +157,13 @@ qsolve(): list(board) =
 {
 fun
 loop
-(i0: int, xss: list(board)): list(board) =
-if i0 < N
-then loop(i0+1, boardlst_extend(xss)) else xss
-}
-
+( i0: int
+, xss: list(board)): list(board) =
+if
+(i0 < N) then
+loop(i0+1, boardlst_extend(xss)) else xss}
+//
 (* ****** ****** *)
-////
 (* ****** ****** *)
 
 fun
@@ -171,7 +175,7 @@ xss = qsolve()
 //
 val () =
 (
-gseq_iforeach(xss)) where
+list_iforeach(xss)) where
 {
 #impltmp
 iforeach$work<board>(i0, xs) =
@@ -179,7 +183,7 @@ iforeach$work<board>(i0, xs) =
 println
 ("Solution#", i0+1, ":"); println(xs))
 } (* where *)
-} (* where *) // end of [ main0() ]
+} (* where *) // end of [ main0((*void*)) ]
 
 (* ****** ****** *)
 
