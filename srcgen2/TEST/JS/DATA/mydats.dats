@@ -2,12 +2,10 @@
 //
 fun
 proj0(ci: @(char, sint)) = ci.0
-////
 fun
 proj1(ci: @(char, sint)) = ci.1
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 //
 fun
