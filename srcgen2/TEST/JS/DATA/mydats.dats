@@ -1,4 +1,23 @@
 (* ****** ****** *)
+//
+fun
+fact29(x: sint) =
+(
+  loop@(0, 1) ) where
+{
+fun
+loop ir =
+let
+  val (i, r) = ir
+in//let
+(
+ if i < x
+ then loop@(i+1, (i+1)*r) else r ) end
+} (*where*) // end of [fact29(x: sint)]
+//
+(* ****** ****** *)
+////
+(* ****** ****** *)
 fun
 <x0:vt>
 mycopy(x0: !x0): x0 = x0
