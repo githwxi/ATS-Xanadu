@@ -205,7 +205,21 @@ d3cl.node() of
 |D3Cstatic _ => d3cl
 |D3Cextern _ => d3cl
 //
-|D3Clocal0 _ => f0_local0(d3cl, err)
+|D3Clocal0 _ =>
+f0_local0(d3cl, err)
+//
+|D3Cabssort _ => (d3cl)
+|D3Cstacst0 _ => (d3cl)
+//
+|D3Csortdef _ => (d3cl)
+|D3Csexpdef _ => (d3cl)
+//
+|D3Cabstype _ => (d3cl)
+//
+|D3Cabsopen _ => (d3cl)
+|D3Cabsimpl _ => (d3cl)
+//
+|D3Csymload _ => (d3cl)
 //
 |
 D3Cstaload _ => f0_staload(d3cl, err)
