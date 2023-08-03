@@ -163,16 +163,16 @@ f0a.node() of
 F0ARGnone(tok) =>
 print("F0ARGnone(",tok,")")
 |
-F0ARGdyn0(d0p) =>
-print("F0ARGdyn0(",d0p,")")
+F0ARGdapp(d0p) =>
+print("F0ARGdapp(",d0p,")")
 |
-F0ARGsta0(tkb,sqs,tke) =>
+F0ARGsapp(tkb,sqs,tke) =>
 print
-("F0ARGsta0(",tkb,";",sqs,";",tke,")")
+("F0ARGsapp(",tkb,";",sqs,";",tke,")")
 |
-F0ARGmet0(tkb,ses,tke) =>
+F0ARGmets(tkb,ses,tke) =>
 print
-("F0ARGmet0(",tkb,";",ses,";",tke,")")
+("F0ARGmets(",tkb,";",ses,";",tke,")")
 //
 end (*let*) // end of [f0arg_fprint(out,f0a)]
 

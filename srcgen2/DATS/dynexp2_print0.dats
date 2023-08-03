@@ -607,19 +607,19 @@ case+
 farg.node() of
 //
 |
-F2ARGdyn0
+F2ARGdapp
 (npf1,d2ps) =>
 print
-("F2ARGdyn0(",npf1,";",d2ps,")")
+("F2ARGdapp(",npf1,";",d2ps,")")
 //
 |
-F2ARGsta0
+F2ARGsapp
 (s2vs,s2ps) =>
 print
-("F2ARGsta0(",s2vs,";",s2ps,")")
+("F2ARGsapp(",s2vs,";",s2ps,")")
 |
-F2ARGmet0
-(   s2es   ) => print("F2ARGmet0(",s2es,")")
+F2ARGmets
+(   s2es   ) => print("F2ARGmets(",s2es,")")
 //
 end (*let*) // end of [f2arg_fprint(out,farg)]
 

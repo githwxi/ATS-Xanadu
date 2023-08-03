@@ -2404,11 +2404,8 @@ tread23_f3arg
 case+
 farg.node() of
 //
-|F3ARGsta0 _ => farg
-|F3ARGmet0 _ => farg
-//
 |
-F3ARGdyn0
+F3ARGdapp
 (npf1, d3ps) =>
 let
 val e00 = err
@@ -2419,10 +2416,11 @@ if
 (err=e00)
 then (farg) else
 f3arg
-(farg.lctn(), F3ARGdyn0(npf1, d3ps))
-endlet // end of [F3ARGdyn0(npf1,d3ps)]
+(farg.lctn(), F3ARGdapp(npf1, d3ps))
+endlet // end of [F3ARGdapp(npf1,d3ps)]
 //
-) (*case+*)//end-[tread23_f3arg(farg,err)]
+|F3ARGsapp _ => farg|F3ARGmets _ => farg)
+//(*case+*)//end-[tread23_f3arg(farg,err)]
 //
 (* ****** ****** *)
 //

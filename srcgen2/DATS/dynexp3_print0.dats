@@ -440,18 +440,18 @@ in//let
 case+
 farg.node() of
 |
-F3ARGdyn0
+F3ARGdapp
 (npf1,d3ps) =>
 print
-("F3ARGdyn0(",npf1,";",d3ps,")")
+("F3ARGdapp(",npf1,";",d3ps,")")
 |
-F3ARGsta0
+F3ARGsapp
 (s2vs,s2ps) =>
 print
-("F3ARGsta0(",s2vs,";",s2ps,")")
+("F3ARGsapp(",s2vs,";",s2ps,")")
 |
-F3ARGmet0
-(   s2es   ) => print("F3ARGmet0(",s2es,")")
+F3ARGmets
+(   s2es   ) => print("F3ARGmets(",s2es,")")
 |
 F3ARGsapq
 (   s2vs   ) => print("F3ARGsapq(",s2vs,")")

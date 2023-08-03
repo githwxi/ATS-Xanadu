@@ -2519,7 +2519,7 @@ in//let
 case+
 farg.node() of
 |
-F2ARGdyn0
+F2ARGdapp
 (npf1, d2ps) =>
 let
 //
@@ -2532,11 +2532,11 @@ let
 val (  ) =
 d2patlst_lftize(d2ps) in//let
 f2arg
-(loc0, F2ARGdyn0(npf1, d2ps))
+(loc0, F2ARGdapp(npf1, d2ps))
 end (*let*)
-end (*let*)//end of [F2ARGdyn0]
+end (*let*)//end of [F2ARGdapp]
 //
-| //sta0//met0
+| //sapp//mets
 _ (* otherwise *) => (  farg  )
 //
 end where // end-of-let

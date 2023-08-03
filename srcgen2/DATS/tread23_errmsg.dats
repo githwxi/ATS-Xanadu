@@ -483,8 +483,8 @@ l3d3e_fpemsg
 (
 case+ ld3e of
 |
-D3LAB(lab,d3e1) => d3exp_fpemsg(out,d3e1)
-) (*case+*)//end-of-(l3d3e_fpemsg(out,ld3e))
+D3LAB(lab,d3e1) => d3exp_fpemsg(out,d3e1))
+//(*case+*)//end-of-(l3d3e_fpemsg(out,ld3e))
 //
 (* ****** ****** *)
 //
@@ -495,14 +495,15 @@ f3arg_fpemsg
 case+
 farg.node() of
 //
-|F3ARGsta0
+|F3ARGdapp
+(npf1, d3ps) =>
+d3patlst_fpemsg(out, d3ps)
+//
+|F3ARGsapp
 (s2vs, s2es) => ((*skipped*))
-|F3ARGmet0(s2es) => ((*skipped*))
-//
-|F3ARGdyn0
-(npf1, d3ps) => d3patlst_fpemsg(out, d3ps)
-//
-) (*case+*)//end-of-(f3arg_fpemsg(out,farg)]
+|F3ARGmets
+(   s2es   ) => ((*skipped*)) )
+//(*case+*)//end-of-(f3arg_fpemsg(out,farg)]
 //
 (* ****** ****** *)
 //

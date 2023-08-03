@@ -325,12 +325,12 @@ f0arg_node =
 |
 F0ARGnone of (token)
 |
-F0ARGdyn0 of (d0pat)
+F0ARGdapp of (d0pat)
 |
-F0ARGsta0 of
+F0ARGsapp of
 (token, s0qualst,token)
 |
-F0ARGmet0 of
+F0ARGmets of
 (token, s0explst, token)
 //
 (* ****** ****** *)

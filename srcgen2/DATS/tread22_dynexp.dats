@@ -2130,7 +2130,7 @@ farg.node() of
 *)
 //
 |
-F2ARGdyn0
+F2ARGdapp
 (npf1, d2ps) =>
 let
 val e00 = err
@@ -2141,11 +2141,11 @@ if
 (err=e00)
 then (farg) else
 f2arg
-(farg.lctn(), F2ARGdyn0(npf1, d2ps))
-endlet // end of [F2ARGdyn0(npf1,d2ps)]
+(farg.lctn(), F2ARGdapp(npf1, d2ps))
+endlet // end of [F2ARGdapp(npf1,d2ps)]
 //
 |
-F2ARGsta0
+F2ARGsapp
 (s2vs, s2es) =>
 let
 val e00 = err
@@ -2158,11 +2158,11 @@ if
 (err=e00)
 then (farg) else
 f2arg
-(farg.lctn(), F2ARGsta0(s2vs, s2es))
-endlet // end of [F2ARGsta0(s2vs,s2es)]
+(farg.lctn(), F2ARGsapp(s2vs, s2es))
+endlet // end of [F2ARGsapp(s2vs,s2es)]
 //
 |
-F2ARGmet0
+F2ARGmets
 (   s2es   ) =>
 let
 //
@@ -2177,8 +2177,8 @@ in//let
 if
 (err=e00)
 then (farg) else
-f2arg(farg.lctn(), F2ARGmet0( s2es ))
-endlet // end of [ F2ARGmet0(  s2es  ) ]
+f2arg(farg.lctn(), F2ARGmets( s2es ))
+endlet // end of [ F2ARGmets(  s2es  ) ]
 //
 ) (*case+*)//end-[tread22_f2arg(farg,err)]
 //

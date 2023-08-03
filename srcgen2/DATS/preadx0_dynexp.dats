@@ -2303,7 +2303,7 @@ F0ARGnone(tok) =>
 (err := err+1; f0a)
 //
 |
-F0ARGdyn0(dpat) =>
+F0ARGdapp(dpat) =>
 let
 val e00 = err
 val dpat =
@@ -2312,11 +2312,11 @@ in//let
 if
 (err=e00)
 then (f0a) else
-f0arg(f0a.lctn(), F0ARGdyn0(dpat))
-end (*let*)//end-of-[F0ARGdyn0(dpat)]
+f0arg(f0a.lctn(), F0ARGdapp(dpat))
+end (*let*)//end-of-[F0ARGdapp(dpat)]
 //
 |
-F0ARGsta0
+F0ARGsapp
 (tbeg,s0qs,tend) =>
 let
 //
@@ -2339,11 +2339,11 @@ in//let
 if
 (err=e00)
 then (f0a) else f0arg
-(f0a.lctn(),F0ARGsta0(tbeg,s0qs,tend))
-end (*let*)//end-of-[F0ARGsta0(_,_,_)]
+(f0a.lctn(),F0ARGsapp(tbeg,s0qs,tend))
+end (*let*)//end-of-[F0ARGsapp(_,_,_)]
 //
 |
-F0ARGmet0
+F0ARGmets
 (tbeg,s0es,tend) =>
 let
 //
@@ -2365,8 +2365,8 @@ in//let
 if
 (err=e00)
 then (f0a) else f0arg
-(f0a.lctn(),F0ARGmet0(tbeg,s0es,tend))
-end (*let*)//end-of-[F0ARGmet0(_,_,_)]
+(f0a.lctn(),F0ARGmets(tbeg,s0es,tend))
+end (*let*)//end-of-[F0ARGmets(_,_,_)]
 //
 ) (*case+*)//end-of-[preadx0_f0arg(dcl,err)]
 //

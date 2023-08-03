@@ -1497,7 +1497,7 @@ case+
 farg.node() of
 //
 |
-F3ARGdyn0
+F3ARGdapp
 (npf1, d3ps) =>
 let
 val e00 = err
@@ -1508,8 +1508,8 @@ if
 (err=e00)
 then (farg) else
 f3arg
-(farg.lctn(), F3ARGdyn0(npf1, d3ps))
-endlet // end of [F3ARGdyn0(npf1,d3ps)]
+(farg.lctn(), F3ARGdapp(npf1, d3ps))
+endlet // end of [F3ARGdapp(npf1,d3ps)]
 //
 | _(* otherwise *) => (      farg      )
 //

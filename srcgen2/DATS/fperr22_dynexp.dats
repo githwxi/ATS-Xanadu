@@ -529,15 +529,15 @@ fperr22_f2arg
 case+
 farg.node() of
 //
-|F2ARGdyn0
+|F2ARGdapp
 (npf1, d2ps) =>
 fperr22_d2patlst(out, d2ps)
 //
-|F2ARGsta0
+|F2ARGsapp
 (s2vs, s2es) => ( (*void*) )
-|F2ARGmet0(s2es) => ( (*void*) )
-//
-) (*case+*)//end-of-(fperr22_f2arg(out,farg)]
+|F2ARGmets
+(   s2es   ) => ( (*void*) ) )//end-of-fun
+//(*case+*)//end-of-(fperr22_f2arg(out,farg)]
 //
 (* ****** ****** *)
 //

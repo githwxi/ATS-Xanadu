@@ -483,7 +483,7 @@ let
 in//let
   err := e00;
   f0arg_make_node
-  (lres, F0ARGmet0(tbeg, s0es, tend))
+  (lres, F0ARGmets(tbeg, s0es, tend))
 end (*let*) // end of [ T_DOTLT() ]
 //
 |
@@ -498,7 +498,7 @@ let
 in//let
   err := e00;
   f0arg_make_node
-  (lres, F0ARGsta0(tbeg, s0qs, tend))
+  (lres, F0ARGsapp(tbeg, s0qs, tend))
 end (*let*) // end of [T_LBRACE() ]
 //
 |
@@ -506,7 +506,7 @@ _(* non-sta-met *) =>
 let
   val d0p = p1_d0pat_atm(buf, err)
 in
-  f0arg_make_node(d0p.lctn(), F0ARGdyn0(d0p))
+  f0arg_make_node(d0p.lctn(), F0ARGdapp(d0p))
 end (*let*) // end of [non-sta-met]
 //
 end (*let*) // end of [ p1_f0arg(buf,err) ]

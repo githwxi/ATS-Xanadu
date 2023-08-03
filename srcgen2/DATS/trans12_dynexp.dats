@@ -3145,12 +3145,12 @@ trans12_f1arg
 //
 case+
 f1a0.node() of
-|F1ARGdyn0 _ =>
+|F1ARGdapp _ =>
 f0_dyn0(env0, f1a0)
-|F1ARGsta0 _ =>
-f0_sta0(env0, f1a0)
-|F1ARGmet0 _ =>
-f0_met0(env0, f1a0)) where
+|F1ARGsapp _ =>
+f0_sapp(env0, f1a0)
+|F1ARGmets _ =>
+f0_mets(env0, f1a0)) where
 {
 //
 (* ****** ****** *)
@@ -3166,7 +3166,7 @@ var
 npf1: sint = -1
 //
 val-
-F1ARGdyn0
+F1ARGdapp
 (  d1p0  ) = f1a0.node()
 //
 val
@@ -3200,21 +3200,21 @@ list_sing(trans12_d1pat(env0, d1p0)))
 //
 in//let
 //
-f2arg(f1a0.lctn(), F2ARGdyn0(npf1, d2ps))
+f2arg(f1a0.lctn(), F2ARGdapp(npf1, d2ps))
 //
 end (*let*) // end of [f0_dyn0(env0,f1a0)]
 //
 (* ****** ****** *)
 //
 fun
-f0_sta0
+f0_sapp
 ( env0:
 ! tr12env
 , f1a0: f1arg): f2arg =
 let
 //
 val-
-F1ARGsta0
+F1ARGsapp
 (  s1qs  ) = f1a0.node()
 //
 val
@@ -3223,21 +3223,21 @@ trans12_s1qualst(env0, s1qs)
 //
 in//let
 //
-f2arg(f1a0.lctn(), F2ARGsta0(s2vs, s2ps))
+f2arg(f1a0.lctn(), F2ARGsapp(s2vs, s2ps))
 //
-end (*let*) // end of [f0_sta0(env0,f1a0)]
+end (*let*) // end of [f0_sapp(env0,f1a0)]
 //
 (* ****** ****** *)
 //
 fun
-f0_met0
+f0_mets
 ( env0:
 ! tr12env
 , f1a0: f1arg): f2arg =
 let
 //
 val-
-F1ARGmet0
+F1ARGmets
 (  s1es  ) = f1a0.node()
 //
 in//let
@@ -3245,9 +3245,9 @@ let
 val s2es =
 trans12_s1explst(env0, s1es)
 in//let
-  f2arg(f1a0.lctn(), F2ARGmet0(s2es))
+  f2arg(f1a0.lctn(), F2ARGmets(s2es))
 end (*let*)
-end (*let*) // end of [f0_met0(env0,f1a0)]
+end (*let*) // end of [f0_mets(env0,f1a0)]
 //
 (* ****** ****** *)
 //

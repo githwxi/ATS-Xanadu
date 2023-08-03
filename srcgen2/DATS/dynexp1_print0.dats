@@ -191,14 +191,17 @@ in//let
 case+
 farg.node() of
 |
-F1ARGdyn0(d1p1) =>
-print("F1ARGdyn0(",d1p1,")")
+F1ARGdapp(d1p1) =>
+(
+  print("F1ARGdapp(",d1p1,")") )
 |
-F1ARGsta0(s1qs) =>
-print("F1ARGsta0(",s1qs,")")
+F1ARGsapp(s1qs) =>
+(
+  print("F1ARGsapp(",s1qs,")") )
 |
-F1ARGmet0(s1es) =>
-print("F1ARGmet0(",s1es,")")
+F1ARGmets(s1es) =>
+(
+  print("F1ARGmets(",s1es,")") )
 //
 end (*let*) // end of [f1arg_fprint(out,farg)]
 

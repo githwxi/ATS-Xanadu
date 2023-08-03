@@ -299,14 +299,14 @@ list_cons(f2a1, f2as) =>
 case+
 f2a1.node() of
 |
-F2ARGmet0 _ =>
+F2ARGmets _ =>
 f0_f2as(f2as, ndyn, tres)
 |
-F2ARGsta0
+F2ARGsapp
 (s2vs, s2ps) =>
 let
-val s2t0 = tres.sort()
-in//let
+val
+s2t0 = tres.sort() in//let
 //
 case+ s2vs of
 |list_nil() => tres
@@ -323,7 +323,7 @@ val
 tres = f0_f2as(f2as, ndyn, tres)
 }
 |
-F2ARGdyn0(npf1, d2ps) =>
+F2ARGdapp(npf1, d2ps) =>
 (
 s2typ_fun1
 (f2cl,npf1,t2ps,tres)) where
@@ -346,7 +346,7 @@ case+ xs of
 |list_cons(x1, xs) =>
 (
 case+ x1.node() of
-|F2ARGdyn0 _ =>
+|F2ARGdapp _ =>
  f1_ndyn(xs) + 1 | _ => f1_ndyn(xs)))
 //
 } (*whr*)//end-[s2typ_fun1_f2arglst(...)]
@@ -800,19 +800,19 @@ f0_f2a1
 case+
 f2a1.node() of
 |
-F2ARGsta0
+F2ARGsapp
 (s2vs, s2ps) =>
 (f2a1, tfun) where
 { val tfun =
   s2typ_elim_s2vs(tfun, s2vs) }
 //
 |
-F2ARGmet0
+F2ARGmets
 (   s2es   ) =>
 (f2a1, tfun) // metrics ignored
 //
 |
-F2ARGdyn0
+F2ARGdapp
 (npf1, d2ps) =>
 let
 //
@@ -831,7 +831,7 @@ val (  ) =
 d2patlst_lftize(d2ps, t2ps)
 val f2a1 =
 f2arg_make_node
-(loc1, F2ARGdyn0(npf1, d2ps))
+(loc1, F2ARGdapp(npf1, d2ps))
 in
 (
  f2a1(*first*), tres(*rests*) )
@@ -848,7 +848,7 @@ val
 f2a1 =
 trans2a_f2arg(env0,f2a1) in (f2a1,tfun) end
 //
-end//let//end-of-[ F2ARGdyn0(...) ]
+end//let//end-of-[ F2ARGdapp(...) ]
 //
 ) where
 {

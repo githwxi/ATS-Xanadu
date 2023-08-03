@@ -1048,11 +1048,11 @@ in//let
 case+
 farg.node() of
 |
-F3ARGdyn0 _ => f0_dyn0(env0,farg)
+F3ARGdapp _ => f0_dyn0(env0,farg)
 |
-F3ARGsta0 _ => f0_sta0(env0,farg)
+F3ARGsapp _ => f0_sapp(env0,farg)
 |
-F3ARGmet0 _ => f0_met0(env0,farg)
+F3ARGmets _ => f0_mets(env0,farg)
 //
 end where // end-of-let
 {
@@ -1069,25 +1069,25 @@ let
 val loc0 = farg.lctn()
 //
 val-
-F3ARGdyn0
+F3ARGdapp
 (npf1, d3ps) = farg.node()
 //
 val d3ps =
 trans3a_d3patlst(env0, d3ps)
 //
 in//let
-  f3arg(loc0,F3ARGdyn0(npf1,d3ps))
+  f3arg(loc0,F3ARGdapp(npf1,d3ps))
 end (*let*) // end of [f0_dyn0(env0,farg)]
 //
 (* ****** ****** *)
 //
 fun
-f0_sta0
+f0_sapp
 ( env0:
 ! tr3aenv
 , farg: f3arg): f3arg = farg // end-of-fun
 fun
-f0_met0
+f0_mets
 ( env0:
 ! tr3aenv
 , farg: f3arg): f3arg = farg // end-of-fun
