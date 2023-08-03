@@ -584,12 +584,12 @@ d3exp_pcon_errck
 ( loc0: loc_t
 , tknd: token
 , dlab: label
-, dtup: d3exp): d3exp =
+, dcon: d3exp): d3exp =
 let
-val lvl0 = errvl(dtup) in//let
+val lvl0 = errvl(dcon) in//let
 d3exp_errck
 (lvl0+1
-,d3exp(loc0, D3Epcon(tknd,dlab,dtup)))
+,d3exp(loc0, D3Epcon(tknd,dlab,dcon)))
 endlet // end of [d3exp_pcon_errck(...)]
 //
 fun

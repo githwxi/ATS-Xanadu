@@ -256,6 +256,23 @@ endlet // end of [d3pat_dapp_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3pat_tup0_errck
+(loc0: loc_t
+,t2p0: s2typ
+,npf1: (sint)
+,d3ps: d3patlst): d3pat =
+let
+val
+lvl0 = errvl(d3ps) in//let
+d3pat_errck
+( lvl0+1
+, d3pat_make_styp_node
+  (loc0, t2p0, D3Ptup0(npf1, d3ps)))
+endlet//end of [d3pat_tup0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3pat_annot_errck
 ( loc0: loc_t
 , t2p0: s2typ
@@ -511,6 +528,24 @@ d3exp_make_styp_node
 endlet//end of [d3exp_dapp_errck(...)]
 //
 (* ****** ****** *)
+//
+fun
+d3exp_pcon_errck
+(loc0: loc_t
+,t2p0: s2typ
+,tknd: token
+,dlab: label
+,dcon: d3exp): d3exp =
+let
+val
+lvl0 = errvl(dcon) in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_styp_node
+( loc0
+, t2p0, D3Epcon(tknd, dlab, dcon)))
+endlet//end of [d3exp_pcon_errck(...)]
 //
 fun
 d3exp_proj_errck
@@ -844,6 +879,8 @@ f0_any(d3p0, err)
 |D3Pdap1 _ => f0_dap1(d3p0, err)
 |D3Pdapp _ => f0_dapp(d3p0, err)
 //
+|D3Ptup0 _ => f0_tup0(d3p0, err)
+//
 |
 D3Pannot _ => f0_annot(d3p0, err)
 //
@@ -1004,6 +1041,37 @@ then (d3p) else
 ( d3pat_dapp_errck
   (d3p.lctn(), t2p, d3f0,npf1,d3ps) )
 end (*let*) // end of [f0_dap1(d3p,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup0
+( d3p: d3pat
+, err: &sint >> _): d3pat =
+let
+//
+val e00 = err
+//
+val t2p = d3p.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3p.styp(t2p)
+//
+val-
+D3Ptup0
+( npf1, d3ps) = d3p.node()
+val
+d3ps = tread33_d3patlst(d3ps, err)
+//
+in//let
+if
+(err=e00)
+then (d3p) else
+let
+val loc = d3p.lctn() in
+d3pat_tup0_errck(loc, t2p, npf1, d3ps)
+end (*let*)
+end (*let*) // end of [ f0_tup0(d3p,err) ]
 //
 (* ****** ****** *)
 //
