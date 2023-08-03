@@ -382,6 +382,8 @@ d2con2a_s2typ( loc0, d2c1 )
 val (  ) =
 prerrln("f0_con: d2c1 = ", d2c1)
 val (  ) =
+prerrln("f0_con: t2p0 = ", t2p0)
+val (  ) =
 prerrln("f0_con: tqas = ", d2c1.tqas())
 *)
 } (*where*) // end of [f0_con(env0,...)]

@@ -836,9 +836,10 @@ val
 body = trans3a_d3exp(env0, body)
 //
 in//let
-d3exp_make_node
+d3exp_make_styp_node
 (
 loc0,
+t2p0,
 D3Efix0
 (tknd, d2v1, f3as, sres, arrw, body))
 end (*let*) // end of [f0_fix0(env0,d3e0)]
