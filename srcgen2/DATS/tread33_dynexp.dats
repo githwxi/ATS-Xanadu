@@ -737,17 +737,17 @@ d3exp_cas0_errck
 ,t2p0: s2typ
 ,tknd: token
 ,d3e1: d3exp
-,d3cs: d3clslst): d3exp =
+,dcls: d3clslst): d3exp =
 let
 val
 lvl0 = gmax
-(errvl(d3e1), errvl(d3cs))
+(errvl(d3e1), errvl(dcls))
 in//let
 d3exp_errck
 (
 lvl0+1,
 d3exp_make_styp_node
-(loc0,t2p0,D3Ecas0(tknd,d3e1,d3cs)))
+(loc0,t2p0,D3Ecas0(tknd,d3e1,dcls)))
 endlet // end of [d3exp_cas0_errck(...)]
 //
 (* ****** ****** *)
@@ -877,6 +877,27 @@ d3exp_make_styp_node
   D3Efix0
   (tknd,dvar,f3as,sres,arrw,dexp)) )
 endlet//end of [d3exp_fix0_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_try0_errck
+(loc0: loc_t
+,t2p0: s2typ
+,tknd: token
+,d3e1: d3exp
+,dcls: d3clslst): d3exp =
+let
+val
+lvl0 = gmax
+(errvl(d3e1), errvl(dcls))
+in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_styp_node
+(loc0,t2p0,D3Etry0(tknd,d3e1,dcls)))
+endlet // end of [d3exp_try0_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1515,6 +1536,8 @@ f0_var(d3e0, err)
 |D3Elam0 _ => f0_lam0(d3e0, err)
 |D3Efix0 _ => f0_fix0(d3e0, err)
 //
+|D3Etry0 _ => f0_try0(d3e0, err)
+//
 |D3Eaddr _ => f0_addr(d3e0, err)
 |D3Eflat _ => f0_flat(d3e0, err)
 //
@@ -1952,12 +1975,12 @@ val ( ) = d3e.styp(t2p)
 val-
 D3Ecas0
 ( tknd
-, d3e1, d3cs) = d3e.node()
+, d3e1, dcls) = d3e.node()
 //
 val
 d3e1 = tread33_d3exp(d3e1, err)
 val
-d3cs = tread33_d3clslst(d3cs, err)
+dcls = tread33_d3clslst(dcls, err)
 //
 in//let
 //
@@ -1966,7 +1989,7 @@ if
 then (d3e) else
 (
   d3exp_cas0_errck
-  (d3e.lctn(), t2p, tknd,d3e1,d3cs) )
+  (d3e.lctn(), t2p, tknd,d3e1,dcls) )
 //
 end (*let*) // end of [ f0_cas0(d3e,err) ]
 //
@@ -2173,6 +2196,42 @@ d3exp_fix0_errck
 (loc,t2p,tknd,dvar,f3as,sres,arrw,dexp)
 end (*let*)
 end (*let*) // end of [ f0_fix0(d3e,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_try0
+( d3e: d3exp
+, err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Etry0
+( tknd
+, d3e1, dcls) = d3e.node()
+//
+val
+d3e1 = tread33_d3exp(d3e1, err)
+val
+dcls = tread33_d3clslst(dcls, err)
+//
+in//let
+//
+if
+(err=e00)
+then (d3e) else
+(
+  d3exp_try0_errck
+  (d3e.lctn(), t2p, tknd,d3e1,dcls) )
+//
+end (*let*) // end of [ f0_try0(d3e,err) ]
 //
 (* ****** ****** *)
 //
@@ -2820,9 +2879,9 @@ tread33_d3gualst
 //
 #implfun
 tread33_d3clslst
-  (  d3cs, err  ) =
+  (  dcls, err  ) =
 (
-  list_tread33_fnp(d3cs, err, tread33_d3cls))
+  list_tread33_fnp(dcls, err, tread33_d3cls))
 //
 (* ****** ****** *)
 
