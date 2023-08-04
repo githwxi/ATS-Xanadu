@@ -521,6 +521,8 @@ d3e0.node() of
 |D3Elam0 _ => f0_lam0(env0, d3e0)
 |D3Efix0 _ => f0_fix0(env0, d3e0)
 //
+|D3Etry0 _ => f0_try0(env0, d3e0)
+//
 |D3Eaddr _ => f0_addr(env0, d3e0)
 |D3Eflat _ => f0_flat(env0, d3e0)
 //
@@ -537,8 +539,12 @@ d3e0.node() of
 //
 |D3Eassgn _ => f0_assgn(env0, d3e0)
 //
+|D3Eraise _ => f0_raise(env0, d3e0)
+//
 |D3El0azy _ => f0_l0azy(env0, d3e0)
 |D3El1azy _ => f0_l1azy(env0, d3e0)
+//
+|D3Enone0 _ => f0_none0(env0, d3e0)
 //
 |
 _(* otherwise *) => d3exp_none2(d3e0)
@@ -980,7 +986,7 @@ val loc0 = d3e0.lctn()
 val-
 D3Ecas0
 (tknd
-,d3e1, d3cs) = d3e0.node()
+,d3e1, dcls) = d3e0.node()
 //
 val t2p0 =
 d3e0.styp((*0*))
@@ -991,12 +997,12 @@ trans3a_s2typ(env0, t2p0)
 //
 val d3e1 =
 trans3a_d3exp(env0, d3e1)
-val d3cs =
-trans3a_d3clslst(env0, d3cs)
+val dcls =
+trans3a_d3clslst(env0, dcls)
 //
 in//let
 d3exp_make_styp_node
-(loc0, t2p0, D3Ecas0(tknd, d3e1, d3cs))
+(loc0, t2p0, D3Ecas0(tknd, d3e1, dcls))
 end (*let*) // end of [f0_cas0(env0,d3e0)]
 //
 (* ****** ****** *)
@@ -1217,6 +1223,39 @@ t2p0,
 D3Efix0
 (tknd, d2v1, f3as, sres, arrw, body))
 end (*let*) // end of [f0_fix0(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_try0
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Etry0
+( tknd
+, d3e1, dcls) = d3e0.node()
+//
+val t2p0 =
+d3e0.styp((*0*))
+val t2p0 =
+s2typ_hnfiz0(t2p0)
+val t2p0 =
+trans3a_s2typ(env0, t2p0)
+//
+val d3e1 =
+trans3a_d3exp(env0, d3e1)
+val dcls =
+trans3a_d3clslst(env0, dcls)
+//
+in//let
+d3exp_make_styp_node
+(loc0, t2p0, D3Etry0(tknd, d3e1, dcls))
+end (*let*) // end of [f0_try0(env0,d3e0)]
 //
 (* ****** ****** *)
 //
@@ -1517,6 +1556,37 @@ end (*let*) // end of [f0_assgn(env0,...)]
 (* ****** ****** *)
 //
 fun
+f0_raise
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Eraise
+( tknd, dexn) = d3e0.node()
+//
+val t2p0 =
+d3e0.styp((*0*))
+val t2p0 =
+s2typ_hnfiz0(t2p0)
+val t2p0 =
+trans3a_s2typ(env0, t2p0)
+//
+val
+dexn = trans3a_d3exp(env0, dexn)
+//
+in//let
+(
+  d3exp_make_styp_node
+  (loc0, t2p0, D3Eraise(tknd, dexn)) )
+end (*let*) // end of [f0_raise(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
 f0_l0azy
 ( env0:
 ! tr3aenv
@@ -1578,6 +1648,19 @@ in//let
   ( loc0
   , t2p0, D3El1azy(dknd,d3e1,d3es)) )
 end (*let*) // end of [f0_l1azy(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_none0
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp =
+let
+val t2p0 = d3e0.styp((*0*))
+in//let
+d3exp(d3e0.lctn(), t2p0, D3Enone0(*0*))
+end (*let*) // end of [f0_none0(env0,...)]
 //
 (* ****** ****** *)
 //
