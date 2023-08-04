@@ -145,18 +145,12 @@ fun
 boardlst_extend
 ( xss
 : list(board)): list(board) =
+foldr
 (
-list_foldr
-< xs><r0 >
-(xss, list_nil())) where
-{
-#typedef xs = board
-#typedef r0 = list(board)
-#impltmp
-foldr$fopr
-<xs><r0>(xs,r0) =
-(
-  list_append(board_extend(xs), r0)) }
+xss,
+list_nil,
+lam(xs,r0) =>
+list_append(board_extend(xs), r0))
 //(*where*)//end of [boardlst_extend(...)]
 
 (* ****** ****** *)
@@ -181,27 +175,23 @@ then loop
 (* ****** ****** *)
 
 fun
-main0() = () where
-{
+main0() =
+let
 //
 val
 xss = qsolve()
 //
 val () =
+iforeach_cfr
 (
-gseq_iforeach
-<xss><xs0>(xss)) where
-{
-#typedef xs0 = board
-#typedef xss = list(board)
-#impltmp
-iforeach$work<xs0>(i0, xs) =
+xss,
+lam(i0, xs) =>
 (
 println
-("Solution#", i0+1, ":"); println(xs))
-} (* where *)
-} (* where *)//end of [main0((*void*))]
+("Solution#", i0+1, ":"); println(xs)))
+//
+end(* let *) // end of [main0((*void*))]
 
 (* ****** ****** *)
 
-(* end of [TEST/JS/DATA/QueenPuzzle.dats] *)
+(* end of [TEST/JS/DATA/QueenPuzzle2.dats] *)
