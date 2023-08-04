@@ -1559,13 +1559,17 @@ f0_var(d3e0, err)
 |D3El0azy _ => f0_l0azy(d3e0, err)
 |D3El1azy _ => f0_l1azy(d3e0, err)
 //
+|D3Enone0 _ => f0_none0(d3e0, err)
+//
 |
-_(* otherwise *) =>
+_(*D3E...*) => //HX: rest-of-d3exp
+(
 let
 val lvl0 = 1 in//let
 (err :=
 (err + 1); d3exp_errck(lvl0, d3e0))
 endlet // end of [ _(* otherwise *) ]
+)
 //
 ) where // end-of-[(*case+(d3e0)-of*)]
 {
@@ -2637,6 +2641,15 @@ then (d3e) else
   d3exp_l1azy_errck
   (d3e.lctn(), t2p, dknd, d3e1, d3es) )
 end (*let*) // end of [f0_l1azy(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_none0
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+val-D3Enone0() = d3e.node() in (d3e) end
 //
 (* ****** ****** *)
 //
