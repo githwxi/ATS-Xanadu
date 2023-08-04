@@ -805,6 +805,18 @@ endlet // end of [d3exp_flat_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3exp_eval_errck
+( loc0: loc_t
+, d3e1: d3exp): d3exp =
+let
+val lvl0 = errvl(d3e1) in//let
+d3exp_errck
+( lvl0+1, d3exp(loc0, D3Eeval(d3e1)) )
+endlet // end of [d3exp_eval_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3exp_fold_errck
 ( loc0: loc_t
 , d3e1: d3exp): d3exp =
@@ -825,18 +837,6 @@ val lvl0 = errvl(d3e1) in//let
 d3exp_errck
 ( lvl0+1, d3exp(loc0, D3Efree(d3e1)) )
 endlet // end of [d3exp_free_errck(...)]
-//
-(* ****** ****** *)
-//
-fun
-d3exp_eval_errck
-( loc0: loc_t
-, d3e1: d3exp): d3exp =
-let
-val lvl0 = errvl(d3e1) in//let
-d3exp_errck
-( lvl0+1, d3exp(loc0, D3Eeval(d3e1)) )
-endlet // end of [d3exp_eval_errck(...)]
 //
 (* ****** ****** *)
 //
