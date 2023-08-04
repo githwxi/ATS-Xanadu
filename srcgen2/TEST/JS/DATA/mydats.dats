@@ -123,4 +123,26 @@ end(* let *)
 end(* let *)//end-of(list_append(xs,ys))
 (* ****** ****** *)
 
+#impltmp
+<a>(*tmp*)
+strm_append
+  (xs, ys) =
+(
+  append(xs, ys)) where
+{
+fun
+append(xs, ys) =
+$lazy
+(
+case+ $eval(xs) of
+|
+strmcon_nil() => $eval(ys)
+|
+strmcon_cons(x0, xs) =>
+strmcon_cons(x0, append(xs, ys))
+)
+}(*where*)//end(strm_append(xs,ys))
+
+(* ****** ****** *)
+
 (* end of [DATA/mydats.dats] *)

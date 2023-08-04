@@ -136,7 +136,7 @@ gseq_mapopt_list
 map$fopr(x0) = board_cons(x0, xs)
 #impltmp
 filter$test(x0) = board_check(xs, x0)
-} (* end of [board_extend] *)
+}(*where*) // end of [board_extend(...)]
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -156,8 +156,8 @@ list_foldr
 foldr$fopr
 <xs><r0>(xs,r0) =
 (
-  list_append(board_extend(xs), r0))
-} (*where*)//end of [boardlst_extend]
+  list_append(board_extend(xs), r0)) }
+//(*where*)//end of [boardlst_extend(...)]
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -173,8 +173,9 @@ loop
 ( i0: int
 , xss: list(board)): list(board) =
 if
-(i0 < N) then
-loop(i0+1, boardlst_extend(xss)) else xss}
+(i0 < N)
+then loop
+(i0+1,boardlst_extend(xss)) else xss }
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -199,7 +200,7 @@ iforeach$work<xs0>(i0, xs) =
 println
 ("Solution#", i0+1, ":"); println(xs))
 } (* where *)
-} (* where *) // end of [ main0((*void*)) ]
+} (* where *)//end of [main0((*void*))]
 
 (* ****** ****** *)
 
