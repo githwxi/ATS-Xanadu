@@ -480,6 +480,12 @@ fperr33_d3explst
 (
   list_fperr33_fnp(out, d3es, fperr33_d3exp))
 //
+#implfun
+fperr33_d3expopt
+  (out, dopt) =
+(
+  optn_fperr33_fnp(out, dopt, fperr33_d3exp))
+//
 (* ****** ****** *)
 //
 #implfun
