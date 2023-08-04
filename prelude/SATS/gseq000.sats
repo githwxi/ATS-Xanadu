@@ -2051,9 +2051,39 @@ gseq_foldr_of_foreach
 (foreach: foreach(xs, x0)): foldr(xs, x0, r0)
 (* ****** ****** *)
 //
-// HX-2020-05-30:
-// symbol overloading for gseq-operations
+(*
+HX-2020-05-30:
+symbol overloading for gseq-operations
+*)
 //
+(* ****** ****** *)
+//
+(*
+HX-2023-08-04:
+Fri Aug  4 12:19:06 EDT 2023
+It dawned on me last night that overloading
+for the gseq-operations needs to be supported by
+some form of type unification DURING the phase of
+TEMPLATE RESOLUTION. A BIG design decision to take!
+*)
+//
+(* ****** ****** *)
+(*
+#symload map with gseq_map of 0100
+#symload filter with gseq_filter of 0100
+#symload mapopt with gseq_mapopt of 0100
+*)
+(* ****** ****** *)
+(*
+#symload forall with gseq_forall of 0100
+#symload foreach with gseq_foreach of 0100
+*)
+(* ****** ****** *)
+(*
+#symload map_list with gseq_map_list of 0100
+#symload filter_list with gseq_filter_list of 0100
+#symload mapopt_list with gseq_mapopt_list of 0100
+*)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gseq000.sats] *)

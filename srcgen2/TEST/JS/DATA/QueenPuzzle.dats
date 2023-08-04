@@ -205,3 +205,13 @@ println
 (* ****** ****** *)
 
 (* end of [TEST/JSDATA/QueenPuzzle.dats] *)
+
+(*
+map(xs, lam x0 => x0 + 1)
+zip(xs, ys, lam(x0, y0) => x0 + y0)
+foreach
+(
+xs,
+lam x0 =>
+println ("Solution#", i0+1, ":"); println(xs))
+*)
