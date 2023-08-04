@@ -145,7 +145,7 @@ fun
 boardlst_extend
 ( xss
 : list(board)): list(board) =
-foldr
+foldr_cfr
 (
 xss,
 list_nil,
@@ -159,8 +159,9 @@ list_append(board_extend(xs), r0))
 fun
 qsolve(): list(board) =
 (
-  loop(0, list_sing(board_nil()))
-) where
+loop
+(0, list_sing(board_nil())))
+where
 {
 fun
 loop
@@ -185,7 +186,7 @@ val () =
 iforeach_cfr
 (
 xss,
-lam(i0, xs) =>
+lam(i0:sint, xs:board) =>
 (
 println
 ("Solution#", i0+1, ":"); println(xs)))
