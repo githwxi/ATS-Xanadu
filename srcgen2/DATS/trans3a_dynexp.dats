@@ -529,6 +529,10 @@ d3e0.node() of
 |D3Efold _ => f0_fold(env0, d3e0)
 |D3Efree _ => f0_free(env0, d3e0)
 //
+|D3Edp2tr _ => f0_dp2tr(env0, d3e0)
+|D3Edl0az _ => f0_dl0az(env0, d3e0)
+|D3Edl1az _ => f0_dl1az(env0, d3e0)
+//
 |D3Ewhere _ => f0_where(env0, d3e0)
 //
 |D3Eassgn _ => f0_assgn(env0, d3e0)
@@ -1358,6 +1362,91 @@ in//let
 (
   d3exp(loc0, t2p0, D3Efree(d3e1)) )
 end (*let*) // end of [f0_free(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dp2tr
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Edp2tr(d3e1) = d3e0.node()
+//
+val t2p0 =
+d3e0.styp((*0*))
+val t2p0 =
+s2typ_hnfiz0(t2p0)
+val t2p0 =
+trans3a_s2typ(env0, t2p0)
+//
+val
+d3e1 = trans3a_d3exp(env0, d3e1)
+//
+in//let
+(
+  d3exp(loc0, t2p0, D3Edp2tr(d3e1)) )
+end (*let*) // end of [f0_dp2tr(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dl0az
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Edl0az(d3e1) = d3e0.node()
+//
+val t2p0 =
+d3e0.styp((*0*))
+val t2p0 =
+s2typ_hnfiz0(t2p0)
+val t2p0 =
+trans3a_s2typ(env0, t2p0)
+//
+val
+d3e1 = trans3a_d3exp(env0, d3e1)
+//
+in//let
+(
+  d3exp(loc0, t2p0, D3Edl0az(d3e1)) )
+end (*let*) // end of [f0_dl0az(env0,...)]
+//
+fun
+f0_dl1az
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Edl1az(d3e1) = d3e0.node()
+//
+val t2p0 =
+d3e0.styp((*0*))
+val t2p0 =
+s2typ_hnfiz0(t2p0)
+val t2p0 =
+trans3a_s2typ(env0, t2p0)
+//
+val
+d3e1 = trans3a_d3exp(env0, d3e1)
+//
+in//let
+(
+  d3exp(loc0, t2p0, D3Edl1az(d3e1)) )
+end (*let*) // end of [f0_dl1az(env0,...)]
 //
 (* ****** ****** *)
 //
