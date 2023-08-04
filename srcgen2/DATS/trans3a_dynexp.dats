@@ -238,7 +238,7 @@ d3p1 = trans3a_d3pat(env0, d3p1)
 //
 in//let
 (
-  d3pat
+  d3pat_make_styp_node
   (loc0, t2p0, D3Psapq(d3p1, s2vs)) )
 end(*let*)//end-of-[f0_sapq(env0,d3p0)]
 //
