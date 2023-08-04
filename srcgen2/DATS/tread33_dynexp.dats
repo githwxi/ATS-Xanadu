@@ -929,6 +929,42 @@ d3exp_make_styp_node
 endlet//end of [d3exp_assgn_errck(...)]
 //
 (* ****** ****** *)
+//
+fun
+d3exp_l0azy_errck
+( loc0: loc_t
+, t2p0: s2typ
+, dsym: d1exp
+, d3e1: d3exp): d3exp =
+let
+val lvl0 = errvl(d3e1) in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp
+(loc0, t2p0, D3El0azy(dsym, d3e1)) )
+endlet // end of [d3exp_l0azy_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d3exp_l1azy_errck
+( loc0: loc_t
+, t2p0: s2typ
+, dsym: d1exp
+, d3e1: d3exp
+, d3es: d3explst): d3exp =
+let
+val lvl0 = gmax
+(errvl(d3e1), errvl(d3es)) in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_styp_node
+(loc0,t2p0,D3El1azy(dsym,d3e1,d3es)))
+endlet // end of [d3exp_l1azy_errck(...)]
+//
+(* ****** ****** *)
 (*
 HX-2023-07-30:
 for handling [d3pat] and [d3exp]
@@ -1296,18 +1332,19 @@ f0_var(d3e0, err)
 |D3Efold _ => f0_fold(d3e0, err)
 |D3Efree _ => f0_free(d3e0, err)
 //
-|
-D3Ewhere _ => f0_where(d3e0, err)
+|D3Ewhere _ => f0_where(d3e0, err)
 //
-|
-D3Eassgn _ => f0_assgn(d3e0, err)
+|D3Eassgn _ => f0_assgn(d3e0, err)
+//
+|D3El0azy _ => f0_l0azy(d3e0, err)
+|D3El1azy _ => f0_l1azy(d3e0, err)
 //
 |
 _(* otherwise *) =>
 let
 val lvl0 = 1 in//let
 (err :=
-(err + 1); d3exp_errck(lvl0,d3e0) )
+(err + 1); d3exp_errck(lvl0, d3e0))
 endlet // end of [ _(* otherwise *) ]
 //
 ) where // end-of-[(*case+(d3e0)-of*)]
@@ -2158,6 +2195,72 @@ val loc = d3e.lctn() in
 d3exp_assgn_errck(loc, t2p, d3el, d3er)
 end (*let*)
 end (*let*) // end of [f0_assgn(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_l0azy
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3El0azy
+( dknd, d3e1) = d3e.node()
+//
+val
+d3e1 = tread33_d3exp(d3e1, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+let
+val loc = d3e.lctn() in
+d3exp_l0azy_errck(loc, t2p, dknd, d3e1)
+end (*let*)
+end (*let*) // end of [f0_l0azy(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_l1azy
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3El1azy
+( dknd
+, d3e1, d3es) = d3e.node()
+//
+val
+d3e1 = tread33_d3exp(d3e1, err)
+val
+d3es = tread33_d3explst(d3es, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+(
+  d3exp_l1azy_errck
+  (d3e.lctn(), t2p, dknd, d3e1, d3es) )
+end (*let*) // end of [f0_l1azy(d3e,err)]
 //
 (* ****** ****** *)
 //
