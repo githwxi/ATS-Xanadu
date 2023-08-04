@@ -189,6 +189,8 @@ gmax
 endcas // end of [ case+(ldps) ]
 )
 //
+#symload
+l2d2p_errvl with l2d2p_errvl_ldps
 #symload errvl with l2d2p_errvl_ldps
 //
 (* ****** ****** *)
@@ -204,7 +206,8 @@ d2pat_bang_errck
 ,d2p1: d2pat): d2pat =
 let
 val
-lvl0 = errvl(d2p1) in//let
+lvl0 =
+d2pat_errvl(d2p1) in//let
 d2pat_errck
 (lvl0+1, d2pat(loc0, D2Pbang(d2p1)))
 endlet // end of [d2pat_bang_errck(...)]
@@ -215,7 +218,8 @@ d2pat_free_errck
 ,d2p1: d2pat): d2pat =
 let
 val
-lvl0 = errvl(d2p1) in//let
+lvl0 =
+d2pat_errvl(d2p1) in//let
 d2pat_errck
 (lvl0+1, d2pat(loc0, D2Pfree(d2p1)))
 endlet // end of [d2pat_free_errck(...)]
@@ -228,7 +232,8 @@ d2pat_dap1_errck
 , d2f0: d2pat): d2pat =
 let
 val
-lvl0 = errvl(d2f0) in//let
+lvl0 =
+d2pat_errvl(d2f0) in//let
 d2pat_errck
 (lvl0+1, d2pat(loc0, D2Pdap1(d2f0)))
 endlet // end of [d2pat_dap1_errck(...)]
@@ -257,7 +262,8 @@ d2pat_tup0_errck
 , d2ps: d2patlst): d2pat =
 let
 val
-lvl0 = errvl(d2ps) in//let
+lvl0 =
+d2pat_errvl(d2ps) in//let
 d2pat_errck
 ( lvl0+1
 , d2pat( loc0, D2Ptup0( npf1, d2ps )))
@@ -273,7 +279,8 @@ d2pat_tup1_errck
 , d2ps: d2patlst): d2pat =
 let
 val
-lvl0 = errvl(d2ps) in//let
+lvl0 =
+d2pat_errvl(d2ps) in//let
 d2pat_errck
 ( lvl0+1
 , d2pat(loc0,D2Ptup1(tknd,npf1,d2ps)))
@@ -289,7 +296,8 @@ d2pat_rcd2_errck
 , ldps: l2d2plst): d2pat =
 let
 val
-lvl0 = errvl(ldps) in//let
+lvl0 =
+l2d2p_errvl(ldps) in//let
 d2pat_errck
 ( lvl0+1
 , d2pat(loc0, D2Prcd2(tknd,npf1,ldps)))
@@ -306,7 +314,8 @@ d2pat_annot_errck
 : s2exp(*annot*)): d2pat =
 let
 val
-lvl0 = errvl(d2p1) in//let
+lvl0 =
+d2pat_errvl(d2p1) in//let
 d2pat_errck
 ( lvl0+1
 , d2pat(loc0,D2Pannot(d2p1,s1e2,s2e2)))
@@ -415,6 +424,8 @@ gmax
 endcas // end of [ case+(ldes) ]
 )
 //
+#symload
+l2d2e_errvl with l2d2e_errvl_ldes
 #symload errvl with l2d2e_errvl_ldes
 //
 (* ****** ****** *)
@@ -470,7 +481,8 @@ d2exp_dap0_errck
 ,d2e1: d2exp): d2exp =
 let
 val
-lvl0 = errvl(d2e1) in//let
+lvl0 =
+d2exp_errvl(d2e1) in//let
 d2exp_errck
 (lvl0+1, d2exp(loc0, D2Edap0( d2e1 )))
 endlet // end of [d2exp_dap0_errck(...)]
@@ -484,7 +496,8 @@ d2exp_tapp_errck
 ,s2es: s2explst): d2exp =
 let
 val
-lvl0 = errvl(d2f0) in//let
+lvl0 =
+d2exp_errvl(d2f0) in//let
 d2exp_errck
 (lvl0+1
 ,d2exp(loc0, D2Etapp( d2f0 , s2es )))
@@ -518,7 +531,8 @@ d2exp_proj_errck
 , dtup: d2exp): d2exp =
 let
 val
-lvl0 = errvl(dtup) in//let
+lvl0 =
+d2exp_errvl(dtup) in//let
 d2exp_errck
 (lvl0+1
 ,d2exp
@@ -603,7 +617,8 @@ d2exp_tup0_errck
 , d2es: d2explst): d2exp =
 let
 val
-lvl0 = errvl(d2es) in//let
+lvl0 =
+d2exp_errvl(d2es) in//let
 d2exp_errck
 ( lvl0+1
 , d2exp( loc0, D2Etup0( npf1, d2es )))
@@ -619,7 +634,8 @@ d2exp_tup1_errck
 , d2es: d2explst): d2exp =
 let
 val
-lvl0 = errvl(d2es) in//let
+lvl0 =
+d2exp_errvl(d2es) in//let
 d2exp_errck
 ( lvl0+1
 , d2exp(loc0,D2Etup1(tknd,npf1,d2es)))
@@ -635,7 +651,8 @@ d2exp_rcd2_errck
 , ldes: l2d2elst): d2exp =
 let
 val
-lvl0 = errvl(ldes) in//let
+lvl0 =
+l2d2e_errvl(ldes) in//let
 d2exp_errck
 ( lvl0+1
 , d2exp(loc0,D2Ercd2(tknd,npf1,ldes)))
@@ -654,7 +671,8 @@ d2exp_lam0_errck
 : d2exp(*body*)): d2exp =
 let
 val
-lvl0 = errvl(dexp) in//let
+lvl0 =
+d2exp_errvl(dexp) in//let
 d2exp_errck
 (
 lvl0+1,
@@ -677,7 +695,8 @@ d2exp_fix0_errck
 : d2exp (*body*)): d2exp =
 let
 val
-lvl0 = errvl(dexp) in//let
+lvl0 =
+d2exp_errvl(dexp) in//let
 d2exp_errck
 (
 lvl0+1,
