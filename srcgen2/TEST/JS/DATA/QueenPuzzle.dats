@@ -60,57 +60,63 @@ end (* end of [local] *)
 
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #impltmp
 g_print
-<board> =
-board_print where
-{
+<board>(xs) =
+(
+board_print(xs)
+) where {
 fun
 board_print
 (xs: board): void =
 (
-gseq_rforeach(xs) )
-where {
+gseq_rforeach
+< xs >< x0 >( xs )
+) where {
+//
+#typedef x0 = sint
+#typedef xs = board
 //
 #impltmp
 rforeach$work
-  (x0: int) =
+< x0 >( x0 ) =
 (
   loop(0) ) where
 {
 fun
-loop(i0: int): void =
+loop(i0) =
 if
 i0 >= N
-then
-println((*void*))
-else
+then println((*0*)) else
 (
-if i0 = x0
-then
-print "Q " else print ". "; loop(i0+1))
-}
+if
+i0 = x0
+then print "Q "
+else print ". "; loop(i0+1)) }
 //
-} (* end of [board_print *)
-} (* where *) // end of [g_print<board>]
-
+} (*where*) // end of [board_print]
+} (*where*) // end of [g_print<board>]
+//
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 fun
 board_check
 (xs: board, x0: int): bool =
 (
-gseq_iforall(xs)) where
-{
+gseq_iforall
+< xs >< x0 >( xs )
+) where {
+#typedef x0 = sint
+#typedef xs = board
 #impltmp
-iforall$test<int>(i1, x1) =
+iforall$test<x0>(i1, x1) =
 if
 (x0 != x1)
-then (abs(x0 - x1) != i1 + 1) else false
-} (* end of [board_check] *)
-
+then (abs(x0-x1) != i1+1) else false
+} (*where*) // end of [board_check(...)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
@@ -120,14 +126,19 @@ board_extend
 (
 list_vt2t
 (
-gseq_mapopt_list(N))) where
+gseq_mapopt_list
+< xs >< x0 >< y0 >(N))) where
 {
+#typedef xs = sint
+#typedef x0 = sint
+#typedef y0 = board
 #impltmp
 map$fopr(x0) = board_cons(x0, xs)
 #impltmp
 filter$test(x0) = board_check(xs, x0)
 } (* end of [board_extend] *)
 
+(* ****** ****** *)
 (* ****** ****** *)
 
 fun
@@ -145,8 +156,8 @@ list_foldr
 foldr$fopr
 <xs><r0>(xs,r0) =
 (
-  list_append(board_extend(xs), r0)) }
-//(* end of [boardlst_extend] *)
+  list_append(board_extend(xs), r0))
+} (*where*)//end of [boardlst_extend]
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -177,10 +188,13 @@ xss = qsolve()
 //
 val () =
 (
-list_iforeach(xss)) where
+gseq_iforeach
+<xss><xs0>(xss)) where
 {
+#typedef xs0 = board
+#typedef xss = list(board)
 #impltmp
-iforeach$work<board>(i0, xs) =
+iforeach$work<xs0>(i0, xs) =
 (
 println
 ("Solution#", i0+1, ":"); println(xs))
