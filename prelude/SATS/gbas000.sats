@@ -805,44 +805,52 @@ HX-2023-02-26: Various combinator types
 *)
 (* ****** ****** *)
 #typedef
-strmize(xs:t0, x0:t0) = xs -<cfr> strm_vt(x0)
+strmize
+(xs:t0, x0:t0) = ( xs) -<cfr> strm_vt(x0)
 #typedef
-strmize0(xs:vt, x0:vt) = xs -<cfr> strm_vt(x0)
+strmize0
+(xs:vt, x0:vt) = (~xs) -<cfr> strm_vt(x0)
 (* ****** ****** *)
 #typedef
-forall(xs:t0, x0:t0) = (xs, x0 -<cfr> bool) -<cfr> bool
+forall
+(xs:t0, x0:t0) = ( xs, x0 -<cfr> bool) -<cfr> bool
 #typedef
-forall0(xs:vt, x0:vt) = (~xs, x0 -<cfr> bool) -<cfr> bool
+forall0
+(xs:vt, x0:vt) = (~xs, x0 -<cfr> bool) -<cfr> bool
 #typedef
-forall1(xs:vt, x0:vt) = (!xs, x0 -<cfr> bool) -<cfr> bool
+forall1
+(xs:vt, x0:vt) = (!xs, x0 -<cfr> bool) -<cfr> bool
 (* ****** ****** *)
 #typedef
-foreach(xs:t0, x0:t0) = (xs, x0 -<cfr> void) -<cfr> void
+foreach
+(xs:t0, x0:t0) = ( xs, x0 -<cfr> void) -<cfr> void
 #typedef
-foreach0(xs:vt, x0:t0) = (~xs, x0 -<cfr> void) -<cfr> void
+foreach0
+(xs:vt, x0:t0) = (~xs, x0 -<cfr> void) -<cfr> void
 #typedef
-foreach1(xs:vt, x0:t0) = (!xs, x0 -<cfr> void) -<cfr> void
+foreach1
+(xs:vt, x0:t0) = (!xs, x0 -<cfr> void) -<cfr> void
 (* ****** ****** *)
 //
 #typedef
-foldl
-(xs:t0,x0:t0,r0:vt) = (xs, r0, (r0, x0) -<cfr> r0) -<cfr> r0
+foldl//cfr
+(xs:t0,x0:t0,r0:vt) = ( xs,r0,(r0,x0) -<cfr> r0) -<cfr> r0
 #typedef
-foldr
-(xs:t0,x0:t0,r0:vt) = (xs, r0, (x0, r0) -<cfr> r0) -<cfr> r0
+foldl0//cfr
+(xs:vt,x0:vt,r0:vt) = (~xs,r0,(r0,x0) -<cfr> r0) -<cfr> r0
+#typedef
+foldl1//cfr
+(xs:vt,x0:vt,r0:vt) = (!xs,r0,(r0,x0) -<cfr> r0) -<cfr> r0
 //
 #typedef
-foldl0
-(xs:vt,x0:vt,r0:vt) = (~xs, r0, (r0, x0) -<cfr> r0) -<cfr> r0
+foldr//cfr
+(xs:t0,x0:t0,r0:vt) = ( xs,r0,(x0,r0) -<cfr> r0) -<cfr> r0
 #typedef
-foldr0
-(xs:vt,x0:t0,r0:vt) = (~xs, r0, (x0, r0) -<cfr> r0) -<cfr> r0
+foldr0//cfr
+(xs:vt,x0:t0,r0:vt) = (~xs,r0,(x0,r0) -<cfr> r0) -<cfr> r0
 #typedef
-foldl1
-(xs:vt,x0:vt,r0:vt) = (!xs, r0, (r0, x0) -<cfr> r0) -<cfr> r0
-#typedef
-foldr1
-(xs:vt,x0:t0,r0:vt) = (!xs, r0, (x0, r0) -<cfr> r0) -<cfr> r0
+foldr1//cfr
+(xs:vt,x0:t0,r0:vt) = (!xs,r0,(x0,r0) -<cfr> r0) -<cfr> r0
 //
 (* ****** ****** *)
 

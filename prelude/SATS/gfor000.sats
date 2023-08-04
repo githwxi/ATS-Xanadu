@@ -96,16 +96,16 @@ range1_rstrmize(range1(x0)): strm_vt(x0)
 //
 (* ****** ****** *)
 //
-#symload foldl with range1_foldl of 0100
+#symload foldl with range1_foldl of 1000
 //
-#symload forall with range1_forall of 0100
-#symload foreach with range1_foreach of 0100
+#symload forall with range1_forall of 1000
+#symload foreach with range1_foreach of 1000
 //
-#symload listize with range1_listize of 0100
-#symload strmize with range1_strmize of 0100
+#symload listize with range1_listize of 1000
+#symload strmize with range1_strmize of 1000
 //
-#symload rlistize with range1_rlistize of 0100
-#symload rstrmize with range1_rstrmize of 0100
+#symload rlistize with range1_rlistize of 1000
+#symload rstrmize with range1_rstrmize of 1000
 //
 (* ****** ****** *)
 

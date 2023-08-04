@@ -183,16 +183,17 @@ strmcon_vt_cons
 (
 s1,
 auxmain2
-(fpred(s1,d3),f2,d3)) else strmcon_vt_nil())
+(fpred(s1,d3),f2,d3)) else strmcon_vt_nil)
 //
 in
 let
 val+
 RANGE1(s1, f2, d3) = xs in
+(
 if
 (d3 >= 0)
 then
-auxmain1(s1, f2, d3) else auxmain2(s1, f2, d3)
+auxmain1(s1,f2,d3) else auxmain2(s1,f2,d3))
 end(* let *)
 end(* let *) // end of [ range1_strmize( xs ) ]
 //
