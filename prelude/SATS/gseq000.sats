@@ -2086,24 +2086,31 @@ TEMPLATE RESOLUTION. A BIG design decision to take!
 *)
 (* ****** ****** *)
 
-#symload foldl_fnp with gseq_foldl_f2np
 #symload foldl_cfr with gseq_foldl_c2fr
-#symload foldr_fnp with gseq_foldr_f2np
+#symload foldl_fnp with gseq_foldl_f2np
 #symload foldr_cfr with gseq_foldr_c2fr
+#symload foldr_fnp with gseq_foldr_f2np
 
 (* ****** ****** *)
 
-#symload forall_fnp with gseq_forall_f1np
 #symload forall_cfr with gseq_forall_c1fr
-#symload foreach_fnp with gseq_foreach_f1np
+#symload forall_fnp with gseq_forall_f1np
 #symload foreach_cfr with gseq_foreach_c1fr
+#symload foreach_fnp with gseq_foreach_f1np
 
 (* ****** ****** *)
 
-#symload iforall_fnp with gseq_iforall_f2np
+#symload ifoldl_cfr with gseq_ifoldl_c3fr
+#symload ifoldl_fnp with gseq_ifoldl_f3np
+#symload ifoldr_cfr with gseq_ifoldr_c3fr
+#symload ifoldr_fnp with gseq_ifoldr_f3np
+
+(* ****** ****** *)
+
 #symload iforall_cfr with gseq_iforall_c2fr
-#symload iforeach_fnp with gseq_iforeach_f2np
+#symload iforall_fnp with gseq_iforall_f2np
 #symload iforeach_cfr with gseq_iforeach_c2fr
+#symload iforeach_fnp with gseq_iforeach_f2np
 
 (* ****** ****** *)
 
