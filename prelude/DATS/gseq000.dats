@@ -4047,7 +4047,7 @@ gseq_x2iforeach
 {
 #impltmp
 x2iforeach$work
-<    x0,y0    >(ix,x0,jy,y0) = f0(ix,x0,jy,y0)
+<  x0,y0  >(ix,x0,jy,y0) = f0(ix,x0,jy,y0)
 }(*where*)//end(gseq_x2iforeach_c4fr(xs,ys,f0))
 (* ****** ****** *)
 #impltmp
@@ -4061,7 +4061,7 @@ gseq_x2iforeach
 {
 #impltmp
 x2iforeach$work
-<    x0,y0    >(ix,x0,jy,y0) = f0(ix,x0,jy,y0)
+<  x0,y0  >(ix,x0,jy,y0) = f0(ix,x0,jy,y0)
 }(*where*)//end(gseq_x2iforeach_f4np(xs,ys,f0))
 (* ****** ****** *)
 //

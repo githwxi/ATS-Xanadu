@@ -145,15 +145,15 @@ print
 print(npf1, ";", t2ps, ";", tres, ")"))
 //
 |
+T2Ptext(name, t2ps) =>
+print("T2Ptext(", name, ";", t2ps, ")")
+//
+|
 T2Pexi0(s2vs, t2p1) =>
 print("T2Pexi0(", s2vs, ";", t2p1, ")")
 |
 T2Puni0(s2vs, t2p1) =>
 print("T2Puni0(", s2vs, ";", t2p1, ")")
-//
-|
-T2Ptext(name, t2ps) =>
-print("T2Ptext(", name, ";", t2ps, ")")
 //
 |
 T2Ptrcd

@@ -1556,12 +1556,14 @@ end (*let*) // end of [f0_annot(d3p,err)]
 //
 (* ****** ****** *)
 //
-val () =
-prerrln("tread33_d3pat: d3p0 = ", d3p0)
+(*
+  val () =
+  prerrln("tread33_d3pat: d3p0 = ", d3p0)
+*)
 //
 (* ****** ****** *)
 //
-} (*where*)//end[tread33_d3pat(d3p0,err)]
+} (*where*)//end-[tread33_d3pat(d3p0,err)]
 
 (* ****** ****** *)
 //
@@ -2736,10 +2738,10 @@ val-D3Enone0() = d3e.node() in (d3e) end
 //
 (* ****** ****** *)
 //
-(*
+// (*
   val () =
   prerrln("tread33_d3exp: d3e0 = ", d3e0)
-*)
+// *)
 //
 (* ****** ****** *)
 //
