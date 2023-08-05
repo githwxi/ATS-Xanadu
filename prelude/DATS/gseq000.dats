@@ -849,7 +849,8 @@ gseq_scale(xs, x0) =
 gseq_map<xs><x0>(xs)) where
 {
   #impltmp
-  map$fopr<x0><x0>(x1) = g_mul<x0>(x0, x1) }
+  map$fopr
+  <x0><x0>(x1) = g_mul<x0>(x0, x1) }
 #impltmp
 <xs><x0>
 gseq_shift(xs, x0) =
@@ -857,7 +858,8 @@ gseq_shift(xs, x0) =
 gseq_map<xs><x0>(xs)) where
 {
   #impltmp
-  map$fopr<x0><x0>(x1) = g_add<x0>(x1, x0) }
+  map$fopr
+  <x0><x0>(x1) = g_add<x0>(x1, x0) }
 //
 (* ****** ****** *)
 //
@@ -885,17 +887,20 @@ val p1 = $addr(r1.1)
 //
 in
 $UN.p2tr_set<yy>
-(p0, $UN.castlin01(r1)); (p1)
+( p0
+, $UN.castlin01(r1)); (p1)
 end // foldl$fopr
 //
 var r0: yy
 val pz =
-gseq_foldl<xs><x0><r0>(xs, $addr(r0))
+gseq_foldl
+<xs><x0><r0>(xs, $addr(r0))
 //
 in
 $UN.p2tr_set<yy>
-(pz, list_vt_nil()); $UN.castlin01(r0)
-end // end of [gseq_map_list/foldl(...)]
+( pz
+, list_vt_nil()); $UN.castlin01(r0)
+end//end of [gseq_map_list/foldl(...)]
 //
 (* ****** ****** *)
 
@@ -917,10 +922,10 @@ gseq_foldl
 foldl$fopr
 < x0><r0 >
 ( r0, x0 ) =
-list_vt_cons(map$fopr<x0><y0>(x0), r0)
-}
+list_vt_cons
+(map$fopr<x0><y0>(x0), r0)}//where
 //
-end // end-of(gseq_map_rlist/foldl(...))
+end // end-of(gseq_map_rlist/foldl(...)
 
 (* ****** ****** *)
 
@@ -936,9 +941,9 @@ strm_vt_map0<x0><y0>(xs)
 ) where
 {
 #impltmp
-map0$fopr<x0><y0> = map$fopr<x0><y0>
-}
-end // end-of(gseq_map_strm/strmize)
+map0$fopr
+<x0><y0> = map$fopr<x0><y0>}//where
+end//end-of(gseq_map_strm/strmize(...))
 
 (* ****** ****** *)
 //
@@ -946,12 +951,12 @@ end // end-of(gseq_map_strm/strmize)
 <xs><x0><y0>
 gseq_mapopt_list(xs) =
 strm_vt_listize
-(gseq_mapopt_strm(xs))
+(gseq_mapopt_strm<xs><x0><y0>(xs))
 #impltmp
 <xs><x0><y0>
 gseq_mapopt_rlist(xs) =
 strm_vt_rlistize
-(gseq_mapopt_strm(xs))
+(gseq_mapopt_strm<xs><x0><y0>(xs))
 //
 #impltmp
 <xs><x0><y0>
@@ -968,10 +973,9 @@ strm_vt_mapopt0<x0><y0>(xs)
 map0$fopr
 <x0><y0> = map$fopr<x0><y0>
 #impltmp
-filter0$test<x0> = filter$test<x0>
-}
+filter0$test<x0> = filter$test<x0> }
 end // end-of(impltmp)
-// end-of(gseq_mapopt_strm/strmize)
+//end-(gseq_mapopt_strm/strmize(...))
 //
 (* ****** ****** *)
 //
@@ -979,20 +983,21 @@ end // end-of(impltmp)
 <xs><x0>
 gseq_copy_list(xs) =
 (
-  gseq_map_list<xs><x0><x0>(xs)
-) where
+  gseq_map_list
+  <xs><x0><x0>(xs)) where
 {
-  #impltmp map$fopr<x0><x0>(x0) = x0
-}
+  #impltmp
+  map$fopr<x0><x0>(x0) = x0 }
+//
 #impltmp
 <xs><x0>
 gseq_copy_rlist(xs) =
 (
-gseq_map_rlist<xs><x0><x0>(xs)
-) where
+  gseq_map_rlist
+  <xs><x0><x0>(xs)) where
 {
-  #impltmp map$fopr<x0><x0>(x0) = x0
-}
+  #impltmp
+  map$fopr<x0><x0>(x0) = x0 }
 //
 (* ****** ****** *)
 //
@@ -1083,7 +1088,7 @@ then
 list_vt_cons(x0, r0) else (r0)
 }
 //
-end//end-of(gseq_filter_rlist/foldl)
+end//end-of(gseq_filter_rlist/foldl(xs))
 
 (* ****** ****** *)
 //
@@ -1097,7 +1102,7 @@ gseq_idropif
 {
 #impltmp
 idropif$test<x0>(i0, x0) = (i0 < n0)
-} (*where*)//end-of(gseq_drop/idropif)
+} (*where*)//end-of(gseq_drop/idropif(...))
 //
 #impltmp
 <xs><x0>
@@ -1108,8 +1113,8 @@ gseq_idropif
 < xs >< x0 >(xs)) where
 {
 #impltmp
-idropif$test<x0>(i0,x0) = dropif$test<x0>(x0)
-} (*where*)//end-of(gseq_dropif/idropif)
+idropif$test<x0>(i0,x0) = dropif$test(x0)
+}(*where*)//end-of(gseq_dropif/idropif(...))
 //
 (* ****** ****** *)
 //
@@ -1136,8 +1141,8 @@ gseq_itakeif
 < xs >< x0 >(xs)) where
 {
 #impltmp
-itakeif$test<x0>(_, x0) = takeif$test<x0>(x0)
-} (*where*)//end-of(gseq_takeif/itakeif)
+itakeif$test<x0>(_, x0) = takeif$test(x0)
+}(*where*)//end-of(gseq_takeif/itakeif(...))
 //
 (* ****** ****** *)
 #impltmp
@@ -1149,7 +1154,7 @@ gseq_itakeif_list
 < xs >< x0 >(xs)) where
 {
 #impltmp
-itakeif$test<x0>(_, x0) = takeif$test<x0>(x0)
+itakeif$test<x0>(_, x0) = takeif$test(x0)
 } (*where*)//end-of(gseq_takeif_list/itakeif)
 #impltmp
 <xs><x0>
@@ -1160,7 +1165,7 @@ gseq_itakeif_strm
 < xs >< x0 >(xs)) where
 {
 #impltmp
-itakeif$test<x0>(_, x0) = takeif$test<x0>(x0)
+itakeif$test<x0>(_, x0) = takeif$test(x0)
 } (*where*)//end-of(gseq_takeif_strm/itakeif)
 #impltmp
 <xs><x0>
@@ -1284,7 +1289,7 @@ forall$test
 < x0 >< y0 > = map$fopr<x0><y0>
 //
 } (*where*) // [gseq_forall(xs)]
-endlet//end-[gseq_map_conj/forall]
+endlet//end-of-[gseq_map_conj/forall]
 //
 (* ****** ****** *)
 //
@@ -1304,7 +1309,7 @@ exists$test
 < x0 >< y0 > = map$fopr<x0><y0>
 //
 } (*where*) // [gseq_exists(xs)]
-endlet//end-[gseq_map_disj/forall]
+endlet//end-of-[gseq_map_disj/forall]
 //
 (* ****** ****** *)
 #impltmp
@@ -1337,7 +1342,7 @@ gseq_max_ini
 ( gseq_tail_raw<xs><x0>(xs)
 , gseq_head_raw<xs><x0>(xs))
 endif // end-of-( if )
-) (* end of [gseq_max_exn(xs)] *)
+) (*if*) // end of [gseq_max_exn(xs)]
 //
 #impltmp
 <xs><x0>
@@ -1353,7 +1358,7 @@ gseq_min_ini
 ( gseq_tail_raw<xs><x0>(xs)
 , gseq_head_raw<xs><x0>(xs))
 endif // end-of-( if )
-) (* end of [gseq_min_exn(xs)] *)
+) (*if*) // end of [gseq_min_exn(xs)]
 //
 (* ****** ****** *)
 //
@@ -1372,7 +1377,7 @@ optn_vt_cons
 gseq_max_ini
 ( gseq_tail_raw<xs><x0>(xs)
 , gseq_head_raw<xs><x0>(xs)))
-) (* end of [gseq_max_opt(xs)] *)
+) (*if*) // end of [gseq_max_opt(xs)]
 //
 #impltmp
 <xs><x0>
@@ -1391,7 +1396,7 @@ gseq_min_ini
 , gseq_head_raw<xs><x0>(xs))
 )
 endif // end-of-( if )
-) (* end of [gseq_min_opt(xs)] *)
+) (*if*) // end of [gseq_min_opt(xs)]
 //
 (* ****** ****** *)
 //
@@ -1409,7 +1414,7 @@ foldl$fopr
 //
 in
   gseq_foldl<xs><x0><r0>(xs, x0)
-endlet//end-of-[gseq_max_ini/foldl]
+end//end-of-[gseq_max_ini/foldl(...)]
 //
 #impltmp
 <xs><x0>
@@ -1425,7 +1430,7 @@ foldl$fopr
 //
 in
   gseq_foldl<xs><x0><r0>(xs, x0)
-endlet//end-of-[gseq_min_ini/foldl]
+end//end-of-[gseq_min_ini/foldl(...)]
 //
 (* ****** ****** *)
 
@@ -1437,7 +1442,7 @@ val xs =
 gseq_strmize<xs><x0>(xs)
 in//let
   strm_vt_sortedq<x0>(xs)
-end(*let*) // end-of-[gseq_sortedq]
+end(*let*) // end-[gseq_sortedq(...)]
 
 (* ****** ****** *)
 
@@ -2512,12 +2517,14 @@ gseq_strmize<xs><x0>(xs)
 val ys =
 gseq_strmize<ys><y0>(ys)
 //
+in//let
+let
 #impltmp
 z2map0$fopr
-<  x0,y0  > = z2map$fopr<x0,y0>
-//
+<x0,y0><z0>(*x0,y0*) =
+z2map$fopr<x0,y0><z0>(*x0,y0*)
 in//let
-strm_vt_z2map0<x0,y0><z0>(xs, ys)
+strm_vt_z2map0<x0,y0><z0>(xs, ys) end
 end(*let*)//end-[gseq_z2map_strm(xs,ys)]
 //
 (* ****** ****** *)

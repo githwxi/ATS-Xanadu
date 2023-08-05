@@ -637,6 +637,9 @@ f0_text(e1nv, t2p0, svts, flag)
 |T2Puni0 _ =>
 f0_uni0(e1nv, t2p0, svts, flag)
 //
+|T2Ptrcd _ =>
+f0_trcd(e1nv, t2p0, svts, flag)
+//
 |T2Pnone0 _ => t2p0
 |T2Pnone1 _ => t2p0|T2Ps2exp _ => t2p0
 //
@@ -655,7 +658,8 @@ f0_var
 , flag: &sint >> _): s2typ =
 let
 //
-val-T2Pvar(s2v1) = t2p0.node()
+val-
+T2Pvar(s2v1) = t2p0.node()
 //
 val
 opt1 = s2vts_search_opt(svts, s2v1)
@@ -681,7 +685,9 @@ let
 val fval = flag
 //
 val-
-T2Parg1(knd0, t2p1) = t2p0.node()
+T2Parg1
+( knd0, t2p1) = t2p0.node()
+//
 val t2p1 =
 s2typ_substx(e1nv, t2p1, svts, flag)
 //
@@ -705,9 +711,11 @@ let
 val fval = flag
 //
 val-
-T2Papps(t2f0, t2ps) = t2p0.node()
+T2Papps
+( t2f0, t2ps) = t2p0.node()
+//
 val t2f0 =
-s2typ_substx(e1nv, t2f0, svts, flag)
+s2typ_substx(e1nv,t2f0,svts,flag)
 val t2ps =
 s2typlst_substx(e1nv,t2ps,svts,flag)
 //
@@ -732,8 +740,8 @@ val fval = flag
 //
 val-
 T2Pfun1
-( f2cl
-, npf1, t2ps, tres) = t2p0.node()
+( f2cl, npf1
+, t2ps, tres) = t2p0.node()
 val t2ps =
 s2typlst_substx(e1nv,t2ps,svts,flag)
 val tres =
@@ -762,7 +770,8 @@ let
 val fval = flag
 //
 val-
-T2Ptext(name, t2ps) = t2p0.node()
+T2Ptext
+( name, t2ps) = t2p0.node()
 //
 val t2ps =
 s2typlst_substx(e1nv,t2ps,svts,flag)
@@ -800,6 +809,33 @@ end (*let*) // end of [f0_uni0(e1nv,...)]
 //
 (* ****** ****** *)
 //
+fun
+f0_trcd
+( e1nv: !e1nv
+, t2p0: s2typ
+, svts: s2vts
+, flag: &sint >> _): s2typ =
+let
+//
+val fval = flag
+//
+val-
+T2Ptrcd
+( knd0
+, npf1, ltps) = t2p0.node()
+//
+val ltps =
+l2t2plst_substx(e1nv,ltps,svts,flag)
+//
+if
+flag <= fval
+then t2p0 else
+s2typ_make_node
+(t2p0.sort(),T2Ptrcd(knd0, npf1, ltps))
+end (*let*) // end of [f0_uni0(e1nv,...)]
+//
+(* ****** ****** *)
+//
 } (*where*) // end of [s2typ_substx(e1nv,...)]
 //
 (* ****** ****** *)
@@ -808,9 +844,8 @@ and
 s2typlst_substx
 ( e1nv:
 ! e1nv
-, t2ps
-: s2typlst
-, svts: s2vts
+, t2ps: s2typlst
+, svts: ( s2vts )
 , flag: &sint >> _): s2typlst =
 (
 case+ t2ps of
@@ -831,6 +866,47 @@ if // if
 flag <= fval then t2ps else list_cons(t2p1,tps2)
 end (*let*)
 ) (*case+*) // end of [s2typlst_substx(e1nv,...)]
+//
+(* ****** ****** *)
+//
+and
+l2t2plst_substx
+( e1nv:
+! e1nv
+, ltps: l2t2plst
+, svts: ( s2vts )
+, flag: &sint >> _): l2t2plst =
+(
+case+ ltps of
+|list_nil() =>
+list_nil((*void*))
+|list_cons(ltp1, lts2) =>
+let
+//
+val fval = flag
+//
+val ltp1 =
+let
+val+
+S2LAB(lab1, t2p1) = ltp1
+//
+val t2p1 =
+s2typ_substx
+(e1nv, t2p1, svts, flag)
+in
+  if
+  (flag <= fval)
+  then ltp1 else S2LAB(lab1, t2p1)
+endlet // end of [ val(ltp1) ]
+//
+val lts2 =
+l2t2plst_substx(e1nv, lts2, svts, flag)
+//
+in//let
+if // if
+flag <= fval then ltps else list_cons(ltp1,lts2)
+end (*let*)
+) (*case+*) // end of [l2t2plst_substx(e1nv,...)]
 //
 (* ****** ****** *)
 //
