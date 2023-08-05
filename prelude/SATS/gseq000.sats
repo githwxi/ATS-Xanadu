@@ -1107,7 +1107,6 @@ fun
 ,ys:t0>
 <x0:t0
 ,y0:t0>
-<zs:vt>
 <z0:vt>
 gseq_z2imap_list
   (xs: xs, ys: ys): list_vt(z0)
@@ -1117,7 +1116,6 @@ fun
 ,ys:t0>
 <x0:t0
 ,y0:t0>
-<zs:vt>
 <z0:vt>
 gseq_z2imap_strm
   (xs: xs, ys: ys): strm_vt(z0)

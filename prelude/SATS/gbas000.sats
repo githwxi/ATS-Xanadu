@@ -724,7 +724,6 @@ x2map$fopr(x0, y0): z0
 fun
 <x0:t0
 ,y0:t0>
-<z0:vt>
 x2filter$test
   (x0: x0, y0: y0): bool
 //
@@ -766,7 +765,6 @@ x2imap$fopr
 fun
 <x0:t0
 ,y0:t0>
-<z0:vt>
 x2ifilter$test
   (nint, x0, nint, y0): bool
 //

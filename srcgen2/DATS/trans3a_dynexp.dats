@@ -522,7 +522,7 @@ trans3a_d3exp
 (env0 , d3e0) =
 let
 //
-// (*
+(*
 val
 loc0 = d3e0.lctn()
 val () =
@@ -531,7 +531,7 @@ prerrln
 val () =
 prerrln
 ("trans3a_d3exp: d3e0 = ", d3e0)
-// *)
+*)
 //
 in//let
 case+
@@ -1823,8 +1823,10 @@ end//let//end-of-[D3GUAmat(...)]
 //
   val loc0 = dgua.lctn()
 //
+(*
   val (  ) =
   prerrln("trans3a_d3gua: dgua = ", dgua)
+*)
 //
 }(*where*)//end-of-[trans3a_d3gua(env0,...)]
 //
