@@ -210,6 +210,32 @@ endlet//end of [d3pat_any_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3pat_bang_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3p1: d3pat): d3pat =
+let
+val lvl0 = errvl(d3p1) in//let
+d3pat_errck
+( lvl0+1
+, d3pat(loc0, t2p0, D3Pbang(d3p1)))
+endlet // end of [d3pat_bang_errck(...)]
+//
+fun
+d3pat_free_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3p1: d3pat): d3pat =
+let
+val lvl0 = errvl(d3p1) in//let
+d3pat_errck
+( lvl0+1
+, d3pat(loc0, t2p0, D3Pfree(d3p1)))
+endlet // end of [d3pat_free_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3pat_sapq_errck
 (loc0: loc_t
 ,t2p0: s2typ
@@ -1139,6 +1165,9 @@ f0_any(d3p0, err)
 //
 |D3Pcon _ => d3p0
 //
+|D3Pbang _ => f0_bang(d3p0, err)
+|D3Pfree _ => f0_free(d3p0, err)
+//
 (*
 |D3Psapp _ => f0_sapp(d3p0, err)
 *)
@@ -1217,6 +1246,60 @@ then (d3p) else
 (
   d3pat_any_errck(d3p.lctn(), t2p) )
 end (*let*) // end of [f0_any(d3p,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_bang
+( d3p: d3pat
+, err: &sint >> _): d3pat =
+let
+//
+val e00 = err
+//
+val t2p = d3p.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3p.styp(t2p)
+//
+val-
+D3Pbang(d3p1) = d3p.node()
+//
+val
+d3p1 = tread33_d3pat(d3p1, err)
+//
+in//let
+if
+(err=e00)
+then (d3p) else
+d3pat_bang_errck(d3p.lctn(),t2p,d3p1)
+end (*let*) // end of [f0_bang(d3p,err)]
+//
+fun
+f0_free
+( d3p: d3pat
+, err: &sint >> _): d3pat =
+let
+//
+val e00 = err
+//
+val t2p = d3p.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3p.styp(t2p)
+//
+val-
+D3Pfree(d3p1) = d3p.node()
+//
+val
+d3p1 = tread33_d3pat(d3p1, err)
+//
+in//let
+if
+(err=e00)
+then (d3p) else
+d3pat_free_errck(d3p.lctn(),t2p,d3p1)
+end (*let*) // end of [f0_free(d3p,err)]
 //
 (* ****** ****** *)
 //

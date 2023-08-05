@@ -732,7 +732,8 @@ val tdxp = ...
 *)
 //
 in//let
-d2valdcl_make_args(loc0,dpat,tdxp,wsxp)
+(
+  d2valdcl_make_args(loc0,dpat,tdxp,wsxp) )
 end//let
 (*let*)//end-of-[trans2a_d2valdcl(env0,dval)]
 
@@ -785,11 +786,19 @@ TEQD2EXPsome
 {
 val d2e2 =
 trans2a_d2exp_tpck(env0,d2e2,tres)
-}
-) : teqd2exp // end of [val(dini)]
+//
+(*
+HX-2023-08-05: for trans23
+*)
+val d2e2 =
+d2exp(loc0,tres,D2Et2pck(d2e2,tres))
+//
+} (*where*) // end of [TEQD2EXPsome]
+) : teqd2exp // end of [ val( dini ) ]
 //
 in//let
-d2vardcl(loc0, dpid, vpid, sres, dini)
+(
+  d2vardcl(loc0, dpid, vpid, sres, dini) )
 end//let
 (*let*)//end-of-[trans2a_d2vardcl(env0,dvar)]
 
@@ -916,6 +925,10 @@ val dpat =
 d2valdcl_get_dpat(dval)
 val tdxp =
 d2valdcl_get_tdxp(dval)
+val wsxp =
+d2valdcl_get_wsxp(dval)
+//
+(* ****** ****** *)
 //
 val tdxp =
 (
@@ -932,7 +945,7 @@ TEQD2EXPsome
 (teq1, d2e2)) where
 {
 //
-val tres = dpat.styp()
+val tres = dpat.styp((*0*))
 //
 (*
 val (  ) = prerrln
@@ -943,10 +956,17 @@ val (  ) = prerrln
 //
 val d2e2 =
 trans2a_d2exp_tpck(env0,d2e2,tres)
-}
-) : teqd2exp // end-[val(tdxp)]
 //
-val wsxp = d2valdcl_get_wsxp(dval)
+(*
+HX-2023-08-05: for trans23
+*)
+val d2e2 =
+d2exp(loc0,tres,D2Et2pck(d2e2,tres))
+//
+} (*where*) // end-of-[TEQD2EXPsome]
+) : teqd2exp // end-of-[ val( tdxp ) ]
+//
+(* ****** ****** *)
 //
 in//let
 d2valdcl_make_args(loc0,dpat,tdxp,wsxp)
@@ -1037,6 +1057,12 @@ val f2as =
 d2fundcl_get_farg(dfun)
 val tdxp =
 d2fundcl_get_tdxp(dfun)
+val sres =
+d2fundcl_get_sres(dfun)
+val wsxp =
+d2fundcl_get_wsxp(dfun)
+//
+(* ****** ****** *)
 //
 val tdxp =
 (
@@ -1049,8 +1075,10 @@ TEQD2EXPnone((*void*))
 TEQD2EXPsome
 (teq1, d2e2) =>
 (
-TEQD2EXPsome(teq1, d2e2)) where
+TEQD2EXPsome
+(teq1, d2e2)) where
 {
+//
 val tres =
 f0_tres(f2as, dvar.styp())
 (*
@@ -1061,11 +1089,17 @@ val (  ) = prerrln
 *)
 val d2e2 =
 trans2a_d2exp_tpck(env0,d2e2,tres)
-}
-) : teqd2exp // end-[val(tdxp)]
 //
-val sres = d2fundcl_get_sres(dfun)
-val wsxp = d2fundcl_get_wsxp(dfun)
+(*
+HX-2023-08-05: for trans23
+*)
+val d2e2 =
+d2exp(loc0,tres,D2Et2pck(d2e2,tres))
+//
+} (*where*) // end-of-[TEQD2EXPsome]
+) : teqd2exp // end-of-[ val( tdxp ) ]
+//
+(* ****** ****** *)
 //
 in//let
 d2fundcl(loc0,dvar,f2as,sres,tdxp,wsxp)

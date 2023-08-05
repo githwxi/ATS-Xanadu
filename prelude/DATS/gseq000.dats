@@ -895,7 +895,7 @@ gseq_foldl<xs><x0><r0>(xs, $addr(r0))
 in
 $UN.p2tr_set<yy>
 (pz, list_vt_nil()); $UN.castlin01(r0)
-end // end of [gseq_map_list/foldl]
+end // end of [gseq_map_list/foldl(...)]
 //
 (* ****** ****** *)
 
@@ -920,7 +920,7 @@ foldl$fopr
 list_vt_cons(map$fopr<x0><y0>(x0), r0)
 }
 //
-end // end-of(gseq_map_rlist/foldl)
+end // end-of(gseq_map_rlist/foldl(...))
 
 (* ****** ****** *)
 
