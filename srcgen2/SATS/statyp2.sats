@@ -173,19 +173,19 @@ s2typ_node =
 //
 |
 T2Parg1 of // HX: knd: 0/1/-1: 
-(sint(*knd*), s2typ) // cbv0/v1/rf
+(sint(*knd*), s2typ)//cbv0/v1/rf
 (*
 |
 T2Patx2 of // HX: knd: 0/1/-1: 
-(s2typ(*bef*), s2typ) // cbv0/v1/rf
+(s2typ(*bef*), s2typ)//cbv0/v1/rf
 *)
 //
 |
 T2Papps of
-(s2typ(*fun*), s2typlst) // instantiate
+(s2typ(*fun*), s2typlst) // inst.
 |
 T2Plam0 of
-(s2varlst(*arg*), s2typ) // abstraction
+(s2varlst(*arg*), s2typ) // abst.
 //
 |
 T2Pf2cl of f2clknd
@@ -193,17 +193,19 @@ T2Pf2cl of f2clknd
 T2Pfun1 of
 ( s2typ // f2clknd
 , sint(*npf*)
-, s2typlst(*arg*), s2typ(*res*))
+, s2typlst(*arg*), s2typ(*res*) )
 // (* end of T2Pfun1 *)
+//
+| // external
+T2Ptext of
+(string(*name*), s2typlst(*arg*))
+//
 |
 T2Pexi0 of // exists quantifier
 (s2varlst(*vars*), s2typ(*body*))
 |
 T2Puni0 of // forall quantifier
 (s2varlst(*vars*), s2typ(*body*))
-//
-| // external
-T2Ptext of (string(*name*), s2typlst)
 //
 |
 T2Ptrcd of

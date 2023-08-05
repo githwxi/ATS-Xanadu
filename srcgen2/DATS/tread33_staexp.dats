@@ -161,6 +161,36 @@ end//let//end-of(s2typ_text_errck(...))
 (* ****** ****** *)
 //
 fun
+s2typ_exi0_errck
+(s2t0: sort2
+,s2vs: s2varlst
+,t2p1
+:s2typ(*scope*)): s2typ =
+let
+val lvl0 = 1
+in//let
+s2typ_errck
+( lvl0
+, s2typ(s2t0, T2Pexi0(s2vs, t2p1)))
+end//let//end-of(s2typ_exi0_errck(...))
+//
+fun
+s2typ_uni0_errck
+(s2t0: sort2
+,s2vs: s2varlst
+,t2p1
+:s2typ(*scope*)): s2typ =
+let
+val lvl0 = 1
+in//let
+s2typ_errck
+( lvl0
+, s2typ(s2t0, T2Puni0(s2vs, t2p1)))
+end//let//end-of(s2typ_uni0_errck(...))
+//
+(* ****** ****** *)
+//
+fun
 s2typ_trcd_errck
 (s2t0: sort2
 ,tknd: trcdknd
@@ -201,6 +231,9 @@ t2p0.node() of
 |T2Pfun1 _ => f0_fun1(t2p0, err)
 //
 |T2Ptext _ => f0_text(t2p0, err)
+//
+|T2Pexi0 _ => f0_exi0(t2p0, err)
+|T2Puni0 _ => f0_uni0(t2p0, err)
 //
 |T2Ptrcd _ => f0_trcd(t2p0, err)
 //
@@ -358,6 +391,60 @@ if
 then (t2p) else
 s2typ_text_errck(t2p.sort(),name,t2ps)
 end(*let*)// end-of-[ f0_text(t2p,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_exi0
+( t2p: s2typ
+, err: &sint >> _): s2typ =
+let
+//
+val e00 = err
+//
+val-
+T2Pexi0
+( s2vs, t2p1) = t2p.node()
+//
+val
+t2p1 = tread33_s2typ(t2p1, err)
+//
+in//let
+if
+(err=e00)
+then (t2p) else
+let
+val s2t = t2p.sort() in//let
+(
+  s2typ_exi0_errck(s2t, s2vs, t2p1))
+end(*let*)// end-of-else // end-of-if
+end(*let*)// end-of-[ f0_exi0(t2p,err) ]
+//
+fun
+f0_uni0
+( t2p: s2typ
+, err: &sint >> _): s2typ =
+let
+//
+val e00 = err
+//
+val-
+T2Puni0
+( s2vs, t2p1) = t2p.node()
+//
+val
+t2p1 = tread33_s2typ(t2p1, err)
+//
+in//let
+if
+(err=e00)
+then (t2p) else
+let
+val s2t = t2p.sort() in//let
+(
+  s2typ_uni0_errck(s2t, s2vs, t2p1))
+end(*let*)// end-of-else // end-of-if
+end(*let*)// end-of-[ f0_uni0(t2p,err) ]
 //
 (* ****** ****** *)
 //

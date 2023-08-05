@@ -634,11 +634,13 @@ f0_fun1(e1nv, t2p0, svts, flag)
 |T2Ptext _ =>
 f0_text(e1nv, t2p0, svts, flag)
 //
-|T2Pnone0 _ => t2p0
-|T2Pnone1 _ => t2p0
-|T2Ps2exp _ => t2p0
+|T2Puni0 _ =>
+f0_uni0(e1nv, t2p0, svts, flag)
 //
-|_(* otherwise *) => s2typ_none1(t2p0)
+|T2Pnone0 _ => t2p0
+|T2Pnone1 _ => t2p0|T2Ps2exp _ => t2p0
+//
+| _(* otherwise *) => s2typ_none1(t2p0)
 //
 ) where
 {
@@ -761,6 +763,7 @@ val fval = flag
 //
 val-
 T2Ptext(name, t2ps) = t2p0.node()
+//
 val t2ps =
 s2typlst_substx(e1nv,t2ps,svts,flag)
 //
@@ -770,6 +773,30 @@ flag <= fval
 then t2p0 else
 s2typ(t2p0.sort(), T2Ptext(name, t2ps))
 end (*let*) // end of [f0_text(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_uni0
+( e1nv: !e1nv
+, t2p0: s2typ
+, svts: s2vts
+, flag: &sint >> _): s2typ =
+let
+//
+val fval = flag
+//
+val-
+T2Puni0(s2vs, t2p1) = t2p0.node()
+//
+val t2p1 = // HX: capturing?!!!
+s2typ_substx(e1nv, t2p1, svts, flag)
+//
+if
+flag <= fval
+then t2p0 else
+s2typ(t2p0.sort(), T2Puni0(s2vs, t2p1))
+end (*let*) // end of [f0_uni0(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -913,8 +940,11 @@ T2Pexi0
 (s2vs, t2p1) =>
 let
 val svts =
-f0_inst_s2vs(s2vs) in
-s2typ_subst0(e1nv, t2p1, svts)
+f0_inst_s2vs(s2vs) in//let
+s2typ_exi0_inst//recursive
+(
+e1nv,
+s2typ_subst0(e1nv,t2p1,svts) )
 endlet // end of [T2Pexi0(...)]
 | _(* non-T2Pexi0 *) => (  t2p0  )
 )(*case+*)//end-of-[s2typ_exi0_inst]
@@ -931,8 +961,11 @@ T2Puni0
 (s2vs, t2p1) =>
 let
 val svts =
-f0_inst_s2vs(s2vs) in
-s2typ_subst0(e1nv, t2p1, svts)
+f0_inst_s2vs(s2vs) in//let
+s2typ_uni0_inst//recursive
+(
+e1nv,
+s2typ_subst0(e1nv,t2p1,svts) )
 endlet // end of [T2Puni0(...)]
 | _(* non-T2Puni0 *) => (  t2p0  )
 )(*case+*)//end-of-[s2typ_uni0_inst]
@@ -1242,14 +1275,14 @@ t2p2 = s2typ_hnfiz0(e1nv, t2p2)
 val
 t2p1 = s2typ_uni0_inst(e1nv, t2p1)
 val
-t2p2 = s2typ_uni0_inst(e1nv, t2p2)
+t2p2 = s2typ_exi0_inst(e1nv, t2p2)
 //
-(*
+// (*
 val (  ) =
 prerrln("unify00_s2typ: t2p1 = ", t2p1)
 val (  ) =
 prerrln("unify00_s2typ: t2p2 = ", t2p2)
-*)
+// *)
 //
 } (*where*) // end of [unify00_s2typ(e1nv,...)]
 //
