@@ -85,7 +85,7 @@ XATS2JS_jsobjmap_make_nil<key>()
 #implfun
 topmap_strmize{itm}(map) =
 (
-gmap_strmize<gmap><key><itms>(map)
+gmap_strmize<gmap><key,itms>(map)
 ) where
 {
 #typedef itms = list(itm)

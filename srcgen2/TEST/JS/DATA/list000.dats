@@ -3,13 +3,12 @@
 ** for lists
 *)
 (* ****** ****** *)
-//
-(*
+
 #staload
-"./../SATS/list000.sats"
+"prelude/SATS/gmap000.sats"
 #staload
-"./../SATS/gseq000.sats" *)
-//
+"prelude/SATS/gseq000.sats"
+
 (* ****** ****** *)
 //
 #impltmp
