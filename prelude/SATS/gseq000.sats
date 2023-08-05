@@ -28,6 +28,16 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_cons(x0, xs): xs
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_sing(x0): xs
+fun
+<xs:t0>
+<x0:t0>
+gseq_pair(x0, x0): xs
 //
 (* ****** ****** *)
 //
@@ -49,6 +59,28 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_is_cons(xs): bool
+*)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_singq(xs): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_pairq(xs): bool
+//
+(*
+fun
+<xs:t0>
+<x0:t0>
+gseq_is_sing(xs): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_is_pair(xs): bool
 *)
 //
 (* ****** ****** *)
@@ -2086,31 +2118,65 @@ TEMPLATE RESOLUTION. A BIG design decision to take!
 *)
 (* ****** ****** *)
 
-#symload foldl_cfr with gseq_foldl_c2fr
-#symload foldl_fnp with gseq_foldl_f2np
-#symload foldr_cfr with gseq_foldr_c2fr
-#symload foldr_fnp with gseq_foldr_f2np
+#symload
+foldl_cfr with gseq_foldl_c2fr of 0100
+#symload
+foldl_fnp with gseq_foldl_f2np of 0100
+#symload
+foldr_cfr with gseq_foldr_c2fr of 0100
+#symload
+foldr_fnp with gseq_foldr_f2np of 0100
 
 (* ****** ****** *)
 
-#symload forall_cfr with gseq_forall_c1fr
-#symload forall_fnp with gseq_forall_f1np
-#symload foreach_cfr with gseq_foreach_c1fr
-#symload foreach_fnp with gseq_foreach_f1np
+#symload
+forall_cfr with gseq_forall_c1fr of 0100
+#symload
+forall_fnp with gseq_forall_f1np of 0100
+#symload
+foreach_cfr with gseq_foreach_c1fr of 0100
+#symload
+foreach_fnp with gseq_foreach_f1np of 0100
 
 (* ****** ****** *)
 
-#symload ifoldl_cfr with gseq_ifoldl_c3fr
-#symload ifoldl_fnp with gseq_ifoldl_f3np
-#symload ifoldr_cfr with gseq_ifoldr_c3fr
-#symload ifoldr_fnp with gseq_ifoldr_f3np
+#symload
+ifoldl_cfr with gseq_ifoldl_c3fr of 0100
+#symload
+ifoldl_fnp with gseq_ifoldl_f3np of 0100
+#symload
+ifoldr_cfr with gseq_ifoldr_c3fr of 0100
+#symload
+ifoldr_fnp with gseq_ifoldr_f3np of 0100
 
 (* ****** ****** *)
 
-#symload iforall_cfr with gseq_iforall_c2fr
-#symload iforall_fnp with gseq_iforall_f2np
-#symload iforeach_cfr with gseq_iforeach_c2fr
-#symload iforeach_fnp with gseq_iforeach_f2np
+#symload
+iforall_cfr with gseq_iforall_c2fr of 0100
+#symload
+iforall_fnp with gseq_iforall_f2np of 0100
+#symload
+iforeach_cfr with gseq_iforeach_c2fr of 0100
+#symload
+iforeach_fnp with gseq_iforeach_f2np of 0100
+
+(* ****** ****** *)
+
+#symload
+map_cfr_list with gseq_map_c1fr_list of 0100
+#symload
+filter_cfr_list with gseq_filter_c1fr_list of 0100
+#symload
+mapopt_cfr_list with gseq_mapopt_c1fr_list of 0100
+
+(* ****** ****** *)
+
+#symload
+imap_cfr_list with gseq_imap_c1fr_list of 0100
+#symload
+ifilter_cfr_list with gseq_ifilter_c1fr_list of 0100
+#symload
+imapopt_cfr_list with gseq_imapopt_c1fr_list of 0100
 
 (* ****** ****** *)
 

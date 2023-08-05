@@ -414,6 +414,30 @@ list_iforeach
 {n:int}(xs: list(x0, n)): void//fun
 //
 (* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:t0>
+list_imap
+{n:int}(xs: list(x0, n)): list(y0, n)
+fun
+<x0:t0>
+<y0:t0>
+list_imap_vt
+{n:int}(xs: list(x0, n)): list_vt(y0, n)
+//
+fun
+<x0:t0>
+<y0:t0>
+list_imaprev
+{n:int}(xs: list(x0, n)): list(y0, n)
+fun
+<x0:t0>
+<y0:t0>
+list_imaprev_vt
+{n:int}(xs: list(x0, n)): list_vt(y0, n)
+//
+(* ****** ****** *)
 (*
 HX-2023-08-03:
 Various special list-processing funs
@@ -444,10 +468,8 @@ list_subsetize_vt
 //
 (* ****** ****** *)
 //
-#symload
-nil with list_nil of 000
-#symload
-cons with list_cons of 000
+#symload nil with list_nil of 000
+#symload cons with list_cons of 000
 //
 (* ****** ****** *)
 //
@@ -493,11 +515,14 @@ cons with list_cons of 000
 #symload rcopy_vt with list_rcopy_vt of 1000
 //
 (* ****** ****** *)
-
+//
 #symload exists with list_exists of 1000
 #symload forall with list_forall of 1000
 #symload foreach with list_foreach of 1000
-
+//
+#symload iforall with list_iforall of 1000
+#symload iforeach with list_iforeach of 1000
+//
 (* ****** ****** *)
 #symload listize with list_listize of 1000
 #symload strmize with list_strmize of 1000
@@ -510,6 +535,11 @@ cons with list_cons of 000
 #symload map_vt with list_map_vt of 1000
 #symload maprev with list_maprev of 1000
 #symload maprev_vt with list_maprev_vt of 1000
+//
+#symload imap with list_imap of 1000
+#symload imap_vt with list_imap_vt of 1000
+#symload imaprev with list_imaprev of 1000
+#symload imaprev_vt with list_imaprev_vt of 1000
 //
 (* ****** ****** *)
 #symload mergesort with list_mergesort of 1000
@@ -529,8 +559,21 @@ list_map_f1np
 (xs:list(x0, n), f0:(x0)-<fnp>y0): list(y0, n)
 fun
 <x0:t0>
+<y0:t0>
+list_map_c1fr
+{n:int}
+(xs:list(x0, n), f0:(x0)-<cfr>y0): list(y0, n)
+(* ****** ****** *)
+fun
+<x0:t0>
 <y0:vt>
 list_map_f1np_vt
+{n:int}
+(xs:list(x0, n), f0:(x0)-<fnp>y0): list_vt(y0, n)
+fun
+<x0:t0>
+<y0:vt>
+list_map_c1fr_vt
 {n:int}
 (xs:list(x0, n), f0:(x0)-<fnp>y0): list_vt(y0, n)
 (* ****** ****** *)

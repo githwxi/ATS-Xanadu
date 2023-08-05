@@ -271,7 +271,7 @@ d3pat_node =
 |D3Psapp of
  (d3pat, s2varlst(*sarg*))
 |D3Psapq of
- (d3pat, s2varlst(*sarg*))
+ (d3pat, s2arglst(*sarg*))
 //
 |D3Ptapq of
  (d3pat, t2jaglst(*targ*))

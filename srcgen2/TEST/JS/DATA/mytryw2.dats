@@ -27,7 +27,8 @@ fun
 forall_to_foreach
 ( forall
 : myforall(xs, x0)
-) : myforeach(xs, x0) = lam(xs, work) =>
+)
+: myforeach(xs, x0) = lam(xs, work) =>
 let
 val _ = forall(xs, lam x0 => (work(x0); true))
 end//end-of-try//end-of-[forall_to_foreach(xs,forall)]

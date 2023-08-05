@@ -224,7 +224,7 @@ val loc0 = d3p0.lctn()
 //
 val-
 D3Psapq
-( d3p1, s2vs) = d3p0.node()
+( d3p1, s2as) = d3p0.node()
 //
 val
 t2p0 = d3p0.styp((*0*))
@@ -239,7 +239,7 @@ d3p1 = trans3a_d3pat(env0, d3p1)
 in//let
 (
   d3pat_make_styp_node
-  (loc0, t2p0, D3Psapq(d3p1, s2vs)) )
+  (loc0, t2p0, D3Psapq(d3p1, s2as)) )
 end(*let*)//end-of-[f0_sapq(env0,d3p0)]
 //
 (* ****** ****** *)

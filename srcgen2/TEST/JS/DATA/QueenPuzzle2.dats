@@ -104,22 +104,22 @@ else print ". "; loop(i0+1)) }
 fun
 board_check
 (xs: board, x0: int): bool =
+(*
+HX-2023-08-04:
+Should a bi-directional approach
+be used for overloading resolution?
+*)
+iforall_cfr
 (
-gseq_iforall
-< xs >< x0 >( xs )
-) where {
-#typedef x0 = sint
-#typedef xs = board
-#impltmp
-iforall$test<x0>(i1, x1) =
+xs,
+lam(i1:int, x1) =>
 if
 (x0 != x1)
-then (abs(x0-x1) != i1+1) else false
-} (*where*) // end of [board_check(...)]
+then (abs(x0-x1) != i1+1) else false)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 fun
 board_extend
 (xs: board): list(board) =
@@ -136,37 +136,40 @@ gseq_mapopt_list
 map$fopr(x0) = board_cons(x0, xs)
 #impltmp
 filter$test(x0) = board_check(xs, x0)
-}(*where*) // end of [board_extend(...)]
-
+}(*where*)//end of [board_extend(...)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 fun
 boardlst_extend
 ( xss
 : list(board)): list(board) =
 foldr_cfr
 (
-xss,
-list_nil,
+xss, nil,
 lam(xs,r0) =>
 list_append(board_extend(xs), r0))
-//(*where*)//end of [boardlst_extend(...)]
-
+//(*where*)//end-[boardlst_extend(...)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-qsolve(): list(board) =
+qsolve
+((*0*)): list(board) =
 (
 loop
-(0, list_sing(board_nil())))
+(
+0(*i0*),
+list_sing(board_nil())))
 where
 {
 fun
 loop
 ( i0: int
-, xss: list(board)): list(board) =
+, xss
+: list(board)): list(board) =
 if
 (i0 < N)
 then loop
@@ -183,6 +186,11 @@ val
 xss = qsolve()
 //
 val () =
+(*
+HX-2023-08-04:
+Should a bi-directional approach
+be used for overloading resolution?
+*)
 iforeach_cfr
 (
 xss,
