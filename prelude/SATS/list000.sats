@@ -478,6 +478,9 @@ list_subsetize_vt
 #symload consq with list_consq of 1000
 #symload neqzq with list_consq of 1000
 //
+#symload singq with list_singq of 1000
+#symload pairq with list_pairq of 1000
+//
 (* ****** ****** *)
 //
 #symload [] with list_head of 1000
@@ -551,31 +554,40 @@ list_subsetize_vt
 // Sun Jul 24 01:02:26 EDT 2022
 //
 (* ****** ****** *)
-fun
-<x0:t0>
-<y0:t0>
-list_map_f1np
-{n:int}
-(xs:list(x0, n), f0:(x0)-<fnp>y0): list(y0, n)
+//
 fun
 <x0:t0>
 <y0:t0>
 list_map_c1fr
 {n:int}
-(xs:list(x0, n), f0:(x0)-<cfr>y0): list(y0, n)
-(* ****** ****** *)
+(xs:list(x0,n), f0:(x0)-<cfr>y0): list(y0,n)
 fun
 <x0:t0>
-<y0:vt>
-list_map_f1np_vt
+<y0:t0>
+list_map_f1np
 {n:int}
-(xs:list(x0, n), f0:(x0)-<fnp>y0): list_vt(y0, n)
+(xs:list(x0,n), f0:(x0)-<fnp>y0): list(y0,n)
+//
+(* ****** ****** *)
+//
 fun
 <x0:t0>
 <y0:vt>
 list_map_c1fr_vt
 {n:int}
-(xs:list(x0, n), f0:(x0)-<fnp>y0): list_vt(y0, n)
+(xs:list(x0,n), f0:(x0)-<fnp>y0): list_vt(y0,n)
+fun
+<x0:t0>
+<y0:vt>
+list_map_f1np_vt
+{n:int}
+(xs:list(x0,n), f0:(x0)-<fnp>y0): list_vt(y0,n)
+//
+(* ****** ****** *)
+#symload map_c1fr with list_map_c1fr of 1000
+#symload map_f1np with list_map_f1np of 1000
+#symload map_c1fr_vt with list_map_c1fr_vt of 1000
+#symload map_f1np_vt with list_map_f1np_vt of 1000
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_list000.sats] *)
