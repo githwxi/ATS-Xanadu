@@ -214,13 +214,13 @@ d3pat_sapq_errck
 (loc0: loc_t
 ,t2p0: s2typ
 ,d3f0: d3pat
-,s2vs: s2varlst): d3pat =
+,s2as: s2arglst): d3pat =
 let
 val
 lvl0 = d3pat_errvl(d3f0) in//let
 d3pat_errck
 (lvl0+1
-,d3pat(loc0,t2p0,D3Psapq(d3f0,s2vs)))
+,d3pat(loc0,t2p0,D3Psapq(d3f0,s2as)))
 endlet // end of [d3pat_sapq_errck(...)]
 //
 (* ****** ****** *)
@@ -1235,7 +1235,7 @@ val ( ) = d3p.styp(t2p)
 //
 val-
 D3Psapq
-( d3f0, s2vs) = d3p.node()
+( d3f0, s2as) = d3p.node()
 //
 val
 d3f0 = tread33_d3pat(d3f0, err)
@@ -1246,7 +1246,7 @@ if
 then (d3p) else
 let
 val loc = d3p.lctn() in
-d3pat_sapq_errck(loc, t2p, d3f0,s2vs)
+d3pat_sapq_errck(loc, t2p, d3f0,s2as)
 end (*let*)
 end (*let*) // end of [f0_sapq(d3p,err)]
 //
