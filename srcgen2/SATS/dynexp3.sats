@@ -485,7 +485,7 @@ d3exp_node =
 |D3Ei00 of (sint) // sint
 |D3Eb00 of (bool) // bool
 |D3Ec00 of (char) // char
-|D3Ef00 of (char) // float
+|D3Ef00 of (dflt) // float
 |D3Es00 of (strn) // string
 //
 |D3Etop of (sym_t)

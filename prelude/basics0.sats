@@ -749,22 +749,33 @@ unit_vt = unit_vt of ()
 datatype
 optn_t0_i0_x0
 (
-  a:type+, bool
-) =
-  | optn_nil(a, ff) of ()
-  | optn_cons(a, tt) of (a)
+  a:type+, bool ) =
+| optn_nil(a, ff) of ()
+| optn_cons(a, tt) of (a)
 //
 // end of [optn_t0_i0_tbox]
 //
 datavwtp
 optn_vt_i0_vx
 (
-  a:vwtp+, bool
-) =
-  | optn_vt_nil(a, ff) of ()
-  | optn_vt_cons(a, tt) of (a)
+  a:vwtp+, bool ) =
+| optn_vt_nil(a, ff) of ()
+| optn_vt_cons(a, tt) of (a)
 //
 // end of [optn_vt_i0_vtbx]
+//
+(* ****** ****** *)
+//
+#sexpdef optn = optn_t0_i0_x0
+#sexpdef loptn = optn_vt_i0_vx
+#sexpdef optn_vt = optn_vt_i0_vx
+//
+(* ****** ****** *)
+//
+fcast
+optn_vt2t
+{a:t0}{b:b0}
+(xs: optn_vt(a, b)): optn(a, b)
 //
 (* ****** ****** *)
 //
@@ -788,12 +799,6 @@ optn_vt_i0_vx
 #symload none_vt with optn_vt_nil
 #symload some_vt with optn_vt_cons
 *)
-//
-(* ****** ****** *)
-//
-#sexpdef optn = optn_t0_i0_x0
-#sexpdef loptn = optn_vt_i0_vx
-#sexpdef optn_vt = optn_vt_i0_vx
 //
 (* ****** ****** *)
 //
@@ -826,48 +831,54 @@ optn1_vt(a:vt,b:b0) = optn_vt(a, b)
 //
 (* ****** ****** *)
 //
-fcast
-optn_vt2t
-{a:t0}{b:b0}
-(optn_vt(a, b)): optn(a, b)
-//
-(* ****** ****** *)
-//
 // HX-2018-10-01:
 //
 datatype
 list_t0_i0_x0
 (
-  a:type+, int(*len*)
-) =
+  a:type+, int(*len*) ) =
 //
 |
 list_nil
-(a, 0(*len*)) of ((*void*))
+(a, 0(*len*)) of ((*0*))//nil
 //
 |
 {n:i0 | n >= 0}
 list_cons
-(a, n+1(*len*)) of (a, list_t0_i0_x0(a, n))
+(a, n+1(*len*)) of
+(a, list_t0_i0_x0(a, n))//cons
 //
-// end of [ list_t0_i0_x0(a, n) ]
+// end of [ list_t0_i0_x0(a,n) ]
 //
 datavwtp
 list_vt_i0_vx
 (
-  a:vwtp+, int(*len*)
-) =
+  a:vwtp+, int(*len*) ) =
 //
 |
 list_vt_nil
-(a, 0(*len*)) of ((*void*))
+(a, 0(*len*)) of ((*0*))//nil
 //
 |
 {n:i0 | n >= 0}
 list_vt_cons
-(a, n+1(*len*)) of (a, list_vt_i0_vx(a, n))
+(a, n+1(*len*)) of
+(a, list_vt_i0_vx(a, n))//cons
 //
-// end of [ list_vt_i0_vx(a, n) ]
+// end of [ list_vt_i0_vx(a,n) ]
+//
+(* ****** ****** *)
+//
+#sexpdef list = list_t0_i0_x0
+#sexpdef llist = list_vt_i0_vx
+#sexpdef list_vt = list_vt_i0_vx
+//
+(* ****** ****** *)
+//
+fcast
+list_vt2t
+{a:t0}{n:i0}
+(xs: list_vt(a, n)): list(a, n)
 //
 (* ****** ****** *)
 //
@@ -881,12 +892,6 @@ list_vt_cons
 #symload nil_vt with list_vt_nil
 #symload cons_vt with list_vt_cons
 *)
-//
-(* ****** ****** *)
-//
-#sexpdef list = list_t0_i0_x0
-#sexpdef llist = list_vt_i0_vx
-#sexpdef list_vt = list_vt_i0_vx
 //
 (* ****** ****** *)
 //
@@ -991,13 +996,6 @@ listbtw_vt
 listbtwe_vt
 ( a:vt
 , m:i0, n:i0) = [k:i0 | m <= k; k <= n] list_vt(a, k)
-//
-(* ****** ****** *)
-//
-fcast
-list_vt2t
-{a:t0}{n:i0}
-(list_vt(a, n)): list(a, n)
 //
 (* ****** ****** *)
 //

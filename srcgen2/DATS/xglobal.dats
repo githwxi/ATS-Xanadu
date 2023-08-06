@@ -809,6 +809,9 @@ f0_pvsload
 (0(*sta*), "/prelude/SATS/gint000.sats")
 val () =
 f0_pvsload
+(0(*sta*), "/prelude/SATS/gflt000.sats")
+val () =
+f0_pvsload
 (0(*sta*), "/prelude/SATS/strn000.sats")
 //
 (* ****** ****** *)

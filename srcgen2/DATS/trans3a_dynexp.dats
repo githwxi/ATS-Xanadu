@@ -545,6 +545,12 @@ d3e0.node() of
 |D3Eflt _ => f0_flt(env0, d3e0)
 |D3Estr _ => f0_str(env0, d3e0)
 //
+|D3Ei00 _ => f0_i00(env0, d3e0)
+|D3Eb00 _ => f0_b00(env0, d3e0)
+|D3Ec00 _ => f0_c00(env0, d3e0)
+|D3Ef00 _ => f0_f00(env0, d3e0)
+|D3Es00 _ => f0_s00(env0, d3e0)
+//
 |D3Econ _ => f0_con(env0, d3e0)
 |D3Ecst _ => f0_cst(env0, d3e0)
 //
@@ -631,6 +637,34 @@ f0_flt
 , d3e0: d3exp): d3exp = d3e0//end-of-fun
 fun
 f0_str
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp = d3e0//end-of-fun
+//
+(* ****** ****** *)
+//
+fun
+f0_i00
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp = d3e0//end-of-fun
+fun
+f0_b00
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp = d3e0//end-of-fun
+fun
+f0_c00
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp = d3e0//end-of-fun
+fun
+f0_f00
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp = d3e0//end-of-fun
+fun
+f0_s00
 ( env0:
 ! tr3aenv
 , d3e0: d3exp): d3exp = d3e0//end-of-fun
