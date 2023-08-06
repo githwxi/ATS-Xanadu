@@ -1893,7 +1893,7 @@ d3exp_make_styp_node
 ) where
 {
   val
-  t2p0 = the_s2typ_l1azy1(d3e1.styp())
+  t2p0 = the_s2typ_l0azy1(d3e1.styp())
 }
 end (*let*) // end of [f0_l0azy(env0,d2e0)]
 //

@@ -18,8 +18,10 @@
 "prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 //
-// HX-2020-03-21
-// It is a bit wild :)
+(*
+HX-2020-03-21
+This is a bit wild :)
+*)
 //
 #impltmp
 <a>(*tmp*)
@@ -57,7 +59,7 @@ strmcon_vt_cons
 //
 end // end of [let]
 )
-} (* end of [strm_vt2t] *)
+} (* end of [strm_vt2t(xs)] *)
 //
 (* ****** ****** *)
 //
@@ -2326,24 +2328,23 @@ glseq_unstrm_vt
 <list(x0)><x0>
   (   xs   ) =
 (
-list_vt2t(strm_vt_listize<x0>(xs))
-)
+  list_vt2t(strm_vt_listize<x0>(xs)) )
 //
 #impltmp
 {x0:vt}
 glseq_unstrm_vt
-<list_vt(x0)><x0> = strm_vt_listize< x0 >
+<list_vt(x0)><x0> = strm_vt_listize<x0>
 //
 (* ****** ****** *)
 //
 #impltmp
 {x0:vt}
 glseq_add0
-<strm_vt(x0)><x0> = strm_vt_add0<x0>
+<strm_vt(x0)><x0> = strm_vt_add0< x0 >(*xs*)
 #impltmp
 {x0:vt}
 glseq_mul0
-<strm_vt(x0)><x0> = strm_vt_mul0<x0>
+<strm_vt(x0)><x0> = strm_vt_mul0< x0 >(*xs*)
 //
 (* ****** ****** *)
 
