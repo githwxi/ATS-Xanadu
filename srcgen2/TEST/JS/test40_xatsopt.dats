@@ -398,5 +398,12 @@ d3parsed_of_fildats
 val (  ) =
 fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
+(* ****** ****** *)
+val dpar =
+d3parsed_of_fildats
+("./DATA/tupl000.dats")
+val (  ) =
+fperr33_d3parsed(g_stderr((*tmp*)), dpar)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_TEST_JS_test40_xatsopt.dats] *)
