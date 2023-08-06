@@ -663,8 +663,18 @@ d2e0.node() of
 |D2Esym0 _ =>
 f0_sym0(env0, d2e0)
 //
-|
-D2Etapp
+|D2Esapp
+(d2f0, s2es) =>
+let
+val () =
+trsym2a_d2exp(env0, d2f0)
+(*
+val () =
+trsym2a_s2explst(env0, s2es)
+*)
+endlet // end of [D2Esapp(...)]
+//
+|D2Etapp
 (d2f0, s2es) =>
 let
 val () =
