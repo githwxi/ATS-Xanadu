@@ -68,9 +68,11 @@ _(*TRANS3a*) = "./trans3a.dats"
 trans3a_s2typ
 ( env0,t2p0 ) = let
 //
+(*
 val () =
 prerrln
 ("trans3a_s2typ: t2p0 = ", t2p0)
+*)
 //
 in//let
 //

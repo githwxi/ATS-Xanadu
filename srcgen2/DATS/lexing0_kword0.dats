@@ -131,12 +131,12 @@ val T0WITHVWTP = T_WITHTYPE(VWTPSORT)
 //
 (* ****** ****** *)
 //
-val T0TRCD11 = T_TRCD10(1) //HX: $()
+val T0TRCD11 = T_TRCD10(1) //HX: #()
 and T0TRCD12 = T_TRCD10(2) //HX: $tup
 and T0TRCD13 = T_TRCD10(3) //HX: $tup_t0
 and T0TRCD14 = T_TRCD10(4) //HX: $tup_vt
 //
-val T0TRCD21 = T_TRCD20(1) //HX: ${}
+val T0TRCD21 = T_TRCD20(1) //HX: #{}
 and T0TRCD22 = T_TRCD20(2) //HX: $rec
 and T0TRCD23 = T_TRCD20(3) //HX: $rec_t0
 and T0TRCD24 = T_TRCD20(4) //HX: $rec_vt

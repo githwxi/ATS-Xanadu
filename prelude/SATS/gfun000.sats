@@ -7,56 +7,56 @@
 c0fr(r0:vt) = () -<cfr> r0
 (* ****** ****** *)
 #typedef
-f1np
-(a1:t0,r0:vt) = (a1)-<fnp>r0
-#typedef
 c1fr
 (a1:t0,r0:vt) = (a1)-<cfr>r0
-(* ****** ****** *)
 #typedef
-f2np
-(a1:t0
-,a2:t0,r0:vt) = (a1,a2)-<fnp>r0
+f1np
+(a1:t0,r0:vt) = (a1)-<fnp>r0
+(* ****** ****** *)
 #typedef
 c2fr
 (a1:t0
 ,a2:t0,r0:vt) = (a1,a2)-<cfr>r0
-(* ****** ****** *)
 #typedef
-f3np
+f2np
 (a1:t0
-,a2:t0
-,a3:t0,r0:vt) = (a1,a2,a3)-<fnp>r0
+,a2:t0,r0:vt) = (a1,a2)-<fnp>r0
+(* ****** ****** *)
 #typedef
 c3fr
 (a1:t0
 ,a2:t0
 ,a3:t0,r0:vt) = (a1,a2,a3)-<cfr>r0
-(* ****** ****** *)
 #typedef
-fnp4
+f3np
 (a1:t0
 ,a2:t0
-,a3:t0
-,a4:t0,r0:vt) = (a1,a2,a3,a4)-<fnp>r0
+,a3:t0,r0:vt) = (a1,a2,a3)-<fnp>r0
+(* ****** ****** *)
 #typedef
 cfr4
 (a1:t0
 ,a2:t0
 ,a3:t0
 ,a4:t0,r0:vt) = (a1,a2,a3,a4)-<cfr>r0
+#typedef
+fnp4
+(a1:t0
+,a2:t0
+,a3:t0
+,a4:t0,r0:vt) = (a1,a2,a3,a4)-<fnp>r0
 (* ****** ****** *)
 //
-fun
-<a1:t0>
-gfun_not_f1np
-( f0
-: f1np(a1,bool)): c1fr(a1, bool)
 fun
 <a1:t0>
 gfun_not_c1fr
 ( f0
 : c1fr(a1,bool)): c1fr(a1, bool)
+fun
+<a1:t0>
+gfun_not_f1np
+( f0
+: f1np(a1,bool)): c1fr(a1, bool)
 //
 (* ****** ****** *)
 //

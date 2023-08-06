@@ -825,6 +825,9 @@ f0_pvsload
 val () =
 f0_pvsload
 (0(*sta*), "/prelude/SATS/strm000.sats")
+val () =
+f0_pvsload
+(0(*sta*), "/prelude/SATS/tupl000.sats")
 //
 (* ****** ****** *)
 //
@@ -1110,7 +1113,7 @@ auxloop(kxs)) where
 val () = println
 ("the_sortenv_allist:", "(", kx1.0, " -> ", kx1.1, ")")
 }
-)
+) (*case+*)//end-[auxloop(kxs)]
 } (*where*)//end-[auxloop(kxs)]
 end (*let*)//end-[the_sortenv_allist_fprint]
 //

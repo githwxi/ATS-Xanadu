@@ -380,6 +380,12 @@ prerrln("the_tr12env_pvsload() = ", ret)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
+("./DATA/gmap000.dats")
+val (  ) =
+fperr33_d3parsed(g_stderr((*tmp*)), dpar)
+(* ****** ****** *)
+val dpar =
+d3parsed_of_fildats
 ("./DATA/gseq000.dats")
 val (  ) =
 fperr33_d3parsed(g_stderr((*tmp*)), dpar)

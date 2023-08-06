@@ -158,13 +158,13 @@ datatype tnode =
   | T_EXISTS of int // #[
 //
   | T_TRCD10 of (int) // @(/#(
-                      // @tup/#tup
-                      // @tup_t/#tup_t
-                      // @tup_vt/#tup_vt
+                      // @tup/$tup
+                      // @tup_t/$tup_t
+                      // @tup_vt/$tup_vt
   | T_TRCD20 of (int) // @{/#{
-                      // @rec/#rec
-                      // @rec_t/#rec_t
-                      // @rec_vt/#rec_vt
+                      // @rec/$rec
+                      // @rec_t/$rec_t
+                      // @rec_vt/$rec_vt
 //
   | T_AS0 of () // 'as'
 //
