@@ -92,7 +92,9 @@ _(*TRANS2A*) = "./trans2a.dats"
 fun
 s2typ_new0_x2tp
 ( loc0: loc_t ): s2typ =
-s2typ_xtv(x2t2p_make_lctn(loc0))
+(
+s2typ_xtv
+(x2t2p_make_lctn(loc0)))
 //
 (* ****** ****** *)
 //

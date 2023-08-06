@@ -113,9 +113,58 @@ _(*TRANS23*) = "./trans23.dats"
 (* ****** ****** *)
 //
 fun
+<a:t0>
+<b:t0>
+list_ziprev
+( xs
+: list(a)
+, ys
+: list(b))
+: list@(a, b) =
+(
+  ziprev(xs, ys)) where
+{
+fun
+ziprev(xs, ys) =
+(
+case+ xs of
+|
+list_nil() =>
+list_nil((*0*))
+|
+list_cons(x1, xs) =>
+(
+case+ ys of
+|
+list_nil() =>
+list_nil((*0*))
+|
+list_cons(y1, ys) =>
+list_cons
+((x1, y1), ziprev(xs, ys))))}//tmp
+//
+(* ****** ****** *)
+//
+fun
 s2typ_new0_x2tp
 ( loc0: loc_t ): s2typ =
-s2typ_xtv(x2t2p_make_lctn(loc0))
+(
+s2typ_xtv
+(x2t2p_make_lctn(loc0)))
+//
+(* ****** ****** *)
+//
+fn0
+s2typ_subst0
+( t2p0: s2typ
+, svts: s2vts): s2typ =
+(
+case+ svts of
+|list_nil() => ( t2p0 )
+|list_cons _ =>
+(
+s2typ_subst0(t2p0, svts))
+)(*case+*) // s2typ_subst0
 //
 (* ****** ****** *)
 //
@@ -800,12 +849,96 @@ val-
 D2Esapp
 (d2f0, s2es) = d2e0.node()
 //
-val d3f0 = trans23_d2exp(env0, d2f0)
+val d3f0 =
+(
+  trans23_d2exp(env0, d2f0))
 //
+val tfun = d2f0.styp((*nil*))
+val tfun = s2typ_hnfiz0(tfun)
+//
+val d3f1 =
+(
+case+
+tfun.node() of
+|
+T2Puni0
+(s2vs, t2p1) =>
+let
+val t2ps =
+f1_t2ps(s2vs, s2es)
+val svts =
+list_ziprev(s2vs, t2ps)
+val t2p1 =
+s2typ_subst0(t2p1, svts)
 in//let
 d3exp_make_styp_node
-(loc0, d3f0.styp(), D3Esapp(d3f0,s2es))
-end (*let*) // end of [f0_sapp(env0,d2e0)]
+(loc0
+,t2p1, D3Esapq(d3f0,t2ps))
+endlet//end-of-[T2Pfun(...)]
+|
+_(*non-T2Puni0*) =>
+let
+val () =
+d3f0.styp(tfun) in d3f0 end )
+//
+where { // end-of-case
+//
+fun
+f1_t2ps
+( s2vs: s2varlst
+, s2es: s2explst): s2typlst =
+(
+case+ s2vs of
+|
+list_nil() =>
+list_nil( (*void*) )
+|
+list_cons(s2v1, s2vs) =>
+(
+f1_t2ps_cons(s2v1, s2vs, s2es)))
+//(*case+*)//end of [f1_sapq(...)]
+//
+and
+f1_t2ps_cons
+( s2v1: s2var
+, s2vs: s2varlst
+, s2es: s2explst): s2typlst =
+(
+case+ s2es of
+|list_nil
+((*nil*)) =>
+list_cons
+( t2p1
+, f1_t2ps(s2vs, s2es)) where
+{
+  val
+  t2p1 = s2typ_new0_x2tp(loc0) }
+//
+|list_cons
+(s2e1, s2es) =>
+if
+s2exp_imprq(s2e1)
+then
+list_cons
+( t2p1
+, f1_t2ps(s2vs, s2es)) where
+{
+  val t2p1 = s2exp_stpize(s2e1) }
+else
+(
+  f1_t2ps_cons(s2v1, s2vs, s2es) )
+) (*case+*)//end-of-[f1_t2ps_cons()]
+} (*where*)//end-of-case(tfun.node())
+//
+in//let
+let
+val t2p1 =
+d3f1.styp((*0*)) in
+(
+  d3exp_make_styp_node
+  (loc0, t2p1, D3Esapp(d3f1, s2es)) )
+end (*let*)
+end (*let*)//end-of-[f0_sapp(env0,d2e0)]
 //
 (* ****** ****** *)
 //
@@ -826,10 +959,17 @@ D2Etapp
 val d3f0 = trans23_d2exp(env0, d2f0)
 //
 in//let
-d3exp_make_styp_node
-(loc0, d3f0.styp(), D3Etapp(d3f0,s2es))
+let
+val
+val
+t2p0 = d3f0.styp() in
+(
+  d3exp_make_styp_node
+  (loc0, t2p0, D3Etapp(d3f0,s2es))) end
 end (*let*) // end of [f0_tapp(env0,d2e0)]
 *)
+//
+(* ****** ****** *)
 //
 local
 //

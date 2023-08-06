@@ -8,11 +8,11 @@
 #impltmp
 {a:t0}
 gseq_nilq
-<list(a)><a> = list_nilq{a}
+<list(a)><a>(xs) = list_nilq{a}(xs)
 #impltmp
 {a:t0}
 gseq_consq
-<list(a)><a> = list_consq{a}
+<list(a)><a>(xs) = list_consq{a}(xs)
 //
 (* ****** ****** *)
 ////
