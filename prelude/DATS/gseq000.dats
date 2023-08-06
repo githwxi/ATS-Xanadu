@@ -28,14 +28,17 @@ gseq_forall<xs><x0>(xs)
 ) where
 {
 #impltmp
-forall$test<x0>(_) = false
-}
+forall$test
+<x0>( (*void*) ) = false
+}(*where*)//end(gseq_nilq)
 //
 #impltmp
 <xs><x0>
 gseq_consq(xs) =
+(
 bool_neg<>
-( gseq_nilq<xs><x0>(xs) )
+(gseq_nilq<xs><x0>( xs ))
+)(*end-of[gseq_consq(xs)]*)
 //
 (* ****** ****** *)
 //
