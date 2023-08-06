@@ -6,6 +6,19 @@
 (* ****** ****** *)
 //
 #impltmp
+{a:t0}
+gseq_nilq
+<list(a)><a> = list_nilq{a}
+#impltmp
+{a:t0}
+gseq_consq
+<list(a)><a> = list_consq{a}
+//
+(* ****** ****** *)
+////
+(* ****** ****** *)
+//
+#impltmp
 <xs><x0>
 gseq_set_at
 (xs, i0, x0) =
