@@ -3,17 +3,16 @@
 ** for g-sequences
 *)
 (* ****** ****** *)
-//
-#staload
-"prelude/SATS/gseq000.sats"
 #staload UN =
 "prelude/SATS/unsafex.sats"
-//
+(* ****** ****** *)
+#staload
+"prelude/SATS/gseq000.sats"
+(* ****** ****** *)
 #staload
 "prelude/SATS/VT/strn000_vt.sats"
 #staload
 "prelude/SATS/VT/gseq000_vt.sats"
-//
 (* ****** ****** *)
 (*
 //HX: For 1-gseq-operations

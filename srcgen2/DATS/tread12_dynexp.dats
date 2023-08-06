@@ -955,10 +955,10 @@ val e00 = err
 //
 val s2e0 = d2c0.sexp()
 //
-// (*
+(*
 val (  ) =
 prerrln("tread12_d2con: s2e0 = ", s2e0)
-// *)
+*)
 //
 val s2e0 = tread12_s2exp(d2c0.sexp(), err)
 } (*where*) // end of [tread12_d2con(d2c0,err)]
@@ -2185,10 +2185,10 @@ val-D2Enone0() = d2e.node() in (d2e) end
 //
 (* ****** ****** *)
 //
-// (*
+(*
 val (  ) =
 (prerrln("tread12_d2exp: d2e0 = ", d2e0))
-// *)
+*)
 //
 (* ****** ****** *)
 //
