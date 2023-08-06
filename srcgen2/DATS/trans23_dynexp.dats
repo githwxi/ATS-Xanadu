@@ -639,36 +639,51 @@ in//let
 case+
 d2e0.node() of
 //
-|
-D2Evar _ =>
+|D2Evar _ =>
 (
   f0_var(env0, d2e0))
 //
-|
-D2Eint(tok) =>
+|D2Eint(tok) =>
 (
 d3exp_make_styp_node
 (loc0, t2p0, D3Eint(tok)))
-|
-D2Ebtf(sym) =>
+|D2Ebtf(sym) =>
 (
 d3exp_make_styp_node
 (loc0, t2p0, D3Ebtf(sym)))
-|
-D2Echr(tok) =>
+|D2Echr(tok) =>
 (
 d3exp_make_styp_node
 (loc0, t2p0, D3Echr(tok)))
-|
-D2Eflt(tok) =>
+|D2Eflt(tok) =>
 (
 d3exp_make_styp_node
 (loc0, t2p0, D3Eflt(tok)))
-|
-D2Estr(tok) =>
+|D2Estr(tok) =>
 (
 d3exp_make_styp_node
 (loc0, t2p0, D3Estr(tok)))
+//
+|D2Ei00(int) =>
+(
+d3exp_make_styp_node
+(loc0, t2p0, D3Ei00(int)))
+|D2Eb00(btf) =>
+(
+d3exp_make_styp_node
+(loc0, t2p0, D3Eb00(btf)))
+|D2Ec00(chr) =>
+(
+d3exp_make_styp_node
+(loc0, t2p0, D3Ec00(chr)))
+|D2Ef00(flt) =>
+(
+d3exp_make_styp_node
+(loc0, t2p0, D3Ef00(flt)))
+|D2Es00(str) =>
+(
+d3exp_make_styp_node
+(loc0, t2p0, D3Es00(str)))
 //
 |D2Econ _ => f0_con(env0, d2e0)
 |D2Ecst _ => f0_cst(env0, d2e0)
