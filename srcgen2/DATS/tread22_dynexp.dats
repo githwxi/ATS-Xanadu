@@ -476,16 +476,18 @@ Various d2exp-errck functions
 (* ****** ****** *)
 //
 fun
-d2exp_dap0_errck
+d2exp_sapp_errck
 (loc0: loc_t
-,d2e1: d2exp): d2exp =
+,d2f0: d2exp
+,s2es: s2explst): d2exp =
 let
 val
 lvl0 =
-d2exp_errvl(d2e1) in//let
+d2exp_errvl(d2f0) in//let
 d2exp_errck
-(lvl0+1, d2exp(loc0, D2Edap0( d2e1 )))
-endlet // end of [d2exp_dap0_errck(...)]
+(lvl0+1
+,d2exp(loc0, D2Esapp( d2f0 , s2es )))
+endlet // end of [d2exp_sapp_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -502,6 +504,20 @@ d2exp_errck
 (lvl0+1
 ,d2exp(loc0, D2Etapp( d2f0 , s2es )))
 endlet // end of [d2exp_tapp_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d2exp_dap0_errck
+(loc0: loc_t
+,d2e1: d2exp): d2exp =
+let
+val
+lvl0 =
+d2exp_errvl(d2e1) in//let
+d2exp_errck
+(lvl0+1, d2exp(loc0, D2Edap0( d2e1 )))
+endlet // end of [d2exp_dap0_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1264,6 +1280,7 @@ d2e0.node() of
 //
 |D2Esym0 _ => f0_sym0(d2e0, err)
 //
+|D2Esapp _ => f0_sapp(d2e0, err)
 |D2Etapp _ => f0_tapp(d2e0, err)
 //
 |D2Edap0 _ => f0_dap0(d2e0, err)
@@ -1363,6 +1380,35 @@ end (*let*) // end of [else]
 end (*let*) // end of [non-D2Enone0]
 //
 end (*let*) // end of [f0_sym0(d2e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_sapp
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Esapp
+(d2f0, s2es) = d2e.node()
+val
+d2f0 = tread22_d2exp(d2f0, err)
+(*
+val
+s2es = tread22_s2explst(d2es, err)
+*)
+in//let
+if
+(err=e00)
+then (d2e) else
+let
+val loc = d2e.lctn() in
+d2exp_sapp_errck( loc, d2f0, s2es )
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_sapp(d2e,err)]
 //
 (* ****** ****** *)
 //
