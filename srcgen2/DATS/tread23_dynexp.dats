@@ -1333,6 +1333,12 @@ d3e0.node() of
 |D3Eflt _ => d3e0
 |D3Estr _ => d3e0
 //
+|D3Ei00 _ => d3e0
+|D3Eb00 _ => d3e0
+|D3Ec00 _ => d3e0
+|D3Ef00 _ => d3e0
+|D3Es00 _ => d3e0
+//
 |D3Econ _ => d3e0
 |D3Ecst _ => d3e0
 //
