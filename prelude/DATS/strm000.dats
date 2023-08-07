@@ -18,16 +18,25 @@ UN =
 strmcon_nil_
 () = strmcon_nil()
 #impltmp
+<>(*tmp*)
+strqcon_nil_
+() = strqcon_nil()
+//
+#impltmp
 <a>(*tmp*)
 strmcon_cons_
 (x0, xs) =
-strmcon_cons(x0, xs)
-//
+strmcon_cons(x0, xs)//fcons
 #impltmp
 <a>(*tmp*)
 strxcon_cons_
 (x0, xs) =
-strxcon_cons(x0, xs)
+strxcon_cons(x0, xs)//fcons
+#impltmp
+<a>(*tmp*)
+strqcon_cons_
+(x0, xs) =
+strqcon_cons(x0, xs)//fcons
 //
 (* ****** ****** *)
 //

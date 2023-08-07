@@ -65,6 +65,7 @@ fun
 gfun_enum_strx_vt
   (xs: strx_vt( x0 )): c0fr( x0 )
 //
+(* ****** ****** *)
 //
 fun
 <xs:t0>

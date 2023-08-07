@@ -1,7 +1,40 @@
+(***********************************************************************)
+(*                                                                     *)
+(*                         Applied Type System                         *)
+(*                                                                     *)
+(***********************************************************************)
+
+(*
+** ATS/Xanadu - Unleashing the Potential of Types!
+** Copyright (C) 2019 Hongwei Xi, ATS Trustful Software, Inc.
+** All rights reserved
+**
+** ATS is free software;  you can  redistribute it and/or modify it under
+** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
+** Free Software Foundation; either version 3, or (at  your  option)  any
+** later version.
+** 
+** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
+** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
+** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
+** for more details.
+** 
+** You  should  have  received  a  copy of the GNU General Public License
+** along  with  ATS;  see the  file COPYING.  If not, please write to the
+** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
+** 02110-1301, USA.
+*)
+
 (* ****** ****** *)
 (*
-** for lists
+** HX: For lists
 *)
+(* ****** ****** *)
+//
+// Author: Hongwei Xi
+// (Some time in 2019)
+// Authoremail: gmhwxiATgmailDOTcom
+//
 (* ****** ****** *)
 //
 (*
@@ -696,7 +729,7 @@ case+ xs of
   foreach$work<x0>(x0) in loop(xs)
   end
 )
-}(*where*)//end-of[list_foreach(xs)]
+}(*where*)//end-of-[list_foreach(xs)]
 //
 (* ****** ****** *)
 //
@@ -723,7 +756,7 @@ case+ xs of
   if
   g_cmp<x0>(x0,x1) <= 0
   then loop(x1, xs) else false ) )
-} (*where*) // end-of-[list_sortedq(xs)]
+}(*where*)//end-of-[list_sortedq(xs)]
 //
 (* ****** ****** *)
 //
@@ -797,11 +830,12 @@ in
 end
 ) (* end of [loop] *)
 //
-in
+in//let
 let
-var r0: list_vt(y0) in loop(xs, r0); r0
+var r0
+  : list_vt(y0) in loop(xs, r0); r0
 end
-end (*let*) // end of [list_map_vt(xs)]
+end (*let*) // end-of-[list_map_vt(xs)]
 //
 (* ****** ****** *)
 //

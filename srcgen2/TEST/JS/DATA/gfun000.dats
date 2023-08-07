@@ -29,6 +29,7 @@ gfun_not_f1np
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 <x0>
 gfun_enum_strx_vt
@@ -62,6 +63,7 @@ in
 //
 end(*let*)//end-of-lam
 end(*let*)//end-of-[gfun_enum_strx_vt]
+*)
 //
 (* ****** ****** *)
 //
