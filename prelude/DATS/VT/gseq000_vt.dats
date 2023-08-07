@@ -901,7 +901,7 @@ strm_vt_z2forall0<x0,y0>
 ) (*where*)//end-of-[glseq_z2forall0]
 
 (* ****** ****** *)
-
+//
 #impltmp
 <xs,ys>
 <x0,y0>
@@ -914,7 +914,9 @@ strm_vt_z2forcmp0<x0,y0>
 ,
   glseq_strmize<ys><y0>(ys))
 ) (*where*)//end-of-[glseq_z2forcmp0]
-
+//
+(* ****** ****** *)
+//
 #impltmp
 <xs,ys>
 <x0,y0>
@@ -937,7 +939,7 @@ g_free(x0); g_free(y0); sgn) where
 val
 sgn = z2forcmp1$fcmp<x0,y0>(x0, y0)}
 } (*where*)//end-of-[glseq_z2forcmp1]
-
+//
 (* ****** ****** *)
 //
 (*

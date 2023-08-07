@@ -1249,7 +1249,7 @@ strqcon_cons
 where
 {
 #typedef
-streaq(a:vt,n:i0) = lazy(strqcon(a,n))}
+streaq(a:t0,n:i0) = lazy(strqcon(a,n))}
 (* ****** ****** *)
 datavwtp
 strqcon_vt
