@@ -107,7 +107,7 @@ strx_cons
 (a, strx(a)): strx(a)//fcons
 fun
 <a:t0>
-strx_cons
+strq_cons
 {n:i0}
 ( x0: a
 , xs: strq(a,n)): strq(a,n+1)
@@ -188,7 +188,7 @@ There is no [strx_length]!!!
 //
 fun
 <a:t0>
-strq_length
+strq_length // finite
 {n:i0}(xs: strq(a,n)): sint(n)
 //
 (* ****** ****** *)
@@ -200,7 +200,7 @@ strm_extend
 fun
 <a:t0>
 strq_extend
-{n:i0}
+{n:i0} // strq: finite
 (xs: strq(a,n), x0: a): strq(a,n+1)
 //
 (* ****** ****** *)
@@ -208,12 +208,12 @@ strq_extend
 fun
 <a:t0>
 strm_append
-(xs:strm(a), ys:strm(a)): strm(a)
+(xs: strm(a), ys: strm(a)): strm(a)
 fun
 <a:t0>
-strm_append
-{m,n:i0}
-(xs:strq(a,m), ys:strm(a,n)): strm(a,m+n)
+strq_append
+{m,n:i0} // strq: finite
+(xs: strq(a,m), ys: strq(a,n)): strq(a,m+n)
 //
 (* ****** ****** *)
 //
@@ -230,41 +230,49 @@ strq_concat
 //
 fun
 <a:t0>
-strm_forall(xs: strm(a)): bool
+strm_forall
+(xs: strm(a)): bool // forall
 fun
 <a:t0>
-strm_foreach(xs: strm(a)): void
+strq_forall
+(xs: strq(a)): bool // forall
+//
+fun
+<a:t0>
+strm_foreach
+(xs: strm(a)): void // foreach
+fun
+<a:t0>
+strq_foreach
+(xs: strq(a)): void // foreach
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
 strm_listize
-( xs: strm(x0) ) : list_vt(x0)
-fun
-<x0:t0>
-strm_strmize
-( xs: strm(x0) ) : strm_vt(x0)
-//
+(xs: strm(x0)): list_vt(x0)
 (*
 HX-2023-08:
 There is no [strx_listize]!!!
 *)
 fun
 <x0:t0>
-strx_strmize
-( xs: strx(x0) ) : strm_vt(x0)
+strq_listize // strq: finite
+{n:i0}(xs: strq(x0,n)): list_vt(x0,n)
 //
 fun
 <x0:t0>
-strq_listize
-{n:i0}
-(xs: strq(x0,n)) : list_vt(x0,n)
+strm_strmize
+(xs: strm(x0)): strm_vt(x0)
 fun
 <x0:t0>
-strq_strmize
-{n:i0}
-(xs: strq(x0,n)) : strq_vt(x0,n)
+strx_strmize // infinite
+(xs: strx(x0)): strm_vt(x0)
+fun
+<x0:t0>
+strq_strmize // strq: finite
+{n:i0}(xs: strq(x0,n)): strq_vt(x0,n)
 //
 (* ****** ****** *)
 //
