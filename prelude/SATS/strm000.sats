@@ -41,15 +41,35 @@ fun<>
 strmcon_nil_
 {a:t0}
 ((*void*)): strmcon(a)
+(*
+(*
+HX-2023-08:
+there is no
+[strxcon_nil]
+*)
+fun<>
+strxcon_nil_
+{a:t0}
+((*void*)): strxcon(a)
+*)
+fun<>
+strqcon_nil_
+{a:t0}
+((*void*)): strqcon(a,0)
+//
 fun
 <a:t0>
 strmcon_cons_
 (a, strm(a)): strmcon(a)
-//
 fun
 <a:t0>
 strxcon_cons_
 (a, strx(a)): strxcon(a)
+fun
+<a:t0>
+strqcon_cons_
+{n:i0}
+(a, strq(a,n)): strqcon(a,n+1)
 //
 (* ****** ****** *)
 //
@@ -69,19 +89,29 @@ strxcon_uncons_cfr
 , f1: (x0, strx(x0)) -<cfr> r0): r0
 //
 (* ****** ****** *)
-
+//
 fun
 <a:t0>
 strm_nil(): strm(a)
 fun
 <a:t0>
+strq_nil(): strq(a, 0)
+//
+fun
+<a:t0>
 strm_cons
-(x0: a, xs: strm(a)): strm(a)
+(a, strm(a)): strm(a)//fcons
 fun
 <a:t0>
 strx_cons
-(x0: a, xs: strx(a)): strx(a)
-
+(a, strx(a)): strx(a)//fcons
+fun
+<a:t0>
+strx_cons
+{n:i0}
+( x0: a
+, xs: strq(a,n)): strq(a,n+1)
+//
 (* ****** ****** *)
 //
 fun
@@ -148,7 +178,18 @@ strm_consq(x0: strm(a)): bool
 //
 fun
 <a:t0>
-strm_length(xs: strm(a)): nint
+strm_length
+(xs: strm(a)): nint
+//
+(*
+HX-2023-08:
+There is no [strx_length]!!!
+*)
+//
+fun
+<a:t0>
+strq_length
+{n:i0}(xs: strq(a,n)): sint(n)
 //
 (* ****** ****** *)
 //
@@ -158,8 +199,21 @@ strm_extend
 (xs: strm(a), x0: a): strm(a)
 fun
 <a:t0>
+strq_extend
+{n:i0}
+(xs: strq(a,n), x0: a): strq(a,n+1)
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
 strm_append
 (xs:strm(a), ys:strm(a)): strm(a)
+fun
+<a:t0>
+strm_append
+{m,n:i0}
+(xs:strq(a,m), ys:strm(a,n)): strm(a,m+n)
 //
 (* ****** ****** *)
 //
@@ -167,17 +221,19 @@ fun
 <a:t0>
 strm_concat
 (xss: strm(strm(a))): strm(a)
+fun
+<a:t0>
+strq_concat
+(xss: strq(strq(a))): strq(a)
 //
 (* ****** ****** *)
 //
 fun
 <a:t0>
 strm_forall(xs: strm(a)): bool
-(*
 fun
-<x0:t0>
-strm_foreach(xs: strm(x0)): void
-*)
+<a:t0>
+strm_foreach(xs: strm(a)): void
 //
 (* ****** ****** *)
 //
@@ -189,10 +245,26 @@ fun
 <x0:t0>
 strm_strmize
 ( xs: strm(x0) ) : strm_vt(x0)
+//
+(*
+HX-2023-08:
+There is no [strx_listize]!!!
+*)
 fun
 <x0:t0>
 strx_strmize
 ( xs: strx(x0) ) : strm_vt(x0)
+//
+fun
+<x0:t0>
+strq_listize
+{n:i0}
+(xs: strq(x0,n)) : list_vt(x0,n)
+fun
+<x0:t0>
+strq_strmize
+{n:i0}
+(xs: strq(x0,n)) : strq_vt(x0,n)
 //
 (* ****** ****** *)
 //
