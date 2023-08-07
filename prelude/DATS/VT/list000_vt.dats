@@ -699,7 +699,7 @@ end
   val zs = split(ys, n1)
   val ys = amain(ys, n1)
   val zs = amain(zs, n2)
-}
+} (*where*) // end of [amain(xs, n0)]
 //
 and
 split
@@ -713,13 +713,12 @@ then
 split(ys.1, n1-1)
 else
 let
-val zs = ys.1
-in//let
+val zs = ys.1 in//let
 (
 ys.1 :=
-list_vt_nil(); zs)
-end//end-of-[else]
-) (* end-of-[split] *)
+list_vt_nil<a>(); zs)
+endlet // end of [else]
+) (* ift *) // end of [split(ys, n1)]
 //
 and
 merge
@@ -751,7 +750,7 @@ let
 val nd = ys
 val ys = ys1
 val () = $fold(zs)
-in
+in//let
   xs := nd;
   merge(ys, zs, xs.1); $fold(xs)
 end
@@ -760,17 +759,18 @@ let
 val nd = zs
 val zs = zs1
 val () = $fold(ys)
-in
+in//let
   xs := nd;
   merge(ys, zs, xs.1); $fold(xs)
 end
 end // list_vt_cons
-) (* list_vt_cons] *)
-) (* end of [merge] *)
+) (*case+*) // list_vt_cons(y0,ys1)]
+) (*case+*) // end of [merge(ys,zs,xs)]
 //
-in
-  amain(xs, list_vt_length1<a>(xs))
-end (* end of [list_vt_mergesort0] *)
+in//let
+(
+   amain(xs, list_vt_length1<a>(xs)) )
+end (*let*) // end of [list_vt_mergesort0]
 
 (* ****** ****** *)
 
@@ -811,6 +811,7 @@ auxmain2
 $llazy
 (
 case+ xs of
+//
 | ~
 list_vt_nil() =>
 (
@@ -818,8 +819,8 @@ strmcon_vt_nil()
 ) where
 {
 val () =
-list_vt_free<a>(ys)
-}
+list_vt_free<a>(ys)}
+//
 | ~
 list_vt_cons(x0, xs) =>
 let
@@ -839,9 +840,10 @@ strm_vt_map0
 #sexpdef n1 = n0-1
 #impltmp
 map0$fopr
-<xs(n1)><xs(n0)>(xx) = list_vt_cons(x0, xx)
+<xs(n1)>
+<xs(n0)>(xx) = list_vt_cons(x0, xx)
 }
-in
+in//let
 let
   val
   ys =
@@ -849,15 +851,15 @@ let
   val
   res2 =
   auxmain2(xs, ys, i0-1, j0+1)
-in
-  !(strm_vt_append(res1, res2))
-end
-end
-) (* end of [auxmain2] *)
+in//let
+  !(strm_vt_append(res1, res2)) end
+end//let
+) (*case+*) // end of [auxmain2(...)]
 //
 in
-auxmain1(xs, list_vt_length1<a>(xs))
-end (* end of [list_vt_permutize0] *)
+(
+  auxmain1(xs, list_vt_length1<a>(xs)) )
+end (*let*) // end of [list_vt_permutize0(xs)]
 
 (* ****** ****** *)
 //
@@ -902,7 +904,7 @@ list_vt_cons(x1, xs1) =>
   end // end of [let]
 )
 ) (* end of [auxloop] *)
-} (*where*) // end of [list_vt_prefixq0]
+} (*where*) // end of [list_vt_prefixq0(...)]
 //
 (* ****** ****** *)
 //
@@ -917,7 +919,7 @@ let
   list_vt_reverse0(xs2)
 in
   list_vt_prefixq0<a>(xs1, xs2)
-end (*let*) // end of [list_vt_suffixq0]
+end (*let*) // end of [list_vt_suffixq0(...)]
 //
 (* ****** ****** *)
 (*
@@ -963,7 +965,7 @@ glseq_uncons_raw
 let
   val x0 = xs.0
   val () = xs := xs.1 in x0
-end // end-of(glseq_uncons_raw)
+end // end-of(glseq_uncons_raw(xs))
 //
 (* ****** ****** *)
 //
@@ -971,6 +973,9 @@ end // end-of(glseq_uncons_raw)
 {a:vt}
 glseq_copy
 <list_vt(a)><a> = list_vt_copy<a>
+//
+(* ****** ****** *)
+//
 #impltmp
 {a:vt}
 glseq_free
