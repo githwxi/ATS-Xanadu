@@ -363,6 +363,16 @@ d3pat_errck
 endlet // end of [d3pat_bang_errck(...)]
 //
 fun
+d3pat_flat_errck
+(loc0: loc_t
+,d3p1: d3pat): d3pat =
+let
+val lvl0 = errvl(d3p1) in//let
+d3pat_errck
+(lvl0+1,d3pat(loc0, D3Pflat(d3p1)))
+endlet // end of [d3pat_flat_errck(...)]
+//
+fun
 d3pat_free_errck
 (loc0: loc_t
 ,d3p1: d3pat): d3pat =
@@ -1014,6 +1024,7 @@ d3p0.node() of
 |D3Pcon _ => d3p0
 //
 |D3Pbang _ => f0_bang(d3p0, err)
+|D3Pflat _ => f0_flat(d3p0, err)
 |D3Pfree _ => f0_free(d3p0, err)
 //
 |D3Psapp _ => f0_sapp(d3p0, err)
@@ -1063,6 +1074,25 @@ if
 then (d3p) else
 d3pat_bang_errck(d3p.lctn(), d3p1)
 end (*let*) // end of [f0_bang(d3p,err)]
+//
+fun
+f0_flat
+(d3p: d3pat
+,err: &sint >> _): d3pat =
+let
+//
+val e00 = err
+//
+val-
+D3Pflat(d3p1) = d3p.node()
+val
+d3p1 = tread23_d3pat(d3p1, err)
+in//let
+if
+(err=e00)
+then (d3p) else
+d3pat_flat_errck(d3p.lctn(), d3p1)
+end (*let*) // end of [f0_flat(d3p,err)]
 //
 fun
 f0_free

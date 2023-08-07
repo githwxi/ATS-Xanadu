@@ -118,6 +118,9 @@ print("D3Pcon(",d2c,")")
 D3Pbang(d2p1) =>
 print("D3Pbang(",d2p1,")")
 |
+D3Pflat(d2p1) =>
+print("D3Pflat(",d2p1,")")
+|
 D3Pfree(d2p1) =>
 print("D3Pfree(",d2p1,")")
 //
