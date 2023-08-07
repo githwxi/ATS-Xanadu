@@ -314,6 +314,11 @@ let
 val () =
 trsym2a_d2pat(env0, d2p1) endlet
 |
+D2Pflat(d2p1) =>
+let
+val () =
+trsym2a_d2pat(env0, d2p1) endlet
+|
 D2Pfree(d2p1) =>
 let
 val () =

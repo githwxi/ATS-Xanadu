@@ -178,6 +178,7 @@ d2p0.node() of
 |D2Pcon _ => f0_con(env0, d2p0)
 //
 |D2Pbang _ => f0_bang(env0, d2p0)
+|D2Pflat _ => f0_flat(env0, d2p0)
 |D2Pfree _ => f0_free(env0, d2p0)
 //
 (*
@@ -413,6 +414,28 @@ t2p1 = d2p1.styp((*void*)) in//let
   d2pat(loc0, t2p1, D2Pbang( d2p1 ))
 end (*let*)
 end (*let*) // end of [f0_bang(env0,...)]
+//
+fun
+f0_flat
+( env0:
+! tr2aenv
+, d2p0: d2pat): d2pat =
+let
+//
+val loc0 = d2p0.lctn()
+val-
+D2Pflat(d2p1) = d2p0.node()
+//
+val
+d2p1 = trans2a_d2pat(env0, d2p1)
+//
+in//let
+let
+val
+t2p1 = d2p1.styp((*void*)) in//let
+  d2pat(loc0, t2p1, D2Pflat( d2p1 ))
+end (*let*)
+end (*let*) // end of [f0_flat(env0,...)]
 //
 fun
 f0_free
