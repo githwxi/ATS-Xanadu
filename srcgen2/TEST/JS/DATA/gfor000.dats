@@ -4,10 +4,8 @@
 *)
 (* ****** ****** *)
 //
-(*
 #staload
-"./../SATS/gfor000.sats"
-*)
+"prelude/SATS/gfor000.sats"
 //
 (* ****** ****** *)
 //

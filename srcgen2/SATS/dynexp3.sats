@@ -571,6 +571,9 @@ two attributes of left values
 ( d1exp(*$LLAZY*)
 , d3exp(*lin-thunk*), d3explst(*frees*))
 //
+|D3Eannot of
+( d3exp, s1exp(*given*), s2exp(*trans*))
+//
 |D3El2bck of (d3exp, label)//HX: casting
 |D3Et2pck of (d3exp, s2typ)//HX: casting
 //
