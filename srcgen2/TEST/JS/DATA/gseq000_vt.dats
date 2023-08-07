@@ -4,15 +4,16 @@
 *)
 (* ****** ****** *)
 //
-(*
-#staload
-"./..\
-/SATS/VT/gseq000_vt.sats"
-*)
-//
-(* ****** ****** *)
 #staload UN =
 "prelude/SATS/unsafex.sats"
+//
+(* ****** ****** *)
+//
+#staload
+"prelude/SATS/gseq000.sats"
+#staload
+"prelude/SATS/VT/gseq000_vt.sats"
+//
 (* ****** ****** *)
 
 #impltmp
@@ -915,6 +916,8 @@ strm_vt_z2forcmp0<x0,y0>
   glseq_strmize<ys><y0>(ys))
 ) (*where*)//end-of-[glseq_z2forcmp0]
 
+(* ****** ****** *)
+//
 #impltmp
 <xs,ys>
 <x0,y0>
@@ -932,12 +935,13 @@ strm_vt_z2forcmp0<x0,y0>
 z2forcmp0$fcmp<x0,y0>
   (x0, y0) =
 (
-g_free(x0); g_free(y0); sgn) where
+  g_free(x0); g_free(y0); sgn
+) where
 {
 val
 sgn = z2forcmp1$fcmp<x0,y0>(x0, y0)}
-} (*where*)//end-of-[glseq_z2forcmp1]
-
+}(*where*)//end-of-[glseq_z2forcmp1(...)]
+//
 (* ****** ****** *)
 //
 (*
@@ -950,7 +954,7 @@ For non-linear glseq-ops
 #impltmp
 {xs:t0}
 {x0:t0}// HX-2022-06-10: there is no
-glseq_copy = g_copy<xs> // [gseq_copy]
+glseq_copy = g_copy<xs> // [gseq_copy(xs)]
 //
 (* ****** ****** *)
 //
