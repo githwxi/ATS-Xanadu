@@ -126,7 +126,7 @@ case+ xs of
 |
 optn_nil() => ((*0*))
 |
-optn_cons(x0) => rforeach$word<a>(x0))
+optn_cons(x0) => rforeach$work<a>(x0))
 //
 (* ****** ****** *)
 //
