@@ -714,10 +714,12 @@ split(ys.1, n1-1)
 else
 let
 val zs = ys.1
-in 
-  ys.1 := list_vt_nil(); zs
-end // end of [else]
-)
+in//let
+(
+ys.1 :=
+list_vt_nil(); zs)
+end//end-of-[else]
+) (* end-of-[split] *)
 //
 and
 merge

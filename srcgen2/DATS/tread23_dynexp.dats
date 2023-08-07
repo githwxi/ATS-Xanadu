@@ -2419,8 +2419,13 @@ val d3e = d3exp_errck(lvl, d3e) in (d3e)
 end (*let*) // end of [f0_none2(d3e,err)]
 //
 (* ****** ****** *)
+// (*
+  val () =
+  prerrln("tread23_d3exp: d3e0 = ", d3e0)
+// *)
+(* ****** ****** *)
 //
-} (*where*)//end[tread23_d3exp(d3e0,err)]
+} (*where*)//end-[tread23_d3exp(d3e0,err)]
 //
 (* ****** ****** *)
 //

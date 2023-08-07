@@ -224,15 +224,17 @@ loop
 (
 case+ xs of
 | ~
-list_vt_nil() => xs := ys
+list_vt_nil
+  ( (*0*) ) => (xs := ys)
 | @
-list_vt_cons(_, _) =>
+list_vt_cons
+  ( _ , _ ) =>
 let
   val () = loop(xs.1, ys)
-in
+in//let
 let
 prval () = $fold(xs) in () end
-end // end of [list_vt_cons]
+endlet // end of [list_vt_cons]
 ) (*case*) // end of [loop(xs, ys)]
 //
 } (* end of [list_vt_append0(xs,ys)] *)
@@ -711,10 +713,11 @@ then
 split(ys.1, n1-1)
 else
 let
-val zs = ys.1
-in 
-  ys.1 := list_vt_nil(); zs
-end // end of [else]
+val zs = ys.1 in//let
+(
+ys.1 :=
+list_vt_nil<a>(); zs)
+endlet // end of [else]
 )
 //
 and
