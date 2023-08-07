@@ -483,12 +483,12 @@ f0_s2exp
 //
 (* ****** ****** *)
 //
-(*
+// (*
   val (  ) =
   prerrln("tread33_s2typ: t2p0 = ", t2p0)
-*)
+// *)
 //
-}(*where*)//end-of[-tread33_s2typ(t2p0,err)]
+}(*where*)//end-of[tread33_s2typ(t2p0,err)]
 //
 (* ****** ****** *)
 //

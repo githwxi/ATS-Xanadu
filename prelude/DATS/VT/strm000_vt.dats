@@ -2343,11 +2343,11 @@ glseq_unstrm_vt
 #impltmp
 {x0:vt}
 glseq_add0
-<strm_vt(x0)><x0> = strm_vt_add0< x0 >(*xs*)
+<strm_vt(x0)><x0> = strm_vt_add0<x0>(*xs*)
 #impltmp
 {x0:vt}
 glseq_mul0
-<strm_vt(x0)><x0> = strm_vt_mul0< x0 >(*xs*)
+<strm_vt(x0)><x0> = strm_vt_mul0<x0>(*xs*)
 //
 (* ****** ****** *)
 
