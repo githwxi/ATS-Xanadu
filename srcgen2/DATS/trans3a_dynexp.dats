@@ -108,6 +108,7 @@ d3p0.node() of
 |D3Pcon _ => f0_con(env0, d3p0)
 //
 |D3Pbang _ => f0_bang(env0, d3p0)
+|D3Pflat _ => f0_flat(env0, d3p0)
 |D3Pfree _ => f0_free(env0, d3p0)
 //
 (*
@@ -240,6 +241,31 @@ d3p1 = trans3a_d3pat(env0, d3p1)
 in//let
   d3pat(loc0, t2p0, D3Pbang( d3p1 ))
 end (*let*) // end of [f0_bang(env0,...)]
+//
+fun
+f0_flat
+( env0:
+! tr3aenv
+, d3p0: d3pat): d3pat =
+let
+//
+val loc0 = d3p0.lctn()
+val-
+D3Pflat(d3p1) = d3p0.node()
+//
+val
+t2p0 = d3p0.styp((*0*))
+val
+t2p0 = s2typ_hnfiz0(t2p0)
+val
+t2p0 = trans3a_s2typ(env0, t2p0)
+//
+val
+d3p1 = trans3a_d3pat(env0, d3p1)
+//
+in//let
+  d3pat(loc0, t2p0, D3Pflat( d3p1 ))
+end (*let*) // end of [f0_flat(env0,...)]
 //
 fun
 f0_free

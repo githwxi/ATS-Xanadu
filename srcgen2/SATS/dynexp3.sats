@@ -266,6 +266,7 @@ d3pat_node =
 *)
 //
 |D3Pbang of (d3pat)
+|D3Pflat of (d3pat)
 |D3Pfree of (d3pat)
 //
 |D3Psapp of
