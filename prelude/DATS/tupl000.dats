@@ -6,7 +6,7 @@
 #impltmp<>
 t0up_print$beg()=strn_print("@(")
 #impltmp<>
-t1up_print$beg()=strn_print("$(")
+t1up_print$beg()=strn_print("#(")
 (* ****** ****** *)
 #impltmp<>
 t0up_print$end() = strn_print(")")

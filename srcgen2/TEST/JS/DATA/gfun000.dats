@@ -3,15 +3,15 @@
 ** For function ops
 *)
 (* ****** ****** *)
-//
-(*
 #staload
-"./../SATS/gfun.sats"
-*)
-//
+"prelude/SATS/gfun000.sats"
+#staload
+"prelude/SATS/gseq000.sats"
 (* ****** ****** *)
+//
 #staload UN =
 "prelude/SATS/unsafex.sats"
+//
 (* ****** ****** *)
 //
 #impltmp

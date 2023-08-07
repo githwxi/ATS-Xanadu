@@ -1139,6 +1139,26 @@ d3exp_make_styp_node
 endlet // end of [d3exp_l1azy_errck(...)]
 //
 (* ****** ****** *)
+//
+fun
+d3exp_annot_errck
+( loc0: loc_t
+, t2p0: s2typ
+, d3e1: d3exp
+, s1e2: s1exp
+, s2e2
+: s2exp(*annot*)): d3exp =
+let
+val
+lvl0 = d3exp_errvl(d3e1) in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_styp_node
+(loc0,t2p0,D3Eannot(d3e1,s1e2,s2e2)))
+endlet // end of [d3exp_annot_errck(...)]
+//
+(* ****** ****** *)
 (*
 HX-2023-07-30:
 for handling [d3pat] and [d3exp]
@@ -1643,6 +1663,8 @@ f0_var(d3e0, err)
 //
 |D3El0azy _ => f0_l0azy(d3e0, err)
 |D3El1azy _ => f0_l1azy(d3e0, err)
+//
+|D3Eannot _ => f0_annot(d3e0, err)
 //
 |D3Enone0 _ => f0_none0(d3e0, err)
 //
@@ -2726,6 +2748,38 @@ then (d3e) else
   d3exp_l1azy_errck
   (d3e.lctn(), t2p, dknd, d3e1, d3es) )
 end (*let*) // end of [f0_l1azy(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_annot
+( d3e: d3exp
+, err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Eannot
+( d3e1
+, s1e2, s2e2) = d3e.node()
+//
+val
+d3e1 = tread33_d3exp(d3e1, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+(
+  d3exp_annot_errck
+  (d3e.lctn(), t2p, d3e1, s1e2, s2e2) )
+end (*let*) // end of [f0_annot(d3e,err)]
 //
 (* ****** ****** *)
 //

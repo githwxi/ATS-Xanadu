@@ -2564,13 +2564,13 @@ f0_annot
 let
 //
 val loc0 = d2e0.lctn()
+//
 val-
 D2Eannot
 (d2e1
 ,s1e2, s2e2) = d2e0.node()
 //
 val t2p2 = s2exp_stpize(s2e2)
-val t2p2 = s2typ_hnfiz0(t2p2)
 //
 val d2e1 =
 trans2a_d2exp_tpck(env0, d2e1, t2p2)

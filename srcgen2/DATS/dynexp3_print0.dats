@@ -398,6 +398,13 @@ D3El1azy
   print("D3El1azy(")
 ; print( dsym, ";",d3e1, ";",d3es,")"))
 //
+|D3Eannot
+( d3e1
+, s1e2 , s2e2 ) =>
+(
+  print("D3Eannot(")
+; print( d3e1, ";",s1e2, ";",s2e2,")"))
+//
 |D3El2bck
 ( d3e1 , lab2 ) =>
 let

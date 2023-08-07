@@ -49,13 +49,13 @@ val () =
 gmap_print$keyval
 < key , itm >(kx1.0, kx1.1)
 }
-) (* end of [loop] *)
-in
-gmap_print$beg<>();
+) (* end of [loop(i0, kxs)] *)
+in//let
+gmap_print$beg<>( (*beg-of-map*) );
 loop
 ( 0(*i0*)
 , gmap_strmize<map><key,itm>(kxs));
-gmap_print$end<>();
+gmap_print$end<>( (*end-of-map*) );()
 end (*let*) // end of [gmap_print(kxs)]
 //
 (* ****** ****** *)

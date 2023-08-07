@@ -732,6 +732,8 @@ d3exp_make_styp_node
 |D2El0azy _ => f0_l0azy(env0, d2e0)
 |D2El1azy _ => f0_l1azy(env0, d2e0)
 //
+|D2Eannot _ => f0_annot(env0, d2e0)
+//
 |D2El2bck _ => f0_l2bck(env0, d2e0)
 |D2Et2pck _ => f0_t2pck(env0, d2e0)
 //
@@ -2074,6 +2076,41 @@ d3exp_make_styp_node
   t2p0 = the_s2typ_l0azy1(d3e1.styp())
 }
 end (*let*) // end of [f0_l0azy(env0,d2e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_annot
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+//
+val-
+D2Eannot
+(d2e1
+,s1e2, s2e2) = d2e0.node()
+//
+val t2p2 = s2exp_stpize(s2e2)
+val t2p2 = s2typ_hnfiz0(t2p2)
+//
+(*
+val () =
+prerrln
+("f0_annot(23): t2p2 = ", t2p2)
+*)
+//
+val d3e1 =
+trans23_d2exp_tpck(env0,d2e1,t2p2)
+//
+in//let
+(
+  d3exp_make_styp_node
+  ( loc0
+  , t2p2, D3Eannot(d3e1,s1e2,s2e2)) )
+end (*let*) // end of [f0_annot(env0,d2e0)]
 //
 (* ****** ****** *)
 //
