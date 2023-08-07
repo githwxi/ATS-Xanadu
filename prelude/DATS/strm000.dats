@@ -990,6 +990,8 @@ else strm_cons( x0, xs )))(*auxloop*)
 //
 }(*where*)//end-of-(strm_idropif(xs))
 //
+(* ****** ****** *)
+//
 #impltmp
 <x0>(*tmp*)
 strx_idropif
