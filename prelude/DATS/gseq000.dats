@@ -698,7 +698,7 @@ gseq_map_rlist<xs><x0><x0>(xs)
 <xs><x0>
 gseq_rstrmize(xs) =
 (
-list_vt_strmize<x0>
+list_vt_strmize0<x0>
 (gseq_rlistize<xs><x0>(xs)))
 (*end-of(gseq_rstrmize(xs))*)
 //

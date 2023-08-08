@@ -77,13 +77,13 @@ optn_vt_length1
 //
 fun
 <x0:vt>
-optn_vt_listize
+optn_vt_listize0
 {n:b0}
 (
 xs: ~optn_vt(x0,n)): list_vt(x0,b2i(n))
 fun
 <x0:vt>
-optn_vt_rlistize
+optn_vt_rlistize0
 {n:b0}
 (
 xs: ~optn_vt(x0,n)): list_vt(x0,b2i(n))
@@ -92,11 +92,11 @@ xs: ~optn_vt(x0,n)): list_vt(x0,b2i(n))
 //
 fun
 <x0:vt>
-optn_vt_strmize
+optn_vt_strmize0
 (xs: ~optn_vt( x0 )): strm_vt(   x0   )
 fun
 <x0:vt>
-optn_vt_rstrmize
+optn_vt_rstrmize0
 (xs: ~optn_vt( x0 )): strm_vt(   x0   )
 //
 (* ****** ****** *)
@@ -150,15 +150,21 @@ optn_vt_maprev1
 //
 (* ****** ****** *)
 //
-#symload none_vt with optn_vt_nil
-#symload some_vt with optn_vt_cons
+#symload
+none_vt with optn_vt_nil
+#symload
+some_vt with optn_vt_cons
 //
 (* ****** ****** *)
 //
-#symload nilq with optn_vt_nilq of 1000
-#symload eqzq with optn_vt_nilq of 1000
-#symload consq with optn_vt_consq of 1000
-#symload neqzq with optn_vt_consq of 1000
+#symload
+nilq with optn_vt_nilq of 1000
+#symload
+eqzq with optn_vt_nilq of 1000
+#symload
+consq with optn_vt_consq of 1000
+#symload
+neqzq with optn_vt_consq of 1000
 //
 (* ****** ****** *)
 //
@@ -166,19 +172,57 @@ optn_vt_maprev1
 #symload
 length with optn_vt_length1 of 1000
 *)
-#symload length0 with optn_vt_length0 of 1000
-#symload length1 with optn_vt_length1 of 1000
+#symload
+length0 with optn_vt_length0 of 1000
+#symload
+length1 with optn_vt_length1 of 1000
 //
 (* ****** ****** *)
 //
-#symload listize with optn_vt_listize of 1000
-#symload listize with optn_vt_strmize of 1000
+#symload
+listize0 with optn_vt_listize0 of 1000
+#symload
+listize0 with optn_vt_strmize0 of 1000
 //
 (* ****** ****** *)
 //
-#symload rstrmize with optn_vt_rlistize of 1000
-#symload rlistize with optn_vt_rlistize of 1000
+#symload
+rstrmize0 with optn_vt_rlistize0 of 1000
+#symload
+rlistize0 with optn_vt_rlistize0 of 1000
+//
+(* ****** ****** *)
+//
+(*
+#symload map with optn_vt_map0 of 1000
+*)
+#symload map0 with optn_vt_map0 of 1000
+#symload map1 with optn_vt_map1 of 1000
+//
+(* ****** ****** *)
+//
+(*
+#symload maprev with optn_vt_maprev0 of 1000
+*)
+#symload maprev0 with optn_vt_maprev0 of 1000
+#symload maprev1 with optn_vt_maprev1 of 1000
+//
+(* ****** ****** *)
+//
+(*
+#symload forall with optn_vt_forall0 of 1000
+*)
+#symload forall0 with optn_vt_forall0 of 1000
+#symload forall1 with optn_vt_forall1 of 1000
+//
+(* ****** ****** *)
+//
+(*
+#symload foreach with optn_vt_foreach0 of 1000
+*)
+#symload foreach0 with optn_vt_foreach0 of 1000
+#symload foreach1 with optn_vt_foreach1 of 1000
 //
 (* ****** ****** *)
 
-(* end of [prelude_optn000_vt.sats] *)
+(* end of [ATS3/XANADU_prelude_optn000_vt.sats] *)

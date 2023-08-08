@@ -258,12 +258,12 @@ list_vt_foreach1(!list_vt(x0)): void
 //
 fun
 <x0:vt>
-list_vt_listize
+list_vt_listize0
 {n:int}
 (xs: ~list_vt(x0, n)): list_vt(x0, n)
 fun
 <x0:vt>
-list_vt_rlistize
+list_vt_rlistize0
 {n:int}
 (xs: ~list_vt(x0, n)): list_vt(x0, n)
 //
@@ -271,11 +271,11 @@ list_vt_rlistize
 //
 fun
 <x0:vt>
-list_vt_strmize
+list_vt_strmize0
 ( xs: ~list_vt( x0 ) ): strm_vt( x0 )
 fun
 <x0:vt>
-list_vt_rstrmize
+list_vt_rstrmize0
 ( xs: ~list_vt( x0 ) ): strm_vt( x0 )
 //
 (* ****** ****** *)
@@ -414,25 +414,25 @@ suffixq0 with list_vt_suffixq0 of 1000
 (* ****** ****** *)
 //
 #symload
-listize with list_vt_listize of 1000
+listize0 with list_vt_listize0 of 1000
 #symload
-strmize with list_vt_strmize of 1000
+rlistize0 with list_vt_rlistize0 of 1000
 //
 (* ****** ****** *)
 //
 #symload
-rlistize with list_vt_rlistize of 1000
+strmize0 with list_vt_strmize0 of 1000
 #symload
-rstrmize with list_vt_rstrmize of 1000
+rstrmize0 with list_vt_rstrmize0 of 1000
 //
 (* ****** ****** *)
-
+//
 (*
 #symload map with list_vt_map0 of 1000
 *)
 #symload map0 with list_vt_map0 of 1000
 #symload map1 with list_vt_map1 of 1000
-
+//
 (* ****** ****** *)
 
 (*
@@ -473,4 +473,4 @@ rstrmize with list_vt_rstrmize of 1000
 //
 (* ****** ****** *)
 
-(* end of [prelude_list000_vt.sats] *)
+(* end of [ATS3/XANADU_prelude_list000_vt.sats] *)
