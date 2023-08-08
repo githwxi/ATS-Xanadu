@@ -227,13 +227,13 @@ strn_tokenize
 local
 #impltmp
 <xs><x0>
-glseq_print$beg() = ()
+gseq_print$beg() = ()
 #impltmp
 <xs><x0>
-glseq_print$end() = ()
+gseq_print$end() = ()
 #impltmp
 <xs><x0>
-glseq_print$sep() = g_print("\n")
+gseq_print$sep() = g_print("\n")
 #impltmp
 g_print<token>(tok) =
 print(tok.lctn(), ":", tok.node())
@@ -262,13 +262,13 @@ val toks = lexing_lctnize_all(LCSRCnone0(), tnds)
 local
 #impltmp
 <xs><x0>
-glseq_print$beg() = ()
+gseq_print$beg() = ()
 #impltmp
 <xs><x0>
-glseq_print$end() = ()
+gseq_print$end() = ()
 #impltmp
 <xs><x0>
-glseq_print$sep() = g_print("\n")
+gseq_print$sep() = g_print("\n")
 #impltmp
 g_print<token>(tok) =
 print(tok.lctn(), ":", tok.node())
