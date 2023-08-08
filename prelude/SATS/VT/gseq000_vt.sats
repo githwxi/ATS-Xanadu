@@ -31,10 +31,24 @@ fun
 <xs:vt>
 <x0:vt>
 glseq_copy(xs: !xs): (xs)
+(*
+fun
+<xs:vt>
+<x0:vt>
+glseq_copy1(xs: !xs): (xs)
+*)
+(* ****** ****** *)
+//
 fun
 <xs:vt>
 <x0:vt>
 glseq_free(xs: ~xs): void
+(*
+fun
+<xs:vt>
+<x0:vt>
+glseq_free0(xs: ~xs): void
+*)
 //
 (* ****** ****** *)
 //

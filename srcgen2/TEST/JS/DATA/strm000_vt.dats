@@ -12,10 +12,6 @@
 #staload
 "prelude/SATS/VT/gseq000_vt.sats"
 (* ****** ****** *)
-(*
-** for lin-streams
-*)
-(* ****** ****** *)
 //
 (*
 HX-2020-03-21
@@ -597,12 +593,13 @@ strm_vt_gappend
   (xs1, xs2) = let
 //
 val xs1 =
-glseq_strmize<xs><x0>(xs1)
+glseq_strmize0<xs><x0>(xs1)
 val xs2 =
-glseq_strmize<xs><x0>(xs2)
+glseq_strmize0<xs><x0>(xs2)
 //
 in
-strm_vt_append<x0>(xs1, xs2)
+(
+  strm_vt_append<x0>(xs1, xs2) )
 end(*let*)//end-of(strm_vt_gappend(...))
 //
 (* ****** ****** *)
@@ -627,7 +624,9 @@ strmcon_vt_nil()
 strmcon_vt_cons(xs0, xss) => !
 (
 strm_vt_append<x0>
-(glseq_strmize<xs><x0>(xs0),auxmain(xss)))
+(
+glseq_strmize0<xs><x0>(xs0),auxmain(xss))
+)
 )
 }(*where*) // end-of-[strm_vt_gconcat(xss)]
 //
@@ -671,7 +670,7 @@ else
 (* ****** ****** *)
 
 #impltmp
-<a:vt>(*tmp*)
+<a>(*tmp*)
 <n:i0>(*tmp*)
 strm_vt_tabulate
   ( n0 ) =
@@ -698,14 +697,14 @@ end // let // end-of-[ auxmain(i0) ]
 (* ****** ****** *)
 //
 #impltmp
-<a:vt>(*tmp*)
+<a>(*tmp*)
 strm_vt_tabulate_cfr
   {n}(n0, f0) =
 (
 strm_vt_tabulate<a><n>(n0)
 ) where
-{
-#impltmp tabulate$fopr<a><n>(i0) = f0(i0)
+{ #impltmp
+  tabulate$fopr<a><n>(i0) = f0(  i0  )
 }(*where*) // end-of-[strm_vt_tabulate_cfr]
 //
 (* ****** ****** *)
@@ -2305,21 +2304,21 @@ HX-2020-06-02: for glseq-operations
 //
 #impltmp
 {x0:vt}
-glseq_listize
+glseq_listize0
 <strm_vt(x0)><x0> = strm_vt_listize<x0>
 //
 #impltmp
 {x0:vt}
-glseq_strmize
+glseq_strmize0
 <strm_vt(x0)><x0> = strm_vt_strmize<x0>
 #impltmp
 {x0:vt}
-glseq_strmize
+glseq_strmize0
 <strx_vt(x0)><x0> = strx_vt_strmize<x0>
 //
 #impltmp
 {x0:vt}
-glseq_rlistize
+glseq_rlistize0
 <strm_vt(x0)><x0> = strm_vt_rlistize<x0>
 //
 (* ****** ****** *)
@@ -2342,11 +2341,11 @@ glseq_unstrm_vt
 #impltmp
 {x0:vt}
 glseq_add0
-<strm_vt(x0)><x0> = strm_vt_add0< x0 >(*xs*)
+<strm_vt(x0)><x0> = strm_vt_add0<x0>(*xs*)
 #impltmp
 {x0:vt}
 glseq_mul0
-<strm_vt(x0)><x0> = strm_vt_mul0< x0 >(*xs*)
+<strm_vt(x0)><x0> = strm_vt_mul0<x0>(*xs*)
 //
 (* ****** ****** *)
 
