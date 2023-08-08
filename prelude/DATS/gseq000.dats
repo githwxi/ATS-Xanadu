@@ -362,7 +362,7 @@ strm_vt_forall0<x0>
 {
   #impltmp
   forall0$test<x0> = forall$test<x0>
-}(*where*)//end-of-[gseq_forall/strmize]
+}(*where*)//end-of[gseq_forall/strmize]
 //
 (* ****** ****** *)
 
@@ -382,7 +382,7 @@ foreach$work<x0>(x0) in true end
 } (*where*) // end of [ val(test) ]
 in//let
   // nothing
-end //end-of-[gseq_foreach/forall(xs)]
+end // end-of-[gseq_foreach/forall(xs)]
 
 (* ****** ****** *)
 //

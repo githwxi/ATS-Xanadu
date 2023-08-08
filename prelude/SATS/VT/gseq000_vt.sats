@@ -157,7 +157,16 @@ glseq_listize0(~xs): list_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
+glseq_listize1(!xs): list_vt(x0)
+//
+fun
+<xs:vt>
+<x0:vt>
 glseq_strmize0(~xs): strm_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+glseq_strmize1(!xs): strm_vt(x0)
 //
 (* ****** ****** *)
 //
