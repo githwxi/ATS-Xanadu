@@ -387,6 +387,7 @@ reverse with list_vt_reverse0 of 1000
 #symload
 rappend with list_vt_rappend0 of 1000
 *)
+//
 #symload
 reverse0 with list_vt_reverse0 of 1000
 #symload
@@ -424,6 +425,22 @@ rlistize with list_vt_rlistize of 1000
 #symload
 rstrmize with list_vt_rstrmize of 1000
 //
+(* ****** ****** *)
+
+(*
+#symload map with list_vt_map0 of 1000
+*)
+#symload map0 with list_vt_map0 of 1000
+#symload map1 with list_vt_map1 of 1000
+
+(* ****** ****** *)
+
+(*
+#symload maprev with list_vt_maprev0 of 1000
+*)
+#symload maprev0 with list_vt_maprev0 of 1000
+#symload maprev1 with list_vt_maprev1 of 1000
+
 (* ****** ****** *)
 
 (*

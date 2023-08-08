@@ -569,7 +569,8 @@ auxmain
 , i1: nint, x0: x0) =
 $llazy
 (
-free(xs); free(x0);
+g_free(xs);
+g_free(x0);
 case+ !xs of
 | ~
 strmcon_vt_nil() =>
@@ -584,7 +585,7 @@ strmcon_vt_cons
 else
 let
 val () =
-free(x1) in strmcon_vt_cons(x0, xs)
+g_free(x1) in strmcon_vt_cons(x0, xs)
 end // end of [else]
 )
 }(*where*)//end-of-[strm_vt_fset_at(...)]
@@ -672,7 +673,7 @@ else
 
 #impltmp
 <a>(*tmp*)
-<n>(*tmp*)
+<n:i0>(*tmp*)
 strm_vt_tabulate
   ( n0 ) =
 (
@@ -688,7 +689,7 @@ if
 (i0 >= n0)
 then strmcon_vt_nil() else
 let
-val x0 = tabulate$fopr<a>(i0)
+val x0 = tabulate$fopr<a><n>(i0)
 in//let
 strmcon_vt_cons(x0, auxmain(succ(i0)))
 end // let // end-of-[ auxmain(i0) ]
@@ -704,9 +705,8 @@ strm_vt_tabulate_cfr
 (
 strm_vt_tabulate<a><n>(n0)
 ) where
-{
-#impltmp
-tabulate$fopr<a><n>(i0) = f0(i0)
+{ #impltmp
+  tabulate$fopr<a><n>(i0) = f0(  i0  )
 }(*where*) // end-of-[strm_vt_tabulate_cfr]
 //
 (* ****** ****** *)

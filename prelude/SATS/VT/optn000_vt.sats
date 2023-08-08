@@ -39,12 +39,12 @@
 //
 fun<>
 optn_vt_nilq
-{a:vt}{b:b0}
-(xs: !optn_vt(a, b)): bool(b=ff)
+{a:vt}{n:b0}
+(xs: !optn_vt(a, n)): bool(n=ff)
 fun<>
 optn_vt_consq
-{a:vt}{b:b0}
-(xs: !optn_vt(a, b)): bool(b=tt)
+{a:vt}{n:b0}
+(xs: !optn_vt(a, n)): bool(n=tt)
 //
 (* ****** ****** *)
 
@@ -65,13 +65,39 @@ optn_vt_copy
 fun
 <a:vt>
 optn_vt_length0
-{b:bool}
-(xs: ~optn_vt(a, b)): int(b2i(b))
+{n:b0}
+(xs: ~optn_vt(a,n)): sint(b2i(n))
 fun
 <a:vt>
 optn_vt_length1
-{b:bool}
-(xs: !optn_vt(a, b)): int(b2i(b))
+{n:b0}
+(xs: !optn_vt(a,n)): sint(b2i(n))
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+optn_vt_listize
+{n:b0}
+(
+xs: ~optn_vt(x0,n)): list_vt(x0,b2i(n))
+fun
+<x0:vt>
+optn_vt_rlistize
+{n:b0}
+(
+xs: ~optn_vt(x0,n)): list_vt(x0,b2i(n))
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+optn_vt_strmize
+(xs: ~optn_vt( x0 )): strm_vt(   x0   )
+fun
+<x0:vt>
+optn_vt_rstrmize
+(xs: ~optn_vt( x0 )): strm_vt(   x0   )
 //
 (* ****** ****** *)
 //
@@ -94,25 +120,28 @@ optn_vt_foreach1(xs: !optn_vt(x0)): void
 (* ****** ****** *)
 //
 fun
-<a:vt>
-optn_vt_listize
-{b:b0}
-(~optn_vt(a, b)): list_vt(a, b2i(b))
+<x0:vt>
+<y0:vt>
+optn_vt_map0
+{n:b0}(xs: ~optn_vt(x0,n)): optn_vt(y0,n)
 fun
-<a:vt>
-optn_vt_strmize
-{b:b0}(xs: ~optn_vt(a, b)): strm_vt(a)
+<x0:vt>
+<y0:vt>
+optn_vt_maprev0
+{n:b0}(xs: ~optn_vt(x0,n)): optn_vt(y0,n)
+//
 (* ****** ****** *)
 //
 fun
-<a:vt>
-optn_vt_rlistize
-{b:b0}
-(~optn_vt(a, b)): list_vt(a, b2i(b))
+<x0:vt>
+<y0:vt>
+optn_vt_map1
+{n:b0}(xs: !optn_vt(x0,n)): optn_vt(y0,n)
 fun
-<a:vt>
-optn_vt_strmize0
-{b:b0}(xs: ~optn_vt(a, b)): strm_vt(a)
+<x0:vt>
+<y0:vt>
+optn_vt_maprev1
+{n:b0}(xs: !optn_vt(x0,n)): optn_vt(y0,n)
 //
 (* ****** ****** *)
 //
@@ -121,21 +150,15 @@ optn_vt_strmize0
 //
 (* ****** ****** *)
 //
-#symload
-none_vt with optn_vt_nil
-#symload
-some_vt with optn_vt_cons
+#symload none_vt with optn_vt_nil
+#symload some_vt with optn_vt_cons
 //
 (* ****** ****** *)
 //
-#symload
-nilq with optn_vt_nilq of 1000
-#symload
-eqzq with optn_vt_nilq of 1000
-#symload
-consq with optn_vt_consq of 1000
-#symload
-neqzq with optn_vt_consq of 1000
+#symload nilq with optn_vt_nilq of 1000
+#symload eqzq with optn_vt_nilq of 1000
+#symload consq with optn_vt_consq of 1000
+#symload neqzq with optn_vt_consq of 1000
 //
 (* ****** ****** *)
 //
@@ -143,24 +166,18 @@ neqzq with optn_vt_consq of 1000
 #symload
 length with optn_vt_length1 of 1000
 *)
-#symload
-length0 with optn_vt_length0 of 1000
-#symload
-length1 with optn_vt_length1 of 1000
+#symload length0 with optn_vt_length0 of 1000
+#symload length1 with optn_vt_length1 of 1000
 //
 (* ****** ****** *)
 //
-#symload
-listize with optn_vt_listize of 1000
-#symload
-listize with optn_vt_strmize of 1000
+#symload listize with optn_vt_listize of 1000
+#symload listize with optn_vt_strmize of 1000
 //
 (* ****** ****** *)
 //
-#symload
-rstrmize with optn_vt_rlistize of 1000
-#symload
-rlistize with optn_vt_rlistize of 1000
+#symload rstrmize with optn_vt_rlistize of 1000
+#symload rlistize with optn_vt_rlistize of 1000
 //
 (* ****** ****** *)
 

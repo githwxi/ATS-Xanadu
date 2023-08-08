@@ -383,5 +383,17 @@ d3parsed_of_fildats
 val (  ) =
 fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
+val dpar =
+d3parsed_of_fildats
+("./DATA/optn000_vt.dats")
+val (  ) =
+fperr33_d3parsed(g_stderr((*tmp*)), dpar)
+(* ****** ****** *)
+val dpar =
+d3parsed_of_fildats
+("./DATA/strm000_vt.dats")
+val (  ) =
+fperr33_d3parsed(g_stderr((*tmp*)), dpar)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_TEST_JS_test43_xatsopt.dats] *)

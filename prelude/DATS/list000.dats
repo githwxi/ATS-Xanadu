@@ -1172,6 +1172,34 @@ gseq_rlistize<list(a)><a> = list_rlistize<a>
 //
 #impltmp
 {a:t0}
+{b:t0}
+gseq_map
+<list(a)><a>
+<list(b)><b>(*xs*) = list_map<a><b>
+#impltmp
+{a:t0}
+{b:t0}
+gseq_maprev
+<list(a)><a>
+<list(b)><b>(*xs*) = list_maprev<a><b>
+//
+#impltmp
+{a:t0}
+{b:vt}
+gseq_map
+<list(a)><a>
+<list_vt(b)><b>(*xs*) = list_map_vt<a><b>
+#impltmp
+{a:t0}
+{b:vt}
+gseq_maprev
+<list(a)><a>
+<list_vt(b)><b>(*xs*) = list_maprev_vt<a><b>
+//
+(* ****** ****** *)
+//
+#impltmp
+{a:t0}
 {b:vt}
 gseq_map_list
 <list(a)><a><b>(*xs*) = list_map_vt<a><b>
