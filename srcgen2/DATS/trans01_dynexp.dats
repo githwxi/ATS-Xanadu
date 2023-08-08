@@ -920,7 +920,7 @@ d1exp_make_node
 (loc1, D1Es1eq(d1es)) where
 {
   val d1es =
-  trans01_d0explst(tenv, d0es) }
+  trans01_d0expseq(tenv, d0es) }
 //
 val (  ) = tr01env_poplet0(tenv)
 //
@@ -2163,22 +2163,23 @@ WTHS1EXPsome(twth, s1e2) where
 trans01_d0patlst
 ( tenv, d0ps ) =
 list_trans01_fnp(tenv, d0ps, trans01_d0pat)
+//
+#implfun
+trans01_l0d0plst
+( tenv, ldps ) =
+list_trans01_fnp(tenv, ldps, trans01_l0d0p)
+//
+(* ****** ****** *)
 #implfun
 trans01_d0explst
 ( tenv, d0es ) =
 list_trans01_fnp(tenv, d0es, trans01_d0exp)
-//
-(* ****** ****** *)
 #implfun
 trans01_d0expopt
 ( tenv, dopt ) =
 optn_trans01_fnp(tenv, dopt, trans01_d0exp)
 (* ****** ****** *)
 //
-#implfun
-trans01_l0d0plst
-( tenv, ldps ) =
-list_trans01_fnp(tenv, ldps, trans01_l0d0p)
 #implfun
 trans01_l0d0elst
 ( tenv, ldes ) =
@@ -2205,6 +2206,67 @@ trans01_d0clslst
 ( tenv, d0cs ) =
 list_trans01_fnp(tenv, d0cs, trans01_d0cls)
 
+(* ****** ****** *)
+//
+#implfun
+trans01_d0expseq
+( tenv, d0es ) =
+let
+fun
+auxloop
+( tenv:
+! tr01env
+, d0e1: d0exp
+, d0es: d0explst
+, d1es: list_vt(d1exp)): d1explst =
+(
+case+ d0es of
+//
+|
+list_nil
+((*void*)) =>
+let
+val d1e1 =
+(
+case+
+d0e1.node() of
+| D0Etkerr(tok1) =>
+(
+  d1exp_none0(d0e1.lctn()))
+| _(*non-D0Etkerr*) =>
+(
+  trans01_d0exp(tenv, d0e1)))
+: d1exp // end-of-[val(d1e1)]
+in//let
+list_vt2t(list_vt_reverse0(d1es))
+where {
+val d1es = list_vt_cons(d1e1,d1es) }
+end//let//end-of-[list_nil()]
+//
+|
+list_cons
+(d0e2, d0es) =>
+let
+val d1e1 =
+(
+  trans01_d0exp(tenv, d0e1)): d1exp
+in//let
+auxloop
+(tenv,d0e2,d0es,list_vt_cons(d1e1,d1es))
+end//let//end-of-[list_cons(d0e2,d0es)]
+)
+in//let
+//
+case+ d0es of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons(d0e1, d0es) =>
+auxloop(tenv, d0e1, d0es, list_vt_nil(*0*))
+//
+end//let//end-of-[trans01_d0expseq(tenv,d0es)]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans01_dynexp.dats] *)

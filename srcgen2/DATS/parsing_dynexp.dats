@@ -295,7 +295,7 @@ val tnd = tok.tnode()
 (*
 val ( ) =
 prerrln
-("p1_d0pat_atm: tok=", tok)
+("p1_d0pat_atm: tok =", tok)
 *)
 //
 in//let
@@ -1235,10 +1235,10 @@ val tnd = tok.tnode()
 (*
 val ( ) =
 prerrln
-("p1_d0exp_atm: e00=", e00)
+("p1_d0exp_atm: e00 =", e00)
 val ( ) =
 prerrln
-("p1_d0exp_atm: tok=", tok)
+("p1_d0exp_atm: tok =", tok)
 *)
 //
 in//let
@@ -1654,11 +1654,11 @@ end(*let*) // end-of-[ T_DLR_EXISTS(_) ]
 |
 _(* error-processing *) =>
 let
-(*
+// (*
 val () =
 prerrln
-("p1_d0exp_atm(error): tok=", tok)
-*)
+("p1_d0exp_atm(error): tok =", tok)
+// *)
 in//let
 (
 err := e00 + 1;

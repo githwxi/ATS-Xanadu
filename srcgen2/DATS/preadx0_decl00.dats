@@ -2256,7 +2256,13 @@ if
 then (dcl) else
 d0ecl_dynconst_errck(loc, tknd, tqas, d0cs)
 end (*let*) // end of [f0_dynconst(dcl, err)]
-
+//
+(* ****** ****** *)
+(*
+val (  ) = // HX: for debugging
+(
+  prerrln( "preadx0_d0ecl: dcl = ", dcl ) )
+*)
 (* ****** ****** *)
 //
 } (*where*) // end of [preadx0_d0ecl(dcl,err)]
