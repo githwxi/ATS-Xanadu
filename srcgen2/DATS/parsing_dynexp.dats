@@ -1654,11 +1654,14 @@ end(*let*) // end-of-[ T_DLR_EXISTS(_) ]
 |
 _(* error-processing *) =>
 let
-// (*
-val () =
-prerrln
-("p1_d0exp_atm(error): tok =", tok)
-// *)
+(*
+val loc =
+tok.lctn((*nil*))
+val ( ) = prerrln
+("p1_d0exp_atm(error): loc = ", loc)
+val ( ) = prerrln
+("p1_d0exp_atm(error): tok = ", tok)
+*)
 in//let
 (
 err := e00 + 1;

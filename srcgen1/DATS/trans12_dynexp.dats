@@ -2188,7 +2188,12 @@ auxtqa0
 )
 : tq2argopt =
 (
-  auxtqa0_dn(d2e0, 0)
+case+
+d2e0.node() of
+|
+D2Edap0(d2e1) => auxtqa0(d2e1)
+|
+_(*non-D2Edap0*) => auxtqa0_dn(d2e0, 0)
 )
 //
 and
@@ -2231,6 +2236,12 @@ D2Ecst1(d2c1) =>
 ) where
 {
   val tqas = d2c1.tqas()
+(*
+  val (  ) =
+  println!("auxtqa0_dn: d2c1 = ", d2c1)
+  val (  ) =
+  println!("auxtqa0_dn: tqas = ", tqas)
+*)
 }
 //
 |
@@ -2240,15 +2251,27 @@ D2Econ1(d2c1) =>
 ) where
 {
   val tqas = d2c1.tqas()
+(*
+  val (  ) =
+  println!("auxtqa0_dn: d2c1 = ", d2c1)
+  val (  ) =
+  println!("auxtqa0_dn: tqas = ", tqas)
+*)
 }
 //
 |
 D2Etapp(d2e1, _) =>
 (
-  auxtqa0_dn(d2e1, i0+1)
-)
+  auxtqa0_dn(d2e1, i0+1) )
 //
-| _ (* else *) => None_vt()
+|
+_ (* otherwise *) => None_vt() where
+{
+(*
+  val (  ) =
+  println!("auxtqa0_dn: else = ", d2e0)
+*)
+}
 //
 ) (* end of [auxtqa0_dn] *)
 

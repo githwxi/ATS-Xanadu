@@ -429,6 +429,13 @@ fun
 <x0:t0> // g_add
 gseq_shift(xs, x0): (xs)
 //
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+<y0:vt>
+gseq_maprev(xs: xs): (ys)
+//
 (* ****** ****** *)
 //
 fun
