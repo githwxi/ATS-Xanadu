@@ -563,10 +563,10 @@ end // end of [list_vt_cons]
 //
 #impltmp
 <a>(*tmp*)
-list_vt_listize(xs) = xs
+list_vt_listize0(xs) = xs
 #impltmp
 <a>(*tmp*)
-list_vt_rlistize(xs) =
+list_vt_rlistize0(xs) =
 (
   list_vt_reverse0< a >( xs )
 )
@@ -575,7 +575,7 @@ list_vt_rlistize(xs) =
 
 #impltmp
 <a>(*tmp*)
-list_vt_strmize(xs) =
+list_vt_strmize0(xs) =
 let
 fun
 auxmain
@@ -591,7 +591,7 @@ list_vt_nil() => strmcon_vt_nil()
 list_vt_cons(x0, xs) =>
   strmcon_vt_cons(x0, auxmain(xs))
 )
-in auxmain(xs) end // list_vt_strmize
+in auxmain(xs) end // list_vt_strmize0
 
 (* ****** ****** *)
 //
@@ -947,11 +947,11 @@ For implementing glseq-ops
 //
 #impltmp
 {a:vt}
-glseq_nilq
+glseq_nilq1
 <list_vt(a)><a> = list_vt_nilq{a}
 #impltmp
 {a:vt}
-glseq_consq
+glseq_consq1
 <list_vt(a)><a> = list_vt_consq{a}
 //
 (* ****** ****** *)
@@ -983,11 +983,11 @@ glseq_free
 //
 #impltmp
 {a:vt}
-glseq_listize
+glseq_listize0
 <list_vt(a)><a>(xs) = xs
 #impltmp
 {a:vt}
-glseq_rlistize
+glseq_rlistize0
 <list_vt(a)><a>(xs) =
 ( list_vt_reverse0<a>( xs ) )
 //
@@ -995,8 +995,8 @@ glseq_rlistize
 //
 #impltmp
 {a:vt}
-glseq_strmize
-<list_vt(a)><a> = list_vt_strmize<a>
+glseq_strmize0
+<list_vt(a)><a> = list_vt_strmize0<a>
 //
 (* ****** ****** *)
 //

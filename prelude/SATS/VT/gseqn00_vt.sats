@@ -18,14 +18,14 @@ fun
 <xs:vt>
 <x0:vt>
 <ln:i0>
-glseqn_nilq(!xs): bool(ln=0)
+glseqn_nilq1(!xs): bool(ln=0)
 //
 fun
 <xs:vt>
 <x0:vt>
 <ln:i0>
-glseqn_consq(!xs): bool(ln>0)
+glseqn_consq1(!xs): bool(ln>0)
 //
 (* ****** ****** *)
 
-(* end of [prelude_gseqn00_vt.sats] *)
+(* end of [ATS3/XANADU_prelude_gseqn00_vt.sats] *)
