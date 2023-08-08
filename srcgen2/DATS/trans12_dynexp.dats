@@ -1600,6 +1600,8 @@ There is no D1Eassgn!
 //
 |D1Equal0 _ => f0_qual0(env0, d1e0)
 //
+|D1Enone0 _ => f0_none0(env0, d1e0)
+//
 | _(* otherwise *) => d2exp_none1(d1e0)
 //
 end where
@@ -3116,7 +3118,23 @@ end (*let*) // end of [ T_IDQUA ]
 ) (*case+*) // end of [f1_qual0( ... )]
 //
 } (*where*) // end of [f0_qual0(env0,d1e0)]
-
+//
+(* ****** ****** *)
+//
+fun
+f0_none0
+( env0:
+! tr12env
+, d1e0: d1exp): d2exp =
+let
+//
+val loc0 = d1e0.lctn()
+//
+val-
+D1Enone0
+((*void*)) =
+d1e0.node() in d2exp_none0(loc0) endlet//fun
+//
 (* ****** ****** *)
 //
 } (*where*)//end of [trans12_d1exp(env0,d1e0)]

@@ -866,78 +866,8 @@ end(*let*)//end-of(ps_p1fun(buf,err,pfn))
 (* ****** ****** *)
 //
 #implfun
-ps_AND_p1fun{a}
-(buf, err, pfn) =
 ps_sep_p1fun
-(buf, err, tnode_ANDq, pfn)
-where
-{
-fun
-tnode_ANDq(tnd: tnode): bool =
-(case+ tnd of T_AND() => true | _ => false)
-}
-//
-(* ****** ****** *)
-//
-#implfun
-ps_BAR_p1fun{a}
-(buf, err, pfn) =
-ps_sep_p1fun
-(buf, err, tnode_BARq, pfn)
-where
-{
-fun
-tnode_BARq(tnd: tnode): bool =
-(case+ tnd of T_BAR() => true | _ => false)
-}
-//
-(* ****** ****** *)
-//
-#implfun
-ps_COMMA_p1fun{a}
-(buf, err, pfn) =
-ps_sep_p1fun
-(buf, err, tnode_COMMAq, pfn)
-where
-{
-fun
-tnode_COMMAq(tnd: tnode): bool =
-(case+ tnd of T_COMMA() => true | _ => false)
-}
-//
-(* ****** ****** *)
-//
-#implfun
-ps_SMCLN_p1fun{a}
-(buf, err, pfn) =
-ps_sep_p1fun
-(buf, err, tnode_SMCLNq, pfn)
-where
-{
-fun
-tnode_SMCLNq(tnd: tnode): bool =
-(case+ tnd of T_SMCLN() => true | _ => false)
-}
-//
-(* ****** ****** *)
-//
-#implfun
-ps_BSCLN_p1fun{a}
-(buf, err, pfn) =
-ps_sep_p1fun
-(buf, err, tnode_BSCLNq, pfn)
-where
-{
-fun
-tnode_BSCLNq(tnd: tnode): bool =
-(case+ tnd of
-| T_BAR() => true | T_SMCLN() => true | _ => false)
-}
-//
-(* ****** ****** *)
-
-#implfun
-ps_sep_p1fun{a}
+{a}
 ( buf
 , err, fsp, pfn) = let
 //
@@ -982,7 +912,95 @@ else
 (err := e00; list_vt_nil(*res*))
 //
 end//end-of(ps_sep_p1fun(buf,err,fsp,pfn))
-
+//
+(* ****** ****** *)
+//
+#implfun
+ps_AND_p1fun
+{a}
+(buf, err, pfn) =
+ps_sep_p1fun
+(buf, err, tnode_ANDq, pfn)
+where
+{
+fun
+tnode_ANDq(tnd: tnode): bool =
+(
+case+ tnd of
+| T_AND() => true | _ => false) }
+//where//end-of(ps_AND_p1fun(buf,err,pfn))
+//
+(* ****** ****** *)
+//
+#implfun
+ps_BAR_p1fun
+{a}
+(buf, err, pfn) =
+ps_sep_p1fun
+(buf, err, tnode_BARq, pfn)
+where
+{
+fun
+tnode_BARq(tnd: tnode): bool =
+(
+case+ tnd of
+| T_BAR() => true | _ => false) }
+//where//end-of(ps_BAR_p1fun(buf,err,pfn))
+//
+(* ****** ****** *)
+//
+#implfun
+ps_COMMA_p1fun
+{a}
+(buf, err, pfn) =
+ps_sep_p1fun
+(buf, err, tnode_COMMAq, pfn)
+where
+{
+fun
+tnode_COMMAq
+(tnd: tnode): bool =
+(
+case+ tnd of
+| T_COMMA() => true | _ => false) }
+//where//end-of(ps_COMMA_p1fun(buf,err,pfn))
+//
+(* ****** ****** *)
+//
+#implfun
+ps_SMCLN_p1fun
+{a}
+(buf, err, pfn) =
+ps_sep_p1fun
+(buf, err, tnode_SMCLNq, pfn)
+where
+{
+fun
+tnode_SMCLNq
+(tnd: tnode): bool =
+(
+case+ tnd of
+| T_SMCLN() => true | _ => false) }
+//where//end-of(ps_SMCLN_p1fun(buf,err,pfn))
+//
+(* ****** ****** *)
+//
+#implfun
+ps_BSCLN_p1fun
+{a}
+(buf, err, pfn) =
+ps_sep_p1fun
+(buf, err, tnode_BSCLNq, pfn)
+where
+{
+fun
+tnode_BSCLNq(tnd: tnode): bool =
+(
+case+ tnd of
+| T_BAR() => true
+| T_SMCLN() => true | _ => false) }
+//where//end-of(ps_BSCLN_p1fun(buf,err,pfn))
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_parsing_basics.dats] *)

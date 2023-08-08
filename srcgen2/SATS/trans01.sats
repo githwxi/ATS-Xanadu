@@ -617,18 +617,22 @@ fun
 trans01_d0patlst:
   (!tr01env, d0patlst)->d1patlst
 fun
+trans01_l0d0plst:
+  (!tr01env, l0d0plst)->l1d1plst
+//
+fun
 trans01_d0explst:
   (!tr01env, d0explst)->d1explst
 fun
-trans01_l0d0plst:
-  (!tr01env, l0d0plst)->l1d1plst
+trans01_d0expopt:
+  (!tr01env, d0expopt)->d1expopt
 fun
 trans01_l0d0elst:
   (!tr01env, l0d0elst)->l1d1elst
 //
 fun
-trans01_d0expopt:
-  (!tr01env, d0expopt)->d1expopt
+trans01_d0expseq:
+  (!tr01env, d0explst)->d1explst
 //
 (* ****** ****** *)
 //

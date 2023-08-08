@@ -393,13 +393,13 @@ end where
 trans01_d0ecl
 ( tenv,d0cl ) = let
 //
-(*
+// (*
 val
 loc0 = d0cl.lctn()
 val () =
 prerrln
 ("trans01_decl: d0cl = ", d0cl)
-*)
+// *)
 //
 in//let
 //

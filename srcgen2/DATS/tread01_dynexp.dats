@@ -355,7 +355,8 @@ d1pat_a0pp_errck(loc0)
 ) where
 { val () = ( err := err + 1 ) }
 |
-D1Pa1pp(d1p1,d1p2) =>
+D1Pa1pp
+( d1p1, d1p2) =>
 let
 //
 val e00 = err
@@ -374,7 +375,8 @@ endlet // end of [D1Pa1pp(d1p1,d1p2)]
 //
 |
 D1Pa2pp
-(d1p1, d1p2, d1p3) =>
+( d1p1
+, d1p2, d1p3) =>
 let
 //
 val e00 = err
@@ -410,7 +412,8 @@ then (d1p0)
 else d1pat_l1st_errck(loc0, d1ps )
 endlet // end of [ D1Pl1st( d1ps ) ]
 |
-D1Pl2st(dps1,dps2) =>
+D1Pl2st
+( dps1, dps2) =>
 let
 //
 val e00 = err
@@ -428,7 +431,8 @@ d1pat_l2st_errck(loc0, dps1, dps2)
 endlet // end of [D1Pl2st(dps1,dps2)]
 //
 |
-D1Pt1up(tknd,d1ps) =>
+D1Pt1up
+( tknd, d1ps) =>
 let
 //
 val e00 = err
@@ -444,7 +448,8 @@ d1pat_t1up_errck(loc0, tknd, d1ps)
 endlet // end of [D1Pt1up(tknd,d1ps)]
 |
 D1Pt2up
-(tknd, dps1, dps2) =>
+( tknd
+, dps1, dps2) =>
 let
 //
 val e00 = err
@@ -462,7 +467,8 @@ d1pat_t2up_errck(loc0,tknd,dps1,dps2)
 endlet // end(D1Pt2up(tknd,dps1,dps2))
 //
 |
-D1Pannot(d1p1, s1e2) =>
+D1Pannot
+( d1p1, s1e2) =>
 let
 //
 val e00 = err
@@ -480,7 +486,8 @@ d1pat_annot_errck( loc0, d1p1, s1e2 )
 endlet // end of [D1Pannot(d1p1,s1e2)]
 //
 |
-D1Pqual0(tok1, d1p2) =>
+D1Pqual0
+( tok1, d1p2) =>
 let
 //
 val e00 = err
@@ -496,13 +503,18 @@ d1pat_qual0_errck( loc0, tok1, d1p2 )
 endlet // end of [D1Pqual0(tok1,d1p2)]
 //
 |
-_(*otherwise*) =>
-(err := err + 1; d1pat_errck(1, d1p0))
+_(* otherwise *) =>
+let
+val lvl0 = 1
+in//let
+(
+err := err+1; d1pat_errck(lvl0, d1p0) )
+end(*let*)//end-of-[ _(* otherwise *) ]
 //
 ) where
 {
 //
-val loc0 = d1p0.lctn()
+val loc0 = d1p0.lctn((*void*))//needed
 //
 (*
 val (  ) =
@@ -1196,8 +1208,10 @@ endlet // end of [D1Eb1sh(d1e1)]
 d1exp_a0pp_errck(loc0)
 ) where
 { val () = ( err := err + 1 ) }
+//
 |
-D1Ea1pp(d1e1,d1e2) =>
+D1Ea1pp
+( d1e1, d1e2) =>
 let
 //
 val e00 = err
@@ -1216,7 +1230,8 @@ endlet // end of [D1Ea1pp(d1e1,d1e2)]
 //
 |
 D1Ea2pp
-(d1e1, d1e2, d1e3) =>
+( d1e1
+, d1e2, d1e3) =>
 let
 //
 val e00 = err
@@ -1280,7 +1295,8 @@ then (d1e0)
 else d1exp_l1st_errck(loc0, d1es )
 endlet // end of [ D1El1st( d1es ) ]
 |
-D1El2st(des1,des2) =>
+D1El2st
+( des1, des2) =>
 let
 //
 val e00 = err
@@ -1332,7 +1348,8 @@ endlet // end of [D1Es2eq(des1,des2)]
 //
 |
 D1Eift0
-(d1e1, dthn, dels) =>
+( d1e1
+, dthn, dels) =>
 let
 //
 val e00 = err
@@ -1352,8 +1369,8 @@ d1exp_ift0_errck(loc0,d1e1,dthn,dels)
 endlet//end-[D1Eift0(d1e1,dthn,dels)]
 |
 D1Eift1
-( d1e1
-, dthn, dels, tinv) =>
+( d1e1, dthn
+, dels, tinv) =>
 let
 //
 val e00 = err
@@ -1378,7 +1395,8 @@ endlet//end-[D1Eift1(d1e1,dthn,dels)]
 //
 |
 D1Ecas0
-(tknd, d1e1, dcls) =>
+( tknd
+, d1e1, dcls) =>
 let
 //
 val e00 = err
@@ -1397,7 +1415,8 @@ endlet//end-(D1Ecas0(tknd,d1e1,dcls))
 |
 D1Ecas1
 ( tknd
-, d1e1, dcls, tinv) =>
+, d1e1
+, dcls, tinv) =>
 let
 //
 val e00 = err
@@ -1419,7 +1438,8 @@ d1exp_cas1_errck
 endlet//end-[D1Ecas1(tknd,d1e1,dcls)]
 //
 |
-D1Elet0(d1cs,d1e1) =>
+D1Elet0
+( d1cs, d1e1) =>
 let
 //
 val e00 = err
@@ -1438,7 +1458,8 @@ d1exp_let0_errck(loc0 , d1cs , d1e1)
 endlet // end of [D1Elet0(d1cs,d1e1)]
 //
 |
-D1Et1up(tknd,d1es) =>
+D1Et1up
+( tknd, d1es) =>
 let
 //
 val e00 = err
@@ -1454,7 +1475,8 @@ d1exp_t1up_errck(loc0 , tknd , d1es)
 endlet // end of [ D1Et1up(tknd,d1es) ]
 |
 D1Et2up
-(tknd, des1, des2) =>
+( tknd
+, des1, des2) =>
 let
 //
 val e00 = err
@@ -1472,7 +1494,8 @@ d1exp_t2up_errck(loc0,tknd,des1,des2)
 endlet // end(D1Et2up(tknd,des1,des2))
 //
 |
-D1Er1cd(tknd,ldes) =>
+D1Er1cd
+( tknd, ldes) =>
 let
 //
 val e00 = err
@@ -1488,7 +1511,8 @@ d1exp_r1cd_errck( loc0 , tknd , ldes )
 endlet // end of [ D1Er1cd(tknd,ldes) ]
 |
 D1Er2cd
-(tknd, lss1, lss2) =>
+( tknd
+, lss1, lss2) =>
 let
 //
 val e00 = err
@@ -1507,8 +1531,9 @@ endlet // end(D1Er2cd(tknd,lss1,lss2))
 //
 |
 D1Elam0
-(tknd, f1as
-,sres, arrw, d1e1) =>
+( tknd
+, f1as, sres
+, arrw, d1e1) =>
 let
 //
 val e00 = err
@@ -1534,8 +1559,10 @@ endlet // end-of-[ D1Elam0(  ...  ) ]
 //
 |
 D1Efix0
-(tknd, deid, f1as
-,sres, arrw, d1e1) =>
+( tknd
+, deid
+, f1as, sres
+, arrw, d1e1) =>
 let
 //
 val e00 = err
@@ -1561,7 +1588,8 @@ endlet // end-of-[ D1Efix0(  ...  ) ]
 //
 |
 D1Etry0
-(tknd, d1e1, d1cs) =>
+( tknd
+, d1e1, d1cs) =>
 let
 //
 val e00 = err
@@ -1579,7 +1607,7 @@ endlet // end(D1Etry0(tknd,d1e1,d1cs))
 //
 |
 D1Ewhere
-(d1e1, d1cs) =>
+( d1e1, d1cs) =>
 let
 //
 val e00 = err
@@ -1616,7 +1644,8 @@ else d1exp_brckt_errck( loc0 , d1es )
 endlet // end of [ D1Ebrckt(  d1es  ) ]
 |
 D1Edtsel
-(tknd,lab1,dopt) =>
+( tknd
+, lab1, dopt) =>
 let
 //
 val e00 = err
@@ -1634,7 +1663,8 @@ endlet//end-of(D1Edtsel(tknd,lab1,dopt))
 (* ****** ****** *)
 //
 |
-D1Eraise(tknd,d1e1) =>
+D1Eraise
+( tknd, d1e1) =>
 let
 //
 val e00 = err
@@ -1652,7 +1682,8 @@ endlet // end of [D1Eraise(tknd,d1e1)]
 (* ****** ****** *)
 //
 |
-D1Eannot(d1e1,s1e2) =>
+D1Eannot
+( d1e1, s1e2) =>
 let
 //
 val e00 = err
@@ -1670,7 +1701,8 @@ d1exp_annot_errck( loc0, d1e1, s1e2 )
 endlet // end of [D1Eannot(d1e1,s1e2)]
 //
 |
-D1Equal0(tok1, d1e2) =>
+D1Equal0
+( tok1, d1e2) =>
 let
 //
 val e00 = err
@@ -1686,12 +1718,17 @@ d1exp_qual0_errck( loc0, tok1, d1e2 )
 endlet // end of [D1Equal0(tok1,d1e2)]
 //
 |
+D1Enone0
+(  (*nil*)  ) => (       d1e0       )
+//
+|
 D1Eextnam
-(tknd, gnam) => d1e0//HX:fixity-less
+( tknd, gnam) => d1e0//HX:fixity-less
 //
 |
 D1Eexists
-(tknd, d1es, d1e1) =>
+( tknd
+, d1es, d1e1) =>
 let
 //
 val e00 = err
@@ -1711,15 +1748,17 @@ endlet//end-[D1Eexists(tknd,d1es,d1e1)]
 |
 _(* otherwise *) =>
 let
-val () =
-(err := err + 1) in d1exp_errck(1, d1e0)
-endlet // end of [ _(*otherwise*) ]
+val lvl0 = 1
+in//let
+(
+err := err+1; d1exp_errck(lvl0, d1e0) )
+end(*let*)//end-of-[ _(* otherwise *) ]
 //
 ) where
 {
 (* ****** ****** *)
 //
-val loc0 = d1e0.lctn()
+val loc0 = d1e0.lctn((*void*))//needed
 //
 (* ****** ****** *)
 //

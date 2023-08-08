@@ -1,4 +1,29 @@
 (* ****** ****** *)
+(*
+fun
+foo (
+(*void*)
+) : void = ( foo(); )
+*)
+(* ****** ****** *)
+(* ****** ****** *)
+(*
+//
+(*
+HX-2023-08-07: supported
+Please see trans01_d0expseq
+(*
+Mon Aug  7 23:26:13 EDT 2023
+*)
+*)
+//
+fun
+foo (
+(*void*)
+) : void = let in foo(); end
+*)
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 proj0(ci: @(char, sint)) = ci.0
