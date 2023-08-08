@@ -73,11 +73,11 @@ strn_vt_print0(cs) =
 strn_vt_print1(cs) =
 let
 #impltmp
-glseq_print$beg<>() = ()
+glseq_print1$beg<>() = ()
 #impltmp
-glseq_print$sep<>() = ()
+glseq_print1$sep<>() = ()
 #impltmp
-glseq_print$end<>() = ()
+glseq_print1$end<>() = ()
 in
 glseq_print1<strn_vt><cgtz>(cs)
 end // end of [strn_print1]
@@ -113,8 +113,8 @@ let
 //
 val zs =
 list_vt_append0<cgtz>
-( strn_vt_listize<>(xs)
-, strn_vt_listize<>(ys))
+( strn_vt_listize0<>(xs)
+, strn_vt_listize0<>(ys))
 //
 in
   strn_vt_make_llist<>(zs)
@@ -178,7 +178,7 @@ end // end of [else]
 //
 #impltmp
 <>(*tmp*)
-strn_vt_listize
+strn_vt_listize0
   (  cs  ) = let
 //
 val ln = length1(cs)
@@ -213,13 +213,13 @@ auxloop
 (cs,ln,i0-1,list_vt_cons(ci, r0))
 end // end of [else] // end-of-[if]
 )
-}(*where*)//end-of-[strn_vt_listize(cs)]
+}(*where*)//end-of-[strn_vt_listize0(cs)]
 //
 (* ****** ****** *)
 //
 #impltmp
 <>(*tmp*)
-strn_vt_strmize
+strn_vt_strmize0
   (cs) = let
 //
 val i0 = 0(*start*)
@@ -252,12 +252,13 @@ in//let
 strmcon_vt_cons(ci,auxmain(cs,ln,i0+1))
 end // end of [else]
 )
-}(*where*)//end-of-[strn_vt_strmize(cs)]
+}(*where*)//end-of-[strn_vt_strmize0(cs)]
 //
 (* ****** ****** *)
+//
 #impltmp
 <>(*tmp*)
-strn_vt_rlistize
+strn_vt_rlistize0
   (  cs  ) = let
 //
 val i0 = 0(*start*)
@@ -293,7 +294,7 @@ auxloop
 (cs,ln,i0+1,list_vt_cons(ci, r0))
 end // end of [else] // end-of-[if]
 )
-}(*where*)//end-of-[strn_vt_rlistize(cs)]
+}(*where*)//end-of-[strn_vt_rlistize0(cs)]
 //
 (* ****** ****** *)
 #impltmp
@@ -483,7 +484,7 @@ strn_vt_make_lstrm<>
 #impltmp
 <>(*tmp*)
 strnlst_vt_concat(css) =
-strntrm_vt_concat<>(list_vt_strmize(css))
+strntrm_vt_concat<>(list_vt_strmize0(css))
 //
 (* ****** ****** *)
 //

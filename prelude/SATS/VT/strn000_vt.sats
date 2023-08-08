@@ -225,23 +225,25 @@ strn_vt_rforall1(!strn_vt): bool
 (* ****** ****** *)
 //
 fun<>
-strn_vt_strmize
-(cs: ~strn_vt): strm_vt(cgtz)
+strn_vt_listize0
+{n:int}
+( cs:
+~ strn_vt(n)): list_vt(cgtz,n)
 fun<>
-strn_vt_rstrmize
-(cs: ~strn_vt): strm_vt(cgtz)
+strn_vt_rlistize0
+{n:int}
+( cs:
+~ strn_vt(n)): list_vt(cgtz,n)
 //
 (* ****** ****** *)
+//
 fun<>
-strn_vt_listize
-{n:int}
-( cs:
-~ strn_vt(n)): list_vt(cgtz,n)
+strn_vt_strmize0
+(cs: ~strn_vt): strm_vt(cgtz)
 fun<>
-strn_vt_rlistize
-{n:int}
-( cs:
-~ strn_vt(n)): list_vt(cgtz,n)
+strn_vt_rstrmize0
+(cs: ~strn_vt): strm_vt(cgtz)
+//
 (* ****** ****** *)
 //
 fun<>
@@ -459,14 +461,22 @@ reverse0 with strn_vt_reverse0 of 1000
 //
 (* ****** ****** *)
 //
-#symload listize with strn_vt_listize of 1000
-#symload strmize with strn_vt_strmize of 1000
+#symload
+listize0 with strn_vt_listize0 of 1000
+#symload
+rlistize0 with strn_vt_rlistize0 of 1000
 //
 (* ****** ****** *)
 //
-#symload rlistize with strn_vt_rlistize of 1000
-#symload rstrmize with strn_vt_rstrmize of 1000
+#symload
+strmize0 with strn_vt_strmize0 of 1000
+#symload
+rstrmize0 with strn_vt_rstrmize0 of 1000
 //
 (* ****** ****** *)
 
-(* end of [prelude_strn000_vt.sats] *)
+#symload forall0 with strn_vt_forall0 of 1000
+
+(* ****** ****** *)
+
+(* end of [ATS3/XANADU_prelude_strn000_vt.sats] *)

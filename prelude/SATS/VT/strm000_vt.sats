@@ -596,8 +596,10 @@ strm_vt_z2iforeach0
 //
 (* ****** ****** *)
 //
-#symload nil_vt with strmcon_vt_nil
-#symload cons_vt with strmcon_vt_cons
+#symload
+nil_vt with strmcon_vt_nil
+#symload
+cons_vt with strmcon_vt_cons
 //
 (* ****** ****** *)
 //
@@ -607,7 +609,10 @@ strm_vt_z2iforeach0
 //
 (* ****** ****** *)
 //
-#symload length with strm_vt_length of 1000
+#symload
+length with strm_vt_length of 1000
+#symload
+length0 with strm_vt_length of 1000
 //
 (* ****** ****** *)
 //
@@ -618,28 +623,64 @@ strm_vt_z2iforeach0
 *)
 //
 (* ****** ****** *)
-#symload length0 with strm_vt_length of 1000
-#symload extend0 with strm_vt_extend of 1000
-#symload append0 with strm_vt_append of 1000
-#symload concat0 with strm_vt_concat of 1000
+#symload
+length with strm_vt_length of 1000
+#symload
+length0 with strm_vt_length of 1000
+(* ****** ****** *)
+#symload
+extend with strm_vt_extend of 1000
+#symload
+extend0 with strm_vt_extend of 1000
+(* ****** ****** *)
+#symload
+append with strm_vt_append of 1000
+#symload
+append0 with strm_vt_append of 1000
+(* ****** ****** *)
+#symload
+concat with strm_vt_concat of 1000
+#symload
+concat0 with strm_vt_concat of 1000
 (* ****** ****** *)
 
-#symload prefixq with strm_vt_prefixq of 1000
+#symload
+prefixq with strm_vt_prefixq of 1000
+#symload
+prefixq0 with strm_vt_prefixq of 1000
 
 (* ****** ****** *)
 
-#symload gconcat with strm_vt_gconcat of 1000
+#symload
+gconcat with strm_vt_gconcat of 1000
+#symload
+gconcat0 with strm_vt_gconcat of 1000
 
 (* ****** ****** *)
 //
-#symload listize with strm_vt_listize of 1000
+#symload
+listize with strm_vt_listize of 1000
+#symload
+listize0 with strm_vt_listize of 1000
 //
 (* ****** ****** *)
-#symload strmize with strm_vt_strmize of 1000
-#symload strmize with strx_vt_strmize of 1000
+//
+#symload
+strmize with strm_vt_strmize of 1000
+#symload
+strmize0 with strm_vt_strmize of 1000
+//
+#symload
+strmize with strx_vt_strmize of 1000
+#symload
+strmize0 with strx_vt_strmize of 1000
+//
 (* ****** ****** *)
 //
-#symload rlistize with strm_vt_rlistize of 1000
+#symload
+rlistize with strm_vt_rlistize of 1000
+#symload
+rlistize0 with strm_vt_rlistize of 1000
 //
 (* ****** ****** *)
 #symload map0 with strm_vt_map0 of 1000

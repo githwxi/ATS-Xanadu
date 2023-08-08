@@ -1802,15 +1802,15 @@ a1ref_length<a0><n0>(A0) = n0
 //
 #impltmp
 {a0:t0}(*tmp*)
-glseq_print$beg
+glseq_print1$beg
 <a1ref(a0)><a0> = a1ref_print$beg<>
 #impltmp
 {a0:t0}(*tmp*)
-glseq_print$end
+glseq_print1$end
 <a1ref(a0)><a0> = a1ref_print$end<>
 #impltmp
 {a0:t0}(*tmp*)
-glseq_print$sep
+glseq_print1$sep
 <a1ref(a0)><a0> = a1ref_print$sep<>
 //
 }(*where*)//end-of-[a1ref_print1<a0>]

@@ -81,7 +81,7 @@ case+ xs of
 //
 #impltmp
 <a>(*tmp*)
-optn_vt_listize(xs) =
+optn_vt_listize0(xs) =
 (
 case+ xs of
 | ~
@@ -91,7 +91,7 @@ optn_vt_cons(x0) => list_vt_sing(x0))
 //
 #impltmp
 <a>(*tmp*)
-optn_vt_rlistize(xs) =
+optn_vt_rlistize0(xs) =
 (
 case+ xs of
 | ~
@@ -103,7 +103,7 @@ optn_vt_cons(x0) => list_vt_sing(x0))
 //
 #impltmp
 <a>(*tmp*)
-optn_vt_strmize(xs) =
+optn_vt_strmize0(xs) =
 $llazy
 (
 g_free(xs);
@@ -113,11 +113,11 @@ optn_vt_nil() =>
 strmcon_vt_nil()
 | ~
 optn_vt_cons(x0) =>
-strmcon_vt_sing(x0))//optn_vt_strmize
+strmcon_vt_sing(x0))//optn_vt_strmize0
 //
 #impltmp
 <a>(*tmp*)
-optn_vt_rstrmize(xs) =
+optn_vt_rstrmize0(xs) =
 $llazy
 (
 g_free(xs);
@@ -127,7 +127,7 @@ optn_vt_nil() =>
 strmcon_vt_nil()
 | ~
 optn_vt_cons(x0) =>
-strmcon_vt_sing(x0))//optn_vt_strmize
+strmcon_vt_sing(x0))//optn_vt_strmize0
 //
 (* ****** ****** *)
 //
@@ -232,17 +232,17 @@ glseq_forall1
 //
 #impltmp
 {a:vt}
-glseq_listize
-<optn_vt(a)><a> = optn_vt_listize<a>
+glseq_listize0
+<optn_vt(a)><a> = optn_vt_listize0<a>
 #impltmp
 {a:vt}
-glseq_strmize
-<optn_vt(a)><a> = optn_vt_strmize<a>
+glseq_strmize0
+<optn_vt(a)><a> = optn_vt_strmize0<a>
 //
 #impltmp
 {a:vt}
-glseq_rlistize
-<optn_vt(a)><a> = optn_vt_rlistize<a>
+glseq_rlistize0
+<optn_vt(a)><a> = optn_vt_rlistize0<a>
 //
 (* ****** ****** *)
 //
