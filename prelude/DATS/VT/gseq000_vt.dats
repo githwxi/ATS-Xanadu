@@ -524,8 +524,9 @@ glseq_unstrm_vt<xs><x0>
 glseq_filter0_list
   (  xs  ) =
 (
-  strm_vt_listize
-  (glseq_filter0_strm<xs><x0>(xs)) )
+strm_vt_listize
+(
+glseq_filter0_strm<xs><x0>(xs)))
 //
 (* ****** ****** *)
 //
@@ -533,7 +534,9 @@ glseq_filter0_list
 <xs><x0>
 glseq_filter0_strm
   (  xs  ) =
-strm_vt_filter0(glseq_strmize0<xs><x0>(xs))
+(
+  strm_vt_filter0
+  (glseq_strmize0<xs><x0>(xs)) )
 //
 (* ****** ****** *)
 //
@@ -541,7 +544,16 @@ strm_vt_filter0(glseq_strmize0<xs><x0>(xs))
 <xs><x0>
 glseq_forall0
   (  xs  ) =
-strm_vt_forall0(glseq_strmize0<xs><x0>(xs))
+(
+  strm_vt_forall0
+  (glseq_strmize0<xs><x0>(xs)) )
+#impltmp
+<xs><x0>
+glseq_forall1
+  (  xs  ) =
+(
+  strm_vt_forall0
+  (glseq_strmize1<xs><x0>(xs)) )
 //
 (* ****** ****** *)
 //
@@ -554,10 +566,26 @@ glseq_exists0
   forall0$test<x0>(x0) =
   not(exists0$test<x0>(x0))
 //
-in
-if
-glseq_forall0<xs><x0>(xs) then false else true
+in//let
+if // if
+glseq_forall0
+<xs><x0>( xs ) then false else true
 end(*let*)//end-of(glseq_exists0/forall0)
+//
+#impltmp
+<xs><x0>
+glseq_exists1
+  (  xs  ) = let
+//
+  #impltmp
+  forall1$test<x0>(x0) =
+  not(exists1$test<x0>(x0))
+//
+in//let
+if // if
+glseq_forall1
+<xs><x0>( xs ) then false else true
+end(*let*)//end-of(glseq_exists1/forall1)
 //
 (* ****** ****** *)
 //
