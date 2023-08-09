@@ -616,75 +616,55 @@ cons_vt with strmcon_vt_cons
 length0 with strm_vt_length0 of 1000
 (* ****** ****** *)
 #symload
-extend with strm_vt_extend of 1000
+extend0 with strm_vt_extend0 of 1000
 #symload
-extend0 with strm_vt_extend of 1000
+append0 with strm_vt_append0 of 1000
 (* ****** ****** *)
 #symload
-append with strm_vt_append of 1000
-#symload
-append0 with strm_vt_append of 1000
+concat0 with strm_vt_concat0 of 1000
 (* ****** ****** *)
 #symload
-concat with strm_vt_concat of 1000
-#symload
-concat0 with strm_vt_concat of 1000
+prefixq0 with strm_vt_prefixq0 of 1000
 (* ****** ****** *)
-
 #symload
-prefixq with strm_vt_prefixq of 1000
-#symload
-prefixq0 with strm_vt_prefixq of 1000
-
-(* ****** ****** *)
-
-#symload
-gconcat with strm_vt_gconcat of 1000
-#symload
-gconcat0 with strm_vt_gconcat of 1000
-
+gconcat0 with strm_vt_gconcat0 of 1000
 (* ****** ****** *)
 //
 #symload
-listize with strm_vt_listize of 1000
-#symload
-listize0 with strm_vt_listize of 1000
+listize0 with strm_vt_listize0 of 1000
 //
 (* ****** ****** *)
 //
 #symload
-strmize with strm_vt_strmize of 1000
+strmize0 with strm_vt_strmize0 of 1000
 #symload
-strmize0 with strm_vt_strmize of 1000
-//
-#symload
-strmize with strx_vt_strmize of 1000
-#symload
-strmize0 with strx_vt_strmize of 1000
+strmize0 with strx_vt_strmize0 of 1000
 //
 (* ****** ****** *)
 //
 #symload
-rlistize with strm_vt_rlistize of 1000
-#symload
-rlistize0 with strm_vt_rlistize of 1000
+rlistize0 with strm_vt_rlistize0 of 1000
 //
 (* ****** ****** *)
 #symload map0 with strm_vt_map0 of 1000
 #symload map0 with strx_vt_map0 of 1000
 (* ****** ****** *)
-#symload drop0 with strm_vt_drop0 of 1000
-#symload dropif0 with strm_vt_dropif0 of 1000
-#symload idropif0 with strm_vt_idropif0 of 1000
+#symload filter0 with strm_vt_filter0 of 1000
+#symload filter0 with strx_vt_filter0 of 1000
 (* ****** ****** *)
+#symload maprev0 with strm_vt_maprev0 of 1000
+#symload maprev0 with strx_vt_maprev0 of 1000
+(* ****** ****** *)
+#symload drop0 with strm_vt_drop0 of 1000
 #symload take0 with strm_vt_take0 of 1000
+(* ****** ****** *)
+#symload dropif0 with strm_vt_dropif0 of 1000
 #symload takeif0 with strm_vt_takeif0 of 1000
+(* ****** ****** *)
+#symload idropif0 with strm_vt_idropif0 of 1000
 #symload itakeif0 with strm_vt_itakeif0 of 1000
 (* ****** ****** *)
 #symload foldl0 with strm_vt_foldl0 of 1000
-(* ****** ****** *)
-#symload filter0 with strm_vt_filter0 of 1000
-#symload filter0 with strx_vt_filter0 of 1000
 (* ****** ****** *)
 #symload exists0 with strm_vt_exists0 of 1000
 #symload forall0 with strm_vt_forall0 of 1000

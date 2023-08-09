@@ -476,7 +476,7 @@ glseq_unstrm_vt<xs><x0>
 glseq_filter0_list
   (  xs  ) =
 (
-  strm_vt_listize
+  strm_vt_listize0
   (glseq_filter0_strm<xs><x0>(xs)) )
 //
 (* ****** ****** *)
