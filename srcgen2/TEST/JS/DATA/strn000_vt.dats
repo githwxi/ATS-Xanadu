@@ -1,50 +1,14 @@
-(***********************************************************************)
-(*                                                                     *)
-(*                         Applied Type System                         *)
-(*                                                                     *)
-(***********************************************************************)
-
-(*
-** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
-** All rights reserved
-**
-** ATS is free software;  you can  redistribute it and/or modify it under
-** the terms of  the GNU GENERAL PUBLIC LICENSE (GPL) as published by the
-** Free Software Foundation; either version 3, or (at  your  option)  any
-** later version.
-** 
-** ATS is distributed in the hope that it will be useful, but WITHOUT ANY
-** WARRANTY; without  even  the  implied  warranty  of MERCHANTABILITY or
-** FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License
-** for more details.
-** 
-** You  should  have  received  a  copy of the GNU General Public License
-** along  with  ATS;  see the  file COPYING.  If not, please write to the
-** Free Software Foundation,  51 Franklin Street, Fifth Floor, Boston, MA
-** 02110-1301, USA.
-*)
-
 (* ****** ****** *)
-//
-// Author: Hongwei Xi
-// Start Time: March, 2020
-// Authoremail: gmhwxiATgmailDOTcom
-//
-(* ****** ****** *)
-
-(*
 #staload
-"./..\
-/SATS/VT/string_vt.sats"
-*)
-
+"prelude\
+/SATS/VT/gseq000_vt.sats"
+(* ****** ****** *)
+#staload
+"prelude\
+/SATS/VT/strn000_vt.sats"
 (* ****** ****** *)
 #staload UN =
 "prelude/SATS/unsafex.sats"
-(* ****** ****** *)
-#staload
-"prelude/SATS/VT/gseq000_vt.sats"
 (* ****** ****** *)
 //
 #impltmp<>
@@ -243,7 +207,7 @@ auxmain
 : strm_vt(cgtz) =
 $llazy
 (
-free(cs);
+g_free(cs);
 if
 (i0 >= ln)
 then
@@ -296,18 +260,30 @@ in//let
 auxloop
 (cs,ln,i0+1,list_vt_cons(ci, r0))
 end // end of [else] // end-of-[if]
-)
+)(* ift *)//end-of-[auxloop(cs,ln,...)]
 }(*where*)//end-of-[strn_vt_rlistize0(cs)]
 //
 (* ****** ****** *)
+//
 #impltmp
 <>(*tmp*)
 strn_vt_listize1(cs) =
-$UN.castlin01(glseq_copy_list(cs))
+let
+#typedef x0 = cgtz
+#vwtpdef xs = strn_vt
+in//let
+$UN.castlin01
+(glseq_copy_list<xs><x0>(cs)) end
 #impltmp
 <>(*tmp*)
 strn_vt_rlistize1(cs) =
-$UN.castlin01(glseq_rcopy_list(cs))
+let
+#typedef x0 = cgtz
+#vwtpdef xs = strn_vt
+in//let
+$UN.castlin01
+(glseq_rcopy_list<xs><x0>(cs)) end
+//
 (* ****** ****** *)
 
 #impltmp<>
@@ -322,16 +298,14 @@ val p0 =
 strtmp_vt_alloc<>(n0)
 //
 val () =
-loop(p0, 0(*i0*), cs)
+loop(p0, 0(*i0*), cs) }
 //
-} where
+where
 {
 //
-val n0 =
-strn_length<>(cs)
+val n0 = strn_length<>(cs)
 //
-#sexpdef
-stmp = strtmp1_vt
+#sexpdef stmp = strtmp1_vt
 //
 fnx
 loop
@@ -345,13 +319,11 @@ if
 (i0 >= n0)
 then () else
 (
-  loop(p0, succ(i0), cs)
-) where
+loop(p0, succ(i0), cs)) where
 {
-val c0 = cs[i0]
-val () = strtmp_vt_set_at<>(p0,i0,c0)
-}
-)
+  val c0 = cs[i0]
+  val () =
+  strtmp_vt_set_at<>(p0,i0,c0) } )
 //
 }(*where*)//end-of-[strn_vt_make_strn]
 
@@ -361,24 +333,22 @@ val () = strtmp_vt_set_at<>(p0,i0,c0)
 strn_vt_make_list
   {n}(cs) =
 (
-UN_strn_vt_cast(p0)
-) where
+UN_strn_vt_cast(p0))
+where
 {
 //
 val p0 =
 strtmp_vt_alloc<>(n0)
 //
 val () =
-loop(p0, 0(*i0*), cs)
+loop(p0, 0(*i0*), cs) }
 //
-} where
+where
 {
 //
-val n0 =
-list_length<>(cs)
+val n0 = list_length<>(cs)
 //
-#sexpdef
-stmp = strtmp1_vt
+#sexpdef stmp = strtmp1_vt
 //
 fnx
 loop
@@ -386,8 +356,7 @@ loop
 |i<=n}.<n-i>.
 ( p0: stmp(n)
 , i0: sint(i)
-, cs
-: list(cgtz, n-i)): void =
+, cs: list(cgtz, n-i)): void =
 (
 case+ cs of
 |
@@ -395,13 +364,10 @@ list_nil() => ()
 |
 list_cons(c0, cs) =>
 (
-  loop(p0, succ(i0), cs)
-) where
+loop(p0, succ(i0), cs)) where
 {
 val () =
-strtmp_vt_set_at<>(p0, i0, c0)
-}
-)
+strtmp_vt_set_at<>(p0, i0, c0) } )
 //
 }(*where*)//end-of-[strn_vt_make_list]
 
@@ -492,7 +458,7 @@ strntrm_vt_concat<>(list_vt_strmize0(css))
 (* ****** ****** *)
 //
 #impltmp
-<n>(*tmp*)
+<n0:i0>(*tmp*)
 strn_vt_tabulate
 (  n0  ) =
 (
@@ -514,20 +480,20 @@ stmp = strtmp1_vt
 //
 fnx
 loop
-{i:nat
-|i<=n}.<n-i>.
-( p0: stmp(n)
-, i0: sint(i)): void =
+{i0:nat
+|i0<=n0}
+.<n0-i0>.
+( p0: stmp(n0)
+, i0: sint(i0)): void =
 (
 if
 (i0 < n0)
 then
 (
-  loop(p0, succ(i0))
-) where
+loop(p0, succ(i0))) where
 {
 val c0 =
-tabulate$fopr<cgtz><n>(i0)
+tabulate$fopr<cgtz><n0>(i0)
 val () =
 strtmp_vt_set_at<>(p0, i0, c0)
 }
@@ -540,8 +506,7 @@ strtmp_vt_set_at<>(p0, i0, c0)
 #impltmp
 <>(*tmp*)
 strn_vt_tabulate_cfr
-{n}
-(n0, f0) =
+{n:i0}(n0, f0) =
 (
 strn_vt_tabulate<n>(n0)
 ) where

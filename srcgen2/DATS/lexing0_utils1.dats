@@ -481,7 +481,8 @@ gobj_lexing$getc1<obj>(buf)
 val cc0 = char_make_code(ci0)
 (*
 val () =
-println("f0_IDFST: loop: cc0 = ", cc0)
+prerrln
+("f0_IDFST: loop: cc0 = ", cc0)
 *)
 //
 in//let
@@ -521,7 +522,7 @@ val cc1 = char_make_code(ci1)
 //
 (*
 val () =
-println
+prerrln
 ("f0_SYDLR: loop: cc0 = ", cc0)
 *)
 //
@@ -594,7 +595,8 @@ val cc1 = char_make_code(ci1)
 //
 (*
 val () =
-println("f0_SYSRP: loop: cc0 = ", cc0)
+prerrln
+("f0_SYSRP: loop: cc0 = ", cc0)
 *)
 //
 in//let
@@ -639,7 +641,8 @@ val cc0 = char_make_code(ci0)
 //
 (*
 val () =
-println("f0_IDSYM: loop: cc0 = ", cc0)
+prerrln
+("f0_IDSYM: loop: cc0 = ", cc0)
 *)
 //
 in//let
@@ -755,7 +758,8 @@ val cc0 = char_make_code(ci0)
 //
 (*
 val () =
-prerrln("f0_SQUOTE: loop30: cc0 = ", cc0)
+prerrln
+("f0_SQUOTE: loop30: cc0 = ", cc0)
 *)
 //
 in//let
@@ -857,7 +861,9 @@ val cc0 = char_make_code(ci0)
 //
 (*
 val () =
-println("f0_DQUOTE: ci0 = ", ci0)
+prerrln("f0_DQUOTE: ci0 = ", ci0)
+val () =
+prerrln("f0_DQUOTE: cc0 = ", cc0)
 *)
 //
 in//let
@@ -874,7 +880,8 @@ _ when cc0 = '\"' =>
     T_STRN1_clsd(strn(ccs), len)
   end
 )
-| _ when cc0 = '\\' =>
+|
+_ when cc0 = '\\' =>
 (
 (*
 // HX-2022-06-13:

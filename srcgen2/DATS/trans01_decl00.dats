@@ -116,6 +116,88 @@ _(*TRANS01*) = "./trans01.dats"
 #symload lctn with d0arg_get_lctn
 #symload node with d0arg_get_node
 (* ****** ****** *)
+(*
+fun
+xstrunqtize
+( src0
+: strn, ln: sint): strn =
+let
+(*
+val ln =
+strn_length(src0)
+*)
+in//let
+strn_tabulate_cfr
+( ln-2
+, lam i0 => src0[i0+1]
+) end//let//[xstrunqtize(src0,ln)]
+*)
+(* ****** ****** *)
+//
+fun
+xstrunqtize
+( src0
+: strn, ln: sint): strn =
+let
+//
+val n0 = ln - 1
+//
+#vwtpdef
+chrs = list_vt(char)
+//
+fun
+loop
+(i0: sint, cs: chrs): strn =
+if
+(i0 < n0)
+then
+let
+val c0 = src0[i0]
+in//let
+//
+case+ 0 of
+//
+|
+_ when (c0 = '\\') =>
+let
+val i1 = i0 + 1
+val c1 = src0[i1]
+val ch =
+(
+case+ 0 of
+| _ when c1 = 'n' => '\n'
+| _ when c1 = 'r' => '\r'
+| _ when c1 = 't' => '\t'
+| _ when c1 = 'b' => '\b'
+| _ when c1 = 'f' => '\f'
+| _ when c1 = 'v' => '\v'
+| _ (* otherwise *) => c1): char
+//
+in//let
+if
+(ch = '\n')
+then
+loop
+(i1 + 1, cs) // skipped
+else
+loop
+(i1 + 1, list_vt_cons(ch, cs))
+end // end of [_ when(c0 = '\\')]
+//
+| _(* otherwise *) => 
+(
+loop
+(i0 + 1, list_vt_cons(c0, cs)) )
+//
+end else // end of [then]
+strn_make_llist(list_vt_reverse0(cs))
+//
+in//let
+(
+  loop(1(*i0*), list_vt_nil((*void*))))
+end (*let*) // end of [xstrunqtize(...)]
+//
+(* ****** ****** *)
 //
 #implfun
 trans01_q0arg
@@ -1260,29 +1342,16 @@ end (*let*) // end of [f0_symload(tenv,d0cl)]
 (* ****** ****** *)
 
 local
-
+//
 (* ****** ****** *)
 fun
-xstrunqtize
-( src0
-: strn, ln: sint): strn =
-let
-(*
-val ln =
-strn_length(src0)
-*)
-in//let
-strn_tabulate_cfr
-( ln-2
-, lam i0 => src0[i0+1]
-) end//let//[xstrunqtize(src0,ln)]
-(* ****** ****** *)
+xstrnormize
+(base: strn): strn = base
 fun
-xstrnormize(base: strn): strn = base
-fun
-xstrevalize(base: strn): strn = base
+xstrevalize
+(base: strn): strn = base
 (* ****** ****** *)
-
+//
 fun
 f0_g1e1
 (g1e1: g1exp): fnameopt =
@@ -1295,8 +1364,10 @@ prerrln
 in
 case+
 g1e1.node() of
-|G1Estr _ => f1_gstr(g1e1)
-|_(*non-G1Estr*) => optn_nil()
+|
+G1Estr _ => f1_gstr(g1e1)
+|
+_(*non-G1Estr*) => optn_nil()
 endlet // end of [f0_g1e1(g1e1)]
 //
 and
@@ -1419,29 +1490,16 @@ end (*local*) // end of [f0_include(tenv,d0cl)]
 (* ****** ****** *)
 
 local
-
+//
 (* ****** ****** *)
 fun
-xstrunqtize
-( src0
-: strn, ln: sint): strn =
-let
-(*
-val ln =
-strn_length(src0)
-*)
-in//let
-strn_tabulate_cfr
-( ln-2
-, lam i0 => src0[i0+1]
-) end//let//[xstrunqtize(src0,ln)]
-(* ****** ****** *)
+xstrnormize
+(base: strn): strn = base
 fun
-xstrnormize(base: strn): strn = base
-fun
-xstrevalize(base: strn): strn = base
+xstrevalize
+(base: strn): strn = base
 (* ****** ****** *)
-
+//
 fun
 f0_g1e1
 (g1e1: g1exp): fnameopt =
@@ -1527,7 +1585,8 @@ D0Cstaload
 , tknd, g0e1) = d0cl.node()
 //
 val g1e1 =
-  trans01_g0exp(tenv, g0e1)
+(
+  trans01_g0exp(tenv, g0e1))
 //
 in//let
 //
