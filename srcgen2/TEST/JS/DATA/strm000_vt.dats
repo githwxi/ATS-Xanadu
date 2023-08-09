@@ -6,11 +6,12 @@
 #abstbox box_tx
 #typedef box = box_tx
 (* ****** ****** *)
+#staload
+"prelude\
+/SATS/VT/gseq000_vt.sats"
+(* ****** ****** *)
 #staload UN =
 "prelude/SATS/unsafex.sats"
-(* ****** ****** *)
-#staload
-"prelude/SATS/VT/gseq000_vt.sats"
 (* ****** ****** *)
 //
 (*
