@@ -37,29 +37,56 @@
 //
 (* ****** ****** *)
 //
+(*
+HX:
+these are functions
+instead of constructors
+*)
+//
 fun<>
-optn_vt_nilq
-{a:vt}{n:b0}
-(xs: !optn_vt(a, n)): bool(n=ff)
-fun<>
-optn_vt_consq
-{a:vt}{n:b0}
-(xs: !optn_vt(a, n)): bool(n=tt)
+optn_vt_nil_
+{a:vt}(): optn_vt(a, ff)
+fun
+<a:vt>
+optn_vt_cons_
+( x0 : a ): optn_vt(a, tt)
 //
 (* ****** ****** *)
-
+//
+fun
+<a:vt>
+optn_vt_sing(x:a): optn_vt(a,1)
+//
+(* ****** ****** *)
+//
 fun
 <a:vt>
 optn_vt_free(~optn_vt(a)): void
-
+//
 (* ****** ****** *)
-
+//
 fun
 <a:vt>
 optn_vt_copy
 {n:b0}
 (xs: !optn_vt(a,n)): optn_vt(a,n)
-
+fun
+<a:vt>
+optn_vt_rcopy
+{n:b0}
+(xs: !optn_vt(a,n)): optn_vt(a,n)
+//
+(* ****** ****** *)
+//
+fun<>
+optn_vt_nilq1
+{a:vt}{n:b0}
+(xs: !optn_vt(a, n)): bool(n=ff)
+fun<>
+optn_vt_consq1
+{a:vt}{n:b0}
+(xs: !optn_vt(a, n)): bool(n=tt)
+//
 (* ****** ****** *)
 //
 fun
@@ -157,14 +184,16 @@ some_vt with optn_vt_cons
 //
 (* ****** ****** *)
 //
+(*
 #symload
-nilq with optn_vt_nilq of 1000
+nilq with optn_vt_nilq1 of 1000
 #symload
-eqzq with optn_vt_nilq of 1000
+consq with optn_vt_consq1 of 1000
+*)
 #symload
-consq with optn_vt_consq of 1000
+nilq1 with optn_vt_nilq1 of 1000
 #symload
-neqzq with optn_vt_consq of 1000
+consq1 with optn_vt_consq1 of 1000
 //
 (* ****** ****** *)
 //

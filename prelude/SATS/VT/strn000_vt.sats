@@ -138,6 +138,15 @@ strn_vt_cons
 , cs: strn_vt(n)): strn_vt(n+1)
 //
 (* ****** ****** *)
+fun<>
+strn_vt_nilq1
+  {n:int}
+( cs: !strn_vt(n)): bool(n = 0)
+fun<>
+strn_vt_consq1
+  {n:int}
+( cs: !strn_vt(n)): bool(n > 0)
+(* ****** ****** *)
 //
 fun<>
 strn_vt_print0(~strn_vt): void
@@ -394,15 +403,15 @@ symbol overloading for strn_vt
 //
 (* ****** ****** *)
 #symload
-strn_vt with strn_copy_vt
+strn_vt with strn_vt_copy
 #symload
-strn_vt with strn_make_list
+strn_vt with strn_vt_make_list
 #symload
-strn_vt with strn_make_llist
+strn_vt with strn_vt_make_llist
 #symload
-strn_vt with strn_make_strm
+strn_vt with strn_vt_make_strm
 #symload
-strn_vt with strn_make_lstrm
+strn_vt with strn_vt_make_lstrm
 (* ****** ****** *)
 //
 #symload
@@ -423,13 +432,16 @@ set_at with strtmp_vt_set_at of 1000
 //
 (*
 #symload
-print with strn_vt_print1 of 1000
-#symload
 print0 with strn_vt_print0 of 1000
 #symload
 print1 with strn_vt_print1 of 1000
 *)
 //
+(* ****** ****** *)
+#symload
+nilq1 with strn_vt_nilq1 of 1000
+#symload
+consq1 with strn_vt_consq1 of 1000
 (* ****** ****** *)
 //
 (*

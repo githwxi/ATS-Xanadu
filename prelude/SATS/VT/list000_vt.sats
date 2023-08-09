@@ -91,36 +91,6 @@ list_vt_pair(a, a): list_vt(a,2)
 //
 fun
 <a:vt>
-list_vt_make_nval
-{n:nat}
-(n0: int(n), x0: a): list_vt(a,n)
-//
-(* ****** ****** *)
-//
-fun
-<a:t0>
-list_vt_make_strm
-(  xs: strm(a)  ) : list_vt(a)
-fun
-<a:vt>
-list_vt_make_lstrm
-(  xs: strm_vt(a)  ) : list_vt(a)
-//
-(* ****** ****** *)
-//
-fun<>
-list_vt_nilq
-{a:vt}{n:int}
-(xs: !list_vt(a, n)): bool(n = 0)
-fun<>
-list_vt_consq
-{a:vt}{n:int}
-(xs: !list_vt(a, n)): bool(n > 0)
-//
-(* ****** ****** *)
-//
-fun
-<a:vt>
 list_vt_free(xs: ~list_vt(a)): void
 //
 (* ****** ****** *)
@@ -138,16 +108,44 @@ list_vt_rcopy
 //
 (* ****** ****** *)
 //
+fun<>
+list_vt_nilq1
+{a:vt}{n:int}
+(xs: !list_vt(a, n)): bool(n = 0)
+fun<>
+list_vt_consq1
+{a:vt}{n:int}
+(xs: !list_vt(a, n)): bool(n > 0)
+//
+(* ****** ****** *)
+//
 fun
 <a:vt>
 list_vt_length0
-{n:int}
-(xs: ~list_vt(a, n)): sint(n)
+{n:int}( ~list_vt(a, n)): sint(n)
 fun
 <a:vt>
 list_vt_length1
-{n:int}
-(xs: !list_vt(a, n)): sint(n)
+{n:int}( !list_vt(a, n)): sint(n)
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+list_vt_make_nval
+{n:nat}
+(n0: sint(n), x0: a): list_vt(a,n)
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+list_vt_make_strm
+(  xs : strm(a)  ) : list_vt(a)
+fun
+<a:vt>
+list_vt_make_lstrm
+(  xs : strm_vt(a)  ) : list_vt(a)
 //
 (* ****** ****** *)
 //
@@ -339,16 +337,17 @@ cons_vt with list_vt_cons
 
 (* ****** ****** *)
 //
-#symload
-nilq with list_vt_nilq of 1000
-#symload
-consq with list_vt_consq of 1000
 (*
 #symload
-nilq1 with list_vt_nilq of 1000
+nilq with list_vt_nilq1 of 1000
 #symload
-consq1 with list_vt_consq of 1000
+consq with list_vt_consq1 of 1000
 *)
+//
+#symload
+nilq1 with list_vt_nilq1 of 1000
+#symload
+consq1 with list_vt_consq1 of 1000
 //
 (* ****** ****** *)
 //
