@@ -2315,25 +2315,19 @@ glseq_strmize0
 glseq_strmize0
 <strx_vt(x0)><x0> = strx_vt_strmize<x0>
 //
-#impltmp
-{x0:vt}
-glseq_rlistize0
-<strm_vt(x0)><x0> = strm_vt_rlistize<x0>
-//
 (* ****** ****** *)
-//
-#impltmp
-{x0:t0}
-glseq_unstrm_vt
-<list(x0)><x0>
-  (   xs   ) =
-(
-  list_vt2t(strm_vt_listize<x0>(xs)) )
 //
 #impltmp
 {x0:vt}
 glseq_unstrm_vt
 <list_vt(x0)><x0> = strm_vt_listize<x0>
+//
+(* ****** ****** *)
+//
+#impltmp
+{x0:vt}
+glseq_rlistize0
+<strm_vt(x0)><x0> = strm_vt_rlistize<x0>
 //
 (* ****** ****** *)
 //

@@ -1622,9 +1622,10 @@ end where
 //
 in//let
 //
-  strm_vt_listize<token>(auxmain0(tks))
+(
+  strm_vt_listize0<token>(auxmain0(tks)) )
 //
-end (*let*) // end of [lexing_preping_all]
+end (*let*) // end of [lexing_preping_all(...)]
 
 (* ****** ****** *)
 

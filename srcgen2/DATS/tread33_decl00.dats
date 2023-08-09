@@ -235,9 +235,6 @@ endlet // end of [  _(* otherwise *)  ]
 ) where// end of [ case+(d3cl.node()) ]
 {
 (* ****** ****** *)
-val (  ) =
-prerrln("tread33_d3ecl: d3cl = ", d3cl)
-(* ****** ****** *)
 //
 fun
 f0_local0
@@ -411,6 +408,11 @@ d3ecl_implmnt0_errck
 end (*let*) // end of [f0_implmnt0(dcl,err)]
 //
 (* ****** ****** *)
+//
+(*
+val
+( ) = prerrln("tread33_d3ecl: d3cl = ", d3cl)
+*)
 //
 (* ****** ****** *)
 } (*where*) // end of [tread33_d3ecl(d3cl,err)]

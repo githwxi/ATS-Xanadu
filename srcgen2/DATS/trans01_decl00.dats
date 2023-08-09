@@ -475,13 +475,13 @@ end where
 trans01_d0ecl
 ( tenv,d0cl ) = let
 //
-// (*
+(*
 val
 loc0 = d0cl.lctn()
 val () =
 prerrln
 ("trans01_decl: d0cl = ", d0cl)
-// *)
+*)
 //
 in//let
 //
@@ -787,14 +787,10 @@ tr01env_search_opt(tenv, sym)
 val pval =
 (
 case+ fopt of
-| ~
-optn_vt_cons(fxty) =>
-(
-prcdv_decode(fixty_prcdv(fxty))
-)
 //
 | ~
-optn_vt_nil((*nil*)) => 0 where
+optn_vt_nil
+((* nil *)) => 0 where
 {
 val () =
 let
@@ -804,10 +800,14 @@ prerr
 ("TRANS01-WARN1:", tok.lctn());
 prerrln
 (":[",nam,"] is a non-operator!")
-endlet // end-of-[ val () ]
+end (*let*)//end-of-[ val (...) ]
 } (*where*)//end-of-(optn_vt_nil())
-)
-//
+| ~
+optn_vt_cons
+(   fxty   ) =>
+(
+  prcdv_decode(fixty_prcdv(fxty))) )
+//(*case+*)//end-of-[val(pval)]
 } (*where*)//end-of-[PMODsome(_,_,_)]
 ) (*case+*)//end-of-[h1precopt(tenv,popt)]
 //
@@ -1427,12 +1427,14 @@ case+ opt0 of
 |optn_cons(fnm0) =>
  fsrch_combined(fnm0)): fpathopt
 //
+(*
 val (  ) =
 prerrln("f0_include: g1e1 = ", g1e1)
 val (  ) =
 prerrln("f0_include: opt0 = ", opt0)
 val (  ) =
 prerrln("f0_include: opt1 = ", opt1)
+*)
 //
 val dopt =
 (
@@ -1477,11 +1479,11 @@ end where
 //
 val loc0 = d0cl.lctn()
 //
-// (*
+(*
 val () =
 prerrln
 ("trans01_d0ecl: f0_include: d0cl = ", d0cl)
-// *)
+*)
 //
 } (*where*) // end of [f0_include(tenv,d0cl)]
 
@@ -1602,12 +1604,14 @@ case+ opt0 of
 |optn_cons(fnm0) =>
  fsrch_combined(fnm0)): fpathopt
 //
+(*
 val (  ) =
 prerrln("f0_staload: g1e1 = ", g1e1)
 val (  ) =
 prerrln("f0_staload: opt0 = ", opt0)
 val (  ) =
 prerrln("f0_staload: opt1 = ", opt1)
+*)
 //
 val dopt =
 (
@@ -1662,8 +1666,10 @@ end where
 //
 val loc0 = d0cl.lctn()
 //
+(*
 val () = prerrln
 ("trans01_d0ecl: f0_dyninit: d0cl = ", d0cl)
+*)
 //
 } (*where*) // end of [f0_dyninit(tenv,d0cl)]
 
@@ -1821,14 +1827,18 @@ val body =
 //
 in//let
 d1ecl_make_node
-( loc0
-, D1Cimplmnt0
-  (tknd,sqas,tqas,dqid,tias,f1as,sres,body))
+(
+loc0,
+D1Cimplmnt0
+(tknd,sqas,tqas,dqid,tias,f1as,sres,body))
 end where // end-of-let
 {
 //
-  val
-  ( ) = prerrln("f0_implmnt0: d0cl = ", d0cl)
+(*
+  val () =
+  (
+    prerrln("f0_implmnt0: d0cl = ", d0cl))
+*)
 //
 } (*where*) // end of [f0_implmnt0(tenv,d0cl)]
 
