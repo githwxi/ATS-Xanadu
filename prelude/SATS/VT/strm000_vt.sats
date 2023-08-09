@@ -172,30 +172,31 @@ strx_vt_from$next(x0) = g_succ(x0)
 //
 fun
 <a:vt>
-strm_vt_length(strm_vt(a)): nint
+strm_vt_length0
+(xs: ~strm_vt(a)): ( nint )
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-strm_vt_listize
-(xs: strm_vt(a)): list_vt(a)
+strm_vt_listize0
+(xs: ~strm_vt(a)): list_vt(a)
 fun
 <a:vt>
-strm_vt_strmize
-(xs: strm_vt(a)): strm_vt(a)
+strm_vt_strmize0
+(xs: ~strm_vt(a)): strm_vt(a)
 //
 fun
 <a:vt>
-strm_vt_rlistize
-(xs: strm_vt(a)): list_vt(a)
+strm_vt_rlistize0
+(xs: ~strm_vt(a)): list_vt(a)
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-strx_vt_strmize
-(xs: strx_vt(a)): strm_vt(a)
+strx_vt_strmize0
+(xs: ~strx_vt(a)): strm_vt(a)
 //
 (* ****** ****** *)
 //
@@ -212,18 +213,18 @@ strm_vt_range_lte
 //
 fun
 <a:vt>
-strm_vt_extend
-(xs: strm_vt(a), x0: a): strm_vt(a)
+strm_vt_extend0
+(xs: ~strm_vt(a), x0: a): strm_vt(a)
 fun
 <a:vt>
-strm_vt_append
-(strm_vt(a), strm_vt(a)): strm_vt(a)
+strm_vt_append0
+(~strm_vt(a), ~strm_vt(a)): strm_vt(a)
 (* ****** ****** *)
 //
 fun
 <a:vt>
-strm_vt_concat
-(xss: strm_vt(strm_vt(a))): strm_vt(a)
+strm_vt_concat0
+(xss: ~strm_vt(strm_vt(a))): strm_vt(a)
 //
 (* ****** ****** *)
 //
@@ -232,14 +233,14 @@ strm_vt_concat
 //
 fun
 <a:vt>
-strm_vt_prefixq
-( xs1: strm_vt(a)
-, xs2: strm_vt(a)): bool//endfun
+strm_vt_prefixq0
+( xs1: ~strm_vt(a)
+, xs2: ~strm_vt(a)): bool//endfun
 //
 (* ****** ****** *)
 fun
 <x0:vt>
-strm_vt_fset_at
+strm_vt_fset0_at
 ( xs: strm_vt(x0)
 , i0: nint, x0: x0): strm_vt(x0)
 (* ****** ****** *)
@@ -247,19 +248,21 @@ strm_vt_fset_at
 fun
 <xs:vt>
 <x0:vt>
-strm_vt_gappend
-  (xs1: xs, xs2: xs): strm_vt(x0)
+strm_vt_gappend0
+(xs1: ~xs, xs2: ~xs): strm_vt(x0)
+//
 fun
 <xs:vt>
 <x0:vt>
-strm_vt_gconcat
-  (xss: strm_vt(xs)): strm_vt(x0)
+strm_vt_gconcat0
+  (xss: ~strm_vt(xs)): strm_vt(x0)
 //
 (* ****** ****** *)
 //
 fun
 <x0:vt>
-strm_vt_sortedq(strm_vt(x0)): bool
+strm_vt_sortedq0
+  (xs: ~strm_vt(x0)): bool//end-fun
 //
 (* ****** ****** *)
 //
@@ -610,23 +613,7 @@ cons_vt with strmcon_vt_cons
 (* ****** ****** *)
 //
 #symload
-length with strm_vt_length of 1000
-#symload
-length0 with strm_vt_length of 1000
-//
-(* ****** ****** *)
-//
-(*
-#symload extend with strm_vt_extend of 1000
-#symload append with strm_vt_append of 1000
-#symload concat with strm_vt_concat of 1000
-*)
-//
-(* ****** ****** *)
-#symload
-length with strm_vt_length of 1000
-#symload
-length0 with strm_vt_length of 1000
+length0 with strm_vt_length0 of 1000
 (* ****** ****** *)
 #symload
 extend with strm_vt_extend of 1000
