@@ -3,6 +3,12 @@
 #infixr -> of 10
 *)
 (* ****** ****** *)
+val abc0 = "ABC"
+val abc1 = "ABC\n"
+val abc2 = "A\nB\nC\n"
+(* ****** ****** *)
+////
+(* ****** ****** *)
 (*
 val x1 = 1
 and y2 = 2
