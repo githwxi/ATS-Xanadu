@@ -65,7 +65,7 @@ local
 datavwtp
 tr3aenv =
 TR3AENV of
-(stkmap(s2varlst))
+(stkmap(d2eclist))
 #absimpl tr3aenv_vtbx = tr3aenv
 
 in//local
