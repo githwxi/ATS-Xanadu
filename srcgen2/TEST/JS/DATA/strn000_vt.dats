@@ -427,7 +427,7 @@ strn_vt_make_strm
 let
 val cs =
 strm_listize(cs)
-in
+in//let
   strn_vt_make_llist<>(cs)
 end(*let*)//end-of-[strn_vt_make_strm]
 //
@@ -437,8 +437,8 @@ strn_vt_make_lstrm
   (cs) =
 let
 val cs =
-strm_vt_listize(cs)
-in
+strm_vt_listize0(cs)
+in//let
   strn_vt_make_llist<>(cs)
 end(*let*)//end-of-[strn_vt_make_lstrm]
 //
@@ -449,7 +449,7 @@ end(*let*)//end-of-[strn_vt_make_lstrm]
 strntrm_vt_concat
 ( css ) =
 strn_vt_make_lstrm<>
-(strm_vt_gconcat<strn><cgtz>(css))
+(strm_vt_gconcat0<strn><cgtz>(css))
 #impltmp
 <>(*tmp*)
 strnlst_vt_concat(css) =

@@ -38,67 +38,6 @@ list_vt_cons(x1, list_vt_nil()))
 //
 (* ****** ****** *)
 
-#impltmp
-<a>(*tmp*)
-list_vt_make_nval
-  (n0, x0) = let
-//
-fnx
-loop{i:nat}.<i>.
-( i0
-: int(i)
-, r0
-: &(?list_vt(a)) >> list_vt(a, i)
-) : void =
-if
-(i0 = 0)
-then
-(r0 := list_vt_nil())
-else let
-  val x1 = g_copy<a>(x0)
-  val () =
-  (r0 := list_vt_cons(x1, _))
-in
-  loop(pred(i0), r0.1); $fold(r0)
-end // end of [else]
-//
-in
-let
-var r0: list_vt(a) in loop(n0, r0); r0
-end
-end (* end of [list_vt_make_nval] *)
-
-(* ****** ****** *)
-
-#impltmp
-<a>(*tmp*)
-list_vt_make_strm = strm_listize<a>
-#impltmp
-<a>(*tmp*)
-list_vt_make_lstrm = strm_vt_listize<a>
-
-(* ****** ****** *)
-//
-#impltmp
-<>(*tmp*)
-list_vt_nilq
-  (xs) =
-(
-case+ xs of
-| !list_vt_nil() => true
-| !list_vt_cons(_, _) => false
-)
-#impltmp
-<>(*tmp*)
-list_vt_consq
-  (xs) =
-(
-case+ xs of
-| !list_vt_nil() => false
-| !list_vt_cons(_, _) => (true)
-)
-//
-(* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
@@ -165,7 +104,27 @@ list_vt_rcopy(xs) =
 list_vt_rappend10<a>(xs, list_vt_nil())
 
 (* ****** ****** *)
-
+//
+#impltmp
+<>(*tmp*)
+list_vt_nilq1
+  (xs) =
+(
+case+ xs of
+| !list_vt_nil() => true
+| !list_vt_cons(_, _) => false)
+//
+#impltmp
+<>(*tmp*)
+list_vt_consq1
+  (xs) =
+(
+case+ xs of
+| !list_vt_nil() => false
+| !list_vt_cons(_, _) => (true))
+//
+(* ****** ****** *)
+//
 #impltmp
 <a>(*tmp*)
 list_vt_length1
@@ -187,6 +146,48 @@ list_vt_nil() => ln
 list_vt_cons(_, xs) => loop(xs, ln+1)
 )
 } (*where*) // end of [length_vt_length1]
+//
+(* ****** ****** *)
+
+#impltmp
+<a>(*tmp*)
+list_vt_make_nval
+  (n0, x0) = let
+//
+fnx
+loop{i:nat}.<i>.
+( i0
+: int(i)
+, r0
+: &(?list_vt(a)) >> list_vt(a, i)
+) : void =
+if
+(i0 = 0)
+then
+(r0 := list_vt_nil())
+else let
+  val x1 = g_copy<a>(x0)
+  val () =
+  (r0 := list_vt_cons(x1, _))
+in
+(
+  loop(pred(i0), r0.1); $fold(r0) )
+end // end of [else]
+//
+in
+let
+var r0: list_vt(a) in loop(n0, r0); r0
+end
+end (* end of [list_vt_make_nval] *)
+
+(* ****** ****** *)
+
+#impltmp
+<a>(*tmp*)
+list_vt_make_strm = strm_listize<a>
+#impltmp
+<a>(*tmp*)
+list_vt_make_lstrm = strm_vt_listize0<a>
 
 (* ****** ****** *)
 //
@@ -196,8 +197,10 @@ list_vt_extend0
   (xs, x0) =
 let
 val ys =
-list_vt_sing<a>(x0) in
-list_vt_append0<a>(xs, ys)
+list_vt_sing<a>(x0)
+in//let
+(
+  list_vt_append0<a>(xs, ys) )
 end (*let*)//end-of-(list_vt_extend0(xs))
 //
 (* ****** ****** *)
@@ -788,15 +791,15 @@ auxmain1
 ( xs: xs(n)
 , n0: int(n))
 : strm_vt(xs(n)) =
+(
 if
 n0 >= 2
 then let
 val
 ys = list_vt_nil()
-in
+in//let
 auxmain2(xs, ys, n0, 0)
-end
-else strm_vt_sing( xs )
+end else strm_vt_sing(xs))
 //
 and
 auxmain2
@@ -851,7 +854,7 @@ let
   res2 =
   auxmain2(xs, ys, i0-1, j0+1)
 in//let
-  !(strm_vt_append(res1, res2)) end
+  !(strm_vt_append0(res1, res2)) end
 end//let
 ) (*case+*) // end of [auxmain2(...)]
 //
@@ -949,11 +952,11 @@ For implementing glseq-ops
 #impltmp
 {a:vt}
 glseq_nilq1
-<list_vt(a)><a> = list_vt_nilq{a}
+<list_vt(a)><a> = list_vt_nilq1{a}
 #impltmp
 {a:vt}
 glseq_consq1
-<list_vt(a)><a> = list_vt_consq{a}
+<list_vt(a)><a> = list_vt_consq1{a}
 //
 (* ****** ****** *)
 //

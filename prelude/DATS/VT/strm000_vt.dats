@@ -1831,7 +1831,7 @@ end // end of [strxcon_vt_cons]
 
 #impltmp
 <a>(*tmp*)
-strm_vt_istrmize
+strm_vt_istrmize0
   (xs) =
 (
 auxmain(0, xs)) where
@@ -1856,13 +1856,13 @@ strmcon_vt_cons
   strmcon_vt_cons
   ( (i0, x0), auxmain(i0+1, xs) )
 ) (* end of [auxmain] *)
-} (*where*)//end-of(strx_vt_istrmize(xs))
+} (*where*)//end-of(strx_vt_istrmize0(xs))
 
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-strx_vt_istrmize
+strx_vt_istrmize0
   (xs) =
 (
 auxmain(0, xs)) where
@@ -1884,7 +1884,7 @@ strxcon_vt_cons
   strmcon_vt_cons
   ( (i0, x0), auxmain(i0+1, xs) )
 ) (* end of [auxmain] *)
-} (*where*)//end-of(strx_vt_istrmize(xs))
+} (*where*)//end-of(strx_vt_istrmize0(xs))
 
 (* ****** ****** *)
 //
@@ -2085,14 +2085,14 @@ endlet // strmcon_vt_cons(y0,ys)
 //
 #impltmp
 <x0,y0>
-strm_vt_z2strmize
+strm_vt_z2strmize0
 ( xs, ys ) =
 strm_vt_z2map0(xs, ys) where
 {
 #vwtpdef z0 = @(x0, y0)
 #impltmp
 z2map0$fopr<x0,y0><z0>(x0, y0) = (x0, y0)
-}(*where*)//end-of-(strm_vt_z2strmize(xs,ys))
+}(*where*)//end-of-(strm_vt_z2strmize0(xs,ys))
 //
 (* ****** ****** *)
 
