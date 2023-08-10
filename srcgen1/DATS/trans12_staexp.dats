@@ -1925,9 +1925,28 @@ S1Elams
 ( smas
 , tres, s1e1) = s1e0.node()
 //
-val svss =
-  trans12_smarglst(smas)
-val s2e1 = trans12_sexp(s1e1)
+val (pf0|()) =
+the_sexpenv_pushnil()
+//
+val
+svss =
+trans12_smarglst(smas)
+//
+val
+s2e1 =
+(
+case+ tres of
+|None() =>
+trans12_sexp(s1e1)
+|Some(s1t1) =>
+let
+val s2t1 =
+trans12_sort(s1t1) in//let
+trans12_sexp_ck(s1e1, s2t1) end
+)
+//
+val ((*void*)) =
+  the_sexpenv_popfree(pf0|(*void*))
 //
 in//let
 (
