@@ -84,6 +84,9 @@ _(*?*) = "./lexing0_print0.dats"
 #symload lctn with d3ecl_get_lctn
 #symload node with d3ecl_get_node
 (* ****** ****** *)
+#symload lctn with timpl_get_lctn
+#symload node with timpl_get_node
+(* ****** ****** *)
 
 #implfun
 d3pat_fprint
@@ -230,6 +233,11 @@ print("D3Evar(", d2v, ")")
 print("D3Econ(", d2c, ")")
 |D3Ecst(d2c) =>
 print("D3Ecst(", d2c, ")")
+//
+|
+D3Etimp
+(d2e1, timp) =>
+print("D3Etimp(",d2e1,";",timp,")")
 //
 |
 D3Esapp
