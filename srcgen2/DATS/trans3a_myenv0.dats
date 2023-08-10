@@ -57,7 +57,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trans3a.sats"
 (* ****** ****** *)
-#symload name with s2var_get_name
+#symload name with d2cst_get_name
 (* ****** ****** *)
 
 local
@@ -65,7 +65,7 @@ local
 datavwtp
 tr3aenv =
 TR3AENV of
-(stkmap(d2eclist))
+(stkmap(d3eclist))
 #absimpl tr3aenv_vtbx = tr3aenv
 
 in//local
@@ -102,6 +102,102 @@ stkmap_poptop0(stkmap)
 val (  ) =
 stkmap_free_nil(stkmap) in () end//let
 )(*case+*)//end-of-(tr3aenv_free_top(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3aenv_poplet0
+(     env0     ) = let
+//
+val+
+@TR3AENV(!stkmap) = env0
+//
+in//let
+//
+let
+val nerr =
+stkmap_poplet0(stkmap) in $fold(env0)
+end(*let*)
+//
+end(*let*)//end-of-(tr3aenv_poplet0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3aenv_pshlet0
+(     env0     ) = let
+//
+val+
+@TR3AENV(!stkmap) = env0
+//
+in//let
+//
+stkmap_pshlet0(stkmap); $fold(env0)
+//
+end(*let*)//end-of-(tr3aenv_pshlet0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3aenv_d2crch_opt
+  (env0, d2c0) = let
+//
+val k0 = d2c0.name()
+//
+val+
+TR3AENV(stkmap) = env0
+val opt1 =
+stkmap_search_opt(stkmap, k0)
+//
+(*
+val () =
+prerrln
+("tr3aenv_search_opt: k0 = ", k0)
+*)
+//
+in//let
+//
+(
+case+ opt1 of
+| ~ optn_vt_nil() => list_nil(*0*)
+| ~ optn_vt_cons(dcls) => (  dcls  ))
+//
+end(*let*)//end-of-(tr3aenv_d2crch_opt(...))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3aenv_d2cins_any
+(env0, d2c0, d3cl) = let
+//
+val dcls =
+(
+list_cons(d3cl, dcls)) where
+{
+val dcls =
+tr3aenv_d2crch_opt(env0, d2c0) }
+//
+in//let
+//
+let
+//
+val x0 = dcls//d3eclist
+val k0 = d2c0.name((*0*))
+//
+(*
+val () =
+prerrln
+("tr3aenv_d2cins_any: k0 = ", k0)
+val () =
+prerrln
+("tr3aenv_d2cins_any: x0 = ", x0)
+*)
+//
+val+
+@TR3AENV(!stkmap) = env0 in//let
+stkmap_insert_any(stkmap, k0, x0) end
+//
+endlet//end-of(tr3aenv_d2cins_any(env0,d2c0))
 //
 (* ****** ****** *)
 
