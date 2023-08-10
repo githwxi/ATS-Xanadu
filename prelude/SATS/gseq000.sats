@@ -6,16 +6,16 @@
 //
 (*
 //
-// HX-2020-02-26:
-// this idea is abandoned!!!
+(*
+HX-2020-02-26:
+this idea is abandoned!!!
+*)
 //
 #absprop
 gseq_prop
 (xs: t0, x0: t0)
-#propdef
-gseq
-( xs: t0
-, x0: t0) = gseq_prop(x0, xs)
+#sexpdef gseq = gseq_prop
+//
 *)
 //
 (* ****** ****** *)

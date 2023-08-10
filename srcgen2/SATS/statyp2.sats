@@ -184,7 +184,7 @@ T2Patx2 of // HX: knd: 0/1/-1:
 T2Papps of
 (s2typ(*fun*), s2typlst) // inst.
 |
-T2Plam0 of
+T2Plam1 of
 (s2varlst(*arg*), s2typ) // abst.
 //
 |

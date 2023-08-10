@@ -975,12 +975,12 @@ optn_nil() =>
 trans12_s1exp(env0, sdef)
 |
 optn_cons(s1t1) =>
-let
-val s2t1 =
-trans12_sort1(env0, s1t1)
-in//let
-trans12_s1exp_stck(env0,sdef,s2t1)
-endlet // end of [optn_cons]
+(
+trans12_s1exp_stck
+(env0 , sdef , s2t1)
+) where
+{ val s2t1 =
+  trans12_sort1(env0, s1t1) }
 ) : s2exp // end of [val(sdef)]
 //
 val
@@ -992,7 +992,8 @@ case+ tres of
 S2Tnone0() => sdef
 |
 _(*non-S2Tnone0*) =>
-s2exp_stck(loc0, sdef, tres)
+(
+  s2exp_stck(loc0,sdef,tres) )
 ) where
 {
 val tres = sexpdef_sort2(tknd)
@@ -1026,43 +1027,42 @@ list_cons(s2vs, svss) =>
 auxslam(sdef, svss)) where
 {
 val
-sdef = s2exp_lam0(s2vs, sdef)
+sdef = s2exp_lam1(s2vs, sdef)
 } (*where*) // end-(list_cons)
 ) (*case+*) // end-of-[auxslam]
 } (*where*) // end-of-[val(sdef)]
 //
 val () = tr12env_poplam0(env0)
 //
-val
-s2c1 = s2c1 where
+val s2c1 = s2c1 where
 {
 //
 val s2t2 = sdef.sort()
 val sid1 = sexpid_sym(tok1)
-val styp = s2exp_stpize(sdef)
+val tdef = s2exp_stpize(sdef)
 //
 val s2c1 =
 s2cst_make_idst(loc0, sid1, s2t2)
 //
 val (  ) = s2cst_set_sexp(s2c1,sdef)
-val (  ) = s2cst_set_styp(s2c1,styp)
+val (  ) = s2cst_set_styp(s2c1,tdef)
 //
-} (*where*) // end of [ val(s2c1) ]
-//
-(*
-val () =
+// (*
+val (  ) =
 prerrln("f0_sexpdef: s2c1 = ", s2c1)
-val () =
+val (  ) =
 prerrln("f0_sexpdef: sdef = ", sdef)
-val () =
-prerrln("f0_sexpdef: styp = ", styp)
-*)
+val (  ) =
+prerrln("f0_sexpdef: tdef = ", tdef)
+// *)
+//
+} (*where*) // end of [val(s2c1)=s2c1]
 //
 in//let
 //
+(
 d2ecl_make_node
-( loc0
-, D2Csexpdef(s2c1, sdef)) where
+(loc0, D2Csexpdef(s2c1, sdef))) where
 {
 val () = tr12env_add1_s2cst(env0, s2c1) }
 //
@@ -1322,10 +1322,13 @@ trans12_s1exp_stck
 |
 list_cons(s2vs, svss) =>
 let
+//
 val () = 
-tr12env_add0_s2varlst(env0, s2vs)
-in//let
-  s2exp_lam0(s2vs, s2e2) where
+tr12env_add0_s2varlst
+(   env0  ,  s2vs   ) in//let
+//
+(
+  s2exp_lam1(s2vs, s2e2) ) where
 { val
   s2e2 =
   f1_lams(env0, svss, tres, s1e2) }
@@ -1436,12 +1439,14 @@ in//let
 //
 if//if1
 list_singq(s2cs)
-then let // if1
+then
+let//if1
 val s2c1 = s2cs.head()
-in // let
+in(*let*)
 simpl
 (sqid.lctn(), SIMPLone1(s2c1))
-end else // if1
+end//then
+else//if1
 let
 val sopt =
 list_filter<x0>(s2cs) where
@@ -1453,12 +1458,14 @@ in//let
 //
 if//if2
 list_singq(sopt)
-then let // if2
+then
+let//if2
 val s2c1 = sopt.head()
-in // let
+in(*let*)
   simpl
   (sqid.lctn(), SIMPLone1(s2c1))
-end else // if2
+end//then
+else//if2
 (
   simpl
   ( sqid.lctn()

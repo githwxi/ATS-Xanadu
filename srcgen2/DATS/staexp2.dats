@@ -926,7 +926,7 @@ prerrln("s2exp_apps_pq: s2es = ", s2es)
 (* ****** ****** *)
 
 #implfun
-s2exp_lam0
+s2exp_lam1
 (s2vs, body) = let
 //
 val s2ts =
@@ -941,8 +941,8 @@ val s2t0 =
   S2Tfun1(s2ts, body.sort())
 //
 in
-  s2exp(s2t0, S2Elam0(s2vs, body))
-end (*let*)//end-of-[s2exp_lam0(s2vs,body)]
+  s2exp(s2t0, S2Elam1(s2vs, body))
+end (*let*)//end-of-[s2exp_lam1(s2vs,body)]
 
 (* ****** ****** *)
 //
@@ -963,7 +963,7 @@ case+ svss of
 list_nil() => body
 |
 list_cons(s2vs, svss) =>
-s2exp_lam0(s2vs, s2exp_lams(svss, body))
+s2exp_lam1(s2vs, s2exp_lams(svss, body))
 //
 end (*let*)//end-of-[s2exp_lams(svss,body)]
 //

@@ -604,9 +604,11 @@ S0Ercd2(tkb,opt,lses,lsrb) =>
 print("S0Ercd2(",tkb,";",opt,";",lses,";",lsrb,")")
 //
 |
-S0Elam0(tlam,s0ms,tres,arrw,body,tend) =>
+S0Elams
+(tlam
+,s0ms,tres,arrw,body,tend) =>
 (
-print("S0Elam0(",tlam,";");
+print("S0Elams(",tlam,";");
 print(s0ms,";",tres,";",arrw,";",body,";",tend,")"))
 //
 |

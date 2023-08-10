@@ -992,7 +992,7 @@ s0exp_node =
 | S0Eexists of
   (token, s0qualst, token) // existential
 //
-| S0Elam of
+| S0Elams of
   ( token, s0marglst
   , sort0opt, token, s0exp, tokenopt)
 //

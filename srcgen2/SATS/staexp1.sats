@@ -475,7 +475,7 @@ S1Er2cd of // HX: record2
 | S1Euni0 of (s1qualst)
 | S1Eexi0 of (token(*#*), s1qualst)
 //
-| S1Elam0 of
+| S1Elams of
   ( s1maglst
   , sort1opt(*tres*), s1exp(*body*))
 //

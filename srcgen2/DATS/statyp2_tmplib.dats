@@ -106,7 +106,7 @@ t2p0.node() of
 //
 |T2Pf2cl _ => t2p0
 //
-|T2Plam0 _ => t2p0
+|T2Plam1 _ => t2p0
 //
 |T2Pnone0 _ => t2p0
 |T2Pnone1 _ => t2p0
@@ -322,7 +322,7 @@ in//let
 case+
 t2f0.node() of
 |
-T2Plam0
+T2Plam1
 (s2vs, t2p1) =>
 let
 val
@@ -334,8 +334,8 @@ s2typ_substx
 (e1nv, t2p1, svts, flag)
 in//let
 s2typ_hnfizx(e1nv, tres, flag)
-end (*let*) // end of [T2Plam0]
-|_(*non-T2Plam0*) =>
+end (*let*) // end of [T2Plam1]
+|_(*non-T2Plam1*) =>
 if
 (flag <= fval)
 then t2p0 else

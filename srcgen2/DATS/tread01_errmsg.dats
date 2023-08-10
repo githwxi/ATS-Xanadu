@@ -337,7 +337,7 @@ S1Eexi0(tknd,s1qs) =>
 s1qualst_fpemsg(out, s1qs))
 //
 |
-S1Elam0
+S1Elams
 (smas, tres, s1e1) =>
 let
 val
@@ -348,7 +348,7 @@ val
 sort1opt_fpemsg(out, tres)
 val
 ( ) = s1exp_fpemsg(out, s1e1)
-endlet // end of [S1Elam0(...)]
+endlet // end of [S1Elams(...)]
 //
 |
 S1Eannot(s1e1,s1t2) =>

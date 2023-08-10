@@ -183,7 +183,7 @@ s2exp_make_node
 end (*let*) // end of [S2Eapps(...)]
 //
 |
-S2Elam0
+S2Elam1
 (s2vs, s2e1) =>
 let
 val fval = flag
@@ -194,8 +194,8 @@ if
 flag <= fval
 then s2e0 else
 s2exp_make_node
-(s2e0.sort(), S2Elam0(s2vs, s2e1))
-end (*let*) // end of [S2Elam0(...)]
+(s2e0.sort(), S2Elam1(s2vs, s2e1))
+end (*let*) // end of [S2Elam1(...)]
 //
 |
 S2Efun1

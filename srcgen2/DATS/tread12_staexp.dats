@@ -440,7 +440,7 @@ endlet // end of [s2exp_apps_errck(...)]
 (* ****** ****** *)
 //
 fun
-s2exp_lam0_errck
+s2exp_lam1_errck
 ( s2t0: sort2
 , s2vs: s2varlst
 , s2e1
@@ -448,8 +448,8 @@ s2exp_lam0_errck
 let
 val lvl0 = errvl(s2e1) in//let
 s2exp_errck
-(lvl0+1,s2exp(s2t0,S2Elam0(s2vs,s2e1)))
-endlet // end of [s2exp_lam0_errck(...)]
+(lvl0+1,s2exp(s2t0,S2Elam1(s2vs,s2e1)))
+endlet // end of [s2exp_lam1_errck(...)]
 //
 (* ****** ****** *)
 fun
@@ -601,7 +601,7 @@ s2e0.node() of
 |S2Eatx2 _ => f0_atx2(s2e0, err)
 //
 |S2Eapps _ => f0_apps(s2e0, err)
-|S2Elam0 _ => f0_lam0(s2e0, err)
+|S2Elam1 _ => f0_lam1(s2e0, err)
 //
 |S2Efun1 _ => f0_fun1(s2e0, err)
 //
@@ -818,7 +818,7 @@ end (*let*) // end of [ f0_apps(s2e,err) ]
 (* ****** ****** *)
 //
 fun
-f0_lam0
+f0_lam1
 (s2e: s2exp
 ,err: &sint >> _): s2exp =
 let
@@ -826,7 +826,7 @@ let
 val e00 = err
 //
 val-
-S2Elam0
+S2Elam1
 (s2vs, s2e1) = s2e.node()
 //
 val
@@ -838,9 +838,9 @@ if
 then (s2e) else
 let
 val s2t = s2e.sort() in
-s2exp_lam0_errck(s2t, s2vs, s2e1)
+s2exp_lam1_errck(s2t, s2vs, s2e1)
 end (*let*) // else // end-of-(if)
-end (*let*) // end of [ f0_lam0(s2e,err) ]
+end (*let*) // end of [ f0_lam1(s2e,err) ]
 //
 (* ****** ****** *)
 //

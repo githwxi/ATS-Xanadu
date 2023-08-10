@@ -544,9 +544,9 @@ print
 ("S1Er2cd(",tknd,";",lss1,";",lss2,")")
 //
 |
-S1Elam0(smas,tres,s1e1) =>
+S1Elams(smas,tres,s1e1) =>
 print
-("S1Elam0(",smas,";",tres,";",s1e1,")")
+("S1Elams(",smas,";",tres,";",s1e1,")")
 //
 |
 S1Euni0(s1qs) =>

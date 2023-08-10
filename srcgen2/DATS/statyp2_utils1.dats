@@ -315,7 +315,7 @@ s2typ_xtpck0(t2p1, xtp0)
 endlet // end-of-(T2Pxtv)
 //
 |
-T2Plam0
+T2Plam1
 (s2vs, t2p1) =>
 s2typ_xtpck0(t2p1, xtp0)
 |
@@ -448,11 +448,11 @@ val s2f0 = f0_impr(s2f0)
 val t2ps = s2explst_stpize(s2es) }
 //
 |
-S2Elam0
+S2Elam1
 (s2vs, s2e1) =>
 s2typ_make_node
 ( s2t0
-, T2Plam0(s2vs, f0_impr(s2e1)))
+, T2Plam1(s2vs, f0_impr(s2e1)))
 //
 |
 S2Efun1

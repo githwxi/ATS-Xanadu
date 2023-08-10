@@ -642,10 +642,10 @@ case+ x0.node() of
 | S1Eexists(k0, s1qs) =>
   fprint!(out, "S1Eexists(", k0, "; ", s1qs, ")")
 //
-| S1Elam(arg, res, s1e) =>
+| S1Elams(arg, res, s1e) =>
   fprint!
   ( out
-  , "S1Elam(", arg, "; ", res, "; ", s1e, ")")
+  , "S1Elams(", arg, "; ", res, "; ", s1e, ")")
 //
 | S1Eanno(s1e, s1t) =>
   fprint!(out, "S1Eanno(", s1e, "; ", s1t, ")")
