@@ -577,7 +577,7 @@ S2Extv of (x2s2e) // ext-variable
 |S2Eapps of
 ( s2exp(*fun*), s2explst(*arg*) )
 //
-|S2Elam0 of
+|S2Elam1 of
 ( s2varlst(*arg*), s2exp(*body*) )
 //
 |S2Efun1 of
@@ -695,7 +695,7 @@ s2exp_apps_pq//for post-processing
 //
 (* ****** ****** *)
 fun
-s2exp_lam0
+s2exp_lam1
 ( s2vs
 : s2varlst, s2e0: s2exp): s2exp
 fun

@@ -1989,7 +1989,7 @@ case+ tnd of
     err := e0;
     s0exp_make_node
     ( loc_res
-    , S0Elam
+    , S0Elams
       (tok, s0mas, anno, tok1, s0e0, tok2)
     )
   end // end of [T_LAM]

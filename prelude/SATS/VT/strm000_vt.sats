@@ -649,12 +649,6 @@ rlistize0 with strm_vt_rlistize0 of 1000
 #symload map0 with strm_vt_map0 of 1000
 #symload map0 with strx_vt_map0 of 1000
 (* ****** ****** *)
-#symload filter0 with strm_vt_filter0 of 1000
-#symload filter0 with strx_vt_filter0 of 1000
-(* ****** ****** *)
-#symload maprev0 with strm_vt_maprev0 of 1000
-#symload maprev0 with strx_vt_maprev0 of 1000
-(* ****** ****** *)
 #symload drop0 with strm_vt_drop0 of 1000
 #symload take0 with strm_vt_take0 of 1000
 (* ****** ****** *)
@@ -665,6 +659,9 @@ rlistize0 with strm_vt_rlistize0 of 1000
 #symload itakeif0 with strm_vt_itakeif0 of 1000
 (* ****** ****** *)
 #symload foldl0 with strm_vt_foldl0 of 1000
+(* ****** ****** *)
+#symload filter0 with strm_vt_filter0 of 1000
+#symload filter0 with strx_vt_filter0 of 1000
 (* ****** ****** *)
 #symload exists0 with strm_vt_exists0 of 1000
 #symload forall0 with strm_vt_forall0 of 1000

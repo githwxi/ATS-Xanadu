@@ -1379,7 +1379,7 @@ s1exp
 } (*where*) // end of [S0Eexi0(...)]
 //
 |
-S0Elam0
+S0Elams
 (tknd
 ,smas,tres
 ,teg1,s0e1,tend) =>
@@ -1399,7 +1399,7 @@ in//let
 FXITMatm
 (
 s1exp_make_node
-(loc0, S1Elam0(smas, tres, s1e1)))
+(loc0, S1Elams(smas, tres, s1e1)))
 end (*let*) // end of [S0Elam(...)]
 //
 |

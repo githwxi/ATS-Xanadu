@@ -55,13 +55,13 @@ optn_vt_cons_
 //
 fun
 <a:vt>
-optn_vt_sing(x:a): optn_vt(a,1)
+optn_vt_sing(x:a): optn_vt(a,tt)
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-optn_vt_free(~optn_vt(a)): void
+optn_vt_free(~optn_vt(a)):(void)
 //
 (* ****** ****** *)
 //

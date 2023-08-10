@@ -16,7 +16,7 @@ UN =
 <map>
 <key,itm>
 gmap_size(kxs) =
-strm_vt_length
+strm_vt_length0
 (gmap_strmize<map><key,itm>(kxs))
 (* ****** ****** *)
 //

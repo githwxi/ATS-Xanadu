@@ -901,7 +901,7 @@ s1exp_errck
 endlet // end of [s1exp_exi0_errck(...)]
 (* ****** ****** *)
 fun
-s1exp_lam0_errck
+s1exp_lams_errck
 ( loc
 : loc_t
 , smas
@@ -914,8 +914,8 @@ val lvl = gmax
 (errvl(tres), errvl(s1e1))
 in//let
 s1exp_errck
-(lvl,s1exp(loc,S1Elam0(smas,tres,s1e1)))
-endlet // end of [s1exp_lam0_errck(...)]
+(lvl,s1exp(loc,S1Elams(smas,tres,s1e1)))
+endlet // end of [s1exp_lams_errck(...)]
 (* ****** ****** *)
 fun
 s1exp_annot_errck
@@ -1026,8 +1026,8 @@ else s1exp_exi0_errck(loc0,tknd,s1qs)
 endlet // end of [ S1Eexi0(tknd,s1qs) ]
 //
 |
-S1Elam0 _ =>
-f0_lam0(s1e0, err)
+S1Elams _ =>
+f0_lams(s1e0, err)
 //
 |
 S1Eannot(s1e1,s1t2) =>
@@ -1318,7 +1318,7 @@ endlet // end of [ f0_r2cd(s1e,err) ]
 (* ****** ****** *)
 //
 fun
-f0_lam0
+f0_lams
 ( s1e: s1exp
 , err: &sint >> _): s1exp =
 let
@@ -1327,7 +1327,7 @@ val e00 = err
 val loc = s1e.lctn()
 //
 val-
-S1Elam0
+S1Elams
 ( smas
 , tres, s1e1) = s1e.node()
 //
@@ -1343,8 +1343,8 @@ in//let
 if
 (err=e00)
 then (s1e) else
-s1exp_lam0_errck(loc,smas,tres,s1e1)
-endlet // end of [ f0_lam0(s1e,err) ]
+s1exp_lams_errck(loc,smas,tres,s1e1)
+endlet // end of [ f0_lams(s1e,err) ]
 //
 (* ****** ****** *)
 (*

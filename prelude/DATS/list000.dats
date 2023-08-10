@@ -1002,7 +1002,7 @@ map0$fopr
   list_vt_cons(x0, xs))
 }
 in
-!(strm_vt_append<xs(n)>(res1, res2))
+!(strm_vt_append0<xs(n)>(res1,res2))
 endlet // end of [list_cons(x0, xs)]
 )
 }(*where*)//end-of-[list_subsetize_vt(xs)]
@@ -1364,27 +1364,26 @@ For gseqn-operations
 (* ****** ****** *)
 //
 #impltmp
-{a:t0}{n:i0}
-gseqn_nilq<list(a,n)><a><n> = list_nilq<>
+{a:t0}//tmp
+gseqn_nilq<listn(a)><a> = list_nilq<>
 #impltmp
-{a:t0}{n:i0}
-gseqn_consq<list(a,n)><a><n> = list_consq<>
+{a:t0}//tmp
+gseqn_consq<listn(a)><a> = list_consq<>
 //
 (* ****** ****** *)
 //
 #impltmp
-{a:t0}{n:i0}
-gseqn_head<list(a,n)><a><n> = list_head<a>
+{a:t0}//tmp
+gseqn_head<listn(a)><a> = list_head<a>
 #impltmp
-{a:t0}{n:i0}
-gseqn_tail
-<list(a,n)><a><n><list(a,n-1)> = list_tail<a>
+{a:t0}//tmp
+gseqn_tail<listn(a)><a> = list_tail<a>
 //
 (* ****** ****** *)
 //
 #impltmp
-{a:t0}{n:i0}
-gseqn_length<list(a,n)><a><n> = list_length<a>
+{a:t0}//tmp
+gseqn_length<listn(a)><a> = list_length<a>
 //
 (* ****** ****** *)
 

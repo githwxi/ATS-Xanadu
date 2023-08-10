@@ -2143,6 +2143,10 @@ s1e0.node() of
 | S1El1st _ => auxl1st(s1e0)
 | S1El2st _ => auxl2st(s1e0)
 //
+(*
+| S1Elams _ => auxlams(s1e0)
+*)
+//
 | S1Etrcd1
     (k0, _) => auxtrcd11(s1e0)
 | S1Etrcd1
@@ -2155,7 +2159,8 @@ s1e0.node() of
     (k0, _, _) => auxtrcd22(s1e0)
   // end of [S1Etrcd2]
 //
-| S1Eanno(s1e1, s1t2) =>
+| S1Eanno
+  (s1e1, s1t2) =>
   let
     val
     s2t2 = trans12_sort(s1t2)

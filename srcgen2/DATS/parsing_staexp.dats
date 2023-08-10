@@ -2214,18 +2214,17 @@ val opt2 = pq_ENDLAM(buf, err)
 val lres =
 (
 case+ opt2 of
-|
-optn_nil() =>
+|optn_nil() =>
 tok0.lctn() + s0e0.lctn()
-|
-optn_cons(tok2) =>
-tok0.lctn() + tok2.lctn()): loc_t
+|optn_cons(tok2) =>
+tok0.lctn() + tok2.lctn() ): loc_t
 //
 in//let
+//
 err := e00;
 s0exp
 (lres
-,S0Elam0(tok0, s0ms, anno, tok1, s0e0, opt2))
+,S0Elams(tok0, s0ms, anno, tok1, s0e0, opt2))
 end (*let*) // end of [T_LAM(k0)]
 //
 |

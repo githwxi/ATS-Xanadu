@@ -191,12 +191,12 @@ s2explst_fpemsg(out, s2es)
 endlet // end-of-(S2Eapps)
 //
 |
-S2Elam0
+S2Elam1
 (s2vs, s2e1) =>
 let
   val () =
   s2exp_fpemsg(out, s2e1)
-endlet // end-of-[S2Elam0]
+endlet // end-of-[S2Elam1]
 //
 |
 S2Efun1

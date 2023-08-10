@@ -291,8 +291,8 @@ print("S2Eatx2(",s2e1,";",s2e2,")")
 S2Eapps(s2f0,s2es) =>
 print("S2Eapps(",s2f0,";",s2es,")")
 |
-S2Elam0(s2vs,s2e1) =>
-print("S2Elam0(",s2vs,";",s2e1,")")
+S2Elam1(s2vs,s2e1) =>
+print("S2Elam1(",s2vs,";",s2e1,")")
 //
 |
 S2Efun1

@@ -1539,7 +1539,7 @@ s0e0.node() of
     FXITMopr(s1e0, $FIX.exists_fixty)
   end
 //
-| S0Elam
+| S0Elams
   (_, arg, res, _, s0e, _) => let
     val s1e = trans01_sexp(s0e)
     val res = trans01_sortopt(res)
@@ -1550,9 +1550,9 @@ s0e0.node() of
     s1exp_make_node(loc0, s1e0)
     ) where
     {
-      val s1e0 = S1Elam(arg, res, s1e)
+      val s1e0 = S1Elams(arg, res, s1e)
     }
-  end // end of [S0Elam]
+  end // end of [S0Elams]
 //
 | S0Eanno(s0e, s0t) => let
     val s1e = trans01_sexp(s0e)

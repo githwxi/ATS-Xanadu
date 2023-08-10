@@ -952,7 +952,7 @@ end (*let*) // end of [s0exp_rcd2_errck]
 (* ****** ****** *)
 //
 fun
-s0exp_lam0_errck
+s0exp_lams_errck
 ( loc
 : loc_t
 , tknd
@@ -972,9 +972,9 @@ s0exp_errck
 lvl+1,
 s0exp_make_node
 (loc
-,S0Elam0
+,S0Elams
  (tknd, smas, tres, arrw, body, tend)))
-end (*let*) // end of [s0exp_lam0_errck]
+end (*let*) // end of [s0exp_lams_errck]
 //
 (* ****** ****** *)
 //
@@ -1265,7 +1265,7 @@ S0Etup1 _ => f0_tup1(s0e, err)
 S0Ercd2 _ => f0_rcd2(s0e, err)
 //
 |
-S0Elam0 _ => f0_lam0(s0e, err)
+S0Elams _ => f0_lams(s0e, err)
 //
 |
 S0Euni0 _ => f0_uni0(s0e, err)
@@ -1492,7 +1492,7 @@ end (*let*) // end of [f0_rcd2]
 (* ****** ****** *)
 //
 fun
-f0_lam0
+f0_lams
 ( s0e
 : s0exp
 , err
@@ -1501,7 +1501,7 @@ let
 //
 val e00 = err
 val-
-S0Elam0
+S0Elams
 (tknd//lam
 ,smas,tres
 ,arrw// =>
@@ -1526,9 +1526,9 @@ in//let
 if
 (err = e00)
 then s0e else
-s0exp_lam0_errck
+s0exp_lams_errck
 (s0e.lctn(),tknd,smas,tres,arrw,body,tend)
-end (*let*) // end of [f0_lam0]
+end (*let*) // end of [ f0_lams(s2e,err) ]
 //
 (* ****** ****** *)
 
@@ -1563,7 +1563,7 @@ if
 (err = e00)
 then s0e else
 s0exp_uni0_errck(s0e.lctn(),tkb,sqs,tke)
-end (*let*) // end of [f0_uni0]
+end (*let*) // end of [ f0_uni0(s2e,err) ]
 
 (* ****** ****** *)
 
@@ -1598,7 +1598,7 @@ if
 (err = e00)
 then s0e else
 s0exp_exi0_errck(s0e.lctn(),tkb,sqs,tke)
-end (*let*) // end of [f0_exi0]
+end (*let*) // end of [ f0_exi0(s2e,err) ]
 
 (* ****** ****** *)
 
@@ -1619,8 +1619,9 @@ in
 if
 (err=e00)
 then (s0e) else
-s0exp_annot_errck(s0e.lctn(),se1,st2)
-end (*let*) // end of [f0_annot(...)]
+(
+  s0exp_annot_errck(s0e.lctn(),se1,st2))
+end (*let*) // end of [ f0_annot(s2e,err) ]
 
 (* ****** ****** *)
 
@@ -1640,8 +1641,9 @@ in
 if
 (err = e00)
 then (s0e) else
-s0exp_qual0_errck(s0e.lctn(),tok,se1)
-end (*let*) // end of [f0_qual0(...)]
+(
+  s0exp_qual0_errck(s0e.lctn(),tok,se1))
+end (*let*) // end of [ f0_qual0(s2e,err) ]
 
 (* ****** ****** *)
 

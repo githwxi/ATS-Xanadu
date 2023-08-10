@@ -249,6 +249,8 @@ end (*let*) // end-of-[else]
 //
 end (*let*) // end-of-[f0_a1pp(env0,s1t0)]
 //
+(* ****** ****** *)
+//
 fun
 f0_a2pp
 ( env0:
@@ -544,7 +546,7 @@ S1Er1cd _ => f0_r1cd(env0, s1e0)
 S1Er2cd _ => f0_r2cd(env0, s1e0)
 //
 |
-S1Elam0 _ => f0_lam0(env0, s1e0)
+S1Elams _ => f0_lams(env0, s1e0)
 //
 |
 S1Eannot _ => f0_annot(env0, s1e0)
@@ -1589,14 +1591,14 @@ end (*let*) // end of [f0_r2cd(env0, s1e0)]
 (* ****** ****** *)
 //
 fun
-f0_lam0
+f0_lams
 ( env0:
 ! tr12env
 , s1e0: s1exp): s2exp =
 let
 //
 val-
-S1Elam0
+S1Elams
 ( smas
 , tres, s1e1) = s1e0.node()
 //
@@ -1614,13 +1616,15 @@ val
 s2e1 =
 (
 case+ tres of
-|optn_nil() =>
+|
+optn_nil() =>
 trans12_s1exp(env0, s1e1)
-|optn_cons(s2t1) =>
+|
+optn_cons(s2t1) =>
 trans12_s1exp_stck(env0, s1e1, s2t1)
-) : s2exp // end of [val(s2e1)]
-}
-end (*let*) // end of [f0_lam0(env0, s1e0)]
+) : s2exp // case+ // end of [val(s2e1)]
+} (*where*)
+end (*let*) // end of [f0_lams(env0, s1e0)]
 //
 (* ****** ****** *)
 //

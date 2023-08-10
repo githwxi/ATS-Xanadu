@@ -14,37 +14,34 @@
 "prelude/SATS/unsafex.sats"
 //
 (* ****** ****** *)
-
+//
 #impltmp
-<xs><x0><ln>
+<xs><x0>
 gseqn_nilq(xs) =
-let
-val ln =
-gseqn_length
-<xs><x0><ln>(xs) in ln = 0
-endlet // end of [gseqn_nilq]
-
+(
+  ln = 0 ) where
+{ val
+  ln = gseqn_length<xs><x0>(xs) }
+(*where*) // end of [gseqn_nilq(xs)]
+//
 (* ****** ****** *)
 
 #impltmp
-<xs><x0><ln>
+<xs><x0>
 gseqn_consq(xs) =
-bool_neg<>
-(gseqn_nilq<xs><x0><ln>(xs))
+bool_neg<>(gseqn_nilq<xs><x0>(xs))
 
 (* ****** ****** *)
 //
 #impltmp
-<xs><x0><ln>
+<xs><x0>
 gseqn_unlist(xs) =
-gseqn_unlist_vt
-<xs><x0><ln>(list_copy_vt<x0>(xs))
+gseqn_unlist_vt<xs><x0>(list_copy_vt(xs))
 //
 #impltmp
-<xs><x0><ln>
+<xs><x0>
 gseqn_unrlist(xs) =
-gseqn_unrlist_vt
-<xs><x0><ln>(list_copy_vt<x0>(xs))
+gseqn_unrlist_vt<xs><x0>(list_copy_vt(xs))
 //
 (* ****** ****** *)
 

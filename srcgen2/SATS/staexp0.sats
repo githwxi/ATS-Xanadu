@@ -842,7 +842,7 @@ S0Ercd2 of // HX: record
 , tokenopt, l0s0elst, l0s0e_RBRACE)
 //
 |
-S0Elam0 of
+S0Elams of
 ( token
 , s0maglst
 , sort0opt, token, s0exp, tokenopt)//lam()

@@ -1090,7 +1090,7 @@ S0Etrcd2
     val () = synread_s0qualst(s0qs)
   }
 //
-| S0Elam
+| S0Elams
   ( tbeg
   , arg0, res1
   , arrw, body, tend) =>

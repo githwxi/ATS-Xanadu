@@ -829,12 +829,12 @@ case+ x0.node() of
   , "S0Etrcd2("
   , tbeg, "; ", topt, "; ", s0es, "; ", tend, ")")
 //
-| S0Elam
+| S0Elams
   ( tbeg
   , arg0, res1
   , tok1, s0e0, tend) =>
   fprint!
-  ( out, "S0Elam("
+  ( out, "S0Elams("
   , tbeg, ";", arg0, ";", res1, "; "
   , tok1, "; ", s0e0, "; ", tend, ")")
 //
