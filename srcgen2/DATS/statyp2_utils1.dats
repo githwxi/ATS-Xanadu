@@ -440,16 +440,16 @@ end (*let*) // end of [S2Eatx2]
 |
 S2Eapps
 (s2f0, s2es) =>
-s2typ_make_node
+let
+val
+t2f0 = f0_impr(s2f0)
+val
+t2ps = s2explst_stpize(s2es)
+in//let
 (
-  s2t0, T2Papps(s2f0, t2ps)
-) where
-{
-  val
-  s2f0 = f0_impr(s2f0)
-  val
-  t2ps = s2explst_stpize(s2es)
-} (*where*) // end of [S2Eapps(...)]
+  s2typ_make_node
+  (s2t0, T2Papps(t2f0, t2ps)) )
+end (*let*) // end of [S2Eapps(...)]
 //
 |
 S2Elam1
@@ -479,6 +479,7 @@ s2typ_make_node
   t2ps = s2explst_stpize(s2es)
 //
   val tres = s2exp_stpize(sres) }
+//(*where*) // end of [S2Efun1(...)]
 //
 |
 S2Eexi0
@@ -522,13 +523,13 @@ end (*let*) // end of [S2Euni0(...)]
 *)
 //
 |
-S2Etext(name, s2es) =>
+S2Etext
+( name, s2es) =>
 s2typ_make_node
 ( s2t0
 , T2Ptext(name, t2ps)) where
 {
-val t2ps = s2explst_stpize(s2es)
-}
+val t2ps = s2explst_stpize(s2es) }
 //
 |
 S2Etrcd
