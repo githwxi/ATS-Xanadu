@@ -1018,13 +1018,20 @@ s2exp_fun_full
 , npf: int
 , arg: s2explst, res: s2exp): s2exp
 //
+(* ****** ****** *)
 fun
 s2exp_lam
-(s2as: s2varlst, s2e1: s2exp): s2exp
+(s2vs: s2varlst, s2e1: s2exp): s2exp
+fun
+s2exp_lams
+(svss: s2varlstlst, s2e1: s2exp): s2exp
+(* ****** ****** *)
 //
 fun
 s2exp_met
 (s2es: s2explst, s2e1: s2exp): s2exp
+//
+(* ****** ****** *)
 //
 fun
 s2exp_exi
@@ -1035,6 +1042,8 @@ s2exp_uni
 ( s2vs: s2varlst
 , s2ps: s2explst, s2e1: s2exp): s2exp
 //
+(* ****** ****** *)
+//
 fun
 s2exp_list1
 (s2es: s2explst): s2exp
@@ -1044,11 +1053,11 @@ s2exp_list2
 //
 fun
 s2exp_trcd11
-(knd: int
+( knd: int
 , s2es: s2explst): s2exp
 fun
 s2exp_trcd12
-(knd: int
+( knd: int
 , s2explst, s2explst): s2exp
 //
 fun

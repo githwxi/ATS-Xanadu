@@ -2304,30 +2304,30 @@ HX-2020-06-02: for glseq-operations
 #impltmp
 {x0:vt}
 glseq_listize0
-<strm_vt(x0)><x0> = strm_vt_listize<x0>
+<strm_vt(x0)><x0> = strm_vt_listize0<x0>
 //
 #impltmp
 {x0:vt}
 glseq_strmize0
-<strm_vt(x0)><x0> = strm_vt_strmize<x0>
+<strm_vt(x0)><x0> = strm_vt_strmize0<x0>
 #impltmp
 {x0:vt}
 glseq_strmize0
-<strx_vt(x0)><x0> = strx_vt_strmize<x0>
+<strx_vt(x0)><x0> = strx_vt_strmize0<x0>
 //
 (* ****** ****** *)
 //
 #impltmp
 {x0:vt}
 glseq_unstrm_vt
-<list_vt(x0)><x0> = strm_vt_listize<x0>
+<list_vt(x0)><x0> = strm_vt_listize0<x0>
 //
 (* ****** ****** *)
 //
 #impltmp
 {x0:vt}
 glseq_rlistize0
-<strm_vt(x0)><x0> = strm_vt_rlistize<x0>
+<strm_vt(x0)><x0> = strm_vt_rlistize0<x0>
 //
 (* ****** ****** *)
 //

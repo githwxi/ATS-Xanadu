@@ -382,19 +382,25 @@ trans12_sarg
 (
 case+
 s1a0.node() of
-| S1ARGsome
-  (tok, opt) => let
-    val sym =
-    sargid_sym(tok)
-    val s2t =
-    (
-    case+ opt of
-    | None() => S2Tnone0()
-    | Some(s1t) => trans12_sort(s1t)
-    ) : sort2 // end of [val]
-  in
-    s2var_make_idst(sym, s2t)
-  end // end of [S1ARGsome]
+|
+S1ARGsome
+(tok, opt) =>
+let
+val sym =
+sargid_sym(tok)
+val s2t =
+(
+case+ opt of
+|None() =>
+S2Tnone0((*void*))
+|Some(s1t) =>
+(
+  trans12_sort(s1t)))
+: sort2 // end-val(s2t)
+val s2v =
+s2var_make_idst(sym, s2t)
+in
+the_sexpenv_add_var(s2v); s2v end
 )
 //
 (* ****** ****** *)
@@ -424,6 +430,23 @@ implement
 list_map$fopr<s1arg><s2var> = trans12_sarg
 }
 } (* end of [trans12_sarglst] *)
+
+(* ****** ****** *)
+
+implement
+trans12_smarglst
+  (smas) =
+list_vt2t(svss) where
+{
+val
+svss =
+list_map<s1marg><s2varlst>
+  (smas) where
+{
+implement
+list_map$fopr<s1marg><s2varlst> = trans12_smarg
+}
+} (* end of [trans12_smarglst] *)
 
 (* ****** ****** *)
 
@@ -1883,6 +1906,35 @@ case+ opt of
 end // end of [auxapp2_2_]
 
 (* ****** ****** *)
+//
+fun
+auxlams
+( s1e0
+: s1exp): s2exp = let
+//
+(*
+val () =
+println!
+("\
+trans12_sexp:\
+ auxl1st: s1e0 = ", s1e0)
+*)
+//
+val-
+S1Elams
+( smas
+, tres, s1e1) = s1e0.node()
+//
+val svss =
+  trans12_smarglst(smas)
+val s2e1 = trans12_sexp(s1e1)
+//
+in//let
+(
+  s2exp_lams(svss, s2e1) )
+end (*let*) // end of [auxlams(s1e0)]
+//
+(* ****** ****** *)
 
 fun
 auxl1st
@@ -1905,10 +1957,10 @@ in
   list_is_sing(s1es)
   then
   (
-    trans12_sexp(s1e)
+    trans12_sexp(s1e1)
   ) where
   {
-    val s1e = list_head(s1es)
+    val s1e1 = list_head(s1es)
   }
   else
   (
@@ -2140,12 +2192,10 @@ s1e0.node() of
 | S1Eapp1 _ => auxapp1(s1e0)
 | S1Eapp2 _ => auxapp2(s1e0)
 //
+| S1Elams _ => auxlams(s1e0)
+//
 | S1El1st _ => auxl1st(s1e0)
 | S1El2st _ => auxl2st(s1e0)
-//
-(*
-| S1Elams _ => auxlams(s1e0)
-*)
 //
 | S1Etrcd1
     (k0, _) => auxtrcd11(s1e0)

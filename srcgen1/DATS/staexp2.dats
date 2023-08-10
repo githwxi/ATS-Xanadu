@@ -927,9 +927,23 @@ val s2t0 =
   S2Tfun(s2ts, body.sort())
 //
 in
-  s2exp_make_node(s2t0, S2Elam(s2vs, body))
+s2exp_make_node(s2t0, S2Elam(s2vs, body))
 end (* end of [s2exp_lam] *)
 
+(* ****** ****** *)
+//
+implement
+s2exp_lams
+(svss, body) =
+(
+case+ svss of
+|
+list_nil() => (body)
+|
+list_cons(s2vs, svss) =>
+(
+  s2exp_lams(svss, s2exp_lam(s2vs, body))))
+//
 (* ****** ****** *)
 
 implement
