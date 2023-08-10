@@ -149,21 +149,15 @@ val-
 D3Clocal0
 (head, body) = d3cl.node()
 //
-val
-head =
+val (  ) =
+tr3aenv_pshloc1(env0)
+val head =
 trans3a_d3eclist(env0, head)
-val
-body =
-trans3a_d3eclist(env0, head)
-//
-in//let
-let
 //
 val tmps =
 (
 list_filter(head)
-)
-where {
+) where {
 #typedef x0 = d3ecl
 #impltmp
 filter$test<x0> = d3ecl_impltmpq
@@ -171,8 +165,9 @@ filter$test<x0> = d3ecl_impltmpq
 //
 val body =
 if
-list_nilq(tmps)
-then body else
+(
+  list_nilq(tmps))
+then ( body ) else
 (
   list_map(body) ) where
 {
@@ -183,15 +178,26 @@ then body else
 #impltmp
 map$fopr<x0><y0>(x0) =
 (
-  if
-  d3ecl_impltmpq(x0)
-  then
-  d3ecl_tmplocal(tmps, x0) else x0)
+if
+d3ecl_impltmpq(x0)
+then
+d3ecl_tmplocal(tmps, x0) else x0)
 }
+//
+in//let
+//
+let
+//
+val (  ) =
+  tr3aenv_pshloc2(env0)//enter
+val body =
+  trans3a_d3eclist(env0, head)
+val (  ) = tr3aenv_locjoin(env0)
 //
 in//let
   d3ecl(loc0, D3Clocal0(head, body))
 end(*let*)
+//
 end(*let*)//end-of-[f0_local0(env0,d3cl)]
 //
 (* ****** ****** *)

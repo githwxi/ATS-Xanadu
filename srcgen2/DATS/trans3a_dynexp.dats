@@ -1043,10 +1043,15 @@ val t2p0 =
 trans3a_s2typ(env0, t2p0)
 //
 val
+(  ) = tr3aenv_pshlet0(env0)
+//
+val
 dcls =
 trans3a_d3eclist(env0, dcls)
 val
 d3e1 = trans3a_d3exp(env0, d3e1)
+//
+val (  ) = tr3aenv_poplet0(env0)
 //
 in//let
 (
