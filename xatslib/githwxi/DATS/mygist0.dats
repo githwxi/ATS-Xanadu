@@ -280,14 +280,16 @@ end
 list_cons(x1, xs) =>
 let
   val ys = list_vt_cons(x0, ys)
-in
-  !(strm_vt_append(xss, auxmain2(x1, xs, ys)))
+in !
+(
+  strm_vt_append0
+  (xss, auxmain2(x1, xs, ys)) )
 end (*let*) // end of [list_cons]
 //
 end // end-of-let // end-of(auxmain2)
 )
 //
-} endwhr (* end of [list_permutize] *)
+} endwhr // end of [list_permutize(xs)]
 
 (* ****** ****** *)
 //
@@ -359,14 +361,15 @@ val m1 = m0-1
 and n1 = n0-1
 //
 val rr1 =
-  auxmain(xs, m1, n1)
+(
+  auxmain(xs, m1, n1) )
 val rr1 =
-  strm_vt_mcons<a>(x0, rr1)
-val rr2 =
-  auxmain(xs, m1, n0)
+(
+  strm_vt_mcons<a>(x0, rr1) )
+val rr2 = auxmain(xs, m1, n0)
 //
 in
-strm_vt_append<res>(rr1, rr2)
+strm_vt_append0<res>(rr1, rr2)
 end (* list_cons *)
 ) (* end of [else] *)
 ) (* end of [auxmain] *)
@@ -448,8 +451,9 @@ auxmain(xs, m1, n0)
 map0$fopr<res><res>(rr) =
   (rr.0, list_cons(x0, rr.1))
 }
-in
-  !(strm_vt_append<res>(rs1, rs2))
+in !
+(
+  strm_vt_append0<res>(rs1, rs2) )
 end // list_cons
 ) (* end of [else] *)
 ) (* end of [auxmain] *)
@@ -647,7 +651,7 @@ cstrm_vt_split_lines(strmize(cs))
 #impltmp
 <>(*tmp*)
 strn_vt_split_lines(cs) =
-cstrm_vt_split_lines(strmize(cs))
+cstrm_vt_split_lines(strmize0(cs))
 //
 (* ****** ****** *)
 #impltmp
