@@ -186,47 +186,24 @@ tr3aenv_free_top(tr3aenv):(void)
 //
 (* ****** ****** *)
 //
-(*
 fun
 tr3aenv_poplam0
 (env0: !tr3aenv): void//end-fun
 fun
 tr3aenv_pshlam0
 (env0: !tr3aenv): void//end-fun
-*)
 //
 (* ****** ****** *)
 //
-(*
 fun
-tr3aenv_s2vrch_opt
+tr3aenv_d2crch_opt
 ( env0:
 ! tr3aenv
-, s2v0 : s2var) : s2varlst
+, d2c0 : d2cst) : d3eclist
 fun
-tr3aenv_s2vins_any
+tr3aenv_d2crch_any
 ( env0:
-! tr3aenv,s2v0:s2var): void
-*)
-//
-(*
-fun
-tr3aenv_s2vrch_btf
-( env0:
-! tr3aenv,s2v0:s2var): bool
-fun
-tr3aenv_s2vins_s2vs
-( env0:
-! tr3aenv,s2vs:s2varlst): void
-fun
-tr3aenv_s2vins_sqas
-( env0:
-! tr3aenv,sqas:s2qaglst): void
-fun
-tr3aenv_s2vins_tqas
-( env0:
-! tr3aenv,tqas:t2qaglst): void
-*)
+! tr3aenv, d2cst, d3ecl): void
 //
 (* ****** ****** *)
 //

@@ -155,7 +155,7 @@ stkmap_loc1 _ => (err := 1; kxs)
 | !
 stkmap_loc2 _ => (err := 1; kxs)
 //
-)
+) (*case+*)//end-of-[loop(kxs, err)]
 //
 in//let
 let
@@ -164,7 +164,7 @@ err: sint = 0
 val
 ( ) =
 (map := loop(map, err)) in err end
-end (*let*) // [ stkmap_poptop0(map) ]
+end (*let*)//end-[stkmap_poptop0(map)]
 //
 (* ****** ****** *)
 //
@@ -173,7 +173,7 @@ stkmap_pshlam0
   {itm}(map) =
 (
   map := stkmap_lam0(map))
-(* end of [stkmap_pshlam0(map)] *)
+//(*end of [stkmap_pshlam0{itm}(map)]*)
 //
 (* ****** ****** *)
 //
@@ -182,7 +182,7 @@ stkmap_pshlet0
   {itm}(map) =
 (
   map := stkmap_let0(map))
-(* end of [stkmap_pshlet0(map)] *)
+//(*end of [stkmap_pshlet0{itm}(map)]*)
 //
 (* ****** ****** *)
 //
@@ -191,7 +191,7 @@ stkmap_pshloc1
   {itm}(map) =
 (
   map := stkmap_loc1(map))
-(* end of [stkmap_pshloc1(map)] *)
+//(*end of [stkmap_pshloc1{itm}(map)]*)
 //
 (* ****** ****** *)
 //
@@ -200,7 +200,7 @@ stkmap_pshloc2
   {itm}(map) =
 (
   map := stkmap_loc2(map))
-(* end of [stkmap_pshloc2(map)] *)
+//(*end of [stkmap_pshloc2{itm}(map)]*)
 //
 (* ****** ****** *)
 //
@@ -242,7 +242,7 @@ err: sint = 0
 val
 ( ) =
 (map := loop(map, err)) in err end
-end (*let*) // [ stkmap_poplam0(map) ]
+end (*let*) // end-[stkmap_poplam0(map)]
 //
 (* ****** ****** *)
 //
@@ -284,7 +284,7 @@ err: sint = 0
 val
 ( ) =
 (map := loop(map, err)) in err end
-end (*let*) // [ stkmap_poplet0(map) ]
+end (*let*) // end-[stkmap_poplet0(map)]
 //
 (* ****** ****** *)
 //
@@ -337,7 +337,7 @@ stkmap_let0 _ =>
 stkmap_loc2 _ =>
 ( err := err+1; loop0(kxs, err, res) )
 //
-) (*case+*) // end-[loop1(kxs,err,res)]
+) (*case+*)//end-of-[loop1(kxs,err,res)]
 //
 fnx
 loop2
@@ -373,7 +373,7 @@ stkmap_let0 _ =>
 stkmap_loc1 _ =>
 ( err := err+1; loop1(kxs, err, res) )
 //
-) (*case+*) // end-[loop2(kxs,err,res)]
+) (*case+*)//end-of-[loop2(kxs,err,res)]
 //
 in//let
 let
@@ -386,8 +386,8 @@ list_vt_nil(*nil*)
 //
 val
 (kxs,res) =
-loop2(map,err,res) in map := kxs;(err,res)
-end
+loop2
+(map,err,res) in map := kxs;(err,res) end
 end (*let*) // end of [stkmap_poploc0(map)]
 //
 (* ****** ****** *)
@@ -428,9 +428,9 @@ optn_vt_cons(x1) else loop(kxs,k0))
 | !stkmap_loc1(kxs) => loop(kxs, k0)
 | !stkmap_loc2(kxs) => loop(kxs, k0)
 //
-) (*case+*) // end of [loop(kxs, k0)]
+) (*case+*)//end of [ loop(kxs, k0) ]
 //
-} (*where*) // end of [stkmap_search_opt]
+} (*where*)//end of [stkmap_search_opt(...)]
 //
 (* ****** ****** *)
 //
