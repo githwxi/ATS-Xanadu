@@ -186,11 +186,22 @@ tr3aenv_free_top(tr3aenv):(void)
 //
 (* ****** ****** *)
 //
+(*
 fun
 tr3aenv_poplam0
 (env0: !tr3aenv): void//end-fun
 fun
 tr3aenv_pshlam0
+(env0: !tr3aenv): void//end-fun
+*)
+//
+(* ****** ****** *)
+//
+fun
+tr3aenv_poplet0
+(env0: !tr3aenv): void//end-fun
+fun
+tr3aenv_pshlet0
 (env0: !tr3aenv): void//end-fun
 //
 (* ****** ****** *)
@@ -201,9 +212,10 @@ tr3aenv_d2crch_opt
 ! tr3aenv
 , d2c0 : d2cst) : d3eclist
 fun
-tr3aenv_d2crch_any
+tr3aenv_d2cins_any
 ( env0:
-! tr3aenv, d2cst, d3ecl): void
+! tr3aenv
+, d2c0:d2cst,d3cl:d3ecl): void
 //
 (* ****** ****** *)
 //
@@ -216,7 +228,7 @@ list_trans3a_fnp
 , xs
 : list(x0)
 , fopr:
-  (!tr3aenv,x0)->y0): list(y0)
+  (!tr3aenv, x0)->y0): list(y0)
 fun
 <x0:t0>
 <y0:t0>
@@ -225,7 +237,7 @@ optn_trans3a_fnp
 ! tr3aenv
 , xs: optn(x0)
 , fopr:
-  (!tr3aenv,x0)->y0): optn(y0)
+  (!tr3aenv, x0)->y0): optn(y0)
 //
 (* ****** ****** *)
 //
