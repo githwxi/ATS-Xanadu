@@ -224,9 +224,10 @@ prerrln
 //
 in//let
 //
+(
 case+ opt1 of
-| ~optn_vt_nil() => list_nil()
-| ~optn_vt_cons(s2cs) => ( s2cs )
+| ~ optn_vt_nil() => list_nil(*0*)
+| ~ optn_vt_cons(s2cs) => (  s2cs  ))
 //
 end(*let*)//end-of-(tr2aenv_s2crch_opt(...))
 //
