@@ -178,13 +178,13 @@ strm_vt_length0
 //
 fun
 <a:vt>
-strm_vt_listize0
-(xs: strm_vt(a)): list_vt(a)
-fun
-<a:vt>
 strm_vt_strmize0
 (xs: strm_vt(a)): strm_vt(a)
 //
+fun
+<a:vt>
+strm_vt_listize0
+(xs: strm_vt(a)): list_vt(a)
 fun
 <a:vt>
 strm_vt_rlistize0
@@ -196,6 +196,24 @@ fun
 <a:vt>
 strx_vt_strmize0
 (xs: strx_vt(a)): strm_vt(a)
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+strq_vt_strmize0
+(xs: strq_vt(a)): strm_vt(a)
+//
+fun
+<a:vt>
+strq_vt_listize0
+{n:i0}
+(xs: strq_vt(a,n)): list_vt(a,n)
+fun
+<a:vt>
+strq_vt_rlistize0
+{n:i0}
+(xs: strq_vt(a,n)): list_vt(a,n)
 //
 (* ****** ****** *)
 //
