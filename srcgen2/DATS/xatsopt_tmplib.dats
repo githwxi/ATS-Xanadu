@@ -1252,11 +1252,11 @@ g_print<a2tdf>(atdf) =
 a2tdf_fprint(g_print$out<>(), atdf)
 (* ****** ****** *)
 #impltmp
-g_print<simpl>(s2i0) =
-simpl_fprint(g_print$out<>(), s2i0)
+g_print<simpl>(simp) =
+simpl_fprint(g_print$out<>(), simp)
 #impltmp
-g_print<dimpl>(d2i0) =
-dimpl_fprint(g_print$out<>(), d2i0)
+g_print<dimpl>(dimp) =
+dimpl_fprint(g_print$out<>(), dimp)
 (* ****** ****** *)
 #impltmp
 g_print<d2arg>(darg) =
@@ -1396,6 +1396,10 @@ d3cls_fprint(g_print$out<>(), dcls)
 g_print<d3ecl>(d3cl) =
 d3ecl_fprint(g_print$out<>(), d3cl)
 //
+(* ****** ****** *)
+#impltmp
+g_print<timpl>(timp) =
+timpl_fprint(g_print$out<>(), timp)
 (* ****** ****** *)
 //
 #impltmp

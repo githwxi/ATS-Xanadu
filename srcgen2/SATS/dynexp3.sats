@@ -96,6 +96,8 @@ G1M = "./gmacro1.sats"
 #staload
 S2E = "./staexp2.sats"
 #staload
+T2P = "./statyp2.sats"
+#staload
 D2E = "./dynexp2.sats"
 (* ****** ****** *)
 #typedef tnode = $LEX.tnode
@@ -113,6 +115,8 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
+(* ****** ****** *)
+#typedef s2vts = $T2P.s2vts
 (* ****** ****** *)
 #typedef s2qag = $D2E.s2qag
 #typedef t2qag = $D2E.t2qag
@@ -152,6 +156,9 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 #abstbox d3ecl_tbox // ptr
 #typedef d3ecl = d3ecl_tbox
+(* ****** ****** *)
+#abstbox timpl_tbox // ptr
+#typedef timpl = timpl_tbox
 (* ****** ****** *)
 //
 #abstbox d3valdcl_tbox // ptr
@@ -496,6 +503,8 @@ d3exp_node =
 |D3Econ of (d2con)
 |D3Ecst of (d2cst)
 //
+|D3Etimp of (d3exp, timpl)
+//
 |D3Esapp of (d3exp, s2explst)
 |D3Esapq of (d3exp, s2typlst)
 //
@@ -587,11 +596,18 @@ D3Eerrck of (sint(*lvl*),d3exp)//tread23-error
 // HX-2023-??-??: end-of-[datatype(d3exp_node)]
 //
 (* ****** ****** *)
+//
+fun
+d3ecl_impltmpq(d3ecl): bool
+//
+(* ****** ****** *)
+fun
+timpl_fprint:(FILR,timpl)->void
 fun
 d3exp_fprint:(FILR,d3exp)->void
 (* ****** ****** *)
 fun
-d3exp_get_lctn(d3exp): loc_t
+d3exp_get_lctn(d3exp): ( loc_t )
 fun
 d3exp_get_node(d3exp): d3exp_node
 (* ****** ****** *)
@@ -600,21 +616,22 @@ d3exp_get_node(d3exp): d3exp_node
 (* ****** ****** *)
 //
 fun
-d3exp_get_styp:(d3exp)->s2typ
+d3exp_get_styp
+(d3e0: d3exp): s2typ
 fun
 d3exp_set_styp
-(d3p0: d3exp, t2p0: s2typ): void
+(d3e0: d3exp, t2p0: s2typ): void
 //
 #symload styp with d3exp_get_styp
 #symload styp with d3exp_set_styp
 //
 (* ****** ****** *)
 fun
-d3exp_none0(loc0:loc_t): d3exp
+d3exp_none0( loc0: loc_t ): d3exp
 fun
-d3exp_none1(d2e0:d2exp): d3exp
+d3exp_none1( d2e0: d2exp ): d3exp
 fun
-d3exp_none2(d3e0:d3exp): d3exp
+d3exp_none2( d3e0: d3exp ): d3exp
 (* ****** ****** *)
 //
 fun
@@ -708,12 +725,27 @@ D3Cerrck of (sint(*lvl*), d3ecl)//tread23-error
 //
 (* ****** ****** *)
 //
-fun
-d3ecl_impltmpq(d3ecl): bool
+and
+timpl_node =
+//
+|TIMPLone1 of
+(d3ecl(*impl*), s2vts)
+//
+|TIMPLall1 of
+(d2cst(*dcst*), d3eclist)
 //
 (* ****** ****** *)
 fun
-d3ecl_fprint:(FILR,d3ecl)->void
+timpl_fprint
+(out:FILR,timp:timpl): void
+(* ****** ****** *)
+fun
+d3ecl_fprint: (FILR, d3ecl) -> void
+(* ****** ****** *)
+//
+fun
+d3ecl_impltmpq(d3ecl): bool
+//
 (* ****** ****** *)
 fun
 d3ecl_get_lctn(d3ecl): loc_t
@@ -733,6 +765,25 @@ d3ecl_make_node
 #symload node with d3ecl_get_node
 (* ****** ****** *)
 #symload d3ecl with d3ecl_make_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+timpl_get_lctn
+(timp: timpl): loc_t
+fun
+timpl_get_node
+(timp: timpl): timpl_node
+//
+#symload lctn with timpl_get_lctn
+#symload node with timpl_get_node
+//
+fun
+timpl_make_node
+(loc:loc_t,nod:timpl_node): timpl
+#symload timpl with timpl_make_node
+//
+(* ****** ****** *)
 (* ****** ****** *)
 fun
 d3valdcl_fprint

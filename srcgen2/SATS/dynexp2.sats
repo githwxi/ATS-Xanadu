@@ -1344,14 +1344,14 @@ fun
 a2tdf_fprint:(FILR,a2tdf)->void
 (* ****** ****** *)
 fun
-d2ecl_get_lctn(d2ecl): loc_t
+d2ecl_get_lctn(d2ecl): ( loc_t )
 fun
 d2ecl_get_node(d2ecl): d2ecl_node
 (* ****** ****** *)
 fun
-d2ecl_none0(loc0:loc_t): d2ecl
+d2ecl_none0(loc0:loc_t): (d2ecl)
 fun
-d2ecl_none1(d1cl:d1ecl): d2ecl
+d2ecl_none1(d1cl:d1ecl): (d2ecl)
 (* ****** ****** *)
 fun
 d2ecl_make_node
