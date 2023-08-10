@@ -425,8 +425,9 @@ let
 val t2p1 = f0_impr(s2e1)
 val s2t1 = t2p1.sort((*0*))
 in//let
-s2typ_make_node
-( s2t1, T2Parg1(knd0, t2p1) )
+(
+  s2typ_make_node
+  (s2t1,T2Parg1(knd0,t2p1)) )
 end (*let*) // end of [S2Earg1]
 //
 |S2Eatx2
@@ -444,15 +445,22 @@ s2typ_make_node
   s2t0, T2Papps(s2f0, t2ps)
 ) where
 {
-val s2f0 = f0_impr(s2f0)
-val t2ps = s2explst_stpize(s2es) }
+  val
+  s2f0 = f0_impr(s2f0)
+  val
+  t2ps = s2explst_stpize(s2es)
+} (*where*) // end of [S2Eapps(...)]
 //
 |
 S2Elam1
 (s2vs, s2e1) =>
-s2typ_make_node
-( s2t0
-, T2Plam1(s2vs, f0_impr(s2e1)))
+let
+val t2p1 = f0_impr(s2e1)
+in//let
+(
+  s2typ_make_node
+  (s2t0, T2Plam1(s2vs, t2p1)) )
+end (*let*) // end of [S2Elam1(...)]
 //
 |
 S2Efun1
@@ -547,17 +555,19 @@ s2exp_stpize(s2e0) =
 let
 val s2t0 = s2e0.sort()
 in//let
-if
+if // if
 sort2_imprq(s2t0)
 then f0_impr(s2e0) else
 s2typ_make_node(s2t0, T2Ps2exp(s2e0))
-endlet where
+endlet where // end of [let]
 {
 (*
 val () =
 prerrln("s2exp_stpize: s2e0 = ", s2e0)
 *)
 } (*where*) // end of [s2exp_stpize(s2e0)]
+//
+(* ****** ****** *)
 //
 end (*local*) // end of [local(s2exp_stpize)]
 //
@@ -567,10 +577,11 @@ end (*local*) // end of [local(s2exp_stpize)]
 s2explst_stpize(s2es) =
 list_map<x0><y0>(s2es) where
 {
-#typedef x0 = s2exp
-#typedef y0 = s2typ
-#impltmp map$fopr<x0><y0> = s2exp_stpize
-} (*where*) // end of [s2explst_stpize(s2es)]
+  #typedef x0 = s2exp
+  #typedef y0 = s2typ
+  #impltmp
+  map$fopr<x0><y0> = s2exp_stpize }
+//(*where*) // end of [s2explst_stpize(s2es)]
 
 (* ****** ****** *)
 

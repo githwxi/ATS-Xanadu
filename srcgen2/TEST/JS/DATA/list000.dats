@@ -120,7 +120,7 @@ fnx
 loop
 {i,j:nat}.<i>.
 ( i0
-: int(i)
+: sint(i)
 , xs
 : list_vt(a, j))
 : list_vt(a, i+j) =
@@ -166,7 +166,7 @@ list_nilq
 case+ xs of
 |list_nil() => true
 |list_cons(_, _) => false
-) (*case*) // end-of-[list_nilq(xs)]
+) (*case+*)//end-of-[list_nilq(xs)]
 #impltmp
 <>(*tmp*)
 list_consq
@@ -175,7 +175,7 @@ list_consq
 case+ xs of
 |list_nil() => false
 |list_cons(_, _) => (true)
-) (*case*) // end-of-[list_consq(xs)]
+) (*case+*)//end-of-[list_consq(xs)]
 //
 (* ****** ****** *)
 //
@@ -355,8 +355,9 @@ list_length
 fnx
 loop{i,j:int}
 ( xs
-: list(a, i)
-, j0: int(j)): int(i+j) =
+: list(a,i)
+, j0
+: sint( j )): sint(i+j) =
 (
 case+ xs of
 |
@@ -695,7 +696,7 @@ case+ xs of
   foreach$work<x0>(x0) in loop(xs)
   end
 )
-}(*where*)//end-of[list_foreach(xs)]
+}(*where*)//end-of-[list_foreach(xs)]
 //
 (* ****** ****** *)
 //
@@ -722,7 +723,7 @@ case+ xs of
   if
   g_cmp<x0>(x0,x1) <= 0
   then loop(x1, xs) else false ) )
-} (*where*) // end-of-[list_sortedq(xs)]
+}(*where*)//end-of-[list_sortedq(xs)]
 //
 (* ****** ****** *)
 //
@@ -796,11 +797,12 @@ in
 end
 ) (* end of [loop] *)
 //
-in
+in//let
 let
-var r0: list_vt(y0) in loop(xs, r0); r0
+var r0
+  : list_vt(y0) in loop(xs, r0); r0
 end
-end (*let*) // end of [list_map_vt(xs)]
+end (*let*) // end-of-[list_map_vt(xs)]
 //
 (* ****** ****** *)
 //
@@ -966,8 +968,8 @@ map0$fopr
 (
   list_vt_cons(x0, xs))
 }
-in
-!(strm_vt_append<xs(n)>(res1, res2))
+in !
+(strm_vt_append0<xs(n)>(res1,res2))
 endlet // end of [list_cons(x0, xs)]
 )
 }(*where*)//end-of-[list_subsetize_vt(xs)]
@@ -1137,6 +1139,34 @@ gseq_rlistize<list(a)><a> = list_rlistize<a>
 //
 #impltmp
 {a:t0}
+{b:t0}
+gseq_map
+<list(a)><a>
+<list(b)><b>(*xs*) = list_map<a><b>
+#impltmp
+{a:t0}
+{b:t0}
+gseq_maprev
+<list(a)><a>
+<list(b)><b>(*xs*) = list_maprev<a><b>
+//
+#impltmp
+{a:t0}
+{b:vt}
+gseq_map
+<list(a)><a>
+<list_vt(b)><b>(*xs*) = list_map_vt<a><b>
+#impltmp
+{a:t0}
+{b:vt}
+gseq_maprev
+<list(a)><a>
+<list_vt(b)><b>(*xs*) = list_maprev_vt<a><b>
+//
+(* ****** ****** *)
+//
+#impltmp
+{a:t0}
 {b:vt}
 gseq_map_list
 <list(a)><a><b>(*xs*) = list_map_vt<a><b>
@@ -1301,27 +1331,26 @@ For gseqn-operations
 (* ****** ****** *)
 //
 #impltmp
-{a:t0}{n:i0}
-gseqn_nilq<list(a,n)><a><n> = list_nilq<>
+{a:t0}
+gseqn_head<listn(a)><a> = list_head<a>
 #impltmp
-{a:t0}{n:i0}
-gseqn_consq<list(a,n)><a><n> = list_consq<>
+{a:t0}
+gseqn_tail<listn(a)><a> = list_tail<a>
 //
 (* ****** ****** *)
 //
 #impltmp
-{a:t0}{n:i0}
-gseqn_head<list(a,n)><a><n> = list_head<a>
+{a:t0}
+gseqn_nilq<listn(a)><a> = list_nilq{a}
 #impltmp
-{a:t0}{n:i0}
-gseqn_tail
-<list(a,n)><a><n><list(a,n-1)> = list_tail<a>
+{a:t0}
+gseqn_consq<listn(a)><a> = list_consq{a}
 //
 (* ****** ****** *)
 //
 #impltmp
-{a:t0}{n:i0}
-gseqn_length<list(a,n)><a><n> = list_length<a>
+{a:t0}
+gseqn_length<listn(a)><a> = list_length<a>
 //
 (* ****** ****** *)
 

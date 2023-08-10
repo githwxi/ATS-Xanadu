@@ -154,7 +154,7 @@ fnx
 loop
 {i,j:nat}.<i>.
 ( i0
-: int(i)
+: sint(i)
 , xs
 : list_vt(a, j))
 : list_vt(a, i+j) =
@@ -200,7 +200,7 @@ list_nilq
 case+ xs of
 |list_nil() => true
 |list_cons(_, _) => false
-) (*case*) // end-of-[list_nilq(xs)]
+) (*case+*)//end-of-[list_nilq(xs)]
 #impltmp
 <>(*tmp*)
 list_consq
@@ -209,7 +209,7 @@ list_consq
 case+ xs of
 |list_nil() => false
 |list_cons(_, _) => (true)
-) (*case*) // end-of-[list_consq(xs)]
+) (*case+*)//end-of-[list_consq(xs)]
 //
 (* ****** ****** *)
 //
@@ -387,10 +387,12 @@ list_length
 ) where
 {
 fnx
-loop{i,j:int}
+loop
+{i,j:int}
 ( xs
-: list(a, i)
-, j0: int(j)): int(i+j) =
+: list(a,i)
+, j0
+: sint( j )): sint(i+j) =
 (
 case+ xs of
 |
@@ -1001,8 +1003,8 @@ map0$fopr
 (
   list_vt_cons(x0, xs))
 }
-in
-!(strm_vt_append0<xs(n)>(res1,res2))
+in !
+(strm_vt_append0<xs(n)>(res1,res2))
 endlet // end of [list_cons(x0, xs)]
 )
 }(*where*)//end-of-[list_subsetize_vt(xs)]
@@ -1364,25 +1366,25 @@ For gseqn-operations
 (* ****** ****** *)
 //
 #impltmp
-{a:t0}//tmp
-gseqn_nilq<listn(a)><a> = list_nilq<>
-#impltmp
-{a:t0}//tmp
-gseqn_consq<listn(a)><a> = list_consq<>
-//
-(* ****** ****** *)
-//
-#impltmp
-{a:t0}//tmp
+{a:t0}
 gseqn_head<listn(a)><a> = list_head<a>
 #impltmp
-{a:t0}//tmp
+{a:t0}
 gseqn_tail<listn(a)><a> = list_tail<a>
 //
 (* ****** ****** *)
 //
 #impltmp
-{a:t0}//tmp
+{a:t0}
+gseqn_nilq<listn(a)><a> = list_nilq{a}
+#impltmp
+{a:t0}
+gseqn_consq<listn(a)><a> = list_consq{a}
+//
+(* ****** ****** *)
+//
+#impltmp
+{a:t0}
 gseqn_length<listn(a)><a> = list_length<a>
 //
 (* ****** ****** *)
