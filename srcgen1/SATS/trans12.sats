@@ -129,6 +129,8 @@ typedef s1explst = $S1E.s1explst
 //
 typedef s1qualst = $S1E.s1qualst
 //
+typedef s1marglst = $S1E.s1marglst
+//
 (* ****** ****** *)
 //
 typedef d1atcon = $S1E.d1atcon
@@ -695,7 +697,9 @@ fun
 trans12_smarg: s1marg -> s2varlst
 //
 fun
-trans12_sarglst: s1arglst -> s2varlst
+trans12_sarglst: (s1arglst)->s2varlst
+fun
+trans12_smarglst: (s1marglst)->s2varlstlst
 //
 (* ****** ****** *)
 //
