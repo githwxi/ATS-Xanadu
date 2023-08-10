@@ -436,6 +436,47 @@ endloc (*local*) // end of [local(d3ecl)]
 local
 //
 datatype
+timpl =
+TIMPL of
+(
+loctn, timpl_node)
+datatype
+timpl_vt =
+TIMPL_vt of
+(
+loctn, timpl_node)
+//
+#absimpl
+timpl_tbox = timpl
+//
+in (* in-of-local *)
+//
+#implfun
+timpl_make_node
+(   loc,nod   ) = TIMPL(loc,nod)
+//
+(* ****** ****** *)
+//
+#implfun
+timpl_get_lctn(d2i) =
+let
+  val+TIMPL(loc,nod) = d2i in loc
+end
+#implfun
+timpl_get_node(d2i) =
+let
+  val+TIMPL(loc,nod) = d2i in nod
+end
+//
+(* ****** ****** *)
+//
+end (*local*) // end of [local(timpl)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 d3valdcl =
 D3VALDCL of
 ( loc_t
