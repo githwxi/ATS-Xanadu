@@ -405,5 +405,11 @@ d3parsed_of_fildats
 val (  ) =
 fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
+val dpar =
+d3parsed_of_fildats
+("./DATA/gseqn00.dats")
+val (  ) =
+fperr33_d3parsed(g_stderr((*tmp*)), dpar)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_TEST_JS_test39_xatsopt.dats] *)

@@ -564,7 +564,7 @@ let
   gseq_strmize<xs><x0>(xs)
 in
   gseq_unstrm_vt
-  (strm_vt_fset_at<x0>(xs, i0, x0))
+  (strm_vt_fset0_at<x0>(xs, i0, x0))
 end(*let*)//end(gseq_fset_at(xs,i0,x0))
 *)
 //
@@ -775,8 +775,9 @@ loop
 (xx, gseq_cons<xs><x0>(x0, xs))
 )
 in
-  loop(xx, gseq_nil<xs><x0>())
-endlet//end-of-[gseq_unrlist_vt]
+(
+  loop(xx, gseq_nil<xs><x0>()) )
+endlet//end-of-[gseq_unrlist_vt(xs)]
 //
 (* ****** ****** *)
 //
@@ -788,8 +789,8 @@ gseq_unstrm
   gseq_unstrm_vt<xs><x0>(xs)
 ) where
 {
-val xs = strm_strmize<x0>(xx)
-}(*where*)//end-of(gseq_unstrm)
+  val xs = strm_strmize<x0>(xx)
+}(*where*)//end-of-(gseq_unstrm(xx))
 //
 (* ****** ****** *)
 //
@@ -797,12 +798,12 @@ val xs = strm_strmize<x0>(xx)
 <xs><x0>
 gseq_unstrm_vt
   (xx) =
-(
+let
+  val xs =
+  strm_vt_rlistize0<x0>(xx)
+in//let
   gseq_unrlist_vt<xs><x0>(xs)
-) where
-{
-val xs = strm_vt_rlistize0<x0>(xx)
-}(*where*)//end-of(gseq_unstrm_vt)
+end(*let*)//end-(gseq_unstrm_vt(xx))
 //
 (* ****** ****** *)
 //
@@ -2229,7 +2230,7 @@ end//end-of(gseq_imap_strm/strmize)
 gseq_istrmize
   ( xs ) =
 (
-  strm_vt_istrmize
+  strm_vt_istrmize0
   (gseq_strmize<xs><x0>(xs)) )
 //(* end of [ gseq_istrmize(xs) ] *)
 //
@@ -2337,7 +2338,7 @@ gseq_strmize<xs><x0>(xs)
 val ys =
 gseq_strmize<ys><y0>(ys)
 in//let
-strm_vt_z2strmize<x0,y0>(xs, ys)
+strm_vt_z2strmize0<x0,y0>(xs, ys)
 endlet(*end-of-[gseq_z2strmize(...)]*)
 //
 (* ****** ****** *)

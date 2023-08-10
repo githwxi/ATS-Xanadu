@@ -56,6 +56,7 @@ glseq_uncons_raw<xs><x0>(xs)
 <xs><x0>
 glseq_uncons_opt
   (xs) =
+(
 if
 glseq_nilq1<xs><x0>(xs)
 then
@@ -63,7 +64,7 @@ then
   optn_vt_nil((*void*)))
 else
 optn_vt_cons
-(glseq_uncons_raw<xs><x0>(xs))
+(glseq_uncons_raw<xs><x0>(xs)))
 //
 (* ****** ****** *)
 
@@ -91,18 +92,56 @@ z2forcmp0$fcmp<x0,x0> = gl_cmp00<x0>
 }(*where*) // [glseq_cmp00/z2forcmp0]
 
 (* ****** ****** *)
-
+//
+#impltmp
+<xs><x0>
+glseq_print0(xs) =
+let
+//
+val () =
+glseq_print0$beg
+<xs><x0>((*void*))
+//
+val () =
+(
+glseq_iforeach0<xs><x0>(xs)
+) where
+{
+//
+#impltmp
+iforeach0$work<x0>
+  (i0, x0) =
+(
+  gl_print0<x0>(x0)
+) where
+{
+val () =
+  if
+  (i0 > 0)
+  then
+  glseq_print0$sep<xs><x0>() }
+//
+} (* where *)
+//
+val () =
+glseq_print0$end<xs><x0>((*0*))
+//
+endlet // end of [glseq_print0(xs)]
+//
+(* ****** ****** *)
+//
 #impltmp
 <xs><x0>
 glseq_print1(xs) =
 let
 //
 val () =
-glseq_print1$beg<xs><x0>()
+glseq_print1$beg
+<xs><x0>((*void*))
 //
 val () =
 (
-  glseq_iforeach1<xs><x0>(xs)
+glseq_iforeach1<xs><x0>(xs)
 ) where
 {
 //
@@ -114,18 +153,28 @@ iforeach1$work<x0>
 ) where
 {
 val () =
-if
-(i0 > 0)
-then
-glseq_print1$sep<xs><x0>() }
+  if
+  (i0 > 0)
+  then
+  glseq_print1$sep<xs><x0>() }
 //
 } (* where *)
 //
 val () =
 glseq_print1$end<xs><x0>((*0*))
 //
-endlet (* end of [glseq_print1] *)
-
+endlet // end of [glseq_print1(xs)]
+//
+(* ****** ****** *)
+#impltmp
+<xs><x0>
+glseq_print0$beg() = strn_print("(")
+#impltmp
+<xs><x0>
+glseq_print0$end() = strn_print(")")
+#impltmp
+<xs><x0>
+glseq_print0$sep() = strn_print(";")
 (* ****** ****** *)
 #impltmp
 <xs><x0>
@@ -185,14 +234,6 @@ glseq_listize0(xs) =
 strm_vt_listize0
   (glseq_strmize0<xs><x0>(xs))
 *)
-(*
-#impltmp
-<xs><x0>
-glseq_rlistize0(xs) =
-strm_vt_rlistize0
-  (glseq_strmize0<xs><x0>(xs))
-*)
-//
 #impltmp
 <xs><x0>
 glseq_listize0(xs) =
@@ -203,6 +244,15 @@ in//let
 glseq_map0_list<xs><x0><x0>(xs)
 end(*let*)//end(glseq_listize0(xs))
 //
+(* ****** ****** *)
+//
+(*
+#impltmp
+<xs><x0>
+glseq_rlistize0(xs) =
+strm_vt_rlistize0
+  (glseq_strmize0<xs><x0>(xs))
+*)
 #impltmp
 <xs><x0>
 glseq_rlistize0(xs) =
@@ -476,8 +526,9 @@ glseq_unstrm_vt<xs><x0>
 glseq_filter0_list
   (  xs  ) =
 (
-  strm_vt_listize0
-  (glseq_filter0_strm<xs><x0>(xs)) )
+strm_vt_listize0
+(
+glseq_filter0_strm<xs><x0>(xs)))
 //
 (* ****** ****** *)
 //
@@ -485,7 +536,9 @@ glseq_filter0_list
 <xs><x0>
 glseq_filter0_strm
   (  xs  ) =
-strm_vt_filter0(glseq_strmize0<xs><x0>(xs))
+(
+  strm_vt_filter0
+  (glseq_strmize0<xs><x0>(xs)) )
 //
 (* ****** ****** *)
 //
@@ -493,7 +546,16 @@ strm_vt_filter0(glseq_strmize0<xs><x0>(xs))
 <xs><x0>
 glseq_forall0
   (  xs  ) =
-strm_vt_forall0(glseq_strmize0<xs><x0>(xs))
+(
+  strm_vt_forall0
+  (glseq_strmize0<xs><x0>(xs)) )
+#impltmp
+<xs><x0>
+glseq_forall1
+  (  xs  ) =
+(
+  strm_vt_forall0
+  (glseq_strmize1<xs><x0>(xs)) )
 //
 (* ****** ****** *)
 //
@@ -506,10 +568,26 @@ glseq_exists0
   forall0$test<x0>(x0) =
   not(exists0$test<x0>(x0))
 //
-in
-if
-glseq_forall0<xs><x0>(xs) then false else true
+in//let
+if // if
+glseq_forall0
+<xs><x0>( xs ) then false else true
 end(*let*)//end-of(glseq_exists0/forall0)
+//
+#impltmp
+<xs><x0>
+glseq_exists1
+  (  xs  ) = let
+//
+  #impltmp
+  forall1$test<x0>(x0) =
+  not(exists1$test<x0>(x0))
+//
+in//let
+if // if
+glseq_forall1
+<xs><x0>( xs ) then false else true
+end(*let*)//end-of(glseq_exists1/forall1)
 //
 (* ****** ****** *)
 //
@@ -588,7 +666,7 @@ glseq_strmize0<xs><x0>(xs2)
 in//let
 (
   glseq_unstrm_vt<xs><x0>
-  (strm_vt_append<x0>(xs1, xs2)) )
+  (strm_vt_append0<x0>(xs1, xs2)) )
 end (*let*)//end-[glseq_append0(xs,ys)]
 //
 (* ****** ****** *)
@@ -652,7 +730,7 @@ glseq_rstrmize0<xs><x0>(xs2)
 in//let
 (
   glseq_unstrm_vt<xs><x0>
-  (strm_vt_append<x0>(xs1, xs2)) )
+  (strm_vt_append0<x0>(xs1, xs2)) )
 end(*let*)//end(glseq_rappend0(xs1,xs2))
 //
 (* ****** ****** *)
@@ -963,20 +1041,11 @@ glseq_copy = g_copy<xs> // [gseq_copy]
 (* ****** ****** *)
 //
 #impltmp
-{xs:t0}
-{x0:t0}
-glseq_listize0<xs><x0> = gseq_listize<xs><x0>
-#impltmp
 {xs:t0}{x0:t0}
-glseq_rlistize0<xs><x0> = gseq_rlistize<xs><x0>
+glseq_strmize0<xs><x0> = gseq_strmize<xs><x0>
 //
 #impltmp
-{xs:t0}
-{x0:t0}
-glseq_strmize0<xs><x0> = gseq_strmize<xs><x0>
-#impltmp
-{xs:t0}
-{x0:t0}
+{xs:t0}{x0:t0}
 glseq_rstrmize0<xs><x0> = gseq_rstrmize<xs><x0>
 //
 (* ****** ****** *)

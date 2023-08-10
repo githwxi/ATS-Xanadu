@@ -12,7 +12,7 @@ UN =
 <map>
 <key,itm>
 gmap_size(kxs) =
-strm_vt_length
+strm_vt_length0
 (gmap_strmize<map><key,itm>(kxs))
 (* ****** ****** *)
 //
@@ -184,7 +184,7 @@ gmap_unstrm_vt
 gmap_unlist_vt(kxs) =
 gmap_unstrm_vt
 <map><key,itm>
-(list_vt_strmize<(key,itm)>(kxs))
+(list_vt_strmize0<(key,itm)>(kxs))
 //
 (* ****** ****** *)
 //

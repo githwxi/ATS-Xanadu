@@ -40,6 +40,7 @@ foreach0$work<x0> = g_free<x0>
 <xs><x0>
 glseq_uncons_exn
   (xs) =
+(
 if
 glseq_nilq1<xs><x0>(xs)
 then let
@@ -49,12 +50,13 @@ in
   $raise SubscriptExn())
 end // end of [then]
 else
-glseq_uncons_raw<xs><x0>(xs)
+glseq_uncons_raw<xs><x0>(xs))
 //
 #impltmp
 <xs><x0>
 glseq_uncons_opt
   (xs) =
+(
 if
 glseq_nilq1<xs><x0>(xs)
 then
@@ -62,7 +64,7 @@ then
   optn_vt_nil((*void*)))
 else
 optn_vt_cons
-(glseq_uncons_raw<xs><x0>(xs))
+(glseq_uncons_raw<xs><x0>(xs)))
 //
 (* ****** ****** *)
 
@@ -524,7 +526,7 @@ glseq_unstrm_vt<xs><x0>
 glseq_filter0_list
   (  xs  ) =
 (
-strm_vt_listize
+strm_vt_listize0
 (
 glseq_filter0_strm<xs><x0>(xs)))
 //
@@ -664,7 +666,7 @@ glseq_strmize0<xs><x0>(xs2)
 in//let
 (
   glseq_unstrm_vt<xs><x0>
-  (strm_vt_append<x0>(xs1, xs2)) )
+  (strm_vt_append0<x0>(xs1, xs2)) )
 end (*let*)//end-[glseq_append0(xs,ys)]
 //
 (* ****** ****** *)
@@ -728,7 +730,7 @@ glseq_rstrmize0<xs><x0>(xs2)
 in//let
 (
   glseq_unstrm_vt<xs><x0>
-  (strm_vt_append<x0>(xs1, xs2)) )
+  (strm_vt_append0<x0>(xs1, xs2)) )
 end(*let*)//end(glseq_rappend0(xs1,xs2))
 //
 (* ****** ****** *)
