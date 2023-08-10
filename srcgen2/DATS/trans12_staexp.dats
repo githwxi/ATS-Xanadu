@@ -1602,6 +1602,9 @@ S1Elams
 ( smas
 , tres, s1e1) = s1e0.node()
 //
+val () =
+tr12env_pshlam0(env0)//enter
+//
 val
 svss =
 trans12_s1maglst(env0, smas)
@@ -1610,7 +1613,11 @@ tres =
 trans12_sort1opt(env0, tres)
 //
 in//let
-  s2exp_lams(svss, s2e1) where
+let
+val () =
+tr12env_poplam0(env0)//HX:exit
+in//let
+  s2exp_lams(svss, s2e1) end where
 {
 val
 s2e1 =

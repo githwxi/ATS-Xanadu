@@ -25,23 +25,36 @@ gseqn_nilq(xs) =
 (*where*) // end of [gseqn_nilq(xs)]
 //
 (* ****** ****** *)
-
+//
 #impltmp
 <xs><x0>
 gseqn_consq(xs) =
-bool_neg<>(gseqn_nilq<xs><x0>(xs))
-
+(
+  bool_neg<>(gseqn_nilq<xs><x0>(xs)))
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs><x0>
+gseqn_listize(xs) =
+strq_vt_listize0(gseqn_strqize<xs><x0>(xs))
+//
+#impltmp
+<xs><x0>
+gseqn_rlistize(xs) =
+list_vt_reverse0(gseqn_listize<xs><x0>(xs))
+//
 (* ****** ****** *)
 //
 #impltmp
 <xs><x0>
 gseqn_unlist(xs) =
-gseqn_unlist_vt<xs><x0>(list_copy_vt(xs))
+gseqn_unlist_vt<xs><x0>(list_copy_vt<x0>(xs))
 //
 #impltmp
 <xs><x0>
 gseqn_unrlist(xs) =
-gseqn_unrlist_vt<xs><x0>(list_copy_vt(xs))
+gseqn_unrlist_vt<xs><x0>(list_copy_vt<x0>(xs))
 //
 (* ****** ****** *)
 
