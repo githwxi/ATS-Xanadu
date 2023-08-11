@@ -59,6 +59,12 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload name with d2cst_get_name
 (* ****** ****** *)
+#symload lctn with d3ecl_get_lctn
+#symload node with d3ecl_get_node
+(* ****** ****** *)
+#symload lctn with dimpl_get_lctn
+#symload node with dimpl_get_node
+(* ****** ****** *)
 
 local
 
@@ -258,6 +264,109 @@ endlet//end-of(tr3aenv_d2cins_any(env0,d2c0))
 (* ****** ****** *)
 
 endloc (*local*) // end of [local(tr3aenv...)]
+
+(* ****** ****** *)
+
+#impltmp
+tr3aenv_insert_d3ecl
+  (env0, d3cl) =
+(
+case+
+d3cl.node() of
+|
+D3Cfundclst _ => f0_fundclst(env0, d3cl)
+|
+D3Cimplmnt0 _ => f0_implmnt0(env0, d3cl)
+|
+D3Ctmplocal _ => f0_tmplocal(env0, d3cl)
+//
+| _ (* otherwise *) => ( (* nothing *) )
+//
+) where
+{
+//
+(* ****** ****** *)
+//
+fun
+f0_fundclst
+( env0:
+! tr3aenv, d3cl: d3ecl): void =
+let
+//
+val-
+D3Cfundclst
+( tknd
+, tqas
+, d2cs, d3fs) = d3cl.node()
+//
+in//let
+//
+case+ tqas of
+|list_nil _ =>
+((*nothing*))
+|list_cons _ =>
+(
+list_foreach(d2cs)) where
+{
+//
+#typedef x0 = d2cst
+//
+#impltmp
+foreach$work<x0>(x0) =
+(
+  tr3aenv_d2cins_any(env0, x0, d3cl)) }
+//
+end(*let*)//end-of-[f0_fundclst(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_implmnt0
+( env0:
+! tr3aenv, d3cl: d3ecl): void =
+let
+val-
+D3Cimplmnt0
+( tknd
+, sqas, tqas
+, dimp//dcst
+, tias, f3as
+, sres, dexp) = d3cl.node()
+in//let
+//
+case+
+dimp.node() of
+|DIMPLone1
+(  d2c1  ) =>
+(
+tr3aenv_d2cins_any(env0, d2c1, d3cl) )
+|DIMPLone2
+(d2c1, svts) =>
+(
+tr3aenv_d2cins_any(env0, d2c1, d3cl) )
+| // HX: DIMPLall1/DIMPLopt2
+_ (* otherwise *) => ( (* nothing *) )
+//
+end(*let*)//end-of-[f0_implmnt0(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tmplocal
+( env0:
+! tr3aenv, d3cl: d3ecl): void =
+let
+val-
+D3Ctmplocal
+( dtmp, tmps) = d3cl.node()
+in//let
+(
+  tr3aenv_insert_d3ecl(env0, dtmp) )
+end(*let*)//end-of-[f0_tmplocal(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+}(*where*)//end-of-[tr3aenv_insert_d3ecl(...)]
 
 (* ****** ****** *)
 
