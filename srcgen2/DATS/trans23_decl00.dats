@@ -506,12 +506,12 @@ end where // end-of-[let]
 //
 val loc0 = d2cl.lctn()
 //
-// (*
+(*
 val (  ) =
 prerrln("f0_implmnt0(23): loc0 = ", loc0)
 val (  ) =
 prerrln("f0_implmnt0(23): d2cl = ", d2cl)
-// *)
+*)
 //
 } (*where*) // end of [f0_implmnt0(env0,d2cl)]
 //

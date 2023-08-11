@@ -155,12 +155,14 @@ end
 end (*let*) // end of [f0_else(...)]
 //
 (* ****** ****** *)
+(*
 val () =
 prerrln("d2pat_make_dpis: loc0 = ", loc0)
 val () =
 prerrln("d2pat_make_dpis: d1p0 = ", d1p0)
 val () =
 prerrln("d2pat_make_dpis: dpis = ", dpis)
+*)
 (* ****** ****** *)
 //
 } (*where*) // end of [d2pat_make_dpis(...)]
@@ -261,12 +263,14 @@ end
 end (*let*) // end of [f0_else(...)]
 //
 (* ****** ****** *)
+(*
 val () =
 prerrln("d2exp_make_dpis: loc0 = ", loc0)
 val () =
 prerrln("d2exp_make_dpis: d1e0 = ", d1e0)
 val () =
 prerrln("d2exp_make_dpis: dpis = ", dpis)
+*)
 (* ****** ****** *)
 //
 } (*where*) // end of [d2exp_make_dpis(...)]
@@ -528,10 +532,12 @@ val d2cs =
   match2a_d2conlst
   (env0, d2cs, t2p1) )//val(d2cs)
 //
+(*
 val () = prerrln
 ("\
 trsym2a_d2pat: \
 f0_cons: d2cs(*matched*) = ", d2cs)
+*)
 //
 in//let
 (
@@ -581,10 +587,12 @@ val d2cs =
   match2a_d2ap1lst
   (env0, d2cs, tres) )//val(d2cs)
 //
+(*
 val () = prerrln
 ("\
 trsym2a_d2pat: \
 f0_dap1: d2cs(*matched*) = ", d2cs)
+*)
 //
 in//let
 (
@@ -899,7 +907,7 @@ val loc0 = d2e0.lctn((*void*))
 val t2p1 = d2e0.styp((*void*))
 val dexp = drxp.dexp((*void*))
 //
-// (*
+(*
 val () =
 prerrln
 ("trsym2a_d2exp: f0_sym0: loc0 = ", loc0)
@@ -909,7 +917,7 @@ prerrln
 val () =
 prerrln
 ("trsym2a_d2exp: f0_sym0: t2p1 = ", t2p1)
-// *)
+*)
 //
 in//let
 case+
@@ -1027,8 +1035,11 @@ let
 val loc0 = dsym.lctn()
 val tsym = dsym.styp()
 //
+(*
 val (  ) =
-prerrln("f1_sympp: dsym = ", dsym)
+prerrln
+("f1_sympp: dsym = ", dsym)
+*)
 //
 in//let
 case+
@@ -1037,10 +1048,10 @@ dsym.node() of
 |D2Evar(d2v1) =>
 let
 val t2p1 =
-d2v1.styp((*0*))
+  d2v1.styp((*0*))
 val ubtf =
-unify2a_s2typ(env0, t2p1, tsym)
-end//let//end-of-[D2Evar(d2v1)]
+  unify2a_s2typ(env0, t2p1, tsym)
+end(*let*)//end-of-[D2Evar(d2v1)]
 //
 |D2Econ(d2c1) =>
 let
@@ -1048,7 +1059,7 @@ val t2p1 =
 d2con2a_s2typ(loc0, d2c1)
 val ubtf =
 unify2a_s2typ(env0, t2p1, tsym)
-end//let//end-of-[D2Econ(d2c1)]
+end(*let*)//end-of-[D2Econ(d2c1)]
 //
 |D2Ecst(d2c1) =>
 let
@@ -1075,13 +1086,16 @@ f0_proj
 , d2e0: d2exp): void =
 let
 //
-val loc0 = d2e0.lctn()
+(*
+val
+loc0 = d2e0.lctn()
 val () =
 prerrln
 ("f0_proj: loc0 = ", loc0)
 val () =
 prerrln
 ("f0_proj: d2e0 = ", d2e0)
+*)
 //
 val-
 D2Eproj

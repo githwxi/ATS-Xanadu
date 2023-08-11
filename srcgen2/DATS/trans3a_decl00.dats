@@ -83,7 +83,7 @@ end (*let*) // end-of-[d3ecl_tmplocal]
 trans3a_d3ecl
 ( env0, d3cl ) = let
 //
-// (*
+(*
 val
 loc0 = d3cl.lctn()
 val () =
@@ -92,7 +92,7 @@ prerrln
 val () =
 prerrln
 ("trans3a_d3ecl: d3cl = ", d3cl)
-// *)
+*)
 //
 in//let
 //
@@ -567,10 +567,10 @@ d3fundcl(loc0,dvar,f3as,sres,tdxp,wsxp)
 end where
 {
 //
-// (*
+(*
 val () =
 prerrln("trans3a_d3fundcl: dfun = ", dfun)
-// *)
+*)
 //
 }(*where*)//end-of-[trans3a_d3fundcl(env0,dfun)]
 
