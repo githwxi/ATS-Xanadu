@@ -231,6 +231,13 @@ tr3aenv_d2cins_any
 (* ****** ****** *)
 //
 fun
+tr3aenv_insert_d3ecl
+( env0:
+! tr3aenv, d3cl : d3ecl): void
+//
+(* ****** ****** *)
+//
+fun
 <x0:t0>
 <y0:t0>
 list_trans3a_fnp

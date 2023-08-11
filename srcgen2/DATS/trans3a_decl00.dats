@@ -125,6 +125,8 @@ D3Cfundclst _ => f0_fundclst(env0, d3cl)
 //
 |
 D3Cimplmnt0 _ => f0_implmnt0(env0, d3cl)
+|
+D3Ctmplocal _ => f0_tmplocal(env0, d3cl)
 //
 | _(*otherwise*) =>
 let
@@ -319,7 +321,6 @@ end(*let*)//end-of-[f0_fundclst(env0,d3cl)]
 //
 (* ****** ****** *)
 //
-//
 fun
 f0_implmnt0
 ( env0:
@@ -344,17 +345,25 @@ dexp = trans3a_d3exp(env0, dexp)
 //
 in//let
 //
+let
+val
+dimp =
 d3ecl
 (
 loc0,
 D3Cimplmnt0
 ( tknd
-, sqas,tqas,dimp,tias,f3as,sres,dexp) )
+, sqas,tqas,dimp,tias,f3as,sres,dexp))
+in//let
+(
+tr3aenv_insert_d3ecl(env0, dimp); dimp)
+end//let
 //
 end where
 {
 //
-val loc0 = d3cl.lctn()
+val
+loc0 = d3cl.lctn((*void*)) // HX: enter
 //
 (*
 val (  ) =
@@ -364,6 +373,55 @@ prerrln("f0_implmnt0(3a): d3cl = ", d3cl)
 *)
 //
 }(*where*)//end of [f0_implmnt0(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tmplocal
+( env0:
+! tr3aenv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val-
+D3Ctmplocal
+( dimp, tmps) = d3cl.node()
+//
+val
+dimp = trans3a_d3ecl(env0, dimp)
+//
+(*
+val
+(  ) =
+prerrln
+("f0_tmplocal(3a): dimp = ", dimp)
+*)
+//
+in
+let
+//
+val dtmp =
+(
+ d3ecl(loc0, D3Ctmplocal(dimp, tmps)))
+//
+in//let
+(
+tr3aenv_insert_d3ecl(env0, dtmp); dtmp)
+end//let
+end where // end-of-[let]
+{
+//
+val
+loc0 = d3cl.lctn((*void*)) // HX: enter
+//
+(*
+val (  ) =
+prerrln("f0_tmplocal(3a): loc0 = ", loc0)
+val (  ) =
+prerrln("f0_tmplocal(3a): d3cl = ", d3cl)
+*)
+//
+}(*where*)//end of [f0_tmplocal(env0,d3cl)]
 //
 (* ****** ****** *)
 //
