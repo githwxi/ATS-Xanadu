@@ -59,9 +59,12 @@ case+
 d3cl.node() of
 //
 |
+D3Ctmplocal _ => ( true )
+//
+|
 D3Cfundclst
-( tknd,tqas
-, d2cs,d3fs) => list_consq(tqas)
+( tknd, tqas
+, d2cs, d3fs) => list_consq(tqas)
 //
 |
 D3Cimplmnt0
@@ -71,6 +74,7 @@ D3Cimplmnt0
 , f3as,sres,dexp) => dimpl_tmpq(dimp)
 //
 | _(* otherwise *) => (    false    ))
+//(*case+*)//end-of-[d3ecl_impltmpq(d3cl)]
 //
 (* ****** ****** *)
 

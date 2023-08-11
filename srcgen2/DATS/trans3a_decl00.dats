@@ -138,6 +138,8 @@ end (*let*) // end of [_(*otherwise*)] // temp
 end where
 {
 //
+(* ****** ****** *)
+//
 fun
 f0_local0
 ( env0
@@ -155,45 +157,17 @@ val (  ) =
 tr3aenv_pshloc1(env0)
 val head =
 trans3a_d3eclist(env0, head)
-//
-val tmps =
-(
-list_filter(head)
-) where {
-#typedef x0 = d3ecl
-#impltmp
-filter$test<x0> = d3ecl_impltmpq
-}(*where*) // end of [val(tmps)]
-//
 val body =
-if
-(
-  list_nilq(tmps))
-then ( body ) else
-(
-  list_map(body) ) where
-{
-//
-#typedef x0 = d3ecl//map<x0><y0>
-#typedef y0 = d3ecl//map<x0><y0>
-//
-#impltmp
-map$fopr<x0><y0>(x0) =
-(
-if
-d3ecl_impltmpq(x0)
-then
-d3ecl_tmplocal(tmps, x0) else x0)
-}
+trans3a_d3eclist(env0, body)
 //
 in//let
 //
 let
 //
 val (  ) =
-  tr3aenv_pshloc2(env0)//enter
+tr3aenv_pshloc2(env0)//enter
 val body =
-  trans3a_d3eclist(env0, head)
+trans3a_tmplocal(env0,head,body)
 val (  ) = tr3aenv_locjoin(env0)
 //
 in//let
@@ -428,6 +402,87 @@ prerrln("f0_tmplocal(3a): d3cl = ", d3cl)
 }(*where*)//end of [trans3a_d3ecl(env0,d3cl)]
 
 (* ****** ****** *)
+//
+#implfun
+trans3a_tmplocal
+( env0
+, head, body ) =
+let
+//
+val tmps =
+(
+list_filter(head))
+where {
+#typedef x0 = d3ecl
+#impltmp
+filter$test
+<x0>(* x0 *) = d3ecl_impltmpq
+}(*where*)//end of [val(tmps)]
+//
+in//let
+//
+case+ tmps of
+|
+list_nil _ => (    body    )
+|
+list_cons _ =>
+let
+val dres = list_vt_nil((*0*))
+in//let
+  list_vt2t
+  (auxloop(env0,tmps,body,dres))
+end//let//end-[trans3a_tmplocal]
+//
+end where
+{
+//
+#vwtpdef
+d3eclist_vt = ( list_vt(d3ecl) )
+//
+fun
+auxloop
+( env0:
+! tr3aenv
+, tmps: d3eclist
+, body: d3eclist
+, dres: d3eclist_vt): d3eclist_vt =
+(
+case+ body of
+|
+list_nil
+((*void*)) =>
+list_vt_reverse0(dres)
+|
+list_cons
+(d3cl, body) =>
+(
+if
+(
+  d3ecl_impltmpq(d3cl))
+then
+let
+//
+val dtmp =
+d3ecl_tmplocal(tmps, d3cl)
+val dres =
+(
+  list_vt_cons(dtmp, dres))
+//
+val (  ) =
+tr3aenv_insert_d3ecl(env0,dtmp)
+//
+in//let
+(
+auxloop(env0, tmps, body, dres))
+end else // end-of-then
+(
+auxloop(env0, tmps, body, dres)))//end-of-if
+//
+)(*case+*)
+//
+}(*where*)//end of [trans3a_tmplocal(env0,...)]
+//
+(* ****** ****** *)
 
 #implfun
 trans3a_d3valdcl
@@ -450,7 +505,7 @@ trans3a_teqd3exp(env0, tdxp)
 in//let
 d3valdcl_make_args(loc0,dpat,tdxp,wsxp)
 end//let
-(*let*)//end-of-[trans3a_d3valdcl(env0,dval)]
+//(*let*)//end-of[trans3a_d3valdcl(env0,dval)]
 
 (* ****** ****** *)
 
