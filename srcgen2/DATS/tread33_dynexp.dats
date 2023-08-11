@@ -575,6 +575,25 @@ endlet//end of [d3exp_top_errck(...)]
 (* ****** ****** *)
 //
 fun
+d3exp_timp_errck
+(loc0: loc_t
+,t2p0: s2typ
+,dtmp: d3exp
+,timp: timpl): d3exp =
+let
+val
+lvl0 =
+d3exp_errvl(dtmp) in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_styp_node
+(loc0, t2p0, D3Etimp(dtmp, timp)) )
+endlet//end of [d3exp_timp_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d3exp_sapp_errck
 (loc0: loc_t
 ,t2p0: s2typ
@@ -1654,6 +1673,8 @@ f0_var(d3e0, err)
 //
 |D3Etop _ => f0_top(d3e0, err)
 //
+|D3Etimp _ => f0_timp(d3e0, err)
+//
 |D3Esapp _ => f0_sapp(d3e0, err)
 |D3Esapq _ => f0_sapq(d3e0, err)
 //
@@ -1773,6 +1794,32 @@ let
 val loc = d3e.lctn() in
 d3exp_top_errck(loc, t2p, sym1) endlet
 end (*let*) // end of [f0_top(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_timp
+( d3e: d3exp
+, err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val-
+D3Etimp
+( dtmp, timp) = d3e.node()
+//
+val
+dtmp = tread33_d3exp(dtmp, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+(
+  d3exp_timp_errck
+  (d3e.lctn(),dtmp.styp(),dtmp,timp) )
+end (*let*) // end of [f0_timp(d3e,err)]
 //
 (* ****** ****** *)
 //

@@ -1002,8 +1002,6 @@ endlet // end of [d3exp_annot_errck(...)]
 //
 (* ****** ****** *)
 //
-(* ****** ****** *)
-//
 #implfun
 tread23_d3pat
 ( d3p0, err ) =
@@ -1338,8 +1336,13 @@ end (*let*) // end-of-[else]
 end (*let*) // end of [f0_annot(d3p,err)]
 //
 (* ****** ****** *)
+(*
+  val () =
+  prerrln("tread23_d3pat: d3p0 = ", d3p0)
+*)
+(* ****** ****** *)
 //
-} (*where*)//end[tread23_d3pat(d3p0,err)]
+} (*where*)//end-[tread23_d3pat(d3p0,err)]
 //
 (* ****** ****** *)
 //
@@ -2419,10 +2422,10 @@ val d3e = d3exp_errck(lvl, d3e) in (d3e)
 end (*let*) // end of [f0_none2(d3e,err)]
 //
 (* ****** ****** *)
-// (*
+(*
   val () =
   prerrln("tread23_d3exp: d3e0 = ", d3e0)
-// *)
+*)
 (* ****** ****** *)
 //
 } (*where*)//end-[tread23_d3exp(d3e0,err)]
