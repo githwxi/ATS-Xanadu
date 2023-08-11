@@ -144,8 +144,8 @@ if
 (nerror=0)
 then (dpar) else
 d3parsed
-(stadyn
-,nerror,source,t1penv,t2penv,t3penv,parsed)
+(stadyn,
+ nerror,source,t1penv,t2penv,t3penv,parsed)
 //
 end(*let*)//end-of(d3parsed_of_tread23(dpar))
 

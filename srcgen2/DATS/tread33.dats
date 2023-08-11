@@ -45,6 +45,9 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload
+_(*?*) = "./xsymmap_topmap.dats"
+(* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
@@ -132,6 +135,8 @@ val t1penv =
 d3parsed_get_t1penv(dpar)
 val t2penv =
 d3parsed_get_t2penv(dpar)
+val t3penv =
+d3parsed_get_t3penv(dpar)
 //
 val parsed =
 d3parsed_get_parsed(dpar)
@@ -139,13 +144,17 @@ d3parsed_get_parsed(dpar)
 val parsed =
 tread33_d3eclistopt(parsed, nerror)
 //
+val (    ) = prerrln
+("d3parsed_of_tread33: t3penv = ", t3penv)
+//
 in//let
 //
-if
+if // if
 (nerror=0)
 then (dpar) else
 d3parsed
-(stadyn,nerror,source,t1penv,t2penv,parsed)
+(stadyn,
+ nerror,source,t1penv,t2penv,t3penv,parsed)
 //
 end(*let*)//end-of(d3parsed_of_tread33(dpar))
 //

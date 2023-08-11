@@ -5,31 +5,37 @@ For ATS3/XATSOPT
 *)
 (* ****** ****** *)
 #include
-"prelude\
+"\
+prelude\
 /HATS/prelude_dats.hats"
 (* ****** ****** *)
 //
 // #ifdef(_XATSOPT_JS_)
 //
 #include
-"prelude\
-/HATS/CATS/JS/prelude_dats.hats"
+"\
+prelude/HATS\
+/CATS/JS/prelude_dats.hats"
 //
 // #endif // end of [ifdef(_XATSOPT_JS_)]
 //
 (* ****** ****** *)
 #staload _ =
-"xatslib\
+"\
+xatslib\
 /libcats/DATS/synoug0.dats"
 (* ****** ****** *)
 #staload _ =
-"xatslib\
+"\
+xatslib\
 /githwxi/DATS/genv000.dats"
 #staload _ =
-"xatslib\
+"\
+xatslib\
 /githwxi/DATS/f00path.dats"
 #staload _ =
-"xatslib\
+"\
+xatslib\
 /githwxi/DATS/g00iout.dats"
 (* ****** ****** *)
 #staload _ =
@@ -39,7 +45,8 @@ For ATS3/XATSOPT
 // #ifdef(_XATSOPT_JS_)
 //
 #staload
-"xatslib\
+"\
+xatslib\
 /githwxi\
 /DATS/CATS/JS/Node/basics0.dats"
 //
