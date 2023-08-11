@@ -1047,14 +1047,14 @@ s2cst_make_idst(loc0, sid1, s2t2)
 val (  ) = s2cst_set_sexp(s2c1,sdef)
 val (  ) = s2cst_set_styp(s2c1,tdef)
 //
-// (*
+(*
 val (  ) =
 prerrln("f0_sexpdef: s2c1 = ", s2c1)
 val (  ) =
 prerrln("f0_sexpdef: sdef = ", sdef)
 val (  ) =
 prerrln("f0_sexpdef: tdef = ", tdef)
-// *)
+*)
 //
 } (*where*) // end of [val(s2c1)=s2c1]
 //
