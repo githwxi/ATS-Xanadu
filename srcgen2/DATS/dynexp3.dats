@@ -720,6 +720,8 @@ d1topenv // t1penv
 ,
 d2topenv // t2penv
 ,
+d3topenv // t3penv
+,
 d3eclistopt)//program
 //
 #absimpl
@@ -738,8 +740,8 @@ d3parsed_get_stadyn
 val+
 D3PARSED
 ( stadyn
-, nerror, source
-, t1penv, t2penv, parsed) = dpar
+, nerror, source, t1penv
+, t2penv, t3penv, parsed) = dpar
 } (*where*)//end-of-[d3parsed_get_stadyn]
 
 (* ****** ****** *)
@@ -753,8 +755,8 @@ d3parsed_get_nerror
 val+
 D3PARSED
 ( stadyn
-, nerror, source
-, t1penv, t2penv, parsed) = dpar
+, nerror, source, t1penv
+, t2penv, t3penv, parsed) = dpar
 } (*where*)//end-of-[d3parsed_get_nerror]
 
 (* ****** ****** *)
@@ -768,8 +770,8 @@ d3parsed_get_source
 val+
 D3PARSED
 ( stadyn
-, nerror, source
-, t1penv, t2penv, parsed) = dpar
+, nerror, source, t1penv
+, t2penv, t3penv, parsed) = dpar
 } (*where*)//end-of-[d3parsed_get_source]
 
 (* ****** ****** *)
@@ -783,9 +785,9 @@ d3parsed_get_t1penv
 val+
 D3PARSED
 ( stadyn
-, nerror, source
-, t1penv, t2penv, parsed) = dpar
-} (*where*)//end-of-[d3parsed_get_topenv]
+, nerror, source, t1penv
+, t2penv, t3penv, parsed) = dpar
+} (*where*)//end-of-[d3parsed_get_t1penv]
 
 (* ****** ****** *)
 
@@ -798,9 +800,24 @@ d3parsed_get_t2penv
 val+
 D3PARSED
 ( stadyn
-, nerror, source
-, t1penv, t2penv, parsed) = dpar
-} (*where*)//end-of-[d3parsed_get_topenv]
+, nerror, source, t1penv
+, t2penv, t3penv, parsed) = dpar
+} (*where*)//end-of-[d3parsed_get_t2penv]
+
+(* ****** ****** *)
+
+#implfun
+d3parsed_get_t3penv
+  (dpar) =
+(
+  t3penv ) where
+{
+val+
+D3PARSED
+( stadyn
+, nerror, source, t1penv
+, t2penv, t3penv, parsed) = dpar
+} (*where*)//end-of-[d3parsed_get_t3penv]
 
 (* ****** ****** *)
 
@@ -813,22 +830,23 @@ d3parsed_get_parsed
 val+
 D3PARSED
 ( stadyn
-, nerror, source
-, t1penv, t2penv, parsed) = dpar
+, nerror, source, t1penv
+, t2penv, t3penv, parsed) = dpar
 } (*where*)//end-of-[d3parsed_get_parsed]
 
 (* ****** ****** *)
 //
 #implfun
 d3parsed_make_args
-(stadyn
-,nerror, source
-,t1penv, t2penv, parsed) =
+( stadyn
+, nerror, source
+, t1penv, t2penv
+, t3penv, parsed) =
 (
 D3PARSED
-(stadyn,nerror
-,source,t1penv,t2penv,parsed)
-) where
+( stadyn
+, nerror, source, t1penv
+, t2penv, t3penv, parsed)) where
 {
 (*
 val () =

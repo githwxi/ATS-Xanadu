@@ -2125,7 +2125,7 @@ D2PARSED
 ( stadyn
 , nerror, source
 , t1penv, t2penv, parsed) = dpar
-} (*where*)//end-of-[d2parsed_get_topenv]
+} (*where*)//end-of-[d2parsed_get_t1penv]
 
 (* ****** ****** *)
 
@@ -2140,7 +2140,7 @@ D2PARSED
 ( stadyn
 , nerror, source
 , t1penv, t2penv, parsed) = dpar
-} (*where*)//end-of-[d2parsed_get_topenv]
+} (*where*)//end-of-[d2parsed_get_t2penv]
 
 (* ****** ****** *)
 
@@ -2161,14 +2161,14 @@ D2PARSED
 //
 #implfun
 d2parsed_make_args
-(stadyn
-,nerror, source
-,t1penv, t2penv, parsed) =
+( stadyn
+, nerror, source
+, t1penv, t2penv, parsed) =
 (
 D2PARSED
-(stadyn,nerror
-,source,t1penv,t2penv,parsed)
-) where
+( stadyn
+, nerror, source
+, t1penv, t2penv, parsed)) where
 {
 (*
 val () =
