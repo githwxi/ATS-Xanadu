@@ -112,7 +112,8 @@ be used for overloading resolution?
 iforall_cfr
 (
 xs,
-lam(i1:int, x1) =>
+lam
+(i1:int, x1:int) =>
 if
 (x0 != x1)
 then (abs(x0-x1) != i1+1) else false)
@@ -147,9 +148,11 @@ boardlst_extend
 : list(board)): list(board) =
 foldr_cfr
 (
-xss, nil,
-lam(xs,r0) =>
-list_append(board_extend(xs), r0))
+xss,
+list_nil,
+lam(xs, r0) =>
+(
+  list_append(board_extend(xs), r0)))
 //(*where*)//end-[boardlst_extend(...)]
 //
 (* ****** ****** *)
