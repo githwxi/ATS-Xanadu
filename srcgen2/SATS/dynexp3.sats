@@ -68,7 +68,7 @@ SYM = "./xsymbol.sats"
 MAP = "./xsymmap.sats"
 //
 #typedef
-sym_t = $SYM.sym_t
+  sym_t = ($SYM.sym_t)
 //
 (* ****** ****** *)
 //
@@ -76,9 +76,9 @@ sym_t = $SYM.sym_t
 FP0 = "./filpath.sats"
 //
 #typedef
-fpath = $FP0.fpath
+  fpath = ($FP0.fpath)
 #typedef
-fpathopt = $FP0.fpathopt
+  fpathopt = $FP0.fpathopt
 //
 (* ****** ****** *)
 //
@@ -885,6 +885,14 @@ It is a suitable datatype for JSONIZATION.
 *)
 (* ****** ****** *)
 //
+datatype
+d3topenv =
+|D3TOPENVnone of ()
+|D3TOPENVsome of
+( $MAP.topmap(d3eclist) )
+//
+(* ****** ****** *)
+//
 #abstbox d3parsed_tbox // ptr
 #typedef d3parsed = d3parsed_tbox
 //
@@ -903,12 +911,18 @@ fun
 d3parsed_get_stadyn:(d3parsed)->sint
 fun
 d3parsed_get_nerror:(d3parsed)->sint
+//
 fun
 d3parsed_get_source:(d3parsed)->lcsrc
+//
 fun
 d3parsed_get_t1penv:(d3parsed)->d1topenv
 fun
 d3parsed_get_t2penv:(d3parsed)->d2topenv
+//
+fun
+d3parsed_get_t3penv:(d3parsed)->d3topenv
+//
 fun
 d3parsed_get_parsed:(d3parsed)->d3eclistopt
 //
@@ -926,6 +940,7 @@ d3parsed_make_args
 , source:lcsrc
 , t1penv:d1topenv
 , t2penv:d2topenv
+, t3penv:d3topenv
 , parsed:d3eclistopt): d3parsed//end-fun
 //
 #symload d3parsed with d3parsed_make_args

@@ -106,10 +106,11 @@ trans3a_d3eclistopt(env0, parsed)
 //
 in//let
 let
-val d3cenv = tr3aenv_free_top(env0)
+val t3penv = tr3aenv_free_top(env0)
 in//let
 d3parsed
-(stadyn,nerror,source,t1penv,t2penv,parsed)
+(stadyn
+,nerror,source,t1penv,t2penv,t3penv,parsed)
 end
 end (*let*) // end of [d3parsed_trans3a(dpar)]
 

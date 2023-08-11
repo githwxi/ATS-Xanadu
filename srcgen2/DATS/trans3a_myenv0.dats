@@ -71,7 +71,8 @@ local
 datavwtp
 tr3aenv =
 TR3AENV of
-(stkmap(d3eclist))
+( topmap(d3eclist)
+, stkmap(d3eclist) )
 #absimpl tr3aenv_vtbx = tr3aenv
 
 in//local
@@ -82,9 +83,10 @@ in//local
 tr3aenv_make_nil
   ( (*void*) ) = let
 //
-val
-stkmap =
-stkmap_make_nil() in TR3AENV(stkmap)
+val map1 =
+topmap_make_nil()
+val map2 =
+stkmap_make_nil() in TR3AENV(map1, map2)
 //
 end(*let*) // end of [tr3aenv_make_nil()]
 //
@@ -96,17 +98,20 @@ tr3aenv_free_top
 (
 case+ env0 of
 | ~
-TR3AENV(stkmap) =>
-let
+TR3AENV
+(map1, map2) =>
+(
+D3TOPENVsome(map1)
+) where
+{
 //
 var
-stkmap = stkmap
+stkmap = map2
 //
 val nerr =
 stkmap_poptop0(stkmap)
 //
-val (  ) =
-stkmap_free_nil(stkmap) in () end//let
+val (  ) = stkmap_free_nil(stkmap) }
 )(*case+*)//end-of-(tr3aenv_free_top(env0))
 //
 (* ****** ****** *)
@@ -116,7 +121,8 @@ tr3aenv_poplet0
 (     env0     ) = let
 //
 val+
-@TR3AENV(!stkmap) = env0
+@TR3AENV
+(topmap, !stkmap) = env0
 //
 in//let
 //
@@ -134,7 +140,8 @@ tr3aenv_pshlet0
 (     env0     ) = let
 //
 val+
-@TR3AENV(!stkmap) = env0
+@TR3AENV
+(topmap, !stkmap) = env0
 //
 in//let
 //
@@ -149,7 +156,8 @@ tr3aenv_pshloc1
 (     env0     ) = let
 //
 val+
-@TR3AENV(!stkmap) = env0
+@TR3AENV
+(topmap, !stkmap) = env0
 //
 in//let
 //
@@ -165,7 +173,8 @@ tr3aenv_pshloc2
 (     env0     ) = let
 //
 val+
-@TR3AENV(!stkmap) = env0
+@TR3AENV
+(topmap, !stkmap) = env0
 //
 in//let
 //
@@ -183,7 +192,8 @@ tr3aenv_locjoin
 (     env0     ) = let
 //
 val+
-@TR3AENV(!stkmap) = env0
+@TR3AENV
+(topmap, !stkmap) = env0
 //
 in//let
 //
@@ -207,7 +217,8 @@ tr3aenv_d2crch_opt
 val k0 = d2c0.name()
 //
 val+
-TR3AENV(stkmap) = env0
+~TR3AENV
+(topmap, stkmap) = env0
 val opt1 =
 stkmap_search_opt(stkmap, k0)
 //
@@ -256,7 +267,8 @@ prerrln
 *)
 //
 val+
-@TR3AENV(!stkmap) = env0 in//let
+@TR3AENV
+(topmap, !stkmap) = env0 in//let
 stkmap_insert_any(stkmap, k0, x0) end
 //
 endlet//end-of(tr3aenv_d2cins_any(env0,d2c0))

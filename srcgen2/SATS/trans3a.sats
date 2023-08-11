@@ -158,6 +158,8 @@ MAP = "./xsymmap.sats"
 (* ****** ****** *)
 #typedef
  d3parsed  =  $D3E.d3parsed
+#typedef
+ d3topenv  =  $D3E.d3topenv
 (* ****** ****** *)
 #typedef
 d3valdclist = $D3E.d3valdclist
@@ -179,10 +181,12 @@ d3parsed_of_trans3a
 (* ****** ****** *)
 //
 fun
-tr3aenv_make_nil((*0*)):tr3aenv
+tr3aenv_make_nil
+( (*void*) ): tr3aenv
 //
 fun
-tr3aenv_free_top(tr3aenv):(void)
+tr3aenv_free_top
+( env0 : tr3aenv ) : (d3topenv)
 //
 (* ****** ****** *)
 //

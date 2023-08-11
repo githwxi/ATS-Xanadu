@@ -67,15 +67,18 @@ SYM = "./xsymbol.sats"
 #staload
 MAP = "./xsymmap.sats"
 //
-#typedef sym_t = $SYM.sym_t
+#typedef
+  sym_t = ($SYM.sym_t)
 //
 (* ****** ****** *)
 //
 #staload
 LEX = "./lexing0.sats"
 //
-#typedef tnode = $LEX.tnode
-#typedef token = $LEX.token
+#typedef
+  tnode = ($LEX.tnode)
+#typedef
+  token = ($LEX.token)
 //
 (* ****** ****** *)
 //
@@ -83,9 +86,9 @@ LEX = "./lexing0.sats"
 FP0 = "./filpath.sats"
 //
 #typedef
-fpath = $FP0.fpath
+  fpath = ($FP0.fpath)
 #typedef
-fpathopt = $FP0.fpathopt
+  fpathopt = $FP0.fpathopt
 //
 (* ****** ****** *)
 #staload
