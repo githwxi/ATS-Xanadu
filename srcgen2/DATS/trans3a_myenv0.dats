@@ -219,8 +219,18 @@ val k0 = d2c0.name()
 val+
 ~TR3AENV
 (topmap, stkmap) = env0
-val opt1 =
+//
+val opt0 =
 stkmap_search_opt(stkmap, k0)
+//
+val opt1 =
+(
+case+ opt0 of
+| !
+optn_vt_cons _ => opt0
+| ~
+optn_vt_nil( ) =>
+topmap_search_opt(topmap, k0))
 //
 (*
 val () =
@@ -233,7 +243,7 @@ in//let
 (
 case+ opt1 of
 | ~ optn_vt_nil() => list_nil(*0*)
-| ~ optn_vt_cons(dcls) => (  dcls  ))
+| ~ optn_vt_cons(dcls) => (  dcls  ) )
 //
 end(*let*)//end-of-(tr3aenv_d2crch_opt(...))
 //
@@ -269,7 +279,13 @@ prerrln
 val+
 @TR3AENV
 (topmap, !stkmap) = env0 in//let
-stkmap_insert_any(stkmap, k0, x0) end
+(
+if
+stkmap_nilq(stkmap)
+then
+topmap_insert_any(topmap, k0, x0)
+else
+stkmap_insert_any(stkmap, k0, x0)) end
 //
 endlet//end-of(tr3aenv_d2cins_any(env0,d2c0))
 //
