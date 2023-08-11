@@ -781,6 +781,7 @@ timpl_get_node
 fun
 timpl_make_node
 (loc:loc_t,nod:timpl_node): timpl
+//
 #symload timpl with timpl_make_node
 //
 (* ****** ****** *)

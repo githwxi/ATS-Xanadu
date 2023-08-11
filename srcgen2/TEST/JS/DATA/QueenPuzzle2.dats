@@ -72,17 +72,17 @@ board_print
 (xs: board): void =
 (
 gseq_rforeach
-< xs >< x0 >( xs )
-) where {
+<xs><x0>( xs ) )
+where {
 //
 #typedef x0 = sint
 #typedef xs = board
 //
 #impltmp
 rforeach$work
-< x0 >( x0 ) =
+< x0 >(  x0  ) =
 (
-  loop(0) ) where
+  loop(0(*i0*)) ) where
 {
 fun
 loop(i0) =

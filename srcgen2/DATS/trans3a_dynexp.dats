@@ -897,10 +897,30 @@ trans3a_t2jaglst(env0, t2js)
 val
 d3f0 = trans3a_d3exp(env0, d3f0)
 //
+val
+d3e0 =
+d3exp_make_styp_node
+(loc0, t2p0, D3Etapq(d3f0, t2js))
+//
+in//let
+//
+(
+case+
+d3f0.node() of
+|D3Ecst(d2c1) =>
+let
+val dcls =
+tr3aenv_d2crch_opt(env0, d2c1)
+val timp =
+timpl(loc0, TIMPLall1(d2c1, dcls))
 in//let
 (
   d3exp_make_styp_node
-  (loc0, t2p0, D3Etapq(d3f0, t2js)) )
+  (loc0, t2p0, D3Etimp(d3e0, timp)))
+end (*let*) // end-of-[D3Ecst(d2c1)]
+|
+_ (*non-D3Ecst*) => (     d3e0     ) )
+//
 end(*let*)//end-of-[ f0_tapq(env0,d3e0) ]
 //
 (* ****** ****** *)
@@ -1631,10 +1651,17 @@ val t2p0 =
 trans3a_s2typ(env0, t2p0)
 //
 val
+(  ) =
+tr3aenv_pshlet0(env0)//enter
+//
+val
 dcls =
 trans3a_d3eclist(env0, dcls)
+//
 val
 d3e1 = trans3a_d3exp(env0, d3e1)
+//
+val (  ) = tr3aenv_poplet0(env0)
 //
 in//let
 (

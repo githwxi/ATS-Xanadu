@@ -422,6 +422,15 @@ trans3a_d3ecl
 (* ****** ****** *)
 //
 fun
+trans3a_tmplocal
+( env0:
+! tr3aenv,
+  head: d3eclist
+, body: d3eclist): d3eclist//fun
+//
+(* ****** ****** *)
+//
+fun
 trans3a_teqd3exp
 ( env0:
 ! tr3aenv,tdxp:teqd3exp):teqd3exp
