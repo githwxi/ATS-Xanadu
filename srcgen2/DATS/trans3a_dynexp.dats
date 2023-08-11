@@ -908,6 +908,7 @@ in//let
 case+
 d3f0.node() of
 //
+(*
 |D3Ecst(d2c1) =>
 let
 val dcls =
@@ -919,6 +920,7 @@ in//let
   d3exp_make_styp_node
   (loc0, t2p0, D3Etimp(d3e0, timp)))
 end (*let*) // end-of-[D3Ecst(d2c1)]
+*)
 //
 |
 _ (*non-D3Ecst*) => (     d3e0     ) )
