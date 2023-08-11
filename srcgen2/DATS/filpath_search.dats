@@ -76,12 +76,14 @@ in
 ) where
 {
 //
+(*
 val () =
 prerrln
 ("fsrch_dcurrent: dir0 = ", dir0)
 val () =
 prerrln
 ("fsrch_dcurrent: base = ", base)
+*)
 //
 } (*where*) // end-(fsrch_dir1base)
 endlet // end-of-[fsrch_dcurrent(base)]
@@ -177,14 +179,14 @@ else if
 fkndq1(base) then 1 else -1
 ) : sint // end-of-[val(fknd)]
 //
-// (*
+(*
 val () =
 prerrln
 ("fsrch_combined: fnm0 = ", fnm0)
 val () =
 prerrln
 ("fsrch_combined: fknd = ", fknd)
-// *)
+*)
 //
 in
 //
@@ -259,14 +261,14 @@ val sp = theDirSep_get()
 //
 val n0 = strn_length(dir0)
 //
-// (*
+(*
 val () =
 prerrln
 ("fname_dbjoin: dir0 = ", dir0)
 val () =
 prerrln
 ("fname_dbjoin: base = ", base)
-// *)
+*)
 //
 in//let
 if
@@ -318,10 +320,12 @@ fname_rexists
 (name: strn) =
 fpath_rexists(name) where
 {
+(*
 val () =
 prerrln
 ("fname_rexists: name = ", name)
-}
+*)
+}(*where*) // end-[fname_rexists]
 //
 (*
 val
