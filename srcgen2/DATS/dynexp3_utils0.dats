@@ -69,6 +69,7 @@ D3Cfundclst
 |
 D3Cimplmnt0
 ( tknd
+, stmp
 , sqas,tqas
 , dimp,tias
 , f3as,sres,dexp) => dimpl_tmpq(dimp)

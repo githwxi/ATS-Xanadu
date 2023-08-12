@@ -130,6 +130,17 @@ d3ecl_make_node
 d2cl.lctn(),D3Cnone1(d2cl))
 //
 (* ****** ****** *)
+//
+local
+val
+stamper = stamper_new()
+in//local
+#implfun
+d3imp_stamp_new
+  ((*nil*)) = stamper.getinc((*0*))
+endloc // end of [the_d3imp_stamp_new]
+//
+(* ****** ****** *)
 
 local
 //

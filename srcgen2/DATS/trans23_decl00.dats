@@ -489,8 +489,11 @@ D2Cimplmnt0
 , tias, f2as
 , sres, dexp) = d2cl.node()
 //
+val stmp =
+  d3imp_stamp_new((*void*))
+//
 val f3as =
-trans23_f2arglst(env0, f2as)
+  trans23_f2arglst(env0, f2as)
 //
 val dexp = trans23_d2exp(env0, dexp)
 //
@@ -499,7 +502,7 @@ d3ecl
 (
 loc0,
 D3Cimplmnt0
-( tknd
+( tknd,stmp
 , sqas,tqas,dimp,tias,f3as,sres,dexp) )
 end where // end-of-[let]
 {

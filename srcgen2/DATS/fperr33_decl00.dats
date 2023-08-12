@@ -147,6 +147,7 @@ endlet // end-of-(D3Cfundclst(_,_,_))
 |
 D3Cimplmnt0
 ( tknd
+, stmp
 , sqas, tqas
 , dimp, tias
 , f3as, sres, dexp) =>

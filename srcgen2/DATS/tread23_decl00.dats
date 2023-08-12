@@ -215,6 +215,8 @@ d3ecl_implmnt0_errck
 : loc_t
 , tknd
 : token
+, stmp
+: stamp
 , sqas
 : s2qaglst
 , tqas
@@ -237,7 +239,7 @@ lvl+1
 d3ecl_make_node
 ( loc0
 , D3Cimplmnt0
-  ( tknd
+  ( tknd,stmp
   , sqas,tqas,dqid,tias,fags,sres,dexp ) ))
 end (*let*) // end of [d3ecl_implmnt0_errck]
 //
@@ -524,6 +526,7 @@ val e00 = err
 val-
 D3Cimplmnt0
 (tknd
+,stmp
 ,sqas,tqas
 ,dqid
 ,tias,f3as
@@ -543,7 +546,7 @@ if
 (err=e00)
 then (dcl) else
 d3ecl_implmnt0_errck
-(dcl.lctn(), tknd
+(dcl.lctn(), tknd, stmp
 ,sqas, tqas, dqid, tias, f3as, sres, dexp)
 end where
 {

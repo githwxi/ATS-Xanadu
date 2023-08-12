@@ -612,12 +612,14 @@ print(tknd,";",tqas,";",d2cs,";",d3fs,")"))
 |
 D3Cimplmnt0
 (tknd
+,stmp
 ,sqas,tqas
 ,dqid,tias
 ,farg,sres,body) =>
 (
 print("D3Cimplmnt0(");
-print(tknd,";",sqas,";",tqas,";");
+print(tknd,";",stmp,";");
+print(sqas,";",tqas,";");
 print(dqid,";",tias,";",farg,";",sres,";",body,")"))
 //
 |

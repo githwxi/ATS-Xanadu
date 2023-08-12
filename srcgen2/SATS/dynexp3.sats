@@ -704,10 +704,23 @@ D3Cfundclst of
 |
 D3Cimplmnt0 of
 ( token(*impkind*)
+, stamp(*unicity*)
 , s2qaglst // s2vs
 , t2qaglst // s2vs+t2is
 , dimpl // HX: impl-d2cst
 , t2iaglst, f3arglst, s2res, d3exp)
+//
+(*
+|
+D3Cimplmnt1 of
+( token(*impkind*)
+, stamp(*unicity*)
+, s2vts(*stypsub*)
+, s2qaglst // s2vs
+, t2qaglst // s2vs+t2is
+, dimpl // HX: impl-d2cst
+, t2iaglst, f3arglst, s2res, d3exp)
+*)
 //
 |
 D3Ctmplocal of
@@ -756,6 +769,9 @@ fun
 d3ecl_none0(loc0:loc_t): d3ecl
 fun
 d3ecl_none1(d2cl:d2ecl): d3ecl
+(* ****** ****** *)
+fun
+d3imp_stamp_new((*nil*)): stamp
 (* ****** ****** *)
 fun
 d3ecl_make_node

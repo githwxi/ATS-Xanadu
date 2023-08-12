@@ -356,6 +356,7 @@ let
 val-
 D3Cimplmnt0
 ( tknd
+, stmp
 , sqas, tqas
 , dimp//dcst
 , tias, f3as
