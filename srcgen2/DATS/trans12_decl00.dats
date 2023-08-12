@@ -518,9 +518,9 @@ end (*local*)//end-of-[local(trans12_d1arg)]
 //
 fun
 s2taload_from_fpath
-( fpth: fpath
-, dpar: d1parsed)
-: @(sint, d2parsed) =
+( fpth : fpath
+, dpar : d1parsed)
+: @(sint,d2parsed) =
 let
 //
 val fnm2 =
@@ -1704,8 +1704,8 @@ val gsym =
 case
 g1exp_nmspace(gsrc) of
 |optn_nil() =>
- $SYM.DLRDT_symbl
-|optn_cons(gsym) => gsym): sym_t
+($SYM.DLRDT_symbl)
+|optn_cons( gsym ) => gsym): sym_t
 //
 (*
 val (  ) =
