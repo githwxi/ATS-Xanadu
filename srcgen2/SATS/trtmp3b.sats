@@ -57,5 +57,151 @@ tr3benv_vtbx
 #vwtpdef
 tr3benv = tr3benv_vtbx
 (* ****** ****** *)
+#staload
+S2E = "./staexp2.sats"
+(* ****** ****** *)
+#staload
+D2E = "./dynexp2.sats"
+#staload
+D3E = "./dynexp3.sats"
+(* ****** ****** *)
+//
+#typedef s2typ = $S2E.s2typ
+#typedef l2t2p = $S2E.l2t2p
+//
+(* ****** ****** *)
+#typedef d3pat = $D3E.d3pat
+#typedef d3exp = $D3E.d3exp
+(* ****** ****** *)
+#typedef l3d3p = $D3E.l3d3p
+#typedef l3d3e = $D3E.l3d3e
+(* ****** ****** *)
+#typedef d3ecl = $D3E.d3ecl
+(* ****** ****** *)
+#typedef
+ s2typlst  =  $S2E.s2typlst
+#typedef
+ l2t2plst  =  $S2E.l2t2plst
+(* ****** ****** *)
+#typedef
+ teqd3exp  =  $D3E.teqd3exp
+(* ****** ****** *)
+#typedef
+ d3patlst  =  $D3E.d3patlst
+#typedef
+ d3explst  =  $D3E.d3explst
+#typedef
+ d3expopt  =  $D3E.d3expopt
+(* ****** ****** *)
+#typedef
+ l3d3plst  =  $D3E.l3d3plst
+#typedef
+ l3d3elst  =  $D3E.l3d3elst
+(* ****** ****** *)
+#typedef
+ d3eclist  =  $D3E.d3eclist
+(* ****** ****** *)
+#typedef
+ d3valdcl  =  $D3E.d3valdcl
+#typedef
+ d3vardcl  =  $D3E.d3vardcl
+#typedef
+ d3fundcl  =  $D3E.d3fundcl
+(* ****** ****** *)
+#typedef
+ d3parsed  =  $D3E.d3parsed
+#typedef
+ d3topenv  =  $D3E.d3topenv
+(* ****** ****** *)
+#typedef
+d3valdclist = $D3E.d3valdclist
+#typedef
+d3vardclist = $D3E.d3vardclist
+#typedef
+d3fundclist = $D3E.d3fundclist
+(* ****** ****** *)
+#typedef
+d3explstopt = $D3E.d3explstopt
+#typedef
+d3eclistopt = $D3E.d3eclistopt
+(* ****** ****** *)
+//
+fun
+d3parsed_of_trtmp3b
+( dpar : d3parsed ): (d3parsed)
+//
+(* ****** ****** *)
+//
+fun
+tr3benv_make_nil
+( (*void*) ): tr3benv
+//
+fun
+tr3benv_free_top
+( env0 : tr3benv ) : (  void  )
+//
+(* ****** ****** *)
+//
+fun
+tr3benv_poplet0
+(env0: !tr3benv): void//end-fun
+fun
+tr3benv_pshlet0
+(env0: !tr3benv): void//end-fun
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:t0>
+list_trans3b_fnp
+( e1:
+! tr3benv
+, xs
+: list(x0)
+, fopr:
+  (!tr3benv, x0)->y0): list(y0)
+fun
+<x0:t0>
+<y0:t0>
+optn_trans3b_fnp
+( e1:
+! tr3benv
+, xs: optn(x0)
+, fopr:
+  (!tr3benv, x0)->y0): optn(y0)
+//
+(* ****** ****** *)
+//
+fun
+trans3b_d3exp
+( env0:
+! tr3benv,d3e0:d3exp):d3exp//fun
+//
+fun
+trans3b_l3d3e
+( env0:
+! tr3benv,ld3e:l3d3e):l3d3e//fun
+//
+(* ****** ****** *)
+//
+fun
+trans3b_d3expopt
+( env0:
+! tr3benv,dopt:d3expopt):d3expopt
+//
+fun
+trans3b_d3explst
+( env0:
+! tr3benv,d3es:d3explst):d3explst
+//
+(* ****** ****** *)
+//
+fun
+trans3b_l3d3elst
+( env0:
+! tr3benv,ldes:l3d3elst):l3d3elst
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trtmp3b.sats] *)
