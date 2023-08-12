@@ -433,7 +433,7 @@ F2ENV
 ( lcsrc
 , s2tex, s2itm, d2itm) = f2env in d2itm end
 //
-endloc (*local*) // end of [ local( f2env ) ]
+endloc (*local*) // end of [ local(f2env) ]
 //
 (* ****** ****** *)
 //
@@ -442,9 +442,9 @@ val
 stamper = stamper_new()
 in//local
 fun
-the_d2con_stamp_new
-( (*void*) ): stamp = stamper.getinc()
-endloc // end of [the_d2con_stamp_new]
+d2con_stamp_new
+  ((*void*)): stamp = stamper.getinc((*0*))
+endloc (*local*) // end of [d2con_stamp_new]
 //
 (* ****** ****** *)
 //
@@ -453,9 +453,9 @@ val
 stamper = stamper_new()
 in//local
 fun
-the_d2cst_stamp_new
-( (*void*) ): stamp = stamper.getinc()
-endloc // end of [the_d2cst_stamp_new]
+d2cst_stamp_new
+  ((*void*)): stamp = stamper.getinc((*0*))
+endloc (*local*) // end of [d2cst_stamp_new]
 //
 (* ****** ****** *)
 //
@@ -464,9 +464,9 @@ val
 stamper = stamper_new()
 in//local
 fun
-the_d2var_stamp_new
-( (*void*) ): stamp = stamper.getinc()
-endloc // end of [the_d2var_stamp_new]
+d2var_stamp_new
+  ((*void*)): stamp = stamper.getinc((*0*))
+endloc (*local*) // end of [d2var_stamp_new]
 //
 (* ****** ****** *)
 
@@ -687,14 +687,15 @@ val ctag = (-1)
 val loc0 = tok0.lctn()
 val sym0 = dconid_sym(tok0)
 val t2p0 = s2exp_stpize(sexp)
-val stmp = the_d2con_stamp_new()
+//
+val stmp = d2con_stamp_new((*0*))
 //
 val xt2p =
 (
-s2typ_subst0(t2p0, svts)) where
+  s2typ_subst0(t2p0, svts)) where
 {
-val svts =
-s2vts_make_lctn_tqas(loc0, tqas)}
+  val svts =
+  s2vts_make_lctn_tqas(loc0, tqas) }
 //
 in//let
 D2CON
@@ -876,20 +877,22 @@ val tknd = T_EOF((*void*))
 val sym0 = d2v0.name((*0*))
 val t2p0 = d2v0.styp((*0*))
 val sexp = d2v0.sexp((*0*))
-val stmp = the_d2cst_stamp_new()
+//
+val stmp = d2cst_stamp_new((*0*))
 //
 val xt2p =
 (
-s2typ_subst0(t2p0, svts)) where
+  s2typ_subst0(t2p0, svts)) where
 {
-val svts =
-s2vts_make_lctn_tqas(loc0, tqas)}
+  val svts =
+  s2vts_make_lctn_tqas(loc0, tqas) }
 //
 in//let
+(
 D2CST
 ( loc0
 , sym0
-, tknd, tqas, sexp, stmp, t2p0, xt2p)
+, tknd, tqas, sexp, stmp, t2p0, xt2p) )
 end (*let*) // end of [d2cst_make_dvar]
 //
 (* ****** ****** *)
@@ -903,20 +906,22 @@ val loc0 = tok0.lctn()
 val tknd = T_EOF((*void*))
 val sym0 = dcstid_sym(tok0)
 val t2p0 = s2exp_stpize(sexp)
-val stmp = the_d2cst_stamp_new()
+//
+val stmp = d2cst_stamp_new((*0*))
 //
 val xt2p =
 (
-s2typ_subst0(t2p0, svts)) where
+  s2typ_subst0(t2p0, svts)) where
 {
-val svts =
-s2vts_make_lctn_tqas(loc0, tqas)}
+  val svts =
+  s2vts_make_lctn_tqas(loc0, tqas) }
 //
 in//let
+(
 D2CST
 ( loc0
 , sym0
-, tknd, tqas, sexp, stmp, t2p0, xt2p)
+, tknd, tqas, sexp, stmp, t2p0, xt2p) )
 end (*let*) // end of [d2cst_make_idtp]
 //
 end (*local*) // end of [local(d2cst_tbox)]
@@ -1057,11 +1062,14 @@ let
 val tqas = list_nil()
 val s2e0 = s2exp_none0()
 val t2p0 = s2typ_none0()
-val stmp = the_d2var_stamp_new()
+//
+val stmp = d2var_stamp_new((*0*))
+//
 in//let
+(
   D2VAR
   ( loc0
-  , sym0, tqas, s2e0, stmp, t2p0 )
+  , sym0, tqas, s2e0, stmp, t2p0 ) )
 end (*let*) // end of [d2var_new2_name]
 //
 end (*local*) // end of [local(d2var_tbox)]
