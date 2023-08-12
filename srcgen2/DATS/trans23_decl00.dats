@@ -490,7 +490,7 @@ D2Cimplmnt0
 , sres, dexp) = d2cl.node()
 //
 val stmp =
-  d3imp_stamp_new((*void*))
+  the_d3imp_stamp_new((*0*))
 //
 val f3as =
   trans23_f2arglst(env0, f2as)

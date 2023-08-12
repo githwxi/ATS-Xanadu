@@ -771,7 +771,7 @@ fun
 d3ecl_none1(d2cl:d2ecl): d3ecl
 (* ****** ****** *)
 fun
-d3imp_stamp_new((*nil*)): stamp
+the_d3imp_stamp_new((*0*)): stamp
 (* ****** ****** *)
 fun
 d3ecl_make_node

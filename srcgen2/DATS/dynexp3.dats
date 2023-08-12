@@ -136,7 +136,7 @@ val
 stamper = stamper_new()
 in//local
 #implfun
-d3imp_stamp_new
+the_d3imp_stamp_new
   ((*nil*)) = stamper.getinc((*0*))
 endloc // end of [the_d3imp_stamp_new]
 //
