@@ -979,6 +979,8 @@ val
 the_d1parenv = topmap_make_nil()
 val
 the_d2parenv = topmap_make_nil()
+val
+the_d3parenv = topmap_make_nil()
 (* ****** ****** *)
 
 in//local
@@ -988,6 +990,8 @@ in//local
 the_d1parenv_pvs() = (the_d1parenv)
 #implfun
 the_d2parenv_pvs() = (the_d2parenv)
+#implfun
+the_d3parenv_pvs() = (the_d3parenv)
 (* ****** ****** *)
 #implfun
 the_d1parenv_pvsfind(key) =
@@ -995,6 +999,9 @@ topmap_search_opt(the_d1parenv, key)
 #implfun
 the_d2parenv_pvsfind(key) =
 topmap_search_opt(the_d2parenv, key)
+#implfun
+the_d3parenv_pvsfind(key) =
+topmap_search_opt(the_d3parenv, key)
 (* ****** ****** *)
 #implfun
 the_d1parenv_pvsadd0(key, itm) =
@@ -1002,8 +1009,11 @@ topmap_insert_any(the_d1parenv, key, itm)
 #implfun
 the_d2parenv_pvsadd0(key, itm) =
 topmap_insert_any(the_d2parenv, key, itm)
+#implfun
+the_d3parenv_pvsadd0(key, itm) =
+topmap_insert_any(the_d3parenv, key, itm)
 (* ****** ****** *)
-end (*loc*) // end-[local(the_d1parenv/d2parenv)]
+end (*loc*) // end-[local(the_d1/d2/d3parenv)]
 
 (* ****** ****** *)
 
