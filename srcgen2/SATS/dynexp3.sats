@@ -761,9 +761,11 @@ timpl_node =
 //
 and
 s3taloadopt =
-|S3TALOADnone of ()
-|S3TALOADfenv of (f2env)
-|S3TALOADdpar of
+|
+S3TALOADnone of
+( s2taloadopt )
+|
+S3TALOADdpar of
 (sint(*0/1*),d3parsed(*shrd*))
 //
 (* ****** ****** *)

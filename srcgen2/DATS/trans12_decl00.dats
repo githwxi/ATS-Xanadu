@@ -1702,7 +1702,8 @@ optn@(sint,d2parsed)//[val(dopt)]
 val gsym =
 (
 case
-g1exp_nmspace(gsrc) of
+g1exp_nmspace
+ (  gsrc  ) of
 |optn_nil() =>
 ($SYM.DLRDT_symbl)
 |optn_cons( gsym ) => gsym): sym_t
