@@ -52,6 +52,8 @@ _(*TRANS23*) = "./trans23.dats"
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
+#staload "./../SATS/filpath.sats"
+(* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
@@ -64,6 +66,8 @@ _(*TRANS23*) = "./trans23.dats"
 (* ****** ****** *)
 #staload "./../SATS/trans23.sats"
 (* ****** ****** *)
+#staload "./../SATS/xglobal.sats"
+(* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
@@ -75,6 +79,52 @@ _(*TRANS23*) = "./trans23.dats"
 (* ****** ****** *)
 #symload lctn with d2ecl_get_lctn
 #symload node with d2ecl_get_node
+(* ****** ****** *)
+//
+fun
+s3taload_from_fpath
+( fpth: fpath
+, dpar: d2parsed )
+: @(sint,d3parsed) =
+let
+//
+val fnm2 =
+fpath_get_fnm2(fpth)
+val opt2 =
+the_d3parenv_pvsfind(fnm2)
+//
+in//in-of-let
+//
+case+ opt2 of
+| ~
+optn_vt_nil() =>
+let
+//
+(*
+// HX: nothing yet
+*)
+//
+in(*let*)
+(0, dpar) where
+{
+val dpar =
+d3parsed_of_trans23(dpar)
+val (  ) =
+the_d3parenv_pvsadd0(fnm2, dpar) }
+end//let//end-of-[ optn_vt_nil() ]
+//
+| ~
+optn_vt_cons(dpar) => @(1(*shr*),dpar)
+//
+end where
+{
+(*
+  val () =
+  prerrln
+  ("s3taload_from_fpath: dpar = ", dpar)
+*)
+}(*where*)//end-of-[s3taload_from_fpath(...)]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -364,18 +414,50 @@ f0_staload
 ! tr23env
 , d2cl: d2ecl): d3ecl =
 let
+//
 val
 loc0 = d2cl.lctn()
+//
 val-
 D2Cstaload
 ( knd0
 , tknd, gsrc
 , fopt, dopt) = d2cl.node()
+//
+val dopt =
+(
+case+ dopt of
+|
+S2TALOADnone() =>
+S3TALOADnone((*0*))
+|
+S2TALOADfenv( fenv ) =>
+S3TALOADfenv( fenv )
+|
+S2TALOADdpar(shrd, dpar) =>
+(
+case+ fopt of
+|
+optn_nil() => S3TALOADnone()
+|
+optn_cons(fpth) =>
+(
+S3TALOADdpar(shrd, dpar)) where
+{
+val
+(shrd, dpar) =
+s3taload_from_fpath(fpth, dpar) }
+//(*where*)//end-[optn_cons(fpth)]
+)
+) : s3taloadopt//end-of-[val(dopt)]
+//
 in//let
-d3ecl_make_node
-(loc0,
- D3Cstaload
- (knd0, tknd, gsrc, fopt, dopt))
+//
+(
+  d3ecl_make_node
+  (loc0,
+   D3Cstaload
+   (knd0, tknd, gsrc, fopt, dopt)) )
 end (*let*) // end of [f0_staload(...)]
 //
 (* ****** ****** *)

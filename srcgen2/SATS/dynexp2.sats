@@ -1327,12 +1327,10 @@ A2TDFdefn of s2exp//definition
 //
 and
 s2taloadopt =
-|
-S2TALOADnone of ()
-|
-S2TALOADfenv of (f2env)
-|
-S2TALOADdpar of (sint, d2parsed)
+|S2TALOADnone of ()
+|S2TALOADfenv of (f2env)
+|S2TALOADdpar of
+(sint(*0/1*),d2parsed(*shrd*))
 //
 (* ****** ****** *)
 fun

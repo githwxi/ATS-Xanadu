@@ -116,6 +116,10 @@ D2E = "./dynexp2.sats"
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
+//
+#typedef f2env = $S2E.f2env
+//
+(* ****** ****** *)
 #typedef s2vts = $T2P.s2vts
 (* ****** ****** *)
 #typedef s2qag = $D2E.s2qag
@@ -167,6 +171,10 @@ D2E = "./dynexp2.sats"
 #abstbox i3mpldcl_tbox // ptr
 //
 (* ****** ****** *)
+//
+#abstbox d3parsed_tbox // ptr
+//
+(* ****** ****** *)
 #typedef s2varlst = list(s2var)
 (* ****** ****** *)
 #typedef s2arglst = list(s2arg)
@@ -211,6 +219,8 @@ D2E = "./dynexp2.sats"
 #typedef d3vardcl = d3vardcl_tbox
 #typedef d3fundcl = d3fundcl_tbox
 #typedef i3mpldcl = i3mpldcl_tbox
+(* ****** ****** *)
+#typedef d3parsed = d3parsed_tbox
 (* ****** ****** *)
 #typedef d3valdclist = list(d3valdcl)
 #typedef d3vardclist = list(d3vardcl)
@@ -688,7 +698,7 @@ d3ecl_node =
 , token
 , g1exp // src
 , fpathopt
-, s2taloadopt) // staloading
+, s3taloadopt) // staloading
 //
 |
 D3Cvaldclst of
@@ -748,27 +758,44 @@ timpl_node =
 (d2cst(*dcst*), d3eclist)
 //
 (* ****** ****** *)
+//
+and
+s3taloadopt =
+|S3TALOADnone of ()
+|S3TALOADfenv of (f2env)
+|S3TALOADdpar of
+(sint(*0/1*),d3parsed(*shrd*))
+//
+(* ****** ****** *)
 fun
 timpl_fprint
-(out:FILR,timp:timpl): void
+(
+  out:FILR, timp:timpl):(void)
 (* ****** ****** *)
 fun
-d3ecl_fprint: (FILR, d3ecl) -> void
+d3ecl_fprint
+(
+  out:FILR, d3cl:d3ecl):(void)
+(* ****** ****** *)
+fun
+d3ecl_none0(loc0:loc_t):(d3ecl)
+fun
+d3ecl_none1(d2cl:d2ecl):(d3ecl)
 (* ****** ****** *)
 //
 fun
-d3ecl_impltmpq(d3ecl): bool
+d3ecl_impltmpq(d3ecl): ( bool )
 //
 (* ****** ****** *)
+//
 fun
-d3ecl_get_lctn(d3ecl): loc_t
+d3ecl_get_lctn(d3ecl): ( loc_t )
 fun
 d3ecl_get_node(d3ecl): d3ecl_node
+//
 (* ****** ****** *)
-fun
-d3ecl_none0(loc0:loc_t): d3ecl
-fun
-d3ecl_none1(d2cl:d2ecl): d3ecl
+#symload lctn with d3ecl_get_lctn
+#symload node with d3ecl_get_node
 (* ****** ****** *)
 fun
 the_d3imp_stamp_new((*0*)): stamp
@@ -776,9 +803,6 @@ the_d3imp_stamp_new((*0*)): stamp
 fun
 d3ecl_make_node
 (loc:loc_t,nod:d3ecl_node): d3ecl
-(* ****** ****** *)
-#symload lctn with d3ecl_get_lctn
-#symload node with d3ecl_get_node
 (* ****** ****** *)
 #symload d3ecl with d3ecl_make_node
 (* ****** ****** *)
@@ -907,11 +931,6 @@ d3topenv =
 |D3TOPENVnone of ()
 |D3TOPENVsome of
 ( $MAP.topmap(d3eclist) )
-//
-(* ****** ****** *)
-//
-#abstbox d3parsed_tbox // ptr
-#typedef d3parsed = d3parsed_tbox
 //
 (* ****** ****** *)
 //
