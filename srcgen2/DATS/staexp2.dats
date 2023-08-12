@@ -152,7 +152,8 @@ t2abs_make_name
 (
 T2ABS(sym, tmp)) where
 {
-val tmp = the_t2abs_stamp_new()
+  val
+  tmp = the_t2abs_stamp_new()
 } (*where*)//end-of-[t2abs_make_name]
 //
 (* ****** ****** *)
@@ -204,9 +205,10 @@ t2dat_make_name
 T2DAT
 (name, stmp, s2cs) where
 {
-val stmp =
-the_t2dat_stamp_new()
+  val stmp =
+  the_t2dat_stamp_new((*0*))
 val s2cs = list_nil((*void*)) }
+//(*where*)//end-of-[t2dat_make_name]
 //
 (* ****** ****** *)
 //
@@ -268,8 +270,8 @@ s2cst = S2CST of
 //
 #absimpl s2cst_tbox = s2cst
 //
+(* ****** ****** *)
 in//local
-
 (* ****** ****** *)
 
 #implfun
@@ -402,9 +404,10 @@ s2var_make_name
   (  sid  ) =
 (
 S2VAR(sid, s2t, tmp)) where
-{ val s2t = S2Tnone0(*void*)
-  val
-  tmp = the_s2var_stamp_new((*void*))
+{
+ val s2t = S2Tnone0(*void*)
+ val
+ tmp = the_s2var_stamp_new((*void*))
 } (*where*) // end of [s2var_make_name]
 //
 (* ****** ****** *)
@@ -414,8 +417,9 @@ s2var_make_idst
   (sid, s2t) =
 (
 S2VAR(sid, s2t, tmp)) where
-{ val
-  tmp = the_s2var_stamp_new((*void*))
+{
+ val
+ tmp = the_s2var_stamp_new((*void*))
 } (*where*) // end of [s2var_make_idst]
 //
 (* ****** ****** *)
