@@ -442,9 +442,9 @@ val
 stamper = stamper_new()
 in//local
 fun
-d2con_stamp_new
+the_d2con_stamp_new
   ((*void*)): stamp = stamper.getinc((*0*))
-endloc (*local*) // end of [d2con_stamp_new]
+endloc(*local*)//end-of[the_d2con_stamp_new]
 //
 (* ****** ****** *)
 //
@@ -453,9 +453,9 @@ val
 stamper = stamper_new()
 in//local
 fun
-d2cst_stamp_new
+the_d2cst_stamp_new
   ((*void*)): stamp = stamper.getinc((*0*))
-endloc (*local*) // end of [d2cst_stamp_new]
+endloc(*local*)//end-of[the_d2cst_stamp_new]
 //
 (* ****** ****** *)
 //
@@ -464,9 +464,9 @@ val
 stamper = stamper_new()
 in//local
 fun
-d2var_stamp_new
+the_d2var_stamp_new
   ((*void*)): stamp = stamper.getinc((*0*))
-endloc (*local*) // end of [d2var_stamp_new]
+endloc(*local*)//end-of[the_d2var_stamp_new]
 //
 (* ****** ****** *)
 
@@ -688,7 +688,7 @@ val loc0 = tok0.lctn()
 val sym0 = dconid_sym(tok0)
 val t2p0 = s2exp_stpize(sexp)
 //
-val stmp = d2con_stamp_new((*0*))
+val stmp = the_d2con_stamp_new()
 //
 val xt2p =
 (
@@ -878,7 +878,7 @@ val sym0 = d2v0.name((*0*))
 val t2p0 = d2v0.styp((*0*))
 val sexp = d2v0.sexp((*0*))
 //
-val stmp = d2cst_stamp_new((*0*))
+val stmp = the_d2cst_stamp_new()
 //
 val xt2p =
 (
@@ -907,7 +907,7 @@ val tknd = T_EOF((*void*))
 val sym0 = dcstid_sym(tok0)
 val t2p0 = s2exp_stpize(sexp)
 //
-val stmp = d2cst_stamp_new((*0*))
+val stmp = the_d2cst_stamp_new()
 //
 val xt2p =
 (
@@ -1063,7 +1063,7 @@ val tqas = list_nil()
 val s2e0 = s2exp_none0()
 val t2p0 = s2typ_none0()
 //
-val stmp = d2var_stamp_new((*0*))
+val stmp = the_d2var_stamp_new()
 //
 in//let
 (
