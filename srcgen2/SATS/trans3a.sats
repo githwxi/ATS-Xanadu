@@ -65,12 +65,15 @@ MAP = "./xsymmap.sats"
 *)
 //
 (* ****** ****** *)
+#staload
+S2E = "./staexp2.sats"
+(* ****** ****** *)
+#staload
+D2E = "./dynexp2.sats"
+#staload
+D3E = "./dynexp3.sats"
+(* ****** ****** *)
 #typedef sym_t = $SYM.sym_t
-(* ****** ****** *)
-#staload S2E = "./staexp2.sats"
-(* ****** ****** *)
-#staload D2E = "./dynexp2.sats"
-#staload D3E = "./dynexp3.sats"
 (* ****** ****** *)
 //
 #typedef s2cst = $S2E.s2cst
@@ -78,9 +81,6 @@ MAP = "./xsymmap.sats"
 //
 (* ****** ****** *)
 //
-(*
-#typedef s2exp = $S2E.s2exp
-*)
 #typedef s2typ = $S2E.s2typ
 #typedef l2t2p = $S2E.l2t2p
 //
