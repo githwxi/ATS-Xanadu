@@ -302,7 +302,7 @@ strmcon_vt_cons
 (*
   val () = println(" -> ", kx1.1)
 *)
-  val () =
+  val () = // HX: [kx1.1] is list1
   println(" -> ", list_head(kx1.1))
 }
 ) (*case+*) // end of [ auxloop(kxs) ]
