@@ -1206,10 +1206,12 @@ in//let
 //
 | _(*non-T2Puni0*) => (  tfun  ))
 //
+(*
 val () =
 prerrln("f0_sapp: tfun = ", tfun)
 val () =
 prerrln("f0_sapp: tres = ", tres)
+*)
 //
 in//let
 (

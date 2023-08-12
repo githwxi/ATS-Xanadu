@@ -427,28 +427,36 @@ D2Cstaload
 val dopt =
 (
 case+ dopt of
-|
-S2TALOADnone() =>
-S3TALOADnone((*0*))
-|
-S2TALOADfenv( fenv ) =>
-S3TALOADfenv( fenv )
+|S2TALOADnone _ =>
+ S3TALOADnone(dopt)
+|S2TALOADfenv _ =>
+ S3TALOADnone(dopt)
 |
 S2TALOADdpar(shrd, dpar) =>
+let
+val
+stadyn =
+d2parsed_get_stadyn(dpar)
+in//let
+if
+stadyn <= 0
+then
+(
+  S3TALOADnone(dopt) )
+else
 (
 case+ fopt of
-|
-optn_nil() => S3TALOADnone()
-|
-optn_cons(fpth) =>
+|optn_nil() =>
+(
+  S3TALOADnone(dopt) )
+|optn_cons(fpth) =>
 (
 S3TALOADdpar(shrd, dpar)) where
 {
 val
 (shrd, dpar) =
-s3taload_from_fpath(fpth, dpar) }
-//(*where*)//end-[optn_cons(fpth)]
-)
+s3taload_from_fpath(fpth, dpar)})
+endlet//end-of-[S2TALOADdpar(...)]
 ) : s3taloadopt//end-of-[val(dopt)]
 //
 in//let
