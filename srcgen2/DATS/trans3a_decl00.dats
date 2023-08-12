@@ -114,6 +114,8 @@ f0_local0(env0, d3cl))
 |D3Cabsimpl _ => (d3cl)
 //
 |
+D3Cinclude _ => f0_include(env0, d3cl)
+|
 D3Cstaload _ => f0_staload(env0, d3cl)
 //
 |
@@ -175,6 +177,32 @@ in//let
 end(*let*)
 //
 end(*let*)//end-of-[f0_local0(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_include
+( env0:
+! tr3aenv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Cinclude
+( knd0
+, tknd, gsrc
+, fopt, dopt) = d3cl.node()
+//
+val dopt =
+trans3a_d3eclistopt(env0, dopt)
+//
+in//let
+d3ecl_make_node
+(loc0
+,D3Cinclude(knd0,tknd,gsrc,fopt,dopt))
+end(*let*)//end-of-[f0_include(env0,d3cl)]
 //
 (* ****** ****** *)
 //
@@ -305,6 +333,7 @@ let
 val-
 D3Cimplmnt0
 ( tknd
+, stmp
 , sqas, tqas
 , dimp//dcst
 , tias, f3as
@@ -326,7 +355,7 @@ d3ecl
 (
 loc0,
 D3Cimplmnt0
-( tknd
+( tknd,stmp
 , sqas,tqas,dimp,tias,f3as,sres,dexp))
 in//let
 (
