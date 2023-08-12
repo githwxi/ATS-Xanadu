@@ -386,9 +386,11 @@ D3Cinclude
 , tknd, gsrc
 , fopt, dopt) = dcl.node()
 //
+(*
 val () =
 prerrln
 ("f0_include: dopt = ", dopt)
+*)
 //
 val dopt =
 (
@@ -548,12 +550,12 @@ end where
 //
 val loc0 = d3cl.lctn()
 //
-// (*
+(*
 val (  ) =
 prerrln("f0_implmnt0(23): loc0 = ", loc0)
 val (  ) =
 prerrln("f0_implmnt0(23): d3cl = ", d3cl)
-// *)
+*)
 //
 } (*where*) // end of [f0_implmnt0(dcl,err)]
 //

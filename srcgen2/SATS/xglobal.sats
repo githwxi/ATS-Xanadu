@@ -74,14 +74,22 @@ G1M = "./gmacro1.sats"
 #staload
 D1E = "./dynexp1.sats"
 //
+#staload
+S2E = "./staexp2.sats"
+#staload
+D2E = "./dynexp2.sats"
+//
+#staload
+D3E = "./dynexp3.sats"
+//
+(* ****** ****** *)
+//
 #typedef sort1 = $S1E.sort1
 #typedef s1exp = $S1E.s1exp
 #typedef g1mac = $G1M.g1mac
 //
 (* ****** ****** *)
 //
-#staload
-S2E = "./staexp2.sats"
 #typedef sort2 = $S2E.sort2
 #typedef s2exp = $S2E.s2exp
 #typedef s2tex = $S2E.s2tex
@@ -89,8 +97,6 @@ S2E = "./staexp2.sats"
 //
 (* ****** ****** *)
 //
-#staload
-D2E = "./dynexp2.sats"
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
 #typedef d2itm = $D2E.d2itm
@@ -188,6 +194,7 @@ HX-2023-06-02: for static loading
 (* ****** ****** *)
 #typedef d1parsed = $D1E.d1parsed
 #typedef d2parsed = $D2E.d2parsed
+#typedef d3parsed = $D3E.d3parsed
 (* ****** ****** *)
 //
 fun
@@ -209,6 +216,16 @@ the_d2parenv_pvsfind
 fun
 the_d2parenv_pvsadd0
   (key: sym_t, itm: d2parsed): void
+//
+fun
+the_d3parenv_pvs
+  ((*void*)): topmap(d3parsed)
+fun
+the_d3parenv_pvsfind
+  (key: sym_t): optn_vt(d3parsed)
+fun
+the_d3parenv_pvsadd0
+  (key: sym_t, itm: d3parsed): void
 //
 (* ****** ****** *)
 //
