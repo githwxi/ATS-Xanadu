@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sat Aug 12 16:32:39 EDT 2023
+Sat Aug 12 16:40:38 EDT 2023
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -38,19 +38,19 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #define
-ATS_PACKNAME // namespace
+ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-(*
-HX-2023-08-12:
-Template resolution is the engine
-of programming productivity for ATS3!
-This implementation is preliminary for
-the moment; some form of internet-based
-search will be attempted later :)
-*)
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
+(* ****** ****** *)
+#staload "./../SATS/dynexp3.sats"
+(* ****** ****** *)
+#staload "./../SATS/trtmp3b.sats"
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trtmp3a.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_trtmp3b.dats] *)
