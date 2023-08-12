@@ -284,19 +284,28 @@ end (*let*) // end of [auxkey(k0)]
 //
 fun
 auxloop
-(kxs: strm_vt(kx)): void =
+( kxs
+: strm_vt(kx)): void =
 (
 case+ !kxs of
 | ~
-strmcon_vt_nil() => ((*void*))
+strmcon_vt_nil
+(   (*void*)   ) =>
+(   (*void*)   )
 | ~
-strmcon_vt_cons(kx1, kxs) =>
+strmcon_vt_cons
+(   kx1, kxs   ) =>
 (
-auxloop(kxs)) where
+  auxloop(kxs) ) where
 {
   val () = auxkey(kx1.0)
-  val () = println(" -> ", kx1.1) }
-)
+(*
+  val () = println(" -> ", kx1.1)
+*)
+  val () =
+  println(" -> ", list_head(kx1.1))
+}
+) (*case+*) // end of [ auxloop(kxs) ]
 }
 end (*let*) // end of [topmap_fprint(out,map)]
 //
