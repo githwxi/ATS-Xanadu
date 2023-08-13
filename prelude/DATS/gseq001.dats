@@ -173,7 +173,7 @@ gseq_uncons_forall<xs><x0>(xs)
 {
 #impltmp
 uncons_forall$test
-<xs><x0>(x0, xs) =
+<xs><x0>( x0 , xs ) =
 (
   gseq_forall<xs><x0>(xs) ) where
 {
@@ -194,7 +194,7 @@ gseq_uncons_foreach<xs><x0>(xs)
 {
 #impltmp
 uncons_foreach$work
-<xs><x0>(x0, xs) =
+<xs><x0>( x0 , xs ) =
 (
   gseq_foreach<xs><x0>(xs) ) where
 {
