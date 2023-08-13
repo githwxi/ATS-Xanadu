@@ -124,6 +124,22 @@ fun
 g_noteq(a, a): bool
 //
 (* ****** ****** *)
+//
+fun
+<a:vt>
+gl_equal0(~a, ~a): bool
+fun
+<a:vt>
+gl_equal1(!a, !a): bool
+//
+fun
+<a:vt>
+gl_noteq0(~a, ~a): bool
+fun
+<a:vt>
+gl_noteq1(!a, !a): bool
+//
+(* ****** ****** *)
 (*
 HX-2020-11-12:
 reference equality
@@ -144,8 +160,10 @@ widely used for equality
 #symload == with g_eqref
 #symload !== with g_neqrf
 //
+(*
 #symload === with g_eqref
 #symload !=== with g_neqrf
+*)
 //
 (* ****** ****** *)
 //
