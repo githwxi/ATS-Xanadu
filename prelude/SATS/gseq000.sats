@@ -147,7 +147,17 @@ gseq_last_ini(xs, x0): x0
 fun
 <xs:t0>
 <x0:t0>
+gseq_uncons
+  (xs: &xs >> xs): x0
+fun
+<xs:t0>
+<x0:t0>
 gseq_uncons_raw
+  (xs: &xs >> xs): x0
+fun
+<xs:t0>
+<x0:t0>
+gseq_uncons$exn
   (xs: &xs >> xs): x0
 fun
 <xs:t0>
