@@ -4,10 +4,10 @@
 *)
 (* ****** ****** *)
 //
-(*
 #staload
-"./../SATS/gfun.sats"
-*)
+"./../SATS/gfun000.sats"
+#staload
+"./../SATS/rand000.sats"
 //
 (* ****** ****** *)
 #staload UN =
@@ -15,18 +15,22 @@
 (* ****** ****** *)
 //
 #impltmp
-<a1>
+<a1:t0>
 gfun_not_c1fr
-(    f0    ) = lam(x1) => not(f0(x1))
+(    f0    ) =
+(
+  lam(x1) => not(f0(x1)) )//imp
 #impltmp
-<a1>
+<a1:t0>
 gfun_not_f1np
-(    f0    ) = lam(x1) => not(f0(x1))
+(    f0    ) =
+(
+  lam(x1) => not(f0(x1)) )//imp
 //
 (* ****** ****** *)
 //
 #impltmp
-<x0>
+<x0:vt>
 gfun_enum_strx_vt
 (    xs    ) =
 let
@@ -61,10 +65,37 @@ end(*let*)//end-of-[gfun_enum_strx_vt]
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 <xs><x0>
 gfun_memberq_gseq(xs) =
-lam(x0) => gseq_memberq<xs><x0>(xs, x0)
+(
+lam(x0)=>gseq_memberq<xs><x0>(xs,x0))
+*)
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0:t0>
+<y0:vt>
+gfun_rand_equal_f1np
+  (f1, f2) =
+let
+  val x1 = g_rand<x0>((*0*))
+  and x2 = g_rand<x0>((*0*))
+in
+  gl_equal0<y0>(f1(x1), f2(x2)) endlet
+//
+#impltmp
+<x0:t0>
+<y0:vt>
+gfun_rand_equal_c1fr
+  (f1, f2) =
+let
+  val x1 = g_rand<x0>((*0*))
+  and x2 = g_rand<x0>((*0*))
+in
+  gl_equal0<y0>(f1(x1), f2(x2)) endlet
 //
 (* ****** ****** *)
 
