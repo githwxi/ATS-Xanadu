@@ -26,17 +26,17 @@ datatype dtval =
 | DTVlist of dtvalist
 //
 | DTVfnp_args of
-  (dtvalist) -<fnp> gval
+  (dtvalist) -<fnp> dtval
 | DTVcfr_args of
-  (dtvalist) -<cfr> gval
+  (dtvalist) -<cfr> dtval
 //
 where
 {
 typedef dtvalist = list(dtval)
 (*
-typedef dtvalobj = hashtbl(string, dtval)
+typedef dtvalobj = hashtbl(strn,dtval)
 *)
-}
+} (*where*) // end of [datatype(dtval)]
 //
 (* ****** ****** *)
 
