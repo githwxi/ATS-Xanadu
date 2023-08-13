@@ -98,13 +98,28 @@ gmap_search$exn
 <map><key,itm>(kxs, k0)
 | ~
 optn_vt_cons(x0) => ( x0 ) // found!
-end (*let*)//end-of[gmap_search(kxs,k0)]
+end(*let*)//end-of[gmap_search(kxs,k0)]
 //
 #impltmp
 <map>
 <key,itm>
 gmap_search$exn
   (kxs, k0) = $raise NotFoundExn((*0*))
+//
+(* ****** ****** *)
+//
+#impltmp
+<map>
+<key,itm>
+gmap_search_opt
+(kxs, k0) =
+try
+optn_vt_cons
+(
+gmap_search
+<map><key,itm>(kxs, k0)) with
+| ~NotFoundExn() => optn_vt_nil((*0*))
+end(*try*)//end-of[gmap_search_opt(...)]
 //
 (* ****** ****** *)
 //
