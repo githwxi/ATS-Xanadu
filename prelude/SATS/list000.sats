@@ -457,6 +457,19 @@ list_mergesort_vt
 //
 fun
 <x0:t0>
+list_nchoose_vt
+{m:int}
+{n:int}
+(xs: list(x0,m)): strm_vt(list_vt(x0,n))
+//
+fun
+<x0:t0>
+list_permute_vt
+{n:int}
+(xs: list(x0,n)): strm_vt(list_vt(x0,n))
+//
+fun
+<x0:t0>
 list_subsetize_vt
 {n:int}
 (xs: list(x0,n)): strm_vt(listlte_vt(x0,n))
