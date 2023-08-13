@@ -52,5 +52,33 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trtmp3b.sats"
 (* ****** ****** *)
+//
+#impltmp
+<x0><y0>
+list_trans3b_fnp
+( e1, xs, fopr ) =
+(
+list_map_e1nv<x0><y0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = tr3benv
+#impltmp
+map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [list_trans3b_fnp(e1,xs,fopr)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0><y0>
+optn_trans3b_fnp
+( e1, xs, fopr ) =
+(
+optn_map_e1nv<x0><y0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = tr3benv
+#impltmp
+map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [optn_trans3b_fnp(e1,xs,fopr)]
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trtmp3b.dats] *)

@@ -39,21 +39,21 @@ gseqn_consq
 {ln:i0}(xs(ln)): bool(ln>0)
 //
 (* ****** ****** *)
-
+//
 fun
 <xs:
 i0->t0>
 <x0:t0>
 gseqn_head
 {ln:i0|ln>0}(xs: xs(ln)): (x0)
-
+//
 fun
 <xs:
 i0->t0>
 <x0:t0>
 gseqn_last
 {ln:i0|ln>0}(xs: xs(ln)): (x0)
-
+//
 (* ****** ****** *)
 
 fun

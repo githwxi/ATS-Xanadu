@@ -249,11 +249,11 @@ gseq_rsearch(xs): x0
 fun
 <xs:t0>
 <x0:t0>
-gseq_search$exn(): x0
+gseq_search$exn(xs): x0
 fun
 <xs:t0>
 <x0:t0>
-gseq_rsearch$exn(): x0
+gseq_rsearch$exn(xs): x0
 //
 (* ****** ****** *)
 //
@@ -278,7 +278,8 @@ gseq_get_at
 fun
 <xs:t0>
 <x0:t0>
-gseq_get_at$exn( ): x0
+gseq_get_at$exn
+(xs: xs, i0: nint): x0
 //
 (* ****** ****** *)
 //
@@ -292,7 +293,10 @@ gseq_set_at
 fun
 <xs:t0>
 <x0:t0>
-gseq_set_at$exn(  ): void
+gseq_set_at$exn
+( xs:
+& xs >> xs
+, i0: nint, x0: x0): void
 //
 (* ****** ****** *)
 //
@@ -305,7 +309,9 @@ gseq_fset_at
 fun
 <xs:t0>
 <x0:t0>
-gseq_fset_at$exn( ): (xs)
+gseq_fset_at$exn
+( xs: xs
+, i0: nint, x0: x0): (xs)
 //
 (* ****** ****** *)
 //

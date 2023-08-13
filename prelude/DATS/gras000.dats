@@ -9,7 +9,11 @@
 gras_get_at
   (xs, i0) =
 (
-case- opt of
+case+ opt of
+| ~
+optn_vt_nil() =>
+gras_get_at$exn
+<xs><x0>(xs, i0)//cont
 | ~
 optn_vt_cons(x0) => x0) where
 {

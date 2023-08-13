@@ -80,7 +80,7 @@ g_print<key>( k0 );
 strn_print<>("->"); g_print<itm>( x0 )
 ) // end-of-[gmap_print$keyval(k0,x0)]
 (* ****** ****** *)
-
+//
 #impltmp
 <map>
 <key,itm>
@@ -95,11 +95,17 @@ case+ opt of
 | ~
 optn_vt_nil() =>
 gmap_search$exn
-<map><key,itm>((*void*))
+<map><key,itm>(kxs, k0)
 | ~
 optn_vt_cons(x0) => ( x0 ) // found!
 end (*let*)//end-of[gmap_search(kxs,k0)]
-
+//
+#impltmp
+<map>
+<key,itm>
+gmap_search$exn
+  (kxs, k0) = $raise NotFoundExn((*0*))
+//
 (* ****** ****** *)
 //
 #impltmp

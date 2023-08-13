@@ -410,7 +410,7 @@ case+ opt of
 | ~
 optn_vt_nil() =>
 gseq_search$exn
-<xs><x0>( (*void*) )
+<xs><x0>(  xs  )//cont
 | ~
 optn_vt_cons(x0) => x0) where
 {
@@ -427,7 +427,7 @@ case+ opt of
 | ~
 optn_vt_nil() =>
 gseq_rsearch$exn
-<xs><x0>( (*void*) )
+<xs><x0>(  xs  )//cont
 | ~
 optn_vt_cons(x0) => x0) where
 {
@@ -438,11 +438,11 @@ opt = gseq_rsearch_opt<xs><x0>(xs)
 #impltmp
 <xs><x0>
 gseq_search$exn
-  ( (*void*) ) = $raise NotFoundExn()
+  ( xs ) = $raise NotFoundExn((*0*))
 #impltmp
 <xs><x0>
 gseq_rsearch$exn
-  ( (*void*) ) = $raise NotFoundExn()
+  ( xs ) = $raise NotFoundExn((*0*))
 //
 (* ****** ****** *)
 #impltmp
@@ -539,7 +539,7 @@ case+ opt of
 | ~
 optn_vt_nil() =>
 gseq_get_at$exn
-<xs><x0>( (*void*) )
+<xs><x0>(xs, i0)//cont
 | ~
 optn_vt_cons(x0) => x0) where
 {
@@ -550,7 +550,7 @@ opt = gseq_get_at_opt<xs><x0>(xs, i0)
 #impltmp
 <xs><x0>
 gseq_get_at$exn
-  ( (*void*) ) = $raise SubscriptExn()
+  (xs, i0) = $raise SubscriptExn((*0*))
 //
 (* ****** ****** *)
 //
@@ -577,7 +577,7 @@ case+ opt of
 | ~
 optn_vt_nil() =>
 gseq_fset_at$exn
-<xs><x0>( (*void*) )
+<xs><x0>(xs, i0, x0)
 | ~
 optn_vt_cons(xs) => xs) where
 {
@@ -588,7 +588,7 @@ gseq_fset_at_opt<xs><x0>(xs, i0, x0)
 #impltmp
 <xs><x0>
 gseq_fset_at$exn
-  ( (*void*) ) = $raise SubscriptExn()
+  (xs, i0, x0) = $raise SubscriptExn()
 //
 (* ****** ****** *)
 //

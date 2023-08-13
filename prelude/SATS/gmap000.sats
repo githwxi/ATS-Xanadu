@@ -62,7 +62,8 @@ fun
 <map:t0>
 <key:t0
 ,itm:t0>
-gmap_search$exn(   ): (itm)
+gmap_search$exn
+(kxs: map, key: key): (itm)
 fun
 <map:t0>
 <key:t0
@@ -117,7 +118,7 @@ fun
 <map:t0>
 <key:t0
 ,itm:t0>
-gmap_strmize_itm(map): strm_vt(key)
+gmap_strmize_itm(map): strm_vt(itm)
 (* ****** ****** *)
 (*
 HX: For initializing a gmap
@@ -135,6 +136,7 @@ fun
 <key:t0
 ,itm:t0>
 gmap_unstrm(strm(@(key, itm))): map
+//
 fun
 <map:t0>
 <key:t0
