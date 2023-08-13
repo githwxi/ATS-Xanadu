@@ -276,7 +276,7 @@ foldl$fopr<x0><r0>(r0, _) = succ(r0)
 }(*where*)//end-of(gseq_length/foldl)
 
 (* ****** ****** *)
-
+//
 #impltmp
 <xs>
 <x0><r0>
@@ -306,7 +306,7 @@ end // end of [foreach$work]
 }
 //
 }(*where*)//end-of-[gseq_foldl/foreach]
-
+//
 (* ****** ****** *)
 //
 #impltmp
