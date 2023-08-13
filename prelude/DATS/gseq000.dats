@@ -418,6 +418,8 @@ val
 opt = gseq_search_opt<xs><x0>(xs)
 }(*where*)//end-of-[ gseq_search(xs) ]
 //
+(* ****** ****** *)
+//
 #impltmp
 <xs><x0>
 gseq_rsearch
@@ -445,6 +447,7 @@ gseq_rsearch$exn
   ( xs ) = $raise NotFoundExn((*0*))
 //
 (* ****** ****** *)
+//
 #impltmp
 <xs><x0>
 gseq_search_opt
@@ -460,6 +463,7 @@ where
 {
 #impltmp
 forall$test<x0>(x0) =
+(
 if
 search$test<x0>(x0)
 then
@@ -467,17 +471,15 @@ let
 val () =
 $UN.p2tr_set<res>
 ( p0
-, optn_vt_cons(x0)) in false
-end else (true) // end-of-if
-} (*where*) // end of [ val ]
+, optn_vt_cons(x0))
+in false end else (true) ) }
+//(*where*)//end of [val(btf)]
 //
 in
 let
-  val
-  res =
-  $UN.p2tr_get<res>(p0) in res
-end
-end where
+val res =
+$UN.p2tr_get<res>(p0) in res end
+end where // end-of-[let]
 {
 //
 #vwtpdef res = optn_vt(x0)
@@ -485,6 +487,7 @@ end where
  var r0: res = optn_vt_nil((*void*))
 //
 }(*where*)//end-of-[gseq_search_opt(xs)]
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -502,6 +505,7 @@ where
 {
 #impltmp
 rforall$test<x0>(x0) =
+(
 if
 rsearch$test<x0>(x0)
 then
@@ -509,17 +513,15 @@ let
 val () =
 $UN.p2tr_set<res>
 ( p0
-, optn_vt_cons(x0)) in false
-end else (true) // end-of-if
-} (*where*) // end of [ val ]
+, optn_vt_cons(x0))
+in false end else (true) )
+}(*where*)//end of [val(btf)]
 //
 in
 let
-  val
-  res =
-  $UN.p2tr_get<res>(p0) in res
-end
-end where
+val res =
+$UN.p2tr_get<res>(p0) in res end
+end where // end-of-[let]
 {
 //
 #vwtpdef res = optn_vt(x0)
@@ -616,7 +618,7 @@ $UN.p2tr_set<res>
 ( p0
 , optn_vt_cons(x0)) in false
 end
-} (*where*) // end of [val]
+}(*where*)//end-of-[val(btf)]
 //
 in
 let
@@ -624,7 +626,7 @@ let
   res =
   $UN.p2tr_get<res>(p0) in res
 end
-end where
+end where // end-of-[let]
 {
 //
 #vwtpdef res = optn_vt(x0)//result
@@ -1805,8 +1807,7 @@ strm_vt_group0_list<x0>(xs)
 ) where
 {
 #impltmp
-group0$test<x0> = group$test<x0>
-}
+group0$test<x0> = group$test<x0> }
 end(*let*)//end-of-[gseq_group_list]
 //
 (* ****** ****** *)
