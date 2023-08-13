@@ -863,5 +863,219 @@ val () = t1up_print$end((*nil*))
 end // end of [gl_print1<t1up10>(tup)]
 //
 (* ****** ****** *)
+(*
+HX-2023-08-13:
+tuples as sequences
+*)
+(* ****** ****** *)
+//
+#impltmp
+{a0:t0
+,a1:t0}
+gseq_forall
+<(a0,a1)>(tup) =
+(
+if
+not
+(forall$test<a0>(tup.0))
+then false else
+(
+  forall$test<a1>(tup.1)) )
+// end of [gseq_forall<t2up>(tup)]
+//
+#impltmp
+{a0:t0
+,a1:t0
+,a2:t0}
+gseq_forall
+<
+(a0
+,a1,a2)>(tup) =
+(
+if
+not
+(forall$test<a0>(tup.0))
+then false else
+if
+not
+(forall$test<a1>(tup.1))
+then false else
+(
+  forall$test<a2>(tup.2)) )
+// end of [gseq_forall<t3up>(tup)]
+//
+#impltmp
+{a0:t0
+,a1:t0
+,a2:t0
+,a3:t0}
+gseq_forall
+<
+(a0,a1
+,a2,a3)>(tup) =
+(
+if
+not
+(forall$test<a0>(tup.0))
+then false else
+if
+not
+(forall$test<a1>(tup.1))
+then false else
+if
+not
+(forall$test<a2>(tup.2))
+then false else
+(
+  forall$test<a3>(tup.3)) )
+// end of [gseq_forall<t4up>(tup)]
+//
+#impltmp
+{a0:t0
+,a1:t0
+,a2:t0
+,a3:t0
+,a4:t0}
+gseq_forall
+<
+(a0
+,a1,a2
+,a3,a4)>(tup) =
+(
+if
+not
+(forall$test<a0>(tup.0))
+then false else
+if
+not
+(forall$test<a1>(tup.1))
+then false else
+if
+not
+(forall$test<a2>(tup.2))
+then false else
+if
+not
+(forall$test<a3>(tup.3))
+then false else
+(
+  forall$test<a4>(tup.4)) )
+// end of [gseq_forall<t5up>(tup)]
+//
+#impltmp
+{a0:t0
+,a1:t0
+,a2:t0
+,a3:t0
+,a4:t0
+,a5:t0}
+gseq_forall
+<
+(a0,a1
+,a2,a3
+,a4,a5)>(tup) =
+(
+if
+not
+(forall$test<a0>(tup.0))
+then false else
+if
+not
+(forall$test<a1>(tup.1))
+then false else
+if
+not
+(forall$test<a2>(tup.2))
+then false else
+if
+not
+(forall$test<a3>(tup.3))
+then false else
+if
+not
+(forall$test<a4>(tup.4))
+then false else
+(
+  forall$test<a5>(tup.5)) )
+// end of [gseq_forall<t6up>(tup)]
+//
+(* ****** ****** *)
+//
+#impltmp
+{a0:t0
+,a1:t0}
+gseq_foreach
+<(a0,a1)>(tup) =
+( foreach$work<a0>(tup.0)
+; foreach$work<a1>(tup.1) )
+// end of [gseq_foreach<t2up>(tup)]
+//
+#impltmp
+{a0:t0
+,a1:t0
+,a2:t0}
+gseq_foreach
+<
+(a0
+,a1,a2)>(tup) =
+( foreach$work<a0>(tup.0)
+; foreach$work<a1>(tup.1)
+; foreach$work<a2>(tup.2) )
+// end of [gseq_foreach<t3up>(tup)]
+//
+#impltmp
+{a0:t0
+,a1:t0
+,a2:t0
+,a3:t0}
+gseq_foreach
+<
+(a0,a1
+,a2,a3)>(tup) =
+( foreach$work<a0>(tup.0)
+; foreach$work<a1>(tup.1)
+; foreach$work<a2>(tup.2)
+; foreach$work<a3>(tup.3) )
+// end of [gseq_foreach<t4up>(tup)]
+//
+#impltmp
+{a0:t0
+,a1:t0
+,a2:t0
+,a3:t0
+,a4:t0}
+gseq_foreach
+<
+(a0
+,a1,a2
+,a3,a4)>(tup) =
+( foreach$work<a0>(tup.0)
+; foreach$work<a1>(tup.1)
+; foreach$work<a2>(tup.2)
+; foreach$work<a3>(tup.3)
+; foreach$work<a4>(tup.4) )
+// end of [gseq_foreach<t5up>(tup)]
+//
+#impltmp
+{a0:t0
+,a1:t0
+,a2:t0
+,a3:t0
+,a4:t0
+,a5:t0}
+gseq_foreach
+<
+(a0,a1
+,a2,a3
+,a4,a5)>(tup) =
+( foreach$work<a0>(tup.0)
+; foreach$work<a1>(tup.1)
+; foreach$work<a2>(tup.2)
+; foreach$work<a3>(tup.3)
+; foreach$work<a4>(tup.4)
+; foreach$work<a5>(tup.5) )
+// end of [gseq_foreach<t6up>(tup)]
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_tupl000.dats] *)
