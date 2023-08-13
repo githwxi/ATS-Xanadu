@@ -57,6 +57,8 @@ $(XATSOPT) -s $(PRELUDE)/SATS/gfun000.sats
 
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gseq000.sats
+  all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gseq001.sats
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gras000.sats
 all_sats:: ; \
@@ -134,6 +136,8 @@ $(XATSOPT) -d $(PRELUDE)/DATS/gfun000.dats
 
 all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gseq000.dats
+all_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/gseq001.dats
 all_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gras000.dats
 all_dats:: ; \
