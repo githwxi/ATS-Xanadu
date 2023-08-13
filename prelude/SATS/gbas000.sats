@@ -829,6 +829,33 @@ foreach0
 foreach1
 (xs:vt, x0:t0) = (!xs, x0 -<cfr> void) -<cfr> void
 (* ****** ****** *)
+#typedef
+rstrmize
+(xs:t0, x0:t0) = ( xs) -<cfr> strm_vt(x0)
+#typedef
+rstrmize0
+(xs:vt, x0:vt) = (~xs) -<cfr> strm_vt(x0)
+(* ****** ****** *)
+#typedef
+rforall
+(xs:t0, x0:t0) = ( xs, x0 -<cfr> bool) -<cfr> bool
+#typedef
+rforall0
+(xs:vt, x0:vt) = (~xs, x0 -<cfr> bool) -<cfr> bool
+#typedef
+rforall1
+(xs:vt, x0:vt) = (!xs, x0 -<cfr> bool) -<cfr> bool
+(* ****** ****** *)
+#typedef
+rforeach
+(xs:t0, x0:t0) = ( xs, x0 -<cfr> void) -<cfr> void
+#typedef
+rforeach0
+(xs:vt, x0:t0) = (~xs, x0 -<cfr> void) -<cfr> void
+#typedef
+rforeach1
+(xs:vt, x0:t0) = (!xs, x0 -<cfr> void) -<cfr> void
+(* ****** ****** *)
 //
 #typedef
 foldl//cfr

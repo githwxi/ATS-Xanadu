@@ -2095,27 +2095,27 @@ fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-gseq_foldl_of_strmize
+gseq_foldl_of_strmize//default
 (strmize: strmize(xs, x0)): foldl(xs, x0, r0)
 fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-gseq_foldr_of_strmize
-(strmize: strmize(xs, x0)): foldr(xs, x0, r0)
+gseq_foldr_of_rstrmize//default
+(rstrmize: rstrmize(xs, x0)): foldr(xs, x0, r0)
 (* ****** ****** *)
 fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-gseq_foldl_of_foreach
+gseq_foldl_of_foreach//list-like
 (foreach: foreach(xs, x0)): foldl(xs, x0, r0)
 fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-gseq_foldr_of_foreach
-(foreach: foreach(xs, x0)): foldr(xs, x0, r0)
+gseq_foldr_of_rforeach//list-like
+(rforeach: rforeach(xs, x0)): foldr(xs, x0, r0)
 (* ****** ****** *)
 //
 (*
