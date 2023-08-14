@@ -1048,6 +1048,13 @@ glseq_strmize0<xs><x0> = gseq_strmize<xs><x0>
 glseq_rstrmize0<xs><x0> = gseq_rstrmize<xs><x0>
 //
 (* ****** ****** *)
+//
+(*
+HX-2023-08-14:
+Higher-order glseq-functions
+Mon Aug 14 13:42:54 EDT 2023
+*)
+//
 (* ****** ****** *)
 //
 #impltmp

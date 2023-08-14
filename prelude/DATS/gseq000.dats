@@ -3085,8 +3085,10 @@ end(*let*)//end-[gseq_x2iforeach_col(xs,ys)]
 
 (* ****** ****** *)
 //
-// HX-2022-07-01:
-// higher-order gseq-functions
+(*
+HX-2022-07-01:
+Higher-order gseq-functions
+*)
 //
 (* ****** ****** *)
 //
