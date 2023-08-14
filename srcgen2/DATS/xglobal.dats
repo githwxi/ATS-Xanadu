@@ -674,21 +674,25 @@ end (*let*) // end of [f0_pvsload(knd0,fpth)]
 (* ****** ****** *)
 //
 fun
-f0_pvsfini(): bool =
+f0_pvsfini
+  ((*0*)): bool =
 let
-val ans =
-f1_dexpenv() in ans end
+val
+ans =
+f1_dexpenv() in ans
+end//end-of-[f0_pvsfini]
 //
 and
-f1_dexpenv(): bool =
+f1_dexpenv
+  ((*0*)): bool =
 let
 //
 #typedef
 kx0 =
-@(sint,list(d2itm))
+@(sint,list(d2itm))//type
 #vwtpdef
 kxs = strm_vt
-@(sint,list(d2itm))
+@(sint,list(d2itm))//vwtp
 //
 fun
 auxmain
@@ -704,21 +708,23 @@ strmcon_vt_cons
   (kx1 , kxs) =>
 (
 auxmain
-(kxs, fopr(kx1))) where
+(kxs, fopr(kx1)) ) where
 {
 fun
-fopr(kx1: kx0) =
+fopr
+(kx1: kx0) =
 let
 val dis = kx1.1
 in//let
 if // if
-list_length(dis) <= 1
-then ans else
+length(dis) <= 1
+then ( ans ) else
 (
-case+ dis.head() of
+case+
+dis.head() of
 |
 D2ITMvar(d2v) =>
-true(*fail*) where
+(true(*failed*)) where
 {
 val loc =
 d2v.lctn((*nil*))
@@ -727,9 +733,9 @@ val ( ) = prerrln
 val ( ) = prerrln
 ("TREAD12-WARNING: the_tr12env_pvsload: f0_pvsfini: d2v = ", d2v)
 }
-|_(*non-D2ITMvar*) => ans(*pass*)
+|_(*non-D2ITMvar*) => ans(*passed*)
 )
-end (*let*) // end of [fopr(...)]
+end (*let*) // end of [ fopr(kx1:kx0) ]
 }
 )
 in
@@ -787,7 +793,7 @@ f0_pvsload
 val () =
 f0_pvsload
 ( 0(*sta*)
-, "/prelude/INIT/srcgen2_include.hats")
+, "/prelude/INIT/srcgen2_prelude.sats")
 //
 (* ****** ****** *)
 //
