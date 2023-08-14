@@ -3134,8 +3134,7 @@ gseq_foldr
 <xs><x0><r0>(xs, r0)) where
 {
 #impltmp
-foldr$fopr
-<x0><r0>(x0, r0) = f0(x0, r0)
+foldr$fopr<x0><r0>(x0,r0) = f0(x0,r0)
 }(*where*)//end-of[gseq_foldr_c2fr(xs,r0,f0)]
 (* ****** ****** *)
 #impltmp
@@ -3148,8 +3147,7 @@ gseq_foldr
 <xs><x0><r0>(xs, r0)) where
 {
 #impltmp
-foldr$fopr
-<x0><r0>(x0, r0) = f0(x0, r0)
+foldr$fopr<x0><r0>(x0,r0) = f0(x0,r0)
 }(*where*)//end-of[gseq_foldr_f2np(xs,r0,f0)]
 
 (* ****** ****** *)

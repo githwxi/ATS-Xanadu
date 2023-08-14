@@ -4,11 +4,10 @@
 *)
 (* ****** ****** *)
 //
-(*
 #staload
-"./..\
+"\
+prelude\
 /SATS/VT/gseq000_vt.sats"
-*)
 //
 (* ****** ****** *)
 #staload UN =
@@ -1047,6 +1046,67 @@ glseq_strmize0<xs><x0> = gseq_strmize<xs><x0>
 #impltmp
 {xs:t0}{x0:t0}
 glseq_rstrmize0<xs><x0> = gseq_rstrmize<xs><x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<xs:vt>
+<x0:vt>
+<r0:vt>
+glseq_foldl0_c2fr
+( xs, r0, f0 ) =
+(
+glseq_foldl0
+<xs><x0><r0>(xs, r0)) where
+{
+#impltmp
+foldl0$fopr<x0><r0>(r0, x0) = f0(r0, x0)
+}(*where*)//end-of[glseq_foldl0_c2fr(xs,r0,f0)]
+//
+#impltmp
+<xs:vt>
+<x0:vt>
+<r0:vt>
+glseq_foldl1_c2fr
+( xs, r0, f0 ) =
+(
+glseq_foldl1
+<xs><x0><r0>(xs, r0)) where
+{
+#impltmp
+foldl1$fopr<x0><r0>(r0, x0) = f0(r0, x0)
+}(*where*)//end-of[glseq_foldl1_c2fr(xs,r0,f0)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs:vt>
+<x0:vt>
+<r0:vt>
+glseq_foldr0_c2fr
+( xs, r0, f0 ) =
+(
+glseq_foldr0
+<xs><x0><r0>(xs, r0)) where
+{
+#impltmp
+foldr0$fopr<x0><r0>(x0, r0) = f0(x0, r0)
+}(*where*)//end-of[glseq_foldr0_c2fr(xs,r0,f0)]
+//
+#impltmp
+<xs:vt>
+<x0:vt>
+<r0:vt>
+glseq_foldr1_c2fr
+( xs, r0, f0 ) =
+(
+glseq_foldr1
+<xs><x0><r0>(xs, r0)) where
+{
+#impltmp
+foldr1$fopr<x0><r0>(x0, r0) = f0(x0, r0)
+}(*where*)//end-of[glseq_foldr1_c2fr(xs,r0,f0)]
 //
 (* ****** ****** *)
 

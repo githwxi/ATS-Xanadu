@@ -575,8 +575,70 @@ glseq_z2foreach0(xs: ~xs, ys: ~ys): void
 //
 (* ****** ****** *)
 //
-// HX-2020-05-31:
-// symbol overloading for gseq_vt
+(*
+HX-2023-08-14:
+higher-order glseq-functions
+*)
+// lam
+// $lam $lam?
+// lamfnp lamcfr
+// llamcfp llamenv
+//
+(* ****** ****** *)
+//
+// HX: glseq_foldl0/1
+//
+(* ****** ****** *)
+fun
+<xs:v0>
+<x0:v0>
+<r0:vt>
+glseq_foldl0_c2fr
+(~xs, r0, f0: (r0, x0)-<cfr>r0): r0
+fun
+<xs:v0>
+<x0:v0>
+<r0:vt>
+glseq_foldl1_c2fr
+(!xs, r0, f0: (r0, x0)-<cfr>r0): r0
+(* ****** ****** *)
+fun
+<xs:v0>
+<x0:v0>
+<r0:vt>
+glseq_foldr0_c2fr
+(~xs, r0, f0: (x0, r0)-<cfr>r0): r0
+fun
+<xs:v0>
+<x0:v0>
+<r0:vt>
+glseq_foldr1_c2fr
+(!xs, r0, f0: (x0, r0)-<cfr>r0): r0
+(* ****** ****** *)
+//
+(*
+HX-2020-05-31:
+symbol overloading for gseq_vt
+*)
+//
+(* ****** ****** *)
+(*
+HX-2023-08-14:
+Mon Aug 14 13:03:44 EDT 2023
+On a second thought, overloading seems to work well
+with closed templates!
+*)
+(* ****** ****** *)
+//
+#symload
+foldl0_cfr with glseq_foldl0_c2fr of 0100
+#symload
+foldl1_cfr with glseq_foldl1_c2fr of 0100
+//
+#symload
+foldr0_cfr with glseq_foldr0_c2fr of 0100
+#symload
+foldr1_cfr with glseq_foldr1_c2fr of 0100
 //
 (* ****** ****** *)
 
