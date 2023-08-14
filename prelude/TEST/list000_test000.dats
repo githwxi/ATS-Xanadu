@@ -17,7 +17,7 @@ fun
 <a:type>
 myfun_rand_test
 (f0: c1fr(a,bool)): void =
-N.foreach
+N.foreach_cfr
 (
 lam _ =>
 if // if
@@ -62,6 +62,16 @@ myfun_rand_test
 lam@(xs:ints,ys:ints)=>
 (reverse(append(xs,ys)) =
  append(reverse(ys), reverse(xs))))
+
+(* ****** ****** *)
+
+val () =
+myfun_rand_test
+(
+lam(xss: list(ints)) =>
+(length(concat(xss)) =
+ xss.foldl_cfr
+ (0, lam(r0:int0, xs) => r0 + length(xs))))
 
 (* ****** ****** *)
 
