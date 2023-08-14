@@ -3,11 +3,6 @@
 ** for fun-streams
 *)
 (* ****** ****** *)
-(*
-#staload
-"./../SATS/strm000.sats"
-*)
-(* ****** ****** *)
 #staload
 UN =
 "prelude/SATS/unsafex.sats"

@@ -3,11 +3,6 @@
 UN =
 "prelude/SATS/unsafex.sats"
 (* ****** ****** *)
-#staload
-"prelude/SATS/gseq000.sats"
-#staload
-"prelude/SATS/gmap000.sats"
-(* ****** ****** *)
 #impltmp
 <map>
 <key,itm>

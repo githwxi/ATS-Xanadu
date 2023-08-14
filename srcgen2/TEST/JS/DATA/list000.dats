@@ -4,13 +4,6 @@
 *)
 (* ****** ****** *)
 //
-#staload
-"prelude/SATS/gmap000.sats"
-#staload
-"prelude/SATS/gseq000.sats"
-//
-(* ****** ****** *)
-//
 #impltmp
 <>(*tmp*)
 list_nil_
@@ -1325,8 +1318,10 @@ gseq_map_strm<kxs><x0>(kxs)
 (*
 For gseqn-operations
 *)
+(*
 #staload
 "prelude/SATS/gseqn00.sats"
+*)
 //
 (* ****** ****** *)
 //

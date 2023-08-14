@@ -1,6 +1,4 @@
 (* ****** ****** *)
-#staload
-"prelude/SATS/gseq000.sats"
 #staload UN =
 "prelude/SATS/unsafex.sats"
 (* ****** ****** *)
