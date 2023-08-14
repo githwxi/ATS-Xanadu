@@ -32,45 +32,50 @@
 //
 (* ****** ****** *)
 //
-#staload "prelude/SATS/gbas000.sats"
-#staload "prelude/SATS/gnum000.sats"
-#staload "prelude/SATS/gord000.sats"
+#include "prelude/SATS/gbas000.sats"
+#include "prelude/SATS/gnum000.sats"
+#include "prelude/SATS/gord000.sats"
 //
 (* ****** ****** *)
-#staload "prelude/SATS/rand000.sats"
+#include "prelude/SATS/rand000.sats"
 (* ****** ****** *)
 //
-#staload "prelude/SATS/bool000.sats"
-#staload "prelude/SATS/char000.sats"
-#staload "prelude/SATS/gint000.sats"
-#staload "prelude/SATS/gflt000.sats"
-#staload "prelude/SATS/strn000.sats"
-//
-(* ****** ****** *)
-//
-#staload "prelude/SATS/optn000.sats"
-#staload "prelude/SATS/list000.sats"
-#staload "prelude/SATS/strm000.sats"
-#staload "prelude/SATS/tupl000.sats"
+#include "prelude/SATS/bool000.sats"
+#include "prelude/SATS/char000.sats"
+#include "prelude/SATS/gint000.sats"
+#include "prelude/SATS/gflt000.sats"
+#include "prelude/SATS/strn000.sats"
 //
 (* ****** ****** *)
 //
-#staload "prelude/SATS/gseq000.sats"
-#staload "prelude/SATS/gseq001.sats"
-#staload "prelude/SATS/gseqn00.sats"
+#include "prelude/SATS/optn000.sats"
+#include "prelude/SATS/list000.sats"
+#include "prelude/SATS/strm000.sats"
+#include "prelude/SATS/tupl000.sats"
 //
 (* ****** ****** *)
 //
-#staload "prelude/SATS/VT/optn000_vt.sats"
-#staload "prelude/SATS/VT/list000_vt.sats"
-#staload "prelude/SATS/VT/strm000_vt.sats"
-#staload "prelude/SATS/VT/tupl000_vt.sats"
+#include "prelude/SATS/gseq000.sats"
+#include "prelude/SATS/gseq001.sats"
+#include "prelude/SATS/gseqn00.sats"
 //
 (* ****** ****** *)
 //
-#staload "prelude/SATS/VT/gseq000_vt.sats"
-#staload "prelude/SATS/VT/gseqn00_vt.sats"
+#include "prelude/SATS/VT/optn000_vt.sats"
+#include "prelude/SATS/VT/list000_vt.sats"
+#include "prelude/SATS/VT/strm000_vt.sats"
+#include "prelude/SATS/VT/tupl000_vt.sats"
+//
+(* ****** ****** *)
+//
+#include "prelude/SATS/VT/gseq000_vt.sats"
+#include "prelude/SATS/VT/gseqn00_vt.sats"
+//
+(* ****** ****** *)
+//
+#staload
+UNSF(*unsafe*) = "prelude/SATS/unsafex.sats"
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen2_INIT_include.hats] *)
+(* end of [ATS3/XANADU_prelude_INIT_srcgen2_prelude.sats] *)
