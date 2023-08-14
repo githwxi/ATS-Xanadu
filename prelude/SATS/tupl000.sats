@@ -55,6 +55,15 @@ t0up1(a0:vt) = @(a0)
 t1up1(a0:vt) = $tup(a0)
 //
 (* ****** ****** *)
+#abstype
+z2tup_type
+(a0:t0,a1:t0) <= (a0,a1)
+#abstype
+x2tup_type
+(a0:t0,a1:t0) <= (a0,a1)
+#sexpdef z2tup = z2tup_type
+#sexpdef x2tup = x2tup_type
+(* ****** ****** *)
 #vwtpdef
 t0up2
 (a0:vt,a1:vt) = @(a0,a1)
@@ -174,6 +183,32 @@ fun<>
 t0up_print$sep(): void // print( "," ) // flat-tupl
 fun<>
 t1up_print$sep(): void // print( "," ) // boxd-tupl
+(* ****** ****** *)
+fun
+<a0:t0>
+<a1:t0>
+z2tup_encode
+(x1: a0, x2: a1): z2tup(a0, a1)
+fun
+<a0:t0>
+<a1:t0>
+z2tup_decode
+(tup: z2tup(a0, a1)): @(a0, a1)
+#symload z2tup with z2tup_encode of 1000
+#symload put2z with z2tup_decode of 1000
+(* ****** ****** *)
+fun
+<a0:t0>
+<a1:t0>
+x2tup_encode
+(x1: a0, x2: a1): x2tup(a0, a1)
+fun
+<a0:t0>
+<a1:t0>
+x2tup_decode
+(tup: x2tup(a0, a1)): @(a0, a1)
+#symload x2tup with x2tup_encode of 1000
+#symload put2x with x2tup_decode of 1000
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_tupl000.sats] *)

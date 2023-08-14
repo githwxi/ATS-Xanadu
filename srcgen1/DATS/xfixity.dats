@@ -116,7 +116,7 @@ brack_prcdv =
 add_prcdv_int(app_prcdv, 10)
 implement
 dtsel_prcdv =
-add_prcdv_int(app_prcdv, 10)
+sub_prcdv_int(app_prcdv, 01)
 //
 implement
 brack_fixty = FIXTYpos(brack_prcdv)

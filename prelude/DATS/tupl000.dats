@@ -1078,4 +1078,46 @@ gseq_foreach
 //
 (* ****** ****** *)
 
+#impltmp
+{xs:t0}
+{ys:t0}
+{x0:t0}
+{y0:t0}
+gseq_foreach_c1fr
+<
+z2tup
+(xs,ys)>
+<
+(x0,y0)>
+(ztup, work) =
+let
+val
+(xs, ys) =
+put2z(ztup) in//in
+gseq_z2foreach_c2fr<xs,ys><x0,y0>
+(xs, ys, lam(x0, y0) => work@(x0, y0)) end
+
+(* ****** ****** *)
+
+#impltmp
+{xs:t0}
+{ys:t0}
+{x0:t0}
+{y0:t0}
+gseq_foreach_c1fr
+<
+x2tup
+(xs,ys)>
+<
+(x0,y0)>
+(xtup, work) =
+let
+val
+(xs, ys) =
+put2x(xtup) in//in
+gseq_x2foreach_c2fr<xs,ys><x0,y0>
+(xs, ys, lam(x0, y0) => work@(x0, y0)) end
+
+(* ****** ****** *)
+
 (* end of [ATS3/XANADU_prelude_tupl000.dats] *)
