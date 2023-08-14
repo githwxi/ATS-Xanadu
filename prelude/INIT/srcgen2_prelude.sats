@@ -55,9 +55,24 @@
 //
 (* ****** ****** *)
 //
+#include "prelude/SATS/gfor000.sats"
+//
+#include "prelude/SATS/gfun000.sats"
+//
+#include "prelude/SATS/gmap000.sats"
+//
+#include "prelude/SATS/gras000.sats"
+#include "prelude/SATS/grasn00.sats"
+//
 #include "prelude/SATS/gseq000.sats"
 #include "prelude/SATS/gseq001.sats"
 #include "prelude/SATS/gseqn00.sats"
+//
+(* ****** ****** *)
+#include "prelude/SATS/synoug0.sats"
+(* ****** ****** *)
+//
+#include "prelude/SATS/VT/strn000_vt.sats"
 //
 (* ****** ****** *)
 //
@@ -71,6 +86,8 @@
 #include "prelude/SATS/VT/gseq000_vt.sats"
 #include "prelude/SATS/VT/gseqn00_vt.sats"
 //
+(* ****** ****** *)
+#include "prelude/SATS/VT/synoug0_vt.sats"
 (* ****** ****** *)
 //
 #staload

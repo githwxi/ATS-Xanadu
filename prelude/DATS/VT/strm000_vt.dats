@@ -3,14 +3,6 @@
 ** for lin-streams
 *)
 (* ****** ****** *)
-//
-(*
-#staload
-"./..\
-/SATS/VT/strm000_vt.sats"
-*)
-//
-(* ****** ****** *)
 #abstbox box_tx
 #typedef box = box_tx
 (* ****** ****** *)
