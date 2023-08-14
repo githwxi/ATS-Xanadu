@@ -784,8 +784,14 @@ f0_pvsload
 ( 0(*sta*)
 , "/prelude/INIT/srcgen2_xsetup0.sats")
 //
+val () =
+f0_pvsload
+( 0(*sta*)
+, "/prelude/INIT/srcgen2_include.hats")
+//
 (* ****** ****** *)
 //
+(*
 val () =
 f0_pvsload
 (0(*sta*), "/prelude/SATS/gbas000.sats")
@@ -795,9 +801,11 @@ f0_pvsload
 val () =
 f0_pvsload
 (0(*sta*), "/prelude/SATS/gord000.sats")
+*)
 //
 (* ****** ****** *)
 //
+(*
 val () =
 f0_pvsload
 (0(*sta*), "/prelude/SATS/bool000.sats")
@@ -813,9 +821,11 @@ f0_pvsload
 val () =
 f0_pvsload
 (0(*sta*), "/prelude/SATS/strn000.sats")
+*)
 //
 (* ****** ****** *)
 //
+(*
 val () =
 f0_pvsload
 (0(*sta*), "/prelude/SATS/optn000.sats")
@@ -828,9 +838,11 @@ f0_pvsload
 val () =
 f0_pvsload
 (0(*sta*), "/prelude/SATS/tupl000.sats")
+*)
 //
 (* ****** ****** *)
 //
+(*
 val () =
 f0_pvsload
 (
@@ -846,6 +858,7 @@ f0_pvsload
 (
 0(*static*),
 "/prelude/SATS/VT/strm000_vt.sats"(*src*))
+*)
 //
 (* ****** ****** *)
 //
