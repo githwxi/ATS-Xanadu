@@ -1090,10 +1090,12 @@ T_DLR() => f0_DLR(x0, x1, xs)
 |
 T_SRP() => f0_SRP(x0, x1, xs)
 //
+(*
 |
 T_LAM _ => f0_LAM(x0, x1, xs)
 |
 T_FIX _ => f0_FIX(x0, x1, xs)
+*)
 //
 |
 T_VAL _ => f0_VAL(x0, x1, xs)
@@ -1330,6 +1332,7 @@ strmcon_vt_cons(x0, auxmain1(x1,xs)))
 
 (* ****** ****** *)
 
+(*
 fun
 f0_LAM
 ( x0: token
@@ -1361,9 +1364,11 @@ _(*rest-of-tnode*) =>
 strmcon_vt_cons(x0, auxmain1(x1,xs)))
 //
 end(*let*)//end-of(f0_LAM(x0,x1,xs,res))
+*)
 
 (* ****** ****** *)
 
+(*
 fun
 f0_FIX
 ( x0: token
@@ -1395,6 +1400,7 @@ _(*rest-of-tnode*) =>
 strmcon_vt_cons(x0, auxmain1(x1,xs)))
 //
 end(*let*)//end-of(f0_FIX(x0,x1,xs,res))
+*)
 
 (* ****** ****** *)
 

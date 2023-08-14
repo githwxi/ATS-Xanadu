@@ -74,6 +74,19 @@ gfun_memberq_gseq(xs): c1fr(x0,bool)
 //
 (* ****** ****** *)
 //
+(*
+HX: for run-time testing
+Sun Aug 13 21:10:14 EDT 2023
+*)
+//
+fun
+<x0:t0>
+<y0:vt>
+gfun_equal_at
+( f0
+: f1np(x0, y0)
+, x0: x0, y0: y0): bool
+//
 fun
 <x0:t0>
 <y0:vt>
