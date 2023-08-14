@@ -3,14 +3,8 @@
 ** for strings
 *)
 (* ****** ****** *)
-#staload
-"prelude/SATS/gseq000.sats"
-(* ****** ****** *)
 #staload UN =
 "prelude/SATS/unsafex.sats"
-(* ****** ****** *)
-#staload
-"prelude/SATS/VT/strn000_vt.sats"
 (* ****** ****** *)
 //
 #impltmp<>

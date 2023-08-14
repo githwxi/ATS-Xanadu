@@ -3,11 +3,6 @@
 ** For function ops
 *)
 (* ****** ****** *)
-#staload
-"prelude/SATS/gfun000.sats"
-#staload
-"prelude/SATS/gseq000.sats"
-(* ****** ****** *)
 //
 #staload UN =
 "prelude/SATS/unsafex.sats"

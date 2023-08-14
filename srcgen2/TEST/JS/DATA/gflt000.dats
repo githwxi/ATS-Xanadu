@@ -1,8 +1,4 @@
 (* ****** ****** *)
-(*
-#staload "./../SATS/gflt.sats"
-*)
-(* ****** ****** *)
 //
 #impltmp
 g_si<sflt> = gflt_si_sflt<>

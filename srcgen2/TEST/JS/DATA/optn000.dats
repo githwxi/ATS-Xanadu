@@ -3,13 +3,6 @@
 ** for opts
 *)
 (* ****** ****** *)
-
-(*
-#staload
-"./../SATS/optn.sats"
-*)
-
-(* ****** ****** *)
 //
 #impltmp
 <>(*tmp*)

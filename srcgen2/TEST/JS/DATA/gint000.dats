@@ -51,10 +51,6 @@ Authoremail: gmhwxiATgmailDOTcom
 ** for generics
 *)
 (* ****** ****** *)
-(*
-#staload "./../SATS/gint.sats"
-*)
-(* ****** ****** *)
 
 #impltmp
 g_si<sint>(i) = i // g_si: sint -> a

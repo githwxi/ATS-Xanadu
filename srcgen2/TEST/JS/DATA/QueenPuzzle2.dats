@@ -22,11 +22,6 @@ board_tbox <= p0tr
 #typedef
 board = board_tbox
 (* ****** ****** *)
-#staload
-"prelude/SATS/gseq000.sats"
-#staload
-"prelude/SATS/synoug0.sats"
-(* ****** ****** *)
 #extval
 fun
 board_nil(): board

@@ -3,11 +3,6 @@
 ** for gras-sequences
 *)
 (* ****** ****** *)
-#staload
-"prelude/SATS/gras000.sats"
-#staload
-"prelude/SATS/gseq000.sats"
-(* ****** ****** *)
 
 #impltmp
 <xs><x0>

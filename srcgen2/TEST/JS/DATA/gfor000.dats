@@ -4,11 +4,6 @@
 *)
 (* ****** ****** *)
 //
-#staload
-"prelude/SATS/gfor000.sats"
-//
-(* ****** ****** *)
-//
 #impltmp
 <a:t0>
 range1_make_arg2

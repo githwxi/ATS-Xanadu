@@ -3,10 +3,6 @@
 ** for tuples
 *)
 (* ****** ****** *)
-#staload
-"prelude/SATS/VT/gseq000_vt.sats"
-(* ****** ****** *)
-(* ****** ****** *)
 #impltmp<>
 t0up_print$beg()=strn_print("@(")
 #impltmp<>
