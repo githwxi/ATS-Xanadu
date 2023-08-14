@@ -5,18 +5,25 @@
 /SATS/rand000.sats"
 
 (* ****** ****** *)
+
+val N = 10
+
+(* ****** ****** *)
 #typedef int0 = sint
 #typedef ints = list(int0)
 (* ****** ****** *)
-
+//
 fun
 <a:type>
 myfun_rand_test
 (f0: c1fr(a,bool)): void =
-if
+N.foreach
+(
+lam _ =>
+if // if
 f0(g_rand<a>())
-then () else $raise AssertExn()
-
+then () else $raise AssertExn())
+//
 (* ****** ****** *)
 
 (*

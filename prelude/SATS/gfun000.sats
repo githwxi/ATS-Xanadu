@@ -60,6 +60,13 @@ gfun_not_f1np
 //
 (* ****** ****** *)
 //
+fun<>
+gfun_thunk_repeat
+( f0
+: c0fr(void), times: sint): void
+//
+(* ****** ****** *)
+//
 fun
 <x0:vt>
 gfun_enum_strx_vt
@@ -107,13 +114,17 @@ gfun_rand_equal_c1fr
 // For various symbol-overloading
 //
 (* ****** ****** *)
-
+//
 #symload fnot with gfun_not_f1np of 0100
 #symload fnot with gfun_not_c1fr of 0100
-
+//
 (* ****** ****** *)
 //
 #symload fenum with gfun_enum_strx_vt of 0100
+//
+(* ****** ****** *)
+//
+#symload repeat with gfun_thunk_repeat of 0100
 //
 (* ****** ****** *)
 //

@@ -928,7 +928,7 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_istrmize
-  (xs: xs): strm_vt( @(nint, x0) )
+  (xs: xs): strm_vt@(nint, x0)
 //
 (* ****** ****** *)
 //
@@ -939,7 +939,7 @@ gseq_mergesort(xs: xs): (xs)
 fun
 <xs:t0>
 <x0:t0>
-gseq_mergesort_list(xs: xs): list_vt(x0)
+gseq_mergesort_list(xs): list_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -959,7 +959,7 @@ fun
 ,ys:t0>
 <x0:t0>
 gseq_z2cmp
-(xs: xs, ys: ys): sint
+  (xs: xs, ys: ys): sint
 //
 (* ****** ****** *)
 //
@@ -970,8 +970,7 @@ fun
 ,y0:t0>
 <r0:vt>
 gseq_z2foldl
-  ( xs: xs
-  , ys: ys, r0: r0): r0
+  (xs: xs, ys: ys, r0: r0): r0
 fun
 <xs:t0
 ,ys:t0>
@@ -979,8 +978,7 @@ fun
 ,y0:t0>
 <r0:vt>
 gseq_z2foldr
-  ( xs: xs
-  , ys: ys, r0: r0): r0
+  (xs: xs, ys: ys, r0: r0): r0
 //
 (* ****** ****** *)
 //
