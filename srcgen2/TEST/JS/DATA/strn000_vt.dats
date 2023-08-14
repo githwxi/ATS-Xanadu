@@ -1,12 +1,4 @@
 (* ****** ****** *)
-#staload
-"prelude\
-/SATS/VT/gseq000_vt.sats"
-(* ****** ****** *)
-#staload
-"prelude\
-/SATS/VT/strn000_vt.sats"
-(* ****** ****** *)
 #staload UN =
 "prelude/SATS/unsafex.sats"
 (* ****** ****** *)

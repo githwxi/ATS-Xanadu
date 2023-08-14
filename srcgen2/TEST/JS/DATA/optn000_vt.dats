@@ -3,10 +3,6 @@
 ** For opts_vt
 *)
 (* ****** ****** *)
-#staload
-"prelude\
-/SATS/VT/gseq000_vt.sats"
-(* ****** ****** *)
 #staload UN =
 "prelude/SATS/unsafex.sats"
 (* ****** ****** *)
