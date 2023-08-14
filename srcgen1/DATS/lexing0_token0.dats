@@ -1232,6 +1232,7 @@ case+ x0.node() of
         loop1(x1, xs2, list_vt_cons(x0, res))
   )
 //
+(*
 | T_LAM(k0) =>
   (
     case+ x1.node() of
@@ -1246,6 +1247,8 @@ case+ x0.node() of
         loop1(x1, xs2, list_vt_cons(x0, res))
       // end of [rest-of-tnode]
   )
+*)
+(*
 | T_FIX(k0) =>
   (
     case+ x1.node() of
@@ -1260,6 +1263,7 @@ case+ x0.node() of
         loop1(x1, xs2, list_vt_cons(x0, res))
       // end of [rest-of-tnode]
   )
+*)
 //
 | T_VAL(VLKval) =>
   (

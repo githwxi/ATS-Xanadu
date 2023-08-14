@@ -38,6 +38,8 @@
 // For out-of-range subscripting
 //
 excptcon
+SubemptyExn of ((*void*))
+excptcon
 SubscriptExn of ((*void*))
 //
 (* ****** ****** *)
