@@ -35,7 +35,8 @@ then () else $raise AssertExn())
 val () =
 myfun_rand_test
 (
-lam(xs:ints)=>
+lam(
+xs:ints)=>
 (length(xs) = length(reverse(xs))))
 
 (* ****** ****** *)
@@ -43,7 +44,8 @@ lam(xs:ints)=>
 val () =
 myfun_rand_test
 (
-lam@(xs:ints,ys:ints)=>
+lam@(
+xs:ints,ys:ints)=>
 (length(append(xs,ys)) = length(xs)+length(ys)))
 
 (* ****** ****** *)
@@ -59,7 +61,8 @@ lam(xs:ints)=>
 val () =
 myfun_rand_test
 (
-lam@(xs:ints,ys:ints)=>
+lam@(
+xs:ints,ys:ints)=>
 (reverse(append(xs,ys)) =
  append(reverse(ys), reverse(xs))))
 
@@ -68,7 +71,8 @@ lam@(xs:ints,ys:ints)=>
 val () =
 myfun_rand_test
 (
-lam(xss: list(ints)) =>
+lam(
+xss: list(ints)) =>
 (length(concat(xss)) =
  xss.foldl_cfr
  (0, lam(r0:int0, xs) => r0 + length(xs))))
@@ -78,7 +82,8 @@ lam(xss: list(ints)) =>
 val () =
 myfun_rand_test
 (
-lam@(xs:ints,ys:ints,zs:ints)=>
+lam@(
+xs:ints,ys:ints,zs:ints)=>
 (append(append(xs,ys),zs) = append(xs,append(ys,zs))))
 
 (* ****** ****** *)

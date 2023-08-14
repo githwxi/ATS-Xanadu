@@ -1772,6 +1772,7 @@ gseq_z2map_strm_f2np
 // HX: gseq_z2iforall
 //
 (* ****** ****** *)
+//
 fun
 <xs:t0
 ,ys:t0>
@@ -1790,6 +1791,7 @@ gseq_z2iforall_f3np
 ( xs:xs
 , ys:ys
 , work: (nint, x0, y0) -<fnp> bool ): bool
+//
 (* ****** ****** *)
 //
 // HX: gseq_z2iforcmp
@@ -2140,6 +2142,10 @@ It dawned on me last night that overloading
 for the gseq-operations needs to be supported by
 some form of type unification DURING the phase of
 TEMPLATE RESOLUTION. A BIG design decision to take!
+HX-2023-08-14:
+Mon Aug 14 13:03:44 EDT 2023
+On a second thought, overloading seems to work well
+with closed templates!
 *)
 //
 (* ****** ****** *)
