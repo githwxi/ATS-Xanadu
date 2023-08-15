@@ -439,7 +439,7 @@ endloc (*local*) // end of [ local(f2env) ]
 //
 local
 val
-stamper = stamper_new()
+stamper = stamper_new((*0*))
 in//local
 fun
 the_d2con_stamp_new
@@ -450,7 +450,7 @@ endloc(*local*)//end-of[the_d2con_stamp_new]
 //
 local
 val
-stamper = stamper_new()
+stamper = stamper_new((*0*))
 in//local
 fun
 the_d2cst_stamp_new
@@ -461,7 +461,7 @@ endloc(*local*)//end-of[the_d2cst_stamp_new]
 //
 local
 val
-stamper = stamper_new()
+stamper = stamper_new((*0*))
 in//local
 fun
 the_d2var_stamp_new
@@ -868,6 +868,27 @@ D2CST
 (* ****** ****** *)
 //
 #implfun
+d2cst_set_xtyp
+( d2c0, xt2p ) =
+let
+val
+d2v0 =
+$UN.castlin10{d2cst_vt}(d2c0)
+val+
+@D2CST_vt
+( loc0,
+  sym0,
+  tknd,
+  tqas,
+  sexp,
+  stmp,
+  t2p0,
+! xtyp ) = d2v0 in xtyp := xt2p
+end (*let*) // end of [d2cst_set_xtyp]
+//
+(* ****** ****** *)
+//
+#implfun
 d2cst_make_dvar
 ( d2v0 , tqas ) =
 let
@@ -880,12 +901,22 @@ val sexp = d2v0.sexp((*0*))
 //
 val stmp = the_d2cst_stamp_new()
 //
+val xt2p = s2typ_none0((*void*))
+(*
 val xt2p =
+//
+(*
+HX-2023-08-15:
+Note that [d2v0] is not
+yet assigned a proper type!
+*)
+//
 (
   s2typ_subst0(t2p0, svts)) where
 {
   val svts =
   s2vts_make_lctn_tqas(loc0, tqas) }
+*)
 //
 in//let
 (

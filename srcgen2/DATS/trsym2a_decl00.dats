@@ -58,8 +58,47 @@ _(*TRSYM2A*) = "./trsym2a.dats"
 #staload "./../SATS/trans2a.sats"
 #staload "./../SATS/trsym2a.sats"
 (* ****** ****** *)
+#symload lctn with d2cst_get_lctn
+#symload styp with d2cst_get_styp
+#symload xtyp with d2cst_get_xtyp
+#symload xtyp with d2cst_set_xtyp
+(* ****** ****** *)
+#symload node with d2ecl_get_lctn
+#symload node with d2ecl_get_node
+(* ****** ****** *)
 
 local
+
+fun
+my_d2cst_set_xtyp
+  (d2c1: d2cst): void =
+(
+  d2c1.xtyp(xt2p)) where
+{
+//
+val xt2p =
+s2typ_subst0(t2p1, svts)
+//
+val (  ) = prerrln
+("\
+my_d2cst_set_xtyp: d2c1 = ", d2c1)
+val (  ) = prerrln
+("\
+my_d2cst_set_xtyp: t2p1 = ", t2p1)
+val (  ) = prerrln
+("\
+my_d2cst_set_xtyp: xt2p = ", xt2p)
+//
+} where // end of [where]
+{
+//
+val loc1 = d2c1.lctn((*void*))
+val tqas = d2c1.tqas((*void*))
+val t2p1 = d2c1.styp((*void*))
+val svts =
+  s2vts_make_lctn_tqas(loc1, tqas)
+//
+}(*where*)//end-[my_d2cst_set_xtyp]
 
 (* ****** ****** *)
 in(* in-of-local *)
@@ -172,12 +211,36 @@ D2Cfundclst
 ( tknd
 , tqas
 , d2cs, d2fs) => let
-(*
+//
 val () =
-  trsym2a_t2qaglst(env0, tqas)
-*)
+prerrln(
+"\
+trsym2a_d2ecl: \
+D2Cfundclst: d2cs = ", d2cs)
 val () =
-  trsym2a_d2fundclist(env0, d2fs)
+prerrln(
+"\
+trsym2a_d2ecl: \
+D2Cfundclst: tqas = ", tqas)
+//
+val () =
+(
+  list_foreach(d2cs)) where
+{
+  #impltmp
+  foreach$work
+  <d2cst>(d2c1) =
+  (
+    my_d2cst_set_xtyp(d2c1) )
+} where
+{
+//
+// HX-2023-08-15:
+// this part is evaluated first!
+//
+  val () =
+  trsym2a_d2fundclist(env0, d2fs) }
+//
 endlet // end-of-(D2Cfundclst(_,_,_))
 //
 |

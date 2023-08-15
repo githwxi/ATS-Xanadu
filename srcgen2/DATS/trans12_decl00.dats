@@ -2210,24 +2210,27 @@ tr12env_poplam0(env0) // leave
 //
 val (  ) =
 if
-not(recq)
-then tr12env_add0_d2vs(env0, d2vs)
+not(recq) then
+(
+  tr12env_add0_d2vs(env0, d2vs))
 //
 val d2cs =
-list_map(d2vs) where
+(
+  list_map(d2vs)
+) where
 {
-#typedef
-x0 = d2var
-#typedef
-y0 = d2cst
+//
+#typedef x0 = d2var
+#typedef y0 = d2cst
+//
 #impltmp
-map$fopr<x0><y0>
-( dvar )=d2cst_make_dvar(dvar,tqas)
-}
+map$fopr
+<x0><y0>
+(  x0  )=d2cst_make_dvar(x0,tqas) }
 //
 val () =
 (
- if//HX: [d2cs] only for templates
+ if//HX: [d2cs] only for templates!
  list_consq(tqas)
  then tr12env_add1_d2cs(env0, d2cs))
 //

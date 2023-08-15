@@ -532,13 +532,40 @@ val d2fs =
 (
   trans2a_d2fundclist(env0, d2fs) )
 //
+val (  ) = f1_d2cs_d2fs(d2cs, d2fs)
+//
 in//let
 //
 d2ecl_make_node
 ( loc0
 , D2Cfundclst(tknd, tqas, d2cs, d2fs) )
 //
-end (*let*) // end of [f0_fundclst(env0,d2cl)]
+end where
+{
+//
+fun
+f1_d2cs_d2fs
+( d2cs
+: d2cstlst
+, d2fs
+: d2fundclist): void =
+(
+case+ d2cs of
+|list_nil() =>
+( (*nothing*) )
+|list_cons(d2c1, d2cs) =>
+(
+  f1_d2cs_d2fs(d2cs, d2fs)
+) where
+{
+ val-
+ list_cons
+ (d2f1, d2fs) = d2fs
+ val d2v1 = d2fundcl_get_dpid(d2f1)
+ val (  ) = d2c1.styp(d2v1.styp((*0*))) }
+)(*case+*) // end-of-[ f1_d2cs_d2fs(...) ]
+//
+}(*where*) // end of [f0_fundclst(env0,d2cl)]
 //
 (* ****** ****** *)
 //
