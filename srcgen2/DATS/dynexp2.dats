@@ -868,6 +868,27 @@ D2CST
 (* ****** ****** *)
 //
 #implfun
+d2cst_set_styp
+( d2c0, t2p0 ) =
+let
+val
+d2v0 =
+$UN.castlin10{d2cst_vt}(d2c0)
+val+
+@D2CST_vt
+( loc0,
+  sym0,
+  tknd,
+  tqas,
+  sexp,
+  stmp,
+! styp,
+  x2tp ) = d2v0 in styp := t2p0
+end (*let*) // end of [d2cst_set_styp]
+//
+(* ****** ****** *)
+//
+#implfun
 d2cst_set_xtyp
 ( d2c0, xt2p ) =
 let
