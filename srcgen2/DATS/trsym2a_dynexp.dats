@@ -857,6 +857,10 @@ val () =
 trsym2a_d2exp(env0, d2er) endlet
 //
 |
+D2Edtsel _ =>
+f0_dtsel(env0, d2e0) // D2Edtsel
+//
+|
 D2Eraise
 (tknd, d2e1) =>
 let
@@ -1132,6 +1136,39 @@ end (*let*)
 //
 end (*let*) // end of [f0_proj(env0, d2e0)]
 
+(* ****** ****** *)
+//
+fun
+f0_dtsel
+( env0:
+! tr2aenv
+, d2e0: d2exp): void =
+let
+//
+val-
+D2Edtsel
+( tknd
+, drxp
+, dlab, dpis
+, npf1, darg) = d2e0.node()
+//
+in//let
+//
+case+ darg of
+|optn_nil() =>
+( (*nothing*) )
+|optn_cons(d2es) =>
+(
+  trsym2a_d2explst(env0, d2es) )
+//
+end where
+{
+//
+val () = prerrln
+("trsym2a: f0_dtsel: d2e0 = ", d2e0)
+//
+} (*where*) // end of [f0_dtsel(env0, d2e0)]
+//
 (* ****** ****** *)
 //
 fun
