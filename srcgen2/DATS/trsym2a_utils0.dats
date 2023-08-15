@@ -63,14 +63,15 @@ match2a_d2var
 match2a_s2typ
 (env0, t2p1, t2p2) where
 {
-  val t2p1 = d2var_get_styp(d2v1)
+val
+t2p1 = d2var_get_styp(d2v1)
 (*
-  val (  ) =
-  prerrln("match2a_d2var: d2v1 = ", d2v1)
-  val (  ) =
-  prerrln("match2a_d2var: t2p1 = ", t2p1)
-  val (  ) =
-  prerrln("match2a_d2var: t2p2 = ", t2p2)
+val (  ) =
+prerrln("match2a_d2var: d2v1 = ", d2v1)
+val (  ) =
+prerrln("match2a_d2var: t2p1 = ", t2p1)
+val (  ) =
+prerrln("match2a_d2var: t2p2 = ", t2p2)
 *)
 } (*where*) // end of [match2a_d2var(env0,...)]
 //
