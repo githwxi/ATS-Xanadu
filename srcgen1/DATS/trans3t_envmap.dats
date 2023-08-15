@@ -1161,7 +1161,7 @@ val+
 val () =
 (xs := implstk_cons1(d3cl, xs))
 //
-} (* end of [implenv_add_implmnt3] *)
+} (* end of [implenv_add_staload] *)
 
 implement
 implenv_add_implmnt3

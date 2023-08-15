@@ -304,9 +304,15 @@ gint_rlistize_nint
 (* ****** ****** *)
 //
 fun<>
+gint_listize_sint
+{i:int}
+(i0: sint(i)): list_vt( nintlt(i) )
+fun<>
 gint_strmize_sint
 {i:int}
 (i0: sint(i)): strm_vt( nintlt(i) )
+//
+(* ****** ****** *)
 //
 fun<>
 gint_strmize_nint
@@ -319,6 +325,12 @@ fun
 <a:vt>
 gint_map_list_nint
 {n:nat}( n0: sint(n) ): list_vt(a,n)
+//
+(* ****** ****** *)
+//
+fun<>
+gint_repeat_sint_c0fr
+(i0: sint, work: ()-<cfr>void): void
 //
 (* ****** ****** *)
 //
@@ -430,9 +442,10 @@ cmp with gint_cmp_uint_uint of 1000
 #symload rforall with gint_rforall_uint of 1000
 //
 (* ****** ****** *)
-#symload listize with gint_listize_nint of 1000
+#symload listize with gint_listize_sint of 1000
 #symload strmize with gint_strmize_sint of 1000
 (* ****** ****** *)
+#symload sint_listize with gint_listize_sint of 1000
 #symload sint_strmize with gint_strmize_sint of 1000
 (* ****** ****** *)
 #symload nint_listize with gint_listize_nint of 1000
@@ -441,6 +454,13 @@ cmp with gint_cmp_uint_uint of 1000
 #symload nint_rlistize with gint_rlistize_nint of 1000
 (* ****** ****** *)
 #symload nint_map_list with gint_map_list_nint of 1000
+(* ****** ****** *)
+(* ****** ****** *)
+(*
+Tue Aug 15 08:19:43 EDT 2023
+*)
+#symload repeat_cfr with gint_repeat_sint_c0fr of 1000
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gint000.sats] *)

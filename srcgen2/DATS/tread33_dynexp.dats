@@ -1284,9 +1284,15 @@ let
 val e00 = err
 //
 val t2p = d3p.styp()
+(*
+(*
+HX-2023-08-15:
+[t2p] can be anything!
+*)
 val t2p =
 tread33_s2typ(t2p, err)
 val ( ) = d3p.styp(t2p)
+*)
 //
 val-
 D3Pany() = d3p.node((*0*))

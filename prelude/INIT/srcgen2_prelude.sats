@@ -68,6 +68,8 @@
 #include "prelude/SATS/gseq001.sats"
 #include "prelude/SATS/gseqn00.sats"
 //
+#include "prelude/SATS/genv000.sats"
+//
 (* ****** ****** *)
 #include "prelude/SATS/synoug0.sats"
 (* ****** ****** *)
