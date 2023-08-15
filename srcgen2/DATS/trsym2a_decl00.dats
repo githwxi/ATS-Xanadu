@@ -66,6 +66,20 @@ _(*TRSYM2A*) = "./trsym2a.dats"
 #symload node with d2ecl_get_lctn
 #symload node with d2ecl_get_node
 (* ****** ****** *)
+//
+fn0
+s2typ_subst0
+( t2p0: s2typ
+, svts: s2vts): s2typ =
+(
+case+ svts of
+|list_nil() => ( t2p0 )
+|list_cons _ =>
+(
+s2typ_subst0(t2p0, svts))
+)(*case+*) // s2typ_subst0
+//
+(* ****** ****** *)
 
 local
 

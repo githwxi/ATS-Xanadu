@@ -63,8 +63,8 @@ myfun_rand_test
 lam(
 xss: list(ints)) =>
 (length(concat(xss)) =
- xss.foldl_cfr
- (0, lam(r0:int0, xs) => r0 + length(xs))))
+ foldl_cfr
+ (xss, 0, lam(r0:int0, xs:ints) => r0+length(xs))))
 
 (* ****** ****** *)
 
