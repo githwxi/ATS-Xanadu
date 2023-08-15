@@ -466,20 +466,22 @@ case+ d2as of
 |list_nil() =>
  d2exp_none0(loc0)
 |list_cons(d2a1, d2as) => d2a1)}
-in
+in//let
+(*HX:a function is projected out*)
 d2exp_dapp(loc0, dprj, npf1, d2es)
 end (*let*) // end of [list_nil()]
 |list_cons _ =>
 (
-d2exp_dapp(loc0, d2f0, npf1, d2as))
-)
+// HX-2023-08-15:
+// Dot-notation yet to be handled
+d2exp_dapp(loc0, d2f0, npf1, d2as)))
 //
 ) (*case+*) // end of [D2Edtsel(...)]
 //
 |_(* otherwise *) =>
 (
-  d2exp_dapp(loc0, d2f0, npf1, d2as))
-) (*case+*) // end of [my_d2exp_dapp(...)]
+  d2exp_dapp(loc0, d2f0, npf1, d2as)) )
+//(*case+*) // end of [my_d2exp_dapp(...)]
 //
 (* ****** ****** *)
 //
