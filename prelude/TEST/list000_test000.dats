@@ -1,11 +1,5 @@
 (* ****** ****** *)
 
-#staload
-"prelude\
-/SATS/rand000.sats"
-
-(* ****** ****** *)
-
 val N = 10
 
 (* ****** ****** *)
@@ -17,19 +11,14 @@ fun
 <a:type>
 myfun_rand_test
 (f0: c1fr(a,bool)): void =
-N.foreach_cfr
+repeat_cfr
 (
-lam _ =>
+N,
+lam() =>
 if // if
 f0(g_rand<a>())
 then () else $raise AssertExn())
 //
-(* ****** ****** *)
-
-(*
-#symload = with g_equal of 1000
-*)
-
 (* ****** ****** *)
 
 val () =

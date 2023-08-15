@@ -382,12 +382,29 @@ gseq_rforall<xs><x0> = gint_rforall_sint<>
 (* ****** ****** *)
 //
 #impltmp
+gseq_listize<xs><x0> = gint_listize_sint<>
+#impltmp
 gseq_strmize<xs><x0> = gint_strmize_sint<>
 //
 (* ****** ****** *)
 
-end // end of [local]
+endloc // end of [local(gint_... -> gseq_...)]
 
 (* ****** ****** *)
+//
+(*
+HX-2023-08-15:
+Tue Aug 15 08:23:58 EDT 2023
+*)
+//
+#impltmp
+gint_repeat_sint_c0fr
+<(*none*)>(sint, work) =
+(
+  gint_foreach_sint<>(sint)) where
+{
+  #impltmp foreach$work<nint>(_) = work() }
+//
+(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_gint000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_gint000.dats] *)

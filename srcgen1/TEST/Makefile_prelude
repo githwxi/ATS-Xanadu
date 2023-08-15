@@ -21,6 +21,7 @@ XATSLIB=./../../xatslib
 
 all:: all_sats
 all:: all_dats
+all:: all_TEST
 all:: all_CC_dats
 all:: all_JS_dats
 all:: all_Xint_dats
@@ -196,6 +197,11 @@ $(XATSOPT) -d $(PRELUDE)/DATS/VT/synoug0_vt.dats
 
 ######
 
+all_TEST:: ; \
+$(XATSOPT) -d $(PRELUDE)/TEST/list000_test000.dats
+
+######
+
 all_CC_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/CATS/CC/basics0.dats
 
@@ -218,5 +224,5 @@ all_Xint_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/CATS/Xint/prelude.dats
 
 ######
-  
-###### end of [Makefile_prelude] ######
+
+############### end of [Makefile_prelude] ###############
