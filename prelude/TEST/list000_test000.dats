@@ -11,9 +11,8 @@ fun
 <a:type>
 myfun_rand_test
 (f0: c1fr(a,bool)): void =
-repeat_cfr
+N.repeat_cfr
 (
-N,
 lam() =>
 if // if
 f0(g_rand<a>())
@@ -63,8 +62,8 @@ myfun_rand_test
 lam(
 xss: list(ints)) =>
 (length(concat(xss)) =
- foldl_cfr
- (xss, 0, lam(r0:int0, xs:ints) => r0+length(xs))))
+ xss.foldl_cfr
+ (0, lam(r0:int0, xs:ints) => r0+length(xs))))
 
 (* ****** ****** *)
 
