@@ -52,7 +52,11 @@ _(*TRANS2A*) = "./trans2a.dats"
 (* ****** ****** *)
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
+#staload "./../SATS/xlabel0.sats"
+(* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
+#staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
@@ -1624,11 +1628,74 @@ D2Edapp
 in//let
 case+
 d2f0.node() of
-|_(* else *) => f0_dapp_else(env0, d2e0)
+//
+|D2Edtsel _ =>
+(
+  f0_dapp_dtsel(env0, d2e0))
+//
+|
+_(* else *) => f0_dapp_elses(env0, d2e0)
+//
 end (*let*) // end of [f0_dapp(env0,...)]
-
+//
+(* ****** ****** *)
+//
 and
-f0_dapp_else
+f0_dapp_dtsel
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Edapp
+( d2f0
+, npf1, d2es) = d2e0.node()
+//
+val
+lsym = d2f0.lctn((*void*))
+//
+val-
+D2Edtsel
+( tknd
+, drxp
+, lab1, dpis
+, npf1, darg) = d2f0.node()
+//
+val sym1 =
+(
+case+ lab1 of
+|LABint(int) =>
+the_symbl_nil(*0*)
+|LABsym(sym) => sym): sym_t
+val d1e1 =
+(
+  d1exp(lsym, D1Eid0(sym1)) )
+//
+val dsym =
+d2exp_make_node
+(lsym, D2Esym0(drxp,d1e1,dpis))
+//
+val-list_cons(d2e1, _) = (d2es)
+//
+val d2es =
+(
+case+ darg of
+|optn_nil() =>
+ list_sing(d2e1)
+|optn_cons(d2es) =>
+ list_cons(d2e1, d2es)): d2explst
+//
+in//let
+f0_dapp_elses
+(env0, d2exp(loc0, D2Edapp(dsym,npf1,d2es)))
+end (*let*) // end of [f0_dapp_dtsel(env0,...)]
+//
+(* ****** ****** *)
+//
+and
+f0_dapp_elses
 ( env0:
 ! tr2aenv
 , d2e0: d2exp): d2exp =
@@ -1675,7 +1742,7 @@ in//let
 d2exp_make_styp_node
 (loc0, tres, D2Edapp(d2f0,npf1,d2es))
 //
-end (*let*) // end of [f0_dapp_else(env0,...)]
+end (*let*) // end of [f0_dapp_elses(env0,...)]
 //
 (* ****** ****** *)
 //
