@@ -34,7 +34,8 @@ myfun_rand_test
 (
 lam@(
 xs:ints,ys:ints)=>
-(length(append(xs,ys)) = length(xs)+length(ys)))
+( length(append(xs,ys))
+= length(xs)+length(ys)) )
 
 (* ****** ****** *)
 

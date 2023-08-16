@@ -298,8 +298,9 @@ D2Eproj
 ,dlab, dtup) =>
 let
 val () =
-  fperr22_d2exp(out, dtup)
-endlet // end-of-[D2Eproj]
+(
+  fperr22_d2exp(out, dtup))
+end(*let*)//end-of-[D2Eproj]
 //
 |
 D2Elet0
