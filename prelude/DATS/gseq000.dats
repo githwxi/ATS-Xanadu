@@ -1555,7 +1555,6 @@ in
 if
 gseq_rforall
 <xs><x0>(xs) then false else true)
-endif // end-of-(if)
 endlet // end-of-(let)
 // end of [gseq_rexists(xs)/rforall]
 //
@@ -3341,9 +3340,21 @@ gseq_map
 } (*where*)//end-of-[gseq_map_f1np(xs,f0)]
 (* ****** ****** *)
 //
+// HX: gseq_map_list
 // HX: gseq_map_llist
 //
 (* ****** ****** *)
+#impltmp
+<xs>
+<x0><y0>
+gseq_map_c1fr_list
+(    xs, f0    ) =
+(
+gseq_map_list
+< xs><x0><y0 >(xs)) where
+{
+#impltmp map$fopr<x0><y0>(x0) = f0(x0)
+}(*where*)//end[gseq_map_c1fr_list(xs,f0)]
 #impltmp
 <xs>
 <x0><y0>
@@ -3356,6 +3367,17 @@ gseq_map_llist
 #impltmp map$fopr<x0><y0>(x0) = f0(x0)
 }(*where*)//end[gseq_map_c1fr_llist(xs,f0)]
 (* ****** ****** *)
+#impltmp
+<xs>
+<x0><y0>
+gseq_map_f1np_list
+(    xs, f0    ) =
+(
+gseq_map_list
+< xs><x0><y0 >(xs)) where
+{
+#impltmp map$fopr<x0><y0>(x0) = f0(x0)
+}(*where*)//end[gseq_map_f1np_list(xs,f0)]
 #impltmp
 <xs>
 <x0><y0>
