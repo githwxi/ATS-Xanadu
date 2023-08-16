@@ -849,7 +849,6 @@ fun
 d2exp_dtsel_errck
 ( loc0: loc_t
 , tknd: token
-, drxp: d2rxp
 , lab1: label
 , dpis: d2ptmlst
 , npf1: (sint)
@@ -868,8 +867,7 @@ d2exp_errck
 lvl0+1,
 d2exp_make_node(
 loc0,
-D2Edtsel
-(tknd, drxp, lab1, dpis, npf1, dopt)))
+D2Edtsel(tknd,lab1,dpis,npf1,dopt)) )
 endlet // end of [d2exp_dtsel_errck(...)]
 //
 (* ****** ****** *)
@@ -2055,7 +2053,6 @@ val e00 = err
 val-
 D2Edtsel
 (tknd
-,drxp
 ,lab1, dpis
 ,npf1, darg) = d2e.node()
 //
@@ -2068,9 +2065,7 @@ if
 (err=e00)
 then (d2e) else
 d2exp_dtsel_errck
-(
-d2e.lctn(),
-tknd, drxp, lab1, dpis, npf1, darg)
+(d2e.lctn(), tknd,lab1,dpis,npf1,darg)
 end (*let*) // end of [f0_dtsel(d2e,err)]
 //
 (* ****** ****** *)
