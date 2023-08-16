@@ -1737,9 +1737,26 @@ gseq_imap_f2np
 (xs: xs, fopr: (nint, x0) -<fnp> y0): (ys)
 (* ****** ****** *)
 //
+// HX: gseq_imap_list
 // HX: gseq_imap_llist
 //
 (* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_imap_c2fr_list
+( xs: xs
+, fopr: (nint, x0) -<cfr> y0 ): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_imap_f2np_list
+( xs: xs
+, fopr: (nint, x0) -<fnp> y0 ): list(y0)
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -1754,6 +1771,7 @@ fun
 gseq_imap_f2np_llist
 ( xs: xs
 , fopr: (nint, x0) -<fnp> y0 ): list_vt(y0)
+//
 (* ****** ****** *)
 //
 // HX: gseq_imap_lstrm
@@ -2359,6 +2377,11 @@ iforeach_fnp with gseq_iforeach_f2np of 0100
 (* ****** ****** *)
 //
 #symload
+map_cfr with gseq_map_c1fr_lstrm of 0100
+#symload
+map_fnp with gseq_map_f1np_lstrm of 0100
+//
+#symload
 map_cfr_list with gseq_map_c1fr_list of 0100
 #symload
 map_fnp_list with gseq_map_f1np_list of 0100
@@ -2382,7 +2405,10 @@ mapopt_fnp_llist with gseq_mapopt_f1np_llist of 0100
 //
 (* ****** ****** *)
 //
-(*
+#symload
+imap_cfr with gseq_imap_c2fr_lstrm of 0100
+#symload
+imap_fnp with gseq_imap_f2np_lstrm of 0100
 //
 #symload
 imap_cfr_list with gseq_imap_c2fr_list of 0100
@@ -2393,6 +2419,8 @@ imap_fnp_list with gseq_imap_f2np_list of 0100
 imap_cfr_llist with gseq_imap_c2fr_llist of 0100
 #symload
 imap_fnp_llist with gseq_imap_f2np_llist of 0100
+//
+(*
 //
 #symload
 ifilter_cfr_llist with gseq_ifilter_c2fr_llist of 0100
