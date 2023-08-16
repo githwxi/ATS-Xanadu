@@ -4,10 +4,10 @@
 *)
 (* ****** ****** *)
 //
+(*
 #staload
 "./../SATS/gfun000.sats"
-#staload
-"./../SATS/rand000.sats"
+*)
 //
 (* ****** ****** *)
 #staload UN =
@@ -86,7 +86,7 @@ gfun_equal_at
 #impltmp
 <x0:t0>
 <y0:vt>
-gfun_rand_equal_f1np
+gfun_rand_equal_c1fr
   (f1, f2) =
 let
   val x1 = g_rand<x0>((*0*))
@@ -97,7 +97,7 @@ in
 #impltmp
 <x0:t0>
 <y0:vt>
-gfun_rand_equal_c1fr
+gfun_rand_equal_f1np
   (f1, f2) =
 let
   val x1 = g_rand<x0>((*0*))

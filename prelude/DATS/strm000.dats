@@ -1178,12 +1178,12 @@ gseq_strmize
 #impltmp
 {a:t0}
 {b:t0}
-gseq_map_strm
+gseq_map_lstrm
 <strm(a)><a><b> = strm_map_vt<a><b>
 #impltmp
 {a:t0}
 {b:t0}
-gseq_map_strm
+gseq_map_lstrm
 <strx(a)><a><b>
 (     xs     ) =
 strx_vt_strmize0<b>(strx_map_vt<a><b>(xs))
@@ -1192,12 +1192,12 @@ strx_vt_strmize0<b>(strx_map_vt<a><b>(xs))
 //
 #impltmp
 {a:t0}
-gseq_filter_strm
+gseq_filter_lstrm
 < strm(a) >< a > = strm_filter_vt<a>
 //
 #impltmp
 {a:t0}
-gseq_filter_strm
+gseq_filter_lstrm
 < strx(a) >< a >
 (      xs      ) =
 strx_vt_strmize0<a>(strx_filter_vt<a>(xs))
@@ -1206,18 +1206,18 @@ strx_vt_strmize0<a>(strx_filter_vt<a>(xs))
 //
 #impltmp
 {a:t0}
-gseq_takeif_strm
+gseq_takeif_lstrm
 < strm(a) >< a > = strm_takeif_vt<a>
 //
 (* ****** ****** *)
 //
 #impltmp
 {a:t0}{b:t0}
-gseq_imap_strm
+gseq_imap_lstrm
 <strm(a)><a><b> = strm_imap_vt<a><b>
 #impltmp
 {a:t0}{b:t0}
-gseq_imap_strm
+gseq_imap_lstrm
 <strx(a)><a><b>
 (     xs     ) =
 strx_vt_strmize0<b>(strx_imap_vt<a><b>(xs))
@@ -1241,7 +1241,7 @@ strm_vt2t(strm_itakeif_vt<a>(xs))
 //
 #impltmp
 {a:t0}
-gseq_itakeif_strm
+gseq_itakeif_lstrm
 <  strm(a) >< a  > = strm_itakeif_vt< a >
 //
 (* ****** ****** *)

@@ -920,7 +920,7 @@ list_filter_vt(xs) =
 let
 #typedef xs = list(x0)
 in // let
-  gseq_filter_list<xs><x0>(xs)
+  gseq_filter_llist<xs><x0>(xs)
 end(*let*)//end-of-[list_filter_vt]
 //
 (* ****** ****** *)
@@ -1203,12 +1203,12 @@ gseq_maprev
 #impltmp
 {a:t0}
 {b:vt}
-gseq_map_list
+gseq_map_llist
 <list(a)><a><b>(*xs*) = list_map_vt<a><b>
 #impltmp
 {a:t0}
 {b:vt}
-gseq_map_rlist
+gseq_map_rllist
 <list(a)><a><b>(*xs*) = list_maprev_vt<a><b>
 //
 (* ****** ****** *)
@@ -1228,7 +1228,7 @@ gseq_mergesort
 <list(x0)><x0>( xs ) = list_mergesort<x0>(xs)
 #impltmp
 {x0:t0}
-gseq_mergesort_list
+gseq_mergesort_llist
 <list(x0)><x0>( xs ) = list_mergesort_vt<x0>(xs)
 //
 (* ****** ****** *)
@@ -1336,7 +1336,7 @@ list_strmize<(k0,x0)>(*0*)
 gmap_strmize_key
 <list@(k0,x0)><k0,x0>(kxs) =
 (
-gseq_map_strm<kxs><k0>(kxs)
+gseq_map_lstrm<kxs><k0>(kxs)
 ) where
 {
 #typedef kxs = list@(k0,x0)
@@ -1348,7 +1348,7 @@ gseq_map_strm<kxs><k0>(kxs)
 gmap_strmize_itm
 <list@(k0,x0)><k0,x0>(kxs) =
 (
-gseq_map_strm<kxs><x0>(kxs)
+gseq_map_lstrm<kxs><x0>(kxs)
 ) where
 {
 #typedef kxs = list@(k0,x0)

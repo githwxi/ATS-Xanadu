@@ -170,7 +170,7 @@ fun
 <x0:t0>
 <y0:vt>
 <e1:vt>
-gseq_map_e1nv_list
+gseq_map_e1nv_llist
 (xs: xs, e1: !e1): list_vt(y0)
 //
 fun
@@ -211,7 +211,7 @@ fun
 <y0:vt>
 <e1:vt>
 <e2:vt>
-gseq_map_e2nv_list
+gseq_map_e2nv_llist
 (xs: xs, e1: !e1, e2: !e2): list_vt(y0)
 //
 fun

@@ -534,7 +534,7 @@ strn_vt2t
 (strnlst_concat_vt<>(css))
 #impltmp<>
 strnlst_concat_vt(css) =
-gseq_concat_strn<list(strn)>(css)
+gseq_concat_lstrn<list(strn)>(css)
 //
 (* ****** ****** *)
 //
@@ -544,7 +544,7 @@ strn_vt2t
 (strntrm_concat_vt<>(css))
 #impltmp<>
 strntrm_concat_vt(css) =
-gseq_concat_strn<strm(strn)>(css)
+gseq_concat_lstrn<strm(strn)>(css)
 //
 (* ****** ****** *)
 //

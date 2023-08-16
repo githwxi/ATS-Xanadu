@@ -97,16 +97,16 @@ gfun_equal_at
 fun
 <x0:t0>
 <y0:vt>
-gfun_rand_equal_f1np
-( f1: f1np(x0, y0)
-, f2: f1np(x0, y0)): bool // end-fun
+gfun_rand_equal_c1fr
+( f1: c1fr(x0, y0)
+, f2: c1fr(x0, y0)): bool // end-fun
 //
 fun
 <x0:t0>
 <y0:vt>
-gfun_rand_equal_c1fr
-( f1: c1fr(x0, y0)
-, f2: c1fr(x0, y0)): bool // end-fun
+gfun_rand_equal_f1np
+( f1: f1np(x0, y0)
+, f2: f1np(x0, y0)): bool // end-fun
 //
 (* ****** ****** *)
 //

@@ -1491,7 +1491,7 @@ endlet // end-of-[ strmcon_cons(y0, ys1)]
 //
 #impltmp
 <x0>(*tmp*)
-strm_vt_group0_list
+strm_vt_group0_llist
   (xs) =
 (
 auxmain0(xs)) where
@@ -1541,7 +1541,7 @@ in//let
 end // end of [strmcon_vt_cons]
 )
 //
-}(*where*)//end-of-(strm_vt_group0_list(xs))
+}(*where*)//end-of-(strm_vt_group0_llist(xs))
 
 (* ****** ****** *)
 //
