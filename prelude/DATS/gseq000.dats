@@ -896,6 +896,8 @@ gseq_map_rlist
 list_vt2t
 (gseq_map_rllist<xs><x0><y0>(xs))
 //
+(* ****** ****** *)
+//
 #impltmp
 <xs>
 <x0><y0>
@@ -2171,8 +2173,16 @@ gseq_imap
 <x0><y0>
 gseq_imap_list
   (xs) =
-list_vt2t
-(gseq_imap_llist<xs><x0><y0>(xs))
+list_vt2t(gseq_imap_llist<xs><x0><y0>(xs))
+//
+#impltmp
+<xs>
+<x0><y0>
+gseq_imap_rlist
+  (xs) =
+list_vt2t(gseq_imap_rllist<xs><x0><y0>(xs))
+//
+(* ****** ****** *)
 //
 #impltmp
 <xs><x0><y0>
@@ -2209,7 +2219,7 @@ gseq_ifoldl<xs><x0><r0>(xs, $addr(r0))
 in//let
 $UN.p2tr_set<yy>
 (pz, list_vt_nil()); $UN.castlin01(r0)
-end // end of [gseq_imap_llist/ifoldl]
+end // end of [gseq_imap_llist/ifoldl(...)]
 //
 (* ****** ****** *)
 
@@ -2228,17 +2238,9 @@ strm_vt_imap0<x0><y0>(xs)
 imap0$fopr
 < x0><y0 > = imap$fopr<x0><y0>
 }
-end//end-of(gseq_imap_lstrm/strmize)
+end//end-of-[gseq_imap_lstrm/strmize(xs)]
 
 (* ****** ****** *)
-//
-#impltmp
-<xs>
-<x0><y0>
-gseq_imap_rlist
-  (xs) =
-list_vt2t
-(gseq_imap_rllist<xs><x0><y0>(xs))
 //
 #impltmp
 <xs><x0><y0>
@@ -2263,7 +2265,7 @@ list_vt_cons
 // list_vt_cons
 }
 //
-end//end-of(gseq_imap_rllist/ifoldl)
+end//end-of-(gseq_imap_rllist/ifoldl(xs))
 
 (* ****** ****** *)
 
@@ -2284,7 +2286,7 @@ imap0$fopr
 #impltmp
 ifilter0$test<x0> = ifilter$test<x0>
 }
-end//end-of(gseq_imap_lstrm/strmize)
+end//end-of-(gseq_imap_lstrm/strmize(xs))
 
 (* ****** ****** *)
 //
@@ -2295,7 +2297,7 @@ gseq_istrmize
 (
   strm_vt_istrmize0
   (gseq_strmize<xs><x0>(xs)) )
-//(* end of [ gseq_istrmize(xs) ] *)
+// (*app*) // end of [gseq_istrmize(xs)]
 //
 (* ****** ****** *)
 //
