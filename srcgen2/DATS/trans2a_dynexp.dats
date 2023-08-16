@@ -1648,13 +1648,13 @@ f0_dapp_dtsel
 let
 //
 val loc0 = d2e0.lctn()
+//
 val-
 D2Edapp
 ( d2f0
 , npf1, d2es) = d2e0.node()
 //
-val
-lsym = d2f0.lctn((*void*))
+val lsym = d2f0.lctn((*0*))
 //
 val-
 D2Edtsel
@@ -2481,6 +2481,8 @@ in//let
 d2exp_make_styp_node
 (loc0, tres, D2Edapp(dsym, npf1, d2es))
 end (*let*) // end of [f0_brget(env0,...)]
+//
+(* ****** ****** *)
 //
 fun
 f0_brset

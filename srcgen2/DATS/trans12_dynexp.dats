@@ -2288,7 +2288,8 @@ in//let
 case+
 d2e1.node() of
 |
-D2Ebrget(dpis, d2es) =>
+D2Ebrget
+( dpis, d2es) =>
 let
 //
 (*
@@ -2557,7 +2558,8 @@ case+ d2i1 of
 end (*let*) // end of [val(dpis)]
 //
 in//let
-  d2exp(loc0, D2Ebrget(dpis, d2es))
+(
+  d2exp(loc0, D2Ebrget(dpis, d2es)))
 end (*let*) // end of [f0_brckt(env0,d1e0)]
 //
 (* ****** ****** *)
