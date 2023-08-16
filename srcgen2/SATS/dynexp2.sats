@@ -988,20 +988,19 @@ D2Ebrget of
 (d2ptmlst, d2explst(*arr+idx*))//[]
 |
 D2Ebrset of
-(d2ptmlst, d2explst(*arr+idx+val*))//[]
+(d2ptmlst, d2explst(*arr+idx+val*))
 //
 |
 D2Edtsel of
 ( token
-, d2rxp
 , label
 , d2ptmlst
-, sint(*npf*), d2explstopt(*arg*) )
+, sint(*npf*), d2explstopt(*args*))
 //
 |
 D2Eraise of
 (
-token(*$RAISE*), d2exp(*lin-exn*) )
+ token(*$RAISE*), d2exp(*lin-exn*) )
 //
 |
 D2El0azy of // nonlin-lazy-eval

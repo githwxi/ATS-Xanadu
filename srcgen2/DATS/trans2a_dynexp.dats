@@ -1659,7 +1659,6 @@ val lsym = d2f0.lctn((*0*))
 val-
 D2Edtsel
 ( tknd
-, drxp
 , lab1, dpis
 , npf1, darg) = d2f0.node()
 //
@@ -1672,6 +1671,8 @@ the_symbl_nil(*0*)
 val d1e1 =
 (
   d1exp(lsym, D1Eid0(sym1)) )
+//
+val drxp = d2rxp_new1( lsym )
 //
 val dsym =
 d2exp_make_node
@@ -2464,7 +2465,8 @@ s2typ_new0_x2tp(loc0)
 val tres =
 s2typ_new0_x2tp(loc0)
 val t2ps =
-  s2typlst_of_d2explst(d2es)
+(
+  s2typlst_of_d2explst(d2es))
 //
 val
 tfun =
@@ -2504,7 +2506,8 @@ s2typ_new0_x2tp(loc0)
 val tres =
   the_s2typ_void((*0*))
 val t2ps =
-  s2typlst_of_d2explst(d2es)
+(
+  s2typlst_of_d2explst(d2es))
 //
 val
 tfun =
@@ -2543,7 +2546,6 @@ val loc0 = d2e0.lctn()
 val-
 D2Edtsel
 ( tknd
-, drxp
 , lab1, dpis
 , npf1, darg) = d2e0.node()
 //
@@ -2556,8 +2558,7 @@ in//let
 d2exp_make_styp_node(
 loc0,
 t2p0,
-D2Edtsel
-(tknd, drxp, lab1, dpis, npf1, darg))
+D2Edtsel(tknd, lab1, dpis, npf1, darg))
 end (*let*) // end of [f0_dtsel(env0,...)]
 //
 (* ****** ****** *)
