@@ -357,9 +357,11 @@ print("D2Econ(", d2c, ")")
 |D2Ecst(d2c) =>
 print("D2Ecst(", d2c, ")")
 //
-|D2Econs(d2cs) =>
+|
+D2Econs(d2cs) =>
 print("D2Econs(", d2cs, ")")
-|D2Ecsts(d2cs) =>
+|
+D2Ecsts(d2cs) =>
 print("D2Ecsts(", d2cs, ")")
 //
 |
@@ -372,11 +374,11 @@ print
 //
 |
 D2Esapp
-(d2e1, s2es) =>
+( d2e1, s2es) =>
 print("D2Esapp(",d2e1,";",s2es,")")
 |
 D2Etapp
-(d2e1, s2es) =>
+( d2e1, s2es) =>
 print("D2Etapp(",d2e1,";",s2es,")")
 //
 |
@@ -384,42 +386,46 @@ D2Edap0(d2f0) =>
 print( "D2Edap0(", d2f0, ")" )
 |
 D2Edapp
-(d2f0,npf1,d2es) =>
+( d2f0
+, npf1, d2es) =>
 ( print("D2Edapp(")
 ; print(d2f0,";",npf1,";",d2es,")"))
 //
 |
 D2Eproj
-(tknd
-,drxp,dlab,dtup) =>
+( tknd
+, drxp
+, dlab, dtup) =>
 ( print
   ("D2Eproj(",tknd,";")
 ; print(drxp,";",dlab,";",dtup,")"))
 //
 |
 D2Elet0
-(dcls, d2e1) =>
+( dcls, d2e1) =>
 (
 print("D2Elet0(",dcls,";",d2e1,")"))
 //
 |D2Eift0
-(d2e1,dthn,dels) =>
+( d2e1
+, dthn, dels) =>
 ( print("D2Eift0(")
 ; print(d2e1,";",dthn,";",dels,")"))
 //
 |
 D2Ecas0
-(tknd,d2e1,d2cs) =>
+( tknd
+, d2e1, d2cs) =>
 ( print("D2Ecas0(");
   print(tknd,";",d2e1,";",d2cs,")"))
 //
 |D2Eseqn
-(d2es, d2e1) =>
+( d2es, d2e1) =>
 (
 print("D2Eseqn(",d2es,";",d2e1,")"))
 //
 |D2Etup0
-(npf1, d2es) =>
+( npf1, d2es) =>
 (
 print("D2Etup0(",npf1,";",d2es,")"))
 (*
@@ -431,19 +437,22 @@ print("D2Ercd0(",npf1,";",ldes,")"))
 //
 |
 D2Etup1
-(tknd,npf1,d2es) =>
+( tknd
+, npf1, d2es) =>
 ( print("D2Etup1(")
 ; print(tknd,";",npf1,";",d2es,")") )
 |
 D2Ercd2
-(tknd,npf1,ldes) =>
+( tknd
+, npf1, ldes) =>
 ( print("D2Ercd2(")
 ; print(tknd,";",npf1,";",ldes,")") )
 //
 |
 D2Elam0
-(tknd,f2as
-,sres,arrw,body) =>
+( tknd
+, f2as, sres
+, arrw, body) =>
 (
 print
 ("D2Elam0(",tknd,";");
@@ -452,8 +461,10 @@ print
 //
 |
 D2Efix0
-(tknd,fid0,f2as
-,sres,arrw,body) =>
+( tknd
+, fid0
+, f2as, sres
+, arrw, body) =>
 (
 print
 ("D2Efix0(",tknd,";",fid0,";");
@@ -488,28 +499,29 @@ D2Efree(d2e1) =>
 //
 |
 D2Ewhere
-(d2e1, dcls) =>
+( d2e1, dcls) =>
 print("D2Ewhere(",d2e1,";",dcls,")")
 //
 |
 D2Eassgn
-(d2el, d2er) =>
+( d2el, d2er) =>
 print("D2Eassgn(",d2el,";",d2er,")")
 //
 |
 D2Ebrget
-(dpis, d2es) =>
+( dpis, d2es) =>
 print("D2Ebrget(",dpis,";",d2es,")")
 |
 D2Ebrset
-(dpis, d2es) =>
+( dpis, d2es) =>
 print("D2Ebrset(",dpis,";",d2es,")")
 //
 |
 D2Edtsel
-(tknd
-,drxp,lab1
-,dpis,npf1,opt2) =>
+( tknd
+, drxp
+, lab1, dpis
+, npf1, opt2) =>
 (
 print("D2Edtsel(");
 print(tknd,";", drxp,";", lab1,";");
@@ -517,43 +529,44 @@ print(dpis,";", npf1,";", opt2,")"))
 //
 |
 D2Eraise
-( tknd, d2e1 ) =>
+( tknd, d2e1) =>
 (
 print
 ("D2Eraise(", tknd, ";", d2e1, ")"))
 //
 |
 D2El0azy
-( dsym, d2e1 ) =>
+( dsym, d2e1) =>
 (
 print
 ("D2El0azy(", dsym, ";", d2e1, ")"))
 |
 D2El1azy
 ( dsym
-, d2e1 , d2es ) =>
+, d2e1, d2es) =>
 ( print("D2El1azy(")
 ; print(dsym,";",d2e1,";",d2es,")") )
 //
 |
 D2Eannot
 ( d2e1
-, s1e2 , s2e2 ) =>
+, s1e2, s2e2) =>
 ( print("D2Eannot(")
 ; print(d2e1,";",s1e2,";",s2e2,")") )
 //
 |
 D2Eexists
-( s2es , d2e1 ) =>
+( s2es, d2e1) =>
 (
 print("D2Eexists(",s2es,";",d2e1,")"))
 //
-|D2Eg1mac(g1m1) =>
+|D2Eg1mac
+(    g1m1    ) =>
 (
 print("D2Eg1mac(",g1m1,")"))//D2Eg1mac
 //
 |D2El2bck
-( d2e1 , lab2 ) =>
+( d2e1, lab2 ) =>
 let
 val
 t2p1 = d2e1.styp() in
@@ -562,7 +575,7 @@ t2p1 = d2e1.styp() in
 ; print( d2e1,";",t2p1,";",lab2,")") )
 endlet // end of [ D2El2bck(d2e1, lab2) ]
 |D2Et2pck
-( d2e1 , t2p2 ) =>
+( d2e1, t2p2 ) =>
 let
 val
 t2p1 = d2e1.styp() in

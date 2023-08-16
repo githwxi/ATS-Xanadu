@@ -985,12 +985,10 @@ D2Eassgn of
 //
 |
 D2Ebrget of
-(
-d2ptmlst(*[]*), d2explst(*arg*))//[]
+(d2ptmlst, d2explst(*arr+idx*))//[]
 |
 D2Ebrset of
-(
-d2ptmlst(*[]*), d2explst(*arg*))//[]
+(d2ptmlst, d2explst(*arr+idx+val*))//[]
 //
 |
 D2Edtsel of
