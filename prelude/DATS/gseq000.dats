@@ -888,6 +888,13 @@ gseq_map_list
   (xs) =
 list_vt2t
 (gseq_map_llist<xs><x0><y0>(xs))
+#impltmp
+<xs>
+<x0><y0>
+gseq_map_rlist
+  (xs) =
+list_vt2t
+(gseq_map_rllist<xs><x0><y0>(xs))
 //
 #impltmp
 <xs>
@@ -980,6 +987,13 @@ gseq_mapopt_list
   (xs) =
 list_vt2t
 (gseq_mapopt_llist<xs><x0><y0>(xs))
+#impltmp
+<xs>
+<x0><y0>
+gseq_mapopt_rlist
+  (xs) =
+list_vt2t
+(gseq_mapopt_rllist<xs><x0><y0>(xs))
 //
 #impltmp
 <xs>
@@ -1535,9 +1549,10 @@ gseq_rexists
   not(rexists$test<x0>(x0))
 //
 in
+(
 if
 gseq_rforall
-<xs><x0>(xs) then false else true
+<xs><x0>(xs) then false else true)
 endif // end-of-(if)
 endlet // end-of-(let)
 // end of [gseq_rexists(xs)/rforall]
@@ -1675,7 +1690,8 @@ end(*let*)//end-of-(foldl$fopr)
 //
 #impltmp
 <xs><x0>
-gseq_rappend(xs1, xs2) =
+gseq_rappend
+  (xs1, xs2) =
 gseq_unstrm_vt<xs><x0>
 (
 gseq_rappend_lstrm<xs><x0>(xs1,xs2))
@@ -2151,6 +2167,14 @@ gseq_imap
 (* ****** ****** *)
 //
 #impltmp
+<xs>
+<x0><y0>
+gseq_imap_list
+  (xs) =
+list_vt2t
+(gseq_imap_llist<xs><x0><y0>(xs))
+//
+#impltmp
 <xs><x0><y0>
 gseq_imap_llist
   (xs) = let
@@ -2207,7 +2231,15 @@ imap0$fopr
 end//end-of(gseq_imap_lstrm/strmize)
 
 (* ****** ****** *)
-
+//
+#impltmp
+<xs>
+<x0><y0>
+gseq_imap_rlist
+  (xs) =
+list_vt2t
+(gseq_imap_rllist<xs><x0><y0>(xs))
+//
 #impltmp
 <xs><x0><y0>
 gseq_imap_rllist
@@ -2298,7 +2330,7 @@ val xx = gseq_listize<xs><x0>(xs) }
 (* end of [gseq_mergesort_llist(xs)] *)
 //
 (* ****** ****** *)
-
+//
 #impltmp
 <xs><x0>
 gseq_permutize_lstrm
@@ -2321,7 +2353,7 @@ in//let
   map0$fopr
   <y0><xs> = gseq_unlist_vt<xs><x0> }
 end(*let*)//end-of-[gseq_permutize_lstrm(xs)]
-
+//
 (* ****** ****** *)
 //
 // For z2-gseq-operations
