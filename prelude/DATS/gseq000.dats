@@ -884,6 +884,14 @@ gseq_map
 #impltmp
 <xs>
 <x0><y0>
+gseq_map_list
+  (xs) =
+list_vt2t
+(gseq_map_llist<xs><x0><y0>(xs))
+//
+#impltmp
+<xs>
+<x0><y0>
 gseq_map_llist
   (xs) = let
 //
@@ -939,6 +947,7 @@ map0$fopr
 end//end-of(gseq_map_lstrm/strmize(...))
 
 (* ****** ****** *)
+//
 #impltmp
 <xs><x0><y0>
 gseq_map_rllist
@@ -961,11 +970,20 @@ list_vt_cons
 (map$fopr<x0><y0>(x0), r0)}//where
 //
 end // end-of(gseq_map_rllist/foldl(...)
-
+//
 (* ****** ****** *)
 //
 #impltmp
-<xs><x0><y0>
+<xs>
+<x0><y0>
+gseq_mapopt_list
+  (xs) =
+list_vt2t
+(gseq_mapopt_llist<xs><x0><y0>(xs))
+//
+#impltmp
+<xs>
+<x0><y0>
 gseq_mapopt_llist(xs) =
 strm_vt_listize0
 (gseq_mapopt_lstrm<xs><x0><y0>(xs))
@@ -1000,13 +1018,21 @@ strm_vt_rlistize0
 //
 #impltmp
 <xs><x0>
+gseq_copy_list
+  (xs) =
+list_vt2t
+(
+gseq_copy_llist<xs><x0>(xs))
+//
+#impltmp
+<xs><x0>
 gseq_copy_llist(xs) =
 (
   gseq_map_llist
   <xs><x0><x0>(xs)) where
 {
   #impltmp
-  map$fopr<x0><x0>(x0) = x0 }
+  map$fopr<x0><x0>( x0 ) = x0 }
 //
 #impltmp
 <xs><x0>
@@ -1016,7 +1042,7 @@ gseq_copy_rllist(xs) =
   <xs><x0><x0>(xs)) where
 {
   #impltmp
-  map$fopr<x0><x0>(x0) = x0 }
+  map$fopr<x0><x0>( x0 ) = x0 }
 //
 (* ****** ****** *)
 //

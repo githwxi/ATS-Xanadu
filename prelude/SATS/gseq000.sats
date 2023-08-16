@@ -582,6 +582,17 @@ gseq_takeif_rllist(xs): list_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
+<y0:t0>
+gseq_mapopt_list(xs): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_mapopt_rlist(xs): list(y0)
+//
+fun
+<xs:t0>
+<x0:t0>
 <y0:vt>
 gseq_mapopt_llist(xs): list_vt(y0)
 fun
@@ -589,9 +600,6 @@ fun
 <x0:t0>
 <y0:vt>
 gseq_mapopt_lstrm(xs): strm_vt(y0)
-//
-(* ****** ****** *)
-//
 fun
 <xs:t0>
 <x0:t0>
@@ -621,9 +629,11 @@ gseq_mul$nil((*nil*)): x0
 fun
 <xs:t0>
 gseq_conj(xs:xs): bool
+//gseq_forall<xs><bool>(xs)
 fun
 <xs:t0>
 gseq_disj(xs:xs): bool
+//gseq_exists<xs><bool>(xs)
 //
 (* ****** ****** *)
 //
@@ -728,6 +738,17 @@ gseq_rforeach(xs): void
 fun
 <xs:t0>
 <x0:t0>
+<y0:t0>
+gseq_rmap_list(xs): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_rmap_rlist(xs): list(y0)
+//
+fun
+<xs:t0>
+<x0:t0>
 <y0:vt>
 gseq_rmap_llist(xs): list_vt(y0)
 fun
@@ -735,6 +756,11 @@ fun
 <x0:t0>
 <y0:vt>
 gseq_rmap_lstrm(xs): strm_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_rmap_rllist(xs): list_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -1103,6 +1129,23 @@ fun
 ,ys:t0>
 <x0:t0
 ,y0:t0>
+<z0:t0>
+gseq_z2map_list
+  (xs: xs, ys: ys): list(z0)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:t0>
+gseq_z2map_rlist
+  (xs: xs, ys: ys): list(z0)
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
 <z0:vt>
 gseq_z2map_llist
   (xs: xs, ys: ys): list_vt(z0)
@@ -1122,7 +1165,7 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_z2map_rlist
+gseq_z2map_rllist
   (xs: xs, ys: ys): list_vt(z0)
 //
 (* ****** ****** *)
@@ -1169,6 +1212,23 @@ fun
 ,ys:t0>
 <x0:t0
 ,y0:t0>
+<z0:t0>
+gseq_z2imap_list
+  (xs: xs, ys: ys): list(z0)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:t0>
+gseq_z2imap_rlist
+  (xs: xs, ys: ys): list(z0)
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
 <z0:vt>
 gseq_z2imap_llist
   (xs: xs, ys: ys): list_vt(z0)
@@ -1181,6 +1241,15 @@ fun
 <z0:vt>
 gseq_z2imap_lstrm
   (xs: xs, ys: ys): strm_vt(z0)
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_z2imap_rllist
+  (xs: xs, ys: ys): list_vt(z0)
 //
 (* ****** ****** *)
 //
@@ -1197,6 +1266,15 @@ fun
 <z0:vt>
 gseq_x2map
   (xs: xs, ys: ys): (   zs   )
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:t0>
+gseq_x2map_list
+  (xs: xs, xs: ys): list(z0)
 //
 fun
 <xs:t0
@@ -1274,6 +1352,14 @@ fun
 ,ys:t0>
 <x0:t0
 ,y0:t0>
+<z0:t0>
+gseq_x2imap_list(xs, ys): list(z0)
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
 <z0:vt>
 gseq_x2imap_llist(xs, ys): list_vt(z0)
 fun
@@ -1283,6 +1369,9 @@ fun
 ,y0:t0>
 <z0:vt>
 gseq_x2imap_lstrm(xs, ys): strm_vt(z0)
+//
+(* ****** ****** *)
+//
 fun
 <xs:t0
 ,ys:t0>
