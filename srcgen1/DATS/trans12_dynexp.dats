@@ -4525,14 +4525,14 @@ end // end of [list_cons]
 val ((*void*)) =
 the_sexpenv_popfree(pf0|(*void*))
 //
-// (*
+(*
 val () =
 println!
 ("aux_sexpdef: knd = ", knd)
 val () =
 println!
 ("aux_sexpdef: s2e0 = ", s2e0)
-// *)
+*)
 //
 val
 s2t0 =

@@ -159,8 +159,8 @@ glseq_z2cmp11
 } (*where*) // end of [ftest]
 //
 val nms =
-gseq_group_list
-(   fpx   ) where
+gseq_group_lstrm_llist
+  (   fpx   ) where
 {
 #impltmp
 group$test<cgtz>(ch) = (ch != DS) }
@@ -187,8 +187,8 @@ val CD = theCurDir_get()
 val PD = theParDir_get()
 //
 val nms =
-gseq_group_list
-(   fpx   ) where
+gseq_group_lstrm_llist
+  (   fpx   ) where
 {
 #impltmp
 group$test<cgtz>(ch) = (ch != DS)
@@ -282,19 +282,21 @@ fun
 z2eq
 ( x1: clst
 , x2: strn): bool =
-glseq_z2cmp11<clst,strn><cgtz>(x1, x2) = 0
-} (*where*) // end of [fmain]
+glseq_z2cmp11
+<clst,strn><cgtz>(x1, x2) = 0 }
+// (*where*) // end of [fmain(...)]
 //
 val nms =
-gseq_group_list
-(   fpx   ) where
+gseq_group_lstrm_llist
+  (   fpx   ) where
 {
 #impltmp
 group$test<cgtz>(ch) = (ch != DS) }
 //
-in
-strn_make_llist(fcats(fmain(nms,0,nil_vt())))
-end (*let*) // end-of-(fpath_normize(fpx))
+in//let
+strn_make_llist
+(fcats(fmain(nms, 0, list_vt_nil((*0*)))))
+end (*let*) // end-of-[fpath_normize( fpx )]
 
 (* ****** ****** *)
 

@@ -21,7 +21,9 @@ XATSLIB=./../../xatslib
 
 all:: all_sats
 all:: all_dats
-all:: all_TEST
+#
+# all:: all_TEST
+#
 all:: all_CC_dats
 all:: all_JS_dats
 all:: all_Xint_dats
