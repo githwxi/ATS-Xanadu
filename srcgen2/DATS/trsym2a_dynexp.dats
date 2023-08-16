@@ -1148,7 +1148,6 @@ let
 val-
 D2Edtsel
 ( tknd
-, drxp
 , dlab, dpis
 , npf1, darg) = d2e0.node()
 //

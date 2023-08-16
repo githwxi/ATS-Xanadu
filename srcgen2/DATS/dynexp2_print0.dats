@@ -519,12 +519,11 @@ print("D2Ebrset(",dpis,";",d2es,")")
 |
 D2Edtsel
 ( tknd
-, drxp
 , lab1, dpis
 , npf1, opt2) =>
 (
 print("D2Edtsel(");
-print(tknd,";", drxp,";", lab1,";");
+print(tknd,";", lab1,";");
 print(dpis,";", npf1,";", opt2,")"))
 //
 |

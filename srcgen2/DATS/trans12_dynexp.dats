@@ -431,16 +431,20 @@ end // end of [D2Ebrget(dpis,d2es)]
 //
 |D2Edtsel
 (tknd
-,drxp,lab1
-,dpis,npf1,opt2) =>
+,lab1, dpis
+,npf1, opt2) =>
 (
 case+ opt2 of
 //
-|optn_nil() =>
-(
+|
+optn_nil() =>
+let
+val
+drxp = d2rxp_new1(loc0)
+in//let
 d2exp_proj
-(loc0
-,tknd,drxp,lab1,d2a1)) where
+(loc0,tknd,drxp,lab1,d2a1)
+end where // end-of-[ let ]
 {
 val d2a1 =
 (
@@ -455,16 +459,20 @@ case+ dpis of
 |list_nil() =>
 let
 val dprj =
-(
+let
+val
+drxp = d2rxp_new1(loc0)
+in//let
 d2exp_proj
-(loc0
-,tknd,drxp,lab1,d2a1)) where
+(loc0,tknd,drxp,lab1,d2a1)
+end where // end-of-[ let ]
 {
 val d2a1 =
 (
 case+ d2as of
 |list_nil() =>
- d2exp_none0(loc0)
+(
+ d2exp_none0(loc0) )
 |list_cons(d2a1, d2as) => d2a1)}
 in//let
 (*HX:a function is projected out*)
@@ -2662,8 +2670,7 @@ d2rxp_new1(loc0)
 in//let
 d2exp_make_node(
 loc0,
-D2Edtsel
-(tknd, drxp, lab1, dpis, npf1, darg))
+D2Edtsel(tknd, lab1, dpis, npf1, darg))
 end (*let*)
 //
 end (*let*) // end of [f0_dtsel(env0,d1e0)]
