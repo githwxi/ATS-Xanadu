@@ -2392,6 +2392,11 @@ map_cfr_llist with gseq_map_c1fr_llist of 0100
 map_fnp_llist with gseq_map_f1np_llist of 0100
 //
 #symload
+map_cfr_lstrm with gseq_map_c1fr_lstrm of 0100
+#symload
+map_fnp_lstrm with gseq_map_f1np_lstrm of 0100
+//
+#symload
 filter_cfr_llist with gseq_filter_c1fr_llist of 0100
 #symload
 filter_fnp_llist with gseq_filter_f1np_llist of 0100
@@ -2419,6 +2424,11 @@ imap_fnp_list with gseq_imap_f2np_list of 0100
 imap_cfr_llist with gseq_imap_c2fr_llist of 0100
 #symload
 imap_fnp_llist with gseq_imap_f2np_llist of 0100
+//
+#symload
+imap_cfr_lstrm with gseq_imap_c2fr_lstrm of 0100
+#symload
+imap_fnp_lstrm with gseq_imap_f2np_lstrm of 0100
 //
 (*
 //
