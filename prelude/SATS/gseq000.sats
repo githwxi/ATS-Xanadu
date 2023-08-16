@@ -457,43 +457,63 @@ gseq_maprev(xs: xs): (ys)
 fun
 <xs:t0>
 <x0:t0>
-<y0:vt>
-gseq_map_list(xs): list_vt(y0)
+<y0:t0>
+gseq_map_list(xs): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_map_rlist(xs): list(y0)
+//
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_map_strm(xs): strm_vt(y0)
+gseq_map_llist(xs): list_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_lstrm(xs): strm_vt(y0)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_rllist(xs): list_vt(y0)
 //
 (* ****** ****** *)
-fun
-<xs:t0>
-<x0:t0>
-<y0:vt>
-gseq_map_rlist(xs): list_vt(y0)
-(* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_map_arrn(xs): a1ptrsz(y0)
+gseq_map_larrn(xs): a1ptrsz(y0)
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_map_rarrn(xs): a1ptrsz(y0)
+gseq_map_rlarrn(xs): a1ptrsz(y0)
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
-gseq_copy_list(xs): list_vt(x0)
+gseq_copy_list(xs): list(x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_copy_rlist(xs): list_vt(x0)
+gseq_copy_rlist(xs): list(x0)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_copy_llist(xs): list_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_copy_rllist(xs): list_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -507,17 +527,17 @@ gseq_filter(xs: xs): (xs)
 fun
 <xs:t0>
 <x0:t0>
-gseq_filter_list(xs): list_vt(x0)
+gseq_filter_llist(xs): list_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_filter_strm(xs): strm_vt(x0)
+gseq_filter_lstrm(xs): strm_vt(x0)
 //
 (* ****** ****** *)
 fun
 <xs:t0>
 <x0:t0>
-gseq_filter_rlist(xs): list_vt(x0)
+gseq_filter_rllist(xs): list_vt(x0)
 (* ****** ****** *)
 //
 fun
@@ -547,15 +567,15 @@ gseq_takeif(xs: xs): xs
 fun
 <xs:t0>
 <x0:t0>
-gseq_takeif_list(xs): list_vt(x0)
+gseq_takeif_llist(xs): list_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_takeif_strm(xs): strm_vt(x0)
+gseq_takeif_lstrm(xs): strm_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_takeif_rlist(xs): list_vt(x0)
+gseq_takeif_rllist(xs): list_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -563,19 +583,20 @@ fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_mapopt_list(xs): list_vt(y0)
+gseq_mapopt_llist(xs): list_vt(y0)
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_mapopt_strm(xs): strm_vt(y0)
+gseq_mapopt_lstrm(xs): strm_vt(y0)
 //
 (* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_mapopt_rlist(xs): list_vt(y0)
+gseq_mapopt_rllist(xs): list_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -708,12 +729,12 @@ fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_rmap_list(xs): list_vt(y0)
+gseq_rmap_llist(xs): list_vt(y0)
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_rmap_strm(xs): strm_vt(y0)
+gseq_rmap_lstrm(xs): strm_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -745,7 +766,7 @@ gseq_rappend
 fun
 <xs:t0>
 <x0:t0>
-gseq_append_strm
+gseq_append_lstrm
 (xs1: xs, xs2: xs): strm_vt(x0)
 //
 (* ****** ****** *)
@@ -757,7 +778,7 @@ gseq_append_strm
 *)
 fun
 <cz:t0>
-gseq_concat_strn
+gseq_concat_lstrn
   (css: cz): strn_vt
 //
 (* ****** ****** *)
@@ -766,7 +787,7 @@ fun
 <xz:t0>
 <xs:t0>
 <x0:t0>
-gseq_concat_strm
+gseq_concat_lstrm
   (xss: xz): strm_vt(x0)
 //
 (* ****** ****** *)
@@ -774,7 +795,7 @@ gseq_concat_strm
 fun
 <xs:t0>
 <x0:t0>
-gseq_rappend_strm
+gseq_rappend_lstrm
 (xs1: xs, xs2: xs): strm_vt(x0)
 //
 (* ****** ****** *)
@@ -787,12 +808,12 @@ group$test(x0: x0): bool
 fun
 <xs:t0>
 <x0:t0>
-gseq_group
+gseq_group_lstrm
 ( xs: xs ): strm_vt(xs)
 fun
 <xs:t0>
 <x0:t0>
-gseq_group_list
+gseq_group_lstrm_llist
 ( xs: xs ): strm_vt(list_vt(x0))
 //
 (* ****** ****** *)
@@ -861,27 +882,42 @@ gseq_imap(xs: xs): (ys)
 fun
 <xs:t0>
 <x0:t0>
-<y0:vt>
+<y0:t0>
 gseq_imap_list
-  (xs: xs): list_vt(y0)
+  (xs: xs): list(y0)
 fun
 <xs:t0>
 <x0:t0>
-<y0:vt>
+<y0:t0>
 gseq_imap_rlist
-  (xs: xs): list_vt(y0)
+  (xs: xs): list(y0)
 //
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_imap_strm
+gseq_imap_llist
+  (xs: xs): list_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_imap_lstrm
   (xs: xs): strm_vt(y0)
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_imapopt_strm
+gseq_imap_rllist
+  (xs: xs): list_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_imapopt_lstrm
   (xs: xs): strm_vt(y0)
 //
 (* ****** ****** *)
@@ -901,26 +937,31 @@ gseq_itakeif(xs: xs): xs
 fun
 <xs:t0>
 <x0:t0>
-gseq_itakeif_list(xs): list_vt(x0)
+gseq_itakeif_llist(xs): list_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_itakeif_strm(xs): strm_vt(x0)
+gseq_itakeif_lstrm(xs): strm_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_itakeif_rlist(xs): list_vt(x0)
+gseq_itakeif_rllist(xs): list_vt(x0)
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
-gseq_ifilter_list(xs): list_vt(x0)
+gseq_ifilter_llist(xs): list_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_ifilter_rlist(xs): list_vt(x0)
+gseq_ifilter_lstrm(xs): list_vt(x0)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_ifilter_rllist(xs): list_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -939,14 +980,14 @@ gseq_mergesort(xs: xs): (xs)
 fun
 <xs:t0>
 <x0:t0>
-gseq_mergesort_list(xs): list_vt(x0)
+gseq_mergesort_llist(xs): list_vt(x0)
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
-gseq_permutize(xs: xs): strm_vt(xs)
+gseq_permutize_lstrm(xs: xs): strm_vt(xs)
 //
 (* ****** ****** *)
 //
@@ -1063,7 +1104,7 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_z2map_list
+gseq_z2map_llist
   (xs: xs, ys: ys): list_vt(z0)
 //
 fun
@@ -1072,7 +1113,7 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_z2map_strm
+gseq_z2map_lstrm
   (xs: xs, ys: ys): strm_vt(z0)
 //
 fun
@@ -1129,7 +1170,7 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_z2imap_list
+gseq_z2imap_llist
   (xs: xs, ys: ys): list_vt(z0)
 //
 fun
@@ -1138,7 +1179,7 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_z2imap_strm
+gseq_z2imap_lstrm
   (xs: xs, ys: ys): strm_vt(z0)
 //
 (* ****** ****** *)
@@ -1163,7 +1204,7 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_x2map_list
+gseq_x2map_llist
   (xs: xs, xs: ys): list_vt(z0)
 fun
 <xs:t0
@@ -1171,7 +1212,7 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_x2map_strm
+gseq_x2map_lstrm
   (xs: xs, ys: ys): strm_vt(z0)
 //
 (* ****** ****** *)
@@ -1182,7 +1223,7 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_x2mapopt_strm(xs, ys): strm_vt(z0)
+gseq_x2mapopt_lstrm(xs, ys): strm_vt(z0)
 //
 (* ****** ****** *)
 //
@@ -1234,21 +1275,21 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_x2imap_list(xs, ys): list_vt(z0)
+gseq_x2imap_llist(xs, ys): list_vt(z0)
 fun
 <xs:t0
 ,ys:t0>
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_x2imap_strm(xs, ys): strm_vt(z0)
+gseq_x2imap_lstrm(xs, ys): strm_vt(z0)
 fun
 <xs:t0
 ,ys:t0>
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_x2imapopt_strm(xs, ys): strm_vt(z0)
+gseq_x2imapopt_lstrm(xs, ys): strm_vt(z0)
 //
 (* ****** ****** *)
 //
@@ -1416,37 +1457,37 @@ gseq_map_c1fp1
 (xs: xs, fopr: !(x0) -<cfp> y0): ( ys )
 (* ****** ****** *)
 //
-// HX: gseq_map_list
+// HX: gseq_map_llist
 //
 (* ****** ****** *)
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_map_c1fr_list
+gseq_map_c1fr_llist
 (xs: xs, fopr: (x0) -<cfr> y0): list_vt(y0)
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_map_f1np_list
+gseq_map_f1np_llist
 (xs: xs, fopr: (x0) -<fnp> y0): list_vt(y0)
 (* ****** ****** *)
 //
-// HX: gseq_map_strm
+// HX: gseq_map_lstrm
 //
 (* ****** ****** *)
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_map_c1fr_strm
+gseq_map_c1fr_lstrm
 (xs: xs, fopr: (x0) -<cfr> y0): strm_vt(y0)
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_map_f1np_strm
+gseq_map_f1np_lstrm
 (xs: xs, fopr: (x0) -<fnp> y0): strm_vt(y0)
 (* ****** ****** *)
 //
@@ -1471,27 +1512,27 @@ gseq_filter_f1np
 fun
 <xs:t0>
 <x0:t0>
-gseq_filter_c1fr_list
+gseq_filter_c1fr_llist
 (xs: xs, test: (x0)-<cfr>bool): list_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_filter_f1np_list
+gseq_filter_f1np_llist
 (xs: xs, test: (x0)-<fnp>bool): list_vt(x0)
 (* ****** ****** *)
 //
-// HX: gseq_filter_strm
+// HX: gseq_filter_lstrm
 //
 (* ****** ****** *)
 fun
 <xs:t0>
 <x0:t0>
-gseq_filter_c1fr_strm
+gseq_filter_c1fr_lstrm
 (xs: xs, test: (x0)-<cfr>bool): strm_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_filter_f1np_strm
+gseq_filter_f1np_lstrm
 (xs: xs, test: (x0)-<fnp>bool): strm_vt(x0)
 (* ****** ****** *)
 //
@@ -1593,40 +1634,40 @@ gseq_imap_f2np
 (xs: xs, fopr: (nint, x0) -<fnp> y0): (ys)
 (* ****** ****** *)
 //
-// HX: gseq_imap_list
+// HX: gseq_imap_llist
 //
 (* ****** ****** *)
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_imap_c2fr_list
+gseq_imap_c2fr_llist
 ( xs: xs
 , fopr: (nint, x0) -<cfr> y0 ): list_vt(y0)
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_imap_f2np_list
+gseq_imap_f2np_llist
 ( xs: xs
 , fopr: (nint, x0) -<fnp> y0 ): list_vt(y0)
 (* ****** ****** *)
 //
-// HX: gseq_imap_strm
+// HX: gseq_imap_lstrm
 //
 (* ****** ****** *)
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_imap_strm_c2fr
+gseq_imap_c2fr_lstrm
 ( xs: xs
 , fopr: (nint, x0) -<cfr> y0 ): strm_vt(y0)
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-gseq_imap_strm_f2np
+gseq_imap_f2np_lstrm
 ( xs: xs
 , fopr: (nint, x0) -<fnp> y0 ): strm_vt(y0)
 (* ****** ****** *)
@@ -1723,7 +1764,7 @@ gseq_z2map_f2np
 (xs:xs, ys:ys, fopr:(x0,y0)-<fnp>z0): (zs)
 (* ****** ****** *)
 //
-// HX: gseq_z2map_list
+// HX: gseq_z2map_llist
 //
 (* ****** ****** *)
 fun
@@ -1732,7 +1773,7 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_z2map_c2fr_list
+gseq_z2map_c2fr_llist
 ( xs:xs
 , ys:ys, fopr:(x0,y0)-<cfr>z0): list_vt(z0)
 fun
@@ -1741,7 +1782,7 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_z2map_f2np_list
+gseq_z2map_f2np_llist
 ( xs:xs
 , ys:ys, fopr:(x0,y0)-<fnp>z0): list_vt(z0)
 (* ****** ****** *)
@@ -1755,7 +1796,7 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_z2map_strm_c2fr
+gseq_z2map_c2fr_lstrm
 ( xs:xs
 , ys:ys, fopr:(x0,y0)-<cfr>z0): strm_vt(z0)
 fun
@@ -1764,7 +1805,7 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_z2map_strm_f2np
+gseq_z2map_f2np_lstrm
 ( xs:xs
 , ys:ys, fopr:(x0,y0)-<fnp>z0): strm_vt(z0)
 (* ****** ****** *)
@@ -1915,7 +1956,7 @@ gseq_x2map_f2np
 //
 (* ****** ****** *)
 //
-// HX: gseq_x2map_list
+// HX: gseq_x2map_llist
 //
 (* ****** ****** *)
 //
@@ -1925,7 +1966,7 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_x2map_c2fr_list
+gseq_x2map_c2fr_llist
 ( xs:xs
 , ys:ys, fopr:(x0,y0) -<cfr> z0): list_vt(z0)
 fun
@@ -1934,7 +1975,7 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_x2map_f2np_list
+gseq_x2map_f2np_llist
 ( xs:xs
 , ys:ys, fopr:(x0,y0) -<fnp> z0): list_vt(z0)
 //
@@ -1950,7 +1991,7 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_x2map_strm_c2fr
+gseq_x2map_c2fr_lstrm
 ( xs:xs
 , ys:ys, fopr:(x0,y0) -<cfr> z0): strm_vt(z0)
 fun
@@ -1959,7 +2000,7 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_x2map_strm_f2np
+gseq_x2map_f2np_lstrm
 ( xs:xs
 , ys:ys, fopr:(x0,y0) -<fnp> z0): strm_vt(z0)
 //
@@ -2021,7 +2062,7 @@ gseq_x2imap_f4np
 //
 (* ****** ****** *)
 //
-// HX: gseq_x2imap_list
+// HX: gseq_x2imap_llist
 //
 (* ****** ****** *)
 //
@@ -2031,7 +2072,7 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_x2imap_c4fr_list
+gseq_x2imap_c4fr_llist
 ( xs:xs
 , ys:ys
 , fopr:
@@ -2042,7 +2083,7 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_x2imap_f4np_list
+gseq_x2imap_f4np_llist
 ( xs:xs
 , ys:ys
 , fopr:
@@ -2060,7 +2101,7 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_x2imap_strm_c4fr
+gseq_x2imap_c4fr_lstrm
 ( xs:xs
 , ys:ys
 , fopr:
@@ -2071,7 +2112,7 @@ fun
 <x0:t0
 ,y0:t0>
 <z0:vt>
-gseq_x2imap_strm_f4np
+gseq_x2imap_f4np_lstrm
 ( xs:xs
 , ys:ys
 , fopr:
@@ -2161,7 +2202,7 @@ with closed templates!
 *)
 (* ****** ****** *)
 (*
-#symload map_list with gseq_map_list of 0100
+#symload map_llist with gseq_map_llist of 0100
 #symload filter_list with gseq_filter_list of 0100
 #symload mapopt_list with gseq_mapopt_list of 0100
 *)
@@ -2215,36 +2256,36 @@ iforeach_fnp with gseq_iforeach_f2np of 0100
 (* ****** ****** *)
 //
 #symload
-map_cfr_list with gseq_map_c1fr_list of 0100
+map_cfr_llist with gseq_map_c1fr_llist of 0100
 #symload
-map_fnp_list with gseq_map_f1np_list of 0100
+map_fnp_llist with gseq_map_f1np_llist of 0100
 #symload
-filter_cfr_list with gseq_filter_c1fr_list of 0100
+filter_cfr_llist with gseq_filter_c1fr_llist of 0100
 #symload
-filter_fnp_list with gseq_filter_f1np_list of 0100
+filter_fnp_llist with gseq_filter_f1np_llist of 0100
 //
 (*
 #symload
-mapopt_cfr_list with gseq_mapopt_c1fr_list of 0100
+mapopt_cfr_llist with gseq_mapopt_c1fr_llist of 0100
 #symload
-mapopt_fnp_list with gseq_mapopt_f1np_list of 0100
+mapopt_fnp_llist with gseq_mapopt_f1np_llist of 0100
 *)
 //
 (* ****** ****** *)
 //
 (*
 #symload
-imap_cfr_list with gseq_imap_c1fr_list of 0100
+imap_cfr_llist with gseq_imap_c1fr_llist of 0100
 #symload
-imap_fnp_list with gseq_imap_f1np_list of 0100
+imap_fnp_llist with gseq_imap_f1np_llist of 0100
 #symload
-ifilter_cfr_list with gseq_ifilter_c1fr_list of 0100
+ifilter_cfr_llist with gseq_ifilter_c1fr_llist of 0100
 #symload
-ifilter_fnp_list with gseq_ifilter_f1np_list of 0100
+ifilter_fnp_llist with gseq_ifilter_f1np_llist of 0100
 #symload
-imapopt_cfr_list with gseq_imapopt_c1fr_list of 0100
+imapopt_cfr_llist with gseq_imapopt_c1fr_llist of 0100
 #symload
-imapopt_fnp_list with gseq_imapopt_f1np_list of 0100
+imapopt_fnp_llist with gseq_imapopt_f1np_llist of 0100
 *)
 //
 (* ****** ****** *)

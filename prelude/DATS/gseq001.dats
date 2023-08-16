@@ -143,7 +143,7 @@ strmcon_vt_cons
 let
 val xxs =
 (
-gseq_map_strm
+gseq_map_lstrm
 <xs><x0><xx>(xs)) where
 {
 #typedef xx = @(x0, x0)
