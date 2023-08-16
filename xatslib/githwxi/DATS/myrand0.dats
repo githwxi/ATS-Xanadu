@@ -167,12 +167,15 @@ g_rand<a2>() in $(x0, x1, x2) end
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
-<a>(*tmp*)
+<a:vt>(*tmp*)
 list_rand() =
 list_rand_length<a>
 (list_rand$length<>())
+*)
 //
+(*
 #impltmp
 {a:t0}
 g_rand<list(a)>() =
@@ -180,6 +183,7 @@ list_vt2t(list_rand<a>())
 #impltmp
 {a:vt}
 g_rand<list_vt(a)> = list_rand<a>
+*)
 //
 (* ****** ****** *)
 //
@@ -197,7 +201,7 @@ list_rand$length() =
 (* ****** ****** *)
 //
 #impltmp
-<a>(*tmp*)
+<a:vt>(*tmp*)
 list_rand_length
 ( ln ) =
 (

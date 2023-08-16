@@ -61,9 +61,11 @@ fpath_strmize_line_vt
 //
 (* ****** ****** *)
 //
+(*
 fun
 <a0:vt>
 g_rand((*void*)): a0
+*)
 //
 (* ****** ****** *)
 //

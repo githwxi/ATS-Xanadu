@@ -175,10 +175,10 @@ endlet // end of [foreach$work<x0>(x0)]
 <x0>
 <y0>
 <e1>
-gseq_map_e1nv_list
+gseq_map_e1nv_llist
   (xs, e1) =
 (
-gseq_map_list
+gseq_map_llist
 <xs>
 <x0><y0>( xs )) where
 {
@@ -199,7 +199,7 @@ let
 val e1 = $UN.delinear(e1) in res end
 //
 endlet // end of [map$fopr<x0><y0>(x0)]
-} (*where*) // end-of(gseq_map_e1nv_list)
+} (*where*) // end-of(gseq_map_e1nv_llist)
 
 (* ****** ****** *)
 //
@@ -263,10 +263,10 @@ end (*let*) // end of [list_map_e1nv_vt(xs,e1)]
 <x0>
 <y0>
 <e1><e2>
-gseq_map_e2nv_list
+gseq_map_e2nv_llist
   (xs, e1, e2) =
 (
-gseq_map_list
+gseq_map_llist
 <xs>
 <x0><y0>( xs )) where
 {
@@ -295,7 +295,7 @@ val e2 = $UN.delinear(e2) in res end
 //
 endlet // end of [map$fopr<x0><y0>(x0)]
 //
-} (*where*) // end-of(gseq_map_e2nv_list)
+} (*where*) // end-of(gseq_map_e2nv_llist)
 
 (* ****** ****** *)
 

@@ -27,8 +27,10 @@
 
 (* ****** ****** *)
 //
+(*
 #staload HX =
 "./../SATS/githwxi.sats"
+*)
 //
 (*
 #staload HX =
@@ -60,7 +62,7 @@ mytest_arg
 {
 val
 arg =
-$HX.g_rand<a0>((*void*))
+g_rand<a0>((*void*))
 //
 (*
 val () =
