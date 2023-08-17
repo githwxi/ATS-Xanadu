@@ -385,17 +385,15 @@ d3parsed_of_fildats
 val (  ) =
 fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
-////
 (* ****** ****** *)
-(*
 val dpar =
 d3parsed_of_fildats
 (
 "./../../../prelude/DATS/gfun000.dats")
 val (  ) =
 fperr33_d3parsed(g_stderr((*tmp*)), dpar)
-*)
 (* ****** ****** *)
+////
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
