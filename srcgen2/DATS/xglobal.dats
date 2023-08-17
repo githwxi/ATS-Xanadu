@@ -834,6 +834,9 @@ f0_pvsload
 (*
 val () =
 f0_pvsload
+(0(*sta*), "/prelude/SATS/arrn000.sats")
+val () =
+f0_pvsload
 (0(*sta*), "/prelude/SATS/optn000.sats")
 val () =
 f0_pvsload

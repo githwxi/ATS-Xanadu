@@ -6,12 +6,6 @@
 //
 *)
 (* ****** ****** *)
-//
-#staload
-UN =
-"prelude/SATS/unsafe.sats"
-//
-(* ****** ****** *)
 #impltmp
 <map>
 <key,itm>
