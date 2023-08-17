@@ -431,22 +431,21 @@ let
   #impltmp
   map1$fopr<x0><x0>(x0) = x0
 in
-  glseq_map1_llist<xs><x0><x0>(xs)
+(
+  glseq_map1_llist<xs><x0><x0>( xs ))
 end(*let*)//end-of-[glseq_copy_llist/map1]
 //
 (* ****** ****** *)
-
+//
 #impltmp
 <xs><x0><y0>
 glseq_map0_lstrm(xs) =
-let
-val xs =
-glseq_strmize0<xs><x0>(xs)
-in(*in-of-let*)
 (
-  strm_vt_map0<x0><y0>(xs) )
-end(*let*)//end-[glseq_map0_lstrm/strmize0]
-
+  strm_vt_map0<x0><y0>(xs) ) where
+{
+  val xs = glseq_strmize0<xs><x0>(xs)
+}(*where*)//end-[glseq_map0_lstrm/strmize0]
+//
 #impltmp
 <xs><x0><y0>
 glseq_map1_lstrm(xs) =
@@ -460,10 +459,9 @@ in//let
   #impltmp
   map0$fopr<x0><y0>(x0) =
   ( g_free(x0); y0 ) where
-  { val y0 = map1$fopr<x0><y0>(x0) }
-}
-end(*let*)//end-[glseq_map0_lstrm/strmize0]
-
+  { val y0 = map1$fopr<x0><y0>(x0) } }
+end(*let*)//end-[glseq_map1_lstrm/strmize0]
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -494,8 +492,7 @@ glseq_foldl1
 {
 #impltmp
 foldl1$fopr
-< x0 >< r0 >
-(r0, x0) =
+< x0 >< r0 >(r0, x0) =
 list_vt_cons(map1$fopr<x0><y0>(x0), r0)
 }
 //
