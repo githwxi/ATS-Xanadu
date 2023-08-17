@@ -121,7 +121,7 @@ board_extend
 (
 list_vt2t
 (
-gseq_mapopt_list
+gseq_mapopt_llist
 < xs >< x0 >< y0 >(N))) where
 {
 #typedef xs = sint
