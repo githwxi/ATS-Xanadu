@@ -380,34 +380,39 @@ prerrln("the_tr12env_pvsload() = ", ret)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
-("./DATA/gfun000.dats")
+(
+"./../../../prelude/DATS/gfun000.dats")
 val (  ) =
 fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
-("./DATA/gmap000.dats")
+(
+"./../../../prelude/DATS/gmap000.dats")
 val (  ) =
 fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
-("./DATA/gras000.dats")
+(
+"./../../../prelude/DATS/gras000.dats")
 val (  ) =
 fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
-("./DATA/gseq000.dats")
+(
+"./../../../prelude/DATS/gseq000.dats")
 val (  ) =
 fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
-("./DATA/gseqn00.dats")
+(
+"./../../../prelude/DATS/gseqn00.dats")
 val (  ) =
 fperr33_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
