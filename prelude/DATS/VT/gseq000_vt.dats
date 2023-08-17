@@ -710,11 +710,11 @@ glseq_rappend0
   (xs1, xs2) =
 let
 val
-xs1 =
-glseq_strmize0<xs><x0>(xs1)
-val
 xs2 =
-glseq_rstrmize0<xs><x0>(xs2)
+glseq_strmize0<xs><x0>(xs2)
+val
+xs1 =
+glseq_rstrmize0<xs><x0>(xs1)
 in//let
 (
   glseq_unstrm_vt<xs><x0>
