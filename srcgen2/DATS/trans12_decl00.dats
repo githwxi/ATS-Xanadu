@@ -438,11 +438,11 @@ trans12_d1arg
 val
 loc0 = darg.lctn()
 //
-(*
+// (*
 val () =
 prerrln
 ("trans12_d1arg: darg = ", darg)
-*)
+// *)
 //
 in
 case+
@@ -465,7 +465,8 @@ s2e1 =
 trans12_s1exp(env0, s1e1)
 //
 in//let
-d2arg(loc0, D2ARGdyn1(s2e1))
+(
+  d2arg(loc0, D2ARGdyn1(s2e1)) )
 end (*let*) // end of [D1ARGdyn1]
 |
 D1ARGsta0(s1qs) =>
@@ -566,13 +567,13 @@ end where
 trans12_d1ecl
 ( env0,d1cl ) = let
 //
-(*
+// (*
 val
 loc0 = d1cl.lctn()
 val () =
 prerrln
 ("trans12_d1ecl: d1cl = ", d1cl)
-*)
+// *)
 //
 in//let
 //
@@ -950,14 +951,17 @@ D1Csexpdef
 , smas
 , topt, sdef) = d1cl.node()
 //
-(*
+// (*
 val () = prerrln
 ("\
 f0_sexpdef: smas = ", smas)
 val () = prerrln
 ("\
+f0_sexpdef: topt = ", topt)
+val () = prerrln
+("\
 f0_sexpdef: sdef = ", sdef)
-*)
+// *)
 //
 val
 ( ) = tr12env_pshlam0(env0)
@@ -3545,6 +3549,16 @@ sfun = f1_d2as(0, d2as, sres)
 in//let
   d2cst_make_idtp(dpid, tqas, sfun)
 end (*let*) // end of [ val(d2c1) ]
+//
+val () =
+prerrln
+("trans12_d1cstdcl: d2as = ", d2as)
+val () =
+prerrln
+("trans12_d1cstdcl: sres = ", sres)
+val () =
+prerrln
+("trans12_d1cstdcl: d2c1 = ", d2c1)
 //
 in//let
 let

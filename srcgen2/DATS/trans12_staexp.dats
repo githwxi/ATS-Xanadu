@@ -492,7 +492,7 @@ prerrln("trans12_t1mag: t1ma = ", t1ma)
 trans12_s1exp
 ( env0,s1e0 ) = let
 //
-(*
+// (*
 val
 loc0 = s1e0.lctn()
 val () =
@@ -501,7 +501,7 @@ prerrln
 val () =
 prerrln
 ("trans12_s1exp: s1e0 = ", s1e0)
-*)
+// *)
 //
 in//let
 //
@@ -589,19 +589,27 @@ f0_id0
 ! tr12env
 , s1e0: s1exp): s2exp =
 let
+//
 val-
 S1Eid0(sid1) = s1e0.node()
 val
 sopt =
 tr12env_find_s2itm(env0,sid1)
+//
+val () =
+prerrln
+("f0_id0(12): sid1 = ", sid1)
+val () =
+prerrln
+("f0_id0(12): sopt = ", sopt)
+//
 in//let
 case+ sopt of
 | ~
 optn_vt_nil
 () =>
 let
-val
-knd0 = isANYS(s1e0)
+val knd0 = isANYS(s1e0)
 in//let
 (
   if
@@ -1040,6 +1048,13 @@ val
 s2cs =
 s1exp_get_s2cstlst(env0,s1f0)
 //
+val () =
+prerrln
+("f0_a1pp_else(12): s1f0 = ", s1f0)
+val () =
+prerrln
+("f0_a1pp_else(12): s2cs = ", s2cs)
+//
 in//let
 //
 case+ s2cs of
@@ -1056,7 +1071,7 @@ list_nilq(scs2)
 then
 let
   val s2f0 = s2exp_cst(s2c1)
-in
+in//let
   f0_a1pp_els1(env0, s1e0, s2f0)
 end (*let*) // then
 else
@@ -1113,15 +1128,19 @@ s2f0.sort() of
 |
 S2Tfun1(s2ts, _) => s2ts
 |
-_(*non-S2Tfun1*) => list_nil(*nil*)
-) : sort2lst // end of [val (s2ts) ]
+_(*non-S2Tfun1*) => list_nil(*0*)
+) : sort2lst // end of [val(s2ts)]
 //
 in//let
 ( s2exp_apps_pq
   (loc0, s2f0, s2es) ) where
 {
 //
-val loc0 = s1e0.lctn()
+val loc0 = s1e0.lctn((*void*))
+//
+val (  ) =
+prerrln
+("f0_a1pp_els1(12): s2ts = ", s2ts)
 //
 val s2es =
 trans12_s1explst_stcks(env0,s1es,s2ts) }

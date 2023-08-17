@@ -772,7 +772,7 @@ trans2a_d2exp
 ( env0, d2e0 ) =
 let
 //
-(*
+// (*
 val
 loc0 = d2e0.lctn()
 val () =
@@ -781,7 +781,7 @@ prerrln
 val () =
 prerrln
 ("trans2a_d2exp: d2e0 = ", d2e0)
-*)
+// *)
 //
 in//let
 //
