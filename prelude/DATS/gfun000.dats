@@ -6,7 +6,7 @@
 //
 (*
 #staload
-"./../SATS/gfun000.sats"
+"prelude/SATS/gfun000.sats"
 *)
 //
 (* ****** ****** *)

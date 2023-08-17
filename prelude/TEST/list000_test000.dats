@@ -76,9 +76,8 @@ xss: list(ints)) =>
 (
 length(concat(xss)) =
 xss.foldl_cfr
-(
-0(*init*),
-lam(r0:int0, xs:ints) => r0+length(xs))))
+( 0(*init*)
+, lam(r0:int0, xs:ints) => r0+length(xs))))
 
 (* ****** ****** *)
 //
