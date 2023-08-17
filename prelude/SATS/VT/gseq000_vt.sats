@@ -342,12 +342,12 @@ fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
-glseq_map0_list(~xs): list_vt(y0)
+glseq_map0_llist(~xs): list_vt(y0)
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
-glseq_map1_list(!xs): list_vt(y0)
+glseq_map1_llist(!xs): list_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -355,63 +355,52 @@ fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
-glseq_map0_strm(~xs): strm_vt(y0)
+glseq_map0_lstrm(~xs): strm_vt(y0)
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
-glseq_map1_strm(!xs): strm_vt(y0)
+glseq_map1_lstrm(!xs): strm_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+glseq_map0_rllist(~xs): list_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+glseq_map1_rllist(!xs): list_vt(y0)
 //
 (* ****** ****** *)
 //
 (*
 HX-2022-06-02:
 [copy] is just map1-identity
-[copy_list] is just [listize1]
-[copy_strm] is just [strmize1]
+[copy_llist] is just [listize1]
+[copy_lstrm] is just [strmize1]
 *)
 //
 fun
 <xs:vt>
 <x0:vt>
-glseq_copy_list(!xs): list_vt(x0)
+glseq_copy_llist(!xs): list_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
-glseq_copy_strm(!xs): strm_vt(x0)
+glseq_copy_lstrm(!xs): strm_vt(x0)
 //
 fun
 <xs:vt>
 <x0:vt>
-glseq_rcopy_list(!xs): list_vt(x0)
+glseq_rcopy_llist(!xs): list_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
-glseq_rcopy_strm(!xs): strm_vt(x0)
-//
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
-<y0:vt>
-glseq_map0_rlist(~xs): list_vt(y0)
-fun
-<xs:vt>
-<x0:vt>
-<y0:vt>
-glseq_map1_rlist(!xs): list_vt(y0)
-//
-fun
-<xs:vt>
-<x0:vt>
-<y0:vt>
-glseq_map0_rstrm(~xs): strm_vt(y0)
-fun
-<xs:vt>
-<x0:vt>
-<y0:vt>
-glseq_map1_rstrm(!xs): strm_vt(y0)
+glseq_rcopy_lstrm(!xs): strm_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -422,11 +411,11 @@ HX-2022-06-02:
 fun
 <xs:vt>
 <x0:vt>
-glseq_copy_rlist(!xs): list_vt(x0)
+glseq_copy_rllist(!xs): list_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
-glseq_rcopy_rlist(!xs): list_vt(x0)
+glseq_rcopy_rllist(!xs): list_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -440,11 +429,11 @@ glseq_filter0(~xs): ( xs )
 fun
 <xs:vt>
 <x0:vt>
-glseq_filter0_list(~xs): list_vt(x0)
+glseq_filter0_llist(~xs): list_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
-glseq_filter0_strm(~xs): strm_vt(x0)
+glseq_filter0_lstrm(~xs): strm_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -452,23 +441,23 @@ fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
-glseq_mapopt0_strm(~xs): strm_vt(y0)
+glseq_mapopt0_lstrm(~xs): strm_vt(y0)
 //
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
-glseq_maplist0_strm(~xs): strm_vt(y0)
+glseq_maplist0_lstrm(~xs): strm_vt(y0)
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
-glseq_mapoptn0_strm(~xs): strm_vt(y0)
+glseq_mapoptn0_lstrm(~xs): strm_vt(y0)
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
-glseq_mapstrm0_strm(~xs): strm_vt(y0)
+glseq_mapstrm0_lstrm(~xs): strm_vt(y0)
 //
 (* ****** ****** *)
 //

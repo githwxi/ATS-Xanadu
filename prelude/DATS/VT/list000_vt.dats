@@ -1036,23 +1036,23 @@ glseq_foreach1
 #impltmp
 {a:vt}
 {b:vt}
-glseq_map0_list
+glseq_map0_llist
 <list_vt(a)><a><b> = list_vt_map0<a><b>
 #impltmp
 {a:vt}
 {b:vt}
-glseq_map0_rlist
+glseq_map0_rllist
 <list_vt(a)><a><b> = list_vt_maprev0<a><b>
 //
 #impltmp
 {a:vt}
 {b:vt}
-glseq_map1_list
+glseq_map1_llist
 <list_vt(a)><a><b> = list_vt_map1<a><b>
 #impltmp
 {a:vt}
 {b:vt}
-glseq_map1_rlist
+glseq_map1_rllist
 <list_vt(a)><a><b> = list_vt_maprev1<a><b>
 //
 (* ****** ****** *)

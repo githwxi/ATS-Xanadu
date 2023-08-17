@@ -19,6 +19,16 @@ gseq_prop
 *)
 //
 (* ****** ****** *)
+(*
+Hongwei Xi:
+Wed Aug 16 21:34:47 EDT 2023
+How should a function be named?
+gseq_map_llist:
+map refers to the action verb
+gseq refers to the input object
+llist refers to the output object
+*)
+(* ****** ****** *)
 //
 fun
 <xs:t0>

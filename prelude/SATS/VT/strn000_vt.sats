@@ -267,7 +267,7 @@ strn_vt_rlistize1
 ! strn_vt(n)): list_vt(cgtz,n)
 //
 fun<>
-strn_vt_copy_list
+strn_vt_copy_llist
 {n:int}
 ( cs:
 ! strn_vt(n)): list_vt(cgtz,n)
@@ -279,14 +279,14 @@ strn_vt_copy_rlist
 (* ****** ****** *)
 //
 // HX:
-// rcopy_list = copy_rlist
+// rcopy_llist = copy_rllist
 fun<>
-strn_vt_rcopy_list
+strn_vt_rcopy_llist
 {n:int}
 ( cs:
 ! strn_vt(n)): list_vt(cgtz,n)
 // HX:
-// rcopy_rlist = copy_list
+// rcopy_rllist = copy_llist
 fun<>
 strn_vt_rcopy_rlist
 {n:int}

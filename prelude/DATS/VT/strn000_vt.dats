@@ -306,7 +306,7 @@ let
 #vwtpdef xs = strn_vt
 in//let
 $UN.castlin01
-(glseq_copy_list<xs><x0>(cs)) end
+(glseq_copy_llist<xs><x0>(cs)) end
 #impltmp
 <>(*tmp*)
 strn_vt_rlistize1(cs) =
@@ -315,7 +315,7 @@ let
 #vwtpdef xs = strn_vt
 in//let
 $UN.castlin01
-(glseq_rcopy_list<xs><x0>(cs)) end
+(glseq_rcopy_llist<xs><x0>(cs)) end
 //
 (* ****** ****** *)
 
