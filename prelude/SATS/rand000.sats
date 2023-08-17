@@ -18,14 +18,18 @@ g_rand((*void*)): a
 (* ****** ****** *)
 //
 fun
-<a:vt>
-list_rand(): list_vt(a)
+<a:t0>
+list_rand(): list(a)
 fun<>
 list_rand$length(): nint
 //
 fun
 <a:vt>
-list_rand_length
+list_rand_vt(): list_vt(a)
+//
+fun
+<a:vt>
+list_rand_length_vt
 {n:nat}(ln: sint(n)): list_vt(a,n)
 //
 (* ****** ****** *)

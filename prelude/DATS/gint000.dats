@@ -226,7 +226,7 @@ gint_listize_nint
 map$fopr<x0><y0>(x0) = x0
 //
 in
-  gint_map_list_nint<y0>( xs )
+  gint_map_llist_nint<y0>( xs )
 end // end of [gint_listize_nint]
 
 (* ****** ****** *)
@@ -244,14 +244,14 @@ map$fopr
 <x0><y0>(x0) = ( xs-1-x0 )
 //
 in
-  gint_map_list_nint<y0>( xs )
+  gint_map_llist_nint<y0>( xs )
 end // end of [gint_rlistize_nint]
 
 (* ****** ****** *)
 
 #impltmp
 <y0:vt>
-gint_map_list_nint
+gint_map_llist_nint
   {n}(xs) = let
 //
 #typedef x0 = nintlt(n)
@@ -286,7 +286,7 @@ let
 val i0 = 0
 var r0: list_vt(y0) in loop(i0, r0); r0
 end
-end (* end of [gint_map_list_nint] *)
+end (* end of [gint_map_llist_nint(xs)] *)
 
 (* ****** ****** *)
 

@@ -322,8 +322,12 @@ gint_strmize_nint
 (* ****** ****** *)
 //
 fun
-<a:vt>
+<a:t0>
 gint_map_list_nint
+{n:nat}( n0: sint(n) ): list(a,n)
+fun
+<a:vt>
+gint_map_llist_nint
 {n:nat}( n0: sint(n) ): list_vt(a,n)
 //
 (* ****** ****** *)
