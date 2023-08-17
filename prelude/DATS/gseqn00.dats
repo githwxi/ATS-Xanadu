@@ -1,13 +1,8 @@
 (* ****** ****** *)
-//
 (*
 #staload
-"./../SATS/gseqn.sats"
-*)
-//
-(* ****** ****** *)
-#staload
 "prelude/SATS/gseqn00.sats"
+*)
 (* ****** ****** *)
 //
 #staload UN =

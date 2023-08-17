@@ -3242,16 +3242,16 @@ D3Cimplmnt1
 ( knd
 , stmp, mopt
 , sqas, tqas
-, id2c
+, idc1
 , ti3a, tias
 , f3as
 , res0, d3e0) = d3cl.node()
 //
-(*
+// (*
 val () =
 println!
-("aux_implmnt1: id2c = ", id2c)
-*)
+("aux_implmnt1: idc1 = ", idc1)
+// *)
 //
 val
 tres = d3e0.type()
@@ -3271,7 +3271,7 @@ D3Cimplmnt3
 ( knd
 , stmp, mopt
 , sqas, tqas
-, id2c, ti3a, tias, f3as, res0, d3e0))
+, idc1, ti3a, tias, f3as, res0, d3e0))
 end // end of [aux_implmnt1]
 
 (* ****** ****** *)
@@ -3288,16 +3288,19 @@ D3Cimplmnt2
 ( knd
 , stmp, mopt
 , sqas, tqas
-, id2c
+, idc1
 , ti3a, tias
 , f3as
 , res0, d3e0) = d3cl.node()
 //
-(*
+// (*
 val () =
 println!
-("aux_implmnt2: id2c = ", id2c)
-*)
+("aux_implmnt2: d3cl = ", d3cl)
+val () =
+println!
+("aux_implmnt2: idc1 = ", idc1)
+// *)
 //
 val
 tres = d3e0.type()
@@ -3309,7 +3312,7 @@ tfun =
 auxtfun(d3cl, f3as, tres, 0)
 //
 val
-id2c = auxid2c(id2c, tfun)
+id2c = auxid2c(idc1, tfun)
 val-
 IMPLD2CST2(dqid, d2cs, d2ct) = id2c
 //
@@ -3326,7 +3329,7 @@ d3ecl_make_node
   ( knd
   , stmp, mopt
   , sqas, tqas
-  , id2c, ti3a, tias, f3as, res0, d3e0
+  , idc1, ti3a, tias, f3as, res0, d3e0
   ) (* d3ecl_make_node *)
 )
 //
