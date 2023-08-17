@@ -1853,9 +1853,8 @@ in//let
 (
 strm_vt_group0_llist<x0>(xs)
 ) where
-{
-#impltmp
-group0$test<x0> = group$test<x0> }
+{ #impltmp
+  group0$test<x0> = group$test<x0> }
 end(*let*)//end-of-[gseq_group_lstrm_llist]
 //
 (* ****** ****** *)
@@ -3044,7 +3043,7 @@ in//let
 }(*where*)//end-[gseq_x2imapopt_lstrm(xs,ys)]
 
 (* ****** ****** *)
-
+//
 #impltmp
 <xs,ys>
 <x0,y0>
@@ -3077,9 +3076,9 @@ gseq_iforeach<xs><x0>(xs) where
 iforeach$work<x0> = iforeach$work_x0_ }
 //
 end(*let*)//end-of-[gseq_x2iforeach(xs,ys)]
-
+//
 (* ****** ****** *)
-
+//
 #impltmp
 <xs,ys>
 <x0,y0>
@@ -3116,9 +3115,9 @@ gseq_iforeach<xs><x0>(xs) where
   iforeach$work<x0> = iforeach$work_x0_ }
 //
 end(*let*)//end-[gseq_x2iforeach_row(xs,ys)]
-
+//
 (* ****** ****** *)
-
+//
 #impltmp
 <xs,ys>
 <x0,y0>
@@ -3141,7 +3140,7 @@ x2iforeach_col$work<x0,y0>(i, x0, j, y0)
 in//let
 gseq_x2iforeach_row<ys,xs><y0,x0>(ys, xs)
 end(*let*)//end-[gseq_x2iforeach_col(xs,ys)]
-
+//
 (* ****** ****** *)
 //
 (*
@@ -3210,7 +3209,6 @@ gseq_foldr
 #impltmp
 foldr$fopr<x0><r0>(x0,r0) = f0(x0,r0)
 }(*where*)//end-of[gseq_foldr_f2np(xs,r0,f0)]
-
 (* ****** ****** *)
 //
 // HX: gseq_exists
