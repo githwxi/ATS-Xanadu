@@ -401,8 +401,10 @@ let
 val sopt =
 f2envlst_find_s2itm(envs, seid)
 //
+(*
 val (  ) =
 prerrln("f0_s1exp: sopt = ", sopt)
+*)
 //
 in//let
 case+ sopt of
@@ -420,10 +422,10 @@ end(*let*) // end of [ S1Eid0(seid) ]
 //
 ) where
 {
-// (*
-  val () =
-  prerrln("f0_s1exp: sexp = ", sexp)
-// *)
+(*
+val
+( ) = prerrln("f0_s1exp: sexp = ", sexp)
+*)
 } (*where*) // end of [f0_s1exp(envs,sexp)]
 
 in (*in-of-local*)
@@ -436,22 +438,36 @@ case+
 s1e0.node() of
 |
 S1Eid0(sid1) => let
+//
 val
 opt1 =
 tr12env_find_s2itm(env0, sid1)
+//
+(*
+val () =
+prerrln
+("s1exp_get_s2cstlst: s1e0 = ", s1e0)
+val () =
+prerrln
+("s1exp_get_s2cstlst: opt1 = ", opt1)
+*)
+//
 in//let
 case+ opt1 of
 | ~
 optn_vt_nil
-( (*void*) ) => list_nil((*void*))
+( (*void*) ) =>
+list_nil((*0*))
 | ~
 optn_vt_cons
 (   s2i1   ) =>
 (
 case+ s2i1 of
-| S2ITMcst
-(   s2cs   ) => s2cs
-| _(*non-S2ITMcst*) => list_nil(*0*)
+|
+S2ITMcst
+(   s2cs   ) => ( s2cs )
+|
+_(*non-S2ITMcst*) => list_nil(*0*)
 )
 end (*let*) // end of [S1Eid0(sid1)]
 //
@@ -469,9 +485,13 @@ symbl_make_name(name)
 val
 opt1 =
 tr12env_find_s2itm(env0, sym1)
+//
+(*
 val () =
 prerrln
 ("s1exp_get_s2cstlst: opt1 = ", opt1)
+*)
+//
 in//let
 case+ opt1 of
 | ~

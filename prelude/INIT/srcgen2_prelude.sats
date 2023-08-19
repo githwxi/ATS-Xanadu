@@ -94,8 +94,10 @@
 #include "prelude/SATS/VT/synoug0_vt.sats"
 (* ****** ****** *)
 //
+(*
 #staload
 UNSF(*unsafe*) = "prelude/SATS/unsafex.sats"
+*)
 //
 (* ****** ****** *)
 

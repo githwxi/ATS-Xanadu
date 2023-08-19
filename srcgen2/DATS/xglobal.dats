@@ -430,16 +430,26 @@ auxkxs1
 let
 val (k1, xs1) = kxs1
 val-list_cons(x1, xs1) = xs1
+//
 in//let
-(
+//
 case+ x1 of
 |_(*S2ITM-else*) =>
-topmap_insert_any(env0, k1, x1))
-where
+let
+//
+val () =
+prerrln("auxkxs1: k1 = ", k1)
+val () =
+prerrln("auxkxs1: x1 = ", x1)
+val () =
+prerrln("auxkxs1: xs1 = ", xs1)
+//
+in//let
+  topmap_insert_any(env0, k1, x1)
+end where // end-of-[let(S2ITM-else)]
 {
 val- ~
-optn_vt_cons(k1) = the_xsymbls_search(k1)
-}
+optn_vt_cons(k1)=the_xsymbls_search(k1)}
 end (*let*) // end of [auxkxs1(env0,kxs1)]
 //
 fun

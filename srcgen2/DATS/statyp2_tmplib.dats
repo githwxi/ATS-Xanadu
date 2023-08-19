@@ -262,8 +262,10 @@ in//let
 //
 case+
 t2p1.node() of
-| T2Pnone0() => ( t2p0 )
-| _(*T2Pnone0*) =>
+|
+T2Pnone0() => ( t2p0 )
+|
+_(*non-T2Pnone0*) =>
 let
 val () = (flag := flag+1)
 val t2p1 =
@@ -655,6 +657,10 @@ T2Pvar _ =>
 f0_var(e1nv, t2p0, svts, flag)
 //
 |
+T2Pxtv _ =>
+f0_xtv(e1nv, t2p0, svts, flag)
+//
+|
 T2Parg1 _ =>
 f0_arg1(e1nv, t2p0, svts, flag)
 //
@@ -713,6 +719,34 @@ optn_vt_nil() => t2p0
 | ~
 optn_vt_cons(t2p1) => (flag := flag+1; t2p1)
 end (*let*) // end of [f0_var(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_xtv
+( e1nv: !e1nv
+, t2p0: s2typ
+, svts: s2vts
+, flag: &sint >> _): s2typ =
+let
+//
+val-
+T2Pxtv
+(xt2p) = t2p0.node()
+//
+val t2p1 = xt2p.styp()
+//
+in//let
+case+
+t2p1.node() of
+| // HX: this shows verification
+T2Pnone0() => t2p0 // is necessary
+|
+_(*non-S2Tnone0*) =>
+(
+flag := flag+1;
+s2typ_substx(e1nv, t2p1, svts, flag))
+end (*let*) // end of [f0_xtv(e1nv,...)]
 //
 (* ****** ****** *)
 //

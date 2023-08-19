@@ -588,9 +588,17 @@ in//let
 if
 stkmap_nilq(stkmap)
 then
+(
+//prerrln
+//("sexpenv_insert_any: topmap");
 topmap_insert_any(topmap, k0, x0)//top
+)
 else
+(
+//prerrln
+//("sexpenv_insert_any: stkmap");
 stkmap_insert_any(stkmap, k0, x0)//inner
+)
 //
 end (*let*)//end-of(sexpenv_insert_any(senv,k0,x0))
 //
@@ -1479,8 +1487,10 @@ end(*let*)//end-of-[ f0_main(env0,name) ]
 tr12env_find_s2itm
   ( env0, k0 ) =
 let
+//
 val opt =
 sexpenv_search_opt(senv, k0)
+//
 in//let
 //
 case+ opt of
@@ -1581,6 +1591,7 @@ let
 val sym0 = s2c0.name()
 val sopt =
 tr12env_find_s2itm(env0, sym0)
+//
 in//let
 //
 case+ sopt of

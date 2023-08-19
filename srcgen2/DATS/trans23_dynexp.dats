@@ -1554,11 +1554,11 @@ val-
 D2Eseqn
 (d2es, d2e1) = d2e0.node()
 //
-val
-d3es =
-trans23_d2explst(env0, d2es)
-val
-d3e1 = trans23_d2exp(env0, d2e1)
+val d3es =
+trans23_d2explst_tpck1
+(env0, d2es, the_s2typ_void((*0*)))
+//
+val d3e1 = trans23_d2exp(env0, d2e1)
 //
 } (*where*) // end of [f0_seqn(env0,d2e0)]
 //

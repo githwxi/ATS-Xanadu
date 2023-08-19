@@ -438,11 +438,11 @@ trans12_d1arg
 val
 loc0 = darg.lctn()
 //
-// (*
+(*
 val () =
 prerrln
 ("trans12_d1arg: darg = ", darg)
-// *)
+*)
 //
 in
 case+
@@ -567,13 +567,12 @@ end where
 trans12_d1ecl
 ( env0,d1cl ) = let
 //
-// (*
-val
-loc0 = d1cl.lctn()
-val () =
-prerrln
+(*
+val loc0 =
+d1cl.lctn((*0*))
+val (  ) = prerrln
 ("trans12_d1ecl: d1cl = ", d1cl)
-// *)
+*)
 //
 in//let
 //
@@ -951,17 +950,14 @@ D1Csexpdef
 , smas
 , topt, sdef) = d1cl.node()
 //
-// (*
-val () = prerrln
-("\
-f0_sexpdef: smas = ", smas)
-val () = prerrln
-("\
-f0_sexpdef: topt = ", topt)
-val () = prerrln
-("\
-f0_sexpdef: sdef = ", sdef)
-// *)
+(*
+val () =
+prerrln("f0_sexpdef: smas = ", smas)
+val () =
+prerrln("f0_sexpdef: topt = ", topt)
+val () =
+prerrln("f0_sexpdef: sdef = ", sdef)
+*)
 //
 val
 ( ) = tr12env_pshlam0(env0)
@@ -1601,8 +1597,8 @@ gexp.node() of
 |G1Eint(tint) =>
 (
 (*
-prerrln
-("f1_pval: tint = ", tint);
+prerrln(
+"f1_pval: tint = ", tint);
 *)
 case-
 tint.node() of
@@ -1643,8 +1639,8 @@ D1Cinclude
 //
 (*
 val () =
-prerrln
-("f0_include: dopt = ", dopt)
+prerrln(
+"f0_include: dopt = ", dopt)
 *)
 //
 val dopt =
@@ -2051,14 +2047,11 @@ trans12_d1pat(env0,dpat) end
 //
 (*
 val () =
-prerrln
-("f0_valdclst:tknd = ", tknd)
+prerrln("f0_valdclst:tknd = ", tknd)
 val () =
-prerrln
-("f0_valdclst:recq = ", recq)
+prerrln("f0_valdclst:recq = ", recq)
 val () =
-prerrln
-("f0_valdclst:d2ps = ", d2ps)
+prerrln("f0_valdclst:d2ps = ", d2ps)
 *)
 //
 val (  ) =
@@ -2181,28 +2174,31 @@ trans12_d1pid(env0,dpid) end
 //
 (*
 val () =
-prerrln(
-"f0_fundclst: tknd = ", tknd)
+prerrln
+("f0_fundclst: tknd = ", tknd)
 val () =
-prerrln(
-"f0_fundclst: recq = ", recq)
+prerrln
+("f0_fundclst: recq = ", recq)
 val () =
-prerrln(
-"f0_fundclst: d2vs = ", d2vs)
+prerrln
+("f0_fundclst: d2vs = ", d2vs)
 *)
 //
 val (  ) =
 if
-(recq) then
-tr12env_add0_d2vs(env0, d2vs)
+recq then
+(
+tr12env_add0_d2vs(env0, d2vs)) 
 //
 val (  ) = // enter
-tr12env_pshlam0(env0)
+tr12env_pshlam0(env0) // enter
 //
 val tqas =
-trans12_t1qaglst(env0, tqas)
+(
+ trans12_t1qaglst(env0, tqas))
 val (  ) =
-tr12env_add0_tqas(env0, tqas)
+(
+ tr12env_add0_tqas(env0, tqas))
 //
 val d2fs =
 trans12_d1fundclist
@@ -3550,6 +3546,7 @@ in//let
   d2cst_make_idtp(dpid, tqas, sfun)
 end (*let*) // end of [ val(d2c1) ]
 //
+(*
 val () =
 prerrln
 ("trans12_d1cstdcl: d2as = ", d2as)
@@ -3559,10 +3556,11 @@ prerrln
 val () =
 prerrln
 ("trans12_d1cstdcl: d2c1 = ", d2c1)
+*)
 //
 in//let
 let
-val () =
+  val () =
   tr12env_add1_d2cst( env0 , d2c1 )
 in//let
   d2cstdcl(loc0, d2c1, d2as, sres, dres)
