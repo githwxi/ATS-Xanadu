@@ -292,19 +292,15 @@ s2typ_l1azy0q(t2f0) | _(*else*) => false)
 s2typ_xtpck0
 (t2p0, xtp0) =
 (
-case+ t2p0 of
+case+
+t2p0.node() of
 //
-|
-T2Pbas _ => false
-|
-T2Pnone0 _ => false
-|
-T2Pnone1 _ => false
-|
-T2Ps2exp _ => false
+|T2Pbas _ => false
+|T2Pnone0 _ => false
+|T2Pnone1 _ => false
+|T2Ps2exp _ => false
 //
-|
-T2Pxtv(xtp1) =>
+|T2Pxtv(xtp1) =>
 if
 xtp0 = xtp1
 then true else
@@ -314,28 +310,29 @@ in//let
 s2typ_xtpck0(t2p1, xtp0)
 endlet // end-of-(T2Pxtv)
 //
-|
-T2Plam1
+|T2Plam1
 (s2vs, t2p1) =>
-s2typ_xtpck0(t2p1, xtp0)
-|
-T2Papps
+(
+ s2typ_xtpck0(t2p1, xtp0) )
+//
+|T2Papps
 (t2f0, t2ps) =>
+(
 if
 s2typ_xtpck0(t2f0, xtp0)
 then true else
-s2typlst_xtpck0(t2ps, xtp0)
+s2typlst_xtpck0(t2ps, xtp0) )
 //
-|
-T2Ptrcd
+|T2Ptrcd
 (tknd,npf1,ltps) =>
-l2t2plst_xtpck0(ltps, xtp0)
+(
+ l2t2plst_xtpck0(ltps, xtp0) )
 //
-|
-T2Ptext(tnm1, t2ps) =>
-s2typlst_xtpck0(t2ps, xtp0)
+|T2Ptext(tnm1, t2ps) =>
+(
+ s2typlst_xtpck0(t2ps, xtp0) )
 //
-| _(*otherwise*) => (  false  )
+| _(*otherwise*) => (   false   )
 //
 ) where
 {
@@ -352,12 +349,13 @@ prerrln("s2typ_xtpck0: xtp0 = ", xtp0)
 #implfun
 s2typlst_xtpck0
 ( t2ps , xtp0 ) =
-list_forall<x0>(t2ps) where
+(
+list_exists
+<s2typ>(t2ps) ) where
 {
-#typedef x0 = s2typ
 #impltmp
-forall$test
-< x0 >(t2p0) = s2typ_xtpck0(t2p0, xtp0)
+exists$test
+<s2typ>(t2p1) = s2typ_xtpck0(t2p1, xtp0)
 } (*where*) // end-[s2typlst_xtpck0(...)]
 //
 (* ****** ****** *)
@@ -365,13 +363,14 @@ forall$test
 #implfun
 l2t2plst_xtpck0
 ( ltps , xtp0 ) =
-list_forall<x0>(ltps) where
+(
+list_exists
+<l2t2p>(ltps) ) where
 {
-#typedef x0 = l2t2p
 #impltmp
-forall$test
-< x0 >( lx ) =
-case+ lx of
+exists$test
+<l2t2p>(lt2p) =
+case+ lt2p of
 S2LAB(l0, x0) => s2typ_xtpck0(x0, xtp0)
 }(*where*)//end-of[l2t2plst_xtpck0(...)]
 //
