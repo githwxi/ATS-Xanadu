@@ -437,12 +437,14 @@ case+ x1 of
 |_(*S2ITM-else*) =>
 let
 //
+(*
 val () =
 prerrln("auxkxs1: k1 = ", k1)
 val () =
 prerrln("auxkxs1: x1 = ", x1)
 val () =
 prerrln("auxkxs1: xs1 = ", xs1)
+*)
 //
 in//let
   topmap_insert_any(env0, k1, x1)
@@ -653,7 +655,7 @@ D2TOPENV
 (tr11
 ,tenv,senv,denv) = dpar.t2penv()
 //
-// (*
+(*
 val () =
 prerrln("\
 the_tr12env_pvsload:tr11=\n", tr11)
@@ -666,7 +668,8 @@ the_tr12env_pvsload:senv=\n", senv)
 val () =
 prerrln("\
 the_tr12env_pvsload:denv=\n", denv)
-// *)
+*)
+//
 in//let
 //
 (
@@ -739,9 +742,13 @@ D2ITMvar(d2v) =>
 val loc =
 d2v.lctn((*nil*))
 val ( ) = prerrln
-("TREAD12-WARNING: the_tr12env_pvsload: f0_pvsfini: loc = ", loc)
+("\
+TREAD12-WARNING: \
+the_tr12env_pvsload: f0_pvsfini: loc = ", loc)
 val ( ) = prerrln
-("TREAD12-WARNING: the_tr12env_pvsload: f0_pvsfini: d2v = ", d2v)
+("\
+TREAD12-WARNING: \
+the_tr12env_pvsload: f0_pvsfini: d2v = ", d2v)
 }
 |_(*non-D2ITMvar*) => ans(*passed*)
 )
@@ -923,8 +930,7 @@ end where
 {
 (*
 val () =
-prerrln
-("the_sortenv_pvsfind: key = ", key)
+prerrln("the_sortenv_pvsfind: key = ", key)
 *)
 } (*where*) // [the_sortenv_pvsfind]
 //
@@ -945,8 +951,7 @@ end where
 {
 (*
 val () =
-prerrln
-("the_sexpenv_pvsfind: key = ", key)
+prerrln("the_sexpenv_pvsfind: key = ", key)
 *)
 } (*where*) // [the_sexpenv_pvsfind]
 //
@@ -967,8 +972,7 @@ end where
 {
 (*
 val () =
-prerrln
-("the_dexpenv_pvsfind: key = ", key)
+prerrln("the_dexpenv_pvsfind: key = ", key)
 *)
 } (*where*) // [the_dexpenv_pvsfind]
 //
