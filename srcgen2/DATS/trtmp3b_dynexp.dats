@@ -46,7 +46,17 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 #staload
-_(*TRANS3a*) = "./trtmp3b.dats"
+_(*Trtmp3b*) = "./trtmp3b.dats"
+(* ****** ****** *)
+#staload "./../SATS/trtmp3b.sats"
+(* ****** ****** *)
+//
+#implfun
+trtmp3b_d3clslst
+( env0, d3cs ) =
+(
+  list_trtmp3b_fnp(env0, d3cs, trtmp3b_d3cls))
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trtmp3b_dynexp.dats] *)

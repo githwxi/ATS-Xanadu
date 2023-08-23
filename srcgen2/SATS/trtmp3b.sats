@@ -76,6 +76,8 @@ D3E = "./dynexp3.sats"
 #typedef l3d3p = $D3E.l3d3p
 #typedef l3d3e = $D3E.l3d3e
 (* ****** ****** *)
+#typedef d3cls = $D3E.d3cls
+(* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
 #typedef
@@ -97,6 +99,9 @@ D3E = "./dynexp3.sats"
  l3d3plst  =  $D3E.l3d3plst
 #typedef
  l3d3elst  =  $D3E.l3d3elst
+(* ****** ****** *)
+#typedef
+ d3clslst  =  $D3E.d3clslst
 (* ****** ****** *)
 #typedef
  d3eclist  =  $D3E.d3eclist
@@ -154,7 +159,7 @@ tr3benv_pshlet0
 fun
 <x0:t0>
 <y0:t0>
-list_trans3b_fnp
+list_trtmp3b_fnp
 ( e1:
 ! tr3benv
 , xs
@@ -164,7 +169,7 @@ list_trans3b_fnp
 fun
 <x0:t0>
 <y0:t0>
-optn_trans3b_fnp
+optn_trtmp3b_fnp
 ( e1:
 ! tr3benv
 , xs: optn(x0)
@@ -174,33 +179,47 @@ optn_trans3b_fnp
 (* ****** ****** *)
 //
 fun
-trans3b_d3exp
+trtmp3b_d3exp
 ( env0:
 ! tr3benv,d3e0:d3exp):d3exp//fun
 //
 fun
-trans3b_l3d3e
+trtmp3b_l3d3e
 ( env0:
 ! tr3benv,ld3e:l3d3e):l3d3e//fun
 //
 (* ****** ****** *)
 //
 fun
-trans3b_d3expopt
+trtmp3b_d3cls
+( env0:
+! tr3benv,dcls:d3cls):d3cls//fun
+//
+(* ****** ****** *)
+//
+fun
+trtmp3b_d3expopt
 ( env0:
 ! tr3benv,dopt:d3expopt):d3expopt
 //
 fun
-trans3b_d3explst
+trtmp3b_d3explst
 ( env0:
 ! tr3benv,d3es:d3explst):d3explst
 //
 (* ****** ****** *)
 //
 fun
-trans3b_l3d3elst
+trtmp3b_l3d3elst
 ( env0:
 ! tr3benv,ldes:l3d3elst):l3d3elst
+//
+(* ****** ****** *)
+//
+fun
+trtmp3b_d3clslst
+( env0:
+! tr3benv,dcls:d3clslst):d3clslst
 //
 (* ****** ****** *)
 
