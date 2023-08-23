@@ -74,6 +74,14 @@ trtmp3b_d3expopt
 (* ****** ****** *)
 //
 #implfun
+trtmp3b_d3gualst
+( env0, d3gs ) =
+(
+  list_trtmp3b_fnp(env0, d3gs, trtmp3b_d3gua))
+//
+(* ****** ****** *)
+//
+#implfun
 trtmp3b_d3clslst
 ( env0, dcls ) =
 (

@@ -76,6 +76,8 @@ D3E = "./dynexp3.sats"
 #typedef l3d3p = $D3E.l3d3p
 #typedef l3d3e = $D3E.l3d3e
 (* ****** ****** *)
+#typedef d3gua = $D3E.d3gua
+#typedef d3gpt = $D3E.d3gpt
 #typedef d3cls = $D3E.d3cls
 (* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
@@ -100,6 +102,8 @@ D3E = "./dynexp3.sats"
 #typedef
  l3d3elst  =  $D3E.l3d3elst
 (* ****** ****** *)
+#typedef
+ d3gualst  =  $D3E.d3gualst
 #typedef
  d3clslst  =  $D3E.d3clslst
 (* ****** ****** *)
@@ -203,6 +207,11 @@ trtmp3b_l3d3e
 (* ****** ****** *)
 //
 fun
+trtmp3b_d3gua
+( env0:
+! tr3benv,dgua:d3gua):d3gua//fun
+//
+fun
 trtmp3b_d3cls
 ( env0:
 ! tr3benv,dcls:d3cls):d3cls//fun
@@ -234,6 +243,11 @@ trtmp3b_l3d3elst
 ! tr3benv,ldes:l3d3elst):l3d3elst
 //
 (* ****** ****** *)
+//
+fun
+trtmp3b_d3gualst
+( env0:
+! tr3benv,d3gs:d3gualst):d3gualst
 //
 fun
 trtmp3b_d3clslst
