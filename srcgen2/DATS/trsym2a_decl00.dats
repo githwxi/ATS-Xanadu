@@ -93,6 +93,7 @@ my_d2cst_set_xtyp
 val xt2p =
 s2typ_subst0(t2p1, svts)
 //
+(*
 val (  ) = prerrln
 ("\
 my_d2cst_set_xtyp: d2c1 = ", d2c1)
@@ -102,6 +103,7 @@ my_d2cst_set_xtyp: t2p1 = ", t2p1)
 val (  ) = prerrln
 ("\
 my_d2cst_set_xtyp: xt2p = ", xt2p)
+*)
 //
 } where // end of [where]
 {
@@ -109,8 +111,10 @@ my_d2cst_set_xtyp: xt2p = ", xt2p)
 val loc1 = d2c1.lctn((*void*))
 val tqas = d2c1.tqas((*void*))
 val t2p1 = d2c1.styp((*void*))
+//
 val svts =
-  s2vts_make_lctn_tqas(loc1, tqas)
+(
+  s2vts_make_lctn_tqas(loc1, tqas))
 //
 }(*where*)//end-[my_d2cst_set_xtyp]
 
@@ -226,6 +230,7 @@ D2Cfundclst
 , tqas
 , d2cs, d2fs) => let
 //
+(*
 val () =
 prerrln(
 "\
@@ -236,6 +241,7 @@ prerrln(
 "\
 trsym2a_d2ecl: \
 D2Cfundclst: tqas = ", tqas)
+*)
 //
 val () =
 (
