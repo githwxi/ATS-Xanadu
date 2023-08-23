@@ -179,6 +179,18 @@ optn_trtmp3b_fnp
 (* ****** ****** *)
 //
 fun
+trtmp3b_d3pat
+( env0:
+! tr3benv,d3p0:d3pat):d3pat//fun
+//
+fun
+trtmp3b_l3d3p
+( env0:
+! tr3benv,ld3p:l3d3p):l3d3p//fun
+//
+(* ****** ****** *)
+//
+fun
 trtmp3b_d3exp
 ( env0:
 ! tr3benv,d3e0:d3exp):d3exp//fun
@@ -198,14 +210,21 @@ trtmp3b_d3cls
 (* ****** ****** *)
 //
 fun
-trtmp3b_d3expopt
+trtmp3b_d3patlst
 ( env0:
-! tr3benv,dopt:d3expopt):d3expopt
+! tr3benv,d3ps:d3patlst):d3patlst
+//
+(* ****** ****** *)
 //
 fun
 trtmp3b_d3explst
 ( env0:
 ! tr3benv,d3es:d3explst):d3explst
+//
+fun
+trtmp3b_d3expopt
+( env0:
+! tr3benv,dopt:d3expopt):d3expopt
 //
 (* ****** ****** *)
 //
