@@ -712,6 +712,9 @@ trans3a_decl00_dats: ; $(XATSOPT) --dynamic DATS/trans3a_decl00.dats
 all_dats:: \
 trtmp3b_dats
 trtmp3b_dats: ; $(XATSOPT) --dynamic DATS/trtmp3b.dats
+all_dats:: \
+trtmp3b_dynexp_dats
+trtmp3b_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trtmp3b_dynexp.dats
 ######
 
 ######
