@@ -42,7 +42,7 @@ end // end of [val ()]
 (* ****** ****** *)
 
 val nms =
-gseq_group_list(fpx) where
+gseq_group_lstrm(fpx) where
 { 
   val DS =
   theDirSep_get()
@@ -50,7 +50,7 @@ gseq_group_list(fpx) where
   #impltmp
   group$test<cgtz>(ch) = (ch != DS) }
 
-val ( ) = prerrln("nms = ", listize(nms))
+val ( ) = prerrln("nms = ", listize0(nms))
 
 (* ****** ****** *)
 
