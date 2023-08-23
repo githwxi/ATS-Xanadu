@@ -271,6 +271,51 @@ trtmp3b_d3eclist
 (* ****** ****** *)
 //
 fun
+trtmp3b_d3valdcl
+( env0:
+! tr3benv,dval:d3valdcl):d3valdcl
+//
+fun
+trtmp3b_d3vardcl
+( env0:
+! tr3benv,dvar:d3vardcl):d3vardcl
+//
+(* ****** ****** *)
+//
+fun
+trtmp3b_d3fundcl
+( env0:
+! tr3benv,dfun:d3fundcl):d3fundcl
+//
+(* ****** ****** *)
+//
+fun
+trtmp3b_d3valdclist
+( env0:
+! tr3benv,d3vs:d3valdclist):d3valdclist
+//
+fun
+trtmp3b_d3vardclist
+( env0:
+! tr3benv,d3vs:d3vardclist):d3vardclist
+//
+(* ****** ****** *)
+//
+fun
+trtmp3b_d3fundclist
+( env0:
+! tr3benv,d3fs:d3fundclist):d3fundclist
+//
+(* ****** ****** *)
+//
+fun
+trtmp3b_d3explstopt
+( env0:
+! tr3benv,dopt:d3explstopt):d3explstopt
+//
+(* ****** ****** *)
+//
+fun
 trtmp3b_d3eclistopt
 ( env0:
 ! tr3benv,dopt:d3eclistopt):d3eclistopt
