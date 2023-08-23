@@ -219,6 +219,13 @@ trtmp3b_d3cls
 (* ****** ****** *)
 //
 fun
+trtmp3b_d3ecl
+( env0:
+! tr3benv,d3cl:d3ecl):d3ecl//fun
+//
+(* ****** ****** *)
+//
+fun
 trtmp3b_d3patlst
 ( env0:
 ! tr3benv,d3ps:d3patlst):d3patlst
@@ -253,6 +260,20 @@ fun
 trtmp3b_d3clslst
 ( env0:
 ! tr3benv,dcls:d3clslst):d3clslst
+//
+(* ****** ****** *)
+//
+fun
+trtmp3b_d3eclist
+( env0:
+! tr3benv,dcls:d3eclist):d3eclist
+//
+(* ****** ****** *)
+//
+fun
+trtmp3b_d3eclistopt
+( env0:
+! tr3benv,dopt:d3eclistopt):d3eclistopt
 //
 (* ****** ****** *)
 
