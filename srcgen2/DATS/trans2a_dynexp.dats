@@ -772,7 +772,7 @@ trans2a_d2exp
 ( env0, d2e0 ) =
 let
 //
-// (*
+(*
 val
 loc0 = d2e0.lctn()
 val () =
@@ -781,7 +781,7 @@ prerrln
 val () =
 prerrln
 ("trans2a_d2exp: d2e0 = ", d2e0)
-// *)
+*)
 //
 in//let
 //
@@ -3052,12 +3052,12 @@ d2exp(loc0, t2p0, D2Et2pck(d2e0,t2p0)) end
 end where
 {
 //
-// (*
+(*
 val () =
 prerrln("trans2a_d2exp_tpck: d2e0 = ", d2e0)
 val () =
 prerrln("trans2a_d2exp_tpck: t2p0 = ", t2p0)
-// *)
+*)
 //
 } (*where*) // end of [trans2a_d2exp_tpck(...)]
 //
