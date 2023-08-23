@@ -52,10 +52,32 @@ _(*Trtmp3b*) = "./trtmp3b.dats"
 (* ****** ****** *)
 //
 #implfun
-trtmp3b_d3clslst
-( env0, d3cs ) =
+trtmp3b_d3patlst
+( env0, d3ps ) =
 (
-  list_trtmp3b_fnp(env0, d3cs, trtmp3b_d3cls))
+  list_trtmp3b_fnp(env0, d3ps, trtmp3b_d3pat))
+//
+(* ****** ****** *)
+//
+#implfun
+trtmp3b_d3explst
+( env0, d3es ) =
+(
+  list_trtmp3b_fnp(env0, d3es, trtmp3b_d3exp))
+//
+#implfun
+trtmp3b_d3expopt
+( env0, dopt ) =
+(
+  optn_trtmp3b_fnp(env0, dopt, trtmp3b_d3exp))
+//
+(* ****** ****** *)
+//
+#implfun
+trtmp3b_d3clslst
+( env0, dcls ) =
+(
+  list_trtmp3b_fnp(env0, dcls, trtmp3b_d3cls))
 //
 (* ****** ****** *)
 
