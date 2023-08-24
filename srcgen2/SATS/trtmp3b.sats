@@ -141,8 +141,26 @@ d3eclistopt = $D3E.d3eclistopt
 (* ****** ****** *)
 fun
 tmpstk_nilq( !tmpstk ): bool
+(* ****** ****** *)
+//
 fun
-tmpstk_topq( !tmpstk ): bool
+tmpstk_poplet0
+  ( stk: &tmpstk >> _ ): sint
+//
+fun
+tmpstk_pshlet0
+  ( stk: &tmpstk >> _ ): void
+//
+(* ****** ****** *)
+//
+fun
+tmpstk_poploc0
+  ( stk: &tmpstk >> _ ): sint
+//
+fun
+tmpstk_pshloc0
+  ( stk: &tmpstk >> _ ): void
+//
 (* ****** ****** *)
 //
 fun
