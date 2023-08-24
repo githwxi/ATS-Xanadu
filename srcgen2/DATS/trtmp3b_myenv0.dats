@@ -84,7 +84,8 @@ tmpstk_nilq
 (
 case+ stk of
 | !
-tmpstk_nil() => true | _ => false
+tmpstk_nil() => true
+| _(*non-nil*) => false
 ) (* end of [tmpstk_nilq(stk)] *)
 //
 (* ****** ****** *)
