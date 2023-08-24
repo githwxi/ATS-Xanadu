@@ -46,4 +46,29 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 
+local
+
+(* ****** ****** *)
+
+datatype
+tmpstk =
+//
+| tmpstk_nil of ()
+//
+| tmpstk_cons of
+  (stamp0, d3ecl, tmpstk)
+//
+| tmpstk_let0 of (tmpstk)
+| tmpstk_loc0 of (tmpstk)
+//
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+
+(* ****** ****** *)
+
+endloc (*local*) // end of [local(tr3benv...)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_trtmp3b_myenv0.dats] *)
