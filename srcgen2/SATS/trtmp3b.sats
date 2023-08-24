@@ -135,6 +135,16 @@ d3explstopt = $D3E.d3explstopt
 d3eclistopt = $D3E.d3eclistopt
 (* ****** ****** *)
 //
+#absvtbx tmpstk_vtbx // ptr
+#vwtpdef tmpstk = tmpstk_vtbx
+//
+(* ****** ****** *)
+fun
+tmpstk_nilq( !tmpstk ): bool
+fun
+tmpstk_topq( !tmpstk ): bool
+(* ****** ****** *)
+//
 fun
 d3parsed_of_trtmp3b
 ( dpar : d3parsed ): (d3parsed)
