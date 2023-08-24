@@ -80,12 +80,102 @@ in//local
 //
 #implfun
 tmpstk_nilq
-(   map   ) =
+(   stk   ) =
 (
-case+ map of
+case+ stk of
 | !
 tmpstk_nil() => true | _ => false
-) (* end of [tmpstk_nilq(map)] *)
+) (* end of [tmpstk_nilq(stk)] *)
+//
+(* ****** ****** *)
+//
+#implfun
+tmpstk_pshlet0
+  (  stk  ) =
+(
+  stk := tmpstk_let0(stk))
+//(*end of [tmpstk_pshlet0(stk)]*)
+//
+(* ****** ****** *)
+//
+#implfun
+tmpstk_pshloc0
+  (  stk  ) =
+(
+  stk := tmpstk_loc0(stk))
+//(*end of [tmpstk_pshloc0(stk)]*)
+//
+(* ****** ****** *)
+//
+#implfun
+tmpstk_poplet0
+  (  stk  ) = let
+//
+fnx
+loop
+( kxs
+: tmpstk
+, err: &sint >> _): tmpstk =
+(
+case+ kxs of
+| !
+tmpstk_let0
+(   kxs   ) => kxs // err = 0
+| ~
+tmpstk_cons
+(k1, x1, kxs) => loop(kxs, err)
+//
+| !
+tmpstk_nil( ) => (err := 1; kxs)
+//
+| !
+tmpstk_loc0 _ => (err := 1; kxs)
+)
+//
+in//let
+let
+var
+err: sint = 0
+val
+( ) =
+(stk := loop(stk, err)) in err end
+end (*let*) // end of [tmpstk_poplet0(stk)]
+//
+(* ****** ****** *)
+//
+#implfun
+tmpstk_poploc0
+  (  stk  ) = let
+//
+fnx
+loop
+( kxs
+: tmpstk
+, err: &sint >> _): tmpstk =
+(
+case+ kxs of
+| !
+tmpstk_loc0
+(   kxs   ) => kxs // err = 0
+| ~
+tmpstk_cons
+(k1, x1, kxs) => loop(kxs, err)
+//
+| !
+tmpstk_nil( ) => (err := 1; kxs)
+//
+| !
+tmpstk_let0 _ => (err := 1; kxs)
+)
+//
+in//let
+let
+var
+err: sint = 0
+val
+( ) =
+(stk := loop(stk, err)) in err end
+end (*let*) // end of [tmpstk_poploc0(stk)]
 //
 (* ****** ****** *)
 
