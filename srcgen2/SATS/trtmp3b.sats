@@ -164,6 +164,12 @@ tmpstk_pshloc0
 (* ****** ****** *)
 //
 fun
+tmpstk_insert_dcl
+  (&tmpstk >> _, d3ecl): void
+//
+(* ****** ****** *)
+//
+fun
 d3parsed_of_trtmp3b
 ( dpar : d3parsed ): (d3parsed)
 //

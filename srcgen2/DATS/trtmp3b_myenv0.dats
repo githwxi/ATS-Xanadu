@@ -54,6 +54,19 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trtmp3b.sats"
 (* ****** ****** *)
+//
+local
+val
+stamper =
+stamper_new((*0*))
+in//local
+fun
+the_tmpstk_stamp_new
+  ((*void*)): stamp =
+  stamper.getinc((*void*))
+endloc // the_tmpstk_stamp_new
+//
+(* ****** ****** *)
 
 local
 
@@ -177,6 +190,16 @@ val
 ( ) =
 (stk := loop(stk, err)) in err end
 end (*let*) // end of [tmpstk_poploc0(stk)]
+//
+(* ****** ****** *)
+//
+#implfun
+tmpstk_insert_dcl
+  (stk, dcl) =
+let
+val tag =
+the_tmpstk_stamp_new() in//let
+  stk := tmpstk_cons(tag, dcl, stk) end
 //
 (* ****** ****** *)
 
