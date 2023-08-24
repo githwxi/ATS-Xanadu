@@ -45,26 +45,48 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/xstamp0.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
+(* ****** ****** *)
+#staload "./../SATS/dynexp3.sats"
+(* ****** ****** *)
+#staload "./../SATS/trtmp3b.sats"
+(* ****** ****** *)
 
 local
 
 (* ****** ****** *)
-
+//
 datatype
 tmpstk =
 //
 | tmpstk_nil of ()
 //
 | tmpstk_cons of
-  (stamp0, d3ecl, tmpstk)
+  (stamp, d3ecl, tmpstk)
 //
 | tmpstk_let0 of (tmpstk)
 | tmpstk_loc0 of (tmpstk)
 //
 (* ****** ****** *)
+#absimpl tmpstk_vtbx = tmpstk
+(* ****** ****** *)
+//
+(* ****** ****** *)
 in//local
 (* ****** ****** *)
-
+//
+#implfun
+tmpstk_nilq
+(   map   ) =
+(
+case+ map of
+| !
+tmpstk_nil() => true | _ => false
+) (* end of [tmpstk_nilq(map)] *)
+//
 (* ****** ****** *)
 
 endloc (*local*) // end of [local(tr3benv...)]
