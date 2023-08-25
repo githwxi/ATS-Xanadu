@@ -48,7 +48,42 @@ ATS_PACKNAME
 #staload
 _(*Trtmp3b*) = "./trtmp3b.dats"
 (* ****** ****** *)
+#staload "./../SATS/xstamp0.sats"
+(* ****** ****** *)
+#staload "./../SATS/dynexp3.sats"
+(* ****** ****** *)
 #staload "./../SATS/trtmp3b.sats"
+(* ****** ****** *)
+#symload lctn with d3ecl_get_lctn
+#symload node with d3ecl_get_node
+(* ****** ****** *)
+//
+fun
+d3ecl_get_stamp
+  (d3cl: d3ecl): stamp =
+(
+case-
+d3cl.node() of
+|
+D3Cfundclst _ =>
+(
+  the_stamp_nil )
+|
+D3Cimplmnt0
+( tok0
+, stmp
+, sqas, tqas
+, dimp, t2is
+, f3as, sres, body) => stmp
+) where
+{
+(*
+val () =
+prerrln
+("d3ecl_get_stamp: d3cl = ", d3cl)
+*)
+}(*where*)//end-of-[d3ecl_get_stamp(...)]
+//
 (* ****** ****** *)
 //
 #implfun
