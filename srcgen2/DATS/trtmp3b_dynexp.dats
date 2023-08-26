@@ -55,6 +55,12 @@ _(*Trtmp3b*) = "./trtmp3b.dats"
 #symload lctn with d3exp_get_lctn
 #symload node with d3exp_get_node
 (* ****** ****** *)
+#symload lctn with d3gpt_get_lctn
+#symload node with d3gpt_get_node
+(* ****** ****** *)
+#symload lctn with d3cls_get_lctn
+#symload node with d3cls_get_node
+(* ****** ****** *)
 //
 #implfun
 trtmp3b_d3exp
@@ -165,22 +171,48 @@ end (*let*) // end of [f0_cas0(env0,d3e0)]
 (* ****** ****** *)
 //
 #implfun
-trtmp3b_d3cls
-  (env0, d3c0) = let
-//
-val loc0 = d3c0.lctn()
+trtmp3b_d3gpt
+  (env0, dgpt) = let
 //
 (*
+val loc0 = dgpt.lctn()
 val
 val () =
 prerrln
-("trtmp3b_d3cls: d3c0 = ", d3c0)
+("trtmp3b_d3gpt: dgpt = ", dgpt)
 *)
 //
 in//let
 //
 case+
-d3c0.node() of
+dgpt.node() of
+//
+|
+D3GPTpat(d3p1) => dgpt//nothing
+|
+D3GPTgua(d3p1, d3gs) => dgpt//nothing
+//
+end(*let*)//end-of-[trtmp3b_d3gpt(env0,dgpt)]
+//
+(* ****** ****** *)
+//
+#implfun
+trtmp3b_d3cls
+  (env0, dcls) = let
+//
+val loc0 = dcls.lctn()
+//
+(*
+val
+val () =
+prerrln
+("trtmp3b_d3cls: dcls = ", dcls)
+*)
+//
+in//let
+//
+case+
+dcls.node() of
 |
 D3CLSgpt
 (  dgpt  ) =>
@@ -209,7 +241,7 @@ val d3e1 = trtmp3b_d3exp(env0, d3e1)
 //
 }(*where*)//end of [D3CLScls(dgpt,d3e1)]
 //
-end(*let*)//end-of-[trtmp3b_d3cls(env0,d3c0)]
+end(*let*)//end-of-[trtmp3b_d3cls(env0,dcls)]
 //
 (* ****** ****** *)
 //
