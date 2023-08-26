@@ -98,15 +98,69 @@ d3e0.node() of
 //
 *)
 //
+|D3Eift0 _ => f0_ift0(env0, d3e0)
+|D3Ecas0 _ => f0_cas0(env0, d3e0)
+//
 | _(* otherwise *) => (    d3e0    )
 //
 endlet where
 {
 //
 (* ****** ****** *)
+//
+fun
+f0_ift0
+( env0:
+! tr3benv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Eift0
+(d3e1
+,dthn, dels) = d3e0.node()
+//
+val d3e1 =
+trtmp3b_d3exp(env0, d3e1)
+val dthn =
+trtmp3b_d3expopt(env0, dthn)
+val dels =
+trtmp3b_d3expopt(env0, dels)
+//
+in//let
+d3exp(loc0, D3Eift0(d3e1, dthn, dels))
+end (*let*) // end of [f0_ift0(env0,d3e0)]
+//
 (* ****** ****** *)
 //
-} (*where*)//end-of-[trans3a_d3exp(env0,d3e0)]
+fun
+f0_cas0
+( env0:
+! tr3benv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Ecas0
+(tknd
+,d3e1, dcls) = d3e0.node()
+//
+val d3e1 =
+trtmp3b_d3exp(env0, d3e1)
+val dcls =
+trtmp3b_d3clslst(env0, dcls)
+//
+in//let
+d3exp(loc0, D3Ecas0(tknd, d3e1, dcls))
+end (*let*) // end of [f0_cas0(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+} (*where*)//end-of-[trtmp3b_d3exp(env0,d3e0)]
 //
 (* ****** ****** *)
 //
