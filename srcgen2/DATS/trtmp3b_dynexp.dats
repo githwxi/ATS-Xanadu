@@ -48,14 +48,65 @@ ATS_PACKNAME
 #staload
 _(*Trtmp3b*) = "./trtmp3b.dats"
 (* ****** ****** *)
+#staload "./../SATS/dynexp3.sats"
+(* ****** ****** *)
 #staload "./../SATS/trtmp3b.sats"
+(* ****** ****** *)
+#symload lctn with d3exp_get_lctn
+#symload node with d3exp_get_node
 (* ****** ****** *)
 //
 #implfun
-trtmp3b_d3patlst
-( env0, d3ps ) =
-(
-  list_trtmp3b_fnp(env0, d3ps, trtmp3b_d3pat))
+trtmp3b_d3exp
+(env0 , d3e0) =
+let
+//
+(*
+val
+loc0 = d3e0.lctn()
+val () =
+prerrln
+("trtmp3b_d3exp: loc0 = ", loc0)
+val () =
+prerrln
+("trtmp3b_d3exp: d3e0 = ", d3e0)
+*)
+//
+in//let
+//
+case+
+d3e0.node() of
+//
+(*
+|D3Eint _ => d3e0
+|D3Ebtf _ => d3e0
+|D3Echr _ => d3e0
+|D3Eflt _ => d3e0
+|D3Estr _ => d3e0
+//
+|D3Ei00 _ => d3e0
+|D3Eb00 _ => d3e0
+|D3Ec00 _ => d3e0
+|D3Ef00 _ => d3e0
+|D3Es00 _ => d3e0
+//
+|D3Evar _ => d3e0
+|D3Econ _ => d3e0
+|D3Ecst _ => d3e0
+//
+|D3Etop _ => d3e0
+//
+*)
+//
+| _(* otherwise *) => (    d3e0    )
+//
+endlet where
+{
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+} (*where*)//end-of-[trans3a_d3exp(env0,d3e0)]
 //
 (* ****** ****** *)
 //
@@ -70,14 +121,6 @@ trtmp3b_d3expopt
 ( env0, dopt ) =
 (
   optn_trtmp3b_fnp(env0, dopt, trtmp3b_d3exp))
-//
-(* ****** ****** *)
-//
-#implfun
-trtmp3b_d3gualst
-( env0, d3gs ) =
-(
-  list_trtmp3b_fnp(env0, d3gs, trtmp3b_d3gua))
 //
 (* ****** ****** *)
 //
