@@ -229,6 +229,11 @@ trtmp3b_l3d3e
 (* ****** ****** *)
 //
 fun
+trtmp3b_d3gpt
+( env0:
+! tr3benv,dgpt:d3gpt):d3gpt//fun
+//
+fun
 trtmp3b_d3cls
 ( env0:
 ! tr3benv,dcls:d3cls):d3cls//fun
