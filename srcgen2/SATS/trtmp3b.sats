@@ -217,18 +217,6 @@ optn_trtmp3b_fnp
 (* ****** ****** *)
 //
 fun
-trtmp3b_d3pat
-( env0:
-! tr3benv,d3p0:d3pat):d3pat//fun
-//
-fun
-trtmp3b_l3d3p
-( env0:
-! tr3benv,ld3p:l3d3p):l3d3p//fun
-//
-(* ****** ****** *)
-//
-fun
 trtmp3b_d3exp
 ( env0:
 ! tr3benv,d3e0:d3exp):d3exp//fun
@@ -241,11 +229,6 @@ trtmp3b_l3d3e
 (* ****** ****** *)
 //
 fun
-trtmp3b_d3gua
-( env0:
-! tr3benv,dgua:d3gua):d3gua//fun
-//
-fun
 trtmp3b_d3cls
 ( env0:
 ! tr3benv,dcls:d3cls):d3cls//fun
@@ -256,13 +239,6 @@ fun
 trtmp3b_d3ecl
 ( env0:
 ! tr3benv,d3cl:d3ecl):d3ecl//fun
-//
-(* ****** ****** *)
-//
-fun
-trtmp3b_d3patlst
-( env0:
-! tr3benv,d3ps:d3patlst):d3patlst
 //
 (* ****** ****** *)
 //
@@ -284,11 +260,6 @@ trtmp3b_l3d3elst
 ! tr3benv,ldes:l3d3elst):l3d3elst
 //
 (* ****** ****** *)
-//
-fun
-trtmp3b_d3gualst
-( env0:
-! tr3benv,d3gs:d3gualst):d3gualst
 //
 fun
 trtmp3b_d3clslst
