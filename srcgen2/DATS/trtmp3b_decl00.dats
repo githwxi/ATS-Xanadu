@@ -87,6 +87,37 @@ prerrln
 (* ****** ****** *)
 //
 #implfun
+trtmp3b_d3ecl
+( env0, d3cl ) = let
+//
+(*
+val
+loc0 = d3cl.lctn()
+val () =
+prerrln
+("trans3a_d3ecl: loc0 = ", loc0)
+val () =
+prerrln
+("trans3a_d3ecl: d3cl = ", d3cl)
+*)
+//
+in//let
+//
+case+
+d3cl.node() of
+//
+| _(* otherwise *) => (    d3cl    )
+//
+endlet where
+{
+//
+(* ****** ****** *)
+//
+} (*where*)//end-of-[trtmp3b_d3ecl(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+#implfun
 trtmp3b_d3eclist
 ( env0, dcls ) =
 (
