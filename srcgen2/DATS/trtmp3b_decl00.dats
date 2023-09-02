@@ -95,10 +95,10 @@ val
 loc0 = d3cl.lctn()
 val () =
 prerrln
-("trans3a_d3ecl: loc0 = ", loc0)
+("trtmp3b_d3ecl: loc0 = ", loc0)
 val () =
 prerrln
-("trans3a_d3ecl: d3cl = ", d3cl)
+("trtmp3b_d3ecl: d3cl = ", d3cl)
 // *)
 //
 in//let
