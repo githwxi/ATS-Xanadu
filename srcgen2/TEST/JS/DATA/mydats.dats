@@ -10,61 +10,19 @@ foo (
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-(*
 //
 (*
 HX-2023-08-07: supported
 Please see trans01_d0expseq
-(*
 Mon Aug  7 23:26:13 EDT 2023
-*)
 *)
 //
 fun
 foo (
 (*void*)
 ) : void = let in foo(); end
-*)
+//
 (* ****** ****** *)
-(* ****** ****** *)
-
-#impltmp
-<x0:vt>
-gfun_enum_strx_vt
-(    xs    ) =
-let
-val xs = !xs
-val A0 = a0ref(xs)
-in//let
-//
-lam() =<cfr>
-let
-//
-#typedef t0 =
-(?strxcon_vt(x0))
-//
-val xs =
-a0ref_get0<t0>(A0)
-//
-val xs =
-($UN.castlin10(xs))
-//
-in//let
-case+ xs of
-| ~
-strxcon_vt_cons
-(  x1, xs  ) =>
-let
-val xs =
-($UN.castlin10(!xs))
-in
-  $UN.a0ref_set0<t0>(A0, xs); x1 end
-//
-end(*let*)//end-of-lam
-end(*let*)//end-of-[gfun_enum_strx_vt]
-
-(* ****** ****** *)
-////
 (* ****** ****** *)
 //
 fun

@@ -47,6 +47,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xstamp0.sats"
 (* ****** ****** *)
+#staload "./../SATS/xsymmap.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 (* ****** ****** *)
@@ -72,7 +74,7 @@ local
 
 (* ****** ****** *)
 //
-datatype
+datavwtp
 tmpstk =
 //
 | tmpstk_nil of ()
@@ -84,7 +86,18 @@ tmpstk =
 | tmpstk_loc0 of (tmpstk)
 //
 (* ****** ****** *)
+//
+datavwtp
+tr3benv =
+TR3BENV of
+(
+topmap
+(d3eclist), tmpstk(*void*))
+//
+(* ****** ****** *)
 #absimpl tmpstk_vtbx = tmpstk
+(* ****** ****** *)
+#absimpl tr3benv_vtbx = tr3benv
 (* ****** ****** *)
 //
 (* ****** ****** *)
@@ -199,10 +212,23 @@ tmpstk_insert_dcl
 let
 val tag =
 the_tmpstk_stamp_new() in//let
-  stk := tmpstk_cons(tag, dcl, stk) end
+  stk := tmpstk_cons(tag, dcl, stk)
+end (*let*)//end of [tmpstk_insert_dcl(...)]
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
+#implfun
+tr3benv_make_nil
+  ((*nil*)) =
+(
+  TR3BENV(map1, tmpstk_nil)) where
+{
+  val map1 = topmap_make_nil((*nil*))
+}(*where*) // end of [tr3benv_make_nil(...)]
+//
+(* ****** ****** *)
+//
 endloc (*local*) // end of [local(tr3benv...)]
 
 (* ****** ****** *)

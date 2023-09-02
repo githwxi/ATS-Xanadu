@@ -81,4 +81,42 @@ map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 //
 (* ****** ****** *)
 
+#implfun
+d3parsed_of_trtmp3b
+  (dpar) =
+let
+//
+val stadyn =
+d3parsed_get_stadyn(dpar)
+val nerror =
+d3parsed_get_nerror(dpar)
+val source =
+d3parsed_get_source(dpar)
+val t1penv =
+d3parsed_get_t1penv(dpar)
+val t2penv =
+d3parsed_get_t2penv(dpar)
+val t3penv =
+d3parsed_get_t3penv(dpar)
+val parsed =
+d3parsed_get_parsed(dpar)
+//
+val env0 =
+  tr3benv_make_nil((*void*))
+//
+val parsed =
+trtmp3b_d3eclistopt(env0, parsed)
+//
+in//let
+let
+val (    ) = tr3benv_free_top(env0)
+in//let
+d3parsed
+(stadyn
+,nerror,source,t1penv,t2penv,t3penv,parsed)
+end
+end (*let*) // end of [d3parsed_trtmp3b(dpar)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_trtmp3b.dats] *)
