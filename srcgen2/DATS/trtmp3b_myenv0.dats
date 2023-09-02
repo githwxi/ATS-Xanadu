@@ -296,6 +296,76 @@ val (  ) = tmpstk_free_nil(tmpstk) endlet
 //
 (* ****** ****** *)
 //
+#implfun
+tr3benv_poplet0
+(     env0     ) = let
+//
+val+
+@TR3BENV
+(topmap, !tmpstk) = env0
+//
+in//let
+//
+let
+val nerr =
+tmpstk_poplet0(tmpstk) in $fold(env0)
+end(*let*)
+//
+end(*let*)//end-of-(tr3benv_poplet0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3benv_pshlet0
+(     env0     ) = let
+//
+val+
+@TR3BENV
+(topmap, !tmpstk) = env0
+//
+in//let
+//
+tmpstk_pshlet0(tmpstk); $fold(env0)
+//
+end(*let*)//end-of-(tr3benv_pshlet0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3benv_poploc0
+(     env0     ) = let
+//
+val+
+@TR3BENV
+(topmap, !tmpstk) = env0
+//
+in//let
+//
+let
+val nerr =
+tmpstk_poploc0(tmpstk) in $fold(env0)
+end(*let*)
+//
+end(*let*)//end-of-(tr3benv_poploc0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3benv_pshloc0
+(     env0     ) = let
+//
+val+
+@TR3BENV
+(topmap, !tmpstk) = env0
+//
+in//let
+//
+tmpstk_pshloc0(tmpstk); $fold(env0)
+//
+end(*let*)//end-of-(tr3benv_pshloc0(env0))
+//
+(* ****** ****** *)
+//
 endloc (*local*) // end of [local(tr3benv...)]
 
 (* ****** ****** *)
