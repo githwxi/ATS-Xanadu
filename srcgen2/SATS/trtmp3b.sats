@@ -144,6 +144,12 @@ tmpstk_nilq( !tmpstk ): bool
 (* ****** ****** *)
 //
 fun
+tmpstk_poptop0
+  ( stk: &tmpstk >> _ ): sint
+//
+(* ****** ****** *)
+//
+fun
 tmpstk_poplet0
   ( stk: &tmpstk >> _ ): sint
 //

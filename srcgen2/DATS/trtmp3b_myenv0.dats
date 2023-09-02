@@ -100,6 +100,15 @@ topmap
 #absimpl tr3benv_vtbx = tr3benv
 (* ****** ****** *)
 //
+fun
+tmpstk_free_nil
+  (stk: ~tmpstk): void =
+(
+case- stk of
+| ~tmpstk_nil() => ((*void*)))
+//
+(* ****** ****** *)
+//
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
@@ -113,6 +122,43 @@ case+ stk of
 tmpstk_nil() => true
 | _(*non-nil*) => false
 ) (* end of [tmpstk_nilq(stk)] *)
+//
+(* ****** ****** *)
+//
+#implfun
+tmpstk_poptop0
+  (stk) = let
+//
+fnx
+loop
+( kxs
+: tmpstk
+, err: &sint >> _): tmpstk =
+(
+case+ kxs of
+| !
+tmpstk_nil() => kxs // err = 0
+//
+| ~
+tmpstk_cons
+(k1, x1, kxs) => loop(kxs, err)
+//
+| !
+tmpstk_let0 _ => (err := 1; kxs)
+//
+| !
+tmpstk_loc0 _ => (err := 1; kxs)
+//
+) (*case+*)//end-of-[loop(kxs, err)]
+//
+in//let
+let
+var
+err: sint = 0
+val
+( ) =
+(stk := loop(stk, err)) in err end
+end (*let*)//end-[tmpstk_poptop0(stk)]
 //
 (* ****** ****** *)
 //
@@ -226,6 +272,28 @@ tr3benv_make_nil
 {
   val map1 = topmap_make_nil((*nil*))
 }(*where*) // end of [tr3benv_make_nil(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+tr3benv_free_top
+  (  env0  ) =
+(
+case+ env0 of
+| ~
+TR3BENV
+(map1, map2) =>
+let
+//
+var
+tmpstk = map2
+//
+val nerr =
+tmpstk_poptop0(tmpstk)
+//
+val (  ) = tmpstk_free_nil(tmpstk) endlet
+//
+)(*case+*)//end-of-(tr3benv_free_top(env0))
 //
 (* ****** ****** *)
 //
