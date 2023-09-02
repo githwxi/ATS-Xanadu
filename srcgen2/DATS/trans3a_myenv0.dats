@@ -67,14 +67,14 @@ ATS_PACKNAME
 (* ****** ****** *)
 
 local
-
+//
 datavwtp
 tr3aenv =
 TR3AENV of
 ( topmap(d3eclist)
 , stkmap(d3eclist) )
 #absimpl tr3aenv_vtbx = tr3aenv
-
+//
 in//local
 
 (* ****** ****** *)
