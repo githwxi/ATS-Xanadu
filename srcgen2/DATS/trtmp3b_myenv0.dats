@@ -288,8 +288,7 @@ let
 var
 tmpstk = map2
 //
-val nerr =
-tmpstk_poptop0(tmpstk)
+val nerr = tmpstk_poptop0(tmpstk)
 //
 val (  ) = tmpstk_free_nil(tmpstk) endlet
 //

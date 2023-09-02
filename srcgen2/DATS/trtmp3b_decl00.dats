@@ -90,7 +90,7 @@ prerrln
 trtmp3b_d3ecl
 ( env0, d3cl ) = let
 //
-(*
+// (*
 val
 loc0 = d3cl.lctn()
 val () =
@@ -99,7 +99,7 @@ prerrln
 val () =
 prerrln
 ("trans3a_d3ecl: d3cl = ", d3cl)
-*)
+// *)
 //
 in//let
 //
