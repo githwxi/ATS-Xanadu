@@ -285,6 +285,23 @@ end(*let*)//end-of-[trtmp3b_d3cls(env0,dcls)]
 (* ****** ****** *)
 //
 #implfun
+trtmp3b_teqd3exp
+  (env0, tdxp) =
+(
+case+ tdxp of
+|
+TEQD3EXPnone() =>
+TEQD3EXPnone((*void*))
+|
+TEQD3EXPsome(teq1, d3e2) =>
+TEQD3EXPsome(teq1, d3e2) where
+{ val
+  d3e2 = trtmp3b_d3exp(env0, d3e2) } )
+(*case+*)//end-of(trtmp3b_teqd3exp(env0,tdxp))
+//
+(* ****** ****** *)
+//
+#implfun
 trtmp3b_d3explst
 ( env0, d3es ) =
 (

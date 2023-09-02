@@ -215,6 +215,34 @@ end//let
 (* ****** ****** *)
 //
 #implfun
+trtmp3b_d3vardcl
+  (env0, dvar) =
+let
+//
+val loc0 =
+d3vardcl_get_lctn(dvar)
+//
+val dpid =
+d3vardcl_get_dpid(dvar)
+val vpid =
+d3vardcl_get_vpid(dvar)
+//
+val sres =
+d3vardcl_get_sres(dvar)
+//
+val dini =
+d3vardcl_get_dini(dvar)
+val dini =
+trtmp3b_teqd3exp(env0, dini)
+//
+in//let
+d3vardcl_make_args(loc0,dpid,vpid,sres,dini)
+end//let
+(*let*)//end-of-[trtmp3b_d3vardcl(env0,dvar)]
+//
+(* ****** ****** *)
+//
+#implfun
 trtmp3b_d3eclist
 ( env0, dcls ) =
 (
