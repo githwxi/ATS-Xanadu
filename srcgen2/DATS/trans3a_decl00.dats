@@ -512,7 +512,7 @@ auxloop(env0, tmps, body, dres)))//end-of-if
 }(*where*)//end of [trans3a_tmplocal(env0,...)]
 //
 (* ****** ****** *)
-
+//
 #implfun
 trans3a_d3valdcl
   (env0, dval) = let
@@ -535,9 +535,9 @@ in//let
 d3valdcl_make_args(loc0,dpat,tdxp,wsxp)
 end//let
 //(*let*)//end-of[trans3a_d3valdcl(env0,dval)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 trans3a_d3vardcl
   (env0, dvar) =
@@ -563,9 +563,9 @@ in//let
 d3vardcl_make_args(loc0,dpid,vpid,sres,dini)
 end//let
 (*let*)//end-of-[trans3a_d3vardcl(env0,dvar)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 trans3a_d3fundcl
   (env0, dfun) = let
@@ -602,7 +602,7 @@ prerrln("trans3a_d3fundcl: dfun = ", dfun)
 *)
 //
 }(*where*)//end-of-[trans3a_d3fundcl(env0,dfun)]
-
+//
 (* ****** ****** *)
 //
 #implfun
