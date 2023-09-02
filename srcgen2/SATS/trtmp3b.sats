@@ -254,6 +254,13 @@ trtmp3b_d3ecl
 (* ****** ****** *)
 //
 fun
+trtmp3b_teqd3exp
+( env0:
+! tr3benv,tdxp:teqd3exp):teqd3exp
+//
+(* ****** ****** *)
+//
+fun
 trtmp3b_d3explst
 ( env0:
 ! tr3benv,d3es:d3explst):d3explst

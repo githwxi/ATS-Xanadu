@@ -192,6 +192,29 @@ end(*let*)//end-of-[f0_vardclst(env0,d3cl)]
 (* ****** ****** *)
 //
 #implfun
+trtmp3b_d3valdcl
+  (env0, dval) = let
+//
+val loc0 =
+d3valdcl_get_lctn(dval)
+val dpat =
+d3valdcl_get_dpat(dval)
+val tdxp =
+d3valdcl_get_tdxp(dval)
+val wsxp =
+d3valdcl_get_wsxp(dval)
+//
+val tdxp =
+trtmp3b_teqd3exp(env0, tdxp)
+//
+in//let
+d3valdcl_make_args(loc0,dpat,tdxp,wsxp)
+end//let
+//(*let*)//end-of[trtmp3b_d3valdcl(env0,dval)]
+//
+(* ****** ****** *)
+//
+#implfun
 trtmp3b_d3eclist
 ( env0, dcls ) =
 (
