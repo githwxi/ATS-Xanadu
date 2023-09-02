@@ -106,10 +106,84 @@ in//let
 case+
 d3cl.node() of
 //
-| _(* otherwise *) => (    d3cl    )
+|
+D3Cvaldclst _ => f0_valdclst(env0, d3cl)
+|
+D3Cvardclst _ => f0_vardclst(env0, d3cl)
+//
+| _(*otherwise*) =>
+let
+  val loc0 = d3cl.lctn()
+in//let
+  d3ecl_make_node(loc0, D3Cnone2( d3cl ))
+end (*let*) // end of [_(*otherwise*)] // temp
 //
 endlet where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_valdclst
+( env0:
+! tr3benv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Cvaldclst
+(tknd, d3vs) = d3cl.node()
+//
+(*
+val () =
+prerrln
+("f0_valdclst: loc0 = ", loc0)
+val () =
+prerrln
+("f0_valdclst: d3cl = ", d3cl)
+*)
+//
+val
+d3vs =
+trtmp3b_d3valdclist(env0, d3vs)
+//
+in//let
+  d3ecl(loc0, D3Cvaldclst(tknd, d3vs))
+end(*let*)//end-of-[f0_valdclst(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_vardclst
+( env0:
+! tr3benv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Cvardclst
+(tknd, d3vs) = d3cl.node()
+//
+(*
+val () =
+prerrln
+("f0_vardclst: loc0 = ", loc0)
+val () =
+prerrln
+("f0_vardclst: d3cl = ", d3cl)
+*)
+//
+val
+d3vs =
+trtmp3b_d3vardclist(env0, d3vs)
+//
+in//let
+  d3ecl(loc0, D3Cvardclst(tknd, d3vs))
+end(*let*)//end-of-[f0_vardclst(env0,d3cl)]
 //
 (* ****** ****** *)
 //
