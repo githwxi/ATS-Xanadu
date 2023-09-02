@@ -201,6 +201,15 @@ tr3benv_pshlet0
 (* ****** ****** *)
 //
 fun
+tr3benv_poploc0
+(env0: !tr3benv): void//end-fun
+fun
+tr3benv_pshloc0
+(env0: !tr3benv): void//end-fun
+//
+(* ****** ****** *)
+//
+fun
 <x0:t0>
 <y0:t0>
 list_trtmp3b_fnp

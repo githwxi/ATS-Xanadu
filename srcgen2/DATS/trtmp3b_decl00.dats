@@ -106,6 +106,10 @@ in//let
 case+
 d3cl.node() of
 //
+|D3Clocal0 _ =>
+(
+f0_local0(env0, d3cl))
+//
 |
 D3Cvaldclst _ => f0_valdclst(env0, d3cl)
 |
@@ -120,6 +124,40 @@ end (*let*) // end of [_(*otherwise*)] // temp
 //
 endlet where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_local0
+( env0
+: !tr3benv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Clocal0
+(head, body) = d3cl.node()
+//
+val (  ) =
+tr3benv_pshloc0(env0)
+val head =
+trtmp3b_d3eclist(env0, head)
+val body =
+trtmp3b_d3eclist(env0, body)
+//
+in//let
+//
+let
+//
+val (  ) = tr3benv_poploc0(env0)
+//
+in//let
+  d3ecl(loc0, D3Clocal0(head, body))
+end(*let*)
+//
+end(*let*)//end-of-[f0_local0(env0,d3cl)]
 //
 (* ****** ****** *)
 //
