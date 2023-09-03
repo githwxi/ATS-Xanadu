@@ -225,6 +225,44 @@ end(*let*)//end-of-[f0_vardclst(env0,d3cl)]
 //
 (* ****** ****** *)
 //
+fun
+f0_fundclst
+( env0:
+! tr3benv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Cfundclst
+( tknd
+, tqas
+, d3cs, d3fs) = d3cl.node()
+//
+(*
+val () =
+prerrln
+("f0_fundclst: loc0 = ", loc0)
+val () =
+prerrln
+("f0_fundclst: d3cl = ", d3cl)
+*)
+//
+val
+d3fs =
+trtmp3b_d3fundclist(env0, d3fs)
+//
+in//let
+//
+d3ecl_make_node
+( loc0
+, D3Cfundclst(tknd, tqas, d3cs, d3fs) )
+//
+end(*let*)//end-of-[f0_fundclst(env0,d3cl)]
+//
+(* ****** ****** *)
+//
 } (*where*)//end-of-[trtmp3b_d3ecl(env0,d3cl)]
 //
 (* ****** ****** *)
