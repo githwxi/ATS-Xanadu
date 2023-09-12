@@ -182,13 +182,13 @@ list_make_strm_vt(xs) =
 //
 #impltmp
 <a>(*tmp*)
-list_make_lstrm(xs) =
+list_make0_lstrm(xs) =
 list_vt2t
-(list_make_lstrm_vt<a>(xs))
+(list_make0_lstrm_vt<a>(xs))
 #impltmp
 <a>(*tmp*)
-list_make_lstrm_vt(xs) =
-(list_vt_make_lstrm<a>(xs))
+list_make0_lstrm_vt(xs) =
+(list_vt_make0_lstrm<a>(xs))
 //
 (* ****** ****** *)
 //
@@ -1215,10 +1215,22 @@ gseq_map_rllist
 //
 #impltmp
 {a:t0}
-gseq_unstrm<list(a)><a> = list_make_strm<a>
+gseq_make_list
+<list(a)><a>(xs) = xs // identity
 #impltmp
 {a:t0}
-gseq_unstrm_vt<list(a)><a> = list_make_lstrm<a>
+gseq_make_rlist
+<list(a)><a>(*xs*) = list_reverse<a>(*xs*)
+//
+#impltmp
+{a:t0}
+gseq_make_strm
+<list(a)><a>(*xs*) = list_make_strm<a>(*xs*)
+//
+#impltmp
+{a:t0}
+gseq_make0_lstrm
+<list(a)><a>(*xs*) = list_make0_lstrm<a>(*xs*)
 //
 (* ****** ****** *)
 //

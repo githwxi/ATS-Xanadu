@@ -2311,7 +2311,7 @@ glseq_strmize0
 //
 #impltmp
 {x0:vt}
-glseq_unstrm_vt
+glseq_make0_lstrm
 <list_vt(x0)><x0> = strm_vt_listize0<x0>
 //
 (* ****** ****** *)

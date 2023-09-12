@@ -144,7 +144,7 @@ list_vt_make_strm
 (  xs : strm(a)  ) : list_vt(a)
 fun
 <a:vt>
-list_vt_make_lstrm
+list_vt_make0_lstrm
 (  xs : strm_vt(a)  ) : list_vt(a)
 //
 (* ****** ****** *)

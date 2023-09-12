@@ -363,6 +363,11 @@ gseq_fset_at_opt
 fun
 <xs:t0>
 <x0:t0>
+gseq_arrnize(xs): a1ptrsz(x0)
+//
+fun
+<xs:t0>
+<x0:t0>
 gseq_listize(xs): list_vt(x0)
 fun
 <xs:t0>
@@ -370,6 +375,12 @@ fun
 gseq_strmize(xs): strm_vt(x0)
 //
 (* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_rarrnize(xs): a1ptrsz(x0)
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -394,6 +405,7 @@ gseq_range_lte
 //
 (* ****** ****** *)
 //
+(*
 fun
 <xs:t0>
 <x0:t0>
@@ -402,7 +414,9 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_unrlist(list(x0)): (xs)
+*)
 //
+(*
 fun
 <xs:t0>
 <x0:t0>
@@ -411,9 +425,29 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_unrlist_vt(list_vt(x0)): (xs)
+*)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_make_list(list(x0)): (xs)
+fun
+<xs:t0>
+<x0:t0>
+gseq_make_rlist(list(x0)): (xs)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_make0_llist(list_vt(x0)): (xs)
+fun
+<xs:t0>
+<x0:t0>
+gseq_make0_rllist(list_vt(x0)): (xs)
 //
 (* ****** ****** *)
 //
+(*
 fun
 <xs:t0>
 <x0:t0>
@@ -422,6 +456,16 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_unstrm_vt(strm_vt(x0)): (xs)
+*)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_make_strm(strm(x0)): (xs)
+fun
+<xs:t0>
+<x0:t0>
+gseq_make0_lstrm(strm_vt(x0)): (xs)
 //
 (* ****** ****** *)
 //

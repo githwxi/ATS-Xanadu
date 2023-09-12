@@ -168,7 +168,7 @@ a1ref_make_list
 //
 fun
 <a:vt>
-a1ref_make_list_vt
+a1ref_make0_llist
 {n:i0}
 (xs: list_vt(a, n)): a1ref(a, n)
 //

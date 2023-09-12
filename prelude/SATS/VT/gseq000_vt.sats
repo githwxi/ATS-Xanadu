@@ -181,6 +181,7 @@ glseq_rstrmize0(~xs): strm_vt(x0)
 //
 (* ****** ****** *)
 //
+(*
 fun
 <xs:vt>
 <x0:t0>
@@ -189,9 +190,24 @@ fun
 <xs:vt>
 <x0:t0>
 glseq_unrlist(xs: list(x0)): (xs)
+*)
+//
+fun
+<xs:vt>
+<x0:t0>
+glseq_make_list(xs: list(x0)): (xs)
+fun
+<xs:vt>
+<x0:t0>
+glseq_make_strm(xs: strm(x0)): (xs)
+fun
+<xs:vt>
+<x0:t0>
+glseq_make_rlist(xs: list(x0)): (xs)
 //
 (* ****** ****** *)
 //
+(*
 fun
 <xs:vt>
 <x0:vt>
@@ -200,10 +216,26 @@ fun
 <xs:vt>
 <x0:vt>
 glseq_unstrm_vt(strm_vt(x0)): (xs)
+//
 fun
 <xs:vt>
 <x0:vt>
 glseq_unrlist_vt(list_vt(x0)): (xs)
+*)
+//
+fun
+<xs:vt>
+<x0:vt>
+glseq_make0_llist(list_vt(x0)): (xs)
+fun
+<xs:vt>
+<x0:vt>
+glseq_make0_lstrm(strm_vt(x0)): (xs)
+//
+fun
+<xs:vt>
+<x0:vt>
+glseq_make0_rllist(list_vt(x0)): (xs)
 //
 (* ****** ****** *)
 //

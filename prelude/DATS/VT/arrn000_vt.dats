@@ -147,7 +147,7 @@ end // end of [a1ptr_make_list]
 //
 #impltmp
 <a:vt>
-a1ptr_make_list_vt
+a1ptr_make0_llist
   {n}(xs) =
 let
 val n0 =
@@ -168,7 +168,7 @@ end
 }
 in
   $UN.castlin10{a1ptr(a,n)}(A0)
-end // end of [a1ptr_make_list_vt]
+end // end of [a1ptr_make0_llist]
 //
 (* ****** ****** *)
 (*

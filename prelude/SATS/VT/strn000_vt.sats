@@ -334,7 +334,7 @@ strn_vt_make_list
 (* ****** ****** *)
 //
 fun<>
-strn_vt_make_llist
+strn_vt_make0_llist
 {n:int}
 ( cs
 : list_vt(cgtz, n)): strn_vt(n)
@@ -344,18 +344,28 @@ strn_vt_make_llist
 fun<>
 strn_vt_make_strm
   (cs: strm(cgtz)): strn_vt
+//
 fun<>
-strn_vt_make_lstrm
+strn_vt_make0_lstrm
   (cs: strm_vt(cgtz)): strn_vt
 //
 (* ****** ****** *)
 //
 fun<>
-strnlst_vt_concat
+strnlst_vt_concat0
   (css: list_vt(strn)): strn_vt
 fun<>
-strntrm_vt_concat
+strntrm_vt_concat0
   (css: strm_vt(strn)): strn_vt
+//
+(* ****** ****** *)
+//
+fun<>
+lstrnlst_vt_concat0
+  (css: list_vt(strn_vt)): strn_vt
+fun<>
+lstrntrm_vt_concat0
+  (css: strm_vt(strn_vt)): strn_vt
 //
 (* ****** ****** *)
 //
@@ -386,11 +396,11 @@ strn_upper_vt
 (* ****** ****** *)
 //
 fun<>
-strn_vt_lower
+strn_vt_lower0
 {n:int}
 (cs: strn_vt(n)): strn_vt(n)
 fun<>
-strn_vt_upper
+strn_vt_upper0
 {n:int}
 (cs: strn_vt(n)): strn_vt(n)
 //
@@ -407,11 +417,11 @@ strn_vt with strn_vt_copy
 #symload
 strn_vt with strn_vt_make_list
 #symload
-strn_vt with strn_vt_make_llist
-#symload
 strn_vt with strn_vt_make_strm
 #symload
-strn_vt with strn_vt_make_lstrm
+strn_vt with strn_vt_make0_llist
+#symload
+strn_vt with strn_vt_make0_lstrm
 (* ****** ****** *)
 //
 #symload

@@ -278,7 +278,7 @@ a1ptr_make_list
 //
 fun
 <a:vt>
-a1ptr_make_list_vt
+a1ptr_make0_llist
 {n:i0}
 (xs: list_vt(a,n)): a1ptr(a, n)
 //
