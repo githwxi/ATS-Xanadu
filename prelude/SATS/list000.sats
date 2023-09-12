@@ -102,10 +102,10 @@ list_make_strm_vt(strm(a)): list_vt(a)
 //
 fun
 <a:t0>
-list_make_lstrm(strm_vt(a)): list(a)
+list_make0_lstrm(strm_vt(a)): list(a)
 fun
 <a:t0>
-list_make_lstrm_vt(strm_vt(a)): list_vt(a)
+list_make0_lstrm_vt(strm_vt(a)): list_vt(a)
 //
 (* ****** ****** *)
 //

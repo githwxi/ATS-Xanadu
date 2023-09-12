@@ -565,7 +565,7 @@ let
   val xs =
   gseq_strmize<xs><x0>(xs)
 in
-  gseq_unstrm_vt
+  gseq_make0_lstrm
   (strm_vt_fset0_at<x0>(xs, i0, x0))
 end(*let*)//end(gseq_fset_at(xs,i0,x0))
 *)
@@ -710,57 +710,57 @@ list_vt_strmize0<x0>
 <xs><x0>
 gseq_range_lt
 (  s1, f2  ) =
-gseq_unstrm_vt<xs><x0>
+gseq_make0_lstrm<xs><x0>
 (strm_vt_range_lt<x0>(s1, f2))
 //
 #impltmp
 <xs><x0>
 gseq_range_lte
 (  s1, f2  ) =
-gseq_unstrm_vt<xs><x0>
+gseq_make0_lstrm<xs><x0>
 (strm_vt_range_lte<x0>(s1, f2))
 //
 (* ****** ****** *)
 //
 #impltmp
 <xs><x0>
-gseq_unlist
+gseq_make_list
   ( xx ) = let
 //
 val xx =
 list_rcopy_vt<x0>(xx)
 //
 in
-gseq_unrlist_vt<xs><x0>(xx)
-end // end of [gseq_unlist]
+gseq_make0_rllist<xs><x0>(xx)
+end // end of [gseq_make_list(xx)]
 //
 #impltmp
 <xs><x0>
-gseq_unrlist(xx) =
+gseq_make_rlist(xx) =
 let
   val xx =
   list_copy_vt<x0>(xx)
 in
-gseq_unrlist_vt<xs><x0>(xx)
-end // end of [gseq_unrlist]
+gseq_make0_rllist<xs><x0>(xx)
+end // end of [gseq_make_rlist(xx)]
 //
 #impltmp
 <xs><x0>
-gseq_unlist_vt(xx) =
+gseq_make0_llist(xx) =
 let
 //
 val xx =
 list_vt_reverse0<x0>(xx)
 //
 in
-  gseq_unrlist_vt<xs><x0>(xx)
-end // end of [gseq_unlist_vt]
+  gseq_make0_rllist<xs><x0>(xx)
+end // end of [gseq_make0_llist(xx)]
 //
 (* ****** ****** *)
 //
 #impltmp
 <xs><x0>
-gseq_unrlist_vt
+gseq_make0_rllist
   ( xx ) = let
 //
 fun
@@ -779,33 +779,33 @@ loop
 in
 (
   loop(xx, gseq_nil<xs><x0>()) )
-endlet//end-of-[gseq_unrlist_vt(xs)]
+endlet//end-of-[gseq_make0_rllist(xs)]
 //
 (* ****** ****** *)
 //
 #impltmp
 <xs><x0>
-gseq_unstrm
+gseq_make_strm
   ( xx ) =
 (
-  gseq_unstrm_vt<xs><x0>(xs)
+  gseq_make0_lstrm<xs><x0>(xs)
 ) where
 {
   val xs = strm_strmize<x0>(xx)
-}(*where*)//end-of-(gseq_unstrm(xx))
+}(*where*)//end-of-(gseq_make_strm(xx))
 //
 (* ****** ****** *)
 //
 #impltmp
 <xs><x0>
-gseq_unstrm_vt
+gseq_make0_lstrm
   (xx) =
 let
   val xs =
   strm_vt_rlistize0<x0>(xx)
 in//let
-  gseq_unrlist_vt<xs><x0>(xs)
-end(*let*)//end-(gseq_unstrm_vt(xx))
+  gseq_make0_rllist<xs><x0>(xs)
+end(*let*)//end-(gseq_make0_lstrm(xx))
 //
 (* ****** ****** *)
 //
@@ -816,7 +816,7 @@ end(*let*)//end-(gseq_unstrm_vt(xx))
 gseq_tabulate
   ( n0 ) =
 (
- gseq_unstrm_vt<xs><x0>
+ gseq_make0_lstrm<xs><x0>
  (strm_vt_tabulate<x0><n0>( n0 ))
 ) // end-of-[gseq_vt_tabulate(n0)]
 //
@@ -826,7 +826,7 @@ gseq_tabulate
 <xs><x0>
 <ys><y0>
 gseq_map(xs) =
-glseq_unstrm_vt
+glseq_make0_lstrm
 <  ys  ><  y0  >
 (gseq_map_lstrm<xs><x0><y0>( xs ))
 //
@@ -1066,7 +1066,7 @@ gseq_copy_rllist(xs) =
 <xs><x0>
 gseq_filter
 (   xs   ) =
-glseq_unstrm_vt
+glseq_make0_lstrm
 <  xs  ><  x0  >
 (gseq_filter_lstrm<xs><x0>(xs))
 //
@@ -1630,7 +1630,7 @@ gseq_cons<xs><x0>(x0, r0)
 <xs><x0>
 gseq_append
 (xs1, xs2) = 
-gseq_unstrm_vt<xs><x0>
+gseq_make0_lstrm<xs><x0>
 (
 gseq_append_lstrm<xs><x0>(xs1,xs2))
 //
@@ -1639,7 +1639,7 @@ gseq_append_lstrm<xs><x0>(xs1,xs2))
 #impltmp
 <xz><xs><x0>
 gseq_concat(xss) =
-gseq_unstrm_vt<xs><x0>
+gseq_make0_lstrm<xs><x0>
 (
 gseq_concat_lstrm<xz><xs><x0>(xss))
 //
@@ -1656,7 +1656,7 @@ gseq_rappend<xs><x0>
 #impltmp
 <xs><x0>
 gseq_reverse(xs) =
-gseq_unstrm_vt<xs><x0>
+gseq_make0_lstrm<xs><x0>
 (gseq_rstrmize<xs><x0>(xs))
 (*end-of-(gseq_reverse(xs)*)
 //
@@ -1693,7 +1693,7 @@ end(*let*)//end-of-(foldl$fopr)
 <xs><x0>
 gseq_rappend
   (xs1, xs2) =
-gseq_unstrm_vt<xs><x0>
+gseq_make0_lstrm<xs><x0>
 (
 gseq_rappend_lstrm<xs><x0>(xs1,xs2))
 //
@@ -1730,7 +1730,7 @@ val css =
 gseq_strmize<cz><cs>(css)
 //
 in//let
-strn_vt_make_lstrm<>
+strn_vt_make0_lstrm<>
 (strm_vt_gconcat0<cs><c0>(css))
 end // end of [gseq_concat_lstrn(...)]
 //
@@ -1830,7 +1830,7 @@ strm_vt_map0<r0>(xz)
 {
 #impltmp
 map0$fopr<r0><xs> =
-gseq_unlist_vt<xs><x0>
+gseq_make0_llist<xs><x0>
 }
 ) where
 {
@@ -1906,7 +1906,7 @@ endlet (* end of [loop(xs,i0)] *)
 gseq_itakeif
   ( xs ) =
 (
-gseq_unlist_vt<xs><x0>
+gseq_make0_llist<xs><x0>
 (gseq_itakeif_llist<xs><x0>(xs))
 ) (* end of [ gseq_itakeif(xs) ] *)
 
@@ -2145,7 +2145,7 @@ end // end of [gseq_rindexof/iforeach]
 <xs><x0>
 <ys><y0>
 gseq_imap(xs) =
-glseq_unstrm_vt
+glseq_make0_lstrm
 <  ys  ><  y0  >
 (gseq_imap_lstrm<xs><x0><y0>( xs ))
 //
@@ -2311,7 +2311,7 @@ Miscellaneous gseq-operations
 gseq_mergesort
   ( xs ) =
 (
-gseq_unlist_vt<xs><x0>(xx)
+gseq_make0_llist<xs><x0>(xx)
 ) where
 {
 val xx =
@@ -2351,7 +2351,7 @@ in//let
 {
   #impltmp
   map0$fopr
-  <y0><xs> = gseq_unlist_vt<xs><x0> }
+  <y0><xs> = gseq_make0_llist<xs><x0> }
 end(*let*)//end-of-[gseq_permutize_lstrm(xs)]
 //
 (* ****** ****** *)
@@ -2514,7 +2514,7 @@ end // end-of-[gseq_z2foreach/z2forall]
 <zs><z0>
 gseq_z2map
   (xs, ys) =
-glseq_unstrm_vt
+glseq_make0_lstrm
 <  zs  ><  z0  >
 (
 gseq_z2map_lstrm<xs,ys><x0,y0><z0>(xs,ys)
@@ -2689,7 +2689,7 @@ z2iforeach0$work
 <zs><z0>
 gseq_z2imap
   (xs, ys) =
-glseq_unstrm_vt<zs><z0>
+glseq_make0_lstrm<zs><z0>
 (gseq_z2imap_lstrm<xs,ys><x0,y0><z0>(xs,ys))
 //
 (* ****** ****** *)
@@ -2737,7 +2737,7 @@ end(*let*)//end-[gseq_gseq_z2imap_lstrm(xs,ys)]
 <zs><z0>
 gseq_x2map
   (xs, ys) =
-glseq_unstrm_vt
+glseq_make0_lstrm
 <  zs  ><  z0  >
 (
 gseq_x2map_lstrm<xs,ys><x0,y0><z0>(xs,ys))
@@ -2956,7 +2956,7 @@ end(*let*)//end-of-[gseq_x2foreach_col(xs,ys)]
 <zs><z0>
 gseq_x2imap
   (xs, ys) =
-glseq_unstrm_vt<zs><z0>
+glseq_make0_lstrm<zs><z0>
 (gseq_x2imap_lstrm<xs,ys><x0,y0><z0>(xs,ys))
 //
 (* ****** ****** *)
@@ -4141,7 +4141,7 @@ gseq_x2map_lstrm
 {
 #impltmp
 x2map$fopr<x0,y0><z0>(x0, y0) = f0(x0, y0)
-}(*where*)//end(gseq_x2map_strm_lc2fr(xs,ys,f0))
+}(*where*)//end(gseq_x2map_c2fr_lstrm(xs,ys,f0))
 (* ****** ****** *)
 #impltmp
 <xs,ys>

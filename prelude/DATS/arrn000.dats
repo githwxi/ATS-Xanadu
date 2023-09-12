@@ -101,10 +101,10 @@ a1ref_make_list
 //
 #impltmp
 <a:vt>
-a1ref_make_list_vt
+a1ref_make0_llist
 ( xs ) =
 ( a1ptr2ref
-  (a1ptr_make_list_vt<a>(xs))
+  (a1ptr_make0_llist<a>(xs))
 )
 //
 (* ****** ****** *)
@@ -446,12 +446,13 @@ gseq_rlistize
 #impltmp
 {a:t0}
 {n:i0}
-gseq_unlist
-<a1ref(a,n)><a>(xs) = a1ref_make_list<a>(xs)
+gseq_make_list
+<a1ref(a,n)><a> = a1ref_make_list<a>
+//
 #impltmp
 {a:t0}{n:i0}
-gseq_unlist_vt
-<a1ref(a,n)><a>(xs) = a1ref_make_list_vt<a>(xs)
+gseq_make0_llist
+<a1ref(a,n)><a> = a1ref_make0_llist<a>
 //
 (* ****** ****** *)
 //

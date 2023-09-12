@@ -10,7 +10,7 @@
 #impltmp
 <xs><x0>
 glseq_copy(xs) =
-glseq_unlist_vt<xs><x0>
+glseq_make0_llist<xs><x0>
 (glseq_copy_llist<xs><x0>(xs))
 
 (* ****** ****** *)
@@ -504,7 +504,7 @@ end(*let*)//end-of(glseq_map0_rllist/foldl0)
 <xs><x0>
 glseq_filter0
   (  xs  ) =
-glseq_unstrm_vt<xs><x0>
+glseq_make0_lstrm<xs><x0>
 (glseq_filter0_lstrm<xs><x0>(xs))
 //
 (* ****** ****** *)
@@ -653,7 +653,7 @@ xs2 =
 glseq_strmize0<xs><x0>(xs2)
 in//let
 (
-  glseq_unstrm_vt<xs><x0>
+  glseq_make0_lstrm<xs><x0>
   (strm_vt_append0<x0>(xs1, xs2)) )
 end (*let*)//end-[glseq_append0(xs,ys)]
 //
@@ -675,7 +675,7 @@ val xs =
 glseq_rstrmize0<xs><x0>(xs)
 in//let
 (
-  glseq_unstrm_vt<xs><x0>(xs) )
+  glseq_make0_lstrm<xs><x0>(xs) )
 end(*let*)// end-of(glseq_reverse0(xs))
 //
 (* ****** ****** *)
@@ -717,7 +717,7 @@ xs1 =
 glseq_rstrmize0<xs><x0>(xs1)
 in//let
 (
-  glseq_unstrm_vt<xs><x0>
+  glseq_make0_lstrm<xs><x0>
   (strm_vt_append0<x0>(xs1, xs2)) )
 end(*let*)//end(glseq_rappend0(xs1,xs2))
 //

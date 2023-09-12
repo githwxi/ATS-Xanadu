@@ -188,7 +188,7 @@ end (* end of [list_vt_make_nval] *)
 list_vt_make_strm = strm_listize<a>
 #impltmp
 <a>(*tmp*)
-list_vt_make_lstrm = strm_vt_listize0<a>
+list_vt_make0_lstrm = strm_vt_listize0<a>
 
 (* ****** ****** *)
 //
@@ -1007,7 +1007,32 @@ glseq_strmize0
 //
 #impltmp
 {a:t0}
-glseq_unstrm_vt<list(a)><a> = list_make_lstrm<a>
+glseq_make_list
+<list_vt(a)><a> = list_copy_vt<a>
+#impltmp
+{a:t0}
+glseq_make_rlist
+<list_vt(a)><a> = list_reverse_vt<a>
+//
+#impltmp
+{a:t0}
+glseq_make_strm
+<list_vt(a)><a> = list_make_strm_vt<a>
+//
+#impltmp
+{a:vt}
+glseq_make0_llist
+<list_vt(a)><a>(xs) = xs // identity
+//
+#impltmp
+{a:vt}
+glseq_make0_rllist
+<list_vt(a)><a> = list_vt_reverse0<a>
+//
+#impltmp
+{a:vt}
+glseq_make0_lstrm
+<list_vt(a)><a> = list_vt_make0_lstrm<a>
 //
 (* ****** ****** *)
 //

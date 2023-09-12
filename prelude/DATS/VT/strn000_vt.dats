@@ -46,7 +46,7 @@
 //
 #impltmp<>
 strn_vt_nil() =
-strn_vt_make_llist<>
+strn_vt_make0_llist<>
 (list_vt_nil((*void*)))
 //
 (* ****** ****** *)
@@ -117,7 +117,7 @@ list_vt_append0<cgtz>
 , strn_vt_listize0<>(ys))
 //
 in
-  strn_vt_make_llist<>(zs)
+  strn_vt_make0_llist<>(zs)
 end(*let*)//end-of(strn_vt_append0)
 //
 (* ****** ****** *)
@@ -133,7 +133,7 @@ list_vt_append0<cgtz>
 , strn_vt_listize1<>(ys))
 //
 in
-  strn_vt_make_llist<>(zs)
+  strn_vt_make0_llist<>(zs)
 end(*let*)//end-of(strn_vt_append1)
 //
 (* ****** ****** *)
@@ -407,7 +407,7 @@ strtmp_vt_set_at<>(p0, i0, c0) } )
 (* ****** ****** *)
 
 #impltmp<>
-strn_vt_make_llist
+strn_vt_make0_llist
   {n}(cs) =
 (
 UN_strn_vt_cast(p0)
@@ -449,7 +449,7 @@ strtmp_vt_set_at<>(p0, i0, c0)
 }
 )
 //
-}(*where*)//end-of-[strn_vt_make_llist]
+}(*where*)//end-of-[strn_vt_make0_llist]
 
 (* ****** ****** *)
 //
@@ -461,32 +461,32 @@ let
 val cs =
 strm_listize(cs)
 in//let
-  strn_vt_make_llist<>(cs)
+  strn_vt_make0_llist<>(cs)
 end(*let*)//end-of-[strn_vt_make_strm]
 //
 #impltmp
 <>(*tmp*)
-strn_vt_make_lstrm
+strn_vt_make0_lstrm
   (cs) =
 let
 val cs =
 strm_vt_listize0(cs)
 in//let
-  strn_vt_make_llist<>(cs)
-end(*let*)//end-of-[strn_vt_make_lstrm]
+  strn_vt_make0_llist<>(cs)
+end(*let*)//end-of-[strn_vt_make0_lstrm]
 //
 (* ****** ****** *)
 //
 #impltmp
 <>(*tmp*)
-strntrm_vt_concat
+strntrm_vt_concat0
 ( css ) =
-strn_vt_make_lstrm<>
+strn_vt_make0_lstrm<>
 (strm_vt_gconcat0<strn><cgtz>(css))
 #impltmp
 <>(*tmp*)
-strnlst_vt_concat(css) =
-strntrm_vt_concat<>(list_vt_strmize0(css))
+strnlst_vt_concat0(css) =
+strntrm_vt_concat0<>(list_vt_strmize0(css))
 //
 (* ****** ****** *)
 //
