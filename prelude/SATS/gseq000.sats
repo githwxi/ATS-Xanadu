@@ -469,6 +469,23 @@ gseq_make0_lstrm(strm_vt(x0)): (xs)
 //
 (* ****** ****** *)
 //
+(*
+fun
+<xs:t0>
+<x0:t0>
+gseq_make_fwork
+( fwork
+: (x0-<cfr>void)-<cfr>void): (xs)
+fun
+<xs:t0>
+<x0:t0>
+gseq_make_filter
+( fwork:
+  (x0-<cfr>void)-<cfr>void): (xs)
+*)
+//
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>
