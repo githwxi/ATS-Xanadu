@@ -68,7 +68,7 @@ val fpx = source
 val tks =
 fpath_tokenize(fpx)
 val buf =
-tokbuf_make_list_vt(tks)
+tokbuf_make0_llist(tks)
 //
 var err: sint = 0(*init*)
 //

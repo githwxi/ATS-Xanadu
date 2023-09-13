@@ -189,9 +189,9 @@ tokbuf_mark_set(!tkbf0, tmark): void
 (* ****** ****** *)
 //
 fun
-tokbuf_make_list_vt
+tokbuf_make0_llist
   (tks: list_vt(token)): tkbf0
-#symload tokbuf with tokbuf_make_list_vt
+#symload tokbuf with tokbuf_make0_llist
 //
 (* ****** ****** *)
 //

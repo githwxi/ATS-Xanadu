@@ -163,7 +163,7 @@ tokbuf_mark_clr(buf, mrk) = ((*void*))
 (* ****** ****** *)
 //
 #implfun
-tokbuf_make_list_vt
+tokbuf_make0_llist
   (tks) =
 (
   TKBF0(A0, n0, i0)
@@ -171,8 +171,8 @@ tokbuf_make_list_vt
 {
   val i0 = 0
   val n0 = list_vt_length1(tks)
-  val A0 = a1ptr_make_list_vt(tks)
-}(*where*)//end-of-[tokbuf_make_list_vt]
+  val A0 = a1ptr_make0_llist(tks)
+}(*where*)//end-of-[tokbuf_make0_llist]
 //
 (* ****** ****** *)
 
