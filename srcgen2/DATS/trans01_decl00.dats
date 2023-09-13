@@ -190,7 +190,7 @@ loop
 (i0 + 1, list_vt_cons(c0, cs)) )
 //
 end else // end of [then]
-strn_make_llist(list_vt_reverse0(cs))
+strn_make0_llist(list_vt_reverse0(cs))
 //
 in//let
 (

@@ -88,18 +88,21 @@ lxbf1_take_clst // get the char
 (* ****** ****** *)
 #symload tclst with lxbf1_take_clst
 (* ****** ****** *)
+//
 fun
 lxbf1_make_strn
 (src: strn(*text*)): lxbf1
 fun
 lxbf1_make_fpath
 (src: strn(*path*)): lxbf1
+//
 fun
-lxbf1_make_cstrm // lxbf1 bases on a
+lxbf1_make0_cstrm // lxbf1 bases on a
 (inp: ~strm_vt(char)): lxbf1 // stream
 fun
-lxbf1_make_cstrx // lxbf1 bases on a
+lxbf1_make0_cstrx // lxbf1 bases on a
 (inp: ~strx_vt(sint)): lxbf1 // stream
+//
 (* ****** ****** *)
 //
 (*
@@ -143,7 +146,7 @@ fun
 lxbf2_make_strn
 (src: strn(*text*)): lxbf2
 fun
-lxbf2_make_cstrx // lxbf2 bases on a
+lxbf2_make0_cstrx // lxbf2 bases on a
 (inp: ~strx_vt(sint)): lxbf2 // stream
 (* ****** ****** *)
 

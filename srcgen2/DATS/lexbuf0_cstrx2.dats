@@ -379,7 +379,7 @@ end // end of [lxbf2_take_clst]
 (* ****** ****** *)
 //
 #implfun
-lxbf2_make_cstrx
+lxbf2_make0_cstrx
 (   cs0   ) =
 let
 val ps0 = PSTN1(0, 0, 0)
@@ -388,7 +388,7 @@ val cs1 = list_vt_nil(*void*)
 val cs2 = list_vt_nil(*void*)
 in
 LXBF2(ps0, ps1, cs0, cs1, cs2)
-end // end of [lxbf2_make_cstrx]
+end // end of [lxbf2_make0_cstrx]
 //
 (* ****** ****** *)
 
@@ -399,7 +399,7 @@ end (*local*) // end of [local]
 #implfun
 lxbf2_make_strn
 (   src   ) =
-lxbf2_make_cstrx
+lxbf2_make0_cstrx
 (
 strx_vt_map0(strn_strxize(src))
 ) where

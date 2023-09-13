@@ -202,10 +202,10 @@ list_rand$length() =
 //
 #impltmp
 <a:vt>(*tmp*)
-list_rand_length
+list_rand_length_vt
 ( ln ) =
 (
-gint_map_list_nint<a>(ln)
+gint_map_llist_nint<a>(ln)
 ) where
 {
 #impltmp
