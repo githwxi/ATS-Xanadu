@@ -434,16 +434,16 @@ gseq_make_list(list(x0)): (xs)
 fun
 <xs:t0>
 <x0:t0>
-gseq_make_rlist(list(x0)): (xs)
+gseq_make0_llist(list_vt(x0)): (xs)
 //
 fun
 <xs:t0>
 <x0:t0>
-gseq_make0_llist(list_vt(x0)): (xs)
+gseq_rmake_list(list(x0)): (xs)
 fun
 <xs:t0>
 <x0:t0>
-gseq_make0_rllist(list_vt(x0)): (xs)
+gseq_rmake0_llist(list_vt(x0)): (xs)
 //
 (* ****** ****** *)
 //

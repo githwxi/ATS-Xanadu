@@ -1217,10 +1217,6 @@ gseq_map_rllist
 {a:t0}
 gseq_make_list
 <list(a)><a>(xs) = xs // identity
-#impltmp
-{a:t0}
-gseq_make_rlist
-<list(a)><a>(*xs*) = list_reverse<a>(*xs*)
 //
 #impltmp
 {a:t0}
@@ -1231,6 +1227,27 @@ gseq_make_strm
 {a:t0}
 gseq_make0_lstrm
 <list(a)><a>(*xs*) = list_make0_lstrm<a>(*xs*)
+//
+(* ****** ****** *)
+//
+#impltmp
+{a:t0}
+gseq_rmake_list
+<list(a)><a>(*xs*) = list_reverse<a>(*xs*)
+//
+(*
+#impltmp
+{a:t0}
+gseq_rmake_strm
+<list(a)><a>(*xs*) = list_rmake_strm<a>(*xs*)
+*)
+//
+(*
+#impltmp
+{a:t0}
+gseq_rmake0_lstrm
+<list(a)><a>(*xs*) = list_rmake0_lstrm<a>(*xs*)
+*)
 //
 (* ****** ****** *)
 //

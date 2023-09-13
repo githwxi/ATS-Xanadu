@@ -731,18 +731,8 @@ val xx =
 list_rcopy_vt<x0>(xx)
 //
 in
-gseq_make0_rllist<xs><x0>(xx)
+gseq_rmake0_llist<xs><x0>(xx)
 end // end of [gseq_make_list(xx)]
-//
-#impltmp
-<xs><x0>
-gseq_make_rlist(xx) =
-let
-  val xx =
-  list_copy_vt<x0>(xx)
-in
-gseq_make0_rllist<xs><x0>(xx)
-end // end of [gseq_make_rlist(xx)]
 //
 #impltmp
 <xs><x0>
@@ -753,14 +743,24 @@ val xx =
 list_vt_reverse0<x0>(xx)
 //
 in
-  gseq_make0_rllist<xs><x0>(xx)
+  gseq_rmake0_llist<xs><x0>(xx)
 end // end of [gseq_make0_llist(xx)]
 //
 (* ****** ****** *)
 //
 #impltmp
 <xs><x0>
-gseq_make0_rllist
+gseq_rmake_list(xx) =
+let
+  val xx =
+  list_copy_vt<x0>(xx)
+in
+gseq_rmake0_llist<xs><x0>(xx)
+end // end of [gseq_rmake_list(xx)]
+//
+#impltmp
+<xs><x0>
+gseq_rmake0_llist
   ( xx ) = let
 //
 fun
@@ -779,7 +779,7 @@ loop
 in
 (
   loop(xx, gseq_nil<xs><x0>()) )
-endlet//end-of-[gseq_make0_rllist(xs)]
+endlet//end-of-[gseq_rmake0_llist(xs)]
 //
 (* ****** ****** *)
 //
@@ -804,7 +804,7 @@ let
   val xs =
   strm_vt_rlistize0<x0>(xx)
 in//let
-  gseq_make0_rllist<xs><x0>(xs)
+  gseq_rmake0_llist<xs><x0>(xs)
 end(*let*)//end-(gseq_make0_lstrm(xx))
 //
 (* ****** ****** *)

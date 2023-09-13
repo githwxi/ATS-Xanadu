@@ -203,7 +203,7 @@ glseq_make_strm(xs: strm(x0)): (xs)
 fun
 <xs:vt>
 <x0:t0>
-glseq_make_rlist(xs: list(x0)): (xs)
+glseq_rmake_list(xs: list(x0)): (xs)
 //
 (* ****** ****** *)
 //
@@ -235,7 +235,7 @@ glseq_make0_lstrm(strm_vt(x0)): (xs)
 fun
 <xs:vt>
 <x0:vt>
-glseq_make0_rllist(list_vt(x0)): (xs)
+glseq_rmake0_llist(list_vt(x0)): (xs)
 //
 (* ****** ****** *)
 //
