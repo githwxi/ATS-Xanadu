@@ -1009,10 +1009,6 @@ glseq_strmize0
 {a:t0}
 glseq_make_list
 <list_vt(a)><a> = list_copy_vt<a>
-#impltmp
-{a:t0}
-glseq_make_rlist
-<list_vt(a)><a> = list_reverse_vt<a>
 //
 #impltmp
 {a:t0}
@@ -1026,13 +1022,19 @@ glseq_make0_llist
 //
 #impltmp
 {a:vt}
-glseq_make0_rllist
-<list_vt(a)><a> = list_vt_reverse0<a>
-//
-#impltmp
-{a:vt}
 glseq_make0_lstrm
 <list_vt(a)><a> = list_vt_make0_lstrm<a>
+//
+(* ****** ****** *)
+//
+#impltmp
+{a:t0}
+glseq_rmake_list
+<list_vt(a)><a> = list_reverse_vt<a>
+#impltmp
+{a:vt}
+glseq_rmake0_llist
+<list_vt(a)><a> = list_vt_reverse0<a>
 //
 (* ****** ****** *)
 //
