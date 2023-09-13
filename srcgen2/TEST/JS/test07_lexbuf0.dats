@@ -59,7 +59,7 @@ end
 
 (* ****** ****** *)
 
-val buf1 = lxbf1_make_cstrx(csrc1)
+val buf1 = lxbf1_make0_cstrx(csrc1)
 
 (* ****** ****** *)
 //
@@ -90,7 +90,7 @@ prerrln("buf1.tclst() = ", strn(buf1.tclst()))
 //
 (* ****** ****** *)
 
-val buf2 = lxbf2_make_cstrx(csrc2)
+val buf2 = lxbf2_make0_cstrx(csrc2)
 
 (* ****** ****** *)
 //
