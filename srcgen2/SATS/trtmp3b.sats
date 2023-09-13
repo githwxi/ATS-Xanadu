@@ -160,12 +160,15 @@ tmpstk_pshlet0
 (* ****** ****** *)
 //
 fun
-tmpstk_poploc0
-  ( stk: &tmpstk >> _ ): sint
+tmpstk_pshloc1
+  ( stk: &tmpstk >> _ ): void
+fun
+tmpstk_pshloc2
+  ( stk: &tmpstk >> _ ): void
 //
 fun
-tmpstk_pshloc0
-  ( stk: &tmpstk >> _ ): void
+tmpstk_locjoin
+  ( stk: &tmpstk >> _ ): sint
 //
 (* ****** ****** *)
 //
@@ -194,6 +197,7 @@ tr3benv_free_top
 fun
 tr3benv_poplet0
 (env0: !tr3benv): void//end-fun
+//
 fun
 tr3benv_pshlet0
 (env0: !tr3benv): void//end-fun
@@ -201,10 +205,14 @@ tr3benv_pshlet0
 (* ****** ****** *)
 //
 fun
-tr3benv_poploc0
+tr3benv_pshloc1
 (env0: !tr3benv): void//end-fun
 fun
-tr3benv_pshloc0
+tr3benv_pshloc2
+(env0: !tr3benv): void//end-fun
+//
+fun
+tr3benv_locjoin
 (env0: !tr3benv): void//end-fun
 //
 (* ****** ****** *)

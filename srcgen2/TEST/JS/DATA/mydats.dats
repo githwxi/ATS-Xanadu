@@ -116,6 +116,7 @@ case+ xs of
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #impltmp
 <a>(*tmp*)
 list_append
@@ -144,8 +145,9 @@ endcas // end of [ case+(xs) ]
 in
 let
 var r0: list(a) in loop(xs, r0); r0
-end(* let *)
-end(* let *)//end-of(list_append(xs,ys))
+end(*let*)
+end(*let*)//end-of(list_append(xs,ys))
+//
 (* ****** ****** *)
 
 #impltmp
@@ -164,9 +166,9 @@ case+ $eval(xs) of
 strmcon_nil() => $eval(ys)
 |
 strmcon_cons(x0, xs) =>
-strmcon_cons(x0, append(xs, ys))
-)
-}(*where*)//end(strm_append(xs,ys))
+(
+  strmcon_cons(x0, append(xs, ys))))
+}(*where*)//end-of(strm_append(xs,ys))
 
 (* ****** ****** *)
 
