@@ -145,7 +145,7 @@ val+
 //
 in//let
 //
-stkmap_pshlet0(stkmap); $fold(env0)
+(stkmap_pshlet0(stkmap); $fold(env0))
 //
 end(*let*)//end-of-(tr3aenv_pshlet0(env0))
 //
@@ -203,8 +203,7 @@ val
 (nerr, kxs) =
 stkmap_poploc0(stkmap)
 val
-( (*nil*) ) =
-stkmap_insert_kxs(stkmap, kxs) }
+( ) = stkmap_insert_kxs(stkmap, kxs) }
 //
 end(*let*)//end-of-(tr3aenv_locjoin(env0))
 //

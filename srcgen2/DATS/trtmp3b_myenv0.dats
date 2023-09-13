@@ -83,7 +83,8 @@ tmpstk =
   (stamp, d3ecl, tmpstk)
 //
 | tmpstk_let0 of (tmpstk)
-| tmpstk_loc0 of (tmpstk)
+| tmpstk_loc1 of (tmpstk)
+| tmpstk_loc2 of (tmpstk)
 //
 (* ****** ****** *)
 //
@@ -147,7 +148,7 @@ tmpstk_cons
 tmpstk_let0 _ => (err := 1; kxs)
 //
 | !
-tmpstk_loc0 _ => (err := 1; kxs)
+tmpstk_loc1 _ => (err := 1; kxs)
 //
 ) (*case+*)//end-of-[loop(kxs, err)]
 //
@@ -172,11 +173,18 @@ tmpstk_pshlet0
 (* ****** ****** *)
 //
 #implfun
-tmpstk_pshloc0
+tmpstk_pshloc1
   (  stk  ) =
 (
-  stk := tmpstk_loc0(stk))
-//(*end of [tmpstk_pshloc0(stk)]*)
+  stk := tmpstk_loc1(stk))
+//(*end of [tmpstk_pshloc1(stk)]*)
+//
+#implfun
+tmpstk_pshloc2
+  (  stk  ) =
+(
+  stk := tmpstk_loc2(stk))
+//(*end of [tmpstk_pshloc2(stk)]*)
 //
 (* ****** ****** *)
 //
@@ -202,7 +210,7 @@ tmpstk_cons
 tmpstk_nil( ) => (err := 1; kxs)
 //
 | !
-tmpstk_loc0 _ => (err := 1; kxs)
+tmpstk_loc1 _ => (err := 1; kxs)
 )
 //
 in//let
@@ -213,42 +221,6 @@ val
 ( ) =
 (stk := loop(stk, err)) in err end
 end (*let*) // end of [tmpstk_poplet0(stk)]
-//
-(* ****** ****** *)
-//
-#implfun
-tmpstk_poploc0
-  (  stk  ) = let
-//
-fnx
-loop
-( kxs
-: tmpstk
-, err: &sint >> _): tmpstk =
-(
-case+ kxs of
-| !
-tmpstk_loc0
-(   kxs   ) => kxs // err = 0
-| ~
-tmpstk_cons
-(k1, x1, kxs) => loop(kxs, err)
-//
-| !
-tmpstk_nil( ) => (err := 1; kxs)
-//
-| !
-tmpstk_let0 _ => (err := 1; kxs)
-)
-//
-in//let
-let
-var
-err: sint = 0
-val
-( ) =
-(stk := loop(stk, err)) in err end
-end (*let*) // end of [tmpstk_poploc0(stk)]
 //
 (* ****** ****** *)
 //
@@ -332,7 +304,7 @@ end(*let*)//end-of-(tr3benv_pshlet0(env0))
 (* ****** ****** *)
 //
 #implfun
-tr3benv_poploc0
+tr3benv_pshloc1
 (     env0     ) = let
 //
 val+
@@ -341,17 +313,13 @@ val+
 //
 in//let
 //
-let
-val nerr =
-tmpstk_poploc0(tmpstk) in $fold(env0)
-end(*let*)
+(
+  tmpstk_pshloc1(tmpstk); $fold(env0))
 //
-end(*let*)//end-of-(tr3benv_poploc0(env0))
-//
-(* ****** ****** *)
+end(*let*)//end-of-(tr3benv_pshloc1(env0))
 //
 #implfun
-tr3benv_pshloc0
+tr3benv_pshloc2
 (     env0     ) = let
 //
 val+
@@ -360,9 +328,10 @@ val+
 //
 in//let
 //
-tmpstk_pshloc0(tmpstk); $fold(env0)
+(
+  tmpstk_pshloc2(tmpstk); $fold(env0))
 //
-end(*let*)//end-of-(tr3benv_pshloc0(env0))
+end(*let*)//end-of-(tr3benv_pshloc2(env0))
 //
 (* ****** ****** *)
 //
