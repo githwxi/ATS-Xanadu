@@ -15,13 +15,13 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_concat_forall
-( xss: xz ): bool//xz=[xs]
+( xss : xz ): bool // xz=[xs]
 fun
 <xz:t0>
 <xs:t0>
 <x0:t0>
 gseq_concat_foreach
-( xss: xz ): void//xz=[xs]
+( xss : xz ): void // xz=[xs]
 //
 (* ****** ****** *)
 //
