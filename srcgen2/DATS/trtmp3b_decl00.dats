@@ -141,9 +141,12 @@ D3Clocal0
 (head, body) = d3cl.node()
 //
 val (  ) =
-tr3benv_pshloc0(env0)
+tr3benv_pshloc1(env0)
 val head =
 trtmp3b_d3eclist(env0, head)
+//
+val (  ) =
+tr3benv_pshloc2(env0)
 val body =
 trtmp3b_d3eclist(env0, body)
 //
@@ -151,7 +154,7 @@ in//let
 //
 let
 //
-val (  ) = tr3benv_poploc0(env0)
+val (  ) = tr3benv_locjoin(env0)
 //
 in//let
   d3ecl(loc0, D3Clocal0(head, body))
