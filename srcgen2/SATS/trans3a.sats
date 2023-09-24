@@ -36,6 +36,12 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(*
+HX-2023-09-24:
+Trans3a cleans up types
+Trans3a tables top-level templates
+*)
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 (* ****** ****** *)
