@@ -211,7 +211,10 @@ tmpstk_nil( ) => (err := 1; kxs)
 //
 | !
 tmpstk_loc1 _ => (err := 1; kxs)
-)
+| !
+tmpstk_loc2 _ => (err := 1; kxs)
+//
+) (*case+*) // end of [loop(kxs,err)]
 //
 in//let
 let
