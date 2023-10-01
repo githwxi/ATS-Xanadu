@@ -396,7 +396,7 @@ in//let
   (g_stderr((*tmp*)), dpar) end where
 {
 val dpar =
-d3parsed_of_fildats("./DATA/mydats.dats") }
+d3parsed_of_fildats("./DATA/trtmp3b.dats") }
 (* ****** ****** *)
 (* ****** ****** *)
 

@@ -47,7 +47,7 @@ ATS_PACKNAME // namespace
 HX-2023-08-12:
 Template resolution is the engine
 of programming productivity for ATS3!
-This implementation is preliminary for
+This implementation is primarily for
 the moment; some form of internet-based
 search will be attempted later :)
 *)
@@ -58,6 +58,9 @@ tr3benv_vtbx
 tr3benv = tr3benv_vtbx
 (* ****** ****** *)
 #staload
+TMP = "./xstamp0.sats"
+(* ****** ****** *)
+#staload
 S2E = "./staexp2.sats"
 (* ****** ****** *)
 #staload
@@ -65,10 +68,14 @@ D2E = "./dynexp2.sats"
 #staload
 D3E = "./dynexp3.sats"
 (* ****** ****** *)
+#typedef stamp = $TMP.stamp
+(* ****** ****** *)
 //
 #typedef s2typ = $S2E.s2typ
 #typedef l2t2p = $S2E.l2t2p
 //
+(* ****** ****** *)
+#typedef d2cst = $D2E.d2cst
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
@@ -82,10 +89,18 @@ D3E = "./dynexp3.sats"
 (* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
+#typedef timpl = $D3E.timpl
+(* ****** ****** *)
 #typedef
  s2typlst  =  $S2E.s2typlst
 #typedef
  l2t2plst  =  $S2E.l2t2plst
+(* ****** ****** *)
+#typedef
+ d2cstlst  =  $D2E.d2cstlst
+(* ****** ****** *)
+#typedef
+ t2jaglst  =  $D2E.t2jaglst
 (* ****** ****** *)
 #typedef
  teqd3exp  =  $D3E.teqd3exp
@@ -169,6 +184,12 @@ tmpstk_pshloc2
 fun
 tmpstk_locjoin
   ( stk: &tmpstk >> _ ): sint
+//
+(* ****** ****** *)
+//
+fun
+tmpstk_getstmp
+  ( stk: !tmpstk >> _ ): stamp
 //
 (* ****** ****** *)
 //
@@ -359,6 +380,16 @@ fun
 trtmp3b_d3eclistopt
 ( env0:
 ! tr3benv,dopt:d3eclistopt):d3eclistopt
+//
+(* ****** ****** *)
+//
+fun
+tr3benv_getstmp(env0: !tr3benv): stamp
+//
+fun
+tr3benv_tapq_resolve
+( env0:
+! tr3benv, dcst: d2cst, t2js: t2jaglst): timpl
 //
 (* ****** ****** *)
 

@@ -811,18 +811,18 @@ d3ecl_make_node
 (* ****** ****** *)
 //
 fun
-timpl_get_lctn
-(timp: timpl): loc_t
+timpl_get_stmp
+(timp: timpl): stamp
 fun
 timpl_get_node
 (timp: timpl): timpl_node
 //
-#symload lctn with timpl_get_lctn
+#symload stmp with timpl_get_stmp
 #symload node with timpl_get_node
 //
 fun
 timpl_make_node
-(loc:loc_t,nod:timpl_node): timpl
+(stm:stamp,nod:timpl_node): timpl
 //
 #symload timpl with timpl_make_node
 //

@@ -450,7 +450,7 @@ datatype
 timpl =
 TIMPL of
 (
-loctn, timpl_node)
+stamp, timpl_node)
 datatype
 timpl_vt =
 TIMPL_vt of
@@ -464,19 +464,19 @@ in (* in-of-local *)
 //
 #implfun
 timpl_make_node
-(   loc,nod   ) = TIMPL(loc,nod)
+(   stm,nod   ) = TIMPL(stm,nod)
 //
 (* ****** ****** *)
 //
 #implfun
-timpl_get_lctn(d2i) =
+timpl_get_stmp(tmp) =
 let
-  val+TIMPL(loc,nod) = d2i in loc
+  val+TIMPL(stm,nod) = tmp in stm
 end
 #implfun
-timpl_get_node(d2i) =
+timpl_get_node(tmp) =
 let
-  val+TIMPL(loc,nod) = d2i in nod
+  val+TIMPL(stm,nod) = tmp in nod
 end
 //
 (* ****** ****** *)

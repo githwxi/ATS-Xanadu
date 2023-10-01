@@ -228,6 +228,40 @@ end (*let*) // end of [tmpstk_poplet0(stk)]
 (* ****** ****** *)
 //
 #implfun
+tmpstk_getstmp
+  (  stk  ) =
+(
+case+ stk of
+//
+| !
+tmpstk_cons
+(tmp, _, _) => ( tmp )
+//
+| !
+tmpstk_let0
+(   stk   ) =>
+(
+  tmpstk_getstmp(stk))
+//
+| !
+tmpstk_loc1
+(   stk   ) =>
+(
+  tmpstk_getstmp(stk))
+| !
+tmpstk_loc2
+(   stk   ) =>
+(
+  tmpstk_getstmp(stk))
+//
+| !
+tmpstk_nil() => the_stamp_nil
+//
+) (*case+*) // end of [tmpstk_getstmp(stk)]
+//
+(* ****** ****** *)
+//
+#implfun
 tmpstk_insert_dcl
   (stk, dcl) =
 let
@@ -335,6 +369,25 @@ in//let
   tmpstk_pshloc2(tmpstk); $fold(env0))
 //
 end(*let*)//end-of-(tr3benv_pshloc2(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3benv_getstmp
+(     env0     ) = let
+//
+val+
+@TR3BENV
+(topmap, !tmpstk) = env0
+//
+in//let
+//
+(
+ $fold(env0); tmp) where
+{
+  val tmp = tmpstk_getstmp(tmpstk) }
+//
+end(*let*)//end-of-(tr3benv_getstmp(env0))
 //
 (* ****** ****** *)
 //
