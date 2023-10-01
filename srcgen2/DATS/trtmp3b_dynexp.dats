@@ -83,7 +83,8 @@ in//let
 case+
 d3e0.node() of
 //
-(*
+|D3Evar _ => d3e0
+//
 |D3Eint _ => d3e0
 |D3Ebtf _ => d3e0
 |D3Echr _ => d3e0
@@ -96,13 +97,10 @@ d3e0.node() of
 |D3Ef00 _ => d3e0
 |D3Es00 _ => d3e0
 //
-|D3Evar _ => d3e0
 |D3Econ _ => d3e0
 |D3Ecst _ => d3e0
 //
 |D3Etop _ => d3e0
-//
-*)
 //
 |D3Etapq _ => f0_tapq(env0, d3e0)
 //
