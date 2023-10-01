@@ -208,7 +208,8 @@ d3cl.node() of
 |D3Cextern _ => d3cl
 //
 |D3Clocal0 _ =>
-f0_local0(d3cl, err)
+(
+f0_local0(d3cl, err))
 //
 |D3Cabsopen _ => (d3cl)
 |D3Cabsimpl _ => (d3cl)
@@ -412,10 +413,10 @@ end (*let*) // end of [f0_implmnt0(dcl,err)]
 //
 (* ****** ****** *)
 //
-(*
+// (*
 val
 ( ) = prerrln("tread33_d3ecl: d3cl = ", d3cl)
-*)
+// *)
 //
 (* ****** ****** *)
 } (*where*) // end of [tread33_d3ecl(d3cl,err)]
