@@ -115,6 +115,9 @@ D3Cvaldclst _ => f0_valdclst(env0, d3cl)
 |
 D3Cvardclst _ => f0_vardclst(env0, d3cl)
 //
+|
+D3Cfundclst _ => f0_fundclst(env0, d3cl)
+//
 | _(*otherwise*) =>
 let
   val loc0 = d3cl.lctn()
@@ -254,7 +257,13 @@ prerrln
 //
 val
 d3fs =
-trtmp3b_d3fundclist(env0, d3fs)
+(
+case+ tqas of
+|
+list_cons _ => d3fs
+|
+list_nil((*fun*)) => 
+trtmp3b_d3fundclist(env0, d3fs))
 //
 in//let
 //
@@ -324,6 +333,47 @@ end where
   val () =
   prerrln("trtmp3b_d3vardcl: dvar = ", dvar)
 }(*let*)//end-of-[trtmp3b_d3vardcl(env0,dvar)]
+//
+(* ****** ****** *)
+//
+#implfun
+trtmp3b_d3fundcl
+  (env0, dfun) = let
+//
+val loc0 =
+d3fundcl_get_lctn(dfun)
+//
+val dvar =
+d3fundcl_get_dpid(dfun)
+val f3as =
+d3fundcl_get_farg(dfun)
+val sres =
+d3fundcl_get_sres(dfun)
+val tdxp =
+d3fundcl_get_tdxp(dfun)
+val wsxp =
+d3fundcl_get_wsxp(dfun)
+//
+(*
+val f3as =
+trtmp3b_f3arglst(env0, f3as)
+*)
+val tdxp =
+trtmp3b_teqd3exp(env0, tdxp)
+//
+in//let
+//
+d3fundcl(loc0,dvar,f3as,sres,tdxp,wsxp)
+//
+end where
+{
+//
+// (*
+val () =
+prerrln("trtmp3b_d3fundcl: dfun = ", dfun)
+// *)
+//
+}(*where*)//end-of-[trtmp3b_d3fundcl(env0,dfun)]
 //
 (* ****** ****** *)
 //
