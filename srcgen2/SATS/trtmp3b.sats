@@ -144,6 +144,9 @@ d3vardclist = $D3E.d3vardclist
 #typedef
 d3fundclist = $D3E.d3fundclist
 (* ****** ****** *)
+#vwtpdef
+d3eclist_vt = $D3E.d3eclist_vt
+(* ****** ****** *)
 #typedef
 d3explstopt = $D3E.d3explstopt
 #typedef
@@ -195,13 +198,14 @@ tmpstk_getstmp
 //
 fun
 tmpstk_insert_dcl
-  (&tmpstk >> _, d3ecl): void
+  (&tmpstk >> _, d3ecl):(void)
 //
 (* ****** ****** *)
+//
 fun
 tmpstk_search_cst
-( stk:
-! tmpstk, d2c:d2cst): d3eclist
+  (!tmpstk,d2cst): d3eclist_vt
+//
 (* ****** ****** *)
 //
 fun
@@ -389,7 +393,14 @@ trtmp3b_d3eclistopt
 (* ****** ****** *)
 //
 fun
-tr3benv_getstmp(env0: !tr3benv): stamp
+tr3benv_getstmp
+(env0: !tr3benv): stamp
+fun
+tr3benv_insert_dcl
+(env0: !tr3benv, d3cl: d3ecl): (void)
+fun
+tr3benv_search_cst
+(env0: !tr3benv, dcst: d2cst): d3eclist_vt
 //
 fun
 tr3benv_tapq_resolve

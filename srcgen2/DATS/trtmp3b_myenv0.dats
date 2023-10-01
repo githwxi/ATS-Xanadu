@@ -276,8 +276,7 @@ end (*let*)//end-of-[tmpstk_insert_dcl(...)]
 tmpstk_search_cst
   (stk, d2c) =
 (
-list_vt2t
-(reverse0(res)) where
+list_vt_reverse0(res) where
 {
 val res = list_vt_nil()
 val res = loop(stk, d2c, res) }
@@ -447,11 +446,50 @@ val+
 in//let
 //
 let
-val tmp =
-tmpstk_getstmp(tmpstk) in $fold(env0);tmp
+val stmp =
+tmpstk_getstmp
+  (  tmpstk  ) in $fold(env0); stmp
 end//let
 //
 end(*let*)//end-of-(tr3benv_getstmp(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3benv_insert_dcl
+(   env0, d3cl   ) = let
+//
+val+
+@TR3BENV
+(topmap, !tmpstk) = env0
+//
+in//let
+//
+(
+  tmpstk_insert_dcl
+  (  tmpstk , d3cl  ) ; $fold(env0) )
+//
+end(*let*)//end-of-(tr3benv_insert_dcl(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3benv_search_cst
+(   env0, d2c0   ) = let
+//
+val+
+@TR3BENV
+(topmap, !tmpstk) = env0
+//
+in//let
+//
+let
+val dcls =
+tmpstk_search_cst
+  ( tmpstk, d2c0 ) in $fold(env0); dcls
+end//let
+//
+end(*let*)//end-of-(tr3benv_search_cst(env0))
 //
 (* ****** ****** *)
 //
@@ -469,12 +507,16 @@ stmp =
 tr3benv_getstmp(env0)
 //
 val
-dcls = list_nil((*void*))
+dcls =
+tr3benv_search_cst(env0, d2c0)
 //
 in//let
-(
+let
+val
+dcls = list_vt2t(dcls)
+in//let
   timpl_make_node
-  (stmp, TIMPLall1(d2c0, dcls)) )
+  (stmp, TIMPLall1(d2c0, dcls)) end//let
 end where
 {
 //

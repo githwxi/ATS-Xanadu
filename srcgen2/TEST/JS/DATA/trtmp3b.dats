@@ -8,6 +8,12 @@ and x2 = 2
 val x12 = (1 + 2)
 
 (* ****** ****** *)
+//
+#impltmp
+gint_gt_sint_sint
+  < (*nil*) >(x, y) = x > y
+//
+(* ****** ****** *)
 
 fun
 fact(x: int): int = 
