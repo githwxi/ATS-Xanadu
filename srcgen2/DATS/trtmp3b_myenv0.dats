@@ -268,7 +268,70 @@ let
 val tag =
 the_tmpstk_stamp_new() in//let
   stk := tmpstk_cons(tag, dcl, stk)
-end (*let*)//end of [tmpstk_insert_dcl(...)]
+end (*let*)//end-of-[tmpstk_insert_dcl(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+tmpstk_search_cst
+  (stk, d2c) =
+(
+list_vt2t
+(reverse0(res)) where
+{
+val res = list_vt_nil()
+val res = loop(stk, d2c, res) }
+) where
+{
+//
+fun
+test
+( dcl: d3ecl
+, d2c: d2cst): bool =
+(
+case+
+dcl.node() of
+| _ (* otherwise *) => false
+)
+//
+fun
+loop
+( kxs:
+! tmpstk
+, d2c: d2cst
+, res
+: d3eclist_vt): d3eclist_vt =
+(
+case+ kxs of
+//
+| !
+tmpstk_nil() => ( res )
+//
+| !
+tmpstk_cons
+(tmp, dcl, kxs) =>
+loop(kxs, d2c, res) where
+{
+val res =
+(
+if
+test(dcl, d2c)
+then list_vt_cons(dcl, res) else res)
+}
+//
+| !
+tmpstk_let0(kxs) => loop(kxs,d2c,res)
+| !
+tmpstk_loc1(kxs) => loop(kxs,d2c,res)
+| !
+tmpstk_loc2(kxs) => loop(kxs,d2c,res)
+//
+) (*case+*)//end of [loop(kxs,d2c,res)]
+//
+val () =
+prerrln("tmpstk_search_cst: d2c = ", d2c)
+//
+} (*where*)//end-of-[tmpstk_search_cst(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -414,10 +477,12 @@ in//let
   (stmp, TIMPLall1(d2c0, dcls)) )
 end where
 {
-val () = prerrln
-("tr3benv_tapq_resolve: d2c0 = ", d2c0)
-val () = prerrln
-("tr3benv_tapq_resolve: t2js = ", t2js)
+//
+val () =
+prerrln("tr3benv_tapq_resolve: d2c0 = ", d2c0)
+val () =
+prerrln("tr3benv_tapq_resolve: t2js = ", t2js)
+//
 }(*where*)//end-of-[tr3benv_tapq_resolve(env0,...)]
 //
 (* ****** ****** *)

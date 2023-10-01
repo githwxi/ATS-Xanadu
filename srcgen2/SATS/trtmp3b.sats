@@ -198,10 +198,15 @@ tmpstk_insert_dcl
   (&tmpstk >> _, d3ecl): void
 //
 (* ****** ****** *)
+fun
+tmpstk_search_cst
+( stk:
+! tmpstk, d2c:d2cst): d3eclist
+(* ****** ****** *)
 //
 fun
 d3parsed_of_trtmp3b
-( dpar : d3parsed ): (d3parsed)
+  ( dpar: d3parsed ): d3parsed
 //
 (* ****** ****** *)
 //
