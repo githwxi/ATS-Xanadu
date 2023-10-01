@@ -149,7 +149,7 @@ end(*let*)
 end(*let*)//end-of(list_append(xs,ys))
 //
 (* ****** ****** *)
-
+//
 #impltmp
 <a>(*tmp*)
 strm_append
@@ -169,7 +169,7 @@ strmcon_cons(x0, xs) =>
 (
   strmcon_cons(x0, append(xs, ys))))
 }(*where*)//end-of(strm_append(xs,ys))
-
+//
 (* ****** ****** *)
 
 (* end of [DATA/mydats.dats] *)

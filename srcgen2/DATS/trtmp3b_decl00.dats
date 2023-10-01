@@ -288,8 +288,11 @@ trtmp3b_teqd3exp(env0, tdxp)
 //
 in//let
 d3valdcl_make_args(loc0,dpat,tdxp,wsxp)
-end//let
-//(*let*)//end-of[trtmp3b_d3valdcl(env0,dval)]
+end where
+{
+val () =
+prerrln("trtmp3b_d3vardcl: dval = ", dval)
+}(*let*)//end-of[trtmp3b_d3valdcl(env0,dval)]
 //
 (* ****** ****** *)
 //
@@ -316,8 +319,11 @@ trtmp3b_teqd3exp(env0, dini)
 //
 in//let
 d3vardcl_make_args(loc0,dpid,vpid,sres,dini)
-end//let
-(*let*)//end-of-[trtmp3b_d3vardcl(env0,dvar)]
+end where
+{
+  val () =
+  prerrln("trtmp3b_d3vardcl: dvar = ", dvar)
+}(*let*)//end-of-[trtmp3b_d3vardcl(env0,dvar)]
 //
 (* ****** ****** *)
 //
