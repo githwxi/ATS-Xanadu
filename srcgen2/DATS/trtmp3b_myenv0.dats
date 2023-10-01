@@ -395,5 +395,31 @@ end(*let*)//end-of-(tr3benv_getstmp(env0))
 endloc (*local*) // end of [local(tr3benv...)]
 
 (* ****** ****** *)
+//
+#implfun
+tr3benv_tapq_resolve
+  (env0, d2c0, t2js) =
+let
+//
+val
+stmp =
+tr3benv_getstmp(env0)
+//
+val
+dcls = list_nil((*void*))
+//
+in//let
+(
+  timpl_make_node
+  (stmp, TIMPLall1(d2c0, dcls)) )
+end where
+{
+val () = prerrln
+("tr3benv_tapq_resolve: d2c0 = ", d2c0)
+val () = prerrln
+("tr3benv_tapq_resolve: t2js = ", t2js)
+}(*where*)//end-of-[tr3benv_tapq_resolve(env0,...)]
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trtmp3b_myenv0.dats] *)

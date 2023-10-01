@@ -135,22 +135,23 @@ loc0 = d3e0.lctn()
 //
 val-
 D3Etapq
-(dcst, t2js) = d3e0.node()
+(d3f0, t2js) = d3e0.node()
 //
 val t2p0 = d3e0.styp((*0*))
 //
 in//let
 case+
-dcst.node() of
+d3f0.node() of
 |
-D3Ecst(d2c1) =>
+D3Ecst(d2c0) =>
 let
 val timp =
 tr3benv_tapq_resolve
-( env0 , d2c1 , t2js )//val(timp)
+( env0 , d2c0 , t2js )//val(timp)
 in//let
+(
 d3exp_make_styp_node
-(loc0, t2p0, D3Etimp(d3e0, timp))
+(loc0, t2p0, D3Etimp(d3e0, timp)) )
 end//let
 | _(*non-D3Ecst*) => (    d3e0    )
 end where

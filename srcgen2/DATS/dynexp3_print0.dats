@@ -84,7 +84,7 @@ _(*?*) = "./lexing0_print0.dats"
 #symload lctn with d3ecl_get_lctn
 #symload node with d3ecl_get_node
 (* ****** ****** *)
-#symload lctn with timpl_get_lctn
+#symload stmp with timpl_get_stmp
 #symload node with timpl_get_node
 (* ****** ****** *)
 

@@ -391,6 +391,12 @@ val (  ) =
 let
 val dpar =
   d3parsed_of_trtmp3b(dpar)
+//
+(*
+val dpar =
+  d3parsed_of_tread33(dpar)
+*)
+//
 in//let
   fperr33_d3parsed
   (g_stderr((*tmp*)), dpar) end where
