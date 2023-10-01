@@ -104,6 +104,8 @@ d3e0.node() of
 //
 *)
 //
+|D3Etapq _ => f0_tapq(env0, d3e0)
+//
 |D3Edap0 _ => f0_dap0(env0, d3e0)
 |D3Edapp _ => f0_dapp(env0, d3e0)
 //
@@ -118,6 +120,46 @@ d3e0.node() of
 //
 endlet where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_tapq
+( env0:
+! tr3benv
+, d3e0: d3exp): d3exp =
+let
+//
+val
+loc0 = d3e0.lctn()
+//
+val-
+D3Etapq
+(dcst, t2js) = d3e0.node()
+//
+val t2p0 = d3e0.styp((*0*))
+//
+in//let
+case+
+dcst.node() of
+|
+D3Ecst(d2c1) =>
+let
+val timp =
+tr3benv_tapq_resolve
+( env0 , d2c1 , t2js )//val(timp)
+in//let
+d3exp_make_styp_node
+(loc0, t2p0, D3Etimp(d3e0, timp))
+end//let
+| _(*non-D3Ecst*) => (    d3e0    )
+end where
+{
+//
+val () = prerrln
+("trtmp3b_d3exp: f0_tapq: d3e0 = ", d3e0)
+//
+} (*where*) // end of [f0_tapq(env0,d3e0)]
 //
 (* ****** ****** *)
 //
