@@ -334,7 +334,8 @@ val+
 //
 in//let
 //
-tmpstk_pshlet0(tmpstk); $fold(env0)
+(
+  tmpstk_pshlet0(tmpstk); $fold(env0))
 //
 end(*let*)//end-of-(tr3benv_pshlet0(env0))
 //
@@ -382,10 +383,10 @@ val+
 //
 in//let
 //
-(
- $fold(env0); tmp) where
-{
-  val tmp = tmpstk_getstmp(tmpstk) }
+let
+val tmp =
+tmpstk_getstmp(tmpstk) in $fold(env0);tmp
+end//let
 //
 end(*let*)//end-of-(tr3benv_getstmp(env0))
 //
