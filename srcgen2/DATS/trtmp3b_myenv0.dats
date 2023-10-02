@@ -290,7 +290,7 @@ test
 (
 case+
 dcl.node() of
-| _ (* otherwise *) => false
+| _(* otherwise *) => true
 )
 //
 fun
