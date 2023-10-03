@@ -290,8 +290,17 @@ test
 (
 case+
 dcl.node() of
-| _(* otherwise *) => true
-)
+//
+| D3Cfundclst _ =>
+(
+  d3ecl_d2ceq(dcl, d2c) )
+//
+| D3Cimpltmp _ =>
+(
+  d3ecl_d2ceq(dcl, d2c) )
+//
+| _(* otherwise *) => (   false   )
+) (*case+*) // end of [test(dcl,d2c)]
 //
 fun
 loop
