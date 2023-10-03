@@ -52,6 +52,47 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #implfun
+d3ecl_d2ceq
+(d3cl, d2c0) =
+(
+case+
+d3cl.node() of
+|
+D3Cfundclst _ => f0_fundclst(d3cl)
+|
+D3Cimplmnt0 _ => f0_implmnt0(d3cl)
+//
+| _(* otherwise *) => (   false   )
+//
+) where
+{
+//
+fun
+f0_fundclst
+(d3cl: d3ecl): bool =
+let
+val-
+D3Cfundclst
+( tknd, tqas
+, d2cs, d3fs) = d3cl.node()
+in//let
+list_exists(d2cs) where
+{
+#impltmp
+exists$test
+<  d2cst  >(d2c1) = (d2c0 = d2c1)
+}
+end (*let*) // end of [f0_fundclst(...)]
+
+fun
+f0_implmnt0
+(d3cl: d3ecl): bool = false
+//
+} (*where*) // end of [d3ecl_d2ceq(...)]
+//
+(* ****** ****** *)
+//
+#implfun
 d3ecl_impltmpq
   ( d3cl ) =
 (

@@ -73,6 +73,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload stmp with x2t2p_get_stmp
 (* ****** ****** *)
+#symload stmp with d2con_get_stmp
+#symload stmp with d2cst_get_stmp
 #symload stmp with d2var_get_stmp
 (* ****** ****** *)
 //
@@ -1001,6 +1003,18 @@ g_cmp<x2t2p>
 xtp1.stmp() \cmp xtp2.stmp())
 //
 (* ****** ****** *)
+//
+#impltmp
+g_cmp<d2con>
+(d2c1, d2c2) =
+(
+d2c1.stmp() \cmp d2c2.stmp())
+//
+#impltmp
+g_cmp<d2cst>
+(d2c1, d2c2) =
+(
+d2c1.stmp() \cmp d2c2.stmp())
 //
 #impltmp
 g_cmp<d2var>
