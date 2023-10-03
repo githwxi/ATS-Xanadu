@@ -50,6 +50,9 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
+#symload node with simpl_get_node
+#symload node with dimpl_get_node
+(* ****** ****** *)
 //
 #implfun
 d3ecl_d2ceq
@@ -86,7 +89,28 @@ end (*let*) // end of [f0_fundclst(...)]
 
 fun
 f0_implmnt0
-(d3cl: d3ecl): bool = false
+(d3cl: d3ecl): bool =
+let
+val-
+D3Cimplmnt0
+( tknd
+, stmp(*unicity*)
+, sqas, tqas
+, dimp
+, tias, f3as
+, sres, dexp) = d3cl.node()
+//
+in//let
+//
+case+
+dimp.node() of
+|DIMPLone1
+(   d2c1   ) => (d2c0 = d2c1)
+|DIMPLone2
+(d2c1, svts) => (d2c0 = d2c1)
+| _(* otherwise *) => (   false   )
+//
+end (*let*) // end of [f0_implmnt0(...)]
 //
 } (*where*) // end of [d3ecl_d2ceq(...)]
 //
