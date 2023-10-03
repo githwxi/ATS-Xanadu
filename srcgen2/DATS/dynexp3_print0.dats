@@ -559,6 +559,10 @@ D3Cextern(tknd,dcl1) =>
 print("D3Cextern(",tknd,";",dcl1,")")
 //
 |
+D3Ctmpsub(svts,dcl1) =>
+print("D3Ctmpsub(",svts,";",dcl1,")")
+//
+|
 D3Clocal0(head, body) =>
 print( "D3Clocal(",head,";",body,")" )
 //

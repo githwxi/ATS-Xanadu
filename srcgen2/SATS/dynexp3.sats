@@ -680,6 +680,9 @@ d3ecl_node =
 |D3Cextern of
  (token(*EXTERN*), d3ecl)
 //
+|D3Ctmpsub of
+ (s2vts(*tmpsub*), d3ecl)
+//
 |D3Clocal0 of
 ( d3eclist(*local-head*)
 , d3eclist(*local-body*))
