@@ -14,6 +14,18 @@ gint_gt_sint_sint
   < (*nil*) >(x, y) = x > y
 //
 (* ****** ****** *)
+//
+#impltmp
+gint_sub_sint_sint
+  < (*nil*) >(x, y) = x - y
+#impltmp
+gint_add_sint_sint
+  < (*nil*) >(x, y) = x + y
+#impltmp
+gint_mul_sint_sint
+  < (*nil*) >(x, y) = x * y
+//
+(* ****** ****** *)
 
 fun
 fact(x: int): int = 
