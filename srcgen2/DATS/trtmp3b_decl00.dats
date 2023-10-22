@@ -111,6 +111,11 @@ d3cl.node() of
 f0_local0(env0, d3cl))
 //
 |
+D3Cinclude _ => f0_include(env0, d3cl)
+|
+D3Cstaload _ => f0_staload(env0, d3cl)
+//
+|
 D3Cvaldclst _ => f0_valdclst(env0, d3cl)
 |
 D3Cvardclst _ => f0_vardclst(env0, d3cl)
@@ -167,6 +172,55 @@ in//let
 end(*let*)
 //
 end(*let*)//end-of-[f0_local0(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_include
+( env0
+: !tr3benv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Cinclude
+( knd0
+, tknd, gsrc
+, fopt, dopt) = d3cl.node()
+//
+val dopt =
+trtmp3b_d3eclistopt(env0, dopt)
+//
+in//let
+d3ecl_make_node
+(loc0
+,D3Cinclude(knd0,tknd,gsrc,fopt,dopt))
+end(*let*)//end-of-[f0_include(env0,d3cl)]
+(* ****** ****** *)
+//
+fun
+f0_staload
+( env0
+: !tr3benv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Cstaload
+(knd0
+,tknd, gsrc
+,fopt, dopt) = d3cl.node()
+//
+in//let
+let
+val () =
+tr3benv_insert_dcl(env0, d3cl) in d3cl
+end//let
+end(*let*)//end-of-[f0_staload(env0,d3cl)]
 //
 (* ****** ****** *)
 //
