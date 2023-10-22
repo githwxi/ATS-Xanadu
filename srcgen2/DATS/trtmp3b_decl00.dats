@@ -198,6 +198,7 @@ d3ecl_make_node
 (loc0
 ,D3Cinclude(knd0,tknd,gsrc,fopt,dopt))
 end(*let*)//end-of-[f0_include(env0,d3cl)]
+//
 (* ****** ****** *)
 //
 fun
@@ -216,6 +217,9 @@ D3Cstaload
 ,fopt, dopt) = d3cl.node()
 //
 in//let
+if
+knd0 = 0 // static
+then d3cl else // dynamic
 let
 val () =
 tr3benv_insert_dcl(env0, d3cl) in d3cl
