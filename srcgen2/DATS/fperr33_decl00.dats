@@ -76,29 +76,29 @@ auxmain
 ( out: FILR
 , dcl: d3ecl): void =
 let
+//
 #impltmp
 g_print$out<>() = out
+//
 in//let
+//
 case+
 dcl.node() of
 //
-|
-D3Cstatic
+|D3Cstatic
 (tknd, dcl1) =>
 let
 val () =
 fperr33_d3ecl(out, dcl1)
 endlet//end-of(D3Cstatic(_,_))
-|
-D3Cextern
+|D3Cextern
 (tknd, dcl1) =>
 let
 val () =
 fperr33_d3ecl(out, dcl1)
 endlet//end-of(D3Cextern(_,_))
 //
-|
-D3Clocal0
+|D3Clocal0
 (dcs1, dcs2) =>
 let
 val () =
@@ -107,27 +107,40 @@ val () =
 fperr33_d3eclist(out, dcs2)
 endlet // end of [D3Clocal0(...)]
 //
-|
-D3Cinclude
-( knd0
-, tknd, gsrc
-, fopt, dopt) => let
+(* ****** ****** *)
+//
+|D3Cinclude
+(knd0
+,tknd, gsrc
+,fopt, dopt) => let
 val () =
 fperr33_d3eclistopt(out, dopt)
 endlet // end-of-(D3Cinclude(...))
+//
+|D3Cstaload
+(knd0
+,tknd, gsrc
+,fopt, dopt) => let
+(*
+val () =
+fperr33_s2taloadopt(out, dopt)
+*)
+endlet // end-of-(D3Cstaload(...))
+//
+(* ****** ****** *)
 //
 |
 D3Cvaldclst
 (tknd, d3vs) => let
 val () =
   fperr33_d3valdclist(out, d3vs)
-endlet // end-of-(D3Cvaldclst(_,_,_))
+endlet//end-of-(D3Cvaldclst(_,_,_))
 |
 D3Cvardclst
 (tknd, d3vs) => let
 val () =
   fperr33_d3vardclist(out, d3vs)
-endlet // end-of-(D3Cvardclst(_,_,_))
+endlet//end-of-(D3Cvardclst(_,_,_))
 //
 |
 D3Cfundclst
@@ -142,7 +155,9 @@ val () =
 *)
 val () =
   fperr33_d3fundclist(out, d3fs)
-endlet // end-of-(D3Cfundclst(_,_,_))
+endlet//end-of-(D3Cfundclst(_,_,_))
+//
+(* ****** ****** *)
 //
 |
 D3Cimplmnt0
@@ -152,6 +167,7 @@ D3Cimplmnt0
 , dimp, tias
 , f3as, sres, dexp) =>
 let
+//
 (*
 val () =
   fperr33_s2qaglst(out, sqas)
@@ -160,13 +176,18 @@ val () =
 val () =
   fperr33_t2iaglst(out, tias)
 *)
+//
 val () =
-  fperr33_f3arglst(out, f3as)
+(
+  fperr33_f3arglst(out, f3as))
+//
 (*
 val () = fperr33_s2res(out, sres)
 *)
+//
 val () = fperr33_d3exp(out, dexp)
-endlet // end of [ D3Cimplmnt0(...) ]
+//
+endlet//end of [ D3Cimplmnt0(...) ]
 //
 |D3Cnone0 _ => ( (*void*) )
 |D3Cnone1 _ => () | D3Cnone2 _ => ()
