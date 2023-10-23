@@ -1156,7 +1156,7 @@ f2_svar
 ( s2v1: s2var
 , s2t1: sort2): void =
 (
-case
+case+
 s2v1.sort() of
 |
 S2Tnone0() =>
@@ -1701,7 +1701,7 @@ optn@(sint,d2parsed)//[val(dopt)]
 //
 val gsym =
 (
-case
+case+
 g1exp_nmspace
  (  gsrc  ) of
 |optn_nil() =>
