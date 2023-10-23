@@ -456,7 +456,7 @@ the_d1parenv_pvsadd0(fnm2, dpar) }
 end//let//end-of-[ optn_vt_nil() ]
 //
 | ~
-optn_vt_cons(dpar) => @(1(*shr*),dpar)
+optn_vt_cons(dpar) => @(1(*shrd*),dpar)
 //
 end where
 {
@@ -1623,6 +1623,15 @@ optn_nil((*void*))
 optn_cons(fpth) =>
 optn_cons(s1taload_from_fpath(fpth))
 ) : optn@(sint, d1parsed) // [val(dopt)]
+//
+val knd0 =
+(
+case+ dopt of
+|
+optn_nil() => knd0
+|
+optn_cons@(shrd, dpar) => dpar.stadyn()
+)
 //
 in//let
 d1ecl
