@@ -48,6 +48,12 @@ ATS_PACKNAME
 #staload
 _(*TRANS3a*) = "./trans3a.dats"
 (* ****** ****** *)
+#staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
+#staload "./../SATS/filpath.sats"
+(* ****** ****** *)
+#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 (* ****** ****** *)
@@ -55,6 +61,8 @@ _(*TRANS3a*) = "./trans3a.dats"
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans3a.sats"
+(* ****** ****** *)
+#staload "./../SATS/xglobal.sats"
 (* ****** ****** *)
 #symload tqas with d2cst_get_tqas
 (* ****** ****** *)
@@ -212,11 +220,72 @@ f0_staload
 ! tr3aenv
 , d3cl: d3ecl): d3ecl =
 let
+//
+val
+loc0 = d3cl.lctn()
 val-
 D3Cstaload
 ( knd0
 , tknd, gsrc
-, fopt, dopt) = d3cl.node() in (d3cl)
+, fopt, dopt) = d3cl.node()
+//
+val dopt =
+(
+case+ dopt of
+|
+S3TALOADnone
+( __s2ta__ ) => dopt
+|
+S3TALOADdpar
+(shrd, dpar) =>
+(
+case+ fopt of
+|optn_nil() => dopt
+|optn_cons(fpth) =>
+let
+val fnm2 =
+fpath_get_fnm2(fpth)
+val opt2 =
+the_d3tmpenv_pvsfind(fnm2)
+in//let
+//
+case+ opt2 of
+| ~
+optn_vt_nil() =>
+(
+S3TALOADdpar
+(shrd, dpar)) where
+{
+val dpar =
+d3parsed_of_trans3a(dpar)
+val (  ) =
+the_d3tmpenv_pvsadd0(fnm2,dpar)
+(*
+val (  ) =
+prerrln
+("f0_staload(3a): dpar = ", dpar)
+*)
+} (* end-of-[optn_vt_nil(...)] *)
+| ~
+optn_vt_cons(dpar) =>
+(
+S3TALOADdpar(shrd, dpar)) where
+{
+(*
+val (  ) =
+prerrln
+("f0_staload(3a): dpar = ", dpar)
+*)
+} (* end-of-[optn_vt_cons(...)] *)
+//
+end//let//end-of-[optn_cons(...)]
+) (*case+*) // [S3TALOADdpar(...)]
+) (*case+*) // end of [ val(dopt) ]
+//
+in//let
+d3ecl_make_node
+(loc0
+,D3Cstaload(knd0,tknd,gsrc,fopt,dopt))
 end(*let*)//end-of-[f0_staload(env0,d3cl)]
 //
 (* ****** ****** *)

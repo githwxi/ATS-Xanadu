@@ -427,12 +427,17 @@ D2Cstaload
 val dopt =
 (
 case+ dopt of
-|S2TALOADnone _ =>
- S3TALOADnone(dopt)
-|S2TALOADfenv _ =>
- S3TALOADnone(dopt)
 |
-S2TALOADdpar(shrd, dpar) =>
+S2TALOADnone
+( (*void*) ) =>
+S3TALOADnone(dopt)
+|
+S2TALOADfenv
+( __fenv__ ) =>
+S3TALOADnone(dopt)
+|
+S2TALOADdpar
+(shrd, dpar) =>
 let
 val
 stadyn =
@@ -451,10 +456,10 @@ case+ fopt of
   S3TALOADnone(dopt) )
 |optn_cons(fpth) =>
 (
-S3TALOADdpar(shrd, dpar)) where
+S3TALOADdpar(shd2, dpar)) where
 {
 val
-(shrd, dpar) =
+(shd2, dpar) = // shrd = shd2
 s3taload_from_fpath(fpth, dpar)})
 endlet//end-of-[S2TALOADdpar(...)]
 ) : s3taloadopt//end-of-[val(dopt)]
@@ -463,9 +468,9 @@ in//let
 //
 (
   d3ecl_make_node
-  (loc0,
-   D3Cstaload
-   (knd0, tknd, gsrc, fopt, dopt)) )
+  ( loc0,
+    D3Cstaload
+    (knd0, tknd, gsrc, fopt, dopt) ) )
 end (*let*) // end of [f0_staload(...)]
 //
 (* ****** ****** *)

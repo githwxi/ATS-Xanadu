@@ -192,9 +192,16 @@ HX-2023-06-02: for static loading
 *)
 //
 (* ****** ****** *)
+//
 #typedef d1parsed = $D1E.d1parsed
+//
 #typedef d2parsed = $D2E.d2parsed
+//
 #typedef d3parsed = $D3E.d3parsed
+(*
+#typedef d3topenv = $D3E.d3topenv
+*)
+//
 (* ****** ****** *)
 //
 fun
@@ -207,6 +214,8 @@ fun
 the_d1parenv_pvsadd0
   (key: sym_t, itm: d1parsed): void
 //
+(* ****** ****** *)
+//
 fun
 the_d2parenv_pvs
   ((*void*)): topmap(d2parsed)
@@ -217,6 +226,8 @@ fun
 the_d2parenv_pvsadd0
   (key: sym_t, itm: d2parsed): void
 //
+(* ****** ****** *)
+//
 fun
 the_d3parenv_pvs
   ((*void*)): topmap(d3parsed)
@@ -225,6 +236,17 @@ the_d3parenv_pvsfind
   (key: sym_t): optn_vt(d3parsed)
 fun
 the_d3parenv_pvsadd0
+  (key: sym_t, itm: d3parsed): void
+//
+//
+fun
+the_d3tmpenv_pvs
+  ((*void*)): topmap(d3parsed)
+fun
+the_d3tmpenv_pvsfind
+  (key: sym_t): optn_vt(d3parsed)
+fun
+the_d3tmpenv_pvsadd0
   (key: sym_t, itm: d3parsed): void
 //
 (* ****** ****** *)

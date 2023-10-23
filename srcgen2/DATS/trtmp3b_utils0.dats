@@ -92,12 +92,17 @@ S3TALOADnone(s2ta) =>
 (
   list_nil(*void*) )
 |
-S3TALOADdpar(sknd, dpar) =>
+S3TALOADdpar(shrd, dpar) =>
 let
 //
 val
 tenv =
 d3parsed_get_t3penv(dpar)
+//
+val () = prerrln
+("static_search_cst: shrd = ", shrd)
+val () = prerrln
+("static_search_cst: tenv = ", tenv)
 //
 in//let
 //

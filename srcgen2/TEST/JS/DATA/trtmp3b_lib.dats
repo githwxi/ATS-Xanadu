@@ -40,6 +40,9 @@ gint_mul_sint_sint
 #impltmp
 gint_div_sint_sint
   < (*nil*) >(x, y) = (x / y)
+#impltmp
+gint_mod_sint_sint
+  < (*nil*) >(x, y) = (x % y)
 //
 (* ****** ****** *)
 
