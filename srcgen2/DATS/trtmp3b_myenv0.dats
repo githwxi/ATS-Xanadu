@@ -52,6 +52,7 @@ ATS_PACKNAME
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 (* ****** ****** *)
+#staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
 #staload "./../SATS/trtmp3b.sats"
@@ -127,6 +128,31 @@ tmpstk_nil() => true
 (* ****** ****** *)
 //
 #implfun
+tmpstk_pshlet0
+  (  stk  ) =
+(
+  stk := tmpstk_let0(stk))
+//(*end of [tmpstk_pshlet0(stk)]*)
+//
+(* ****** ****** *)
+//
+#implfun
+tmpstk_pshloc1
+  (  stk  ) =
+(
+  stk := tmpstk_loc1(stk))
+//(*end of [tmpstk_pshloc1(stk)]*)
+//
+#implfun
+tmpstk_pshloc2
+  (  stk  ) =
+(
+  stk := tmpstk_loc2(stk))
+//(*end of [tmpstk_pshloc2(stk)]*)
+//
+(* ****** ****** *)
+//
+#implfun
 tmpstk_poptop0
   (stk) = let
 //
@@ -160,31 +186,6 @@ val
 ( ) =
 (stk := loop(stk, err)) in err end
 end (*let*)//end-[tmpstk_poptop0(stk)]
-//
-(* ****** ****** *)
-//
-#implfun
-tmpstk_pshlet0
-  (  stk  ) =
-(
-  stk := tmpstk_let0(stk))
-//(*end of [tmpstk_pshlet0(stk)]*)
-//
-(* ****** ****** *)
-//
-#implfun
-tmpstk_pshloc1
-  (  stk  ) =
-(
-  stk := tmpstk_loc1(stk))
-//(*end of [tmpstk_pshloc1(stk)]*)
-//
-#implfun
-tmpstk_pshloc2
-  (  stk  ) =
-(
-  stk := tmpstk_loc2(stk))
-//(*end of [tmpstk_pshloc2(stk)]*)
 //
 (* ****** ****** *)
 //
@@ -320,11 +321,19 @@ tmpstk_cons
 (tmp, dcl, kxs) =>
 loop(kxs, d2c, res) where
 {
+//
 val res =
 (
-if
-test(dcl, d2c)
-then list_vt_cons(dcl, res) else res)
+list_rappendx0_vt(dcs, res)
+) where
+{ val dcs =
+  static_search_cst(dcl, d2c) }
+//
+val res =
+( if
+  test(dcl, d2c)
+  then
+  list_vt_cons(dcl, res) else res)
 }
 //
 | !

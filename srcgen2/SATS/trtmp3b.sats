@@ -203,6 +203,10 @@ tmpstk_insert_dcl
 (* ****** ****** *)
 //
 fun
+static_search_cst
+  (d3ecl, d2cst): d3eclist
+//
+fun
 tmpstk_search_cst
   (!tmpstk,d2cst): d3eclist_vt
 //

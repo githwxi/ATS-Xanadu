@@ -716,6 +716,9 @@ all_dats:: \
 trtmp3b_myenv0_dats
 trtmp3b_myenv0_dats: ; $(XATSOPT) --dynamic DATS/trtmp3b_myenv0.dats
 all_dats:: \
+trtmp3b_utils0_dats
+trtmp3b_utils0_dats: ; $(XATSOPT) --dynamic DATS/trtmp3b_utils0.dats
+all_dats:: \
 trtmp3b_dynexp_dats
 trtmp3b_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trtmp3b_dynexp.dats
 all_dats:: \
