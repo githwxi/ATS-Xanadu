@@ -46,7 +46,7 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 #staload
-_(*TRSYM2A*) = "./trsym2a.dats"
+_(*TRSYM2B*) = "./trsym2b.dats"
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
@@ -56,7 +56,7 @@ _(*TRSYM2A*) = "./trsym2a.dats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans2a.sats"
-#staload "./../SATS/trsym2a.sats"
+#staload "./../SATS/trsym2b.sats"
 (* ****** ****** *)
 #symload lctn with d2cst_get_lctn
 #symload styp with d2cst_get_styp
@@ -123,7 +123,7 @@ in(* in-of-local *)
 (* ****** ****** *)
 
 #implfun
-trsym2a_d2ecl
+trsym2b_d2ecl
 ( env0, dcl0 ) =
 let
 //
@@ -132,10 +132,10 @@ val
 loc = dcl0.lctn()
 val () =
 prerrln
-("trsym2a_d2ecl: loc0 = ", loc0)
+("trsym2b_d2ecl: loc0 = ", loc0)
 val () =
 prerrln
-("trsym2a_d2ecl: dcl0 = ", dcl0)
+("trsym2b_d2ecl: dcl0 = ", dcl0)
 *)
 //
 in//let
@@ -152,14 +152,14 @@ D2Cstatic
 (tknd, dcl1) =>
 let
 val () =
-trsym2a_d2ecl(env0, dcl1)
+trsym2b_d2ecl(env0, dcl1)
 endlet//end-of(D2Cstatic(_,_))
 |
 D2Cextern
 (tknd, dcl1) =>
 let
 val () =
-trsym2a_d2ecl(env0, dcl1)
+trsym2b_d2ecl(env0, dcl1)
 endlet//end-of(D2Cextern(_,_))
 //
 |
@@ -167,9 +167,9 @@ D2Clocal0
 (dcs1, dcs2) =>
 let
 val () =
-trsym2a_d2eclist(env0, dcs1)
+trsym2b_d2eclist(env0, dcs1)
 val () =
-trsym2a_d2eclist(env0, dcs2)
+trsym2b_d2eclist(env0, dcs2)
 endlet // end of [D2Clocal0(...)]
 //
 (*
@@ -208,20 +208,20 @@ D2Cinclude
 , fopt, dopt) =>
 let
 val () =
-trsym2a_d2eclistopt(env0, dopt)
+trsym2b_d2eclistopt(env0, dopt)
 endlet // end of [D2Cinclude(...)]
 //
 |
 D2Cvaldclst
 (tknd, d2vs) => let
 val () =
-  trsym2a_d2valdclist(env0, d2vs)
+  trsym2b_d2valdclist(env0, d2vs)
 endlet // end-of-(D2Cvaldclst(_,_,_))
 |
 D2Cvardclst
 (tknd, d2vs) => let
 val () =
-  trsym2a_d2vardclist(env0, d2vs)
+  trsym2b_d2vardclist(env0, d2vs)
 endlet // end-of-(D2Cvardclst(_,_,_))
 //
 |
@@ -234,12 +234,12 @@ D2Cfundclst
 val () =
 prerrln(
 "\
-trsym2a_d2ecl: \
+trsym2b_d2ecl: \
 D2Cfundclst: d2cs = ", d2cs)
 val () =
 prerrln(
 "\
-trsym2a_d2ecl: \
+trsym2b_d2ecl: \
 D2Cfundclst: tqas = ", tqas)
 *)
 //
@@ -259,7 +259,7 @@ val () =
 // this part is evaluated first!
 //
   val () =
-  trsym2a_d2fundclist(env0, d2fs) }
+  trsym2b_d2fundclist(env0, d2fs) }
 //
 endlet // end-of-(D2Cfundclst(_,_,_))
 //
@@ -302,22 +302,22 @@ prerrln
 *)
 //
 val () =
-trsym2a_f2arglst(env0, f2as)
+trsym2b_f2arglst(env0, f2as)
 //
-val () = trsym2a_d2exp(env0, dexp)
+val () = trsym2b_d2exp(env0, dexp)
 //
 in//let
   // nothing else for [f0_implmnt0]
 end//let//end-of-[f0_implmnt0(env0,...)]
 //
-}(*where*)//end-of(trsym2a_d2ecl(env0,dcl0))
+}(*where*)//end-of(trsym2b_d2ecl(env0,dcl0))
 //
-endloc(*local*)//end-of(local(trsym2a_d2ecl))
+endloc(*local*)//end-of(local(trsym2b_d2ecl))
 
 (* ****** ****** *)
 //
 #implfun
-trsym2a_teqd2exp
+trsym2b_teqd2exp
   (env0, tdxp) =
 (
 case+ tdxp of
@@ -326,22 +326,22 @@ TEQD2EXPnone() => ()
 |
 TEQD2EXPsome(teq1, d2e2) =>
 let
-val () = trsym2a_d2exp(env0, d2e2)
+val () = trsym2b_d2exp(env0, d2e2)
 end
-) (*case+*)//end-of(trsym2a_teqd0exp(...))
+) (*case+*)//end-of(trsym2b_teqd0exp(...))
 //
 (* ****** ****** *)
 //
 #implfun
-trsym2a_d2valdcl
+trsym2b_d2valdcl
 (env0, dval) =
 let
 //
 val (  ) =
-trsym2a_d2pat(env0, dpat)
+trsym2b_d2pat(env0, dpat)
 //
 val (  ) =
-trsym2a_teqd2exp(env0, tdxp)
+trsym2b_teqd2exp(env0, tdxp)
 //
 endlet where
 {
@@ -353,17 +353,17 @@ endlet where
   val wsxp = d2valdcl_get_wsxp(dval)
 *)
 //
-} (*where*)//end-of-[trsym2a_d2valdcl(env0,dval)]
+} (*where*)//end-of-[trsym2b_d2valdcl(env0,dval)]
 //
 (* ****** ****** *)
 //
 #implfun
-trsym2a_d2vardcl
+trsym2b_d2vardcl
 (env0, dvar) =
 let
 //
 val (  ) =
-trsym2a_teqd2exp(env0, dini)
+trsym2b_teqd2exp(env0, dini)
 //
 endlet where
 {
@@ -376,20 +376,20 @@ endlet where
 //
   val dini = d2vardcl_get_dini(dvar)
 //
-} (*where*)//end-of-[trsym2a_d2vardcl(env0,dval)]
+} (*where*)//end-of-[trsym2b_d2vardcl(env0,dval)]
 //
 (* ****** ****** *)
 //
 #implfun
-trsym2a_d2fundcl
+trsym2b_d2fundcl
 (env0, dfun) =
 let
 //
 val (  ) =
-trsym2a_f2arglst(env0, fags)
+trsym2b_f2arglst(env0, fags)
 //
 val (  ) =
-trsym2a_teqd2exp(env0, tdxp)
+trsym2b_teqd2exp(env0, tdxp)
 //
 endlet where
 {
@@ -408,46 +408,46 @@ endlet where
   val wsxp = d2fundcl_get_wsxp(dfun)
 *)
 //
-} (*where*)//end-of-[trsym2a_d2fundcl(env0,dfun)]
+} (*where*)//end-of-[trsym2b_d2fundcl(env0,dfun)]
 //
 (* ****** ****** *)
 //
 #implfun
-trsym2a_d2eclist
+trsym2b_d2eclist
 ( env0, d2cs ) =
 (
-  list_trsym2a_fnp(env0, d2cs, trsym2a_d2ecl))
+  list_trsym2b_fnp(env0, d2cs, trsym2b_d2ecl))
 //
 (* ****** ****** *)
 //
 #implfun
-trsym2a_d2valdclist
+trsym2b_d2valdclist
 ( env0, d2vs ) =
 (
-  list_trsym2a_fnp(env0, d2vs, trsym2a_d2valdcl))
+  list_trsym2b_fnp(env0, d2vs, trsym2b_d2valdcl))
 //
 #implfun
-trsym2a_d2vardclist
+trsym2b_d2vardclist
 ( env0, d2vs ) =
 (
-  list_trsym2a_fnp(env0, d2vs, trsym2a_d2vardcl))
+  list_trsym2b_fnp(env0, d2vs, trsym2b_d2vardcl))
 //
 (* ****** ****** *)
 //
 #implfun
-trsym2a_d2fundclist
+trsym2b_d2fundclist
 ( env0, d2fs ) =
 (
-  list_trsym2a_fnp(env0, d2fs, trsym2a_d2fundcl))
+  list_trsym2b_fnp(env0, d2fs, trsym2b_d2fundcl))
 //
 (* ****** ****** *)
 //
 #implfun
-trsym2a_d2eclistopt
+trsym2b_d2eclistopt
 ( env0, dopt ) =
 (
-  optn_trsym2a_fnp(env0, dopt, trsym2a_d2eclist))
+  optn_trsym2b_fnp(env0, dopt, trsym2b_d2eclist))
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trsym2a_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_trsym2b_decl00.dats] *)

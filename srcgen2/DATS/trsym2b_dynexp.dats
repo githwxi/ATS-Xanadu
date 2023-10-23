@@ -46,7 +46,7 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 #staload
-_(*TRSYM2A*) = "./trsym2a.dats"
+_(*TRSYM2B*) = "./trsym2b.dats"
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
@@ -56,7 +56,7 @@ _(*TRSYM2A*) = "./trsym2a.dats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans2a.sats"
-#staload "./../SATS/trsym2a.sats"
+#staload "./../SATS/trsym2b.sats"
 (* ****** ****** *)
 #symload dexp with d2rxp_get_dexp
 #symload dexp with d2rxp_set_dexp
@@ -278,7 +278,7 @@ prerrln("d2exp_make_dpis: dpis = ", dpis)
 (* ****** ****** *)
 //
 #implfun
-trsym2a_d2pat
+trsym2b_d2pat
 ( env0, d2p0 ) =
 let
 //
@@ -287,10 +287,10 @@ val
 loc0 = d2p0.lctn()
 val () =
 prerrln
-("trsym2a_d2pat: loc0 = ", loc0)
+("trsym2b_d2pat: loc0 = ", loc0)
 val () =
 prerrln
-("trsym2a_d2pat: d2p0 = ", d2p0)
+("trsym2b_d2pat: d2p0 = ", d2p0)
 *)
 //
 in//let
@@ -316,17 +316,17 @@ d2p0.node() of
 D2Pbang(d2p1) =>
 let
 val () =
-trsym2a_d2pat(env0, d2p1) endlet
+trsym2b_d2pat(env0, d2p1) endlet
 |
 D2Pflat(d2p1) =>
 let
 val () =
-trsym2a_d2pat(env0, d2p1) endlet
+trsym2b_d2pat(env0, d2p1) endlet
 |
 D2Pfree(d2p1) =>
 let
 val () =
-trsym2a_d2pat(env0, d2p1) endlet
+trsym2b_d2pat(env0, d2p1) endlet
 //
 (*
 |D2Psym0 _ => f0_sym0(env0, d2p0)
@@ -341,9 +341,9 @@ D2Pdapp
 (d2f0,npf1,d2ps) =>
 let
 val () =
-  trsym2a_d2pat(env0, d2f0)
+  trsym2b_d2pat(env0, d2f0)
 val () =
-  trsym2a_d2patlst(env0, d2ps) end
+  trsym2b_d2patlst(env0, d2ps) end
 //
 |D2Pt2pck _ => f0_t2pck(env0, d2p0)
 //
@@ -374,13 +374,13 @@ val dpat = drpt.dpat((*void*))
 (*
 val () =
 prerrln
-("trsym2a_d2pat: f0_sym0: loc0 = ", loc0)
+("trsym2b_d2pat: f0_sym0: loc0 = ", loc0)
 val () =
 prerrln
-("trsym2a_d2pat: f0_sym0: d2p0 = ", d2p0)
+("trsym2b_d2pat: f0_sym0: d2p0 = ", d2p0)
 val () =
 prerrln
-("trsym2a_d2pat: f0_sym0: styp = ", t2p1)
+("trsym2b_d2pat: f0_sym0: styp = ", t2p1)
 *)
 //
 in//let
@@ -413,7 +413,7 @@ in//let
   d2rpt_set_dpat(drpt, dsym)
 end (*let*) // end of [D2Pnone0]
 |
-_(*otherwise*) => trsym2a_d2pat(env0, dpat)
+_(*otherwise*) => trsym2b_d2pat(env0, dpat)
 end where
 {
 //
@@ -510,13 +510,13 @@ val dpat = drpt.dpat((*nil*))
 (*
 val () =
 prerrln
-("trsym2a_d2pat: f0_cons: loc0 = ", loc0)
+("trsym2b_d2pat: f0_cons: loc0 = ", loc0)
 val () =
 prerrln
-("trsym2a_d2pat: f0_cons: d2p0 = ", d2p0)
+("trsym2b_d2pat: f0_cons: d2p0 = ", d2p0)
 val () =
 prerrln
-("trsym2a_d2pat: f0_cons: styp = ", t2p1)
+("trsym2b_d2pat: f0_cons: styp = ", t2p1)
 *)
 //
 in//let
@@ -535,7 +535,7 @@ val d2cs =
 (*
 val () = prerrln
 ("\
-trsym2a_d2pat: \
+trsym2b_d2pat: \
 f0_cons: d2cs(*matched*) = ", d2cs)
 *)
 //
@@ -546,7 +546,7 @@ in//let
   val dcon = d2pat_cons(loc0, d2cs) }
 end//end-of-let//end-of-[D2Pnone0(...)]
 | _
-(*otherwise*) => trsym2a_d2pat(env0, dpat)
+(*otherwise*) => trsym2b_d2pat(env0, dpat)
 //
 end (*let*) // end of [f0_cons(env0, d2p0)]
 //
@@ -590,7 +590,7 @@ val d2cs =
 (*
 val () = prerrln
 ("\
-trsym2a_d2pat: \
+trsym2b_d2pat: \
 f0_dap1: d2cs(*matched*) = ", d2cs)
 *)
 //
@@ -601,7 +601,7 @@ in//let
   val dcon = d2pat_cons(loc0, d2cs) }
 end (*let*) // end-of-[ D2Pnone0(...) ]
 | _
-(*otherwise*) => trsym2a_d2pat(env0, dpat)
+(*otherwise*) => trsym2b_d2pat(env0, dpat)
 //
 end (*let*) // end of [  D2Pcons(...)  ]
 |_(*non-D2Pcons*) => (    (*nothing*)    )
@@ -615,19 +615,19 @@ f0_t2pck
 ! tr2aenv
 , d2p0: d2pat): void =
 (
-trsym2a_d2pat(env0, d2p1)) where
+trsym2b_d2pat(env0, d2p1)) where
 {
   val-D2Pt2pck(d2p1, t2p2) = d2p0.node()
 } (*where*) // end of [f0_t2pck(env0, d2p0)]
 //
 (* ****** ****** *)
 //
-} (*where*) // end of [trsym2a_d2pat(env0,d2p0)]
+} (*where*) // end of [trsym2b_d2pat(env0,d2p0)]
 //
 (* ****** ****** *)
 //
 #implfun
-trsym2a_d2exp
+trsym2b_d2exp
 ( env0, d2e0 ) =
 let
 //
@@ -636,10 +636,10 @@ val
 loc0 = d2e0.lctn()
 val () =
 prerrln
-("trsym2a_d2exp: loc0 = ", loc0)
+("trsym2b_d2exp: loc0 = ", loc0)
 val () =
 prerrln
-("trsym2a_d2exp: d2e0 = ", d2e0)
+("trsym2b_d2exp: d2e0 = ", d2e0)
 *)
 //
 in//let
@@ -680,10 +680,10 @@ f0_sym0(env0, d2e0)
 (d2f0, s2es) =>
 let
 val () =
-trsym2a_d2exp(env0, d2f0)
+trsym2b_d2exp(env0, d2f0)
 (*
 val () =
-trsym2a_s2explst(env0, s2es)
+trsym2b_s2explst(env0, s2es)
 *)
 endlet // end of [D2Esapp(...)]
 //
@@ -691,10 +691,10 @@ endlet // end of [D2Esapp(...)]
 (d2f0, s2es) =>
 let
 val () =
-trsym2a_d2exp(env0, d2f0)
+trsym2b_d2exp(env0, d2f0)
 (*
 val () =
-trsym2a_s2explst(env0, s2es)
+trsym2b_s2explst(env0, s2es)
 *)
 endlet // end of [D2Etapp(...)]
 //
@@ -710,11 +710,11 @@ Handling arguments first!
 *)
 let
   val () =
-  trsym2a_d2exp(env0, d2f0)
+  trsym2b_d2exp(env0, d2f0)
 end where
 {
   val () =
-  trsym2a_d2explst(env0, d2es)
+  trsym2b_d2explst(env0, d2es)
 } (*where*) // end of [D2Edapp]
 //
 |
@@ -724,52 +724,52 @@ D2Eproj _ => f0_proj(env0, d2e0)
 D2Elet0
 (dcls, d2e1) =>
 (
-trsym2a_d2exp(env0, d2e1))
+trsym2b_d2exp(env0, d2e1))
 where
 { val () =
-  trsym2a_d2eclist(env0, dcls) }
+  trsym2b_d2eclist(env0, dcls) }
 |
 D2Eift0
 (d2e1,dthn,dels) =>
 let
 val () =
-trsym2a_d2exp(env0, d2e1)
+trsym2b_d2exp(env0, d2e1)
 val () =
-trsym2a_d2expopt(env0, dthn)
+trsym2b_d2expopt(env0, dthn)
 val () =
-trsym2a_d2expopt(env0, dels) end
+trsym2b_d2expopt(env0, dels) end
 //
 |
 D2Ecas0
 (tknd,d2e1,d2cs) =>
 let
 val () =
-trsym2a_d2exp(env0, d2e1)
+trsym2b_d2exp(env0, d2e1)
 val () =
-trsym2a_d2clslst(env0, d2cs) end
+trsym2b_d2clslst(env0, d2cs) end
 //
 |
 D2Eseqn
 (d2es, d2e1) =>
 (
-trsym2a_d2exp(env0, d2e1))
+trsym2b_d2exp(env0, d2e1))
 where
 { val () =
-  trsym2a_d2explst(env0, d2es) }
+  trsym2b_d2explst(env0, d2es) }
 //
 |
 D2Etup0
 ( npf1, d2es) =>
 let
 val () =
-trsym2a_d2explst(env0, d2es) end
+trsym2b_d2explst(env0, d2es) end
 |
 D2Etup1
 ( tknd
 , npf1, d2es) =>
 let
 val () =
-trsym2a_d2explst(env0, d2es) end
+trsym2b_d2explst(env0, d2es) end
 //
 |
 D2Elam0
@@ -779,11 +779,11 @@ D2Elam0
 let
 //
 val () =
-trsym2a_f2arglst(env0, f2as)
+trsym2b_f2arglst(env0, f2as)
 //
 val () =
 (
-  trsym2a_d2exp(env0, dexp)) end
+  trsym2b_d2exp(env0, dexp)) end
 //
 |
 D2Efix0
@@ -794,11 +794,11 @@ D2Efix0
 let
 //
 val () =
-trsym2a_f2arglst(env0, f2as)
+trsym2b_f2arglst(env0, f2as)
 //
 val () =
 (
-  trsym2a_d2exp(env0, dexp)) end
+  trsym2b_d2exp(env0, dexp)) end
 //
 |
 D2Etry0
@@ -806,9 +806,9 @@ D2Etry0
 , d2e1, dcls) =>
 let
 val () =
-trsym2a_d2exp(env0, d2e1)//val
+trsym2b_d2exp(env0, d2e1)//val
 val () =
-trsym2a_d2clslst(env0, dcls)//val
+trsym2b_d2clslst(env0, dcls)//val
 endlet // end-[D2Etry0(tknd,...)]
 //
 |
@@ -816,45 +816,45 @@ D2Eaddr
 (   d2e1   ) =>
 let
 val () =
-  trsym2a_d2exp(env0 , d2e1) end
+  trsym2b_d2exp(env0 , d2e1) end
 //
 |
 D2Eeval
 (   d2e1   ) =>
 let
 val () =
-  trsym2a_d2exp(env0 , d2e1) end
+  trsym2b_d2exp(env0 , d2e1) end
 //
 |
 D2Efold
 (   d2e1   ) =>
 let
 val () =
-  trsym2a_d2exp(env0 , d2e1) end
+  trsym2b_d2exp(env0 , d2e1) end
 |
 D2Efree
 (   d2e1   ) =>
 let
 val () =
-  trsym2a_d2exp(env0 , d2e1) end
+  trsym2b_d2exp(env0 , d2e1) end
 //
 |
 D2Ewhere
 (d2e1, dcls) =>
 (
-trsym2a_d2exp(env0, d2e1))
+trsym2b_d2exp(env0, d2e1))
 where
 { val () =
-  trsym2a_d2eclist(env0, dcls) }
+  trsym2b_d2eclist(env0, dcls) }
 //
 |
 D2Eassgn
 (d2el, d2er) =>
 let
 val () =
-trsym2a_d2exp(env0, d2el)
+trsym2b_d2exp(env0, d2el)
 val () =
-trsym2a_d2exp(env0, d2er) endlet
+trsym2b_d2exp(env0, d2er) endlet
 //
 |
 D2Edtsel _ =>
@@ -865,23 +865,23 @@ D2Eraise
 (tknd, d2e1) =>
 let
 val () =
-trsym2a_d2exp(env0, d2e1) endlet
+trsym2b_d2exp(env0, d2e1) endlet
 //
 |
 D2El0azy
 (dsym, d2e1) =>
 let
 val () =
-trsym2a_d2exp(env0, d2e1) endlet
+trsym2b_d2exp(env0, d2e1) endlet
 |
 D2El1azy
 ( dsym
 , d2e1, d2es) =>
 let
 val () =
-trsym2a_d2exp(env0, d2e1)
+trsym2b_d2exp(env0, d2e1)
 val () =
-trsym2a_d2explst(env0, d2es) endlet
+trsym2b_d2explst(env0, d2es) endlet
 //
 |
 D2El2bck(_, _) => f0_l2bck(env0, d2e0)
@@ -914,13 +914,13 @@ val dexp = drxp.dexp((*void*))
 (*
 val () =
 prerrln
-("trsym2a_d2exp: f0_sym0: loc0 = ", loc0)
+("trsym2b_d2exp: f0_sym0: loc0 = ", loc0)
 val () =
 prerrln
-("trsym2a_d2exp: f0_sym0: d2e0 = ", d2e0)
+("trsym2b_d2exp: f0_sym0: d2e0 = ", d2e0)
 val () =
 prerrln
-("trsym2a_d2exp: f0_sym0: t2p1 = ", t2p1)
+("trsym2b_d2exp: f0_sym0: t2p1 = ", t2p1)
 *)
 //
 in//let
@@ -958,7 +958,7 @@ in//let
 end//let
 end (*let*) // end of [D2Enone0]
 |
-_(* else *) => trsym2a_d2exp(env0, dexp)
+_(* else *) => trsym2b_d2exp(env0, dexp)
 end where // end-of-let // D2Enone0(...)
 {
 //
@@ -1109,7 +1109,7 @@ D2Eproj
 //
 val () =
 (
- trsym2a_d2exp(env0, dtup))
+ trsym2b_d2exp(env0, dtup))
 //
 val ttup =
 let
@@ -1158,13 +1158,13 @@ case+ darg of
 ( (*nothing*) )
 |optn_cons(d2es) =>
 (
-  trsym2a_d2explst(env0, d2es) )
+  trsym2b_d2explst(env0, d2es) )
 //
 end where
 {
 //
 val () = prerrln
-("trsym2a: f0_dtsel: d2e0 = ", d2e0)
+("trsym2b: f0_dtsel: d2e0 = ", d2e0)
 //
 } (*where*) // end of [f0_dtsel(env0, d2e0)]
 //
@@ -1176,7 +1176,7 @@ f0_l2bck
 ! tr2aenv
 , d2e0: d2exp): void =
 (
-trsym2a_d2exp(env0, d2e1)) where
+trsym2b_d2exp(env0, d2e1)) where
 {
   val-D2El2bck(d2e1, lab2) = d2e0.node()
 } (*where*) // end of [f0_l2bck(env0, d2e0)]
@@ -1189,19 +1189,19 @@ f0_t2pck
 ! tr2aenv
 , d2e0: d2exp): void =
 (
-trsym2a_d2exp(env0, d2e1)) where
+trsym2b_d2exp(env0, d2e1)) where
 {
   val-D2Et2pck(d2e1, t2p2) = d2e0.node()
 } (*where*) // end of [f0_t2pck(env0, d2e0)]
 //
 (* ****** ****** *)
 //
-} (*where*) // end of [trsym2a_d2exp(env0,d2e0)]
+} (*where*) // end of [trsym2b_d2exp(env0,d2e0)]
 //
 (* ****** ****** *)
 //
 #implfun
-trsym2a_f2arg
+trsym2b_f2arg
 (env0 , farg) =
 (
 case+
@@ -1209,19 +1209,19 @@ farg.node() of
 //
 |F2ARGdapp
 (npf1, d2ps) =>
-trsym2a_d2patlst(env0, d2ps)
+trsym2b_d2patlst(env0, d2ps)
 //
 |F2ARGsapp
 (s2vs, s2es) => ( (*void*) ) // F2ARGsapp
 |F2ARGmets
 (   s2es   ) => ( (*void*) ) // F2ARGmets
 //
-) (*case+*)//end-of-(trsym2a_f2arg(env0,farg)]
+) (*case+*)//end-of-(trsym2b_f2arg(env0,farg)]
 //
 (* ****** ****** *)
 //
 #implfun
-trsym2a_d2gua
+trsym2b_d2gua
 (env0 , dgua) =
 (
 case+
@@ -1229,21 +1229,21 @@ dgua.node() of
 |
 D2GUAexp
 ( d2e1 ) =>
-trsym2a_d2exp(env0, d2e1)
+trsym2b_d2exp(env0, d2e1)
 |
 D2GUAmat
 (d2e1,d2p2) =>
 let
 val () =
-trsym2a_d2exp(env0, d2e1)
+trsym2b_d2exp(env0, d2e1)
 val () =
-trsym2a_d2pat(env0, d2p2) endlet
-) (*case+*)//end-of-(trsym2a_d2gua(env0,farg)]
+trsym2b_d2pat(env0, d2p2) endlet
+) (*case+*)//end-of-(trsym2b_d2gua(env0,farg)]
 //
 (* ****** ****** *)
 //
 #implfun
-trsym2a_d2gpt
+trsym2b_d2gpt
 (env0 , dgpt) =
 (
 case+
@@ -1251,83 +1251,83 @@ dgpt.node() of
 |
 D2GPTpat
 ( d2p1 ) => 
-trsym2a_d2pat(env0, d2p1)
+trsym2b_d2pat(env0, d2p1)
 |
 D2GPTgua
 (d2p1,d2gs) =>
 let
 val () =
-trsym2a_d2pat(env0, d2p1)
+trsym2b_d2pat(env0, d2p1)
 val () =
-trsym2a_d2gualst(env0, d2gs) endlet
-) (*case+*)//end-of-(trsym2a_d2gpt(env0,farg)]
+trsym2b_d2gualst(env0, d2gs) endlet
+) (*case+*)//end-of-(trsym2b_d2gpt(env0,farg)]
 //
 (* ****** ****** *)
 //
 #implfun
-trsym2a_d2cls
+trsym2b_d2cls
 (env0 , dcls) =
 (
 case+
 dcls.node() of
 |
 D2CLSgpt(dgpt) =>
-trsym2a_d2gpt(env0, dgpt)
+trsym2b_d2gpt(env0, dgpt)
 |
 D2CLScls(dgpt,d2e2) =>
 let
-val () = trsym2a_d2gpt(env0, dgpt)
-val () = trsym2a_d2exp(env0, d2e2)
+val () = trsym2b_d2gpt(env0, dgpt)
+val () = trsym2b_d2exp(env0, d2e2)
 endlet // end of [ D2CLScls(_,_,_) ]
-) (*case*) // end-of(trsym2a_d2cls(env0,dcls))
+) (*case*) // end-of(trsym2b_d2cls(env0,dcls))
 //
 (* ****** ****** *)
 //
 #implfun
-trsym2a_d2patlst
+trsym2b_d2patlst
 ( env0, d2ps ) =
-list_trsym2a_fnp(env0, d2ps, trsym2a_d2pat)
+list_trsym2b_fnp(env0, d2ps, trsym2b_d2pat)
 //
 #implfun
-trsym2a_l2d2plst
+trsym2b_l2d2plst
 ( env0, ldps ) =
-list_trsym2a_fnp(env0, ldps, trsym2a_l2d2p)
+list_trsym2b_fnp(env0, ldps, trsym2b_l2d2p)
 //
 (* ****** ****** *)
 //
 #implfun
-trsym2a_d2explst
+trsym2b_d2explst
 ( env0, d2es ) =
-list_trsym2a_fnp(env0, d2es, trsym2a_d2exp)
+list_trsym2b_fnp(env0, d2es, trsym2b_d2exp)
 #implfun
-trsym2a_d2expopt
+trsym2b_d2expopt
 ( env0, dopt ) =
-optn_trsym2a_fnp(env0, dopt, trsym2a_d2exp)
+optn_trsym2b_fnp(env0, dopt, trsym2b_d2exp)
 //
 #implfun
-trsym2a_l2d2elst
+trsym2b_l2d2elst
 ( env0, ldes ) =
-list_trsym2a_fnp(env0, ldes, trsym2a_l2d2e)
+list_trsym2b_fnp(env0, ldes, trsym2b_l2d2e)
 //
 (* ****** ****** *)
 //
 #implfun
-trsym2a_f2arglst
+trsym2b_f2arglst
 ( env0, f2as ) =
-list_trsym2a_fnp(env0, f2as, trsym2a_f2arg)
+list_trsym2b_fnp(env0, f2as, trsym2b_f2arg)
 //
 (* ****** ****** *)
 //
 #implfun
-trsym2a_d2gualst
+trsym2b_d2gualst
 ( env0, d2gs ) =
-list_trsym2a_fnp(env0, d2gs, trsym2a_d2gua)
+list_trsym2b_fnp(env0, d2gs, trsym2b_d2gua)
 //
 #implfun
-trsym2a_d2clslst
+trsym2b_d2clslst
 ( env0, d2cs ) =
-list_trsym2a_fnp(env0, d2cs, trsym2a_d2cls)
+list_trsym2b_fnp(env0, d2cs, trsym2b_d2cls)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trsym2a_dynexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_trsym2b_dynexp.dats] *)

@@ -2,6 +2,15 @@
 #staload UN =
 "prelude/SATS/unsafex.sats"
 (* ****** ****** *)
+//
+#impltmp
+gint_add_sint_sint
+  < (*nil*) >(x, y) = (x + y)
+#impltmp
+gint_sub_sint_sint
+  < (*nil*) >(x, y) = (x - y)
+//
+(* ****** ****** *)
 
 val x1 = 1
 and x2 = 2

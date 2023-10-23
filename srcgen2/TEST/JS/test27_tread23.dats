@@ -49,7 +49,7 @@
 #staload
 "./../../SATS/trans2a.sats"
 #staload
-"./../../SATS/trsym2a.sats"
+"./../../SATS/trsym2b.sats"
 (* ****** ****** *)
 #staload
 "./../../SATS/tread22.sats"
@@ -275,13 +275,13 @@
 "./../../DATS/trans2a_decl00.dats"
 (* ****** ****** *)
 #include
-"./../../DATS/trsym2a.dats"
+"./../../DATS/trsym2b.dats"
 #include
-"./../../DATS/trsym2a_utils0.dats"
+"./../../DATS/trsym2b_utils0.dats"
 #include
-"./../../DATS/trsym2a_dynexp.dats"
+"./../../DATS/trsym2b_dynexp.dats"
 #include
-"./../../DATS/trsym2a_decl00.dats"
+"./../../DATS/trsym2b_decl00.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/tread22.dats"
@@ -423,7 +423,7 @@ val
 dpar =
 let
 val () =
-d2parsed_at_trsym2a(dpar) in dpar
+d2parsed_at_trsym2b(dpar) in dpar
 end
 //
 (* ****** ****** *)

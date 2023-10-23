@@ -53,12 +53,21 @@
 (* ****** ****** *)
 #staload
 "./../../SATS/tread22.sats"
-(* ****** ****** *)
 #staload
 "./../../SATS/fperr22.sats"
 (* ****** ****** *)
 #staload
 "./../../SATS/trans23.sats"
+#staload
+"./../../SATS/tread23.sats"
+(* ****** ****** *)
+#staload
+"./../../SATS/trans3a.sats"
+(* ****** ****** *)
+#staload
+"./../../SATS/tread33.sats"
+#staload
+"./../../SATS/fperr33.sats"
 (* ****** ****** *)
 #include
 "./../../DATS/xbasics.dats"
@@ -301,6 +310,8 @@
 "./../../DATS/dynexp3.dats"
 #include
 "./../../DATS/dynexp3_print0.dats"
+#include
+"./../../DATS/dynexp3_utils0.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/trans23.dats"
@@ -322,31 +333,48 @@
 #include
 "./../../DATS/tread23_errmsg.dats"
 (* ****** ****** *)
-//
-local
-//
+#include
+"./../../DATS/trans3a.dats"
+#include
+"./../../DATS/trans3a_myenv0.dats"
+#include
+"./../../DATS/trans3a_staexp.dats"
+#include
+"./../../DATS/trans3a_dynexp.dats"
+#include
+"./../../DATS/trans3a_decl00.dats"
 (* ****** ****** *)
-//
-#impltmp
-optn_print$beg<>() = ()
-#impltmp
-optn_print$end<>() = ()
-//
-#impltmp
-list_print$beg<>() = ()
-#impltmp
-list_print$end<>() = ()
-#impltmp
-list_print$sep<>() = print("\n")
-//
+#include
+"./../../DATS/trtmp3b.dats"
+#include
+"./../../DATS/trtmp3b_myenv0.dats"
+#include
+"./../../DATS/trtmp3b_utils0.dats"
+#include
+"./../../DATS/trtmp3b_dynexp.dats"
+#include
+"./../../DATS/trtmp3b_decl00.dats"
 (* ****** ****** *)
-//
-(*
-#impltmp
-g_print<token>(tok) =
-print(tok.lctn(), ":", tok.node())
-*)
-//
+#include
+"./../../DATS/tread33.dats"
+#include
+"./../../DATS/tread33_staexp.dats"
+#include
+"./../../DATS/tread33_dynexp.dats"
+#include
+"./../../DATS/tread33_decl00.dats"
+(* ****** ****** *)
+#include
+"./../../DATS/fperr33.dats"
+#include
+"./../../DATS/fperr33_dynexp.dats"
+#include
+"./../../DATS/fperr33_decl00.dats"
+(* ****** ****** *)
+#include
+"./../../DATS/xatsopt.dats"
+#include
+"./../../DATS/xatsopt_utils0.dats"
 (* ****** ****** *)
 //
 val ret =
@@ -360,103 +388,24 @@ val (  ) =
 prerrln("the_tr12env_pvsload() = ", ret)
 //
 (* ****** ****** *)
-in//local
 (* ****** ****** *)
-//
+val (  ) =
+let
 val dpar =
-d0parsed_from_fpath
-(1(*dyn*), "./DATA/mytryw.dats")
+  d3parsed_of_trtmp3b(dpar)
 //
-val
-dpar =
-d0parsed_of_preadx0(dpar)
+// (*
+val dpar =
+  d3parsed_of_tread33(dpar)
+// *)
 //
-val
-(  ) = let
-val out = g_stderr()
 in//let
-d0parsed_fpemsg( out, dpar )
-end // let
-//
-val
-dpar =
-d1parsed_of_trans01(dpar)
-val
-dpar =
-d1parsed_of_tread01(dpar)
-//
-val () =
-let
-val out = g_stderr()
-in//let
-d1parsed_fpemsg( out, dpar ) end // let
-//
+  fperr33_d3parsed
+  (g_stderr((*tmp*)), dpar) end where
+{
+val dpar =
+d3parsed_of_fildats("./DATA/trtmp3b_002.dats") }
 (* ****** ****** *)
-//
-val
-(  ) =
-prerrln
-("d1parsed_from_fpath(\"./DATA/mytryw.dats\") =\n", dpar)
-//
-(* ****** ****** *)
-//
-val
-dpar =
-d2parsed_of_trans12(dpar)
-val
-dpar =
-d2parsed_of_tread12(dpar)
-//
-val () =
-let
-val out = g_stderr()
-in//let
-d2parsed_fpemsg( out, dpar ) end // let
-//
-(* ****** ****** *)
-//
-val
-dpar =
-d2parsed_of_trans2a(dpar)
-//
-val
-dpar =
-let
-val () =
-d2parsed_at_trsym2b(dpar) in dpar
-end
-//
-(* ****** ****** *)
-//
-val
-dpar = d2parsed_of_tread22(dpar)
-//
-val (  ) =
-fperr22_d2parsed(g_stderr(), dpar)
-//
-(* ****** ****** *)
-//
-val
-dpar = d3parsed_of_trans23(dpar)
-val
-dpar = d3parsed_of_tread23(dpar)
-//
-val () =
-let
-val out = g_stderr()
-in//let
-d3parsed_fpemsg( out, dpar ) end // let
-//
-(* ****** ****** *)
-//
-val (  ) =
-prerrln
-("d3parsed_from_fpath(\"./DATA/mytryw.dats\") =\n", dpar)
-//
-(* ****** ****** *)
-//
-endloc (*local*) // end-of-[local]
-//
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_TEST_JS_test31_tread23.dats] *)
+(* end of [ATS3/XATSOPT_TEST_JS_test46_xatsopt.dats] *)
