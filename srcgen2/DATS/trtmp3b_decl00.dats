@@ -216,6 +216,15 @@ D3Cstaload
 ,tknd, gsrc
 ,fopt, dopt) = d3cl.node()
 //
+val () = prerrln
+("f0_staload(3b): knd0 = ", knd0)
+val () = prerrln
+("f0_staload(3b): tknd = ", tknd)
+val () = prerrln
+("f0_staload(3b): gsrc = ", gsrc)
+val () = prerrln
+("f0_staload(3b): dopt = ", dopt)
+//
 in//let
 if
 knd0 = 0 // static

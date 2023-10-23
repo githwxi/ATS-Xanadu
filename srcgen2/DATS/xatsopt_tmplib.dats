@@ -1327,6 +1327,26 @@ WTHS2EXPsome(tok0, s2e1) =>
 print("WTHS2EXPsome(", tok0, ";", s2e1, ")"))
 //
 (* ****** ****** *)
+//
+#impltmp
+g_print
+<f2env>(fenv) = print("<f2env>")
+//
+(* ****** ****** *)
+
+#impltmp
+g_print
+<s2taloadopt>(dopt) =
+(
+case+ dopt of
+|S2TALOADnone() =>
+print("S2TALOADnone(", ")")
+|S2TALOADfenv(fenv) =>
+print("S2TALOADfenv(", fenv, ")")
+|S2TALOADdpar(knd0, dpar) =>
+print("S2TALOADdpar(", knd0, ";", dpar, ")"))
+
+(* ****** ****** *)
 (*
 HX: for level-3 syntax
 *)
@@ -1475,6 +1495,18 @@ print("TEQD3EXPnone(", ")")
 TEQD3EXPsome(tok0, d3e1) =>
 print("TEQD3EXPsome(",tok0,";",d3e1,")"))
 endlet // end-of-[g_print<teqd3exp>(tdxp)]
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<s3taloadopt>(dopt) =
+(
+case+ dopt of
+|S3TALOADnone(dopt) =>
+print("S3TALOADnone(", dopt, ")")
+|S3TALOADdpar(knd0, dpar) =>
+print("S3TALOADdpar(", knd0, ";", dpar, ")"))
 //
 (* ****** ****** *)
 (*
