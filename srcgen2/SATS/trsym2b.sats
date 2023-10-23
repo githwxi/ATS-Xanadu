@@ -56,22 +56,22 @@ This one is a continuation of [trans2a]
 (*
 HX-2023-05-20:
 Note that the name is
-not [d2parsed_of_trsym2a]
+not [d2parsed_of_trsym2b]
 *)
 (*
 fun
-trsym2a_at_d2parsed
+trsym2b_at_d2parsed
 ( dpar : d2parsed ): (void)
 *)
 fun
-d2parsed_at_trsym2a
+d2parsed_at_trsym2b
 ( dpar : d2parsed ): (void)
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
-list_trsym2a_fnp
+list_trsym2b_fnp
 ( e1:
 ! tr2aenv
 , xs: list(x0)
@@ -79,7 +79,7 @@ list_trsym2a_fnp
 fun
 <x0:t0>
 <y0:t0>
-optn_trsym2a_fnp
+optn_trsym2b_fnp
 ( e1:
 ! tr2aenv
 , xs: optn(x0)
@@ -88,121 +88,121 @@ optn_trsym2a_fnp
 (* ****** ****** *)
 //
 fun
-trsym2a_d2pat
+trsym2b_d2pat
 (env0: !tr2aenv, d2p0: d2pat): void
 //
 fun
-trsym2a_d2exp
+trsym2b_d2exp
 (env0: !tr2aenv, d2e0: d2exp): void
 //
 (* ****** ****** *)
 //
 fun
-trsym2a_l2d2p
+trsym2b_l2d2p
 (env0: !tr2aenv, ld2p: l2d2p): void
 //
 fun
-trsym2a_l2d2e
+trsym2b_l2d2e
 (env0: !tr2aenv, ld2e: l2d2e): void
 //
 (* ****** ****** *)
 //
 fun
-trsym2a_f2arg
+trsym2b_f2arg
 (env0: !tr2aenv, f2a0: f2arg): void
 //
 (* ****** ****** *)
 //
 fun
-trsym2a_d2gua
+trsym2b_d2gua
 (env0: !tr2aenv, dgua: d2gua): void
 fun
-trsym2a_d2gpt
+trsym2b_d2gpt
 (env0: !tr2aenv, dgpt: d2gpt): void
 fun
-trsym2a_d2cls
+trsym2b_d2cls
 (env0: !tr2aenv, dcls: d2cls): void
 //
 (* ****** ****** *)
 //
 fun
-trsym2a_d2ecl
+trsym2b_d2ecl
 (env0: !tr2aenv, d2cl: d2ecl): void
 //
 (* ****** ****** *)
 //
 fun
-trsym2a_d2patlst
+trsym2b_d2patlst
 (env0: !tr2aenv, d2ps: d2patlst): void
 fun
-trsym2a_d2expopt
+trsym2b_d2expopt
 (env0: !tr2aenv, dopt: d2expopt): void
 fun
-trsym2a_d2explst
+trsym2b_d2explst
 (env0: !tr2aenv, d2es: d2explst): void
 //
 (* ****** ****** *)
 //
 fun
-trsym2a_l2d2plst
+trsym2b_l2d2plst
 (env0: !tr2aenv, ldps: l2d2plst): void
 fun
-trsym2a_l2d2elst
+trsym2b_l2d2elst
 (env0: !tr2aenv, ldes: l2d2elst): void
 //
 (* ****** ****** *)
 //
 fun
-trsym2a_f2arglst
+trsym2b_f2arglst
 (env0: !tr2aenv, f2as: f2arglst): void
 //
 (* ****** ****** *)
 //
 fun
-trsym2a_d2gualst
+trsym2b_d2gualst
 (env0: !tr2aenv, d2gs: d2gualst): void
 //
 fun
-trsym2a_d2clslst
+trsym2b_d2clslst
 (env0: !tr2aenv, dcls: d2clslst): void
 //
 (* ****** ****** *)
 //
 fun
-trsym2a_d2eclist
+trsym2b_d2eclist
 (env0: !tr2aenv, d2cs: d2eclist): void
 //
 (* ****** ****** *)
 fun
-trsym2a_teqd2exp
+trsym2b_teqd2exp
 (env0: !tr2aenv, tdxp: teqd2exp): void
 (* ****** ****** *)
 //
 fun
-trsym2a_d2valdcl
+trsym2b_d2valdcl
 (env0: !tr2aenv, dval: d2valdcl): void
 fun
-trsym2a_d2vardcl
+trsym2b_d2vardcl
 (env0: !tr2aenv, dvar: d2vardcl): void
 fun
-trsym2a_d2fundcl
+trsym2b_d2fundcl
 (env0: !tr2aenv, dfun: d2fundcl): void
 //
 (* ****** ****** *)
 //
 fun
-trsym2a_d2valdclist
+trsym2b_d2valdclist
 (env0: !tr2aenv, d2vs: d2valdclist): void
 fun
-trsym2a_d2vardclist
+trsym2b_d2vardclist
 (env0: !tr2aenv, d2vs: d2vardclist): void
 fun
-trsym2a_d2fundclist
+trsym2b_d2fundclist
 (env0: !tr2aenv, d2fs: d2fundclist): void
 //
 (* ****** ****** *)
 fun
-trsym2a_d2eclistopt
+trsym2b_d2eclistopt
 (env0: !tr2aenv, dopt: d2eclistopt): void
 (* ****** ****** *)
 
@@ -271,4 +271,4 @@ match2a_d2ptmlst
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trsym2a.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_trsym2b.sats] *)

@@ -53,12 +53,12 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans2a.sats"
-#staload "./../SATS/trsym2a.sats"
+#staload "./../SATS/trsym2b.sats"
 (* ****** ****** *)
 //
 #implfun
 <x0>(*tmp*)
-list_trsym2a_fnp
+list_trsym2b_fnp
 ( e1, xs, work ) =
 (
   loop(e1, xs) ) where
@@ -72,24 +72,24 @@ case+ xs of
 | list_nil() => ()
 | list_cons(x1, xs) =>
   (work(e1, x1); loop(e1, xs)))
-}(*where*)//end(list_trsym2a_fnp(e1,xs,work))
+}(*where*)//end(list_trsym2b_fnp(e1,xs,work))
 //
 (* ****** ****** *)
 //
 #implfun
 <x0>(*tmp*)
-optn_trsym2a_fnp
+optn_trsym2b_fnp
 ( e1, xs, work ) =
 (
 case+ xs of
 | optn_nil() => ()
 | optn_cons(x1) => work(e1, x1)
-)(*case+*)//end(optn_trsym2a_fnp(e1,xs,work))
+)(*case+*)//end(optn_trsym2b_fnp(e1,xs,work))
 //
 (* ****** ****** *)
 
 #implfun
-d2parsed_at_trsym2a
+d2parsed_at_trsym2b
   (dpar) = let
 //
 val
@@ -100,14 +100,14 @@ val
 env0 = tr2aenv_make_nil()
 //
 val () =
-trsym2a_d2eclistopt(env0, parsed)
+trsym2b_d2eclistopt(env0, parsed)
 //
 in//let
 let
 val d2cenv = tr2aenv_free_top(env0)
 end
-end (*let*)//end-of-[d2parsed_at_trsym2a(dpar)]
+end (*let*)//end-of-[d2parsed_at_trsym2b(dpar)]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trsym2a.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_trsym2b.dats] *)

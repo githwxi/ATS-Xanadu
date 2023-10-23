@@ -149,8 +149,8 @@ all_sats:: \
 trans2a_sats
 trans2a_sats: ; $(XATSOPT) --static SATS/trans2a.sats
 all_sats:: \
-trsym2a_sats
-trsym2a_sats: ; $(XATSOPT) --static SATS/trsym2a.sats
+trsym2b_sats
+trsym2b_sats: ; $(XATSOPT) --static SATS/trsym2b.sats
 ######
 all_sats:: \
 tread22_sats
@@ -609,17 +609,17 @@ trans2a_decl00_dats: ; $(XATSOPT) --dynamic DATS/trans2a_decl00.dats
 
 ######
 all_dats:: \
-trsym2a_dats
-trsym2a_dats: ; $(XATSOPT) --dynamic DATS/trsym2a.dats
+trsym2b_dats
+trsym2b_dats: ; $(XATSOPT) --dynamic DATS/trsym2b.dats
 all_dats:: \
-trsym2a_utils0_dats
-trsym2a_utils0_dats: ; $(XATSOPT) --dynamic DATS/trsym2a_utils0.dats
+trsym2b_utils0_dats
+trsym2b_utils0_dats: ; $(XATSOPT) --dynamic DATS/trsym2b_utils0.dats
 all_dats:: \
-trsym2a_dynexp_dats
-trsym2a_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trsym2a_dynexp.dats
+trsym2b_dynexp_dats
+trsym2b_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trsym2b_dynexp.dats
 all_dats:: \
-trsym2a_decl00_dats
-trsym2a_decl00_dats: ; $(XATSOPT) --dynamic DATS/trsym2a_decl00.dats
+trsym2b_decl00_dats
+trsym2b_decl00_dats: ; $(XATSOPT) --dynamic DATS/trsym2b_decl00.dats
 ######
 
 ######

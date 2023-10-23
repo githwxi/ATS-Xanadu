@@ -52,7 +52,7 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans2a.sats"
-#staload "./../SATS/trsym2a.sats"
+#staload "./../SATS/trsym2b.sats"
 (* ****** ****** *)
 #staload _ = "./statyp2_tmplib.dats"
 (* ****** ****** *)
@@ -408,4 +408,4 @@ list_cons
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trsym2a_utils0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_trsym2b_utils0.dats] *)
