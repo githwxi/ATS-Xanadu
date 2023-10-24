@@ -59,6 +59,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload name with d2cst_get_name
 (* ****** ****** *)
+#staload _ = "./xsymmap_topmap.dats"
+(* ****** ****** *)
 
 #implfun
 static_search_cst
