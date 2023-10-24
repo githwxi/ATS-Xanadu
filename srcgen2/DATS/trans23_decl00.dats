@@ -64,6 +64,9 @@ _(*TRANS23*) = "./trans23.dats"
 (* ****** ****** *)
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
+#staload "./../SATS/trans2a.sats"
+#staload "./../SATS/trsym2b.sats"
+(* ****** ****** *)
 #staload "./../SATS/trans23.sats"
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"
@@ -107,6 +110,10 @@ let
 in(*let*)
 (0, dpar) where
 {
+val dpar =
+d2parsed_of_trans2a(dpar)
+val (  ) =
+d2parsed_at_trsym2b(dpar)
 val dpar =
 d3parsed_of_trans23(dpar)
 val (  ) =

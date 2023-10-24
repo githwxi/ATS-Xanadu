@@ -212,6 +212,13 @@ trsym2b_d2eclistopt(env0, dopt)
 endlet // end of [D2Cinclude(...)]
 //
 |
+D2Cstaload
+( knd0
+, tknd, gsrc
+, fopt, dopt) = d2cl.node() in (*0*)
+end (*let*) // end of [f0_staload(...)]
+//
+|
 D2Cvaldclst
 (tknd, d2vs) => let
 val () =
