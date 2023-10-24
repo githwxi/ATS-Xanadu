@@ -136,5 +136,38 @@ prerrln("static_search_cst: d2c0 = ", d2c0)
 } (*where*)//end of [static_search_cst(...)]
 
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+tr3benv_tapq_resolve
+  (env0, d2c0, t2js) =
+let
+//
+val
+stmp =
+tr3benv_getstmp(env0)
+//
+val
+dcls =
+tr3benv_search_cst(env0, d2c0)
+//
+in//let
+let
+val
+dcls = list_vt2t(dcls)
+in//let
+  timpl_make_node
+  (stmp, TIMPLall1(d2c0, dcls)) end//let
+end where
+{
+//
+val () =
+prerrln("tr3benv_tapq_resolve: d2c0 = ", d2c0)
+val () =
+prerrln("tr3benv_tapq_resolve: t2js = ", t2js)
+//
+}(*where*)//end-of-[tr3benv_tapq_resolve(env0,...)]
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trtmp3b_utils0.dats] *)
