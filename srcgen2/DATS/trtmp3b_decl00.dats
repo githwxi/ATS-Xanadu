@@ -106,6 +106,10 @@ in//let
 case+
 d3cl.node() of
 //
+|D3Cnone0 _ => d3cl
+|D3Cd2ecl _ => d3cl
+|D3Cerrck _ => d3cl
+//
 |D3Clocal0 _ =>
 (
 f0_local0(env0, d3cl))

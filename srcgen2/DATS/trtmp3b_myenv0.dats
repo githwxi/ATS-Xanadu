@@ -294,11 +294,11 @@ dcl.node() of
 //
 | D3Cfundclst _ =>
 (
-  d3ecl_d2ceq(dcl, d2c) )
+  d3ecl_impld2cq(dcl, d2c) )
 //
 | D3Cimpltmp _ =>
 (
-  d3ecl_d2ceq(dcl, d2c) )
+  d3ecl_impld2cq(dcl, d2c) )
 //
 | D3Ctmplocal
   (dcl1, dcls) => test(dcl, d2c)

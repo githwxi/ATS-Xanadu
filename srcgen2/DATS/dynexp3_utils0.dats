@@ -55,8 +55,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #implfun
-d3ecl_d2ceq
-(d3cl, d2c0) =
+d3ecl_impld2cq
+( d3cl, d2c0 ) =
 (
 case+
 d3cl.node() of
@@ -112,7 +112,7 @@ dimp.node() of
 //
 end (*let*) // end of [f0_implmnt0(...)]
 //
-} (*where*) // end of [d3ecl_d2ceq(...)]
+} (*where*) // end of [d3ecl_impld2cq(...)]
 //
 (* ****** ****** *)
 //

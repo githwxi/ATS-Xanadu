@@ -791,9 +791,16 @@ d3ecl_none0(loc0:loc_t):(d3ecl)
 fun
 d3ecl_none1(d2cl:d2ecl):(d3ecl)
 (* ****** ****** *)
+//
 fun
-d3ecl_d2ceq
-(d3cl:d3ecl, d2c0:d2cst): bool
+d3ecl_s2vts
+(d3cl:d3ecl,svts:s2vts):(d3ecl)
+//
+(* ****** ****** *)
+//
+fun
+d3ecl_impld2cq
+(d3cl:d3ecl,d2c0:d2cst): bool
 (* ****** ****** *)
 //
 fun
