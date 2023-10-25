@@ -505,16 +505,16 @@ fun
 glseq_mul0$nil(): (x0)
 fun
 <xs:vt>
-<x0:vt>glseq_mul0(xs): (x0)
+<x0:vt>glseq_mul0(~xs): (x0)
 //
 fun
 <xs:vt>
 <x0:vt>
-<y0:vt>glseq_map0_add0(xs): (y0)
+<y0:vt>glseq_map0_add0(~xs): (y0)
 fun
 <xs:vt>
 <x0:vt>
-<y0:vt>glseq_map0_mul0(xs): (y0)
+<y0:vt>glseq_map0_mul0(~xs): (y0)
 //
 (* ****** ****** *)
 //
