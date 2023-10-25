@@ -33,4 +33,10 @@ foldl$fopr
 
 (* ****** ****** *)
 
+fun
+fact(n: int): int =
+glseq_mul0(strm_vt_range_lte(1, n))
+
+(* ****** ****** *)
+
 (* end of [DATA/trtmp3b_002.dats] *)

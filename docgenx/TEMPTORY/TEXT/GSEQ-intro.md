@@ -71,23 +71,23 @@ to as a combinator (which originally means a closed term in lambda-calculus).
 ------
 
 * **rforall**:
-  It is like `forall` but processing in done in the reverse order.
+  It is like `forall` but processing is done in the reverse order.
 * **rexists**:
-  It is like `exists` but processing in done in the reverse order.
+  It is like `exists` but processing is done in the reverse order.
 * **rforeach**:
-  It is like `foreach` but processing in done in the reverse order.
+  It is like `foreach` but processing is done in the reverse order.
 
 * **foldr**:
-  It is like `foldl` but processing in done in the reverse order.
+  It is like `foldl` but processing is done in the reverse order.
 
 * **rlistize**:
   It is for turning a given sequence into a linear list
   in the reverse order.
   
 * **rmap_list**:
-  It is like `map_list` but processing in done in the reverse order.
+  It is like `map_list` but processing is done in the reverse order.
 * **rmap_rlist**:
-  It is like `map_rlist` but processing in done in the reverse order.
+  It is like `map_rlist` but processing is done in the reverse order.
 
 ------
 
