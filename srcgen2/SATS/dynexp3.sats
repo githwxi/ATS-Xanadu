@@ -793,8 +793,8 @@ d3ecl_none1(d2cl:d2ecl):(d3ecl)
 (* ****** ****** *)
 //
 fun
-d3ecl_s2vts
-(d3cl:d3ecl,svts:s2vts):(d3ecl)
+d3ecl_tmpsub
+(tsub:s2vts,d3cl:d3ecl):(d3ecl)
 //
 (* ****** ****** *)
 //

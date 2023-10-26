@@ -114,9 +114,7 @@ d3e0.node() of
 //
 |D3Etup0 _ => f0_tup0(env0, d3e0)
 |D3Etup1 _ => f0_tup1(env0, d3e0)
-(*
 |D3Ercd2 _ => f0_rcd2(env0, d3e0)
-*)
 //
 |D3Ewhere _ => f0_where(env0, d3e0)
 //

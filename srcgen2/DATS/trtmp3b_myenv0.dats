@@ -304,7 +304,15 @@ dcl.node() of
   (dcl1, dcls) => test(dcl, d2c)
 //
 | _(* otherwise *) => (   false   )
-) (*case+*) // end of [test(dcl,d2c)]
+) where
+{
+//
+val () =
+prerr("tmpstk_search_cst: ")
+val () = prerrln("test: dcl = ", dcl)
+val () = prerrln("test: d2c = ", d2c)
+//
+}(*where*) // end of [ test(dcl, d2c) ]
 //
 fun
 loop

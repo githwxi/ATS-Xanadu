@@ -87,6 +87,8 @@ exists$test
 }
 end (*let*) // end of [f0_fundclst(...)]
 
+(* ****** ******)
+
 fun
 f0_implmnt0
 (d3cl: d3ecl): bool =
