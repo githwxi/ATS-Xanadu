@@ -50,6 +50,8 @@ _(*Trtmp3b*) = "./trtmp3b.dats"
 (* ****** ****** *)
 #staload "./../SATS/xstamp0.sats"
 (* ****** ****** *)
+#staload "./../SATS/dynexp2.sats"
+(* ****** ****** *)
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
 #staload "./../SATS/trtmp3b.sats"
@@ -109,6 +111,9 @@ d3cl.node() of
 |D3Cnone0 _ => d3cl
 |D3Cd2ecl _ => d3cl
 |D3Cerrck _ => d3cl
+//
+|D3Cstatic _ => d3cl
+|D3Cextern _ => d3cl
 //
 |D3Clocal0 _ =>
 (
@@ -370,16 +375,16 @@ D3Cimplmnt0
 //
 in//let
 //
-case+ tias of
-|
-list_cons _ =>
+if
+dimpl_tmpq(dimp)
+then // if-then
 (
   d3cl ) where // tmp
 {
 val () =
-tr3benv_insert_dcl(env0, d3cl) }
-|
-list_nil((*fun*)) => 
+tr3benv_insert_dcl(env0, d3cl)
+}
+else // if-else
 let
 val
 dexp =
@@ -390,7 +395,7 @@ loc0,
 D3Cimplmnt0
 ( tknd,stmp
 , sqas,tqas,dimp,tias,f3as,sres,dexp))
-end(*let*)//end-of-[  list_nil(...)  ]
+end(*let*)//end-of-[if-then-else]
 //
 end(*let*)//end-of-[f0_implmnt0(env0,d3cl)]
 //

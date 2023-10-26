@@ -131,6 +131,14 @@ d2cl.lctn(),D3Cnone1(d2cl))
 //
 (* ****** ****** *)
 //
+#implfun
+d3ecl_tmpsub
+(tsub, d3cl) =
+d3ecl_make_node
+(d3cl.lctn(),D3Ctmpsub(tsub, d3cl))
+//
+(* ****** ****** *)
+//
 local
 val
 stamper = stamper_new()
