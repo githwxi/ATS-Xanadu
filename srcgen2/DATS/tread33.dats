@@ -144,8 +144,10 @@ d3parsed_get_parsed(dpar)
 val parsed =
 tread33_d3eclistopt(parsed, nerror)
 //
+(*
 val (    ) = prerrln
 ("d3parsed_of_tread33: t3penv = ", t3penv)
+*)
 //
 in//let
 //
