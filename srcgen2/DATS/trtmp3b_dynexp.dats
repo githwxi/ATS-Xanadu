@@ -112,6 +112,12 @@ d3e0.node() of
 |D3Eift0 _ => f0_ift0(env0, d3e0)
 |D3Ecas0 _ => f0_cas0(env0, d3e0)
 //
+|D3Etup0 _ => f0_tup0(env0, d3e0)
+|D3Etup1 _ => f0_tup1(env0, d3e0)
+(*
+|D3Ercd2 _ => f0_rcd2(env0, d3e0)
+*)
+//
 |D3Ewhere _ => f0_where(env0, d3e0)
 //
 | _(* otherwise *) => d3exp_none2(d3e0)
@@ -303,6 +309,79 @@ end (*let*) // end of [f0_cas0(env0,d3e0)]
 (* ****** ****** *)
 //
 fun
+f0_tup0
+( env0:
+! tr3benv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val-
+D3Etup0
+( npf1, d3es) = d3e0.node()
+//
+val t2p0 = d3e0.styp((*0*))
+//
+val d3es =
+  trtmp3b_d3explst(env0, d3es)
+//
+in//let
+d3exp(loc0, t2p0, D3Etup0(npf1, d3es))
+end (*let*) // end-of-[f0_tup0(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup1
+( env0:
+! tr3benv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val-
+D3Etup1
+( knd0
+, npf1, d3es) = d3e0.node()
+//
+val t2p0 = d3e0.styp((*0*))
+//
+val d3es =
+  trtmp3b_d3explst(env0, d3es)
+//
+in//let
+d3exp_make_styp_node
+(loc0, t2p0, D3Etup1(knd0, npf1, d3es))
+end (*let*) // end-of-[f0_tup1(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_rcd2
+( env0:
+! tr3benv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val-
+D3Ercd2
+( knd0
+, npf1, ldes) = d3e0.node()
+//
+val t2p0 = d3e0.styp((*0*))
+//
+val ldes =
+  trtmp3b_l3d3elst(env0, ldes)
+//
+in//let
+d3exp_make_styp_node
+(loc0, t2p0, D3Ercd2(knd0, npf1, ldes))
+end (*let*) // end-of-[f0_rcd2(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_where
 ( env0:
 ! tr3benv
@@ -337,6 +416,21 @@ end (*let*) // end of [f0_where(env0,...)]
 (* ****** ****** *)
 //
 } (*where*)//end-of-[trtmp3b_d3exp(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+#implfun
+trtmp3b_l3d3e
+( env0,ld3e ) =
+let
+//
+val+
+D3LAB
+(lab0, d3e1) = ld3e
+//
+in//let
+D3LAB(lab0, trtmp3b_d3exp(env0, d3e1))
+end (*let*)//end-of-[trtmp3b_l3d3e(env0,ld3e)]
 //
 (* ****** ****** *)
 //
@@ -443,6 +537,14 @@ trtmp3b_d3expopt
 ( env0, dopt ) =
 (
   optn_trtmp3b_fnp(env0, dopt, trtmp3b_d3exp))
+//
+(* ****** ****** *)
+//
+#implfun
+trtmp3b_l3d3elst
+( env0, ldes ) =
+(
+  list_trtmp3b_fnp(env0, ldes, trtmp3b_l3d3e))
 //
 (* ****** ****** *)
 //

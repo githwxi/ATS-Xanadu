@@ -39,4 +39,18 @@ glseq_mul0(strm_vt_range_lte(1, n))
 
 (* ****** ****** *)
 
+fun
+fibo(x: int): int =
+let
+val (r0, r1) =
+foldl(x, (0, 1)) in r0 end
+where{
+#typedef x0 = sint
+#typedef r0 = (sint, sint)
+#impltmp
+foldl$fopr
+<x0><r0>((r0, r1), i) = (r1, r0+r1) }
+
+(* ****** ****** *)
+
 (* end of [DATA/trtmp3b_002.dats] *)

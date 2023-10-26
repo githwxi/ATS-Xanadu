@@ -542,6 +542,21 @@ end(*let*)//end of [f0_annot(env0,d3p0)]
 } (*where*)//end-of-[trans3a_d3pat(env0,d3p0)]
 
 (* ****** ****** *)
+//
+#implfun
+trans3a_l3d3p
+( env0,ld3p ) =
+let
+//
+val+
+D3LAB
+(lab0, d3p1) = ld3p
+//
+in//let
+D3LAB(lab0, trans3a_d3pat(env0, d3p1))
+end (*let*)//end-of-[trans3a_l3d3p(env0,ld3p)]
+//
+(* ****** ****** *)
 
 #implfun
 trans3a_d3exp
@@ -1851,6 +1866,21 @@ end (*let*) // end of [f0_none0(env0,...)]
 //
 } (*where*)//end-of-[trans3a_d3exp(env0,d3e0)]
 
+(* ****** ****** *)
+//
+#implfun
+trans3a_l3d3e
+( env0,ld3e ) =
+let
+//
+val+
+D3LAB
+(lab0, d3e1) = ld3e
+//
+in//let
+D3LAB(lab0, trans3a_d3exp(env0, d3e1))
+end (*let*)//end-of-[trans3a_l3d3e(env0,ld3e)]
+//
 (* ****** ****** *)
 //
 #implfun
