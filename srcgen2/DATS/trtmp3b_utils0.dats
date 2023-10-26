@@ -293,19 +293,25 @@ f3_s2extq(s2vi, s2qs, t2qs)
 then
 optn_vt_cons
 (
-list_vt_cons((s2vi, tjp1), tsub))
+list_vt_cons((s2vi,tjp1),tsub))
 else
+(
 case+
 tjp1.node() of
 |
 T2Pvar(s2vj) =>
-if s2vi = s2vj
-then optn_vt_cons(tsub) else
-(list_vt_free(tsub); optn_vt_nil())
-)
+if
+(s2vi = s2vj)
+then optn_vt_cons(tsub)
+else (free(tsub); optn_vt_nil())
 |
-_(*non-T2Pvar*) => optn_vt_nil() // FIXME!!!
-end//let//end of [f2_svt1_tjp1(...)]
+_(* otherwise *) =>
+let
+val () =
+free(tsub) in optn_vt_nil() end))
+|
+_(*non-T2Pvar*) => optn_vt_nil() // FIXME!
+end(*let*)//end-of-[f2_svt1_tjp1(svt1,tjp1)]
 //
 fun
 f1_svts_t2js
