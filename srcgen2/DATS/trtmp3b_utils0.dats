@@ -273,6 +273,78 @@ s2vts_vt =
 list_vt@(s2var, s2typ)
 //
 fun
+f2_tip1_tjp1
+( tip1
+: s2typ
+, tjp1
+: s2typ
+, tsub
+: s2vts_vt): optn_vt(s2vts_vt) =
+(
+case+
+tip1.node() of
+//
+|T2Pvar _ =>
+(
+  g2_var1_tjp1(tip1,tjp1,tsub))
+//
+|_(*otherwise*) =>
+(let
+ val () =
+ free(tsub) in optn_vt_nil() end)
+//
+) where
+{
+//
+fun
+g2_var1_tjp1
+( tip1
+: s2typ
+, tjp1
+: s2typ
+, tsub
+: s2vts_vt): optn_vt(s2vts_vt) =
+let
+val-
+T2Pvar(s2vi) = tip1.node()
+in//let
+if
+f3_s2extq(s2vi, s2qs, t2qs)
+then
+optn_vt_cons
+(
+list_vt_cons((s2vi,tjp1),tsub))
+else
+(
+case+
+tjp1.node() of
+|
+T2Pvar(s2vj) =>
+if
+(s2vi = s2vj)
+then optn_vt_cons(tsub)
+else (free(tsub); optn_vt_nil())
+|
+_(*non-T2Pvar*) =>
+let
+val () =
+free(tsub) in optn_vt_nil() end)
+end(*let*)//end of [g2_var1_tjp1(...)]
+//
+(* ****** ****** *)
+//
+val tip1 = s2typ_hnfiz0(tip1)
+val tjp1 = s2typ_hnfiz0(tjp1)
+//
+val (  ) =
+prerrln("f2_tip1_tjp1: tip1 = ", tip1)
+val (  ) =
+prerrln("f2_tip1_tjp1: tjp1 = ", tjp1)
+//
+}(*where*)
+//end-of-[f2_tip1_tjp1(tip1,tjp1,tsub)]
+//
+fun
 f2_svt1_tjp1
 ( svt1
 : s2vt1
@@ -305,13 +377,16 @@ if
 then optn_vt_cons(tsub)
 else (free(tsub); optn_vt_nil())
 |
-_(* otherwise *) =>
+_(*non-T2Pvar*) =>
 let
 val () =
 free(tsub) in optn_vt_nil() end))
 |
-_(*non-T2Pvar*) => optn_vt_nil() // FIXME!
-end(*let*)//end-of-[f2_svt1_tjp1(svt1,tjp1)]
+_(*non-T2Pvar*) =>
+(
+  f2_tip1_tjp1(tip1, tjp1, tsub))
+endlet
+//end-of-[f2_svt1_tjp1(svt1,tjp1,tsub)]
 //
 fun
 f1_svts_t2js
