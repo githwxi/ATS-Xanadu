@@ -654,9 +654,11 @@ in//let
 case+
 timp.node() of
 //
+(*
 |TIMPLone1
-(dcl1, svts) =>
-print("TIMPLone1(",dcl1,";",svts,")")
+(  dcl1  ) =>
+print("TIMPLone1(", dcl1 ,")")
+*)
 //
 |TIMPLall1
 (d2c1, dcls) =>
