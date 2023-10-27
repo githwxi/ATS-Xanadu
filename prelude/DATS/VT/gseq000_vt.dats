@@ -6,15 +6,15 @@
 #staload UN =
 "prelude/SATS/unsafex.sats"
 (* ****** ****** *)
-
+//
 #impltmp
 <xs><x0>
 glseq_copy(xs) =
 glseq_make0_llist<xs><x0>
 (glseq_copy_llist<xs><x0>(xs))
-
+//
 (* ****** ****** *)
-
+//
 #impltmp
 <xs><x0>
 glseq_free(xs) =
@@ -25,7 +25,7 @@ glseq_foreach0<xs><x0>(xs)
 #impltmp
 foreach0$work<x0> = g_free<x0>
 }
-
+//
 (* ****** ****** *)
 //
 #impltmp
