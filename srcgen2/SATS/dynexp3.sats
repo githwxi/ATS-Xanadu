@@ -755,11 +755,19 @@ D3Cerrck of (sint(*lvl*), d3ecl)//tread23-error
 //
 (* ****** ****** *)
 //
+(*
+HX-2023-10-27:
+[TIMPLone1]
+is planned for
+recursive impltmp!
+*)
 and
 timpl_node =
 //
+(*
 |TIMPLone1 of
-(d3ecl(*impl*), s2vts)
+(d3ecl(*tmpsub*))
+*)
 //
 |TIMPLall1 of
 (d2cst(*dcst*), d3eclist)
