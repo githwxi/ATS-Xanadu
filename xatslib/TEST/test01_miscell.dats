@@ -9,6 +9,9 @@
 g_free(x) = ()
 *)
 //
+#impltmp
+strn_vt_free<>(x) = ()
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -40,9 +43,9 @@ val () = prerrln0(listize"abcde")
 (* ****** ****** *)
 
 val () =
-prerrln(
+prerrln0(
 "concat(...) = ",
-gseq_concat_strn
+gseq_concat_lstrn
 (list("Hello",",","world","!")))
 
 (* ****** ****** *)
@@ -88,6 +91,7 @@ prerrln
   val A0 = a0ref(0)
 }
 //
+(*
 val () =
 prerrln
 (
@@ -99,6 +103,7 @@ a1ref_make_list
 (list(1,2,3,4,5))
 #impltmp{a:vt}a1ref_length<a><5>(A1) = 5
 }
+*)
 //
 (* ****** ****** *)
 
@@ -167,13 +172,13 @@ val xs2 =
 (*
 gseq_z2map_list(xs1, xs1)//HX: FIXME!!!
 *)
-gseq_z2map_list
+gseq_z2map_llist
 <list(int),list(int)><int,int>(xs1, xs1)
 where
 {
 #impltmp
 z2map$fopr<int,int><int>(x0, y0) = x0 + y0 }
-val ( ) = prerrln("xs2 = ", xs2)
+val ( ) = prerrln0("xs2 = ", xs2)
 
 (* ****** ****** *)
 (*
@@ -193,10 +198,10 @@ gseq_z2map_f2np
 // Fri Jul  1 21:41:55 EDT 2022
 *)
 val ( ) =
-prerrln("xys = ", xys) where
+prerrln0("xys = ", xys) where
 {
 val xys =
-gseq_x2map_list_c2fr
+gseq_x2map_c2fr_llist
 ( list(1,3,5,7)
 , list(0,2,4,8)
 , lam(x:int,y:int) => 10*x + y)
@@ -367,18 +372,23 @@ end//local
 (* ****** ****** *)
 
 val () =
-prerrln("gappend(...) = ", gappend("a", "b"))
+prerrln
+("gappend(...) = ", gappend("a", "b"))
 val () =
-prerrln("gappend(...) = ", gappend("cd", "ef", "gh"))
+prerrln
+("gappend(...) = ", gappend("cd", "ef", "gh"))
 val () =
 prerrln
 ("strnlst_concat(...) = ", strnlst_concat(list("ax","by")))
 
 (* ****** ****** *)
 
-val ab = strn_vt("ab")
-val cd = strn_vt("cd")
-val ef = strn_vt("ef")
+val ab =
+strn_copy_vt("ab")
+val cd =
+strn_copy_vt("cd")
+val ef =
+strn_copy_vt("ef")
 val () = prerrln("ab = ", ab)
 val () = prerrln("cd = ", cd)
 val () = prerrln("ef = ", ef)
