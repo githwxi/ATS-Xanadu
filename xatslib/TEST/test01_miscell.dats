@@ -32,14 +32,23 @@ prerrln
 ("3 * -2 = ", 3 * (-2))
 (* ****** ****** *)
 
-val () = prerrln0(strmize(10))
-val () = prerrln0(listize(10))
+val () =
+prerrln0(strmize(10))
+val () =
+prerrln0(listize(10))
 
 (* ****** ****** *)
 
-val () = prerrln0(strmize"abcde")
-val () = prerrln0(listize"abcde")
+val () =
+prerrln0(strmize"abcde")
+val () =
+prerrln0(listize"abcde")
 
+(* ****** ****** *)
+val () =
+prerrln0(list(list(list(1))))
+val () =
+prerrln0(list_vt(list_vt(list_vt(1))))
 (* ****** ****** *)
 
 val () =
