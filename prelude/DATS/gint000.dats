@@ -256,6 +256,26 @@ else true // end-of-[else]
 } (* end of [gint_rforall_sint] *)
 //
 (* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
+gint_listize_sint
+  {i}(xs) =
+( if
+  (xs <= 0)
+  then list_vt_nil()
+  else gint_listize_nint(xs) )
+//
+#impltmp
+<>(*tmp*)
+gint_rlistize_sint
+  {i}(xs) =
+( if
+  (xs <= 0)
+  then list_vt_nil()
+  else gint_rlistize_nint(xs) )
+//
+(* ****** ****** *)
 
 #impltmp
 <>(*tmp*)
