@@ -102,7 +102,9 @@ s2typ_hnfizx
 case+
 t2p0.node() of
 //
+(*
 |T2Pbas _ => t2p0
+*)
 //
 |T2Pf2cl _ => t2p0
 //
@@ -648,7 +650,9 @@ s2typ_substx
 case+
 t2p0.node() of
 //
+(*
 |T2Pbas _ => t2p0
+*)
 //
 |T2Pcst _ => t2p0
 //
@@ -1171,6 +1175,7 @@ else
 case+
 t2p1.node() of
 //
+(*
 |
 T2Pbas(tbs1) =>
 (
@@ -1179,6 +1184,7 @@ t2p2.node() of
 |
 T2Pbas(tbs2) =>
 (tbs1 = tbs2) | _ => false)
+*)
 //
 |
 T2Pf2cl(fcl1) =>

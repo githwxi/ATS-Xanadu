@@ -53,6 +53,20 @@ ATS_PACKNAME
 #staload "./../SATS/staexp2.sats"
 (* ****** ****** *)
 //
+fun
+s2varlst_memberq
+( s2vs
+: s2varlst
+, s2v0: s2var): bool =
+let
+#typedef x0 = s2var
+#typedef xs = s2varlst
+in//let
+gseq_memberq<xs><x0>(s2vs, s2v0)
+end//let//end-of-[s2varlst_memberq]
+//
+(* ****** ****** *)
+//
 #implfun
 s2exp_revar0
 (s2e0, s2v0, s2v1) =
@@ -244,9 +258,17 @@ end (*let*) // end of [S2Emet0(...)]
 |
 S2Eexi0
 (s2vs,s2ps,s2e1) =>
+(
+if
+test
+then s2e0 else
 let
 //
 val fval = flag
+//
+(*
+Assume s2v1 not in s2vs
+*)
 //
 val s2e1 =
 f0_main(s2e1, flag)
@@ -259,16 +281,27 @@ if
 flag <= fval
 then s2e0 else
 s2exp_make_node
-(
-s2e0.sort(),S2Eexi0(s2vs,s2ps,s2e1))
-end (*let*) // end of [S2Eexi0(...)]
+(s2e0.sort()
+,S2Eexi0(s2vs,s2ps,s2e1)) end
+) where
+{ val test =
+  s2varlst_memberq(s2vs, s2v0) }
+//(*where*) // end of [S2Eexi0(...)]
 //
 |
 S2Euni0
 (s2vs,s2ps,s2e1) =>
+(
+if
+test
+then s2e0 else
 let
 //
 val fval = flag
+//
+(*
+Assume s2v1 not in s2vs
+*)
 //
 val s2e1 =
 f0_main(s2e1, flag)
@@ -281,9 +314,12 @@ if
 flag <= fval
 then s2e0 else
 s2exp_make_node
-(
-s2e0.sort(),S2Euni0(s2vs,s2ps,s2e1))
-end (*let*) // end of [S2Euni0(...)]
+(s2e0.sort()
+,S2Euni0(s2vs,s2ps,s2e1))end
+) where
+{ val test =
+  s2varlst_memberq(s2vs, s2v0) }
+//(*where*) // end of [S2Euni0(...)]
 //
 |
 S2Elist(s2es) => let
