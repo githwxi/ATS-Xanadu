@@ -1083,7 +1083,7 @@ $UN.p2tr_get<xs>(p0)) where
 {
 val () = fwork
 (
-lam
+lam//cfr
 (x0:x0):void =>
 $UN.p2tr_set<xs>
 (p0,list_vt_cons(x0,$UN.p2tr_get<xs>(p0))))}
