@@ -605,6 +605,13 @@ list_map_f1np_vt
 #symload map_f1np_vt with list_map_f1np_vt of 1000
 (* ****** ****** *)
 //
+(*
+HX-2023-10-28:
+These functions for list creation are
+intuitively simple to use, but they seem
+quite difficult for formal verification.
+*)
+//
 fun
 <x0:t0>
 list_make_fwork
