@@ -389,7 +389,10 @@ prerrln("the_tr12env_pvsload() = ", ret)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-val (  ) =
+//
+fun
+mytest
+(fpath: string): void =
 let
 //
 val dpar =
@@ -404,9 +407,9 @@ in//let
   fperr33_d3parsed
   (g_stderr((*tmp*)), dpar) end where
 {
-val dpar =
-d3parsed_of_fildats("./DATA/trtmp3b_004.dats") }
+  val dpar = d3parsed_of_fildats(fpath) }
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_TEST_JS_test48_xatsopt.dats] *)
+(* end of [ATS3/XATSOPT_TEST_JS_test49_xatsopt.dats] *)

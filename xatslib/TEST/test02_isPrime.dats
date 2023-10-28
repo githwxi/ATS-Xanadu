@@ -56,7 +56,9 @@ itakeif$test<sint>(i, p) = p * p <= x
 }
 in//let
 strm_vt_forall0(ps) where
-{ #impltmp forall0$test<sint>(p) = x % p > 0 }
+{
+#impltmp forall0$test<sint>(p) = x % p > 0
+}
 end (*let*) // end of [isPrime(x)]
 *)
 fun
