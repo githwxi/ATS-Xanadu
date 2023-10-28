@@ -297,7 +297,7 @@ val () =
 foreach$work<x0>(x0) =
 let
 val r0 = $UN.p2tr_get<r0>(p0)
-in
+in//let
 //
 $UN.p2tr_set<r0>
   (p0, foldl$fopr<x0><r0>(r0, x0))

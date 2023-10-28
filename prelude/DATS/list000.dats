@@ -45,6 +45,11 @@
 //
 (* ****** ****** *)
 //
+#staload UN =
+"prelude/SATS/unsafex.sats"
+//
+(* ****** ****** *)
+//
 #impltmp
 <>(*tmp*)
 list_nil_
@@ -1034,6 +1039,57 @@ list_map_vt<x0><y0>(xs)) where
 {
 #impltmp map$fopr<x0><y0>(x0) = f0(x0)
 } (*where*)//end-[list_map_f1np_vt(xs,f0)]
+(* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+list_make_fwork
+  (fwork) =
+list_vt2t
+(list_make_fwork_vt<x0>(fwork))
+#impltmp
+<x0>(*tmp*)
+list_rmake_fwork
+  (fwork) =
+list_vt2t
+(list_rmake_fwork_vt<x0>(fwork))
+//
+#impltmp
+<x0>(*tmp*)
+list_make_fwork_vt
+  (fwork) =
+(
+  list_vt_reverse0<x0>(xs)) where
+{
+val xs = list_rmake_fwork_vt<x0>(fwork) }
+//
+#impltmp
+<x0>(*tmp*)
+list_rmake_fwork_vt
+  (fwork) =
+let
+//
+#vwtpdef
+xs = list_vt(x0)
+//
+var r0: xs =
+list_vt_nil((*0*))
+val p0 = $addr(r0)
+//
+in
+//
+(
+$UN.p2tr_get<xs>(p0)) where
+{
+val () = fwork
+(
+lam
+(x0:x0):void =>
+$UN.p2tr_set<xs>
+(p0,list_vt_cons(x0,$UN.p2tr_get<xs>(p0))))}
+//  
+end//let//end-of-[list_rmake_fwork_vt(fwork)]
+//
 (* ****** ****** *)
 //
 // For gseq-operations

@@ -219,6 +219,17 @@ foldl1$fopr
 //
 (* ****** ****** *)
 //
+#impltmp
+<xs: t0>
+<x0: t0>
+glseq_listize0(xs) =
+(gseq_listize<xs><x0>(xs))
+#impltmp
+<xs: t0>
+<x0: t0>
+glseq_listize1(xs) =
+(gseq_listize<xs><x0>(xs))
+//
 (*
 #impltmp
 <xs><x0>
@@ -237,6 +248,17 @@ glseq_map0_llist<xs><x0><x0>(xs)
 end(*let*)//end(glseq_listize0(xs))
 //
 (* ****** ****** *)
+//
+#impltmp
+<xs: t0>
+<x0: t0>
+glseq_rlistize0(xs) =
+(gseq_rlistize<xs><x0>(xs))
+#impltmp
+<xs: t0>
+<x0: t0>
+glseq_rlistize1(xs) =
+(gseq_rlistize<xs><x0>(xs))
 //
 (*
 #impltmp
