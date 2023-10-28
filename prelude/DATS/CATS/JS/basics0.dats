@@ -966,5 +966,33 @@ XATS2JS_strn_vt_forall_cfr
 , f0: (cgtz) -<cfr> bool): bool = $extnam()
 } (*where*) // end of [strn_vt_forall1]
 (* ****** ****** *)
+#impltmp
+strn_vt_rforall0<>(cs) =
+XATS2JS_strn_vt_rforall_cfr
+( cs
+, lam(c0) =>
+  rforall0$test<cgtz>(c0) ) where
+{
+#extern
+fun
+XATS2JS_strn_vt_rforall_cfr
+( cs: ~strn_vt
+, f0: (cgtz) -<cfr> bool): bool = $extnam()
+} (*where*) // end of [strn_vt_rforall0]
+(* ****** ****** *)
+#impltmp
+strn_vt_rforall1<>(cs) =
+XATS2JS_strn_vt_rforall_cfr
+( cs
+, lam(c0) =>
+  rforall1$test<cgtz>(c0) ) where
+{
+#extern
+fun
+XATS2JS_strn_vt_rforall_cfr
+( cs: !strn_vt
+, f0: (cgtz) -<cfr> bool): bool = $extnam()
+} (*where*) // end of [strn_vt_rforall1]
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_DATS_CATS_JS_basics0.dats] *)
