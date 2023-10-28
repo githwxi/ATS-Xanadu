@@ -162,7 +162,9 @@ the_s2typ_excptn( (*void*) ): s2typ
 datatype
 s2typ_node =
 //
+(*
 |T2Pbas of sym_t // type
+*)
 //
 |T2Pcst of s2cst // constant
 |T2Pvar of s2var // variable

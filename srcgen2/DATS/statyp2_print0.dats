@@ -95,9 +95,11 @@ in//let
 case+
 t2p0.node() of
 //
+(*
 |
 T2Pbas(sym1) =>
 print("T2Pbas(", sym1, ")")
+*)
 //
 |
 T2Pcst(s2c1) =>

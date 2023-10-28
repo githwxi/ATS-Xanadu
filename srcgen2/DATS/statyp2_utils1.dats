@@ -295,10 +295,18 @@ s2typ_xtpck0
 case+
 t2p0.node() of
 //
+(*
 |T2Pbas _ => false
+*)
+//
+|T2Pcst _ => false
+|T2Pvar _ => false
+//
+(*
 |T2Pnone0 _ => false
 |T2Pnone1 _ => false
 |T2Ps2exp _ => false
+*)
 //
 |T2Pxtv(xtp1) =>
 if
