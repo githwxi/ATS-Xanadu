@@ -45,8 +45,13 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/xbasics.sats"
+(* ****** ****** *)
 #staload "./../SATS/xstamp0.sats"
 (* ****** ****** *)
+#staload "./../SATS/xlabel0.sats"
+(* ****** ****** *)
+#staload "./../SATS/xsymbol.sats"
 #staload "./../SATS/xsymmap.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
@@ -285,16 +290,19 @@ case+
 tip1.node() of
 //
 |T2Pvar _ =>
-(g2_var1_tjp1(tip1,tjp1,tsub))
+(g2_svar_tjp1(tip1,tjp1,tsub))
 //
 |T2Pcst _ =>
-(g2_cst1_tjp1(tip1,tjp1,tsub))
+(g2_scst_tjp1(tip1,tjp1,tsub))
 //
 |T2Papps _ =>
 (g2_apps_tjp1(tip1,tjp1,tsub))
 //
 |T2Ptext _ =>
 (g2_text_tjp1(tip1,tjp1,tsub))
+//
+|T2Ptrcd _ =>
+(g2_trcd_tjp1(tip1,tjp1,tsub))
 //
 |T2Pnone0((*0*)) => (   true   )
 |T2Pnone1(s2typ) => (   true   )
@@ -308,7 +316,7 @@ tip1.node() of
 (* ****** ****** *)
 //
 fun
-g2_var1_tjp1
+g2_svar_tjp1
 ( tip1
 : s2typ
 , tjp1
@@ -337,12 +345,12 @@ if
 //
 |_(*non-T2Pvar*) => (    false    ))
 //
-end(*let*)//end of [g2_var1_tjp1(...)]
+end(*let*)//end of [g2_svar_tjp1(...)]
 //
 (* ****** ****** *)
 //
 fun
-g2_cst1_tjp1
+g2_scst_tjp1
 ( tip1
 : s2typ
 , tjp1
@@ -364,7 +372,7 @@ if
 //
 |
 _(*non-T2Pvar*) => (    false    ))
-end(*let*)//end of [g2_cst1_tjp1(...)]
+end(*let*)//end of [g2_scst_tjp1(...)]
 //
 (* ****** ****** *)
 //
@@ -441,6 +449,49 @@ end(*let*)//end of [g2_text_tjp1(...)]
 //
 (* ****** ****** *)
 //
+fun
+g2_trcd_tjp1
+( tip1
+: s2typ
+, tjp1
+: s2typ
+, tsub
+: &s2vts_vt >> _): bool =
+let
+val-
+T2Ptrcd
+(kndi
+,npfi, ltis) = tip1.node()
+in//let
+(
+case+
+tjp1.node() of
+//
+|
+T2Ptrcd
+(kndj
+,npfj, ltjs) =>
+let
+val res1 =
+trcdknd_equal
+(kndi , kndj)
+val res1 =
+if res1 then 
+(npfi = npfj) else false
+in//let
+(if
+ res1
+ then
+ f2_ltis_ltjs
+ (ltis, ltjs, tsub) else false)
+end//let
+//
+|
+_(*non-T2Pvar*) => (    false    ))
+end(*let*)//end of [g2_text_tjp1(...)]
+//
+(* ****** ****** *)
+//
 val tip1 = s2typ_hnfiz0(tip1)
 val tjp1 = s2typ_hnfiz0(tjp1)
 //
@@ -479,6 +530,46 @@ in//let
  then
  f2_tips_tjps
  (tips, tjps, tsub) else false)
+end//let
+)
+)(*case+*)
+//end-of-[f2_tips_tjps(tips,tjps,tsub)]
+//
+(* ****** ****** *)
+//
+and
+f2_ltis_ltjs
+( ltis
+: l2t2plst
+, ltjs
+: l2t2plst
+, tsub
+: &s2vts_vt >> _): bool =
+(
+case+ ltis of
+|list_nil() => true
+|list_cons(lti1, ltis) =>
+(
+case+ ltjs of
+|list_nil() => true
+|list_cons(ltj1, ltjs) =>
+let
+//
+val
+S2LAB(li, tip1) = lti1
+val
+S2LAB(lj, tjp1) = ltj1
+val res1 =
+if (li = lj) then
+f2_tip1_tjp1
+(tip1, tjp1, tsub) else false
+//
+in//let
+(if
+ res1
+ then
+ f2_ltis_ltjs
+ (ltis, ltjs, tsub) else false)
 end//let
 )
 )(*case+*)
