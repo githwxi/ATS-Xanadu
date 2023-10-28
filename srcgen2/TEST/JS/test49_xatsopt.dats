@@ -410,6 +410,5 @@ in//let
   val dpar = d3parsed_of_fildats(fpath) }
 //
 (* ****** ****** *)
-(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_TEST_JS_test49_xatsopt.dats] *)
