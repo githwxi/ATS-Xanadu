@@ -13,7 +13,7 @@ jsobj = jsobj_tbox
 (* ****** ****** *)
 //
 #abstbox
-jsarray_tbox(a:vt)
+jsarray_tbox(x0:vt)
 #sexpdef
 jsarray = jsarray_tbox
 //
@@ -78,24 +78,24 @@ set_at with XATS2JS_jsobj_set_at
 #extern
 fun
 XATS2JS_jsarray_length
-{a:t0}
+{x0:t0}
 ( xs
-: jsarray(a)): nint = $extnam()
+: jsarray(x0)): nint = $extnam()
 (* ****** ****** *)
 #extern
 fun
 XATS2JS_jsarray_get_at
-{a:t0}
+{x0:t0}
 ( xs
-: jsarray(a)
-, i0: nint(*ind*)): a = $extnam()
+: jsarray(x0)
+, i0: nint(*ind*)): x0 = $extnam()
 #extern
 fun
 XATS2JS_jsarray_set_at
-  {a:t0}
+  {x0:t0}
 ( xs
-: jsarray(a)
-, i0: nint, x0: a): void = $extnam()
+: jsarray(x0)
+, i0: nint, x0: x0): void = $extnam()
 (* ****** ****** *)
 #symload size
 with XATS2JS_jsarray_length of 1000
@@ -116,9 +116,9 @@ with XATS2JS_jsarray_set_at of 1000
 #extern
 fun
 XATS2JS_jsarray_strmize
-{a:t0}
+{x0:t0}
 ( xs
-: jsarray(a)): strm_vt(a) = $extnam()
+: jsarray(x0)): strm_vt(x0) = $extnam()
 //
 (*
 #symload strmize
@@ -127,22 +127,22 @@ with XATS2JS_jsarray_strmize of 1000
 //
 (* ****** ****** *)
 #impltmp
-{a:t0}
+{x0:t0}
 gseq_strmize
-<jsarray(a)><a> =
+<jsarray(x0)><x0> =
 XATS2JS_jsarray_strmize
 (* ****** ****** *)
 //
 #implfun
 XATS2JS_jsarray_strmize
-{a}(xs) = auxmain(0) where
+{x0}(xs) = auxmain(0) where
 {
 //
   val n0 = length(xs)
 //
   fun
   auxmain
-  (i0: sint): strm_vt(a) =
+  (i0: sint): strm_vt(x0) =
   $llazy
   (
     if
