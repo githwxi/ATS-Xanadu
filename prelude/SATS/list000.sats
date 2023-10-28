@@ -100,6 +100,8 @@ fun
 <a:t0>
 list_make_strm_vt(strm(a)): list_vt(a)
 //
+(* ****** ****** *)
+//
 fun
 <a:t0>
 list_make0_lstrm(strm_vt(a)): list(a)
@@ -588,7 +590,7 @@ fun
 <y0:vt>
 list_map_c1fr_vt
 {n:int}
-(xs:list(x0,n), f0:(x0)-<fnp>y0): list_vt(y0,n)
+(xs:list(x0,n), f0:(x0)-<cfr>y0): list_vt(y0,n)
 fun
 <x0:t0>
 <y0:vt>
@@ -601,6 +603,26 @@ list_map_f1np_vt
 #symload map_f1np with list_map_f1np of 1000
 #symload map_c1fr_vt with list_map_c1fr_vt of 1000
 #symload map_f1np_vt with list_map_f1np_vt of 1000
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+list_make_fwork
+(fwork: ((x0)-<cfr>void) -<cfr> void): list(x0)
+fun
+<x0:t0>
+list_rmake_fwork
+(fwork: ((x0)-<cfr>void) -<cfr> void): list(x0)
+//
+fun
+<x0:t0>
+list_make_fwork_vt
+(fwork: ((x0)-<cfr>void) -<cfr> void): list_vt(x0)
+fun
+<x0:t0>
+list_rmake_fwork_vt
+(fwork: ((x0)-<cfr>void) -<cfr> void): list_vt(x0)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_list000.sats] *)

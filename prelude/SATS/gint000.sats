@@ -330,9 +330,9 @@ gint_listize_sint
 {i:int}
 (i0: sint(i)): list_vt( nintlt(i) )
 fun<>
-gint_strmize_sint
+gint_rlistize_sint
 {i:int}
-(i0: sint(i)): strm_vt( nintlt(i) )
+(i0: sint(i)): list_vt( nintlt(i) )
 //
 (* ****** ****** *)
 //
@@ -340,6 +340,11 @@ fun<>
 gint_strmize_nint
 {n:nat}
 (n0: sint(n)): strm_vt( nintlt(n) )
+//
+fun<>
+gint_strmize_sint
+{i:int}
+(i0: sint(i)): strm_vt( nintlt(i) )
 //
 (* ****** ****** *)
 //
