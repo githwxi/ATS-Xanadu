@@ -65,13 +65,55 @@ println!
 *)
 (* ****** ****** *)
 //
+(*
+HX-2023-10-31:
+[XATSTIME] is set once
+*)
+local
+//
+staload TM =
+"libats/libc/SATS/time.sats"
+//
+val
+the_XATSTIME_ref =
+ref_make_elt<int>(0)
+//
+in//local
+//
+implement
+the_XATSTIME_get() =
+let
+//
+val
+XATSTIME =
+(the_XATSTIME_ref[(*void*)])
+//
+in//let
+//
+if
+(XATSTIME > 0)
+then XATSTIME else
+(
+the_XATSTIME_get()) where
+{
+val () =
+(
+the_XATSTIME_ref[] :=
+$UN.cast{int}($TM.time_get()))}
+//
+end//let//end-of-[the_XATSTIME_get]
+//
+end//local//end-of-[the_XATSTIME_get]
+//
+(* ****** ****** *)
+//
 implement
 the_XATSHOME_get() =
 let
 val
 XATSHOME =
 xatsopt_getenv_gc("XATSHOME")
-in
+in//let
 //
 if
 isneqz(XATSHOME)

@@ -27,6 +27,7 @@ MYTEST="."
 ######
 XSHARED="${XATS2JSD}/xshared"
 XATS2JS="${XATS2JSD}/bin/xats2js"
+PATSOPT="${PATSHOME}/bin/patsopt"
 ######
 XATS2JS_PRELUDE=\
 "$(XSHARED)/runtime/xats2js_prelude.js"
@@ -221,6 +222,23 @@ fperr33_decl00.dats \
 xatsopt_tmplib.dats \
 xatsopt_utils0.dats \
 
-######
+########################################################################
+OBJSATS := \
+$(patsubst %.sats, BUILD/JS/%_sats.js, $(SRCSATS))
+OBJDATS := \
+$(patsubst %.dats, BUILD/JS/%_dats.js, $(SRCDATS))
+########################################################################
+all:: \
+BUILD/JS/xatsopt_all.js
+########################################################################
+BUILD/JS/xatsopt_all.js:: $(OBJDATS)
+########################################################################
+BUILD/JS/xbasics_dats.js:: ./DATS/xbasics.dats
+########################################################################
+BUILD/JS/xsymbol_dats.js:: ./DATS/xsymbol.dats
+########################################################################
+BUILD/JS/%_dats.js: \
+DATS/%.dats; $(XATS2JS) --output-a $@ --dynamic $<
+########################################################################
 
 ########################################################################

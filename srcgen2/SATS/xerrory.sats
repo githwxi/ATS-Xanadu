@@ -42,10 +42,12 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 //
+(*
 excptcon
 FatalErrorExn of ()
 excptcon // HX:internal
 FatalErrorExn_interr of ()
+*)
 //
 (* ****** ****** *)
 //
