@@ -128,9 +128,16 @@ with XATS2JS_jsarray_strmize of 1000
 (* ****** ****** *)
 #impltmp
 {x0:t0}
+g_print
+<jsarray(x0)>(xs) =
+gseq_print
+<jsarray(x0)><x0>(xs)
+(* ****** ****** *)
+#impltmp
+{x0:t0}
 gseq_strmize
-<jsarray(x0)><x0> =
-XATS2JS_jsarray_strmize
+<jsarray(x0)><x0>(xs) =
+XATS2JS_jsarray_strmize(xs)
 (* ****** ****** *)
 //
 #implfun
@@ -492,6 +499,14 @@ XATS2JS_jsobjmap_insert_opt
 : jsobjmap(k0, x0), key: k0, itm: x0): optn_vt(x0) = $extnam()
 }
 //
+(* ****** ****** *)
+#impltmp
+{k0:t0}
+{x0:t0}
+g_print
+<jsobjmap(k0,x0)>(kxs) =
+gmap_print
+<jsobjmap(k0,x0)><k0,x0>(kxs)
 (* ****** ****** *)
 //
 #impltmp

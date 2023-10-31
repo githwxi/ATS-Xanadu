@@ -1,6 +1,6 @@
 ########################################################################
 #
-# For building xatsopt
+# For typecking with xatsopt
 #
 ########################################################################
 
@@ -191,6 +191,10 @@ fperr33_sats: ; $(XATSOPT) --static SATS/fperr33.sats
 all_sats:: \
 xglobal_sats
 xglobal_sats: ; $(XATSOPT) --static SATS/xglobal.sats
+######
+all_sats:: \
+xatsopt_sats
+xatsopt_sats: ; $(XATSOPT) --static SATS/xatsopt.sats
 ######
 
 ######
@@ -751,12 +755,6 @@ fperr33_dynexp_dats: ; $(XATSOPT) --dynamic DATS/fperr33_dynexp.dats
 all_dats:: \
 fperr33_decl00_dats
 fperr33_decl00_dats: ; $(XATSOPT) --dynamic DATS/fperr33_decl00.dats
-######
-
-######
-all_sats:: \
-xatsopt_sats
-xatsopt_sats: ; $(XATSOPT) --static SATS/xatsopt.sats
 ######
 
 ######

@@ -1,0 +1,226 @@
+########################################################################
+#
+# For compiling with xats2js
+#
+########################################################################
+
+AR=ar
+CP=cp
+MV=mv
+CC=gcc
+SED=sed
+CPF=cp -f
+MVF=mv -f
+RMF=rm -f
+WCL=wc -l
+
+########################################################################
+
+######
+CAT=cat
+CPF=cp -f
+ECHO=echo
+NODE=node
+NODE=node --stack-size=4096
+######
+MYTEST="."
+######
+XSHARED="${XATS2JSD}/xshared"
+XATS2JS="${XATS2JSD}/bin/xats2js"
+######
+XATS2JS_PRELUDE=\
+"$(XSHARED)/runtime/xats2js_prelude.js"
+XATS2JS_PRELUDE_NODE=\
+"$(XSHARED)/runtime/xats2js_prelude_node.js"
+XATS2JS_XATSLIB_NODE=\
+"$(XSHARED)/runtime/xats2js_xatslib_node.js"
+######
+
+SRCSATS := \
+xbasics.sats \
+xsynoug.sats \
+xerrory.sats \
+xstamp0.sats \
+xsymbol.sats \
+xlabel0.sats \
+filpath.sats \
+locinfo.sats \
+lexbuf0.sats \
+lexing0.sats \
+staexp0.sats \
+dynexp0.sats \
+parsing.sats \
+preadx0.sats \
+staexp1.sats \
+dynexp1.sats \
+gmacro1.sats \
+xsymmap.sats \
+xsymenv.sats \
+xfixity.sats \
+trans01.sats \
+tread01.sats \
+staexp2.sats \
+statyp2.sats \
+dynexp2.sats \
+nmspace.sats \
+trans12.sats \
+tread12.sats \
+trans2a.sats \
+trsym2b.sats \
+tread22.sats \
+fperr22.sats \
+dynexp3.sats \
+trans23.sats \
+tread23.sats \
+trans3a.sats \
+trtmp3b.sats \
+tread33.sats \
+fperr33.sats \
+xglobal.sats \
+xatsopt.sats \
+
+######
+
+SRCDATS := \
+xbasics.dats \
+xbasics_print0.dats \
+xsynoug.dats \
+xerrory.dats \
+xstamp0.dats \
+xstamp0_print0.dats \
+xstamp0_tmpmap.dats \
+xsymbol.dats \
+xsymbol_inits0.dats \
+xsymbol_print0.dats \
+xlabel0.dats \
+xlabel0_print0.dats \
+xglobal.dats \
+filpath.dats \
+filpath_drpth0.dats \
+filpath_fpath0.dats \
+filpath_print0.dats \
+filpath_search.dats \
+locinfo.dats \
+locinfo_print0.dats \
+xsymmap_topmap.dats \
+xsymmap_stkmap.dats \
+lexbuf0.dats \
+lexbuf0_cstrx1.dats \
+lexbuf0_cstrx2.dats \
+lexing0.dats \
+lexing0_kword0.dats \
+lexing0_token0.dats \
+lexing0_print0.dats \
+lexing0_mymap0.dats \
+lexing0_utils1.dats \
+lexing0_utils2.dats \
+staexp0.dats \
+staexp0_print0.dats \
+dynexp0.dats \
+dynexp0_print0.dats \
+parsing.dats \
+parsing_tokbuf.dats \
+parsing_basics.dats \
+parsing_utils0.dats \
+parsing_staexp.dats \
+parsing_dynexp.dats \
+parsing_decl00.dats \
+preadx0.dats \
+preadx0_staexp.dats \
+preadx0_dynexp.dats \
+preadx0_decl00.dats \
+preadx0_errmsg.dats \
+xfixity.dats \
+staexp1.dats \
+staexp1_print0.dats \
+dynexp1.dats \
+dynexp1_print0.dats \
+gmacro1.dats \
+gmacro1_print0.dats \
+trans01.dats \
+trans01_myenv0.dats \
+trans01_staexp.dats \
+trans01_dynexp.dats \
+trans01_decl00.dats \
+tread01.dats \
+tread01_staexp.dats \
+tread01_dynexp.dats \
+tread01_decl00.dats \
+tread01_errmsg.dats \
+staexp2.dats \
+statyp2.dats \
+staexp2_print0.dats \
+statyp2_print0.dats \
+staexp2_inits0.dats \
+statyp2_inits0.dats \
+staexp2_utils1.dats \
+staexp2_utils2.dats \
+statyp2_utils1.dats \
+statyp2_utils2.dats \
+statyp2_tmplib.dats \
+dynexp2.dats \
+dynexp2_print0.dats \
+dynexp2_utils0.dats \
+nmspace.dats \
+trans11_myenv0.dats \
+trans11_gmacro.dats \
+trans12.dats \
+trans12_myenv0.dats \
+trans12_staexp.dats \
+trans12_dynexp.dats \
+trans12_decl00.dats \
+tread12_errmsg.dats \
+tread12.dats \
+tread12_staexp.dats \
+tread12_dynexp.dats \
+tread12_decl00.dats \
+trans2a.dats \
+trans2a_myenv0.dats \
+trans2a_utils0.dats \
+trans2a_dynexp.dats \
+trans2a_decl00.dats \
+trsym2b.dats \
+trsym2b_utils0.dats \
+trsym2b_dynexp.dats \
+trsym2b_decl00.dats \
+tread22.dats \
+tread22_dynexp.dats \
+tread22_decl00.dats \
+fperr22.dats \
+fperr22_dynexp.dats \
+fperr22_decl00.dats \
+dynexp3.dats \
+dynexp3_print0.dats \
+dynexp3_utils0.dats \
+trans23.dats \
+trans23_myenv0.dats \
+trans23_utils0.dats \
+trans23_dynexp.dats \
+trans23_decl00.dats \
+tread23.dats \
+tread23_dynexp.dats \
+tread23_decl00.dats \
+tread23_errmsg.dats \
+trans3a.dats \
+trans3a_myenv0.dats \
+trans3a_staexp.dats \
+trans3a_dynexp.dats \
+trans3a_decl00.dats \
+trtmp3b.dats \
+trtmp3b_myenv0.dats \
+trtmp3b_utils0.dats \
+trtmp3b_dynexp.dats \
+trtmp3b_decl00.dats \
+tread33.dats \
+tread33_staexp.dats \
+tread33_dynexp.dats \
+tread33_decl00.dats \
+fperr33.dats \
+fperr33_dynexp.dats \
+fperr33_decl00.dats \
+xatsopt_tmplib.dats \
+xatsopt_utils0.dats \
+
+######
+
+########################################################################

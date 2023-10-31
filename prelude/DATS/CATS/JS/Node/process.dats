@@ -3,12 +3,15 @@
 Print for Xats2js/Node
 *)
 (* ****** ****** *)
+#staload
+"./../basics1.dats"
+(* ****** ****** *)
 #typedef
 argv = jsarray(strn)
 (* ****** ****** *)
 //
 #extern
-fun<>
+fun
 XATS2JS_NODE_argv_get
   ((*void*)): argv = $extnam()
 //
