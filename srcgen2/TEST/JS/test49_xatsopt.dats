@@ -404,11 +404,38 @@ val dpar =
 // *)
 //
 in//let
-  fperr33_d3parsed
-  (g_stderr((*tmp*)), dpar) end where
+fperr33_d3parsed
+(g_stderr((*tmp*)), dpar) end where
 {
-  val dpar = d3parsed_of_fildats(fpath) }
+val dpar = d3parsed_of_fildats(fpath)
+}
 //
+(* ****** ****** *)
+(* ****** ****** *)
+#staload
+"prelude\
+/DATS/CATS/JS/basics1.dats"
+(* ****** ****** *)
+#staload
+"prelude\
+/DATS/CATS/JS/Node/process.dats"
+(* ****** ****** *)
+val () =
+mymain() where
+{
+//
+fun
+mymain((*void*)) =
+(
+mytest(argv[2])) where
+{
+  val argv =
+  XATS2JS_NODE_argv_get()
+  val (  ) = prerrln("argv = ", argv)
+} (*where*)//end-of-[ mymain((*void*)) ]
+//
+}
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_TEST_JS_test49_xatsopt.dats] *)
