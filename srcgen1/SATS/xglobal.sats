@@ -63,6 +63,11 @@ fpathenv_dec_level
 (* ****** ****** *)
 //
 fun
+the_XATSTIME_get(): int
+//
+(* ****** ****** *)
+//
+fun
 the_XATSHOME_get(): string
 //
 (* ****** ****** *)
