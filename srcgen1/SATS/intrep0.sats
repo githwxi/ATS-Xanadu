@@ -426,8 +426,12 @@ overload .ctag with h0con_set_ctag
 fun
 h0con_get_tqas
 ( hdc0: h0con ): htqarglst
+fun
+h0cst_get_tqas
+( hdc0: h0cst ): htqarglst
 //
 overload .tqas with h0con_get_tqas
+overload .tqas with h0cst_get_tqas
 //
 (* ****** ****** *)
 //

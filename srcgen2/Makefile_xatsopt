@@ -244,11 +244,14 @@ xsymbol_dats
 xsymbol_dats: ; $(XATSOPT) --dynamic DATS/xsymbol.dats
 ######
 all_dats:: \
-xsymbol_inits0_dats
-xsymbol_inits0_dats: ; $(XATSOPT) --dynamic DATS/xsymbol_inits0.dats
-all_dats:: \
 xsymbol_print0_dats
 xsymbol_print0_dats: ; $(XATSOPT) --dynamic DATS/xsymbol_print0.dats
+all_dats:: \
+xsymbol_mymap0_dats
+xsymbol_mymap0_dats: ; $(XATSOPT) --dynamic DATS/xsymbol_mymap0.dats
+all_dats:: \
+xsymbol_inits0_dats
+xsymbol_inits0_dats: ; $(XATSOPT) --dynamic DATS/xsymbol_inits0.dats
 ######
 
 ######
