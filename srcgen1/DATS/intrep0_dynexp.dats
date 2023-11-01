@@ -210,6 +210,9 @@ h0cst_get_kind
 (hdc) = hdc->h0cst_kind
 //
 implement
+h0cst_get_tqas
+(hdc) = hdc->h0cst_tqas
+implement
 h0cst_get_type
 (hdc) = hdc->h0cst_type
 //
