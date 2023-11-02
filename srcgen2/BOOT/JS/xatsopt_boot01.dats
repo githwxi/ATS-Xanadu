@@ -44,11 +44,11 @@ xbasics_print0_dats =
 p1_fun_test_fpath<d0eclist>
 ("./../../DATS/xbasics_print0.dats", p1_d0eclsq1_dyn)
 //
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../SATS/xbasics.sats\") =\n", xbasics_sats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/xbasics.dats\") =\n", xbasics_dats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/xbasics_print0.dats\") =\n", xbasics_print0_dats)
 //
 (* ****** ****** *)
@@ -63,9 +63,9 @@ xsynoug_dats =
 p1_fun_test_fpath<d0eclist>
 ("./../../DATS/xsynoug.dats", p1_d0eclsq1_dyn)
 //
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../SATS/xsynoug.sats\") =\n", xsynoug_sats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/xsynoug.dats\") =\n", xsynoug_dats)
 //
 (* ****** ****** *)
@@ -80,9 +80,9 @@ xerrory_dats =
 p1_fun_test_fpath<d0eclist>
 ("./../../DATS/xerrory.dats", p1_d0eclsq1_dyn)
 //
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../SATS/xerrory.sats\") =\n", xerrory_sats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/xerrory.dats\") =\n", xerrory_dats)
 //
 (* ****** ****** *)
@@ -97,9 +97,9 @@ xglobal_dats =
 p1_fun_test_fpath<d0eclist>
 ("./../../DATS/xglobal.dats", p1_d0eclsq1_dyn)
 //
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../SATS/xglobal.sats\") =\n", xglobal_sats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/xglobal.dats\") =\n", xglobal_dats)
 //
 (* ****** ****** *)
@@ -122,11 +122,11 @@ xstamp0_tmpmap_dats =
 p1_fun_test_fpath<d0eclist>
 ("./../../DATS/xstamp0_tmpmap.dats", p1_d0eclsq1_dyn)
 //
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../SATS/xstamp0.sats\") =\n", xstamp0_sats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/xstamp0.dats\") =\n", xstamp0_dats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/xstamp0_print0.dats\") =\n", xstamp0_print0_dats)
 //
 (* ****** ****** *)
@@ -153,15 +153,15 @@ xsymbol_inits0_dats =
 p1_fun_test_fpath<d0eclist>
 ("./../../DATS/xsymbol_inits0.dats", p1_d0eclsq1_dyn)
 //
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../SATS/xsymbol.sats\") =\n", xsymbol_sats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/xsymbol.dats\") =\n", xsymbol_dats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/xsymbol_print0.dats\") =\n", xsymbol_print0_dats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/xsymbol_mymap0.dats\") =\n", xsymbol_mymap0_dats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/xsymbol_inits0.dats\") =\n", xsymbol_inits0_dats)
 //
 (* ****** ****** *)
@@ -180,11 +180,11 @@ xlabel0_print0_dats =
 p1_fun_test_fpath<d0eclist>
 ("./../../DATS/xlabel0_print0.dats", p1_d0eclsq1_dyn)
 //
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../SATS/xlabel0.sats\") =\n", xlabel0_sats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/xlabel0.dats\") =\n", xlabel0_dats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/xlabel0_print0.dats\") =\n", xlabel0_print0_dats)
 //
 (* ****** ****** *)
@@ -215,17 +215,17 @@ filpath_search_dats =
 p1_fun_test_fpath<d0eclist>
 ("./../../DATS/filpath_search.dats", p1_d0eclsq1_dyn)
 //
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../SATS/filpath.sats\") =\n", filpath_sats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/filpath.dats\") =\n", filpath_dats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/filpath_print0.dats\") =\n", filpath_print0_dats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/filpath_drpth0.dats\") =\n", filpath_drpth0_dats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/filpath_fpath0.dats\") =\n", filpath_fpath0_dats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/filpath_search.dats\") =\n", filpath_search_dats)
 //
 (* ****** ****** *)
@@ -240,9 +240,9 @@ locinfo_dats =
 p1_fun_test_fpath<d0eclist>
 ("./../../DATS/locinfo.dats", p1_d0eclsq1_dyn)
 //
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../SATS/locinfo.sats\") =\n", locinfo_sats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/locinfo.dats\") =\n", locinfo_dats)
 //
 (* ****** ****** *)
@@ -265,14 +265,142 @@ xsymmap_stkmap_dats =
 p1_fun_test_fpath<d0eclist>
 ("./../../DATS/xsymmap_stkmap.dats", p1_d0eclsq1_dyn)
 //
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../SATS/xsymmap.sats\") =\n", xsymmap_sats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/xsymmap.dats\") =\n", xsymmap_dats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/xsymmap_topmap.dats\") =\n", xsymmap_topmap_dats)
-val (  ) = prerrln
+val (  ) = println
 ("p1_fun_test(\"./../../DATS/xsymmap_stkmap.dats\") =\n", xsymmap_stkmap_dats)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val
+lexbuf0_sats =
+p1_fun_test_fpath<d0eclist>
+("./../../SATS/lexbuf0.sats", p1_d0eclsq1_sta)
+val
+lexbuf0_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/lexbuf0.dats", p1_d0eclsq1_dyn)
+val
+lexbuf0_cstrx1_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/lexbuf0_cstrx1.dats", p1_d0eclsq1_dyn)
+val
+lexbuf0_cstrx2_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/lexbuf0_cstrx2.dats", p1_d0eclsq1_dyn)
+//
+val (  ) = println
+("p1_fun_test(\"./../../SATS/lexbuf0.sats\") =\n", lexbuf0_sats)
+val (  ) = println
+("p1_fun_test(\"./../../DATS/lexbuf0.dats\") =\n", lexbuf0_dats)
+val (  ) = println
+("p1_fun_test(\"./../../DATS/lexbuf0_cstrx1.dats\") =\n", lexbuf0_cstrx1_dats)
+val (  ) = println
+("p1_fun_test(\"./../../DATS/lexbuf0_cstrx2.dats\") =\n", lexbuf0_cstrx2_dats)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val
+lexing0_sats =
+p1_fun_test_fpath<d0eclist>
+("./../../SATS/lexing0.sats", p1_d0eclsq1_sta)
+val
+lexing0_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/lexing0.dats", p1_d0eclsq1_dyn)
+val
+lexing0_print0_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/lexing0_print0.dats", p1_d0eclsq1_dyn)
+val
+lexing0_mymap0_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/lexing0_mymap0.dats", p1_d0eclsq1_dyn)
+val
+lexing0_kword0_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/lexing0_kword0.dats", p1_d0eclsq1_dyn)
+val
+lexing0_token0_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/lexing0_token0.dats", p1_d0eclsq1_dyn)
+val
+lexing0_utils1_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/lexing0_utils1.dats", p1_d0eclsq1_dyn)
+val
+lexing0_utils2_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/lexing0_utils2.dats", p1_d0eclsq1_dyn)
+//
+val (  ) = println
+("p1_fun_test(\"./../../SATS/lexing0.sats\") =\n", lexing0_sats)
+val (  ) = println
+("p1_fun_test(\"./../../DATS/lexing0.dats\") =\n", lexing0_dats)
+val (  ) = println
+("p1_fun_test(\"./../../DATS/lexing0_print0.dats\") =\n", lexing0_print0_dats)
+val (  ) = println
+("p1_fun_test(\"./../../DATS/lexing0_mymap0.dats\") =\n", lexing0_mymap0_dats)
+val (  ) = println
+("p1_fun_test(\"./../../DATS/lexing0_kword0.dats\") =\n", lexing0_kword0_dats)
+val (  ) = println
+("p1_fun_test(\"./../../DATS/lexing0_token0.dats\") =\n", lexing0_token0_dats)
+val (  ) = println
+("p1_fun_test(\"./../../DATS/lexing0_utils1.dats\") =\n", lexing0_utils1_dats)
+val (  ) = println
+("p1_fun_test(\"./../../DATS/lexing0_utils2.dats\") =\n", lexing0_utils2_dats)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val
+staexp0_sats =
+p1_fun_test_fpath<d0eclist>
+("./../../SATS/staexp0.sats", p1_d0eclsq1_sta)
+val
+staexp0_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/staexp0.dats", p1_d0eclsq1_dyn)
+val
+staexp0_print0_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/staexp0_print0.dats", p1_d0eclsq1_dyn)
+//
+val (  ) = println
+("p1_fun_test(\"./../../SATS/staexp0.sats\") =\n", staexp0_sats)
+val (  ) = println
+("p1_fun_test(\"./../../DATS/staexp0.dats\") =\n", staexp0_dats)
+val (  ) = println
+("p1_fun_test(\"./../../DATS/staexp0_print0.dats\") =\n", staexp0_print0_dats)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val
+dynexp0_sats =
+p1_fun_test_fpath<d0eclist>
+("./../../SATS/dynexp0.sats", p1_d0eclsq1_sta)
+val
+dynexp0_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/dynexp0.dats", p1_d0eclsq1_dyn)
+val
+dynexp0_print0_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/dynexp0_print0.dats", p1_d0eclsq1_dyn)
+//
+val (  ) = println
+("p1_fun_test(\"./../../SATS/dynexp0.sats\") =\n", dynexp0_sats)
+val (  ) = println
+("p1_fun_test(\"./../../DATS/dynexp0.dats\") =\n", dynexp0_dats)
+val (  ) = println
+("p1_fun_test(\"./../../DATS/dynexp0_print0.dats\") =\n", dynexp0_print0_dats)
 //
 (* ****** ****** *)
 (* ****** ****** *)

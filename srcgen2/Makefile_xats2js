@@ -122,8 +122,8 @@ staexp0_print0.dats \
 dynexp0.dats \
 dynexp0_print0.dats \
 parsing.dats \
-parsing_tokbuf.dats \
 parsing_basics.dats \
+parsing_tokbuf.dats \
 parsing_utils0.dats \
 parsing_staexp.dats \
 parsing_dynexp.dats \

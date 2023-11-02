@@ -382,12 +382,12 @@ parsing_dats
 parsing_dats: ; $(XATSOPT) --dynamic DATS/parsing.dats
 ######
 all_dats:: \
-parsing_tokbuf_dats
-parsing_tokbuf_dats: ; $(XATSOPT) --dynamic DATS/parsing_tokbuf.dats
-######
-all_dats:: \
 parsing_basics_dats
 parsing_basics_dats: ; $(XATSOPT) --dynamic DATS/parsing_basics.dats
+######
+all_dats:: \
+parsing_tokbuf_dats
+parsing_tokbuf_dats: ; $(XATSOPT) --dynamic DATS/parsing_tokbuf.dats
 ######
 all_dats:: \
 parsing_utils0_dats
