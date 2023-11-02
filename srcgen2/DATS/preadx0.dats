@@ -135,10 +135,23 @@ optn_preadx0_fnp(opt0, err, preadx0_d0eclist)
 d0parsed_fpemsg
   (out, dpar) = let
 //
-val nerror =
+val
+nerror =
 d0parsed_get_nerror(dpar)
 //
+(*
+val () =
+let
+val
+source =
+d0parsed_get_source(dpar)
 in//let
+prerrln
+("d0parsed_fpemsg: source = ", source)
+end//let//end-of-[val()]
+*)
+//
+in(*let*)
 if
 (nerror > 0) then
 let
