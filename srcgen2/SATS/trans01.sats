@@ -801,4 +801,11 @@ trans01_d0eclistopt
 : !tr01env, opt: d0eclistopt): d1eclistopt
 //
 (* ****** ****** *)
+//
+fun
+d1parsed_from_fpath
+(stadyn: sint, source: strn(*fpath*)): d1parsed
+//
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_trans01.sats] *)
