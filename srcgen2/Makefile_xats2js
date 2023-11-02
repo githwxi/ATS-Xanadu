@@ -104,6 +104,7 @@ filpath_fpath0.dats \
 filpath_search.dats \
 locinfo.dats \
 locinfo_print0.dats \
+xsymmap.dats \
 xsymmap_topmap.dats \
 xsymmap_stkmap.dats \
 lexbuf0.dats \

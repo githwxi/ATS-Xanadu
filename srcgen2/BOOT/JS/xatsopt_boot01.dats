@@ -29,6 +29,7 @@ bootstrapping ATS3/Xanadu!!!
 #staload
 "./../../DATS/parsing_utils0.dats"
 (* ****** ****** *)
+(* ****** ****** *)
 //
 val
 xbasics_sats =
@@ -51,6 +52,7 @@ val (  ) = prerrln
 ("p1_fun_test(\"./../../DATS/xbasics_print0.dats\") =\n", xbasics_print0_dats)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 val
 xsynoug_sats =
@@ -66,6 +68,7 @@ val (  ) = prerrln
 val (  ) = prerrln
 ("p1_fun_test(\"./../../DATS/xsynoug.dats\") =\n", xsynoug_dats)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val
@@ -83,6 +86,7 @@ val (  ) = prerrln
 ("p1_fun_test(\"./../../DATS/xerrory.dats\") =\n", xerrory_dats)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 val
 xglobal_sats =
@@ -98,6 +102,7 @@ val (  ) = prerrln
 val (  ) = prerrln
 ("p1_fun_test(\"./../../DATS/xglobal.dats\") =\n", xglobal_dats)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val
@@ -124,6 +129,7 @@ val (  ) = prerrln
 val (  ) = prerrln
 ("p1_fun_test(\"./../../DATS/xstamp0_print0.dats\") =\n", xstamp0_print0_dats)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val
@@ -159,6 +165,7 @@ val (  ) = prerrln
 ("p1_fun_test(\"./../../DATS/xsymbol_inits0.dats\") =\n", xsymbol_inits0_dats)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 val
 xlabel0_sats =
@@ -180,6 +187,65 @@ val (  ) = prerrln
 val (  ) = prerrln
 ("p1_fun_test(\"./../../DATS/xlabel0_print0.dats\") =\n", xlabel0_print0_dats)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val
+filpath_sats =
+p1_fun_test_fpath<d0eclist>
+("./../../SATS/filpath.sats", p1_d0eclsq1_sta)
+val
+filpath_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/filpath.dats", p1_d0eclsq1_dyn)
+val
+filpath_print0_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/filpath_print0.dats", p1_d0eclsq1_dyn)
+val
+filpath_drpth0_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/filpath_drpth0.dats", p1_d0eclsq1_dyn)
+val
+filpath_fpath0_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/filpath_fpath0.dats", p1_d0eclsq1_dyn)
+val
+filpath_search_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/filpath_search.dats", p1_d0eclsq1_dyn)
+//
+val (  ) = prerrln
+("p1_fun_test(\"./../../SATS/filpath.sats\") =\n", filpath_sats)
+val (  ) = prerrln
+("p1_fun_test(\"./../../DATS/filpath.dats\") =\n", filpath_dats)
+val (  ) = prerrln
+("p1_fun_test(\"./../../DATS/filpath_print0.dats\") =\n", filpath_print0_dats)
+val (  ) = prerrln
+("p1_fun_test(\"./../../DATS/filpath_drpth0.dats\") =\n", filpath_drpth0_dats)
+val (  ) = prerrln
+("p1_fun_test(\"./../../DATS/filpath_fpath0.dats\") =\n", filpath_fpath0_dats)
+val (  ) = prerrln
+("p1_fun_test(\"./../../DATS/filpath_search.dats\") =\n", filpath_search_dats)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val
+locinfo_sats =
+p1_fun_test_fpath<d0eclist>
+("./../../SATS/locinfo.sats", p1_d0eclsq1_sta)
+val
+locinfo_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/locinfo.dats", p1_d0eclsq1_dyn)
+//
+val (  ) = prerrln
+("p1_fun_test(\"./../../SATS/locinfo.sats\") =\n", locinfo_sats)
+val (  ) = prerrln
+("p1_fun_test(\"./../../DATS/locinfo.dats\") =\n", locinfo_dats)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [(* end of [ATS3/XATSOPT_BOOT_JS_xatsopt_boot01.dats] *)
