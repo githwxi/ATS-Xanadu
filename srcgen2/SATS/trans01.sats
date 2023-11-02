@@ -420,6 +420,8 @@ fun token2sstr: token -> string
 fun token2dstr: token -> string
 (* ****** ****** *)
 //
+fun gnamid_sym: token -> sym_t
+//
 fun gexpid_sym: token -> sym_t
 //
 (* ****** ****** *)

@@ -247,24 +247,28 @@ if
 z2eq(nm1,PD)
 then
 (
-  if
-  (npd > 0)
-  then
-  (
-  free(nm1);
-  fmain(nms, npd, acc)) where
-  {
-    val npd = npd - 1
-    val-
-    ~list_vt_cons(ac1, acc) = acc
-  }
-  else
-  (
-  fmain(nms, npd, acc)) where
-  {
-    val npd = npd + 1
-    val acc = list_vt_cons(nm1, acc)
-  }
+//
+if
+(npd > 0)
+then
+(
+free(nm1);
+fmain(nms, npd, acc)) where
+{
+val npd = npd - 1
+val-
+~list_vt_cons(ac1, acc) = acc
+}
+else
+(
+fmain(nms, npd, acc)) where
+{
+(*
+// HX-2023-11-02
+val npd = npd + 1//HX:error!!!
+*)
+val acc = list_vt_cons(nm1, acc)
+}
 )
 else
 (
