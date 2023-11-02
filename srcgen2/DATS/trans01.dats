@@ -59,6 +59,10 @@ LAM = "./../SATS/xlabel0.sats"
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/dynexp0.sats"
 (* ****** ****** *)
+#staload "./../SATS/parsing.sats"
+(* ****** ****** *)
+#staload "./../SATS/preadx0.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
@@ -461,15 +465,33 @@ the_drpth_pop0_lcsrc(source)
 //
 in//let
 //
-  let
-  val
-  topenv = tr01env_free_top(env0)
-  in//let
-  d1parsed
-  (stadyn,nerror,source,topenv,parsed) end
+let
+val
+topenv = tr01env_free_top(env0)
+in//let
+d1parsed
+(stadyn,nerror,source,topenv,parsed) end
 //
-end (*let*) // end of [d1parsed_trans01(dpar)]
+end(*let*)//end-of-[d1parsed_trans01(dpar)]
 
+(* ****** ****** *)
+//
+#implfun
+d1parsed_from_fpath
+  (stadyn, source) =
+let
+//
+val dpar =
+d0parsed_from_fpath
+  (stadyn, source)
+//
+val dpar =
+d0parsed_of_preadx0(dpar)
+//
+in//let
+  d1parsed_of_trans01(dpar)
+end(*let*)//end-of-[d1parsed_from_fpath(...)]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans01.dats] *)
