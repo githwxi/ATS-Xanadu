@@ -168,8 +168,21 @@ optn_tread12_fnp(dopt, err0, tread12_d2eclist)
 d2parsed_fpemsg
   (out, dpar) = let
 //
-val nerror =
+val
+nerror =
 d2parsed_get_nerror(dpar)
+//
+(*
+val () =
+let
+val
+source =
+d2parsed_get_source(dpar)
+in//let
+prerrln
+("d2parsed_fpemsg: source = ", source)
+end//let//end-of-[val()]
+*)
 //
 in//let
 if

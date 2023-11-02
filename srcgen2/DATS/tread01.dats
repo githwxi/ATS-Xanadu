@@ -157,8 +157,21 @@ optn_tread01_fnp(dopt, err, tread01_d1eclist)
 d1parsed_fpemsg
   (out, dpar) = let
 //
-val nerror =
+val
+nerror =
 d1parsed_get_nerror(dpar)
+//
+(*
+val () =
+let
+val
+source =
+d1parsed_get_source(dpar)
+in//let
+prerrln
+("d1parsed_fpemsg: source = ", source)
+end//let//end-of-[val()]
+*)
 //
 in//let
 if
