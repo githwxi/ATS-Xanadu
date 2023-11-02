@@ -248,6 +248,21 @@ $(XATS2JS_XATSOPT_OBJDATS) >> $@_dats.js && \
 $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 #
 ######
+#
+test:: \
+xatsopt_boot03
+xatsopt_boot03:: ; \
+$(CAT) \
+$(XATS2JS_PRELUDE) > $@_dats.js && \
+$(CAT) \
+$(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
+$(CAT) \
+$(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
+$(CAT) \
+$(XATS2JS_XATSOPT_OBJDATS) >> $@_dats.js && \
+$(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
+#
+######
 ######
 #
 # HX: for cleaning up

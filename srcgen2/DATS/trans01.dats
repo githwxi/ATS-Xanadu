@@ -200,6 +200,26 @@ end //
 (* ****** ****** *)
 
 #implfun
+gnamid_sym(tok) =
+(
+case-
+tok.node() of
+//
+(*
+| T_IDENT(nam) =>
+  $SYM.symbl_make_name(nam)
+*)
+//
+| T_IDALP(nam) =>
+  $SYM.symbl_make_name(nam)
+| T_IDSYM(nam) =>
+  $SYM.symbl_make_name(nam)
+//
+) (*case-*) // end of [gnamid_sym(tok)]
+
+(* ****** ****** *)
+
+#implfun
 gexpid_sym(tok) =
 (
 case-

@@ -107,7 +107,8 @@ datatype g1nam =
 //
 | G1Nid0 of sym_t
 //
-| G1Nint of (int)
+| G1Nint of sint
+| G1Nchr of char
 | G1Nflt of double
 | G1Nstr of string
 //

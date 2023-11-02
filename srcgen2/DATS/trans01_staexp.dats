@@ -86,6 +86,9 @@ _(*TRANS01*) = "./trans01.dats"
 #symload lctn with i0dnt_get_lctn
 #symload node with i0dnt_get_node
 (* ****** ****** *)
+#symload lctn with g0nam_get_lctn
+#symload node with g0nam_get_node
+(* ****** ****** *)
 #symload lctn with g0exp_get_lctn
 #symload node with g0exp_get_node
 (* ****** ****** *)
@@ -529,6 +532,79 @@ token_none
 (loc: loc_t): token = 
 token_make_node(loc, T_ERR())
 }(*where*)//end-of(trans01_t0str)
+//
+(* ****** ****** *)
+//
+#implfun
+trans01_g0nam
+(tenv, g0nm) =
+(
+case+
+g0nm.node() of
+//
+|G0Nid0(id0) =>
+(
+  f0_id0(tenv, g0nm))
+//
+|
+G0Nint(int) =>
+G1Nint
+(
+token2sint
+(trans01_t0int(tenv, int)))
+|
+G0Nchr(chr) =>
+G1Nchr
+(
+token2schr
+(trans01_t0chr(tenv, chr)))
+|
+G0Nflt(flt) =>
+G1Nflt
+(
+token2sflt
+(trans01_t0flt(tenv, flt)))
+|
+G0Nstr(str) =>
+G1Nstr
+(
+token2sstr
+(trans01_t0str(tenv, str)))
+//
+|
+G0Nlist
+(tbeg, gnms, tend) =>
+G1Nlist
+(trans01_g0namlst(tenv, gnms))
+//
+|G0Ntkerr(terr) => G1Nnone1(g0nm)
+//
+) where
+{
+//
+fun
+f0_id0
+( tenv
+: !tr01env
+, g0nm: g0nam): g1nam =
+let
+//
+val-
+G0Nid0(id0) = g0nm.node()
+//
+in//let
+G1Nid0
+(
+gnamid_sym
+(trans01_i0dnt(tenv, id0)))
+end//let//end-of-[f0(tenv,g0nm)]
+//
+val () =
+prerrln
+("trans01_g0nam: g0nm = ", g0nm)
+//
+} (*where*)
+// end of [trans01_g0nam(tenv,g0nm)]
 //
 (* ****** ****** *)
 //

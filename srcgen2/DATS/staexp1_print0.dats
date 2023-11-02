@@ -187,6 +187,8 @@ case+ g1n of
 //
 | G1Nint(int) =>
   print("G1Nint(",int,")")
+| G1Nchr(chr) =>
+  print("G1Nchr(",chr,")")
 | G1Nflt(flt) =>
   print("G1Nflt(",flt,")")
 | G1Nstr(str) =>
