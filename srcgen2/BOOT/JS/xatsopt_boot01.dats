@@ -247,5 +247,34 @@ val (  ) = prerrln
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+val
+xsymmap_sats =
+p1_fun_test_fpath<d0eclist>
+("./../../SATS/xsymmap.sats", p1_d0eclsq1_sta)
+val
+xsymmap_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/xsymmap.dats", p1_d0eclsq1_dyn)
+val
+xsymmap_topmap_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/xsymmap_topmap.dats", p1_d0eclsq1_dyn)
+val
+xsymmap_stkmap_dats =
+p1_fun_test_fpath<d0eclist>
+("./../../DATS/xsymmap_stkmap.dats", p1_d0eclsq1_dyn)
+//
+val (  ) = prerrln
+("p1_fun_test(\"./../../SATS/xsymmap.sats\") =\n", xsymmap_sats)
+val (  ) = prerrln
+("p1_fun_test(\"./../../DATS/xsymmap.dats\") =\n", xsymmap_dats)
+val (  ) = prerrln
+("p1_fun_test(\"./../../DATS/xsymmap_topmap.dats\") =\n", xsymmap_topmap_dats)
+val (  ) = prerrln
+("p1_fun_test(\"./../../DATS/xsymmap_stkmap.dats\") =\n", xsymmap_stkmap_dats)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [(* end of [ATS3/XATSOPT_BOOT_JS_xatsopt_boot01.dats] *)
