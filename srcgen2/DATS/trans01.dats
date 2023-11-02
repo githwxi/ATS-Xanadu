@@ -499,18 +499,15 @@ end(*let*)//end-of-[d1parsed_trans01(dpar)]
 #implfun
 d1parsed_from_fpath
   (stadyn, source) =
-let
+(
+d1parsed_of_trans01(dpar)) where
+{
 //
 val dpar =
-d0parsed_from_fpath
-  (stadyn, source)
+d0parsed_from_fpath(stadyn, source)
 //
-val dpar =
-d0parsed_of_preadx0(dpar)
-//
-in//let
-  d1parsed_of_trans01(dpar)
-end(*let*)//end-of-[d1parsed_from_fpath(...)]
+val dpar = d0parsed_of_preadx0(dpar)
+} (*where*)//end-of-[d1parsed_from_fpath(...)]
 //
 (* ****** ****** *)
 

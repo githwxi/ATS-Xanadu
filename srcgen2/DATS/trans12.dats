@@ -52,7 +52,11 @@ ATS_PACKNAME
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
 (* ****** ****** *)
+#staload "./../SATS/trans01.sats"
+#staload "./../SATS/tread01.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans12.sats"
@@ -428,7 +432,9 @@ val
 *)
 } (*where*) // end of [f0_s1exp(envs,sexp)]
 
-in (*in-of-local*)
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
 
 #implfun
 s1exp_get_s2cstlst
@@ -548,10 +554,27 @@ let
 val t2penv = tr12env_free_top(env0)
 in//let
 d2parsed
-(stadyn,nerror,source,t1penv,t2penv,parsed)
+( stadyn
+, nerror, source, t1penv, t2penv, parsed)
 end
 end (*let*) // end of [d1parsed_trans12(dpar)]
 
+(* ****** ****** *)
+//
+#implfun
+d2parsed_from_fpath
+  (stadyn, source) =
+(
+  d2parsed_of_trans12(dpar)) where
+{
+//
+val dpar =
+d1parsed_from_fpath(stadyn, source)
+//
+val dpar = d1parsed_of_tread01(dpar)
+//
+} (*where*)//end-of-[d2parsed_from_fpath(...)]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans12.dats] *)

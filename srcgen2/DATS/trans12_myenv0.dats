@@ -1236,6 +1236,32 @@ prerrln("tr12env_add1_f2env: fenv = ", x0)
 (* ****** ****** *)
 
 #implfun
+f2envlst_find_s2tex
+  (envs, k0) =
+(
+case+ envs of
+|
+list_nil() =>
+optn_vt_nil((*void*))
+|
+list_cons(fenv, envs) =>
+(
+case+
+topt of
+| ~
+optn_vt_nil() =>
+f2envlst_find_s2tex
+( envs(*rest*), k0 )
+| !
+optn_vt_cons _ => topt) where
+{
+val topt =
+topmap_search_opt(fenv.sort2env(), k0) }
+) (*case+*)//end-[f2envlst_find_s2tex(env0,k0)]
+
+(* ****** ****** *)
+
+#implfun
 f2envlst_find_s2itm
   (envs, k0) =
 (
@@ -1247,15 +1273,15 @@ optn_vt_nil((*void*))
 list_cons(fenv, envs) =>
 (
 case+
-dopt of
+sopt of
 | ~
 optn_vt_nil() =>
 f2envlst_find_s2itm
 ( envs(*rest*), k0 )
 | !
-optn_vt_cons _ => dopt) where
+optn_vt_cons _ => sopt) where
 {
-val dopt =
+val sopt =
 topmap_search_opt(fenv.s2expenv(), k0) }
 ) (*case+*)//end-[f2envlst_find_s2itm(env0,k0)]
 

@@ -220,24 +220,25 @@ f0_gexp
 case+
 g1e0.node() of
 //
-|
-G1Eint(tok) =>
-G1Mint(int) where
-{
-val int = token2sint(tok)
-}
-|
-G1Ebtf(tok) =>
-G1Mbtf(btf) where
-{
-val btf = token2sbtf(tok)
-}
-|
-G1Echr(tok) =>
-G1Mchr(chr) where
-{
-val chr = token2schr(tok)
-}
+|G1Eint(tok) =>
+(G1Mint(int)) where
+{ val
+  int = token2sint(tok)}
+//
+|G1Ebtf(tok) =>
+(G1Mbtf(btf)) where
+{ val
+  btf = token2sbtf(tok)}
+//
+|G1Echr(tok) =>
+(G1Mchr(chr)) where
+{ val
+  chr = token2schr(tok)}
+//
+|G1Estr(tok) =>
+(G1Mstr(str)) where
+{ val
+  str = token2sstr(tok)}
 //
 |
 G1Eid0(gid) => G1Mid0(gid)

@@ -800,7 +800,7 @@ trans01_d0cstdclist:
 fun
 trans01_d0eclistopt
 ( env0
-: !tr01env, opt: d0eclistopt): d1eclistopt
+: !tr01env, dopt: d0eclistopt): d1eclistopt
 //
 (* ****** ****** *)
 //

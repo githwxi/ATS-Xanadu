@@ -263,6 +263,21 @@ $(XATS2JS_XATSOPT_OBJDATS) >> $@_dats.js && \
 $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 #
 ######
+#
+test:: \
+xatsopt_boot04
+xatsopt_boot04:: ; \
+$(CAT) \
+$(XATS2JS_PRELUDE) > $@_dats.js && \
+$(CAT) \
+$(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
+$(CAT) \
+$(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
+$(CAT) \
+$(XATS2JS_XATSOPT_OBJDATS) >> $@_dats.js && \
+$(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
+#
+######
 ######
 #
 # HX: for cleaning up
@@ -271,6 +286,6 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 clean:: ; rm -f *~
 ######
 cleanall:: clean
-cleanall:: ; rm -f BUILD/xbasics*_dats.js
+cleanall:: ; rm -f ./xatsopt_boot??_dats.js
 ######
 ########################### end of [Makefile] ###########################
