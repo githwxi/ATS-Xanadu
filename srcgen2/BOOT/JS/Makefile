@@ -86,9 +86,9 @@ xsymbol_inits0.dats \
 xlabel0.dats \
 xlabel0_print0.dats \
 filpath.dats \
+filpath_print0.dats \
 filpath_drpth0.dats \
 filpath_fpath0.dats \
-filpath_print0.dats \
 filpath_search.dats \
 locinfo.dats \
 locinfo_print0.dats \
