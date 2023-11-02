@@ -893,27 +893,31 @@ in//let
 //
 case+
 dcl.node() of
+//
 |
-D2Cstatic(tknd,dcl1) =>
+D2Cstatic
+(tknd, dcl1) =>
 let
 val () =
 d2ecl_fpemsg(out, dcl1)
 endlet//end-of(D2Cstatic(_,_))
 |
-D2Cextern(tknd,dcl1) =>
+D2Cextern
+(tknd, dcl1) =>
 let
 val () =
 d2ecl_fpemsg(out, dcl1)
 endlet//end-of(D2Cextern(_,_))
 //
 |
-D2Clocal0(dcs1,dcs2) =>
+D2Clocal0
+(dcs1, dcs2) =>
 let
 val () =
 d2eclist_fpemsg(out, dcs1)
 val () =
 d2eclist_fpemsg(out, dcs2)
-endlet // end of [D2Clocal0(...)]
+endlet//end-of-[D2Clocal0(...)]
 //
 |
 D2Cabssort _ => ( (*void*) )
@@ -953,6 +957,11 @@ val
 endlet // end-of-(D2Cabsimpl)
 //
 |
+D2Csymload
+( tknd
+, sym1, dptm) => ( (*void*) )
+//
+|
 D2Cinclude
 ( knd0, tknd
 , g1e1, fopt, dopt) =>
@@ -963,8 +972,8 @@ optn_nil() => ()
 |
 optn_cons(dcls) =>
 let
-val () =
-  d2eclist_fpemsg(out, dcls)
+val
+( ) = d2eclist_fpemsg(out, dcls)
 endlet
 ) (*case+*)//end-(D2Cinclude(...))
 //

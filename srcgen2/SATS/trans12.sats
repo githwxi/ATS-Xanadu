@@ -1059,7 +1059,15 @@ trans12_d1cstdclist
 (* ****** ****** *)
 //
 fun
-trans12_d1eclistopt:(!tr12env, d1eclistopt)->d2eclistopt
+trans12_d1eclistopt
+( env0
+: !tr12env, dopt: d1eclistopt): d2eclistopt
+//
+(* ****** ****** *)
+//
+fun
+d2parsed_from_fpath
+(stadyn: sint, source: strn(*fpath*)): d2parsed
 //
 (* ****** ****** *)
 
