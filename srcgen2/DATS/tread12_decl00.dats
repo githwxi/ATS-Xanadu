@@ -817,9 +817,17 @@ D2Cinclude
 , tknd, gsrc
 , fopt, dopt) = dcl.node()
 //
+//
+val loc = dcl.lctn()
+//
+(*
 val () =
 prerrln
-("f0_include: dopt = ", dopt)
+("f0_include(12): loc = ", loc)
+val () =
+prerrln
+("f0_include(12): dopt = ", dopt)
+*)
 //
 val dopt =
 (
@@ -832,11 +840,12 @@ case+ dopt of
 : d2eclistopt // end of [val(dopt)]
 //
 in//let
+(
 if
 (err=e00)
 then (dcl) else
 d2ecl_include_errck
-( dcl.lctn(), knd0,tknd,gsrc,fopt,dopt )
+(loc, knd0, tknd, gsrc, fopt, dopt) )
 end (*let*) // end of [f0_include(dcl,err)]
 //
 (* ****** ****** *)

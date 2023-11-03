@@ -143,14 +143,14 @@ match2a_s2typ
 //
 val t2p1 = d2cst_get_xtyp(d2c1)
 //
-(*
+// (*
 val (  ) =
 prerrln("match2a_d2cst: d2c1 = ", d2c1)
 val (  ) =
 prerrln("match2a_d2cst: t2p1 = ", t2p1)
 val (  ) =
 prerrln("match2a_d2cst: t2p2 = ", t2p2)
-*)
+// *)
 //
 } (*where*) // end of [match2a_d2cst(env0,...)]
 
@@ -170,10 +170,8 @@ f0_d2con(env0, d2i1, t2p2)
 |D2ITMcst _ =>
 f0_d2cst(env0, d2i1, t2p2)
 //
-(*
 |D2ITMsym _ =>
 f0_d2sym(env0, d2i1, t2p2)
-*)
 //
 ) (*case+*) where
 {
@@ -238,8 +236,27 @@ val d2cs =
 f1_d2conlst(env0, d2cs, t2p0)
 in
 if
+(
+test where
+{
+val test =
 match2a_d2con
 (env0, d2c1, t2p2)
+//
+(*
+val (  ) =
+prerrln
+("f1_d2conlst: d2c1 = ", d2c1)
+val (  ) =
+prerrln
+("f1_d2conlst: t2p2 = ", t2p2)
+val (  ) =
+prerrln
+("f1_d2conlst: test = ", test)
+*)
+//
+} (*where*) // end-of-[if(test)]
+)
 then list_cons(d2c1, d2cs) else d2cs end
 )
 //
@@ -285,14 +302,95 @@ list_cons(d2c1, d2cs) =>
 let
 val d2cs =
 f1_d2cstlst(env0, d2cs, t2p0)
-in
-if
+in//let
+if // if
+(
+test where
+{
+val test =
 match2a_d2cst
 (env0, d2c1, t2p2)
+//
+(*
+val (  ) =
+prerrln
+("f1_d2cstlst: d2c1 = ", d2c1)
+val (  ) =
+prerrln
+("f1_d2cstlst: t2p2 = ", t2p2)
+val (  ) =
+prerrln
+("f1_d2cstlst: test = ", test)
+*)
+//
+} (*where*) // end-of-[if(test)]
+)
 then list_cons(d2c1, d2cs) else d2cs end
 )
 //
 } (*where*) // end of [f0_d2cst(env0,d2i1,t2p2)]
+//
+(* ****** ****** *)
+//
+fun
+f0_d2sym
+( env0:
+! tr2aenv
+, d2i1: d2itm
+, t2p2: s2typ): d2itmopt =
+let
+val-
+D2ITMsym
+(sym1, dpis) = d2i1
+in//let
+(
+  auxmain(env0, dpis) ) where
+{
+fun
+auxmain
+( env0:
+! tr2aenv
+, dpis: d2ptmlst): d2itmopt =
+(
+case+ dpis of
+|
+list_nil() =>
+optn_nil()
+|
+list_cons(dpi1, dpis) =>
+let
+val opt1 =
+match2a_d2ptm(env0, dpi1, t2p2)
+in//let
+//
+case+ opt1 of
+|optn_nil() =>
+(
+auxmain(env0, dpis)
+)
+|optn_cons(dptm) =>
+(
+case+ dptm of
+| D2PTMnone _ =>
+(
+  auxmain(env0, dpis))
+| D2PTMsome
+  (pval, ditm) => optn_cons(ditm) )
+//
+end(*let*) // end-of-[list_cons(dpi1,dpis)]
+)
+}
+end (*let*) // end-of-[f0_d2sym(env0,d2i1,t2p2)]
+//
+(* ****** ****** *)
+//
+val () =
+(
+  prerrln("match2a_d2itm: d2i1 = ", d2i1))
+//
+val () =
+(
+  prerrln("match2a_d2itm: t2p2 = ", t2p2))
 //
 (* ****** ****** *)
 //
@@ -320,7 +418,20 @@ case+ dopt of
 | optn_cons(ditm) =>
   optn_cons(D2PTMsome(pval, ditm))
 end (*let*) // end of [D2PTMsome(...)]
-) (*case+*) // end of [match2a_d2ptm(env0,...)]
+) where
+{
+(* ****** ****** *)
+//
+val () =
+(
+  prerrln("match2a_d2ptm: dptm = ", dptm))
+//
+val () =
+(
+  prerrln("match2a_d2ptm: t2p2 = ", t2p2))
+//
+(* ****** ****** *)
+} (*where*) // end of [match2a_d2ptm(env0,...)]
 
 (* ****** ****** *)
 
