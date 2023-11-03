@@ -63,7 +63,6 @@ val ((*void*)) =
 d3parsed_fpemsg(g_stderr(), xbasics_dats)
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 //
 val
@@ -91,6 +90,7 @@ val ((*void*)) =
 d3parsed_fpemsg(g_stderr(), staexp0_dats)
 //
 (* ****** ****** *)
+////
 (* ****** ****** *)
 //
 val
