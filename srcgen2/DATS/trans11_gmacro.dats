@@ -299,12 +299,14 @@ end (*let*) // end-(list_cons(...))
 //
 ) where
 {
+(*
   val
   loc0 = g1e0.lctn()
   val () =
   prerrln("f0_gexp: loc0 = ", loc0)
   val () =
   prerrln("f0_gexp: g1e0 = ", g1e0)
+*)
 } (*where*) // end of [f0_gexp(g1e0)]
 
 (* ****** ****** *)
