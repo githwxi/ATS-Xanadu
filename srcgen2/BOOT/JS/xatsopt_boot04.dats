@@ -21,6 +21,22 @@ bootstrapping ATS3/Xanadu!!!
 #staload
 "./../../SATS/tread12.sats"
 (* ****** ****** *)
+#staload
+"./../../SATS/xglobal.sats"
+(* ****** ****** *)
+//
+val ret =
+the_fxtyenv_pvsload()
+val (  ) =
+prerrln("the_fxtyenv_pvsload() = ", ret)
+//
+val ret =
+the_tr12env_pvsload()
+val (  ) =
+prerrln("the_tr12env_pvsload() = ", ret)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 val
 xbasics_sats =
@@ -33,7 +49,7 @@ dpar = d2parsed_from_fpath
 (0(*sta*), "./../../SATS/xbasics.sats")}
 val ((*void*)) =
 d2parsed_fpemsg(g_stderr(), xbasics_sats)
-//
+////
 val
 xbasics_dats =
 (
