@@ -82,15 +82,31 @@ in//let
 case+
 d3p.node() of
 //
-|D3Pvar _ => ()
+|D3Pvar _ => ( (*void*) )
 //
-|D3Pint _ => ()
-|D3Pbtf _ => ()
-|D3Pchr _ => ()
-|D3Pflt _ => ()
-|D3Pstr _ => ()
+|D3Pint _ => ( (*void*) )
+|D3Pbtf _ => ( (*void*) )
+|D3Pchr _ => ( (*void*) )
+|D3Pflt _ => ( (*void*) )
+|D3Pstr _ => ( (*void*) )
 //
-|D3Pcon _ => ()
+|D3Pcon _ => ( (*void*) )
+//
+|D3Pbang
+( d3p1 ) =>
+let
+val () =
+d3pat_fpemsg(out, d3p1) endlet
+|D3Pflat
+( d3p1 ) =>
+let
+val () =
+d3pat_fpemsg(out, d3p1) endlet
+|D3Pfree
+( d3p1 ) =>
+let
+val () =
+d3pat_fpemsg(out, d3p1) endlet
 //
 |
 D3Ptapq
@@ -399,8 +415,8 @@ val () = d3exp_fpemsg(out , d3e1)
 endlet // end of [ D3El0azy(_, _) ]
 |
 D3El1azy
-( dsym
-, d3e1, d3es) =>
+(dsym
+,d3e1, d3es) =>
 let
   val () =
   d3explst_fpemsg(out , d3es)
@@ -408,6 +424,14 @@ endlet where
 {
 val () = d3exp_fpemsg(out , d3e1)
 }(*whr*)//end-[ D3El1azy(_, _, _) ]
+//
+|
+D3Eannot
+(d3e1
+,s1e2, s2e2) =>
+let
+val () = d3exp_fpemsg(out , d3e1)
+endlet // end of [ D3Eannot(_, _) ]
 //
 |
 D3El2bck
