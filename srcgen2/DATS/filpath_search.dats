@@ -76,14 +76,14 @@ in
 ) where
 {
 //
-// (*
+(*
 val () =
 prerrln
 ("fsrch_dcurrent: dir0 = ", dir0)
 val () =
 prerrln
 ("fsrch_dcurrent: base = ", base)
-// *)
+*)
 //
 } (*where*) // end-(fsrch_dir1base)
 endlet // end-of-[fsrch_dcurrent(base)]
@@ -178,14 +178,14 @@ else if
 fkndq1(base) then 1 else -1
 ) : sint // end-of-[val(fknd)]
 //
-// (*
+(*
 val () =
 prerrln
 ("fsrch_combined: fnm0 = ", fnm0)
 val () =
 prerrln
 ("fsrch_combined: fknd = ", fknd)
-// *)
+*)
 //
 in
 //
@@ -304,7 +304,7 @@ val
 fnm1 =
 fname_dbjoin(dir0, base)
 //
-// (*
+(*
 val () =
 prerrln
 ("auxmain: dir0 = ", dir0)
@@ -314,7 +314,7 @@ prerrln
 val () =
 prerrln
 ("auxmain: fnm1 = ", fnm1)
-// *)
+*)
 //
 val
 isexi =
@@ -351,14 +351,14 @@ optn_cons
 (fpath(base, fnm1)) // relative
 ) where
 {
-// (*
+(*
 val () =
 prerrln("auxmain: base = ", base)
 val () =
 prerrln("auxmain: fnm1 = ", fnm1)
 val () =
 prerrln("auxmain: isexi = ", isexi)
-// *)
+*)
 }
 else optn_nil(*void*)
 //
@@ -375,10 +375,12 @@ fsrch_dnm1base
   auxmain(dir0, base)
 ) where {
 //
+(*
 val ((*0*)) =
 prerrln("fsrch_dnm1base: dir0 = ", dir0)
 val ((*0*)) =
 prerrln("fsrch_dnm1base: base = ", base)
+*)
 //
 } (*where*) // [fsrch_dnm1base(dirs,base)]
 
@@ -392,15 +394,19 @@ fsrch_dir1base
 ) where {
 //
   val dir0 = drpth_get_name(dir0)
+(*
   val ((*0*)) =
   prerrln("fsrch_dir1base: dir0 = ", dir0)
+*)
 //
 } where {
 //
+(*
   val ((*0*)) =
   prerrln("fsrch_dir1base: dir0 = ", dir0)
   val ((*0*)) =
   prerrln("fsrch_dir1base: base = ", base)
+*)
 //
 } (*where*)//end-[fsrch_dir1base(dirs,base)]
 
