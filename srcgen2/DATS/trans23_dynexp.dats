@@ -2465,6 +2465,14 @@ list_trans23_fnp(env0, f2as, trans23_f2arg))
 (* ****** ****** *)
 
 #implfun
+trans23_d2gualst
+  (env0, d2gs) =
+(
+list_trans23_fnp(env0, d2gs, trans23_d2gua))
+
+(* ****** ****** *)
+
+#implfun
 trans23_d2pat_tpck
 (env0, d2p0, t2p0) =
 let
