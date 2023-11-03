@@ -1427,14 +1427,17 @@ case+ opt0 of
 |optn_cons(fnm0) =>
  fsrch_combined(fnm0)): fpathopt
 //
-// (*
+(*
 val (  ) =
-prerrln("f0_include: g1e1 = ", g1e1)
+prerrln
+("f0_include(01): g1e1 = ", g1e1)
 val (  ) =
-prerrln("f0_include: opt0 = ", opt0)
+prerrln
+("f0_include(01): opt0 = ", opt0)
 val (  ) =
-prerrln("f0_include: opt1 = ", opt1)
-// *)
+prerrln
+("f0_include(01): opt1 = ", opt1)
+*)
 //
 val dopt =
 (

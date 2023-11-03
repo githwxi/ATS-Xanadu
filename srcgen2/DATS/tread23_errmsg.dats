@@ -177,9 +177,16 @@ let
 #impltmp
 g_print$out<>() = out
 //
+// (*
+val
+loc0 = d3p0.lctn()
+val () =
+prerrln
+("d3pat_fpemsg: loc0 = ", loc0)
 val () =
 prerrln
 ("d3pat_fpemsg: d3p0 = ", d3p0)
+// *)
 //
 in//let
 //
@@ -470,9 +477,16 @@ let
 #impltmp
 g_print$out<>() = out
 //
+// (*
+val
+loc0 = d3e0.lctn()
+val () =
+prerrln
+("d3exp_fpemsg: loc0 = ", loc0)
 val () =
 prerrln
 ("d3exp_fpemsg: d3e0 = ", d3e0)
+// *)
 //
 in//let
 //
@@ -737,6 +751,11 @@ let
 g_print$out<>() = out
 //
 // (*
+val
+loc0 = dcl0.lctn()
+val () =
+prerrln
+("d3ecl_fpemsg: loc0 = ", loc0)
 val () =
 prerrln
 ("d3ecl_fpemsg: dcl0 = ", dcl0)
