@@ -611,9 +611,11 @@ local
 (* ****** ****** *)
 //
 #symload
-lctn with token_get_lctn
+lctn with
+token_get_lctn of 1000000(*1M*)
 #symload
-lctn with i0dnt_get_lctn
+lctn with
+i0dnt_get_lctn of 1000000(*1M*)
 //
 #symload + with add_loctn_loctn
 (* ****** ****** *)
