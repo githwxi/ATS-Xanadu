@@ -378,9 +378,7 @@ f0_include
 let
 //
 val e00 = err
-(*
 val loc = dcl.lctn()
-*)
 //
 val-
 D3Cinclude
@@ -391,7 +389,10 @@ D3Cinclude
 (*
 val () =
 prerrln
-("f0_include: dopt = ", dopt)
+("f0_include(23): loc = ", loc)
+val () =
+prerrln
+("f0_include(23): dopt = ", dopt)
 *)
 //
 val dopt =
@@ -405,11 +406,12 @@ case+ dopt of
 : d3eclistopt // end of [val(dopt)]
 //
 in//let
+(
 if
 (err=e00)
 then (dcl) else
 d3ecl_include_errck
-( dcl.lctn(), knd0,tknd,gsrc,fopt,dopt )
+(loc, knd0, tknd, gsrc, fopt, dopt) )
 end (*let*) // end of [f0_include(dcl,err)]
 //
 (* ****** ****** *)

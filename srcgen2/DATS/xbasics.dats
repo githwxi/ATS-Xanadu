@@ -55,8 +55,7 @@ POLNEG
 
 #implfun
 sortbox(knd) =
-g0u2s
-(g0s2u(knd) & g0s2u(01))
+g0u2s(g0s2u(knd) & g0s2u(01))
 
 #implfun
 sortlin(knd) =
@@ -163,8 +162,10 @@ case+ fnk of
 f2clknd_linq(f2cl) =
 (
 case+ f2cl of
-| F2CLfun() => false
-| F2CLclo(knd0) => (knd0 >= LINCLOFLT))
+|
+F2CLfun() => false
+|
+F2CLclo(knd0) => (knd0 >= LINCLOFLT))
 
 (* ****** ****** *)
 

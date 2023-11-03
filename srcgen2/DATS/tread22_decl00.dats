@@ -420,9 +420,14 @@ D2Cinclude
 , tknd, gsrc
 , fopt, dopt) = dcl.node()
 //
+(*
 val () =
 prerrln
-("f0_include: dopt = ", dopt)
+("f0_include(22): loc = ", loc)
+val () =
+prerrln
+("f0_include(22): dopt = ", dopt)
+*)
 //
 val dopt =
 (
