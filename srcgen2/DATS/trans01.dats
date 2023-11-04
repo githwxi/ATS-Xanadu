@@ -394,9 +394,9 @@ map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 
 (* ****** ****** *)
 
-fun
+#implfun
 the_drpth_push_lcsrc
-  (source: lcsrc): void =
+(  source  ) =
 (
 case+ source of
 //
@@ -440,9 +440,9 @@ prerrln
 
 (* ****** ****** *)
 
-fun
+#implfun
 the_drpth_pop0_lcsrc
-  (source: lcsrc): void =
+(  source  ) =
 (
 case+ source of
 |

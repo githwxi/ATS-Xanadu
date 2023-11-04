@@ -1677,9 +1677,18 @@ D1Cstaload
 , tknd, gsrc
 , fopt, dopt) = d1cl.node()
 //
+(*
+val () =
+prerrln//trans12
+("f0_staload(12): gsrc = ", gsrc)
+val () =
+prerrln//trans12
+("f0_staload(12): fopt = ", fopt)
+*)
+//
 var
 dres:
-s2taloadopt = S2TALOADnone(*0*)
+s2taloadopt = S2TALOADnone((*0*))
 //
 val dopt =
 (
@@ -1693,11 +1702,12 @@ let
   val-
   optn_cons@(shrd, dpar) = dopt
 in//let
+(
 optn_cons
-(s2taload_from_fpath(fpth, dpar))
+(s2taload_from_fpath(fpth, dpar)) )
 end // let
 ) :
-optn@(sint,d2parsed)//[val(dopt)]
+optn@(sint,d2parsed) // [val(dopt)]
 //
 val gsym =
 (
@@ -1715,9 +1725,6 @@ optn_cons( gsym ) => gsym):sym_t
 val (  ) =
 prerrln//trans12
 ("f0_staload(12): gsym = ", gsym)
-val (  ) =
-prerrln//trans12
-("f0_staload(12): gsrc = ", gsrc)
 *)
 //
 val (  ) =
@@ -1745,6 +1752,12 @@ symbl(strn_append(name, "."))
 val
 sopt =
 tr12env_find_s2qua(env0, sym1)
+//
+(*
+val () =
+prerrln//trans12
+("f0_staload(12): sym1 = ", sym1)
+*)
 //
 in//let
 case+ sopt of
@@ -2558,19 +2571,19 @@ dexp = trans12_d1exp(env0, dexp)
 val (  ) = tr12env_poplam0(env0)
 //
 (*
-val () =
+val (  ) =
 prerrln("f0_implmnt0: dimp = ", dimp)
-val () =
+val (  ) =
 prerrln("f0_implmnt0: sqas = ", sqas)
-val () =
+val (  ) =
 prerrln("f0_implmnt0: tqas = ", tqas)
-val () =
+val (  ) =
 prerrln("f0_implmnt0: tias = ", tias)
-val () =
+val (  ) =
 prerrln("f0_implmnt0: f2as = ", f2as)
-val () =
+val (  ) =
 prerrln("f0_implmnt0: sres = ", sres)
-val () =
+val (  ) =
 prerrln("f0_implmnt0: dexp = ", dexp)
 *)
 //

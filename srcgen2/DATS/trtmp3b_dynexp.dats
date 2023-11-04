@@ -67,7 +67,7 @@ trtmp3b_d3exp
 (env0 , d3e0) =
 let
 //
-// (*
+(*
 val
 loc0 = d3e0.lctn()
 val () =
@@ -76,7 +76,7 @@ prerrln
 val () =
 prerrln
 ("trtmp3b_d3exp: d3e0 = ", d3e0)
-// *)
+*)
 //
 in//let
 //
@@ -163,8 +163,10 @@ end//let
 end where
 {
 //
+(*
 val () = prerrln
 ("trtmp3b_d3exp: f0_tapq: d3e0 = ", d3e0)
+*)
 //
 } (*where*) // end of [f0_tapq(env0,d3e0)]
 //
