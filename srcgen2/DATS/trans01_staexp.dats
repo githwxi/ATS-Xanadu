@@ -599,9 +599,11 @@ gnamid_sym
 (trans01_i0dnt(tenv, id0)))
 end//let//end-of-[f0(tenv,g0nm)]
 //
+(*
 val () =
 prerrln
 ("trans01_g0nam: g0nm = ", g0nm)
+*)
 //
 } (*where*)
 // end of [trans01_g0nam(tenv,g0nm)]
@@ -1043,7 +1045,7 @@ end (*let*) // end of [G0MAGdarg(...)]
 ) where
 {
 (*
-val () =
+val (  ) =
 prerrln("trans01_g0mag: g0ma = ", g0ma)
 *)
 } (*where*) // end of [trans01_g0mag(tenv,g0ma)]
@@ -1791,8 +1793,7 @@ trans01_s0mag
 val loc0 = s0ma.lctn()
 //
 (*
-val () =
-prerrln
+val (  ) = prerrln
 ("trans01_s0mag: s0ma = ", s0ma)
 *)
 //

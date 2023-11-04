@@ -80,6 +80,33 @@ val ((*void*)) =
 d3parsed_fpemsg(g_stderr(), xbasics_dats)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+val
+staexp2_sats =
+(
+d3parsed_of_tread23(dpar)
+) where
+{
+val
+dpar = d3parsed_from_fpath
+(0(*sta*), "./../../SATS/staexp2.sats")}
+val ((*void*)) =
+d3parsed_fpemsg(g_stderr(), staexp2_sats)
+//
+val
+staexp2_dats =
+(
+d3parsed_of_tread23(dpar)
+) where
+{
+val
+dpar = d3parsed_from_fpath
+(1(*dyn*), "./../../DATS/staexp2.dats")}
+val ((*void*)) =
+d3parsed_fpemsg(g_stderr(), staexp2_dats)
+//
+(* ****** ****** *)
 ////
 (* ****** ****** *)
 //
@@ -108,7 +135,6 @@ val ((*void*)) =
 d3parsed_fpemsg(g_stderr(), staexp0_dats)
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 //
 val
