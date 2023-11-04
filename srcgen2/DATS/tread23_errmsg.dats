@@ -455,15 +455,26 @@ endlet // end of [ D3Et2pck(_, _) ]
 //
 |D3Enone0(    ) => (   (*void*)   )
 |D3Enone1(d2e1) => (   (*void*)   )
+//
+|D3Enone2(d3e1) =>
+let
+val () = d3exp_fpemsg(out , d3e1)
+endlet // end of [ D3Enone2( ... ) ]
+//
 |
-D3Eerrck(_,_) => d3exp_fpemsg(out, d3e)
+D3Eextnam
+( tknd, gnm1) =>
+let
+// HX-2023-11-03: (* nothing yet *)
+endlet//end-of-[D3Eextnam(tknd,gnm1)]
+//
+|D3Eerrck(_, _) => d3exp_fpemsg(out, d3e)
 //
 (*
-| _
-(*otherwise*) => d3exp_fpemsg(out, d3e)
+|_(*otherwise*) => d3exp_fpemsg(out, d3e)
 *)
 //
-end (*let*) // end-of-(auxmain(out,d3e))
+end (*let*) // end-of-[auxmain(out, d3e)]
 
 (* ****** ****** *)
 in(* in-of-local *)

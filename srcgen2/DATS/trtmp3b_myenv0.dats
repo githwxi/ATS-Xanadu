@@ -200,7 +200,7 @@ loop
 , err: &sint >> _): tmpstk =
 (
 case+ kxs of
-| !
+| ~
 tmpstk_let0
 (   kxs   ) => kxs // err = 0
 | ~
@@ -226,6 +226,145 @@ val
 (stk := loop(stk, err)) in err end
 end (*let*) // end of [tmpstk_poplet0(stk)]
 //
+(* ****** ****** *)
+//
+#implfun
+tmpstk_locjoin
+  (  stk  ) = let
+//
+fnx
+poploc1
+( kxs
+: tmpstk
+, kys
+: tmpstk
+, err: &sint >> _): tmpstk =
+(
+case+ kxs of
+| ~
+tmpstk_loc1
+(   kxs   ) =>
+(
+  pshloc2(kxs, kys, err))
+| ~
+tmpstk_cons
+(k1, x1, kxs) =>
+(
+  poploc1(kxs, kys, err))
+| !
+tmpstk_nil( ) =>
+( err := 1;
+  pshloc2(kxs, kys, err)) where
+{
+val () = prerrln
+("tmpstk_locjoin: poploc1: tmpstk_nil")
+}
+//
+| !
+tmpstk_let0 _ =>
+( err := 1;
+  pshloc2(kxs, kys, err)) where
+{
+val () = prerrln
+("tmpstk_locjoin: poploc1: tmpstk_let0")
+}
+| !
+tmpstk_loc2 _ =>
+( err := 1;
+  pshloc2(kxs, kys, err)) where
+{
+val () = prerrln
+("tmpstk_locjoin: poploc1: tmpstk_loc1")
+}
+) (*case+*)//end of [poploc1(kxs,kys,err)]
+//
+and
+poploc2
+( kxs
+: tmpstk
+, kys
+: tmpstk
+, err: &sint >> _): tmpstk =
+(
+case+ kxs of
+| ~
+tmpstk_loc2
+(   kxs   ) =>
+(
+  poploc1(kxs, kys, err))
+| ~
+tmpstk_cons
+(k1, x1, kxs) =>
+(
+  poploc2(kxs, kys, err))
+where {
+val kys = tmpstk_cons(k1, x1, kys)
+} (*where*)//end-of-[tmpstk_cons(...)]
+//
+| !
+tmpstk_nil( ) =>
+( err := 1;
+  poploc1(kxs, kys, err)) where
+{
+val () = prerrln
+("tmpstk_locjoin: poploc2: tmpstk_nil")
+}
+//
+| !
+tmpstk_let0 _ =>
+( err := 1;
+  poploc1(kxs, kys, err)) where
+{
+val () = prerrln
+("tmpstk_locjoin: poploc2: tmpstk_let0")
+}
+| !
+tmpstk_loc1 _ =>
+( err := 1;
+  poploc1(kxs, kys, err)) where
+{
+val () = prerrln
+("tmpstk_locjoin: poploc2: tmpstk_loc1")
+}
+//
+) (*case+*)//end of [poploc2(kxs,kys,err)]
+//
+and
+pshloc2
+( kxs
+: tmpstk
+, kys
+: tmpstk
+, err: &sint >> _): tmpstk =
+(
+case- kys of
+| ~
+tmpstk_nil() => kxs
+| ~
+tmpstk_cons
+(k1, x1, kys) =>
+(
+pshloc2(kxs, kys, err))
+where
+{
+  val kxs =
+  tmpstk_cons(k1, x1, kxs) }
+) (*case+*)//end of [pshloc2(kxs,kys,err)]
+//
+in//let
+//
+let
+var err: sint = 0
+//
+val kxs = stk
+val kys = tmpstk_nil()
+//
+val ( ) =
+(stk := poploc2(kxs, kys, err)) in err
+end (*let*)
+//
+end (*let*) // end of [tmpstk_locjoin(stk)]
+
 (* ****** ****** *)
 //
 #implfun
@@ -461,6 +600,23 @@ in//let
   tmpstk_pshloc2(tmpstk); $fold(env0))
 //
 end(*let*)//end-of-(tr3benv_pshloc2(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3benv_locjoin
+(     env0     ) = let
+//
+val+
+@TR3BENV
+(topmap, !tmpstk) = env0
+//
+in//let
+//
+(
+  tmpstk_locjoin(tmpstk); $fold(env0))
+//
+end(*let*)//end-of-(tr3benv_locjoin(env0))
 //
 (* ****** ****** *)
 //

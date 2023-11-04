@@ -413,10 +413,11 @@ end (*let*) // end of [f0_implmnt0(dcl,err)]
 //
 (* ****** ****** *)
 //
-// (*
-val
-( ) = prerrln("tread33_d3ecl: d3cl = ", d3cl)
-// *)
+(*
+val () =
+(
+  prerrln("tread33_d3ecl: d3cl = ", d3cl) )
+*)
 //
 (* ****** ****** *)
 } (*where*) // end of [tread33_d3ecl(d3cl,err)]

@@ -92,7 +92,7 @@ prerrln
 trtmp3b_d3ecl
 ( env0, d3cl ) = let
 //
-// (*
+(*
 val
 loc0 = d3cl.lctn()
 val () =
@@ -101,7 +101,7 @@ prerrln
 val () =
 prerrln
 ("trtmp3b_d3ecl: d3cl = ", d3cl)
-// *)
+*)
 //
 in//let
 //
@@ -225,6 +225,7 @@ D3Cstaload
 ,tknd, gsrc
 ,fopt, dopt) = d3cl.node()
 //
+(*
 val () = prerrln
 ("f0_staload(3b): knd0 = ", knd0)
 val () = prerrln
@@ -233,6 +234,7 @@ val () = prerrln
 ("f0_staload(3b): gsrc = ", gsrc)
 val () = prerrln
 ("f0_staload(3b): dopt = ", dopt)
+*)
 //
 in//let
 if
@@ -425,8 +427,10 @@ in//let
 d3valdcl_make_args(loc0,dpat,tdxp,wsxp)
 end where
 {
-val () =
-prerrln("trtmp3b_d3vardcl: dval = ", dval)
+(*
+  val () =
+  prerrln("trtmp3b_d3valdcl: dval = ", dval)
+*)
 }(*let*)//end-of[trtmp3b_d3valdcl(env0,dval)]
 //
 (* ****** ****** *)
@@ -456,8 +460,10 @@ in//let
 d3vardcl_make_args(loc0,dpid,vpid,sres,dini)
 end where
 {
+(*
   val () =
   prerrln("trtmp3b_d3vardcl: dvar = ", dvar)
+*)
 }(*let*)//end-of-[trtmp3b_d3vardcl(env0,dvar)]
 //
 (* ****** ****** *)
@@ -494,10 +500,10 @@ d3fundcl(loc0,dvar,f3as,sres,tdxp,wsxp)
 end where
 {
 //
-// (*
+(*
 val () =
 prerrln("trtmp3b_d3fundcl: dfun = ", dfun)
-// *)
+*)
 //
 }(*where*)//end-of-[trtmp3b_d3fundcl(env0,dfun)]
 //

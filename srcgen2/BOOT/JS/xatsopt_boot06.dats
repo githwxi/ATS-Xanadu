@@ -22,6 +22,13 @@ bootstrapping ATS3/Xanadu!!!
 "./../../SATS/tread23.sats"
 (* ****** ****** *)
 #staload
+"./../../SATS/trans3a.sats"
+#staload
+"./../../SATS/trtmp3b.sats"
+#staload
+"./../../SATS/tread33.sats"
+(* ****** ****** *)
+#staload
 "./../../SATS/xglobal.sats"
 (* ****** ****** *)
 //
@@ -40,8 +47,16 @@ prerrln("the_tr12env_pvsload() = ", ret)
 val
 unsafex_dats =
 (
-d3parsed_of_tread23(dpar)
+d3parsed_of_tread33(dpar)
 ) where
+{
+val
+dpar =
+d3parsed_of_trans3a(dpar)
+val
+dpar =
+d3parsed_of_trtmp3b(dpar)
+} where
 {
 val
 dpar = d3parsed_from_fpath
@@ -56,22 +71,18 @@ d3parsed_fpemsg(g_stderr(), unsafex_dats)
 (* ****** ****** *)
 //
 val
-xbasics_sats =
+xbasics_dats =
 (
-d3parsed_of_tread23(dpar)
+d3parsed_of_tread33(dpar)
 ) where
 {
 val
-dpar = d3parsed_from_fpath
-(0(*sta*), "./../../SATS/xbasics.sats")}
-val ((*void*)) =
-d3parsed_fpemsg(g_stderr(), xbasics_sats)
-//
+dpar =
+d3parsed_of_trans3a(dpar)
 val
-xbasics_dats =
-(
-d3parsed_of_tread23(dpar)
-) where
+dpar =
+d3parsed_of_trtmp3b(dpar)
+} where
 {
 val
 dpar = d3parsed_from_fpath
@@ -83,22 +94,18 @@ d3parsed_fpemsg(g_stderr(), xbasics_dats)
 (* ****** ****** *)
 //
 val
-staexp0_sats =
+staexp0_dats =
 (
-d3parsed_of_tread23(dpar)
+d3parsed_of_tread33(dpar)
 ) where
 {
 val
-dpar = d3parsed_from_fpath
-(0(*sta*), "./../../SATS/staexp0.sats")}
-val ((*void*)) =
-d3parsed_fpemsg(g_stderr(), staexp0_sats)
-//
+dpar =
+d3parsed_of_trans3a(dpar)
 val
-staexp0_dats =
-(
-d3parsed_of_tread23(dpar)
-) where
+dpar =
+d3parsed_of_trtmp3b(dpar)
+} where
 {
 val
 dpar = d3parsed_from_fpath
@@ -110,22 +117,18 @@ d3parsed_fpemsg(g_stderr(), staexp0_dats)
 (* ****** ****** *)
 //
 val
-dynexp0_sats =
+dynexp0_dats =
 (
-d3parsed_of_tread23(dpar)
+d3parsed_of_tread33(dpar)
 ) where
 {
 val
-dpar = d3parsed_from_fpath
-(0(*sta*), "./../../SATS/dynexp0.sats")}
-val ((*void*)) =
-d3parsed_fpemsg(g_stderr(), dynexp0_sats)
-//
+dpar =
+d3parsed_of_trans3a(dpar)
 val
-dynexp0_dats =
-(
-d3parsed_of_tread23(dpar)
-) where
+dpar =
+d3parsed_of_trtmp3b(dpar)
+} where
 {
 val
 dpar = d3parsed_from_fpath
@@ -137,22 +140,18 @@ d3parsed_fpemsg(g_stderr(), dynexp0_dats)
 (* ****** ****** *)
 //
 val
-staexp1_sats =
+staexp1_dats =
 (
-d3parsed_of_tread23(dpar)
+d3parsed_of_tread33(dpar)
 ) where
 {
 val
-dpar = d3parsed_from_fpath
-(0(*sta*), "./../../SATS/staexp1.sats")}
-val ((*void*)) =
-d3parsed_fpemsg(g_stderr(), staexp1_sats)
-//
+dpar =
+d3parsed_of_trans3a(dpar)
 val
-staexp1_dats =
-(
-d3parsed_of_tread23(dpar)
-) where
+dpar =
+d3parsed_of_trtmp3b(dpar)
+} where
 {
 val
 dpar = d3parsed_from_fpath
@@ -164,22 +163,18 @@ d3parsed_fpemsg(g_stderr(), staexp1_dats)
 (* ****** ****** *)
 //
 val
-dynexp1_sats =
+dynexp1_dats =
 (
-d3parsed_of_tread23(dpar)
+d3parsed_of_tread33(dpar)
 ) where
 {
 val
-dpar = d3parsed_from_fpath
-(0(*sta*), "./../../SATS/dynexp1.sats")}
-val ((*void*)) =
-d3parsed_fpemsg(g_stderr(), dynexp1_sats)
-//
+dpar =
+d3parsed_of_trans3a(dpar)
 val
-dynexp1_dats =
-(
-d3parsed_of_tread23(dpar)
-) where
+dpar =
+d3parsed_of_trtmp3b(dpar)
+} where
 {
 val
 dpar = d3parsed_from_fpath
@@ -191,22 +186,18 @@ d3parsed_fpemsg(g_stderr(), dynexp1_dats)
 (* ****** ****** *)
 //
 val
-staexp2_sats =
+staexp2_dats =
 (
-d3parsed_of_tread23(dpar)
+d3parsed_of_tread33(dpar)
 ) where
 {
 val
-dpar = d3parsed_from_fpath
-(0(*sta*), "./../../SATS/staexp2.sats")}
-val ((*void*)) =
-d3parsed_fpemsg(g_stderr(), staexp2_sats)
-//
+dpar =
+d3parsed_of_trans3a(dpar)
 val
-staexp2_dats =
-(
-d3parsed_of_tread23(dpar)
-) where
+dpar =
+d3parsed_of_trtmp3b(dpar)
+} where
 {
 val
 dpar = d3parsed_from_fpath
@@ -218,22 +209,18 @@ d3parsed_fpemsg(g_stderr(), staexp2_dats)
 (* ****** ****** *)
 //
 val
-statyp2_sats =
+statyp2_dats =
 (
-d3parsed_of_tread23(dpar)
+d3parsed_of_tread33(dpar)
 ) where
 {
 val
-dpar = d3parsed_from_fpath
-(0(*sta*), "./../../SATS/statyp2.sats")}
-val ((*void*)) =
-d3parsed_fpemsg(g_stderr(), statyp2_sats)
-//
+dpar =
+d3parsed_of_trans3a(dpar)
 val
-statyp2_dats =
-(
-d3parsed_of_tread23(dpar)
-) where
+dpar =
+d3parsed_of_trtmp3b(dpar)
+} where
 {
 val
 dpar = d3parsed_from_fpath
@@ -245,22 +232,18 @@ d3parsed_fpemsg(g_stderr(), statyp2_dats)
 (* ****** ****** *)
 //
 val
-dynexp2_sats =
+dynexp2_dats =
 (
-d3parsed_of_tread23(dpar)
+d3parsed_of_tread33(dpar)
 ) where
 {
 val
-dpar = d3parsed_from_fpath
-(0(*sta*), "./../../SATS/dynexp2.sats")}
-val ((*void*)) =
-d3parsed_fpemsg(g_stderr(), dynexp2_sats)
-//
+dpar =
+d3parsed_of_trans3a(dpar)
 val
-dynexp2_dats =
-(
-d3parsed_of_tread23(dpar)
-) where
+dpar =
+d3parsed_of_trtmp3b(dpar)
+} where
 {
 val
 dpar = d3parsed_from_fpath
@@ -272,22 +255,18 @@ d3parsed_fpemsg(g_stderr(), dynexp2_dats)
 (* ****** ****** *)
 //
 val
-dynexp3_sats =
+dynexp3_dats =
 (
-d3parsed_of_tread23(dpar)
+d3parsed_of_tread33(dpar)
 ) where
 {
 val
-dpar = d3parsed_from_fpath
-(0(*sta*), "./../../SATS/dynexp3.sats")}
-val ((*void*)) =
-d3parsed_fpemsg(g_stderr(), dynexp3_sats)
-//
+dpar =
+d3parsed_of_trans3a(dpar)
 val
-dynexp3_dats =
-(
-d3parsed_of_tread23(dpar)
-) where
+dpar =
+d3parsed_of_trtmp3b(dpar)
+} where
 {
 val
 dpar = d3parsed_from_fpath
