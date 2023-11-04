@@ -10,7 +10,7 @@ HX-2023-07-07:
 
 ##################################################################
 
-HX-2023-02-26:
+>> HX-2023-02-26:
 
 >> Partially finishing trans2a and trsym2a (for resolving overloaded
 >> symbols), I have now started trans23 (performing type-checking) and
@@ -23,6 +23,7 @@ I have been working on trans23 and tread23. The total number of lines of
 ATS3 code is now above 120K. The next major phase is TEMPLATE RESOLUTION!
 
 ##################################################################
+
 wc -l \
 HATS/*.hats SATS/*.sats DATS/*.dats
      50 HATS/xatsopt_dats.hats
