@@ -275,10 +275,11 @@ optn_vt_cons
 val
 d2cs =
 tread12_d2conlst(d2cs, err)
+(*
 val () =
 prerrln
 ("tread12_s2cst: d2cs = ", d2cs)
-
+*)
 }
 end where
 {

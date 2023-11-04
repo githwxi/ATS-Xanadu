@@ -86,7 +86,11 @@ case+ dps2 of
 |list_nil() =>
 f0_sing(loc0, dpi1, t2p1)
 |list_cons _ =>
-f0_else(loc0, dpis, t2p1))
+(*
+HX-2023-11-04: really?
+f0_else(loc0, dpis, t2p1)
+*)
+f0_sing(loc0, dpi1, t2p1))
 ) (*case+*) where
 {
 //
@@ -193,7 +197,11 @@ case+ dps2 of
 |list_nil() =>
 f0_sing(loc0, dpi1, t2p1)
 |list_cons _ =>
+(*
+HX-2023-11-04: really?
 f0_else(loc0, dpis, t2p1))
+*)
+f0_sing(loc0, dpi1, t2p1))
 ) (*case+*) where
 {
 //
@@ -884,6 +892,20 @@ val () =
 trsym2b_d2explst(env0, d2es) endlet
 //
 |
+D2Eannot
+( d2e1
+, s1e2, s2e2) =>
+(
+trsym2b_d2exp(env0, d2e1)) where
+{
+(*
+val () =
+prerrln
+("trsym2b_d2exp: D2Eannot: ", d2e0)
+*)
+}
+//
+|
 D2El2bck(_, _) => f0_l2bck(env0, d2e0)
 |
 D2Et2pck(_, _) => f0_t2pck(env0, d2e0)
@@ -917,10 +939,13 @@ prerrln
 ("f0_sym0(2b): loc0 = ", loc0)
 val () =
 prerrln
-("f0_sym0(2b): d2e0 = ", d2e0)
+("f0_sym0(2b): d1e0 = ", d1e0)
 val () =
 prerrln
 ("f0_sym0(2b): t2p1 = ", t2p1)
+val () =
+prerrln
+("f0_sym0(2b): dpis = ", dpis)
 val () =
 prerrln
 ("f0_sym0(2b): drxp = ", drxp)
@@ -938,6 +963,9 @@ match2a_d2ptmlst
 (env0, dpis, t2p1)
 //
 (*
+val () =
+prerrln
+("f0_sym0(2b): t2p1 = ", t2p1)
 val () =
 prerrln
 ("f0_sym0(2b): dpis = ", dpis)
@@ -958,16 +986,30 @@ list_nil() =>
 |list_cons _ =>
 (
   f1_maxes(dpis) ) ): d2ptmlst
+//
+(*
+val () =
+prerrln
+("f0_sym0(2b): dpis = ", dpis)
+*)
+//
 } (*where*) // end-of-[val(dsym)]
+//
+(*
+val () =
+prerrln
+("f0_sym0(2b): dsym = ", dsym)
+*)
 //
 in//let
 let
+//
 val () =
-f1_sympp(env0, dsym)
-in//let
-  d2rxp_set_dexp( drxp, dsym )
+  f1_sympp(env0, dsym) in//let
+(
+  d2rxp_set_dexp( drxp, dsym ) )
 end//let
-end (*let*) // end of [D2Enone0]
+endlet (* end of [ D2Enone0() ] *)
 |
 _(* else *) => trsym2b_d2exp(env0, dexp)
 end where // end-of-let // D2Enone0(...)

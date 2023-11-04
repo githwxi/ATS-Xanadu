@@ -728,7 +728,7 @@ s2exp_make_node
 (* ****** ****** *)
 //
 #abstbox
-f2env_tbox <= ptr
+f2env_tbox <= p0tr
 #typedef
 f2env = f2env_tbox
 #typedef
