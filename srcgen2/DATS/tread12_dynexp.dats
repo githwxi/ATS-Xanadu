@@ -1402,6 +1402,9 @@ D2Edtsel _ => f0_dtsel(d2e0, err)
 //
 |D2Enone0 _ => f0_none0(d2e0, err)
 //
+|
+D2Eextnam _ => f0_extnam(d2e0, err)
+//
 | _(*otherwise*) =>
 let
 val lvl0 = 1
@@ -2177,6 +2180,15 @@ f0_none0
 ,err: &sint >> _): d2exp =
 let
 val-D2Enone0() = d2e.node() in (d2e) end
+//
+(* ****** ****** *)
+//
+fun
+f0_extnam
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+val-D2Eextnam _ = d2e.node() in (d2e) end
 //
 (* ****** ****** *)
 //

@@ -1704,15 +1704,20 @@ val gsym =
 case+
 g1exp_nmspace
  (  gsrc  ) of
-|optn_nil() =>
-($SYM.DLRDT_symbl)
-|optn_cons( gsym ) => gsym): sym_t
+|
+optn_nil((*0*)) =>
+(
+$SYM.DLRDT_symbl)
+|
+optn_cons( gsym ) => gsym):sym_t
 //
 (*
 val (  ) =
-prerrln("f0_staload: gsym = ", gsym)
+prerrln//trans12
+("f0_staload(12): gsym = ", gsym)
 val (  ) =
-prerrln("f0_staload: gsrc = ", gsrc)
+prerrln//trans12
+("f0_staload(12): gsrc = ", gsrc)
 *)
 //
 val (  ) =
@@ -1780,7 +1785,7 @@ in//let
 d2ecl_make_node
 (
 loc0,
-D2Cstaload(knd0, tknd, gsrc, fopt, dres))
+D2Cstaload(knd0, tknd,gsrc,fopt,dres) )
 end where // end-of-[f0_staload(env0,...)]
 {
 fun

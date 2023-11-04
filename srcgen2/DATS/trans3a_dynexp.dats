@@ -652,7 +652,10 @@ d3e0.node() of
 |D3Enone0 _ => f0_none0(env0, d3e0)
 //
 |
-_(* otherwise *) => d3exp_none2(d3e0)
+D3Eextnam _ => f0_extnam(env0, d3e0)
+//
+|
+_(*otherwise*) => (d3exp_none2(d3e0))
 //
 endlet where
 {
@@ -1861,6 +1864,34 @@ val t2p0 = d3e0.styp((*0*))
 in//let
 d3exp(d3e0.lctn(), t2p0, D3Enone0(*0*))
 end (*let*) // end of [f0_none0(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_extnam
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Eextnam
+( tknd, gnm1) = d3e0.node()
+//
+val t2p0 =
+d3e0.styp((*0*))
+val t2p0 =
+s2typ_hnfiz0(t2p0)
+val t2p0 =
+trans3a_s2typ(env0, t2p0)
+//
+in//let
+(
+  d3exp_make_styp_node
+  (loc0, t2p0, D3Eextnam(tknd, gnm1)) )
+end (*let*) // end of [f0_extnam(env0,...)]
 //
 (* ****** ****** *)
 //

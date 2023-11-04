@@ -118,9 +118,13 @@ d3e0.node() of
 //
 |D3Ewhere _ => f0_where(env0, d3e0)
 //
-| _(* otherwise *) => d3exp_none2(d3e0)
+|
+D3Eextnam _ => f0_extnam(env0, d3e0)
 //
-endlet where
+|
+_(*otherwise*) => (d3exp_none2(d3e0))
+//
+end where // end-of-[trtmp3b_d3exp(...)]
 {
 //
 (* ****** ****** *)
@@ -410,6 +414,19 @@ in//let
   d3exp_make_styp_node
   (loc0, t2p0, D3Ewhere(d3e1, dcls)))
 end (*let*) // end of [f0_where(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_extnam
+( env0:
+! tr3benv
+, d3e0: d3exp): d3exp =
+let
+//
+val-
+D3Eextnam
+( tknd, gnm1) = d3e0.node() in (d3e0) end
 //
 (* ****** ****** *)
 //

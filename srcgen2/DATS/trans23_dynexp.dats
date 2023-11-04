@@ -763,9 +763,13 @@ d3exp_make_styp_node
 //
 |D2Enone0 _ => f0_none0(env0, d2e0)
 //
-| _(*otherwise*) => d3exp_none1(d2e0)
+|
+D2Eextnam _ => f0_extnam(env0, d2e0)
 //
-endlet where
+|
+_(*otherwise*) => (d3exp_none1(d2e0))
+//
+end where // end-of-[trans23_d2exp(...)]
 {
 //
 (* ****** ****** *)
@@ -2243,6 +2247,32 @@ val t2p0 = the_s2typ_void((*0*))
 in//let
 d3exp(d2e0.lctn(), t2p0, D3Enone0(*0*))
 end (*let*) // end of [f0_none0(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_extnam
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+//
+val-
+D2Eextnam
+(tknd, gnm1) = d2e0.node()
+//
+in//let
+//
+d3exp_make_styp_node
+( loc0
+, t2p0, D3Eextnam(tknd, gnm1))
+where
+{
+  val t2p0 = s2typ_new0_x2tp(loc0) }
+//
+end (*let*) // end of [f0_extnam(env0,...)]
 //
 (* ****** ****** *)
 //

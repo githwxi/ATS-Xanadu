@@ -553,12 +553,6 @@ D2Eannot
 ( print("D2Eannot(")
 ; print(d2e1,";",s1e2,";",s2e2,")") )
 //
-|
-D2Eexists
-( s2es, d2e1) =>
-(
-print("D2Eexists(",s2es,";",d2e1,")"))
-//
 |D2Eg1mac
 (    g1m1    ) =>
 (
@@ -582,6 +576,17 @@ t2p1 = d2e1.styp() in
   print("D2Et2pck(")
 ; print( d2e1,";",t2p1,";",t2p2,")") )
 endlet // end of [ D2Et2pck(d2e1, t2p2) ]
+//
+|
+D2Eextnam
+( tknd, gnam) =>
+(
+print("D2Eextnam(",tknd,";",gnam,")") )
+|
+D2Eexists
+( s2es, d2e1) =>
+(
+print("D2Eexists(",s2es,";",d2e1,")") )
 //
 |D2Enone0() => print( "D2Enone0(",")" )
 |D2Enone1(d1e1) => print("D2Enone1(",d1e1,")")

@@ -873,6 +873,7 @@ case+ dres of
 |S2TALOADfenv _ => 1
 |S2TALOADdpar _ => 2): sint//val(fknd)
 //
+// (*
 val () =
 prerrln
 ("f0_staload(12): loc = ", loc)
@@ -882,6 +883,7 @@ prerrln
 val () =
 prerrln
 ("f0_staload(12): fknd = ", fknd)
+// *)
 //
 in//let
 if
