@@ -115,10 +115,12 @@ val
 tenv =
 d3parsed_get_t3penv(dpar)
 //
+(*
 val () = prerrln
 ("static_search_cst: shrd = ", shrd)
 val () = prerrln
 ("static_search_cst: tenv = ", tenv)
+*)
 //
 in//let
 //
@@ -142,10 +144,12 @@ end(*end-of-[S3TALOADdpar(sknd,dpar)]*)
 //
 end//let//end-of-[f0_staload(d3cl,d2c0)]
 //
+(*
 val () =
 prerrln("static_search_cst: d3cl = ", d3cl)
 val () =
 prerrln("static_search_cst: d2c0 = ", d2c0)
+*)
 //
 } (*where*)//end of [static_search_cst(...)]
 
@@ -231,10 +235,12 @@ _(* otherwise *) => optn_nil(*0*)
 _(* otherwise *) => optn_nil(*0*)
 ) where
 {
+(*
 val () =
 prerrln("f0_d3clmat: d3cl = ", d3cl)
 val () =
 prerrln("f0_d3clmat: t2js = ", t2js)
+*)
 }(*where*)//end-of-[f0_d3clmat(d3cl,...)]
 //
 and
@@ -244,30 +250,19 @@ f0_targmat
 ,s2qs: s2qaglst
 ,t2qs: t2qaglst): optn(s2vts) =
 let
-//
-val () =
-prerrln("f0_targmat: svts = ", svts)
-val () =
-prerrln("f0_targmat: t2js = ", t2js)
-val () =
-prerrln("f0_targmat: s2qs = ", s2qs)
-val () =
-prerrln("f0_targmat: t2qs = ", t2qs)
-//
-in//let
-let
-val tsub = list_vt_nil(*0*)
-val opt0 =
+val
+tsub = list_vt_nil(*0*)
+val
+opt0 =
 f1_svts_t2js(svts, t2js, tsub)
-in
+in//let
 case+ opt0 of
 | ~
 optn_vt_nil() => optn_nil(*0*)
 | ~
 optn_vt_cons(tsub) =>
 optn_cons(list_vt2t(reverse0(tsub)))
-end//let
-end where
+end where // end-of-[f0_targmat(...)]
 {
 //
 #typedef
@@ -716,8 +711,19 @@ case+ svts of
   f1_svt1_svts_tjps_t2js
   (svt1, svts, tjps, t2js, tsub)) )
 //
-end//let//end-of-[list_cons(t2j1,t2js)]
-)(*case+*)//end[f1_svt1_svts_tjps_t2js]
+endlet//end-of-[list_cons(t2j1,t2js)]
+)(*case+*)//end-[f1_svt1_svts_tjps_t2js]
+//
+(*
+val () =
+  prerrln("f0_targmat: svts = ", svts)
+val () =
+  prerrln("f0_targmat: t2js = ", t2js)
+val () =
+  prerrln("f0_targmat: s2qs = ", s2qs)
+val () =
+  prerrln("f0_targmat: t2qs = ", t2qs)
+*)
 //
 }(*where*)//end-of-[f0_targmat(svts,...)]
 //
@@ -775,10 +781,12 @@ let
 val
 dcl1 = d3ecl_tmpsub(tsub,dcl1)
 //
+(*
 val (  ) =
 prerr("tr3benv_tapq_resolve:")
 val (  ) =
 prerrln("filter: dcl1 = ", dcl1)
+*)
 //
 in//let
 (
@@ -788,10 +796,12 @@ end//let//end-of-[list_cons(...)]
 //
 )(*case+*) // end of [ filter(dcls) ]
 //
+(*
 val () =
 prerrln("tr3benv_tapq_resolve: d2c0 = ", d2c0)
 val () =
 prerrln("tr3benv_tapq_resolve: t2js = ", t2js)
+*)
 //
 }(*where*)//end-of-[tr3benv_tapq_resolve(env0,...)]
 //
