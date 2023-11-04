@@ -70,6 +70,12 @@ FIL = "./filpath.sats"
 #typedef fpath = $FIL.fpath
 //
 (* ****** ****** *)
+//
+#staload
+LOC = "./locinfo.sats"
+#typedef lcsrc = $LOC.lcsrc
+//
+(* ****** ****** *)
 #staload S0E = "./staexp0.sats"
 #staload D0E = "./dynexp0.sats"
 (* ****** ****** *)
@@ -354,6 +360,15 @@ d0exp_ELSE = $D0E.d0exp_ELSE
 (* ****** ****** *)
 #typedef d0cstdclist = $D0E.d0cstdclist
 #typedef d1cstdclist = $D1E.d1cstdclist
+(* ****** ****** *)
+//
+fun
+the_drpth_push_lcsrc
+  (  src0: lcsrc  ): void
+fun
+the_drpth_pop0_lcsrc
+  (  src0: lcsrc  ): void
+//
 (* ****** ****** *)
 //
 fun

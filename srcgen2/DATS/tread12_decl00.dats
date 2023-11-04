@@ -873,17 +873,23 @@ case+ dres of
 |S2TALOADfenv _ => 1
 |S2TALOADdpar _ => 2): sint//val(fknd)
 //
-// (*
+(*
 val () =
 prerrln
 ("f0_staload(12): loc = ", loc)
+val () =
+prerrln
+("f0_staload(12): gsrc = ", gsrc)
+val () =
+prerrln
+("f0_staload(12): fopt = ", fopt)
 val () =
 prerrln
 ("f0_staload(12): dres = ", dres)
 val () =
 prerrln
 ("f0_staload(12): fknd = ", fknd)
-// *)
+*)
 //
 in//let
 if

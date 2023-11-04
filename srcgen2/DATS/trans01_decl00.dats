@@ -1442,11 +1442,10 @@ prerrln
 val dopt =
 (
 case+ opt1 of
-|
-optn_nil() =>
-optn_nil()
-|
-optn_cons(fpth) =>
+|optn_nil() =>
+(
+optn_nil((*0*)))
+|optn_cons(fpth) =>
 let
 //
 val fnm1 =
@@ -1457,22 +1456,40 @@ val knd1 =
 if
 knd0 <= 0
 then knd0 else
-let
+let//let
 val knd1 =
 fname_stadyn(fnm1) in
 if
 knd1 < 0
-then knd0 else knd1 end)
+then knd0 else knd1 end): sint
 //
 val dpar =
 d0parsed_from_fpath(knd1, fnm1)
 //
 in//in-of-let
-trans01_d0eclistopt
-(tenv, d0parsed_get_parsed(dpar)) end
+//
+let
+//
+val src0 =
+d0parsed_get_source(dpar)
+val dopt =
+d0parsed_get_parsed(dpar)
+//
+val (  ) =
+the_drpth_push_lcsrc(  src0  )
+val dopt =
+trans01_d0eclistopt(tenv,dopt)
+val (  ) =
+the_drpth_pop0_lcsrc(  src0  ) in dopt
+//
+end // end-of-let
+//
+end // end-of-let
+//
 ) : optn(d1eclist) // end-of-[val(dopt)]
 //
 in//let
+//
 d1ecl_make_node
 (loc0,
  D1Cinclude(knd0, tknd, g1e1, opt1, dopt))
@@ -1609,11 +1626,14 @@ case+ opt0 of
 //
 (*
 val (  ) =
-prerrln("f0_staload: g1e1 = ", g1e1)
+prerrln
+("f0_staload(01): g1e1 = ", g1e1)
 val (  ) =
-prerrln("f0_staload: opt0 = ", opt0)
+prerrln
+("f0_staload(01): opt0 = ", opt0)
 val (  ) =
-prerrln("f0_staload: opt1 = ", opt1)
+prerrln
+("f0_staload(01): opt1 = ", opt1)
 *)
 //
 val dopt =

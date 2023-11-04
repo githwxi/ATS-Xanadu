@@ -1838,12 +1838,14 @@ let
 //
 val loc0 = d0g0.lctn()
 //
+(*
 val () =
 prerrln
 ("trans01_d0gua: loc0 = ", loc0)
 val () =
 prerrln
 ("trans01_d0gua: d0g0 = ", d0g0)
+*)
 //
 in//let
 case+

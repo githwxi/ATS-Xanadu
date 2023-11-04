@@ -631,7 +631,7 @@ trsym2b_d2exp
 ( env0, d2e0 ) =
 let
 //
-// (*
+(*
 val
 loc0 = d2e0.lctn()
 val () =
@@ -640,7 +640,7 @@ prerrln
 val () =
 prerrln
 ("trsym2b_d2exp: d2e0 = ", d2e0)
-// *)
+*)
 //
 in//let
 //
@@ -1140,12 +1140,11 @@ end where
 //
 (*
 //
-val
-loc0 = d2e0.lctn()
+val loc0 = d2e0.lctn()
 //
-val () =
+val (  ) =
 prerrln("f0_proj(2b): loc0 = ", loc0)
-val () =
+val (  ) =
 prerrln("f0_proj(2b): d2e0 = ", d2e0)
 *)
 } (*where*) // end of [f0_proj(env0, d2e0)]
@@ -1178,7 +1177,7 @@ end where
 {
 //
 (*
-val () =
+val (  ) =
 prerrln("f0_dtsel(2b): d2e0 = ", d2e0)
 *)
 //
