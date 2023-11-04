@@ -857,9 +857,7 @@ f0_staload
 let
 //
 val e00 = err
-(*
 val loc = dcl.lctn()
-*)
 //
 val-
 D2Cstaload
@@ -875,12 +873,22 @@ case+ dres of
 |S2TALOADfenv _ => 1
 |S2TALOADdpar _ => 2): sint//val(fknd)
 //
+val () =
+prerrln
+("f0_staload(12): loc = ", loc)
+val () =
+prerrln
+("f0_staload(12): dres = ", dres)
+val () =
+prerrln
+("f0_staload(12): fknd = ", fknd)
+//
 in//let
 if
 (err=e00)
 then (dcl) else
 d2ecl_staload_errck
-( dcl.lctn(), knd0,tknd,gsrc,fopt,dres )
+( loc, knd0, tknd, gsrc, fopt, dres )
 end (*let*) // end of [f0_staload(dcl,err)]
 //
 (* ****** ****** *)
