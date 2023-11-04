@@ -446,10 +446,12 @@ dcl.node() of
 ) where
 {
 //
+(*
 val () =
 prerr("tmpstk_search_cst: ")
 val () = prerrln("test: dcl = ", dcl)
 val () = prerrln("test: d2c = ", d2c)
+*)
 //
 }(*where*) // end of [ test(dcl, d2c) ]
 //
@@ -495,8 +497,10 @@ tmpstk_loc2(kxs) => loop(kxs,d2c,res)
 //
 ) (*case+*)//end of [loop(kxs,d2c,res)]
 //
+(*
 val () =
 prerrln("tmpstk_search_cst: d2c = ", d2c)
+*)
 //
 } (*where*)//end-of-[tmpstk_search_cst(...)]
 //
