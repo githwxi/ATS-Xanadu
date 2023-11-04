@@ -103,6 +103,7 @@ D2E = "./dynexp2.sats"
 #typedef tnode = $LEX.tnode
 #typedef token = $LEX.token
 (* ****** ****** *)
+#typedef g1nam = $S1E.g1nam
 #typedef g1exp = $S1E.g1exp
 #typedef s1exp = $S1E.s1exp
 (* ****** ****** *)
@@ -601,11 +602,18 @@ two attributes of left values
 |D3El2bck of (d3exp, label)//HX: casting
 |D3Et2pck of (d3exp, s2typ)//HX: casting
 //
+|
+D3Eextnam of (token, g1nam)//HX: external
+|
+D3Eexists of
+(
+  s2explst(*witness*), d3exp(*scopexp*) )
+//
 |D3Enone0 of ((*0*))
 |D3Enone1 of (d2exp) | D3Enone2 of (d3exp)
 //
-|
-D3Eerrck of (sint(*lvl*),d3exp)//tread23-error
+|D3Eerrck of
+ (sint(*lvl*),d3exp(*err*))//tread23-error
 //
 // HX-2023-??-??: end-of-[datatype(d3exp_node)]
 //

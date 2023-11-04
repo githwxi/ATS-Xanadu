@@ -103,7 +103,9 @@ S2E = "./staexp2.sats"
 #staload
 T2P = "./statyp2.sats"
 (* ****** ****** *)
-#typedef g1exp = $G1M.g1exp
+#typedef g1nam = $S1E.g1nam
+(* ****** ****** *)
+#typedef g1exp = $S1E.g1exp
 (* ****** ****** *)
 #typedef s1qid = $S1E.s1qid
 #typedef d1qid = $S1E.d1qid
@@ -1018,10 +1020,6 @@ D2Eannot of
 , s1exp(*given*), s2exp(*trans*))
 //
 |
-D2Eexists of
-(s2explst(*witness*), d2exp(*scoped*))
-//
-|
 D2Eg1mac of
 (g1mac(*unknown*))//HX: temp or error!
 //
@@ -1029,6 +1027,13 @@ D2Eg1mac of
 D2El2bck of (d2exp, label)//HX: casting
 |
 D2Et2pck of (d2exp, s2typ)//HX: casting
+//
+|
+D2Eextnam of (token, g1nam)//HX: external
+|
+D2Eexists of
+(
+  s2explst(*witness*), d2exp(*scopexp*) )
 //
 |D2Enone0 of ((*0*))
 |D2Enone1 of (d1exp) | D2Enone2 of (d2exp)

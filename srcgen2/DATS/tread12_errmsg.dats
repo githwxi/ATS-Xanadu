@@ -720,6 +720,14 @@ endlet//end-of-[D2Eannot(d2e1,...)]
 //
 |D2Enone0(    ) => (   (*void*)   )
 |D2Enone1(d1e1) => (   (*void*)   )
+//
+|
+D2Eextnam
+( tknd, gnm1) =>
+let
+// HX-2023-11-03: (* nothing yet *)
+endlet//end-of-[D2Eextnam(tknd,gnm1)]
+//
 |
 D2Eerrck(_,_) => d2exp_fpemsg(out, d2e)
 //

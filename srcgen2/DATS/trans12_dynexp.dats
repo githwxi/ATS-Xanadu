@@ -1611,9 +1611,13 @@ There is no D1Eassgn!
 //
 |D1Enone0 _ => f0_none0(env0, d1e0)
 //
-| _(* otherwise *) => d2exp_none1(d1e0)
+|
+D1Eextnam _ => f0_extnam(env0, d1e0)
 //
-end where
+|
+_(*otherwise*) => (d2exp_none1(d1e0))
+//
+end where // end-of-[trans12_d1exp(...)]
 {
 //
 (* ****** ****** *)
@@ -3148,6 +3152,24 @@ val-
 D1Enone0
 ((*void*)) =
 d1e0.node() in d2exp_none0(loc0) endlet//fun
+//
+(* ****** ****** *)
+//
+fun
+f0_extnam
+( env0:
+! tr12env
+, d1e0: d1exp): d2exp =
+let
+//
+val loc0 = d1e0.lctn()
+//
+val-
+D1Eextnam
+(tknd, gnm1) = d1e0.node()
+in//let
+( d2exp_make_node
+  (loc0, D2Eextnam(tknd, gnm1))) endlet//fun
 //
 (* ****** ****** *)
 //
