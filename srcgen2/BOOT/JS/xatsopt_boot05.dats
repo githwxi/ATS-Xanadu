@@ -36,6 +36,24 @@ val (  ) =
 prerrln("the_tr12env_pvsload() = ", ret)
 //
 (* ****** ****** *)
+//
+val
+unsafex_dats =
+(
+d3parsed_of_tread23(dpar)
+) where
+{
+val
+dpar = d3parsed_from_fpath
+(
+1(*dyn*),
+"./../../../\
+prelude/DATS/CATS/JS/unsafex.dats")}
+val ((*void*)) =
+d3parsed_fpemsg(g_stderr(), unsafex_dats)
+//
+(* ****** ****** *)
+////
 (* ****** ****** *)
 //
 val
@@ -63,6 +81,7 @@ val ((*void*)) =
 d3parsed_fpemsg(g_stderr(), xbasics_dats)
 //
 (* ****** ****** *)
+////
 (* ****** ****** *)
 //
 val

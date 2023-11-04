@@ -3057,11 +3057,15 @@ dexp.node() of
 |D1Eid0(deid) =>
 let
 val dopt =
-f2envlst_find_d2itm(envs, deid)
+f2envlst_find_d2itm
+ (  envs , deid  )
 in//let
+//
 case+ dopt of
 | ~
-optn_vt_nil() => optn_nil()
+optn_vt_nil() =>
+(
+  optn_nil(*void*) )
 | ~
 optn_vt_cons(ditm) =>
 (
@@ -3072,9 +3076,9 @@ case+ ditm of
 |D2ITMcst(d2cs) =>
  optn_cons
  (d2exp_csts(dexp.lctn(), d2cs))
-|_(*non-con-cst*) => optn_nil(*0*)
-)
-end(*let*)//end of [ D1Eid0(deid) ]
+|_(*non-con-cst*) => optn_nil(*0*) )
+//
+end(*let*) // end of [ D1Eid0(deid) ]
 //
 |D1Equal0
 ( tok1,d1e2 ) =>

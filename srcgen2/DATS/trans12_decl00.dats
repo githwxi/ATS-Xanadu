@@ -1518,7 +1518,7 @@ let
 val
 did1 = dexpid_sym(tok1)
 in//let
-tr12env_qfind_d2itm(env0,tqua,did1)
+tr12env_qfind_d2itm(env0, tqua, did1)
 end (*let*) // D1QIDsome(...)
 ) : d2itmopt_vt // end-of-[val(dopt)]
 //

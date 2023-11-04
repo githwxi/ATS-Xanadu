@@ -62,14 +62,19 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trans12.sats"
 (* ****** ****** *)
+#symload node with token_get_node
+(* ****** ****** *)
 #symload name with symbl_get_name
 (* ****** ****** *)
 #symload name with s2cst_get_name
 #symload name with s2var_get_name
 (* ****** ****** *)
+//
+#symload name with d2var_get_name
+//
 #symload name with d2con_get_name
 #symload name with d2cst_get_name
-#symload name with d2var_get_name
+//
 (* ****** ****** *)
 #symload node with d2pat_get_node
 (* ****** ****** *)
@@ -2140,6 +2145,86 @@ case+ sitm of
 )
 //
 end (*let*)//end of [tr12env_ofind_d2itm(env0,key0)]
+
+(* ****** ****** *)
+
+#implfun
+tr12env_qfind_s2itm
+ (env0, qua1, key2) =
+let
+//
+val sopt =
+(
+case+
+qua1.node() of
+|
+T_IDQUA(name) =>
+(
+tr12env_find_s2env
+  ( env0 , sym1 )
+) where
+{ val sym1 =
+  symbl_make_name(name) }
+|
+_(*else*) => optn_vt_nil())
+: optn_vt(s2itm) // end(sopt)
+//
+in//let
+//
+case+ sopt of
+| ~
+optn_vt_nil() =>
+optn_vt_nil((*void*))
+| ~
+optn_vt_cons(sitm) =>
+(
+case+ sitm of
+| S2ITMenv(envs) =>
+  f2envlst_find_s2itm(envs, key2)
+| _(*otherwise*) => optn_vt_nil((*void*))
+)
+//
+end (*let*)//end of [tr12env_qfind_s2itm(env0,key0)]
+
+(* ****** ****** *)
+
+#implfun
+tr12env_qfind_d2itm
+ (env0, qua1, key2) =
+let
+//
+val sopt =
+(
+case+
+qua1.node() of
+|
+T_IDQUA(name) =>
+(
+tr12env_find_s2env
+  ( env0 , sym1 )
+) where
+{ val sym1 =
+  symbl_make_name(name) }
+|
+_(*else*) => optn_vt_nil())
+: optn_vt(s2itm) // end(sopt)
+//
+in//let
+//
+case+ sopt of
+| ~
+optn_vt_nil() =>
+optn_vt_nil((*void*))
+| ~
+optn_vt_cons(sitm) =>
+(
+case+ sitm of
+| S2ITMenv(envs) =>
+  f2envlst_find_d2itm(envs, key2)
+| _(*otherwise*) => optn_vt_nil((*void*))
+)
+//
+end (*let*)//end of [tr12env_qfind_d2itm(env0,key0)]
 
 (* ****** ****** *)
 
