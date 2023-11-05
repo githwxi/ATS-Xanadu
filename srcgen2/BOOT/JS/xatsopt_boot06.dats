@@ -27,6 +27,8 @@ bootstrapping ATS3/Xanadu!!!
 "./../../SATS/trtmp3b.sats"
 #staload
 "./../../SATS/tread33.sats"
+#staload
+"./../../SATS/fperr33.sats"
 (* ****** ****** *)
 #staload
 "./../../SATS/xglobal.sats"
@@ -65,7 +67,7 @@ dpar = d3parsed_from_fpath
 "./../../../\
 prelude/DATS/CATS/JS/unsafex.dats")}
 val ((*void*)) =
-d3parsed_fpemsg(g_stderr(), unsafex_dats)
+fperr33_d3parsed(g_stderr(), unsafex_dats)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -88,7 +90,7 @@ val
 dpar = d3parsed_from_fpath
 (1(*dyn*), "./../../DATS/xbasics.dats")}
 val ((*void*)) =
-d3parsed_fpemsg(g_stderr(), xbasics_dats)
+fperr33_d3parsed(g_stderr(), xbasics_dats)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -111,7 +113,7 @@ val
 dpar = d3parsed_from_fpath
 (1(*dyn*), "./../../DATS/staexp0.dats")}
 val ((*void*)) =
-d3parsed_fpemsg(g_stderr(), staexp0_dats)
+fperr33_d3parsed(g_stderr(), staexp0_dats)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -134,7 +136,7 @@ val
 dpar = d3parsed_from_fpath
 (1(*dyn*), "./../../DATS/dynexp0.dats")}
 val ((*void*)) =
-d3parsed_fpemsg(g_stderr(), dynexp0_dats)
+fperr33_d3parsed(g_stderr(), dynexp0_dats)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -157,7 +159,7 @@ val
 dpar = d3parsed_from_fpath
 (1(*dyn*), "./../../DATS/staexp1.dats")}
 val ((*void*)) =
-d3parsed_fpemsg(g_stderr(), staexp1_dats)
+fperr33_d3parsed(g_stderr(), staexp1_dats)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -180,7 +182,7 @@ val
 dpar = d3parsed_from_fpath
 (1(*dyn*), "./../../DATS/dynexp1.dats")}
 val ((*void*)) =
-d3parsed_fpemsg(g_stderr(), dynexp1_dats)
+fperr33_d3parsed(g_stderr(), dynexp1_dats)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -203,7 +205,7 @@ val
 dpar = d3parsed_from_fpath
 (1(*dyn*), "./../../DATS/staexp2.dats")}
 val ((*void*)) =
-d3parsed_fpemsg(g_stderr(), staexp2_dats)
+fperr33_d3parsed(g_stderr(), staexp2_dats)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -226,7 +228,7 @@ val
 dpar = d3parsed_from_fpath
 (1(*dyn*), "./../../DATS/statyp2.dats")}
 val ((*void*)) =
-d3parsed_fpemsg(g_stderr(), statyp2_dats)
+fperr33_d3parsed(g_stderr(), statyp2_dats)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -249,7 +251,7 @@ val
 dpar = d3parsed_from_fpath
 (1(*dyn*), "./../../DATS/dynexp2.dats")}
 val ((*void*)) =
-d3parsed_fpemsg(g_stderr(), dynexp2_dats)
+fperr33_d3parsed(g_stderr(), dynexp2_dats)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -272,7 +274,7 @@ val
 dpar = d3parsed_from_fpath
 (1(*dyn*), "./../../DATS/dynexp3.dats")}
 val ((*void*)) =
-d3parsed_fpemsg(g_stderr(), dynexp3_dats)
+fperr33_d3parsed(g_stderr(), dynexp3_dats)
 //
 (* ****** ****** *)
 (* ****** ****** *)

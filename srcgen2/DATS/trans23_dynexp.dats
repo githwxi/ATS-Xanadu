@@ -717,6 +717,7 @@ d3exp_make_styp_node
 |D2Esym0 _ => f0_sym0(env0, d2e0)
 //
 |D2Esapp _ => f0_sapp(env0, d2e0)
+//
 |D2Etapp _ => f0_tapp(env0, d2e0)
 //
 |D2Edap0 _ => f0_dap0(env0, d2e0)
