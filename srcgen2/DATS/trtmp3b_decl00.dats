@@ -120,6 +120,11 @@ d3cl.node() of
 f0_local0(env0, d3cl))
 //
 |
+D3Cabsopen _ => (d3cl)
+|
+D3Cabsimpl _ => (d3cl)
+//
+|
 D3Cinclude _ => f0_include(env0, d3cl)
 |
 D3Cstaload _ => f0_staload(env0, d3cl)

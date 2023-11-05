@@ -29,7 +29,7 @@ informative feedback. I am using a type-based approach for this
 purpose.
 
 ATS3 is not an ordinary programming language. It is more like a
-programming language for support meta-programming of all sorts.
+programming language for supporting meta-programming of all sorts.
 Suppose we want to have programs written in some language X. Then we
 traditionally write these programs manually in X. ATS3 provides an
 alternative: We can implement a compiler from ATS3 to X to allow us to
