@@ -100,6 +100,27 @@ end (*let*) // end of [d3ecl_local0_errck]
 (* ****** ****** *)
 //
 fun
+d3ecl_include_errck
+( loc0: loc_t
+, knd0: sint
+, tknd: token
+, g1e1: g1exp
+, fopt: fpathopt
+, dopt: d3eclistopt): d3ecl =
+let
+val lvl = 0
+in//let
+d3ecl_errck
+(
+lvl+1,
+d3ecl_make_node
+( loc0
+, D3Cinclude(knd0,tknd,g1e1,fopt,dopt)))
+end (*let*) // end of [d3ecl_include_errck]
+//
+(* ****** ****** *)
+//
+fun
 d3ecl_valdclst_errck
 ( loc0
 : loc_t
@@ -215,6 +236,8 @@ f0_local0(d3cl, err))
 |D3Cabsimpl _ => (d3cl)
 //
 |
+D3Cinclude _ => f0_include(d3cl, err)
+|
 D3Cstaload _ => f0_staload(d3cl, err)
 //
 |
@@ -263,6 +286,51 @@ if
 then dcl else
 d3ecl_local0_errck( loc, dcs1, dcs2 )
 end (*let*) // end of [ f0_local0(dcl,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_include
+( dcl: d3ecl
+, err: &sint >> _): d3ecl =
+let
+//
+val e00 = err
+val loc = dcl.lctn()
+//
+val-
+D3Cinclude
+( knd0
+, tknd, gsrc
+, fopt, dopt) = dcl.node()
+//
+(*
+val () =
+prerrln
+("f0_include(33): loc = ", loc)
+val () =
+prerrln
+("f0_include(33): dopt = ", dopt)
+*)
+//
+val dopt =
+(
+case+ dopt of
+|optn_nil() =>
+ (err := err+1; optn_nil(*0*))
+|optn_cons(dcls) =>
+ optn_cons
+ (tread33_d3eclist(dcls, err)))
+: d3eclistopt // end of [val(dopt)]
+//
+in//let
+(
+if
+(err=e00)
+then (dcl) else
+d3ecl_include_errck
+(loc, knd0, tknd, gsrc, fopt, dopt) )
+end (*let*) // end of [f0_include(dcl,err)]
 //
 (* ****** ****** *)
 //
