@@ -433,11 +433,11 @@ D3Ptup0
 ( npf1, d3ps) = d3p0.node()
 //
 val t2p0 =
-d3p0.styp((*0*))
+  d3p0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val d3ps =
 trans3a_d3patlst(env0, d3ps)
@@ -462,11 +462,11 @@ D3Ptup1
 , npf1, d3ps) = d3p0.node()
 //
 val t2p0 =
-d3p0.styp((*0*))
+  d3p0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val d3ps =
 trans3a_d3patlst(env0, d3ps)
@@ -492,11 +492,11 @@ D3Prcd2
 , npf1, ldps) = d3p0.node()
 //
 val t2p0 =
-d3p0.styp((*0*))
+  d3p0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val ldps =
 trans3a_l3d3plst(env0, ldps)
@@ -841,16 +841,17 @@ f0_sapq
 let
 //
 val loc0 = d3e0.lctn()
+//
 val-
 D3Esapq
 (d3f0, t2ps) = d3e0.node()
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val
 t2ps =
@@ -898,16 +899,17 @@ f0_tapq
 let
 //
 val loc0 = d3e0.lctn()
+//
 val-
 D3Etapq
 (d3f0, t2js) = d3e0.node()
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val
 t2js =
@@ -982,22 +984,24 @@ f0_dapp
 let
 //
 val loc0 = d3e0.lctn()
+//
 val-
 D3Edapp
 ( d3f0
-, npf1, d3es) = d3e0.node()
+, npf1
+, d3es ) = d3e0.node()
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val d3f0 =
-trans3a_d3exp(env0, d3f0)
+  trans3a_d3exp(env0, d3f0)
 val d3es =
-trans3a_d3explst(env0, d3es)
+  trans3a_d3explst(env0, d3es)
 //
 in//let
 d3exp_make_styp_node
@@ -1020,11 +1024,11 @@ D3Epcon
 , dlab, dcon) = d3e0.node()
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val
 dcon = trans3a_d3exp(env0, dcon)
@@ -1050,11 +1054,11 @@ D3Eproj
 , dlab, dtup) = d3e0.node()
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val
 dtup = trans3a_d3exp(env0, dtup)
@@ -1079,11 +1083,11 @@ D3Elet0
 ( dcls, d3e1) = d3e0.node()
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val
 (  ) = tr3aenv_pshlet0(env0)
@@ -1119,11 +1123,11 @@ D3Eift0
 ,dthn, dels) = d3e0.node()
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val d3e1 =
 trans3a_d3exp(env0, d3e1)
@@ -1154,16 +1158,16 @@ D3Ecas0
 ,d3e1, dcls) = d3e0.node()
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val d3e1 =
-trans3a_d3exp(env0, d3e1)
+  trans3a_d3exp(env0, d3e1)
 val dcls =
-trans3a_d3clslst(env0, dcls)
+  trans3a_d3clslst(env0, dcls)
 //
 in//let
 d3exp_make_styp_node
@@ -1185,11 +1189,11 @@ D3Eseqn
 ( d3es, d3e1) = d3e0.node()
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val
 d3es =
@@ -1216,14 +1220,14 @@ D3Etup0
 ( npf1, d3es) = d3e0.node()
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val d3es =
-trans3a_d3explst(env0, d3es)
+  trans3a_d3explst(env0, d3es)
 //
 in//let
 d3exp(loc0, t2p0, D3Etup0(npf1, d3es))
@@ -1245,14 +1249,14 @@ D3Etup1
 , npf1, d3es) = d3e0.node()
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val d3es =
-trans3a_d3explst(env0, d3es)
+  trans3a_d3explst(env0, d3es)
 //
 in//let
 d3exp_make_styp_node
@@ -1275,14 +1279,14 @@ D3Ercd2
 , npf1, ldes) = d3e0.node()
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val ldes =
-trans3a_l3d3elst(env0, ldes)
+  trans3a_l3d3elst(env0, ldes)
 //
 in//let
 d3exp_make_styp_node
@@ -1307,14 +1311,13 @@ D3Elam0
 ,arrw,body) = d3e0.node()
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
-val
-f3as =
+val f3as =
 trans3a_f3arglst(env0, f3as)
 (*
 val
@@ -1353,11 +1356,11 @@ D3Efix0
 ,arrw,body) = d3e0.node()
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 (*
 val
@@ -1406,16 +1409,16 @@ D3Etry0
 , d3e1, dcls) = d3e0.node()
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val d3e1 =
-trans3a_d3exp(env0, d3e1)
+  trans3a_d3exp(env0, d3e1)
 val dcls =
-trans3a_d3clslst(env0, dcls)
+  trans3a_d3clslst(env0, dcls)
 //
 in//let
 d3exp_make_styp_node
@@ -1434,14 +1437,15 @@ let
 val loc0 = d3e0.lctn()
 //
 val-
-D3Eaddr(d3e1) = d3e0.node()
+D3Eaddr
+( d3e1 ) = d3e0.node((*0*))
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val
 d3e1 = trans3a_d3exp(env0, d3e1)
@@ -1463,14 +1467,15 @@ let
 val loc0 = d3e0.lctn()
 //
 val-
-D3Eflat(d3e1) = d3e0.node()
+D3Eflat
+( d3e1 ) = d3e0.node((*0*))
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val
 d3e1 = trans3a_d3exp(env0, d3e1)
@@ -1492,14 +1497,15 @@ let
 val loc0 = d3e0.lctn()
 //
 val-
-D3Eeval(d3e1) = d3e0.node()
+D3Eeval
+( d3e1 ) = d3e0.node((*0*))
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val
 d3e1 = trans3a_d3exp(env0, d3e1)
@@ -1521,14 +1527,15 @@ let
 val loc0 = d3e0.lctn()
 //
 val-
-D3Efold(d3e1) = d3e0.node()
+D3Efold
+( d3e1 ) = d3e0.node((*0*))
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val
 d3e1 = trans3a_d3exp(env0, d3e1)
@@ -1550,14 +1557,15 @@ let
 val loc0 = d3e0.lctn()
 //
 val-
-D3Efree(d3e1) = d3e0.node()
+D3Efree
+( d3e1 ) = d3e0.node((*0*))
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val
 d3e1 = trans3a_d3exp(env0, d3e1)
@@ -1579,14 +1587,15 @@ let
 val loc0 = d3e0.lctn()
 //
 val-
-D3Edp2tr(d3e1) = d3e0.node()
+D3Edp2tr
+( d3e1 ) = d3e0.node((*0*))
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val
 d3e1 = trans3a_d3exp(env0, d3e1)
@@ -1608,14 +1617,15 @@ let
 val loc0 = d3e0.lctn()
 //
 val-
-D3Edl0az(d3e1) = d3e0.node()
+D3Edl0az
+( d3e1 ) = d3e0.node((*0*))
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val
 d3e1 = trans3a_d3exp(env0, d3e1)
@@ -1635,14 +1645,15 @@ let
 val loc0 = d3e0.lctn()
 //
 val-
-D3Edl1az(d3e1) = d3e0.node()
+D3Edl1az
+( d3e1 ) = d3e0.node((*0*))
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val
 d3e1 = trans3a_d3exp(env0, d3e1)
@@ -1664,14 +1675,15 @@ let
 val loc0 = d3e0.lctn()
 val-
 D3Ewhere
-( d3e1, dcls) = d3e0.node()
+( d3e1
+, dcls ) = d3e0.node((*0*))
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val
 (  ) =
@@ -1705,14 +1717,15 @@ val loc0 = d3e0.lctn()
 //
 val-
 D3Eassgn
-( d3el, d3er) = d3e0.node()
+( d3el
+, d3er ) = d3e0.node((*0*))
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val
 d3el = trans3a_d3exp(env0, d3el)
@@ -1738,14 +1751,15 @@ val loc0 = d3e0.lctn()
 //
 val-
 D3Eraise
-( tknd, dexn) = d3e0.node()
+( tknd
+, dexn ) = d3e0.node((*0*))
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val
 dexn = trans3a_d3exp(env0, dexn)
@@ -1769,14 +1783,15 @@ val loc0 = d3e0.lctn()
 //
 val-
 D3El0azy
-( dknd, d3e1) = d3e0.node()
+( dknd
+, d3e1 ) = d3e0.node((*0*))
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val
 d3e1 = trans3a_d3exp(env0, d3e1)
@@ -1800,14 +1815,15 @@ val loc0 = d3e0.lctn()
 val-
 D3El1azy
 ( dknd
-, d3e1, d3es) = d3e0.node()
+, d3e1
+, d3es ) = d3e0.node((*0*))
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 val
 d3e1 = trans3a_d3exp(env0, d3e1)
@@ -1835,7 +1851,8 @@ val loc0 = d3e0.lctn()
 val-
 D3Eannot
 ( d3e1
-, s1e2, s2e2) = d3e0.node()
+, s1e2
+, s2e2 ) = d3e0.node((*0*))
 //
 val
 t2p0 = d3e0.styp((*0*))
@@ -1878,14 +1895,15 @@ val loc0 = d3e0.lctn()
 //
 val-
 D3Eextnam
-( tknd, gnm1) = d3e0.node()
+( tknd
+, gnm1 ) = d3e0.node((*0*))
 //
 val t2p0 =
-d3e0.styp((*0*))
+  d3e0.styp((*0*))
 val t2p0 =
-s2typ_hnfiz0(t2p0)
+  s2typ_hnfiz0(t2p0)
 val t2p0 =
-trans3a_s2typ(env0, t2p0)
+  trans3a_s2typ(env0, t2p0)
 //
 in//let
 (
