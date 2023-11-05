@@ -42,7 +42,9 @@ the prelude library for xatsopt
 #staload _ = "prelude/DATS/VT/stream0_vt.dats"
 (* ****** ****** *)
 //
-#staload _ = "prelude/DATS/CATS/Xats/basics0.dats"
+(*
+#staload _ = "prelude/DATS/CATS/Xint/basics0.dats"
+*)
 //
 (* ****** ****** *)
 
