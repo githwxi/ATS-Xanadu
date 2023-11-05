@@ -1275,12 +1275,13 @@ case+ scs2 of
 ) where
 {
 //
+(*
   val loc0 = simp.lctn()
-//
   val (  ) =
   prerrln("tread12_simpl: loc0 = ", loc0)
   val (  ) =
   prerrln("tread12_simpl: simp = ", simp)
+*)
 //
 } (*where*) // end-of-[tread12_simpl(simp,err)]
 //
@@ -1308,7 +1309,18 @@ case+ d2cs of
 //
 |DIMPLopt2(dqid, d2cs, dopt) => dimp
 //
-) (*case+*) // end-of-[tread12_dimpl(dimp,err)]
+) where
+{
+//
+(*
+  val loc0 = dimp.lctn()
+  val (  ) =
+  prerrln("tread12_dimpl: loc0 = ", loc0)
+  val (  ) =
+  prerrln("tread12_dimpl: dimp = ", dimp)
+*)
+//
+} (*where*) // end-of-[tread12_dimpl(dimp,err)]
 //
 (* ****** ****** *)
 //

@@ -319,16 +319,53 @@ g2_svar_tjp1
 , tsub
 : &s2vts_vt >> _): bool =
 let
+//
 val-
-T2Pvar(s2vi) = tip1.node()
+T2Pvar
+(s2vi) = tip1.node()
+//
+fun
+h2_search
+( svts
+: !s2vts_vt): s2typopt_vt =
+(
+case+ svts of
+| !
+list_vt_nil
+( (*void*) ) =>
+optn_vt_nil(*void*)
+| !
+list_vt_cons
+(svt1, svts) =>
+(
+if
+(s2vi != svt1.0)
+then h2_search(svts)
+else optn_vt_cons(svt1.1)))
+//
 in//let
 //
 if
-f3_s2extq(s2vi, s2qs, t2qs)
-then true where
-{
-val () = tsub :=
-list_vt_cons((s2vi,tjp1),tsub) }
+f3_s2extq
+(
+s2vi,s2qs,t2qs
+)
+then
+(
+case+
+h2_search(tsub) of
+| ~
+optn_vt_nil() =>
+(
+  true ) where {
+val () =
+tsub :=
+list_vt_cons((s2vi,tjp1),tsub)
+}
+| ~
+optn_vt_cons(tip1) =>
+(
+f2_tip1_tjp1(tip1, tjp1, tsub)))
 else
 (
 case+
@@ -490,10 +527,12 @@ end(*let*)//end of [g2_text_tjp1(...)]
 val tip1 = s2typ_hnfiz0(tip1)
 val tjp1 = s2typ_hnfiz0(tjp1)
 //
+(*
 val (  ) =
 prerrln("f2_tip1_tjp1: tip1 = ", tip1)
 val (  ) =
 prerrln("f2_tip1_tjp1: tjp1 = ", tjp1)
+*)
 //
 }(*where*)
 //end-of-[f2_tip1_tjp1(tip1,tjp1,tsub)]
