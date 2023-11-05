@@ -7,11 +7,6 @@
 "prelude/HATS/prelude_dats.hats"
 //
 #include
-"prelude/INIT/srcgen2_prelude.dats"
-//
-(* ****** ****** *)
-//
-#include
 "prelude/HATS/CATS/JS/prelude_dats.hats"
 //
 (* ****** ****** *)
