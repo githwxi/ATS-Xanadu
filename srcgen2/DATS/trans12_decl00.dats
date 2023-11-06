@@ -530,6 +530,23 @@ process_static
 case+
 d2cl.node() of
 //
+|
+D2Cfundclst
+( tknd, tqas
+, d2cs, d2fs) =>
+(
+case+ tqas of
+|
+list_nil() =>
+(
+tr12env_add1_d2cs(env0, d2cs))
+|
+(*
+HX-2023-11-06:
+templates are already handled
+*)
+list_cons _ => ( (*nothing*) ))
+//
 | _(*otherwise*) => ( (*nothing*) )
 //
 ) where
