@@ -145,7 +145,6 @@ _(*TRANS12*) = "./trans12.dats"
 #symload node with dimpl_get_node
 (* ****** ****** *)
 //
-//
 fun
 fint_rep_bas
 ( rep
@@ -166,28 +165,28 @@ fun
 sort2_ofknd
 (knd0: sint): sort2 =
 (
-if
+if//if
 (knd0=TYPESORT)
 then the_sort2_type else
-if
+if//if
 (knd0=VWTPSORT)
 then the_sort2_vwtp else
-if
+if//if
 (knd0=TBOXSORT)
 then the_sort2_tbox else
-if
+if//if
 (knd0=VTBXSORT)
 then the_sort2_vtbx else
-if
+if//if
 (knd0=PROPSORT)
 then the_sort2_prop else
-if
+if//if
 (knd0=VIEWSORT)
 then the_sort2_view else
-if
+if//if
 (knd0=TFLTSORT)
 then the_sort2_tflt else
-if
+if//if
 (knd0=VTFTSORT)
 then the_sort2_vtft else S2Tnone0()
 )
@@ -226,11 +225,14 @@ strn_tabulate_cfr
 , lam i0 => fopr i0
 ) where
 {
+//
 val n0 =
 strn_length(nm0)
+//
 fun
-fopr(i0: sint): char =
-if
+fopr
+(i0: sint): char =
+if//if
 i0 = 0 then '$' else
 (
 if
@@ -247,7 +249,9 @@ x0.node() of
   (sym = $SYM.EQ0_symbl)
 | _(*non-G1Eid0*) => false)
 //
-in(*in-of-local*)
+(* ****** ****** *)
+in(* in-of-local *)
+(* ****** ****** *)
 
 #implfun
 g1exp_nmspace
@@ -518,6 +522,63 @@ end (*local*)//end-of-[local(trans12_d1arg)]
 (* ****** ****** *)
 //
 fun
+process_static
+( env0:
+! tr12env
+, d2cl: d2ecl): void =
+(
+case+
+d2cl.node() of
+//
+| _(*otherwise*) => ( (*nothing*) )
+//
+) where
+{
+(*
+val () =
+prerrln("process_static: d2cl = ", d2cl)
+*)
+}(*where*)//end-of[process_static(env0,...)]
+//
+fun
+process_extern
+( env0:
+! tr12env
+, d2cl: d2ecl): void =
+(
+case+
+d2cl.node() of
+//
+|
+D2Cfundclst
+( tknd, tqas
+, d2cs, d2fs) =>
+(
+case+ tqas of
+|
+list_nil() =>
+(
+tr12env_add1_d2cs(env0, d2cs))
+|
+(*
+HX-2023-11-06:
+templates are already handled
+*)
+list_cons _ => ( (*nothing*) ))
+//
+| _(*otherwise*) => ( (*nothing*) )
+//
+) where
+{
+(*
+val () =
+prerrln("process_extern: d2cl = ", d2cl)
+*)
+}(*where*)//end-of[process_extern(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
 s2taload_from_fpath
 ( fpth : fpath
 , dpar : d1parsed)
@@ -593,6 +654,8 @@ let
 val loc0 = d1cl.lctn()
 val dcl1 =
 trans12_d1ecl(env0, dcl1)
+val (  ) =
+process_static(env0, dcl1)
 in//let
 d2ecl(loc0, D2Cstatic(tknd, dcl1))
 end (*let*) // end of [D1Cstatic]
@@ -603,6 +666,8 @@ let
 val loc0 = d1cl.lctn()
 val dcl1 =
 trans12_d1ecl(env0, dcl1)
+val (  ) =
+process_extern(env0, dcl1)
 in//let
 d2ecl(loc0, D2Cextern(tknd, dcl1))
 end (*let*) // end of [D1Cextern]
