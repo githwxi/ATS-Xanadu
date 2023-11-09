@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Thu Nov  9 13:21:34 EST 2023
+Thu Nov  9 13:21:00 EST 2023
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -45,17 +45,12 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload "./../SATS/xstamp0.sats"
-(* ****** ****** *)
-#staload "./../SATS/xsymmap.sats"
-(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 (* ****** ****** *)
-#staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
 #staload "./../SATS/trtmp3c.sats"
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trtmp3c_utils0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_trtmp3c.dats] *)
