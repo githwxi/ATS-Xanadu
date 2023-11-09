@@ -333,5 +333,6 @@ clean:: ; rm -f *~
 ######
 cleanall:: clean
 cleanall:: ; rm -f ./xatsopt_boot??_dats.js
+cleanall:: ; rm -f ./xatsopt_test??_dats.js
 ######
 ########################### end of [Makefile] ###########################
