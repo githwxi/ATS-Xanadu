@@ -214,5 +214,52 @@ trtmp3c_l3d3e
 ! tr3cenv,ld3e:l3d3e):l3d3e//fun
 //
 (* ****** ****** *)
+//
+fun
+trtmp3c_d3explst
+( env0:
+! tr3cenv,d3es:d3explst):d3explst
+//
+fun
+trtmp3c_d3expopt
+( env0:
+! tr3cenv,dopt:d3expopt):d3expopt
+//
+(* ****** ****** *)
+//
+fun
+trtmp3c_l3d3elst
+( env0:
+! tr3cenv,ldes:l3d3elst):l3d3elst
+//
+(* ****** ****** *)
+//
+fun
+trtmp3c_d3clslst
+( env0:
+! tr3cenv,dcls:d3clslst):d3clslst
+//
+(* ****** ****** *)
+//
+fun
+trtmp3c_d3eclist
+( env0:
+! tr3cenv,dcls:d3eclist):d3eclist
+//
+(* ****** ****** *)
+//
+fun
+trtmp3c_d3explstopt
+( env0:
+! tr3cenv,dopt:d3explstopt):d3explstopt
+//
+(* ****** ****** *)
+//
+fun
+trtmp3c_d3eclistopt
+( env0:
+! tr3cenv,dopt:d3eclistopt):d3eclistopt
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trtmp3c.sats] *)
