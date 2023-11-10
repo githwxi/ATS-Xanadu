@@ -180,5 +180,39 @@ tr3cenv_free_top
 ( env0 : tr3cenv ) : (  void  )
 //
 (* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:t0>
+list_trtmp3c_fnp
+( e1:
+! tr3cenv
+, xs
+: list(x0)
+, fopr:
+  (!tr3cenv, x0)->y0): list(y0)
+fun
+<x0:t0>
+<y0:t0>
+optn_trtmp3c_fnp
+( e1:
+! tr3cenv
+, xs: optn(x0)
+, fopr:
+  (!tr3cenv, x0)->y0): optn(y0)
+//
+(* ****** ****** *)
+//
+fun
+trtmp3c_d3exp
+( env0:
+! tr3cenv,d3e0:d3exp):d3exp//fun
+//
+fun
+trtmp3c_l3d3e
+( env0:
+! tr3cenv,ld3e:l3d3e):l3d3e//fun
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trtmp3c.sats] *)
