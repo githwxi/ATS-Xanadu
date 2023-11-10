@@ -75,6 +75,7 @@ trans23.sats \
 tread23.sats \
 trans3a.sats \
 trtmp3b.sats \
+trtmp3c.sats \
 tread33.sats \
 fperr33.sats \
 xglobal.sats \
@@ -214,6 +215,9 @@ trtmp3b_myenv0.dats \
 trtmp3b_utils0.dats \
 trtmp3b_dynexp.dats \
 trtmp3b_decl00.dats \
+trtmp3c.dats \
+trtmp3c_myenv0.dats \
+trtmp3c_utils0.dats \
 tread33.dats \
 tread33_staexp.dats \
 tread33_dynexp.dats \
@@ -242,5 +246,5 @@ BUILD/JS/xsymbol_dats.js:: ./DATS/xsymbol.dats
 BUILD/JS/%_dats.js: \
 DATS/%.dats; $(XATS2JS) --output-a $@ --dynamic $<
 ########################################################################
-
+cleanall::; rm -f BUILD/JS/*_dats.js
 ########################################################################
