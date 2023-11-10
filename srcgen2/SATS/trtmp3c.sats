@@ -159,5 +159,26 @@ d3explstopt = $D3E.d3explstopt
 #typedef
 d3eclistopt = $D3E.d3eclistopt
 (* ****** ****** *)
+//
+#absvtbx tmpstq_vtbx // ptr
+#vwtpdef tmpstq = tmpstq_vtbx
+//
+(* ****** ****** *)
+//
+fun
+d3parsed_of_trtmp3c
+  ( dpar: d3parsed ): d3parsed
+//
+(* ****** ****** *)
+//
+fun
+tr3cenv_make_nil
+( (* void *) ): tr3cenv
+//
+fun
+tr3cenv_free_top
+( env0 : tr3cenv ) : (  void  )
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trtmp3c.sats] *)
