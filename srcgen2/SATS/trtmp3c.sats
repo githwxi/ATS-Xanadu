@@ -235,6 +235,13 @@ trtmp3c_l3d3elst
 (* ****** ****** *)
 //
 fun
+trtmp3c_d3ecl
+( env0:
+! tr3cenv,d3cl:d3ecl):d3ecl//fun
+//
+(* ****** ****** *)
+//
+fun
 trtmp3c_d3clslst
 ( env0:
 ! tr3cenv,dcls:d3clslst):d3clslst

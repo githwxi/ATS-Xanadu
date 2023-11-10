@@ -218,6 +218,8 @@ trtmp3b_decl00.dats \
 trtmp3c.dats \
 trtmp3c_myenv0.dats \
 trtmp3c_utils0.dats \
+trtmp3c_dynexp.dats \
+trtmp3c_decl00.dats \
 tread33.dats \
 tread33_staexp.dats \
 tread33_dynexp.dats \
