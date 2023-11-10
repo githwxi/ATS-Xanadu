@@ -52,34 +52,6 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trans3a.sats"
 (* ****** ****** *)
-//
-#impltmp
-<x0><y0>
-list_trans3a_fnp
-( e1, xs, fopr ) =
-(
-list_map_e1nv<x0><y0><e1>(xs, e1)) where
-{
-#vwtpdef e1 = tr3aenv
-#impltmp
-map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [list_trans3a_fnp(e1,xs,fopr)]
-//
-(* ****** ****** *)
-//
-#impltmp
-<x0><y0>
-optn_trans3a_fnp
-( e1, xs, fopr ) =
-(
-optn_map_e1nv<x0><y0><e1>(xs, e1)) where
-{
-#vwtpdef e1 = tr3aenv
-#impltmp
-map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [optn_trans3a_fnp(e1,xs,fopr)]
-//
-(* ****** ****** *)
 
 #implfun
 d3parsed_of_trans3a
@@ -114,6 +86,34 @@ d3parsed
 end
 end (*let*) // end of [d3parsed_trans3a(dpar)]
 
+(* ****** ****** *)
+//
+#impltmp
+<x0><y0>
+list_trans3a_fnp
+( e1, xs, fopr ) =
+(
+list_map_e1nv<x0><y0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = tr3aenv
+#impltmp
+map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [list_trans3a_fnp(e1,xs,fopr)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0><y0>
+optn_trans3a_fnp
+( e1, xs, fopr ) =
+(
+optn_map_e1nv<x0><y0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = tr3aenv
+#impltmp
+map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [optn_trans3a_fnp(e1,xs,fopr)]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans3a.dats] *)

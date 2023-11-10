@@ -64,34 +64,6 @@ x2t2p_make_lctn(d2v0.lctn())
 //
 (* ****** ****** *)
 
-#impltmp
-<x0><y0>
-list_trans2a_fnp
-( e1, xs, fopr ) =
-(
-list_map_e1nv<x0><y0><e1>(xs, e1)) where
-{
-#vwtpdef e1 = tr2aenv
-#impltmp
-map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [list_trans2a_fnp(e1,xs,fopr)]
-
-(* ****** ****** *)
-
-#impltmp
-<x0><y0>
-optn_trans2a_fnp
-( e1, xs, fopr ) =
-(
-optn_map_e1nv<x0><y0><e1>(xs, e1)) where
-{
-#vwtpdef e1 = tr2aenv
-#impltmp
-map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [optn_trans2a_fnp(e1,xs,fopr)]
-
-(* ****** ****** *)
-
 #implfun
 d2parsed_of_trans2a
   (dpar) =
@@ -124,6 +96,32 @@ d2parsed
 end
 end (*let*) // end of [d2parsed_trans2a(dpar)]
 
+(* ****** ****** *)
+//
+#impltmp
+<x0><y0>
+list_trans2a_fnp
+( e1, xs, fopr ) =
+(
+list_map_e1nv<x0><y0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = tr2aenv
+#impltmp
+map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [list_trans2a_fnp(e1,xs,fopr)]
+//
+#impltmp
+<x0><y0>
+optn_trans2a_fnp
+( e1, xs, fopr ) =
+(
+optn_map_e1nv<x0><y0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = tr2aenv
+#impltmp
+map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [optn_trans2a_fnp(e1,xs,fopr)]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans2a.dats] *)

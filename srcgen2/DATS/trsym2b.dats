@@ -55,6 +55,28 @@ ATS_PACKNAME
 #staload "./../SATS/trans2a.sats"
 #staload "./../SATS/trsym2b.sats"
 (* ****** ****** *)
+
+#implfun
+d2parsed_at_trsym2b
+  (dpar) = let
+//
+val
+parsed =
+d2parsed_get_parsed(dpar)
+//
+val
+env0 = tr2aenv_make_nil()
+//
+val () =
+trsym2b_d2eclistopt(env0, parsed)
+//
+in//let
+let
+val d2cenv = tr2aenv_free_top(env0)
+end
+end (*let*)//end-of-[d2parsed_at_trsym2b(dpar)]
+
+(* ****** ****** *)
 //
 #implfun
 <x0>(*tmp*)
@@ -86,28 +108,6 @@ case+ xs of
 | optn_cons(x1) => work(e1, x1)
 )(*case+*)//end(optn_trsym2b_fnp(e1,xs,work))
 //
-(* ****** ****** *)
-
-#implfun
-d2parsed_at_trsym2b
-  (dpar) = let
-//
-val
-parsed =
-d2parsed_get_parsed(dpar)
-//
-val
-env0 = tr2aenv_make_nil()
-//
-val () =
-trsym2b_d2eclistopt(env0, parsed)
-//
-in//let
-let
-val d2cenv = tr2aenv_free_top(env0)
-end
-end (*let*)//end-of-[d2parsed_at_trsym2b(dpar)]
-
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trsym2b.dats] *)

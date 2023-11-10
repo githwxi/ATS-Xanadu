@@ -750,8 +750,13 @@ trtmp3c_myenv0_dats: ; $(XATSOPT) --dynamic DATS/trtmp3c_myenv0.dats
 all_dats:: \
 trtmp3c_utils0_dats
 trtmp3c_utils0_dats: ; $(XATSOPT) --dynamic DATS/trtmp3c_utils0.dats
+all_dats:: \
+trtmp3c_dynexp_dats
+trtmp3c_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trtmp3c_dynexp.dats
+all_dats:: \
+trtmp3c_decl00_dats
+trtmp3c_decl00_dats: ; $(XATSOPT) --dynamic DATS/trtmp3c_decl00.dats
 ######
-
 
 ######
 all_dats:: \
