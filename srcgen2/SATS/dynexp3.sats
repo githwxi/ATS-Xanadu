@@ -777,6 +777,11 @@ timpl_node =
 (d3ecl(*tmpsub*))
 *)
 //
+(*
+HX-2023-11-11:
+d3eclist: it is a
+list of D3Ctmpsub-decls
+*)
 |TIMPLall1 of
 (d2cst(*dcst*), d3eclist)
 //

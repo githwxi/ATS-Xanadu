@@ -63,5 +63,57 @@ _(*Trtmp3c*) = "./trtmp3c.dats"
 #symload lctn with d3cls_get_lctn
 #symload node with d3cls_get_node
 (* ****** ****** *)
+//
+#implfun
+trtmp3c_d3exp
+(env0 , d3e0) =
+let
+//
+(*
+val
+loc0 = d3e0.lctn()
+val () =
+prerrln
+("trtmp3c_d3exp: loc0 = ", loc0)
+val () =
+prerrln
+("trtmp3c_d3exp: d3e0 = ", d3e0)
+*)
+//
+in//let
+//
+case+
+d3e0.node() of
+//
+|D3Evar _ => d3e0
+//
+|D3Eint _ => d3e0
+|D3Ebtf _ => d3e0
+|D3Echr _ => d3e0
+|D3Eflt _ => d3e0
+|D3Estr _ => d3e0
+//
+|D3Ei00 _ => d3e0
+|D3Eb00 _ => d3e0
+|D3Ec00 _ => d3e0
+|D3Ef00 _ => d3e0
+|D3Es00 _ => d3e0
+//
+|D3Econ _ => d3e0
+|D3Ecst _ => d3e0
+//
+|D3Etop _ => d3e0
+//
+|
+_(*otherwise*) => (d3exp_none2(d3e0))
+//
+end where // end-of-[trtmp3c_d3exp(...)]
+{
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+} (*where*)//end-of-[trtmp3c_d3exp(env0,d3e0)]
+
 
 (* end of [ATS3/XATSOPT_srcgen2_trtmp3c_dynexp.dats] *)
