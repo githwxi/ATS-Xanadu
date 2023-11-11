@@ -364,18 +364,20 @@ gint_repeat_sint_c0fr
 (i0: sint, work: ()-<cfr>void): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 // HX-2020-05-30:
 // symbol overloading for gint
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #symload - with gint_neg_sint of 1002
 //
 (* ****** ****** *)
-
+//
 #symload abs with gint_abs_sint of 1002
-
+//
 (* ****** ****** *)
 //
 #symload succ with gint_succ_sint of 1002

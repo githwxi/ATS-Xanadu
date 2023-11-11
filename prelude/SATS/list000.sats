@@ -599,10 +599,10 @@ list_map_f1np_vt
 (xs:list(x0,n), f0:(x0)-<fnp>y0): list_vt(y0,n)
 //
 (* ****** ****** *)
-#symload map_c1fr with list_map_c1fr of 1000
-#symload map_f1np with list_map_f1np of 1000
-#symload map_c1fr_vt with list_map_c1fr_vt of 1000
-#symload map_f1np_vt with list_map_f1np_vt of 1000
+#symload map_cfr with list_map_c1fr of 1000
+#symload map_fnp with list_map_f1np of 1000
+#symload map_cfr_vt with list_map_c1fr_vt of 1000
+#symload map_fnp_vt with list_map_f1np_vt of 1000
 (* ****** ****** *)
 //
 (*
