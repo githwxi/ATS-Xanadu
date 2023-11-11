@@ -80,7 +80,7 @@ tmpstk =
 //
 | tmpstk_nil of ()
 //
-| tmpstk_cons of
+| tmpstk_decl of
   (stamp, d3ecl, tmpstk)
 //
 | tmpstk_let0 of (tmpstk)
@@ -167,7 +167,7 @@ case+ kxs of
 tmpstk_nil() => kxs // err = 0
 //
 | ~
-tmpstk_cons
+tmpstk_decl
 (k1, x1, kxs) => loop(kxs, err)
 //
 | !
@@ -204,7 +204,7 @@ case+ kxs of
 tmpstk_let0
 (   kxs   ) => kxs // err = 0
 | ~
-tmpstk_cons
+tmpstk_decl
 (k1, x1, kxs) => loop(kxs, err)
 //
 | !
@@ -247,7 +247,7 @@ tmpstk_loc1
 (
   pshloc2(kxs, kys, err))
 | ~
-tmpstk_cons
+tmpstk_decl
 (k1, x1, kxs) =>
 (
   poploc1(kxs, kys, err))
@@ -293,13 +293,13 @@ tmpstk_loc2
 (
   poploc1(kxs, kys, err))
 | ~
-tmpstk_cons
+tmpstk_decl
 (k1, x1, kxs) =>
 (
   poploc2(kxs, kys, err))
 where {
-val kys = tmpstk_cons(k1, x1, kys)
-} (*where*)//end-of-[tmpstk_cons(...)]
+val kys = tmpstk_decl(k1, x1, kys)
+} (*where*)//end-of-[tmpstk_decl(...)]
 //
 | !
 tmpstk_nil( ) =>
@@ -341,14 +341,14 @@ case- kys of
 | ~
 tmpstk_nil() => kxs
 | ~
-tmpstk_cons
+tmpstk_decl
 (k1, x1, kys) =>
 (
 pshloc2(kxs, kys, err))
 where
 {
   val kxs =
-  tmpstk_cons(k1, x1, kxs) }
+  tmpstk_decl(k1, x1, kxs) }
 ) (*case+*)//end of [pshloc2(kxs,kys,err)]
 //
 in//let
@@ -374,7 +374,7 @@ tmpstk_getstmp
 case+ stk of
 //
 | !
-tmpstk_cons
+tmpstk_decl
 (tmp, _, _) => ( tmp )
 //
 | !
@@ -407,7 +407,7 @@ tmpstk_insert_dcl
 let
 val tag =
 the_tmpstk_stamp_new() in//let
-  stk := tmpstk_cons(tag, dcl, stk)
+  stk := tmpstk_decl(tag, dcl, stk)
 end (*let*)//end-of-[tmpstk_insert_dcl(...)]
 //
 (* ****** ****** *)
@@ -469,7 +469,7 @@ case+ kxs of
 tmpstk_nil() => ( res )
 //
 | !
-tmpstk_cons
+tmpstk_decl
 (tmp, dcl, kxs) =>
 loop(kxs, d2c, res) where
 {
