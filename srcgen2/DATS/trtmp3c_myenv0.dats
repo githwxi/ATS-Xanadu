@@ -57,5 +57,39 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trtmp3c.sats"
 (* ****** ****** *)
+//
+local
+val
+stamper =
+stamper_new((*0*))
+in//local
+fun
+the_tmpstq_stamp_new
+  ((*void*)): stamp =
+  stamper.getinc((*void*))
+endloc // the_tmpstq_stamp_new
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datavwtp
+tmpstq =
+//
+| tmpstq_nil of ()
+//
+| tmpstq_tsub of (s2vts)
+//
+| tmpstq_decl of
+  (stamp, d3ecl, tmpstq)
+//
+| tmpstq_dexp of
+  (stamp, d3exp, tmpstq)
+//
+| tmpstq_let0 of (tmpstq)
+| tmpstq_loc1 of (tmpstq)
+| tmpstq_loc2 of (tmpstq)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trtmp3c_myenv0.dats] *)

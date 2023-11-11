@@ -18,8 +18,7 @@ fact2
 foldl(xs, 1.0) where
 {
 #impltmp
-foldl$fopr(r0:dflt, x0) = r0 * (x0+1)
-}
+foldl$fopr(r0:dflt, x0) = r0 * (x0+1) }
 //
 (* ****** ****** *)
 (* ****** ****** *)
