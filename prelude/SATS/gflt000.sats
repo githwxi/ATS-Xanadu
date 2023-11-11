@@ -208,52 +208,67 @@ gflt_div_dflt_sint(dflt, sint): dflt
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #symload < with gflt_lt_sflt_sflt of 1008
 #symload > with gflt_gt_sflt_sflt of 1008
 #symload = with gflt_eq_sflt_sflt of 1008
+//
 #symload <= with gflt_lte_sflt_sflt of 1008
 #symload >= with gflt_gte_sflt_sflt of 1008
 #symload != with gflt_neq_sflt_sflt of 1008
-(* ****** ****** *)
-#symload cmp with gflt_cmp_sflt_sflt of 1008
+//
 (* ****** ****** *)
 #symload + with gflt_add_sflt_sflt of 1008
 #symload - with gflt_sub_sflt_sflt of 1008
 #symload * with gflt_mul_sflt_sflt of 1008
 #symload / with gflt_div_sflt_sflt of 1008
 (* ****** ****** *)
+#symload cmp with gflt_cmp_sflt_sflt of 1008
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #symload < with gflt_lt_dflt_dflt of 1008
 #symload > with gflt_gt_dflt_dflt of 1008
 #symload = with gflt_eq_dflt_dflt of 1008
+//
 #symload <= with gflt_lte_dflt_dflt of 1008
 #symload >= with gflt_gte_dflt_dflt of 1008
 #symload != with gflt_neq_dflt_dflt of 1008
-(* ****** ****** *)
-#symload cmp with gflt_cmp_dflt_dflt of 1008
+//
 (* ****** ****** *)
 #symload + with gflt_add_dflt_dflt of 1008
 #symload - with gflt_sub_dflt_dflt of 1008
 #symload * with gflt_mul_dflt_dflt of 1008
 #symload / with gflt_div_dflt_dflt of 1008
 (* ****** ****** *)
+#symload cmp with gflt_cmp_dflt_dflt of 1008
 (* ****** ****** *)
+//
+(*
+HX-2023-11-10:
+hybrid variants: sint_dflt/dflt_sint
+*)
+//
+(* ****** ****** *)
+//
 #symload < with gflt_lt_sint_dflt of 1000
 #symload > with gflt_gt_sint_dflt of 1000
 #symload = with gflt_eq_sint_dflt of 1000
+//
 #symload <= with gflt_lte_sint_dflt of 1000
 #symload >= with gflt_gte_sint_dflt of 1000
 #symload != with gflt_neq_sint_dflt of 1000
+//
 (* ****** ****** *)
+//
 #symload < with gflt_lt_dflt_sint of 1000
 #symload > with gflt_gt_dflt_sint of 1000
 #symload = with gflt_eq_dflt_sint of 1000
+//
 #symload <= with gflt_lte_dflt_sint of 1000
 #symload >= with gflt_gte_dflt_sint of 1000
 #symload != with gflt_neq_dflt_sint of 1000
-(* ****** ****** *)
-#symload cmp with gflt_cmp_sint_dflt of 1000
-#symload cmp with gflt_cmp_dflt_sint of 1000
+//
 (* ****** ****** *)
 #symload + with gflt_add_sint_dflt of 1000
 #symload - with gflt_sub_sint_dflt of 1000
@@ -264,6 +279,9 @@ gflt_div_dflt_sint(dflt, sint): dflt
 #symload - with gflt_sub_dflt_sint of 1000
 #symload * with gflt_mul_dflt_sint of 1000
 #symload / with gflt_div_dflt_sint of 1000
+(* ****** ****** *)
+#symload cmp with gflt_cmp_sint_dflt of 1000
+#symload cmp with gflt_cmp_dflt_sint of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 
