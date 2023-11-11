@@ -12,27 +12,24 @@
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 fun
 fact2
-(xs: sint): sint =
-foldl(xs, 1) where
+(xs: sint) =
+foldl(xs, 1.0) where
 {
-#typedef xs = sint
-#typedef x0 = sint
-#typedef r0 = sint
 #impltmp
-foldl$fopr<xs><x0><r0>(r0, x0) = r0 * (x0+1)
+foldl$fopr(r0:dflt, x0) = r0 * (x0+1)
 }
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 fun
 fact2
 (xs: sint) =
 foldl_cfr(xs, 1.0, lam(r0:dflt,x0) => r0 * (x0+1))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
