@@ -370,16 +370,16 @@ gint_repeat_sint_c0fr
 //
 (* ****** ****** *)
 //
-#symload - with gint_neg_sint of 1000
-
+#symload - with gint_neg_sint of 1009
+//
 (* ****** ****** *)
 
-#symload abs with gint_abs_sint of 1000
+#symload abs with gint_abs_sint of 1009
 
 (* ****** ****** *)
 //
-#symload succ with gint_succ_sint of 1000
-#symload pred with gint_pred_sint of 1000
+#symload succ with gint_succ_sint of 1009
+#symload pred with gint_pred_sint of 1009
 //
 #symload succ with gint_succ_uint of 1000
 #symload pred with gint_pred_uint of 1000
@@ -392,37 +392,42 @@ gint_repeat_sint_c0fr
 #symload lxor with gint_lxor_uint of 1000
 //
 (* ****** ****** *)
+//
 #symload asrn with gint_asrn_sint of 1000
 #symload lsln with gint_lsln_uint of 1000
 #symload lsrn with gint_lsrn_uint of 1000
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #symload
-cmp with gint_cmp_sint_sint of 1000
+cmp with gint_cmp_sint_sint of 1009
+//
+#symload < with gint_lt_sint_sint of 1009
+#symload > with gint_gt_sint_sint of 1009
+#symload = with gint_eq_sint_sint of 1009
+#symload <= with gint_lte_sint_sint of 1009
+#symload >= with gint_gte_sint_sint of 1009
+#symload != with gint_neq_sint_sint of 1009
+//
+#symload + with gint_add_sint_sint of 1009
+#symload - with gint_sub_sint_sint of 1009
+#symload * with gint_mul_sint_sint of 1009
+#symload / with gint_div_sint_sint of 1009
+#symload % with gint_mod_sint_sint of 1009
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #symload
 cmp with gint_cmp_uint_uint of 1000
 //
-#symload < with gint_lt_sint_sint of 1000
-#symload > with gint_gt_sint_sint of 1000
-#symload = with gint_eq_sint_sint of 1000
 #symload < with gint_lt_uint_uint of 1000
 #symload > with gint_gt_uint_uint of 1000
 #symload = with gint_eq_uint_uint of 1000
-//
-#symload <= with gint_lte_sint_sint of 1000
-#symload >= with gint_gte_sint_sint of 1000
-#symload != with gint_neq_sint_sint of 1000
 #symload <= with gint_lte_uint_uint of 1000
 #symload >= with gint_gte_uint_uint of 1000
 #symload != with gint_neq_uint_uint of 1000
-//
-(* ****** ****** *)
-//
-#symload + with gint_add_sint_sint of 1000
-#symload - with gint_sub_sint_sint of 1000
-#symload * with gint_mul_sint_sint of 1000
-#symload / with gint_div_sint_sint of 1000
-#symload % with gint_mod_sint_sint of 1000
 //
 #symload + with gint_add_uint_uint of 1000
 #symload - with gint_sub_uint_uint of 1000
@@ -431,10 +436,11 @@ cmp with gint_cmp_uint_uint of 1000
 #symload % with gint_mod_uint_uint of 1000
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #symload g0s2u with gint_sint2uint of 1000
 #symload g0u2s with gint_uint2sint of 1000
-
+//
 (* ****** ****** *)
 //
 (*
