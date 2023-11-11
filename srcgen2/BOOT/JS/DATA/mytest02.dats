@@ -32,9 +32,8 @@ foldl$fopr<xs><x0><r0>(r0, x0) = r0 * (x0+1)
 fun
 fact2
 (xs: sint): sint =
-gseq_foldl_c2fr
-<sint><sint><sint>
-(xs, 1, lam(r0, x0) => r0 * (x0+1))
+foldl_cfr
+(xs, 1, lam(r0,x0) => r0 * (x0+1))
 //
 (* ****** ****** *)
 (* ****** ****** *)
