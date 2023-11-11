@@ -109,6 +109,9 @@ case+
 d3cl.node() of
 //
 |D3Cnone0 _ => d3cl
+|D3Cnone1 _ => d3cl
+|D3Cnone2 _ => d3cl
+//
 |D3Cd2ecl _ => d3cl
 |D3Cerrck _ => d3cl
 //
