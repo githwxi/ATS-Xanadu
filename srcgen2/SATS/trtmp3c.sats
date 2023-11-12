@@ -160,37 +160,37 @@ d3explstopt = $D3E.d3explstopt
 d3eclistopt = $D3E.d3eclistopt
 (* ****** ****** *)
 //
-#absvtbx tmpstq_vtbx // ptr
-#vwtpdef tmpstq = tmpstq_vtbx
+#absvtbx tmqstk_vtbx // ptr
+#vwtpdef tmqstk = tmqstk_vtbx
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-tmpstq_nilq( !tmpstq ): bool
+tmqstk_nilq( !tmqstk ): bool
 //
 (* ****** ****** *)
 //
 fun
-tmpstq_pshloc1
-  ( stq: &tmpstq >> _ ): void
+tmqstk_pshloc1
+  ( stq: &tmqstk >> _ ): void
 fun
-tmpstq_pshloc2
-  ( stq: &tmpstq >> _ ): void
+tmqstk_pshloc2
+  ( stq: &tmqstk >> _ ): void
 //
 fun
-tmpstq_locjoin
-  ( stq: &tmpstq >> _ ): sint
+tmqstk_locjoin
+  ( stq: &tmqstk >> _ ): sint
 //
 (* ****** ****** *)
 //
 fun
-tmpstq_poplet0
-  ( stq: &tmpstq >> _ ): sint
+tmqstk_poplet0
+  ( stq: &tmqstk >> _ ): sint
 //
 fun
-tmpstq_pshlet0
-  ( stq: &tmpstq >> _ ): void
+tmqstk_pshlet0
+  ( stq: &tmqstk >> _ ): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
