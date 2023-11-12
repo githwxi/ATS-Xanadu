@@ -13,7 +13,7 @@ RMF=rm -f
 MAKE=make
 
 ######
-XATSOPT="./../../.."
+XATSOPT="./../.."
 ######
 
 PATSCC=$(PATSHOME)/bin/patscc
@@ -61,25 +61,29 @@ $(patsubst %.dats, BUILD/%_dats.o, $(SRCDATS))
 ######
 INCLUDE:=
 INCLUDE+=-I"."
-INCLUDE+=-I"$(XATSOPT)/srcgen1/."
+INCLUDE+=-I"$(XATSOPT)/."
 ######
-LIBRARY:=-L"$(XATSOPT)/srcgen1/lib" -lxatsopt
-######
-#
-all:: \
-lxatsopt
-lxatsopt: ; \
-(cd $(XATSOPT)/srcgen1/. && $(MAKE) libxatsopt)
-#
+LIBRARY:=-L"$(XATSOPT)/lib" -lxatsopt
 ######
 #
 all:: \
 xinterp
-xinterp: \
+xinterp:: \
+libxatsopt
+all:: \
+xinterp
+xinterp:: \
 DATS/xinterp.dats \
 $(OBJSATS) $(OBJDATS) ; \
 $(PATSCC) -cleanaft -o ./bin/xinterp \
 $(INCLUDE) $(CFLAGS) $(GCFLAG) $^ $(LIBGC) $(LIBRARY)
+#
+######
+#
+all:: \
+libxatsopt
+libxatsopt: ; \
+(cd $(XATSOPT) && $(MAKE) libxatsopt)
 #
 ######
 

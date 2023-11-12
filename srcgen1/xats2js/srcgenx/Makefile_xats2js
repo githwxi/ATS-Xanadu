@@ -62,9 +62,9 @@ $(patsubst %.dats, BUILD/%_dats.o, $(SRCDATS))
 ######
 INCLUDE:=
 INCLUDE+=-I"."
-INCLUDE+=-I"$(XATSOPT)/srcgen1"
+INCLUDE+=-I"$(XATSOPT)"
 ######
-LIBRARY:=-L"$(XATSOPT)/srcgen1/lib" -lxatsopt
+LIBRARY:=-L"$(XATSOPT)/lib" -lxatsopt
 ######
 #
 all:: \
@@ -139,7 +139,7 @@ cleanall:: clean
 cleanall:: ; $(RMF) ./.depend
 cleanall:: ; $(RMF) ./bin/xats2js
 cleanall:: ; $(RMF) $(XATSOPT)/lib/libxatsopt.a
-cleanall:: ; $(MAKE) -C $(XATSOPT)/srcgen1 cleanall
+cleanall:: ; $(MAKE) -C $(XATSOPT) cleanall
 
 ######
 
