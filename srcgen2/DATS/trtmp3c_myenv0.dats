@@ -57,6 +57,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trtmp3c.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 //
 local
 val
@@ -70,6 +71,10 @@ the_tmpstq_stamp_new
 endloc // the_tmpstq_stamp_new
 //
 (* ****** ****** *)
+(* ****** ****** *)
+(*
+local
+*)
 (* ****** ****** *)
 //
 datavwtp
@@ -90,6 +95,30 @@ tmpstq =
 | tmpstq_loc2 of (tmpstq)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+(*
+in//local
+*)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+tmpstq_nilq
+(   stq   ) =
+(
+case+ stq of
+| !
+tmpstq_nil() => true
+| _(*non-nil*) => false
+) (* end of [tmpstq_nilq(stq)] *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+endloc (*local*) // end of [local(tr3cenv...)]
+*)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trtmp3c_myenv0.dats] *)
