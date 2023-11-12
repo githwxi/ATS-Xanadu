@@ -1,6 +1,6 @@
 ######
 #
-# For building xats2js
+# For building xinterp
 #
 ######
 
@@ -13,7 +13,7 @@ RMF=rm -f
 MAKE=make
 
 ######
-XATSOPT="./../.."
+XATSOPT="./../../.."
 ######
 
 PATSCC=$(PATSHOME)/bin/patscc
@@ -39,18 +39,17 @@ LIBGC=-lgc
 ######
 
 SRCSATS := \
-xcomp01.sats \
-intrep1.sats \
-xats2js.sats \
+intrep0.sats \
+xinterp.sats \
 
 SRCDATS := \
-intrep1.dats \
-intrep1_print0.dats \
-intrep1_xemit0.dats \
-xats2js_mymain.dats \
-xcomp01_utils0.dats \
-xcomp01_envmap.dats \
-xcomp01_dynexp.dats \
+intrep0.dats \
+intrep0_print0.dats \
+intrep0_dynexp.dats \
+xinterp_mymain.dats \
+xinterp_print0.dats \
+xinterp_envmap.dats \
+xinterp_dynexp.dats \
 
 ######
 
@@ -62,28 +61,25 @@ $(patsubst %.dats, BUILD/%_dats.o, $(SRCDATS))
 ######
 INCLUDE:=
 INCLUDE+=-I"."
-INCLUDE+=-I"$(XATSOPT)/srcgen1"
+INCLUDE+=-I"$(XATSOPT)/srcgen1/."
 ######
 LIBRARY:=-L"$(XATSOPT)/srcgen1/lib" -lxatsopt
 ######
 #
 all:: \
-xats2js
-xats2js:: \
-libxatsopt
-xats2js:: \
-DATS/xats2js.dats \
-$(OBJSATS) $(OBJDATS) ; \
-$(PATSCC) -cleanaft \
--o ./bin/xats2js $(INCLUDE) \
-$(CFLAGS) $(GCFLAG) $^ $(LIBGC) $(LIBRARY)
+lxatsopt
+lxatsopt: ; \
+(cd $(XATSOPT)/srcgen1/. && $(MAKE) libxatsopt)
 #
 ######
 #
 all:: \
-libxatsopt
-libxatsopt: ; \
-(cd $(XATSOPT) && $(MAKE) libxatsopt)
+xinterp
+xinterp: \
+DATS/xinterp.dats \
+$(OBJSATS) $(OBJDATS) ; \
+$(PATSCC) -cleanaft -o ./bin/xinterp \
+$(INCLUDE) $(CFLAGS) $(GCFLAG) $^ $(LIBGC) $(LIBRARY)
 #
 ######
 
@@ -119,7 +115,7 @@ $(PATSOPT) --output-a .depend --depgen -s $(SATS_SRCSATS)
 depend:: ; \
 $(PATSOPT) --output-a .depend --depgen -d $(DATS_SRCDATS)
 depend:: ; \
-$(PATSOPT) --output-a .depend --depgen -d DATS/xats2js.dats
+$(PATSOPT) --output-a .depend --depgen -d DATS/xinterp.dats
 #
 depend:: ; \
 $(SED) -i -e 's/^SATS/BUILD/' -e 's/^DATS/BUILD/' .depend
@@ -130,17 +126,16 @@ $(SED) -i -e 's/^SATS/BUILD/' -e 's/^DATS/BUILD/' .depend
 
 clean:: ; $(RMF) BUILD/*_?ats.c
 clean:: ; $(RMF) BUILD/*_?ats.o
-clean:: ; $(RMF) xats2js_dats.o
-clean:: ; $(RMF) xats2js_dats.c
+clean:: ; $(RMF) xinterp_dats.o
+clean:: ; $(RMF) xinterp_dats.c
 
 ######
 
 cleanall:: clean
-cleanall:: ; $(RMF) ./.depend
-cleanall:: ; $(RMF) ./bin/xats2js
+cleanall:: ; $(RMF) ./bin/xinterp
 cleanall:: ; $(RMF) $(XATSOPT)/lib/libxatsopt.a
-cleanall:: ; $(MAKE) -C $(XATSOPT)/srcgen1 cleanall
+cleanall:: ; $(MAKE) -C $(XATSOPT)/srcgen1/. cleanall
 
 ######
 
-###### end of [Makefile] ######
+###### end of [Makefile_xinterp] ######
