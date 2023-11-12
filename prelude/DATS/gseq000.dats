@@ -1039,7 +1039,6 @@ gseq_copy_list
 list_vt2t
 (
 gseq_copy_llist<xs><x0>(xs))
-//
 #impltmp
 <xs><x0>
 gseq_copy_llist(xs) =
@@ -1050,6 +1049,13 @@ gseq_copy_llist(xs) =
   #impltmp
   map$fopr<x0><x0>( x0 ) = x0 }
 //
+#impltmp
+<xs><x0>
+gseq_copy_rlist
+  (xs) =
+list_vt2t
+(
+gseq_copy_rllist<xs><x0>(xs))
 #impltmp
 <xs><x0>
 gseq_copy_rllist(xs) =
