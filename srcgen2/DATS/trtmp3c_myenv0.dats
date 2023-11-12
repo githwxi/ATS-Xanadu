@@ -65,10 +65,10 @@ stamper =
 stamper_new((*0*))
 in//local
 fun
-the_tmpstq_stamp_new
+the_tmqstk_stamp_new
   ((*void*)): stamp =
   stamper.getinc((*void*))
-endloc // the_tmpstq_stamp_new
+endloc // the_tmqstk_stamp_new
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -78,21 +78,21 @@ local
 (* ****** ****** *)
 //
 datavwtp
-tmpstq =
+tmqstk =
 //
-| tmpstq_nil of ()
+| tmqstk_nil of ()
 //
-| tmpstq_tsub of (s2vts)
+| tmqstk_tsub of (s2vts)
 //
-| tmpstq_decl of
-  (stamp, d3ecl, tmpstq)
+| tmqstk_decl of
+  (stamp, d3ecl, tmqstk)
 //
-| tmpstq_dexp of
-  (stamp, d3exp, tmpstq)
+| tmqstk_dexp of
+  (stamp, d3exp, tmqstk)
 //
-| tmpstq_let0 of (tmpstq)
-| tmpstq_loc1 of (tmpstq)
-| tmpstq_loc2 of (tmpstq)
+| tmqstk_let0 of (tmqstk)
+| tmqstk_loc1 of (tmqstk)
+| tmqstk_loc2 of (tmqstk)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -103,14 +103,14 @@ in//local
 (* ****** ****** *)
 //
 #implfun
-tmpstq_nilq
+tmqstk_nilq
 (   stq   ) =
 (
 case+ stq of
 | !
-tmpstq_nil() => true
+tmqstk_nil() => true
 | _(*non-nil*) => false
-) (* end of [tmpstq_nilq(stq)] *)
+) (* end of [tmqstk_nilq(stq)] *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
