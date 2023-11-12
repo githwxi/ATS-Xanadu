@@ -15,15 +15,22 @@ RMF=rm -f
 WCL=wc -l
 
 ######
-#
-XATSOPT=$(XATSHOME)/bin/xatsopt
-#
-######
 all::
 ######
 all:: all_sats
 ######
 all:: all_dats
+######
+
+######
+#
+# HX:
+# srcgen1 is
+# implemented in ATS2
+#
+XATSOPT=\
+$(XATSHOME)/srcgen1/bin/xatsopt
+#
 ######
 
 ######
