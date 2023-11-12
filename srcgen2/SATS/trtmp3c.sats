@@ -164,11 +164,42 @@ d3eclistopt = $D3E.d3eclistopt
 #vwtpdef tmpstq = tmpstq_vtbx
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+tmpstq_nilq( !tmpstq ): bool
+//
+(* ****** ****** *)
+//
+fun
+tmpstq_pshloc1
+  ( stq: &tmpstq >> _ ): void
+fun
+tmpstq_pshloc2
+  ( stq: &tmpstq >> _ ): void
+//
+fun
+tmpstq_locjoin
+  ( stq: &tmpstq >> _ ): sint
+//
+(* ****** ****** *)
+//
+fun
+tmpstq_poplet0
+  ( stq: &tmpstq >> _ ): sint
+//
+fun
+tmpstq_pshlet0
+  ( stq: &tmpstq >> _ ): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d3parsed_of_trtmp3c
   ( dpar: d3parsed ): d3parsed
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -179,6 +210,30 @@ fun
 tr3cenv_free_top
 ( env0 : tr3cenv ) : (  void  )
 //
+(* ****** ****** *)
+//
+fun
+tr3cenv_poplet0
+(env0: !tr3cenv): void//end-fun
+//
+fun
+tr3cenv_pshlet0
+(env0: !tr3cenv): void//end-fun
+//
+(* ****** ****** *)
+//
+fun
+tr3cenv_pshloc1
+(env0: !tr3cenv): void//end-fun
+fun
+tr3cenv_pshloc2
+(env0: !tr3cenv): void//end-fun
+//
+fun
+tr3cenv_locjoin
+(env0: !tr3cenv): void//end-fun
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

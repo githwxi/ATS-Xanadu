@@ -70,9 +70,9 @@ the_tmpstk_stamp_new
 endloc // the_tmpstk_stamp_new
 //
 (* ****** ****** *)
-
+(*
 local
-
+*)
 (* ****** ****** *)
 //
 datavwtp
@@ -110,9 +110,11 @@ case- stk of
 | ~tmpstk_nil() => ((*void*)))
 //
 (* ****** ****** *)
-//
 (* ****** ****** *)
+(*
 in//local
+*)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -682,8 +684,10 @@ end(*let*)//end-of-(tr3benv_search_cst(env0))
 //
 (* ****** ****** *)
 //
+(*
 endloc (*local*) // end of [local(tr3benv...)]
-
+*)
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trtmp3b_myenv0.dats] *)

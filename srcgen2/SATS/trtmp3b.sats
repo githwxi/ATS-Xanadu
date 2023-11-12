@@ -157,8 +157,10 @@ d3eclistopt = $D3E.d3eclistopt
 #vwtpdef tmpstk = tmpstk_vtbx
 //
 (* ****** ****** *)
+//
 fun
 tmpstk_nilq( !tmpstk ): bool
+//
 (* ****** ****** *)
 //
 fun

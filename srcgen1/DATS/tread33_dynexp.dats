@@ -990,9 +990,23 @@ D3Cinclude
 *)
     val () = tread33_d3exp(d3e0)
 //
+    val () =
+    (
+    case+ id2c of
+    |IMPLD2CST2 _ => ()
+    |_(*non-IMPLD2CST2*) =>
+    (
+    prerrln!
+    (loc0, ": ***TRERR33***");
+    prerrln!
+    ( loc0
+    , ": TRERR33(D3Cimplmnt2): id2c = ", id2c ))
+    )
+//
     val-
     IMPLD2CST2
     (dqid, d2cs, d2ct) = id2c
+//
     val () =
     (
     case+ d2ct of
@@ -1000,7 +1014,7 @@ D3Cinclude
     | None _ => let
         val () =
         trerr33_add(TRERR33d3ecl(d3cl))
-      in
+      in//let
       prerrln!
       (loc0, ": ***TRERR33***");
       prerrln!
@@ -1008,6 +1022,7 @@ D3Cinclude
       , ": TRERR33(D3Cimplmnt2): id2c = ", id2c )
       end // end of [None()]
     )
+//
 (*
     val () =
     println!

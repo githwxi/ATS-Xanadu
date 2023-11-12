@@ -92,6 +92,18 @@ d3cl.node() of
 |D3Cstatic _ => d3cl
 |D3Cextern _ => d3cl
 //
+|D3Clocal0 _ =>
+(
+f0_local0(env0, d3cl))
+//
+|
+D3Cabsopen _ => (d3cl)
+|
+D3Cabsimpl _ => (d3cl)
+//
+|
+D3Cinclude _ => f0_include(env0, d3cl)
+//
 | _(*otherwise*) =>
 let
   val loc0 = d3cl.lctn()
@@ -103,6 +115,68 @@ endlet where
 {
 //
 (* ****** ****** *)
+//
+fun
+f0_local0
+( env0
+: !tr3cenv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Clocal0
+(head, body) = d3cl.node()
+//
+val (  ) =
+tr3cenv_pshloc1(env0)
+val head =
+trtmp3c_d3eclist(env0, head)
+//
+val (  ) =
+tr3cenv_pshloc2(env0)
+val body =
+trtmp3c_d3eclist(env0, body)
+//
+in//let
+//
+let
+//
+val (  ) = tr3cenv_locjoin(env0)
+//
+in//let
+  d3ecl(loc0, D3Clocal0(head, body))
+end(*let*)
+//
+end(*let*)//end-of-[f0_local0(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_include
+( env0
+: !tr3cenv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Cinclude
+( knd0
+, tknd, gsrc
+, fopt, dopt) = d3cl.node()
+//
+val dopt =
+trtmp3c_d3eclistopt(env0, dopt)
+//
+in//let
+d3ecl_make_node
+(loc0
+,D3Cinclude(knd0,tknd,gsrc,fopt,dopt))
+end(*let*)//end-of-[f0_include(env0,d3cl)]
+//
 (* ****** ****** *)
 //
 } (*where*)//end-of-[trtmp3c_d3ecl(env0,d3cl)]
