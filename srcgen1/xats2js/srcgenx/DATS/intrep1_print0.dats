@@ -55,7 +55,7 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 overload
-fprint with $STM.fprint_stamp
+fprint with $TMP.fprint_stamp
 //
 overload
 fprint with $LAB.fprint_label

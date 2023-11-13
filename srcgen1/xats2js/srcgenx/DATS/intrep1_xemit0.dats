@@ -57,7 +57,7 @@ UN = "prelude/SATS/unsafe.sats"
 #staload $INTREP0(* open *)
 (* ****** ****** *)
 overload
-fprint with $STM.fprint_stamp
+fprint with $TMP.fprint_stamp
 overload
 fprint with $SYM.fprint_symbol
 overload

@@ -107,4 +107,4 @@ clean:: ; rm -f *~
 cleanall:: clean
 # cleanall:: ; rm -f xats2js_prelude.js
 ######
-###### end of [Makefile_nodejs] ######
+############ end of [Makefile for ATS3/xats2js] ############

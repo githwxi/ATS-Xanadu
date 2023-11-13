@@ -618,7 +618,7 @@ $effmask_all(k1.stamp())
 and x2 =
 $effmask_all(k2.stamp())
 //
-in $STM.cmp_stamp_stamp(x1, x2) end
+in $TMP.cmp_stamp_stamp(x1, x2) end
 
 (* ****** ****** *)
 

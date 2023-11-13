@@ -23,7 +23,7 @@ XATSOPT_targetloc "./../../.."
 #staload
 "{$XATSOPT}/SATS/xbasics.sats"
 (* ****** ****** *)
-#staload STM =
+#staload TMP =
 "{$XATSOPT}/SATS/xstamp0.sats"
 (* ****** ****** *)
 #staload SYM =
