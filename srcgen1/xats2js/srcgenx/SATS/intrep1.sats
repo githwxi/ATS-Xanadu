@@ -45,7 +45,7 @@ Sun Nov 12 12:13:13 EST 2023
 #staload $INTREP0(*open-it*)
 (* ****** ****** *)
 //
-typedef stamp = $STM.stamp
+typedef stamp = $TMP.stamp
 //
 typedef label = $LAB.label
 //

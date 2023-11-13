@@ -60,13 +60,13 @@ local
 
 val
 stamper =
-$STM.stamper_new()
+$TMP.stamper_new()
 
 in (* in-of-local *)
 
 implement
 l1exn_stamp_new() =
-$STM.stamper_getinc(stamper)
+$TMP.stamper_getinc(stamper)
 
 end // end of [local]
 
@@ -109,13 +109,13 @@ local
 
 val
 stamper =
-$STM.stamper_new()
+$TMP.stamper_new()
 
 in (* in-of-local *)
 
 implement
 l1tmp_stamp_new() =
-$STM.stamper_getinc(stamper)
+$TMP.stamper_getinc(stamper)
 
 end // end of [local]
 
@@ -124,7 +124,7 @@ end // end of [local]
 implement
 eq_l1tmp_l1tmp
   (x1, x2) =
-$STM.eq_stamp_stamp
+$TMP.eq_stamp_stamp
 (
   x1.stamp(), x2.stamp()
 ) (* end of [eq_l1tmp_l1tmp] *)
@@ -221,13 +221,13 @@ local
 
 val
 stamper =
-$STM.stamper_new()
+$TMP.stamper_new()
 
 in (* in-of-local *)
 
 implement
 l1cst_stamp_new() =
-$STM.stamper_getinc(stamper)
+$TMP.stamper_getinc(stamper)
 
 end // end of [local]
 
