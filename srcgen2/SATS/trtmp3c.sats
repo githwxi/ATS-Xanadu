@@ -271,6 +271,20 @@ trtmp3c_l3d3e
 (* ****** ****** *)
 //
 fun
+trtmp3c_d3ecl
+( env0:
+! tr3cenv,d3cl:d3ecl):d3ecl//fun
+//
+(* ****** ****** *)
+//
+fun
+trtmp3c_teqd3exp
+( env0:
+! tr3cenv,tdxp:teqd3exp):teqd3exp
+//
+(* ****** ****** *)
+//
+fun
 trtmp3c_d3explst
 ( env0:
 ! tr3cenv,d3es:d3explst):d3explst
@@ -290,13 +304,6 @@ trtmp3c_l3d3elst
 (* ****** ****** *)
 //
 fun
-trtmp3c_d3ecl
-( env0:
-! tr3cenv,d3cl:d3ecl):d3ecl//fun
-//
-(* ****** ****** *)
-//
-fun
 trtmp3c_d3clslst
 ( env0:
 ! tr3cenv,dcls:d3clslst):d3clslst
@@ -307,6 +314,44 @@ fun
 trtmp3c_d3eclist
 ( env0:
 ! tr3cenv,dcls:d3eclist):d3eclist
+//
+(* ****** ****** *)
+//
+fun
+trtmp3c_d3valdcl
+( env0:
+! tr3cenv,dval:d3valdcl):d3valdcl
+//
+fun
+trtmp3c_d3vardcl
+( env0:
+! tr3cenv,dvar:d3vardcl):d3vardcl
+//
+(* ****** ****** *)
+//
+fun
+trtmp3c_d3fundcl
+( env0:
+! tr3cenv,dfun:d3fundcl):d3fundcl
+//
+(* ****** ****** *)
+//
+fun
+trtmp3c_d3valdclist
+( env0:
+! tr3cenv,d3vs:d3valdclist):d3valdclist
+//
+fun
+trtmp3c_d3vardclist
+( env0:
+! tr3cenv,d3vs:d3vardclist):d3vardclist
+//
+(* ****** ****** *)
+//
+fun
+trtmp3c_d3fundclist
+( env0:
+! tr3cenv,d3fs:d3fundclist):d3fundclist
 //
 (* ****** ****** *)
 //

@@ -104,6 +104,9 @@ D3Cabsimpl _ => (d3cl)
 |
 D3Cinclude _ => f0_include(env0, d3cl)
 //
+|
+D3Cvaldclst _ => f0_valdclst(env0, d3cl)
+//
 | _(*otherwise*) =>
 let
   val loc0 = d3cl.lctn()
@@ -114,6 +117,7 @@ end (*let*) // end of [_(*otherwise*)] // temp
 endlet where
 {
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -179,7 +183,69 @@ end(*let*)//end-of-[f0_include(env0,d3cl)]
 //
 (* ****** ****** *)
 //
+fun
+f0_valdclst
+( env0:
+! tr3cenv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Cvaldclst
+(tknd, d3vs) = d3cl.node()
+//
+(*
+val () =
+prerrln
+("f0_valdclst: loc0 = ", loc0)
+val () =
+prerrln
+("f0_valdclst: d3cl = ", d3cl)
+*)
+//
+val
+d3vs =
+trtmp3c_d3valdclist(env0, d3vs)
+//
+in//let
+  d3ecl(loc0, D3Cvaldclst(tknd, d3vs))
+end(*let*)//end-of-[f0_valdclst(env0,d3cl)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 } (*where*)//end-of-[trtmp3c_d3ecl(env0,d3cl)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trtmp3c_d3valdcl
+  (env0, dval) = let
+//
+val loc0 =
+d3valdcl_get_lctn(dval)
+val dpat =
+d3valdcl_get_dpat(dval)
+val tdxp =
+d3valdcl_get_tdxp(dval)
+val wsxp =
+d3valdcl_get_wsxp(dval)
+//
+val tdxp =
+trtmp3c_teqd3exp(env0, tdxp)
+//
+in//let
+d3valdcl_make_args(loc0,dpat,tdxp,wsxp)
+end where
+{
+(*
+  val () =
+  prerrln("trtmp3c_d3valdcl: dval = ", dval)
+*)
+}(*let*)//end-of[trtmp3c_d3valdcl(env0,dval)]
 //
 (* ****** ****** *)
 //
@@ -188,6 +254,28 @@ trtmp3c_d3eclist
 ( env0, dcls ) =
 (
   list_trtmp3c_fnp(env0, dcls, trtmp3c_d3ecl))
+//
+(* ****** ****** *)
+//
+#implfun
+trtmp3c_d3valdclist
+( env0, d3vs ) =
+(
+  list_trtmp3c_fnp(env0, d3vs, trtmp3c_d3valdcl))
+//
+#implfun
+trtmp3c_d3vardclist
+( env0, d3vs ) =
+(
+  list_trtmp3c_fnp(env0, d3vs, trtmp3c_d3vardcl))
+//
+(* ****** ****** *)
+//
+#implfun
+trtmp3c_d3fundclist
+( env0, d3fs ) =
+(
+  list_trtmp3c_fnp(env0, d3fs, trtmp3c_d3fundcl))
 //
 (* ****** ****** *)
 //
