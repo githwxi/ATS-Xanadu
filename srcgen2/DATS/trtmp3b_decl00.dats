@@ -272,15 +272,16 @@ D3Cvaldclst
 (*
 val () =
 prerrln
-("f0_valdclst: loc0 = ", loc0)
+("f0_valdclst(3b): loc0 = ", loc0)
 val () =
 prerrln
-("f0_valdclst: d3cl = ", d3cl)
+("f0_valdclst(3b): d3cl = ", d3cl)
 *)
 //
 val
 d3vs =
-trtmp3b_d3valdclist(env0, d3vs)
+(
+  trtmp3b_d3valdclist(env0, d3vs))
 //
 in//let
   d3ecl(loc0, D3Cvaldclst(tknd, d3vs))
@@ -304,15 +305,16 @@ D3Cvardclst
 (*
 val () =
 prerrln
-("f0_vardclst: loc0 = ", loc0)
+("f0_vardclst(3b): loc0 = ", loc0)
 val () =
 prerrln
-("f0_vardclst: d3cl = ", d3cl)
+("f0_vardclst(3b): d3cl = ", d3cl)
 *)
 //
 val
 d3vs =
-trtmp3b_d3vardclist(env0, d3vs)
+(
+  trtmp3b_d3vardclist(env0, d3vs))
 //
 in//let
   d3ecl(loc0, D3Cvardclst(tknd, d3vs))
@@ -338,10 +340,10 @@ D3Cfundclst
 (*
 val () =
 prerrln
-("f0_fundclst: loc0 = ", loc0)
+("f0_fundclst(3b): loc0 = ", loc0)
 val () =
 prerrln
-("f0_fundclst: d3cl = ", d3cl)
+("f0_fundclst(3b): d3cl = ", d3cl)
 *)
 //
 val
@@ -352,7 +354,8 @@ case+ tqas of
 list_cons _ => d3fs
 |
 list_nil((*fun*)) => 
-trtmp3b_d3fundclist(env0, d3fs))
+(
+  trtmp3b_d3fundclist(env0, d3fs)))
 //
 in//let
 //
