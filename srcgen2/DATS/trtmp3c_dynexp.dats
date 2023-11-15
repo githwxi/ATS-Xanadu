@@ -104,12 +104,16 @@ d3e0.node() of
 //
 |D3Etop _ => d3e0
 //
+|D3Esapp _ => f0_sapp(env0, d3e0)
+|D3Esapq _ => f0_sapq(env0, d3e0)
+//
 |D3Edap0 _ => f0_dap0(env0, d3e0)
 |D3Edapp _ => f0_dapp(env0, d3e0)
 //
 |D3Elet0 _ => f0_let0(env0, d3e0)
 //
 |D3Eift0 _ => f0_ift0(env0, d3e0)
+|D3Ecas0 _ => f0_cas0(env0, d3e0)
 //
 |D3Eseqn _ => f0_seqn(env0, d3e0)
 //
@@ -124,6 +128,58 @@ end where // end-of-[trtmp3c_d3exp(...)]
 {
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_sapp
+( env0:
+! tr3cenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+val-
+D3Esapp
+( d3f0
+, s2es ) = d3e0.node()
+//
+val
+d3f0 = trtmp3c_d3exp(env0, d3f0)
+//
+in//let
+(
+  d3exp_make_styp_node
+  (loc0, t2p0, D3Esapp(d3f0, s2es)) )
+end(*let*)//end-of-[ f0_sapp(env0,d3e0) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_sapq
+( env0:
+! tr3cenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+val-
+D3Esapq
+( d3f0
+, t2ps ) = d3e0.node()
+//
+val
+d3f0 = trtmp3c_d3exp(env0, d3f0)
+//
+in//let
+(
+  d3exp_make_styp_node
+  (loc0, t2p0, D3Esapq(d3f0, t2ps)) )
+end(*let*)//end-of-[ f0_sapq(env0,d3e0) ]
+//
 (* ****** ****** *)
 //
 fun
@@ -239,6 +295,34 @@ in//let
 d3exp_make_styp_node
 (loc0, t2p0, D3Eift0(d3e1, dthn, dels))
 end (*let*) // end of [f0_ift0(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_cas0
+( env0:
+! tr3cenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+val-
+D3Ecas0
+( tknd
+, d3e1
+, dcls ) = d3e0.node((*0*))
+//
+val d3e1 =
+  trtmp3c_d3exp(env0, d3e1)
+val dcls =
+  trtmp3c_d3clslst(env0, dcls)
+//
+in//let
+d3exp_make_styp_node
+(loc0, t2p0, D3Ecas0(tknd, d3e1, dcls))
+end (*let*) // end of [f0_cas0(env0,d3e0)]
 //
 (* ****** ****** *)
 //
