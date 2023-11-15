@@ -128,6 +128,8 @@ d3e0.node() of
 |D3Edl0az _ => f0_dl0az(env0, d3e0)
 |D3Edl1az _ => f0_dl1az(env0, d3e0)
 //
+|D3Ewhere _ => f0_where(env0, d3e0)
+//
 |
 _(*otherwise*) => (d3exp_none2(d3e0))
 //
@@ -551,6 +553,41 @@ in//let
 (
   d3exp(loc0, t2p0, D3Edl1az(d3e1)) )
 end (*let*) // end of [f0_dl1az(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_where
+( env0:
+! tr3cenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+val-
+D3Ewhere
+( d3e1
+, dcls ) = d3e0.node((*0*))
+//
+val // enter
+(  ) = tr3cenv_pshlet0(env0)
+//
+val
+dcls =
+trtmp3c_d3eclist(env0, dcls)
+//
+val
+d3e1 = trtmp3c_d3exp(env0, d3e1)
+//
+val (  ) = tr3cenv_poplet0(env0)
+//
+in//let
+(
+  d3exp_make_styp_node
+  (loc0, t2p0, D3Ewhere(d3e1, dcls)))
+end (*let*) // end of [f0_where(env0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
