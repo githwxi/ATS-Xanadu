@@ -110,6 +110,9 @@ D3Cvaldclst _ => f0_valdclst(env0, d3cl)
 |
 D3Cfundclst _ => f0_fundclst(env0, d3cl)
 //
+|
+D3Cimplmnt0 _ => f0_implmnt0(env0, d3cl)
+//
 | _(*otherwise*) =>
 let
   val loc0 = d3cl.lctn()
@@ -294,6 +297,53 @@ d3ecl_make_node
 , D3Cfundclst(tknd, tqas, d3cs, d3fs) )
 //
 end(*let*)//end-of-[f0_fundclst(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_implmnt0
+( env0:
+! tr3cenv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Cimplmnt0
+( tknd
+, stmp
+, sqas
+, tqas
+, dimp
+, tias, f3as
+, sres, dexp) = d3cl.node()
+//
+in//let
+//
+if
+dimpl_tmpq(dimp)
+then // if-then
+(
+  d3cl ) where // tmp
+{
+val () =
+tr3cenv_insert_dcl(env0, d3cl)
+}
+else // if-else
+let
+val
+dexp =
+trtmp3c_d3exp(env0, dexp) in
+d3ecl
+(
+loc0,
+D3Cimplmnt0
+( tknd,stmp
+, sqas,tqas,dimp,tias,f3as,sres,dexp))
+end(*let*)//end-of-[if-then-else]
+//
+end(*let*)//end-of-[f0_implmnt0(env0,d3cl)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

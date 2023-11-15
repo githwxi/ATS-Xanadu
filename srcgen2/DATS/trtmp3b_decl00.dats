@@ -154,6 +154,7 @@ endlet where
 {
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_local0
@@ -412,6 +413,7 @@ end(*let*)//end-of-[if-then-else]
 //
 end(*let*)//end-of-[f0_implmnt0(env0,d3cl)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 } (*where*)//end-of-[trtmp3b_d3ecl(env0,d3cl)]
