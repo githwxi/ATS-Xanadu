@@ -121,6 +121,9 @@ d3e0.node() of
 |D3Etup1 _ => f0_tup1(env0, d3e0)
 |D3Ercd2 _ => f0_rcd2(env0, d3e0)
 //
+|D3Eaddr _ => f0_addr(env0, d3e0)
+|D3Eflat _ => f0_flat(env0, d3e0)
+//
 |
 _(*otherwise*) => (d3exp_none2(d3e0))
 //
@@ -426,6 +429,54 @@ in//let
 d3exp_make_styp_node
 (loc0, t2p0, D3Ercd2(knd0, npf1, ldes))
 end (*let*) // end-of-[f0_rcd2(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_addr
+( env0:
+! tr3cenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+val-
+D3Eaddr(d3e1) = d3e0.node()
+//
+val
+d3e1 = trtmp3c_d3exp(env0, d3e1)
+//
+in//let
+(
+  d3exp(loc0, t2p0, D3Eaddr(d3e1)) )
+end (*let*) // end of [f0_addr(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_flat
+( env0:
+! tr3cenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+val-
+D3Eflat(d3e1) = d3e0.node()
+//
+(*
+val
+d3e1 = trtmp3c_d3exp(env0, d3e1)
+*)
+//
+in//let
+(
+  d3exp(loc0, t2p0, D3Eflat(d3e1)) )
+end (*let*) // end of [f0_flat(env0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
