@@ -172,6 +172,16 @@ tmqstk_nilq( !tmqstk ): bool
 (* ****** ****** *)
 //
 fun
+tmqstk_poplet0
+  ( stq: &tmqstk >> _ ): sint
+//
+fun
+tmqstk_pshlet0
+  ( stq: &tmqstk >> _ ): void
+//
+(* ****** ****** *)
+//
+fun
 tmqstk_pshloc1
   ( stq: &tmqstk >> _ ): void
 fun
@@ -185,12 +195,8 @@ tmqstk_locjoin
 (* ****** ****** *)
 //
 fun
-tmqstk_poplet0
-  ( stq: &tmqstk >> _ ): sint
-//
-fun
-tmqstk_pshlet0
-  ( stq: &tmqstk >> _ ): void
+tmqstk_insert_dcl
+  (&tmqstk >> _, d3ecl):(void)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -366,6 +372,13 @@ fun
 trtmp3c_d3eclistopt
 ( env0:
 ! tr3cenv,dopt:d3eclistopt):d3eclistopt
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+tr3cenv_insert_dcl
+(env0: !tr3cenv, d3cl: d3ecl): (void)
 //
 (* ****** ****** *)
 
