@@ -124,6 +124,10 @@ d3e0.node() of
 |D3Eaddr _ => f0_addr(env0, d3e0)
 |D3Eflat _ => f0_flat(env0, d3e0)
 //
+|D3Edp2tr _ => f0_dp2tr(env0, d3e0)
+|D3Edl0az _ => f0_dl0az(env0, d3e0)
+|D3Edl1az _ => f0_dl1az(env0, d3e0)
+//
 |
 _(*otherwise*) => (d3exp_none2(d3e0))
 //
@@ -477,6 +481,76 @@ in//let
 (
   d3exp(loc0, t2p0, D3Eflat(d3e1)) )
 end (*let*) // end of [f0_flat(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dp2tr
+( env0:
+! tr3cenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+val-
+D3Edp2tr
+( d3e1 ) = d3e0.node((*0*))
+//
+val
+d3e1 = trtmp3c_d3exp(env0, d3e1)
+//
+in//let
+(
+  d3exp(loc0, t2p0, D3Edp2tr(d3e1)) )
+end (*let*) // end of [f0_dp2tr(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dl0az
+( env0:
+! tr3cenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+val-
+D3Edl0az
+( d3e1 ) = d3e0.node((*0*))
+//
+val
+d3e1 = trtmp3c_d3exp(env0, d3e1)
+//
+in//let
+(
+  d3exp(loc0, t2p0, D3Edl0az(d3e1)) )
+end (*let*) // end of [f0_dl0az(env0,...)]
+//
+fun
+f0_dl1az
+( env0:
+! tr3cenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+val-
+D3Edl1az
+( d3e1 ) = d3e0.node((*0*))
+//
+val
+d3e1 = trtmp3c_d3exp(env0, d3e1)
+//
+in//let
+(
+  d3exp(loc0, t2p0, D3Edl1az(d3e1)) )
+end (*let*) // end of [f0_dl1az(env0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
