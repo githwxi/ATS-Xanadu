@@ -398,8 +398,21 @@ trtmp3c_d3eclistopt
 (* ****** ****** *)
 //
 fun
+tr3cenv_getstmp
+(env0: !tr3cenv): stamp
+fun
 tr3cenv_insert_dcl
 (env0: !tr3cenv, d3cl: d3ecl): (void)
+fun
+tr3cenv_search_cst
+(env0: !tr3cenv, dcst: d2cst): d3eclist_vt
+//
+(* ****** ****** *)
+//
+fun
+tr3cenv_tapq_resolve
+( env0:
+! tr3cenv, dcst: d2cst, t2js: t2jaglst): timpl
 //
 (* ****** ****** *)
 
