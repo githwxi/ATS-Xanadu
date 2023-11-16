@@ -104,6 +104,8 @@ d3e0.node() of
 //
 |D3Etop _ => d3e0
 //
+|D3Etimp _ => f0_timp(env0, d3e0)
+//
 |D3Esapp _ => f0_sapp(env0, d3e0)
 |D3Esapq _ => f0_sapq(env0, d3e0)
 //
@@ -140,6 +142,32 @@ end where // end-of-[trtmp3c_d3exp(...)]
 {
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_timp
+( env0:
+! tr3cenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+val-
+D3Etimp
+( d3f0
+, timp ) = d3e0.node()
+//
+val timp =
+tr3cenv_timp_resolve(env0, timp)
+//
+in
+(
+  d3exp_make_styp_node
+  (loc0, t2p0, D3Etimp(d3f0, timp)) )
+end(*let*)//end-of-[ f0_timp(env0,d3e0) ]
+//
 (* ****** ****** *)
 //
 fun
