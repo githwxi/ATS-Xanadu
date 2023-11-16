@@ -84,6 +84,8 @@ tmqstk =
 //
 | tmqstk_svts of
   ( s2vts, tmqstk )
+| tmqstk_timp of
+  ( timpl, tmqstk )
 //
 | tmqstk_decl of
   (stamp, d3ecl, tmqstk)
@@ -148,6 +150,11 @@ tmqstk_svts
 (svts, stk1) =>
 (
   tmqstk_getstmp(stk1))
+| !
+tmqstk_timp
+(timp, stk1) =>
+(
+  tmqstk_getstmp(stk1))
 //
 | !
 tmqstk_decl
@@ -186,6 +193,12 @@ case+ stk0 of
 | !
 tmqstk_svts
 (svts, stk1) => (svts)
+//
+| !
+tmqstk_timp
+(timp, stk1) =>
+(
+  tmqstk_getsvts(stk1))
 //
 | !
 tmqstk_decl
