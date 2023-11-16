@@ -102,6 +102,8 @@ d3e0.node() of
 //
 |D3Etop _ => d3e0
 //
+|D3Etimp _ => d3e0
+//
 |D3Esapp _ => f0_sapp(env0, d3e0)
 |D3Esapq _ => f0_sapq(env0, d3e0)
 //
