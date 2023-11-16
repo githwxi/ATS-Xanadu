@@ -104,9 +104,9 @@ topmap
 //
 fun
 tmpstk_free_nil
-  (stk: ~tmpstk): void =
+(stk0: ~tmpstk): void =
 (
-case- stk of
+case- stk0 of
 | ~tmpstk_nil() => ((*void*)))
 //
 (* ****** ****** *)
@@ -119,44 +119,44 @@ in//local
 //
 #implfun
 tmpstk_nilq
-(   stk   ) =
+(   stk0   ) =
 (
-case+ stk of
+case+ stk0 of
 | !
 tmpstk_nil() => true
 | _(*non-nil*) => false
-) (* end of [tmpstk_nilq(stk)] *)
+) (* end of [tmpstk_nilq(stk0)] *)
 //
 (* ****** ****** *)
 //
 #implfun
 tmpstk_pshlet0
-  (  stk  ) =
+  (  stk0  ) =
 (
-  stk := tmpstk_let0(stk))
-//(*end of [tmpstk_pshlet0(stk)]*)
+  stk0 := tmpstk_let0(stk0))
+//(*end of [tmpstk_pshlet0(stk0)]*)
 //
 (* ****** ****** *)
 //
 #implfun
 tmpstk_pshloc1
-  (  stk  ) =
+  (  stk0  ) =
 (
-  stk := tmpstk_loc1(stk))
-//(*end of [tmpstk_pshloc1(stk)]*)
+  stk0 := tmpstk_loc1(stk0))
+//(*end of [tmpstk_pshloc1(stk0)]*)
 //
 #implfun
 tmpstk_pshloc2
-  (  stk  ) =
+  (  stk0  ) =
 (
-  stk := tmpstk_loc2(stk))
-//(*end of [tmpstk_pshloc2(stk)]*)
+  stk0 := tmpstk_loc2(stk0))
+//(*end of [tmpstk_pshloc2(stk0)]*)
 //
 (* ****** ****** *)
 //
 #implfun
 tmpstk_poptop0
-  (stk) = let
+  (stk0) = let
 //
 fnx
 loop
@@ -186,14 +186,14 @@ var
 err: sint = 0
 val
 ( ) =
-(stk := loop(stk, err)) in err end
-end (*let*)//end-[tmpstk_poptop0(stk)]
+(stk0 := loop(stk0, err)) in err end
+end (*let*)//end-[tmpstk_poptop0(stk0)]
 //
 (* ****** ****** *)
 //
 #implfun
 tmpstk_poplet0
-  (  stk  ) = let
+  (  stk0  ) = let
 //
 fnx
 loop
@@ -225,14 +225,14 @@ var
 err: sint = 0
 val
 ( ) =
-(stk := loop(stk, err)) in err end
+(stk0 := loop(stk0, err)) in err end
 end (*let*) // end of [tmpstk_poplet0(stk)]
 //
 (* ****** ****** *)
 //
 #implfun
 tmpstk_locjoin
-  (  stk  ) = let
+  (  stk0  ) = let
 //
 fnx
 poploc1
@@ -358,11 +358,11 @@ in//let
 let
 var err: sint = 0
 //
-val kxs = stk
+val kxs = stk0
 val kys = tmpstk_nil()
 //
 val ( ) =
-(stk := poploc2(kxs, kys, err)) in err
+(stk0 := poploc2(kxs, kys, err)) in (err)
 end (*let*)
 //
 end (*let*) // end of [tmpstk_locjoin(stk)]
@@ -371,57 +371,59 @@ end (*let*) // end of [tmpstk_locjoin(stk)]
 //
 #implfun
 tmpstk_getstmp
-  (  stk  ) =
+  (  stk0  ) =
 (
-case+ stk of
+case+ stk0 of
 //
 | !
 tmpstk_decl
-(tmp, _, _) => ( tmp )
+(stmp, _, _) => ( stmp )
 //
 | !
 tmpstk_let0
-(   stk   ) =>
+(   stk0   ) =>
 (
-  tmpstk_getstmp(stk))
+  tmpstk_getstmp(stk0))
 //
 | !
 tmpstk_loc1
-(   stk   ) =>
+(   stk0   ) =>
 (
-  tmpstk_getstmp(stk))
+  tmpstk_getstmp(stk0))
 | !
 tmpstk_loc2
-(   stk   ) =>
+(   stk0   ) =>
 (
-  tmpstk_getstmp(stk))
+  tmpstk_getstmp(stk0))
 //
 | !
 tmpstk_nil() => the_stamp_nil
 //
-) (*case+*) // end of [tmpstk_getstmp(stk)]
+) (*case+*) // end of [tmpstk_getstmp(stk0)]
 //
 (* ****** ****** *)
 //
 #implfun
 tmpstk_insert_dcl
-  (stk, dcl) =
+  (stk0, d3cl) =
 let
-val tag =
+val tag0 =
 the_tmpstk_stamp_new() in//let
-  stk := tmpstk_decl(tag, dcl, stk)
+  stk0 := tmpstk_decl(tag0, d3cl, stk0)
 end (*let*)//end-of-[tmpstk_insert_dcl(...)]
 //
 (* ****** ****** *)
 //
 #implfun
 tmpstk_search_cst
-  (stk, d2c) =
+  (stk0, dcst) =
 (
 list_vt_reverse0(res) where
 {
-val res = list_vt_nil()
-val res = loop(stk, d2c, res) }
+val
+res = list_vt_nil(*void*)
+val
+res = loop(stk0, dcst, res) }
 ) where
 {
 //

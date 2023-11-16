@@ -82,7 +82,8 @@ tmqstk =
 //
 | tmqstk_nil of ()
 //
-| tmqstk_tsub of (s2vts)
+| tmqstk_svts of
+  ( s2vts, tmqstk )
 //
 | tmqstk_decl of
   (stamp, d3ecl, tmqstk)
@@ -95,6 +96,27 @@ tmqstk =
 | tmqstk_loc2 of (tmqstk)
 //
 (* ****** ****** *)
+//
+datavwtp
+tr3cenv =
+TR3CENV of
+(
+topmap
+(d3eclist), tmqstk(*void*))
+//
+(* ****** ****** *)
+#absimpl tmqstk_vtbx = tmqstk
+(* ****** ****** *)
+#absimpl tr3cenv_vtbx = tr3cenv
+(* ****** ****** *)
+//
+fun
+tmqstk_free_nil
+(stk0: ~tmqstk): void =
+(
+case- stk0 of
+| ~tmqstk_nil() => ((*void*)))
+//
 (* ****** ****** *)
 (*
 in//local
@@ -104,13 +126,94 @@ in//local
 //
 #implfun
 tmqstk_nilq
-(   stq   ) =
+(   stk0   ) =
 (
-case+ stq of
+case+ stk0 of
 | !
 tmqstk_nil() => true
 | _(*non-nil*) => false
-) (* end of [tmqstk_nilq(stq)] *)
+) (* end of [tmqstk_nilq(stk0)] *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+tmqstk_getstmp
+  (  stk0  ) =
+(
+case+ stk0 of
+//
+| !
+tmqstk_svts
+(svts, stk1) =>
+(
+  tmqstk_getstmp(stk1))
+//
+| !
+tmqstk_decl
+(stmp, _, _) => ( stmp )
+//
+| !
+tmqstk_let0
+(   stk1   ) =>
+(
+  tmqstk_getstmp(stk1))
+//
+| !
+tmqstk_loc1
+(   stk1   ) =>
+(
+  tmqstk_getstmp(stk1))
+| !
+tmqstk_loc2
+(   stk1   ) =>
+(
+  tmqstk_getstmp(stk1))
+//
+| !
+tmqstk_nil() => the_stamp_nil
+//
+) (*case+*) // end of [tmqstk_getstmp(stk0)]
+//
+(* ****** ****** *)
+//
+#implfun
+tmqstk_getsvts
+  (  stk0  ) =
+(
+case+ stk0 of
+//
+| !
+tmqstk_svts
+(svts, stk1) => (svts)
+//
+| !
+tmqstk_decl
+(_, _, stk1) =>
+(
+  tmqstk_getsvts(stk1))
+//
+| !
+tmqstk_let0
+(   stk1   ) =>
+(
+  tmqstk_getsvts(stk1))
+//
+| !
+tmqstk_loc1
+(   stk1   ) =>
+(
+  tmqstk_getsvts(stk1))
+| !
+tmqstk_loc2
+(   stk1   ) =>
+(
+  tmqstk_getsvts(stk1))
+//
+| !
+tmqstk_nil() => list_nil(*void*)
+//
+) (*case+*) // end of [tmqstk_getsvts(stk0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
