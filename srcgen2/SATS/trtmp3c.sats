@@ -69,6 +69,8 @@ TMP = "./xstamp0.sats"
 (* ****** ****** *)
 #staload
 S2E = "./staexp2.sats"
+#staload
+T2P = "./statyp2.sats"
 (* ****** ****** *)
 #staload
 D2E = "./dynexp2.sats"
@@ -80,6 +82,10 @@ D3E = "./dynexp3.sats"
 //
 #typedef s2typ = $S2E.s2typ
 #typedef l2t2p = $S2E.l2t2p
+//
+(* ****** ****** *)
+//
+#typedef s2vts = $T2P.s2vts
 //
 (* ****** ****** *)
 #typedef d2cst = $D2E.d2cst
@@ -173,30 +179,34 @@ tmqstk_nilq( !tmqstk ): bool
 //
 fun
 tmqstk_poplet0
-  ( stq: &tmqstk >> _ ): sint
+  ( stk: &tmqstk >> _ ): sint
 //
 fun
 tmqstk_pshlet0
-  ( stq: &tmqstk >> _ ): void
+  ( stk: &tmqstk >> _ ): void
 //
 (* ****** ****** *)
 //
 fun
 tmqstk_pshloc1
-  ( stq: &tmqstk >> _ ): void
+  ( stk: &tmqstk >> _ ): void
 fun
 tmqstk_pshloc2
-  ( stq: &tmqstk >> _ ): void
+  ( stk: &tmqstk >> _ ): void
 //
 fun
 tmqstk_locjoin
-  ( stq: &tmqstk >> _ ): sint
+  ( stk: &tmqstk >> _ ): sint
 //
 (* ****** ****** *)
 //
 fun
 tmqstk_getstmp
   ( stk: !tmqstk >> _ ): stamp
+//
+fun
+tmqstk_getsvts
+  ( stk: !tmqstk >> _ ): s2vts
 //
 (* ****** ****** *)
 //
