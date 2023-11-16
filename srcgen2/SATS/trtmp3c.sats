@@ -410,6 +410,9 @@ tr3cenv_search_cst
 (* ****** ****** *)
 //
 fun
+tr3cenv_timp_resolve
+( env0: !tr3cenv, timp: timpl): timpl
+fun
 tr3cenv_tapq_resolve
 ( env0:
 ! tr3cenv, dcst: d2cst, t2js: t2jaglst): timpl
