@@ -195,10 +195,21 @@ tmqstk_locjoin
 (* ****** ****** *)
 //
 fun
+tmqstk_getstmp
+  ( stk: !tmqstk >> _ ): stamp
+//
+(* ****** ****** *)
+//
+fun
 tmqstk_insert_dcl
   (&tmqstk >> _, d3ecl):(void)
 //
 (* ****** ****** *)
+//
+fun
+tmqstk_search_cst
+  (!tmqstk,d2cst): d3eclist_vt
+//
 (* ****** ****** *)
 //
 fun
