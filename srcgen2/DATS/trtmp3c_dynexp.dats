@@ -250,9 +250,13 @@ d3f0.node() of
 |
 D3Ecst(d2c0) =>
 let
+//
 val timp =
 tr3cenv_tapq_resolve
 ( env0 , d2c0 , t2js )//val(timp)
+val timp =
+tr3cenv_timp_resolve(env0 , timp)
+//
 in//let
 (
 d3exp_make_styp_node
