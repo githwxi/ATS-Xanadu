@@ -1023,5 +1023,12 @@ d3parsed_make_args
 #symload d3parsed with d3parsed_make_args
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+static_search_cst(d3ecl, d2cst): d3eclist
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_dynexp3.sats] *)

@@ -64,8 +64,6 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload name with d2cst_get_name
 (* ****** ****** *)
-#staload _ = "./xsymmap_topmap.dats"
-(* ****** ****** *)
 #symload node with s2typ_get_node
 (* ****** ****** *)
 #symload node with dimpl_get_node
@@ -75,84 +73,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload t2ps with t2jag_get_t2ps
 (* ****** ****** *)
-
-#implfun
-static_search_cst
-  (d3cl, d2c0) =
-(
-case+
-d3cl.node() of
-| D3Cstaload _ =>
-  f0_staload(d3cl, d2c0)
-| _(* otherwise *) => list_nil()
-) where
-{
-//
-fun
-f0_staload
-( d3cl: d3ecl
-, d2c0: d2cst): d3eclist =
-let
-//
-val-
-D3Cstaload
-( knd0
-, tknd, gsrc
-, fopt, dopt) = d3cl.node()
-//
-in//let
-//
-case+ dopt of
-|
-S3TALOADnone(s2ta) =>
-(
-  list_nil(*void*) )
-|
-S3TALOADdpar(shrd, dpar) =>
-let
-//
-val
-tenv =
-d3parsed_get_t3penv(dpar)
-//
-(*
-val () = prerrln
-("static_search_cst: shrd = ", shrd)
-val () = prerrln
-("static_search_cst: tenv = ", tenv)
-*)
-//
-in//let
-//
-case+ tenv of
-|
-D3TOPENVnone() =>
-list_nil((*void*))
-|
-D3TOPENVsome(tmap) =>
-let
-val opt0 =
-topmap_search_opt
-(tmap, d2c0.name()) in//let
-//
-case+ opt0 of
-| ~optn_vt_nil() => list_nil()
-| ~optn_vt_cons(dcls) => ( dcls )
-end//let//end-of-[D3TOPENVsome(...)]
-//
-end(*end-of-[S3TALOADdpar(sknd,dpar)]*)
-//
-end//let//end-of-[f0_staload(d3cl,d2c0)]
-//
-(*
-val () =
-prerrln("static_search_cst: d3cl = ", d3cl)
-val () =
-prerrln("static_search_cst: d2c0 = ", d2c0)
-*)
-//
-} (*where*)//end of [static_search_cst(...)]
-
+#staload _ = "./xsymmap_topmap.dats"
 (* ****** ****** *)
 
 local
