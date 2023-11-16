@@ -107,6 +107,8 @@ d3e0.node() of
 |D3Esapp _ => f0_sapp(env0, d3e0)
 |D3Esapq _ => f0_sapq(env0, d3e0)
 //
+|D3Etapp _ => f0_tapp(env0, d3e0)
+//
 |D3Edap0 _ => f0_dap0(env0, d3e0)
 |D3Edapp _ => f0_dapp(env0, d3e0)
 //
@@ -188,6 +190,40 @@ in//let
   d3exp_make_styp_node
   (loc0, t2p0, D3Esapq(d3f0, t2ps)) )
 end(*let*)//end-of-[ f0_sapq(env0,d3e0) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_tapp
+( env0:
+! tr3cenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+val-
+D3Etapp
+( d3f0
+, s2es ) = d3e0.node((*0*))
+//
+val
+d3f0 = trtmp3c_d3exp(env0, d3f0)
+//
+in//let
+(
+  d3exp_make_styp_node
+  (loc0, t2p0, D3Etapp(d3f0, s2es)) )
+end where // end-of-[f0_tapp(env0,d3e0)]
+{
+//
+(*
+val () = prerrln
+("trtmp3c_d3exp: f0_tapp: d3e0 = ", d3e0)
+*)
+//
+} (*where*) // end of [f0_tapp(env0,d3e0)]
 //
 (* ****** ****** *)
 //
