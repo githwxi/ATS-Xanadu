@@ -231,7 +231,7 @@ tmqstk_nil() => list_nil(*void*)
 (* ****** ****** *)
 //
 #implfun
-tmqstk_insert_dcl
+tmqstk_insert_decl
   (stk0, d3cl) =
 let
 //
@@ -260,9 +260,41 @@ the_tmqstk_stamp_new((*void*))
 //
 in//let
   stk0 := tmqstk_decl(tag0, d3cl, stk0)
-end (*let*)//end-of-[tmqstk_insert_dcl(...)]
+end (*let*)//end-of-[tmqstk_insert_decl(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+tr3cenv_make_nil
+  ((*nil*)) =
+(
+  TR3CENV(map1, tmqstk_nil)) where
+{
+  val map1 = topmap_make_nil((*nil*))
+}(*where*) // end of [tr3cenv_make_nil(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+tr3cenv_free_top
+  (  env0  ) =
+(
+case+ env0 of
+| ~
+TR3CENV
+(map1, map2) =>
+let
+//
+var
+tmqstk = map2
+//
+val nerr = tmqstk_poptop0(tmqstk)
+//
+val (  ) = tmqstk_free_nil(tmqstk) endlet
+//
+)(*case+*)//end-of-(tr3cenv_free_top(env0))
+//
 (* ****** ****** *)
 //
 (*

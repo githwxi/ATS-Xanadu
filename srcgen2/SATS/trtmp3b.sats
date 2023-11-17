@@ -199,13 +199,13 @@ tmpstk_getstmp
 (* ****** ****** *)
 //
 fun
-tmpstk_insert_dcl
+tmpstk_insert_decl
   (&tmpstk >> _, d3ecl):(void)
 //
 (* ****** ****** *)
 //
 fun
-tmpstk_search_cst
+tmpstk_search_dcst
   (!tmpstk,d2cst): d3eclist_vt
 //
 (* ****** ****** *)
@@ -398,10 +398,10 @@ fun
 tr3benv_getstmp
 (env0: !tr3benv): stamp
 fun
-tr3benv_insert_dcl
+tr3benv_insert_decl
 (env0: !tr3benv, d3cl: d3ecl): (void)
 fun
-tr3benv_search_cst
+tr3benv_search_dcst
 (env0: !tr3benv, dcst: d2cst): d3eclist_vt
 //
 fun

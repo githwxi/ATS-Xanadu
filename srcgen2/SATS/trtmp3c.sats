@@ -178,6 +178,12 @@ tmqstk_nilq( !tmqstk ): bool
 (* ****** ****** *)
 //
 fun
+tmqstk_poptop0
+  ( stk: &tmqstk >> _ ): sint
+//
+(* ****** ****** *)
+//
+fun
 tmqstk_poplet0
   ( stk: &tmqstk >> _ ): sint
 //
@@ -211,13 +217,13 @@ tmqstk_getsvts
 (* ****** ****** *)
 //
 fun
-tmqstk_insert_dcl
+tmqstk_insert_decl
   (&tmqstk >> _, d3ecl):(void)
 //
 (* ****** ****** *)
 //
 fun
-tmqstk_search_cst
+tmqstk_search_dcst
   (!tmqstk,d2cst): d3eclist_vt
 //
 (* ****** ****** *)
@@ -401,10 +407,10 @@ fun
 tr3cenv_getstmp
 (env0: !tr3cenv): stamp
 fun
-tr3cenv_insert_dcl
+tr3cenv_insert_decl
 (env0: !tr3cenv, d3cl: d3ecl): (void)
 fun
-tr3cenv_search_cst
+tr3cenv_search_dcst
 (env0: !tr3cenv, dcst: d2cst): d3eclist_vt
 //
 (* ****** ****** *)
