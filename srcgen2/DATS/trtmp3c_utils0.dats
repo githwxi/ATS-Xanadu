@@ -58,4 +58,100 @@ ATS_PACKNAME
 #staload "./../SATS/trtmp3c.sats"
 (* ****** ****** *)
 
+local
+(* ****** ****** *)
+(*
+HX-2023-11-17:
+It is implemented in
+[dynexp3_utils0.dats]:
+tmpmatch_d3cl_t2js(d3cl,t2js)
+*)
+(* ****** ****** *)
+in (*local*)
+(* ****** ****** *)
+//
+#implfun
+tr3cenv_tapq_resolve
+  (env0, d2c0, t2js) =
+let
+//
+val
+stmp =
+tr3cenv_getstmp(env0)
+//
+val
+dcls =
+tr3cenv_search_cst(env0, d2c0)
+//
+in//let
+//
+let
+val dcls = filter(dcls)
+in//let
+timpl_make_node
+(stmp, TIMPLall1(d2c0, dcls)) end//let
+//
+end where
+{
+//
+fun
+filter
+( dcls
+: d3eclist_vt): d3eclist =
+(
+//
+case+ dcls of
+| ~
+list_vt_nil() => list_nil()
+| ~
+list_vt_cons
+(dcl1, dcls) =>
+let
+//
+val
+opt1 =
+tmpmatch_d3cl_t2js
+(dcl1(*impl*),t2js(*targ*))
+//
+in//let
+case+ opt1 of
+|optn_nil
+((*void*)) => filter( dcls )
+|optn_cons
+(  tsub  ) =>
+let
+//
+val
+dcl1 = d3ecl_tmpsub(tsub,dcl1)
+//
+(*
+val (  ) =
+prerr("tr3cenv_tapq_resolve:")
+val (  ) =
+prerrln("filter: dcl1 = ", dcl1)
+*)
+//
+in//let
+(
+  list_cons(dcl1, filter(dcls)))
+end//let
+end//let//end-of-[list_cons(...)]
+//
+)(*case+*) // end of [ filter(dcls) ]
+//
+(*
+val () =
+prerrln("tr3cenv_tapq_resolve: d2c0 = ", d2c0)
+val () =
+prerrln("tr3cenv_tapq_resolve: t2js = ", t2js)
+*)
+//
+}(*where*)//end-of-[tr3cenv_tapq_resolve(env0,...)]
+//
+(* ****** ****** *)
+
+end(*local*) // end-of-[local(tr3cenv_tapq_resolve)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_trtmp3c_utils0.dats] *)
