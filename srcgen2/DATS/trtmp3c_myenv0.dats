@@ -297,6 +297,42 @@ val (  ) = tmqstk_free_nil(tmqstk) endlet
 //
 (* ****** ****** *)
 //
+#implfun
+tr3cenv_poplet0
+(     env0     ) = let
+//
+val+
+@TR3CENV
+(topmap, !tmpstk) = env0
+//
+in//let
+//
+let
+val nerr =
+tmpstk_poplet0(tmpstk) in $fold(env0)
+end(*let*)
+//
+end(*let*)//end-of-(tr3cenv_poplet0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3cenv_pshlet0
+(     env0     ) = let
+//
+val+
+@TR3CENV
+(topmap, !tmpstk) = env0
+//
+in//let
+//
+(
+  tmpstk_pshlet0(tmpstk); $fold(env0))
+//
+end(*let*)//end-of-(tr3cenv_pshlet0(env0))
+//
+(* ****** ****** *)
+//
 (*
 endloc (*local*) // end of [local(tr3cenv...)]
 *)
