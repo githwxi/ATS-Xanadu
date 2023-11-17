@@ -404,6 +404,7 @@ tmpstk_nil() => the_stamp_nil
 ) (*case+*) // end of [tmpstk_getstmp(stk0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 tmpstk_insert_decl

@@ -517,6 +517,7 @@ tmqstk_nil() => list_nil(*void*)
 ) (*case+*) // end of [tmqstk_getsvts(stk0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 tmqstk_insert_decl
@@ -549,6 +550,132 @@ the_tmqstk_stamp_new((*void*))
 in//let
   stk0 := tmqstk_decl(tag0, d3cl, stk0)
 end (*let*)//end-of-[tmqstk_insert_decl(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+tmqstk_search_dcst
+  (stk0, dcst) =
+(
+list_vt_reverse0(res) where
+{
+val
+res = list_vt_nil(*void*)
+val
+res = loop(stk0, dcst, res) }
+) where
+{
+//
+fun
+test
+( dcl: d3ecl
+, d2c: d2cst): bool =
+(
+case+
+dcl.node() of
+//
+|
+D3Cfundclst _ =>
+(
+  d3ecl_impld2cq(dcl, d2c) )
+//
+|
+D3Cimpltmp _ =>
+(
+  d3ecl_impld2cq(dcl, d2c) )
+//
+|
+D3Ctmplocal
+(dcl1, dcls) => tests(dcls, d2c)
+//
+|
+_(* otherwise *) => (   false   )
+) where
+{
+//
+(*
+val () =
+prerr("tmqstk_search_dcst: ")//val()
+val () =
+prerrln("test: dcl = ", dcl)//val()
+val () =
+prerrln("test: d2c = ", d2c)//val()
+*)
+//
+}(*where*) // end of [test(dcl, d2c)]
+//
+and
+tests
+( dcls
+: d3eclist
+, d2c: d2cst): bool =
+(
+case+ dcls of
+|
+list_nil() => false
+|
+list_cons(dcl1, dcls) =>
+(
+  if test(dcl1, d2c)
+  then true else tests(dcls, d2c))
+)(*case+*) // end of [tests(dcls, d2c)]
+//
+fun
+loop
+( kxs:
+! tmqstk
+, d2c: d2cst
+, res
+: d3eclist_vt): d3eclist_vt =
+(
+case+ kxs of
+//
+| !
+tmqstk_nil() => ( res )
+//
+| !
+tmqstk_decl
+(tmp, dcl, kxs) =>
+loop(kxs, d2c, res) where
+{
+//
+val res =
+(
+list_rappendx0_vt(dcs, res)
+) where
+{ val dcs =
+  static_search_dcst(dcl, d2c) }
+//
+val res =
+( if
+  test(dcl, d2c)
+  then
+  list_vt_cons(dcl, res) else res)
+}
+//
+| !
+tmqstk_svts
+(_(*svts*), kxs) => loop(kxs,d2c,res)
+| !
+tmqstk_timp
+(_(*timp*), kxs) => loop(kxs,d2c,res)
+//
+| !
+tmqstk_let0(kxs) => loop(kxs,d2c,res)
+//
+| !
+tmqstk_loc1(kxs) => loop(kxs,d2c,res)
+| !
+tmqstk_loc2(kxs) => loop(kxs,d2c,res)
+//
+)(*case+*) // end of [loop(kxs,d2c,res)]
+//
+(*
+val () =
+prerrln("tmqstk_search_dcst: d2c = ", d2c)
+*)
+//
+}(*where*)//end-of-[tmqstk_search_dcst(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
