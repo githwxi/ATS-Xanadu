@@ -407,6 +407,9 @@ fun
 tr3cenv_getstmp
 (env0: !tr3cenv): stamp
 fun
+tr3cenv_getsvts
+(env0: !tr3cenv): s2vts
+fun
 tr3cenv_insert_decl
 (env0: !tr3cenv, d3cl: d3ecl): (void)
 fun
