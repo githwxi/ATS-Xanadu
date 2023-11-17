@@ -458,12 +458,17 @@ _(* otherwise *) => (   false   )
 {
 //
 (*
+//
 val () =
-prerr("tmpstk_search_dcst: ")//val()
+prerr("tmpstk_search_dcst:")//val()
 val () =
 prerrln("test: dcl = ", dcl)//val()
+//
+val () =
+prerr("tmpstk_search_dcst:")//val()
 val () =
 prerrln("test: d2c = ", d2c)//val()
+//
 *)
 //
 }(*where*) // end of [test(dcl, d2c)]
