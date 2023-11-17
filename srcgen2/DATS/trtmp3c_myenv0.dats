@@ -801,6 +801,46 @@ in//let
 end(*let*)//end-of-(tr3cenv_locjoin(env0))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+tr3cenv_getstmp
+(     env0     ) = let
+//
+val+
+@TR3CENV
+(topmap, !tmqstk) = env0
+//
+in//let
+//
+let
+val stmp =
+tmqstk_getstmp
+  (  tmqstk  ) in $fold(env0); stmp
+end//let
+//
+end(*let*)//end-of-(tr3cenv_getstmp(env0))
+//
+#implfun
+tr3cenv_getsvts
+(     env0     ) = let
+//
+val+
+@TR3CENV
+(topmap, !tmqstk) = env0
+//
+in//let
+//
+let
+val svts =
+tmqstk_getsvts
+  (  tmqstk  ) in $fold(env0); svts
+end//let
+//
+end(*let*)//end-of-(tr3cenv_getsvts(env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 endloc (*local*) // end of [local(tr3cenv...)]
