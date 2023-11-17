@@ -404,18 +404,18 @@ tmpstk_nil() => the_stamp_nil
 (* ****** ****** *)
 //
 #implfun
-tmpstk_insert_dcl
+tmpstk_insert_decl
   (stk0, d3cl) =
 let
 val tag0 =
 the_tmpstk_stamp_new() in//let
   stk0 := tmpstk_decl(tag0, d3cl, stk0)
-end (*let*)//end-of-[tmpstk_insert_dcl(...)]
+end (*let*)//end-of-[tmpstk_insert_decl(...)]
 //
 (* ****** ****** *)
 //
 #implfun
-tmpstk_search_cst
+tmpstk_search_dcst
   (stk0, dcst) =
 (
 list_vt_reverse0(res) where
@@ -456,7 +456,7 @@ _(* otherwise *) => (   false   )
 //
 (*
 val () =
-prerr("tmpstk_search_cst: ")//val()
+prerr("tmpstk_search_dcst: ")//val()
 val () =
 prerrln("test: dcl = ", dcl)//val()
 val () =
@@ -525,10 +525,10 @@ tmpstk_loc2(kxs) => loop(kxs,d2c,res)
 //
 (*
 val () =
-prerrln("tmpstk_search_cst: d2c = ", d2c)
+prerrln("tmpstk_search_dcst: d2c = ", d2c)
 *)
 //
-} (*where*)//end-of-[tmpstk_search_cst(...)]
+}(*where*)//end-of-[tmpstk_search_dcst(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -671,7 +671,7 @@ end(*let*)//end-of-(tr3benv_getstmp(env0))
 (* ****** ****** *)
 //
 #implfun
-tr3benv_insert_dcl
+tr3benv_insert_decl
 (   env0, d3cl   ) = let
 //
 val+
@@ -681,15 +681,15 @@ val+
 in//let
 //
 (
-  tmpstk_insert_dcl
+  tmpstk_insert_decl
   (  tmpstk , d3cl  ) ; $fold(env0) )
 //
-end(*let*)//end-of-(tr3benv_insert_dcl(env0))
+end(*let*)//end-of-(tr3benv_insert_decl(env0))
 //
 (* ****** ****** *)
 //
 #implfun
-tr3benv_search_cst
+tr3benv_search_dcst
 (   env0, d2c0   ) = let
 //
 val+
@@ -700,11 +700,11 @@ in//let
 //
 let
 val dcls =
-tmpstk_search_cst
+tmpstk_search_dcst
   ( tmpstk, d2c0 ) in $fold(env0); dcls
 end//let
 //
-end(*let*)//end-of-(tr3benv_search_cst(env0))
+end(*let*)//end-of-(tr3benv_search_dcst(env0))
 //
 (* ****** ****** *)
 //

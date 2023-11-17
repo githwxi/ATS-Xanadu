@@ -328,19 +328,18 @@ then // if-then
   d3cl ) where // tmp
 {
 val () =
-tr3cenv_insert_dcl(env0, d3cl)
+tr3cenv_insert_decl(env0, d3cl)
 }
 else // if-else
 let
 val
-dexp =
-trtmp3c_d3exp(env0, dexp) in//let
+dexp = trtmp3c_d3exp(env0, dexp) in
 d3ecl
 (
 loc0,
 D3Cimplmnt0
 ( tknd,stmp
-, sqas,tqas,dimp,tias,f3as,sres,dexp))
+, sqas,tqas,dimp,tias,f3as,sres,dexp) )
 end(*let*)//end-of-[if-then-else]
 //
 end(*let*)//end-of-[f0_implmnt0(env0,d3cl)]

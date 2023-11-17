@@ -251,7 +251,7 @@ knd0 = 0 // static
 then d3cl else // dynamic
 let
 val () =
-tr3benv_insert_dcl(env0, d3cl) in d3cl
+tr3benv_insert_decl(env0, d3cl) in d3cl
 end//let
 end(*let*)//end-of-[f0_staload(env0,d3cl)]
 //
@@ -396,7 +396,7 @@ then // if-then
   d3cl ) where // tmp
 {
 val () =
-tr3benv_insert_dcl(env0, d3cl)
+tr3benv_insert_decl(env0, d3cl)
 }
 else // if-else
 let

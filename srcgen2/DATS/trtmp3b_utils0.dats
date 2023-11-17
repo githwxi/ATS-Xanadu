@@ -100,7 +100,7 @@ tr3benv_getstmp(env0)
 //
 val
 dcls =
-tr3benv_search_cst(env0, d2c0)
+tr3benv_search_dcst(env0, d2c0)
 //
 in//let
 //
