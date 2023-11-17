@@ -137,6 +137,31 @@ tmqstk_nil() => true
 ) (* end of [tmqstk_nilq(stk0)] *)
 //
 (* ****** ****** *)
+//
+#implfun
+tmqstk_pshlet0
+  (  stk0  ) =
+(
+  stk0 := tmqstk_let0(stk0))
+//(*end of [tmqstk_pshlet0(stk0)]*)
+//
+(* ****** ****** *)
+//
+#implfun
+tmqstk_pshloc1
+  (  stk0  ) =
+(
+  stk0 := tmqstk_loc1(stk0))
+//(*end of [tmqstk_pshloc1(stk0)]*)
+//
+#implfun
+tmqstk_pshloc2
+  (  stk0  ) =
+(
+  stk0 := tmqstk_loc2(stk0))
+//(*end of [tmqstk_pshloc2(stk0)]*)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -303,13 +328,13 @@ tr3cenv_poplet0
 //
 val+
 @TR3CENV
-(topmap, !tmpstk) = env0
+(topmap, !tmqstk) = env0
 //
 in//let
 //
 let
 val nerr =
-tmpstk_poplet0(tmpstk) in $fold(env0)
+tmqstk_poplet0(tmqstk) in $fold(env0)
 end(*let*)
 //
 end(*let*)//end-of-(tr3cenv_poplet0(env0))
@@ -322,14 +347,63 @@ tr3cenv_pshlet0
 //
 val+
 @TR3CENV
-(topmap, !tmpstk) = env0
+(topmap, !tmqstk) = env0
 //
 in//let
 //
 (
-  tmpstk_pshlet0(tmpstk); $fold(env0))
+  tmqstk_pshlet0(tmqstk); $fold(env0))
 //
 end(*let*)//end-of-(tr3cenv_pshlet0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3cenv_pshloc1
+(     env0     ) = let
+//
+val+
+@TR3CENV
+(topmap, !tmqstk) = env0
+//
+in//let
+//
+(
+  tmqstk_pshloc1(tmqstk); $fold(env0))
+//
+end(*let*)//end-of-(tr3cenv_pshloc1(env0))
+//
+#implfun
+tr3cenv_pshloc2
+(     env0     ) = let
+//
+val+
+@TR3CENV
+(topmap, !tmqstk) = env0
+//
+in//let
+//
+(
+  tmqstk_pshloc2(tmqstk); $fold(env0))
+//
+end(*let*)//end-of-(tr3cenv_pshloc2(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3cenv_locjoin
+(     env0     ) = let
+//
+val+
+@TR3CENV
+(topmap, !tmqstk) = env0
+//
+in//let
+//
+(
+  tmqstk_locjoin(tmqstk); $fold(env0))
+//
+end(*let*)//end-of-(tr3cenv_locjoin(env0))
 //
 (* ****** ****** *)
 //
