@@ -842,6 +842,45 @@ end(*let*)//end-of-(tr3cenv_getsvts(env0))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+tr3cenv_insert_decl
+(   env0, d3cl   ) = let
+//
+val+
+@TR3CENV
+(topmap, !tmqstk) = env0
+//
+in//let
+//
+(
+  tmqstk_insert_decl
+  (  tmqstk , d3cl  ) ; $fold(env0) )
+//
+end(*let*)//end-of-(tr3cenv_insert_decl(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3cenv_search_dcst
+(   env0, d2c0   ) = let
+//
+val+
+@TR3CENV
+(topmap, !tmqstk) = env0
+//
+in//let
+//
+let
+val dcls =
+tmqstk_search_dcst
+  ( tmqstk, d2c0 ) in $fold(env0); dcls
+end//let
+//
+end(*let*)//end-of-(tr3cenv_search_dcst(env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 endloc (*local*) // end of [local(tr3cenv...)]
 *)
