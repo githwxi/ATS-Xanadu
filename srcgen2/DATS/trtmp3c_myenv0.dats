@@ -84,6 +84,7 @@ tmqstk =
 //
 | tmqstk_svts of
   ( s2vts, tmqstk )
+//
 | tmqstk_timp of
   ( timpl, tmqstk )
 //
@@ -183,6 +184,8 @@ tmqstk_decl
 //
 | !
 tmqstk_svts _ => (err := 1; kxs)
+| !
+tmqstk_timp _ => (err := 1; kxs)
 //
 | !
 tmqstk_let0 _ => (err := 1; kxs)
@@ -202,6 +205,224 @@ val
 ( ) =
 (stk0 := loop(stk0, err)) in err end
 end (*let*)//end-[tmqstk_poptop0(stk0)]
+//
+(* ****** ****** *)
+//
+#implfun
+tmqstk_poplet0
+  (  stk0  ) = let
+//
+fnx
+loop
+( kxs
+: tmqstk
+, err: &sint >> _): tmqstk =
+(
+case+ kxs of
+| ~
+tmqstk_let0
+(   kxs   ) => kxs // err = 0
+| ~
+tmqstk_decl
+(k1, x1, kxs) => loop(kxs, err)
+//
+| !
+tmqstk_nil( ) => (err := 1; kxs)
+//
+| !
+tmqstk_svts _ => (err := 1; kxs)
+| !
+tmqstk_timp _ => (err := 1; kxs)
+//
+| !
+tmqstk_loc1 _ => (err := 1; kxs)
+| !
+tmqstk_loc2 _ => (err := 1; kxs)
+//
+) (*case+*) // end of [loop(kxs,err)]
+//
+in//let
+let
+var
+err: sint = 0
+val
+( ) =
+(stk0 := loop(stk0, err)) in err end
+end (*let*) // end of [tmqstk_poplet0(stk)]
+//
+(* ****** ****** *)
+//
+#implfun
+tmqstk_locjoin
+  (  stk0  ) = let
+//
+fnx
+poploc1
+( kxs
+: tmqstk
+, kys
+: tmqstk
+, err: &sint >> _): tmqstk =
+(
+case+ kxs of
+| ~
+tmqstk_loc1
+(   kxs   ) =>
+(
+  pshloc2(kxs, kys, err))
+| ~
+tmqstk_decl
+(k1, x1, kxs) =>
+(
+  poploc1(kxs, kys, err))
+//
+| !
+tmqstk_nil( ) =>
+( err := 1;
+  pshloc2(kxs, kys, err)) where
+{
+val () = prerrln
+("tmqstk_locjoin: poploc1: tmqstk_nil")
+}
+//
+| !
+tmqstk_svts =>
+( err := 1;
+  pshloc2(kxs, kys, err)) where
+{
+val () = prerrln
+("tmqstk_locjoin: poploc1: tmqstk_svts")
+}
+| !
+tmqstk_timp =>
+( err := 1;
+  pshloc2(kxs, kys, err)) where
+{
+val () = prerrln
+("tmqstk_locjoin: poploc1: tmqstk_timp")
+}
+//
+| !
+tmqstk_let0 _ =>
+( err := 1;
+  pshloc2(kxs, kys, err)) where
+{
+val () = prerrln
+("tmqstk_locjoin: poploc1: tmqstk_let0")
+}
+| !
+tmqstk_loc2 _ =>
+( err := 1;
+  pshloc2(kxs, kys, err)) where
+{
+val () = prerrln
+("tmqstk_locjoin: poploc1: tmqstk_loc1")
+}
+) (*case+*)//end of [poploc1(kxs,kys,err)]
+//
+and
+poploc2
+( kxs
+: tmqstk
+, kys
+: tmqstk
+, err: &sint >> _): tmqstk =
+(
+case+ kxs of
+| ~
+tmqstk_loc2
+(   kxs   ) =>
+(
+  poploc1(kxs, kys, err))
+| ~
+tmqstk_decl
+(k1, x1, kxs) =>
+(
+  poploc2(kxs, kys, err))
+where {
+val kys = tmqstk_decl(k1, x1, kys)
+} (*where*)//end-of-[tmqstk_decl(...)]
+//
+| !
+tmqstk_nil( ) =>
+( err := 1;
+  poploc1(kxs, kys, err)) where
+{
+val () = prerrln
+("tmqstk_locjoin: poploc2: tmqstk_nil")
+}
+//
+| !
+tmqstk_svts _ =>
+( err := 1;
+  poploc1(kxs, kys, err)) where
+{
+val () = prerrln
+("tmqstk_locjoin: poploc2: tmqstk_svts")
+}
+| !
+tmqstk_timp _ =>
+( err := 1;
+  poploc1(kxs, kys, err)) where
+{
+val () = prerrln
+("tmqstk_locjoin: poploc2: tmqstk_timp")
+}
+//
+| !
+tmqstk_let0 _ =>
+( err := 1;
+  poploc1(kxs, kys, err)) where
+{
+val () = prerrln
+("tmqstk_locjoin: poploc2: tmqstk_let0")
+}
+| !
+tmqstk_loc1 _ =>
+( err := 1;
+  poploc1(kxs, kys, err)) where
+{
+val () = prerrln
+("tmqstk_locjoin: poploc2: tmqstk_loc1")
+}
+//
+) (*case+*)//end of [poploc2(kxs,kys,err)]
+//
+and
+pshloc2
+( kxs
+: tmqstk
+, kys
+: tmqstk
+, err: &sint >> _): tmqstk =
+(
+case- kys of
+| ~
+tmqstk_nil() => kxs
+| ~
+tmqstk_decl
+(k1, x1, kys) =>
+(
+pshloc2(kxs, kys, err))
+where
+{
+  val kxs =
+  tmqstk_decl(k1, x1, kxs) }
+) (*case+*)//end of [pshloc2(kxs,kys,err)]
+//
+in//let
+//
+let
+var err: sint = 0
+//
+val kxs = stk0
+val kys = tmqstk_nil()
+//
+val ( ) =
+(stk0 := poploc2(kxs, kys, err)) in (err)
+end (*let*)
+//
+end (*let*) // end of [tmqstk_locjoin(stk)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
