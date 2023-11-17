@@ -162,6 +162,48 @@ tmqstk_pshloc2
 //(*end of [tmqstk_pshloc2(stk0)]*)
 //
 (* ****** ****** *)
+//
+#implfun
+tmqstk_poptop0
+  (stk0) = let
+//
+fnx
+loop
+( kxs
+: tmqstk
+, err: &sint >> _): tmqstk =
+(
+case+ kxs of
+| !
+tmqstk_nil() => kxs // err = 0
+//
+| ~
+tmqstk_decl
+(k1, x1, kxs) => loop(kxs, err)
+//
+| !
+tmqstk_svts _ => (err := 1; kxs)
+//
+| !
+tmqstk_let0 _ => (err := 1; kxs)
+//
+| !
+tmqstk_loc1 _ => (err := 1; kxs)
+| !
+tmqstk_loc2 _ => (err := 1; kxs)
+//
+) (*case+*)//end-of-[loop(kxs, err)]
+//
+in//let
+let
+var
+err: sint = 0
+val
+( ) =
+(stk0 := loop(stk0, err)) in err end
+end (*let*)//end-[tmqstk_poptop0(stk0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
