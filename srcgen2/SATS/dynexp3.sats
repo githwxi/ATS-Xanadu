@@ -782,8 +782,20 @@ HX-2023-11-11:
 d3eclist: it is a
 list of D3Ctmpsub-decls
 *)
+//
+(*
+HX:
+single layer(trtmp3b)
+*)
 |TIMPLall1 of
-(d2cst(*dcst*), d3eclist)
+(d2cst(*implment*), d3eclist)
+//
+(*
+HX:
+recursive version(trtmp3c)
+*)
+|TIMPLallx of
+(d2cst(*implment*), d3eclist)
 //
 (* ****** ****** *)
 //

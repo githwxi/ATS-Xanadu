@@ -435,29 +435,51 @@ test
 case+
 dcl.node() of
 //
-| D3Cfundclst _ =>
+|
+D3Cfundclst _ =>
 (
   d3ecl_impld2cq(dcl, d2c) )
 //
-| D3Cimpltmp _ =>
+|
+D3Cimpltmp _ =>
 (
   d3ecl_impld2cq(dcl, d2c) )
 //
-| D3Ctmplocal
-  (dcl1, dcls) => test(dcl, d2c)
+|
+D3Ctmplocal
+(dcl1, dcls) => tests(dcls, d2c)
 //
-| _(* otherwise *) => (   false   )
+|
+_(* otherwise *) => (   false   )
 ) where
 {
 //
 (*
 val () =
-prerr("tmpstk_search_cst: ")
-val () = prerrln("test: dcl = ", dcl)
-val () = prerrln("test: d2c = ", d2c)
+prerr("tmpstk_search_cst: ")//val()
+val () =
+prerrln("test: dcl = ", dcl)//val()
+val () =
+prerrln("test: d2c = ", d2c)//val()
 *)
 //
-}(*where*) // end of [ test(dcl, d2c) ]
+}(*where*) // end of [test(dcl, d2c)]
+//
+and
+tests
+( dcls
+: d3eclist
+, d2c: d2cst): bool =
+(
+case+ dcls of
+|
+list_nil() => false
+|
+list_cons(dcl1, dcls) =>
+(
+  if test(dcl1, d2c)
+  then true else tests(dcls, d2c))
+)(*case+*) // end of [tests(dcls, d2c)]
 //
 fun
 loop
@@ -499,7 +521,7 @@ tmpstk_loc1(kxs) => loop(kxs,d2c,res)
 | !
 tmpstk_loc2(kxs) => loop(kxs,d2c,res)
 //
-) (*case+*)//end of [loop(kxs,d2c,res)]
+)(*case+*) // end of [loop(kxs,d2c,res)]
 //
 (*
 val () =
