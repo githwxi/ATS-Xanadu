@@ -505,7 +505,7 @@ val res =
 list_rappendx0_vt(dcs, res)
 ) where
 { val dcs =
-  static_search_cst(dcl, d2c) }
+  static_search_dcst(dcl, d2c) }
 //
 val res =
 ( if

@@ -49,8 +49,13 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xsymmap.sats"
 (* ****** ****** *)
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
+(* ****** ****** *)
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
+(* ****** ****** *)
+#symload node with s2typ_get_node
 (* ****** ****** *)
 #symload node with simpl_get_node
 #symload node with dimpl_get_node
@@ -152,13 +157,14 @@ D3Cimplmnt0
 (* ****** ****** *)
 
 #implfun
-static_search_cst
+static_search_dcst
   (d3cl, d2c0) =
 (
 case+
 d3cl.node() of
 | D3Cstaload _ =>
-  f0_staload(d3cl, d2c0)
+(
+  f0_staload(d3cl, d2c0) )
 | _(* otherwise *) => list_nil()
 ) where
 {
@@ -192,9 +198,9 @@ d3parsed_get_t3penv(dpar)
 //
 (*
 val () = prerrln
-("static_search_cst: shrd = ", shrd)
+("static_search_dcst: shrd = ", shrd)
 val () = prerrln
-("static_search_cst: tenv = ", tenv)
+("static_search_dcst: tenv = ", tenv)
 *)
 //
 in//let
@@ -221,14 +227,640 @@ end//let//end-of-[f0_staload(d3cl,d2c0)]
 //
 (*
 val () =
-prerrln("static_search_cst: d3cl = ", d3cl)
+prerrln("static_search_dcst: d3cl = ", d3cl)
 val () =
-prerrln("static_search_cst: d2c0 = ", d2c0)
+prerrln("static_search_dcst: d2c0 = ", d2c0)
 *)
 //
-} (*where*)//end of [static_search_cst(...)]
+}(*where*) // end of [static_search_dcst(...)]
 
 (* ****** ****** *)
+(* ****** ****** *)
+
+local
+
+fun
+f1_s2extq
+(s2v0: s2var
+,s2vs: s2varlst): bool =
+(
+case+ s2vs of
+|
+list_nil() => false
+|
+list_cons(s2v1, s2vs) =>
+if
+s2v0 = s2v1
+then true
+else f1_s2extq(s2v0, s2vs))
+//
+fun
+f2_s2extq
+(s2v0: s2var
+,t2qs: t2qaglst): bool =
+(
+case+ t2qs of
+|
+list_nil() => false
+|
+list_cons(t2q1, t2qs) =>
+if
+f1_s2extq
+(s2v0, t2q1.s2vs())
+then true
+else f2_s2extq(s2v0, t2qs))
+//
+fun
+f3_s2extq
+(s2v0: s2var
+,s2qs: s2qaglst
+,t2qs: t2qaglst): bool =
+(
+case+ s2qs of
+|
+list_nil() =>
+f2_s2extq(s2v0, t2qs)
+|
+list_cons(s2q1, s2qs) =>
+if
+f1_s2extq
+(s2v0, s2q1.s2vs())
+then true
+else f3_s2extq(s2v0, s2qs, t2qs))
+
+(* ****** ****** *)
+//
+fun
+f0_targmat
+(svts: s2vts
+,t2js: t2jaglst
+,s2qs: s2qaglst
+,t2qs: t2qaglst): optn(s2vts) =
+let
+val
+tsub = list_vt_nil(*0*)
+val
+opt0 =
+f1_svts_t2js(svts, t2js, tsub)
+in//let
+case+ opt0 of
+| ~
+optn_vt_nil() => optn_nil(*0*)
+| ~
+optn_vt_cons(tsub) =>
+optn_cons(list_vt2t(reverse0(tsub)))
+end where // end-of-[f0_targmat(...)]
+{
+//
+#typedef
+s2vt1 =
+(s2var, s2typ)
+#vwtpdef
+s2vts_vt =
+list_vt@(s2var, s2typ)
+//
+fun
+f2_tip1_tjp1
+( tip1
+: s2typ
+, tjp1
+: s2typ
+, tsub
+: &s2vts_vt >> _): bool =
+(
+case+
+tip1.node() of
+//
+|T2Pvar _ =>
+(g2_svar_tjp1(tip1,tjp1,tsub))
+//
+|T2Pcst _ =>
+(g2_scst_tjp1(tip1,tjp1,tsub))
+//
+|T2Papps _ =>
+(g2_apps_tjp1(tip1,tjp1,tsub))
+//
+|T2Ptext _ =>
+(g2_text_tjp1(tip1,tjp1,tsub))
+//
+|T2Ptrcd _ =>
+(g2_trcd_tjp1(tip1,tjp1,tsub))
+//
+|T2Pnone0((*0*)) => (   true   )
+|T2Pnone1(s2typ) => (   true   )
+|T2Ps2exp(s2exp) => (   true   )
+//
+|_(* otherwise *) => (   false   )
+//
+) where
+{
+//
+(* ****** ****** *)
+//
+fun
+g2_svar_tjp1
+( tip1
+: s2typ
+, tjp1
+: s2typ
+, tsub
+: &s2vts_vt >> _): bool =
+let
+//
+val-
+T2Pvar
+(s2vi) = tip1.node()
+//
+fun
+h2_search
+( svts
+: !s2vts_vt): s2typopt_vt =
+(
+case+ svts of
+| !
+list_vt_nil
+( (*void*) ) =>
+optn_vt_nil(*void*)
+| !
+list_vt_cons
+(svt1, svts) =>
+(
+if
+(s2vi != svt1.0)
+then h2_search(svts)
+else optn_vt_cons(svt1.1)))
+//
+in//let
+//
+if
+f3_s2extq
+(
+s2vi,s2qs,t2qs
+)
+then
+(
+case+
+h2_search(tsub) of
+| ~
+optn_vt_nil() =>
+(
+  true ) where {
+val () =
+tsub :=
+list_vt_cons((s2vi,tjp1),tsub)
+}
+| ~
+optn_vt_cons(tip1) =>
+(
+f2_tip1_tjp1(tip1, tjp1, tsub)))
+else
+(
+case+
+tjp1.node() of
+|
+T2Pvar(s2vj) =>
+if
+(s2vi = s2vj) then true else false
+//
+|_(*non-T2Pvar*) => (    false    ))
+//
+end(*let*)//end of [g2_svar_tjp1(...)]
+//
+(* ****** ****** *)
+//
+fun
+g2_scst_tjp1
+( tip1
+: s2typ
+, tjp1
+: s2typ
+, tsub
+: &s2vts_vt >> _): bool =
+let
+val-
+T2Pcst(s2ci) = tip1.node()
+in//let
+(
+case+
+tjp1.node() of
+//
+|
+T2Pcst(s2cj) =>
+if
+(s2ci = s2cj) then true else false
+//
+|
+_(*non-T2Pvar*) => (    false    ))
+end(*let*)//end of [g2_scst_tjp1(...)]
+//
+(* ****** ****** *)
+//
+fun
+g2_apps_tjp1
+( tip1
+: s2typ
+, tjp1
+: s2typ
+, tsub
+: &s2vts_vt >> _): bool =
+let
+val-
+T2Papps
+(t2fi, tips) = tip1.node()
+in//let
+(
+case+
+tjp1.node() of
+//
+|
+T2Papps
+(t2fj, tjps) =>
+let
+val res1 =
+f2_tip1_tjp1(t2fi, t2fj, tsub)
+in//let
+(if
+ res1
+ then
+ f2_tips_tjps
+ (tips, tjps, tsub) else false)
+end//let
+//
+|
+_(*non-T2Pvar*) => (    false    ))
+end(*let*)//end of [g2_apps_tjp1(...)]
+//
+(* ****** ****** *)
+//
+fun
+g2_text_tjp1
+( tip1
+: s2typ
+, tjp1
+: s2typ
+, tsub
+: &s2vts_vt >> _): bool =
+let
+val-
+T2Ptext
+(tnmi, tips) = tip1.node()
+in//let
+(
+case+
+tjp1.node() of
+//
+|
+T2Ptext
+(tnmj, tjps) =>
+let
+val res1 = (tnmi = tnmj)
+in//let
+(if
+ res1
+ then
+ f2_tips_tjps
+ (tips, tjps, tsub) else false)
+end//let
+//
+|
+_(*non-T2Pvar*) => (    false    ))
+end(*let*)//end of [g2_text_tjp1(...)]
+//
+(* ****** ****** *)
+//
+fun
+g2_trcd_tjp1
+( tip1
+: s2typ
+, tjp1
+: s2typ
+, tsub
+: &s2vts_vt >> _): bool =
+let
+val-
+T2Ptrcd
+(kndi
+,npfi, ltis) = tip1.node()
+in//let
+(
+case+
+tjp1.node() of
+//
+|
+T2Ptrcd
+(kndj
+,npfj, ltjs) =>
+let
+val res1 =
+trcdknd_equal
+(kndi , kndj)
+val res1 =
+if res1 then 
+(npfi = npfj) else false
+in//let
+(if
+ res1
+ then
+ f2_ltis_ltjs
+ (ltis, ltjs, tsub) else false)
+end//let
+//
+|
+_(*non-T2Pvar*) => (    false    ))
+end(*let*)//end of [g2_text_tjp1(...)]
+//
+(* ****** ****** *)
+//
+val tip1 = s2typ_hnfiz0(tip1)
+val tjp1 = s2typ_hnfiz0(tjp1)
+//
+(*
+val (  ) =
+prerrln("f2_tip1_tjp1: tip1 = ", tip1)
+val (  ) =
+prerrln("f2_tip1_tjp1: tjp1 = ", tjp1)
+*)
+//
+}(*where*)
+//end-of-[f2_tip1_tjp1(tip1,tjp1,tsub)]
+//
+(* ****** ****** *)
+//
+and
+f2_tips_tjps
+( tips
+: s2typlst
+, tjps
+: s2typlst
+, tsub
+: &s2vts_vt >> _): bool =
+(
+case+ tips of
+|list_nil() => true
+|list_cons(tip1, tips) =>
+(
+case+ tjps of
+|list_nil() => true
+|list_cons(tjp1, tjps) =>
+let
+val res1 =
+f2_tip1_tjp1(tip1, tjp1, tsub)
+in//let
+(if
+ res1
+ then
+ f2_tips_tjps
+ (tips, tjps, tsub) else false)
+end//let
+)
+)(*case+*)
+//end-of-[f2_tips_tjps(tips,tjps,tsub)]
+//
+(* ****** ****** *)
+//
+and
+f2_ltis_ltjs
+( ltis
+: l2t2plst
+, ltjs
+: l2t2plst
+, tsub
+: &s2vts_vt >> _): bool =
+(
+case+ ltis of
+|list_nil() => true
+|list_cons(lti1, ltis) =>
+(
+case+ ltjs of
+|list_nil() => true
+|list_cons(ltj1, ltjs) =>
+let
+//
+val
+S2LAB(li, tip1) = lti1
+val
+S2LAB(lj, tjp1) = ltj1
+val res1 =
+if (li = lj) then
+f2_tip1_tjp1
+(tip1, tjp1, tsub) else false
+//
+in//let
+(if
+ res1
+ then
+ f2_ltis_ltjs
+ (ltis, ltjs, tsub) else false)
+end//let
+)
+)(*case+*)
+//end-of-[f2_tips_tjps(tips,tjps,tsub)]
+//
+(* ****** ****** *)
+//
+fun
+f2_svt1_tjp1
+( svt1
+: s2vt1
+, tjp1
+: s2typ
+, tsub
+: s2vts_vt): optn_vt(s2vts_vt) =
+let
+val (_, tip1) = svt1
+in//let
+case
+tip1.node() of
+|
+T2Pvar(s2vi) =>
+(
+if
+f3_s2extq(s2vi, s2qs, t2qs)
+then
+optn_vt_cons
+(
+list_vt_cons((s2vi,tjp1),tsub))
+else
+(
+case+
+tjp1.node() of
+|
+T2Pvar(s2vj) =>
+if
+(s2vi = s2vj)
+then optn_vt_cons(tsub)
+else (free(tsub); optn_vt_nil())
+|
+_(*non-T2Pvar*) =>
+let
+val () =
+free(tsub) in optn_vt_nil() end))
+|
+_(*non-T2Pvar*) =>
+let
+//
+var
+tsub = tsub
+val
+res0 =
+f2_tip1_tjp1(tip1, tjp1, tsub)
+//
+in//let
+  if res0
+  then optn_vt_cons(tsub)
+  else (free(tsub); optn_vt_nil())
+end//let
+end//let
+//end-of-[f2_svt1_tjp1(svt1,tjp1,tsub)]
+//
+fun
+f1_svts_t2js
+( svts
+: s2vts
+, t2js
+: t2jaglst
+, tsub
+: s2vts_vt): optn_vt(s2vts_vt) =
+(
+case+ svts of
+|list_nil() =>
+(
+  optn_vt_cons(tsub) )
+|list_cons(svt1, svts) =>
+(
+  f1_svt1_svts_t2js
+  (svt1, svts, t2js, tsub)) )
+//
+and
+f1_svt1_svts_t2js
+( svt1
+: s2vt1
+, svts
+: s2vts
+, t2js
+: t2jaglst
+, tsub
+: s2vts_vt): optn_vt(s2vts_vt) =
+//
+(
+case+ t2js of
+|list_nil() =>
+(
+  optn_vt_cons(tsub) )
+|list_cons(t2j1, t2js) =>
+let
+val tjps = t2j1.t2ps()
+in//let
+f1_svt1_svts_tjps_t2js
+(svt1, svts, tjps, t2js, tsub)
+end//let//end-of-[list_cons(...)]
+)(*case+*)//end-of-[f1_svt1_svts_t2js]
+//
+and
+f1_svt1_svts_tjps_t2js
+( svt1
+: s2vt1
+, svts
+: s2vts
+, tjps
+: s2typlst
+, t2js
+: t2jaglst
+, tsub
+: s2vts_vt): optn_vt(s2vts_vt) =
+(
+case+ tjps of
+|
+list_nil() =>
+(
+  f1_svt1_svts_t2js
+  (svt1, svts, t2js, tsub) )
+|
+list_cons(tjp1, tjps) =>
+let
+val opt1 =
+f2_svt1_tjp1(svt1, tjp1, tsub)
+in//let
+//
+case+ opt1 of
+| ~
+optn_vt_nil() => optn_vt_nil()
+| ~
+optn_vt_cons(tsub) =>
+(
+case+ svts of
+|list_nil((*0*)) =>
+(
+  optn_vt_cons(tsub) )
+|list_cons(svt1, svts) =>
+(
+  f1_svt1_svts_tjps_t2js
+  (svt1, svts, tjps, t2js, tsub)) )
+//
+endlet//end-of-[list_cons(t2j1,t2js)]
+)(*case+*)//end-[f1_svt1_svts_tjps_t2js]
+//
+(*
+val () =
+(
+  prerrln("f0_targmat: svts = ", svts) )
+val () =
+(
+  prerrln("f0_targmat: t2js = ", t2js) )
+val () =
+(
+  prerrln("f0_targmat: s2qs = ", s2qs) )
+val () =
+(
+  prerrln("f0_targmat: t2qs = ", t2qs) )
+*)
+//
+}(*where*)//end-of-[f0_targmat(svts,...)]
+//
+(* ****** ****** *)
+in (*local*)
+(* ****** ****** *)
+//
+#implfun
+tmpmatch_d3cl_t2js
+  (d3cl, t2js) =
+(
+case+
+d3cl.node() of
+|
+D3Cimplmnt0
+( tok0
+, stmp
+, sqas, tqas
+, dimp, t2is
+, f3as, sres, body) =>
+(
+case+
+dimp.node() of
+//
+|
+DIMPLone2(_(*dcst*), svts) =>
+(
+f0_targmat(svts, t2js, sqas, tqas))
+//
+| _(* otherwise *) => optn_nil((*void*))
+//
+)
+//
+| _(* otherwise *) => optn_nil((*void*))
+//
+) where
+{
+(*
+val () =
+prerrln("tmpmatch_d3cl_t2js: d3cl = ", d3cl)
+val () =
+prerrln("tmpmatch_d3cl_t2js: t2js = ", t2js)
+*)
+}(*where*)//end-of-[tmpmatch_d3cl_t2js(d3cl,t2js)]
+//
+(* ****** ****** *)
+end(*local*) // end-of-[local(tr3benv_tapq_resolve)]
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_dynexp3_utils0.dats] *)

@@ -1038,7 +1038,14 @@ d3parsed_make_args
 (* ****** ****** *)
 //
 fun
-static_search_cst(d3ecl, d2cst): d3eclist
+static_search_dcst
+(d3cl: d3ecl, dcst: d2cst): d3eclist
+//
+(* ****** ****** *)
+//
+fun
+tmpmatch_d3cl_t2js
+(d3cl: d3ecl, t2js: t2jaglst): optn(s2vts)
 //
 (* ****** ****** *)
 (* ****** ****** *)
