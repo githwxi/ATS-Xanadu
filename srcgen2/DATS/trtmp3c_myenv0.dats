@@ -229,6 +229,40 @@ tmqstk_nil() => list_nil(*void*)
 ) (*case+*) // end of [tmqstk_getsvts(stk0)]
 //
 (* ****** ****** *)
+//
+#implfun
+tmqstk_insert_dcl
+  (stk0, d3cl) =
+let
+//
+val tsub =
+tmqstk_getsvts(stk0)
+//
+val d3cl =
+(
+case+ tsub of
+|
+list_nil
+((*void*)) => d3cl
+|
+list_cons _ =>
+let
+val loc0 =
+d3cl.lctn((*void*))
+in//let
+d3ecl_make_node
+(loc0, D3Ctmpsub(tsub, d3cl))
+end(*let*)//end-of-[list_cons]
+)
+//
+val tag0 =
+the_tmqstk_stamp_new((*void*))
+//
+in//let
+  stk0 := tmqstk_decl(tag0, d3cl, stk0)
+end (*let*)//end-of-[tmqstk_insert_dcl(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*

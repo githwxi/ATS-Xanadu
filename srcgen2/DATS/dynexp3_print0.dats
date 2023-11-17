@@ -675,6 +675,10 @@ print("TIMPLone1(", dcl1 ,")")
 (d2c1, dcls) =>
 print("TIMPLall1(",d2c1,";",dcls,")")
 //
+|TIMPLallx
+(d2c1, dcls) =>
+print("TIMPLallx(",d2c1,";",dcls,")")
+//
 end (*let*) // end of [timpl_fprint(...)]
 //
 (* ****** ****** *)
