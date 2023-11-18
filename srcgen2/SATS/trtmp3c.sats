@@ -304,6 +304,13 @@ trtmp3c_l3d3e
 (* ****** ****** *)
 //
 fun
+trtmp3c_d3cls
+( env0:
+! tr3cenv,dcls:d3cls):d3cls//fun
+//
+(* ****** ****** *)
+//
+fun
 trtmp3c_d3ecl
 ( env0:
 ! tr3cenv,d3cl:d3ecl):d3ecl//fun

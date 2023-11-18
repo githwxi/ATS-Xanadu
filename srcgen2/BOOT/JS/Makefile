@@ -63,6 +63,7 @@ trans23.sats \
 tread23.sats \
 trans3a.sats \
 trtmp3b.sats \
+trtmp3c.sats \
 tread33.sats \
 fperr33.sats \
 xglobal.sats \
@@ -202,6 +203,11 @@ trtmp3b_myenv0.dats \
 trtmp3b_utils0.dats \
 trtmp3b_dynexp.dats \
 trtmp3b_decl00.dats \
+trtmp3c.dats \
+trtmp3c_myenv0.dats \
+trtmp3c_utils0.dats \
+trtmp3c_dynexp.dats \
+trtmp3c_decl00.dats \
 tread33.dats \
 tread33_staexp.dats \
 tread33_dynexp.dats \
@@ -328,6 +334,21 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 test:: \
 xatsopt_test02
 xatsopt_test02:: ; \
+$(CAT) \
+$(XATS2JS_PRELUDE) > $@_dats.js && \
+$(CAT) \
+$(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
+$(CAT) \
+$(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
+$(CAT) \
+$(XATS2JS_XATSOPT_OBJDATS) >> $@_dats.js && \
+$(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
+#
+######
+#
+test:: \
+xatsopt_test03
+xatsopt_test03:: ; \
 $(CAT) \
 $(XATS2JS_PRELUDE) > $@_dats.js && \
 $(CAT) \

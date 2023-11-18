@@ -28,6 +28,7 @@ bootstrapping ATS3/Xanadu!!!
 "./../../SATS/trans3a.sats"
 #staload
 "./../../SATS/trtmp3b.sats"
+(* ****** ****** *)
 #staload
 "./../../SATS/tread33.sats"
 #staload
