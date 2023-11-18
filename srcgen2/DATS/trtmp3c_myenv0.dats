@@ -165,6 +165,16 @@ tmqstk_pshloc2
 (* ****** ****** *)
 //
 #implfun
+tmqstk_pshsvts
+( stk0, svts ) =
+(
+  stk0 :=
+  tmqstk_svts( svts, stk0 ))
+//(*end of [tmqstk_pshsvts(stk0)]*)
+//
+(* ****** ****** *)
+//
+#implfun
 tmqstk_poptop0
   (stk0) = let
 //
@@ -799,6 +809,26 @@ in//let
   tmqstk_locjoin(tmqstk); $fold(env0))
 //
 end(*let*)//end-of-(tr3cenv_locjoin(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3cenv_pshsvts
+( env0 , svts ) = let
+//
+val+
+@TR3CENV
+(topmap, !tmqstk) = env0
+//
+in//let
+//
+(
+  $fold(env0)) where
+{
+  val () = tmqstk_pshsvts(tmqstk, svts)
+}
+//
+end(*let*)//end(tr3cenv_pshsvts(env0,svts))
 //
 (* ****** ****** *)
 (* ****** ****** *)

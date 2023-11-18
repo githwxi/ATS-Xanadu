@@ -207,6 +207,16 @@ tmqstk_locjoin
 (* ****** ****** *)
 //
 fun
+tmqstk_popsvts
+  ( stk: &tmqstk >> _ ): sint
+fun
+tmqstk_pshsvts
+( stk:
+  &tmqstk >> _, s2vts ): void
+//
+(* ****** ****** *)
+//
+fun
 tmqstk_getstmp
   ( stk: !tmqstk >> _ ): stamp
 //
