@@ -57,7 +57,9 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trtmp3c.sats"
 (* ****** ****** *)
-
+#symload stmp with timpl_get_stmp
+#symload node with timpl_get_node
+(* ****** ****** *)
 local
 (* ****** ****** *)
 (*
@@ -76,10 +78,61 @@ tr3cenv_timp_resolve
 (
 case+
 timp.node() of
-| TIMPLallx _ => timp
-| TIMPLall1 _ => timp // HX: FIXME!
+|
+TIMPLallx _ => timp
+|
+TIMPLall1 _ => f0_all1(env0, timp)
 ) where
 {
+//
+fun
+f0_all1
+( env0:
+! tr3cenv
+, timp: timpl): timpl =
+let
+//
+val
+stmp = timp.stmp((*0*))
+//
+val-
+TIMPLall1
+(d2c0, dcls) = timp.node()
+//
+in//in
+case+ dcls of
+|
+list_nil
+((*void*)) =>
+(  timp  ) // HX: ~found
+|
+list_cons
+(dcl1, dcls) =>
+let
+//
+val-
+D3Ctmpsub
+(svts, dcl1) = dcl1.node()
+//
+val () =
+tr3cenv_pshsvts(env0, svts)
+//
+val dcl1 =
+(
+  trtmp3c_d3ecl(env0, dcl1))
+//
+val () = tr3cenv_popsvts(env0)
+//
+in//let
+let
+val dcl1 =
+d3ecl_tmpsub(svts, dcl1)
+val dcls = list_cons(dcl1, dcls)
+in//let
+timpl(stmp, TIMPLallx(d2c0, dcls))
+end//let
+end//let//end-of-[list_cons( ... )]
+end//let//end-of-[f0_all1(env0,timp)]
 //
 val () = prerrln
 ("tr3cenv_timp_resolve: timp = ", timp)
