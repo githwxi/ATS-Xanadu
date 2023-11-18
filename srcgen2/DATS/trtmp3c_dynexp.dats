@@ -45,10 +45,10 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-(*
+//
 #staload
 _(*Trtmp3c*) = "./trtmp3c.dats"
-*)
+//
 (* ****** ****** *)
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
@@ -281,9 +281,9 @@ let
 //
 val timp =
 tr3cenv_tapq_resolve
-( env0 , d2c0 , t2js )//val(timp)
+( env0, d2c0, t2js )//val(timp)
 val timp =
-tr3cenv_timp_resolve(env0 , timp)
+tr3cenv_timp_resolve(env0, timp)
 //
 in//let
 (
@@ -707,5 +707,57 @@ end (*let*) // end of [f0_where(env0,...)]
 //
 } (*where*)//end-of-[trtmp3c_d3exp(env0,d3e0)]
 
+(* ****** ****** *)
+//
+#implfun
+trtmp3c_teqd3exp
+  (env0, tdxp) =
+(
+case+ tdxp of
+|
+TEQD3EXPnone() =>
+TEQD3EXPnone((*void*))
+|
+TEQD3EXPsome(teq1, d3e2) =>
+TEQD3EXPsome(teq1, d3e2) where
+{ val
+  d3e2 = trtmp3c_d3exp(env0, d3e2) } )
+(*case+*)//end-of(trtmp3c_teqd3exp(env0,tdxp))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trtmp3c_d3explst
+  (env0, d3es) =
+(
+  list_trtmp3c_fnp(env0, d3es, trtmp3c_d3exp))
+//
+(* ****** ****** *)
+//
+#implfun
+trtmp3c_d3expopt
+( env0, dopt ) =
+(
+  optn_trtmp3c_fnp(env0, dopt, trtmp3c_d3exp))
+//
+(* ****** ****** *)
+//
+#implfun
+trtmp3c_l3d3elst
+( env0, ldes ) =
+(
+  list_trtmp3c_fnp(env0, ldes, trtmp3c_l3d3e))
+//
+(* ****** ****** *)
+//
+#implfun
+trtmp3c_d3clslst
+( env0, dcls ) =
+(
+  list_trtmp3c_fnp(env0, dcls, trtmp3c_d3cls))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trtmp3c_dynexp.dats] *)

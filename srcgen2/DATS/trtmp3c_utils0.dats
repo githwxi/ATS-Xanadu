@@ -69,6 +69,24 @@ tmpmatch_d3cl_t2js(d3cl,t2js)
 (* ****** ****** *)
 in (*local*)
 (* ****** ****** *)
+
+#implfun
+tr3cenv_timp_resolve
+  (  env0, timp  ) =
+(
+case+
+timp.node() of
+| TIMPLallx _ => timp
+| TIMPLall1 _ => timp // HX: FIXME!
+) where
+{
+//
+val () = prerrln
+("tr3cenv_timp_resolve: timp = ", timp)
+//
+}(*where*)//end-of-[tr3cenv_timp_resolve]
+
+(* ****** ****** *)
 //
 #implfun
 tr3cenv_tapq_resolve
@@ -79,9 +97,29 @@ val
 stmp =
 tr3cenv_getstmp(env0)
 //
+val // HX: [trtmp3b]
+svts = // guarantees it to
+tr3cenv_getsvts(env0) // exist
+//
 val
 dcls =
 tr3cenv_search_dcst(env0, d2c0)
+//
+val () = prerrln
+("\
+tr3cenv_tapq_resolve:d2c0=",d2c0)
+val () = prerrln
+("\
+tr3cenv_tapq_resolve:t2js=",t2js)
+val () = prerrln
+("\
+tr3cenv_tapq_resolve:stmp=",stmp)
+val () = prerrln
+("\
+tr3cenv_tapq_resolve:svts=",svts)
+val () = prerrln
+("\
+tr3cenv_tapq_resolve:dcls=",dcls)
 //
 in//let
 //
