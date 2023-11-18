@@ -267,6 +267,15 @@ tr3cenv_locjoin
 (env0: !tr3cenv): void//end-fun
 //
 (* ****** ****** *)
+//
+fun
+tr3cenv_popsvts
+( env0: !tr3cenv): void//end-fun
+fun
+tr3cenv_pshsvts
+( env0:
+! tr3cenv, s2vts): void//end-fun
+//
 (* ****** ****** *)
 //
 fun
@@ -302,6 +311,11 @@ trtmp3c_l3d3e
 ! tr3cenv,ld3e:l3d3e):l3d3e//fun
 //
 (* ****** ****** *)
+//
+fun
+trtmp3c_d3gpt
+( env0:
+! tr3cenv,dgpt:d3gpt):d3gpt//fun
 //
 fun
 trtmp3c_d3cls

@@ -61,7 +61,7 @@ _(*Trtmp3b*) = "./trtmp3b.dats"
 (* ****** ****** *)
 //
 fun
-d3ecl_get_stamp
+d3ecl_get_stmp
   (d3cl: d3ecl): stamp =
 (
 case-
@@ -82,9 +82,9 @@ D3Cimplmnt0
 (*
 val () =
 prerrln
-("d3ecl_get_stamp: d3cl = ", d3cl)
+("d3ecl_get_stmp: d3cl = ", d3cl)
 *)
-}(*where*)//end-of-[d3ecl_get_stamp(...)]
+}(*where*)//end-of-[d3ecl_get_stmp(...)]
 //
 (* ****** ****** *)
 //

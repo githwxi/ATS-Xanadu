@@ -710,6 +710,81 @@ end (*let*) // end of [f0_where(env0,...)]
 (* ****** ****** *)
 //
 #implfun
+trtmp3c_d3gpt
+  (env0, dgpt) = let
+//
+(*
+val loc0 = dgpt.lctn()
+val
+val () =
+prerrln
+("trtmp3c_d3gpt: dgpt = ", dgpt)
+*)
+//
+in//let
+//
+case+
+dgpt.node() of
+//
+|
+D3GPTpat(d3p1) => dgpt//nothing
+|
+D3GPTgua(d3p1, d3gs) => dgpt//nothing
+//
+end(*let*)//end-of-[trtmp3c_d3gpt(env0,dgpt)]
+//
+(* ****** ****** *)
+//
+#implfun
+trtmp3c_d3cls
+  (env0, dcls) = let
+//
+val loc0 = dcls.lctn()
+//
+(*
+val
+val () =
+prerrln
+("trtmp3c_d3cls: dcls = ", dcls)
+*)
+//
+in//let
+//
+case+
+dcls.node() of
+|
+D3CLSgpt
+(  dgpt  ) =>
+(
+d3cls_make_node
+( loc0
+, D3CLSgpt(dgpt))) where
+{
+//
+val
+dgpt =
+trtmp3c_d3gpt(env0, dgpt)
+//
+}(*where*)//end-of-[D3CLSgpt(...)]
+|
+D3CLScls
+(dgpt,d3e1) =>
+(
+d3cls_make_node
+( loc0
+, D3CLScls(dgpt, d3e1))) where
+{
+//
+val dgpt = trtmp3c_d3gpt(env0, dgpt)
+val d3e1 = trtmp3c_d3exp(env0, d3e1)
+//
+}(*where*)//end of [D3CLScls(dgpt,d3e1)]
+//
+end(*let*)//end-of-[trtmp3c_d3cls(env0,dcls)]
+//
+(* ****** ****** *)
+//
+#implfun
 trtmp3c_teqd3exp
   (env0, tdxp) =
 (
