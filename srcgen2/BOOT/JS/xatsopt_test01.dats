@@ -70,7 +70,7 @@ dpar = d3parsed_from_fpath
 val ((*void*)) =
 (
 println
-("parsed = ", mytest01_dats.parsed()))
+("parsed(3b) = ", mytest01_dats.parsed()))
 //
 val ((*void*)) =
 fperr33_d3parsed(g_stderr(), mytest01_dats)

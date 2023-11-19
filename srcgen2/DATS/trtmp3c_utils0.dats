@@ -103,8 +103,10 @@ list_cons _ =>
   list_map(t2js)) where
 
 {
+//
 #typedef x0 = t2jag
 #typedef y0 = t2jag
+//
 #impltmp
 map$fopr
 <x0><y0>(x0) =
@@ -118,6 +120,7 @@ val t2ps =
 t2jag_get_t2ps(x0)
 val t2ps =
 s2typlst_subst0(t2ps, svts) }
+//
 }
 )(*case+*) // end of [t2jaglst_subst0]
 //
@@ -172,7 +175,7 @@ tr3cenv_pshsvts(env0, svts)
 //
 val dcl1 =
 (
-  trtmp3c_d3ecl(env0, dcl1))
+trtmp3c_impltmp(env0, dcl1))
 //
 val () = tr3cenv_popsvts(env0)
 //
@@ -187,7 +190,8 @@ end//let
 end//let//end-of-[list_cons( ... )]
 end//let//end-of-[f0_all1(env0,timp)]
 //
-val () = prerrln
+val () =
+prerrln
 ("tr3cenv_timp_resolve: timp = ", timp)
 //
 }(*where*)//end-of-[tr3cenv_timp_resolve]
@@ -199,47 +203,21 @@ tr3cenv_tapq_resolve
   (env0, d2c0, t2js) =
 let
 //
-val
-stmp =
-tr3cenv_getstmp(env0)
-//
-val // HX: [trtmp3b]
-svts = // guarantees it to
-tr3cenv_getsvts(env0) // exist
-//
-val
-t2js =
-t2jaglst_subst0(t2js, svts)
-//
-val
-dcls =
-tr3cenv_search_dcst(env0, d2c0)
-//
-val () = prerrln
-("\
-tr3cenv_tapq_resolve:d2c0=",d2c0)
-val () = prerrln
-("\
-tr3cenv_tapq_resolve:t2js=",t2js)
-val () = prerrln
-("\
-tr3cenv_tapq_resolve:stmp=",stmp)
-val () = prerrln
-("\
-tr3cenv_tapq_resolve:svts=",svts)
-val () = prerrln
-("\
-tr3cenv_tapq_resolve:dcls=",dcls)
-//
-in//let
-//
-let
 val dcls = filter(dcls)
-in//let
-timpl_make_node
-(stmp, TIMPLall1(d2c0, dcls)) end//let
 //
-end where
+in//let
+//
+(
+timpl_make_node
+(stmp, TIMPLall1(d2c0, dcls))
+) where
+{
+val () =
+prerrln
+("tr3cenv_tapq_resolve: dcls = ", dcls)
+}
+//
+end where // end-of-let
 {
 //
 fun
@@ -287,14 +265,45 @@ end//let//end-of-[list_cons(...)]
 //
 )(*case+*) // end of [ filter(dcls) ]
 //
-(*
-val () =
-prerrln("tr3cenv_tapq_resolve: d2c0 = ", d2c0)
-val () =
-prerrln("tr3cenv_tapq_resolve: t2js = ", t2js)
-*)
+} where {
 //
-}(*where*)//end-of-[tr3cenv_tapq_resolve(env0,...)]
+val () =
+prerrln
+("tr3cenv_tapq_resolve: d2c0 = ", d2c0)
+val () =
+prerrln
+("tr3cenv_tapq_resolve: t2js = ", t2js)
+//
+val
+stmp = tr3cenv_getstmp(env0)
+(*
+// HX:
+// [trtmp3b]
+// guarantees it to exist
+*)
+val
+svts = tr3cenv_getsvts(env0) 
+//
+val () =
+prerrln
+("tr3cenv_tapq_resolve: stmp = ", stmp)
+val () =
+prerrln
+("tr3cenv_tapq_resolve: svts = ", svts)
+//
+val
+t2js = t2jaglst_subst0(t2js, svts)
+//
+val () =
+prerrln
+("tr3cenv_tapq_resolve: t2js = ", t2js)
+//
+val dcls = tr3cenv_search_dcst(env0, d2c0)
+//
+val (  ) =
+prerrln("tr3cenv_tapq_resolve: dcls = ", dcls)
+//
+} (*where*)//end-of-[tr3cenv_tapq_resolve(env0,...)]
 //
 (* ****** ****** *)
 

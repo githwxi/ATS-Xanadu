@@ -270,14 +270,14 @@ D3Cfundclst
 , tqas
 , d3cs, d3fs) = d3cl.node()
 //
-(*
+// (*
 val () =
 prerrln
 ("f0_fundclst(3c): loc0 = ", loc0)
 val () =
 prerrln
 ("f0_fundclst(3c): d3cl = ", d3cl)
-*)
+// *)
 //
 val
 d3fs =
@@ -348,6 +348,73 @@ end(*let*)//end-of-[f0_implmnt0(env0,d3cl)]
 (* ****** ****** *)
 //
 } (*where*)//end-of-[trtmp3c_d3ecl(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+#implfun
+trtmp3c_impltmp
+  (env0, d3cl) =
+(
+case+
+d3cl.node() of
+//
+|
+D3Cimplmnt0 _ => f0_implmnt0(env0, d3cl)
+//
+| _(*otherwise*) =>
+let
+  val loc0 = d3cl.lctn()
+in//let
+  d3ecl_make_node(loc0, D3Cnone2( d3cl ))
+end (*let*) // end of [_(*otherwise*)] // temp
+) where
+{
+//
+(* ****** ****** *)
+//
+fun
+f0_implmnt0
+( env0:
+! tr3cenv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Cimplmnt0
+( tknd
+, stmp
+, sqas
+, tqas
+, dimp
+, tias, f3as
+, sres, dexp) = d3cl.node()
+//
+in//let
+//
+let
+val
+dexp = trtmp3c_d3exp(env0, dexp) in
+d3ecl
+(
+loc0,
+D3Cimplmnt0
+( tknd,stmp
+, sqas,tqas,dimp,tias,f3as,sres,dexp) )
+end(*let*)//end-of-[if-then-else]
+//
+end(*let*)//end-of-[f0_implmnt0(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+val () =
+(
+  prerrln("trtmp3c_impltmp: d3cl = ", d3cl))
+//
+(* ****** ****** *)
+//
+}(*where*)//end-of-[trtmp3c_impltmp(env0,d3cl)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

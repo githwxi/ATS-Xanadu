@@ -345,6 +345,18 @@ trtmp3c_d3ecl
 //
 (* ****** ****** *)
 //
+(*
+HX:
+handling a template instance
+*)
+//
+fun
+trtmp3c_impltmp
+( env0:
+! tr3cenv,d3cl:d3ecl):d3ecl//fun
+//
+(* ****** ****** *)
+//
 fun
 trtmp3c_teqd3exp
 ( env0:
