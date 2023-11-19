@@ -103,6 +103,8 @@ D3Cabsimpl _ => (d3cl)
 //
 |
 D3Cinclude _ => f0_include(env0, d3cl)
+|
+D3Cstaload _ => f0_staload(env0, d3cl)
 //
 |
 D3Cvaldclst _ => f0_valdclst(env0, d3cl)
@@ -186,6 +188,44 @@ d3ecl_make_node
 (loc0
 ,D3Cinclude(knd0,tknd,gsrc,fopt,dopt))
 end(*let*)//end-of-[f0_include(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_staload
+( env0
+: !tr3cenv
+, d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Cstaload
+(knd0
+,tknd, gsrc
+,fopt, dopt) = d3cl.node()
+//
+(*
+val () = prerrln
+("f0_staload(3c): knd0 = ", knd0)
+val () = prerrln
+("f0_staload(3c): tknd = ", tknd)
+val () = prerrln
+("f0_staload(3c): gsrc = ", gsrc)
+val () = prerrln
+("f0_staload(3c): dopt = ", dopt)
+*)
+//
+in//let
+if
+knd0 = 0 // static
+then d3cl else // dynamic
+let
+val () =
+tr3cenv_insert_decl(env0, d3cl) in d3cl
+end//let
+end(*let*)//end-of-[f0_staload(env0,d3cl)]
 //
 (* ****** ****** *)
 //

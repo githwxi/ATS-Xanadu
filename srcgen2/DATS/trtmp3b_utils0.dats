@@ -158,12 +158,12 @@ end//let//end-of-[list_cons(...)]
 //
 )(*case+*) // end of [ filter(dcls) ]
 //
-(*
+// (*
 val () =
 prerrln("tr3benv_tapq_resolve: d2c0 = ", d2c0)
 val () =
 prerrln("tr3benv_tapq_resolve: t2js = ", t2js)
-*)
+// *)
 //
 }(*where*)//end-of-[tr3benv_tapq_resolve(env0,...)]
 //
