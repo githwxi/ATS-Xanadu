@@ -227,6 +227,10 @@ tmqstk_getsvts
 (* ****** ****** *)
 //
 fun
+tmqstk_insert_timp
+  (&tmqstk >> _, timpl):(void)
+//
+fun
 tmqstk_insert_decl
   (&tmqstk >> _, d3ecl):(void)
 //

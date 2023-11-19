@@ -86,6 +86,21 @@ end (*let*) // end of [s2typ_hnfiz0(t2p0)]
 (* ****** ****** *)
 
 #implfun
+s2typlst_hnfiz0
+(    t2ps    ) =
+(
+  list_map(t2ps)) where
+{
+//
+#typedef x0 = s2typ
+#typedef y0 = s2typ
+//
+#impltmp map$fopr<x0><y0> = s2typ_hnfiz0
+}(*where*)//end of [s2typlst_subst0(t2ps,svts)]
+
+(* ****** ****** *)
+
+#implfun
 s2typ_subst0
 (t2p0, svts) =
 let
@@ -104,7 +119,23 @@ s2typ_eval$s2var
 //
 in//let
 s2typ_subst0_e1nv<e1nv>(env0, t2p0, svts)
-end (*let*) // end of [s2typ_subst0(t2p0,svts)]
+end (*let*)//end of [s2typ_subst0(t2p0,svts)]
+
+(* ****** ****** *)
+
+#implfun
+s2typlst_subst0
+( t2ps , svts ) =
+(
+  list_map(t2ps)) where
+{
+//
+#typedef x0 = s2typ
+#typedef y0 = s2typ
+//
+#impltmp
+map$fopr<x0><y0>(x0) = s2typ_subst0(x0, svts)
+}(*where*)//end of [s2typlst_subst0(t2ps,svts)]
 
 (* ****** ****** *)
 

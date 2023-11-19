@@ -91,9 +91,6 @@ tmqstk =
 | tmqstk_decl of
   (stamp, d3ecl, tmqstk)
 //
-| tmqstk_dexp of
-  (stamp, d3exp, tmqstk)
-//
 | tmqstk_let0 of (tmqstk)
 | tmqstk_loc1 of (tmqstk)
 | tmqstk_loc2 of (tmqstk)
@@ -435,6 +432,52 @@ end (*let*)
 end (*let*) // end of [tmqstk_locjoin(stk)]
 //
 (* ****** ****** *)
+//
+#implfun
+tmqstk_popsvts
+  (  stk0  ) = let
+//
+fnx
+loop
+( kxs
+: tmqstk
+, err: &sint >> _): tmqstk =
+(
+case+ kxs of
+//
+| ~
+tmqstk_svts
+( svts,kxs ) => kxs // err = 0
+//
+| !
+tmqstk_timp
+( timp,kxs ) => loop(kxs, err)
+| ~
+tmqstk_decl
+(k1, x1, kxs) => loop(kxs, err)
+//
+| !
+tmqstk_nil( ) => (err := 1; kxs)
+//
+| !
+tmqstk_let0 _ => (err := 1; kxs)
+| !
+tmqstk_loc1 _ => (err := 1; kxs)
+| !
+tmqstk_loc2 _ => (err := 1; kxs)
+//
+) (*case+*) // end of [loop(kxs,err)]
+//
+in//let
+let
+var
+err: sint = 0
+val
+( ) =
+(stk0 := loop(stk0, err)) in err end
+end (*let*) // end of [tmqstk_poplet0(stk)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -527,6 +570,22 @@ tmqstk_nil() => list_nil(*void*)
 ) (*case+*) // end of [tmqstk_getsvts(stk0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+tmqstk_insert_timp
+  (stk0, timp) =
+(
+stk0 :=
+tmqstk_timp(timp, stk0)) where
+{
+(*
+val () =
+prerrln
+("tmqstk_insert_timp: timp = ", timp)
+*)
+}(*where*)//end-of-[tmqstk_insert_timp(...)]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -829,6 +888,25 @@ in//let
 }
 //
 end(*let*)//end(tr3cenv_pshsvts(env0,svts))
+//
+(* ****** ****** *)
+//
+#implfun
+tr3cenv_popsvts
+(     env0     ) = let
+//
+val+
+@TR3CENV
+(topmap, !tmqstk) = env0
+//
+in//let
+//
+let
+val nerr =
+tmqstk_popsvts(tmqstk) in $fold(env0)
+end(*let*)
+//
+end(*let*)//end-of-(tr3cenv_popsvts(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)

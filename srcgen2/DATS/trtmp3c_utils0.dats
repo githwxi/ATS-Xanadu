@@ -69,6 +69,59 @@ It is implemented in
 tmpmatch_d3cl_t2js(d3cl,t2js)
 *)
 (* ****** ****** *)
+//
+fn0
+s2typlst_subst0
+( t2ps
+: s2typlst
+, svts: s2vts): s2typlst =
+(
+case+ svts of
+|
+list_nil
+( (*nil*) ) => t2ps
+|
+list_cons _ =>
+s2typlst_subst0(t2ps, svts))
+(*case+*) // end of [s2typlst_subst0]
+//
+(* ****** ****** *)
+//
+fun
+t2jaglst_subst0
+( t2js
+: t2jaglst
+, svts: s2vts): t2jaglst =
+(
+case+ svts of
+|
+list_nil
+( (*nil*) ) => t2js
+|
+list_cons _ =>
+(
+  list_map(t2js)) where
+
+{
+#typedef x0 = t2jag
+#typedef y0 = t2jag
+#impltmp
+map$fopr
+<x0><y0>(x0) =
+(
+t2jag_make_t2ps
+( loc0 , t2ps )) where
+{
+val loc0 =
+t2jag_get_lctn(x0)
+val t2ps =
+t2jag_get_t2ps(x0)
+val t2ps =
+s2typlst_subst0(t2ps, svts) }
+}
+)(*case+*) // end of [t2jaglst_subst0]
+//
+(* ****** ****** *)
 in (*local*)
 (* ****** ****** *)
 
@@ -153,6 +206,10 @@ tr3cenv_getstmp(env0)
 val // HX: [trtmp3b]
 svts = // guarantees it to
 tr3cenv_getsvts(env0) // exist
+//
+val
+t2js =
+t2jaglst_subst0(t2js, svts)
 //
 val
 dcls =
