@@ -57,10 +57,119 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload node with s2typ_get_node
 (* ****** ****** *)
+#symload lctn with simpl_get_lctn
 #symload node with simpl_get_node
+(* ****** ****** *)
+#symload lctn with dimpl_get_lctn
 #symload node with dimpl_get_node
 (* ****** ****** *)
 #staload _ = "./xsymmap_topmap.dats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2023-11-19:
+This one needs to be called on an
+embedded impltmp before it is pushed
+onto the search path for tmp resolution!
+*)
+#implfun
+d3ecl_impsub
+(tsub, d3cl) =
+(
+case+
+d3cl.node() of
+//
+| D3Cimplmnt0 _ =>
+(
+  f0_implmnt0(d3cl) )
+//
+| _(*otherwise*) =>
+(
+  d3ecl_tmpsub(tsub, d3cl) )
+) where
+{
+//
+fun
+f0_implmnt0
+(d3cl: d3ecl): d3ecl =
+let
+//
+val
+loc0 = d3cl.lctn()
+//
+val-
+D3Cimplmnt0
+( tknd
+, stmp
+, sqas
+, tqas
+, dimp
+, tias, f3as
+, sres, dexp) = d3cl.node()
+//
+val dimp =
+(
+case+
+dimp.node() of
+|
+DIMPLone2
+(d2c0, svts) =>
+let
+val loc1 =
+dimp.lctn((*0*))
+val svts =
+(
+  list_map(svts)) where
+{
+#typedef
+vt = (s2var, s2typ)
+#impltmp
+map$fopr<vt><vt>(vt) =
+( vt.0
+, s2typ_subst0(vt.1, tsub))}
+//
+in//let
+//
+dimpl_make_node
+(loc1, DIMPLone2(d2c0, svts))
+//
+end//let
+| _(* otherwise *) => ( dimp )
+)
+in//let
+//
+(
+d3ecl_tmpsub(tsub, d3cl)
+) where
+{
+val
+d3cl =
+d3ecl_make_node
+(
+loc0,
+D3Cimplmnt0
+(
+tknd, stmp,
+sqas, tqas,
+dimp, tias, f3as, sres, dexp) ) }
+//
+end(*let*)//end-of-[f0_implmnt0(...)]
+//
+}(*where*)//end-of-[d3ecl_impsub(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3ecl_tmpsub
+(tsub, d3cl) =
+let
+val loc0 = d3cl.lctn()
+in//let
+d3ecl(loc0, D3Ctmpsub(tsub, d3cl))
+end(*let*)//end-of-[d3ecl_tmpsub(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -83,12 +192,16 @@ fun
 f0_fundclst
 (d3cl: d3ecl): bool =
 let
+//
 val-
 D3Cfundclst
 ( tknd, tqas
 , d2cs, d3fs) = d3cl.node()
+//
 in//let
-list_exists(d2cs) where
+(
+list_exists(d2cs)
+) where
 {
 #impltmp
 exists$test
@@ -102,6 +215,7 @@ fun
 f0_implmnt0
 (d3cl: d3ecl): bool =
 let
+//
 val-
 D3Cimplmnt0
 ( tknd
@@ -825,8 +939,21 @@ in (*local*)
 tmpmatch_d3cl_t2js
   (d3cl, t2js) =
 (
+  f0_main(d3cl, t2js)
+) where
+{
+(* ****** ****** *)
+//
+fun
+f0_main
+( d3cl
+: d3ecl
+, t2js
+: t2jaglst): optn(s2vts) =
+(
 case+
 d3cl.node() of
+//
 |
 D3Cimplmnt0
 ( tok0
@@ -839,24 +966,49 @@ case+
 dimp.node() of
 //
 |
-DIMPLone2(_(*dcst*), svts) =>
+DIMPLone2
+(_(*dcst*), svts) =>
 (
-f0_targmat(svts, t2js, sqas, tqas))
+  f0_targmat
+  (svts, t2js, sqas, tqas) )
+//
+|
+_(*otherwise*) => optn_nil((*void*))
+//
+) (*case+*)//end-of-[D3Cimplmnt0(...)]
+//
+|
+D3Ctmpsub
+(tsub, dcl1) =>
+let
+val
+topt = f0_main(dcl1, t2js)
+in//let
+//
+case+ topt of
+|
+optn_nil() => optn_nil()
+|
+optn_cons(svts) =>
+optn_cons(list_append(svts, tsub))
+//
+end(*let*) // end of [ D3Ctmpsub(...) ]
 //
 | _(* otherwise *) => optn_nil((*void*))
 //
-)
+) (*case+*) // end-of-[f0_main(d3cl,t2js)]
 //
-| _(* otherwise *) => optn_nil((*void*))
+(* ****** ****** *)
 //
-) where
-{
+} where {
+//
 (*
 val () =
 prerrln("tmpmatch_d3cl_t2js: d3cl = ", d3cl)
 val () =
 prerrln("tmpmatch_d3cl_t2js: t2js = ", t2js)
 *)
+//
 }(*where*)//end-of-[tmpmatch_d3cl_t2js(d3cl,t2js)]
 //
 (* ****** ****** *)

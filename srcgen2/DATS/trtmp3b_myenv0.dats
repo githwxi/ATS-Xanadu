@@ -444,7 +444,7 @@ D3Cfundclst _ =>
   d3ecl_impld2cq(dcl, d2c) )
 //
 |
-D3Cimpltmp _ =>
+D3Cimplmnt0 _ =>
 (
   d3ecl_impld2cq(dcl, d2c) )
 //

@@ -359,6 +359,13 @@ D3Cimplmnt0
 , tias, f3as
 , sres, dexp) = d3cl.node()
 //
+// (*
+val () =
+prerrln
+("\
+f0_implmnt0(3c): dimp = ", dimp)
+// *)
+//
 in//let
 //
 if
