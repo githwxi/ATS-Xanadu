@@ -227,12 +227,14 @@ tmqstk_getsvts
 (* ****** ****** *)
 //
 fun
-tmqstk_insert_timp
-  (&tmqstk >> _, timpl):(void)
-//
-fun
 tmqstk_insert_decl
   (&tmqstk >> _, d3ecl):(void)
+//
+fun
+tmqstk_insert_timp
+(stk0:
+&tmqstk >> _
+,stmp:stamp,d3cl:d3ecl):(void)
 //
 (* ****** ****** *)
 //
@@ -456,9 +458,17 @@ tr3cenv_getstmp
 fun
 tr3cenv_getsvts
 (env0: !tr3cenv): s2vts
+//
+fun
+tr3cenv_insert_timp
+( env0:
+! tr3cenv,
+  stmp: stamp, d3cl: d3ecl ): (void)
+//
 fun
 tr3cenv_insert_decl
 (env0: !tr3cenv, d3cl: d3ecl): (void)
+//
 fun
 tr3cenv_search_dcst
 (env0: !tr3cenv, dcst: d2cst): d3eclist_vt

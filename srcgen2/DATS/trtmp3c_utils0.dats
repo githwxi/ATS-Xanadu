@@ -137,8 +137,10 @@ timp.node() of
 |
 TIMPLallx _ => timp
 |
-TIMPLall1 _ => f0_all1(env0, timp)
-) where
+TIMPLall1 _ =>
+(
+ f0_all1(env0, timp))
+) where//end-of(case+)
 {
 //
 fun
@@ -168,20 +170,29 @@ let
 //
 val-
 D3Ctmpsub
-(svts, dcl1) = dcl1.node()
+(svts, dcl2) = dcl1.node()
 //
 val () =
 tr3cenv_pshsvts(env0, svts)
 //
-val dcl1 =
-trtmp3c_impltmpq(env0, dcl1)
+val dcl2 =
+let
+val dcl3 =
+d3ecl_impsub
+(svts, dcl2)//val(dcl2)
+val () =
+tr3cenv_insert_timp
+(env0 , stmp , dcl3)//val()
+in//let
+trtmp3c_impltmpq(env0, dcl2)
+end//let//end-of-[val(dcl2)]
 //
 val () = tr3cenv_popsvts(env0)
 //
 in//let
 let
 val dcl1 =
-d3ecl_tmpsub(svts, dcl1)
+d3ecl_tmpsub(svts, dcl2)
 val dcls = list_cons(dcl1, dcls)
 in//let
 timpl(stmp, TIMPLallx(d2c0, dcls))
