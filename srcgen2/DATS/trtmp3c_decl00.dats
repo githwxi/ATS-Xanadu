@@ -399,7 +399,7 @@ end(*let*)//end-of-[f0_implmnt0(env0,d3cl)]
 (* ****** ****** *)
 //
 #implfun
-trtmp3c_impltmp
+trtmp3c_impltmpq
   (env0, d3cl) =
 (
 case+
@@ -457,11 +457,11 @@ end(*let*)//end-of-[f0_implmnt0(env0,d3cl)]
 //
 val () =
 (
-  prerrln("trtmp3c_impltmp: d3cl = ", d3cl))
+  prerrln("trtmp3c_impltmpq: d3cl = ", d3cl))
 //
 (* ****** ****** *)
 //
-}(*where*)//end-of-[trtmp3c_impltmp(env0,d3cl)]
+}(*where*)//end-of-[trtmp3c_impltmpq(env0,d3cl)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

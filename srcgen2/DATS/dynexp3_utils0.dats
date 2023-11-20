@@ -1012,7 +1012,7 @@ prerrln("tmpmatch_d3cl_t2js: t2js = ", t2js)
 }(*where*)//end-of-[tmpmatch_d3cl_t2js(d3cl,t2js)]
 //
 (* ****** ****** *)
-end(*local*) // end-of-[local(tr3benv_tapq_resolve)]
+end(*local*)//end-of-[local(tmpmatch_d3cl_t2js...)]
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_dynexp3_utils0.dats] *)
