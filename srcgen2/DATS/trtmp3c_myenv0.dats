@@ -604,21 +604,23 @@ list_nil
 ((*void*)) => d3cl
 |
 list_cons _ =>
-let
-val loc0 =
-d3cl.lctn((*void*))
-in//let
-d3ecl_make_node
-(loc0, D3Ctmpsub(tsub, d3cl))
-end(*let*)//end-of-[list_cons]
-)
+d3ecl_impsub(tsub, d3cl))
 //
 val tag0 =
 the_tmqstk_stamp_new((*void*))
 //
 in//let
-  stk0 := tmqstk_decl(tag0, d3cl, stk0)
-end (*let*)//end-of-[tmqstk_insert_decl(...)]
+(
+  stk0 :=
+  tmqstk_decl(tag0, d3cl, stk0) )
+end where
+{
+// (*
+val () =
+prerrln
+("tmqstk_insert_decl: d3cl = ", d3cl)
+// *)
+}(*where*)//end-of-[tmqstk_insert_decl(...)]
 //
 (* ****** ****** *)
 //
@@ -649,9 +651,13 @@ D3Cfundclst _ =>
   d3ecl_impld2cq(dcl, d2c) )
 //
 |
-D3Cimpltmp _ =>
+D3Cimplmnt0 _ =>
 (
   d3ecl_impld2cq(dcl, d2c) )
+//
+|
+D3Ctmpsub
+(tsub, dcl2) => test(dcl2, d2c)
 //
 |
 D3Ctmplocal
@@ -662,7 +668,7 @@ _(* otherwise *) => (   false   )
 ) where
 {
 //
-(*
+// (*
 //
 val () =
 prerr("tmqstk_search_dcst:")//val()
@@ -674,7 +680,7 @@ prerr("tmqstk_search_dcst:")//val()
 val () =
 prerrln("test: d2c = ", d2c)//val()
 //
-*)
+// *)
 //
 }(*where*) // end of [test(dcl, d2c)]
 //
@@ -710,7 +716,8 @@ tmqstk_nil() => ( res )
 | !
 tmqstk_decl
 (tmp, dcl, kxs) =>
-loop(kxs, d2c, res) where
+(
+loop(kxs,d2c,res) ) where
 {
 //
 val res =
@@ -725,7 +732,8 @@ val res =
   test(dcl, d2c)
   then
   list_vt_cons(dcl, res) else res)
-}
+//
+}(*where*)//end-of-[tmqstk_decl(...)]
 //
 | !
 tmqstk_svts
@@ -742,7 +750,22 @@ tmqstk_loc1(kxs) => loop(kxs,d2c,res)
 | !
 tmqstk_loc2(kxs) => loop(kxs,d2c,res)
 //
-)(*case+*) // end of [loop(kxs,d2c,res)]
+) where
+{
+//
+(*
+val () =
+prerr("tmqstk_search_dcst:")
+val () = prerrln("loop: d2c = ", d2c)
+*)
+//
+(*
+val () =
+prerr("tmqstk_search_dcst:")
+val () = prerrln("loop: res = ", res)
+*)
+//
+}(*where*) // end of [loop(kxs,d2c,res)]
 //
 (*
 val () =

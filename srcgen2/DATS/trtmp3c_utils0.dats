@@ -243,19 +243,27 @@ in//let
 case+ opt1 of
 |optn_nil
 ((*void*)) => filter( dcls )
-|optn_cons
-(  tsub  ) =>
+|optn_cons(tsub) =>
 let
 //
 val
-dcl1 = d3ecl_tmpsub(tsub,dcl1)
+dcl1 =
+(
+case+
+dcl1.node() of
+|D3Ctmpsub(_, dcl1) =>
+(
+  d3ecl_tmpsub(tsub,dcl1))
+|_(*non-D3Ctmpsub*) =>
+(
+  d3ecl_tmpsub(tsub,dcl1)))
 //
-(*
+// (*
 val (  ) =
 prerr("tr3cenv_tapq_resolve:")
 val (  ) =
 prerrln("filter: dcl1 = ", dcl1)
-*)
+// *)
 //
 in//let
 (
