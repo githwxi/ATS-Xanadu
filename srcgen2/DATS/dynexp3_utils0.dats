@@ -352,6 +352,173 @@ prerrln("static_search_dcst: d2c0 = ", d2c0)
 (* ****** ****** *)
 
 local
+//
+fun
+f0_targequ
+(svts: s2vts
+,t2js: t2jaglst): bool =
+(
+  f1_svts_t2js(svts, t2js)
+) where {
+//
+fun
+f1_svts_t2js
+( svts: s2vts
+, t2js: t2jaglst): bool =
+(
+case+ svts of
+|
+list_nil((*void*)) => true
+|
+list_cons(svt1, svts) =>
+f1_svt1_svts_t2js(svt1,svts,t2js)
+)(*case+*)//end-of-[f1_svts_t2js]
+//
+and
+f1_svt1_svts_t2js
+( svt1: s2vt1
+, svts: s2vts
+, t2js: t2jaglst): bool =
+(
+case+ t2js of
+|
+list_nil() => true
+|
+list_cons(t2j1, t2js) =>
+let
+val tjps = t2j1.t2ps()
+in//let
+(
+  f1_svt1_svts_tjps_t2js
+  ( svt1 , svts , tjps , t2js ) )
+end//let//end-of-[list_cons(...)]
+)(*case+*)//end-of-[f1_svt1_svts_t2js]
+//
+and
+f1_svt1_svts_tjps_t2js
+( svt1: s2vt1
+, svts: s2vts
+, tjps: s2typlst
+, t2js: t2jaglst): bool =
+(
+case+ tjps of
+|
+list_nil() =>
+(
+f1_svt1_svts_t2js
+(svt1 , svts , t2js))
+|
+list_cons(tjp1, tjps) =>
+let
+//
+val
+ans1 =
+f2_svt1_tjp1(svt1, tjp1)
+//
+in//let
+//
+case+ ans1 of
+| false => false
+| (true) =>
+(
+case+ svts of
+|list_nil((*0*)) => true
+|list_cons(svt1, svts) =>
+(
+  f1_svt1_svts_tjps_t2js
+  ( svt1 , svts , tjps , t2js ) ) )
+//
+endlet//end-of-[list_cons(t2j1,t2js)]
+)(*case+*)//end-[f1_svt1_svts_tjps_t2js]
+//
+} where {
+//
+#typedef
+s2vt1 = (s2var, s2typ)
+//
+fun
+f2_svt1_tjp1
+( svt1: s2vt1
+, tjp1: s2typ): bool = false
+//
+val () =
+(
+  prerrln("f0_targequ: svts = ", svts))
+val () =
+(
+  prerrln("f0_targequ: t2js = ", t2js))
+//
+}(*where*) // end-of-[ f0_targequ(svts,t2js) ]
+//
+(* ****** *)
+in (*local*)
+(* ****** *)
+//
+#implfun
+tmpequal_d3cl_t2js
+  (d3cl, t2js) =
+(
+  f0_main(d3cl, t2js)
+) where
+{
+//
+fun
+f0_main
+( d3cl
+: d3ecl
+, t2js
+: t2jaglst): bool =
+(
+case+
+d3cl.node() of
+//
+|
+D3Cimplmnt0
+( tok0
+, stmp
+, sqas, tqas
+, dimp, t2is
+, f3as, sres, body) =>
+(
+case+
+dimp.node() of
+//
+|
+DIMPLone2
+(_(*dcst*), svts) =>
+(
+  f0_targequ(svts, t2js) )
+//
+|
+_(*otherwise*) => ( false )
+//
+) (*case+*)//end-of-[D3Cimplmnt0(...)]
+//
+|
+D3Ctmpsub
+(tsub, dcl1) => f0_main(dcl1, t2js)
+//
+| _(* otherwise *) => (     false     )
+//
+) (*case+*) // end-of-[f0_main(d3cl,t2js)]
+//
+} where {
+//
+(*
+val () =
+prerrln("tmpequal_d3cl_t2js: d3cl = ", d3cl)
+val () =
+prerrln("tmpequal_d3cl_t2js: t2js = ", t2js)
+*)
+//
+}(*where*)//end-of-[tmpequal_d3cl_t2js(d3cl,t2js)]
+//
+(* ****** ****** *)
+end(*local*)//end-of-[local(tmpequal_d3cl_t2js...)]
+(* ****** ****** *)
+(* ****** ****** *)
+
+local
 
 fun
 f1_s2extq
@@ -1013,6 +1180,7 @@ prerrln("tmpmatch_d3cl_t2js: t2js = ", t2js)
 //
 (* ****** ****** *)
 end(*local*)//end-of-[local(tmpmatch_d3cl_t2js...)]
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_dynexp3_utils0.dats] *)
