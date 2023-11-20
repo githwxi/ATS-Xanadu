@@ -86,8 +86,7 @@ tmqstk =
   ( s2vts, tmqstk )
 //
 | tmqstk_timp of
-  ( timpl, tmqstk )
-//
+  (stamp, d3ecl, tmqstk)
 | tmqstk_decl of
   (stamp, d3ecl, tmqstk)
 //
@@ -451,7 +450,7 @@ tmqstk_svts
 //
 | !
 tmqstk_timp
-( timp,kxs ) => loop(kxs, err)
+(k1, x1, kxs) => loop(kxs, err)
 | ~
 tmqstk_decl
 (k1, x1, kxs) => loop(kxs, err)
@@ -493,7 +492,7 @@ tmqstk_svts
   tmqstk_getstmp(stk1))
 | !
 tmqstk_timp
-(timp, stk1) =>
+(_, _, stk1) =>
 (
   tmqstk_getstmp(stk1))
 //
@@ -537,7 +536,7 @@ tmqstk_svts
 //
 | !
 tmqstk_timp
-(timp, stk1) =>
+(_, _, stk1) =>
 (
   tmqstk_getsvts(stk1))
 //
@@ -574,16 +573,22 @@ tmqstk_nil() => list_nil(*void*)
 //
 #implfun
 tmqstk_insert_timp
-  (stk0, timp) =
+(stk0, stmp, d3cl) =
 (
 stk0 :=
-tmqstk_timp(timp, stk0)) where
+tmqstk_timp
+(stmp, d3cl, stk0)) where
 {
-(*
+//
+// (*
 val () =
 prerrln
-("tmqstk_insert_timp: timp = ", timp)
-*)
+("tmqstk_insert_timp: stmp = ", stmp)
+val () =
+prerrln
+("tmqstk_insert_timp: d3cl = ", d3cl)
+// *)
+//
 }(*where*)//end-of-[tmqstk_insert_timp(...)]
 //
 (* ****** ****** *)
@@ -606,13 +611,13 @@ list_nil
 list_cons _ =>
 d3ecl_impsub(tsub, d3cl))
 //
-val tag0 =
+val stmp =
 the_tmqstk_stamp_new((*void*))
 //
 in//let
 (
   stk0 :=
-  tmqstk_decl(tag0, d3cl, stk0) )
+  tmqstk_decl(stmp, d3cl, stk0) )
 end where
 {
 // (*
@@ -711,7 +716,8 @@ loop
 case+ kxs of
 //
 | !
-tmqstk_nil() => ( res )
+tmqstk_nil
+( (*nil*) ) => ( res )
 //
 | !
 tmqstk_decl
@@ -733,14 +739,14 @@ val res =
   then
   list_vt_cons(dcl, res) else res)
 //
-}(*where*)//end-of-[tmqstk_decl(...)]
+}(*where*)//end-of[tmqstk_decl(...)]
 //
 | !
 tmqstk_svts
-(_(*svts*), kxs) => loop(kxs,d2c,res)
+(_(*svts*),kxs) => loop(kxs,d2c,res)
 | !
 tmqstk_timp
-(_(*timp*), kxs) => loop(kxs,d2c,res)
+(tmp, dcl, kxs) => loop(kxs,d2c,res)
 //
 | !
 tmqstk_let0(kxs) => loop(kxs,d2c,res)
@@ -971,6 +977,25 @@ end//let
 end(*let*)//end-of-(tr3cenv_getsvts(env0))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+tr3cenv_insert_timp
+( env0, stmp, d3cl ) =
+let
+//
+val+
+@TR3CENV
+(topmap, !tmqstk) = env0
+//
+in//let
+//
+(
+tmqstk_insert_timp
+(tmqstk, stmp, d3cl) ; $fold(env0) )
+//
+end(*let*)//end-of-(tr3cenv_insert_timp(env0))
+//
 (* ****** ****** *)
 //
 #implfun
