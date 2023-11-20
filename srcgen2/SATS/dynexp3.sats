@@ -1047,6 +1047,9 @@ static_search_dcst
 (* ****** ****** *)
 //
 fun
+tmpequal_d3cl_t2js
+(d3cl: d3ecl, t2js: t2jaglst): (bool)
+fun
 tmpmatch_d3cl_t2js
 (d3cl: d3ecl, t2js: t2jaglst): optn(s2vts)
 //
