@@ -285,22 +285,27 @@ end//let//end-of-[list_cons(...)]
 //
 } where {
 //
+(*
+HX:
+The stamp is for the
+stack of tmplt resolution
+*)
+val
+stmp = tr3cenv_getstmp(env0)
+(*
+HX:
+[trtmp3b]
+guarantees [svts] to exist
+*)
+val
+svts = tr3cenv_getsvts(env0) 
+//
 val () =
 prerrln
 ("tr3cenv_tapq_resolve: d2c0 = ", d2c0)
 val () =
 prerrln
 ("tr3cenv_tapq_resolve: t2js = ", t2js)
-//
-val
-stmp = tr3cenv_getstmp(env0)
-(*
-// HX:
-// [trtmp3b]
-// guarantees it to exist
-*)
-val
-svts = tr3cenv_getsvts(env0) 
 //
 val () =
 prerrln

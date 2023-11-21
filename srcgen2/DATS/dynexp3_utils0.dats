@@ -143,6 +143,7 @@ in//let
 d3ecl_tmpsub(tsub, d3cl)
 ) where
 {
+//
 val
 d3cl =
 d3ecl_make_node
@@ -152,7 +153,16 @@ D3Cimplmnt0
 (
 tknd, stmp,
 sqas, tqas,
-dimp, tias, f3as, sres, dexp) ) }
+dimp, tias, f3as, sres, dexp) )
+where
+{
+(*
+HX: re-stamping is needed
+*)
+val stmp = the_d3imp_stamp_new()
+}(*where*)
+//
+}(*where*)
 //
 end(*let*)//end-of-[f0_implmnt0(...)]
 //
