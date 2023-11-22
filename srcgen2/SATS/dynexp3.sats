@@ -690,7 +690,6 @@ d3ecl_node =
 |D3Cextern of
  (token(*EXTERN*), d3ecl)
 //
-|D3Ctmprec of (d3ecl)
 |D3Ctmpsub of
  (s2vts(*tmpsub*), d3ecl)
 //
@@ -753,6 +752,10 @@ D3Cimplmnt1 of
 |
 D3Ctmplocal of
 ( d3ecl(*impltmp*), d3eclist(*local*))
+//
+|
+D3Cimpltmpr of
+( d3ecl(*impltmp*), t2jaglst(*tmparg*))
 //
 |
 D3Cnone0 of ((*nil*))
@@ -836,6 +839,10 @@ d3ecl_tmpsub
 (tsub:s2vts,d3cl:d3ecl):(d3ecl)
 //
 (* ****** ****** *)
+fun
+d3ecl_impltmpr
+(test:stamp,d3cl:d3ecl):(d3ecl)
+(* ****** ****** *)
 //
 fun
 d3ecl_impld2cq
@@ -849,6 +856,7 @@ d3ecl_impltmpq(d3ecl): ( bool )
 //
 fun
 d3ecl_get_lctn(d3ecl): ( loc_t )
+//
 fun
 d3ecl_get_node(d3ecl): d3ecl_node
 //
@@ -858,6 +866,11 @@ d3ecl_get_node(d3ecl): d3ecl_node
 (* ****** ****** *)
 fun
 the_d3imp_stamp_new((*0*)): stamp
+(* ****** ****** *)
+fun
+d3imp_get_stmp(d3cl:d3ecl): stamp
+(* ****** ****** *)
+#symload stmp with d3imp_get_stmp
 (* ****** ****** *)
 fun
 d3ecl_make_node

@@ -341,25 +341,23 @@ list_vt_cons
 (dcl1, dcls) =>
 (
 if
-test
+stamp_nilq(test)
 then
+list_vt_cons(dcl1, dcls)
+else
 (
 if
 d3ecl_impltmprq(dcl1)
 then
+(
 list_vt_cons(dcl1, dcls)
-(*
-where
-{
-val
-dcl1 =
-d3ecl_tmprec(dcl1, t2js) }
-*)
-else impltmprec(env0, dcls)
-)
-else list_vt_cons(dcl1, dcls)
 ) where {
-val test =
+val dcl1 =
+d3ecl_impltmpr(test, dcl1)
+}//whr//end-of-then
+else impltmprec(env0, dcls))
+) where {
+val test = // test: stamp
 tr3cenv_impltmprecq(env0, dcl1, t2js)
 }(*where*) // end of [ list_cons(...) ]
 

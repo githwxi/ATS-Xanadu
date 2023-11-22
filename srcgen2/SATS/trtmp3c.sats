@@ -481,11 +481,15 @@ tr3cenv_search_dcst
 (env0: !tr3cenv, dcst: d2cst): d3eclist_vt
 //
 (* ****** ****** *)
+(*
+HX-2023-11-22:
+[stamp_nil] indicates no recursion
+*)
 fun
 tr3cenv_impltmprecq
 ( env0:
 ! tr3cenv
-, d3cl: d3ecl, t2js: t2jaglst): bool
+, d3cl: d3ecl, t2js: t2jaglst): stamp
 (* ****** ****** *)
 //
 fun
