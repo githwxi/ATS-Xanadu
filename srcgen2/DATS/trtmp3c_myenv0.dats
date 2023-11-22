@@ -83,7 +83,7 @@ tmqstk =
 | tmqstk_nil of ()
 //
 | tmqstk_svts of
-  ( s2vts, tmqstk )
+  (sint, s2vts, tmqstk)
 //
 | tmqstk_timp of
   (stamp, d3ecl, tmqstk)
@@ -163,10 +163,14 @@ tmqstk_pshloc2
 #implfun
 tmqstk_pshsvts
 ( stk0, svts ) =
+let
+val
+nimp = tmqstk_getnimp(stk0)
+in//let
 (
-  stk0 :=
-  tmqstk_svts( svts, stk0 ))
-//(*end of [tmqstk_pshsvts(stk0)]*)
+stk0 :=
+tmqstk_svts(nimp+1, svts, stk0))
+end(*let*)//end[tmqstk_pshsvts(...)]
 //
 (* ****** ****** *)
 //
@@ -446,7 +450,7 @@ case+ kxs of
 //
 | ~
 tmqstk_svts
-( svts,kxs ) => kxs // err = 0
+( _, _, kxs) => kxs // err = 0
 //
 | !
 tmqstk_timp
@@ -480,14 +484,67 @@ end (*let*) // end of [tmqstk_poplet0(stk)]
 (* ****** ****** *)
 //
 #implfun
+tmqstk_getnimp
+  (  stk0  ) =
+(
+case+ stk0 of
+//
+| !
+tmqstk_nil
+((*void*)) => (  0  )
+//
+| !
+tmqstk_svts
+( nimp
+, svts, stk1) => nimp
+//
+| !
+tmqstk_timp
+(_, _, stk1) =>
+(
+  tmqstk_getnimp(stk1))
+//
+| !
+tmqstk_decl
+(_, _, stk1) =>
+(
+  tmqstk_getnimp(stk1))
+//
+| !
+tmqstk_let0
+(   stk1   ) =>
+(
+  tmqstk_getnimp(stk1))
+//
+| !
+tmqstk_loc1
+(   stk1   ) =>
+(
+  tmqstk_getnimp(stk1))
+| !
+tmqstk_loc2
+(   stk1   ) =>
+(
+  tmqstk_getnimp(stk1))
+//
+) (*case+*) // end of [tmqstk_getnimp(stk0)]
+//
+(* ****** ****** *)
+//
+#implfun
 tmqstk_getstmp
   (  stk0  ) =
 (
 case+ stk0 of
 //
 | !
+tmqstk_nil
+( (*nil*) ) =>
+( the_stamp_nil )
+//
+| !
 tmqstk_svts
-(svts, stk1) =>
+(_, _, stk1) =>
 (
   tmqstk_getstmp(stk1))
 | !
@@ -517,9 +574,6 @@ tmqstk_loc2
 (
   tmqstk_getstmp(stk1))
 //
-| !
-tmqstk_nil() => the_stamp_nil
-//
 ) (*case+*) // end of [tmqstk_getstmp(stk0)]
 //
 (* ****** ****** *)
@@ -531,8 +585,15 @@ tmqstk_getsvts
 case+ stk0 of
 //
 | !
+tmqstk_nil
+((*void*)) =>
+(
+  list_nil(*void*))
+//
+| !
 tmqstk_svts
-(svts, stk1) => (svts)
+( nimp
+, svts, stk1) => svts
 //
 | !
 tmqstk_timp
@@ -562,9 +623,6 @@ tmqstk_loc2
 (   stk1   ) =>
 (
   tmqstk_getsvts(stk1))
-//
-| !
-tmqstk_nil() => list_nil(*void*)
 //
 ) (*case+*) // end of [tmqstk_getsvts(stk0)]
 //
@@ -743,7 +801,7 @@ val res =
 //
 | !
 tmqstk_svts
-(_(*svts*),kxs) => loop(kxs,d2c,res)
+(imp, vts, kxs) => loop(kxs,d2c,res)
 | !
 tmqstk_timp
 (tmp, dcl, kxs) => loop(kxs,d2c,res)
@@ -939,6 +997,24 @@ end(*let*)//end-of-(tr3cenv_popsvts(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#implfun
+tr3cenv_getnimp
+(     env0     ) = let
+//
+val+
+@TR3CENV
+(topmap, !tmqstk) = env0
+//
+in//let
+//
+let
+val nimp =
+tmqstk_getnimp
+  (  tmqstk  ) in $fold(env0); nimp
+end//let
+//
+end(*let*)//end-of-(tr3cenv_getnimp(env0))
 //
 #implfun
 tr3cenv_getstmp
