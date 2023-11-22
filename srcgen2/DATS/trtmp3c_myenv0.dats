@@ -1113,10 +1113,92 @@ end(*let*)//end-of-(tr3cenv_search_dcst(env0))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+tmqstk_impltmprecq
+( stk0:
+! tmqstk
+, d3cl: stamp
+, t2js: t2jaglst): stamp =
+(
+case+ stk0 of
+|
+tmqstk_nil
+( (*nil*) ) =>
+the_stamp_nil(*void*)
+//
+|
+tmqstk_timp
+(stmp, dcl1, stk1) =>
+let
+val
+test =
+tmpequal_d3cl_t2js(dcl1, t2js)
+in//let
+if test
+then stmp else
+tmqstk_impltmprecq(stk1,d3cl,t2js)
+end//let//end-of-[tmqstk_timp(...)]
+//
+|
+tmqstk_svts
+(_, _, stk1) =>
+tmqstk_impltmprecq(stk1, d3cl, t2js)
+//
+|
+tmqstk_decl
+(_, _, stk1) =>
+tmqstk_impltmprecq(stk1, d3cl, t2js)
+//
+|
+tmqstk_let0(stk1) =>
+tmqstk_impltmprecq(stk1, d3cl, t2js)
+|
+tmqstk_loc1(stk1) =>
+tmqstk_impltmprecq(stk1, d3cl, t2js)
+|
+tmqstk_loc2(stk1) =>
+tmqstk_impltmprecq(stk1, d3cl, t2js)
+//
+) where
+{
+//
+val () =
+prerrln("tmqstk_impltmprecq: d3cl = ", d3cl)
+val () =
+prerrln("tmqstk_impltmprecq: t2js = ", t2js)
+//
+}(*where*) // end-of-[tmqstk_impltmprecq(...)]
+//
+#implfun
+tr3cenv_impltmprecq
+(env0, d3cl, t2js) =
+let
+//
+val
+tmp0 =
+d3imp_get_stmp(d3cl)
+//
+val+
+@TR3CENV
+(topmap, !tmqstk) = env0
+//
+in//let
+//
+let
+val test =
+tmqstk_impltmprecq
+(tmqstk, tmp0, t2js) in $fold(env0); test
+end//let
+//
+end(*let*) // end-of-(tr3cenv_impltmprecq(env0))
+//
+(* ****** ****** *)
+//
 (*
-endloc (*local*) // end of [local(tr3cenv...)]
+endloc (*local*) // end of [ local(tr3cenv...) ]
 *)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trtmp3c_myenv0.dats] *)

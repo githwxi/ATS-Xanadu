@@ -643,6 +643,11 @@ D3Ctmplocal
 (
 print("D3Ctmplocal(",dtmp,";",dcls,")"))
 //
+|
+D3Cimpltmpr(dcl1,t2js) =>
+(
+print("D3Cimpltmpr(",dcl1,";",t2js,")"))
+//
 |D3Cnone0() => print( "D3Cnone0(", ")" )
 |D3Cnone1(d2cl) => print( "D3Cnone1(",d2cl,")" )
 |D3Cnone2(d3cl) => print( "D3Cnone2(",d3cl,")" )
