@@ -421,14 +421,13 @@ end (*let*)//end-of-[tmpstk_insert_decl(...)]
 tmpstk_search_dcst
   (stk0, dcst) =
 (
-list_vt_reverse0(res) where
-{
+list_vt_reverse0(res)
+) where {
 val
-res = list_vt_nil(*void*)
+res = list_vt_nil(*0*)
 val
-res = loop(stk0, dcst, res) }
-) where
-{
+res = loop(stk0,dcst,res)
+} where {
 //
 fun
 test
@@ -441,12 +440,12 @@ dcl.node() of
 |
 D3Cfundclst _ =>
 (
-  d3ecl_impld2cq(dcl, d2c) )
+  d3imp_d2csteq(dcl, d2c) )
 //
 |
 D3Cimplmnt0 _ =>
 (
-  d3ecl_impld2cq(dcl, d2c) )
+  d3imp_d2csteq(dcl, d2c) )
 //
 |
 D3Ctmplocal

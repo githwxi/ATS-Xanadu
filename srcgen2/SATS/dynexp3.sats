@@ -845,12 +845,12 @@ d3ecl_impltmpr
 (* ****** ****** *)
 //
 fun
-d3ecl_impld2cq
+d3imp_d2csteq
 (d3cl:d3ecl,d2c0:d2cst): bool
-(* ****** ****** *)
 //
 fun
-d3ecl_impltmpq(d3ecl): ( bool )
+d3imp_stampeq
+(d3cl:d3ecl,stmp:stamp): bool
 //
 (* ****** ****** *)
 //

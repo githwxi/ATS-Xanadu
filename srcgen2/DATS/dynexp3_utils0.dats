@@ -47,6 +47,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
+#staload "./../SATS/xstamp0.sats"
+(* ****** ****** *)
 #staload "./../SATS/xsymmap.sats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
@@ -183,7 +185,7 @@ end(*let*)//end-of-[d3ecl_tmpsub(...)]
 (* ****** ****** *)
 //
 #implfun
-d3ecl_impld2cq
+d3imp_d2csteq
 ( d3cl, d2c0 ) =
 (
 case+
@@ -218,9 +220,9 @@ exists$test
 <  d2cst  >(d2c1) = (d2c0 = d2c1)
 }
 end (*let*) // end of [f0_fundclst(...)]
-
+//
 (* ****** ******)
-
+//
 fun
 f0_implmnt0
 (d3cl: d3ecl): bool =
@@ -247,7 +249,80 @@ dimp.node() of
 //
 end (*let*) // end of [f0_implmnt0(...)]
 //
-} (*where*) // end of [d3ecl_impld2cq(...)]
+} (*where*) // end of [d3imp_d2csteq(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3imp_stampeq
+( d3cl, tmp0 ) =
+(
+case+
+d3cl.node() of
+|
+D3Cimplmnt0 _ => f0_implmnt0(d3cl)
+//
+| _(* otherwise *) => (   false   )
+//
+) where
+{
+//
+fun
+f0_implmnt0
+(d3cl: d3ecl): bool =
+let
+//
+val-
+D3Cimplmnt0
+( tknd
+, tmp1(*unicity*)
+, sqas, tqas
+, dimp
+, tias, f3as
+, sres, dexp) = d3cl.node()
+//
+in//let
+//
+if tmp0 = tmp1 then true else false
+//
+end (*let*) // end of [f0_implmnt0(...)]
+//
+} (*where*) // end of [d3imp_stampeq(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3imp_get_stmp
+  ( d3cl ) =
+(
+case+
+d3cl.node() of
+//
+|
+D3Cimplmnt0
+( tknd
+, stmp
+, sqas, tqas
+, dimp
+, tias, f3as
+, sres, dexp) => stmp
+//
+|
+D3Ctmpsub
+(svts, d3cl) =>
+(
+  d3imp_get_stmp(d3cl))
+//
+|
+D3Ctmplocal
+(d3cl, dcls) =>
+(
+  d3imp_get_stmp(d3cl))
+//
+|
+_(* otherwise *) => the_stamp_nil(*0*)
+//
+)(*case+*) // end of [d3imp_get_stmp(...)]
 //
 (* ****** ****** *)
 //

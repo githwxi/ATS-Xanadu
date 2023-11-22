@@ -691,14 +691,13 @@ prerrln
 tmqstk_search_dcst
   (stk0, dcst) =
 (
-list_vt_reverse0(res) where
-{
+list_vt_reverse0(res)
+) where {
 val
-res = list_vt_nil(*void*)
+res = list_vt_nil(*0*)
 val
-res = loop(stk0, dcst, res) }
-) where
-{
+res = loop(stk0,dcst,res)
+} where {
 //
 fun
 test
@@ -711,12 +710,12 @@ dcl.node() of
 |
 D3Cfundclst _ =>
 (
-  d3ecl_impld2cq(dcl, d2c) )
+  d3imp_d2csteq(dcl, d2c) )
 //
 |
 D3Cimplmnt0 _ =>
 (
-  d3ecl_impld2cq(dcl, d2c) )
+  d3imp_d2csteq(dcl, d2c) )
 //
 |
 D3Ctmpsub
@@ -1129,6 +1128,12 @@ the_stamp_nil(*void*)
 |
 tmqstk_timp
 (stmp, dcl1, stk1) =>
+(
+if
+d3imp_stampeq
+(dcl1 , d3cl)
+then
+(
 let
 val
 test =
@@ -1137,7 +1142,18 @@ in//let
 if test
 then stmp else
 tmqstk_impltmprecq(stk1,d3cl,t2js)
-end//let//end-of-[tmqstk_timp(...)]
+end//let// end-of-then
+) else
+tmqstk_impltmprecq(stk1,d3cl,t2js)
+) where
+{
+//
+val () =
+prerr("tmqstk_impltmprecq:")
+val () =
+prerrln("tmpstk_timp: dcl1 = ", dcl1)
+//
+}(*where*)//end-of-[tmqstk_timp(...)]
 //
 |
 tmqstk_svts
@@ -1146,7 +1162,8 @@ tmqstk_impltmprecq(stk1, d3cl, t2js)
 //
 |
 tmqstk_decl
-(_, _, stk1) =>
+(stmp
+,dcl1, stk1) => // HX: speedup?
 tmqstk_impltmprecq(stk1, d3cl, t2js)
 //
 |
@@ -1162,7 +1179,7 @@ tmqstk_impltmprecq(stk1, d3cl, t2js)
 ) where
 {
 //
-val () =
+val () = // d3cl: stamp
 prerrln("tmqstk_impltmprecq: d3cl = ", d3cl)
 val () =
 prerrln("tmqstk_impltmprecq: t2js = ", t2js)
@@ -1190,7 +1207,15 @@ tmqstk_impltmprecq
 (tmqstk, tmp0, t2js) in $fold(env0); test
 end//let
 //
-end(*let*) // end-of-(tr3cenv_impltmprecq(env0))
+end where
+{
+//
+val () =
+prerrln("tr3cenv_impltmprecq: d3cl = ", d3cl)
+val () =
+prerrln("tr3cenv_impltmprecq: t2js = ", t2js)
+//
+}(*where*) // end-of-(tr3cenv_impltmprecq(env0))
 //
 (* ****** ****** *)
 //
