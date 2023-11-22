@@ -481,18 +481,37 @@ tr3cenv_search_dcst
 (env0: !tr3cenv, dcst: d2cst): d3eclist_vt
 //
 (* ****** ****** *)
+fun
+tr3cenv_impltmprecq
+( env0:
+! tr3cenv
+, d3cl: d3ecl, t2js: t2jaglst): bool
+(* ****** ****** *)
 //
 fun
-tr3cenv_timp_resolve
+tr3cenv_timp_process
 // return: TIMPLallx
 ( env0: !tr3cenv, timp: timpl): timpl
 //
 fun
 tr3cenv_tapq_resolve
-// return:
-// TIMPLall1(*tmp*) or TIMPLallx(*tmpr*)
+// return: TIMPLall1(*tmp*)
 ( env0:
 ! tr3cenv, dcst: d2cst, t2js: t2jaglst): timpl
+//
+(*
+HX:
+It is merged into tr3cenv_tapq_resolve
+//
+fun
+tr3cenv_timp_resolve
+// return: // HX: handling impltmpr
+// TIMPLall1(*tmp*) or TIMPLallx(*tmpr*)
+( env0:
+! tr3cenv
+, dcst: d2cst, t2js: t2jaglst, timp: timpl): timpl
+//
+*)
 //
 (* ****** ****** *)
 

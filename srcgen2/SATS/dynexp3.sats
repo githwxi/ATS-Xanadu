@@ -621,6 +621,8 @@ D3Eexists of
 //
 fun
 d3ecl_impltmpq(d3ecl): bool
+fun
+d3ecl_impltmprq(d3ecl): bool
 //
 (* ****** ****** *)
 fun
@@ -688,6 +690,7 @@ d3ecl_node =
 |D3Cextern of
  (token(*EXTERN*), d3ecl)
 //
+|D3Ctmprec of (d3ecl)
 |D3Ctmpsub of
  (s2vts(*tmpsub*), d3ecl)
 //
