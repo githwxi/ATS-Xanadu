@@ -217,6 +217,10 @@ tmqstk_pshsvts
 (* ****** ****** *)
 //
 fun
+tmqstk_getnimp
+  ( stk: !tmqstk >> _ ): sint
+//
+fun
 tmqstk_getstmp
   ( stk: !tmqstk >> _ ): stamp
 //
@@ -452,6 +456,9 @@ trtmp3c_d3eclistopt
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+tr3cenv_getnimp
+(env0: !tr3cenv): sint
 fun
 tr3cenv_getstmp
 (env0: !tr3cenv): stamp

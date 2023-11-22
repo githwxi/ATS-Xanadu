@@ -139,8 +139,25 @@ TIMPLallx _ => timp
 |
 TIMPLall1 _ =>
 (
- f0_all1(env0, timp))
-) where//end-of(case+)
+if
+nimp >= NIMP
+then timp else
+(
+  f0_all1(env0, timp) )
+) where//end-(TIMPLall1)
+{
+//
+val NIMP = 10
+(*
+val NIMP = 100
+*)
+//
+val nimp =
+(
+  tr3cenv_getnimp(env0))
+}
+//
+) where // end-of-(case+)
 {
 //
 fun
