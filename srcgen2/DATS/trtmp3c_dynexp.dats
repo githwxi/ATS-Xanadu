@@ -163,7 +163,7 @@ D3Etimp
 , timp ) = d3e0.node()
 //
 val timp =
-tr3cenv_timp_resolve(env0, timp)
+tr3cenv_timp_process(env0, timp)
 //
 in
 (
@@ -282,11 +282,24 @@ d3f0.node() of
 D3Ecst(d2c0) =>
 let
 //
-val timp =
+val
+timp =
 tr3cenv_tapq_resolve
 ( env0, d2c0, t2js )//val(timp)
+//
+(*
+// HX:
+// It is merged into
+// [tr3cenv_tapq_resolve]
+val
+timp =
+tr3cenv_timp_resolve
+( env0
+, d2c0, t2js, timp )//val(timp)
+*)
+//
 val timp =
-tr3cenv_timp_resolve(env0, timp)
+tr3cenv_timp_process(env0, timp)
 //
 in//let
 (

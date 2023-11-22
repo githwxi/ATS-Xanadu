@@ -60,6 +60,106 @@ ATS_PACKNAME
 #symload stmp with timpl_get_stmp
 #symload node with timpl_get_node
 (* ****** ****** *)
+//
+#implfun
+tr3cenv_timp_process
+  (  env0, timp  ) =
+(
+case+
+timp.node() of
+|
+TIMPLallx _ => timp
+|
+TIMPLall1 _ =>
+(
+if
+nimp >= NIMP
+then timp else
+(
+  f0_all1(env0, timp) )
+) where//end-(TIMPLall1)
+{
+//
+val NIMP = 10
+(*
+val NIMP = 100
+*)
+//
+val nimp =
+(
+  tr3cenv_getnimp(env0))
+}
+//
+) where // end-of-(case+)
+{
+//
+fun
+f0_all1
+( env0:
+! tr3cenv
+, timp: timpl): timpl =
+let
+//
+val
+stmp = timp.stmp((*0*))
+//
+val-
+TIMPLall1
+(d2c0, dcls) = timp.node()
+//
+in//in
+case+ dcls of
+|
+list_nil
+((*void*)) =>
+(  timp  ) // HX: ~found
+|
+list_cons
+(dcl1, dcls) =>
+let
+//
+val-
+D3Ctmpsub
+(svts, dcl2) = dcl1.node()
+//
+val () =
+tr3cenv_pshsvts(env0, svts)
+//
+val dcl2 =
+let
+val
+dcl3 =
+d3ecl_impsub
+(svts, dcl2)//val(dcl2)
+val () =
+tr3cenv_insert_timp
+(env0 , stmp , dcl3)//val()
+in//let
+trtmp3c_impltmpq(env0, dcl2)
+end//let//end-of-[val(dcl2)]
+//
+val () = tr3cenv_popsvts(env0)
+//
+in//let
+let
+val dcl1 =
+d3ecl_tmpsub(svts, dcl2)
+val dcls = list_cons(dcl1, dcls)
+in//let
+timpl(stmp, TIMPLallx(d2c0, dcls))
+end//let
+end//let//end-of-[list_cons( ... )]
+end//let//end-of-[f0_all1(env0,timp)]
+//
+val () =
+// (*
+prerrln
+("tr3cenv_timp_process: timp = ", timp)
+// *)
+//
+}(*where*)//end-of-[tr3cenv_timp_process]
+//
+(* ****** ****** *)
 local
 (* ****** ****** *)
 (*
@@ -127,110 +227,21 @@ s2typlst_subst0(t2ps, svts) }
 (* ****** ****** *)
 in (*local*)
 (* ****** ****** *)
-
-#implfun
-tr3cenv_timp_resolve
-  (  env0, timp  ) =
-(
-case+
-timp.node() of
-|
-TIMPLallx _ => timp
-|
-TIMPLall1 _ =>
-(
-if
-nimp >= NIMP
-then timp else
-(
-  f0_all1(env0, timp) )
-) where//end-(TIMPLall1)
-{
-//
-val NIMP = 10
-(*
-val NIMP = 100
-*)
-//
-val nimp =
-(
-  tr3cenv_getnimp(env0))
-}
-//
-) where // end-of-(case+)
-{
-//
-fun
-f0_all1
-( env0:
-! tr3cenv
-, timp: timpl): timpl =
-let
-//
-val
-stmp = timp.stmp((*0*))
-//
-val-
-TIMPLall1
-(d2c0, dcls) = timp.node()
-//
-in//in
-case+ dcls of
-|
-list_nil
-((*void*)) =>
-(  timp  ) // HX: ~found
-|
-list_cons
-(dcl1, dcls) =>
-let
-//
-val-
-D3Ctmpsub
-(svts, dcl2) = dcl1.node()
-//
-val () =
-tr3cenv_pshsvts(env0, svts)
-//
-val dcl2 =
-let
-val dcl3 =
-d3ecl_impsub
-(svts, dcl2)//val(dcl2)
-val () =
-tr3cenv_insert_timp
-(env0 , stmp , dcl3)//val()
-in//let
-trtmp3c_impltmpq(env0, dcl2)
-end//let//end-of-[val(dcl2)]
-//
-val () = tr3cenv_popsvts(env0)
-//
-in//let
-let
-val dcl1 =
-d3ecl_tmpsub(svts, dcl2)
-val dcls = list_cons(dcl1, dcls)
-in//let
-timpl(stmp, TIMPLallx(d2c0, dcls))
-end//let
-end//let//end-of-[list_cons( ... )]
-end//let//end-of-[f0_all1(env0,timp)]
-//
-val () =
-prerrln
-("tr3cenv_timp_resolve: timp = ", timp)
-//
-}(*where*)//end-of-[tr3cenv_timp_resolve]
-
-(* ****** ****** *)
 //
 #implfun
 tr3cenv_tapq_resolve
   (env0, d2c0, t2js) =
 let
 //
-val dcls = filter(dcls)
+val
+dcls =
+implfilter(dcls)
+//
+val
+dcls =
+impltmprec(env0, dcls)
+//
+val dcls = list_vt2t(dcls)
 //
 in//let
 //
@@ -239,23 +250,30 @@ timpl_make_node
 (stmp, TIMPLall1(d2c0, dcls))
 ) where
 {
+// (*
 val () =
 prerrln
 ("tr3cenv_tapq_resolve: dcls = ", dcls)
+// *)
 }
 //
 end where // end-of-let
 {
 //
 fun
-filter
-( dcls
-: d3eclist_vt): d3eclist =
+implfilter
+(
+dcls
+: d3eclist_vt
+)
+: d3eclist_vt =
 (
 //
 case+ dcls of
 | ~
-list_vt_nil() => list_nil()
+list_vt_nil
+( (*nil*) ) =>
+list_vt_nil((*nil*))
 | ~
 list_vt_cons
 (dcl1, dcls) =>
@@ -264,12 +282,16 @@ let
 val
 opt1 =
 tmpmatch_d3cl_t2js
-(dcl1(*impl*),t2js(*targ*))
+(dcl1(*imp*),t2js(*arg*))
 //
 in//let
+//
 case+ opt1 of
+//
 |optn_nil
-((*void*)) => filter( dcls )
+( (*0*) ) =>
+implfilter(dcls)
+//
 |optn_cons(tsub) =>
 let
 //
@@ -280,42 +302,72 @@ case+
 dcl1.node() of
 |D3Ctmpsub(_, dcl1) =>
 (
-  d3ecl_tmpsub(tsub,dcl1))
+  d3ecl_tmpsub(tsub,dcl1) )
 |_(*non-D3Ctmpsub*) =>
 (
-  d3ecl_tmpsub(tsub,dcl1)))
+  d3ecl_tmpsub(tsub,dcl1) ) )
 //
 // (*
 val (  ) =
-prerr("tr3cenv_tapq_resolve:")
+prerr
+("tr3cenv_tapq_resolve:")
 val (  ) =
-prerrln("filter: dcl1 = ", dcl1)
+prerrln
+("implfilter: dcl1 = ", dcl1)
 // *)
 //
 in//let
-(
-  list_cons(dcl1, filter(dcls)))
+list_vt_cons(dcl1, implfilter(dcls))
 end//let
-end//let//end-of-[list_cons(...)]
+end//let // end-of-[ list_cons(...) ]
 //
-)(*case+*) // end of [ filter(dcls) ]
+)(*case+*) // end of [implfilter(dcls)]
+//
+(* ****** ****** *)
+//
+fun
+impltmprec
+( env0:
+! tr3cenv
+, dcls
+: d3eclist_vt): d3eclist_vt =
+(
+case+ dcls of
+| ~
+list_vt_nil
+( (*nil*) ) => list_vt_nil()
+| ~
+list_vt_cons
+(dcl1, dcls) =>
+(
+if
+test
+then
+(
+if
+d3ecl_impltmprq(dcl1)
+then
+list_vt_cons(dcl1, dcls)
+(*
+where
+{
+val
+dcl1 =
+d3ecl_tmprec(dcl1, t2js) }
+*)
+else impltmprec(env0, dcls)
+)
+else list_vt_cons(dcl1, dcls)
+) where {
+val test =
+tr3cenv_impltmprecq(env0, dcl1, t2js)
+}(*where*) // end of [ list_cons(...) ]
+
+)(*case+*) // end of [impltmprec(dcls)]
+//
+(* ****** ****** *)
 //
 } where {
-//
-(*
-HX:
-The stamp is for the
-stack of tmplt resolution
-*)
-val
-stmp = tr3cenv_getstmp(env0)
-(*
-HX:
-[trtmp3b]
-guarantees [svts] to exist
-*)
-val
-svts = tr3cenv_getsvts(env0) 
 //
 val () =
 prerrln
@@ -324,6 +376,21 @@ val () =
 prerrln
 ("tr3cenv_tapq_resolve: t2js = ", t2js)
 //
+(*
+HX:
+The stamp is for the
+stack of tmplt resolution
+*)
+val
+stmp = tr3cenv_getstmp(env0)//val(stmp)
+(*
+HX:
+[trtmp3b]
+guarantees [svts] to exist
+*)
+val
+svts = tr3cenv_getsvts(env0)//val(svts) 
+//
 val () =
 prerrln
 ("tr3cenv_tapq_resolve: stmp = ", stmp)
@@ -331,17 +398,22 @@ val () =
 prerrln
 ("tr3cenv_tapq_resolve: svts = ", svts)
 //
-val
-t2js = t2jaglst_subst0(t2js, svts)
+val t2js =
+(
+ t2jaglst_subst0(t2js, svts))//val(t2js)
 //
 val () =
 prerrln
 ("tr3cenv_tapq_resolve: t2js = ", t2js)
 //
-val dcls = tr3cenv_search_dcst(env0, d2c0)
+val dcls =
+(
+ tr3cenv_search_dcst(env0, d2c0))//val(dcls)
 //
+(*
 val (  ) =
 prerrln("tr3cenv_tapq_resolve: dcls = ", dcls)
+*)
 //
 } (*where*)//end-of-[tr3cenv_tapq_resolve(env0,...)]
 //
