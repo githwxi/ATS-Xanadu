@@ -51,11 +51,15 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xsymmap.sats"
 (* ****** ****** *)
+#staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
+(* ****** ****** *)
+#symload node with token_get_node
 (* ****** ****** *)
 #symload node with s2typ_get_node
 (* ****** ****** *)
@@ -65,8 +69,10 @@ ATS_PACKNAME
 #symload lctn with dimpl_get_lctn
 #symload node with dimpl_get_node
 (* ****** ****** *)
-#staload _ = "./xsymmap_topmap.dats"
+#symload lctn with d3ecl_get_lctn
+#symload node with d3ecl_get_node
 (* ****** ****** *)
+#staload _ = "./xsymmap_topmap.dats"
 (* ****** ****** *)
 //
 (*
@@ -363,6 +369,60 @@ D3Cimplmnt0
 //
 | _(* otherwise *) => (    false    ))
 //(*case+*)//end-of-[d3ecl_impltmpq(d3cl)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3ecl_impltmpr
+( stmp, d3cl ) =
+let
+val loc0 = d3cl.lctn()
+in//let
+(
+  d3ecl(loc0, D3Cimpltmpr(stmp, d3cl)))
+end(*let*) // end-of-[d3ecl_impltmpr(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3ecl_impltmprq
+  ( d3cl ) =
+(
+case+
+d3cl.node() of
+//
+|
+D3Ctmpsub
+(svts, dcl1) =>
+d3ecl_impltmprq(dcl1)
+//
+|
+D3Ctmplocal
+(dcl1, dcls) =>
+d3ecl_impltmprq(dcl1)
+//
+|
+D3Cimplmnt0
+( tknd
+, stmp
+, sqas,tqas
+, dimp,tias
+, f3as,sres,dexp) =>
+(
+implknd_recq(knd0)) where
+{
+val-T_IMPLMNT(knd0) = tknd.node()
+}
+//
+| _(* otherwise *) => (   false   )
+) where
+{
+//
+  val () =
+  prerrln
+  ("d3ecl_impltmprq: d3cl = ", d3cl)
+//
+}(*where*)//end-of-[d3ecl_impltmprq(d3cl)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

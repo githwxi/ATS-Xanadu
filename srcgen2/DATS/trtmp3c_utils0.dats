@@ -246,16 +246,33 @@ val dcls = list_vt2t(dcls)
 in//let
 //
 (
-timpl_make_node
-(stmp, TIMPLall1(d2c0, dcls))
+timpl_make_node(stmp, node)
 ) where
 {
-// (*
-val () =
-prerrln
+//
+val node =
+(
+case+ dcls of
+|list_nil
+((*nil*)) => TIMPLall1(d2c0, dcls)
+|
+list_cons
+(dcl1, _) =>
+(
+case+
+dcl1.node() of
+|
+D3Cimpltmpr _ => TIMPLallx(d2c0, dcls)
+|
+_(*non-tmpr*) => TIMPLall1(d2c0, dcls))
+)
+//
+(*
+val () = prerrln
 ("tr3cenv_tapq_resolve: dcls = ", dcls)
-// *)
-}
+*)
+//
+}//endwhr
 //
 end where // end-of-let
 {
