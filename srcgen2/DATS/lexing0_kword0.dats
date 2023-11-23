@@ -82,12 +82,6 @@ val T0PRVAL = T_VAL(VLKprval)
 val T0PRVAR = T_VAL(VLKprval)
 //
 (* ****** ****** *)
-val T0IMPLMNT = T_IMPLMNT(IMPLgen)
-val T0IMPLPRF = T_IMPLMNT(IMPLprf)
-val T0IMPLVAL = T_IMPLMNT(IMPLval)
-val T0IMPLFUN = T_IMPLMNT(IMPLfun)
-val T0IMPLTMP = T_IMPLMNT(IMPLtmp)
-(* ****** ****** *)
 //
 val T0SEXPDEF = T_SEXPDEF(-1)
 //
@@ -114,6 +108,15 @@ val T0ABSTFLT = T_ABSTYPE(TFLTSORT)
 val T0ABSVWTP = T_ABSTYPE(VWTPSORT)
 val T0ABSVTBX = T_ABSTYPE(VTBXSORT)
 val T0ABSVTFT = T_ABSTYPE(VTFTSORT)
+//
+(* ****** ****** *)
+//
+val T0IMPLMNT = T_IMPLMNT(IMPLgen)
+val T0IMPLPRF = T_IMPLMNT(IMPLprf)
+val T0IMPLVAL = T_IMPLMNT(IMPLval)
+val T0IMPLFUN = T_IMPLMNT(IMPLfun)
+val T0IMPLTMP = T_IMPLMNT(IMPLtmp)
+val T0IMPLTMPR = T_IMPLMNT(IMPLtmpr)
 //
 (* ****** ****** *)
 //
@@ -264,12 +267,7 @@ val () = kwdins("prvar", T0PRVAR)
 //
 val () = kwdins("fcast", T0FCAST)
 //
-val () = kwdins("#implmnt", T0IMPLMNT)
-val () = kwdins("#implprf", T0IMPLPRF)
-val () = kwdins("#implval", T0IMPLVAL)
-val () = kwdins("#implfun", T0IMPLFUN)
-val () = kwdins("#impltmp", T0IMPLTMP)
-//
+(* ****** ****** *)
 //
 val () = kwdins("#stacst0", T_STACST0)
 //
@@ -295,8 +293,20 @@ val () = kwdins("#absvwtp", T0ABSVWTP)
 val () = kwdins("#absimpl", T_ABSIMPL)
 val () = kwdins("#absopen", T_ABSOPEN)
 //
+(* ****** ****** *)
+//
+val () = kwdins("#implmnt", T0IMPLMNT)
+val () = kwdins("#implprf", T0IMPLPRF)
+val () = kwdins("#implval", T0IMPLVAL)
+val () = kwdins("#implfun", T0IMPLFUN)
+val () = kwdins("#impltmp", T0IMPLTMP)
+val () = kwdins("#impltmpr", T0IMPLTMPR)
+//
+(* ****** ****** *)
+//
 val () = kwdins("excptcon", T_EXCPTCON)
 val () = kwdins("datasort", T_DATASORT)
+//
 val () = kwdins("dataprop", T0DATAPROP)
 val () = kwdins("dataview", T0DATAVIEW)
 val () = kwdins("datatype", T0DATATYPE)

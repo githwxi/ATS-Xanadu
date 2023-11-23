@@ -129,13 +129,13 @@ val dcl2 =
 let
 val
 dcl3 =
-d3ecl_impsub
-(svts, dcl2)//val(dcl2)
+d3ecl_impsub//stamp as is
+(0, svts, dcl2)//val(dcl2)
 val () =
 tr3cenv_insert_timp
 (env0 , stmp , dcl3)//val()
 in//let
-trtmp3c_impltmpq(env0, dcl2)
+trtmp3c_impltmpx(env0, dcl2)
 end//let//end-of-[val(dcl2)]
 //
 val () = tr3cenv_popsvts(env0)
@@ -333,9 +333,12 @@ impltmprec
 : d3eclist_vt): d3eclist_vt =
 (
 case+ dcls of
+//
 | ~
 list_vt_nil
-( (*nil*) ) => list_vt_nil()
+( (*nil*) ) =>
+list_vt_nil( (*nil*) )
+//
 | ~
 list_vt_cons
 (dcl1, dcls) =>
@@ -357,10 +360,17 @@ d3ecl_impltmpr(test, dcl1)
 }//whr//end-of-then
 else impltmprec(env0, dcls))
 ) where {
-val test = // test: stamp
+//
+val
+test = // test: stamp
 tr3cenv_impltmprecq(env0, dcl1, t2js)
+//
+val () =
+(
+ prerrln("impltmprec: test = ", test) )
+//
 }(*where*) // end of [ list_cons(...) ]
-
+//
 )(*case+*) // end of [impltmprec(dcls)]
 //
 (* ****** ****** *)

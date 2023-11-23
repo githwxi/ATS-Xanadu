@@ -221,6 +221,8 @@ implknd =
 | IMPLfun // function implementation
 | IMPLtmp // template implementation
 //
+| IMPLtmpr // recursive template implementation
+//
 (* ****** ****** *)
 //
 fun

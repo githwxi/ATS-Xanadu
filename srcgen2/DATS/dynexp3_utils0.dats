@@ -77,7 +77,7 @@ onto the search path for tmp resolution!
 *)
 #implfun
 d3ecl_impsub
-(tsub, d3cl) =
+(knd0, tsub, d3cl) =
 (
 case+
 d3cl.node() of
@@ -159,9 +159,14 @@ dimp, tias, f3as, sres, dexp) )
 where
 {
 (*
-HX: re-stamping is needed
+HX: re-stamping if knd0 > 0
 *)
-val stmp = the_d3imp_stamp_new()
+val stmp =
+(
+if
+knd0 <= 0 then
+stmp else the_d3imp_stamp_new())
+//
 }(*where*)
 //
 }(*where*)
@@ -259,6 +264,13 @@ d3imp_stampeq
 (
 case+
 d3cl.node() of
+//
+|
+D3Ctmpsub
+(svts, dcl1) =>
+(
+  d3imp_stampeq(dcl1, tmp0))
+//
 |
 D3Cimplmnt0 _ => f0_implmnt0(d3cl)
 //
