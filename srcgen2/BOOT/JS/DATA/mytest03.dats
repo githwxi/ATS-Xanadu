@@ -10,18 +10,6 @@
 "prelude/HATS/CATS/JS/prelude_dats.hats"
 //
 (* ****** ****** *)
-#impltmpr
-< (*tmp*) >
-gint_add_sint_sint
-  (x , y) =
-gint_add_sint_sint<>(x, y)
-(* ****** ****** *)
-
-fun foo() = 1 + 2
-
-(* ****** ****** *)
-////
-(* ****** ****** *)
 //
 // (*
 fun
@@ -36,12 +24,12 @@ foldl$fopr(r0:dflt, x0) = r0 * (x0+1) }
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
+// (*
 fun
 fact2
 (xs: sint) =
 foldl_cfr(xs, 1.0, lam(r0:dflt,x0) => r0 * (x0+1))
-*)
+// *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
