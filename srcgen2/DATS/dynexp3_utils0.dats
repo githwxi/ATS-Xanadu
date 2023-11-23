@@ -596,14 +596,183 @@ s2vt1 = (s2var, s2typ)
 fun
 f2_svt1_tjp1
 ( svt1: s2vt1
-, tjp1: s2typ): bool = false
+, tjp1: s2typ): bool =
+let
+  val (_, tip1) = svt1
+in//let
+  f2_tip1_tjp1(tip1, tjp1) end
+//
+and
+f2_tip1_tjp1
+( tip1: s2typ
+, tjp1: s2typ): bool =
+(
+case+
+tip1.node() of
+//
+|T2Pvar _ =>
+(
+  g2_svar_tjp1(tip1, tjp1))
+//
+|T2Pcst _ =>
+(
+  g2_scst_tjp1(tip1, tjp1))
+//
+|T2Papps _ =>
+(
+  g2_apps_tjp1(tip1, tjp1))
+//
+|T2Ptext _ =>
+(
+  g2_text_tjp1(tip1, tjp1))
+//
+(*
+|T2Ptrcd _ =>
+(
+  g2_trcd_tjp1(tip1, tjp1))
+*)
+//
+|T2Pnone0((*0*)) => (   true   )
+|T2Pnone1(s2typ) => (   true   )
+|T2Ps2exp(s2exp) => (   true   )
+//
+|_(* otherwise *) => (   false   )
+//
+) where
+{
+//
+fun
+g2_svar_tjp1
+( tip1: s2typ
+, tjp1: s2typ): bool =
+let
+val-
+T2Pvar(s2vi) = tip1.node()
+in//let
+case+
+tjp1.node() of
+|
+T2Pvar(s2vj) => (s2vi = s2vj)
+|
+_(*non-T2Pvar*) => (   false   )
+end//let//end-of-[g2_svar_tjp1(...)]
+//
+(* ****** ****** *)
+//
+fun
+g2_scst_tjp1
+( tip1: s2typ
+, tjp1: s2typ): bool =
+let
+val-
+T2Pcst(s2ci) = tip1.node()
+in//let
+case+
+tjp1.node() of
+|
+T2Pcst(s2cj) => (s2ci = s2cj)
+|
+_(*non-T2Pvar*) => (    false    )
+end(*let*)//end of [g2_scst_tjp1(...)]
+//
+(* ****** ****** *)
+//
+fun
+g2_apps_tjp1
+( tip1: s2typ
+, tjp1: s2typ): bool =
+let
+val-
+T2Papps
+(t2fi, tips) = tip1.node()
+in//let
+case+
+tjp1.node() of
+|
+T2Papps
+(t2fj, tjps) =>
+let
+val res1 =
+f2_tip1_tjp1(t2fi, t2fj)
+in//let
+if
+res1
+then
+f2_tips_tjps
+(tips, tjps) else false end//let
+|
+_(*non-T2Papps*) => (    false    )
+end(*let*)//end of [g2_apps_tjp1(...)]
+//
+(* ****** ****** *)
+//
+fun
+g2_text_tjp1
+( tip1: s2typ
+, tjp1: s2typ): bool =
+let
+val-
+T2Ptext
+(tnmi, tips) = tip1.node()
+in//let
+case+
+tjp1.node() of
+|
+T2Ptext
+(tnmj, tjps) =>
+let
+val res1 = (tnmi = tnmj)
+in//let
+if
+res1
+then
+f2_tips_tjps
+(tips, tjps) else false end//let
+|
+_(*non-T2Ptext*) => (    false    )
+end(*let*)//end-of-[g2_text_tjp1(...)]
+//
+(* ****** ****** *)
+//
+}(*where*)//end-of-[f2_tip1_tjp1(...)]
+//
+(* ****** ****** *)
+//
+and
+f2_tips_tjps
+(
+tips:s2typlst,
+tjps:s2typlst): bool =
+(
+case+ tips of
+|list_nil() => true
+|list_cons(tip1, tips) =>
+(
+case+ tjps of
+|list_nil() => true
+|list_cons(tjp1, tjps) =>
+let
+val res1 =
+f2_tip1_tjp1(tip1, tjp1)
+in//let
+(if
+ res1
+ then
+ f2_tips_tjps
+ (tips, tjps) else false) end//let
+)
+)(*case+*)//end-of-[f2_tips_tjps(...)]
+//
+(* ****** ****** *)
 //
 val () =
 (
-  prerrln("f0_targequ: svts = ", svts))
+  prerrln("f0_targequ: svts = ", svts) )
 val () =
 (
-  prerrln("f0_targequ: t2js = ", t2js))
+  prerrln("f0_targequ: t2js = ", t2js) )
+//
+(* ****** ****** *)
 //
 }(*where*) // end-of-[ f0_targequ(svts,t2js) ]
 //
@@ -888,7 +1057,7 @@ if
 (s2ci = s2cj) then true else false
 //
 |
-_(*non-T2Pvar*) => (    false    ))
+_(*non-T2Pcst*) => (    false    ))
 end(*let*)//end of [g2_scst_tjp1(...)]
 //
 (* ****** ****** *)
@@ -925,7 +1094,7 @@ in//let
 end//let
 //
 |
-_(*non-T2Pvar*) => (    false    ))
+_(*non-T2Papps*) => (    false    ))
 end(*let*)//end of [g2_apps_tjp1(...)]
 //
 (* ****** ****** *)
@@ -961,8 +1130,8 @@ in//let
 end//let
 //
 |
-_(*non-T2Pvar*) => (    false    ))
-end(*let*)//end of [g2_text_tjp1(...)]
+_(*non-T2Ptext*) => (    false    ))
+end(*let*)//end-of-[g2_text_tjp1(...)]
 //
 (* ****** ****** *)
 //
@@ -1004,8 +1173,8 @@ in//let
 end//let
 //
 |
-_(*non-T2Pvar*) => (    false    ))
-end(*let*)//end of [g2_text_tjp1(...)]
+_(*non-T2Ptrcd*) => (    false    ))
+end(*let*)//end of [g2_trcd_tjp1(...)]
 //
 (* ****** ****** *)
 //
@@ -1107,7 +1276,7 @@ f2_svt1_tjp1
 let
 val (_, tip1) = svt1
 in//let
-case
+case+
 tip1.node() of
 |
 T2Pvar(s2vi) =>
