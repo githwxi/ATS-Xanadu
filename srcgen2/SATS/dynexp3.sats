@@ -831,9 +831,19 @@ fun
 d3ecl_none1(d2cl:d2ecl):(d3ecl)
 (* ****** ****** *)
 //
+(*
+HX-2023-11-22:
+re-stamping needed for
+inserting embedded impltmp!
+re-stamping uneeded for
+inserting a template instance!
+*)
+//
 fun
 d3ecl_impsub
-(tsub:s2vts,d3cl:d3ecl):(d3ecl)
+(knd0:sint//re-stamp:0/1
+,tsub:s2vts,d3cl:d3ecl):(d3ecl)
+//
 fun
 d3ecl_tmpsub
 (tsub:s2vts,d3cl:d3ecl):(d3ecl)

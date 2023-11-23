@@ -662,12 +662,17 @@ tmqstk_getsvts(stk0)
 val d3cl =
 (
 case+ tsub of
-|
+| // toplevel
 list_nil
 ((*void*)) => d3cl
-|
+| // embedded
 list_cons _ =>
-d3ecl_impsub(tsub, d3cl))
+(*
+HX-2023-11-22:
+re-stamping needed
+for an embedded impltmp!
+*)
+d3ecl_impsub(1, tsub, d3cl))
 //
 val stmp =
 the_tmqstk_stamp_new((*void*))
@@ -1138,7 +1143,14 @@ let
 val
 test =
 tmpequal_d3cl_t2js(dcl1, t2js)
+//
+val () =
+prerr("tmqstk_impltmprecq:")
+val () =
+prerrln("tmpequal: test =", test)
+//
 in//let
+//
 if test
 then stmp else
 tmqstk_impltmprecq(stk1,d3cl,t2js)
@@ -1151,7 +1163,7 @@ tmqstk_impltmprecq(stk1,d3cl,t2js)
 val () =
 prerr("tmqstk_impltmprecq:")
 val () =
-prerrln("tmpstk_timp: dcl1 = ", dcl1)
+prerrln("tmqstk_timp: dcl1 = ", dcl1)
 //
 }(*where*)//end-of-[tmqstk_timp(...)]
 //

@@ -182,6 +182,8 @@ case+ knd of
 | IMPLfun() => print( "IMPLfun" )
 | IMPLtmp() => print( "IMPLtmp" )
 //
+| IMPLtmpr() => print( "IMPLtmpr" )
+//
 end(*let*)//end-of(implknd_fprint)
 
 (* ****** ****** *)
