@@ -1147,16 +1147,18 @@ tmpequal_d3cl_t2js(dcl1, t2js)
 val () =
 prerr("tmqstk_impltmprecq:")
 val () =
-prerrln("tmpequal: test =", test)
+prerrln("tmpequal: test = ", test)
 //
 in//let
 //
 if test
 then stmp else
-tmqstk_impltmprecq(stk1,d3cl,t2js)
+(
+tmqstk_impltmprecq(stk1,d3cl,t2js))
 end//let// end-of-then
 ) else
-tmqstk_impltmprecq(stk1,d3cl,t2js)
+(
+tmqstk_impltmprecq(stk1,d3cl,t2js))
 ) where
 {
 //

@@ -751,11 +751,12 @@ D3Cimplmnt1 of
 //
 |
 D3Ctmplocal of
-( d3ecl(*impltmp*), d3eclist(*local*))
+( d3ecl(*impltmp*)
+, d3eclist(*local*))//end(D3Ctmplocal)
 //
 |
 D3Cimpltmpr of
-( d3ecl(*impltmp*), t2jaglst(*tmparg*))
+( stamp(*unicity*), d3ecl(*impltmpr*))
 //
 |
 D3Cnone0 of ((*nil*))

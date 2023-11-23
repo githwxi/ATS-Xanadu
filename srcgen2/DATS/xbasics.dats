@@ -157,6 +157,22 @@ case+ fnk of
 } (*where*) // end of [funkind_recq]
 
 (* ****** ****** *)
+//
+#implfun
+implknd_recq(knd) =
+(
+case+ knd of
+| IMPLtmpr
+  ( (*0*) ) => true | _ => false
+) where
+{
+(*
+val () =
+prerrln("implknd_recq: knd = ", knd)
+*)
+} (*where*) // end of [implknd_recq]
+//
+(* ****** ****** *)
 
 #implfun
 f2clknd_linq(f2cl) =

@@ -10,7 +10,7 @@
 "prelude/HATS/CATS/JS/prelude_dats.hats"
 //
 (* ****** ****** *)
-#impltmp
+#impltmpr
 < (*tmp*) >
 gint_add_sint_sint
   (x , y) =

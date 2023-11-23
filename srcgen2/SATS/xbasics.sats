@@ -226,6 +226,11 @@ implknd =
 (* ****** ****** *)
 //
 fun
+implknd_recq(knd0: implknd): bool
+//
+(* ****** ****** *)
+//
+fun
 implknd_fprint(FILR, implknd): void
 //
 (* ****** ****** *)
