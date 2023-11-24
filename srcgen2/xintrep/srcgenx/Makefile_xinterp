@@ -1,0 +1,90 @@
+########################################################################
+#
+# For typecking with xatsopt
+#
+########################################################################
+
+AR=ar
+CP=cp
+MV=mv
+CC=gcc
+SED=sed
+CPF=cp -f
+MVF=mv -f
+RMF=rm -f
+WCL=wc -l
+
+######
+all::
+######
+all:: all_sats
+######
+all:: all_dats
+######
+
+######
+#
+# HX:
+# srcgen1 is
+# implemented in ATS2
+#
+XATSOPT=\
+$(XATSHOME)/srcgen1/bin/xatsopt
+#
+######
+
+######
+#
+# HX: processing SATS-files
+#
+######
+
+######
+all_sats:: \
+interp0_sats
+interp0_sats: ; $(XATSOPT) --static SATS/interp0.sats
+######
+
+######
+#
+# HX: processing DATS-files
+#
+######
+
+######
+all_dats:: \
+interp0_dats
+interp0_dats: ; $(XATSOPT) --dynamic DATS/interp0.dats
+######
+all_dats:: \
+interp0_print0_dats
+interp0_print0_dats: ; $(XATSOPT) --dynamic DATS/interp0_print0.dats
+######
+
+########################################################################
+
+testall:: ; make all > /dev/null
+
+########################################################################
+
+######
+srclines:: ; wc -l \
+HATS/*.hats SATS/*.sats DATS/*.dats
+######
+srclines_sats:: ; wc -l SATS/*.sats
+srclines_dats:: ; wc -l DATS/*.dats
+######
+
+########################################################################
+
+######
+clean:: ; rm -f ./SATS/*~
+clean:: ; rm -f ./DATS/*~
+clean:: ; rm -f ./HATS/*~
+######
+cleanall:: clean
+######
+cleanall:: ; rm -f BUILD/JS/*.js
+######
+
+######################## end of [Makefile] ##############################
