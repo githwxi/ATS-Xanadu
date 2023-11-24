@@ -48,6 +48,10 @@ level-0 intermediate representation
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+(* ****** ****** *)
 //
 #staload
 "./../../../SATS/xbasics.sats"
@@ -95,10 +99,17 @@ IRLAB of
 #abstbox irpat_tbox // ptr
 #typedef irpat = irpat_tbox
 (* ****** ****** *)
+#abstbox irexp_tbox // ptr
+#typedef irexp = irexp_tbox
+(* ****** ****** *)
 #typedef l0irp = irlab(irpat)
+#typedef l0ire = irlab(irexp)
 (* ****** ****** *)
 #typedef irpatlst = list(irpat)
 #typedef l0irplst = list(l0irp)
+(* ****** ****** *)
+#typedef irexplst = list(irexp)
+#typedef l0irelst = list(l0ire)
 (* ****** ****** *)
 
 datatype
@@ -126,6 +137,11 @@ irpat_node =
 //
 | IRPnone0 of () | IRPnone1 of (d3pat)
 //
+(* ****** ****** *)
+
+fun
+irpat_fprint(FILR, irpat): void
+
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_intrep0.sats] *)
