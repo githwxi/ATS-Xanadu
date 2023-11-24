@@ -6,32 +6,32 @@ bootstrapping ATS3/Xanadu!!!
 *)
 (* ****** ****** *)
 #include
-"./../..\
+"./../../..\
 /HATS/xatsopt_sats.hats"
 #include
-"./../..\
+"./../../..\
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
-"./../../SATS/locinfo.sats"
+"./../../../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload
-"./../../SATS/trans23.sats"
+"./../../../SATS/trans23.sats"
 #staload
-"./../../SATS/tread23.sats"
+"./../../../SATS/tread23.sats"
 (* ****** ****** *)
 #staload
-"./../../SATS/trans3a.sats"
+"./../../../SATS/trans3a.sats"
 #staload
-"./../../SATS/trtmp3b.sats"
+"./../../../SATS/trtmp3b.sats"
 #staload
-"./../../SATS/tread33.sats"
+"./../../../SATS/tread33.sats"
 #staload
-"./../../SATS/fperr33.sats"
+"./../../../SATS/fperr33.sats"
 (* ****** ****** *)
 #staload
-"./../../SATS/xglobal.sats"
+"./../../../SATS/xglobal.sats"
 (* ****** ****** *)
 //
 val ret =

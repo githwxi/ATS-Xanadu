@@ -219,9 +219,9 @@ xatsopt_tmplib.dats \
 xatsopt_utils0.dats \
 
 XATS2JS_XATSOPT_OBJSATS := \
-$(patsubst %.sats, ./../../BUILD/JS/%_sats.js, $(SRCSATS))
+$(patsubst %.sats, ./../../JS/%_sats.js, $(SRCSATS))
 XATS2JS_XATSOPT_OBJDATS := \
-$(patsubst %.dats, ./../../BUILD/JS/%_dats.js, $(SRCDATS))
+$(patsubst %.dats, ./../../JS/%_dats.js, $(SRCDATS))
 
 ######
 #

@@ -6,20 +6,20 @@ bootstrapping ATS3/Xanadu!!!
 *)
 (* ****** ****** *)
 #include
-"./../..\
+"./../../..\
 /HATS/xatsopt_sats.hats"
 #include
-"./../..\
+"./../../..\
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
-"./../../SATS/locinfo.sats"
+"./../../../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload
-"./../../SATS/trans01.sats"
+"./../../../SATS/trans01.sats"
 #staload
-"./../../SATS/tread01.sats"
+"./../../../SATS/tread01.sats"
 (* ****** ****** *)
 //
 val
