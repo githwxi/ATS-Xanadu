@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 //
-Fri Nov 24 13:31:57 EST 2023
+Fri Nov 24 13:33:19 EST 2023
 //
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -41,9 +41,13 @@ Authoremail: gmhwxiATgmailDOTcom
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
+#staload
+"./../../../SATS/xbasics.sats"
+(* ****** ****** *)
 //
-#staload "./../SATS/xbasics.sats"
+#staload "./../SATS/interp0.sats"
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_intrep0.dats] *)
+
+(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_intrep0_print0.dats] *)
