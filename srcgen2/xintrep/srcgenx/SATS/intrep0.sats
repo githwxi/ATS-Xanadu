@@ -140,8 +140,18 @@ irpat_node =
 (* ****** ****** *)
 
 fun
-irpat_fprint(FILR, irpat): void
+irpat_fprint(FILR,irpat): void
 
+(* ****** ****** *)
+//
+fun
+irpat_get_lctn(irpat):( loc_t )
+fun
+irpat_get_node(irpat):irpat_node
+//
+(* ****** ****** *)
+#symload lctn with irpat_get_lctn
+#symload node with irpat_get_node
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_intrep0.sats] *)

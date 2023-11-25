@@ -41,13 +41,49 @@ Authoremail: gmhwxiATgmailDOTcom
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dats.hats"
+(* ****** ****** *)
 #staload
 "./../../../SATS/xbasics.sats"
 (* ****** ****** *)
 //
-#staload "./../SATS/interp0.sats"
+#staload "./../SATS/intrep0.sats"
 //
 (* ****** ****** *)
+#symload lctn with irpat_get_lctn
+#symload node with irpat_get_node
+(* ****** ****** *)
 
+#implfun
+irpat_fprint
+(out, irp0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+irp0.node() of
+//
+|IRPany _ => print("IRPany(", ")")
+//
+|IRPint(int) => print("IRPint(", int, ")")
+|IRPchr(btf) => print("IRPchr(", btf, ")")
+|IRPchr(chr) => print("IRPchr(", chr, ")")
+|IRPchr(str) => print("IRPstr(", str, ")")
+//
+|IRPvar(d2v) => print("IRPvar(", d2v, ")")
+//
+|IRPnone0((*void*)) => print( "IRPnone0(",")" )
+//
+end//let//end-of-[irpat_fprint(out, irp0)]
+
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_intrep0_print0.dats] *)
