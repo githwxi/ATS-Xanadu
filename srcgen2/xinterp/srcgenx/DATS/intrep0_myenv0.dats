@@ -69,7 +69,7 @@ in//local
 //
 #implfun
 trdienv_make_nil
-  ( (*void*) ) = TRDIENV( (*void*) )
+  ((*void*)) = TRDIENV( (*void*) )
 //
 (* ****** ****** *)
 //
