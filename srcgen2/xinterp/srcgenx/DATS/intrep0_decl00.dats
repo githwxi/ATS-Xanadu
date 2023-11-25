@@ -41,5 +41,39 @@ Authoremail: gmhwxiATgmailDOTcom
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dats.hats"
+(* ****** ****** *)
+//
+#staload
+"./../../../SATS/dynexp3.sats"
+//
+(* ****** ****** *)
+//
+#staload "./../SATS/intrep0.sats"
+//
+(* ****** ****** *)
+//
+#staload
+_(*DATS*)="./../DATS/intrep0.dats"
+//
+(* ****** ****** *)
+#symload lctn with d3ecl_get_lctn
+#symload node with d3ecl_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxd3ir_d3eclist
+( env0, dcls ) =
+(
+  list_trxd3ir_fnp(env0, dcls, trxd3ir_d3ecl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_intrep0_decl00.dats] *)

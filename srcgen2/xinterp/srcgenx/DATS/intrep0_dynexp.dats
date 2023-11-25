@@ -41,9 +41,39 @@ Authoremail: gmhwxiATgmailDOTcom
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dats.hats"
+(* ****** ****** *)
+//
+#staload
+"./../../../SATS/staexp2.sats"
+#staload
+"./../../../SATS/statyp2.sats"
+//
+(* ****** ****** *)
+//
+#staload
+"./../../../SATS/dynexp3.sats"
+//
+(* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
 //
+(* ****** ****** *)
+//
+#staload
+_(*DATS*)="./../DATS/intrep0.dats"
+//
+(* ****** ****** *)
+#symload lctn with d3pat_get_lctn
+#symload node with d3pat_get_node
+(* ****** ****** *)
+#symload lctn with d3exp_get_lctn
+#symload node with d3exp_get_node
 (* ****** ****** *)
 
 #implfun
@@ -51,7 +81,7 @@ trxd3ir_d3pat
 (env0 , d3p0) =
 (
 case+
-d3p0.node()
+d3p0.node() of
 |_(*otherwise*) => irpat_none1(d3p0)
 ) where
 {
@@ -66,7 +96,7 @@ trxd3ir_d3exp
 (env0 , d3e0) =
 (
 case+
-d3e0.node()
+d3e0.node() of
 |_(*otherwise*) => irexp_none1(d3e0)
 ) where
 {
@@ -74,6 +104,24 @@ val () =
 prerrln("trxd3ir_d3exp: d3e0 = ", d3e0)
 }(*where*) // end of [trxd3ir_d3exp(...)]
 
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxd3ir_d3patlst
+( env0, d3ps ) =
+(
+  list_trxd3ir_fnp(env0, d3ps, trxd3ir_d3pat))
+//
+(* ****** ****** *)
+//
+#implfun
+trxd3ir_d3explst
+( env0, d3es ) =
+(
+  list_trxd3ir_fnp(env0, d3es, trxd3ir_d3exp))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_intrep0_dynexp.dats] *)
