@@ -120,6 +120,16 @@ IRLAB of (label, x0(*elt*))
 #abstbox irdcl_tbox // p0tr
 #typedef irdcl = irdcl_tbox
 (* ****** ****** *)
+//
+#abstbox irvaldcl_tbox//p0tr
+#abstbox irvardcl_tbox//p0tr
+#abstbox irfundcl_tbox//p0tr
+//
+(* ****** ****** *)
+//
+#abstbox irparsed_tbox//p0tr
+//
+(* ****** ****** *)
 #typedef l0irp = irlab(irpat)
 #typedef l0ire = irlab(irexp)
 (* ****** ****** *)
@@ -131,36 +141,44 @@ IRLAB of (label, x0(*elt*))
 (* ****** ****** *)
 #typedef irdclist = list(irdcl)
 (* ****** ****** *)
-
+#typedef irvaldcl = irvaldcl_tbox
+#typedef irvardcl = irvardcl_tbox
+#typedef irfundcl = irfundcl_tbox
+(* ****** ****** *)
+#typedef irparsed = irparsed_tbox
+(* ****** ****** *)
+(* ****** ****** *)
+//
 datatype
 irpat_node =
 //
-| IRPnil of ()
-| IRPany of ()
+|IRPnil of ()
+|IRPany of ()
 //
-| IRPint of token
-| IRPbtf of sym_t
-| IRPchr of token
-| IRPstr of token
+|IRPvar of d2var
 //
-| IRPvar of (d2var)
+|IRPint of token
+|IRPbtf of sym_t
+|IRPchr of token
+|IRPstr of token
 //
-| IRPbang of (irpat)
-| IRPflat of (irpat)
-| IRPfree of (irpat)
+|IRPbang of (irpat)
+|IRPflat of (irpat)
+|IRPfree of (irpat)
 //
-| IRPcapp of (d2con, irpatlst)
+|IRPcapp of (d2con, irpatlst)
 //
-| IRPtup0 of (irpatlst)
-| IRPtup1 of (int(*knd*), irpatlst)
-| IRPrcd2 of (int(*knd*), l0irplst)
+|IRPtup0 of (irpatlst)
+|IRPtup1 of (int(*knd*), irpatlst)
+|IRPrcd2 of (int(*knd*), l0irplst)
 //
-| IRPnone0 of () | IRPnone1 of (d3pat)
+|IRPnone0 of () | IRPnone1 of (d3pat)
 //
 (* ****** ****** *)
 //
 fun
-irpat_fprint(FILR,irpat): void
+irpat_fprint
+(out: FILR, irp0: irpat): void
 //
 (* ****** ****** *)
 //
@@ -214,7 +232,8 @@ irexp_node =
 (* ****** ****** *)
 //
 fun
-irexp_fprint(FILR,irexp): void
+irexp_fprint
+(out: FILR, ire0: irexp): void
 //
 (* ****** ****** *)
 //
@@ -251,7 +270,8 @@ irdcl_node =
 (* ****** ****** *)
 //
 fun
-irdcl_fprint(FILR,irdcl): void
+irdcl_fprint
+(out: FILR, ird0: irdcl): void
 //
 (* ****** ****** *)
 //

@@ -169,7 +169,6 @@ D2E = "./dynexp2.sats"
 #abstbox d3valdcl_tbox // ptr
 #abstbox d3vardcl_tbox // ptr
 #abstbox d3fundcl_tbox // ptr
-#abstbox i3mpldcl_tbox // ptr
 //
 (* ****** ****** *)
 //
@@ -219,14 +218,12 @@ D2E = "./dynexp2.sats"
 #typedef d3valdcl = d3valdcl_tbox
 #typedef d3vardcl = d3vardcl_tbox
 #typedef d3fundcl = d3fundcl_tbox
-#typedef i3mpldcl = i3mpldcl_tbox
 (* ****** ****** *)
 #typedef d3parsed = d3parsed_tbox
 (* ****** ****** *)
 #typedef d3valdclist = list(d3valdcl)
 #typedef d3vardclist = list(d3vardcl)
 #typedef d3fundclist = list(d3fundcl)
-#typedef i3mpldclist = list(i3mpldcl)
 (* ****** ****** *)
 #vwtpdef d3patlst_vt = list_vt(d3pat)
 #vwtpdef d3explst_vt = list_vt(d3exp)
@@ -1019,7 +1016,7 @@ d3topenv =
 //
 fun
 d3parsed_fprint
-(out: FILR, dpar: d3parsed): void
+(out:FILR, dpar:d3parsed): void
 //
 (* ****** ****** *)
 #typedef d1topenv = $D1E.d1topenv
