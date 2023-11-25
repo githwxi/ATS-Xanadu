@@ -44,6 +44,15 @@ ATS_PACKNAME // namespace
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 (*
+HX-2023-08-12:
+Template resolution is the engine
+of programming productivity for ATS3!
+This implementation is primarily for
+the moment; some form of internet-based
+search will be attempted later :)
+*)
+(* ****** ****** *)
+(*
 HX-2023-11-09:
 For handling recursive template
 resolution. The non-recursive case
@@ -51,12 +60,15 @@ is handled in [trtmp3b].
 *)
 (* ****** ****** *)
 (*
-HX-2023-08-12:
-Template resolution is the engine
-of programming productivity for ATS3!
-This implementation is primarily for
-the moment; some form of internet-based
-search will be attempted later :)
+//
+HX-2023-11-25:
+//
+The basic idea of this implementaion:
+1. Traverse the stack of impltmps to find *all* the matching candidates
+2. Traverse the stack of impltmps to remove the first matching candidate
+   if it is already used and non-recursive
+3. Step 2 is repeated until either a recursive matching case or an unused
+   non-recursive matching case is found, which is chosen
 *)
 (* ****** ****** *)
 #absvtbx

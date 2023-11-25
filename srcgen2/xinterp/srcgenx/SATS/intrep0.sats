@@ -174,6 +174,11 @@ irpat_get_node(irpat):irpat_node
 #symload node with irpat_get_node
 (* ****** ****** *)
 fun
+irpat_none0(loc0: loctn): irpat
+fun
+irpat_none1(d3p0: d3pat): irpat
+(* ****** ****** *)
+fun
 irpat_make_node
 (loc: loctn, nod: irpat_node):irpat
 (* ****** ****** *)
@@ -221,6 +226,11 @@ irexp_get_node(irexp):irexp_node
 (* ****** ****** *)
 #symload lctn with irexp_get_lctn
 #symload node with irexp_get_node
+(* ****** ****** *)
+fun
+irexp_none0(loc0: loctn): irexp
+fun
+irexp_none1(d3e0: d3exp): irexp
 (* ****** ****** *)
 fun
 irexp_make_node
