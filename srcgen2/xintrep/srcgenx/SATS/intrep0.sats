@@ -138,10 +138,10 @@ irpat_node =
 | IRPnone0 of () | IRPnone1 of (d3pat)
 //
 (* ****** ****** *)
-
+//
 fun
 irpat_fprint(FILR,irpat): void
-
+//
 (* ****** ****** *)
 //
 fun
@@ -152,6 +152,57 @@ irpat_get_node(irpat):irpat_node
 (* ****** ****** *)
 #symload lctn with irpat_get_lctn
 #symload node with irpat_get_node
+(* ****** ****** *)
+//
+datatype
+d3exp_node =
+//
+|IREint of token
+|IREbtf of sym_t
+|IREchr of token
+|IREflt of token
+|IREstr of token
+//
+|IREi00 of (sint) // sint
+|IREb00 of (bool) // bool
+|IREc00 of (char) // char
+|IREf00 of (dflt) // float
+|IREs00 of (strn) // string
+//
+|IREtop of (sym_t)
+//
+|IREvar of (d2var)
+//
+|IREcon of (d2con)
+|IREcst of (d2cst)
+//
+|IREtimp of (irexp, timpl)
+//
+|IREsapp of (irexp, s2explst)
+|IREsapq of (irexp, s2typlst)
+//
+|IREtapp of (irexp, s2explst)
+|IREtapq of (irexp, t2jaglst)
+//
+|IREnone0 of ((*0*)) |IREnone1 of (d3exp)
+//
+// HX-2023-??-??: end-of-[datatype(irexp_node)]
+//
+(* ****** ****** *)
+//
+fun
+irexp_fprint(FILR,irexp): void
+//
+(* ****** ****** *)
+//
+fun
+irexp_get_lctn(irexp):( loc_t )
+fun
+irexp_get_node(irexp):irexp_node
+//
+(* ****** ****** *)
+#symload lctn with irexp_get_lctn
+#symload node with irexp_get_node
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_intrep0.sats] *)

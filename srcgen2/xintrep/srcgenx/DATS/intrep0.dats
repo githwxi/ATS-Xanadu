@@ -46,4 +46,88 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 
+local
+//
+datatype
+irpat =
+IRPAT of
+( loctn
+, s2typ, irpat_node)
+datavwtp
+irpat_vt =
+IRPAT_vt of
+( loctn
+, s2typ, irpat_node)
+//
+#absimpl irpat_tbox = irpat
+//
+in (* in-of-local *)
+//
+#implfun
+irpat_make_node
+(   loc,nod   ) =
+let
+val t2p =
+s2typ_none0() in
+IRPAT(loc, t2p, nod) end
+//
+#implfun
+irpat_get_lctn(irp) =
+let
+val+
+IRPAT(loc,t2p,nod) = irp in loc
+end
+#implfun
+irpat_get_node(irp) =
+let
+val+
+IRPAT(loc,t2p,nod) = irp in nod
+end
+//
+endloc (*local*) // end of [local(irpat)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+irexp =
+IREXP of
+( loctn
+, s2typ, irexp_node)
+datavwtp
+irexp_vt =
+IREXP_vt of
+( loctn
+, s2typ, irexp_node)
+//
+#absimpl irexp_tbox = irexp
+//
+in (* in-of-local *)
+//
+#implfun
+irexp_make_node
+(   loc,nod   ) =
+let
+val t2p =
+s2typ_none0() in
+IREXP(loc, t2p, nod) end
+//
+#implfun
+irexp_get_lctn(ire) =
+let
+val+
+IREXP(loc,t2p,nod) = ire in loc
+end
+#implfun
+irexp_get_node(ire) =
+let
+val+
+IREXP(loc,t2p,nod) = ire in nod
+end
+//
+endloc (*local*) // end of [local(irexp)]
+
+(* ****** ****** *)
+
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_intrep0.dats] *)
