@@ -274,6 +274,26 @@ trdienv_vtbx
 trdienv = trdienv_vtbx
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:t0>
+list_trxd3ir_fnp
+( e1:
+! trdienv
+, xs: list(x0)
+, (!trdienv, x0) -> y0): list(y0)
+fun
+<x0:t0>
+<y0:t0>
+optn_trxd3ir_fnp
+( e1:
+! trdienv
+, xs: optn(x0)
+, (!trdienv, x0) -> y0): optn(y0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 fun
 trdienv_make_nil(): trdienv
 fun

@@ -41,6 +41,13 @@ Authoremail: gmhwxiATgmailDOTcom
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dats.hats"
+(* ****** ****** *)
 #staload
 "./../../../SATS/staexp2.sats"
 #staload
@@ -133,6 +140,34 @@ end
 //
 endloc (*local*) // end of [local(irexp)]
 
+(* ****** ****** *)
+//
+#impltmp
+<x0><y0>
+list_trxd3ir_fnp
+( e1, xs, fopr ) =
+(
+list_map_e1nv<x0><y0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = trdienv
+#impltmp
+map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [list_trxd3ir_fnp(e1,xs,fopr)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0><y0>
+optn_trxd3ir_fnp
+( e1, xs, fopr ) =
+(
+optn_map_e1nv<x0><y0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = trdienv
+#impltmp
+map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [optn_trxd3ir_fnp(e1,xs,fopr)]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_intrep0.dats] *)
