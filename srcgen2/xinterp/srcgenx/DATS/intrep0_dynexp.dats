@@ -46,6 +46,34 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 
+#implfun
+trxd3ir_d3pat
+(env0 , d3p0) =
+(
+case+
+d3p0.node()
+|_(*otherwise*) => irpat_none1(d3p0)
+) where
+{
+val () =
+prerrln("trxd3ir_d3exp: d3p0 = ", d3p0)
+}(*where*) // end of [trxd3ir_d3pat(...)]
+
+(* ****** ****** *)
+
+#implfun
+trxd3ir_d3exp
+(env0 , d3e0) =
+(
+case+
+d3e0.node()
+|_(*otherwise*) => irexp_none1(d3e0)
+) where
+{
+val () =
+prerrln("trxd3ir_d3exp: d3e0 = ", d3e0)
+}(*where*) // end of [trxd3ir_d3exp(...)]
+
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_intrep0_dynexp.dats] *)

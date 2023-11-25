@@ -58,7 +58,14 @@ XATSOPT "./../../.."
 #symload lctn with irpat_get_lctn
 #symload node with irpat_get_node
 (* ****** ****** *)
-
+#symload lctn with irexp_get_lctn
+#symload node with irexp_get_node
+(* ****** ****** *)
+#symload lctn with irdcl_get_lctn
+#symload node with irdcl_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 irpat_fprint
 (out, irp0) =
@@ -79,10 +86,39 @@ irp0.node() of
 //
 |IRPvar(d2v) => print("IRPvar(", d2v, ")")
 //
-|IRPnone0((*void*)) => print( "IRPnone0(",")" )
+|IRPnone0() => print( "IRPnone0(",")" )
+|IRPnone1(d3p1) => print( "IRPnone1(", d3p1, ")" )
 //
 end//let//end-of-[irpat_fprint(out, irp0)]
-
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+irexp_fprint
+(out, ire0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+ire0.node() of
+//
+|IREany _ => print("IREany(", ")")
+//
+|IREint(int) => print("IREint(", int, ")")
+|IREchr(btf) => print("IREchr(", btf, ")")
+|IREchr(chr) => print("IREchr(", chr, ")")
+|IREchr(str) => print("IREstr(", str, ")")
+//
+|IREvar(d2v) => print("IREvar(", d2v, ")")
+//
+|IREnone0() => print( "IREnone0(",")" )
+|IREnone1(d3e1) => print( "IREnone1(", d3e1, ")" )
+//
+end//let//end-of-[ireat_fprint(out, ire0)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
