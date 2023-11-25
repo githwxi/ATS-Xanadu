@@ -52,7 +52,6 @@ tr23env = tr23env_vtbx
 BAS = "./xbasics.sats"
 #typedef
 f2clknd = $BAS.f2clknd
-//
 (* ****** ****** *)
 //
 #staload

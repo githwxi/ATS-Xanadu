@@ -66,6 +66,11 @@ XATSOPT "./../../.."
 "./../../../SATS/locinfo.sats"
 //
 (* ****** ****** *)
+//
+#staload
+"./../../../SATS/lexing0.sats"
+//
+(* ****** ****** *)
 #staload S2E =
 "./../../../SATS/staexp2.sats"
 #staload T2P =
@@ -76,6 +81,12 @@ XATSOPT "./../../.."
 #staload D3E =
 "./../../../SATS/dynexp3.sats"
 (* ****** ****** *)
+(* ****** ****** *)
+#typedef stamp = stamp
+#typedef sym_t = sym_t
+#typedef label = label
+#typedef loctn = loctn
+#typedef loc_t = loctn
 (* ****** ****** *)
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
@@ -88,19 +99,26 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
+#typedef d3ecl = $D3E.d3ecl
+(* ****** ****** *)
+#typedef d3patlst = $D3E.d3patlst
+#typedef d3explst = $D3E.d3explst
+#typedef d3eclist = $D3E.d3eclist
 (* ****** ****** *)
 (* ****** ****** *)
 datatype
 irlab(x0:type) =
 |
-IRLAB of
-(label, x0(*elt*))
+IRLAB of (label, x0(*elt*))
 (* ****** ****** *)
-#abstbox irpat_tbox // ptr
+#abstbox irpat_tbox // p0tr
 #typedef irpat = irpat_tbox
 (* ****** ****** *)
-#abstbox irexp_tbox // ptr
+#abstbox irexp_tbox // p0tr
 #typedef irexp = irexp_tbox
+(* ****** ****** *)
+#abstbox irdcl_tbox // p0tr
+#typedef irdcl = irdcl_tbox
 (* ****** ****** *)
 #typedef l0irp = irlab(irpat)
 #typedef l0ire = irlab(irexp)
@@ -110,6 +128,8 @@ IRLAB of
 (* ****** ****** *)
 #typedef irexplst = list(irexp)
 #typedef l0irelst = list(l0ire)
+(* ****** ****** *)
+#typedef irdclist = list(irdcl)
 (* ****** ****** *)
 
 datatype
@@ -153,9 +173,15 @@ irpat_get_node(irpat):irpat_node
 #symload lctn with irpat_get_lctn
 #symload node with irpat_get_node
 (* ****** ****** *)
+fun
+irpat_make_node
+(loc: loctn, nod: irpat_node):irpat
+(* ****** ****** *)
+#symload irpat with irpat_make_node
+(* ****** ****** *)
 //
 datatype
-d3exp_node =
+irexp_node =
 //
 |IREint of token
 |IREbtf of sym_t
@@ -176,14 +202,6 @@ d3exp_node =
 |IREcon of (d2con)
 |IREcst of (d2cst)
 //
-|IREtimp of (irexp, timpl)
-//
-|IREsapp of (irexp, s2explst)
-|IREsapq of (irexp, s2typlst)
-//
-|IREtapp of (irexp, s2explst)
-|IREtapq of (irexp, t2jaglst)
-//
 |IREnone0 of ((*0*)) |IREnone1 of (d3exp)
 //
 // HX-2023-??-??: end-of-[datatype(irexp_node)]
@@ -203,6 +221,76 @@ irexp_get_node(irexp):irexp_node
 (* ****** ****** *)
 #symload lctn with irexp_get_lctn
 #symload node with irexp_get_node
+(* ****** ****** *)
+fun
+irexp_make_node
+(loc:loctn, nod:irexp_node):irexp
+(* ****** ****** *)
+#symload irexp with irexp_make_node
+(* ****** ****** *)
+//
+datatype
+irdcl_node =
+//
+|IRDlocal0 of
+( irdclist(*local-head*)
+, irdclist(*local-body*))
+//
+|IRDnone0 of ((*0*)) |IRDnone1 of (d3ecl)
+//
+(* ****** ****** *)
+//
+fun
+irdcl_fprint(FILR,irdcl): void
+//
+(* ****** ****** *)
+//
+fun
+irdcl_get_lctn(irdcl):( loc_t )
+fun
+irdcl_get_node(irdcl):irdcl_node
+//
+(* ****** ****** *)
+fun
+irdcl_make_node
+(loc:loctn, nod:irdcl_node):irdcl
+(* ****** ****** *)
+#symload irdcl with irdcl_make_node
+(* ****** ****** *)
+(* ****** ****** *)
+#absvtbx
+trdienv_vtbx
+#vwtpdef
+trdienv = trdienv_vtbx
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+trdienv_make_nil(): trdienv
+fun
+trdienv_free_top(trdienv): void
+(* ****** ****** *)
+fun
+trxd3ir_d3pat
+(env0: !trdienv, d3p0: d3pat): irpat
+(* ****** ****** *)
+fun
+trxd3ir_d3exp
+(env0: !trdienv, d3e0: d3exp): irexp
+(* ****** ****** *)
+fun
+trxd3ir_d3ecl
+(env0: !trdienv, d3cl: d3ecl): irdcl
+(* ****** ****** *)
+fun
+trxd3ir_d3patlst
+(env0: !trdienv, d3ps: d3patlst): irpatlst
+fun
+trxd3ir_d3explst
+(env0: !trdienv, d3es: d3explst): irexplst
+(* ****** ****** *)
+fun
+trxd3ir_d3eclist
+(env0: !trdienv, dcls: d3eclist): irdclist
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_intrep0.sats] *)

@@ -43,7 +43,8 @@ $(XATSHOME)/srcgen1/bin/xatsopt
 ######
 all_sats:: \
 intrep0_sats
-intrep0_sats: ; $(XATSOPT) --static SATS/intrep0.sats
+intrep0_sats: ; \
+$(XATSOPT) --static SATS/intrep0.sats
 ######
 
 ######
@@ -62,6 +63,11 @@ all_dats:: \
 intrep0_print0_dats
 intrep0_print0_dats: ; \
 $(XATSOPT) --dynamic DATS/intrep0_print0.dats
+######
+all_dats:: \
+intrep0_myenv0_dats
+intrep0_myenv0_dats: ; \
+$(XATSOPT) --dynamic DATS/intrep0_myenv0.dats
 ######
 
 ########################################################################

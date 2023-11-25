@@ -41,6 +41,11 @@ Authoremail: gmhwxiATgmailDOTcom
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
+#staload
+"./../../../SATS/staexp2.sats"
+#staload
+"./../../../SATS/statyp2.sats"
+(* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
 //
