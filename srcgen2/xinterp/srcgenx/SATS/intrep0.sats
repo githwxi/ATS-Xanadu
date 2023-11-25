@@ -138,10 +138,10 @@ irpat_node =
 | IRPnil of ()
 | IRPany of ()
 //
-| IRPint of (int)
-| IRPbtf of (bool)
-| IRPchr of (char)
-| IRPstr of string
+| IRPint of token
+| IRPbtf of sym_t
+| IRPchr of token
+| IRPstr of token
 //
 | IRPvar of (d2var)
 //
@@ -260,6 +260,9 @@ irdcl_get_lctn(irdcl):( loc_t )
 fun
 irdcl_get_node(irdcl):irdcl_node
 //
+(* ****** ****** *)
+fun
+irdcl_none1(d3cl: d3ecl): irdcl
 (* ****** ****** *)
 fun
 irdcl_make_node

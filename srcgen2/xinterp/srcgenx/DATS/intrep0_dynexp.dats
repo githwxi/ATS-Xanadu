@@ -75,20 +75,39 @@ _(*DATS*)="./../DATS/intrep0.dats"
 #symload lctn with d3exp_get_lctn
 #symload node with d3exp_get_node
 (* ****** ****** *)
-
+//
 #implfun
 trxd3ir_d3pat
 (env0 , d3p0) =
 (
 case+
 d3p0.node() of
+//
+|D3Pint(tok) =>
+irpat(loc0, IRPint(tok))
+|D3Pbtf(sym) =>
+irpat(loc0, IRPbtf(sym))
+|D3Pchr(tok) =>
+irpat(loc0, IRPchr(tok))
+(*
+|D3Pflt(tok) =>
+irpat(loc0, IRPflt(tok))
+*)
+|D3Pstr(tok) =>
+irpat(loc0, IRPstr(tok))
+//
 |_(*otherwise*) => irpat_none1(d3p0)
+//
 ) where
 {
+//
+val loc0 = d3p0.lctn()
+//
 val () =
-prerrln("trxd3ir_d3exp: d3p0 = ", d3p0)
+prerrln("trxd3ir_d3pat: d3p0 = ", d3p0)
+//
 }(*where*) // end of [trxd3ir_d3pat(...)]
-
+//
 (* ****** ****** *)
 
 #implfun
@@ -97,11 +116,27 @@ trxd3ir_d3exp
 (
 case+
 d3e0.node() of
-|_(*otherwise*) => irexp_none1(d3e0)
+//
+|D3Eint(tok) =>
+irexp(loc0, IREint(tok))
+|D3Ebtf(sym) =>
+irexp(loc0, IREbtf(sym))
+|D3Echr(tok) =>
+irexp(loc0, IREchr(tok))
+|D3Eflt(tok) =>
+irexp(loc0, IREflt(tok))
+|D3Estr(tok) =>
+irexp(loc0, IREstr(tok))
+//
+|_(* otherwise *) => irexp_none1(d3e0)
 ) where
 {
-val () =
+//
+val loc0 = d3e0.lctn()
+//
+val (  ) =
 prerrln("trxd3ir_d3exp: d3e0 = ", d3e0)
+//
 }(*where*) // end of [trxd3ir_d3exp(...)]
 
 (* ****** ****** *)

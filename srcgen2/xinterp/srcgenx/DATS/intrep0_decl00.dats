@@ -68,6 +68,21 @@ _(*DATS*)="./../DATS/intrep0.dats"
 (* ****** ****** *)
 //
 #implfun
+trxd3ir_d3ecl
+(env0 , d3cl) =
+(
+case+
+d3cl.node() of
+|_(*otherwise*) => irdcl_none1(d3cl)
+) where
+{
+val () =
+prerrln("trxd3ir_d3ecl: d3cl = ", d3cl)
+}(*where*) // end of [trxd3ir_d3ecl(...)]
+//
+(* ****** ****** *)
+//
+#implfun
 trxd3ir_d3eclist
 ( env0, dcls ) =
 (
