@@ -275,6 +275,7 @@ labh0typ = slabeled(h0typ)
 typedef
 labh0typlst = List0(labh0typ)
 (* ****** ****** *)
+//
 datatype
 h0typ_node =
 // externally named

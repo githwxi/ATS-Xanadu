@@ -109,7 +109,7 @@ prerrln("trxd3ir_d3pat: d3p0 = ", d3p0)
 }(*where*) // end of [trxd3ir_d3pat(...)]
 //
 (* ****** ****** *)
-
+//
 #implfun
 trxd3ir_d3exp
 (env0 , d3e0) =
@@ -133,13 +133,26 @@ irexp(loc0, IREflt(tok))
 ( tok ) =>
 irexp(loc0, IREstr(tok))
 //
+|D3Evar
+( d2v ) =>
+irexp(loc0, IREvar(d2v))
+//
 |D3Eift0 _ => f0_ift0(env0, d3e0)
+//
+|D3Eseqn _ => f0_seqn(env0, d3e0)
+//
+|D3Etup0 _ => f0_tup0(env0, d3e0)
+|D3Etup1 _ => f0_tup1(env0, d3e0)
 //
 |_(* otherwise *) => irexp_none1(d3e0)
 ) where
 {
 //
+(* ****** ****** *)
+//
 val loc0 = d3e0.lctn()
+//
+(* ****** ****** *)
 //
 fun
 f0_ift0
@@ -165,11 +178,87 @@ irexp_make_node
 (loc0, IREift0(ire1, ithn, iels))
 end(*let*)//end-of-[f0_ift0(env0,d3e0)]
 //
+(* ****** ****** *)
+//
+fun
+f0_seqn
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val-
+D3Eseqn
+( d3es, d3e1) = d3e0.node()
+//
+val ires =
+trxd3ir_d3explst
+(  env0, d3es  )
+val ire1 =
+(
+  trxd3ir_d3exp(env0, d3e1) )
+//
+in//let
+(
+  irexp_make_node
+  (loc0, IREseqn( ires, ire1 )))
+end(*let*)//end-of-[f0_seqn(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup0
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val-
+D3Etup0
+( npf1, d3es) = d3e0.node()
+//
+val ires =
+(
+  trxd3ir_d3explst(env0, d3es))
+//
+in//let
+(
+  irexp_make_node
+  (loc0, IREtup0( npf1, ires )))
+end(*let*)//end-of-[f0_tup0(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup1
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val-
+D3Etup1
+( knd0
+, npf1, d3es) = d3e0.node()
+//
+val ires =
+(
+  trxd3ir_d3explst(env0, d3es))
+//
+in//let
+irexp_make_node
+(loc0, IREtup1(knd0, npf1, ires))
+end(*let*)//end-of-[f0_tup0(env0,d3e0)]
+//
+(* ****** ****** *)
+//
 val (  ) =
 prerrln("trxd3ir_d3exp: d3e0 = ", d3e0)
 //
+(* ****** ****** *)
+//
 }(*where*) // end of [trxd3ir_d3exp(...)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

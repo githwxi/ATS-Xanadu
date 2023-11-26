@@ -244,6 +244,17 @@ irexp_node =
 |IREift0 of
 (irexp, irexpopt, irexpopt)
 //
+|IREseqn of
+(irexplst(*init*), irexp(*last*))
+//
+|IREtup0 of (sint(*npf*), irexplst)
+|IREtup1 of
+(
+token(*knd*), sint(*npf*), irexplst)
+|IRErcd2 of
+(
+token(*knd*), sint(*npf*), l0irelst)
+//
 |IREnone0 of ((*0*)) |IREnone1 of (d3exp)
 //
 // HX-2023-??-??: end-of-[datatype(irexp_node)]

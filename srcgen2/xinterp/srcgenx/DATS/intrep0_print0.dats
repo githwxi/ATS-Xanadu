@@ -114,6 +114,14 @@ ire0.node() of
 //
 |IREvar(d2v) => print("IREvar(", d2v, ")")
 //
+|IREift0
+( ire1
+, ithn, iels) =>
+(
+print
+("IREift0(", ire1, ";", ithn, ";", iels, ")"))
+//
+//
 |IREnone0() => print( "IREnone0(",")" )
 |IREnone1(d3e1) => print( "IREnone1(", d3e1, ")" )
 //
