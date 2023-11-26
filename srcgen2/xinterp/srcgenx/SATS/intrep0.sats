@@ -99,6 +99,10 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
+(* ****** ****** *)
+#typedef l3d3p = $D3E.l3d3p
+#typedef l3d3e = $D3E.l3d3e
+(* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
 //
@@ -107,6 +111,9 @@ XATSOPT "./../../.."
 #typedef d3explst = $D3E.d3explst
 #typedef d3expopt = $D3E.d3expopt
 //
+(* ****** ****** *)
+#typedef l3d3plst = $D3E.l3d3plst
+#typedef l3d3elst = $D3E.l3d3elst
 (* ****** ****** *)
 #typedef d3eclist = $D3E.d3eclist
 (* ****** ****** *)
@@ -365,10 +372,16 @@ trdienv_free_top(trdienv): void
 fun
 trxd3ir_d3pat
 (env0: !trdienv, d3p0: d3pat): irpat
-(* ****** ****** *)
 fun
 trxd3ir_d3exp
 (env0: !trdienv, d3e0: d3exp): irexp
+(* ****** ****** *)
+fun
+trxd3ir_l3d3p
+(env0: !trdienv, ld3p: l3d3p): l0irp
+fun
+trxd3ir_l3d3e
+(env0: !trdienv, ld3e: l3d3e): l0ire
 (* ****** ****** *)
 fun
 trxd3ir_d3ecl
@@ -386,6 +399,13 @@ fun
 trxd3ir_d3expopt
 (env0: !trdienv, dopt: d3expopt): irexpopt
 //
+(* ****** ****** *)
+fun
+trxd3ir_l3d3plst
+(env0: !trdienv, ldps: l3d3plst): l0irplst
+fun
+trxd3ir_l3d3elst
+(env0: !trdienv, ldes: l3d3elst): l0irelst
 (* ****** ****** *)
 fun
 trxd3ir_d3eclist
