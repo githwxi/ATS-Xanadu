@@ -283,6 +283,20 @@ trxd3ir_d3expopt
   optn_trxd3ir_fnp(env0, dopt, trxd3ir_d3exp))
 //
 (* ****** ****** *)
+//
+#implfun
+trxd3ir_l3d3plst
+( env0, ldps ) =
+(
+  list_trxd3ir_fnp(env0, ldps, trxd3ir_l3d3p))
+//
+#implfun
+trxd3ir_l3d3elst
+( env0, ldes ) =
+(
+  list_trxd3ir_fnp(env0, ldes, trxd3ir_l3d3e))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_intrep0_dynexp.dats] *)
