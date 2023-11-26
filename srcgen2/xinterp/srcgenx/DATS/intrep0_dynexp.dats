@@ -117,22 +117,53 @@ trxd3ir_d3exp
 case+
 d3e0.node() of
 //
-|D3Eint(tok) =>
+|D3Eint
+( tok ) =>
 irexp(loc0, IREint(tok))
-|D3Ebtf(sym) =>
+|D3Ebtf
+( sym ) =>
 irexp(loc0, IREbtf(sym))
-|D3Echr(tok) =>
+|D3Echr
+( tok ) =>
 irexp(loc0, IREchr(tok))
-|D3Eflt(tok) =>
+|D3Eflt
+( tok ) =>
 irexp(loc0, IREflt(tok))
-|D3Estr(tok) =>
+|D3Estr
+( tok ) =>
 irexp(loc0, IREstr(tok))
+//
+|D3Eift0 _ => f0_ift0(env0, d3e0)
 //
 |_(* otherwise *) => irexp_none1(d3e0)
 ) where
 {
 //
 val loc0 = d3e0.lctn()
+//
+fun
+f0_ift0
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val-
+D3Eift0
+( d3e1
+, dthn, dels) = d3e0.node()
+//
+val ire1 =
+trxd3ir_d3exp(env0, d3e1)
+val ithn =
+trxd3ir_d3expopt(env0, dthn)
+val iels =
+trxd3ir_d3expopt(env0, dels)
+//
+in//let
+irexp_make_node
+(loc0, IREift0(ire1, ithn, iels))
+end(*let*)//end-of-[f0_ift0(env0,d3e0)]
 //
 val (  ) =
 prerrln("trxd3ir_d3exp: d3e0 = ", d3e0)
@@ -155,6 +186,12 @@ trxd3ir_d3explst
 ( env0, d3es ) =
 (
   list_trxd3ir_fnp(env0, d3es, trxd3ir_d3exp))
+//
+#implfun
+trxd3ir_d3expopt
+( env0, dopt ) =
+(
+  optn_trxd3ir_fnp(env0, dopt, trxd3ir_d3exp))
 //
 (* ****** ****** *)
 (* ****** ****** *)

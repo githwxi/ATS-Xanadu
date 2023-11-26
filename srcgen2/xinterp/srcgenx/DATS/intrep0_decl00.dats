@@ -90,5 +90,28 @@ trxd3ir_d3eclist
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#implfun
+trxd3ir_d3valdclist
+  ( env0 , d3vs ) =
+(
+  list_trxd3ir_fnp(env0, d3vs, trxd3ir_d3valdcl))
+//
+#implfun
+trxd3ir_d3vardclist
+  ( env0 , d3vs ) =
+(
+  list_trxd3ir_fnp(env0, d3vs, trxd3ir_d3vardcl))
+//
+(* ****** ****** *)
+//
+#implfun
+trxd3ir_d3fundclist
+  ( env0 , d3fs ) =
+(
+  list_trxd3ir_fnp(env0, d3fs, trxd3ir_d3fundcl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_intrep0_decl00.dats] *)
