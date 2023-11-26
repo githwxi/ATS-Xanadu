@@ -101,10 +101,22 @@ XATSOPT "./../../.."
 #typedef d3exp = $D3E.d3exp
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
+//
 #typedef d3patlst = $D3E.d3patlst
+//
 #typedef d3explst = $D3E.d3explst
+#typedef d3expopt = $D3E.d3expopt
+//
+(* ****** ****** *)
 #typedef d3eclist = $D3E.d3eclist
 (* ****** ****** *)
+#typedef d3valdcl = $D3E.d3valdcl
+#typedef d3vardcl = $D3E.d3vardcl
+#typedef d3fundcl = $D3E.d3fundcl
+(* ****** ****** *)
+#typedef d3valdclist = $D3E.d3valdclist
+#typedef d3vardclist = $D3E.d3vardclist
+#typedef d3fundclist = $D3E.d3fundclist
 (* ****** ****** *)
 datatype
 irlab(x0:type) =
@@ -136,6 +148,7 @@ IRLAB of (label, x0(*elt*))
 #typedef irpatlst = list(irpat)
 #typedef l0irplst = list(l0irp)
 (* ****** ****** *)
+#typedef irexpopt = optn(irexp)
 #typedef irexplst = list(irexp)
 #typedef l0irelst = list(l0ire)
 (* ****** ****** *)
@@ -147,6 +160,9 @@ IRLAB of (label, x0(*elt*))
 (* ****** ****** *)
 #typedef irparsed = irparsed_tbox
 (* ****** ****** *)
+#typedef irvaldclist = list(irvaldcl)
+#typedef irvardclist = list(irvardcl)
+#typedef irfundclist = list(irfundcl)
 (* ****** ****** *)
 //
 datatype
@@ -225,6 +241,9 @@ irexp_node =
 |IREcon of (d2con)
 |IREcst of (d2cst)
 //
+|IREift0 of
+(irexp, irexpopt, irexpopt)
+//
 |IREnone0 of ((*0*)) |IREnone1 of (d3exp)
 //
 // HX-2023-??-??: end-of-[datatype(irexp_node)]
@@ -264,6 +283,16 @@ irdcl_node =
 |IRDlocal0 of
 ( irdclist(*local-head*)
 , irdclist(*local-body*))
+//
+|
+IRDvaldclst of
+(token(*VAL(vlk)*), irvaldclist)
+|
+IRDvardclst of
+(token(*VAL(vlk)*), irvardclist)
+|
+IRDfundclst of
+(token(*VAL(vlk)*), irfundclist)
 //
 |IRDnone0 of ((*0*)) |IRDnone1 of (d3ecl)
 //
@@ -337,13 +366,41 @@ trxd3ir_d3ecl
 fun
 trxd3ir_d3patlst
 (env0: !trdienv, d3ps: d3patlst): irpatlst
+(* ****** ****** *)
+//
 fun
 trxd3ir_d3explst
 (env0: !trdienv, d3es: d3explst): irexplst
+fun
+trxd3ir_d3expopt
+(env0: !trdienv, dopt: d3expopt): irexpopt
+//
 (* ****** ****** *)
 fun
 trxd3ir_d3eclist
 (env0: !trdienv, dcls: d3eclist): irdclist
+(* ****** ****** *)
+fun
+trxd3ir_d3valdcl
+(env0: !trdienv, dval: d3valdcl): irvaldcl
+fun
+trxd3ir_d3vardcl
+(env0: !trdienv, dvar: d3vardcl): irvardcl
+(* ****** ****** *)
+fun
+trxd3ir_d3fundcl
+(env0: !trdienv, dfun: d3fundcl): irfundcl
+(* ****** ****** *)
+fun
+trxd3ir_d3valdclist
+(env0: !trdienv, d3vs: d3valdclist): irvaldclist
+fun
+trxd3ir_d3vardclist
+(env0: !trdienv, d3vs: d3vardclist): irvardclist
+(* ****** ****** *)
+fun
+trxd3ir_d3fundclist
+(env0: !trdienv, d3fs: d3fundclist): irfundclist
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_intrep0.sats] *)
