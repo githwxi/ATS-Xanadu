@@ -92,17 +92,22 @@ f0_local0
 ! trdienv
 , d3cl: d3ecl): irdcl =
 let
+//
 val-
 D3Clocal0
 (head, body) = d3cl.node()
+//
 val
 head =
 trxd3ir_d3eclist(env0, head)
 val
 body =
 trxd3ir_d3eclist(env0, body)
+//
 in//let
+//
 irdcl(loc0, IRDlocal0(head, body))
+//
 end//let//end-of-[f0_local0(env0,d3cl)]
 //
 val () =
