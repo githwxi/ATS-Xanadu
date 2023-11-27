@@ -49,9 +49,11 @@ XATSOPT_targetloc
 (* ****** ****** *)
 //
 #staload LAB =
-"{$XATSOPT}/SATS/xlabel0.sats"
+"{$XATSOPT}\
+/SATS/xlabel0.sats"
 #staload D2E =
-"{$XATSOPT}/SATS/dynexp2.sats"
+"{$XATSOPT}\
+/SATS/dynexp2.sats"
 //
 (* ****** ****** *)
 
