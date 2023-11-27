@@ -256,7 +256,7 @@ IREdapp of
 (irexp, sint, irexplst)
 //
 |IRElet0 of
-(irdclist, d3exp(*scope*))
+(irdclist, irexp(*scope*))
 //
 |IREift0 of
 (irexp, irexpopt, irexpopt)
