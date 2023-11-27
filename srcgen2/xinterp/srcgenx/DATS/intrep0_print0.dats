@@ -114,6 +114,13 @@ ire0.node() of
 //
 |IREvar(d2v) => print("IREvar(", d2v, ")")
 //
+|IREdapp
+( ire1
+, npf1, ires) =>
+(
+print
+("IREift0(", ire1, ";", npf1, ";", ires, ")"))
+//
 |IREift0
 ( ire1
 , ithn, iels) =>
@@ -125,7 +132,29 @@ print
 |IREnone0() => print( "IREnone0(",")" )
 |IREnone1(d3e1) => print( "IREnone1(", d3e1, ")" )
 //
-end//let//end-of-[ireat_fprint(out, ire0)]
+end//let//end-of-[irexp_fprint(out, ire0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+irdcl_fprint
+(out, ird0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+ird0.node() of
+//
+|IRDlocal0
+(head, body) =>
+print("IRPlocal0(", head, ";", body, ")")
+//
+|IRDnone1(d3cl) => print( "IRDnone1(", d3cl, ")" )
+//
+end//let//end-of-[irdcl_fprint(out, ird0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
