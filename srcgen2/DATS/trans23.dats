@@ -60,6 +60,28 @@ ATS_PACKNAME
 #staload "./../SATS/trans23.sats"
 (* ****** ****** *)
 //
+#implfun
+d3parsed_from_fpath
+  (stadyn, source) =
+(
+  d3parsed_of_trans23(dpar)) where
+{
+//
+val dpar =
+d2parsed_from_fpath(stadyn, source)
+//
+val dpar = d2parsed_of_tread12(dpar)
+//
+val dpar = d2parsed_of_trans2a(dpar)
+//
+val (  ) = d2parsed_at_trsym2b(dpar)
+//
+val dpar = d2parsed_of_tread22(dpar)
+//
+} (*where*)//end-of-[d3parsed_from_fpath(...)]
+//
+(* ****** ****** *)
+//
 #impltmp
 <x0><y0>
 list_trans23_fnp
@@ -122,28 +144,6 @@ d3parsed
 end//let
 end (*let*) // end of [d2parsed_trans23(dpar)]
 
-(* ****** ****** *)
-//
-#implfun
-d3parsed_from_fpath
-  (stadyn, source) =
-(
-  d3parsed_of_trans23(dpar)) where
-{
-//
-val dpar =
-d2parsed_from_fpath(stadyn, source)
-//
-val dpar = d2parsed_of_tread12(dpar)
-//
-val dpar = d2parsed_of_trans2a(dpar)
-//
-val (  ) = d2parsed_at_trsym2b(dpar)
-//
-val dpar = d2parsed_of_tread22(dpar)
-//
-} (*where*)//end-of-[d3parsed_from_fpath(...)]
-//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans23.dats] *)
