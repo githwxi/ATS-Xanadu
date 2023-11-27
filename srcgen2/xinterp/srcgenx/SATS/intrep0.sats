@@ -251,6 +251,10 @@ irexp_node =
 |IREcon of (d2con)
 |IREcst of (d2cst)
 //
+|
+IREdapp of
+(irexp, sint, irexplst)
+//
 |IRElet0 of
 (irdclist, d3exp(*scope*))
 //
