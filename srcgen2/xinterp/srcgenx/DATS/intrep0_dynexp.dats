@@ -250,8 +250,7 @@ let
 //
 val-
 D3Elet0
-( d3e1
-, dcls, d3e1) = d3e0.node()
+( dcls, d3e1) = d3e0.node()
 //
 val irds =
 trxd3ir_d3eclist(env0, dcls)

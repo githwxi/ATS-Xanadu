@@ -48,6 +48,9 @@ XATSOPT "./../../.."
 "./../../..\
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+#include
+"./../HATS/xinterp_dats.hats"
+(* ****** ****** *)
 #staload
 "./../../../SATS/xbasics.sats"
 (* ****** ****** *)

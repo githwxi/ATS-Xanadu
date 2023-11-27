@@ -37,6 +37,14 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+#staload "./../SATS/intrep0.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 g_print
