@@ -138,7 +138,7 @@ clean:: ; $(RMF) xinterp_dats.c
 cleanall:: clean
 cleanall:: ; $(RMF) ./bin/xinterp
 cleanall:: ; $(RMF) $(XATSOPT)/lib/libxatsopt.a
-cleanall:: ; $(MAKE) -C $(XATSOPT)/srcgen1/. cleanall
+cleanall:: ; $(MAKE) -C $(XATSOPT)/. cleanall
 
 ######
 

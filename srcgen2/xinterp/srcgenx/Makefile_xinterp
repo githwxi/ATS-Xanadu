@@ -46,6 +46,11 @@ intrep0_sats
 intrep0_sats: ; \
 $(XATSOPT) --static SATS/intrep0.sats
 ######
+all_sats:: \
+xinterp_sats
+xinterp_sats: ; \
+$(XATSOPT) --static SATS/xinterp.sats
+######
 
 ######
 #
