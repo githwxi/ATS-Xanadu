@@ -53,6 +53,9 @@ XATSOPT "./../../.."
 #staload
 "./../../../SATS/statyp2.sats"
 (* ****** ****** *)
+#staload
+"./../../../SATS/dynexp3.sats"
+(* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
 //
@@ -141,6 +144,118 @@ end
 endloc (*local*) // end of [local(irexp)]
 
 (* ****** ****** *)
+
+local
+//
+datatype
+irdcl =
+IRDCL of
+( loctn, irdcl_node)
+datavwtp
+irdcl_vt =
+IRDCL_vt of
+( loctn, irdcl_node)
+//
+#absimpl irdcl_tbox = irdcl
+//
+in (* in-of-local *)
+//
+#implfun
+irdcl_make_node
+(   loc,nod   ) =
+(
+  IRDCL(loc, nod) )
+//
+#implfun
+irdcl_get_lctn(ird) =
+let
+  val+IRDCL(loc,nod) = ird in loc
+end
+#implfun
+irdcl_get_node(ird) =
+let
+  val+IRDCL(loc,nod) = ird in nod
+end
+//
+endloc (*local*) // end of [local(irdcl)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+irparsed =
+IRPARSED of
+(
+sint  // stadyn
+,
+sint  // nerror
+,
+lcsrc // source
+,
+irdclistopt)//program
+//
+#absimpl
+irparsed_tbox = irparsed
+//
+in//local
+
+(* ****** ****** *)
+//
+#implfun
+irparsed_make_args
+( stadyn
+, nerror
+, source, parsed) =
+(
+IRPARSED
+( stadyn
+, nerror, source, parsed)) where
+{
+(*
+val () =
+prerrln
+("irparsed_make_args:nerror=",nerror)
+*)
+} (*where*) // end-of-[irparsed_make_args]
+//
+(* ****** ****** *)
+
+endloc (*local*) // end of [ local(irparsed) ]
+
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+irparsed_of_trxd3ir
+  (dpar) =
+let
+//
+val stadyn =
+d3parsed_get_stadyn(dpar)
+val nerror =
+d3parsed_get_nerror(dpar)
+val source =
+d3parsed_get_source(dpar)
+val parsed =
+d3parsed_get_parsed(dpar)
+//
+val env0 = trdienv_make_nil()
+//
+val parsed =
+trxd3ir_d3eclistopt(env0, parsed)
+//
+in//let
+(
+  irparsed_make_args
+  (stadyn, nerror, source, parsed)
+) where
+{
+  val (  ) = trdienv_free_top(env0) }
+end (*let*) // end of [irparsed_trxd3ir(dpar)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 <x0><y0>
@@ -168,6 +283,7 @@ optn_map_e1nv<x0><y0><e1>(xs, e1)) where
 map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 } (*where*)//end of [optn_trxd3ir_fnp(e1,xs,fopr)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_intrep0.dats] *)

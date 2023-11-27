@@ -125,6 +125,11 @@ XATSOPT "./../../.."
 #typedef d3vardclist = $D3E.d3vardclist
 #typedef d3fundclist = $D3E.d3fundclist
 (* ****** ****** *)
+#typedef d3parsed = $D3E.d3parsed
+(* ****** ****** *)
+#typedef d3explstopt = $D3E.d3explstopt
+#typedef d3eclistopt = $D3E.d3eclistopt
+(* ****** ****** *)
 datatype
 irlab(x0:type) =
 |
@@ -170,6 +175,8 @@ IRLAB of (label, x0(*elt*))
 #typedef irvaldclist = list(irvaldcl)
 #typedef irvardclist = list(irvardcl)
 #typedef irfundclist = list(irfundcl)
+(* ****** ****** *)
+#typedef irdclistopt = optn(irdclist)
 (* ****** ****** *)
 //
 datatype
@@ -348,6 +355,23 @@ irdcl_make_node
 (* ****** ****** *)
 #symload irdcl with irdcl_make_node
 (* ****** ****** *)
+//
+fun
+irparsed_of_trxd3ir
+( dpar : d3parsed ): (irparsed)
+//
+(* ****** ****** *)
+//
+fun
+irparsed_make_args
+( stadyn:sint
+, nerror:sint
+, source:lcsrc
+, parsed:irdclistopt): irparsed//end-fun
+//
+#symload irparsed with irparsed_make_args
+//
+(* ****** ****** *)
 (* ****** ****** *)
 #absvtbx
 trdienv_vtbx
@@ -443,6 +467,11 @@ trxd3ir_d3vardclist
 fun
 trxd3ir_d3fundclist
 (env0: !trdienv, d3fs: d3fundclist): irfundclist
+(* ****** ****** *)
+fun
+trxd3ir_d3eclistopt
+(env0: !trdienv, dcls: d3eclistopt): irdclistopt
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_intrep0.sats] *)
