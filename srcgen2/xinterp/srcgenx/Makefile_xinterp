@@ -90,6 +90,16 @@ xinterp_print0_dats: ; \
 $(XATSOPT) --dynamic DATS/xinterp_print0.dats
 ######
 all_dats:: \
+xinterp_dynexp_dats
+xinterp_dynexp_dats: ; \
+$(XATSOPT) --dynamic DATS/xinterp_dynexp.dats
+######
+all_dats:: \
+xinterp_decl00_dats
+xinterp_decl00_dats: ; \
+$(XATSOPT) --dynamic DATS/xinterp_decl00.dats
+######
+all_dats:: \
 xinterp_tmplib_dats
 xinterp_tmplib_dats: ; \
 $(XATSOPT) --dynamic DATS/xinterp_tmplib.dats
