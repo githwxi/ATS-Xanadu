@@ -51,6 +51,10 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload IR0 = "./intrep0.sats"
 //
 (* ****** ****** *)
+//
+#abstbox irenv_tbox//p0tr
+#typedef irenv = irenv_tbox
+//
 (* ****** ****** *)
 
 #typedef d2var = $D2E.d2var
@@ -65,9 +69,13 @@ Authoremail: gmhwxiATgmailDOTcom
 
 (* ****** ****** *)
 //
-#abstbox irenv_tbox // p0tr
-#typedef irenv = irenv_tbox
+#typedef irpatlst = $IR0.irpatlst
 //
+#typedef irexplst = $IR0.irexplst
+#typedef irexpopt = $IR0.irexpopt
+//
+(* ****** ****** *)
+#typedef irdclist = $IR0.irdclist
 (* ****** ****** *)
 
 datatype
@@ -107,6 +115,33 @@ irval_fprint
 #vwtpdef xintenv = xintenv_vtbx
 
 (* ****** ****** *)
-
+//
+fun
+xinterp_irexp
+( env0:
+! xintenv, ire0: irexp): irval
+//
+(* ****** ****** *)
+//
+fun
+xinterp_irdcl
+( env0:
+! xintenv, ird0: irdcl): void
+fun
+xinterp_irdclist
+( env0:
+! xintenv, irds: irdclist): void
+//
+(* ****** ****** *)
+fun
+xinterp_irexplst
+( env0:
+! xintenv, ires: irexplst): irvalist
+fun
+xinterp_irexpopt
+( env0:
+! xintenv, iopt: irexpopt): irvalopt
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen1_xinterp_srcgen1_xintrep.sats] *)
