@@ -85,6 +85,11 @@ intrep0_decl00_dats: ; \
 $(XATSOPT) --dynamic DATS/intrep0_decl00.dats
 ######
 all_dats:: \
+xinterp_print0_dats
+xinterp_print0_dats: ; \
+$(XATSOPT) --dynamic DATS/xinterp_print0.dats
+######
+all_dats:: \
 xinterp_tmplib_dats
 xinterp_tmplib_dats: ; \
 $(XATSOPT) --dynamic DATS/xinterp_tmplib.dats

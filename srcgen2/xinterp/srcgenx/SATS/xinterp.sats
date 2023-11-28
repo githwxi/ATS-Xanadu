@@ -37,6 +37,11 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #staload D2E =
 "./../../../SATS/dynexp2.sats"
@@ -86,6 +91,12 @@ where
 //
 } (*where*) // end of [datatype(irval)]
 
+(* ****** ****** *)
+//
+fun
+irval_fprint
+(out: FILR, irv0: irval): void
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen1_xinterp_srcgen1_xintrep.sats] *)
