@@ -30,65 +30,12 @@
 (*
 Author: Hongwei Xi
 (*
-Tue Nov 28 11:12:09 EST 2023
+Tue Nov 28 12:36:44 EST 2023
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#include
-"./../../..\
-/HATS/xatsopt_sats.hats"
-#include
-"./../../..\
-/HATS/xatsopt_dats.hats"
-(* ****** ****** *)
-//
-#include
-"./../HATS/libxinterp.hats"
-//
-(* ****** ****** *)
-//
-#staload "./../SATS/intrep0.sats"
-#staload "./../SATS/xinterp.sats"
-//
-(* ****** ****** *)
-//
-#implfun
-irval_fprint
-(out, irv0) =
-let
-//
-#impltmp
-g_print$out<>() = out
-//
-in//let
-//
-case+ irv0 of
-|
-IRVnil() =>
-print("IRVnil(", ")")
-//
-|IRVint(int) =>
-print("IRVint(", int, ")")
-//
-(*
-|IRVptr(ptr) =>
-print("IRVptr(", ptr, ")")
-*)
-//
-|IRVbtf(btf) =>
-print("IRVbtf(", btf, ")")
-|IRVchr(chr) =>
-print("IRVchr(", chr, ")")
-//
-|IRVflt(flt) =>
-print("IRVflt(", flt, ")")
-|IRVstr(str) =>
-print("IRVstr(", str, ")")
-//
-end//let//end-of-[irval_fprint(out, irv0)]
-//
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_xinterp_print0.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_xintrep_decl00.dats] *)

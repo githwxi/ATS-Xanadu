@@ -83,6 +83,8 @@ irval =
 | IRVflt of double
 | IRVstr of string
 //
+| IRVnone0 of () | IRVnone1 of (irexp)
+//
 where
 {
 //
@@ -92,11 +94,19 @@ where
 } (*where*) // end of [datatype(irval)]
 
 (* ****** ****** *)
+excptcon IRVALexn of irval
+(* ****** ****** *)
 //
 fun
 irval_fprint
 (out: FILR, irv0: irval): void
 //
 (* ****** ****** *)
+
+#absvwtp xintenv_vtbx // p0tr
+#vwtpdef xintenv = xintenv_vtbx
+
+(* ****** ****** *)
+
 
 (* end of [ATS3/XANADU_srcgen1_xinterp_srcgen1_xintrep.sats] *)
