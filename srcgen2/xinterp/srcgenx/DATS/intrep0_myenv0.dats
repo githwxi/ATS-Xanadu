@@ -84,4 +84,4 @@ case+ env0 of ~TRDIENV( (*0*) ) => ()
 end(*local*) // end of [local(trdienv)]
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_intrep0_myenv0.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_intrep0_myenv0.dats] *)

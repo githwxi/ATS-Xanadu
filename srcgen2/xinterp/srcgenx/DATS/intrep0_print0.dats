@@ -162,4 +162,4 @@ end//let//end-of-[irdcl_fprint(out, ird0)]
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_intrep0_print0.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_intrep0_print0.dats] *)
