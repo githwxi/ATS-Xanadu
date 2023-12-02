@@ -64,4 +64,4 @@ irdcl_fprint(g_print$out<>(), ird)
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_xinterp_tmplib.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_xinterp_tmplib.dats] *)

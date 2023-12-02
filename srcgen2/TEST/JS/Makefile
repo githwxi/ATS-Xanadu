@@ -10,8 +10,6 @@ ECHO=echo
 NODE=node
 NODE=node --stack-size=4096
 ######
-MYTEST="."
-######
 XSHARED="${XATS2JSD}/xshared"
 XATS2JS="${XATS2JSD}/bin/xats2js"
 ######
