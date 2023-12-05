@@ -239,17 +239,13 @@ $(patsubst %.sats, BUILD/JS/%_sats.js, $(SRCSATS))
 OBJDATS := \
 $(patsubst %.dats, BUILD/JS/%_dats.js, $(SRCDATS))
 ########################################################################
-all:: \
-BUILD/JS/xatsopt_all.js
+all:: $(OBJDATS)
 ########################################################################
-BUILD/JS/xatsopt_all.js:: $(OBJDATS)
-########################################################################
-BUILD/JS/xbasics_dats.js:: ./DATS/xbasics.dats
-########################################################################
-BUILD/JS/xsymbol_dats.js:: ./DATS/xsymbol.dats
+libxatsopt:: $(OBJDATS); \
+$(CAT) $(OBJDATS) >> lib/libxatsopt.js
 ########################################################################
 BUILD/JS/%_dats.js: \
 DATS/%.dats; $(XATS2JS) --output-a $@ --dynamic $<
 ########################################################################
-cleanall::; rm -f BUILD/JS/*_dats.js
+cleanall:: ; rm -f BUILD/JS/*_dats.js
 ########################################################################
