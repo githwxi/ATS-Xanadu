@@ -10,8 +10,11 @@ ECHO=echo
 NODE=node
 NODE=node --stack-size=4096
 ######
-XSHARED="${XATS2JSD}/xshared"
-XATS2JS="${XATS2JSD}/bin/xats2js"
+XSHARED="${XATSJSD}/xshared"
+XATS2JS="${XATSJSD}/bin/xats2js"
+######
+XATSJSD=\
+"../../../srcgen1/xats2js/srcgenx"
 ######
 XATS2JS_PRELUDE=\
 "$(XSHARED)/runtime/xats2js_prelude.js"
