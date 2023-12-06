@@ -64,28 +64,34 @@ val (  ) = prerrln
 val
 mytest01_dats =
 (
-d3parsed_of_tread33(dpar)
+irparsed_of_trxd3ir(dpar)
 ) where
 {
+//
 val
 dpar =
 d3parsed_of_trans3a(dpar)
 val
 dpar =
 d3parsed_of_trtmp3b(dpar)
+val
+dpar =
+d3parsed_of_tread33(dpar)
+//
 } where
 {
-val
-dpar = d3parsed_from_fpath
+val dpar = d3parsed_from_fpath
 (1(*dyn*), "./DATA/mytest01.dats") }
 //
 val ((*void*)) =
 (
 println
-("parsed(3b) = ", mytest01_dats.parsed()))
+("parsed(ir) = ", mytest01_dats.parsed()))
 //
+(*
 val ((*void*)) =
 fperr33_d3parsed(g_stderr(), mytest01_dats)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

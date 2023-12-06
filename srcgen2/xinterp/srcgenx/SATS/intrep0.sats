@@ -347,6 +347,8 @@ irdcl_get_node(irdcl):irdcl_node
 //
 (* ****** ****** *)
 fun
+irdcl_none0(loc0: loc_t): irdcl
+fun
 irdcl_none1(d3cl: d3ecl): irdcl
 (* ****** ****** *)
 fun
@@ -360,6 +362,27 @@ irdcl_make_node
 fun
 irparsed_of_trxd3ir
 ( dpar : d3parsed ): ( irparsed )
+//
+(* ****** ****** *)
+//
+fun
+irparsed_get_stadyn
+( ipar : irparsed ): ( sint )
+fun
+irparsed_get_nerror
+( ipar : irparsed ): ( sint )
+//
+fun
+irparsed_get_source
+( ipar : irparsed ): ( lcsrc )
+fun
+irparsed_get_parsed
+( ipar : irparsed ): ( irdclistopt )
+//
+#symload stadyn with irparsed_get_stadyn
+#symload nerror with irparsed_get_nerror
+#symload source with irparsed_get_source
+#symload parsed with irparsed_get_parsed
 //
 (* ****** ****** *)
 //
