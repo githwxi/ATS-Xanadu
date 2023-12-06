@@ -43,6 +43,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/intrep0.sats"
+#staload "./../SATS/xinterp.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -60,6 +61,13 @@ irexp_fprint(g_print$out<>(), ire)
 g_print
 <irdcl>(ird) =
 irdcl_fprint(g_print$out<>(), ird)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<irval>(irv) =
+irval_fprint(g_print$out<>(), irv)
 //
 (* ****** ****** *)
 (* ****** ****** *)

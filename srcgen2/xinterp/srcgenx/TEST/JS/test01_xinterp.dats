@@ -15,19 +15,50 @@ as way to test [xatsopt]
 #include
 "./../../HATS/libxinterp.hats"
 (* ****** ****** *)
-(* ****** ****** *)
 //
 val ret =
 the_fxtyenv_pvsload()
-val (  ) =
-prerrln("the_fxtyenv_pvsload() = ", ret)
+val (  ) = prerrln
+("the_fxtyenv_pvsload() = ", ret)
 //
 val ret =
 the_tr12env_pvsload()
-val (  ) =
-prerrln("the_tr12env_pvsload() = ", ret)
+val (  ) = prerrln
+("the_tr12env_pvsload() = ", ret)
 //
 (* ****** ****** *)
+(*
+#staload
+"./../../SATS/intrep0.sats"
+#staload
+"./../../SATS/xinterp.sats"
+*)
+#staload _ =
+"./../../DATS/xinterp_tmplib.dats"
+(* ****** ****** *)
+//
+#include
+"./../../DATS/intrep0.dats"
+#include
+"./../../DATS/intrep0_print0.dats"
+#include
+"./../../DATS/intrep0_myenv0.dats"
+#include
+"./../../DATS/intrep0_dynexp.dats"
+#include
+"./../../DATS/intrep0_decl00.dats"
+//
+(* ****** ****** *)
+//
+#include
+"./../../DATS/xinterp.dats"
+#include
+"./../../DATS/xinterp_print0.dats"
+#include
+"./../../DATS/xinterp_dynexp.dats"
+#include
+"./../../DATS/xinterp_decl00.dats"
+//
 (* ****** ****** *)
 //
 val
