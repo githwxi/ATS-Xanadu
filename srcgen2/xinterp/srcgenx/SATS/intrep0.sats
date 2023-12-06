@@ -355,10 +355,11 @@ irdcl_make_node
 (* ****** ****** *)
 #symload irdcl with irdcl_make_node
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 irparsed_of_trxd3ir
-( dpar : d3parsed ): (irparsed)
+( dpar : d3parsed ): ( irparsed )
 //
 (* ****** ****** *)
 //
