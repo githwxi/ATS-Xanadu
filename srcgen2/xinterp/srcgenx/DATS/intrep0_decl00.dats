@@ -147,6 +147,14 @@ trxd3ir_d3fundclist
   list_trxd3ir_fnp(env0, d3fs, trxd3ir_d3fundcl))
 //
 (* ****** ****** *)
+//
+#implfun
+trxd3ir_d3eclistopt
+  (env0, dopt) =
+(
+  optn_trxd3ir_fnp(env0, dopt, trxd3ir_d3eclist))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_intrep0_decl00.dats] *)

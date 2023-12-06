@@ -60,6 +60,40 @@ XATSOPT "./../../.."
 #staload "./../SATS/intrep0.sats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
+#symload lctn with d3pat_get_lctn
+#symload node with d3pat_get_node
+(* ****** ****** *)
+#symload lctn with d3exp_get_lctn
+#symload node with d3exp_get_node
+(* ****** ****** *)
+#symload lctn with d3ecl_get_lctn
+#symload node with d3ecl_get_node
+(* ****** ****** *)
+#symload lctn with irpat_get_lctn
+#symload node with irpat_get_node
+(* ****** ****** *)
+#symload lctn with irexp_get_lctn
+#symload node with irexp_get_node
+(* ****** ****** *)
+#symload lctn with irdcl_get_lctn
+#symload node with irdcl_get_node
+(* ****** ****** *)
+//
+#implfun
+irdcl_none0
+(  loc0  ) =
+irdcl_make_node
+(loc0,IRDnone0((*void*)))
+#implfun
+irdcl_none1
+(  d3cl  ) =
+irdcl_make_node
+(
+d3cl.lctn(),IRDnone1(d3cl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 local
 //
@@ -200,6 +234,51 @@ irparsed_tbox = irparsed
 //
 in//local
 
+(* ****** ****** *)
+//
+#implfun
+irparsed_get_nerror
+  (ipar) =
+(
+  nerror ) where
+{
+val+
+IRPARSED
+(
+stadyn,
+nerror, source, parsed) = ipar
+} (*where*)//end-of-[irparsed_get_nerror]
+//
+(* ****** ****** *)
+//
+#implfun
+irparsed_get_source
+  (ipar) =
+(
+  source ) where
+{
+val+
+IRPARSED
+(
+stadyn,
+nerror, source, parsed) = ipar
+} (*where*)//end-of-[irparsed_get_source]
+//
+(* ****** ****** *)
+//
+#implfun
+irparsed_get_parsed
+  (ipar) =
+(
+  parsed ) where
+{
+val+
+IRPARSED
+(
+stadyn,
+nerror, source, parsed) = ipar
+} (*where*)//end-of-[irparsed_get_parsed]
+//
 (* ****** ****** *)
 //
 #implfun
