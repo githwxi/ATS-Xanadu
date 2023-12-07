@@ -143,36 +143,36 @@ D2E = "./dynexp2.sats"
 #typedef simpl = $D2E.simpl
 #typedef dimpl = $D2E.dimpl
 (* ****** ****** *)
-#abstbox d3pat_tbox // ptr
+#abstbox d3pat_tbox // p0tr
 #typedef d3pat = d3pat_tbox
 (* ****** ****** *)
-#abstbox d3exp_tbox // ptr
+#abstbox d3exp_tbox // p0tr
 #typedef d3exp = d3exp_tbox
 (* ****** ****** *)
-#abstbox f3arg_tbox // ptr
+#abstbox f3arg_tbox // p0tr
 #typedef f3arg = f3arg_tbox
 (* ****** ****** *)
-#abstbox d3gua_tbox // ptr
-#abstbox d3gpt_tbox // ptr
-#abstbox d3cls_tbox // ptr
+#abstbox d3gua_tbox // p0tr
+#abstbox d3gpt_tbox // p0tr
+#abstbox d3cls_tbox // p0tr
 #typedef d3gua = d3gua_tbox
 #typedef d3gpt = d3gpt_tbox
 #typedef d3cls = d3cls_tbox
 (* ****** ****** *)
-#abstbox d3ecl_tbox // ptr
+#abstbox d3ecl_tbox // p0tr
 #typedef d3ecl = d3ecl_tbox
 (* ****** ****** *)
-#abstbox timpl_tbox // ptr
+#abstbox timpl_tbox // p0tr
 #typedef timpl = timpl_tbox
 (* ****** ****** *)
 //
-#abstbox d3valdcl_tbox // ptr
-#abstbox d3vardcl_tbox // ptr
-#abstbox d3fundcl_tbox // ptr
+#abstbox d3valdcl_tbox//p0tr
+#abstbox d3vardcl_tbox//p0tr
+#abstbox d3fundcl_tbox//p0tr
 //
 (* ****** ****** *)
 //
-#abstbox d3parsed_tbox // ptr
+#abstbox d3parsed_tbox//p0tr
 //
 (* ****** ****** *)
 #typedef s2varlst = list(s2var)

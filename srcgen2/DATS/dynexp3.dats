@@ -622,7 +622,6 @@ endloc (*local*) // end of [ local(d3vardcl) ]
 
 (* ****** ****** *)
 
-
 local
 //
 datatype
@@ -710,6 +709,8 @@ d3fundcl_make_args
 (
 D3FUNDCL
 (lctn, dpid, farg, sres, tdxp, wsxp))
+
+(* ****** ****** *)
 
 endloc (*local*) // end of [ local(d3fundcl) ]
 

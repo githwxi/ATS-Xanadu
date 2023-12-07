@@ -153,7 +153,16 @@ ird0.node() of
 //
 |IRDlocal0
 (head, body) =>
-print("IRPlocal0(", head, ";", body, ")")
+print
+("IRPlocal0(", head, ";", body, ")")
+//
+|IRDinclude
+( knd0, tknd
+, gsrc, fopt, dopt ) =>
+(
+print("IRDinclude(");
+print
+(knd0,";",tknd,";",gsrc,";",fopt,";","...",")"))
 //
 |IRDnone1(d3cl) => print( "IRDnone1(", d3cl, ")" )
 //

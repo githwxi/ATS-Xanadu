@@ -589,7 +589,8 @@ print("\n");
 val () =
 print
 ("D1Cinclude("
-, knd0,";",tknd,";",g1e1,";",fopt,")")
+, knd0,";"
+, tknd,";",g1e1,";",fopt,";","...",")")
 }
 |
 D1Cstaload
@@ -607,26 +608,31 @@ print("\n");
 val () =
 print
 ("D1Cstaload("
-, knd0,";",tknd,";",g1e1,";",fopt,")")
+, knd0,";"
+, tknd,";",g1e1,";",fopt,";","...",")")
 }
 //
 |
 D1Cdyninit(tknd,g1e1) =>
-print("D1Cdyninit(",tknd,";",g1e1,")")
+(
+print("D1Cdyninit(",tknd,";",g1e1,")"))
 //
 |
 D1Cdatasort
 (  tknd, dtcs  ) =>
-print("D1Cdatasort(",tknd,";",dtcs,")")
+(
+print("D1Cdatasort(",tknd,";",dtcs,")"))
 //
 |
 D1Cvaldclst
 (  tknd, d1vs  ) =>
-print("D1Cvaldclst(",tknd,";",d1vs,")")
+(
+print("D1Cvaldclst(",tknd,";",d1vs,")"))
 |
 D1Cvardclst
 (  tknd, d1vs  ) =>
-print("D1Cvardclst(",tknd,";",d1vs,")")
+(
+print("D1Cvardclst(",tknd,";",d1vs,")"))
 //
 |
 D1Cfundclst

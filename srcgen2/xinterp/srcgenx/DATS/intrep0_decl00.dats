@@ -78,6 +78,16 @@ d3cl.node() of
 (
   f0_local0(env0, d3cl))
 //
+|
+D3Cinclude _ =>
+(
+  f0_include(env0, d3cl))
+//
+|
+D3Cfundclst _ =>
+(
+  f0_fundclst(env0, d3cl))
+//
 |_(* otherwise *) => irdcl_none1(d3cl)
 //
 ) where
@@ -85,6 +95,8 @@ d3cl.node() of
 //
 val
 loc0 = d3cl.lctn()
+//
+(* ****** ****** *)
 //
 fun
 f0_local0
@@ -109,6 +121,72 @@ in//let
 irdcl(loc0, IRDlocal0(head, body))
 //
 end//let//end-of-[f0_local0(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_include
+( env0:
+! trdienv
+, d3cl: d3ecl): irdcl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Cinclude
+( knd0
+, tknd, gsrc
+, fopt, dopt) = d3cl.node()
+//
+val dopt =
+trxd3ir_d3eclistopt(env0, dopt)
+//
+in//let
+irdcl_make_node
+(loc0
+,IRDinclude(knd0,tknd,gsrc,fopt,dopt))
+end(*let*)//end-of-[f0_include(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fundclst
+( env0:
+! trdienv
+, d3cl: d3ecl): irdcl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Cfundclst
+( tknd
+, tqas
+, d3cs, d3fs) = d3cl.node()
+//
+(*
+val () =
+prerrln
+("f0_fundclst: loc0 = ", loc0)
+val () =
+prerrln
+("f0_fundclst: d3cl = ", d3cl)
+*)
+//
+val
+d3fs =
+trxd3ir_d3fundclist(env0, d3fs)
+//
+in//let
+//
+irdcl_make_node
+( loc0
+, IRDfundclst(tknd, tqas, d3cs, d3fs) )
+//
+end(*let*)//end-of-[f0_fundclst(env0,d3cl)]
+//
+(* ****** ****** *)
 //
 val () =
 prerrln("trxd3ir_d3ecl: d3cl = ", d3cl)

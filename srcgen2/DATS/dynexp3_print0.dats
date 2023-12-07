@@ -594,7 +594,9 @@ D3Cinclude
 (
 print("D3Cinclude(");
 print
-(knd0,";",tknd,";",gsrc,";",fopt,")"))
+(
+knd0,";",
+tknd,";",gsrc,";",fopt,";","...",")"))
 //
 |
 D3Cstaload

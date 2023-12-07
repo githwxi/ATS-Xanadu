@@ -63,6 +63,8 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 #staload
+"./../../../SATS/filpath.sats"
+#staload
 "./../../../SATS/locinfo.sats"
 //
 (* ****** ****** *)
@@ -70,6 +72,9 @@ XATSOPT "./../../.."
 #staload
 "./../../../SATS/lexing0.sats"
 //
+(* ****** ****** *)
+#staload S1E =
+"./../../../SATS/staexp1.sats"
 (* ****** ****** *)
 #staload S2E =
 "./../../../SATS/staexp2.sats"
@@ -88,6 +93,8 @@ XATSOPT "./../../.."
 #typedef loctn = loctn
 #typedef loc_t = loctn
 (* ****** ****** *)
+#typedef g1exp = $S1E.g1exp
+(* ****** ****** *)
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
@@ -97,6 +104,8 @@ XATSOPT "./../../.."
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
 (* ****** ****** *)
+#typedef t2qag = $D2E.t2qag
+(* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
 (* ****** ****** *)
@@ -104,6 +113,12 @@ XATSOPT "./../../.."
 #typedef l3d3e = $D3E.l3d3e
 (* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
+(* ****** ****** *)
+#typedef d2varlst = list(d2var)
+#typedef d2cstlst = list(d2cst)
+#typedef d2conlst = list(d2con)
+(* ****** ****** *)
+#typedef t2qaglst = list(t2qag)
 (* ****** ****** *)
 //
 #typedef d3patlst = $D3E.d3patlst
@@ -141,6 +156,9 @@ IRLAB of (label, x0(*elt*))
 #abstbox irexp_tbox // p0tr
 #typedef irexp = irexp_tbox
 (* ****** ****** *)
+#abstbox fiarg_tbox // p0tr
+#typedef fiarg = fiarg_tbox
+(* ****** ****** *)
 #abstbox irdcl_tbox // p0tr
 #typedef irdcl = irdcl_tbox
 (* ****** ****** *)
@@ -163,6 +181,8 @@ IRLAB of (label, x0(*elt*))
 #typedef irexpopt = optn(irexp)
 #typedef irexplst = list(irexp)
 #typedef l0irelst = list(l0ire)
+(* ****** ****** *)
+#typedef fiarglst = list(fiarg)
 (* ****** ****** *)
 #typedef irdclist = list(irdcl)
 (* ****** ****** *)
@@ -320,6 +340,13 @@ irdcl_node =
 ( irdclist(*local-head*)
 , irdclist(*local-body*))
 //
+|IRDinclude of
+( sint(*s/d*)
+, token
+, g1exp // src
+, fpathopt
+, irdclistopt) // inclusion
+//
 |
 IRDvaldclst of
 (token(*VAL(vlk)*), irvaldclist)
@@ -328,7 +355,8 @@ IRDvardclst of
 (token(*VAL(vlk)*), irvardclist)
 |
 IRDfundclst of
-(token(*VAL(vlk)*), irfundclist)
+( token(*FUN(fnk)*)
+, t2qaglst, d2cstlst, irfundclist)
 //
 |IRDnone0 of ((*0*)) |IRDnone1 of (d3ecl)
 //
@@ -358,6 +386,35 @@ irdcl_make_node
 #symload irdcl with irdcl_make_node
 (* ****** ****** *)
 (* ****** ****** *)
+fun
+irvaldcl_fprint
+(out: FILR, dval: irvaldcl): void
+fun
+irvardcl_fprint
+(out: FILR, dvar: irvardcl): void
+fun
+irfundcl_fprint
+(out: FILR, dfun: irfundcl): void
+(* ****** ****** *)
+//
+datatype
+teqirexp =
+|
+TEQIREXPnone of ((*void*))
+|
+TEQIREXPsome of (token(*EQ0*), irexp)
+//
+(* ****** ****** *)
+//
+fun
+irfundcl_make_args
+( lctn:loc_t
+, dpid:d2var
+, farg:fiarglst, tdxp:teqirexp):irfundcl
+//
+#symload irfundcl with irfundcl_make_args
+//
+(* ****** ****** *)
 //
 fun
 irparsed_of_trxd3ir
@@ -367,17 +424,17 @@ irparsed_of_trxd3ir
 //
 fun
 irparsed_get_stadyn
-( ipar : irparsed ): ( sint )
+( dpar : irparsed ): ( sint )
 fun
 irparsed_get_nerror
-( ipar : irparsed ): ( sint )
+( dpar : irparsed ): ( sint )
 //
 fun
 irparsed_get_source
-( ipar : irparsed ): ( lcsrc )
+( dpar : irparsed ): ( lcsrc )
 fun
 irparsed_get_parsed
-( ipar : irparsed ): ( irdclistopt )
+( dpar : irparsed ): ( irdclistopt )
 //
 #symload stadyn with irparsed_get_stadyn
 #symload nerror with irparsed_get_nerror
@@ -397,10 +454,8 @@ irparsed_make_args
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#absvtbx
-trdienv_vtbx
-#vwtpdef
-trdienv = trdienv_vtbx
+#absvtbx trdienv_vtbx // p0tr
+#vwtpdef trdienv = trdienv_vtbx
 (* ****** ****** *)
 (* ****** ****** *)
 //

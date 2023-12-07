@@ -823,7 +823,9 @@ D2Cinclude
 (
 print("D2Cinclude(");
 print
-(knd0,";",tknd,";",gsrc,";",fopt,")"))
+(
+knd0,";",
+tknd,";",gsrc,";",fopt,";","...",")"))
 //
 |
 D2Cstaload
