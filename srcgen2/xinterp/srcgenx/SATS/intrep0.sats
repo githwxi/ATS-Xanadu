@@ -112,6 +112,8 @@ XATSOPT "./../../.."
 #typedef l3d3p = $D3E.l3d3p
 #typedef l3d3e = $D3E.l3d3e
 (* ****** ****** *)
+#typedef f3arg = $D3E.f3arg
+(* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
 #typedef d2varlst = list(d2var)
@@ -130,6 +132,10 @@ XATSOPT "./../../.."
 #typedef l3d3plst = $D3E.l3d3plst
 #typedef l3d3elst = $D3E.l3d3elst
 (* ****** ****** *)
+#typedef f3arglst = $D3E.f3arglst
+(* ****** ****** *)
+#typedef teqd3exp = $D3E.teqd3exp
+(* ****** ****** *)
 #typedef d3eclist = $D3E.d3eclist
 (* ****** ****** *)
 #typedef d3valdcl = $D3E.d3valdcl
@@ -145,10 +151,12 @@ XATSOPT "./../../.."
 #typedef d3explstopt = $D3E.d3explstopt
 #typedef d3eclistopt = $D3E.d3eclistopt
 (* ****** ****** *)
+//
 datatype
 irlab(x0:type) =
 |
 IRLAB of (label, x0(*elt*))
+//
 (* ****** ****** *)
 #abstbox irpat_tbox // p0tr
 #typedef irpat = irpat_tbox
@@ -156,8 +164,23 @@ IRLAB of (label, x0(*elt*))
 #abstbox irexp_tbox // p0tr
 #typedef irexp = irexp_tbox
 (* ****** ****** *)
+//
+datatype
+fiarg =
+|
+FIARGsome of
+(sint(*npf*), irpatlst)
+//
+#typedef
+fiarglst = list(fiarg)
+#typedef
+fiarglstopt = optn(fiarglst)
+//
+(*
 #abstbox fiarg_tbox // p0tr
 #typedef fiarg = fiarg_tbox
+*)
+//
 (* ****** ****** *)
 #abstbox irdcl_tbox // p0tr
 #typedef irdcl = irdcl_tbox
@@ -408,9 +431,9 @@ TEQIREXPsome of (token(*EQ0*), irexp)
 //
 fun
 irfundcl_make_args
-( lctn:loc_t
-, dpid:d2var
-, farg:fiarglst, tdxp:teqirexp):irfundcl
+(lctn:loc_t
+,dpid:d2var
+,farg:fiarglst,tdxp:teqirexp):irfundcl
 //
 #symload irfundcl with irfundcl_make_args
 //
@@ -497,6 +520,12 @@ fun
 trxd3ir_l3d3e
 (env0: !trdienv, ld3e: l3d3e): l0ire
 (* ****** ****** *)
+//
+fun
+trxd3ir_f3arg
+(env0: !trdienv, f3a0: f3arg): fiarg
+//
+(* ****** ****** *)
 fun
 trxd3ir_d3ecl
 (env0: !trdienv, d3cl: d3ecl): irdcl
@@ -520,6 +549,18 @@ trxd3ir_l3d3plst
 fun
 trxd3ir_l3d3elst
 (env0: !trdienv, ldes: l3d3elst): l0irelst
+(* ****** ****** *)
+fun
+trxd3ir_f3arglst
+(env0: !trdienv, f3as: f3arglst): fiarglst
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+trxd3ir_teqd3exp
+(env0: !trdienv, tdxp: teqd3exp): teqirexp
+//
+(* ****** ****** *)
 (* ****** ****** *)
 fun
 trxd3ir_d3eclist

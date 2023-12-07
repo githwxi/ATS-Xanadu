@@ -136,18 +136,6 @@ end
 endloc (*local*) // end of [local(irpat)]
 
 (* ****** ****** *)
-//
-datatype
-fiarg =
-| FIARGsome of
-  (int(*npf*), irpatlst)
-//
-typedef
-fiarglst = list(irarg)
-typedef
-fiarglstopt = optn(fiarglst)
-//
-(* ****** ****** *)
 
 local
 //
