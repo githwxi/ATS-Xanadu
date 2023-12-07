@@ -249,6 +249,33 @@ in//local
 //
 (* ****** ****** *)
 #implfun
+irfundcl_get_dpid
+  (  dfun  ) = let
+val+
+IRFUNDCL
+( lctn
+, dpid
+, farg, tdxp) = dfun in dpid end
+(* ****** ****** *)
+#implfun
+irfundcl_get_farg
+  (  dfun  ) = let
+val+
+IRFUNDCL
+( lctn
+, dpid
+, farg, tdxp) = dfun in farg end
+(* ****** ****** *)
+#implfun
+irfundcl_get_tdxp
+  (  dfun  ) = let
+val+
+IRFUNDCL
+( lctn
+, dpid
+, farg, tdxp) = dfun in tdxp end
+(* ****** ****** *)
+#implfun
 irfundcl_make_args
 ( lctn
 , dpid, farg, tdxp) =

@@ -61,13 +61,6 @@ irexp_fprint(g_print$out<>(), ire)
 //
 #impltmp
 g_print
-<fiarg>(fia) =
-fiarg_fprint(g_print$out<>(), fia)
-//
-(* ****** ****** *)
-//
-#impltmp
-g_print
 <irdcl>(ird) =
 irdcl_fprint(g_print$out<>(), ird)
 //
@@ -79,13 +72,44 @@ g_print
 irval_fprint(g_print$out<>(), irv)
 //
 (* ****** ****** *)
+//
+#impltmp
+g_print
+<fiarg>(fia0) =
+let
+(*
+#impltmp
+g_print$out<>() = out
+*)
+in//let
+(
+case+ fia0 of
+|
+FIARGsome
+(npf1, irps) =>
+print("FIARGsome(",npf1,";",irps,")"))
+endlet // end-of-[g_print<fiarg>(fia0)]
+//
 (* ****** ****** *)
 //
 #impltmp
 g_print
 <teqirexp>(tdxp) =
+let
+(*
+#impltmp
+g_print$out<>() = out
+*)
+in//let
 (
- teqirexp_fprint(g_print$out<>(), tdxp))
+case+ tdxp of
+|
+TEQIREXPnone() =>
+print("TEQIREXPnone(", ")")
+|
+TEQIREXPsome(tok0, ire1) =>
+print("TEQIREXPsome(",tok0,";",ire1,")"))
+endlet // end-of-[g_print<teqirexp>(tdxp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -97,7 +121,7 @@ g_print
 (* ****** ****** *)
 #impltmp
 g_print
-<irvardcl>(dval) =
+<irvardcl>(dvar) =
 (
  irvardcl_fprint(g_print$out<>(), dvar))
 (* ****** ****** *)

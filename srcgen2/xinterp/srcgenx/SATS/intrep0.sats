@@ -192,6 +192,12 @@ fiarglstopt = optn(fiarglst)
 *)
 //
 (* ****** ****** *)
+(*
+fun
+fiarg_fprint
+(out:FILR,fia0:fiarg): void
+*)
+(* ****** ****** *)
 #abstbox irdcl_tbox // p0tr
 #typedef irdcl = irdcl_tbox
 (* ****** ****** *)
@@ -223,22 +229,6 @@ fiarglstopt = optn(fiarglst)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-irpat_fprint(FILR, irp0: irpat): void
-fun
-irexp_fprint(FILR, ire0: irexp): void
-//
-fun
-fiarg_fprint(FILR, fia0: fiarg): void
-//
-(* ****** ****** *)
-//
-fun
-irdcl_fprint(FILR, ird0: irdcl): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 datatype
 irpat_node =
 //
@@ -266,6 +256,12 @@ irpat_node =
 (token(*knd*), sint(*npf*), l0irplst)
 //
 |IRPnone0 of ((*0*)) | IRPnone1 of (d3pat)
+//
+(* ****** ****** *)
+//
+fun
+irpat_fprint
+(out:FILR, irp0:irpat): void
 //
 (* ****** ****** *)
 //
@@ -341,6 +337,12 @@ token(*knd*), sint(*npf*), l0irelst)
 (* ****** ****** *)
 //
 fun
+irexp_fprint
+(out:FILR, ire0:irexp): void
+//
+(* ****** ****** *)
+//
+fun
 irexp_get_lctn(irexp):( loc_t )
 fun
 irexp_get_node(irexp):irexp_node
@@ -387,6 +389,12 @@ IRDfundclst of
 , t2qaglst, d2cstlst, irfundclist)
 //
 |IRDnone0 of ((*0*)) |IRDnone1 of (d3ecl)
+//
+(* ****** ****** *)
+//
+fun
+irdcl_fprint
+(out:FILR, ird0:irdcl): void
 //
 (* ****** ****** *)
 //
@@ -439,9 +447,11 @@ TEQIREXPsome of (token(*EQ0*), irexp)
 //
 (* ****** ****** *)
 //
+(*
 fun
 teqirexp_fprint
 (out:FILEref, tdxp:teqirexp): void
+*)
 //
 (* ****** ****** *)
 fun

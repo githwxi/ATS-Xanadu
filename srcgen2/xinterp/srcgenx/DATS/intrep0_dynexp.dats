@@ -224,6 +224,8 @@ irexp(loc0, IREstr(tok))
 ( d2v ) =>
 irexp(loc0, IREvar(d2v))
 //
+|D3Edapp _ => f0_dapp(env0, d3e0)
+//
 |D3Elet0 _ => f0_let0(env0, d3e0)
 //
 |D3Eift0 _ => f0_ift0(env0, d3e0)
@@ -241,6 +243,35 @@ irexp(loc0, IREvar(d2v))
 (* ****** ****** *)
 //
 val loc0 = d3e0.lctn()
+//
+(* ****** ****** *)
+//
+fun
+f0_dapp
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Edapp
+( d3f0
+, npf1
+, d3es ) = d3e0.node()
+//
+val irf0 =
+trxd3ir_d3exp(env0, d3f0)
+val ires =
+trxd3ir_d3explst(env0, d3es)
+//
+in//let
+//
+irexp_make_node
+(loc0, IREdapp(irf0,npf1,ires))
+//
+end (*let*)//end-of-[f0_dapp(env0,d3e0)]
 //
 (* ****** ****** *)
 //
@@ -290,7 +321,7 @@ trxd3ir_d3expopt(env0, dels)
 //
 in//let
 irexp_make_node
-(loc0,IREift0(ire1, ithn, iels))
+(loc0, IREift0(ire1,ithn,iels))
 end(*let*)//end-of-[f0_ift0(env0,d3e0)]
 //
 (* ****** ****** *)
