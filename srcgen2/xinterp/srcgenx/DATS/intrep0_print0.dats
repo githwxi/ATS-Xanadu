@@ -108,21 +108,29 @@ in//let
 case+
 ire0.node() of
 //
-|IREany _ => print("IREany(", ")")
+|IREvar(d2v) =>
+(
+ print("IREvar(", d2v, ")"))
 //
-|IREint(int) => print("IREint(", int, ")")
-|IREchr(btf) => print("IREchr(", btf, ")")
-|IREchr(chr) => print("IREchr(", chr, ")")
-|IREchr(str) => print("IREstr(", str, ")")
-//
-|IREvar(d2v) => print("IREvar(", d2v, ")")
+|IREint(int) =>
+(
+ print("IREint(", int, ")"))
+|IREchr(btf) =>
+(
+ print("IREchr(", btf, ")"))
+|IREchr(chr) =>
+(
+ print("IREchr(", chr, ")"))
+|IREchr(str) =>
+(
+ print("IREstr(", str, ")"))
 //
 |IREdapp
 ( ire1
 , npf1, ires) =>
 (
 print
-("IREift0(", ire1, ";", npf1, ";", ires, ")"))
+("IREdapp(", ire1, ";", npf1, ";", ires, ")"))
 //
 |IREift0
 ( ire1
