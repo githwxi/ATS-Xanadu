@@ -157,17 +157,47 @@ print
 ("IRPlocal0(", head, ";", body, ")")
 //
 |IRDinclude
-( knd0, tknd
-, gsrc, fopt, dopt ) =>
+(knd0,tknd
+,gsrc,fopt,dopt ) =>
 (
 print("IRDinclude(");
 print
-(knd0,";",tknd,";",gsrc,";",fopt,";","...",")"))
+(knd0,";"
+,tknd,";",gsrc,";",fopt,";","...",")"))
+//
+|IRDfundclst
+(tknd
+,tqas,d2cs,irfs) =>
+(
+print("IRDfundclst(");
+print(tknd,";",tqas,";",d2cs,";",irfs,")"))
 //
 |IRDnone1(d3cl) => print( "IRDnone1(", d3cl, ")" )
 //
 end//let//end-of-[irdcl_fprint(out, ird0)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+
+#implfun
+irfundcl_fprint
+  (out, dfun) = let
+//
+val dpid =
+irfundcl_get_dpid(dfun)
+val farg =
+irfundcl_get_farg(dfun)
+val tdxp =
+irfundcl_get_tdxp(dfun)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print
+("IRFUNDCL(",dpid,";",farg,";",tdxp,")"))
+end(*let*)//end-of-[irfundcl_fprint(out,dfun)]
+
 (* ****** ****** *)
 (* ****** ****** *)
 

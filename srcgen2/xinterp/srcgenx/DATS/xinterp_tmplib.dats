@@ -57,6 +57,15 @@ g_print
 <irexp>(ire) =
 irexp_fprint(g_print$out<>(), ire)
 //
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<fiarg>(fia) =
+fiarg_fprint(g_print$out<>(), fia)
+//
+(* ****** ****** *)
+//
 #impltmp
 g_print
 <irdcl>(ird) =
@@ -69,6 +78,34 @@ g_print
 <irval>(irv) =
 irval_fprint(g_print$out<>(), irv)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<teqirexp>(tdxp) =
+(
+ teqirexp_fprint(g_print$out<>(), tdxp))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#impltmp
+g_print
+<irvaldcl>(dval) =
+(
+ irvaldcl_fprint(g_print$out<>(), dval))
+(* ****** ****** *)
+#impltmp
+g_print
+<irvardcl>(dval) =
+(
+ irvardcl_fprint(g_print$out<>(), dvar))
+(* ****** ****** *)
+#impltmp
+g_print
+<irfundcl>(dfun) =
+(
+ irfundcl_fprint(g_print$out<>(), dfun))
 (* ****** ****** *)
 (* ****** ****** *)
 

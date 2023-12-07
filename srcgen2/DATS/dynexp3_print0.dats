@@ -704,7 +704,9 @@ d3valdcl_get_wsxp(dval)
 #impltmp g_print$out<>() = out
 //
 in//let
-print("D3VALDCL(",dpat,";",tdxp,",",wsxp,")")
+(
+print
+("D3VALDCL(",dpat,";",tdxp,";",wsxp,")"))
 end(*let*)//end-of-[d3valdcl_fprint(out,dval)]
 
 (* ****** ****** *)
@@ -727,7 +729,7 @@ d3vardcl_get_dini(dvar)
 in//let
 (
 print("D3VARDCL(");
-print(dpid,";",vpid,";",sres,",",dini,")"))
+print(dpid,";",vpid,";",sres,";",dini,")"))
 end(*let*)//end-of-[d3vardcl_fprint(out,dvar)]
 //
 (* ****** ****** *)
@@ -752,7 +754,7 @@ d3fundcl_get_wsxp(dfun)
 in//let
 (
 print("D3FUNDCL(",dpid,";");
-print(farg,";",sres,";",tdxp,",",wsxp,")"))
+print(farg,";",sres,";",tdxp,";",wsxp,")"))
 end(*let*)//end-of-[d3fundcl_fprint(out,dfun)]
 
 (* ****** ****** *)

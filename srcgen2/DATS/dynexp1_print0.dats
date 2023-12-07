@@ -927,7 +927,9 @@ d1valdcl_get_wsxp(dval)
 #impltmp g_print$out<>() = out
 //
 in//let
-print("D1VALDCL(",dpat,";",tdxp,",",wsxp,")")
+(
+print
+("D1VALDCL(",dpat,";",tdxp,";",wsxp,")"))
 end(*let*)//end-of-[d1valdcl_fprint(out,dval)]
 
 (* ****** ****** *)
@@ -950,7 +952,7 @@ d1vardcl_get_dini(dvar)
 in//let
 (
 print("D1VARDCL(");
-print(dpid,";",vpid,";",sres,",",dini,")"))
+print(dpid,";",vpid,";",sres,";",dini,")"))
 end(*let*)//end-of-[d1vardcl_fprint(out,dvar)]
 
 (* ****** ****** *)
@@ -975,7 +977,7 @@ d1fundcl_get_wsxp(dfun)
 in//let
 (
 print("D1FUNDCL(",dpid,";");
-print(farg,";",sres,";",tdxp,",",wsxp,")"))
+print(farg,";",sres,";",tdxp,";",wsxp,")"))
 end(*let*)//end-of-[d1fundcl_fprint(out,dfun)]
 
 (* ****** ****** *)
