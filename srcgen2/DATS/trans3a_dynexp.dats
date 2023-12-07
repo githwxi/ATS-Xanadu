@@ -1981,7 +1981,8 @@ val d3ps =
 trans3a_d3patlst(env0, d3ps)
 //
 in//let
-  f3arg(loc0,F3ARGdapp(npf1,d3ps))
+(
+  f3arg(loc0,F3ARGdapp(npf1,d3ps)) )
 end (*let*) // end of [f0_dyn0(env0,farg)]
 //
 (* ****** ****** *)

@@ -1119,7 +1119,9 @@ d2valdcl_get_wsxp(dval)
 #impltmp g_print$out<>() = out
 //
 in//let
-print("D2VALDCL(",dpat,";",tdxp,",",wsxp,")")
+(
+print
+("D2VALDCL(",dpat,";",tdxp,";",wsxp,")"))
 end(*let*)//end-of-[d2valdcl_fprint(out,dval)]
 
 (* ****** ****** *)
@@ -1142,7 +1144,7 @@ d2vardcl_get_dini(dvar)
 in//let
 (
 print("D2VARDCL(");
-print(dpid,";",vpid,";",sres,",",dini,")"))
+print(dpid,";",vpid,";",sres,";",dini,")"))
 end(*let*)//end-of-[d2vardcl_fprint(out,dvar)]
 //
 (* ****** ****** *)
@@ -1167,7 +1169,7 @@ d2fundcl_get_wsxp(dfun)
 in//let
 (
 print("D2FUNDCL(",dpid,";");
-print(farg,";",sres,";",tdxp,",",wsxp,")"))
+print(farg,";",sres,";",tdxp,";",wsxp,")"))
 end(*let*)//end-of-[d2fundcl_fprint(out,dfun)]
 
 (* ****** ****** *)

@@ -75,6 +75,9 @@ _(*DATS*)="./../DATS/intrep0.dats"
 #symload lctn with d3exp_get_lctn
 #symload node with d3exp_get_node
 (* ****** ****** *)
+#symload lctn with f3arg_get_lctn
+#symload node with f3arg_get_node
+(* ****** ****** *)
 //
 #implfun
 trxd3ir_d3pat
@@ -398,6 +401,24 @@ prerrln("trxd3ir_d3exp: d3e0 = ", d3e0)
 (* ****** ****** *)
 //
 #implfun
+trxd3ir_teqd3exp
+  (env0, tdxp) =
+(
+case+ tdxp of
+|
+TEQD3EXPnone() =>
+TEQIREXPnone((*void*))
+|
+TEQD3EXPsome(teq1, d3e2) =>
+TEQIREXPsome(teq1, ire2) where
+{ val
+  ire2 = trxd3ir_d3exp(env0, d3e2) } )
+(*case+*)//end-of(trans3a_teqd3exp(env0,tdxp))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 trxd3ir_d3patlst
 ( env0, d3ps ) =
 (
@@ -430,6 +451,61 @@ trxd3ir_l3d3elst
 ( env0, ldes ) =
 (
   list_trxd3ir_fnp(env0, ldes, trxd3ir_l3d3e))
+//
+(* ****** ****** *)
+//
+#implfun
+trxd3ir_f3arglst
+( env0, f3as ) =
+(
+case+ f3as of
+|
+list_nil() => list_nil()
+|
+list_cons(f3a1, f3as) =>
+(
+case+
+f3a1.node() of
+|
+F3ARGdapp _ =>
+list_cons(fia1, fias) where
+{
+//
+val
+fia1 =
+f0_dyn0(env0, f3a1)
+val
+fias =
+trxd3ir_f3arglst(env0, f3as)
+//
+}(*where*)//end-[F3ARGdapp(...)]
+|
+F3ARGsapp _ =>
+trxd3ir_f3arglst(env0, f3as)
+|
+F3ARGmets _ =>
+trxd3ir_f3arglst(env0, f3as)
+)
+) where // end-of-[case+of(f3a1)]
+{
+//
+fun
+f0_dyn0
+( env0:
+! trdienv
+, f3a1: f3arg): fiarg =
+let
+val-
+F3ARGdapp
+(npf1, d3ps) = f3a1.node()
+in//let
+(
+  FIARGsome(npf1, irps)) where
+{ val
+  irps =
+  trxd3ir_d3patlst(env0, d3ps) } end
+//
+} (*where+*)//end-[trxd3ir_f3arglst(env0,f3as)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
