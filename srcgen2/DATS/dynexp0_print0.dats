@@ -708,18 +708,22 @@ print
 //
 |
 D0Cdyninit(tknd,g0e1) =>
-print("D0Cdyninit(",tknd,";",g0e1,")")
+(
+  print("D0Cdyninit(",tknd,";",g0e1,")") )
 //
 |
 D0Cdatasort(tknd,dtcs) =>
-print("D0Cdatasort(",tknd,";",dtcs,")")
+(
+  print("D0Cdatasort(",tknd,";",dtcs,")") )
 //
 |
 D0Cvaldclst(tknd,dcls) =>
-print("D0Cvaldclst(",tknd,";",dcls,")")
+(
+  print("D0Cvaldclst(",tknd,";",dcls,")") )
 |
 D0Cvardclst(tknd,dcls) =>
-print("D0Cvardclst(",tknd,";",dcls,")")
+(
+  print("D0Cvardclst(",tknd,";",dcls,")") )
 |
 D0Cfundclst(tknd,t0qs,dcls) =>
 print("D0Cfundclst(",tknd,";",t0qs,";",dcls,")")

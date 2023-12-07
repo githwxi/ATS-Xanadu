@@ -136,6 +136,18 @@ end
 endloc (*local*) // end of [local(irpat)]
 
 (* ****** ****** *)
+//
+datatype
+fiarg =
+| FIARGsome of
+  (int(*npf*), irpatlst)
+//
+typedef
+fiarglst = list(irarg)
+typedef
+fiarglstopt = optn(fiarglst)
+//
+(* ****** ****** *)
 
 local
 //
@@ -218,6 +230,33 @@ endloc (*local*) // end of [local(irdcl)]
 local
 //
 datatype
+irfundcl =
+IRFUNDCL of
+( loc_t
+, d2var
+, fiarglst, teqirexp)
+//
+#absimpl
+irfundcl_tbox = irfundcl
+//
+in//local
+//
+(* ****** ****** *)
+#implfun
+irfundcl_make_args
+( lctn
+, dpid, farg, tdxp) =
+(
+IRFUNDCL(lctn, dpid, farg, tdxp))
+(* ****** ****** *)
+//
+endloc (*local*) // end of [ local(irfundcl) ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 irparsed =
 IRPARSED of
 (
@@ -238,7 +277,7 @@ in//local
 //
 #implfun
 irparsed_get_nerror
-  (ipar) =
+  (dpar) =
 (
   nerror ) where
 {
@@ -246,14 +285,14 @@ val+
 IRPARSED
 (
 stadyn,
-nerror, source, parsed) = ipar
+nerror, source, parsed) = dpar
 } (*where*)//end-of-[irparsed_get_nerror]
 //
 (* ****** ****** *)
 //
 #implfun
 irparsed_get_source
-  (ipar) =
+  (dpar) =
 (
   source ) where
 {
@@ -261,14 +300,14 @@ val+
 IRPARSED
 (
 stadyn,
-nerror, source, parsed) = ipar
+nerror, source, parsed) = dpar
 } (*where*)//end-of-[irparsed_get_source]
 //
 (* ****** ****** *)
 //
 #implfun
 irparsed_get_parsed
-  (ipar) =
+  (dpar) =
 (
   parsed ) where
 {
@@ -276,7 +315,7 @@ val+
 IRPARSED
 (
 stadyn,
-nerror, source, parsed) = ipar
+nerror, source, parsed) = dpar
 } (*where*)//end-of-[irparsed_get_parsed]
 //
 (* ****** ****** *)
