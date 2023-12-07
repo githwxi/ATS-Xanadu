@@ -194,6 +194,47 @@ prerrln("trxd3ir_d3ecl: d3cl = ", d3cl)
 }(*where*) // end of [trxd3ir_d3ecl(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxd3ir_d3fundcl
+  (env0, dfun) = let
+//
+val loc0 =
+d3fundcl_get_lctn(dfun)
+//
+val dvar =
+d3fundcl_get_dpid(dfun)
+val f3as =
+d3fundcl_get_farg(dfun)
+val sres =
+d3fundcl_get_sres(dfun)
+val tdxp =
+d3fundcl_get_tdxp(dfun)
+val wsxp =
+d3fundcl_get_wsxp(dfun)
+//
+val fias =
+trxd3ir_f3arglst(env0, f3as)
+val tdxp =
+trxd3ir_teqd3exp(env0, tdxp)
+//
+in//let
+//
+irfundcl(loc0,dvar,fias,tdxp)
+//
+end where
+{
+//
+(*
+val () =
+prerrln("trxd3ir_d3fundcl: dfun = ", dfun)
+*)
+//
+}(*where*)//end-of-[trxd3ir_d3fundcl(env0,dfun)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 trxd3ir_d3eclist

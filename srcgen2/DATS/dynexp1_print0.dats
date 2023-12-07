@@ -587,10 +587,13 @@ print("\n");
 ) where
 {
 val () =
+(
 print
-("D1Cinclude("
-, knd0,";"
-, tknd,";",g1e1,";",fopt,";","...",")")
+("D1Cinclude(");
+print
+( knd0,";"
+, tknd,";"
+, g1e1,";",fopt,";","...",")"))
 }
 |
 D1Cstaload
@@ -606,10 +609,13 @@ print("\n");
 ) where
 {
 val () =
+(
 print
-("D1Cstaload("
-, knd0,";"
-, tknd,";",g1e1,";",fopt,";","...",")")
+("D1Cstaload(");
+print
+( knd0,";"
+, tknd,";"
+, g1e1,";",fopt,";","...",")") )
 }
 //
 |
