@@ -117,6 +117,8 @@ XATSOPT "./../../.."
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
 #typedef d2varlst = list(d2var)
+#typedef d2varopt = optn(d2var)
+(* ****** ****** *)
 #typedef d2cstlst = list(d2cst)
 #typedef d2conlst = list(d2con)
 (* ****** ****** *)
@@ -388,6 +390,14 @@ IRDfundclst of
 ( token(*FUN(fnk)*)
 , t2qaglst, d2cstlst, irfundclist)
 //
+|
+IRDimplmnt0 of
+( token(*impkind*)
+, stamp(*unicity*)
+, s2qaglst // s2vs
+, t2qaglst // s2vs+t2is
+, dimpl, t2iaglst, fiarglst, irexp)
+//
 |IRDnone0 of ((*0*)) |IRDnone1 of (d3ecl)
 //
 (* ****** ****** *)
@@ -453,6 +463,25 @@ teqirexp_fprint
 (out:FILEref, tdxp:teqirexp): void
 *)
 //
+(* ****** ****** *)
+fun
+irvaldcl_get_dpat:(irvaldcl)->irpat
+fun
+irvaldcl_get_tdxp:(irvaldcl)->teqirexp
+(* ****** ****** *)
+#symload dpat with irvaldcl_get_dpat
+#symload tdxp with irvaldcl_get_tdxp//opt
+(* ****** ****** *)
+fun
+irvardcl_get_dpid:(irvardcl)->d2var
+fun
+irvardcl_get_vpid:(irvardcl)->d2varopt
+fun
+irvardcl_get_dini:(irvardcl)->teqirexp
+(* ****** ****** *)
+#symload dpid with irvardcl_get_dpid
+#symload vpid with irvardcl_get_vpid//opt
+#symload dini with irvardcl_get_dini//opt
 (* ****** ****** *)
 fun
 irfundcl_get_dpid:(irfundcl)->d2var

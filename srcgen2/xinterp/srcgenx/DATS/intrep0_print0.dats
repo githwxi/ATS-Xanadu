@@ -173,12 +173,36 @@ print
 (knd0,";"
 ,tknd,";",gsrc,";",fopt,";","...",")"))
 //
+|IRDvaldclst
+(tknd, irvs) =>
+(
+print
+("IRDvaldclst(");print(tknd,";",irvs,")"))
+|IRDvardclst
+(tknd, irvs) =>
+(
+print
+("IRDvardclst(");print(tknd,";",irvs,")"))
+//
 |IRDfundclst
 (tknd
-,tqas,d2cs,irfs) =>
+,tqas
+,d2cs,irfs) =>
 (
 print("IRDfundclst(");
 print(tknd,";",tqas,";",d2cs,";",irfs,")"))
+//
+|IRDimplmnt0
+(tknd
+,stmp
+,sqas,tqas
+,dqid,tias
+,farg,body) =>
+(
+print("IRDimplmnt0(");
+print(tknd,";",stmp,";");
+print(sqas,";",tqas,";");
+print(dqid,";",tias,";",farg,";",body,")"))
 //
 |IRDnone1(d3cl) => print( "IRDnone1(", d3cl, ")" )
 //
@@ -186,7 +210,42 @@ end//let//end-of-[irdcl_fprint(out, ird0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
+#implfun
+irvaldcl_fprint
+  (out, dval) = let
+//
+val dpat =
+irvaldcl_get_dpat(dval)
+val tdxp =
+irvaldcl_get_tdxp(dval)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+print("IRVALDCL(", dpat, ";", tdxp, ")")
+end(*let*)//end-of-[irvaldcl_fprint(out,dval)]
+//
+#implfun
+irvardcl_fprint
+  (out, dvar) = let
+//
+val dpid =
+irvardcl_get_dpid(dvar)
+val vpid =
+irvardcl_get_vpid(dvar)
+val dini =
+irvardcl_get_dini(dvar)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+print
+("IRVARDCL(",dpid,";",vpid,";",dini,")")
+end(*let*)//end-of-[irvardcl_fprint(out,dvar)]
+//
+(* ****** ****** *)
+//
 #implfun
 irfundcl_fprint
   (out, dfun) = let
@@ -205,7 +264,7 @@ in//let
 print
 ("IRFUNDCL(",dpid,";",farg,";",tdxp,")"))
 end(*let*)//end-of-[irfundcl_fprint(out,dfun)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
