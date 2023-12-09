@@ -108,18 +108,27 @@ IRVfixs of
 where
 {
 //
-#typedef irvalist = List0(irval)
-#typedef irvalopt = Option(irval)
+#typedef irvalist = list(irval)
+#typedef irvalopt = optn(irval)
 //
 } (*where*) // end of [datatype(irval)]
 
-(* ****** ****** *)
-excptcon IRVALexn of irval
 (* ****** ****** *)
 //
 fun
 irval_fprint
 (out: FILR, irv0: irval): void
+//
+(* ****** ****** *)
+//
+fun
+irpat_valck
+( irp0
+: irpat, irv0: irval): bool
+fun
+irpatlst_valck
+( irps
+: irpatlst, irvs: irvalist): bool
 //
 (* ****** ****** *)
 
