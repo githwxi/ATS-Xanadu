@@ -455,7 +455,7 @@ datatype
 timpl_vt =
 TIMPL_vt of
 (
-loctn, timpl_node)
+stamp, timpl_node)
 //
 #absimpl
 timpl_tbox = timpl

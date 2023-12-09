@@ -536,7 +536,7 @@ in//let
 d3pat_make_styp_node
 (loc0, t2p0, D3Pannot(d3p1,s1e2,s2e2))
 end(*let*)//end of [f0_annot(env0,d3p0)]
-
+//
 (* ****** ****** *)
 //
 } (*where*)//end-of-[trans3a_d3pat(env0,d3p0)]

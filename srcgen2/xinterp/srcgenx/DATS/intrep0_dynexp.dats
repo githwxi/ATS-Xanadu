@@ -78,6 +78,12 @@ _(*DATS*)="./../DATS/intrep0.dats"
 #symload lctn with f3arg_get_lctn
 #symload node with f3arg_get_node
 (* ****** ****** *)
+#symload lctn with d3ecl_get_lctn
+#symload node with d3ecl_get_node
+(* ****** ****** *)
+#symload stmp with timpl_get_stmp
+#symload node with timpl_get_node
+(* ****** ****** *)
 //
 #implfun
 trxd3ir_d3pat
@@ -107,6 +113,9 @@ irpat(loc0, IRPstr(tok))
 |D3Ptup0 _ => f0_tup0(env0, d3p0)
 |D3Ptup1 _ => f0_tup1(env0, d3p0)
 |D3Prcd2 _ => f0_rcd2(env0, d3p0)
+//
+|
+D3Pannot _ => f0_annot(env0, d3p0)
 //
 |_(*otherwise*) => irpat_none1(d3p0)
 //
@@ -188,6 +197,21 @@ end(*let*)//end-of-[f0_rcd2(env0,d3p0)]
 //
 (* ****** ****** *)
 //
+fun
+f0_annot
+( env0:
+! trdienv
+, d3p0: d3pat): irpat =
+(
+trxd3ir_d3pat(env0, d3p1)) where
+{
+  val-
+  D3Pannot
+  (d3p1, s1e2, s2e2) = d3p0.node()
+}(*where*)//end of [f0_annot(env0,d3p0)]
+//
+(* ****** ****** *)
+//
 val () =
 prerrln("trxd3ir_d3pat: d3p0 = ", d3p0)
 //
@@ -224,6 +248,15 @@ irexp(loc0, IREstr(tok))
 ( d2v ) =>
 irexp(loc0, IREvar(d2v))
 //
+|D3Econ
+( d2c ) =>
+irexp(loc0, IREcon(d2c))
+|D3Ecst
+( d2c ) =>
+irexp(loc0, IREcst(d2c))
+//
+|D3Etimp _ => f0_timp(env0, d3e0)
+//
 |D3Edapp _ => f0_dapp(env0, d3e0)
 //
 |D3Elet0 _ => f0_let0(env0, d3e0)
@@ -247,6 +280,52 @@ val loc0 = d3e0.lctn()
 (* ****** ****** *)
 //
 fun
+f0_timp
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Etimp
+( dcst, timp) = d3e0.node()
+//
+val dimp =
+(
+case+
+timp.node() of
+|TIMPLall1
+(dcst, dcls) =>
+(
+case+ dcls of
+|list_nil( ) =>
+(
+ d3ecl_none0(loc0))
+|list_cons(dcl1, _) => dcl1)
+|TIMPLallx
+(dcst, dcls) =>
+(
+case+ dcls of
+|list_nil( ) =>
+(
+ d3ecl_none0(loc0))
+|list_cons(dcl1, _) => dcl1)
+) : d3ecl//end-of-[val(dimp)]
+//
+in//let
+//
+irexp_make_node
+(loc0, IREtimp(dcst, dimp)) where
+{ val
+  dimp = trxd3ir_d3ecl(env0, dimp) }
+//
+end(*let*)//end-of-[f0_timp(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_dapp
 ( env0:
 ! trdienv
@@ -258,20 +337,21 @@ val loc0 = d3e0.lctn()
 val-
 D3Edapp
 ( d3f0
-, npf1
-, d3es ) = d3e0.node()
+, npf1, d3es) = d3e0.node()
 //
 val irf0 =
-trxd3ir_d3exp(env0, d3f0)
+(
+  trxd3ir_d3exp(env0, d3f0))
 val ires =
-trxd3ir_d3explst(env0, d3es)
+(
+  trxd3ir_d3explst(env0, d3es))
 //
 in//let
 //
 irexp_make_node
 (loc0, IREdapp(irf0,npf1,ires))
 //
-end (*let*)//end-of-[f0_dapp(env0,d3e0)]
+end(*let*)//end-of-[f0_dapp(env0,d3e0)]
 //
 (* ****** ****** *)
 //

@@ -98,13 +98,17 @@ XATSOPT "./../../.."
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
+#typedef s2vts = $T2P.s2vts
+(* ****** ****** *)
 #typedef d2con = $D2E.d2con
 #typedef d2cst = $D2E.d2cst
 #typedef d2var = $D2E.d2var
-#typedef d2pat = $D2E.d2pat
-#typedef d2exp = $D2E.d2exp
 (* ****** ****** *)
+#typedef s2qag = $D2E.s2qag
 #typedef t2qag = $D2E.t2qag
+#typedef t2iag = $D2E.t2iag
+(* ****** ****** *)
+#typedef dimpl = $D2E.dimpl
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
@@ -115,6 +119,7 @@ XATSOPT "./../../.."
 #typedef f3arg = $D3E.f3arg
 (* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
+#typedef timpl = $D3E.timpl
 (* ****** ****** *)
 #typedef d2varlst = list(d2var)
 #typedef d2varopt = optn(d2var)
@@ -122,7 +127,9 @@ XATSOPT "./../../.."
 #typedef d2cstlst = list(d2cst)
 #typedef d2conlst = list(d2con)
 (* ****** ****** *)
+#typedef s2qaglst = list(s2qag)
 #typedef t2qaglst = list(t2qag)
+#typedef t2iaglst = list(t2iag)
 (* ****** ****** *)
 //
 #typedef d3patlst = $D3E.d3patlst
@@ -310,6 +317,8 @@ irexp_node =
 |IREcon of (d2con)
 |IREcst of (d2cst)
 //
+|IREtimp of
+(d3exp(*dcst*), irdcl)
 |
 IREdapp of
 (irexp, sint, irexplst)
@@ -318,7 +327,8 @@ IREdapp of
 (irdclist, irexp(*scope*))
 //
 |IREift0 of
-(irexp, irexpopt, irexpopt)
+(irexp(*test*)
+,irexpopt(*th*), irexpopt(*el*))
 //
 |IREseqn of
 (irexplst(*init*), irexp(*last*))
@@ -367,6 +377,9 @@ irexp_make_node
 //
 datatype
 irdcl_node =
+//
+|IRDtmpsub of
+ (s2vts(*tmpsub*), irdcl)
 //
 |IRDlocal0 of
 ( irdclist(*local-head*)
