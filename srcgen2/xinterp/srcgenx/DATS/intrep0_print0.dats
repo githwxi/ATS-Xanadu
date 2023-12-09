@@ -170,6 +170,10 @@ in//let
 case+
 ird0.node() of
 //
+|IRDd3ecl
+(  ird1  ) =>
+print("IRPd3ecp(", ird1, ")")
+//
 |IRDtmpsub
 (svts, ird1) =>
 print

@@ -110,6 +110,13 @@ irdcl_make_node
 (
 d3cl.lctn(),IRDnone1(d3cl))
 //
+#implfun
+irdcl_d3ecl
+(  d3cl  ) =
+irdcl_make_node
+(
+d3cl.lctn(),IRDd3ecl(d3cl))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
