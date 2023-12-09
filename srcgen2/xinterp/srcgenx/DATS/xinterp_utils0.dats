@@ -30,12 +30,11 @@
 (*
 Author: Hongwei Xi
 (*
-Tue Nov 28 12:36:44 EST 2023
+Sat Dec  9 11:14:33 EST 2023
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
-(* ****** ****** *)
 (* ****** ****** *)
 #include
 "./../../..\
@@ -44,9 +43,6 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../../..\
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
-#include
-"./../HATS/xinterp_dats.hats"
-(* ****** ****** *)
 #staload "./../SATS/intrep0.sats"
 (* ****** ****** *)
 #staload "./../SATS/xinterp.sats"
@@ -54,66 +50,44 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload
 _(*DATS*)="./../DATS/xinterp.dats"
 (* ****** ****** *)
+#symload lctn with irpat_get_lctn
+#symload node with irpat_get_node
+(* ****** ****** *)
+#symload lctn with irexp_get_lctn
+#symload node with irexp_get_node
+(* ****** ****** *)
 #symload lctn with irdcl_get_lctn
 #symload node with irdcl_get_node
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xinterp_irdcl
-  (env0, ird0) =
-let
+irpat_valck
+(irp0 , irv0) = false
 //
-(* ****** ****** *)
-excptcon
-XINTERP_IRDCL of irdcl
-(* ****** ****** *)
-//
-(*
-val () =
-println!
-("xinterp_irdcl: ird0 = ", ird0)
-*)
-//
-in//let
-//
-case+
-ird0.node() of
-|
-_(*otherwise*) =>
-(
-$raise
-XINTERP_IRDCL(ird0)) where
-{
-val loc0 = ird0.lctn()
-val (  ) =
-prerrln("xinterp_irdcl: loc0 = ", loc0)
-val (  ) =
-prerrln("xinterp_irdcl: ird0 = ", ird0)
-}
-//
-end where // end-of-[let]
-{
-
-} (*where*)//end of [xinterp_irdcl(env0,ird0)]
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xinterp_irdclist
-( env0, irds ) =
+irpatlst_valck
+( irps , irvs ) =
 (
-case+ irds of
+case+ irps of
 |
-list_nil() => ()
+list_nil() => true
 |
-list_cons(ird1, irds) =>
+list_cons(irp1, irps) =>
 (
-xinterp_irdcl(env0, ird1);
-xinterp_irdclist(env0, irds)))//xinterp_irdclist
+case+ irvs of
+|
+list_nil() => false
+|
+list_cons(irv1, irvs) =>
+if
+irpat_valck(irp1, irv1)
+then irpatlst_valck(irps, irvs) else false)
+) (*case+*) // end of [irpatlst_valck(irps, irvs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_xintrep_decl00.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_xintrep_utils0.dats] *)

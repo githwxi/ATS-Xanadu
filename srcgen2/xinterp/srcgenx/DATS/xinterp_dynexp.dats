@@ -43,6 +43,9 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../../..\
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+#include
+"./../HATS/xinterp_dats.hats"
+(* ****** ****** *)
 #staload "./../SATS/intrep0.sats"
 (* ****** ****** *)
 #staload "./../SATS/xinterp.sats"
@@ -56,10 +59,8 @@ _(*DATS*)="./../DATS/xinterp.dats"
 #symload lctn with irexp_get_lctn
 #symload node with irexp_get_node
 (* ****** ****** *)
-#symload lctn with irdcl_get_lctn
-#symload node with irdcl_get_node
 (* ****** ****** *)
-(* ****** ****** *)
+//
 #implfun
 xinterp_irexp
   (env0, ire0) =
@@ -67,8 +68,9 @@ let
 //
 (* ****** ****** *)
 excptcon
-IRVALexn_irexp of irexp
+XINTERP_IREXP of irexp
 (* ****** ****** *)
+//
 (*
 val () =
 println!
@@ -83,7 +85,7 @@ ire0.node() of
 _(*otherwise*) =>
 (
 $raise
-IRVALexn_irexp(ire0)) where
+XINTERP_IREXP(ire0)) where
 {
 val loc0 = ire0.lctn()
 val (  ) =
@@ -95,8 +97,8 @@ prerrln("xinterp_irexp: ire0 = ", ire0)
 end where // end-of-[let]
 {
 
-} (*where*) // end of [xinterp_irexp(env0,ire0)]
-
+} (*where*)//end of [xinterp_irexp(env0,ire0)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -113,21 +115,6 @@ xinterp_irexpopt
 (
 optn_xinterp_fnp
 (env0, dopt, xinterp_irexp))//xinterp_irexpopt
-//
-(* ****** ****** *)
-//
-#implfun
-xinterp_irdclist
-( env0, irds ) =
-(
-case+ irds of
-|
-list_nil() => ()
-|
-list_cons(ird1, irds) =>
-(
-xinterp_irdcl(env0, ird1);
-xinterp_irdclist(env0, irds)))//xinterp_irdclist
 //
 (* ****** ****** *)
 (* ****** ****** *)
