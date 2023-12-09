@@ -83,6 +83,11 @@ d3cl.node() of
   f0_local0(env0, d3cl))
 //
 |
+D3Cstaload _ =>
+(
+  f0_staload(env0, d3cl))
+//
+|
 D3Cinclude _ =>
 (
   f0_include(env0, d3cl))
@@ -153,6 +158,24 @@ in//let
 irdcl(loc0, IRDlocal0(head, body))
 //
 end//let//end-of-[f0_local0(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_staload
+( env0:
+! trdienv
+, d3cl: d3ecl): irdcl =
+(
+  irdcl_d3ecl(d3cl) ) where
+{
+//
+(*
+val () =
+println!
+("f0_staload: d3ecl = ", d3cl)
+*)
+} (*where*) // end of [f0_staload(...)]
 //
 (* ****** ****** *)
 //

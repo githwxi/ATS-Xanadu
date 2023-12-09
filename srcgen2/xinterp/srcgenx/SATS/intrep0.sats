@@ -378,6 +378,8 @@ irexp_make_node
 datatype
 irdcl_node =
 //
+|IRDd3ecl of (d3ecl)
+//
 |IRDtmpsub of
  (s2vts(*tmpsub*), irdcl)
 //
@@ -431,6 +433,9 @@ fun
 irdcl_none0(loc0: loc_t): irdcl
 fun
 irdcl_none1(d3cl: d3ecl): irdcl
+(* ****** ****** *)
+fun
+irdcl_d3ecl(d3cl: d3ecl): irdcl
 (* ****** ****** *)
 fun
 irdcl_make_node
