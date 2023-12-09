@@ -129,6 +129,25 @@ irval_fprint
 (* ****** ****** *)
 //
 fun
+<x0:t0>
+<y0:t0>
+list_xinterp_fnp
+( e1:
+! xintenv
+, xs: list(x0)
+, (!xintenv, x0) -> y0): list(y0)
+fun
+<x0:t0>
+<y0:t0>
+optn_xinterp_fnp
+( e1:
+! xintenv
+, xs: optn(x0)
+, (!xintenv, x0) -> y0): optn(y0)
+//
+(* ****** ****** *)
+//
+fun
 xinterp_irexp
 ( env0:
 ! xintenv, ire0: irexp): irval

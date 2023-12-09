@@ -81,6 +81,11 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 #implfun
+irpat_none0
+(  loc0  ) =
+irpat_make_node
+(loc0,IRPnone0((*void*)))
+#implfun
 irpat_none1
 (  d3p0  ) =
 irpat_make_node
@@ -89,6 +94,11 @@ d3p0.lctn(),IRPnone1(d3p0))
 //
 (* ****** ****** *)
 //
+#implfun
+irexp_none0
+(  loc0  ) =
+irexp_make_node
+(loc0,IREnone0((*void*)))
 #implfun
 irexp_none1
 (  d3e0  ) =
