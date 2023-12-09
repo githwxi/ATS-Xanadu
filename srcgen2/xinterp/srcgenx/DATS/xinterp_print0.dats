@@ -49,6 +49,11 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
+#include
+"./../HATS/xinterp_dats.hats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/xinterp.sats"
 //
@@ -86,6 +91,24 @@ print("IRVchr(", chr, ")")
 print("IRVflt(", flt, ")")
 |IRVstr(str) =>
 print("IRVstr(", str, ")")
+//
+|IRVlam1
+(farg, body, fenv) =>
+print
+("IRVlam1(", farg, ";", "...", ")")
+|IRVfix1
+(fid0, farg, body, fenv) =>
+print
+("IRVfix1("
+, fid0, ";", farg, ";", "...", ")")
+|IRVfixs
+(fid0, farg, body, ires, fenv) =>
+print
+("IRVfixs("
+, fid0, ";", farg, ";", "...", ")")
+//
+|IRVnone0(    ) => print("IRVnone0(", ")")
+|IRVnone1(ire1) => print("IRVnone1(", ire1, ")")
 //
 end//let//end-of-[irval_fprint(out, irv0)]
 //

@@ -624,6 +624,7 @@ d3ecl_impltmprq(d3ecl): bool
 (* ****** ****** *)
 fun
 timpl_fprint:(FILR,timpl)->void
+(* ****** ****** *)
 fun
 d3exp_fprint:(FILR,d3exp)->void
 (* ****** ****** *)

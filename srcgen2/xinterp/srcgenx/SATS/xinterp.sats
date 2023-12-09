@@ -65,6 +65,7 @@ Authoremail: gmhwxiATgmailDOTcom
 
 #typedef irpat = $IR0.irpat
 #typedef irexp = $IR0.irexp
+#typedef fiarg = $IR0.fiarg
 #typedef irdcl = $IR0.irdcl
 
 (* ****** ****** *)
@@ -74,6 +75,8 @@ Authoremail: gmhwxiATgmailDOTcom
 #typedef irexplst = $IR0.irexplst
 #typedef irexpopt = $IR0.irexpopt
 //
+#typedef fiarglst = $IR0.fiarglst
+//
 (* ****** ****** *)
 #typedef irdclist = $IR0.irdclist
 (* ****** ****** *)
@@ -81,17 +84,26 @@ Authoremail: gmhwxiATgmailDOTcom
 datatype
 irval =
 //
-| IRVnil of ()
+|IRVnil of ()
 //
-| IRVint of sint
-| IRVptr of p0tr
+|IRVint of sint
+|IRVptr of p0tr
 //
-| IRVbtf of (bool)
-| IRVchr of (char)
-| IRVflt of double
-| IRVstr of string
+|IRVbtf of (bool)
+|IRVchr of (char)
+|IRVflt of double
+|IRVstr of string
 //
-| IRVnone0 of () | IRVnone1 of (irexp)
+|IRVlam1 of
+(fiarglst,irexp,irenv)
+|IRVfix1 of
+(d2var,fiarglst,irexp,irenv)
+|
+IRVfixs of
+(d2var(*fun*)
+,fiarglst,irexp,irexplst,irenv)
+//
+|IRVnone0 of () |IRVnone1 of (irexp)
 //
 where
 {

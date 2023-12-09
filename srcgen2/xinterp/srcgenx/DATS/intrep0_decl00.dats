@@ -74,6 +74,10 @@ trxd3ir_d3ecl
 case+
 d3cl.node() of
 //
+|D3Ctmpsub _ =>
+(
+  f0_tmpsub(env0, d3cl))
+//
 |D3Clocal0 _ =>
 (
   f0_local0(env0, d3cl))
@@ -88,6 +92,11 @@ D3Cfundclst _ =>
 (
   f0_fundclst(env0, d3cl))
 //
+|
+D3Cimplmnt0 _ =>
+(
+  f0_implmnt0(env0, d3cl))
+//
 |_(* otherwise *) => irdcl_none1(d3cl)
 //
 ) where
@@ -95,6 +104,29 @@ D3Cfundclst _ =>
 //
 val
 loc0 = d3cl.lctn()
+//
+(* ****** ****** *)
+//
+fun
+f0_tmpsub
+( env0: 
+! trdienv
+, d3cl: d3ecl): irdcl =
+let
+//
+val-
+D3Ctmpsub
+(svts, dcl1) = d3cl.node()
+//
+val ird1 =
+(
+  trxd3ir_d3ecl(env0, dcl1))
+//
+in//let
+//
+irdcl(loc0, IRDtmpsub(svts, ird1))
+//
+end//let//end-of-[f0_local0(env0,d3cl)]
 //
 (* ****** ****** *)
 //
@@ -188,10 +220,52 @@ end(*let*)//end-of-[f0_fundclst(env0,d3cl)]
 //
 (* ****** ****** *)
 //
-val () =
-prerrln("trxd3ir_d3ecl: d3cl = ", d3cl)
+fun
+f0_implmnt0
+( env0:
+! trdienv
+, d3cl: d3ecl): irdcl =
+let
 //
-}(*where*) // end of [trxd3ir_d3ecl(...)]
+val
+loc0 = d3cl.lctn((*0*))
+//
+val-
+D3Cimplmnt0
+( tknd
+, stmp
+, sqas, tqas
+, dimp//dcst
+, tias, f3as
+, sres, dexp) = d3cl.node()
+//
+val
+fias =
+trxd3ir_f3arglst(env0, f3as)
+//
+val
+dexp = trxd3ir_d3exp(env0, dexp)
+//
+in//let
+//
+irdcl
+(
+loc0,
+IRDimplmnt0
+( tknd,stmp
+, sqas,tqas,dimp,tias,fias,dexp ) )
+//
+end(*let*)//end-of-[f0_implmnt0(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+val () =
+(
+  prerrln("trxd3ir_d3ecl: d3cl = ", d3cl) )
+//
+(* ****** ****** *)
+//
+} (*where*) // end of [trxd3ir_d3ecl(env0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

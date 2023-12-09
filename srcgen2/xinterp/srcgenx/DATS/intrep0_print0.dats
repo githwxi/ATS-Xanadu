@@ -125,6 +125,17 @@ ire0.node() of
 (
  print("IREstr(", str, ")"))
 //
+|IREcon(d2c) =>
+(
+ print("IREcon(", d2c, ")"))
+|IREcst(d2c) =>
+(
+ print("IREcst(", d2c, ")"))
+//
+|IREtimp
+( dcst, dimp) =>
+print("IREtimp(", dcst, ";", dimp, ")")
+//
 |IREdapp
 ( ire1
 , npf1, ires) =>
@@ -158,6 +169,11 @@ in//let
 //
 case+
 ird0.node() of
+//
+|IRDtmpsub
+(svts, ird1) =>
+print
+("IRPtmpsub(", svts, ";", ird1, ")")
 //
 |IRDlocal0
 (head, body) =>
