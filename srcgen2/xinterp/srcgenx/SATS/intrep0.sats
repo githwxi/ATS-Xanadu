@@ -525,7 +525,7 @@ irfundcl_make_args
 //
 fun
 irparsed_of_trxd3ir
-( dpar : d3parsed ): ( irparsed )
+( dpar : d3parsed ): irparsed
 //
 (* ****** ****** *)
 //

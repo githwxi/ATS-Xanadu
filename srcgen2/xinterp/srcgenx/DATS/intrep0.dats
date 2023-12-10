@@ -396,8 +396,7 @@ endloc (*local*) // end of [ local(irparsed) ]
 //
 #implfun
 irparsed_of_trxd3ir
-  (dpar) =
-let
+  (dpar) = let
 //
 val stadyn =
 d3parsed_get_stadyn(dpar)
