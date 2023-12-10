@@ -41,22 +41,12 @@ Authoremail: gmhwxiATgmailDOTcom
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
-#staload
-"./../../../SATS/staexp2.sats"
-#staload
-"./../../../SATS/statyp2.sats"
-(* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
 //
 (* ****** ****** *)
 
 local
-//
-(*
-#absimpl // s2cst->s2typ
-ms2ct2p_tbox = topmap(s2typ)
-*)
 //
 datavwtp
 trdienv =

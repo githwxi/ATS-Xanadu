@@ -56,18 +56,18 @@ Authoremail: gmhwxiATgmailDOTcom
 #typedef irenv = irenv_tbox
 //
 (* ****** ****** *)
-
+//
 #typedef d2var = $D2E.d2var
 #typedef d2con = $D2E.d2con
 #typedef d2cst = $D2E.d2cst
-
+//
 (* ****** ****** *)
-
+//
 #typedef irpat = $IR0.irpat
 #typedef irexp = $IR0.irexp
 #typedef fiarg = $IR0.fiarg
 #typedef irdcl = $IR0.irdcl
-
+//
 (* ****** ****** *)
 //
 #typedef irpatlst = $IR0.irpatlst
@@ -80,7 +80,10 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #typedef irdclist = $IR0.irdclist
 (* ****** ****** *)
-
+#typedef irparsed = $IR0.irparsed
+(* ****** ****** *)
+(* ****** ****** *)
+//
 datatype
 irval =
 //
@@ -112,29 +115,41 @@ where
 #typedef irvalopt = optn(irval)
 //
 } (*where*) // end of [datatype(irval)]
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 irval_fprint
-(out: FILR, irv0: irval): void
+(out:FILR, irv0:irval): void
 //
 (* ****** ****** *)
 //
 fun
 irpat_valck
-( irp0
-: irpat, irv0: irval): bool
+( irpat, irval ): bool
 fun
 irpatlst_valck
-( irps
-: irpatlst, irvs: irvalist): bool
+( irpatlst, irvalist ): bool
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+fun
+xinterp_irparsed
+( dpar: irparsed ) : ( void )
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #absvwtp xintenv_vtbx // p0tr
 #vwtpdef xintenv = xintenv_vtbx
-
+//
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+xintenv_make_nil(): xintenv
+fun
+xintenv_free_top(xintenv): void
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -155,34 +170,31 @@ optn_xinterp_fnp
 , (!xintenv, x0) -> y0): optn(y0)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 xinterp_irexp
-( env0:
-! xintenv, ire0: irexp): irval
+(env0: !xintenv, ire0: irexp): irval
 //
 (* ****** ****** *)
 //
 fun
 xinterp_irdcl
-( env0:
-! xintenv, ird0: irdcl): void
+(env0: !xintenv, ird0: irdcl): (void)
 //
 (* ****** ****** *)
 fun
 xinterp_irexplst
-( env0:
-! xintenv, ires: irexplst): irvalist
+(env0: !xintenv, ires: irexplst): irvalist
 fun
 xinterp_irexpopt
-( env0:
-! xintenv, iopt: irexpopt): irvalopt
+(env0: !xintenv, iopt: irexpopt): irvalopt
 //
 (* ****** ****** *)
 //
 fun
 xinterp_irdclist
-(env0: !xintenv, irds: irdclist): void
+(env0: !xintenv, irds: irdclist): ( void )
 //
 (* ****** ****** *)
 //
