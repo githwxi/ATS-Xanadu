@@ -71,327 +71,6 @@ LAM = "./../SATS/xlabel0.sats"
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
-
-#implfun
-token2sint
-  (tok) =
-(
-case-
-tok.node() of
-|
-T_INT01(rep) => fint(rep, 10)
-|
-T_INT02(bas,rep) => fint(rep,bas)
-) where
-{
-//
-(*
-val () =
-prerrln("token2sint: tok = ", tok)
-*)
-//
-fun
-fint
-( rep
-: strn
-, bas
-: sint): sint =
-gseq_foldl
-<strn><cgtz><sint>(rep, 0) where
-{
-#impltmp
-foldl$fopr
-<cgtz><sint>(r0, c0) = r0*bas+(c0-'0')
-}
-//
-} (*where*) // en dof [token2sint(tok)]
-
-(* ****** ****** *)
-
-#implfun
-token2schr
-  (tok) =
-(
-case-
-tok.node() of
-|
-T_CHAR1_nil0(_) => '\0'
-| // regular: '?'
-T_CHAR2_char(rep) =>
-let
-val opt =
-gseq_get_at_opt
-< strn >< cgtz >(rep, 1)
-in//let
-case- opt of
-| ~optn_vt_cons(chr) => chr
-end (*let*) // [T_CHAR2_char]
-| // backslash: '\...'
-T_CHAR3_blsh(rep) => fchr(rep)
-) where
-{
-//
-(*
-val () =
-prerrln("token2schr: tok = ", tok)
-*)
-//
-fun
-fchr
-( rep
-: strn): char =
-char_make_sint
-(
-gseq_foldl
-<strn><cgtz><sint>(rep, 0)) where
-{
-#impltmp
-foldl$fopr
-<cgtz><sint>(r0, c0) = // HX:base=8!
-if
-isdigit(c0) then r0*8+(c0-'0') else r0
-}
-} (*where*) // en dof [token2schr(tok)]
-
-(* ****** ****** *)
-
-local
-//
-(*
-//
-// utf-8 // for text
-//
-|
-T_STRN1_clsd of
-//
-// HX:
-// It may contain null-chars
-(strn, sint(*len*)) // closed: utf-8
-*)
-//
-in (* in-of-local *)
-
-#implfun
-token2sstr(tok) =
-(
-case-
-tok.node() of
-|
-T_STRN1_clsd(rep, len) =>
-strn_tabulate(len-2) where
-{
-#impltmp
-tabulate$fopr
-  <cgtz>(i) = strn_get_at(rep, i+1)
-}
-|
-T_STRN2_ncls(rep, len) =>
-strn_tabulate(len-1) where
-{
-#impltmp
-tabulate$fopr
-  <cgtz>(i) = strn_get_at(rep, i+1)
-}
-)
-
-end //
-(*local*) // end of [local(token2sstr)]
-
-(* ****** ****** *)
-
-#implfun
-gnamid_sym(tok) =
-(
-case-
-tok.node() of
-//
-(*
-| T_IDENT(nam) =>
-  $SYM.symbl_make_name(nam)
-*)
-//
-| T_IDALP(nam) =>
-  $SYM.symbl_make_name(nam)
-| T_IDSYM(nam) =>
-  $SYM.symbl_make_name(nam)
-//
-) (*case-*) // end of [gnamid_sym(tok)]
-
-(* ****** ****** *)
-
-#implfun
-gexpid_sym(tok) =
-(
-case-
-tok.node() of
-//
-(*
-| T_IDENT(nam) =>
-  $SYM.symbl_make_name(nam)
-*)
-//
-| T_IDALP(nam) =>
-  $SYM.symbl_make_name(nam)
-| T_IDSYM(nam) =>
-  $SYM.symbl_make_name(nam)
-//
-) (*case-*) // end of [gexpid_sym(tok)]
-
-(* ****** ****** *)
-
-#implfun
-sortid_sym(tok) =
-(
-case-
-tok.node() of
-//
-(*
-| T_IDENT(nam) =>
-  $SYM.symbl_make_name(nam)
-*)
-//
-| T_IDALP(nam) =>
-  $SYM.symbl_make_name(nam)
-| T_IDSYM(nam) =>
-  $SYM.symbl_make_name(nam)
-//
-) (*case-*) // end of [sortid_sym(tok)]
-
-(* ****** ****** *)
-
-#implfun
-sargid_sym(tok) =
-(
-case-
-tok.node() of
-//
-(*
-| T_IDENT(nam) =>
-  $SYM.symbl_make_name(nam)
-*)
-//
-| T_IDALP(nam) =>
-  $SYM.symbl_make_name(nam)
-//
-) (*case-*) // end of [sargid_sym(tok)]
-
-(* ****** ****** *)
-
-#implfun
-sexpid_sym(tok) =
-(
-case-
-tok.node() of
-//
-| T_OP2(tok) =>
-(
-case-
-tok.node() of
-| T_IDALP(nam) =>
-  $SYM.symbl_make_name(nam)
-| T_IDSYM(nam) =>
-  $SYM.symbl_make_name(nam)
-)
-//
-| T_IDENT(nam) =>
-  $SYM.symbl_make_name(nam)
-//
-| T_IDALP(nam) =>
-  $SYM.symbl_make_name(nam)
-| T_IDSYM(nam) =>
-  $SYM.symbl_make_name(nam)
-//
-) (*case-*) // end of [sexpid_sym(tok)]
-
-(* ****** ****** *)
-
-#implfun
-dpatid_sym(tok) =
-(
-case-
-tok.node() of
-//
-| T_OP2(tok) =>
-(
-case-
-tok.node() of
-| T_IDALP(nam) =>
-  $SYM.symbl_make_name(nam)
-| T_IDSYM(nam) =>
-  $SYM.symbl_make_name(nam)
-)
-//
-| T_IDENT(nam) =>
-  $SYM.symbl_make_name(nam)
-//
-| T_IDALP(nam) =>
-  $SYM.symbl_make_name(nam)
-| T_IDSYM(nam) =>
-  $SYM.symbl_make_name(nam)
-//
-) (*case-*) // end of [dpatid_sym(tok)]
-
-(* ****** ****** *)
-
-#implfun
-dexpid_sym(tok) =
-(
-case-
-tok.node() of
-//
-| T_OP2(tok) =>
-(
-case-
-tok.node() of
-| T_IDALP(nam) =>
-  $SYM.symbl_make_name(nam)
-| T_IDSYM(nam) =>
-  $SYM.symbl_make_name(nam)
-)
-//
-| T_IDENT(nam) =>
-  $SYM.symbl_make_name(nam)
-//
-| T_IDALP(nam) =>
-  $SYM.symbl_make_name(nam)
-| T_IDSYM(nam) =>
-  $SYM.symbl_make_name(nam)
-//
-| T_IDDLR(nam) =>
-  $SYM.symbl_make_name(nam)
-| T_IDSRP(nam) =>
-  $SYM.symbl_make_name(nam)
-//
-) (*case-*) // end of [dexpid_sym(tok)]
-
-(* ****** ****** *)
-
-#impltmp
-<x0><y0>
-list_trans01_fnp
-( e1, xs, fopr ) =
-(
-list_map_e1nv<x0><y0><e1>(xs, e1)) where
-{
-#vwtpdef e1 = tr01env
-#impltmp
-map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [list_trans01_fnp(e1,xs,fopr)]
-
-(* ****** ****** *)
-
-#impltmp
-<x0><y0>
-optn_trans01_fnp
-( e1, xs, fopr ) =
-(
-optn_map_e1nv<x0><y0><e1>(xs, e1)) where
-{
-#vwtpdef e1 = tr01env
-#impltmp
-map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [optn_trans01_fnp(e1,xs,fopr)]
-
 (* ****** ****** *)
 
 #implfun
@@ -510,5 +189,35 @@ val dpar = d0parsed_of_preadx0(dpar)
 } (*where*)//end-of-[d1parsed_from_fpath(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<x0><y0>
+list_trans01_fnp
+( e1, xs, fopr ) =
+(
+list_map_e1nv<x0><y0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = tr01env
+#impltmp
+map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [list_trans01_fnp(e1,xs,fopr)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0><y0>
+optn_trans01_fnp
+( e1, xs, fopr ) =
+(
+optn_map_e1nv<x0><y0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = tr01env
+#impltmp
+map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [optn_trans01_fnp(e1,xs,fopr)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans01.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_trans01_utils0.dats] *)

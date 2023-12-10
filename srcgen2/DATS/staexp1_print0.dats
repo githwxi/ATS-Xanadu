@@ -219,24 +219,20 @@ in//let
 case+
 g1e.node() of
 //
-|
-G1Eint(tok) =>
+|G1Eint(tok) =>
 print("G1Eint(",tok,")")
-|
-G1Ebtf(tok) =>
+(*
+|G1Ebtf(tok) =>
 print("G1Ebtf(",tok,")")
-|
-G1Echr(tok) =>
+*)
+|G1Echr(tok) =>
 print("G1Echr(",tok,")")
-|
-G1Eflt(tok) =>
+|G1Eflt(tok) =>
 print("G1Eflt(",tok,")")
-|
-G1Estr(tok) =>
+|G1Estr(tok) =>
 print("G1Estr(",tok,")")
 //
-|
-G1Eid0(id0) =>
+|G1Eid0(id0) =>
 print("G1Eid0(",id0,")")
 //
 |

@@ -43,8 +43,15 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../../..\
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+//
+#include
+"./../HATS/libxinterp.hats"
+//
+(* ****** ****** *)
+//
 #include
 "./../HATS/xinterp_dats.hats"
+//
 (* ****** ****** *)
 #staload "./../SATS/intrep0.sats"
 (* ****** ****** *)
@@ -81,22 +88,39 @@ in//let
 //
 case+
 ire0.node() of
+//
+|IREint(tok) =>
+(
+ IRVint(token2dint(tok)))
+|IREbtf(sym) =>
+(
+ IRVbtf(symbl2dbtf(sym)))
+|IREchr(tok) =>
+(
+ IRVchr(token2dchr(tok)))
+|IREstr(tok) =>
+(
+ IRVstr(token2dstr(tok)))
+//
 |
 _(*otherwise*) =>
 (
-$raise
-XINTERP_IREXP(ire0)) where
+$raise XINTERP_IREXP(ire0)
+) where
 {
-val loc0 = ire0.lctn()
-val (  ) =
-prerrln("xinterp_irexp: loc0 = ", loc0)
-val (  ) =
-prerrln("xinterp_irexp: ire0 = ", ire0)
-}
 //
-end where // end-of-[let]
+val loc0 =
+  ire0.lctn((*void*))
+val (  ) = prerrln
+  ("xinterp_irexp: loc0 = ", loc0)
+val (  ) = prerrln
+  ("xinterp_irexp: ire0 = ", ire0)
+//
+}(*where*)
+//
+end where
+// end-of-[let] // xinterp_irexp(...)
 {
-
 } (*where*)//end of [xinterp_irexp(env0,ire0)]
 //
 (* ****** ****** *)

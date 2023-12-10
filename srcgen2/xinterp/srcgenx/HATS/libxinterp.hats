@@ -17,6 +17,9 @@ Tue Nov 28 08:48:38 EST 2023
 "./../../../SATS/xsymbol.sats"
 (* ****** ****** *)
 #staload
+"./../../../SATS/trans01.sats"
+(* ****** ****** *)
+#staload
 "./../../../SATS/staexp2.sats"
 #staload
 "./../../../SATS/statyp2.sats"

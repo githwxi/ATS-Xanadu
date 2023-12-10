@@ -167,10 +167,6 @@ fun
 xinterp_irdcl
 ( env0:
 ! xintenv, ird0: irdcl): void
-fun
-xinterp_irdclist
-( env0:
-! xintenv, irds: irdclist): void
 //
 (* ****** ****** *)
 fun
@@ -181,6 +177,18 @@ fun
 xinterp_irexpopt
 ( env0:
 ! xintenv, iopt: irexpopt): irvalopt
+//
+(* ****** ****** *)
+//
+fun
+xinterp_irdclist
+(env0: !xintenv, irds: irdclist): void
+//
+(* ****** ****** *)
+//
+fun
+xinterp_irdclistopt
+(env0: !xintenv, dopt: optn(irdclist)): void
 //
 (* ****** ****** *)
 
