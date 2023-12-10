@@ -68,7 +68,6 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 #implfun
 xinterp_irparsed
   (dpar) =
@@ -83,15 +82,14 @@ irparsed_get_source(dpar)
 val parsed =
 irparsed_get_parsed(dpar)
 //
-val env0 = xinterp_make_nil()
+val env0 = xintenv_make_nil()
 //
 in//let
 (
-  xinterp_free_top(env0)) where
+  xintenv_free_top(env0)) where
 { val () =
   xinterp_irdclistopt(env0, parsed) }
 end (*let*) // end of [d3parsed_trans3a(dpar)]
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

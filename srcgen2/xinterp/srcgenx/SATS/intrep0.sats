@@ -565,6 +565,12 @@ irparsed_make_args
 #vwtpdef trdienv = trdienv_vtbx
 (* ****** ****** *)
 (* ****** ****** *)
+fun
+trdienv_make_nil(): trdienv
+fun
+trdienv_free_top(trdienv): void
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <x0:t0>
@@ -584,11 +590,6 @@ optn_trxd3ir_fnp
 , (!trdienv, x0) -> y0): optn(y0)
 //
 (* ****** ****** *)
-(* ****** ****** *)
-fun
-trdienv_make_nil(): trdienv
-fun
-trdienv_free_top(trdienv): void
 (* ****** ****** *)
 fun
 trxd3ir_d3pat
