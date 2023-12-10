@@ -70,8 +70,7 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #implfun
 xinterp_irparsed
-  (dpar) =
-let
+  (dpar) = let
 //
 val stadyn =
 irparsed_get_stadyn(dpar)
