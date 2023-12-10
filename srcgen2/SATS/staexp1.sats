@@ -169,7 +169,9 @@ datatype
 g1exp_node =
 //
 | G1Eint of (token)
+(*
 | G1Ebtf of (token)
+*)
 | G1Echr of (token)
 | G1Eflt of (token)
 | G1Estr of (token)

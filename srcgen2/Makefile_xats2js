@@ -146,6 +146,7 @@ gmacro1.dats \
 gmacro1_print0.dats \
 trans01.dats \
 trans01_myenv0.dats \
+trans01_utils0.dats \
 trans01_staexp.dats \
 trans01_dynexp.dats \
 trans01_decl00.dats \

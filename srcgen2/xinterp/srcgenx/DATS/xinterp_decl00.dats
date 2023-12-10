@@ -79,22 +79,78 @@ in//let
 //
 case+
 ird0.node() of
+//
+|
+IRDCLd3ecl _ => ((*0*))
+//
+|
+IRDCLlocal0 _ =>
+(
+  f0_local0(env0, ird0) )
+//
+|
+IRDCLinclude _ =>
+(
+  f0_include(env0, ird0) )
 |
 _(*otherwise*) =>
 (
 $raise
 XINTERP_IRDCL(ird0)) where
 {
-val loc0 = ird0.lctn()
-val (  ) =
-prerrln("xinterp_irdcl: loc0 = ", loc0)
-val (  ) =
-prerrln("xinterp_irdcl: ird0 = ", ird0)
-}
 //
-end where // end-of-[let]
+val loc0 =
+  ird0.lctn((*void*))
+val (  ) = prerrln
+  ("xinterp_irdcl: loc0 = ", loc0)
+val (  ) = prerrln
+  ("xinterp_irdcl: ird0 = ", ird0)
+//
+}(*where*)
+//
+end where
+// end-of-[let] // xinterp_irdcl(...)
 {
-
+//
+(* ****** ****** *)
+//
+fun
+f0_local0
+( env0:
+! xintenv
+, ird0: irdcl): void =
+let
+//
+val-
+IRDlocal0
+( head, body) = ird0.node()
+//
+val () = xinterp_irdclist(env0, head)
+val () = xinterp_irdclist(env0, body)
+//
+endlet // end-of-[f0_local0(env0,ird0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_include
+( env0:
+! xintenv
+, ird0: irdcl): void =
+let
+val-
+IRDinclude
+( knd0
+, tknd, gsrc
+, fopt, dopt) = ird0.node()
+in
+case+ dopt of
+|optn_nil
+((*void*)) => ( (*void*) )
+|optn_cons
+(  irds  ) => xinterp_irdclist(env0, irds)
+end// let // end-of-[f0_include(env0,ird0)]
+//
 } (*where*)//end of [xinterp_irdcl(env0,ird0)]
 //
 (* ****** ****** *)
@@ -112,6 +168,17 @@ list_cons(ird1, irds) =>
 (
 xinterp_irdcl(env0, ird1);
 xinterp_irdclist(env0, irds)))//xinterp_irdclist
+//
+(* ****** ****** *)
+//
+#implfun
+xinterp_irdclistopt
+  ( env0, dopt ) =
+(
+case+ dopt of
+|optn_nil() => ( (*void*) )
+|optn_cons(irds) => xinterp_irdclist(env0, irds))
+//(*case+*)//end of [xinterp_irdclistopt(env0,dopt)
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -225,10 +225,12 @@ g1e0.node() of
 { val
   int = token2sint(tok)}
 //
+(*
 |G1Ebtf(tok) =>
 (G1Mbtf(btf)) where
 { val
   btf = token2sbtf(tok)}
+*)
 //
 |G1Echr(tok) =>
 (G1Mchr(chr)) where

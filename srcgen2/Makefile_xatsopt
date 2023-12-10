@@ -483,6 +483,9 @@ all_dats:: \
 trans01_myenv0_dats
 trans01_myenv0_dats: ; $(XATSOPT) --dynamic DATS/trans01_myenv0.dats
 all_dats:: \
+trans01_utils0_dats
+trans01_utils0_dats: ; $(XATSOPT) --dynamic DATS/trans01_utils0.dats
+all_dats:: \
 trans01_staexp_dats
 trans01_staexp_dats: ; $(XATSOPT) --dynamic DATS/trans01_staexp.dats
 all_dats:: \
