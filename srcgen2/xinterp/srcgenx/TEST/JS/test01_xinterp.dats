@@ -55,6 +55,8 @@ val (  ) = prerrln
 #include
 "./../../DATS/xinterp_print0.dats"
 #include
+"./../../DATS/xinterp_myenv0.dats"
+#include
 "./../../DATS/xinterp_dynexp.dats"
 #include
 "./../../DATS/xinterp_decl00.dats"
@@ -83,15 +85,19 @@ d3parsed_of_tread33(dpar)
 val dpar = d3parsed_from_fpath
 (1(*dyn*), "./DATA/mytest01.dats") }
 //
-val ((*void*)) =
-(
-println
-("parsed(ir) = ", mytest01_dats.parsed()))
-//
 (*
 val ((*void*)) =
 fperr33_d3parsed(g_stderr(), mytest01_dats)
 *)
+//
+val () =
+xinterp_irparsed(mytest01_dats) where
+{
+val ((*0*)) =
+(
+println
+("parsed(ir) = ", mytest01_dats.parsed()))
+} (*where*) // end of [xinterp_irparsed(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
