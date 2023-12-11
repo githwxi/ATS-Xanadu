@@ -326,6 +326,21 @@ in//local
 (* ****** ****** *)
 //
 #implfun
+irparsed_get_stadyn
+  (dpar) =
+(
+  stadyn ) where
+{
+val+
+IRPARSED
+(
+stadyn,
+nerror, source, parsed) = dpar
+} (*where*)//end-of-[irparsed_get_stadyn]
+//
+(* ****** ****** *)
+//
+#implfun
 irparsed_get_nerror
   (dpar) =
 (

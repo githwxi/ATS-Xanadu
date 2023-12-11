@@ -87,9 +87,17 @@ irstk_dcst of
 //
 datavwtp
 xintenv =
-XINTENV of ()
+XINTENV of (irstk)
 //
 #absimpl xintenv_vtbx = xintenv
+//
+(* ****** ****** *)
+//
+fun
+irstk_free_nil(stk) =
+(
+case- stk of ~irstk_nil() => ()
+)
 //
 (* ****** ****** *)
 in//local
@@ -97,7 +105,9 @@ in//local
 //
 #implfun
 xintenv_make_nil
-  ((*void*)) = XINTENV( (*void*) )
+  ((*void*)) =
+(
+  XINTENV(irstk_nil()))
 //
 (* ****** ****** *)
 //
@@ -105,7 +115,8 @@ xintenv_make_nil
 xintenv_free_top
   (  env0  ) =
 (
-case+ env0 of ~XINTENV( (*0*) ) => ()
+case+ env0 of
+| ~XINTENV(stk) => irstk_free_nil(stk)
 ) (*case+*)//end-of-(xintenv_free_top(env0))
 //
 (* ****** ****** *)

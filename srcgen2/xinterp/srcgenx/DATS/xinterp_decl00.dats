@@ -148,8 +148,17 @@ case+ dopt of
 |optn_nil
 ((*void*)) => ( (*void*) )
 |optn_cons
-(  irds  ) => xinterp_irdclist(env0, irds)
+(  irds  ) => xinterp_irdclist(env0,irds)
 end// let // end-of-[f0_include(env0,ird0)]
+//
+(* ****** ****** *)
+//
+} where
+{
+//
+val () =
+(
+  prerrln("xinterp_irdcl: ird0 = ", ird0) )
 //
 } (*where*)//end of [xinterp_irdcl(env0,ird0)]
 //
