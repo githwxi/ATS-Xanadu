@@ -153,6 +153,22 @@ end// let // end-of-[f0_include(env0,ird0)]
 //
 (* ****** ****** *)
 //
+fun
+f0_vardclst
+( env0:
+! xintenv
+, irdcl: irdcl): void =
+let
+val-
+IRDvardclst
+( tknd
+, irvs) = irdcl.node()
+in
+  xinterp_irvardclist(env0, irvs)
+end// let // end-of-[f0_vardclst(env0,ird0)]
+//
+(* ****** ****** *)
+//
 } where
 {
 //
@@ -187,7 +203,52 @@ xinterp_irdclistopt
 case+ dopt of
 |optn_nil() => ( (*void*) )
 |optn_cons(irds) => xinterp_irdclist(env0, irds))
-//(*case+*)//end of [xinterp_irdclistopt(env0,dopt)
+//(*case+*)//end-of-[xinterp_irdclistopt(env0, dopt)
+//
+(* ****** ****** *)
+//
+#implfun
+xinterp_irvaldclist
+( env0, irvs ) =
+(
+case+ irvs of
+|
+list_nil() => ()
+|
+list_cons(irv1, irvs) =>
+(
+xinterp_irvaldcl(env0, irv1);
+xinterp_irvaldclist(env0, irvs)))//xinterp_irvaldclist
+//
+(* ****** ****** *)
+//
+#implfun
+xinterp_irvardclist
+( env0, irvs ) =
+(
+case+ irvs of
+|
+list_nil() => ()
+|
+list_cons(irv1, irvs) =>
+(
+xinterp_irvardcl(env0, irv1);
+xinterp_irvardclist(env0, irvs)))//xinterp_irvardclist
+//
+(* ****** ****** *)
+//
+#implfun
+xinterp_irfundclist
+( env0, irfs ) =
+(
+case+ irfs of
+|
+list_nil() => ()
+|
+list_cons(irf1, irfs) =>
+(
+xinterp_irfundcl(env0, irf1);
+xinterp_irfundclist(env0, irfs)))//xinterp_irvardclist
 //
 (* ****** ****** *)
 (* ****** ****** *)

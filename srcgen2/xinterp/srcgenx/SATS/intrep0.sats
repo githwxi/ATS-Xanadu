@@ -399,7 +399,7 @@ IRDvaldclst of
 (token(*VAL(vlk)*), irvaldclist)
 |
 IRDvardclst of
-(token(*VAL(vlk)*), irvardclist)
+(token(*VAR(vlk)*), irvardclist)
 |
 IRDfundclst of
 ( token(*FUN(fnk)*)

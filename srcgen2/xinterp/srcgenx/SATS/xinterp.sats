@@ -82,6 +82,14 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #typedef irparsed = $IR0.irparsed
 (* ****** ****** *)
+//
+#typedef irvaldcl = $IR0.irvaldcl
+#typedef irvardcl = $IR0.irvardcl
+#typedef irfundcl = $IR0.irfundcl
+//
+#typedef irvaldclist = $IR0.irvaldclist
+#typedef irvardclist = $IR0.irvardclist
+#typedef irfundclist = $IR0.irfundclist
 (* ****** ****** *)
 //
 datatype
@@ -195,6 +203,30 @@ xinterp_irexpopt
 fun
 xinterp_irdclist
 (env0: !xintenv, irds: irdclist): ( void )
+//
+(* ****** ****** *)
+//
+fun
+xinterp_irvaldcl
+(env0: !xintenv, irv0: irvaldcl): (void)
+fun
+xinterp_irvardcl
+(env0: !xintenv, irv0: irvardcl): (void)
+//
+fun
+xinterp_irfundcl
+(env0: !xintenv, irf0: irfundcl): (void)
+//
+fun
+xinterp_irvaldclist
+(env0: !xintenv, irvs: irvaldclist): (void)
+fun
+xinterp_irvardclist
+(env0: !xintenv, irvs: irvardclist): (void)
+//
+fun
+xinterp_irfundclist
+(env0: !xintenv, irfs: irfundclist): (void)
 //
 (* ****** ****** *)
 //
