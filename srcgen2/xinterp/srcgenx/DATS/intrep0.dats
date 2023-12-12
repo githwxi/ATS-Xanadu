@@ -253,6 +253,58 @@ endloc (*local*) // end of [local(irdcl)]
 local
 //
 datatype
+irvaldcl =
+IRVALDCL of
+( loc_t
+, irpat, teqirexp)
+//
+#absimpl
+irvaldcl_tbox = irvaldcl
+//
+in//local
+//
+(* ****** ****** *)
+#implfun
+irvaldcl_get_lctn
+  (  dval  ) = let
+val+
+IRVALDCL
+( lctn
+, dpat, tdxp) = dval in lctn
+end// let// irvaldcl_get_lctn
+(* ****** ****** *)
+#implfun
+irvaldcl_get_dpat
+  (  dval  ) = let
+val+
+IRVALDCL
+( dpat
+, dpat, tdxp) = dval in dpat
+end// let// irvaldcl_get_dpat
+(* ****** ****** *)
+#implfun
+irvaldcl_get_tdxp
+  (  dval  ) = let
+val+
+IRVALDCL
+( dpat
+, dpat, tdxp) = dval in tdxp
+end// let// irvaldcl_get_tdxp
+(* ****** ****** *)
+#implfun
+irvaldcl_make_args
+(lctn, dpat, tdxp) =
+(
+  IRVALDCL(lctn, dpat, tdxp))
+(* ****** ****** *)
+//
+endloc (*local*) // end of [ local(irvaldcl) ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
 irfundcl =
 IRFUNDCL of
 ( loc_t
@@ -264,6 +316,15 @@ irfundcl_tbox = irfundcl
 //
 in//local
 //
+(* ****** ****** *)
+#implfun
+irfundcl_get_lctn
+  (  dfun  ) = let
+val+
+IRFUNDCL
+( lctn
+, dpid
+, farg, tdxp) = dfun in lctn end
 (* ****** ****** *)
 #implfun
 irfundcl_get_dpid

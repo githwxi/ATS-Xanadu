@@ -41,6 +41,18 @@ Authoremail: gmhwxiATgmailDOTcom
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dats.hats"
+(* ****** ****** *)
+//
+#include
+"./../HATS/libxinterp.hats"
+//
+(* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/xinterp.sats"
@@ -85,9 +97,13 @@ irstk_dcst of
 //
 (* ****** ****** *)
 //
+#typedef cmap = topmap(irval)
+#typedef vmap = topmap(irval)
+//
 datavwtp
 xintenv =
-XINTENV of (irstk)
+XINTENV of
+(cmap, vmap, irstk)
 //
 #absimpl xintenv_vtbx = xintenv
 //
@@ -107,7 +123,13 @@ in//local
 xintenv_make_nil
   ((*void*)) =
 (
-  XINTENV(irstk_nil()))
+XINTENV
+( cmap
+, vmap, irstk_nil())) where
+{
+val cmap = topmap_make_nil{irval}()
+val vmap = topmap_make_nil{irval}()
+}
 //
 (* ****** ****** *)
 //
@@ -116,7 +138,9 @@ xintenv_free_top
   (  env0  ) =
 (
 case+ env0 of
-| ~XINTENV(stk) => irstk_free_nil(stk)
+| ~
+XINTENV
+(cmap, vmap, stk0) => irstk_free_nil(stk0)
 ) (*case+*)//end-of-(xintenv_free_top(env0))
 //
 (* ****** ****** *)
