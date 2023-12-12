@@ -514,6 +514,11 @@ irfundcl_get_tdxp:(irfundcl)->teqirexp
 (* ****** ****** *)
 //
 fun
+irvaldcl_make_args
+( lctn:loc_t
+, irp0:irpat, tdxp:teqirexp):irvaldcl
+//
+fun
 irfundcl_make_args
 ( lctn:loc_t
 , dpid:d2var

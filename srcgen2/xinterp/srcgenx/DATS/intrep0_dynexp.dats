@@ -110,6 +110,10 @@ irpat(loc0, IRPflt(tok))
 ( tok ) =>
 irpat(loc0, IRPstr(tok))
 //
+|D3Pvar
+( d2v ) =>
+irpat(loc0, IRPvar(d2v))
+//
 |D3Ptup0 _ => f0_tup0(env0, d3p0)
 |D3Ptup1 _ => f0_tup1(env0, d3p0)
 |D3Prcd2 _ => f0_rcd2(env0, d3p0)

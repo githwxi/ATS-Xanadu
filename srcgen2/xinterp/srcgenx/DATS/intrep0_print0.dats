@@ -177,12 +177,12 @@ print("IRDd3ecl(", ird1, ")")
 |IRDtmpsub
 (svts, ird1) =>
 print
-("IRPtmpsub(", svts, ";", ird1, ")")
+("IRDtmpsub(", svts, ";", ird1, ")")
 //
 |IRDlocal0
 (head, body) =>
 print
-("IRPlocal0(", head, ";", body, ")")
+("IRDlocal0(", head, ";", body, ")")
 //
 |IRDinclude
 (knd0,tknd
