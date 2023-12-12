@@ -97,8 +97,10 @@ irstk_dcst of
 //
 (* ****** ****** *)
 //
-#typedef cmap = topmap(irval)
-#typedef vmap = topmap(irval)
+#typedef
+cmap = $STM.tmpmap(irval)
+#typedef
+vmap = $STM.tmpmap(irval)
 //
 datavwtp
 xintenv =
@@ -127,9 +129,10 @@ XINTENV
 ( cmap
 , vmap, irstk_nil())) where
 {
-val cmap = topmap_make_nil{irval}()
-val vmap = topmap_make_nil{irval}()
-}
+val cmap =
+$STM.tmpmap_make_nil{irval}()
+val vmap =
+$STM.tmpmap_make_nil{irval}() }
 //
 (* ****** ****** *)
 //
@@ -140,11 +143,49 @@ xintenv_free_top
 case+ env0 of
 | ~
 XINTENV
-(cmap, vmap, stk0) => irstk_free_nil(stk0)
-) (*case+*)//end-of-(xintenv_free_top(env0))
+(cmap,vmap,stk0) => irstk_free_nil(stk0)
+)(*case+*)//end-of-[xintenv_free_top(env0)]
 //
 (* ****** ****** *)
-end(*local*) // end of [local(xintenv)]
+//
+#implfun
+xintenv_d2cins_any
+(env0, d2c0, irv1) =
+(
+case+ env0 of
+| !
+XINTENV
+(cmap, vmap, stk0) =>
+let
+val
+tmp0 = d2cst_get_stmp(d2c0)
+in//let
+$STM.tmpmap_insert_any(cmap, tmp0, irv1)
+end//let
+)(*case+*)//end-of-[xintenv_d2cins_any(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+xintenv_d2vins_any
+(env0, d2v0, irv1) =
+(
+case+ env0 of
+| !
+XINTENV
+(cmap, vmap, stk0) =>
+let
+val
+tmp0 = d2var_get_stmp(d2v0)
+in//let
+$STM.tmpmap_insert_any(vmap, tmp0, irv1)
+end//let
+)(*case+*)//end-of-[xintenv_d2vins_any(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+endloc (*local*) // end of [ local(xintenv) ]
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_xinterp_myenv0.dats] *)

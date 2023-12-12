@@ -158,6 +158,28 @@ xintenv_make_nil(): xintenv
 fun
 xintenv_free_top(xintenv): void
 (* ****** ****** *)
+//
+fun
+xintenv_d2crch_opt
+( env0:
+! xintenv, d2c0:d2cst): irvalopt
+fun
+xintenv_d2vrch_opt
+( env0:
+! xintenv, d2v0:d2var): irvalopt
+//
+fun
+xintenv_d2cins_any
+( env0:
+! xintenv
+, d2c0: d2cst, irv1: irval): void
+fun
+xintenv_d2vins_any
+( env0:
+! xintenv
+, d2v0: d2var, irv1: irval): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
