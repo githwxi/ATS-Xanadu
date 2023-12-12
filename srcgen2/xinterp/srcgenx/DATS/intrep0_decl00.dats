@@ -93,6 +93,15 @@ D3Cinclude _ =>
   f0_include(env0, d3cl))
 //
 |
+D3Cvaldclst _ =>
+(
+  f0_valdclst(env0, d3cl))
+|
+D3Cvardclst _ =>
+(
+  f0_vardclst(env0, d3cl))
+//
+|
 D3Cfundclst _ =>
 (
   f0_fundclst(env0, d3cl))
@@ -202,6 +211,76 @@ irdcl_make_node
 (loc0
 ,IRDinclude(knd0,tknd,gsrc,fopt,dopt))
 end(*let*)//end-of-[f0_include(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_valdclst
+( env0:
+! trdienv
+, d3cl: d3ecl): irdcl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Cvaldclst
+( tknd, d3vs) = d3cl.node()
+//
+(*
+val () =
+prerrln
+("f0_valdclst: loc0 = ", loc0)
+val () =
+prerrln
+("f0_valdclst: d3cl = ", d3cl)
+*)
+//
+val
+d3vs =
+trxd3ir_d3valdclist(env0, d3vs)
+//
+in//let
+//
+irdcl_make_node
+( loc0, IRDvaldclst(tknd, d3vs) )
+//
+end(*let*)//end-of-[f0_valdclst(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_vardclst
+( env0:
+! trdienv
+, d3cl: d3ecl): irdcl =
+let
+//
+val
+loc0 = d3cl.lctn()
+val-
+D3Cvardclst
+( tknd, d3vs) = d3cl.node()
+//
+(*
+val () =
+prerrln
+("f0_vardclst: loc0 = ", loc0)
+val () =
+prerrln
+("f0_vardclst: d3cl = ", d3cl)
+*)
+//
+val
+d3vs =
+trxd3ir_d3vardclist(env0, d3vs)
+//
+in//let
+//
+irdcl_make_node
+( loc0, IRDvardclst(tknd, d3vs) )
+//
+end(*let*)//end-of-[f0_vardclst(env0,d3cl)]
 //
 (* ****** ****** *)
 //
