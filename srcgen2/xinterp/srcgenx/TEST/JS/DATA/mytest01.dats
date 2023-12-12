@@ -10,6 +10,7 @@
 "prelude/HATS/CATS/Xint/prelude_dats.hats"
 //
 (* ****** ****** *)
+val N = 10
 (* ****** ****** *)
 //
 fun
