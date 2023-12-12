@@ -18,9 +18,6 @@ Tue Nov 28 08:48:38 EST 2023
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
-"./../../../SATS/xsymmap.sats"
-(* ****** ****** *)
-#staload
 "./../../../SATS/trans01.sats"
 (* ****** ****** *)
 #staload
