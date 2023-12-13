@@ -34,7 +34,6 @@ Please do see
 the circular beauty :)
 *)
 //
-(*
 #impltmp
 {a:t0}
 g_equal<a>
@@ -42,7 +41,6 @@ g_equal<a>
 (
 not(g_noteq<a>(x, y))
 )
-*)
 //
 #impltmp
 {a:t0}
@@ -54,10 +52,10 @@ not(g_equal<a>(x, y))
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 {a:t0}
 g_equal<a> = g_eq<a>
-(*
 #impltmp
 {a:t0}
 g_noteq<a> = g_neq<a>
@@ -65,7 +63,6 @@ g_noteq<a> = g_neq<a>
 //
 (* ****** ****** *)
 //
-(*
 #impltmp
 {a:t0}
 g_eqref<a>
@@ -73,7 +70,6 @@ g_eqref<a>
 (
 not(g_neqrf<a>(x, y))
 )
-*)
 //
 #impltmp
 {a:t0}

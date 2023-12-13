@@ -57,6 +57,10 @@ val (  ) = prerrln
 #include
 "./../../DATS/xinterp_myenv0.dats"
 #include
+"./../../DATS/xinterp_inits0.dats"
+#include
+"./../../DATS/xinterp_utils0.dats"
+#include
 "./../../DATS/xinterp_dynexp.dats"
 #include
 "./../../DATS/xinterp_decl00.dats"

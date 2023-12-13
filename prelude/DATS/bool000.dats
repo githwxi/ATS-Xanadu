@@ -83,13 +83,27 @@ For implementing g-ops
 *)
 //
 (* ****** ****** *)
+//
+#impltmp
+g_cmp
+<bool>
+(b1, b2) =
+if (b1)
+then (if b2 then 0 else 1)
+else (if b2 then -1 else 0)
+//
+(* ****** ****** *)
+//
 #impltmp
 g_eqref<bool> = g_equal<bool>
 #impltmp
 g_neqrf<bool> = g_noteq<bool>
+//
 (* ****** ****** *)
+//
 #impltmp
 g_print<bool> = bool_print<(*nil*)>
+//
 (* ****** ****** *)
 //
 (*

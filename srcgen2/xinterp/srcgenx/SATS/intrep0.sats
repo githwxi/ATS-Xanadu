@@ -244,13 +244,14 @@ irpat_node =
 |IRPnil of ()
 |IRPany of ()
 //
-|IRPvar of d2var
+|IRPint of sint
+|IRPbtf of bool
+|IRPchr of char
 //
-|IRPint of token
-|IRPbtf of sym_t
-|IRPchr of token
 |IRPflt of token
 |IRPstr of token
+//
+|IRPvar of d2var
 //
 |IRPbang of (irpat)
 |IRPflat of (irpat)
