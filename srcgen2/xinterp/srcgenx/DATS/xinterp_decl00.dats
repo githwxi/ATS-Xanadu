@@ -54,20 +54,23 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload
 _(*DATS*)="./../DATS/xinterp.dats"
 (* ****** ****** *)
+(* ****** ****** *)
+excptcon
+XINTERP_IRDCL of irdcl
+excptcon
+XINTERP_IRVALDCL of irvaldcl
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #symload lctn with irdcl_get_lctn
 #symload node with irdcl_get_node
-(* ****** ****** *)
+//
 (* ****** ****** *)
 //
 #implfun
 xinterp_irdcl
   (env0, ird0) =
 let
-//
-(* ****** ****** *)
-excptcon
-XINTERP_IRDCL of irdcl
-(* ****** ****** *)
 //
 (*
 val () =
@@ -177,6 +180,52 @@ val () =
   prerrln("xinterp_irdcl: ird0 = ", ird0) )
 //
 } (*where*)//end of [xinterp_irdcl(env0,ird0)]
+//
+(* ****** ****** *)
+//
+#implfun
+xinterp_irvaldcl
+  (env0, dval) = let
+//
+val loc0 =
+irvaldcl_get_lctn(dval)
+val dpat =
+irvaldcl_get_dpat(dval)
+val tdxp =
+irvaldcl_get_tdxp(dval)
+//
+in//let
+case+ tdxp of
+|
+TEQIREXPnone
+( (*void*) ) => ()
+|
+TEQIREXPsome
+(teq0, ire1) =>
+let
+val irv1 =
+xinterp_irexp(env0, ire1)
+in//let
+//
+if
+irpat_valck
+(dpat, irv1)
+then
+(
+irpat_match(env0,dpat,irv1))
+else
+(
+$raise XINTERP_IRVALDCL(dval)) where
+{
+val () =
+prerrln("xinterp_irvaldcl: dpat = ", dpat)
+val () =
+prerrln("xinterp_irvaldcl: irv1 = ", irv1)
+}
+//
+end//let
+end//let
+//(*let*)//end-of[trans3a_d3valdcl(env0,dval)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
