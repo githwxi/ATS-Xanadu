@@ -43,6 +43,11 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../../..\
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+//
+#include
+"./../HATS/xinterp_dats.hats"
+//
+(* ****** ****** *)
 #staload "./../SATS/intrep0.sats"
 (* ****** ****** *)
 #staload "./../SATS/xinterp.sats"
@@ -85,9 +90,41 @@ list_cons(irv1, irvs) =>
 if
 irpat_valck(irp1, irv1)
 then irpatlst_valck(irps, irvs) else false)
-) (*case+*) // end of [irpatlst_valck(irps, irvs)]
+)(*case+*)//end-of-[irpatlst_valck(irps, irvs)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+irpat_match
+( env0
+, irp0, irv0) =
+(
+case+
+irp0.node() of
+|IRPvar(d2v1) =>
+(
+xintenv_d2vins_any
+(env0, d2v1, irv0) )
+//
+|IRPint(int) => ((*void*))
+|IRPbtf(btf) => ((*void*))
+|IRPchr(chr) => ((*void*))
+|IRPflt(flt) => ((*void*))
+|IRPstr(str) => ((*void*))
+//
+| _(*otherwise*) => ((*void*))
+//
+) where
+{
+//
+val () =
+prerrln("irpat_match: irp0 = ", irp0)
+val () =
+prerrln("irpat_match: irv0 = ", irv0)
+//
+}(*where*)//end-of-[irpat_match(env0,irp0,irv0)]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_xintrep_utils0.dats] *)
