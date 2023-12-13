@@ -249,6 +249,7 @@ irpat_node =
 |IRPint of token
 |IRPbtf of sym_t
 |IRPchr of token
+|IRPflt of token
 |IRPstr of token
 //
 |IRPbang of (irpat)

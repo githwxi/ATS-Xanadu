@@ -80,14 +80,28 @@ in//let
 case+
 irp0.node() of
 //
-|IRPany _ => print("IRPany(", ")")
+|
+IRPany _ =>
+print("IRPany(", ")")
+|
+IRPvar(d2v) =>
+print("IRPvar(", d2v, ")")
 //
-|IRPint(int) => print("IRPint(", int, ")")
-|IRPchr(btf) => print("IRPchr(", btf, ")")
-|IRPchr(chr) => print("IRPchr(", chr, ")")
-|IRPchr(str) => print("IRPstr(", str, ")")
-//
-|IRPvar(d2v) => print("IRPvar(", d2v, ")")
+|
+IRPint(int) =>
+print("IRPint(", int, ")")
+|
+IRPbtf(btf) =>
+print("IRPbtf(", btf, ")")
+|
+IRPchr(chr) =>
+print("IRPchr(", chr, ")")
+|
+IRPflt(flt) =>
+print("IRPflt(", flt, ")")
+|
+IRPstr(str) =>
+print("IRPstr(", str, ")")
 //
 |IRPnone0() => print( "IRPnone0(",")" )
 |IRPnone1(d3p1) => print( "IRPnone1(", d3p1, ")" )
