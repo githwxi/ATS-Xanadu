@@ -187,5 +187,55 @@ end//let
 endloc (*local*) // end of [ local(xintenv) ]
 (* ****** ****** *)
 (* ****** ****** *)
+//
+local
+//
+val
+the_cmap =
+$STM.tmpmap_make_nil{irval}()
+//
+in//local
+//
+#implfun
+ircst_search
+  (  d2c0  ) =
+let
+//
+val tmp0 = d2cst_get_stmp(d2c0)
+//
+in//let
+(
+case+ opt1 of
+| ~optn_nil() =>
+(
+  IRVnone0(*void*) )
+| ~optn_cons(irv1) => irv1) where
+{
+val opt1 =
+$STM.tmpmap_search_opt(the_cmap,tmp0)
+}
+end//let//end-of-[ ircst_search(d2c0) ]
+//
+#implfun
+irvar_search(d2v0) = IRVnone0((*void*))
+//
+(* ****** ****** *)
+//
+#implfun
+ircst_insval
+(d2c0, irv1) =
+let
+//
+val tmp0 = d2cst_get_stmp(d2c0)
+in//let
+$STM.tmpmap_insert_any(the_cmap, tmp0, irv1)
+end(*let*)//end-of-[ircst_insval(d2c0, irv1)]
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end of [ local(the_cmap) ]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_xinterp_myenv0.dats] *)

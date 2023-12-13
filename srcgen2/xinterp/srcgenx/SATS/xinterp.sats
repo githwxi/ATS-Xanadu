@@ -105,6 +105,10 @@ irval =
 |IRVflt of double
 |IRVstr of string
 //
+(*
+|IRVcst of (d2cst)
+*)
+//
 |IRVlam1 of
 (fiarglst,irexp,irenv)
 |IRVfix1 of
@@ -132,10 +136,23 @@ irval_fprint
 (out:FILR, irv0:irval): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+ircst_search
+( d2c0: d2cst ): irval
+fun
+irvar_search
+( d2v0: d2var ): irval
+fun
+ircst_insval
+( d2cst, irval ): (void)
+//
+(* ****** ****** *)
 //
 fun
 irpat_valck
-( irpat, irval ): bool
+( irpat, irval ): (bool)
 fun
 irpatlst_valck
 ( irpatlst, irvalist ): bool

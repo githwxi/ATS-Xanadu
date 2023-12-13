@@ -151,22 +151,22 @@ ire0.node() of
 print("IREtimp(", dcst, ";", dimp, ")")
 //
 |IREdapp
-( ire1
-, npf1, ires) =>
-(
-print
-("IREdapp(", ire1, ";", npf1, ";", ires, ")"))
+( irf0, ires) =>
+print("IREdapp(", irf0, ";", ires, ")")
 //
 |IREift0
-( ire1
+( test
 , ithn, iels) =>
 (
 print
-("IREift0(", ire1, ";", ithn, ";", iels, ")"))
+("IREift0(", test, ";", ithn, ";", iels, ")"))
 //
+(* ****** ****** *)
 //
 |IREnone0() => print( "IREnone0(",")" )
 |IREnone1(d3e1) => print( "IREnone1(", d3e1, ")" )
+//
+(* ****** ****** *)
 //
 end//let//end-of-[irexp_fprint(out, ire0)]
 //

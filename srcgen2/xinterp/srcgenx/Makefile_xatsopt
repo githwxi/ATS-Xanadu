@@ -101,6 +101,11 @@ xinterp_myenv0_dats: ; \
 $(XATSOPT) --dynamic DATS/xinterp_myenv0.dats
 ######
 all_dats:: \
+xinterp_inits0_dats
+xinterp_inits0_dats: ; \
+$(XATSOPT) --dynamic DATS/xinterp_inits0.dats
+######
+all_dats:: \
 xinterp_utils0_dats
 xinterp_utils0_dats: ; \
 $(XATSOPT) --dynamic DATS/xinterp_utils0.dats

@@ -343,17 +343,37 @@ D3Edapp
 ( d3f0
 , npf1, d3es) = d3e0.node()
 //
+val d3es =
+(
+  f1_npf1_d3es(npf1, d3es))
+where
+{
+fun
+f1_npf1_d3es
+( npf1: sint
+, d3es: d3explst): d3explst =
+if
+(npf1 <= 0)
+then d3es else
+(
+case+ d3es of
+|
+list_nil() => list_nil()
+|
+list_cons(_, d3es) =>
+f1_npf1_d3es(npf1-1, d3es)) }
+//
 val irf0 =
 (
-  trxd3ir_d3exp(env0, d3f0))
+  trxd3ir_d3exp(env0, d3f0) )
 val ires =
 (
-  trxd3ir_d3explst(env0, d3es))
+  trxd3ir_d3explst(env0, d3es) )
 //
 in//let
 //
-irexp_make_node
-(loc0, IREdapp(irf0,npf1,ires))
+(
+irexp(loc0, IREdapp(irf0, ires)))
 //
 end(*let*)//end-of-[f0_dapp(env0,d3e0)]
 //

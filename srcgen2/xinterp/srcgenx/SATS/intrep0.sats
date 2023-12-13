@@ -322,7 +322,7 @@ irexp_node =
 (d3exp(*dcst*), irdcl)
 |
 IREdapp of
-(irexp, sint, irexplst)
+(irexp(*dfun*), irexplst)
 //
 |IRElet0 of
 (irdclist, irexp(*scope*))
