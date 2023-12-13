@@ -203,6 +203,14 @@ optn_xinterp_fnp
 (* ****** ****** *)
 //
 fun
+irpat_match
+( env0:
+! xintenv
+, irp0: irpat, irv0: irval): void
+//
+(* ****** ****** *)
+//
+fun
 xinterp_irexp
 (env0: !xintenv, ire0: irexp): irval
 //
