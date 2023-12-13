@@ -84,35 +84,46 @@ case+
 ird0.node() of
 //
 |
-IRDCLd3ecl _ => ((*0*))
+IRDd3ecl _ => ((*0*))
 //
 |
-IRDCLlocal0 _ =>
+IRDlocal0 _ =>
 (
   f0_local0(env0, ird0) )
 //
 |
-IRDCLinclude _ =>
+IRDinclude _ =>
 (
   f0_include(env0, ird0) )
+//
+|
+IRDvaldclst _ =>
+(
+  f0_valdclst(env0, ird0) )
+|
+IRDvardclst _ =>
+(
+  f0_vardclst(env0, ird0) )
+//
+|
+IRDnone1(d3cl) => ( (*void*) )
+//
 |
 _(*otherwise*) =>
 (
-$raise
-XINTERP_IRDCL(ird0)) where
+$raise XINTERP_IRDCL(ird0)) where
 {
 //
-val loc0 =
-  ird0.lctn((*void*))
-val (  ) = prerrln
-  ("xinterp_irdcl: loc0 = ", loc0)
-val (  ) = prerrln
-  ("xinterp_irdcl: ird0 = ", ird0)
+val loc0 = ird0.lctn((*void*))
+val (  ) =
+prerrln("xinterp_irdcl: loc0 = ", loc0)
+val (  ) =
+prerrln("xinterp_irdcl: ird0 = ", ird0)
 //
 }(*where*)
 //
 end where
-// end-of-[let] // xinterp_irdcl(...)
+// end-of-[let] // xinterp_irdcl(env0,...)
 {
 //
 (* ****** ****** *)
@@ -157,16 +168,34 @@ end// let // end-of-[f0_include(env0,ird0)]
 (* ****** ****** *)
 //
 fun
+f0_valdclst
+( env0:
+! xintenv
+, ird0: irdcl): void =
+let
+//
+val-
+IRDvaldclst
+(tknd, irvs) = ird0.node()
+//
+in//let
+  xinterp_irvaldclist(env0, irvs)
+end// let // end-of-[f0_valdclst(env0,ird0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_vardclst
 ( env0:
 ! xintenv
-, irdcl: irdcl): void =
+, ird0: irdcl): void =
 let
+//
 val-
 IRDvardclst
-( tknd
-, irvs) = irdcl.node()
-in
+(tknd, irvs) = ird0.node()
+//
+in//let
   xinterp_irvardclist(env0, irvs)
 end// let // end-of-[f0_vardclst(env0,ird0)]
 //
@@ -195,6 +224,7 @@ val tdxp =
 irvaldcl_get_tdxp(dval)
 //
 in//let
+//
 case+ tdxp of
 |
 TEQIREXPnone
@@ -223,9 +253,9 @@ val () =
 prerrln("xinterp_irvaldcl: irv1 = ", irv1)
 }
 //
-end//let
-end//let
-//(*let*)//end-of[trans3a_d3valdcl(env0,dval)]
+end(*let*)//end-of-[TEQIREXPsome(teq0,ire1)]
+//
+end(*let*)//end-of-[xinterp_irvaldcl(env0,dval)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
