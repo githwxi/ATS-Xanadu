@@ -49,6 +49,11 @@ XATSOPT "./../../.."
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 //
+#include
+"./../HATS/libxinterp.hats"
+//
+(* ****** ****** *)
+//
 #staload
 "./../../../SATS/staexp2.sats"
 #staload
@@ -94,18 +99,34 @@ d3p0.node() of
 //
 |D3Pint
 ( tok ) =>
-irpat(loc0, IRPint(tok))
+let
+val int =
+token2dint(tok)
+in//let
+irpat(loc0, IRPint(int))
+end//let//end-of(D3Pchr)
+//
 |D3Pbtf
 ( sym ) =>
-irpat(loc0, IRPbtf(sym))
+let
+val btf =
+symbl2dbtf(sym)
+in//let
+irpat(loc0, IRPbtf(btf))
+end//let//end-of(D3Pbtf)
+//
 |D3Pchr
 ( tok ) =>
-irpat(loc0, IRPchr(tok))
-(*
+let
+val chr =
+token2dchr(tok)
+in//let
+irpat(loc0, IRPchr(chr))
+end//let//end-of(D3Pchr)
+//
 |D3Pflt
 ( tok ) =>
 irpat(loc0, IRPflt(tok))
-*)
 |D3Pstr
 ( tok ) =>
 irpat(loc0, IRPstr(tok))

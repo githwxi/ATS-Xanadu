@@ -68,7 +68,29 @@ _(*DATS*)="./../DATS/xinterp.dats"
 //
 #implfun
 irpat_valck
-(irp0 , irv0) = false
+(irp0 , irv0) =
+(
+case+
+irp0.node() of
+//
+|IRPany _ => true
+|IRPvar _ => true
+//
+|IRPint(int1) =>
+(
+case+ irv0 of
+|IRVint(int2) =>
+(int1 = int2) | _ => false)
+//
+|IRPbtf(btf1) =>
+(
+case+ irv0 of
+|IRVbtf(btf2) =>
+(btf1 = btf2) | _ => false)
+//
+|_(*otherwise*) => (   false   )
+//
+)(*case+*)//end-of-[irpat_valck(irp0,irv0)]
 //
 (* ****** ****** *)
 //

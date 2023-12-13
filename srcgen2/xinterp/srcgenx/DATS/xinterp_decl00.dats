@@ -216,10 +216,6 @@ val () =
 xinterp_irvaldcl
   (env0, dval) = let
 //
-val loc0 =
-irvaldcl_get_lctn(dval)
-val dpat =
-irvaldcl_get_dpat(dval)
 val tdxp =
 irvaldcl_get_tdxp(dval)
 //
@@ -233,6 +229,8 @@ TEQIREXPnone
 TEQIREXPsome
 (teq0, ire1) =>
 let
+val dpat =
+irvaldcl_get_dpat(dval)
 val irv1 =
 xinterp_irexp(env0, ire1)
 in//let
@@ -247,9 +245,15 @@ else
 (
 $raise XINTERP_IRVALDCL(dval)) where
 {
-val () =
+val loc0 =
+irvaldcl_get_lctn(dval)
+val (  ) =
+prerrln("xinterp_irvaldcl: ERROR!!!")
+val (  ) =
+prerrln("xinterp_irvaldcl: loc0 = ", loc0)
+val (  ) =
 prerrln("xinterp_irvaldcl: dpat = ", dpat)
-val () =
+val (  ) =
 prerrln("xinterp_irvaldcl: irv1 = ", irv1)
 }
 //
