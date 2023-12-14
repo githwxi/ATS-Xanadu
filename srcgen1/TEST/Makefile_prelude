@@ -7,7 +7,7 @@
 
 ######
 XATSOPT=\
-./../../bin/xatsopt
+./../bin/xatsopt
 ######
 PRELUDE=./../../prelude
 XATSLIB=./../../xatslib
