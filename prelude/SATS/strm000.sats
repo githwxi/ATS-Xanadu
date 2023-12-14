@@ -302,25 +302,13 @@ strx_map_vt(strx(x0)): strx_vt(y0)
 (* ****** ****** *)
 //
 (*
-strm_scanl: scanl$fopr
 strm_scanl_vt: scanl$fopr
-strm_xscanl: xscanl$fopr
-strm_xscanl_vt: xscanl$fopr
 *)
 //
 fun
 <x0:t0>
-strm_scanl
-(xs: strm(x0)): strm(x0)
-fun
-<x0:t0>
-strm_scanl_vt
-(xs: strm(x0)): strm_vt(x0)
-//
-fun
-<x0:t0>
 <r0:vt>
-strm_xscanl_vt
+strm_scanl_vt
 (xs: strm(x0), r0: r0): strm_vt(r0)
 //
 (* ****** ****** *)

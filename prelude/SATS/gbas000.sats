@@ -196,43 +196,38 @@ map1$fopr(x0: !x0): (y0)
 //
 fun
 <x0:t0>
-scanl$fopr
-( r0: x0, x0: x0 ): (x0)
-fun
-<x0:t0>
-scanr$fopr
-( x0: x0, r0: x0 ): (x0)
-//
-fun
-<x0:vt>
-scanl0$fopr
-( r0: x0, x0: ~x0 ): (x0)
-fun
-<x0:vt>
-scanl1$fopr
-( r0: x0, x0: !x0 ): (x0)
-//
-fun
-<x0:vt>
-scanr0$fopr
-( x0: ~x0, r0: x0 ): (x0)
-fun
-<x0:vt>
-scanr1$fopr
-( x0: !x0, r0: x0 ): (x0)
-//
-(* ****** ****** *)
-//
-fun
-<x0:t0>
 <r0:vt>
-xscanl$fopr
+scanl$fopr
 ( r0: r0, x0: x0 ): (r0)
 fun
 <x0:t0>
 <r0:vt>
-xscanr$fopr
+scanr$fopr
 ( x0: x0, r0: r0 ): (r0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<r0:vt>
+scanl0$fopr
+( r0: r0, x0: ~x0 ): (r0)
+fun
+<x0:vt>
+<r0:vt>
+scanl1$fopr
+( r0: r0, x0: !x0 ): (r0)
+//
+fun
+<x0:vt>
+<r0:vt>
+scanr0$fopr
+( x0: ~x0, r0: r0 ): (r0)
+fun
+<x0:vt>
+<r0:vt>
+scanr1$fopr
+( x0: !x0, r0: r0 ): (r0)
 //
 (* ****** ****** *)
 //
