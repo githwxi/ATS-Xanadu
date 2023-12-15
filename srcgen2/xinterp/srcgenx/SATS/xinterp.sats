@@ -109,8 +109,10 @@ irval =
 |IRVcst of (d2cst)
 *)
 //
+|IRVtup0 of irvalist
+//
 |IRVlam0 of
-(fiarg,irexp,irenv)
+(fiarg, irexp, irenv)
 |IRVfix0 of
 (d2var,fiarg,irexp,irenv)
 |
