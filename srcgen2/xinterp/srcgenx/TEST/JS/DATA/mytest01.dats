@@ -10,8 +10,8 @@
 "prelude/HATS/CATS/Xint/prelude_dats.hats"
 //
 (* ****** ****** *)
-val N = 10
-val N2 = (N, N)
+val N1 = 5
+val N2 = (N1+N1)
 (* ****** ****** *)
 //
 fun
