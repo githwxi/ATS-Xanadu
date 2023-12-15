@@ -66,6 +66,31 @@ _(*DATS*)="./../DATS/xinterp.dats"
 #symload lctn with irexp_get_lctn
 #symload node with irexp_get_node
 (* ****** ****** *)
+#symload lctn with irdcl_get_lctn
+#symload node with irdcl_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+irexp_lam0
+( loc0
+: loctn
+, tknd
+: token
+, fias
+: fiarglst
+, ire1: irexp): irexp =
+(
+case+ fias of
+|
+list_nil() => ire1
+|
+list_cons _ =>
+irexp_make_node
+( loc0
+, IRElam0(tknd, fias, ire1)))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -99,13 +124,16 @@ ire0.node() of
 //
 |IREvar _ => f0_var(env0, ire0)
 //
-|
-IREtup0 _ => f0_tup0(env0, ire0)
+|IREtimp _ => f0_timp(env0, ire0)
 //
-|
-IRElam0 _ => f0_lam0(env0, ire0)
-|
-IREfix0 _ => f0_fix0(env0, ire0)
+(*
+|IREdapp _ => f0_dapp(env0, ire0)
+*)
+//
+|IREtup0 _ => f0_tup0(env0, ire0)
+//
+|IRElam0 _ => f0_lam0(env0, ire0)
+|IREfix0 _ => f0_fix0(env0, ire0)
 //
 |
 _(*otherwise*) =>
@@ -151,6 +179,85 @@ val opt0 =
 xintenv_d2vrch_opt(env0, d2v0) }
 //
 end(*let*)//end-of-[f0_var(env0,ire0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_timp
+( env0:
+! xintenv
+, ire0: irexp): irval =
+let
+//
+val-
+IREtimp
+(dcst, ird0) = ire0.node()
+//
+in//let
+//
+(
+f1_impl(env0, ird0)) where
+{
+//
+fun
+f1_impl
+( env0:
+! xintenv
+, ird0: irdcl): irval =
+(
+case+
+ird0.node() of
+//
+|IRDtmpsub
+(svts, ird1) =>
+f1_impl(env0, ird1)
+|IRDimplmnt0 _ =>
+f2_impl(env0, ird0)
+//
+|_(*otherise*) => IRVnone0(*0*))
+//
+and
+f2_impl
+( env0:
+! xintenv
+, ird0: irdcl): irval =
+let
+val
+IRDimplmnt0
+( tknd
+, stmp
+, sqas, tqas
+, dimp, t2is
+, fias, ire1) = ird0.node()
+in//let
+//
+case+ fias of
+|
+list_nil() =>
+(
+xinterp_irexp(env0, ire1))
+|
+list_cons(fia1, fias) =>
+let
+//
+val
+fenv = xintenv_snap(env0)
+in//let
+//
+(
+IRVlam0(fia1, body, fenv)) where
+{
+//
+val loc0 = ird0.lctn()
+val body =
+  irexp_lam0(loc0,tknd,fias,ire1)
+} endlet // end-of-[list_cons( ... )]
+//
+end(*let*)//end-of-[f2_impl(env0,ire0)]
+//
+}
+//
+end(*let*)//end-of-[f0_timp(env0,ire0)]
 //
 (* ****** ****** *)
 //
@@ -206,19 +313,9 @@ in//let
   IRVlam0(fia1, body, fenv)
 ) where
 {
-val body =
-(
-case+ fias of
-|
-list_nil() => ire1
-|
-list_cons _ =>
-let
 val loc0 = ire0.lctn()
-in//let
-irexp
-( loc0
-, IRElam0(tknd,fias,ire1)) end )
+val body =
+  irexp_lam0(loc0,tknd,fias,ire1)
 } endlet//end-of-[list_cons( ... )]
 //
 end(*let*)//end-of-[f0_lam0(env0,ire0)]
@@ -262,19 +359,9 @@ in//let
   (d2v0, fia1, body, fenv)
 ) where
 {
-val body =
-(
-case+ fias of
-|
-list_nil() => ire1
-|
-list_cons _ =>
-let
 val loc0 = ire0.lctn()
-in//let
-irexp
-( loc0
-, IRElam0(tknd,fias,ire1)) end )
+val body =
+  irexp_lam0(loc0,tknd,fias,ire1)
 } endlet//end-of-[list_cons( ... )]
 //
 end(*let*)//end-of-[f0_fix0(env0,ire0)]
