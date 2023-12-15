@@ -97,6 +97,8 @@ ire0.node() of
 (
  IRVstr(token2dstr(tok)))
 //
+|IREvar _ => f0_var(env0, ire0)
+//
 |
 IREtup0 _ => f0_tup0(env0, ire0)
 //
@@ -125,6 +127,31 @@ end where
 (* ****** ****** *)
 excptcon
 XINTERP_IREXP of irexp
+(* ****** ****** *)
+//
+fun
+f0_var
+( env0:
+! xintenv
+, ire0: irexp): irval =
+let
+val-
+IREvar(d2v0) = ire0.node()
+in//let
+//
+(
+case+ opt0 of
+| ~
+optn_nil((*0*)) =>
+irvar_search(d2v0)
+| ~
+optn_cons(irv0) => irv0) where
+{
+val opt0 =
+xintenv_d2vrch_opt(env0, d2v0) }
+//
+end(*let*)//end-of-[f0_var(env0,ire0)]
+//
 (* ****** ****** *)
 //
 fun

@@ -117,6 +117,78 @@ irstk_free_nil(stk) =
 case- stk of ~irstk_nil() => ()
 )
 //
+fun
+irstk_d2crch_opt
+( stk0:
+! irstk
+, d2c0
+: d2cst): optn_vt(irval) =
+(
+case+ stk0 of
+| !
+irstk_nil() =>
+optn_vt_nil((*void*))
+| !
+irstk_lam0(stk1) =>
+irstk_d2crch_opt(stk1, d2c0)
+| !
+irstk_let0(stk1) =>
+irstk_d2crch_opt(stk1, d2c0)
+//
+| !
+irstk_dcst
+(d2c1, irv1, stk1) =>
+if
+(d2c0 = d2c1)
+then optn_vt_cons(irv1) else
+(
+  irstk_d2crch_opt(stk1, d2c0))
+//
+| !
+irstk_dvar
+(d2v1, irv1, stk1) =>
+(
+  irstk_d2crch_opt(stk1, d2c0))
+//
+)(*case+*)//end-of-[irstk_d2crch_opt]
+//
+(* ****** ****** *)
+//
+fun
+irstk_d2vrch_opt
+( stk0:
+! irstk
+, d2v0
+: d2var): optn_vt(irval) =
+(
+case+ stk0 of
+| !
+irstk_nil() =>
+optn_vt_nil((*void*))
+| !
+irstk_lam0(stk1) =>
+irstk_d2vrch_opt(stk1, d2v0)
+| !
+irstk_let0(stk1) =>
+irstk_d2vrch_opt(stk1, d2v0)
+//
+| !
+irstk_dvar
+(d2v1, irv1, stk1) =>
+if
+(d2v0 = d2v1)
+then optn_vt_cons(irv1) else
+(
+  irstk_d2vrch_opt(stk1, d2v0))
+//
+| !
+irstk_dcst
+(d2v1, irv1, stk1) =>
+(
+  irstk_d2vrch_opt(stk1, d2v0))
+//
+)(*case+*)//end-of-[irstk_d2vrch_opt]
+//
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
@@ -145,6 +217,62 @@ case+ env0 of
 XINTENV
 (cmap,vmap,stk0) => irstk_free_nil(stk0)
 )(*case+*)//end-of-[xintenv_free_top(env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+xintenv_d2crch_opt
+  ( env0, d2c0 ) =
+(
+case+ env0 of
+| !
+XINTENV
+(cmap, vmap, stk0) =>
+let
+val opt0 =
+irstk_d2crch_opt(stk0, d2c0)
+in//let
+case+ opt0 of
+| ~
+optn_nil() =>
+let
+val
+tmp0 = d2cst_get_stmp(d2c0)
+in//let
+$STM.tmpmap_search_opt(cmap, tmp0)
+end//let
+| ~
+optn_vt_cons(irv0) => optn_vt_cons(irv0)
+end//let
+)(*case+*)//end-of-[xintenv_d2crch_opt(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+xintenv_d2vrch_opt
+  ( env0, d2v0 ) =
+(
+case+ env0 of
+| !
+XINTENV
+(cmap, vmap, stk0) =>
+let
+val opt0 =
+irstk_d2vrch_opt(stk0, d2v0)
+in//let
+case+ opt0 of
+| ~
+optn_nil() =>
+let
+val
+tmp0 = d2var_get_stmp(d2v0)
+in//let
+$STM.tmpmap_search_opt(vmap, tmp0)
+end//let
+| ~
+optn_vt_cons(irv0) => optn_vt_cons(irv0)
+end//let
+)(*case+*)//end-of-[xintenv_d2vrch_opt(...)]
 //
 (* ****** ****** *)
 //
