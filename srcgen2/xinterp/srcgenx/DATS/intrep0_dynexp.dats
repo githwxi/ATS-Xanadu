@@ -90,6 +90,26 @@ _(*DATS*)="./../DATS/intrep0.dats"
 #symload node with timpl_get_node
 (* ****** ****** *)
 //
+fun
+<itm:type>
+pfrmv_npf1_itms
+( npf1
+: sint
+, itms
+: list(itm)): list(itm) =
+if
+(npf1 <= 0)
+then itms else
+(
+case+ itms of
+|
+list_nil() => list_nil()
+|
+list_cons(_, itms) =>
+pfrmv_npf1_itms(npf1-1, itms))
+//
+(* ****** ****** *)
+//
 #implfun
 trxd3ir_d3pat
 (env0 , d3p0) =
@@ -294,6 +314,9 @@ irexp(loc0, IREcst(d2c))
 |D3Etup1 _ => f0_tup1(env0, d3e0)
 |D3Ercd2 _ => f0_rcd2(env0, d3e0)
 //
+|D3Elam0 _ => f0_lam0(env0, d3e0)
+|D3Efix0 _ => f0_fix0(env0, d3e0)
+//
 |_(* otherwise *) => irexp_none1(d3e0)
 ) where
 {
@@ -301,6 +324,15 @@ irexp(loc0, IREcst(d2c))
 (* ****** ****** *)
 //
 val loc0 = d3e0.lctn()
+//
+(* ****** ****** *)
+//
+fun
+pfrmv_npf1_d3es =
+pfrmv_npf1_itms<d3exp>
+fun
+pfrmv_npf1_ldes =
+pfrmv_npf1_itms<l3d3e>
 //
 (* ****** ****** *)
 //
@@ -366,23 +398,7 @@ D3Edapp
 //
 val d3es =
 (
-  f1_npf1_d3es(npf1, d3es))
-where
-{
-fun
-f1_npf1_d3es
-( npf1: sint
-, d3es: d3explst): d3explst =
-if
-(npf1 <= 0)
-then d3es else
-(
-case+ d3es of
-|
-list_nil() => list_nil()
-|
-list_cons(_, d3es) =>
-f1_npf1_d3es(npf1-1, d3es)) }
+pfrmv_npf1_d3es(npf1, d3es) )
 //
 val irf0 =
 (
@@ -472,7 +488,7 @@ val ire1 =
 in//let
 (
   irexp_make_node
-  (loc0, IREseqn( ires, ire1 )))
+  (loc0, IREseqn( ires, ire1 )) )
 end(*let*)//end-of-[f0_seqn(env0,d3e0)]
 //
 (* ****** ****** *)
@@ -488,14 +504,17 @@ val-
 D3Etup0
 ( npf1, d3es) = d3e0.node()
 //
+val d3es =
+(
+  pfrmv_npf1_d3es(npf1, d3es))
+//
 val ires =
 (
   trxd3ir_d3explst(env0, d3es))
 //
 in//let
 (
-  irexp_make_node
-  (loc0, IREtup0( npf1, ires )))
+  irexp(loc0, IREtup0(  ires  )) )
 end(*let*)//end-of-[f0_tup0(env0,d3e0)]
 //
 (* ****** ****** *)
@@ -512,13 +531,17 @@ D3Etup1
 ( knd0
 , npf1, d3es) = d3e0.node()
 //
+val d3es =
+(
+  pfrmv_npf1_d3es(npf1, d3es))
+//
 val ires =
 (
   trxd3ir_d3explst(env0, d3es))
 //
 in//let
-irexp_make_node
-(loc0, IREtup1(knd0, npf1, ires))
+(
+  irexp(loc0, IREtup1(knd0, ires)))
 end(*let*)//end-of-[f0_tup1(env0,d3e0)]
 //
 (* ****** ****** *)
@@ -535,20 +558,83 @@ D3Ercd2
 ( knd0
 , npf1, ldes) = d3e0.node()
 //
+val ldes =
+(
+  pfrmv_npf1_ldes(npf1, ldes))
+//
 val lirs =
 (
   trxd3ir_l3d3elst(env0, ldes))
 //
 in//let
-irexp_make_node
-(loc0, IRErcd2(knd0, npf1, lirs))
+(
+  irexp(loc0, IRErcd2(knd0, lirs)))
 end(*let*)//end-of-[f0_rcd2(env0,d3e0)]
 //
+(* ****** ****** *)
+//
+fun
+f0_lam0
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val-
+D3Elam0
+(tknd
+,f3as,sres
+,arrw,body) = d3e0.node()
+//
+val fias =
+trxd3ir_f3arglst(env0, f3as)
+//
+val
+body = trxd3ir_d3exp(env0, body)
+//
+in//let
+(
+  irexp_make_node
+  (loc0, IRElam0(tknd, fias, body)))
+end(*let*)//end-of-[f0_lam0(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fix0
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val-
+D3Efix0
+(tknd
+,d2v1
+,f3as,sres
+,arrw,body) = d3e0.node()
+//
+val
+fias =
+trxd3ir_f3arglst(env0, f3as)
+//
+val
+body = trxd3ir_d3exp(env0, body)
+//
+in//let
+//
+irexp_make_node
+(loc0, IREfix0(tknd,d2v1,fias,body))
+//
+end(*let*)//end-of-[f0_fix0(env0,d3e0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val (  ) =
 prerrln("trxd3ir_d3exp: d3e0 = ", d3e0)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 }(*where*) // end of [trxd3ir_d3exp(...)]

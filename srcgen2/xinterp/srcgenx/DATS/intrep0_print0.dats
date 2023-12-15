@@ -163,6 +163,18 @@ print
 //
 (* ****** ****** *)
 //
+|IREtup0
+( ires  ) =>
+print("IREtup0(", ires, ")")
+|IREtup1
+( tknd, ires) =>
+print("IREtup1(", tknd, ";", ires, ")")
+|IRErcd2
+( tknd, lirs) =>
+print("IREtup1(", tknd, ";", lirs, ")")
+//
+(* ****** ****** *)
+//
 |IREnone0() => print( "IREnone0(",")" )
 |IREnone1(d3e1) => print( "IREnone1(", d3e1, ")" )
 //

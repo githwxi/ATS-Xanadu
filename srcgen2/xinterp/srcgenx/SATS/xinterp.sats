@@ -109,10 +109,10 @@ irval =
 |IRVcst of (d2cst)
 *)
 //
-|IRVlam1 of
-(fiarglst,irexp,irenv)
-|IRVfix1 of
-(d2var,fiarglst,irexp,irenv)
+|IRVlam0 of
+(fiarg,irexp,irenv)
+|IRVfix0 of
+(d2var,fiarg,irexp,irenv)
 |
 IRVfixs of
 (d2var(*fun*)
@@ -169,6 +169,11 @@ xinterp_irparsed
 #vwtpdef xintenv = xintenv_vtbx
 //
 (* ****** ****** *)
+//
+fun
+xintenv_snap
+(env0: !xintenv): (irenv)
+//
 (* ****** ****** *)
 fun
 xintenv_make_nil(): xintenv
