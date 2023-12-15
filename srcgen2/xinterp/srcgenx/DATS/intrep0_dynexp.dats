@@ -90,23 +90,37 @@ _(*DATS*)="./../DATS/intrep0.dats"
 #symload node with timpl_get_node
 (* ****** ****** *)
 //
+#static
 fun
 <itm:type>
 pfrmv_npf1_itms
 ( npf1
 : sint
 , itms
-: list(itm)): list(itm) =
+: list(itm)): list(itm)
+#impltmp
+<  itm  >
+pfrmv_npf1_itms
+  (npf1, itms) =
+(
+  loop(npf1, itms)) where
+{
+fun
+loop
+( npf1: sint
+, itms: list(itm)): list(itm) =
 if
 (npf1 <= 0)
 then itms else
 (
 case+ itms of
 |
-list_nil() => list_nil()
+list_nil
+( (*0*) ) => list_nil()
 |
-list_cons(_, itms) =>
-pfrmv_npf1_itms(npf1-1, itms))
+list_cons
+(_, itms) => loop(npf1-1, itms))
+}
 //
 (* ****** ****** *)
 //
@@ -328,11 +342,19 @@ val loc0 = d3e0.lctn()
 (* ****** ****** *)
 //
 fun
-pfrmv_npf1_d3es =
-pfrmv_npf1_itms<d3exp>
+pfrmv_npf1_d3es
+( npf1
+: sint
+, d3es
+: d3explst): d3explst =
+pfrmv_npf1_itms<d3exp>(npf1, d3es)
 fun
-pfrmv_npf1_ldes =
-pfrmv_npf1_itms<l3d3e>
+pfrmv_npf1_ldes
+( npf1
+: sint
+, ldes
+: l3d3elst): l3d3elst =
+pfrmv_npf1_itms<l3d3e>(npf1, ldes)
 //
 (* ****** ****** *)
 //

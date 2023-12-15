@@ -186,11 +186,13 @@ xintenv_free_top(xintenv): void
 fun
 xintenv_d2crch_opt
 ( env0:
-! xintenv, d2c0:d2cst): irvalopt
+! xintenv
+, d2c0: d2cst ) : optn_vt(irval)
 fun
 xintenv_d2vrch_opt
 ( env0:
-! xintenv, d2v0:d2var): irvalopt
+! xintenv
+, d2v0: d2var ) : optn_vt(irval)
 //
 fun
 xintenv_d2cins_any
