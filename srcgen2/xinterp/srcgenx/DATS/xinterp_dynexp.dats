@@ -73,11 +73,6 @@ xinterp_irexp
   (env0, ire0) =
 let
 //
-(* ****** ****** *)
-excptcon
-XINTERP_IREXP of irexp
-(* ****** ****** *)
-//
 (*
 val () =
 println!
@@ -103,24 +98,138 @@ ire0.node() of
  IRVstr(token2dstr(tok)))
 //
 |
+IRElam0 _ => f0_lam0(env0, ire0)
+|
+IREfix0 _ => f0_fix0(env0, ire0)
+//
+|
 _(*otherwise*) =>
 (
-$raise XINTERP_IREXP(ire0)
-) where
+$raise XINTERP_IREXP(ire0)) where
 {
 //
-val loc0 =
-  ire0.lctn((*void*))
-val (  ) = prerrln
-  ("xinterp_irexp: loc0 = ", loc0)
-val (  ) = prerrln
-  ("xinterp_irexp: ire0 = ", ire0)
+val loc0 = ire0.lctn((*void*))
+val (  ) =
+prerrln("xinterp_irexp: loc0 = ", loc0)
+val (  ) =
+prerrln("xinterp_irexp: ire0 = ", ire0)
 //
 }(*where*)
 //
 end where
-// end-of-[let] // xinterp_irexp(...)
 {
+//
+(* ****** ****** *)
+excptcon
+XINTERP_IREXP of irexp
+(* ****** ****** *)
+//
+fun
+f0_lam0
+( env0:
+! xintenv
+, ire0: irexp): irval =
+let
+//
+val-
+IRElam0
+( tknd
+, fias, ire1) = ire0.node()
+//
+in//let
+//
+case+ fias of
+|
+list_nil() =>
+xinterp_irexp(env0, ire1)
+|
+list_cons
+(fia1, fias) =>
+let
+//
+val
+fenv = xintenv_snap(env0)
+//
+in//let
+(
+  IRVlam0(fia1, body, fenv)
+) where
+{
+val body =
+(
+case+ fias of
+|
+list_nil() => ire1
+|
+list_cons _ =>
+let
+val loc0 = ire0.lctn()
+in//let
+irexp
+( loc0
+, IRElam0(tknd,fias,ire1)) end )
+} endlet//end-of-[list_cons( ... )]
+//
+end(*let*)//end-of-[f0_lam0(env0,ire0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fix0
+( env0:
+! xintenv
+, ire0: irexp): irval =
+let
+//
+val-
+IREfix0
+( tknd
+, d2v0
+, fias, ire1) = ire0.node()
+//
+in//let
+//
+case+ fias of
+|
+list_nil() =>
+(*
+HX-2023-12-14:
+this should not happen!
+*)
+xinterp_irexp(env0, ire1)
+|
+list_cons
+(fia1, fias) =>
+let
+//
+val
+fenv = xintenv_snap(env0)
+//
+in//let
+(
+  IRVfix0
+  (d2v0, fia1, body, fenv)
+) where
+{
+val body =
+(
+case+ fias of
+|
+list_nil() => ire1
+|
+list_cons _ =>
+let
+val loc0 = ire0.lctn()
+in//let
+irexp
+( loc0
+, IRElam0(tknd,fias,ire1)) end )
+} endlet//end-of-[list_cons( ... )]
+//
+end(*let*)//end-of-[f0_fix0(env0,ire0)]
+//
+(* ****** ****** *)
+//
 } (*where*)//end of [xinterp_irexp(env0,ire0)]
 //
 (* ****** ****** *)

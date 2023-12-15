@@ -160,12 +160,20 @@ XATSOPT "./../../.."
 #typedef d3explstopt = $D3E.d3explstopt
 #typedef d3eclistopt = $D3E.d3eclistopt
 (* ****** ****** *)
+(* ****** ****** *)
 //
 datatype
 irlab(x0:type) =
 |
 IRLAB of (label, x0(*elt*))
 //
+(* ****** ****** *)
+fun
+<x0:type>
+irlab_fprint
+( out: FILR
+, lab: irlab( x0 )): (void)
+(* ****** ****** *)
 (* ****** ****** *)
 #abstbox irpat_tbox // p0tr
 #typedef irpat = irpat_tbox
@@ -335,14 +343,15 @@ IREdapp of
 |IREseqn of
 (irexplst(*init*), irexp(*last*))
 //
-|IREtup0 of
-(sint(*npf*), irexplst)
-|IREtup1 of
-(
-token(*knd*), sint(*npf*), irexplst)
-|IRErcd2 of
-(
-token(*knd*), sint(*npf*), l0irelst)
+|IREtup0 of (irexplst)
+|IREtup1 of (token(*knd*), irexplst)
+|IRErcd2 of (token(*knd*), l0irelst)
+//
+|IRElam0 of
+(token(*knd*),fiarglst(*arg*), irexp)
+|IREfix0 of
+(token(*knd*)
+,d2var(*fid*),fiarglst(*arg*), irexp)
 //
 |IREnone0 of ((*0*)) |IREnone1 of (d3exp)
 //

@@ -92,14 +92,14 @@ print("IRVflt(", flt, ")")
 |IRVstr(str) =>
 print("IRVstr(", str, ")")
 //
-|IRVlam1
+|IRVlam0
 (farg, body, fenv) =>
 print
-("IRVlam1(", farg, ";", "...", ")")
-|IRVfix1
+("IRVlam0(", farg, ";", "...", ")")
+|IRVfix0
 (fid0, farg, body, fenv) =>
 print
-("IRVfix1("
+("IRVfix0("
 , fid0, ";", farg, ";", "...", ")")
 |IRVfixs
 (fid0, farg, body, ires, fenv) =>

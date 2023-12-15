@@ -48,6 +48,29 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
+<x0>
+irlab_fprint
+  (out, lab) = let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+case+ lab of
+|
+IRLAB(l01, x02) =>
+print("IRLAB(",l01,";",x02,")")
+end(*let*)//end-of-[irlab_fprint]
+//
+#impltmp
+{x0:t0}
+g_print<irlab(x0)>(dlab) =
+irlab_fprint(g_print$out<>(), dlab)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 g_print
 <irpat>(irp) =
 irpat_fprint(g_print$out<>(), irp)

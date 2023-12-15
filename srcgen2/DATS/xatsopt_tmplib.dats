@@ -1035,6 +1035,25 @@ val+S2LAB(l1, itm1) = slx1
 val+S2LAB(l2, itm2) = slx2} )
 //
 (* ****** ****** *)
+//
+#impltmp
+g_equal<s2var>
+( s2v1, s2v2 ) = (s2v1 = s2v2)
+#impltmp
+g_equal<s2cst>
+( s2c1, s2c2 ) = (s2c1 = s2c2)
+//
+#impltmp
+g_equal<d2con>
+( d2c1, d2c2 ) = (d2c1 = d2c2)
+#impltmp
+g_equal<d2cst>
+( d2c1, d2c2 ) = (d2c1 = d2c2)
+#impltmp
+g_equal<d2var>
+( d2v1, d2v2 ) = (d2v1 = d2v2)
+//
+(* ****** ****** *)
 (*
 fun
 <x0:t0>
@@ -1391,8 +1410,8 @@ end(*let*)//end-of-[d3lab_fprint]
 //
 #impltmp
 {x0:t0}
-g_print<d3lab(x0)>(l3ab) =
-d3lab_fprint(g_print$out<>(), l3ab)
+g_print<d3lab(x0)>(dlab) =
+d3lab_fprint(g_print$out<>(), dlab)
 //
 (* ****** ****** *)
 //
