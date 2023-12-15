@@ -92,6 +92,9 @@ print("IRVflt(", flt, ")")
 |IRVstr(str) =>
 print("IRVstr(", str, ")")
 //
+|IRVtup0(irvs) =>
+print("IRVtup0(", irvs, ")")
+//
 |IRVlam0
 (farg, body, fenv) =>
 print
