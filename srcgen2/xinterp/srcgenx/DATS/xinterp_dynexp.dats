@@ -123,12 +123,11 @@ ire0.node() of
  IRVstr(token2dstr(tok)))
 //
 |IREvar _ => f0_var(env0, ire0)
+|IREcst _ => f0_cst(env0, ire0)
 //
 |IREtimp _ => f0_timp(env0, ire0)
 //
-(*
 |IREdapp _ => f0_dapp(env0, ire0)
-*)
 //
 |IREtup0 _ => f0_tup0(env0, ire0)
 //
@@ -171,7 +170,7 @@ in//let
 case+ opt0 of
 | ~
 optn_nil((*0*)) =>
-irvar_search(d2v0)
+the_irvar_search(d2v0)
 | ~
 optn_cons(irv0) => irv0) where
 {
@@ -179,6 +178,31 @@ val opt0 =
 xintenv_d2vrch_opt(env0, d2v0) }
 //
 end(*let*)//end-of-[f0_var(env0,ire0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_cst
+( env0:
+! xintenv
+, ire0: irexp): irval =
+let
+val-
+IREcst(d2c0) = ire0.node()
+in//let
+//
+(
+case+ opt0 of
+| ~
+optn_nil((*0*)) =>
+the_ircst_search(d2c0)
+| ~
+optn_cons(irv0) => irv0) where
+{
+val opt0 =
+xintenv_d2crch_opt(env0, d2c0) }
+//
+end(*let*)//end-of-[f0_cst(env0,ire0)]
 //
 (* ****** ****** *)
 //
@@ -258,6 +282,54 @@ end(*let*)//end-of-[f2_impl(env0,ire0)]
 }
 //
 end(*let*)//end-of-[f0_timp(env0,ire0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dapp
+( env0:
+! xintenv
+, ire0: irexp): irval =
+let
+//
+val-
+IREdapp
+( irf0, ires) = ire0.node()
+//
+val irf0 =
+(
+  xinterp_irexp(env0, irf0))
+val irvs =
+(
+  xinterp_irexplst(env0, ires))
+//
+in//let
+//
+case+ irf0 of
+(*
+|IRVlam0 _ => ...
+|IRVfix0 _ => ...
+*)
+//
+|IRVfun(fopr) => fopr(irvs)
+//
+|_(*otherwise*) =>
+(
+$raise XINTERP_IREXP(ire0)) where
+{
+//
+val () =
+prerrln
+("\
+xinterp_irexp:f0_dapp: irf0 = ", irf0)
+val () =
+prerrln
+("\
+xinterp_irexp:f0_dapp: ire0 = ", ire0)
+//
+}
+//
+end(*let*)//end-of-[f0_dapp(env0,d3e0)]
 //
 (* ****** ****** *)
 //
@@ -366,6 +438,13 @@ val body =
 //
 end(*let*)//end-of-[f0_fix0(env0,ire0)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val (  ) =
+prerrln("xinterp_irexp: ire0 = ", ire0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 } (*where*)//end of [xinterp_irexp(env0,ire0)]

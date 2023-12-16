@@ -92,6 +92,9 @@ print("IRVflt(", flt, ")")
 |IRVstr(str) =>
 print("IRVstr(", str, ")")
 //
+|IRVfun(fopr) =>
+print("IRVfun(", "...", ")")
+//
 |IRVtup0(irvs) =>
 print("IRVtup0(", irvs, ")")
 //

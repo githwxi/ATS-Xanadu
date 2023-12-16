@@ -128,6 +128,10 @@ the_fxtyenv_pvsfind
 (* ****** ****** *)
 //
 fun
+filpath_pvsload
+(knd0:sint,fpth:strn):void
+//
+fun
 the_tr12env_pvsload
   ( (*void*) ): sint(*0/1*)
 //
@@ -154,6 +158,8 @@ the_dexpenv_pvs
 (*
 HX: funs for merging with
 *)
+//
+(* ****** ****** *)
 //
 fun
 the_gmacenv_pvsmrgw
