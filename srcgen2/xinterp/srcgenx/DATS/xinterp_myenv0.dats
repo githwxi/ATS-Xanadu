@@ -325,7 +325,7 @@ $STM.tmpmap_make_nil{irval}()
 in//local
 //
 #implfun
-ircst_search
+the_ircst_search
   (  d2c0  ) =
 let
 //
@@ -342,22 +342,29 @@ case+ opt1 of
 val opt1 =
 $STM.tmpmap_search_opt(the_cmap,tmp0)
 }
-end//let//end-of-[ ircst_search(d2c0) ]
+end//let//end-of-[the_ircst_search(d2c0)]
 //
 #implfun
-irvar_search(d2v0) = IRVnone0((*void*))
+the_irvar_search(d2v0) = IRVnone0((*nil*))
 //
 (* ****** ****** *)
 //
 #implfun
-ircst_insval
-(d2c0, irv1) =
-let
+the_ircst_insval
+(d2c0, irv1) = let
 //
 val tmp0 = d2cst_get_stmp(d2c0)
+//
+val (  ) =
+prerrln
+("the_ircst_insval: d2c0 = ", d2c0)
+val (  ) =
+prerrln
+("the_ircst_insval: irv1 = ", irv1)
+//
 in//let
 $STM.tmpmap_insert_any(the_cmap, tmp0, irv1)
-end(*let*)//end-of-[ircst_insval(d2c0, irv1)]
+end(*let*) // end-of-[ the_ircst_insval(...) ]
 //
 (* ****** ****** *)
 //

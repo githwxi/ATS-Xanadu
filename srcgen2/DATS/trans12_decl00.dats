@@ -632,6 +632,9 @@ optn_vt_cons(dpar) => @(1(*shr*),dpar)
 //
 end where
 {
+  val () =
+  prerrln
+  ("s2taload_from_fpath: fpth = ", fpth)
 (*
   val () =
   prerrln

@@ -750,17 +750,18 @@ val ( ) = prerrln
 TREAD12-WARNING: \
 the_tr12env_pvsload: f0_pvsfini: d2v = ", d2v)
 }
-|_(*non-D2ITMvar*) => ans(*passed*)
+|_(*non-D2ITMvar*) => ans(* passed *)
 )
 end (*let*) // end of [ fopr(kx1:kx0) ]
 }
 )
 in
 //
-auxmain(kxs, false) where
+(
+  auxmain(kxs, false) ) where
 {
-val kxs =
-topmap_strmize(the_dexpenv_pvs()) }
+  val kxs =
+  topmap_strmize(the_dexpenv_pvs()) }
 //
 end (*let*) // end of [f1_dexpenv(...)]
 //
@@ -768,6 +769,12 @@ end (*let*) // end of [f1_dexpenv(...)]
 in//local
 (* ****** ****** *)
 //
+#implfun
+filpath_pvsload
+  (knd0, fpth) =
+f0_pvsload(knd0, fpth)
+//
+(* ****** ****** *)
 #implfun
 the_tr12env_pvsload
   ((*void*)) =
@@ -895,6 +902,8 @@ f0_pvsfini((*nil*)) // top-level declarations
 (* ****** ****** *)
 //
 } (*where*) // if-then-else( the_times[] > 0 )
+//
+(* ****** ****** *)
 //
 end (*let*) // end of [the_tr12env_pvsload(...)]
 //

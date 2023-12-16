@@ -109,6 +109,8 @@ irval =
 |IRVcst of (d2cst)
 *)
 //
+|IRVfun of irvalfun
+//
 |IRVtup0 of irvalist
 //
 |IRVlam0 of
@@ -127,6 +129,8 @@ where
 //
 #typedef irvalist = list(irval)
 #typedef irvalopt = optn(irval)
+#typedef
+irvalfun = (irvalist) -<cfr> irval
 //
 } (*where*) // end of [datatype(irval)]
 //
@@ -141,23 +145,23 @@ irval_fprint
 (* ****** ****** *)
 //
 fun
-ircst_search
-( d2c0: d2cst ): irval
-fun
-irvar_search
-( d2v0: d2var ): irval
-fun
-ircst_insval
-( d2cst, irval ): (void)
-//
-(* ****** ****** *)
-//
-fun
 irpat_valck
 ( irpat, irval ): (bool)
 fun
 irpatlst_valck
-( irpatlst, irvalist ): bool
+(irpatlst,irvalist): (bool)
+//
+(* ****** ****** *)
+//
+fun
+the_ircst_search
+( d2c: d2cst ): irval
+fun
+the_irvar_search
+( d2v: d2var ): irval
+fun
+the_ircst_insval
+(d2c:d2cst,irv:irval): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

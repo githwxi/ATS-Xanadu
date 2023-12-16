@@ -31,6 +31,11 @@ Tue Nov 28 08:48:38 EST 2023
 "./../../../SATS/dynexp3.sats"
 (* ****** ****** *)
 #staload
+"./../../../SATS/trans12.sats"
+#staload
+"./../../../SATS/tread12.sats"
+(* ****** ****** *)
+#staload
 "./../../../SATS/trans23.sats"
 #staload
 "./../../../SATS/tread23.sats"
@@ -44,7 +49,7 @@ Tue Nov 28 08:48:38 EST 2023
 #staload
 "./../../../SATS/fperr33.sats"
 (* ****** ****** *)
-#staload
+#staload(* GLO = *)
 "./../../../SATS/xglobal.sats"
 (* ****** ****** *)
 (* ****** ****** *)
