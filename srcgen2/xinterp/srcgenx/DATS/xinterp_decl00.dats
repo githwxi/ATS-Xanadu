@@ -44,6 +44,11 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../../..\
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+//
+#include
+"./../HATS/libxinterp.hats"
+//
+(* ****** ****** *)
 #include
 "./../HATS/xinterp_dats.hats"
 (* ****** ****** *)
@@ -62,9 +67,23 @@ XINTERP_IRVALDCL of irvaldcl
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#symload lctn with irdcl_get_lctn
-#symload node with irdcl_get_node
+#symload
+lctn with irdcl_get_lctn
+#symload
+node with irdcl_get_node
 //
+(* ****** ****** *)
+//
+#symload
+lctn with irfundcl_get_lctn
+#symload
+dpid with irfundcl_get_dpid
+#symload
+farg with irfundcl_get_farg
+#symload
+tdxp with irfundcl_get_tdxp
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -106,6 +125,11 @@ IRDvardclst _ =>
   f0_vardclst(env0, ird0) )
 //
 |
+IRDfundclst _ =>
+(
+  f0_fundclst(env0, ird0) )
+//
+|
 IRDnone1(d3cl) => ( (*void*) )
 //
 |
@@ -142,7 +166,7 @@ IRDlocal0
 val () = xinterp_irdclist(env0, head)
 val () = xinterp_irdclist(env0, body)
 //
-endlet // end-of-[f0_local0(env0,ird0)]
+end(*let*)//end-of-[f0_local0(env0,ird0)]
 //
 (* ****** ****** *)
 //
@@ -163,7 +187,7 @@ case+ dopt of
 ((*void*)) => ( (*void*) )
 |optn_cons
 (  irds  ) => xinterp_irdclist(env0,irds)
-end// let // end-of-[f0_include(env0,ird0)]
+end(*let*)//end-of-[f0_include(env0,ird0)]
 //
 (* ****** ****** *)
 //
@@ -180,7 +204,7 @@ IRDvaldclst
 //
 in//let
   xinterp_irvaldclist(env0, irvs)
-end// let // end-of-[f0_valdclst(env0,ird0)]
+end(*let*)//end-of-[f0_valdclst(env0,ird0)]
 //
 (* ****** ****** *)
 //
@@ -197,7 +221,118 @@ IRDvardclst
 //
 in//let
   xinterp_irvardclist(env0, irvs)
-end// let // end-of-[f0_vardclst(env0,ird0)]
+end(*let*)//end-of-[f0_vardclst(env0,ird0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fundclst
+( env0:
+! xintenv
+, ird0: irdcl): void =
+let
+//
+(* ****** ****** *)
+//
+val-
+IRDfundclst
+( tknd
+, tqas
+, d2cs
+, irfs) = ird0.node()
+//
+(* ****** ****** *)
+//
+val
+fenv = xintenv_snap(env0)
+//
+(* ****** ****** *)
+//
+fun
+f1_irfundcl
+( env0:
+! xintenv
+, irf0
+: irfundcl): irval =
+let
+//
+val loc0 = irf0.lctn()
+val dpid = irf0.dpid()
+val fias = irf0.farg()
+val tdxp = irf0.tdxp()
+//
+val body =
+(
+case+ tdxp of
+|TEQIREXPnone
+( (*void*) ) =>
+irexp_none0(loc0)
+|TEQIREXPsome
+(teq1, body) => body): irexp
+//
+in//let
+//
+case+ fias of
+|
+list_nil() =>
+xinterp_irexp(env0,body)
+|
+list_cons(farg, fias) =>
+(
+IRVfix0(dpid,farg,body,fenv)
+) where
+{
+val
+body =
+(
+if
+list_nilq fias
+then body else
+irexp_make_node
+( loc0
+, IRElam0(tknd, fias, body))) }
+//
+end//let//end-of-[f1_irfundcl(env0,irf0)]
+//
+(* ****** ****** *)
+//
+fun
+f1_irfundclist
+( env0:
+! xintenv
+, irfs
+: irfundclist): irvalist =
+(
+list_map_e1nv
+< x0><y0 ><e1>
+(irfs, env0)) where
+{
+//
+#vwtpdef e1 = xintenv
+#typedef y0 = (irval)
+#typedef x0 = irfundcl
+//
+#impltmp
+map$fopr_e1nv
+<x0><y0><e1>(x0, e1) = f1_irfundcl(e1, x0)
+}
+//
+(* ****** ****** *)
+//
+in//let
+//
+case+ tqas of
+|list_nil() =>
+let
+val irvs =
+(
+  f1_irfundclist(env0, irfs))
+in//let
+  ircstlst_match(env0,d2cs,irvs)
+end(*let*)//end-of-[list_nil(...)]
+|list_cons(tqa1, tqas) => ((*template*))
+//
+end(*let*)//end-of-[f0_fundclst(env0,ird0)]
 //
 (* ****** ****** *)
 //
@@ -320,6 +455,7 @@ xinterp_irvardclist(env0, irvs)))//xinterp_irvardclist
 //
 (* ****** ****** *)
 //
+(*
 #implfun
 xinterp_irfundclist
 ( env0, irfs ) =
@@ -332,6 +468,7 @@ list_cons(irf1, irfs) =>
 (
 xinterp_irfundcl(env0, irf1);
 xinterp_irfundclist(env0, irfs)))//xinterp_irvardclist
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

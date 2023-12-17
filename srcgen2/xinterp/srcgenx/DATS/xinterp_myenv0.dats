@@ -54,6 +54,11 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 //
+#include
+"./../HATS/xinterp_dats.hats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/xinterp.sats"
 //
@@ -114,8 +119,10 @@ XINTENV of
 fun
 irstk_free_nil(stk) =
 (
-case- stk of ~irstk_nil() => ()
-)
+case-
+stk of ~irstk_nil() => ())
+//
+(* ****** ****** *)
 //
 fun
 irstk_d2crch_opt
@@ -191,6 +198,64 @@ irstk_dcst
 //
 (* ****** ****** *)
 in//local
+(* ****** ****** *)
+//
+#implfun
+xintenv_snap
+  ( env0 ) =
+let
+val+
+XINTENV
+(_, _, stk0) = env0
+in//let
+loop(stk0, irenv_nil)
+end where // end-of-let
+{
+//
+fun
+loop
+( stk0:
+! irstk
+, res1: irenv): irenv =
+(
+case+ stk0 of
+//
+| !
+irstk_nil() => res1
+//
+| !
+irstk_lam0
+(  stk1  ) =>
+(
+  loop(stk1, res1) )
+| !
+irstk_let0
+(  stk1  ) =>
+(
+  loop(stk1, res1) )
+| !
+//
+irstk_dvar
+(d2v1, irv1, stk1) =>
+(
+  loop(stk1, res2) ) where
+{
+val res2 =
+irenv_dvar(d2v1, irv1, res1) }
+//
+| !
+irstk_dcst
+(d2c1, irv1, stk1) =>
+(
+  loop(stk1, res2) ) where
+{
+val res2 =
+irenv_dcst(d2c1, irv1, res1) }
+//
+)(*case+*)//end-of-[loop(stk0,res1)]
+//
+}(*where*)//end-of-[xintenv_snap(env0)]
+//
 (* ****** ****** *)
 //
 #implfun

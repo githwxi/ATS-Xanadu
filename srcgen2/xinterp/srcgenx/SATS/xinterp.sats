@@ -70,6 +70,10 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
+#typedef d2cstlst = $D2E.d2cstlst
+//
+(* ****** ****** *)
+//
 #typedef irpatlst = $IR0.irpatlst
 //
 #typedef irexplst = $IR0.irexplst
@@ -236,7 +240,23 @@ fun
 irpat_match
 ( env0:
 ! xintenv
-, irp0: irpat, irv0: irval): void
+, irp0:irpat, irv0:irval): void
+fun
+ircst_match
+( env0:
+! xintenv
+, d2c0:d2cst, irv0:irval): void
+//
+fun
+irpatlst_match
+(env0:
+!xintenv
+,irps:irpatlst,irvs:irvalist): void
+fun
+ircstlst_match
+(env0:
+!xintenv
+,d2cs:d2cstlst,irvs:irvalist): void
 //
 (* ****** ****** *)
 //
@@ -274,19 +294,24 @@ xinterp_irvardcl
 (env0: !xintenv, irv0: irvardcl): (void)
 //
 fun
-xinterp_irfundcl
-(env0: !xintenv, irf0: irfundcl): (void)
-//
-fun
 xinterp_irvaldclist
 (env0: !xintenv, irvs: irvaldclist): (void)
 fun
 xinterp_irvardclist
 (env0: !xintenv, irvs: irvardclist): (void)
 //
+(* ****** ****** *)
+//
+(*
+fun
+xinterp_irfundcl
+(env0: !xintenv, irf0: irfundcl): (void)
 fun
 xinterp_irfundclist
-(env0: !xintenv, irfs: irfundclist): (void)
+( env0:
+! xintenv
+, d2cs: d2cstlst, irfs: irfundclist): (void)
+*)
 //
 (* ****** ****** *)
 //
