@@ -148,5 +148,43 @@ prerrln("irpat_match: irv0 = ", irv0)
 }(*where*)//end-of-[irpat_match(env0,irp0,irv0)]
 //
 (* ****** ****** *)
+//
+#implfun
+ircst_match
+( env0
+, d2c0, irv0) =
+(
+xintenv_d2cins_any(env0, d2c0, irv0)
+) where
+{
+//
+val () =
+prerrln("ircst_match: d2c0 = ", d2c0)
+val () =
+prerrln("ircst_match: irv0 = ", irv0)
+//
+}(*where*)//end-of-[ircst_match(env0,irps,irvs)]
+//
+(* ****** ****** *)
+//
+#implfun
+ircstlst_match
+( env0
+, d2cs, irvs) =
+(
+case+ d2cs of
+|
+list_nil() => ((*0*))
+|
+list_cons(d2c1, d2cs) =>
+let
+  val-
+  list_cons(irv1, irvs) = irvs
+in//let
+  ircst_match( env0, d2c1, irv1 )
+; ircstlst_match( env0, d2cs, irvs ) end
+)(*case+*)//end-of-[ircstlst_match(env0,irps,irvs)]
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_xintrep_utils0.dats] *)
