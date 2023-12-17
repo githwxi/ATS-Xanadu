@@ -182,13 +182,27 @@ xinterp_irparsed
 //
 fun
 xintenv_snap
-(env0: !xintenv): (irenv)
+(env0: !xintenv): irenv
 //
 (* ****** ****** *)
+//
 fun
-xintenv_make_nil(): xintenv
+xintenv_make_nil
+(   (*nil*)   ): xintenv
 fun
-xintenv_free_top(xintenv): void
+xintenv_free_top
+( env0: ~xintenv ): void//fun
+(* ****** ****** *)
+//
+fun
+xintenv_make_dapp
+( env0:
+! xintenv
+, fenv: irenv ): xintenv
+fun
+xintenv_free_dapp
+( env1: ~xintenv ): void//fun
+//
 (* ****** ****** *)
 //
 fun
@@ -242,21 +256,27 @@ irpat_match
 ! xintenv
 , irp0:irpat, irv0:irval): void
 fun
+irvar_match
+( env0:
+! xintenv
+, d2v0:d2var, irv0:irval): void
+fun
 ircst_match
 ( env0:
 ! xintenv
 , d2c0:d2cst, irv0:irval): void
 //
 fun
+fiarg_match
+(env0:
+!xintenv
+,farg:fiarg,irvs:irvalist): void
+//
+fun
 irpatlst_match
 (env0:
 !xintenv
 ,irps:irpatlst,irvs:irvalist): void
-fun
-ircstlst_match
-(env0:
-!xintenv
-,d2cs:d2cstlst,irvs:irvalist): void
 //
 (* ****** ****** *)
 //

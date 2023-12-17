@@ -194,9 +194,7 @@ irlab_fprint
 //
 datatype
 fiarg =
-|
-FIARGsome of
-(sint(*npf*), irpatlst)
+|FIARG of (irpatlst)
 //
 #typedef
 fiarglst = list(fiarg)

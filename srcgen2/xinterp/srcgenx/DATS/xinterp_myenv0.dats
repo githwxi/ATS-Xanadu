@@ -117,10 +117,72 @@ XINTENV of
 (* ****** ****** *)
 //
 fun
-irstk_free_nil(stk) =
+irstk_free_nil
+  (  stk0  ) =
 (
 case-
-stk of ~irstk_nil() => ())
+stk0 of ~irstk_nil() => ()
+)
+//
+(* ****** ****** *)
+//
+fun
+irstk_make_dapp
+( fenv: irenv ): irstk =
+(
+  loop(fenv, stk1)) where
+{
+//
+val stk1 = irstk_nil()
+val stk1 = irstk_lam0(stk1)
+//
+fun
+loop
+( fenv: irenv
+, stk1: irstk): irstk =
+(
+case+ fenv of
+|
+irenv_nil
+( (*0*) ) => stk1
+|
+irenv_dvar
+(d2v1, irv1, fenv) =>
+(
+  loop(fenv, stk1)) where
+{
+val stk1 =
+irstk_dvar(d2v1, irv1, stk1) }
+|
+irenv_dcst
+(d2c1, irv1, fenv) =>
+(
+  loop(fenv, stk1)) where
+{
+val stk1 =
+irstk_dcst(d2c1, irv1, stk1) }
+)
+//
+}(*where*)//end-of-[irstk_make_dapp]
+//
+(* ****** ****** *)
+//
+fun
+irstk_free_lam0
+  (  stk1  ) =
+(
+case-
+stk1 of
+| ~
+irstk_lam0
+(  stk1  ) => irstk_free_nil(stk1)
+| ~
+irstk_dvar
+(_,_,stk1) => irstk_free_lam0(stk1)
+| ~
+irstk_dcst
+(_,_,stk1) => irstk_free_lam0(stk1)
+)(*case+*)//end-of-[irstk_free_dapp]
 //
 (* ****** ****** *)
 //
@@ -277,11 +339,43 @@ $STM.tmpmap_make_nil{irval}() }
 xintenv_free_top
   (  env0  ) =
 (
-case+ env0 of
+case+
+env0 of
 | ~
 XINTENV
-(cmap,vmap,stk0) => irstk_free_nil(stk0)
-)(*case+*)//end-of-[xintenv_free_top(env0)]
+(_,_,stk0)=>irstk_free_nil(stk0)
+)
+(*case+*)//end[xintenv_free_top(env0)]
+//
+(* ****** ****** *)
+//
+#implfun
+xintenv_make_dapp
+  (env0, fenv) =
+(
+XINTENV
+(cmap, vmap, stk1)) where
+{
+//
+val stk1 =
+irstk_make_dapp(fenv)
+//
+val+
+XINTENV(cmap, vmap, stk0) = env0 }
+(*where*)//end[xintenv_make_dapp(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+xintenv_free_dapp
+  (   env1   ) =
+(
+irstk_free_lam0(stk1)
+) where
+{
+val+
+XINTENV(cmap, vmap, stk1) = env1 }
+(*where*)//end[xintenv_free_dapp(...)]
 //
 (* ****** ****** *)
 //

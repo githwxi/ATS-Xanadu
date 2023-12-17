@@ -107,10 +107,8 @@ g_print$out<>() = out
 in//let
 (
 case+ fia0 of
-|
-FIARGsome
-(npf1, irps) =>
-print("FIARGsome(",npf1,";",irps,")"))
+|FIARG
+(irps) => print("FIARG(",irps,")"))
 endlet // end-of-[g_print<fiarg>(fia0)]
 //
 (* ****** ****** *)

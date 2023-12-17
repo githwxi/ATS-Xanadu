@@ -319,17 +319,47 @@ map$fopr_e1nv
 //
 (* ****** ****** *)
 //
+fun
+f1_irfvs_match
+( env0:
+! xintenv
+, irfs
+: irfundclist
+, irvs: irvalist): void =
+(
+case+ irfs of
+|
+list_nil
+( (*0*) ) => ( (*void*) )
+|
+list_cons
+(irf1, irfs) =>
+let
+val-
+list_cons
+(irv1, irvs) = irvs
+val dpid = irf1.dpid((*0*))
+in//let
+  irvar_match(env0, dpid, irv1)
+; f1_irfvs_match(env0, irfs, irvs)
+end//let//end-of-[list_cons(irf1, irfs)]
+)
+//
+(* ****** ****** *)
+//
 in//let
 //
 case+ tqas of
+//
 |list_nil() =>
 let
 val irvs =
 (
   f1_irfundclist(env0, irfs))
 in//let
-  ircstlst_match(env0,d2cs,irvs)
+  f1_irfvs_match(env0,irfs,irvs)
 end(*let*)//end-of-[list_nil(...)]
+//
 |list_cons(tqa1, tqas) => ((*template*))
 //
 end(*let*)//end-of-[f0_fundclst(env0,ird0)]

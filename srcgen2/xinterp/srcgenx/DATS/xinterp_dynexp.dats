@@ -129,6 +129,8 @@ ire0.node() of
 //
 |IREdapp _ => f0_dapp(env0, ire0)
 //
+|IREift0 _ => f0_ift0(env0, ire0)
+//
 |IREtup0 _ => f0_tup0(env0, ire0)
 //
 |IRElam0 _ => f0_lam0(env0, ire0)
@@ -311,7 +313,9 @@ case+ irf0 of
 |IRVfix0 _ => ...
 *)
 //
-|IRVfun(fopr) => fopr(irvs)
+|IRVfun _ => f1_fun(irf0, irvs)
+//
+|IRVfix0 _ => f1_fix0(irf0, irvs)
 //
 |_(*otherwise*) =>
 (
@@ -329,7 +333,93 @@ xinterp_irexp:f0_dapp: ire0 = ", ire0)
 //
 }
 //
-end(*let*)//end-of-[f0_dapp(env0,d3e0)]
+end where
+{
+//
+(* ****** ****** *)
+//
+fun
+f1_fun
+( irf0: irval
+, irvs: irvalist): irval =
+let
+val-
+IRVfun(fopr) = irf0 in fopr(irvs)
+end(*let*)//end-of-[f1_fun(irf0,irvs)]
+//
+(* ****** ****** *)
+//
+fun
+f1_fix0
+( irf0: irval
+, irvs: irvalist): irval =
+let
+//
+val-
+IRVfix0
+( dpid
+, farg
+, body, fenv) = irf0
+//
+val
+env1 =
+xintenv_make_dapp(env0, fenv)
+//
+val () =
+irvar_match(env1, dpid, irf0)
+val () =
+fiarg_match(env1, farg, irvs)
+//
+in//let
+//
+let
+val
+dres =
+xinterp_irexp
+( env1, body )
+val () =
+xintenv_free_dapp(env1) in dres end
+//
+end(*let*)//end-of-[f1_fix0(irf0,irvs)]
+//
+(* ****** ****** *)
+//
+}(*where*)//end-of-[f0_dapp(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_ift0
+( env0:
+! xintenv
+, ire0: irexp): irval =
+let
+//
+val-
+IREift0
+( ire1
+, ithn, iels) = ire0.node()
+val irv1 =
+(
+  xinterp_irexp(env0, ire1))
+//
+in//let
+//
+case- irv1 of
+|IRVbtf(btf) =>
+(
+case+ dopt of
+|
+optn_nil() =>
+IRVnil( (*0*) ) // HX: for void
+|
+optn_cons(ire2) =>
+xinterp_irexp(env0, ire2)) where
+{
+val
+dopt = bool_ifval(btf,ithn,iels) }
+//
+end(*let*)//end-of-[f0_ift0(env0,d3e0)]
 //
 (* ****** ****** *)
 //

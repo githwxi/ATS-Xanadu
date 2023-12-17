@@ -23,5 +23,8 @@ if (x > 0) then x * fact1(x-1) else 1
 //
 (* ****** ****** *)
 (* ****** ****** *)
+val R1 = fact1(N1)
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [(* end of [ATS3/XATSOPT_BOOT_JS_DATA_mytest01.dats] *)
