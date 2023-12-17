@@ -89,6 +89,7 @@ _(*DATS*)="./../DATS/intrep0.dats"
 #symload stmp with timpl_get_stmp
 #symload node with timpl_get_node
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #static
 fun
@@ -122,6 +123,41 @@ list_cons
 (_, itms) => loop(npf1-1, itms))
 }
 //
+(* ****** ****** *)
+//
+fun
+pfrmv_npf1_d3ps
+( npf1
+: sint
+, d3ps
+: d3patlst): d3patlst =
+pfrmv_npf1_itms<d3pat>(npf1, d3ps)
+fun
+pfrmv_npf1_ldps
+( npf1
+: sint
+, ldps
+: l3d3plst): l3d3plst =
+pfrmv_npf1_itms<l3d3p>(npf1, ldps)
+//
+(* ****** ****** *)
+//
+fun
+pfrmv_npf1_d3es
+( npf1
+: sint
+, d3es
+: d3explst): d3explst =
+pfrmv_npf1_itms<d3exp>(npf1, d3es)
+fun
+pfrmv_npf1_ldes
+( npf1
+: sint
+, ldes
+: l3d3elst): l3d3elst =
+pfrmv_npf1_itms<l3d3e>(npf1, ldes)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -338,23 +374,6 @@ irexp(loc0, IREcst(d2c))
 (* ****** ****** *)
 //
 val loc0 = d3e0.lctn()
-//
-(* ****** ****** *)
-//
-fun
-pfrmv_npf1_d3es
-( npf1
-: sint
-, d3es
-: d3explst): d3explst =
-pfrmv_npf1_itms<d3exp>(npf1, d3es)
-fun
-pfrmv_npf1_ldes
-( npf1
-: sint
-, ldes
-: l3d3elst): l3d3elst =
-pfrmv_npf1_itms<l3d3e>(npf1, ldes)
 //
 (* ****** ****** *)
 //
@@ -724,9 +743,12 @@ trxd3ir_f3arglst
 (
 case+ f3as of
 |
-list_nil() => list_nil()
+list_nil
+( (*0*) ) =>
+list_nil((*void*))
 |
-list_cons(f3a1, f3as) =>
+list_cons
+(f3a1, f3as) =>
 (
 case+
 f3a1.node() of
@@ -759,15 +781,17 @@ f0_dyn0
 ! trdienv
 , f3a1: f3arg): fiarg =
 let
+//
 val-
 F3ARGdapp
 (npf1, d3ps) = f3a1.node()
+//
+val d3ps =
+pfrmv_npf1_d3ps(npf1, d3ps)
+//
 in//let
-(
-  FIARGsome(npf1, irps)) where
-{ val
-  irps =
-  trxd3ir_d3patlst(env0, d3ps) } end
+FIARG(trxd3ir_d3patlst(env0, d3ps))
+end//let//end-of-[f0_dyn0(env0,f3a1)]
 //
 } (*where+*)//end-[trxd3ir_f3arglst(env0,f3as)]
 //

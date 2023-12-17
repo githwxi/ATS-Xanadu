@@ -150,6 +150,24 @@ prerrln("irpat_match: irv0 = ", irv0)
 (* ****** ****** *)
 //
 #implfun
+irvar_match
+( env0
+, d2v0, irv0) =
+(
+xintenv_d2vins_any(env0, d2v0, irv0)
+) where
+{
+//
+val () =
+prerrln("irvar_match: d2v0 = ", d2v0)
+val () =
+prerrln("irvar_match: irv0 = ", irv0)
+//
+}(*where*)//end-of-[irvar_match(env0,d2v0,irv0)]
+//
+(* ****** ****** *)
+//
+#implfun
 ircst_match
 ( env0
 , d2c0, irv0) =
@@ -163,28 +181,41 @@ prerrln("ircst_match: d2c0 = ", d2c0)
 val () =
 prerrln("ircst_match: irv0 = ", irv0)
 //
-}(*where*)//end-of-[ircst_match(env0,irps,irvs)]
+}(*where*)//end-of-[ircst_match(env0,d2c0,irv0)]
 //
 (* ****** ****** *)
 //
 #implfun
-ircstlst_match
+fiarg_match
 ( env0
-, d2cs, irvs) =
+, fia0, irvs) =
 (
-case+ d2cs of
+case+ fia0 of
+|
+FIARG(irps) =>
+irpatlst_match(env0, irps, irvs))
+//
+(* ****** ****** *)
+//
+#implfun
+irpatlst_match
+( env0
+, irps, irvs) =
+(
+case+ irps of
 |
 list_nil() => ((*0*))
 |
-list_cons(d2c1, d2cs) =>
+list_cons(irp1, irps) =>
 let
   val-
   list_cons(irv1, irvs) = irvs
 in//let
-  ircst_match( env0, d2c1, irv1 )
-; ircstlst_match( env0, d2cs, irvs ) end
-)(*case+*)//end-of-[ircstlst_match(env0,irps,irvs)]
+  irpat_match( env0, irp1, irv1 )
+; irpatlst_match( env0, irps, irvs ) end
+)(*case+*)//end-of-[irpatlst_match(env0,irps,irvs)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_xintrep_utils0.dats] *)
