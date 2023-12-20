@@ -265,12 +265,9 @@ irpat_node =
 //
 |IRPcapp of (d2con, irpatlst)
 //
-|IRPtup0 of
-(sint(*npf*), irpatlst)
-|IRPtup1 of
-(token(*knd*), sint(*npf*), irpatlst)
-|IRPrcd2 of
-(token(*knd*), sint(*npf*), l0irplst)
+|IRPtup0 of (irpatlst)
+|IRPtup1 of (token, irpatlst)
+|IRPrcd2 of (token, l0irplst)
 //
 |IRPnone0 of ((*0*)) | IRPnone1 of (d3pat)
 //
@@ -350,6 +347,8 @@ IREdapp of
 |IREfix0 of
 (token(*knd*)
 ,d2var(*fid*),fiarglst(*arg*), irexp)
+//
+|IREwhere of (irexp, irdclist)
 //
 |IREnone0 of ((*0*)) |IREnone1 of (d3exp)
 //

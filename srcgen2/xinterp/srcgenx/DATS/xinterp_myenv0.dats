@@ -72,11 +72,11 @@ irenv =
 irenv_nil of
 ( (*void*) )
 |
-irenv_dvar of
-(d2var, irval, irenv)
-|
 irenv_dcst of
 (d2cst, irval, irenv)
+|
+irenv_dvar of
+(d2var, irval, irenv)
 //
 #absimpl irenv_tbox = irenv
 //
@@ -94,11 +94,11 @@ irstk_lam0 of
 irstk_let0 of
 (   irstk   )
 |
-irstk_dvar of
-(d2var, irval, irstk)
-|
 irstk_dcst of
 (d2cst, irval, irstk)
+|
+irstk_dvar of
+(d2var, irval, irstk)
 //
 (* ****** ****** *)
 //
@@ -117,12 +117,47 @@ XINTENV of
 (* ****** ****** *)
 //
 fun
+irstk_nilq
+( stk0:
+! irstk): bool =
+(
+case+ stk0 of
+| !
+irstk_nil() => true
+|
+_(*otherwise*) => false)
+//
+(* ****** ****** *)
+//
+fun
 irstk_free_nil
-  (  stk0  ) =
+(stk0: irstk): void =
 (
 case-
 stk0 of ~irstk_nil() => ()
 )
+//
+(* ****** ****** *)
+//
+fun
+irstk_poplet0
+(stk0: irstk): irstk =
+(
+case-
+stk0 of
+| ~
+irstk_let0
+(  stk1  ) => ( stk1 )
+//
+| ~
+irstk_dcst
+(_,_,stk1) => irstk_poplet0(stk1)
+//
+| ~
+irstk_dvar
+(_,_,stk1) => irstk_poplet0(stk1)
+//
+)(*case+*)//end-of-[irstk_poplet0]
 //
 (* ****** ****** *)
 //
@@ -133,26 +168,17 @@ irstk_make_dapp
   loop(fenv, stk1)) where
 {
 //
-val stk1 = irstk_nil()
-val stk1 = irstk_lam0(stk1)
-//
 fun
 loop
 ( fenv: irenv
 , stk1: irstk): irstk =
 (
 case+ fenv of
+//
 |
 irenv_nil
 ( (*0*) ) => stk1
-|
-irenv_dvar
-(d2v1, irv1, fenv) =>
-(
-  loop(fenv, stk1)) where
-{
-val stk1 =
-irstk_dvar(d2v1, irv1, stk1) }
+//
 |
 irenv_dcst
 (d2c1, irv1, fenv) =>
@@ -161,7 +187,20 @@ irenv_dcst
 {
 val stk1 =
 irstk_dcst(d2c1, irv1, stk1) }
-)
+//
+|
+irenv_dvar
+(d2v1, irv1, fenv) =>
+(
+  loop(fenv, stk1)) where
+{
+val stk1 =
+irstk_dvar(d2v1, irv1, stk1) }
+//
+)(*case+*)
+//
+val
+stk1 = irstk_lam0(irstk_nil())
 //
 }(*where*)//end-of-[irstk_make_dapp]
 //
@@ -169,20 +208,23 @@ irstk_dcst(d2c1, irv1, stk1) }
 //
 fun
 irstk_free_lam0
-  (  stk1  ) =
+( stk1: irstk ): void =
 (
 case-
 stk1 of
 | ~
 irstk_lam0
 (  stk1  ) => irstk_free_nil(stk1)
-| ~
-irstk_dvar
-(_,_,stk1) => irstk_free_lam0(stk1)
+//
 | ~
 irstk_dcst
 (_,_,stk1) => irstk_free_lam0(stk1)
-)(*case+*)//end-of-[irstk_free_dapp]
+//
+| ~
+irstk_dvar
+(_,_,stk1) => irstk_free_lam0(stk1)
+//
+)(*case+*)//end-of-[irstk_free_lam0]
 //
 (* ****** ****** *)
 //
@@ -295,15 +337,6 @@ irstk_let0
 (  stk1  ) =>
 (
   loop(stk1, res1) )
-| !
-//
-irstk_dvar
-(d2v1, irv1, stk1) =>
-(
-  loop(stk1, res2) ) where
-{
-val res2 =
-irenv_dvar(d2v1, irv1, res1) }
 //
 | !
 irstk_dcst
@@ -313,6 +346,15 @@ irstk_dcst
 {
 val res2 =
 irenv_dcst(d2c1, irv1, res1) }
+//
+| !
+irstk_dvar
+(d2v1, irv1, stk1) =>
+(
+  loop(stk1, res2) ) where
+{
+val res2 =
+irenv_dvar(d2v1, irv1, res1) }
 //
 )(*case+*)//end-of-[loop(stk0,res1)]
 //
@@ -350,6 +392,43 @@ XINTENV
 (* ****** ****** *)
 //
 #implfun
+xintenv_pshlet0
+  (  env0  ) =
+(
+case+ env0 of
+| @
+XINTENV
+( cmap,
+  vmap, !stk0 ) =>
+let
+val () =
+( stk0 :=
+  irstk_let0(stk0)) in $fold(env0)
+end(*let*)//end[xintenv_pshlet0(env0)]
+)
+//
+(* ****** ****** *)
+//
+#implfun
+xintenv_poplet0
+  (  env0  ) =
+(
+case+ env0 of
+| @
+XINTENV
+( cmap,
+  vmap, !stk0 ) =>
+let
+val () =
+(
+stk0 :=
+irstk_poplet0(stk0)) in $fold(env0)
+end(*let*)//end[xintenv_poplet0(env0)]
+)
+//
+(* ****** ****** *)
+//
+#implfun
 xintenv_make_dapp
   (env0, fenv) =
 (
@@ -373,7 +452,7 @@ xintenv_free_dapp
 irstk_free_lam0(stk1)
 ) where
 {
-val+
+val+ ~
 XINTENV(cmap, vmap, stk1) = env1 }
 (*where*)//end[xintenv_free_dapp(...)]
 //
@@ -440,12 +519,21 @@ xintenv_d2cins_any
 (env0, d2c0, irv1) =
 (
 case+ env0 of
-| !
+| @
 XINTENV
-(cmap, vmap, stk0) =>
+( cmap
+, vmap, !stk0) =>
+if
+not
+(irstk_nilq(stk0))
+then
+(
+stk0 :=
+irstk_dcst
+(d2c0, irv1, stk0))
+else
 let
-val
-tmp0 = d2cst_get_stmp(d2c0)
+  val tmp0 = d2cst_get_stmp(d2c0)
 in//let
 $STM.tmpmap_insert_any(cmap, tmp0, irv1)
 end//let
@@ -458,15 +546,24 @@ xintenv_d2vins_any
 (env0, d2v0, irv1) =
 (
 case+ env0 of
-| !
+| @
 XINTENV
-(cmap, vmap, stk0) =>
+( cmap
+, vmap, !stk0) =>
+if
+not
+(irstk_nilq(stk0))
+then
+(
+stk0 :=
+irstk_dvar
+(d2v0, irv1, stk0))
+else
 let
-val
-tmp0 = d2var_get_stmp(d2v0)
+  val tmp0 = d2var_get_stmp(d2v0)
 in//let
 $STM.tmpmap_insert_any(vmap, tmp0, irv1)
-end//let
+end//let//else
 )(*case+*)//end-of-[xintenv_d2vins_any(...)]
 //
 (* ****** ****** *)

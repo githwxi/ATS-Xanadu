@@ -234,14 +234,17 @@ val-
 D3Ptup0
 ( npf1, d3ps) = d3p0.node()
 //
+val d3ps =
+(
+  pfrmv_npf1_d3ps(npf1, d3ps))
+//
 val irps =
 (
   trxd3ir_d3patlst(env0, d3ps))
 //
 in//let
 (
-  irpat_make_node
-  (loc0, IRPtup0( npf1, irps )))
+  irpat( loc0, IRPtup0( irps ) ) )
 end(*let*)//end-of-[f0_tup0(env0,d3p0)]
 //
 (* ****** ****** *)
@@ -255,16 +258,20 @@ let
 //
 val-
 D3Ptup1
-( knd0
+( tknd
 , npf1, d3ps) = d3p0.node()
+//
+val d3ps =
+(
+  pfrmv_npf1_d3ps(npf1, d3ps))
 //
 val irps =
 (
   trxd3ir_d3patlst(env0, d3ps))
 //
 in//let
-irpat_make_node
-(loc0, IRPtup1(knd0, npf1, irps))
+(
+  irpat(loc0, IRPtup1(tknd, irps)))
 end(*let*)//end-of-[f0_tup1(env0,d3p0)]
 //
 (* ****** ****** *)
@@ -278,16 +285,20 @@ let
 //
 val-
 D3Prcd2
-( knd0
+( tknd
 , npf1, ldps) = d3p0.node()
+//
+val ldps =
+(
+  pfrmv_npf1_ldps(npf1, ldps))
 //
 val lirs =
 (
   trxd3ir_l3d3plst(env0, ldps))
 //
 in//let
-irpat_make_node
-(loc0, IRPrcd2(knd0, npf1, lirs))
+(
+  irpat(loc0, IRPrcd2(tknd, lirs)))
 end(*let*)//end-of-[f0_rcd2(env0,d3p0)]
 //
 (* ****** ****** *)
@@ -366,6 +377,8 @@ irexp(loc0, IREcst(d2c))
 //
 |D3Elam0 _ => f0_lam0(env0, d3e0)
 |D3Efix0 _ => f0_fix0(env0, d3e0)
+//
+|D3Ewhere _ => f0_where(env0, d3e0)
 //
 |_(* otherwise *) => irexp_none1(d3e0)
 ) where
@@ -569,7 +582,7 @@ let
 //
 val-
 D3Etup1
-( knd0
+( tknd
 , npf1, d3es) = d3e0.node()
 //
 val d3es =
@@ -582,7 +595,7 @@ val ires =
 //
 in//let
 (
-  irexp(loc0, IREtup1(knd0, ires)))
+  irexp(loc0, IREtup1(tknd, ires)))
 end(*let*)//end-of-[f0_tup1(env0,d3e0)]
 //
 (* ****** ****** *)
@@ -596,7 +609,7 @@ let
 //
 val-
 D3Ercd2
-( knd0
+( tknd
 , npf1, ldes) = d3e0.node()
 //
 val ldes =
@@ -609,7 +622,7 @@ val lirs =
 //
 in//let
 (
-  irexp(loc0, IRErcd2(knd0, lirs)))
+  irexp(loc0, IRErcd2(tknd, lirs)))
 end(*let*)//end-of-[f0_rcd2(env0,d3e0)]
 //
 (* ****** ****** *)
@@ -668,6 +681,31 @@ irexp_make_node
 (loc0, IREfix0(tknd,d2v1,fias,body))
 //
 end(*let*)//end-of-[f0_fix0(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_where
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val-
+D3Ewhere
+( d3e1, dcls) = d3e0.node()
+//
+val irds =
+trxd3ir_d3eclist(env0, dcls)
+val ire1 =
+(
+  trxd3ir_d3exp(env0, d3e1))
+//
+in//let
+(
+  irexp_make_node
+  (loc0, IREwhere( ire1, irds )))
+end(*let*)//end-of-[f0_where(env0,d3e0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -103,6 +103,16 @@ print("IRPflt(", flt, ")")
 IRPstr(str) =>
 print("IRPstr(", str, ")")
 //
+|
+IRPtup0(irps) =>
+print("IRPtup0(", irps, ")")
+|
+IRPtup1(tknd, irps) =>
+print("IRPtup1(", tknd, ";", irps, ")")
+|
+IRPrcd2(tknd, lirs) =>
+print("IRPrcd2(", tknd, ";", lirs, ")")
+//
 |IRPnone0() => print( "IRPnone0(",")" )
 |IRPnone1(d3p1) => print( "IRPnone1(", d3p1, ")" )
 //
@@ -154,6 +164,10 @@ print("IREtimp(", dcst, ";", dimp, ")")
 ( irf0, ires) =>
 print("IREdapp(", irf0, ";", ires, ")")
 //
+|IRElet0
+( irds, ire1) =>
+print("IRElet(", irds, ";", ire1, ")")
+//
 |IREift0
 ( test
 , ithn, iels) =>
@@ -171,11 +185,17 @@ print("IREtup0(", ires, ")")
 print("IREtup1(", tknd, ";", ires, ")")
 |IRErcd2
 ( tknd, lirs) =>
-print("IREtup1(", tknd, ";", lirs, ")")
+print("IRErcd2(", tknd, ";", lirs, ")")
 //
 (* ****** ****** *)
 //
-|IREnone0() => print( "IREnone0(",")" )
+|IREwhere
+( ire1, irds) =>
+print("IREwhere(", ire1, ";", irds, ")")
+//
+(* ****** ****** *)
+//
+|IREnone0() => print(  "IREnone0(",")"  )
 |IREnone1(d3e1) => print( "IREnone1(", d3e1, ")" )
 //
 (* ****** ****** *)

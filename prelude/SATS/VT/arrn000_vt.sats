@@ -42,7 +42,9 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #absvtbx
-a0ptr_vt_vx(a:vt)
+a0ptr_vt_vx
+(elem:vwtp)
+//
 #vwtpdef
 a0ptr(a:vt) = a0ptr_vt_vx(a)
 //
@@ -51,23 +53,16 @@ a0ptr(a:vt) = a0ptr_vt_vx(a)
 (* ****** ****** *)
 //
 #absvtbx
-a1ptr_vt_i0_vx(a:vt, n:i0)
-//
-#vwtpdef
-a1ptr//
-(a:vt,n:i0) = a1ptr_vt_i0_vx(a,n)
-//
-(* ****** ****** *)
-//
+a1ptr_vt_i0_vx
+(elem:vt,ntot:i0)
 #absvtbx
-a1ptrsz_vt_i0_vx(a:vt, n:i0)
+a1psz_vt_i0_vx
+(elem:vt,ntot:i0)
 //
 #vwtpdef
-a1ptrsz
-(a:vt,n:i0) = a1ptrsz_vt_i0_vx(a,n)
-//
+a1ptr(a:vt,n:i0) = a1ptr_vt_i0_vx(a, n)
 #vwtpdef
-a1ptrsz(a:vt) = [n:i0] a1ptrsz(a, n)
+a1psz(a:vt,n:i0) = a1psz_vt_i0_vx(a, n)
 //
 (* ****** ****** *)
 // HX: 2-dimensional
@@ -75,14 +70,29 @@ a1ptrsz(a:vt) = [n:i0] a1ptrsz(a, n)
 //
 #absvtbx
 a2ptr_vt_i0_i0_vx
-(a:vt, nrow:i0, ncol:i0)
+(elem:vt,nrow:i0,ncol:i0)
+#absvtbx
+a2psz_vt_i0_i0_vx
+(elem:vt,nrow:i0,ncol:i0)
 //
 #vwtpdef
 a2ptr
 (a:vt
-,m:i0,n:i0) =
-a2ptr_vt_i0_i0_vx(a, m, n)
+,m:i0,n:i0) = a2ptr_vt_i0_i0_vx(a, m, n)
+#vwtpdef
+a2psz
+(a:vt
+,m:i0,n:i0) = a2psz_vt_i0_i0_vx(a, m, n)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#vwtpdef
+a1psz(a:vt) = [n:i0] a1psz(a, n)
+#vwtpdef
+a2psz(a:vt) = [m:i0;n:i0] a2psz(a, m, n)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fcast
