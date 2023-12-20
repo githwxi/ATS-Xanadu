@@ -363,7 +363,7 @@ gseq_fset_at_opt
 fun
 <xs:t0>
 <x0:t0>
-gseq_arrnize(xs): a1ptrsz(x0)
+gseq_arrnize(xs): a1psz(x0)
 //
 fun
 <xs:t0>
@@ -379,7 +379,7 @@ gseq_strmize(xs): strm_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_rarrnize(xs): a1ptrsz(x0)
+gseq_rarrnize(xs): a1psz(x0)
 //
 fun
 <xs:t0>
@@ -396,12 +396,18 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_range_lt
-(s1: x0, f2: x0): (xs)
+(*
+gseq_make_range_lt
+*)
+  (s1:x0, f2:x0): (xs)//s1<=x0<f2
 fun
 <xs:t0>
 <x0:t0>
 gseq_range_lte
-(s1: x0, f2: x0): (xs)
+(*
+gseq_make_range_lte
+*)
+  (s1:x0, f2:x0): (xs)//s1<=x0<=f2
 //
 (* ****** ****** *)
 //
@@ -536,6 +542,19 @@ fun
 <y0:t0>
 gseq_map_rlist(xs): list(y0)
 //
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_larrn(xs): a1psz(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_rlarrn(xs): a1psz(y0)
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -552,19 +571,6 @@ fun
 <x0:t0>
 <y0:vt>
 gseq_map_rllist(xs): list_vt(y0)
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-<y0:vt>
-gseq_map_larrn(xs): a1ptrsz(y0)
-fun
-<xs:t0>
-<x0:t0>
-<y0:vt>
-gseq_map_rlarrn(xs): a1ptrsz(y0)
 //
 (* ****** ****** *)
 //

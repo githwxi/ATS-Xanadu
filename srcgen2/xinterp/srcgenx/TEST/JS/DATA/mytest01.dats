@@ -19,11 +19,38 @@ val N3 = (N1*N2)
 fun
 fact1
 (x: sint): sint =
-if (x > 0) then x * fact1(x-1) else 1
+if (x > 0)
+then x * fact1(x-1) else 1
+//
+(* ****** ****** *)
+//
+fun
+fibo1
+(x: sint): sint =
+if (x >= 2)
+then fibo1(x-2)+fibo1(x-1) else x
+//
+(* ****** ****** *)
+//
+fun
+fact2
+(x: sint): sint =
+(
+  loop@(x, 1)) where
+{
+fun
+loop
+@(x: sint, r: sint): sint =
+if x > 0 then loop@(x-1, x*r) else r
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
-val R1 = fact1(N1)
+val fact1_10 = fact1(10)
+(* ****** ****** *)
+val fibo1_10 = fibo1(10)
+(* ****** ****** *)
+val fact2_10 = fact2(10)
 (* ****** ****** *)
 (* ****** ****** *)
 

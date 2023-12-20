@@ -97,6 +97,10 @@ print("IRVfun(", "...", ")")
 //
 |IRVtup0(irvs) =>
 print("IRVtup0(", irvs, ")")
+|IRVtup1
+( tknd , irvs ) =>
+print
+("IRVtup1(", tknd, ";", irvs, ")")
 //
 |IRVlam0
 (farg, body, fenv) =>

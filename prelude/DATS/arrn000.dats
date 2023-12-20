@@ -244,6 +244,16 @@ else false // else // end of [if]
 //
 } (*where*) // end-of-[a1ref_forall]
 //
+(*
+#implfun
+foo{n}(...) =
+//
+#impltmp
+a1ref_length<?><?>(...) = ...
+//
+...... a1ref_forall<T>{n}(A0) ......
+*)
+//
 (* ****** ****** *)
 //
 #impltmp

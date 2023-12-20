@@ -115,7 +115,9 @@ irval =
 //
 |IRVfun of irvalfun
 //
-|IRVtup0 of irvalist
+|IRVtup0 of irvalarr
+|IRVtup1 of
+(token(*knd*), irvalarr)
 //
 |IRVlam0 of
 (fiarg, irexp, irenv)
@@ -133,8 +135,10 @@ where
 //
 #typedef irvalist = list(irval)
 #typedef irvalopt = optn(irval)
+//
+#typedef irvalarr = a1refsz(irval)
 #typedef
-irvalfun = (irvalist) -<cfr> irval
+irvalfun = (irvalist) -<cfr> ( irval )
 //
 } (*where*) // end of [datatype(irval)]
 //
@@ -192,6 +196,15 @@ xintenv_make_nil
 fun
 xintenv_free_top
 ( env0: ~xintenv ): void//fun
+(* ****** ****** *)
+//
+fun
+xintenv_pshlet0
+( env0: !xintenv ): void//fun
+fun
+xintenv_poplet0
+( env0: !xintenv ): void//fun
+//
 (* ****** ****** *)
 //
 fun

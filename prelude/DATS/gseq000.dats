@@ -709,14 +709,14 @@ list_vt_strmize0<x0>
 #impltmp
 <xs><x0>
 gseq_range_lt
-(  s1, f2  ) =
+  (  s1 , f2  ) =
 gseq_make0_lstrm<xs><x0>
 (strm_vt_range_lt<x0>(s1, f2))
 //
 #impltmp
 <xs><x0>
 gseq_range_lte
-(  s1, f2  ) =
+  (  s1 , f2  ) =
 gseq_make0_lstrm<xs><x0>
 (strm_vt_range_lte<x0>(s1, f2))
 //

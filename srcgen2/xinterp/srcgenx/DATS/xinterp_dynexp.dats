@@ -129,6 +129,8 @@ ire0.node() of
 //
 |IREdapp _ => f0_dapp(env0, ire0)
 //
+|IRElet0 _ => f0_let0(env0, ire0)
+//
 |IREift0 _ => f0_ift0(env0, ire0)
 //
 |IREtup0 _ => f0_tup0(env0, ire0)
@@ -137,9 +139,12 @@ ire0.node() of
 |IREfix0 _ => f0_fix0(env0, ire0)
 //
 |
+IREwhere _ => f0_where(env0, ire0)
+//
+|
 _(*otherwise*) =>
 (
-$raise XINTERP_IREXP(ire0)) where
+  $raise XINTERP_IREXP(ire0)) where
 {
 //
 val loc0 = ire0.lctn((*void*))
@@ -389,6 +394,34 @@ end(*let*)//end-of-[f1_fix0(irf0,irvs)]
 (* ****** ****** *)
 //
 fun
+f0_let0
+( env0:
+! xintenv
+, ire0: irexp): irval =
+let
+//
+val-
+IRElet0
+( irds, ire1) = ire0.node()
+//
+val () =
+xintenv_pshlet0(env0)
+val () =
+xinterp_irdclist(env0, irds)
+//
+in//let
+let
+val
+dres =
+xinterp_irexp
+(env0 , ire1)
+val () =
+xintenv_poplet0(env0) in dres end
+end(*let*)//end-of-[f0_let0(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_ift0
 ( env0:
 ! xintenv
@@ -529,10 +562,43 @@ val body =
 end(*let*)//end-of-[f0_fix0(env0,ire0)]
 //
 (* ****** ****** *)
+//
+fun
+f0_where
+( env0:
+! xintenv
+, ire0: irexp): irval =
+let
+//
+val-
+IREwhere
+( ire1, irds) = ire0.node()
+//
+val () =
+xintenv_pshlet0(env0)
+val () =
+xinterp_irdclist(env0, irds)
+//
+in//let
+let
+val
+dres =
+xinterp_irexp
+(env0 , ire1)
+val () =
+xintenv_poplet0(env0) in dres end
+end(*let*)//end-of-[f0_where(env0,d3e0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+val loc0 = ire0.lctn()
+val (  ) =
+prerrln("xinterp_irexp: loc0 = ", loc0)
 val (  ) =
 prerrln("xinterp_irexp: ire0 = ", ire0)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

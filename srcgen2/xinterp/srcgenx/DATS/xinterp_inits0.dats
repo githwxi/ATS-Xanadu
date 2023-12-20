@@ -264,10 +264,130 @@ end (* let *) // end of [ firfun2(fopr) ]
 local
 //
 fun
+gint_lt_sint_sint
+( x: irval
+, y: irval): irval =
+let
+val-IRVint(x) = x
+val-IRVint(y) = y in IRVbtf(x < y) end
+fun
+gint_gt_sint_sint
+( x: irval
+, y: irval): irval =
+let
+val-IRVint(x) = x
+val-IRVint(y) = y in IRVbtf(x > y) end
+fun
+gint_eq_sint_sint
+( x: irval
+, y: irval): irval =
+let
+val-IRVint(x) = x
+val-IRVint(y) = y in IRVbtf(x = y) end
+//
+(* ****** ****** *)
+//
+fun
+gint_lte_sint_sint
+( x: irval
+, y: irval): irval =
+let
+val-IRVint(x) = x
+val-IRVint(y) = y in IRVbtf(x <= y) end
+fun
+gint_gte_sint_sint
+( x: irval
+, y: irval): irval =
+let
+val-IRVint(x) = x
+val-IRVint(y) = y in IRVbtf(x >= y) end
+fun
+gint_neq_sint_sint
+( x: irval
+, y: irval): irval =
+let
+val-IRVint(x) = x
+val-IRVint(y) = y in IRVbtf(x != y) end
+//
+fun
+gint_cmp_sint_sint
+( x: irval
+, y: irval): irval =
+let
+val-IRVint(x) = x
+val-IRVint(y) = y in IRVint(x\cmp(y)) end
+//
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+//
+val () =
+the_ircst_insval
+(
+the_d2cst_find
+("XINTERP_gint_lt_sint_sint"),
+IRVfun(firfun2(gint_lt_sint_sint)))//val
+val () =
+the_ircst_insval
+(
+the_d2cst_find
+("XINTERP_gint_gt_sint_sint"),
+IRVfun(firfun2(gint_gt_sint_sint)))//val
+val () =
+the_ircst_insval
+(
+the_d2cst_find
+("XINTERP_gint_eq_sint_sint"),
+IRVfun(firfun2(gint_eq_sint_sint)))//val
+//
+val () =
+the_ircst_insval
+(
+the_d2cst_find
+("XINTERP_gint_lte_sint_sint"),
+IRVfun(firfun2(gint_lte_sint_sint)))//val
+val () =
+the_ircst_insval
+(
+the_d2cst_find
+("XINTERP_gint_gte_sint_sint"),
+IRVfun(firfun2(gint_gte_sint_sint)))//val
+val () =
+the_ircst_insval
+(
+the_d2cst_find
+("XINTERP_gint_neq_sint_sint"),
+IRVfun(firfun2(gint_neq_sint_sint)))//val
+//
+val () =
+the_ircst_insval
+(
+the_d2cst_find
+("XINTERP_gint_cmp_sint_sint"),
+IRVfun(firfun2(gint_cmp_sint_sint)))//val
+//
+(* ****** ****** *)
+end (*local*) // end of [local(gint_cmp_sint_sint)]
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+fun
 gint_add_sint_sint
 ( x: irval
 , y: irval): irval =
 let
+//
+(*
+val () =
+prerrln
+("gint_add_sint_sint: x = ", x)
+val () =
+prerrln
+("gint_add_sint_sint: y = ", y)
+*)
+//
 val-IRVint(x) = x
 val-IRVint(y) = y in IRVint(x + y) end
 fun
@@ -275,6 +395,16 @@ gint_sub_sint_sint
 ( x: irval
 , y: irval): irval =
 let
+//
+(*
+val () =
+prerrln
+("gint_sub_sint_sint: x = ", x)
+val () =
+prerrln
+("gint_sub_sint_sint: y = ", y)
+*)
+//
 val-IRVint(x) = x
 val-IRVint(y) = y in IRVint(x - y) end
 fun
@@ -335,9 +465,7 @@ the_d2cst_find
 IRVfun(firfun2(gint_mod_sint_sint)))//val
 //
 (* ****** ****** *)
-end (*local*) // end of [local(gint_opr_sint_sint)]
-(* ****** ****** *)
-
+end (*local*) // end of [local(gint_aop_sint_sint)]
 (* ****** ****** *)
 (* ****** ****** *)
 
