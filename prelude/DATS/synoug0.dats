@@ -1345,11 +1345,11 @@ g_print<optn(a)> = optn_print<a>
 #impltmp
 {a0:t0}(*tmp*)
 gseq_print$beg
-<optn(a0)><a0> = optn_print$beg<(*0*)>
+<optn(a0)><a0> = optn_print$beg<>
 #impltmp
 {a0:t0}(*tmp*)
 gseq_print$end
-<optn(a0)><a0> = optn_print$end<(*0*)>
+<optn(a0)><a0> = optn_print$end<>
 //
 (* ****** ****** *)
 //
@@ -1362,18 +1362,18 @@ gseq_print<optn(a0)><a0> where
 #impltmp
 {a0:t0}(*tmp*)
 gseq_print$beg
-<optn(a0)><a0> = optn_print$beg<(*0*)>
+<optn(a0)><a0> = optn_print$beg<>
 #impltmp
 {a0:t0}(*tmp*)
 gseq_print$end
-<optn(a0)><a0> = optn_print$end<(*0*)>
+<optn(a0)><a0> = optn_print$end<>
 //
 } (*where*) // end of [optn_print<a0>]
 //
 #impltmp
-optn_print$beg<(*0*)>() = print"$optn("
+optn_print$beg<>() = print"$optn("
 #impltmp
-optn_print$end<(*0*)>() = print( ")"  )
+optn_print$end<>() = print( ")"  )
 //
 (* ****** ****** *)
 //
@@ -1385,31 +1385,31 @@ optn_print_begend
 optn_print<a0>(xs)) where
 {
 #impltmp
-optn_print$beg<(*0*)>() = print(xbeg)
+optn_print$beg<>() = print( xbeg )
 #impltmp
-optn_print$end<(*0*)>() = print(xend)
+optn_print$end<>() = print( xend )
 }
 //
 (* ****** ****** *)
 //HX: list-printing
 (* ****** ****** *)
 #impltmp
-{a:t0}//tmp
-g_print<list(a)> = list_print<a>
+{a0:t0}//tmp
+g_print<list(a0)> = list_print<a0>
 (* ****** ****** *)
 //
 #impltmp
 {a0:t0}(*tmp*)
 gseq_print$beg
-<list(a0)><a0> = list_print$beg<(*0*)>
+<list(a0)><a0> = list_print$beg< >
 #impltmp
 {a0:t0}(*tmp*)
 gseq_print$end
-<list(a0)><a0> = list_print$end<(*0*)>
+<list(a0)><a0> = list_print$end< >
 #impltmp
 {a0:t0}(*tmp*)
 gseq_print$sep
-<list(a0)><a0> = list_print$sep<(*0*)>
+<list(a0)><a0> = list_print$sep< >
 //
 (* ****** ****** *)
 //
@@ -1422,15 +1422,15 @@ gseq_print<list(a0)><a0> where
 #impltmp
 {a0:t0}(*tmp*)
 gseq_print$beg
-<list(a0)><a0> = list_print$beg<(*0*)>
+<list(a0)><a0> = list_print$beg< >
 #impltmp
 {a0:t0}(*tmp*)
 gseq_print$end
-<list(a0)><a0> = list_print$end<(*0*)>
+<list(a0)><a0> = list_print$end< >
 #impltmp
 {a0:t0}(*tmp*)
 gseq_print$sep
-<list(a0)><a0> = list_print$sep<(*0*)>
+<list(a0)><a0> = list_print$sep< >
 //
 } (*where*) // end of [list_print<a0>]
 //
@@ -1451,19 +1451,19 @@ list_print_begendsep
 list_print<a0>(xs)) where
 {
 #impltmp
-list_print$beg<(*0*)>() = print(xbeg)
+list_print$beg<>() = print(xbeg)
 #impltmp
-list_print$end<(*0*)>() = print(xend)
+list_print$end<>() = print(xend)
 #impltmp
-list_print$sep<(*0*)>() = print(xsep)
+list_print$sep<>() = print(xsep)
 }
 //
 (* ****** ****** *)
 //HX: strm-printing
 (* ****** ****** *)
 #impltmp
-{a:t0}//tmp
-g_print<strm(a)> = strm_print<a>
+{a0:t0}//tmp
+g_print<strm(a0)> = strm_print<a0>
 (* ****** ****** *)
 //
 #impltmp
@@ -1500,7 +1500,7 @@ end (*let*) // end-of-(strm_print)
 (* ****** ****** *)
 //
 #impltmp
-<a>(*tmp*)
+<a0>(*tmp*)
 strm_print_all
   (xs) =
 (
@@ -1508,7 +1508,7 @@ loop(xs, 0(*i0*))
 ) where
 {
 #typedef
-xs = strm(a)
+xs = strm(a0)
 fnx
 loop
 ( xs: xs
@@ -1527,15 +1527,15 @@ if
 then
 strm_print$sep<>()
 val () =
-g_print<a>(x0) in loop(xs, succ(i0))
+g_print<a0>(x0) in loop(xs, succ(i0))
 end // end of [strmcon_cons]
 )
-}(*where*) // end-of(strm_print_all)
+} (*where*) // end-of(strm_print_all)
 //
 (* ****** ****** *)
 //
 #impltmp
-<a>(*tmp*)
+<a0>(*tmp*)
 strm_print_len
   (xs, n0) =
 (
@@ -1545,7 +1545,7 @@ loop(xs, 0(*i0*))
 ) where
 {
 #typedef
-xs = strm(a)
+xs = strm(a0)
 fnx
 loop
 ( xs: xs
@@ -1579,7 +1579,7 @@ if
 then
 strm_print$sep<>()
 val () =
-g_print<a>(x0) in loop(xs, succ(i0))
+g_print<a0>(x0) in loop(xs, succ(i0))
 end // end of [else]
 ) (* strmcon_cons *)
 } (*where*) // end-of(strm_print_len)
@@ -1595,21 +1595,20 @@ strm_print_begendseprst
 strm_print<a0>(xs)) where
 {
 #impltmp
-strm_print$beg<(*0*)>() = print(xbeg)
+strm_print$beg<>() = print(xbeg)
 #impltmp
-strm_print$end<(*0*)>() = print(xend)
+strm_print$end<>() = print(xend)
 #impltmp
-strm_print$sep<(*0*)>() = print(xsep)
+strm_print$sep<>() = print(xsep)
 #impltmp
-strm_print$rst<(*0*)>() = print(xrst)
-}
+strm_print$rst<>() = print(xrst) }
 //
 (* ****** ****** *)
 //HX:strx-printing
 (* ****** ****** *)
 #impltmp
-{a:t0}//tmp
-g_print<strx(a)> = strx_print<a>
+{a0:t0}//tmp
+g_print<strx(a0)> = strx_print<a0>
 (* ****** ****** *)
 //
 #impltmp
@@ -1643,7 +1642,7 @@ end (*let*) // end-of-(strx_print)
 (* ****** ****** *)
 //
 #impltmp
-<a>(*tmp*)
+<a0>(*tmp*)
 strx_print_len
   (xs, n0) =
 (
@@ -1653,7 +1652,7 @@ loop(xs, 0(*i0*))
 ) where
 {
 #typedef
-xs = strx(a)
+xs = strx(a0)
 fnx
 loop
 ( xs: xs
@@ -1687,7 +1686,7 @@ if
 then
 strx_print$sep<>()
 val () =
-g_print<a>(x0) in loop(xs, succ(i0))
+g_print<a0>(x0) in loop(xs, succ(i0))
 end // end of [else]
 ) (* strxcon_cons *)
 } (*where*) // end-of(strx_print_len)
@@ -1703,14 +1702,14 @@ strx_print_begendseprst
 strx_print<a0>(xs)) where
 {
 #impltmp
-strx_print$beg<(*0*)>() = print(xbeg)
+strx_print$beg<>() = print(xbeg)
 #impltmp
-strx_print$end<(*0*)>() = print(xend)
+strx_print$end<>() = print(xend)
 #impltmp
-strx_print$sep<(*0*)>() = print(xsep)
+strx_print$sep<>() = print(xsep)
 #impltmp
-strx_print$rst<(*0*)>() = print(xrst)
-}
+strx_print$rst<>() = print(xrst)
+}(*where*)//end-of-[strx_print...]
 //
 (* ****** ****** *)
 //HX:a0ref-printing
@@ -1733,18 +1732,20 @@ gseq_print$end
 (* ****** ****** *)
 //
 #impltmp
-<a:vt>
+<a0:vt>
 a0ref_print1(A0) =
 let
-val x0 = a0ref_get0<a>(A0)
-val x0 = $UN.castlin10{a}(x0)
+val x0 =
+  a0ref_get0<a0>(A0)
+val x0 =
+  $UN.castlin10{a0}(x0)
 //
-val () = a0ref_print$beg<>( )
-val () = gl_print0<a>(  x0  )
-val () = a0ref_print$end<>( )
+val () = a0ref_print$beg<>()
+val () = gl_print0<a0>( x0 )
+val () = a0ref_print$end<>()
 //
-val x0 = $UN.castlin10{?a}(x0)
-end (* end of [a0ref_print1] *)
+val x0 = $UN.castlin10{?a0}(x0)
+endlet (* end of [a0ref_print1] *)
 //
 (* ****** ****** *)
 //
@@ -1765,14 +1766,18 @@ a0ref_print1_begend
 a0ref_print1<a0>(A0)) where
 {
 #impltmp
-a0ref_print$beg<(*0*)>() = print(xbeg)
+a0ref_print$beg<>() = print(xbeg)
 #impltmp
-a0ref_print$end<(*0*)>() = print(xend)
+a0ref_print$end<>() = print(xend)
 }
 //
 (* ****** ****** *)
 //HX:a1ref-printing
 (* ****** ****** *)
+//
+//HX: list-printing
+(* ****** ****** *)
+//
 #impltmp
 {a0:t0}
 {n0:i0}
@@ -1785,17 +1790,25 @@ a1ref_print1<a0>{n0}(A0, n0)
 //
 // HX: the length is contextual
 //
-  val n0 = a1ref_length<a0><n0>(A0)
+val n0 = a1ref_length<a0><n0>(A0)
 } (*where*) // end-of-[g_print(A0)]
+//
+#impltmp
+{a0:t0}
+g_print<a1rsz(a0)> = a1rsz_print1<a0>
+//
 (* ****** ****** *)
 //
 #impltmp
 <a0>(*tmp*)
 a1ref_print1
 {n0}(A0, n0) =
+(
 glseq_print1
-<a1ref(a0,n0)><a0>(A0) where
+<A0><a0>(A0)) where
 {
+//
+#typedef A0 = a1ref(a0)
 //
 #impltmp
 a1ref_length<a0><n0>(A0) = n0
@@ -1803,17 +1816,45 @@ a1ref_length<a0><n0>(A0) = n0
 #impltmp
 {a0:t0}(*tmp*)
 glseq_print1$beg
-<a1ref(a0)><a0> = a1ref_print$beg<>
+<A0><a0> = a1ref_print$beg<>
 #impltmp
 {a0:t0}(*tmp*)
 glseq_print1$end
-<a1ref(a0)><a0> = a1ref_print$end<>
+<A0><a0> = a1ref_print$end<>
 #impltmp
 {a0:t0}(*tmp*)
 glseq_print1$sep
-<a1ref(a0)><a0> = a1ref_print$sep<>
+<A0><a0> = a1ref_print$sep<>
 //
 }(*where*)//end-of-[a1ref_print1<a0>]
+//
+(* ****** ****** *)
+//
+#impltmp
+<a0>(*tmp*)
+a1rsz_print1
+{n0}(A0, n0) =
+(
+glseq_print1
+<A0><a0>(A0)) where
+{
+//
+#typedef A0 = a1rsz(a0)
+//
+#impltmp
+{a0:t0}(*tmp*)
+glseq_print1$beg
+<A0><a0> = a1rsz_print$beg<>
+#impltmp
+{a0:t0}(*tmp*)
+glseq_print1$end
+<A0><a0> = a1rsz_print$end<>
+#impltmp
+{a0:t0}(*tmp*)
+glseq_print1$sep
+<A0><a0> = a1rsz_print$sep<>
+//
+}(*where*)//end-of-[a1rsz_print1<a0>]
 //
 (* ****** ****** *)
 //
@@ -1827,11 +1868,22 @@ a1ref_print$sep<>() = print(  ";"  )
 (* ****** ****** *)
 //
 #impltmp
+a1rsz_print$beg<>() = print"$a1rsz("
+#impltmp
+a1rsz_print$end<>() = print(  ")"  )
+#impltmp
+a1rsz_print$sep<>() = print(  ";"  )
+//
+(* ****** ****** *)
+//
+#impltmp
 <a0>(*tmp*)
 a1ref_print1_begendsep
-(A0, n0, xbeg, xend, xsep) =
+( A0, n0
+, xbeg, xend, xsep) =
 (
-a1ref_print1<a0>(A0, n0)) where
+a1ref_print1
+<a0>(A0, n0)) where
 {
 #impltmp
 a1ref_print$beg<(*0*)>() = print(xbeg)
@@ -1840,6 +1892,23 @@ a1ref_print$end<(*0*)>() = print(xend)
 #impltmp
 a1ref_print$sep<(*0*)>() = print(xsep)
 }(*where*)//end(a1ref_print1_begendsep)
+//
+(* ****** ****** *)
+//
+#impltmp
+<a0>(*tmp*)
+a1rsz_print1_begendsep
+(A0, xbeg, xend, xsep) =
+(
+a1rsz_print1<a0>(A0)) where
+{
+#impltmp
+a1rsz_print$beg<(*0*)>() = print(xbeg)
+#impltmp
+a1rsz_print$end<(*0*)>() = print(xend)
+#impltmp
+a1rsz_print$sep<(*0*)>() = print(xsep)
+}(*where*)//end(a1rsz_print1_begendsep)
 //
 (* ****** ****** *)
 //

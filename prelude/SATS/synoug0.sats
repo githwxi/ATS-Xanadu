@@ -1092,11 +1092,30 @@ a1ref_print$end(): void
 fun<>
 a1ref_print$sep(): void
 //
+fun<>
+a1rsz_print$beg(): void
+fun<>
+a1rsz_print$end(): void
+fun<>
+a1rsz_print$sep(): void
+//
+fun
+<a0:vt>
+a1rsz_print1
+{n0:i0}
+(A0: a1rsz(a0,n0)): void
 fun
 <a0:vt>
 a1ref_print1
 {n0:i0}
 (A0: a1ref(a0,n0), n0: sint(n0)): void
+//
+fun
+<a0:vt>
+a1rsz_print1_begendsep
+{n0:i0}
+( A0: a1rsz(a0,n0)
+, xbeg: strn, xend: strn, xsep: strn): void
 fun
 <a0:vt>
 a1ref_print1_begendsep
