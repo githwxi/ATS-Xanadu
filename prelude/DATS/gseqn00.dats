@@ -76,5 +76,43 @@ gseqn_unrlist_vt
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+
+local
+
+#sexpdef
+listn(a:t0) =
+(
+lam(n:i0) => list(a,n))
+
+in(*local*)
+
+(* ****** ****** *)
+
+#impltmp
+{x0:t0}
+{ln:i0}
+gseqn_nilq
+<listn(x0)><x0><ln> = list_nilq
+#impltmp
+{x0:t0}
+{ln:i0}
+gseqn_consq
+<listn(x0)><x0><ln> = list_consq
+
+(* ****** ****** *)
+
+#impltmp
+{x0:t0}
+{ln:i0}
+gseqn_length
+<listn(x0)><x0><ln> = list_length
+
+(* ****** ****** *)
+
+end (*local*) // end of [local(gseqn(listn))]
+
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gseqn00.dats] *)
