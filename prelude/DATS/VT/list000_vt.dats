@@ -222,10 +222,11 @@ fnx
 loop
 {m,n:nat} .<m>.
 ( xs:
-& list_vt(a, m) >>
+& list_vt(a, m  )
+  >>
   list_vt(a, m+n)
 , ys:
-~ list_vt(a, n)) : void =
+~ list_vt(a, n  )) : void =
 (
 case+ xs of
 | ~
@@ -278,16 +279,16 @@ auxnext
 let
 val xs0 =
 $UN.p2tr_get(res)
-in
+in//let
 //
 case+ xs0 of
-|
+| @
 list_vt_nil() =>
 let
 val
 xs0 =
 $UN.delinear(xs0) in res end
-|
+| @
 list_vt_cons(_, _) =>
 let
 val

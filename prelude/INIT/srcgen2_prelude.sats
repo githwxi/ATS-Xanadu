@@ -49,6 +49,8 @@
 (* ****** ****** *)
 //
 #include "prelude/SATS/arrn000.sats"
+#include "prelude/SATS/arrn001.sats"
+//
 #include "prelude/SATS/list000.sats"
 #include "prelude/SATS/optn000.sats"
 #include "prelude/SATS/strm000.sats"

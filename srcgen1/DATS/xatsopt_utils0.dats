@@ -624,6 +624,11 @@ the_prelude_load
 ( XATSENV
 , 0(*static*)
 , "prelude/SATS/arrn000.sats")
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "prelude/SATS/arrn001.sats")
 //
 val () =
 the_prelude_load
@@ -680,6 +685,12 @@ the_prelude_load
 ( XATSENV
 , 0(*static*)
 , "prelude/SATS/VT/arrn000_vt.sats")
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "prelude/SATS/VT/arrn001_vt.sats")
+//
 val () =
 the_prelude_load
 ( XATSENV
