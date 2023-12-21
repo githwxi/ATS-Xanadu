@@ -24,7 +24,8 @@ HX: for pure C-arrays
 #impltmp
 <a:t0>
 a0ref_get(A0) =
-a0ref_get0<a>(A0)
+(
+  a0ref_get0<a>(A0) )
 (* ****** ****** *)
 (*
 #impltmp
@@ -96,16 +97,14 @@ a1ptr2ref
 a1ref_make_list
 ( xs ) =
 ( a1ptr2ref
-  (a1ptr_make_list<a>(xs))
-)
+  (a1ptr_make_list<a>(xs)) )
 //
 #impltmp
 <a:vt>
 a1ref_make0_llist
 ( xs ) =
 ( a1ptr2ref
-  (a1ptr_make0_llist<a>(xs))
-)
+  (a1ptr_make0_llist<a>(xs)) )
 //
 (* ****** ****** *)
 //

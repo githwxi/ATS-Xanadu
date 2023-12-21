@@ -135,9 +135,9 @@ iforeach$work<a>(i, x) =
 let
 val i =
 $UN.cast10{nintlt(n)}(i)
-in
+in//let
   a1ptr_set_at_raw<a>(A0, i, x)
-end
+end//let
 }
 in
   $UN.castlin10{a1ptr(a,n)}(A0)
@@ -162,9 +162,9 @@ iforeach0$work<a>(i, x) =
 let
 val i =
 $UN.cast10{nintlt(n)}(i)
-in
+in//let
   a1ptr_set_at_raw<a>(A0, i, x)
-end
+end//let
 }
 in
   $UN.castlin10{a1ptr(a,n)}(A0)

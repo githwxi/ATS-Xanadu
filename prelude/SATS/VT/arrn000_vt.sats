@@ -326,6 +326,9 @@ a1ptr_set_at
 ( A0:
 ! a1ptr(a, n)
 , i0: nintlt(n), x0: a(*new*)): void
+//
+(* ****** ****** *)
+//
 fun
 <a:vt>
 a1ptr_set_at_raw
@@ -418,13 +421,13 @@ a1ptr_print1
 //
 fun
 <a:vt>
-a1ptr_strmize
+a1ptr_strmize0
 {n:i0}
 ( A0:
 ~ a1ptr(a,n), sz: sint(n)): strm_vt(a)
 fun
 <a:vt>
-a1ptr_rstrmize
+a1ptr_rstrmize0
 {n:i0}
 ( A0:
 ~ a1ptr(a,n), sz: sint(n)): strm_vt(a)
@@ -433,13 +436,13 @@ a1ptr_rstrmize
 //
 fun
 <a:vt>
-a1ptr_listize
+a1ptr_listize0
 {n:i0}
 ( A0:
 ~ a1ptr(a,n), sz: sint(n)): list_vt(a,n)
 fun
 <a:vt>
-a1ptr_rlistize
+a1ptr_rlistize0
 {n:i0}
 ( A0:
 ~ a1ptr(a,n), sz: sint(n)): list_vt(a,n)
