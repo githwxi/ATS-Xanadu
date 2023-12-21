@@ -79,26 +79,41 @@ gseqn_unrlist_vt
 (* ****** ****** *)
 
 local
-
+//
 #sexpdef
 listn(a:t0) =
 (
 lam(n:i0) => list(a,n))
-
+//
+(* ****** ****** *)
 in(*local*)
-
+(* ****** ****** *)
+//
+#impltmp
+{x0:t0}
+{ln:i0}
+gseqn_nilq
+<listn(x0)>
+< x0 >< ln > = list_nilq<>{x0}{ln}
+#impltmp
+{x0:t0}
+{ln:i0}
+gseqn_consq
+<listn(x0)>
+< x0 >< ln > = list_consq<>{x0}{ln}
+//
 (* ****** ****** *)
 
 #impltmp
 {x0:t0}
 {ln:i0}
-gseqn_nilq
-<listn(x0)><x0><ln> = list_nilq
+gseqn_head
+<listn(x0)><x0><ln> = list_head<x0>{ln}
 #impltmp
 {x0:t0}
 {ln:i0}
-gseqn_consq
-<listn(x0)><x0><ln> = list_consq
+gseqn_tail
+<listn(x0)><x0><ln> = list_tail<x0>{ln}
 
 (* ****** ****** *)
 
@@ -106,7 +121,15 @@ gseqn_consq
 {x0:t0}
 {ln:i0}
 gseqn_length
-<listn(x0)><x0><ln> = list_length
+<listn(x0)><x0><ln> = list_length<x0>{ln}
+
+(* ****** ****** *)
+
+#impltmp
+{x0:t0}
+{ln:i0}
+gseqn_get_at
+<listn(x0)><x0><ln> = list_get_at<x0>{ln}
 
 (* ****** ****** *)
 
