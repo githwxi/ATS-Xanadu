@@ -82,6 +82,8 @@
 (* ****** ****** *)
 //
 #include "prelude/SATS/VT/arrn000_vt.sats"
+#include "prelude/SATS/VT/arrn001_vt.sats"
+//
 #include "prelude/SATS/VT/list000_vt.sats"
 #include "prelude/SATS/VT/optn000_vt.sats"
 #include "prelude/SATS/VT/strm000_vt.sats"

@@ -272,7 +272,7 @@ fun
 <a:vt>
 a1ref_listize
 {n:i0}
-(A0: a1ref(a, n)): list_vt(a,n)
+(A0: a1ref(a, n)): list_vt(a, n)
 //
 (* ****** ****** *)
 //
@@ -280,38 +280,38 @@ fun
 <a:vt>
 a1ref_rlistize
 {n:i0}
-(A0: a1ref(a, n)): list_vt(a,n)
+(A0: a1ref(a, n)): list_vt(a, n)
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
 a1ref_forall
-{n:i0}(A0: a1ref(x0, n)): bool
+{n:i0}(A0: a1ref(x0, n)): (bool)
 fun
 <x0:vt>
 a1ref_forall1
-{n:i0}(A0: a1ref(x0, n)): bool
+{n:i0}(A0: a1ref(x0, n)): (bool)
 //
 fun
 <x0:t0>
 a1ref_foreach
-{n:i0}(A0: a1ref(x0, n)): void
+{n:i0}(A0: a1ref(x0, n)): (void)
 fun
 <x0:vt>
 a1ref_foreach1
-{n:i0}(A0: a1ref(x0, n)): void
+{n:i0}(A0: a1ref(x0, n)): (void)
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
 a1ref_rforall
-{n:i0}(A0: a1ref(x0, n)): bool
+{n:i0}(A0: a1ref(x0, n)): (bool)
 fun
 <x0:vt>
 a1ref_rforall1
-{n:i0}(A0: a1ref(x0, n)): bool
+{n:i0}(A0: a1ref(x0, n)): (bool)
 //
 (* ****** ****** *)
 //

@@ -289,8 +289,21 @@ a1ptr_make_list
 fun
 <a:vt>
 a1ptr_make0_llist
+{n:i0}(list_vt(a,n)): a1ptr(a, n)
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+a1ptr_make_listn
 {n:i0}
-(xs: list_vt(a,n)): a1ptr(a, n)
+(list(a,n), sint(n)): a1ptr(a, n)
+//
+fun
+<a:vt>
+a1ptr_make0_llistn
+{n:i0}
+(list_vt(a,n), sint(n)): a1ptr(a, n)
 //
 (* ****** ****** *)
 //

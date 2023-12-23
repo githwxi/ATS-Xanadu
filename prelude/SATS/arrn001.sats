@@ -70,14 +70,15 @@ a2rsz(a:vt) = [m:i0;n:i0] a2rsz(a, m, n)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<a:vt>
+fun<>
 a1rsz_getref
+{a:vt}
 {n:i0}
 (AZ: a1rsz(a, n)): a1ref(a, n)
-fun
-<a:vt>
+//
+fun<>
 a1rsz_length
+{a:vt}
 {n:i0}(AZ: a1rsz(a, n)): nint(n)
 //
 (* ****** ****** *)
@@ -88,6 +89,54 @@ a1rsz_make_refsize
 {n:int}
 (a1ref(a, n), sint(n)): a1rsz(a, n)
 //
+(* ****** ****** *)
+//
+fun
+<a:t0>
+a1rsz_make_list
+{n:i0}
+( xs: list(a, n) ): a1rsz(a, n)
+//
+fun
+<a:vt>
+a1rsz_make0_llist
+{n:i0}
+(xs: list_vt(a, n)): a1rsz(a, n)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a1rsz_strmize
+{n:i0}
+(AZ: a1rsz(a, n)): strm_vt(a)
+//
+fun
+<a:vt>
+a1rsz_listize
+{n:i0}
+(AZ: a1rsz(a, n)): list_vt(a, n)
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a1rsz_rlistize
+{n:i0}
+(AZ: a1rsz(a, n)): list_vt(a, n)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+a1rsz_forall
+{n:i0}(A0: a1rsz(x0, n)): (bool)
+fun
+<x0:vt>
+a1rsz_forall1
+{n:i0}(A0: a1rsz(x0, n)): (bool)
+
 (* ****** ****** *)
 (* ****** ****** *)
 

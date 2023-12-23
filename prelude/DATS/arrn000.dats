@@ -22,7 +22,7 @@ HX: for pure C-arrays
 //
 (* ****** ****** *)
 #impltmp
-<a:t0>
+< a:t0 >
 a0ref_get(A0) =
 (
   a0ref_get0<a>(A0) )
@@ -36,7 +36,7 @@ a0ref_setf<a>(A0, x0)
 (* ****** ****** *)
 //
 #impltmp
-<a:vt>
+< a:vt >
 a0ref_setf(A0, x0) =
 g_free<a>
 (a0ref_exch<a>(A0, x0))
@@ -44,7 +44,7 @@ g_free<a>
 (* ****** ****** *)
 //
 #impltmp
-<a:vt>
+< a:vt >
 a0ref_exch(A0, x0) =
 (
 $UN.castlin10{a}(x1)
@@ -65,7 +65,7 @@ val () = a0ref_set<(?a)>(A1, x0)
 (* ****** ****** *)
 //
 #impltmp
-<a:vt>
+< a:vt >
 a0ref_make_1val(x0) =
 a0ptr2ref
 (a0ptr_make_1val<a>(x0))
@@ -76,13 +76,13 @@ a0ptr2ref
 *)
 (* ****** ****** *)
 #impltmp
-<a:t0>
+< a:t0 >
 a1ref_get_at(A0, i0) =
 a1ref_get0_at<a>(A0, i0)
 (* ****** ****** *)
 //
 #impltmp
-<a:vt>
+< a:vt >
 a1ref_make_nval
   (asz, ini) =
 (
@@ -93,7 +93,7 @@ a1ptr2ref
 (* ****** ****** *)
 //
 #impltmp
-<a:t0>
+< a:t0 >
 a1ref_make_list
 ( xs ) =
 ( a1ptr2ref
@@ -115,7 +115,7 @@ that SHOULD work in general
 *)
 //
 #impltmp
-<a:t0>
+< a:t0 >
 a1ref_listize
   {n}(A0) = let
 //
@@ -154,7 +154,7 @@ that SHOULD work in general
 *)
 //
 #impltmp
-<a:t0>
+< a:t0 >
 a1ref_rlistize
   {n}(A0) = let
 //
@@ -184,7 +184,7 @@ end // end of [a1ref_rlistize]
 (* ****** ****** *)
 
 #impltmp
-<a:vt>
+< a:vt >
 a1ref_strmize
   {n}(A0) =
 (
@@ -256,7 +256,7 @@ a1ref_length<?><?>(...) = ...
 (* ****** ****** *)
 //
 #impltmp
-<a:t0>
+< a:t0 >
 a1ref_foreach
   {n}(A0) =
 (
@@ -315,7 +315,7 @@ else false // else // end of [if]
 (* ****** ****** *)
 //
 #impltmp
-<a:vt>
+< a:vt >
 a1ref_forall1
   {n}(A0) =
 (
@@ -349,7 +349,7 @@ else false // else // end of [if]
 (* ****** ****** *)
 //
 #impltmp
-<a:vt>
+< a:vt >
 a1ref_foreach1
   {n}(A0) =
 (
@@ -382,7 +382,7 @@ then
 (* ****** ****** *)
 //
 #impltmp
-<a:vt>
+< a:vt >
 a1ref_rforall1
   {n}(A0) =
 (
@@ -443,6 +443,14 @@ gseq_foreach
 {n:i0}
 gseq_listize
 <a1ref(a,n)><a> = a1ref_listize<a>{n}
+//
+#impltmp
+{a:t0}
+{n:i0}
+gseq_strmize
+<a1ref(a,n)><a> = a1ref_strmize<a>{n}
+//
+(* ****** ****** *)
 //
 #impltmp
 {a:t0}

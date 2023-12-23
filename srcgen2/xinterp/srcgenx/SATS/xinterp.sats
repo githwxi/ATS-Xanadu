@@ -43,6 +43,11 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload
+"./../../../SATS/lexing0.sats"
+//
+(* ****** ****** *)
+//
 #staload D2E =
 "./../../../SATS/dynexp2.sats"
 //
@@ -115,6 +120,13 @@ irval =
 //
 |IRVfun of irvalfun
 //
+(*
+HX-2023-12-23:
+I could have used
+irvalist here. But
+Using [irvalarr] for
+testing is exciting!
+*)
 |IRVtup0 of irvalarr
 |IRVtup1 of
 (token(*knd*), irvalarr)
@@ -136,7 +148,7 @@ where
 #typedef irvalist = list(irval)
 #typedef irvalopt = optn(irval)
 //
-#typedef irvalarr = a1refsz(irval)
+#typedef irvalarr = a1rsz(irval)
 #typedef
 irvalfun = (irvalist) -<cfr> ( irval )
 //

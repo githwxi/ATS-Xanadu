@@ -15,7 +15,7 @@ RMF=rm -f
 WCL=wc -l
 
 ########################################################################
-XATS2JSD=\
+XATSJSD=\
 ./../srcgen1/xats2js/srcgenx
 ########################################################################
 
@@ -28,8 +28,8 @@ NODE=node --stack-size=4096
 ######
 MYTEST="."
 ######
-XSHARED="${XATS2JSD}/xshared"
-XATS2JS="${XATS2JSD}/bin/xats2js"
+XSHARED="${XATSJSD}/xshared"
+XATS2JS="${XATSJSD}/bin/xats2js"
 PATSOPT="${PATSHOME}/bin/patsopt"
 ######
 XATS2JS_PRELUDE=\
