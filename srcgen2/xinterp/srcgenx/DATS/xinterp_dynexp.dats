@@ -134,6 +134,7 @@ ire0.node() of
 |IREift0 _ => f0_ift0(env0, ire0)
 //
 |IREtup0 _ => f0_tup0(env0, ire0)
+|IREtup1 _ => f0_tup1(env0, ire0)
 //
 |IRElam0 _ => f0_lam0(env0, ire0)
 |IREfix0 _ => f0_fix0(env0, ire0)
@@ -470,10 +471,36 @@ in//let
 (
   IRVtup0(irvs)) where
 {
-  val
-  irvs =
-  xinterp_irexplst(env0, ires) }
+val
+irvs =
+xinterp_irexplst(env0, ires)
+val irvs = a1rsz_make_list(irvs) }
+//
 end(*let*)//end-of-[f0_tup0(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup1
+( env0:
+! xintenv
+, ire0: irexp): irval =
+let
+//
+val-
+IREtup1
+(trec, ires) = ire0.node()
+//
+in//let
+(
+IRVtup1(trec, irvs)) where
+{
+val
+irvs =
+xinterp_irexplst(env0, ires)
+val irvs = a1rsz_make_list(irvs) }
+//
+end(*let*)//end-of-[f0_tup1(env0,d3e0)]
 //
 (* ****** ****** *)
 //

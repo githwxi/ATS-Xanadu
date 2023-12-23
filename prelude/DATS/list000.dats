@@ -1187,15 +1187,15 @@ gseq_print<list(a)><a>
 #impltmp
 {a:t0}
 gseq_print$beg
-<list(a)><a>() = strn_print("(")
+<list(a)><a>((*0*)) = strn_print("(")
 #impltmp
 {a:t0}
 gseq_print$end
-<list(a)><a>() = strn_print(")")
+<list(a)><a>((*0*)) = strn_print(")")
 #impltmp
 {a:t0}
 gseq_print$sep
-<list(a)><a>() = strn_print(";")
+<list(a)><a>((*0*)) = strn_print(";")
 *)
 //
 (* ****** ****** *)

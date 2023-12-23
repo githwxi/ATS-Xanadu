@@ -43,6 +43,9 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../../..\
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsafex.sats"
+(* ****** ****** *)
 //
 #include
 "./../HATS/xinterp_dats.hats"
@@ -88,9 +91,66 @@ case+ irv0 of
 |IRVbtf(btf2) =>
 (btf1 = btf2) | _ => false)
 //
-|_(*otherwise*) => (   false   )
+|IRPtup0 _ => f0_tup0(irp0, irv0)
+|IRPtup1 _ => f0_tup1(irp0, irv0)
 //
-)(*case+*)//end-of-[irpat_valck(irp0,irv0)]
+|_(*otherwise*) => (    false    )
+//
+) where
+{
+//
+fun
+f0_tup0
+(irp0: irpat
+,irv0: irval): bool =
+let
+//
+#typedef x0 = irpat
+#typedef y0 = irval
+#typedef xs = irpatlst
+#typedef ys = irvalarr
+//
+val-
+IRPtup0(irps) = irp0.node()
+//
+#impltmp
+z2forall$test<x0,y0> = irpat_valck
+//
+in//let
+case+ irv0 of
+|
+IRVtup0(irvs) =>
+gseq_z2forall
+<xs,ys><x0,y0>(irps, irvs) | _ => false
+end(*let*)//end-of-[ f0_tup0(irp0, irv0) ]
+//
+fun
+f0_tup1
+(irp0: irpat
+,irv0: irval): bool =
+let
+//
+#typedef x0 = irpat
+#typedef y0 = irval
+#typedef xs = irpatlst
+#typedef ys = irvalarr
+//
+val-
+IRPtup1
+( trec, irps) = irp0.node()
+//
+#impltmp
+z2forall$test<x0,y0> = irpat_valck
+//
+in//let
+case+ irv0 of
+|
+IRVtup1(_, irvs) =>
+gseq_z2forall
+<xs,ys><x0,y0>(irps, irvs) | _ => false
+end(*let*)//end-of-[ f0_tup1(irp0, irv0) ]
+//
+}(*where*)//end-of-[irpat_valck(irp0,irv0)]
 //
 (* ****** ****** *)
 //
@@ -135,15 +195,109 @@ xintenv_d2vins_any
 |IRPflt(flt) => ((*void*))
 |IRPstr(str) => ((*void*))
 //
-| _(*otherwise*) => ((*void*))
+|IRPtup0 _ =>
+(
+  f0_tup0(env0, irp0, irv0))
+|IRPtup1 _ =>
+(
+  f0_tup1(env0, irp0, irv0))
+//
+| _(*otherwise*) => (  (*void*)  )
 //
 ) where
 {
+//
+(* ****** ****** *)
 //
 val () =
 prerrln("irpat_match: irp0 = ", irp0)
 val () =
 prerrln("irpat_match: irv0 = ", irv0)
+//
+(* ****** ****** *)
+//
+fun
+f0_tup0
+(env0:
+!xintenv
+,irp0: irpat
+,irv0: irval): void =
+let
+//
+#typedef x0 = irpat
+#typedef y0 = irval
+#vwtpdef e1 = xintenv
+#typedef xs = irpatlst
+#typedef ys = irvalarr
+//
+val-
+IRPtup0(irps) = irp0.node()
+//
+val e1 = $UN.datacopy(env0)
+//
+#impltmp
+z2foreach$work
+<x0, y0>
+(x0, y0) =
+let
+val e1 =
+$UN.castlin10{e1}(e1)
+val () =
+irpat_match(e1, x0, y0)
+val e1 = $UN.delinear(e1) in () end
+//
+in//let
+(
+case+ irv0 of
+|
+IRVtup0(irvs) =>
+gseq_z2foreach
+<xs,ys><x0,y0>(irps, irvs) | _ => () )
+end(*let*)//end-of-[ f0_tup0(irp0, irv0) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup1
+(env0:
+!xintenv
+,irp0: irpat
+,irv0: irval): void =
+let
+//
+#typedef x0 = irpat
+#typedef y0 = irval
+#vwtpdef e1 = xintenv
+#typedef xs = irpatlst
+#typedef ys = irvalarr
+//
+val-
+IRPtup1
+( trec, irps) = irp0.node()
+//
+val e1 = $UN.datacopy(env0)
+//
+#impltmp
+z2foreach$work
+<x0, y0>
+(x0, y0) =
+let
+val e1 =
+$UN.castlin10{e1}(e1)
+val () =
+irpat_match(e1, x0, y0)
+val e1 = $UN.delinear(e1) in () end
+//
+in//let
+(
+case+ irv0 of
+|
+IRVtup1(_, irvs) =>
+gseq_z2foreach
+<xs,ys><x0,y0>(irps, irvs) | _ => () )
+end(*let*)//end-of-[ f0_tup0(irp0, irv0) ]
+//
+(* ****** ****** *)
 //
 }(*where*)//end-of-[irpat_match(env0,irp0,irv0)]
 //
