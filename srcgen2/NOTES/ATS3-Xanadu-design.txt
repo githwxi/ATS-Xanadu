@@ -37,3 +37,27 @@ Level-3 syntax:
 only dynexp3.sats for dynamics
 
 ########################################################################
+
+(*
+HX-2023-12-24:
+Sun Dec 24 10:53:50 EST 2023
+*)
+
+Let's specify
+the meaning of some pattern modifiers.
+
+~: for freeing:
+~x:
+what matches x is freed
+~C(x1, x2):
+the constructor is freed by x1 and x2 are not
+
+@: for flatness
+@C(x1, x2) matches unfolded constructor
+
+!: for addressing
+!x: x is a variable (instead of a variname)
+!C(x1, x2) = C(!x1, !x2)
+
+
+########################################################################
