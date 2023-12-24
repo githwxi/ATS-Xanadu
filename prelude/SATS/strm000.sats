@@ -307,6 +307,11 @@ strm_scanl_vt: scanl$fopr
 //
 fun
 <x0:t0>
+<r0:t0>
+strm_scanl
+(xs: strm(x0), r0: r0): strm(r0)
+fun
+<x0:t0>
 <r0:vt>
 strm_scanl_vt
 (xs: strm(x0), r0: r0): strm_vt(r0)
