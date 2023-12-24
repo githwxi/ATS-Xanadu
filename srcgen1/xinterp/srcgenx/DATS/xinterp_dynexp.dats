@@ -3066,9 +3066,9 @@ _(*non-IRPvar*) =>
 let
 val
 irv1 = irval_con_arg(irv0, i0)
-in
+in//let
 xinterp_irpat_ck1(env0, irp1, irv1)
-end
+end//let
 )
 |
 _(*non-IRPbang*) =>
