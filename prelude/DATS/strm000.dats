@@ -364,6 +364,15 @@ strmcon_vt_cons
 //
 #impltmp
 <x0><r0>
+strm_scanl
+  (xs, r0) =
+strm_vt2t
+(
+strm_scanl_vt(xs, r0)
+)
+//
+#impltmp
+<x0><r0>
 strm_scanl_vt
   (xs, r0) =
 (
