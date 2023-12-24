@@ -96,16 +96,7 @@ irexp_make_node
 #implfun
 xinterp_irexp
   (env0, ire0) =
-let
-//
-(*
-val () =
-println!
-("xinterp_irexp: ire0 = ", ire0)
-*)
-//
-in//let
-//
+(
 case+
 ire0.node() of
 //
@@ -145,18 +136,17 @@ IREwhere _ => f0_where(env0, ire0)
 |
 _(*otherwise*) =>
 (
-  $raise XINTERP_IREXP(ire0)) where
+  $raise XINTERP_IREXP(ire0)
+) where
 {
 //
 val loc0 = ire0.lctn((*void*))
-val (  ) =
-prerrln("xinterp_irexp: loc0 = ", loc0)
-val (  ) =
-prerrln("xinterp_irexp: ire0 = ", ire0)
+val (  ) = prerrln
+("xinterp_irexp: loc0 = ", loc0)
+val (  ) = prerrln
+("xinterp_irexp: ire0 = ", ire0) }//whr
 //
-}(*where*)
-//
-end where
+) where // end of [ case+of(ire0.node()) ]
 {
 //
 (* ****** ****** *)

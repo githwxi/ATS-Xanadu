@@ -201,12 +201,6 @@ xintenv_d2vins_any
 {
 //
 (* ****** ****** *)
-//
-val () =
-prerrln("irpat_match: irp0 = ", irp0)
-val () =
-prerrln("irpat_match: irv0 = ", irv0)
-//
 (* ****** ****** *)
 //
 fun
@@ -225,7 +219,8 @@ in//let
 case+ irv0 of
 |
 IRVtup0(irvs) =>
-irpatlst_match_arr(env0, irps, irvs) )
+irpatlst_match_arr
+(env0, irps, irvs) | _ => ( (*0*) ) )
 end(*let*)//end-of-[ f0_tup0(irp0, irv0) ]
 //
 (* ****** ****** *)
@@ -238,6 +233,13 @@ f0_tup1
 ,irv0: irval): void =
 let
 //
+val () =
+prerrln
+("f0_tup1: irp0 = ", irp0)
+val () =
+prerrln
+("f0_tup1: irv0 = ", irv0)
+//
 val-
 IRPtup1
 ( knd1, irps) = irp0.node()
@@ -246,10 +248,21 @@ in//let
 (
 case+ irv0 of
 |
-IRVtup1(knd2, irvs) =>
-irpatlst_match_arr(env0, irps, irvs) )
+IRVtup1
+(knd2, irvs) =>
+irpatlst_match_arr
+(env0, irps, irvs) | _ => ( (*0*) ) )
 end(*let*)//end-of-[ f0_tup1(irp0, irv0) ]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val () =
+prerrln("irpat_match: irp0 = ", irp0)
+val () =
+prerrln("irpat_match: irv0 = ", irv0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 }(*where*)//end-of-[irpat_match(env0,irp0,irv0)]
@@ -301,6 +314,15 @@ case+ fia0 of
 |
 FIARG(irps) =>
 irpatlst_match_lst(env0, irps, irvs))
+where
+{
+//
+val () =
+prerrln("fiarg_match: fia0 = ", fia0)
+val () =
+prerrln("fiarg_match: irvs = ", irvs)
+//
+}(*where*)//end-of-[fiarg_match(env0,fia0,irvs)]
 //
 (* ****** ****** *)
 //
@@ -312,8 +334,9 @@ irpatlst_match
 ( env0:
 ! xintenv
 , irps: irpatlst
-, irvs: irvalseq) =
+, irvs: irvalseq): void =
 let
+//
 #typedef x0 = irpat
 #typedef y0 = irval
 #vwtpdef e1 = xintenv
@@ -333,15 +356,55 @@ val () =
 irpat_match(e1, x0, y0)
 val e1 = $UN.delinear(e1) in () end
 //
+val () =
+prerrln("irpatlst_match: irps = ", irps)
+val () =
+prerrln("irpatlst_match: irvs = ", irvs)
+//
 in//let
   gseq_z2foreach<xs,ys><x0,y0>(irps, irvs)
 end(*let*)//end-of-[irpatlst_match<...>(...)]
 //
 in//local
+//
+#implfun
+irpatlst_match_arr
+(env0, irps, irvs) =
+let
+val () =
+prerrln
+("irpatlst_match_arr: irps = ", irps)
+val () =
+prerrln
+("irpatlst_match_arr: irvs = ", irvs)
+in//let
+irpatlst_match<irvalarr>(env0, irps, irvs)
+end//let//end-of-[irpatlst_match_arr(env0,...)]
+//
+#implfun
+irpatlst_match_lst
+(env0, irps, irvs) =
+let
+val () =
+prerrln
+("irpatlst_match_lst: irps = ", irps)
+val () =
+prerrln
+("irpatlst_match_lst: irvs = ", irvs)
+in//let
+irpatlst_match<irvalist>(env0, irps, irvs)
+end//let//end-of-[irpatlst_match_lst(env0,...)]
+//
+(*
+(*
+HX-2023-12-24: This style should work!!!
+*)
 #implfun
 irpatlst_match_arr = irpatlst_match<irvalarr>
 #implfun
 irpatlst_match_lst = irpatlst_match<irvalist>
+*)
+//
 end(*local*) // end-of-local(irpatlst_match_...)
 //
 (* ****** ****** *)
