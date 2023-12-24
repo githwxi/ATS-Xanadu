@@ -31,8 +31,8 @@ ATS3_XANADU_prelude/DATS
 (* ****** ****** *)
 #staload _ = "./../DATS/strn000.dats"
 (* ****** ****** *)
-#staload _ = "./../DATS/optn000.dats"
 #staload _ = "./../DATS/list000.dats"
+#staload _ = "./../DATS/optn000.dats"
 #staload _ = "./../DATS/strm000.dats"
 (* ****** ****** *)
 #staload _ = "./../DATS/tupl000.dats"
