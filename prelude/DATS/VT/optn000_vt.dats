@@ -34,10 +34,10 @@ optn_vt_cons(x0) => g_free<a>(x0)
 optn_vt_copy(xs) =
 (
 case+ xs of
-| !
+| // !
 optn_vt_nil() =>
 optn_vt_nil()
-| !
+| // !
 optn_vt_cons(x0) =>
 let
 val x0 =
@@ -56,9 +56,9 @@ optn_vt_rcopy = optn_vt_copy<a>(*xs*)
 optn_vt_nilq1(xs) =
 (
 case+ xs of
-| !
+| // !
 optn_vt_nil() => true
-| !
+| // !
 optn_vt_cons(x0) => false)
 //
 #impltmp
@@ -66,9 +66,9 @@ optn_vt_cons(x0) => false)
 optn_vt_consq1(xs) =
 (
 case+ xs of
-| !
+| // !
 optn_vt_nil() => false
-| !
+| // !
 optn_vt_cons(x0) => (true))
 //
 (* ****** ****** *)
@@ -91,8 +91,8 @@ g_free<a>(x0) in 1 end )
 optn_vt_length1(xs) =
 (
 case+ xs of
-| ! optn_vt_nil() => 0
-| ! optn_vt_cons(x0) => 1 )
+| optn_vt_nil() => 0
+| optn_vt_cons(x0) => 1 )
 //
 (* ****** ****** *)
 //
@@ -168,9 +168,9 @@ optn_vt_cons(x0) => forall0$test<a>(x0)
 optn_vt_forall1(xs) =
 (
 case+ xs of
-| !
+| // !
 optn_vt_nil() => (true)
-| !
+| // !
 optn_vt_cons(x0) => forall1$test<a>(x0)
 ) (*case+*)//end of [optn_vt_forall1(xs)]
 //
@@ -192,9 +192,9 @@ optn_vt_cons(x0) => foreach0$work<a>(x0)
 optn_vt_foreach1(xs) =
 (
 case+ xs of
-| !
+| // !
 optn_vt_nil() => ((*void*))
-| !
+| // !
 optn_vt_cons(x0) => foreach1$work<a>(x0)
 ) (*case+*)//end-of-[optn_vt_foreach1(xs)]
 //
@@ -223,10 +223,10 @@ end//let
 optn_vt_map1(xs) =
 (
 case+ xs of
-| !
+| // !
 optn_vt_nil() =>
-optn_vt_nil((*void*))
-| !
+optn_vt_nil((*0*))
+| // !
 optn_vt_cons(x0) =>
 let
 val y0 =
