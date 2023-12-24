@@ -168,7 +168,10 @@ fun
 irpat_valck
 ( irpat, irval ): (bool)
 fun
-irpatlst_valck
+irpatlst_valck_arr
+(irpatlst,irvalarr): (bool)
+fun
+irpatlst_valck_lst
 (irpatlst,irvalist): (bool)
 //
 (* ****** ****** *)
@@ -298,7 +301,12 @@ fiarg_match
 ,farg:fiarg,irvs:irvalist): void
 //
 fun
-irpatlst_match
+irpatlst_match_arr
+(env0:
+!xintenv
+,irps:irpatlst,irvs:irvalarr): void
+fun
+irpatlst_match_lst
 (env0:
 !xintenv
 ,irps:irpatlst,irvs:irvalist): void

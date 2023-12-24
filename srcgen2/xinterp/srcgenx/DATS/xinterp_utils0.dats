@@ -105,24 +105,16 @@ f0_tup0
 ,irv0: irval): bool =
 let
 //
-#typedef x0 = irpat
-#typedef y0 = irval
-#typedef xs = irpatlst
-#typedef ys = irvalarr
-//
 val-
 IRPtup0(irps) = irp0.node()
-//
-#impltmp
-z2forall$test<x0,y0> = irpat_valck
-//
 in//let
+(
 case+ irv0 of
-|
-IRVtup0(irvs) =>
-gseq_z2forall
-<xs,ys><x0,y0>(irps, irvs) | _ => false
-end(*let*)//end-of-[ f0_tup0(irp0, irv0) ]
+| IRVtup0(irvs) =>
+(
+  irpatlst_valck_arr(irps,irvs) )
+| _ (*non-IRVtup0*) => (  false  ) )
+end(*let*)//end-of-[f0_tup0(irp0,irv0)]
 //
 fun
 f0_tup1
@@ -130,49 +122,50 @@ f0_tup1
 ,irv0: irval): bool =
 let
 //
-#typedef x0 = irpat
-#typedef y0 = irval
-#typedef xs = irpatlst
-#typedef ys = irvalarr
-//
 val-
 IRPtup1
-( trec, irps) = irp0.node()
-//
-#impltmp
-z2forall$test<x0,y0> = irpat_valck
+( knd1, irps) = irp0.node()
 //
 in//let
+(
 case+ irv0 of
-|
-IRVtup1(_, irvs) =>
-gseq_z2forall
-<xs,ys><x0,y0>(irps, irvs) | _ => false
-end(*let*)//end-of-[ f0_tup1(irp0, irv0) ]
+| IRVtup1(knd2, irvs) =>
+(
+  irpatlst_valck_arr(irps, irvs) )
+| _ (*non-IRVtup1*) => (  false  ) )
+end(*let*)//end-of-[f0_tup1(irp0,irv0)]
 //
 }(*where*)//end-of-[irpat_valck(irp0,irv0)]
 //
 (* ****** ****** *)
 //
-#implfun
+local
+//
+fun
+<irvalseq:t0>
 irpatlst_valck
-( irps , irvs ) =
-(
-case+ irps of
-|
-list_nil() => true
-|
-list_cons(irp1, irps) =>
-(
-case+ irvs of
-|
-list_nil() => false
-|
-list_cons(irv1, irvs) =>
-if
-irpat_valck(irp1, irv1)
-then irpatlst_valck(irps, irvs) else false)
-)(*case+*)//end-of-[irpatlst_valck(irps, irvs)]
+(irps: irpatlst
+,irvs: irvalseq): bool =
+let
+//
+#typedef x0 = irpat
+#typedef y0 = irval
+#typedef xs = irpatlst
+#typedef ys = irvalseq
+//
+#impltmp
+z2forall$test<x0,y0> = irpat_valck
+//
+in//let
+gseq_z2forall<xs,ys><x0,y0>(irps, irvs)
+end(*let*)//end-of-[ f0_tup0(irp0, irv0) ]
+//
+in//local
+#implfun
+irpatlst_valck_arr = irpatlst_valck<irvalarr>
+#implfun
+irpatlst_valck_lst = irpatlst_valck<irvalist>
+end(*local*) // end-of-local(irpatlst_valck_...)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -224,35 +217,15 @@ f0_tup0
 ,irv0: irval): void =
 let
 //
-#typedef x0 = irpat
-#typedef y0 = irval
-#vwtpdef e1 = xintenv
-#typedef xs = irpatlst
-#typedef ys = irvalarr
-//
 val-
 IRPtup0(irps) = irp0.node()
-//
-val e1 = $UN.datacopy(env0)
-//
-#impltmp
-z2foreach$work
-<x0, y0>
-(x0, y0) =
-let
-val e1 =
-$UN.castlin10{e1}(e1)
-val () =
-irpat_match(e1, x0, y0)
-val e1 = $UN.delinear(e1) in () end
 //
 in//let
 (
 case+ irv0 of
 |
 IRVtup0(irvs) =>
-gseq_z2foreach
-<xs,ys><x0,y0>(irps, irvs) | _ => () )
+irpatlst_match_arr(env0, irps, irvs) )
 end(*let*)//end-of-[ f0_tup0(irp0, irv0) ]
 //
 (* ****** ****** *)
@@ -265,37 +238,17 @@ f0_tup1
 ,irv0: irval): void =
 let
 //
-#typedef x0 = irpat
-#typedef y0 = irval
-#vwtpdef e1 = xintenv
-#typedef xs = irpatlst
-#typedef ys = irvalarr
-//
 val-
 IRPtup1
-( trec, irps) = irp0.node()
-//
-val e1 = $UN.datacopy(env0)
-//
-#impltmp
-z2foreach$work
-<x0, y0>
-(x0, y0) =
-let
-val e1 =
-$UN.castlin10{e1}(e1)
-val () =
-irpat_match(e1, x0, y0)
-val e1 = $UN.delinear(e1) in () end
+( knd1, irps) = irp0.node()
 //
 in//let
 (
 case+ irv0 of
 |
-IRVtup1(_, irvs) =>
-gseq_z2foreach
-<xs,ys><x0,y0>(irps, irvs) | _ => () )
-end(*let*)//end-of-[ f0_tup0(irp0, irv0) ]
+IRVtup1(knd2, irvs) =>
+irpatlst_match_arr(env0, irps, irvs) )
+end(*let*)//end-of-[ f0_tup1(irp0, irv0) ]
 //
 (* ****** ****** *)
 //
@@ -347,27 +300,49 @@ fiarg_match
 case+ fia0 of
 |
 FIARG(irps) =>
-irpatlst_match(env0, irps, irvs))
+irpatlst_match_lst(env0, irps, irvs))
 //
 (* ****** ****** *)
 //
-#implfun
+local
+//
+fun
+<irvalseq:t0>
 irpatlst_match
-( env0
-, irps, irvs) =
-(
-case+ irps of
-|
-list_nil() => ((*0*))
-|
-list_cons(irp1, irps) =>
+( env0:
+! xintenv
+, irps: irpatlst
+, irvs: irvalseq) =
 let
-  val-
-  list_cons(irv1, irvs) = irvs
+#typedef x0 = irpat
+#typedef y0 = irval
+#vwtpdef e1 = xintenv
+#typedef xs = irpatlst
+#typedef ys = irvalseq
+//
+val e1 = $UN.datacopy(env0)
+//
+#impltmp
+z2foreach$work
+<x0, y0>
+(x0, y0) =
+let
+val e1 =
+$UN.castlin10{e1}(e1)
+val () =
+irpat_match(e1, x0, y0)
+val e1 = $UN.delinear(e1) in () end
+//
 in//let
-  irpat_match( env0, irp1, irv1 )
-; irpatlst_match( env0, irps, irvs ) end
-)(*case+*)//end-of-[irpatlst_match(env0,irps,irvs)]
+  gseq_z2foreach<xs,ys><x0,y0>(irps, irvs)
+end(*let*)//end-of-[irpatlst_match<...>(...)]
+//
+in//local
+#implfun
+irpatlst_match_arr = irpatlst_match<irvalarr>
+#implfun
+irpatlst_match_lst = irpatlst_match<irvalist>
+end(*local*) // end-of-local(irpatlst_match_...)
 //
 (* ****** ****** *)
 (* ****** ****** *)
