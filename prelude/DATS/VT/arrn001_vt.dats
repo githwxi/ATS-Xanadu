@@ -16,6 +16,7 @@ Wed Dec 20 23:11:33 EST 2023
 #staload UN =
 "prelude/SATS/unsafex.sats"
 (* ****** ****** *)
+//
 local
 //
 datavwtp
@@ -29,8 +30,8 @@ A1PSZ of
 a1psz_vt_i0_x0
 ( a:vt, n:i0 ) = a1psz(a, n)
 //
+(* ****** ****** *)
 in(*local*)
-
 (* ****** ****** *)
 //
 #impltmp
