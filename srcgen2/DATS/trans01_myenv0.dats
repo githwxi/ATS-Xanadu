@@ -254,10 +254,10 @@ stkmap_search_opt(stkmap, k0)
 in//let
 //
 case+ opt of
-| !
+| // keep
 optn_vt_cons
 (   fxty   ) => opt
-| ~
+| ~ // free
 optn_vt_nil() =>
 let
 val opt =
@@ -265,10 +265,10 @@ topmap_search_opt(topmap,k0)
 in//let
 (
 case+ opt of
-| !
+| // keep
 optn_vt_cons
 (   fxty   ) => opt
-| ~
+| ~ // free
 optn_vt_nil() => the_fxtyenv_pvsfind(k0)
 )
 end (*let*)//end-of-[optn_nil()]

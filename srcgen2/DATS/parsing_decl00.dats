@@ -1061,9 +1061,9 @@ let
   val lopt =
   (
   case+ lopt of
-  | !
+  | // keep
   optn_vt_cons _ => lopt
-  | ~
+  | ~ // free
   optn_vt_nil( ) =>
   (
     case+ dnts of

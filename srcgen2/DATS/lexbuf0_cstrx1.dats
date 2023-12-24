@@ -85,7 +85,7 @@ in//let
 //
 case+
 buf.1 of
-| !
+| // !
 list_vt_nil() =>
 (
 case+
@@ -109,7 +109,7 @@ end else ci1 // end-of(if)
 {
 val buf0 = (buf.0: strx_vt(sint))
 }
-| !
+| // !
 list_vt_cons
 ( cc1, ccs ) => char_code(  cc1  )
 //
@@ -127,8 +127,9 @@ in//let
 //
 case+
 buf.1 of
-| !
-list_vt_nil() =>
+| ~
+list_vt_nil
+( (*void*) ) =>
 (
 case+
 !( buf0 ) of
@@ -182,7 +183,7 @@ in//let
 //
 case+
 buf.2 of
-| !
+| ~
 list_vt_nil
 ((*void*)) => (-1) // HX: exception
 | ~
