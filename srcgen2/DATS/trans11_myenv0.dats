@@ -238,10 +238,10 @@ stkmap_search_opt(stkmap, k0)
 in//let
 //
 case+ opt of
-| !
+| // keep
 optn_vt_cons
 (   gmac   ) => opt
-| ~
+| ~ // free
 optn_vt_nil() =>
 let
 val opt =
@@ -249,10 +249,10 @@ topmap_search_opt(topmap,k0)
 in//let
 (
 case+ opt of
-| !
+| // keep
 optn_vt_cons
 (   gmac   ) => opt
-| ~
+| ~ // free
 optn_vt_nil() => the_gmacenv_pvsfind(k0)
 )
 end (*let*)//end-of-[optn_nil()]

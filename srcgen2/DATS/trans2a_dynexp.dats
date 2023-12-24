@@ -1791,13 +1791,13 @@ val
 dtup =
 (
 case+ topt of
-| !
+| // keep
 optn_vt_nil() =>
 d2exp_make_styp_node
 ( loc0
 , ttup
 , D2El2bck(dtup, dlab))
-| !
+| // keep
 optn_vt_cons(tprj) => dtup )
 : d2exp // end of [val(dtup)]
 //

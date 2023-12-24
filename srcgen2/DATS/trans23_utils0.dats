@@ -573,10 +573,12 @@ val
 opt1 = s2cst_get_styp(s2c0)
 in//let
 case+ opt1 of
-| ~optn_vt_nil() =>
+| // keep
+optn_vt_cons(t2p1) => ( opt1 )
+| ~ // free
+optn_vt_nil() =>
 (
   tr23env_evstyp_cst(env0,s2c0) )
-| !optn_vt_cons(t2p1) => ( opt1 )
 end//end-of-[s2cst_get23_styp(...)]
 //
 (* ****** ****** *)

@@ -83,7 +83,7 @@ stkmap_nilq
 (   map   ) =
 (
 case+ map of
-| !
+| // !
 stkmap_nil() => true | _ => false
 ) (* end of [stkmap_nilq(map)] *)
 //
@@ -101,10 +101,10 @@ loop
 ! stkmap(itm)): bool =
 (
 case+ kxs of
-| !
+| // !
 stkmap_nil
 ((*void*)) => true
-| !
+| // !
 stkmap_cons
 (k1, x1, kxs) => loop(kxs)
 |
@@ -138,22 +138,23 @@ loop
 , err: &sint >> _): stkmap(itm) =
 (
 case+ kxs of
-| !
+| // keep
 stkmap_nil() => kxs // err = 0
 //
-| ~
+|
+~ // free
 stkmap_cons
 (k1, x1, kxs) => loop(kxs, err)
 //
-| !
+| // keep
 stkmap_lam0 _ => (err := 1; kxs)
 //
-| !
+| // keep
 stkmap_let0 _ => (err := 1; kxs)
 //
-| !
+| // keep
 stkmap_loc1 _ => (err := 1; kxs)
-| !
+| // keep
 stkmap_loc2 _ => (err := 1; kxs)
 //
 ) (*case+*)//end-of-[loop(kxs, err)]
@@ -216,22 +217,24 @@ loop
 , err: &sint >> _): stkmap(itm) =
 (
 case+ kxs of
-| ~
+|
+~ // free
 stkmap_lam0
 (   kxs   ) => kxs
-| ~
+|
+~ // free
 stkmap_cons
 (k1, x1, kxs) => loop(kxs, err)
 //
-| !
+| // keep
 stkmap_nil( ) => (err := 1; kxs)
 //
-| !
+| // keep
 stkmap_let0 _ => (err := 1; kxs)
 //
-| !
+| // keep
 stkmap_loc1 _ => (err := 1; kxs)
-| !
+| // keep
 stkmap_loc2 _ => (err := 1; kxs)
 //
 )
@@ -258,22 +261,24 @@ loop
 , err: &sint >> _): stkmap(itm) =
 (
 case+ kxs of
-| ~
+|
+~ // free
 stkmap_let0
 (   kxs   ) => kxs
-| ~
+|
+~ // free
 stkmap_cons
 (k1, x1, kxs) => loop(kxs, err)
 //
-| !
+| // keep
 stkmap_nil() => (err := 1; kxs)
 //
-| !
+| // keep
 stkmap_lam0 _ => (err := 1; kxs)
 //
-| !
+| // keep
 stkmap_loc1 _ => (err := 1; kxs)
-| !
+| // keep
 stkmap_loc2 _ => (err := 1; kxs)
 //
 )
@@ -317,24 +322,26 @@ loop1
 (
 case+ kxs of
 //
-| ~
+|
+~ // free
 stkmap_loc1
 (   kxs   ) => loop0(kxs, err, res)
 //
-| ~
+|
+~ // free
 stkmap_cons
 (k1, x1, kxs) => loop1(kxs, err, res)
 //
-| !
+| // keep
 stkmap_nil() =>
 ( err := err+1; loop0(kxs, err, res) )
-| !
+| // keep
 stkmap_lam0 _ =>
 ( err := err+1; loop0(kxs, err, res) )
-| !
+| // keep
 stkmap_let0 _ =>
 ( err := err+1; loop0(kxs, err, res) )
-| !
+| // keep
 stkmap_loc2 _ =>
 ( err := err+1; loop0(kxs, err, res) )
 //
@@ -349,11 +356,13 @@ loop2
 (
 case+ kxs of
 //
-| ~
+|
+~ // free
 stkmap_loc2
 (   kxs   ) => loop1(kxs, err, res)
 //
-| ~
+|
+~ // free
 stkmap_cons
 (k1, x1, kxs) =>
 loop2(kxs, err, res) where
@@ -361,16 +370,16 @@ loop2(kxs, err, res) where
   val
   res = list_vt_cons(@(k1, x1), res) }
 //
-| !
+| // keep
 stkmap_nil() =>
 ( err := err+1; loop1(kxs, err, res) )
-| !
+| // keep
 stkmap_lam0 _ =>
 ( err := err+1; loop1(kxs, err, res) )
-| !
+| // keep
 stkmap_let0 _ =>
 ( err := err+1; loop1(kxs, err, res) )
-| !
+| // keep
 stkmap_loc1 _ =>
 ( err := err+1; loop1(kxs, err, res) )
 //
@@ -412,11 +421,11 @@ loop
 (
 case+ kxs of
 //
-| !
+| // keep
 stkmap_nil() =>
 optn_vt_nil((*void*))
 //
-| !
+| // keep
 stkmap_cons(k1, x1, kxs) =>
 (
 if
@@ -424,10 +433,10 @@ if
 then
 optn_vt_cons(x1) else loop(kxs,k0))
 //
-| !stkmap_lam0(kxs) => loop(kxs, k0)
-| !stkmap_let0(kxs) => loop(kxs, k0)
-| !stkmap_loc1(kxs) => loop(kxs, k0)
-| !stkmap_loc2(kxs) => loop(kxs, k0)
+| stkmap_lam0(kxs) => loop(kxs, k0)
+| stkmap_let0(kxs) => loop(kxs, k0)
+| stkmap_loc1(kxs) => loop(kxs, k0)
+| stkmap_loc2(kxs) => loop(kxs, k0)
 //
 ) (*case+*)//end of [ loop(kxs, k0) ]
 //
@@ -491,11 +500,11 @@ auxprint
 ! stkmap(itm)): void =
 (
 case+ map of
-| !
+| // keep
 stkmap_nil() =>
 println("stkmap_nil(", ")")
 //
-| !
+| // keep
 stkmap_cons
 (k0, x0, map) =>
 auxprint(map) where
@@ -504,25 +513,25 @@ val () =
 println
 ("stkmap_cons(", k0, ";", x0) }
 //
-| !
+| // keep
 stkmap_lam0
 (   map   ) =>
 auxprint(map) where
 { val () =
   println("stkmap_lam0(", ")") }
-| !
+| // keep
 stkmap_let0
 (   map   ) =>
 auxprint(map) where
 { val () =
   println("stkmap_let0(", ")") }
-| !
+| // keep
 stkmap_loc1
 (   map   ) =>
 auxprint(map) where
 { val () =
   println("stkmap_loc1(", ")") }
-| !
+| // keep
 stkmap_loc2
 (   map   ) =>
 auxprint(map) where

@@ -102,7 +102,7 @@ pstn1_get_ncol
 (pos: !pstn1): sint =
 (
 case+ pos of
-| !PSTN1(_, _, ncol) => ncol
+| PSTN1(_, _, ncol) => ncol
 )
 #symload ncol with pstn1_get_ncol
 //
@@ -162,7 +162,7 @@ in//let
 //
 case+
 buf.3 of
-| !
+| // !
 list_vt_nil() =>
 (
 case+
@@ -186,7 +186,7 @@ end else ci1 // end-of(if)
 {
 val buf2 = (buf.2: strx_vt(sint))
 }
-| !
+| // !
 list_vt_cons
 ( cc1, ccs ) => char_code(  cc1  )
 //
@@ -206,8 +206,9 @@ in//let
 //
 case+
 buf.3 of
-| !
-list_vt_nil() =>
+| ~
+list_vt_nil
+( (*void*) ) =>
 (
 case+
 !( buf2 ) of
@@ -274,9 +275,9 @@ f0_nofs
 : !list_vt(char)): sint =
 (
 case+ ccs of
-| !
+| // !
 list_vt_nil() => ofs+res
-| !
+| // !
 list_vt_cons(cc1, ccs) =>
 if
 (cc1 = '\n')
@@ -311,7 +312,7 @@ in//let
 //
 case+
 buf.4 of
-| !
+| ~
 list_vt_nil
 ((*void*)) => (-1) // HX: exception
 | ~

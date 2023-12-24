@@ -276,10 +276,10 @@ auxlst
 ! nmitmlst_vt): optn_vt(a) =
 (
 case+ xs of
-| !
+| // !
 list_vt_nil
 ( (*void*) ) => optn_vt_nil()
-| !
+| // !
 list_vt_cons
 (  x0, xs  ) =>
 ( case+ f0(x0) of

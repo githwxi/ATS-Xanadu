@@ -225,9 +225,9 @@ stkmap_search_opt(stkmap, k0)
 val opt1 =
 (
 case+ opt0 of
-| !
+| // keep
 optn_vt_cons _ => opt0
-| ~
+| ~ // free
 optn_vt_nil( ) =>
 topmap_search_opt(topmap, k0))
 //

@@ -294,18 +294,18 @@ stkmap_search_opt(stkmap, k0)
 in//let
 //
 case+ opt of
-| !
+| // keep
 optn_vt_cons _ => opt
-| ~
+| ~ // free
 optn_vt_nil( ) =>
 let
 val opt =
 topmap_search_opt(topmap, k0)
 in//let
 case+ opt of
-| !
+| // keep
 optn_vt_cons _ => opt
-| ~
+| ~ // free
 optn_vt_nil((*0*))=>the_sortenv_pvsfind(k0)
 endlet//end-of-[opt_vt_nil()]
 //
@@ -550,18 +550,18 @@ stkmap_search_opt(stkmap, k0)
 in//let
 //
 case+ opt of
-| !
+| // keep
 optn_vt_cons _ => opt
-| ~
+| ~ // free
 optn_vt_nil( ) =>
 let
 val opt =
 topmap_search_opt(topmap, k0)
 in//let
 case+ opt of
-| !
+| // keep
 optn_vt_cons _ => opt
-| ~
+| ~ // free
 optn_vt_nil((*0*))=>the_sexpenv_pvsfind(k0)
 endlet//end-of-[opt_vt_nil()]
 //
@@ -812,9 +812,9 @@ stkmap_search_opt(stkmap, k0)
 in//let
 //
 case+ opt of
-| !
+| // keep
 optn_vt_cons _ => opt
-| ~
+| ~ // free
 optn_vt_nil( ) =>
 topmap_search_opt(topmap, k0)
 //
@@ -1253,11 +1253,12 @@ list_cons(fenv, envs) =>
 (
 case+
 topt of
-| ~
+|
+~ // free
 optn_vt_nil() =>
 f2envlst_find_s2tex
 ( envs(*rest*), k0 )
-| !
+| // keep
 optn_vt_cons _ => topt) where
 {
 val topt =
@@ -1279,11 +1280,12 @@ list_cons(fenv, envs) =>
 (
 case+
 sopt of
-| ~
+|
+~ // free
 optn_vt_nil() =>
 f2envlst_find_s2itm
 ( envs(*rest*), k0 )
-| !
+| // keep
 optn_vt_cons _ => sopt) where
 {
 val sopt =
@@ -1305,11 +1307,12 @@ list_cons(fenv, envs) =>
 (
 case+
 dopt of
-| ~
+|
+~ // free
 optn_vt_nil() =>
 f2envlst_find_d2itm
 ( envs(*rest*), k0 )
-| !
+| // keep
 optn_vt_cons _ => dopt) where
 {
 val dopt =
@@ -1341,9 +1344,9 @@ sortenv_search_opt(tenv, k0)
 in//let
 //
 case+ opt of
-| !
+| // keep
 optn_vt_cons _ => opt
-| ~
+| ~ // free
 optn_vt_nil((*0*)) =>
 let
 val opt =
@@ -1351,9 +1354,9 @@ tr12env_ofind_s2tex(env0, k0)
 in//let
 //
 case+ opt of
-| !
+| // keep
 optn_vt_cons _ => opt
-| ~
+| ~ // free
 optn_vt_nil((*0*))=>the_sortenv_pvsfind(k0)
 //
 end
@@ -1525,9 +1528,9 @@ sexpenv_search_opt(senv, k0)
 in//let
 //
 case+ opt of
-| !
+| // keep
 optn_vt_cons _ => opt
-| ~
+| ~ // free
 optn_vt_nil((*0*)) =>
 let
 val opt =
@@ -1535,9 +1538,9 @@ tr12env_ofind_s2itm(env0, k0)
 in//let
 //
 case+ opt of
-| !
+| // keep
 optn_vt_cons _ => opt
-| ~
+| ~ // free
 optn_vt_nil((*0*))=>the_sexpenv_pvsfind(k0)
 //
 end
@@ -1560,9 +1563,9 @@ dexpenv_search_opt(denv, k0)
 in//let
 //
 case+ opt of
-| !
+| // keep
 optn_vt_cons _ => opt
-| ~
+| ~ // free
 optn_vt_nil((*0*)) =>
 let
 val opt =
@@ -1570,9 +1573,9 @@ tr12env_ofind_d2itm(env0, k0)
 in//let
 //
 case+ opt of
-| !
+| // keep
 optn_vt_cons _ => opt
-| ~
+| ~ // free
 optn_vt_nil((*0*))=>the_dexpenv_pvsfind(k0)
 //
 end

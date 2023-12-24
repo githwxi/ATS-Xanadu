@@ -1115,11 +1115,11 @@ h2_search
 : !s2vts_vt): s2typopt_vt =
 (
 case+ svts of
-| !
+| // !
 list_vt_nil
 ( (*void*) ) =>
 optn_vt_nil(*void*)
-| !
+| // !
 list_vt_cons
 (svt1, svts) =>
 (
