@@ -71,17 +71,17 @@ let
 fnx
 loop
 {n:nat}.<n>.
-( xs
-: !list_vt(a, n)
+( xs:
+! list_vt(a, n)
 , r0
 : &(?list_vt(a)>>list_vt(a, n))
 ) : void =
 (
 case+ xs of
-| !
+| // !
 list_vt_nil() =>
 (r0 := list_vt_nil())
-| !
+| // !
 list_vt_cons(x0, xs) =>
 let
   val x0 = g_copy<a>(x0)
@@ -112,8 +112,10 @@ list_vt_nilq1
   (xs) =
 (
 case+ xs of
-| !list_vt_nil() => true
-| !list_vt_cons(_, _) => false)
+| // !
+list_vt_nil() => true
+| // !
+list_vt_cons(_, _) => false)
 //
 #impltmp
 <>(*tmp*)
@@ -121,8 +123,10 @@ list_vt_consq1
   (xs) =
 (
 case+ xs of
-| !list_vt_nil() => false
-| !list_vt_cons(_, _) => (true))
+| // !
+list_vt_nil() => false
+| // !
+list_vt_cons(_, _) => (true))
 //
 (* ****** ****** *)
 //
@@ -141,9 +145,9 @@ loop
 , ln: int( j )): int(n) =
 (
 case+ xs of
-| !
+| // !
 list_vt_nil() => ln
-| !
+| // !
 list_vt_cons(_, xs) => loop(xs, ln+1)
 )
 } (*where*) // end of [length_vt_length1]
@@ -377,16 +381,16 @@ list_vt_rappend10
 fnx
 loop
 {m,n:nat} .<m>.
-( xs0
-: !list_vt(a, m)
-, ys0
-: ~list_vt(a, n)
+( xs0:
+! list_vt(a, m)
+, ys0:
+~ list_vt(a, n)
 ) : list_vt(a, m+n) =
 (
 case+ xs0 of
-| !
+| // !
 list_vt_nil() => ys0
-| !
+| // !
 list_vt_cons(x0, xs1) =>
 let
 val x0 = g_copy<a>(x0)
@@ -411,17 +415,17 @@ list_vt_rappend11
 fnx
 loop
 {m,n:nat} .<m>.
-( xs0
-: !list_vt(a, m)
-, ys0
-: !list_vt(a, n)
+( xs0:
+! list_vt(a, m)
+, ys0:
+! list_vt(a, n)
 ) : list_vt(a, m+n) =
 (
 case+ xs0 of
-| !
+| // !
 list_vt_nil() =>
  list_vt_copy<a>(ys0)
-| !
+| // !
 list_vt_cons(x0, xs1) =>
 let
 val x0 = g_copy<a>(x0)
@@ -496,13 +500,13 @@ list_vt_forall1
 {
 fnx
 loop
-( xs
-: !list_vt(a)): bool =
+(xs:
+!list_vt(a)): bool =
 (
 case+ xs of
-| !
+| // !
 list_vt_nil() => true
-| !
+| // !
 list_vt_cons(x0, xs) =>
 let
 val
