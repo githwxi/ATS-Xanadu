@@ -161,10 +161,16 @@ gseq_z2forall<xs,ys><x0,y0>(irps, irvs)
 end(*let*)//end-of-[ f0_tup0(irp0, irv0) ]
 //
 in//local
+//
 #implfun
-irpatlst_valck_arr = irpatlst_valck<irvalarr>
+irpatlst_valck_arr(irps, irvs) =
+(
+  irpatlst_valck<irvalarr>(irps, irvs) )//fun
 #implfun
-irpatlst_valck_lst = irpatlst_valck<irvalist>
+irpatlst_valck_lst(irps, irvs) =
+(
+  irpatlst_valck<irvalist>(irps, irvs) )//fun
+//
 end(*local*) // end-of-local(irpatlst_valck_...)
 //
 (* ****** ****** *)
@@ -371,28 +377,32 @@ in//local
 irpatlst_match_arr
 (env0, irps, irvs) =
 let
+(*
 val () =
 prerrln
 ("irpatlst_match_arr: irps = ", irps)
 val () =
 prerrln
 ("irpatlst_match_arr: irvs = ", irvs)
+*)
 in//let
-irpatlst_match<irvalarr>(env0, irps, irvs)
+  irpatlst_match<irvalarr>(env0, irps, irvs)
 end//let//end-of-[irpatlst_match_arr(env0,...)]
 //
 #implfun
 irpatlst_match_lst
 (env0, irps, irvs) =
 let
+(*
 val () =
 prerrln
 ("irpatlst_match_lst: irps = ", irps)
 val () =
 prerrln
 ("irpatlst_match_lst: irvs = ", irvs)
+*)
 in//let
-irpatlst_match<irvalist>(env0, irps, irvs)
+  irpatlst_match<irvalist>(env0, irps, irvs)
 end//let//end-of-[irpatlst_match_lst(env0,...)]
 //
 (*
