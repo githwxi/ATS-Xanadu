@@ -62,12 +62,15 @@ g_si<sint>(i) = i // g_si: sint -> a
 g_ui<uint>(u) = u // g_ui: uint -> a
 
 (* ****** ****** *)
-
+#impltmp
+g_equal<sint> = g_eq<sint>
+(* ****** ****** *)
+//
 #impltmp
 g_eqref<sint> = g_equal<sint>
 #impltmp
 g_neqrf<sint> = g_noteq<sint>
-
+//
 (* ****** ****** *)
 
 #impltmp
