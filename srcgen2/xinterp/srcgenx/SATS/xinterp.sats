@@ -71,6 +71,11 @@ Authoremail: gmhwxiATgmailDOTcom
 #typedef irpat = $IR0.irpat
 #typedef irexp = $IR0.irexp
 #typedef fiarg = $IR0.fiarg
+//
+#typedef irgua = $IR0.irgua
+#typedef irgpt = $IR0.irgpt
+#typedef ircls = $IR0.ircls
+//
 #typedef irdcl = $IR0.irdcl
 //
 (* ****** ****** *)
@@ -84,8 +89,10 @@ Authoremail: gmhwxiATgmailDOTcom
 #typedef irexplst = $IR0.irexplst
 #typedef irexpopt = $IR0.irexpopt
 //
+(* ****** ****** *)
 #typedef fiarglst = $IR0.fiarglst
-//
+(* ****** ****** *)
+#typedef irclslst = $IR0.irclslst
 (* ****** ****** *)
 #typedef irdclist = $IR0.irdclist
 (* ****** ****** *)
@@ -332,16 +339,53 @@ xinterp_irdcl
 (* ****** ****** *)
 fun
 xinterp_irexplst
-(env0: !xintenv, ires: irexplst): irvalist
+( env0:
+! xintenv, ires: irexplst): irvalist
 fun
 xinterp_irexpopt
-(env0: !xintenv, iopt: irexpopt): irvalopt
+( env0:
+! xintenv, iopt: irexpopt): irvalopt
+//
+(* ****** ****** *)
+//
+fun
+irgpt_valck
+( env0:
+! xintenv
+, dgpt: irgpt, irv0: irval): (bool)
+fun
+ircls_valck
+( env0:
+! xintenv
+, ircl: ircls, irv0: irval): (bool)
+//
+fun
+irgpt_match
+( env0:
+! xintenv
+, dgpt: irgpt, irv0: irval): (void)
+fun
+ircls_match
+( env0:
+! xintenv
+, ircl: ircls, irv0: irval): (void)
+//
+fun
+xinterp_ircls
+(
+env0: !xintenv, ircl: ircls): irvalopt
+//
+fun
+xinterp_irclslst
+(
+env0: !xintenv,
+dcls: irclslst, irv0: irval): irvalopt
 //
 (* ****** ****** *)
 //
 fun
 xinterp_irdclist
-(env0: !xintenv, irds: irdclist): ( void )
+(env0: !xintenv, irds: irdclist): (void)
 //
 (* ****** ****** *)
 //

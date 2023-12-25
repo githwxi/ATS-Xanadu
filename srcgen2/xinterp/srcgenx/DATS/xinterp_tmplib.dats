@@ -84,6 +84,23 @@ irexp_fprint(g_print$out<>(), ire)
 //
 #impltmp
 g_print
+<irgua>(gua) =
+irgua_fprint(g_print$out<>(), gua)
+//
+#impltmp
+g_print
+<irgpt>(gpt) =
+irgpt_fprint(g_print$out<>(), gpt)
+//
+#impltmp
+g_print
+<ircls>(dcl) =
+ircls_fprint(g_print$out<>(), dcl)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
 <irdcl>(ird) =
 irdcl_fprint(g_print$out<>(), ird)
 //

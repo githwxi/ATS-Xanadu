@@ -64,6 +64,17 @@ XATSOPT "./../../.."
 #symload lctn with irexp_get_lctn
 #symload node with irexp_get_node
 (* ****** ****** *)
+//
+#symload lctn with irgua_get_lctn
+#symload node with irgua_get_node
+//
+#symload lctn with irgpt_get_lctn
+#symload node with irgpt_get_node
+//
+#symload lctn with ircls_get_lctn
+#symload node with ircls_get_node
+//
+(* ****** ****** *)
 #symload lctn with irdcl_get_lctn
 #symload node with irdcl_get_node
 (* ****** ****** *)
@@ -102,6 +113,10 @@ print("IRPflt(", flt, ")")
 |
 IRPstr(str) =>
 print("IRPstr(", str, ")")
+//
+|
+IRPcapp(d2c1, irps) =>
+print("IRPcapp(", d2c1, ";", irps, ")")
 //
 |
 IRPtup0(irps) =>
@@ -168,12 +183,21 @@ print("IREdapp(", irf0, ";", ires, ")")
 ( irds, ire1) =>
 print("IRElet(", irds, ";", ire1, ")")
 //
+(* ****** ****** *)
+//
 |IREift0
 ( test
 , ithn, iels) =>
 (
 print
 ("IREift0(", test, ";", ithn, ";", iels, ")"))
+//
+|IREcas0
+( tknd
+, ire1, dcls) =>
+(
+print
+("IREcas0(", tknd, ";", ire1, ";", dcls, ")"))
 //
 (* ****** ****** *)
 //
@@ -201,6 +225,63 @@ print("IREwhere(", ire1, ";", irds, ")")
 (* ****** ****** *)
 //
 end//let//end-of-[irexp_fprint(out, ire0)]
+//
+(* ****** ****** *)
+//
+#implfun
+irgua_fprint
+(out, dgua) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+dgua.node() of
+|
+IRGUAexp(ire1) =>
+print("IRGUAexp(",ire1,")")
+|
+IRGUAmat(ire1,irp2) =>
+print("IRGUAmat(",ire1,";",irp2,")")
+//
+end (*let*) // end of [irgua_fprint(out,dgua)]
+//
+(* ****** ****** *)
+//
+#implfun
+irgpt_fprint
+(out, dgpt) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+dgpt.node() of
+|
+IRGPTpat(irp1) =>
+print("IRGPTpat(",irp1,")")
+|
+IRGPTgua(irp1,irgs) =>
+print("IRGPTgua(",irp1,";",irgs,")")
+end(*let*)//end-of-[irgpt_fprint(out, dgpt)]
+//
+#implfun
+ircls_fprint
+(out, dcls) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+dcls.node() of
+|
+IRCLSgpt(dgpt) =>
+print("IRCLSgpt(",dgpt,")")
+|
+IRCLScls(irg1,ire2) =>
+print("IRCLScls(",irg1,";",ire2,")")
+end(*let*)//end-of-[ircls_fprint(out, ircl)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -272,7 +353,7 @@ print(dqid,";",tias,";",farg,";",body,")"))
 //
 |IRDnone1(d3cl) => print( "IRDnone1(", d3cl, ")" )
 //
-end//let//end-of-[irdcl_fprint(out, ird0)]
+end(*let*)//end-of-[irdcl_fprint(out, ird0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

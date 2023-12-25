@@ -124,6 +124,7 @@ ire0.node() of
 |IRElet0 _ => f0_let0(env0, ire0)
 //
 |IREift0 _ => f0_ift0(env0, ire0)
+|IREcas0 _ => f0_cas0(env0, ire0)
 //
 |IREtup0 _ => f0_tup0(env0, ire0)
 |IREtup1 _ => f0_tup1(env0, ire0)
@@ -272,7 +273,8 @@ case+ fias of
 |
 list_nil() =>
 (
-xinterp_irexp(env0, ire1))
+xinterp_irexp
+(env0 , ire1))//nil
 |
 list_cons(fia1, fias) =>
 let
@@ -444,7 +446,7 @@ end(*let*)//end-of-[f1_fix0(irf0,irvs)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-}(*where*)//end-of-[f0_dapp(env0,d3e0)]
+}(*where*)//end-of-[f0_dapp(env0,ire0)]
 //
 (* ****** ****** *)
 //
@@ -472,7 +474,7 @@ xinterp_irexp
 (env0 , ire1)
 val () =
 xintenv_poplet0(env0) in dres end
-end(*let*)//end-of-[f0_let0(env0,d3e0)]
+end(*let*)//end-of-[f0_let0(env0,ire0)]
 //
 (* ****** ****** *)
 //
@@ -507,7 +509,37 @@ xinterp_irexp(env0, ire2)) where
 val
 dopt = bool_ifval(btf,ithn,iels) }
 //
-end(*let*)//end-of-[f0_ift0(env0,d3e0)]
+end(*let*)//end-of-[f0_ift0(env0,ire0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_cas0
+( env0:
+! xintenv
+, ire0: irexp): irval =
+let
+//
+val-
+IREcas0
+( tknd
+, ire1, dcls) = ire0.node()
+val irv1 =
+(
+  xinterp_irexp(env0, ire1))
+//
+in//let
+(
+case+ dopt of
+| optn_nil((*0*)) =>
+( $raise
+  XINTERP_IREXP(ire0) )
+| optn_cons(dres) => dres//case+
+) where
+{
+val dopt =
+xinterp_irclslst(env0,dcls,irv1) }
+end(*let*)//end-of-[f0_cas0(env0,ire0)]
 //
 (* ****** ****** *)
 //
@@ -530,7 +562,7 @@ irvs =
 xinterp_irexplst(env0, ires)
 val irvs = a1rsz_make_list(irvs) }
 //
-end(*let*)//end-of-[f0_tup0(env0,d3e0)]
+end(*let*)//end-of-[f0_tup0(env0,ire0)]
 //
 (* ****** ****** *)
 //
@@ -554,7 +586,7 @@ irvs =
 xinterp_irexplst(env0, ires)
 val irvs = a1rsz_make_list(irvs) }
 //
-end(*let*)//end-of-[f0_tup1(env0,d3e0)]
+end(*let*)//end-of-[f0_tup1(env0,ire0)]
 //
 (* ****** ****** *)
 //
@@ -668,7 +700,7 @@ xinterp_irexp
 (env0 , ire1)
 val () =
 xintenv_poplet0(env0) in dres end
-end(*let*)//end-of-[f0_where(env0,d3e0)]
+end(*let*)//end-of-[f0_where(env0,ire0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -702,6 +734,137 @@ xinterp_irexpopt
 (
 optn_xinterp_fnp
 (env0, dopt, xinterp_irexp))//xinterp_irexpopt
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+irgpt_valck
+( env0
+, dgpt, irv0 ) =
+(
+case-
+dgpt.node() of
+|
+IRGPTpat(irp1) =>
+irpat_valck(irp1, irv0))//case+
+(*case+*)//end[xinterp_ircls(env0,ircl)]
+//
+#implfun
+irgpt_match
+( env0
+, dgpt, irv0 ) =
+(
+case-
+dgpt.node() of
+|
+IRGPTpat(irp1) =>
+irpat_match(env0,irp1,irv0)//case+
+)(*case+*)//end[xinterp_ircls(env0,ircl)]
+//
+(* ****** ****** *)
+//
+#implfun
+ircls_valck
+( env0
+, ircl, irv0 ) =
+(
+case+
+ircl.node() of
+|IRCLSgpt
+(  dgpt  ) =>
+(
+  irgpt_valck(env0, dgpt, irv0) )
+|IRCLScls
+(dgpt, ire1) =>
+(
+  irgpt_valck(env0, dgpt, irv0) )
+)(*case+*)//end[xinterp_ircls(env0,ircl)]
+//
+(* ****** ****** *)
+//
+#implfun
+ircls_match
+( env0
+, ircl, irv0 ) =
+(
+case+
+ircl.node() of
+|IRCLSgpt
+(  dgpt  ) =>
+(
+  irgpt_match(env0, dgpt, irv0) )
+|IRCLScls
+(dgpt, ire1) =>
+(
+  irgpt_match(env0, dgpt, irv0) )
+)(*case+*)//end[xinterp_ircls(env0,ircl)]
+//
+(* ****** ****** *)
+//
+#implfun
+xinterp_ircls
+( env0, ircl ) =
+(
+case+
+ircl.node() of
+|IRCLSgpt(dgpt) =>
+(
+  optn_nil((*void*)))
+|IRCLScls(dgpt, ire1) =>
+optn_cons(xinterp_irexp(env0, ire1))
+)(*case+*)//end[xinterp_ircls(env0,ircl)]
+//
+(* ****** ****** *)
+//
+#implfun
+xinterp_irclslst
+( env0
+, dcls, irv0 ) =
+(
+case+ dcls of
+|
+list_nil
+((*void*)) =>
+(
+  optn_nil((*void*)))
+|
+list_cons
+(ircl, dcls) =>
+let
+val
+test =
+ircls_valck(env0, ircl, irv0)
+in//let
+if
+test
+then
+let
+val () =
+xintenv_pshlet0(env0)
+val () =
+ircls_match(env0, ircl, irv0)
+val
+dopt = xinterp_ircls(env0, ircl)
+in//let
+let
+val () =
+xintenv_poplet0(env0) in dopt end
+end//let//then
+else
+xinterp_irclslst(env0, dcls, irv0)
+end//let//end-of-[list_cons(ircl,dcls)]
+) where
+{
+//
+(*
+val () =
+prerrln("xinterp_irclslst: dcls = ", dcls)
+val () =
+prerrln("xinterp_irclslst: irv0 = ", irv0)
+*)
+//
+}(*where*)//end[xinterp_irclslst(env0,dcls,irv0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

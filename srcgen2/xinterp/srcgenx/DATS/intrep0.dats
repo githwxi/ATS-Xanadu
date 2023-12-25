@@ -159,14 +159,14 @@ IRPAT(loc, t2p, nod) end
 irpat_get_lctn(irp) =
 let
 val+
-IRPAT(loc,t2p,nod) = irp in loc
-end
+IRPAT
+(loc,t2p,nod) = irp in loc end
 #implfun
 irpat_get_node(irp) =
 let
 val+
-IRPAT(loc,t2p,nod) = irp in nod
-end
+IRPAT
+(loc,t2p,nod) = irp in nod end
 //
 endloc (*local*) // end of [local(irpat)]
 
@@ -201,17 +201,110 @@ IREXP(loc, t2p, nod) end
 irexp_get_lctn(ire) =
 let
 val+
-IREXP(loc,t2p,nod) = ire in loc
-end
+IREXP
+(loc,t2p,nod) = ire in loc end
 #implfun
 irexp_get_node(ire) =
 let
 val+
-IREXP(loc,t2p,nod) = ire in nod
-end
+IREXP
+(loc,t2p,nod) = ire in nod end
 //
 endloc (*local*) // end of [local(irexp)]
 
+(* ****** ****** *)
+//
+local
+//
+datatype
+irgua =
+IRGUA of
+(
+loctn, irgua_node)
+#absimpl
+irgua_tbox = irgua
+//
+in (* in-of-local *)
+//
+#implfun
+irgua_make_node
+(   loc,nod   ) = IRGUA(loc,nod)
+//
+#implfun
+irgua_get_lctn(irg) =
+let
+  val+
+  IRGUA(loc,nod) = irg in loc end
+#implfun
+irgua_get_node(irg) =
+let
+  val+
+  IRGUA(loc,nod) = irg in nod end
+//
+endloc (*local*) // end of [local(irgua)]
+//
+(* ****** ****** *)
+//
+local
+//
+datatype
+irgpt =
+IRGPT of
+(
+loctn, irgpt_node)
+#absimpl
+irgpt_tbox = irgpt
+//
+in (* in-of-local *)
+//
+#implfun
+irgpt_make_node
+(   loc,nod   ) = IRGPT(loc,nod)
+//
+#implfun
+irgpt_get_lctn(gpt) =
+let
+  val+
+  IRGPT(loc,nod) = gpt in loc end
+#implfun
+irgpt_get_node(gpt) =
+let
+  val+
+  IRGPT(loc,nod) = gpt in nod end
+//
+endloc (*local*) // end of [local(irgpt)]
+//
+(* ****** ****** *)
+//
+local
+//
+datatype
+ircls =
+IRCLS of
+(
+loctn, ircls_node)
+#absimpl
+ircls_tbox = ircls
+//
+in (* in-of-local *)
+//
+#implfun
+ircls_make_node
+(   loc,nod   ) = IRCLS(loc,nod)
+//
+#implfun
+ircls_get_lctn(cls) =
+let
+  val+
+  IRCLS(loc,nod) = cls in loc end
+#implfun
+ircls_get_node(cls) =
+let
+  val+
+  IRCLS(loc,nod) = cls in nod end
+//
+endloc (*local*) // end of [local(ircls)]
+//
 (* ****** ****** *)
 
 local

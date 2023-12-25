@@ -605,14 +605,21 @@ trans2a_f2arglst_elim
 //
 val
 dimp =
+if
+not
+(
+d2cst_tmpq(d2c0)
+)
+then (dimp) else
 let
 val
 loc1 =
-dimp.lctn()
+dimp.lctn((*0*))
 val svts =
 list_reverse(svts) in//let
 dimpl_make_node
-(loc1, DIMPLone2(d2c0, svts)) end
+(loc1, DIMPLone2(d2c0, svts))
+end(*let*)//end-of-[val(dimp)]
 //
 local
 //

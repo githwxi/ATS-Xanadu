@@ -91,6 +91,8 @@ case+ irv0 of
 |IRVbtf(btf2) =>
 (btf1 = btf2) | _ => false)
 //
+|IRPcapp _ => f0_capp(irp0, irv0)
+//
 |IRPtup0 _ => f0_tup0(irp0, irv0)
 |IRPtup1 _ => f0_tup1(irp0, irv0)
 //
@@ -98,6 +100,33 @@ case+ irv0 of
 //
 ) where
 {
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_capp
+(irp0: irpat
+,irv0: irval): bool =
+let
+//
+val-
+IRPcapp
+( d2c1, irps) = irp0.node()
+//
+in//let
+(
+case+ irv0 of
+| IRVcapp(d2c2, irvs) =>
+(
+  if
+  (d2c1 != d2c2)
+  then false else
+  irpatlst_valck_arr(irps, irvs) )
+| _ (*non-IRVcapp*) => (  false  ) )
+end(*let*)//end-of-[f0_capp(irp0,irv0)]
+//
+(* ****** ****** *)
 //
 fun
 f0_tup0
@@ -115,6 +144,8 @@ case+ irv0 of
   irpatlst_valck_arr(irps,irvs) )
 | _ (*non-IRVtup0*) => (  false  ) )
 end(*let*)//end-of-[f0_tup0(irp0,irv0)]
+//
+(* ****** ****** *)
 //
 fun
 f0_tup1
@@ -134,6 +165,9 @@ case+ irv0 of
   irpatlst_valck_arr(irps, irvs) )
 | _ (*non-IRVtup1*) => (  false  ) )
 end(*let*)//end-of-[f0_tup1(irp0,irv0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 }(*where*)//end-of-[irpat_valck(irp0,irv0)]
 //
@@ -157,7 +191,7 @@ let
 z2forall$test<x0,y0> = irpat_valck
 //
 in//let
-gseq_z2forall<xs,ys><x0,y0>(irps, irvs)
+gseq_z2forall<xs,ys><x0,y0>(irps,irvs)
 end(*let*)//end-of-[ f0_tup0(irp0, irv0) ]
 //
 in//local
@@ -184,6 +218,8 @@ irpat_match
 case+
 irp0.node() of
 //
+|IRPany
+((*00*)) => ()
 |IRPvar
 ( d2v1 ) =>
 (
@@ -195,6 +231,10 @@ irvar_match
 |IRPchr(chr) => ((*void*))
 |IRPflt(flt) => ((*void*))
 |IRPstr(str) => ((*void*))
+//
+|IRPcapp _ =>
+(
+  f0_capp(env0, irp0, irv0))
 //
 |IRPtup0 _ =>
 (
@@ -209,6 +249,39 @@ irvar_match
 {
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_capp
+(env0:
+!xintenv
+,irp0: irpat
+,irv0: irval): void =
+let
+//
+(*
+val () =
+prerrln
+("f0_capp: irp0 = ", irp0)
+val () =
+prerrln
+("f0_capp: irv0 = ", irv0)
+*)
+//
+val-
+IRPcapp
+( d2c1, irps) = irp0.node()
+//
+in//let
+(
+case+ irv0 of
+|
+IRVcapp
+(d2c2, irvs) =>
+irpatlst_match_arr
+(env0, irps, irvs) | _ => ( (*0*) ) )
+end(*let*)//end-of-[ f0_capp(irp0, irv0) ]
+//
 (* ****** ****** *)
 //
 fun

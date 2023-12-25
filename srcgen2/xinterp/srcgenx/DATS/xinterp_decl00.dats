@@ -66,6 +66,9 @@ excptcon
 XINTERP_IRVALDCL of irvaldcl
 (* ****** ****** *)
 (* ****** ****** *)
+#symload
+node with dimpl_get_node
+(* ****** ****** *)
 //
 #symload
 lctn with irdcl_get_lctn
@@ -82,6 +85,28 @@ dpid with irfundcl_get_dpid
 farg with irfundcl_get_farg
 #symload
 tdxp with irfundcl_get_tdxp
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+irexp_lam0
+( loc0
+: loctn
+, tknd
+: token
+, fias
+: fiarglst
+, ire1: irexp): irexp =
+(
+case+ fias of
+|
+list_nil() => ire1
+|
+list_cons _ =>
+irexp_make_node
+( loc0
+, IRElam0(tknd, fias, ire1)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -128,6 +153,11 @@ IRDvardclst _ =>
 IRDfundclst _ =>
 (
   f0_fundclst(env0, ird0) )
+//
+|
+IRDimplmnt0 _ =>
+(
+  f0_implmnt0(env0, ird0) )
 //
 |
 IRDnone1(d3cl) => ( (*void*) )
@@ -345,8 +375,6 @@ in//let
 end//let//end-of-[list_cons(irf1, irfs)]
 )
 //
-(* ****** ****** *)
-//
 in//let
 //
 case+ tqas of
@@ -363,6 +391,71 @@ end(*let*)//end-of-[list_nil(...)]
 |list_cons(tqa1, tqas) => ((*template*))
 //
 end(*let*)//end-of-[f0_fundclst(env0,ird0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_implmnt0
+( env0:
+! xintenv
+, ird0: irdcl): void =
+let
+val
+IRDimplmnt0
+( tknd
+, stmp
+, sqas, tqas
+, dimp, t2is
+, fias, ire1) = ird0.node()
+in//let
+//
+case-
+dimp.node() of
+|
+DIMPLone1
+(  d2c1  ) =>
+(
+case+ fias of
+//
+|
+list_nil
+( (*0*) ) =>
+let
+val irv1 =
+(
+xinterp_irexp
+(env0 , ire1))
+in//let
+ircst_match
+(env0, d2c1, irv1) endlet
+//
+|
+list_cons
+(fia1, fias) =>
+let
+//
+val
+loc0 =
+ird0.lctn((*0*))
+val
+fenv =
+xintenv_snap(env0)
+val
+body =
+irexp_lam0
+(loc0,tknd,fias,ire1)
+val
+irv1 =
+IRVlam0(fia1, body, fenv)
+//
+in//let
+ircst_match(env0, d2c1, irv1) endlet
+//
+)(*case+*)//end-of-[DIMPLone1(d2c1)]
+//
+| _(*non-DIMPLone1*) => ((*skipped*))
+//
+end(*let*)//end-of-[f0_implmnt0(env0,ird0)]
 //
 (* ****** ****** *)
 //
