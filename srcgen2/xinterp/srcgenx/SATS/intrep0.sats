@@ -118,6 +118,10 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 #typedef f3arg = $D3E.f3arg
 (* ****** ****** *)
+#typedef d3gua = $D3E.d3gua
+#typedef d3gpt = $D3E.d3gpt
+#typedef d3cls = $D3E.d3cls
+(* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 #typedef timpl = $D3E.timpl
 (* ****** ****** *)
@@ -142,6 +146,9 @@ XATSOPT "./../../.."
 #typedef l3d3elst = $D3E.l3d3elst
 (* ****** ****** *)
 #typedef f3arglst = $D3E.f3arglst
+(* ****** ****** *)
+#typedef d3gualst = $D3E.d3gualst
+#typedef d3clslst = $D3E.d3clslst
 (* ****** ****** *)
 #typedef teqd3exp = $D3E.teqd3exp
 (* ****** ****** *)
@@ -397,6 +404,79 @@ irexp_make_node
 (* ****** ****** *)
 //
 datatype
+irgua_node =
+| IRGUAexp of (irexp)
+| IRGUAmat of (irexp, irpat)
+//
+(* ****** ****** *)
+//
+datatype
+ircls_node =
+| IRCLSgpt of irgpt
+| IRCLScls of (irgpt, irexp)
+and
+irgpt_node =
+| IRGPTpat of (irpat)
+| IRGPTgua of (irpat, irgualst)
+//
+(* ****** ****** *)
+//
+fun
+irgua_fprint:(FILR,irgua)->void
+fun
+irgpt_fprint:(FILR,irgpt)->void
+fun
+ircls_fprint:(FILR,ircls)->void
+//
+(* ****** ****** *)
+//
+fun
+irgua_get_lctn(irgua): loc_t
+fun
+irgua_get_node(irgua): irgua_node
+//
+#symload lctn with irgua_get_lctn
+#symload node with irgua_get_node
+//
+(* ****** ****** *)
+//
+fun
+irgpt_get_lctn(irgpt): loc_t
+fun
+irgpt_get_node(irgpt): irgpt_node
+//
+#symload lctn with irgpt_get_lctn
+#symload node with irgpt_get_node
+//
+(* ****** ****** *)
+//
+fun
+ircls_get_lctn(ircls): loc_t
+fun
+ircls_get_node(ircls): ircls_node
+//
+#symload lctn with ircls_get_lctn
+#symload node with ircls_get_node
+//
+(* ****** ****** *)
+//
+fun
+irgua_make_node
+(loc0:loc_t,node:irgua_node):irgua
+fun
+irgpt_make_node
+(loc0:loc_t,node:irgpt_node):irgpt
+fun
+ircls_make_node
+(loc0:loc_t,node:ircls_node):ircls
+#symload irgua with irgua_make_node
+#symload irgpt with irgpt_make_node
+#symload ircls with ircls_make_node
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
 irdcl_node =
 //
 |IRDd3ecl of (d3ecl)
@@ -639,6 +719,18 @@ trxd3ir_f3arg
 *)
 //
 (* ****** ****** *)
+//
+fun
+trxd3ir_d3gua
+(env0: !trdienv, d3g0: d3gua): irgua
+fun
+trxd3ir_d3gpt
+(env0: !trdienv, dgpt: d3gpt): irgpt
+fun
+trxd3ir_d3cls
+(env0: !trdienv, dcls: d3cls): ircls
+//
+(* ****** ****** *)
 fun
 trxd3ir_d3ecl
 (env0: !trdienv, d3cl: d3ecl): irdcl
@@ -667,6 +759,14 @@ fun
 trxd3ir_f3arglst
 (env0: !trdienv, f3as: f3arglst): fiarglst
 (* ****** ****** *)
+//
+fun
+trxd3ir_d3gualst
+(env0: !trdienv, d3gs: d3gualst): irgualst
+fun
+trxd3ir_d3clslst
+(env0: !trdienv, dcls: d3clslst): irclslst
+//
 (* ****** ****** *)
 //
 fun

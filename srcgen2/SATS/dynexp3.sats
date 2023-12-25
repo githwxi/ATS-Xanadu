@@ -373,124 +373,6 @@ d3pat_make_styp_node
 #symload d3pat with d3pat_make_styp_node
 //
 (* ****** ****** *)
-//
-datatype
-f3arg_node =
-//
-(*
-| F3ARGnone of (token)
-*)
-//
-|
-F3ARGdapp of
-(sint(*npf*), d3patlst(*args*))
-//
-|
-F3ARGsapp of
-( s2varlst(*s2vs*)
-, s2explst(*s2ps*) ) // static
-//
-|
-F3ARGmets of (s2explst(*mets*))
-//
-(*
-|
-F3ARGsapq of (s2varlst(*synd*))
-*)
-//
-(* ****** ****** *)
-//
-fun
-f3arg_fprint:(FILR,f3arg)->void
-//
-(* ****** ****** *)
-fun
-f3arg_get_lctn(f3arg): loc_t
-fun
-f3arg_get_node(f3arg): f3arg_node
-(* ****** ****** *)
-#symload lctn with f3arg_get_lctn
-#symload node with f3arg_get_node
-(* ****** ****** *)
-//
-fun
-f3arg_make_node
-(loc0:loc_t,node:f3arg_node):f3arg
-#symload f3arg with f3arg_make_node
-//
-(* ****** ****** *)
-//
-datatype
-d3gua_node =
-| D3GUAexp of (d3exp)
-| D3GUAmat of (d3exp, d3pat)
-//
-(* ****** ****** *)
-//
-datatype
-d3cls_node =
-| D3CLSgpt of d3gpt
-| D3CLScls of (d3gpt, d3exp)
-and
-d3gpt_node =
-| D3GPTpat of (d3pat)
-| D3GPTgua of (d3pat, d3gualst)
-//
-(* ****** ****** *)
-//
-fun
-d3gua_fprint:(FILR,d3gua)->void
-fun
-d3gpt_fprint:(FILR,d3gpt)->void
-fun
-d3cls_fprint:(FILR,d3cls)->void
-//
-(* ****** ****** *)
-//
-fun
-d3gua_get_lctn(d3gua): loc_t
-fun
-d3gua_get_node(d3gua): d3gua_node
-//
-#symload lctn with d3gua_get_lctn
-#symload node with d3gua_get_node
-//
-(* ****** ****** *)
-//
-fun
-d3gpt_get_lctn(d3gpt): loc_t
-fun
-d3gpt_get_node(d3gpt): d3gpt_node
-//
-#symload lctn with d3gpt_get_lctn
-#symload node with d3gpt_get_node
-//
-(* ****** ****** *)
-//
-fun
-d3cls_get_lctn(d3cls): loc_t
-fun
-d3cls_get_node(d3cls): d3cls_node
-//
-#symload lctn with d3cls_get_lctn
-#symload node with d3cls_get_node
-//
-(* ****** ****** *)
-//
-fun
-d3gua_make_node
-(loc0:loc_t,node:d3gua_node):d3gua
-fun
-d3gpt_make_node
-(loc0:loc_t,node:d3gpt_node):d3gpt
-fun
-d3cls_make_node
-(loc0:loc_t,node:d3cls_node):d3cls
-#symload d3gua with d3gua_make_node
-#symload d3gpt with d3gpt_make_node
-#symload d3cls with d3cls_make_node
-//
-(* ****** ****** *)
 
 datatype
 d3exp_node =
@@ -665,6 +547,124 @@ d3exp_make_styp_node
 //
 #symload d3exp with d3exp_make_node
 #symload d3exp with d3exp_make_styp_node
+//
+(* ****** ****** *)
+//
+datatype
+f3arg_node =
+//
+(*
+| F3ARGnone of (token)
+*)
+//
+|
+F3ARGdapp of
+(sint(*npf*), d3patlst(*args*))
+//
+|
+F3ARGsapp of
+( s2varlst(*s2vs*)
+, s2explst(*s2ps*) ) // static
+//
+|
+F3ARGmets of (s2explst(*mets*))
+//
+(*
+|
+F3ARGsapq of (s2varlst(*synd*))
+*)
+//
+(* ****** ****** *)
+//
+fun
+f3arg_fprint:(FILR,f3arg)->void
+//
+(* ****** ****** *)
+fun
+f3arg_get_lctn(f3arg): loc_t
+fun
+f3arg_get_node(f3arg): f3arg_node
+(* ****** ****** *)
+#symload lctn with f3arg_get_lctn
+#symload node with f3arg_get_node
+(* ****** ****** *)
+//
+fun
+f3arg_make_node
+(loc:loc_t, nod:f3arg_node):f3arg
+#symload f3arg with f3arg_make_node
+//
+(* ****** ****** *)
+//
+datatype
+d3gua_node =
+| D3GUAexp of (d3exp)
+| D3GUAmat of (d3exp, d3pat)
+//
+(* ****** ****** *)
+//
+datatype
+d3cls_node =
+| D3CLSgpt of d3gpt
+| D3CLScls of (d3gpt, d3exp)
+and
+d3gpt_node =
+| D3GPTpat of (d3pat)
+| D3GPTgua of (d3pat, d3gualst)
+//
+(* ****** ****** *)
+//
+fun
+d3gua_fprint:(FILR,d3gua)->void
+fun
+d3gpt_fprint:(FILR,d3gpt)->void
+fun
+d3cls_fprint:(FILR,d3cls)->void
+//
+(* ****** ****** *)
+//
+fun
+d3gua_get_lctn(d3gua): loc_t
+fun
+d3gua_get_node(d3gua): d3gua_node
+//
+#symload lctn with d3gua_get_lctn
+#symload node with d3gua_get_node
+//
+(* ****** ****** *)
+//
+fun
+d3gpt_get_lctn(d3gpt): loc_t
+fun
+d3gpt_get_node(d3gpt): d3gpt_node
+//
+#symload lctn with d3gpt_get_lctn
+#symload node with d3gpt_get_node
+//
+(* ****** ****** *)
+//
+fun
+d3cls_get_lctn(d3cls): loc_t
+fun
+d3cls_get_node(d3cls): d3cls_node
+//
+#symload lctn with d3cls_get_lctn
+#symload node with d3cls_get_node
+//
+(* ****** ****** *)
+//
+fun
+d3gua_make_node
+(loc0:loc_t,node:d3gua_node):d3gua
+fun
+d3gpt_make_node
+(loc0:loc_t,node:d3gpt_node):d3gpt
+fun
+d3cls_make_node
+(loc0:loc_t,node:d3cls_node):d3cls
+#symload d3gua with d3gua_make_node
+#symload d3gpt with d3gpt_make_node
+#symload d3cls with d3cls_make_node
 //
 (* ****** ****** *)
 //

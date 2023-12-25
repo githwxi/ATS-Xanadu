@@ -83,6 +83,17 @@ _(*DATS*)="./../DATS/intrep0.dats"
 #symload lctn with f3arg_get_lctn
 #symload node with f3arg_get_node
 (* ****** ****** *)
+//
+#symload lctn with d3gua_get_lctn
+#symload node with d3gua_get_node
+//
+#symload lctn with d3gpt_get_lctn
+#symload node with d3gpt_get_node
+//
+#symload lctn with d3cls_get_lctn
+#symload node with d3cls_get_node
+//
+(* ****** ****** *)
 #symload lctn with d3ecl_get_lctn
 #symload node with d3ecl_get_node
 (* ****** ****** *)
@@ -426,6 +437,7 @@ irexp(loc0, IREcst(d2c))
 |D3Elet0 _ => f0_let0(env0, d3e0)
 //
 |D3Eift0 _ => f0_ift0(env0, d3e0)
+|D3Ecas0 _ => f0_cas0(env0, d3e0)
 //
 |D3Eseqn _ => f0_seqn(env0, d3e0)
 //
@@ -606,8 +618,32 @@ trxd3ir_d3expopt(env0, dels)
 //
 in//let
 irexp_make_node
-(loc0, IREift0(ire1,ithn,iels))
+(loc0, IREift0(ire1, ithn, iels))
 end(*let*)//end-of-[f0_ift0(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_cas0
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val-
+D3Ecas0
+( tknd
+, d3e1, dcls) = d3e0.node()
+//
+val ire1 =
+trxd3ir_d3exp(env0, d3e1)
+val dcls =
+trxd3ir_d3clslst(env0, dcls)
+//
+in//let
+irexp_make_node
+(loc0, IREcas0(tknd, ire1, dcls))
+end(*let*)//end-of-[f0_cas0(env0,d3e0)]
 //
 (* ****** ****** *)
 //
@@ -809,6 +845,52 @@ prerrln("trxd3ir_d3exp: d3e0 = ", d3e0)
 }(*where*) // end of [trxd3ir_d3exp(...)]
 //
 (* ****** ****** *)
+//
+#implfun
+trxd3ir_d3cls
+(env0 , d3cl) =
+(
+case+
+d3cl.node() of
+|
+D3CLSgpt(dgpt) =>
+(
+ircls
+(loc0, IRCLSgpt(dgpt))
+) where
+{
+val loc0 =
+d3cl.lctn((*void*))
+val dgpt =
+trxd3ir_d3gpt(env0, dgpt) }
+//
+|
+D3CLScls(dgpt, d3e1) =>
+(
+ircls
+( loc0
+, IRCLScls(dgpt, ire1))
+) where
+{
+val loc0 =
+d3cl.lctn((*void*))
+val dgpt =
+trxd3ir_d3gpt(env0, dgpt)
+val ire1 =
+trxd3ir_d3exp(env0, d3e1) }
+) where
+{
+//
+val
+loc0 = d3cl.lctn( (*void*) )
+val () =
+prerrln("trxd3ir_d3cls: loc0 = ", loc0)
+val () =
+prerrln("trxd3ir_d3cls: d3cl = ", d3cl)
+//
+}(*where*) // end-of-[trxd3ir_d3cls(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -922,6 +1004,20 @@ FIARG(trxd3ir_d3patlst(env0, d3ps))
 end//let//end-of-[f0_dyn0(env0,f3a1)]
 //
 } (*where+*)//end-[trxd3ir_f3arglst(env0,f3as)]
+//
+(* ****** ****** *)
+//
+#implfun
+trxd3ir_d3gualst
+( env0, d3gs ) =
+(
+  list_trxd3ir_fnp(env0, d3gs, trxd3ir_d3gua))
+//
+#implfun
+trxd3ir_d3clslst
+( env0, dcls ) =
+(
+  list_trxd3ir_fnp(env0, dcls, trxd3ir_d3cls))
 //
 (* ****** ****** *)
 (* ****** ****** *)
