@@ -208,8 +208,9 @@ _ (* error *) =>
 end (*let*) // end of [p1_napp(buf,err)]
 
 (* ****** ****** *)
+in(* in-of-local *)
+(* ****** ****** *)
 
-in(*in-of-local*)
 //
 #implfun
 p1_d0pat(buf, err) =
@@ -972,8 +973,8 @@ end (*let*) // HX: indicating a parsing error
 end (*let*) // end of [fun-p1_napp(buf, err)]
 
 (* ****** ****** *)
-
-in(*in-of-local*)
+in(* in-of-local *)
+(* ****** ****** *)
 
 #implfun
 p1_d0exp(buf, err) =
@@ -2294,7 +2295,9 @@ end (*let*) // end of [list_cons]
 //
 end (*let*)//end-of-[p2_d0exp_app(buf,err)]
 
-in(*in-of-local*)
+(* ****** ****** *)
+in(* in-of-local *)
+(* ****** ****** *)
 
 #implfun
 p1_d0gua(buf, err) =
