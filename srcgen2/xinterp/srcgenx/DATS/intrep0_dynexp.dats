@@ -205,6 +205,8 @@ irpat(loc0, IRPstr(tok))
 ( d2v ) =>
 irpat(loc0, IRPvar(d2v))
 //
+|D3Pdapp _ => f0_dapp(env0, d3p0)
+//
 |D3Ptup0 _ => f0_tup0(env0, d3p0)
 |D3Ptup1 _ => f0_tup1(env0, d3p0)
 |D3Prcd2 _ => f0_rcd2(env0, d3p0)
@@ -220,6 +222,59 @@ D3Pannot _ => f0_annot(env0, d3p0)
 (* ****** ****** *)
 //
 val loc0 = d3p0.lctn()
+//
+(* ****** ****** *)
+//
+fun
+f0_dapp
+( env0:
+! trdienv
+, d3p0: d3pat): irpat =
+let
+//
+val-
+D3Pdapp
+( d3f0
+, npf1, d3ps) = d3p0.node()
+//
+val d3ps =
+(
+  pfrmv_npf1_d3ps(npf1, d3ps))
+val irps =
+(
+  trxd3ir_d3patlst(env0, d3ps))
+//
+val d3f0 =
+(
+f0_detapq(d3f0)) where
+{
+fun
+f0_detapq
+( d3f0
+: d3pat): d3pat =
+(
+case+
+d3f0.node() of
+|D3Ptapq
+(d3f1, t2js) =>
+(
+f0_detapq(d3f1)) | _ => d3f0) }
+//
+in
+//
+case+
+d3f0.node() of
+|
+D3Pcon(d2c1) =>
+irpat(loc0, IRPcapp(d2c1, irps))
+//
+end where
+{
+val () =
+prerrln
+("\
+trxd3ir_d3pat:f0_dapp: d3p0 = ", d3p0)
+}(*where*)//end-of-[f0_dapp(env0,d3p0)]
 //
 (* ****** ****** *)
 //
@@ -363,6 +418,9 @@ irexp(loc0, IREcst(d2c))
 //
 |D3Etimp _ => f0_timp(env0, d3e0)
 //
+|D3Etapp _ => f0_tapp(env0, d3e0)
+|D3Etapq _ => f0_tapq(env0, d3e0)
+//
 |D3Edapp _ => f0_dapp(env0, d3e0)
 //
 |D3Elet0 _ => f0_let0(env0, d3e0)
@@ -433,6 +491,38 @@ irexp_make_node
   dimp = trxd3ir_d3ecl(env0, dimp) }
 //
 end(*let*)//end-of-[f0_timp(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tapp
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+(
+trxd3ir_d3exp(env0, d3f0)
+) where
+{
+//
+val-
+D3Etapp
+( d3f0, s2es) = d3e0.node()
+}(*where*)//end-of-[f0_tapp(env0,d3e0)]
+//
+fun
+f0_tapq
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+(
+trxd3ir_d3exp(env0, d3f0)
+) where
+{
+//
+val-
+D3Etapq
+( d3f0, t2js) = d3e0.node()
+}(*where*)//end-of-[f0_tapq(env0,d3e0)]
 //
 (* ****** ****** *)
 //

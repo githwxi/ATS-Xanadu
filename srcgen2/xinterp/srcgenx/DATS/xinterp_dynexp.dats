@@ -114,6 +114,7 @@ ire0.node() of
  IRVstr(token2dstr(tok)))
 //
 |IREvar _ => f0_var(env0, ire0)
+|IREcon _ => f0_con(env0, ire0)
 |IREcst _ => f0_cst(env0, ire0)
 //
 |IREtimp _ => f0_timp(env0, ire0)
@@ -176,6 +177,20 @@ val opt0 =
 xintenv_d2vrch_opt(env0, d2v0) }
 //
 end(*let*)//end-of-[f0_var(env0,ire0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_con
+( env0:
+! xintenv
+, ire0: irexp): irval =
+(
+IRVcon(d2c0) ) where
+{
+val-
+IREcon(d2c0) = ire0.node()
+}
 //
 (* ****** ****** *)
 //
@@ -304,13 +319,12 @@ val irvs =
 in//let
 //
 case+ irf0 of
-(*
-|IRVlam0 _ => ...
-|IRVfix0 _ => ...
-*)
 //
 |IRVfun _ => f1_fun(irf0, irvs)
 //
+|IRVcon _ => f1_con(irf0, irvs)
+//
+|IRVlam0 _ => f1_lam0(irf0, irvs)
 |IRVfix0 _ => f1_fix0(irf0, irvs)
 //
 |_(*otherwise*) =>
@@ -340,8 +354,57 @@ f1_fun
 , irvs: irvalist): irval =
 let
 val-
-IRVfun(fopr) = irf0 in fopr(irvs)
+IRVfun
+(fopr) = irf0 in fopr(irvs)//val-
+end(*let*)//end-of-[f1_con(irf0,irvs)]
+//
+(* ****** ****** *)
+//
+fun
+f1_con
+( irf0: irval
+, irvs: irvalist): irval =
+let
+val-
+IRVcon(d2c1) = irf0
+in//let
+(
+  IRVcapp(d2c1, irvs)) where
+{
+val irvs = a1rsz_make_list(irvs) }
 end(*let*)//end-of-[f1_fun(irf0,irvs)]
+//
+(* ****** ****** *)
+//
+fun
+f1_lam0
+( irf0: irval
+, irvs: irvalist): irval =
+let
+//
+val-
+IRVlam0
+( farg
+, body, fenv) = irf0
+//
+val
+env1 =
+xintenv_make_dapp(env0, fenv)
+//
+val () =
+fiarg_match(env1, farg, irvs)
+//
+in//let
+//
+let
+val
+dres =
+xinterp_irexp
+( env1, body )
+val () =
+xintenv_free_dapp(env1) in dres end
+//
+end(*let*)//end-of-[f1_lam0(irf0,irvs)]
 //
 (* ****** ****** *)
 //
@@ -378,6 +441,7 @@ xintenv_free_dapp(env1) in dres end
 //
 end(*let*)//end-of-[f1_fix0(irf0,irvs)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 }(*where*)//end-of-[f0_dapp(env0,d3e0)]

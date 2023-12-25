@@ -263,7 +263,8 @@ irpat_node =
 |IRPflat of (irpat)
 |IRPfree of (irpat)
 //
-|IRPcapp of (d2con, irpatlst)
+|IRPcapp of
+( d2con, irpatlst )
 //
 |IRPtup0 of (irpatlst)
 |IRPtup1 of (token, irpatlst)
