@@ -178,6 +178,13 @@ trxd3ir_d3pat
 case+
 d3p0.node() of
 //
+|D3Pany
+((*0*)) =>
+irpat(loc0, IRPany(   ))
+|D3Pvar
+( d2v ) =>
+irpat(loc0, IRPvar(d2v))
+//
 |D3Pint
 ( tok ) =>
 let
@@ -211,10 +218,6 @@ irpat(loc0, IRPflt(tok))
 |D3Pstr
 ( tok ) =>
 irpat(loc0, IRPstr(tok))
-//
-|D3Pvar
-( d2v ) =>
-irpat(loc0, IRPvar(d2v))
 //
 |D3Pdapp _ => f0_dapp(env0, d3p0)
 //
@@ -847,6 +850,86 @@ prerrln("trxd3ir_d3exp: d3e0 = ", d3e0)
 (* ****** ****** *)
 //
 #implfun
+trxd3ir_d3gua
+  (env0, dgua) =
+(
+case+
+dgua.node() of
+|
+D3GUAexp(d3e1) =>
+let
+val ire1 =
+trxd3ir_d3exp(env0, d3e1)
+in//let
+irgua(loc0, IRGUAexp(ire1))
+end//let//end-of-[D3GUAexp(...)]
+|
+D3GUAmat(d3e1,d3p2) =>
+let
+val ire1 =
+trxd3ir_d3exp(env0, d3e1)
+val irp2 =
+trxd3ir_d3pat(env0, d3p2)
+in//let
+irgua(loc0, IRGUAmat(ire1, irp2))
+end//let//end-of-[D3GUAmat(...)]
+) where
+{
+//
+val loc0 = dgua.lctn( (*void*) )
+//
+(*
+val (  ) =
+prerrln("trans3a_d3gua: dgua = ", dgua)
+*)
+//
+}(*where*)//end-of-[trans3a_d3gua(env0,...)]
+//
+(* ****** ****** *)
+//
+#implfun
+trxd3ir_d3gpt
+  (env0, dgpt) = let
+//
+val loc0 = dgpt.lctn()
+//
+(*
+val
+val () =
+prerrln
+("trxd3ir_d3gpt: dgpt = ", dgpt)
+*)
+//
+in//let
+//
+case+
+dgpt.node() of
+//
+|
+D3GPTpat(d3p1) =>
+irgpt_make_node
+( loc0
+, IRGPTpat(irp1)) where
+{
+val irp1 =
+trxd3ir_d3pat(env0, d3p1)
+}
+|
+D3GPTgua(d3p1, d3gs) =>
+irgpt_make_node
+( loc0
+, IRGPTgua(irp1, irgs)) where
+{
+val
+irp1 = trxd3ir_d3pat(env0, d3p1)
+val
+irgs = trxd3ir_d3gualst(env0, d3gs) }
+//
+end(*let*)//end-of-[trxd3ir_d3gpt(env0,dgpt)]
+//
+(* ****** ****** *)
+//
+#implfun
 trxd3ir_d3cls
 (env0 , d3cl) =
 (
@@ -881,14 +964,16 @@ trxd3ir_d3exp(env0, d3e1) }
 ) where
 {
 //
-val
-loc0 = d3cl.lctn( (*void*) )
-val () =
-prerrln("trxd3ir_d3cls: loc0 = ", loc0)
-val () =
-prerrln("trxd3ir_d3cls: d3cl = ", d3cl)
+val loc0 = d3cl.lctn( (*void*) )
 //
-}(*where*) // end-of-[trxd3ir_d3cls(...)]
+(*
+val (  ) =
+prerrln("trxd3ir_d3cls: loc0 = ", loc0)
+val (  ) =
+prerrln("trxd3ir_d3cls: d3cl = ", d3cl)
+*)
+//
+}(*where*)//end-of-[trxd3ir_d3cls(env0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -906,7 +991,7 @@ TEQD3EXPsome(teq1, d3e2) =>
 TEQIREXPsome(teq1, ire2) where
 { val
   ire2 = trxd3ir_d3exp(env0, d3e2) } )
-(*case+*)//end-of(trans3a_teqd3exp(env0,tdxp))
+(*case+*)//end-of(trxd3ir_teqd3exp(env0,tdxp))
 //
 (* ****** ****** *)
 (* ****** ****** *)

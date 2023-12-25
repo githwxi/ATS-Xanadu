@@ -884,7 +884,6 @@ trtmp3b_d3cls
 val loc0 = dcls.lctn()
 //
 (*
-val
 val () =
 prerrln
 ("trtmp3b_d3cls: dcls = ", dcls)

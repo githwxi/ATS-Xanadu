@@ -63,18 +63,13 @@ else (if x >= 1 then r2 else r1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-val fact1_10 = fact1(10)
+val fact1_10 = fact1(10)//end-of-val
 (* ****** ****** *)
-val fibo1_10 = fibo1(10)
+val fibo1_10 = fibo1(10)//end-of-val
 (* ****** ****** *)
-val fact2_10 = fact2(10)
+val fact2_10 = fact2(10)//end-of-val
 (* ****** ****** *)
-val fibo2_10 = fibo2(10)
-(* ****** ****** *)
-(* ****** ****** *)
-val mylist10 =
-  list(0,1,2,3,4,5,6,7,8,9)
-val length10 = list_length(mylist10)
+val fibo2_10 = fibo2(10)//end-of-val
 (* ****** ****** *)
 (* ****** ****** *)
 
