@@ -28,7 +28,8 @@ fun
 fibo1
 (x: sint): sint =
 if (x >= 2)
-then fibo1(x-2)+fibo1(x-1) else x
+then
+fibo1(x-2)+fibo1(x-1) else x
 //
 (* ****** ****** *)
 //
@@ -41,7 +42,23 @@ fact2
 fun
 loop
 @(x: sint, r: sint): sint =
-if x > 0 then loop@(x-1, x*r) else r
+if (x > 0)
+then loop@(x-1, x*r) else (r)
+}
+//
+(* ****** ****** *)
+//
+fun
+fibo2
+(x: sint): sint =
+(
+loop@(x, 0, 1)) where
+{
+fun
+loop@(x, r1, r2) =
+if (x >= 2)
+then loop@(x-1, r2, r1+r2)
+else (if x >= 1 then r2 else r1)
 }
 //
 (* ****** ****** *)
@@ -51,6 +68,13 @@ val fact1_10 = fact1(10)
 val fibo1_10 = fibo1(10)
 (* ****** ****** *)
 val fact2_10 = fact2(10)
+(* ****** ****** *)
+val fibo2_10 = fibo2(10)
+(* ****** ****** *)
+(* ****** ****** *)
+val mylist10 =
+  list(0,1,2,3,4,5,6,7,8,9)
+val length10 = list_length(mylist10)
 (* ****** ****** *)
 (* ****** ****** *)
 

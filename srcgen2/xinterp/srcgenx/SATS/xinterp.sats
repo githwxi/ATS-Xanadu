@@ -118,6 +118,8 @@ irval =
 |IRVcst of (d2cst)
 *)
 //
+|IRVcon of (d2con)
+//
 |IRVfun of irvalfun
 //
 (*
@@ -127,6 +129,10 @@ irvalist here. But
 Using [irvalarr] for
 testing is exciting!
 *)
+|
+IRVcapp of
+( d2con , irvalarr )
+//
 |IRVtup0 of irvalarr
 |IRVtup1 of
 (token(*knd*), irvalarr)

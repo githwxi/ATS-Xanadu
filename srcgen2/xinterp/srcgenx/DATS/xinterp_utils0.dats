@@ -183,10 +183,12 @@ irpat_match
 (
 case+
 irp0.node() of
-|IRPvar(d2v1) =>
+//
+|IRPvar
+( d2v1 ) =>
 (
-xintenv_d2vins_any
-(env0, d2v1, irv0) )
+irvar_match
+(env0,d2v1,irv0))
 //
 |IRPint(int) => ((*void*))
 |IRPbtf(btf) => ((*void*))
@@ -239,12 +241,14 @@ f0_tup1
 ,irv0: irval): void =
 let
 //
+(*
 val () =
 prerrln
 ("f0_tup1: irp0 = ", irp0)
 val () =
 prerrln
 ("f0_tup1: irv0 = ", irv0)
+*)
 //
 val-
 IRPtup1
@@ -263,10 +267,12 @@ end(*let*)//end-of-[ f0_tup1(irp0, irv0) ]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 val () =
 prerrln("irpat_match: irp0 = ", irp0)
 val () =
 prerrln("irpat_match: irv0 = ", irv0)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -323,10 +329,12 @@ irpatlst_match_lst(env0, irps, irvs))
 where
 {
 //
+(*
 val () =
 prerrln("fiarg_match: fia0 = ", fia0)
 val () =
 prerrln("fiarg_match: irvs = ", irvs)
+*)
 //
 }(*where*)//end-of-[fiarg_match(env0,fia0,irvs)]
 //
@@ -362,10 +370,12 @@ val () =
 irpat_match(e1, x0, y0)
 val e1 = $UN.delinear(e1) in () end
 //
+(*
 val () =
 prerrln("irpatlst_match: irps = ", irps)
 val () =
 prerrln("irpatlst_match: irvs = ", irvs)
+*)
 //
 in//let
   gseq_z2foreach<xs,ys><x0,y0>(irps, irvs)
