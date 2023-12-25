@@ -774,120 +774,6 @@ d2pat_make_node
 (* ****** ****** *)
 //
 datatype
-f2arg_node =
-//
-(*
-|
-F2ARGnone of (token)
-*)
-//
-|
-F2ARGdapp of
-(int(*npf*), d2patlst(*args*))
-//
-|
-F2ARGsapp of
-( s2varlst(*s2vs*)
-, s2explst(*s2ps*) ) // static
-//
-|
-F2ARGmets of (s2explst(*mets*))
-//
-(* ****** ****** *)
-//
-fun
-f2arg_fprint:(FILR,f2arg)->void
-//
-(* ****** ****** *)
-fun
-f2arg_get_lctn(f2arg): loc_t
-fun
-f2arg_get_node(f2arg): f2arg_node
-(* ****** ****** *)
-#symload lctn with f2arg_get_lctn
-#symload node with f2arg_get_node
-(* ****** ****** *)
-//
-fun
-f2arg_make_node
-(loc0:loc_t,node:f2arg_node):f2arg
-#symload f2arg with f2arg_make_node
-//
-(* ****** ****** *)
-//
-datatype
-d2gua_node =
-| D2GUAexp of (d2exp)
-| D2GUAmat of (d2exp, d2pat)
-//
-(* ****** ****** *)
-//
-datatype
-d2cls_node =
-| D2CLSgpt of d2gpt
-| D2CLScls of (d2gpt, d2exp)
-and
-d2gpt_node =
-| D2GPTpat of (d2pat)
-| D2GPTgua of (d2pat, d2gualst)
-//
-(* ****** ****** *)
-//
-fun
-d2gua_fprint:(FILR,d2gua)->void
-fun
-d2gpt_fprint:(FILR,d2gpt)->void
-fun
-d2cls_fprint:(FILR,d2cls)->void
-//
-(* ****** ****** *)
-//
-fun
-d2gua_get_lctn(d2gua): loc_t
-fun
-d2gua_get_node(d2gua): d2gua_node
-//
-#symload lctn with d2gua_get_lctn
-#symload node with d2gua_get_node
-//
-(* ****** ****** *)
-//
-fun
-d2gpt_get_lctn(d2gpt): loc_t
-fun
-d2gpt_get_node(d2gpt): d2gpt_node
-//
-#symload lctn with d2gpt_get_lctn
-#symload node with d2gpt_get_node
-//
-(* ****** ****** *)
-//
-fun
-d2cls_get_lctn(d2cls): loc_t
-fun
-d2cls_get_node(d2cls): d2cls_node
-//
-#symload lctn with d2cls_get_lctn
-#symload node with d2cls_get_node
-//
-(* ****** ****** *)
-//
-fun
-d2gua_make_node
-(loc0:loc_t,node:d2gua_node):d2gua
-fun
-d2gpt_make_node
-(loc0:loc_t,node:d2gpt_node):d2gpt
-fun
-d2cls_make_node
-(loc0:loc_t,node:d2cls_node):d2cls
-#symload d2gua with d2gua_make_node
-#symload d2gpt with d2gpt_make_node
-#symload d2cls with d2cls_make_node
-//
-(* ****** ****** *)
-//
-datatype
 d2exp_node =
 //
 |D2Eint of token
@@ -1169,6 +1055,120 @@ d2exp_make_node
 (loc0:loc_t,nod1:d2exp_node): d2exp
 //
 #symload d2exp with d2exp_make_node
+//
+(* ****** ****** *)
+//
+datatype
+f2arg_node =
+//
+(*
+|
+F2ARGnone of (token)
+*)
+//
+|
+F2ARGdapp of
+(int(*npf*), d2patlst(*args*))
+//
+|
+F2ARGsapp of
+( s2varlst(*s2vs*)
+, s2explst(*s2ps*) ) // static
+//
+|
+F2ARGmets of (s2explst(*mets*))
+//
+(* ****** ****** *)
+//
+fun
+f2arg_fprint:(FILR,f2arg)->void
+//
+(* ****** ****** *)
+fun
+f2arg_get_lctn(f2arg): loc_t
+fun
+f2arg_get_node(f2arg): f2arg_node
+(* ****** ****** *)
+#symload lctn with f2arg_get_lctn
+#symload node with f2arg_get_node
+(* ****** ****** *)
+//
+fun
+f2arg_make_node
+(loc0:loc_t,node:f2arg_node):f2arg
+#symload f2arg with f2arg_make_node
+//
+(* ****** ****** *)
+//
+datatype
+d2gua_node =
+| D2GUAexp of (d2exp)
+| D2GUAmat of (d2exp, d2pat)
+//
+(* ****** ****** *)
+//
+datatype
+d2cls_node =
+| D2CLSgpt of d2gpt
+| D2CLScls of (d2gpt, d2exp)
+and
+d2gpt_node =
+| D2GPTpat of (d2pat)
+| D2GPTgua of (d2pat, d2gualst)
+//
+(* ****** ****** *)
+//
+fun
+d2gua_fprint:(FILR,d2gua)->void
+fun
+d2gpt_fprint:(FILR,d2gpt)->void
+fun
+d2cls_fprint:(FILR,d2cls)->void
+//
+(* ****** ****** *)
+//
+fun
+d2gua_get_lctn(d2gua): loc_t
+fun
+d2gua_get_node(d2gua): d2gua_node
+//
+#symload lctn with d2gua_get_lctn
+#symload node with d2gua_get_node
+//
+(* ****** ****** *)
+//
+fun
+d2gpt_get_lctn(d2gpt): loc_t
+fun
+d2gpt_get_node(d2gpt): d2gpt_node
+//
+#symload lctn with d2gpt_get_lctn
+#symload node with d2gpt_get_node
+//
+(* ****** ****** *)
+//
+fun
+d2cls_get_lctn(d2cls): loc_t
+fun
+d2cls_get_node(d2cls): d2cls_node
+//
+#symload lctn with d2cls_get_lctn
+#symload node with d2cls_get_node
+//
+(* ****** ****** *)
+//
+fun
+d2gua_make_node
+(loc0:loc_t,node:d2gua_node):d2gua
+fun
+d2gpt_make_node
+(loc0:loc_t,node:d2gpt_node):d2gpt
+fun
+d2cls_make_node
+(loc0:loc_t,node:d2cls_node):d2cls
+#symload d2gua with d2gua_make_node
+#symload d2gpt with d2gpt_make_node
+#symload d2cls with d2cls_make_node
 //
 (* ****** ****** *)
 //

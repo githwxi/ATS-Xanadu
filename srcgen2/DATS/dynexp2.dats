@@ -1189,6 +1189,68 @@ end (*let*) // end of [d2pat_set_styp]
 endloc (*local*) // end of [local(d2pat)]
 
 (* ****** ****** *)
+//
+local
+//
+datatype
+d2exp =
+D2EXP of
+( loctn
+, s2typ, d2exp_node)
+datavwtp
+d2exp_vt =
+D2EXP_vt of
+( loctn
+, s2typ, d2exp_node)
+//
+#absimpl d2exp_tbox = d2exp
+//
+in (* in-of-local *)
+//
+#implfun
+d2exp_make_node
+(   loc,nod   ) =
+let
+val t2p =
+s2typ_none0() in
+D2EXP(loc, t2p, nod) end
+//
+#implfun
+d2exp_get_lctn(d2e) =
+let
+val+
+D2EXP(loc,t2p,nod) = d2e in loc
+end
+#implfun
+d2exp_get_styp(d2e) =
+let
+val+
+D2EXP(loc,t2p,nod) = d2e in t2p
+end
+#implfun
+d2exp_get_node(d2e) =
+let
+val+
+D2EXP(loc,t2p,nod) = d2e in nod
+end
+//
+#implfun
+d2exp_set_styp
+( d2e0, t2p0 ) =
+let
+//
+val
+d2e0 =
+$UN.castlin10{d2exp_vt}(d2e0)
+val+
+@D2EXP_vt
+(loc0,
+!styp,node) = d2e0 in styp := t2p0
+end (*let*) // end of [d2exp_set_styp]
+//
+endloc (*local*) // end of [local(d2exp)]
+//
+(* ****** ****** *)
 
 local
 //
@@ -1391,68 +1453,6 @@ let
 end
 //
 endloc (*local*) // end of [local(d2cls)]
-
-(* ****** ****** *)
-
-local
-//
-datatype
-d2exp =
-D2EXP of
-( loctn
-, s2typ, d2exp_node)
-datavwtp
-d2exp_vt =
-D2EXP_vt of
-( loctn
-, s2typ, d2exp_node)
-//
-#absimpl d2exp_tbox = d2exp
-//
-in (* in-of-local *)
-//
-#implfun
-d2exp_make_node
-(   loc,nod   ) =
-let
-val t2p =
-s2typ_none0() in
-D2EXP(loc, t2p, nod) end
-//
-#implfun
-d2exp_get_lctn(d2e) =
-let
-val+
-D2EXP(loc,t2p,nod) = d2e in loc
-end
-#implfun
-d2exp_get_styp(d2e) =
-let
-val+
-D2EXP(loc,t2p,nod) = d2e in t2p
-end
-#implfun
-d2exp_get_node(d2e) =
-let
-val+
-D2EXP(loc,t2p,nod) = d2e in nod
-end
-//
-#implfun
-d2exp_set_styp
-( d2e0, t2p0 ) =
-let
-//
-val
-d2e0 =
-$UN.castlin10{d2exp_vt}(d2e0)
-val+
-@D2EXP_vt
-(loc0,
-!styp,node) = d2e0 in styp := t2p0
-end (*let*) // end of [d2exp_set_styp]
-//
-endloc (*local*) // end of [local(d2exp)]
 
 (* ****** ****** *)
 //
