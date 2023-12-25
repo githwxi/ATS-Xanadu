@@ -154,9 +154,9 @@ ire0.node() of
 |IREint(int) =>
 (
  print("IREint(", int, ")"))
-|IREchr(btf) =>
+|IREbtf(btf) =>
 (
- print("IREchr(", btf, ")"))
+ print("IREbtf(", btf, ")"))
 |IREchr(chr) =>
 (
  print("IREchr(", chr, ")"))

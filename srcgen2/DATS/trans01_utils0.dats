@@ -68,9 +68,29 @@ LAM = "./../SATS/xlabel0.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
 (* ****** ****** *)
+#symload
+TRUE with $SYM.TRUE_symbl
+#symload
+FALSE with $SYM.FALSE_symbl
+(* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+symbl2sbtf(sym) =
+(
+if
+sym=TRUE
+then true else false)//impl
+#implfun
+symbl2dbtf(sym) =
+(
+if
+sym=TRUE
+then true else false)//impl
+//
 (* ****** ****** *)
 
 local

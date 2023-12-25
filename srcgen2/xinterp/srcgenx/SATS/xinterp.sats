@@ -148,10 +148,12 @@ IRVcapp of
 (fiarg, irexp, irenv)
 |IRVfix0 of
 (d2var,fiarg,irexp,irenv)
+(*
 |
 IRVfixs of
 (d2var(*fun*)
 ,fiarglst,irexp,irexplst,irenv)
+*)
 //
 |IRVnone0 of () |IRVnone1 of (irexp)
 //
