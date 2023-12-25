@@ -119,11 +119,13 @@ print
 print
 ("IRVfix0("
 , fid0, ";", farg, ";", "...", ")")
+(*
 |IRVfixs
 (fid0, farg, body, ires, fenv) =>
 print
 ("IRVfixs("
 , fid0, ";", farg, ";", "...", ")")
+*)
 //
 |IRVnone0(    ) => print("IRVnone0(", ")")
 |IRVnone1(ire1) => print("IRVnone1(", ire1, ")")
