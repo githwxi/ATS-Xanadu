@@ -205,7 +205,6 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 #typedef f3arglst = list(f3arg)
 (* ****** ****** *)
-#typedef d3gptlst = list(d3gpt)
 #typedef d3gualst = list(d3gua)
 #typedef d3clslst = list(d3cls)
 (* ****** ****** *)

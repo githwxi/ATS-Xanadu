@@ -207,6 +207,13 @@ fiarglstopt = optn(fiarglst)
 *)
 //
 (* ****** ****** *)
+#abstbox irgua_tbox // p0tr
+#abstbox irgpt_tbox // p0tr
+#abstbox ircls_tbox // p0tr
+#typedef irgua = irgua_tbox
+#typedef irgpt = irgpt_tbox
+#typedef ircls = ircls_tbox
+(* ****** ****** *)
 (*
 fun
 fiarg_fprint
@@ -226,7 +233,8 @@ fiarg_fprint
 #abstbox irparsed_tbox//p0tr
 //
 (* ****** ****** *)
-#typedef fiarglst = list(fiarg)
+#typedef irgualst = list(irgua)
+#typedef irclslst = list(ircls)
 (* ****** ****** *)
 #typedef irdclist = list(irdcl)
 (* ****** ****** *)
@@ -335,6 +343,10 @@ IREdapp of
 |IREift0 of
 (irexp(*test*)
 ,irexpopt(*th*), irexpopt(*el*))
+//
+|IREcas0 of
+(token(*+/0/-*), irexp, irclslst)
+
 //
 |IREseqn of
 (irexplst(*init*), irexp(*last*))
