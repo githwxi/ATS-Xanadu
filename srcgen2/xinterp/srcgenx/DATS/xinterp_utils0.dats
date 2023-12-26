@@ -58,6 +58,8 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload
 _(*DATS*)="./../DATS/xinterp.dats"
 (* ****** ****** *)
+#symload ctag with d2con_get_ctag
+(* ****** ****** *)
 #symload lctn with irpat_get_lctn
 #symload node with irpat_get_node
 (* ****** ****** *)
@@ -118,11 +120,23 @@ in//let
 (
 case+ irv0 of
 | IRVcapp(d2c2, irvs) =>
-(
-  if
-  (d2c1 != d2c2)
-  then false else
-  irpatlst_valck_arr(irps, irvs) )
+let
+val tag1 = d2c1.ctag()
+and tag2 = d2c2.ctag()
+//
+(*
+val () =
+prerrln("f0_capp: tag1 = ", tag1)
+val () =
+prerrln("f0_capp: tag2 = ", tag2)
+*)
+//
+in//let
+//
+if
+(tag1 != tag2)
+then false else
+irpatlst_valck_arr(irps, irvs) end
 | _ (*non-IRVcapp*) => (  false  ) )
 end(*let*)//end-of-[f0_capp(irp0,irv0)]
 //

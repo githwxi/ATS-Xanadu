@@ -2370,6 +2370,11 @@ trans12_d1tcnlst
   val s2c0 = the_s2cst_excptn()
 }
 //
+(*
+HX-2023-12-26:
+The tags of d2cs should stay (-1)
+*)
+//
 in//let
 //
 let
@@ -3060,13 +3065,27 @@ svss = f1_svss(env0, tmas, s2t0)
 in//let2
 //
 let
+//
 val
 d2cs =
 trans12_d1tcnlst
 (env0, tcns, s2c0, svss)
+//
+val (  ) =
+gseq_iforeach(d2cs) where
+{
+#impltmp
+iforeach$work
+<d2con>(tag, d2c) =
+(
+  d2con_set_ctag(d2c, tag) ) }
+//
 val () = tr12env_poplam0(env0)
+//
 val () = s2cst_set_d2cs(s2c0, d2cs)
+//
 val () = tr12env_add1_d2cs(env0, d2cs)
+//
 end//let
 //
 end//let2
@@ -3606,7 +3625,7 @@ in//local
 #implfun
 trans12_d1cstdcl
 ( env0
-, tknd
+, tok0
 , dcst, tqas) = let
 //
 val loc0 =
@@ -3646,10 +3665,13 @@ let
 val
 sfun = f1_d2as(0, d2as, sres)
 in//let
-  d2cst_make_idtp(dpid, tqas, sfun)
-end (*let*) // end of [ val(d2c1) ]
+d2cst_make_idtp(tok0,dpid,tqas,sfun)
+end (*let*) // end-of-[ val(d2c1) ]
 //
 (*
+val () =
+prerrln
+("trans12_d1cstdcl: tok0 = ", tok0)
 val () =
 prerrln
 ("trans12_d1cstdcl: d2as = ", d2as)
@@ -3928,7 +3950,7 @@ end (*let*) // end of [ list_cons( ... ) ]
 //
 #implfun
 trans12_d1cstdclist
-  (env0, tknd
+  (env0, tok0
   ,d1cs, tqas) =
 (
 list_map_e1nv
@@ -3945,7 +3967,7 @@ y0 = d2cstdcl
 #impltmp
 map$fopr_e1nv
 <x0 >< y0><e1>
-  (x0, e1) = trans12_d1cstdcl(e1,tknd,x0,tqas)
+  (x0, e1) = trans12_d1cstdcl(e1,tok0,x0,tqas)
 //
 } (*where*) // end of [trans12_d1cstdclist(...)]
 //

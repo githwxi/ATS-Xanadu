@@ -48,48 +48,21 @@ ATS_PACKNAME
 LAB = "./xlabel0.sats"
 #staload
 TMP = "./xstamp0.sats"
-#staload
-LOC = "./locinfo.sats"
-//
-#typedef lab_t = $LAB.lab_t
-#typedef label = $LAB.label
-//
-#typedef stamp = $TMP.stamp
-//
-#typedef loc_t = $LOC.loc_t
-#typedef loctn = $LOC.loctn
-#typedef lcsrc = $LOC.lcsrc
-//
-(* ****** ****** *)
 //
 #staload
 SYM = "./xsymbol.sats"
 #staload
 MAP = "./xsymmap.sats"
 //
-#typedef
-  sym_t = ($SYM.sym_t)
-//
-(* ****** ****** *)
+#staload
+FP0 = "./filpath.sats"
+#staload
+LOC = "./locinfo.sats"
 //
 #staload
 LEX = "./lexing0.sats"
 //
-#typedef
-  tnode = ($LEX.tnode)
-#typedef
-  token = ($LEX.token)
-//
 (* ****** ****** *)
-//
-#staload
-FP0 = "./filpath.sats"
-//
-#typedef
-  fpath = ($FP0.fpath)
-#typedef
-  fpathopt = $FP0.fpathopt
-//
 (* ****** ****** *)
 #staload
 S1E = "./staexp1.sats"
@@ -102,6 +75,38 @@ G1M = "./gmacro1.sats"
 S2E = "./staexp2.sats"
 #staload
 T2P = "./statyp2.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef
+tag_t = sint// for ctags
+(* ****** ****** *)
+//
+#typedef lab_t = $LAB.lab_t
+#typedef label = $LAB.label
+//
+#typedef stamp = $TMP.stamp
+//
+(* ****** ****** *)
+#typedef sym_t = $SYM.sym_t
+#typedef symbl = $SYM.symbl
+(* ****** ****** *)
+//
+#typedef
+fpath = $FP0.fpath
+#typedef
+fpathopt = ($FP0.fpathopt)
+//
+(* ****** ****** *)
+//
+#typedef loc_t = $LOC.loc_t
+#typedef loctn = $LOC.loctn
+#typedef lcsrc = $LOC.lcsrc
+//
+(* ****** ****** *)
+//
+#typedef tnode = $LEX.tnode
+#typedef token = $LEX.token
+//
 (* ****** ****** *)
 #typedef g1nam = $S1E.g1nam
 (* ****** ****** *)
@@ -327,26 +332,37 @@ d2cst_fprint:(FILR,d2cst)->void
 //
 fun
 d2con_get_lctn:(d2con) -> loc_t
+//
 fun
 d2con_get_name:(d2con) -> sym_t
 fun
+d2con_get_ctag:(d2con) -> tag_t
+//
+fun
 d2con_get_tqas:(d2con) -> t2qas
+//
 fun
 d2con_get_sexp:(d2con) -> s2exp
 fun
 d2con_get_styp:(d2con) -> s2typ
 fun
 d2con_get_xtyp:(d2con) -> s2typ
+//
 fun
 d2con_get_stmp:(d2con) -> stamp
 //
 #symload lctn with d2con_get_lctn
 #symload name with d2con_get_name
+#symload ctag with d2con_get_ctag
 #symload tqas with d2con_get_tqas
 #symload sexp with d2con_get_sexp
 #symload styp with d2con_get_styp
 #symload xtyp with d2con_get_xtyp
 #symload stmp with d2con_get_stmp
+//
+fun
+d2con_set_ctag
+(d2c0: d2con, tag0: tag_t): void
 //
 fun
 d2con_set_sexp
@@ -422,15 +438,17 @@ d2cst_set_xtyp
 (* ****** ****** *)
 //
 fun
+d2con_make_idtp
+(dpid: token
+,tqas: t2qas, sexp: s2exp): d2con
+//
+fun
 d2cst_make_dvar
 (dvar: d2var, tqas: t2qas): d2cst
 fun
-d2con_make_idtp
-(tok0: token
-,tqas: t2qas, sexp: s2exp): d2con
-fun
 d2cst_make_idtp
 (tok0: token
+,dpid: token
 ,tqas: t2qas, sexp: s2exp): d2cst
 //
 #symload d2cst with d2cst_make_dvar
