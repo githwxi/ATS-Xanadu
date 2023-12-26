@@ -13,17 +13,17 @@
 //
 #extern
 fun
+<a:t0>
 mylength
 ( xs
-: list(sint)): sint
+: list(a)): sint
 //
 #impltmp
+<a>(*tmp*)
 mylength(xs) =
 (
   loop(xs, 0)) where
 {
-//
-#typedef a = sint
 //
 fnx
 loop
@@ -54,14 +54,21 @@ list_cons
 val mylist10 =
 (
   list(0,1,2,3,4,5,6,7,8,9) )
-(* ****** ****** *)
 val length10 = length(mylist10)
-(* ****** ****** *)
 val mylength10 = mylength(mylist10)
 (* ****** ****** *)
+val mylist26 =
+list_vt2t
+(
+strn_listize
+("ABCDEFGHIJKLMNOPQRSTUVWXYZ"))
+val length26 = length(mylist26)
+val mylength26 = mylength(mylist26)
+(* ****** ****** *)
+////
 (* ****** ****** *)
 //
-fun
+FUN
 isevn(x: nint): bool =
 if x > 0
 then isodd(x-1) else true

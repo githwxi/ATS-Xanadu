@@ -264,6 +264,35 @@ end (* let *) // end of [ firfun2(fopr) ]
 local
 //
 fun
+xinterp_char_eqz
+  (x: irval): irval =
+let
+val-IRVchr(x) = x
+in//let
+(
+  IRVbtf(char_eqz(x)) )
+end (*let*) // end-of(xinterp_char_eqz)
+//
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+//
+val () =
+the_ircst_insval
+(
+the_d2cst_find
+("XINTERP_char_eqz"),
+IRVfun(firfun1(xinterp_char_eqz)))//val
+//
+(* ****** ****** *)
+end (*local*) // end-of- [local(char_operations)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+fun
 gint_lt_sint_sint
 ( x: irval
 , y: irval): irval =
@@ -367,11 +396,23 @@ the_d2cst_find
 IRVfun(firfun2(gint_cmp_sint_sint)))//val
 //
 (* ****** ****** *)
-end (*local*) // end of [local(gint_cmp_sint_sint)]
+end (*local*) // end-[local(gint_cmp_sint_sint)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
 local
+//
+fun
+gint_succ_sint
+( x: irval): irval =
+let
+val-IRVint(x) = x in IRVint(x+1) end
+fun
+gint_pred_sint
+( x: irval): irval =
+let
+val-IRVint(x) = x in IRVint(x-1) end
 //
 fun
 gint_add_sint_sint
@@ -437,6 +478,19 @@ val () =
 the_ircst_insval
 (
 the_d2cst_find
+("XINTERP_gint_succ_sint"),
+IRVfun(firfun1(gint_succ_sint)))//val
+val () =
+the_ircst_insval
+(
+the_d2cst_find
+("XINTERP_gint_pred_sint"),
+IRVfun(firfun1(gint_pred_sint)))//val
+//
+val () =
+the_ircst_insval
+(
+the_d2cst_find
 ("XINTERP_gint_add_sint_sint"),
 IRVfun(firfun2(gint_add_sint_sint)))//val
 val () =
@@ -465,7 +519,81 @@ the_d2cst_find
 IRVfun(firfun2(gint_mod_sint_sint)))//val
 //
 (* ****** ****** *)
-end (*local*) // end of [local(gint_aop_sint_sint)]
+end (*local*) // end-[local(gint_aop_sint_sint)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+fun
+xinterp_strn_get_at
+  (x: irval
+  ,i: irval): irval =
+let
+val-IRVstr(x) = x
+val-IRVint(i) = i in//let
+IRVchr(strn_get_at<>(x, i))
+end (*let*) // end-of(xinterp_strn_get_at)
+//
+fun
+xinterp_strn_head_opt
+  (x: irval): irval =
+let
+val-IRVstr(x) = x in//let
+IRVchr(strn_head_opt<>(x))
+end (*let*) // end-of(xinterp_strn_get_at)
+//
+fun
+xinterp_strn_head_raw
+  (x: irval): irval =
+let
+val-IRVstr(x) = x in//let
+IRVchr(strn_head_raw<>(x))
+end (*let*) // end-of(xinterp_strn_get_at)
+//
+fun
+xinterp_strn_tail_raw
+  (x: irval): irval =
+let
+val-IRVstr(x) = x in//let
+IRVstr(strn_tail_raw<>(x))
+end (*let*) // end-of(xinterp_strn_get_at)
+//
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+//
+val () =
+the_ircst_insval
+(
+the_d2cst_find
+("XINTERP_strn_get_at"),
+IRVfun(firfun2(xinterp_strn_get_at)))//val
+//
+val () =
+the_ircst_insval
+(
+the_d2cst_find
+("XINTERP_strn_head_opt"),
+IRVfun(firfun1(xinterp_strn_head_opt)))//val
+val () =
+the_ircst_insval
+(
+the_d2cst_find
+("XINTERP_strn_head_raw"),
+IRVfun(firfun1(xinterp_strn_head_raw)))//val
+//
+val () =
+the_ircst_insval
+(
+the_d2cst_find
+("XINTERP_strn_tail_raw"),
+IRVfun(firfun1(xinterp_strn_tail_raw)))//val
+//
+(* ****** ****** *)
+end (*local*) // end-of- [local(strn_operations)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 

@@ -432,6 +432,8 @@ irexp(loc0, IREcst(d2c))
 //
 |D3Etimp _ => f0_timp(env0, d3e0)
 //
+|D3Esapq _ => f0_sapq(env0, d3e0)
+//
 |D3Etapp _ => f0_tapp(env0, d3e0)
 |D3Etapq _ => f0_tapq(env0, d3e0)
 //
@@ -506,6 +508,23 @@ irexp_make_node
   dimp = trxd3ir_d3ecl(env0, dimp) }
 //
 end(*let*)//end-of-[f0_timp(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_sapq
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+(
+trxd3ir_d3exp(env0, d3f0)
+) where
+{
+//
+val-
+D3Esapq
+( d3f0, t2ps) = d3e0.node()
+}(*where*)//end-of-[f0_sapq(env0,d3e0)]
 //
 (* ****** ****** *)
 //

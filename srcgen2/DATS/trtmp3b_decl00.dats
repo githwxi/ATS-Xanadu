@@ -390,15 +390,15 @@ D3Cimplmnt0
 in//let
 //
 if
-dimpl_tmpq(dimp)
-then // if-then
+dimpl_tempq(dimp)
+then (* if-then *)
 (
   d3cl ) where // tmp
 {
 val () =
 tr3benv_insert_decl(env0, d3cl)
 }
-else // if-else
+else (* if-else *)
 let
 val
 dexp =

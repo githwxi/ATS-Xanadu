@@ -158,7 +158,7 @@ val () =
 prerrln("token2dint: tok = ", tok)
 *)
 //
-} (*where*)//end-of-[token2dint(tok)]
+}(*where*)//end-of-[token2dint(tok)]
 //
 (* ****** ****** *)
 //
@@ -217,38 +217,12 @@ val () =
 prerrln("token2schr: tok = ", tok)
 *)
 //
-} (*where*)//end-of-[token2schr(tok)]
+}(*where*)//end-of-[token2schr(tok)]
 //
 (* ****** ****** *)
 //
 #implfun
-token2dchr(tok) =
-(
-case-
-tok.node() of
-|
-T_CHAR1_nil0(_) => '\0'
-| // regular: '?'
-T_CHAR2_char(rep) =>
-let
-val opt =
-gseq_get_at_opt
-< strn >< cgtz >(rep, 1)
-in//let
-case- opt of
-| ~optn_vt_cons(chr) => chr
-end (*let*) // [T_CHAR2_char]
-| // backslash: '\...'
-T_CHAR3_blsh(rep) => fchr(rep)
-) where//end-of-[case-of(tok)]
-{
-//
-(*
-val () =
-prerrln("token2dchr: tok = ", tok)
-*)
-//
-} (*where*)//end-of-[token2dchr(tok)]
+token2dchr(tok) = ( token2schr(tok) )
 //
 (* ****** ****** *)
 //
@@ -293,10 +267,12 @@ strn_tabulate(len-1) where
 tabulate$fopr
   <cgtz>(i) = strn_get_at(rep, i+1)
 }
-)
+)(*case-*)//end-of-[token2sstr(tok)]
 
-end //
-(*local*) // end of [local(token2sstr)]
+#implfun
+token2dstr(tok) = ( token2sstr(tok) )
+
+endloc // end of [local(token2sstr/dstr)]
 
 (* ****** ****** *)
 

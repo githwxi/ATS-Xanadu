@@ -633,6 +633,7 @@ fun
 XINTERP_strn_head_raw
 ( x0
 : strn ): char = $extnam()
+#extern
 fun
 XINTERP_strn_tail_raw
 ( x0

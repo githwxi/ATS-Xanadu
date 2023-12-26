@@ -32,6 +32,9 @@ fun
 <x0:vt>
 glseq_copy(xs: !xs): (xs)
 (*
+(*
+HX: [copy] is [copy1]
+*)
 fun
 <xs:vt>
 <x0:vt>
@@ -44,6 +47,9 @@ fun
 <x0:vt>
 glseq_free(xs: ~xs): void
 (*
+(*
+HX: [free] is [free0]
+*)
 fun
 <xs:vt>
 <x0:vt>

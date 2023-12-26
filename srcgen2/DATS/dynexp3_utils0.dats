@@ -365,10 +365,10 @@ D3Cimplmnt0
 , stmp
 , sqas,tqas
 , dimp,tias
-, f3as,sres,dexp) => dimpl_tmpq(dimp)
+, f3as,sres,dexp) => dimpl_tempq(dimp)
 //
-| _(* otherwise *) => (    false    ))
-//(*case+*)//end-of-[d3ecl_impltmpq(d3cl)]
+| _(* otherwise *) => (     false     )
+)(*case+*)//end-of-[d3ecl_impltmpq(d3cl)]
 //
 (* ****** ****** *)
 //
