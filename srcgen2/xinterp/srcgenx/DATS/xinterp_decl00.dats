@@ -268,13 +268,15 @@ val-
 IRDfundclst
 ( tknd
 , tqas
-, d2cs
-, irfs) = ird0.node()
+, d2cs, irfs) =
+(
+  ird0.node((*0*)))
 //
 (* ****** ****** *)
 //
 val
-fenv = xintenv_snap(env0)
+fenv =
+xintenv_irsnap(env0)
 //
 (* ****** ****** *)
 //
@@ -439,7 +441,7 @@ loc0 =
 ird0.lctn((*0*))
 val
 fenv =
-xintenv_snap(env0)
+xintenv_irsnap(env0)
 val
 body =
 irexp_lam0

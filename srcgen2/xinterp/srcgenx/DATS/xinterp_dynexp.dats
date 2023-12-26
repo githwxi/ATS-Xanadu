@@ -280,7 +280,9 @@ list_cons(fia1, fias) =>
 let
 //
 val
-fenv = xintenv_snap(env0)
+fenv =
+(
+  xintenv_irsnap(env0))
 in//let
 //
 (
@@ -614,7 +616,9 @@ list_cons
 let
 //
 val
-fenv = xintenv_snap(env0)
+fenv =
+(
+  xintenv_irsnap(env0))
 //
 in//let
 (
@@ -659,7 +663,9 @@ list_cons
 let
 //
 val
-fenv = xintenv_snap(env0)
+fenv =
+(
+  xintenv_irsnap(env0))
 //
 in//let
 (

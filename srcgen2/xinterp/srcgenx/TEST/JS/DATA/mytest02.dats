@@ -59,19 +59,21 @@ val length10 = length(mylist10)
 (* ****** ****** *)
 val mylength10 = mylength(mylist10)
 (* ****** ****** *)
-////
 (* ****** ****** *)
 //
 fun
 isevn(x: nint): bool =
-if x > 0 then isodd(x-1) else true
+if x > 0
+then isodd(x-1) else true
 and
 isodd(x: nint): bool =
-if x > 0 then isevn(x-1) else false
+if x > 0
+then isevn(x-1) else false
+//
+val
+isevn10=isevn(10) and isodd10=isodd(10)
 //
 (* ****** ****** *)
-val isevn100 = isevn(100)
-val isodd100 = isodd(100)
 (* ****** ****** *)
 
 (* end of [(* end of [ATS3/XATSOPT_BOOT_JS_DATA_mytest02.dats] *)

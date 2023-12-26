@@ -149,6 +149,10 @@ IRVcapp of
 |IRVfix0 of
 (d2var,fiarg,irexp,irenv)
 (*
+(*
+HX-2023-12-25:
+This one seems not needed!
+*)
 |
 IRVfixs of
 (d2var(*fun*)
@@ -215,14 +219,14 @@ xinterp_irparsed
 (* ****** ****** *)
 //
 fun
-xintenv_snap
-(env0: !xintenv): irenv
+xintenv_irsnap
+(env0: !xintenv): (irenv)
 //
 (* ****** ****** *)
 //
 fun
 xintenv_make_nil
-(   (*nil*)   ): xintenv
+(    (*nil*)    ): xintenv
 fun
 xintenv_free_top
 ( env0: ~xintenv ): void//fun
