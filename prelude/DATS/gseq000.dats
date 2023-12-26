@@ -23,14 +23,13 @@
 #impltmp
 <xs><x0>
 gseq_nilq(xs) =
-(
-gseq_forall<xs><x0>(xs)
-) where
-{
+let
 #impltmp
 forall$test
-<x0>( (*void*) ) = false
-}(*where*)//end(gseq_nilq)
+< x0 >( x0 ) = false
+in//let
+gseq_forall<xs><x0>(xs)
+end(*let*)//end(gseq_nilq)
 //
 #impltmp
 <xs><x0>
@@ -65,7 +64,8 @@ endif//end-of(gseq_tail_exn)
 <xs><x0>
 gseq_head_opt(xs) =
 if
-gseq_consq<xs><x0>(xs)
+gseq_consq
+<xs><x0>(xs)
 then
 optn_vt_cons
 (
@@ -75,7 +75,8 @@ gseq_head_raw<xs><x0>(xs)
 <xs><x0>
 gseq_tail_opt(xs) =
 if
-gseq_consq<xs><x0>(xs)
+gseq_consq
+<xs><x0>(xs)
 then
 optn_vt_cons
 (
@@ -105,7 +106,8 @@ let
 var xs = xs
 //
 val opt =
-gseq_uncons_opt<xs><x0>(xs)
+gseq_uncons_opt
+< xs >< x0 >( xs )
 in
 case+ opt of
 | ~
@@ -149,7 +151,7 @@ val hd =
   gseq_head_raw<xs><x0>(xs)
 val tl =
   gseq_tail_raw<xs><x0>(xs)
-}
+}(*where*)//end(gseq-uncons_raw)
 //
 (* ****** ****** *)
 //
@@ -1581,7 +1583,7 @@ in//let
 forall0$test<x0>
 (  x0  ) = rforall$test<x0>(x0)
 }
-endlet// end of
+endlet//end-of-(let)
 // [gseq_rforall(xs)/list_vt_forall]
 
 (* ****** ****** *)
@@ -1662,9 +1664,10 @@ gseq_rappend<xs><x0>
 #impltmp
 <xs><x0>
 gseq_reverse(xs) =
+(
 gseq_make0_lstrm<xs><x0>
 (gseq_rstrmize<xs><x0>(xs))
-(*end-of-(gseq_reverse(xs)*)
+)(* end-of-[gseq_reverse(xs)] *)
 //
 (* ****** ****** *)
 //
@@ -1773,11 +1776,12 @@ gseq_rappend_lstrm
   (xs1, xs2) = let
 //
 val
-xs2 =
-gseq_strmize<xs><x0>(xs2)
-val
 xs1 =
 gseq_rstrmize<xs><x0>(xs1)
+val
+xs2 =
+(
+ gseq_strmize<xs><x0>(xs2))
 //
 in//let
   strm_vt_append0<x0>(xs1, xs2)
@@ -1820,8 +1824,8 @@ list_vt_suffixq0(xs1, xs2)
 val
 xs1 = gseq_listize<xs><x0>(xs1)
 and
-xs2 = gseq_listize<xs><x0>(xs2)
-} (*where*) // end of [gseq_suffixq]
+xs2 = gseq_listize<xs><x0>(xs2) }
+// (*where*) // end of [gseq_suffixq]
 //
 (* ****** ****** *)
 //
@@ -1901,9 +1905,9 @@ then
   val xs =
   gseq_tail_raw<xs><x0>(xs) }
 else (xs) // else // end-of-if
-endlet (* end of [loop(xs,i0)] *)
+endlet (* end-of-[loop(xs,i0)] *)
 //
-} (*where*)//end-of-[gseq_idropif(xs)]
+}(*where*)//end-of-[gseq_idropif(xs)]
 //
 (* ****** ****** *)
 
@@ -2001,8 +2005,8 @@ val p0 = $addr(r0)
 //
 val () =
 (
-  gseq_iforeach<xs><x0>(xs)
-) where
+gseq_iforeach
+< xs >< x0 >( xs )) where
 {
 #impltmp
 iforeach$work<x0>(i0, x0) =
@@ -2011,7 +2015,7 @@ val r0 = $UN.p2tr_get<r0>(p0)
 in//let
 //
 $UN.p2tr_set<r0>
-(p0, ifoldl$fopr<x0><r0>(r0, i0, x0))
+(p0, ifoldl$fopr<x0><r0>(r0,i0,x0))
 //
 endlet//end-of-[iforeach$work(i0,x0)]
 }
@@ -2239,8 +2243,7 @@ strm_vt_imap0<x0><y0>(xs)
 ) where
 {
 #impltmp
-imap0$fopr
-< x0><y0 > = imap$fopr<x0><y0>
+imap0$fopr<x0><y0> = imap$fopr<x0><y0>
 }
 end//end-of-[gseq_imap_lstrm/strmize(xs)]
 
@@ -2264,8 +2267,9 @@ gseq_ifoldl
 ifoldl$fopr
 < x0 >< r0 >
 ( r0, i0, x0 ) =
-list_vt_cons
-( imap$fopr<x0><y0>(i0, x0), r0 )
+(
+  list_vt_cons
+  ( imap$fopr<x0><y0>(i0, x0), r0 ) )
 // list_vt_cons
 }
 //
@@ -2357,7 +2361,8 @@ in//let
 {
   #impltmp
   map0$fopr
-  <y0><xs> = gseq_make0_llist<xs><x0> }
+  <y0><xs> = gseq_make0_llist<xs><x0>
+}
 end(*let*)//end-of-[gseq_permutize_lstrm(xs)]
 //
 (* ****** ****** *)

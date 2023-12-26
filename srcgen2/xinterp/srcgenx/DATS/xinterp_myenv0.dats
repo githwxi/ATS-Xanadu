@@ -305,7 +305,7 @@ in//local
 (* ****** ****** *)
 //
 #implfun
-xintenv_snap
+xintenv_irsnap
   ( env0 ) =
 let
 val+
@@ -358,7 +358,7 @@ irenv_dvar(d2v1, irv1, res1) }
 //
 )(*case+*)//end-of-[loop(stk0,res1)]
 //
-}(*where*)//end-of-[xintenv_snap(env0)]
+}(*where*)//end[xintenv_irsnap(env0)]
 //
 (* ****** ****** *)
 //
