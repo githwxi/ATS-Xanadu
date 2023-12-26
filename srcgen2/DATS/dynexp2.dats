@@ -550,6 +550,19 @@ D2CON
 ,t2p0,xt2p) = d2c0 in sym0 end
 //
 #implfun
+d2con_get_ctag
+  (  d2c0  ) =
+let
+val+
+D2CON
+(loc0
+,sym0
+,ctag
+,tqas,s2e0
+,stmp
+,t2p0,xt2p) = d2c0 in ctag end
+//
+#implfun
 d2con_get_tqas
   (  d2c0  ) =
 let
@@ -654,6 +667,26 @@ S2Efun1
 //
 )
 } (*where*) // end of [d2con_get_narg]
+//
+(* ****** ****** *)
+//
+#implfun
+d2con_set_ctag
+( d2c0, tag0 ) =
+let
+val
+d2c0 =
+$UN.castlin10{d2con_vt}(d2c0)
+val+
+@D2CON_vt
+(loc0,
+ sym0,
+!ctag,
+ tqas,
+ sexp,
+ stmp,
+ t2p0,xt2p) = d2c0 in (ctag := tag0)
+end (*let*) // end of [d2con_set_ctag]
 //
 (* ****** ****** *)
 //
@@ -951,12 +984,12 @@ end (*let*) // end of [d2cst_make_dvar]
 //
 #implfun
 d2cst_make_idtp
-(tok0,tqas,sexp) =
+(tok0,dpid,tqas,sexp) =
 let
 //
-val loc0 = tok0.lctn()
-val tknd = T_EOF((*void*))
-val sym0 = dcstid_sym(tok0)
+val loc0 = dpid.lctn()
+val tknd = tok0.node()
+val sym0 = dcstid_sym(dpid)
 val t2p0 = s2exp_stpize(sexp)
 //
 val stmp = the_d2cst_stamp_new()

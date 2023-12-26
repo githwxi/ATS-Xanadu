@@ -181,7 +181,7 @@ print("IREdapp(", irf0, ";", ires, ")")
 //
 |IRElet0
 ( irds, ire1) =>
-print("IRElet(", irds, ";", ire1, ")")
+print("IRElet0(", irds, ";", ire1, ")")
 //
 (* ****** ****** *)
 //
@@ -198,6 +198,12 @@ print
 (
 print
 ("IREcas0(", tknd, ";", ire1, ";", dcls, ")"))
+//
+(* ****** ****** *)
+//
+|IREseqn
+( ires, ire1) =>
+print("IREseqn(", ires, ";", ire1, ")")
 //
 (* ****** ****** *)
 //

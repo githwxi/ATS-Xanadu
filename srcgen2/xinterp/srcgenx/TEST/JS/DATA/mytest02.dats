@@ -61,7 +61,20 @@ val mylist26 =
 list_vt2t
 (
 strn_listize
-("ABCDEFGHIJKLMNOPQRSTUVWXYZ"))
+( "ABCDEFGHIJKLMNOPQRSTUVWXYZ"))
+(*
+val mylist26 =
+gseq_foldr
+<strn><c><r>
+( "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+, list_nil()) where
+{
+#typedef c = char
+#typedef r = list(char)
+#impltmp
+foldr$fopr<c><r>(c, r) = list_cons(c, r)
+}
+*)
 val length26 = length(mylist26)
 val mylength26 = mylength(mylist26)
 (* ****** ****** *)

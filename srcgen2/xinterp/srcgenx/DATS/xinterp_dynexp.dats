@@ -60,6 +60,8 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload
 _(*DATS*)="./../DATS/xinterp.dats"
 (* ****** ****** *)
+#symload tknd with d2cst_get_tknd
+(* ****** ****** *)
 #symload lctn with irpat_get_lctn
 #symload node with irpat_get_node
 (* ****** ****** *)
@@ -69,6 +71,15 @@ _(*DATS*)="./../DATS/xinterp.dats"
 #symload lctn with irdcl_get_lctn
 #symload node with irdcl_get_node
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+irval_fcast
+(xs: irvalist): irval =
+let
+val-list_cons(x1, xs) = xs in x1
+end//let//end-of-[irval_fcast(xs)]
+//
 (* ****** ****** *)
 //
 fun
@@ -201,10 +212,29 @@ f0_cst
 ! xintenv
 , ire0: irexp): irval =
 let
+//
 val-
 IREcst(d2c0) = ire0.node()
+//
+// (*
+val () =
+prerrln
+("f0_cst: d2c0 = ", d2c0)
+val () =
+prerrln
+("f0_cst: tknd = ", d2c0.tknd())
+// *)
+//
 in//let
 //
+if
+(
+d2cst_castq(d2c0)
+)
+then // if-then
+IRVfun(
+lam(xs) =>
+irval_fcast(xs)) else
 (
 case+ opt0 of
 | ~
@@ -711,13 +741,13 @@ end(*let*)//end-of-[f0_where(env0,ire0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
+// (*
 val loc0 = ire0.lctn()
 val (  ) =
 prerrln("xinterp_irexp: loc0 = ", loc0)
 val (  ) =
 prerrln("xinterp_irexp: ire0 = ", ire0)
-*)
+// *)
 //
 (* ****** ****** *)
 (* ****** ****** *)

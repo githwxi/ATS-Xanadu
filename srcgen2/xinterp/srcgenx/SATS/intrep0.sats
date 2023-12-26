@@ -353,7 +353,6 @@ IREdapp of
 //
 |IREcas0 of
 (token(*+/0/-*), irexp, irclslst)
-
 //
 |IREseqn of
 (irexplst(*init*), irexp(*last*))
