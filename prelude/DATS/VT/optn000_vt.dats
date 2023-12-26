@@ -242,6 +242,18 @@ end//let
 //
 #impltmp
 {a:vt}
+glseq_copy
+<optn_vt(a)><a> = optn_vt_copy<a>
+//
+#impltmp
+{a:vt}
+glseq_free
+<optn_vt(a)><a> = optn_vt_free<a>
+//
+(* ****** ****** *)
+//
+#impltmp
+{a:vt}
 glseq_forall0
 <optn_vt(a)><a> = optn_vt_forall0<a>
 #impltmp

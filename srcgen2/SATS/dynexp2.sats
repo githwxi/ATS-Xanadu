@@ -371,9 +371,12 @@ d2con_get_narg(d2c0:d2con): sint
 //
 (* ****** ****** *)
 fun
-d2cst_tmpq:(d2cst) -> bool
+d2cst_castq:(d2cst) -> bool
+(* ****** ****** *)
 fun
-d2cstlst_tmpq(d2cstlst): bool
+d2cst_tempq:(d2cst) -> bool
+fun
+d2cstlst_tempq(d2cstlst): bool
 (* ****** ****** *)
 //
 fun
@@ -1377,7 +1380,7 @@ simpl_get_node
 //
 (* ****** ****** *)
 fun
-dimpl_tmpq
+dimpl_tempq
 (dimp: dimpl): bool // end-of-fun
 (* ****** ****** *)
 //

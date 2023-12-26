@@ -77,27 +77,31 @@ irparsed_of_trxd3ir(dpar)
 val
 dpar =
 d3parsed_of_trans3a(dpar)
+//
 val
 dpar =
 d3parsed_of_trtmp3b(dpar)
 val
 dpar =
 d3parsed_of_trtmp3c(dpar)
+//
 val
 dpar =
 d3parsed_of_tread33(dpar)
+//
+val ( ) =
+prerrln
+("FPERR33_D3PARSED:")
+val out = g_stderr((*0*))
+val ( ) =
+fperr33_d3parsed(out, dpar)
 //
 } where
 {
 val dpar = d3parsed_from_fpath
 (1(*dyn*), "./DATA/mytest02.dats") }
 //
-(*
-val ((*void*)) =
-fperr33_d3parsed(g_stderr(), mytest02_dats)
-*)
-//
-val () =
+val ( ) =
 xinterp_irparsed(mytest02_dats) where
 {
 val ((*0*)) =

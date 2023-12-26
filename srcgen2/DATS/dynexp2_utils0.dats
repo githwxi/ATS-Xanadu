@@ -50,45 +50,82 @@ ATS_PACKNAME
 #staload "./../SATS/xlabel0.sats"
 #staload "./../SATS/xsymbol.sats"
 (* ****** ****** *)
+#staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
+#symload tknd with d2cst_get_tknd
+(* ****** ****** *)
 #staload _ = "./statyp2_tmplib.dats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-d2cst_tmpq(d2c0) =
+d2cst_castq(d2c0) =
+(
+case+
+d2c0.tknd() of
+|
+T_FUN(fnk1) =>
+(
+case+ fnk1 of
+|
+FNKfcast() => true
+|
+_(*otherwise*) => false)
+|
+_(*otherwise*) => ( false )
+//
+) where//end-of-(case+(tknd))
+{
+//
+(*
+val () =
+prerrln
+("d2cst_castq: d2c0 = ", d2c0)
+*)
+//
+}(*where*)//end-of-[d2cst_castq]
+//
+(* ****** ****** *)
+//
+#impltmp
+d2cst_tempq(d2c0) =
 list_consq
 (d2cst_get_tqas(d2c0))
 #impltmp
-d2cstlst_tmpq(d2cs) =
+d2cstlst_tempq(d2cs) =
 list_exists(d2cs) where
 {
 #typedef x0 = d2cst
 #impltmp
-exists$test<x0> = d2cst_tmpq }
+exists$test<x0> = d2cst_tempq }
 //
 (* ****** ****** *)
 //
 #impltmp
-dimpl_tmpq
+dimpl_tempq
 (  dimp  ) =
 (
 case+
 dimp.node() of
 |
 DIMPLone1
-(  d2c1  ) => d2cst_tmpq(d2c1)
+(  d2c1  ) => d2cst_tempq(d2c1)
 |
 DIMPLone2
-(d2c1,svts) => d2cst_tmpq(d2c1)
+(
+d2c1,svts) => d2cst_tempq(d2c1)
 | 
 DIMPLall1
-(dqid,d2cs) => d2cstlst_tmpq(d2cs)
+(
+dqid,d2cs) => d2cstlst_tempq(d2cs)
 |
 DIMPLopt2
-(_, d2cs, _) => d2cstlst_tmpq(d2cs))
+(_,d2cs,_) => d2cstlst_tempq(d2cs)
+)
 //
 (* ****** ****** *)
 //

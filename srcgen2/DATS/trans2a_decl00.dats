@@ -608,9 +608,8 @@ dimp =
 if
 not
 (
-d2cst_tmpq(d2c0)
-)
-then (dimp) else
+d2cst_tempq(d2c0)
+) then (dimp) else
 let
 val
 loc1 =

@@ -860,6 +860,7 @@ XATS2JS_strn_vt_length1
 }
 //
 (* ****** ****** *)
+//
 #impltmp
 strn_get_at<> =
 XATS2JS_strn_get_at
@@ -869,9 +870,9 @@ where
 fun
 XATS2JS_strn_get_at
 ( cs
-: strn, i0: sint): char
-= $extnam((*self*))
+: strn, i0: sint): char = $extnam()
 }
+//
 (* ****** ****** *)
 #impltmp
 strn_forall<>(cs) =

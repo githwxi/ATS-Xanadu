@@ -38,7 +38,6 @@ list_vt_cons(x0,
 list_vt_cons(x1, list_vt_nil()))
 //
 (* ****** ****** *)
-
 //
 #impltmp
 <a>(*tmp*)

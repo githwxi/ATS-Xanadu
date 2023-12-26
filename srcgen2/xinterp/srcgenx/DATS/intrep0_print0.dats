@@ -160,7 +160,7 @@ ire0.node() of
 |IREchr(chr) =>
 (
  print("IREchr(", chr, ")"))
-|IREchr(str) =>
+|IREstr(str) =>
 (
  print("IREstr(", str, ")"))
 //
