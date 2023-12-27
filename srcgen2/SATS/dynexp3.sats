@@ -238,27 +238,30 @@ D2E = "./dynexp2.sats"
 #typedef s2taloadopt = $D2E.s2taloadopt
 (* ****** ****** *)
 //
-#typedef
-d2lab(itm:t0)=$D2E.d2lab(itm)
+datatype
+d3lab(itm:type) =
+|D3LAB of
+(label, itm(*elt*))
+//
+fun
+<x0:t0>
+d3lab_get_itm
+(dlab: d3lab(x0)): x0
+#symload
+itm with d3lab_get_itm
 //
 (* ****** ****** *)
 //
-datatype
-d3lab(itm:type) =
-|D3LAB of (label, itm(*elt*))
-//
-fun
-<itm:t0>
-d3lab_get_itm
-(dlab: d3lab(itm)): itm
-#symload itm with d3lab_get_itm
+#typedef
+d2lab(x0:t0)=$D2E.d2lab(x0)
 //
 (* ****** ****** *)
 //
 fun
 <x0:type>
 d3lab_fprint
-(out: FILR, lab: d3lab(x0)): void
+( out
+: FILR, lab: d3lab(x0)): void
 //
 (* ****** ****** *)
 #typedef l3d3p = d3lab(d3pat)

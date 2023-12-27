@@ -84,6 +84,9 @@ T2P = "./statyp2.sats"
 #staload
 D2E = "./dynexp2.sats"
 (* ****** ****** *)
+#staload
+D3E = "./dynexp3.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef lab_t = $LAB.lab_t
@@ -118,20 +121,28 @@ D2E = "./dynexp2.sats"
 //
 datatype
 d4lab(itm:type) =
-|D4LAB of(label, itm(*elt*))
+|D4LAB of
+(label, itm(*elt*))
 //
 fun
-<itm:t0>
+<x0:t0>
 d4lab_get_itm
-(dlab: d4lab(itm)): ( itm )
-#symload itm with d4lab_get_itm
+(dlab: d4lab(x0)): x0
+#symload
+itm with d4lab_get_itm
+//
+(* ****** ****** *)
+//
+#typedef
+d3lab(x0:t0)=$D3E.d3lab(x0)
 //
 (* ****** ****** *)
 //
 fun
 <x0:type>
 d4lab_fprint
-(out: FILR, lab: d4lab(x0)): void
+( out
+: FILR, lab: d4lab(x0)): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -125,10 +125,9 @@ D0E = "./dynexp0.sats"
 (* ****** ****** *)
 //
 datatype
-d1lab(x0:type) =
-|
-D1LAB of
-(label, x0(*elt*))
+d1lab(itm:type) =
+|D1LAB of
+(label, itm(*elt*))
 //
 fun
 <x0:t0>
