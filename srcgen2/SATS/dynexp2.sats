@@ -284,10 +284,9 @@ fpathopt = ($FP0.fpathopt)
 (* ****** ****** *)
 //
 datatype
-d2lab(x0:type) =
-|
-D2LAB of
-(label, x0(*elt*))
+d2lab(itm:type) =
+|D2LAB of
+(label, itm(*elt*))
 //
 fun
 <x0:t0>
@@ -304,7 +303,8 @@ d1lab(x0:t0)=$D1E.d1lab(x0)
 fun
 <x0:type>
 d2lab_fprint
-(out: FILR, lab: d2lab(x0)): void
+( out
+: FILR, lab: d2lab(x0)): void
 //
 (* ****** ****** *)
 #typedef l2d2p = d2lab(d2pat)
