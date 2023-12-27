@@ -142,6 +142,7 @@ the_d3imp_stamp_new
 endloc // end of [the_d3imp_stamp_new]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 
 local
 //
@@ -158,7 +159,9 @@ D3PAT_vt of
 //
 #absimpl d3pat_tbox = d3pat
 //
+(* ****** ****** *)
 in (* in-of-local *)
+(* ****** ****** *)
 //
 #implfun
 d3pat_make_node
@@ -166,7 +169,9 @@ d3pat_make_node
 let
 val t2p =
 s2typ_none0() in
-D3PAT(loc, t2p, nod) end
+D3PAT(loc, t2p, nod) endlet
+//
+(* ****** ****** *)
 //
 #implfun
 d3pat_get_lctn(d3p) =
@@ -187,6 +192,8 @@ val+
 D3PAT(loc,t2p,nod) = d3p in t2p
 end
 //
+(* ****** ****** *)
+//
 #implfun
 d3pat_set_styp
 ( d3p0, t2p0 ) =
@@ -200,6 +207,8 @@ val+
 (loc0,
 !styp,node) = d3p0 in styp := t2p0
 end (*let*) // end of [d3pat_set_styp]
+//
+(* ****** ****** *)
 //
 endloc (*local*) // end of [local(d3pat)]
 
@@ -232,7 +241,9 @@ D3EXP_vt of
 //
 #absimpl d3exp_tbox = d3exp
 //
+(* ****** ****** *)
 in (* in-of-local *)
+(* ****** ****** *)
 //
 #implfun
 d3exp_make_node
@@ -240,7 +251,9 @@ d3exp_make_node
 let
 val t2p =
 s2typ_none0() in
-D3EXP(loc, t2p, nod) end
+D3EXP(loc, t2p, nod) endlet
+//
+(* ****** ****** *)
 //
 #implfun
 d3exp_get_lctn(d3e) =
@@ -261,6 +274,8 @@ val+
 D3EXP(loc,t2p,nod) = d3e in nod
 end
 //
+(* ****** ****** *)
+//
 #implfun
 d3exp_set_styp
 ( d3e0, t2p0 ) =
@@ -274,6 +289,8 @@ val+
 (loc0,
 !styp,node) = d3e0 in styp := t2p0
 end (*let*) // end of [d3exp_set_styp]
+//
+(* ****** ****** *)
 //
 endloc (*local*) // end of [local(d3exp)]
 

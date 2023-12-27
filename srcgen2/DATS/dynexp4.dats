@@ -118,4 +118,34 @@ d3cl.lctn(),D4Cnone1(d3cl))
 (* ****** ****** *)
 (* ****** ****** *)
 
+local
+//
+datatype
+d4exp =
+D4EXP of
+( loctn
+, s2typ, d4exp_node)
+datavwtp
+d4exp_vt =
+D4EXP_vt of
+( loctn
+, s2typ, d4exp_node)
+//
+#absimpl d4exp_tbox = d4exp
+//
+in (* in-of-local *)
+//
+#implfun
+d4exp_make_node
+(   loc,nod   ) =
+let
+val t2p =
+s2typ_none0() in
+D4EXP(loc, t2p, nod) endlet
+//
+endloc (*local*) // end of [local(d4exp)]
+
+(* ****** ****** *)
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_dynexp4.dats] *)
