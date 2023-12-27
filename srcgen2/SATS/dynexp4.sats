@@ -210,7 +210,7 @@ token(*knd*), sint(*npf*), d4explst)
 token(*knd*), sint(*npf*), l4d4elst)
 //
 |D4Enone0 of ((*0*))
-|D4Enone1 of (d3exp) | D4Enone2 of (d3exp)
+|D4Enone1 of (d3exp) | D4Enone2 of (d4exp)
 //
 |D4Eerrck of
 ( sint(*lvl*), d4exp(*err*) ) // tread34-error
@@ -232,6 +232,18 @@ d4exp_get_node(d4exp): d4exp_node
 #symload lctn with d4exp_get_lctn
 #symload node with d4exp_get_node
 (* ****** ****** *)
+fun
+d4exp_none0(loc0: loc_t): (d4exp)
+fun
+d4exp_none1(dexp: d3exp): (d4exp)
+fun
+d4exp_none2(dexp: d4exp): (d4exp)
+(* ****** ****** *)
+fun
+d4exp_make_node
+(loc:loc_t,nod:d4exp_node): d4exp
+(* ****** ****** *)
+#symload d4exp with d4exp_make_node
 (* ****** ****** *)
 //
 datatype
@@ -271,6 +283,17 @@ d4ecl_get_node(d4ecl): d4ecl_node
 (* ****** ****** *)
 #symload lctn with d4ecl_get_lctn
 #symload node with d4ecl_get_node
+(* ****** ****** *)
+fun
+d4ecl_none0(loc0: loc_t): (d4ecl)
+fun
+d4ecl_none1(d3cl: d3ecl): (d4ecl)
+(* ****** ****** *)
+fun
+d4ecl_make_node
+(loc:loc_t,nod:d4ecl_node): d4ecl
+(* ****** ****** *)
+#symload d4ecl with d4ecl_make_node
 (* ****** ****** *)
 (* ****** ****** *)
 //

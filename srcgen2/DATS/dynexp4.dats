@@ -45,6 +45,77 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+#staload "./../SATS/xbasics.sats"
+(* ****** ****** *)
+#staload "./../SATS/locinfo.sats"
+(* ****** ****** *)
+#staload "./../SATS/xstamp0.sats"
+#staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
+#staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
+#staload "./../SATS/dynexp2.sats"
+(* ****** ****** *)
+#staload "./../SATS/dynexp3.sats"
+(* ****** ****** *)
+#staload "./../SATS/dynexp4.sats"
+(* ****** ****** *)
+#symload lctn with token_get_lctn
+#symload node with token_get_node
+(* ****** ****** *)
+#symload lctn with d2exp_get_lctn
+#symload node with d2exp_get_node
+(* ****** ****** *)
+#symload lctn with d2ecl_get_lctn
+#symload node with d2ecl_get_node
+(* ****** ****** *)
+#symload lctn with d3exp_get_lctn
+#symload node with d3exp_get_node
+(* ****** ****** *)
+#symload lctn with d3ecl_get_lctn
+#symload node with d3ecl_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d4exp_none0
+(  loc0  ) =
+d4exp_make_node
+(loc0,D4Enone0((*void*)))
+#implfun
+d4exp_none1
+(  dexp  ) =
+d4exp_make_node
+(
+dexp.lctn(),D4Enone1(dexp))
+#implfun
+d4exp_none2
+(  dexp  ) =
+d4exp_make_node
+(
+dexp.lctn(),D4Enone2(dexp))
+//
+(* ****** ****** *)
+//
+#implfun
+d4ecl_none0
+(  loc0  ) =
+d4ecl_make_node
+(loc0,D4Cnone0((*void*)))
+#implfun
+d4ecl_none1
+(  d3cl  ) =
+d4ecl_make_node
+(
+d3cl.lctn(),D4Cnone1(d3cl))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_dynexp4.dats] *)
