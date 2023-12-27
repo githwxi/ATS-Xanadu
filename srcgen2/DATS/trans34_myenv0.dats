@@ -54,5 +54,8 @@ ATS_PACKNAME
 #staload "./../SATS/xglobal.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+#staload "./../SATS/trans34.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans34_myenv0.dats] *)

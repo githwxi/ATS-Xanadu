@@ -1581,6 +1581,18 @@ g_print<d4lab(x0)>(dlab) =
 d4lab_fprint(g_print$out<>(), dlab)
 //
 (* ****** ****** *)
+//
+#impltmp
+g_print<d4exp>(dexp) =
+d4exp_fprint(g_print$out<>(), dexp)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<d4ecl>(d4cl) =
+d4ecl_fprint(g_print$out<>(), d4cl)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 (*
 HX-2022-12-28: For debugging purpose

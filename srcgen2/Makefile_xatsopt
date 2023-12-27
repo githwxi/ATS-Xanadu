@@ -821,7 +821,6 @@ trans34_myenv0_dats
 trans34_myenv0_dats: ; $(XATSOPT) --dynamic DATS/trans34_myenv0.dats
 ######
 
-
 ######
 all_dats:: \
 xatsopt_tmplib_dats

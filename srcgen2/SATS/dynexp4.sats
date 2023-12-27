@@ -210,6 +210,22 @@ token(*knd*), sint(*npf*), l4d4elst)
 ( sint(*lvl*), d4exp(*err*) ) // tread34-error
 //
 (* ****** ****** *)
+fun
+d4exp_fprint
+(
+  out:FILR, d4e0:d4exp):(void)
+(* ****** ****** *)
+//
+fun
+d4exp_get_lctn(d4exp): ( loc_t )
+//
+fun
+d4exp_get_node(d4exp): d4exp_node
+//
+(* ****** ****** *)
+#symload lctn with d4exp_get_lctn
+#symload node with d4exp_get_node
+(* ****** ****** *)
 (* ****** ****** *)
 //
 datatype
@@ -233,6 +249,22 @@ D4Cnone1 of ( d3ecl ) | D4Cnone2 of ( d4ecl )
 D4Cerrck of
 ( sint(*lvl*), d4ecl(*err*) ) // tread34-error
 //
+(* ****** ****** *)
+fun
+d4ecl_fprint
+(
+  out:FILR, d4cl:d4ecl):(void)
+(* ****** ****** *)
+//
+fun
+d4ecl_get_lctn(d4ecl): ( loc_t )
+//
+fun
+d4ecl_get_node(d4ecl): d4ecl_node
+//
+(* ****** ****** *)
+#symload lctn with d4ecl_get_lctn
+#symload node with d4ecl_get_node
 (* ****** ****** *)
 (* ****** ****** *)
 
