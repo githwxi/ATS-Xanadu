@@ -46,11 +46,5 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 (* ****** ****** *)
-#staload
-_(*?*) = "./lexing0_print0.dats"
-(* ****** ****** *)
-#staload "./../SATS/lexing0.sats"
-(* ****** ****** *)
-(* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_dynexp4_print0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_dynexp4.dats] *)

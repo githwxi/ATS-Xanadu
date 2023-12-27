@@ -1545,7 +1545,7 @@ d4lab_get_itm
 (dlab: d4lab(x0)): x0
 *)
 #impltmp
-<x0>
+<x0>(*tmp*)
 d4lab_get_itm(dlab) =
 (
 case+
@@ -1561,7 +1561,7 @@ d4lab_fprint
 *)
 //
 #impltmp
-<x0>
+<x0>(*tmp*)
 d4lab_fprint
   (out, lab) = let
 //

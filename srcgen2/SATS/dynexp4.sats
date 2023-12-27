@@ -117,6 +117,16 @@ D3E = "./dynexp3.sats"
 #typedef token = $LEX.token
 //
 (* ****** ****** *)
+#typedef d2var = $D2E.d2var
+#typedef d2con = $D2E.d2con
+#typedef d2cst = $D2E.d2cst
+(* ****** ****** *)
+#abstbox d4pat_tbox // p0tr
+#typedef d4pat = d4pat_tbox
+(* ****** ****** *)
+#abstbox d4exp_tbox // p0tr
+#typedef d4exp = d4exp_tbox
+(* ****** ****** *)
 (* ****** ****** *)
 //
 datatype
@@ -143,6 +153,35 @@ fun
 d4lab_fprint
 ( out
 : FILR, lab: d4lab(x0)): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef l4d4p = d4lab(d4pat)
+#typedef l4d4e = d4lab(d4exp)
+(* ****** ****** *)
+#typedef l4d4plst = list(l4d4p)
+#typedef l4d4elst = list(l4d4e)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+d4pat_node =
+//
+|D4Pany of ()
+|D4Pvar of d2var
+//
+|D4Pint of token
+|D4Pbtf of sym_t
+|D4Pchr of token
+|D4Pflt of token
+|D4Pstr of token
+//
+|D4Pcon of (d2con)
+//
+|
+D4Perrck of (sint(*lvl*),d4pat)//tread34-error
+//
+// HX-2024-??-??: end-of-[datatype(d4pat_node)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
