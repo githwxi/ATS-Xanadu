@@ -127,6 +127,13 @@ d4lab_get_itm
 #symload itm with d4lab_get_itm
 //
 (* ****** ****** *)
+//
+fun
+<x0:type>
+d4lab_fprint
+(out: FILR, lab: d4lab(x0)): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_dynexp4.sats] *)
