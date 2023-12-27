@@ -1176,7 +1176,9 @@ D2PAT_vt of
 //
 #absimpl d2pat_tbox = d2pat
 //
+(* ****** ****** *)
 in (* in-of-local *)
+(* ****** ****** *)
 //
 #implfun
 d2pat_make_node
@@ -1184,7 +1186,9 @@ d2pat_make_node
 let
 val t2p =
 s2typ_none0() in
-D2PAT(loc, t2p, nod) end
+D2PAT(loc, t2p, nod) endlet
+//
+(* ****** ****** *)
 //
 #implfun
 d2pat_get_lctn(d2p) =
@@ -1205,6 +1209,8 @@ val+
 D2PAT(loc,t2p,nod) = d2p in t2p
 end
 //
+(* ****** ****** *)
+//
 #implfun
 d2pat_set_styp
 ( d2p0, t2p0 ) =
@@ -1218,6 +1224,8 @@ val+
 (loc0,
 !styp,node) = d2p0 in styp := t2p0
 end (*let*) // end of [d2pat_set_styp]
+//
+(* ****** ****** *)
 //
 endloc (*local*) // end of [local(d2pat)]
 
@@ -1238,7 +1246,9 @@ D2EXP_vt of
 //
 #absimpl d2exp_tbox = d2exp
 //
+(* ****** ****** *)
 in (* in-of-local *)
+(* ****** ****** *)
 //
 #implfun
 d2exp_make_node
@@ -1246,7 +1256,9 @@ d2exp_make_node
 let
 val t2p =
 s2typ_none0() in
-D2EXP(loc, t2p, nod) end
+D2EXP(loc, t2p, nod) endlet
+//
+(* ****** ****** *)
 //
 #implfun
 d2exp_get_lctn(d2e) =
@@ -1267,6 +1279,8 @@ val+
 D2EXP(loc,t2p,nod) = d2e in nod
 end
 //
+(* ****** ****** *)
+//
 #implfun
 d2exp_set_styp
 ( d2e0, t2p0 ) =
@@ -1280,6 +1294,8 @@ val+
 (loc0,
 !styp,node) = d2e0 in styp := t2p0
 end (*let*) // end of [d2exp_set_styp]
+//
+(* ****** ****** *)
 //
 endloc (*local*) // end of [local(d2exp)]
 //
