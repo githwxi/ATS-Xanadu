@@ -171,7 +171,7 @@ d4ecl_make_node
 let
 val t2p =
 s2typ_none0() in D4ECL(loc, nod)
-endlet//end-of-[d4ecl_make_node]
+endlet//end-of-[d4ecl_make_node(...)]
 //
 (* ****** ****** *)
 //
@@ -179,12 +179,12 @@ endlet//end-of-[d4ecl_make_node]
 d4ecl_get_lctn(dcl) =
 let
   val+D4ECL(loc,nod) = dcl in loc
-end
+end//let//end-of-[d4ecl_get_node(loc)]
 #implfun
 d4ecl_get_node(dcl) =
 let
   val+D4ECL(loc,nod) = dcl in nod
-end
+end//let//end-of-[d4ecl_get_node(dcl)]
 //
 (* ****** ****** *)
 //
