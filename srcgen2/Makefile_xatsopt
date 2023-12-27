@@ -204,6 +204,10 @@ dynexp4_sats
 dynexp4_sats: ; $(XATSOPT) --static SATS/dynexp4.sats
 ######
 all_sats:: \
+trans34_sats
+trans34_sats: ; $(XATSOPT) --static SATS/trans34.sats
+######
+all_sats:: \
 xglobal_sats
 xglobal_sats: ; $(XATSOPT) --static SATS/xglobal.sats
 ######
@@ -807,6 +811,16 @@ all_dats:: \
 dynexp4_print0_dats
 dynexp4_print0_dats: ; $(XATSOPT) --dynamic DATS/dynexp4_print0.dats
 ######
+
+######
+all_dats:: \
+trans34_dats
+trans34_dats: ; $(XATSOPT) --dynamic DATS/trans34.dats
+all_dats:: \
+trans34_myenv0_dats
+trans34_myenv0_dats: ; $(XATSOPT) --dynamic DATS/trans34_myenv0.dats
+######
+
 
 ######
 all_dats:: \
