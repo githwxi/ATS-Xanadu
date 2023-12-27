@@ -68,6 +68,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
+#staload "./../SATS/dynexp4.sats"
+(* ****** ****** *)
 #symload stmp with s2cst_get_stmp
 #symload stmp with s2var_get_stmp
 (* ****** ****** *)
@@ -1528,9 +1530,62 @@ print("S3TALOADnone(", dopt, ")")
 print("S3TALOADdpar(", knd0, ";", dpar, ")"))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+
+(* ****** ****** *)
+(*
+HX: for level-4 syntax
+*)
+(* ****** ****** *)
+//
+(*
+fun
+<x0:t0>
+d4lab_get_itm
+(dlab: d4lab(x0)): x0
+*)
+#impltmp
+<x0>
+d4lab_get_itm(dlab) =
+(
+case+
+dlab of D4LAB(l0, x0) => (x0))
+//
+(* ****** ****** *)
+//
+(*
+fun
+<x0:type>
+d4lab_fprint
+(out: FILR, lab: d4lab(x0)): void
+*)
+//
+#impltmp
+<x0>
+d4lab_fprint
+  (out, lab) = let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+case+ lab of
+|
+D4LAB(l01, x02) =>
+print("D4LAB(",l01,";",x02,")")
+end(*let*)//end-of-[d4lab_fprint]
+//
+#impltmp
+{x0:t0}
+g_print<d4lab(x0)>(dlab) =
+d4lab_fprint(g_print$out<>(), dlab)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 (*
 HX-2022-12-28: For debugging purpose
 *)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
