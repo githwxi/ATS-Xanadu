@@ -138,12 +138,41 @@ in (* in-of-local *)
 #implfun
 d4exp_make_node
 (   loc,nod   ) =
+(
 let
 val t2p =
 s2typ_none0() in
-D4EXP(loc, t2p, nod) endlet
+D4EXP(loc, t2p, nod) endlet)
 //
 endloc (*local*) // end of [local(d4exp)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d4ecl =
+D4ECL of
+( loctn, d4ecl_node)
+datavwtp
+d4ecl_vt =
+D4ECL_vt of
+( loctn, d4ecl_node)
+//
+#absimpl d4ecl_tbox = d4ecl
+//
+in (* in-of-local *)
+//
+#implfun
+d4ecl_make_node
+(   loc,nod   ) =
+(
+let
+val t2p =
+s2typ_none0() in
+D4ECL(loc, t2p, nod) endlet)
+//
+endloc (*local*) // end of [local(d4ecl)]
 
 (* ****** ****** *)
 (* ****** ****** *)
