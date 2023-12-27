@@ -48,37 +48,16 @@ ATS_PACKNAME
 LAB = "./xlabel0.sats"
 #staload
 TMP = "./xstamp0.sats"
-#staload
-LOC = "./locinfo.sats"
-//
-#typedef lab_t = $LAB.lab_t
-#typedef label = $LAB.label
-//
-#typedef stamp = $TMP.stamp
-//
-#typedef loc_t = $LOC.loc_t
-#typedef loctn = $LOC.loctn
-#typedef lcsrc = $LOC.lcsrc
-//
-(* ****** ****** *)
 //
 #staload
 SYM = "./xsymbol.sats"
 #staload
 MAP = "./xsymmap.sats"
 //
-#typedef
-  sym_t = ($SYM.sym_t)
-//
-(* ****** ****** *)
-//
 #staload
 FP0 = "./filpath.sats"
-//
-#typedef
-  fpath = ($FP0.fpath)
-#typedef
-  fpathopt = $FP0.fpathopt
+#staload
+LOC = "./locinfo.sats"
 //
 (* ****** ****** *)
 //
@@ -99,6 +78,31 @@ S2E = "./staexp2.sats"
 T2P = "./statyp2.sats"
 #staload
 D2E = "./dynexp2.sats"
+(* ****** ****** *)
+//
+#typedef lab_t = $LAB.lab_t
+#typedef label = $LAB.label
+//
+(* ****** ****** *)
+#typedef stamp = $TMP.stamp
+(* ****** ****** *)
+//
+#typedef sym_t = $SYM.sym_t
+//
+(* ****** ****** *)
+//
+#typedef loc_t = $LOC.loc_t
+#typedef loctn = $LOC.loctn
+//
+(* ****** ****** *)
+#typedef lcsrc = $LOC.lcsrc
+(* ****** ****** *)
+//
+#typedef
+  fpath = ($FP0.fpath)
+#typedef
+  fpathopt = $FP0.fpathopt
+//
 (* ****** ****** *)
 #typedef tnode = $LEX.tnode
 #typedef token = $LEX.token
@@ -234,22 +238,21 @@ D2E = "./dynexp2.sats"
 #typedef s2taloadopt = $D2E.s2taloadopt
 (* ****** ****** *)
 //
-datatype
-d3lab(x0:type) =
-|
-D3LAB of
-(label, x0(*elt*))
-//
-fun
-<x0:t0>
-d3lab_get_itm
-(dlab: d3lab(x0)): x0
-#symload
-itm with d3lab_get_itm
+#typedef
+d2lab(itm:t0)=$D2E.d2lab(itm)
 //
 (* ****** ****** *)
-#typedef
-d2lab(x0:t0)=$D2E.d2lab(x0)
+//
+datatype
+d3lab(itm:type) =
+|D3LAB of (label, itm(*elt*))
+//
+fun
+<itm:t0>
+d3lab_get_itm
+(dlab: d3lab(itm)): itm
+#symload itm with d3lab_get_itm
+//
 (* ****** ****** *)
 //
 fun
