@@ -121,11 +121,19 @@ D3E = "./dynexp3.sats"
 #typedef d2con = $D2E.d2con
 #typedef d2cst = $D2E.d2cst
 (* ****** ****** *)
-#abstbox d4pat_tbox // p0tr
-#typedef d4pat = d4pat_tbox
+#typedef d3pat = $D3E.d2pat
+#typedef d3exp = $D3E.d2exp
+(* ****** ****** *)
 (* ****** ****** *)
 #abstbox d4exp_tbox // p0tr
 #typedef d4exp = d4exp_tbox
+(* ****** ****** *)
+#abstbox d4ecl_tbox // p0tr
+#typedef d4ecl = d4ecl_tbox
+(* ****** ****** *)
+#typedef d4explst = list(d4exp)
+(* ****** ****** *)
+#typedef d4eclist = list(d4ecl)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -156,32 +164,37 @@ d4lab_fprint
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef l4d4p = d4lab(d4pat)
 #typedef l4d4e = d4lab(d4exp)
 (* ****** ****** *)
-#typedef l4d4plst = list(l4d4p)
 #typedef l4d4elst = list(l4d4e)
 (* ****** ****** *)
 (* ****** ****** *)
 //
 datatype
-d4pat_node =
+d4exp_node =
 //
-|D4Pany of ()
-|D4Pvar of d2var
+|D4Eint of token
+|D4Ebtf of sym_t
+|D4Echr of token
+|D4Eflt of token
+|D4Estr of token
 //
-|D4Pint of token
-|D4Pbtf of sym_t
-|D4Pchr of token
-|D4Pflt of token
-|D4Pstr of token
+|D3Eseqn of
+( d4explst(*init*), d4exp(*last*) )
 //
-|D4Pcon of (d2con)
+|D4Etup0 of (sint(*npf*), d4explst)
+|D4Etup1 of
+(
+token(*knd*), sint(*npf*), d4explst)
+|D4Ercd2 of
+(
+token(*knd*), sint(*npf*), l4d4elst)
 //
-|
-D4Perrck of (sint(*lvl*),d4pat)//tread34-error
+|D4Enone0 of ((*0*))
+|D4Enone1 of (d3exp) | D4Enone2 of (d3exp)
 //
-// HX-2024-??-??: end-of-[datatype(d4pat_node)]
+|D4Eerrck of
+( sint(*lvl*), d4exp(*err*) ) // tread34-error
 //
 (* ****** ****** *)
 (* ****** ****** *)

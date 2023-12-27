@@ -331,8 +331,8 @@ D3Pt2pck of (d3pat, s2typ)//HX: casting
 |D3Pnone0 of ((*0*))
 |D3Pnone1 of (d2pat) | D3Pnone2 of (d3pat)
 //
-|
-D3Perrck of (sint(*lvl*),d3pat)//tread23-error
+| D3Perrck of
+( sint(*lvl*),d3pat(*err*) ) // tread23-error
 //
 // HX-2023-??-??: end-of-[datatype(d3pat_node)]
 //
@@ -496,8 +496,8 @@ D3Eexists of
 |D3Enone0 of ((*0*))
 |D3Enone1 of (d2exp) | D3Enone2 of (d3exp)
 //
-|D3Eerrck of
- (sint(*lvl*),d3exp(*err*))//tread23-error
+| D3Eerrck of
+( sint(*lvl*),d3exp(*err*) ) // tread23-error
 //
 // HX-2023-??-??: end-of-[datatype(d3exp_node)]
 //
