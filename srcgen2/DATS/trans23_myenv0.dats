@@ -59,10 +59,13 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 #staload "./../SATS/trans23.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #symload name with s2cst_get_name
 #symload styp with s2cst_get_styp
+(* ****** ****** *)
 (* ****** ****** *)
 
 local
