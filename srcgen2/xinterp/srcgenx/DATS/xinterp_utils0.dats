@@ -86,12 +86,16 @@ irp0.node() of
 case+ irv0 of
 |IRVint(int2) =>
 (int1 = int2) | _ => false)
-//
 |IRPbtf(btf1) =>
 (
 case+ irv0 of
 |IRVbtf(btf2) =>
 (btf1 = btf2) | _ => false)
+|IRPchr(chr1) =>
+(
+case+ irv0 of
+|IRVchr(chr2) =>
+(chr1 = chr2) | _ => false)
 //
 |IRPcapp _ => f0_capp(irp0, irv0)
 //
@@ -114,13 +118,17 @@ let
 //
 val-
 IRPcapp
-( d2c1, irps) = irp0.node()
+( d2c1, irps) =
+(
+  irp0.node((*void*)))
 //
 in//let
 (
 case+ irv0 of
-| IRVcapp(d2c2, irvs) =>
+|
+IRVcapp(d2c2, irvs) =>
 let
+//
 val tag1 = d2c1.ctag()
 and tag2 = d2c2.ctag()
 //

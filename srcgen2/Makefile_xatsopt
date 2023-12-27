@@ -200,6 +200,10 @@ fperr33_sats
 fperr33_sats: ; $(XATSOPT) --static SATS/fperr33.sats
 ######
 all_sats:: \
+dynexp4_sats
+dynexp4_sats: ; $(XATSOPT) --static SATS/dynexp4.sats
+######
+all_sats:: \
 xglobal_sats
 xglobal_sats: ; $(XATSOPT) --static SATS/xglobal.sats
 ######
