@@ -441,11 +441,15 @@ D3ECL of
 //
 #absimpl d3ecl_tbox = d3ecl
 //
+(* ****** ****** *)
 in (* in-of-local *)
+(* ****** ****** *)
 //
 #implfun
 d3ecl_make_node
 (   loc,nod   ) = D3ECL(loc,nod)
+//
+(* ****** ****** *)
 //
 #implfun
 d3ecl_get_lctn(dcl) =
@@ -457,6 +461,8 @@ d3ecl_get_node(dcl) =
 let
   val+D3ECL(loc,nod) = dcl in nod
 end
+//
+(* ****** ****** *)
 //
 endloc (*local*) // end of [local(d3ecl)]
 

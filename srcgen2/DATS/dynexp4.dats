@@ -161,7 +161,9 @@ D4ECL_vt of
 //
 #absimpl d4ecl_tbox = d4ecl
 //
+(* ****** ****** *)
 in (* in-of-local *)
+(* ****** ****** *)
 //
 #implfun
 d4ecl_make_node
@@ -170,6 +172,21 @@ let
 val t2p =
 s2typ_none0() in D4ECL(loc, nod)
 endlet//end-of-[d4ecl_make_node]
+//
+(* ****** ****** *)
+//
+#implfun
+d4ecl_get_lctn(dcl) =
+let
+  val+D4ECL(loc,nod) = dcl in loc
+end
+#implfun
+d4ecl_get_node(dcl) =
+let
+  val+D4ECL(loc,nod) = dcl in nod
+end
+//
+(* ****** ****** *)
 //
 endloc (*local*) // end of [local(d4ecl)]
 
