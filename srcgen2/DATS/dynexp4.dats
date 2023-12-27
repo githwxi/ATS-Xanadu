@@ -166,11 +166,10 @@ in (* in-of-local *)
 #implfun
 d4ecl_make_node
 (   loc,nod   ) =
-(
 let
 val t2p =
-s2typ_none0() in
-D4ECL(loc, t2p, nod) endlet)
+s2typ_none0() in D4ECL(loc, nod)
+endlet//end-of-[d4ecl_make_node]
 //
 endloc (*local*) // end of [local(d4ecl)]
 
