@@ -60,11 +60,17 @@ MAP = "./xsymmap.sats"
 (* ****** ****** *)
 #typedef sym_t = $SYM.sym_t
 (* ****** ****** *)
+#staload D2E = "./dynexp2.sats"
+#staload D3E = "./dynexp3.sats"
+#staload D4E = "./dynexp4.sats"
+(* ****** ****** *)
+#typedef d3parsed = $D3E.d3parsed
+#typedef d4parsed = $D4E.d4parsed
 (* ****** ****** *)
 //
 fun
-d3parsed_of_trans34
-( dpar : d2parsed ): (d3parsed)
+d4parsed_of_trans34
+( dpar : d3parsed ): (d4parsed)
 //
 (* ****** ****** *)
 //

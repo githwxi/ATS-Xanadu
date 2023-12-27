@@ -92,7 +92,9 @@ D3E = "./dynexp3.sats"
 #typedef f3arglst = $D3E.f3arglst
 (* ****** ****** *)
 #typedef d3gualst = $D3E.d3gualst
+(*
 #typedef d3gptlst = $D3E.d3gptlst
+*)
 #typedef d3clslst = $D3E.d3clslst
 (* ****** ****** *)
 #typedef d3eclist = $D3E.d3eclist

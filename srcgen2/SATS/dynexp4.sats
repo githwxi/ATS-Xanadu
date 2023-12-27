@@ -121,10 +121,10 @@ D3E = "./dynexp3.sats"
 #typedef d2con = $D2E.d2con
 #typedef d2cst = $D2E.d2cst
 (* ****** ****** *)
-#typedef d3pat = $D3E.d2pat
-#typedef d3exp = $D3E.d2exp
+#typedef d3pat = $D3E.d3pat
+#typedef d3exp = $D3E.d3exp
 (* ****** ****** *)
-#typedef d3ecl = $D3E.d2ecl
+#typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
 (* ****** ****** *)
 #abstbox d4exp_tbox // p0tr
