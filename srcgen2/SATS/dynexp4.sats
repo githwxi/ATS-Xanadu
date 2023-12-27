@@ -112,10 +112,10 @@ D3E = "./dynexp3.sats"
  fpathopt = ($FP0.fpathopt)
 //
 (* ****** ****** *)
-//
 #typedef tnode = $LEX.tnode
 #typedef token = $LEX.token
-//
+(* ****** ****** *)
+#typedef g1exp = $G1M.g1exp
 (* ****** ****** *)
 #typedef d2var = $D2E.d2var
 #typedef d2con = $D2E.d2con
@@ -143,6 +143,12 @@ D3E = "./dynexp3.sats"
 #typedef d4expopt = optn(d4exp)
 (* ****** ****** *)
 #typedef d4eclist = list(d4ecl)
+(* ****** ****** *)
+#typedef d4parsed = d4parsed_tbox
+(* ****** ****** *)
+//
+#typedef d4eclistopt = optn(d4eclist)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -265,6 +271,64 @@ d4ecl_get_node(d4ecl): d4ecl_node
 (* ****** ****** *)
 #symload lctn with d4ecl_get_lctn
 #symload node with d4ecl_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d4parsed_fprint
+(out:FILR, dpar:d4parsed): void
+//
+(* ****** ****** *)
+#typedef d1topenv = $D1E.d1topenv
+#typedef d2topenv = $D2E.d2topenv
+#typedef d3topenv = $D3E.d3topenv
+(* ****** ****** *)
+//
+fun
+d4parsed_get_stadyn:(d4parsed)->sint
+fun
+d4parsed_get_nerror:(d4parsed)->sint
+//
+fun
+d4parsed_get_source:(d4parsed)->lcsrc
+//
+#symload stadyn with d4parsed_get_stadyn
+#symload nerror with d4parsed_get_nerror
+#symload source with d4parsed_get_source
+//
+(* ****** ****** *)
+//
+fun
+d4parsed_get_t1penv:(d4parsed)->d1topenv
+fun
+d4parsed_get_t2penv:(d4parsed)->d2topenv
+//
+fun
+d4parsed_get_t3penv:(d4parsed)->d3topenv
+//
+fun
+d4parsed_get_parsed
+:(d4parsed(*dpar*))->d4eclistopt(*?err*)
+//
+#symload t1penv with d4parsed_get_t1penv
+#symload t2penv with d4parsed_get_t2penv
+#symload t3penv with d4parsed_get_t3penv
+#symload parsed with d4parsed_get_parsed
+//
+(* ****** ****** *)
+//
+fun
+d4parsed_make_args
+( stadyn:sint
+, nerror:sint
+, source:lcsrc
+, t1penv:d1topenv
+, t2penv:d2topenv
+, t3penv:d3topenv
+, parsed:d4eclistopt): d4parsed//end-fun
+//
+#symload d4parsed with d4parsed_make_args
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
