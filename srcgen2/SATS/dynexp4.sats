@@ -124,6 +124,8 @@ D3E = "./dynexp3.sats"
 #typedef d3pat = $D3E.d2pat
 #typedef d3exp = $D3E.d2exp
 (* ****** ****** *)
+#typedef d3ecl = $D3E.d2ecl
+(* ****** ****** *)
 (* ****** ****** *)
 #abstbox d4exp_tbox // p0tr
 #typedef d4exp = d4exp_tbox
@@ -131,7 +133,14 @@ D3E = "./dynexp3.sats"
 #abstbox d4ecl_tbox // p0tr
 #typedef d4ecl = d4ecl_tbox
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#abstbox d4parsed_tbox//p0tr
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #typedef d4explst = list(d4exp)
+#typedef d4expopt = optn(d4exp)
 (* ****** ****** *)
 #typedef d4eclist = list(d4ecl)
 (* ****** ****** *)
@@ -179,6 +188,10 @@ d4exp_node =
 |D4Eflt of token
 |D4Estr of token
 //
+|D4Eift0 of
+(d4exp(*cond*)
+,d4expopt(*thn*), d4expopt(*els*) )
+//
 |D3Eseqn of
 ( d4explst(*init*), d4exp(*last*) )
 //
@@ -195,6 +208,30 @@ token(*knd*), sint(*npf*), l4d4elst)
 //
 |D4Eerrck of
 ( sint(*lvl*), d4exp(*err*) ) // tread34-error
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+d4ecl_node =
+//
+|D4Cd3ecl of (d3ecl)
+//
+|D4Cinclude of
+( sint(*s/d*)
+, token
+, g1exp // src
+, fpathopt
+, d4eclistopt) // inclusion
+//
+|
+D4Cnone0 of ((*nil*))
+|
+D4Cnone1 of ( d3ecl ) | D4Cnone2 of ( d4ecl )
+//
+|
+D4Cerrck of
+( sint(*lvl*), d4ecl(*err*) ) // tread34-error
 //
 (* ****** ****** *)
 (* ****** ****** *)
