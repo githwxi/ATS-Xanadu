@@ -801,6 +801,15 @@ fperr33_decl00_dats: ; $(XATSOPT) --dynamic DATS/fperr33_decl00.dats
 
 ######
 all_dats:: \
+dynexp4_dats
+dynexp4_dats: ; $(XATSOPT) --dynamic DATS/dynexp4.dats
+all_dats:: \
+dynexp4_print0_dats
+dynexp4_print0_dats: ; $(XATSOPT) --dynamic DATS/dynexp4_print0.dats
+######
+
+######
+all_dats:: \
 xatsopt_tmplib_dats
 xatsopt_tmplib_dats: ; $(XATSOPT) --dynamic DATS/xatsopt_tmplib.dats
 ######

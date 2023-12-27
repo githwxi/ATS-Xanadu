@@ -81,6 +81,7 @@ trtmp3b.sats \
 trtmp3c.sats \
 tread33.sats \
 fperr33.sats \
+dynexp4.sats \
 xglobal.sats \
 xatsopt.sats \
 
@@ -231,6 +232,8 @@ tread33_decl00.dats \
 fperr33.dats \
 fperr33_dynexp.dats \
 fperr33_decl00.dats \
+dynexp4.dats \
+dynexp4_print0.dats \
 xatsopt_tmplib.dats \
 xatsopt_utils0.dats \
 
