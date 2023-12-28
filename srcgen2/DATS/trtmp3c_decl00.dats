@@ -108,6 +108,8 @@ D3Cstaload _ => f0_staload(env0, d3cl)
 //
 |
 D3Cvaldclst _ => f0_valdclst(env0, d3cl)
+|
+D3Cvardclst _ => f0_vardclst(env0, d3cl)
 //
 |
 D3Cfundclst _ => f0_fundclst(env0, d3cl)

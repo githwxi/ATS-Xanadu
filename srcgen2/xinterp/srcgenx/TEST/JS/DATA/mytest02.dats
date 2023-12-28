@@ -10,6 +10,10 @@
 "prelude/HATS/CATS/Xint/prelude_dats.hats"
 //
 (* ****** ****** *)
+var x: int = 10
+(* ****** ****** *)
+////
+(* ****** ****** *)
 //
 #extern
 fun

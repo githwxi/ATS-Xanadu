@@ -399,6 +399,31 @@ end//let
 (* ****** ****** *)
 //
 #implfun
+trxd3ir_d3vardcl
+  (env0, dvar) =
+let
+//
+val loc0 =
+d3vardcl_get_lctn(dvar)
+//
+val dpid =
+d3vardcl_get_dpid(dvar)
+val vpid =
+d3vardcl_get_vpid(dvar)
+//
+val dini =
+d3vardcl_get_dini(dvar)
+val dini =
+trxd3ir_teqd3exp(env0, dini)
+//
+in//let
+irvardcl_make_args(loc0,dpid,vpid,dini)
+end//let
+(*let*)//end-of-[trxd3ir_d3vardcl(env0,dvar)]
+//
+(* ****** ****** *)
+//
+#implfun
 trxd3ir_d3fundcl
   (env0, dfun) = let
 //
