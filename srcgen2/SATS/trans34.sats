@@ -64,6 +64,21 @@ MAP = "./xsymmap.sats"
 #staload D3E = "./dynexp3.sats"
 #staload D4E = "./dynexp4.sats"
 (* ****** ****** *)
+#typedef d3exp = $D3E.d3exp
+#typedef l3d3e = $D3E.l3d3e
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef d4exp = $D4E.d4exp
+#typedef l4d4e = $D4E.l4d4e
+(* ****** ****** *)
+#typedef d3explst = $D3E.d3explst
+#typedef d3expopt = $D3E.d3expopt
+#typedef l3d3elst = $D3E.l3d3elst
+(* ****** ****** *)
+#typedef d4explst = $D4E.d4explst
+#typedef d4expopt = $D4E.d4expopt
+#typedef l4d4elst = $D4E.l4d4elst
+(* ****** ****** *)
 #typedef d3parsed = $D3E.d3parsed
 #typedef d4parsed = $D4E.d4parsed
 (* ****** ****** *)
@@ -77,7 +92,51 @@ d4parsed_of_trans34
 fun
 tr34env_make_nil((*nil*)):tr34env
 fun
-tr34env_free_top(tr34env): (void)
+tr34env_free_top(tr34env):( void )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:t0>
+list_trans34_fnp
+( e1:
+! tr34env
+, xs: list(x0)
+, (!tr34env, x0) -> y0): list(y0)
+fun
+<x0:t0>
+<y0:t0>
+optn_trans34_fnp
+( e1:
+! tr34env
+, xs: optn(x0)
+, (!tr34env, x0) -> y0): optn(y0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+trans34_d3exp
+(env0: !tr34env, d3e0: d3exp): d4exp
+fun
+trans34_l3d3e
+(env0: !tr34env, ld3e: l3d3e): l4d4e
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+trans34_d3explst
+(env0: !tr34env, d3es: d3explst): d4explst
+fun
+trans34_d3expopt
+(env0: !tr34env, dopt: d3expopt): d4expopt
+//
+fun
+trans34_l3d3elst
+(env0: !tr34env, ldes: l3d3elst): l4d4elst
 //
 (* ****** ****** *)
 (* ****** ****** *)

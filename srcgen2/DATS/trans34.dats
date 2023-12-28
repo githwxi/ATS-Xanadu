@@ -45,6 +45,40 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload "./../SATS/dynexp3.sats"
+#staload "./../SATS/dynexp4.sats"
+(* ****** ****** *)
+#staload "./../SATS/trans34.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<x0><y0>
+list_trans34_fnp
+( e1, xs, fopr ) =
+(
+list_map_e1nv<x0><y0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = tr34env
+#impltmp
+map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [list_trans34_fnp(e1,xs,fopr)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0><y0>
+optn_trans34_fnp
+( e1, xs, fopr ) =
+(
+optn_map_e1nv<x0><y0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = tr34env
+#impltmp
+map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [optn_trans34_fnp(e1,xs,fopr)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans34.dats] *)
