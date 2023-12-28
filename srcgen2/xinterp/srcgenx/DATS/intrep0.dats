@@ -371,7 +371,7 @@ irvaldcl_get_dpat
   (  dval  ) = let
 val+
 IRVALDCL
-( dpat
+( lctn
 , dpat, tdxp) = dval in dpat
 end// let// irvaldcl_get_dpat
 (* ****** ****** *)
@@ -380,7 +380,7 @@ irvaldcl_get_tdxp
   (  dval  ) = let
 val+
 IRVALDCL
-( dpat
+( lctn
 , dpat, tdxp) = dval in tdxp
 end// let// irvaldcl_get_tdxp
 (* ****** ****** *)
@@ -392,6 +392,72 @@ irvaldcl_make_args
 (* ****** ****** *)
 //
 endloc (*local*) // end of [ local(irvaldcl) ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+irvardcl =
+IRVARDCL of
+( loc_t
+, d2var
+, d2varopt, teqirexp)
+//
+#absimpl
+irvardcl_tbox = irvardcl
+//
+in//local
+//
+(* ****** ****** *)
+#implfun
+irvardcl_get_lctn
+  (  dvar  ) = let
+val+
+IRVARDCL
+( lctn
+, dpid
+, vpid, dini) = dvar in lctn
+end// let// irvardcl_get_lctn
+(* ****** ****** *)
+#implfun
+irvardcl_get_dpid
+  (  dvar  ) = let
+val+
+IRVARDCL
+( lctn
+, dpid
+, vpid, dini) = dvar in dpid
+end// let// irvardcl_get_dpid
+(* ****** ****** *)
+#implfun
+irvardcl_get_vpid
+  (  dvar  ) = let
+val+
+IRVARDCL
+( lctn
+, dpid
+, vpid, dini) = dvar in vpid
+end// let// irvardcl_get_vpid
+(* ****** ****** *)
+#implfun
+irvardcl_get_dini
+  (  dval  ) = let
+val+
+IRVARDCL
+( lctn
+, dpit
+, dpip, dini) = dval in dini
+end// let// irvardcl_get_dini
+(* ****** ****** *)
+#implfun
+irvardcl_make_args
+(lctn,dpid,vpid,dini) =
+(
+IRVARDCL(lctn,dpid,vpid,dini))
+(* ****** ****** *)
+//
+endloc (*local*) // end of [ local(irvardcl) ]
 
 (* ****** ****** *)
 

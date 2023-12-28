@@ -619,11 +619,19 @@ irvaldcl_make_args
 , irp0:irpat, tdxp:teqirexp):irvaldcl
 //
 fun
+irvardcl_make_args
+( lctn:loc_t
+, dpid:d2var
+, vpid:d2varopt, tdxp:teqirexp):irvardcl
+//
+fun
 irfundcl_make_args
 ( lctn:loc_t
 , dpid:d2var
 , farg:fiarglst, tdxp:teqirexp):irfundcl
 //
+#symload irvaldcl with irvaldcl_make_args
+#symload irvardcl with irvardcl_make_args
 #symload irfundcl with irfundcl_make_args
 //
 (* ****** ****** *)
