@@ -81,34 +81,6 @@ val dpar = d2parsed_of_tread22(dpar)
 } (*where*)//end-of-[d3parsed_from_fpath(...)]
 //
 (* ****** ****** *)
-//
-#impltmp
-<x0><y0>
-list_trans23_fnp
-( e1, xs, fopr ) =
-(
-list_map_e1nv<x0><y0><e1>(xs, e1)) where
-{
-#vwtpdef e1 = tr23env
-#impltmp
-map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [list_trans23_fnp(e1,xs,fopr)]
-//
-(* ****** ****** *)
-//
-#impltmp
-<x0><y0>
-optn_trans23_fnp
-( e1, xs, fopr ) =
-(
-optn_map_e1nv<x0><y0><e1>(xs, e1)) where
-{
-#vwtpdef e1 = tr23env
-#impltmp
-map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [optn_trans23_fnp(e1,xs,fopr)]
-//
-(* ****** ****** *)
 
 #implfun
 d3parsed_of_trans23
@@ -144,6 +116,36 @@ d3parsed
 end//let
 end (*let*) // end of [d2parsed_trans23(dpar)]
 
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<x0><y0>
+list_trans23_fnp
+( e1, xs, fopr ) =
+(
+list_map_e1nv<x0><y0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = tr23env
+#impltmp
+map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [list_trans23_fnp(e1,xs,fopr)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0><y0>
+optn_trans23_fnp
+( e1, xs, fopr ) =
+(
+optn_map_e1nv<x0><y0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = tr23env
+#impltmp
+map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [optn_trans23_fnp(e1,xs,fopr)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans23.dats] *)

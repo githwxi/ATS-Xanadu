@@ -45,6 +45,10 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+(* ****** ****** *)
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
+(* ****** ****** *)
 #staload "./../SATS/dynexp3.sats"
 #staload "./../SATS/dynexp4.sats"
 (* ****** ****** *)
