@@ -236,7 +236,7 @@ firfun1
 (
 fopr:
 ( irval
-) -> irval): irvalfun =
+) -> irval): irfun =
 lam(vs) => let
 val-
 list_cons(v1, vs) = vs in fopr(v1)
@@ -250,13 +250,32 @@ firfun2
 fopr:
 ( irval
 , irval
-) -> irval): irvalfun =
+) -> irval): irfun =
 lam(vs) => let
 val-
 list_cons(v1, vs) = vs
 val-
 list_cons(v2, vs) = vs in fopr(v1, v2)
 end (* let *) // end of [ firfun2(fopr) ]
+//
+(* ****** ****** *)
+//
+fun
+firfun3
+(
+fopr:
+( irval
+, irval
+, irval
+) -> irval): irfun =
+lam(vs) => let
+val-
+list_cons(v1, vs) = vs
+val-
+list_cons(v2, vs) = vs
+val-
+list_cons(v3, vs) = vs in fopr(v1,v2,v3)
+end (* let *) // end of [ firfun3(fopr) ]
 //
 (* ****** ****** *)
 (* ****** ****** *)

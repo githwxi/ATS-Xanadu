@@ -98,6 +98,9 @@ print("IRVcon(", d2c, ")")
 |IRVfun(fopr) =>
 print("IRVfun(", "...", ")")
 //
+|IRVlft(lval) =>
+print("IRVlft(", lval, ")")
+//
 |IRVtup0(irvs) =>
 print("IRVtup0(", irvs, ")")
 //
@@ -131,6 +134,25 @@ print
 |IRVnone1(ire1) => print("IRVnone1(", ire1, ")")
 //
 end//let//end-of-[irval_fprint(out, irv0)]
+//
+(* ****** ****** *)
+//
+#implfun
+irlft_fprint
+(out, lval) =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+//
+case+ lval of
+|
+IRLFTref0(ropt) =>
+print("IRLFTref0(", ropt, ")")
+//
+end//let//end-of-[irlft_fprint(out, lval)]
 //
 (* ****** ****** *)
 

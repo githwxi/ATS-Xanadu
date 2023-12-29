@@ -111,6 +111,11 @@ g_print
 <irval>(irv) =
 irval_fprint(g_print$out<>(), irv)
 //
+#impltmp
+g_print
+<irlft>(lft) =
+irlft_fprint(g_print$out<>(), lft)
+//
 (* ****** ****** *)
 //
 #impltmp
