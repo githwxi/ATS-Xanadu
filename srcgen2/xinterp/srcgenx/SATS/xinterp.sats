@@ -127,7 +127,9 @@ irval =
 //
 |IRVcon of (d2con)
 //
-|IRVfun of irvalfun
+|IRVfun of (irfun)
+//
+|IRVlft of (irlft)
 //
 (*
 HX-2023-12-23:
@@ -161,15 +163,20 @@ IRVfixs of
 //
 |IRVnone0 of () |IRVnone1 of (irexp)
 //
+and irlft =
+|
+IRLFTref0 of a0ref(irvalopt)
+//
 where
 {
 //
 #typedef irvalist = list(irval)
 #typedef irvalopt = optn(irval)
 //
-#typedef irvalarr = a1rsz(irval)
 #typedef
-irvalfun = (irvalist) -<cfr> ( irval )
+irfun = (irvalist) -<cfr> irval
+//
+#typedef irvalarr = a1rsz(irval)
 //
 } (*where*) // end of [datatype(irval)]
 //
@@ -181,6 +188,11 @@ irval_fprint
 (out:FILR, irv0:irval): void
 //
 (* ****** ****** *)
+//
+fun
+irlft_fprint
+(out:FILR, lval:irlft): void
+//
 (* ****** ****** *)
 //
 fun

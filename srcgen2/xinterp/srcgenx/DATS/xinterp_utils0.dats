@@ -48,6 +48,11 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #include
+"./../HATS/libxinterp.hats"
+//
+(* ****** ****** *)
+//
+#include
 "./../HATS/xinterp_dats.hats"
 //
 (* ****** ****** *)
