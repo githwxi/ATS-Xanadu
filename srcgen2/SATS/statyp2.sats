@@ -174,6 +174,12 @@ s2typ_node =
 |T2Pxtv of (x2t2p) // exist. var.
 //
 (* ****** ****** *)
+//
+|T2Ptop0 of (s2typ) // uninitized
+|T2Ptop1 of (s2typ) // delineared
+//
+(* ****** ****** *)
+//
 // HX: ~/!/& = 0/1/-1
 // knd: 0/1/-1//cbv0/v1/rf
 |
@@ -291,8 +297,17 @@ s2typ_rcd2
 (trcdknd(*tknd*)
 ,npf1:sint,ltps:l2t2plst): s2typ
 (* ****** ****** *)
+//
+(*
 fun
-s2typ_unarg1(t2p0: s2typ): s2typ
+s2typ_unargx(t2p0: s2typ): s2typ
+fun
+s2typ_untopx(t2p0: s2typ): s2typ
+*)
+//
+fun
+s2typ_unmodx(t2p0: s2typ): s2typ
+//
 (* ****** ****** *)
 fun
 s2typ_make_node

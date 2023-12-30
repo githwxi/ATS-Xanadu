@@ -117,6 +117,14 @@ T2Pxtv(xtp1) =>
 print("T2Pxtv(", xtp1, ")")
 //
 (* ****** ****** *)
+|
+T2Ptop0(t2p1) =>
+print("T2Ptop0(", t2p1, ")")
+|
+T2Ptop1(t2p1) =>
+print("T2Ptop1(", t2p1, ")")
+//
+(* ****** ****** *)
 //
 |
 T2Parg1
