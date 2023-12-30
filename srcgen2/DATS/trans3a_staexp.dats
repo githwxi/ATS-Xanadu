@@ -108,10 +108,10 @@ f0_lft(env0, t2p0)
 //
 |T2Pfun1 _ => f0_fun1(env0, t2p0)
 //
-|T2Ptext _ => f0_text(env0, t2p0)
-//
 |T2Pexi0 _ => f0_exi0(env0, t2p0)
 |T2Puni0 _ => f0_uni0(env0, t2p0)
+//
+|T2Ptext _ => f0_text(env0, t2p0)
 //
 |T2Ptrcd _ => f0_trcd(env0, t2p0)
 //
@@ -279,6 +279,28 @@ end(*let*)//end-of-[ f0_atx2(env0,t2p0) ]
 (* ****** ****** *)
 //
 fun
+f0_apps
+( env0:
+! tr3aenv
+, t2p0: s2typ): s2typ =
+let
+//
+val-
+T2Papps
+( t2f0, t2ps) = t2p0.node()
+//
+val
+t2f0 = trans3a_s2typ(env0, t2f0)
+val
+t2ps = trans3a_s2typlst(env0, t2ps)
+//
+in//let
+s2typ(t2p0.sort(), T2Papps(t2f0,t2ps))
+end(*let*)//end-of-[ f0_apps(env0,t2p0) ]
+//
+(* ****** ****** *)
+//
+fun
 f0_fun1
 ( env0:
 ! tr3aenv
@@ -304,48 +326,6 @@ in//let
   ( t2p0.sort()
   , T2Pfun1(f2cl, npf1, t2ps, tres))
 end(*let*)//end-of-[ f0_fun1(env0,t2p0) ]
-//
-(* ****** ****** *)
-//
-fun
-f0_apps
-( env0:
-! tr3aenv
-, t2p0: s2typ): s2typ =
-let
-//
-val-
-T2Papps
-( t2f0, t2ps) = t2p0.node()
-//
-val
-t2f0 = trans3a_s2typ(env0, t2f0)
-val
-t2ps = trans3a_s2typlst(env0, t2ps)
-//
-in//let
-s2typ(t2p0.sort(), T2Papps(t2f0,t2ps))
-end(*let*)//end-of-[ f0_apps(env0,t2p0) ]
-//
-(* ****** ****** *)
-//
-fun
-f0_text
-( env0:
-! tr3aenv
-, t2p0: s2typ): s2typ =
-let
-//
-val-
-T2Ptext
-( name, t2ps) = t2p0.node()
-//
-val
-t2ps = trans3a_s2typlst(env0, t2ps)
-//
-in//let
-s2typ(t2p0.sort(), T2Ptext(name,t2ps))
-end(*let*)//end-of-[ f0_text(env0,t2p0) ]
 //
 (* ****** ****** *)
 //
@@ -387,6 +367,25 @@ end(*let*)//end-of-[ f0_uni0(env0,t2p0) ]
 //
 (* ****** ****** *)
 //
+fun
+f0_text
+( env0:
+! tr3aenv
+, t2p0: s2typ): s2typ =
+let
+//
+val-
+T2Ptext
+( name, t2ps) = t2p0.node()
+//
+val
+t2ps = trans3a_s2typlst(env0, t2ps)
+//
+in//let
+s2typ(t2p0.sort(), T2Ptext(name,t2ps))
+end(*let*)//end-of-[ f0_text(env0,t2p0) ]
+//
+(* ****** ****** *)
 //
 fun
 f0_trcd
