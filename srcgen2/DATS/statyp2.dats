@@ -268,19 +268,30 @@ end (*let*) // end of [s2typ_s2exp(s2e0)]
 (* ****** ****** *)
 //
 #implfun
-s2typ_unarg1(t2p0) =
+s2typ_unmodx
+(  t2p0  ) =
+(
+  unmodx(t2p0) ) where
+{
+fun
+unmodx
+(t2p0: s2typ): s2typ =
 (
 case+
 t2p0.node() of
+//
+|T2Ptop0
+( t2p1 ) => unmodx(t2p1)
+|T2Ptop1
+( t2p1 ) => unmodx(t2p1)
+//
 |T2Parg1
 ( knd0
-, t2p1) =>
-s2typ_unarg1(t2p1)
+, t2p1 ) => unmodx(t2p1)
 |T2Patx2
 ( t2p1
-, t2p2) =>
-s2typ_unarg1(t2p1) | _ => (t2p0)
-) (*case+*) // end of [s2typ_unarg1(t2p0)]
+, t2p2 ) => unmodx(t2p1) | _ => t2p0 )
+} (*where*) // end of [s2typ_unmodx(t2p0)]
 //
 (* ****** ****** *)
 

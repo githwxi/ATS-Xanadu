@@ -568,11 +568,15 @@ S2Extv of (x2s2e) // ext-variable
 | // HX: unresolved list of
  S2Ecsts of (s2cstlst)//constants
 //
+(* ****** ****** *)
+//
 |S2Earg1 of // HX: knd: 0/1/-1: 
 (sint(*knd*), s2exp) // cbv0/v1/rf
 //
 |S2Eatx2 of // HX: bef: 0/1/-1:
 (s2exp(*bef*), s2exp(*aft*))//trans
+//
+(* ****** ****** *)
 //
 |S2Eapps of
 ( s2exp(*fun*), s2explst(*arg*) )
@@ -580,15 +584,20 @@ S2Extv of (x2s2e) // ext-variable
 |S2Elam1 of
 ( s2varlst(*arg*), s2exp(*body*) )
 //
+(* ****** ****** *)
+//
 |S2Efun1 of
 ( // function type
   f2clknd
 , sint(*npf*)
 , s2explst(*args*), s2exp(*res*) )
 //
+(* ****** ****** *)
+//
 |S2Emet0 of // HX: for term-check
  (s2explst(*mets*), s2exp(*body*))
 //
+(* ****** ****** *)
 // HX: for [...]
 |S2Eexi0 of // exists quantifier
  ( s2varlst(*vars*)
@@ -598,18 +607,27 @@ S2Extv of (x2s2e) // ext-variable
  ( s2varlst(*vars*)
  , s2explst(*prop*), s2exp(*body*))
 //
+(* ****** ****** *)
+//
 | // HX: for terms of tuple sorts
  S2Elist of s2explst // temporary use
 //
+(* ****** ****** *)
 // HX-2021-01: for lifting from
 |S2Etype of (s2typ) // [s2typ-to-s2exp]
+//
+(* ****** ****** *)
 //
 |S2Etext of
  ( string(*name*)
  , s2explst(*arglst*)) (* external *)
 //
+(* ****** ****** *)
+//
 |S2Etrcd of
  (trcdknd(*knd*), int(*npf*), l2s2elst)
+//
+(* ****** ****** *)
 //
 |S2Eimpr of // HX: for storing
  (loc_t, s2exp) // sort-checking error
@@ -618,15 +636,21 @@ S2Extv of (x2s2e) // ext-variable
 |S2Ecast of // HX-2018-12-23: for storing
  (loc_t,s2exp,sort2) // sort-checking error
 //
-|S2Enone0 of () // HX: error or special sth
+(* ****** ****** *)
 //
-(*
-| S2Eg1mac of
-  (loc_t, g1mac(*src*)) // HX: error indication
-*)
+|S2Enone0 of () // HX: error or special sth
 //
 |S2Enone1 of ( s1exp ) // HX: error indication
 |S2Enone2 of ( s2exp ) // HX: error indication
+//
+(* ****** ****** *)
+//
+(*
+|S2Eg1mac of
+ (loc_t, g1mac(*src*)) // HX: error indication
+*)
+//
+(* ****** ****** *)
 //
 |S2Eerrck of (int(*lvl*), s2exp)//HX:tread-error
 //

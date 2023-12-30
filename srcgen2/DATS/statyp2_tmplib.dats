@@ -119,13 +119,18 @@ f0_cst(e1nv, t2p0, flag)
 |T2Pvar _ =>
 f0_var(e1nv, t2p0, flag)
 //
-|
-T2Plft _ =>
+|T2Plft _ =>
 f0_lft(e1nv, t2p0, flag)
 //
-|
-T2Pxtv _ =>
+|T2Pxtv _ =>
 f0_xtv(e1nv, t2p0, flag)
+//
+|
+T2Ptop0 _ =>
+f0_top0(e1nv, t2p0, flag)
+|
+T2Ptop1 _ =>
+f0_top1(e1nv, t2p0, flag)
 //
 |
 T2Parg1 _ =>
@@ -284,6 +289,60 @@ end where
 {
   val-T2Pxtv(xtp1) = t2p0.node() }
 //(*where*) // end of [f0_xtv(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_top0
+( e1nv: !e1nv
+, t2p0: s2typ
+, flag: &sint >> _): s2typ =
+let
+//
+val fval = flag
+//
+val-
+T2Ptop0
+( t2p1 ) = t2p0.node((*0*))
+//
+val t2p1 =
+s2typ_hnfizx(e1nv, t2p1, flag)
+//
+in//let
+//
+if
+(flag <= fval)
+then t2p0 else
+s2typ(t2p0.sort(), T2Ptop0(t2p1))
+//
+end//(*let*) // end of [f0_top0(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_top1
+( e1nv: !e1nv
+, t2p0: s2typ
+, flag: &sint >> _): s2typ =
+let
+//
+val fval = flag
+//
+val-
+T2Ptop1
+( t2p1 ) = t2p0.node((*0*))
+//
+val t2p1 =
+s2typ_hnfizx(e1nv, t2p1, flag)
+//
+in//let
+//
+if
+(flag <= fval)
+then t2p0 else
+s2typ(t2p0.sort(), T2Ptop1(t2p1))
+//
+end//(*let*) // end of [f0_top1(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -688,13 +747,18 @@ t2p0.node() of
 //
 |T2Pcst _ => t2p0
 //
-|
-T2Pvar _ =>
+|T2Pvar _ =>
 f0_var(e1nv, t2p0, svts, flag)
 //
-|
-T2Pxtv _ =>
+|T2Pxtv _ =>
 f0_xtv(e1nv, t2p0, svts, flag)
+//
+|
+T2Ptop0 _ =>
+f0_top0(e1nv, t2p0, svts, flag)
+|
+T2Ptop1 _ =>
+f0_top1(e1nv, t2p0, svts, flag)
 //
 |
 T2Parg1 _ =>
@@ -786,6 +850,58 @@ _(*non-S2Tnone0*) =>
 flag := flag+1;
 s2typ_substx(e1nv, t2p1, svts, flag))
 end (*let*) // end of [f0_xtv(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_top0
+( e1nv: !e1nv
+, t2p0: s2typ
+, svts: s2vts
+, flag: &sint >> _): s2typ =
+let
+//
+val fval = flag
+//
+val-
+T2Ptop0(t2p1) = t2p0.node()
+//
+val t2p1 =
+s2typ_substx(e1nv, t2p1, svts, flag)
+//
+in//let
+if
+flag <= fval
+then t2p0 else
+(
+  s2typ(t2p0.sort(), T2Ptop0(t2p1)) )
+end (*let*) // end of [f0_top0(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_top1
+( e1nv: !e1nv
+, t2p0: s2typ
+, svts: s2vts
+, flag: &sint >> _): s2typ =
+let
+//
+val fval = flag
+//
+val-
+T2Ptop1(t2p1) = t2p0.node()
+//
+val t2p1 =
+s2typ_substx(e1nv, t2p1, svts, flag)
+//
+in//let
+if
+flag <= fval
+then t2p0 else
+(
+  s2typ(t2p0.sort(), T2Ptop1(t2p1)) )
+end (*let*) // end of [f0_top1(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -1506,9 +1622,9 @@ end (*let*) // end of [f0_trcd(e1nv,...)]
 (* ****** ****** *)
 //
 val
-t2p1 = s2typ_unarg1(t2p1)
+t2p1 = s2typ_unmodx(t2p1)
 val
-t2p2 = s2typ_unarg1(t2p2)
+t2p2 = s2typ_unmodx(t2p2)
 //
 val
 t2p1 = s2typ_hnfiz0(e1nv, t2p1)
