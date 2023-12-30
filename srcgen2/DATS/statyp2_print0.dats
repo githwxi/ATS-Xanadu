@@ -116,27 +116,38 @@ print("T2Plft(", t2p1, ")")
 T2Pxtv(xtp1) =>
 print("T2Pxtv(", xtp1, ")")
 //
-|
-T2Parg1(knd0,t2p1) =>
-(
-  print("T2Parg1(",knd0,";",t2p1,")"))
-(*
-|
-T2Patx2(tbef,taft) =>
-(
-  print("T2Patx1(",tbef,";",taft,")"))
-*)
+(* ****** ****** *)
 //
 |
-T2Papps(tfun, t2ps) =>
-print("T2Papps(", tfun, ";", t2ps, ")")
+T2Parg1
+(knd0, t2p1) =>
+print
+("T2Parg1(", knd0, ";", t2p1, ")")
 |
-T2Plam1(s2vs, tres) =>
-print("T2Plam1(", s2vs, ";", tres, ")")
+T2Patx2
+(tbef, taft) =>
+print
+("T2Patx2(", tbef, ";", taft, ")")
+//
+(* ****** ****** *)
+//
+|
+T2Papps
+(tfun, t2ps) =>
+print
+("T2Papps(", tfun, ";", t2ps, ")")
+|
+T2Plam1
+(s2vs, tres) =>
+print
+("T2Plam1(", s2vs, ";", tres, ")")
+//
+(* ****** ****** *)
 //
 |
 T2Pf2cl(f2cl) =>
-print("T2Pf2cl(", f2cl, ")")
+(
+  print("T2Pf2cl(" , f2cl , ")") )
 |
 T2Pfun1
 ( f2cl

@@ -130,6 +130,9 @@ f0_xtv(e1nv, t2p0, flag)
 |
 T2Parg1 _ =>
 f0_arg1(e1nv, t2p0, flag)
+|
+T2Patx2 _ =>
+f0_atx2(e1nv, t2p0, flag)
 //
 |
 T2Papps _ =>
@@ -308,6 +311,35 @@ end where
 {
 val-T2Parg1(knd0, t2p1) = t2p0.node() }
 //(*where*) // end of [f0_arg1(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_atx2
+( e1nv: !e1nv
+, t2p0: s2typ
+, flag: &sint >> _): s2typ =
+let
+//
+val fval = flag
+//
+val t2p1 =
+s2typ_hnfizx(e1nv, t2p1, flag)
+val t2p2 =
+s2typ_hnfizx(e1nv, t2p2, flag)
+//
+in//let
+//
+if
+(flag <= fval)
+then t2p0 else
+s2typ_make_node
+(t2p0.sort(), T2Patx2( t2p1, t2p2 ))
+//
+end where
+{
+val-T2Patx2(t2p1, t2p2) = t2p0.node() }
+//(*where*) // end of [f0_atx2(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -667,6 +699,9 @@ f0_xtv(e1nv, t2p0, svts, flag)
 |
 T2Parg1 _ =>
 f0_arg1(e1nv, t2p0, svts, flag)
+|
+T2Patx2 _ =>
+f0_atx2(e1nv, t2p0, svts, flag)
 //
 |
 T2Papps _ =>
@@ -777,6 +812,34 @@ flag <= fval
 then t2p0 else
 s2typ(t2p0.sort(), T2Parg1(knd0, t2p1))
 end (*let*) // end of [f0_arg1(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_atx2
+( e1nv: !e1nv
+, t2p0: s2typ
+, svts: s2vts
+, flag: &sint >> _): s2typ =
+let
+//
+val fval = flag
+//
+val-
+T2Patx2
+( t2p1, t2p2) = t2p0.node()
+//
+val t2p1 =
+s2typ_substx(e1nv, t2p1, svts, flag)
+val t2p2 =
+s2typ_substx(e1nv, t2p2, svts, flag)
+//
+in//let
+if
+flag <= fval
+then t2p0 else
+s2typ(t2p0.sort(), T2Patx2(t2p1, t2p2))
+end (*let*) // end of [f0_atx2(e1nv,...)]
 //
 (* ****** ****** *)
 //

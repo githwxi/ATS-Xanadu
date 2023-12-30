@@ -112,6 +112,21 @@ end//let//end-of(s2typ_arg1_errck(...))
 (* ****** ****** *)
 //
 fun
+s2typ_atx2_errck
+(s2t0: sort2
+,t2p1: s2typ
+,t2p2: s2typ): s2typ =
+let
+val lvl0 = 1
+in//let
+s2typ_errck
+( lvl0
+, s2typ(s2t0, T2Patx2(t2p1, t2p2)))
+end//let//end-of(s2typ_atx2_errck(...))
+//
+(* ****** ****** *)
+//
+fun
 s2typ_apps_errck
 (s2t0: sort2
 ,t2f0: s2typ
@@ -228,6 +243,7 @@ t2p0.node() of
 |T2Pf2cl _ => (     t2p0     )
 //
 |T2Parg1 _ => f0_arg1(t2p0, err)
+|T2Patx2 _ => f0_atx2(t2p0, err)
 //
 |T2Papps _ => f0_apps(t2p0, err)
 //
@@ -346,6 +362,31 @@ if
 then (t2p) else
 s2typ_arg1_errck(t2p.sort(),knd0,t2p1)
 end(*let*)// end-of-[ f0_arg1(t2p,err) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_atx2
+( t2p: s2typ
+, err: &sint >> _): s2typ =
+let
+//
+val e00 = err
+val-
+T2Patx2
+( t2p1, t2p2) = t2p.node()
+//
+val
+t2p1 = tread33_s2typ(t2p1, err)
+val
+t2p2 = tread33_s2typ(t2p2, err)
+//
+in//let
+if
+(err=e00)
+then (t2p) else
+s2typ_atx2_errck(t2p.sort(),t2p1,t2p2)
+end(*let*)// end-of-[ f0_atx2(t2p,err) ]
 //
 (* ****** ****** *)
 //

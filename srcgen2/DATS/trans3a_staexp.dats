@@ -99,6 +99,7 @@ f0_lft(env0, t2p0)
 |T2Pf2cl _ => (t2p0)
 //
 |T2Parg1 _ => f0_arg1(env0, t2p0)
+|T2Patx2 _ => f0_atx2(env0, t2p0)
 //
 |T2Papps _ => f0_apps(env0, t2p0)
 //
@@ -212,6 +213,29 @@ in//let
   s2typ_make_node
   (t2p0.sort(), T2Parg1(knd0, t2p1))
 end(*let*)//end-of-[ f0_arg1(env0,t2p0) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_atx2
+( env0:
+! tr3aenv
+, t2p0: s2typ): s2typ =
+let
+//
+val-
+T2Patx2
+( t2p1, t2p2) = t2p0.node()
+//
+val
+t2p1 = trans3a_s2typ(env0, t2p1)
+val
+t2p2 = trans3a_s2typ(env0, t2p2)
+//
+in//let
+  s2typ_make_node
+  (t2p0.sort(), T2Patx2(t2p1, t2p2))
+end(*let*)//end-of-[ f0_atx2(env0,t2p0) ]
 //
 (* ****** ****** *)
 //
