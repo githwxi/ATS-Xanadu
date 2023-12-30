@@ -298,20 +298,23 @@ irpat_fprint
 fun
 irpat_get_lctn(irpat):( loc_t )
 fun
+irpat_get_type(irpat):( s2typ )
+fun
 irpat_get_node(irpat):irpat_node
 //
 (* ****** ****** *)
 #symload lctn with irpat_get_lctn
+#symload type with irexp_get_type
 #symload node with irpat_get_node
 (* ****** ****** *)
 fun
-irpat_none0(loc0: loctn): irpat
+irpat_none0(loc0: loctn): (irpat)
 fun
-irpat_none1(d3p0: d3pat): irpat
+irpat_none1(d3p0: d3pat): (irpat)
 (* ****** ****** *)
 fun
 irpat_make_node
-(loc: loctn, nod: irpat_node):irpat
+(loc:loctn, nod:irpat_node): irpat
 (* ****** ****** *)
 #symload irpat with irpat_make_node
 (* ****** ****** *)
@@ -388,21 +391,26 @@ irexp_fprint
 //
 fun
 irexp_get_lctn(irexp):( loc_t )
+//
+fun
+irexp_get_type(irexp):( s2typ )
+//
 fun
 irexp_get_node(irexp):irexp_node
 //
 (* ****** ****** *)
 #symload lctn with irexp_get_lctn
+#symload type with irexp_get_type
 #symload node with irexp_get_node
 (* ****** ****** *)
 fun
-irexp_none0(loc0: loctn): irexp
+irexp_none0(loc0: loctn): (irexp)
 fun
-irexp_none1(d3e0: d3exp): irexp
+irexp_none1(d3e0: d3exp): (irexp)
 (* ****** ****** *)
 fun
 irexp_make_node
-(loc:loctn, nod:irexp_node):irexp
+(loc:loctn, nod:irexp_node): irexp
 (* ****** ****** *)
 #symload irexp with irexp_make_node
 (* ****** ****** *)
