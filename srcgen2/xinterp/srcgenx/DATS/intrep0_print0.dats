@@ -208,7 +208,7 @@ print("IREseqn(", ires, ";", ire1, ")")
 (* ****** ****** *)
 //
 |IREtup0
-( ires  ) =>
+( ires ) =>
 print("IREtup0(", ires, ")")
 |IREtup1
 ( tknd, ires) =>
@@ -219,9 +219,22 @@ print("IRErcd2(", tknd, ";", lirs, ")")
 //
 (* ****** ****** *)
 //
+|IREaddr
+( ire1 ) => print("IREaddr(", ire1, ")")
+|IREflat
+( ire1 ) => print("IREflat(", ire1, ")")
+//
+(* ****** ****** *)
+//
 |IREwhere
 ( ire1, irds) =>
 print("IREwhere(", ire1, ";", irds, ")")
+//
+(* ****** ****** *)
+//
+|IREassgn
+( lval, rval) =>
+print("IREassgn(", lval, ";", rval, ")")
 //
 (* ****** ****** *)
 //

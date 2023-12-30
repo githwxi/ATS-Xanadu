@@ -181,17 +181,22 @@ irfun = (irvalist) -<cfr> irval
 } (*where*) // end of [datatype(irval)]
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 fun
 irval_fprint
-(out:FILR, irv0:irval): void
+(FILR, irval): (void)
+fun
+irlft_fprint
+(FILR, irlft): (void)
 //
 (* ****** ****** *)
 //
 fun
-irlft_fprint
-(out:FILR, lval:irlft): void
+irlft_deget
+(lval: irlft): irval
+fun
+irlft_deset
+(irlft, irval): (void)
 //
 (* ****** ****** *)
 //

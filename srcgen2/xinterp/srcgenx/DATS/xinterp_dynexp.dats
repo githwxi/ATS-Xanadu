@@ -143,8 +143,14 @@ ire0.node() of
 |IRElam0 _ => f0_lam0(env0, ire0)
 |IREfix0 _ => f0_fix0(env0, ire0)
 //
+|IREaddr _ => f0_addr(env0, ire0)
+|IREflat _ => f0_flat(env0, ire0)
+//
 |
 IREwhere _ => f0_where(env0, ire0)
+//
+|
+IREassgn _ => f0_assgn(env0, ire0)
 //
 |
 _(*otherwise*) =>
@@ -713,6 +719,53 @@ end(*let*)//end-of-[f0_fix0(env0,ire0)]
 (* ****** ****** *)
 //
 fun
+f0_addr
+( env0:
+! xintenv
+, ire0: irexp): irval =
+let
+//
+val-
+IREaddr(irel) = ire0.node()
+//
+in//let
+//
+case- irel of
+|
+IREflat(ire1) => 
+(
+  xinterp_irexp(env0, ire1) )
+//
+end(*let*)//end-of-[f0_addr(env0,ire0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_flat
+( env0:
+! xintenv
+, ire0: irexp): irval =
+let
+//
+val-
+IREflat(ire1) = ire0.node()
+val
+irv1 =
+(
+  xinterp_irexp(env0, ire1))
+//
+in//let
+//
+(
+case- irv1 of
+|
+IRVlft(lval) => irlft_deget(lval))
+//
+end(*let*)//end-of-[f0_flat(env0,ire0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_where
 ( env0:
 ! xintenv
@@ -737,6 +790,44 @@ xinterp_irexp
 val () =
 xintenv_poplet0(env0) in dres end
 end(*let*)//end-of-[f0_where(env0,ire0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_assgn
+( env0:
+! xintenv
+, ire0: irexp): irval =
+let
+//
+val-
+IREassgn
+( irel, irer) = ire0.node()
+//
+in//let
+//
+(
+case+ irvl of
+|IRVlft(lval) =>
+(
+irlft_deset
+(lval, irvr); IRVnil(*void*))
+) where
+{
+val irvl =
+(
+case
+irel.node() of
+|
+IREflat(ire1) =>
+(
+  xinterp_irexp(env0, ire1) )
+)
+val irvr =
+(
+  xinterp_irexp(env0, irer) ) }//whr
+//
+end(*let*)//end-of-[f0_assgn(env0,ire0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
