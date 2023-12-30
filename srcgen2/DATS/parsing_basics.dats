@@ -235,7 +235,16 @@ T_IDSYM _ => true
 T_IDDLR _ => true
 //
 | T_AT0() => true // "@"
+//
+(*
+(*
+HX-2023-12-30:
+BAR(|) is special;
+it is for separating
+proofs from programs!
+*)
 | T_BAR() => true // "|"
+*)
 //
 | T_EQ0() => true // "="
 //
@@ -316,7 +325,7 @@ let val () = (err := e00 + 1) in tok end
 end (*let*)//end-of-[p1_GT0(buf,err)]
 
 (* ****** ****** *)
-
+//
 #implfun
 p1_BAR(buf, err) =
 let
@@ -332,7 +341,7 @@ let val () = buf.skip1() in tok end
 _(* non-BAR *) =>
 let val () = (err := e00 + 1) in tok end
 end (*let*) // end of [p1_BAR(buf,err)]
-
+//
 #implfun
 pq_BAR(buf, err) =
 let
@@ -340,16 +349,17 @@ let
 val tok = buf.getk0()
 //
 in//let
+(
 case+
 tok.node() of
 |
 T_BAR() =>
-optn_cons(tok) where
-{ val () = buf.skip1() }
-|
-_ (* non-BAR *) => optn_nil()
-end (*let*) // end of [pq_BAR]
-
+let
+val () =
+buf.skip1() in optn_cons(tok)
+end
+| _ (* non-BAR *) => optn_nil() ) endlet
+//
 (* ****** ****** *)
 
 #implfun
