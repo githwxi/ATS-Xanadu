@@ -273,8 +273,8 @@ print("S2Eany(",knd,")")
 //
 |S2Etop0(s2e) =>
 print("S2Etop0(",s2e,")")
-|S2Etopz(s2e) =>
-print("S2Etopz(",s2e,")")
+|S2Etop1(s2e) =>
+print("S2Etop1(",s2e,")")
 //
 |
 S2Ecsts(s2cs) =>

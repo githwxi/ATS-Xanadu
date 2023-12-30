@@ -228,7 +228,7 @@ CBRF_VT_VT_symbl: symbl //=symbl("cbrf_vt_vt")
 val
 TOP0_VT_T0_symbl: symbl //=symbl("top0_vt_t0")
 val
-TOPZ_VT_T0_symbl: symbl //=symbl("topz_vt_t0")
+TOP1_VT_T0_symbl: symbl //=symbl("top1_vt_t0")
 //
 (* ****** ****** *)
 

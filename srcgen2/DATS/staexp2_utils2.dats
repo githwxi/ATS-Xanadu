@@ -161,7 +161,7 @@ s2exp_make_node(s2t0,S2Etop0(s2e1))
 end (*let*) // end of [S2Etop0(...)]
 //
 |
-S2Etopz(s2e1) =>
+S2Etop1(s2e1) =>
 let
 //
 val fval = flag
@@ -175,8 +175,8 @@ in//let
 if
 flag <= fval
 then s2e0 else
-s2exp_make_node(s2t0,S2Etopz(s2e1))
-end (*let*) // end of [S2Etopz(...)]
+s2exp_make_node(s2t0,S2Etop1(s2e1))
+end (*let*) // end of [S2Etop1(...)]
 //
 |
 S2Eapps
