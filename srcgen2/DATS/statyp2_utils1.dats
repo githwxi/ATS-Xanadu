@@ -68,7 +68,7 @@ t2p0.node() of
 |T2Parg1
 (knd0, _) => (knd0 < 0)
 |T2Patx2
-(t2p1, _) => s2typ_cbrfq(t2p0)
+(t2p1, _) => s2typ_cbrfq(t2p1)
 |_(* otherwise *) => ( false ))
 //
 (* ****** ****** *)
@@ -428,7 +428,10 @@ s2typ_make_node
 |S2Etopz
 (  s2e1  ) => f0_impr(s2e1)
 //
-|S2Earg1
+(* ****** ****** *)
+//
+|
+S2Earg1
 (knd0, s2e1) =>
 let
 val t2p1 = f0_impr(s2e1)
@@ -439,7 +442,8 @@ in//let
   (s2t1,T2Parg1(knd0,t2p1)) )
 end (*let*) // end of [S2Earg1]
 //
-|S2Eatx2
+|
+S2Eatx2
 (s2e1, s2e2) =>
 let
 val t2p1 = f0_impr(s2e1)
@@ -450,6 +454,8 @@ in//let
   s2typ_make_node
   (s2t1,T2Patx2(t2p1,t2p2)) )
 end (*let*) // end of [S2Eatx2]
+//
+(* ****** ****** *)
 //
 |
 S2Eapps
@@ -476,6 +482,8 @@ in//let
   (s2t0, T2Plam1(s2vs, t2p1)) )
 end (*let*) // end of [S2Elam1(...)]
 //
+(* ****** ****** *)
+//
 |
 S2Efun1
 ( f2cl, npf1
@@ -495,6 +503,8 @@ s2typ_make_node
   val tres = s2exp_stpize(sres) }
 //(*where*) // end of [S2Efun1(...)]
 //
+(* ****** ****** *)
+//
 |
 S2Eexi0
 ( s2vs
@@ -513,6 +523,7 @@ list_cons _ =>
 s2typ_make_node
 (s2t0, T2Pexi0(s2vs, t2p1))
 end (*let*) // end of [S2Eexi0(...)]
+//
 |
 S2Euni0
 ( s2vs
@@ -532,8 +543,11 @@ s2typ_make_node
 (s2t0, T2Puni0(s2vs, t2p1))
 end (*let*) // end of [S2Euni0(...)]
 //
+(* ****** ****** *)
+//
 (*
-| S2Etype(t2p1) => t2p1
+|
+S2Etype(t2p1) => t2p1
 *)
 //
 |
@@ -544,6 +558,8 @@ s2typ_make_node
 , T2Ptext(name, t2ps)) where
 {
 val t2ps = s2explst_stpize(s2es) }
+//
+(* ****** ****** *)
 //
 |
 S2Etrcd

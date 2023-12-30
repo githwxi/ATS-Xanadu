@@ -74,6 +74,9 @@ XATSOPT "./../../.."
 _(*DATS*)="./../DATS/intrep0.dats"
 //
 (* ****** ****** *)
+#symload sort with s2typ_get_sort
+#symload node with s2typ_get_node
+(* ****** ****** *)
 #symload lctn with d3pat_get_lctn
 #symload node with d3pat_get_node
 (* ****** ****** *)
@@ -134,6 +137,14 @@ list_cons
 (_, itms) => loop(npf1-1, itms))
 }
 //
+(* ****** ****** *)
+fun
+pfrmv_npf1_t2ps
+( npf1
+: sint
+, t2ps
+: s2typlst): s2typlst =
+pfrmv_npf1_itms<s2typ>(npf1, t2ps)
 (* ****** ****** *)
 //
 fun
@@ -577,8 +588,26 @@ val loc0 = d3e0.lctn()
 val-
 D3Edapp
 ( d3f0
-, npf1, d3es) = d3e0.node()
+, npf1
+, d3es ) = d3e0.node((*0*))
 //
+val t2f0 = d3f0.styp((*0*))
+//
+val t2ps =
+(
+(
+case-
+t2f0.node() of
+|
+T2Pfun1
+( f2cl
+, npf1
+, t2ps
+, tres) => t2ps): s2typlst )
+//
+val t2ps =
+(
+pfrmv_npf1_t2ps(npf1, t2ps) )
 val d3es =
 (
 pfrmv_npf1_d3es(npf1, d3es) )
@@ -586,16 +615,82 @@ pfrmv_npf1_d3es(npf1, d3es) )
 val irf0 =
 (
   trxd3ir_d3exp(env0, d3f0) )
+//
 val ires =
-(
-  trxd3ir_d3explst(env0, d3es) )
+f1_t2ps_d3es(env0, t2ps, d3es)
 //
 in//let
 //
 (
 irexp(loc0, IREdapp(irf0, ires)))
 //
-end(*let*)//end-of-[f0_dapp(env0,d3e0)]
+end where
+{
+//
+fun
+f1_addr
+( ire0
+: irexp): irexp =
+let
+//
+(*
+val t2p0 = ire0.styp()
+*)
+//
+in//let
+case+
+ire0.node() of
+//
+|IREflat(irel) => (irel)
+//
+|_(*otherwise*) =>
+let
+val
+loc0 = ire0.lctn()
+in//let
+irexp
+(loc0, IREaddr(ire0)) end
+//
+end//end-of-[f1_addr(ire0)]
+//
+fun
+f1_t2ps_d3es
+( env0:
+! trdienv
+, t2ps: s2typlst
+, d3es: d3explst): irexplst =
+(
+case+ t2ps of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons(t2p1, t2ps) =>
+(
+case+ d3es of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons(d3e1, d3es) =>
+let
+val ire1 =  
+trxd3ir_d3exp(env0, d3e1)
+val ire1 =
+if//if
+s2typ_cbrfq(t2p1)
+then f1_addr(ire1) else ire1
+in//let
+(
+  list_cons(ire1, ires)) where
+{ val
+  ires =
+  f1_t2ps_d3es(env0, t2ps, d3es)
+} endlet // end-of-[list_cons(...)]
+)(*case+*)//end-of-[list_cons(...)]
+)(*case+*)//end-of-[f1_t2ps_d3es(...)]
+//
+}(*where*)//end-of-[f0_dapp(env0,d3e0)]
 //
 (* ****** ****** *)
 //

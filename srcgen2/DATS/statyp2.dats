@@ -273,7 +273,13 @@ s2typ_unarg1(t2p0) =
 case+
 t2p0.node() of
 |T2Parg1
-(knd0, t2p1) => t2p1 | _ => t2p0
+( knd0
+, t2p1) =>
+s2typ_unarg1(t2p1)
+|T2Patx2
+( t2p1
+, t2p2) =>
+s2typ_unarg1(t2p1) | _ => (t2p0)
 ) (*case+*) // end of [s2typ_unarg1(t2p0)]
 //
 (* ****** ****** *)
