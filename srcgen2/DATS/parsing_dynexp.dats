@@ -2412,7 +2412,8 @@ val (  ) = buf.skip1()
 val d0e2 = p1_d0exp(buf, err)
 *)
 val d0e2 =
-  p1_d0exp_app_NBAR(buf, err)
+(
+  p1_d0exp_app_NBAR(buf, err) )
 //
 val lres = (dgp1.lctn()+d0e2.lctn())
 //
