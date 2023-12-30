@@ -522,6 +522,41 @@ end(*let*)//end-of-[TEQIREXPsome(teq0,ire1)]
 end(*let*)//end-of-[xinterp_irvaldcl(env0,dval)]
 //
 (* ****** ****** *)
+//
+#implfun
+xinterp_irvardcl
+  (env0, dvar) = let
+//
+val dpid =
+irvardcl_get_dpid(dvar)
+val dini =
+irvardcl_get_dini(dvar)
+//
+val ref0 = a0ref(optn_nil)
+val lval = IRLFTref0(ref0)
+//
+val (  ) =
+irvar_match
+(env0, dpid, IRVlft(lval))
+//
+in//let
+//
+case+ dini of
+|
+TEQIREXPnone
+( (*void*) ) => ()
+|
+TEQIREXPsome
+(teq0, ire1) =>
+let
+val irv1 =
+xinterp_irexp(env0, ire1)
+in
+a0ref_set(ref0, optn_cons(irv1)) end//case+
+//
+end(*let*)//end-of-[xinterp_irvardcl(env0,dval)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -592,7 +627,7 @@ list_nil() => ()
 list_cons(irf1, irfs) =>
 (
 xinterp_irfundcl(env0, irf1);
-xinterp_irfundclist(env0, irfs)))//xinterp_irvardclist
+xinterp_irfundclist(env0, irfs)))//xinterp_irfundclist
 *)
 //
 (* ****** ****** *)

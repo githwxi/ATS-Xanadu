@@ -367,7 +367,12 @@ IREdapp of
 (token(*knd*)
 ,d2var(*fid*),fiarglst(*arg*), irexp)
 //
+|IREaddr of (irexp)//left-val-address
+|IREflat of (irexp)//left-val-content
+//
 |IREwhere of (irexp, irdclist)
+//
+|IREassgn of (irexp(*l*), irexp(*r*))
 //
 |IREnone0 of ((*0*)) |IREnone1 of (d3exp)
 //

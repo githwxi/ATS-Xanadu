@@ -77,6 +77,65 @@ _(*DATS*)="./../DATS/xinterp.dats"
 (* ****** ****** *)
 //
 #implfun
+irlft_deget
+(  lval  ) =
+(
+case+ lval of
+|
+IRLFTref0(ref1) =>
+let
+//
+val
+opt1 = a0ref_get(ref1)
+//
+in//let
+//
+(
+case+ opt1 of
+|optn_nil
+((*nil*)) => IRVnil()
+|optn_cons irv1 => irv1)//case
+//
+end//let//end-of-[IRLFTref0(...)]
+//
+) where
+{
+//
+val () =
+( prerrln
+  ("irlft_deget: lval = ", lval))
+//
+}(*where*)//end-[irlft_deget(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+irlft_deset
+(lval, rval) =
+(
+case+ lval of
+|
+IRLFTref0(ref1) =>
+(
+  a0ref_set(ref1, opt1)
+) where
+{
+  val opt1 = optn_cons(rval) }
+) where
+{
+//
+val () =
+( prerrln
+  ("irlft_deset: lval = ", lval))
+val () =
+( prerrln
+  ("irlft_deset: rval = ", rval))
+//
+}(*where*)//end-[irlft_deset(...)]
+//
+(* ****** ****** *)
+//
+#implfun
 irpat_valck
 (irp0 , irv0) =
 (
@@ -166,10 +225,19 @@ IRPtup0(irps) = irp0.node()
 in//let
 (
 case+ irv0 of
-| IRVtup0(irvs) =>
-(
-  irpatlst_valck_arr(irps,irvs) )
-| _ (*non-IRVtup0*) => (  false  ) )
+//
+(*
+val () = ...
+*)
+|
+IRVnil((*0*)) => (  true  )
+//
+|
+IRVtup0(irvs) =>
+irpatlst_valck_arr(irps, irvs)
+//
+|
+_ (*non-IRVtup0*) => (  false  ) )
 end(*let*)//end-of-[f0_tup0(irp0,irv0)]
 //
 (* ****** ****** *)

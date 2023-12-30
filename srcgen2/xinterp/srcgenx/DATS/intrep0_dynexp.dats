@@ -453,7 +453,12 @@ irexp(loc0, IREcst(d2c))
 |D3Elam0 _ => f0_lam0(env0, d3e0)
 |D3Efix0 _ => f0_fix0(env0, d3e0)
 //
+|D3Eaddr _ => f0_addr(env0, d3e0)
+|D3Eflat _ => f0_flat(env0, d3e0)
+//
 |D3Ewhere _ => f0_where(env0, d3e0)
+//
+|D3Eassgn _ => f0_assgn(env0, d3e0)
 //
 |_(* otherwise *) => irexp_none1(d3e0)
 ) where
@@ -833,6 +838,48 @@ end(*let*)//end-of-[f0_fix0(env0,d3e0)]
 (* ****** ****** *)
 //
 fun
+f0_addr
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val-
+D3Eaddr(d3e1) = d3e0.node()
+//
+val ire1 =
+(
+  trxd3ir_d3exp(env0, d3e1))
+//
+in//let
+(
+  irexp(loc0, IREaddr( ire1 )) )
+end(*let*)//end-of-[f0_addr(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_flat
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val-
+D3Eflat(d3e1) = d3e0.node()
+//
+val ire1 =
+(
+  trxd3ir_d3exp(env0, d3e1))
+//
+in//let
+(
+  irexp(loc0, IREflat( ire1 )) )
+end(*let*)//end-of-[f0_flat(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_where
 ( env0:
 ! trdienv
@@ -854,6 +901,32 @@ in//let
   irexp_make_node
   (loc0, IREwhere( ire1, irds )))
 end(*let*)//end-of-[f0_where(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_assgn
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val-
+D3Eassgn
+( d3el, d3er) = d3e0.node()
+//
+val irel =
+(
+  trxd3ir_d3exp(env0, d3el))
+val irer =
+(
+  trxd3ir_d3exp(env0, d3er))
+//
+in//let
+(
+  irexp_make_node
+  (loc0, IREassgn( irel, irer )))
+end(*let*)//end-of-[f0_assgn(env0,d3e0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
