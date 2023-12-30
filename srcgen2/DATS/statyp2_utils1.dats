@@ -425,7 +425,7 @@ s2typ_make_node
 //
 |S2Etop0
 (  s2e1  ) => f0_impr(s2e1)
-|S2Etopz
+|S2Etop1
 (  s2e1  ) => f0_impr(s2e1)
 //
 (* ****** ****** *)

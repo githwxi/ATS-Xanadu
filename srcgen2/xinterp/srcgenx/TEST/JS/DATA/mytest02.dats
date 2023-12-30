@@ -16,17 +16,25 @@ val () = (x:=x+1)
 (* ****** ****** *)
 val xx = ( x * x )
 (* ****** ****** *)
-
+//
+fun
+foo0
+(x:
+ !sint): sint = x + 1
+//
 fun
 foo1
-(x: &sint): void = x := x+1
-fun
+(x:
+ &sint): void = x := x+1
+and
 foo2
-(x: &sint >> sint): void = x := x+1
-
+(x:
+ &sint >> sint): void = x := x+1
+//
 (* ****** ****** *)
-val y1 = foo1(x)
-val y2 = foo2(x)
+val y1 = foo1( x )
+and y2 = foo2( x )
+val y3 = foo0( x )
 (* ****** ****** *)
 ////
 (* ****** ****** *)

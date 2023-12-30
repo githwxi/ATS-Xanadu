@@ -174,7 +174,7 @@ s2e.node() of
 S2Etop0(s2e1) =>
 s2exp_fpemsg(out, s2e1)
 |
-S2Etopz(s2e1) =>
+S2Etop1(s2e1) =>
 s2exp_fpemsg(out, s2e1)
 //
 | // HX: unresolved list of

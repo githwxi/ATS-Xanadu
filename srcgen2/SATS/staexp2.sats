@@ -563,7 +563,7 @@ S2Extv of (x2s2e) // ext-variable
 *)
 //
 |S2Etop0 of (s2exp) // uninitized
-|S2Etopz of (s2exp) // delineared
+|S2Etop1 of (s2exp) // delineared
 //
 | // HX: unresolved list of
  S2Ecsts of (s2cstlst)//constants

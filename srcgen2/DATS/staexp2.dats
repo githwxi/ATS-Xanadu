@@ -739,8 +739,8 @@ case+ 0 of
   isTOP0(s2f0) =>
   f0_top0(loc0, s2es)
 | _ when
-  isTOPZ(s2f0) =>
-  f0_topz(loc0, s2es)
+  isTOP1(s2f0) =>
+  f0_top1(loc0, s2es)
 //
 | _ when
   isCBV0(s2f0) =>
@@ -810,10 +810,10 @@ isTOP0
 f1_test
 (s2f0, TOP0_VT_T0_symbl)
 fun
-isTOPZ
+isTOP1
 (s2f0: s2exp): bool =
 f1_test
-(s2f0, TOPZ_VT_T0_symbl)
+(s2f0, TOP1_VT_T0_symbl)
 //
 fun
 isCBV0
@@ -853,7 +853,7 @@ s2exp_make_node(s2t0, S2Etop0(s2e1))
 end (*let*) // end of [f0_top0(...)]
 //
 fun
-f0_topz
+f0_top1
 ( loc0: loc_t
 , s2es: s2explst): s2exp =
 let
@@ -870,8 +870,8 @@ sort2_boxq
 then the_sort2_tbox(*void*)
 else the_sort2_type(*void*)): sort2
 in//let
-s2exp_make_node(s2t0, S2Etopz(s2e1))
-end (*let*) // end of [f0_topz(...)]
+s2exp_make_node(s2t0, S2Etop1(s2e1))
+end (*let*) // end of [f0_top1(...)]
 //
 fun
 f0_cbv0
