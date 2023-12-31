@@ -1900,6 +1900,20 @@ then true else false
 _(* non-D1Eid0 *) => false
 ) (*case+*) // end of [isADDR]
 fun
+isVIEW
+(d1e: d1exp): bool =
+(
+case+
+d1e.node() of
+|
+D1Eid0(sym) =>
+if
+(sym=DVIEW_symbl)
+then true else false
+|
+_(* non-D1Eid0 *) => false
+) (*case+*) // end of [isVIEW]
+fun
 isEVAL
 (d1e: d1exp): bool =
 (
@@ -2049,6 +2063,17 @@ end (*let*) // end-of-then
 else
 (
 if
+isVIEW(d1f0)
+then
+let
+val d2e1 =
+trans12_d1exp(env0, d1e1)
+in//let
+d2exp(loc0, D2Eview(d2e1))
+end (*let*) // end-of-then
+else
+(
+if
 isFOLD(d1f0)
 then
 let
@@ -2133,6 +2158,7 @@ end (*let*) // end of [D1Etarg(s1es)]
 ) (*end-of-else*) // end-of-if( isFREE0 )
 ) (*end-of-else*) // end-of-if( isEVAL0 )
 ) (*end-of-else*) // end-of-if( isFOLD0 )
+) (*end-of-else*) // end-of-if( isVIEW0 )
 ) (*end-of-else*) // end-of-if( isADDR0 )
 ) (*end-of-else*) // end-of-if( isBANG0 )
 ) (*end-of-else*) // end-of-if( isAMP00 )

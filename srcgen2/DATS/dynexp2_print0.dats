@@ -482,6 +482,10 @@ D2Etry0
 D2Eaddr(d2e1) =>
 (
   print("D2Eaddr(", d2e1, ")"))
+|
+D2Eview(d2e1) =>
+(
+  print("D2Eview(", d2e1, ")"))
 //
 |
 D2Eeval(d2e1) =>

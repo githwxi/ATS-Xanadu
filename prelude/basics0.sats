@@ -494,6 +494,20 @@ p2tr1
 //
 (* ****** ****** *)
 //
+#absview
+p2at_view(vt,a0) // linprop
+#viewdef
+p2at0
+(a:vt) = [l:a0] p2at_view(a, l)
+#viewdef
+p2at1
+(a: vt, l: a0) = p2at_view(a, l)
+//
+#viewdef p2at(x:vt) = p2tr0(x)
+#viewdef p2at(x:vt, l:a0) = p2tr1(x, l)
+//
+(* ****** ****** *)
+//
 #abstype
 cp1tr_tbox
 (l:a0) <= p1tr_k

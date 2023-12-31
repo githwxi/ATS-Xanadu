@@ -723,20 +723,17 @@ f0_addr
 ( env0:
 ! xintenv
 , ire0: irexp): irval =
-let
-//
-val-
-IREaddr(irel) = ire0.node()
-//
-in//let
-//
-case- irel of
+(
+case-
+irel.node() of
 |
 IREflat(ire1) => 
 (
   xinterp_irexp(env0, ire1) )
-//
-end(*let*)//end-of-[f0_addr(env0,ire0)]
+) where
+{
+val-IREaddr(irel) = ire0.node() }
+//(*where*)//end-of[f0_addr(env0,ire0)]
 //
 (* ****** ****** *)
 //

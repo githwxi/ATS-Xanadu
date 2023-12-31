@@ -811,6 +811,8 @@ d2exp_node =
 //
 |D2Etop of (sym_t)
 //
+(* ****** ****** *)
+//
 |D2Evar of (d2var)
 //
 |D2Econ of (d2con)
@@ -819,23 +821,37 @@ d2exp_node =
 |D2Econs of (d2conlst)
 |D2Ecsts of (d2cstlst)
 //
+(* ****** ****** *)
+//
 |D2Esym0 of
 ( d2rxp(*ref*)
 , d1exp(*sym*), d2ptmlst )
 //
+(* ****** ****** *)
+//
 |D2Esapp of (d2exp, s2explst)
 |D2Etapp of (d2exp, s2explst)
+//
+(* ****** ****** *)
 //
 |D2Edap0 of (d2exp)
 |D2Edapp of
 (d2exp, sint(*npf*), d2explst)
+//
+(* ****** ****** *)
 //
 |
 D2Eproj of
 ( token
 , d2rxp, label, d2exp(*tup*) )
 //
-|D2Elet0 of ( d2eclist, d2exp )
+(* ****** ****** *)
+//
+|
+D2Elet0 of ( d2eclist, d2exp )
+//
+(* ****** ****** *)
+//
 |
 D2Eift0 of
 (d2exp(*cond*)
@@ -845,14 +861,19 @@ D2Eift0 of
 D2Ecas0 of
 ( token(*+/0/-*), d2exp, d2clslst )
 //
+(* ****** ****** *)
+//
 |
 D2Eseqn of
 ( d2explst(*init*), d2exp(*last*) )
+//
+(* ****** ****** *)
 //
 |D2Etup0 of (sint(*npf*), d2explst)
 (*
 |D2Ercd0 of (sint(*npf*), l2d2elst)
 *)
+//
 |
 D2Etup1 of // HX: tuple
 (
@@ -861,6 +882,8 @@ token(*knd*), sint(*npf*), d2explst)
 D2Ercd2 of // HX: record
 (
 token(*knd*), sint(*npf*), l2d2elst)
+//
+(* ****** ****** *)
 //
 |
 D2Elam0 of
@@ -872,15 +895,25 @@ D2Efix0 of
 , d2var(*fid*)
 , f2arglst, s2res, f1unarrw, d2exp )
 //
+(* ****** ****** *)
+//
 |
 D2Etry0 of
 ( token(*$TRY*)
 , d2exp(*norm*), d2clslst(*handles*))
 //
+(* ****** ****** *)
+//
 |D2Eaddr of (d2exp)//left-val//$addr
+|D2Eview of (d2exp)//left-val//$view
+//
+(* ****** ****** *)
+//
 |D2Eeval of (d2exp)//eval-fun//$eval
 |D2Efold of (d2exp)//open-con//$fold
 |D2Efree of (d2exp)//free-fun//$free
+//
+(* ****** ****** *)
 //
 |
 D2Ewhere of
@@ -888,9 +921,13 @@ D2Ewhere of
 d2exp//let(binds)in(scope)end 
 (*scope*), d2eclist(*binds*) )//whr
 //
+(* ****** ****** *)
+//
 |
 D2Eassgn of
 (d2exp(*l-val*), d2exp(*r-val*))//:=
+//
+(* ****** ****** *)
 //
 |
 D2Ebrget of
@@ -899,12 +936,14 @@ D2Ebrget of
 D2Ebrset of
 (d2ptmlst, d2explst(*arr+idx+val*))
 //
+(* ****** ****** *)
+//
 |
 D2Edtsel of
 ( token
 , label
 , d2ptmlst
-, sint(*npf*), d2explstopt(*args*))
+, sint(*npf*), d2explstopt(*args*) )
 //
 |
 D2Eraise of

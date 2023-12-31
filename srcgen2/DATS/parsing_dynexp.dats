@@ -1332,28 +1332,30 @@ err := e00;
 d0exp_make_node(loc0, D0Eopid(deid))
 end(*let*) // end-of-[  T_OP3(_)  ]
 //
-| T_LT0() =>
+|
+T_LT0() =>
 let
 //
-  val tok1 = tok
-  val (  ) = buf.skip1()
+val tok1 = tok
+val (  ) = buf.skip1()
 //
-  val
-  mark = tokbuf_mark_get(buf)
+val
+mark = tokbuf_mark_get(buf)
 //
-  val
-  s0es = list_vt2t
-  (
-  ps_COMMA_p1fun{s0exp}
-  (buf, err, p1_s0exp_app_NGT0))
+val
+s0es = list_vt2t
+(
+ps_COMMA_p1fun{s0exp}
+(buf, err, p1_s0exp_app_NGT0))
 //
-  val tok2 = buf.getk0((*void*))
+val tok2 = buf.getk0((*void*))
 //
 in//let
 //
 case+
 tok2.node() of
-| T_GT0() =>
+|
+T_GT0() =>
 let
 val tbeg = tok1
 val tend = tok2

@@ -113,8 +113,11 @@ for exponentiation
 #infixl & of 46 // land(*mul*)
 #infixl ^ of 45 // lxor(*add*)
 (*
-// HX: yet-to-do!
-#infixl | of 45 // lor2(*add*)
+HX-2023-12-30:
+BAR(|) is special;
+it is for separating
+proofs from programs!
+#infixl \| of 45 // lor2(*add*)
 *)
 //
 (*

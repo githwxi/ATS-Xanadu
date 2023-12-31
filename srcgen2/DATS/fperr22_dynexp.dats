@@ -257,6 +257,8 @@ fperr22_d2exp
 (out, drxp.dexp((*0*)))
 endlet
 //
+(* ****** ****** *)
+//
 |
 D2Esapp
 (d2f0,s2es) =>
@@ -291,6 +293,8 @@ val () =
 fperr22_d2explst(out, d2es)
 endlet
 //
+(* ****** ****** *)
+//
 |
 D2Eproj
 (tknd
@@ -301,6 +305,8 @@ val () =
 (
   fperr22_d2exp(out, dtup))
 end(*let*)//end-of-[D2Eproj]
+//
+(* ****** ****** *)
 //
 |
 D2Elet0
@@ -322,6 +328,8 @@ where
 val () =
 fperr22_d2eclist(out, dcls)
 }(*where*)//end-of-[D2Ewhere]
+//
+(* ****** ****** *)
 //
 |
 D2Eift0
@@ -345,6 +353,8 @@ let
   fperr22_d2clslst(out, dcls)
 endlet
 //
+(* ****** ****** *)
+//
 |
 D2Eseqn
 (d2es, d2e1) =>
@@ -354,6 +364,8 @@ fperr22_d2exp
 {
 val () =
 fperr22_d2explst(out, d2es) }
+//
+(* ****** ****** *)
 //
 |
 D2Etup0
@@ -376,11 +388,21 @@ let
 val () =
 fperr22_l2d2elst(out, ldes) end
 //
+(* ****** ****** *)
+//
 |
 D2Eaddr(d2e1) =>
 let
 val () = fperr22_d2exp(out, d2e1)
 endlet
+|
+D2Eview(d2e1) =>
+let
+val () = fperr22_d2exp(out, d2e1)
+endlet
+//
+(* ****** ****** *)
+//
 |
 D2Eeval(d2e1) =>
 let

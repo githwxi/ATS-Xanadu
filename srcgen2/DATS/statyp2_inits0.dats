@@ -90,9 +90,15 @@ strn_name =
 symbl("the_s2exp_strn0")
 //
 (* ****** ****** *)
+//
 local
-val t2p0 = s2typ_none0()
+//
+val
+t2p0 =
+s2typ_none0((*0*))
+//
 in//local
+//
 val
 void_t2pr =
 a0ref_make_1val<s2typ>(t2p0)
@@ -111,9 +117,11 @@ a0ref_make_1val<s2typ>(t2p0)
 val
 strn_t2pr =
 a0ref_make_1val<s2typ>(t2p0)
+//
 end (*local*) // end-of-(local)
+//
 (* ****** ****** *)
-
+//
 fun
 s2typ_name_t2pr
 ( name
@@ -121,8 +129,10 @@ s2typ_name_t2pr
 , t2pr
 : a0ref(s2typ)): s2typ =
 let
+//
 val
-t2p0 = t2pr[]
+t2p0 = t2pr[(*0*)]
+//
 in//let
 case+
 t2p0.node() of
@@ -153,10 +163,10 @@ in//let
 //
 |_(*non-S2ITMcst*) => ( t2p0 )
 )
-end (*let*) // end of [T2Pnone0]
+end(*let*)//end-of-[T2Pnone0()]
 |_(*non-T2Pnone0*) => (   t2p0   )
-end (*let*) // end of [s2typ_name_t2pr()]
-
+end(*let*)//end-of-[s2typ_name_t2pr]
+//
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
@@ -181,6 +191,8 @@ s2typ_name_t2pr(dflt_name, dflt_t2pr)
 the_s2typ_strn() =
 s2typ_name_t2pr(strn_name, strn_t2pr)
 //
+(* ****** ****** *)
+//
 end (*local*) // end of [local(the_s2typs)]
 
 (* ****** ****** *)
@@ -189,14 +201,18 @@ local
 //
 (* ****** ****** *)
 #symload
-name with s2cst_get_name
+name with
+s2cst_get_name
 (* ****** ****** *)
 //
 val
 mymap =
-tmpmap_make_nil{s2typ}()
+tmpmap_make_nil
+{s2typ}( (*void*) )
 //
+(* ****** ****** *)
 in//local
+(* ****** ****** *)
 //
 #implfun
 s2cst_get_styp(s2c0) =
@@ -209,6 +225,8 @@ prerrln
 in//let
 tmpmap_search_opt(mymap, s2c0.stmp())
 end//let//end-of-[s2cst_get_styp(s2c0)]
+//
+(* ****** ****** *)
 //
 #implfun
 s2cst_set_styp(s2c0, styp) =
@@ -225,6 +243,8 @@ in//let
 tmpmap_insert_any(mymap, s2c0.stmp(), styp)
 end//let//end-of-[s2cst_set_styp(s2c0,styp)]
 //
+(* ****** ****** *)
+//
 end (*local*) // end of [local(the_s2cst_s2typ)]
 
 (* ****** ****** *)
@@ -233,14 +253,17 @@ local
 //
 (* ****** ****** *)
 #symload
-name with s2cst_get_name
+name with
+s2cst_get_name
 (* ****** ****** *)
 //
 val
 mymap =
 tmpmap_make_nil{s2typ}()
 //
+(* ****** ****** *)
 in//local
+(* ****** ****** *)
 //
 #implfun
 s2abs_get_styp(s2c0) =
@@ -249,6 +272,8 @@ tmpmap_search_opt(mymap, s2c0.stmp())
 s2abs_set_styp(s2c0, styp) =
 tmpmap_insert_any(mymap, s2c0.stmp(), styp)
 //
+(* ****** ****** *)
+//
 end (*local*) // end of [local(the_s2abs_s2typ)]
 
 (* ****** ****** *)
@@ -256,7 +281,8 @@ end (*local*) // end of [local(the_s2abs_s2typ)]
 local
 //
 val
-t2p0 = s2typ_none0()
+t2p0 =
+s2typ_none0((*0*))
 val
 p1tr0_t2pr =
 a0ref_make_1val<s2typ>(t2p0)
@@ -291,10 +317,19 @@ end (*local*) // end of [local(the_s2typ_p1tr0)]
 //
 local
 //
+(*
+HX-2023-12:
+p2tr_tbox and p2at_view
+*)
+//
 val
-t2p0 = s2typ_none0()
+t2p0 =
+s2typ_none0((*0*))
 val
 p2tr0_t2pr =
+a0ref_make_1val<s2typ>(t2p0)
+val
+p2at0_t2pr =
 a0ref_make_1val<s2typ>(t2p0)
 //
 in//local
@@ -302,7 +337,10 @@ in//local
 #implfun
 the_s2typ_p2tr0() =
 let
-val t2p0 = p2tr0_t2pr[]
+//
+val
+t2p0 = p2tr0_t2pr[(*0*)]
+//
 in//let
 case+
 t2p0.node() of
@@ -321,12 +359,44 @@ in//let
 //
 end (*let*) // end of [the_s2typ_p2tr0()]
 //
-end (*local*) // end of [local(the_s2typ_p2tr0)]
+#implfun
+the_s2typ_p2at0() =
+let
+//
+val
+t2p0 = p2at0_t2pr[(*0*)]
+//
+in//let
+case+
+t2p0.node() of
+//
+|T2Pnone0() =>
+let
+val t2p1 =
+s2typ_cst(s2c1) where
+{
+val
+s2c1 = the_s2cst_p2at0() }
+in//let
+(p2at0_t2pr[] := t2p1; t2p1) end
+//
+|_(*non-T2Pnone0*) => (   t2p0   )
+//
+end (*let*) // end of [the_s2typ_p2at0()]
+//
+end (*local*) // end of [local(the_s2typ_p2at0)]
 //
 (* ****** ****** *)
 //
 local
+//
+(*
+HX-2023-12:
+p2tr_tbox and p2at_view
+*)
+//
 in//local
+//
 #implfun
 the_s2typ_p2tr1(telt) =
 let
@@ -335,6 +405,16 @@ val tfun = the_s2typ_p2tr0()
 in//let
 s2typ(s2t0, T2Papps(tfun, list_sing(telt)))
 end (*let*) // end of [the_s2typ_p2tr1(telt)]
+//
+#implfun
+the_s2typ_p2at1(telt) =
+let
+val s2t0 = the_sort2_tbox
+val tfun = the_s2typ_p2at0()
+in//let
+s2typ(s2t0, T2Papps(tfun, list_sing(telt)))
+end (*let*) // end of [the_s2typ_p2at1(telt)]
+//
 end (*local*) // end of [local(the_s2typ_p2tr1)]
 //
 (* ****** ****** *)
@@ -342,7 +422,8 @@ end (*local*) // end of [local(the_s2typ_p2tr1)]
 local
 //
 val
-t2p0 = s2typ_none0()
+t2p0 =
+s2typ_none0((*0*))
 val
 l0azy0_t2pr =
 a0ref_make_1val<s2typ>(t2p0)
@@ -352,7 +433,10 @@ in//local
 #implfun
 the_s2typ_l0azy0() =
 let
-val t2p0 = l0azy0_t2pr[]
+//
+val
+t2p0 = l0azy0_t2pr[(*0*)]
+//
 in//let
 case+
 t2p0.node() of
@@ -392,7 +476,8 @@ end (*local*) // end of [local(the_s2typ_l0azy1)]
 local
 //
 val
-t2p0 = s2typ_none0()
+t2p0 =
+s2typ_none0((*0*))
 val
 l1azy0_t2pr =
 a0ref_make_1val<s2typ>(t2p0)
@@ -402,7 +487,10 @@ in//local
 #implfun
 the_s2typ_l1azy0() =
 let
-val t2p0 = l1azy0_t2pr[]
+//
+val
+t2p0 = l1azy0_t2pr[(*0*)]
+//
 in//let
 case+
 t2p0.node() of
@@ -442,7 +530,9 @@ end (*local*) // end of [local(the_s2typ_l1azy1)]
 local
 //
 val
-t2p0 = s2typ_none0()
+t2p0 =
+s2typ_none0((*0*))
+//
 val
 excptn_t2pr =
 a0ref_make_1val<s2typ>(t2p0)
@@ -452,8 +542,10 @@ in//local
 #implfun
 the_s2typ_excptn() =
 let
+//
 val
-t2p0 = excptn_t2pr[]
+t2p0 = excptn_t2pr[(*0*)]
+//
 in//let
 case+
 t2p0.node() of
