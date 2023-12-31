@@ -12,6 +12,12 @@
 (* ****** ****** *)
 var x: int = 10
 (* ****** ****** *)
+val p = $addr(x)
+(* ****** ****** *)
+prval pf = $view(x)
+(* ****** ****** *)
+////
+(* ****** ****** *)
 val () = (x:=x+1)
 (* ****** ****** *)
 val xx = ( x * x )
@@ -168,7 +174,7 @@ in//let
 end//let//end of [fibats]
 //
 (* ****** ****** *)
-val fibats10 = fibats(10)
+val fibats10 = fibats(10) // fibats10 = 55
 (* ****** ****** *)
 
 (* end of [(* end of [ATS3/XATSOPT_BOOT_JS_DATA_mytest02.dats] *)

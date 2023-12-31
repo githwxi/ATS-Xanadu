@@ -323,6 +323,10 @@ val irps =
   trxd3ir_d3patlst(env0, d3ps))
 //
 in//let
+if
+list_singq(irps)
+then list_head(irps)
+else
 (
   irpat( loc0, IRPtup0( irps ) ) )
 end(*let*)//end-of-[f0_tup0(env0,d3p0)]
@@ -831,6 +835,10 @@ val ires =
   trxd3ir_d3explst(env0, d3es))
 //
 in//let
+if
+list_singq(ires)
+then list_head(ires)
+else
 (
   irexp(loc0, IREtup0(  ires  )) )
 end(*let*)//end-of-[f0_tup0(env0,d3e0)]

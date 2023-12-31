@@ -145,6 +145,9 @@ datatype tnode =
   | T_SMCLN of () // ;
 //
   | T_BSLSH of () // \
+(*
+  | T_BSBAR of () // \|
+*)
 //
   | T_LPAREN of () // (
   | T_RPAREN of () // )

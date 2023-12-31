@@ -430,8 +430,11 @@ s2var with s2var_make_idst//#symld
 //
 fun
 the_s2cst_p1tr0:((*void*)) -> s2cst
+//
 fun
 the_s2cst_p2tr0:((*void*)) -> s2cst
+fun
+the_s2cst_p2at0:((*void*)) -> s2cst
 //
 (* ****** ****** *)
 //

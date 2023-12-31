@@ -39,8 +39,11 @@ the_s2exp_void = void
 //
 #typedef
 the_s2exp_p1tr0 = p1tr0
+//
 #typedef
-the_s2exp_p2tr0(a:vt) = p2tr0(a)
+the_s2exp_p2tr0(x:vt) = p2tr0(x)
+#typedef
+the_s2exp_p2at0(x:vt) = p2at0(x)
 //
 (* ****** ****** *)
 //

@@ -971,6 +971,19 @@ d3exp_errck
 , d3exp(loc0, t2p0, D3Eaddr(d3e1)) )
 endlet//end of [d3exp_addr_errck(...)]
 //
+fun
+d3exp_view_errck
+(loc0: loc_t
+,t2p0: s2typ
+,d3e1: d3exp): d3exp =
+let
+val
+lvl0 = errvl(d3e1) in//let
+d3exp_errck
+( lvl0+1
+, d3exp(loc0, t2p0, D3Eview(d3e1)) )
+endlet//end of [d3exp_view_errck(...)]
+//
 (* ****** ****** *)
 //
 fun
@@ -1710,6 +1723,7 @@ f0_var(d3e0, err)
 |D3Etry0 _ => f0_try0(d3e0, err)
 //
 |D3Eaddr _ => f0_addr(d3e0, err)
+|D3Eview _ => f0_view(d3e0, err)
 |D3Eflat _ => f0_flat(d3e0, err)
 //
 |D3Eeval _ => f0_eval(d3e0, err)
@@ -2465,6 +2479,36 @@ if
 then (d3e) else
 d3exp_addr_errck(d3e.lctn(),t2p,d3e1)
 end (*let*) // end of [f0_addr(d3e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_view
+(d3e: d3exp
+,err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread33_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Eview
+(  d3e1  ) = d3e.node()
+//
+val
+d3e1 =
+tread33_d3exp(d3e1, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+d3exp_view_errck(d3e.lctn(),t2p,d3e1)
+end (*let*) // end of [f0_view(d3e,err)]
 //
 (* ****** ****** *)
 //

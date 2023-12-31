@@ -1069,7 +1069,7 @@ _(*otherwise*) => auxloop2(x0, x1, xs)
 (*
 val () =
 prerrln
-("lexing_preping_all:loop1: x0=", x0)
+("lexing_preping_all:loop1: x0 = ", x0)
 *)
 }
 and
@@ -1575,7 +1575,12 @@ strmcon_vt_cons(x0, auxmain1(x1,xs)))
 end (*let*) // end-of-[f0_CASE(...)]
 
 (* ****** ****** *)
-
+//
+(*
+HX-2023:
+nil?, cons?, test?
+LISTP symbols for testing
+*)
 fun
 f0_IDALP
 ( x0: token

@@ -825,6 +825,12 @@ D2Eaddr
 let
 val () =
   trsym2b_d2exp(env0 , d2e1) end
+|
+D2Eview
+(   d2e1   ) =>
+let
+val () =
+  trsym2b_d2exp(env0 , d2e1) end
 //
 |
 D2Eeval

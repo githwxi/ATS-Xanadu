@@ -278,6 +278,64 @@ a0ref_make_1val
 in//local
 //
 #implfun
+the_s2cst_p2at0
+  ( (*void*) ) =
+(
+case+ s2cr[] of
+//
+|
+optn_nil() =>
+let
+val s2c1 =
+(
+case- opt1 of
+| ~
+optn_vt_cons(s2i1) =>
+(
+case+ s2i1 of
+|
+S2ITMcst(s2cs) =>
+(
+  s2c1 ) where
+{
+val-
+list_cons(s2c1, _) = s2cs } )
+) where // end of [val(s2c1)]
+{
+//
+val
+loc0 =
+loctn_dummy((*void*))
+val
+name =
+symbl("the_s2exp_p2at0")
+//
+val opt1 =
+the_sexpenv_pvsfind(name) }
+//
+in//let
+(s2cr[] := optn_cons(s2c1); s2c1)
+end (*let*) // end of [optn_nil()]
+//
+| optn_cons(  s2c1  ) => (  s2c1  )
+//
+) (*case+*) // end of [the_s2cst_p2at0]
+//
+end(*local*)//end-of-[local(the_s2cst_p2at0)]
+
+(* ****** ****** *)
+
+local
+//
+val
+s2cr =
+a0ref_make_1val
+<s2cstopt>
+(optn_nil(*void*))
+//
+in//local
+//
+#implfun
 the_s2cst_l0azy0
   ( (*void*) ) =
 (

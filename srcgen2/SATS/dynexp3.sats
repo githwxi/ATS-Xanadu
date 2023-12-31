@@ -389,37 +389,57 @@ d3exp_node =
 |D3Eflt of token
 |D3Estr of token
 //
+(* ****** ****** *)
+//
 |D3Ei00 of (sint) // sint
 |D3Eb00 of (bool) // bool
 |D3Ec00 of (char) // char
 |D3Ef00 of (dflt) // float
 |D3Es00 of (strn) // string
 //
+(* ****** ****** *)
+//
 |D3Etop of (sym_t)
+//
+(* ****** ****** *)
 //
 |D3Evar of (d2var)
 //
 |D3Econ of (d2con)
 |D3Ecst of (d2cst)
 //
+(* ****** ****** *)
+//
 |D3Etimp of (d3exp, timpl)
+//
+(* ****** ****** *)
 //
 |D3Esapp of (d3exp, s2explst)
 |D3Esapq of (d3exp, s2typlst)
 //
+(* ****** ****** *)
+//
 |D3Etapp of (d3exp, s2explst)
 |D3Etapq of (d3exp, t2jaglst)
+//
+(* ****** ****** *)
 //
 |D3Edap0 of (d3exp)
 |D3Edapp of
  (d3exp,sint(*npf*),d3explst)
+//
+(* ****** ****** *)
 //
 |D3Epcon of
  (token, label, d3exp(*con*))
 |D3Eproj of
  (token, label, d3exp(*tup*))
 //
+(* ****** ****** *)
+//
 |D3Elet0 of (d3eclist, d3exp)
+//
+(* ****** ****** *)
 //
 |D3Eift0 of
 (d3exp(*cond*)
@@ -428,8 +448,12 @@ d3exp_node =
 |D3Ecas0 of
 ( token(*+/0/-*), d3exp, d3clslst )
 //
+(* ****** ****** *)
+//
 |D3Eseqn of
 ( d3explst(*init*), d3exp(*last*) )
+//
+(* ****** ****** *)
 //
 |D3Etup0 of (sint(*npf*), d3explst)
 |D3Etup1 of
@@ -439,6 +463,8 @@ token(*knd*), sint(*npf*), d3explst)
 (
 token(*knd*), sint(*npf*), l3d3elst)
 //
+(* ****** ****** *)
+//
 |D3Elam0 of
 ( token(*knd*)
 , f3arglst, s2res, f1unarrw, d3exp )
@@ -447,27 +473,39 @@ token(*knd*), sint(*npf*), l3d3elst)
 , d2var(*fid*)
 , f3arglst, s2res, f1unarrw, d3exp )
 //
+(* ****** ****** *)
+//
 |D3Etry0 of
 ( token(*$TRY*)
 , d3exp(*norm*), d3clslst(*handles*))
+//
+(* ****** ****** *)
 //
 (*
 HX-2023-07-05:
 two attributes of left values
 *)
-|D3Eaddr of (d3exp)//left-val-address
+|D3Eaddr of (d3exp)//left-val-addr
+|D3Eview of (d3exp)//left-val-view
 |D3Eflat of (d3exp)//left-val-content
 //
-|D3Eeval of (d3exp)//eval-builtin-fun
+(* ****** ****** *)
 //
+|D3Eeval of (d3exp)//eval-builtin-fun
 |D3Efold of (d3exp)//open-con-folding
 |D3Efree of (d3exp)//free-builtin-fun
+//
+(* ****** ****** *)
 //
 |D3Edp2tr of (d3exp)//p2tr-dereference
 |D3Edl0az of (d3exp)//l0azy-eval-thunk
 |D3Edl1az of (d3exp)//l1azy-eval-thunk
 //
+(* ****** ****** *)
+//
 |D3Ewhere of ( d3exp, d3eclist )
+//
+(* ****** ****** *)
 //
 |D3Eassgn of
 ( d3exp(*l-val*), d3exp(*r-val*) )
@@ -480,21 +518,34 @@ two attributes of left values
 ( d1exp(*$LLAZY*)
 , d3exp(*lin-thunk*), d3explst(*frees*))
 //
+(* ****** ****** *)
+//
 |D3Eannot of
 ( d3exp, s1exp(*given*), s2exp(*trans*))
+//
+(* ****** ****** *)
 //
 |D3El2bck of (d3exp, label)//HX: casting
 |D3Et2pck of (d3exp, s2typ)//HX: casting
 //
+(* ****** ****** *)
+//
 |
 D3Eextnam of (token, g1nam)//HX: external
+//
+(* ****** ****** *)
+//
 |
 D3Eexists of
 (
   s2explst(*witness*), d3exp(*scopexp*) )
 //
+(* ****** ****** *)
+//
 |D3Enone0 of ((*0*))
 |D3Enone1 of (d2exp) | D3Enone2 of (d3exp)
+//
+(* ****** ****** *)
 //
 | D3Eerrck of
 ( sint(*lvl*),d3exp(*err*) ) // tread23-error

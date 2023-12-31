@@ -742,6 +742,7 @@ d3exp_make_styp_node
 |D2Etry0 _ => f0_try0(env0, d2e0)
 //
 |D2Eaddr _ => f0_addr(env0, d2e0)
+|D2Eview _ => f0_view(env0, d2e0)
 //
 |D2Eeval _ => f0_eval(env0, d2e0)
 //
@@ -1825,6 +1826,31 @@ in//let
   d3exp( loc0, t2p0, D3Eaddr( d3e1 ) )
 end (*let*)
 end (*let*) // end of [f0_addr(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_view
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+val-
+D2Eview(d2e1) = d2e0.node()
+//
+val
+d3e1 = trans23_d2exp(env0, d2e1)
+//
+in//let
+let
+val telt = d3e1.styp((*void*))
+val t2p0 = the_s2typ_p2at1(telt)
+in//let
+  d3exp( loc0, t2p0, D3Eview( d3e1 ) )
+end (*let*)
+end (*let*) // end of [f0_view(env0,...)]
 //
 (* ****** ****** *)
 //
