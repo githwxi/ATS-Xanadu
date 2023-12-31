@@ -144,7 +144,13 @@ ire0.node() of
 |IREfix0 _ => f0_fix0(env0, ire0)
 //
 |IREaddr _ => f0_addr(env0, ire0)
+(*
+|IREview _ => f0_view(env0, ire0)
+*)
 |IREflat _ => f0_flat(env0, ire0)
+//
+|
+IREdp2tr _ => f0_dp2tr(env0, ire0)
 //
 |
 IREwhere _ => f0_where(env0, ire0)
@@ -763,6 +769,32 @@ end(*let*)//end-of-[f0_flat(env0,ire0)]
 (* ****** ****** *)
 //
 fun
+f0_dp2tr
+( env0:
+! xintenv
+, ire0: irexp): irval =
+let
+//
+val-
+IREdp2tr
+( ire1 ) = ire0.node((*0*))
+val
+irv1 =
+(
+  xinterp_irexp(env0, ire1))
+//
+in//let
+//
+(
+case- irv1 of
+|
+IRVlft(lval) => irlft_deget(lval))
+//
+end(*let*)//end-of-[f0_dp2tr(env0,ire0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_where
 ( env0:
 ! xintenv
@@ -813,10 +845,14 @@ irlft_deset
 {
 val irvl =
 (
-case
+case-
 irel.node() of
 |
 IREflat(ire1) =>
+(
+  xinterp_irexp(env0, ire1) )
+|
+IREdp2tr(ire1) =>
 (
   xinterp_irexp(env0, ire1) )
 )

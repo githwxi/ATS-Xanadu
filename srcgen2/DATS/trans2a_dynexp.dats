@@ -833,36 +833,58 @@ d2e0.node() of
 //
 |D2Etry0 _ => f0_try0(env0, d2e0)
 //
+(* ****** ****** *)
+//
 |D2Eaddr _ => f0_addr(env0, d2e0)
 |D2Eview _ => f0_view(env0, d2e0)
+//
+(* ****** ****** *)
+//
+|D2Eeval _ => f0_eval(env0, d2e0)
 //
 |D2Efold _ => f0_fold(env0, d2e0)
 |D2Efree _ => f0_free(env0, d2e0)
 //
-|D2Eeval _ => f0_eval(env0, d2e0)
+(* ****** ****** *)
 //
 |D2Ewhere _ => f0_where(env0, d2e0)
+//
+(* ****** ****** *)
 //
 |D2Eassgn _ => f0_assgn(env0, d2e0)
 |D2Ebrget _ => f0_brget(env0, d2e0)
 |D2Ebrset _ => f0_brset(env0, d2e0)
 |D2Edtsel _ => f0_dtsel(env0, d2e0)
 //
+(* ****** ****** *)
+//
 |D2Eraise _ => f0_raise(env0, d2e0)
+//
+(* ****** ****** *)
 //
 |D2El0azy _ => f0_l0azy(env0, d2e0)
 |D2El1azy _ => f0_l1azy(env0, d2e0)
 //
+(* ****** ****** *)
+//
 |D2Eannot _ => f0_annot(env0, d2e0)
 //
+(* ****** ****** *)
+//
 |D2Enone0 _ => f0_none0(env0, d2e0)
+//
+(* ****** ****** *)
 //
 |
 D2Eextnam _ => f0_extnam(env0, d2e0)
 //
+(* ****** ****** *)
+//
 |D2Eerrck _ => (f0_errck(env0, d2e0))
 //
-| _(*otherwise*) => d2exp_none2(d2e0)
+(* ****** ****** *)
+//
+|_(*otherwise*) => d2exp_none2( d2e0 )
 //
 endlet where
 {

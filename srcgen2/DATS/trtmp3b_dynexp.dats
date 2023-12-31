@@ -137,15 +137,28 @@ d3e0.node() of
 //
 |D3Ewhere _ => f0_where(env0, d3e0)
 //
+(* ****** ****** *)
+//
 |D3Eassgn _ => f0_assgn(env0, d3e0)
 //
+|D3El0azy _ => f0_l0azy(env0, d3e0)
+|D3El1azy _ => f0_l1azy(env0, d3e0)
+//
+(* ****** ****** *)
+//
 |D3Eannot _ => f0_annot(env0, d3e0)
+//
+(* ****** ****** *)
 //
 |
 D3Eextnam _ => f0_extnam(env0, d3e0)
 //
+(* ****** ****** *)
+//
 |
 _(*otherwise*) => (d3exp_none2(d3e0))
+//
+(* ****** ****** *)
 //
 end where // end-of-[trtmp3b_d3exp(...)]
 {
@@ -818,6 +831,66 @@ end (*let*) // end of [f0_assgn(env0,...)]
 (* ****** ****** *)
 //
 fun
+f0_l0azy
+( env0:
+! tr3benv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+val-
+D3El0azy
+( knd0
+, d3e1 ) = d3e0.node((*0*))
+//
+val
+d3e1 =
+(
+  trtmp3b_d3exp(env0, d3e1) )
+//
+in//let
+(
+  d3exp_make_styp_node
+  (loc0, t2p0, D3El0azy(knd0, d3e1)) )
+end (*let*) // end of [f0_l0azy(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_l1azy
+( env0:
+! tr3benv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+val-
+D3El1azy
+( knd0
+, d3e1
+, d3es ) = d3e0.node((*0*))
+//
+val
+d3e1 =
+(
+  trtmp3b_d3exp(env0, d3e1) )
+val d3es =
+(
+  trtmp3b_d3explst(env0, d3es) )
+//
+in//let
+(
+d3exp_make_styp_node
+(loc0, t2p0, D3El1azy(knd0,d3e1,d3es)))
+end (*let*) // end of [f0_l1azy(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
 f0_annot
 ( env0:
 ! tr3benv
@@ -837,8 +910,9 @@ val
 d3e1 = trtmp3b_d3exp(env0, d3e1)
 //
 in//let
+(
 d3exp_make_styp_node
-(loc0, t2p0, D3Eannot(d3e1,s1e2,s2e2))
+(loc0, t2p0, D3Eannot(d3e1,s1e2,s2e2)))
 end (*let*) // end of [f0_annot(env0,d3e0)]
 //
 (* ****** ****** *)

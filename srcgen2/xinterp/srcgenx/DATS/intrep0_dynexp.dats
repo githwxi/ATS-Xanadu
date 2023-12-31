@@ -470,11 +470,17 @@ irexp(loc0, IREcst(d2c))
 |D3Efix0 _ => f0_fix0(env0, d3e0)
 //
 |D3Eaddr _ => f0_addr(env0, d3e0)
+|D3Eview _ => f0_view(env0, d3e0)
 |D3Eflat _ => f0_flat(env0, d3e0)
+//
+|D3Edp2tr _ => f0_dp2tr(env0, d3e0)
 //
 |D3Ewhere _ => f0_where(env0, d3e0)
 //
 |D3Eassgn _ => f0_assgn(env0, d3e0)
+//
+|D3El0azy _ => f0_l0azy(env0, d3e0)
+|D3El1azy _ => f0_l1azy(env0, d3e0)
 //
 |_(* otherwise *) => irexp_none1(d3e0)
 ) where
@@ -978,6 +984,23 @@ end(*let*)//end-of-[f0_addr(env0,d3e0)]
 (* ****** ****** *)
 //
 fun
+f0_view
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+(
+  irexp_none0(loc0) ) where
+{
+//
+val loc0 = d3e0.lctn((*void*))
+//
+val-D3Eview(d3e1) = d3e0.node()
+//
+}(*where*)//end-of-[f0_view(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_flat
 ( env0:
 ! trdienv
@@ -995,6 +1018,28 @@ in//let
 (
   irexp(loc0, IREflat( ire1 )) )
 end(*let*)//end-of-[f0_flat(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dp2tr
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val-
+D3Edp2tr
+( d3e1 ) = d3e0.node((*0*))
+//
+val ire1 =
+(
+  trxd3ir_d3exp(env0, d3e1))
+//
+in//let
+(
+  irexp(loc0, IREdp2tr( ire1 )) )
+end(*let*)//end-of-[f0_dp2tr(env0,d3e0)]
 //
 (* ****** ****** *)
 //
@@ -1018,7 +1063,7 @@ val ire1 =
 in//let
 (
   irexp_make_node
-  (loc0, IREwhere( ire1, irds )))
+  (loc0, IREwhere( ire1,irds )) )
 end(*let*)//end-of-[f0_where(env0,d3e0)]
 //
 (* ****** ****** *)
@@ -1044,10 +1089,58 @@ val irer =
 in//let
 (
   irexp_make_node
-  (loc0, IREassgn( irel, irer )))
+  (loc0, IREassgn( irel,irer )) )
 end(*let*)//end-of-[f0_assgn(env0,d3e0)]
 //
 (* ****** ****** *)
+//
+fun
+f0_l0azy
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val-
+D3El0azy
+( knd0, d3e1) = d3e0.node()
+//
+val ire1 =
+(
+  trxd3ir_d3exp(env0, d3e1))
+//
+in//let
+(
+  irexp(loc0, IREl0azy( ire1 )) )
+end(*let*)//end-of-[f0_l0azy(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_l1azy
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val-
+D3El1azy
+( knd0
+, d3e1, d3es) = d3e0.node()
+//
+val ire1 =
+(
+  trxd3ir_d3exp(env0, d3e1))
+val ires =
+(
+  trxd3ir_d3explst(env0, d3es))
+//
+in//let
+(
+  irexp_make_node
+  (loc0, IREl1azy( ire1,ires )) )
+end(*let*)//end-of-[f0_l1azy(env0,d3e0)]
+//
 (* ****** ****** *)
 //
 val (  ) =

@@ -298,14 +298,17 @@ irpat_fprint
 fun
 irpat_get_lctn(irpat):( loc_t )
 fun
-irpat_get_type(irpat):( s2typ )
-fun
 irpat_get_node(irpat):irpat_node
 //
 (* ****** ****** *)
 #symload lctn with irpat_get_lctn
-#symload type with irexp_get_type
 #symload node with irpat_get_node
+(* ****** ****** *)
+(*
+fun
+irpat_get_type(irpat):( s2typ )
+#symload type with irexp_get_type
+*)
 (* ****** ****** *)
 fun
 irpat_none0(loc0: loctn): (irpat)
@@ -373,9 +376,14 @@ IREdapp of
 |IREaddr of (irexp)//left-val-address
 |IREflat of (irexp)//left-val-content
 //
+|IREdp2tr of (irexp)//p2tr-dereference
+//
 |IREwhere of (irexp, irdclist)
 //
-|IREassgn of (irexp(*l*), irexp(*r*))
+|IREassgn of ( irexp(*l*), irexp(*r*) )
+//
+|IREl0azy of ( irexp(*thunk*) )
+|IREl1azy of ( irexp, irexplst(*frees*))
 //
 |IREnone0 of ((*0*)) |IREnone1 of (d3exp)
 //
@@ -391,17 +399,18 @@ irexp_fprint
 //
 fun
 irexp_get_lctn(irexp):( loc_t )
-//
-fun
-irexp_get_type(irexp):( s2typ )
-//
 fun
 irexp_get_node(irexp):irexp_node
 //
 (* ****** ****** *)
 #symload lctn with irexp_get_lctn
-#symload type with irexp_get_type
 #symload node with irexp_get_node
+(* ****** ****** *)
+(*
+fun
+irexp_get_type(irexp):( s2typ )
+#symload type with irexp_get_type
+*)
 (* ****** ****** *)
 fun
 irexp_none0(loc0: loctn): (irexp)
