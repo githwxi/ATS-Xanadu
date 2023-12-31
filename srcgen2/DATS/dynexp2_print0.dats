@@ -349,6 +349,8 @@ print("D2Es00(",str,")")
 |D2Etop(sym) =>
 print("D2Etop(", sym, ")")
 //
+(* ****** ****** *)
+//
 |D2Evar(d2v) =>
 print("D2Evar(", d2v, ")")
 //
@@ -363,6 +365,8 @@ print("D2Econs(", d2cs, ")")
 |
 D2Ecsts(d2cs) =>
 print("D2Ecsts(", d2cs, ")")
+//
+(* ****** ****** *)
 //
 |
 D2Esym0

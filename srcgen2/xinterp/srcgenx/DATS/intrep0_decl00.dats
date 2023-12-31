@@ -50,6 +50,14 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 #staload
+"./../../../SATS/xbasics.sats"
+//
+#staload
+"./../../../SATS/lexing0.sats"
+//
+(* ****** ****** *)
+//
+#staload
 "./../../../SATS/dynexp3.sats"
 //
 (* ****** ****** *)
@@ -62,9 +70,46 @@ XATSOPT "./../../.."
 _(*DATS*)="./../DATS/intrep0.dats"
 //
 (* ****** ****** *)
+#symload lctn with token_get_lctn
+#symload node with token_get_node
+(* ****** ****** *)
 #symload lctn with d3ecl_get_lctn
 #symload node with d3ecl_get_node
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+token_prvalq
+(tknd: token): bool =
+(
+case+
+tknd.node() of
+|T_VAL(vlk) =>
+(
+case+ vlk of
+| VLKprval() => ( true )
+| _(*otherwise*) => false )
+| _(*otherwise*) => ( false )
+)
+//
+(* ****** ****** *)
+//
+fun
+token_prfunq
+(tknd: token): bool =
+(
+case+
+tknd.node() of
+|T_FUN(fnk) =>
+(
+case+ fnk of
+| FNKprfn0() => ( true )
+| FNKprfn1() => ( true )
+| FNKprfun() => ( true )
+| _(*otherwise*) => false )
+| _(*otherwise*) => ( false )
+)
+//
 (* ****** ****** *)
 //
 #implfun
@@ -236,14 +281,21 @@ prerrln
 ("f0_valdclst: d3cl = ", d3cl)
 *)
 //
+in//let
+//
+if
+token_prvalq(tknd)
+then
+(
+  irdcl_none0(loc0))
+else
+let
 val
 d3vs =
 trxd3ir_d3valdclist(env0, d3vs)
-//
 in//let
-//
 irdcl_make_node
-( loc0, IRDvaldclst(tknd, d3vs) )
+( loc0, IRDvaldclst(tknd, d3vs) ) end
 //
 end(*let*)//end-of-[f0_valdclst(env0,d3cl)]
 //
