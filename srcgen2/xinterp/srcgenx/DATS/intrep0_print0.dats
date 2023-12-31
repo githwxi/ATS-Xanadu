@@ -220,21 +220,48 @@ print("IRErcd2(", tknd, ";", lirs, ")")
 (* ****** ****** *)
 //
 |IREaddr
-( ire1 ) => print("IREaddr(", ire1, ")")
+( ire1 ) =>
+(
+  print("IREaddr(", ire1, ")") )
 |IREflat
-( ire1 ) => print("IREflat(", ire1, ")")
+( ire1 ) =>
+(
+  print("IREflat(", ire1, ")") )
 //
 (* ****** ****** *)
 //
-|IREwhere
+|
+IREdp2tr
+( ire1 ) =>
+(
+  print("IREdp2tr(", ire1, ")") )
+//
+(* ****** ****** *)
+//
+|
+IREwhere
 ( ire1, irds) =>
 print("IREwhere(", ire1, ";", irds, ")")
 //
 (* ****** ****** *)
 //
-|IREassgn
+|
+IREassgn
 ( lval, rval) =>
 print("IREassgn(", lval, ";", rval, ")")
+//
+(* ****** ****** *)
+//
+|
+IREl0azy
+( ire1 ) =>
+(
+  print("IREl0azy(", ire1, ")") )
+//
+|
+IREl1azy
+( ire1, ires ) =>
+print("IREl1azy(", ire1, ";", ires, ")")
 //
 (* ****** ****** *)
 //

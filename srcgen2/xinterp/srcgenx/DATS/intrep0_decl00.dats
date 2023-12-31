@@ -287,7 +287,7 @@ if
 token_prvalq(tknd)
 then
 (
-  irdcl_none0(loc0))
+  irdcl_none1(d3cl))
 else
 let
 val

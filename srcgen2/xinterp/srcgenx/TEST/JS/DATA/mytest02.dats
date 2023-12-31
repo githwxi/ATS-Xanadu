@@ -12,15 +12,15 @@
 (* ****** ****** *)
 var x: int = 10
 (* ****** ****** *)
-val p = $addr(x)
-(* ****** ****** *)
-prval pf = $view(x)
-(* ****** ****** *)
-////
+val p = &x//addr
 (* ****** ****** *)
 val () = (x:=x+1)
 (* ****** ****** *)
 val xx = ( x * x )
+(* ****** ****** *)
+prv pf = $view( x )
+(* ****** ****** *)
+val () = !p:=(!p)+1
 (* ****** ****** *)
 //
 fun
@@ -90,12 +90,15 @@ val mylist10 =
 val length10 = length(mylist10)
 val mylength10 = mylength(mylist10)
 (* ****** ****** *)
+//
+(*
 val mylist26 =
 list_vt2t
 (
 strn_listize
 ( "ABCDEFGHIJKLMNOPQRSTUVWXYZ"))
-(*
+*)
+//
 val mylist26 =
 gseq_foldr
 <strn><c><r>
@@ -107,10 +110,11 @@ gseq_foldr
 #impltmp
 foldr$fopr<c><r>(c, r) = list_cons(c, r)
 }
-*)
+//
 val length26 = length(mylist26)
 val mylength26 = mylength(mylist26)
 (* ****** ****** *)
+////
 (* ****** ****** *)
 //
 fun

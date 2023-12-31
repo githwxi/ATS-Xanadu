@@ -162,17 +162,20 @@ val+
 IRPAT
 (loc,t2p,nod) = irp in loc end
 #implfun
-irpat_get_type(irp) =
-let
-val+
-IRPAT
-(loc,t2p,nod) = irp in t2p end
-#implfun
 irpat_get_node(irp) =
 let
 val+
 IRPAT
 (loc,t2p,nod) = irp in nod end
+//
+(*
+#implfun
+irpat_get_type(irp) =
+let
+val+
+IRPAT
+(loc,t2p,nod) = irp in t2p end
+*)
 //
 endloc (*local*) // end of [local(irpat)]
 
@@ -210,17 +213,20 @@ val+
 IREXP
 (loc,t2p,nod) = ire in loc end
 #implfun
-irexp_get_type(ire) =
-let
-val+
-IREXP
-(loc,t2p,nod) = ire in t2p end
-#implfun
 irexp_get_node(ire) =
 let
 val+
 IREXP
 (loc,t2p,nod) = ire in nod end
+//
+(*
+#implfun
+irexp_get_type(ire) =
+let
+val+
+IREXP
+(loc,t2p,nod) = ire in t2p end
+*)
 //
 endloc (*local*) // end of [local(irexp)]
 
