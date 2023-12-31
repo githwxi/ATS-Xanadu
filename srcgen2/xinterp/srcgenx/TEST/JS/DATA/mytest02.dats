@@ -152,14 +152,16 @@ loop
 ) : [r:int] (FIB(n, r) | sint(r)) =
 (
 if
-(n_i > 0)
+n_i <= 1
 then
+(
+if (n_i >= 1)
+then (pf1 | r_1) else (pf0 | r_0))
+else
 loop{i+1}
 (
   pf1
-, FIB2(pf0, pf1) | n_i-1, r_1, r_0+r_1
-) // then-end
-else (pf0 | r_0) // else-end // end of [if]
+, FIB2(pf0, pf1) | n_i-1, r_1, r_0+r_1)
 ) (* end of [loop] *)
 in//let
   loop{0}(FIB0(*void*), FIB1(*void*) | n, 0, 1)
