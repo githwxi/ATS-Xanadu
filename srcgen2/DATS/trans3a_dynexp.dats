@@ -627,6 +627,7 @@ d3e0.node() of
 |D3Etry0 _ => f0_try0(env0, d3e0)
 //
 |D3Eaddr _ => f0_addr(env0, d3e0)
+|D3Eview _ => f0_view(env0, d3e0)
 |D3Eflat _ => f0_flat(env0, d3e0)
 //
 |D3Eeval _ => f0_eval(env0, d3e0)
@@ -1455,6 +1456,36 @@ in//let
 (
   d3exp(loc0, t2p0, D3Eaddr(d3e1)) )
 end (*let*) // end of [f0_addr(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_view
+( env0:
+! tr3aenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Eview
+( d3e1 ) = d3e0.node((*0*))
+//
+val t2p0 =
+  d3e0.styp((*0*))
+val t2p0 =
+  s2typ_hnfiz0(t2p0)
+val t2p0 =
+  trans3a_s2typ(env0, t2p0)
+//
+val
+d3e1 = trans3a_d3exp(env0, d3e1)
+//
+in//let
+(
+  d3exp(loc0, t2p0, D3Eview(d3e1)) )
+end (*let*) // end of [f0_view(env0,...)]
 //
 (* ****** ****** *)
 //

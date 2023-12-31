@@ -78,6 +78,11 @@ val (  ) = d2parsed_at_trsym2b(dpar)
 //
 val dpar = d2parsed_of_tread22(dpar)
 //
+(*
+val (  ) =
+prerrln("d3parsed_from_fpath: dpar = ", dpar)
+*)
+//
 } (*where*)//end-of-[d3parsed_from_fpath(...)]
 //
 (* ****** ****** *)

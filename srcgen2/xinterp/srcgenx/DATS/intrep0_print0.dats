@@ -129,7 +129,7 @@ IRPrcd2(tknd, lirs) =>
 print("IRPrcd2(", tknd, ";", lirs, ")")
 //
 |IRPnone0() => print( "IRPnone0(",")" )
-|IRPnone1(d3p1) => print( "IRPnone1(", d3p1, ")" )
+|IRPnone1(d3p1) => print("IRPnone1(", d3p1, ")")
 //
 end//let//end-of-[irpat_fprint(out, irp0)]
 //
@@ -239,7 +239,7 @@ print("IREassgn(", lval, ";", rval, ")")
 (* ****** ****** *)
 //
 |IREnone0() => print(  "IREnone0(",")"  )
-|IREnone1(d3e1) => print( "IREnone1(", d3e1, ")" )
+|IREnone1(d3e1) => print("IREnone1(", d3e1, ")")
 //
 (* ****** ****** *)
 //
@@ -370,7 +370,8 @@ print(tknd,";",stmp,";");
 print(sqas,";",tqas,";");
 print(dqid,";",tias,";",farg,";",body,")"))
 //
-|IRDnone1(d3cl) => print( "IRDnone1(", d3cl, ")" )
+|IRDnone0() => print(   "IRDnone0(",")"   )
+|IRDnone1(d3cl) => print("IRDnone1(", d3cl, ")")
 //
 end(*let*)//end-of-[irdcl_fprint(out, ird0)]
 //
