@@ -137,10 +137,16 @@ valkind =
 | VLKvlr // vlr: valrec
 //
 (*
+// HX-2023-12-31:
+// keyword: mcval/mcv
 // for model-checking
 | VLKmcval of () // check-val
 *)
 // for theorem-proving
+(*
+// HX-2023-12-31:
+// keyword: prval/prv
+*)
 | VLKprval of () // proof-val
 //
 (* ****** ****** *)
@@ -179,6 +185,11 @@ funkind =
 //
 | FNKpraxi // proof axiom
 //
+(*
+HX-2023-12-31:
+keywords:
+prf, prfn0, prfn1, prfun
+*)
 | FNKprfn0 // nonrec prfun
 | FNKprfn1 // genrec prfun
 | FNKprfun // ex-specified
