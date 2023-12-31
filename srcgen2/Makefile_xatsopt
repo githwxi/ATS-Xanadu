@@ -820,6 +820,9 @@ all_dats:: \
 trans34_myenv0_dats
 trans34_myenv0_dats: ; $(XATSOPT) --dynamic DATS/trans34_myenv0.dats
 all_dats:: \
+trans34_utils0_dats
+trans34_utils0_dats: ; $(XATSOPT) --dynamic DATS/trans34_utils0.dats
+all_dats:: \
 trans34_dynexp_dats
 trans34_dynexp_dats: ; $(XATSOPT) --dynamic DATS/trans34_dynexp.dats
 all_dats:: \

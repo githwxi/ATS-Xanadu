@@ -234,6 +234,11 @@ fperr33_dynexp.dats \
 fperr33_decl00.dats \
 dynexp4.dats \
 dynexp4_print0.dats \
+trans34.dats \
+trans34_myenv0.dats \
+trans34_utils0.dats \
+trans34_dynexp.dats \
+trans34_decl00.dats \
 xatsopt_tmplib.dats \
 xatsopt_utils0.dats \
 

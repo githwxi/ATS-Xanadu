@@ -79,7 +79,9 @@ val T0VLR = T_VAL(VLKvlr)
 val T0VAR = T_VAR(VRKvar)
 //
 val T0PRVAL = T_VAL(VLKprval)
-val T0PRVAR = T_VAL(VLKprval)
+(*
+val T0PRVAR = T_VAL(VLKprvar)
+*)
 //
 (* ****** ****** *)
 //
@@ -257,13 +259,19 @@ val () = kwdins("fn1", T0FN1)
 val () = kwdins("fnx", T0FNX)
 val () = kwdins("fun", T0FUN)
 //
+val () = kwdins("prv", T0PRVAL)
+val () = kwdins("prf", T0PRFUN)
+//
 val () = kwdins("prfn0", T0PRFN0)
 val () = kwdins("prfn1", T0PRFN1)
 val () = kwdins("prfun", T0PRFUN)
 val () = kwdins("praxi", T0PRAXI)
 //
 val () = kwdins("prval", T0PRVAL)
+//
+(*
 val () = kwdins("prvar", T0PRVAR)
+*)
 //
 val () = kwdins("fcast", T0FCAST)
 //

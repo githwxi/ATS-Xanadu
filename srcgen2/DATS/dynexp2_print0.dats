@@ -372,6 +372,8 @@ print
 ( "D2Esym0("
 , drxp,";",d1e1,";",dpis,")")
 //
+(* ****** ****** *)
+//
 |
 D2Esapp
 ( d2e1, s2es) =>
@@ -380,6 +382,8 @@ print("D2Esapp(",d2e1,";",s2es,")")
 D2Etapp
 ( d2e1, s2es) =>
 print("D2Etapp(",d2e1,";",s2es,")")
+//
+(* ****** ****** *)
 //
 |
 D2Edap0(d2f0) =>
@@ -391,6 +395,8 @@ D2Edapp
 ( print("D2Edapp(")
 ; print(d2f0,";",npf1,";",d2es,")"))
 //
+(* ****** ****** *)
+//
 |
 D2Eproj
 ( tknd
@@ -400,11 +406,15 @@ D2Eproj
   ("D2Eproj(",tknd,";")
 ; print(drxp,";",dlab,";",dtup,")"))
 //
+(* ****** ****** *)
+//
 |
 D2Elet0
 ( dcls, d2e1) =>
 (
 print("D2Elet0(",dcls,";",d2e1,")"))
+//
+(* ****** ****** *)
 //
 |D2Eift0
 ( d2e1
@@ -419,10 +429,14 @@ D2Ecas0
 ( print("D2Ecas0(");
   print(tknd,";",d2e1,";",d2cs,")"))
 //
+(* ****** ****** *)
+//
 |D2Eseqn
 ( d2es, d2e1) =>
 (
 print("D2Eseqn(",d2es,";",d2e1,")"))
+//
+(* ****** ****** *)
 //
 |D2Etup0
 ( npf1, d2es) =>
@@ -448,6 +462,8 @@ D2Ercd2
 ( print("D2Ercd2(")
 ; print(tknd,";",npf1,";",ldes,")") )
 //
+(* ****** ****** *)
+//
 |
 D2Elam0
 ( tknd
@@ -471,12 +487,16 @@ print
 print
 (f2as,";",sres,";",arrw,";",body,")"))
 //
+(* ****** ****** *)
+//
 |
 D2Etry0
 ( tknd
 , d2e1, dcls) =>
 (print("D2Etry0(")
 ;print( tknd, ";",d2e1, ";",dcls,")"))
+//
+(* ****** ****** *)
 //
 |
 D2Eaddr(d2e1) =>

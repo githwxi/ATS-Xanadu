@@ -148,6 +148,9 @@ valkind =
 // keyword: prval/prv
 *)
 | VLKprval of () // proof-val
+(*
+| VLKprvar of () // proof-var
+*)
 //
 (* ****** ****** *)
 //
