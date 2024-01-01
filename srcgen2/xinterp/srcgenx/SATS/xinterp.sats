@@ -161,6 +161,11 @@ IRVfixs of
 ,fiarglst,irexp,irexplst,irenv)
 *)
 //
+|IRVl0azy of
+(irexp(*thunk*), irenv)
+|IRVl1azy of
+(irexp, irexplst(*frees*), irenv)
+//
 |IRVnone0 of () |IRVnone1 of (irexp)
 //
 and irlft =

@@ -55,6 +55,20 @@ $(CAT) $(LIBXATSOPT_JS) >> $@_dats.js && \
 $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 #
 ######
+#
+test:: \
+test03_xinterp
+test03_xinterp:: ; \
+$(CAT) \
+$(XATS2JS_PRELUDE) > $@_dats.js && \
+$(CAT) \
+$(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
+$(CAT) \
+$(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
+$(CAT) $(LIBXATSOPT_JS) >> $@_dats.js && \
+$(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
+#
+######
 ######
 #
 # HX: for cleaning up

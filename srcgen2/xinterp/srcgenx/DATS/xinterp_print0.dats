@@ -95,23 +95,34 @@ print("IRVstr(", str, ")")
 |IRVcon(d2c) =>
 print("IRVcon(", d2c, ")")
 //
+(* ****** ****** *)
+//
 |IRVfun(fopr) =>
 print("IRVfun(", "...", ")")
+//
+(* ****** ****** *)
 //
 |IRVlft(lval) =>
 print("IRVlft(", lval, ")")
 //
-|IRVtup0(irvs) =>
-print("IRVtup0(", irvs, ")")
+(* ****** ****** *)
 //
 |IRVcapp
 ( d2c1 , irvs ) =>
 print
 ("IRVcapp(", d2c1, ";", irvs, ")")
+//
+(* ****** ****** *)
+//
+|IRVtup0(irvs) =>
+print("IRVtup0(", irvs, ")")
+//
 |IRVtup1
 ( tknd , irvs ) =>
 print
 ("IRVtup1(", tknd, ";", irvs, ")")
+//
+(* ****** ****** *)
 //
 |IRVlam0
 (farg, body, fenv) =>
@@ -130,8 +141,24 @@ print
 , fid0, ";", farg, ";", "...", ")")
 *)
 //
+(* ****** ****** *)
+//
+|IRVl0azy
+( body , fenv ) =>
+(
+  print( "IRVl0azy(", "...", ")") )
+//
+|IRVl1azy
+(body, ires, fenv) =>
+print
+("IRVl1azy(", "...", ";", "...", ")")
+//
+(* ****** ****** *)
+//
 |IRVnone0(    ) => print("IRVnone0(", ")")
 |IRVnone1(ire1) => print("IRVnone1(", ire1, ")")
+//
+(* ****** ****** *)
 //
 end//let//end-of-[irval_fprint(out, irv0)]
 //

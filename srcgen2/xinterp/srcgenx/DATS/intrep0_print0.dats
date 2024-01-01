@@ -236,6 +236,17 @@ IREdp2tr
 (
   print("IREdp2tr(", ire1, ")") )
 //
+|
+IREdl0az
+( ire1 ) =>
+(
+  print("IREdl0az(", ire1, ")") )
+|
+IREdl1az
+( ire1 ) =>
+(
+  print("IREdl1az(", ire1, ")") )
+//
 (* ****** ****** *)
 //
 |

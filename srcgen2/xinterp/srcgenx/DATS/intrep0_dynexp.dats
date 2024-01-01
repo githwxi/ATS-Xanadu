@@ -474,6 +474,8 @@ irexp(loc0, IREcst(d2c))
 |D3Eflat _ => f0_flat(env0, d3e0)
 //
 |D3Edp2tr _ => f0_dp2tr(env0, d3e0)
+|D3Edl0az _ => f0_dl0az(env0, d3e0)
+|D3Edl1az _ => f0_dl1az(env0, d3e0)
 //
 |D3Ewhere _ => f0_where(env0, d3e0)
 //
@@ -1040,6 +1042,48 @@ in//let
 (
   irexp(loc0, IREdp2tr( ire1 )) )
 end(*let*)//end-of-[f0_dp2tr(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dl0az
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val-
+D3Edl0az
+( d3e1 ) = d3e0.node((*0*))
+//
+val ire1 =
+(
+  trxd3ir_d3exp(env0, d3e1))
+//
+in//let
+(
+  irexp(loc0, IREdl0az( ire1 )) )
+end(*let*)//end-of-[f0_dl0az(env0,d3e0)]
+//
+fun
+f0_dl1az
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val-
+D3Edl1az
+( d3e1 ) = d3e0.node((*0*))
+//
+val ire1 =
+(
+  trxd3ir_d3exp(env0, d3e1))
+//
+in//let
+(
+  irexp(loc0, IREdl1az( ire1 )) )
+end(*let*)//end-of-[f0_dl1az(env0,d3e0)]
 //
 (* ****** ****** *)
 //
