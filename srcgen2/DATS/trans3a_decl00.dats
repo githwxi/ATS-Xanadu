@@ -167,6 +167,7 @@ D3Clocal0
 //
 val (  ) =
 tr3aenv_pshloc1(env0)
+//
 val head =
 trans3a_d3eclist(env0, head)
 val body =
@@ -178,8 +179,10 @@ let
 //
 val (  ) =
 tr3aenv_pshloc2(env0)//enter
+//
 val body =
 trans3a_tmplocal(env0,head,body)
+//
 val (  ) = tr3aenv_locjoin(env0)
 //
 in//let

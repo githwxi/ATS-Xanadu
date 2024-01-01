@@ -230,6 +230,10 @@ irpat(loc0, IRPflt(tok))
 ( tok ) =>
 irpat(loc0, IRPstr(tok))
 //
+|D3Pbang _ => f0_bang(env0, d3p0)
+|D3Pflat _ => f0_flat(env0, d3p0)
+|D3Pfree _ => f0_free(env0, d3p0)
+//
 |D3Pdapp _ => f0_dapp(env0, d3p0)
 //
 |D3Ptup0 _ => f0_tup0(env0, d3p0)
@@ -247,6 +251,44 @@ D3Pannot _ => f0_annot(env0, d3p0)
 (* ****** ****** *)
 //
 val loc0 = d3p0.lctn()
+//
+(* ****** ****** *)
+//
+fun
+f0_bang
+( env0:
+! trdienv
+, d3p0: d3pat): irpat =
+(
+trxd3ir_d3pat(env0, d3p1)
+) where
+{
+val-
+D3Pbang(d3p1) = d3p0.node() }
+//
+fun
+f0_flat
+( env0:
+! trdienv
+, d3p0: d3pat): irpat =
+(
+trxd3ir_d3pat(env0, d3p1)
+) where
+{
+val-
+D3Pflat(d3p1) = d3p0.node() }
+//
+fun
+f0_free
+( env0:
+! trdienv
+, d3p0: d3pat): irpat =
+(
+trxd3ir_d3pat(env0, d3p1)
+) where
+{
+val-
+D3Pfree(d3p1) = d3p0.node() }
 //
 (* ****** ****** *)
 //
@@ -472,6 +514,8 @@ irexp(loc0, IREcst(d2c))
 |D3Eaddr _ => f0_addr(env0, d3e0)
 |D3Eview _ => f0_view(env0, d3e0)
 |D3Eflat _ => f0_flat(env0, d3e0)
+//
+|D3Efree _ => f0_free(env0, d3e0)
 //
 |D3Edp2tr _ => f0_dp2tr(env0, d3e0)
 |D3Edl0az _ => f0_dl0az(env0, d3e0)
@@ -1020,6 +1064,27 @@ in//let
 (
   irexp(loc0, IREflat( ire1 )) )
 end(*let*)//end-of-[f0_flat(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_free
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val-
+D3Efree(d3e1) = d3e0.node()
+//
+val ire1 =
+(
+  trxd3ir_d3exp(env0, d3e1))
+//
+in//let
+(
+  irexp(loc0, IREfree( ire1 )) )
+end(*let*)//end-of-[f0_free(env0,d3e0)]
 //
 (* ****** ****** *)
 //

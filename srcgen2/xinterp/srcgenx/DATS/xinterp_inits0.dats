@@ -284,13 +284,25 @@ local
 //
 fun
 xinterp_char_eqz
-  (x: irval): irval =
+( x: irval): irval =
 let
 val-IRVchr(x) = x
 in//let
 (
   IRVbtf(char_eqz(x)) )
 end (*let*) // end-of(xinterp_char_eqz)
+//
+fun
+xinterp_char_cmp
+( x: irval
+, y: irval): irval =
+let
+val-IRVchr(x) = x
+val-IRVchr(y) = y
+in//let
+(
+  IRVint(char_cmp(x, y)) )
+end (*let*) // end-of(xinterp_char_cmp)
 //
 (* ****** ****** *)
 in//local
@@ -302,6 +314,13 @@ the_ircst_insval
 the_d2cst_find
 ("XINTERP_char_eqz"),
 IRVfun(firfun1(xinterp_char_eqz)))//val
+//
+val () =
+the_ircst_insval
+(
+the_d2cst_find
+("XINTERP_char_cmp"),
+IRVfun(firfun2(xinterp_char_cmp)))//val
 //
 (* ****** ****** *)
 end (*local*) // end-of- [local(char_operations)]
