@@ -104,38 +104,62 @@ d3e0.node() of
 //
 |D3Etop _ => d3e0
 //
+(* ****** ****** *)
+//
 |D3Etimp _ => f0_timp(env0, d3e0)
+//
+(* ****** ****** *)
 //
 |D3Esapp _ => f0_sapp(env0, d3e0)
 |D3Esapq _ => f0_sapq(env0, d3e0)
 //
+(* ****** ****** *)
+//
 |D3Etapp _ => f0_tapp(env0, d3e0)
 |D3Etapq _ => f0_tapq(env0, d3e0)
+//
+(* ****** ****** *)
 //
 |D3Edap0 _ => f0_dap0(env0, d3e0)
 |D3Edapp _ => f0_dapp(env0, d3e0)
 //
+(* ****** ****** *)
+//
 |D3Elet0 _ => f0_let0(env0, d3e0)
+//
+(* ****** ****** *)
 //
 |D3Eift0 _ => f0_ift0(env0, d3e0)
 |D3Ecas0 _ => f0_cas0(env0, d3e0)
 //
+(* ****** ****** *)
+//
 |D3Eseqn _ => f0_seqn(env0, d3e0)
+//
+(* ****** ****** *)
 //
 |D3Etup0 _ => f0_tup0(env0, d3e0)
 |D3Etup1 _ => f0_tup1(env0, d3e0)
 |D3Ercd2 _ => f0_rcd2(env0, d3e0)
 //
+(* ****** ****** *)
+//
 |D3Elam0 _ => f0_lam0(env0, d3e0)
 |D3Efix0 _ => f0_fix0(env0, d3e0)
+//
+(* ****** ****** *)
 //
 |D3Eaddr _ => f0_addr(env0, d3e0)
 |D3Eview _ => f0_view(env0, d3e0)
 |D3Eflat _ => f0_flat(env0, d3e0)
 //
+(* ****** ****** *)
+//
 |D3Edp2tr _ => f0_dp2tr(env0, d3e0)
 |D3Edl0az _ => f0_dl0az(env0, d3e0)
 |D3Edl1az _ => f0_dl1az(env0, d3e0)
+//
+(* ****** ****** *)
 //
 |D3Ewhere _ => f0_where(env0, d3e0)
 //
@@ -858,10 +882,17 @@ D3Eassgn
 ( d3el
 , d3er ) = d3e0.node((*0*))
 //
+(*
 val
-d3el = trtmp3c_d3exp(env0, d3el)
+d3el = // HX: lft: skipped
+(
+  trtmp3c_d3exp(env0, d3el) )
+*)
+//
 val
-d3er = trtmp3c_d3exp(env0, d3er)
+d3er =
+(
+  trtmp3c_d3exp(env0, d3er) )
 //
 in//let
 (

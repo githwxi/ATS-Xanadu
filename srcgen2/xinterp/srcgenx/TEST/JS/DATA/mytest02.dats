@@ -84,37 +84,25 @@ list_cons
 //
 (* ****** ****** *)
 (* ****** ****** *)
-val mylist10 =
+val
+mylist10 =
 (
   list(0,1,2,3,4,5,6,7,8,9) )
-val length10 = length(mylist10)
-val mylength10 = mylength(mylist10)
+(* ****** ****** *)
+val
+length10 = length(mylist10)
+val
+mylength10 = mylength(mylist10)
 (* ****** ****** *)
 //
-(*
-val mylist26 =
+val
+mylist26 =
 list_vt2t
 (
 strn_listize
 ( "ABCDEFGHIJKLMNOPQRSTUVWXYZ"))
 *)
 //
-val mylist26 =
-gseq_foldr
-<strn><c><r>
-( "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-, list_nil()) where
-{
-#typedef c = char
-#typedef r = list(char)
-#impltmp
-foldr$fopr<c><r>(c, r) = list_cons(c, r)
-}
-//
-val length26 = length(mylist26)
-val mylength26 = mylength(mylist26)
-(* ****** ****** *)
-////
 (* ****** ****** *)
 //
 fun

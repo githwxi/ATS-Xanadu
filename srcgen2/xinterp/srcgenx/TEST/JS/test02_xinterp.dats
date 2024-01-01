@@ -74,10 +74,6 @@ irparsed_of_trxd3ir(dpar)
 ) where
 {
 //
-val ( ) =
-prerrln
-("d3parsed(3a) = ", dpar)
-//
 val
 dpar =
 d3parsed_of_trans3a(dpar)
@@ -92,12 +88,10 @@ val
 dpar =
 d3parsed_of_tread33(dpar)
 //
-val
-out = g_stderr((*0*))
-//
 val ( ) =
 prerrln
-("FPERR33_D3PARSED(4):")
+("FPERR33_D3PARSED(33):")
+val out = g_stderr((*0*))
 val ( ) =
 fperr33_d3parsed(out, dpar)
 //

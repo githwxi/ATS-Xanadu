@@ -377,6 +377,8 @@ IREdapp of
 |IREflat of (irexp)//left-val-content
 //
 |IREdp2tr of (irexp)//p2tr-dereference
+|IREdl0az of (irexp)//l0azy-eval-thunk
+|IREdl1az of (irexp)//l1azy-eval-thunk
 //
 |IREwhere of (irexp, irdclist)
 //

@@ -814,7 +814,7 @@ D3Eassgn
 //
 (*
 val
-d3el =
+d3el = // HX: lft: skipped
 (
   trtmp3b_d3exp(env0, d3el) )
 *)

@@ -476,7 +476,8 @@ let
 //
 val dtmp =
 (
- d3ecl(loc0, D3Ctmplocal(dimp, tmps)))
+d3ecl
+(loc0, D3Ctmplocal(dimp, tmps)))
 //
 in//let
 (
@@ -529,8 +530,8 @@ list_cons _ =>
 let
 val dres = list_vt_nil((*0*))
 in//let
-  list_vt2t
-  (auxloop(env0,tmps,body,dres))
+list_vt2t
+(auxloop(env0,tmps,body,dres))
 end//let//end-[trans3a_tmplocal]
 //
 end where
