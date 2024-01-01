@@ -302,7 +302,7 @@ let
   val ci = cs[i1]
 in
 if
-forall$test<cgtz>(ci)
+rforall$test<cgtz>(ci)
 then loop(cs, i1) else false
 endlet//end-of-(else)//end-of-(if)
 )
@@ -668,13 +668,17 @@ endlet // end of [loop{...}(n1,i0)]
 //
 (* ****** ****** *)
 
-//local
+local
+//
+(* ****** ****** *)
 //
 #typedef x0 = cgtz
 #typedef xs = strn
 //
-//in//in-of-local
-
+(* ****** ****** *)
+//
+in//in-of-local
+//
 (* ****** ****** *)
 #impltmp
 g_lt<xs> = strn_lt<>
@@ -733,12 +737,12 @@ gseq_forall<xs><x0> = strn_forall<>
 gseq_rforall<xs><x0> = strn_rforall<>
 //
 (* ****** ****** *)
-
+//
 #impltmp
 gseq_listize<xs><x0> = strn_listize<>
 #impltmp
 gseq_strmize<xs><x0> = strn_strmize<>
-
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -750,38 +754,38 @@ gras_rstrmize<xs><x0> = strn_rstrmize<>
 gseq_rstrmize<xs><x0> = strn_rstrmize<>
 //
 (* ****** ****** *)
-
+//
 #impltmp
 gseq_head_raw<xs><x0> = strn_head_raw<>
 #impltmp
 gseq_tail_raw<xs><x0> = strn_tail_raw<>
-
+//
 (* ****** ****** *)
-
+//
 #impltmp
 gseq_make_list<xs><x0> = strn_make_list<>
 #impltmp
 gseq_make_strm<xs><x0> = strn_make_strm<>
-
+//
 (* ****** ****** *)
-
+//
 #impltmp
 gseq_make0_llist
 <xs><x0>(*cs*) = strn_make0_llist<>(*cs*)
 #impltmp
 gseq_make0_lstrm
 <xs><x0>(*cs*) = strn_make0_lstrm<>(*cs*)
-
+//
 (* ****** ****** *)
-
+//
 #impltmp
 gseq_prefixq<xs><x0> = strn_prefixq<>(*void*)
 #impltmp
 gseq_suffixq<xs><x0> = strn_suffixq<>(*void*)
-
+//
 (* ****** ****** *)
-
-//end (*local*) // end of [local] // g/gseq-ops
+//
+end (*local*) // end of [local] // g/gseq-ops
 
 (* ****** ****** *)
 
