@@ -78,12 +78,32 @@ d3ecl_tmplocal
 ( tmps
 : d3eclist
 , dtmp: d3ecl): d3ecl =
+(
+case+ tmps of
+|
+list_nil() => ( dtmp )
+|
+list_cons _ => 
 let
 val
-loc0 = dtmp.lctn() in//let
+loc0 = dtmp.lctn()
+in//let
 d3ecl_make_node
-(loc0, D3Ctmplocal(dtmp, tmps))
-end (*let*) // end-of-[d3ecl_tmplocal]
+( loc0
+, D3Ctmplocal(dtmp, tmps)) end
+) where
+{
+//
+(*
+val () =
+prerrln
+("d3ecl_tmplocal: tmps = ", tmps)
+val () =
+prerrln
+("d3ecl_tmplocal: dtmp = ", dtmp)
+*)
+//
+}(*where*)//end-of[d3ecl_tmplocal(...)]
 //
 (* ****** ****** *)
 
@@ -179,11 +199,10 @@ let
 //
 val (  ) =
 tr3aenv_pshloc2(env0)//enter
+val (  ) = tr3aenv_locjoin(env0)
 //
 val body =
-trans3a_tmplocal(env0,head,body)
-//
-val (  ) = tr3aenv_locjoin(env0)
+trans3a_tmplocal(env0, head, body)
 //
 in//let
   d3ecl(loc0, D3Clocal0(head, body))
@@ -525,11 +544,6 @@ filter$test
 //
 in//let
 //
-case+ tmps of
-|
-list_nil _ => (    body    )
-|
-list_cons _ =>
 let
 val dres = list_vt_nil((*0*))
 in//let
@@ -578,11 +592,18 @@ tr3aenv_insert_d3ecl(env0,dtmp)
 in//let
 (
 auxloop(env0, tmps, body, dres))
-end else // end-of-then
+end//end-of-then
+else
+let
+val dres = 
 (
-auxloop(env0, tmps, body, dres)))//end-of-if
-//
-)(*case+*)
+  list_vt_cons(d3cl, dres))
+in//let
+(
+auxloop(env0, tmps, body, dres))
+end//end-of-else
+)//end-of-[if(d3ecl_impltmpq(d3cl))]
+)(*case+*)//end of [auxloop(env0,...)]
 //
 }(*where*)//end of [trans3a_tmplocal(env0,...)]
 //

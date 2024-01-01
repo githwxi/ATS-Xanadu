@@ -195,6 +195,9 @@ IREl0azy _ => f0_l0azy(env0, ire0)
 IREl1azy _ => f0_l1azy(env0, ire0)
 //
 (* ****** ****** *)
+|
+IREnone0 _ => f0_none0(env0, ire0)
+(* ****** ****** *)
 //
 |
 _(*otherwise*) =>
@@ -1081,6 +1084,21 @@ IRVl1azy
 val fenv = xintenv_irsnap(env0) }
 //
 end(*let*)//end-of-[f0_l1azy(env0,ire0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_none0
+( env0:
+! xintenv
+, ire0: irexp): irval =
+(
+  IRVnil((*void*))) where
+{
+//
+val-IREnone0() = ire0.node((*0*))
+//
+}(*where*)//end-of-[f0_none0(env0,ire0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

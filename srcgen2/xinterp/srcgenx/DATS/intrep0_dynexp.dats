@@ -528,6 +528,8 @@ irexp(loc0, IREcst(d2c))
 |D3El0azy _ => f0_l0azy(env0, d3e0)
 |D3El1azy _ => f0_l1azy(env0, d3e0)
 //
+|D3Enone0 _ => f0_none0(env0, d3e0)
+//
 |_(* otherwise *) => irexp_none1(d3e0)
 ) where
 {
@@ -1249,6 +1251,19 @@ in//let
   irexp_make_node
   (loc0, IREl1azy( ire1,ires )) )
 end(*let*)//end-of-[f0_l1azy(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_none0
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+(
+  irexp(loc0, IREnone0())) where
+{
+  val-D3Enone0() = d3e0.node((*0*))
+}(*where*)//end-of-[f0_none0(env0,d3e0)]
 //
 (* ****** ****** *)
 //

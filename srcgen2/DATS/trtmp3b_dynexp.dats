@@ -156,9 +156,12 @@ d3e0.node() of
 D3Eextnam _ => f0_extnam(env0, d3e0)
 //
 (* ****** ****** *)
+|D3Enone0() => d3e0 |D3Enone1(d2e1) => d3e0
+(* ****** ****** *)
 //
 |
-_(*otherwise*) => (d3exp_none2(d3e0))
+_(*otherwise*) =>
+let val dres = d3exp_none2(d3e0) in dres end
 //
 (* ****** ****** *)
 //

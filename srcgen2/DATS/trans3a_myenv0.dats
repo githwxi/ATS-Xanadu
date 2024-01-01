@@ -257,7 +257,8 @@ val dcls =
 list_cons(d3cl, dcls)) where
 {
 val dcls =
-tr3aenv_d2crch_opt(env0, d2c0) }
+tr3aenv_d2crch_opt(env0, d2c0)
+}
 //
 in//let
 //
