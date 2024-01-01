@@ -146,6 +146,8 @@ ire0.node() of
 |IREcas0 _ => f0_cas0(env0, ire0)
 //
 (* ****** ****** *)
+|IREseqn _ => f0_seqn(env0, ire0)
+(* ****** ****** *)
 //
 |IREtup0 _ => f0_tup0(env0, ire0)
 |IREtup1 _ => f0_tup1(env0, ire0)
@@ -163,6 +165,8 @@ ire0.node() of
 *)
 |IREflat _ => f0_flat(env0, ire0)
 //
+(* ****** ****** *)
+|IREfree _ => f0_free(env0, ire0)
 (* ****** ****** *)
 //
 |
@@ -624,6 +628,46 @@ end(*let*)//end-of-[f0_cas0(env0,ire0)]
 (* ****** ****** *)
 //
 fun
+f0_seqn
+( env0:
+! xintenv
+, ire0: irexp): irval =
+let
+val () =
+foreach(env0, ires)
+in//let
+xinterp_irexp(env0, ire1)
+end where // end-of-let
+{
+//
+fun
+foreach
+( env0: !xintenv
+, ires: irexplst): void =
+(
+case+ ires of
+|
+list_nil
+( (*nil*) ) => ( (*void*) )
+|
+list_cons
+(ire1, ires) =>
+(
+foreach(env0, ires)) where
+{
+val
+irv1 = xinterp_irexp(env0, ire1)
+}
+)
+//
+val-
+IREseqn(ires, ire1) = ire0.node()
+//
+}(*let*)//end-of-[f0_seqn(env0,ire0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_tup0
 ( env0:
 ! xintenv
@@ -801,6 +845,19 @@ case- irv1 of
 IRVlft(lval) => irlft_deget(lval))
 //
 end(*let*)//end-of-[f0_flat(env0,ire0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_free
+( env0:
+! xintenv
+, ire0: irexp): irval =
+(
+  IRVnil((*void*))) where
+{
+val-IREfree(irel) = ire0.node() }
+//(*where*)//end-of[f0_free(env0,ire0)]
 //
 (* ****** ****** *)
 //

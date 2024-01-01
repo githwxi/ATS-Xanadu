@@ -668,12 +668,12 @@ endlet // end of [loop{...}(n1,i0)]
 //
 (* ****** ****** *)
 
-local
+//local
 //
 #typedef x0 = cgtz
 #typedef xs = strn
 //
-in//in-of-local
+//in//in-of-local
 
 (* ****** ****** *)
 #impltmp
@@ -781,7 +781,7 @@ gseq_suffixq<xs><x0> = strn_suffixq<>(*void*)
 
 (* ****** ****** *)
 
-end (*local*) // end of [local] // g/gseq-ops
+//end (*local*) // end of [local] // g/gseq-ops
 
 (* ****** ****** *)
 

@@ -154,6 +154,8 @@ d3e0.node() of
 |D3Eflat _ => f0_flat(env0, d3e0)
 //
 (* ****** ****** *)
+|D3Efree _ => f0_free(env0, d3e0)
+(* ****** ****** *)
 //
 |D3Edp2tr _ => f0_dp2tr(env0, d3e0)
 |D3Edl0az _ => f0_dl0az(env0, d3e0)
@@ -759,6 +761,29 @@ in//let
 (
   d3exp(loc0, t2p0, D3Eflat(d3e1)) )
 end (*let*) // end of [f0_flat(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_free
+( env0:
+! tr3cenv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+val-
+D3Efree(d3e1) = d3e0.node()
+//
+val
+d3e1 = trtmp3c_d3exp(env0, d3e1)
+//
+in//let
+(
+  d3exp(loc0, t2p0, D3Efree(d3e1)) )
+end (*let*) // end of [f0_free(env0,...)]
 //
 (* ****** ****** *)
 //

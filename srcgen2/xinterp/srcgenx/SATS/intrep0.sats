@@ -376,6 +376,10 @@ IREdapp of
 |IREaddr of (irexp)//left-val-address
 |IREflat of (irexp)//left-val-content
 //
+(* ****** ****** *)
+|IREfree of (irexp)//free-builtin-fun
+(* ****** ****** *)
+//
 |IREdp2tr of (irexp)//p2tr-dereference
 |IREdl0az of (irexp)//l0azy-eval-thunk
 |IREdl1az of (irexp)//l1azy-eval-thunk

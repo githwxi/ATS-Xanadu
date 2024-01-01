@@ -229,6 +229,11 @@ print("IRErcd2(", tknd, ";", lirs, ")")
   print("IREflat(", ire1, ")") )
 //
 (* ****** ****** *)
+|IREfree
+( ire1 ) =>
+(
+  print("IREfree(", ire1, ")") )
+(* ****** ****** *)
 //
 |
 IREdp2tr
