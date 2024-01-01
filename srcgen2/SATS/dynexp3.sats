@@ -493,6 +493,13 @@ two attributes of left values
 //
 |D3Eeval of (d3exp)//eval-builtin-fun
 |D3Efold of (d3exp)//open-con-folding
+//
+(*
+HX-2024-01-01:
+This one is special for
+freeing datacons and linear streams;
+it may be of other uses in the future
+*)
 |D3Efree of (d3exp)//free-builtin-fun
 //
 (* ****** ****** *)

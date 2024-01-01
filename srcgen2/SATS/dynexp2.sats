@@ -911,6 +911,13 @@ D2Etry0 of
 //
 |D2Eeval of (d2exp)//eval-fun//$eval
 |D2Efold of (d2exp)//open-con//$fold
+//
+(*
+HX-2024-01-01:
+This one is special for
+freeing datacons and linear streams;
+it may be of other uses in the future
+*)
 |D2Efree of (d2exp)//free-fun//$free
 //
 (* ****** ****** *)
@@ -919,22 +926,31 @@ D2Etry0 of
 D2Ewhere of
 (
 d2exp//let(binds)in(scope)end 
-(*scope*), d2eclist(*binds*) )//whr
+(*scope*), d2eclist(*binds*) )
 //
 (* ****** ****** *)
 //
 |
-D2Eassgn of
-(d2exp(*l-val*), d2exp(*r-val*))//:=
+D2Eassgn of // l-val := r-val
+(d2exp(*l-val*), d2exp(*r-val*))
+//
+(*
+|
+D2Eaexch of // l-val :=> r-val
+(d2exp(*l-val*), d2exp(*r-val*))
+|
+D2Ebexch of // l-val :=: r-val
+(d2exp(*l-val*), d2exp(*r-val*))
+*)
 //
 (* ****** ****** *)
 //
 |
-D2Ebrget of
-(d2ptmlst, d2explst(*arr+idx*))//[]
+D2Ebrget of // HX: arr[idx]
+( d2ptmlst, d2explst(*arr+idx*))
 |
-D2Ebrset of
-(d2ptmlst, d2explst(*arr+idx+val*))
+D2Ebrset of // HX: arr[idx] := val
+( d2ptmlst, d2explst(*arr+idx+val*))
 //
 (* ****** ****** *)
 //
