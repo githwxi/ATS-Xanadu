@@ -1,6 +1,8 @@
 (* ****** ****** *)
 (*
-** for lin-streams
+** HX: For
+** lin-streams which
+** are possibly infinite
 *)
 (* ****** ****** *)
 #abstbox box_tx

@@ -86,7 +86,10 @@
 //
 #include "prelude/SATS/VT/list000_vt.sats"
 #include "prelude/SATS/VT/optn000_vt.sats"
+//
 #include "prelude/SATS/VT/strm000_vt.sats"
+#include "prelude/SATS/VT/strm001_vt.sats"
+//
 #include "prelude/SATS/VT/tupl000_vt.sats"
 //
 (* ****** ****** *)
