@@ -101,7 +101,8 @@ list_vt2t
 (
 strn_listize
 ( "ABCDEFGHIJKLMNOPQRSTUVWXYZ"))
-*)
+val
+mylength26 = mylength(mylist26)
 //
 (* ****** ****** *)
 //
