@@ -48,8 +48,8 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (*
 #sexpdef strm_vt = stream_vt
-#sexpdef strq_vt = streaq_vt
 #sexpdef strx_vt = streax_vt
+#sexpdef strq_vt = streaq_vt
 *)
 (* ****** ****** *)
 //
@@ -68,6 +68,7 @@ fun
 <a:vt>
 strm_vt_nil
 ((*void*)): strm_vt(a)
+//
 fun
 <a:vt>
 strm_vt_cons
@@ -78,10 +79,7 @@ strm_vt_cons
 //
 fun
 <a:vt>
-strm_vt_sing(a): strm_vt(a)
-fun
-<a:vt>
-strmcon_vt_sing(a): strmcon_vt(a)
+strm_vt_sing( a ): strm_vt(a)
 //
 (* ****** ****** *)
 //
@@ -89,10 +87,6 @@ fun
 <a:vt>
 strm_vt_pair
   (fst: a, snd: a): strm_vt(a)
-fun
-<a:vt>
-strmcon_vt_pair
-  (fst: a, snd: a): strmcon_vt(a)
 //
 (* ****** ****** *)
 
@@ -102,6 +96,9 @@ strm_vt_free(strm_vt(a)): void
 fun
 <a:vt>
 strx_vt_free(strx_vt(a)): void
+fun
+<a:vt>
+strq_vt_free(strq_vt(a)): void
 
 (* ****** ****** *)
 (*

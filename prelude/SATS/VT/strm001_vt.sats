@@ -45,23 +45,31 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 (* ****** ****** *)
 //
+fun
+<a:vt>
+strmcon_vt_sing
+  ( x0: (a) ) : strmcon_vt(a)
+fun
+<a:vt>
+strmcon_vt_pair
+(fst: a, snd: a): strmcon_vt(a)
+//
+(* ****** ****** *)
+//
 fun<>
 strmcon_vt_nil_
-{a:vt}
-((*void*)): strmcon_vt(a)
+{a:vt}((*void*)): strmcon_vt(a)
 fun
 <a:vt>
 strmcon_vt_cons_
 ( x0: (a)
-, xs
-: strm_vt(a)): strmcon_vt(a)
+, xs: strm_vt(a)): strmcon_vt(a)
 //
 fun
 <a:vt>
 strxcon_vt_cons_
 ( x0: (a)
-, xs
-: strx_vt(a)): strxcon_vt(a)
+, xs: strx_vt(a)): strxcon_vt(a)
 //
 (* ****** ****** *)
 //
