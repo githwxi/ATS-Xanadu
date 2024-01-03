@@ -154,31 +154,6 @@ strm_vt_rlistize0
 (* ****** ****** *)
 //
 fun
-<a:vt>
-strx_vt_strmize0
-(xs: strx_vt(a)): strm_vt(a)
-//
-(* ****** ****** *)
-//
-fun
-<a:vt>
-strq_vt_strmize0
-(xs: strq_vt(a)): strm_vt(a)
-//
-fun
-<a:vt>
-strq_vt_listize0
-{n:i0}
-(xs: strq_vt(a,n)): list_vt(a,n)
-fun
-<a:vt>
-strq_vt_rlistize0
-{n:i0}
-(xs: strq_vt(a,n)): list_vt(a,n)
-//
-(* ****** ****** *)
-//
-fun
 <a:t0>
 strm_vt_range_lt
 (  s1: a, f2: a ): strm_vt(a)
@@ -291,11 +266,6 @@ fun
 <y0:vt>
 strm_vt_map0
   (xs: strm_vt(x0)): strm_vt(y0)
-fun
-<x0:vt>
-<y0:vt>
-strx_vt_map0
-  (xs: strx_vt(x0)): strx_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -307,10 +277,6 @@ fun
 <x0:vt>
 strm_vt_filter0
   (xs: strm_vt(x0)): strm_vt(x0)
-fun
-<x0:vt>
-strx_vt_filter0
-  (xs: strx_vt(x0)): strx_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -345,11 +311,6 @@ fun
 <y0:vt>
 strm_vt_mapopt0
   (xs: strm_vt(x0)): strm_vt(y0)
-fun
-<x0:vt>
-<y0:vt>
-strx_vt_mapopt0
-  (xs: strx_vt(x0)): strx_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -358,33 +319,18 @@ fun
 <y0:vt>
 strm_vt_mapoptn0
   (xs: strm_vt(x0)): strm_vt(y0)
-fun
-<x0:vt>
-<y0:vt>
-strx_vt_mapoptn0
-  (xs: strx_vt(x0)): strx_vt(y0)
 //
 fun
 <x0:vt>
 <y0:vt>
 strm_vt_maplist0
   (xs: strm_vt(x0)): strm_vt(y0)
-fun
-<x0:vt>
-<y0:vt>
-strx_vt_maplist0
-  (xs: strx_vt(x0)): strx_vt(y0)
 //
 fun
 <x0:vt>
 <y0:vt>
 strm_vt_mapstrm0
   (xs: strm_vt(x0)): strm_vt(y0)
-fun
-<x0:vt>
-<y0:vt>
-strx_vt_mapstrm0
-  (xs: strx_vt(x0)): strx_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -418,10 +364,6 @@ fun
 <x0:vt>
 strm_vt_sieve0
   (xs: strm_vt(x0)): strm_vt(x0)
-fun
-<x0:vt>
-strx_vt_sieve0
-  (xs: strx_vt(x0)): strx_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -442,11 +384,6 @@ fun
 <y0:vt>
 strm_vt_imap0
   (xs: strm_vt(x0)): strm_vt(y0)
-fun
-<x0:vt>
-<y0:vt>
-strx_vt_imap0
-  (xs: strx_vt(x0)): strx_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -454,10 +391,6 @@ fun
 <x0:vt>
 strm_vt_ifilter0
   (xs: strm_vt(x0)): strm_vt(x0)
-fun
-<x0:vt>
-strx_vt_ifilter0
-  (xs: strx_vt(x0)): strx_vt(x0)
 //
 (* ****** ****** *)
 fun
@@ -475,23 +408,15 @@ fun
 <y0:vt>
 strm_vt_imapopt0
   (xs: strm_vt(x0)): strm_vt(y0)
-fun
-<x0:vt>
-<y0:vt>
-strx_vt_imapopt0
-  (xs: strx_vt(x0)): strx_vt(y0)
 //
 (* ****** ****** *)
+//
 fun
 <a:vt>
 strm_vt_istrmize0
 ( xs
 : strm_vt(a)): strm_vt(@(nint, a))
-fun
-<a:vt>
-strx_vt_istrmize0
-( xs
-: strx_vt(a)): strm_vt(@(nint, a))
+//
 (* ****** ****** *)
 //
 // For z2-glseq-operations
@@ -615,8 +540,6 @@ listize0 with strm_vt_listize0 of 1000
 //
 #symload
 strmize0 with strm_vt_strmize0 of 1000
-#symload
-strmize0 with strx_vt_strmize0 of 1000
 //
 (* ****** ****** *)
 //
@@ -625,7 +548,6 @@ rlistize0 with strm_vt_rlistize0 of 1000
 //
 (* ****** ****** *)
 #symload map0 with strm_vt_map0 of 1000
-#symload map0 with strx_vt_map0 of 1000
 (* ****** ****** *)
 #symload drop0 with strm_vt_drop0 of 1000
 #symload take0 with strm_vt_take0 of 1000
@@ -639,11 +561,11 @@ rlistize0 with strm_vt_rlistize0 of 1000
 #symload foldl0 with strm_vt_foldl0 of 1000
 (* ****** ****** *)
 #symload filter0 with strm_vt_filter0 of 1000
-#symload filter0 with strx_vt_filter0 of 1000
 (* ****** ****** *)
 #symload exists0 with strm_vt_exists0 of 1000
 #symload forall0 with strm_vt_forall0 of 1000
 #symload foreach0 with strm_vt_foreach0 of 1000
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_strm000_vt.sats] *)
