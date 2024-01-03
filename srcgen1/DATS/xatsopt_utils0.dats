@@ -705,6 +705,11 @@ the_prelude_load
 ( XATSENV
 , 0(*static*)
 , "prelude/SATS/VT/strm000_vt.sats")
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "prelude/SATS/VT/strm001_vt.sats")
 //
 val () =
 the_prelude_load

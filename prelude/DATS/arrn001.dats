@@ -97,7 +97,7 @@ val A0 =
 a1rsz_forall{n}(AZ) =
 let
 val n0 =
-a1rsz_length<a>(AZ)
+a1rsz_length{a}(AZ)
 #impltmp
 a1ref_length<a><n>(A) = n0
 in//let
@@ -110,7 +110,7 @@ a1rsz_forall1{n}(AZ) =
 let
 val n0 =
 (
- a1rsz_length<a>(AZ))
+ a1rsz_length{a}(AZ))
 #impltmp
 a1ref_length<a><n>(A) = n0
 in//let
@@ -125,7 +125,7 @@ a1rsz_listize{n}(AZ) =
 let
 val n0 =
 (
- a1rsz_length<a>(AZ))
+ a1rsz_length{a}(AZ))
 #impltmp
 a1ref_length<a><n>(A) = n0
 in//let
@@ -138,7 +138,7 @@ a1rsz_strmize{n}(AZ) =
 let
 val n0 =
 (
- a1rsz_length<a>(AZ))
+ a1rsz_length{a}(AZ))
 #impltmp
 a1ref_length<a><n>(A) = n0
 in//let

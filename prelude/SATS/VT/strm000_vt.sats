@@ -64,42 +64,6 @@ strx_vt2t
 //
 (* ****** ****** *)
 //
-fun<>
-strmcon_vt_nil_
-{a:vt}
-((*void*)): strmcon_vt(a)
-fun
-<a:vt>
-strmcon_vt_cons_
-( x0: (a)
-, xs
-: strm_vt(a)): strmcon_vt(a)
-//
-fun
-<a:vt>
-strxcon_vt_cons_
-( x0: (a)
-, xs
-: strx_vt(a)): strxcon_vt(a)
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-<r0:vt>
-strmcon_vt_uncons_cfr
-( xs: strmcon_vt( x0 )
-, f0: ((*void*)) -<cfr> r0
-, f1: (x0, strm_vt(x0)) -<cfr> r0): r0
-fun
-<x0:vt>
-<r0:vt>
-strxcon_vt_uncons_cfr
-( xs: strxcon_vt( x0 )
-, f1: (x0, strx_vt(x0)) -<cfr> r0): r0
-//
-(* ****** ****** *)
-
 fun
 <a:vt>
 strm_vt_nil
@@ -109,16 +73,16 @@ fun
 strm_vt_cons
 ( x0: (a)
 , xs: strm_vt(a)): strm_vt(a)
-
+//
 (* ****** ****** *)
-
+//
 fun
 <a:vt>
 strm_vt_sing(a): strm_vt(a)
 fun
 <a:vt>
 strmcon_vt_sing(a): strmcon_vt(a)
-
+//
 (* ****** ****** *)
 //
 fun
