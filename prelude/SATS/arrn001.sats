@@ -136,7 +136,18 @@ fun
 <x0:vt>
 a1rsz_forall1
 {n:i0}(A0: a1rsz(x0, n)): (bool)
-
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+a1rsz_foreach
+{n:i0}(A0: a1rsz(x0, n)): (void)
+fun
+<x0:vt>
+a1rsz_foreach1
+{n:i0}(A0: a1rsz(x0, n)): (void)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 

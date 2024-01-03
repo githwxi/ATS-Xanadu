@@ -63,6 +63,13 @@ else (if x >= 1 then r2 else r1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+fact3
+(x: sint): sint =
+strm_vt_mul0(tail(strmize(x+1)))
+//
+(* ****** ****** *)
 val fact1_10 = fact1(10)//end-of-val
 (* ****** ****** *)
 val fibo1_10 = fibo1(10)//end-of-val
@@ -70,6 +77,8 @@ val fibo1_10 = fibo1(10)//end-of-val
 val fact2_10 = fact2(10)//end-of-val
 (* ****** ****** *)
 val fibo2_10 = fibo2(10)//end-of-val
+(* ****** ****** *)
+val fact3_10 = fact3(10)//end-of-val
 (* ****** ****** *)
 (* ****** ****** *)
 

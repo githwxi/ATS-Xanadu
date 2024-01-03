@@ -94,48 +94,6 @@ end // end of [let]
 (* ****** ****** *)
 //
 #impltmp
-<>(*tmp*)
-strmcon_vt_nil_
-((*void*)) =
-strmcon_vt_nil(*void*)
-#impltmp
-<a>(*tmp*)
-strmcon_vt_cons_
-( x0, xs ) =
-strmcon_vt_cons(x0, xs)
-//
-#impltmp
-<a>(*tmp*)
-strxcon_vt_cons_
-( x0, xs ) =
-strxcon_vt_cons(x0, xs)
-//
-(* ****** ****** *)
-//
-#impltmp
-<x0><r0>
-strmcon_vt_uncons_cfr
-(xs, f0, f1) =
-(
-case+ xs of
-| ~
-strmcon_vt_nil() => f0((*void*))
-| ~
-strmcon_vt_cons(x0, xs) => f1(x0, xs)
-)
-#impltmp
-<x0><r0>
-strxcon_vt_uncons_cfr
-(xs, f1) =
-(
-case+ xs of
-| ~
-strxcon_vt_cons(x0, xs) => f1(x0, xs)
-)
-//
-(* ****** ****** *)
-//
-#impltmp
 <a>(*tmp*)
 strm_vt_nil() =
 $llazy(strmcon_vt_nil())
