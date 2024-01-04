@@ -480,6 +480,10 @@ irexp(loc0, IREstr(tok))
 ( d2v ) =>
 irexp(loc0, IREvar(d2v))
 //
+|D3Etop
+( sym ) =>
+irexp(loc0, IREtop(sym))
+//
 |D3Econ
 ( d2c ) =>
 irexp(loc0, IREcon(d2c))

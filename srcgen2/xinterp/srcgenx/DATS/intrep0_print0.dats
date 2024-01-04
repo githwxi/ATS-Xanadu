@@ -164,6 +164,10 @@ ire0.node() of
 (
  print("IREstr(", str, ")"))
 //
+|IREtop(sym) =>
+(
+ print("IREtop(", sym, ")"))
+//
 |IREcon(d2c) =>
 (
  print("IREcon(", d2c, ")"))

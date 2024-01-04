@@ -25,6 +25,56 @@ strm_vt_mul0(tail0(strmize(x+1)))
 val fact3_10 = fact3(10)//end-of-val
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#impltmp
+<xs><x0><y0>
+gseq_map_rllist
+  (   xs   ) =
+let
+//
+#vwtpdef
+r0 = list_vt(y0)
+//
+in//let
+//
+gseq_foldl
+<xs><x0><r0>
+(xs, list_vt_nil()) where
+{
+#impltmp
+foldl$fopr
+<x0><r0>
+( r0, x0 ) =
+list_vt_cons
+(map$fopr<x0><y0>(x0), r0)}//where
+//
+end // end-of(gseq_map_rllist/foldl(...)
+//
+(* ****** ****** *)
+//
+(*
+HX-2024-01-04:
+Thu Jan  4 15:16:21 EST 2024
+*)
+fun
+fact4
+(x: sint): sint =
+let
+#typedef x0 = sint
+#vwtpdef xs = strm_vt(x0)
+in//let
+glseq_mul0
+< xs >< x0 >
+(
+tail0
+(gseq_rstrmize<sint><sint>(x+1)))
+end//let
+//
+(* ****** ****** *)
+val fact4_10 = fact4(10)//end-of-val
+(* ****** ****** *)
+////
+(* ****** ****** *)
 val
 mystrn2 = "01"
 val test =
