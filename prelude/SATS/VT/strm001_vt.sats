@@ -47,12 +47,33 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 <a:vt>
+strq_vt_sing
+( x0: a ): strq_vt(a, 1)
+fun
+<a:vt>
+strq_vt_pair
+(x0:a,x1:a): strq_vt(a, 2)
+//
+(* ****** ****** *)
+fun
+<a:vt>
+strx_vt_tail0
+( strx_vt(a) ): strx_vt(a)
+fun
+<a:vt>
+strq_vt_tail0
+{n:pos}
+(strq_vt(a,n)): strq_vt(a,n-1)
+(* ****** ****** *)
+//
+fun
+<a:vt>
 strmcon_vt_sing
-  ( x0: (a) ) : strmcon_vt(a)
+  ( x0: a ) : strmcon_vt(a)
 fun
 <a:vt>
 strmcon_vt_pair
-(fst: a, snd: a): strmcon_vt(a)
+  (x0:a, x1:a) : strmcon_vt(a)
 //
 (* ****** ****** *)
 //
@@ -91,16 +112,31 @@ strxcon_vt_uncons_cfr
 (* ****** ****** *)
 //
 fun
+<a:t0>
+strq_vt_make_list
+{n:int}
+(xs: list(a,n)): strq(a,n)
+//
+fun
+<a:t0>
+strq_vt_make0_llist
+{n:int}
+(xs: list_vt(a,n)): strq(a,n)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 <a:vt>
 strx_vt_strmize0
-(xs: strx_vt(a)): strm_vt(a)
+(xs: strx_vt(a)): strm_vt( a )
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
 strq_vt_strmize0
-(xs: strq_vt(a)): strm_vt(a)
+(xs: strq_vt(a)): strm_vt( a )
 //
 fun
 <a:vt>
@@ -184,6 +220,15 @@ strx_vt_istrmize0
 //
 #symload
 strmize0 with strx_vt_strmize0 of 1000
+//
+(* ****** ****** *)
+//
+#symload
+listize0 with strq_vt_listize0 of 1000
+#symload
+strmize0 with strq_vt_strmize0 of 1000
+#symload
+rlistize0 with strq_vt_rlistize0 of 1000
 //
 (* ****** ****** *)
 //

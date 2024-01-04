@@ -760,7 +760,7 @@ glseq_add0(xs) =
 let
 #impltmp
 map0$fopr<x0><x0>(x0) = x0
-in
+in//let
 glseq_map0_add0<xs><x0><x0>(xs)
 end (*let*) // end-of-[ glseq_add0(xs) ]
 //
@@ -770,7 +770,7 @@ glseq_mul0(xs) =
 let
 #impltmp
 map0$fopr<x0><x0>(x0) = x0
-in
+in//let
 glseq_map0_mul0<xs><x0><x0>(xs)
 end (*let*) // end-of-[ glseq_mul0(xs) ]
 //

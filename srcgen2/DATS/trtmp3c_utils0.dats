@@ -80,10 +80,10 @@ then timp else
 ) where//end-(TIMPLall1)
 {
 //
-val NIMP = 10
 (*
-val NIMP = 100
+val NIMP = 10
 *)
+val NIMP = 99//FIXME?!
 //
 val nimp =
 (

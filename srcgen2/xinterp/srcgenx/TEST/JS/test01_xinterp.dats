@@ -84,6 +84,16 @@ val
 dpar =
 d3parsed_of_tread33(dpar)
 //
+val ( ) =
+println("dpar = ", dpar)
+//
+val ( ) =
+prerrln
+("FPERR33_D3PARSED(33):")
+val out = g_stderr((*0*))
+val ( ) =
+fperr33_d3parsed(out, dpar)
+//
 } where
 {
 val dpar = d3parsed_from_fpath

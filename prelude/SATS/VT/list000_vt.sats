@@ -82,16 +82,27 @@ list_vt_cons_
 //
 fun
 <a:vt>
-list_vt_sing(x: a): list_vt(a,1)
+list_vt_sing
+  (x0: a): list_vt(a, 1)
 fun
 <a:vt>
-list_vt_pair(a, a): list_vt(a,2)
+list_vt_pair
+  (x0: a, x1: a): list_vt(a,2)
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-list_vt_free(xs: ~list_vt(a)): void
+list_vt_free
+  (xs: ~list_vt(a)): ( void )
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+list_vt_tail0
+{n:pos}
+(list_vt(a, n)): list_vt(a, n-1)
 //
 (* ****** ****** *)
 //
@@ -134,18 +145,18 @@ fun
 <a:vt>
 list_vt_make_nval
 {n:nat}
-(n0: sint(n), x0: a): list_vt(a,n)
+(n0:sint(n), x0:a): list_vt(a,n)
 //
 (* ****** ****** *)
 //
 fun
 <a:t0>
 list_vt_make_strm
-(  xs : strm(a)  ) : list_vt(a)
+( xs : strm(a) ): list_vt( a )
 fun
 <a:vt>
 list_vt_make0_lstrm
-(  xs : strm_vt(a)  ) : list_vt(a)
+( xs : strm_vt(a) ): list_vt( a )
 //
 (* ****** ****** *)
 //
@@ -280,6 +291,19 @@ list_vt_rstrmize0
 //
 fun
 <x0:vt>
+list_vt_strqize0
+{n:int}
+(xs: ~list_vt(x0, n)): strq_vt(x0, n)
+fun
+<x0:vt>
+list_vt_rstrqize0
+{n:int}
+(xs: ~list_vt(x0, n)): strq_vt(x0, n)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
 <y0:vt>
 list_vt_map0
 {n:int}
@@ -329,12 +353,15 @@ list_vt_permutize0
 // symbol overloading for list
 //
 (* ****** ****** *)
-
+//
 #symload
 nil_vt with list_vt_nil
 #symload
 cons_vt with list_vt_cons
-
+//
+(* ****** ****** *)
+#symload
+tail0 with list_vt_tail0 of 1000
 (* ****** ****** *)
 //
 (*

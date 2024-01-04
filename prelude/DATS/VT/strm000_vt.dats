@@ -134,15 +134,20 @@ strq_vt_free(xs) = ( $free(xs) )
 <a>(*tmp*)
 strx_vt_free(xs) = ( $free(xs) )
 //
+(* ****** ****** *)
+//
+(*
+HX-2024-01-03:
+Wed Jan  3 07:47:36 EST 2024
+*)
 #impltmp
-{a:vt}
-g_free<strm_vt(a)> = strm_vt_free<a>
-#impltmp
-{a:vt}
-g_free<strq_vt(a)> = strq_vt_free<a>
-#impltmp
-{a:vt}
-g_free<strx_vt(a)> = strx_vt_free<a>
+<a>(*tmp*)
+strm_vt_tail0(xs) =
+case- !xs of
+| ~
+strmcon_vt_cons(x0, xs) =>
+let
+val () = g_free<a>(x0) in xs end
 //
 (* ****** ****** *)
 //
@@ -1106,9 +1111,9 @@ let
 xs = strm_vt(x0)
 #impltmp
 map0$fopr<x0><x0>(x0) = x0
-in
+in//let
   glseq_map0_add0<xs><x0><x0>(xs)
-end (*let*)//end-of-(strm_vt_add0(xs)/map0)
+end(*let*)//end-of-(strm_vt_add0(xs)/map0)
 //
 #impltmp
 <x0:t0>
@@ -1119,9 +1124,9 @@ let
 xs = strm_vt(x0)
 #impltmp
 map0$fopr<x0><x0>(x0) = x0
-in
+in//let
   glseq_map0_mul0<xs><x0><x0>(xs)
-end (*let*)//end-of-(strm_vt_mul0(xs)/map0)
+end(*let*)//end-of-(strm_vt_mul0(xs)/map0)
 //
 (* ****** ****** *)
 
@@ -1923,6 +1928,23 @@ z2iforeach0$work<x0,y0>(i0,x0,y0)
 }(*where*)//end-of-[strm_vt_z2iforeach0(...)]
 
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2020-06-02: for g/gl-operations
+*)
+(* ****** ****** *)
+//
+#impltmp
+{a:vt}
+g_free<strm_vt(a)> = strm_vt_free<a>
+#impltmp
+{a:vt}
+g_free<strq_vt(a)> = strq_vt_free<a>
+#impltmp
+{a:vt}
+g_free<strx_vt(a)> = strx_vt_free<a>
+//
 (* ****** ****** *)
 //
 (*
