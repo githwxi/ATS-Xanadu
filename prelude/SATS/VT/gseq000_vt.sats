@@ -73,12 +73,12 @@ fun
 <xs:vt>
 <x0:vt>
 glseq_uncons_raw
-  (xs: &xs >> xs): x0
+  (xs: &xs >> xs): ( x0 )
 fun
 <xs:vt>
 <x0:vt>
 glseq_uncons_exn
-  (xs: &xs >> xs): x0
+  (xs: &xs >> xs): ( x0 )
 fun
 <xs:vt>
 <x0:vt>

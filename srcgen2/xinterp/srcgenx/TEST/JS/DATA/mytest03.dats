@@ -10,6 +10,21 @@
 "prelude/HATS/CATS/Xint/prelude_dats.hats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-01-03:
+More than 10 template layers!
+*)
+fun
+fact3
+(x: sint): sint =
+strm_vt_mul0(tail0(strmize(x+1)))
+//
+(* ****** ****** *)
+val fact3_10 = fact3(10)//end-of-val
+(* ****** ****** *)
+(* ****** ****** *)
 val
 mystrn2 = "01"
 val test =

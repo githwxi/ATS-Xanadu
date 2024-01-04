@@ -58,8 +58,19 @@ list_vt_cons(x0, xs) =>
 let
   val () = g_free<a>(x0) in loop(xs)
 end
-) (* end of [loop] *)
-} (*where*)// end of [list_vt_free(xs)]
+)(* end of [loop] *)
+}(*where*)//end-of-[list_vt_free(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+list_vt_tail0(xs) =
+case- !xs of
+| ~
+list_vt_cons(x0, xs) =>
+let val () = g_free<a>(x0) in xs end
+(* let *)//end-of-[list_vt_tail0(xs)]
 //
 (* ****** ****** *)
 

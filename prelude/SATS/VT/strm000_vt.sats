@@ -89,7 +89,7 @@ strm_vt_pair
   (fst: a, snd: a): strm_vt(a)
 //
 (* ****** ****** *)
-
+//
 fun
 <a:vt>
 strm_vt_free(strm_vt(a)): void
@@ -99,8 +99,16 @@ strx_vt_free(strx_vt(a)): void
 fun
 <a:vt>
 strq_vt_free(strq_vt(a)): void
-
+//
 (* ****** ****** *)
+//
+fun
+<a:vt>
+strm_vt_tail0
+  (xs: strm_vt(a)): strm_vt(a)
+//
+(* ****** ****** *)
+//
 (*
 Sun Jul  3 13:07:07 EDT 2022
 *)
@@ -508,9 +516,13 @@ nil_vt with strmcon_vt_nil
 cons_vt with strmcon_vt_cons
 //
 (* ****** ****** *)
+#symload
+tail0 with strm_vt_tail0 of 1000
+(* ****** ****** *)
 //
 (*
-#symload print with strm_vt_print of 1000
+#symload
+print0 with strm_vt_print0 of 1000
 *)
 //
 (* ****** ****** *)
@@ -535,14 +547,8 @@ gconcat0 with strm_vt_gconcat0 of 1000
 //
 #symload
 listize0 with strm_vt_listize0 of 1000
-//
-(* ****** ****** *)
-//
 #symload
 strmize0 with strm_vt_strmize0 of 1000
-//
-(* ****** ****** *)
-//
 #symload
 rlistize0 with strm_vt_rlistize0 of 1000
 //

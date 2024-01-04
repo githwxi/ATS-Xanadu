@@ -113,13 +113,17 @@ $UN.castlin01{strq_vt(a)}(xs)
 <a>(*tmp*)
 strq_vt_listize0(xs) =
 $UN.castlin01
-(strm_vt_listize0(strq_vt_strmize0(xs)))
+(strm_vt_listize0<a>(xs)) where
+{
+val xs = strq_vt_strmize0<a>(xs) }
 //
 #impltmp
 <a>(*tmp*)
 strq_vt_rlistize0(xs) =
 $UN.castlin01
-(strm_vt_rlistize0(strq_vt_strmize0(xs)))
+(strm_vt_rlistize0<a>(xs)) where
+{
+val xs = strq_vt_strmize0<a>(xs) }
 //
 (* ****** ****** *)
 (* ****** ****** *)
