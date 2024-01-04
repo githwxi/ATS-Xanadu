@@ -124,6 +124,12 @@ ire0.node() of
 (
  IRVstr(token2dstr(tok)))
 //
+(* ****** ****** *)
+//
+|IREtop _ => f0_top(env0, ire0)
+//
+(* ****** ****** *)
+//
 |IREvar _ => f0_var(env0, ire0)
 |IREcon _ => f0_con(env0, ire0)
 |IREcst _ => f0_cst(env0, ire0)
@@ -220,6 +226,19 @@ prerrln
 (* ****** ****** *)
 excptcon
 XINTERP_IREXP of irexp
+(* ****** ****** *)
+//
+fun
+f0_top
+( env0:
+! xintenv
+, ire0: irexp): irval =
+(
+IRVnil(*void*) ) where
+{
+val-IREtop(sym0) = ire0.node() }
+//(*let*)//end-of-[f0_top(env0,ire0)]
+//
 (* ****** ****** *)
 //
 fun

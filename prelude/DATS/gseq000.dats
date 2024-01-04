@@ -283,7 +283,7 @@ foldl$fopr<x0><r0>(r0, _) = succ(r0)
 <xs>
 <x0><r0>
 gseq_foldl
-(xs, r0) = r0 where
+ (xs, r0) = r0 where
 {
 //
 var r0: r0 = r0
@@ -292,19 +292,20 @@ val p0 = $addr(r0)
 //
 val () =
 (
-  gseq_foreach<xs><x0>(xs)
-) where
+gseq_foreach
+<xs><x0>(xs)) where
 {
 #impltmp
 foreach$work<x0>(x0) =
 let
-val r0 = $UN.p2tr_get<r0>(p0)
+val r0 =
+$UN.p2tr_get<r0>(p0)
 in//let
 //
 $UN.p2tr_set<r0>
-  (p0, foldl$fopr<x0><r0>(r0, x0))
+(p0, foldl$fopr<x0><r0>(r0, x0))
 //
-end // end of [foreach$work]
+end(*let*)//end of [foreach$work(...)]
 }
 //
 }(*where*)//end-of-[gseq_foldl/foreach]

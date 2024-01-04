@@ -366,7 +366,7 @@ val p1 = $addr( r1.1 )
 in
 $UN.p2tr_set<yy>
 (p0, $UN.castlin01(r1)); (p1)
-end // foldl$fopr
+end // foldl0$fopr
 //
 var r0: yy
 //
@@ -430,7 +430,7 @@ val p1 = $addr( r1.1 )
 in//let
 $UN.p2tr_set<yy>
 (p0, $UN.castlin01(r1)); (p1)
-end // foldl$fopr
+end // foldl1$fopr
 //
 var r0: yy
 //
