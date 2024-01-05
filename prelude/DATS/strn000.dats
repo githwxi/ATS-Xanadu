@@ -103,7 +103,7 @@ let
 fnx
 loop
 ( x1: strn
-, x2: strn): bool =
+, x2: strn): sint =
 if
 strn_nilq(x1)
 then
