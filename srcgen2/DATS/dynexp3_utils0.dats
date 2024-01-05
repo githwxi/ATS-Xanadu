@@ -74,6 +74,22 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload _ = "./xsymmap_topmap.dats"
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fn0
+s2typ_subst0
+( t2p0: s2typ
+, svts: s2vts): s2typ =
+(
+case+ svts of
+|list_nil() => ( t2p0 )
+|list_cons _ =>
+(
+s2typ_subst0(t2p0, svts))
+)(*case+*) // s2typ_subst0
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX-2023-11-19:
@@ -81,6 +97,7 @@ This one needs to be called on an
 embedded impltmp before it is pushed
 onto the search path for tmp resolution!
 *)
+//
 #implfun
 d3ecl_impsub
 (knd0, tsub, d3cl) =
@@ -94,8 +111,9 @@ d3cl.node() of
 //
 | _(*otherwise*) =>
 (
-  d3ecl_tmpsub(tsub, d3cl) )
-) where
+d3ecl_tmpsub(tsub, d3cl)
+)
+) where // end-of-[case+]
 {
 //
 fun
@@ -126,6 +144,7 @@ DIMPLone2
 let
 val loc1 =
 dimp.lctn((*0*))
+//
 val svts =
 (
   list_map(svts)) where
@@ -145,11 +164,17 @@ dimpl_make_node
 end//let
 | _(* otherwise *) => ( dimp )
 )
+//
+(*
+val (  ) =
+prerrln
+("f0_implmnt0: dimp = ", dimp)
+*)
+//
 in//let
 //
 (
-d3ecl_tmpsub(tsub, d3cl)
-) where
+d3ecl_tmpsub(tsub, d3cl)) where
 {
 //
 val
@@ -158,11 +183,10 @@ d3ecl_make_node
 (
 loc0,
 D3Cimplmnt0
-(
-tknd, stmp,
-sqas, tqas,
-dimp, tias, f3as, sres, dexp) )
-where
+( tknd, stmp
+, sqas, tqas
+, dimp, tias, f3as, sres, dexp)
+) where // d3ecl_make_node
 {
 (*
 HX: re-stamping if knd0 > 0
@@ -178,6 +202,19 @@ stmp else the_d3imp_stamp_new())
 }(*where*)
 //
 end(*let*)//end-of-[f0_implmnt0(...)]
+//
+(* ****** ****** *)
+//
+(*
+val () =
+prerrln("d3ecl_impsub: knd0 = ", knd0)
+val () =
+prerrln("d3ecl_impsub: tsub = ", tsub)
+val () =
+prerrln("d3ecl_impsub: d3cl = ", d3cl)
+*)
+//
+(* ****** ****** *)
 //
 }(*where*)//end-of-[d3ecl_impsub(...)]
 //
@@ -418,9 +455,11 @@ val-T_IMPLMNT(knd0) = tknd.node()
 ) where
 {
 //
+(*
   val () =
   prerrln
   ("d3ecl_impltmprq: d3cl = ", d3cl)
+*)
 //
 }(*where*)//end-of-[d3ecl_impltmprq(d3cl)]
 //
@@ -606,7 +645,19 @@ and
 f2_tip1_tjp1
 ( tip1: s2typ
 , tjp1: s2typ): bool =
-(
+let
+//
+(* ****** ****** *)
+//
+val tip1 =
+s2typ_hnfiz0(tip1)
+val tjp1 =
+s2typ_hnfiz0(tjp1)
+//
+(* ****** ****** *)
+in//let
+(* ****** ****** *)
+//
 case+
 tip1.node() of
 //
@@ -636,8 +687,10 @@ tip1.node() of
 //
 |_(* otherwise *) => (   false   )
 //
-) where
+end where//end-of-let(f2_tip1_tjp1)
 {
+//
+(* ****** ****** *)
 //
 fun
 g2_svar_tjp1
@@ -769,7 +822,18 @@ end(*let*)//end of [g2_trcd_tjp1(...)]
 //
 (* ****** ****** *)
 //
-}(*where*)//end-of-[f2_tip1_tjp1(...)]
+(*
+val () =
+prerrln
+("f0_targequ:f2_tip1_tjp1: tip1 = ", tip1)
+val () =
+prerrln
+("f0_targequ:f2_tip1_tjp1: tjp1 = ", tjp1)
+*)
+//
+(* ****** ****** *)
+//
+}(*where*)//end-of-[f2_tip1_tjp1(tip1,tjp1)]
 //
 (* ****** ****** *)
 //
@@ -796,7 +860,7 @@ in//let
  f2_tips_tjps
  (tips, tjps) else false) end//let
 )
-)(*case+*)//end-of-[f2_tips_tjps(...)]
+)(*case+*)//end-of-[f2_tips_tjps(tips,tjps)]
 //
 (* ****** ****** *)
 //
@@ -833,17 +897,18 @@ then
 f2_ltis_ltjs
 (ltis, ltjs) else false end//let
 )
-)(*case+*)
-//end-of-[f2_ltis_ltjs( tips, tjps )]
+)(*case+*)//end-of-[f2_ltis_ltjs(ltis,ltjs)]
 //
 (* ****** ****** *)
 //
+(*
 val () =
 (
   prerrln("f0_targequ: svts = ", svts) )
 val () =
 (
   prerrln("f0_targequ: t2js = ", t2js) )
+*)
 //
 (* ****** ****** *)
 //
@@ -1065,7 +1130,17 @@ f2_tip1_tjp1
 : s2typ
 , tsub
 : &s2vts_vt >> _): bool =
-(
+let
+//
+val tip1 =
+s2typ_hnfiz0(tip1)
+val tjp1 =
+s2typ_hnfiz0(tjp1)
+//
+(* ****** ****** *)
+in//let
+(* ****** ****** *)
+//
 case+
 tip1.node() of
 //
@@ -1090,7 +1165,7 @@ tip1.node() of
 //
 |_(* otherwise *) => (   false   )
 //
-) where
+end where // end-of-[f2_tip1_tjp1]
 {
 //
 (* ****** ****** *)
@@ -1309,18 +1384,19 @@ end(*let*)//end of [g2_trcd_tjp1(...)]
 //
 (* ****** ****** *)
 //
-val tip1 = s2typ_hnfiz0(tip1)
-val tjp1 = s2typ_hnfiz0(tjp1)
-//
 (*
-val (  ) =
-prerrln("f2_tip1_tjp1: tip1 = ", tip1)
-val (  ) =
-prerrln("f2_tip1_tjp1: tjp1 = ", tjp1)
+val () =
+prerrln
+("f0_targmat:f2_tip1_tjp1: tip1 = ", tip1)
+val () =
+prerrln
+("f0_targmat:f2_tip1_tjp1: tjp1 = ", tjp1)
 *)
 //
+(* ****** ****** *)
+//
 }(*where*)
-//end-of-[f2_tip1_tjp1(tip1,tjp1,tsub)]
+//end-of-[f2_tip1_tjp1( tip1, tjp1, tsub )]
 //
 (* ****** ****** *)
 //
@@ -1435,8 +1511,8 @@ let
 val tjps = t2j1.t2ps()
 in//let
 f1_svt1_svts_tjps_t2js
-(svt1, svts, tjps, t2js, tsub)
-end//let//end-of-[list_cons(...)]
+(svt1, svts, tjps, t2js, tsub) end
+(*let*) // end-of-[list_cons(...)]
 )(*case+*)//end-of-[f1_svt1_svts_t2js]
 //
 and

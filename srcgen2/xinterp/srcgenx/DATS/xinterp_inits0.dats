@@ -53,6 +53,7 @@ XATSOPT "./../../.."
 "./../HATS/libxinterp.hats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #symload
 node with d2ecl_get_node
 #symload
@@ -63,6 +64,7 @@ lctn with d2ecl_get_lctn
 symbl_make_name
 with $SYM.symbl_make_name
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -564,6 +566,28 @@ end (*local*) // end-[local(gint_aop_sint_sint)]
 //
 local
 //
+(* ****** ****** *)
+//
+#staload UN =
+"prelude/SATS/unsafex.sats"
+//
+(* ****** ****** *)
+//
+fun
+xinterp_strn_vt2t
+  (x: irval): irval =
+let
+val-IRVptr(p) = x in//let
+IRVstr
+(
+strn_vt2t<>
+(
+$UN.castlin10{strn_vt}(p))
+)
+end (*let*) // end-of(xinterp_strn_vt2t)
+//
+(* ****** ****** *)
+//
 fun
 xinterp_strn_get_at
   (x: irval
@@ -599,8 +623,46 @@ IRVstr(strn_tail_raw<>(x))
 end (*let*) // end-of(xinterp_strn_get_at)
 //
 (* ****** ****** *)
+//
+fun
+xinterp_strtmp_vt_alloc
+  (x: irval): irval =
+let
+val-IRVint(x) = x in
+IRVptr
+(
+$UN.castlin10
+{p0tr}(strtmp_vt_alloc<>(x)))
+end (*let*) // end-of(xinterp_strtmp_vt_alloc)
+//
+(* ****** ****** *)
+//
+fun
+xinterp_strtmp_vt_set_at
+  (x: irval
+  ,i: irval
+  ,c: irval): irval =
+let
+val-IRVptr(x) = x
+val-IRVint(i) = i
+val-IRVchr(c) = c in
+let
+val x =
+$UN.castlin10{strtmp_vt}(x)
+in//let
+strtmp_vt_set_at<>(x, i, c); IRVnil() end
+end (*let*) // end-of(xinterp_strtmp_vt_set_at)
+//
+(* ****** ****** *)
 in//local
 (* ****** ****** *)
+//
+val () =
+the_ircst_insval
+(
+the_d2cst_find
+("XINTERP_strn_vt2t"),
+IRVfun(firfun1(xinterp_strn_vt2t)))//val
 //
 val () =
 the_ircst_insval
@@ -628,6 +690,22 @@ the_ircst_insval
 the_d2cst_find
 ("XINTERP_strn_tail_raw"),
 IRVfun(firfun1(xinterp_strn_tail_raw)))//val
+//
+(* ****** ****** *)
+//
+val () =
+the_ircst_insval
+(
+the_d2cst_find
+("XINTERP_strtmp_vt_alloc"),
+IRVfun(firfun1(xinterp_strtmp_vt_alloc)))//val
+//
+val () =
+the_ircst_insval
+(
+the_d2cst_find
+("XINTERP_strtmp_vt_set_at"),
+IRVfun(firfun3(xinterp_strtmp_vt_set_at)))//val
 //
 (* ****** ****** *)
 end (*local*) // end-of- [local(strn_operations)]

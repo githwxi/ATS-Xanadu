@@ -114,12 +114,11 @@ irval =
 |IRVnil of ()
 //
 |IRVint of sint
-|IRVptr of p0tr
 //
 |IRVbtf of (bool)
 |IRVchr of (char)
-|IRVflt of double
-|IRVstr of string
+|IRVflt of (dflt)
+|IRVstr of (strn)
 //
 (*
 |IRVcst of (d2cst)
@@ -127,9 +126,17 @@ irval =
 //
 |IRVcon of (d2con)
 //
+|IRVlft of (irlft)
+//
+(* ****** ****** *)
+//
+|IRVptr of (p0tr)
+//
+(* ****** ****** *)
+//
 |IRVfun of (irfun)
 //
-|IRVlft of (irlft)
+(* ****** ****** *)
 //
 (*
 HX-2023-12-23:

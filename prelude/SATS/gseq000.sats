@@ -1181,6 +1181,7 @@ fun
 ,y0:t0>
 gseq_z2listize
 (xs, ys): list_vt(@(x0, y0))
+//
 fun
 <xs:t0
 ,ys:t0>

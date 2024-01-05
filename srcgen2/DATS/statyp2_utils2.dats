@@ -96,7 +96,7 @@ s2typlst_hnfiz0
 #typedef y0 = s2typ
 //
 #impltmp map$fopr<x0><y0> = s2typ_hnfiz0
-}(*where*)//end of [s2typlst_subst0(t2ps,svts)]
+}(*where*)//end-of-[s2typlst_hnfiz0(t2ps,svts)]
 
 (* ****** ****** *)
 
@@ -113,13 +113,16 @@ val env0: e1nv = 0
 #impltmp
 s2typ_eval$s2cst
 <e1nv>(env0,s2c0) = s2c0.styp()
+//
+(*
 #impltmp
 s2typ_eval$s2var
 <e1nv>(env0,s2v0) = optn_vt_nil()
+*)
 //
 in//let
 s2typ_subst0_e1nv<e1nv>(env0, t2p0, svts)
-end (*let*)//end of [s2typ_subst0(t2p0,svts)]
+end (*let*)//end-of-[s2typ_subst0(t2p0,svts)]
 
 (* ****** ****** *)
 
@@ -135,7 +138,7 @@ s2typlst_subst0
 //
 #impltmp
 map$fopr<x0><y0>(x0) = s2typ_subst0(x0, svts)
-}(*where*)//end of [s2typlst_subst0(t2ps,svts)]
+}(*where*)//end-of-[s2typlst_subst0(t2ps,svts)]
 
 (* ****** ****** *)
 

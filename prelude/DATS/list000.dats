@@ -388,8 +388,7 @@ end(*let*)//end-of-[list_cons]
 list_length
   (xs) =
 (
-  loop(xs, 0)
-) where
+  loop(xs, 0) ) where
 {
 fnx
 loop

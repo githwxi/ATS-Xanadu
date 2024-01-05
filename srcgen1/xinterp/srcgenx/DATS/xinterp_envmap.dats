@@ -1991,6 +1991,12 @@ the_d2cstdef_insert
 // in prelude/SATS/string.sats
 //
 (* ****** ****** *)
+val () =
+the_d2cstdef_insert
+(
+d2cst
+("XINTERP_strn_vt2t"),IRVfun(firfun1(lam(x) => x)))
+(* ****** ****** *)
 //
 val () =
 the_d2cstdef_insert

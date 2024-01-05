@@ -7,7 +7,8 @@
 "prelude/HATS/prelude_dats.hats"
 //
 #include
-"prelude/HATS/CATS/Xint/prelude_dats.hats"
+"prelude\
+/HATS/CATS/Xint/prelude_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -19,37 +20,12 @@ More than 10 template layers!
 fun
 fact3
 (x: sint): sint =
-strm_vt_mul0(tail0(strmize(x+1)))
+strm_vt_mul0
+(strm_tail0(strmize(x+1)))
 //
 (* ****** ****** *)
 val fact3_10 = fact3(10)//end-of-val
 (* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-<xs><x0><y0>
-gseq_map_rllist
-  (   xs   ) =
-let
-//
-#vwtpdef
-r0 = list_vt(y0)
-//
-in//let
-//
-gseq_foldl
-<xs><x0><r0>
-(xs, list_vt_nil()) where
-{
-#impltmp
-foldl$fopr
-<x0><r0>
-( r0, x0 ) =
-list_vt_cons
-(map$fopr<x0><y0>(x0), r0)}//where
-//
-end // end-of(gseq_map_rllist/foldl(...)
-//
 (* ****** ****** *)
 //
 (*
@@ -67,14 +43,14 @@ glseq_mul0
 < xs >< x0 >
 (
 tail0
-(gseq_rstrmize<sint><sint>(x+1)))
+(gseq_strmize<sint><sint>(x+1)))
 end//let
 //
 (* ****** ****** *)
 val fact4_10 = fact4(10)//end-of-val
 (* ****** ****** *)
-////
 (* ****** ****** *)
+//
 val
 mystrn2 = "01"
 val test =
@@ -85,6 +61,7 @@ gseq_forall
 #typedef xs = strn
 #impltmp
 forall$test<x0>(x0) = (x0 >= '0') }
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -101,13 +78,19 @@ gseq_forall
 forall$test<x0>(x0) = ( x0 >= 0 ) }
 //
 (* ****** ****** *)
+val
+mystrn26 =
+"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+(* ****** ****** *)
+val
+mystrn26 = reverse(mystrn26)
 (* ****** ****** *)
 //
 val
 mylist26 =
 gseq_foldr
 <strn><c><r>
-( "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+( mystrn26
 , list_nil()) where
 {
 #typedef c = char
@@ -116,6 +99,7 @@ gseq_foldr
 foldr$fopr
 <c><r>(c, r) = list_cons(c, r) }
 //
+val mylist26 = reverse(mylist26)
 val length26 = list_length(mylist26)
 //
 (* ****** ****** *)

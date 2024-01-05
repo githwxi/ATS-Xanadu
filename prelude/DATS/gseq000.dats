@@ -180,9 +180,13 @@ gseq_uncons_exn
 (
 if
 gseq_nilq<xs><x0>(xs)
-then $raise SubscriptExn()
-else gseq_uncons_raw<xs><x0>(xs)
+then
+(
+  $raise SubscriptExn())
+else
+gseq_uncons_raw<xs><x0>(xs)
 )
+//
 #impltmp
 <xs><x0>
 gseq_uncons_opt
@@ -199,7 +203,7 @@ endif (* end of [if] *)
 )
 //
 (* ****** ****** *)
-
+//
 #impltmp
 <xs><x0>
 gseq_cmp
@@ -212,7 +216,7 @@ gseq_z2forcmp
 #impltmp
 z2forcmp$fcmp<x0,x0> = g_cmp<x0>
 }(*where*)//end-of-[gseq_cmp/z2forcmp]
-
+//
 (* ****** ****** *)
 
 #impltmp
@@ -250,6 +254,7 @@ gseq_print$end<xs><x0>((*void*))
 end(*let*)//end-of(gseq_print(xs))
 
 (* ****** ****** *)
+//
 #impltmp
 <xs><x0>
 gseq_print$beg() = strn_print("(")
@@ -259,6 +264,7 @@ gseq_print$end() = strn_print(")")
 #impltmp
 <xs><x0>
 gseq_print$sep() = strn_print(";")
+//
 (* ****** ****** *)
 
 #impltmp
@@ -1531,13 +1537,16 @@ val p0 = $addr(r0)
 //
 val () =
 (
-  gseq_rforeach<xs><x0>(xs)
-) where
+gseq_rforeach
+< xs><x0 >(xs)) where
 {
 #impltmp
 rforeach$work<x0>(x0) =
 let
-val r0 = $UN.p2tr_get<r0>(p0)
+//
+val r0 =
+  $UN.p2tr_get<r0>(p0)
+//
 in//let
 //
 $UN.p2tr_set<r0>
@@ -1568,7 +1577,8 @@ endlet // end-of-(let)
 // end of [gseq_rexists(xs)/rforall]
 //
 (* ****** ****** *)
-
+//
+(*
 #impltmp
 <xs><x0>
 gseq_rforall(xs) =
@@ -1581,12 +1591,31 @@ in//let
 ) where
 {
 #impltmp
-forall0$test<x0>
-(  x0  ) = rforall$test<x0>(x0)
+forall0$test
+< x0 >( x0 ) = rforall$test<x0>(x0)
 }
 endlet//end-of-(let)
 // [gseq_rforall(xs)/list_vt_forall]
-
+*)
+//
+#impltmp
+<xs><x0>
+gseq_rforall(xs) =
+let
+val xs =
+gseq_rstrmize<xs><x0>(xs)
+in//let
+(
+  strm_vt_forall0<x0>(xs)
+) where
+{
+#impltmp
+forall0$test
+< x0 >( x0 ) = rforall$test<x0>(x0)
+}
+endlet//end-of-(let)
+// [gseq_rforall(xs)/list_vt_forall]
+//
 (* ****** ****** *)
 
 #impltmp
@@ -2414,7 +2443,7 @@ gseq_strmize<xs><x0>(xs)
 val ys =
 gseq_strmize<ys><y0>(ys)
 in//let
-strm_vt_z2strmize0<x0,y0>(xs, ys)
+  strm_vt_z2strmize0<x0,y0>(xs, ys)
 endlet(*let*)//end-of-[gseq_z2strmize(...)]
 //
 (* ****** ****** *)
