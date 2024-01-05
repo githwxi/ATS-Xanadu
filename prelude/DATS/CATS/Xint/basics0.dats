@@ -66,8 +66,6 @@ XINTERP_bool_print
 #impltmp
 bool_print<> = XINTERP_bool_print
 //
-(* ****** ****** *)
-//
 #extern
 fun
 XINTERP_bool_fprint
@@ -601,10 +599,18 @@ In Xint,
 [string]
 and
 [string_vt]
-are of the same representation!
-*)
+may or may not
+be of the same representation!!!
 #impltmp
 strn_vt2t<>(cs) = $UN.castlin01(cs)
+*)
+#extern
+fun
+XINTERP_strn_vt2t
+( cs
+: strn_vt): strn = $extnam()
+#impltmp
+strn_vt2t<> = XINTERP_strn_vt2t
 //
 (* ****** ****** *)
 //

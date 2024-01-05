@@ -225,7 +225,7 @@ val-T2Pvar(s2v1) = t2p0.node()
 val opt1 =
 s2typ_eval$s2var<e1nv>(e1nv, s2v1)
 //
-} (*where*) // end of [f0_cst(e1nv,...)]
+} (*where*) // end of [f0_var(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -745,7 +745,8 @@ t2p0.node() of
 |T2Pbas _ => t2p0
 *)
 //
-|T2Pcst _ => t2p0
+|T2Pcst _ =>
+f0_cst(e1nv, t2p0, svts, flag)
 //
 |T2Pvar _ =>
 f0_var(e1nv, t2p0, svts, flag)
@@ -802,6 +803,41 @@ f0_trcd(e1nv, t2p0, svts, flag)
 (* ****** ****** *)
 //
 fun
+f0_cst
+( e1nv: !e1nv
+, t2p0: s2typ
+, svts: s2vts
+, flag: &sint >> _): s2typ =
+let
+//
+val-
+T2Pcst(s2c1) = t2p0.node()
+//
+val
+opt1 =
+s2typ_eval$s2cst(e1nv, s2c1)
+//
+in//let
+//
+case+ opt1 of
+| ~
+optn_vt_nil() => t2p0
+| ~
+optn_vt_cons(t2p1) =>
+let
+val fval = flag
+val t2p1 =
+s2typ_substx
+(e1nv, t2p1, svts, flag)
+in//let
+if
+flag <= fval then t2p0 else t2p1 end
+//
+end (*let*) // end of [f0_cst(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
 f0_var
 ( e1nv: !e1nv
 , t2p0: s2typ
@@ -813,14 +849,17 @@ val-
 T2Pvar(s2v1) = t2p0.node()
 //
 val
-opt1 = s2vts_search_opt(svts, s2v1)
+opt1 =
+s2vts_search_opt(svts, s2v1)
 //
 in//let
 case+ opt1 of
 | ~
 optn_vt_nil() => t2p0
 | ~
-optn_vt_cons(t2p1) => (flag := flag+1; t2p1)
+optn_vt_cons(t2p1) =>
+let
+val () = flag := flag+1 in t2p1 endlet
 end (*let*) // end of [f0_var(e1nv,...)]
 //
 (* ****** ****** *)

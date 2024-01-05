@@ -60,6 +60,8 @@ stropt_lemma
 (*
 HX-2020-09-27:
 //
+Please see [strn000_vt.sats]
+//
 [string]
 and
 [string_vt]
@@ -69,6 +71,7 @@ same representation!
 For instance, a string is a
 JS_string in JS but a string_vt
 is a JS_array (of chars) in JS!
+//
 *)
 //
 (*

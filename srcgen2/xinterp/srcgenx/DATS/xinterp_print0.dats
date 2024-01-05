@@ -77,11 +77,6 @@ print("IRVnil(", ")")
 |IRVint(int) =>
 print("IRVint(", int, ")")
 //
-(*
-|IRVptr(ptr) =>
-print("IRVptr(", ptr, ")")
-*)
-//
 |IRVbtf(btf) =>
 print("IRVbtf(", btf, ")")
 |IRVchr(chr) =>
@@ -92,13 +87,10 @@ print("IRVflt(", flt, ")")
 |IRVstr(str) =>
 print("IRVstr(", str, ")")
 //
-|IRVcon(d2c) =>
-print("IRVcon(", d2c, ")")
-//
 (* ****** ****** *)
 //
-|IRVfun(fopr) =>
-print("IRVfun(", "...", ")")
+|IRVcon(d2c) =>
+print("IRVcon(", d2c, ")")
 //
 (* ****** ****** *)
 //
@@ -111,6 +103,16 @@ print("IRVlft(", lval, ")")
 ( d2c1 , irvs ) =>
 print
 ("IRVcapp(", d2c1, ";", irvs, ")")
+//
+(* ****** ****** *)
+//
+|IRVptr(ptr) =>
+print("IRVptr(", "...", ")")
+//
+(* ****** ****** *)
+//
+|IRVfun(fopr) =>
+print("IRVfun(", "...", ")")
 //
 (* ****** ****** *)
 //

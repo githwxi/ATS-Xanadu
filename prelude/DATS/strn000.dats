@@ -89,10 +89,52 @@ optn_vt_cons(strn_tail_raw(cs))
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 <>(*tmp*)
 strn_cmp =
 gseq_cmp<strn><cgtz>
+*)
+#impltmp
+<>(*tmp*)
+strn_cmp(x1, x2) =
+let
+//
+fnx
+loop
+( x1: strn
+, x2: strn): bool =
+if
+strn_nilq(x1)
+then
+(
+if
+strn_nilq(x2)
+then (0) else (-1)
+)
+else
+(
+if
+strn_nilq(x2)
+then (1) else let
+val c1 =
+strn_head_raw(x1)
+and c2 =
+strn_head_raw(x2)
+val
+sgn = char_cmp(c1, c2)
+in//let
+if
+(sgn != 0)
+then sgn else
+loop
+( strn_tail_raw(x1)
+, strn_tail_raw(x2)) end
+)
+//
+in
+  loop(x1, x2) // 0/1/-1
+end(*let*)//end[strn_cmp(...)]
 //
 (* ****** ****** *)
 //
@@ -211,7 +253,7 @@ in
   strn_tabulate<n0>(n0)
 end (*let*)//tabulate$fopr
 //
-end // end of [strn_reverse]
+end//end of [strn_reverse(cs)]
 
 (* ****** ****** *)
 
@@ -242,7 +284,7 @@ in
   strn_vt_tabulate<n0>(n0)
 end (*let*)//strn_reverse_vt
 //
-end // end-of-[strn_reverse_vt]
+end//end-of-[strn_reverse_vt(cs)]
 
 (* ****** ****** *)
 //
@@ -264,7 +306,7 @@ then true else
 let
 val x0 =
 strn_head_raw(xs)
-in
+in//let
 if
 forall$test<x0>(x0)
 then
@@ -300,7 +342,7 @@ then true else
 let
   val i1 = i0 - 1
   val ci = cs[i1]
-in
+in//let
 if
 rforall$test<cgtz>(ci)
 then loop(cs, i1) else false
