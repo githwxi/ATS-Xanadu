@@ -78,6 +78,7 @@ let val () = g_free<a>(x0) in xs end
 <a>(*tmp*)
 list_vt_copy(xs) =
 let
+//
 fnx
 loop
 {n:nat}.<n>.
@@ -87,6 +88,7 @@ loop
 : &(?list_vt(a)>>list_vt(a, n))
 ) : void =
 (
+//
 case+ xs of
 | // !
 list_vt_nil() =>
@@ -94,14 +96,15 @@ list_vt_nil() =>
 | // !
 list_vt_cons(x0, xs) =>
 let
-  val x0 = g_copy<a>(x0)
-  val () =
-  (r0 := list_vt_cons(x0, _))
-in
-  loop(xs, r0.1); $fold(r0)
-end
+val x0 = g_copy<a>(x0)
+val () =
+(r0 := list_vt_cons(x0, _))
+in//let
+  loop(xs, r0.1); $fold(r0) endlet
+//
 )
-in
+//
+in//let
 let
 var r0: list_vt(a) in loop(xs, r0); r0
 end
