@@ -157,16 +157,15 @@ IRVcapp of
 (fiarg, irexp, irenv)
 |IRVfix0 of
 (d2var,fiarg,irexp,irenv)
+//
 (*
-(*
-HX-2023-12-25:
-This one seems not needed!
+HX-2024-01-05:
+For mutually recursive funs
 *)
 |
 IRVfixs of
 (d2var(*fun*)
-,fiarglst,irexp,irexplst,irenv)
-*)
+,fiarg,irexp,irvalist,irenv)
 //
 |IRVl0azy of
 (irexp(*thunk*), irenv)
@@ -302,6 +301,13 @@ xintenv_d2vins_any
 ( env0:
 ! xintenv
 , d2v0: d2var, irv1: irval): void
+//
+(* ****** ****** *)
+//
+fun
+xintenv_fixins_all
+( env0:
+! xintenv, irvalist(*fixs*)): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

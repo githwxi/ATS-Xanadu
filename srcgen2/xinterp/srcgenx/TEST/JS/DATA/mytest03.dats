@@ -21,7 +21,7 @@ fun
 fact3
 (x: sint): sint =
 strm_vt_mul0
-(strm_tail0(strmize(x+1)))
+(tail0(strmize(x+1)))
 //
 (* ****** ****** *)
 val fact3_10 = fact3(10)//end-of-val
@@ -102,6 +102,12 @@ foldr$fopr
 val mylist26 = reverse(mylist26)
 val length26 = list_length(mylist26)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+
+val perms =
+gseq_permutize_lstrm<strn><char>("12345")
+
 (* ****** ****** *)
 (* ****** ****** *)
 

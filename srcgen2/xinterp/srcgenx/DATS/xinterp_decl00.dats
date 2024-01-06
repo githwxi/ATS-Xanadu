@@ -352,7 +352,42 @@ map$fopr_e1nv
 (* ****** ****** *)
 //
 fun
+f1_irfv1_match
+( env0:
+! xintenv
+, irfs
+: irfundclist
+, irvs: irvalist): void =
+let
+//
+val-
+list_cons(irf1, _) = irfs
+val-
+list_cons(irv1, _) = irvs
+//
+val dpid = irf1.dpid((*0*))
+//
+in//let
+  irvar_match(env0, dpid, irv1)
+end//let//end-of-[f1_irfv1_match]
+//
+(* ****** ****** *)
+//
+fun
 f1_irfvs_match
+( env0:
+! xintenv
+, irfs
+: irfundclist
+, irvs: irvalist): void =
+(
+loop(env0, irfs, irvs)) where
+{
+//
+val defs = irvs
+//
+fun
+loop
 ( env0:
 ! xintenv
 , irfs
@@ -372,22 +407,48 @@ list_cons
 (irv1, irvs) = irvs
 val dpid = irf1.dpid((*0*))
 in//let
-  irvar_match(env0, dpid, irv1)
-; f1_irfvs_match(env0, irfs, irvs)
+(
+loop(env0, irfs, irvs)) where
+{
+//
+val irv1 =
+(
+case+ irv1 of
+|
+IRVfix0
+(dpid,farg,body,fenv) =>
+IRVfixs
+(dpid,farg,body,defs,fenv)
+| _(*non-IRVfix0*) => irv1)
+//
+val (  ) =
+  irvar_match(env0, dpid, irv1) }
 end//let//end-of-[list_cons(irf1, irfs)]
 )
+//
+}(*where*)//end-of-[f1_irfvs_match(...)]
 //
 in//let
 //
 case+ tqas of
 //
-|list_nil() =>
+|
+list_nil() =>
 let
 val irvs =
 (
   f1_irfundclist(env0, irfs))
 in//let
-  f1_irfvs_match(env0,irfs,irvs)
+//
+if
+list_singq(irfs)
+then
+(
+  f1_irfv1_match(env0,irfs,irvs))
+else
+(
+  f1_irfvs_match(env0,irfs,irvs))
+//
 end(*let*)//end-of-[list_nil(...)]
 //
 |list_cons(tqa1, tqas) => ((*template*))
