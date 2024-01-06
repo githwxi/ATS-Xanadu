@@ -111,14 +111,18 @@ end(*let*)//end-of-[g_x3forint(n1,n2,n3)]
 (* ****** ****** *)
 #impltmp
 {x0:t0}
+{r0:t0}
+range1_foldl
+< x0 >< r0 > = gseq_foldl<range1(x0)><x0><r0>
+(* ****** ****** *)
+//
+#impltmp
+{x0:t0}
 range1_forall<x0> = gseq_forall<range1(x0)><x0>
 #impltmp
 {x0:t0}
 range1_foreach<x0> = gseq_foreach<range1(x0)><x0>
-#impltmp
-{x0:t0}
-{r0:t0}
-range1_foldl<x0><r0> = gseq_foldl<range1(x0)><x0><r0>
+//
 (* ****** ****** *)
 #impltmp
 {x0:t0}
@@ -198,11 +202,18 @@ end(* let *)
 end(* let *) // end of [ range1_strmize( xs ) ]
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
+// For gseq-operations
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 {x0:t0}
 gseq_strmize<range1(x0)><x0> = range1_strmize<x0>
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gfor000.dats] *)
