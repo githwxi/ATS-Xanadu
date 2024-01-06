@@ -241,7 +241,7 @@ irstk_nil() =>
 optn_vt_nil((*void*))
 | !
 irstk_lam0(stk1) =>
-irstk_d2crch_opt(stk1, d2c0)
+optn_vt_nil((*void*))
 | !
 irstk_let0(stk1) =>
 irstk_d2crch_opt(stk1, d2c0)
@@ -278,7 +278,7 @@ irstk_nil() =>
 optn_vt_nil((*void*))
 | !
 irstk_lam0(stk1) =>
-irstk_d2vrch_opt(stk1, d2v0)
+optn_vt_nil((*void*))
 | !
 irstk_let0(stk1) =>
 irstk_d2vrch_opt(stk1, d2v0)

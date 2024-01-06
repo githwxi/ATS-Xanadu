@@ -435,6 +435,8 @@ case+ irf0 of
 |IRVlam0 _ => f1_lam0(irf0, irvs)
 |IRVfix0 _ => f1_fix0(irf0, irvs)
 //
+|IRVfixs _ => f1_fixs(irf0, irvs)
+//
 |_(*otherwise*) =>
 (
 $raise XINTERP_IREXP(ire0)) where
@@ -534,8 +536,46 @@ xintenv_make_dapp(env0, fenv)
 //
 val () =
 irvar_match(env1, dpid, irf0)
+//
 val () =
 fiarg_match(env1, farg, irvs)
+//
+in//let
+//
+let
+val
+dres =
+xinterp_irexp
+( env1, body )
+val () =
+xintenv_free_dapp(env1) in dres end
+//
+end(*let*)//end-of-[f1_fix0(irf0,irvs)]
+//
+(* ****** ****** *)
+//
+fun
+f1_fixs
+( irf0: irval
+, irvs: irvalist): irval =
+let
+//
+val-
+IRVfixs
+( dpid
+, farg, body
+, defs, fenv) = irf0
+//
+val
+env1 =
+xintenv_make_dapp(env0, fenv)
+//
+val () =
+xintenv_fixins_all(env1, defs)
+//
+val () =
+(
+  fiarg_match(env1, farg, irvs))
 //
 in//let
 //

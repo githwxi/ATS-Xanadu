@@ -135,13 +135,12 @@ print
 print
 ("IRVfix0("
 , fid0, ";", farg, ";", "...", ")")
-(*
 |IRVfixs
-(fid0, farg, body, ires, fenv) =>
+(fid0, farg, body, irvs, fenv) =>
 print
 ("IRVfixs("
-, fid0, ";", farg, ";", "...", ")")
-*)
+, fid0, ";"
+, farg, ";", irvs, ";", "...", ")")
 //
 (* ****** ****** *)
 //

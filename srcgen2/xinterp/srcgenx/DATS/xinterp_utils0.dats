@@ -597,5 +597,51 @@ end(*local*) // end-of-local(irpatlst_match_...)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#implfun
+xintenv_fixins_all
+  (env0, defs) =
+(
+loop(env0, defs)) where
+{
+fun
+loop
+( env0:
+! xintenv
+, irvs: irvalist): void =
+(
+case+ irvs of
+|
+list_nil
+( (*0*) ) => ( (*void*) )
+|
+list_cons
+(irv1, irvs) =>
+(
+case+ irv1 of
+|
+IRVfix0
+( dpid, farg
+, body, fenv) =>
+let
+val
+irv1 =
+IRVfixs
+(dpid,farg,body,defs,fenv)
+in//let
+//
+loop(env0, irvs) where
+{
+val () =
+irvar_match(env0, dpid, irv1) }
+//
+end(*let*)//end-of-[ IRVfix0(...) ]
+| _(*otherwise*) => loop(env0, irvs)
+)
+)
+}(*where*)//end of [xintenv_fixins_all(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_xintrep_utils0.dats] *)
