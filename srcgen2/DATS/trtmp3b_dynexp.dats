@@ -113,6 +113,9 @@ d3e0.node() of
 |D3Edap0 _ => f0_dap0(env0, d3e0)
 |D3Edapp _ => f0_dapp(env0, d3e0)
 //
+|D3Epcon _ => f0_pcon(env0, d3e0)
+|D3Eproj _ => f0_proj(env0, d3e0)
+//
 |D3Elet0 _ => f0_let0(env0, d3e0)
 //
 |D3Eift0 _ => f0_ift0(env0, d3e0)
@@ -349,6 +352,56 @@ in//let
 d3exp_make_styp_node
 (loc0, t2p0, D3Edapp(d3f0, npf1, d3es))
 end (*let*)//end-of-[ f0_dapp(env0,d3e0) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_pcon
+( env0:
+! tr3benv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+val-
+D3Epcon
+( tknd
+, lab1
+, d3e1 ) = d3e0.node((*0*))
+//
+val
+d3e1 = trtmp3b_d3exp(env0, d3e1)
+//
+in//let
+d3exp_make_styp_node
+(loc0, t2p0, D3Epcon(tknd, lab1, d3e1))
+end (*let*)//end-of-[ f0_pcon(env0,d3e0) ]
+//
+fun
+f0_proj
+( env0:
+! tr3benv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+val-
+D3Eproj
+( tknd
+, lab1
+, d3e1 ) = d3e0.node((*0*))
+//
+val
+d3e1 = trtmp3b_d3exp(env0, d3e1)
+//
+in//let
+d3exp_make_styp_node
+(loc0, t2p0, D3Eproj(tknd, lab1, d3e1))
+end (*let*)//end-of-[ f0_proj(env0,d3e0) ]
 //
 (* ****** ****** *)
 //
