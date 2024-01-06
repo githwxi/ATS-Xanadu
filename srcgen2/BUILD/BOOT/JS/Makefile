@@ -69,6 +69,7 @@ trtmp3b.sats \
 trtmp3c.sats \
 tread33.sats \
 fperr33.sats \
+dynexp4.sats \
 xglobal.sats \
 xatsopt.sats \
 
@@ -134,6 +135,7 @@ gmacro1.dats \
 gmacro1_print0.dats \
 trans01.dats \
 trans01_myenv0.dats \
+trans01_utils0.dats \
 trans01_staexp.dats \
 trans01_dynexp.dats \
 trans01_decl00.dats \
@@ -218,8 +220,18 @@ tread33_decl00.dats \
 fperr33.dats \
 fperr33_dynexp.dats \
 fperr33_decl00.dats \
+dynexp4.dats \
+dynexp4_print0.dats \
+trans34.dats \
+trans34_myenv0.dats \
+trans34_utils0.dats \
+trans34_dynexp.dats \
+trans34_decl00.dats \
 xatsopt_tmplib.dats \
 xatsopt_utils0.dats \
+
+
+######
 
 XATS2JS_XATSOPT_OBJSATS := \
 $(patsubst %.sats, ./../../JS/%_sats.js, $(SRCSATS))
@@ -229,8 +241,8 @@ $(patsubst %.dats, ./../../JS/%_dats.js, $(SRCDATS))
 ######
 #
 test:: \
-xatsopt_boot01
-xatsopt_boot01:: ; \
+boot01_xatsopt
+boot01_xatsopt:: ; \
 $(CAT) \
 $(XATS2JS_PRELUDE) > $@_dats.js && \
 $(CAT) \
@@ -244,8 +256,8 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 ######
 #
 test:: \
-xatsopt_boot02
-xatsopt_boot02:: ; \
+boot02_xatsopt
+boot02_xatsopt:: ; \
 $(CAT) \
 $(XATS2JS_PRELUDE) > $@_dats.js && \
 $(CAT) \
@@ -259,8 +271,8 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 ######
 #
 test:: \
-xatsopt_boot03
-xatsopt_boot03:: ; \
+boot03_xatsopt
+boot03_xatsopt:: ; \
 $(CAT) \
 $(XATS2JS_PRELUDE) > $@_dats.js && \
 $(CAT) \
@@ -274,8 +286,8 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 ######
 #
 test:: \
-xatsopt_boot04
-xatsopt_boot04:: ; \
+boot04_xatsopt
+boot04_xatsopt:: ; \
 $(CAT) \
 $(XATS2JS_PRELUDE) > $@_dats.js && \
 $(CAT) \
@@ -289,8 +301,8 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 ######
 #
 test:: \
-xatsopt_boot05
-xatsopt_boot05:: ; \
+boot05_xatsopt
+boot05_xatsopt:: ; \
 $(CAT) \
 $(XATS2JS_PRELUDE) > $@_dats.js && \
 $(CAT) \
@@ -304,8 +316,8 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 ######
 #
 test:: \
-xatsopt_boot06
-xatsopt_boot06:: ; \
+boot06_xatsopt
+boot06_xatsopt:: ; \
 $(CAT) \
 $(XATS2JS_PRELUDE) > $@_dats.js && \
 $(CAT) \
@@ -320,8 +332,8 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 ######
 #
 test:: \
-xatsopt_test01
-xatsopt_test01:: ; \
+test01_xatsopt
+test01_xatsopt:: ; \
 $(CAT) \
 $(XATS2JS_PRELUDE) > $@_dats.js && \
 $(CAT) \
@@ -335,8 +347,8 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 ######
 #
 test:: \
-xatsopt_test02
-xatsopt_test02:: ; \
+test02_xatsopt
+test02_xatsopt:: ; \
 $(CAT) \
 $(XATS2JS_PRELUDE) > $@_dats.js && \
 $(CAT) \
@@ -350,8 +362,8 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 ######
 #
 test:: \
-xatsopt_test03
-xatsopt_test03:: ; \
+test03_xatsopt
+test03_xatsopt:: ; \
 $(CAT) \
 $(XATS2JS_PRELUDE) > $@_dats.js && \
 $(CAT) \
@@ -365,8 +377,8 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 ######
 #
 test:: \
-xatsopt_test04
-xatsopt_test04:: ; \
+test04_xatsopt
+test04_xatsopt:: ; \
 $(CAT) \
 $(XATS2JS_PRELUDE) > $@_dats.js && \
 $(CAT) \
@@ -386,7 +398,7 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 clean:: ; rm -f *~
 ######
 cleanall:: clean
-cleanall:: ; rm -f ./xatsopt_boot??_dats.js
-cleanall:: ; rm -f ./xatsopt_test??_dats.js
+cleanall:: ; rm -f ./boot??_xatsopt_dats.js
+cleanall:: ; rm -f ./test??_xatsopt_dats.js
 ######
 ########################### end of [Makefile] ###########################

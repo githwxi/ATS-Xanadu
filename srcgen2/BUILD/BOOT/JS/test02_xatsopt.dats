@@ -28,6 +28,7 @@ bootstrapping ATS3/Xanadu!!!
 "./../../../SATS/trans3a.sats"
 #staload
 "./../../../SATS/trtmp3b.sats"
+(* ****** ****** *)
 #staload
 "./../../../SATS/tread33.sats"
 #staload
@@ -50,7 +51,7 @@ prerrln("the_tr12env_pvsload() = ", ret)
 (* ****** ****** *)
 //
 val
-mytest01_dats =
+mytest02_dats =
 (
 d3parsed_of_tread33(dpar)
 ) where
@@ -65,17 +66,17 @@ d3parsed_of_trtmp3b(dpar)
 {
 val
 dpar = d3parsed_from_fpath
-(1(*dyn*), "./DATA/mytest01.dats") }
+(1(*dyn*), "./DATA/mytest02.dats") }
 //
 val ((*void*)) =
 (
 println
-("parsed(3b) = ", mytest01_dats.parsed()))
+("parsed(3b) = ", mytest02_dats.parsed()))
 //
 val ((*void*)) =
-fperr33_d3parsed(g_stderr(), mytest01_dats)
+fperr33_d3parsed(g_stderr(), mytest02_dats)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [(* end of [ATS3/XATSOPT_BOOT_JS_xatsopt_test01.dats] *)
+(* end of [(* end of [ATS3/XATSOPT_BOOT_JS_test02_xatsopt.dats] *)

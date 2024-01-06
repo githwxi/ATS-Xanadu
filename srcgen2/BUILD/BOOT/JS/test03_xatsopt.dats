@@ -5,6 +5,7 @@ A long journey of
 bootstrapping ATS3/Xanadu!!!
 *)
 (* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
@@ -28,6 +29,8 @@ bootstrapping ATS3/Xanadu!!!
 "./../../../SATS/trans3a.sats"
 #staload
 "./../../../SATS/trtmp3b.sats"
+#staload
+"./../../../SATS/trtmp3c.sats"
 (* ****** ****** *)
 #staload
 "./../../../SATS/tread33.sats"
@@ -51,7 +54,7 @@ prerrln("the_tr12env_pvsload() = ", ret)
 (* ****** ****** *)
 //
 val
-mytest02_dats =
+mytest03_dats =
 (
 d3parsed_of_tread33(dpar)
 ) where
@@ -62,21 +65,24 @@ d3parsed_of_trans3a(dpar)
 val
 dpar =
 d3parsed_of_trtmp3b(dpar)
+val
+dpar =
+d3parsed_of_trtmp3c(dpar)
 } where
 {
 val
 dpar = d3parsed_from_fpath
-(1(*dyn*), "./DATA/mytest02.dats") }
+(1(*dyn*), "./DATA/mytest03.dats") }
 //
 val ((*void*)) =
 (
 println
-("parsed(3b) = ", mytest02_dats.parsed()))
+("parsed(3c) = ", mytest03_dats.parsed()))
 //
 val ((*void*)) =
-fperr33_d3parsed(g_stderr(), mytest02_dats)
+fperr33_d3parsed(g_stderr(), mytest03_dats)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [(* end of [ATS3/XATSOPT_BOOT_JS_xatsopt_test02.dats] *)
+(* end of [(* end of [ATS3/XATSOPT_BOOT_JS_test03_xatsopt.dats] *)
