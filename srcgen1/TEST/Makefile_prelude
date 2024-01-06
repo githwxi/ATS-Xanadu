@@ -80,6 +80,11 @@ all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/arrn001.sats
 
 all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/tupn000.sats
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/tupn001.sats
+
+all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/strn000.sats
 
 all_sats:: ; \
@@ -91,8 +96,11 @@ $(XATSOPT) -s $(PRELUDE)/SATS/strm000.sats
 
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/rand000.sats
+
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/tupl000.sats
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/utpl000.sats
 
 all_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/synoug0.sats
