@@ -33,6 +33,10 @@
 (* ****** ****** *)
 //
 #include "prelude/SATS/gbas000.sats"
+#include "prelude/SATS/gbas001.sats"
+//
+(* ****** ****** *)
+//
 #include "prelude/SATS/gnum000.sats"
 #include "prelude/SATS/gord000.sats"
 //
