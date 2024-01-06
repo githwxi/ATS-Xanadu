@@ -81,6 +81,27 @@ print("D4Eflt(",tok,")")
 |D4Estr(tok) =>
 print("D4Estr(",tok,")")
 //
+|
+D4Edapp
+(d4f0,npf1,d4es) =>
+( print("D4Edapp(")
+; print(d4f0,";",npf1,";",d4es,")"))
+//
+(* ****** ****** *)
+//
+|
+D4Elet0
+(dcls, d4e1) =>
+(
+print("D4Elet0(",dcls,";",d4e1,")"))
+//
+(* ****** ****** *)
+//
+|D4Eift0
+(d4e1,dthn,dels) =>
+( print("D4Eift0(")
+; print(d4e1,";",dthn,";",dels,")"))
+//
 |D4Enone0() => print( "D4Enone0(", ")" )
 |D4Enone1(d3e1) => print("D4Enone1(", d3e1, ")")
 |D4Enone2(d4e1) => print("D4Enone2(", d4e1, ")")
