@@ -49,7 +49,9 @@ val xs =
 $UN.castlin10{box}(xs)
 val () =
 ( r0.1 := auxmain(xs) )
-in $UN.castlin10{strmcon(a)}(r0) end
+in//let
+(
+$UN.castlin10{strmcon(a)}(r0))end
 //
 end // end of [let]
 )
@@ -85,7 +87,9 @@ val xs =
 $UN.castlin10{box}(xs)
 val () =
 ( r0.1 := auxmain(xs) )
-in $UN.castlin10{strxcon(a)}(r0) end
+in//let
+(
+$UN.castlin10{strxcon(a)}(r0))end
 //
 end // end of [let]
 )
@@ -96,7 +100,10 @@ end // end of [let]
 #impltmp
 <a>(*tmp*)
 strm_vt_nil() =
-$llazy(strmcon_vt_nil())
+(
+$llazy
+(strmcon_vt_nil()) )
+//
 #impltmp
 <a>(*tmp*)
 strm_vt_cons
@@ -104,41 +111,51 @@ strm_vt_cons
 (
 $llazy
 (
-  g_free(x0);
-  g_free(xs);
-  strmcon_vt_cons(x0, xs) ) )
+g_free(x0);
+g_free(xs);
+strmcon_vt_cons(x0, xs)) )
 //
 (* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
 strm_vt_sing(x0) =
-strm_vt_cons(x0, strm_vt_nil())
+(
+  strm_vt_cons<a>
+  (x0, strm_vt_nil<a>()) )
 //
 (* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
 strm_vt_pair(x0, y0) =
-strm_vt_cons(x0, strm_vt_sing(y0))
+(
+  strm_vt_cons<a>
+  (x0, strm_vt_sing<a>(y0)) )
 //  
 (* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
 strm_vt_eval(xs) = (   !xs   )
+#impltmp
+<a>(*tmp*)
+strx_vt_eval(xs) = (   !xs   )
+#impltmp
+<a>(*tmp*)
+strq_vt_eval(xs) = (   !xs   )
 //
 (* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
-strm_vt_free(xs) = ( $free(xs) )
+strm_vt_free(xs) = ($free(xs))
 #impltmp
 <a>(*tmp*)
-strq_vt_free(xs) = ( $free(xs) )
+strq_vt_free(xs) = ($free(xs))
 #impltmp
 <a>(*tmp*)
-strx_vt_free(xs) = ( $free(xs) )
+strx_vt_free(xs) = ($free(xs))
 //
 (* ****** ****** *)
 //
@@ -179,8 +196,8 @@ strmcon_vt_cons
 {
 val x1 =
 strm_vt_from$next<a>(x0) }
-) (*llazy*)//end-of-[auxmain(x0)]
-} (*where*)//end-of-[strm_vt_from]
+)(*llazy*)//end-of-[auxmain(x0)]
+}(*where*)//end-of-[strm_vt_from]
 //
 #impltmp
 <a>(*tmp*)
@@ -199,8 +216,8 @@ strxcon_vt_cons
 {
 val x1 =
 strx_vt_from$next<a>(x0) }
-) (*llazy*)//end-of-[auxmain(x0)]
-} (*where*)//end-of-[strx_vt_from]
+)(*llazy*)//end-of-[auxmain(x0)]
+}(*where*)//end-of-[strx_vt_from]
 //
 #impltmp
 {a:t0}(*tmp*)
