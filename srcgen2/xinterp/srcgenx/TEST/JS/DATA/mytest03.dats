@@ -104,12 +104,12 @@ val length26 = list_length(mylist26)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 val perms =
 strm_vt_listize0
 (gseq_permutize_lstrm<strn><char>("123"))
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [(* end of [ATS3/XATSOPT_BOOT_JS_DATA_mytest03.dats] *)
+(* end of [(* end of [ATS3/XINTERP_TEST_JS_DATA_mytest03.dats] *)
