@@ -30,7 +30,6 @@ MYTEST="."
 ######
 XSHARED="${XATSJSD}/xshared"
 XATS2JS="${XATSJSD}/bin/xats2js"
-PATSOPT="${PATSHOME}/bin/patsopt"
 ######
 XATS2JS_PRELUDE=\
 "$(XSHARED)/runtime/xats2js_prelude.js"

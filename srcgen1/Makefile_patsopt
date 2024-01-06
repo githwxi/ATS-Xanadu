@@ -1,6 +1,7 @@
 ######
 #
-# For building xatsopt
+# HX: For
+# building xatsopt via patsopt
 #
 ######
 
@@ -275,4 +276,4 @@ cleanall:: ; $(RMF) ./bin/xatsopt.sh
 cleanall:: ; $(RMF) ./lib/libxatsopt.a
 ######
 
-###### end of [Makefile] ######
+################## end of [Makefile_patsopt] ##################
