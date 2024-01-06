@@ -9,10 +9,12 @@ Sun Aug 13 12:32:58 EDT 2023
 ** for combined gseq-operations
 *)
 (* ****** ****** *)
+(*
 #staload
 "./../SATS/gbas001.sats"
 #staload
 "./../SATS/gseq001.sats"
+*)
 (* ****** ****** *)
 //
 #staload UN =
@@ -34,8 +36,8 @@ let
 #impltmp
 forall$test<x0> =
 concat_forall$test<x0>
-in
-  gseq_forall<xs><x0>(xs) endlet
+in//let
+  gseq_forall<xs><x0>(xs) end//let
 }
 //where//end-of-[gseq_concat_forall(...)]
 //
@@ -55,8 +57,8 @@ let
 #impltmp
 foreach$work<x0> =
 concat_foreach$work<x0>
-in
-  gseq_foreach<xs><x0>(xs) endlet
+in//let
+  gseq_foreach<xs><x0>(xs) end//let
 }
 //where//end-of-[gseq_concat_foreach(...)]
 //
