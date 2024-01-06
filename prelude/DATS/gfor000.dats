@@ -124,12 +124,17 @@ range1_forall<x0> = gseq_forall<range1(x0)><x0>
 range1_foreach<x0> = gseq_foreach<range1(x0)><x0>
 //
 (* ****** ****** *)
+//
 #impltmp
 {x0:t0}
 range1_listize<x0> = gseq_listize<range1(x0)><x0>
+//
+(*
 #impltmp
 {x0:t0}
 range1_strmize<x0> = gseq_strmize<range1(x0)><x0>
+*)
+//
 (* ****** ****** *)
 #impltmp
 {x0:t0}
@@ -172,7 +177,9 @@ strmcon_vt_cons
 (
 s1,
 auxmain1
-(fsucc(s1,d3),f2,d3)) else strmcon_vt_nil())
+(
+fsucc(s1,d3),f2,d3)
+) else strmcon_vt_nil((*void*)))
 //
 fun
 auxmain2
@@ -187,12 +194,14 @@ strmcon_vt_cons
 (
 s1,
 auxmain2
-(fpred(s1,d3),f2,d3)) else strmcon_vt_nil)
+(
+fpred(s1,d3),f2,d3)
+) else strmcon_vt_nil((*void*)))
 //
 in
 let
 val+
-RANGE1(s1, f2, d3) = xs in
+RANGE1(s1, f2, d3) = xs in//let
 (
 if
 (d3 >= 0)
