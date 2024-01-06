@@ -2,6 +2,7 @@
 #
 # HX-2023-11-29:
 # Wed Nov 29 15:10:22 EST 2023
+# The compiler is srcgen1/xats2js
 #
 ######
 CAT=cat
@@ -77,7 +78,6 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 clean:: ; rm -f *~
 ######
 cleanall:: clean
-cleanall:: ; rm -f ./xatsopt_boot??_dats.js
-cleanall:: ; rm -f ./xatsopt_test??_dats.js
+cleanall:: ; rm -f ./test??_xinterp_dats.js
 ######
 ########################### end of [Makefile] ###########################
