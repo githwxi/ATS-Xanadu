@@ -73,4 +73,4 @@ val fibo2_10 = fibo2(10)//end-of-val
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [(* end of [ATS3/XATSOPT_BOOT_JS_DATA_mytest01.dats] *)
+(* end of [(* end of [ATS3/XINTERP_TEST_JS_DATA_mytest01.dats] *)
