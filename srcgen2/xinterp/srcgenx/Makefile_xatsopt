@@ -1,7 +1,8 @@
 ########################################################################
 #
 # Xinterp-D3: Interpreting level-3 syntax
-# The compiler for Xinterp-D3 is srcgen1/xatsopt(type-checking)
+# The compiler for Xinterp-D3 is srcgen1/xatsopt
+# (HX-2024-01-06: xatsopt does type-checking only for now)
 #
 ########################################################################
 

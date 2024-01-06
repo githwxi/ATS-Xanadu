@@ -279,4 +279,4 @@ fperr33_d3parsed(g_stderr(), dynexp3_dats)
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [(* end of [ATS3/XATSOPT_BOOT_JS_xatsopt_boot06.dats] *)
+(* end of [(* end of [ATS3/XATSOPT_BOOT_JS_boot06_xatsopt.dats] *)
