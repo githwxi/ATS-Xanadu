@@ -201,6 +201,8 @@ in//let
 case+
 d3e0.node() of
 //
+(* ****** ****** *)
+//
 |D3Eint(tok) =>
 print("D3Eint(",tok,")")
 |D3Ebtf(sym) =>
@@ -211,6 +213,8 @@ print("D3Echr(",tok,")")
 print("D3Eflt(",tok,")")
 |D3Estr(tok) =>
 print("D3Estr(",tok,")")
+//
+(* ****** ****** *)
 //
 |D3Ei00(int) =>
 print("D3Ei00(",int,")")
@@ -223,21 +227,31 @@ print("D3Ef00(",flt,")")
 |D3Es00(str) =>
 print("D3Es00(",str,")")
 //
+(* ****** ****** *)
+//
 |D3Etop(sym) =>
 print("D3Etop(", sym, ")")
 //
+(* ****** ****** *)
+//
 |D3Evar(d2v) =>
 print("D3Evar(", d2v, ")")
+//
+(* ****** ****** *)
 //
 |D3Econ(d2c) =>
 print("D3Econ(", d2c, ")")
 |D3Ecst(d2c) =>
 print("D3Ecst(", d2c, ")")
 //
+(* ****** ****** *)
+//
 |
 D3Etimp
 (d2e1, timp) =>
 print("D3Etimp(",d2e1,";",timp,")")
+//
+(* ****** ****** *)
 //
 |
 D3Esapp
@@ -248,6 +262,8 @@ D3Esapq
 (d3e1, t2ps) =>
 print("D3Esapq(",d3e1,";",t2ps,")")
 //
+(* ****** ****** *)
+//
 |
 D3Etapp
 (d3e1, s2es) =>
@@ -257,6 +273,8 @@ D3Etapq
 (d3e1, tjas) =>
 print("D3Etapq(",d3e1,";",tjas,")")
 //
+(* ****** ****** *)
+//
 |
 D3Edap0(d3f0) =>
 print( "D3Edap0(", d3f0, ")" )
@@ -265,6 +283,8 @@ D3Edapp
 (d3f0,npf1,d3es) =>
 ( print("D3Edapp(")
 ; print(d3f0,";",npf1,";",d3es,")"))
+//
+(* ****** ****** *)
 //
 |
 D3Epcon
@@ -277,11 +297,15 @@ D3Eproj
 ( print("D3Eproj(")
 ; print(tknd,";",dlab,";",dtup,")"))
 //
+(* ****** ****** *)
+//
 |
 D3Elet0
 (dcls, d3e1) =>
 (
 print("D3Elet0(",dcls,";",d3e1,")"))
+//
+(* ****** ****** *)
 //
 |D3Eift0
 (d3e1,dthn,dels) =>
@@ -294,10 +318,14 @@ D3Ecas0
 ( print("D3Ecas0(");
   print(tknd,";",d3e1,";",d3cs,")"))
 //
+(* ****** ****** *)
+//
 |D3Eseqn
 (d3es, d3e1) =>
 (
 print("D3Eseqn(",d3es,";",d3e1,")"))
+//
+(* ****** ****** *)
 //
 |D3Etup0
 (npf1, d3es) =>
@@ -313,6 +341,8 @@ D3Ercd2
 (tknd,npf1,ldes) =>
 ( print("D3Ercd2(")
 ; print(tknd,";",npf1,";",ldes,")"))
+//
+(* ****** ****** *)
 //
 |
 D3Elam0
@@ -333,6 +363,8 @@ print
 ("D3Efix0(",tknd,";",fid0,";");
 print
 (f3as,";",sres,";",arrw,";",body,")"))
+//
+(* ****** ****** *)
 //
 |
 D3Etry0
