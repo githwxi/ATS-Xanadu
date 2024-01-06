@@ -16,7 +16,8 @@ Wed Dec 20 19:13:09 EST 2023
 #staload UN =
 "prelude/SATS/unsafex.sats"
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 local
 //
 datatype
@@ -30,8 +31,8 @@ A1RSZ of
 a1rsz_vt_i0_x0
 ( a:vt, n:i0 ) = a1rsz(a, n)
 //
+(* ****** ****** *)
 in(*local*)
-
 (* ****** ****** *)
 //
 #impltmp
@@ -47,16 +48,41 @@ a1rsz_length(AZ) =
 let
 val+A1RSZ(A0, n0) = AZ in n0 end
 //
-#implfun
+#impltmp
 <>(*tmp*)
 a1rsz_getref(AZ) =
 let
 val+A1RSZ(A0, n0) = AZ in A0 end
 //
 (* ****** ****** *)
-
-end (*local*) // end of [local(a1rsz)]
-
+//
+end(*local*)//end-of-[local(a1rsz)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+a1rsz_get_at
+  (AZ, i0) =
+let
+val A0 =
+a1rsz_getref<>(AZ)
+in//let
+  a1ref_get_at<a>(A0, i0) end
+(*let*)//end-[a1rsz_get_at(...)]
+//
+#impltmp
+<a>(*tmp*)
+a1rsz_set_at
+  (AZ, i0, x0) =
+let
+val A0 =
+a1rsz_getref<>(AZ)
+in//let
+a1ref_set_at<a>(A0, i0, x0) end
+(*let*)//end-[a1rsz_set_at(...)]
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -64,7 +90,7 @@ end (*local*) // end of [local(a1rsz)]
 a1rsz_make_list
   (   xs   ) =
 (
-  a1rsz_make_refsize<a>(A0, n0)
+ a1rsz_make_refsize<a>(A0, n0)
 ) where
 {
 val n0 = length(xs)
@@ -72,14 +98,14 @@ val A0 =
 (
  a1ptr2ref
  (a1ptr_make_listn<a>(xs, n0)))
-}
+}(*where*)//end-[a1rsz_make_list]
 //
 #impltmp
 <a>(*tmp*)
 a1rsz_make0_llist
   (    xs    ) =
 (
-  a1rsz_make_refsize<a>(A0, n0)
+ a1rsz_make_refsize<a>(A0, n0)
 ) where
 {
 val n0 = length1(xs)
@@ -87,7 +113,7 @@ val A0 =
 (
  a1ptr2ref
  (a1ptr_make0_llistn<a>(xs, n0)))
-}
+}(*where*)//end-[a1rsz_make0_llist]
 //
 (* ****** ****** *)
 (* ****** ****** *)

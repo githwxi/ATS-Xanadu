@@ -144,6 +144,13 @@ d0p0.node() of
     val () = synread_s0exp(s0e2)
   }
 //
+| D0Pqual
+  ( qtok, d0p1 ) =>
+  {
+    val () = synread_qname(qtok)
+    val () = synread_d0pat(d0p1)
+  }
+//
 | _(* rest-of-d0pat *) =>
   (
     prerrln!

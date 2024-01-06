@@ -1032,13 +1032,21 @@ d0p0.node() of
 //
 | D0Ptrcd1 _ => auxtrcd1(d0p0)
 //
-| D0Panno(d0p, s0e) =>
+| D0Panno(d0p1, s0e2) =>
   FXITMatm(d1p0) where
   {
-    val d1p = trans01_dpat(d0p)
-    val s1e = trans01_sexp(s0e)
+    val d1p1 = trans01_dpat(d0p1)
+    val s1e2 = trans01_sexp(s0e2)
     val d1p0 =
-    d1pat_make_node(loc0, D1Panno(d1p, s1e))
+    d1pat_make_node(loc0, D1Panno(d1p1, s1e2))
+  }
+//
+| D0Pqual(tok1, d0p2) =>
+  FXITMatm(d1p0) where
+  {
+    val d1p2 = trans01_dpat(d0p2)
+    val d1p0 =
+    d1pat_make_node(loc0, D1Pqual(tok1, d1p2))
   }
 //
 | D0Pnone(_(*tok*)) =>

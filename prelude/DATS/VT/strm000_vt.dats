@@ -126,6 +126,12 @@ strm_vt_cons(x0, strm_vt_sing(y0))
 //
 #impltmp
 <a>(*tmp*)
+strm_vt_eval(xs) = (   !xs   )
+//
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
 strm_vt_free(xs) = ( $free(xs) )
 #impltmp
 <a>(*tmp*)

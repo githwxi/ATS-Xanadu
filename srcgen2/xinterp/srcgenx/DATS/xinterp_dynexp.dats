@@ -49,6 +49,11 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
+#staload // LAB =
+"./../../../SATS/xlabel0.sats"
+//
+(* ****** ****** *)
+//
 #include
 "./../HATS/xinterp_dats.hats"
 //
@@ -143,6 +148,8 @@ ire0.node() of
 |IREdapp _ => f0_dapp(env0, ire0)
 //
 (* ****** ****** *)
+|IREpcon _ => f0_pcon(env0, ire0)
+(* ****** ****** *)
 //
 |IRElet0 _ => f0_let0(env0, ire0)
 //
@@ -171,6 +178,8 @@ ire0.node() of
 *)
 |IREflat _ => f0_flat(env0, ire0)
 //
+(* ****** ****** *)
+|IREfold _ => f0_fold(env0, ire0)
 (* ****** ****** *)
 |IREfree _ => f0_free(env0, ire0)
 (* ****** ****** *)
@@ -597,6 +606,37 @@ end(*let*)//end-of-[f1_fix0(irf0,irvs)]
 (* ****** ****** *)
 //
 fun
+f0_pcon
+( env0:
+! xintenv
+, ire0: irexp): irval =
+let
+//
+val-
+IREpcon
+( tknd
+, lab1, ire1) = ire0.node()
+//
+val irv1 =
+(
+  xinterp_irexp(env0, ire1))
+//
+in//let
+//
+case- irv1 of
+|IRVcapp
+(d2c1, irvs) =>
+(
+case- lab1 of
+| LABint(idx1) =>
+(
+  a1rsz_get_at(irvs, idx1) ) )
+//
+end(*let*)//end-of-[f0_pcon(env0,ire0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_let0
 ( env0:
 ! xintenv
@@ -874,10 +914,24 @@ f0_addr
 (
 case-
 irel.node() of
+//
 |
 IREflat(ire1) => 
 (
   xinterp_irexp(env0, ire1) )
+//
+|
+IREpcon
+(tknd, lab1, ire1) =>
+(
+IRVlft
+(
+IRLFTpcon
+(tknd, lab1, irv1))) where
+{
+val irv1 =
+  xinterp_irexp(env0, ire1) }
+//
 ) where
 {
 val-IREaddr(irel) = ire0.node() }
@@ -907,6 +961,19 @@ case- irv1 of
 IRVlft(lval) => irlft_deget(lval))
 //
 end(*let*)//end-of-[f0_flat(env0,ire0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fold
+( env0:
+! xintenv
+, ire0: irexp): irval =
+(
+  IRVnil((*void*))) where
+{
+val-IREfold(irel) = ire0.node() }
+//(*where*)//end-of[f0_fold(env0,ire0)]
 //
 (* ****** ****** *)
 //
@@ -1075,13 +1142,14 @@ IREassgn
 in//let
 //
 (
-case+ irvl of
+case- irvl of
 |IRVlft(lval) =>
 (
 irlft_deset
 (lval, irvr); IRVnil(*void*))
 ) where
 {
+//
 val irvl =
 (
 case-
@@ -1095,6 +1163,7 @@ IREdp2tr(ire1) =>
 (
   xinterp_irexp(env0, ire1) )
 )
+//
 val irvr =
 (
   xinterp_irexp(env0, irer) ) }//whr

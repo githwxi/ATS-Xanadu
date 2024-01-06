@@ -159,6 +159,8 @@ d3e0.node() of
 |D3Eflat _ => f0_flat(env0, d3e0)
 //
 (* ****** ****** *)
+|D3Efold _ => f0_fold(env0, d3e0)
+(* ****** ****** *)
 |D3Efree _ => f0_free(env0, d3e0)
 (* ****** ****** *)
 //
@@ -819,6 +821,18 @@ in//let
 (
   d3exp(loc0, t2p0, D3Eflat(d3e1)) )
 end (*let*) // end of [f0_flat(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fold
+( env0:
+! tr3cenv
+, d3e0: d3exp): d3exp =
+let
+val-
+D3Efold(d3e1) = d3e0.node() in d3e0
+end (*let*) // end of [f0_fold(env0,...)]
 //
 (* ****** ****** *)
 //

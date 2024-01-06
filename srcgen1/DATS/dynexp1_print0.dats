@@ -428,6 +428,10 @@ x0.node() of
   fprint!
   (out, "D1Panno(", d1p1, "; ", s1e2, ")")
 //
+| D1Pqual(tok1, d1p2) =>
+  fprint!
+  (out, "D1Pqual(", tok1, "; ", d1p2, ")")
+//
 | D1Pnone((*void*)) => fprint!(out, "D1Pnone(", ")")
 //
 ) (* end of [fprint_d1pat] *)

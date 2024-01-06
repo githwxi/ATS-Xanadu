@@ -345,10 +345,18 @@ irexp_node =
 |IREcst of (d2cst)
 //
 |IREtimp of
-(d3exp(*dcst*), irdcl)
-|
-IREdapp of
-(irexp(*dfun*), irexplst)
+(d3exp(*cst*), irdcl)
+//
+|IREdapp of
+( irexp // fun
+, irexplst(*arglst*))
+//
+|IREpcon of
+( token
+, label, irexp(*con*))
+|IREproj of
+( token
+, label, irexp(*tup*))
 //
 |IRElet0 of
 (irdclist, irexp(*scope*))
@@ -376,6 +384,8 @@ IREdapp of
 |IREaddr of (irexp)//left-val-address
 |IREflat of (irexp)//left-val-content
 //
+(* ****** ****** *)
+|IREfold of (irexp)//open-con-folding
 (* ****** ****** *)
 |IREfree of (irexp)//free-builtin-fun
 (* ****** ****** *)
