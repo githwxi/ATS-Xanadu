@@ -194,11 +194,22 @@ d4exp_node =
 |D4Eflt of token
 |D4Estr of token
 //
+(* ****** ****** *)
+//
+|D4Edapp of
+(d4exp,sint(*npf*),d4explst)
+//
+(* ****** ****** *)
+//
+|D4Elet0 of (d4eclist, d4exp)
+//
+(* ****** ****** *)
+//
 |D4Eift0 of
 (d4exp(*cond*)
 ,d4expopt(*thn*), d4expopt(*els*) )
 //
-|D3Eseqn of
+|D4Eseqn of
 ( d4explst(*init*), d4exp(*last*) )
 //
 |D4Etup0 of (sint(*npf*), d4explst)

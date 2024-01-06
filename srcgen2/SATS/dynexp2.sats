@@ -824,19 +824,22 @@ d2exp_node =
 (* ****** ****** *)
 //
 |D2Esym0 of
-( d2rxp(*ref*)
-, d1exp(*sym*), d2ptmlst )
+(d2rxp(*ref*)
+,d1exp(*sym*), d2ptmlst)
 //
 (* ****** ****** *)
 //
-|D2Esapp of (d2exp, s2explst)
-|D2Etapp of (d2exp, s2explst)
+|D2Esapp of
+(d2exp(*fun*), s2explst)
+|D2Etapp of
+(d2exp(*cst*), s2explst)
 //
 (* ****** ****** *)
 //
-|D2Edap0 of (d2exp)
+|D2Edap0 of
+(d2exp(*fun*))//HX:nullary?
 |D2Edapp of
-(d2exp, sint(*npf*), d2explst)
+(d2exp,sint(*npf*),d2explst)
 //
 (* ****** ****** *)
 //
