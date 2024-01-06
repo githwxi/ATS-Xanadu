@@ -410,30 +410,36 @@ d3exp_node =
 //
 (* ****** ****** *)
 //
-|D3Etimp of (d3exp, timpl)
+|D3Etimp of
+(d3exp(*cst*), timpl)
 //
 (* ****** ****** *)
 //
-|D3Esapp of (d3exp, s2explst)
-|D3Esapq of (d3exp, s2typlst)
+|D3Esapp of
+(d3exp(*fun*), s2explst)
+|D3Esapq of
+(d3exp(*fun*), s2typlst)
 //
 (* ****** ****** *)
 //
-|D3Etapp of (d3exp, s2explst)
-|D3Etapq of (d3exp, t2jaglst)
+|D3Etapp of
+(d3exp(*cst*), s2explst)
+|D3Etapq of
+(d3exp(*cst*), t2jaglst)
 //
 (* ****** ****** *)
 //
-|D3Edap0 of (d3exp)
+|D3Edap0 of
+(d3exp(*fun*))//HX:nullary?
 |D3Edapp of
- (d3exp,sint(*npf*),d3explst)
+(d3exp,sint(*npf*),d3explst)
 //
 (* ****** ****** *)
 //
 |D3Epcon of
- (token, label, d3exp(*con*))
+(token, label, d3exp(*con*))
 |D3Eproj of
- (token, label, d3exp(*tup*))
+(token, label, d3exp(*tup*))
 //
 (* ****** ****** *)
 //
