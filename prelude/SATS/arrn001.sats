@@ -84,6 +84,19 @@ a1rsz_length
 (* ****** ****** *)
 //
 fun
+<a:t0>
+a1rsz_get_at
+{n:i0}
+(a1rsz(a,n), nintlt(n)): (a)
+fun
+<a:t0>
+a1rsz_set_at
+{n:i0}
+(a1rsz(a,n), nintlt(n), a): void
+//
+(* ****** ****** *)
+//
+fun
 <a:vt>
 a1rsz_make_refsize
 {n:int}

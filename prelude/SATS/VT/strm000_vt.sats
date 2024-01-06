@@ -92,6 +92,22 @@ strm_vt_pair
 //
 fun
 <a:vt>
+strm_vt_eval
+(strm_vt(a)): strmcon_vt(a)
+fun
+<a:vt>
+strx_vt_eval
+(strx_vt(a)): strxcon_vt(a)
+fun
+<a:vt>
+strq_vt_eval
+{n:i0}
+(strq_vt(a,n)):strqcon_vt(a,n)
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
 strm_vt_free(strm_vt(a)): void
 fun
 <a:vt>

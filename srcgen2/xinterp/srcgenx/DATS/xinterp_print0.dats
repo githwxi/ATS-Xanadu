@@ -179,6 +179,12 @@ case+ lval of
 |
 IRLFTref0(ropt) =>
 print("IRLFTref0(", ropt, ")")
+|
+IRLFTpcon
+(tknd, lab1, irv1) =>
+print
+("IRLFTpcon("
+, tknd, ";", lab1, ";", irv1, ")")
 //
 end//let//end-of-[irlft_fprint(out, lval)]
 //

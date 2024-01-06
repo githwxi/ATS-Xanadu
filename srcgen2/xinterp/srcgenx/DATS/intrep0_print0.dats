@@ -175,13 +175,34 @@ ire0.node() of
 (
  print("IREcst(", d2c, ")"))
 //
+(* ****** ****** *)
+//
 |IREtimp
 ( dcst, dimp) =>
-print("IREtimp(", dcst, ";", dimp, ")")
+print
+("IREtimp(", dcst, ";", dimp, ")")
+//
+(* ****** ****** *)
 //
 |IREdapp
 ( irf0, ires) =>
-print("IREdapp(", irf0, ";", ires, ")")
+print
+("IREdapp(", irf0, ";", ires, ")")
+//
+(* ****** ****** *)
+//
+|IREpcon
+( tknd
+, lab1, ire1) =>
+print
+("IREpcon(",tknd,";",lab1,";",ire1,")")
+|IREproj
+( tknd
+, lab1, ire1) =>
+print
+("IREproj(",tknd,";",lab1,";",ire1,")")
+//
+(* ****** ****** *)
 //
 |IRElet0
 ( irds, ire1) =>
@@ -232,6 +253,11 @@ print("IRErcd2(", tknd, ";", lirs, ")")
 (
   print("IREflat(", ire1, ")") )
 //
+(* ****** ****** *)
+|IREfold
+( ire1 ) =>
+(
+  print("IREfold(", ire1, ")") )
 (* ****** ****** *)
 |IREfree
 ( ire1 ) =>

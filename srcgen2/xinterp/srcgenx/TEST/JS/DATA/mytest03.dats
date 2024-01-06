@@ -107,7 +107,7 @@ val length26 = list_length(mylist26)
 
 val perms =
 strm_vt_listize0
-(gseq_permutize_lstrm<strn><char>("12345"))
+(gseq_permutize_lstrm<strn><char>("123"))
 
 (* ****** ****** *)
 (* ****** ****** *)

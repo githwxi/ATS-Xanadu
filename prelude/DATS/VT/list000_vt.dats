@@ -39,12 +39,17 @@ list_vt_cons(x1, list_vt_nil()))
 //
 (* ****** ****** *)
 //
+(*
+HX: lense:
+[free] is [free0]!
+*)
 #impltmp
 <a>(*tmp*)
 list_vt_free
   {n}(xs) =
 ( loop(xs) ) where
 {
+//
 fnx
 loop
 {n:nat}.<n>.
@@ -56,9 +61,9 @@ list_vt_nil() => ()
 | ~
 list_vt_cons(x0, xs) =>
 let
-  val () = g_free<a>(x0) in loop(xs)
-end
-)(* end of [loop] *)
+  val () =
+  g_free<a>(x0) in loop(xs) end)
+//
 }(*where*)//end-of-[list_vt_free(xs)]
 //
 (* ****** ****** *)
@@ -69,7 +74,8 @@ list_vt_tail0(xs) =
 case- !xs of
 | ~
 list_vt_cons(x0, xs) =>
-let val () = g_free<a>(x0) in xs end
+let
+val () = g_free<a>(x0) in xs end
 (* let *)//end-of-[list_vt_tail0(xs)]
 //
 (* ****** ****** *)
@@ -83,9 +89,9 @@ fnx
 loop
 {n:nat}.<n>.
 ( xs:
-! list_vt(a, n)
-, r0
-: &(?list_vt(a)>>list_vt(a, n))
+! list_vt(a,n)
+, r0:
+& (?list_vt(a)>>list_vt(a,n))
 ) : void =
 (
 //
@@ -100,23 +106,25 @@ val x0 = g_copy<a>(x0)
 val () =
 (r0 := list_vt_cons(x0, _))
 in//let
-  loop(xs, r0.1); $fold(r0) endlet
-//
-)
+  loop(xs, r0.1); $fold(r0) end)
 //
 in//let
 let
-var r0: list_vt(a) in loop(xs, r0); r0
-end
-end (*let*) // end of [list_vt_copy(xs)]
+var r0:
+list_vt(a) in loop(xs, r0); r0 end
+end (*let*) // end of [list_vt_copy]
 //
 (* ****** ****** *)
-
+//
 #impltmp
 <a>(*tmp*)
 list_vt_rcopy(xs) =
-list_vt_rappend10<a>(xs, list_vt_nil())
-
+let
+val ys = list_vt_nil()
+in//let
+  list_vt_rappend10<a>(xs, ys) end
+// (*let*) // end of [list_vt_rcopy]
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -128,7 +136,7 @@ case+ xs of
 | // !
 list_vt_nil() => true
 | // !
-list_vt_cons(_, _) => false)
+list_vt_cons(_, _) => false)//nilq1
 //
 #impltmp
 <>(*tmp*)
@@ -139,7 +147,7 @@ case+ xs of
 | // !
 list_vt_nil() => false
 | // !
-list_vt_cons(_, _) => (true))
+list_vt_cons(_, _) => (true))//consq1
 //
 (* ****** ****** *)
 //
@@ -163,7 +171,7 @@ list_vt_nil() => ln
 | // !
 list_vt_cons(_, xs) => loop(xs, ln+1)
 )
-} (*where*) // end of [length_vt_length1]
+} (*where*) // end of [list_vt_length1]
 //
 (* ****** ****** *)
 
@@ -873,7 +881,8 @@ let
   res2 =
   auxmain2(xs, ys, i0-1, j0+1)
 in//let
-  !(strm_vt_append0(res1, res2)) end
+  strm_vt_eval
+  (strm_vt_append0(res1, res2)) end
 end//let
 ) (*case+*) // end of [auxmain2(...)]
 //

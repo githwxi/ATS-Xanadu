@@ -52,6 +52,11 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
+#staload // LAB =
+"./../../../SATS/xlabel0.sats"
+//
+(* ****** ****** *)
+//
 #include
 "./../HATS/xinterp_dats.hats"
 //
@@ -98,6 +103,19 @@ case+ opt1 of
 //
 end//let//end-of-[IRLFTref0(...)]
 //
+|
+IRLFTpcon
+(tknd, lab1, irv1) =>
+(
+case- irv1 of
+|IRVcapp
+(d2c1, irvs) =>
+(
+case- lab1 of
+| LABint(idx1) =>
+(
+  a1rsz_get_at(irvs, idx1))))
+//
 ) where
 {
 //
@@ -114,6 +132,7 @@ irlft_deset
 (lval, rval) =
 (
 case+ lval of
+//
 |
 IRLFTref0(ref1) =>
 (
@@ -121,6 +140,20 @@ IRLFTref0(ref1) =>
 ) where
 {
   val opt1 = optn_cons(rval) }
+//
+|
+IRLFTpcon
+(tknd, lab1, irv1) =>
+(
+case- irv1 of
+|IRVcapp
+(d2c1, irvs) =>
+(
+case- lab1 of
+| LABint(idx1) =>
+(
+a1rsz_set_at(irvs,idx1,rval))))
+//
 ) where
 {
 //

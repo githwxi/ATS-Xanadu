@@ -501,6 +501,9 @@ irexp(loc0, IREcst(d2c))
 //
 |D3Edapp _ => f0_dapp(env0, d3e0)
 //
+|D3Epcon _ => f0_pcon(env0, d3e0)
+|D3Eproj _ => f0_proj(env0, d3e0)
+//
 |D3Elet0 _ => f0_let0(env0, d3e0)
 //
 |D3Eift0 _ => f0_ift0(env0, d3e0)
@@ -518,6 +521,8 @@ irexp(loc0, IREcst(d2c))
 |D3Eaddr _ => f0_addr(env0, d3e0)
 |D3Eview _ => f0_view(env0, d3e0)
 |D3Eflat _ => f0_flat(env0, d3e0)
+//
+|D3Efold _ => f0_fold(env0, d3e0)
 //
 |D3Efree _ => f0_free(env0, d3e0)
 //
@@ -769,6 +774,50 @@ in//let
 )(*case+*)//end-of-[f1_t2ps_d3es(...)]
 //
 }(*where*)//end-of-[f0_dapp(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_pcon
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val-
+D3Epcon
+( tknd
+, lab1, d3e1) = d3e0.node()
+//
+val ire1 =
+(
+  trxd3ir_d3exp(env0, d3e1))
+//
+in//let
+irexp_make_node
+(loc0, IREpcon(tknd,lab1,ire1))
+end(*let*)//end-of-[f0_pcon(env0,d3e0)]
+//
+fun
+f0_proj
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val-
+D3Eproj
+( tknd
+, lab1, d3e1) = d3e0.node()
+//
+val ire1 =
+(
+  trxd3ir_d3exp(env0, d3e1))
+//
+in//let
+irexp_make_node
+(loc0, IREproj(tknd,lab1,ire1))
+end(*let*)//end-of-[f0_proj(env0,d3e0)]
 //
 (* ****** ****** *)
 //
@@ -1070,6 +1119,27 @@ in//let
 (
   irexp(loc0, IREflat( ire1 )) )
 end(*let*)//end-of-[f0_flat(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fold
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val-
+D3Efold(d3e1) = d3e0.node()
+//
+val ire1 =
+(
+  trxd3ir_d3exp(env0, d3e1))
+//
+in//let
+(
+  irexp(loc0, IREfold( ire1 )) )
+end(*let*)//end-of-[f0_fold(env0,d3e0)]
 //
 (* ****** ****** *)
 //

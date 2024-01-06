@@ -452,6 +452,9 @@ d1pat_node =
 //
 | D1Panno of (d1pat, s1exp)
 //
+| D1Pqual of
+  ( token(*qual*) , d1pat(*dpid*) )
+//
 | D1Pnone of ((*error-indication*))
 // end of [d1pat_node]
 //

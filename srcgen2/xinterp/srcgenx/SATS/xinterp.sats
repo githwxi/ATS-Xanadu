@@ -44,6 +44,9 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+"./../../../SATS/xlabel0.sats"
+//
+#staload
 "./../../../SATS/lexing0.sats"
 //
 (* ****** ****** *)
@@ -175,8 +178,11 @@ IRVfixs of
 |IRVnone0 of () |IRVnone1 of (irexp)
 //
 and irlft =
-|
-IRLFTref0 of a0ref(irvalopt)
+|IRLFTref0 of
+(
+ a0ref(irvalopt) )
+|IRLFTpcon of
+(token, label, irval(*con*))
 //
 where
 {
