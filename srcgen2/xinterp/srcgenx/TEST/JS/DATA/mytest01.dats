@@ -97,12 +97,12 @@ fun
 fibo4
 (x: sint): sint =
 (
-loop@{x=x, r1=0, r2=1}) where
+loop@{x=x, rr=(0, 1)}) where
 {
 fun
 loop
 (xrr:
-@{x=sint, r1=sint, r2=sint}) =
+@{x=sint, rr=(sint, sint)}) =
 if
 xrr.x >= 2
 then
@@ -110,11 +110,11 @@ then
 loop
 @{
 x=(xrr.x)-1,
-r1=xrr.r2, r2=xrr.r1 + xrr.r2})
+rr=(xrr.rr.1, xrr.rr.0+xrr.rr.1)})
 else
 (
 if
-xrr.x >= 1 then xrr.r2 else xrr.r1)
+xrr.x >= 1 then xrr.rr.1 else xrr.rr.0)
 }
 //
 (* ****** ****** *)
