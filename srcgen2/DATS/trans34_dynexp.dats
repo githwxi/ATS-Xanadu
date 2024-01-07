@@ -55,6 +55,36 @@ _(*TRANS34*) = "./trans34.dats"
 #staload "./../SATS/trans34.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+#symload lctn with d3pat_get_lctn
+#symload node with d3pat_get_node
+(* ****** ****** *)
+#symload lctn with d3exp_get_lctn
+#symload node with d3exp_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trans34_d3exp
+  (env0, d3e0) =
+(
+case+
+d3e0.node() of
+| _(*otherwise*) =>
+let
+  val loc0 = d3e0.lctn()
+in//let
+  d4exp_make_node(loc0, D4Enone1(d3e0))
+end(*let*)//end of [_(*otherwise*)] // temp
+) where
+{
+//
+val () =
+(
+  prerrln("trans34_d3exp: d3e0 = ", d3e0) )
+//
+}(*where*)//end of [trans34_d3exp(env0,d3e0)]
+//
+(* ****** ****** *)
 //
 #implfun
 trans34_l3d3e
@@ -62,11 +92,11 @@ trans34_l3d3e
 let
 //
 val+
-D3LAB
-(lab0, d3e1) = ld3e
+D3LAB(lab0, d3e1) = ld3e
 //
 in//let
-D4LAB(lab0, trans34_d3exp(env0, d3e1))
+(
+  D4LAB(lab0, trans34_d3exp(env0, d3e1)) )
 end(*let*)//end-of-[trans33_l3d3e(env0,ld3e)]
 //
 (* ****** ****** *)
