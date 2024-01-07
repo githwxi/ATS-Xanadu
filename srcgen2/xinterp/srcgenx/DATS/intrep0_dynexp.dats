@@ -515,6 +515,7 @@ irexp(loc0, IREcst(d2c))
 |D3Etapp _ => f0_tapp(env0, d3e0)
 |D3Etapq _ => f0_tapq(env0, d3e0)
 //
+|D3Edap0 _ => f0_dap0(env0, d3e0)
 |D3Edapp _ => f0_dapp(env0, d3e0)
 //
 |D3Epcon _ => f0_pcon(env0, d3e0)
@@ -672,6 +673,34 @@ val-
 D3Etapq
 ( d3f0, t2js) = d3e0.node()
 }(*where*)//end-of-[f0_tapq(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dap0
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Edap0
+( d3f0 ) = d3e0.node((*0*))
+//
+in//let
+//
+(
+irexp(loc0, IREdap0(irf0))
+) where
+{
+val irf0 =
+(
+  trxd3ir_d3exp(env0, d3f0) )
+}
+//
+end(*let*)//end-of-[f0_dap0(env0,d3e0)]
 //
 (* ****** ****** *)
 //

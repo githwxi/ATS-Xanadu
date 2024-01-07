@@ -184,6 +184,10 @@ print
 //
 (* ****** ****** *)
 //
+|IREdap0
+( irf0 ) =>
+(
+ print("IREdap0(", irf0, ")") )
 |IREdapp
 ( irf0, ires) =>
 print

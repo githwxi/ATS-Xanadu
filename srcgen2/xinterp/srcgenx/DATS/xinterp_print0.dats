@@ -127,7 +127,7 @@ print
 |IRVrcd2
 ( tknd , livs ) =>
 print
-("IRVtup1(", tknd, ";", "...", ")")
+("IRVrcd2(", tknd, ";", "...", ")")
 //
 (* ****** ****** *)
 //
