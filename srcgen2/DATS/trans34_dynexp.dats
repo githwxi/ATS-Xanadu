@@ -57,22 +57,40 @@ _(*TRANS34*) = "./trans34.dats"
 (* ****** ****** *)
 //
 #implfun
+trans34_l3d3e
+( env0,ld3e ) =
+let
+//
+val+
+D3LAB
+(lab0, d3e1) = ld3e
+//
+in//let
+D4LAB(lab0, trans34_d3exp(env0, d3e1))
+end(*let*)//end-of-[trans33_l3d3e(env0,ld3e)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 trans34_d3explst
   (env0, d3es) =
 (
-list_trans34_fnp(env0, d3es, trans34_d3exp))
+  list_trans34_fnp(env0, d3es, trans34_d3exp))
 //
 #implfun
 trans34_d3expopt
   (env0, dopt) =
 (
-optn_trans34_fnp(env0, dopt, trans34_d3exp))
+  optn_trans34_fnp(env0, dopt, trans34_d3exp))
+//
+(* ****** ****** *)
 //
 #implfun
 trans34_l3d3elst
   (env0, ldes) =
 (
-list_trans34_fnp(env0, ldes, trans34_l3d3e))
+  list_trans34_fnp(env0, ldes, trans34_l3d3e))
 //
 (* ****** ****** *)
 (* ****** ****** *)
