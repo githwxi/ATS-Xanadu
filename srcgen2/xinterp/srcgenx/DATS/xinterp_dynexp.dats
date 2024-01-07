@@ -659,6 +659,15 @@ in//let
 //
 case- irv1 of
 //
+|IRVtup0
+(  irvs  ) =>
+(
+case- lab1 of
+| LABint(idx1) =>
+(
+  a1rsz_get_at(irvs, idx1) )
+)(* end-of-[IRVtup0(irvs)] *)
+//
 |IRVtup1
 (tknd, irvs) =>
 (
