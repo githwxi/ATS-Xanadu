@@ -119,4 +119,62 @@ strm_vt_listize0
 (* ****** ****** *)
 (* ****** ****** *)
 
+#abstbox mylist2(a:type)
+
+(* ****** ****** *)
+
+#extern
+fun
+<a:type>
+mylist2_make
+( xs: list(a)
+, ys: list(a)): mylist2(a)
+
+#extern
+fun
+<a:type>
+mylist2_strmize
+(xsys: mylist2(a)): strm_vt(a)
+
+(* ****** ****** *)
+
+local
+
+#absimpl
+mylist2
+(a:type) = (list(a), list(a))
+
+in//local
+
+#impltmp
+<a:t0>
+mylist2_make(xs, ys) = (xs, ys)
+
+#impltmp
+<a:t0>
+mylist2_strmize(xsys) =
+strm_vt_append0
+(strmize(xsys.0), strmize(xsys.1))
+
+end//local
+
+(* ****** ****** *)
+
+val xsys =
+mylist2_make(list(1), list(2,3))
+
+(* ****** ****** *)
+
+#impltmp
+{a:t0}
+gseq_strmize<mylist2(a)><a> = mylist2_strmize<a>
+
+(* ****** ****** *)
+(* ****** ****** *)
+
+val xsys_mul = gseq_mul<mylist2(sint)><sint>(xsys)
+
+(* ****** ****** *)
+(* ****** ****** *)
+
 (* end of [(* end of [ATS3/XINTERP_TEST_JS_DATA_mytest03.dats] *)

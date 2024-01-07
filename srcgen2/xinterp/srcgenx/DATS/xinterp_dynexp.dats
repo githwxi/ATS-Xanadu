@@ -145,6 +145,7 @@ ire0.node() of
 //
 (* ****** ****** *)
 //
+|IREdap0 _ => f0_dap0(env0, ire0)
 |IREdapp _ => f0_dapp(env0, ire0)
 //
 (* ****** ****** *)
@@ -419,6 +420,34 @@ end(*let*)//end-of-[f0_timp(env0,ire0)]
 (* ****** ****** *)
 //
 fun
+f0_dap0
+( env0:
+! xintenv
+, ire0: irexp): irval =
+let
+//
+val-
+IREdap0(irf0) = ire0.node()
+//
+val irf0 =
+(
+  xinterp_irexp(env0, irf0))
+//
+in//let
+//
+case- irf0 of
+|
+IRVcon(d2c1) =>
+IRVcapp(d2c1, irvs) where
+{
+val irvs =
+a1rsz_make_list(list_nil(*0*)) }
+//
+end(*let*)//end-of-[f0_dap0(env0,ire0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_dapp
 ( env0:
 ! xintenv
@@ -478,7 +507,7 @@ let
 val-
 IRVfun
 (fopr) = irf0 in fopr(irvs)//val-
-end(*let*)//end-of-[f1_con(irf0,irvs)]
+end(*let*)//end-of-[f1_fun(irf0,irvs)]
 //
 (* ****** ****** *)
 //
@@ -494,7 +523,7 @@ in//let
   IRVcapp(d2c1, irvs)) where
 {
 val irvs = a1rsz_make_list(irvs) }
-end(*let*)//end-of-[f1_fun(irf0,irvs)]
+end(*let*)//end-of-[f1_con(irf0,irvs)]
 //
 (* ****** ****** *)
 //
@@ -646,6 +675,10 @@ f0_proj
 , ire0: irexp): irval =
 let
 //
+val () =
+prerrln
+("f0_proj: ire0 = ", ire0)
+//
 val-
 IREproj
 ( tknd
@@ -654,6 +687,11 @@ IREproj
 val irv1 =
 (
   xinterp_irexp(env0, ire1))
+//
+val (  ) =
+(
+ prerrln
+ ("f0_proj: irv1 = ", irv1))
 //
 in//let
 //

@@ -347,8 +347,10 @@ irexp_node =
 |IREtimp of
 (d3exp(*cst*), irdcl)
 //
+|IREdap0 of
+( irexp(*con*) )
 |IREdapp of
-( irexp // fun
+( irexp(*fun*)
 , irexplst(*arglst*))
 //
 |IREpcon of

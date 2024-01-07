@@ -61,3 +61,34 @@ the constructor is freed by x1 and x2 are not
 
 
 ########################################################################
+
+HX-2024-01-07:
+
+No inheritance for objtypes:
+
+#objtype
+mylist(a:type) = @{ // '{'/'@{': boxed/flat
+//
+  val xs: list_vt(a)
+  var ys: list_vt(a)
+//
+  #initfn
+  make
+  ( xs: list(a)
+  , ys: list(a)): void =
+  (self.xs := g_copy(xs);
+   self.ys := g_copy(ys))
+//
+  #freefn
+  strmize(): strm_vt(a) =
+  strm_vt_append
+  (strmize0(self.xs), strmize0(self.ys))
+
+  #method
+  strmize(): strm_vt(a) =
+  strm_vt_append
+  (strmize1(self.xs), strmize1(self.ys))
+//
+}
+
+########################################################################
