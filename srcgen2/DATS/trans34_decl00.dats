@@ -55,6 +55,34 @@ _(*TRANS34*) = "./trans34.dats"
 #staload "./../SATS/trans34.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+#symload lctn with d3ecl_get_lctn
+#symload node with d3ecl_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trans34_d3ecl
+  (env0, d3cl) =
+(
+case+
+d3cl.node() of
+| _(*otherwise*) =>
+let
+  val loc0 = d3cl.lctn()
+in//let
+  d4ecl_make_node(loc0, D4Cnone1( d3cl ))
+end (*let*) // end of [_(*otherwise*)] // temp
+) where
+{
+//
+val () =
+(
+  prerrln("trans34_d3ecl: d3cl = ", d3cl) )
+//
+} (*where*) // end of [trans34_d3ecl(env0,d3cl)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 trans34_d3eclist
