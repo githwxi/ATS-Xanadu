@@ -170,4 +170,4 @@ end//let//end of [fibats]
 val fibats10 = fibats(10) // fibats10 = 55
 (* ****** ****** *)
 
-(* end of [(* end of [ATS3/XINTERP_TEST_JS_DATA_mytest02.dats] *)
+(* end of [ATS3/XINTERP_TEST_JS_DATA_mytest02.dats] *)

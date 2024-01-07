@@ -105,16 +105,19 @@ loop
 @{x=sint, rr=(sint, sint)}) =
 if
 xrr.x >= 2
-then
+then // if-then
 (
 loop
 @{
-x=(xrr.x)-1,
-rr=(xrr.rr.1, xrr.rr.0+xrr.rr.1)})
-else
+x=
+(xrr.x)-1,
+rr=
+(xrr.rr.1, xrr.rr.0+xrr.rr.1)})
+else // if-else
 (
 if
-xrr.x >= 1 then xrr.rr.1 else xrr.rr.0)
+xrr.x >= 1
+then (xrr.rr.1) else (xrr.rr.0))
 }
 //
 (* ****** ****** *)
@@ -133,4 +136,4 @@ val fibo4_10 = fibo4(10)//end-of-val
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [(* end of [ATS3/XINTERP_TEST_JS_DATA_mytest01.dats] *)
+(* end of [ATS3/XINTERP_TEST_JS_DATA_mytest01.dats] *)

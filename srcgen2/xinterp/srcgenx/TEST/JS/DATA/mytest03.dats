@@ -161,7 +161,7 @@ end//local
 (* ****** ****** *)
 
 val xsys =
-mylist2_make(list(1), list(2,3))
+mylist2_make(list(1,2), list(3,4,5))
 
 (* ****** ****** *)
 
@@ -177,4 +177,4 @@ val xsys_mul = gseq_mul<mylist2(sint)><sint>(xsys)
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [(* end of [ATS3/XINTERP_TEST_JS_DATA_mytest03.dats] *)
+(* end of [ATS3/XINTERP_TEST_JS_DATA_mytest03.dats] *)
