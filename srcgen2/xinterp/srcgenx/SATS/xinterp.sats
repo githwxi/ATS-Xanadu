@@ -44,6 +44,9 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
+"./../../../SATS/xstamp0.sats"
+//
+#staload
 "./../../../SATS/xlabel0.sats"
 //
 #staload
@@ -71,6 +74,8 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
+#sexpdef irlab = $IR0.irlab
+//
 #typedef irpat = $IR0.irpat
 #typedef irexp = $IR0.irexp
 #typedef fiarg = $IR0.fiarg
@@ -92,6 +97,9 @@ Authoremail: gmhwxiATgmailDOTcom
 #typedef irexplst = $IR0.irexplst
 #typedef irexpopt = $IR0.irexpopt
 //
+(* ****** ****** *)
+#typedef l0irplst = $IR0.l0irplst
+#typedef l0irelst = $IR0.l0irelst
 (* ****** ****** *)
 #typedef fiarglst = $IR0.fiarglst
 (* ****** ****** *)
@@ -150,11 +158,13 @@ testing is exciting!
 *)
 |
 IRVcapp of
-( d2con , irvalarr )
+( d2con , irvaltup )
 //
-|IRVtup0 of irvalarr
+|IRVtup0 of irvaltup
 |IRVtup1 of
-(token(*knd*), irvalarr)
+(token(*knd*), irvaltup)
+|IRVrcd2 of
+(token(*knd*), irvalrcd)
 //
 |IRVlam0 of
 (fiarg, irexp, irenv)
@@ -187,16 +197,31 @@ and irlft =
 where
 {
 //
+(* ****** ****** *)
+//
+#typedef l0irv = irlab(irval)
+//
+(* ****** ****** *)
+//
 #typedef irvalist = list(irval)
 #typedef irvalopt = optn(irval)
+#typedef l0irvlst = list(l0irv)
+//
+(* ****** ****** *)
 //
 #typedef
 irfun = (irvalist) -<cfr> irval
 //
-#typedef irvalarr = a1rsz(irval)
+(* ****** ****** *)
+//
+#typedef irvaltup = a1rsz(irval)
+#typedef irvalrcd = tmpmap(irval)
+//
+(* ****** ****** *)
 //
 } (*where*) // end of [datatype(irval)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -221,11 +246,11 @@ fun
 irpat_valck
 ( irpat, irval ): (bool)
 fun
-irpatlst_valck_arr
-(irpatlst,irvalarr): (bool)
-fun
 irpatlst_valck_lst
 (irpatlst,irvalist): (bool)
+fun
+irpatlst_valck_tup
+(irpatlst,irvaltup): (bool)
 //
 (* ****** ****** *)
 //
@@ -238,6 +263,15 @@ the_irvar_search
 fun
 the_ircst_insval
 (d2c:d2cst,irv:irval): void
+//
+(* ****** ****** *)
+//
+fun
+irvaltup_make_list
+( irvs : irvalist): irvaltup
+fun
+irvalrcd_make_list
+( livs : l0irvlst): irvalrcd
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -361,15 +395,21 @@ fiarg_match
 ,farg:fiarg,irvs:irvalist): void
 //
 fun
-irpatlst_match_arr
+irpatlst_match_tup
 (env0:
 !xintenv
-,irps:irpatlst,irvs:irvalarr): void
+,irps:irpatlst,irvs:irvaltup): void
 fun
 irpatlst_match_lst
 (env0:
 !xintenv
 ,irps:irpatlst,irvs:irvalist): void
+//
+fun
+l0irplst_match_rcd
+(env0:
+!xintenv
+,lirs:l0irplst,livs:irvalrcd): void
 //
 (* ****** ****** *)
 //
@@ -384,6 +424,7 @@ xinterp_irdcl
 (env0: !xintenv, ird0: irdcl): (void)
 //
 (* ****** ****** *)
+//
 fun
 xinterp_irexplst
 ( env0:
@@ -392,6 +433,13 @@ fun
 xinterp_irexpopt
 ( env0:
 ! xintenv, iopt: irexpopt): irvalopt
+//
+(* ****** ****** *)
+//
+fun
+xinterp_l0irelst
+( env0:
+! xintenv, lies: l0irelst): l0irvlst
 //
 (* ****** ****** *)
 //

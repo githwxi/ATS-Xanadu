@@ -10,10 +10,41 @@
 "prelude/HATS/CATS/Xint/prelude_dats.hats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
 val N1 = 5
 val N2 = (N1+N1)
 val N3 = (N1*N2)
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fibo4
+(x: sint): sint =
+(
+loop@{x=x, r1=0, r2=1}) where
+{
+fun
+loop
+(xrr:
+@{x=sint, r1=sint, r2=sint}) =
+if
+xrr.x >= 2
+then
+(
+loop
+@{
+x=(xrr.x)-1,
+r1=xrr.r2, r2=xrr.r1 + xrr.r2})
+else
+(
+if
+xrr.x >= 1 then xrr.r2 else xrr.r1)
+}
+//
+(* ****** ****** *)
+val fibo4_10 = fibo4(10)//end-of-val
+(* ****** ****** *)
+////
 (* ****** ****** *)
 //
 fun
@@ -62,6 +93,30 @@ else (if x >= 1 then r2 else r1)
 }
 //
 (* ****** ****** *)
+//
+fun
+fibo3
+(x: sint): sint =
+(
+loop@(x, 0, 1)) where
+{
+fun
+loop
+(xrr:
+@(sint, sint, sint)) =
+if
+xrr.0 >= 2
+then
+(
+loop@(
+(xrr.0)-1, xrr.2, xrr.1+xrr.2))
+else
+(
+if
+xrr.0 >= 1 then xrr.2 else xrr.1)
+}
+//
+(* ****** ****** *)
 (* ****** ****** *)
 val fact1_10 = fact1(10)//end-of-val
 (* ****** ****** *)
@@ -70,6 +125,8 @@ val fibo1_10 = fibo1(10)//end-of-val
 val fact2_10 = fact2(10)//end-of-val
 (* ****** ****** *)
 val fibo2_10 = fibo2(10)//end-of-val
+(* ****** ****** *)
+val fibo3_10 = fibo3(10)//end-of-val
 (* ****** ****** *)
 (* ****** ****** *)
 

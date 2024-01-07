@@ -241,7 +241,7 @@ in//let
 if
 (tag1 != tag2)
 then false else
-irpatlst_valck_arr(irps, irvs) end
+irpatlst_valck_tup(irps, irvs) end
 | _ (*non-IRVcapp*) => (  false  ) )
 end(*let*)//end-of-[f0_capp(irp0,irv0)]
 //
@@ -267,7 +267,7 @@ IRVnil((*0*)) => (  true  )
 //
 |
 IRVtup0(irvs) =>
-irpatlst_valck_arr(irps, irvs)
+irpatlst_valck_tup(irps, irvs)
 //
 |
 _ (*non-IRVtup0*) => (  false  ) )
@@ -290,7 +290,7 @@ in//let
 case+ irv0 of
 | IRVtup1(knd2, irvs) =>
 (
-  irpatlst_valck_arr(irps, irvs) )
+  irpatlst_valck_tup(irps, irvs) )
 | _ (*non-IRVtup1*) => (  false  ) )
 end(*let*)//end-of-[f0_tup1(irp0,irv0)]
 //
@@ -325,13 +325,13 @@ end(*let*)//end-of-[ f0_tup0(irp0, irv0) ]
 in//local
 //
 #implfun
-irpatlst_valck_arr(irps, irvs) =
-(
-  irpatlst_valck<irvalarr>(irps, irvs) )//fun
-#implfun
 irpatlst_valck_lst(irps, irvs) =
 (
   irpatlst_valck<irvalist>(irps, irvs) )//fun
+#implfun
+irpatlst_valck_tup(irps, irvs) =
+(
+  irpatlst_valck<irvaltup>(irps, irvs) )//fun
 //
 end(*local*) // end-of-local(irpatlst_valck_...)
 //
@@ -406,7 +406,7 @@ case+ irv0 of
 |
 IRVcapp
 (d2c2, irvs) =>
-irpatlst_match_arr
+irpatlst_match_tup
 (env0, irps, irvs) | _ => ( (*0*) ) )
 end(*let*)//end-of-[ f0_capp(irp0, irv0) ]
 //
@@ -428,7 +428,7 @@ in//let
 case+ irv0 of
 |
 IRVtup0(irvs) =>
-irpatlst_match_arr
+irpatlst_match_tup
 (env0, irps, irvs) | _ => ( (*0*) ) )
 end(*let*)//end-of-[ f0_tup0(irp0, irv0) ]
 //
@@ -461,7 +461,7 @@ case+ irv0 of
 |
 IRVtup1
 (knd2, irvs) =>
-irpatlst_match_arr
+irpatlst_match_tup
 (env0, irps, irvs) | _ => ( (*0*) ) )
 end(*let*)//end-of-[ f0_tup1(irp0, irv0) ]
 //
@@ -585,22 +585,6 @@ end(*let*)//end-of-[irpatlst_match<...>(...)]
 in//local
 //
 #implfun
-irpatlst_match_arr
-(env0, irps, irvs) =
-let
-(*
-val () =
-prerrln
-("irpatlst_match_arr: irps = ", irps)
-val () =
-prerrln
-("irpatlst_match_arr: irvs = ", irvs)
-*)
-in//let
-  irpatlst_match<irvalarr>(env0, irps, irvs)
-end//let//end-of-[irpatlst_match_arr(env0,...)]
-//
-#implfun
 irpatlst_match_lst
 (env0, irps, irvs) =
 let
@@ -616,14 +600,30 @@ in//let
   irpatlst_match<irvalist>(env0, irps, irvs)
 end//let//end-of-[irpatlst_match_lst(env0,...)]
 //
+#implfun
+irpatlst_match_tup
+(env0, irps, irvs) =
+let
+(*
+val () =
+prerrln
+("irpatlst_match_tup: irps = ", irps)
+val () =
+prerrln
+("irpatlst_match_tup: irvs = ", irvs)
+*)
+in//let
+  irpatlst_match<irvaltup>(env0, irps, irvs)
+end//let//end-of-[irpatlst_match_tup(env0,...)]
+//
 (*
 (*
 HX-2023-12-24: This style should work!!!
 *)
 #implfun
-irpatlst_match_arr = irpatlst_match<irvalarr>
-#implfun
 irpatlst_match_lst = irpatlst_match<irvalist>
+#implfun
+irpatlst_match_tup = irpatlst_match<irvaltup>
 *)
 //
 end(*local*) // end-of-local(irpatlst_match_...)

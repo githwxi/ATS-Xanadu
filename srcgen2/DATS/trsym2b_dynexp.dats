@@ -61,6 +61,7 @@ _(*TRSYM2B*) = "./trsym2b.dats"
 #symload dexp with d2rxp_get_dexp
 #symload dexp with d2rxp_set_dexp
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 fun
@@ -283,6 +284,7 @@ prerrln("d2exp_make_dpis: dpis = ", dpis)
 //
 } (*where*) // end of [d2exp_make_dpis(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -635,6 +637,19 @@ trsym2b_d2pat(env0, d2p1)) where
 (* ****** ****** *)
 //
 #implfun
+trsym2b_l2d2p
+( env0,ld2p ) =
+let
+val+
+D2LAB
+(lab0
+,d2p1) = ld2p in trsym2b_d2pat(env0, d2p1)
+end (*let*) // end-of-[trsym2b_l2d2p(env0,ld2p)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 trsym2b_d2exp
 ( env0, d2e0 ) =
 let
@@ -778,6 +793,13 @@ D2Etup1
 let
 val () =
 trsym2b_d2explst(env0, d2es) end
+|
+D2Ercd2
+( tknd
+, npf1, ldes) =>
+let
+val () =
+trsym2b_l2d2elst(env0, ldes) end
 //
 |
 D2Elam0
@@ -1264,6 +1286,19 @@ trsym2b_d2exp(env0, d2e1)) where
 (* ****** ****** *)
 //
 #implfun
+trsym2b_l2d2e
+( env0,ld2e ) =
+let
+val+
+D2LAB
+(lab0
+,d2e1) = ld2e in trsym2b_d2exp(env0, d2e1)
+end (*let*) // end-of-[trsym2b_l2d2e(env0,ld2e)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 trsym2b_f2arg
 (env0 , farg) =
 (
@@ -1345,6 +1380,7 @@ endlet // end of [ D2CLScls(_,_,_) ]
 ) (*case*) // end-of(trsym2b_d2cls(env0,dcls))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 trsym2b_d2patlst
@@ -1373,6 +1409,7 @@ trsym2b_l2d2elst
 list_trsym2b_fnp(env0, ldes, trsym2b_l2d2e)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 trsym2b_f2arglst
@@ -1391,6 +1428,7 @@ trsym2b_d2clslst
 ( env0, d2cs ) =
 list_trsym2b_fnp(env0, d2cs, trsym2b_d2cls)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trsym2b_dynexp.dats] *)

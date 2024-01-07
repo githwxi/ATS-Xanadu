@@ -149,6 +149,7 @@ ire0.node() of
 //
 (* ****** ****** *)
 |IREpcon _ => f0_pcon(env0, ire0)
+|IREproj _ => f0_proj(env0, ire0)
 (* ****** ****** *)
 //
 |IRElet0 _ => f0_let0(env0, ire0)
@@ -164,6 +165,8 @@ ire0.node() of
 //
 |IREtup0 _ => f0_tup0(env0, ire0)
 |IREtup1 _ => f0_tup1(env0, ire0)
+//
+|IRErcd2 _ => f0_rcd2(env0, ire0)
 //
 (* ****** ****** *)
 //
@@ -637,6 +640,37 @@ end(*let*)//end-of-[f0_pcon(env0,ire0)]
 (* ****** ****** *)
 //
 fun
+f0_proj
+( env0:
+! xintenv
+, ire0: irexp): irval =
+let
+//
+val-
+IREproj
+( tknd
+, lab1, ire1) = ire0.node()
+//
+val irv1 =
+(
+  xinterp_irexp(env0, ire1))
+//
+in//let
+//
+case- irv1 of
+|IRVtup1
+(tknd, irvs) =>
+(
+case- lab1 of
+| LABint(idx1) =>
+(
+  a1rsz_get_at(irvs, idx1) ) )
+//
+end(*let*)//end-of-[f0_proj(env0,ire0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_let0
 ( env0:
 ! xintenv
@@ -781,12 +815,13 @@ IREtup0(ires) = ire0.node()
 //
 in//let
 (
-  IRVtup0(irvs)) where
+  IRVtup0(tup0)) where
 {
 val
 irvs =
 xinterp_irexplst(env0, ires)
-val irvs = a1rsz_make_list(irvs) }
+val
+tup0 = irvaltup_make_list(irvs) }
 //
 end(*let*)//end-of-[f0_tup0(env0,ire0)]
 //
@@ -801,16 +836,42 @@ let
 //
 val-
 IREtup1
-(trec, ires) = ire0.node()
+(tknd, ires) = ire0.node()
 //
 in//let
 (
-IRVtup1(trec, irvs)) where
+IRVtup1(tknd, tup1)) where
 {
 val
 irvs =
 xinterp_irexplst(env0, ires)
-val irvs = a1rsz_make_list(irvs) }
+val
+tup1 = irvaltup_make_list(irvs) }
+//
+end(*let*)//end-of-[f0_tup1(env0,ire0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_rcd2
+( env0:
+! xintenv
+, ire0: irexp): irval =
+let
+//
+val-
+IRErcd2
+(tknd, lies) = ire0.node()
+//
+in//let
+(
+IRVrcd2(tknd, rcd2)) where
+{
+val
+livs =
+xinterp_l0irelst(env0, lies)
+val
+rcd2 = irvalrcd_make_list(livs) }
 //
 end(*let*)//end-of-[f0_tup1(env0,ire0)]
 //

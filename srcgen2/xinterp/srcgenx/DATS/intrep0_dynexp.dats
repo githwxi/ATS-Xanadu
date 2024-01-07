@@ -454,6 +454,22 @@ prerrln("trxd3ir_d3pat: d3p0 = ", d3p0)
 (* ****** ****** *)
 //
 #implfun
+trxd3ir_l3d3p
+( env0,ld3p ) =
+let
+//
+val+
+D3LAB
+(lab0, d3p1) = ld3p
+//
+in//let
+IRLAB(lab0, trxd3ir_d3pat(env0, d3p1))
+end (*let*)//end-of-[trxd3ir_l3d3p(env0,ld3p)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 trxd3ir_d3exp
 (env0 , d3e0) =
 (
@@ -1349,6 +1365,22 @@ prerrln("trxd3ir_d3exp: d3e0 = ", d3e0)
 //
 }(*where*) // end of [trxd3ir_d3exp(...)]
 //
+(* ****** ****** *)
+//
+#implfun
+trxd3ir_l3d3e
+( env0,ld3e ) =
+let
+//
+val+
+D3LAB
+(lab0, d3e1) = ld3e
+//
+in//let
+IRLAB(lab0, trxd3ir_d3exp(env0, d3e1))
+end (*let*)//end-of-[trxd3ir_l3d3e(env0,ld3e)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
