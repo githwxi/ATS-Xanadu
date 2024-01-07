@@ -36,9 +36,32 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+#include
+"./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
-
-
+#define
+ATS_PACKNAME
+"ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
+#staload
+_(*TRANS34*) = "./trans34.dats"
+(* ****** ****** *)
+#staload "./../SATS/dynexp3.sats"
+(* ****** ****** *)
+#staload "./../SATS/dynexp4.sats"
+(* ****** ****** *)
+#staload "./../SATS/trans34.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trans34_d3eclist
+  (env0, dcls) =
+(
+  list_trans34_fnp(env0, dcls, trans34_d3ecl))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
