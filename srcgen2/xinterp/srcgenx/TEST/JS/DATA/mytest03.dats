@@ -20,8 +20,9 @@ More than 10 template layers!
 fun
 fact3
 (x: sint): sint =
-strm_vt_mul0
-(tail0(strmize(x+1)))
+(
+ strm_vt_mul0
+ (tail0(strmize(x+1))))
 //
 (* ****** ****** *)
 val fact3_10 = fact3(10)//end-of-val
@@ -43,11 +44,17 @@ glseq_mul0
 < xs >< x0 >
 (
 tail0
-(gseq_strmize<sint><sint>(x+1)))
-end//let
+(gseq_strmize(x+1))) end//let
 //
 (* ****** ****** *)
 val fact4_10 = fact4(10)//end-of-val
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val fact5_10: sint =
+(
+  gseq_mul(range1(10, 0)))//end-of-val
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

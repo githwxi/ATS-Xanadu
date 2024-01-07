@@ -40,7 +40,7 @@
 datatype
 range1(a:type) =
 |
-RANGE1 of (a, a, sint)
+RANGE1 of (a, a, nint)
 //
 (* ****** ****** *)
 //
@@ -51,7 +51,8 @@ range1_make_arg2
 fun
 <a:t0>
 range1_make_arg3
-(s1: a, f2: a, d3: sint): range1(a)
+(s1: a
+,f2: a, d3: nint): range1(a)
 //
 #symload
 range1 with range1_make_arg2

@@ -159,10 +159,10 @@ fsucc
 fun
 fpred
 (s1: x0, d3: sint): x0 =
-if d3 < 0
+if d3 > 0
 then
 fpred
-(g_pred<x0>(s1), d3+1) else s1
+(g_pred<x0>(s1), d3-1) else s1
 //
 fun
 auxmain1
@@ -199,15 +199,18 @@ fpred(s1,d3),f2,d3)
 ) else strmcon_vt_nil((*void*)))
 //
 in
+//
 let
 val+
-RANGE1(s1, f2, d3) = xs in//let
+RANGE1(s1, f2, d3) = xs
+in//let
 (
 if
-(d3 >= 0)
+(s1 <= f2)
 then
 auxmain1(s1,f2,d3) else auxmain2(s1,f2,d3))
 end(* let *)
+//
 end(* let *) // end of [ range1_strmize( xs ) ]
 //
 (* ****** ****** *)

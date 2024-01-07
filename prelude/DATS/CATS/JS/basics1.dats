@@ -45,6 +45,7 @@ jsobjmap
 // XATS2JS/jsobj
 //
 (* ****** ****** *)
+//
 #extern
 fun
 XATS2JS_jsobj_get_at
