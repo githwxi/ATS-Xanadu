@@ -124,6 +124,11 @@ print("IRVtup0(", irvs, ")")
 print
 ("IRVtup1(", tknd, ";", irvs, ")")
 //
+|IRVrcd2
+( tknd , livs ) =>
+print
+("IRVtup1(", tknd, ";", "...", ")")
+//
 (* ****** ****** *)
 //
 |IRVlam0

@@ -98,13 +98,15 @@ val ( ) = a0ref_set(obj,succ(cnt))
 end (*local*) // end of [local]
 
 (* ****** ****** *)
+//
 #implfun
-stamp_nilq(tmp) =
-(tmp.uint((*void*)) = 0u)
+stamp_nilq(tmp) = (tmp.uint() = 0u)
+//
 (* ****** ****** *)
+//
 #implfun
-stamp_cmp(x1, x2) =
-(x1.uint() \cmp x2.uint())
+stamp_cmp(x1, x2) = x1.uint()\cmp(x2.uint())
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xstamp0.dats] *)

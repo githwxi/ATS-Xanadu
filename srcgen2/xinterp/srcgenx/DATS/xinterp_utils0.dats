@@ -52,6 +52,8 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 //
+#staload // STM =
+"./../../../SATS/xstamp0.sats"
 #staload // LAB =
 "./../../../SATS/xlabel0.sats"
 //
@@ -78,6 +80,51 @@ _(*DATS*)="./../DATS/xinterp.dats"
 (* ****** ****** *)
 #symload lctn with irdcl_get_lctn
 #symload node with irdcl_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+irvaltup_make_list
+  (irvs) =
+(
+  a1rsz_make_list(irvs))
+//
+(* ****** ****** *)
+//
+#implfun
+irvalrcd_make_list
+  (livs) =
+let
+val rcd2 =
+tmpmap_make_nil((*0*))
+in//let
+(
+let
+val () =
+list_foreach
+<l0irv>(livs) in rcd2 end
+) where
+{
+#impltmp
+foreach$work
+<l0irv>(lirv) =
+let
+val+IRLAB(lab, irv) = lirv
+in//let
+//
+case- lab of
+|LABsym(sym) =>
+let
+val tmp =
+(
+  $SYM.symbl_get_stmp(sym) )
+in//let
+tmpmap_insert_any(rcd2,tmp,irv)
+end//let
+//
+end//let//end(foreach$work(lirv))
+} endlet//end-of-[irvalrcd_make_list]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

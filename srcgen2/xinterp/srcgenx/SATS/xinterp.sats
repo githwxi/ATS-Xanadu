@@ -78,6 +78,10 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #typedef irpat = $IR0.irpat
 #typedef irexp = $IR0.irexp
+//
+#typedef l0irp = $IR0.l0irp
+#typedef l0ire = $IR0.l0ire
+//
 #typedef fiarg = $IR0.fiarg
 //
 #typedef irgua = $IR0.irgua
@@ -416,6 +420,10 @@ l0irplst_match_rcd
 fun
 xinterp_irexp
 (env0: !xintenv, ire0: irexp): irval
+//
+fun
+xinterp_l0ire
+(env0: !xintenv, lire: l0ire): l0irv
 //
 (* ****** ****** *)
 //

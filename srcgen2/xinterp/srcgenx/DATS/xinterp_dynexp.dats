@@ -658,13 +658,33 @@ val irv1 =
 in//let
 //
 case- irv1 of
+//
 |IRVtup1
 (tknd, irvs) =>
 (
 case- lab1 of
 | LABint(idx1) =>
 (
-  a1rsz_get_at(irvs, idx1) ) )
+  a1rsz_get_at(irvs, idx1) )
+)(* end-of-[IRVtup1(tknd,irvs)] *)
+//
+|IRVrcd2
+(tknd, livs) =>
+(
+case- lab1 of
+| LABsym(sym1) =>
+(
+case- opt1 of
+| ~
+optn_vt_cons(irv1) => irv1)
+where
+{
+val tmp1 =
+$SYM.symbl_get_stmp(sym1)
+val opt1 =
+$STM.tmpmap_search_opt(livs, tmp1)
+}
+)(* end-of-[IRVrcd2(tknd,livs)] *)
 //
 end(*let*)//end-of-[f0_proj(env0,ire0)]
 //
@@ -1306,6 +1326,22 @@ prerrln("xinterp_irexp: ire0 = ", ire0)
 } (*where*)//end of [xinterp_irexp(env0,ire0)]
 //
 (* ****** ****** *)
+//
+#implfun
+xinterp_l0ire
+( env0,lire ) =
+let
+//
+val+
+IRLAB(lab0, ire1) = lire
+//
+in//let
+IRLAB(lab0, xinterp_irexp(env0, ire1))
+end (*let*)//end-of-[xinterp_irexp(env0,lire)]
+//
+(* ****** ****** *)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -1321,6 +1357,15 @@ xinterp_irexpopt
 (
 optn_xinterp_fnp
 (env0, dopt, xinterp_irexp))//xinterp_irexpopt
+//
+(* ****** ****** *)
+//
+#implfun
+xinterp_l0irelst
+( env0, lies ) =
+(
+list_xinterp_fnp
+(env0, lies, xinterp_l0ire))//xinterp_l0irelst
 //
 (* ****** ****** *)
 (* ****** ****** *)
