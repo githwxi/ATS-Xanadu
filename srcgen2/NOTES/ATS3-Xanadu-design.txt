@@ -67,13 +67,16 @@ HX-2024-01-07:
 No inheritance for objtypes:
 
 #objtype
-mylist(a:type) = @{ // '{'/'@{': boxed/flat
+mylist(a:type) = @{
+(*
+'@{'/'${': flat/boxed
+*)
 //
   val xs: list_vt(a)
   var ys: list_vt(a)
 //
   #initfn
-  make
+  init
   ( xs: list(a)
   , ys: list(a)): void =
   (self.xs := g_copy(xs);
