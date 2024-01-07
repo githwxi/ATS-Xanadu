@@ -549,8 +549,7 @@ trans3a_l3d3p
 let
 //
 val+
-D3LAB
-(lab0, d3p1) = ld3p
+D3LAB(lab0, d3p1) = ld3p
 //
 in//let
 D3LAB(lab0, trans3a_d3pat(env0, d3p1))
@@ -1955,8 +1954,7 @@ trans3a_l3d3e
 let
 //
 val+
-D3LAB
-(lab0, d3e1) = ld3e
+D3LAB(lab0, d3e1) = ld3e
 //
 in//let
 D3LAB(lab0, trans3a_d3exp(env0, d3e1))

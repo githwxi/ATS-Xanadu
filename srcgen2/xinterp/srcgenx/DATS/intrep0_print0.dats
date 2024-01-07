@@ -125,8 +125,8 @@ print("IRPtup0(", irps, ")")
 IRPtup1(tknd, irps) =>
 print("IRPtup1(", tknd, ";", irps, ")")
 |
-IRPrcd2(tknd, lirs) =>
-print("IRPrcd2(", tknd, ";", lirs, ")")
+IRPrcd2(tknd, lips) =>
+print("IRPrcd2(", tknd, ";", lips, ")")
 //
 |IRPnone0() => print( "IRPnone0(",")" )
 |IRPnone1(d3p1) => print("IRPnone1(", d3p1, ")")
@@ -239,8 +239,8 @@ print("IREtup0(", ires, ")")
 ( tknd, ires) =>
 print("IREtup1(", tknd, ";", ires, ")")
 |IRErcd2
-( tknd, lirs) =>
-print("IRErcd2(", tknd, ";", lirs, ")")
+( tknd, lies) =>
+print("IRErcd2(", tknd, ";", lies, ")")
 //
 (* ****** ****** *)
 //
