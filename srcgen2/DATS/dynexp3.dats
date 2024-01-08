@@ -739,6 +739,7 @@ D3FUNDCL
 endloc (*local*) // end of [ local(d3fundcl) ]
 
 (* ****** ****** *)
+(* ****** ****** *)
 
 local
 //
@@ -895,6 +896,7 @@ prerrln
 
 endloc (*local*) // end of [ local(d3parsed) ]
 
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_dynexp3.dats] *)
