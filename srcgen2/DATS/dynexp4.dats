@@ -193,4 +193,163 @@ endloc (*local*) // end of [local(d4ecl)]
 (* ****** ****** *)
 (* ****** ****** *)
 
+
+local
+//
+datatype
+d4parsed =
+D4PARSED of
+(
+sint  // stadyn
+,
+sint  // nerror
+,
+lcsrc // source
+,
+d1topenv // t1penv
+,
+d2topenv // t2penv
+,
+d3topenv // t3penv
+,
+d4eclistopt)//program
+//
+#absimpl
+d4parsed_tbox = d4parsed
+//
+in//local
+
+(* ****** ****** *)
+
+#implfun
+d4parsed_get_stadyn
+  (dpar) =
+(
+  stadyn ) where
+{
+val+
+D4PARSED
+( stadyn
+, nerror, source, t1penv
+, t2penv, t3penv, parsed) = dpar
+} (*where*)//end-of-[d4parsed_get_stadyn]
+
+(* ****** ****** *)
+
+#implfun
+d4parsed_get_nerror
+  (dpar) =
+(
+  nerror ) where
+{
+val+
+D4PARSED
+( stadyn
+, nerror, source, t1penv
+, t2penv, t3penv, parsed) = dpar
+} (*where*)//end-of-[d4parsed_get_nerror]
+
+(* ****** ****** *)
+
+#implfun
+d4parsed_get_source
+  (dpar) =
+(
+  source ) where
+{
+val+
+D4PARSED
+( stadyn
+, nerror, source, t1penv
+, t2penv, t3penv, parsed) = dpar
+} (*where*)//end-of-[d4parsed_get_source]
+
+(* ****** ****** *)
+
+#implfun
+d4parsed_get_t1penv
+  (dpar) =
+(
+  t1penv ) where
+{
+val+
+D4PARSED
+( stadyn
+, nerror, source, t1penv
+, t2penv, t3penv, parsed) = dpar
+} (*where*)//end-of-[d4parsed_get_t1penv]
+
+(* ****** ****** *)
+
+#implfun
+d4parsed_get_t2penv
+  (dpar) =
+(
+  t2penv ) where
+{
+val+
+D4PARSED
+( stadyn
+, nerror, source, t1penv
+, t2penv, t3penv, parsed) = dpar
+} (*where*)//end-of-[d4parsed_get_t2penv]
+
+(* ****** ****** *)
+
+#implfun
+d4parsed_get_t3penv
+  (dpar) =
+(
+  t3penv ) where
+{
+val+
+D4PARSED
+( stadyn
+, nerror, source, t1penv
+, t2penv, t3penv, parsed) = dpar
+} (*where*)//end-of-[d4parsed_get_t3penv]
+
+(* ****** ****** *)
+
+#implfun
+d4parsed_get_parsed
+  (dpar) =
+(
+  parsed ) where
+{
+val+
+D4PARSED
+( stadyn
+, nerror, source, t1penv
+, t2penv, t3penv, parsed) = dpar
+} (*where*)//end-of-[d4parsed_get_parsed]
+
+(* ****** ****** *)
+//
+#implfun
+d4parsed_make_args
+( stadyn
+, nerror, source
+, t1penv, t2penv
+, t3penv, parsed) =
+(
+D4PARSED
+( stadyn
+, nerror, source, t1penv
+, t2penv, t3penv, parsed)) where
+{
+(*
+val () =
+prerrln
+("d4parsed_make_args:nerror=",nerror)
+*)
+} (*where*) // end-of-[d4parsed_make_args]
+//
+(* ****** ****** *)
+
+endloc (*local*) // end of [ local(d4parsed) ]
+
+(* ****** ****** *)
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_dynexp4.dats] *)
