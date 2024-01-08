@@ -55,6 +55,43 @@ ATS_PACKNAME
 #staload "./../SATS/trans34.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+
+#implfun
+d4parsed_of_trans34
+  (dpar) =
+let
+val stadyn =
+d3parsed_get_stadyn(dpar)
+val nerror =
+d3parsed_get_nerror(dpar)
+val source =
+d3parsed_get_source(dpar)
+val t1penv =
+d3parsed_get_t1penv(dpar)
+val t2penv =
+d3parsed_get_t2penv(dpar)
+val t3penv =
+d3parsed_get_t3penv(dpar)
+val parsed =
+d3parsed_get_parsed(dpar)
+//
+val env0 = tr34env_make_nil()
+//
+val parsed =
+trans34_d3eclistopt(env0, parsed)
+//
+in//let
+let
+val ((*0*)) = tr34env_free_top(env0)
+in//let
+d4parsed
+(stadyn
+,nerror,source,t1penv,t2penv,t3penv,parsed)
+end//let
+end (*let*) // end of [d4parsed_trans34(dpar)]
+
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 <x0><y0>

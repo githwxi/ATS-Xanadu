@@ -163,27 +163,14 @@ loop{i+1}
 , FIB2(pf0, pf1) | n_i-1, r_1, r_0+r_1)
 ) (* end of [loop] *)
 in//let
-  loop{0}(FIB0(*void*), FIB1(*void*) | n, 0, 1)
+//
+  loop{0}
+  (FIB0(*void*), FIB1(*void*) | n, 0, 1)
+//
 end//let//end of [fibats]
 //
 (* ****** ****** *)
 val fibats10 = fibats(10) // fibats10 = 55
-(* ****** ****** *)
-(* ****** ****** *)
-#extern
-fun
-<a:vt>
-foo(x: a): sint
-(* ****** ****** *)
-//
-#impltmp{a:vt}
-foo<a>(x) = (g_free(x); 1)
-//
-#impltmp{a:t0}foo<a>(x) = 0
-//
-(* ****** ****** *)
-val ans0 = foo(list_nil<sint>()) // 0
-val ans1 = foo(list_vt_nil<sint>()) // 1
 (* ****** ****** *)
 (* ****** ****** *)
 

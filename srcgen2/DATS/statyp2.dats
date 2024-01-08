@@ -230,7 +230,7 @@ s2typ_none0() =
 s2typ
 (s2t0, T2Pnone0()) where
 {
-  val s2t0 = sort2_none0()
+val s2t0 = sort2_none0((*0*))
 } (*where*) // end of [s2typ_none0(...)]
 //
 (* ****** ****** *)
@@ -239,14 +239,16 @@ s2typ
 s2typ_none1(t2p0) =
 let
 //
-  val s2t0 = t2p0.sort()
+val s2t0 = t2p0.sort()
 //
 (*
 val (  ) = prerrln
 ("s2typ_none1: t2p0 = ", t2p0)
 *)
+//
 in//let
-  s2typ(s2t0, T2Pnone1(t2p0))
+(
+  s2typ(s2t0, T2Pnone1(t2p0)) )
 end (*let*) // end of [s2typ_none1(t2p0)]
 //
 (* ****** ****** *)
@@ -255,14 +257,16 @@ end (*let*) // end of [s2typ_none1(t2p0)]
 s2typ_s2exp(s2e0) =
 let
 //
-  val s2t0 = s2e0.sort()
+val s2t0 = s2e0.sort()
 //
 (*
 val (  ) = prerrln
 ("s2typ_s2exp: s2e0 = ", s2e0)
 *)
+//
 in//let
-  s2typ(s2t0, T2Ps2exp(s2e0))
+(
+  s2typ(s2t0, T2Ps2exp(s2e0)) )
 end (*let*) // end of [s2typ_s2exp(s2e0)]
 //
 (* ****** ****** *)
