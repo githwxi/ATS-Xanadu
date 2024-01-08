@@ -119,7 +119,7 @@ d3parsed
 (stadyn
 ,nerror,source,t1penv,t2penv,t3penv,parsed)
 end//let
-end (*let*) // end of [d2parsed_trans23(dpar)]
+end (*let*) // end of [d3parsed_trans23(dpar)]
 
 (* ****** ****** *)
 (* ****** ****** *)

@@ -111,6 +111,24 @@ val length26 = list_length(mylist26)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#extern
+fun
+<a:vt>
+foo(x: a): sint
+(* ****** ****** *)
+//
+#impltmp
+< a:vt >
+foo( x ) =
+(g_free<a>(x); 1)
+//
+#impltmp<a:t0>foo( x ) = 0
+//
+(* ****** ****** *)
+val ans0 = foo(list_nil<sint>())//0
+val ans1 = foo(list_vt_nil<sint>())//1
+(* ****** ****** *)
+(* ****** ****** *)
 //
 val perms =
 strm_vt_listize0
