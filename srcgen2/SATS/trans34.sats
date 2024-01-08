@@ -89,6 +89,13 @@ MAP = "./xsymmap.sats"
 #typedef d3parsed = $D3E.d3parsed
 #typedef d4parsed = $D4E.d4parsed
 (* ****** ****** *)
+#typedef d3explstopt = $D3E.d3explstopt
+#typedef d4explstopt = $D4E.d4explstopt
+(* ****** ****** *)
+#typedef d3eclistopt = $D3E.d3eclistopt
+#typedef d4eclistopt = $D4E.d4eclistopt
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d4parsed_of_trans34
@@ -155,6 +162,18 @@ trans34_l3d3elst
 fun
 trans34_d3eclist
 (env0: !tr34env, dcls: d3eclist): d4eclist
+//
+(* ****** ****** *)
+//
+fun
+trans34_d3explstopt
+( env0:
+! tr34env, dopt: d3explstopt): d4explstopt
+//
+fun
+trans34_d3eclistopt
+( env0:
+! tr34env, dopt: d3eclistopt): d4eclistopt
 //
 (* ****** ****** *)
 (* ****** ****** *)

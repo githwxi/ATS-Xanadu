@@ -279,8 +279,7 @@ end where // end-of-let
 //
 fun
 implfilter
-(
-dcls
+( dcls
 : d3eclist_vt
 )
 : d3eclist_vt =
@@ -305,12 +304,20 @@ in//let
 //
 case+ opt1 of
 //
-|optn_nil
+|
+optn_nil
 ( (*0*) ) =>
 implfilter(dcls)
 //
-|optn_cons(tsub) =>
-let
+|
+optn_cons(tsub) =>
+if
+not(
+s2vts_stleq(tsub))
+then
+(
+  implfilter(dcls))
+else let // if-else
 //
 val
 dcl1 =

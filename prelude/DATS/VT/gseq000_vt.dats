@@ -223,12 +223,14 @@ foldl1$fopr
 <xs: t0>
 <x0: t0>
 glseq_listize0(xs) =
-(gseq_listize<xs><x0>(xs))
+(
+  gseq_listize<xs><x0>(xs))
 #impltmp
 <xs: t0>
 <x0: t0>
 glseq_listize1(xs) =
-(gseq_listize<xs><x0>(xs))
+(
+  gseq_listize<xs><x0>(xs))
 //
 (*
 #impltmp
@@ -253,12 +255,14 @@ end(*let*)//end(glseq_listize0(xs))
 <xs: t0>
 <x0: t0>
 glseq_rlistize0(xs) =
-(gseq_rlistize<xs><x0>(xs))
+(
+  gseq_rlistize<xs><x0>(xs))
 #impltmp
 <xs: t0>
 <x0: t0>
 glseq_rlistize1(xs) =
-(gseq_rlistize<xs><x0>(xs))
+(
+  gseq_rlistize<xs><x0>(xs))
 //
 (*
 #impltmp
@@ -280,7 +284,8 @@ end(*let*)//end(glseql_rlistize0(xs))
 (* ****** ****** *)
 
 #impltmp
-<xs><x0><r0>
+<xs>
+<x0><r0>
 glseq_foldl0
 (xs, r0) = r0 where
 {
@@ -311,7 +316,8 @@ end // end of [foreach0$work]
 (* ****** ****** *)
 
 #impltmp
-<xs><x0><r0>
+<xs>
+<x0><r0>
 glseq_foldl1
 (xs, r0) = r0 where
 {
@@ -342,7 +348,8 @@ end // end of [foreach1$work]
 (* ****** ****** *)
 //
 #impltmp
-<xs><x0><y0>
+<xs>
+<x0><y0>
 glseq_map0_llist
   (xs) = let
 //
@@ -382,7 +389,8 @@ end(*let*)//end-[glseq_map0_llist/foldl]
 (* ****** ****** *)
 //
 #impltmp
-<xs><x0><y0>
+<xs>
+<x0><y0>
 glseq_map0_rllist
   (xs) = let
 //
@@ -406,7 +414,8 @@ end(*let*)//end-[glseq_map0_rllist/foldl0]
 (* ****** ****** *)
 //
 #impltmp
-<xs><x0><y0>
+<xs>
+<x0><y0>
 glseq_map1_llist
   (xs) = let
 //
@@ -460,7 +469,8 @@ end(*let*)//end-of-[glseq_copy_llist/map1]
 (* ****** ****** *)
 //
 #impltmp
-<xs><x0><y0>
+<xs>
+<x0><y0>
 glseq_map0_lstrm(xs) =
 (
   strm_vt_map0<x0><y0>(xs) ) where
@@ -469,7 +479,8 @@ glseq_map0_lstrm(xs) =
 }(*where*)//end-[glseq_map0_lstrm/strmize0]
 //
 #impltmp
-<xs><x0><y0>
+<xs>
+<x0><y0>
 glseq_map1_lstrm(xs) =
 let
   val xs = g_copy<xs>(xs)
@@ -500,7 +511,8 @@ end(*let*)//end-of-[glseq_copy_lstrm/map1]
 (* ****** ****** *)
 //
 #impltmp
-<xs><x0><y0>
+<xs>
+<x0><y0>
 glseq_map1_rllist
   (xs) = let
 //
@@ -797,8 +809,10 @@ gl_add00<y0>
 (r0, map0$fopr<x0><y0>(x0))
 //
 in//let
+(
 glseq_foldl0
-<xs><x0><y0>(xs, glseq_add0$nil<y0>())
+<xs>
+<x0><y0>(xs, glseq_add0$nil<y0>()))
 endlet//end-of-[glseq_map0_add0(xs)/foldl]
 //
 #impltmp
@@ -815,8 +829,10 @@ gl_mul00<y0>
 (r0, map0$fopr<x0><y0>(x0))
 //
 in//let
+(
 glseq_foldl0
-<xs><x0><y0>(xs, glseq_mul0$nil<y0>())
+<xs>
+<x0><y0>(xs, glseq_mul0$nil<y0>()))
 endlet//end-of-[glseq_map0_mul0(xs)/foldl]
 //
 (* ****** ****** *)
@@ -834,10 +850,10 @@ glseq_iexists0
   iforall0$test<x0>(i0, x0) =
   not(iexists0$test<x0>(i0, x0))
 //
-in
-  if
-  glseq_iforall0
-  <xs><x0>(xs) then false else true
+in//let
+if // if
+glseq_iforall0
+<xs><x0>( xs ) then false else true
 end // end of [glseq_iexists0/iforall0]
 //
 #impltmp
@@ -849,10 +865,10 @@ glseq_iexists1
   iforall1$test<x0>(i0, x0) =
   not(iexists1$test<x0>(i0, x0))
 //
-in
-  if
-  glseq_iforall1
-  <xs><x0>(xs) then false else true
+in//let
+if // if
+glseq_iforall1
+<xs><x0>( xs ) then false else true
 end // end of [glseq_iexists1/iforall1]
 //
 (* ****** ****** *)
@@ -877,11 +893,12 @@ iforall0$test<x0>(i0, x0)
 val i0 =
 $UN.p2tr_get<nint>(p0)
 val () =
-$UN.p2tr_set<nint>(p0, succ(i0))
+$UN.p2tr_set<nint>(p0,succ(i0))
 }
-in
-  glseq_forall0<xs><x0>(xs)
-end (* end of [glseq_forall0] *)
+in//let
+(
+  glseq_forall0< xs >< x0 >(xs))
+end (* end of [glseq_forall0(xs)] *)
 //
 end(*let*)//end(glseq_iforall0/forall0)
 //
@@ -905,11 +922,12 @@ iforall1$test<x0>(i0, x0)
 val i0 =
 $UN.p2tr_get<nint>(p0)
 val () =
-$UN.p2tr_set<nint>(p0, succ(i0))
+$UN.p2tr_set<nint>(p0,succ(i0))
 }
 in
-  glseq_forall1<xs><x0>(xs)
-end (* end of [glseq_forall1] *)
+(
+  glseq_forall1< xs >< x0 >(xs))
+end (* end of [glseq_forall1(xs)] *)
 //
 end(*let*)//end(glseq_iforall1/forall1)
 //
@@ -926,9 +944,9 @@ glseq_iforall0<xs><x0>(xs) where
 #impltmp
 iforall0$test<x0>(i0, x0) =
 let
-  val () =
-  iforeach0$work<x0>(i0, x0) in true
-end
+val () =
+iforeach0$work<x0>(i0, x0) in true
+end//let
 }
 in
   // nothing
@@ -945,9 +963,9 @@ glseq_iforall1<xs><x0>(xs) where
 #impltmp
 iforall1$test<x0>(i0, x0) =
 let
-  val () =
-  iforeach1$work<x0>(i0, x0) in true
-end
+val () =
+iforeach1$work<x0>(i0, x0) in true
+end//let
 }
 in
   // nothing

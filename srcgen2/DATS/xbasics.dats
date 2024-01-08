@@ -113,7 +113,17 @@ if
 else
 ( sortprf(t1) <= sortprf(t2) )
 )
-) (*if*) // end of [subsort_test]
+) where
+{
+//
+(*
+val () =
+prerrln("subsort_test: t1 = ", t1)
+val () =
+prerrln("subsort_test: t2 = ", t2)
+*)
+//
+}(*where*)//end-of-[subsort_test(...)]
 //
 (* ****** ****** *)
 
@@ -132,7 +142,7 @@ case+ vlk of
 ) where
 {
   val tt = true and ff = false
-} (*where*) // end of [valkind_recq]
+}(*where*)//end of [valkind_recq(vlk)]
 
 (* ****** ****** *)
 
@@ -154,7 +164,7 @@ case+ fnk of
 ) where
 {
   val tt = true and ff = false
-} (*where*) // end of [funkind_recq]
+}(*where*)//end-of-[funkind_recq(fnk)]
 
 (* ****** ****** *)
 //
@@ -162,15 +172,16 @@ case+ fnk of
 implknd_recq(knd) =
 (
 case+ knd of
-| IMPLtmpr
-  ( (*0*) ) => true | _ => false
-) where
+|
+IMPLtmpr
+( (*0*) ) => true | _ => false)
+where
 {
 (*
 val () =
 prerrln("implknd_recq: knd = ", knd)
 *)
-} (*where*) // end of [implknd_recq]
+}(*where*)//end-of-[implknd_recq(knd)]
 //
 (* ****** ****** *)
 
