@@ -135,9 +135,15 @@ tmpmatch_d3cl_t2js
 in//let
 case+ opt1 of
 |optn_nil
-((*void*)) => filter( dcls )
+((*void*)) =>
+(
+  filter(dcls) )
 |optn_cons
 (  tsub  ) =>
+if
+not(
+s2vts_stleq(tsub))
+then filter( dcls ) else
 let
 //
 val

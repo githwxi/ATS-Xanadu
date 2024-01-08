@@ -89,6 +89,50 @@ s2typ_dataq(tfun) | _ => false)
 (* ****** ****** *)
 //
 #implfun
+s2vts_stleq
+  ( svts ) =
+(
+list_forall<s2vt>(svts)
+) where
+{
+#typedef
+s2vt =
+(s2var, s2typ)
+#impltmp
+forall$test
+< s2vt >( s2vt ) =
+let
+//
+val
+(s2v1, t2p2) = s2vt
+//
+val s2t1 = s2v1.sort((*0*))
+val s2t2 = t2p2.sort((*0*))
+//
+val () = prerrln
+(
+"s2vts_stleq: s2v1 = ", s2v1)
+val () = prerrln
+(
+"s2vts_stleq: t2p2 = ", t2p2)
+val () = prerrln
+(
+"s2vts_stleq: s2t1 = ", s2t1)
+val () = prerrln
+(
+"s2vts_stleq: s2t2 = ", s2t2)
+//
+val () = prerrln
+( "s2vts_stleq: test = "
+, lte_sort2_sort2(s2t2, s2t1) )
+//
+in//let
+  lte_sort2_sort2(s2t2, s2t1) end
+} (*where*)//end-of-[s2vts_stleq(...)]
+//
+(* ****** ****** *)
+//
+#implfun
 s2vts_search_opt
   (svts, s2v0) =
 (

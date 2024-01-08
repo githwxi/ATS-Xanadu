@@ -91,6 +91,14 @@ trans34_d3eclist
   list_trans34_fnp(env0, dcls, trans34_d3ecl))
 //
 (* ****** ****** *)
+//
+#implfun
+trans34_d3eclistopt
+  (  env0,dopt  ) =
+(
+optn_trans34_fnp(env0, dopt, trans34_d3eclist))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans34_decl00.dats] *)

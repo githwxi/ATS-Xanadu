@@ -142,7 +142,53 @@ _(*TRANS12*) = "./trans12.dats"
 (* ****** ****** *)
 #symload name with s2var_get_name
 (* ****** ****** *)
+#symload tqas with d2cst_get_tqas
+(* ****** ****** *)
 #symload node with dimpl_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+//
+HX-2024-01-07:
+Sun Jan  7 19:15:56 EST 2024
+//
+The sorts of xs and x0 are
+inferred from [glseq_forall0]
+//
+#impltmp
+<xs><x0>
+glseq_forall0(xs) = ( ...... )
+//
+*)
+#extern
+fun
+trans12_q1arg_wth
+( env0:
+! tr12env
+, q1a1: q1arg, s2v2: s2var): s2var
+#extern
+fun
+trans12_t1qag_wth
+( env0:
+! tr12env
+, t1qa: t1qag, t2qa: t2qag): t2qag
+#extern
+fun
+trans12_q1arglst_wth
+( env0:
+! tr12env
+, q1as
+: q1arglst, s2vs: s2varlst): s2varlst
+#extern
+fun
+trans12_t1qaglst_wth
+( env0:
+! tr12env
+, t1qs
+: t1qaglst, t2qs: t2qaglst): t2qaglst
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -213,6 +259,7 @@ sexpdef_sort2
   val-T_SEXPDEF(knd0) = tknd.node()
 } (*where*) // end of [sexpdef_sort2(tknd)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 local
@@ -285,10 +332,11 @@ else optn_nil((*void*)) // not(iseq0)
 )
 |
 _(*non-G2Ea2pp*) => optn_nil((*void*))
-) (*case+*) // end of [g1exp_nmspace(g1e0)]
+)(*case+*)//end-of-[g1exp_nmspace(g1e0)]
 //
-end (*local*) // end of [local(g1exp_nmspace)]
+end(*local*)//end-of-[local(g1exp_nmspace)]
 
+(* ****** ****** *)
 (* ****** ****** *)
 
 #implfun
@@ -331,6 +379,49 @@ prerrln("trans12_q1arg: q1a0 = ", q1a0)
 } (*where*) // end of [trans12_q1arg(...)]
 
 (* ****** ****** *)
+
+#implfun
+trans12_q1arg_wth
+(env0, q1a1, s2v2) =
+(
+case+
+q1a1.node() of
+|
+Q1ARGsome(tok1, opt2) =>
+let
+//
+val
+opt2 =
+trans12_sort1opt(env0,opt2)
+//
+val s2t2 =
+(
+case+ opt2 of
+| optn_nil() =>
+(
+  s2v2.sort((*void*)) )
+| optn_cons(s2t2) => s2t2 ): sort2
+//
+in//let
+//
+let
+  val sid1 = sexpid_sym(tok1)
+in//let
+  s2var_make_idst(sid1, s2t2) endlet
+//
+end (*let*) // end of [Q1ARGsome(...)]
+) where
+{
+(*
+val () =
+(
+  prerrln
+  ("trans12_q1arg_wth: q1a0 = ", q1a0) )
+*)
+//
+}(*where*)//end-of-[trans12_q1arg_opt(...)]
+
+(* ****** ****** *)
 //
 #implfun
 trans12_s1qag
@@ -368,6 +459,27 @@ t2qag_make_s2vs
 {
 val s2vs =
 trans12_q1arglst(env0, q1as) }
+end (*let*) // end of [trans12_t1qag(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans12_t1qag_wth
+(env0, t1qa, t2qa) =
+let
+val
+loc0 = t1qa.lctn()
+in//let
+case+
+t1qa.node() of
+|
+T1QAGsome(q1as) =>
+t2qag_make_s2vs
+(  loc0, s2vs  ) where
+{
+val s2vs =
+trans12_q1arglst_wth
+(env0, q1as, t2qa.s2vs((*0*))) }
 end (*let*) // end of [trans12_t1qag(...)]
 //
 (* ****** ****** *)
@@ -2550,21 +2662,12 @@ D1Cimplmnt0
 val dimp = f1_dqid(env0, dqid)
 //
 in//let
-case+
-dimp.node() of
-| DIMPLone1 _ =>
-(
-  f0_implmnt0_one1(env0, d1cl, dimp) )
-|
-_(* DIMPLall1 *) =>
-(
-  f0_implmnt0_all1(env0, d1cl, dimp) )
-end where
+f0_implmnt0_dimp(env0, d1cl, dimp)
+end where // end-of-let(f0_implmnt0)
 {
 //
-val loc0 = d1cl.lctn()
-//
 (*
+val loc0 = d1cl.lctn()
 val (  ) =
 prerrln("f0_implmnt0(12): loc0 = ", loc0)
 val (  ) =
@@ -2576,7 +2679,7 @@ prerrln("f0_implmnt0(12): d2cl = ", d1cl)
 (* ****** ****** *)
 
 and
-f0_implmnt0_one1
+f0_implmnt0_dimp
 ( env0:
 ! tr12env
 , d1cl: d1ecl
@@ -2586,56 +2689,40 @@ let
 val
 loc0 = d1cl.lctn()
 //
-val d2c1 =
+val-
+D1Cimplmnt0
+( tknd
+, sqas, tqas
+, dqid
+, tias, f1as
+, sres, dexp) = d1cl.node()
+//
+val sqas =
+trans12_s1qaglst(env0, sqas)
+//
+val tqas =
 (
 case-
 dimp.node() of
-|DIMPLone1(d2c1) => d2c1)
 //
-val-
-D1Cimplmnt0
-( tknd
-, sqas, tqas
-, dqid
-, tias, f1as
-, sres, dexp) = d1cl.node()
+|DIMPLone1
+(   d2c1   ) =>
+(
+trans12_t1qaglst_wth
+( env0, tqas, t2qs )) where
+{
+val
+t2qs = d2cst_get_tqas(d2c1)}
 //
 (*
-val sqas =
-trans12_s1qaglst(env0, sqas)
-val tqas =
-trans12_t1qaglst(env0, tqas)
+HX-2024-01-07:
+Should this be disallowed?
 *)
-//
-in//let
-  f0_implmnt0_all1(env0, d1cl, dimp)
-end (*end*)//end-[f0_implmnt0_one1(env0,...)]
-
-(* ****** ****** *)
-
-and
-f0_implmnt0_all1
-( env0:
-! tr12env
-, d1cl: d1ecl
-, dimp: dimpl): d2ecl =
-let
-//
-val
-loc0 = d1cl.lctn()
-//
-val-
-D1Cimplmnt0
-( tknd
-, sqas, tqas
-, dqid
-, tias, f1as
-, sres, dexp) = d1cl.node()
-//
-val sqas =
-trans12_s1qaglst(env0, sqas)
-val tqas =
+|DIMPLall1
+(dqid, d2cs) =>
 trans12_t1qaglst(env0, tqas)
+//
+) : t2qaglst//end(val(tqas))
 //
 val (  ) =
 tr12env_pshlam0(env0)//enter
@@ -2688,10 +2775,10 @@ end where // end-of-let
 //
 (*
 val () =
-prerrln("f0_implmnt0_all1: d1cl = ", d1cl)
+prerrln("f0_implmnt0_dimp: d1cl = ", d1cl)
 *)
 //
-} (*where*)//end-[f0_implmnt0_all1(env0,...)]
+} (*where*)//end-[f0_implmnt0_dimp(env0,...)]
 //
 end (*local*) // end of [local(f0_implmnt0...)]
 
@@ -3717,6 +3804,69 @@ list_trans12_fnp(env0, sqas, trans12_s1qag)
 trans12_t1qaglst
   (env0, tqas) =
 list_trans12_fnp(env0, tqas, trans12_t1qag)
+//
+(* ****** ****** *)
+//
+#implfun
+trans12_q1arglst_wth
+ (env0, q1as, s2vs) =
+(
+case+ q1as of
+|
+list_nil() =>
+(
+  list_nil((*void*)))
+|
+list_cons(q1a1, qas1) =>
+(
+case+ s2vs of
+|
+list_nil() =>
+trans12_q1arglst(env0, q1as)
+|
+list_cons(s2v1, svs2) =>
+let
+val svar =
+trans12_q1arg_wth(env0,q1a1,s2v1)
+in//let
+list_cons(svar,
+trans12_q1arglst_wth(env0,qas1,svs2))
+end//let
+)(*end-of-[ list_cons( q1a1, qas2 ) ]*)
+)(*case+*) // end-of-[trans12_q1arglst_wth]
+//
+(* ****** ****** *)
+//
+#implfun
+trans12_t1qaglst_wth
+ (env0, t1qs, t2qs) =
+(
+case+ t1qs of
+|
+list_nil() =>
+(
+  list_nil((*void*)))
+|
+list_cons(t1qa, tqs1) =>
+(
+case+ t2qs of
+|
+list_nil() =>
+trans12_t1qaglst(env0, t1qs)
+|
+list_cons(t2qa, tqs2) =>
+let
+val tqag =
+trans12_t1qag_wth(env0,t1qa,t2qa)
+in//let
+list_cons(tqag,
+trans12_t1qaglst_wth(env0,tqs1,tqs2))
+end//let
+)(*end-of-[ list_cons( t1qa, tqs1 ) ]*)
+)(*case+*) // end-of-[trans12_t1qaglst_wth]
+//
+(* ****** ****** *)
+//
 #implfun
 trans12_t1iaglst
   (env0, tias) =

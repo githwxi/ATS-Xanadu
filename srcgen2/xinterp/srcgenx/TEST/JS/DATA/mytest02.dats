@@ -169,5 +169,22 @@ end//let//end of [fibats]
 (* ****** ****** *)
 val fibats10 = fibats(10) // fibats10 = 55
 (* ****** ****** *)
+(* ****** ****** *)
+#extern
+fun
+<a:vt>
+foo(x: a): sint
+(* ****** ****** *)
+//
+#impltmp{a:vt}
+foo<a>(x) = (g_free(x); 1)
+//
+#impltmp{a:t0}foo<a>(x) = 0
+//
+(* ****** ****** *)
+val ans0 = foo(list_nil<sint>()) // 0
+val ans1 = foo(list_vt_nil<sint>()) // 1
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XINTERP_TEST_JS_DATA_mytest02.dats] *)

@@ -328,6 +328,14 @@ s2vts = list@(s2var, s2typ)
 //
 (* ****** ****** *)
 //
+// HX-2024-01-07:
+//
+fun // s2typ.sort() <=
+s2vts_stleq // s2var.sort()
+( svts: s2vts ): (  bool  )
+//
+(* ****** ****** *)
+//
 fun
 s2vts_search_opt
 ( s2vts, s2var ): s2typopt_vt

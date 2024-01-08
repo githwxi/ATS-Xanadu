@@ -147,6 +147,7 @@ D3E = "./dynexp3.sats"
 #typedef d4parsed = d4parsed_tbox
 (* ****** ****** *)
 //
+#typedef d4explstopt = optn(d4explst)
 #typedef d4eclistopt = optn(d4eclist)
 //
 (* ****** ****** *)

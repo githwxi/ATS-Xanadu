@@ -310,7 +310,68 @@ t2dat_equal
 #impltmp
 g_lte<t2bas> = lte_t2bas_t2bas
 (* ****** ****** *)
+(* ****** ****** *)
 
+local
+//
+(*
+HX: For
+debugging [subsort_test]
+*)
+//
+(*
+fun
+subsort_test
+( t1: sint
+, t2: sint): bool =
+(
+if
+( sortbox(t1)
+< sortbox(t2) ) then false
+else
+(
+if
+( sortlin(t1)
+> sortlin(t2) ) then false
+else
+( sortprf(t1) <= sortprf(t2) )
+)
+) where
+{
+//
+(*
+val () =
+prerrln("subsort_test: t1 = ", t1)
+val () =
+prerrln("subsort_test: t2 = ", t2)
+//
+val b1 = sortbox(t1)
+val b2 = sortbox(t2)
+val () =
+prerrln("subsort_test:sortbox(t1) = ", b1)
+val () =
+prerrln("subsort_test:sortbox(t2) = ", b2)
+//
+val b1 = sortlin(t1)
+val b2 = sortlin(t2)
+val () =
+prerrln("subsort_test:sortlin(t1) = ", b1)
+val () =
+prerrln("subsort_test:sortlin(t2) = ", b2)
+//
+val b1 = sortprf(t1)
+val b2 = sortprf(t2)
+val () =
+prerrln("subsort_test:sortprf(t1) = ", b1)
+val () =
+prerrln("subsort_test:sortprf(t2) = ", b2)
+*)
+//
+}(*where*) // end-of-[subsort_test(t1, t2)]
+*)
+//
+in(*local*)
+//
 #implfun
 lte_t2bas_t2bas
   ( x1 , x2 ) =
@@ -330,9 +391,11 @@ case+
 ( T2Bimpr(kx1, _)
 , T2Bimpr(kx2, _)) => subsort_test(kx1, kx2)
 //
-| (_(*rest*), _(*rest*)) => (   false   )
+| (_(*rest*) , _(*rest*)) => (    false    )
 //
 ) (*case+*) // end of [lte_t2bas_t2bas(x1,x2)]
+//
+end (*local*) // end of [local(lte_t2bas_t2bas)]
 
 (* ****** ****** *)
 #impltmp
