@@ -69,17 +69,17 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
-#symload lctn with d2exp_get_lctn
-#symload node with d2exp_get_node
-(* ****** ****** *)
-#symload lctn with d2ecl_get_lctn
-#symload node with d2ecl_get_node
-(* ****** ****** *)
 #symload lctn with d3exp_get_lctn
 #symload node with d3exp_get_node
 (* ****** ****** *)
 #symload lctn with d3ecl_get_lctn
 #symload node with d3ecl_get_node
+(* ****** ****** *)
+#symload lctn with d4exp_get_lctn
+#symload node with d4exp_get_node
+(* ****** ****** *)
+#symload lctn with d4ecl_get_lctn
+#symload node with d4ecl_get_node
 (* ****** ****** *)
 (* ****** ****** *)
 //
