@@ -128,6 +128,7 @@ fun fperr44_l4d4e(FILR, l4d4e): void
 fun fperr44_d4ecl(FILR, d4ecl): void
 (* ****** ****** *)
 fun fperr44_d4explst(FILR, d4explst): void
+fun fperr44_d4expopt(FILR, d4expopt): void
 fun fperr44_l4d4elst(FILR, l4d4elst): void
 (* ****** ****** *)
 fun fperr44_d4eclist(FILR, d4eclist): void
@@ -135,6 +136,15 @@ fun fperr44_d4eclist(FILR, d4eclist): void
 fun fperr44_d4valdcl(FILR, d4valdcl): void
 fun fperr44_d4vardcl(FILR, d4vardcl): void
 fun fperr44_d4fundcl(FILR, d4fundcl): void
+(* ****** ****** *)
+fun
+fperr44_d4valdclist(FILR, d4valdclist): void
+(* ****** ****** *)
+fun
+fperr44_d4vardclist(FILR, d4vardclist): void
+(* ****** ****** *)
+fun
+fperr44_d4fundclist(FILR, d4fundclist): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
