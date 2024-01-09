@@ -62,6 +62,7 @@ ATS_PACKNAME
 #symload node with token_get_node
 (* ****** ****** *)
 #symload lctn with d4exp_get_lctn
+#symload styp with d4exp_get_styp
 #symload node with d4exp_get_node
 (* ****** ****** *)
 (* ****** ****** *)

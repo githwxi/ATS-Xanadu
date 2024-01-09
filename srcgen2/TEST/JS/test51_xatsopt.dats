@@ -413,6 +413,13 @@
 "./../../DATS/trans34_decl00.dats"
 (* ****** ****** *)
 #include
+"./../../DATS/fperr44.dats"
+#include
+"./../../DATS/fperr44_dynexp.dats"
+#include
+"./../../DATS/fperr44_decl00.dats"
+(* ****** ****** *)
+#include
 "./../../DATS/xatsopt.dats"
 #include
 "./../../DATS/xatsopt_utils0.dats"
@@ -448,7 +455,7 @@ val dpar =
 // *)
 //
 val dpar =
-  d3parsed_of_trans34(dpar)
+  d4parsed_of_trans34(dpar)
 //
 in//let
 fperr44_d4parsed

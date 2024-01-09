@@ -58,4 +58,15 @@ ATS_PACKNAME
 (* ****** ****** *)
 (* ****** ****** *)
 
+local
+
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+
+endloc (*local*) // end of [ local(tr34env...) ]
+
+(* ****** ****** *)
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_trans34_myenv0.dats] *)
