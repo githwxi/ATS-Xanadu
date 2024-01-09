@@ -189,7 +189,7 @@ fperr33_d3fundclist(FILR, d3fundclist): void
 //
 fun
 fperr33_d3parsed
-( out: FILR, dpar: d3parsed ): void
+( out: FILR, dpar: d3parsed ): void//end-fun
 //
 (* ****** ****** *)
 //
