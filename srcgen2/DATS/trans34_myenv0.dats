@@ -53,6 +53,9 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"
 (* ****** ****** *)
+#staload "./../SATS/staexp2.sats"
+#staload "./../SATS/statyp2.sats"
+#staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans34.sats"
 (* ****** ****** *)
@@ -60,8 +63,38 @@ ATS_PACKNAME
 
 local
 
+datavwtp
+linstk =
+//
+| linstk_nil of ()
+//
+(* ****** ****** *)
+//
+datavwtp
+tr34env =
+TR34ENV of
+(
+d2varlst, linstk(*void*))
+//
+(* ****** ****** *)
+#absimpl tr34env_vtbx = tr34env
+(* ****** ****** *)
 (* ****** ****** *)
 in//local
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+tr34env_make_nil
+  ((*nil*)) =
+(
+  TR34ENV
+  (d2vs, linstk_nil)) where
+{
+  val d2vs = list_nil((*void*))
+}(*where*) // end of [tr34env_make_nil(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 endloc (*local*) // end of [ local(tr34env...) ]
