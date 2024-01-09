@@ -208,6 +208,10 @@ trans34_sats
 trans34_sats: ; $(XATSOPT) --static SATS/trans34.sats
 ######
 all_sats:: \
+fperr44_sats
+fperr44_sats: ; $(XATSOPT) --static SATS/fperr44.sats
+######
+all_sats:: \
 xglobal_sats
 xglobal_sats: ; $(XATSOPT) --static SATS/xglobal.sats
 ######
