@@ -81,6 +81,8 @@ trtmp3c.sats \
 tread33.sats \
 fperr33.sats \
 dynexp4.sats \
+trans34.sats \
+fperr44.sats \
 xglobal.sats \
 xatsopt.sats \
 
@@ -238,6 +240,9 @@ trans34_myenv0.dats \
 trans34_utils0.dats \
 trans34_dynexp.dats \
 trans34_decl00.dats \
+fperr44.dats \
+fperr44_dynexp.dats \
+fperr44_decl00.dats \
 xatsopt_tmplib.dats \
 xatsopt_utils0.dats \
 

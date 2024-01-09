@@ -150,7 +150,7 @@ fperr44_d4fundclist(FILR, d4fundclist): void
 //
 fun
 fperr44_d4parsed
-( out: FILR, dpar: d4parsed ): void
+( out: FILR, dpar: d4parsed ): void//end-fun
 //
 (* ****** ****** *)
 fun

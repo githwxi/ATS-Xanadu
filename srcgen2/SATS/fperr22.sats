@@ -172,7 +172,7 @@ fperr22_d2fundclist(FILR, d2fundclist): void
 //
 fun
 fperr22_d2parsed
-( out: FILR, dpar: d2parsed ): void
+( out: FILR, dpar: d2parsed ): void//end-fun
 //
 (* ****** ****** *)
 //
