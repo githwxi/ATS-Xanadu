@@ -836,6 +836,18 @@ trans34_decl00_dats: ; $(XATSOPT) --dynamic DATS/trans34_decl00.dats
 
 ######
 all_dats:: \
+fperr44_dats
+fperr44_dats: ; $(XATSOPT) --dynamic DATS/fperr44.dats
+all_dats:: \
+fperr44_dynexp_dats
+fperr44_dynexp_dats: ; $(XATSOPT) --dynamic DATS/fperr44_dynexp.dats
+all_dats:: \
+fperr44_decl00_dats
+fperr44_decl00_dats: ; $(XATSOPT) --dynamic DATS/fperr44_decl00.dats
+######
+
+######
+all_dats:: \
 xatsopt_tmplib_dats
 xatsopt_tmplib_dats: ; $(XATSOPT) --dynamic DATS/xatsopt_tmplib.dats
 ######
