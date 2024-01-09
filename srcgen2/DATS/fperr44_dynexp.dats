@@ -183,10 +183,10 @@ fperr44_d4expopt
 (* ****** ****** *)
 //
 #implfun
-fperr44_l3d4elst
+fperr44_l4d4elst
   (out, ldes) =
 (
-  list_fperr44_fnp(out, ldes, fperr44_l3d4e))
+  list_fperr44_fnp(out, ldes, fperr44_l4d4e))
 //
 (* ****** ****** *)
 (* ****** ****** *)

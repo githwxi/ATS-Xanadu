@@ -117,6 +117,8 @@ D3E = "./dynexp3.sats"
 (* ****** ****** *)
 #typedef g1exp = $G1M.g1exp
 (* ****** ****** *)
+#typedef s2typ = $S2E.s2typ
+(* ****** ****** *)
 #typedef d2var = $D2E.d2var
 #typedef d2con = $D2E.d2con
 #typedef d2cst = $D2E.d2cst
@@ -251,10 +253,14 @@ fun
 d4exp_get_lctn(d4exp): ( loc_t )
 //
 fun
+d4exp_get_styp(d4exp): ( s2typ )
+//
+fun
 d4exp_get_node(d4exp): d4exp_node
 //
 (* ****** ****** *)
 #symload lctn with d4exp_get_lctn
+#symload styp with d4exp_get_styp
 #symload node with d4exp_get_node
 (* ****** ****** *)
 fun
