@@ -185,6 +185,7 @@ fperr33_d3vardclist(FILR, d3vardclist): void
 fun
 fperr33_d3fundclist(FILR, d3fundclist): void
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 fperr33_d3parsed
@@ -197,6 +198,7 @@ fperr33_d3explstopt(FILR, d3explstopt): void
 fun
 fperr33_d3eclistopt(FILR, d3eclistopt): void
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_fperr33.sats] *)

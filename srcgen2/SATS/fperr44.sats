@@ -136,5 +136,18 @@ fun fperr44_d4valdcl(FILR, d4valdcl): void
 fun fperr44_d4vardcl(FILR, d4vardcl): void
 fun fperr44_d4fundcl(FILR, d4fundcl): void
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fperr44_d4parsed
+( out: FILR, dpar: d4parsed ): void
+//
+(* ****** ****** *)
+fun
+fperr44_d4explstopt(FILR, d4explstopt): void
+fun
+fperr44_d4eclistopt(FILR, d4eclistopt): void
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_fperr44.sats] *)
