@@ -72,6 +72,21 @@ D4E = "./dynexp4.sats"
 (* ****** ****** *)
 #typedef d4eclist = $D4E.d4eclist
 (* ****** ****** *)
+#typedef d4valdcl = $D4E.d4valdcl
+#typedef d4vardcl = $D4E.d4vardcl
+#typedef d4fundcl = $D4E.d4fundcl
+(* ****** ****** *)
+//
+#typedef d4parsed = $D4E.d4parsed
+//
+(* ****** ****** *)
+#typedef d4valdclist = $D4E.d4valdclist
+#typedef d4vardclist = $D4E.d4vardclist
+#typedef d4fundclist = $D4E.d4fundclist
+(* ****** ****** *)
+#typedef d4explstopt = $D4E.d4explstopt
+#typedef d4eclistopt = $D4E.d4eclistopt
+(* ****** ****** *)
 #typedef d4eclistopt = $D4E.d4eclistopt
 (* ****** ****** *)
 (*
@@ -110,6 +125,16 @@ HX: fperr44 for dynamics
 fun fperr44_d4exp(FILR, d4exp): void
 fun fperr44_l4d4e(FILR, l4d4e): void
 (* ****** ****** *)
+fun fperr44_d4ecl(FILR, d4ecl): void
+(* ****** ****** *)
+fun fperr44_d4explst(FILR, d4explst): void
+fun fperr44_l4d4elst(FILR, l4d4elst): void
+(* ****** ****** *)
+fun fperr44_d4eclist(FILR, d4eclist): void
+(* ****** ****** *)
+fun fperr44_d4valdcl(FILR, d4valdcl): void
+fun fperr44_d4vardcl(FILR, d4vardcl): void
+fun fperr44_d4fundcl(FILR, d4fundcl): void
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_fperr44.sats] *)
