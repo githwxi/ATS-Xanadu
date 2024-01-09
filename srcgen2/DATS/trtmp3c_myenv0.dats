@@ -96,6 +96,11 @@ tmqstk =
 //
 (* ****** ****** *)
 //
+(*
+HX-2024-01-09:
+[topmap] is not yet used
+*)
+//
 datavwtp
 tr3cenv =
 TR3CENV of
@@ -849,7 +854,8 @@ prerrln("tmqstk_search_dcst: d2c = ", d2c)
 tr3cenv_make_nil
   ((*nil*)) =
 (
-  TR3CENV(map1, tmqstk_nil)) where
+  TR3CENV
+  (map1, tmqstk_nil)) where
 {
   val map1 = topmap_make_nil((*nil*))
 }(*where*) // end of [tr3cenv_make_nil(...)]

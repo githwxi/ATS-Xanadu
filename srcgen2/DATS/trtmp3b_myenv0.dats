@@ -89,6 +89,10 @@ tmpstk =
 //
 (* ****** ****** *)
 //
+(*
+HX-2024-01-09:
+[topmap] is not yet used
+*)
 datavwtp
 tr3benv =
 TR3BENV of
@@ -544,7 +548,8 @@ prerrln("tmpstk_search_dcst: d2c = ", d2c)
 tr3benv_make_nil
   ((*nil*)) =
 (
-  TR3BENV(map1, tmpstk_nil)) where
+  TR3BENV
+  (map1, tmpstk_nil)) where
 {
   val map1 = topmap_make_nil((*nil*))
 }(*where*) // end of [tr3benv_make_nil(...)]

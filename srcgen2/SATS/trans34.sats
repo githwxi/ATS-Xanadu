@@ -74,6 +74,8 @@ MAP = "./xsymmap.sats"
 (* ****** ****** *)
 #typedef d4ecl = $D4E.d4ecl
 (* ****** ****** *)
+#typedef d2varlst = $D2E.d2varlst
+(* ****** ****** *)
 #typedef d3explst = $D3E.d3explst
 #typedef d3expopt = $D3E.d3expopt
 #typedef l3d3elst = $D3E.l3d3elst
@@ -106,7 +108,7 @@ d4parsed_of_trans34
 fun
 tr34env_make_nil((*nil*)):tr34env
 fun
-tr34env_free_top(tr34env):( void )
+tr34env_free_top(tr34env):d2varlst
 //
 (* ****** ****** *)
 (* ****** ****** *)

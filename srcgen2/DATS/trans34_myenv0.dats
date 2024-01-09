@@ -57,6 +57,7 @@ ATS_PACKNAME
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 #staload "./../SATS/trans34.sats"
 (* ****** ****** *)
 (* ****** ****** *)
@@ -84,6 +85,16 @@ in//local
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+linstk_free_nil
+(stk0: ~linstk): void =
+(
+case-
+stk0 of ~linstk_nil() => ())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 tr34env_make_nil
   ((*nil*)) =
@@ -94,6 +105,29 @@ tr34env_make_nil
   val d2vs = list_nil((*void*))
 }(*where*) // end of [tr34env_make_nil(...)]
 //
+(* ****** ****** *)
+
+#implfun
+tr34env_free_top
+  (  env0  ) =
+(
+case+ env0 of
+| ~
+TR34ENV
+(d2vs, map2) => d2vs where
+{
+//
+var
+linstk = map2
+//
+(*
+val nerr = linstk_poptop0(linstk)
+*)
+//
+val (  ) = linstk_free_nil(linstk) }
+//
+)(*case+*)//end-of-(tr34env_free_top(env0))
+
 (* ****** ****** *)
 (* ****** ****** *)
 
