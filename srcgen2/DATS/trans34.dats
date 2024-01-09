@@ -82,7 +82,7 @@ trans34_d3eclistopt(env0, parsed)
 //
 in//let
 let
-val ((*0*)) = tr34env_free_top(env0)
+val d2vlst = tr34env_free_top(env0)
 in//let
 d4parsed
 (stadyn
