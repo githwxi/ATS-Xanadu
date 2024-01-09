@@ -87,21 +87,21 @@ foreach$work<syn>(syn) = fpr(out, syn)
 (* ****** ****** *)
 //
 #implfun
-fperr44_d3parsed
+fperr44_d4parsed
   (out, dpar) = let
 //
 val nerror =
-d3parsed_get_nerror(dpar)
+d4parsed_get_nerror(dpar)
 //
 in//let
 if
 (nerror > 0) then
 let
 val parsed =
-d3parsed_get_parsed(dpar)
+d4parsed_get_parsed(dpar)
 in//let
 fperr44_d4eclistopt(out, parsed) end else ()
-end (*let*)//end-of-[fperr44_d3parsed(out,dpar)]
+end (*let*)//end-of-[fperr44_d4parsed(out,dpar)]
 //
 (* ****** ****** *)
 //
@@ -126,7 +126,7 @@ case+ dopt of
 |
 optn_nil() => ((*void*))
 |
-optn_cons(d3cs) => fperr44_d4eclist(out, d3cs)
+optn_cons(dcls) => fperr44_d4eclist(out, dcls)
 )
 //
 (* ****** ****** *)
