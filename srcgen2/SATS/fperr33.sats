@@ -51,8 +51,6 @@ S2E = "./staexp2.sats"
 #staload
 T2P = "./statyp2.sats"
 #staload
-D2E = "./dynexp2.sats"
-#staload
 D3E = "./dynexp3.sats"
 (* ****** ****** *)
 #typedef token = $LEX.token
@@ -201,4 +199,4 @@ fperr33_d3eclistopt(FILR, d3eclistopt): void
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_fperr22.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_fperr33.sats] *)
