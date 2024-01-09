@@ -133,6 +133,11 @@ D3E = "./dynexp3.sats"
 #abstbox d4ecl_tbox // p0tr
 #typedef d4ecl = d4ecl_tbox
 (* ****** ****** *)
+//
+#abstbox d4valdcl_tbox//p0tr
+#abstbox d4vardcl_tbox//p0tr
+#abstbox d4fundcl_tbox//p0tr
+//
 (* ****** ****** *)
 //
 #abstbox d4parsed_tbox//p0tr
@@ -144,7 +149,15 @@ D3E = "./dynexp3.sats"
 (* ****** ****** *)
 #typedef d4eclist = list(d4ecl)
 (* ****** ****** *)
+#typedef d4valdcl = d4valdcl_tbox
+#typedef d4vardcl = d4vardcl_tbox
+#typedef d4fundcl = d4fundcl_tbox
+(* ****** ****** *)
 #typedef d4parsed = d4parsed_tbox
+(* ****** ****** *)
+#typedef d4valdclist = list(d4valdcl)
+#typedef d4vardclist = list(d4vardcl)
+#typedef d4fundclist = list(d4fundcl)
 (* ****** ****** *)
 //
 #typedef d4explstopt = optn(d4explst)
