@@ -56,9 +56,11 @@ _(*TRANS34*) = "./trans34.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 #symload lctn with d3pat_get_lctn
+#symload styp with d3pat_get_styp
 #symload node with d3pat_get_node
 (* ****** ****** *)
 #symload lctn with d3exp_get_lctn
+#symload styp with d3exp_get_styp
 #symload node with d3exp_get_node
 (* ****** ****** *)
 (* ****** ****** *)
@@ -66,21 +68,53 @@ _(*TRANS34*) = "./trans34.dats"
 #implfun
 trans34_d3exp
   (env0, d3e0) =
-(
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+(*
+val (  ) = prerrln
+("trans34_d3exp: loc0 = ", loc0)
+val (  ) = prerrln
+("trans34_d3exp: d3e0 = ", d3e0)
+val (  ) = prerrln
+("trans34_d3exp: t2p0 = ", t2p0)
+*)
+//
+in//let
+//
 case+
 d3e0.node() of
+//
+|
+D3Eint(tok) =>
+(
+d4exp_make_tpnd
+(loc0, t2p0, D4Eint(tok)))
+|
+D3Ebtf(sym) =>
+(
+d4exp_make_tpnd
+(loc0, t2p0, D4Ebtf(sym)))
+|
+D3Echr(tok) =>
+(
+d4exp_make_tpnd
+(loc0, t2p0, D4Echr(tok)))
+//
 | _(*otherwise*) =>
 let
-  val loc0 = d3e0.lctn()
+  val loc0 = d3e0.lctn((*0*))
 in//let
-  d4exp_make_node(loc0, D4Enone1(d3e0))
+(
+  d4exp(loc0, t2p0, D4Enone1(d3e0)) )
 end(*let*)//end of [_(*otherwise*)] // temp
-) where
+//
+end where // end-of-[trans34_d3exp( ... )]
 {
 //
-val () =
-(
-  prerrln("trans34_d3exp: d3e0 = ", d3e0) )
+(* ****** ****** *)
 //
 }(*where*)//end of [trans34_d3exp(env0,d3e0)]
 //

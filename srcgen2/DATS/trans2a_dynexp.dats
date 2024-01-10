@@ -93,12 +93,12 @@ _(*TRANS2A*) = "./trans2a.dats"
 #symload s2vs with t2qag_get_s2vs
 (* ****** ****** *)
 //
-fun
+fn0
 s2typ_new0_x2tp
 ( loc0: loc_t ): s2typ =
 (
 s2typ_xtv
-(x2t2p_make_lctn(loc0)))
+(x2t2p_make_lctn(loc0)))//fn0
 //
 (* ****** ****** *)
 //
@@ -111,13 +111,13 @@ case+ svts of
 |list_nil() => ( t2p0 )
 |list_cons _ =>
 (
-s2typ_subst0(t2p0, svts))
-)(*case+*) // s2typ_subst0
+s2typ_subst0(t2p0, svts))//fn0
+)(*case+*) // s2typ_subst0(...)
 //
 (* ****** ****** *)
 //
 fun
-d2pat_make_styp_node
+d2pat_make_tpnd
 ( loc0: loc_t
 , t2p0: s2typ
 , node: d2pat_node): d2pat =
@@ -125,10 +125,10 @@ let
 val
 d2p0 = d2pat(loc0, node)
 in
-  (d2p0.styp(t2p0); d2p0) end
+  (d2p0.styp(t2p0); d2p0) endlet
 //
 fun
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0: loc_t
 , t2p0: s2typ
 , node: d2exp_node): d2exp =
@@ -136,12 +136,10 @@ let
 val
 d2e0 = d2exp(loc0, node)
 in
-  (d2e0.styp(t2p0); d2e0) end
+  (d2e0.styp(t2p0); d2e0) endlet
 //
-#symload
-d2pat with d2pat_make_styp_node
-#symload
-d2exp with d2exp_make_styp_node
+#symload d2pat with d2pat_make_tpnd
+#symload d2exp with d2exp_make_tpnd
 //
 (* ****** ****** *)
 //
@@ -216,7 +214,7 @@ f0_int
 ! tr2aenv
 , d2p0: d2pat): d2pat =
 (
-d2pat_make_styp_node
+d2pat_make_tpnd
 ( loc0
 , t2p0, D2Pint(tok))) where
 {
@@ -231,7 +229,7 @@ f0_i00
 ! tr2aenv
 , d2p0: d2pat): d2pat =
 (
-d2pat_make_styp_node
+d2pat_make_tpnd
 ( loc0
 , t2p0, D2Pi00(int))) where
 {
@@ -248,7 +246,7 @@ f0_btf
 ! tr2aenv
 , d2p0: d2pat): d2pat =
 (
-d2pat_make_styp_node
+d2pat_make_tpnd
 ( loc0
 , t2p0, D2Pbtf(sym))) where
 {
@@ -263,7 +261,7 @@ f0_b00
 ! tr2aenv
 , d2p0: d2pat): d2pat =
 (
-d2pat_make_styp_node
+d2pat_make_tpnd
 ( loc0
 , t2p0, D2Pb00(btf))) where
 {
@@ -280,7 +278,7 @@ f0_str
 ! tr2aenv
 , d2p0: d2pat): d2pat =
 (
-d2pat_make_styp_node
+d2pat_make_tpnd
 ( loc0
 , t2p0, D2Pstr(tok))) where
 {
@@ -295,7 +293,7 @@ f0_s00
 ! tr2aenv
 , d2p0: d2pat): d2pat =
 (
-d2pat_make_styp_node
+d2pat_make_tpnd
 ( loc0
 , t2p0, D2Ps00(str))) where
 {
@@ -312,7 +310,7 @@ f0_any
 ! tr2aenv
 , d2p0: d2pat): d2pat =
 (
-d2pat_make_styp_node
+d2pat_make_tpnd
 (loc0,t2p0,D2Pany())) where
 {
 //
@@ -331,7 +329,7 @@ f0_var
 ! tr2aenv
 , d2p0: d2pat): d2pat =
 (
-d2pat_make_styp_node
+d2pat_make_tpnd
 ( loc0
 , t2p0, D2Pvar(d2v1))) where
 {
@@ -371,7 +369,7 @@ val
 t2p0 = d2c1.styp()
 *)
 in//let
-d2pat_make_styp_node
+d2pat_make_tpnd
 ( loc0
 , t2p0, D2Pcon(d2c1))
 end where // end-of-[let]
@@ -482,7 +480,7 @@ D2Psym0
 val t2p0 = s2typ_new0_x2tp(loc0)
 //
 in//let
-d2pat_make_styp_node
+d2pat_make_tpnd
 (loc0, t2p0, D2Psym0(drpt,d1p1,d2is))
 end (*let*) // end of [f0_sym0(env0,...)]
 *)
@@ -504,7 +502,7 @@ D2Pcons
 //
 in//let
 //
-d2pat_make_styp_node
+d2pat_make_tpnd
 ( loc0
 , t2p0
 , D2Pcons(drpt, d2cs)) where
@@ -612,7 +610,7 @@ trans2a_d2pat_tpck(env0,d2f0,tfun)
 //
 in//let
 //
-d2pat_make_styp_node
+d2pat_make_tpnd
 (loc0, tres, D2Pdapp(d2f0,npf1,d2ps))
 //
 end (*let*) // end of [f0_dapp(env0,...)]
@@ -625,7 +623,7 @@ f0_tup0
 ! tr2aenv
 , d2p0: d2pat): d2pat =
 (
-d2pat_make_styp_node
+d2pat_make_tpnd
 ( loc0, t2p0
 , D2Ptup0(npf1, d2ps))) where
 {
@@ -653,7 +651,7 @@ f0_tup1
 ! tr2aenv
 , d2p0: d2pat): d2pat =
 (
-d2pat_make_styp_node
+d2pat_make_tpnd
 (
 loc0, t2p0,
 D2Ptup1(tknd, npf1, d2ps))) where
@@ -687,7 +685,7 @@ f0_rcd2
 ! tr2aenv
 , d2p0: d2pat): d2pat =
 (
-d2pat_make_styp_node
+d2pat_make_tpnd
 (
 loc0, t2p0,
 D2Prcd2(tknd, npf1, ldps))) where
@@ -735,7 +733,7 @@ val d2p1 =
 trans2a_d2pat_tpck(env0,d2p1,t2p2)
 //
 in//let
-d2pat_make_styp_node
+d2pat_make_tpnd
 (loc0, t2p2, D2Pannot(d2p1,s1e2,s2e2))
 end (*let*) // end of [f0_annot(env0,...)]
 
@@ -897,7 +895,7 @@ f0_int
 ! tr2aenv
 , d2e0: d2exp): d2exp =
 (
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , t2p0, D2Eint(tok))) where
 {
@@ -912,7 +910,7 @@ f0_i00
 ! tr2aenv
 , d2e0: d2exp): d2exp =
 (
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , t2p0, D2Ei00(int))) where
 {
@@ -929,7 +927,7 @@ f0_btf
 ! tr2aenv
 , d2e0: d2exp): d2exp =
 (
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , t2p0, D2Ebtf(sym))) where
 {
@@ -944,7 +942,7 @@ f0_b00
 ! tr2aenv
 , d2e0: d2exp): d2exp =
 (
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , t2p0, D2Eb00(btf))) where
 {
@@ -961,7 +959,7 @@ f0_chr
 ! tr2aenv
 , d2e0: d2exp): d2exp =
 (
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , t2p0, D2Echr(tok))) where
 {
@@ -976,7 +974,7 @@ f0_c00
 ! tr2aenv
 , d2e0: d2exp): d2exp =
 (
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , t2p0, D2Ec00(chr))) where
 {
@@ -993,7 +991,7 @@ f0_flt
 ! tr2aenv
 , d2e0: d2exp): d2exp =
 (
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , t2p0, D2Eflt(tok))) where
 {
@@ -1008,7 +1006,7 @@ f0_f00
 ! tr2aenv
 , d2e0: d2exp): d2exp =
 (
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , t2p0, D2Ef00(flt))) where
 {
@@ -1025,7 +1023,7 @@ f0_str
 ! tr2aenv
 , d2e0: d2exp): d2exp =
 (
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , t2p0, D2Estr(tok))) where
 {
@@ -1040,7 +1038,7 @@ f0_s00
 ! tr2aenv
 , d2e0: d2exp): d2exp =
 (
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , t2p0, D2Es00(str))) where
 {
@@ -1057,7 +1055,7 @@ f0_var
 ! tr2aenv
 , d2e0: d2exp): d2exp =
 (
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , t2p0, D2Evar(d2v1))) where
 {
@@ -1093,7 +1091,7 @@ val
 t2p0 = d2c1.styp()
 *)
 in//let
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , t2p0, D2Econ(d2c1))
 end where // end-of-[let]
@@ -1129,7 +1127,7 @@ val
 t2p0 = d2c1.styp()
 *)
 in//let
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , t2p0, D2Ecst(d2c1))
 end where // end-of-[let]
@@ -1167,7 +1165,7 @@ D2Etop(sym1) = d2e0.node()
 //
 in//let
 (
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , t2p0, D2Etop(sym1))) where
 { val
@@ -1191,7 +1189,7 @@ D2Esym0
 val t2p0 = s2typ_new0_x2tp(loc0)
 //
 in//let
-d2exp_make_styp_node
+d2exp_make_tpnd
 (loc0, t2p0, D2Esym0(drxp,d1e1,dpis))
 end (*let*) // end of [f0_sym0(env0,...)]
 //
@@ -1245,7 +1243,7 @@ prerrln("f0_sapp: tres = ", tres)
 //
 in//let
 (
-  d2exp_make_styp_node
+  d2exp_make_tpnd
   (loc0, tres, D2Esapp(d2f0, s2es)) )
 end where
 {
@@ -1342,7 +1340,7 @@ val
 d2e1 =
 f1_make(d2e1, d2f0)
 in//let
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( d2e1.lctn()
 , d2e1.styp()
 , D2Etapp(d2e1, s2es) )
@@ -1766,7 +1764,7 @@ trans2a_d2exp_tpck(env0,d2f0,tfun)
 //
 in//let
 //
-d2exp_make_styp_node
+d2exp_make_tpnd
 (loc0, tres, D2Edapp(d2f0,npf1,d2es))
 //
 end (*let*) // end of [f0_dapp_elses(env0,...)]
@@ -1816,7 +1814,7 @@ dtup =
 case+ topt of
 | // keep
 optn_vt_nil() =>
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , ttup
 , D2El2bck(dtup, dlab))
@@ -1836,7 +1834,7 @@ optn_vt_cons(tprj) => tprj )
 : s2typ // end of [val(tprj)]
 //
 in//let
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0, tprj
 , D2Eproj(tknd, drxp, dlab, dtup))
 end (*let*) // end of [f0_proj(env0,...)]
@@ -1866,7 +1864,7 @@ d2e1 = trans2a_d2exp(env0, d2e1)
 val (  ) = tr2aenv_poplet0(env0)
 //
 in//let
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , d2e1.styp(), D2Elet0(d2cs, d2e1))
 end (*let*) // end of [f0_let0(env0,...)]
@@ -1926,7 +1924,7 @@ trans2a_d2exp_tpck(env0, d2e3, t2p0))
 )
 //
 in//let
-d2exp_make_styp_node
+d2exp_make_tpnd
 (loc0, t2p0, D2Eift0(d2e1, dthn, dels))
 end (*let*) // end of [f0_ift0(env0,...)]
 //
@@ -1956,7 +1954,7 @@ val dcls =
 trans2a_d2clslst_tpck1
 (env0, dcls, targ, tres)
 in//let
-  d2exp_make_styp_node
+  d2exp_make_tpnd
   (loc0,tres,D2Ecas0(tknd,d2e1,dcls))
 end (*let*)
 end (*let*) // end of [f0_cas0(env0,...)]
@@ -1969,7 +1967,7 @@ f0_seqn
 ! tr2aenv
 , d2e0: d2exp): d2exp =
 (
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , d2e1.styp()
 , D2Eseqn(d2es, d2e1))) where
@@ -1994,7 +1992,7 @@ f0_tup0
 ! tr2aenv
 , d2e0: d2exp): d2exp =
 (
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0, t2p0
 , D2Etup0(npf1, d2es))) where
 {
@@ -2022,7 +2020,7 @@ f0_tup1
 ! tr2aenv
 , d2e0: d2exp): d2exp =
 (
-d2exp_make_styp_node
+d2exp_make_tpnd
 (
 loc0, t2p0,
 D2Etup1(tknd, npf1, d2es))) where
@@ -2056,7 +2054,7 @@ f0_rcd2
 ! tr2aenv
 , d2e0: d2exp): d2exp =
 (
-d2exp_make_styp_node
+d2exp_make_tpnd
 (
 loc0, t2p0,
 D2Ercd2(tknd, npf1, ldes))) where
@@ -2090,7 +2088,7 @@ f0_lam0
 ! tr2aenv
 , d2e0: d2exp): d2exp =
 (
-d2exp_make_styp_node
+d2exp_make_tpnd
 (
 loc0,
 tfun,
@@ -2146,7 +2144,7 @@ f0_fix0
 ! tr2aenv
 , d2e0: d2exp): d2exp =
 (
-d2exp_make_styp_node
+d2exp_make_tpnd
 (
 loc0,
 tfun,
@@ -2220,7 +2218,7 @@ trans2a_d2clslst_tpck1
 ( env0 , dcls , targ , tres )
 //
 in//let
-d2exp_make_styp_node
+d2exp_make_tpnd
 (loc0, tres, D2Etry0(tknd, d2e1, dcls))
 end (*let*) // end of [f0_try0(env0,...)]
 //
@@ -2458,7 +2456,7 @@ d2e1 = trans2a_d2exp(env0, d2e1)
 val (  ) = tr2aenv_poplet0(env0)
 //
 in//let
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , d2e1.styp(), D2Ewhere(d2e1, d2cs))
 end (*let*) // end of [f0_where(env0,...)]
@@ -2490,7 +2488,7 @@ d2er =
 trans2a_d2exp_tpck(env0,d2er,t2pl)
 //
 in//let
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0, t2p0, D2Eassgn(d2el, d2er) )
 end (*let*) // end of [f0_assgn(env0,d2e0)]
 //
@@ -2530,7 +2528,7 @@ val dsym =
 d2exp_sym0_styp(loc0,name,dpis,tfun)
 //
 in//let
-d2exp_make_styp_node
+d2exp_make_tpnd
 (loc0, tres, D2Edapp(dsym, npf1, d2es))
 end (*let*) // end of [f0_brget(env0,...)]
 //
@@ -2578,7 +2576,7 @@ val dsym =
 d2exp_sym0_styp(loc0,name,dpis,tfun)
 //
 in//let
-d2exp_make_styp_node
+d2exp_make_tpnd
 (loc0, tres, D2Edapp(dsym, npf1, d2es))
 end (*let*) // end of [f0_brset(env0,...)]
 //
@@ -2605,7 +2603,7 @@ trans2a_d2explstopt(env0, darg)
 val t2p0 = s2typ_new0_x2tp(loc0)
 //
 in//let
-d2exp_make_styp_node(
+d2exp_make_tpnd(
 loc0,
 t2p0,
 D2Edtsel(tknd, lab1, dpis, npf1, darg))
@@ -2632,7 +2630,7 @@ trans2a_d2exp_tpck(env0,d2e1,t2p1)
 //
 in//let
 //
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , t2p0, D2Eraise(tknd, d2e1))
 where
@@ -2660,7 +2658,7 @@ val
 d2e1 = trans2a_d2exp(env0,d2e1)
 //
 in//let
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , t2p0, D2El0azy(dsym, d2e1))
 where
@@ -2695,7 +2693,7 @@ trans2a_d2explst_tpck1
 (env0, d2es, the_s2typ_void())
 //
 in//let
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , t2p0
 , D2El1azy(dsym,d2e1,d2es)) where
@@ -2726,7 +2724,7 @@ val d2e1 =
 trans2a_d2exp_tpck(env0, d2e1, t2p2)
 //
 in//let
-d2exp_make_styp_node
+d2exp_make_tpnd
 (loc0, t2p2, D2Eannot(d2e1,s1e2,s2e2))
 end (*let*) // end of [f0_annot(env0,...)]
 
@@ -2766,7 +2764,7 @@ D2Eextnam
 //
 in//let
 //
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0
 , t2p0, D2Eextnam(tknd, gnm1))
 where

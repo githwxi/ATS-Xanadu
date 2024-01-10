@@ -86,7 +86,7 @@ s2typ_xtv(x2t2p_make_lctn(loc0))
 (* ****** ****** *)
 //
 fun
-d2pat_make_styp_node
+d2pat_make_tpnd
 ( loc0: loc_t
 , t2p0: s2typ
 , node: d2pat_node): d2pat =
@@ -97,7 +97,7 @@ in
   (d2p0.styp(t2p0); d2p0) end
 //
 fun
-d2exp_make_styp_node
+d2exp_make_tpnd
 ( loc0: loc_t
 , t2p0: s2typ
 , node: d2exp_node): d2exp =
@@ -107,10 +107,8 @@ d2e0 = d2exp(loc0, node)
 in
   (d2e0.styp(t2p0); d2e0) end
 //
-#symload
-d2pat with d2pat_make_styp_node
-#symload
-d2exp with d2exp_make_styp_node
+#symload d2pat with d2pat_make_tpnd
+#symload d2exp with d2exp_make_tpnd
 //
 (* ****** ****** *)
 //
