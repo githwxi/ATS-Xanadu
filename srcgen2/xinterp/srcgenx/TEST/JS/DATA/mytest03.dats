@@ -59,6 +59,44 @@ val fact5_10: sint =
 (* ****** ****** *)
 //
 val
+fact6_10: sint =
+(
+glseq_mul0
+(strm_vt_range_lte(1, 10)))
+//
+(* ****** ****** *)
+//
+(*
+val
+dfact6_10: sint =
+(
+glseq_mul0
+(strm_vt_range_lte(1, 10))) where
+{
+ #impltmp g_succ<sint>(x) = x + 2
+}
+*)
+//
+(* ****** ****** *)
+//
+val
+dfact6_10: sint =
+(
+glseq_mul0
+(
+filter0
+(strm_vt_range_lte(1, 10))
+where
+{
+#impltmp
+filter0$test<sint>(x) = x%2 > 0
+}
+)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val
 mystrn2 = "01"
 val test =
 gseq_forall
