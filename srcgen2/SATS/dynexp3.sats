@@ -371,12 +371,12 @@ fun
 d3pat_make_node
 (loc:loc_t,nod:d3pat_node): d3pat
 fun
-d3pat_make_styp_node
+d3pat_make_tpnd
 (loc:loc_t
 ,t2p:s2typ,nod:d3pat_node): d3pat
 //
 #symload d3pat with d3pat_make_node
-#symload d3pat with d3pat_make_styp_node
+#symload d3pat with d3pat_make_tpnd
 //
 (* ****** ****** *)
 
@@ -611,12 +611,12 @@ fun
 d3exp_make_node
 (loc:loc_t,nod:d3exp_node): d3exp
 fun
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc:loc_t
 ,t2p:s2typ,nod:d3exp_node): d3exp
 //
 #symload d3exp with d3exp_make_node
-#symload d3exp with d3exp_make_styp_node
+#symload d3exp with d3exp_make_tpnd
 //
 (* ****** ****** *)
 //

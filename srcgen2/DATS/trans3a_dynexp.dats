@@ -177,7 +177,7 @@ f0_var
 ! tr3aenv
 , d3p0: d3pat): d3pat =
 (
-d3pat_make_styp_node
+d3pat_make_tpnd
 ( loc0
 , t2p0, D3Pvar(d2v1))) where
 {
@@ -200,7 +200,7 @@ f0_any
 ! tr3aenv
 , d3p0: d3pat): d3pat =
 (
-d3pat_make_styp_node
+d3pat_make_tpnd
 ( loc0
 , t2p0, D3Pany((*0*)))) where
 {
@@ -319,7 +319,7 @@ d3p1 = trans3a_d3pat(env0, d3p1)
 //
 in//let
 (
-  d3pat_make_styp_node
+  d3pat_make_tpnd
   (loc0, t2p0, D3Psapq(d3p1, s2as)) )
 end(*let*)//end-of-[f0_sapq(env0,d3p0)]
 //
@@ -414,7 +414,7 @@ val
 d3ps = trans3a_d3patlst(env0, d3ps)
 //
 in//let
-d3pat_make_styp_node
+d3pat_make_tpnd
 (loc0, t2p0, D3Pdapp(d3f0,npf1,d3ps))
 end(*let*)//end-of-[f0_dapp(env0,d3p0)]
 //
@@ -472,7 +472,7 @@ val d3ps =
 trans3a_d3patlst(env0, d3ps)
 //
 in//let
-d3pat_make_styp_node
+d3pat_make_tpnd
 (loc0, t2p0, D3Ptup1(knd0, npf1, d3ps))
 end (*let*)//end-of-[ f0_tup1(env0,d3p0) ]
 //
@@ -502,7 +502,7 @@ val ldps =
 trans3a_l3d3plst(env0, ldps)
 //
 in//let
-d3pat_make_styp_node
+d3pat_make_tpnd
 (loc0, t2p0, D3Prcd2(knd0, npf1, ldps))
 end (*let*)//end-of-[ f0_rcd2(env0,d3p0) ]
 //
@@ -533,7 +533,7 @@ val
 d3p1 = trans3a_d3pat(env0, d3p1)
 //
 in//let
-d3pat_make_styp_node
+d3pat_make_tpnd
 (loc0, t2p0, D3Pannot(d3p1,s1e2,s2e2))
 end(*let*)//end of [f0_annot(env0,d3p0)]
 //
@@ -724,7 +724,7 @@ f0_var
 ! tr3aenv
 , d3e0: d3exp): d3exp =
 (
-d3exp_make_styp_node
+d3exp_make_tpnd
 ( loc0
 , t2p0, D3Evar(d2v1))) where
 {
@@ -747,7 +747,7 @@ f0_con
 ! tr3aenv
 , d3e0: d3exp): d3exp =
 (
-d3exp_make_styp_node
+d3exp_make_tpnd
 ( loc0
 , t2p0, D3Econ(d2c1))) where
 {
@@ -770,7 +770,7 @@ f0_cst
 ! tr3aenv
 , d3e0: d3exp): d3exp =
 (
-d3exp_make_styp_node
+d3exp_make_tpnd
 ( loc0
 , t2p0, D3Ecst(d2c1))) where
 {
@@ -793,7 +793,7 @@ f0_top
 ! tr3aenv
 , d3e0: d3exp): d3exp =
 (
-d3exp_make_styp_node
+d3exp_make_tpnd
 ( loc0
 , t2p0, D3Etop(sym1))) where
 {
@@ -827,7 +827,7 @@ val
 d3f0 = trans3a_d3exp(env0, d3f0)
 //
 in//let
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0, d3f0.styp(), D3Esapp(d3f0,s2es))
 end(*let*)//end-of-[ f0_sapp(env0,d3e0) ]
 //
@@ -862,7 +862,7 @@ d3f0 = trans3a_d3exp(env0, d3f0)
 //
 in//let
 (
-  d3exp_make_styp_node
+  d3exp_make_tpnd
   (loc0, t2p0, D3Esapq(d3f0, t2ps)) )
 end(*let*)//end-of-[ f0_sapq(env0,d3e0) ]
 //
@@ -885,7 +885,7 @@ val
 d3f0 = trans3a_d3exp(env0, d3f0)
 //
 in//let
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0, d3f0.styp(), D3Etapp(d3f0,s2es))
 end(*let*)//end-of-[ f0_tapp(env0,d3e0) ]
 //
@@ -920,7 +920,7 @@ d3f0 = trans3a_d3exp(env0, d3f0)
 //
 val
 d3e0 =
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0, t2p0, D3Etapq(d3f0, t2js))
 //
 in//let
@@ -938,7 +938,7 @@ val timp =
 timpl(loc0, TIMPLall1(d2c1, dcls))
 in//let
 (
-  d3exp_make_styp_node
+  d3exp_make_tpnd
   (loc0, t2p0, D3Etimp(d3e0, timp)))
 end (*let*) // end-of-[D3Ecst(d2c1)]
 *)
@@ -956,7 +956,7 @@ f0_dap0
 ! tr3aenv
 , d3e0: d3exp): d3exp =
 (
-d3exp_make_styp_node
+d3exp_make_tpnd
 ( loc0
 , t2p0, D3Edap0(d3f0))) where
 {
@@ -1004,7 +1004,7 @@ val d3es =
   trans3a_d3explst(env0, d3es)
 //
 in//let
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0, t2p0, D3Edapp(d3f0, npf1, d3es))
 end (*let*)//end-of-[ f0_dapp(env0,d3e0) ]
 //
@@ -1034,7 +1034,7 @@ val
 dcon = trans3a_d3exp(env0, dcon)
 //
 in//let
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0, t2p0, D3Epcon(tknd, dlab, dcon))
 end (*let*)//end-of-[ f0_pcon(env0,d3e0) ]
 //
@@ -1064,7 +1064,7 @@ val
 dtup = trans3a_d3exp(env0, dtup)
 //
 in//let
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0, t2p0, D3Eproj(tknd, dlab, dtup))
 end (*let*)//end-of-[ f0_proj(env0,d3e0) ]
 //
@@ -1102,7 +1102,7 @@ val (  ) = tr3aenv_poplet0(env0)
 //
 in//let
 (
-  d3exp_make_styp_node
+  d3exp_make_tpnd
   (loc0, t2p0, D3Elet0(dcls, d3e1)))
 end (*let*)//end-of-[ f0_let0(env0,d3e0) ]
 //
@@ -1137,7 +1137,7 @@ val dels =
 trans3a_d3expopt(env0, dels)
 //
 in//let
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0, t2p0, D3Eift0(d3e1, dthn, dels))
 end (*let*) // end of [f0_ift0(env0,d3e0)]
 //
@@ -1170,7 +1170,7 @@ val dcls =
   trans3a_d3clslst(env0, dcls)
 //
 in//let
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0, t2p0, D3Ecas0(tknd, d3e1, dcls))
 end (*let*) // end of [f0_cas0(env0,d3e0)]
 //
@@ -1260,7 +1260,7 @@ val d3es =
   trans3a_d3explst(env0, d3es)
 //
 in//let
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0, t2p0, D3Etup1(knd0, npf1, d3es))
 end (*let*)//end-of-[ f0_tup1(env0,d3e0) ]
 //
@@ -1290,7 +1290,7 @@ val ldes =
   trans3a_l3d3elst(env0, ldes)
 //
 in//let
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0, t2p0, D3Ercd2(knd0, npf1, ldes))
 end (*let*)//end-of-[ f0_rcd2(env0,d3e0) ]
 //
@@ -1333,7 +1333,7 @@ val
 body = trans3a_d3exp(env0, body)
 //
 in//let
-d3exp_make_styp_node
+d3exp_make_tpnd
 ( loc0, t2p0
 , D3Elam0(tknd,f3as,sres,arrw,body))
 end (*let*) // end of [f0_lam0(env0,d3e0)]
@@ -1385,7 +1385,7 @@ val
 body = trans3a_d3exp(env0, body)
 //
 in//let
-d3exp_make_styp_node
+d3exp_make_tpnd
 (
 loc0,
 t2p0,
@@ -1422,7 +1422,7 @@ val dcls =
   trans3a_d3clslst(env0, dcls)
 //
 in//let
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0, t2p0, D3Etry0(tknd, d3e1, dcls))
 end (*let*) // end of [f0_try0(env0,d3e0)]
 //
@@ -1731,7 +1731,7 @@ val (  ) = tr3aenv_poplet0(env0)
 //
 in//let
 (
-  d3exp_make_styp_node
+  d3exp_make_tpnd
   (loc0, t2p0, D3Ewhere(d3e1, dcls)))
 end (*let*) // end of [f0_where(env0,...)]
 //
@@ -1765,7 +1765,7 @@ d3er = trans3a_d3exp(env0, d3er)
 //
 in//let
 (
-  d3exp_make_styp_node
+  d3exp_make_tpnd
   (loc0, t2p0, D3Eassgn(d3el, d3er)) )
 end (*let*) // end of [f0_assgn(env0,...)]
 //
@@ -1797,7 +1797,7 @@ dexn = trans3a_d3exp(env0, dexn)
 //
 in//let
 (
-  d3exp_make_styp_node
+  d3exp_make_tpnd
   (loc0, t2p0, D3Eraise(tknd, dexn)) )
 end (*let*) // end of [f0_raise(env0,...)]
 //
@@ -1828,7 +1828,7 @@ val
 d3e1 = trans3a_d3exp(env0, d3e1)
 //
 in//let
-  d3exp_make_styp_node
+  d3exp_make_tpnd
   (loc0, t2p0, D3El0azy(dknd, d3e1))
 end (*let*) // end of [f0_l0azy(env0,...)]
 //
@@ -1863,7 +1863,7 @@ d3es = trans3a_d3explst(env0, d3es)
 //
 in//let
 (
-  d3exp_make_styp_node
+  d3exp_make_tpnd
   ( loc0
   , t2p0, D3El1azy(dknd,d3e1,d3es)) )
 end (*let*) // end of [f0_l1azy(env0,...)]
@@ -1896,7 +1896,7 @@ val
 d3e1 = trans3a_d3exp(env0, d3e1)
 //
 in//let
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0, t2p0, D3Eannot(d3e1,s1e2,s2e2))
 end(*let*)//end of [f0_annot(env0,d3e0)]
 //
@@ -1938,7 +1938,7 @@ val t2p0 =
 //
 in//let
 (
-  d3exp_make_styp_node
+  d3exp_make_tpnd
   (loc0, t2p0, D3Eextnam(tknd, gnm1)) )
 end (*let*) // end of [f0_extnam(env0,...)]
 //

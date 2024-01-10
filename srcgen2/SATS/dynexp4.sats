@@ -273,8 +273,13 @@ d4exp_none2(dexp: d4exp): (d4exp)
 fun
 d4exp_make_node
 (loc:loc_t,nod:d4exp_node): d4exp
+fun
+d4exp_make_tpnd
+(loc:loc_t
+,typ:s2typ,nod:d4exp_node): d4exp
 (* ****** ****** *)
 #symload d4exp with d4exp_make_node
+#symload d4exp with d4exp_make_tpnd
 (* ****** ****** *)
 //
 datatype

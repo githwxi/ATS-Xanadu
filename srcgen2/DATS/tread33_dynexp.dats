@@ -307,7 +307,7 @@ val lvl0 = gmax
 d3pat_errck
 (
 lvl0+1,
-d3pat_make_styp_node
+d3pat_make_tpnd
 (loc0, t2p0, D3Pdapp(d3f0,npf1,d3ps)))
 endlet // end of [d3pat_dapp_errck(...)]
 //
@@ -324,7 +324,7 @@ val
 lvl0 = d3pat_errvl(d3ps) in//let
 d3pat_errck
 ( lvl0+1
-, d3pat_make_styp_node
+, d3pat_make_tpnd
   (loc0, t2p0, D3Ptup0(npf1, d3ps)) )
 endlet // end of [d3pat_tup0_errck(...)]
 //
@@ -344,7 +344,7 @@ d3pat_errvl(d3ps) in//let
 d3pat_errck
 (
 lvl0+1,
-d3pat_make_styp_node
+d3pat_make_tpnd
 (loc0,t2p0,D3Ptup1(knd0,npf1,d3ps)))
 endlet//end of [d3pat_tup1_errck(...)]
 //
@@ -364,7 +364,7 @@ l3d3p_errvl(ldps) in//let
 d3pat_errck
 (
 lvl0+1,
-d3pat_make_styp_node
+d3pat_make_tpnd
 (loc0,t2p0,D3Prcd2(knd0,npf1,ldps)))
 endlet//end of [d3pat_rcd2_errck(...)]
 //
@@ -384,7 +384,7 @@ lvl0 = d3pat_errvl(d3p1) in//let
 d3pat_errck
 (
 lvl0+1,
-d3pat_make_styp_node
+d3pat_make_tpnd
 (loc0,t2p0,D3Pannot(d3p1,s1e2,s2e2)))
 endlet//end of [d3pat_annot_errck(...)]
 //
@@ -587,7 +587,7 @@ d3exp_errvl(dtmp) in//let
 d3exp_errck
 (
 lvl0+1,
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0, t2p0, D3Etimp(dtmp, timp)) )
 endlet//end of [d3exp_timp_errck(...)]
 //
@@ -606,7 +606,7 @@ d3exp_errvl(d3f0) in//let
 d3exp_errck
 (
 lvl0+1,
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0, t2p0, D3Esapp(d3f0, s2es)) )
 endlet//end of [d3exp_sapp_errck(...)]
 //
@@ -625,7 +625,7 @@ d3exp_errvl(d3f0) in//let
 d3exp_errck
 (
 lvl0+1,
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0, t2p0, D3Esapq(d3f0, t2ps)) )
 endlet//end of [d3exp_sapq_errck(...)]
 //
@@ -644,7 +644,7 @@ d3exp_errvl(d3f0) in//let
 d3exp_errck
 (
 lvl0+1,
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0, t2p0, D3Etapp(d3f0, s2es)) )
 endlet//end of [d3exp_tapp_errck(...)]
 //
@@ -663,7 +663,7 @@ d3exp_errvl(d3f0) in//let
 d3exp_errck
 (
 lvl0+1,
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0, t2p0, D3Etapq(d3f0, t2js)) )
 endlet//end of [d3exp_tapq_errck(...)]
 //
@@ -699,7 +699,7 @@ lvl0 = gmax
 d3exp_errck
 (
 lvl0+1,
-d3exp_make_styp_node
+d3exp_make_tpnd
 ( loc0
 , t2p0, D3Edapp(d3f0, npf1, d3es)))
 endlet//end of [d3exp_dapp_errck(...)]
@@ -720,7 +720,7 @@ d3exp_errvl(dcon) in//let
 d3exp_errck
 (
 lvl0+1,
-d3exp_make_styp_node
+d3exp_make_tpnd
 ( loc0
 , t2p0, D3Epcon(tknd, dlab, dcon)))
 endlet//end of [d3exp_pcon_errck(...)]
@@ -739,7 +739,7 @@ d3exp_errvl(dtup) in//let
 d3exp_errck
 (
 lvl0+1,
-d3exp_make_styp_node
+d3exp_make_tpnd
 ( loc0
 , t2p0, D3Eproj(tknd, dlab, dtup)))
 endlet//end of [d3exp_proj_errck(...)]
@@ -759,7 +759,7 @@ lvl0 = gmax
 (errvl(dcls), errvl(d3e1)) in//let
 d3exp_errck
 (lvl0+1
-,d3exp_make_styp_node
+,d3exp_make_tpnd
  (loc0, t2p0, D3Elet0(dcls, d3e1)))
 endlet//end of [d3exp_let0_errck(...)]
 //
@@ -782,7 +782,7 @@ in//let
 d3exp_errck
 (
 lvl0+1,
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0,t2p0,D3Eift0(d3e1,dthn,dels)))
 endlet // end of [d3exp_ift0_errck(...)]
 //
@@ -803,7 +803,7 @@ in//let
 d3exp_errck
 (
 lvl0+1,
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0,t2p0,D3Ecas0(tknd,d3e1,dcls)))
 endlet // end of [d3exp_cas0_errck(...)]
 //
@@ -822,7 +822,7 @@ lvl0 = gmax
 (errvl(d3es), errvl(d3e1)) in//let
 d3exp_errck
 ( lvl0+1
-, d3exp_make_styp_node
+, d3exp_make_tpnd
   (loc0, t2p0, D3Eseqn(d3es, d3e1)))
 endlet//end of [d3exp_seqn_errck(...)]
 //
@@ -840,7 +840,7 @@ lvl0 =
 d3exp_errvl(d3es) in//let
 d3exp_errck
 ( lvl0+1
-, d3exp_make_styp_node
+, d3exp_make_tpnd
   (loc0, t2p0, D3Etup0(npf1, d3es)))
 endlet//end of [d3exp_tup0_errck(...)]
 //
@@ -860,7 +860,7 @@ d3exp_errvl(d3es) in//let
 d3exp_errck
 (
 lvl0+1,
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0,t2p0,D3Etup1(knd0,npf1,d3es)))
 endlet//end of [d3exp_tup1_errck(...)]
 //
@@ -880,7 +880,7 @@ l3d3e_errvl(ldes) in//let
 d3exp_errck
 (
 lvl0+1,
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0,t2p0,D3Ercd2(knd0,npf1,ldes)))
 endlet//end of [d3exp_rcd2_errck(...)]
 //
@@ -903,7 +903,7 @@ d3exp_errvl(dexp) in//let
 d3exp_errck
 (
 lvl0+1,
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0, t2p0
 ,D3Elam0(tknd,f3as,sres,arrw,dexp)))
 endlet//end of [d3exp_lam0_errck(...)]
@@ -928,7 +928,7 @@ d3exp_errvl(dexp) in//let
 d3exp_errck
 (
 lvl0+1,
-d3exp_make_styp_node
+d3exp_make_tpnd
 ( loc0
 , t2p0,
   D3Efix0
@@ -952,7 +952,7 @@ in//let
 d3exp_errck
 (
 lvl0+1,
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0,t2p0,D3Etry0(tknd,d3e1,dcls)))
 endlet // end of [d3exp_try0_errck(...)]
 //
@@ -1101,7 +1101,7 @@ lvl0 = gmax
 (errvl(d3e1), errvl(dcls)) in//let
 d3exp_errck
 (lvl0+1
-,d3exp_make_styp_node
+,d3exp_make_tpnd
  (loc0, t2p0, D3Ewhere(d3e1, dcls)))
 endlet//end of [d3exp_where_errck(...)]
 //
@@ -1120,7 +1120,7 @@ lvl0 = gmax
 d3exp_errck
 (
 lvl0+1,
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0, t2p0, D3Eassgn(d3el, d3er)) )
 endlet//end of [d3exp_assgn_errck(...)]
 //
@@ -1139,7 +1139,7 @@ d3exp_errvl(dexn) in//let
 d3exp_errck
 (
 lvl0+1,
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0, t2p0, D3Eraise(tknd, dexn)) )
 endlet//end of [d3exp_raise_errck(...)]
 //
@@ -1178,7 +1178,7 @@ lvl0 = gmax
 d3exp_errck
 (
 lvl0+1,
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0,t2p0,D3El1azy(dsym,d3e1,d3es)))
 endlet // end of [d3exp_l1azy_errck(...)]
 //
@@ -1198,7 +1198,7 @@ lvl0 = d3exp_errvl(d3e1) in//let
 d3exp_errck
 (
 lvl0+1,
-d3exp_make_styp_node
+d3exp_make_tpnd
 (loc0,t2p0,D3Eannot(d3e1,s1e2,s2e2)))
 endlet // end of [d3exp_annot_errck(...)]
 //

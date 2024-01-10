@@ -410,7 +410,7 @@ end // let // end of [list_nil(...)]
 |
 list_cons _ =>
 (
-  d3exp_make_styp_node
+  d3exp_make_tpnd
   (loc0, t2p0, D3Etapq(d3e0, t2js)) )
 //
 end (*let*) // end of [d2con23_tapqize(...)]
@@ -467,7 +467,7 @@ end
 |
 list_cons _ =>
 (
-  d3exp_make_styp_node
+  d3exp_make_tpnd
   (loc0, t2p0, D3Etapq(d3e0, t2js)) )
 //
 end (*let*) // end of [d2cst23_tapqize(...)]

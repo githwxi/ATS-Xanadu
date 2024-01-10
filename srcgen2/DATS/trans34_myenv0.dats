@@ -103,10 +103,10 @@ tr34env_make_nil
   (d2vs, linstk_nil)) where
 {
   val d2vs = list_nil((*void*))
-}(*where*) // end of [tr34env_make_nil(...)]
+} (*where*)//end of [tr34env_make_nil(...)]
 //
 (* ****** ****** *)
-
+//
 #implfun
 tr34env_free_top
   (  env0  ) =
@@ -118,7 +118,7 @@ TR34ENV
 {
 //
 var
-linstk = map2
+linstk = map2//local lin-proofs
 //
 (*
 val nerr = linstk_poptop0(linstk)
@@ -127,7 +127,7 @@ val nerr = linstk_poptop0(linstk)
 val (  ) = linstk_free_nil(linstk) }
 //
 )(*case+*)//end-of-(tr34env_free_top(env0))
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
