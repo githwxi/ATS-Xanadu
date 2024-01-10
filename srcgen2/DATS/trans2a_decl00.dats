@@ -78,10 +78,12 @@ _(*TRANS2a*) = "./trans2a.dats"
 #symload dpid with d2fundcl_get_dpid
 (* ****** ****** *)
 //
-fun
+fn0
 s2typ_new0_x2tp
 ( loc0: loc_t ): s2typ =
-s2typ_xtv(x2t2p_make_lctn(loc0))
+(
+s2typ_xtv
+(x2t2p_make_lctn(loc0)))//fn0
 //
 (* ****** ****** *)
 //
@@ -93,8 +95,8 @@ d2pat_make_tpnd
 let
 val
 d2p0 = d2pat(loc0, node)
-in
-  (d2p0.styp(t2p0); d2p0) end
+in//let
+  (d2p0.styp(t2p0); d2p0) endlet
 //
 fun
 d2exp_make_tpnd
@@ -104,8 +106,8 @@ d2exp_make_tpnd
 let
 val
 d2e0 = d2exp(loc0, node)
-in
-  (d2e0.styp(t2p0); d2e0) end
+in//let
+  (d2e0.styp(t2p0); d2e0) endlet
 //
 #symload d2pat with d2pat_make_tpnd
 #symload d2exp with d2exp_make_tpnd

@@ -1558,7 +1558,7 @@ fun
 <x0:t0>
 gseq_forall_c1fr
 ( xs: xs
-, fnp: (x0) -<cfr> bool): (bool)
+, cfr: (x0) -<cfr> bool): (bool)
 fun
 <xs:t0>
 <x0:t0>
@@ -2584,6 +2584,7 @@ imapopt_cfr_llist with gseq_imapopt_c2fr_llist of 0100
 imapopt_fnp_llist with gseq_imapopt_f2np_llist of 0100
 *)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gseq000.sats] *)

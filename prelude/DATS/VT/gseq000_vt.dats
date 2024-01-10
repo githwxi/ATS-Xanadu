@@ -1164,5 +1164,40 @@ foldr1$fopr<x0><r0>(x0, r0) = f0(x0, r0)
 }(*where*)//end-of[glseq_foldr1_c2fr(xs,r0,f0)]
 //
 (* ****** ****** *)
+//
+#impltmp
+<xs><x0>
+glseq_forall0_c1fr
+(    xs, f0    ) =
+(
+glseq_forall0<xs><x0>(xs)) where
+{
+#impltmp forall0$test<x0>( x0 ) = f0(x0) }
+//(*where*)//end-of[glseq_forall0_c1fr(xs,f0)]
+//
+#impltmp
+<xs><x0>
+glseq_forall1_c1fr
+(    xs, f0    ) =
+(
+glseq_forall0<xs><x0>(xs)) where
+{
+#impltmp forall1$test<x0>( x0 ) = f0(x0) }
+//(*where*)//end-of[glseq_forall0xb_c1fr(xs,f0)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs><x0>
+glseq_filter0_c1fr_lstrm
+(    xs, f0    ) =
+(
+glseq_filter0_lstrm<xs><x0>(xs)
+) where
+{
+  #impltmp filter0$test<x0>( x0 ) = f0(x0) }
+//(*where*)//end-of[glseq_filter0_c1fr_lstrm(xs,f0)]
+//
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_gseq000_vt.dats] *)

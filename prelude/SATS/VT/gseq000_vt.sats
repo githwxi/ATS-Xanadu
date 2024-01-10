@@ -645,13 +645,45 @@ fun
 <x0:vt>
 <r0:vt>
 glseq_foldr0_c2fr
-(~xs, r0, f0: (x0, r0)-<cfr>r0): r0
+(~xs, r0, f0: (~x0, r0)-<cfr>r0): r0
 fun
 <xs:vt>
 <x0:vt>
 <r0:vt>
 glseq_foldr1_c2fr
-(!xs, r0, f0: (x0, r0)-<cfr>r0): r0
+(!xs, r0, f0: (!x0, r0)-<cfr>r0): r0
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+glseq_forall0_c1fr
+(xs: ~xs, f0: (~x0) -<cfr> bool): bool
+fun
+<xs:vt>
+<x0:vt>
+glseq_forall1_c1fr
+(xs: !xs, f0: (!x0) -<cfr> bool): bool
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+glseq_filter0_c1fr
+(xs: ~xs, f0: (!x0) -<cfr> bool): (xs)
+fun
+<xs:vt>
+<x0:vt>
+glseq_filter0_c1fr_llist
+(xs: ~xs, f0: (!x0) -<cfr> bool): list_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+glseq_filter0_c1fr_lstrm
+(xs: ~xs, f0: (!x0) -<cfr> bool): strm_vt(x0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -678,6 +710,19 @@ foldr0_cfr with glseq_foldr0_c2fr of 0100
 #symload
 foldr1_cfr with glseq_foldr1_c2fr of 0100
 //
+(* ****** ****** *)
+//
+#symload
+forall0_cfr with glseq_forall0_c1fr of 0100
+#symload
+forall1_cfr with glseq_forall1_c1fr of 0100
+//
+(* ****** ****** *)
+//
+#symload
+filter0_cfr_lstrm with glseq_filter0_c1fr_lstrm of 0100
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS/XANADU_prelude_gseq000_vt.sats] *)

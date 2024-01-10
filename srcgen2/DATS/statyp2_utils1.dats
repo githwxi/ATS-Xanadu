@@ -109,6 +109,7 @@ val
 val s2t1 = s2v1.sort((*0*))
 val s2t2 = t2p2.sort((*0*))
 //
+(*
 val () = prerrln
 (
 "s2vts_stleq: s2v1 = ", s2v1)
@@ -125,6 +126,7 @@ val () = prerrln
 val () = prerrln
 ( "s2vts_stleq: test = "
 , lte_sort2_sort2(s2t2, s2t1) )
+*)
 //
 in//let
   lte_sort2_sort2(s2t2, s2t1) end
