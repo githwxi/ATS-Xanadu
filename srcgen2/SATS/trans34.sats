@@ -194,6 +194,22 @@ tr34env_free_top(tr34env):d2varlst
 (* ****** ****** *)
 //
 fun
+tr34env_poplet0
+(env0: !tr34env): void//end-fun
+fun
+tr34env_poplam0
+(env0: !tr34env): void//end-fun
+//
+fun
+tr34env_pshlam0
+(env0: !tr34env): void//end-fun
+fun
+tr34env_pshlet0
+(env0: !tr34env): void//end-fun
+//
+(* ****** ****** *)
+//
+fun
 tr34env_insert_dtyp
 ( env0:
 ! tr34env, d2var, s2typ):( void )
@@ -229,7 +245,7 @@ fun
 trans34_d3pat
 (env0: !tr34env, d3p0: d3pat): d4pat
 fun
-trans34_l3d3e
+trans34_l3d3p
 (env0: !tr34env, ld3p: l3d3p): l4d4p
 //
 (* ****** ****** *)

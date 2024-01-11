@@ -218,6 +218,9 @@ d4pat_node =
 //
 |D4Pvar of d2var
 //
+|D4Pnone0 of ((*0*))
+|D4Pnone1 of (d3pat) | D4Pnone2 of (d4pat)
+//
 |D4Perrck of
 ( sint(*lvl*), d4pat(*err*) ) // tread34-error
 //
@@ -241,6 +244,24 @@ d4pat_get_node(d4pat): d4pat_node
 #symload lctn with d4pat_get_lctn
 #symload styp with d4pat_get_styp
 #symload node with d4pat_get_node
+(* ****** ****** *)
+fun
+d4pat_none0(loc0: loc_t): (d4pat)
+fun
+d4pat_none1(dpat: d3pat): (d4pat)
+fun
+d4pat_none2(dpat: d4pat): (d4pat)
+(* ****** ****** *)
+fun
+d4pat_make_node
+(loc:loc_t,nod:d4pat_node): d4pat
+fun
+d4pat_make_tpnd
+(loc:loc_t
+,typ:s2typ,nod:d4pat_node): d4pat
+(* ****** ****** *)
+#symload d4pat with d4pat_make_node
+#symload d4pat with d4pat_make_tpnd
 (* ****** ****** *)
 (* ****** ****** *)
 //
