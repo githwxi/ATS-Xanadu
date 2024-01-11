@@ -110,6 +110,22 @@ stk0 of ~linstk_nil() => ())
 (* ****** ****** *)
 //
 #implfun
+linstk_pshlam0
+  (  stk0  ) =
+(
+  stk0 := linstk_lam0(stk0))
+//(*end of [linstk_pshlam0(stk0)]*)
+//
+#implfun
+linstk_pshlet0
+  (  stk0  ) =
+(
+  stk0 := linstk_let0(stk0))
+//(*end of [linstk_pshlet0(stk0)]*)
+//
+(* ****** ****** *)
+//
+#implfun
 linstk_lamvars
   (  stk0  ) =
 (
@@ -180,6 +196,90 @@ linstk_cons
 (d2v0, t2p0, stk1) => loop(stk1, res1)
 )
 }(*where*)//end-of-[linstk_letvars(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+linstk_poplam0
+  (  stk0  ) = let
+//
+fnx
+loop
+( kxs
+: linstk
+, err: &sint >> _): linstk =
+(
+case+ kxs of
+//
+| ~
+linstk_lam0
+(   kxs   ) => kxs // err = 0
+//
+| ~
+linstk_dvar
+( d2v, kxs ) => loop(kxs, err)
+| ~
+linstk_cons
+(d2v,t2p,kxs) => loop(kxs, err)
+//
+| !
+linstk_nil( ) => (err := 1; kxs)
+//
+| !
+linstk_let0 _ => (err := 1; kxs)
+//
+) (*case+*) // end of [loop(kxs,err)]
+//
+in//let
+let
+var
+err: sint = 0
+val
+( ) =
+(stk0 := loop(stk0, err)) in err end
+end (*let*) // end of [linstk_poplam0(stk)]
+//
+(* ****** ****** *)
+//
+#implfun
+linstk_poplet0
+  (  stk0  ) = let
+//
+fnx
+loop
+( kxs
+: linstk
+, err: &sint >> _): linstk =
+(
+case+ kxs of
+//
+| ~
+linstk_let0
+(   kxs   ) => kxs // err = 0
+//
+| ~
+linstk_dvar
+( d2v, kxs ) => loop(kxs, err)
+| ~
+linstk_cons
+(d2v,t2p,kxs) => loop(kxs, err)
+//
+| !
+linstk_nil( ) => (err := 1; kxs)
+//
+| !
+linstk_lam0 _ => (err := 1; kxs)
+//
+) (*case+*) // end of [loop(kxs,err)]
+//
+in//let
+let
+var
+err: sint = 0
+val
+( ) =
+(stk0 := loop(stk0, err)) in err end
+end (*let*) // end of [linstk_poplet0(stk)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

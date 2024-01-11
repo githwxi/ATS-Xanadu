@@ -142,9 +142,15 @@ linstk_letvars
   ( stk: !linstk ): d2varlst
 //
 fun
+linstk_poplam0
+  ( stk: &linstk >> _ ): sint
+fun
 linstk_poplet0
   ( stk: &linstk >> _ ): sint
 //
+fun
+linstk_pshlam0
+  ( stk: &linstk >> _ ): void
 fun
 linstk_pshlet0
   ( stk: &linstk >> _ ): void

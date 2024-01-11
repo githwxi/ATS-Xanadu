@@ -1583,6 +1583,12 @@ d4lab_fprint(g_print$out<>(), dlab)
 (* ****** ****** *)
 //
 #impltmp
+g_print<d4pat>(dpat) =
+d4pat_fprint(g_print$out<>(), dpat)
+//
+(* ****** ****** *)
+//
+#impltmp
 g_print<d4exp>(dexp) =
 d4exp_fprint(g_print$out<>(), dexp)
 //
