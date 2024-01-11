@@ -76,6 +76,9 @@ in//let
 case+
 d4p0.node() of
 //
+|D4Pvar(d2v) =>
+print("D4Pvar(",d2v,")")
+//
 |D4Pint(tok) =>
 print("D4Pint(",tok,")")
 |D4Pbtf(sym) =>

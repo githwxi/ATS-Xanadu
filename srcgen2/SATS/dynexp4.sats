@@ -216,6 +216,8 @@ d4pat_node =
 |D4Pflt of token
 |D4Pstr of token
 //
+|D4Pvar of d2var
+//
 |D4Perrck of
 ( sint(*lvl*), d4pat(*err*) ) // tread34-error
 //

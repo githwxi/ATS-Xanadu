@@ -61,9 +61,104 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with d4pat_get_lctn
+#symload styp with d4pat_get_styp
+#symload node with d4pat_get_node
+(* ****** ****** *)
 #symload lctn with d4exp_get_lctn
 #symload styp with d4exp_get_styp
 #symload node with d4exp_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+
+local
+
+fun
+auxmain
+( out: FILR
+, d4p: d4pat): void =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+//
+case+
+d4p.node() of
+//
+|
+_(*otherwise*) =>
+let
+//
+  val loc = d4p.lctn((*void*))
+  val t2p = d4p.styp((*void*))
+//
+  val ( ) = prerrln
+  ("fperr44_d4pat: auxmain: loc = ", loc)
+  val ( ) = prerrln
+  ("fperr44_d4pat: auxmain: t2p = ", t2p)
+  val ( ) = prerrln
+  ("fperr44_d4pat: auxmain: d4p = ", d4p)
+//
+endlet
+//
+end (*let*) // end-of-[ auxmain(out, d4p) ]
+
+in//local
+//
+#implfun
+fperr44_d4pat
+( out, d4p0 ) =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+val () =
+let
+val loc0 = d4p0.lctn()
+in//let
+(*
+prerrln
+("fperr44_d4pat: loc0 = ", loc0)
+*)
+end//let
+(*
+val () =
+prerrln
+("fperr44_d4pat: d4p0 = ", d4p0)
+*)
+//
+in//let
+//
+case+
+d4p0.node() of
+|
+D4Perrck(lvl, d4p1) =>
+(
+auxmain( out, d4p1 ); 
+if
+(lvl
+>FPERR44_ERRVL)
+then ((*void*)) else
+let
+val loc0 = d4p0.lctn((*0*))
+in//let
+(*
+prerrln
+("FPERR44-ERROR:",loc0,":",d4p0)
+*)
+end//let
+)
+| _(* otherwise *) => (  (* skipped *)  )
+//
+end(*let*)//end-of(fperr44_d4pat(out,d4p0))
+//
+(* ****** ****** *)
+//
+endloc(*local*)//end-of(local(fperr44_d4pat))
+
 (* ****** ****** *)
 (* ****** ****** *)
 

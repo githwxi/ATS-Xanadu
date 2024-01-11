@@ -57,6 +57,9 @@ D4E = "./dynexp4.sats"
 (* ****** ****** *)
 #typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
+#typedef d4pat = $D4E.d4pat
+#typedef l4d4p = $D4E.l4d4p
+(* ****** ****** *)
 #typedef d4exp = $D4E.d4exp
 #typedef l4d4e = $D4E.l4d4e
 (* ****** ****** *)
@@ -65,9 +68,11 @@ D4E = "./dynexp4.sats"
 (* ****** ****** *)
 #typedef s2typlst = $S2E.s2typlst
 (* ****** ****** *)
+#typedef d4patlst = $D4E.d4patlst
+#typedef l4d4plst = $D4E.l4d4plst
+(* ****** ****** *)
 #typedef d4explst = $D4E.d4explst
 #typedef d4expopt = $D4E.d4expopt
-(* ****** ****** *)
 #typedef l4d4elst = $D4E.l4d4elst
 (* ****** ****** *)
 #typedef d4eclist = $D4E.d4eclist
@@ -121,6 +126,9 @@ fun fperr44_s2typ(FILR, s2typ): void
 (*
 HX: fperr44 for dynamics
 *)
+(* ****** ****** *)
+fun fperr44_d4pat(FILR, d4pat): void
+fun fperr44_l4d4p(FILR, l4d4p): void
 (* ****** ****** *)
 fun fperr44_d4exp(FILR, d4exp): void
 fun fperr44_l4d4e(FILR, l4d4e): void
