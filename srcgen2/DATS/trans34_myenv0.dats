@@ -79,7 +79,10 @@ linstk_let0 of linstk
 linstk_dvar of
 (d2var(*lin*), linstk)
 |
-linstk_cons of
+linstk_dtyp of
+(d2var(*lin*), s2typ, linstk)
+|
+linstk_dlft of
 (d2var(*lin*), d4lft, linstk)
 //
 #absimpl linstk_vtbx = linstk
@@ -155,8 +158,11 @@ linstk_dvar
 (d2v0, stk1) =>
 loop(stk1, list_cons(d2v0, res1))
 |
-linstk_cons
+linstk_dtyp
 (d2v0, t2p0, stk1) => loop(stk1, res1)
+|
+linstk_dlft
+(d2v0, lft0, stk1) => loop(stk1, res1)
 )
 }(*where*)//end-of-[linstk_lamvars(...)]
 //
@@ -192,8 +198,11 @@ linstk_dvar
 (d2v0, stk1) =>
 loop(stk1, list_cons(d2v0, res1))
 |
-linstk_cons
+linstk_dtyp
 (d2v0, t2p0, stk1) => loop(stk1, res1)
+|
+linstk_dlft
+(d2v0, lft0, stk1) => loop(stk1, res1)
 )
 }(*where*)//end-of-[linstk_letvars(...)]
 //
@@ -219,8 +228,11 @@ linstk_lam0
 linstk_dvar
 ( d2v, kxs ) => loop(kxs, err)
 | ~
-linstk_cons
+linstk_dtyp
 (d2v,t2p,kxs) => loop(kxs, err)
+| ~
+linstk_dlft
+(d2v,lft,kxs) => loop(kxs, err)
 //
 | !
 linstk_nil( ) => (err := 1; kxs)
@@ -261,8 +273,11 @@ linstk_let0
 linstk_dvar
 ( d2v, kxs ) => loop(kxs, err)
 | ~
-linstk_cons
+linstk_dtyp
 (d2v,t2p,kxs) => loop(kxs, err)
+| ~
+linstk_dlft
+(d2v,lft,kxs) => loop(kxs, err)
 //
 | !
 linstk_nil( ) => (err := 1; kxs)

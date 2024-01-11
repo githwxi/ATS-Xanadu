@@ -68,14 +68,23 @@ D3E = "./dynexp3.sats"
 #staload
 D4E = "./dynexp4.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 #typedef sym_t = $SYM.sym_t
 (* ****** ****** *)
 #typedef s2typ = $S2E.s2typ
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef d3pat = $D3E.d3pat
+#typedef l3d3p = $D3E.l3d3p
 (* ****** ****** *)
 #typedef d3exp = $D3E.d3exp
 #typedef l3d3e = $D3E.l3d3e
 (* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef d4pat = $D4E.d4pat
+#typedef l4d4p = $D4E.l4d4p
 (* ****** ****** *)
 #typedef d4exp = $D4E.d4exp
 #typedef l4d4e = $D4E.l4d4e
@@ -84,11 +93,17 @@ D4E = "./dynexp4.sats"
 (* ****** ****** *)
 #typedef d2varlst = $D2E.d2varlst
 (* ****** ****** *)
+#typedef d3patlst = $D3E.d3patlst
+#typedef l3d3plst = $D3E.l3d3plst
+(* ****** ****** *)
 #typedef d3explst = $D3E.d3explst
 #typedef d3expopt = $D3E.d3expopt
 #typedef l3d3elst = $D3E.l3d3elst
 (* ****** ****** *)
 #typedef d3eclist = $D3E.d3eclist
+(* ****** ****** *)
+#typedef d4patlst = $D4E.d4patlst
+#typedef l4d4plst = $D4E.l4d4plst
 (* ****** ****** *)
 #typedef d4explst = $D4E.d4explst
 #typedef d4expopt = $D4E.d4expopt
@@ -184,6 +199,15 @@ optn_trans34_fnp
 , (!tr34env, x0) -> y0): optn(y0)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+trans34_d3pat
+(env0: !tr34env, d3p0: d3pat): d4pat
+fun
+trans34_l3d3e
+(env0: !tr34env, ld3p: l3d3p): l4d4p
+//
 (* ****** ****** *)
 //
 fun
