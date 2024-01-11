@@ -236,6 +236,7 @@ fperr33_decl00.dats \
 dynexp4.dats \
 dynexp4_print0.dats \
 trans34.dats \
+trans34_print0.dats \
 trans34_myenv0.dats \
 trans34_utils0.dats \
 trans34_dynexp.dats \

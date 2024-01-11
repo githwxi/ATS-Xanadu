@@ -67,7 +67,7 @@ HX-2024-01-07:
 No inheritance for objtypes:
 
 #objtype
-mylist(a:type) = @{
+mylist2(a:type) = @{
 (*
 '@{'/'${': flat/boxed
 *)
@@ -77,21 +77,33 @@ mylist(a:type) = @{
 //
   #initfn
   init
-  ( xs: list(a)
+  ( // self: &(?mylist2(a)) >> mylist2(a)
+    xs: list(a)
   , ys: list(a)): void =
   (self.xs := g_copy(xs);
    self.ys := g_copy(ys))
 //
   #freefn
-  strmize(): strm_vt(a) =
+  strmize
+  ( // self: &(mylist2(a)) >> ?mylist2(a)
+  ) : strm_vt(a) =
   strm_vt_append
   (strmize0(self.xs), strmize0(self.ys))
 
+  #freefn
+  destroy
+  ( // self: &(mylist2(a)) >> ?mylist2(a)
+  ) : strm_vt(a) =
+  (g_free(self.xs)); g_free(self.ys))
+
   #method
-  strmize(): strm_vt(a) =
+  strmize
+  ( // self: &(mylist2(a)) >> mylist2(a)
+  ): strm_vt(a) =
   strm_vt_append
   (strmize1(self.xs), strmize1(self.ys))
 //
 }
+
 
 ########################################################################

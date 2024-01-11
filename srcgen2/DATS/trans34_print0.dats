@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Wed Dec 27 11:34:52 EST 2023
+Wed Jan 10 10:01:05 EST 2024
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -45,110 +45,36 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-#staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
-#staload "./../SATS/xsymmap.sats"
+#staload
+_(*?*) = "./lexing0_print0.dats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
-(* ****** ****** *)
-#staload "./../SATS/xglobal.sats"
-(* ****** ****** *)
-#staload "./../SATS/staexp2.sats"
-#staload "./../SATS/statyp2.sats"
-#staload "./../SATS/dynexp2.sats"
-(* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/trans34.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 
-local
-//
-(* ****** ****** *)
-//
-datavwtp
-linstk =
-//
-|
-linstk_nil of ()
-|
-linstk_lam0 of linstk
-|
-linstk_let0 of linstk
-|
-linstk_dvar of
-(d2var(*lin*), linstk)
-|
-linstk_cons of
-(d2var(*lin*), d4lft, linstk)
-//
-#absimpl linstk_vtbx = linstk
-//
-(* ****** ****** *)
-//
-datavwtp
-tr34env =
-TR34ENV of
-(
-d2varlst, linstk(*void*))
-//
-(* ****** ****** *)
-#absimpl tr34env_vtbx = tr34env
-(* ****** ****** *)
-(* ****** ****** *)
-in//local
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-linstk_free_nil
-(stk0: ~linstk): void =
-(
-case-
-stk0 of ~linstk_nil() => ())
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #implfun
-tr34env_make_nil
-  ((*nil*)) =
+d4lft_fprint
+(out, lft0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ lft0 of
+//
+|D4LFTval(t2p0) =>
 (
-  TR34ENV
-  (d2vs, linstk_nil)) where
-{
-  val d2vs = list_nil((*void*))
-} (*where*)//end of [tr34env_make_nil(...)]
-//
-(* ****** ****** *)
-//
-#implfun
-tr34env_free_top
-  (  env0  ) =
+  print("D4LFTval(", t2p0, ")"))
+|D4LFTvar(t2p0) =>
 (
-case+ env0 of
-| ~
-TR34ENV
-(d2vs, map2) => d2vs where
-{
+  print("D4LFTvar(", t2p0, ")"))
 //
-var
-linstk = map2//local lin-proofs
-//
-(*
-val nerr = linstk_poptop0(linstk)
-*)
-//
-val (  ) = linstk_free_nil(linstk) }
-//
-)(*case+*)//end-of-(tr34env_free_top(env0))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-
-endloc (*local*) // end of [ local(tr34env...) ]
+end (*let*) // end of [d4lft_fprint(out, lft0)]
 
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans34_myenv0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_trans34_print0.dats] *)
