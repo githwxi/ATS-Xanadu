@@ -129,6 +129,9 @@ D3E = "./dynexp3.sats"
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
 (* ****** ****** *)
+#abstbox d4pat_tbox // p0tr
+#typedef d4pat = d4pat_tbox
+(* ****** ****** *)
 #abstbox d4exp_tbox // p0tr
 #typedef d4exp = d4exp_tbox
 (* ****** ****** *)
@@ -145,6 +148,7 @@ D3E = "./dynexp3.sats"
 #abstbox d4parsed_tbox//p0tr
 //
 (* ****** ****** *)
+#typedef d4patlst = list(d4pat)
 (* ****** ****** *)
 #typedef d4explst = list(d4exp)
 #typedef d4expopt = optn(d4exp)
@@ -195,9 +199,46 @@ d4lab_fprint
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef l4d4p = d4lab(d4pat)
 #typedef l4d4e = d4lab(d4exp)
 (* ****** ****** *)
+#typedef l4d4plst = list(l4d4p)
 #typedef l4d4elst = list(l4d4e)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+d4pat_node =
+//
+|D4Pint of token
+|D4Pbtf of sym_t
+|D4Pchr of token
+|D4Pflt of token
+|D4Pstr of token
+//
+|D4Perrck of
+( sint(*lvl*), d4pat(*err*) ) // tread34-error
+//
+(* ****** ****** *)
+fun
+d4pat_fprint
+(
+  out:FILR, d4p0:d4pat):(void)
+(* ****** ****** *)
+//
+fun
+d4pat_get_lctn(d4pat): ( loc_t )
+//
+fun
+d4pat_get_styp(d4pat): ( s2typ )
+//
+fun
+d4pat_get_node(d4pat): d4pat_node
+//
+(* ****** ****** *)
+#symload lctn with d4pat_get_lctn
+#symload styp with d4pat_get_styp
+#symload node with d4pat_get_node
 (* ****** ****** *)
 (* ****** ****** *)
 //
