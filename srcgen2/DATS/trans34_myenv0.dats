@@ -300,6 +300,51 @@ end (*let*) // end of [linstk_poplet0(stk)]
 (* ****** ****** *)
 //
 #implfun
+linstk_insert_dtyp
+(stk0, d2v1, t2p1) =
+(
+stk0 :=
+linstk_dtyp
+(d2v1, t2p1, stk0)) where
+{
+//
+(*
+val () =
+prerrln
+("linstk_insert_dtyp: d2v1 = ", d2v1)
+val () =
+prerrln
+("linstk_insert_dtyp: t2p1 = ", t2p1)
+*)
+//
+}(*where*)//end-of-[linstk_insert_dtyp(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+linstk_insert_dlft
+(stk0, d2v1, lft1) =
+(
+stk0 :=
+linstk_dlft
+(d2v1, lft1, stk0)) where
+{
+//
+(*
+val () =
+prerrln
+("linstk_insert_dlft: d2v1 = ", d2v1)
+val () =
+prerrln
+("linstk_insert_dlft: lft1 = ", lft1)
+*)
+//
+}(*where*)//end-of-[linstk_insert_dlft(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 tr34env_make_nil
   ((*nil*)) =
 (
@@ -331,6 +376,42 @@ val nerr = linstk_poptop0(linstk)
 val (  ) = linstk_free_nil(linstk) }
 //
 )(*case+*)//end-of-(tr34env_free_top(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr34env_insert_dtyp
+  (env0,d2v1,t2p1) = let
+//
+val+
+@TR34ENV
+(d2vlst, !linstk) = env0
+//
+in//let
+//
+(
+  linstk_insert_dtyp
+  (linstk, d2v1, t2p1) ; $fold(env0) )
+//
+end(*let*)//end-of-(tr34env_insert_dtyp(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr34env_insert_dlft
+  (env0,d2v1,lft1) = let
+//
+val+
+@TR34ENV
+(d2vlst, !linstk) = env0
+//
+in//let
+//
+(
+  linstk_insert_dlft
+  (linstk, d2v1, lft1) ; $fold(env0) )
+//
+end(*let*)//end-of-(tr34env_insert_dlft(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
