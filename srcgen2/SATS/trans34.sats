@@ -58,11 +58,19 @@ MAP = "./xsymmap.sats"
 *)
 //
 (* ****** ****** *)
+#staload
+S2E = "./staexp2.sats"
+#staload
+D2E = "./dynexp2.sats"
+(* ****** ****** *)
+#staload
+D3E = "./dynexp3.sats"
+#staload
+D4E = "./dynexp4.sats"
+(* ****** ****** *)
 #typedef sym_t = $SYM.sym_t
 (* ****** ****** *)
-#staload D2E = "./dynexp2.sats"
-#staload D3E = "./dynexp3.sats"
-#staload D4E = "./dynexp4.sats"
+#typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
 #typedef d3exp = $D3E.d3exp
 #typedef l3d3e = $D3E.l3d3e
@@ -103,6 +111,45 @@ fun
 d4parsed_of_trans34
 ( dpar : d3parsed ): (d4parsed)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+d4lft =
+//
+|D4LFTval of s2typ
+|D4LFTvar of s2typ
+//
+(* ****** ****** *)
+//
+fun
+d4lft_fprint
+(out: FILR, lft0: d4lft): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#absvtbx linstk_vtbx // ptr
+#vwtpdef linstk = linstk_vtbx
+//
+(* ****** ****** *)
+//
+fun
+linstk_lamvars
+  ( stk: !linstk ): d2varlst
+fun
+linstk_letvars
+  ( stk: !linstk ): d2varlst
+//
+fun
+linstk_poplet0
+  ( stk: &linstk >> _ ): sint
+//
+fun
+linstk_pshlet0
+  ( stk: &linstk >> _ ): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
