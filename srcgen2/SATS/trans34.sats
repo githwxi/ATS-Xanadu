@@ -73,6 +73,8 @@ D4E = "./dynexp4.sats"
 (* ****** ****** *)
 #typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
+#typedef d2var = $D2E.d2var
+(* ****** ****** *)
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef l3d3p = $D3E.l3d3p
@@ -171,12 +173,34 @@ linstk_pshlet0
   ( stk: &linstk >> _ ): void
 //
 (* ****** ****** *)
+//
+fun
+linstk_insert_dtyp
+( stk:
+& linstk >> _, d2var, s2typ):void
+fun
+linstk_insert_dlft
+( stk:
+& linstk >> _, d2var, d4lft):void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 tr34env_make_nil((*nil*)):tr34env
 fun
 tr34env_free_top(tr34env):d2varlst
+//
+(* ****** ****** *)
+//
+fun
+tr34env_insert_dtyp
+( env0:
+! tr34env, d2var, s2typ):( void )
+fun
+tr34env_insert_dlft
+( env0:
+! tr34env, d2var, d4lft):( void )
 //
 (* ****** ****** *)
 (* ****** ****** *)
