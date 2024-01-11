@@ -66,6 +66,77 @@ _(*TRANS34*) = "./trans34.dats"
 (* ****** ****** *)
 //
 #implfun
+trans34_d3pat
+  (env0, d3p0) =
+let
+//
+val loc0 = d3p0.lctn()
+val t2p0 = d3p0.styp()
+//
+(*
+val (  ) = prerrln
+("trans34_d3pat: loc0 = ", loc0)
+val (  ) = prerrln
+("trans34_d3pat: d3p0 = ", d3p0)
+val (  ) = prerrln
+("trans34_d3pat: t2p0 = ", t2p0)
+*)
+//
+in//let
+//
+case+
+d3p0.node() of
+//
+|
+D3Pint(tok) =>
+(
+d4pat_make_tpnd
+(loc0, t2p0, D4Pint(tok)))
+|
+D3Pbtf(sym) =>
+(
+d4pat_make_tpnd
+(loc0, t2p0, D4Pbtf(sym)))
+|
+D3Pchr(tok) =>
+(
+d4pat_make_tpnd
+(loc0, t2p0, D4Pchr(tok)))
+//
+| _(*otherwise*) =>
+let
+  val loc0 = d3p0.lctn((*0*))
+in//let
+(
+  d4pat(loc0, t2p0, D4Pnone1(d3p0)) )
+end(*let*)//end of [_(*otherwise*)] // temp
+//
+end where // end-of-[trans34_d3pat( ... )]
+{
+//
+(* ****** ****** *)
+//
+}(*where*)//end of [trans34_d3pat(env0,d3p0)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans34_l3d3p
+( env0,ld3p ) =
+let
+//
+val+
+D3LAB(lab0, d3p1) = ld3p
+//
+in//let
+(
+  D4LAB(lab0, trans34_d3pat(env0, d3p1)) )
+end(*let*)//end-of-[trans33_l3d3p(env0,ld3p)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 trans34_d3exp
   (env0, d3e0) =
 let

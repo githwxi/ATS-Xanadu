@@ -179,7 +179,7 @@ print("D3Pannot(",d3p1,";",s1e2,";",s2e2,")")
 (print("D3Pt2pck(",d3p1,";",t2p2,")"))
 //
 |D3Pnone0() => print( "D3Pnone0(",")" )
-|D3Pnone1(d1p1) => print("D3Pnone1(",d1p1,")")
+|D3Pnone1(d2p1) => print("D3Pnone1(",d2p1,")")
 |D3Pnone2(d3p1) => print("D3Pnone2(",d3p1,")")
 //
 |
