@@ -108,6 +108,80 @@ case-
 stk0 of ~linstk_nil() => ())
 //
 (* ****** ****** *)
+//
+#implfun
+linstk_lamvars
+  (  stk0  ) =
+(
+loop(stk0, list_nil())
+) where
+{
+fun
+loop
+( stk0:
+! linstk
+, res1: d2varlst): d2varlst =
+(
+case- stk0 of
+(*
+|
+linstk_nil
+ ( (*0*) ) => res1
+|
+linstk_let0
+ (  stk1  ) => res1
+*)
+|
+linstk_lam0
+ (  stk1  ) => res1
+|
+linstk_dvar
+(d2v0, stk1) =>
+loop(stk1, list_cons(d2v0, res1))
+|
+linstk_cons
+(d2v0, t2p0, stk1) => loop(stk1, res1)
+)
+}(*where*)//end-of-[linstk_lamvars(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+linstk_letvars
+  (  stk0  ) =
+(
+loop(stk0, list_nil())
+) where
+{
+fun
+loop
+( stk0:
+! linstk
+, res1: d2varlst): d2varlst =
+(
+case- stk0 of
+(*
+|
+linstk_nil
+ ( (*0*) ) => res1
+|
+linstk_lam0
+ (  stk1  ) => res1
+*)
+|
+linstk_let0
+ (  stk1  ) => res1
+|
+linstk_dvar
+(d2v0, stk1) =>
+loop(stk1, list_cons(d2v0, res1))
+|
+linstk_cons
+(d2v0, t2p0, stk1) => loop(stk1, res1)
+)
+}(*where*)//end-of-[linstk_letvars(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
