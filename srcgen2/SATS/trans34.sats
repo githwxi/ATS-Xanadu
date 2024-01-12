@@ -194,10 +194,10 @@ tr34env_free_top(tr34env):d2varlst
 (* ****** ****** *)
 //
 fun
-tr34env_poplet0
+tr34env_poplam0
 (env0: !tr34env): void//end-fun
 fun
-tr34env_poplam0
+tr34env_poplet0
 (env0: !tr34env): void//end-fun
 //
 fun
