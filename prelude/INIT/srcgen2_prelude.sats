@@ -83,7 +83,15 @@
 #include "prelude/SATS/genv000.sats"
 //
 (* ****** ****** *)
+//
+#include "prelude/SATS/excptn0.sats"
 #include "prelude/SATS/synoug0.sats"
+//
+(* ****** ****** *)
+(*
+HX:
+For viewtypes (that is, linear types)
+*)
 (* ****** ****** *)
 //
 #include "prelude/SATS/VT/strn000_vt.sats"

@@ -699,6 +699,14 @@ the_prelude_load
 , 0(*static*)
 , "prelude/SATS/tupl000.sats")
 //
+(* ****** ****** *)
+//
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "prelude/SATS/excptn0.sats")
+//
 val () =
 the_prelude_load
 ( XATSENV
