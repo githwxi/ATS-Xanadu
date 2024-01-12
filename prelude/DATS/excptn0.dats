@@ -35,14 +35,14 @@
 //
 #impltmp
 <any:vwtp>
-GenErrorExn
+RaiseErrorExn
 ( (*0*) ) = $raise ErrorExn()
 //
 (* ****** ****** *)
 //
 #impltmp
 <any:vwtp>
-GenErrmsgExn
+RaiseErrmsgExn
 (  msg  ) = $raise ErrmsgExn(msg)
 //
 (* ****** ****** *)
