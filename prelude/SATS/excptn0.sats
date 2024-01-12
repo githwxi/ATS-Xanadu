@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2018 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2024 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,39 +28,20 @@
 (* ****** ****** *)
 //
 // Author: Hongwei Xi
+// Thu Jan 11 20:35:16 EST 2024
 // Authoremail: gmhwxiATgmailDOTcom
 //
-// This one should be loaded after xsetup.sats
-//
 (* ****** ****** *)
 //
-(*
-HX-2024-01-11:
-For general errors
-Thu Jan 11 20:32:29 EST 2024
-*)
-excptcon
-ErrorExn of ((*void*))
-excptcon
-ErrmsgExn of ( string )
+fun
+<any:vt>
+GenErrorExn((*void*)): any
 //
-(* ****** ****** *)
-//
-// HX-2020-03-05:
-// For out-of-range subscripting
-//
-excptcon
-SubemptyExn of ((*void*))
-excptcon
-SubscriptExn of ((*void*))
-//
-(* ****** ****** *)
-//
-// For indicating the failure of
-excptcon AssertExn of () // an assertion
-// For indicating something expected
-excptcon NotFoundExn of () // to be found but not
+fun
+<any:vt>
+GenErrmsgExn(msg: strn): any
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_INIT_excptn0.sats] *)
+(* end of [ATS3/XANADU_prelude_excptn0.sats] *)
+
