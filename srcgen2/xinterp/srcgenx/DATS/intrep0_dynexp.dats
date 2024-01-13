@@ -551,6 +551,8 @@ irexp(loc0, IREcst(d2c))
 //
 |D3Eassgn _ => f0_assgn(env0, d3e0)
 //
+|D3Eraise _ => f0_raise(env0, d3e0)
+//
 |D3El0azy _ => f0_l0azy(env0, d3e0)
 |D3El1azy _ => f0_l1azy(env0, d3e0)
 //
@@ -1321,6 +1323,29 @@ in//let
   irexp_make_node
   (loc0, IREassgn( irel,irer )) )
 end(*let*)//end-of-[f0_assgn(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_raise
+( env0:
+! trdienv
+, d3e0: d3exp): irexp =
+let
+//
+val-
+D3Eraise
+( tknd, d3e1) = d3e0.node()
+//
+val ire1 =
+(
+  trxd3ir_d3exp(env0, d3e1))
+//
+in//let
+(
+  irexp_make_node
+  (loc0, IREraise( tknd,ire1 )) )
+end(*let*)//end-of-[f0_raise(env0,d3e0)]
 //
 (* ****** ****** *)
 //

@@ -398,7 +398,11 @@ irexp_node =
 //
 |IREwhere of (irexp, irdclist)
 //
-|IREassgn of ( irexp(*l*), irexp(*r*) )
+|IREassgn of
+( irexp(*lft*), irexp(*val*) )
+//
+|IREraise of
+( token(*knd*), irexp(*exn*) )
 //
 |IREl0azy of ( irexp(*thunk*) )
 |IREl1azy of ( irexp, irexplst(*frees*))
