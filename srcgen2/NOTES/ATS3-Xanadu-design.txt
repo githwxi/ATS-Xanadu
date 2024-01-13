@@ -107,3 +107,26 @@ mylist2(a:type) = @{
 
 
 ########################################################################
+
+(*
+HX-2024-01-13:
+Should generative excptcons be supported?
+I would say no at this point. This feature
+does not seem to be particularly useful and
+it complicates reasoning greatly. Also, it
+can readily added later if needed.
+*)
+fun
+foo
+{a:type}
+(x:a, b:bool): a =
+let
+excptcon MyErrorExn of a
+in//let
+try
+  if (b)
+  then foo(42, b-1) else raise MyErrorExn(x)
+with MyErrorExn(x) => ( x )
+end
+
+########################################################################

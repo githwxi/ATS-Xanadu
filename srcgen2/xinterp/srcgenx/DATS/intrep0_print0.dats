@@ -303,6 +303,13 @@ print("IREassgn(", lval, ";", rval, ")")
 (* ****** ****** *)
 //
 |
+IREraise
+( tknd, ire1) =>
+print("IREraise(", tknd, ";", ire1, ")")
+//
+(* ****** ****** *)
+//
+|
 IREl0azy
 ( ire1 ) =>
 (
