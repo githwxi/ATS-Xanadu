@@ -525,12 +525,16 @@ d3pat_make_tpnd
 ( loc0, t2p0
 , D3Ptup0(npf1, d3ps))) where
 {
+//
 val loc0 = d2p0.lctn()
+//
 val-
 D2Ptup0
 (npf1, d2ps) = d2p0.node()
+//
 val
 d3ps = trans23_d2patlst(env0, d2ps)
+//
 val
 t2p0 =
 (
@@ -539,6 +543,7 @@ case+ d3ps of
 the_s2typ_void()
 |list_cons _ =>
 s2typ_tup0(npf1, s2typlst(d3ps))): s2typ
+//
 } (*where*) // end of [f0_tup0(env0,d2p0)]
 //
 (* ****** ****** *)
@@ -554,25 +559,30 @@ d3pat_make_tpnd
 loc0, t2p0,
 D3Ptup1(tknd, npf1, d3ps))) where
 {
+//
 val loc0 = d2p0.lctn()
+//
 val-
 D2Ptup1
 ( tknd
 , npf1, d2ps) = d2p0.node()
+//
 val
 d3ps =
 trans23_d2patlst(env0, d2ps)
+//
 val
 trcd =
 (
 case-
 tknd.node() of
 |T_TRCD10(0) => TRCDflt0(*void*)
-|T_TRCD10(_) => TRCDbox0(*void*)
-)
+|T_TRCD10(_) => TRCDbox0(*void*))
+//
 val
 t2p0 =
 s2typ_tup1(trcd, npf1, s2typlst(d3ps))
+//
 } (*where*) // end of [f0_tup1(env0,d2p0)]
 //
 (* ****** ****** *)
