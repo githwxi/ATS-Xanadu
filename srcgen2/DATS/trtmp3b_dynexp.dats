@@ -148,6 +148,8 @@ d3e0.node() of
 //
 |D3Eassgn _ => f0_assgn(env0, d3e0)
 //
+|D3Eraise _ => f0_raise(env0, d3e0)
+//
 |D3El0azy _ => f0_l0azy(env0, d3e0)
 |D3El1azy _ => f0_l1azy(env0, d3e0)
 //
@@ -922,6 +924,34 @@ in//let
   d3exp_make_tpnd
   (loc0, t2p0, D3Eassgn(d3el, d3er)) )
 end (*let*) // end of [f0_assgn(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_raise
+( env0:
+! tr3benv
+, d3e0: d3exp): d3exp =
+let
+//
+val loc0 = d3e0.lctn()
+val t2p0 = d3e0.styp()
+//
+val-
+D3Eraise
+( tknd
+, d3e1 ) = d3e0.node((*0*))
+//
+val
+d3e1 =
+(
+  trtmp3b_d3exp(env0, d3e1))
+//
+in//let
+(
+  d3exp_make_tpnd
+  (loc0, t2p0, D3Eraise(tknd, d3e1)) )
+end (*let*) // end of [f0_raise(env0,...)]
 //
 (* ****** ****** *)
 //

@@ -19,14 +19,13 @@ HX-2024-01-08:
 
 The interpreter is functioning, although there are still many features that are
 not yet supported. Even at this stage, one can readily sense the EXTREME power of
-template-oriented programming (TOP). Please note that this is BEFORE further meta-
-programming features are attempted.
+template-powered programming (TPP) as is in ATS3. Please note that this is BEFORE
+further meta-programming features are attempted.
 
 Before implementing a compiler targeting JS, I would like to first finish "trans34",
 which does linearity checking.
 
 It is really exciting time. No hurry! Cool head and steady hands!
-
 
 ##################################################################
 
