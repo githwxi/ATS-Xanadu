@@ -20,7 +20,7 @@
 (* ****** ****** *)
 
 fun
-board_nil(): board = ERROR()
+board_nil(): board = RaiseErrorExn()
 
 (* ****** ****** *)
 (* ****** ****** *)
