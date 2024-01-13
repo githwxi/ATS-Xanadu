@@ -76,6 +76,8 @@ in//let
 case+
 d4p0.node() of
 //
+|D4Pany() =>
+print("D4Pany(",")")
 |D4Pvar(d2v) =>
 print("D4Pvar(",d2v,")")
 //
@@ -89,6 +91,9 @@ print("D4Pchr(",tok,")")
 print("D4Pflt(",tok,")")
 |D4Pstr(tok) =>
 print("D4Pstr(",tok,")")
+//
+|D4Pcon(d2c) =>
+print("D4Pcon(",d2c,")")
 //
 |D4Pnone0() => print( "D4Pnone0(",")" )
 |D4Pnone1(d3p1) => print("D4Pnone1(",d3p1,")")

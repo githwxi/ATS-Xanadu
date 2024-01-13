@@ -87,6 +87,13 @@ in//let
 case+
 d3p0.node() of
 //
+|D3Pany _ =>
+(
+  f0_any(env0, d3p0))
+|D3Pvar _ =>
+(
+  f0_var(env0, d3p0))
+//
 |
 D3Pint(tok) =>
 (
@@ -103,9 +110,12 @@ D3Pchr(tok) =>
 d4pat_make_tpnd
 (loc0, t2p0, D4Pchr(tok)))
 //
+|
+D3Pcon _ => f0_con(env0, d3p0)
+//
 | _(*otherwise*) =>
 let
-  val loc0 = d3p0.lctn((*0*))
+  val loc0 = d3p0.lctn((*void*))
 in//let
 (
   d4pat(loc0, t2p0, D4Pnone1(d3p0)) )
@@ -113,6 +123,64 @@ end(*let*)//end of [_(*otherwise*)] // temp
 //
 end where // end-of-[trans34_d3pat( ... )]
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_any
+( env0:
+! tr34env
+, d3p0: d3pat): d4pat =
+(
+d4pat_make_tpnd
+( loc0
+, t2p0, D4Pany())) where
+{
+//
+val loc0 = d3p0.lctn()
+val t2p0 = d3p0.styp()
+val-
+D3Pany((*0*)) = d3p0.node()
+//
+}(*where*)//end-of-[f0_any(env0,d3p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_var
+( env0:
+! tr34env
+, d3p0: d3pat): d4pat =
+(
+d4pat_make_tpnd
+( loc0
+, t2p0, D4Pvar(d2v1))) where
+{
+//
+val loc0 = d3p0.lctn()
+val t2p0 = d3p0.styp()
+val-D3Pvar(d2v1) = d3p0.node()
+//
+}(*where*)//end-of-[f0_var(env0,d3p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_con
+( env0:
+! tr34env
+, d3p0: d3pat): d4pat =
+(
+d4pat_make_tpnd
+( loc0
+, t2p0, D4Pcon(d2c1))) where
+{
+//
+val loc0 = d3p0.lctn()
+val t2p0 = d3p0.styp()
+val-D3Pcon(d2c1) = d3p0.node()
+//
+}(*where*)//end-of-[f0_var(env0,d3p0)]
 //
 (* ****** ****** *)
 //
