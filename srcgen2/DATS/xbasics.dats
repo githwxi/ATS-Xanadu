@@ -237,10 +237,19 @@ case+ knd2 of
 case+ knd2 of
 |TRCDflt0() => true | _ => false)
 //
+(*
+//
+|TRCDflt1(tmp1) =>
+(
+case+ knd2 of
+|TRCDflt1(tmp2) => (tmp1=tmp2) | _ => false)
+//
 |TRCDflt2(tnm1) =>
 (
 case+ knd2 of
 |TRCDflt2(tnm2) => (tnm1=tnm2) | _ => false)
+//
+*)
 //
 )(*case+*)//end-of-[trcdknd_equal(knd1,knd2)]
 //

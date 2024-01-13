@@ -289,8 +289,8 @@ trcdknd =
 | TRCDflt0 (* flat: non/lin *)
 (*
 | TRCDflt1 of stamp (* flat *)
-*)
 | TRCDflt2 of string (* flat *)
+*)
 // end of [ datatype(trcdknd) ]
 (* ****** ****** *)
 fun

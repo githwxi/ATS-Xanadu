@@ -223,19 +223,22 @@ trcdknd_fprint
 in//let
 //
 case+ tknd of
+//
 |
 TRCDbox0() => print( "TRCDbox0" )
 |
 TRCDbox1() => print( "TRCDbox1" )
 |
 TRCDflt0() => print( "TRCDflt0" )
+//
 (*
 |
-TRCDflt1() => print( "TRCDflt1" )
-*)
+TRCDflt1
+(  tmp1  ) => print("TRCDflt1(",tmp1,")")
 |
 TRCDflt2
-(  name  ) => print("TRCDflt2(",name,")")
+(  tnm1  ) => print("TRCDflt2(",tnm1,")")
+*)
 //
 end(*let*)//end-of(trcdknd_fprint)
 
