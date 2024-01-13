@@ -210,13 +210,20 @@ d4lab_fprint
 datatype
 d4pat_node =
 //
+|D4Pany of ()
+|D4Pvar of d2var
+//
 |D4Pint of token
 |D4Pbtf of sym_t
 |D4Pchr of token
 |D4Pflt of token
 |D4Pstr of token
 //
-|D4Pvar of d2var
+|D4Pcon of (d2con)
+//
+|D4Pbang of (d4pat)
+|D4Pflat of (d4pat)
+|D4Pfree of (d4pat)
 //
 |D4Pnone0 of ((*0*))
 |D4Pnone1 of (d3pat) | D4Pnone2 of (d4pat)

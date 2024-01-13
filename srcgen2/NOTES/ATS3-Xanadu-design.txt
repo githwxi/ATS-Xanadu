@@ -50,7 +50,7 @@ the meaning of some pattern modifiers.
 ~x:
 what matches x is freed
 ~C(x1, x2):
-the constructor is freed by x1 and x2 are not
+the constructor is freed but x1 and x2 are not
 
 @: for flatness
 @C(x1, x2) matches unfolded constructor
@@ -58,7 +58,7 @@ the constructor is freed by x1 and x2 are not
 !: for addressing
 !x: x is a variable (instead of a variname)
 !C(x1, x2) = C(!x1, !x2)
-
+!C(!x1, x2) = C(!!x1, !x2) = C(x1, !x2) // !!x1 = x1
 
 ########################################################################
 
