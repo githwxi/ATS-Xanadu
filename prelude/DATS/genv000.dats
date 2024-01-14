@@ -107,7 +107,8 @@ endlet//end-of(foldr$fopr<x0><r0>(x0))
 } (*where*) // end-of-(gseq_foldr_e1nv)
 
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #impltmp
 <xs>
 <x0>
@@ -138,7 +139,40 @@ val e1 = $UN.delinear(e1) in res end
 //
 endlet // end of [forall$test<x0>(x0)]
 } (*where*) // end-of(gseq_forall_e1nv(xs,e1))
-
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs>
+<x0>
+<e1>
+gseq_iforall_e1nv
+  (xs, e1) =
+(
+gseq_iforall
+< xs >
+< x0 >( xs )) where
+{
+val e1 =
+$UN.datacopy( e1 )
+#impltmp
+iforall$test<x0>(i0, x0) =
+let
+//
+val e1 =
+$UN.castlin10{e1}(e1)
+val res =
+iforall$test_e1nv
+<   x0   ><   e1   >(i0, x0, e1)
+//
+in//let
+//
+let
+val e1 = $UN.delinear(e1) in res end
+//
+endlet // end of [iforall$test<x0>(...)]
+} (*where*) // end-of(gseq_iforall_e1nv(xs,e1))
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -150,6 +184,15 @@ let
 #typedef xs = list(x0) in
 gseq_forall_e1nv<xs><x0><e1>(xs,e1)
 end (*let*) // end of [list_forall_e1nv(xs,e1)]
+#impltmp
+<x0>
+<e1>
+list_iforall_e1nv
+  (xs, e1) =
+let
+#typedef xs = list(x0) in
+gseq_iforall_e1nv<xs><x0><e1>(xs,e1)
+end (*let*) // end of [list_iforall_e1nv(xs,e1)]
 //
 #impltmp
 <x0>
@@ -160,7 +203,17 @@ let
 #typedef xs = optn(x0) in
 gseq_forall_e1nv<xs><x0><e1>(xs,e1)
 end (*let*) // end of [optn_forall_e1nv(xs,e1)]
+#impltmp
+<x0>
+<e1>
+optn_iforall_e1nv
+  (xs, e1) =
+let
+#typedef xs = optn(x0) in
+gseq_iforall_e1nv<xs><x0><e1>(xs,e1)
+end (*let*) // end of [optn_iforall_e1nv(xs,e1)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 #impltmp
@@ -198,7 +251,8 @@ endlet // end of [forall$test<x0>(x0)]
 } (*where*) // end-of(gseq_forall_e2nv(xs,e1,e2))
 
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #impltmp
 <xs>
 <x0>
@@ -229,7 +283,42 @@ val e1 = $UN.delinear(e1) in res end
 //
 endlet // end of [foreach$work<x0>(x0)]
 } (*where*) // end-of(gseq_foreach_e1nv(xs,e1))
-
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs>
+<x0>
+<e1>
+gseq_iforeach_e1nv
+  (xs, e1) =
+(
+gseq_iforeach
+< xs >
+< x0 >( xs )) where
+{
+//
+val e1 =
+$UN.datacopy( e1 )
+#impltmp
+iforeach$work<x0>(i0, x0) =
+let
+//
+val e1 =
+$UN.castlin10{e1}(e1)
+val res =
+iforeach$work_e1nv
+<   x0   ><   e1   >(i0, x0, e1)
+//
+in//let
+//
+let
+val e1 = $UN.delinear(e1) in res end
+//
+endlet // end of [iforeach$work<x0>(...)]
+//
+} (*where*) // end-of(gseq_iforeach_e1nv(xs,e1))
+//
 (* ****** ****** *)
 //
 #impltmp
