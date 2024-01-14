@@ -275,8 +275,11 @@ irpat_node =
 |IRPvar of d2var
 //
 |IRPbang of (irpat)
+//
+(*
 |IRPflat of (irpat)
 |IRPfree of (irpat)
+*)
 //
 |IRPcapp of
 ( d2con, irpatlst )

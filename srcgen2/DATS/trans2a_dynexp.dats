@@ -92,6 +92,7 @@ _(*TRANS2A*) = "./trans2a.dats"
 #symload s2vs with s2qag_get_s2vs
 #symload s2vs with t2qag_get_s2vs
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fn0
 s2typ_new0_x2tp
@@ -114,6 +115,64 @@ case+ svts of
 s2typ_subst0(t2p0, svts))//fn0
 )(*case+*) // s2typ_subst0(...)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+s2typ_bang
+(t2p0: s2typ): s2typ =
+(
+case+
+t2p0.node() of
+|
+T2Plft(t2p1) => t2p1
+|
+_(*otherwise*) => s2typ_lft(t2p0)
+)
+//
+fun
+d2pat_bang
+(d2p0: d2pat): (void) =
+(
+case+
+d2p0.node() of
+//
+|
+D2Pvar
+(  d2v1  ) =>
+let
+val
+t2p1 = d2v1.styp((*0*))
+in//let
+  d2v1.styp(s2typ_bang(t2p1))
+end//let
+//
+|
+D2Pbang
+(  d2p1  ) => d2pat_bang(d2p1)
+//
+|
+D2Pdapp
+(d2f0
+,npf1, d2ps) => d2patlst_bang(d2ps)
+//
+| _(*otherwise*) => ( (*ignored*) ) )
+//
+and
+d2patlst_bang
+(d2ps: d2patlst): void =
+(
+case+ d2ps of
+|
+list_nil() => ()
+|
+list_cons(d2p1, d2ps) =>
+(
+d2pat_bang(d2p1); d2patlst_bang(d2ps)
+)
+)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -141,6 +200,7 @@ in
 #symload d2pat with d2pat_make_tpnd
 #symload d2exp with d2exp_make_tpnd
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -411,11 +471,16 @@ d2p1 = trans2a_d2pat(env0, d2p1)
 //
 in//let
 let
+//
+val (  ) = d2pat_bang(d2p1)
+//
 val
 t2p1 = d2p1.styp((*void*)) in//let
   d2pat(loc0, t2p1, D2Pbang( d2p1 ))
 end (*let*)
 end (*let*) // end of [f0_bang(env0,...)]
+//
+(* ****** ****** *)
 //
 fun
 f0_flat
@@ -438,6 +503,8 @@ t2p1 = d2p1.styp((*void*)) in//let
   d2pat(loc0, t2p1, D2Pflat( d2p1 ))
 end (*let*)
 end (*let*) // end of [f0_flat(env0,...)]
+//
+(* ****** ****** *)
 //
 fun
 f0_free

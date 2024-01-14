@@ -182,6 +182,108 @@ pfrmv_npf1_itms<l3d3e>(npf1, ldes)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+irpat_bang
+(irp0: irpat): irpat =
+let
+val
+loc0 = irp0.lctn()
+in//let
+irpat
+(loc0, IRPbang(irp0)) end
+//
+fun
+irpat_bangize
+(irp0: irpat): irpat =
+let
+val
+loc0 = irp0.lctn()
+in//let
+//
+case+
+irp0.node() of
+|
+IRPvar _ =>
+irpat_bang(irp0)
+|
+IRPbang(irp1) => irp1
+|
+IRPcapp
+(d2c1, irps) =>
+let
+val irps =
+irpatlst_bangize(irps)
+in//let
+irpat
+(loc0, IRPcapp(d2c1, irps))
+end//let
+//
+|
+IRPtup0
+(  irps  ) =>
+let
+val irps =
+irpatlst_bangize(irps)
+in//let
+  irpat(loc0, IRPtup0(irps))
+end//let
+|
+IRPtup1
+(tknd, irps) =>
+let
+val irps =
+irpatlst_bangize(irps)
+in//let
+irpat(loc0, IRPtup1(tknd, irps))
+end//let
+//
+|
+IRPrcd2
+(tknd, lirs) =>
+let
+val lirs =
+l0irplst_bangize(lirs)
+in//let
+irpat(loc0, IRPrcd2(tknd, lirs))
+end//let
+//
+| _(* otherwise *) => irp0(*skipped*)
+//
+end(*let*)//end-of-[irpat_bangize(irp0)]
+//
+and
+l0irp_bangize
+(lir0: l0irp): l0irp =
+let
+val
+IRLAB(lab0, irp1) = lir0
+in//let
+  IRLAB(lab0, irpat_bangize(irp1))
+end(*let*)//end-of-[l0irp_bangize(irp0)]
+//
+and
+irpatlst_bangize
+(irps: irpatlst): irpatlst =
+(
+list_map(irps)) where
+{
+#typedef x0 = irpat
+#impltmp
+map$fopr<x0><x0> = irpat_bangize }//where
+//
+and
+l0irplst_bangize
+(lirs: l0irplst): l0irplst =
+(
+list_map(lirs)) where
+{
+#typedef x0 = l0irp
+#impltmp
+map$fopr<x0><x0> = l0irp_bangize }//where
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 trxd3ir_d3pat
 (env0 , d3p0) =
@@ -260,8 +362,10 @@ f0_bang
 ! trdienv
 , d3p0: d3pat): irpat =
 (
-trxd3ir_d3pat(env0, d3p1)
-) where
+irpat_bangize
+(
+trxd3ir_d3pat
+(env0 , d3p1))) where
 {
 val-
 D3Pbang(d3p1) = d3p0.node() }

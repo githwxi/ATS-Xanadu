@@ -176,6 +176,8 @@ val t2p0 = d2p0.styp()
 //
 (*
 val (  ) = prerrln
+("trans23_d2pat: loc0 = ", loc0)
+val (  ) = prerrln
 ("trans23_d2pat: d2p0 = ", d2p0)
 *)
 //
@@ -186,42 +188,12 @@ d2p0.node() of
 //
 |
 D2Pany() =>
-let
-(*
-val () =
-prerrln
-("\
-trans23_d2pat: \
-D2Pany: t2p0 = ", t2p0)
-*)
-in//let
-d3pat
-( loc0
-, t2p0, D3Pany(*void*))
-end//let//end-of-[D2Pany]
+(
+  f0_any(env0, d2p0))
 |
 D2Pvar(d2v) =>
-let
-val
-t2p0 =
-d2v.styp((*0*))
-val
-t2p0 =
-s2typ_hnfiz0(t2p0)
-//
-(*
-val () =
-prerrln
-("\
-trans23_d2pat: \
-D2Pvar: t2p0 = ", t2p0)
-*)
-//
-in//let
-d2v.styp(  t2p0  );
-d3pat_make_tpnd
-(loc0, t2p0, D3Pvar(d2v))
-end//end-of-[D2Pvar(d2v)]
+(
+  f0_var(env0, d2p0))
 //
 |
 D2Pint(tok) =>
@@ -277,13 +249,94 @@ endlet where
 (* ****** ****** *)
 //
 fun
+f0_any
+( env0:
+! tr23env
+, d2p0: d2pat): d3pat =
+let
+//
+val
+loc0 = d2p0.lctn()
+val
+t2p0 = d2p0.styp()
+//
+val-
+D2Pany() = d2p0.node()
+//
+(*
+val () =
+prerrln
+("\
+trans23_d2pat: \
+D2Pany: t2p0 = ", t2p0)
+*)
+//
+in//let
+  d3pat(loc0, t2p0, D3Pany(*0*))
+end//let//end-of-[f0_any(env0,d2p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_var
+( env0:
+! tr23env
+, d2p0: d2pat): d3pat =
+let
+//
+val
+loc0 = d2p0.lctn()
+//
+val-
+D2Pvar
+(d2v0) = d2p0.node()
+//
+val
+t2p0 = d2v0.styp((*0*))
+val
+t2p0 = s2typ_hnfiz0(t2p0)
+//
+//
+(*
+val () =
+prerrln
+("f0_var(23): d2p0 = ", d2p0)
+val () =
+prerrln
+("f0_var(23): t2p0 = ", t2p0)
+*)
+//
+in//let
+//
+let
+//
+val (  ) = d2v0.styp(t2p0)
+//
+val t2p0 =
+(
+case+
+t2p0.node() of
+|
+T2Plft(t2p1) => t2p1
+|
+_(*otherwise*) => t2p0): s2typ
+//
+in//let
+  d3pat(loc0, t2p0, D3Pvar(d2v0))
+end//let
+//
+end//let//end-of-[f0_var(env0,d2p0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_con
 ( env0:
 ! tr23env
 , d2p0: d2pat): d3pat =
 let
-val loc0 = d2p0.lctn()
 //
+val loc0 = d2p0.lctn()
 val-
 D2Pcon(d2c1) = d2p0.node()
 //
@@ -320,8 +373,10 @@ let
 val
 t2p1 = d3p1.styp((*void*)) in//let
   d3pat(loc0, t2p1, D3Pbang( d3p1 ))
-end (*let*)
-end (*let*) // end of [f0_bang(env0,...)]
+end//let
+end(*let*)//end-of-[f0_bang(env0,d2p0)]
+//
+(* ****** ****** *)
 //
 fun
 f0_flat
@@ -342,8 +397,10 @@ let
 val
 t2p1 = d3p1.styp((*void*)) in//let
   d3pat(loc0, t2p1, D3Pflat( d3p1 ))
-end (*let*)
-end (*let*) // end of [f0_flat(env0,...)]
+end//let
+end(*let*)//end-of-[f0_flat(env0,d2p0)]
+//
+(* ****** ****** *)
 //
 fun
 f0_free
@@ -364,8 +421,8 @@ let
 val
 t2p1 = d3p1.styp((*void*)) in//let
   d3pat(loc0, t2p1, D3Pfree( d3p1 ))
-end (*let*)
-end (*let*) // end of [f0_free(env0,...)]
+end//let
+end(*let*)//end-of-[f0_free(env0,d2p0)]
 //
 (* ****** ****** *)
 //
@@ -540,7 +597,7 @@ t2p0 =
 (
 case+ d3ps of
 |list_nil() =>
-the_s2typ_void()
+the_s2typ_void() (* HX: (): void *)
 |list_cons _ =>
 s2typ_tup0(npf1, s2typlst(d3ps))): s2typ
 //

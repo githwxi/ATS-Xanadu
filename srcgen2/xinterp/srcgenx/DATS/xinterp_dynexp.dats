@@ -1057,6 +1057,7 @@ IRVlft
 IRLFTpcon
 (tknd, lab1, irv1))) where
 {
+val tknd = tknd.node((*0*))
 val irv1 =
   xinterp_irexp(env0, ire1) }
 //
@@ -1076,10 +1077,16 @@ let
 //
 val-
 IREflat(ire1) = ire0.node()
+//
 val
 irv1 =
 (
   xinterp_irexp(env0, ire1))
+//
+val () =
+prerrln("f0_flat: ire1 = ", ire1)
+val () =
+prerrln("f0_flat: irv1 = ", irv1)
 //
 in//let
 //

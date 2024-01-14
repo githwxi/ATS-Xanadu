@@ -56,6 +56,8 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../../../SATS/xstamp0.sats"
 #staload // LAB =
 "./../../../SATS/xlabel0.sats"
+#staload // LEX =
+"./../../../SATS/lexing0.sats"
 //
 (* ****** ****** *)
 //
@@ -241,6 +243,8 @@ case+ irv0 of
 |IRVchr(chr2) =>
 (chr1 = chr2) | _ => false)
 //
+|IRPbang _ => (     true     )
+//
 |IRPcapp _ => f0_capp(irp0, irv0)
 //
 |IRPtup0 _ => f0_tup0(irp0, irv0)
@@ -407,14 +411,20 @@ irvar_match
 |IRPflt(flt) => ((*void*))
 |IRPstr(str) => ((*void*))
 //
-|IRPcapp _ =>
+|
+IRPbang(irp) => ((*void*))
+//
+|
+IRPcapp _ =>
 (
   f0_capp(env0, irp0, irv0))
 //
-|IRPtup0 _ =>
+|
+IRPtup0 _ =>
 (
   f0_tup0(env0, irp0, irv0))
-|IRPtup1 _ =>
+|
+IRPtup1 _ =>
 (
   f0_tup1(env0, irp0, irv0))
 //
@@ -453,8 +463,14 @@ case+ irv0 of
 |
 IRVcapp
 (d2c2, irvs) =>
+let
+val () =
+irpcapp_match_lft
+(env0, irv0, irps)
+val () =
 irpatlst_match_tup
-(env0, irps, irvs) | _ => ( (*0*) ) )
+(env0, irps, irvs) end | _ => ((*0*))
+)
 end(*let*)//end-of-[ f0_capp(irp0, irv0) ]
 //
 (* ****** ****** *)
@@ -475,8 +491,11 @@ in//let
 case+ irv0 of
 |
 IRVtup0(irvs) =>
+let
+val () =
 irpatlst_match_tup
-(env0, irps, irvs) | _ => ( (*0*) ) )
+(env0, irps, irvs) end | _ => ((*0*))
+)
 end(*let*)//end-of-[ f0_tup0(irp0, irv0) ]
 //
 (* ****** ****** *)
@@ -508,8 +527,11 @@ case+ irv0 of
 |
 IRVtup1
 (knd2, irvs) =>
+let
+val () =
 irpatlst_match_tup
-(env0, irps, irvs) | _ => ( (*0*) ) )
+(env0, irps, irvs) end | _ => ((*0*))
+)
 end(*let*)//end-of-[ f0_tup1(irp0, irv0) ]
 //
 (* ****** ****** *)
@@ -586,6 +608,49 @@ prerrln("fiarg_match: irvs = ", irvs)
 //
 }(*where*)//end-of-[fiarg_match(env0,fia0,irvs)]
 //
+(* ****** ****** *)
+
+#implmnt
+irpcapp_match_lft
+(env0, irv0, irps) =
+(
+gseq_iforeach<xs><x0>(irps)
+) where
+{
+//
+#typedef x0 = irpat
+#vwtpdef e1 = xintenv
+#typedef xs = irpatlst
+//
+val e1 = $UN.datacopy(env0)
+//
+#impltmp
+iforeach$work
+<x0>(i0 , x0) =
+(
+case+ x0.node() of
+|
+IRPbang(x1) =>
+let
+val lab1 = LABint(i0)
+val-
+IRPvar(d2v1) = x1.node()
+val irv1 = IRVlft
+(
+IRLFTpcon(T_DOT,lab1,irv0)
+)
+val env0 =
+(
+  $UN.castlin10{e1}(e1) )
+val (  ) =
+irvar_match(env0,d2v1,irv1)
+val env0 = $UN.delinear(env0)
+end//let//end-of-[IRPbang(...)]
+| _(*non-IRPbang*) => ( (*void*) )
+)
+//
+}(*where*)//end-of-[irpatlst_match<...>(...)]
+
 (* ****** ****** *)
 //
 local
