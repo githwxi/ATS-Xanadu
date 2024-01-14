@@ -191,6 +191,10 @@ fun
 <x0:vt>
 <y0:vt>
 map1$fopr(x0: !x0): (y0)
+fun
+<x0:vt>
+<y0:vt>
+map2$fopr(x0: &x0): (y0)
 //
 (* ****** ****** *)
 //
@@ -349,7 +353,7 @@ fun
 forall1$test(x0: !x0): bool
 fun
 <x0:vt>
-forall2$test(x0: &x0 >> _): bool
+forall2$test(x0: &x0): bool
 //
 (* ****** ****** *)
 
@@ -364,7 +368,7 @@ fun
 foreach1$work(x0: !x0): void
 fun
 <x0:vt>
-foreach2$work(x0: &x0 >> _): void
+foreach2$work(x0: &x0): void
 
 (* ****** ****** *)
 //
@@ -444,12 +448,22 @@ fun
 <x0:vt>
 <y0:vt>
 rmap1$fopr(x0: !x0): (y0)
+fun
+<x0:vt>
+<y0:vt>
+rmap2$fopr(x0: &x0): (y0)
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
 rexists$test(x0: x0): bool
+fun
+<x0:vt>
+rexists0$test(x0: ~x0): bool
+fun
+<x0:vt>
+rexists1$test(x0: !x0): bool
 //
 fun
 <x0:t0>
@@ -462,7 +476,7 @@ fun
 rforall1$test(x0: !x0): bool
 fun
 <x0:vt>
-rforall2$test(x0: &x0 >> _): bool
+rforall2$test(x0: &x0): bool
 //
 (* ****** ****** *)
 //
@@ -477,14 +491,14 @@ fun
 rforeach1$work(x0: !x0): void
 fun
 <x0:vt>
-rforeach2$work(x0: &x0 >> _): void
+rforeach2$work(x0: &x0): void
 //
 (* ****** ****** *)
 //
 // For gseq-i-operations
 //
 (* ****** ****** *)
-
+//
 fun
 <x0:t0>
 <y0:vt>
@@ -497,7 +511,11 @@ fun
 <x0:vt>
 <y0:vt>
 imap1$fopr(nint, !x0): (y0)
-
+fun
+<x0:vt>
+<y0:vt>
+imap2$fopr(nint, &x0): (y0)
+//
 (* ****** ****** *)
 //
 fun<x0:t0>
@@ -515,7 +533,7 @@ fun<x0:vt>
 itakeif1$test(nint, !x0): bool
 //
 (* ****** ****** *)
-
+//
 fun
 <x0:t0>
 ifilter$test(nint, x0): bool
@@ -525,7 +543,7 @@ ifilter0$test(nint, !x0): bool
 fun
 <x0:vt>
 ifilter1$test(nint, !x0): bool
-
+//
 (* ****** ****** *)
 //
 fun
@@ -547,6 +565,9 @@ iforall0$test(nint, ~x0): bool
 fun
 <x0:vt>
 iforall1$test(nint, !x0): bool
+fun
+<x0:vt>
+iforall2$test(nint, &x0): bool
 //
 (* ****** ****** *)
 //
@@ -557,7 +578,7 @@ iforalln$test
   (i0: sint(ln), x0: x0): bool
 //
 (* ****** ****** *)
-
+//
 fun
 <x0:t0>
 iforeach$work(nint, x0): void
@@ -567,7 +588,10 @@ iforeach0$work(nint, ~x0): void
 fun
 <x0:vt>
 iforeach1$work(nint, !x0): void
-
+fun
+<x0:vt>
+iforeach2$work(nint, &x0): void
+//
 (* ****** ****** *)
 //
 fun
