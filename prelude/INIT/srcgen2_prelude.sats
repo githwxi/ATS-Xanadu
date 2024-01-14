@@ -26,10 +26,24 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 // HX-2023-08-14
 // Mon Aug 14 14:38:03 EDT 2023
 //
+(* ****** ****** *)
+(* ****** ****** *)
+(*
+//
+(*
+HX-2024-01-14:
+For further program verification
+*)
+//
+#include "prelude/SATS/stamped.sats"
+//
+*)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #include "prelude/SATS/gbas000.sats"
@@ -88,10 +102,12 @@
 #include "prelude/SATS/synoug0.sats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
 (*
 HX:
 For viewtypes (that is, linear types)
 *)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #include "prelude/SATS/VT/strn000_vt.sats"
@@ -115,20 +131,27 @@ For viewtypes (that is, linear types)
 #include "prelude/SATS/VT/gseqn00_vt.sats"
 //
 (* ****** ****** *)
+//
 #include "prelude/SATS/VT/synoug0_vt.sats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
+//
 (*
 HX-2023-08-18:
 This does not work as 
 the type definitions in the above included
 files are not yet accessible!
 *)
+//
 #staload
 UNSF(*unsafe*) = "prelude/SATS/unsafex.sats"
+//
 *)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_INIT_srcgen2_prelude.sats] *)
