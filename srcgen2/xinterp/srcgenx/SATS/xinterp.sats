@@ -196,7 +196,7 @@ and irlft =
 (
  a0ref(irvalopt) )
 |IRLFTpcon of
-(token, label, irval(*con*))
+(tnode, label, irval(*con*))
 //
 where
 {
@@ -397,6 +397,28 @@ fiarg_match
 (env0:
 !xintenv
 ,farg:fiarg,irvs:irvalist): void
+//
+(* ****** ****** *)
+//
+fun
+irpcapp_match_lft
+(env0:
+!xintenv
+,irv0:irval,irps:irpatlst): void
+//
+fun
+irptup1_match_lft
+(env0:
+!xintenv
+,irv0:irval,irps:irpatlst): void
+//
+fun
+irprcd2_match_lft
+(env0:
+!xintenv
+,irv0:irval,lirs:l0irplst): void
+//
+(* ****** ****** *)
 //
 fun
 irpatlst_match_tup

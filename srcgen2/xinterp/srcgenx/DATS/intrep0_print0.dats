@@ -115,6 +115,10 @@ IRPstr(str) =>
 print("IRPstr(", str, ")")
 //
 |
+IRPbang(irp1) =>
+print("IRPbang(", irp1, ")")
+//
+|
 IRPcapp(d2c1, irps) =>
 print("IRPcapp(", d2c1, ";", irps, ")")
 //

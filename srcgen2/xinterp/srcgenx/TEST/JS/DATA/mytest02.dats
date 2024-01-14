@@ -44,6 +44,39 @@ val y3 = foo0( x )
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+list_vt_incr
+(xs: list_vt(int)): void =
+(
+case+ xs of
+//
+| // !
+list_vt_nil() => ()
+//
+| !
+list_vt_cons
+(
+x1,
+list_vt_cons(x2,xs)) =>
+(
+x1 := x1+x1;
+x2 := x2*x2; list_vt_incr(xs))
+//
+| !
+list_vt_cons
+(
+x1,
+list_vt_nil((*nil*))) => (x1 := x1+x1)
+)
+//
+(* ****** ****** *)
+val xs = list_vt(1,2,3,4,5)
+val () = list_vt_incr( xs )
+val ys = xs // list_vt(2, 4, 6, 16, 10)
+(* ****** ****** *)
+////
+(* ****** ****** *)
+//
 #extern
 fun
 <a:t0>
