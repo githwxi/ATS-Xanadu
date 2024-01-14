@@ -316,10 +316,8 @@ val t2p0 =
 (
 case+
 t2p0.node() of
-|
-T2Plft(t2p1) => t2p1
-|
-_(*otherwise*) => t2p0): s2typ
+|T2Plft(t2p1) => t2p1
+|_(*otherwise*) => t2p0): s2typ
 //
 in//let
   d3pat(loc0, t2p0, D3Pvar(d2v0))

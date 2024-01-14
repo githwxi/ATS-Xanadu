@@ -573,7 +573,7 @@ fun
 <x0:t0>
 <r0:vt>
 ifoldl$fopr
-( r0: r0, i0: nint, x0: x0 ): r0
+(r0: r0, i0: nint, x0: x0): r0
 //
 (* ****** ****** *)
 //
@@ -581,7 +581,7 @@ fun
 <x0:t0>
 <r0:vt>
 ifoldr$fopr
-( i0: nint, x0: x0, r0: r0 ): r0
+(i0: nint, x0: x0, r0: r0): r0
 //
 (* ****** ****** *)
 //
