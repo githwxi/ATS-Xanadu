@@ -658,6 +658,24 @@ in
   // nothing
 end(*let*)//end-of(glseq_foreach1/forall1)
 //
+#impltmp
+<xs><x0>
+glseq_foreach2(xs) =
+let
+val
+test =
+glseq_forall2<xs><x0>(xs) where
+{
+#impltmp
+forall2$test<x0>(x0) =
+let
+val () = foreach2$work<x0>(x0) in true
+end
+}
+in
+  // nothing
+end(*let*)//end-of(glseq_foreach2/forall2)
+//
 (* ****** ****** *)
 
 (*

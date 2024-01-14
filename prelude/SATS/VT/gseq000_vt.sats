@@ -280,6 +280,7 @@ fun
 glseq_rappend0(xs1: xs, xs2: xs): xs
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 glseq_foldl: foldl$fopr
@@ -309,6 +310,7 @@ fun
 glseq_foldr1(!xs, r0): r0
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <xs:vt>
@@ -329,6 +331,7 @@ fun
 glseq_rexists1(!xs): bool
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <xs:vt>
@@ -338,6 +341,10 @@ fun
 <xs:vt>
 <x0:vt>
 glseq_forall1(!xs): bool
+fun
+<xs:vt>
+<x0:vt>
+glseq_forall2(!xs): bool
 //
 fun
 <xs:vt>
@@ -347,6 +354,12 @@ fun
 <xs:vt>
 <x0:vt>
 glseq_foreach1(!xs): void
+fun
+<xs:vt>
+<x0:vt>
+glseq_foreach2(!xs): void
+//
+(* ****** ****** *)
 //
 fun
 <xs:vt>
@@ -366,6 +379,7 @@ fun
 <x0:vt>
 glseq_rforeach1(!xs): void
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
