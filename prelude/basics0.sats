@@ -91,9 +91,16 @@
 //
 (* ****** ****** *)
 //
-datasort ints =
-|ints_nil of ((*nil*))
-|ints_cons of (i0,ints)
+datasort
+ints_sort =
+|
+ints_nil//of()
+|
+ints_cons of
+(int, ints_sort)
+//
+#sortdef
+ints = ints_sort // sequences
 //
 (* ****** ****** *)
 //
@@ -1304,6 +1311,7 @@ lstrq(*a:vt,n:i0*) = streaq_vt(*(a, n)*)
 #sexpdef
 strq_vt(*a:vt,n:i0*) = streaq_vt(*(a, n)*)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_basics0.sats] *)

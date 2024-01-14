@@ -347,6 +347,9 @@ forall0$test(x0: ~x0): bool
 fun
 <x0:vt>
 forall1$test(x0: !x0): bool
+fun
+<x0:vt>
+forall2$test(x0: &x0 >> _): bool
 //
 (* ****** ****** *)
 
@@ -457,9 +460,12 @@ rforall0$test(x0: ~x0): bool
 fun
 <x0:vt>
 rforall1$test(x0: !x0): bool
+fun
+<x0:vt>
+rforall2$test(x0: &x0 >> _): bool
 //
 (* ****** ****** *)
-
+//
 fun
 <x0:t0>
 rforeach$work(x0: x0): void
@@ -469,7 +475,10 @@ rforeach0$work(x0: ~x0): void
 fun
 <x0:vt>
 rforeach1$work(x0: !x0): void
-
+fun
+<x0:vt>
+rforeach2$work(x0: &x0 >> _): void
+//
 (* ****** ****** *)
 //
 // For gseq-i-operations

@@ -532,7 +532,7 @@ list_vt_cons(x0, xs) =>
 let
 val
 test = forall1$test<a>(x0)
-in
+in//let
 //
 if test then loop(xs) else false
 //
@@ -540,6 +540,36 @@ end // end of [list_vt_cons]
 )
 } (* end of [list_vt_forall1] *)
 //
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+list_vt_forall2
+  (xs) =
+  (loop(xs)) where
+{
+fnx
+loop
+(xs:
+!list_vt(a)): bool =
+(
+case+ xs of
+| // !
+list_vt_nil() => true
+| // !
+list_vt_cons(!x0, xs) =>
+let
+val
+test = forall2$test<a>(x0)
+in//let
+//
+if test then loop(xs) else false
+//
+end // end of [list_vt_cons]
+)
+} (* end of [list_vt_forall2] *)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -579,9 +609,9 @@ loop
 : list_vt(a)): void =
 (
 case+ xs of
-| ~
+| // !
 list_vt_nil() => ()
-| ~
+| // !
 list_vt_cons(x0, xs) =>
 let
 val () =
@@ -590,6 +620,32 @@ end // end of [list_vt_cons]
 )
 } (* end of [list_vt_foreach1] *)
 //
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+list_vt_foreach2
+  (xs) =
+  (loop(xs)) where
+{
+fnx
+loop
+( xs
+: list_vt(a)): void =
+(
+case+ xs of
+| // !
+list_vt_nil() => ()
+| // !
+list_vt_cons(!x0, xs) =>
+let
+val () =
+foreach2$work<a>(x0) in loop(xs)
+end // end of [list_vt_cons]
+)
+} (* end of [list_vt_foreach2] *)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -624,6 +680,7 @@ list_vt_cons(x0, xs) =>
 )
 in auxmain(xs) end // list_vt_strmize0
 
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -698,6 +755,7 @@ end
 //
 }(*where*)//end-of[list_vt_maprev0]
 
+(* ****** ****** *)
 (* ****** ****** *)
 
 #impltmp
@@ -802,6 +860,7 @@ in//let
 end (*let*) // end of [list_vt_mergesort0]
 
 (* ****** ****** *)
+(* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
@@ -892,6 +951,7 @@ in
 end (*let*) // end of [list_vt_permutize0(xs)]
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
@@ -952,10 +1012,12 @@ in
 end (*let*) // end of [list_vt_suffixq0(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 (*
 HX:
 For implementing g-ops
 *)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -1109,6 +1171,7 @@ glseq_map1_llist
 glseq_map1_rllist
 <list_vt(a)><a><b> = list_vt_maprev1<a><b>
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_list000_vt.dats] *)

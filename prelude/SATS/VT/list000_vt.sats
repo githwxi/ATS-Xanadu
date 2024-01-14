@@ -253,6 +253,9 @@ list_vt_forall0(~list_vt(x0)): bool
 fun
 <x0:vt>
 list_vt_forall1(!list_vt(x0)): bool
+fun
+<x0:vt>
+list_vt_forall2(!list_vt(x0)): bool
 //
 (* ****** ****** *)
 //
@@ -262,6 +265,9 @@ list_vt_foreach0(~list_vt(x0)): void
 fun
 <x0:vt>
 list_vt_foreach1(!list_vt(x0)): void
+fun
+<x0:vt>
+list_vt_foreach2(!list_vt(x0)): void
 //
 (* ****** ****** *)
 //
