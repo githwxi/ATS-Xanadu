@@ -117,7 +117,10 @@ D3E = "./dynexp3.sats"
 (* ****** ****** *)
 #typedef g1exp = $G1M.g1exp
 (* ****** ****** *)
+#typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
+(* ****** ****** *)
+#typedef s2res = $D2E.s2res
 (* ****** ****** *)
 #typedef d2var = $D2E.d2var
 #typedef d2con = $D2E.d2con
@@ -125,6 +128,8 @@ D3E = "./dynexp3.sats"
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
+(* ****** ****** *)
+#typedef f3arg = $D3E.f3arg
 (* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
@@ -134,6 +139,9 @@ D3E = "./dynexp3.sats"
 (* ****** ****** *)
 #abstbox d4exp_tbox // p0tr
 #typedef d4exp = d4exp_tbox
+(* ****** ****** *)
+#abstbox f4arg_tbox // p0tr
+#typedef f4arg = f4arg_tbox
 (* ****** ****** *)
 #abstbox d4ecl_tbox // p0tr
 #typedef d4ecl = d4ecl_tbox
@@ -153,7 +161,23 @@ D3E = "./dynexp3.sats"
 #typedef d4explst = list(d4exp)
 #typedef d4expopt = optn(d4exp)
 (* ****** ****** *)
+#typedef f4arglst = list(f4arg)
+(* ****** ****** *)
 #typedef d4eclist = list(d4ecl)
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef s2explst = $S2E.s2explst
+#typedef s2expopt = $S2E.s2expopt
+(* ****** ****** *)
+#typedef d2varopt = $D2E.d2varopt
+#typedef d2varlst = $D2E.d2varlst
+(* ****** ****** *)
+#typedef d2conlst = $D2E.d2conlst
+#typedef d2cstlst = $D2E.d2cstlst
+(* ****** ****** *)
+#typedef t2qaglst = $D2E.t2qaglst
+(* ****** ****** *)
+#typedef wths2exp = $D2E.wths2exp
 (* ****** ****** *)
 #typedef d4valdcl = d4valdcl_tbox
 #typedef d4vardcl = d4vardcl_tbox
@@ -354,6 +378,15 @@ d4exp_make_tpnd
 (* ****** ****** *)
 //
 datatype
+teqd4exp =
+|
+TEQD4EXPnone of ((*void*))
+|
+TEQD4EXPsome of (token(*EQ0*), d4exp)
+//
+(* ****** ****** *)
+//
+datatype
 d4ecl_node =
 //
 |D4Cd3ecl of (d3ecl)
@@ -413,6 +446,65 @@ d4ecl_make_node
 (* ****** ****** *)
 #symload d4ecl with d4ecl_make_node
 (* ****** ****** *)
+(* ****** ****** *)
+fun
+d4valdcl_fprint
+(out: FILR, dval: d4valdcl): void
+fun
+d4vardcl_fprint
+(out: FILR, dvar: d4vardcl): void
+(* ****** ****** *)
+fun
+d4fundcl_fprint
+(out: FILR, dfun: d4fundcl): void
+(* ****** ****** *)
+fun
+d4valdcl_get_lctn:(d4valdcl)->loc_t
+fun
+d4vardcl_get_lctn:(d4vardcl)->loc_t
+fun
+d4fundcl_get_lctn:(d4fundcl)->loc_t
+(* ****** ****** *)
+#symload lctn with d4valdcl_get_lctn
+#symload lctn with d4vardcl_get_lctn
+#symload lctn with d4fundcl_get_lctn
+(* ****** ****** *)
+fun
+d4valdcl_get_dpat:(d4valdcl)->d4pat
+fun
+d4valdcl_get_tdxp:(d4valdcl)->teqd4exp
+fun
+d4valdcl_get_wsxp:(d4valdcl)->wths2exp
+(* ****** ****** *)
+#symload dpat with d4valdcl_get_dpat
+#symload tdxp with d4valdcl_get_tdxp(*opt*)
+#symload wsxp with d4valdcl_get_wsxp(*opt*)
+(* ****** ****** *)
+//
+fun
+d4valdcl_make_args
+( lctn:loc_t
+, dpat:d4pat
+, tdxp:teqd4exp, wsxp:wths2exp):d4valdcl
+fun
+d4vardcl_make_args
+( lctn:loc_t
+, dpid:d2var
+, vpid:d2varopt
+, sres:s2expopt, dini:teqd4exp):d4vardcl
+//
+fun
+d4fundcl_make_args
+( lctn:loc_t
+, dpid:d2var
+, farg:f4arglst
+, sres:s2res
+, tdxp:teqd4exp, wsxp:wths2exp):d4fundcl
+//
+#symload d4valdcl with d4valdcl_make_args
+#symload d4vardcl with d4vardcl_make_args
+#symload d4fundcl with d4fundcl_make_args
+//
 (* ****** ****** *)
 //
 fun

@@ -159,6 +159,44 @@ val () =
 (* ****** ****** *)
 //
 #implfun
+trans34_d3valdcl
+  (env0, dval) = let
+//
+val loc0 =
+d3valdcl_get_lctn(dval)
+val dpat =
+d3valdcl_get_dpat(dval)
+val tdxp =
+d3valdcl_get_tdxp(dval)
+val wsxp =
+d3valdcl_get_wsxp(dval)
+//
+val dpat =
+trans34_d3pat(env0, dpat)
+//
+val tdxp =
+(
+case tdxp of
+|
+TEQD3EXPnone() =>
+TEQD4EXPnone(*void*)
+|
+TEQD3EXPsome(teq1, dexp) =>
+TEQD4EXPsome(teq1, dexp) where
+{
+val
+dexp = trans34_d3exp(env0, dexp)}
+)
+//
+in//let
+d4valdcl_make_args(loc0,dpat,tdxp,wsxp)
+end//let
+(*let*)//end-of-[trans34_d3valdcl(env0,dval)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 trans34_d3eclist
   (env0, dcls) =
 (
