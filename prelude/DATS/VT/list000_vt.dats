@@ -509,7 +509,7 @@ list_vt_free<a>(xs) in false end
 //
 end // end of [list_vt_cons]
 )
-} (* end of [list_vt_forall0] *)
+}(*where*)//end-of-[list_vt_forall0]
 //
 (* ****** ****** *)
 //
@@ -538,7 +538,7 @@ if test then loop(xs) else false
 //
 end // end of [list_vt_cons]
 )
-} (* end of [list_vt_forall1] *)
+}(*where*)//end-of-[list_vt_forall1]
 //
 (* ****** ****** *)
 //
@@ -567,7 +567,7 @@ if test then loop(xs) else false
 //
 end // end of [list_vt_cons]
 )
-} (* end of [list_vt_forall2] *)
+}(*where*)//end-of-[list_vt_forall2]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -593,7 +593,7 @@ val () =
 foreach0$work<a>(x0) in loop(xs)
 end // end of [list_vt_cons]
 )
-} (* end of [list_vt_foreach0] *)
+}(*where*)//end-of-[list_vt_foreach0]
 //
 (* ****** ****** *)
 //
@@ -618,7 +618,7 @@ val () =
 foreach1$work<a>(x0) in loop(xs)
 end // end of [list_vt_cons]
 )
-} (* end of [list_vt_foreach1] *)
+}(*where*)//end-of-[list_vt_foreach1]
 //
 (* ****** ****** *)
 //
@@ -643,7 +643,7 @@ val () =
 foreach2$work<a>(x0) in loop(xs)
 end // end of [list_vt_cons]
 )
-} (* end of [list_vt_foreach2] *)
+}(*where*)//end-of-[list_vt_foreach2]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -715,7 +715,7 @@ in
   let
   var r0: list_vt(y0)
   val () = loop(xs, r0) in r0 end
-end (* end of [list_map0_vt] *)
+end (*let*)//end of [list_map0_vt(...)]
 //
 (* ****** ****** *)
 
@@ -753,7 +753,7 @@ in
 end
 )
 //
-}(*where*)//end-of[list_vt_maprev0]
+}(*where*)//end-of-[list_vt_maprev0]
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -856,8 +856,8 @@ end // list_vt_cons
 //
 in//let
 (
-   amain(xs, list_vt_length1<a>(xs)) )
-end (*let*) // end of [list_vt_mergesort0]
+  amain(xs, list_vt_length1<a>(xs)) )
+end (*let*)//end of [list_vt_mergesort0]
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -948,7 +948,7 @@ end//let
 in
 (
   auxmain1(xs, list_vt_length1<a>(xs)) )
-end (*let*) // end of [list_vt_permutize0(xs)]
+end(*let*)//end of [list_vt_permutize0(xs)]
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -994,7 +994,7 @@ list_vt_cons(x1, xs1) =>
   end // end of [let]
 )
 ) (* end of [auxloop] *)
-} (*where*) // end of [list_vt_prefixq0(...)]
+} (*where*)//end-of-[list_vt_prefixq0(...)]
 //
 (* ****** ****** *)
 //
@@ -1009,7 +1009,7 @@ let
   list_vt_reverse0(xs2)
 in
   list_vt_prefixq0<a>(xs1, xs2)
-end (*let*) // end of [list_vt_suffixq0(...)]
+end (*let*)//end of [list_vt_suffixq0(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
