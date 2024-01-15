@@ -134,7 +134,7 @@ d3cl.lctn(),D4Cnone1(d3cl))
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 local
 //
 datatype
@@ -150,7 +150,9 @@ D4PAT_vt of
 //
 #absimpl d4pat_tbox = d4pat
 //
+(* ****** ****** *)
 in (* in-of-local *)
+(* ****** ****** *)
 //
 #implfun
 d4pat_make_node
@@ -161,10 +163,33 @@ val t2p =
 s2typ_none0() in
 D4PAT(loc, t2p, nod) endlet)
 //
-endloc (*local*) // end of [local(d4pat)]
-
 (* ****** ****** *)
-
+//
+#implfun
+d4pat_get_lctn(d4p) =
+let
+val+
+D4PAT
+(loc,t2p,nod) = d4p in loc end//let
+#implfun
+d4pat_get_styp(d4p) =
+let
+val+
+D4PAT
+(loc,t2p,nod) = d4p in t2p end//let
+#implfun
+d4pat_get_node(d4p) =
+let
+val+
+D4PAT
+(loc,t2p,nod) = d4p in nod end//let
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end of [local(d4pat)]
+//
+(* ****** ****** *)
+//
 local
 //
 datatype
@@ -180,7 +205,9 @@ D4EXP_vt of
 //
 #absimpl d4exp_tbox = d4exp
 //
+(* ****** ****** *)
 in (* in-of-local *)
+(* ****** ****** *)
 //
 #implfun
 d4exp_make_node
@@ -191,10 +218,33 @@ val t2p =
 s2typ_none0() in
 D4EXP(loc, t2p, nod) endlet)
 //
-endloc (*local*) // end of [local(d4exp)]
-
 (* ****** ****** *)
-
+//
+#implfun
+d4exp_get_lctn(d4e) =
+let
+val+
+D4EXP
+(loc,t2p,nod) = d4e in loc end//let
+#implfun
+d4exp_get_styp(d4e) =
+let
+val+
+D4EXP
+(loc,t2p,nod) = d4e in t2p end//let
+#implfun
+d4exp_get_node(d4e) =
+let
+val+
+D4EXP
+(loc,t2p,nod) = d4e in nod end//let
+//
+(* ****** ****** *)
+//
+endloc (*local*) // end of [local(d4exp)]
+//
+(* ****** ****** *)
+//
 local
 //
 datatype
@@ -236,10 +286,9 @@ end//let//end-of-[d4ecl_get_node(dcl)]
 (* ****** ****** *)
 //
 endloc (*local*) // end of [local(d4ecl)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
-
 
 local
 //
