@@ -709,7 +709,7 @@ TEQD3EXPnone(*void*)
 TEQD2EXPsome(teq1, dexp) =>
 TEQD3EXPsome(teq1, dexp) where
 {
-val tpat = dpat.styp()
+val tpat = dpat.styp((*0*))
 val dexp =
 trans23_d2exp_tpck(env0, dexp, tpat)}
 )
