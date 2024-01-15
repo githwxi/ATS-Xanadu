@@ -66,14 +66,88 @@ trans34_d3ecl
 (
 case+
 d3cl.node() of
+//
+|
+D3Cvaldclst _ => f0_valdclst(env0, d3cl)
+|
+D3Cvardclst _ => f0_vardclst(env0, d3cl)
+//
+(*
+|
+D3Cfundclst _ => f0_fundclst(env0, d3cl)
+*)
+//
 | _(*otherwise*) =>
 let
   val loc0 = d3cl.lctn()
 in//let
   d4ecl_make_node(loc0, D4Cnone1( d3cl ))
 end (*let*) // end of [_(*otherwise*)] // temp
+//
 ) where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_valdclst
+( env0:
+! tr34env
+, d3cl: d3ecl): d4ecl =
+let
+//
+val-
+D3Cvaldclst
+(tknd, d3vs) = d3cl.node()
+//
+val
+d4vs =
+trans34_d3valdclist(env0, d3vs)
+//
+in//let
+  d4ecl(loc0, D4Cvaldclst(tknd, d4vs))
+end where
+{
+//
+val loc0 = d3cl.lctn()
+(*
+val (  ) =
+prerrln("f0_valdclst(34): d3cl = ", d3cl)
+*)
+//
+}(*where*) // end of [f0_valdclst(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_vardclst
+( env0:
+! tr34env
+, d3cl: d3ecl): d4ecl =
+let
+//
+val-
+D3Cvardclst
+(tknd, d3vs) = d3cl.node()
+//
+val
+d4vs =
+trans34_d3vardclist(env0, d3vs)
+//
+in//let
+  d4ecl(loc0, D4Cvardclst(tknd, d4vs))
+end where
+{
+//
+val loc0 = d3cl.lctn()
+(*
+val (  ) =
+prerrln("f0_vardclst(34): d3cl = ", d3cl)
+*)
+//
+}(*where*) // end of [f0_vardclst(env0,d3cl)]
+//
+(* ****** ****** *)
 //
 val () =
 (
