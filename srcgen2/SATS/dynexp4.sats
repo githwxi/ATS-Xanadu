@@ -480,6 +480,37 @@ d4valdcl_get_wsxp:(d4valdcl)->wths2exp
 #symload tdxp with d4valdcl_get_tdxp(*opt*)
 #symload wsxp with d4valdcl_get_wsxp(*opt*)
 (* ****** ****** *)
+fun
+d4vardcl_get_dpid:(d4vardcl)->d2var
+fun
+d4vardcl_get_vpid:(d4vardcl)->d2varopt
+fun
+d4vardcl_get_sres:(d4vardcl)->s2expopt
+fun
+d4vardcl_get_dini:(d4vardcl)->teqd4exp
+(* ****** ****** *)
+#symload dpid with d4vardcl_get_dpid
+#symload vpid with d4vardcl_get_vpid(*opt*)
+#symload sres with d4vardcl_get_sres(*opt*)
+#symload dini with d4vardcl_get_dini(*opt*)
+(* ****** ****** *)
+fun
+d4fundcl_get_dpid:(d4fundcl)->d2var
+fun
+d4fundcl_get_farg:(d4fundcl)->f3arglst
+fun
+d4fundcl_get_sres:(d4fundcl)->s2res
+fun
+d4fundcl_get_tdxp:(d4fundcl)->teqd4exp
+fun
+d4fundcl_get_wsxp:(d4fundcl)->wths2exp
+(* ****** ****** *)
+#symload dpid with d4fundcl_get_dpid
+#symload farg with d4fundcl_get_farg(*lst*)
+#symload sres with d4fundcl_get_sres(*opt*)
+#symload tdxp with d4fundcl_get_tdxp(*opt*)
+#symload wsxp with d4fundcl_get_wsxp(*opt*)
+(* ****** ****** *)
 //
 fun
 d4valdcl_make_args
