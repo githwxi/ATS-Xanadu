@@ -3,8 +3,10 @@
 "prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 //
-#staload
-"prelude/INIT/srcgen2_prelude.dats"
+(*
+#include
+"prelude/HATS/prelude_dats.hats"
+*)
 //
 (* ****** ****** *)
 //
