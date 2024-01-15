@@ -1463,9 +1463,6 @@ d3valdcl_fprint(g_print$out<>(), dval)
 #impltmp
 g_print<d3vardcl>(dvar) =
 d3vardcl_fprint(g_print$out<>(), dvar)
-//
-(* ****** ****** *)
-//
 #impltmp
 g_print<d3fundcl>(dfun) =
 d3fundcl_fprint(g_print$out<>(), dfun)
@@ -1597,6 +1594,18 @@ d4exp_fprint(g_print$out<>(), dexp)
 #impltmp
 g_print<d4ecl>(d4cl) =
 d4ecl_fprint(g_print$out<>(), d4cl)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<d4valdcl>(dval) =
+d4valdcl_fprint(g_print$out<>(), dval)
+#impltmp
+g_print<d4vardcl>(dvar) =
+d4vardcl_fprint(g_print$out<>(), dvar)
+#impltmp
+g_print<d4fundcl>(dfun) =
+d4fundcl_fprint(g_print$out<>(), dfun)
 //
 (* ****** ****** *)
 (* ****** ****** *)

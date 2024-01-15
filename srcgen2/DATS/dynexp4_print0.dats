@@ -190,6 +190,27 @@ tknd,";",gsrc,";",fopt,";","...",")"))
 //
 (* ****** ****** *)
 //
+|
+D4Cvaldclst
+(  tknd, d4vs  ) =>
+(
+print("D4Cvaldclst(",tknd,";",d4vs,")"))
+|
+D4Cvardclst
+(  tknd, d4vs  ) =>
+(
+print("D4Cvardclst(",tknd,";",d4vs,")"))
+//
+|
+D4Cfundclst
+(tknd
+,tqas,d2cs,d4fs) =>
+(
+print("D4Cfundclst(");
+print(tknd,";",tqas,";",d2cs,";",d4fs,")"))
+//
+(* ****** ****** *)
+//
 |D4Cnone0() => print( "D4Cnone0(", ")" )
 |D4Cnone1(d3cl) => print( "D4Cnone1(",d3cl,")" )
 |D4Cnone2(d4cl) => print( "D4Cnone2(",d4cl,")" )
