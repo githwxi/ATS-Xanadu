@@ -104,6 +104,13 @@ D4E = "./dynexp4.sats"
 (* ****** ****** *)
 #typedef d3eclist = $D3E.d3eclist
 (* ****** ****** *)
+#typedef d3valdcl = $D3E.d3valdcl
+#typedef d3vardcl = $D3E.d3vardcl
+#typedef d3fundcl = $D3E.d3fundcl
+(* ****** ****** *)
+#typedef d3parsed = $D3E.d3parsed
+(* ****** ****** *)
+(* ****** ****** *)
 #typedef d4patlst = $D4E.d4patlst
 #typedef l4d4plst = $D4E.l4d4plst
 (* ****** ****** *)
@@ -113,8 +120,20 @@ D4E = "./dynexp4.sats"
 (* ****** ****** *)
 #typedef d4eclist = $D4E.d4eclist
 (* ****** ****** *)
-#typedef d3parsed = $D3E.d3parsed
+#typedef d4valdcl = $D4E.d4valdcl
+#typedef d4vardcl = $D4E.d4vardcl
+#typedef d4fundcl = $D4E.d4fundcl
+(* ****** ****** *)
 #typedef d4parsed = $D4E.d4parsed
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef d3valdclist = $D3E.d3valdclist
+#typedef d3vardclist = $D3E.d3vardclist
+#typedef d3fundclist = $D3E.d3fundclist
+(* ****** ****** *)
+#typedef d4valdclist = $D4E.d4valdclist
+#typedef d4vardclist = $D4E.d4vardclist
+#typedef d4fundclist = $D4E.d4fundclist
 (* ****** ****** *)
 #typedef d3explstopt = $D3E.d3explstopt
 #typedef d4explstopt = $D4E.d4explstopt
@@ -267,20 +286,62 @@ trans34_d3ecl
 //
 fun
 trans34_d3explst
-(env0: !tr34env, d3es: d3explst): d4explst
+( env0:
+! tr34env, d3es: d3explst): d4explst
 fun
 trans34_d3expopt
-(env0: !tr34env, dopt: d3expopt): d4expopt
+( env0:
+! tr34env, dopt: d3expopt): d4expopt
 //
 fun
 trans34_l3d3elst
-(env0: !tr34env, ldes: l3d3elst): l4d4elst
+( env0:
+! tr34env, ldes: l3d3elst): l4d4elst
 //
 (* ****** ****** *)
 //
 fun
 trans34_d3eclist
-(env0: !tr34env, dcls: d3eclist): d4eclist
+( env0:
+! tr34env, dcls: d3eclist): d4eclist
+//
+(* ****** ****** *)
+//
+fun
+trans34_d3valdcl
+( env0: 
+! tr34env, dval: d3valdcl): d4valdcl
+fun
+trans34_d3vardcl
+( env0: 
+! tr34env, dvar: d3vardcl): d4vardcl
+//
+(* ****** ****** *)
+//
+fun
+trans34_d3fundcl
+( env0: 
+! tr34env, dfun: d3fundcl): d4fundcl
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+trans34_d3valdclist
+( env0: 
+! tr34env, d3vs: d3valdclist): d4valdclist
+//
+fun
+trans34_d3vardclist
+( env0: 
+! tr34env, d3vs: d3vardclist): d4vardclist
+//
+(* ****** ****** *)
+//
+fun
+trans34_d3fundclist
+( env0: 
+! tr34env, d3fs: d3fundclist): d4fundclist
 //
 (* ****** ****** *)
 //

@@ -366,6 +366,17 @@ d4ecl_node =
 , d4eclistopt) // inclusion
 //
 |
+D4Cvaldclst of
+(token(*VAL(vlk)*), d4valdclist)
+|
+D4Cvardclst of
+(token(*VAR(vrk)*), d4vardclist)
+|
+D4Cfundclst of
+( token(*FUN(fnk)*)
+, t2qaglst, d2cstlst, d4fundclist)
+//
+|
 D4Cnone0 of ((*nil*))
 |
 D4Cnone1 of ( d3ecl ) | D4Cnone2 of ( d4ecl )
