@@ -69,18 +69,35 @@ ATS_PACKNAME
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
+#symload lctn with d3pat_get_lctn
+#symload node with d3pat_get_node
+(* ****** ****** *)
 #symload lctn with d3exp_get_lctn
 #symload node with d3exp_get_node
 (* ****** ****** *)
 #symload lctn with d3ecl_get_lctn
 #symload node with d3ecl_get_node
 (* ****** ****** *)
-#symload lctn with d4exp_get_lctn
-#symload node with d4exp_get_node
 (* ****** ****** *)
-#symload lctn with d4ecl_get_lctn
-#symload node with d4ecl_get_node
-(* ****** ****** *)
+//
+#implfun
+d4pat_none0
+(  loc0  ) =
+d4pat_make_node
+(loc0,D4Pnone0((*void*)))
+#implfun
+d4pat_none1
+(  dpat  ) =
+d4pat_make_node
+(
+dpat.lctn(),D4Pnone1(dpat))
+#implfun
+d4pat_none2
+(  dpat  ) =
+d4pat_make_node
+(
+dpat.lctn(),D4Pnone2(dpat))
+//
 (* ****** ****** *)
 //
 #implfun
@@ -116,6 +133,36 @@ d4ecl_make_node
 d3cl.lctn(),D4Cnone1(d3cl))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+
+local
+//
+datatype
+d4pat =
+D4PAT of
+( loctn
+, s2typ, d4pat_node)
+datavwtp
+d4pat_vt =
+D4PAT_vt of
+( loctn
+, s2typ, d4pat_node)
+//
+#absimpl d4pat_tbox = d4pat
+//
+in (* in-of-local *)
+//
+#implfun
+d4pat_make_node
+(   loc,nod   ) =
+(
+let
+val t2p =
+s2typ_none0() in
+D4PAT(loc, t2p, nod) endlet)
+//
+endloc (*local*) // end of [local(d4pat)]
+
 (* ****** ****** *)
 
 local
