@@ -117,6 +117,8 @@ D3E = "./dynexp3.sats"
 (* ****** ****** *)
 #typedef g1exp = $G1M.g1exp
 (* ****** ****** *)
+#typedef s2var = $S2E.s2var
+(* ****** ****** *)
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
@@ -143,6 +145,13 @@ D3E = "./dynexp3.sats"
 #abstbox f4arg_tbox // p0tr
 #typedef f4arg = f4arg_tbox
 (* ****** ****** *)
+#abstbox d4gua_tbox // p0tr
+#abstbox d4gpt_tbox // p0tr
+#abstbox d4cls_tbox // p0tr
+#typedef d4gua = d4gua_tbox
+#typedef d4gpt = d4gpt_tbox
+#typedef d4cls = d4cls_tbox
+(* ****** ****** *)
 #abstbox d4ecl_tbox // p0tr
 #typedef d4ecl = d4ecl_tbox
 (* ****** ****** *)
@@ -163,8 +172,13 @@ D3E = "./dynexp3.sats"
 (* ****** ****** *)
 #typedef f4arglst = list(f4arg)
 (* ****** ****** *)
+#typedef d4gualst = list(d4gua)
+#typedef d4clslst = list(d4cls)
+(* ****** ****** *)
 #typedef d4eclist = list(d4ecl)
 (* ****** ****** *)
+(* ****** ****** *)
+#typedef s2varlst = $S2E.s2varlst
 (* ****** ****** *)
 #typedef s2explst = $S2E.s2explst
 #typedef s2expopt = $S2E.s2expopt
@@ -376,6 +390,126 @@ d4exp_make_tpnd
 #symload d4exp with d4exp_make_node
 #symload d4exp with d4exp_make_tpnd
 (* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+f4arg_node =
+//
+(*
+| F4ARGnone of (token)
+*)
+//
+|
+F4ARGdapp of
+(sint(*npf*), d4patlst(*args*))
+//
+|
+F4ARGsapp of
+( s2varlst(*s2vs*)
+, s2explst(*s2ps*) ) // static
+//
+|
+F4ARGmets of (s2explst(*mets*))
+//
+(*
+|
+F4ARGsapq of (s2varlst(*synd*))
+*)
+//
+(* ****** ****** *)
+//
+fun
+f4arg_fprint:(FILR,f4arg)->void
+//
+(* ****** ****** *)
+fun
+f4arg_get_lctn(f4arg): loc_t
+fun
+f4arg_get_node(f4arg): f4arg_node
+(* ****** ****** *)
+#symload lctn with f4arg_get_lctn
+#symload node with f4arg_get_node
+(* ****** ****** *)
+//
+fun
+f4arg_make_node
+(loc:loc_t, nod:f4arg_node):f4arg
+#symload f4arg with f4arg_make_node
+//
+(* ****** ****** *)
+//
+datatype
+d4gua_node =
+| D4GUAexp of (d4exp)
+| D4GUAmat of (d4exp, d4pat)
+//
+(* ****** ****** *)
+//
+datatype
+d4cls_node =
+| D4CLSgpt of d4gpt
+| D4CLScls of (d4gpt, d4exp)
+and
+d4gpt_node =
+| D4GPTpat of (d4pat)
+| D4GPTgua of (d4pat, d4gualst)
+//
+(* ****** ****** *)
+//
+fun
+d4gua_fprint:(FILR,d4gua)->void
+fun
+d4gpt_fprint:(FILR,d4gpt)->void
+fun
+d4cls_fprint:(FILR,d4cls)->void
+//
+(* ****** ****** *)
+//
+fun
+d4gua_get_lctn(d4gua): loc_t
+fun
+d4gua_get_node(d4gua): d4gua_node
+//
+#symload lctn with d4gua_get_lctn
+#symload node with d4gua_get_node
+//
+(* ****** ****** *)
+//
+fun
+d4gpt_get_lctn(d4gpt): loc_t
+fun
+d4gpt_get_node(d4gpt): d4gpt_node
+//
+#symload lctn with d4gpt_get_lctn
+#symload node with d4gpt_get_node
+//
+(* ****** ****** *)
+//
+fun
+d4cls_get_lctn(d4cls): loc_t
+fun
+d4cls_get_node(d4cls): d4cls_node
+//
+#symload lctn with d4cls_get_lctn
+#symload node with d4cls_get_node
+//
+(* ****** ****** *)
+//
+fun
+d4gua_make_node
+(loc0:loc_t,node:d4gua_node):d4gua
+fun
+d4gpt_make_node
+(loc0:loc_t,node:d4gpt_node):d4gpt
+fun
+d4cls_make_node
+(loc0:loc_t,node:d4cls_node):d4cls
+#symload d4gua with d4gua_make_node
+#symload d4gpt with d4gpt_make_node
+#symload d4cls with d4cls_make_node
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 datatype
 teqd4exp =
@@ -497,7 +631,7 @@ d4vardcl_get_dini:(d4vardcl)->teqd4exp
 fun
 d4fundcl_get_dpid:(d4fundcl)->d2var
 fun
-d4fundcl_get_farg:(d4fundcl)->f3arglst
+d4fundcl_get_farg:(d4fundcl)->f4arglst
 fun
 d4fundcl_get_sres:(d4fundcl)->s2res
 fun

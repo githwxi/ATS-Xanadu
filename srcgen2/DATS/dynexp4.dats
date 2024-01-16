@@ -189,6 +189,7 @@ D4PAT
 endloc (*local*) // end of [local(d4pat)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 local
 //
@@ -243,6 +244,39 @@ D4EXP
 //
 endloc (*local*) // end of [local(d4exp)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+f4arg =
+F4ARG of
+(
+loctn, f4arg_node)
+#absimpl
+f4arg_tbox = f4arg
+//
+in (* in-of-local *)
+//
+#implfun
+f4arg_make_node
+(   loc,nod   ) = F4ARG(loc,nod)
+//
+#implfun
+f4arg_get_lctn(f4a) =
+let
+  val+F4ARG(loc,nod) = f4a in loc
+end
+#implfun
+f4arg_get_node(f4a) =
+let
+  val+F4ARG(loc,nod) = f4a in nod
+end
+//
+endloc (*local*) // end of [local(f4arg)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 local
