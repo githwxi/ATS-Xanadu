@@ -1627,6 +1627,34 @@ d4fundcl_fprint(g_print$out<>(), dfun)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#impltmp
+g_print<d4parsed>(dpar) =
+d4parsed_fprint(g_print$out<>(), dpar)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<teqd4exp>(tdxp) =
+let
+(*
+#impltmp
+g_print$out<>() = out
+*)
+in//let
+(
+case+ tdxp of
+|
+TEQD4EXPnone() =>
+print("TEQD4EXPnone(", ")")
+|
+TEQD4EXPsome(tok0, d4e1) =>
+print("TEQD4EXPsome(",tok0,";",d4e1,")"))
+endlet // end-of-[g_print<teqd4exp>(tdxp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 (*
 HX-2022-12-28: For debugging purpose
 *)

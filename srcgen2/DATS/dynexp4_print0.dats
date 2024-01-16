@@ -317,5 +317,75 @@ end (*let*) // end of [d4ecl_fprint(out, dcl0)]
 
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#implfun
+d4valdcl_fprint
+  (out, dval) = let
+//
+val dpat =
+d4valdcl_get_dpat(dval)
+val tdxp =
+d4valdcl_get_tdxp(dval)
+val wsxp =
+d4valdcl_get_wsxp(dval)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print
+("D4VALDCL(",dpat,";",tdxp,";",wsxp,")"))
+end(*let*)//end-of-[d4valdcl_fprint(out,dval)]
+//
+(* ****** ****** *)
+//
+#implfun
+d4vardcl_fprint
+  (out, dvar) = let
+//
+val dpid =
+d4vardcl_get_dpid(dvar)
+val vpid =
+d4vardcl_get_vpid(dvar)
+val sres =
+d4vardcl_get_sres(dvar)
+val dini =
+d4vardcl_get_dini(dvar)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print("D4VARDCL(");
+print(dpid,";",vpid,";",sres,";",dini,")"))
+end(*let*)//end-of-[d4vardcl_fprint(out,dvar)]
+//
+(* ****** ****** *)
+
+#implfun
+d4fundcl_fprint
+  (out, dfun) = let
+//
+val dpid =
+d4fundcl_get_dpid(dfun)
+val farg =
+d4fundcl_get_farg(dfun)
+val sres =
+d4fundcl_get_sres(dfun)
+val tdxp =
+d4fundcl_get_tdxp(dfun)
+val wsxp =
+d4fundcl_get_wsxp(dfun)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print("D4FUNDCL(",dpid,";");
+print(farg,";",sres,";",tdxp,";",wsxp,")"))
+end(*let*)//end-of-[d4fundcl_fprint(out,dfun)]
+
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_dynexp4_print0.dats] *)
