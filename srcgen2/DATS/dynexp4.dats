@@ -277,6 +277,99 @@ end
 endloc (*local*) // end of [local(f4arg)]
 //
 (* ****** ****** *)
+//
+local
+//
+datatype
+d4gua =
+D4GUA of
+(
+loctn, d4gua_node)
+#absimpl
+d4gua_tbox = d4gua
+//
+in (* in-of-local *)
+//
+#implfun
+d4gua_make_node
+(   loc,nod   ) = D4GUA(loc,nod)
+//
+#implfun
+d4gua_get_lctn(d4g) =
+let
+  val+D4GUA(loc,nod) = d4g in loc
+end
+#implfun
+d4gua_get_node(d4g) =
+let
+  val+D4GUA(loc,nod) = d4g in nod
+end
+//
+endloc (*local*) // end of [local(d4gua)]
+//
+(* ****** ****** *)
+//
+local
+//
+datatype
+d4gpt =
+D4GPT of
+(
+loctn, d4gpt_node)
+#absimpl
+d4gpt_tbox = d4gpt
+//
+in (* in-of-local *)
+//
+#implfun
+d4gpt_make_node
+(   loc,nod   ) = D4GPT(loc,nod)
+//
+#implfun
+d4gpt_get_lctn(gpt) =
+let
+  val+D4GPT(loc,nod) = gpt in loc
+end
+#implfun
+d4gpt_get_node(gpt) =
+let
+  val+D4GPT(loc,nod) = gpt in nod
+end
+//
+endloc (*local*) // end of [local(d4gpt)]
+//
+(* ****** ****** *)
+//
+local
+//
+datatype
+d4cls =
+D4CLS of
+(
+loctn, d4cls_node)
+#absimpl
+d4cls_tbox = d4cls
+//
+in (* in-of-local *)
+//
+#implfun
+d4cls_make_node
+(   loc,nod   ) = D4CLS(loc,nod)
+//
+#implfun
+d4cls_get_lctn(cls) =
+let
+  val+D4CLS(loc,nod) = cls in loc
+end
+#implfun
+d4cls_get_node(cls) =
+let
+  val+D4CLS(loc,nod) = cls in nod
+end
+//
+endloc (*local*) // end of [local(d4cls)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 local
