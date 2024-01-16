@@ -160,6 +160,98 @@ print("D4Elet0(",dcls,";",d4e1,")"))
 end (*let*) // end of [d4exp_fprint(out, d4e0)]
 
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+f4arg_fprint
+(out, farg) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+farg.node() of
+|
+F4ARGdapp
+(npf1,d4ps) =>
+print
+("F4ARGdapp(",npf1,";",d4ps,")")
+|
+F4ARGsapp
+(s2vs,s2ps) =>
+print
+("F4ARGsapp(",s2vs,";",s2ps,")")
+|
+F4ARGmets
+(   s2es   ) => print("F4ARGmets(",s2es,")")
+(*
+|
+F4ARGsapq
+(   s2vs   ) => print("F4ARGsapq(",s2vs,")")
+*)
+//
+end (*let*) // end of [f4arg_fprint(out,farg)]
+//
+(* ****** ****** *)
+//
+#implfun
+d4gua_fprint
+(out, dgua) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+dgua.node() of
+|
+D4GUAexp(d4e1) =>
+print("D4GUAexp(",d4e1,")")
+|
+D4GUAmat(d4e1,d4p2) =>
+print("D4GUAmat(",d4e1,";",d4p2,")")
+//
+end (*let*) // end of [d4gua_fprint(out,dgua)]
+//
+(* ****** ****** *)
+//
+#implfun
+d4gpt_fprint
+(out, dgpt) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+dgpt.node() of
+|
+D4GPTpat(d4p1) =>
+print("D4GPTpat(",d4p1,")")
+|
+D4GPTgua(d4p1,d4gs) =>
+print("D4GPTgua(",d4p1,";",d4gs,")")
+end (*let*) // end of [d4gpt_fprint(out,dgpt)]
+//
+#implfun
+d4cls_fprint
+(out, dcls) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+dcls.node() of
+|
+D4CLSgpt(dgpt) =>
+print("D4CLSgpt(",dgpt,")")
+|
+D4CLScls(d4g1,d4e2) =>
+print("D4CLScls(",d4g1,";",d4e2,")")
+end (*let*) // end of [d4cls_fprint(out,dcls)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 #implfun
 d4ecl_fprint

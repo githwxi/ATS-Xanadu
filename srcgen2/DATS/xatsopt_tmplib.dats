@@ -1592,6 +1592,24 @@ d4exp_fprint(g_print$out<>(), dexp)
 (* ****** ****** *)
 //
 #impltmp
+g_print<f4arg>(farg) =
+f4arg_fprint(g_print$out<>(), farg)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print<d4gua>(dgua) =
+d4gua_fprint(g_print$out<>(), dgua)
+#impltmp
+g_print<d4gpt>(dgpt) =
+d4gpt_fprint(g_print$out<>(), dgpt)
+#impltmp
+g_print<d4cls>(dcls) =
+d4cls_fprint(g_print$out<>(), dcls)
+//
+(* ****** ****** *)
+//
+#impltmp
 g_print<d4ecl>(d4cl) =
 d4ecl_fprint(g_print$out<>(), d4cl)
 //
