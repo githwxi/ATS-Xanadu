@@ -18,10 +18,22 @@
 
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
+#extern
 fun
-board_nil(): board = RaiseErrorExn()
-
+board_nil
+((*void*)): board = RaiseErrorExn()
+#extern
+fun
+board_cons
+( x0: sint
+, xs: board): board = RaiseErrorExn()
+//
+#extern
+fun
+board_forall
+  (xs: board): bool = RaiseErrorExn()
+//
 (* ****** ****** *)
 (* ****** ****** *)
 

@@ -60,6 +60,16 @@ _(*?*) = "./lexing0_print0.dats"
 #symload lctn with d4exp_get_lctn
 #symload node with d4exp_get_node
 (* ****** ****** *)
+#symload lctn with f4arg_get_lctn
+#symload node with f4arg_get_node
+(* ****** ****** *)
+#symload lctn with d4gua_get_lctn
+#symload lctn with d4gpt_get_lctn
+#symload lctn with d4cls_get_lctn
+#symload node with d4gua_get_node
+#symload node with d4gpt_get_node
+#symload node with d4cls_get_node
+(* ****** ****** *)
 #symload lctn with d4ecl_get_lctn
 #symload node with d4ecl_get_node
 (* ****** ****** *)

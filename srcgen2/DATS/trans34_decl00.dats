@@ -205,6 +205,28 @@ trans34_d3eclist
 (* ****** ****** *)
 //
 #implfun
+trans34_d3valdclist
+  (env0, d3vs) =
+(
+list_trans34_fnp(env0, d3vs, trans34_d3valdcl))
+//
+#implfun
+trans34_d3vardclist
+  (env0, d3vs) =
+(
+list_trans34_fnp(env0, d3vs, trans34_d3vardcl))
+//
+(* ****** ****** *)
+//
+#implfun
+trans34_d3fundclist
+  (env0, d3fs) =
+(
+list_trans34_fnp(env0, d3fs, trans34_d3fundcl))
+//
+(* ****** ****** *)
+//
+#implfun
 trans34_d3eclistopt
   (  env0,dopt  ) =
 (

@@ -78,6 +78,15 @@ ATS_PACKNAME
 #symload lctn with d3ecl_get_lctn
 #symload node with d3ecl_get_node
 (* ****** ****** *)
+#symload lctn with d4pat_get_lctn
+#symload node with d4pat_get_node
+(* ****** ****** *)
+#symload lctn with d4exp_get_lctn
+#symload node with d4exp_get_node
+(* ****** ****** *)
+#symload lctn with d4ecl_get_lctn
+#symload node with d4ecl_get_node
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -189,6 +198,18 @@ D4PAT
 endloc (*local*) // end of [local(d4pat)]
 //
 (* ****** ****** *)
+//
+#implfun
+d4pat_make_tpnd
+( loc0, t2p0, node ) =
+let
+  val
+  d4p0 = d4pat(loc0, node)
+in
+  (d4pat_set_styp(d4p0, t2p0); d4p0)
+end(*let*)//end-of-[d4pat_make_tpnd(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 local
@@ -243,6 +264,18 @@ D4EXP
 (* ****** ****** *)
 //
 endloc (*local*) // end of [local(d4exp)]
+//
+(* ****** ****** *)
+//
+#implfun
+d4exp_make_tpnd
+( loc0, t2p0, node ) =
+let
+  val
+  d4e0 = d4exp(loc0, node)
+in
+  (d4exp_set_styp(d4e0, t2p0); d4e0)
+end(*let*)//end-of-[d4exp_make_tpnd(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

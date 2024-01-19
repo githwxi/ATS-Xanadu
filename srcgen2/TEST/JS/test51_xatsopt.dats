@@ -457,7 +457,12 @@ val dpar =
 val dpar =
   d4parsed_of_trans34(dpar)
 //
+val (  ) =
+(
+  prerrln("dpar(34) = ", dpar))
+//
 in//let
+//
 fperr44_d4parsed
 (g_stderr((*tmp*)), dpar) end where
 {
