@@ -7,6 +7,15 @@
 "prelude/HATS/prelude_dats.hats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
+
+val x0 = 0
+val x1 = 1
+val x2 = x0 + x1
+
+(* ****** ****** *)
+////
+(* ****** ****** *)
 //
 fun
 fact(n: int): int =

@@ -280,15 +280,19 @@ fun
 d4pat_get_lctn(d4pat): ( loc_t )
 //
 fun
-d4pat_get_styp(d4pat): ( s2typ )
+d4pat_get_node(d4pat): d4pat_node
 //
 fun
-d4pat_get_node(d4pat): d4pat_node
+d4pat_get_styp(d4pat): ( s2typ )
+fun
+d4pat_set_styp
+(d4p0: d4pat, t2p0: s2typ): void
 //
 (* ****** ****** *)
 #symload lctn with d4pat_get_lctn
-#symload styp with d4pat_get_styp
 #symload node with d4pat_get_node
+#symload styp with d4pat_get_styp
+#symload styp with d4pat_set_styp
 (* ****** ****** *)
 fun
 d4pat_none0(loc0: loc_t): (d4pat)
@@ -362,15 +366,19 @@ fun
 d4exp_get_lctn(d4exp): ( loc_t )
 //
 fun
-d4exp_get_styp(d4exp): ( s2typ )
+d4exp_get_node(d4exp): d4exp_node
 //
 fun
-d4exp_get_node(d4exp): d4exp_node
+d4exp_get_styp(d4exp): ( s2typ )
+fun
+d4exp_set_styp
+(d4e0: d4exp, t2p0: s2typ): void
 //
 (* ****** ****** *)
 #symload lctn with d4exp_get_lctn
-#symload styp with d4exp_get_styp
 #symload node with d4exp_get_node
+#symload styp with d4exp_get_styp
+#symload styp with d4exp_set_styp
 (* ****** ****** *)
 fun
 d4exp_none0(loc0: loc_t): (d4exp)
