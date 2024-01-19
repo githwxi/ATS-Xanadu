@@ -488,6 +488,144 @@ endloc (*local*) // end of [local(d4ecl)]
 local
 //
 datatype
+d4valdcl =
+D4VALDCL of
+( loc_t
+, d4pat
+, teqd4exp, wths2exp)
+//
+#absimpl
+d4valdcl_tbox = d4valdcl
+//
+in//local
+
+#implfun
+d4valdcl_get_lctn
+  (  dval  ) = let
+val+
+D4VALDCL
+( lctn
+, dpat
+, tdxp, wsxp) = dval in lctn end
+
+#implfun
+d4valdcl_get_dpat
+  (  dval  ) = let
+val+
+D4VALDCL
+( lctn
+, dpat
+, tdxp, wsxp) = dval in dpat end
+
+#implfun
+d4valdcl_get_tdxp
+  (  dval  ) = let
+val+
+D4VALDCL
+( lctn
+, dpat
+, tdxp, wsxp) = dval in tdxp end
+
+#implfun
+d4valdcl_get_wsxp
+  (  dval  ) = let
+val+
+D4VALDCL
+( lctn
+, dpat
+, tdxp, wsxp) = dval in wsxp end
+
+(* ****** ****** *)
+
+#implfun
+d4valdcl_make_args
+(lctn, dpat, tdxp, wsxp) =
+(
+  D4VALDCL(lctn, dpat, tdxp, wsxp)
+)
+
+endloc (*local*) // end of [local(d4valdcl)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d4vardcl =
+D4VARDCL of
+( loc_t
+, d2var
+, d2varopt
+, s2expopt, teqd4exp)
+//
+#absimpl
+d4vardcl_tbox = d4vardcl
+//
+in//local
+
+#implfun
+d4vardcl_get_lctn
+  (  dvar  ) = let
+val+
+D4VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in lctn end
+
+#implfun
+d4vardcl_get_dpid
+  (  dvar  ) = let
+val+
+D4VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in dpid end
+
+#implfun
+d4vardcl_get_vpid
+  (  dvar  ) = let
+val+
+D4VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in vpid end
+
+#implfun
+d4vardcl_get_sres
+  (  dvar  ) = let
+val+
+D4VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in sres end
+
+#implfun
+d4vardcl_get_dini
+  (  dvar  ) = let
+val+
+D4VARDCL
+( lctn
+, dpid, vpid
+, sres, dini) = dvar in dini end
+
+(* ****** ****** *)
+
+#implfun
+d4vardcl_make_args
+( lctn
+, dpid, vpid, sres, dini) =
+(
+D4VARDCL(lctn, dpid, vpid, sres, dini)
+)
+
+endloc (*local*) // end of [ local(d4vardcl) ]
+
+(* ****** ****** *)
+(* ****** ****** *)
+
+local
+//
+datatype
 d4parsed =
 D4PARSED of
 (
