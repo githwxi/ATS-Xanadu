@@ -36,6 +36,9 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsafex.sats"
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
@@ -195,6 +198,22 @@ D4PAT
 //
 (* ****** ****** *)
 //
+#implfun
+d4pat_set_styp
+( d4p0, t2p0 ) =
+let
+//
+val
+d4p0 =
+$UN.castlin10{d4pat_vt}(d4p0)
+val+
+@D4PAT_vt
+(loc0,
+!styp,node) = d4p0 in styp := t2p0
+end (*let*) // end of [d4pat_set_styp]
+//
+(* ****** ****** *)
+//
 endloc (*local*) // end of [local(d4pat)]
 //
 (* ****** ****** *)
@@ -260,6 +279,22 @@ let
 val+
 D4EXP
 (loc,t2p,nod) = d4e in nod end//let
+//
+(* ****** ****** *)
+//
+#implfun
+d4exp_set_styp
+( d4e0, t2p0 ) =
+let
+//
+val
+d4e0 =
+$UN.castlin10{d4exp_vt}(d4e0)
+val+
+@D4EXP_vt
+(loc0,
+!styp,node) = d4e0 in styp := t2p0
+end (*let*) // end of [d4exp_set_styp]
 //
 (* ****** ****** *)
 //
