@@ -398,4 +398,34 @@ end(*let*)//end-of-[d4fundcl_fprint(out,dfun)]
 (* ****** ****** *)
 (* ****** ****** *)
 
+#implfun
+d4parsed_fprint
+  (out, dpar) = let
+//
+val
+stadyn =
+d4parsed_get_stadyn(dpar)
+val
+nerror =
+d4parsed_get_nerror(dpar)
+val
+source =
+d4parsed_get_source(dpar)
+val
+parsed =
+d4parsed_get_parsed(dpar)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print
+("D4PARSED(");
+print
+(stadyn,";",nerror,";",source,";",parsed,")"))
+end (*let*) // end-of-[d4parsed_fprint(out,dpar)]
+
+(* ****** ****** *)
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_dynexp4_print0.dats] *)
