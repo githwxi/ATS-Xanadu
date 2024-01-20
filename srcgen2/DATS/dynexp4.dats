@@ -536,13 +536,14 @@ D4VALDCL
 , tdxp, wsxp) = dval in wsxp end
 
 (* ****** ****** *)
-
+//
 #implfun
 d4valdcl_make_args
 (lctn, dpat, tdxp, wsxp) =
 (
-  D4VALDCL(lctn, dpat, tdxp, wsxp)
-)
+  D4VALDCL(lctn, dpat, tdxp, wsxp))
+//
+(* ****** ****** *)
 
 endloc (*local*) // end of [local(d4valdcl)]
 
@@ -609,16 +610,111 @@ D4VARDCL
 , sres, dini) = dvar in dini end
 
 (* ****** ****** *)
-
+//
 #implfun
 d4vardcl_make_args
 ( lctn
 , dpid, vpid, sres, dini) =
 (
-D4VARDCL(lctn, dpid, vpid, sres, dini)
-)
+D4VARDCL(lctn, dpid, vpid, sres, dini))
+//
+(* ****** ****** *)
 
 endloc (*local*) // end of [ local(d4vardcl) ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+d4fundcl =
+D4FUNDCL of
+( loc_t
+, d2var
+, f4arglst
+, s2res
+, teqd4exp, wths2exp)
+//
+#absimpl
+d4fundcl_tbox = d4fundcl
+//
+in//local
+
+#implfun
+d4fundcl_get_lctn
+  (  dfun  ) = let
+val+
+D4FUNDCL
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in lctn end
+
+#implfun
+d4fundcl_get_dpid
+  (  dfun  ) = let
+val+
+D4FUNDCL
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in dpid end
+
+#implfun
+d4fundcl_get_farg
+  (  dfun  ) = let
+val+
+D4FUNDCL
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in farg end
+
+#implfun
+d4fundcl_get_sres
+  (  dfun  ) = let
+val+
+D4FUNDCL
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in sres end
+
+(* ****** ****** *)
+
+#implfun
+d4fundcl_get_tdxp
+  (  dfun  ) = let
+val+
+D4FUNDCL
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in tdxp end
+
+#implfun
+d4fundcl_get_wsxp
+  (  dfun  ) = let
+val+
+D4FUNDCL
+( lctn
+, dpid
+, farg, sres
+, tdxp, wsxp) = dfun in wsxp end
+
+(* ****** ****** *)
+
+#implfun
+d4fundcl_make_args
+( lctn
+, dpid, farg, sres, tdxp, wsxp) =
+(
+D4FUNDCL
+(lctn, dpid, farg, sres, tdxp, wsxp))
+
+(* ****** ****** *)
+
+endloc (*local*) // end of [ local(d4fundcl) ]
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -768,9 +864,12 @@ D4PARSED
 , t2penv, t3penv, parsed)) where
 {
 (*
-val () =
-prerrln
-("d4parsed_make_args:nerror=",nerror)
+val () = prerrln
+("d4parsed_make_args: stadyn = ", stadyn)
+val () = prerrln
+("d4parsed_make_args: nerror = ", nerror)
+val () = prerrln
+("d4parsed_make_args: source = ", source)
 *)
 } (*where*) // end-of-[d4parsed_make_args]
 //
