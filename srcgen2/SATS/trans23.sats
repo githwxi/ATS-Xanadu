@@ -510,7 +510,11 @@ unify23_s2typlst // effectful
 ! tr23env
 , tps1: s2typlst, tps2: s2typ): bool
 //
+#symload unify23 with unify23_s2typ
+#symload unify23 with unify23_s2typlst
+//
 (* ****** ****** *)
+(*
 //
 fun
 match23_s2typ // testing-only
@@ -523,11 +527,10 @@ match23_s2typlst // testing-only
 ! tr23env
 , tps1:s2typlst, tps2:s2typlst): bool
 //
-#symload unify23 with unify23_s2typ
 #symload match23 with match23_s2typ
-#symload unify23 with unify23_s2typlst
 #symload match23 with match23_s2typlst
 //
+*)
 (* ****** ****** *)
 (*
 HX-2023-02-25:

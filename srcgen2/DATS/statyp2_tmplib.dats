@@ -1405,16 +1405,6 @@ T2Pbas(tbs2) =>
 *)
 //
 |
-T2Pf2cl(fcl1) =>
-(
-case+
-t2p2.node() of
-|
-T2Pf2cl(fcl2) =>
-f2clknd_equal
-(fcl1 , fcl2) | _ => false)
-//
-|
 T2Pcst(s2c1) =>
 (
 case+
@@ -1431,6 +1421,25 @@ t2p2.node() of
 |
 T2Pvar(s2v2) =>
 (s2v1 = s2v2) | _ => false)
+//
+|
+T2Pf2cl(fcl1) =>
+(
+case+
+t2p2.node() of
+|
+T2Pf2cl(fcl2) =>
+f2clknd_equal
+(fcl1 , fcl2) | _ => false)
+//
+|
+T2Ptop0 _ =>
+(
+  f0_top0(e1nv, t2p1, t2p2))
+|
+T2Ptop1 _ =>
+(
+  f0_top1(e1nv, t2p1, t2p2))
 //
 |
 T2Papps _ =>
@@ -1532,6 +1541,46 @@ s2typ_xtpck0
 then false else
 (f1_xset(xtp2, t2p1); true)
 end (*let*) // end of [f0_xtv2(e1nv,...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_top0
+( e1nv: !e1nv
+, t2p1: s2typ
+, t2p2: s2typ): (bool) =
+let
+val-
+T2Ptop0(tp11) = t2p1.node()
+in//let
+//
+case+
+t2p2.node() of
+|
+T2Ptop0(tp21) =>
+unify00_s2typ(e1nv, tp11, tp21)
+| _ (* non-T2Ptop0 *) => (  false  )
+//
+end (*let*) // end of [f0_top0(e1nv,...)]
+//
+fun
+f0_top1
+( e1nv: !e1nv
+, t2p1: s2typ
+, t2p2: s2typ): (bool) =
+let
+val-
+T2Ptop1(tp11) = t2p1.node()
+in//let
+//
+case+
+t2p2.node() of
+|
+T2Ptop1(tp21) =>
+unify00_s2typ(e1nv, tp11, tp21)
+| _ (* non-T2Ptop1 *) => (  false  )
+//
+end (*let*) // end of [f0_top1(e1nv,...)]
 //
 (* ****** ****** *)
 //
@@ -1660,10 +1709,12 @@ end (*let*) // end of [f0_trcd(e1nv,...)]
 //
 (* ****** ****** *)
 //
+(*
 val
 t2p1 = s2typ_unmodx(t2p1)
 val
 t2p2 = s2typ_unmodx(t2p2)
+*)
 //
 val
 t2p1 = s2typ_hnfiz0(e1nv, t2p1)
@@ -1831,6 +1882,7 @@ xstk = X2STK(list_nil)
 unify00_s2typ$xset
   (xtp1, t2p2) =
 let
+//
 val () =
 x2stk_push(xstk, xtp1)
 in//let
