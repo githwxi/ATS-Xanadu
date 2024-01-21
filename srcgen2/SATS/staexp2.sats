@@ -912,6 +912,7 @@ fun
 s2exp_linq(s2exp): bool
 fun
 s2exp_prfq(s2exp): bool
+//
 fun
 s2exp_imprq(s2exp): bool
 fun
@@ -922,10 +923,13 @@ s2exp_cbrfq(s2exp): bool
 fun
 s2exp_dataq(s2exp): bool
 //
+(* ****** ****** *)
+//
 fun
 s2explst_linq(s2explst): bool
 fun
 s2explst_prfq(s2explst): bool
+//
 fun
 s2explst_imprq(s2explst): bool
 fun
