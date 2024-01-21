@@ -457,6 +457,12 @@ d2cst_make_idtp
 //
 (* ****** ****** *)
 //
+fun d2var_linq:(d2var) -> bool
+fun d2var_prfq:(d2var) -> bool
+fun d2var_mutq:(d2var) -> bool
+//
+(* ****** ****** *)
+//
 fun
 d2var_get_lctn:(d2var) -> loc_t
 fun

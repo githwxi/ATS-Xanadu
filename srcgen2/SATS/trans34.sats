@@ -93,6 +93,9 @@ D4E = "./dynexp4.sats"
 (* ****** ****** *)
 #typedef d4ecl = $D4E.d4ecl
 (* ****** ****** *)
+(* ****** ****** *)
+#typedef s2typlst = $S2E.s2typlst
+(* ****** ****** *)
 #typedef d2varlst = $D2E.d2varlst
 (* ****** ****** *)
 #typedef d3patlst = $D3E.d3patlst
@@ -354,6 +357,23 @@ fun
 trans34_d3eclistopt
 ( env0:
 ! tr34env, dopt: d3eclistopt): d4eclistopt
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+match34_s2typ // testing-only
+( env0:
+! tr34env
+, t2p1:s2typ, t2p2:s2typ): bool
+fun
+match34_s2typlst // testing-only
+( env0:
+! tr34env
+, tps1:s2typlst, tps2:s2typlst): bool
+//
+#symload match34 with match34_s2typ
+#symload match34 with match34_s2typlst
 //
 (* ****** ****** *)
 (* ****** ****** *)

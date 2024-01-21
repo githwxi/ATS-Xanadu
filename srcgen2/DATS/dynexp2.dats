@@ -72,6 +72,7 @@ ATS_PACKNAME
 #symload lctn with d1ecl_get_lctn
 (* ****** ****** *)
 #symload node with s2exp_get_node
+#symload node with s2typ_get_node
 (* ****** ****** *)
 #symload lctn with d2var_get_lctn
 #symload name with d2var_get_name
@@ -80,6 +81,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload lctn with d2pat_get_lctn
 #symload lctn with d2exp_get_lctn
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fn0
@@ -94,6 +96,35 @@ case+ svts of
 s2typ_subst0(t2p0, svts))
 )(*case+*) // s2typ_subst0
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d2var_linq(d2v0) =
+(
+ s2typ_linq(d2v0.styp()))
+#implfun
+d2var_prfq(d2v0) =
+(
+ s2typ_prfq(d2v0.styp()))
+//
+#implfun
+d2var_mutq(d2v0) =
+let
+val t2p0 = d2v0.styp()
+in//let
+//
+case+
+t2p0.node() of
+|
+T2Plft(t2p1) => (  true  )
+|
+_(*non-T2Plft*) => (false)
+//
+end//let
+//end-of-[d2var_mutq(d2v0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -1159,6 +1190,7 @@ end (*let*) // end of [d2var_new2_name]
 //
 end (*local*) // end of [local(d2var_tbox)]
 
+(* ****** ****** *)
 (* ****** ****** *)
 
 local
