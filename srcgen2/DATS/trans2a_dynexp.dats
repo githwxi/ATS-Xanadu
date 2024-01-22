@@ -208,7 +208,7 @@ trans2a_d2pat
 ( env0, d2p0 ) =
 let
 //
-(*
+// (*
 val
 loc0 = d2p0.lctn()
 val () =
@@ -217,7 +217,7 @@ prerrln
 val () =
 prerrln
 ("trans2a_d2pat: d2p0 = ", d2p0)
-*)
+// *)
 //
 in//let
 //
@@ -847,7 +847,7 @@ trans2a_d2exp
 ( env0, d2e0 ) =
 let
 //
-(*
+// (*
 val
 loc0 = d2e0.lctn()
 val () =
@@ -856,7 +856,7 @@ prerrln
 val () =
 prerrln
 ("trans2a_d2exp: d2e0 = ", d2e0)
-*)
+// *)
 //
 in//let
 //
@@ -2876,7 +2876,7 @@ trans2a_f2arg
 ( env0, farg ) =
 let
 //
-(*
+// (*
 val
 loc0 = farg.lctn()
 val () =
@@ -2885,7 +2885,7 @@ prerrln(
 val () =
 prerrln(
 "trans2a_f2arg: farg = ", farg)
-*)
+// *)
 //
 in//let
 //

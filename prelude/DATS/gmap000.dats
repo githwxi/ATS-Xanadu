@@ -48,7 +48,7 @@ gmap_print$keyval
 < key , itm >(kx1.0, kx1.1)
 }
 ) (* end of [loop] *)
-in
+in//let
 gmap_print$beg<>();
 loop
 ( 0(*i0*)

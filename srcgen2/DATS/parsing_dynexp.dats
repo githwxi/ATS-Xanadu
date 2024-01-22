@@ -1852,6 +1852,7 @@ list_vt2t
 (ps_COMMA_p1fun{l0d0e}(buf, err, p1_l0d0e)))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 p1_d0expseq_SMCLN
@@ -1860,6 +1861,7 @@ p1_d0expseq_SMCLN
 list_vt2t
 (ps_SMCLN_p1fun{d0exp}(buf, err, p1_d0exp)))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 #implfun
@@ -1902,7 +1904,7 @@ err := e00 + 1; d0pat_RPAREN_cons0(tok)
 ) (* end of [non-RPAREN *)
 )
 //
-end(*let*)//end-[p1_d0pat_RPAREN(buf,err)]
+end(*let*)//end-of[p1_d0pat_RPAREN(buf,err)]
 
 (* ****** ****** *)
 
@@ -1946,7 +1948,7 @@ _(*non-T_RPAREN*) =>
 ) (* end of [non-RPAREN] *)
 ) (* end of [ non-T_BAR ] *)
 //
-end(*let*)//end-[p1_l0d0p_RBRACE(buf,err)]
+end(*let*)//end-of[p1_l0d0p_RBRACE(buf,err)]
 
 (* ****** ****** *)
 
@@ -2002,7 +2004,7 @@ err := e00 + 1; d0exp_RPAREN_cons0(tok)
 ) (* end of [non-RPAREN *)
 )
 //
-end(*let*)//end-[p1_d0exp_RPAREN(buf,err)]
+end(*let*)//end-of[p1_d0exp_RPAREN(buf,err)]
 
 (* ****** ****** *)
 
@@ -2046,7 +2048,7 @@ _(*non-T_RPAREN*) =>
 ) (* end of [non-RPAREN] *)
 ) (* end of [ non-T_BAR ] *)
 //
-end(*let*)//end-[p1_l0d0e_RBRACE(buf,err)]
+end(*let*)//end-of[p1_l0d0e_RBRACE(buf,err)]
 
 (* ****** ****** *)
 //
@@ -2062,7 +2064,7 @@ T0QUAnone
 T0QUAsome
 (tbeg, s0qs, tend) =>
 (tbeg.lctn() + tend.lctn())
-) (*case*) // end of [t0qua_get_lctn(tinv)]
+) (*case+*) // end-of-[t0qua_get_lctn(tqua)]
 
 (* ****** ****** *)
 //
@@ -2093,7 +2095,7 @@ case+ t0qs of
 | list_cons(t0q1, _) =>
   (t0q1.lctn()+tend.lctn())
 )
-) (*case*) // end of [t0inv_get_lctn(tinv)]
+) (*case+*) // end of [t0inv_get_lctn(tinv)]
 //
 (* ****** ****** *)
 #implfun
@@ -2107,7 +2109,7 @@ d0pat_RPAREN_cons0
 |
 d0pat_RPAREN_cons1
 (tok1, d0ps, tok2) => tok1.lctn()+tok2.lctn()
-) (*case*) // end of [d0pat_RPAREN_lctn(node)] 
+) (*case+*)//end of [d0pat_RPAREN_lctn(node)] 
 (* ****** ****** *)
 #implfun
 l0d0p_RBRACE_lctn
@@ -2120,7 +2122,7 @@ l0d0p_RBRACE_cons0
 |
 l0d0p_RBRACE_cons1
 (tok1, lses, tok2) => tok1.lctn()+tok2.lctn()
-) (*case*) // end of [l0d0p_RBRACE_lctn(node)]
+) (*case+*)//end of [l0d0p_RBRACE_lctn(node)]
 (* ****** ****** *)
 #implfun
 d0exp_RPAREN_lctn
@@ -2136,7 +2138,7 @@ d0exp_RPAREN_cons1
 |
 d0exp_RPAREN_cons2
 (tok1, d0es, tok2) => tok1.lctn()+tok2.lctn()
-) (*case*) // end of [d0exp_RPAREN_lctn(node)] 
+) (*case+*)//end of [d0exp_RPAREN_lctn(node)] 
 (* ****** ****** *)
 #implfun
 l0d0e_RBRACE_lctn
@@ -2149,7 +2151,7 @@ l0d0e_RBRACE_cons0
 |
 l0d0e_RBRACE_cons1
 (tok1, lses, tok2) => tok1.lctn()+tok2.lctn()
-) (*case*) // end of [l0d0e_RBRACE_lctn(node)]
+) (*case+*)//end of [l0d0e_RBRACE_lctn(node)]
 (* ****** ****** *)
 #implfun
 tkend_WHERE_lctn
@@ -2165,10 +2167,12 @@ tkend_WHERE_cons2
   (tok1,topt) =>
 (
 case+ topt of
-| optn_nil( ) => tok1.lctn()
-| optn_cons(tok2) => tok1.lctn()+tok2.lctn())
+|
+optn_nil( ) => tok1.lctn()
+|
+optn_cons(tok2) => tok1.lctn()+tok2.lctn())
 *)
-) (*case*) // end of [tkend_WHERE_lctn(node)]
+) (*case+*)//end-of-[tkend_WHERE_lctn(node)]
 (* ****** ****** *)
 
 #implfun
@@ -2199,7 +2203,7 @@ end (*let*) // end of [T_CLN]
 |
 _(*non-T_CLN*) => optn_nil(*void*)
 //
-end (*let*)//end-of(pq_s0exp_anno(buf,err))
+end(*let*)//end-of-[pq_s0exp_anno(buf,err)]
 
 (* ****** ****** *)
 
@@ -2234,7 +2238,7 @@ end (*let*) // end of [T_CLN]
 |
 _(*non-T_CLN*) => optn_nil(*void*)
 //
-end (*let*)//end-of(pq_s0exp_annp(buf,err))
+end(*let*)//end-of(pq_s0exp_annp(buf,err))
 
 (* ****** ****** *)
 #extern
@@ -2295,7 +2299,7 @@ d0exp_make_node
 (loc0, D0Eapps(list_cons(d0e0, d0es)))
 end (*let*) // end of [list_cons]
 //
-end (*let*)//end-of-[p2_d0exp_app(buf,err)]
+end(*let*)//end-of-[p2_d0exp_app(buf,err)]
 
 (* ****** ****** *)
 in(* in-of-local *)
@@ -2328,10 +2332,10 @@ end (*let*) // end of [ T_AS0() ]
 |
 _(* non-T_AS *) =>
 (
-d0gua_make_node(d0e1.lctn(), D0GUAexp(d0e1))
-)
+d0gua_make_node
+(d0e1.lctn((*void*)), D0GUAexp(d0e1)))
 //
-end (*let*) // end of [ p1_d0gua(buf, err) ]
+end (*let*) // end-of-[p1_d0gua(buf, err)]
 
 endloc (*local*) // end-of-[local(p1_d0gua)]
 
@@ -2386,7 +2390,9 @@ in
 end (*let*) // end of [ T_WHEN() ]
 |
 _ (* non-WHEN *) =>
-d0gpt_make_node(d0p1.lctn(),D0GPTpat(d0p1))
+(
+  d0gpt_make_node
+  (d0p1.lctn((*void*)),D0GPTpat(d0p1)) )
 //
 end (*let*) // end of [ p1_d0gpt(buf, err) ]
 
@@ -2425,7 +2431,9 @@ in//let
 end (*let*) // end of [ T_EQGT() ]
 |
 _(* non-T_EQGT *) =>
-d0cls_make_node(dgp1.lctn(),D0CLSgpt(dgp1))
+(
+  d0cls_make_node
+  (dgp1.lctn((*void*)),D0CLSgpt(dgp1)) )
 //
 end (*let*) // end of [ p1_d0cls(buf,err) ]
 

@@ -1059,6 +1059,24 @@ d0exp_errck
 end (*let*) // end of [d0exp_extnam_errck]
 //
 (* ****** ****** *)
+//
+fun
+d0exp_exists_errck
+( loc
+: loc_t
+, tknd
+: token
+, d0es
+: d0explst
+, d0e1: d0exp): d0exp =
+let
+val lvl = 0 in
+d0exp_errck
+( lvl+1
+, d0exp(loc,D0Eexists(tknd,d0es,d0e1)))
+end (*let*) // end of [d0exp_exists_errck]
+//
+(* ****** ****** *)
 (*
 HX-2022-07:
 implement [preadx0_d0pat]
@@ -1387,17 +1405,25 @@ D0Edtsel _ => f0_dtsel(d0e, err)
 //
 |D0Equal0 _ => f0_qual0( d0e, err )
 //
-|D0Eextnam _ => f0_extnam(d0e, err)
+(* ****** ****** *)
 //
 |
-D0Etkerr(tok) =>
-(
-err := err + 1; d0exp_errck(1, d0e))
+D0Eextnam _ => f0_extnam( d0e, err )
+|
+D0Eexists _ => f0_exists( d0e, err )
+//
+(* ****** ****** *)
+//
+|D0Enone0(tok) => f0_none0(d0e, err)
+//
+|D0Etkerr(tok) =>
+(err := err + 1; d0exp_errck(1, d0e))
+//
+(* ****** ****** *)
 //
 |
 _(*otherwise*) =>
-(
-err := err + 1; d0exp_errck(1, d0e))
+(err := err + 1; d0exp_errck(1, d0e))
 //
 ) where // end-of-(case+(d0e.node()))
 {
@@ -1767,7 +1793,7 @@ D0Elet0
 val dcls =
 preadx0_d0eclist(dcls, err)
 val d0es =
-preadx0_d0explst(d0es, err)
+preadx0_d0expseq(d0es, err)
 //
 val (  ) =
 (
@@ -1896,7 +1922,7 @@ D0Etry0
 //
 val
 d0es =
-preadx0_d0explst(d0es, err)
+preadx0_d0expseq(d0es, err)
 //
 val (  ) =
 (
@@ -2075,7 +2101,6 @@ d0exp_qual0_errck(d0e.lctn(),tok1,d0e2)
 end (*let*) // end of [f0_qual0(d0e,err)]
 //
 (* ****** ****** *)
-
 //
 fun
 f0_extnam
@@ -2099,7 +2124,41 @@ if
 then (d0e) else
 d0exp_extnam_errck(d0e.lctn(),tok1,gnm2)
 end (*let*) // end of [f0_extnam(d0e,err)]
-
+//
+(* ****** ****** *)
+//
+fun
+f0_exists
+( d0e: d0exp
+, err: &sint >> _): d0exp =
+let
+//
+val e00 = err
+//
+val-
+D0Eexists
+( tknd
+, d0es, d0e1) = d0e.node()
+//
+in//let
+if
+(err=e00)
+then (d0e) else
+let
+val loc = d0e.lctn()
+in
+  d0exp_exists_errck(loc,tknd,d0es,d0e1)
+end
+end (*let*) // end of [f0_extnam(d0e,err)]
+//
+(* ****** ****** *)
+//
+fun
+f0_none0
+( d0e: d0exp
+, err: &sint >> _): d0exp = d0e//f0_none0
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 } (*where*) // end-of-[preadx0_d0exp(d0e,err)]
@@ -2540,6 +2599,60 @@ preadx0_d0explst
 (   lst, err   ) =
 (
   list_preadx0_fnp(lst, err, preadx0_d0exp))
+//
+(* ****** ****** *)
+//
+#implfun
+preadx0_d0expseq
+(   lst, err   ) =
+(
+auxlst(lst, err)) where
+{
+//
+fun
+auxlst
+( ds1: d0explst
+, err: &sint >> _): d0explst =
+(
+case+ des of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons(de1, ds2) =>
+let
+//
+val e00 = err
+//
+val de1 =
+(
+case+ ds2 of
+|
+list_nil() =>
+(
+case+
+de1.node() of
+|
+// HX-2024-01-21:
+// treated as void
+D0Etkerr _ => (de1)
+|
+_(*non-D0Etkerr*) =>
+(
+  preadx0_d0exp(de1, err)))
+|
+list_cons _ =>
+(
+  preadx0_d0exp(de1, err)))
+//
+val ds2 = auxlst( ds2, err )
+//
+in
+if // if
+(err=e00)
+then (ds1) else list_cons(de1, ds2) end
+//
+}(*where*)//end-[preadx0_d0expseq(lst,err)]
 //
 (* ****** ****** *)
 //

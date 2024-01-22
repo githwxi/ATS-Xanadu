@@ -56,7 +56,7 @@ a1ref_listize
 //
 var
 res:
-?list_vt(a) =
+list_vt(a) =
 list_vt_nil()
 val p0 = $addr(res)
 //
