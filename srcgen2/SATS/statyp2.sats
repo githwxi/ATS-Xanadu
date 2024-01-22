@@ -458,6 +458,11 @@ unify00_s2typ$xset
 //
 fun
 <e1nv:vwtp>
+unify00_s2typ$hnfz
+(e1nv: !e1nv, t2p0: s2typ): (s2typ)
+//
+fun
+<e1nv:vwtp>
 unify00_s2typ_e1nv
 ( e1nv: !e1nv
 , t2p1: s2typ, t2p2: s2typ): (bool)

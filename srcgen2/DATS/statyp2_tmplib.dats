@@ -1255,6 +1255,25 @@ unify00_s2typ$xset
 x2t2p_set_styp(xtp1,t2p2))
 //
 (* ****** ****** *)
+//
+(*
+HX-2024-01-22:
+[s2typ_unmodx]
+removes arg modifiers
+*)
+#impltmp
+<e1nv:vwtp>
+unify00_s2typ$hnfz
+  (e1nv, t2p0) =
+(
+s2typ_hnfiz0_e1nv
+<e1nv>(e1nv, t2p0)) where
+{
+val
+t2p0 = s2typ_unmodx(t2p0)}
+//where//unify00_s2typ$hnfz
+//
+(* ****** ****** *)
 
 #impltmp
 <e1nv:vwtp>
@@ -1275,11 +1294,13 @@ case+ t2p0.node() of
 //
 (* ****** ****** *)
 //
+(*
 fun
 s2typ_hnfiz0
 ( e1nv: !e1nv
 , t2p0: s2typ): s2typ =
 s2typ_hnfiz0_e1nv<e1nv>(e1nv, t2p0)
+*)
 //
 fun
 s2typ_subst0
@@ -1715,14 +1736,13 @@ end (*let*) // end of [f0_trcd(e1nv,...)]
 (* ****** ****** *)
 //
 val
-t2p1 = s2typ_unmodx(t2p1)
+t2p1 =
+unify00_s2typ$hnfz(e1nv, t2p1)
 val
-t2p2 = s2typ_unmodx(t2p2)
+t2p2 =
+unify00_s2typ$hnfz(e1nv, t2p2)
 //
-val
-t2p1 = s2typ_hnfiz0(e1nv, t2p1)
-val
-t2p2 = s2typ_hnfiz0(e1nv, t2p2)
+(* ****** ****** *)
 //
 val
 t2p1 = s2typ_uni0_inst(e1nv, t2p1)
