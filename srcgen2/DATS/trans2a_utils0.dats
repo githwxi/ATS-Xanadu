@@ -542,6 +542,36 @@ val () =
 prerrln("unify2a_s2typ: t2p2 = ", t2p2)
 *)
 //
+fun
+f0_detop
+( t2p0
+: s2typ): s2typ =
+(
+case+ t2p0.node() of
+|T2Ptop0
+( t2p1 ) => f0_detop(t2p1)
+|T2Ptop1
+( t2p1 ) => f0_detop(t2p1)
+|
+_(*otherwise*) => ( t2p0 )) // f0_detop
+//
+#impltmp
+unify00_s2typ$hnfz
+<e1nv>(e1nv, t2p0) =
+(*
+HX-2024-01-22:
+top0(?) and top1(?!)
+for linearity checking
+needed to be skipped here!
+*)
+f0_detop
+(
+s2typ_hnfiz0_e1nv
+<e1nv>(e1nv, t2p0)) where
+{
+val t2p0 = s2typ_unmodx(t2p0) }
+//where//end-of-[unify00_s2typ$hnfz(...)]
+//
 in//let
 unify00_s2typ_e1nv<e1nv>(env0, t2p1, t2p2)
 end (*let*) // end of [unify2a_s2typ(env0,...)]

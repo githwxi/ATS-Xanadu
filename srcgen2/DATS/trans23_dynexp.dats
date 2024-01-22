@@ -2119,6 +2119,11 @@ trans23_d2exp(env0, d2el)
 val
 t2pl = d3el.styp((*void*))
 //
+(*
+(*
+HX-2024-01-22:
+It is handled in [unify2a]
+*)
 val
 t2pl =
 s2typ_hnfiz0(t2pl)//val(t2pl)
@@ -2130,6 +2135,7 @@ t2pl.node() of
 |T2Ptop0(t2pl) => t2pl
 |T2Ptop1(t2pl) => t2pl
 |_(*otherise*) => t2pl): s2typ
+*)
 //
 val t2p0 = the_s2typ_void((*0*))
 //
