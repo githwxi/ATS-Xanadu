@@ -540,12 +540,14 @@ parsing general syntactic entities
 *)
 (* ****** ****** *)
 //
+(*
 fun
 pr_p1fun{a:tx}
 (
   buf: !tkbf0
 , err: &int >> int, pfn: p1_fun(a)
 ) : list_vt(a) // end of [pr_p1fun]
+*)
 fun
 ps_p1fun{a:tx}
 (
@@ -578,12 +580,6 @@ ps_COMMA_p1fun{a:tx}
 ) : list_vt(a) //end-of-[ps_COMMA_p1fun]
 //
 fun
-pr_SMCLN_p1fun{a:tx}
-(
-  buf: !tkbf0
-, err: &(int) >> int, pfn: p1_fun(a)
-) : list_vt(a) //end-of-[pr_SMCLN_p1fun]
-fun
 ps_SMCLN_p1fun{a:tx}
 (
   buf: !tkbf0
@@ -599,6 +595,7 @@ ps_BSCLN_p1fun{a:tx}
 //
 (* ****** ****** *)
 //
+(*
 fun
 pr_sep_p1fun{a:tx}
 (
@@ -606,6 +603,7 @@ pr_sep_p1fun{a:tx}
 , err: &int >> int
 , fsp: tnode -> bool, pfn: p1_fun(a)
 ) : list_vt(a) // end of [pr_sep_p1fun]
+*)
 fun
 ps_sep_p1fun{a:tx}
 (

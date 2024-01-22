@@ -1818,6 +1818,7 @@ end(*let*)//HX: indicating a parsing error
 end(*let*)//end-of-[p1_d0exp_sarg(buf,err)]
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 p1_d0expseq_sarg
@@ -1851,7 +1852,6 @@ p1_l0d0eseq_COMMA
 list_vt2t
 (ps_COMMA_p1fun{l0d0e}(buf, err, p1_l0d0e)))
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
