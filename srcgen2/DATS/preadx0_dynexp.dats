@@ -1414,8 +1414,6 @@ D0Eexists _ => f0_exists( d0e, err )
 //
 (* ****** ****** *)
 //
-|D0Enone0(tok) => f0_none0(d0e, err)
-//
 |D0Etkerr(tok) =>
 (err := err + 1; d0exp_errck(1, d0e))
 //
@@ -2614,7 +2612,7 @@ auxlst
 ( ds1: d0explst
 , err: &sint >> _): d0explst =
 (
-case+ des of
+case+ ds1 of
 |
 list_nil() =>
 list_nil((*void*))
@@ -2651,6 +2649,7 @@ in
 if // if
 (err=e00)
 then (ds1) else list_cons(de1, ds2) end
+)(*case+*)
 //
 }(*where*)//end-[preadx0_d0expseq(lst,err)]
 //
