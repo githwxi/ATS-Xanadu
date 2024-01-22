@@ -499,6 +499,7 @@ D0Etkerr(tok):
 tok is not consumed by the parser!
 *)
 D0Etkerr of (token) // HX: parsing error
+//
 |
 D0Eerrck of (int(*lvl*), d0exp)//HX:pread-error
 //

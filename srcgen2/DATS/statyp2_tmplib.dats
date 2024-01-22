@@ -1461,18 +1461,23 @@ T2Ptrcd _ =>
 (
   f0_trcd(e1nv, t2p1, t2p2))
 //
+(* ****** ****** *)
+//
 |T2Pnone0 _ =>
 (
 case+
 t2p2.node() of
 |T2Pnone0 _ => true
 |T2Ps2exp _ => true | _ => false)
+//
 |T2Ps2exp _ =>
 (
 case+
 t2p2.node() of
 |T2Pnone0 _ => true
 |T2Ps2exp _ => true | _ => false)
+//
+(* ****** ****** *)
 //
 ) // case+ t2p1.node of
 ) // if // end-of-(if2-then-else)
@@ -1709,12 +1714,10 @@ end (*let*) // end of [f0_trcd(e1nv,...)]
 //
 (* ****** ****** *)
 //
-(*
 val
 t2p1 = s2typ_unmodx(t2p1)
 val
 t2p2 = s2typ_unmodx(t2p2)
-*)
 //
 val
 t2p1 = s2typ_hnfiz0(e1nv, t2p1)

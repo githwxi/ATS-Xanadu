@@ -846,6 +846,12 @@ end (*let*) // end of [pq_SRP_THEN(...)]
 //
 #implfun
 ps_p1fun{a}
+(buf, err, pfn) =
+list_vt_reverse0
+(pr_p1fun(buf,err,pfn))
+//
+#implfun
+pr_p1fun{a}
 (buf, err, pfn) = let
 //
 val e00 = err
@@ -871,12 +877,23 @@ end (*let*)//end-of(loop(buf,err,res))
 //
 in
   loop( buf, err, list_vt_nil(*res*) )
-end(*let*)//end-of(ps_p1fun(buf,err,pfn))
+end(*let*)//end-of(pr_p1fun(buf,err,pfn))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 ps_sep_p1fun
+{a}
+( buf
+, err, fsp, pfn) =
+list_vt_reverse0
+(
+pr_sep_p1fun
+{a}(buf, err, fsp, pfn))
+//
+#implfun
+pr_sep_p1fun
 {a}
 ( buf
 , err, fsp, pfn) = let
@@ -896,12 +913,11 @@ val
 tok = buf.getk0()
 in//let
 //
-if
-~(fsp(tok.node()))
-then
-list_vt_reverse0(res)
-else
-let
+if ~
+(
+fsp(tok.node())
+)
+then res else let
 val () = buf.skip1()
 val x0 = pfn(buf, err)
 in//let
@@ -921,8 +937,9 @@ loop(buf, err, res) where
 else
 (err := e00; list_vt_nil(*res*))
 //
-end//end-of(ps_sep_p1fun(buf,err,fsp,pfn))
+end//end-of(pr_sep_p1fun(buf,err,fsp,pfn))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -978,10 +995,10 @@ case+ tnd of
 (* ****** ****** *)
 //
 #implfun
-ps_SMCLN_p1fun
+pr_SMCLN_p1fun
 {a}
 (buf, err, pfn) =
-ps_sep_p1fun
+pr_sep_p1fun
 (buf, err, tnode_SMCLNq, pfn)
 where
 {
@@ -991,6 +1008,15 @@ tnode_SMCLNq
 (
 case+ tnd of
 | T_SMCLN() => true | _ => false) }
+//where//end-of(pr_SMCLN_p1fun(buf,err,pfn))
+//
+#implfun
+ps_SMCLN_p1fun
+{a}
+(buf, err, pfn) =
+(
+list_vt_reverse0
+(pr_SMCLN_p1fun{a}(buf, err, pfn)))
 //where//end-of(ps_SMCLN_p1fun(buf,err,pfn))
 //
 (* ****** ****** *)

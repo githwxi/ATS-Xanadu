@@ -186,7 +186,7 @@ val dpar =
 d0parsed_from_fpath(stadyn, source)
 //
 val dpar = d0parsed_of_preadx0(dpar)
-} (*where*)//end-of-[d1parsed_from_fpath(...)]
+}(*where*)//end-of-[d1parsed_from_fpath(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -201,7 +201,7 @@ list_map_e1nv<x0><y0><e1>(xs, e1)) where
 #vwtpdef e1 = tr01env
 #impltmp
 map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [list_trans01_fnp(e1,xs,fopr)]
+}(*where*)//end of [list_trans01_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 //
@@ -215,7 +215,7 @@ optn_map_e1nv<x0><y0><e1>(xs, e1)) where
 #vwtpdef e1 = tr01env
 #impltmp
 map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [optn_trans01_fnp(e1,xs,fopr)]
+}(*where*)//end of [optn_trans01_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
