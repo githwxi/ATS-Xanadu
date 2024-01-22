@@ -38,6 +38,13 @@
 (* ****** ****** *)
 //
 fcast
+detop0{a0:t0}(x0: ?a0): (a0)
+fcast
+detop1{a0:vt}(x0: ?a0): (a0)
+//
+(* ****** ****** *)
+//
+fcast
 cast01{a0:t0}{a1:t0}(a0):(a1)
 fcast
 cast10{a1:t0}{a0:t0}(a0):(a1)
