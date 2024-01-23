@@ -2609,6 +2609,7 @@ trans23_d2gualst
 list_trans23_fnp(env0, d2gs, trans23_d2gua))
 
 (* ****** ****** *)
+(* ****** ****** *)
 
 #implfun
 trans23_d2pat_tpck
@@ -2632,6 +2633,7 @@ in//let
 trans23_d3exp_tpck(env0,d3e0,t2p0)
 end (*let*) // end of [trans23_d2exp_tpck(...)]
 
+(* ****** ****** *)
 (* ****** ****** *)
 
 #implfun
@@ -2692,6 +2694,7 @@ val () = prerrln
 } (*where*) // end of [trans23_d3exp_tpck(...)]
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 trans23_d2patlst_tpck1
@@ -2730,7 +2733,8 @@ trans23_d3patlst_tpck1(env0, d3ps, t2p0)
 ) (*case+*) // end of [trans23_d3patlst_tpck1(...)]
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 trans23_d3patlst_tpcks
 ( env0
@@ -2786,7 +2790,8 @@ trans23_d3patlst_tpcks(env0, loc0, d3ps, t2ps)
 }
 )
 ) (*case+*) // end of [trans23_d3patlst_tpcks(...)]
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -2826,7 +2831,8 @@ trans23_d3explst_tpck1(env0, d3es, t2p0)
 ) (*case+*) // end of [trans23_d3explst_tpck1(...)]
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 trans23_d3explst_tpcks
 ( env0
@@ -2882,7 +2888,8 @@ trans23_d3explst_tpcks(env0, loc0, d3es, t2ps)
 }
 )
 ) (*case+*) // end of [trans23_d3explst_tpcks(...)]
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -2902,6 +2909,7 @@ map$fopr_e1nv<x0><y0><e1>
 } (*where*) // end of [list_trans23_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 trans23_d2explstopt
@@ -2909,6 +2917,7 @@ trans23_d2explstopt
 (
   optn_trans23_fnp(env0, dopt, trans23_d2explst))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans23_dynexp.dats] *)

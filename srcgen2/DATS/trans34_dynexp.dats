@@ -371,4 +371,51 @@ trans34_l3d3elst
 (* ****** ****** *)
 (* ****** ****** *)
 
+#implfun
+trans34_d3exp_tpck
+(env0, d3e0, t2p0) =
+let
+val
+d4e0 = trans34_d3exp(env0, d3e0)
+in//let
+trans34_d4exp_tpck(env0,d4e0,t2p0)
+end (*let*) // end of [trans34_d3exp_tpck(...)]
+
+(* ****** ****** *)
+(* ****** ****** *)
+
+#implfun
+trans34_d4exp_tpck
+(env0, d4e0, t2p0) =
+let
+val t2p1 = d4e0.styp()
+val ubtf =
+unify34_s2typ(env0, t2p1, t2p0)
+in//let
+if
+ubtf then d4e0 else
+let
+val
+loc0 = d4e0.lctn() in//let
+d4exp
+(loc0, t2p0, D4Et2pck(d4e0,t2p0)) end
+end where
+{
+//
+// (*
+val
+loc0 = d4e0.lctn((*void*))
+val () = prerrln
+  ("trans34_d4exp_tpck: loc0 = ", loc0)
+val () = prerrln
+  ("trans34_d4exp_tpck: d4e0 = ", d4e0)
+val () = prerrln
+  ("trans34_d4exp_tpck: t2p0 = ", t2p0)
+// *)
+//
+} (*where*) // end of [trans34_d4exp_tpck(...)]
+
+(* ****** ****** *)
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_trans34_dynexp.dats] *)

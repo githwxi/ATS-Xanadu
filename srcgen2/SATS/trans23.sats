@@ -541,7 +541,6 @@ fun
 trans23_d2pat_tpck
 ( env0: !tr23env
 , d2p0: d2pat, t2p0: s2typ): d3pat
-(* ****** ****** *)
 fun
 trans23_d2exp_tpck
 ( env0: !tr23env
@@ -551,7 +550,6 @@ fun
 trans23_d3pat_tpck
 ( env0: !tr23env
 , d3p0: d3pat, t2p0: s2typ): d3pat
-(* ****** ****** *)
 fun
 trans23_d3exp_tpck
 ( env0: !tr23env
