@@ -33,16 +33,14 @@ mytest
 (fpath: string): void =
 let
 //
+(*
 val dpar =
   d3parsed_of_trtmp3b(dpar)
-//
 val dpar =
   d3parsed_of_trtmp3c(dpar)
-//
-// (*
 val dpar =
   d3parsed_of_tread33(dpar)
-// *)
+*)
 //
 val dpar =
   d4parsed_of_trans34(dpar)
