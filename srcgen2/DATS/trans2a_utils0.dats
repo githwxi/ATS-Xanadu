@@ -420,15 +420,16 @@ S2LAB
 (*whr*)//end-[l2t2plst_of_l2d2elst(ldes)]
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 local
-
+//
 (*
 HX-2023-03-07:
 [s2vts_make_lctn_tqas] is
 implemented in [dynexp2_utils0.dats]
 *)
-
+//
 in//local
 //
 #implfun
@@ -478,7 +479,8 @@ s2vts_make_lctn_tqas(loc0, t2qs) }
 // (*whr*) // end of [d2cst2a_s2typ(...)]
 //
 endloc//end-of[local(d2con2a/d2cst2a_s2typ)]
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -500,7 +502,7 @@ optn_vt_nil() =>
 end//end-of-[s2cst_get2a_styp(...)]
 //
 (* ****** ****** *)
-
+//
 #implfun
 unify2a_s2typ
 (env0, t2p1, t2p2) =
@@ -569,15 +571,16 @@ f0_detop
 s2typ_hnfiz0_e1nv
 <e1nv>(e1nv, t2p0)) where
 {
-val t2p0 = s2typ_unmodx(t2p0) }
+  val t2p0 = s2typ_unmodx(t2p0) }
 //where//end-of-[unify00_s2typ$hnfz(...)]
 //
 in//let
 unify00_s2typ_e1nv<e1nv>(env0, t2p1, t2p2)
 end (*let*) // end of [unify2a_s2typ(env0,...)]
-
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 match2a_s2typ
 (env0, t2p1, t2p2) =
@@ -615,7 +618,8 @@ prerrln("match2a_s2typ: t2p2 = ", t2p2)
 in//let
 match00_s2typ_e1nv<e1nv>(env0, t2p1, t2p2)
 end (*let*) // end of [match2a_s2typ(env0,...)]
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*

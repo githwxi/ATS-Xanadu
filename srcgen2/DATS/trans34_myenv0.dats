@@ -493,6 +493,15 @@ end(*let*)//end-of-(tr34env_insert_dlft(env0))
 endloc (*local*) // end of [ local(tr34env...) ]
 
 (* ****** ****** *)
+//
+#implfun
+tr34env_evstyp_cst
+  (env0, s2c0) =
+let
+val
+opt0 = optn_vt_nil((*void*)) in opt0 end//HX:FIXME!
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans34_myenv0.dats] *)

@@ -80,6 +80,7 @@ ATS_PACKNAME
 #symload styp with d3exp_get_styp
 #symload styp with d3exp_set_styp
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fn0
 s2typ_subst0
@@ -92,37 +93,44 @@ case+ svts of
  s2typ_subst0(t2p0, svts) )//end-fn0
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 s2typ_fun1_f3arglst
 ( f3as, tfun, tres ) =
 (
-  auxmain(f3as, tfun)) where
+  auxmain(f3as, tfun)
+) where
 {
 //
 fun
 f1_imprq
-(s2vs
-:s2varlst): bool =
+( s2vs
+: s2varlst): bool =
 (
 case+ s2vs of
 |list_nil() => false
 |list_cons(s2v1, s2vs) =>
+(
 if
-sort2_imprq(s2v1.sort())
+sort2_imprq
+(s2v1.sort((*void*)))
 then true else f1_imprq(s2vs))
+)
 //
 fun
 auxmain
-(f3as
-:f3arglst, tfun:s2typ): s2typ =
+( f3as
+: f3arglst
+, tfun:s2typ): s2typ =
 (
 case+ f3as of
 |list_nil() => tres
 |list_cons(f3a1, f3as) =>
 (
 //
-case+ f3a1.node() of
+case+
+f3a1.node() of
 //
 |F3ARGmets _ =>
 (
@@ -171,15 +179,18 @@ t2ps =
 s2typlst_of_d3patlst(d3ps)
 //
 in//let
+//
 s2typ_make_node
 ( s2t0
 , T2Pfun1(f2cl,npf1,t2ps,tres))
+//
 end (*let*) // end of [F3ARGdapp]
 //
 ) (* end of [list_cons(...)] *)
 ) (*case+*) // end of [auxmain(...)]
 } // end of [s2typ_fun1_f3arglst(...)]
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -191,8 +202,8 @@ list_map<x0><y0>(d3ps)) where
 #typedef x0 = d3pat
 #typedef y0 = s2typ
 #impltmp
-map$fopr<x0><y0>(d3p) = d3p.styp()
-}
+map$fopr
+<x0><y0>(d3p) = d3p.styp() }//where
 // end of [s2typlst_of_d3patlst(d3ps)]
 //
 (* ****** ****** *)
@@ -203,11 +214,13 @@ s2typlst_of_d3explst
 (
 list_map<x0><y0>(d3es)) where
 {
+//
 #typedef x0 = d3exp
 #typedef y0 = s2typ
+//
 #impltmp
-map$fopr<x0><y0>(d3e) = d3e.styp()
-}
+map$fopr
+<x0><y0>(d3e) = d3e.styp() }//where
 // end of [s2typlst_of_d3explst(d3es)]
 //
 (* ****** ****** *)
@@ -227,7 +240,8 @@ map$fopr<x0><y0>(ldp) =
 S2LAB
 (l0, d3p.styp()) where
 {
-  val+D3LAB(l0, d3p) = ldp } }
+  val+D3LAB(l0, d3p) = ldp }//where
+}(*where*)
 // end of [l2t2plst_of_l3d3plst(ldps)]
 //
 (* ****** ****** *)
@@ -250,6 +264,7 @@ S2LAB
   val+D3LAB(l0, d3e) = lde } }
 // end of [l2t2plst_of_l3d3elst(ldes)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 local
@@ -339,10 +354,10 @@ f1_make_svts
 } (*where*)
 ) (*case+*) // end-of-[f0_make_svts(...)]
 //
-in//local
-
 (* ****** ****** *)
-
+in//local
+(* ****** ****** *)
+//
 #implfun
 d2con23_tjagize
 ( loc0, dcon ) =
@@ -383,9 +398,9 @@ prerrln
 *)
 //
 } (*where*) // end of [d2con23_tjagize(...)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 d2con23_tapqize
 ( loc0, dcon ) =
@@ -414,9 +429,9 @@ list_cons _ =>
   (loc0, t2p0, D3Etapq(d3e0, t2js)) )
 //
 end (*let*) // end of [d2con23_tapqize(...)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 d2cst23_tapqize
 ( loc0, dcst ) =
@@ -471,16 +486,18 @@ list_cons _ =>
   (loc0, t2p0, D3Etapq(d3e0, t2js)) )
 //
 end (*let*) // end of [d2cst23_tapqize(...)]
-
+//
 (* ****** ****** *)
-
+//
 endloc // end of [local(d2con23/d2cst23_tapqize)]
 
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 d3pat_sapqize(d3p0) = d3p0
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 local
@@ -562,6 +579,7 @@ end (*let*) // end of [ d3exp_sapqize(d3e0) ]
 end (*local*) // end of [d3pat/d3exp_sapqize]
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 s2cst_get23_styp
@@ -582,7 +600,7 @@ optn_vt_nil() =>
 end//end-of-[s2cst_get23_styp(...)]
 //
 (* ****** ****** *)
-
+//
 #implfun
 unify23_s2typ
 (env0, t2p1, t2p2) =
@@ -622,10 +640,41 @@ val () =
 prerrln("unify23_s2typ: t2p2 = ", t2p2)
 *)
 //
+fun
+f0_detop
+( t2p0
+: s2typ): s2typ =
+(
+case+ t2p0.node() of
+|T2Ptop0
+( t2p1 ) => f0_detop(t2p1)
+|T2Ptop1
+( t2p1 ) => f0_detop(t2p1)
+|
+_(*otherwise*) => ( t2p0 )) // f0_detop
+//
+#impltmp
+unify00_s2typ$hnfz
+<e1nv>(e1nv, t2p0) =
+(*
+HX-2024-01-22:
+top0(?) and top1(?!)
+for linearity checking
+needed to be skipped here!
+*)
+f0_detop
+(
+s2typ_hnfiz0_e1nv
+<e1nv>(e1nv, t2p0)) where
+{
+  val t2p0 = s2typ_unmodx(t2p0) }
+//where//end-of-[unify00_s2typ$hnfz(...)]
+//
 in//let
 unify00_s2typ_e1nv<e1nv>(env0, t2p1, t2p2)
 end (*let*) // end of [unify23_s2typ(env0,...)]
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans23_utils0.dats] *)

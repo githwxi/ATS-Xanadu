@@ -61,8 +61,10 @@ MAP = "./xsymmap.sats"
 #staload
 S2E = "./staexp2.sats"
 #staload
-D2E = "./dynexp2.sats"
+T2P = "./statyp2.sats"
 (* ****** ****** *)
+#staload
+D2E = "./dynexp2.sats"
 #staload
 D3E = "./dynexp3.sats"
 #staload
@@ -71,6 +73,10 @@ D4E = "./dynexp4.sats"
 (* ****** ****** *)
 #typedef sym_t = $SYM.sym_t
 (* ****** ****** *)
+#typedef s2var = $S2E.s2var
+#typedef s2cst = $S2E.s2cst
+(* ****** ****** *)
+#typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
 #typedef d2var = $D2E.d2var
@@ -129,6 +135,8 @@ D4E = "./dynexp4.sats"
 (* ****** ****** *)
 #typedef d4parsed = $D4E.d4parsed
 (* ****** ****** *)
+(* ****** ****** *)
+#vwtpdef s2typopt_vt = optn_vt(s2typ)
 (* ****** ****** *)
 #typedef d3valdclist = $D3E.d3valdclist
 #typedef d3vardclist = $D3E.d3vardclist
@@ -239,6 +247,13 @@ fun
 tr34env_insert_dlft
 ( env0:
 ! tr34env, d2var, d4lft):( void )
+//
+(* ****** ****** *)
+//
+fun
+tr34env_evstyp_cst
+( env0:
+! tr34env, s2c0: s2cst): s2typopt_vt
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -362,6 +377,23 @@ trans34_d3eclistopt
 (* ****** ****** *)
 //
 fun
+unify34_s2typ // effectful
+( env0:
+! tr34env
+, t2p1: s2typ, t2p2: s2typ): bool
+fun
+unify34_s2typlst // effectful
+( env0:
+! tr34env
+, tps1: s2typlst, tps2: s2typ): bool
+//
+#symload unify34 with unify34_s2typ
+#symload unify34 with unify34_s2typlst
+//
+(* ****** ****** *)
+(*
+//
+fun
 match34_s2typ // testing-only
 ( env0:
 ! tr34env
@@ -375,6 +407,7 @@ match34_s2typlst // testing-only
 #symload match34 with match34_s2typ
 #symload match34 with match34_s2typlst
 //
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 
