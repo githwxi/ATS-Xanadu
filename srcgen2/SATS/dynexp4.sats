@@ -349,6 +349,9 @@ token(*knd*), sint(*npf*), d4explst)
 (
 token(*knd*), sint(*npf*), l4d4elst)
 //
+|D4El2bck of (d4exp, label)//HX: casting
+|D4Et2pck of (d4exp, s2typ)//HX: casting
+//
 |D4Enone0 of ((*0*))
 |D4Enone1 of (d3exp) | D4Enone2 of (d4exp)
 //

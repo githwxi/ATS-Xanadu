@@ -160,6 +160,29 @@ print("D4Elet0(",dcls,";",d4e1,")"))
 ( print("D4Eift0(")
 ; print(d4e1,";",dthn,";",dels,")"))
 //
+(* ****** ****** *)
+//
+|D4El2bck
+( d4e1 , lab2 ) =>
+let
+val
+t2p1 = d4e1.styp() in
+(
+  print("D4El2bck(")
+; print( d4e1, ";",t2p1, ";",lab2,")"))
+endlet // end of [ D4El2bck(d4e1, lab2) ]
+|D4Et2pck
+( d4e1 , t2p2 ) =>
+let
+val
+t2p1 = d4e1.styp() in
+(
+  print("D4Et2pck(")
+; print( d4e1, ";",t2p1, ";",t2p2,")"))
+endlet // end of [ D4Et2pck(d4e1, t2p2) ]
+//
+(* ****** ****** *)
+//
 |D4Enone0() => print( "D4Enone0(", ")" )
 |D4Enone1(d3e1) => print("D4Enone1(", d3e1, ")")
 |D4Enone2(d4e1) => print("D4Enone2(", d4e1, ")")
