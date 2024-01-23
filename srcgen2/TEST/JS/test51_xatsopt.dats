@@ -11,10 +11,8 @@ Testing [trans34]
 "./../..\
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
-(*
 #include
 "./../../HATS/libxatsopt.hats"
-*)
 (* ****** ****** *)
 //
 val ret =

@@ -579,9 +579,7 @@ in
 end // end of [aux_trcd1]
 
 (* ****** ****** *)
-
-in
-
+in(* in-of-local *)
 (* ****** ****** *)
 
 implement
@@ -589,7 +587,7 @@ trcmp30_dpat
 ( env0, d3p0 ) = let
 //
 #if(__XATSOPT_DEBUG__)
-// (*
+(*
 val
 loc0 = d3p0.loc()
 val
@@ -605,7 +603,7 @@ val () =
 println!
 ("trcmp30_dpat: t2p0 = ", t2p0)
 //
-// *)
+*)
 #endif//__XATSOPT_DEBUG__
 //
 in(*in-of-let*)
