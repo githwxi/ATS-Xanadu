@@ -208,6 +208,10 @@ trans34_sats
 trans34_sats: ; $(XATSOPT) --static SATS/trans34.sats
 ######
 all_sats:: \
+tread34_sats
+tread34_sats: ; $(XATSOPT) --static SATS/tread34.sats
+######
+all_sats:: \
 fperr44_sats
 fperr44_sats: ; $(XATSOPT) --static SATS/fperr44.sats
 ######
