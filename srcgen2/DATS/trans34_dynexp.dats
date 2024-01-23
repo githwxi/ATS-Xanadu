@@ -48,12 +48,16 @@ ATS_PACKNAME
 #staload
 _(*TRANS34*) = "./trans34.dats"
 (* ****** ****** *)
+#staload "./../SATS/statyp2.sats"
+(* ****** ****** *)
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
 #staload "./../SATS/dynexp4.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans34.sats"
 (* ****** ****** *)
+(* ****** ****** *)
+#symload node with s2typ_get_node
 (* ****** ****** *)
 #symload lctn with d3pat_get_lctn
 #symload styp with d3pat_get_styp
@@ -226,21 +230,24 @@ in//let
 case+
 d3e0.node() of
 //
-|
-D3Eint(tok) =>
+|D3Eint(tok) =>
 (
 d4exp_make_tpnd
 (loc0, t2p0, D4Eint(tok)))
-|
-D3Ebtf(sym) =>
+|D3Ebtf(sym) =>
 (
 d4exp_make_tpnd
 (loc0, t2p0, D4Ebtf(sym)))
-|
-D3Echr(tok) =>
+|D3Echr(tok) =>
 (
 d4exp_make_tpnd
 (loc0, t2p0, D4Echr(tok)))
+//
+(* ****** ****** *)
+//
+|D3Edapp _ => f0_dapp(env0, d3e0)
+//
+(* ****** ****** *)
 //
 | _(*otherwise*) =>
 let
@@ -252,6 +259,72 @@ end(*let*)//end of [_(*otherwise*)] // temp
 //
 end where // end-of-[trans34_d3exp( ... )]
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_dapp
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Edapp
+( d3f0
+, npf1, d3es) = d3e0.node()
+//
+val
+d4f0 =
+(
+  trans34_d3exp(env0, d3f0))
+//
+val d4es =
+trans34_d3explst(env0, d3es)
+//
+val tfun = d4f0.styp((*nil*))
+//
+val targ =
+(
+case+
+tfun.node() of
+| T2Pfun1
+( f2cl, npf1
+, t2ps, tres) => t2ps
+|_ (*else*) => list_nil()): s2typlst
+val tres =
+(
+case+
+tfun.node() of
+| T2Pfun1
+( f2cl
+, npf1, t2ps, tres) => tres
+| _(* non-T2Pfun1 *) => tfun): s2typ
+//
+(*
+val () =
+prerrln
+("trans34_d3exp:f0_dapp:tfun = ",tfun)
+val () =
+prerrln
+("trans34_d3exp:f0_dapp:targ = ",targ)
+val () =
+prerrln
+("trans34_d3exp:f0_dapp:tres = ",tres)
+*)
+//
+in//let
+let
+val d4es =
+trans34_d4explst_tpcks
+(env0, loc0, d4es, targ)
+in
+  d4exp_make_tpnd
+  (loc0, tres, D4Edapp(d4f0,npf1,d4es))
+end (*let*)
+end (*let*) // end of [f0_dapp(env0,d3e0)]
 //
 (* ****** ****** *)
 //

@@ -59,6 +59,11 @@ MAP = "./xsymmap.sats"
 //
 (* ****** ****** *)
 #staload
+LOC = "./locinfo.sats"
+#staload
+LEX = "./lexing0.sats"
+(* ****** ****** *)
+#staload
 S2E = "./staexp2.sats"
 #staload
 T2P = "./statyp2.sats"
@@ -72,6 +77,12 @@ D4E = "./dynexp4.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef sym_t = $SYM.sym_t
+(* ****** ****** *)
+//
+#typedef loc_t = $LOC.loc_t
+//
+#typedef token = $LEX.token
+//
 (* ****** ****** *)
 #typedef s2var = $S2E.s2var
 #typedef s2cst = $S2E.s2cst
@@ -408,6 +419,23 @@ match34_s2typlst // testing-only
 #symload match34 with match34_s2typlst
 //
 *)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+trans34_d4explst_tpcks
+( env0:
+! tr34env
+, loc0: loc_t
+, d4es: d4explst, t2ps: s2typlst): d4explst
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d4parsed_from_fpath
+(stadyn: sint, source: strn(*fpath*)): d4parsed
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
