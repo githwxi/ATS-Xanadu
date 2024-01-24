@@ -50,14 +50,16 @@ _(*TRANS34*) = "./trans34.dats"
 (* ****** ****** *)
 #staload "./../SATS/statyp2.sats"
 (* ****** ****** *)
+#staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
-(* ****** ****** *)
 #staload "./../SATS/dynexp4.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans34.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 #symload node with s2typ_get_node
+(* ****** ****** *)
+#symload styp with d2var_get_styp
 (* ****** ****** *)
 #symload lctn with d3pat_get_lctn
 #symload styp with d3pat_get_styp
@@ -230,6 +232,12 @@ in//let
 case+
 d3e0.node() of
 //
+|D3Evar _ =>
+(
+  f0_var(env0, d3e0))
+//
+(* ****** ****** *)
+//
 |D3Eint(tok) =>
 (
 d4exp_make_tpnd
@@ -259,6 +267,57 @@ end(*let*)//end of [_(*otherwise*)] // temp
 //
 end where // end-of-[trans34_d3exp( ... )]
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_var
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Evar(d2v1) = d3e0.node()
+//
+in//let
+if
+d2var_mutq(d2v1)
+then
+(
+  f1_mutq(env0, d2v1))
+else
+if
+d2var_linq(d2v1)
+then
+(
+  f1_linq(env0, d2v1))
+else let
+val
+t2p1 = d2v1.styp((*0*))
+in//let
+  d4exp_make_tpnd
+  (loc0, t2p1, D4Evar(d2v1)) end
+end where
+{
+//
+fun
+f1_mutq
+( env0:
+! tr34env
+, d2v1
+: d2var ) : d4exp = f0_var(env0, d3e0)
+//
+fun
+f1_linq
+( env0:
+! tr34env
+, d2v1
+: d2var ) : d4exp = f0_var(env0, d3e0)
+//
+}(*where*) // end of [f0_var(env0,d3e0)]
 //
 (* ****** ****** *)
 //
@@ -415,6 +474,65 @@ val () = prerrln
 //
 } (*where*) // end of [trans34_d4exp_tpck(...)]
 
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trans34_d4explst_tpcks
+( env0
+, loc0, d4es , t2ps ) =
+(
+case+ d4es of
+|
+list_nil() =>
+(
+case+ t2ps of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons(t2p1, t2ps) =>
+list_cons(d4e1, d4es) where
+{
+//
+val
+d4e1 = d4exp_none0(loc0)
+//
+val d4e1 =
+trans34_d4exp_tpck(env0, d4e1, t2p1)
+val d4es =
+trans34_d4explst_tpcks(env0, loc0, d4es, t2ps)
+}
+)
+|
+list_cons(d4e1, d4es) =>
+(
+case+ t2ps of
+|
+list_nil() =>
+list_cons(d4e1, d4es) where
+{
+//
+val
+t2p1 = s2typ_none0((*void*))
+//
+val d4e1 =
+trans34_d4exp_tpck(env0, d4e1, t2p1)
+val d4es =
+trans34_d4explst_tpcks(env0, loc0, d4es, t2ps)
+}
+|
+list_cons(t2p1, t2ps) =>
+list_cons(d4e1, d4es) where
+{
+val d4e1 =
+trans34_d4exp_tpck(env0, d4e1, t2p1)
+val d4es =
+trans34_d4explst_tpcks(env0, loc0, d4es, t2ps)
+}
+)
+) (*case+*) // end of [trans34_d4explst_tpcks(...)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 

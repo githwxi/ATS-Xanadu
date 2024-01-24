@@ -139,6 +139,20 @@ print("D4Eflt(",tok,")")
 |D4Estr(tok) =>
 print("D4Estr(",tok,")")
 //
+(* ****** ****** *)
+//
+|D4Evar(d2v) =>
+print("D4Evar(", d2v, ")")
+//
+(* ****** ****** *)
+//
+|D4Econ(d2c) =>
+print("D4Econ(", d2c, ")")
+|D4Ecst(d2c) =>
+print("D4Ecst(", d2c, ")")
+//
+(* ****** ****** *)
+//
 |
 D4Edapp
 (d4f0,npf1,d4es) =>

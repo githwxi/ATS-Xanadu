@@ -325,6 +325,13 @@ d4exp_node =
 //
 (* ****** ****** *)
 //
+|D4Evar of (d2var)
+//
+|D4Econ of (d2con)
+|D4Ecst of (d2cst)
+//
+(* ****** ****** *)
+//
 |D4Edapp of
 (d4exp,sint(*npf*),d4explst)
 //
