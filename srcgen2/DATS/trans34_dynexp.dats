@@ -69,6 +69,9 @@ _(*TRANS34*) = "./trans34.dats"
 #symload styp with d3exp_get_styp
 #symload node with d3exp_get_node
 (* ****** ****** *)
+#symload lctn with f3arg_get_lctn
+#symload node with f3arg_get_node
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -405,19 +408,63 @@ in//let
 end(*let*)//end-of-[trans33_l3d3e(env0,ld3e)]
 //
 (* ****** ****** *)
+//
+#implfun
+trans34_f3arg
+( env0, farg ) =
+let
+//
+val loc0 = farg.lctn()
+//
+(*
+val () =
+prerrln
+("trans34_f3arg: loc0 = ", loc0)
+val () =
+prerrln
+("trans34_f3arg: farg = ", farg)
+*)
+//
+in//let
+//
+case+
+farg.node() of
+//
+|
+F3ARGdapp(npf1, d3ps) =>
+let
+val loc0 = farg.lctn()
+val d4ps =
+trans34_d3patlst(env0, d3ps)
+in//let
+f4arg(loc0,F4ARGdapp(npf1,d4ps))
+end (*let*) // end of [F3ARGdapp]
+//
+|
+F3ARGsapp
+(s2vs, s2ps) =>
+(
+  f4arg(loc0,F4ARGsapp(s2vs,s2ps)))
+|
+F3ARGmets
+(   s2es   ) => f4arg(loc0,F4ARGmets(s2es))
+//
+end (*let*) // end of [trans34_f3arg(env0,farg)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
 trans34_d3explst
   (env0, d3es) =
 (
-  list_trans34_fnp(env0, d3es, trans34_d3exp))
+list_trans34_fnp(env0, d3es, trans34_d3exp))
 //
 #implfun
 trans34_d3expopt
   (env0, dopt) =
 (
-  optn_trans34_fnp(env0, dopt, trans34_d3exp))
+optn_trans34_fnp(env0, dopt, trans34_d3exp))
 //
 (* ****** ****** *)
 //
@@ -425,7 +472,15 @@ trans34_d3expopt
 trans34_l3d3elst
   (env0, ldes) =
 (
-  list_trans34_fnp(env0, ldes, trans34_l3d3e))
+list_trans34_fnp(env0, ldes, trans34_l3d3e))
+//
+(* ****** ****** *)
+//
+#implfun
+trans34_f3arglst
+  (env0, f3as) =
+(
+list_trans34_fnp(env0, f3as, trans34_f3arg))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -438,7 +493,7 @@ val
 d4e0 = trans34_d3exp(env0, d3e0)
 in//let
 trans34_d4exp_tpck(env0,d4e0,t2p0)
-end (*let*) // end of [trans34_d3exp_tpck(...)]
+end(*let*)//end-of-[trans34_d3exp_tpck(...)]
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -472,7 +527,7 @@ val () = prerrln
   ("trans34_d4exp_tpck: t2p0 = ", t2p0)
 // *)
 //
-} (*where*) // end of [trans34_d4exp_tpck(...)]
+}(*where*)//end-of-[trans34_d4exp_tpck(...)]
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -531,7 +586,7 @@ val d4es =
 trans34_d4explst_tpcks(env0, loc0, d4es, t2ps)
 }
 )
-) (*case+*) // end of [trans34_d4explst_tpcks(...)]
+)(*case+*)//end-of-[trans34_d4explst_tpcks(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
