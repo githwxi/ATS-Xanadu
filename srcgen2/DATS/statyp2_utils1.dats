@@ -61,6 +61,16 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #implfun
+s2typ_linq(t2p0) =
+(
+  sort2_linq(t2p0.sort()))
+#implfun
+s2typ_prfq(t2p0) =
+(  sort2_prfq(t2p0.sort()))
+//
+(* ****** ****** *)
+//
+#implfun
 s2typ_cbrfq(t2p0) =
 (
 case+
@@ -69,7 +79,8 @@ t2p0.node() of
 (knd0, _) => (knd0 < 0)
 |T2Patx2
 (t2p1, _) => s2typ_cbrfq(t2p1)
-|_(* otherwise *) => ( false ))
+|_(* otherwise *) => (  false  )
+)
 //
 (* ****** ****** *)
 //
@@ -84,7 +95,8 @@ t2p0.node() of
 s2cst_dataq(s2c1)
 |T2Papps
 (tfun, t2ps) =>
-s2typ_dataq(tfun) | _ => false)
+s2typ_dataq(tfun) | _ => (false)
+)
 //
 (* ****** ****** *)
 //

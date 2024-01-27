@@ -124,6 +124,8 @@ D4E = "./dynexp4.sats"
 (* ****** ****** *)
 #typedef d3eclist = $D3E.d3eclist
 (* ****** ****** *)
+#typedef teqd3exp = $D3E.teqd3exp
+(* ****** ****** *)
 #typedef d3valdcl = $D3E.d3valdcl
 #typedef d3vardcl = $D3E.d3vardcl
 #typedef d3fundcl = $D3E.d3fundcl
@@ -139,6 +141,8 @@ D4E = "./dynexp4.sats"
 #typedef l4d4elst = $D4E.l4d4elst
 (* ****** ****** *)
 #typedef d4eclist = $D4E.d4eclist
+(* ****** ****** *)
+#typedef teqd4exp = $D4E.teqd4exp
 (* ****** ****** *)
 #typedef d4valdcl = $D4E.d4valdcl
 #typedef d4vardcl = $D4E.d4vardcl
@@ -175,8 +179,33 @@ d4parsed_of_trans34
 datatype
 d4lft =
 //
-|D4LFTval of s2typ
-|D4LFTvar of s2typ
+|D4LFTval of d2var
+|D4LFTvar of d2var
+(*
+|D4LFTpcon of
+(tnode(*kind*), label, d4lft)
+|D4LFTproj of
+(tnode(*kind*), label, d4lft)
+*)
+//
+(* ****** ****** *)
+//
+datatype
+d4typ =
+//
+|D4TYPstp of s2typ
+|D4TYPpat of d4pat
+(*
+|
+D4TYPpcon of (d2con, d4typlst)
+|
+D4TYPproj of (tnode, d4typlst)
+*)
+//
+where
+{
+#typedef d4typlst = list(d4typ)
+}
 //
 (* ****** ****** *)
 //
@@ -218,7 +247,7 @@ linstk_pshlet0
 fun
 linstk_insert_dtyp
 ( stk:
-& linstk >> _, d2var, s2typ):void
+& linstk >> _, d2var, d4typ):void
 fun
 linstk_insert_dlft
 ( stk:
@@ -253,7 +282,7 @@ tr34env_pshlet0
 fun
 tr34env_insert_dtyp
 ( env0:
-! tr34env, d2var, s2typ):( void )
+! tr34env, d2var, d4typ):( void )
 fun
 tr34env_insert_dlft
 ( env0:
@@ -333,6 +362,13 @@ fun
 trans34_d3eclist
 ( env0:
 ! tr34env, dcls: d3eclist): d4eclist
+//
+(* ****** ****** *)
+//
+fun
+trans34_teqd3exp
+( env0: 
+! tr34env, tdxp: teqd3exp): teqd4exp
 //
 (* ****** ****** *)
 //
