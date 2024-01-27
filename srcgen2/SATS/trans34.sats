@@ -357,6 +357,18 @@ trans34_d3ecl
 (* ****** ****** *)
 //
 fun
+trans34_d3patlst
+( env0:
+! tr34env, d3ps: d3patlst): d4patlst
+//
+fun
+trans34_l3d3plst
+( env0:
+! tr34env, ldps: l3d3plst): l4d4plst
+//
+(* ****** ****** *)
+//
+fun
 trans34_d3explst
 ( env0:
 ! tr34env, d3es: d3explst): d4explst
