@@ -793,6 +793,7 @@ end//let
 (*let*)//end-of-[trans23_d2fundcl(env0,dfun)]
 
 (* ****** ****** *)
+(* ****** ****** *)
 
 #implfun
 trans23_d2eclist
@@ -800,6 +801,7 @@ trans23_d2eclist
 (
 list_trans23_fnp(env0, dcls, trans23_d2ecl))
 
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -823,6 +825,7 @@ trans23_d2fundclist
 list_trans23_fnp(env0, d2fs, trans23_d2fundcl))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 trans23_d2eclistopt
@@ -830,6 +833,7 @@ trans23_d2eclistopt
 (
 optn_trans23_fnp(env0, dopt, trans23_d2eclist))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_trans23_decl00.dats] *)

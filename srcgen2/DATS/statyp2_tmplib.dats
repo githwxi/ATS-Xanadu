@@ -1261,6 +1261,7 @@ HX-2024-01-22:
 [s2typ_unmodx]
 removes arg modifiers
 *)
+(*
 #impltmp
 <e1nv:vwtp>
 unify00_s2typ$hnfz
@@ -1274,6 +1275,7 @@ val
 t2p0 = s2typ_unmodx(t2p0)
 *)
 }(*where*)//unify00_s2typ$hnfz
+*)
 //
 (* ****** ****** *)
 

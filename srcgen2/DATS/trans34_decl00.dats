@@ -71,11 +71,8 @@ d3cl.node() of
 D3Cvaldclst _ => f0_valdclst(env0, d3cl)
 |
 D3Cvardclst _ => f0_vardclst(env0, d3cl)
-//
-(*
 |
 D3Cfundclst _ => f0_fundclst(env0, d3cl)
-*)
 //
 | _(*otherwise*) =>
 let
@@ -259,6 +256,50 @@ end//let
 (*let*)//end-of-[trans34_d3vardcl(env0,dvar)]
 
 (* ****** ****** *)
+
+#implfun
+trans34_d3fundcl
+  (env0, dfun) = let
+//
+val loc0 =
+d3fundcl_get_lctn(dfun)
+//
+val dvar =
+d3fundcl_get_dpid(dfun)
+val f3as =
+d3fundcl_get_farg(dfun)
+val sres =
+d3fundcl_get_sres(dfun)
+val tdxp =
+d3fundcl_get_tdxp(dfun)
+val wsxp =
+d3fundcl_get_wsxp(dfun)
+//
+(*
+val (  ) = prerrln
+("trans34_d3fundcl: f3as = ", f3as)
+val (  ) = prerrln
+("trans34_d3fundcl: tdxp = ", tdxp)
+*)
+//
+val f4as =
+trans34_f3arglst(env0, f3as)
+val tdxp =
+trans34_teqd3exp(env0, tdxp)
+//
+(*
+val (  ) = prerrln
+("trans34_d3fundcl: f3as = ", f3as)
+val (  ) = prerrln
+("trans34_d3fundcl: tdxp = ", tdxp)
+*)
+//
+in//let
+d4fundcl(loc0,dvar,f4as,sres,tdxp,wsxp)
+end//let
+(*let*)//end-of-[trans34_d3fundcl(env0,dfun)]
+
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -267,6 +308,7 @@ trans34_d3eclist
 (
   list_trans34_fnp(env0, dcls, trans34_d3ecl))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -289,6 +331,7 @@ trans34_d3fundclist
 (
 list_trans34_fnp(env0, d3fs, trans34_d3fundcl))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
