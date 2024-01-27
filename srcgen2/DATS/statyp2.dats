@@ -284,12 +284,10 @@ unmodx
 case+
 t2p0.node() of
 //
-(*
 |T2Ptop0
 ( t2p1 ) => unmodx(t2p1)
 |T2Ptop1
 ( t2p1 ) => unmodx(t2p1)
-*)
 //
 |T2Parg1
 ( knd0

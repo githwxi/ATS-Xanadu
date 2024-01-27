@@ -118,15 +118,17 @@ unify00_s2typ$hnfz
 <e1nv>(e1nv, t2p0) =
 (*
 HX-2034-01-22:
-top0(?) and top1(?!) for
-linearity checking needed to be kept!
+type modifiers
+need to be kept here!!!
 *)
 (
 s2typ_hnfiz0_e1nv
 <e1nv>(e1nv, t2p0)) where
 {
-  val t2p0 = s2typ_unmodx(t2p0) }
-//where//end-of-[unify00_s2typ$hnfz(...)]
+(*
+val t2p0 = s2typ_unmodx(t2p0)
+*)
+}(*where*)//end-of-[unify00_s2typ$hnfz]
 //
 in//let
 unify00_s2typ_e1nv<e1nv>(env0, t2p1, t2p2)

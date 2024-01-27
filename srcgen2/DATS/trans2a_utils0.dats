@@ -544,6 +544,7 @@ val () =
 prerrln("unify2a_s2typ: t2p2 = ", t2p2)
 *)
 //
+(*
 fun
 f0_detop
 ( t2p0
@@ -556,17 +557,16 @@ case+ t2p0.node() of
 ( t2p1 ) => f0_detop(t2p1)
 |
 _(*otherwise*) => ( t2p0 )) // f0_detop
+*)
 //
 #impltmp
 unify00_s2typ$hnfz
 <e1nv>(e1nv, t2p0) =
 (*
 HX-2024-01-22:
-top0(?) and top1(?!)
-for linearity checking
-needed to be skipped here!
+type modifiers
+need to be skipped here!
 *)
-f0_detop
 (
 s2typ_hnfiz0_e1nv
 <e1nv>(e1nv, t2p0)) where

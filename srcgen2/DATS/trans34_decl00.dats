@@ -149,6 +149,40 @@ prerrln("f0_vardclst(34): d3cl = ", d3cl)
 //
 (* ****** ****** *)
 //
+fun
+f0_fundclst
+( env0:
+! tr34env
+, d3cl: d3ecl): d4ecl =
+let
+//
+val-
+D3Cfundclst
+( tknd
+, tqas
+, d2cs, d3fs) = d3cl.node()
+//
+val
+d3fs =
+trans34_d3fundclist(env0, d3fs)
+//
+in//let
+d4ecl_make_node
+( loc0
+, D4Cfundclst(tknd, tqas, d2cs, d3fs) )
+end where
+{
+//
+val loc0 = d3cl.lctn()
+(*
+val (  ) =
+prerrln("f0_fundclst(34): d3cl = ", d3cl)
+*)
+//
+}(*where*) // end of [f0_fundclst(env0,d3cl)]
+//
+(* ****** ****** *)
+//
 val () =
 (
   prerrln("trans34_d3ecl: d3cl = ", d3cl) )
@@ -156,6 +190,23 @@ val () =
 } (*where*) // end of [trans34_d3ecl(env0,d3cl)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trans34_teqd3exp
+  (env0, tdxp) =
+(
+case+ tdxp of
+|
+TEQD3EXPnone() =>
+TEQD4EXPnone((*void*))
+|
+TEQD3EXPsome(teq1, d3e2) =>
+TEQD4EXPsome(teq1, d4e2) where
+{ val
+  d4e2 = trans34_d3exp(env0, d3e2) }
+) (*case+*)//end-of(trans23_teqd3exp(...))
+//
 (* ****** ****** *)
 //
 #implfun
@@ -175,24 +226,38 @@ val dpat =
 trans34_d3pat(env0, dpat)
 //
 val tdxp =
-(
-case tdxp of
-|
-TEQD3EXPnone() =>
-TEQD4EXPnone(*void*)
-|
-TEQD3EXPsome(teq1, dexp) =>
-TEQD4EXPsome(teq1, dexp) where
-{
-val
-dexp = trans34_d3exp(env0, dexp)}
-)
+trans34_teqd3exp(env0, tdxp)
 //
 in//let
 d4valdcl_make_args(loc0,dpat,tdxp,wsxp)
 end//let
 (*let*)//end-of-[trans34_d3valdcl(env0,dval)]
 //
+(* ****** ****** *)
+
+#implfun
+trans34_d3vardcl
+  (env0, dvar) = let
+//
+val loc0 =
+d3vardcl_get_lctn(dvar)
+val dpid =
+d3vardcl_get_dpid(dvar)
+val vpid =
+d3vardcl_get_vpid(dvar)
+val sres =
+d3vardcl_get_sres(dvar)
+val dini =
+d3vardcl_get_dini(dvar)
+//
+val dini =
+trans34_teqd3exp(env0, dini)
+//
+in//let
+d4vardcl_make_args(loc0,dpid,vpid,sres,dini)
+end//let
+(*let*)//end-of-[trans34_d3vardcl(env0,dvar)]
+
 (* ****** ****** *)
 (* ****** ****** *)
 //

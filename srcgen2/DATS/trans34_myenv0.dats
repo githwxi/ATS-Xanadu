@@ -80,7 +80,7 @@ linstk_dvar of
 (d2var(*lin*), linstk)
 |
 linstk_dtyp of
-(d2var(*lin*), s2typ, linstk)
+(d2var(*lin*), d4typ, linstk)
 |
 linstk_dlft of
 (d2var(*lin*), d4lft, linstk)
@@ -159,7 +159,7 @@ linstk_dvar
 loop(stk1, list_cons(d2v0, res1))
 |
 linstk_dtyp
-(d2v0, t2p0, stk1) => loop(stk1, res1)
+(d2v0, dtp0, stk1) => loop(stk1, res1)
 |
 linstk_dlft
 (d2v0, lft0, stk1) => loop(stk1, res1)
@@ -199,7 +199,7 @@ linstk_dvar
 loop(stk1, list_cons(d2v0, res1))
 |
 linstk_dtyp
-(d2v0, t2p0, stk1) => loop(stk1, res1)
+(d2v0, dtp0, stk1) => loop(stk1, res1)
 |
 linstk_dlft
 (d2v0, lft0, stk1) => loop(stk1, res1)
@@ -229,7 +229,7 @@ linstk_dvar
 ( d2v, kxs ) => loop(kxs, err)
 | ~
 linstk_dtyp
-(d2v,t2p,kxs) => loop(kxs, err)
+(d2v,dtp,kxs) => loop(kxs, err)
 | ~
 linstk_dlft
 (d2v,lft,kxs) => loop(kxs, err)
@@ -274,7 +274,7 @@ linstk_dvar
 ( d2v, kxs ) => loop(kxs, err)
 | ~
 linstk_dtyp
-(d2v,t2p,kxs) => loop(kxs, err)
+(d2v,dtp,kxs) => loop(kxs, err)
 | ~
 linstk_dlft
 (d2v,lft,kxs) => loop(kxs, err)
@@ -455,7 +455,7 @@ end(*let*)//end-of-(tr34env_pshlet0(env0))
 //
 #implfun
 tr34env_insert_dtyp
-  (env0,d2v1,t2p1) = let
+  (env0,d2v1,dtp1) = let
 //
 val+
 @TR34ENV
@@ -465,7 +465,7 @@ in//let
 //
 (
   linstk_insert_dtyp
-  (linstk, d2v1, t2p1) ; $fold(env0) )
+  (linstk, d2v1, dtp1) ; $fold(env0) )
 //
 end(*let*)//end-of-(tr34env_insert_dtyp(env0))
 //

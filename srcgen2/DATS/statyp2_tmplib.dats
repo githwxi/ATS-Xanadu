@@ -1267,11 +1267,13 @@ unify00_s2typ$hnfz
   (e1nv, t2p0) =
 (
 s2typ_hnfiz0_e1nv
-<e1nv>(e1nv, t2p0)) where
+<e1nv>(e1nv, t2p0))
 {
+(*
 val
-t2p0 = s2typ_unmodx(t2p0)}
-//where//unify00_s2typ$hnfz
+t2p0 = s2typ_unmodx(t2p0)
+*)
+}(*where*)//unify00_s2typ$hnfz
 //
 (* ****** ****** *)
 
