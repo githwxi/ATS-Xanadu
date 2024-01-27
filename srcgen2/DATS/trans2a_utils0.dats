@@ -537,12 +537,8 @@ s2typ_eval$s2var
 ( // HX-2023-07-21: support for
   optn_vt_nil((*void*)) // GRDT?
 ) // end-of-[s2typ_eval$s2var(...)]
-(*
-val () =
-prerrln("unify2a_s2typ: t2p1 = ", t2p1)
-val () =
-prerrln("unify2a_s2typ: t2p2 = ", t2p2)
-*)
+//
+(* ****** ****** *)
 //
 (*
 fun
@@ -574,6 +570,14 @@ s2typ_hnfiz0_e1nv
   val t2p0 = s2typ_unmodx(t2p0) }
 //where//end-of-[unify00_s2typ$hnfz(...)]
 //
+(* ****** ****** *)
+//
+(*
+val () =
+prerrln("unify2a_s2typ: t2p1 = ", t2p1)
+val () =
+prerrln("unify2a_s2typ: t2p2 = ", t2p2)
+*)
 in//let
 unify00_s2typ_e1nv<e1nv>(env0, t2p1, t2p2)
 end (*let*) // end of [unify2a_s2typ(env0,...)]
@@ -607,6 +611,25 @@ s2typ_eval$s2cst: s2c0 = ", s2c0)
 #impltmp
 s2typ_eval$s2var
 <e1nv>(env0,s2v0) = optn_vt_nil((*0*))
+//
+(* ****** ****** *)
+//
+#impltmp
+unify00_s2typ$hnfz
+<e1nv>(e1nv, t2p0) =
+(*
+HX-2024-01-22:
+type modifiers
+need to be skipped here!
+*)
+(
+s2typ_hnfiz0_e1nv
+<e1nv>(e1nv, t2p0)) where
+{
+  val t2p0 = s2typ_unmodx(t2p0) }
+//where//end-of-[unify00_s2typ$hnfz(...)]
+//
+(* ****** ****** *)
 //
 (*
 val () =

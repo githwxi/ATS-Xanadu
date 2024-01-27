@@ -99,6 +99,8 @@ D4E = "./dynexp4.sats"
 #typedef d3exp = $D3E.d3exp
 #typedef l3d3e = $D3E.l3d3e
 (* ****** ****** *)
+#typedef f3arg = $D3E.f3arg
+(* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
 (* ****** ****** *)
@@ -107,6 +109,8 @@ D4E = "./dynexp4.sats"
 (* ****** ****** *)
 #typedef d4exp = $D4E.d4exp
 #typedef l4d4e = $D4E.l4d4e
+(* ****** ****** *)
+#typedef f4arg = $D4E.f4arg
 (* ****** ****** *)
 #typedef d4ecl = $D4E.d4ecl
 (* ****** ****** *)
@@ -121,6 +125,8 @@ D4E = "./dynexp4.sats"
 #typedef d3explst = $D3E.d3explst
 #typedef d3expopt = $D3E.d3expopt
 #typedef l3d3elst = $D3E.l3d3elst
+(* ****** ****** *)
+#typedef f3arglst = $D3E.f3arglst
 (* ****** ****** *)
 #typedef d3eclist = $D3E.d3eclist
 (* ****** ****** *)
@@ -139,6 +145,8 @@ D4E = "./dynexp4.sats"
 #typedef d4explst = $D4E.d4explst
 #typedef d4expopt = $D4E.d4expopt
 #typedef l4d4elst = $D4E.l4d4elst
+(* ****** ****** *)
+#typedef f4arglst = $D4E.f4arglst
 (* ****** ****** *)
 #typedef d4eclist = $D4E.d4eclist
 (* ****** ****** *)
@@ -337,6 +345,12 @@ trans34_l3d3e
 (* ****** ****** *)
 //
 fun
+trans34_f3arg
+(env0: !tr34env, farg: f3arg): f4arg
+//
+(* ****** ****** *)
+//
+fun
 trans34_d3ecl
 (env0: !tr34env, d3cl: d3ecl): d4ecl
 //
@@ -355,6 +369,13 @@ fun
 trans34_l3d3elst
 ( env0:
 ! tr34env, ldes: l3d3elst): l4d4elst
+//
+(* ****** ****** *)
+//
+fun
+trans34_f3arglst
+( env0:
+! tr34env, f3as: f3arglst): f4arglst
 //
 (* ****** ****** *)
 //
