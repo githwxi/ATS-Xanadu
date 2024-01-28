@@ -60,6 +60,7 @@ _(*TRANS34*) = "./trans34.dats"
 #symload node with s2typ_get_node
 (* ****** ****** *)
 #symload styp with d2var_get_styp
+#symload styp with d2var_set_styp
 (* ****** ****** *)
 #symload lctn with d3pat_get_lctn
 #symload styp with d3pat_get_styp
@@ -103,24 +104,28 @@ d3p0.node() of
 (
   f0_var(env0, d3p0))
 //
-|
-D3Pint(tok) =>
+|D3Pint(tok) =>
 (
 d4pat_make_tpnd
 (loc0, t2p0, D4Pint(tok)))
-|
-D3Pbtf(sym) =>
+|D3Pbtf(sym) =>
 (
 d4pat_make_tpnd
 (loc0, t2p0, D4Pbtf(sym)))
-|
-D3Pchr(tok) =>
+|D3Pchr(tok) =>
 (
 d4pat_make_tpnd
 (loc0, t2p0, D4Pchr(tok)))
 //
-|
-D3Pcon _ => f0_con(env0, d3p0)
+(* ****** ****** *)
+//
+|D3Pcon _ => f0_con(env0, d3p0)
+//
+(* ****** ****** *)
+//
+|D3Pannot _ => f0_annot(env0, d3p0)
+//
+(* ****** ****** *)
 //
 | _(*otherwise*) =>
 let
@@ -191,6 +196,59 @@ val-D3Pcon(d2c1) = d3p0.node()
 //
 }(*where*)//end-of-[f0_var(env0,d3p0)]
 //
+(* ****** ****** *)
+//
+fun
+f0_annot
+( env0:
+! tr34env
+, d3p0: d3pat): d4pat =
+let
+//
+val loc0 = d3p0.lctn()
+val-
+D3Pannot
+( d3p1
+, s1e2, s2e2) = d3p0.node()
+//
+(*
+val
+t2p2 = s2exp_stpize(s2e2)
+val
+t2p2 = s2typ_hnfiz0(t2p2)
+*)
+val
+t2p2 = d3p0.styp((*void*))
+//
+// (*
+val () =
+prerrln
+("f0_annot(34): t2p2 = ", t2p2)
+// *)
+//
+val d4p1 =
+(
+case+
+d3p1.node() of
+|
+D3Pvar(d2v1) =>
+(
+d2v1.styp(t2p2);
+d4pat
+(loc1, D4Pvar(d2v1))) where
+{
+  val loc1 = d3p1.lctn((*0*)) }
+|
+_(*non-D3Pvar*) =>
+trans34_d3pat_tpck(env0, d3p1, t2p2)
+) : d4pat // end of [val(d4p1)]
+//
+in//let
+d4pat_make_tpnd
+(loc0, t2p2, D4Pannot(d4p1,s1e2,s2e2))
+end (*let*) // end of [f0_annot(env0,...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 }(*where*)//end of [trans34_d3pat(env0,d3p0)]

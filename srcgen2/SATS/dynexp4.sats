@@ -117,6 +117,8 @@ D3E = "./dynexp3.sats"
 (* ****** ****** *)
 #typedef g1exp = $G1M.g1exp
 (* ****** ****** *)
+#typedef s1exp = $S1E.s1exp
+(* ****** ****** *)
 #typedef s2var = $S2E.s2var
 (* ****** ****** *)
 #typedef s2exp = $S2E.s2exp
@@ -262,6 +264,13 @@ d4pat_node =
 |D4Pbang of (d4pat)
 |D4Pflat of (d4pat)
 |D4Pfree of (d4pat)
+//
+(* ****** ****** *)
+//
+|D4Pannot of
+(d4pat,s1exp(*given*),s2exp(*trans*))
+//
+(* ****** ****** *)
 //
 |D4Pnone0 of ((*0*))
 |D4Pnone1 of (d3pat) | D4Pnone2 of (d4pat)
