@@ -365,7 +365,7 @@ tfun.node() of
 , npf1, t2ps, tres) => tres
 | _(* non-T2Pfun1 *) => tfun): s2typ
 //
-(*
+// (*
 val () =
 prerrln
 ("trans34_d3exp:f0_dapp:tfun = ",tfun)
@@ -375,7 +375,7 @@ prerrln
 val () =
 prerrln
 ("trans34_d3exp:f0_dapp:tres = ",tres)
-*)
+// *)
 //
 in//let
 let
@@ -449,22 +449,38 @@ F3ARGsapp
 F3ARGmets
 (   s2es   ) => f4arg(loc0,F4ARGmets(s2es))
 //
-end (*let*) // end of [trans34_f3arg(env0,farg)]
+end(*let*)//end-of-[trans34_f3arg(env0,farg)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trans34_d3patlst
+  (env0, d3ps) =
+(
+  list_trans34_fnp(env0, d3ps, trans34_d3pat))
+//
+(* ****** ****** *)
+//
+#implfun
+trans34_l3d3plst
+  (env0, ldps) =
+(
+  list_trans34_fnp(env0, ldps, trans34_l3d3p))
+//
 (* ****** ****** *)
 //
 #implfun
 trans34_d3explst
   (env0, d3es) =
 (
-list_trans34_fnp(env0, d3es, trans34_d3exp))
+  list_trans34_fnp(env0, d3es, trans34_d3exp))
 //
 #implfun
 trans34_d3expopt
   (env0, dopt) =
 (
-optn_trans34_fnp(env0, dopt, trans34_d3exp))
+  optn_trans34_fnp(env0, dopt, trans34_d3exp))
 //
 (* ****** ****** *)
 //
@@ -472,7 +488,7 @@ optn_trans34_fnp(env0, dopt, trans34_d3exp))
 trans34_l3d3elst
   (env0, ldes) =
 (
-list_trans34_fnp(env0, ldes, trans34_l3d3e))
+  list_trans34_fnp(env0, ldes, trans34_l3d3e))
 //
 (* ****** ****** *)
 //
@@ -480,7 +496,7 @@ list_trans34_fnp(env0, ldes, trans34_l3d3e))
 trans34_f3arglst
   (env0, f3as) =
 (
-list_trans34_fnp(env0, f3as, trans34_f3arg))
+  list_trans34_fnp(env0, f3as, trans34_f3arg))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -492,8 +508,9 @@ let
 val
 d4e0 = trans34_d3exp(env0, d3e0)
 in//let
-trans34_d4exp_tpck(env0,d4e0,t2p0)
-end(*let*)//end-of-[trans34_d3exp_tpck(...)]
+(
+  trans34_d4exp_tpck(env0,d4e0,t2p0) )
+end(*let*) // end-of-[trans34_d3exp_tpck(...)]
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -502,9 +519,16 @@ end(*let*)//end-of-[trans34_d3exp_tpck(...)]
 trans34_d4exp_tpck
 (env0, d4e0, t2p0) =
 let
+//
+val t2p0 =
+(
+  f0_dearg(t2p0) )
+//
 val t2p1 = d4e0.styp()
+//
 val ubtf =
 unify34_s2typ(env0, t2p1, t2p0)
+//
 in//let
 if
 ubtf then d4e0 else
@@ -516,18 +540,33 @@ d4exp
 end where
 {
 //
-// (*
+fun
+f0_dearg
+(t2p0: s2typ): s2typ =
+(
+case+
+t2p0.node() of
+|T2Parg1
+(knd0, t2p1) => f0_dearg(t2p1)
+|T2Patx2
+(t2p1, t2p2) => f0_dearg(t2p1)
+|_(* otherwise *) => (  t2p0  ))//fun
+//
+(*
+//
 val
 loc0 = d4e0.lctn((*void*))
+//
 val () = prerrln
   ("trans34_d4exp_tpck: loc0 = ", loc0)
 val () = prerrln
   ("trans34_d4exp_tpck: d4e0 = ", d4e0)
 val () = prerrln
   ("trans34_d4exp_tpck: t2p0 = ", t2p0)
-// *)
 //
-}(*where*)//end-of-[trans34_d4exp_tpck(...)]
+*)
+//
+}(*where*) // end-of-[trans34_d4exp_tpck(...)]
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -556,8 +595,7 @@ d4e1 = d4exp_none0(loc0)
 val d4e1 =
 trans34_d4exp_tpck(env0, d4e1, t2p1)
 val d4es =
-trans34_d4explst_tpcks(env0, loc0, d4es, t2ps)
-}
+trans34_d4explst_tpcks(env0,loc0,d4es,t2ps) }
 )
 |
 list_cons(d4e1, d4es) =>
@@ -574,8 +612,7 @@ t2p1 = s2typ_none0((*void*))
 val d4e1 =
 trans34_d4exp_tpck(env0, d4e1, t2p1)
 val d4es =
-trans34_d4explst_tpcks(env0, loc0, d4es, t2ps)
-}
+trans34_d4explst_tpcks(env0,loc0,d4es,t2ps) }
 |
 list_cons(t2p1, t2ps) =>
 list_cons(d4e1, d4es) where
@@ -583,10 +620,18 @@ list_cons(d4e1, d4es) where
 val d4e1 =
 trans34_d4exp_tpck(env0, d4e1, t2p1)
 val d4es =
-trans34_d4explst_tpcks(env0, loc0, d4es, t2ps)
-}
+trans34_d4explst_tpcks(env0,loc0,d4es,t2ps) }
 )
-)(*case+*)//end-of-[trans34_d4explst_tpcks(...)]
+)(*case+*) // end-of-[trans34_d4explst_tpcks(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trans34_d3explstopt
+( env0, dopt ) =
+(
+  optn_trans34_fnp(env0, dopt, trans34_d3explst))
 //
 (* ****** ****** *)
 (* ****** ****** *)
