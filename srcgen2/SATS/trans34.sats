@@ -84,6 +84,8 @@ D4E = "./dynexp4.sats"
 #typedef token = $LEX.token
 //
 (* ****** ****** *)
+#typedef s1exp = $S1E.s1exp
+(* ****** ****** *)
 #typedef s2var = $S2E.s2var
 #typedef s2cst = $S2E.s2cst
 (* ****** ****** *)
@@ -490,6 +492,10 @@ match34_s2typlst // testing-only
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+fun
+trans34_d3pat_tpck
+( env0: !tr34env
+, d3p0: d3pat, t2p0: s2typ): d4pat
 fun
 trans34_d3exp_tpck
 ( env0: !tr34env

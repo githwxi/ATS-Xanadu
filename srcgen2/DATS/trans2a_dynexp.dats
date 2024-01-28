@@ -224,9 +224,8 @@ in//let
 case+
 d2p0.node() of
 //
-|D2Pvar _ => f0_var(env0, d2p0)
-//
 |D2Pany _ => f0_any(env0, d2p0)
+|D2Pvar _ => f0_var(env0, d2p0)
 //
 |D2Pint _ => f0_int(env0, d2p0)
 |D2Pi00 _ => f0_i00(env0, d2p0)
@@ -363,6 +362,7 @@ D2Ps00(str) = d2p0.node()
 val t2p0 = the_s2typ_strn() }
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_any
@@ -416,6 +416,7 @@ in//let
 //(*let*) // end-of-[T2Pnone0]
 | _(* non-T2Pnone0 *) => t2p0) end }
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -3158,12 +3159,13 @@ val ubtf =
 unify2a_s2typ(env0, t2p1, t2p0)
 //
 in//let
+//
 if
 ubtf then d2p0 else
 let
 val loc0 = d2p0.lctn() in
 d2pat(loc0, t2p0, D2Pt2pck(d2p0,t2p0)) end
-end where
+end where // end-of-[trans2a_d2pat-tpck]
 {
 //
 (*
