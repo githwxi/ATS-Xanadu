@@ -2761,8 +2761,7 @@ d3p1 = d3pat_none0(loc0)
 val d3p1 =
 trans23_d3pat_tpck(env0, d3p1, t2p1)
 val d3ps =
-trans23_d3patlst_tpcks(env0, loc0, d3ps, t2ps)
-}
+trans23_d3patlst_tpcks(env0,loc0,d3ps,t2ps) }
 )
 |
 list_cons(d3p1, d3ps) =>
@@ -2779,8 +2778,7 @@ t2p1 = s2typ_none0((*void*))
 val d3p1 =
 trans23_d3pat_tpck(env0, d3p1, t2p1)
 val d3ps =
-trans23_d3patlst_tpcks(env0, loc0, d3ps, t2ps)
-}
+trans23_d3patlst_tpcks(env0,loc0,d3ps,t2ps) }
 |
 list_cons(t2p1, t2ps) =>
 list_cons(d3p1, d3ps) where
@@ -2788,8 +2786,7 @@ list_cons(d3p1, d3ps) where
 val d3p1 =
 trans23_d3pat_tpck(env0, d3p1, t2p1)
 val d3ps =
-trans23_d3patlst_tpcks(env0, loc0, d3ps, t2ps)
-}
+trans23_d3patlst_tpcks(env0,loc0,d3ps,t2ps) }
 )
 ) (*case+*) // end of [trans23_d3patlst_tpcks(...)]
 //
@@ -2810,8 +2807,7 @@ list_cons(d2e1, d2es) where
 val d2e1 =
 trans23_d2exp_tpck(env0, d2e1, t2p0)
 val d2es =
-trans23_d2explst_tpck1(env0, d2es, t2p0)
-}
+trans23_d2explst_tpck1(env0, d2es, t2p0) }
 ) (*case+*) // end of [trans23_d2explst_tpck1(...)]
 //
 #implfun
@@ -2828,8 +2824,7 @@ list_cons(d3e1, d3es) where
 val d3e1 =
 trans23_d3exp_tpck(env0, d3e1, t2p0)
 val d3es =
-trans23_d3explst_tpck1(env0, d3es, t2p0)
-}
+trans23_d3explst_tpck1(env0, d3es, t2p0) }
 ) (*case+*) // end of [trans23_d3explst_tpck1(...)]
 //
 (* ****** ****** *)
@@ -2859,8 +2854,7 @@ d3e1 = d3exp_none0(loc0)
 val d3e1 =
 trans23_d3exp_tpck(env0, d3e1, t2p1)
 val d3es =
-trans23_d3explst_tpcks(env0, loc0, d3es, t2ps)
-}
+trans23_d3explst_tpcks(env0,loc0,d3es,t2ps) }
 )
 |
 list_cons(d3e1, d3es) =>
@@ -2877,8 +2871,7 @@ t2p1 = s2typ_none0((*void*))
 val d3e1 =
 trans23_d3exp_tpck(env0, d3e1, t2p1)
 val d3es =
-trans23_d3explst_tpcks(env0, loc0, d3es, t2ps)
-}
+trans23_d3explst_tpcks(env0,loc0,d3es,t2ps) }
 |
 list_cons(t2p1, t2ps) =>
 list_cons(d3e1, d3es) where
@@ -2886,8 +2879,7 @@ list_cons(d3e1, d3es) where
 val d3e1 =
 trans23_d3exp_tpck(env0, d3e1, t2p1)
 val d3es =
-trans23_d3explst_tpcks(env0, loc0, d3es, t2ps)
-}
+trans23_d3explst_tpcks(env0,loc0,d3es,t2ps) }
 )
 ) (*case+*) // end of [trans23_d3explst_tpcks(...)]
 //
