@@ -560,6 +560,18 @@ trans34_f3arglst
 (* ****** ****** *)
 
 #implfun
+trans34_d3pat_tpck
+(env0, d3p0, t2p0) =
+let
+val
+d4p0 = trans34_d3pat(env0, d3p0)
+in
+trans34_d4pat_tpck(env0,d4p0,t2p0)
+end(*let*) // end-of-[trans34_d2pat_tpck(...)]
+
+(* ****** ****** *)
+
+#implfun
 trans34_d3exp_tpck
 (env0, d3e0, t2p0) =
 let
