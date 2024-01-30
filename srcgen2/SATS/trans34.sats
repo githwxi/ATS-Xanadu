@@ -492,6 +492,7 @@ match34_s2typlst // testing-only
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+//
 fun
 trans34_d3pat_tpck
 ( env0: !tr34env
@@ -500,11 +501,19 @@ fun
 trans34_d3exp_tpck
 ( env0: !tr34env
 , d3e0: d3exp, t2p0: s2typ): d4exp
+//
 (* ****** ****** *)
+//
+fun
+trans34_d4pat_tpck
+( env0: !tr34env
+, d4p0: d4pat, t2p0: s2typ): d4pat
 fun
 trans34_d4exp_tpck
 ( env0: !tr34env
 , d4e0: d4exp, t2p0: s2typ): d4exp
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
