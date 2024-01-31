@@ -284,8 +284,12 @@ val (  ) = prerrln
 //
 val f4as =
 trans34_f3arglst(env0, f3as)
+//
 val tdxp =
-trans34_teqd3exp(env0, tdxp)
+trans34_teqd3exp(env0, tdxp) where
+{
+val (  ) =
+tr34env_insert_farglst(env0, f4as)}
 //
 (*
 val (  ) = prerrln

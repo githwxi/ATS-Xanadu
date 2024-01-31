@@ -55,11 +55,20 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
-#staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
+#staload "./../SATS/dynexp2.sats"
+#staload "./../SATS/dynexp3.sats"
+#staload "./../SATS/dynexp4.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans34.sats"
 (* ****** ****** *)
+(* ****** ****** *)
+#symload lctn with d4pat_get_lctn
+#symload node with d4pat_get_node
+#symload styp with d4pat_get_styp
+(* ****** ****** *)
+#symload lctn with f4arg_get_lctn
+#symload node with f4arg_get_node
 (* ****** ****** *)
 
 local
@@ -300,7 +309,7 @@ end (*let*) // end of [linstk_poplet0(stk)]
 (* ****** ****** *)
 //
 #implfun
-linstk_insert_dtyp
+linstk_d2vins_dtyp
 (stk0, d2v1, t2p1) =
 (
 stk0 :=
@@ -308,21 +317,21 @@ linstk_dtyp
 (d2v1, t2p1, stk0)) where
 {
 //
-(*
+// (*
 val () =
 prerrln
-("linstk_insert_dtyp: d2v1 = ", d2v1)
+("linstk_d2vins_dtyp: d2v1 = ", d2v1)
 val () =
 prerrln
-("linstk_insert_dtyp: t2p1 = ", t2p1)
-*)
+("linstk_d2vins_dtyp: t2p1 = ", t2p1)
+// *)
 //
-}(*where*)//end-of-[linstk_insert_dtyp(...)]
+}(*where*)//end-of-[linstk_d2vins_dtyp(...)]
 //
 (* ****** ****** *)
 //
 #implfun
-linstk_insert_dlft
+linstk_d2vins_dlft
 (stk0, d2v1, lft1) =
 (
 stk0 :=
@@ -333,13 +342,13 @@ linstk_dlft
 (*
 val () =
 prerrln
-("linstk_insert_dlft: d2v1 = ", d2v1)
+("linstk_d2vins_dlft: d2v1 = ", d2v1)
 val () =
 prerrln
-("linstk_insert_dlft: lft1 = ", lft1)
+("linstk_d2vins_dlft: lft1 = ", lft1)
 *)
 //
-}(*where*)//end-of-[linstk_insert_dlft(...)]
+}(*where*)//end-of-[linstk_d2vins_dlft(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -454,7 +463,7 @@ end(*let*)//end-of-(tr34env_pshlet0(env0))
 (* ****** ****** *)
 //
 #implfun
-tr34env_insert_dtyp
+tr34env_d2vins_dtyp
   (env0,d2v1,dtp1) = let
 //
 val+
@@ -464,15 +473,15 @@ val+
 in//let
 //
 (
-  linstk_insert_dtyp
-  (linstk, d2v1, dtp1) ; $fold(env0) )
+  linstk_d2vins_dtyp
+  (linstk, d2v1, dtp1) ; $fold( env0 ))
 //
-end(*let*)//end-of-(tr34env_insert_dtyp(env0))
+end(*let*)//end-of-(tr34env_d2vins_dtyp(...))
 //
 (* ****** ****** *)
 //
 #implfun
-tr34env_insert_dlft
+tr34env_d2vins_dlft
   (env0,d2v1,lft1) = let
 //
 val+
@@ -482,16 +491,17 @@ val+
 in//let
 //
 (
-  linstk_insert_dlft
-  (linstk, d2v1, lft1) ; $fold(env0) )
+  linstk_d2vins_dlft
+  (linstk, d2v1, lft1) ; $fold( env0 ))
 //
-end(*let*)//end-of-(tr34env_insert_dlft(env0))
+end(*let*)//end-of-(tr34env_d2vins_dlft(...))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 
 endloc (*local*) // end of [ local(tr34env...) ]
 
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -500,6 +510,130 @@ tr34env_evstyp_cst
 let
 val
 opt0 = optn_vt_nil((*void*)) in opt0 end//HX:FIXME!
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+tr34env_insert_dpat
+  (env0, dpat) =
+(
+case+
+dpat.node() of
+//
+|D4Pvar _ =>
+(
+  f0_var(env0, dpat) )
+//
+|D4Pany _ => ( (*void*) )
+//
+|D4Pint _ => ( (*void*) )
+|D4Pbtf _ => ( (*void*) )
+|D4Pchr _ => ( (*void*) )
+|D4Pstr _ => ( (*void*) )
+//
+|
+D4Pannot _ => f0_annot(env0, dpat)
+//
+| _(* otherwise *) => (  (*void*)  )
+//
+) where
+{
+//
+(* ****** ****** *)
+//
+fun
+f0_var
+( env0:
+! tr34env
+, dpat: d4pat): void =
+let
+//
+val-
+D4Pvar(d2v1) = dpat.node()
+//
+in//let
+let
+val t2p0 = dpat.styp()
+val dtp0 = D4TYPstp(t2p0)
+in//let
+tr34env_d2vins_dtyp(env0,d2v1,dtp0)
+end//let
+end(*let*)//end-of-[f0_var(env0,dpat)]
+//
+(* ****** ****** *)
+//
+fun
+f0_annot
+( env0:
+! tr34env
+, dpat: d4pat): void =
+let
+//
+val-
+D4Pannot
+( d4p1
+, s1e2, s2e2) = dpat.node()
+//
+in//let
+(
+  tr34env_insert_dpat(env0, d4p1) )
+end(*let*)//end-of-[f0_annot(env0,dpat)]
+//
+(* ****** ****** *)
+//
+val () =
+prerrln("tr34env_insert_dpat: dpat = ", dpat)
+//
+(* ****** ****** *)
+//
+}(*where*)//end-of-[tr34env_insert_dpat(env0,dpat)]
+//
+(* ****** ****** *)
+//
+#implfun
+tr34env_insert_farg
+  (env0, farg) =
+(
+case+
+farg.node() of
+|F4ARGdapp
+(npf1, d4ps) =>
+tr34env_insert_dpatlst(env0, d4ps)
+//
+|F4ARGsapp _ => () |F4ARGmets _ => ()
+) where
+{
+//
+val () =
+prerrln("tr34env_insert_farg: farg = ", farg)
+//
+}(*where*)//end-of-[tr34env_insert_farg(env0,farg)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+tr34env_insert_dpatlst
+  (env0, d4ps) =
+(
+case+ d4ps of
+| list_nil() => ((*void*))
+| list_cons(d4p0, d4ps) =>
+(
+tr34env_insert_dpat(env0, d4p0);
+tr34env_insert_dpatlst(env0, d4ps)))//end-(implfun)
+//
+#implfun
+tr34env_insert_farglst
+  (env0, f4as) =
+(
+case+ f4as of
+| list_nil() => ((*void*))
+| list_cons(f4a0, f4as) =>
+(
+tr34env_insert_farg(env0, f4a0);
+tr34env_insert_farglst(env0, f4as)))//end-(implfun)
 //
 (* ****** ****** *)
 (* ****** ****** *)

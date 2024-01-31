@@ -271,6 +271,8 @@ d4pat_node =
 (d4pat,s1exp(*given*),s2exp(*trans*))
 //
 (* ****** ****** *)
+|D4Pt2pck of (d4pat, s2typ)//HX: casting
+(* ****** ****** *)
 //
 |D4Pnone0 of ((*0*))
 |D4Pnone1 of (d3pat) | D4Pnone2 of (d4pat)

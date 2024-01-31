@@ -55,6 +55,75 @@ ATS_PACKNAME
 #staload "./../SATS/trans34.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#implfun
+d4lft_fprint
+(out, dlft) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ dlft of
+|D4LFTval(d2v1) =>
+(
+  print("D4LFTval(", d2v1, ")"))
+|D4LFTvar(d2v1) =>
+(
+  print("D4LFTvar(", d2v1, ")"))
+//
+(*
+|
+D4LFTpcon
+(tknd, lab1, lft0)
+(
+print
+("D4LFTpcon("
+, tknd, ";", lab1, ";", lft0, ")"))
+|
+D4LFTproj
+(tknd, lab1, lft0)
+(
+print
+("D4LFTproj("
+, tknd, ";", lab1, ";", lft0, ")"))
+*)
+//
+end(*let*)//end-of-[d4lft_fprint(out, dlft)]
+//
+(* ****** ****** *)
+//
+#implfun
+d4typ_fprint
+(out, dtyp) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ dtyp of
+|D4TYPstp(t2p1) =>
+(
+  print("D4TYPstp(", t2p1, ")"))
+|D4TYPpat(d4p1) =>
+(
+  print("D4TYPpat(", d4p1, ")"))
+//
+(*
+|
+D4TYPpcon(d2c1, dtps) =>
+(
+print("D4TYPpcon(", d2c1, ";", dtps, ")"))
+|
+D4TYPproj(tknd, dtps) =>
+(
+print("D4TYPpcon(", tknd, ";", dtps, ")"))
+*)
+//
+end(*let*)//end-of-[d4typ_fprint(out, dtyp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 #implfun
 d4parsed_of_trans34
