@@ -70,6 +70,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/dynexp4.sats"
 (* ****** ****** *)
+#staload "./../SATS/trans34.sats"
+(* ****** ****** *)
 #symload stmp with s2cst_get_stmp
 #symload stmp with s2var_get_stmp
 (* ****** ****** *)
@@ -1578,6 +1580,7 @@ g_print<d4lab(x0)>(dlab) =
 d4lab_fprint(g_print$out<>(), dlab)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 g_print<d4pat>(dpat) =
@@ -1652,6 +1655,17 @@ print("TEQD4EXPnone(", ")")
 TEQD4EXPsome(tok0, d4e1) =>
 print("TEQD4EXPsome(",tok0,";",d4e1,")"))
 endlet // end-of-[g_print<teqd4exp>(tdxp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print<d4lft>(dlft) =
+d4lft_fprint(g_print$out<>(), dlft)//trans34
+//
+#impltmp
+g_print<d4typ>(dtyp) =
+d4typ_fprint(g_print$out<>(), dtyp)//trans34
 //
 (* ****** ****** *)
 (* ****** ****** *)

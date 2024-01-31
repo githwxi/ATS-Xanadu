@@ -64,6 +64,9 @@ LOC = "./locinfo.sats"
 LEX = "./lexing0.sats"
 (* ****** ****** *)
 #staload
+S1E = "./staexp1.sats"
+(* ****** ****** *)
+#staload
 S2E = "./staexp2.sats"
 #staload
 T2P = "./statyp2.sats"
@@ -221,7 +224,11 @@ where
 //
 fun
 d4lft_fprint
-(out: FILR, lft0: d4lft): void
+(out: FILR, dlft: d4lft): void
+//
+fun
+d4typ_fprint
+(out: FILR, dtyp: d4typ): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -255,11 +262,11 @@ linstk_pshlet0
 (* ****** ****** *)
 //
 fun
-linstk_insert_dtyp
+linstk_d2vins_dtyp
 ( stk:
 & linstk >> _, d2var, d4typ):void
 fun
-linstk_insert_dlft
+linstk_d2vins_dlft
 ( stk:
 & linstk >> _, d2var, d4lft):void
 //
@@ -290,20 +297,40 @@ tr34env_pshlet0
 (* ****** ****** *)
 //
 fun
-tr34env_insert_dtyp
-( env0:
-! tr34env, d2var, d4typ):( void )
-fun
-tr34env_insert_dlft
-( env0:
-! tr34env, d2var, d4lft):( void )
+tr34env_evstyp_cst
+(env0:
+!tr34env, s2c0: s2cst): s2typopt_vt
 //
 (* ****** ****** *)
 //
 fun
-tr34env_evstyp_cst
-( env0:
-! tr34env, s2c0: s2cst): s2typopt_vt
+tr34env_d2vins_dtyp
+(env0:
+!tr34env
+,d2v0: d2var, dtyp: d4typ): (void)
+fun
+tr34env_d2vins_dlft
+(env0:
+!tr34env
+,d2v0: d2var, dlft: d4lft): (void)
+//
+(* ****** ****** *)
+//
+fun
+tr34env_insert_dpat
+(env0: !tr34env, d4p0: d4pat): void
+fun
+tr34env_insert_farg
+(env0: !tr34env, farg: f4arg): void
+//
+fun
+tr34env_insert_dpatlst
+( env0
+: !tr34env, d4ps: d4patlst): ( void )
+fun
+tr34env_insert_farglst
+( env0
+: !tr34env, f4as: f4arglst): ( void )
 //
 (* ****** ****** *)
 (* ****** ****** *)

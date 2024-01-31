@@ -114,6 +114,12 @@ print("D4Pannot(",d4p1,";",s1e2,";",s2e2,")")
 //
 (* ****** ****** *)
 //
+|D4Pt2pck
+( d4p1 , t2p2 ) =>
+(print("D4Pt2pck(",d4p1,";",t2p2,")"))
+//
+(* ****** ****** *)
+//
 |D4Pnone0() => print( "D4Pnone0(",")" )
 |D4Pnone1(d3p1) => print("D4Pnone1(",d3p1,")")
 |D4Pnone2(d4p1) => print("D4Pnone2(",d4p1,")")

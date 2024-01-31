@@ -206,6 +206,7 @@ f0_annot
 let
 //
 val loc0 = d3p0.lctn()
+//
 val-
 D3Pannot
 ( d3p1
@@ -233,9 +234,13 @@ d3p1.node() of
 |
 D3Pvar(d2v1) =>
 (
-d2v1.styp(t2p2);
+(*
+HX: No update!!!
+*)
+// d2v1.styp(t2p2);
 d4pat
-(loc1, D4Pvar(d2v1))) where
+( loc1
+, t2p2, D4Pvar(d2v1))) where
 {
   val loc1 = d3p1.lctn((*0*)) }
 |
@@ -583,6 +588,32 @@ in//let
 end(*let*) // end-of-[trans34_d3exp_tpck(...)]
 
 (* ****** ****** *)
+(* ****** ****** *)
+
+#implfun
+trans34_d4pat_tpck
+(env0, d4p0, t2p0) =
+let
+val ubtf =
+unify34_s2typ(env0,d4p0.styp(),t2p0)
+in//let
+if
+ubtf then d4p0 else
+let
+val loc0 = d4p0.lctn() in
+d4pat(loc0, t2p0, D4Pt2pck(d4p0,t2p0)) end
+end where
+{
+//
+(*
+val () =
+prerrln("trans34_d4pat_tpck: d4p0 = ", d4p0)
+val () =
+prerrln("trans34_d4pat_tpck: t2p0 = ", t2p0)
+*)
+//
+} (*where*) // end of [trans34_d4pat_tpck(...)]
+
 (* ****** ****** *)
 
 #implfun
