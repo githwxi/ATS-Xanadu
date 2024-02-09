@@ -168,6 +168,7 @@ D3E = "./dynexp3.sats"
 //
 (* ****** ****** *)
 #typedef d4patlst = list(d4pat)
+#typedef d4patopt = optn(d4pat)
 (* ****** ****** *)
 #typedef d4explst = list(d4exp)
 #typedef d4expopt = optn(d4exp)
