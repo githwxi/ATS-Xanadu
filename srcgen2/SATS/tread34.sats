@@ -60,7 +60,7 @@ ATS_PACKNAME // namespace
 #typedef l4d4p = $D4E.l4d4p
 #typedef l4d4e = $D4E.l4d4e
 (* ****** ****** *)
-#typedef f3arg = $D4E.f3arg
+#typedef f4arg = $D4E.f4arg
 (* ****** ****** *)
 #typedef d4gua = $D4E.d4gua
 #typedef d4gpt = $D4E.d4gpt
@@ -82,7 +82,7 @@ ATS_PACKNAME // namespace
 #typedef l4d4plst = $D4E.l4d4plst
 #typedef l4d4elst = $D4E.l4d4elst
 (* ****** ****** *)
-#typedef f3arglst = $D4E.f3arglst
+#typedef f4arglst = $D4E.f4arglst
 (* ****** ****** *)
 #typedef d4gualst = $D4E.d4gualst
 #typedef d4clslst = $D4E.d4clslst
@@ -141,7 +141,7 @@ fun tread34_l4d4p: ftread34(l4d4p)
 fun tread34_d4exp: ftread34(d4exp)
 fun tread34_l4d4e: ftread34(l4d4e)
 (* ****** ****** *)
-fun tread34_f3arg: ftread34(f3arg)
+fun tread34_f4arg: ftread34(f4arg)
 (* ****** ****** *)
 fun tread34_d4gua: ftread34(d4gua)
 fun tread34_d4gpt: ftread34(d4gpt)
@@ -157,7 +157,7 @@ fun tread34_d4explst: ftread34(d4explst)
 fun tread34_d4expopt: ftread34(d4expopt)
 fun tread34_l4d4elst: ftread34(l4d4elst)
 (* ****** ****** *)
-fun tread34_f3arglst: ftread34(f3arglst)
+fun tread34_f4arglst: ftread34(f4arglst)
 (* ****** ****** *)
 fun tread34_d4gualst: ftread34(d4gualst)
 fun tread34_d4clslst: ftread34(d4clslst)
@@ -193,7 +193,7 @@ fun d4exp_fpemsg(FILR, d4exp): void
 fun l4d4p_fpemsg(FILR, l4d4p): void
 fun l4d4e_fpemsg(FILR, l4d4e): void
 (* ****** ****** *)
-fun f3arg_fpemsg:(FILR,f3arg)->void
+fun f4arg_fpemsg:(FILR,f4arg)->void
 (* ****** ****** *)
 fun d4gua_fpemsg:(FILR,d4gua)->void
 fun d4gpt_fpemsg:(FILR,d4gpt)->void
@@ -209,7 +209,7 @@ fun d4expopt_fpemsg(FILR, d4expopt): void
 fun l4d4plst_fpemsg(FILR, l4d4plst): void
 fun l4d4elst_fpemsg(FILR, l4d4elst): void
 (* ****** ****** *)
-fun f3arglst_fpemsg(FILR, f3arglst): void
+fun f4arglst_fpemsg(FILR, f4arglst): void
 (* ****** ****** *)
 fun d4gualst_fpemsg(FILR, d4gualst): void
 fun d4clslst_fpemsg(FILR, d4clslst): void
