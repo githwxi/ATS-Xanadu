@@ -219,8 +219,8 @@ linstk_lam0
 |
 linstk_let0
  (  stk1  ) => res1
-|
-linstk_dvar
+//
+|linstk_dvar
 (d2v0, dtp0, stk1) =>
 loop(stk1, list_cons(d2v0, res1))
 //
@@ -353,12 +353,34 @@ end (*let*) // end of [linstk_poplet0(stk)]
 (* ****** ****** *)
 //
 #implfun
+linstk_d2vins_dvar
+(stk0, d2v1, dtp1) =
+(
+stk0 :=
+linstk_dvar
+(d2v1, dtp1, stk0)) where
+{
+//
+// (*
+val () =
+prerrln
+("linstk_d2vins_dvar: d2v1 = ", d2v1)
+val () =
+prerrln
+("linstk_d2vins_dvar: dtp1 = ", dtp1)
+// *)
+//
+}(*where*)//end-of-[linstk_d2vins_dvar(...)]
+//
+(* ****** ****** *)
+//
+#implfun
 linstk_d2vins_dget
-(stk0, d2v1, t2p1) =
+(stk0, d2v1, dtp1) =
 (
 stk0 :=
 linstk_dget
-(d2v1, t2p1, stk0)) where
+(d2v1, dtp1, stk0)) where
 {
 //
 // (*
@@ -367,18 +389,18 @@ prerrln
 ("linstk_d2vins_dget: d2v1 = ", d2v1)
 val () =
 prerrln
-("linstk_d2vins_dget: t2p1 = ", t2p1)
+("linstk_d2vins_dget: dtp1 = ", dtp1)
 // *)
 //
 }(*where*)//end-of-[linstk_d2vins_dget(...)]
 //
 #implfun
 linstk_d2vins_dset
-(stk0, d2v1, t2p1) =
+(stk0, d2v1, dtp1) =
 (
 stk0 :=
 linstk_dset
-(d2v1, t2p1, stk0)) where
+(d2v1, dtp1, stk0)) where
 {
 //
 // (*
@@ -387,7 +409,7 @@ prerrln
 ("linstk_d2vins_dset: d2v1 = ", d2v1)
 val () =
 prerrln
-("linstk_d2vins_dset: t2p1 = ", t2p1)
+("linstk_d2vins_dset: dtp1 = ", dtp1)
 // *)
 //
 }(*where*)//end-of-[linstk_d2vins_dset(...)]

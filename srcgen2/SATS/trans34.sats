@@ -264,7 +264,7 @@ linstk_pshlet0
 fun
 linstk_d2vins_dvar
 ( stk:
-& linstk >> _, d2var, s2typ):void
+& linstk >> _, d2var, d4typ):void
 fun
 linstk_d2vins_denv
 ( stk:
