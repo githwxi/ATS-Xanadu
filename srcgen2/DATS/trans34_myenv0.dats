@@ -240,6 +240,44 @@ loop(stk1, list_cons(d2v0, res1))
 }(*where*)//end-of-[linstk_letvars(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+linstk_poptop0
+  (stk0) = let
+//
+fnx
+loop
+( kxs
+: linstk
+, err: &sint >> _): linstk =
+(
+case+ kxs of
+| !
+linstk_nil() => kxs // err = 0
+//
+| ~
+linstk_dvar
+(k1, x1, kxs) => loop(kxs, err)
+//
+| !
+linstk_lam0 _ => (err := 1; kxs)
+| !
+linstk_let0 _ => (err := 1; kxs)
+//
+) (*case+*)//end-of-[loop(kxs, err)]
+//
+in//let
+let
+var
+err: sint = 0
+val
+( ) =
+(stk0 := loop(stk0, err)) in err end
+end (*let*)//end-[linstk_poptop0(stk0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 linstk_poplam0
@@ -466,9 +504,7 @@ TR34ENV
 var
 linstk = map2//local lin-proofs
 //
-(*
 val nerr = linstk_poptop0(linstk)
-*)
 //
 val (  ) = linstk_free_nil(linstk) }
 //
