@@ -262,9 +262,23 @@ linstk_pshlet0
 (* ****** ****** *)
 //
 fun
-linstk_d2vins_dtyp
+linstk_d2vins_dvar
+( stk:
+& linstk >> _, d2var, s2typ):void
+fun
+linstk_d2vins_denv
 ( stk:
 & linstk >> _, d2var, d4typ):void
+//
+fun
+linstk_d2vins_dget
+( stk:
+& linstk >> _, d2var, d4typ):void
+fun
+linstk_d2vins_dset
+( stk:
+& linstk >> _, d2var, d4typ):void
+//
 fun
 linstk_d2vins_dlft
 ( stk:
@@ -304,10 +318,27 @@ tr34env_evstyp_cst
 (* ****** ****** *)
 //
 fun
-tr34env_d2vins_dtyp
+tr34env_d2vins_dvar
 (env0:
 !tr34env
 ,d2v0: d2var, dtyp: d4typ): (void)
+fun
+tr34env_d2vins_denv
+(env0:
+!tr34env
+,d2v0: d2var, dtyp: d4typ): (void)
+//
+fun
+tr34env_d2vins_dget
+(env0:
+!tr34env
+,d2v0: d2var, dtyp: d4typ): (void)
+fun
+tr34env_d2vins_dset
+(env0:
+!tr34env
+,d2v0: d2var, dtyp: d4typ): (void)
+//
 fun
 tr34env_d2vins_dlft
 (env0:
