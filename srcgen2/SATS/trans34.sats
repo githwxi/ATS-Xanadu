@@ -245,6 +245,14 @@ fun
 linstk_letvars
   ( stk: !linstk ): d2varlst
 //
+(* ****** ****** *)
+//
+fun
+linstk_poptop0
+  ( stk: &linstk >> _ ): sint
+//
+(* ****** ****** *)
+//
 fun
 linstk_poplam0
   ( stk: &linstk >> _ ): sint
