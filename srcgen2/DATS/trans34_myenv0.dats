@@ -80,19 +80,27 @@ linstk =
 //
 |
 linstk_nil of ()
+//
 |
-linstk_lam0 of linstk
+linstk_lam0 of ( linstk )
 |
-linstk_let0 of linstk
-|
-linstk_dvar of
-(d2var(*lin*), linstk)
-|
-linstk_dtyp of
+linstk_let0 of ( linstk )
+//
+|linstk_dvar of
 (d2var(*lin*), d4typ, linstk)
-|
-linstk_dlft of
+//
+|linstk_denv of
+(d2var(*lin*), d4typ, linstk)
+//
+|linstk_dget of
+(d2var(*lin*), d4typ, linstk)
+|linstk_dset of
+(d2var(*lin*), d4typ, linstk)
+//
+(*
+|linstk_dlft of
 (d2var(*lin*), d4lft, linstk)
+*)
 //
 #absimpl linstk_vtbx = linstk
 //
@@ -162,16 +170,25 @@ linstk_let0
 |
 linstk_lam0
  (  stk1  ) => res1
-|
-linstk_dvar
-(d2v0, stk1) =>
+//
+|linstk_dvar
+(d2v0, dtp0, stk1) =>
 loop(stk1, list_cons(d2v0, res1))
-|
-linstk_dtyp
+//
+|linstk_denv
 (d2v0, dtp0, stk1) => loop(stk1, res1)
+//
+|linstk_dget
+(d2v0, dtp0, stk1) => loop(stk1, res1)
+|linstk_dset
+(d2v0, dtp0, stk1) => loop(stk1, res1)
+//
+(*
 |
 linstk_dlft
 (d2v0, lft0, stk1) => loop(stk1, res1)
+*)
+//
 )
 }(*where*)//end-of-[linstk_lamvars(...)]
 //
@@ -204,14 +221,21 @@ linstk_let0
  (  stk1  ) => res1
 |
 linstk_dvar
-(d2v0, stk1) =>
+(d2v0, dtp0, stk1) =>
 loop(stk1, list_cons(d2v0, res1))
-|
-linstk_dtyp
+//
+|linstk_denv
 (d2v0, dtp0, stk1) => loop(stk1, res1)
-|
-linstk_dlft
+//
+|linstk_dget
+(d2v0, dtp0, stk1) => loop(stk1, res1)
+|linstk_dset
+(d2v0, dtp0, stk1) => loop(stk1, res1)
+//
+(*
+|linstk_dlft
 (d2v0, lft0, stk1) => loop(stk1, res1)
+*)
 )
 }(*where*)//end-of-[linstk_letvars(...)]
 //
@@ -235,13 +259,23 @@ linstk_lam0
 //
 | ~
 linstk_dvar
-( d2v, kxs ) => loop(kxs, err)
-| ~
-linstk_dtyp
 (d2v,dtp,kxs) => loop(kxs, err)
+| ~
+linstk_denv
+(d2v,dtp,kxs) => loop(kxs, err)
+//
+| ~
+linstk_dget
+(d2v,dtp,kxs) => loop(kxs, err)
+| ~
+linstk_dset
+(d2v,dtp,kxs) => loop(kxs, err)
+//
+(*
 | ~
 linstk_dlft
 (d2v,lft,kxs) => loop(kxs, err)
+*)
 //
 | !
 linstk_nil( ) => (err := 1; kxs)
@@ -280,13 +314,23 @@ linstk_let0
 //
 | ~
 linstk_dvar
-( d2v, kxs ) => loop(kxs, err)
-| ~
-linstk_dtyp
 (d2v,dtp,kxs) => loop(kxs, err)
+| ~
+linstk_denv
+(d2v,dtp,kxs) => loop(kxs, err)
+//
+| ~
+linstk_dget
+(d2v,dtp,kxs) => loop(kxs, err)
+| ~
+linstk_dset
+(d2v,dtp,kxs) => loop(kxs, err)
+//
+(*
 | ~
 linstk_dlft
 (d2v,lft,kxs) => loop(kxs, err)
+*)
 //
 | !
 linstk_nil( ) => (err := 1; kxs)
@@ -309,27 +353,48 @@ end (*let*) // end of [linstk_poplet0(stk)]
 (* ****** ****** *)
 //
 #implfun
-linstk_d2vins_dtyp
+linstk_d2vins_dget
 (stk0, d2v1, t2p1) =
 (
 stk0 :=
-linstk_dtyp
+linstk_dget
 (d2v1, t2p1, stk0)) where
 {
 //
 // (*
 val () =
 prerrln
-("linstk_d2vins_dtyp: d2v1 = ", d2v1)
+("linstk_d2vins_dget: d2v1 = ", d2v1)
 val () =
 prerrln
-("linstk_d2vins_dtyp: t2p1 = ", t2p1)
+("linstk_d2vins_dget: t2p1 = ", t2p1)
 // *)
 //
-}(*where*)//end-of-[linstk_d2vins_dtyp(...)]
+}(*where*)//end-of-[linstk_d2vins_dget(...)]
+//
+#implfun
+linstk_d2vins_dset
+(stk0, d2v1, t2p1) =
+(
+stk0 :=
+linstk_dset
+(d2v1, t2p1, stk0)) where
+{
+//
+// (*
+val () =
+prerrln
+("linstk_d2vins_dset: d2v1 = ", d2v1)
+val () =
+prerrln
+("linstk_d2vins_dset: t2p1 = ", t2p1)
+// *)
+//
+}(*where*)//end-of-[linstk_d2vins_dset(...)]
 //
 (* ****** ****** *)
 //
+(*
 #implfun
 linstk_d2vins_dlft
 (stk0, d2v1, lft1) =
@@ -349,6 +414,7 @@ prerrln
 *)
 //
 }(*where*)//end-of-[linstk_d2vins_dlft(...)]
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -463,7 +529,7 @@ end(*let*)//end-of-(tr34env_pshlet0(env0))
 (* ****** ****** *)
 //
 #implfun
-tr34env_d2vins_dtyp
+tr34env_d2vins_dget
   (env0,d2v1,dtp1) = let
 //
 val+
@@ -473,13 +539,30 @@ val+
 in//let
 //
 (
-  linstk_d2vins_dtyp
+  linstk_d2vins_dget
   (linstk, d2v1, dtp1) ; $fold( env0 ))
 //
-end(*let*)//end-of-(tr34env_d2vins_dtyp(...))
+end(*let*)//end-of-(tr34env_d2vins_dget(...))
+//
+#implfun
+tr34env_d2vins_dset
+  (env0,d2v1,dtp1) = let
+//
+val+
+@TR34ENV
+(d2vlst, !linstk) = env0
+//
+in//let
+//
+(
+  linstk_d2vins_dset
+  (linstk, d2v1, dtp1) ; $fold( env0 ))
+//
+end(*let*)//end-of-(tr34env_d2vins_dset(...))
 //
 (* ****** ****** *)
 //
+(*
 #implfun
 tr34env_d2vins_dlft
   (env0,d2v1,lft1) = let
@@ -495,6 +578,7 @@ in//let
   (linstk, d2v1, lft1) ; $fold( env0 ))
 //
 end(*let*)//end-of-(tr34env_d2vins_dlft(...))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -557,7 +641,7 @@ let
 val t2p0 = dpat.styp()
 val dtp0 = D4TYPstp(t2p0)
 in//let
-tr34env_d2vins_dtyp(env0,d2v1,dtp0)
+tr34env_d2vins_dvar(env0,d2v1,dtp0)
 end//let
 end(*let*)//end-of-[f0_var(env0,dpat)]
 //
