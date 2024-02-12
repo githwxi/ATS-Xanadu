@@ -203,6 +203,12 @@ d4lft =
 //
 (* ****** ****** *)
 //
+fun
+d4lft_fprint
+(out: FILR, dlft: d4lft): void
+//
+(* ****** ****** *)
+//
 datatype
 d4typ =
 //
@@ -217,14 +223,16 @@ D4TYPproj of (tnode, d4typlst)
 //
 where
 {
-#typedef d4typlst = list(d4typ)
+#typedef
+d4typlst = list(d4typ)
+#vwtpdef
+d4typopt_vt = optn_vt(d4typ)
 }
 //
 (* ****** ****** *)
-//
 fun
-d4lft_fprint
-(out: FILR, dlft: d4lft): void
+d4typ_get_styp(d4typ): s2typ
+(* ****** ****** *)
 //
 fun
 d4typ_fprint
@@ -287,10 +295,19 @@ linstk_d2vins_dset
 ( stk:
 & linstk >> _, d2var, d4typ):void
 //
+(*
 fun
 linstk_d2vins_dlft
 ( stk:
 & linstk >> _, d2var, d4lft):void
+*)
+//
+(* ****** ****** *)
+//
+fun
+linstk_search_dvar
+( stk:
+! linstk, d2v: d2var): s2typopt_vt
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -347,11 +364,13 @@ tr34env_d2vins_dset
 !tr34env
 ,d2v0: d2var, dtyp: d4typ): (void)
 //
+(*
 fun
 tr34env_d2vins_dlft
 (env0:
 !tr34env
 ,d2v0: d2var, dlft: d4lft): (void)
+*)
 //
 (* ****** ****** *)
 //
@@ -364,12 +383,19 @@ tr34env_insert_farg
 //
 fun
 tr34env_insert_dpatlst
-( env0
-: !tr34env, d4ps: d4patlst): ( void )
+( env0:
+! tr34env, d4ps: d4patlst): ( void )
 fun
 tr34env_insert_farglst
-( env0
-: !tr34env, f4as: f4arglst): ( void )
+( env0:
+! tr34env, f4as: f4arglst): ( void )
+//
+(* ****** ****** *)
+//
+fun
+tr34env_search_dvar
+( env0:
+! tr34env, d2v0: d2var): s2typopt_vt
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -381,7 +407,7 @@ list_trans34_fnp
 ( e1:
 ! tr34env
 , xs: list(x0)
-, (!tr34env, x0) -> y0): list(y0)
+, (!tr34env, x0) -> y0 ) : list(y0)
 fun
 <x0:t0>
 <y0:t0>
@@ -389,7 +415,7 @@ optn_trans34_fnp
 ( e1:
 ! tr34env
 , xs: optn(x0)
-, (!tr34env, x0) -> y0): optn(y0)
+, (!tr34env, x0) -> y0 ) : optn(y0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

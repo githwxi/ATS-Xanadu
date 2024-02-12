@@ -361,8 +361,23 @@ then
 (
   f1_linq(env0, d2v1))
 else let
+//
 val
-t2p1 = d2v1.styp((*0*))
+opt1 =
+tr34env_search_dvar
+  ( env0, d2v1 )
+//
+val
+t2p1 =
+(
+case+ opt1 of
+| ~
+optn_vt_nil
+ ( (*0*) ) => d2v1.styp()
+| ~
+optn_vt_cons(t2p1) => t2p1)
+: s2typ // end-of-[val(t2p1)]
+//
 in//let
   d4exp_make_tpnd
   (loc0, t2p1, D4Evar(d2v1)) end
@@ -628,16 +643,21 @@ val t2p0 =
 val t2p1 = d4e0.styp()
 //
 val ubtf =
-unify34_s2typ(env0, t2p1, t2p0)
+unify34_s2typ(env0,t2p1,t2p0)
 //
 in//let
+//
 if
-ubtf then d4e0 else
+ubtf
+then d4e0 else
 let
 val
-loc0 = d4e0.lctn() in//let
+loc0 = d4e0.lctn()
+in//let
 d4exp
-(loc0, t2p0, D4Et2pck(d4e0,t2p0)) end
+(loc0,t2p0,D4Et2pck(d4e0,t2p0))
+end//let
+//
 end where
 {
 //

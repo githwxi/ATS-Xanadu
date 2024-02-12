@@ -63,6 +63,8 @@ ATS_PACKNAME
 #staload "./../SATS/trans34.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+#symload styp with d4typ_get_styp
+(* ****** ****** *)
 #symload lctn with d4pat_get_lctn
 #symload node with d4pat_get_node
 #symload styp with d4pat_get_styp
@@ -260,10 +262,20 @@ linstk_nil() => kxs // err = 0
 linstk_dvar
 (k1, x1, kxs) => loop(kxs, err)
 //
+| ~
+linstk_dget
+(k1, x1, kxs) => loop(kxs, err)
+| ~
+linstk_dset
+(k1, x1, kxs) => loop(kxs, err)
+//
 | !
 linstk_lam0 _ => (err := 1; kxs)
 | !
 linstk_let0 _ => (err := 1; kxs)
+//
+| !
+linstk_denv _ => (err := 1; kxs)
 //
 ) (*case+*)//end-of-[loop(kxs, err)]
 //
@@ -477,6 +489,68 @@ prerrln
 *)
 //
 (* ****** ****** *)
+//
+#implfun
+linstk_search_dvar
+  (stk0, d2v0) =
+let
+val opt0 = loop(stk0)
+//
+in//let
+//
+case+ opt0 of
+| ~
+optn_vt_nil() =>
+optn_vt_nil()
+| ~
+optn_vt_cons(dtp0) =>
+optn_vt_cons(dtp0.styp())
+//
+end where
+{
+fnx
+loop
+( stk0:
+! linstk ): d4typopt_vt =
+(
+case+ stk0 of
+//
+|linstk_nil() => optn_vt_nil()
+//
+|linstk_lam0(stk1) => loop(stk1)
+|linstk_let0(stk1) => loop(stk1)
+//
+|linstk_dvar
+(d2v1, dtp1, stk1) =>
+if
+(d2v0 = d2v1)
+then
+optn_vt_cons(dtp1) else loop(stk1)
+//
+|linstk_denv
+(d2v1, dtp1, stk1) =>
+if
+(d2v0 = d2v1)
+then
+optn_vt_cons(dtp1) else loop(stk1)
+//
+|linstk_dget
+(d2v1, dtp1, stk1) =>
+if
+(d2v0 = d2v1)
+then
+optn_vt_cons(dtp1) else loop(stk1)
+|linstk_dset
+(d2v1, dtp1, stk1) =>
+if
+(d2v0 = d2v1)
+then
+optn_vt_cons(dtp1) else loop(stk1)
+//
+)
+}(*where*)//end-of-[linstk_search_dvar(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -587,6 +661,24 @@ end(*let*)//end-of-(tr34env_pshlet0(env0))
 (* ****** ****** *)
 //
 #implfun
+tr34env_d2vins_dvar
+  (env0,d2v1,dtp1) = let
+//
+val+
+@TR34ENV
+(d2vlst, !linstk) = env0
+//
+in//let
+//
+(
+  linstk_d2vins_dvar
+  (linstk, d2v1, dtp1) ; $fold( env0 ))
+//
+end(*let*)//end-of-(tr34env_d2vins_dvar(...))
+//
+(* ****** ****** *)
+//
+#implfun
 tr34env_d2vins_dget
   (env0,d2v1,dtp1) = let
 //
@@ -637,6 +729,24 @@ in//let
 //
 end(*let*)//end-of-(tr34env_d2vins_dlft(...))
 *)
+//
+(* ****** ****** *)
+//
+#implfun
+tr34env_search_dvar
+  (env0, d2v1) =
+let
+val+
+@TR34ENV
+(d2vlst, !linstk) = env0
+in//let
+(
+  $fold(env0); opt1 ) where
+{
+  val
+  opt1 = linstk_search_dvar(linstk, d2v1)
+}
+end(*let*)//end-of-(tr34env_search_dvar(...))
 //
 (* ****** ****** *)
 (* ****** ****** *)
