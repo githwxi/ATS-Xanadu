@@ -195,7 +195,7 @@ val () =
 (
   prerrln("trans34_d3ecl: d3cl = ", d3cl) )
 //
-} (*where*) // end of [trans34_d3ecl(env0,d3cl)]
+} (*where*) // end-of-[trans34_d3ecl(env0,d3cl)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -213,7 +213,7 @@ TEQD3EXPsome(teq1, d3e2) =>
 TEQD4EXPsome(teq1, d4e2) where
 { val
   d4e2 = trans34_d3exp(env0, d3e2) }
-) (*case+*)//end-of(trans23_teqd3exp(...))
+)(*case+*)//end-of-(trans23_teqd3exp(env0,tdxp))
 //
 (* ****** ****** *)
 //
@@ -238,11 +238,10 @@ trans34_teqd3exp(env0, tdxp)
 //
 in//let
 d4valdcl_make_args(loc0,dpat,tdxp,wsxp)
-end//let
-(*let*)//end-of-[trans34_d3valdcl(env0,dval)]
+end(*let*)//end-of-[trans34_d3valdcl(env0,dval)]
 //
 (* ****** ****** *)
-
+//
 #implfun
 trans34_d3vardcl
   (env0, dvar) = let
@@ -263,11 +262,10 @@ trans34_teqd3exp(env0, dini)
 //
 in//let
 d4vardcl_make_args(loc0,dpid,vpid,sres,dini)
-end//let
-(*let*)//end-of-[trans34_d3vardcl(env0,dvar)]
-
+end(*let*)//end-of-[trans34_d3vardcl(env0,dvar)]
+//
 (* ****** ****** *)
-
+//
 #implfun
 trans34_d3fundcl
   (env0, dfun) = let
@@ -387,10 +385,10 @@ T2Puni0
 (s2vs,tres) => tres | _ => tres) }
 //
 |F3ARGmets _ => f0_tres(f3as, tres))
-) (*case+*) // end-of-[f0_tres(f3as,tres)]
+)(*case+*)//end-of-[f0_tres(f3as,tres)]
 //
-}(*where*)//end-[trans34_d3fundcl(env0,dfun)]
-
+}(*where*)//end-of-[trans34_d3fundcl(env0,dfun)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
