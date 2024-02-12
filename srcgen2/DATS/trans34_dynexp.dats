@@ -48,6 +48,11 @@ ATS_PACKNAME
 #staload
 _(*TRANS34*) = "./trans34.dats"
 (* ****** ****** *)
+#staload "./../SATS/xbasics.sats"
+(* ****** ****** *)
+#staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
+#staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/dynexp2.sats"
@@ -56,6 +61,11 @@ _(*TRANS34*) = "./trans34.dats"
 (* ****** ****** *)
 #staload "./../SATS/trans34.sats"
 (* ****** ****** *)
+#symload boxq with sort2_boxq
+(* ****** ****** *)
+#symload linq with s2typ_linq
+(* ****** ****** *)
+#symload node with token_get_node
 (* ****** ****** *)
 #symload node with s2typ_get_node
 (* ****** ****** *)
@@ -72,6 +82,26 @@ _(*TRANS34*) = "./trans34.dats"
 (* ****** ****** *)
 #symload lctn with f3arg_get_lctn
 #symload node with f3arg_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+s2typ_top1
+(t2p0: s2typ): s2typ =
+let
+val s2t0 =
+(
+if
+boxq(s2t0)
+then the_sort2_tbox(*0*)
+else the_sort2_type(*0*))
+: sort2 // end-of-[val]
+in//let
+s2typ(s2t0, T2Ptop1(t2p0))
+end where
+{
+  val s2t0 = t2p0.sort((*0*)) }
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -323,6 +353,11 @@ d4exp_make_tpnd
 //
 (* ****** ****** *)
 //
+|D3Etup0 _ => f0_tup0(env0, d3e0)
+|D3Etup1 _ => f0_tup1(env0, d3e0)
+//
+(* ****** ****** *)
+//
 | _(*otherwise*) =>
 let
   val loc0 = d3e0.lctn((*0*))
@@ -354,12 +389,6 @@ d2var_mutq(d2v1)
 then
 (
   f1_mutq(env0, d2v1))
-else
-if
-d2var_linq(d2v1)
-then
-(
-  f1_linq(env0, d2v1))
 else let
 //
 val
@@ -378,10 +407,22 @@ optn_vt_nil
 optn_vt_cons(t2p1) => t2p1)
 : s2typ // end-of-[val(t2p1)]
 //
+val () =
+if
+linq(t2p1)
+then
+let
+val t2p1 =
+s2typ_top1(t2p1)
+in//let
+tr34env_d2vins_dget
+( env0
+, d2v1, D4TYPstp(t2p1)) end
+//
 in//let
   d4exp_make_tpnd
   (loc0, t2p1, D4Evar(d2v1)) end
-end where
+end where // end-of-[let]
 {
 //
 fun
@@ -391,12 +432,14 @@ f1_mutq
 , d2v1
 : d2var ) : d4exp = f0_var(env0, d3e0)
 //
+(*
 fun
 f1_linq
 ( env0:
 ! tr34env
 , d2v1
 : d2var ) : d4exp = f0_var(env0, d3e0)
+*)
 //
 }(*where*) // end of [f0_var(env0,d3e0)]
 //
@@ -466,6 +509,68 @@ in
 end (*let*)
 end (*let*) // end of [f0_dapp(env0,d3e0)]
 //
+(* ****** ****** *)
+//
+fun
+f0_tup0
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
+(
+d4exp_make_tpnd
+( loc0, t2p0
+, D4Etup0(npf1, d4es))) where
+{
+val loc0 = d3e0.lctn()
+val-
+D3Etup0
+(npf1, d3es) = d3e0.node()
+val
+d4es = trans34_d3explst(env0, d3es)
+val
+t2p0 =
+(
+case+ d4es of
+|list_nil() =>
+the_s2typ_void()
+|list_cons _ =>
+s2typ_tup0(npf1, s2typlst(d4es))): s2typ
+} (*where*) // end of [f0_tup0(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup1
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
+(
+d4exp_make_tpnd
+( loc0, t2p0
+, D4Etup1
+  (tknd, npf1, d4es))) where
+{
+val loc0 = d3e0.lctn()
+val-
+D3Etup1
+( tknd
+, npf1, d3es) = d3e0.node()
+val
+d4es = trans34_d3explst(env0, d3es)
+val
+trcd =
+(
+case-
+tknd.node() of
+|T_TRCD10(0) => TRCDflt0(*void*)
+|T_TRCD10(_) => TRCDbox0(*void*)
+)
+val
+t2p0 =
+s2typ_tup1(trcd , npf1 , s2typlst(d4es))
+} (*where*) // end of [f0_tup1(env0,d3e0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 }(*where*)//end of [trans34_d3exp(env0,d3e0)]
@@ -587,7 +692,7 @@ val
 d4p0 = trans34_d3pat(env0, d3p0)
 in
 trans34_d4pat_tpck(env0,d4p0,t2p0)
-end(*let*) // end-of-[trans34_d2pat_tpck(...)]
+end(*let*) // end-of-[trans34_d3pat_tpck(...)]
 
 (* ****** ****** *)
 

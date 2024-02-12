@@ -183,6 +183,23 @@ D4E = "./dynexp4.sats"
 (* ****** ****** *)
 //
 fun
+s2typlst_of_d4patlst:
+  (d4patlst) -> s2typlst
+fun
+s2typlst_of_d4explst:
+  (d4explst) -> s2typlst
+//
+#symload
+s2typlst
+  with s2typlst_of_d4patlst
+#symload
+s2typlst
+  with s2typlst_of_d4explst
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d4parsed_of_trans34
 ( dpar : d3parsed ): (d4parsed)
 //
