@@ -446,10 +446,10 @@ cbrf_vt_vt(a: vt) <= a
 #abstype
 top0_vt_t0(a: vt) <= a
 #abstype
-topz_vt_t0(a: vt) <= a
+top1_vt_t0(a: vt) <= a
 //
 #sexpdef ?  = top0_vt_t0
-#sexpdef ?! = topz_vt_t0
+#sexpdef ?! = top1_vt_t0
 //
 (* ****** ****** *)
 (*

@@ -53,6 +53,125 @@ ATS_PACKNAME
 #staload _ = "./statyp2_tmplib.dats"
 (* ****** ****** *)
 (* ****** ****** *)
+#symload linq with s2typ_linq
+(* ****** ****** *)
+#symload sort with s2typ_get_sort
+#symload node with s2typ_get_node
+(* ****** ****** *)
+#symload s2typ with s2typ_make_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+s2typ_top0
+(t2p0: s2typ): s2typ =
+let
+val s2t0 =
+(
+if
+sort2_boxq(s2t0)
+then the_sort2_tbox(*0*)
+else the_sort2_type(*0*))
+: sort2 // end-of-[val]
+in
+s2typ(s2t0, T2Ptop0(t2p0))
+end where
+{
+  val s2t0 = t2p0.sort((*0*)) }
+//
+(* ****** ****** *)
+//
+fun
+s2typ_top1
+(t2p0: s2typ): s2typ =
+let
+val s2t0 =
+(
+if
+sort2_boxq(s2t0)
+then the_sort2_tbox(*0*)
+else the_sort2_type(*0*))
+: sort2 // end-of-[val]
+in
+s2typ(s2t0, T2Ptop1(t2p0))
+end where
+{
+  val s2t0 = t2p0.sort((*0*)) }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+s2typ_topize
+(t2p0: s2typ): s2typ =
+(
+case+
+t2p0.node() of
+//
+|
+T2Ptop0(t2p1) =>
+(
+case+
+t2p1.node() of
+|
+T2Ptop0(t2p2) => f0_top0(t2p2)
+|
+T2Ptop1(t2p2) => f0_top0(t2p2)
+|
+_(*otherwise*) => (   t2p0   ))
+//
+|
+T2Ptop1(t2p1) =>
+(
+case+
+t2p1.node() of
+|
+T2Ptop0(t2p2) => f0_top0(t2p2)
+|
+T2Ptop1(t2p2) => f0_top1(t2p2)
+|
+_(*otherwise*) =>
+if
+linq(t2p1) then t2p0 else t2p1)
+//
+| _(*otherwise*) => (   t2p0   )
+) where
+{
+//
+fun
+f0_top0
+(t2p0: s2typ): s2typ =
+(
+case+
+t2p0.node() of
+|
+T2Ptop0(t2p1) => f0_top0(t2p1)
+|
+T2Ptop1(t2p1) => f0_top0(t2p1)
+|
+_(*otherwise*) => s2typ_top0(t2p0)
+)
+//
+fun
+f0_top1
+(t2p0: s2typ): s2typ =
+(
+case+
+t2p0.node() of
+|
+T2Ptop0(t2p1) => f0_top0(t2p1)
+|
+T2Ptop1(t2p1) => f0_top1(t2p1)
+|
+_(*otherwise*) =>
+( if
+  linq(t2p0)
+  then s2typ_top1(t2p0) else t2p0)
+)
+//
+}(*where*)//end-of-[s2typ_topize(t2p0)]
+//
+(* ****** ****** *)
 //
 #implfun
 d4typ_get_styp
@@ -140,6 +259,7 @@ HX-2034-01-22:
 type modifiers
 need to be kept here!!!
 *)
+s2typ_topize
 (
 s2typ_hnfiz0_e1nv
 <e1nv>(e1nv, t2p0)) where
@@ -165,24 +285,7 @@ case+ t2p0.node() of
 T2Ptop0 _ => true | _ => false)
 //
 in//let
-if
-isTOP0(t2p1)
-then
-(
-let
-val-
-T2Ptop0(t2p1) = t2p1.node()
-in//let
-case+
-t2p2.node() of
-|
-T2Ptop0(t2p2) =>
-unify34_s2typ(env0, t2p1, t2p2)
-|_(* otherwise *) => (  false  )
-end//let
-)
-else
-(
+//
 if
 isTOP0(t2p2)
 then
@@ -191,15 +294,27 @@ let
 val-
 T2Ptop0(t2p2) = t2p2.node()
 in//let
+//
+case+
+t2p1.node() of
+|
+T2Ptop0(t2p1) =>
+unify00_s2typ_e1nv<e1nv>(env0, t2p1, t2p2)
+|
+T2Ptop1(t2p1) =>
+unify00_s2typ_e1nv<e1nv>(env0, t2p1, t2p2)
+|
+_(*otherwise*) =>
 if
-s2typ_linq(t2p2)
+s2typ_linq(t2p1)
 then (false) else
 unify00_s2typ_e1nv<e1nv>(env0, t2p1, t2p2)
+//
 end//let
 )
 else
 unify00_s2typ_e1nv<e1nv>(env0, t2p1, t2p2)
-)
+//
 end (*let*) // end of [unify34_s2typ(env0,...)]
 //
 (* ****** ****** *)
