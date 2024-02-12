@@ -193,6 +193,23 @@ print("D4Elet0(",dcls,";",d4e1,")"))
 //
 (* ****** ****** *)
 //
+|D4Etup0
+(npf1, d4es) =>
+(
+print("D4Etup0(",npf1,";",d4es,")"))
+|
+D4Etup1
+(tknd,npf1,d4es) =>
+( print("D4Etup1(")
+; print(tknd,";",npf1,";",d4es,")"))
+|
+D4Ercd2
+(tknd,npf1,ldes) =>
+( print("D4Ercd2(")
+; print(tknd,";",npf1,";",ldes,")"))
+//
+(* ****** ****** *)
+//
 |D4El2bck
 ( d4e1 , lab2 ) =>
 let

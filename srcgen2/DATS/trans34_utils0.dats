@@ -48,15 +48,22 @@ ATS_PACKNAME
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 (* ****** ****** *)
+#staload "./../SATS/dynexp4.sats"
+(* ****** ****** *)
 #staload "./../SATS/trans34.sats"
 (* ****** ****** *)
 #staload _ = "./statyp2_tmplib.dats"
 (* ****** ****** *)
 (* ****** ****** *)
+#symload boxq with sort2_boxq
+(* ****** ****** *)
 #symload linq with s2typ_linq
 (* ****** ****** *)
 #symload sort with s2typ_get_sort
 #symload node with s2typ_get_node
+(* ****** ****** *)
+#symload styp with d4exp_get_styp
+#symload node with d4exp_get_node
 (* ****** ****** *)
 #symload s2typ with s2typ_make_node
 (* ****** ****** *)
@@ -69,7 +76,7 @@ let
 val s2t0 =
 (
 if
-sort2_boxq(s2t0)
+boxq(s2t0)
 then the_sort2_tbox(*0*)
 else the_sort2_type(*0*))
 : sort2 // end-of-[val]
@@ -88,7 +95,7 @@ let
 val s2t0 =
 (
 if
-sort2_boxq(s2t0)
+boxq(s2t0)
 then the_sort2_tbox(*0*)
 else the_sort2_type(*0*))
 : sort2 // end-of-[val]
@@ -188,6 +195,39 @@ prerrln
 ("d4typ_get_styp: dtp0 = ", dtp0)
 //
 }(*where*)//end-of-[d4typ_get_styp]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+s2typlst_of_d4patlst
+( d4ps ) =
+(
+list_map<x0><y0>(d4ps)) where
+{
+#typedef x0 = d4pat
+#typedef y0 = s2typ
+#impltmp
+map$fopr
+<x0><y0>(d4p) = d4p.styp() }//where
+// end of [s2typlst_of_d4patlst(d4ps)]
+//
+(* ****** ****** *)
+//
+#implfun
+s2typlst_of_d4explst
+( d4es ) =
+(
+list_map<x0><y0>(d4es)) where
+{
+//
+#typedef x0 = d4exp
+#typedef y0 = s2typ
+//
+#impltmp
+map$fopr
+<x0><y0>(d4e) = d4e.styp() }//where
+// end of [s2typlst_of_d4explst(d4es)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
