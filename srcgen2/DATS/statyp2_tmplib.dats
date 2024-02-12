@@ -1294,7 +1294,8 @@ isXTV
 (t2p0: s2typ): bool =
 (
 case+ t2p0.node() of
-| T2Pxtv _ => true | _ => false)
+|
+T2Pxtv _ => true | _ => false)
 //
 (* ****** ****** *)
 //

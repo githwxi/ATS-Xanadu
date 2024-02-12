@@ -54,6 +54,25 @@ ATS_PACKNAME
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+d4typ_get_styp
+  ( dtp0 ) =
+(
+case+ dtp0 of
+|
+D4TYPstp(t2p0) => t2p0
+) where
+{
+//
+val () =
+prerrln
+("d4typ_get_styp: dtp0 = ", dtp0)
+//
+}(*where*)//end-of-[d4typ_get_styp]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 s2cst_get34_styp
 ( env0:
@@ -130,8 +149,57 @@ val t2p0 = s2typ_unmodx(t2p0)
 *)
 }(*where*)//end-of-[unify00_s2typ$hnfz]
 //
+fun
+isTOP0
+(t2p0: s2typ): bool =
+(
+case+ t2p0.node() of
+|
+T2Ptop0 _ => true | _ => false)
+fun
+isTOP1
+(t2p0: s2typ): bool =
+(
+case+ t2p0.node() of
+|
+T2Ptop0 _ => true | _ => false)
+//
 in//let
+if
+isTOP0(t2p1)
+then
+(
+let
+val-
+T2Ptop0(t2p1) = t2p1.node()
+in//let
+case+
+t2p2.node() of
+|
+T2Ptop0(t2p2) =>
+unify34_s2typ(env0, t2p1, t2p2)
+|_(* otherwise *) => (  false  )
+end//let
+)
+else
+(
+if
+isTOP0(t2p2)
+then
+(
+let
+val-
+T2Ptop0(t2p2) = t2p2.node()
+in//let
+if
+s2typ_linq(t2p2)
+then (false) else
 unify00_s2typ_e1nv<e1nv>(env0, t2p1, t2p2)
+end//let
+)
+else
+unify00_s2typ_e1nv<e1nv>(env0, t2p1, t2p2)
+)
 end (*let*) // end of [unify34_s2typ(env0,...)]
 //
 (* ****** ****** *)

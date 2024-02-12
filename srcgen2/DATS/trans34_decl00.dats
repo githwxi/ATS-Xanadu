@@ -48,12 +48,23 @@ ATS_PACKNAME
 #staload
 _(*TRANS34*) = "./trans34.dats"
 (* ****** ****** *)
+#staload "./../SATS/statyp2.sats"
+(* ****** ****** *)
+#staload "./../SATS/dynexp2.sats"
+(* ****** ****** *)
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
 #staload "./../SATS/dynexp4.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans34.sats"
 (* ****** ****** *)
+(* ****** ****** *)
+#symload node with s2typ_get_node
+(* ****** ****** *)
+#symload styp with d2var_get_styp
+(* ****** ****** *)
+#symload lctn with f3arg_get_lctn
+#symload node with f3arg_get_node
 (* ****** ****** *)
 #symload lctn with d3ecl_get_lctn
 #symload node with d3ecl_get_node
@@ -275,6 +286,9 @@ d3fundcl_get_tdxp(dfun)
 val wsxp =
 d3fundcl_get_wsxp(dfun)
 //
+val (  ) = // enter
+tr34env_pshlam0(env0)//enter
+//
 (*
 val (  ) = prerrln
 ("trans34_d3fundcl: f3as = ", f3as)
@@ -286,10 +300,33 @@ val f4as =
 trans34_f3arglst(env0, f3as)
 //
 val tdxp =
-trans34_teqd3exp(env0, tdxp) where
+(
+case+ tdxp of
+|
+TEQD3EXPnone
+( (*void*) ) =>
+TEQD4EXPnone((*void*))
+|
+TEQD3EXPsome
+(teq1, d3e2) =>
+(
+TEQD4EXPsome
+(teq1, d4e2)) where
 {
+//
+val tres =
+f0_tres(f3as, dvar.styp())
+(*
+val (  ) = prerrln
+("f0_d3fundcl(34): dvar = ", dvar)
+val (  ) = prerrln
+("f0_d3fundcl(34): tres = ", tres)
+*)
 val (  ) =
-tr34env_insert_farglst(env0, f4as)}
+tr34env_insert_farglst(env0, f4as)
+val d4e2 =
+trans34_d3exp_tpck(env0,d3e2,tres)}
+)
 //
 (*
 val (  ) = prerrln
@@ -299,9 +336,60 @@ val (  ) = prerrln
 *)
 //
 in//let
+//
+let
+val (  ) = tr34env_poplam0(env0)
+in//let
 d4fundcl(loc0,dvar,f4as,sres,tdxp,wsxp)
 end//let
-(*let*)//end-of-[trans34_d3fundcl(env0,dfun)]
+//
+end where
+{
+//
+fun
+f0_tres
+( f3as
+: f3arglst
+, tres: s2typ): s2typ =
+(
+case+ f3as of
+|list_nil() => tres
+|list_cons(f3a1, f3as) =>
+(
+case+
+f3a1.node() of
+|F3ARGdapp _ =>
+let
+val-
+T2Pfun1
+(f3cl,npf1
+,t2ps,tres) =
+tres.node() in
+f0_tres(f3as, tres) end//F3ARGdapp
+//
+|F3ARGsapp _ =>
+(*
+let
+val-
+T2Puni0
+(s2vs,tres) =
+tres.node() in
+f0_tres(f3as, tres) end//F3ARGsapp
+*)
+f0_tres(f3as, tres) where
+{
+val tres =
+(
+case+
+tres.node() of
+|
+T2Puni0
+(s2vs,tres) => tres | _ => tres) }
+//
+|F3ARGmets _ => f0_tres(f3as, tres))
+) (*case+*) // end-of-[f0_tres(f3as,tres)]
+//
+}(*where*)//end-[trans34_d3fundcl(env0,dfun)]
 
 (* ****** ****** *)
 (* ****** ****** *)

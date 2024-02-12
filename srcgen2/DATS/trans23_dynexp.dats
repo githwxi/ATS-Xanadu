@@ -2387,7 +2387,7 @@ end (*let*) // end of [f0_extnam(env0,...)]
 //
 (* ****** ****** *)
 //
-} (*where*)//end-of-[trans23_d2exp(env0,d2e0)]
+}(*where*)//end-of-[trans23_d2exp(env0,d2e0)]
 
 (* ****** ****** *)
 //
@@ -2402,7 +2402,7 @@ D2LAB
 //
 in//let
 D3LAB(lab0, trans23_d2exp(env0, d2e1))
-end (*let*)//end-of-[trans23_l2d2e(env0,ld2e)]
+end(*let*)//end-of-[trans23_l2d2e(env0,ld2e)]
 //
 (* ****** ****** *)
 //
@@ -2446,7 +2446,7 @@ F2ARGsapp
 F2ARGmets
 (   s2es   ) => f3arg(loc0,F3ARGmets(s2es))
 //
-end (*let*) // end of [trans23_f2arg(env0,farg)]
+end(*let*)//end-of-[trans23_f2arg(env0,...)]
 //
 (* ****** ****** *)
 //
@@ -2483,7 +2483,7 @@ val
 d3p2 =
 trans23_d2pat_tpck(env0, d2p2, t2p1) }
 //
-) (*case+*) // end of [trans23_d2gua(env0,...)]
+)(*case+*)//end-of-[trans23_d2gua(env0,...)]
 //
 (* ****** ****** *)
 //
@@ -2521,7 +2521,7 @@ d3gs =
 trans23_d2gualst(env0, d2gs) in
 d3gpt(loc0, D3GPTgua(d3p1, d3gs)) end
 //
-) (*case+*) // end of [trans23_d2gpt_tpck(env0,...)]
+)(*case+*)//end-of-[trans23_d2gpt_tpck(...)]
 //
 (* ****** ****** *)
 //
@@ -2559,7 +2559,7 @@ trans23_d2exp_tpck
 (env0 , d2e1 , tres) in
 d3cls(loc0, D3CLScls(dgpt, d3e1)) end
 //
-) (*case+*) // end of [trans23_d2cls_tpck(env0,...)]
+)(*case+*)//end-of-[trans23_d2cls_tpck(...)]
 //
 (* ****** ****** *)
 //
@@ -2622,7 +2622,7 @@ val
 d3p0 = trans23_d2pat(env0, d2p0)
 in
 trans23_d3pat_tpck(env0,d3p0,t2p0)
-end (*let*) // end of [trans23_d2pat_tpck(...)]
+end(*let*) // end of [trans23_d2pat_tpck(...)]
 
 (* ****** ****** *)
 
@@ -2634,7 +2634,7 @@ val
 d3e0 = trans23_d2exp(env0, d2e0)
 in//let
 trans23_d3exp_tpck(env0,d3e0,t2p0)
-end (*let*) // end of [trans23_d2exp_tpck(...)]
+end(*let*) // end-of-[trans23_d2exp_tpck(...)]
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -2661,7 +2661,7 @@ val () =
 prerrln("trans23_d3pat_tpck: t2p0 = ", t2p0)
 *)
 //
-} (*where*) // end of [trans23_d3pat_tpck(...)]
+}(*where*) // end-of-[trans23_d3pat_tpck(...)]
 
 (* ****** ****** *)
 
@@ -2669,17 +2669,24 @@ prerrln("trans23_d3pat_tpck: t2p0 = ", t2p0)
 trans23_d3exp_tpck
 (env0, d3e0, t2p0) =
 let
+//
 val t2p1 = d3e0.styp()
 val ubtf =
 unify23_s2typ(env0, t2p1, t2p0)
+//
 in//let
+//
 if
-ubtf then d3e0 else
+ubtf
+then d3e0 else
 let
 val
-loc0 = d3e0.lctn() in//let
+loc0 = d3e0.lctn()
+in//let
 d3exp
-(loc0, t2p0, D3Et2pck(d3e0,t2p0)) end
+(loc0, t2p0, D3Et2pck(d3e0, t2p0))
+end//let
+//
 end where
 {
 //
@@ -2694,7 +2701,7 @@ val () = prerrln
   ("trans23_d3exp_tpck: t2p0 = ", t2p0)
 // *)
 //
-} (*where*) // end of [trans23_d3exp_tpck(...)]
+}(*where*) // end-of-[trans23_d3exp_tpck(...)]
 
 (* ****** ****** *)
 (* ****** ****** *)
