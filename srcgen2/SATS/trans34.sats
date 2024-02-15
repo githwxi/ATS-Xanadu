@@ -295,6 +295,22 @@ linstk_pshlet0
 (* ****** ****** *)
 //
 fun
+linstk_popift0
+  ( stk: &linstk >> _ ): sint
+fun
+linstk_popcas0
+  ( stk: &linstk >> _ ): sint
+//
+fun
+linstk_pshift0
+  ( stk: &linstk >> _ ): void
+fun
+linstk_pshcas0
+  ( stk: &linstk >> _ ): void
+//
+(* ****** ****** *)
+//
+fun
 linstk_d2vins_dvar
 ( stk:
 & linstk >> _, d2var, d4typ):void
@@ -350,6 +366,23 @@ fun
 tr34env_pshlet0
 (env0: !tr34env): void//end-fun
 //
+(* ****** ****** *)
+//
+fun
+tr34env_popift0
+(env0: !tr34env): void//end-fun
+fun
+tr34env_popcas0
+(env0: !tr34env): void//end-fun
+//
+fun
+tr34env_pshift0
+(env0: !tr34env): void//end-fun
+fun
+tr34env_pshcas0
+(env0: !tr34env): void//end-fun
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

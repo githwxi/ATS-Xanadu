@@ -171,6 +171,15 @@ print("D4Ecst(", d2c, ")")
 (* ****** ****** *)
 //
 |
+D4Edvts
+(d4e1, dvts) =>
+(
+print
+("D4Edvts(", d4e1, ";", dvts, ")"))
+//
+(* ****** ****** *)
+//
+|
 D4Edapp
 (d4f0,npf1,d4es) =>
 ( print("D4Edapp(")
