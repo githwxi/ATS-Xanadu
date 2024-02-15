@@ -1539,7 +1539,7 @@ case+ dels of
 |
 optn_nil() => the_s2typ_void()
 |
-optn_cons(d2e3) => d3e2.styp((*0*))))
+optn_cons(d3e3) => d3e2.styp((*0*))))
 //
 in//let
 //

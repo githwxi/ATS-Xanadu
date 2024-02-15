@@ -489,6 +489,17 @@ trans34_l3d3e
 (* ****** ****** *)
 //
 fun
+trans34_d3thn
+( env0:
+! tr34env, dthn: d3expopt): d4expopt
+fun
+trans34_d3els
+( env0:
+! tr34env, dthn: d3expopt): d4expopt
+//
+(* ****** ****** *)
+//
+fun
 trans34_f3arg
 (env0: !tr34env, farg: f3arg): f4arg
 //

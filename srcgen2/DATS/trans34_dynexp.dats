@@ -353,6 +353,10 @@ d4exp_make_tpnd
 //
 (* ****** ****** *)
 //
+|D3Eift0 _ => f0_ift0(env0, d3e0)
+//
+(* ****** ****** *)
+//
 |D3Etup0 _ => f0_tup0(env0, d3e0)
 |D3Etup1 _ => f0_tup1(env0, d3e0)
 //
@@ -508,6 +512,54 @@ in
   (loc0, tres, D4Edapp(d4f0,npf1,d4es))
 end (*let*)
 end (*let*) // end of [f0_dapp(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_ift0
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
+let
+//
+val loc0 = d3e0.lctn()
+val-
+D3Eift0
+( d3e1
+, dthn, dels) = d3e0.node()
+//
+val d4e1 =
+trans34_d3exp_tpck
+( env0, d3e1, t2p1 ) where
+{
+val t2p1 = the_s2typ_bool()
+}
+//
+val dthn =
+(
+  trans34_d3thn(env0, dthn))
+val dels =
+(
+  trans34_d3els(env0, dels))
+//
+val tres =
+(
+case+ dthn of
+|
+optn_nil() => the_s2typ_void()
+|
+optn_cons(d4e2) =>
+(
+case+ dels of
+|
+optn_nil() => the_s2typ_void()
+|
+optn_cons(d4e3) => d4e2.styp((*0*))))
+//
+in//let
+d4exp_make_tpnd
+(loc0, tres, D4Eift0(d4e1, dthn, dels))
+end (*let*) // end of [f0_ift0(env0,d3e0)]
 //
 (* ****** ****** *)
 //
