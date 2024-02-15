@@ -88,6 +88,11 @@ linstk_lam0 of ( linstk )
 |
 linstk_let0 of ( linstk )
 //
+|
+linstk_ift0 of ( linstk )
+|
+linstk_cas0 of ( linstk )
+//
 |linstk_dvar of
 (d2var(*lin*), d4typ, linstk)
 //
@@ -148,6 +153,22 @@ linstk_pshlet0
 (* ****** ****** *)
 //
 #implfun
+linstk_pshift0
+  (  stk0  ) =
+(
+  stk0 := linstk_ift0(stk0))
+//(*end of [linstk_pshift0(stk0)]*)
+//
+#implfun
+linstk_pshcas0
+  (  stk0  ) =
+(
+  stk0 := linstk_cas0(stk0))
+//(*end of [linstk_pshcas0(stk0)]*)
+//
+(* ****** ****** *)
+//
+#implfun
 linstk_lamvars
   (  stk0  ) =
 (
@@ -165,13 +186,15 @@ case- stk0 of
 |
 linstk_nil
  ( (*0*) ) => res1
-|
-linstk_let0
- (  stk1  ) => res1
 *)
 |
 linstk_lam0
  (  stk1  ) => res1
+(*
+|
+linstk_let0
+ (  stk1  ) => res1
+*)
 //
 |linstk_dvar
 (d2v0, dtp0, stk1) =>
@@ -214,6 +237,9 @@ case- stk0 of
 |
 linstk_nil
  ( (*0*) ) => res1
+*)
+//
+(*
 |
 linstk_lam0
  (  stk1  ) => res1
@@ -275,6 +301,11 @@ linstk_lam0 _ => (err := 1; kxs)
 linstk_let0 _ => (err := 1; kxs)
 //
 | !
+linstk_ift0 _ => (err := 1; kxs)
+| !
+linstk_cas0 _ => (err := 1; kxs)
+//
+| !
 linstk_denv _ => (err := 1; kxs)
 //
 ) (*case+*)//end-of-[loop(kxs, err)]
@@ -333,6 +364,11 @@ linstk_nil( ) => (err := 1; kxs)
 | !
 linstk_let0 _ => (err := 1; kxs)
 //
+| !
+linstk_ift0 _ => (err := 1; kxs)
+| !
+linstk_cas0 _ => (err := 1; kxs)
+//
 ) (*case+*) // end of [loop(kxs,err)]
 //
 in//let
@@ -388,6 +424,13 @@ linstk_nil( ) => (err := 1; kxs)
 | !
 linstk_lam0 _ => (err := 1; kxs)
 //
+| !
+linstk_ift0 _ => (err := 1; kxs)
+| !
+linstk_cas0 _ => (err := 1; kxs)
+//
+(* ****** ****** *)
+//
 ) (*case+*) // end of [loop(kxs,err)]
 //
 in//let
@@ -398,6 +441,130 @@ val
 ( ) =
 (stk0 := loop(stk0, err)) in err end
 end (*let*) // end of [linstk_poplet0(stk)]
+//
+(* ****** ****** *)
+//
+#implfun
+linstk_popift0
+  (  stk0  ) = let
+//
+fnx
+loop
+( kxs
+: linstk
+, err: &sint >> _): linstk =
+(
+case+ kxs of
+//
+| ~
+linstk_ift0
+(   kxs   ) => kxs // err = 0
+//
+| ~
+linstk_dvar
+(d2v,dtp,kxs) => loop(kxs, err)
+| ~
+linstk_denv
+(d2v,dtp,kxs) => loop(kxs, err)
+//
+| ~
+linstk_dget
+(d2v,dtp,kxs) => loop(kxs, err)
+| ~
+linstk_dset
+(d2v,dtp,kxs) => loop(kxs, err)
+//
+(*
+| ~
+linstk_dlft
+(d2v,lft,kxs) => loop(kxs, err)
+*)
+//
+| !
+linstk_nil( ) => (err := 1; kxs)
+//
+| !
+linstk_lam0 _ => (err := 1; kxs)
+| !
+linstk_let0 _ => (err := 1; kxs)
+//
+| !
+linstk_cas0 _ => (err := 1; kxs)
+//
+(* ****** ****** *)
+//
+) (*case+*) // end of [loop(kxs,err)]
+//
+in//let
+let
+var
+err: sint = 0
+val
+( ) =
+(stk0 := loop(stk0, err)) in err end
+end (*let*) // end of [linstk_popift0(stk)]
+//
+(* ****** ****** *)
+//
+#implfun
+linstk_popcas0
+  (  stk0  ) = let
+//
+fnx
+loop
+( kxs
+: linstk
+, err: &sint >> _): linstk =
+(
+case+ kxs of
+//
+| ~
+linstk_cas0
+(   kxs   ) => kxs // err = 0
+//
+| ~
+linstk_dvar
+(d2v,dtp,kxs) => loop(kxs, err)
+| ~
+linstk_denv
+(d2v,dtp,kxs) => loop(kxs, err)
+//
+| ~
+linstk_dget
+(d2v,dtp,kxs) => loop(kxs, err)
+| ~
+linstk_dset
+(d2v,dtp,kxs) => loop(kxs, err)
+//
+(*
+| ~
+linstk_dlft
+(d2v,lft,kxs) => loop(kxs, err)
+*)
+//
+| !
+linstk_nil( ) => (err := 1; kxs)
+//
+| !
+linstk_lam0 _ => (err := 1; kxs)
+| !
+linstk_let0 _ => (err := 1; kxs)
+//
+| !
+linstk_ift0 _ => (err := 1; kxs)
+//
+(* ****** ****** *)
+//
+) (*case+*) // end of [loop(kxs,err)]
+//
+in//let
+let
+var
+err: sint = 0
+val
+( ) =
+(stk0 := loop(stk0, err)) in err end
+end (*let*) // end of [linstk_popcas0(stk)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -520,6 +687,9 @@ case+ stk0 of
 |linstk_lam0(stk1) => loop(stk1)
 |linstk_let0(stk1) => loop(stk1)
 //
+|linstk_ift0(stk1) => loop(stk1)
+|linstk_cas0(stk1) => loop(stk1)
+//
 |linstk_dvar
 (d2v1, dtp1, stk1) =>
 if
@@ -626,6 +796,45 @@ end(*let*)//end-of-(tr34env_poplet0(env0))
 (* ****** ****** *)
 //
 #implfun
+tr34env_popift0
+(     env0     ) = let
+//
+val+
+@TR34ENV
+(d2vlst, !linstk) = env0
+//
+in//let
+//
+let
+val nerr =
+linstk_popift0(linstk) in $fold(env0)
+end(*let*)
+//
+end(*let*)//end-of-(tr34env_popift0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr34env_popcas0
+(     env0     ) = let
+//
+val+
+@TR34ENV
+(d2vlst, !linstk) = env0
+//
+in//let
+//
+let
+val nerr =
+linstk_popcas0(linstk) in $fold(env0)
+end(*let*)
+//
+end(*let*)//end-of-(tr34env_popcas0(env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 tr34env_pshlam0
 (     env0     ) = let
 //
@@ -656,6 +865,40 @@ in//let
   linstk_pshlet0(linstk); $fold(env0))
 //
 end(*let*)//end-of-(tr34env_pshlet0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr34env_pshift0
+(     env0     ) = let
+//
+val+
+@TR34ENV
+(d2vlst, !linstk) = env0
+//
+in//let
+//
+(
+  linstk_pshift0(linstk); $fold(env0))
+//
+end(*let*)//end-of-(tr34env_pshift0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr34env_pshcas0
+(     env0     ) = let
+//
+val+
+@TR34ENV
+(d2vlst, !linstk) = env0
+//
+in//let
+//
+(
+  linstk_pshcas0(linstk); $fold(env0))
+//
+end(*let*)//end-of-(tr34env_pshcas0(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)

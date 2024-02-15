@@ -247,6 +247,16 @@ d4lab_fprint
 #typedef l4d4elst = list(l4d4e)
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef
+d2vts = list@(d2var, s2typ)
+(* ****** ****** *)
+//
+fun
+d2vts_search_opt
+( d2vts, d2var ): s2typopt_vt
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 datatype
 d4pat_node =
@@ -341,6 +351,10 @@ d4exp_node =
 //
 |D4Econ of (d2con)
 |D4Ecst of (d2cst)
+//
+(* ****** ****** *)
+//
+|D4Edvts of (d4exp, d2vts)
 //
 (* ****** ****** *)
 //
