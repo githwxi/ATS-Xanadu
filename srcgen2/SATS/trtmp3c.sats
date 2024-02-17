@@ -199,12 +199,11 @@ tmqstk_poptop0
 (* ****** ****** *)
 //
 fun
-tmqstk_poplet0
-  ( stk: &tmqstk >> _ ): sint
-//
-fun
 tmqstk_pshlet0
   ( stk: &tmqstk >> _ ): void
+fun
+tmqstk_poplet0
+  ( stk: &tmqstk >> _ ): sint
 //
 (* ****** ****** *)
 //
@@ -281,11 +280,10 @@ tr3cenv_free_top
 (* ****** ****** *)
 //
 fun
-tr3cenv_poplet0
-(env0: !tr3cenv): void//end-fun
-//
-fun
 tr3cenv_pshlet0
+(env0: !tr3cenv): void//end-fun
+fun
+tr3cenv_poplet0
 (env0: !tr3cenv): void//end-fun
 //
 (* ****** ****** *)

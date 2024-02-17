@@ -260,10 +260,10 @@ tr2aenv_free_top(tr2aenv):md2ct2p
 (* ****** ****** *)
 //
 fun
-tr2aenv_poplet0
+tr2aenv_pshlet0
 (env0: !tr2aenv): void//end-fun
 fun
-tr2aenv_pshlet0
+tr2aenv_poplet0
 (env0: !tr2aenv): void//end-fun
 //
 fun

@@ -170,12 +170,11 @@ tmpstk_poptop0
 (* ****** ****** *)
 //
 fun
-tmpstk_poplet0
-  ( stk: &tmpstk >> _ ): sint
-//
-fun
 tmpstk_pshlet0
   ( stk: &tmpstk >> _ ): void
+fun
+tmpstk_poplet0
+  ( stk: &tmpstk >> _ ): sint
 //
 (* ****** ****** *)
 //
@@ -185,7 +184,6 @@ tmpstk_pshloc1
 fun
 tmpstk_pshloc2
   ( stk: &tmpstk >> _ ): void
-//
 fun
 tmpstk_locjoin
   ( stk: &tmpstk >> _ ): sint
@@ -227,11 +225,10 @@ tr3benv_free_top
 (* ****** ****** *)
 //
 fun
-tr3benv_poplet0
-(env0: !tr3benv): void//end-fun
-//
-fun
 tr3benv_pshlet0
+(env0: !tr3benv): void//end-fun
+fun
+tr3benv_poplet0
 (env0: !tr3benv): void//end-fun
 //
 (* ****** ****** *)
