@@ -109,6 +109,8 @@ D4E = "./dynexp4.sats"
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef d2vts = $D4E.d2vts
+(* ****** ****** *)
 #typedef d4pat = $D4E.d4pat
 #typedef l4d4p = $D4E.l4d4p
 (* ****** ****** *)
@@ -381,6 +383,16 @@ tr34env_pshift0
 fun
 tr34env_pshcas0
 (env0: !tr34env): void//end-fun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+tr34env_getift0
+(env0: !tr34env): d2vts//end-fin
+fun
+tr34env_getcas0
+(env0: !tr34env): d2vts//end-fin
 //
 (* ****** ****** *)
 (* ****** ****** *)
