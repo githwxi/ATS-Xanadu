@@ -310,6 +310,18 @@ fun
 linstk_pshcas0
   ( stk: &linstk >> _ ): void
 //
+(*
+HX-2024-02-17:
+Maybe [pop] and [get] can be
+merged into a single function
+*)
+fun
+linstk_getift0
+  ( stk: &linstk >> _ ): d2vts
+fun
+linstk_getcas0
+  ( stk: &linstk >> _ ): d2vts
+//
 (* ****** ****** *)
 //
 fun
@@ -343,6 +355,21 @@ fun
 linstk_search_dvar
 ( stk:
 ! linstk, d2v: d2var): s2typopt_vt
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-02-17:
+It is a special utility function:
+Note that only the last entry for
+each d2var is kept in the output!
+*)
+//
+fun
+d2vdtplst_d2vtize
+( dvts
+: list_vt@(d2var,d4typ)): (d2vts)
 //
 (* ****** ****** *)
 (* ****** ****** *)
