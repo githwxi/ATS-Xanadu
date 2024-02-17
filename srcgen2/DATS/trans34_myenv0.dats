@@ -135,6 +135,7 @@ case-
 stk0 of ~linstk_nil() => ())
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 linstk_pshlam0
@@ -166,6 +167,7 @@ linstk_pshcas0
   stk0 := linstk_cas0(stk0))
 //(*end of [linstk_pshcas0(stk0)]*)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -565,6 +567,42 @@ val
 ( ) =
 (stk0 := loop(stk0, err)) in err end
 end (*let*) // end of [linstk_popcas0(stk)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+linstk_getift0
+  (  stk0  ) = let
+//
+#vwtpdef res =
+list_vt@(d2var, d4typ)
+//
+fnx
+loop
+( kxs
+: linstk
+, res: res_vt
+, err: &sint >> _
+) : @(linstk, res_vt) =
+(
+case+ kxs of
+//
+| ~
+linstk_ift0
+(   kxs   ) => (kxs, res)
+)
+//
+in//let
+//
+let
+val
+(stk1, dvts) =
+loop(stk0, list_vt_nil(*void*))
+in//let
+stk0 := stk1; d2vdtplst_d2vtize(dvts)
+end//let
+end (*let*) // end of [linstk_getift0(stk)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

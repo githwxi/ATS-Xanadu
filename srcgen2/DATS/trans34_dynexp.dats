@@ -660,6 +660,7 @@ tr34env_pshift0(env0)
 val d4e3 =
 (
   trans34_d3exp(env0, d3e3))
+val dvts = tr34env_getift0(env0)
 val (  ) = tr34env_popift0(env0)
 }
 ) where
@@ -688,6 +689,7 @@ tr34env_pshift0(env0)
 val d4e3 =
 (
   trans34_d3exp(env0, d3e3))
+val dvts = tr34env_getift0(env0)
 val (  ) = tr34env_popift0(env0)
 }
 ) where
