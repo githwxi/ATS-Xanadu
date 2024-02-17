@@ -360,4 +360,15 @@ end (*let*) // end of [unify34_s2typ(env0,...)]
 (* ****** ****** *)
 (* ****** ****** *)
 
+#implfun
+d2vdtplst_d2vtize(dvts) =
+let
+val dvts =
+list_vt_mergesort0(dvts) where
+{
+}
+
+(* ****** ****** *)
+(* ****** ****** *)
+
 (* end of [ATS3/XATSOPT_srcgen2_trans34_utils0.dats] *)

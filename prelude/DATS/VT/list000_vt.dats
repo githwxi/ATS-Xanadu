@@ -753,11 +753,36 @@ in
 end
 )
 //
-}(*where*)//end-of-[list_vt_maprev0]
+}(*where*)//end-of-[list_vt_maprev0(xs)]
 
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
+#impltmp
+<a>(*tmp*)
+list_vt_mergesort1
+  (xs) = // [xs] is kept!
+(
+  list_vt_mergesort0(xs))
+where
+{
+  val xs = list_vt_copy<a>(xs) }//where
+//
+//
+#impltmp
+<a>(*tmp*)
+list_vt_permutize1
+  (xs) = // [xs] is kept!
+(
+  list_vt_permutize0<a>(xs))
+where
+{
+  val xs = list_vt_copy<a>(xs) }//where
+//
+(* ****** ****** *)
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 <a>(*tmp*)
 list_vt_mergesort0
@@ -828,8 +853,8 @@ list_vt_nil() =>
 list_vt_cons(z0, zs1) =>
 let
 val
-sgn = gl_cmp00<a>(y0, z0)
-in
+sgn = gl_cmp11<a>(y0, z0)
+in//let
 if
 (sgn <= 0)
 then
@@ -857,11 +882,11 @@ end // list_vt_cons
 in//let
 (
   amain(xs, list_vt_length1<a>(xs)) )
-end (*let*)//end of [list_vt_mergesort0]
-
+end(*let*)//end of [list_vt_mergesort0(xs)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #impltmp
 <a>(*tmp*)
 list_vt_permutize0
@@ -945,9 +970,9 @@ in//let
 end//let
 ) (*case+*) // end of [auxmain2(...)]
 //
-in
+in//let
 (
-  auxmain1(xs, list_vt_length1<a>(xs)) )
+  auxmain1(xs, list_vt_length1<a>(xs)))
 end(*let*)//end of [list_vt_permutize0(xs)]
 
 (* ****** ****** *)
