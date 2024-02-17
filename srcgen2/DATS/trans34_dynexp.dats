@@ -301,7 +301,7 @@ D3LAB(lab0, d3p1) = ld3p
 in//let
 (
   D4LAB(lab0, trans34_d3pat(env0, d3p1)) )
-end(*let*)//end-of-[trans33_l3d3p(env0,ld3p)]
+end(*let*)//end-of-[trans34_l3d3p(env0,ld3p)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -640,8 +640,65 @@ D3LAB(lab0, d3e1) = ld3e
 in//let
 (
   D4LAB(lab0, trans34_d3exp(env0, d3e1)) )
-end(*let*)//end-of-[trans33_l3d3e(env0,ld3e)]
+end(*let*)//end-of-[trans34_l3d3e(env0,ld3e)]
 //
+(* ****** ****** *)
+//
+#implfun
+trans34_d3thn
+( env0, dthn ) =
+(
+case+ dthn of
+|
+optn_nil() => optn_nil()
+|
+optn_cons(d3e3) =>
+optn_cons(d4e3) where
+{
+val (  ) =
+tr34env_pshift0(env0)
+val d4e3 =
+(
+  trans34_d3exp(env0, d3e3))
+val (  ) = tr34env_popift0(env0)
+}
+) where
+{
+//
+val () =
+prerrln("trans34_d3thn: dthn = ", dthn)
+//
+}(*where*)//end-of-[trans34_d3thn(env0,dthn)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans34_d3els
+( env0, dels ) =
+(
+case+ dels of
+|
+optn_nil() => optn_nil()
+|
+optn_cons(d3e3) =>
+optn_cons(d4e3) where
+{
+val (  ) =
+tr34env_pshift0(env0)
+val d4e3 =
+(
+  trans34_d3exp(env0, d3e3))
+val (  ) = tr34env_popift0(env0)
+}
+) where
+{
+//
+val () =
+prerrln("trans34_d3els: dels = ", dels)
+//
+}(*where*)//end-of-[trans34_d3els(env0,dels)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun

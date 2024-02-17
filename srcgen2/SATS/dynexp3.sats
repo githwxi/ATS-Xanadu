@@ -448,11 +448,12 @@ d3exp_node =
 (* ****** ****** *)
 //
 |D3Eift0 of
-(d3exp(*cond*)
-,d3expopt(*thn*), d3expopt(*els*) )
+(
+d3exp(*cond*),
+d3expopt(*thn*), d3expopt(*els*))
 //
 |D3Ecas0 of
-( token(*+/0/-*), d3exp, d3clslst )
+( token(*+/0/-*), d3exp, d3clslst)
 //
 (* ****** ****** *)
 //

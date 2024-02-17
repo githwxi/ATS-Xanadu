@@ -368,8 +368,11 @@ d4exp_node =
 (* ****** ****** *)
 //
 |D4Eift0 of
-(d4exp(*cond*)
-,d4expopt(*thn*), d4expopt(*els*) )
+(
+d4exp(*cond*),
+d4expopt(*thn*), d4expopt(*els*))
+//
+(* ****** ****** *)
 //
 |D4Eseqn of
 ( d4explst(*init*), d4exp(*last*) )
