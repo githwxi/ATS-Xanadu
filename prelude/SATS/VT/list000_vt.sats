@@ -344,6 +344,11 @@ fun
 list_vt_mergesort0
 {n:int}
 (xs: ~list_vt(x0, n)): list_vt(x0, n)
+fun
+<x0:vt>
+list_vt_mergesort1
+{n:int}
+(xs: !list_vt(x0, n)): list_vt(x0, n)
 //
 (* ****** ****** *)
 //
@@ -352,6 +357,11 @@ fun
 list_vt_permutize0
 {n:int}
 (~list_vt(a,n)): strm_vt(list_vt(a,n))
+fun
+<a:vt>
+list_vt_permutize1
+{n:int}
+(!list_vt(a,n)): strm_vt(list_vt(a,n))
 //
 (* ****** ****** *)
 //
