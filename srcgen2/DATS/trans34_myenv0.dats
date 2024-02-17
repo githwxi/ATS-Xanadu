@@ -575,7 +575,8 @@ end (*let*) // end of [linstk_popcas0(stk)]
 linstk_getift0
   (  stk0  ) = let
 //
-#vwtpdef res =
+#vwtpdef
+res_vt =
 list_vt@(d2var, d4typ)
 //
 fnx
@@ -591,14 +592,35 @@ case+ kxs of
 | ~
 linstk_ift0
 (   kxs   ) => (kxs, res)
-)
+//
+| ~
+linstk_dget
+(d2v,dtp,kxs) =>
+loop(kxs, res, err) where
+{
+val res =
+list_vt_cons(@(d2v,dtp),res)
+}
+| !
+linstk_dset
+(d2v,dtp,kxs) =>
+loop(kxs, res, err) where
+{
+val res =
+list_vt_cons(@(d2v,dtp),res)
+}
+//
+)(*case+*)//end-of-[loop(...)]
 //
 in//let
 //
 let
 val
 (stk1, dvts) =
-loop(stk0, list_vt_nil(*void*))
+loop(stk0, res, err) where
+{
+var err = 0
+val res = list_vt_nil(*void*)}
 in//let
 stk0 := stk1; d2vdtplst_d2vtize(dvts)
 end//let

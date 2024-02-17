@@ -674,14 +674,15 @@ case+ dthn of
 |
 optn_nil() => optn_nil()
 |
-optn_cons(d3e3) =>
-optn_cons(d4e3) where
+optn_cons(d3e2) =>
+optn_cons(d4e2) where
 {
 val (  ) =
 tr34env_pshift0(env0)
-val d4e3 =
+val d4e2 =
 (
-  trans34_d3exp(env0, d3e3))
+  trans34_d3exp(env0, d3e2))
+//
 val dvts = tr34env_getift0(env0)
 val (  ) = tr34env_popift0(env0)
 //
@@ -691,7 +692,7 @@ prerrln
 ("trans34_d3thn: dvts = ", dvts)
 *)
 //
-val d4e3 = d4exp_dvts(d4e3, dvts)
+val d4e2 = d4exp_dvts(d4e2, dvts)
 //
 } // where // end of [optn_cons(d4e2)]
 ) where
@@ -720,6 +721,7 @@ tr34env_pshift0(env0)
 val d4e3 =
 (
   trans34_d3exp(env0, d3e3))
+//
 val dvts = tr34env_getift0(env0)
 val (  ) = tr34env_popift0(env0)
 //
