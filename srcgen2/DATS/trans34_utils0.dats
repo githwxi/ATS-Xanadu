@@ -62,6 +62,8 @@ ATS_PACKNAME
 #symload sort with s2typ_get_sort
 #symload node with s2typ_get_node
 (* ****** ****** *)
+#symload styp with d4typ_get_styp
+(* ****** ****** *)
 #symload styp with d4exp_get_styp
 #symload node with d4exp_get_node
 (* ****** ****** *)
@@ -362,11 +364,84 @@ end (*let*) // end of [unify34_s2typ(env0,...)]
 
 #implfun
 d2vdtplst_d2vtize(dvts) =
-let
-val dvts =
-list_vt_mergesort0(dvts) where
+(
+  loop0(dvts)) where
 {
-}
+//
+#typedef x0 = (d2var, d4typ)
+//
+val dvts =
+(
+(*
+HX: mergesort is stable!!!
+*)
+list_vt_mergesort0<x0>(dvts)
+) where
+{
+#impltmp
+g_cmp<x0>(x1, x2) =
+(
+  g_cmp<d2var>( x1.0, x2.0 ))}
+//
+(* ****** ****** *)
+//
+fnx
+loop0
+( dvts:
+~ list_vt(x0)): d2vts =
+(
+case+ dvts of
+| ~
+list_vt_nil
+( (*void*) ) =>
+list_nil( (*void*) )
+| ~
+list_vt_cons
+(
+( d2v1
+, dtp1 ), dvts) =>
+let
+val
+res0 = list_nil() in
+loop1
+(dvts, d2v1, dtp1, res0) end
+)
+//
+and
+loop1
+( dvts:
+~ list_vt(x0)
+, d2v1: d2var
+, dtp1: d4typ
+, res0: d2vts): d2vts =
+(
+case+ dvts of
+| ~
+list_vt_nil() =>
+list_cons
+((d2v1, stp1), res0) where
+{
+  val stp1 = dtp1.styp((*0*)) }
+| ~
+list_vt_cons
+(
+( d2v2
+, dtp2 ), dvts) =>
+if
+(d2v1=d2v2)
+then
+loop1
+(dvts, d2v2, dtp2, res0)
+else
+loop1
+(dvts, d2v2, dtp2, res0) where
+{
+  val stp1 = dtp1.styp((*0*))
+  val res0 =
+  list_cons((d2v1, stp1), res0) }
+)
+//
+} (*where*) // end of [d2vdtplst_d2vtize(dvts)]
 
 (* ****** ****** *)
 (* ****** ****** *)
