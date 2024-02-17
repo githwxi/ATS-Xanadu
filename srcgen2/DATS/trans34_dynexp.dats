@@ -84,6 +84,11 @@ _(*TRANS34*) = "./trans34.dats"
 #symload node with f3arg_get_node
 (* ****** ****** *)
 (* ****** ****** *)
+#symload lctn with d4exp_get_lctn
+#symload styp with d4exp_get_styp
+#symload node with d4exp_get_node
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 s2typ_top1
@@ -101,6 +106,23 @@ s2typ(s2t0, T2Ptop1(t2p0))
 end where
 {
   val s2t0 = t2p0.sort((*0*)) }
+//
+(* ****** ****** *)
+//
+fun
+d4exp_dvts
+( d4e0: d4exp
+, dvts: d2vts): d4exp =
+let
+//
+val loc0 = d4e0.lctn()
+val t2p0 = d4e0.styp()
+//
+in//let
+(
+d4exp_make_tpnd
+(loc0,t2p0,D4Edvts(d4e0, dvts)))
+end//let//end-of-[d4exp_dvts(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -662,7 +684,16 @@ val d4e3 =
   trans34_d3exp(env0, d3e3))
 val dvts = tr34env_getift0(env0)
 val (  ) = tr34env_popift0(env0)
-}
+//
+(*
+val (  ) =
+prerrln
+("trans34_d3thn: dvts = ", dvts)
+*)
+//
+val d4e3 = d4exp_dvts(d4e3, dvts)
+//
+} // where // end of [optn_cons(d4e2)]
 ) where
 {
 //
@@ -691,7 +722,16 @@ val d4e3 =
   trans34_d3exp(env0, d3e3))
 val dvts = tr34env_getift0(env0)
 val (  ) = tr34env_popift0(env0)
-}
+//
+(*
+val (  ) =
+prerrln
+("trans34_d3els: dvts = ", dvts)
+*)
+//
+val d4e3 = d4exp_dvts(d4e3, dvts)
+//
+} // where // end of [optn_cons(d4e3)]
 ) where
 {
 //
