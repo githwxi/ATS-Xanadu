@@ -117,6 +117,21 @@ stkmap_free_nil(stkmap) in () end//let
 (* ****** ****** *)
 //
 #implfun
+tr2aenv_pshlet0
+(     env0     ) = let
+//
+val+
+@TR2AENV(!stkmap) = env0
+//
+in//let
+//
+stkmap_pshlet0(stkmap); $fold(env0)
+//
+end(*let*)//end-of-(tr2aenv_pshlet0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
 tr2aenv_poplet0
 (     env0     ) = let
 //
@@ -131,21 +146,6 @@ stkmap_poplet0(stkmap) in $fold(env0)
 end(*let*)
 //
 end(*let*)//end-of-(tr2aenv_poplet0(env0))
-//
-(* ****** ****** *)
-//
-#implfun
-tr2aenv_pshlet0
-(     env0     ) = let
-//
-val+
-@TR2AENV(!stkmap) = env0
-//
-in//let
-//
-stkmap_pshlet0(stkmap); $fold(env0)
-//
-end(*let*)//end-of-(tr2aenv_pshlet0(env0))
 //
 (* ****** ****** *)
 //

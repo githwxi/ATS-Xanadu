@@ -281,27 +281,20 @@ linstk_poptop0
 (* ****** ****** *)
 //
 fun
-linstk_poplam0
-  ( stk: &linstk >> _ ): sint
-fun
-linstk_poplet0
-  ( stk: &linstk >> _ ): sint
-//
-fun
 linstk_pshlam0
   ( stk: &linstk >> _ ): void
 fun
 linstk_pshlet0
   ( stk: &linstk >> _ ): void
 //
-(* ****** ****** *)
+fun
+linstk_poplam0
+  ( stk: &linstk >> _ ): sint
+fun
+linstk_poplet0
+  ( stk: &linstk >> _ ): sint
 //
-fun
-linstk_popift0
-  ( stk: &linstk >> _ ): sint
-fun
-linstk_popcas0
-  ( stk: &linstk >> _ ): sint
+(* ****** ****** *)
 //
 fun
 linstk_pshift0
@@ -309,6 +302,13 @@ linstk_pshift0
 fun
 linstk_pshcas0
   ( stk: &linstk >> _ ): void
+//
+fun
+linstk_popift0
+  ( stk: &linstk >> _ ): sint
+fun
+linstk_popcas0
+  ( stk: &linstk >> _ ): sint
 //
 (*
 HX-2024-02-17:
@@ -382,33 +382,33 @@ tr34env_free_top(tr34env):d2varlst
 (* ****** ****** *)
 //
 fun
-tr34env_poplam0
-(env0: !tr34env): void//end-fun
-fun
-tr34env_poplet0
-(env0: !tr34env): void//end-fun
-//
-fun
 tr34env_pshlam0
 (env0: !tr34env): void//end-fun
 fun
 tr34env_pshlet0
 (env0: !tr34env): void//end-fun
 //
-(* ****** ****** *)
+fun
+tr34env_poplam0
+(env0: !tr34env): void//end-fun
+fun
+tr34env_poplet0
+(env0: !tr34env): void//end-fun
 //
-fun
-tr34env_popift0
-(env0: !tr34env): void//end-fun
-fun
-tr34env_popcas0
-(env0: !tr34env): void//end-fun
+(* ****** ****** *)
 //
 fun
 tr34env_pshift0
 (env0: !tr34env): void//end-fun
 fun
 tr34env_pshcas0
+(env0: !tr34env): void//end-fun
+//
+fun
+tr34env_popift0
+(env0: !tr34env): void//end-fun
+fun
+tr34env_popcas0
 (env0: !tr34env): void//end-fun
 //
 (* ****** ****** *)

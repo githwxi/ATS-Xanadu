@@ -265,14 +265,14 @@ tr23env_free_top(tr23env): (void)
 (* ****** ****** *)
 //
 fun
-tr23env_poplet0(env0: !tr23env): void
-fun
 tr23env_pshlet0(env0: !tr23env): void
+fun
+tr23env_poplet0(env0: !tr23env): void
+//
 fun
 tr23env_pshloc1(env0: !tr23env): void
 fun
 tr23env_pshloc2(env0: !tr23env): void
-//
 fun
 tr23env_locjoin(env0: !tr23env): void
 //

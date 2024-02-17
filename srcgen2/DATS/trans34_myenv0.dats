@@ -594,12 +594,31 @@ linstk_ift0
 (   kxs   ) => (kxs, res)
 //
 | ~
+linstk_denv
+(d2v,dtp,kxs) =>
+loop(kxs, res, err) where
+{
+(*
+val () =
+prerrln
+("\
+linstk_getift0:loop:\
+linstk_denv: d2v = ", d2v)
+val () =
+prerrln
+("\
+linstk_getift0:loop:\
+linstk_denv: dtp = ", dtp)
+*)
+}
+//
+| ~
 linstk_dget
 (d2v,dtp,kxs) =>
 loop(kxs, res, err) where
 {
 val res =
-list_vt_cons(@(d2v,dtp),res)
+list_vt_cons(@(d2v,dtp), res)
 }
 | !
 linstk_dset
@@ -607,7 +626,7 @@ linstk_dset
 loop(kxs, res, err) where
 {
 val res =
-list_vt_cons(@(d2v,dtp),res)
+list_vt_cons(@(d2v,dtp), res)
 }
 //
 )(*case+*)//end-of-[loop(...)]
@@ -818,6 +837,21 @@ val (  ) = linstk_free_nil(linstk) }
 (* ****** ****** *)
 //
 #implfun
+tr34env_pshlam0
+(     env0     ) = let
+//
+val+
+@TR34ENV
+(d2vlst, !linstk) = env0
+//
+in//let
+//
+(
+  linstk_pshlam0(linstk); $fold(env0))
+//
+end(*let*)//end-of-(tr34env_pshlam0(env0))
+//
+#implfun
 tr34env_poplam0
 (     env0     ) = let
 //
@@ -835,6 +869,21 @@ end(*let*)
 end(*let*)//end-of-(tr34env_poplam0(env0))
 //
 (* ****** ****** *)
+//
+#implfun
+tr34env_pshlet0
+(     env0     ) = let
+//
+val+
+@TR34ENV
+(d2vlst, !linstk) = env0
+//
+in//let
+//
+(
+  linstk_pshlet0(linstk); $fold(env0))
+//
+end(*let*)//end-of-(tr34env_pshlet0(env0))
 //
 #implfun
 tr34env_poplet0
@@ -856,6 +905,21 @@ end(*let*)//end-of-(tr34env_poplet0(env0))
 (* ****** ****** *)
 //
 #implfun
+tr34env_pshift0
+(     env0     ) = let
+//
+val+
+@TR34ENV
+(d2vlst, !linstk) = env0
+//
+in//let
+//
+(
+  linstk_pshift0(linstk); $fold(env0))
+//
+end(*let*)//end-of-(tr34env_pshift0(env0))
+//
+#implfun
 tr34env_popift0
 (     env0     ) = let
 //
@@ -871,6 +935,23 @@ linstk_popift0(linstk) in $fold(env0)
 end(*let*)
 //
 end(*let*)//end-of-(tr34env_popift0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr34env_pshcas0
+(     env0     ) = let
+//
+val+
+@TR34ENV
+(d2vlst, !linstk) = env0
+//
+in//let
+//
+(
+  linstk_pshcas0(linstk); $fold(env0))
+//
+end(*let*)//end-of-(tr34env_pshcas0(env0))
 //
 (* ****** ****** *)
 //
@@ -895,7 +976,7 @@ end(*let*)//end-of-(tr34env_popcas0(env0))
 (* ****** ****** *)
 //
 #implfun
-tr34env_pshlam0
+tr34env_getift0
 (     env0     ) = let
 //
 val+
@@ -905,14 +986,16 @@ val+
 in//let
 //
 (
-  linstk_pshlam0(linstk); $fold(env0))
+$fold(env0); dvts) where
+{
+val dvts = linstk_getift0(linstk)}
 //
-end(*let*)//end-of-(tr34env_pshlam0(env0))
+end(*let*)//end-of-(tr34env_getift0(env0))
 //
 (* ****** ****** *)
 //
 #implfun
-tr34env_pshlet0
+tr34env_getcas0
 (     env0     ) = let
 //
 val+
@@ -922,43 +1005,11 @@ val+
 in//let
 //
 (
-  linstk_pshlet0(linstk); $fold(env0))
+$fold(env0); dvts) where
+{
+val dvts = linstk_getcas0(linstk)}
 //
-end(*let*)//end-of-(tr34env_pshlet0(env0))
-//
-(* ****** ****** *)
-//
-#implfun
-tr34env_pshift0
-(     env0     ) = let
-//
-val+
-@TR34ENV
-(d2vlst, !linstk) = env0
-//
-in//let
-//
-(
-  linstk_pshift0(linstk); $fold(env0))
-//
-end(*let*)//end-of-(tr34env_pshift0(env0))
-//
-(* ****** ****** *)
-//
-#implfun
-tr34env_pshcas0
-(     env0     ) = let
-//
-val+
-@TR34ENV
-(d2vlst, !linstk) = env0
-//
-in//let
-//
-(
-  linstk_pshcas0(linstk); $fold(env0))
-//
-end(*let*)//end-of-(tr34env_pshcas0(env0))
+end(*let*)//end-of-(tr34env_getcas0(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)

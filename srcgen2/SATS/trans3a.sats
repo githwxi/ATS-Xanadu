@@ -199,20 +199,20 @@ tr3aenv_free_top
 //
 (*
 fun
-tr3aenv_poplam0
+tr3aenv_pshlam0
 (env0: !tr3aenv): void//end-fun
 fun
-tr3aenv_pshlam0
+tr3aenv_poplam0
 (env0: !tr3aenv): void//end-fun
 *)
 //
 (* ****** ****** *)
 //
 fun
-tr3aenv_poplet0
+tr3aenv_pshlet0
 (env0: !tr3aenv): void//end-fun
 fun
-tr3aenv_pshlet0
+tr3aenv_poplet0
 (env0: !tr3aenv): void//end-fun
 //
 fun
@@ -221,7 +221,6 @@ tr3aenv_pshloc1
 fun
 tr3aenv_pshloc2
 (env0: !tr3aenv): void//end-fun
-//
 fun
 tr3aenv_locjoin
 (env0: !tr3aenv): void//end-fun
