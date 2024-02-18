@@ -125,6 +125,18 @@ d4exp_make_tpnd
 end//let//end-of-[d4exp_dvts(...)]
 //
 (* ****** ****** *)
+//
+fun
+d4exp_get_dvts
+( d4e0: d4exp): d2vts =
+(
+case+
+d4e0.node() of
+|
+D4Edvts(_, dvts) => dvts
+|
+_(* non-D4Edvts *) => list_nil())
+//
 (* ****** ****** *)
 //
 #implfun
@@ -537,6 +549,54 @@ end (*let*) // end of [f0_dapp(env0,d3e0)]
 //
 (* ****** ****** *)
 //
+local
+//
+fun
+f1_dopt_dvts
+(dopt: d4expopt): d2vts =
+(
+case+ dopt of
+|
+optn_nil() =>
+list_nil((*void*))
+|
+optn_cons(dexp) =>
+d4exp_get_dvts(dexp))//f1_dopt_dvts
+//
+fun
+f1_dift_dvts
+( dthn: d4expopt
+, dels: d4expopt): d2vts =
+(
+  d2vts_z2merge(xts1, xts2)
+) where
+{ val xts1 = f1_dopt_dvts(dthn)
+  val xts2 = f1_dopt_dvts(dels)}
+(*where*)//end-of-[f1_dthn_dels_dvts]
+//
+(* ****** ****** *)
+//
+fun
+f1_dift_tres
+( dthn: d4expopt
+, dels: d4expopt): s2typ =
+(
+case+ dthn of
+|
+optn_nil() =>
+the_s2typ_void((*void*))
+|
+optn_cons(d4e2) =>
+(
+case+ dels of
+|
+optn_nil() =>
+the_s2typ_void((*void*))
+|
+optn_cons(d4e3) => d4e2.styp()))//fun
+//
+in//local
+//
 fun
 f0_ift0
 ( env0:
@@ -564,24 +624,33 @@ val dels =
 (
   trans34_d3els(env0, dels))
 //
-val tres =
-(
-case+ dthn of
-|
-optn_nil() => the_s2typ_void()
-|
-optn_cons(d4e2) =>
-(
-case+ dels of
-|
-optn_nil() => the_s2typ_void()
-|
-optn_cons(d4e3) => d4e2.styp((*0*))))
+val
+dvts = f1_dift_dvts(dthn, dels)
+val
+tres = f1_dift_tres(dthn, dels)
 //
-in//let
+(*
+val dthn =
+(
+  f1_dopt_teck(env0, dthn, dvts))
+val dels =
+(
+  f1_dopt_teck(env0, dels, dvts))
+*)
+//
+val d4e0 =
 d4exp_make_tpnd
-(loc0, tres, D4Eift0(d4e1, dthn, dels))
-end (*let*) // end of [f0_ift0(env0,d3e0)]
+( loc0
+, tres
+, D4Eift0(d4e1, dthn, dels, dvts))
+in//let
+//
+(
+  trans34_d4ift_dvts(env0, d4e0, dvts))
+//
+end (*end*) // end of [f0_ift0(env0,d3e0)]
+//
+end (*local*) // end of [local(f0_ift0(...)]
 //
 (* ****** ****** *)
 //
@@ -630,15 +699,16 @@ D3Etup1
 ( tknd
 , npf1, d3es) = d3e0.node()
 val
-d4es = trans34_d3explst(env0, d3es)
+d4es =
+(
+  trans34_d3explst(env0, d3es))
 val
 trcd =
 (
 case-
 tknd.node() of
-|T_TRCD10(0) => TRCDflt0(*void*)
-|T_TRCD10(_) => TRCDbox0(*void*)
-)
+| T_TRCD10(0) => TRCDflt0(*void*)
+| T_TRCD10(_) => TRCDbox0(*void*))
 val
 t2p0 =
 s2typ_tup1(trcd , npf1 , s2typlst(d4es))

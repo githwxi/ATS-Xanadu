@@ -17,14 +17,21 @@ if
 then x*fact(x-1) else 1)
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 //
 #absvwtp VT
 //
 fun
-foo
-(x: VT): @(VT, VT) = @(x, x)
+foo1
+(x: VT):
+@(VT, VT) = @(x, x)
+//
+fun
+foo2
+( x: VT
+, y: VT): VT =
+(
+ if true then x else y )
 //
 (* ****** ****** *)
 ////

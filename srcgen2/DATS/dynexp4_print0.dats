@@ -196,9 +196,13 @@ print("D4Elet0(",dcls,";",d4e1,")"))
 (* ****** ****** *)
 //
 |D4Eift0
-(d4e1,dthn,dels) =>
-( print("D4Eift0(")
-; print(d4e1,";",dthn,";",dels,")"))
+(d4e1
+,dthn,dels,tenv) =>
+(
+print("D4Eift0(");
+print
+( d4e1,";"
+, dthn, ";", dels, ";", tenv, ")" ))
 //
 (* ****** ****** *)
 //

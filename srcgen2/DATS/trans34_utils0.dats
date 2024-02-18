@@ -361,7 +361,113 @@ end (*let*) // end of [unify34_s2typ(env0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
+#implfun
+d2vts_z2merge
+(xts1, xts2) =
+(
+fmrg00(xts1, xts2)) where
+{
+//
+fun
+fmrg00
+( xts1: d2vts
+, xts2: d2vts): d2vts =
+(
+case+ xts1 of
+|
+list_nil() => xts2
+|
+list_cons _ => fmrg10(xts1, xts2)
+)(*case+*)//end-of-[loop(xts1,xts2)]
+//
+and
+fmrg01
+( xts1: d2vts
+, xts2: d2vts): d2vts =
+(
+case+ xts1 of
+|
+list_nil() => xts2
+|
+list_cons _ =>
+let
+val-
+list_cons
+(
+(d2v1
+,t2p1), yts1) = xts1
+val-
+list_cons
+(
+(d2v2
+,t2p2), yts2) = xts2
+val
+test = g_cmp(d2v1, d2v2)
+in//let
+if (test < 0)
+then
+(
+list_cons
+((d2v1, t2p1), fmrg01(yts1, xts2)))
+else
+(
+if (test > 0)
+then
+list_cons
+((d2v2, t2p2), fmrg10(xts1, yts2))
+else
+list_cons
+((d2v1, t2p1), fmrg00(yts1, yts2)))
+end(*let*)//end-of-[list_cons( ... )]
+)
+//
+and
+fmrg10
+( xts1: d2vts
+, xts2: d2vts): d2vts =
+(
+case+ xts2 of
+|
+list_nil() => xts1
+|
+list_cons _ =>
+let
+val-
+list_cons
+(
+(d2v1
+,t2p1), yts1) = xts1
+val-
+list_cons
+(
+(d2v2
+,t2p2), yts2) = xts2
+val
+test = g_cmp(d2v1, d2v2)
+in//let
+if (test < 0)
+then
+(
+list_cons
+((d2v1, t2p1), fmrg01(yts1, xts2)))
+else
+(
+if (test > 0)
+then
+list_cons
+((d2v2, t2p2), fmrg10(xts1, yts2))
+else
+list_cons
+((d2v1, t2p1), fmrg00(yts1, yts2)))
+end(*let*)//end-of-[list_cons( ... )]
+)
+//
+}(*where*)//end-of-[d2vts_z2merge(xts1,xts2)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 d2vdtplst_d2vtize(dvts) =
 (
@@ -442,7 +548,7 @@ loop1
 )
 //
 } (*where*) // end of [d2vdtplst_d2vtize(dvts)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
