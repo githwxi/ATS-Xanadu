@@ -95,13 +95,15 @@ linstk_cas0 of ( linstk )
 //
 |linstk_dvar of
 (d2var(*lin*), d4typ, linstk)
-//
 |linstk_denv of
 (d2var(*lin*), d4typ, linstk)
 //
 |linstk_dget of
 (d2var(*lin*), d4typ, linstk)
 |linstk_dset of
+(d2var(*lin*), d4typ, linstk)
+//
+|linstk_dvtp of
 (d2var(*lin*), d4typ, linstk)
 //
 (*
@@ -198,16 +200,24 @@ linstk_let0
  (  stk1  ) => res1
 *)
 //
-|linstk_dvar
+|
+linstk_dvar
 (d2v0, dtp0, stk1) =>
 loop(stk1, list_cons(d2v0, res1))
 //
-|linstk_denv
+|
+linstk_denv
 (d2v0, dtp0, stk1) => loop(stk1, res1)
 //
-|linstk_dget
+|
+linstk_dget
 (d2v0, dtp0, stk1) => loop(stk1, res1)
-|linstk_dset
+|
+linstk_dset
+(d2v0, dtp0, stk1) => loop(stk1, res1)
+//
+|
+linstk_dvtp
 (d2v0, dtp0, stk1) => loop(stk1, res1)
 //
 (*
@@ -250,7 +260,8 @@ linstk_lam0
 linstk_let0
  (  stk1  ) => res1
 //
-|linstk_dvar
+|
+linstk_dvar
 (d2v0, dtp0, stk1) =>
 loop(stk1, list_cons(d2v0, res1))
 //
@@ -297,6 +308,13 @@ linstk_dget
 linstk_dset
 (k1, x1, kxs) => loop(kxs, err)
 //
+| ~
+linstk_dvtp
+(k1, x1, kxs) => loop(kxs, err)
+//
+| !
+linstk_denv _ => (err := 1; kxs)
+//
 | !
 linstk_lam0 _ => (err := 1; kxs)
 | !
@@ -306,9 +324,6 @@ linstk_let0 _ => (err := 1; kxs)
 linstk_ift0 _ => (err := 1; kxs)
 | !
 linstk_cas0 _ => (err := 1; kxs)
-//
-| !
-linstk_denv _ => (err := 1; kxs)
 //
 ) (*case+*)//end-of-[loop(kxs, err)]
 //
@@ -463,9 +478,6 @@ linstk_ift0
 (   kxs   ) => kxs // err = 0
 //
 | ~
-linstk_dvar
-(d2v,dtp,kxs) => loop(kxs, err)
-| ~
 linstk_denv
 (d2v,dtp,kxs) => loop(kxs, err)
 //
@@ -489,6 +501,9 @@ linstk_nil( ) => (err := 1; kxs)
 linstk_lam0 _ => (err := 1; kxs)
 | !
 linstk_let0 _ => (err := 1; kxs)
+//
+| !
+linstk_dvar _ => (err := 1; kxs)
 //
 | !
 linstk_cas0 _ => (err := 1; kxs)
@@ -525,9 +540,6 @@ linstk_cas0
 (   kxs   ) => kxs // err = 0
 //
 | ~
-linstk_dvar
-(d2v,dtp,kxs) => loop(kxs, err)
-| ~
 linstk_denv
 (d2v,dtp,kxs) => loop(kxs, err)
 //
@@ -551,6 +563,9 @@ linstk_nil( ) => (err := 1; kxs)
 linstk_lam0 _ => (err := 1; kxs)
 | !
 linstk_let0 _ => (err := 1; kxs)
+//
+| !
+linstk_dvar _ => (err := 1; kxs)
 //
 | !
 linstk_ift0 _ => (err := 1; kxs)
@@ -712,6 +727,28 @@ prerrln
 //
 (* ****** ****** *)
 //
+#implfun
+linstk_d2vins_dvtp
+(stk0, d2v1, dtp1) =
+(
+stk0 :=
+linstk_dvtp
+(d2v1, dtp1, stk0)) where
+{
+//
+// (*
+val () =
+prerrln
+("linstk_d2vins_dvtp: d2v1 = ", d2v1)
+val () =
+prerrln
+("linstk_d2vins_dvtp: dtp1 = ", dtp1)
+// *)
+//
+}(*where*)//end-of-[linstk_d2vins_dvtp(...)]
+//
+(* ****** ****** *)
+//
 (*
 #implfun
 linstk_d2vins_dlft
@@ -761,40 +798,55 @@ loop
 (
 case+ stk0 of
 //
-|linstk_nil() => optn_vt_nil()
+|linstk_nil _ => optn_vt_nil()
+|linstk_lam0 _ => optn_vt_nil()
 //
-|linstk_lam0(stk1) => loop(stk1)
 |linstk_let0(stk1) => loop(stk1)
 //
 |linstk_ift0(stk1) => loop(stk1)
 |linstk_cas0(stk1) => loop(stk1)
 //
-|linstk_dvar
+|
+linstk_dvar
 (d2v1, dtp1, stk1) =>
 if
 (d2v0 = d2v1)
 then
 optn_vt_cons(dtp1) else loop(stk1)
 //
-|linstk_denv
+|
+linstk_denv
 (d2v1, dtp1, stk1) =>
 if
 (d2v0 = d2v1)
 then
 optn_vt_cons(dtp1) else loop(stk1)
 //
-|linstk_dget
+|
+linstk_dget
 (d2v1, dtp1, stk1) =>
+(
 if
 (d2v0 = d2v1)
 then
-optn_vt_cons(dtp1) else loop(stk1)
-|linstk_dset
+optn_vt_cons(dtp1) else loop(stk1))
+|
+linstk_dset
 (d2v1, dtp1, stk1) =>
+(
 if
 (d2v0 = d2v1)
 then
-optn_vt_cons(dtp1) else loop(stk1)
+optn_vt_cons(dtp1) else loop(stk1))
+//
+|
+linstk_dvtp
+(d2v1, dtp1, stk1) =>
+(
+if
+(d2v0 = d2v1)
+then
+optn_vt_cons(dtp1) else loop(stk1))
 //
 )
 }(*where*)//end-of-[linstk_search_dvar(...)]
@@ -1016,7 +1068,10 @@ end(*let*)//end-of-(tr34env_getcas0(env0))
 //
 #implfun
 tr34env_d2vins_dvar
-  (env0,d2v1,dtp1) = let
+  (env0,d2v1,stp1) = let
+//
+val
+dtp1 = D4TYPstp(stp1)
 //
 val+
 @TR34ENV
@@ -1066,6 +1121,27 @@ end(*let*)//end-of-(tr34env_d2vins_dset(...))
 //
 (* ****** ****** *)
 //
+#implfun
+tr34env_d2vins_dvtp
+  (env0,d2v1,stp1) = let
+//
+val
+dtp1 = D4TYPstp(stp1)
+//
+val+
+@TR34ENV
+(d2vlst, !linstk) = env0
+//
+in//let
+//
+(
+  linstk_d2vins_dvtp
+  (linstk, d2v1, dtp1) ; $fold( env0 ))
+//
+end(*let*)//end-of-(tr34env_d2vins_dvtp(...))
+//
+(* ****** ****** *)
+//
 (*
 #implfun
 tr34env_d2vins_dlft
@@ -1084,6 +1160,7 @@ in//let
 end(*let*)//end-of-(tr34env_d2vins_dlft(...))
 *)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -1161,9 +1238,8 @@ D4Pvar(d2v1) = dpat.node()
 in//let
 let
 val t2p0 = dpat.styp()
-val dtp0 = D4TYPstp(t2p0)
 in//let
-tr34env_d2vins_dvar(env0,d2v1,dtp0)
+tr34env_d2vins_dvar(env0,d2v1,t2p0)
 end//let
 end(*let*)//end-of-[f0_var(env0,dpat)]
 //

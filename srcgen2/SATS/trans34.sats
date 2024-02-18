@@ -342,6 +342,11 @@ linstk_d2vins_dset
 (stk:
 &linstk >> _, d2var, d4typ):void
 //
+fun
+linstk_d2vins_dvtp
+(stk:
+&linstk >> _, d2var, d4typ):void
+//
 (*
 fun
 linstk_d2vins_dlft
@@ -439,25 +444,31 @@ tr34env_evstyp_cst
 //
 fun
 tr34env_d2vins_dvar
-(env0:
-!tr34env
-,d2v0: d2var, dtyp: d4typ): (void)
+( env0:
+! tr34env
+, d2v0: d2var, stp0: s2typ): (void)
 fun
 tr34env_d2vins_denv
-(env0:
-!tr34env
-,d2v0: d2var, dtyp: d4typ): (void)
+( env0:
+! tr34env
+, d2v0: d2var, dtp0: d4typ): (void)
 //
 fun
 tr34env_d2vins_dget
-(env0:
-!tr34env
-,d2v0: d2var, dtyp: d4typ): (void)
+( env0:
+! tr34env
+, d2v0: d2var, dtp0: d4typ): (void)
 fun
 tr34env_d2vins_dset
-(env0:
-!tr34env
-,d2v0: d2var, dtyp: d4typ): (void)
+( env0:
+! tr34env
+, d2v0: d2var, dtp0: d4typ): (void)
+//
+fun
+tr34env_d2vins_dvtp // dvtp->dput?
+( env0:
+! tr34env
+, d2v0: d2var, t2p0: s2typ): (void)
 //
 (*
 fun
@@ -471,19 +482,21 @@ tr34env_d2vins_dlft
 //
 fun
 tr34env_insert_dpat
-(env0: !tr34env, d4p0: d4pat): void
+( env0:
+! tr34env, d4p0: d4pat): (void)
 fun
 tr34env_insert_farg
-(env0: !tr34env, farg: f4arg): void
+( env0:
+! tr34env, farg: f4arg): (void)
 //
 fun
 tr34env_insert_dpatlst
 ( env0:
-! tr34env, d4ps: d4patlst): ( void )
+! tr34env, d4ps: d4patlst): (void)
 fun
 tr34env_insert_farglst
 ( env0:
-! tr34env, f4as: f4arglst): ( void )
+! tr34env, f4as: f4arglst): (void)
 //
 (* ****** ****** *)
 //
