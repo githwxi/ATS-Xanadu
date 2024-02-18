@@ -326,37 +326,43 @@ linstk_getcas0
 //
 fun
 linstk_d2vins_dvar
-( stk:
-& linstk >> _, d2var, d4typ):void
+(stk:
+&linstk >> _, d2var, d4typ):void
 fun
 linstk_d2vins_denv
-( stk:
-& linstk >> _, d2var, d4typ):void
+(stk:
+&linstk >> _, d2var, d4typ):void
 //
 fun
 linstk_d2vins_dget
-( stk:
-& linstk >> _, d2var, d4typ):void
+(stk:
+&linstk >> _, d2var, d4typ):void
 fun
 linstk_d2vins_dset
-( stk:
-& linstk >> _, d2var, d4typ):void
+(stk:
+&linstk >> _, d2var, d4typ):void
 //
 (*
 fun
 linstk_d2vins_dlft
-( stk:
-& linstk >> _, d2var, d4lft):void
+(stk:
+&linstk >> _, d2var, d4lft):void
 *)
 //
 (* ****** ****** *)
 //
 fun
 linstk_search_dvar
-( stk:
-! linstk, d2v: d2var): s2typopt_vt
+(stk:
+!linstk, d2v: d2var): s2typopt_vt
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d2vts_z2merge
+(xts1:d2vts, xts2:d2vts): (d2vts)
+//
 (* ****** ****** *)
 //
 (*
@@ -704,6 +710,30 @@ fun
 trans34_d4exp_tpck
 ( env0: !tr34env
 , d4e0: d4exp, t2p0: s2typ): d4exp
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-02-18:
+It checks that
+[env0] matches the given [dvts]
+*)
+fun
+trans34_d4exp_vtck
+( env0: !tr34env
+, d4e0: d4exp, dvts: d2vts): d4exp
+//
+(* ****** ****** *)
+//
+fun
+trans34_d4ift_dvts
+( env0: !tr34env
+, d4e0: d4exp, dvts: d2vts): d4exp
+fun
+trans34_d4cas_dvts
+( env0: !tr34env
+, d4e0: d4exp, dvts: d2vts): d4exp
 //
 (* ****** ****** *)
 (* ****** ****** *)
