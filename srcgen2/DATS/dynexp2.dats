@@ -469,8 +469,13 @@ endloc (*local*) // end of [ local(f2env) ]
 (* ****** ****** *)
 //
 local
+//
 val
 stamper = stamper_new((*0*))
+//
+val
+_(*nil*) = stamper.getinc((*0*))
+//
 in//local
 fun
 the_d2con_stamp_new
@@ -480,8 +485,13 @@ endloc(*local*)//end-of[the_d2con_stamp_new]
 (* ****** ****** *)
 //
 local
+//
 val
 stamper = stamper_new((*0*))
+//
+val
+_(*nil*) = stamper.getinc((*0*))
+//
 in//local
 fun
 the_d2cst_stamp_new
@@ -493,6 +503,10 @@ endloc(*local*)//end-of[the_d2cst_stamp_new]
 local
 val
 stamper = stamper_new((*0*))
+//
+val
+_(*nil*) = stamper.getinc((*0*))
+//
 in//local
 fun
 the_d2var_stamp_new
