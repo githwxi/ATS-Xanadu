@@ -322,12 +322,23 @@ s2vts_make_lctn_tqas
 s2vts with s2vts_make_lctn_tqas
 //
 (* ****** ****** *)
-fun
-d2var_fprint:(FILR,d2var)->void
+//
+(*
+val the_d2con_nil: d2var//val
+val the_d2cst_nil: d2var//val
+*)
+//
+(*
+val the_d2var_nil: d2var//val
+*)
+//
+(* ****** ****** *)
 fun
 d2con_fprint:(FILR,d2con)->void
 fun
 d2cst_fprint:(FILR,d2cst)->void
+fun
+d2var_fprint:(FILR,d2var)->void
 (* ****** ****** *)
 //
 fun
@@ -496,9 +507,11 @@ d2var_set_styp
 //
 (* ****** ****** *)
 //
+(*
 fun
 d2var_new1_tokn
 (tok0: token): d2var
+*)
 fun
 d2var_new2_name
 (loc0: loc_t, name: sym_t): d2var

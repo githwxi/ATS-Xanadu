@@ -49,10 +49,10 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 val
-the_stamp_nil: stamp(* 0 *)
+the_stamp_nil: stamp(*0*)
 //
 fun
-stamp_nilq(stamp): bool
+stamp_nilq(stamp): (bool)
 #symload
 nilq with stamp_nilq of 1000
 //
