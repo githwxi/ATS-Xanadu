@@ -1258,7 +1258,7 @@ x2t2p_set_styp(xtp1,t2p2))
 //
 (*
 HX-2024-01-22:
-[s2typ_unmodx]
+[s2typ_unargx]
 removes arg modifiers
 *)
 (*
@@ -1272,7 +1272,7 @@ s2typ_hnfiz0_e1nv
 {
 (*
 val
-t2p0 = s2typ_unmodx(t2p0)
+t2p0 = s2typ_unargx(t2p0)
 *)
 }(*where*)//unify00_s2typ$hnfz
 *)

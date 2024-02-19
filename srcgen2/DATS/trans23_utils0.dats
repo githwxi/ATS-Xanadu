@@ -662,7 +662,8 @@ need to be skipped here!
 s2typ_hnfiz0_e1nv
 <e1nv>(e1nv, t2p0)) where
 {
-  val t2p0 = s2typ_unmodx(t2p0) }
+val t2p0 =
+s2typ_untopx(s2typ_unargx(t2p0)) }
 //where//end-of-[unify00_s2typ$hnfz(...)]
 //
 (* ****** ****** *)
