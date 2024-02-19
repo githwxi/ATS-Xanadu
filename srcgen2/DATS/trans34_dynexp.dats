@@ -127,6 +127,20 @@ end//let//end-of-[d4exp_dvts(...)]
 (* ****** ****** *)
 //
 fun
+d4exp_get_dvts
+( d4e0: d4exp): d2vts =
+(
+case+
+d4e0.node() of
+|
+D4Edvts(_, dvts) => dvts
+|
+_(* non-D4Edvts *) => list_nil())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 d4exp_p2tck
 ( d4e0: d4exp
 , stp1: s2typ): d4exp =
@@ -142,18 +156,6 @@ d4exp_make_tpnd
 end//let//end-of-[d4exp_p2tck(...)]
 //
 (* ****** ****** *)
-//
-fun
-d4exp_get_dvts
-( d4e0: d4exp): d2vts =
-(
-case+
-d4e0.node() of
-|
-D4Edvts(_, dvts) => dvts
-|
-_(* non-D4Edvts *) => list_nil())
-//
 (* ****** ****** *)
 //
 #implfun
@@ -1052,15 +1054,28 @@ trans34_d4exp_ptck
 (env0, d4e0, stp1) =
 (
 case+
-d4e0.node() of
+stp1.node() of
 //
-| D4Evar _ =>
+|T2Parg1
+(knd0, tinv) =>
 (
-f0_var(env0, d4e0, stp1))
+case+
+tinv.node() of
+|
+T2Patx2
+(tbef, taft) =>
+auxmain(env0, d4e0, taft)
+|
+_(*non-T2Patx2*) =>
+auxmain(env0, d4e0, tinv)
+)
 //
-| _(*otherwise*) =>
-(
-  d4exp_p2tck(d4e0, stp1))
+|T2Patx2
+(tbef, taft) =>
+auxmain(env0, d4e0, taft)
+//
+|
+_(* otherwise *) => (d4e0)
 ) where
 {
 //
@@ -1102,6 +1117,26 @@ if
 linq(t2p1) then
 d4exp_p2tck(d4e0, t2p1) else d4e0
 end//let//end-of-[f0_var(env0,d4e0)]
+//
+(* ****** ****** *)
+//
+fun
+auxmain
+( env0:
+! tr34env
+, d4e0: d4exp
+, taft: s2typ): d4exp =
+(
+case+
+d4e0.node() of
+//
+| D4Evar _ =>
+(
+f0_var(env0, d4e0, taft))
+//
+| _(*otherwise*) =>
+(
+  d4exp_p2tck(d4e0, taft))) // auxmain
 //
 (* ****** ****** *)
 //
