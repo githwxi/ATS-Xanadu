@@ -1069,50 +1069,67 @@ trans34_d4explst_tpcks
 case+ d4es of
 |
 list_nil() =>
+list_nil((*void*))
+|
+list_cons _ =>
 (
 case+ t2ps of
 |
 list_nil() =>
 list_nil((*void*))
 |
-list_cons(t2p1, t2ps) =>
+list_cons _ =>
 list_cons(d4e1, d4es) where
 {
-//
-val
-d4e1 = d4exp_none0(loc0)
+val-
+list_cons(d4e1, d4es) = d4es
+val-
+list_cons(t2p1, t2ps) = t2ps
 //
 val d4e1 =
 trans34_d4exp_tpck(env0, d4e1, t2p1)
 val d4es =
-trans34_d4explst_tpcks(env0,loc0,d4es,t2ps) }
-)
+trans34_d4explst_tpcks(env0,loc0,d4es,t2ps)
+//
+} // end-of-[list_cons(d4e1, d4es)]
+) // end-of-[list_cons(t2p1, t2ps)]
+)(*case+*) // end-of-[trans34_d4explst_tpcks(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans34_d4explst_ptcks
+( env0
+, loc0, d4es , t2ps ) =
+(
+case+ d4es of
 |
-list_cons(d4e1, d4es) =>
+list_nil() =>
+list_nil((*void*))
+|
+list_cons _ =>
 (
 case+ t2ps of
 |
 list_nil() =>
-list_cons(d4e1, d4es) where
-{
-//
-val
-t2p1 = s2typ_none0((*void*))
-//
-val d4e1 =
-trans34_d4exp_tpck(env0, d4e1, t2p1)
-val d4es =
-trans34_d4explst_tpcks(env0,loc0,d4es,t2ps) }
+list_nil((*void*))
 |
-list_cons(t2p1, t2ps) =>
+list_cons _ =>
 list_cons(d4e1, d4es) where
 {
+val-
+list_cons(d4e1, d4es) = d4es
+val-
+list_cons(t2p1, t2ps) = t2ps
+//
 val d4e1 =
-trans34_d4exp_tpck(env0, d4e1, t2p1)
+trans34_d4exp_ptck(env0, d4e1, t2p1)
 val d4es =
-trans34_d4explst_tpcks(env0,loc0,d4es,t2ps) }
-)
-)(*case+*) // end-of-[trans34_d4explst_tpcks(...)]
+trans34_d4explst_ptcks(env0,loc0,d4es,t2ps)
+//
+} // end-of-[list_cons(d4e1, d4es)]
+) // end-of-[list_cons(t2p1, t2ps)]
+)(*case+*) // end-of-[trans34_d4explst_ptcks(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

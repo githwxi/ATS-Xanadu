@@ -244,6 +244,13 @@ endlet // end of [ D4Et2pck(d4e1, t2p2) ]
 //
 (* ****** ****** *)
 //
+|D4Ep2tck
+( d4e1 , t2p2 ) =>
+(
+print("D4Ep2tck(", d4e1, ";", t2p2,")"))
+//
+(* ****** ****** *)
+//
 |D4Enone0() => print( "D4Enone0(", ")" )
 |D4Enone1(d3e1) => print("D4Enone1(", d3e1, ")")
 |D4Enone2(d4e1) => print("D4Enone2(", d4e1, ")")

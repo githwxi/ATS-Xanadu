@@ -777,14 +777,14 @@ trans34_d4cas_dvts
 (* ****** ****** *)
 //
 fun
-trans34_d4explst_ptcks
+trans34_d4explst_tpcks
 ( env0:
 ! tr34env
 , loc0: loc_t
 , d4es: d4explst, t2ps: s2typlst): d4explst
 //
 fun
-trans34_d4explst_tpcks
+trans34_d4explst_ptcks
 ( env0:
 ! tr34env
 , loc0: loc_t
