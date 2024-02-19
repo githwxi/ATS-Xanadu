@@ -127,6 +127,23 @@ end//let//end-of-[d4exp_dvts(...)]
 (* ****** ****** *)
 //
 fun
+d4exp_p2tck
+( d4e0: d4exp
+, stp1: s2typ): d4exp =
+let
+//
+val loc0 = d4e0.lctn()
+val t2p0 = d4e0.styp()
+//
+in//let
+(
+d4exp_make_tpnd
+(loc0,t2p0,D4Ep2tck(d4e0, stp1)))
+end//let//end-of-[d4exp_p2tck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d4exp_get_dvts
 ( d4e0: d4exp): d2vts =
 (
@@ -432,7 +449,7 @@ else let
 val
 opt1 =
 tr34env_search_dvar
-  ( env0, d2v1 )
+  (env0, d2v1) //val(opt1)
 //
 val
 t2p1 =
@@ -440,7 +457,7 @@ t2p1 =
 case+ opt1 of
 | ~
 optn_vt_nil
- ( (*0*) ) => d2v1.styp()
+( (*nil*) ) => d2v1.styp()
 | ~
 optn_vt_cons(t2p1) => t2p1)
 : s2typ // end-of-[val(t2p1)]
@@ -944,8 +961,12 @@ end(*let*) // end-of-[trans34_d3exp_tpck(...)]
 trans34_d4pat_tpck
 (env0, d4p0, t2p0) =
 let
+//
+val t2p1 = d4p0.styp()
+//
 val ubtf =
-unify34_s2typ(env0,d4p0.styp(),t2p0)
+unify34_s2typ(env0, t2p1, t2p0)
+//
 in//let
 if
 ubtf then d4p0 else
@@ -1010,19 +1031,90 @@ t2p0.node() of
 //
 (*
 //
-val
-loc0 = d4e0.lctn((*void*))
+val loc0 = d4e0.lctn((*void*))
 //
-val () = prerrln
-  ("trans34_d4exp_tpck: loc0 = ", loc0)
-val () = prerrln
-  ("trans34_d4exp_tpck: d4e0 = ", d4e0)
-val () = prerrln
-  ("trans34_d4exp_tpck: t2p0 = ", t2p0)
+val (  ) =
+prerrln("trans34_d4exp_tpck: loc0 = ", loc0)
+val (  ) =
+prerrln("trans34_d4exp_tpck: d4e0 = ", d4e0)
+val (  ) =
+prerrln("trans34_d4exp_tpck: t2p0 = ", t2p0)
 //
 *)
 //
 }(*where*) // end-of-[trans34_d4exp_tpck(...)]
+
+(* ****** ****** *)
+(* ****** ****** *)
+
+#implfun
+trans34_d4exp_ptck
+(env0, d4e0, stp1) =
+(
+case+
+d4e0.node() of
+//
+| D4Evar _ =>
+(
+f0_var(env0, d4e0, stp1))
+//
+| _(*otherwise*) =>
+(
+  d4exp_p2tck(d4e0, stp1))
+) where
+{
+//
+(* ****** ****** *)
+//
+fun
+f0_var
+( env0:
+! tr34env
+, d4e0: d4exp
+, stp1: s2typ): d4exp =
+let
+//
+val-
+D4Evar(d2v1) = d4e0.node()
+//
+val
+opt1 =
+tr34env_search_dvar
+  (env0, d2v1) //val(opt1)
+//
+val
+t2p1 =
+(
+case+ opt1 of
+| ~
+optn_vt_nil
+( (*nil*) ) => d2v1.styp()
+| ~
+optn_vt_cons(t2p1) => t2p1)
+: s2typ // end-of-[val(t2p1)]
+//
+val () =
+tr34env_d2vins_dget
+(env0, d2v1, D4TYPstp(stp1))
+//
+in//let
+if
+linq(t2p1) then
+d4exp_p2tck(d4e0, t2p1) else d4e0
+end//let//end-of-[f0_var(env0,d4e0)]
+//
+(* ****** ****** *)
+//
+val loc0 = d4e0.lctn((*void*))
+//
+val (  ) =
+prerrln("trans34_d4exp_ptck: loc0 = ", loc0)
+val (  ) =
+prerrln("trans34_d4exp_ptck: d4e0 = ", d4e0)
+val (  ) =
+prerrln("trans34_d4exp_ptck: stp1 = ", stp1)
+//
+}(*where*) // end-of-[trans34_d4exp_ptck(...)]
 
 (* ****** ****** *)
 (* ****** ****** *)
