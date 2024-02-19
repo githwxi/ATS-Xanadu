@@ -22,17 +22,17 @@
 #extern
 fun
 board_nil
-((*void*)): board = RaiseErrorExn()
+((*void*)): board = raiseErrorExn()
 #extern
 fun
 board_cons
 ( x0: sint
-, xs: board): board = RaiseErrorExn()
+, xs: board): board = raiseErrorExn()
 //
 #extern
 fun
 board_forall
-  (xs: board): bool = RaiseErrorExn()
+  (xs: board): bool = raiseErrorExn()
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -35,11 +35,11 @@
 //
 fun
 <any:vt>
-RaiseErrorExn((*void*)): any
+raiseErrorExn((*void*)): any
 //
 fun
 <any:vt>
-RaiseErrmsgExn(msg: strn): any
+raiseErrmsgExn(msg: strn): any
 //
 (* ****** ****** *)
 
