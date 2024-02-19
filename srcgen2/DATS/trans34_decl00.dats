@@ -71,6 +71,24 @@ _(*TRANS34*) = "./trans34.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+d4exp_dvts
+( d4e0: d4exp
+, dvts: d2vts): d4exp =
+let
+//
+val loc0 = d4e0.lctn()
+val t2p0 = d4e0.styp()
+//
+in//let
+(
+d4exp_make_tpnd
+(loc0,t2p0,D4Edvts(d4e0, dvts)))
+end//let//end-of-[d4exp_dvts(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 trans34_d3ecl
   (env0, d3cl) =
@@ -336,7 +354,28 @@ val (  ) = prerrln
 in//let
 //
 let
+//
+val dvts =
+tr34env_getlam0(env0)
+//
+val tdxp =
+(
+case+ dvts of
+|
+list_nil() => tdxp
+|
+list_cons _ =>
+let
+val-
+TEQD4EXPsome
+(teq0, d4e1) = tdxp
+in//let
+TEQD4EXPsome
+( teq0
+, d4exp_dvts(d4e1, dvts)) end)
+//
 val (  ) = tr34env_poplam0(env0)
+//
 in//let
 d4fundcl(loc0,dvar,f4as,sres,tdxp,wsxp)
 end//let

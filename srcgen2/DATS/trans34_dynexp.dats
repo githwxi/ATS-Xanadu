@@ -460,7 +460,7 @@ tr34env_d2vins_dget
 in//let
   d4exp_make_tpnd
   (loc0, t2p1, D4Evar(d2v1)) end
-end where // end-of-[let]
+end where // end-of-let//val()
 {
 //
 fun
@@ -537,14 +537,21 @@ prerrln
 // *)
 //
 in//let
+//
 let
+//
 val d4es =
 trans34_d4explst_tpcks
-(env0, loc0, d4es, targ)
-in
+  (env0, loc0, d4es, targ) //val(d4es)
+val d4es =
+trans34_d4explst_ptcks
+  (env0, loc0, d4es, targ) //val(d4es)
+//
+in//let
   d4exp_make_tpnd
   (loc0, tres, D4Edapp(d4f0,npf1,d4es))
 end (*let*)
+//
 end (*let*) // end of [f0_dapp(env0,d3e0)]
 //
 (* ****** ****** *)

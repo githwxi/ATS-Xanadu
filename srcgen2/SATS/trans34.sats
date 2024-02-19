@@ -310,11 +310,21 @@ fun
 linstk_popcas0
   ( stk: &linstk >> _ ): sint
 //
+(* ****** ****** *)
+//
 (*
 HX-2024-02-17:
 Maybe [pop] and [get] can be
 merged into a single function
 *)
+//
+fun
+linstk_getlam0
+  ( stk: &linstk >> _ ): d2vts
+fun
+linstk_getlet0
+  ( stk: &linstk >> _ ): d2vts
+//
 fun
 linstk_getift0
   ( stk: &linstk >> _ ): d2vts
@@ -426,11 +436,18 @@ tr34env_popcas0
 (* ****** ****** *)
 //
 fun
+tr34env_getlam0
+(env0: !tr34env): d2vts//end-fun
+fun
+tr34env_getlet0
+(env0: !tr34env): d2vts//end-fun
+//
+fun
 tr34env_getift0
-(env0: !tr34env): d2vts//end-fin
+(env0: !tr34env): d2vts//end-fun
 fun
 tr34env_getcas0
-(env0: !tr34env): d2vts//end-fin
+(env0: !tr34env): d2vts//end-fun
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -727,6 +744,14 @@ trans34_d4exp_tpck
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+trans34_d4exp_ptck
+( env0: !tr34env
+, d4e0: d4exp, t2p0: s2typ): d4exp
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2024-02-18:
 It checks that
@@ -750,6 +775,13 @@ trans34_d4cas_dvts
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+trans34_d4explst_ptcks
+( env0:
+! tr34env
+, loc0: loc_t
+, d4es: d4explst, t2ps: s2typlst): d4explst
 //
 fun
 trans34_d4explst_tpcks

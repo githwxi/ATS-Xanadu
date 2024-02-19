@@ -37,10 +37,14 @@
 //
 (* ****** ****** *)
 //
+(*
+HX-2024-02-19:
+range1: 1-dimension
+*)
+//
 datatype
 range1(a:type) =
-|
-RANGE1 of (a, a, nint)
+|RANGE1 of (a, a, nint)
 //
 (* ****** ****** *)
 //

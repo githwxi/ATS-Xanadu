@@ -587,7 +587,7 @@ end (*let*) // end of [linstk_popcas0(stk)]
 (* ****** ****** *)
 //
 #implfun
-linstk_getift0
+linstk_getlam0
   (  stk0  ) = let
 //
 #vwtpdef
@@ -605,26 +605,19 @@ loop
 case+ kxs of
 //
 | ~
-linstk_ift0
+linstk_nil
+ ((*00*)) => (kxs, res)
+| ~
+linstk_lam0
 (   kxs   ) => (kxs, res)
 //
 | ~
-linstk_denv
+linstk_dvar
 (d2v,dtp,kxs) =>
 loop(kxs, res, err) where
 {
-(*
-val () =
-prerrln
-("\
-linstk_getift0:loop:\
-linstk_denv: d2v = ", d2v)
-val () =
-prerrln
-("\
-linstk_getift0:loop:\
-linstk_denv: dtp = ", dtp)
-*)
+val res =
+list_vt_cons(@(d2v,dtp), res)
 }
 //
 | ~
@@ -644,7 +637,161 @@ val res =
 list_vt_cons(@(d2v,dtp), res)
 }
 //
-)(*case+*)//end-of-[loop(...)]
+| ~
+linstk_denv
+(d2v,dtp,kxs) =>
+loop(kxs, res, err) where
+{
+(*
+val () =
+prerrln
+("\
+linstk_getlam0:\
+loop:linstk_denv: d2v = ", d2v)
+val () =
+prerrln
+("\
+linstk_getlam0:\
+loop:linstk_denv: dtp = ", dtp)
+*)
+}
+//
+| ~
+linstk_dvtp
+(d2v,dtp,kxs) =>
+loop(kxs, res, err) where
+{
+(*
+val () =
+prerrln
+("\
+linstk_getlam0:\
+loop:linstk_dvtp: d2v = ", d2v)
+val () =
+prerrln
+("\
+linstk_getlam0:\
+loop:linstk_dvtp: dtp = ", dtp)
+*)
+}
+//
+)(*case+*)//end-of-[loop( ... )]
+//
+in//let
+//
+let
+val
+(stk1, dvts) =
+loop(stk0, res, err) where
+{
+var err = 0
+val res = list_vt_nil(*void*)}
+in//let
+stk0 := stk1; d2vdtplst_d2vtize(dvts)
+end//let
+end (*let*) // end of [linstk_getlam0(stk)]
+//
+(* ****** ****** *)
+//
+#implfun
+linstk_getift0
+  (  stk0  ) = let
+//
+#vwtpdef
+res_vt =
+list_vt@(d2var, d4typ)
+//
+fnx
+loop
+( kxs
+: linstk
+, res: res_vt
+, err: &sint >> _
+) : @(linstk, res_vt) =
+(
+case+ kxs of
+//
+| ~
+linstk_nil
+ ((*00*)) => (kxs, res)
+| ~
+linstk_ift0
+(   kxs   ) => (kxs, res)
+//
+| ~
+linstk_dget
+(d2v,dtp,kxs) =>
+loop(kxs, res, err) where
+{
+val res =
+list_vt_cons(@(d2v,dtp), res)
+}
+| !
+linstk_dset
+(d2v,dtp,kxs) =>
+loop(kxs, res, err) where
+{
+val res =
+list_vt_cons(@(d2v,dtp), res)
+}
+//
+| ~
+linstk_dvar
+(d2v,dtp,kxs) =>
+loop(kxs, res, err) where
+{
+(*
+val () =
+prerrln
+("\
+linstk_getift0:\
+loop:linstk_dvar: d2v = ", d2v)
+val () =
+prerrln
+("\
+linstk_getift0:\
+loop:linstk_dvar: dtp = ", dtp)
+*)
+}
+| ~
+linstk_denv
+(d2v,dtp,kxs) =>
+loop(kxs, res, err) where
+{
+(*
+val () =
+prerrln
+("\
+linstk_getift0:\
+loop:linstk_denv: d2v = ", d2v)
+val () =
+prerrln
+("\
+linstk_getift0:\
+loop:linstk_denv: dtp = ", dtp)
+*)
+}
+//
+| ~
+linstk_dvtp
+(d2v,dtp,kxs) =>
+loop(kxs, res, err) where
+{
+(*
+val () =
+prerrln
+("\
+linstk_getift0:\
+loop:linstk_dvtp: d2v = ", d2v)
+val () =
+prerrln
+("\
+linstk_getift0:\
+loop:linstk_dvtp: dtp = ", dtp)
+*)
+}
+//
+)(*case+*)//end-of-[loop( ... )]
 //
 in//let
 //
@@ -659,6 +806,113 @@ in//let
 stk0 := stk1; d2vdtplst_d2vtize(dvts)
 end//let
 end (*let*) // end of [linstk_getift0(stk)]
+//
+(* ****** ****** *)
+//
+#implfun
+linstk_getcas0
+  (  stk0  ) = let
+//
+#vwtpdef
+res_vt =
+list_vt@(d2var, d4typ)
+//
+fnx
+loop
+( kxs
+: linstk
+, res: res_vt
+, err: &sint >> _
+) : @(linstk, res_vt) =
+(
+case+ kxs of
+//
+| ~
+linstk_nil
+ ((*00*)) => (kxs, res)
+| ~
+linstk_cas0
+(   kxs   ) => (kxs, res)
+//
+| ~
+linstk_dvar
+(d2v,dtp,kxs) =>
+loop(kxs, res, err) where
+{
+val res =
+list_vt_cons(@(d2v,dtp), res)
+}
+//
+| ~
+linstk_dget
+(d2v,dtp,kxs) =>
+loop(kxs, res, err) where
+{
+val res =
+list_vt_cons(@(d2v,dtp), res)
+}
+| !
+linstk_dset
+(d2v,dtp,kxs) =>
+loop(kxs, res, err) where
+{
+val res =
+list_vt_cons(@(d2v,dtp), res)
+}
+//
+| ~
+linstk_denv
+(d2v,dtp,kxs) =>
+loop(kxs, res, err) where
+{
+(*
+val () =
+prerrln
+("\
+linstk_getcas0:\
+loop:linstk_denv: d2v = ", d2v)
+val () =
+prerrln
+("\
+linstk_getcas0:\
+loop:linstk_denv: dtp = ", dtp)
+*)
+}
+//
+| ~
+linstk_dvtp
+(d2v,dtp,kxs) =>
+loop(kxs, res, err) where
+{
+(*
+val () =
+prerrln
+("\
+linstk_getcas0:\
+loop:linstk_dvtp: d2v = ", d2v)
+val () =
+prerrln
+("\
+linstk_getcas0:\
+loop:linstk_dvtp: dtp = ", dtp)
+*)
+}
+//
+)(*case+*)//end-of-[loop( ... )]
+//
+in//let
+//
+let
+val
+(stk1, dvts) =
+loop(stk0, res, err) where
+{
+var err = 0
+val res = list_vt_nil(*void*)}
+in//let
+stk0 := stk1; d2vdtplst_d2vtize(dvts)
+end//let
+end (*let*) // end of [linstk_getcas0(stk)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1028,6 +1282,44 @@ end(*let*)//end-of-(tr34env_popcas0(env0))
 (* ****** ****** *)
 //
 #implfun
+tr34env_getlam0
+(     env0     ) = let
+//
+val+
+@TR34ENV
+(d2vlst, !linstk) = env0
+//
+in//let
+//
+(
+$fold(env0); dvts) where
+{
+val dvts = linstk_getlam0(linstk)}
+//
+end(*let*)//end-of-(tr34env_getlam0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+tr34env_getlet0
+(     env0     ) = let
+//
+val+
+@TR34ENV
+(d2vlst, !linstk) = env0
+//
+in//let
+//
+(
+$fold(env0); dvts) where
+{
+val dvts = linstk_getlet0(linstk)}
+//
+end(*let*)//end-of-(tr34env_getlet0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
 tr34env_getift0
 (     env0     ) = let
 //
@@ -1238,6 +1530,7 @@ D4Pvar(d2v1) = dpat.node()
 in//let
 let
 val t2p0 = dpat.styp()
+val t2p0 = s2typ_unargx(t2p0)
 in//let
 tr34env_d2vins_dvar(env0,d2v1,t2p0)
 end//let

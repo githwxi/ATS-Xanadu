@@ -566,8 +566,8 @@ need to be skipped here!
 (
 s2typ_hnfiz0_e1nv
 <e1nv>(e1nv, t2p0)) where
-{
-  val t2p0 = s2typ_unmodx(t2p0) }
+{ val t2p0 =
+  s2typ_untopx(s2typ_unargx(t2p0)) }
 //where//end-of-[unify00_s2typ$hnfz(...)]
 //
 (* ****** ****** *)
@@ -610,7 +610,7 @@ s2typ_eval$s2cst: s2c0 = ", s2c0)
 //
 #impltmp
 s2typ_eval$s2var
-<e1nv>(env0,s2v0) = optn_vt_nil((*0*))
+<e1nv>(env0,s2v0) = optn_vt_nil()
 //
 (* ****** ****** *)
 //
@@ -625,8 +625,8 @@ need to be skipped here!
 (
 s2typ_hnfiz0_e1nv
 <e1nv>(e1nv, t2p0)) where
-{
-  val t2p0 = s2typ_unmodx(t2p0) }
+{ val t2p0 =
+  s2typ_untopx(s2typ_unargx(t2p0)) }
 //where//end-of-[unify00_s2typ$hnfz(...)]
 //
 (* ****** ****** *)

@@ -286,19 +286,12 @@ s2typ_eval$s2cst: s2c0 = ", s2c0)
 s2typ_eval$s2var
 <e1nv>(env0,s2v0) = optn_vt_nil()
 //
-(*
-val () =
-prerrln("unify34_s2typ: t2p1 = ", t2p1)
-val () =
-prerrln("unify34_s2typ: t2p2 = ", t2p2)
-*)
-//
 #impltmp
 unify00_s2typ$hnfz
 <e1nv>(e1nv, t2p0) =
 (*
 HX-2034-01-22:
-type modifiers
+top modifiers
 need to be kept here!!!
 *)
 s2typ_topize
@@ -306,25 +299,31 @@ s2typ_topize
 s2typ_hnfiz0_e1nv
 <e1nv>(e1nv, t2p0)) where
 {
-(*
-val t2p0 = s2typ_unmodx(t2p0)
-*)
+val t2p0 = s2typ_unargx(t2p0)
 }(*where*)//end-of-[unify00_s2typ$hnfz]
 //
+(*
+val () =
+prerrln
+("unify34_s2typ: t2p1 = ", t2p1)
+val () =
+prerrln
+("unify34_s2typ: t2p2 = ", t2p2)
+*)
+//
+in//let
+//
+let
 fun
 isTOP0
 (t2p0: s2typ): bool =
-(
-case+ t2p0.node() of
-|
-T2Ptop0 _ => true | _ => false)
+(case+ t2p0.node() of
+|T2Ptop0 _ => true | _ => false)
 fun
 isTOP1
 (t2p0: s2typ): bool =
-(
-case+ t2p0.node() of
-|
-T2Ptop0 _ => true | _ => false)
+(case+ t2p0.node() of
+|T2Ptop0 _ => true | _ => false)
 //
 in//let
 //
@@ -356,6 +355,8 @@ end//let
 )
 else
 unify00_s2typ_e1nv<e1nv>(env0, t2p1, t2p2)
+//
+end//let
 //
 end (*let*) // end of [unify34_s2typ(env0,...)]
 //

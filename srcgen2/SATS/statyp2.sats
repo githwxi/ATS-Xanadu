@@ -306,15 +306,14 @@ s2typ_rcd2
 ,npf1:sint,ltps:l2t2plst): s2typ
 (* ****** ****** *)
 //
-(*
 fun
 s2typ_unargx(t2p0: s2typ): s2typ
 fun
 s2typ_untopx(t2p0: s2typ): s2typ
-*)
-//
+(*
 fun
 s2typ_unmodx(t2p0: s2typ): s2typ
+*)
 //
 (* ****** ****** *)
 fun
