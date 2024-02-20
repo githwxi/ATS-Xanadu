@@ -354,7 +354,15 @@ d4exp_node =
 //
 (* ****** ****** *)
 //
-|D4Edvts of (d4exp, d2vts)
+|D4Edvts of (d4exp,d2vts)
+//
+(*
+HX-2024-02-19:
+for the bef/aft syntax
+(for function arguments)
+*)
+|D4Efarg of
+( d4exp(*fun*), f4arglst )
 //
 (* ****** ****** *)
 //

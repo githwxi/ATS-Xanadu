@@ -170,12 +170,17 @@ print("D4Ecst(", d2c, ")")
 //
 (* ****** ****** *)
 //
-|
-D4Edvts
+|D4Edvts
 (d4e1, dvts) =>
 (
 print
 ("D4Edvts(", d4e1, ";", dvts, ")"))
+//
+|D4Efarg
+(d4e1, f4as) =>
+(
+print
+("D4Efarg(", d4e1, ";", f4as, ")"))
 //
 (* ****** ****** *)
 //
