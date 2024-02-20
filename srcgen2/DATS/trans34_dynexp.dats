@@ -141,6 +141,23 @@ _(* non-D4Edvts *) => list_nil())
 (* ****** ****** *)
 //
 fun
+d4pat_p2tck
+( d4p0: d4pat
+, stp1: s2typ): d4pat =
+let
+//
+val loc0 = d4p0.lctn()
+val t2p0 = d4p0.styp()
+//
+in//let
+(
+d4pat_make_tpnd
+(loc0,t2p0,D4Pp2tck(d4p0, stp1)))
+end//let//end-of-[d4pat_p2tck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d4exp_p2tck
 ( d4e0: d4exp
 , stp1: s2typ): d4exp =
@@ -279,7 +296,7 @@ val loc0 = d3p0.lctn()
 val t2p0 = d3p0.styp()
 val-D3Pcon(d2c1) = d3p0.node()
 //
-}(*where*)//end-of-[f0_var(env0,d3p0)]
+}(*where*)//end-of-[f0_con(env0,d3p0)]
 //
 (* ****** ****** *)
 //
@@ -467,6 +484,7 @@ optn_vt_cons(t2p1) => t2p1)
 : s2typ // end-of-[val(t2p1)]
 //
 val () =
+(
 if
 linq(t2p1)
 then
@@ -476,7 +494,7 @@ s2typ_top1(t2p1)
 in//let
 tr34env_d2vins_dget
 ( env0
-, d2v1, D4TYPstp(t2p1)) end
+, d2v1, D4TYPstp(t2p1)) end )
 //
 in//let
   d4exp_make_tpnd
@@ -884,6 +902,181 @@ F3ARGmets
 (   s2es   ) => f4arg(loc0,F4ARGmets(s2es))
 //
 end(*let*)//end-of-[trans34_f3arg(env0,farg)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trans34_d4pxp
+( env0, d4p0 ) =
+let
+val loc0 = d4p0.lctn()
+val t2p0 = d4p0.styp()
+in//let
+//
+case+
+t2p0.node() of
+|T2Parg1
+(knd0, tinv) =>
+(
+case+
+tinv.node() of
+|
+T2Patx2
+(tbef, taft) =>
+auxmain_ptck(env0, d4p0, taft)
+|
+_(*non-T2Patx2*) =>
+auxmain_ptck(env0, d4p0, tinv)
+)
+|
+_(* otherwise *) => d4pat_none0(loc0)
+//
+end where
+{
+//
+fun
+f0_var
+( env0:
+! tr34env
+, d4p0: d4pat): d4pat =
+let
+//
+val loc0 = d4p0.lctn()
+//
+val-
+D4Pvar(d2v1) = d4p0.node()
+//
+val opt1 =
+tr34env_search_dvar
+  (env0, d2v1) //val(opt1)
+//
+val t2p1 =
+(
+case+ opt1 of
+| ~
+optn_vt_nil
+( (*nil*) ) => d2v1.styp()
+| ~
+optn_vt_cons(t2p1) => t2p1)
+: s2typ // end-of-[val(t2p1)]
+//
+val () =
+(
+if
+linq(t2p1)
+then
+let
+val t2p1 =
+s2typ_top1(t2p1)
+in//let
+tr34env_d2vins_dget
+( env0
+, d2v1, D4TYPstp(t2p1)) end )
+//
+in//let
+(
+  d4pat_make_tpnd
+  (loc0, t2p1, D4Pvar(d2v1)) )
+end//let//end-of-[f0_var(env0,d4p0)]
+//
+fun
+auxmain
+( env0:
+! tr34env
+, d4p0: d4pat): d4pat =
+(
+case+
+d4p0.node() of
+|
+D4Pvar _ => f0_var(env0, d4p0)
+//
+|D4Pannot
+(d4p1, _, _) => auxmain(env0, d4p1)
+//
+|_(*otherwise*) =>
+(
+  d4pat_none0(d4p0.lctn((*void*))) )
+//
+) where
+{
+//
+val () =
+(
+  prerr("trans34_d4pxp:") )
+val () =
+(
+  prerrln("auxmain: d4p0 = ", d4p0) )
+//
+}(*where*)//end-of-[auxmain(env0,...)]
+//
+fun
+auxmain_ptck
+( env0:
+! tr34env
+, d4p0: d4pat
+, taft: s2typ): d4pat =
+let
+//
+val
+d4p0 = auxmain(env0, d4p0)
+//
+val t2p0 = d4p0.styp((*0*))
+//
+val ubtf =
+unify34_s2typ(env0, t2p0, taft)
+in//let
+(
+  if
+  ubtf then
+  d4p0 else d4pat_p2tck(d4p0, taft) )
+end//let//end-of-[auxmain_ptck(env0,...)]
+//
+}(*where*)//end-of-[trans34_d4pxp(env0,d4p0)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans34_f4axp
+( env0, farg ) =
+let
+//
+val loc0 = farg.lctn()
+//
+(*
+val () =
+prerrln
+("trans34_f4axp: loc0 = ", loc0)
+val () =
+prerrln
+("trans34_f4axp: farg = ", farg)
+*)
+//
+in//let
+//
+case+
+farg.node() of
+//
+|
+F4ARGdapp(npf1, d4ps) =>
+let
+val loc0 = farg.lctn()
+val d4ps =
+trans34_d4pxplst(env0, d4ps)
+in//let
+f4arg(loc0,F4ARGdapp(npf1,d4ps))
+end (*let*) // end of [F4ARGdapp]
+//
+|
+F4ARGsapp
+(s2vs, s2ps) =>
+(
+  f4arg(loc0,F4ARGsapp(s2vs,s2ps)))
+|
+F4ARGmets
+(   s2es   ) => f4arg(loc0,F4ARGmets(s2es))
+//
+end(*let*)//end-of-[trans34_f4axp(env0,farg)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
