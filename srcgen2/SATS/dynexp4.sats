@@ -284,6 +284,8 @@ d4pat_node =
 (* ****** ****** *)
 |D4Pt2pck of (d4pat, s2typ)//HX: casting
 (* ****** ****** *)
+|D4Pp2tck of (d4pat, s2typ)//HX: rtrning
+(* ****** ****** *)
 //
 |D4Pnone0 of ((*0*))
 |D4Pnone1 of (d3pat) | D4Pnone2 of (d4pat)
