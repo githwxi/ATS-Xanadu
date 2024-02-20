@@ -916,8 +916,14 @@ in//let
 //
 case+
 t2p0.node() of
+//
 |T2Parg1
 (knd0, tinv) =>
+if
+knd0 = 0
+then
+d4pat_none0(loc0)
+else
 (
 case+
 tinv.node() of
@@ -927,8 +933,13 @@ T2Patx2
 auxmain_ptck(env0, d4p0, taft)
 |
 _(*non-T2Patx2*) =>
-auxmain_ptck(env0, d4p0, tinv)
-)
+auxmain_ptck(env0, d4p0, tinv))
+//
+|T2Patx2
+(tbef, taft) =>
+(
+auxmain_ptck(env0, d4p0, taft))
+//
 |
 _(* otherwise *) => d4pat_none0(loc0)
 //
@@ -1267,6 +1278,9 @@ stp1.node() of
 //
 |T2Parg1
 (knd0, tinv) =>
+if
+knd0 = 0
+then d4e0 else
 (
 case+
 tinv.node() of
@@ -1276,15 +1290,15 @@ T2Patx2
 auxmain(env0, d4e0, taft)
 |
 _(*non-T2Patx2*) =>
-auxmain(env0, d4e0, tinv)
-)
+auxmain(env0, d4e0, tinv))
 //
 |T2Patx2
 (tbef, taft) =>
-auxmain(env0, d4e0, taft)
+(
+auxmain(env0, d4e0, taft))
 //
 |
-_(* otherwise *) => (d4e0)
+_(* otherwise *) => ( d4e0 )
 ) where
 {
 //
