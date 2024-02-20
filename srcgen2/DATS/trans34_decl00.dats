@@ -368,11 +368,11 @@ list_cons _ =>
 let
 val-
 TEQD4EXPsome
-(teq0, d4e1) = tdxp
+(teq1, d4e2) = tdxp
 in//let
 TEQD4EXPsome
-( teq0
-, d4exp_dvts(d4e1, dvts)) end)
+( teq1
+, d4exp_dvts(d4e2, dvts)) end)
 //
 val (  ) = tr34env_poplam0(env0)
 //

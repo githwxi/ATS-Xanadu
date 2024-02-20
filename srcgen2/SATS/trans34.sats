@@ -578,6 +578,13 @@ fun
 trans34_f3arg
 (env0: !tr34env, farg: f3arg): f4arg
 //
+fun
+trans34_f4axp
+(env0: !tr34env, farg: f4arg): f4arg
+fun
+trans34_d4pxp
+(env0: !tr34env, dpat: d4pat): d4pat
+//
 (* ****** ****** *)
 //
 fun

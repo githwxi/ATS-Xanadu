@@ -212,7 +212,9 @@ d4pat_make_tpnd
 //
 | _(*otherwise*) =>
 let
+(*
   val loc0 = d3p0.lctn((*void*))
+*)
 in//let
 (
   d4pat(loc0, t2p0, D4Pnone1(d3p0)) )
