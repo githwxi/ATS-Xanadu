@@ -77,14 +77,31 @@ d4exp_dvts
 , dvts: d2vts): d4exp =
 let
 //
-val loc0 = d4e0.lctn()
-val t2p0 = d4e0.styp()
+  val loc0 = d4e0.lctn()
+  val t2p0 = d4e0.styp()
 //
 in//let
 (
 d4exp_make_tpnd
 (loc0,t2p0,D4Edvts(d4e0, dvts)))
 end//let//end-of-[d4exp_dvts(...)]
+//
+(* ****** ****** *)
+//
+fun
+d4exp_farg
+( d4e0: d4exp
+, f4as: f4arglst): d4exp =
+let
+//
+  val loc0 = d4e0.lctn()
+  val t2p0 = d4e0.styp()
+//
+in//let
+(
+d4exp_make_tpnd
+(loc0,t2p0,D4Efarg(d4e0, f4as)))
+end//let//end-of-[d4exp_farg(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -332,17 +349,27 @@ TEQD4EXPsome
 //
 val tres =
 f0_tres(f3as, dvar.styp())
+//
 (*
-val (  ) = prerrln
-("f0_d3fundcl(34): dvar = ", dvar)
-val (  ) = prerrln
-("f0_d3fundcl(34): tres = ", tres)
+val (  ) = prerrln(
+"f0_d3fundcl(34): dvar = ", dvar)
+val (  ) = prerrln(
+"f0_d3fundcl(34): tres = ", tres)
 *)
+//
 val (  ) =
 tr34env_insert_farglst(env0, f4as)
 val d4e2 =
-trans34_d3exp_tpck(env0,d3e2,tres)}
-)
+trans34_d3exp_tpck(env0,d3e2,tres)
+//
+val d4e2 =
+(
+  d4exp_farg(d4e2, f4as)) where
+{
+val
+f4as = trans34_f4axplst(env0,f4as)}
+}
+) (*case+*) // end-of-[ val(tdxp) ]
 //
 (*
 val (  ) = prerrln
