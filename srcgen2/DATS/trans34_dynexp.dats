@@ -925,12 +925,26 @@ trans34_l3d3elst
   list_trans34_fnp(env0, ldes, trans34_l3d3e))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 trans34_f3arglst
   (env0, f3as) =
 (
   list_trans34_fnp(env0, f3as, trans34_f3arg))
+//
+(* ****** ****** *)
+//
+#implfun
+trans34_d4pxplst
+  (env0, d4ps) =
+(
+  list_trans34_fnp(env0, d4ps, trans34_d4pxp))
+#implfun
+trans34_f4axplst
+  (env0, f4as) =
+(
+  list_trans34_fnp(env0, f4as, trans34_f4axp))
 //
 (* ****** ****** *)
 (* ****** ****** *)
