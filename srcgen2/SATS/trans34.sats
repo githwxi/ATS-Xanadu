@@ -272,6 +272,13 @@ fun
 linstk_letvars
   ( stk: !linstk ): d2varlst
 //
+fun
+linstk_lamenvs
+  ( stk: !linstk ): d2varlst
+fun
+linstk_letenvs
+  ( stk: !linstk ): d2varlst
+//
 (* ****** ****** *)
 //
 fun

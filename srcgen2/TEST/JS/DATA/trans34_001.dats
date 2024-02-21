@@ -32,7 +32,7 @@ foo2
 //
 fun
 foo3
-(x: ~VT): VT = foo2(x)
+(x: ~VT): VT = foo3(x)
 //
 (* ****** ****** *)
 ////
