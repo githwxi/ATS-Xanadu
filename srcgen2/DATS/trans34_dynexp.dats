@@ -91,6 +91,15 @@ _(*TRANS34*) = "./trans34.dats"
 (* ****** ****** *)
 //
 fun
+s2typ_new0_x2tp
+( loc0: loc_t ): s2typ =
+(
+s2typ_xtv
+(x2t2p_make_lctn(loc0)))
+//
+(* ****** ****** *)
+//
+fun
 s2typ_top1
 (t2p0: s2typ): s2typ =
 let
@@ -426,6 +435,7 @@ d4exp_make_tpnd
 (* ****** ****** *)
 //
 |D3Eift0 _ => f0_ift0(env0, d3e0)
+|D3Ecas0 _ => f0_cas0(env0, d3e0)
 //
 (* ****** ****** *)
 //
@@ -594,6 +604,7 @@ end (*let*)
 end (*let*) // end of [f0_dapp(env0,d3e0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 local
 //
@@ -642,6 +653,8 @@ the_s2typ_void((*void*))
 optn_cons(d4e3) => d4e2.styp()))//fun
 //
 in//local
+//
+(* ****** ****** *)
 //
 fun
 f0_ift0
@@ -694,10 +707,48 @@ in//let
 (
   trans34_d4ift_dvts(env0, d4e0, dvts))
 //
-end (*end*) // end of [f0_ift0(env0,d3e0)]
+end (*let*) // end of [f0_ift0(env0,d3e0)]
 //
-end (*local*) // end of [local(f0_ift0(...)]
+(* ****** ****** *)
 //
+fun
+f0_cas0
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
+let
+//
+val loc0 = d3e0.lctn()
+val-
+D3Ecas0
+( tknd
+, d3e1, dcls) = d3e0.node()
+//
+val d4e1 =
+(
+  trans34_d3exp(env0, d3e1))
+//
+val targ = d4e1.styp((*void*))
+val tres = s2typ_new0_x2tp(loc0)
+//
+in//let
+//
+let
+val dcls =
+trans34_d3clslst_tpck1
+(env0, dcls, targ, tres)
+in//let
+  d4exp_make_tpnd
+  (loc0,tres,D4Ecas0(tknd,d4e1,dcls))
+end (*let*)
+//
+end (*let*) // end of [f0_cas0(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+end (*local*) // end of [local(f0_if0/cas0(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

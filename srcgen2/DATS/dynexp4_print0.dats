@@ -216,6 +216,12 @@ print
 ( d4e1,";"
 , dthn, ";", dels, ";", tenv, ")" ))
 //
+|
+D4Ecas0
+(tknd,d4e1,dcls) =>
+( print("D4Ecas0(");
+  print(tknd,";",d4e1,";",dcls,")"))
+//
 (* ****** ****** *)
 //
 |D4Etup0

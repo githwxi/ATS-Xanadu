@@ -321,9 +321,9 @@ print("D3Elet0(",dcls,";",d3e1,")"))
 //
 |
 D3Ecas0
-(tknd,d3e1,d3cs) =>
+(tknd,d3e1,dcls) =>
 ( print("D3Ecas0(");
-  print(tknd,";",d3e1,";",d3cs,")"))
+  print(tknd,";",d3e1,";",dcls,")"))
 //
 (* ****** ****** *)
 //

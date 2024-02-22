@@ -382,6 +382,9 @@ for the bef/aft syntax
   d4expopt(*thn*)
 , d4expopt(*els*), d2vts(*env*) )
 //
+|D4Ecas0 of
+( token(*+/0/-*), d4exp, d4clslst)
+//
 (* ****** ****** *)
 //
 |D4Eseqn of

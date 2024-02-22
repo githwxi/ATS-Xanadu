@@ -106,6 +106,10 @@ D4E = "./dynexp4.sats"
 (* ****** ****** *)
 #typedef f3arg = $D3E.f3arg
 (* ****** ****** *)
+#typedef d3gua = $D3E.d3gua
+#typedef d3gpt = $D3E.d3gpt
+#typedef d3cls = $D3E.d3cls
+(* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
 (* ****** ****** *)
@@ -134,6 +138,9 @@ D4E = "./dynexp4.sats"
 #typedef l3d3elst = $D3E.l3d3elst
 (* ****** ****** *)
 #typedef f3arglst = $D3E.f3arglst
+(* ****** ****** *)
+#typedef d3gualst = $D3E.d3gualst
+#typedef d3clslst = $D3E.d3clslst
 (* ****** ****** *)
 #typedef d3eclist = $D3E.d3eclist
 (* ****** ****** *)
@@ -270,6 +277,9 @@ linstk_lamvars
   ( stk: !linstk ): d2varlst
 fun
 linstk_letvars
+  ( stk: !linstk ): d2varlst
+fun
+linstk_casvars
   ( stk: !linstk ): d2varlst
 //
 fun
@@ -580,6 +590,7 @@ trans34_d3els
 ! tr34env, dthn: d3expopt): d4expopt
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 trans34_f3arg
@@ -592,6 +603,14 @@ fun
 trans34_d4pxp // HX: d4pat as d4exp
 (env0: !tr34env, dpat: d4pat): d4pat
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+trans34_d3gua
+(env0: !tr34env, d3g0: d3gua): d4gua
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -627,6 +646,7 @@ trans34_l3d3elst
 ! tr34env, ldes: l3d3elst): l4d4elst
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 trans34_f3arglst
@@ -642,6 +662,21 @@ trans34_d4pxplst
 ( env0:
 ! tr34env, d4ps: d4patlst): d4patlst
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+trans34_d3gualst
+( env0:
+! tr34env, d3gs: d3gualst): d4gualst
+fun
+trans34_d3clslst_tpck1
+(env0:
+!tr34env
+,dcls: d3clslst
+,targ: s2typ, tres: s2typ): d4clslst
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
