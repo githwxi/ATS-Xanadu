@@ -1258,15 +1258,35 @@ d4cls(loc0, D4CLSgpt(dgpt)) end
 |D3CLScls
 (dgpt, d3e1) =>
 let
+//
 val
 loc0 = dcls.lctn()
+//
+val (  ) =
+tr34env_pshcas0( env0 )
+//
 val dgpt =
-trans34_d3gpt_tpck
-(env0 , dgpt , targ)
+trans34_d3gpt_tpck(env0,dgpt,targ)
+//
+val (  ) =
+(
+  tr34env_insert_dgpt(env0, dgpt))
+//
 val d4e1 =
-trans34_d3exp_tpck
-(env0 , d3e1 , tres) in
-d4cls(loc0, D4CLScls(dgpt, d4e1)) end
+trans34_d3exp_tpck(env0,d3e1,tres)
+//
+val dvts = tr34env_getcas0( env0 )
+val (  ) = tr34env_popcas0( env0 )
+//
+in//let
+//
+let
+  val d4e1 = d4exp_dvts(d4e1, dvts)
+in//let
+  d4cls( loc0, D4CLScls(dgpt, d4e1) )
+end//let
+//
+end//let//end-of-[ D3CLScls(dgpt,d3e1) ]
 //
 )(*case+*)//end-of-[trans34_d3cls_tpck(...)]
 //

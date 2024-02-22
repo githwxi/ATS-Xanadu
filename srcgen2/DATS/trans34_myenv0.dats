@@ -1751,6 +1751,28 @@ prerrln("tr34env_insert_dpat: dpat = ", dpat)
 (* ****** ****** *)
 //
 #implfun
+tr34env_insert_dgpt
+  (env0, dgpt) =
+(
+case+
+dgpt.node() of
+|
+D4GPTpat(dpat) =>
+tr34env_insert_dpat(env0, dpat)
+|
+D4GPTgua(dpat, d4gs) =>
+tr34env_insert_dpat(env0, dpat)
+) where
+{
+//
+val () =
+prerrln("tr34env_insert_dgpt: dgpt = ", dgpt)
+//
+}(*where*)//end-of-[tr34env_insert_dgpt(env0,dgpt)]
+//
+(* ****** ****** *)
+//
+#implfun
 tr34env_insert_farg
   (env0, farg) =
 (
