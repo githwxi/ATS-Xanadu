@@ -2449,6 +2449,7 @@ F2ARGmets
 end(*let*)//end-of-[trans23_f2arg(env0,...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 trans23_d2gua
@@ -2532,8 +2533,8 @@ trans23_d2cls_tpck
 case+
 dcls.node() of
 //
-|
-D2CLSgpt(dgpt) =>
+|D2CLSgpt
+(  dgpt  ) =>
 let
 val
 loc0 = dcls.lctn()
@@ -2542,24 +2543,22 @@ trans23_d2gpt_tpck
 (env0, dgpt, targ) in
 d3cls(loc0, D3CLSgpt(dgpt)) end
 //
-|
-D2CLScls
-( dgpt, d2e1 ) =>
+|D2CLScls
+(dgpt, d2e1) =>
 let
 val
 loc0 = dcls.lctn()
-val
-dgpt =
+val dgpt =
 trans23_d2gpt_tpck
 (env0 , dgpt , targ)
-val
-d3e1 =
+val d3e1 =
 trans23_d2exp_tpck
 (env0 , d2e1 , tres) in
 d3cls(loc0, D3CLScls(dgpt, d3e1)) end
 //
 )(*case+*)//end-of-[trans23_d2cls_tpck(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun

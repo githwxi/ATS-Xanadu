@@ -1236,6 +1236,41 @@ d4gpt(loc0, D4GPTgua(d4p1, d4gs)) end
 )(*case+*)//end-of-[trans34_d3gpt_tpck(...)]
 //
 (* ****** ****** *)
+//
+#implfun
+trans34_d3cls_tpck
+( env0, dcls
+, targ, tres) =
+(
+case+
+dcls.node() of
+//
+|D3CLSgpt
+(  dgpt  ) =>
+let
+val
+loc0 = dcls.lctn()
+val dgpt =
+trans34_d3gpt_tpck
+(env0, dgpt, targ) in
+d4cls(loc0, D4CLSgpt(dgpt)) end
+//
+|D3CLScls
+(dgpt, d3e1) =>
+let
+val
+loc0 = dcls.lctn()
+val dgpt =
+trans34_d3gpt_tpck
+(env0 , dgpt , targ)
+val d4e1 =
+trans34_d3exp_tpck
+(env0 , d3e1 , tres) in
+d4cls(loc0, D4CLScls(dgpt, d4e1)) end
+//
+)(*case+*)//end-of-[trans34_d3cls_tpck(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
