@@ -123,6 +123,10 @@ D4E = "./dynexp4.sats"
 (* ****** ****** *)
 #typedef f4arg = $D4E.f4arg
 (* ****** ****** *)
+#typedef d4gua = $D4E.d4gua
+#typedef d4gpt = $D4E.d4gpt
+#typedef d4cls = $D4E.d4cls
+(* ****** ****** *)
 #typedef d4ecl = $D4E.d4ecl
 (* ****** ****** *)
 (* ****** ****** *)
@@ -161,6 +165,9 @@ D4E = "./dynexp4.sats"
 #typedef l4d4elst = $D4E.l4d4elst
 (* ****** ****** *)
 #typedef f4arglst = $D4E.f4arglst
+(* ****** ****** *)
+#typedef d4gualst = $D4E.d4gualst
+#typedef d4clslst = $D4E.d4clslst
 (* ****** ****** *)
 #typedef d4eclist = $D4E.d4eclist
 (* ****** ****** *)
@@ -518,6 +525,10 @@ fun
 tr34env_insert_dpat
 ( env0:
 ! tr34env, d4p0: d4pat): (void)
+fun
+tr34env_insert_dgpt
+( env0:
+! tr34env, dgpt: d4gpt): (void)
 fun
 tr34env_insert_farg
 ( env0:

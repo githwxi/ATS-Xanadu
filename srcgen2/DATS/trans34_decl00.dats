@@ -359,13 +359,14 @@ val (  ) = prerrln(
 //
 val (  ) =
 tr34env_insert_farglst(env0, f4as)
-val d4e2 =
-trans34_d3exp_tpck(env0,d3e2,tres)
 //
 val d4e2 =
 (
   d4exp_farg(d4e2, f4as)) where
 {
+val
+d4e2 =
+trans34_d3exp_tpck(env0,d3e2,tres)
 val
 f4as = trans34_f4axplst(env0,f4as)}
 }
