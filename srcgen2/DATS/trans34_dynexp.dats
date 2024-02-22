@@ -83,6 +83,17 @@ _(*TRANS34*) = "./trans34.dats"
 #symload lctn with f3arg_get_lctn
 #symload node with f3arg_get_node
 (* ****** ****** *)
+//
+#symload lctn with d3gua_get_lctn
+#symload node with d3gua_get_node
+//
+#symload lctn with d3gpt_get_lctn
+#symload node with d3gpt_get_node
+//
+#symload lctn with d3cls_get_lctn
+#symload node with d3cls_get_node
+//
+(* ****** ****** *)
 (* ****** ****** *)
 #symload lctn with d4exp_get_lctn
 #symload styp with d4exp_get_styp
@@ -1139,6 +1150,90 @@ F4ARGmets
 (   s2es   ) => f4arg(loc0,F4ARGmets(s2es))
 //
 end(*let*)//end-of-[trans34_f4axp(env0,farg)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trans34_d3gua
+( env0, dgua ) =
+(
+case+
+dgua.node() of
+//
+|D3GUAexp(d3e1) =>
+d4gua
+(
+loc0, D4GUAexp(d4e1)
+) where
+{
+//
+val
+loc0 = dgua.lctn((*0*))
+//
+val
+t2p1 = the_s2typ_bool()
+val
+d4e1 =
+trans34_d3exp_tpck(env0, d3e1, t2p1) }
+//
+|D3GUAmat(d3e1, d3p2) =>
+d4gua
+(loc0
+,D4GUAmat(d4e1, d4p2)
+) where
+{
+//
+val
+loc0 = dgua.lctn((*0*))
+//
+val
+d4e1 = 
+trans34_d3exp(env0, d3e1)
+val
+t2p1 = d4e1.styp((*void*))
+val
+d4p2 =
+trans34_d3pat_tpck(env0, d3p2, t2p1) }
+//
+)(*case+*)//end-of-[trans34_d3gua(env0,...)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans34_d3gpt_tpck
+( env0
+, dgpt, targ ) =
+(
+case+
+dgpt.node() of
+//
+|D3GPTpat
+(  d3p1  ) =>
+let
+val
+loc0 = dgpt.lctn()
+val
+d4p1 =
+trans34_d3pat_tpck
+(env0 , d3p1 , targ) in
+d4gpt(loc0, D4GPTpat(d4p1)) end
+//
+|D3GPTgua
+(d3p1, d3gs) =>
+let
+val
+loc0 = dgpt.lctn()
+val
+d4p1 =
+trans34_d3pat_tpck
+(env0 , d3p1 , targ)
+val
+d4gs =
+trans34_d3gualst(env0, d3gs) in
+d4gpt(loc0, D4GPTgua(d4p1, d4gs)) end
+//
+)(*case+*)//end-of-[trans34_d3gpt_tpck(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
