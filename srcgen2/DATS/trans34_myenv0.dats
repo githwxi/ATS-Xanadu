@@ -198,6 +198,12 @@ linstk_lam0
 |
 linstk_let0
  (  stk1  ) => res1
+|
+linstk_ift0
+ (  stk1  ) => res1
+|
+linstk_cas0
+ (  stk1  ) => res1
 *)
 //
 |
@@ -260,6 +266,14 @@ linstk_lam0
 linstk_let0
  (  stk1  ) => res1
 //
+(*
+|
+linstk_ift0
+ (  stk1  ) => res1
+|
+linstk_cas0
+ (  stk1  ) => res1
+*)
 |
 linstk_dvar
 (d2v0, dtp0, stk1) =>
@@ -279,6 +293,65 @@ loop(stk1, list_cons(d2v0, res1))
 *)
 )
 }(*where*)//end-of-[linstk_letvars(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+linstk_casvars
+  (  stk0  ) =
+(
+loop(stk0, list_nil())
+) where
+{
+fun
+loop
+( stk0:
+! linstk
+, res1: d2varlst): d2varlst =
+(
+case- stk0 of
+(*
+|
+linstk_nil
+ ( (*0*) ) => res1
+*)
+//
+(*
+|
+linstk_lam0
+ (  stk1  ) => res1
+|
+linstk_let0
+ (  stk1  ) => res1
+*)
+|
+linstk_cas0
+ (  stk1  ) => res1
+(*
+|
+linstk_ift0
+ (  stk1  ) => res1
+*)
+//
+|
+linstk_dvar
+(d2v0, dtp0, stk1) =>
+loop(stk1, list_cons(d2v0, res1))
+//
+|linstk_denv
+(d2v0, dtp0, stk1) => loop(stk1, res1)
+//
+|linstk_dget
+(d2v0, dtp0, stk1) => loop(stk1, res1)
+|linstk_dset
+(d2v0, dtp0, stk1) => loop(stk1, res1)
+//
+(*
+|linstk_dlft
+(d2v0, lft0, stk1) => loop(stk1, res1)
+*)
+)
+}(*where*)//end-of-[linstk_casvars(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
