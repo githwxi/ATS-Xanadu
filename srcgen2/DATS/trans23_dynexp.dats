@@ -2470,8 +2470,8 @@ trans23_d2exp_tpck(env0, d2e1, t2p1) }
 //
 |D2GUAmat(d2e1, d2p2) =>
 d3gua
-( loc0
-, D3GUAmat(d3e1, d3p2)) where
+(loc0
+,D3GUAmat(d3e1, d3p2)) where
 {
 val loc0 = dgua.lctn()
 val
@@ -2495,8 +2495,8 @@ trans23_d2gpt_tpck
 case+
 dgpt.node() of
 //
-|
-D2GPTpat(d2p1) =>
+|D2GPTpat
+(  d2p1  ) =>
 let
 val
 loc0 = dgpt.lctn()
@@ -2506,9 +2506,8 @@ trans23_d2pat_tpck
 (env0 , d2p1 , targ) in
 d3gpt(loc0, D3GPTpat(d3p1)) end
 //
-|
-D2GPTgua
-( d2p1, d2gs ) =>
+|D2GPTgua
+(d2p1, d2gs) =>
 let
 val
 loc0 = dgpt.lctn()

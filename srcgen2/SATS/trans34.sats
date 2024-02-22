@@ -609,6 +609,17 @@ trans34_d4pxp // HX: d4pat as d4exp
 fun
 trans34_d3gua
 (env0: !tr34env, d3g0: d3gua): d4gua
+fun
+trans34_d3gpt_tpck
+( env0:
+! tr34env
+, dgpt : d3gpt, targ : s2typ): d4gpt
+fun
+trans34_d3cls_tpck
+( env0:
+! tr34env
+, dcls : d3cls
+, targ : s2typ, tres : s2typ): d4cls
 //
 (* ****** ****** *)
 (* ****** ****** *)
