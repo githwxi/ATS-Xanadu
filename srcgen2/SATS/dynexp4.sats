@@ -247,6 +247,11 @@ d4lab_fprint
 #typedef l4d4elst = list(l4d4e)
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+HX-2024-02-23:
+This one needs to be sorted
+based on the d2var-key.
+*)
 #typedef
 d2vts = list@(d2var, s2typ)
 (* ****** ****** *)
@@ -719,17 +724,25 @@ d4fundcl_get_dpid:(d4fundcl)->d2var
 fun
 d4fundcl_get_farg:(d4fundcl)->f4arglst
 fun
-d4fundcl_get_sres:(d4fundcl)->s2res
+d4fundcl_get_sres:(d4fundcl)->(s2res)
 fun
 d4fundcl_get_tdxp:(d4fundcl)->teqd4exp
 fun
 d4fundcl_get_wsxp:(d4fundcl)->wths2exp
+(* ****** ****** *)
+fun
+d4fundcl_get_vars:(d4fundcl)->d2varlst
+fun
+d4fundcl_get_dvts:(d4fundcl)->( d2vts )
 (* ****** ****** *)
 #symload dpid with d4fundcl_get_dpid
 #symload farg with d4fundcl_get_farg(*lst*)
 #symload sres with d4fundcl_get_sres(*opt*)
 #symload tdxp with d4fundcl_get_tdxp(*opt*)
 #symload wsxp with d4fundcl_get_wsxp(*opt*)
+(* ****** ****** *)
+#symload tdxp with d4fundcl_get_vars(*opt*)
+#symload wsxp with d4fundcl_get_dvts(*opt*)
 (* ****** ****** *)
 //
 fun
@@ -750,7 +763,8 @@ d4fundcl_make_args
 , dpid:d2var
 , farg:f4arglst
 , sres:s2res
-, tdxp:teqd4exp, wsxp:wths2exp):d4fundcl
+, tdxp:teqd4exp, wsxp:wths2exp
+, d2vs:d2varlst, dvts:d2vts(*env*)):d4fundcl
 //
 #symload d4valdcl with d4valdcl_make_args
 #symload d4vardcl with d4vardcl_make_args

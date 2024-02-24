@@ -633,7 +633,9 @@ D4FUNDCL of
 , d2var
 , f4arglst
 , s2res
-, teqd4exp, wths2exp)
+, teqd4exp
+, wths2exp
+, d2varlst, d2vts)
 //
 #absimpl
 d4fundcl_tbox = d4fundcl
@@ -648,7 +650,8 @@ D4FUNDCL
 ( lctn
 , dpid
 , farg, sres
-, tdxp, wsxp) = dfun in lctn end
+, tdxp, wsxp
+, d2vs, dvts) = dfun in lctn end
 
 #implfun
 d4fundcl_get_dpid
@@ -658,7 +661,8 @@ D4FUNDCL
 ( lctn
 , dpid
 , farg, sres
-, tdxp, wsxp) = dfun in dpid end
+, tdxp, wsxp
+, d2vs, dvts) = dfun in dpid end
 
 #implfun
 d4fundcl_get_farg
@@ -668,7 +672,8 @@ D4FUNDCL
 ( lctn
 , dpid
 , farg, sres
-, tdxp, wsxp) = dfun in farg end
+, tdxp, wsxp
+, d2vs, dvts) = dfun in farg end
 
 #implfun
 d4fundcl_get_sres
@@ -678,7 +683,8 @@ D4FUNDCL
 ( lctn
 , dpid
 , farg, sres
-, tdxp, wsxp) = dfun in sres end
+, tdxp, wsxp
+, d2vs, dvts) = dfun in sres end
 
 (* ****** ****** *)
 
@@ -690,7 +696,8 @@ D4FUNDCL
 ( lctn
 , dpid
 , farg, sres
-, tdxp, wsxp) = dfun in tdxp end
+, tdxp, wsxp
+, d2vs, dvts) = dfun in tdxp end
 
 #implfun
 d4fundcl_get_wsxp
@@ -700,18 +707,22 @@ D4FUNDCL
 ( lctn
 , dpid
 , farg, sres
-, tdxp, wsxp) = dfun in wsxp end
+, tdxp, wsxp
+, d2vs, dvts) = dfun in wsxp end
 
 (* ****** ****** *)
-
+//
 #implfun
 d4fundcl_make_args
 ( lctn
-, dpid, farg, sres, tdxp, wsxp) =
+, dpid, farg
+, sres, tdxp, wsxp, d2vs, dvts) =
 (
 D4FUNDCL
-(lctn, dpid, farg, sres, tdxp, wsxp))
-
+( lctn
+, dpid, farg
+, sres, tdxp, wsxp, d2vs, dvts) )
+//
 (* ****** ****** *)
 
 endloc (*local*) // end of [ local(d4fundcl) ]
