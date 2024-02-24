@@ -402,10 +402,14 @@ TEQD4EXPsome
 ( teq1
 , d4exp_dvts(d4e2, dvts)) end)
 //
+val dvts = list_nil()
+val d2vs = tr34env_lamvars(env0)
 val (  ) = tr34env_poplam0(env0)
 //
 in//let
-d4fundcl(loc0,dvar,f4as,sres,tdxp,wsxp)
+d4fundcl
+( loc0,dvar
+, f4as,sres, tdxp,wsxp, d2vs,dvts)
 end//let
 //
 end where
