@@ -69,6 +69,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/dynexp4.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
@@ -414,25 +415,62 @@ datatype
 d4cls =
 D4CLS of
 (
-loctn, d4cls_node)
+loctn,
+dvars,
+d2vts, d4cls_node)
+//
 #absimpl
 d4cls_tbox = d4cls
 //
 in (* in-of-local *)
 //
+(*
 #implfun
 d4cls_make_node
-(   loc,nod   ) = D4CLS(loc,nod)
+  (loc , nod) =
+(
+  D4CLS(loc,dvs,vts,nod))
+where
+{
+val dvs = list_nil(*nil*)
+val vts = list_nil(*nil*) }
+*)
+//
+#implfun
+d4cls_make_args
+(loc,dvs,vts,nod) =
+(
+  D4CLS(loc, dvs, vts, nod))
 //
 #implfun
 d4cls_get_lctn(cls) =
 let
-  val+D4CLS(loc,nod) = cls in loc
+val+
+D4CLS
+(loc,dvs,vts,nod) = cls in loc
 end
+//
+#implfun
+d4cls_get_vars(cls) =
+let
+val+
+D4CLS
+(loc,dvs,vts,nod) = cls in dvs
+end
+#implfun
+d4cls_get_dvts(cls) =
+let
+val+
+D4CLS
+(loc,dvs,vts,nod) = cls in vts
+end
+//
 #implfun
 d4cls_get_node(cls) =
 let
-  val+D4CLS(loc,nod) = cls in nod
+val+
+D4CLS
+(loc,dvs,vts,nod) = cls in nod
 end
 //
 endloc (*local*) // end of [local(d4cls)]

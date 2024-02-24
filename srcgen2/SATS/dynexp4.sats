@@ -167,6 +167,9 @@ D3E = "./dynexp3.sats"
 #abstbox d4parsed_tbox//p0tr
 //
 (* ****** ****** *)
+#typedef
+dvars = list(d2var)//d2varlst
+(* ****** ****** *)
 #typedef d4patlst = list(d4pat)
 #typedef d4patopt = optn(d4pat)
 (* ****** ****** *)
@@ -408,12 +411,12 @@ token(*knd*), sint(*npf*), l4d4elst)
 |D4Elam0 of
 ( token, f4arglst
 , s2res, f1unarrw
-, d3exp, d2varlst(*arg*), d2vts(*env*))
+, d3exp, dvars(*arg*), d2vts(*env*))
 |D4Efix0 of
 ( token(*knd*)
 , d2var, f4arglst
 , s2res, f1unarrw
-, d3exp, d2varlst(*arg*), d2vts(*env*))
+, d3exp, dvars(*arg*), d2vts(*env*))
 //
 (* ****** ****** *)
 //
@@ -573,7 +576,7 @@ d4gpt_get_node(d4gpt): d4gpt_node
 fun
 d4cls_get_lctn(d4cls): loc_t
 fun
-d4cls_get_vars(d4cls): d2varlst
+d4cls_get_vars(d4cls): ( dvars )
 fun
 d4cls_get_dvts(d4cls): ( d2vts )
 fun
@@ -592,12 +595,24 @@ d4gua_make_node
 fun
 d4gpt_make_node
 (loc0:loc_t,node:d4gpt_node):d4gpt
+//
+(*
 fun
 d4cls_make_node
 (loc0:loc_t,node:d4cls_node):d4cls
+*)
+fun
+d4cls_make_args
+(loc0:loc_t
+,d2vs:dvars
+,dvts:d2vts,node:d4cls_node):d4cls
+//
 #symload d4gua with d4gua_make_node
 #symload d4gpt with d4gpt_make_node
+(*
 #symload d4cls with d4cls_make_node
+*)
+#symload d4cls with d4cls_make_args
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -731,7 +746,7 @@ fun
 d4fundcl_get_wsxp:(d4fundcl)->wths2exp
 (* ****** ****** *)
 fun
-d4fundcl_get_vars:(d4fundcl)->d2varlst
+d4fundcl_get_vars:(d4fundcl)->( dvars )
 fun
 d4fundcl_get_dvts:(d4fundcl)->( d2vts )
 (* ****** ****** *)
@@ -763,8 +778,9 @@ d4fundcl_make_args
 , dpid:d2var
 , farg:f4arglst
 , sres:s2res
-, tdxp:teqd4exp, wsxp:wths2exp
-, d2vs:d2varlst, dvts:d2vts(*env*)):d4fundcl
+, tdxp:teqd4exp
+, wsxp:wths2exp
+, d2vs:dvars, dvts:d2vts(*env*)):d4fundcl
 //
 #symload d4valdcl with d4valdcl_make_args
 #symload d4vardcl with d4vardcl_make_args
