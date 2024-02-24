@@ -400,6 +400,18 @@ token(*knd*), sint(*npf*), l4d4elst)
 //
 (* ****** ****** *)
 //
+|D4Elam0 of
+( token, f4arglst
+, s2res, f1unarrw
+, d3exp, d2varlst(*arg*), d2vts(*env*))
+|D4Efix0 of
+( token(*knd*)
+, d2var, f4arglst
+, s2res, f1unarrw
+, d3exp, d2varlst(*arg*), d2vts(*env*))
+//
+(* ****** ****** *)
+//
 |D4El2bck of (d4exp, label)//HX: casting
 |D4Et2pck of (d4exp, s2typ)//HX: casting
 //
@@ -556,9 +568,15 @@ d4gpt_get_node(d4gpt): d4gpt_node
 fun
 d4cls_get_lctn(d4cls): loc_t
 fun
+d4cls_get_vars(d4cls): d2varlst
+fun
+d4cls_get_dvts(d4cls): ( d2vts )
+fun
 d4cls_get_node(d4cls): d4cls_node
 //
 #symload lctn with d4cls_get_lctn
+#symload vars with d4cls_get_vars
+#symload dvts with d4cls_get_dvts
 #symload node with d4cls_get_node
 //
 (* ****** ****** *)
