@@ -440,6 +440,13 @@ fun
 tr34env_poplet0
 (env0: !tr34env): void//end-fun
 //
+fun
+tr34env_lamvars
+(env0: !tr34env): d2varlst//fun
+fun
+tr34env_letvars
+(env0: !tr34env): d2varlst//fun
+//
 (* ****** ****** *)
 //
 fun
@@ -455,6 +462,10 @@ tr34env_popift0
 fun
 tr34env_popcas0
 (env0: !tr34env): void//end-fun
+//
+fun
+tr34env_casvars
+(env0: !tr34env): d2varlst//fun
 //
 (* ****** ****** *)
 (* ****** ****** *)
