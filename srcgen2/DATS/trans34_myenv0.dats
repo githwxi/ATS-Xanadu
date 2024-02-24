@@ -72,7 +72,18 @@ ATS_PACKNAME
 #symload lctn with f4arg_get_lctn
 #symload node with f4arg_get_node
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
+fun
+d2varlst_vt_sort0
+( d2vs
+: d2varlst_vt): d2varlst_vt =
+(
+list_vt_mergesort0<d2var>(d2vs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 local
 //
 (* ****** ****** *)
@@ -176,14 +187,20 @@ linstk_pshcas0
 linstk_lamvars
   (  stk0  ) =
 (
-loop(stk0, list_nil())
+list_vt2t
+(
+d2varlst_vt_sort0
+(
+loop
+(stk0, list_vt_nil())))
 ) where
 {
 fun
 loop
 ( stk0:
 ! linstk
-, res1: d2varlst): d2varlst =
+, res1
+: d2varlst_vt): d2varlst_vt =
 (
 case- stk0 of
 (*
@@ -209,7 +226,8 @@ linstk_cas0
 |
 linstk_dvar
 (d2v0, dtp0, stk1) =>
-loop(stk1, list_cons(d2v0, res1))
+loop
+(stk1, list_vt_cons(d2v0, res1))
 //
 |
 linstk_denv
@@ -241,14 +259,20 @@ linstk_dlft
 linstk_letvars
   (  stk0  ) =
 (
-loop(stk0, list_nil())
+list_vt2t
+(
+d2varlst_vt_sort0
+(
+loop
+(stk0, list_vt_nil())))
 ) where
 {
 fun
 loop
 ( stk0:
 ! linstk
-, res1: d2varlst): d2varlst =
+, res1
+: d2varlst_vt): d2varlst_vt =
 (
 case- stk0 of
 (*
@@ -277,7 +301,8 @@ linstk_cas0
 |
 linstk_dvar
 (d2v0, dtp0, stk1) =>
-loop(stk1, list_cons(d2v0, res1))
+loop
+(stk1, list_vt_cons(d2v0, res1))
 //
 |linstk_denv
 (d2v0, dtp0, stk1) => loop(stk1, res1)
@@ -300,14 +325,20 @@ loop(stk1, list_cons(d2v0, res1))
 linstk_casvars
   (  stk0  ) =
 (
-loop(stk0, list_nil())
+list_vt2t
+(
+d2varlst_vt_sort0
+(
+loop
+(stk0, list_vt_nil())))
 ) where
 {
 fun
 loop
 ( stk0:
 ! linstk
-, res1: d2varlst): d2varlst =
+, res1
+: d2varlst_vt): d2varlst_vt =
 (
 case- stk0 of
 (*
@@ -336,7 +367,8 @@ linstk_ift0
 |
 linstk_dvar
 (d2v0, dtp0, stk1) =>
-loop(stk1, list_cons(d2v0, res1))
+loop
+(stk1, list_vt_cons(d2v0, res1))
 //
 |linstk_denv
 (d2v0, dtp0, stk1) => loop(stk1, res1)
@@ -360,14 +392,20 @@ loop(stk1, list_cons(d2v0, res1))
 linstk_lamenvs
   (  stk0  ) =
 (
-loop(stk0, list_nil())
+list_vt2t
+(
+d2varlst_vt_sort0
+(
+loop
+(stk0, list_vt_nil())))
 ) where
 {
 fun
 loop
 ( stk0:
 ! linstk
-, res1: d2varlst): d2varlst =
+, res1
+: d2varlst_vt): d2varlst_vt =
 (
 case- stk0 of
 (*
@@ -387,7 +425,8 @@ linstk_let0
 |
 linstk_denv
 (d2v0, dtp0, stk1) =>
-loop(stk1, list_cons(d2v0, res1))
+loop
+(stk1, list_vt_cons(d2v0, res1))
 //
 |
 linstk_dvar
@@ -419,14 +458,20 @@ linstk_dlft
 linstk_letenvs
   (  stk0  ) =
 (
-loop(stk0, list_nil())
+list_vt2t
+(
+d2varlst_vt_sort0
+(
+loop
+(stk0, list_vt_nil())))
 ) where
 {
 fun
 loop
 ( stk0:
 ! linstk
-, res1: d2varlst): d2varlst =
+, res1
+: d2varlst_vt): d2varlst_vt =
 (
 case- stk0 of
 (*
@@ -447,7 +492,8 @@ linstk_let0
 |
 linstk_denv
 (d2v0, dtp0, stk1) =>
-loop(stk1, list_cons(d2v0, res1))
+loop
+(stk1, list_vt_cons(d2v0, res1))
 //
 |linstk_dvar
 (d2v0, dtp0, stk1) => loop(stk1, res1)
@@ -1657,9 +1703,9 @@ end(*let*)//end-of-(tr34env_search_dvar(...))
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 endloc (*local*) // end of [ local(tr34env...) ]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

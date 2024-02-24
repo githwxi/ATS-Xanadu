@@ -515,12 +515,20 @@ d4fundcl_get_tdxp(dfun)
 val wsxp =
 d4fundcl_get_wsxp(dfun)
 //
+val d2vs =
+d4fundcl_get_vars(dfun)
+val dvts =
+d4fundcl_get_dvts(dfun)
+//
 #impltmp g_print$out<>() = out
 //
 in//let
 (
-print("D4FUNDCL(",dpid,";");
-print(farg,";",sres,";",tdxp,";",wsxp,")"))
+print("D4FUNDCL(");
+print(
+dpid, ";", farg, ";", sres, ";");
+print(
+tdxp, ";", wsxp, ";", d2vs, ";", dvts, ")"))
 end(*let*)//end-of-[d4fundcl_fprint(out,dfun)]
 
 (* ****** ****** *)
