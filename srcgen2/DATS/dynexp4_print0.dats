@@ -240,14 +240,34 @@ D4Ercd2
 ; print(tknd,";",npf1,";",ldes,")"))
 //
 (* ****** ****** *)
+|
+D4Elam0
+(tknd,f4as
+,sres,arrw
+,body,d2vs,dvts) =>
+( print("D4Elam0(")
+; print(tknd,";",f4as,";")
+; print(sres,";",arrw,";")
+; print(body,";",d2vs,";",dvts,")"))
+//
+|
+D4Efix0
+(tknd,fid0
+,f4as,sres,arrw
+,body,d2vs,dvts) =>
+( print("D4Efix0(")
+; print(tknd,";",fid0,";")
+; print(f4as,";",sres,";",arrw,";")
+; print(body,";",d2vs,";",dvts,")"))
+//
+(* ****** ****** *)
 //
 |D4El2bck
 ( d4e1 , lab2 ) =>
 let
 val
 t2p1 = d4e1.styp() in
-(
-  print("D4El2bck(")
+( print("D4El2bck(")
 ; print( d4e1, ";",t2p1, ";",lab2,")"))
 endlet // end of [ D4El2bck(d4e1, lab2) ]
 |D4Et2pck
@@ -255,8 +275,7 @@ endlet // end of [ D4El2bck(d4e1, lab2) ]
 let
 val
 t2p1 = d4e1.styp() in
-(
-  print("D4Et2pck(")
+( print("D4Et2pck(")
 ; print( d4e1, ";",t2p1, ";",t2p2,")"))
 endlet // end of [ D4Et2pck(d4e1, t2p2) ]
 //
