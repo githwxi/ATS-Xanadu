@@ -150,6 +150,42 @@ stk0 of ~linstk_nil() => ())
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+linstk_prerrln_top
+ (stk0: !linstk): void =
+(
+case+ stk0 of
+|linstk_nil _ =>
+prerrln("linstk_nil(...)")
+//
+|linstk_lam0 _ =>
+prerrln("linstk_lam0(...)")
+|linstk_let0 _ =>
+prerrln("linstk_let0(...)")
+//
+|linstk_ift0 _ =>
+prerrln("linstk_ift0(...)")
+|linstk_cas0 _ =>
+prerrln("linstk_cas0(...)")
+//
+|linstk_dvar _ =>
+prerrln("linstk_dvar(...)")
+|linstk_denv _ =>
+prerrln("linstk_denv(...)")
+//
+|linstk_dget _ =>
+prerrln("linstk_dget(...)")
+|linstk_dset _ =>
+prerrln("linstk_dset(...)")
+//
+|linstk_dvtp _ =>
+prerrln("linstk_dvtp(...)")
+//
+)(*case+*)//end(instk_prerrln_top)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 linstk_pshlam0
   (  stk0  ) =
@@ -250,7 +286,14 @@ linstk_dlft
 (d2v0, lft0, stk1) => loop(stk1, res1)
 *)
 //
-)
+) where
+{
+//
+val () =
+prerr("linstk_lamvars:loop: ")
+val () = linstk_prerrln_top(stk0)
+//
+}(*where*)
 }(*where*)//end-of-[linstk_lamvars(...)]
 //
 (* ****** ****** *)
@@ -733,10 +776,10 @@ linstk_lam0 _ => (err := 1; kxs)
 linstk_let0 _ => (err := 1; kxs)
 //
 | !
-linstk_dvar _ => (err := 1; kxs)
+linstk_cas0 _ => (err := 1; kxs)
 //
 | !
-linstk_cas0 _ => (err := 1; kxs)
+linstk_dvar _ => (err := 1; kxs)
 //
 (* ****** ****** *)
 //
@@ -769,6 +812,10 @@ case+ kxs of
 linstk_cas0
 (   kxs   ) => kxs // err = 0
 //
+//
+| ~
+linstk_dvar
+(d2v,dtp,kxs) => loop(kxs, err)
 | ~
 linstk_denv
 (d2v,dtp,kxs) => loop(kxs, err)
@@ -793,9 +840,6 @@ linstk_nil( ) => (err := 1; kxs)
 linstk_lam0 _ => (err := 1; kxs)
 | !
 linstk_let0 _ => (err := 1; kxs)
-//
-| !
-linstk_dvar _ => (err := 1; kxs)
 //
 | !
 linstk_ift0 _ => (err := 1; kxs)
@@ -1368,6 +1412,60 @@ val nerr = linstk_poptop0(linstk)
 val (  ) = linstk_free_nil(linstk) }
 //
 )(*case+*)//end-of-(tr34env_free_top(env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+tr34env_lamvars
+(     env0     ) = let
+//
+val+
+@TR34ENV
+(d2vlst, !linstk) = env0
+//
+in//let
+//
+(
+  $fold(env0); d2vs) where
+{
+  val d2vs = linstk_lamvars(linstk) }
+//
+end(*let*)//end-of-(tr34env_lamvars(env0))
+//
+#implfun
+tr34env_letvars
+(     env0     ) = let
+//
+val+
+@TR34ENV
+(d2vlst, !linstk) = env0
+//
+in//let
+//
+(
+  $fold(env0); d2vs) where
+{
+  val d2vs = linstk_letvars(linstk) }
+//
+end(*let*)//end-of-(tr34env_letvars(env0))
+//
+#implfun
+tr34env_casvars
+(     env0     ) = let
+//
+val+
+@TR34ENV
+(d2vlst, !linstk) = env0
+//
+in//let
+//
+(
+  $fold(env0); d2vs) where
+{
+  val d2vs = linstk_casvars(linstk) }
+//
+end(*let*)//end-of-(tr34env_casvars(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
