@@ -283,6 +283,13 @@ d4typ_fprint
 (* ****** ****** *)
 //
 fun
+linstk_fprint1
+( out
+: FILR, stk: !linstk): void
+//
+(* ****** ****** *)
+//
+fun
 linstk_lamvars
   ( stk: !linstk ): d2varlst
 fun
@@ -290,13 +297,6 @@ linstk_letvars
   ( stk: !linstk ): d2varlst
 fun
 linstk_casvars
-  ( stk: !linstk ): d2varlst
-//
-fun
-linstk_lamenvs
-  ( stk: !linstk ): d2varlst
-fun
-linstk_letenvs
   ( stk: !linstk ): d2varlst
 //
 (* ****** ****** *)
@@ -365,10 +365,6 @@ fun
 linstk_d2vins_dvar
 (stk:
 &linstk >> _, d2var, d4typ):void
-fun
-linstk_d2vins_denv
-(stk:
-&linstk >> _, d2var, d4typ):void
 //
 fun
 linstk_d2vins_dget
@@ -401,22 +397,25 @@ linstk_search_dvar
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-d2vts_z2merge
-(xts1:d2vts, xts2:d2vts): (d2vts)
-//
-(* ****** ****** *)
-//
 (*
 HX-2024-02-24:
 Both dvts and d2vs are sorted!
 *)
 fun
 d2vts_drop_vars
-(dvts:d2vts, d2vs:dvars): (d2vts)
+( dvts: d2vts
+, d2vs: dvars): (d2vts)//end-fun
 fun
 d2vts_take_vars
-(dvts:d2vts, d2vs:dvars): (d2vts)
+( dvts: d2vts
+, d2vs: dvars): (d2vts)//end-fun
+//
+(* ****** ****** *)
+//
+fun
+d2vts_z2merge
+( xts1: d2vts
+, xts2: d2vts): (d2vts)//end-fun
 //
 (* ****** ****** *)
 //
@@ -429,16 +428,18 @@ each d2var is kept in the output!
 //
 fun
 d2vdtplst_d2vtize
-( dvts
-: list_vt@(d2var,d4typ)): (d2vts)
+(dvts
+:list_vt@(d2var,d4typ)): (d2vts)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-tr34env_make_nil((*nil*)):tr34env
+tr34env_make_nil
+  ( (*void*) ): tr34env
 fun
-tr34env_free_top(tr34env):d2varlst
+tr34env_free_top
+( env0: tr34env ): (d2varlst)
 //
 (* ****** ****** *)
 //
@@ -515,11 +516,6 @@ tr34env_d2vins_dvar
 ( env0:
 ! tr34env
 , d2v0: d2var, stp0: s2typ): (void)
-fun
-tr34env_d2vins_denv
-( env0:
-! tr34env
-, d2v0: d2var, dtp0: d4typ): (void)
 //
 fun
 tr34env_d2vins_dget
