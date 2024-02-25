@@ -1668,6 +1668,13 @@ g_print<d4typ>(dtyp) =
 d4typ_fprint(g_print$out<>(), dtyp)//trans34
 //
 (* ****** ****** *)
+//
+#impltmp
+gl_print1<linstk>(stk0) =
+linstk_fprint1
+( gl_print$out<>( (*nil*) ), stk0 )//trans34
+//
+(* ****** ****** *)
 (* ****** ****** *)
 (*
 HX-2022-12-28: For debugging purpose
