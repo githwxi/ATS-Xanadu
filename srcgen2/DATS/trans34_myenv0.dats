@@ -1555,6 +1555,40 @@ end(*let*)//end-of-(tr34env_d2vins_dvtp(...))
 //
 (* ****** ****** *)
 //
+#implfun
+tr34env_d2vins_dvts
+  ( env0 , dvts ) = let
+//
+val+
+@TR34ENV
+(d2vlst, !linstk) = env0
+//
+in//let
+//
+(
+  feach(linstk, dvts) ; $fold( env0 ))
+where
+{
+fnx
+feach
+( stk0:
+! linstk, dvts: d2vts): void =
+case+ dvts of
+|list_nil() =>
+( (*void*) )
+|list_cons
+((d2v1, stp1), dvts) =>
+let
+val dtp1 =
+D4TYPstp(stp1)
+val (  ) =
+linstk_d2vins_dvtp
+(stk0, d2v1, dtp1) in feach(stk0, dvts) end
+}(*where*)
+end(*let*)//end-of-(tr34env_d2vins_dvtp(...))
+//
+(* ****** ****** *)
+//
 (*
 #implfun
 tr34env_d2vins_dlft

@@ -1588,25 +1588,14 @@ list_nil() => d4e0
 |
 list_cons _ =>
 (
-  d4exp_dvts(d4e0, dvts))
+d4exp_dvts(d4e0, dvts)) where
+{
+val (  ) =
+tr34env_d2vins_dvts(env0, dvts) }
 ) where
 {
-//
-fun loop
-( env0:
-! tr34env, dvts: d2vts): void =
-(
-case+ dvts of
-|list_nil() => ()
-|list_cons
-((d2v1, t2p1), dvts) =>
-(
-  loop(env0, dvts)) where
-{
-val () =
-tr34env_d2vins_dvtp(env0, d2v1, t2p1)}
-)
-//
+val (  ) =
+prerrln("trans34_d4ift_dvts: dvts = ", dvts)
 }(*where*) // end-of-[trans34_d4ift_dvts(...)]
 //
 (* ****** ****** *)

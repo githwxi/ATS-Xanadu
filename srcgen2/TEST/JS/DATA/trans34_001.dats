@@ -17,7 +17,6 @@ if
 then x*fact(x-1) else 1)
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 //
 #absvwtp VT
@@ -36,16 +35,16 @@ foo3
 (x: ~VT): VT = foo3(x)
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
+//
 fun
-foo3
+foo4
 ( x: VT
 , y: VT): VT =
-(
- if true then x else y )
+(if true then x else y)
 //
 (* ****** ****** *)
+////
 (* ****** ****** *)
 //
 val x0 = 0
