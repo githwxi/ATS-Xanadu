@@ -596,11 +596,9 @@ fun
 d4gpt_make_node
 (loc0:loc_t,node:d4gpt_node):d4gpt
 //
-(*
 fun
 d4cls_make_node
 (loc0:loc_t,node:d4cls_node):d4cls
-*)
 fun
 d4cls_make_args
 (loc0:loc_t

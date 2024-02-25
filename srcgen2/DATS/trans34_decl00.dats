@@ -104,6 +104,19 @@ d4exp_make_tpnd
 end//let//end-of-[d4exp_farg(...)]
 //
 (* ****** ****** *)
+//
+fun
+d4exp_get_dvts
+( d4e0: d4exp): d2vts =
+(
+case+
+d4e0.node() of
+|
+D4Edvts(_, dvts) => dvts
+|
+_(* non-D4Edvts *) => list_nil())
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -402,8 +415,24 @@ TEQD4EXPsome
 ( teq1
 , d4exp_dvts(d4e2, dvts)) end)
 //
-val dvts = list_nil()
-val d2vs = tr34env_lamvars(env0)
+val dvts =
+(
+case+ tdxp of
+|
+TEQD4EXPnone() =>
+list_nil((*void*))
+|
+TEQD4EXPsome
+(teq1, d4e2) =>
+d4exp_get_dvts(d4e2)): d2vts
+//
+val d2vs =
+(
+  tr34env_lamvars(env0))
+val dvts =
+(
+   d2vts_drop_vars(dvts, d2vs))
+//
 val (  ) = tr34env_poplam0(env0)
 //
 in//let

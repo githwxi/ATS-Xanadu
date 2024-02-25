@@ -130,6 +130,9 @@ D4E = "./dynexp4.sats"
 #typedef d4ecl = $D4E.d4ecl
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef
+dvars = list(d2var)//d2varlst
+(* ****** ****** *)
 #typedef s2typlst = $S2E.s2typlst
 (* ****** ****** *)
 #typedef d2varlst = $D2E.d2varlst
@@ -401,6 +404,19 @@ linstk_search_dvar
 fun
 d2vts_z2merge
 (xts1:d2vts, xts2:d2vts): (d2vts)
+//
+(* ****** ****** *)
+//
+(*
+HX-2024-02-24:
+Both dvts and d2vs are sorted!
+*)
+fun
+d2vts_take_vars
+(dvts:d2vts, d2vs:dvars): (d2vts)
+fun
+d2vts_drop_vars
+(dvts:d2vts, d2vs:dvars): (d2vts)
 //
 (* ****** ****** *)
 //

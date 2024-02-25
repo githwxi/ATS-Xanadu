@@ -424,17 +424,16 @@ d4cls_tbox = d4cls
 //
 in (* in-of-local *)
 //
-(*
 #implfun
 d4cls_make_node
   (loc , nod) =
 (
-  D4CLS(loc,dvs,vts,nod))
+d4cls_make_args
+(loc, dvs, vts, nod))
 where
 {
 val dvs = list_nil(*nil*)
 val vts = list_nil(*nil*) }
-*)
 //
 #implfun
 d4cls_make_args
