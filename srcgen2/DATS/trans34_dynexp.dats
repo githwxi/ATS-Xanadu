@@ -1537,10 +1537,11 @@ tr34env_d2vins_dget
 (env0, d2v1, D4TYPstp(stp1))
 //
 in//let
-if
-linq(t2p1) then
+if // if
+linq(t2p1)
+then // HX: linear excess: [t2p1] 
 d4exp_p2tck(d4e0, t2p1) else d4e0
-end//let//end-of-[f0_var(env0,d4e0)]
+end(*let*)//end-of-[f0_var(env0,d4e0)]
 //
 (* ****** ****** *)
 //
