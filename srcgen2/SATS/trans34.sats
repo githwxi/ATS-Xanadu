@@ -241,7 +241,8 @@ d4lft =
 //
 fun
 d4lft_fprint
-(out: FILR, dlft: d4lft): void
+( out
+: FILR, dlft: d4lft): void
 //
 (* ****** ****** *)
 //
@@ -250,6 +251,7 @@ d4typ =
 //
 |D4TYPstp of s2typ
 |D4TYPpat of d4pat
+//
 (*
 |
 D4TYPpcon of (d2con, d4typlst)
@@ -267,12 +269,36 @@ d4typopt_vt = optn_vt(d4typ)
 //
 (* ****** ****** *)
 fun
-d4typ_get_styp(d4typ): s2typ
+d4typ_get_styp
+( dtyp: d4typ ): ( s2typ )
 (* ****** ****** *)
 //
 fun
 d4typ_fprint
-(out: FILR, dtyp: d4typ): void
+( out
+: FILR, dtyp: d4typ): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-02-25:
+[dvtck] is for
+recording a failed d2vtp-check!
+*)
+datatype dvtck = 
+|DVTCK of
+(d2var, s2typ, s2typ)
+//
+#typedef
+dvtcklst = list(dvtck)
+//
+(* ****** ****** *)
+//
+fun
+dvtck_fprint
+( out
+: FILR, vtck: dvtck): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -512,6 +538,13 @@ tr34env_evstyp_cst
 (* ****** ****** *)
 //
 fun
+tr34env_search_dvar
+(env0:
+!tr34env, d2v0: d2var): s2typopt_vt
+//
+(* ****** ****** *)
+//
+fun
 tr34env_d2vins_dvar
 ( env0:
 ! tr34env
@@ -572,9 +605,9 @@ tr34env_insert_farglst
 (* ****** ****** *)
 //
 fun
-tr34env_search_dvar
+tr34env_d2vtck_dvts
 ( env0:
-! tr34env, d2v0: d2var): s2typopt_vt
+! tr34env, dvts: d2vts): (dvtcklst)
 //
 (* ****** ****** *)
 (* ****** ****** *)

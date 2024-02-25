@@ -255,13 +255,23 @@ HX-2024-02-23:
 This one needs to be sorted
 based on the d2var-key.
 *)
+//
 #typedef
-d2vts = list@(d2var, s2typ)
+d2vtp = (d2var, s2typ)
+//
+#typedef // = d2vts
+d2vtplst = list(d2vtp)
+#vwtpdef // = d2vts_vt
+d2vtplst_vt = list_vt( d2vtp )
+//
+#typedef d2vts = d2vtplst
+#vwtpdef d2vts_vt = d2vtplst_vt
+//
 (* ****** ****** *)
 //
 fun
 d2vts_search_opt
-( d2vts, d2var ): s2typopt_vt
+( d2vts, d2var ): (s2typopt_vt)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -292,7 +302,7 @@ d4pat_node =
 (* ****** ****** *)
 |D4Pt2pck of (d4pat, s2typ)//HX: casting
 (* ****** ****** *)
-|D4Pp2tck of (d4pat, s2typ)//HX: rtrning
+|D4Pp2tck of (d4pat, s2typ)//HX: lin-excess
 (* ****** ****** *)
 //
 |D4Pnone0 of ((*0*))
@@ -364,7 +374,8 @@ d4exp_node =
 //
 (* ****** ****** *)
 //
-|D4Edvts of (d4exp,d2vts)
+|D4Edvts of
+( d4exp, d2vtplst(*env*))
 //
 (*
 HX-2024-02-19:
@@ -425,7 +436,7 @@ token(*knd*), sint(*npf*), l4d4elst)
 //
 (* ****** ****** *)
 //
-|D4Ep2tck of (d4exp, s2typ)//HX: rtrning
+|D4Ep2tck of (d4exp, s2typ)//HX: lin-excess
 //
 (* ****** ****** *)
 //

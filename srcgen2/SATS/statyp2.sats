@@ -92,6 +92,19 @@ LEX = "./lexing0.sats"
 //
 (* ****** ****** *)
 //
+#typedef
+s2vtp = (s2var, s2typ)
+#typedef // = s2vts
+s2vtplst = list(s2vtp)
+#vwtpdef // = s2vts_vt
+s2vtplst_vt = list_vt(s2vtp)
+//
+#typedef s2vts = s2vtplst
+#vwtpdef s2vts_vt = s2vtplst_vt
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 x2t2p_get_lctn
 (xt2p : x2t2p): loc_t
@@ -322,11 +335,6 @@ s2typ_make_node
 #symload s2typ with s2typ_make_node
 (* ****** ****** *)
 //
-#typedef
-s2vts = list@(s2var, s2typ)
-//
-(* ****** ****** *)
-//
 // HX-2024-01-07:
 //
 fun // s2typ.sort() <=
@@ -345,6 +353,7 @@ fun
 s2vts_make_s2vs_t2ps
 ( s2vs: s2varlst,
   t2ps: s2typlst): (s2vts)
+//
 #symload
 s2vts with s2vts_make_s2vs_t2ps
 //
