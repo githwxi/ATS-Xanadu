@@ -470,6 +470,156 @@ end(*let*)//end-of-[list_cons( ... )]
 (* ****** ****** *)
 //
 #implfun
+d2vts_drop_vars
+( dvts , d2vs ) =
+list_vt2t
+(
+list_vt_reverse0
+(
+loop
+(dvts, d2vs, res0))) where
+{
+//
+#vwtpdef
+d2vts_vt =
+(
+  list_vt@(d2var, s2typ))
+//
+val
+res0 = list_vt_nil((*nil*))
+//
+fun
+loop
+(
+dvts: d2vts,
+d2vs: dvars,
+res0: d2vts_vt): d2vts_vt =
+(
+case+ dvts of
+|
+list_nil() => res0
+|
+list_cons
+((d2v1, stp1), vts2) =>
+(
+case+ d2vs of
+//
+|
+list_nil((*nil*)) =>
+loop
+(
+vts2, d2vs,
+list_vt_cons
+((d2v1, stp1), res0))
+//
+|
+list_cons(d2v2, dvs2) =>
+let
+val sgn0 = d2v1\cmp(d2v2)
+in//let
+//
+if
+(sgn0 = 0)
+then // HX: dropped
+(
+  loop(vts2, dvs2, res0))
+else
+(
+if
+(sgn0 > 0)
+then
+(
+  loop(dvts, dvs2, res0))
+else // sgn0 < 0
+(
+  loop(vts2, d2vs, res0)) where
+{
+val res0 = // HX: it is taken!
+list_vt_cons((d2v1, stp1), res0)}
+)
+end//let//end-of-[list_cons(...)]
+//
+)(*case+*)//end-of-[list_cons(...)]
+)(*case+*)//end-of-[loop(dvts,d2vs,res0)]
+//
+}(*where*)//endof[d2vts_drop_vars(dvts,d2vs)]
+//
+(* ****** ****** *)
+//
+#implfun
+d2vts_take_vars
+( dvts , d2vs ) =
+list_vt2t
+(
+list_vt_reverse0
+(
+loop
+(dvts, d2vs, res0))) where
+{
+//
+#vwtpdef
+d2vts_vt =
+(
+  list_vt@(d2var, s2typ))
+//
+val
+res0 = list_vt_nil((*nil*))
+//
+fun
+loop
+(
+dvts: d2vts,
+d2vs: dvars,
+res0: d2vts_vt): d2vts_vt =
+(
+case+ dvts of
+|
+list_nil() => res0
+|
+list_cons
+((d2v1, stp1), vts2) =>
+(
+case+ d2vs of
+//
+|
+list_nil() => res0
+//
+|
+list_cons(d2v2, dvs2) =>
+let
+val sgn0 = d2v1\cmp(d2v2)
+in//let
+//
+if
+(sgn0 < 0)
+then // HX: dropped
+(
+  loop(vts2, dvs2, res0))
+else
+(
+if
+(sgn0 > 0)
+then
+(
+  loop(dvts, dvs2, res0))
+else // sgn0 = 0
+(
+  loop(vts2, d2vs, res0)) where
+{
+val res0 = // HX: it is taken!
+list_vt_cons((d2v1, stp1), res0)}
+)
+end//let//end-of-[list_cons(...)]
+//
+)(*case+*)//end-of-[list_cons(...)]
+)(*case+*)//end-of-[loop(dvts,d2vs,res0)]
+//
+}(*where*)//endof[d2vts_take_vars(dvts,d2vs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d2vdtplst_d2vtize(dvts) =
 (
   loop0(dvts)) where

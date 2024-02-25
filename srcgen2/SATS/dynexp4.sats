@@ -607,9 +607,7 @@ d4cls_make_args
 //
 #symload d4gua with d4gua_make_node
 #symload d4gpt with d4gpt_make_node
-(*
 #symload d4cls with d4cls_make_node
-*)
 #symload d4cls with d4cls_make_args
 //
 (* ****** ****** *)

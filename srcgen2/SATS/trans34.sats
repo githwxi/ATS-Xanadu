@@ -412,10 +412,10 @@ HX-2024-02-24:
 Both dvts and d2vs are sorted!
 *)
 fun
-d2vts_take_vars
+d2vts_drop_vars
 (dvts:d2vts, d2vs:dvars): (d2vts)
 fun
-d2vts_drop_vars
+d2vts_take_vars
 (dvts:d2vts, d2vs:dvars): (d2vts)
 //
 (* ****** ****** *)
