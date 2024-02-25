@@ -160,6 +160,8 @@ dvars = list(d2var)//d2varlst
 #typedef d3parsed = $D3E.d3parsed
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef dvtcklst = $D4E.dvtcklst
+(* ****** ****** *)
 #typedef d4patlst = $D4E.d4patlst
 #typedef l4d4plst = $D4E.l4d4plst
 (* ****** ****** *)
@@ -181,7 +183,6 @@ dvars = list(d2var)//d2varlst
 #typedef d4fundcl = $D4E.d4fundcl
 (* ****** ****** *)
 #typedef d4parsed = $D4E.d4parsed
-(* ****** ****** *)
 (* ****** ****** *)
 #vwtpdef s2typopt_vt = optn_vt(s2typ)
 (* ****** ****** *)
@@ -277,28 +278,6 @@ fun
 d4typ_fprint
 ( out
 : FILR, dtyp: d4typ): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2024-02-25:
-[dvtck] is for
-recording a failed d2vtp-check!
-*)
-datatype dvtck = 
-|DVTCK of
-(d2var, s2typ, s2typ)
-//
-#typedef
-dvtcklst = list(dvtck)
-//
-(* ****** ****** *)
-//
-fun
-dvtck_fprint
-( out
-: FILR, vtck: dvtck): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
