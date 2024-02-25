@@ -63,6 +63,8 @@ ATS_PACKNAME
 #staload "./../SATS/trans34.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+#symload styp with d2var_get_styp
+(* ****** ****** *)
 #symload styp with d4typ_get_styp
 (* ****** ****** *)
 #symload lctn with d4pat_get_lctn
@@ -1788,6 +1790,72 @@ case+ f4as of
 tr34env_insert_farg(env0, f4a0);
 tr34env_insert_farglst(env0, f4as)))//end-(implfun)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+
+#implfun
+tr34env_d2vtck_dvts
+  ( env0, dvts ) =
+(
+  auxmain(env0, dvts)
+) where
+{
+//
+fun
+auxmain
+( env0:
+! tr34env
+, dvts: d2vts): dvtcklst =
+(
+case+ dvts of
+//
+|list_nil
+((*nil*)) =>
+list_nil(*void*)
+//
+|list_cons
+(
+(d2v1,stp1),dvts) =>
+let
+//
+val opt1 =
+tr34env_search_dvar
+  ( env0 , d2v1 )
+//
+val t2p1 =
+(
+case+ opt1 of
+| ~
+optn_vt_nil
+( (*nil*) ) => d2v1.styp()
+| ~
+optn_vt_cons(t2p1) => t2p1)
+: s2typ // end-of-[val(t2p1)]
+//
+val ubtf =
+unify34_s2typ(env0, t2p1, stp1)
+//
+in//let
+if
+ubtf
+then
+(
+auxmain(env0, dvts))
+else
+(
+let
+val vtck =
+DVTCK(d2v1, t2p1, stp1) in
+list_cons
+(vtck, auxmain(env0, dvts)) end)
+end(*let*) // end-of-[list_cons(...)]
+)(*case+*) // end-of-[auxmain(env0,dvts)]
+//
+val () =
+prerrln("tr34env_d2vtck_dvts: dvts = ", dvts)
+//
+}(*where*)//end of [tr34env_d2vtck_dvts(env0,dvts)]
+
 (* ****** ****** *)
 (* ****** ****** *)
 

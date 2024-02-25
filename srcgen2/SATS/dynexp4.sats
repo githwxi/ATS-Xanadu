@@ -50,42 +50,44 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #staload
-LAB = "./xlabel0.sats"
+  LAB = "./xlabel0.sats"
 #staload
-TMP = "./xstamp0.sats"
+  TMP = "./xstamp0.sats"
 //
 #staload
-FP0 = "./filpath.sats"
+  FP0 = "./filpath.sats"
 #staload
-LOC = "./locinfo.sats"
+  LOC = "./locinfo.sats"
 //
 #staload
-SYM = "./xsymbol.sats"
+  SYM = "./xsymbol.sats"
 #staload
-MAP = "./xsymmap.sats"
+  MAP = "./xsymmap.sats"
 //
+(* ****** ****** *)
+//
+#staload
+  LEX = "./lexing0.sats"
+//
+(* ****** ****** *)
+#staload
+  S1E = "./staexp1.sats"
+#staload
+  D1E = "./dynexp1.sats"
+#staload
+  G1M = "./gmacro1.sats"
+(* ****** ****** *)
+#staload
+  S2E = "./staexp2.sats"
+#staload
+  T2P = "./statyp2.sats"
+#staload
+  D2E = "./dynexp2.sats"
 (* ****** ****** *)
 //
 #staload
-LEX = "./lexing0.sats"
+  D3E = "./dynexp3.sats"
 //
-(* ****** ****** *)
-#staload
-S1E = "./staexp1.sats"
-#staload
-D1E = "./dynexp1.sats"
-#staload
-G1M = "./gmacro1.sats"
-(* ****** ****** *)
-#staload
-S2E = "./staexp2.sats"
-#staload
-T2P = "./statyp2.sats"
-#staload
-D2E = "./dynexp2.sats"
-(* ****** ****** *)
-#staload
-D3E = "./dynexp3.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -184,6 +186,8 @@ dvars = list(d2var)//d2varlst
 #typedef d4eclist = list(d4ecl)
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef f1unarrw = $D1E.f1unarrw
+(* ****** ****** *)
 #typedef s2varlst = $S2E.s2varlst
 (* ****** ****** *)
 #typedef s2explst = $S2E.s2explst
@@ -262,16 +266,40 @@ d2vtp = (d2var, s2typ)
 #typedef // = d2vts
 d2vtplst = list(d2vtp)
 #vwtpdef // = d2vts_vt
-d2vtplst_vt = list_vt( d2vtp )
+d2vtplst_vt = list_vt(d2vtp)
 //
 #typedef d2vts = d2vtplst
 #vwtpdef d2vts_vt = d2vtplst_vt
 //
 (* ****** ****** *)
 //
+#vwtpdef
+s2typopt_vt = optn_vt(s2typ)
+//
 fun
 d2vts_search_opt
 ( d2vts, d2var ): (s2typopt_vt)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-02-25:
+[dvtck] is for
+recording a failed d2vtp-check!
+*)
+datatype dvtck = 
+|DVTCK of
+(d2var, s2typ, s2typ)
+//
+#typedef dvtcklst = list(dvtck)
+//
+(* ****** ****** *)
+//
+fun
+dvtck_fprint
+(
+  out:FILR, vtck:dvtck):(void)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -437,6 +465,10 @@ token(*knd*), sint(*npf*), l4d4elst)
 (* ****** ****** *)
 //
 |D4Ep2tck of (d4exp, s2typ)//HX: lin-excess
+//
+(* ****** ****** *)
+//
+|D4Edvtck of (d4exp, dvtcklst(*tck-errs*))
 //
 (* ****** ****** *)
 //
