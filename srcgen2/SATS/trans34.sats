@@ -533,6 +533,9 @@ tr34env_d2vins_dvtp // dvtp->dput?
 ( env0:
 ! tr34env
 , d2v0: d2var, t2p0: s2typ): (void)
+fun
+tr34env_d2vins_dvts
+(env0: !tr34env, dvts: d2vts): void
 //
 (*
 fun
