@@ -1583,6 +1583,12 @@ d4lab_fprint(g_print$out<>(), dlab)
 (* ****** ****** *)
 //
 #impltmp
+g_print<dvtck>(vtck) =
+dvtck_fprint(g_print$out<>(), vtck)
+//
+(* ****** ****** *)
+//
+#impltmp
 g_print<d4pat>(dpat) =
 d4pat_fprint(g_print$out<>(), dpat)
 //

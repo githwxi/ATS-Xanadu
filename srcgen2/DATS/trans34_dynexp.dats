@@ -128,6 +128,7 @@ end where
   val s2t0 = t2p0.sort((*0*)) }
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d4exp_dvts
@@ -147,15 +148,46 @@ end//let//end-of-[d4exp_dvts(...)]
 (* ****** ****** *)
 //
 fun
+d4exp_dvtck
+( d4e0: d4exp
+, tcks: dvtcklst): d4exp =
+let
+//
+  val loc0 = d4e0.lctn()
+  val t2p0 = d4e0.styp()
+//
+in//let
+(
+d4exp_make_tpnd
+(loc0,t2p0,D4Edvtck(d4e0, tcks)))
+end//let//end-of-[d4exp_dvtck(...)]
+//
+(* ****** ****** *)
+//
+fun
 d4exp_get_dvts
 ( d4e0: d4exp): d2vts =
 (
 case+
 d4e0.node() of
-|
-D4Edvts(_, dvts) => dvts
-|
-_(* non-D4Edvts *) => list_nil())
+| D4Edvts(_, dvts) => dvts
+| _(*non-D4Edvts*) => list_nil())
+//
+(* ****** ****** *)
+//
+fun
+d4exp_none0_void
+  (loc0: loc_t): d4exp =
+let
+//
+val t2p0 =
+(
+  the_s2typ_void((*void*)))
+//
+in//let
+(
+  d4exp(loc0, t2p0, D4Enone0()))
+end(*let*)//end-of[d4exp_none0_void]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -631,6 +663,51 @@ list_nil((*void*))
 optn_cons(dexp) =>
 d4exp_get_dvts(dexp))//f1_dopt_dvts
 //
+(* ****** ****** *)
+//
+fun
+f1_dexp_vtck
+( env0:
+! tr34env
+, dexp: d4exp
+, dvts: d2vts): d4expopt =
+(
+let
+//
+val () =
+tr34env_pshift0(env0)
+//
+val () =
+tr34env_d2vins_dvts
+(env0, d4exp_get_dvts(dexp))
+//
+val tcks =
+tr34env_d2vtck_dvts(env0, dvts)
+//
+val (  ) = tr34env_popift0(env0)
+//
+in//let
+//
+case+ tcks of
+|list_nil 
+( (*0*) ) =>
+optn_cons(dexp)
+|list_cons(_, _) =>
+(
+  optn_cons
+  (d4exp_dvtck(dexp, tcks))) end
+) where // end-of-[let]
+{
+//
+val () = prerrln
+  ( "f1_dexp_vtck: dexp = ", dexp )
+val () = prerrln
+  ( "f1_dexp_vtck: dvts = ", dvts )
+//
+}(*where*)//end-of-[f1_dexp_vtck(...)]
+// 
+(* ****** ****** *)
+//
 fun
 f1_dift_dvts
 ( dthn: d4expopt
@@ -639,8 +716,8 @@ f1_dift_dvts
   d2vts_z2merge(xts1, xts2)
 ) where
 { val xts1 = f1_dopt_dvts(dthn)
-  val xts2 = f1_dopt_dvts(dels)}
-(*where*)//end-of-[f1_dthn_dels_dvts]
+  val xts2 = f1_dopt_dvts(dels)
+}(*where*)//end-of-[f1_dift_dvts(...)]
 //
 (* ****** ****** *)
 //
@@ -663,6 +740,8 @@ the_s2typ_void((*void*))
 |
 optn_cons(d4e3) => d4e2.styp()))//fun
 //
+(* ****** ****** *)
+//
 in//local
 //
 (* ****** ****** *)
@@ -675,6 +754,7 @@ f0_ift0
 let
 //
 val loc0 = d3e0.lctn()
+//
 val-
 D3Eift0
 ( d3e1
@@ -699,14 +779,45 @@ dvts = f1_dift_dvts(dthn, dels)
 val
 tres = f1_dift_tres(dthn, dels)
 //
-(*
 val dthn =
 (
-  f1_dopt_teck(env0, dthn, dvts))
+case+ dvts of
+|
+list_nil
+( (*0*) ) => dthn
+|
+list_cons _ =>
+let
+val dexp =
+(
+case+ dthn of
+| optn_nil() =>
+  d4exp_none0_void(loc0)
+| optn_cons(dexp) => dexp)
+in
+  f1_dexp_vtck(env0, dexp, dvts)
+end
+)
+//
 val dels =
 (
-  f1_dopt_teck(env0, dels, dvts))
-*)
+case+ dvts of
+|
+list_nil
+( (*0*) ) => dels
+|
+list_cons _ =>
+let
+val dexp =
+(
+case+ dels of
+| optn_nil() =>
+  d4exp_none0_void(loc0)
+| optn_cons(dexp) => dexp)
+in
+  f1_dexp_vtck(env0, dexp, dvts)
+end
+)
 //
 val d4e0 =
 d4exp_make_tpnd

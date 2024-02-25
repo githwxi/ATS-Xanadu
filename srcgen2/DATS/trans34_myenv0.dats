@@ -784,7 +784,13 @@ d2vdtplst_d2vtize(dvts)) where
 {
 val dvts = loop(stk0, list_vt_nil) }
 //
-end (*let*) // end of [linstk_getlam0(stk)]
+end where
+{
+//
+val () =
+prerrln("linstk_getlam0: stk0 = ", stk0)
+//
+}(*where*) // end of [linstk_getlam0(stk)]
 //
 (* ****** ****** *)
 //
@@ -856,7 +862,13 @@ d2vdtplst_d2vtize(dvts)) where
 {
 val dvts = loop(stk0, list_vt_nil) }
 //
-end (*let*) // end of [linstk_getift0(stk)]
+end where
+{
+//
+val () =
+prerrln("linstk_getift0: stk0 = ", stk0)
+//
+}(*where*) // end of [linstk_getlet0(stk)]
 //
 (* ****** ****** *)
 //
@@ -928,7 +940,13 @@ d2vdtplst_d2vtize(dvts)) where
 {
 val dvts = loop(stk0, list_vt_nil) }
 //
-end (*let*) // end of [linstk_getcas0(stk)]
+end where
+{
+//
+val () =
+prerrln("linstk_getcas0: stk0 = ", stk0)
+//
+}(*where*) // end of [linstk_getcas0(stk)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1594,7 +1612,7 @@ where
 fnx
 feach
 ( stk0:
-! linstk, dvts: d2vts): void =
+& linstk, dvts: d2vts): void =
 case+ dvts of
 |list_nil() =>
 ( (*void*) )

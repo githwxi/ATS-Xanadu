@@ -76,6 +76,22 @@ _(*?*) = "./lexing0_print0.dats"
 (* ****** ****** *)
 
 #implfun
+dvtck_fprint
+(out, vtck) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ vtck of
+|DVTCK(d2v1, t2p1, stp1) =>
+(
+print("DVTCK(");
+print(d2v1, ";", t2p1, ";", stp1, ")"))
+end (*let*) // end of [dvtck_fprint(out, vtck)]
+
+(* ****** ****** *)
+
+#implfun
 d4pat_fprint
 (out, d4p0) =
 let
@@ -110,20 +126,23 @@ print("D4Pcon(",d2c,")")
 |
 D4Pannot
 (d4p1, s1e2, s2e2) =>
-print("D4Pannot(",d4p1,";",s1e2,";",s2e2,")")
+(
+print("D4Pannot(");
+print(d4p1, ";", s1e2, ";", s2e2,")"))
 //
 (* ****** ****** *)
 //
 |D4Pt2pck
 ( d4p1 , t2p2 ) =>
-(print("D4Pt2pck(",d4p1,";",t2p2,")"))
+(
+ print("D4Pt2pck(",d4p1,";",t2p2,")"))
 //
 (* ****** ****** *)
 //
 |D4Pp2tck
 ( d4p1 , t2p2 ) =>
 (
-print("D4Pp2tck(", d4p1, ";", t2p2,")"))
+ print("D4Pp2tck(",d4p1,";", t2p2,")"))
 //
 (* ****** ****** *)
 //
@@ -270,6 +289,7 @@ t2p1 = d4e1.styp() in
 ( print("D4El2bck(")
 ; print( d4e1, ";",t2p1, ";",lab2,")"))
 endlet // end of [ D4El2bck(d4e1, lab2) ]
+//
 |D4Et2pck
 ( d4e1 , t2p2 ) =>
 let
@@ -285,6 +305,13 @@ endlet // end of [ D4Et2pck(d4e1, t2p2) ]
 ( d4e1 , t2p2 ) =>
 (
 print("D4Ep2tck(", d4e1, ";", t2p2,")"))
+//
+(* ****** ****** *)
+//
+|D4Edvtck
+( d4e1 , tcks ) =>
+(
+print("D4Edvtck(", d4e1, ";", tcks,")"))
 //
 (* ****** ****** *)
 //
