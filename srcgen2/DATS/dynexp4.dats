@@ -447,7 +447,7 @@ let
 val+
 D4CLS
 (loc,dvs,vts,nod) = cls in loc
-end
+end//let
 //
 #implfun
 d4cls_get_vars(cls) =
@@ -455,14 +455,14 @@ let
 val+
 D4CLS
 (loc,dvs,vts,nod) = cls in dvs
-end
+end//let
 #implfun
 d4cls_get_dvts(cls) =
 let
 val+
 D4CLS
 (loc,dvs,vts,nod) = cls in vts
-end
+end//let
 //
 #implfun
 d4cls_get_node(cls) =
@@ -470,7 +470,7 @@ let
 val+
 D4CLS
 (loc,dvs,vts,nod) = cls in nod
-end
+end//let
 //
 endloc (*local*) // end of [local(d4cls)]
 //

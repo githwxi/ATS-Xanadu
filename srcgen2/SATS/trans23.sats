@@ -371,7 +371,7 @@ trans23_d2cls_tpck
 ( env0:
 ! tr23env
 , dcls : d2cls
-, targ : s2typ, tres : s2typ): d3cls
+, darg : d3exp, tres : s2typ): d3cls
 //
 (* ****** ****** *)
 //
@@ -426,7 +426,7 @@ trans23_d2clslst_tpck1
 (env0:
 !tr23env
 ,dcls: d2clslst
-,targ: s2typ, tres: s2typ): d3clslst
+,darg: d3exp, tres: s2typ): d3clslst
 //
 (* ****** ****** *)
 //

@@ -1594,14 +1594,13 @@ D2Ecas0
 //
 val d3e1 =
 trans23_d2exp(env0, d2e1)
-val targ = d3e1.styp((*void*))
 val tres = s2typ_new0_x2tp(loc0)
 //
 in//let
 let
 val dcls =
 trans23_d2clslst_tpck1
-(env0, dcls, targ, tres)
+(env0, dcls, d3e1, tres)
 in//let
   d3exp_make_tpnd
   (loc0,tres,D3Ecas0(tknd,d3e1,dcls))
@@ -1854,14 +1853,21 @@ d3e1 =
 trans23_d2exp(env0, d2e1)
 val
 tres = d3e1.styp((*void*))
+//
 val
-targ = the_s2typ_excptn((*0*))
+darg =
+let
+val darg =
+d3exp_none0(loc0)
+val targ =
+the_s2typ_excptn() in
+(darg.styp(targ); darg) end//val
 //
 in//let
 let
 val dcls =
 trans23_d2clslst_tpck1
-(env0, dcls, targ, tres)
+(env0, dcls, darg, tres)
 in//let
   d3exp_make_tpnd
   (loc0,tres,D3Etry0(tknd,d3e1,dcls))
@@ -2528,7 +2534,7 @@ d3gpt(loc0, D3GPTgua(d3p1, d3gs)) end
 #implfun
 trans23_d2cls_tpck
 ( env0, dcls
-, targ, tres) =
+, darg, tres) =
 (
 case+
 dcls.node() of
@@ -2536,8 +2542,12 @@ dcls.node() of
 |D2CLSgpt
 (  dgpt  ) =>
 let
+//
 val
 loc0 = dcls.lctn()
+val
+targ = darg.styp()
+//
 val dgpt =
 trans23_d2gpt_tpck
 (env0, dgpt, targ) in
@@ -2546,8 +2556,12 @@ d3cls(loc0, D3CLSgpt(dgpt)) end
 |D2CLScls
 (dgpt, d2e1) =>
 let
+//
 val
 loc0 = dcls.lctn()
+val
+targ = darg.styp()
+//
 val dgpt =
 trans23_d2gpt_tpck
 (env0 , dgpt , targ)
@@ -2895,7 +2909,7 @@ trans23_d3explst_tpcks(env0,loc0,d3es,t2ps) }
 #implfun
 trans23_d2clslst_tpck1
 ( env0
-, dcls , targ , tres ) =
+, dcls , darg , tres ) =
 (
 list_map_e1nv
 <x0><y0><e1>(dcls, env0)) where
@@ -2905,7 +2919,7 @@ list_map_e1nv
 #vwtpdef e1 = tr23env
 #impltmp
 map$fopr_e1nv<x0><y0><e1>
-(x0, e1) = trans23_d2cls_tpck(e1,x0,targ,tres)
+(x0, e1) = trans23_d2cls_tpck(e1,x0,darg,tres)
 } (*where*) // end of [list_trans23_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
