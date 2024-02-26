@@ -74,7 +74,7 @@ _(*?*) = "./lexing0_print0.dats"
 #symload node with d4ecl_get_node
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #implfun
 dvtck_fprint
 (out, vtck) =
@@ -87,10 +87,11 @@ case+ vtck of
 (
 print("DVTCK(");
 print(d2v1, ";", t2p1, ";", stp1, ")"))
-end (*let*) // end of [dvtck_fprint(out, vtck)]
-
+end(*let*)//end-of-[dvtck_fprint(out, vtck)]
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 d4pat_fprint
 (out, d4p0) =
@@ -156,7 +157,7 @@ print(d4p1, ";", s1e2, ";", s2e2,")"))
 (lvl1(*err-level*),dpat) => print("D4Perrck(",lvl1,";",dpat,")")
 //
 end (*let*) // end of [d4pat_fprint(out, d4p0)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
