@@ -403,8 +403,17 @@ end (*let*) // end of [d4gpt_fprint(out,dgpt)]
 d4cls_fprint
 (out, dcls) =
 let
+//
 #impltmp
 g_print$out<>() = out
+//
+val d2vs =
+(
+  d4cls_get_vars(dcls))
+val dvts =
+(
+  d4cls_get_dvts(dcls))
+//
 in//let
 case+
 dcls.node() of
@@ -413,7 +422,10 @@ D4CLSgpt(dgpt) =>
 print("D4CLSgpt(",dgpt,")")
 |
 D4CLScls(d4g1,d4e2) =>
-print("D4CLScls(",d4g1,";",d4e2,")")
+(
+print("D4CLScls(");
+print
+(d4g1,";",d4e2,";",d2vs,";",dvts,")"))
 end (*let*) // end of [d4cls_fprint(out,dcls)]
 //
 (* ****** ****** *)

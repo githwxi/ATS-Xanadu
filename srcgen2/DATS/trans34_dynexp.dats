@@ -1734,16 +1734,14 @@ prerrln("trans34_d4exp_ptck: stp1 = ", stp1)
 trans34_d4ift_dvts
 (env0, d4e0, dvts) =
 (
-case+ dvts of
-|
-list_nil() => d4e0
-|
-list_cons _ =>
+//
 (
-d4exp_dvts(d4e0, dvts)) where
+  d4exp_dvts(d4e0, dvts)
+) where
 {
 val (  ) =
 tr34env_d2vins_dvts(env0, dvts) }
+//
 ) where
 {
 val (  ) =
@@ -1822,6 +1820,25 @@ trans34_d4explst_ptcks(env0,loc0,d4es,t2ps)
 } // end-of-[list_cons(d4e1, d4es)]
 ) // end-of-[list_cons(t2p1, t2ps)]
 )(*case+*) // end-of-[trans34_d4explst_ptcks(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trans34_d3clslst_tpck1
+( env0
+, dcls , darg , tres ) =
+(
+list_map_e1nv
+<x0><y0><e1>(dcls, env0)) where
+{
+#typedef x0 = d3cls
+#typedef y0 = d4cls
+#vwtpdef e1 = tr34env
+#impltmp
+map$fopr_e1nv<x0><y0><e1>
+(x0, e1) = trans34_d3cls_tpck(e1,x0,darg,tres)
+} (*where*) // end of [list_trans34_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
