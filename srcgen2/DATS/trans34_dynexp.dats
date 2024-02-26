@@ -867,9 +867,15 @@ val dcls =
 trans34_d3clslst_tpck1
 (env0, dcls, d4e1, tres))//val
 //
+val dvts = list_nil(*FIXME!!!*)
+//
+val d4e0 =
+d4exp_make_tpnd
+(loc0,tres,D4Ecas0(tknd,d4e1,dcls))
+//
 in//let
-  d4exp_make_tpnd
-  (loc0,tres,D4Ecas0(tknd,d4e1,dcls))
+(
+trans34_d4cas_dvts(env0, d4e0, dvts))
 end (*let*)
 //
 end (*let*) // end of [f0_cas0(env0,d3e0)]
@@ -1747,6 +1753,26 @@ tr34env_d2vins_dvts(env0, dvts) }
 val (  ) =
 prerrln("trans34_d4ift_dvts: dvts = ", dvts)
 }(*where*) // end-of-[trans34_d4ift_dvts(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans34_d4cas_dvts
+(env0, d4e0, dvts) =
+(
+//
+(
+  d4exp_dvts(d4e0, dvts)
+) where
+{
+val (  ) =
+tr34env_d2vins_dvts(env0, dvts) }
+//
+) where
+{
+val (  ) =
+prerrln("trans34_d4cas_dvts: dvts = ", dvts)
+}(*where*) // end-of-[trans34_d4cas_dvts(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
