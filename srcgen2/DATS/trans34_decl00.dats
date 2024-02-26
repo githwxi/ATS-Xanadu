@@ -433,7 +433,17 @@ val dvts =
 (
    d2vts_drop_vars(dvts, d2vs))
 //
-val (  ) = tr34env_poplam0(env0)
+val (  ) =
+prerrln("\
+trans34_d3fundcl: d2vs = ", d2vs)
+val (  ) =
+prerrln("\
+trans34_d3fundcl: dvts = ", dvts)
+//
+val (  ) =
+  tr34env_poplam0(env0)
+val (  ) =
+  tr34env_d2vins_dvts(env0, dvts)
 //
 in//let
 //

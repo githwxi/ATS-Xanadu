@@ -621,13 +621,23 @@ end//let//end-of-[list_cons(...)]
 //
 #implfun
 d2vdtplst_d2vtize(dvts) =
-(
-  loop0(dvts)) where
+let
+val
+dvts =
+loop0(dvts)
+in//let
+list_vt2t
+(list_vt_reverse0(dvts))
+end where // end-of-[let]
 {
+(* ****** ****** *)
 //
-#typedef x0 = (d2var, d4typ)
+#typedef x0 = (d2var,d4typ)
 //
-val dvts =
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val dvts = // list_vt(x0)
 (
 (*
 HX: mergesort is stable!!!
@@ -638,20 +648,22 @@ list_vt_mergesort0<x0>(dvts)
 #impltmp
 g_cmp<x0>(x1, x2) =
 (
-  g_cmp<d2var>( x1.0, x2.0 ))}
+  g_cmp<d2var>( x1.0, x2.0 )) }
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fnx
 loop0
 ( dvts:
-~ list_vt(x0)): d2vts =
+~ list_vt(x0)): d2vts_vt =
 (
 case+ dvts of
 | ~
 list_vt_nil
 ( (*void*) ) =>
-list_nil( (*void*) )
+(
+ list_vt_nil((*void*)))
 | ~
 list_vt_cons
 (
@@ -659,7 +671,10 @@ list_vt_cons
 , dtp1 ), dvts) =>
 let
 val
-res0 = list_nil() in
+res0 =
+(
+ list_vt_nil((*void*)))
+in//let
 loop1
 (dvts, d2v1, dtp1, res0) end
 )
@@ -670,12 +685,12 @@ loop1
 ~ list_vt(x0)
 , d2v1: d2var
 , dtp1: d4typ
-, res0: d2vts): d2vts =
+, res0: d2vts_vt): d2vts_vt =
 (
 case+ dvts of
 | ~
 list_vt_nil() =>
-list_cons
+list_vt_cons
 ((d2v1, stp1), res0) where
 {
   val stp1 = dtp1.styp((*0*)) }
@@ -695,8 +710,11 @@ loop1
 {
   val stp1 = dtp1.styp((*0*))
   val res0 =
-  list_cons((d2v1, stp1), res0) }
+  list_vt_cons((d2v1, stp1), res0) }
 )
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 } (*where*) // end of [d2vdtplst_d2vtize(dvts)]
 //
