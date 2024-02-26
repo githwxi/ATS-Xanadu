@@ -668,7 +668,7 @@ trans34_d3cls_tpck
 ( env0:
 ! tr34env
 , dcls : d3cls
-, targ : s2typ, tres : s2typ): d4cls
+, darg : d4exp, tres : s2typ): d4cls
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -734,7 +734,7 @@ trans34_d3clslst_tpck1
 (env0:
 !tr34env
 ,dcls: d3clslst
-,targ: s2typ, tres: s2typ): d4clslst
+,darg: d4exp, tres: s2typ): d4clslst
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -689,13 +689,17 @@ val (  ) = tr34env_popift0(env0)
 in//let
 //
 case+ tcks of
+//
 |list_nil 
 ( (*0*) ) =>
-optn_cons(dexp)
+(
+optn_cons(dexp))
+//
 |list_cons(_, _) =>
 (
   optn_cons
-  (d4exp_dvtck(dexp, tcks))) end
+  (d4exp_dvtck(dexp,tcks))) endlet
+//
 ) where // end-of-[let]
 {
 //
@@ -791,12 +795,14 @@ let
 val dexp =
 (
 case+ dthn of
-| optn_nil() =>
-  d4exp_none0_void(loc0)
-| optn_cons(dexp) => dexp)
-in
+|
+optn_nil() =>
+d4exp_none0_void(loc0)
+|
+optn_cons(dexp) => dexp): d4exp
+in//let
   f1_dexp_vtck(env0, dexp, dvts)
-end
+end//let
 )
 //
 val dels =
@@ -811,12 +817,14 @@ let
 val dexp =
 (
 case+ dels of
-| optn_nil() =>
-  d4exp_none0_void(loc0)
-| optn_cons(dexp) => dexp)
-in
+|
+optn_nil() =>
+d4exp_none0_void(loc0)
+|
+optn_cons(dexp) => dexp): d4exp
+in//let
   f1_dexp_vtck(env0, dexp, dvts)
-end
+end//let
 )
 //
 val d4e0 =
@@ -825,10 +833,8 @@ d4exp_make_tpnd
 , tres
 , D4Eift0(d4e1, dthn, dels, dvts))
 in//let
-//
 (
-  trans34_d4ift_dvts(env0, d4e0, dvts))
-//
+trans34_d4ift_dvts(env0, d4e0, dvts))
 end (*let*) // end of [f0_ift0(env0,d3e0)]
 //
 (* ****** ****** *)
@@ -850,15 +856,17 @@ val d4e1 =
 (
   trans34_d3exp(env0, d3e1))
 //
-val targ = d4e1.styp((*void*))
-val tres = s2typ_new0_x2tp(loc0)
-//
 in//let
 //
 let
+//
+val tres =
+s2typ_new0_x2tp(loc0)
 val dcls =
+(
 trans34_d3clslst_tpck1
-(env0, dcls, targ, tres)
+(env0, dcls, d4e1, tres))//val
+//
 in//let
   d4exp_make_tpnd
   (loc0,tres,D4Ecas0(tknd,d4e1,dcls))
@@ -1351,7 +1359,7 @@ d4gpt(loc0, D4GPTgua(d4p1, d4gs)) end
 #implfun
 trans34_d3cls_tpck
 ( env0, dcls
-, targ, tres) =
+, darg, tres) =
 (
 case+
 dcls.node() of
@@ -1359,11 +1367,15 @@ dcls.node() of
 |D3CLSgpt
 (  dgpt  ) =>
 let
+//
 val
 loc0 = dcls.lctn()
+val
+targ = darg.styp()
+//
 val dgpt =
 trans34_d3gpt_tpck
-(env0, dgpt, targ) in
+(env0, dgpt, targ) in//let
 d4cls(loc0, D4CLSgpt(dgpt)) end
 //
 |D3CLScls
@@ -1372,29 +1384,57 @@ let
 //
 val
 loc0 = dcls.lctn()
+val
+targ = darg.styp()
 //
 val (  ) =
-tr34env_pshcas0( env0 )
+tr34env_pshcas0
+  (  env0  ) // HX: entering
 //
 val dgpt =
-trans34_d3gpt_tpck(env0,dgpt,targ)
+trans34_d3gpt_tpck
+(env0, dgpt, targ) // val(dgpt)
 //
 val (  ) =
 (
-  tr34env_insert_dgpt(env0, dgpt))
+tr34env_insert_dgpt(env0, dgpt))
+//
+(*
+HX-2024-02-26:
+Note that [dgpt] needs
+to be put back into [darg]!
+*)
 //
 val d4e1 =
 trans34_d3exp_tpck(env0,d3e1,tres)
 //
+(*
+HX-2024-02-26:
+The type of [dgpt] needs
+to be re-computed and put back
+if [dgpt] is a regular pattern!
+(That is, [dgpt] is not ~ or @)
+*)
+//
+val d2vs = tr34env_casvars( env0 )
 val dvts = tr34env_getcas0( env0 )
 val (  ) = tr34env_popcas0( env0 )
 //
 in//let
 //
 let
-  val d4e1 = d4exp_dvts(d4e1, dvts)
+//
+val d4e1 =
+(
+  d4exp_dvts(d4e1, dvts))
+val dvts =
+(
+  d2vts_drop_vars(dvts, d2vs))
+//
 in//let
-  d4cls( loc0, D4CLScls(dgpt, d4e1) )
+(
+d4cls_make_args
+(loc0,d2vs,dvts,D4CLScls(dgpt,d4e1)))
 end//let
 //
 end//let//end-of-[ D3CLScls(dgpt,d3e1) ]
