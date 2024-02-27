@@ -340,10 +340,17 @@ d4pat_node =
 ( sint(*lvl*), d4pat(*err*) ) // tread34-error
 //
 (* ****** ****** *)
+//
+fun
+d4pat_freeq(d4p0:d4pat):(bool)
+//
+(* ****** ****** *)
+//
 fun
 d4pat_fprint
 (
   out:FILR, d4p0:d4pat):(void)
+//
 (* ****** ****** *)
 //
 fun
@@ -479,10 +486,17 @@ token(*knd*), sint(*npf*), l4d4elst)
 ( sint(*lvl*), d4exp(*err*) ) // tread34-error
 //
 (* ****** ****** *)
+//
+fun
+d4exp_lvalq(d4e0:d4exp):(bool)
+//
+(* ****** ****** *)
+//
 fun
 d4exp_fprint
 (
   out:FILR, d4e0:d4exp):(void)
+//
 (* ****** ****** *)
 //
 fun
@@ -577,13 +591,16 @@ d4gua_node =
 (* ****** ****** *)
 //
 datatype
-d4cls_node =
-| D4CLSgpt of d4gpt
-| D4CLScls of (d4gpt, d4exp)
-and
 d4gpt_node =
-| D4GPTpat of (d4pat)
-| D4GPTgua of (d4pat, d4gualst)
+|D4GPTpat of (d4pat)
+|D4GPTgua of (d4pat,d4gualst)
+//
+and
+d4cls_node =
+|D4CLSgpt of
+( d4exp(*arg*), d4gpt )
+|D4CLScls of
+( d4exp(*arg*), d4gpt, d4exp )
 //
 (* ****** ****** *)
 //
@@ -618,6 +635,8 @@ d4gpt_get_node(d4gpt): d4gpt_node
 //
 fun
 d4cls_get_lctn(d4cls): loc_t
+fun
+d4cls_get_darg(d4cls): ( d4exp )
 fun
 d4cls_get_vars(d4cls): ( dvars )
 fun

@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2022 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2023 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under

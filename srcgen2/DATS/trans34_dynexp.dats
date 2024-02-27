@@ -95,9 +95,16 @@ _(*TRANS34*) = "./trans34.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#symload lctn with d4pat_get_lctn
+#symload styp with d4pat_get_styp
+#symload node with d4pat_get_node
+(* ****** ****** *)
 #symload lctn with d4exp_get_lctn
 #symload styp with d4exp_get_styp
 #symload node with d4exp_get_node
+(* ****** ****** *)
+#symload lctn with d4gua_get_lctn
+#symload node with d4gua_get_node
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -1381,8 +1388,14 @@ targ = darg.styp()
 //
 val dgpt =
 trans34_d3gpt_tpck
-(env0, dgpt, targ) in//let
-d4cls(loc0, D4CLSgpt(dgpt)) end
+(env0, dgpt, targ)
+//
+val darg =
+trans34_d4arg_dgpt
+(env0, darg, dgpt) in//let
+//
+d4cls(loc0,D4CLSgpt(darg,dgpt))
+end//let//end-of-[D3CLSgpt(dgpt)]
 //
 |D3CLScls
 (dgpt, d3e1) =>
@@ -1399,11 +1412,11 @@ tr34env_pshcas0
 //
 val dgpt =
 trans34_d3gpt_tpck
-(env0, dgpt, targ) // val(dgpt)
+(env0, dgpt, targ)//val(dgpt)
 //
 val (  ) =
 (
-tr34env_insert_dgpt(env0, dgpt))
+tr34env_insert_dgpt(env0,dgpt))
 //
 (*
 HX-2024-02-26:
@@ -1411,15 +1424,17 @@ Note that [dgpt] needs
 to be put back into [darg]!
 *)
 //
+val darg =
+trans34_d4arg_dgpt(env0,darg,dgpt)
+//
 val d4e1 =
 trans34_d3exp_tpck(env0,d3e1,tres)
 //
 (*
 HX-2024-02-26:
-The type of [dgpt] needs
-to be re-computed and put back
-if [dgpt] is a regular pattern!
-(That is, [dgpt] is not ~ or @)
+Note that $fold(darg) needs to be
+performed if the re-computed type
+of darg is a pattern!
 *)
 //
 val d2vs = tr34env_casvars( env0 )
@@ -1440,7 +1455,8 @@ val dvts =
 in//let
 (
 d4cls_make_args
-(loc0,d2vs,dvts,D4CLScls(dgpt,d4e1)))
+(loc0
+,d2vs,dvts,D4CLScls(darg,dgpt,d4e1)))
 end//let
 //
 end//let//end-of-[ D3CLScls(dgpt,d3e1) ]
@@ -1773,6 +1789,60 @@ tr34env_d2vins_dvts(env0, dvts) }
 val (  ) =
 prerrln("trans34_d4cas_dvts: dvts = ", dvts)
 }(*where*) // end-of-[trans34_d4cas_dvts(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trans34_d4arg_dpat
+(env0, darg, dpat) =
+(
+if
+not(d4exp_lvalq(darg))
+then
+(
+d4exp_none0(darg.lctn()))
+else
+let
+val dtyp = D4TYPpat(dpat)
+in//let
+trans34_d4arg_dtyp(env0,darg,dtyp)
+end//let
+) where
+{
+//
+val (  ) =
+prerrln
+("trans34_d4arg_dpat: darg = ", darg)
+val (  ) =
+prerrln
+("trans34_d4arg_dpat: dpat = ", dpat)
+//
+}(*where*) // end-of-[trans34_d4arg_dpat(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans34_d4arg_dgpt
+(env0, darg, dgpt) =
+(
+case+
+dgpt.node() of
+|D4GPTpat(dpat) =>
+trans34_d4arg_dpat(env0,darg,dpat)
+|D4GPTgua(dpat,d4gs) =>
+trans34_d4arg_dpat(env0,darg,dpat)
+) where
+{
+//
+val (  ) =
+prerrln
+("trans34_d4arg_dgpt: darg = ", darg)
+val (  ) =
+prerrln
+("trans34_d4arg_dgpt: dgpt = ", dgpt)
+//
+}(*where*) // end-of-[trans34_d4arg_dgpt(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -818,6 +818,9 @@ dynexp4_dats: ; $(XATSOPT) --dynamic DATS/dynexp4.dats
 all_dats:: \
 dynexp4_print0_dats
 dynexp4_print0_dats: ; $(XATSOPT) --dynamic DATS/dynexp4_print0.dats
+all_dats:: \
+dynexp4_utils0_dats
+dynexp4_utils0_dats: ; $(XATSOPT) --dynamic DATS/dynexp4_utils0.dats
 ######
 
 ######
