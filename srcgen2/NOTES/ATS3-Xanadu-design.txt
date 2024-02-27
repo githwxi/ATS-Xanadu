@@ -61,11 +61,18 @@ Note that @C(x1, x2) indicates that either folding
 or freeing needs to be applied explicitly, which is
 the programmer's responsibility.
 
+HX-2024-02-26:
+In particular, no folding is applied automatically,
+and a type-check error is issued if folding is needed.
+
 !: for addressing
 !x: x is a variable (instead of a variname)
 !C(x1, x2) = C(!x1, !x2)
 !C(!x1, x2) = C(!!x1, !x2) = C(x1, !x2) // !!x1 = x1
-Note that folding is applied automatically at the end.
+
+HX-2024-02-26:
+Note that folding is applied automatically at the end
+(if folding is not yet done).
 
 ########################################################################
 
@@ -112,6 +119,9 @@ mylist2(a:type) = @{
 //
 }
 
+And some form of inheritance for clstypes:
+
+#clstype mylist2(a:type) = @{ ...... ...... }
 
 ########################################################################
 
