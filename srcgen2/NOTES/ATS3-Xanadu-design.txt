@@ -119,9 +119,13 @@ mylist2(a:type) = @{
 //
 }
 
-And some form of inheritance for clstypes:
+And some form(s) of inheritance for clstypes:
 
 #clstype mylist2(a:type) = @{ ...... ...... }
+
+Note that clstypes are different from objtypes;
+the former can/should be manually built based on
+the latter!
 
 ########################################################################
 
