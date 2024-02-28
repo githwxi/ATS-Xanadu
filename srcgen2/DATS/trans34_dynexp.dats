@@ -282,6 +282,10 @@ d4pat_make_tpnd
 //
 (* ****** ****** *)
 //
+|D3Pdapp _ => f0_dapp(env0, d3p0)
+//
+(* ****** ****** *)
+//
 |D3Pannot _ => f0_annot(env0, d3p0)
 //
 (* ****** ****** *)
@@ -356,6 +360,73 @@ val t2p0 = d3p0.styp()
 val-D3Pcon(d2c1) = d3p0.node()
 //
 }(*where*)//end-of-[f0_con(env0,d3p0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dapp
+( env0:
+! tr34env
+, d3p0: d3pat): d4pat =
+let
+//
+val loc0 = d3p0.lctn()
+//
+val-
+D3Pdapp
+( d3f0
+, npf1, d3ps) = d3p0.node()
+//
+val
+d4f0 =
+(
+  trans34_d3pat(env0, d3f0))
+val d4ps =
+trans34_d3patlst(env0, d3ps)
+//
+val tfun = d4f0.styp((*nil*))
+//
+val targ =
+(
+case+
+tfun.node() of
+|
+T2Pfun1
+( f2cl, npf1
+, t2ps, tres) => t2ps
+|_ (*else*) => list_nil()): s2typlst
+val tres =
+(
+case+
+tfun.node() of
+|
+T2Pfun1
+( f2cl
+, npf1, t2ps, tres) => tres
+| _(* non-T2Pfun1 *) => tfun): s2typ
+//
+(*
+val () =
+prerrln
+("trans34_d3pat:f0_dapp:tfun = ",tfun)
+val () =
+prerrln
+("trans34_d3pat:f0_dapp:targ = ",targ)
+val () =
+prerrln
+("trans34_d3pat:f0_dapp:tres = ",tres)
+*)
+//
+in//let
+let
+val d4ps =
+trans34_d4patlst_tpcks
+(env0, loc0, d4ps, targ)
+in
+  d4pat_make_tpnd
+  (loc0, tres, D4Pdapp(d4f0,npf1,d4ps))
+end (*let*)
+end (*let*) // end of [f0_dapp(env0,d3p0)]
 //
 (* ****** ****** *)
 //
@@ -1391,6 +1462,13 @@ trans34_d3gpt_tpck
 (env0, dgpt, targ)
 //
 val darg =
+if
+not
+(linq(targ))
+then//if-then
+d4exp_none0
+(darg.lctn())
+else//if-else
 trans34_d4arg_dgpt
 (env0, darg, dgpt) in//let
 //
@@ -1425,6 +1503,12 @@ to be put back into [darg]!
 *)
 //
 val darg =
+if
+not
+(linq(targ))
+then // if-then
+d4exp_none0(darg.lctn())
+else // if-else
 trans34_d4arg_dgpt(env0,darg,dgpt)
 //
 val d4e1 =
@@ -1798,6 +1882,13 @@ trans34_d4arg_dpat
 (env0, darg, dpat) =
 (
 if
+d4pat_freeq(dpat)
+then
+(
+d4exp_none0
+(darg.lctn((*nil*))))
+else
+if
 not(d4exp_lvalq(darg))
 then
 (
@@ -1843,6 +1934,84 @@ prerrln
 ("trans34_d4arg_dgpt: dgpt = ", dgpt)
 //
 }(*where*) // end-of-[trans34_d4arg_dgpt(...)]
+//
+(* ****** ****** *)
+
+#implfun
+trans34_d4arg_dtyp
+(env0, darg, dtyp) =
+(
+case+
+darg.node() of
+|
+D4Evar _ =>
+(
+  f0_var(env0, darg) )
+|
+_(* otherwise *) =>
+(
+  d4exp_none0(darg.lctn()))
+) where
+{
+//
+fun
+f0_var
+( env0:
+! tr34env
+, darg: d4exp): d4exp =
+let
+val-
+D4Evar(d2v1) = darg.node()
+in//let
+tr34env_d2vins_dset
+( env0, d2v1, dtyp ); darg
+end//(*let*)//end-of-[f0_var(...)]
+//
+val (  ) =
+prerrln
+("trans34_d4arg_dtyp: darg = ", darg)
+val (  ) =
+prerrln
+("trans34_d4arg_dtyp: dtyp = ", dtyp)
+//
+}(*where*) // end-of-[trans34_d4arg_dtyp(...)]
+
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trans34_d4patlst_tpcks
+( env0
+, loc0, d4ps , t2ps ) =
+(
+case+ d4ps of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons _ =>
+(
+case+ t2ps of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons _ =>
+list_cons(d4p1, d4ps) where
+{
+val-
+list_cons(d4p1, d4ps) = d4ps
+val-
+list_cons(t2p1, t2ps) = t2ps
+//
+val d4p1 =
+trans34_d4pat_tpck(env0, d4p1, t2p1)
+val d4ps =
+trans34_d4patlst_tpcks(env0,loc0,d4ps,t2ps)
+//
+} // end-of-[list_cons(d4p1, d4ps)]
+) // end-of-[list_cons(t2p1, t2ps)]
+)(*case+*) // end-of-[trans34_d4patlst_tpcks(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

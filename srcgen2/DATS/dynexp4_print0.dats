@@ -123,6 +123,13 @@ print("D4Pstr(",tok,")")
 print("D4Pcon(",d2c,")")
 //
 (* ****** ****** *)
+|
+D4Pdapp
+(d4f0,npf1,d4ps) =>
+( print("D4Pdapp(")
+; print(d4f0,";",npf1,";",d4ps,")"))
+//
+(* ****** ****** *)
 //
 |
 D4Pannot

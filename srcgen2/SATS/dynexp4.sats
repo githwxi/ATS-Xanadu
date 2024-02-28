@@ -324,6 +324,13 @@ d4pat_node =
 //
 (* ****** ****** *)
 //
+|D4Pdapp of
+( d4pat
+, sint(*npf*), d4patlst(*darg*)
+) (* D4Pdapp *)
+//
+(* ****** ****** *)
+//
 |D4Pannot of
 (d4pat,s1exp(*given*),s2exp(*trans*))
 //
