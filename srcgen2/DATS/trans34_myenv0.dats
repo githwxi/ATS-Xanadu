@@ -65,7 +65,9 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload styp with d2var_get_styp
 (* ****** ****** *)
+(*
 #symload styp with d4typ_get_styp
+*)
 (* ****** ****** *)
 #symload lctn with d4pat_get_lctn
 #symload node with d4pat_get_node
@@ -1025,7 +1027,9 @@ optn_vt_nil() =>
 optn_vt_nil()
 | ~
 optn_vt_cons(dtp0) =>
-optn_vt_cons(dtp0.styp())
+optn_vt_cons
+(
+  d4typ_get_styp(dtp0))
 //
 end where
 {

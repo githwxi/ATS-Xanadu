@@ -414,6 +414,9 @@ let
 #impltmp
 g_print$out<>() = out
 //
+val darg =
+(
+  d4cls_get_darg(dcls))
 val d2vs =
 (
   d4cls_get_vars(dcls))
@@ -425,19 +428,16 @@ in//let
 case+
 dcls.node() of
 |
-D4CLSgpt
-(darg, dgpt) =>
+D4CLSgpt(dgpt) =>
 (
-print("D4CLSgpt(");
-print(darg,";",dgpt,")"))
+print("D4CLSgpt(", dgpt, ")"))
 |
-D4CLScls
-(darg,d4g1,d4e2) =>
+D4CLScls(d4g1,d4e2) =>
 (
 print("D4CLScls(");
 print
-(darg,";"
-,d4g1,";",d4e2,";",d2vs,";",dvts,")"))
+( d4g1, ";", d4e2, ";"
+, darg, ";", d2vs, ";", dvts, ")"))
 end (*let*) // end of [d4cls_fprint(out,dcls)]
 //
 (* ****** ****** *)

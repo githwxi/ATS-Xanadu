@@ -170,6 +170,17 @@ d4exp_make_tpnd
 end//let//end-of-[d4exp_dvtck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d4gpt_get_dpat
+( dgpt: d4gpt): d4pat =
+(
+case+ dgpt.node() of
+| D4GPTpat(dpat) => dpat
+| D4GPTgua(dpat, d4gs) => dpat)
+//
+(* ****** ****** *)
 //
 fun
 d4exp_get_dvts
@@ -180,6 +191,7 @@ d4e0.node() of
 | D4Edvts(_, dvts) => dvts
 | _(*non-D4Edvts*) => list_nil())
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1471,8 +1483,9 @@ d4exp_none0
 else//if-else
 trans34_d4arg_dgpt
 (env0, darg, dgpt) in//let
-//
-d4cls(loc0,D4CLSgpt(darg,dgpt))
+(
+  d4cls(loc0, D4CLSgpt(dgpt))
+)
 end//let//end-of-[D3CLSgpt(dgpt)]
 //
 |D3CLScls
@@ -1521,6 +1534,10 @@ performed if the re-computed type
 of darg is a pattern!
 *)
 //
+val darg =
+(
+  trans34_d4exp_fold(env0, darg))
+//
 val d2vs = tr34env_casvars( env0 )
 val dvts = tr34env_getcas0( env0 )
 val (  ) = tr34env_popcas0( env0 )
@@ -1539,8 +1556,9 @@ val dvts =
 in//let
 (
 d4cls_make_args
-(loc0
-,d2vs,dvts,D4CLScls(darg,dgpt,d4e1)))
+( loc0
+, darg
+, d2vs, dvts, D4CLScls(dgpt, d4e1)))
 end//let
 //
 end//let//end-of-[ D3CLScls(dgpt,d3e1) ]
