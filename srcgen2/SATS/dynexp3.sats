@@ -676,7 +676,7 @@ d3gua_node =
 //
 datatype
 d3cls_node =
-| D3CLSgpt of d3gpt
+| D3CLSgpt of (d3gpt)
 | D3CLScls of (d3gpt, d3exp)
 and
 d3gpt_node =

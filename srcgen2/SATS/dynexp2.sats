@@ -1208,7 +1208,7 @@ d2gua_node =
 //
 datatype
 d2cls_node =
-| D2CLSgpt of d2gpt
+| D2CLSgpt of (d2gpt)
 | D2CLScls of (d2gpt, d2exp)
 and
 d2gpt_node =

@@ -911,6 +911,12 @@ trans34_d4arg_dtyp
 , darg: d4exp, dtp0: d4typ): d4exp
 //
 (* ****** ****** *)
+//
+fun
+trans34_d4exp_fold
+(env0: !tr34env, d4e0: d4exp): d4exp
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

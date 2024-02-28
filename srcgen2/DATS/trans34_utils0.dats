@@ -62,7 +62,9 @@ ATS_PACKNAME
 #symload sort with s2typ_get_sort
 #symload node with s2typ_get_node
 (* ****** ****** *)
+(*
 #symload styp with d4typ_get_styp
+*)
 (* ****** ****** *)
 #symload styp with d4pat_get_styp
 #symload node with d4pat_get_node
@@ -696,12 +698,16 @@ loop1
 , res0: d2vts_vt): d2vts_vt =
 (
 case+ dvts of
+//
 | ~
 list_vt_nil() =>
 list_vt_cons
 ((d2v1, stp1), res0) where
 {
-  val stp1 = dtp1.styp((*0*)) }
+ val
+ stp1 = d4typ_get_styp(dtp1)
+}(*where*)//end-of-[list_vt_nil]
+//
 | ~
 list_vt_cons
 (
@@ -716,9 +722,15 @@ else
 loop1
 (dvts, d2v2, dtp2, res0) where
 {
-  val stp1 = dtp1.styp((*0*))
-  val res0 =
-  list_vt_cons((d2v1, stp1), res0) }
+//
+ val
+ stp1 = d4typ_get_styp(dtp1)
+//
+ val
+ res0 =
+ list_vt_cons((d2v1, stp1), res0)
+//
+}(*where*)//end-of-[list_vt_cons(...)]
 )
 //
 (* ****** ****** *)

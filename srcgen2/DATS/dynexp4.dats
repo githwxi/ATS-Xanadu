@@ -416,6 +416,7 @@ d4cls =
 D4CLS of
 (
 loctn,
+d4exp,
 dvars,
 d2vts, d4cls_node)
 //
@@ -429,24 +430,32 @@ d4cls_make_node
   (loc , nod) =
 (
 d4cls_make_args
-(loc, dvs, vts, nod))
-where
+(
+loc,dag,dvs,vts,nod)
+) where
 {
+//
+val dag =
+(
+  d4exp_none0( loc ) )
+//
 val dvs = list_nil(*nil*)
 val vts = list_nil(*nil*) }
 //
 #implfun
 d4cls_make_args
-(loc,dvs,vts,nod) =
+( loc
+, dag, dvs, vts, nod) =
 (
-  D4CLS(loc, dvs, vts, nod))
+  D4CLS(loc,dag,dvs,vts,nod))
 //
 #implfun
 d4cls_get_lctn(cls) =
 let
 val+
 D4CLS
-(loc,dvs,vts,nod) = cls in loc
+(loc
+,dag,dvs,vts,nod) = cls in loc
 end//let
 //
 #implfun
@@ -454,14 +463,16 @@ d4cls_get_vars(cls) =
 let
 val+
 D4CLS
-(loc,dvs,vts,nod) = cls in dvs
+(loc
+,dag,dvs,vts,nod) = cls in dvs
 end//let
 #implfun
 d4cls_get_dvts(cls) =
 let
 val+
 D4CLS
-(loc,dvs,vts,nod) = cls in vts
+(loc
+,dag,dvs,vts,nod) = cls in vts
 end//let
 //
 #implfun
@@ -469,7 +480,8 @@ d4cls_get_node(cls) =
 let
 val+
 D4CLS
-(loc,dvs,vts,nod) = cls in nod
+(loc
+,dag,dvs,vts,nod) = cls in nod
 end//let
 //
 endloc (*local*) // end of [local(d4cls)]

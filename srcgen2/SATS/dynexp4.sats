@@ -598,16 +598,14 @@ d4gua_node =
 (* ****** ****** *)
 //
 datatype
-d4gpt_node =
-|D4GPTpat of (d4pat)
-|D4GPTgua of (d4pat,d4gualst)
+d4cls_node =
+|D4CLSgpt of (d4gpt)
+|D4CLScls of (d4gpt, d4exp)
 //
 and
-d4cls_node =
-|D4CLSgpt of
-( d4exp(*arg*), d4gpt )
-|D4CLScls of
-( d4exp(*arg*), d4gpt, d4exp )
+d4gpt_node =
+|D4GPTpat of (d4pat)
+|D4GPTgua of (d4pat, d4gualst)
 //
 (* ****** ****** *)
 //
@@ -642,16 +640,19 @@ d4gpt_get_node(d4gpt): d4gpt_node
 //
 fun
 d4cls_get_lctn(d4cls): loc_t
+//
 fun
 d4cls_get_darg(d4cls): ( d4exp )
 fun
 d4cls_get_vars(d4cls): ( dvars )
 fun
 d4cls_get_dvts(d4cls): ( d2vts )
+//
 fun
 d4cls_get_node(d4cls): d4cls_node
 //
 #symload lctn with d4cls_get_lctn
+#symload darg with d4cls_get_darg
 #symload vars with d4cls_get_vars
 #symload dvts with d4cls_get_dvts
 #symload node with d4cls_get_node
@@ -671,6 +672,7 @@ d4cls_make_node
 fun
 d4cls_make_args
 (loc0:loc_t
+,darg:d4exp
 ,d2vs:dvars
 ,dvts:d2vts,node:d4cls_node):d4cls
 //
