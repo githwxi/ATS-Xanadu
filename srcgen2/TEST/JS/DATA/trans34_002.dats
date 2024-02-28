@@ -20,14 +20,25 @@ case+ xs of
 //
 (* ****** ****** *)
 //
+(*
 fun
-length_vt
+length0_vt
 (xs: ~list_vt(VT)): sint =
 case+ xs of
 | ~
 list_vt_nil() => 0
 | ~
-list_vt_cons(_, xs) => 1+length_vt(xs)
+list_vt_cons(_, xs) => 1+length0_vt(xs)
+*)
+//
+(* ****** ****** *)
+//
+fun
+length1_vt
+(xs: !list_vt(VT)): sint =
+case+ xs of
+|list_vt_nil() => 0
+|list_vt_cons(_, xs) => 1+length1_vt(xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)

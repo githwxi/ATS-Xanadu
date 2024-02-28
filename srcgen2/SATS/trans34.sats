@@ -893,20 +893,33 @@ fun
 trans34_d4arg_dpat
 ( env0:
 ! tr34env
-, d4e0: d4exp, dpat: d4pat): d4exp
+, darg: d4exp, dpat: d4pat): d4exp
 fun
 trans34_d4arg_dgpt
 ( env0:
 ! tr34env
-, d4e0: d4exp, dgpt: d4gpt): d4exp
+, darg: d4exp, dgpt: d4gpt): d4exp
 //
+(*
+HX-2024-02-27:
+[trans34_d4arg_dtyp] does the work
+*)
 fun
 trans34_d4arg_dtyp
 ( env0:
 ! tr34env
-, d4e0: d4exp, dtp0: d4typ): d4exp
+, darg: d4exp, dtp0: d4typ): d4exp
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+trans34_d4patlst_tpcks
+( env0:
+! tr34env
+, loc0: loc_t
+, d4ps: d4patlst, t2ps: s2typlst): d4patlst
+//
 (* ****** ****** *)
 //
 fun

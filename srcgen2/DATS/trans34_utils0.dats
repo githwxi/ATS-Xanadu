@@ -64,6 +64,9 @@ ATS_PACKNAME
 (* ****** ****** *)
 #symload styp with d4typ_get_styp
 (* ****** ****** *)
+#symload styp with d4pat_get_styp
+#symload node with d4pat_get_node
+(* ****** ****** *)
 #symload styp with d4exp_get_styp
 #symload node with d4exp_get_node
 (* ****** ****** *)
@@ -187,8 +190,13 @@ d4typ_get_styp
   ( dtp0 ) =
 (
 case+ dtp0 of
-|
-D4TYPstp(t2p0) => t2p0
+//
+|D4TYPstp(t2p0) => t2p0
+//
+|D4TYPpat(d4p0) =>
+(
+  s2typ_top1(d4p0.styp()))
+//
 ) where
 {
 //
