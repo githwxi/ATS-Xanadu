@@ -666,11 +666,15 @@ trans34_f3arg
 (env0: !tr34env, farg: f3arg): f4arg
 //
 fun
-trans34_f4axp // HX: f4arg as d4exp
-(env0: !tr34env, farg: f4arg): f4arg
-fun
 trans34_d4pxp // HX: d4pat as d4exp
 (env0: !tr34env, dpat: d4pat): d4pat
+//
+fun
+trans34_d4aft // for bef/aft syntax
+(env0: !tr34env, dpat: d4pat): d4pat
+fun
+trans34_f4aft // for bef/aft syntax
+(env0: !tr34env, farg: f4arg): f4arg
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -734,9 +738,14 @@ trans34_f3arglst
 ! tr34env, f3as: f3arglst): f4arglst
 //
 fun
-trans34_f4axplst
+trans34_d4aftlst
+( env0:
+! tr34env, d4ps: d4patlst): d4patlst
+fun
+trans34_f4aftlst
 ( env0:
 ! tr34env, f4as: f4arglst): f4arglst
+//
 fun
 trans34_d4pxplst
 ( env0:
@@ -877,6 +886,9 @@ trans34_d4pat_tpck
 ( env0:
 ! tr34env
 , d4p0: d4pat, t2p0: s2typ): d4pat
+//
+(* ****** ****** *)
+//
 fun
 trans34_d4exp_tpck
 ( env0:
