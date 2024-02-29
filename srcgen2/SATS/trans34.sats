@@ -282,6 +282,54 @@ d4typ_fprint
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-02-24:
+Both dvts and d2vs are sorted!
+*)
+fun
+d2vts_drop_vars
+(dvts
+:d2vts, d2vs:dvars): (d2vts)
+fun
+d2vts_take_vars
+(dvts
+:d2vts, d2vs:dvars): (d2vts)
+//
+(* ****** ****** *)
+//
+fun
+d2vts_z2merge
+(xts1
+:d2vts, xts2:d2vts): (d2vts)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#vwtpdef
+d4vts_vt = 
+list_vt@(d2var,d4typ)
+//
+fun
+d2vdtplst_d2vtize
+( dvts : d4vts_vt ) : (d2vts)
+//
+(*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+//
+HX-2024-02-17:
+It is a special utility function:
+Note that only the last entry for
+each d2var is kept in the output!
+//
+HX-2024-02-28:
+Note that a dpat-type entry needs
+to be reported as a linearity error
+or it should be implicitly freed!
+//
+*)
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #absvtbx linstk_vtbx // ptr
 #vwtpdef linstk = linstk_vtbx
 //
@@ -395,57 +443,25 @@ linstk_d2vins_dlft
 (* ****** ****** *)
 //
 fun
-linstk_search_dvar
+linstk_stprch_dvar
 (stk:
 !linstk, d2v: d2var): s2typopt_vt
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2024-02-24:
-Both dvts and d2vs are sorted!
-*)
 fun
-d2vts_drop_vars
-( dvts: d2vts
-, d2vs: dvars): (d2vts)//end-fun
-fun
-d2vts_take_vars
-( dvts: d2vts
-, d2vs: dvars): (d2vts)//end-fun
-//
-(* ****** ****** *)
-//
-fun
-d2vts_z2merge
-( xts1: d2vts
-, xts2: d2vts): (d2vts)//end-fun
-//
-(* ****** ****** *)
-//
-(*
-HX-2024-02-17:
-It is a special utility function:
-Note that only the last entry for
-each d2var is kept in the output!
-*)
-//
-fun
-d2vdtplst_d2vtize
-(dvts
-:list_vt@(d2var,d4typ)): (d2vts)
+linstk_dtprch_dvar
+(stk:
+!linstk, d2v: d2var): d4typopt_vt
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 tr34env_make_nil
-  ( (*void*) ): tr34env
+  ((*nil*)):(tr34env)//end-fun
 fun
 tr34env_free_top
-( env0: tr34env ): (d2varlst)
+  (tr34env):(d2varlst)//end-fun
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -517,9 +533,13 @@ tr34env_evstyp_cst
 (* ****** ****** *)
 //
 fun
-tr34env_search_dvar
+tr34env_stprch_dvar
 (env0:
 !tr34env, d2v0: d2var): s2typopt_vt
+fun
+tr34env_dtprch_dvar
+(env0:
+!tr34env, d2v0: d2var): d4typopt_vt
 //
 (* ****** ****** *)
 //
@@ -912,6 +932,9 @@ trans34_d4arg_dtyp
 //
 (* ****** ****** *)
 //
+fun
+trans34_d4typ_fold
+(env0: !tr34env, dtp0: d4typ): s2typ
 fun
 trans34_d4exp_fold
 (env0: !tr34env, d4e0: d4exp): d4exp

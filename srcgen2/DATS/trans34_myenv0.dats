@@ -1014,24 +1014,27 @@ gl_print$out<>((*void*)) = (  out  )
 (* ****** ****** *)
 //
 #implfun
-linstk_search_dvar
+linstk_stprch_dvar
   (stk0, d2v0) =
-let
-val opt0 = loop(stk0)
-//
-in//let
-//
+(
 case+ opt0 of
 | ~
 optn_vt_nil() =>
-optn_vt_nil()
+optn_vt_nil((*void*))
 | ~
-optn_vt_cons(dtp0) =>
+optn_vt_cons(dtp1) =>
 optn_vt_cons
-(
-  d4typ_get_styp(dtp0))
+(d4typ_get_styp(dtp1))) where
+{
+val
+opt0 =
+linstk_dtprch_dvar(stk0, d2v0) }
 //
-end where
+#implfun
+linstk_dtprch_dvar
+  (stk0, d2v0) =
+(
+  loop(stk0) ) where
 {
 fnx
 loop
@@ -1084,7 +1087,7 @@ then
 optn_vt_cons(dtp1) else loop(stk1))
 //
 )
-}(*where*)//end-of-[linstk_search_dvar(...)]
+}(*where*)//end-of-[linstk_dtprch_dvar(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1505,8 +1508,27 @@ end(*let*)//end-of-(tr34env_getcas0(env0))
 (* ****** ****** *)
 //
 #implfun
-tr34env_search_dvar
-  (env0, d2v1) =
+tr34env_stprch_dvar
+  (env0, d2v0) =
+(
+case+ opt0 of
+| ~
+optn_vt_nil() =>
+optn_vt_nil((*void*))
+| ~
+optn_vt_cons(dtp1) =>
+optn_vt_cons
+(d4typ_get_styp(dtp1))) where
+{
+val
+opt0 =
+tr34env_dtprch_dvar(env0, d2v0) }
+//
+(* ****** ****** *)
+//
+#implfun
+tr34env_dtprch_dvar
+  (env0, d2v0) =
 let
 val+
 @TR34ENV
@@ -1515,10 +1537,10 @@ in//let
 (
   $fold(env0); opt1 ) where
 {
-  val
-  opt1 = linstk_search_dvar(linstk, d2v1)
+val
+opt1 = linstk_dtprch_dvar(linstk, d2v0)
 }
-end(*let*)//end-of-(tr34env_search_dvar(...))
+end(*let*)//end-of-(tr34env_dtprch_dvar(...))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1841,7 +1863,7 @@ list_nil(*void*)
 let
 //
 val opt1 =
-tr34env_search_dvar
+tr34env_stprch_dvar
   ( env0 , d2v1 )
 //
 val t2p1 =
