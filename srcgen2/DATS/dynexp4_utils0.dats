@@ -108,7 +108,7 @@ prerrln("d4pat_freeq: d4p0 = ", d4p0)
 (* ****** ****** *)
 
 #implfun
-d4exp_lvalq
+d4exp_foldq
 (  d4e0  ) =
 (
   loop(d4e0)) where
@@ -119,14 +119,16 @@ loop(d4e0: d4exp): bool =
 (
 case+
 d4e0.node() of
-| D4Evar _ => true
+//
+| D4Evar _ => (   true   )
+//
 | _(*otherwise*) => (   false   )
 )
 //
 val () =
-prerrln("d4exp_lvalq: d4e0 = ", d4e0)
+prerrln("d4exp_foldq: d4e0 = ", d4e0)
 //
-}(*where*)//end-of-[d4exp_lvalq(d4e0)]
+}(*where*)//end-of-[d4exp_foldq(d4e0)]
 
 (* ****** ****** *)
 (* ****** ****** *)

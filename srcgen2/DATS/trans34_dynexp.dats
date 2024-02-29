@@ -2010,7 +2010,7 @@ d4exp_none0
 (darg.lctn((*nil*))))
 else
 if
-not(d4exp_lvalq(darg))
+not(d4exp_foldq(darg))
 then
 (
 d4exp_none0(darg.lctn()))
