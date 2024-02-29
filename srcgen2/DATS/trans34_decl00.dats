@@ -381,7 +381,7 @@ val
 d4e2 =
 trans34_d3exp_tpck(env0,d3e2,tres)
 val
-f4as = trans34_f4axplst(env0,f4as)}
+f4as = trans34_f4aftlst(env0,f4as)}
 }
 ) (*case+*) // end-of-[ val(tdxp) ]
 //

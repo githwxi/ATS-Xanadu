@@ -459,6 +459,14 @@ D4CLS
 end//let
 //
 #implfun
+d4cls_get_darg(cls) =
+let
+val+
+D4CLS
+(loc
+,dag,dvs,vts,nod) = cls in dag
+end//let
+#implfun
 d4cls_get_vars(cls) =
 let
 val+
