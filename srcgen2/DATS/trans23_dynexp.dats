@@ -1443,16 +1443,18 @@ in//let
 if
 s2typ_dataq(ttup)
 then
-let//let
+let(*let*)
+//
 val tprj =
 s2typ_new0_x2tp(loc0)
+//
 in//let
 d3exp_make_tpnd
 (loc0
 ,tprj
 ,D3Epcon(tknd,dlab,dtup)) end//then
 else
-let//let
+let(*let*)
 //
 val tprj =
 (

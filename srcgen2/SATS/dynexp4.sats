@@ -495,7 +495,7 @@ token(*knd*), sint(*npf*), l4d4elst)
 (* ****** ****** *)
 //
 fun
-d4exp_lvalq(d4e0:d4exp):(bool)
+d4exp_foldq(d4e0:d4exp):(bool)
 //
 (* ****** ****** *)
 //
