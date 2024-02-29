@@ -612,7 +612,7 @@ else let
 //
 val
 opt1 =
-tr34env_search_dvar
+tr34env_stprch_dvar
   (env0, d2v1) //val(opt1)
 //
 val
@@ -1236,7 +1236,7 @@ val-
 D4Pvar(d2v1) = d4p0.node()
 //
 val opt1 =
-tr34env_search_dvar
+tr34env_stprch_dvar
   (env0, d2v1) //val(opt1)
 //
 val t2p1 =
@@ -1793,7 +1793,7 @@ D4Evar(d2v1) = d4e0.node()
 //
 val
 opt1 =
-tr34env_search_dvar
+tr34env_stprch_dvar
   (env0, d2v1) //val(opt1)
 //
 val
@@ -1985,14 +1985,72 @@ tr34env_d2vins_dset
 ( env0, d2v1, dtyp ); darg
 end//(*let*)//end-of-[f0_var(...)]
 //
-val (  ) =
-prerrln
-("trans34_d4arg_dtyp: darg = ", darg)
-val (  ) =
-prerrln
-("trans34_d4arg_dtyp: dtyp = ", dtyp)
+val (  ) = prerrln
+  ("trans34_d4arg_dtyp: darg = ", darg)
+val (  ) = prerrln
+  ("trans34_d4arg_dtyp: dtyp = ", dtyp)
 //
 }(*where*) // end-of-[trans34_d4arg_dtyp(...)]
+
+(* ****** ****** *)
+(* ****** ****** *)
+
+#implfun
+trans34_d4exp_fold
+  (env0, d4e0) =
+(
+case+
+d4e0.node() of
+//
+|
+D4Evar _ => f0_var(env0, d4e0)
+//
+|
+_(* otherwise *) => (   d4e0   )
+//
+) where
+{
+//
+fun
+f0_var
+( env0:
+! tr34env
+, d4e0: d4exp): d4exp =
+let
+//
+val-
+D4Evar(d2v1) = d4e0.node()
+//
+val opt1 =
+tr34env_dtprch_dvar
+  (env0, d2v1) //val(opt1)
+//
+in//let
+//
+case+ opt1 of
+| ~
+optn_vt_nil
+  ((*0*)) =>
+(
+d4exp_none0(d4e0.lctn()))
+| ~
+optn_vt_cons
+  ( dtp1 ) =>
+let
+val t2p1 =
+trans34_d4typ_fold
+  (env0, dtp1) //val(t2p1)
+val dtp2 = D4TYPstp( t2p1 )
+in//let
+tr34env_d2vins_dset
+( env0, d2v1, dtp2 ); d4e0 end
+//
+end(*let*) // end of [f0_var( ... )]
+//
+val (  ) = prerrln
+  ("trans34_d4exp_fold: d4e0 = ", d4e0)
+//
+}(*where*) // end-of-[trans34_d4exp_fold(...)]
 
 (* ****** ****** *)
 (* ****** ****** *)
