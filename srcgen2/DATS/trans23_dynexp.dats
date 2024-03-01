@@ -2736,7 +2736,7 @@ trans23_d2pat_tpck(env0, d2p1, t2p0)
 val d2ps =
 trans23_d2patlst_tpck1(env0, d2ps, t2p0)
 }
-) (*case+*) // end of [trans23_d2patlst_tpck1(...)]
+)(*case+*) // end of [trans23_d2patlst_tpck1(...)]
 //
 #implfun
 trans23_d3patlst_tpck1
@@ -2754,7 +2754,7 @@ trans23_d3pat_tpck(env0, d3p1, t2p0)
 val d3ps =
 trans23_d3patlst_tpck1(env0, d3ps, t2p0)
 }
-) (*case+*) // end of [trans23_d3patlst_tpck1(...)]
+)(*case+*) // end of [trans23_d3patlst_tpck1(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -2810,7 +2810,7 @@ trans23_d3pat_tpck(env0, d3p1, t2p1)
 val d3ps =
 trans23_d3patlst_tpcks(env0,loc0,d3ps,t2ps) }
 )
-) (*case+*) // end of [trans23_d3patlst_tpcks(...)]
+)(*case+*) // end of [trans23_d3patlst_tpcks(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -2824,13 +2824,13 @@ case+ d2es of
 list_nil() => list_nil()
 |
 list_cons(d2e1, d2es) =>
-list_cons(d2e1, d2es) where
+list_cons(d3e1, d3es) where
 {
-val d2e1 =
+val d3e1 =
 trans23_d2exp_tpck(env0, d2e1, t2p0)
-val d2es =
+val d3es =
 trans23_d2explst_tpck1(env0, d2es, t2p0) }
-) (*case+*) // end of [trans23_d2explst_tpck1(...)]
+)(*case+*) // end of [trans23_d2explst_tpck1(...)]
 //
 #implfun
 trans23_d3explst_tpck1
@@ -2847,7 +2847,7 @@ val d3e1 =
 trans23_d3exp_tpck(env0, d3e1, t2p0)
 val d3es =
 trans23_d3explst_tpck1(env0, d3es, t2p0) }
-) (*case+*) // end of [trans23_d3explst_tpck1(...)]
+)(*case+*) // end of [trans23_d3explst_tpck1(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -2903,7 +2903,7 @@ trans23_d3exp_tpck(env0, d3e1, t2p1)
 val d3es =
 trans23_d3explst_tpcks(env0,loc0,d3es,t2ps) }
 )
-) (*case+*) // end of [trans23_d3explst_tpcks(...)]
+)(*case+*) // end of [trans23_d3explst_tpcks(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

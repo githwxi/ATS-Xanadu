@@ -537,24 +537,31 @@ HX-2023-02-25:
 For type-checking level-3 dynexps
 *)
 (* ****** ****** *)
+//
 fun
 trans23_d2pat_tpck
 ( env0: !tr23env
 , d2p0: d2pat, t2p0: s2typ): d3pat
+//
 fun
 trans23_d2exp_tpck
 ( env0: !tr23env
 , d2e0: d2exp, t2p0: s2typ): d3exp
+//
 (* ****** ****** *)
+//
 fun
 trans23_d3pat_tpck
 ( env0: !tr23env
 , d3p0: d3pat, t2p0: s2typ): d3pat
+//
 fun
 trans23_d3exp_tpck
 ( env0: !tr23env
 , d3e0: d3exp, t2p0: s2typ): d3exp
+//
 (* ****** ****** *)
+//
 fun
 trans23_d2patlst_tpck1
 ( env0:
@@ -565,13 +572,16 @@ trans23_d3patlst_tpck1
 ( env0:
 ! tr23env
 , d3ps: d3patlst, t2p0: s2typ): d3patlst
+//
 fun
 trans23_d3patlst_tpcks
 ( env0:
 ! tr23env
 , loc0: loc_t
 , d3ps: d3patlst, t2ps: s2typlst): d3patlst
+//
 (* ****** ****** *)
+//
 fun
 trans23_d2explst_tpck1
 ( env0:
@@ -582,12 +592,14 @@ trans23_d3explst_tpck1
 ( env0:
 ! tr23env
 , d3es: d3explst, t2p0: s2typ): d3explst
+//
 fun
 trans23_d3explst_tpcks
 ( env0:
 ! tr23env
 , loc0: loc_t
 , d3es: d3explst, t2ps: s2typlst): d3explst
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
