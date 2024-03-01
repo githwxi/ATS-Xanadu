@@ -945,6 +945,14 @@ trans34_d4arg_dtyp
 (* ****** ****** *)
 //
 fun
+trans34_d4exp_dset
+( env0:
+! tr34env
+, d4e0: d4exp, t2p0: s2typ): (void)
+//
+(* ****** ****** *)
+//
+fun
 trans34_d4typ_fold
 (env0: !tr34env, dtp0: d4typ): s2typ
 fun

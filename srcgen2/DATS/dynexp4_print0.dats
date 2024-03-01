@@ -296,6 +296,22 @@ print("D4Eflat(",d4e1,")") // left-val
 //
 (* ****** ****** *)
 //
+|
+D4Eassgn
+(d4el, d4er) =>
+(
+ print("D4Eassgn(",d4el,";",d4er,")"))
+//
+(* ****** ****** *)
+//
+|
+D4Eraise
+(tknd, d4e1) =>
+(
+ print("D4Eraise(",tknd,";",d4e1,")"))
+//
+(* ****** ****** *)
+//
 |D4El2bck
 ( d4e1 , lab2 ) =>
 let
