@@ -1191,14 +1191,24 @@ d4el = // HX: LHS-second!
 (
   trans34_d3exp(env0, d3el))
 //
+val t2pr = d4er.styp((*nil*))
+val t2pl = d4el.styp((*nil*))
+//
 in//let
 let
 //
 val t2p0 =
 the_s2typ_void((*0*))
 val (  ) =
-trans34_d4exp_dset
-(env0, d4el, d4er.styp((*0*)))
+trans34_d4exp_dset(env0,d4el,t2pr)
+//
+val d4el =
+(
+if
+linq(t2pl)
+then
+d4exp_linex(d4el, t2pl) else d4el
+) : d4exp // end-of-[ val( d4el ) ]
 //
 in//let
   d4exp

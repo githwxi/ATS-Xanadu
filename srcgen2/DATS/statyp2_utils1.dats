@@ -487,20 +487,24 @@ s2typ_make_node
 (  s2e1  ) =>
 let
 val t2p1 = f0_impr(s2e1)
+(*
 val s2t1 = t2p1.sort((*0*))
+*)
 in//let
 (
-  s2typ(s2t1,T2Ptop0(t2p1)) )
+  s2typ(s2t0,T2Ptop0(t2p1)) )
 end (*let*) // end of [S2Etop0]
 //
 |S2Etop1
 (  s2e1  ) =>
 let
 val t2p1 = f0_impr(s2e1)
+(*
 val s2t1 = t2p1.sort((*0*))
+*)
 in//let
 (
-  s2typ(s2t1,T2Ptop1(t2p1)) )
+  s2typ(s2t0,T2Ptop1(t2p1)) )
 end (*let*) // end of [S2Etop1]
 //
 (* ****** ****** *)
@@ -521,9 +525,12 @@ end (*let*) // end of [S2Earg1]
 S2Eatx2
 (s2e1, s2e2) =>
 let
+//
 val t2p1 = f0_impr(s2e1)
 val t2p2 = f0_impr(s2e2)
+//
 val s2t1 = t2p1.sort((*0*))
+//
 in//let
 (
   s2typ_make_node

@@ -27,7 +27,7 @@ swap
 *)
 fun
 assgn
-(x: &(?VT) >> VT, y:  VT): void = x := y
+(x: &(?VT) >> VT, y: VT): void = x := y
 
 (* ****** ****** *)
 (* ****** ****** *)
