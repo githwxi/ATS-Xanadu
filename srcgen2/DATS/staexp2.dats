@@ -839,8 +839,8 @@ let
 val s2e1 =
 (
 case- s2es of
-|
-list_cons(s2e1, _) => s2e1): s2exp
+|list_cons
+(s2e1, _(*nil*)) => s2e1): s2exp
 val s2t0 =
 (
 if
