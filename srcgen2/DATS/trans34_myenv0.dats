@@ -1731,6 +1731,11 @@ D4Pvar(d2v1) = dpat.node()
 //
 in//let
 let
+(*
+HX-2024-02-29:
+Note that d2v1.styp() can tell
+whether d2v1 is a mutable variable!
+*)
 val t2p0 = dpat.styp()
 val t2p0 = s2typ_unargx(t2p0)
 in//let

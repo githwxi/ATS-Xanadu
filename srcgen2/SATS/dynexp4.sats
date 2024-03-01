@@ -473,6 +473,10 @@ token(*knd*), sint(*npf*), l4d4elst)
 //
 (* ****** ****** *)
 //
+|D4Eflat of (d4exp)//left-val-content
+//
+(* ****** ****** *)
+//
 |D4El2bck of (d4exp, label)//HX: casting
 |D4Et2pck of (d4exp, s2typ)//HX: casting
 //

@@ -289,6 +289,13 @@ D4Efix0
 //
 (* ****** ****** *)
 //
+|
+D4Eflat
+(   d4e1   ) =>
+print("D4Eflat(",d4e1,")") // left-val
+//
+(* ****** ****** *)
+//
 |D4El2bck
 ( d4e1 , lab2 ) =>
 let
