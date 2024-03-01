@@ -477,6 +477,13 @@ token(*knd*), sint(*npf*), l4d4elst)
 //
 (* ****** ****** *)
 //
+|D4Eassgn of
+( d4exp(*l-val*), d4exp(*r-val*) )
+//
+|D4Eraise of (token, d4exp(*lin-exn*) )
+//
+(* ****** ****** *)
+//
 |D4El2bck of (d4exp, label)//HX: casting
 |D4Et2pck of (d4exp, s2typ)//HX: casting
 //

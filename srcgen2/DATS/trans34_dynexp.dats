@@ -605,6 +605,10 @@ d4exp_make_tpnd
 //
 (* ****** ****** *)
 //
+|D3Eassgn _ => f0_assgn(env0, d3e0)
+//
+(* ****** ****** *)
+//
 | _(*otherwise*) =>
 let
   val loc0 = d3e0.lctn((*0*))
@@ -1122,7 +1126,50 @@ s2typ_delft(d4e1.styp()) in
 d4exp(loc0, t2p0, D4Eflat(d4e1)) end
 //
 end(*let*) // end-of-[f0_flat(env0,d3e0)]
-
+//
+(* ****** ****** *)
+//
+fun
+f0_assgn
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
+let
+//
+val loc0 = d3e0.lctn()
+val-
+D3Eassgn
+( d3el, d3er) = d3e0.node()
+//
+(*
+HX-2024-03-01:
+Note the ordering here:
+RHS first and LHS second
+*)
+val
+d4er = // HX: RHS-first!
+(
+  trans34_d3exp(env0, d3er))
+val
+d4el = // HX: LHS-second!
+(
+  trans34_d3exp(env0, d3el))
+//
+in//let
+let
+//
+val t2p0 =
+the_s2typ_void((*0*))
+val (  ) =
+trans34_d4exp_dset
+(env0, d4el, d4er.styp((*0*)))
+//
+in//let
+  d4exp
+  (loc0, t2p0, D4Eassgn(d4el, d4er))
+end(*let*)
+end(*let*) // end-of-[f0_assgn(env0,d3e0)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -2169,6 +2216,66 @@ val (  ) = prerrln
   ("trans34_d4arg_dtyp: dtyp = ", dtyp)
 //
 }(*where*) // end-of-[trans34_d4arg_dtyp(...)]
+
+(* ****** ****** *)
+(* ****** ****** *)
+
+#implfun
+trans34_d4exp_dset
+(env0, d4e0, t2p0) =
+(
+case+
+d4e0.node() of
+//
+|
+D4Eflat(d4e1) =>
+f0_main(env0, d4e1)
+//
+) where
+{
+//
+fun
+f0_var
+( env0:
+! tr34env
+, d4e1: d4exp): void =
+(
+tr34env_d2vins_dset
+(env0, d2v1, D4TYPstp(t2p0))
+) where
+{
+val-D4Evar(d2v1) = d4e1.node()
+}(*where*)//end-of-[f1_var(...)]
+//
+fun
+f0_main
+( env0:
+! tr34env
+, d4e1: d4exp): void =
+(
+case+
+d4e1.node() of
+//
+|
+D4Evar _ => f0_var(env0, d4e1)
+//
+|
+_(*otherwise*) => (  (*void*)  )
+//
+) where
+{
+//
+val () =
+prerrln("f0_main: d4e1 = ", d4e1)
+//
+}(*where*)//end-of-[ f1_main(...) ]
+//
+val (  ) = prerrln
+  ("trans34_d4exp_dset: d4e0 = ", d4e0)
+val (  ) = prerrln
+  ("trans34_d4exp_dset: t2p0 = ", t2p0)
+//
+}(*where*) // end-of-[trans34_d4exp_dset(...)]
 
 (* ****** ****** *)
 (* ****** ****** *)
