@@ -915,7 +915,7 @@ endlet // end of [d2exp_annot_errck(...)]
 (* ****** ****** *)
 //
 fun
-d2exp_l2bck_errck
+d2exp_labck_errck
 ( loc0: loc_t
 , d2e1: d2exp
 , lab2: label): d2exp =
@@ -924,8 +924,8 @@ val
 lvl0 = errvl(d2e1) in//let
 d2exp_errck
 ( lvl0+1
-, d2exp( loc0, D2El2bck( d2e1, lab2 ) ))
-endlet // end of [d2exp_l2bck_errck(...)]
+, d2exp( loc0, D2Elabck( d2e1, lab2 ) ))
+endlet // end of [d2exp_labck_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1366,7 +1366,7 @@ d2e0.node() of
 //
 |D2Eannot _ => f0_annot(d2e0, err)
 //
-|D2El2bck _ => f0_l2bck(d2e0, err)
+|D2Elabck _ => f0_labck(d2e0, err)
 |D2Et2pck _ => f0_t2pck(d2e0, err)
 //
 |D2Enone0 _ => f0_none0(d2e0, err)
@@ -2159,7 +2159,7 @@ end (*let*) // end of [f0_annot(d2e,err)]
 (* ****** ****** *)
 //
 fun
-f0_l2bck
+f0_labck
 (d2e: d2exp
 ,err: &sint >> _): d2exp =
 let
@@ -2167,7 +2167,7 @@ let
 val e00 = err
 //
 val-
-D2El2bck
+D2Elabck
 (d2e1, lab2) = d2e.node()
 //
 val
@@ -2179,9 +2179,9 @@ if
 then (d2e) else
 let
 val loc = d2e.lctn() in
-d2exp_l2bck_errck(loc, d2e1, lab2)
+d2exp_labck_errck(loc, d2e1, lab2)
 end (*let*) // end-of-[else]
-end (*let*) // end of [f0_l2bck(d2e,err)]
+end (*let*) // end of [f0_labck(d2e,err)]
 //
 (* ****** ****** *)
 //

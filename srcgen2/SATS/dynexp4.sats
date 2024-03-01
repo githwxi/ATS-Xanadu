@@ -337,8 +337,6 @@ d4pat_node =
 (* ****** ****** *)
 |D4Pt2pck of (d4pat, s2typ)//HX: casting
 (* ****** ****** *)
-|D4Pp2tck of (d4pat, s2typ)//HX: lin-excess
-(* ****** ****** *)
 //
 |D4Pnone0 of ((*0*))
 |D4Pnone1 of (d3pat) | D4Pnone2 of (d4pat)
@@ -484,12 +482,12 @@ token(*knd*), sint(*npf*), l4d4elst)
 //
 (* ****** ****** *)
 //
-|D4El2bck of (d4exp, label)//HX: casting
+|D4Elabck of (d4exp, label)//HX: casting
+//
 |D4Et2pck of (d4exp, s2typ)//HX: casting
 //
-(* ****** ****** *)
-//
-|D4Ep2tck of (d4exp, s2typ)//HX: lin-excess
+|D4Ep2tck of (d4exp, s2typ)//HX: t2p-return
+|D4Elinex of (d4exp, s2typ)//HX: lin-excess
 //
 (* ****** ****** *)
 //

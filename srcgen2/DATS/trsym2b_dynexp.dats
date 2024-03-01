@@ -934,7 +934,7 @@ prerrln
 }
 //
 |
-D2El2bck(_, _) => f0_l2bck(env0, d2e0)
+D2Elabck(_, _) => f0_labck(env0, d2e0)
 |
 D2Et2pck(_, _) => f0_t2pck(env0, d2e0)
 //
@@ -1256,15 +1256,15 @@ prerrln("f0_dtsel(2b): d2e0 = ", d2e0)
 (* ****** ****** *)
 //
 fun
-f0_l2bck
+f0_labck
 ( env0:
 ! tr2aenv
 , d2e0: d2exp): void =
 (
 trsym2b_d2exp(env0, d2e1)) where
 {
-  val-D2El2bck(d2e1, lab2) = d2e0.node()
-} (*where*) // end of [f0_l2bck(env0, d2e0)]
+  val-D2Elabck(d2e1, lab2) = d2e0.node()
+} (*where*) // end of [f0_labck(env0, d2e0)]
 //
 (* ****** ****** *)
 //

@@ -586,15 +586,15 @@ D2Eannot
 (
 print("D2Eg1mac(",g1m1,")"))//D2Eg1mac
 //
-|D2El2bck
+|D2Elabck
 ( d2e1, lab2 ) =>
 let
 val
 t2p1 = d2e1.styp() in
 (
-  print("D2El2bck(")
+  print("D2Elabck(")
 ; print( d2e1,";",t2p1,";",lab2,")") )
-endlet // end of [ D2El2bck(d2e1, lab2) ]
+endlet // end of [ D2Elabck(d2e1, lab2) ]
 |D2Et2pck
 ( d2e1, t2p2 ) =>
 let

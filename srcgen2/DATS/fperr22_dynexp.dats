@@ -447,7 +447,7 @@ val () = fperr22_d2exp(out, d2e1)
 }
 //
 |
-D2El2bck
+D2Elabck
 (d2e1, lab2) =>
 let
 val () = fperr22_d2exp(out, d2e1)

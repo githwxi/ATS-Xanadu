@@ -20,9 +20,14 @@ fun
 foo1(x: &VT >> ?VT): VT = x
 *)
 
+(*
 fun
 swap
 (x: &VT, y: &VT): void = x := y
+*)
+fun
+assgn
+(x: &(?VT) >> VT, y:  VT): void = x := y
 
 (* ****** ****** *)
 (* ****** ****** *)
