@@ -972,6 +972,12 @@ trans34_d4patlst_tpcks
 (* ****** ****** *)
 //
 fun
+trans34_d3explst_tpck1
+( env0:
+! tr34env
+, d3es: d3explst, t2p0: s2typ): d4explst
+//
+fun
 trans34_d4explst_tpcks
 ( env0:
 ! tr34env

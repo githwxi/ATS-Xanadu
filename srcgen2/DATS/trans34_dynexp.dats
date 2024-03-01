@@ -626,8 +626,16 @@ d4exp_make_tpnd
 //
 (* ****** ****** *)
 //
+|D3Elet0 _ => f0_let0(env0, d3e0)
+//
+(* ****** ****** *)
+//
 |D3Eift0 _ => f0_ift0(env0, d3e0)
 |D3Ecas0 _ => f0_cas0(env0, d3e0)
+//
+(* ****** ****** *)
+//
+|D3Eseqn _ => f0_seqn(env0, d3e0)
 //
 (* ****** ****** *)
 //
@@ -833,6 +841,56 @@ in//let
 end (*let*)
 //
 end (*let*) // end of [f0_dapp(env0,d3e0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_let0
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Elet0
+( dcls, d3e1) = d3e0.node()
+//
+val () =
+tr34env_pshlet0(env0)//enter
+//
+val dcls =
+(
+  trans34_d3eclist(env0, dcls))
+//
+val
+d4e1 = trans34_d3exp(env0, d3e1)
+//
+val d2vs = tr34env_letvars( env0 )
+val dvts = tr34env_getlet0( env0 )
+val (  ) = tr34env_poplet0( env0 )
+//
+in//let
+//
+(
+d4exp_dvts(d4e0, dvts)) where
+{
+//
+  val t2p1 =
+  d4e1.styp( (*void*) )
+  val d4e1 =
+  d4exp_dvts(d4e1, dvts)
+//
+  val dvts =
+  d2vts_drop_vars(dvts, d2vs)
+//
+  val d4e0 =
+  d4exp_make_tpnd
+  (loc0, t2p1, D4Elet0(dcls, d4e1)) }
+//
+end (*let*) // end of [f0_let0(env0,d3e0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1073,6 +1131,32 @@ end (*let*) // end of [f0_cas0(env0,d3e0)]
 end (*local*) // end of [local(f0_if0/cas0(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_seqn
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
+(
+d4exp_make_tpnd
+( loc0
+, d4e1.styp()
+, D4Eseqn(d4es, d4e1))) where
+{
+val loc0 = d3e0.lctn()
+val-
+D3Eseqn
+(d3es, d3e1) = d3e0.node()
+//
+val d4es =
+trans34_d3explst_tpck1
+(env0, d3es, the_s2typ_void())
+//
+val d4e1 = trans34_d3exp(env0, d3e1)
+//
+} (*where*) // end of [f0_seqn(env0,d3e0)]
+//
 (* ****** ****** *)
 //
 fun
@@ -2451,6 +2535,25 @@ trans34_d4patlst_tpcks(env0,loc0,d4ps,t2ps)
 ) // end-of-[list_cons(t2p1, t2ps)]
 //
 )(*case+*) // end-of-[trans34_d4patlst_tpcks(...)]
+//
+(* ****** ****** *)
+//
+#implfun
+trans34_d3explst_tpck1
+( env0 , d3es , t2p0 ) =
+(
+case+ d3es of
+|
+list_nil() => list_nil()
+|
+list_cons(d3e1, d3es) =>
+list_cons(d4e1, d4es) where
+{
+val d4e1 =
+trans34_d3exp_tpck(env0, d3e1, t2p0)
+val d4es =
+trans34_d3explst_tpck1(env0, d3es, t2p0) }
+)(*case+*) // end of [trans34_d2explst_tpck1(...)]
 //
 (* ****** ****** *)
 //

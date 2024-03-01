@@ -449,6 +449,8 @@ for the bef/aft syntax
 |D4Eseqn of
 ( d4explst(*init*), d4exp(*last*) )
 //
+(* ****** ****** *)
+//
 |D4Etup0 of (sint(*npf*), d4explst)
 |D4Etup1 of
 (
