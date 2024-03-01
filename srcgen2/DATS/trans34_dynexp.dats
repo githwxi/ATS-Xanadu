@@ -109,6 +109,19 @@ _(*TRANS34*) = "./trans34.dats"
 (* ****** ****** *)
 //
 fun
+s2typ_delft
+(t2p0: s2typ): s2typ =
+(
+case+
+t2p0.node() of
+|
+T2Plft(t2p1) => t2p1
+|
+_(*non-T2Plft*) => t2p0)
+//
+(* ****** ****** *)
+//
+fun
 s2typ_new0_x2tp
 ( loc0: loc_t ): s2typ =
 (
@@ -588,6 +601,10 @@ d4exp_make_tpnd
 //
 (* ****** ****** *)
 //
+|D3Eflat _ => f0_flat(env0, d3e0)
+//
+(* ****** ****** *)
+//
 | _(*otherwise*) =>
 let
   val loc0 = d3e0.lctn((*0*))
@@ -618,7 +635,7 @@ if
 d2var_mutq(d2v1)
 then
 (
-  f1_mutq(env0, d2v1))
+  f1_mutq(env0, d3e0))
 else let
 //
 val
@@ -660,17 +677,47 @@ fun
 f1_mutq
 ( env0:
 ! tr34env
-, d2v1
-: d2var ) : d4exp = f0_var(env0, d3e0)
+, d3e0: d3exp): d4exp =
+let
 //
-(*
-fun
-f1_linq
-( env0:
-! tr34env
-, d2v1
-: d2var ) : d4exp = f0_var(env0, d3e0)
-*)
+val
+loc0 = d3e0.lctn()
+val-
+D3Evar(d2v1) = d3e0.node()
+//
+val
+opt1 =
+tr34env_stprch_dvar
+  (env0, d2v1) //val(opt1)
+//
+val
+t2p1 =
+(
+case+ opt1 of
+| ~
+optn_vt_nil
+ ((*nil*)) =>
+(
+s2typ_delft(d2v1.styp()))
+| ~
+optn_vt_cons(t2p1) => t2p1)
+: s2typ // end-of-[val(t2p1)]
+//
+val test = linq(t2p1)
+//
+val t2p0 = s2typ_lft(t2p1)
+//
+val (  ) =
+if test then
+let
+val t2p1 =
+s2typ_top1(t2p1) in//let
+tr34env_d2vins_dget
+(env0,d2v1,D4TYPstp(t2p1)) end
+//
+in//let
+d4exp(loc0, t2p0, D4Evar(d2v1))
+end(*let*) // end of [f1_mutq(...)]
 //
 }(*where*) // end of [f0_var(env0,d3e0)]
 //
@@ -1045,9 +1092,37 @@ tknd.node() of
 | T_TRCD10(_) => TRCDbox0(*void*))
 val
 t2p0 =
-s2typ_tup1(trcd , npf1 , s2typlst(d4es))
-} (*where*) // end of [f0_tup1(env0,d3e0)]
+s2typ_tup1(trcd, npf1, s2typlst(d4es))
+}(*where*) // end of [f0_tup1(env0,d3e0)]
 //
+(* ****** ****** *)
+//
+fun
+f0_flat
+( env0:
+! tr34env
+, d3e0: d3exp): d4exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Eflat(d3e1) = d3e0.node()
+//
+val
+d4e1 =
+(
+  trans34_d3exp(env0, d3e1))
+//
+in//let
+//
+let
+val t2p0 =
+s2typ_delft(d4e1.styp()) in
+d4exp(loc0, t2p0, D4Eflat(d4e1)) end
+//
+end(*let*) // end-of-[f0_flat(env0,d3e0)]
+
 (* ****** ****** *)
 (* ****** ****** *)
 //
