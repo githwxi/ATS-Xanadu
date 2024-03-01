@@ -147,13 +147,6 @@ print(d4p1, ";", s1e2, ";", s2e2,")"))
 //
 (* ****** ****** *)
 //
-|D4Pp2tck
-( d4p1 , t2p2 ) =>
-(
- print("D4Pp2tck(",d4p1,";", t2p2,")"))
-//
-(* ****** ****** *)
-//
 |D4Pnone0() => print( "D4Pnone0(",")" )
 |D4Pnone1(d3p1) => print("D4Pnone1(",d3p1,")")
 |D4Pnone2(d4p1) => print("D4Pnone2(",d4p1,")")
@@ -312,14 +305,14 @@ D4Eraise
 //
 (* ****** ****** *)
 //
-|D4El2bck
+|D4Elabck
 ( d4e1 , lab2 ) =>
 let
 val
 t2p1 = d4e1.styp() in
-( print("D4El2bck(")
+( print("D4Elabck(")
 ; print( d4e1, ";",t2p1, ";",lab2,")"))
-endlet // end of [ D4El2bck(d4e1, lab2) ]
+endlet // end of [ D4Elabck(d4e1, lab2) ]
 //
 |D4Et2pck
 ( d4e1 , t2p2 ) =>
@@ -336,6 +329,13 @@ endlet // end of [ D4Et2pck(d4e1, t2p2) ]
 ( d4e1 , t2p2 ) =>
 (
 print("D4Ep2tck(", d4e1, ";", t2p2,")"))
+//
+(* ****** ****** *)
+//
+|D4Elinex
+( d4e1 , t2p2 ) =>
+(
+print("D4Elinex(", d4e1, ";", t2p2,")"))
 //
 (* ****** ****** *)
 //

@@ -969,7 +969,7 @@ endlet // end of [d3exp_l1azy_errck(...)]
 (* ****** ****** *)
 //
 fun
-d3exp_l2bck_errck
+d3exp_labck_errck
 ( loc0: loc_t
 , d3e1: d3exp
 , lab2: label): d3exp =
@@ -977,8 +977,8 @@ let
 val lvl0 = errvl(d3e1) in//let
 d3exp_errck
 ( lvl0+1
-, d3exp( loc0, D3El2bck( d3e1, lab2 ) ))
-endlet // end of [d3exp_l2bck_errck(...)]
+, d3exp( loc0, D3Elabck( d3e1, lab2 ) ))
+endlet // end of [d3exp_labck_errck(...)]
 //
 (* ****** ****** *)
 //
@@ -1453,7 +1453,7 @@ d3e0.node() of
 |D3El0azy _ => f0_l0azy(d3e0, err)
 |D3El1azy _ => f0_l1azy(d3e0, err)
 //
-|D3El2bck _ => f0_l2bck(d3e0, err)
+|D3Elabck _ => f0_labck(d3e0, err)
 |D3Et2pck _ => f0_t2pck(d3e0, err)
 //
 |D3Eannot _ => f0_annot(d3e0, err)
@@ -2328,7 +2328,7 @@ end (*let*) // end of [f0_l1azy(d3e,err)]
 (* ****** ****** *)
 //
 fun
-f0_l2bck
+f0_labck
 (d3e: d3exp
 ,err: &sint >> _): d3exp =
 let
@@ -2337,12 +2337,12 @@ val e00 = err
 //
 (*
 HX-2023-03-04:
-[l2bck] treated as error
+[labck] treated as error
 *)
 val ( ) = err := e00 + 1
 //
 val-
-D3El2bck
+D3Elabck
 (d3e1, lab2) = d3e.node()
 //
 val
@@ -2354,9 +2354,9 @@ if
 then (d3e) else
 let
 val loc = d3e.lctn() in
-d3exp_l2bck_errck( loc, d3e1, lab2 )
+d3exp_labck_errck( loc, d3e1, lab2 )
 end (*let*) // end-of-[else]
-end (*let*) // end of [f0_l2bck(d3e,err)]
+end (*let*) // end of [f0_labck(d3e,err)]
 //
 (* ****** ****** *)
 //

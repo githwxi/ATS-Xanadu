@@ -539,7 +539,8 @@ it may be of other uses in the future
 //
 (* ****** ****** *)
 //
-|D3El2bck of (d3exp, label)//HX: casting
+|D3Elabck of (d3exp, label)//HX: casting
+//
 |D3Et2pck of (d3exp, s2typ)//HX: casting
 //
 (* ****** ****** *)

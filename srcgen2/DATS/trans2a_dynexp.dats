@@ -1895,7 +1895,7 @@ optn_vt_nil() =>
 d2exp_make_tpnd
 ( loc0
 , ttup
-, D2El2bck(dtup, dlab))
+, D2Elabck(dtup, dlab))
 | // keep
 optn_vt_cons(tprj) => dtup )
 : d2exp // end of [val(dtup)]

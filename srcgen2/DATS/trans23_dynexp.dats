@@ -826,7 +826,7 @@ d3exp_make_tpnd
 //
 |D2Eannot _ => f0_annot(env0, d2e0)
 //
-|D2El2bck _ => f0_l2bck(env0, d2e0)
+|D2Elabck _ => f0_labck(env0, d2e0)
 |D2Et2pck _ => f0_t2pck(env0, d2e0)
 //
 |D2Enone0 _ => f0_none0(env0, d2e0)
@@ -2296,7 +2296,7 @@ end (*let*) // end of [f0_l1azy(env0,d2e0)]
 (* ****** ****** *)
 //
 fun
-f0_l2bck
+f0_labck
 ( env0:
 ! tr23env
 , d2e0: d2exp): d3exp =
@@ -2304,7 +2304,7 @@ let
 //
 val loc0 = d2e0.lctn()
 val-
-D2El2bck
+D2Elabck
 (d2e1, lab2) = d2e0.node()
 //
 val
@@ -2333,10 +2333,10 @@ optn_vt_nil() =>
 (
 d3exp_make_tpnd
 ( loc0
-, t2p1, D3El2bck(d3e1, lab2)))
+, t2p1, D3Elabck(d3e1, lab2)))
 | ~optn_vt_cons(tprj) => (d3e1) end//let
 //
-end (*let*) // end of [f0_l2bck(env0,d2e0)]
+end (*let*) // end of [f0_labck(env0,d2e0)]
 //
 (* ****** ****** *)
 //

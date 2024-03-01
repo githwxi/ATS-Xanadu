@@ -481,15 +481,16 @@ D3El1azy
 //
 (* ****** ****** *)
 //
-|D3El2bck
+|D3Elabck
 ( d3e1 , lab2 ) =>
 let
 val
 t2p1 = d3e1.styp() in
 (
-  print("D3El2bck(")
+  print("D3Elabck(")
 ; print( d3e1, ";",t2p1, ";",lab2,")"))
-endlet // end of [ D3El2bck(d3e1, lab2) ]
+endlet // end of [ D3Elabck(d3e1, lab2) ]
+//
 |D3Et2pck
 ( d3e1 , t2p2 ) =>
 let

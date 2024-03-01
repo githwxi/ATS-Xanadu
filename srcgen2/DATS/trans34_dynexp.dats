@@ -225,7 +225,7 @@ end(*let*)//end-of[d4exp_none0_void]
 (* ****** ****** *)
 //
 fun
-d4pat_p2tck
+d4pat_t2pck
 ( d4p0: d4pat
 , stp1: s2typ): d4pat =
 let
@@ -236,8 +236,26 @@ val t2p0 = d4p0.styp()
 in//let
 (
 d4pat_make_tpnd
-(loc0,t2p0,D4Pp2tck(d4p0, stp1)))
-end//let//end-of-[d4pat_p2tck(...)]
+(loc0,t2p0,D4Pt2pck(d4p0, stp1)))
+end//let//end-of-[d4pat_t2pck(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d4exp_t2pck
+( d4e0: d4exp
+, stp1: s2typ): d4exp =
+let
+//
+val loc0 = d4e0.lctn()
+val t2p0 = d4e0.styp()
+//
+in//let
+(
+d4exp_make_tpnd
+(loc0,t2p0,D4Et2pck(d4e0, stp1)))
+end//let//end-of-[d4exp_t2pck(...)]
 //
 (* ****** ****** *)
 //
@@ -255,6 +273,23 @@ in//let
 d4exp_make_tpnd
 (loc0,t2p0,D4Ep2tck(d4e0, stp1)))
 end//let//end-of-[d4exp_p2tck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d4exp_linex
+( d4e0: d4exp
+, stp1: s2typ): d4exp =
+let
+//
+val loc0 = d4e0.lctn()
+val t2p0 = d4e0.styp()
+//
+in//let
+(
+d4exp_make_tpnd
+(loc0,t2p0,D4Elinex(d4e0, stp1)))
+end//let//end-of-[d4exp_linex(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -787,6 +822,7 @@ let
 val d4es =
 trans34_d4explst_tpcks
   (env0, loc0, d4es, targ) //val(d4es)
+//
 val d4es =
 trans34_d4explst_ptcks
   (env0, loc0, d4es, targ) //val(d4es)
@@ -1340,15 +1376,15 @@ tinv.node() of
 |
 T2Patx2
 (tbef, taft) =>
-auxmain_ptck(env0, d4p0, taft)
+auxmain_tpck(env0, d4p0, taft)
 |
 _(*non-T2Patx2*) =>
-auxmain_ptck(env0, d4p0, tinv))
+auxmain_tpck(env0, d4p0, tinv))
 //
 |T2Patx2
 (tbef, taft) =>
 (
-auxmain_ptck(env0, d4p0, taft))
+auxmain_tpck(env0, d4p0, taft))
 //
 |
 _(* otherwise *) => d4pat_none0(loc0)
@@ -1357,7 +1393,7 @@ end where
 {
 //
 fun
-auxmain_ptck
+auxmain_tpck
 ( env0:
 ! tr34env
 , d4p0: d4pat
@@ -1376,8 +1412,8 @@ in//let
 (
   if // if
   ubtf then
-  d4p0 else d4pat_p2tck(d4p0, taft) )
-end//let//end-of-[auxmain_ptck(env0,...)]
+  d4p0 else d4pat_t2pck(d4p0, taft) )
+end//let//end-of-[auxmain_tpck(env0,...)]
 //
 }(*where*)//end-of-[trans34_d4aft(env0,d4p0)]
 //
@@ -1977,7 +2013,8 @@ trans34_d4exp_ptck
 case+
 stp1.node() of
 //
-|T2Parg1
+|
+T2Parg1
 (knd0, tinv) =>
 if
 knd0 = 0
@@ -1985,15 +2022,16 @@ then d4e0 else
 (
 case+
 tinv.node() of
-|
-T2Patx2
-(tbef, taft) =>
-auxmain(env0, d4e0, taft)
-|
-_(*non-T2Patx2*) =>
-auxmain(env0, d4e0, tinv))
 //
 |T2Patx2
+(tbef, taft) =>
+auxmain(env0, d4e0, taft)
+//
+|_(*non-T2Patx2*) =>
+auxmain(env0, d4e0, tinv))
+//
+|
+T2Patx2
 (tbef, taft) =>
 (
 auxmain(env0, d4e0, taft))
@@ -2040,7 +2078,7 @@ in//let
 if // if
 linq(t2p1)
 then // HX: linear excess: [t2p1] 
-d4exp_p2tck(d4e0, t2p1) else d4e0
+d4exp_linex(d4e0, t2p1) else d4e0
 end(*let*)//end-of-[f0_var(env0,d4e0)]
 //
 (* ****** ****** *)
@@ -2061,7 +2099,8 @@ f0_var(env0, d4e0, taft))
 //
 | _(*otherwise*) =>
 (
-  d4exp_p2tck(d4e0, taft))) // auxmain
+  d4exp_p2tck(d4e0, taft) )
+)(*case+*)//end-of-[auxmain(d4e0,taft)]
 //
 (* ****** ****** *)
 //
@@ -2229,7 +2268,7 @@ d4e0.node() of
 //
 |
 D4Eflat(d4e1) =>
-f0_main(env0, d4e1)
+auxmain(env0, d4e1)
 //
 ) where
 {
@@ -2248,7 +2287,7 @@ val-D4Evar(d2v1) = d4e1.node()
 }(*where*)//end-of-[f1_var(...)]
 //
 fun
-f0_main
+auxmain
 ( env0:
 ! tr34env
 , d4e1: d4exp): void =
@@ -2266,7 +2305,7 @@ _(*otherwise*) => (  (*void*)  )
 {
 //
 val () =
-prerrln("f0_main: d4e1 = ", d4e1)
+prerrln("auxmain: d4e1 = ", d4e1)
 //
 }(*where*)//end-of-[ f1_main(...) ]
 //
