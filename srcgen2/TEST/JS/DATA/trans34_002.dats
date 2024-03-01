@@ -8,20 +8,25 @@
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#abstype T0 <= sint
+#absvwtp VT <= sint
+(* ****** ****** *)
+(* ****** ****** *)
 
 fun
-foo1(x: &sint): sint = x + 1
+foo0(x: &T0): T0 = x
+
+fun
+foo1(x: &VT >> ?VT): VT = x
 
 (* ****** ****** *)
+(* ****** ****** *)
 ////
-(* ****** ****** *)
-#abstype VT <= sint
-(* ****** ****** *)
 (*
 //
 fun
 length
-(xs: list(VT)): sint =
+(xs: list(T0)): sint =
 case+ xs of
 | list_nil() => 0
 | list_cons(_, xs) => 1+length(xs)
@@ -32,7 +37,7 @@ case+ xs of
 (*
 fun
 length0_vt
-(xs: ~list_vt(VT)): sint =
+(xs: ~list_vt(T0)): sint =
 case+ xs of
 | ~
 list_vt_nil() => 0
@@ -44,7 +49,7 @@ list_vt_cons(_, xs) => 1+length0_vt(xs)
 //
 fun
 length1_vt
-(xs: !list_vt(VT)): sint =
+(xs: !list_vt(T0)): sint =
 case+ xs of
 |list_vt_nil() => 0
 |list_vt_cons(_, xs) => 1+length1_vt(xs)
