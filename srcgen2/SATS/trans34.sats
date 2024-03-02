@@ -132,8 +132,6 @@ D4E = "./dynexp4.sats"
 (* ****** ****** *)
 #typedef
 dvars = list(d2var)//d2varlst
-#typedef
-tqd4e = optn(d4exp)//d4expopt
 (* ****** ****** *)
 #typedef s2typlst = $S2E.s2typlst
 (* ****** ****** *)
@@ -179,7 +177,6 @@ tqd4e = optn(d4exp)//d4expopt
 #typedef d4eclist = $D4E.d4eclist
 (* ****** ****** *)
 #typedef teqd4exp = $D4E.teqd4exp
-#typedef tqd4elst = $D4E.tqd4elst
 (* ****** ****** *)
 #typedef d4valdcl = $D4E.d4valdcl
 #typedef d4vardcl = $D4E.d4vardcl
@@ -964,10 +961,13 @@ trans34_d4exp_fold
 //
 fun
 trans34_d4ecl_fold
-(env0: !tr34env, d4cl: d4ecl): tqd4e
+(env0: !tr34env, d4cl: d4ecl): (void)
 fun
 trans34_d4eclist_fold
-(env0: !tr34env, dcls: d4eclist): tqd4elst
+(env0: !tr34env, dcls: d4eclist): void
+fun
+trans34_d4valdcl_fold
+(env0: !tr34env, dval: d4valdcl): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

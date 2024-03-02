@@ -219,9 +219,9 @@ print
 (* ****** ****** *)
 //
 |D4Elet0
-(dcls,tdes,d4e1) =>
-( print("D4Elet0(")
-; print(dcls,";",tdes,";",d4e1,")"))
+(dcls, d4e1) =>
+(
+print("D4Elet0(",dcls,";",d4e1,")"))
 //
 (* ****** ****** *)
 //
@@ -542,6 +542,8 @@ d4valdcl_fprint
 //
 val dpat =
 d4valdcl_get_dpat(dval)
+val darg =
+d4valdcl_get_darg(dval)
 val tdxp =
 d4valdcl_get_tdxp(dval)
 val wsxp =
@@ -551,8 +553,8 @@ d4valdcl_get_wsxp(dval)
 //
 in//let
 (
-print
-("D4VALDCL(",dpat,";",tdxp,";",wsxp,")"))
+print("D4VALDCL(");
+print(dpat,";",darg,";",tdxp,";",wsxp,")"))
 end(*let*)//end-of-[d4valdcl_fprint(out,dval)]
 //
 (* ****** ****** *)

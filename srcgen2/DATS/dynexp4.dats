@@ -549,6 +549,7 @@ d4valdcl =
 D4VALDCL of
 ( loc_t
 , d4pat
+, d4exp // fold
 , teqd4exp, wths2exp)
 //
 #absimpl
@@ -563,6 +564,7 @@ val+
 D4VALDCL
 ( lctn
 , dpat
+, darg
 , tdxp, wsxp) = dval in lctn end
 
 #implfun
@@ -572,7 +574,18 @@ val+
 D4VALDCL
 ( lctn
 , dpat
+, darg
 , tdxp, wsxp) = dval in dpat end
+
+#implfun
+d4valdcl_get_darg
+  (  dval  ) = let
+val+
+D4VALDCL
+( lctn
+, dpat
+, darg
+, tdxp, wsxp) = dval in darg end
 
 #implfun
 d4valdcl_get_tdxp
@@ -581,6 +594,7 @@ val+
 D4VALDCL
 ( lctn
 , dpat
+, darg
 , tdxp, wsxp) = dval in tdxp end
 
 #implfun
@@ -590,15 +604,16 @@ val+
 D4VALDCL
 ( lctn
 , dpat
+, darg
 , tdxp, wsxp) = dval in wsxp end
 
 (* ****** ****** *)
 //
 #implfun
 d4valdcl_make_args
-(lctn, dpat, tdxp, wsxp) =
+(lctn,dpat,darg,tdxp,wsxp) =
 (
-  D4VALDCL(lctn, dpat, tdxp, wsxp))
+D4VALDCL(lctn,dpat,darg,tdxp,wsxp))
 //
 (* ****** ****** *)
 
