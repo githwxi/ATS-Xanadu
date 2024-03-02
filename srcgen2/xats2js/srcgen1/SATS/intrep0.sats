@@ -36,8 +36,61 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-
-
+(* ****** ****** *)
+(*
+#define
+XATSOPT "./../../.."
+*)
+(* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+"./../../../SATS/xbasics.sats"
+#staload
+"./../../../SATS/xsymbol.sats"
+#staload
+"./../../../SATS/xlabel0.sats"
+//
+(* ****** ****** *)
+//
+#staload
+"./../../../SATS/filpath.sats"
+#staload
+"./../../../SATS/locinfo.sats"
+//
+(* ****** ****** *)
+//
+#staload
+"./../../../SATS/lexing0.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef stamp = stamp
+#typedef sym_t = sym_t
+#typedef label = label
+#typedef loctn = loctn
+#typedef loc_t = loctn
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+i0lab(x0:type) =
+|
+I0LAB of (label, x0(*elt*))
+//
+(* ****** ****** *)
+//
+fun
+<x0:type>
+i0lab_fprint
+( out: FILR
+, lab: i0lab( x0 )): (void)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (***********************************************************************)
