@@ -2183,7 +2183,7 @@ optn_vt_cons(t2p1) => t2p1)
 : s2typ // end-of-[val(t2p1)]
 //
 val () =
-tr34env_d2vins_dget
+tr34env_d2vins_dset
 (env0, d2v1, D4TYPstp(stp1))
 //
 in//let
@@ -2205,11 +2205,15 @@ auxmain
 case+
 d4e0.node() of
 //
-| D4Evar _ =>
+|D4Evar _ =>
 (
 f0_var(env0, d4e0, taft))
 //
-| _(*otherwise*) =>
+|D4Eflat(d4e1) =>
+(
+auxmain(env0, d4e1, taft))
+//
+|_(*otherwise*) =>
 (
   d4exp_p2tck(d4e0, taft) )
 )(*case+*)//end-of-[auxmain(d4e0,taft)]
@@ -2224,6 +2228,8 @@ val (  ) =
 prerrln("trans34_d4exp_ptck: d4e0 = ", d4e0)
 val (  ) =
 prerrln("trans34_d4exp_ptck: stp1 = ", stp1)
+//
+(* ****** ****** *)
 //
 }(*where*) // end-of-[trans34_d4exp_ptck(...)]
 //
