@@ -211,19 +211,17 @@ print
 //
 (* ****** ****** *)
 //
-|
-D4Edapp
+|D4Edapp
 (d4f0,npf1,d4es) =>
 ( print("D4Edapp(")
 ; print(d4f0,";",npf1,";",d4es,")"))
 //
 (* ****** ****** *)
 //
-|
-D4Elet0
-(dcls, d4e1) =>
-(
-print("D4Elet0(",dcls,";",d4e1,")"))
+|D4Elet0
+(dcls,tdes,d4e1) =>
+( print("D4Elet0(")
+; print(dcls,";",tdes,";",d4e1,")"))
 //
 (* ****** ****** *)
 //
@@ -241,6 +239,13 @@ D4Ecas0
 (tknd,d4e1,dcls) =>
 ( print("D4Ecas0(");
   print(tknd,";",d4e1,";",dcls,")"))
+//
+(* ****** ****** *)
+//
+|D4Eseqn
+(d4es, d4e1) =>
+(
+print("D4Eseqn(",d4es,";",d4e1,")"))
 //
 (* ****** ****** *)
 //
