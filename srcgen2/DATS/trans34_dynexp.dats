@@ -870,7 +870,7 @@ d4e1 = trans34_d3exp(env0, d3e1)
 //
 val tdes =
 (
-  trans34_d4cls_fold(env0, dcls))
+trans34_d4eclist_fold(env0, dcls))
 //
 val d2vs = tr34env_letvars( env0 )
 val dvts = tr34env_getlet0( env0 )
@@ -2499,6 +2499,28 @@ val (  ) = prerrln
   ("trans34_d4typ_fold: dtp0 = ", dtp0)
 //
 }(*where*) // end-of-[trans34_d4typ_fold(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trans34_d4eclist_fold
+  ( env0 , dcls ) =
+(
+list_map_e1nv
+<x0><y0><e1>(dcls, env0)) where
+{
+(*
+HX-2024-03-01:
+tqd4e = d4expopt
+*)
+#typedef x0 = d4ecl
+#typedef y0 = tqd4e
+#vwtpdef e1 = tr34env
+#impltmp
+map$fopr_e1nv<x0><y0><e1>
+(d4cl, env0) = trans34_d4ecl_fold(env0, d4cl)
+} (*where*) // end of [list_trans34_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
