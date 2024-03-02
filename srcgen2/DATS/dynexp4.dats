@@ -551,12 +551,22 @@ D4VALDCL of
 , d4pat
 , d4exp // fold
 , teqd4exp, wths2exp)
+datavwtp
+d4valdcl_vt =
+D4VALDCL_vt of
+( loc_t
+, d4pat
+, d4exp // fold
+, teqd4exp, wths2exp)
 //
 #absimpl
 d4valdcl_tbox = d4valdcl
 //
 in//local
-
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 d4valdcl_get_lctn
   (  dval  ) = let
@@ -566,7 +576,7 @@ D4VALDCL
 , dpat
 , darg
 , tdxp, wsxp) = dval in lctn end
-
+//
 #implfun
 d4valdcl_get_dpat
   (  dval  ) = let
@@ -576,7 +586,7 @@ D4VALDCL
 , dpat
 , darg
 , tdxp, wsxp) = dval in dpat end
-
+//
 #implfun
 d4valdcl_get_darg
   (  dval  ) = let
@@ -586,7 +596,7 @@ D4VALDCL
 , dpat
 , darg
 , tdxp, wsxp) = dval in darg end
-
+//
 #implfun
 d4valdcl_get_tdxp
   (  dval  ) = let
@@ -596,7 +606,7 @@ D4VALDCL
 , dpat
 , darg
 , tdxp, wsxp) = dval in tdxp end
-
+//
 #implfun
 d4valdcl_get_wsxp
   (  dval  ) = let
@@ -606,7 +616,27 @@ D4VALDCL
 , dpat
 , darg
 , tdxp, wsxp) = dval in wsxp end
-
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d4valdcl_set_darg
+  ( dval, dexp) =
+let
+//
+val
+dval =
+$UN.castlin10{d4valdcl_vt}(dval)
+val+
+@D4VALDCL_vt
+(loc0,
+ dpat,
+!darg,
+ tdxp, wsxp) = dval in darg:=dexp
+end (*let*) // end of [d4valdcl_set_darg]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -615,6 +645,7 @@ d4valdcl_make_args
 (
 D4VALDCL(lctn,dpat,darg,tdxp,wsxp))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 endloc (*local*) // end of [local(d4valdcl)]
