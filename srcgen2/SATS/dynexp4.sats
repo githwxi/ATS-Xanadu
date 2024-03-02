@@ -795,13 +795,25 @@ d4valdcl_get_dpat:(d4valdcl)->d4pat
 fun
 d4valdcl_get_darg:(d4valdcl)->d4exp
 fun
+d4valdcl_set_darg
+(dval: d4valdcl, darg: d4exp): void
+(* ****** ****** *)
+//
+#symload dpat with d4valdcl_get_dpat
+//
+#symload darg with d4valdcl_get_darg
+#symload darg with d4valdcl_set_darg
+//
+(* ****** ****** *)
+fun
 d4valdcl_get_tdxp:(d4valdcl)->teqd4exp
 fun
 d4valdcl_get_wsxp:(d4valdcl)->wths2exp
 (* ****** ****** *)
-#symload dpat with d4valdcl_get_dpat
+//
 #symload tdxp with d4valdcl_get_tdxp(*opt*)
 #symload wsxp with d4valdcl_get_wsxp(*opt*)
+//
 (* ****** ****** *)
 fun
 d4vardcl_get_dpid:(d4vardcl)->d2var
