@@ -173,7 +173,7 @@ HATS/*.hats SATS/*.sats DATS/*.dats
    1023 DATS/trans2a_utils0.dats
     194 DATS/trans34.dats
     660 DATS/trans34_decl00.dats
-   2686 DATS/trans34_dynexp.dats
+   2692 DATS/trans34_dynexp.dats
    1989 DATS/trans34_myenv0.dats
      80 DATS/trans34_print0.dats
     744 DATS/trans34_utils0.dats
@@ -237,4 +237,4 @@ HATS/*.hats SATS/*.sats DATS/*.dats
     604 DATS/xsymmap_stkmap.dats
     314 DATS/xsymmap_topmap.dats
      44 DATS/xsynoug.dats
- 164019 total
+ 164025 total
