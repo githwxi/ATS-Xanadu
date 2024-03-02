@@ -966,7 +966,7 @@ fun
 trans34_d4ecl_fold
 (env0: !tr34env, d4cl: d4ecl): tqd4e
 fun
-trans34_d4cls_fold
+trans34_d4eclist_fold
 (env0: !tr34env, dcls: d4eclist): tqd4elst
 //
 (* ****** ****** *)
