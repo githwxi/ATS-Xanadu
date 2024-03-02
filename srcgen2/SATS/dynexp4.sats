@@ -171,16 +171,12 @@ ATS_PACKNAME
 (* ****** ****** *)
 #typedef
 dvars = list(d2var)//d2varlst
-#typedef
-tqd4e = optn(d4exp)//d4expopt
 (* ****** ****** *)
 #typedef d4patlst = list(d4pat)
 #typedef d4patopt = optn(d4pat)
 (* ****** ****** *)
 #typedef d4explst = list(d4exp)
 #typedef d4expopt = optn(d4exp)
-(* ****** ****** *)
-#typedef tqd4elst = list(tqd4e)
 (* ****** ****** *)
 #typedef f4arglst = list(f4arg)
 (* ****** ****** *)
@@ -217,10 +213,8 @@ tqd4e = optn(d4exp)//d4expopt
 #typedef d4vardclist = list(d4vardcl)
 #typedef d4fundclist = list(d4fundcl)
 (* ****** ****** *)
-//
 #typedef d4explstopt = optn(d4explst)
 #typedef d4eclistopt = optn(d4eclist)
-//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -436,11 +430,7 @@ for the bef/aft syntax
 //
 (* ****** ****** *)
 //
-(*
-HX: tqd4e = d4expopt
-*)
-|D4Elet0 of
-(d4eclist, list(tqd4e), d4exp)
+|D4Elet0 of (d4eclist, d4exp)
 //
 (* ****** ****** *)
 //
@@ -803,6 +793,8 @@ d4fundcl_get_lctn:(d4fundcl)->loc_t
 fun
 d4valdcl_get_dpat:(d4valdcl)->d4pat
 fun
+d4valdcl_get_darg:(d4valdcl)->d4exp
+fun
 d4valdcl_get_tdxp:(d4valdcl)->teqd4exp
 fun
 d4valdcl_get_wsxp:(d4valdcl)->wths2exp
@@ -855,6 +847,7 @@ fun
 d4valdcl_make_args
 ( lctn:loc_t
 , dpat:d4pat
+, darg:d4exp
 , tdxp:teqd4exp, wsxp:wths2exp):d4valdcl
 fun
 d4vardcl_make_args

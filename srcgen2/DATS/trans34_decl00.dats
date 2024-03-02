@@ -282,10 +282,27 @@ val dpat =
 trans34_d3pat(env0, dpat)
 //
 val tdxp =
-trans34_teqd3exp(env0, tdxp)
+(
+  trans34_teqd3exp(env0, tdxp))
+//
+val darg =
+(
+case+ tdxp of
+|TEQD4EXPnone() =>
+(
+  d4exp_none0(loc0))
+|
+TEQD4EXPsome(teq0, dexp) =>
+let
+val () =
+tr34env_insert_dpat(env0, dpat)
+in//let
+trans34_d4arg_dpat(env0, dexp, dpat)
+end//let//end-of-[TEQD4EXPsome(teq0,d4e1)]
+)
 //
 in//let
-d4valdcl_make_args(loc0,dpat,tdxp,wsxp)
+d4valdcl_make_args(loc0,dpat,darg,tdxp,wsxp)
 end(*let*)//end-of-[trans34_d3valdcl(env0,dval)]
 //
 (* ****** ****** *)
