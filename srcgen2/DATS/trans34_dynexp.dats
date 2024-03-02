@@ -868,6 +868,10 @@ val dcls =
 val
 d4e1 = trans34_d3exp(env0, d3e1)
 //
+val tdes =
+(
+  trans34_d4cls_fold(env0, dcls))
+//
 val d2vs = tr34env_letvars( env0 )
 val dvts = tr34env_getlet0( env0 )
 val (  ) = tr34env_poplet0( env0 )
@@ -888,7 +892,8 @@ d4exp_dvts(d4e0, dvts)) where
 //
   val d4e0 =
   d4exp_make_tpnd
-  (loc0, t2p1, D4Elet0(dcls, d4e1)) }
+  ( loc0
+  , t2p1, D4Elet0(dcls, tdes, d4e1)) }
 //
 end (*let*) // end of [f0_let0(env0,d3e0)]
 //

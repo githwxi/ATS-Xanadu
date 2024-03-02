@@ -75,6 +75,11 @@ local
 ms2ct2p_tbox = topmap(s2typ)
 *)
 //
+(*
+HX-2024-03-01:
+Opening exists-types is
+to be supported in the future?
+*)
 datavwtp
 tr23env =
 TR23ENV of

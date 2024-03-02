@@ -171,12 +171,16 @@ ATS_PACKNAME
 (* ****** ****** *)
 #typedef
 dvars = list(d2var)//d2varlst
+#typedef
+tqd4e = optn(d4exp)//d4expopt
 (* ****** ****** *)
 #typedef d4patlst = list(d4pat)
 #typedef d4patopt = optn(d4pat)
 (* ****** ****** *)
 #typedef d4explst = list(d4exp)
 #typedef d4expopt = optn(d4exp)
+(* ****** ****** *)
+#typedef tqd4elst = list(tqd4e)
 (* ****** ****** *)
 #typedef f4arglst = list(f4arg)
 (* ****** ****** *)
@@ -432,7 +436,11 @@ for the bef/aft syntax
 //
 (* ****** ****** *)
 //
-|D4Elet0 of (d4eclist, d4exp)
+(*
+HX: tqd4e = d4expopt
+*)
+|D4Elet0 of
+(d4eclist, list(tqd4e), d4exp)
 //
 (* ****** ****** *)
 //
@@ -700,8 +708,13 @@ teqd4exp =
 |
 TEQD4EXPnone of ((*void*))
 |
-TEQD4EXPsome of (token(*EQ0*), d4exp)
+TEQD4EXPsome of (token, d4exp)
 //
+(*
+#typedef tqd4elst = list(tqd4e)
+*)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 datatype

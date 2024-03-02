@@ -132,7 +132,8 @@ datavwtp
 tr34env =
 TR34ENV of
 (
-d2varlst, linstk(*void*))
+linstk(*void*),
+stkmap(s2cstlst))
 //
 (* ****** ****** *)
 #absimpl tr34env_vtbx = tr34env
@@ -1280,9 +1281,10 @@ tr34env_make_nil
   ((*nil*)) =
 (
   TR34ENV
-  (d2vs, linstk_nil)) where
+  (linstk, stkmap)) where
 {
-  val d2vs = list_nil((*void*))
+  val linstk = linstk_nil((*0*))
+  val stkmap = stkmap_make_nil()
 } (*where*)//end of [tr34env_make_nil(...)]
 //
 (* ****** ****** *)
@@ -1294,15 +1296,19 @@ tr34env_free_top
 case+ env0 of
 | ~
 TR34ENV
-(d2vs, map2) => d2vs where
+(stk1, map2) => () where
 {
 //
 var
-linstk = map2//local lin-proofs
+linstk = stk1//local lin-proofs
+var
+stkmap = map2//local sta-consts
 //
-val nerr = linstk_poptop0(linstk)
+val nex1 = linstk_poptop0(linstk)
+val nex2 = stkmap_poptop0(stkmap)
 //
-val (  ) = linstk_free_nil(linstk) }
+val (  ) = linstk_free_nil(linstk)
+val (  ) = stkmap_free_nil(stkmap) }
 //
 )(*case+*)//end-of-(tr34env_free_top(env0))
 //
@@ -1315,7 +1321,7 @@ tr34env_lamvars
 //
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 //
 in//let
 //
@@ -1332,7 +1338,7 @@ tr34env_letvars
 //
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 //
 in//let
 //
@@ -1349,7 +1355,7 @@ tr34env_casvars
 //
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 //
 in//let
 //
@@ -1369,7 +1375,7 @@ tr34env_pshlam0
 //
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 //
 in//let
 //
@@ -1384,7 +1390,7 @@ tr34env_poplam0
 //
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 //
 in//let
 //
@@ -1403,7 +1409,7 @@ tr34env_pshlet0
 //
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 //
 in//let
 //
@@ -1418,7 +1424,7 @@ tr34env_poplet0
 //
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 //
 in//let
 //
@@ -1437,7 +1443,7 @@ tr34env_pshift0
 //
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 //
 in//let
 //
@@ -1452,7 +1458,7 @@ tr34env_popift0
 //
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 //
 in//let
 //
@@ -1471,7 +1477,7 @@ tr34env_pshcas0
 //
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 //
 in//let
 //
@@ -1488,7 +1494,7 @@ tr34env_popcas0
 //
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 //
 in//let
 //
@@ -1508,7 +1514,7 @@ tr34env_getlam0
 //
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 //
 in//let
 //
@@ -1527,7 +1533,7 @@ tr34env_getlet0
 //
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 //
 in//let
 //
@@ -1546,7 +1552,7 @@ tr34env_getift0
 //
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 //
 in//let
 //
@@ -1565,7 +1571,7 @@ tr34env_getcas0
 //
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 //
 in//let
 //
@@ -1604,7 +1610,7 @@ tr34env_dtprch_dvar
 let
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 in//let
 (
   $fold(env0); opt1 ) where
@@ -1626,7 +1632,7 @@ dtp1 = D4TYPstp(stp1)
 //
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 //
 in//let
 //
@@ -1644,7 +1650,7 @@ tr34env_d2vins_dget
 //
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 //
 in//let
 //
@@ -1660,7 +1666,7 @@ tr34env_d2vins_dset
 //
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 //
 in//let
 //
@@ -1681,7 +1687,7 @@ dtp1 = D4TYPstp(stp1)
 //
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 //
 in//let
 //
@@ -1699,7 +1705,7 @@ tr34env_d2vins_dvts
 //
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 //
 in//let
 //
@@ -1734,7 +1740,7 @@ tr34env_d2vins_dlft
 //
 val+
 @TR34ENV
-(d2vlst, !linstk) = env0
+(!linstk, !stkmap) = env0
 //
 in//let
 //
