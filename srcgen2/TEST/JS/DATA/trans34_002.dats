@@ -21,13 +21,22 @@ foo1(x: &VT >> ?VT): VT = x
 *)
 
 fun
-swap
-(x: &VT, y: &VT): void =
-let val z = x in x := y; y := z end
+exch1
+(x: &VT, y: (VT)): (VT) =
+let val v = x in x := y; ( v ) end
 
+fun
+exch2
+( x: &VT
+, y: &VT): void = y := exch1(x, y)
+
+(* ****** ****** *)
+
+(*
 fun
 assgn
 (x: &(?VT) >> VT, y: VT): void = x := y
+*)
 
 (* ****** ****** *)
 (* ****** ****** *)
