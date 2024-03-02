@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2023 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2024 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,50 +30,16 @@
 (*
 Author: Hongwei Xi
 //
-Sat Nov 25 11:38:56 EST 2023
+Sat 02 Mar 2024 06:04:06 PM EST
 //
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-(*
-#define
-XATSOPT "./../../.."
-*)
-(* ****** ****** *)
-//
-#staload "./../SATS/intrep0.sats"
-//
-(* ****** ****** *)
 
-local
-//
-datavwtp
-trdienv =
-TRDIENV of ()
-#absimpl trdienv_vtbx = trdienv
-//
-(* ****** ****** *)
-in//local
-(* ****** ****** *)
-//
-#implfun
-trdienv_make_nil
-  ((*void*)) = TRDIENV( (*void*) )
-//
-(* ****** ****** *)
-//
-#implfun
-trdienv_free_top
-  (  env0  ) =
-(
-case+ env0 of ~TRDIENV( (*0*) ) => ()
-) (*case+*)//end-of-(trdienv_free_top(env0))
-//
-(* ****** ****** *)
-end(*local*) // end of [local(trdienv)]
+
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_intrep0_myenv0.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep0.dats] *)
 (***********************************************************************)
