@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2020 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2024 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -51,6 +51,33 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 #staload "./../SATS/intrep0.sats"
+(* ****** ****** *)
+#symload lctn with i0pat_get_lctn
+#symload node with i0pat_get_node
+(* ****** ****** *)
+#symload lctn with i0exp_get_lctn
+#symload node with i0exp_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+
+//
+#implfun
+irpat_fprint
+(out, i0p0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+i0p0.node() of
+//
+|I0Pnone0() => print( "I0Pnone0(",")" )
+|I0Pnone1(d3p1) => print("I0Pnone1(", d3p1, ")")
+//
+end(*let*)//end-of-[i0pat_fprint(out, irp0)]
+
+(* ****** ****** *)
 (* ****** ****** *)
 
 (***********************************************************************)
