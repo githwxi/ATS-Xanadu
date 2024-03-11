@@ -70,8 +70,8 @@ UN = "prelude/SATS/unsafe.sats"
 #symload lctn with i0exp_get_lctn
 #symload node with i0exp_get_node
 (* ****** ****** *)
-#symload lctn with i0ecl_get_lctn
-#symload node with i0ecl_get_node
+#symload lctn with i0dcl_get_lctn
+#symload node with i0dcl_get_node
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -131,20 +131,29 @@ end(*let*)//end-of-[i0exp_fprint(out, i0e0)]
 (* ****** ****** *)
 //
 #implfun
-i0ecl_fprint
-(out, icl0) =
+i0dcl_fprint
+(out, dcl0) =
 let
 #impltmp
 g_print$out<>() = out
 in//let
 //
 case+
-icl0.node() of
+dcl0.node() of
 //
-|I0Cnone0() => print( "I0Cnone0(",")" )
-|I0Cnone1(d3cl) => print("I0Cnone1(", d3cl, ")")
+|I0Dd3ecl
+(  d3cl  ) =>
+print("I0Dd3ecl(", d3cl, ")")
 //
-end(*let*)//end-of-[i0ecl_fprint(out, icl0)]
+|I0Dlocal0
+(head, body) =>
+print
+("I0Dlocal0(", head, ";", body, ")")
+//
+|I0Dnone0() => print( "I0Dnone0(",")" )
+|I0Dnone1(d3cl) => print("I0Dnone1(", d3cl, ")")
+//
+end(*let*)//end-of-[i0ecl_fprint(out, dcl0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
