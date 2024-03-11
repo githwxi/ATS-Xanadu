@@ -113,6 +113,7 @@ i0lab_fprint
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
+#typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
 (* ****** ****** *)
 #abstbox i0pat_tbox // p0tr
@@ -120,6 +121,9 @@ i0lab_fprint
 (* ****** ****** *)
 #abstbox i0exp_tbox // p0tr
 #typedef i0exp = i0exp_tbox
+(* ****** ****** *)
+#abstbox i0dcl_tbox // p0tr
+#typedef i0dcl = i0dcl_tbox
 (* ****** ****** *)
 #typedef l0i0p = i0lab(i0pat)
 #typedef l0i0e = i0lab(i0exp)
@@ -195,6 +199,15 @@ i0exp_node =
 //
 (* ****** ****** *)
 //
+|I0Etop of (sym_t)
+//
+//
+(* ****** ****** *)
+//
+|I0Evar of (d2var)
+//
+(* ****** ****** *)
+//
 |I0Enone0 of ((*0*)) |I0Enone1 of (d3exp)
 //
 // HX-2023-??-??: end-of-[datatype(i0exp_node)]
@@ -216,6 +229,33 @@ i0exp_get_node(i0exp):i0exp_node
 (* ****** ****** *)
 #symload lctn with i0exp_get_lctn
 #symload node with i0exp_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+i0dcl_node =
+//
+|I0Dd3ecl of (d3ecl)
+//
+|I0Dnone0 of ((*0*)) |I0Dnone1 of (d3ecl)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0dcl_fprint
+(out:FILR, dcl0:i0dcl): void
+//
+(* ****** ****** *)
+//
+fun
+i0dcl_get_lctn(i0dcl):( loc_t )
+fun
+i0dcl_get_node(i0dcl):i0dcl_node
+//
+(* ****** ****** *)
+#symload lctn with i0dcl_get_lctn
+#symload node with i0dcl_get_node
 (* ****** ****** *)
 (* ****** ****** *)
 

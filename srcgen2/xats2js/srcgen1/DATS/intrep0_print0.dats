@@ -70,6 +70,9 @@ UN = "prelude/SATS/unsafe.sats"
 #symload lctn with i0exp_get_lctn
 #symload node with i0exp_get_node
 (* ****** ****** *)
+#symload lctn with i0ecl_get_lctn
+#symload node with i0ecl_get_node
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -102,10 +105,46 @@ in//let
 case+
 i0e0.node() of
 //
+|I0Evar(d2v) =>
+(
+ print("I0Evar(", d2v, ")"))
+//
+|I0Eint(int) =>
+(
+ print("I0Eint(", int, ")"))
+|I0Ebtf(btf) =>
+(
+ print("I0Ebtf(", btf, ")"))
+|I0Echr(chr) =>
+(
+ print("I0Echr(", chr, ")"))
+|I0Estr(str) =>
+(
+ print("I0Estr(", str, ")"))
+//
 |I0Enone0() => print( "I0Enone0(",")" )
 |I0Enone1(d3e1) => print("I0Enone1(", d3e1, ")")
 //
 end(*let*)//end-of-[i0exp_fprint(out, i0e0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0ecl_fprint
+(out, icl0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+icl0.node() of
+//
+|I0Cnone0() => print( "I0Cnone0(",")" )
+|I0Cnone1(d3cl) => print("I0Cnone1(", d3cl, ")")
+//
+end(*let*)//end-of-[i0ecl_fprint(out, icl0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
