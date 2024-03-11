@@ -135,7 +135,7 @@ print("IRPrcd2(", tknd, ";", lips, ")")
 |IRPnone0() => print( "IRPnone0(",")" )
 |IRPnone1(d3p1) => print("IRPnone1(", d3p1, ")")
 //
-end//let//end-of-[irpat_fprint(out, irp0)]
+end(*let*)//end-of-[irpat_fprint(out, irp0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -331,7 +331,7 @@ print("IREl1azy(", ire1, ";", ires, ")")
 //
 (* ****** ****** *)
 //
-end//let//end-of-[irexp_fprint(out, ire0)]
+end(*let*)//end-of-[irexp_fprint(out, ire0)]
 //
 (* ****** ****** *)
 //
@@ -352,7 +352,7 @@ print("IRGUAexp(",ire1,")")
 IRGUAmat(ire1,irp2) =>
 print("IRGUAmat(",ire1,";",irp2,")")
 //
-end (*let*) // end of [irgua_fprint(out,dgua)]
+end(*let*)//end-of-[irgua_fprint(out,dgua)]
 //
 (* ****** ****** *)
 //
