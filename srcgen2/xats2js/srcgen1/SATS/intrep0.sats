@@ -237,6 +237,10 @@ i0dcl_node =
 //
 |I0Dd3ecl of (d3ecl)
 //
+|I0Dlocal0 of
+( i0dclist(*local-head*)
+, i0dclist(*local-body*))
+//
 |I0Dnone0 of ((*0*)) |I0Dnone1 of (d3ecl)
 //
 (* ****** ****** *)
