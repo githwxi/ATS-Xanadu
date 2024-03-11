@@ -38,6 +38,18 @@ Mon 11 Mar 2024 02:29:52 PM EDT
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+(*
+#define
+XATSOPT "./../../.."
+*)
+(* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dats.hats"
+(* ****** ****** *)
 //
 #include
 "share/atspre_staload.hats"
@@ -59,10 +71,9 @@ UN = "prelude/SATS/unsafe.sats"
 #symload node with i0exp_get_node
 (* ****** ****** *)
 (* ****** ****** *)
-
 //
 #implfun
-irpat_fprint
+i0pat_fprint
 (out, i0p0) =
 let
 #impltmp
@@ -75,8 +86,27 @@ i0p0.node() of
 |I0Pnone0() => print( "I0Pnone0(",")" )
 |I0Pnone1(d3p1) => print("I0Pnone1(", d3p1, ")")
 //
-end(*let*)//end-of-[i0pat_fprint(out, irp0)]
-
+end(*let*)//end-of-[i0pat_fprint(out, i0p0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0exp_fprint
+(out, i0e0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+i0e0.node() of
+//
+|I0Enone0() => print( "I0Enone0(",")" )
+|I0Enone1(d3e1) => print("I0Enone1(", d3e1, ")")
+//
+end(*let*)//end-of-[i0exp_fprint(out, i0e0)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 

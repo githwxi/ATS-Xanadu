@@ -166,6 +166,58 @@ i0pat_node =
 
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+i0pat_fprint
+(out:FILR, i0p0:i0pat): void
+//
+(* ****** ****** *)
+//
+fun
+i0pat_get_lctn(i0pat):( loc_t )
+fun
+i0pat_get_node(i0pat):i0pat_node
+//
+(* ****** ****** *)
+#symload lctn with i0pat_get_lctn
+#symload node with i0pat_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+i0exp_node =
+//
+|I0Eint of token
+|I0Ebtf of sym_t
+|I0Echr of token
+|I0Eflt of token
+|I0Estr of token
+//
+(* ****** ****** *)
+//
+|I0Enone0 of ((*0*)) |I0Enone1 of (d3exp)
+//
+// HX-2023-??-??: end-of-[datatype(i0exp_node)]
+
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0exp_fprint
+(out:FILR, i0e0:i0exp): void
+//
+(* ****** ****** *)
+//
+fun
+i0exp_get_lctn(i0exp):( loc_t )
+fun
+i0exp_get_node(i0exp):i0exp_node
+//
+(* ****** ****** *)
+#symload lctn with i0exp_get_lctn
+#symload node with i0exp_get_node
+(* ****** ****** *)
+(* ****** ****** *)
 
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_SATS_intrep0.sats] *)
