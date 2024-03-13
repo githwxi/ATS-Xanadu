@@ -153,7 +153,7 @@ print
 |I0Dnone0() => print( "I0Dnone0(",")" )
 |I0Dnone1(d3cl) => print("I0Dnone1(", d3cl, ")")
 //
-end(*let*)//end-of-[i0ecl_fprint(out, dcl0)]
+end(*let*)//end-of-[i0dcl_fprint(out, dcl0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
