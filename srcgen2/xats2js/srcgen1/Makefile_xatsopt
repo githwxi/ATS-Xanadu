@@ -65,6 +65,11 @@ intrep0_print0_dats
 intrep0_print0_dats: ; \
 $(XATSOPT) --dynamic DATS/intrep0_print0.dats
 ######
+all_dats:: \
+xats2js_tmplib_dats
+xats2js_tmplib_dats: ; \
+$(XATSOPT) --dynamic DATS/xats2js_tmplib.dats
+######
 
 ########################################################################
 
