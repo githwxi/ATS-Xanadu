@@ -135,6 +135,7 @@ i0lab_fprint
 #typedef i0explst = list(i0exp)
 #typedef l0i0elst = list(l0i0e)
 (* ****** ****** *)
+#typedef i0dclist = list(i0dcl)
 (* ****** ****** *)
 
 datatype
