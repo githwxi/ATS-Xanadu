@@ -57,10 +57,18 @@ XATSOPT "./../../.."
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
-//
 #include
-"./../HATS/libxats2js.hats"
-//
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dats.hats"
+(* ****** ****** *)
+#include
+"./../HATS/xats2js_dats.hats"
+(* ****** ****** *)
+#staload
+"./../../../SATS/xbasics.sats"
 (* ****** ****** *)
 #staload "./../SATS/intrep0.sats"
 (* ****** ****** *)
