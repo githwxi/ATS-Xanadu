@@ -38,6 +38,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 (*
+HX-2024-03-14:
+Types are erased!!!
+*)
+(* ****** ****** *)
+(* ****** ****** *)
+(*
 #define
 XATSOPT "./../../.."
 *)
@@ -103,16 +109,21 @@ i0lab_fprint
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
+*)
 (* ****** ****** *)
 #typedef d2var = $D2E.d2var
 #typedef d2con = $D2E.d2con
 #typedef d2cst = $D2E.d2cst
 (* ****** ****** *)
-(* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
+(* ****** ****** *)
+#typedef l3d3p = $D3E.l3d3p
+#typedef l3d3e = $D3E.l3d3e
+(* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
 (* ****** ****** *)
@@ -261,6 +272,49 @@ i0dcl_get_node(i0dcl):i0dcl_node
 (* ****** ****** *)
 #symload lctn with i0dcl_get_lctn
 #symload node with i0dcl_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+#absvtbx trdienv_vtbx // p0tr
+#vwtpdef trdienv = trdienv_vtbx
+(* ****** ****** *)
+fun
+trdienv_make_nil(): trdienv
+fun
+trdienv_free_top(trdienv): void
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:t0>
+list_trxd3i0_fnp
+( e1:
+! trdienv
+, xs: list(x0)
+, (!trdienv, x0) -> y0): list(y0)
+fun
+<x0:t0>
+<y0:t0>
+optn_trxd3i0_fnp
+( e1:
+! trdienv
+, xs: optn(x0)
+, (!trdienv, x0) -> y0): optn(y0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+trxd3i0_d3pat
+(env0: !trdienv, d3p0: d3pat): i0pat
+fun
+trxd3i0_d3exp
+(env0: !trdienv, d3e0: d3exp): i0exp
+(* ****** ****** *)
+fun
+trxd3i0_l3d3p
+(env0: !trdienv, ld3p: l3d3p): l0i0p
+fun
+trxd3i0_l3d3e
+(env0: !trdienv, ld3e: l3d3e): l0i0e
 (* ****** ****** *)
 (* ****** ****** *)
 
