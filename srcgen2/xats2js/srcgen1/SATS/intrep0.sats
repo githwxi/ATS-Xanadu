@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -125,6 +126,13 @@ i0lab_fprint
 #typedef l3d3e = $D3E.l3d3e
 (* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
+(* ****** ****** *)
+#typedef d3patlst = $D3E.d3patlst
+(* ****** ****** *)
+#typedef d3explst = $D3E.d3explst
+#typedef d3expopt = $D3E.d3expopt
+(* ****** ****** *)
+#typedef d3eclist = $D3E.d3eclist
 (* ****** ****** *)
 (* ****** ****** *)
 #abstbox i0pat_tbox // p0tr
@@ -316,8 +324,26 @@ fun
 trxd3i0_l3d3e
 (env0: !trdienv, ld3e: l3d3e): l0i0e
 (* ****** ****** *)
+fun
+trxd3i0_d3ecl
+(env0: !trdienv, d3cl: d3ecl): i0dcl
 (* ****** ****** *)
-
+(* ****** ****** *)
+fun
+trxd3i0_d3patlst
+(env0: !trdienv, d3ps: d3patlst): i0patlst
+(* ****** ****** *)
+//
+fun
+trxd3i0_d3explst
+(env0: !trdienv, d3es: d3explst): i0explst
+fun
+trxd3i0_d3expopt
+(env0: !trdienv, dopt: d3expopt): i0expopt
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_SATS_intrep0.sats] *)
 (***********************************************************************)
