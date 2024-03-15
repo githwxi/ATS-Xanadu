@@ -165,6 +165,11 @@ i0lab_fprint
 #abstbox i0parsed_tbox//p0tr
 //
 (* ****** ****** *)
+(* ****** ****** *)
+#absvtbx trdienv_vtbx // p0tr
+#vwtpdef trdienv = trdienv_vtbx
+(* ****** ****** *)
+(* ****** ****** *)
 #typedef i0dclist = list(i0dcl)
 (* ****** ****** *)
 #typedef i0valdcl = i0valdcl_tbox
@@ -180,7 +185,12 @@ i0lab_fprint
 #typedef i0dclistopt = optn(i0dclist)
 (* ****** ****** *)
 (* ****** ****** *)
-
+fun
+trdienv_make_nil(): trdienv
+fun
+trdienv_free_top(trdienv): void
+(* ****** ****** *)
+//
 datatype
 i0pat_node =
 //
@@ -211,7 +221,7 @@ i0pat_node =
 |I0Prcd2 of (token, l0i0plst)
 //
 |I0Pnone0 of ((*0*)) | I0Pnone1 of (d3pat)
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -266,7 +276,7 @@ i0exp_node =
 |I0Enone0 of ((*0*)) |I0Enone1 of (d3exp)
 //
 // HX-2023-??-??: end-of-[datatype(i0exp_node)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -327,14 +337,17 @@ i0dcl_get_node(i0dcl):i0dcl_node
 #symload lctn with i0dcl_get_lctn
 #symload node with i0dcl_get_node
 (* ****** ****** *)
-(* ****** ****** *)
-#absvtbx trdienv_vtbx // p0tr
-#vwtpdef trdienv = trdienv_vtbx
+fun
+i0dcl_none0(loc0: loctn): (i0dcl)
+fun
+i0dcl_none1(d3e0: d3ecl): (i0dcl)
 (* ****** ****** *)
 fun
-trdienv_make_nil(): trdienv
-fun
-trdienv_free_top(trdienv): void
+i0dcl_make_node
+(loc:loctn, nod:i0dcl_node): i0dcl
+(* ****** ****** *)
+#symload i0dcl with i0dcl_make_node
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

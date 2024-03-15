@@ -171,6 +171,43 @@ endloc (*local*) // end of [local(i0exp)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+local
+//
+datatype
+i0dcl =
+I0DCL of
+(loctn, i0dcl_node)
+datavwtp
+i0dcl_vt =
+I0DCL_vt of
+(loctn, i0dcl_node)
+//
+#absimpl i0dcl_tbox = i0dcl
+//
+in (* in-of-local *)
+//
+#implfun
+i0dcl_make_node
+(   loc,nod   ) =
+(
+  I0DCL(loc, nod) )
+//
+#implfun
+i0dcl_get_lctn(dcl) =
+let
+val+
+I0DCL(loc,nod) = dcl in loc end
+#implfun
+i0dcl_get_node(dcl) =
+let
+val+
+I0DCL(loc,nod) = dcl in nod end
+//
+endloc (*local*) // end of [local(i0dcl)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 <x0><y0>
 list_trxd3i0_fnp
