@@ -221,6 +221,9 @@ fiarglstopt = optn(fiarglst)
 #typedef irgpt = irgpt_tbox
 #typedef ircls = ircls_tbox
 (* ****** ****** *)
+#typedef irgualst = list(irgua)
+#typedef irclslst = list(ircls)
+(* ****** ****** *)
 (*
 fun
 fiarg_fprint
@@ -239,9 +242,6 @@ fiarg_fprint
 //
 #abstbox irparsed_tbox//p0tr
 //
-(* ****** ****** *)
-#typedef irgualst = list(irgua)
-#typedef irclslst = list(ircls)
 (* ****** ****** *)
 #typedef irdclist = list(irdcl)
 (* ****** ****** *)

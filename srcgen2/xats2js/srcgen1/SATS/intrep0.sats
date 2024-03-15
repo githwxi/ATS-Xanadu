@@ -141,9 +141,6 @@ i0lab_fprint
 #abstbox i0exp_tbox // p0tr
 #typedef i0exp = i0exp_tbox
 (* ****** ****** *)
-#abstbox i0dcl_tbox // p0tr
-#typedef i0dcl = i0dcl_tbox
-(* ****** ****** *)
 #typedef l0i0p = i0lab(i0pat)
 #typedef l0i0e = i0lab(i0exp)
 (* ****** ****** *)
@@ -154,7 +151,34 @@ i0lab_fprint
 #typedef i0explst = list(i0exp)
 #typedef l0i0elst = list(l0i0e)
 (* ****** ****** *)
+(* ****** ****** *)
+#abstbox i0dcl_tbox // p0tr
+#typedef i0dcl = i0dcl_tbox
+(* ****** ****** *)
+//
+#abstbox i0valdcl_tbox//p0tr
+#abstbox i0vardcl_tbox//p0tr
+#abstbox i0fundcl_tbox//p0tr
+//
+(* ****** ****** *)
+//
+#abstbox i0parsed_tbox//p0tr
+//
+(* ****** ****** *)
 #typedef i0dclist = list(i0dcl)
+(* ****** ****** *)
+#typedef i0valdcl = i0valdcl_tbox
+#typedef i0vardcl = i0vardcl_tbox
+#typedef i0fundcl = i0fundcl_tbox
+(* ****** ****** *)
+#typedef i0parsed = i0parsed_tbox
+(* ****** ****** *)
+#typedef i0valdclist = list(i0valdcl)
+#typedef i0vardclist = list(i0vardcl)
+#typedef i0fundclist = list(i0fundcl)
+(* ****** ****** *)
+#typedef i0dclistopt = optn(i0dclist)
+(* ****** ****** *)
 (* ****** ****** *)
 
 datatype
