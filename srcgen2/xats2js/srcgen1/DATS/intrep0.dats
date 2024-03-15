@@ -58,6 +58,111 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i0pat_none0
+(  loc0  ) =
+i0pat_make_node
+(loc0,I0Pnone0((*void*)))
+#implfun
+i0pat_none1
+(  d3p0  ) =
+i0pat_make_node
+(
+d3p0.lctn(),I0Pnone1(d3p0))
+//
+(* ****** ****** *)
+//
+#implfun
+i0exp_none0
+(  loc0  ) =
+i0exp_make_node
+(loc0,I0Enone0((*void*)))
+#implfun
+i0exp_none1
+(  d3p0  ) =
+i0exp_make_node
+(
+d3p0.lctn(),I0Enone1(d3p0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i0pat =
+I0PAT of
+( loctn
+, s2typ, i0pat_node)
+datavwtp
+i0pat_vt =
+I0PAT_vt of
+(loctn, i0pat_node)
+//
+#absimpl i0pat_tbox = i0pat
+//
+in (* in-of-local *)
+//
+#implfun
+i0pat_make_node
+(   loc,nod   ) =
+(
+  I0PAT(loc, nod) )
+//
+#implfun
+i0pat_get_lctn(i0p) =
+let
+val+
+I0PAT(loc,nod) = i0p in loc end
+#implfun
+i0pat_get_node(i0p) =
+let
+val+
+I0PAT(loc,nod) = i0p in nod end
+//
+endloc (*local*) // end of [local(i0pat)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i0exp =
+I0EXP of
+( loctn
+, s2typ, i0exp_node)
+datavwtp
+i0exp_vt =
+I0EXP_vt of
+(loctn, i0exp_node)
+//
+#absimpl i0exp_tbox = i0exp
+//
+in (* in-of-local *)
+//
+#implfun
+i0exp_make_node
+(   loc,nod   ) =
+(
+  I0EXP(loc, nod) )
+//
+#implfun
+i0exp_get_lctn(i0e) =
+let
+val+
+I0EXP(loc,nod) = i0e in loc end
+#implfun
+i0exp_get_node(i0e) =
+let
+val+
+I0EXP(loc,nod) = i0e in nod end
+//
+endloc (*local*) // end of [local(i0exp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 <x0><y0>
 list_trxd3i0_fnp
