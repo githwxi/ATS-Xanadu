@@ -94,6 +94,15 @@ in//let
 case+
 i0p0.node() of
 //
+|I0Pint(tok) =>
+print("I0Pint(",tok,")")
+|I0Pbtf(sym) =>
+print("I0Pbtf(",sym,")")
+|I0Pchr(tok) =>
+print("I0Pchr(",tok,")")
+|I0Pstr(tok) =>
+print("I0Pstr(",tok,")")
+//
 |I0Pnone0() => print( "I0Pnone0(",")" )
 |I0Pnone1(d3p1) => print("I0Pnone1(", d3p1, ")")
 //

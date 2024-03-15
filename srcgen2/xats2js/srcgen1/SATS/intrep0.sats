@@ -163,9 +163,9 @@ i0pat_node =
 |I0Pnil of ()
 |I0Pany of ()
 //
-|I0Pint of sint
-|I0Pbtf of bool
-|I0Pchr of char
+|I0Pint of token
+|I0Pbtf of sym_t
+|I0Pchr of token
 //
 |I0Pflt of token
 |I0Pstr of token
