@@ -57,6 +57,16 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#symload lctn with d3pat_get_lctn
+#symload node with d3pat_get_node
+(* ****** ****** *)
+#symload lctn with d3exp_get_lctn
+#symload node with d3exp_get_node
+(* ****** ****** *)
+#symload lctn with d3ecl_get_lctn
+#symload node with d3ecl_get_node
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 i0pat_none0
@@ -79,10 +89,10 @@ i0exp_make_node
 (loc0,I0Enone0((*void*)))
 #implfun
 i0exp_none1
-(  d3p0  ) =
+(  d3e0  ) =
 i0exp_make_node
 (
-d3p0.lctn(),I0Enone1(d3p0))
+d3e0.lctn(),I0Enone1(d3e0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -92,8 +102,7 @@ local
 datatype
 i0pat =
 I0PAT of
-( loctn
-, s2typ, i0pat_node)
+(loctn, i0pat_node)
 datavwtp
 i0pat_vt =
 I0PAT_vt of
@@ -130,8 +139,7 @@ local
 datatype
 i0exp =
 I0EXP of
-( loctn
-, s2typ, i0exp_node)
+(loctn, i0exp_node)
 datavwtp
 i0exp_vt =
 I0EXP_vt of

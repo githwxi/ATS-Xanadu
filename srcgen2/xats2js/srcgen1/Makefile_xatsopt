@@ -66,6 +66,11 @@ intrep0_print0_dats: ; \
 $(XATSOPT) --dynamic DATS/intrep0_print0.dats
 ######
 all_dats:: \
+intrep0_myenv0_dats
+intrep0_myenv0_dats: ; \
+$(XATSOPT) --dynamic DATS/intrep0_myenv0.dats
+######
+all_dats:: \
 intrep0_dynexp_dats
 intrep0_dynexp_dats: ; \
 $(XATSOPT) --dynamic DATS/intrep0_dynexp.dats
