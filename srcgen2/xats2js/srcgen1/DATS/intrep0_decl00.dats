@@ -81,6 +81,64 @@ _(*DATS*)="./../DATS/intrep0.dats"
 (* ****** ****** *)
 //
 #implfun
+trxd3i0_d3ecl
+(env0 , d3cl) =
+(
+case+
+d3cl.node() of
+//
+|D3Clocal0 _ =>
+(
+  f0_local0(env0, d3cl))
+//
+|_(* otherwise *) => i0dcl_none1(d3cl)
+//
+) where
+{
+//
+val
+loc0 = d3cl.lctn()
+//
+(* ****** ****** *)
+//
+fun
+f0_local0
+( env0: 
+! trdienv
+, d3cl: d3ecl): i0dcl =
+let
+//
+val-
+D3Clocal0
+(head, body) = d3cl.node()
+//
+val
+head =
+trxd3i0_d3eclist(env0, head)
+val
+body =
+trxd3i0_d3eclist(env0, body)
+//
+in//let
+//
+i0dcl(loc0, I0Dlocal0(head, body))
+//
+end//let//end-of-[f0_local0(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+val () =
+(
+  prerrln("trxd3i0_d3ecl: d3cl = ", d3cl) )
+//
+(* ****** ****** *)
+//
+} (*where*) // end of [trxd3i0_d3ecl(env0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 trxd3i0_d3eclist
 ( env0, dcls ) =
 (
