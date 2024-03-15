@@ -102,11 +102,36 @@ i0pat(loc0, I0Pvar(d2v))
 //
 (* ****** ****** *)
 //
-val loc0 = d3p0.lctn()
+val loc0 = d3p0.lctn((*0*))
 //
 (* ****** ****** *)
 //
 }(*where*) // end of [trxd3i0_d3pat(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxd3i0_d3exp
+(env0 , d3e0) =
+(
+case+
+d3e0.node() of
+//
+|D3Evar
+( d2v ) =>
+i0exp(loc0, I0Evar(d2v))
+//
+) where
+{
+//
+(* ****** ****** *)
+//
+val loc0 = d3e0.lctn((*0*))
+//
+(* ****** ****** *)
+//
+}(*where*) // end of [trxd3i0_d3exp(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
