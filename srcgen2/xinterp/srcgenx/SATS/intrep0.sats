@@ -324,6 +324,7 @@ irpat_make_node
 (* ****** ****** *)
 #symload irpat with irpat_make_node
 (* ****** ****** *)
+(* ****** ****** *)
 //
 datatype
 irexp_node =

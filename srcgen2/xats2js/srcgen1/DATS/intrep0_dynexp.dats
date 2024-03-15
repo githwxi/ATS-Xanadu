@@ -75,6 +75,41 @@ _(*DATS*)="./../DATS/intrep0.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#symload lctn with d3pat_get_lctn
+#symload node with d3pat_get_node
+(* ****** ****** *)
+#symload lctn with d3exp_get_lctn
+#symload node with d3exp_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxd3i0_d3pat
+(env0 , d3p0) =
+(
+case+
+d3p0.node() of
+//
+|D3Pany
+((*0*)) =>
+i0pat(loc0, I0Pany(   ))
+|D3Pvar
+( d2v ) =>
+i0pat(loc0, I0Pvar(d2v))
+//
+) where
+{
+//
+(* ****** ****** *)
+//
+val loc0 = d3p0.lctn()
+//
+(* ****** ****** *)
+//
+}(*where*) // end of [trxd3i0_d3pat(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 trxd3i0_d3patlst

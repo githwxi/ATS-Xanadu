@@ -206,6 +206,17 @@ i0pat_get_node(i0pat):i0pat_node
 #symload lctn with i0pat_get_lctn
 #symload node with i0pat_get_node
 (* ****** ****** *)
+fun
+i0pat_none0(loc0: loctn): (i0pat)
+fun
+i0pat_none1(d3p0: d3pat): (i0pat)
+(* ****** ****** *)
+fun
+i0pat_make_node
+(loc:loctn, nod:i0pat_node): i0pat
+(* ****** ****** *)
+#symload i0pat with i0pat_make_node
+(* ****** ****** *)
 (* ****** ****** *)
 //
 datatype
