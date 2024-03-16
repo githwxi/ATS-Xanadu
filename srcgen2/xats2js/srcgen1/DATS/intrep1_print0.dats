@@ -46,6 +46,49 @@ XATSOPT "./../../.."
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dats.hats"
+(* ****** ****** *)
+#include
+"./../HATS/xats2js_dats.hats"
+(* ****** ****** *)
+#staload "./../SATS/intrep1.sats"
+(* ****** ****** *)
+#symload lctn with i1val_get_lctn
+#symload node with i1val_get_node
+(* ****** ****** *)
+//
+#implfun
+i1val_fprint
+(out, i1v0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+i1v0.node() of
+//
+|I1Vnil() =>
+print("I1Vnil(",")")
+//
+|I1Vint(int) =>
+print("I1Vint(",int,")")
+|I1Vbtf(btf) =>
+print("I1Vbtf(",btf,")")
+|I1Vchr(chr) =>
+print("I1Vchr(",chr,")")
+|I1Vstr(str) =>
+print("I1Vstr(",str,")")
+//
+(*
+|I1Vnone0() => print( "I1Vnone0(",")" )
+|I1Vnone1(i0e1) => print("I1Vnone1(", i0e1, ")")
+*)
+//
+end(*let*)//end-of-[i1val_fprint(out, i1v0)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 

@@ -114,6 +114,14 @@ i0dcl_fprint(g_print$out<>(), dcl)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#impltmp
+g_print
+<i1val>(i1v) =
+i1val_fprint(g_print$out<>(), i1v)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_xinterp_tmplib.dats] *)
