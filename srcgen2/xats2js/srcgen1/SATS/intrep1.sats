@@ -78,12 +78,35 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#abstype i1val_tbox
-#typedef i1val = i1val_tbox
-#typedef i1valist = list(i1val)
+datatype
+i1lab(x0:type) =
+|
+I1LAB of (label, x0(*elt*))
 //
 (* ****** ****** *)
-
+//
+fun
+<x0:type>
+i1lab_fprint
+( out: FILR
+, lab: i1lab( x0 )): (void)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#abstype i1val_tbox
+#typedef i1val = i1val_tbox
+//
+#typedef l1i1v = i1lab(i1val)
+//
+(* ****** ****** *)
+//
+#typedef i1valist = list(i1val)
+#typedef l1i1vlst = list(l1i1v)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 datatype
 i1val_node =
 //
@@ -102,6 +125,13 @@ i1val_node =
 |I1Vcon of (d2con)
 *)
 //
+(* ****** ****** *)
+//
+|I1Vtup0 of (i1valist)
+|I1Vtup1 of (i1valist)
+|I1Vrcd2 of (l1i1vlst)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
