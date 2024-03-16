@@ -49,6 +49,35 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload
+"./../../../SATS/xbasics.sats"
+#staload
+"./../../../SATS/xsymbol.sats"
+#staload
+"./../../../SATS/xlabel0.sats"
+//
+(* ****** ****** *)
+//
+#staload
+"./../../../SATS/filpath.sats"
+#staload
+"./../../../SATS/locinfo.sats"
+//
+(* ****** ****** *)
+//
+#staload
+"./../../../SATS/lexing0.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef stamp = stamp
+#typedef sym_t = sym_t
+#typedef label = label
+#typedef loctn = loctn
+#typedef loc_t = loctn
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #abstype i1val_tbox
 #typedef i1val = i1val_tbox
 #typedef i1valist = list(i1val)
@@ -73,6 +102,22 @@ i1val_node =
 |I1Vcon of (d2con)
 *)
 //
+(* ****** ****** *)
+//
+fun
+i1val_fprint
+(out:FILR, ival:i1val): void
+//
+(* ****** ****** *)
+//
+fun
+i1val_get_lctn(i1val):( loc_t )
+fun
+i1val_get_node(i1val):i1val_node
+//
+(* ****** ****** *)
+#symload lctn with i1val_get_lctn
+#symload node with i1val_get_node
 (* ****** ****** *)
 (* ****** ****** *)
 
