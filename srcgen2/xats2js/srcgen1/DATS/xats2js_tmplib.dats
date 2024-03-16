@@ -80,6 +80,25 @@ g_print
 i0exp_fprint(g_print$out<>(), i0e)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<i0gua>(gua) =
+i0gua_fprint(g_print$out<>(), gua)
+//
+#impltmp
+g_print
+<i0gpt>(gpt) =
+i0gpt_fprint(g_print$out<>(), gpt)
+//
+#impltmp
+g_print
+<i0cls>(cls) =
+i0cls_fprint(g_print$out<>(), cls)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 g_print
