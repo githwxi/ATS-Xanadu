@@ -542,6 +542,8 @@ irdcl_node =
 , fpathopt
 , irdclistopt) // inclusion
 //
+(* ****** ****** *)
+//
 |
 IRDvaldclst of
 (token(*VAL(vlk)*), irvaldclist)
@@ -552,6 +554,8 @@ IRDvardclst of
 IRDfundclst of
 ( token(*FUN(fnk)*)
 , t2qaglst, d2cstlst, irfundclist)
+//
+(* ****** ****** *)
 //
 |
 IRDimplmnt0 of
