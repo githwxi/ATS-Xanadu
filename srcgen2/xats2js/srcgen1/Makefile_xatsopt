@@ -52,6 +52,11 @@ intrep1_sats
 intrep1_sats: ; \
 $(XATSOPT) --static SATS/intrep1.sats
 ######
+all_sats:: \
+cmpi0i1_sats
+cmpi0i1_sats: ; \
+$(XATSOPT) --static SATS/cmpi0i1.sats
+######
 
 ######
 #
@@ -96,6 +101,17 @@ all_dats:: \
 intrep1_print0_dats
 intrep1_print0_dats: ; \
 $(XATSOPT) --dynamic DATS/intrep1_print0.dats
+######
+
+######
+all_dats:: \
+cmpi0i1_dats
+cmpi0i1_dats: ; \
+$(XATSOPT) --dynamic DATS/cmpi0i1.dats
+all_dats:: \
+cmpi0i1_myenv0_dats
+cmpi0i1_dats: ; \
+$(XATSOPT) --dynamic DATS/cmpi0i1_myenv0.dats
 ######
 
 ######

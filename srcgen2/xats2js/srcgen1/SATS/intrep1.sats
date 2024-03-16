@@ -49,6 +49,10 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload I0R="./intrep0.sats"
+//
+(* ****** ****** *)
+//
 #staload
 "./../../../SATS/xbasics.sats"
 #staload
@@ -77,6 +81,8 @@ XATSOPT "./../../.."
 #typedef loc_t = loctn
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef i0exp = $I0R.i0exp
+(* ****** ****** *)
 //
 datatype
 i1lab(x0:type) =
@@ -93,22 +99,19 @@ i1lab_fprint
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#abstype i1val_tbox
-#typedef i1val = i1val_tbox
-//
-#typedef l1i1v = i1lab(i1val)
-//
+#abstype i1opr_tbox
+#abstype i1reg_tbox
+#typedef i1opr = i1opr_tbox
+#typedef i1reg = i1reg_tbox
 (* ****** ****** *)
 //
-#typedef i1valist = list(i1val)
-#typedef l1i1vlst = list(l1i1v)
+#typedef i1reglst = list(i1reg)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 datatype
-i1val_node =
+i1val =
 //
 |I1Vnil of ()
 //
@@ -126,28 +129,61 @@ i1val_node =
 *)
 //
 (* ****** ****** *)
+|I1Vreg of (i1reg)
+(* ****** ****** *)
 //
 |I1Vtup0 of (i1valist)
 |I1Vtup1 of (i1valist)
 |I1Vrcd2 of (l1i1vlst)
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
-fun
-i1val_fprint
-(out:FILR, ival:i1val): void
+|I1Vnone0 of ((*0*)) |I1Vnone1 of (i0exp)
 //
 (* ****** ****** *)
 //
-fun
-i1val_get_lctn(i1val):( loc_t )
-fun
-i1val_get_node(i1val):i1val_node
+and i1let =
+I1LET of (i1reg, i1bfi)
+//
+and i1cmp =
+I1CMP of (i1letlst, i1val)
+//
+and i1bfi =
+//
+|I1BFIopr of
+( i1opr(*opnm*)
+, i1valist(*args*))//primopr
+//
+|I1BFItup0 of (i1valist)//flat
+|I1BFItup1 of (token, i1valist)
+|I1BFItup1 of (token, l1i1vlst)
+//
+|I1BFIdapp of (i1val, i1valist)
+//
+|I1BFIift0 of
+( i1val
+, i1cmp(*then*), i1cmp(*else*) )
+//
+where
+{
+  #typedef i1valist = list(i1val)
+  #typedef l1i1vlst = list(l1i1v)
+  #typedef i1letlst = list(i1let)
+}(*where*)//end-of-(i1val/cmp/let/bfi)
 //
 (* ****** ****** *)
-#symload lctn with i1val_get_lctn
-#symload node with i1val_get_node
+(* ****** ****** *)
+//
+fun
+i1val_fprint( FILR , i1val ): void
+//
+fun
+i1bfi_fprint( FILR , i1bfi ): void
+fun
+i1bfi_fprint( FILR , i1cmp ): void
+fun
+i1bfi_fprint( FILR , i1let ): void
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
