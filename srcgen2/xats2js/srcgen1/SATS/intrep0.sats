@@ -118,9 +118,9 @@ i0lab_fprint
 #typedef s2typ = $S2E.s2typ
 *)
 (* ****** ****** *)
-#typedef d2var = $D2E.d2var
 #typedef d2con = $D2E.d2con
 #typedef d2cst = $D2E.d2cst
+#typedef d2var = $D2E.d2var
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
@@ -129,6 +129,13 @@ i0lab_fprint
 #typedef l3d3e = $D3E.l3d3e
 (* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef d2conlst = $D2E.d2conlst
+#typedef d2cstlst = $D2E.d2cstlst
+#typedef d2varlst = $D2E.d2varlst
+(* ****** ****** *)
+#typedef t2qaglst = $D2E.t2qaglst
 (* ****** ****** *)
 #typedef d3patlst = $D3E.d3patlst
 (* ****** ****** *)
@@ -428,6 +435,19 @@ i0dcl_node =
 |I0Dlocal0 of
 ( i0dclist(*local-head*)
 , i0dclist(*local-body*))
+//
+(* ****** ****** *)
+//
+|I0Dvaldclst of
+(token(*VAL(vlk)*), i0valdclist)
+|I0Dvardclst of
+(token(*VAR(vlk)*), i0vardclist)
+//
+|I0Dfundclst of
+( token(*FUN(fnk)*)
+, t2qaglst, d2cstlst, i0fundclist)
+//
+(* ****** ****** *)
 //
 |I0Dnone0 of ((*0*)) |I0Dnone1 of (d3ecl)
 //
