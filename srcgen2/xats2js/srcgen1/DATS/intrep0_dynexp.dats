@@ -128,6 +128,21 @@ prerrln("trxd3i0_d3pat: d3p0 = ", d3p0)
 }(*where*) // end of [trxd3i0_d3pat(...)]
 //
 (* ****** ****** *)
+//
+#implfun
+trxd3i0_l3d3p
+( env0,ld3p ) =
+let
+//
+val+
+D3LAB
+(lab0, d3p1) = ld3p
+//
+in//let
+I0LAB(lab0, trxd3i0_d3pat(env0, d3p1))
+end (*let*)//end-of-[trxd3i0_l3d3p(env0,ld3p)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -203,6 +218,21 @@ prerrln("trxd3i0_d3exp: d3e0 = ", d3e0)
 }(*where*) // end of [trxd3i0_d3exp(...)]
 //
 (* ****** ****** *)
+//
+#implfun
+trxd3i0_l3d3e
+( env0,ld3e ) =
+let
+//
+val+
+D3LAB
+(lab0, d3e1) = ld3e
+//
+in//let
+I0LAB(lab0, trxd3i0_d3exp(env0, d3e1))
+end (*let*)//end-of-[trxd3i0_l3d3e(env0,ld3e)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -224,6 +254,35 @@ trxd3i0_d3expopt
 ( env0, dopt ) =
 (
   optn_trxd3i0_fnp(env0, dopt, trxd3i0_d3exp))
+//
+(* ****** ****** *)
+//
+#implfun
+trxd3i0_l3d3plst
+( env0, ldps ) =
+(
+  list_trxd3i0_fnp(env0, ldps, trxd3i0_l3d3p))
+//
+#implfun
+trxd3i0_l3d3elst
+( env0, ldes ) =
+(
+  list_trxd3i0_fnp(env0, ldes, trxd3i0_l3d3e))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxd3i0_d3gualst
+( env0, d3gs) =
+(
+  list_trxd3i0_fnp(env0, d3gs, trxd3i0_d3gua))
+//
+#implfun
+trxd3i0_d3clslst
+( env0, dcls) =
+(
+  list_trxd3i0_fnp(env0, dcls, trxd3i0_d3cls))
 //
 (* ****** ****** *)
 (* ****** ****** *)

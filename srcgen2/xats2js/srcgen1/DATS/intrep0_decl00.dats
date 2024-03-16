@@ -159,6 +159,8 @@ trxd3i0_d3vardclist
 (
   list_trxd3i0_fnp(env0, d3vs, trxd3i0_d3vardcl))
 //
+(* ****** ****** *)
+//
 #implfun
 trxd3i0_d3fundclist
   ( env0 , d3fs ) =

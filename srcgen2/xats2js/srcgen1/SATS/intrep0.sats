@@ -112,6 +112,10 @@ XATSOPT "./../../.."
 #typedef l3d3p = $D3E.l3d3p
 #typedef l3d3e = $D3E.l3d3e
 (* ****** ****** *)
+#typedef d3gua = $D3E.d3gua
+#typedef d3gpt = $D3E.d3gpt
+#typedef d3cls = $D3E.d3cls
+(* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
 (* ****** ****** *)
@@ -125,6 +129,12 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 #typedef d3explst = $D3E.d3explst
 #typedef d3expopt = $D3E.d3expopt
+(* ****** ****** *)
+#typedef l3d3plst = $D3E.l3d3plst
+#typedef l3d3elst = $D3E.l3d3elst
+(* ****** ****** *)
+#typedef d3gualst = $D3E.d3gualst
+#typedef d3clslst = $D3E.d3clslst
 (* ****** ****** *)
 #typedef d3eclist = $D3E.d3eclist
 (* ****** ****** *)
@@ -540,6 +550,16 @@ trxd3i0_l3d3e
 (env0: !trdienv, ld3e: l3d3e): l0i0e
 (* ****** ****** *)
 fun
+trxd3i0_d3gua
+(env0: !trdienv, dgua: d3gua): i0gua
+fun
+trxd3i0_d3gpt
+(env0: !trdienv, dgpt: d3gpt): i0gpt
+fun
+trxd3i0_d3cls
+(env0: !trdienv, dcls: d3cls): i0cls
+(* ****** ****** *)
+fun
 trxd3i0_d3ecl
 (env0: !trdienv, d3cl: d3ecl): i0dcl
 (* ****** ****** *)
@@ -555,6 +575,23 @@ trxd3i0_d3explst
 fun
 trxd3i0_d3expopt
 (env0: !trdienv, dopt: d3expopt): i0expopt
+//
+(* ****** ****** *)
+fun
+trxd3i0_l3d3plst
+(env0: !trdienv, ldps: l3d3plst): l0i0plst
+fun
+trxd3i0_l3d3elst
+(env0: !trdienv, ldes: l3d3elst): l0i0elst
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+trxd3i0_d3gualst
+(env0: !trdienv, d3gs: d3gualst): i0gualst
+fun
+trxd3i0_d3clslst
+(env0: !trdienv, dcls: d3clslst): i0clslst
 //
 (* ****** ****** *)
 (* ****** ****** *)
