@@ -147,6 +147,36 @@ trxd3i0_d3eclist
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+trxd3i0_d3valdclist
+  ( env0 , d3vs ) =
+(
+  list_trxd3i0_fnp(env0, d3vs, trxd3i0_d3valdcl))
+//
+#implfun
+trxd3i0_d3vardclist
+  ( env0 , d3vs ) =
+(
+  list_trxd3i0_fnp(env0, d3vs, trxd3i0_d3vardcl))
+//
+#implfun
+trxd3i0_d3fundclist
+  ( env0 , d3fs ) =
+(
+  list_trxd3i0_fnp(env0, d3fs, trxd3i0_d3fundcl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxd3i0_d3eclistopt
+  (env0, dopt) =
+(
+  optn_trxd3i0_fnp(env0, dopt, trxd3i0_d3eclist))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_intrep0_decl00.dats] *)
 (***********************************************************************)
