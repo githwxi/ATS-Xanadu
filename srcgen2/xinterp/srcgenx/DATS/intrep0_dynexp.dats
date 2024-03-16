@@ -663,6 +663,7 @@ irexp(loc0, IREcst(d2c))
 |D3Enone0 _ => f0_none0(env0, d3e0)
 //
 |_(* otherwise *) => irexp_none1(d3e0)
+//
 ) where
 {
 //

@@ -83,10 +83,13 @@ XATSOPT "./../../.."
 #typedef loc_t = loctn
 (* ****** ****** *)
 (* ****** ****** *)
+(*
 #staload S2E =
 "./../../../SATS/staexp2.sats"
 #staload T2P =
 "./../../../SATS/statyp2.sats"
+*)
+(* ****** ****** *)
 #staload D2E =
 "./../../../SATS/dynexp2.sats"
 (* ****** ****** *)
@@ -270,6 +273,31 @@ i0exp_node =
 (* ****** ****** *)
 //
 |I0Evar of (d2var)
+//
+(* ****** ****** *)
+//
+|I0Elet0 of
+(i0dclist, i0exp(*scope*))
+//
+(* ****** ****** *)
+//
+|I0Eift0 of
+(i0exp(*test*)
+,i0expopt(*th*), i0expopt(*el*))
+//
+|I0Ecas0 of
+(token(*+/0/-*), i0exp, i0clslst)
+//
+(* ****** ****** *)
+//
+|I0Eseqn of
+(i0explst(*init*), i0exp(*last*))
+//
+(* ****** ****** *)
+//
+|I0Etup0 of (i0explst)
+|I0Etup1 of (token(*knd*), i0explst)
+|I0Ercd2 of (token(*knd*), l0i0elst)
 //
 (* ****** ****** *)
 //
