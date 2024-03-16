@@ -112,6 +112,8 @@ XATSOPT "./../../.."
 #typedef l3d3p = $D3E.l3d3p
 #typedef l3d3e = $D3E.l3d3e
 (* ****** ****** *)
+#typedef f3arg = $D3E.f3arg
+(* ****** ****** *)
 #typedef d3gua = $D3E.d3gua
 #typedef d3gpt = $D3E.d3gpt
 #typedef d3cls = $D3E.d3cls
@@ -132,6 +134,8 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 #typedef l3d3plst = $D3E.l3d3plst
 #typedef l3d3elst = $D3E.l3d3elst
+(* ****** ****** *)
+#typedef f3arglst = $D3E.f3arglst
 (* ****** ****** *)
 #typedef d3gualst = $D3E.d3gualst
 #typedef d3clslst = $D3E.d3clslst
@@ -184,6 +188,22 @@ i0lab_fprint
 #typedef i0explst = list(i0exp)
 #typedef l0i0elst = list(l0i0e)
 (* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+fiarg =
+|FIARG of (i0patlst)
+//
+#typedef
+fiarglst = list(fiarg)
+#typedef
+fiarglstopt = optn(fiarglst)
+//
+(*
+#abstbox fiarg_tbox // p0tr
+#typedef fiarg = fiarg_tbox
+*)
+//
 (* ****** ****** *)
 #abstbox i0gua_tbox // p0tr
 #abstbox i0gpt_tbox // p0tr
@@ -583,6 +603,11 @@ trxd3i0_l3d3plst
 fun
 trxd3i0_l3d3elst
 (env0: !trdienv, ldes: l3d3elst): l0i0elst
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+trxd3i0_f3arglst
+(env0: !trdienv, f3as: f3arglst): fiarglst
 (* ****** ****** *)
 (* ****** ****** *)
 //
