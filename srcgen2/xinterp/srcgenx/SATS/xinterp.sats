@@ -43,6 +43,10 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload IR0="./intrep0.sats"
+//
+(* ****** ****** *)
+//
 #staload
 "./../../../SATS/xstamp0.sats"
 //
@@ -56,10 +60,6 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #staload D2E =
 "./../../../SATS/dynexp2.sats"
-//
-(* ****** ****** *)
-//
-#staload IR0 = "./intrep0.sats"
 //
 (* ****** ****** *)
 //
