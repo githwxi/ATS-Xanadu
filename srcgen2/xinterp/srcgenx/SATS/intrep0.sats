@@ -198,6 +198,7 @@ irlab_fprint
 #typedef irexplst = list(irexp)
 #typedef l0irelst = list(l0ire)
 (* ****** ****** *)
+(* ****** ****** *)
 //
 datatype
 fiarg =
@@ -214,6 +215,13 @@ fiarglstopt = optn(fiarglst)
 *)
 //
 (* ****** ****** *)
+//
+fun
+fiarg_fprint
+(out:FILR,fia0:fiarg): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #abstbox irgua_tbox // p0tr
 #abstbox irgpt_tbox // p0tr
 #abstbox ircls_tbox // p0tr
@@ -224,11 +232,6 @@ fiarglstopt = optn(fiarglst)
 #typedef irgualst = list(irgua)
 #typedef irclslst = list(ircls)
 (* ****** ****** *)
-(*
-fun
-fiarg_fprint
-(out:FILR,fia0:fiarg): void
-*)
 (* ****** ****** *)
 #abstbox irdcl_tbox // p0tr
 #typedef irdcl = irdcl_tbox
