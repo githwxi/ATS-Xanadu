@@ -147,6 +147,40 @@ print("I0Elet0(", dcls, ";", i0e1, ")")
 //
 (* ****** ****** *)
 //
+|I0Eift0
+( test
+, ithn, iels) =>
+(
+print
+("I0Eift0(", test, ";", ithn, ";", iels, ")"))
+//
+|I0Ecas0
+( tknd
+, i0e1, dcls) =>
+(
+print
+("I0Ecas0(", tknd, ";", i0e1, ";", dcls, ")"))
+//
+(* ****** ****** *)
+//
+|I0Eseqn
+( i0es, i0e1) =>
+print("I0Eseqn(", i0es, ";", i0e1, ")")
+//
+(* ****** ****** *)
+//
+|I0Etup0
+( i0es ) =>
+print("I0Etup0(", i0es, ")")
+|I0Etup1
+( tknd, i0es) =>
+print("I0Etup1(", tknd, ";", i0es, ")")
+|I0Ercd2
+( tknd, lies) =>
+print("I0Ercd2(", tknd, ";", lies, ")")
+//
+(* ****** ****** *)
+//
 |I0Enone0() => print( "I0Enone0(",")" )
 |I0Enone1(d3e1) => print("I0Enone1(", d3e1, ")")
 //

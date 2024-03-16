@@ -155,6 +155,17 @@ i0lab_fprint
 #typedef l0i0elst = list(l0i0e)
 (* ****** ****** *)
 (* ****** ****** *)
+#abstbox i0gua_tbox // p0tr
+#abstbox i0gpt_tbox // p0tr
+#abstbox i0cls_tbox // p0tr
+#typedef i0gua = i0gua_tbox
+#typedef i0gpt = i0gpt_tbox
+#typedef i0cls = i0cls_tbox
+(* ****** ****** *)
+#typedef i0gualst = list(i0gua)
+#typedef i0clslst = list(i0cls)
+(* ****** ****** *)
+(* ****** ****** *)
 #abstbox i0dcl_tbox // p0tr
 #typedef i0dcl = i0dcl_tbox
 (* ****** ****** *)
@@ -333,6 +344,79 @@ i0exp_make_node
 (loc:loctn, nod:i0exp_node): i0exp
 (* ****** ****** *)
 #symload i0exp with i0exp_make_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+i0gua_node =
+| I0GUAexp of (i0exp)
+| I0GUAmat of (i0exp, i0pat)
+//
+(* ****** ****** *)
+//
+datatype
+i0cls_node =
+| I0CLSgpt of i0gpt
+| I0CLScls of (i0gpt, i0exp)
+and
+i0gpt_node =
+| I0GPTpat of (i0pat)
+| I0GPTgua of (i0pat, i0gualst)
+//
+(* ****** ****** *)
+//
+fun
+i0gua_fprint:(FILR,i0gua)->void
+fun
+i0gpt_fprint:(FILR,i0gpt)->void
+fun
+i0cls_fprint:(FILR,i0cls)->void
+//
+(* ****** ****** *)
+//
+fun
+i0gua_get_lctn(i0gua): loc_t
+fun
+i0gua_get_node(i0gua): i0gua_node
+//
+#symload lctn with i0gua_get_lctn
+#symload node with i0gua_get_node
+//
+(* ****** ****** *)
+//
+fun
+i0gpt_get_lctn(i0gpt): loc_t
+fun
+i0gpt_get_node(i0gpt): i0gpt_node
+//
+#symload lctn with i0gpt_get_lctn
+#symload node with i0gpt_get_node
+//
+(* ****** ****** *)
+//
+fun
+i0cls_get_lctn(i0cls): loc_t
+fun
+i0cls_get_node(i0cls): i0cls_node
+//
+#symload lctn with i0cls_get_lctn
+#symload node with i0cls_get_node
+//
+(* ****** ****** *)
+//
+fun
+i0gua_make_node
+(loc0:loc_t,node:i0gua_node):i0gua
+fun
+i0gpt_make_node
+(loc0:loc_t,node:i0gpt_node):i0gpt
+fun
+i0cls_make_node
+(loc0:loc_t,node:i0cls_node):i0cls
+#symload i0gua with i0gua_make_node
+#symload i0gpt with i0gpt_make_node
+#symload i0cls with i0cls_make_node
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
