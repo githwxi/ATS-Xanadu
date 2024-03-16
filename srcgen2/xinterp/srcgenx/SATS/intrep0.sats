@@ -535,6 +535,8 @@ irdcl_node =
 ( irdclist(*local-head*)
 , irdclist(*local-body*))
 //
+(* ****** ****** *)
+//
 |IRDinclude of
 ( sint(*s/d*)
 , token

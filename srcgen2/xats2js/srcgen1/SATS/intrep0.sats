@@ -82,13 +82,13 @@ XATSOPT "./../../.."
 #typedef loctn = loctn
 #typedef loc_t = loctn
 (* ****** ****** *)
+#staload S1E =
+"./../../../SATS/staexp1.sats"
 (* ****** ****** *)
-(*
 #staload S2E =
 "./../../../SATS/staexp2.sats"
 #staload T2P =
 "./../../../SATS/statyp2.sats"
-*)
 (* ****** ****** *)
 #staload D2E =
 "./../../../SATS/dynexp2.sats"
@@ -97,26 +97,10 @@ XATSOPT "./../../.."
 "./../../../SATS/dynexp3.sats"
 (* ****** ****** *)
 (* ****** ****** *)
-//
-datatype
-i0lab(x0:type) =
-|
-I0LAB of (label, x0(*elt*))
-//
+#typedef g1exp = $S1E.g1exp
 (* ****** ****** *)
-//
-fun
-<x0:type>
-i0lab_fprint
-( out: FILR
-, lab: i0lab( x0 )): (void)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-(*
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
-*)
 (* ****** ****** *)
 #typedef d2con = $D2E.d2con
 #typedef d2cst = $D2E.d2cst
@@ -143,6 +127,35 @@ i0lab_fprint
 #typedef d3expopt = $D3E.d3expopt
 (* ****** ****** *)
 #typedef d3eclist = $D3E.d3eclist
+(* ****** ****** *)
+#typedef d3valdcl = $D3E.d3valdcl
+#typedef d3vardcl = $D3E.d3vardcl
+#typedef d3fundcl = $D3E.d3fundcl
+(* ****** ****** *)
+#typedef d3valdclist = $D3E.d3valdclist
+#typedef d3vardclist = $D3E.d3vardclist
+#typedef d3fundclist = $D3E.d3fundclist
+(* ****** ****** *)
+#typedef d3parsed = $D3E.d3parsed
+(* ****** ****** *)
+#typedef d3explstopt = $D3E.d3explstopt
+#typedef d3eclistopt = $D3E.d3eclistopt
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+i0lab(x0:type) =
+|
+I0LAB of (label, x0(*elt*))
+//
+(* ****** ****** *)
+//
+fun
+<x0:type>
+i0lab_fprint
+( out: FILR
+, lab: i0lab( x0 )): (void)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 #abstbox i0pat_tbox // p0tr
@@ -432,9 +445,20 @@ i0dcl_node =
 //
 |I0Dd3ecl of (d3ecl)
 //
+(* ****** ****** *)
+//
 |I0Dlocal0 of
 ( i0dclist(*local-head*)
 , i0dclist(*local-body*))
+//
+(* ****** ****** *)
+//
+|I0Dinclude of
+( sint(*s/d*)
+, token
+, g1exp // src
+, fpathopt
+, i0dclistopt) // inclusion
 //
 (* ****** ****** *)
 //
@@ -539,6 +563,22 @@ fun
 trxd3i0_d3eclist
 (env0: !trdienv, dcls: d3eclist): i0dclist
 //
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+trxd3i0_d3valdclist
+(env0: !trdienv, d3vs: d3valdclist): i0valdclist
+fun
+trxd3i0_d3vardclist
+(env0: !trdienv, d3vs: d3vardclist): i0vardclist
+(* ****** ****** *)
+fun
+trxd3i0_d3fundclist
+(env0: !trdienv, d3fs: d3fundclist): i0fundclist
+(* ****** ****** *)
+fun
+trxd3i0_d3eclistopt
+(env0: !trdienv, dcls: d3eclistopt): i0dclistopt
 (* ****** ****** *)
 (* ****** ****** *)
 //
