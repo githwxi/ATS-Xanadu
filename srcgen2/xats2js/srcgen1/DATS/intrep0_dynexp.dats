@@ -81,6 +81,9 @@ _(*DATS*)="./../DATS/intrep0.dats"
 #symload lctn with d3exp_get_lctn
 #symload node with d3exp_get_node
 (* ****** ****** *)
+#symload lctn with f3arg_get_lctn
+#symload node with f3arg_get_node
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #static
@@ -259,6 +262,9 @@ i0exp(loc0, I0Evar(d2v))
 |D3Etup0 _ => f0_tup0(env0, d3e0)
 |D3Etup1 _ => f0_tup1(env0, d3e0)
 |D3Ercd2 _ => f0_rcd2(env0, d3e0)
+//
+|D3Elam0 _ => f0_lam0(env0, d3e0)
+|D3Efix0 _ => f0_fix0(env0, d3e0)
 //
 |_(* otherwise *) => i0exp_none1(d3e0)
 //
@@ -455,6 +461,63 @@ in//let
 end(*let*)//end-of-[f0_rcd2(env0,d3e0)]
 //
 (* ****** ****** *)
+//
+fun
+f0_lam0
+( env0:
+! trdienv
+, d3e0: d3exp): i0exp =
+let
+//
+val-
+D3Elam0
+(tknd
+,f3as,sres
+,arrw,body) = d3e0.node()
+//
+val fias =
+trxd3i0_f3arglst(env0, f3as)
+//
+val
+body = trxd3i0_d3exp(env0, body)
+//
+in//let
+(
+  i0exp_make_node
+  (loc0, I0Elam0(tknd, fias, body)))
+end(*let*)//end-of-[f0_lam0(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fix0
+( env0:
+! trdienv
+, d3e0: d3exp): i0exp =
+let
+//
+val-
+D3Efix0
+(tknd
+,d2v1
+,f3as,sres
+,arrw,body) = d3e0.node()
+//
+val
+fias =
+trxd3i0_f3arglst(env0, f3as)
+//
+val
+body = trxd3i0_d3exp(env0, body)
+//
+in//let
+//
+i0exp_make_node
+(loc0, I0Efix0(tknd,d2v1,fias,body))
+//
+end(*let*)//end-of-[f0_fix0(env0,d3e0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val (  ) =
@@ -516,6 +579,67 @@ trxd3i0_l3d3elst
 ( env0, ldes ) =
 (
   list_trxd3i0_fnp(env0, ldes, trxd3i0_l3d3e))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxd3i0_f3arglst
+( env0, f3as ) =
+(
+case+ f3as of
+|
+list_nil
+( (*0*) ) =>
+list_nil((*void*))
+|
+list_cons
+(f3a1, f3as) =>
+(
+case+
+f3a1.node() of
+|
+F3ARGdapp _ =>
+list_cons(fia1, fias) where
+{
+//
+val
+fia1 =
+f0_dyn0(env0, f3a1)
+val
+fias =
+trxd3i0_f3arglst(env0, f3as)
+//
+}(*where*)//end-[F3ARGdapp(...)]
+|
+F3ARGsapp _ =>
+trxd3i0_f3arglst(env0, f3as)
+|
+F3ARGmets _ =>
+trxd3i0_f3arglst(env0, f3as)
+)
+) where // end-of-[case+of(f3a1)]
+{
+//
+fun
+f0_dyn0
+( env0:
+! trdienv
+, f3a1: f3arg): fiarg =
+let
+//
+val-
+F3ARGdapp
+(npf1, d3ps) = f3a1.node()
+//
+val d3ps =
+pfrmv_npf1_d3ps(npf1, d3ps)
+//
+in//let
+FIARG(trxd3i0_d3patlst(env0, d3ps))
+end//let//end-of-[f0_dyn0(env0,f3a1)]
+//
+}(*where+*)//end-[trxd3i0_f3arglst(env0,f3as)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
