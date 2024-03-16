@@ -83,6 +83,83 @@ _(*DATS*)="./../DATS/intrep0.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#static
+fun
+<itm:type>
+pfrmv_npf1_itms
+( npf1
+: sint
+, itms
+: list(itm)): list(itm)
+#impltmp
+<  itm  >
+pfrmv_npf1_itms
+  (npf1, itms) =
+(
+  loop(npf1, itms)) where
+{
+fun
+loop
+( npf1: sint
+, itms: list(itm)): list(itm) =
+if
+(npf1 <= 0)
+then itms else
+(
+case+ itms of
+|
+list_nil
+( (*0*) ) => list_nil()
+|
+list_cons
+(_, itms) => loop(npf1-1, itms))
+}
+//
+(* ****** ****** *)
+fun
+pfrmv_npf1_t2ps
+( npf1
+: sint
+, t2ps
+: s2typlst): s2typlst =
+pfrmv_npf1_itms<s2typ>(npf1, t2ps)
+(* ****** ****** *)
+//
+fun
+pfrmv_npf1_d3ps
+( npf1
+: sint
+, d3ps
+: d3patlst): d3patlst =
+pfrmv_npf1_itms<d3pat>(npf1, d3ps)
+fun
+pfrmv_npf1_ldps
+( npf1
+: sint
+, ldps
+: l3d3plst): l3d3plst =
+pfrmv_npf1_itms<l3d3p>(npf1, ldps)
+//
+(* ****** ****** *)
+//
+fun
+pfrmv_npf1_d3es
+( npf1
+: sint
+, d3es
+: d3explst): d3explst =
+pfrmv_npf1_itms<d3exp>(npf1, d3es)
+fun
+pfrmv_npf1_ldes
+( npf1
+: sint
+, ldes
+: l3d3elst): l3d3elst =
+pfrmv_npf1_itms<l3d3e>(npf1, ldes)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 trxd3i0_d3pat
 (env0 , d3p0) =
@@ -174,6 +251,15 @@ i0exp(loc0, I0Evar(d2v))
 //
 |D3Elet0 _ => f0_let0(env0, d3e0)
 //
+|D3Eift0 _ => f0_ift0(env0, d3e0)
+|D3Ecas0 _ => f0_cas0(env0, d3e0)
+//
+|D3Eseqn _ => f0_seqn(env0, d3e0)
+//
+|D3Etup0 _ => f0_tup0(env0, d3e0)
+|D3Etup1 _ => f0_tup1(env0, d3e0)
+|D3Ercd2 _ => f0_rcd2(env0, d3e0)
+//
 |_(* otherwise *) => i0exp_none1(d3e0)
 //
 ) where
@@ -210,9 +296,171 @@ end(*let*)//end-of-[f0_let0(env0,d3e0)]
 //
 (* ****** ****** *)
 //
+fun
+f0_ift0
+( env0:
+! trdienv
+, d3e0: d3exp): i0exp =
+let
+//
+val-
+D3Eift0
+( d3e1
+, dthn, dels) = d3e0.node()
+//
+val i0e1 =
+trxd3i0_d3exp(env0, d3e1)
+val ithn =
+trxd3i0_d3expopt(env0, dthn)
+val iels =
+trxd3i0_d3expopt(env0, dels)
+//
+in//let
+i0exp_make_node
+(loc0, I0Eift0(i0e1, ithn, iels))
+end(*let*)//end-of-[f0_ift0(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_cas0
+( env0:
+! trdienv
+, d3e0: d3exp): i0exp =
+let
+//
+val-
+D3Ecas0
+( tknd
+, d3e1, dcls) = d3e0.node()
+//
+val i0e1 =
+trxd3i0_d3exp(env0, d3e1)
+val dcls =
+trxd3i0_d3clslst(env0, dcls)
+//
+in//let
+i0exp_make_node
+(loc0, I0Ecas0(tknd, i0e1, dcls))
+end(*let*)//end-of-[f0_cas0(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_seqn
+( env0:
+! trdienv
+, d3e0: d3exp): i0exp =
+let
+//
+val-
+D3Eseqn
+( d3es, d3e1) = d3e0.node()
+//
+val i0es =
+trxd3i0_d3explst
+(  env0, d3es  )
+val i0e1 =
+(
+  trxd3i0_d3exp(env0, d3e1) )
+//
+in//let
+(
+  i0exp_make_node
+  (loc0, I0Eseqn( i0es, i0e1 )) )
+end(*let*)//end-of-[f0_seqn(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup0
+( env0:
+! trdienv
+, d3e0: d3exp): i0exp =
+let
+//
+val-
+D3Etup0
+( npf1, d3es) = d3e0.node()
+//
+val d3es =
+(
+  pfrmv_npf1_d3es(npf1, d3es))
+//
+val i0es =
+(
+  trxd3i0_d3explst(env0, d3es))
+//
+in//let
+if
+list_singq(i0es)
+then list_head(i0es)
+else
+(
+  i0exp(loc0, I0Etup0(  i0es  )) )
+end(*let*)//end-of-[f0_tup0(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup1
+( env0:
+! trdienv
+, d3e0: d3exp): i0exp =
+let
+//
+val-
+D3Etup1
+( tknd
+, npf1, d3es) = d3e0.node()
+//
+val d3es =
+(
+  pfrmv_npf1_d3es(npf1, d3es))
+//
+val i0es =
+(
+  trxd3i0_d3explst(env0, d3es))
+//
+in//let
+(
+  i0exp(loc0, I0Etup1(tknd, i0es)))
+end(*let*)//end-of-[f0_tup1(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_rcd2
+( env0:
+! trdienv
+, d3e0: d3exp): i0exp =
+let
+//
+val-
+D3Ercd2
+( tknd
+, npf1, ldes) = d3e0.node()
+//
+val ldes =
+(
+  pfrmv_npf1_ldes(npf1, ldes))
+//
+val li0s =
+(
+  trxd3i0_l3d3elst(env0, ldes))
+//
+in//let
+(
+  i0exp(loc0, I0Ercd2(tknd, li0s)))
+end(*let*)//end-of-[f0_rcd2(env0,d3e0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val (  ) =
 prerrln("trxd3i0_d3exp: d3e0 = ", d3e0)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 }(*where*) // end of [trxd3i0_d3exp(...)]
