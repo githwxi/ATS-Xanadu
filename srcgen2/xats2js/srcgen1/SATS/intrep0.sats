@@ -564,17 +564,31 @@ trxd3i0_d3eclist
 (env0: !trdienv, dcls: d3eclist): i0dclist
 //
 (* ****** ****** *)
+//
+fun
+trxd3i0_d3valdcl
+(env0: !trdienv, dval: d3valdcl): i0valdcl
+fun
+trxd3i0_d3vardcl
+(env0: !trdienv, dvar: d3vardcl): i0vardcl
+//
+fun
+trxd3i0_d3fundcl
+(env0: !trdienv, dfun: d3fundcl): i0fundcl
+//
 (* ****** ****** *)
+//
 fun
 trxd3i0_d3valdclist
 (env0: !trdienv, d3vs: d3valdclist): i0valdclist
 fun
 trxd3i0_d3vardclist
 (env0: !trdienv, d3vs: d3vardclist): i0vardclist
-(* ****** ****** *)
+//
 fun
 trxd3i0_d3fundclist
 (env0: !trdienv, d3fs: d3fundclist): i0fundclist
+//
 (* ****** ****** *)
 fun
 trxd3i0_d3eclistopt
