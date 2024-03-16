@@ -84,6 +84,13 @@ irexp_fprint(g_print$out<>(), ire)
 //
 #impltmp
 g_print
+<fiarg>(fia) =
+fiarg_fprint(g_print$out<>(), fia)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
 <irgua>(gua) =
 irgua_fprint(g_print$out<>(), gua)
 //

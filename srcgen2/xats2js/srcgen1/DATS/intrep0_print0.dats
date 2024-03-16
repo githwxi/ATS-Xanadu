@@ -204,6 +204,11 @@ print("I0Ercd2(", tknd, ";", lies, ")")
   print("I0Eflat(", i0e1, ")") )//I0Eflat
 //
 (* ****** ****** *)
+|I0Efold
+( i0e1 ) =>
+(
+  print("I0Efold(", i0e1, ")") )//I0Efold
+(* ****** ****** *)
 //
 |I0Enone0() => print( "I0Enone0(",")" )
 |I0Enone1(d3e1) => print("I0Enone1(", d3e1, ")")

@@ -205,6 +205,13 @@ fiarglstopt = optn(fiarglst)
 *)
 //
 (* ****** ****** *)
+//
+fun
+fiarg_fprint
+(out:FILR,fia0:fiarg): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #abstbox i0gua_tbox // p0tr
 #abstbox i0gpt_tbox // p0tr
 #abstbox i0cls_tbox // p0tr
@@ -372,6 +379,8 @@ i0exp_node =
 //
 |I0Eaddr of (i0exp)//left-val-address
 |I0Eflat of (i0exp)//left-val-content
+//
+|I0Efold of (i0exp)//open-con-folding
 //
 (* ****** ****** *)
 //
