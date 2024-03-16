@@ -1724,6 +1724,7 @@ trxd3ir_l3d3elst
   list_trxd3ir_fnp(env0, ldes, trxd3ir_l3d3e))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 trxd3ir_f3arglst
@@ -1781,8 +1782,9 @@ in//let
 FIARG(trxd3ir_d3patlst(env0, d3ps))
 end//let//end-of-[f0_dyn0(env0,f3a1)]
 //
-} (*where+*)//end-[trxd3ir_f3arglst(env0,f3as)]
+}(*where+*)//end-[trxd3ir_f3arglst(env0,f3as)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
