@@ -47,6 +47,11 @@ intrep0_sats
 intrep0_sats: ; \
 $(XATSOPT) --static SATS/intrep0.sats
 ######
+all_sats:: \
+intrep1_sats
+intrep1_sats: ; \
+$(XATSOPT) --static SATS/intrep1.sats
+######
 
 ######
 #
@@ -79,6 +84,20 @@ all_dats:: \
 intrep0_decl00_dats
 intrep0_decl00_dats: ; \
 $(XATSOPT) --dynamic DATS/intrep0_decl00.dats
+######
+
+######
+all_dats:: \
+intrep1_dats
+intrep1_dats: ; \
+$(XATSOPT) --dynamic DATS/intrep1.dats
+######
+all_dats:: \
+intrep1_print0_dats
+intrep1_print0_dats: ; \
+$(XATSOPT) --dynamic DATS/intrep1_print0.dats
+######
+
 ######
 all_dats:: \
 xats2js_tmplib_dats
