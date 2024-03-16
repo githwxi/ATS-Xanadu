@@ -362,6 +362,19 @@ i0exp_node =
 //
 (* ****** ****** *)
 //
+|I0Elam0 of
+(token(*knd*),fiarglst(*arg*), i0exp)
+|I0Efix0 of
+(token(*knd*)
+,d2var(*fid*),fiarglst(*arg*), i0exp)
+//
+(* ****** ****** *)
+//
+|I0Eaddr of (i0exp)//left-val-address
+|I0Eflat of (i0exp)//left-val-content
+//
+(* ****** ****** *)
+//
 |I0Enone0 of ((*0*)) |I0Enone1 of (d3exp)
 //
 // HX-2023-??-??: end-of-[datatype(i0exp_node)]
