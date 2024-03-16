@@ -139,6 +139,14 @@ i0e0.node() of
 (
  print("I0Estr(", str, ")"))
 //
+(* ****** ****** *)
+//
+|I0Elet0
+( dcls, i0e1) =>
+print("I0Elet0(", dcls, ";", i0e1, ")")
+//
+(* ****** ****** *)
+//
 |I0Enone0() => print( "I0Enone0(",")" )
 |I0Enone1(d3e1) => print("I0Enone1(", d3e1, ")")
 //

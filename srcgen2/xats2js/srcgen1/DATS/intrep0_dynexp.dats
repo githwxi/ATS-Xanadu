@@ -157,6 +157,10 @@ i0exp(loc0, I0Estr(tok))
 ( d2v ) =>
 i0exp(loc0, I0Evar(d2v))
 //
+|D3Elet0 _ => f0_let0(env0, d3e0)
+//
+|_(* otherwise *) => i0exp_none1(d3e0)
+//
 ) where
 {
 //
@@ -165,8 +169,35 @@ i0exp(loc0, I0Evar(d2v))
 val loc0 = d3e0.lctn((*0*))
 //
 (* ****** ****** *)
+//
+fun
+f0_let0
+( env0:
+! trdienv
+, d3e0: d3exp): i0exp =
+let
+//
+val-
+D3Elet0
+( dcls, d3e1) = d3e0.node()
+//
+val dcls =
+trxd3i0_d3eclist(env0, dcls)
+val i0e1 =
+(
+  trxd3i0_d3exp(env0, d3e1))
+//
+in//let
+(
+  i0exp_make_node
+  (loc0, I0Elet0( dcls, i0e1 )))
+end(*let*)//end-of-[f0_let0(env0,d3e0)]
+//
+(* ****** ****** *)
+//
 val (  ) =
 prerrln("trxd3i0_d3exp: d3e0 = ", d3e0)
+//
 (* ****** ****** *)
 //
 }(*where*) // end of [trxd3i0_d3exp(...)]
