@@ -221,22 +221,21 @@ print("IRElet0(", irds, ";", ire1, ")")
 |IREift0
 ( test
 , ithn, iels) =>
-(
-print
-("IREift0(", test, ";", ithn, ";", iels, ")"))
+(print("IREift0(")
+;print(test, ";", ithn, ";", iels, ")"))
 //
 |IREcas0
 ( tknd
 , ire1, dcls) =>
-(
-print
-("IREcas0(", tknd, ";", ire1, ";", dcls, ")"))
+(print("IREcas0(")
+;print(tknd, ";", ire1, ";", dcls, ")"))
 //
 (* ****** ****** *)
 //
 |IREseqn
 ( ires, ire1) =>
-print("IREseqn(", ires, ";", ire1, ")")
+(
+print("IREseqn(", ires, ";", ire1, ")"))
 //
 (* ****** ****** *)
 //
@@ -249,6 +248,19 @@ print("IREtup1(", tknd, ";", ires, ")")
 |IRErcd2
 ( tknd, lies) =>
 print("IRErcd2(", tknd, ";", lies, ")")
+//
+(* ****** ****** *)
+//
+|IRElam0
+(tknd,fias,body) =>
+(print("IRElam0(")
+;print(tknd, ";", fias, ";", body, ")"))
+//
+|IREfix0
+(tknd
+,fid0,fias,body) =>
+(print("IREfix0(",tknd,";")
+;print(fid0, ";", fias, ";", body, ")"))
 //
 (* ****** ****** *)
 //

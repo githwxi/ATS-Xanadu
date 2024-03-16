@@ -181,6 +181,30 @@ print("I0Ercd2(", tknd, ";", lies, ")")
 //
 (* ****** ****** *)
 //
+|I0Elam0
+(tknd,fias,body) =>
+(print("I0Elam0(")
+;print(tknd, ";", fias, ";", body, ")"))
+//
+|I0Efix0
+(tknd
+,fid0,fias,body) =>
+(print("I0Efix0(",tknd,";")
+;print(fid0, ";", fias, ";", body, ")"))
+//
+(* ****** ****** *)
+//
+|I0Eaddr
+( i0e1 ) =>
+(
+  print("I0Eaddr(", i0e1, ")") )//I0Eaddr
+|I0Eflat
+( i0e1 ) =>
+(
+  print("I0Eflat(", i0e1, ")") )//I0Eflat
+//
+(* ****** ****** *)
+//
 |I0Enone0() => print( "I0Enone0(",")" )
 |I0Enone1(d3e1) => print("I0Enone1(", d3e1, ")")
 //

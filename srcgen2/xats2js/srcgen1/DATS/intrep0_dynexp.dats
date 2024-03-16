@@ -518,6 +518,48 @@ i0exp_make_node
 end(*let*)//end-of-[f0_fix0(env0,d3e0)]
 //
 (* ****** ****** *)
+//
+fun
+f0_addr
+( env0:
+! trdienv
+, d3e0: d3exp): i0exp =
+let
+//
+val-
+D3Eaddr(d3e1) = d3e0.node()
+//
+val i0e1 =
+(
+  trxd3i0_d3exp(env0, d3e1))
+//
+in//let
+(
+  i0exp(loc0, I0Eaddr( i0e1 )) )
+end(*let*)//end-of-[f0_addr(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_flat
+( env0:
+! trdienv
+, d3e0: d3exp): i0exp =
+let
+//
+val-
+D3Eflat(d3e1) = d3e0.node()
+//
+val i0e1 =
+(
+  trxd3i0_d3exp(env0, d3e1))
+//
+in//let
+(
+  i0exp(loc0, I0Eflat( i0e1 )) )
+end(*let*)//end-of-[f0_flat(env0,d3e0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val (  ) =

@@ -374,18 +374,26 @@ irexp_node =
 |IREcas0 of
 (token(*+/0/-*), irexp, irclslst)
 //
+(* ****** ****** *)
+//
 |IREseqn of
 (irexplst(*init*), irexp(*last*))
+//
+(* ****** ****** *)
 //
 |IREtup0 of (irexplst)
 |IREtup1 of (token(*knd*), irexplst)
 |IRErcd2 of (token(*knd*), l0irelst)
+//
+(* ****** ****** *)
 //
 |IRElam0 of
 (token(*knd*),fiarglst(*arg*), irexp)
 |IREfix0 of
 (token(*knd*)
 ,d2var(*fid*),fiarglst(*arg*), irexp)
+//
+(* ****** ****** *)
 //
 |IREaddr of (irexp)//left-val-address
 |IREflat of (irexp)//left-val-content
