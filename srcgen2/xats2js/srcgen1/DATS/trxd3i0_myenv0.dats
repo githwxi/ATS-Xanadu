@@ -26,70 +26,55 @@
 *)
 
 (* ****** ****** *)
-(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 //
-Sat 16 Mar 2024 01:21:12 PM EDT
+Fri 15 Mar 2024 06:07:38 AM EDT
 //
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
-(* ****** ****** *)
 (* ****** ****** *)
 (*
 #define
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
-#include
-"./../../..\
-/HATS/xatsopt_sats.hats"
-#include
-"./../../..\
-/HATS/xatsopt_dats.hats"
+//
+#staload "./../SATS/intrep0.sats"
+#staload "./../SATS/trxd3i0.sats"
+//
 (* ****** ****** *)
-#include
-"./../HATS/xats2js_dats.hats"
+
+local
+//
+datavwtp
+trdienv =
+TRDIENV of ()
+#absimpl trdienv_vtbx = trdienv
+//
 (* ****** ****** *)
-(* ****** ****** *)
-#staload "./../SATS/intrep1.sats"
-(* ****** ****** *)
+in//local
 (* ****** ****** *)
 //
 #implfun
-i1val_fprint
-(out, i1v0) =
-let
-#impltmp
-g_print$out<>() = out
-in//let
-//
-case+ i1v0 of
-//
-|I1Vnil() =>
-print("I1Vnil(",")")
-//
-|I1Vint(int) =>
-print("I1Vint(",int,")")
-|I1Vbtf(btf) =>
-print("I1Vbtf(",btf,")")
-|I1Vchr(chr) =>
-print("I1Vchr(",chr,")")
-|I1Vstr(str) =>
-print("I1Vstr(",str,")")
-//
-(*
-|I1Vnone0() => print( "I1Vnone0(",")" )
-|I1Vnone1(i0e1) => print("I1Vnone1(", i0e1, ")")
-*)
-//
-end(*let*)//end-of-[i1val_fprint(out, i1v0)]
+trdienv_make_nil
+  ((*void*)) = TRDIENV( (*void*) )
 //
 (* ****** ****** *)
+//
+#implfun
+trdienv_free_top
+  (  env0  ) =
+(
+case+ env0 of ~TRDIENV( (*0*) ) => ()
+) (*case+*)//end-of-(trdienv_free_top(env0))
+//
+(* ****** ****** *)
+end(*local*) // end of [local(trdienv)]
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep1_print0.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trxd3i0_myenv0.dats] *)
 (***********************************************************************)

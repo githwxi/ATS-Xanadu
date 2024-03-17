@@ -43,6 +43,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/intrep0.sats"
+#staload "./../SATS/intrep1.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //

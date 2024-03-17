@@ -26,11 +26,12 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 //
-Fri 15 Mar 2024 06:07:38 AM EDT
+Sat 02 Mar 2024 06:04:06 PM EST
 //
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -41,39 +42,52 @@ Authoremail: gmhwxiATgmailDOTcom
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
-//
-#staload "./../SATS/intrep0.sats"
-//
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dats.hats"
 (* ****** ****** *)
-
-local
-//
-datavwtp
-trdienv =
-TRDIENV of ()
-#absimpl trdienv_vtbx = trdienv
-//
-(* ****** ****** *)
-in//local
 (* ****** ****** *)
 //
-#implfun
-trdienv_make_nil
-  ((*void*)) = TRDIENV( (*void*) )
+#staload
+"./../SATS/intrep0.sats"
+#staload
+"./../SATS/trxd3i0.sats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
-#implfun
-trdienv_free_top
-  (  env0  ) =
+#impltmp
+<x0><y0>
+list_trxd3i0_fnp
+( e1, xs, fopr ) =
 (
-case+ env0 of ~TRDIENV( (*0*) ) => ()
-) (*case+*)//end-of-(trdienv_free_top(env0))
+list_map_e1nv<x0><y0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = trdienv
+#impltmp
+map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [list_trxd3i0_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
-end(*local*) // end of [local(trdienv)]
+//
+#impltmp
+<x0><y0>
+optn_trxd3i0_fnp
+( e1, xs, fopr ) =
+(
+optn_map_e1nv<x0><y0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = trdienv
+#impltmp
+map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [optn_trxd3i0_fnp(e1,xs,fopr)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep0_myenv0.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep0.dats] *)
 (***********************************************************************)

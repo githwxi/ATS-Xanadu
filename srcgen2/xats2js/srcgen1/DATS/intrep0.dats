@@ -207,35 +207,6 @@ endloc (*local*) // end of [local(i0dcl)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#impltmp
-<x0><y0>
-list_trxd3i0_fnp
-( e1, xs, fopr ) =
-(
-list_map_e1nv<x0><y0><e1>(xs, e1)) where
-{
-#vwtpdef e1 = trdienv
-#impltmp
-map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [list_trxd3i0_fnp(e1,xs,fopr)]
-//
-(* ****** ****** *)
-//
-#impltmp
-<x0><y0>
-optn_trxd3i0_fnp
-( e1, xs, fopr ) =
-(
-optn_map_e1nv<x0><y0><e1>(xs, e1)) where
-{
-#vwtpdef e1 = trdienv
-#impltmp
-map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [optn_trxd3i0_fnp(e1,xs,fopr)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
 
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep0.dats] *)

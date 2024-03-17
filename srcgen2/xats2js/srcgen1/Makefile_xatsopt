@@ -48,6 +48,11 @@ intrep0_sats: ; \
 $(XATSOPT) --static SATS/intrep0.sats
 ######
 all_sats:: \
+trxd3i0_sats
+trxd3i0_sats: ; \
+$(XATSOPT) --static SATS/trxd3i0.sats
+######
+all_sats:: \
 intrep1_sats
 intrep1_sats: ; \
 $(XATSOPT) --static SATS/intrep1.sats
@@ -75,20 +80,27 @@ intrep0_print0_dats
 intrep0_print0_dats: ; \
 $(XATSOPT) --dynamic DATS/intrep0_print0.dats
 ######
-all_dats:: \
-intrep0_myenv0_dats
-intrep0_myenv0_dats: ; \
-$(XATSOPT) --dynamic DATS/intrep0_myenv0.dats
+
 ######
 all_dats:: \
-intrep0_dynexp_dats
-intrep0_dynexp_dats: ; \
-$(XATSOPT) --dynamic DATS/intrep0_dynexp.dats
+trxd3i0_dats
+trxd3i0_dats: ; \
+$(XATSOPT) --dynamic DATS/trxd3i0.dats
 ######
 all_dats:: \
-intrep0_decl00_dats
-intrep0_decl00_dats: ; \
-$(XATSOPT) --dynamic DATS/intrep0_decl00.dats
+trxd3i0_myenv0_dats
+trxd3i0_myenv0_dats: ; \
+$(XATSOPT) --dynamic DATS/trxd3i0_myenv0.dats
+######
+all_dats:: \
+trxd3i0_dynexp_dats
+trxd3i0_dynexp_dats: ; \
+$(XATSOPT) --dynamic DATS/trxd3i0_dynexp.dats
+######
+all_dats:: \
+trxd3i0_decl00_dats
+trxd3i0_decl00_dats: ; \
+$(XATSOPT) --dynamic DATS/trxd3i0_decl00.dats
 ######
 
 ######
@@ -110,7 +122,7 @@ cmpi0i1_dats: ; \
 $(XATSOPT) --dynamic DATS/cmpi0i1.dats
 all_dats:: \
 cmpi0i1_myenv0_dats
-cmpi0i1_dats: ; \
+cmpi0i1_myenv0_dats: ; \
 $(XATSOPT) --dynamic DATS/cmpi0i1_myenv0.dats
 ######
 
