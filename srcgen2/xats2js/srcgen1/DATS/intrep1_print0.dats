@@ -89,7 +89,40 @@ end(*let*)//end-of-[i1val_fprint(out, i1v0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
+#implfun
+i1let_fprint
+(out, ilet) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ ilet of
+|I1LET(ireg, ibfi) =>
+print("I1LET(", ireg, ";", ibfi, ")")
+//
+end(*let*)//end-of-[i1cmp_fprint(out, ilet)]
+//
+(* ****** ****** *)
+//
+#implfun
+i1cmp_fprint
+(out, icmp) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ icmp of
+|I1CMP(ilts, ival) =>
+print("I1CMP(", ilts, ";", ival, ")")
+//
+end(*let*)//end-of-[i1cmp_fprint(out, icmp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep1_print0.dats] *)
 (***********************************************************************)

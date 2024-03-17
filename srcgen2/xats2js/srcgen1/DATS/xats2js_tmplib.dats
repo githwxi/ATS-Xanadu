@@ -118,8 +118,34 @@ i0dcl_fprint(g_print$out<>(), dcl)
 //
 #impltmp
 g_print
-<i1val>(i1v) =
-i1val_fprint(g_print$out<>(), i1v)
+<i1opr>(iopr) =
+i1opr_fprint(g_print$out<>(), iopr)
+#impltmp
+g_print
+<i1reg>(ireg) =
+i1reg_fprint(g_print$out<>(), ireg)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<i1val>(ival) =
+i1val_fprint(g_print$out<>(), ival)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<i1let>(ilet) =
+i1let_fprint(g_print$out<>(), ilet)
+#impltmp
+g_print
+<i1cmp>(icmp) =
+i1cmp_fprint(g_print$out<>(), icmp)
+#impltmp
+g_print
+<i1bfi>(ibfi) =
+i1bfi_fprint(g_print$out<>(), ibfi)
 //
 (* ****** ****** *)
 (* ****** ****** *)

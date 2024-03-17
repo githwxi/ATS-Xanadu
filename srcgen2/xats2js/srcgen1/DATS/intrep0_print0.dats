@@ -70,7 +70,9 @@ UN = "prelude/SATS/unsafe.sats"
 #staload
 "./../../../SATS/xbasics.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 #staload "./../SATS/intrep0.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #symload lctn with i0pat_get_lctn
 #symload node with i0pat_get_node

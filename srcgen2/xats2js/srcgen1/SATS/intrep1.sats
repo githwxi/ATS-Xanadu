@@ -78,6 +78,13 @@ i1lab_fprint
 #typedef i1reglst = list(i1reg)
 //
 (* ****** ****** *)
+//
+fun
+i1opr_fprint(FILR, i1opr): void
+fun
+i1reg_fprint(FILR, i1reg): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 datatype
@@ -118,6 +125,8 @@ I1LET of (i1reg, i1bfi)
 and i1cmp =
 I1CMP of (i1letlst, i1val)
 //
+(* ****** ****** *)
+//
 and i1bfi =
 //
 |I1BFIopr of
@@ -142,17 +151,16 @@ where
 }(*where*)//end-of-(i1val/cmp/let/bfi)
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 fun
 i1val_fprint( FILR , i1val ): void
 //
 fun
+i1let_fprint( FILR , i1let ): void
+fun
+i1cmp_fprint( FILR , i1cmp ): void
+fun
 i1bfi_fprint( FILR , i1bfi ): void
-fun
-i1bfi_fprint( FILR , i1cmp ): void
-fun
-i1bfi_fprint( FILR , i1let ): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
