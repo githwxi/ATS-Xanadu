@@ -67,11 +67,12 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
+#staload "./../SATS/trxd3i0.sats"
 //
 (* ****** ****** *)
 //
 #staload
-_(*DATS*)="./../DATS/intrep0.dats"
+_(*DATS*)="./../DATS/trxd3i0.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -702,5 +703,5 @@ trxd3i0_d3clslst
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_intrep0_dynexp.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_trxd3i0_dynexp.dats] *)
 (***********************************************************************)

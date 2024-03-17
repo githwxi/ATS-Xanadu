@@ -49,39 +49,9 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload I0R="./intrep0.sats"
+#staload "./intrep0.sats"
 //
 (* ****** ****** *)
-//
-#staload
-"./../../../SATS/xbasics.sats"
-#staload
-"./../../../SATS/xsymbol.sats"
-#staload
-"./../../../SATS/xlabel0.sats"
-//
-(* ****** ****** *)
-//
-#staload
-"./../../../SATS/filpath.sats"
-#staload
-"./../../../SATS/locinfo.sats"
-//
-(* ****** ****** *)
-//
-#staload
-"./../../../SATS/lexing0.sats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-#typedef stamp = stamp
-#typedef sym_t = sym_t
-#typedef label = label
-#typedef loctn = loctn
-#typedef loc_t = loctn
-(* ****** ****** *)
-(* ****** ****** *)
-#typedef i0exp = $I0R.i0exp
 (* ****** ****** *)
 //
 datatype
