@@ -52,6 +52,8 @@ XATSOPT "./../../.."
 #staload "./intrep0.sats"
 //
 (* ****** ****** *)
+#typedef sym_t = sym_t
+#typedef loc_t = loc_t
 (* ****** ****** *)
 //
 datatype
@@ -69,13 +71,21 @@ i1lab_fprint
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#abstype i1opr_tbox
-#abstype i1reg_tbox
+#abstype i1opr_tbox // p0tr
+#abstype i1reg_tbox // p0tr
 #typedef i1opr = i1opr_tbox
 #typedef i1reg = i1reg_tbox
 (* ****** ****** *)
 //
 #typedef i1reglst = list(i1reg)
+//
+(* ****** ****** *)
+//
+fun
+i1opr_make(name:symbl): i1opr
+//
+fun
+i1reg_new1( (*void*) ): i1reg
 //
 (* ****** ****** *)
 //

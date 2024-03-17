@@ -50,6 +50,92 @@ XATSOPT "./../../.."
 "./../../..\
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+#staload
+"./../../../SATS/xstamp0.sats"
+#staload
+"./../../../SATS/xsymbol.sats"
+(* ****** ****** *)
+#staload "./../SATS/intrep1.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+val
+stamper = stamper_new((*0*))
+//
+val
+_(*nil*) = stamper.getinc((*0*))
+//
+in//local
+fun
+the_i1reg_stamp_new
+  ((*void*)): stamp = stamper.getinc()
+endloc // end-of-[the_i1reg_stamp_new()]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i1opr =
+I1OPR of (symbl)
+#absimpl
+i1opr_tbox = i1opr
+//
+in // in-of-local
+//
+#implfun
+i1opr_fprint
+(out, iopr) =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+val+I1OPR(name) = iopr
+//
+in//let
+  print("I1OPR(", name, ")") endlet
+//
+end (*local*) // end of [local(i1opr_tbox)]
+//
+(* ****** ****** *)
+//
+local
+//
+datatype
+i1reg =
+I1REG of (stamp)
+//
+#absimpl i1reg_tbox = i1reg
+//
+in//local
+//
+#implfun
+i1reg_new1() =
+(
+  I1REG(stmp)) where
+{
+  val stmp = the_i1reg_stamp_new()
+}
+//
+#implfun
+i1reg_fprint
+(out, ireg) =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+val+I1REG(stmp) = ireg
+//
+in//let
+  print("I1REG(", stmp, ")") endlet
+//
+end (*local*) // end of [local(i1reg_tbox)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (***********************************************************************)
