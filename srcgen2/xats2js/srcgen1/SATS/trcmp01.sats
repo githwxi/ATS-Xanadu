@@ -55,19 +55,20 @@ XATSOPT "./../../.."
 #typedef i0pat = $I0R.i0pat
 #typedef i0exp = $I0R.i0exp
 (* ****** ****** *)
+#typedef i1val = $I1R.i1val
 #typedef i1cmp = $I1R.i1cmp
 (* ****** ****** *)
 (* ****** ****** *)
-#absvtbx envi0i1_vtbx
-#vwtpdef envi0i1 = envi0i1_vtbx
+#absvtbx trenv01_vtbx
+#vwtpdef trenv01 = trenv01_vtbx
 (* ****** ****** *)
 (* ****** ****** *)
 fun
-cmpi0i1_i0exp
-(env0: !envi0i1, i0e0: i0exp): i1cmp
+trcmp01_i0exp
+(env0: !trenv01, i0e0: i0exp): i1val
 (* ****** ****** *)
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_SATS_cmpi0i1.sats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_SATS_trcmp01.sats] *)
 (***********************************************************************)

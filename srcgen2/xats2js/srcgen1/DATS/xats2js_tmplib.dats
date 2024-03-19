@@ -117,6 +117,29 @@ i0dcl_fprint(g_print$out<>(), dcl)
 (* ****** ****** *)
 //
 #impltmp
+<x0>
+i1lab_fprint
+  (out, lab) = let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+case+ lab of
+|
+I1LAB(l01, x02) =>
+print("I1LAB(",l01,";",x02,")")
+end(*let*)//end-of-[i1lab_fprint]
+//
+#impltmp
+{x0:t0}
+g_print<i1lab(x0)>(dlab) =
+i1lab_fprint(g_print$out<>(), dlab)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 g_print
 <i1opr>(iopr) =
 i1opr_fprint(g_print$out<>(), iopr)

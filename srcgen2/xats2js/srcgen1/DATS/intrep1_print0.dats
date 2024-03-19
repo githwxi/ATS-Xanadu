@@ -80,10 +80,15 @@ print("I1Vchr(",chr,")")
 |I1Vstr(str) =>
 print("I1Vstr(",str,")")
 //
-(*
+|I1Vtup0(i1vs) =>
+print("I1Vtup0(", i1vs, ")")
+|I1Vtup1(tknd, i1vs) =>
+print("I1Vtup1(",tknd,";",i1vs,")")
+|I1Vrcd2(tknd, livs) =>
+print("I1Vrcd2(",tknd,";",livs,")")
+//
 |I1Vnone0() => print( "I1Vnone0(",")" )
 |I1Vnone1(i0e1) => print("I1Vnone1(", i0e1, ")")
-*)
 //
 end(*let*)//end-of-[i1val_fprint(out, i1v0)]
 //
@@ -115,8 +120,10 @@ g_print$out<>() = out
 in//let
 //
 case+ icmp of
-|I1CMP(ilts, ival) =>
-print("I1CMP(", ilts, ";", ival, ")")
+|I1CMP0(ival) =>
+print("I1CMP0(", ival, ")")
+|I1CMP1(ilts, ival) =>
+print("I1CMP1(", ilts, ";", ival, ")")
 //
 end(*let*)//end-of-[i1cmp_fprint(out, icmp)]
 //
