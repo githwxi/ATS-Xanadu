@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 //
-Tue 19 Mar 2024 01:11:37 PM EDT
+Tue 19 Mar 2024 01:12:23 PM EDT
 //
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -42,10 +42,10 @@ XATSOPT "./../../.."
 *)
 (* ****** ****** *)
 //
-#staload "./../SATS/cmpi0i1.sats"
+#staload "./../SATS/trcmp01.sats"
 //
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_cmpi0i1_dynexp.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trcmp01_decl00.dats] *)
 (***********************************************************************)
