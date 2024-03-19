@@ -124,6 +124,14 @@ all_dats:: \
 cmpi0i1_myenv0_dats
 cmpi0i1_myenv0_dats: ; \
 $(XATSOPT) --dynamic DATS/cmpi0i1_myenv0.dats
+all_dats:: \
+cmpi0i1_dynexp_dats
+cmpi0i1_dynexp_dats: ; \
+$(XATSOPT) --dynamic DATS/cmpi0i1_dynexp.dats
+all_dats:: \
+cmpi0i1_decl00_dats
+cmpi0i1_decl00_dats: ; \
+$(XATSOPT) --dynamic DATS/cmpi0i1_decl00.dats
 ######
 
 ######
