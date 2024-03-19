@@ -41,12 +41,29 @@ Authoremail: gmhwxiATgmailDOTcom
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dats.hats"
+(* ****** ****** *)
+#include
+"./../HATS/xats2js_dats.hats"
+(* ****** ****** *)
+//
+#staload "./../SATS/intrep0.sats"
+#staload "./../SATS/intrep1.sats"
+//
+(* ****** ****** *)
 //
 #staload "./../SATS/trcmp01.sats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #symload lctn with i0exp_get_lctn
 #symload node with i0exp_get_node
+(* ****** ****** *)
 (* ****** ****** *)
 
 #implfun
@@ -59,13 +76,41 @@ iexp.node() of
 |I0Eint _ => f0_int(env0, iexp)
 |I0Ebtf _ => f0_btf(env0, iexp)
 //
-|_(*otherwise*) => i1cmp_none1(iexp)
+|_(*otherwise*) => I1Vnone1(iexp)
 //
 ) where
 {
 //
+(* ****** ****** *)
+//
+fun
+f0_int
+( env0:
+! trenv01
+, iexp: i0exp): i1val =
+(
+  I1Vint(tok) ) where
+{
+  val-I0Eint(tok) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
+f0_btf
+( env0:
+! trenv01
+, iexp: i0exp): i1val =
+(
+  I1Vbtf(sym) ) where
+{
+  val-I0Ebtf(sym) = iexp.node() }
+//
+(* ****** ****** *)
+//
 val () =
 prerrln("trcmp01_i0exp: iexp = ", iexp)
+//
+(* ****** ****** *)
 //
 }(*where*)//end-of-[trcmp01_i0exp(env0,iexp)]
 

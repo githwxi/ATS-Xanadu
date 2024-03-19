@@ -102,11 +102,11 @@ i1val =
 //
 |I1Vnil of ()
 //
-|I1Vint of (sint)
-|I1Vbtf of (bool)
-|I1Vchr of (char)
-|I1Vflt of (dflt)
-|I1Vstr of (strn)
+|I1Vint of token
+|I1Vbtf of sym_t
+|I1Vchr of token
+|I1Vflt of token
+|I1Vstr of token
 //
 (* ****** ****** *)
 //
@@ -120,8 +120,8 @@ i1val =
 (* ****** ****** *)
 //
 |I1Vtup0 of (i1valist)
-|I1Vtup1 of (i1valist)
-|I1Vrcd2 of (l1i1vlst)
+|I1Vtup1 of (token, i1valist)
+|I1Vrcd2 of (token, l1i1vlst)
 //
 (* ****** ****** *)
 //
@@ -133,7 +133,8 @@ and i1let =
 I1LET of (i1reg, i1bfi)
 //
 and i1cmp =
-I1CMP of (i1letlst, i1val)
+|I1CMP0 of (i1val)
+|I1CMP1 of (i1letlst, i1val)
 //
 (* ****** ****** *)
 //
@@ -155,9 +156,13 @@ and i1bfi =
 //
 where
 {
+//
+  #typedef l1i1v = i1lab(i1val)
+//
   #typedef i1valist = list(i1val)
   #typedef l1i1vlst = list(l1i1v)
   #typedef i1letlst = list(i1let)
+//
 }(*where*)//end-of-(i1val/cmp/let/bfi)
 //
 (* ****** ****** *)
