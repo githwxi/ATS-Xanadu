@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 //
-Sat 16 Mar 2024 07:04:29 PM EDT
+Tue 19 Mar 2024 01:11:37 PM EDT
 //
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -42,10 +42,37 @@ XATSOPT "./../../.."
 *)
 (* ****** ****** *)
 //
-#staload "./../SATS/cmpi0i1.sats"
+#staload "./../SATS/trcmp01.sats"
 //
+(* ****** ****** *)
+#symload lctn with i0exp_get_lctn
+#symload node with i0exp_get_node
+(* ****** ****** *)
+
+#implfun
+trcmp01_i0exp
+( env0, iexp ) =
+(
+case+
+iexp.node() of
+//
+|I0Eint _ => f0_int(env0, iexp)
+|I0Ebtf _ => f0_btf(env0, iexp)
+//
+|_(*otherwise*) => i1cmp_none1(iexp)
+//
+) where
+{
+//
+val () =
+prerrln("trcmp01_i0exp: iexp = ", iexp)
+//
+}(*where*)//end-of-[trcmp01_i0exp(env0,iexp)]
+
+
+(* ****** ****** *)
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_cmpi0i1_myenv0.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trcmp01_dynexp.dats] *)
 (***********************************************************************)

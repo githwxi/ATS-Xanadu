@@ -26,29 +26,26 @@
 *)
 
 (* ****** ****** *)
-(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 //
-Sat 16 Mar 2024 07:02:57 PM EDT
+Sat 16 Mar 2024 07:04:29 PM EDT
 //
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
-(* ****** ****** *)
 (* ****** ****** *)
 (*
 #define
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
-#include
-"./../../..\
-/HATS/xatsopt_sats.hats"
-(* ****** ****** *)
+//
+#staload "./../SATS/trcmp01.sats"
+//
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep1.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trcmp01_myenv0.dats] *)
 (***********************************************************************)
