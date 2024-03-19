@@ -82,7 +82,7 @@ i1lab_fprint
 (* ****** ****** *)
 //
 fun
-i1opr_make(name:symbl): i1opr
+i1opr_make(name:sym_t): i1opr
 //
 fun
 i1reg_new1( (*void*) ): i1reg
