@@ -152,6 +152,21 @@ i0e0.lctn(),I1Vnone1(i0e0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#implfun
+i1dcl_none0
+(  loc0  ) =
+i1dcl_make_node
+(loc0,I1Dnone0((*void*)))
+#implfun
+i1dcl_none1
+(  i0e0  ) =
+i1dcl_make_node
+(
+i0e0.lctn(),I1Dnone1(i0e0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep1.dats] *)
