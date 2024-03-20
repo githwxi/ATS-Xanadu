@@ -143,6 +143,12 @@ i0e0.node() of
 //
 (* ****** ****** *)
 //
+|I0Edapp
+( i0f0, i0es) =>
+print("I0Edapp(", i0f0, ";", i0es, ")")
+//
+(* ****** ****** *)
+//
 |I0Elet0
 ( dcls, i0e1) =>
 print("I0Elet0(", dcls, ";", i0e1, ")")

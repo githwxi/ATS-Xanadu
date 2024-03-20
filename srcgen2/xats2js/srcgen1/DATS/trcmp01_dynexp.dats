@@ -90,6 +90,16 @@ i1val_str
 i1val_make_node(loc,I1Vstr(tok)))
 (* ****** ****** *)
 (* ****** ****** *)
+#extern
+fun
+i1val_dapp
+( env0:
+! trenv01
+, loc0: loc_t
+, i1f0: i1val
+, i1vs: i1valist): i1val // end-fun
+(* ****** ****** *)
+(* ****** ****** *)
 
 #implfun
 trcmp01_i0exp
@@ -171,7 +181,7 @@ val i1vs =
 trcmp01_i0explst(env0, i0es)
 //
 in//let
-  i1val_dapp(loc0, i1f0, i1vs)
+i1val_dapp(env0, loc0, i1f0, i1vs)
 end where
 {
 //
