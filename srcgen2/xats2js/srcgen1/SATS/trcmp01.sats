@@ -65,18 +65,65 @@ XATSOPT "./../../.."
 #typedef i1valist = list(i1val)
 #typedef i1cmplst = list(i1cmp)
 (* ****** ****** *)
-#absvtbx trenv01_vtbx
-#vwtpdef trenv01 = trenv01_vtbx
+#absvtbx tr01env_vtbx
+#vwtpdef tr01env = tr01env_vtbx
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+tr01env_make_nil
+  ((*nil*)):(tr01env)//end-fun
+fun
+tr01env_free_top
+  (tr01env):(  void  )//end-fun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+tr01env_pshlam0
+(env0: !tr01env): void//end-fun
+fun
+tr01env_pshlet0
+(env0: !tr01env): void//end-fun
+//
+fun
+tr01env_poplam0
+(env0: !tr01env): void//end-fun
+fun
+tr01env_poplet0
+(env0: !tr01env): void//end-fun
+//
+(* ****** ****** *)
+//
+fun
+tr01env_pshift0
+(env0: !tr01env): void//end-fun
+fun
+tr01env_pshcas0
+(env0: !tr01env): void//end-fun
+//
+fun
+tr01env_popift0
+(env0: !tr01env): void//end-fun
+fun
+tr01env_popcas0
+(env0: !tr01env): void//end-fun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 trcmp01_i0exp
-(env0: !trenv01, i0e0: i0exp): i1val
+(env0: !tr01env, i0e0: i0exp): i1val
+//
 (* ****** ****** *)
 (* ****** ****** *)
+//
 fun
 trcmp01_i0explst
-(env0: !trenv01, i0es: i0explst): i1valist
+(env0: !tr01env, i0es: i0explst): i1valist
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
