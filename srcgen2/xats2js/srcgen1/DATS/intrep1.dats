@@ -137,6 +137,21 @@ end (*local*) // end of [local(i1reg_tbox)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#implfun
+i1val_none0
+(  loc0  ) =
+i1val_make_node
+(loc0,I1Vnone0((*void*)))
+#implfun
+i1val_none1
+(  i0e0  ) =
+i1val_make_node
+(
+i0e0.lctn(),I1Vnone1(i0e0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep1.dats] *)
