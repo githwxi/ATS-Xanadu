@@ -340,9 +340,12 @@ i0exp_node =
 |I0Evar of (d2var)
 //
 (* ****** ****** *)
+|I0Edapp of
+(i0exp(*fun*), i0explst(*arg*))
+(* ****** ****** *)
 //
 |I0Elet0 of
-(i0dclist, i0exp(*scope*))
+(i0dclist(*ds*), i0exp(*scope*))
 //
 (* ****** ****** *)
 //

@@ -59,6 +59,12 @@ XATSOPT "./../../.."
 #typedef i1cmp = $I1R.i1cmp
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef i0patlst = list(i0pat)
+#typedef i0explst = list(i0exp)
+(* ****** ****** *)
+#typedef i1valist = list(i1val)
+#typedef i1cmplst = list(i1cmp)
+(* ****** ****** *)
 #absvtbx trenv01_vtbx
 #vwtpdef trenv01 = trenv01_vtbx
 (* ****** ****** *)
