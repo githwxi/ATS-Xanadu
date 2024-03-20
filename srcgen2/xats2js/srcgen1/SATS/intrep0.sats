@@ -82,7 +82,11 @@ XATSOPT "./../../.."
 #typedef loctn = loctn
 #typedef loc_t = loctn
 (* ****** ****** *)
+#typedef fpath = fpath
 #typedef token = token
+(* ****** ****** *)
+#typedef fpathopt = fpathopt
+(* ****** ****** *)
 (* ****** ****** *)
 #staload S1E =
 "./../../../SATS/staexp1.sats"

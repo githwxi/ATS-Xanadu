@@ -47,13 +47,17 @@ XATSOPT "./../../.."
 "./../../..\
 /HATS/xatsopt_sats.hats"
 (* ****** ****** *)
-(* ****** ****** *)
 //
 #staload "./intrep0.sats"
 //
 (* ****** ****** *)
 #typedef sym_t = sym_t
 #typedef loc_t = loc_t
+(* ****** ****** *)
+//
+#typedef fpath = fpath
+#typedef fpathopt = fpathopt
+//
 (* ****** ****** *)
 //
 datatype
@@ -76,9 +80,47 @@ i1lab_fprint
 #typedef i1opr = i1opr_tbox
 #typedef i1reg = i1reg_tbox
 (* ****** ****** *)
+#abstype i1val_tbox // p0tr
+#abstype i1dcl_tbox // p0tr
+(* ****** ****** *)
+#typedef i1val = i1val_tbox
+#typedef i1dcl = i1dcl_tbox
+#typedef l1i1v = i1lab(i1val)
+(* ****** ****** *)
+//
+#abstbox i1valdcl_tbox//p0tr
+#abstbox i1vardcl_tbox//p0tr
+#abstbox i1fundcl_tbox//p0tr
+//
+(* ****** ****** *)
+//
+#abstbox i1parsed_tbox//p0tr
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #typedef i1reglst = list(i1reg)
 //
+(* ****** ****** *)
+//
+#typedef i1valist = list(i1val)
+#typedef l1i1vlst = list(l1i1v)
+//
+#typedef i1dclist = list(i1dcl)
+//
+(* ****** ****** *)
+#typedef i1valdcl = i1valdcl_tbox
+#typedef i1vardcl = i1vardcl_tbox
+#typedef i1fundcl = i1fundcl_tbox
+(* ****** ****** *)
+#typedef i1parsed = i1parsed_tbox
+(* ****** ****** *)
+#typedef i1valdclist = list(i1valdcl)
+#typedef i1vardclist = list(i1vardcl)
+#typedef i1fundclist = list(i1fundcl)
+(* ****** ****** *)
+#typedef i1dclistopt = optn(i1dclist)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -98,7 +140,7 @@ i1reg_fprint(FILR, i1reg): void
 (* ****** ****** *)
 //
 datatype
-i1val =
+i1val_node =
 //
 |I1Vnil of ()
 //
@@ -125,7 +167,7 @@ i1val =
 //
 (* ****** ****** *)
 //
-|I1Vnone0 of ((*0*)) |I1Vnone1 of (i0exp)
+|I1Vnone0 of () |I1Vnone1 of (i0exp)
 //
 (* ****** ****** *)
 //
@@ -156,15 +198,19 @@ and i1bfi =
 //
 where
 {
+  #typedef i1letlst = list(i1let) }
+//(*where*)//end-of-(i1val/cmp/let/bfi)
 //
-  #typedef l1i1v = i1lab(i1val)
+(* ****** ****** *)
 //
-  #typedef i1valist = list(i1val)
-  #typedef l1i1vlst = list(l1i1v)
-  #typedef i1letlst = list(i1let)
+fun
+i1val_get_lctn(i1val): ( loc_t )
+fun
+i1val_get_node(i1val): i1val_node
 //
-}(*where*)//end-of-(i1val/cmp/let/bfi)
-//
+(* ****** ****** *)
+#symload lctn with i1val_get_lctn
+#symload node with i1val_get_node
 (* ****** ****** *)
 //
 fun
@@ -177,6 +223,55 @@ i1cmp_fprint( FILR , i1cmp ): void
 fun
 i1bfi_fprint( FILR , i1bfi ): void
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+i1dcl_node =
+//
+|
+I1Dlocal of
+( i1dclist(*head*)
+, i1dclist(*body*))
+|
+I1Dinclude of
+( sint(*s/d*)
+, token
+, g1exp // src
+, fpathopt
+, i1dclistopt) // inclusion
+//
+|
+I1Dvaldclst of
+(token(*VAL(vlk)*), i1valdclist)
+|
+I1Dvardclst of
+(token(*VAR(vlk)*), i1vardclist)
+//
+|I1Dnone0 of () |I1Dnone1 of (i0dcl)
+//
+where
+{
+  #typedef i1dclistopt = optn(i1dclist) }
+//(*where*) // end-of-[datatype(i1dcl_node)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1dcl_fprint
+(out: FILR, idcl: i1dcl): void
+//
+(* ****** ****** *)
+//
+fun
+i1dcl_get_lctn(i1dcl): ( loc_t )
+fun
+i1dcl_get_node(i1dcl): i1dcl_node
+//
+(* ****** ****** *)
+#symload lctn with i1dcl_get_lctn
+#symload node with i1dcl_get_node
 (* ****** ****** *)
 (* ****** ****** *)
 
