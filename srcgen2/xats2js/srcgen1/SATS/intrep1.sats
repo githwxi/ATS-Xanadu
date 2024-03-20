@@ -204,6 +204,19 @@ where
 (* ****** ****** *)
 //
 fun
+i1val_fprint
+(out: FILR, ival: i1val): void
+//
+fun
+i1let_fprint(FILR, i1let): void
+fun
+i1cmp_fprint(FILR, i1cmp): void
+fun
+i1bfi_fprint(FILR, i1bfi): void
+//
+(* ****** ****** *)
+//
+fun
 i1val_get_lctn(i1val): ( loc_t )
 fun
 i1val_get_node(i1val): i1val_node
@@ -212,17 +225,16 @@ i1val_get_node(i1val): i1val_node
 #symload lctn with i1val_get_lctn
 #symload node with i1val_get_node
 (* ****** ****** *)
-//
 fun
-i1val_fprint( FILR , i1val ): void
-//
+i1val_none0(loc_t): i1val
 fun
-i1let_fprint( FILR , i1let ): void
+i1val_none1(iexp: i0exp): i1val
+(* ****** ****** *)
 fun
-i1cmp_fprint( FILR , i1cmp ): void
-fun
-i1bfi_fprint( FILR , i1bfi ): void
-//
+i1val_make_node
+(loc0:loc_t,node:i1val_node):i1val
+(* ****** ****** *)
+#symload i1val with i1val_make_node
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -272,6 +284,17 @@ i1dcl_get_node(i1dcl): i1dcl_node
 (* ****** ****** *)
 #symload lctn with i1dcl_get_lctn
 #symload node with i1dcl_get_node
+(* ****** ****** *)
+fun
+i1dcl_none0(loc_t): i1dcl
+fun
+i1dcl_none1(idcl: i0dcl): i1dcl
+(* ****** ****** *)
+fun
+i1dcl_make_node
+(loc0:loc_t,node:i1dcl_node):i1dcl
+(* ****** ****** *)
+#symload i1dcl with i1dcl_make_node
 (* ****** ****** *)
 (* ****** ****** *)
 
