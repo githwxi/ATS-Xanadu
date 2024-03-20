@@ -61,8 +61,33 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#symload lctn with i0pat_get_lctn
+#symload node with i0pat_get_node
+(* ****** ****** *)
 #symload lctn with i0exp_get_lctn
 #symload node with i0exp_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+i1val_int
+( loc: loc_t
+, tok: token): i1val =
+(
+i1val_make_node(loc,I1Vint(tok)))
+(* ****** ****** *)
+fun
+i1val_btf
+( loc: loc_t
+, sym: sym_t): i1val =
+(
+i1val_make_node(loc,I1Vbtf(sym)))
+(* ****** ****** *)
+fun
+i1val_str
+( loc: loc_t
+, tok: token): i1val =
+(
+i1val_make_node(loc,I1Vstr(tok)))
 (* ****** ****** *)
 (* ****** ****** *)
 
@@ -76,7 +101,12 @@ iexp.node() of
 |I0Eint _ => f0_int(env0, iexp)
 |I0Ebtf _ => f0_btf(env0, iexp)
 //
-|_(*otherwise*) => I1Vnone1(iexp)
+|I0Estr _ => f0_str(env0, iexp)
+//
+|I0Edapp _ => f0_dapp(env0, iexp)
+//
+|
+_(*otherwise*) => i1val_none1(iexp)
 //
 ) where
 {
@@ -89,8 +119,9 @@ f0_int
 ! trenv01
 , iexp: i0exp): i1val =
 (
-  I1Vint(tok) ) where
+  i1val_int(loc, tok) ) where
 {
+  val loc = iexp.lctn()
   val-I0Eint(tok) = iexp.node() }
 //
 (* ****** ****** *)
@@ -101,15 +132,63 @@ f0_btf
 ! trenv01
 , iexp: i0exp): i1val =
 (
-  I1Vbtf(sym) ) where
+  i1val_btf(loc, sym) ) where
 {
+  val loc = iexp.lctn()
   val-I0Ebtf(sym) = iexp.node() }
 //
+(* ****** ****** *)
+//
+fun
+f0_str
+( env0:
+! trenv01
+, iexp: i0exp): i1val =
+(
+  i1val_str(loc, tok) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Estr(tok) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
+f0_dapp
+( env0:
+! trenv01
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Edapp
+(i0f0, i0es) = iexp.node()
+//
+val i1f0 =
+trcmp01_i0exp(env0, i0f0)
+val i1vs =
+trcmp01_i0explst(env0, i0es)
+//
+in//let
+  i1val_dapp(loc0, i1f0, i1vs)
+end where
+{
+//
+val () =
+(
+prerr("trcmp01_i0exp:");
+prerrln("f0_dapp(01): iexp = ", iexp))
+//
+}(*where*)//end-of-[f0_dapp(env0,iexp)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val () =
 prerrln("trcmp01_i0exp: iexp = ", iexp)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 }(*where*)//end-of-[trcmp01_i0exp(env0,iexp)]

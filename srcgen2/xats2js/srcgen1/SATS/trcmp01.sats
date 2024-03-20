@@ -68,6 +68,11 @@ trcmp01_i0exp
 (env0: !trenv01, i0e0: i0exp): i1val
 (* ****** ****** *)
 (* ****** ****** *)
+fun
+trcmp01_i0explst
+(env0: !trenv01, i0es: i0explst): i1valist
+(* ****** ****** *)
+(* ****** ****** *)
 
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_SATS_trcmp01.sats] *)
