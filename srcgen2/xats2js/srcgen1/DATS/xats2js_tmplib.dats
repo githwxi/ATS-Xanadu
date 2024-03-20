@@ -64,8 +64,8 @@ end(*let*)//end-of-[i0lab_fprint]
 //
 #impltmp
 {x0:t0}
-g_print<i0lab(x0)>(dlab) =
-i0lab_fprint(g_print$out<>(), dlab)
+g_print<i0lab(x0)>(ilab) =
+i0lab_fprint(g_print$out<>(), ilab)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -133,8 +133,8 @@ end(*let*)//end-of-[i1lab_fprint]
 //
 #impltmp
 {x0:t0}
-g_print<i1lab(x0)>(dlab) =
-i1lab_fprint(g_print$out<>(), dlab)
+g_print<i1lab(x0)>(ilab) =
+i1lab_fprint(g_print$out<>(), ilab)
 //
 (* ****** ****** *)
 (* ****** ****** *)
