@@ -167,6 +167,80 @@ i0e0.lctn(),I1Dnone1(i0e0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+local
+//
+datatype
+i1val =
+I1VAL of
+(loctn, i1val_node)
+datavwtp
+i1val_vt =
+I1VAL_vt of
+(loctn, i1val_node)
+//
+#absimpl i1val_tbox = i1val
+//
+in (* in-of-local *)
+//
+#implfun
+i1val_make_node
+(   loc,nod   ) =
+(
+  I1VAL(loc, nod) )
+//
+#implfun
+i1val_get_lctn(i1v) =
+let
+val+
+I1VAL(loc,nod) = i1v in loc end
+#implfun
+i1val_get_node(i1v) =
+let
+val+
+I1VAL(loc,nod) = i1v in nod end
+//
+endloc (*local*) // end of [local(i1val)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+i1dcl =
+I1DCL of
+(loctn, i1dcl_node)
+datavwtp
+i1dcl_vt =
+I1DCL_vt of
+(loctn, i1dcl_node)
+//
+#absimpl i1dcl_tbox = i1dcl
+//
+in (* in-of-local *)
+//
+#implfun
+i1dcl_make_node
+(   loc,nod   ) =
+(
+  I1DCL(loc, nod) )
+//
+#implfun
+i1dcl_get_lctn(i1d) =
+let
+val+
+I1DCL(loc,nod) = i1d in loc end
+#implfun
+i1dcl_get_node(i1d) =
+let
+val+
+I1DCL(loc,nod) = i1d in nod end
+//
+endloc (*local*) // end of [local(i1dcl)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep1.dats] *)
