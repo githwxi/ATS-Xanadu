@@ -94,7 +94,7 @@ i1val_make_node(loc,I1Vstr(tok)))
 fun
 i1val_dapp
 ( env0:
-! trenv01
+! tr01env
 , loc0: loc_t
 , i1f0: i1val
 , i1vs: i1valist): i1val // end-fun
@@ -126,7 +126,7 @@ _(*otherwise*) => i1val_none1(iexp)
 fun
 f0_int
 ( env0:
-! trenv01
+! tr01env
 , iexp: i0exp): i1val =
 (
   i1val_int(loc, tok) ) where
@@ -139,7 +139,7 @@ f0_int
 fun
 f0_btf
 ( env0:
-! trenv01
+! tr01env
 , iexp: i0exp): i1val =
 (
   i1val_btf(loc, sym) ) where
@@ -152,7 +152,7 @@ f0_btf
 fun
 f0_str
 ( env0:
-! trenv01
+! tr01env
 , iexp: i0exp): i1val =
 (
   i1val_str(loc, tok) ) where
@@ -165,7 +165,7 @@ f0_str
 fun
 f0_dapp
 ( env0:
-! trenv01
+! tr01env
 , iexp: i0exp): i1val =
 let
 //
