@@ -128,7 +128,7 @@ fun
 i1opr_make(name:sym_t): i1opr
 //
 fun
-i1reg_new1( (*void*) ): i1reg
+i1reg_new0( (*void*) ): i1reg
 //
 (* ****** ****** *)
 //
@@ -173,11 +173,11 @@ i1val_node =
 (* ****** ****** *)
 //
 and i1let =
-I1LET of (i1reg, i1bfi)
+|I1LETnew0 of (i1reg)
+|I1LETnew1 of (i1reg, i1bfi)
 //
 and i1cmp =
-|I1CMP0 of (i1val)
-|I1CMP1 of (i1letlst, i1val)
+|I1CMPcons of (i1letlst, i1val)
 //
 (* ****** ****** *)
 //

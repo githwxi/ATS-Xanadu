@@ -506,8 +506,12 @@ tr34env_popcas0
 (* ****** ****** *)
 //
 (*
+HX-2024-03-20:
+This is not needed!
+(*
 tr34env_iftvars
 (env0: !tr34env): d2varlst//fun
+*)
 *)
 fun
 tr34env_casvars

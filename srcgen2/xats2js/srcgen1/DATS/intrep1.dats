@@ -113,7 +113,7 @@ I1REG of (stamp)
 in//local
 //
 #implfun
-i1reg_new1() =
+i1reg_new0() =
 (
   I1REG(stmp)) where
 {
