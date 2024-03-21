@@ -56,6 +56,8 @@ XATSOPT "./../../.."
 #typedef i0exp = $I0R.i0exp
 (* ****** ****** *)
 #typedef i1val = $I1R.i1val
+#typedef i1bfi = $I1R.i1bfi
+#typedef i1let = $I1R.i1let
 #typedef i1cmp = $I1R.i1cmp
 (* ****** ****** *)
 (* ****** ****** *)
@@ -89,10 +91,10 @@ tr01env_pshlet0
 //
 fun
 tr01env_poplam0
-(env0: !tr01env): void//end-fun
+(env0: !tr01env): i1letlst//fun
 fun
 tr01env_poplet0
-(env0: !tr01env): void//end-fun
+(env0: !tr01env): i1letlst//fun
 //
 (* ****** ****** *)
 //
@@ -105,10 +107,16 @@ tr01env_pshcas0
 //
 fun
 tr01env_popift0
-(env0: !tr01env): void//end-fun
+(env0: !tr01env): i1letlst//fun
 fun
 tr01env_popcas0
-(env0: !tr01env): void//end-fun
+(env0: !tr01env): i1letlst//fun
+//
+(* ****** ****** *)
+//
+fun
+tr01env_insert_ilet
+(env0: !tr01env, ilet: i1let): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

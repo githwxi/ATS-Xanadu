@@ -90,14 +90,35 @@ i1val_str
 i1val_make_node(loc,I1Vstr(tok)))
 (* ****** ****** *)
 (* ****** ****** *)
-#extern
+fun
+i1val_reg
+( loc0: loc_t
+, ireg: i1reg): i1val =
+(
+i1val_make_node(loc0,I1Vreg(ireg)))
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 i1val_dapp
 ( env0:
 ! tr01env
 , loc0: loc_t
 , i1f0: i1val
-, i1vs: i1valist): i1val // end-fun
+, i1vs: i1valist): i1val =
+(
+i1val_reg(loc0, ireg)) where
+{
+//
+val ireg = i1reg_new0((*void*))
+val ibfi = I1BFIdapp(i1f0, i1vs)
+val ilet = I1LETnew1(ireg, ibfi)
+//
+val (  ) =
+(
+  tr01env_insert_ilet(env0, ilet) )
+}(*where*)//end-of-[i1val_dapp(env0,...)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 

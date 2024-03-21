@@ -104,8 +104,10 @@ g_print$out<>() = out
 in//let
 //
 case+ ilet of
-|I1LET(ireg, ibfi) =>
-print("I1LET(", ireg, ";", ibfi, ")")
+|I1LETnew0(ireg) =>
+print("I1LETnew0(", ")")
+|I1LETnew1(ireg, ibfi) =>
+print("I1LETnew1(", ireg, ";", ibfi, ")")
 //
 end(*let*)//end-of-[i1cmp_fprint(out, ilet)]
 //
@@ -120,10 +122,8 @@ g_print$out<>() = out
 in//let
 //
 case+ icmp of
-|I1CMP0(ival) =>
-print("I1CMP0(", ival, ")")
-|I1CMP1(ilts, ival) =>
-print("I1CMP1(", ilts, ";", ival, ")")
+|I1CMPcons(ilts, ival) =>
+print("I1CMPcons(", ilts, ";", ival, ")")
 //
 end(*let*)//end-of-[i1cmp_fprint(out, icmp)]
 //
