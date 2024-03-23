@@ -62,6 +62,11 @@ trcmp01_sats
 trcmp01_sats: ; \
 $(XATSOPT) --static SATS/trcmp01.sats
 ######
+all_sats:: \
+xjsemit_sats
+xjsemit_sats: ; \
+$(XATSOPT) --static SATS/xjsemit.sats
+######
 
 ######
 #
