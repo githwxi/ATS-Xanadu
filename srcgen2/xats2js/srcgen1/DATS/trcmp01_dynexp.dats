@@ -120,6 +120,27 @@ val (  ) =
 }(*where*)//end-of-[i1val_dapp(env0,...)]
 //
 (* ****** ****** *)
+//
+fun
+i1val_tup0
+( env0:
+! tr01env
+, loc0: loc_t
+, i1vs: i1valist): i1val =
+(
+i1val_reg(loc0, ireg)) where
+{
+//
+val ibfi = I1BFItup0( i1vs )
+val ireg = i1reg_new0((*void*))
+val ilet = I1LETnew1(ireg, ibfi)
+//
+val (  ) =
+(
+  tr01env_insert_ilet(env0, ilet) )
+}(*where*)//end-of-[i1val_tup0(env0,...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 #implfun
@@ -218,7 +239,7 @@ prerrln("f0_dapp(01): iexp = ", iexp))
 (* ****** ****** *)
 //
 fun
-f0_dapp
+f0_tup0
 ( env0:
 ! tr01env
 , iexp: i0exp): i1val =
@@ -242,7 +263,7 @@ val () =
 prerr("trcmp01_i0exp:");
 prerrln("f0_tup0(01): iexp = ", iexp))
 //
-}(*where*)//end-of-[f0_dapp(env0,iexp)]
+}(*where*)//end-of-[f0_tup0(env0,iexp)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
