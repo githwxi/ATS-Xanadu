@@ -712,6 +712,10 @@ d4ecl_node =
 //
 |D4Cd3ecl of (d3ecl)
 //
+|D4Clocal0 of
+( d4eclist(*local-head*)
+, d4eclist(*local-body*))
+//
 |D4Cinclude of
 ( sint(*s/d*)
 , token

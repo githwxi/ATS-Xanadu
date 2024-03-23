@@ -126,22 +126,59 @@ trans34_d3ecl
 case+
 d3cl.node() of
 //
-|
-D3Cvaldclst _ => f0_valdclst(env0, d3cl)
-|
-D3Cvardclst _ => f0_vardclst(env0, d3cl)
-|
-D3Cfundclst _ => f0_fundclst(env0, d3cl)
+|D3Clocal0 _ =>
+(
+  f0_local0(env0, d3cl))
+//
+|D3Cvaldclst _ =>
+(
+  f0_valdclst(env0, d3cl))
+|D3Cvardclst _ =>
+(
+  f0_vardclst(env0, d3cl))
+//
+|D3Cfundclst _ =>
+(
+  f0_fundclst(env0, d3cl))
 //
 | _(*otherwise*) =>
 let
-  val loc0 = d3cl.lctn()
+  val loc0 = d3cl.lctn((*0*))
 in//let
   d4ecl_make_node(loc0, D4Cnone1( d3cl ))
 end (*let*) // end of [_(*otherwise*)] // temp
 //
 ) where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_local0
+( env0: 
+! tr34env
+, d3cl: d3ecl): d4ecl =
+let
+//
+val loc0 = d3cl.lctn()
+//
+val-
+D3Clocal0
+(head, body) = d3cl.node()
+//
+val
+head =
+trans34_d3eclist(env0, head)
+val
+body =
+trans34_d3eclist(env0, body)
+//
+in//let
+//
+(
+d4ecl(loc0, D4Clocal0(head, body)))
+//
+end//let//end-of-[f0_local0(env0,d3cl)]
 //
 (* ****** ****** *)
 //

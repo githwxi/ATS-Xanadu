@@ -487,6 +487,12 @@ print("D4Cd3ecl(",d3cl,")")
 //
 (* ****** ****** *)
 //
+|D4Clocal0(head, body) =>
+(
+print("D4Clocal(",head,";",body,")"))
+//
+(* ****** ****** *)
+//
 |
 D4Cinclude
 ( knd0, tknd
