@@ -92,6 +92,13 @@ d3cl.node() of
 (
   f0_local0(env0, d3cl))
 //
+|D3Cvaldclst _ =>
+(
+  f0_valdclst(env0, d3cl))
+|D3Cvardclst _ =>
+(
+  f0_vardclst(env0, d3cl))
+//
 |_(* otherwise *) => i0dcl_none1(d3cl)
 //
 ) where
@@ -128,10 +135,72 @@ end//let//end-of-[f0_local0(env0,d3cl)]
 //
 (* ****** ****** *)
 //
+fun
+f0_valdclst
+( env0:
+! trdienv
+, d3cl: d3ecl): i0dcl =
+let
+//
+val-
+D3Cvaldclst
+(tknd, d3vs) = d3cl.node()
+//
+val
+i0vs =
+trxd3i0_d3valdclist(env0, d3vs)
+//
+in//let
+  i0dcl(loc0, I0Dvaldclst(tknd, i0vs))
+end where
+{
+//
+val loc0 = d3cl.lctn()
+(*
+val (  ) =
+prerrln("f0_valdclst(di): d3cl = ", d3cl)
+*)
+//
+}(*where*) // end of [f0_valdclst(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_vardclst
+( env0:
+! trdienv
+, d3cl: d3ecl): i0dcl =
+let
+//
+val-
+D3Cvardclst
+(tknd, d3vs) = d3cl.node()
+//
+val
+i0vs =
+trxd3i0_d3vardclist(env0, d3vs)
+//
+in//let
+  i0dcl(loc0, I0Dvardclst(tknd, i0vs))
+end where
+{
+//
+val loc0 = d3cl.lctn()
+(*
+val (  ) =
+prerrln("f0_vardclst(di): d3cl = ", d3cl)
+*)
+//
+}(*where*) // end of [f0_vardclst(env0,d3cl)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val () =
 (
   prerrln("trxd3i0_d3ecl: d3cl = ", d3cl) )
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 } (*where*) // end of [trxd3i0_d3ecl(env0,...)]
