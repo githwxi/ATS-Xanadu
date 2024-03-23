@@ -141,6 +141,17 @@ $(XATSOPT) --dynamic DATS/trcmp01_decl00.dats
 
 ######
 all_dats:: \
+xjsemit_dats
+xjsemit_dats: ; \
+$(XATSOPT) --dynamic DATS/xjsemit.dats
+all_dats:: \
+xjsemit_dynexp_dats
+xjsemit_dynexp_dats: ; \
+$(XATSOPT) --dynamic DATS/xjsemit_dynexp.dats
+######
+
+######
+all_dats:: \
 xats2js_tmplib_dats
 xats2js_tmplib_dats: ; \
 $(XATSOPT) --dynamic DATS/xats2js_tmplib.dats
