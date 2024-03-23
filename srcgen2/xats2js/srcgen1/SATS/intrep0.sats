@@ -493,6 +493,16 @@ i0cls_make_node
 (* ****** ****** *)
 //
 datatype
+teqi0exp =
+|
+TEQI0EXPnone of ((*void*))
+|
+TEQI0EXPsome of (token(*EQ0*), i0exp)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
 i0dcl_node =
 //
 |I0Dd3ecl of (d3ecl)
@@ -555,6 +565,79 @@ i0dcl_make_node
 (loc:loctn, nod:i0dcl_node): i0dcl
 (* ****** ****** *)
 #symload i0dcl with i0dcl_make_node
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+i0valdcl_fprint
+(out: FILR, ival: i0valdcl): void
+fun
+i0vardcl_fprint
+(out: FILR, ivar: i0vardcl): void
+(* ****** ****** *)
+fun
+i0fundcl_fprint
+(out: FILR, ifun: i0fundcl): void
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+i0valdcl_get_lctn:(i0valdcl)->loc_t
+fun
+i0vardcl_get_lctn:(i0vardcl)->loc_t
+fun
+i0fundcl_get_lctn:(i0fundcl)->loc_t
+(* ****** ****** *)
+#symload lctn with i0valdcl_get_lctn
+#symload lctn with i0vardcl_get_lctn
+#symload lctn with i0fundcl_get_lctn
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+i0valdcl_get_dpat:(i0valdcl)->i0pat
+fun
+i0valdcl_get_tdxp:(i0valdcl)->teqi0exp
+(* ****** ****** *)
+#symload dpat with i0valdcl_get_dpat
+#symload tdxp with i0valdcl_get_tdxp(*opt*)
+(* ****** ****** *)
+fun
+i0vardcl_get_dpid:(i0vardcl)->d2var
+fun
+i0vardcl_get_dini:(i0vardcl)->teqi0exp
+(* ****** ****** *)
+#symload dpid with i0vardcl_get_dpid
+#symload dini with i0vardcl_get_dini(*opt*)
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+i0fundcl_get_dpid:(i0fundcl)->d2var
+fun
+i0fundcl_get_farg:(i0fundcl)->fiarglst
+fun
+i0fundcl_get_tdxp:(i0fundcl)->teqi0exp
+(* ****** ****** *)
+#symload dpid with i0fundcl_get_dpid
+#symload farg with i0fundcl_get_farg(*lst*)
+#symload tdxp with i0fundcl_get_tdxp(*opt*)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0valdcl_make_args
+( lctn:loc_t
+, ipat:i0pat, tdxp:teqi0exp):i0valdcl
+fun
+i0vardcl_make_args
+( lctn:loc_t
+, dpid:d2var, dini:teqi0exp):i0vardcl
+//
+(* ****** ****** *)
+//
+fun
+i0fundcl_make_args
+( lctn:loc_t
+, dpid:d2var
+, farg:fiarglst, tdxp:teqi0exp):i0fundcl
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

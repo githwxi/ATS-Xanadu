@@ -989,6 +989,7 @@ fun
 d3fundcl_fprint
 (out: FILR, dfun: d3fundcl): void
 (* ****** ****** *)
+(* ****** ****** *)
 fun
 d3valdcl_get_lctn:(d3valdcl)->loc_t
 fun
@@ -999,6 +1000,7 @@ d3fundcl_get_lctn:(d3fundcl)->loc_t
 #symload lctn with d3valdcl_get_lctn
 #symload lctn with d3vardcl_get_lctn
 #symload lctn with d3fundcl_get_lctn
+(* ****** ****** *)
 (* ****** ****** *)
 fun
 d3valdcl_get_dpat:(d3valdcl)->d3pat
@@ -1025,6 +1027,7 @@ d3vardcl_get_dini:(d3vardcl)->teqd3exp
 #symload sres with d3vardcl_get_sres(*opt*)
 #symload dini with d3vardcl_get_dini(*opt*)
 (* ****** ****** *)
+(* ****** ****** *)
 fun
 d3fundcl_get_dpid:(d3fundcl)->d2var
 fun
@@ -1042,18 +1045,22 @@ d3fundcl_get_wsxp:(d3fundcl)->wths2exp
 #symload tdxp with d3fundcl_get_tdxp(*opt*)
 #symload wsxp with d3fundcl_get_wsxp(*opt*)
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d3valdcl_make_args
 ( lctn:loc_t
 , dpat:d3pat
 , tdxp:teqd3exp, wsxp:wths2exp):d3valdcl
+//
 fun
 d3vardcl_make_args
 ( lctn:loc_t
 , dpid:d2var
 , vpid:d2varopt
 , sres:s2expopt, dini:teqd3exp):d3vardcl
+//
+(* ****** ****** *)
 //
 fun
 d3fundcl_make_args
@@ -1063,10 +1070,13 @@ d3fundcl_make_args
 , sres:s2res
 , tdxp:teqd3exp, wsxp:wths2exp):d3fundcl
 //
+(* ****** ****** *)
+//
 #symload d3valdcl with d3valdcl_make_args
 #symload d3vardcl with d3vardcl_make_args
 #symload d3fundcl with d3fundcl_make_args
 //
+(* ****** ****** *)
 (* ****** ****** *)
 (*
 //

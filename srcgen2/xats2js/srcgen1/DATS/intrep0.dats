@@ -208,6 +208,109 @@ endloc (*local*) // end of [local(i0dcl)]
 (* ****** ****** *)
 (* ****** ****** *)
 
+local
+//
+datatype
+i0valdcl =
+I0VALDCL of
+( loc_t
+, i0pat, teqi0exp)
+//
+#absimpl
+i0valdcl_tbox = i0valdcl
+//
+in//local
+
+#implfun
+i0valdcl_get_lctn
+  (  dval  ) = let
+val+
+I0VALDCL
+( lctn
+, dpat, tdxp) = dval in lctn end
+
+#implfun
+i0valdcl_get_dpat
+  (  dval  ) = let
+val+
+I0VALDCL
+( lctn
+, dpat, tdxp) = dval in dpat end
+
+#implfun
+i0valdcl_get_tdxp
+  (  dval  ) = let
+val+
+I0VALDCL
+( lctn
+, dpat, tdxp) = dval in tdxp end
+
+(* ****** ****** *)
+//
+#implfun
+i0valdcl_make_args
+(lctn, dpat, tdxp) =
+(
+  I0VALDCL(lctn, dpat, tdxp(*opt*)))
+//
+(* ****** ****** *)
+
+endloc (*local*) // end of [local(i0valdcl)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+i0vardcl =
+I0VARDCL of
+( loc_t
+, d2var, teqi0exp)
+//
+#absimpl
+i0vardcl_tbox = i0vardcl
+//
+in//local
+
+#implfun
+i0vardcl_get_lctn
+  (  dvar  ) = let
+val+
+I0VARDCL
+( lctn
+, dpid, dini) = dvar in lctn end
+
+#implfun
+i0vardcl_get_dpid
+  (  dvar  ) = let
+val+
+I0VARDCL
+( lctn
+, dpid, dini) = dvar in dpid end
+
+#implfun
+i0vardcl_get_dini
+  (  dvar  ) = let
+val+
+I0VARDCL
+( lctn
+, dpid, dini) = dvar in dini end
+
+(* ****** ****** *)
+//
+#implfun
+i0vardcl_make_args
+( lctn, dpid, dini) =
+(
+  I0VARDCL(lctn, dpid, dini(*opt*)) )
+//
+(* ****** ****** *)
+
+endloc (*local*) // end of [ local(i0vardcl) ]
+
+(* ****** ****** *)
+(* ****** ****** *)
+
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep0.dats] *)
 (***********************************************************************)
