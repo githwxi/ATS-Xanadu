@@ -223,27 +223,27 @@ in//local
 
 #implfun
 i0valdcl_get_lctn
-  (  dval  ) = let
+  (  ival  ) = let
 val+
 I0VALDCL
 ( lctn
-, dpat, tdxp) = dval in lctn end
+, dpat, tdxp) = ival in lctn end
 
 #implfun
 i0valdcl_get_dpat
-  (  dval  ) = let
+  (  ival  ) = let
 val+
 I0VALDCL
 ( lctn
-, dpat, tdxp) = dval in dpat end
+, dpat, tdxp) = ival in dpat end
 
 #implfun
 i0valdcl_get_tdxp
-  (  dval  ) = let
+  (  ival  ) = let
 val+
 I0VALDCL
 ( lctn
-, dpat, tdxp) = dval in tdxp end
+, dpat, tdxp) = ival in tdxp end
 
 (* ****** ****** *)
 //
@@ -274,27 +274,27 @@ in//local
 
 #implfun
 i0vardcl_get_lctn
-  (  dvar  ) = let
+  (  ivar  ) = let
 val+
 I0VARDCL
 ( lctn
-, dpid, dini) = dvar in lctn end
+, dpid, dini) = ivar in lctn end
 
 #implfun
 i0vardcl_get_dpid
-  (  dvar  ) = let
+  (  ivar  ) = let
 val+
 I0VARDCL
 ( lctn
-, dpid, dini) = dvar in dpid end
+, dpid, dini) = ivar in dpid end
 
 #implfun
 i0vardcl_get_dini
-  (  dvar  ) = let
+  (  ivar  ) = let
 val+
 I0VARDCL
 ( lctn
-, dpid, dini) = dvar in dini end
+, dpid, dini) = ivar in dini end
 
 (* ****** ****** *)
 //
@@ -307,6 +307,72 @@ i0vardcl_make_args
 (* ****** ****** *)
 
 endloc (*local*) // end of [ local(i0vardcl) ]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+i0fundcl =
+I0FUNDCL of
+( loc_t
+, d2var
+, fiarglst, teqi0exp)
+//
+#absimpl
+i0fundcl_tbox = i0fundcl
+//
+in//local
+
+#implfun
+i0fundcl_get_lctn
+  (  ifun  ) = let
+val+
+I0FUNDCL
+( lctn
+, dpid
+, farg, tdxp) = ifun in lctn end
+
+#implfun
+i0fundcl_get_dpid
+  (  ifun  ) = let
+val+
+I0FUNDCL
+( lctn
+, dpid
+, farg, tdxp) = ifun in dpid end
+
+#implfun
+i0fundcl_get_farg
+  (  ifun  ) = let
+val+
+I0FUNDCL
+( lctn
+, dpid
+, farg, tdxp) = ifun in farg end
+
+(* ****** ****** *)
+
+#implfun
+i0fundcl_get_tdxp
+  (  ifun  ) = let
+val+
+I0FUNDCL
+( lctn
+, dpid
+, farg, tdxp) = ifun in tdxp end
+
+(* ****** ****** *)
+//
+#implfun
+i0fundcl_make_args
+(lctn, dpid, farg, tdxp) =
+(
+  I0FUNDCL(lctn, dpid, farg, tdxp))
+//
+(* ****** ****** *)
+
+endloc (*local*) // end of [ local(i0fundcl) ]
 
 (* ****** ****** *)
 (* ****** ****** *)
