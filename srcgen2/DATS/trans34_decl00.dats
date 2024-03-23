@@ -219,13 +219,13 @@ D3Cfundclst
 , d2cs, d3fs) = d3cl.node()
 //
 val
-d3fs =
+d4fs =
 trans34_d3fundclist(env0, d3fs)
 //
 in//let
 d4ecl_make_node
 ( loc0
-, D4Cfundclst(tknd, tqas, d2cs, d3fs) )
+, D4Cfundclst(tknd, tqas, d2cs, d4fs) )
 end where
 {
 //
@@ -237,6 +237,7 @@ prerrln("f0_fundclst(34): d3cl = ", d3cl)
 //
 }(*where*) // end of [f0_fundclst(env0,d3cl)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val () =

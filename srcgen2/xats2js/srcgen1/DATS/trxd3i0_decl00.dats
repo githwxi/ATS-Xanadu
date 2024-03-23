@@ -194,6 +194,40 @@ prerrln("f0_vardclst(di): d3cl = ", d3cl)
 }(*where*) // end of [f0_vardclst(env0,d3cl)]
 //
 (* ****** ****** *)
+//
+fun
+f0_fundclst
+( env0:
+! trdienv
+, d3cl: d3ecl): i0dcl =
+let
+//
+val-
+D3Cfundclst
+( tknd
+, tqas
+, d2cs, d3fs) = d3cl.node()
+//
+val
+i0fs =
+trxd3i0_d3fundclist(env0, d3fs)
+//
+in//let
+i0dcl_make_node
+( loc0
+, I0Dfundclst(tknd, tqas, d2cs, i0fs) )
+end where
+{
+//
+val loc0 = d3cl.lctn()
+(*
+val (  ) =
+prerrln("f0_fundclst(di): d3cl = ", d3cl)
+*)
+//
+}(*where*) // end of [f0_fundclst(env0,d3cl)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val () =
