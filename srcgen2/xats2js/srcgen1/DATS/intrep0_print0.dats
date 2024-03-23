@@ -273,6 +273,64 @@ end(*let*)//end-of-[i0dcl_fprint(out, dcl0)]
 (* ****** ****** *)
 (* ****** ****** *)
 
+#implfun
+i0valdcl_fprint
+  (out, ival) = let
+//
+val dpat =
+i0valdcl_get_dpat(ival)
+val tdxp =
+i0valdcl_get_tdxp(ival)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print("I0VALDCL(", dpat, ";", tdxp, ")"))
+end(*let*)//end-of-[i0valdcl_fprint(out,ival)]
+
+(* ****** ****** *)
+//
+#implfun
+i0vardcl_fprint
+  (out, ivar) = let
+//
+val dpid =
+i0vardcl_get_dpid(ivar)
+val dini =
+i0vardcl_get_dini(ivar)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print("I0VARDCL(", dpid, ";", dini, ")"))
+end(*let*)//end-of-[i0vardcl_fprint(out,ivar)]
+//
+(* ****** ****** *)
+
+#implfun
+i0fundcl_fprint
+  (out, ifun) = let
+//
+val dpid =
+i0fundcl_get_dpid(ifun)
+val farg =
+i0fundcl_get_farg(ifun)
+val tdxp =
+i0fundcl_get_tdxp(ifun)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print
+("I0FUNDCL(",dpid,";",farg,";",tdxp,")"))
+end(*let*)//end-of-[i0fundcl_fprint(out,ifun)]
+
+(* ****** ****** *)
+(* ****** ****** *)
+
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep0_print0.sats] *)
 (***********************************************************************)

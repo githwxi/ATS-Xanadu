@@ -179,6 +179,40 @@ i1dcl_fprint(g_print$out<>(), idcl)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#impltmp
+g_print<i0valdcl>(ival) =
+i0valdcl_fprint(g_print$out<>(), ival)
+#impltmp
+g_print<i0vardcl>(ivar) =
+i0vardcl_fprint(g_print$out<>(), ivar)
+#impltmp
+g_print<i0fundcl>(ifun) =
+i0fundcl_fprint(g_print$out<>(), ifun)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<teqi0exp>(tdxp) =
+let
+(*
+#impltmp
+g_print$out<>() = out
+*)
+in//let
+(
+case+ tdxp of
+|
+TEQI0EXPnone() =>
+print("TEQI0EXPnone(", ")")
+|
+TEQI0EXPsome(tok0, i0e1) =>
+print("TEQI0EXPsome(",tok0,";",i0e1,")"))
+endlet // end-of-[g_print<teqi0exp>(tdxp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_xinterp_tmplib.dats] *)
