@@ -162,9 +162,11 @@ i1val_node =
 |I1Vreg of (i1reg)
 (* ****** ****** *)
 //
+(*
 |I1Vtup0 of (i1valist)
 |I1Vtup1 of (token, i1valist)
 |I1Vrcd2 of (token, l1i1vlst)
+*)
 //
 (* ****** ****** *)
 //
@@ -187,11 +189,11 @@ and i1bfi =
 ( i1opr(*opnm*)
 , i1valist(*args*))//primopr
 //
+|I1BFIdapp of (i1val, i1valist)
+//
 |I1BFItup0 of (i1valist)//flat
 |I1BFItup1 of (token, i1valist)
-|I1BFItup1 of (token, l1i1vlst)
-//
-|I1BFIdapp of (i1val, i1valist)
+|I1BFIrcd2 of (token, l1i1vlst)
 //
 |I1BFIift0 of
 ( i1val
@@ -209,11 +211,11 @@ i1val_fprint
 (out: FILR, ival: i1val): void
 //
 fun
+i1bfi_fprint(FILR, i1bfi): void
+fun
 i1let_fprint(FILR, i1let): void
 fun
 i1cmp_fprint(FILR, i1cmp): void
-fun
-i1bfi_fprint(FILR, i1bfi): void
 //
 (* ****** ****** *)
 //

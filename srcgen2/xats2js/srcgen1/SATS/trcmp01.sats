@@ -65,6 +65,7 @@ XATSOPT "./../../.."
 #typedef i0explst = list(i0exp)
 (* ****** ****** *)
 #typedef i1valist = list(i1val)
+#typedef i1letlst = list(i1let)
 #typedef i1cmplst = list(i1cmp)
 (* ****** ****** *)
 #absvtbx tr01env_vtbx
