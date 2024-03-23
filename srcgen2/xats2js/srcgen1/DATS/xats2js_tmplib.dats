@@ -110,8 +110,8 @@ i0cls_fprint(g_print$out<>(), cls)
 //
 #impltmp
 g_print
-<i0dcl>(dcl) =
-i0dcl_fprint(g_print$out<>(), dcl)
+<i0dcl>(idcl) =
+i0dcl_fprint(g_print$out<>(), idcl)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -169,6 +169,13 @@ i1cmp_fprint(g_print$out<>(), icmp)
 g_print
 <i1bfi>(ibfi) =
 i1bfi_fprint(g_print$out<>(), ibfi)
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<i1dcl>(idcl) =
+i1dcl_fprint(g_print$out<>(), idcl)
 //
 (* ****** ****** *)
 (* ****** ****** *)

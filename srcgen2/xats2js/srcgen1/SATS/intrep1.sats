@@ -245,9 +245,9 @@ datatype
 i1dcl_node =
 //
 |
-I1Dlocal of
-( i1dclist(*head*)
-, i1dclist(*body*))
+I1Dlocal0 of
+( i1dclist(*local-head*)
+, i1dclist(*local-body*))
 |
 I1Dinclude of
 ( sint(*s/d*)

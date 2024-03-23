@@ -182,6 +182,30 @@ end(*let*)//end-of-[i1cmp_fprint(out, icmp)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+i1dcl_fprint
+(out, dcl0) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+dcl0.node() of
+//
+|I1Dlocal0
+(head, body) =>
+print
+("I1Dlocal0(", head, ";", body, ")")
+//
+|I1Dnone0() => print( "I1Dnone0(",")" )
+|I1Dnone1(dcl1) => print("I1Dnone1(", dcl1, ")")
+//
+end(*let*)//end-of-[i1dcl_fprint(out, dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep1_print0.dats] *)
 (***********************************************************************)
