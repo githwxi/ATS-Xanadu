@@ -246,6 +246,25 @@ print("I0Dd3ecl(", d3cl, ")")
 print
 ("I0Dlocal0(", head, ";", body, ")")
 //
+|
+I0Dvaldclst
+(  tknd, i0vs  ) =>
+(
+print("I0Dvaldclst(",tknd,";",i0vs,")"))
+|
+I0Dvardclst
+(  tknd, i0vs  ) =>
+(
+print("I0Dvardclst(",tknd,";",i0vs,")"))
+//
+|
+I0Dfundclst
+(tknd
+,tqas,d2cs,i0fs) =>
+(
+print("I0Dfundclst(");
+print(tknd,";",tqas,";",d2cs,";",i0fs,")"))
+//
 |I0Dnone0() => print( "I0Dnone0(",")" )
 |I0Dnone1(d3cl) => print("I0Dnone1(", d3cl, ")")
 //
