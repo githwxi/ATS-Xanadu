@@ -99,6 +99,10 @@ d3cl.node() of
 (
   f0_vardclst(env0, d3cl))
 //
+|D3Cfundclst _ =>
+(
+  f0_fundclst(env0, d3cl))
+//
 |_(* otherwise *) => i0dcl_none1(d3cl)
 //
 ) where
