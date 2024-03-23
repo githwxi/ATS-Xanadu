@@ -80,17 +80,69 @@ print("I1Vchr(",chr,")")
 |I1Vstr(str) =>
 print("I1Vstr(",str,")")
 //
+(*
 |I1Vtup0(i1vs) =>
 print("I1Vtup0(", i1vs, ")")
 |I1Vtup1(tknd, i1vs) =>
 print("I1Vtup1(",tknd,";",i1vs,")")
 |I1Vrcd2(tknd, livs) =>
 print("I1Vrcd2(",tknd,";",livs,")")
+*)
 //
 |I1Vnone0() => print( "I1Vnone0(",")" )
 |I1Vnone1(i0e1) => print("I1Vnone1(", i0e1, ")")
 //
 end(*let*)//end-of-[i1val_fprint(out, i1v0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1bfi_fprint
+(out, ibfi) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ ibfi of
+//
+|I1BFIopr
+( iopr, i1vs) =>
+(
+print("I1BFIopr(");
+print(iopr, ";", i1vs, ")"))
+//
+|I1BFIdapp
+( i1f0, i1vs) =>
+(
+print("I1BFIdapp(");
+print(i1f0, ";", i1vs, ")"))
+//
+|I1BFItup0(i1vs) =>
+print
+("I1BFItup0(", i1vs, ")")
+|I1BFItup1
+(tknd, i1vs) =>
+(
+print("I1BFItup1(");
+print(tknd, ";", i1vs, ")"))
+|I1BFIrcd2
+( tknd, livs) =>
+(
+print("I1BFIrcd2(");
+print(tknd, ";", livs, ")"))
+//
+|I1BFIift0
+( test
+, ithn, iels) =>
+(
+print
+("I1BFIif0(");
+print
+(test,";",ithn,";",iels,")"))
+//
+end(*let*)//end-of-[i1bfi_fprint(out, ibfi)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

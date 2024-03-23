@@ -136,6 +136,8 @@ iexp.node() of
 //
 |I0Edapp _ => f0_dapp(env0, iexp)
 //
+|I0Etup0 _ => f0_tup0(env0, iexp)
+//
 |
 _(*otherwise*) => i1val_none1(iexp)
 //
@@ -213,6 +215,34 @@ prerrln("f0_dapp(01): iexp = ", iexp))
 //
 }(*where*)//end-of-[f0_dapp(env0,iexp)]
 //
+(* ****** ****** *)
+//
+fun
+f0_dapp
+( env0:
+! tr01env
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Etup0(i0es) = iexp.node()
+val i1vs =
+trcmp01_i0explst(env0, i0es)
+//
+in
+(
+  i1val_tup0(env0, loc0, i1vs) )
+end where
+{
+//
+val () =
+(
+prerr("trcmp01_i0exp:");
+prerrln("f0_tup0(01): iexp = ", iexp))
+//
+}(*where*)//end-of-[f0_dapp(env0,iexp)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
