@@ -148,6 +148,10 @@ all_dats:: \
 xjsemit_dynexp_dats
 xjsemit_dynexp_dats: ; \
 $(XATSOPT) --dynamic DATS/xjsemit_dynexp.dats
+all_dats:: \
+xjsemit_decl00_dats
+xjsemit_decl00_dats: ; \
+$(XATSOPT) --dynamic DATS/xjsemit_decl00.dats
 ######
 
 ######
