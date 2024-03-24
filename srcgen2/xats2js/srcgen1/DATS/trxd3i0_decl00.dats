@@ -309,6 +309,47 @@ end//let
 (*let*)//end-of-[trxd3i0_d3vardcl(env0,dvar)]
 
 (* ****** ****** *)
+
+#implfun
+trxd3i0_d3fundcl
+  (env0, dfun) = let
+//
+val loc0 =
+d3fundcl_get_lctn(dfun)
+//
+val dvar =
+d3fundcl_get_dpid(dfun)
+val f3as =
+d3fundcl_get_farg(dfun)
+val tdxp =
+d3fundcl_get_tdxp(dfun)
+//
+(*
+val (  ) = prerrln
+("trxd3i0_d3fundcl: f2as = ", f2as)
+val (  ) = prerrln
+("trxd3i0_d3fundcl: tdxp = ", tdxp)
+*)
+//
+val fias =
+trxd3i0_f3arglst(env0, f3as)
+val tdxp =
+trxd3i0_teqd3exp(env0, tdxp)
+//
+(*
+val (  ) = prerrln
+("trxd3i0_d3fundcl: f3as = ", f3as)
+val (  ) = prerrln
+("trxd3i0_d3fundcl: tdxp = ", tdxp)
+*)
+//
+in//let
+(
+  i0fundcl(loc0, dvar, fias, tdxp))
+end//let
+(*let*)//end-of-[trxd3i0_d3fundcl(env0,dfun)]
+
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun

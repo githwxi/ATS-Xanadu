@@ -642,6 +642,12 @@ i0fundcl_make_args
 , farg:fiarglst, tdxp:teqi0exp):i0fundcl
 //
 (* ****** ****** *)
+//
+#symload i0valdcl with i0valdcl_make_args
+#symload i0vardcl with i0vardcl_make_args
+#symload i0fundcl with i0fundcl_make_args
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
