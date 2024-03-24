@@ -162,6 +162,12 @@ trxd3i0_d3eclist
 (* ****** ****** *)
 //
 fun
+trxd3i0_teqd3exp
+(env0: !trdienv, tdxp: teqd3exp): teqi0exp
+//
+(* ****** ****** *)
+//
+fun
 trxd3i0_d3valdcl
 (env0: !trdienv, dval: d3valdcl): i0valdcl
 fun

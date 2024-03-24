@@ -148,6 +148,8 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 #typedef d3eclist = $D3E.d3eclist
 (* ****** ****** *)
+#typedef teqd3exp = $D3E.teqd3exp
+(* ****** ****** *)
 #typedef d3valdcl = $D3E.d3valdcl
 #typedef d3vardcl = $D3E.d3vardcl
 #typedef d3fundcl = $D3E.d3fundcl
@@ -231,6 +233,7 @@ fiarg_fprint
 (* ****** ****** *)
 #abstbox i0dcl_tbox // p0tr
 #typedef i0dcl = i0dcl_tbox
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #abstbox i0valdcl_tbox//p0tr

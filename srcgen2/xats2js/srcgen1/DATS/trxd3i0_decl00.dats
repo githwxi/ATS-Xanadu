@@ -247,6 +247,71 @@ val () =
 (* ****** ****** *)
 //
 #implfun
+trxd3i0_teqd3exp
+  (env0, tdxp) =
+(
+case+ tdxp of
+|
+TEQD3EXPnone() =>
+TEQI0EXPnone((*void*))
+|
+TEQD3EXPsome(teq1, d3e2) =>
+TEQI0EXPsome(teq1, i0e2) where
+{ val
+  i0e2 = trxd3i0_d3exp(env0, d3e2) }
+) (*case+*)//end-of(trxd3i0_teqd3exp(...))
+//
+(* ****** ****** *)
+//
+#implfun
+trxd3i0_d3valdcl
+  (env0, dval) = let
+//
+val loc0 =
+d3valdcl_get_lctn(dval)
+val dpat =
+d3valdcl_get_dpat(dval)
+val tdxp =
+d3valdcl_get_tdxp(dval)
+//
+val ipat =
+trxd3i0_d3pat(env0, dpat)
+//
+val tdxp =
+trxd3i0_teqd3exp(env0, tdxp)
+//
+in//let
+(
+  i0valdcl_make_args(loc0, ipat, tdxp))
+end//let
+(*let*)//end-of-[trxd3i0_d3valdcl(env0,dval)]
+//
+(* ****** ****** *)
+
+#implfun
+trxd3i0_d3vardcl
+  (env0, dvar) = let
+//
+val loc0 =
+d3vardcl_get_lctn(dvar)
+val dpid =
+d3vardcl_get_dpid(dvar)
+val dini =
+d3vardcl_get_dini(dvar)
+//
+val dini =
+trxd3i0_teqd3exp(env0, dini)
+//
+in//let
+(
+  i0vardcl_make_args(loc0, dpid, dini))
+end//let
+(*let*)//end-of-[trxd3i0_d3vardcl(env0,dvar)]
+
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 trxd3i0_d3eclist
 ( env0, dcls ) =
 (
