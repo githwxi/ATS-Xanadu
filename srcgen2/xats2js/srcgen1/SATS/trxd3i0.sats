@@ -63,10 +63,19 @@ XATSOPT "./../../.."
 #vwtpdef trdienv = trdienv_vtbx
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+i0parsed_of_trxd3i0
+( dpar : d3parsed ): (i0parsed)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 trdienv_make_nil(): trdienv
 fun
 trdienv_free_top(trdienv): void
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
