@@ -659,6 +659,37 @@ i0fundcl_make_args
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+i0parsed_fprint
+(out:FILR, dpar:i0parsed): void
+//
+(* ****** ****** *)
+//
+fun
+i0parsed_get_stadyn:(i0parsed)->sint
+fun
+i0parsed_get_nerror:(i0parsed)->sint
+//
+fun
+i0parsed_get_source:(i0parsed)->lcsrc
+//
+fun
+i0parsed_get_parsed:(i0parsed)->i0dclistopt
+//
+(* ****** ****** *)
+//
+fun
+i0parsed_make_args
+( stadyn:sint
+, nerror:sint
+, source:lcsrc
+, parsed:i0dclistopt): i0parsed//end-fun
+//
+#symload i0parsed with i0parsed_make_args
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_SATS_intrep0.sats] *)
 (***********************************************************************)
