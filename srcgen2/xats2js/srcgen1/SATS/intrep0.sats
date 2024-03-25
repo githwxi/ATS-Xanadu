@@ -387,6 +387,15 @@ i0exp_node =
 //
 (* ****** ****** *)
 //
+|I0Ewhere of (i0exp, i0dclist)
+//
+(* ****** ****** *)
+//
+|I0Eassgn of
+( i0exp(*l-val*), i0exp(*r-val*) )
+//
+(* ****** ****** *)
+//
 |I0Enone0 of ((*0*)) |I0Enone1 of (d3exp)
 //
 // HX-2023-??-??: end-of-[datatype(i0exp_node)]

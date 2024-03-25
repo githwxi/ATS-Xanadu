@@ -218,6 +218,20 @@ print("I0Ercd2(", tknd, ";", lies, ")")
   print("I0Efold(", i0e1, ")") )//I0Efold
 (* ****** ****** *)
 //
+|I0Ewhere
+(i0e1, dcls) =>
+(
+ print("I0Ewhere(",i0e1,";",dcls,")"))
+//
+(* ****** ****** *)
+//
+|I0Eassgn
+(i0el, i0er) =>
+(
+ print("I0Eassgn(",i0el,";",i0er,")"))
+//
+(* ****** ****** *)
+//
 |I0Enone0() => print( "I0Enone0(",")" )
 |I0Enone1(d3e1) => print("I0Enone1(", d3e1, ")")
 //

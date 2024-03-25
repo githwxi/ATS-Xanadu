@@ -270,6 +270,13 @@ i0exp(loc0, I0Evar(d2v))
 |D3Elam0 _ => f0_lam0(env0, d3e0)
 |D3Efix0 _ => f0_fix0(env0, d3e0)
 //
+|D3Eaddr _ => f0_addr(env0, d3e0)
+|D3Eflat _ => f0_flat(env0, d3e0)
+//
+|D3Ewhere _ => f0_where(env0, d3e0)
+//
+|D3Eassgn _ => f0_assgn(env0, d3e0)
+//
 |_(* otherwise *) => i0exp_none1(d3e0)
 //
 ) where
@@ -562,6 +569,55 @@ in//let
 (
   i0exp(loc0, I0Eflat( i0e1 )) )
 end(*let*)//end-of-[f0_flat(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_where
+( env0:
+! trdienv
+, d3e0: d3exp): i0exp =
+let
+//
+val-
+D3Ewhere
+( d3e1, dcls) = d3e0.node()
+//
+val dcls =
+trxd3i0_d3eclist(env0, dcls)
+val i0e1 =
+(
+  trxd3i0_d3exp(env0, d3e1))
+//
+in//let
+(
+  i0exp_make_node
+  (loc0, I0Ewhere( i0e1, dcls )))
+end(*let*)//end-of-[f0_where(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_assgn
+( env0:
+! trdienv
+, d3e0: d3exp): i0exp =
+let
+//
+val loc0 = d3e0.lctn()
+val-
+D3Eassgn
+(d3el, d3er) = d3e0.node()
+//
+val i0el =
+trxd3i0_d3exp(env0, d3el)
+val i0er =
+trxd3i0_d3exp(env0, d3er)
+//
+in//let
+(
+  i0exp(loc0, I0Eassgn(i0el, i0er)))
+end (*let*) // end of [f0_assgn(env0,d3e0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
