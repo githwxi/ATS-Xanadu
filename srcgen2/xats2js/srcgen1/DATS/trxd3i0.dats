@@ -52,9 +52,12 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 #staload
-"./../SATS/intrep0.sats"
-#staload
-"./../SATS/trxd3i0.sats"
+"./../../../SATS/dynexp3.sats"
+//
+(* ****** ****** *)
+//
+#staload "./../SATS/intrep0.sats"
+#staload "./../SATS/trxd3i0.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -73,28 +76,20 @@ d3parsed_get_nerror(dpar)
 val source =
 d3parsed_get_source(dpar)
 //
-val t1penv =
-d3parsed_get_t1penv(dpar)
-val t2penv =
-d3parsed_get_t2penv(dpar)
-val t3penv =
-d3parsed_get_t3penv(dpar)
-//
 val parsed =
 d3parsed_get_parsed(dpar)
 //
 val env0 = trdienv_make_nil()
 //
 val parsed =
-trxd3i0_d2eclistopt(env0, parsed)
+trxd3i0_d3eclistopt(env0, parsed)
 //
 in//let
 let
 val ((*0*)) = trdienv_free_top(env0)
 in//let
-i0parsed
-(stadyn
-,nerror,source,t1penv,t2penv,t3penv,parsed)
+(
+  i0parsed(stadyn,nerror,source,parsed))
 end//let
 end (*let*) // end of [i0parsed_trxd3i0(dpar)]
 
@@ -131,5 +126,5 @@ map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep0.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trxd3i0.dats] *)
 (***********************************************************************)
