@@ -189,6 +189,9 @@ i0lab_fprint
 #typedef l0i0p = i0lab(i0pat)
 #typedef l0i0e = i0lab(i0exp)
 (* ****** ****** *)
+#abstbox fiarg_tbox // p0tr
+#typedef fiarg = fiarg_tbox
+(* ****** ****** *)
 #typedef i0patlst = list(i0pat)
 #typedef l0i0plst = list(l0i0p)
 (* ****** ****** *)
@@ -199,8 +202,9 @@ i0lab_fprint
 (* ****** ****** *)
 //
 datatype
-fiarg =
-|FIARG of (i0patlst)
+fiarg_node =
+|
+FIARGdyn of (i0patlst)
 //
 #typedef
 fiarglst = list(fiarg)
@@ -218,6 +222,19 @@ fun
 fiarg_fprint
 (out:FILR,fia0:fiarg): void
 //
+(* ****** ****** *)
+fun
+fiarg_get_lctn(fiarg): loc_t
+fun
+fiarg_get_node(fiarg): fiarg_node
+(* ****** ****** *)
+#symload lctn with fiarg_get_lctn
+#symload node with fiarg_get_node
+(* ****** ****** *)
+fun
+fiarg_make_node
+(loc:loc_t, nod:fiarg_node):fiarg
+#symload fiarg with fiarg_make_node
 (* ****** ****** *)
 (* ****** ****** *)
 #abstbox i0gua_tbox // p0tr
@@ -675,6 +692,13 @@ i0parsed_get_source:(i0parsed)->lcsrc
 //
 fun
 i0parsed_get_parsed:(i0parsed)->i0dclistopt
+//
+(* ****** ****** *)
+//
+#symload stadyn with i0parsed_get_stadyn
+#symload nerror with i0parsed_get_nerror
+#symload source with i0parsed_get_source
+#symload parsed with i0parsed_get_parsed
 //
 (* ****** ****** *)
 //

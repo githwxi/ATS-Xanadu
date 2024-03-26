@@ -80,6 +80,9 @@ UN = "prelude/SATS/unsafe.sats"
 #symload lctn with i0exp_get_lctn
 #symload node with i0exp_get_node
 (* ****** ****** *)
+#symload lctn with fiarg_get_lctn
+#symload node with fiarg_get_node
+(* ****** ****** *)
 #symload lctn with i0dcl_get_lctn
 #symload node with i0dcl_get_node
 (* ****** ****** *)
@@ -95,6 +98,9 @@ in//let
 //
 case+
 i0p0.node() of
+//
+|I0Pvar(d2v) =>
+print("I0Pvar(",d2v,")")
 //
 |I0Pint(tok) =>
 print("I0Pint(",tok,")")
@@ -241,6 +247,25 @@ end(*let*)//end-of-[i0exp_fprint(out, i0e0)]
 (* ****** ****** *)
 //
 #implfun
+fiarg_fprint
+(out, farg) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+farg.node() of
+|FIARGdyn(i0ps) =>
+(
+  print("FIARGdyn(", i0ps, ")"))
+//
+end (*let*) // end of [fiarg_fprint(out,farg)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i0dcl_fprint
 (out, dcl0) =
 let
@@ -341,6 +366,36 @@ in//let
 print
 ("I0FUNDCL(",dpid,";",farg,";",tdxp,")"))
 end(*let*)//end-of-[i0fundcl_fprint(out,ifun)]
+
+(* ****** ****** *)
+(* ****** ****** *)
+
+#implfun
+i0parsed_fprint
+  (out, ipar) = let
+//
+val
+stadyn =
+i0parsed_get_stadyn(ipar)
+val
+nerror =
+i0parsed_get_nerror(ipar)
+val
+source =
+i0parsed_get_source(ipar)
+val
+parsed =
+i0parsed_get_parsed(ipar)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print
+("I0PARSED(");
+print
+(stadyn,";",nerror,";",source,";",parsed,")"))
+end (*let*) // end-of-[i0parsed_fprint(out,ipar)]
 
 (* ****** ****** *)
 (* ****** ****** *)

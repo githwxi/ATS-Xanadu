@@ -1,8 +1,11 @@
 (* ****** ****** *)
 (*
-HX-2023-11-29:
-Testing [xinterp]
+HX-2024-03-25:
+Testing [xats2js]
 as way to test [xatsopt]
+//
+Mon 25 Mar 2024 06:06:45 PM EDT
+//
 *)
 (* ****** ****** *)
 #include
@@ -13,7 +16,7 @@ as way to test [xatsopt]
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #include
-"./../../HATS/libxinterp.hats"
+"./../../HATS/libxats2js.hats"
 (* ****** ****** *)
 //
 val ret =
@@ -31,96 +34,76 @@ val (  ) = prerrln
 #staload
 "./../../SATS/intrep0.sats"
 #staload
-"./../../SATS/xinterp.sats"
+"./../../SATS/trxd3i0.sats"
+#staload
+"./../../SATS/xats2js.sats"
 *)
 #staload _ =
-"./../../DATS/xinterp_tmplib.dats"
+"./../../DATS/xats2js_tmplib.dats"
 (* ****** ****** *)
 //
 #include
 "./../../DATS/intrep0.dats"
 #include
 "./../../DATS/intrep0_print0.dats"
-#include
-"./../../DATS/intrep0_myenv0.dats"
-#include
-"./../../DATS/intrep0_dynexp.dats"
-#include
-"./../../DATS/intrep0_decl00.dats"
 //
 (* ****** ****** *)
 //
 #include
-"./../../DATS/xinterp.dats"
+"./../../DATS/trxd3i0.dats"
 #include
-"./../../DATS/xinterp_print0.dats"
+"./../../DATS/trxd3i0_myenv0.dats"
 #include
-"./../../DATS/xinterp_myenv0.dats"
+"./../../DATS/trxd3i0_dynexp.dats"
 #include
-"./../../DATS/xinterp_inits0.dats"
-#include
-"./../../DATS/xinterp_utils0.dats"
-#include
-"./../../DATS/xinterp_dynexp.dats"
-#include
-"./../../DATS/xinterp_decl00.dats"
+"./../../DATS/trxd3i0_decl00.dats"
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val
-mytest03_dats =
+mytest01_dats =
 (
-irparsed_of_trxd3ir(dpar)
+i0parsed_of_trxd3i0(dpar)
 ) where
 {
 //
 val
 dpar =
 d3parsed_of_trans3a(dpar)
-//
-val ( ) =
-prerrln
-("d3parsed(3a) = ", dpar)
-//
 val
 dpar =
 d3parsed_of_trtmp3b(dpar)
 val
 dpar =
-d3parsed_of_trtmp3c(dpar)
-val
-dpar =
 d3parsed_of_tread33(dpar)
 //
 val ( ) =
-prerrln
-("d3parsed(33) = ", dpar)
-//
-//
-val
-out = g_stderr((*0*))
+println("dpar = ", dpar)
 //
 val ( ) =
 prerrln
-("FPERR33_D3PARSED(4):")
+("FPERR33_D3PARSED(33):")
+val out = g_stderr((*0*))
 val ( ) =
 fperr33_d3parsed(out, dpar)
 //
 } where
 {
 val dpar = d3parsed_from_fpath
-(1(*dyn*), "./DATA/mytest03.dats") }
+(1(*dyn*), "./DATA/mytest01.dats") }
 //
-val ( ) =
-xinterp_irparsed(mytest03_dats) where
+(* ****** ****** *)
+//
+val () = () where
 {
 val ((*0*)) =
 (
 println
-("parsed(ir) = ", mytest03_dats.parsed()))
+("parsed(ir) = ", mytest01_dats.parsed()))
 } (*where*) // end of [xinterp_irparsed(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_TEST_JS_test03_xinterp.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_JS_test01_xats2js.dats] *)
