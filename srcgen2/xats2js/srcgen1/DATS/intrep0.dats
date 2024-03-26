@@ -95,6 +95,15 @@ i0exp_make_node
 d3e0.lctn(),I0Enone1(d3e0))
 //
 (* ****** ****** *)
+//
+#implfun
+i0dcl_none1
+(  d3cl  ) =
+i0dcl_make_node
+(
+d3cl.lctn(),I0Dnone1(d3cl))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 local
@@ -167,6 +176,38 @@ val+
 I0EXP(loc,nod) = i0e in nod end
 //
 endloc (*local*) // end of [local(i0exp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+datatype
+fiarg =
+FIARG of
+(
+loctn, fiarg_node)
+#absimpl
+fiarg_tbox = fiarg
+//
+in (* in-of-local *)
+//
+#implfun
+fiarg_make_node
+(   loc,nod   ) = FIARG(loc,nod)
+//
+#implfun
+fiarg_get_lctn(fia) =
+let
+  val+FIARG(loc,nod) = fia in loc
+end
+#implfun
+fiarg_get_node(fia) =
+let
+  val+FIARG(loc,nod) = fia in nod
+end
+//
+endloc (*local*) // end of [local(fiarg)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -197,6 +197,10 @@ i0pat(loc0, I0Pflt(tok))
 ( tok ) =>
 i0pat(loc0, I0Pstr(tok))
 //
+|D3Pannot _ => f0_annot(env0, d3p0)
+//
+|_(* otherwise *) => i0pat_none1(d3p0)
+//
 ) where
 {
 //
@@ -205,8 +209,30 @@ i0pat(loc0, I0Pstr(tok))
 val loc0 = d3p0.lctn((*0*))
 //
 (* ****** ****** *)
+//
+fun
+f0_annot
+( env0:
+! trdienv
+, d3p0: d3pat): i0pat =
+(
+trxd3i0_d3pat(env0, d3p1)
+) where
+//
+val loc0 = d3p0.lctn((*0*))
+//
+val-
+D3Pannot
+( d3p1
+, s1e2, s2e2) = d3p0.node((*0*))
+//
+} (*where*) // end of [f0_annot(env0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 val (  ) =
 prerrln("trxd3i0_d3pat: d3p0 = ", d3p0)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 }(*where*) // end of [trxd3i0_d3pat(...)]
@@ -730,6 +756,8 @@ f0_dyn0
 , f3a1: f3arg): fiarg =
 let
 //
+val loc0 = f3a1.lctn()
+//
 val-
 F3ARGdapp
 (npf1, d3ps) = f3a1.node()
@@ -738,7 +766,12 @@ val d3ps =
 pfrmv_npf1_d3ps(npf1, d3ps)
 //
 in//let
-FIARG(trxd3i0_d3patlst(env0, d3ps))
+(
+fiarg
+(loc0, FIARGdyn(i0ps))) where
+{
+val
+i0ps = trxd3i0_d3patlst(env0, d3ps)}
 end//let//end-of-[f0_dyn0(env0,f3a1)]
 //
 }(*where+*)//end-[trxd3i0_f3arglst(env0,f3as)]
