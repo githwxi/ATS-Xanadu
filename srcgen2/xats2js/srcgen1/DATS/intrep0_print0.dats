@@ -149,6 +149,15 @@ i0e0.node() of
 //
 (* ****** ****** *)
 //
+|I0Etapp
+( i0f0, s2es) =>
+print("I0Etapp(", i0f0, ";", s2es, ")")
+|I0Etapq
+( i0f0, t2ps) =>
+print("I0Etapq(", i0f0, ";", t2ps, ")")
+//
+(* ****** ****** *)
+//
 |I0Edapp
 ( i0f0, i0es) =>
 print("I0Edapp(", i0f0, ";", i0es, ")")
