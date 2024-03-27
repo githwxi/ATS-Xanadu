@@ -263,6 +263,8 @@ trxd3i0_d3exp
 case+
 d3e0.node() of
 //
+(* ****** ****** *)
+//
 |D3Eint
 ( tok ) =>
 i0exp(loc0, I0Eint(tok))
@@ -283,28 +285,48 @@ i0exp(loc0, I0Estr(tok))
 ( d2v ) =>
 i0exp(loc0, I0Evar(d2v))
 //
-|D3Elet0 _ => f0_dapp(env0, d3e0)
+(* ****** ****** *)
+//
+|D3Edapp _ => f0_dapp(env0, d3e0)
+//
+(* ****** ****** *)
 //
 |D3Elet0 _ => f0_let0(env0, d3e0)
+//
+(* ****** ****** *)
 //
 |D3Eift0 _ => f0_ift0(env0, d3e0)
 |D3Ecas0 _ => f0_cas0(env0, d3e0)
 //
+(* ****** ****** *)
+//
 |D3Eseqn _ => f0_seqn(env0, d3e0)
+//
+(* ****** ****** *)
 //
 |D3Etup0 _ => f0_tup0(env0, d3e0)
 |D3Etup1 _ => f0_tup1(env0, d3e0)
 |D3Ercd2 _ => f0_rcd2(env0, d3e0)
 //
+(* ****** ****** *)
+//
 |D3Elam0 _ => f0_lam0(env0, d3e0)
 |D3Efix0 _ => f0_fix0(env0, d3e0)
+//
+(* ****** ****** *)
 //
 |D3Eaddr _ => f0_addr(env0, d3e0)
 |D3Eflat _ => f0_flat(env0, d3e0)
 //
+(* ****** ****** *)
+//
 |D3Ewhere _ => f0_where(env0, d3e0)
 //
+(* ****** ****** *)
+//
 |D3Eassgn _ => f0_assgn(env0, d3e0)
+//
+(* ****** ****** *)
 //
 |_(* otherwise *) => i0exp_none1(d3e0)
 //
