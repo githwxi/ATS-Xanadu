@@ -218,6 +218,7 @@ f0_annot
 (
 trxd3i0_d3pat(env0, d3p1)
 ) where
+{
 //
 val loc0 = d3p0.lctn((*0*))
 //
@@ -282,6 +283,8 @@ i0exp(loc0, I0Estr(tok))
 ( d2v ) =>
 i0exp(loc0, I0Evar(d2v))
 //
+|D3Elet0 _ => f0_dapp(env0, d3e0)
+//
 |D3Elet0 _ => f0_let0(env0, d3e0)
 //
 |D3Eift0 _ => f0_ift0(env0, d3e0)
@@ -309,8 +312,43 @@ i0exp(loc0, I0Evar(d2v))
 {
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 val loc0 = d3e0.lctn((*0*))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_dapp
+( env0:
+! trdienv
+, d3e0: d3exp): i0exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Edapp
+( d3f0
+, npf1, d3es) = d3e0.node()
+//
+val
+i0f0 =
+trxd3i0_d3exp(env0, d3f0)
+//
+val d3es =
+(
+  pfrmv_npf1_d3es(npf1, d3es))
+//
+val i0es =
+(
+  trxd3i0_d3explst(env0, d3es))
+//
+in//let
+(
+  i0exp(loc0, I0Edapp(i0f0, i0es)))
+end (*let*) // end of [f0_dapp(env0,d3e0)]
 //
 (* ****** ****** *)
 //
