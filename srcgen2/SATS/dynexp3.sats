@@ -576,9 +576,6 @@ d3ecl_impltmprq(d3ecl): bool
 //
 (* ****** ****** *)
 fun
-timpl_fprint:(FILR,timpl)->void
-(* ****** ****** *)
-fun
 d3exp_fprint:(FILR,d3exp)->void
 (* ****** ****** *)
 fun
@@ -740,6 +737,69 @@ d3cls_make_node
 //
 (* ****** ****** *)
 //
+(*
+HX-2023-10-27:
+[TIMPLone1]
+is planned for
+recursive impltmp!
+*)
+datatype
+timpl_node =
+//
+(*
+|TIMPLone1 of
+(d3ecl(*tmpsub*))
+*)
+//
+(*
+HX-2023-11-11:
+d3eclist: it is a
+list of D3Ctmpsub-decls
+*)
+//
+(*
+HX:
+single layer(trtmp3b)
+*)
+|TIMPLall1 of
+(d2cst(*implment*), d3eclist)
+//
+(*
+HX:
+recursive version(trtmp3c)
+*)
+|TIMPLallx of
+(d2cst(*implment*), d3eclist)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+timpl_fprint
+(
+  out:FILR, timp:timpl):(void)
+//
+(* ****** ****** *)
+//
+fun
+timpl_get_stmp
+(timp: timpl): stamp
+fun
+timpl_get_node
+(timp: timpl): timpl_node
+//
+#symload stmp with timpl_get_stmp
+#symload node with timpl_get_node
+//
+fun
+timpl_make_node
+(stm:stamp,nod:timpl_node): timpl
+//
+#symload timpl with timpl_make_node
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 datatype
 teqd3exp =
 |
@@ -839,56 +899,14 @@ D3Cerrck of (sint(*lvl*), d3ecl)//tread23-error
 //
 (* ****** ****** *)
 //
-(*
-HX-2023-10-27:
-[TIMPLone1]
-is planned for
-recursive impltmp!
-*)
-and
-timpl_node =
-//
-(*
-|TIMPLone1 of
-(d3ecl(*tmpsub*))
-*)
-//
-(*
-HX-2023-11-11:
-d3eclist: it is a
-list of D3Ctmpsub-decls
-*)
-//
-(*
-HX:
-single layer(trtmp3b)
-*)
-|TIMPLall1 of
-(d2cst(*implment*), d3eclist)
-//
-(*
-HX:
-recursive version(trtmp3c)
-*)
-|TIMPLallx of
-(d2cst(*implment*), d3eclist)
-//
-(* ****** ****** *)
-//
 and
 s3taloadopt =
 |
-S3TALOADnone of
-( s2taloadopt )
+S3TALOADnone of (s2taloadopt)
 |
-S3TALOADdpar of
-(sint(*0/1*),d3parsed(*shrd*))
+S3TALOADdpar of (sint(*0/1*),d3parsed(*shared*))
 //
 (* ****** ****** *)
-fun
-timpl_fprint
-(
-  out:FILR, timp:timpl):(void)
 (* ****** ****** *)
 fun
 d3ecl_fprint
@@ -957,25 +975,6 @@ d3ecl_make_node
 (loc:loc_t,nod:d3ecl_node): d3ecl
 (* ****** ****** *)
 #symload d3ecl with d3ecl_make_node
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-timpl_get_stmp
-(timp: timpl): stamp
-fun
-timpl_get_node
-(timp: timpl): timpl_node
-//
-#symload stmp with timpl_get_stmp
-#symload node with timpl_get_node
-//
-fun
-timpl_make_node
-(stm:stamp,nod:timpl_node): timpl
-//
-#symload timpl with timpl_make_node
-//
 (* ****** ****** *)
 (* ****** ****** *)
 fun

@@ -254,6 +254,9 @@ fiarg_make_node
 #abstbox i0dcl_tbox // p0tr
 #typedef i0dcl = i0dcl_tbox
 (* ****** ****** *)
+#abstbox t0imp_tbox // p0tr
+#typedef t0imp = t0imp_tbox
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #abstbox i0valdcl_tbox//p0tr
@@ -361,6 +364,11 @@ i0exp_node =
 (* ****** ****** *)
 //
 |I0Evar of (d2var)
+//
+(* ****** ****** *)
+//
+|I0Etimp of
+(i0exp(*cst*), t0imp)
 //
 (* ****** ****** *)
 //
@@ -529,6 +537,41 @@ i0cls_make_node
 #symload i0gua with i0gua_make_node
 #symload i0gpt with i0gpt_make_node
 #symload i0cls with i0cls_make_node
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+t0imp_node =
+|T0IMPall1 of
+(d2cst(*implment*), i0dclist)
+|T0IMPallx of
+(d2cst(*implment*), i0dclist)
+//
+(* ****** ****** *)
+//
+fun
+t0imp_fprint
+(
+  out:FILR, timp:t0imp):(void)
+//
+(* ****** ****** *)
+//
+fun
+t0imp_get_stmp
+(timp: t0imp): stamp
+fun
+t0imp_get_node
+(timp: t0imp): t0imp_node
+//
+#symload stmp with t0imp_get_stmp
+#symload node with t0imp_get_node
+//
+fun
+t0imp_make_node
+(stm:stamp,nod:t0imp_node): t0imp
+//
+#symload t0imp with t0imp_make_node
 //
 (* ****** ****** *)
 (* ****** ****** *)

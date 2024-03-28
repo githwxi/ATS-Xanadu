@@ -510,15 +510,15 @@ d2var_set_styp
 //
 (*
 fun
-d2var_new1_tokn
-(tok0: token): d2var
+d2var_new1_tokn(token): d2var
+#symload d2var with d2var_new1_tokn
 *)
+//
 fun
 d2var_new2_name
 (loc0: loc_t, name: sym_t): d2var
-//
-#symload d2var with d2var_new1_tokn
 #symload d2var with d2var_new2_name
+//
 (* ****** ****** *)
 //
 datatype
