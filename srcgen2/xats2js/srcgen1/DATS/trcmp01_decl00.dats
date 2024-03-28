@@ -41,9 +41,32 @@ Authoremail: gmhwxiATgmailDOTcom
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dats.hats"
+(* ****** ****** *)
 //
 #staload "./../SATS/trcmp01.sats"
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+_(*DATS*)="./../DATS/trcmp01.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trcmp01_i0dclist
+( env0, dcls ) =
+(
+  list_trcmp01_fnp(env0, dcls, trcmp01_i0dcl))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (***********************************************************************)
