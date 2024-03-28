@@ -211,6 +211,48 @@ endloc (*local*) // end of [local(fiarg)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+
+local
+//
+datatype
+t0imp =
+T0IMP of
+(
+stamp, t0imp_node)
+datatype
+t0imp_vt =
+T0IMP_vt of
+(
+stamp, t0imp_node)
+//
+#absimpl
+t0imp_tbox = t0imp
+//
+in (* in-of-local *)
+//
+#implfun
+t0imp_make_node
+(   stm,nod   ) = T0IMP(stm,nod)
+//
+(* ****** ****** *)
+//
+#implfun
+t0imp_get_stmp(tmp) =
+let
+  val+T0IMP(stm,nod) = tmp in stm
+end
+#implfun
+t0imp_get_node(tmp) =
+let
+  val+T0IMP(stm,nod) = tmp in nod
+end
+//
+(* ****** ****** *)
+//
+end (*local*) // end of [local(t0imp)]
+
+(* ****** ****** *)
+(* ****** ****** *)
 //
 local
 //
