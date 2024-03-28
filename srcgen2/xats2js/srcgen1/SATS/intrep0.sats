@@ -108,6 +108,8 @@ XATSOPT "./../../.."
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
+#typedef t2jag = $D2E.t2jag
+(* ****** ****** *)
 #typedef d2con = $D2E.d2con
 #typedef d2cst = $D2E.d2cst
 #typedef d2var = $D2E.d2var
@@ -124,11 +126,15 @@ XATSOPT "./../../.."
 #typedef d3gpt = $D3E.d3gpt
 #typedef d3cls = $D3E.d3cls
 (* ****** ****** *)
+#typedef timpl = $D3E.timpl
+(* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef s2explst = $S2E.s2explst
 #typedef s2typlst = $S2E.s2typlst
+(* ****** ****** *)
+#typedef t2jaglst = $D2E.t2jaglst
 (* ****** ****** *)
 #typedef d2conlst = $D2E.d2conlst
 #typedef d2cstlst = $D2E.d2cstlst
@@ -375,7 +381,7 @@ i0exp_node =
 |I0Etapp of
 (i0exp(*fun*), s2explst(*arg*))
 |I0Etapq of
-(i0exp(*fun*), s2typlst(*arg*))
+(i0exp(*fun*), t2jaglst(*arg*))
 //
 (* ****** ****** *)
 //

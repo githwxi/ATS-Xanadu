@@ -287,6 +287,10 @@ i0exp(loc0, I0Evar(d2v))
 //
 (* ****** ****** *)
 //
+|D3Etimp _ => f0_timp(env0, d3e0)
+//
+(* ****** ****** *)
+//
 |D3Esapp _ => f0_sapp(env0, d3e0)
 |D3Esapq _ => f0_sapq(env0, d3e0)
 //
@@ -352,6 +356,33 @@ val loc0 = d3e0.lctn((*0*))
 (* ****** ****** *)
 //
 fun
+f0_timp
+( env0:
+! trdienv
+, d3e0: d3exp): i0exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Etimp
+(d3e1, timp) = d3e0.node()
+//
+val i0e1 =
+(
+  trxd3i0_d3exp(env0, d3e1))
+val timp =
+(
+  trxd3i0_timpl(env0, timp))
+//
+in//let
+(
+i0exp(loc0,I0Etimp(i0e1, timp)))
+end//let//end-of-[f0_timp(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_sapp
 ( env0:
 ! trdienv
@@ -393,14 +424,14 @@ let
 val loc0 = d3e0.lctn()
 //
 val-
-D3Esapp
+D3Etapp
 ( d3f0, s2es) = d3e0.node()
 val i0f0 = 
 (
   trxd3i0_d3exp(env0, d3f0))
 in//let
 (
-  i0exp(loc0, I0Etapp(i0f0, s2es)))
+i0exp(loc0, I0Etapp(i0f0, s2es)))
 end//let//end-of-[f0_tapp(env0,d3e0)]
 //
 fun
@@ -413,14 +444,14 @@ let
 val loc0 = d3e0.lctn()
 //
 val-
-D3Esapq
+D3Etapq
 ( d3f0, t2ps) = d3e0.node()
 val i0f0 = 
 (
   trxd3i0_d3exp(env0, d3f0))
 in//let
 (
-  i0exp(loc0, I0Etapq(i0f0, t2ps)))
+i0exp(loc0, I0Etapq(i0f0, t2ps)))
 end//let//end-of-[f0_tapp(env0,d3e0)]
 //
 (* ****** ****** *)
@@ -453,7 +484,7 @@ val i0es =
 //
 in//let
 (
-  i0exp(loc0, I0Edapp(i0f0, i0es)))
+i0exp(loc0, I0Edapp(i0f0, i0es)))
 end (*let*) // end of [f0_dapp(env0,d3e0)]
 //
 (* ****** ****** *)

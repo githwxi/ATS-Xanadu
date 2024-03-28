@@ -109,6 +109,12 @@ i0cls_fprint(g_print$out<>(), cls)
 (* ****** ****** *)
 //
 #impltmp
+g_print<t0imp>(timp) =
+t0imp_fprint(g_print$out<>(), timp)
+//
+(* ****** ****** *)
+//
+#impltmp
 g_print
 <i0dcl>(idcl) =
 i0dcl_fprint(g_print$out<>(), idcl)

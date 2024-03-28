@@ -149,8 +149,15 @@ i0e0.node() of
 //
 (* ****** ****** *)
 //
+|I0Etimp
+(i0e1, timp) =>
+(
+print("I0Etimp(",i0e1,";",timp,")"))
+//
+(* ****** ****** *)
+//
 |I0Etapp
-( i0f0, s2es) =>
+(i0f0, s2es) =>
 print("I0Etapp(", i0f0, ";", s2es, ")")
 |I0Etapq
 ( i0f0, t2ps) =>
@@ -159,27 +166,27 @@ print("I0Etapq(", i0f0, ";", t2ps, ")")
 (* ****** ****** *)
 //
 |I0Edapp
-( i0f0, i0es) =>
+(i0f0, i0es) =>
 print("I0Edapp(", i0f0, ";", i0es, ")")
 //
 (* ****** ****** *)
 //
 |I0Elet0
-( dcls, i0e1) =>
+(dcls, i0e1) =>
 print("I0Elet0(", dcls, ";", i0e1, ")")
 //
 (* ****** ****** *)
 //
 |I0Eift0
-( test
-, ithn, iels) =>
+(test
+,ithn, iels) =>
 (
 print
 ("I0Eift0(", test, ";", ithn, ";", iels, ")"))
 //
 |I0Ecas0
-( tknd
-, i0e1, dcls) =>
+(tknd
+,i0e1, dcls) =>
 (
 print
 ("I0Ecas0(", tknd, ";", i0e1, ";", dcls, ")"))
@@ -187,7 +194,7 @@ print
 (* ****** ****** *)
 //
 |I0Eseqn
-( i0es, i0e1) =>
+(i0es, i0e1) =>
 print("I0Eseqn(", i0es, ";", i0e1, ")")
 //
 (* ****** ****** *)
@@ -196,10 +203,10 @@ print("I0Eseqn(", i0es, ";", i0e1, ")")
 ( i0es ) =>
 print("I0Etup0(", i0es, ")")
 |I0Etup1
-( tknd, i0es) =>
+(tknd, i0es) =>
 print("I0Etup1(", tknd, ";", i0es, ")")
 |I0Ercd2
-( tknd, lies) =>
+(tknd, lies) =>
 print("I0Ercd2(", tknd, ";", lies, ")")
 //
 (* ****** ****** *)
@@ -291,12 +298,12 @@ print("T0IMPone1(", dcl1 ,")")
 *)
 //
 |T0IMPall1
-(d2c1, dcls) =>
-print("T0IMPall1(",d2c1,";",dcls,")")
+(d2c1, i0ds) =>
+print("T0IMPall1(",d2c1,";",i0ds,")")
 //
 |T0IMPallx
-(d2c1, dcls) =>
-print("T0IMPallx(",d2c1,";",dcls,")")
+(d2c1, i0ds) =>
+print("T0IMPallx(",d2c1,";",i0ds,")")
 //
 end (*let*) // end of [t0imp_fprint(...)]
 //

@@ -100,8 +100,8 @@ val () = () where
 val ((*0*)) =
 (
 println
-("parsed(ir) = ", mytest01_dats.parsed()))
-} (*where*) // end of [xinterp_irparsed(...)]
+("parsed(i0) = ", mytest01_dats.parsed()))
+} (*where*) // end of [xinterp_i0parsed(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
