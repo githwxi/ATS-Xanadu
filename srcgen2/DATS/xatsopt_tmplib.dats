@@ -1450,13 +1450,15 @@ d3cls_fprint(g_print$out<>(), dcls)
 (* ****** ****** *)
 //
 #impltmp
+g_print<timpl>(timp) =
+timpl_fprint(g_print$out<>(), timp)
+//
+(* ****** ****** *)
+//
+#impltmp
 g_print<d3ecl>(d3cl) =
 d3ecl_fprint(g_print$out<>(), d3cl)
 //
-(* ****** ****** *)
-#impltmp
-g_print<timpl>(timp) =
-timpl_fprint(g_print$out<>(), timp)
 (* ****** ****** *)
 //
 #impltmp

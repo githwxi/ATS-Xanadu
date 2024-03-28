@@ -123,6 +123,10 @@ trxd3i0_d3cls
 (env0: !trdienv, dcls: d3cls): i0cls
 (* ****** ****** *)
 fun
+trxd3i0_timpl
+(env0: !trdienv, timp: timpl): t0imp
+(* ****** ****** *)
+fun
 trxd3i0_d3ecl
 (env0: !trdienv, d3cl: d3ecl): i0dcl
 (* ****** ****** *)

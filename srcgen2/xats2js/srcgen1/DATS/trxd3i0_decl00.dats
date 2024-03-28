@@ -76,8 +76,51 @@ _(*DATS*)="./../DATS/trxd3i0.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#symload stmp with timpl_get_stmp
+#symload node with timpl_get_node
+(* ****** ****** *)
 #symload lctn with d3ecl_get_lctn
 #symload node with d3ecl_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxd3i0_timpl
+(env0 , timp) =
+(
+case+
+timp.node() of
+//
+|TIMPLall1
+(d2c1, dcls) =>
+(
+t0imp_make_node
+(stmp,T0IMPall1(d2c1,dcls))
+) where
+{
+val dcls =
+trxd3i0_d3eclist(env0, dcls)}
+//
+|TIMPLallx
+(d2c1, dcls) =>
+(
+t0imp_make_node
+(stmp,T0IMPallx(d2c1,dcls))
+) where
+{
+val dcls =
+trxd3i0_d3eclist(env0, dcls)}
+//
+) where
+{
+//
+val stmp = timp.stmp((*void*))
+//
+val (  ) =
+prerrln("trxd3i0_timpl: timp = ", timp)
+//
+}(*where*)//end-of-[trxd3i0_timpl(env0,...)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
