@@ -131,10 +131,35 @@ tr01env_insert_ilet
 (* ****** ****** *)
 //
 fun
-trcmp01_i0exp
+<x0:t0>
+<y0:t0>
+list_trcmp01_fnp
+( e1:
+! tr01env
+, xs: list(x0)
+, (!tr01env, x0) -> y0): list(y0)
+fun
+<x0:t0>
+<y0:t0>
+optn_trcmp01_fnp
+( e1:
+! tr01env
+, xs: optn(x0)
+, (!tr01env, x0) -> y0): optn(y0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun // HX: Note that [trcmp01]
+trcmp01_i0exp // inserts into [env0]
 (env0: !tr01env, i0e0: i0exp): i1val
 //
 (* ****** ****** *)
+//
+fun
+trcmp01_i0dcl
+(env0: !tr01env, idcl: i0dcl): i1dcl
+//
 (* ****** ****** *)
 //
 fun
