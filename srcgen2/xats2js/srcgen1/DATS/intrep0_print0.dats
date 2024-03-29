@@ -130,10 +130,6 @@ in//let
 case+
 i0e0.node() of
 //
-|I0Evar(d2v) =>
-(
- print("I0Evar(", d2v, ")"))
-//
 |I0Eint(int) =>
 (
  print("I0Eint(", int, ")"))
@@ -146,6 +142,21 @@ i0e0.node() of
 |I0Estr(str) =>
 (
  print("I0Estr(", str, ")"))
+//
+(* ****** ****** *)
+//
+|I0Evar(d2v) =>
+(
+ print("I0Evar(", d2v, ")"))
+//
+(* ****** ****** *)
+//
+|I0Econ(d2c) =>
+(
+ print("I0Econ(", d2c, ")"))
+|I0Ecst(d2c) =>
+(
+ print("I0Ecst(", d2c, ")"))
 //
 (* ****** ****** *)
 //
@@ -325,29 +336,52 @@ dcl0.node() of
 (  d3cl  ) =>
 print("I0Dd3ecl(", d3cl, ")")
 //
+|I0Dtmpsub
+(svts, idcl) =>
+print
+("I0Dtmpsub(", svts, ";", idcl, ")")
+//
 |I0Dlocal0
 (head, body) =>
 print
 ("I0Dlocal0(", head, ";", body, ")")
 //
-|
-I0Dvaldclst
+(* ****** ****** *)
+//
+|I0Dvaldclst
 (  tknd, i0vs  ) =>
 (
 print("I0Dvaldclst(",tknd,";",i0vs,")"))
-|
-I0Dvardclst
+|I0Dvardclst
 (  tknd, i0vs  ) =>
 (
 print("I0Dvardclst(",tknd,";",i0vs,")"))
 //
-|
-I0Dfundclst
+(* ****** ****** *)
+//
+|I0Dfundclst
 (tknd
 ,tqas,d2cs,i0fs) =>
 (
 print("I0Dfundclst(");
 print(tknd,";",tqas,";",d2cs,";",i0fs,")"))
+//
+(* ****** ****** *)
+//
+|I0Dimplmnt0
+(tknd
+,stmp
+,sqas
+,tqas
+,dqid
+,tias,farg,body) =>
+(
+print("I0Dimplmnt0(");
+print(tknd,";",stmp,";");
+print(sqas,";",tqas,";");
+print(dqid,";",tias,";",farg,";",body,")"))
+//
+(* ****** ****** *)
 //
 |I0Dnone0() => print( "I0Dnone0(",")" )
 |I0Dnone1(d3cl) => print("I0Dnone1(", d3cl, ")")
