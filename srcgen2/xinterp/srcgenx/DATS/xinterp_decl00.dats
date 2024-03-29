@@ -695,5 +695,5 @@ xinterp_irfundclist(env0, irfs)))//xinterp_irfundclist
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_xintrep_decl00.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_xinterp_decl00.dats] *)
 (***********************************************************************)

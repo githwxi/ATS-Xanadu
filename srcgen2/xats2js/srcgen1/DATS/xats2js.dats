@@ -30,15 +30,52 @@
 //
 (*
 Author: Hongwei Xi
-//
-Sat 23 Mar 2024 03:04:39 PM EDT
-//
+(*
+Fri 29 Mar 2024 04:29:04 PM EDT
+*)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#include
+"./../HATS/libxats2js.hats"
+//
+(* ****** ****** *)
+//
+#staload "./../SATS/intrep0.sats"
+#staload "./../SATS/intrep1.sats"
+#staload "./../SATS/xats2js.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xats2js_i1parsed
+  (ipar) = let
+//
+val stadyn =
+i1parsed_get_stadyn(ipar)
+val nerror =
+i1parsed_get_nerror(ipar)
+val source =
+i1parsed_get_source(ipar)
+val parsed =
+i1parsed_get_parsed(ipar)
+//
+val env0 = xatsenv_make_nil()
+//
+in//let
+(
+  xatsenv_free_top(env0)) where
+{ val () =
+  xats2js_i1dclistopt(env0, parsed) }
+end (*let*) // end of [xats2js_i1parsed(ipar)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_SATS_xjsemit.sats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_xats2js.dats] *)
 (***********************************************************************)

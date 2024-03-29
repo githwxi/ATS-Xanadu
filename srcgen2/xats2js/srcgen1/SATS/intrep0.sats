@@ -79,8 +79,10 @@ XATSOPT "./../../.."
 #typedef stamp = stamp
 #typedef sym_t = sym_t
 #typedef label = label
+(* ****** ****** *)
 #typedef loctn = loctn
 #typedef loc_t = loctn
+#typedef lcsrc = lcsrc
 (* ****** ****** *)
 #typedef fpath = fpath
 #typedef token = token
@@ -763,7 +765,7 @@ i0fundcl_make_args
 //
 fun
 i0parsed_fprint
-(out:FILR, dpar:i0parsed): void
+(out:FILR, ipar:i0parsed): void
 //
 (* ****** ****** *)
 //

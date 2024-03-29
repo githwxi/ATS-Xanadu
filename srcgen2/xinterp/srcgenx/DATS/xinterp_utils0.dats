@@ -790,5 +790,5 @@ end(*let*)//end-of-[ IRVfix0(...) ]
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_xintrep_utils0.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_xinterp_utils0.dats] *)
 (***********************************************************************)
