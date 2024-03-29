@@ -108,11 +108,18 @@ XATSOPT "./../../.."
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
 (* ****** ****** *)
-#typedef t2jag = $D2E.t2jag
+#typedef s2vts = $T2P.s2vts
 (* ****** ****** *)
 #typedef d2con = $D2E.d2con
 #typedef d2cst = $D2E.d2cst
 #typedef d2var = $D2E.d2var
+(* ****** ****** *)
+#typedef s2qag = $D2E.s2qag
+#typedef t2iag = $D2E.t2iag
+(* ****** ****** *)
+#typedef t2jag = $D2E.t2jag
+(* ****** ****** *)
+#typedef dimpl = $D2E.dimpl
 (* ****** ****** *)
 #typedef d3pat = $D3E.d3pat
 #typedef d3exp = $D3E.d3exp
@@ -134,11 +141,14 @@ XATSOPT "./../../.."
 #typedef s2explst = $S2E.s2explst
 #typedef s2typlst = $S2E.s2typlst
 (* ****** ****** *)
-#typedef t2jaglst = $D2E.t2jaglst
-(* ****** ****** *)
 #typedef d2conlst = $D2E.d2conlst
 #typedef d2cstlst = $D2E.d2cstlst
 #typedef d2varlst = $D2E.d2varlst
+(* ****** ****** *)
+#typedef s2qaglst = $D2E.s2qaglst
+#typedef t2iaglst = $D2E.t2iaglst
+(* ****** ****** *)
+#typedef t2jaglst = $D2E.t2jaglst
 (* ****** ****** *)
 #typedef t2qaglst = $D2E.t2qaglst
 (* ****** ****** *)
@@ -363,13 +373,13 @@ i0exp_node =
 |I0Estr of token
 //
 (* ****** ****** *)
-//
 |I0Etop of (sym_t)
-//
-//
+(* ****** ****** *)
+|I0Evar of (d2var)
 (* ****** ****** *)
 //
-|I0Evar of (d2var)
+|I0Econ of (d2con)
+|I0Ecst of (d2cst)
 //
 (* ****** ****** *)
 //
@@ -599,6 +609,11 @@ i0dcl_node =
 //
 (* ****** ****** *)
 //
+|I0Dtmpsub of
+(s2vts(*tmpsub*), i0dcl)
+//
+(* ****** ****** *)
+//
 |I0Dlocal0 of
 ( i0dclist(*local-head*)
 , i0dclist(*local-body*))
@@ -606,11 +621,11 @@ i0dcl_node =
 (* ****** ****** *)
 //
 |I0Dinclude of
-( sint(*s/d*)
-, token
-, g1exp // src
-, fpathopt
-, i0dclistopt) // inclusion
+(sint(*s/d*)
+,token
+,g1exp // src
+,fpathopt
+,i0dclistopt) // inclusion
 //
 (* ****** ****** *)
 //
@@ -620,8 +635,17 @@ i0dcl_node =
 (token(*VAR(vlk)*), i0vardclist)
 //
 |I0Dfundclst of
-( token(*FUN(fnk)*)
-, t2qaglst, d2cstlst, i0fundclist)
+(token(*FUN(fnk)*)
+,t2qaglst, d2cstlst, i0fundclist)
+//
+(* ****** ****** *)
+//
+|I0Dimplmnt0 of
+(token(*impkind*)
+,stamp(*unicity*)
+,s2qaglst // s2vs
+,t2qaglst // s2vs+t2is
+,dimpl, t2iaglst, fiarglst, i0exp)
 //
 (* ****** ****** *)
 //

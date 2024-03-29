@@ -472,17 +472,17 @@ token(*knd*), sint(*npf*), l3d3elst)
 //
 (* ****** ****** *)
 //
-|D3Elam0 of
+| D3Elam0 of
 ( token(*knd*)
 , f3arglst, s2res, f1unarrw, d3exp )
-|D3Efix0 of
+| D3Efix0 of
 ( token(*knd*)
 , d2var(*fid*)
 , f3arglst, s2res, f1unarrw, d3exp )
 //
 (* ****** ****** *)
 //
-|D3Etry0 of
+| D3Etry0 of
 ( token(*$TRY*)
 , d3exp(*norm*), d3clslst(*handles*))
 //
@@ -857,6 +857,8 @@ D3Cfundclst of
 ( token(*FUN(fnk)*)
 , t2qaglst, d2cstlst, d3fundclist)
 //
+(* ****** ****** *)
+//
 |
 D3Cimplmnt0 of
 ( token(*impkind*)
@@ -877,6 +879,8 @@ D3Cimplmnt1 of
 , dimpl // HX: impl-d2cst
 , t2iaglst, f3arglst, s2res, d3exp)
 *)
+//
+(* ****** ****** *)
 //
 |
 D3Ctmplocal of

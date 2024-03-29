@@ -281,9 +281,20 @@ i0exp(loc0, I0Eflt(tok))
 ( tok ) =>
 i0exp(loc0, I0Estr(tok))
 //
+(* ****** ****** *)
+//
 |D3Evar
 ( d2v ) =>
 i0exp(loc0, I0Evar(d2v))
+//
+(* ****** ****** *)
+//
+|D3Econ
+( d2c ) =>
+i0exp(loc0, I0Econ(d2c))
+|D3Ecst
+( d2c ) =>
+i0exp(loc0, I0Ecst(d2c))
 //
 (* ****** ****** *)
 //
