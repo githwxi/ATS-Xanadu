@@ -218,6 +218,25 @@ print("TEQI0EXPsome(",tok0,";",i0e1,")"))
 endlet // end-of-[g_print<teqi0exp>(tdxp)]
 //
 (* ****** ****** *)
+//
+#impltmp
+g_print
+<i0parsed>(ipar) =
+let
+val () =
+i0parsed_fprint(g_print$out<>(), ipar)end
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<i1parsed>(ipar) =
+let
+val () =
+i1parsed_fprint(g_print$out<>(), ipar)end
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (***********************************************************************)

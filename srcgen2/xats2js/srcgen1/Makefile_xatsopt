@@ -63,9 +63,9 @@ trcmp01_sats: ; \
 $(XATSOPT) --static SATS/trcmp01.sats
 ######
 all_sats:: \
-xjsemit_sats
-xjsemit_sats: ; \
-$(XATSOPT) --static SATS/xjsemit.sats
+xats2js_sats
+xats2js_sats: ; \
+$(XATSOPT) --static SATS/xats2js.sats
 ######
 
 ######
@@ -141,17 +141,17 @@ $(XATSOPT) --dynamic DATS/trcmp01_decl00.dats
 
 ######
 all_dats:: \
-xjsemit_dats
-xjsemit_dats: ; \
-$(XATSOPT) --dynamic DATS/xjsemit.dats
+xats2js_dats
+xats2js_dats: ; \
+$(XATSOPT) --dynamic DATS/xats2js.dats
 all_dats:: \
-xjsemit_dynexp_dats
-xjsemit_dynexp_dats: ; \
-$(XATSOPT) --dynamic DATS/xjsemit_dynexp.dats
+xats2js_dynexp_dats
+xats2js_dynexp_dats: ; \
+$(XATSOPT) --dynamic DATS/xats2js_dynexp.dats
 all_dats:: \
-xjsemit_decl00_dats
-xjsemit_decl00_dats: ; \
-$(XATSOPT) --dynamic DATS/xjsemit_decl00.dats
+xats2js_decl00_dats
+xats2js_decl00_dats: ; \
+$(XATSOPT) --dynamic DATS/xats2js_decl00.dats
 ######
 
 ######

@@ -47,8 +47,6 @@ val (  ) = prerrln
 #include
 "./../../DATS/intrep0_print0.dats"
 //
-(* ****** ****** *)
-//
 #include
 "./../../DATS/trxd3i0.dats"
 #include
@@ -59,13 +57,39 @@ val (  ) = prerrln
 "./../../DATS/trxd3i0_decl00.dats"
 //
 (* ****** ****** *)
+//
+#include
+"./../../DATS/interp1.dats"
+#include
+"./../../DATS/interp1_print0.dats"
+//
+#include
+"./../../DATS/trcmp01.dats"
+#include
+"./../../DATS/trcmp01_myenv0.dats"
+#include
+"./../../DATS/trcmp01_dynexp.dats"
+#include
+"./../../DATS/trcmp01_decl00.dats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val
-mytest01_dats =
+mytest02_dats =
 (
-i0parsed_of_trxd3i0(dpar)
+i1parsed_of_trcmp01(ipar)
 ) where
+{
+//
+val
+ipar =
+i0parsed_of_trxd3i0(dpar)
+val
+(  ) =
+println("parsed(i0) = ", ipar)
+//
+} where
 {
 //
 val
@@ -79,7 +103,8 @@ dpar =
 d3parsed_of_tread33(dpar)
 //
 val ( ) =
-println("dpar = ", dpar)
+(
+println("dpar = ", dpar))
 //
 val ( ) =
 prerrln
@@ -91,16 +116,16 @@ fperr33_d3parsed(out, dpar)
 } where
 {
 val dpar = d3parsed_from_fpath
-(1(*dyn*), "./DATA/mytest01.dats") }
+(1(*dyn*), "./DATA/mytest02.dats") }
 //
 (* ****** ****** *)
 //
 val ((*0*)) =
 (
 println
-("parsed(i0) = ", mytest01_dats.parsed()))
+("parsed(i1) = ", mytest02_dats.parsed()))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_JS_test01_xats2js.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_JS_test02_xats2js.dats] *)

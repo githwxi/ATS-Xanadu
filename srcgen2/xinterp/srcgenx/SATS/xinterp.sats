@@ -550,5 +550,5 @@ xinterp_irdclistopt
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen1_xinterp_srcgen1_SATS_xintrep.sats] *)
+(* end of [ATS3/XANADU_srcgen1_xinterp_srcgen1_SATS_xinterp.sats] *)
 (***********************************************************************)

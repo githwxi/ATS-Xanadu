@@ -88,7 +88,7 @@ in//let
   xintenv_free_top(env0)) where
 { val () =
   xinterp_irdclistopt(env0, parsed) }
-end (*let*) // end of [d3parsed_trans3a(dpar)]
+end (*let*) // end of [xinterp_irparsed(dpar)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -123,5 +123,5 @@ map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_xintrep.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_xinterp.dats] *)
 (***********************************************************************)

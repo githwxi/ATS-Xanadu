@@ -48,36 +48,20 @@ XATSOPT "./../../.."
 /HATS/xatsopt_sats.hats"
 (* ****** ****** *)
 //
-#staload I0R="./intrep0.sats"
-#staload I1R="./intrep1.sats"
+#staload "./intrep0.sats"
+#staload "./intrep1.sats"
 //
-(* ****** ****** *)
-#typedef i0pat = $I0R.i0pat
-#typedef i0exp = $I0R.i0exp
-#typedef i0dcl = $I0R.i0dcl
-(* ****** ****** *)
-#typedef i1val = $I1R.i1val
-#typedef i1bfi = $I1R.i1bfi
-#typedef i1let = $I1R.i1let
-#typedef i1cmp = $I1R.i1cmp
-(* ****** ****** *)
-#typedef i1dcl = $I1R.i1dcl
-(* ****** ****** *)
-(* ****** ****** *)
-#typedef i0patlst = list(i0pat)
-#typedef i0explst = list(i0exp)
-(* ****** ****** *)
-#typedef i0dclist = list(i0dcl)
-(* ****** ****** *)
-#typedef i1valist = list(i1val)
-#typedef i1letlst = list(i1let)
-#typedef i1cmplst = list(i1cmp)
-(* ****** ****** *)
-#typedef i1dclist = list(i1dcl)
 (* ****** ****** *)
 (* ****** ****** *)
 #absvtbx tr01env_vtbx
 #vwtpdef tr01env = tr01env_vtbx
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1parsed_of_trcmp01
+( ipar : i0parsed ): (i1parsed)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

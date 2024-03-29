@@ -60,6 +60,11 @@ XATSOPT "./../../.."
 #staload "./../SATS/trcmp01.sats"
 //
 (* ****** ****** *)
+//
+#staload
+_(*DATS*)="./../DATS/trcmp01.dats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 #symload lctn with i0pat_get_lctn
 #symload node with i0pat_get_node
@@ -275,7 +280,15 @@ prerrln("trcmp01_i0exp: iexp = ", iexp)
 //
 }(*where*)//end-of-[trcmp01_i0exp(env0,iexp)]
 
-
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trcmp01_i0explst
+( env0, i0es ) =
+(
+  list_trcmp01_fnp(env0, i0es, trcmp01_i0exp))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 

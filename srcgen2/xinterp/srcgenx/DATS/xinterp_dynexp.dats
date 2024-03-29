@@ -1556,5 +1556,5 @@ prerrln("xinterp_irclslst: irv0 = ", irv0)
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_xintrep_dynexp.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_xinterp_dynexp.dats] *)
 (***********************************************************************)

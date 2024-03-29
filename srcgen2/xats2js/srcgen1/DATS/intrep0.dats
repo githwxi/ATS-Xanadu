@@ -480,6 +480,44 @@ i0parsed_tbox = i0parsed
 in//local
 
 (* ****** ****** *)
+//
+#implfun
+i0parsed_get_stadyn
+  (ipar) =
+(
+  stadyn ) where
+{
+val+
+I0PARSED
+( stadyn
+, nerror, source, parsed) = ipar
+} (*where*)//end-of-[i0parsed_get_stadyn]
+//
+#implfun
+i0parsed_get_nerror
+  (ipar) =
+(
+  nerror ) where
+{
+val+
+I0PARSED
+( stadyn
+, nerror, source, parsed) = ipar
+} (*where*)//end-of-[i0parsed_get_nerror]
+//
+#implfun
+i0parsed_get_source
+  (ipar) =
+(
+  source ) where
+{
+val+
+I0PARSED
+( stadyn
+, nerror, source, parsed) = ipar
+} (*where*)//end-of-[i0parsed_get_source]
+//
+(* ****** ****** *)
 
 #implfun
 i0parsed_get_parsed

@@ -26,19 +26,36 @@
 *)
 
 (* ****** ****** *)
-(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
-//
-Sat 23 Mar 2024 10:45:52 PM EDT
-//
+(*
+Fri 29 Mar 2024 04:04:08 PM EDT
+*)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload IR0="./intrep0.sats"
+#staload IR1="./intrep1.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef i0parsed = $IR0.i0parsed
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+xats2js_i0parsed(i0parsed): (void)
+(* ****** ****** *)
+(* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_xjsemit_decl00.dats] *)
+(* end of [ATS3/XANADU_srcgen1_xats2js_srcgen1_SATS_xats2js.sats] *)
 (***********************************************************************)
