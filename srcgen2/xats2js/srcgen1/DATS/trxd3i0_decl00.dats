@@ -291,17 +291,6 @@ D3Cfundclst
 , tqas
 , d2cs, d3fs) = d3cl.node()
 //
-in//let
-//
-case+ tqas of
-|
-list_nil() =>
-(
-  i0dcl(loc0, I0Dd3ecl(d3cl)))
-|
-list_cons _ =>
-let
-//
 val
 i0fs =
 trxd3i0_d3fundclist(env0, d3fs)
@@ -309,7 +298,6 @@ trxd3i0_d3fundclist(env0, d3fs)
 in//let
 i0dcl_make_node
 (loc0, I0Dfundclst(tknd, d2cs, i0fs))
-end//let//end-of-[list_cons]//end-of-[case+]
 //
 end where
 {

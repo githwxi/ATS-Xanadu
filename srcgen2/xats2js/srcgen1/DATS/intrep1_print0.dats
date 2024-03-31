@@ -156,8 +156,10 @@ g_print$out<>() = out
 in//let
 //
 case+ ilet of
+(*
 |I1LETnew0(ireg) =>
 print("I1LETnew0(", ")")
+*)
 |I1LETnew1(ireg, ibfi) =>
 print("I1LETnew1(", ireg, ";", ibfi, ")")
 //

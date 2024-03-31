@@ -43,16 +43,61 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload IR0="./intrep0.sats"
-#staload IR1="./intrep1.sats"
+#staload "./intrep0.sats"
+#staload "./intrep1.sats"
 //
-(* ****** ****** *)
-(* ****** ****** *)
-#typedef i0parsed = $IR0.i0parsed
 (* ****** ****** *)
 (* ****** ****** *)
 fun
 xats2js_i0parsed(i0parsed): (void)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#absvwtp xatsenv_vtbx // p0tr
+#vwtpdef xatsenv = xatsenv_vtbx
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+xatsenv_make_nil
+(    (*nil*)    ): xatsenv
+fun
+xatsenv_free_top
+( env0: ~xatsenv ): void//fun
+//
+(* ****** ****** *)
+//
+fun
+xatsenv_pshlam0
+( env0: !xatsenv ): void//fun
+fun
+xatsenv_pshlet0
+( env0: !xatsenv ): void//fun
+//
+fun
+xatsenv_poplam0
+( env0: !xatsenv ): i1letlst//fun
+fun
+xatsenv_poplet0
+( env0: !xatsenv ): i1letlst//fun
+//
+(* ****** ****** *)
+//
+fun
+xatsenv_pshift0
+( env0: !xatsenv ): void//fun
+fun
+xatsenv_pshcas0
+( env0: !xatsenv ): void//fun
+//
+fun
+xatsenv_popift0
+( env0: !xatsenv ): i1letlst//fun
+fun
+xatsenv_popcas0
+( env0: !xatsenv ): i1letlst//fun
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
