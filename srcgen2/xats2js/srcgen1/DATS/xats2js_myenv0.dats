@@ -29,80 +29,43 @@
 //
 (*
 Author: Hongwei Xi
-(*
-Fri 29 Mar 2024 04:04:08 PM EDT
-*)
+//
+Sun 31 Mar 2024 04:15:28 PM EDT
+//
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(*
+#define
+XATSOPT "./../../.."
+*)
 (* ****** ****** *)
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#staload "./intrep0.sats"
-#staload "./intrep1.sats"
-//
-(* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 //
-#absvwtp xatsenv_vtbx // p0tr
-#vwtpdef xatsenv = xatsenv_vtbx
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-xatsenv_make_nil
-(    (*nil*)    ): xatsenv
-fun
-xatsenv_free_top
-( env0: ~xatsenv ): void//fun
+#include
+"./../HATS/libxats2js.hats"
 //
 (* ****** ****** *)
 //
-fun
-xatsenv_pshlam0
-( env0: !xatsenv ): void//fun
-fun
-xatsenv_pshlet0
-( env0: !xatsenv ): void//fun
-//
-fun
-xatsenv_poplam0
-( env0: !xatsenv ): i1letlst//fun
-fun
-xatsenv_poplet0
-( env0: !xatsenv ): i1letlst//fun
+#include
+"./../HATS/xats2js_dats.hats"
 //
 (* ****** ****** *)
 //
-fun
-xatsenv_pshift0
-( env0: !xatsenv ): void//fun
-fun
-xatsenv_pshcas0
-( env0: !xatsenv ): void//fun
+#staload "./../SATS/intrep0.sats"
+#staload "./../SATS/intrep1.sats"
 //
-fun
-xatsenv_popift0
-( env0: !xatsenv ): i1letlst//fun
-fun
-xatsenv_popcas0
-( env0: !xatsenv ): i1letlst//fun
+#staload "./../SATS/xats2js.sats"
 //
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-xats2js_i0parsed(i0parsed): (void)
-//
-(* ****** ****** *)
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen1_xats2js_srcgen1_SATS_xats2js.sats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_xats2js_myenv0.dats] *)
 (***********************************************************************)
