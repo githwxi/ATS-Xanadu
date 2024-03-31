@@ -55,6 +55,8 @@ XATSOPT "./../../.."
 #typedef loc_t = loc_t
 #typedef loctn = loctn
 (* ****** ****** *)
+#typedef lcsrc = lcsrc
+(* ****** ****** *)
 //
 #typedef fpath = fpath
 #typedef fpathopt = fpathopt

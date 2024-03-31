@@ -167,12 +167,12 @@ print("I0Etimp(",i0e1,";",timp,")"))
 //
 (* ****** ****** *)
 //
-|I0Etapp
-(i0f0, s2es) =>
-print("I0Etapp(", i0f0, ";", s2es, ")")
-|I0Etapq
-( i0f0, t2ps) =>
-print("I0Etapq(", i0f0, ";", t2ps, ")")
+|I0Etapp(i0f0) =>
+(
+  print("I0Etapp(", i0f0, ")"))
+|I0Etapq(i0f0) =>
+(
+  print("I0Etapq(", i0f0, ")"))
 //
 (* ****** ****** *)
 //
@@ -360,26 +360,19 @@ print("I0Dvardclst(",tknd,";",i0vs,")"))
 (* ****** ****** *)
 //
 |I0Dfundclst
-(tknd
-,tqas,d2cs,i0fs) =>
-(
-print("I0Dfundclst(");
-print(tknd,";",tqas,";",d2cs,";",i0fs,")"))
+(tknd,d2cs,i0fs) =>
+( print("I0Dfundclst(")
+; print(tknd, ";", d2cs, ";", i0fs, ")"))
 //
 (* ****** ****** *)
 //
 |I0Dimplmnt0
 (tknd
 ,stmp
-,sqas
-,tqas
-,dqid
-,tias,farg,body) =>
-(
-print("I0Dimplmnt0(");
-print(tknd,";",stmp,";");
-print(sqas,";",tqas,";");
-print(dqid,";",tias,";",farg,";",body,")"))
+,dqid,farg,body) =>
+( print("I0Dimplmnt0(")
+; print(tknd,";",stmp,";")
+; print(dqid, ";", farg, ";", body, ")"))
 //
 (* ****** ****** *)
 //

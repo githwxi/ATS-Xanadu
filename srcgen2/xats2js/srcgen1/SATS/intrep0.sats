@@ -116,10 +116,12 @@ XATSOPT "./../../.."
 #typedef d2cst = $D2E.d2cst
 #typedef d2var = $D2E.d2var
 (* ****** ****** *)
+(*
 #typedef s2qag = $D2E.s2qag
+#typedef t2qag = $D2E.t2qag
 #typedef t2iag = $D2E.t2iag
-(* ****** ****** *)
 #typedef t2jag = $D2E.t2jag
+*)
 (* ****** ****** *)
 #typedef dimpl = $D2E.dimpl
 (* ****** ****** *)
@@ -147,12 +149,12 @@ XATSOPT "./../../.."
 #typedef d2cstlst = $D2E.d2cstlst
 #typedef d2varlst = $D2E.d2varlst
 (* ****** ****** *)
+(*
 #typedef s2qaglst = $D2E.s2qaglst
-#typedef t2iaglst = $D2E.t2iaglst
-(* ****** ****** *)
-#typedef t2jaglst = $D2E.t2jaglst
-(* ****** ****** *)
 #typedef t2qaglst = $D2E.t2qaglst
+#typedef t2iaglst = $D2E.t2iaglst
+#typedef t2jaglst = $D2E.t2jaglst
+*)
 (* ****** ****** *)
 #typedef d3patlst = $D3E.d3patlst
 (* ****** ****** *)
@@ -390,10 +392,8 @@ i0exp_node =
 //
 (* ****** ****** *)
 //
-|I0Etapp of
-(i0exp(*fun*), s2explst(*arg*))
-|I0Etapq of
-(i0exp(*fun*), t2jaglst(*arg*))
+|I0Etapp of (i0exp(*fun*))
+|I0Etapq of (i0exp(*fun*))
 //
 (* ****** ****** *)
 //
@@ -607,6 +607,8 @@ TEQI0EXPsome of (token(*EQ0*), i0exp)
 datatype
 i0dcl_node =
 //
+(* ****** ****** *)
+//
 |I0Dd3ecl of (d3ecl)
 //
 (* ****** ****** *)
@@ -636,18 +638,16 @@ i0dcl_node =
 |I0Dvardclst of
 (token(*VAR(vlk)*), i0vardclist)
 //
+(* ****** ****** *)
+//
 |I0Dfundclst of
-(token(*FUN(fnk)*)
-,t2qaglst, d2cstlst, i0fundclist)
+(token(*knd*), d2cstlst, i0fundclist)
 //
 (* ****** ****** *)
 //
 |I0Dimplmnt0 of
-(token(*impkind*)
-,stamp(*unicity*)
-,s2qaglst // s2vs
-,t2qaglst // s2vs+t2is
-,dimpl, t2iaglst, fiarglst, i0exp)
+( token(*knd*)
+, stamp, dimpl, fiarglst, i0exp(*body*))
 //
 (* ****** ****** *)
 //

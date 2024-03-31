@@ -48,8 +48,45 @@ XATSOPT "./../../.."
 /HATS/xatsopt_sats.hats"
 (* ****** ****** *)
 //
+#staload "./../SATS/intrep0.sats"
+#staload "./../SATS/intrep1.sats"
+//
 #staload "./../SATS/trcmp01.sats"
 //
+(* ****** ****** *)
+(* ****** ****** *)
+
+#implfun
+i1parsed_of_trcmp01
+  (dpar) =
+let
+//
+val stadyn =
+i0parsed_get_stadyn(dpar)
+//
+val nerror =
+i0parsed_get_nerror(dpar)
+//
+val source =
+i0parsed_get_source(dpar)
+//
+val parsed =
+i0parsed_get_parsed(dpar)
+//
+val env0 = tr01env_make_nil()
+//
+val parsed =
+trcmp01_i0dclistopt(env0, parsed)
+//
+in//let
+let
+val ((*0*)) = tr01env_free_top(env0)
+in//let
+(
+  i1parsed(stadyn,nerror,source,parsed))
+end//let
+end (*let*) // end of [i1parsed_trcmp01(dpar)]
+
 (* ****** ****** *)
 (* ****** ****** *)
 //

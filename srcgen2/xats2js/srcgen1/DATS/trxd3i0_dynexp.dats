@@ -442,7 +442,7 @@ val i0f0 =
   trxd3i0_d3exp(env0, d3f0))
 in//let
 (
-i0exp(loc0, I0Etapp(i0f0, s2es)))
+  i0exp(loc0, I0Etapp(i0f0)) )
 end//let//end-of-[f0_tapp(env0,d3e0)]
 //
 fun
@@ -462,8 +462,8 @@ val i0f0 =
   trxd3i0_d3exp(env0, d3f0))
 in//let
 (
-i0exp(loc0, I0Etapq(i0f0, t2ps)))
-end//let//end-of-[f0_tapp(env0,d3e0)]
+  i0exp(loc0, I0Etapp(i0f0)) )
+end//let//end-of-[f0_tapq(env0,d3e0)]
 //
 (* ****** ****** *)
 //
