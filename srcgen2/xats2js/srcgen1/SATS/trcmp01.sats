@@ -158,6 +158,11 @@ trcmp01_i0dclist
 //
 (* ****** ****** *)
 (* ****** ****** *)
+fun
+trcmp01_i0dclistopt
+(env0: !tr01env, dcls: i0dclistopt): i1dclistopt
+(* ****** ****** *)
+(* ****** ****** *)
 
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_SATS_trcmp01.sats] *)

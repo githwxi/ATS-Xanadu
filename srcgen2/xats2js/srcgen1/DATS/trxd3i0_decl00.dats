@@ -282,11 +282,25 @@ f0_fundclst
 , d3cl: d3ecl): i0dcl =
 let
 //
+val
+loc0 = d3cl.lctn((*void*))
+//
 val-
 D3Cfundclst
 ( tknd
 , tqas
 , d2cs, d3fs) = d3cl.node()
+//
+in//let
+//
+case+ tqas of
+|
+list_nil() =>
+(
+  i0dcl(loc0, I0Dd3ecl(d3cl)))
+|
+list_cons _ =>
+let
 //
 val
 i0fs =
@@ -294,13 +308,16 @@ trxd3i0_d3fundclist(env0, d3fs)
 //
 in//let
 i0dcl_make_node
-( loc0
-, I0Dfundclst(tknd, tqas, d2cs, i0fs) )
+(loc0, I0Dfundclst(tknd, d2cs, i0fs))
+end//let//end-of-[list_cons]//end-of-[case+]
+//
 end where
 {
 //
-val loc0 = d3cl.lctn()
 (*
+//
+val loc0 = d3cl.lctn((*void*))
+//
 val (  ) =
 prerrln("f0_fundclst(di): d3cl = ", d3cl)
 *)
@@ -316,6 +333,9 @@ f0_implmnt0
 , d3cl: d3ecl): i0dcl =
 let
 //
+val
+loc0 = d3cl.lctn((*void*))
+//
 val-
 D3Cimplmnt0
 ( tknd
@@ -326,23 +346,25 @@ D3Cimplmnt0
 , sres, dexp) = d3cl.node()
 //
 val fias =
-  trxd3i0_f3arglst(env0, f3as)
+(
+  trxd3i0_f3arglst(env0, f3as))
 //
 val dexp = trxd3i0_d3exp(env0, dexp)
 //
 in//let
-i0dcl
+//
+i0dcl_make_node
 (
 loc0,
-I0Dimplmnt0
-( tknd, stmp
-, sqas, tqas, dimp, tias, fias, dexp))
+I0Dimplmnt0(tknd,stmp,dimp,fias,dexp))
+//
 end where // end-of-[let]
 {
 //
-val loc0 = d3cl.lctn()
-//
 (*
+//
+val loc0 = d3cl.lctn((*void*))
+//
 val (  ) =
 prerrln("f0_implmnt0(di): loc0 = ", loc0)
 val (  ) =
