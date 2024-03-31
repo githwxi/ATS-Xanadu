@@ -177,7 +177,9 @@ i1val_node =
 (* ****** ****** *)
 //
 and i1let =
+(*
 |I1LETnew0 of (i1reg)
+*)
 |I1LETnew1 of (i1reg, i1bfi)
 //
 and i1cmp =
