@@ -63,42 +63,16 @@ xatsenv_free_top
 ( env0: ~xatsenv ): void//fun
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
-xatsenv_pshlam0
-( env0: !xatsenv ): void//fun
-fun
-xatsenv_pshlet0
-( env0: !xatsenv ): void//fun
-//
-fun
-xatsenv_poplam0
-( env0: !xatsenv ): i1letlst//fun
-fun
-xatsenv_poplet0
-( env0: !xatsenv ): i1letlst//fun
+xats2js_i1parsed(i1parsed): (void)
 //
 (* ****** ****** *)
 //
 fun
-xatsenv_pshift0
-( env0: !xatsenv ): void//fun
-fun
-xatsenv_pshcas0
-( env0: !xatsenv ): void//fun
-//
-fun
-xatsenv_popift0
-( env0: !xatsenv ): i1letlst//fun
-fun
-xatsenv_popcas0
-( env0: !xatsenv ): i1letlst//fun
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-xats2js_i0parsed(i0parsed): (void)
+xats2js_i1dclistopt
+(env0: !xatsenv, dopt: i1dclistopt): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
