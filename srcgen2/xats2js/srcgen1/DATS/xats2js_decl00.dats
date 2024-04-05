@@ -50,31 +50,6 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#implfun
-xats2js_irparsed
-  (dpar) = let
-//
-val stadyn =
-irparsed_get_stadyn(dpar)
-val nerror =
-irparsed_get_nerror(dpar)
-val source =
-irparsed_get_source(dpar)
-val parsed =
-irparsed_get_parsed(dpar)
-//
-val env0 = xintenv_make_nil()
-//
-in//let
-(
-  xintenv_free_top(env0)) where
-{ val () =
-  xats2js_irdclistopt(env0, parsed) }
-end (*let*) // end of [d3parsed_trans3a(dpar)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
 
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_xats2js.dats] *)
