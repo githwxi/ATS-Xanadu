@@ -94,11 +94,13 @@ ATS_PACKNAME
 (* ****** ****** *)
 
 local
-
+//
 #typedef key = sym_t
 #typedef itm = s2tex
-
+//
+(* ****** ****** *)
 in//local
+(* ****** ****** *)
 
 datavwtp
 sortenv =
@@ -350,11 +352,13 @@ end (*local*) // end of [ local(sortenv) ]
 (* ****** ****** *)
 
 local
-
+//
 #typedef key = sym_t
 #typedef itm = s2itm
-
+//
+(* ****** ****** *)
 in//local
+(* ****** ****** *)
 
 datavwtp
 sexpenv =
@@ -614,11 +618,13 @@ end (*local*) // end of [ local(sexpenv) ]
 (* ****** ****** *)
 
 local
-
+//
 #typedef key = sym_t
 #typedef itm = d2itm
-
+//
+(* ****** ****** *)
 in//local
+(* ****** ****** *)
 
 datavwtp
 dexpenv =

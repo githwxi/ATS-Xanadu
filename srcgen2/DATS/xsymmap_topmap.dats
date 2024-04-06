@@ -53,24 +53,25 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 
 local
-
+//
 (* ****** ****** *)
 #staload
 "prelude\
 /DATS/CATS/JS/basics1.dats"
 (* ****** ****** *)
-
+//
 #typedef key = sint
-
+//
 (* ****** ****** *)
-
+//
 #absimpl
 topmap_tbox
 (itm:type) =
 jsobjmap(key, list(itm))
-
+//
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
@@ -163,6 +164,7 @@ end (*let*) // end of [topmap_insert_any(...)]
 
 endloc (*local*) // end of [  local(topmap)  ]
 
+(* ****** ****** *)
 (* ****** ****** *)
 
 #implfun
@@ -309,6 +311,7 @@ strmcon_vt_cons
 }
 end (*let*) // end of [topmap_fprint(out,map)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xsymmap_topmap.dats] *)

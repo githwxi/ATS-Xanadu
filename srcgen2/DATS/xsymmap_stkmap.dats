@@ -70,8 +70,10 @@ stkmap(itm:type) =
 | stkmap_loc2 of stkmap(itm)
 //
 (* ****** ****** *)
+//
 #absimpl
 stkmap_vtbx(itm:type) = stkmap(itm)
+//
 (* ****** ****** *)
 
 in//local
@@ -546,6 +548,7 @@ auxprint(map) where
 endloc (*local*) // end of [ local(stkmap) ]
 
 (* ****** ****** *)
+(* ****** ****** *)
 
 #implfun
 stkmap_insmix_any
@@ -599,6 +602,7 @@ loop(map, kxs) where {
 ) (* end of [loop(map,kxs)] *)
 } (*where*)//end-of-[stkmap_insmix_kxs(map,kxs,mix)]
 
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xsymmap_stkmap.dats] *)

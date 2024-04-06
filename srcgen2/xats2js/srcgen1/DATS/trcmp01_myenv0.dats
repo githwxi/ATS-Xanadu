@@ -41,9 +41,57 @@ Authoremail: gmhwxiATgmailDOTcom
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
+#include
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dats.hats"
+(* ****** ****** *)
+//
+#include
+"./../HATS/libxats2js.hats"
+//
+(* ****** ****** *)
+#staload
+"./../../../SATS/xsymmap.sats"
+(* ****** ****** *)
+//
+#staload "./../SATS/intrep0.sats"
+#staload "./../SATS/intrep1.sats"
 //
 #staload "./../SATS/trcmp01.sats"
 //
+(* ****** ****** *)
+#typedef
+d2vtop = topmap(i1valist)
+#vwtpdef
+d2vstk = stkmap(i1valist)
+(* ****** ****** *)
+//
+datavwtp
+iltstk =
+|iltstk_nil of ( (*void*) ) 
+|iltstk_cons of (i1let, iltstk)
+//
+(* ****** ****** *)
+//
+local
+//
+datavwtp
+tr01env =
+TR01ENV of
+(d2vtop,d2vstk,iltstk)
+//
+#absimpl tr01env_vtbx = tr01env
+//
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+//
+endloc (*local*) // end of [ local(tr01env...) ]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (***********************************************************************)

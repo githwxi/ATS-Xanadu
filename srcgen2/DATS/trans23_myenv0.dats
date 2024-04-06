@@ -84,6 +84,7 @@ datavwtp
 tr23env =
 TR23ENV of
 (stkmap(s2cstlst))
+//
 #absimpl tr23env_vtbx = tr23env
 //
 (* ****** ****** *)
