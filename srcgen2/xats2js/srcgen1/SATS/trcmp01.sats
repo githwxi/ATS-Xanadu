@@ -53,6 +53,51 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#absvtbx iltstk_vtbx // ptr
+#vwtpdef iltstk = iltstk_vtbx
+//
+(* ****** ****** *)
+//
+fun
+iltstk_fprint1
+( out
+: FILR, stk: !iltstk): void
+//
+(* ****** ****** *)
+//
+fun
+iltstk_pshlam0
+  ( stk: &iltstk >> _ ): void
+fun
+iltstk_pshlet0
+  ( stk: &iltstk >> _ ): void
+//
+fun
+iltstk_poplam0
+  ( stk: &iltstk >> _ ): sint
+fun
+iltstk_poplet0
+  ( stk: &iltstk >> _ ): sint
+//
+(* ****** ****** *)
+//
+fun
+iltstk_pshift0
+  ( stk: &iltstk >> _ ): void
+fun
+iltstk_pshcas0
+  ( stk: &iltstk >> _ ): void
+//
+fun
+iltstk_popift0
+  ( stk: &iltstk >> _ ): sint
+fun
+iltstk_popcas0
+  ( stk: &iltstk >> _ ): sint
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #absvtbx tr01env_vtbx
 #vwtpdef tr01env = tr01env_vtbx
 (* ****** ****** *)

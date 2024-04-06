@@ -314,7 +314,7 @@ d2vdtplst_d2vtize
 ( dvts : d4vts_vt ) : (d2vts)
 //
 (*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 //
 HX-2024-02-17:
 It is a special utility function:
@@ -326,6 +326,7 @@ Note that a dpat-type entry needs
 to be reported as a linearity error
 or it should be implicitly freed!
 //
+vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 *)
 (* ****** ****** *)
 (* ****** ****** *)
