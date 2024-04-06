@@ -58,9 +58,9 @@ intrep1_sats: ; \
 $(XATSOPT) --static SATS/intrep1.sats
 ######
 all_sats:: \
-trcmp01_sats
-trcmp01_sats: ; \
-$(XATSOPT) --static SATS/trcmp01.sats
+trxi0i1_sats
+trxi0i1_sats: ; \
+$(XATSOPT) --static SATS/trxi0i1.sats
 ######
 all_sats:: \
 xats2js_sats
@@ -122,21 +122,21 @@ $(XATSOPT) --dynamic DATS/intrep1_print0.dats
 
 ######
 all_dats:: \
-trcmp01_dats
-trcmp01_dats: ; \
-$(XATSOPT) --dynamic DATS/trcmp01.dats
+trxi0i1_dats
+trxi0i1_dats: ; \
+$(XATSOPT) --dynamic DATS/trxi0i1.dats
 all_dats:: \
-trcmp01_myenv0_dats
-trcmp01_myenv0_dats: ; \
-$(XATSOPT) --dynamic DATS/trcmp01_myenv0.dats
+trxi0i1_myenv0_dats
+trxi0i1_myenv0_dats: ; \
+$(XATSOPT) --dynamic DATS/trxi0i1_myenv0.dats
 all_dats:: \
-trcmp01_dynexp_dats
-trcmp01_dynexp_dats: ; \
-$(XATSOPT) --dynamic DATS/trcmp01_dynexp.dats
+trxi0i1_dynexp_dats
+trxi0i1_dynexp_dats: ; \
+$(XATSOPT) --dynamic DATS/trxi0i1_dynexp.dats
 all_dats:: \
-trcmp01_decl00_dats
-trcmp01_decl00_dats: ; \
-$(XATSOPT) --dynamic DATS/trcmp01_decl00.dats
+trxi0i1_decl00_dats
+trxi0i1_decl00_dats: ; \
+$(XATSOPT) --dynamic DATS/trxi0i1_decl00.dats
 ######
 
 ######

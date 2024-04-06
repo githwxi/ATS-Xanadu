@@ -51,13 +51,13 @@ XATSOPT "./../../.."
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
 //
-#staload "./../SATS/trcmp01.sats"
+#staload "./../SATS/trxi0i1.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 
 #implfun
-i1parsed_of_trcmp01
+i1parsed_of_trxi0i1
   (dpar) =
 let
 //
@@ -73,52 +73,52 @@ i0parsed_get_source(dpar)
 val parsed =
 i0parsed_get_parsed(dpar)
 //
-val env0 = tr01env_make_nil()
+val env0 = ti01env_make_nil()
 //
 val parsed =
-trcmp01_i0dclistopt(env0, parsed)
+trxi0i1_i0dclistopt(env0, parsed)
 //
 in//let
 let
-val ((*0*)) = tr01env_free_top(env0)
+val ((*0*)) = ti01env_free_top(env0)
 in//let
 (
   i1parsed(stadyn,nerror,source,parsed))
 end//let
-end (*let*) // end of [i1parsed_trcmp01(dpar)]
+end (*let*) // end of [i1parsed_trxi0i1(dpar)]
 
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <x0><y0>
-list_trcmp01_fnp
+list_trxi0i1_fnp
 ( e1, xs, fopr ) =
 (
 list_map_e1nv<x0><y0><e1>(xs, e1)) where
 {
-#vwtpdef e1 = tr01env
+#vwtpdef e1 = ti01env
 #impltmp
 map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [list_trcmp01_fnp(e1,xs,fopr)]
+} (*where*)//end of [list_trxi0i1_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 //
 #impltmp
 <x0><y0>
-optn_trcmp01_fnp
+optn_trxi0i1_fnp
 ( e1, xs, fopr ) =
 (
 optn_map_e1nv<x0><y0><e1>(xs, e1)) where
 {
-#vwtpdef e1 = tr01env
+#vwtpdef e1 = ti01env
 #impltmp
 map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [optn_trcmp01_fnp(e1,xs,fopr)]
+} (*where*)//end of [optn_trxi0i1_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trcmp01.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trxi0i1.dats] *)
 (***********************************************************************)

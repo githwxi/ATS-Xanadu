@@ -98,63 +98,63 @@ iltstk_popcas0
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#absvtbx tr01env_vtbx
-#vwtpdef tr01env = tr01env_vtbx
+#absvtbx ti01env_vtbx
+#vwtpdef ti01env = ti01env_vtbx
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1parsed_of_trcmp01
+i1parsed_of_trxi0i1
 ( ipar : i0parsed ): (i1parsed)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-tr01env_make_nil
-  ((*nil*)):(tr01env)//end-fun
+ti01env_make_nil
+  ((*nil*)):(ti01env)//end-fun
 fun
-tr01env_free_top
-  (tr01env):(  void  )//end-fun
+ti01env_free_top
+  (ti01env):(  void  )//end-fun
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-tr01env_pshlam0
-(env0: !tr01env): void//end-fun
+ti01env_pshlam0
+(env0: !ti01env): void//end-fun
 fun
-tr01env_pshlet0
-(env0: !tr01env): void//end-fun
+ti01env_pshlet0
+(env0: !ti01env): void//end-fun
 //
 fun
-tr01env_poplam0
-(env0: !tr01env): i1letlst//fun
+ti01env_poplam0
+(env0: !ti01env): i1letlst//fun
 fun
-tr01env_poplet0
-(env0: !tr01env): i1letlst//fun
-//
-(* ****** ****** *)
-//
-fun
-tr01env_pshift0
-(env0: !tr01env): void//end-fun
-fun
-tr01env_pshcas0
-(env0: !tr01env): void//end-fun
-//
-fun
-tr01env_popift0
-(env0: !tr01env): i1letlst//fun
-fun
-tr01env_popcas0
-(env0: !tr01env): i1letlst//fun
+ti01env_poplet0
+(env0: !ti01env): i1letlst//fun
 //
 (* ****** ****** *)
 //
 fun
-tr01env_insert_ilet
-(env0: !tr01env, ilet: i1let): void
+ti01env_pshift0
+(env0: !ti01env): void//end-fun
+fun
+ti01env_pshcas0
+(env0: !ti01env): void//end-fun
+//
+fun
+ti01env_popift0
+(env0: !ti01env): i1letlst//fun
+fun
+ti01env_popcas0
+(env0: !ti01env): i1letlst//fun
+//
+(* ****** ****** *)
+//
+fun
+ti01env_insert_ilet
+(env0: !ti01env, ilet: i1let): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -162,53 +162,53 @@ tr01env_insert_ilet
 fun
 <x0:t0>
 <y0:t0>
-list_trcmp01_fnp
+list_trxi0i1_fnp
 ( e1:
-! tr01env
+! ti01env
 , xs: list(x0)
-, (!tr01env, x0) -> y0): list(y0)
+, (!ti01env, x0) -> y0): list(y0)
 fun
 <x0:t0>
 <y0:t0>
-optn_trcmp01_fnp
+optn_trxi0i1_fnp
 ( e1:
-! tr01env
+! ti01env
 , xs: optn(x0)
-, (!tr01env, x0) -> y0): optn(y0)
+, (!ti01env, x0) -> y0): optn(y0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun // HX: Note that [trcmp01]
-trcmp01_i0exp // inserts into [env0]
-(env0: !tr01env, i0e0: i0exp): i1val
-//
-(* ****** ****** *)
-//
-fun
-trcmp01_i0dcl
-(env0: !tr01env, idcl: i0dcl): i1dcl
+fun // HX: Note that [trxi0i1]
+trxi0i1_i0exp // inserts into [env0]
+(env0: !ti01env, i0e0: i0exp): i1val
 //
 (* ****** ****** *)
 //
 fun
-trcmp01_i0explst
-(env0: !tr01env, i0es: i0explst): i1valist
+trxi0i1_i0dcl
+(env0: !ti01env, idcl: i0dcl): i1dcl
 //
 (* ****** ****** *)
 //
 fun
-trcmp01_i0dclist
-(env0: !tr01env, dcls: i0dclist): i1dclist
+trxi0i1_i0explst
+(env0: !ti01env, i0es: i0explst): i1valist
+//
+(* ****** ****** *)
+//
+fun
+trxi0i1_i0dclist
+(env0: !ti01env, dcls: i0dclist): i1dclist
 //
 (* ****** ****** *)
 (* ****** ****** *)
 fun
-trcmp01_i0dclistopt
-(env0: !tr01env, dcls: i0dclistopt): i1dclistopt
+trxi0i1_i0dclistopt
+(env0: !ti01env, dcls: i0dclistopt): i1dclistopt
 (* ****** ****** *)
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_SATS_trcmp01.sats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_SATS_trxi0i1.sats] *)
 (***********************************************************************)

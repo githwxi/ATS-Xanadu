@@ -57,12 +57,12 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 //
-#staload "./../SATS/trcmp01.sats"
+#staload "./../SATS/trxi0i1.sats"
 //
 (* ****** ****** *)
 //
 #staload
-_(*DATS*)="./../DATS/trcmp01.dats"
+_(*DATS*)="./../DATS/trxi0i1.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -107,7 +107,7 @@ i1val_make_node(loc0,I1Vreg(ireg)))
 fun
 i1val_dapp
 ( env0:
-! tr01env
+! ti01env
 , loc0: loc_t
 , i1f0: i1val
 , i1vs: i1valist): i1val =
@@ -121,7 +121,7 @@ val ilet = I1LETnew1(ireg, ibfi)
 //
 val (  ) =
 (
-  tr01env_insert_ilet(env0, ilet) )
+  ti01env_insert_ilet(env0, ilet) )
 }(*where*)//end-of-[i1val_dapp(env0,...)]
 //
 (* ****** ****** *)
@@ -129,7 +129,7 @@ val (  ) =
 fun
 i1val_tup0
 ( env0:
-! tr01env
+! ti01env
 , loc0: loc_t
 , i1vs: i1valist): i1val =
 (
@@ -142,14 +142,14 @@ val ilet = I1LETnew1(ireg, ibfi)
 //
 val (  ) =
 (
-  tr01env_insert_ilet(env0, ilet) )
+  ti01env_insert_ilet(env0, ilet) )
 }(*where*)//end-of-[i1val_tup0(env0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 
 #implfun
-trcmp01_i0exp
+trxi0i1_i0exp
 ( env0, iexp ) =
 (
 case+
@@ -175,7 +175,7 @@ _(*otherwise*) => i1val_none1(iexp)
 fun
 f0_int
 ( env0:
-! tr01env
+! ti01env
 , iexp: i0exp): i1val =
 (
   i1val_int(loc, tok) ) where
@@ -188,7 +188,7 @@ f0_int
 fun
 f0_btf
 ( env0:
-! tr01env
+! ti01env
 , iexp: i0exp): i1val =
 (
   i1val_btf(loc, sym) ) where
@@ -201,7 +201,7 @@ f0_btf
 fun
 f0_str
 ( env0:
-! tr01env
+! ti01env
 , iexp: i0exp): i1val =
 (
   i1val_str(loc, tok) ) where
@@ -214,7 +214,7 @@ f0_str
 fun
 f0_dapp
 ( env0:
-! tr01env
+! ti01env
 , iexp: i0exp): i1val =
 let
 //
@@ -225,9 +225,9 @@ I0Edapp
 (i0f0, i0es) = iexp.node()
 //
 val i1f0 =
-trcmp01_i0exp(env0, i0f0)
+trxi0i1_i0exp(env0, i0f0)
 val i1vs =
-trcmp01_i0explst(env0, i0es)
+trxi0i1_i0explst(env0, i0es)
 //
 in//let
 i1val_dapp(env0, loc0, i1f0, i1vs)
@@ -236,7 +236,7 @@ end where
 //
 val () =
 (
-prerr("trcmp01_i0exp:");
+prerr("trxi0i1_i0exp:");
 prerrln("f0_dapp(01): iexp = ", iexp))
 //
 }(*where*)//end-of-[f0_dapp(env0,iexp)]
@@ -246,7 +246,7 @@ prerrln("f0_dapp(01): iexp = ", iexp))
 fun
 f0_tup0
 ( env0:
-! tr01env
+! ti01env
 , iexp: i0exp): i1val =
 let
 //
@@ -255,7 +255,7 @@ val loc0 = iexp.lctn()
 val-
 I0Etup0(i0es) = iexp.node()
 val i1vs =
-trcmp01_i0explst(env0, i0es)
+trxi0i1_i0explst(env0, i0es)
 //
 in
 (
@@ -265,7 +265,7 @@ end where
 //
 val () =
 (
-prerr("trcmp01_i0exp:");
+prerr("trxi0i1_i0exp:");
 prerrln("f0_tup0(01): iexp = ", iexp))
 //
 }(*where*)//end-of-[f0_tup0(env0,iexp)]
@@ -273,25 +273,25 @@ prerrln("f0_tup0(01): iexp = ", iexp))
 (* ****** ****** *)
 //
 val () =
-prerrln("trcmp01_i0exp: iexp = ", iexp)
+prerrln("trxi0i1_i0exp: iexp = ", iexp)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-}(*where*)//end-of-[trcmp01_i0exp(env0,iexp)]
+}(*where*)//end-of-[trxi0i1_i0exp(env0,iexp)]
 
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-trcmp01_i0explst
+trxi0i1_i0explst
 ( env0, i0es ) =
 (
-  list_trcmp01_fnp(env0, i0es, trcmp01_i0exp))
+  list_trxi0i1_fnp(env0, i0es, trxi0i1_i0exp))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trcmp01_dynexp.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trxi0i1_dynexp.dats] *)
 (***********************************************************************)
