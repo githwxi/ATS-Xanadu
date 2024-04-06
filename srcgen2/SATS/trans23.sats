@@ -264,6 +264,11 @@ tr23env_free_top(tr23env): (void)
 //
 (* ****** ****** *)
 //
+(*
+HX:
+For handling static constants
+*)
+//
 fun
 tr23env_pshlet0(env0: !tr23env): void
 fun

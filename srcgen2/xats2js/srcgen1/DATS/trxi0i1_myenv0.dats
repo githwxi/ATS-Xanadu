@@ -122,6 +122,25 @@ iltstk_fprint1
 (* ****** ****** *)
 //
 #implfun
+ti01env_pshlam0
+(     env0     ) = let
+//
+val+
+@TI01ENV
+(d2vtop,
+!d2vstk,!iltstk) = env0
+//
+in//let
+//
+(
+stkmap_pshlam0(d2vstk);
+iltstk_pshlam0(iltstk); $fold(env0))
+//
+end (*let*)//end-of-(ti01env_pshlam0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
 ti01env_pshlet0
 (     env0     ) = let
 //
@@ -137,6 +156,44 @@ stkmap_pshlet0(d2vstk);
 iltstk_pshlet0(iltstk); $fold(env0))
 //
 end (*let*)//end-of-(ti01env_pshlet0(env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+ti01env_pshift0
+(     env0     ) = let
+//
+val+
+@TI01ENV
+(d2vtop,
+!d2vstk,!iltstk) = env0
+//
+in//let
+//
+(
+iltstk_pshift0(iltstk); $fold(env0))
+//
+end (*let*)//end-of-(ti01env_pshift0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+ti01env_pshcas0
+(     env0     ) = let
+//
+val+
+@TI01ENV
+(d2vtop,
+!d2vstk,!iltstk) = env0
+//
+in//let
+//
+(
+stkmap_pshlam0(d2vstk);
+iltstk_pshcas0(iltstk); $fold(env0))
+//
+end (*let*)//end-of-(ti01env_pshcas0(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
