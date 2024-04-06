@@ -184,9 +184,11 @@ linstk_pshift0
   stk0 := linstk_ift0(stk0))
 where
 {
+(*
 val () =
 prerrln
 ("linstk_pshift0: stk0 = ", stk0)
+*)
 }
 //(*end of [linstk_pshift0(stk0)]*)
 //
@@ -195,6 +197,14 @@ linstk_pshcas0
   (  stk0  ) =
 (
   stk0 := linstk_cas0(stk0))
+where
+{
+(*
+val () =
+prerrln
+("linstk_pshcas0: stk0 = ", stk0)
+*)
+}
 //(*end of [linstk_pshcas0(stk0)]*)
 //
 (* ****** ****** *)

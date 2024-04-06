@@ -119,6 +119,38 @@ iltstk_fprint1
 (gl_print$out<>( (*nil*) ), stk0)
 //
 (* ****** ****** *)
+//
+#implfun
+iltstk_pshlam0
+  (  stk0  ) =
+(
+  stk0 := iltstk_lam0(stk0))
+//(*end of [iltstk_pshlam0(stk0)]*)
+//
+#implfun
+iltstk_pshlet0
+  (  stk0  ) =
+(
+  stk0 := iltstk_let0(stk0))
+//(*end of [iltstk_pshlet0(stk0)]*)
+//
+(* ****** ****** *)
+//
+#implfun
+iltstk_pshift0
+  (  stk0  ) =
+(
+  stk0 := iltstk_ift0(stk0))
+//(*end of [iltstk_pshift0(stk0)]*)
+//
+#implfun
+iltstk_pshcas0
+  (  stk0  ) =
+(
+  stk0 := iltstk_cas0(stk0))
+//(*end of [iltstk_pshcas0(stk0)]*)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
