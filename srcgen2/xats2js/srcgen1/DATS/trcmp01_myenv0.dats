@@ -69,14 +69,26 @@ d2vtop = topmap(i1valist)
 d2vstk = stkmap(i1valist)
 (* ****** ****** *)
 //
-datavwtp
-iltstk =
-|iltstk_nil of ( (*void*) ) 
-|iltstk_cons of (i1let, iltstk)
+local
 //
 (* ****** ****** *)
 //
-local
+datavwtp
+iltstk =
+//
+|iltstk_nil of ( (*v0*) ) 
+//
+|iltstk_lam0 of ( iltstk ) 
+|iltstk_let0 of ( iltstk ) 
+//
+|iltstk_ift0 of ( iltstk ) 
+|iltstk_cas0 of ( iltstk ) 
+//
+|iltstk_cons of (i1let, iltstk)
+//
+(* ****** ****** *)
+#absimpl iltstk_vtbx = iltstk
+(* ****** ****** *)
 //
 datavwtp
 tr01env =
@@ -86,7 +98,27 @@ TR01ENV of
 #absimpl tr01env_vtbx = tr01env
 //
 (* ****** ****** *)
+(* ****** ****** *)
 in//local
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+iltstk_free_nil
+(stk0: ~iltstk): void =
+(
+case-
+stk0 of ~iltstk_nil() => ())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+gl_print1<iltstk>(stk0) =
+iltstk_fprint1
+(gl_print$out<>( (*nil*) ), stk0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 endloc (*local*) // end of [ local(tr01env...) ]
