@@ -49,26 +49,26 @@ XATSOPT "./../../.."
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 //
-#staload "./../SATS/trcmp01.sats"
+#staload "./../SATS/trxi0i1.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #staload
-_(*DATS*)="./../DATS/trcmp01.dats"
+_(*DATS*)="./../DATS/trxi0i1.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-trcmp01_i0dclist
+trxi0i1_i0dclist
 ( env0, dcls ) =
 (
-  list_trcmp01_fnp(env0, dcls, trcmp01_i0dcl))
+  list_trxi0i1_fnp(env0, dcls, trxi0i1_i0dcl))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trcmp01_decl00.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trxi0i1_decl00.dats] *)
 (***********************************************************************)
