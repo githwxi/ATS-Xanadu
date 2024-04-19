@@ -68,38 +68,45 @@ iltstk_fprint1
 //
 fun
 iltstk_pshlam0
-  ( stk: &iltstk >> _ ): void
+( stk: &iltstk >> _ ): void
 fun
 iltstk_pshlet0
-  ( stk: &iltstk >> _ ): void
+( stk: &iltstk >> _ ): void
 //
 fun
 iltstk_poplam0
-  ( stk: &iltstk >> _ ): sint
+(stk: &iltstk >> _): i1letlst
 fun
 iltstk_poplet0
-  ( stk: &iltstk >> _ ): sint
+(stk: &iltstk >> _): i1letlst
 //
 (* ****** ****** *)
 //
 fun
 iltstk_pshift0
-  ( stk: &iltstk >> _ ): void
+( stk: &iltstk >> _ ): void
 fun
 iltstk_pshcas0
-  ( stk: &iltstk >> _ ): void
+( stk: &iltstk >> _ ): void
 //
 fun
 iltstk_popift0
-  ( stk: &iltstk >> _ ): sint
+(stk: &iltstk >> _): i1letlst
 fun
 iltstk_popcas0
-  ( stk: &iltstk >> _ ): sint
+(stk: &iltstk >> _): i1letlst
+//
+(* ****** ****** *)
+//
+fun
+iltstk_insert_any
+(stk:
+&iltstk >> _, ilt: i1let):void
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#absvtbx ti01env_vtbx
-#vwtpdef ti01env = ti01env_vtbx
+#absvtbx envi0i1_vtbx
+#vwtpdef envi0i1 = envi0i1_vtbx
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -111,50 +118,55 @@ i1parsed_of_trxi0i1
 (* ****** ****** *)
 //
 fun
-ti01env_make_nil
-  ((*nil*)):(ti01env)//end-fun
+envi0i1_make_nil
+  ((*nil*)):(envi0i1)//end-fun
 fun
-ti01env_free_top
-  (ti01env):(  void  )//end-fun
+envi0i1_free_top
+  (envi0i1):(  void  )//end-fun
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-ti01env_pshlam0
-(env0: !ti01env): void//end-fun
+envi0i1_pshlam0
+(env0: !envi0i1): void//end-fun
 fun
-ti01env_pshlet0
-(env0: !ti01env): void//end-fun
+envi0i1_pshlet0
+(env0: !envi0i1): void//end-fun
 //
 fun
-ti01env_poplam0
-(env0: !ti01env): i1letlst//fun
+envi0i1_poplam0
+(env0: !envi0i1): i1letlst//fun
 fun
-ti01env_poplet0
-(env0: !ti01env): i1letlst//fun
-//
-(* ****** ****** *)
-//
-fun
-ti01env_pshift0
-(env0: !ti01env): void//end-fun
-fun
-ti01env_pshcas0
-(env0: !ti01env): void//end-fun
-//
-fun
-ti01env_popift0
-(env0: !ti01env): i1letlst//fun
-fun
-ti01env_popcas0
-(env0: !ti01env): i1letlst//fun
+envi0i1_poplet0
+(env0: !envi0i1): i1letlst//fun
 //
 (* ****** ****** *)
 //
 fun
-ti01env_insert_ilet
-(env0: !ti01env, ilet: i1let): void
+envi0i1_pshift0
+(env0: !envi0i1): void//end-fun
+fun
+envi0i1_pshcas0
+(env0: !envi0i1): void//end-fun
+//
+fun
+envi0i1_popift0
+(env0: !envi0i1): i1letlst//fun
+fun
+envi0i1_popcas0
+(env0: !envi0i1): i1letlst//fun
+//
+(* ****** ****** *)
+//
+fun
+envi0i1_insert_dvar
+( env0: 
+! envi0i1,d2var,i1val): (void)
+fun
+envi0i1_insert_ilet
+( env0:
+! envi0i1, ilet: i1let): (void)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -164,48 +176,48 @@ fun
 <y0:t0>
 list_trxi0i1_fnp
 ( e1:
-! ti01env
+! envi0i1
 , xs: list(x0)
-, (!ti01env, x0) -> y0): list(y0)
+, (!envi0i1, x0) -> y0): list(y0)
 fun
 <x0:t0>
 <y0:t0>
 optn_trxi0i1_fnp
 ( e1:
-! ti01env
+! envi0i1
 , xs: optn(x0)
-, (!ti01env, x0) -> y0): optn(y0)
+, (!envi0i1, x0) -> y0): optn(y0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun // HX: Note that [trxi0i1]
 trxi0i1_i0exp // inserts into [env0]
-(env0: !ti01env, i0e0: i0exp): i1val
+(env0: !envi0i1, i0e0: i0exp): i1val
 //
 (* ****** ****** *)
 //
 fun
 trxi0i1_i0dcl
-(env0: !ti01env, idcl: i0dcl): i1dcl
+(env0: !envi0i1, idcl: i0dcl): i1dcl
 //
 (* ****** ****** *)
 //
 fun
 trxi0i1_i0explst
-(env0: !ti01env, i0es: i0explst): i1valist
+(env0: !envi0i1, i0es: i0explst): i1valist
 //
 (* ****** ****** *)
 //
 fun
 trxi0i1_i0dclist
-(env0: !ti01env, dcls: i0dclist): i1dclist
+(env0: !envi0i1, dcls: i0dclist): i1dclist
 //
 (* ****** ****** *)
 (* ****** ****** *)
 fun
 trxi0i1_i0dclistopt
-(env0: !ti01env, dcls: i0dclistopt): i1dclistopt
+(env0: !envi0i1, dcls: i0dclistopt): i1dclistopt
 (* ****** ****** *)
 (* ****** ****** *)
 

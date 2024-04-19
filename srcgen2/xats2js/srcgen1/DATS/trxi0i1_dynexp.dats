@@ -107,7 +107,7 @@ i1val_make_node(loc0,I1Vreg(ireg)))
 fun
 i1val_dapp
 ( env0:
-! ti01env
+! envi0i1
 , loc0: loc_t
 , i1f0: i1val
 , i1vs: i1valist): i1val =
@@ -121,7 +121,7 @@ val ilet = I1LETnew1(ireg, ibfi)
 //
 val (  ) =
 (
-  ti01env_insert_ilet(env0, ilet) )
+  envi0i1_insert_ilet(env0, ilet) )
 }(*where*)//end-of-[i1val_dapp(env0,...)]
 //
 (* ****** ****** *)
@@ -129,7 +129,7 @@ val (  ) =
 fun
 i1val_tup0
 ( env0:
-! ti01env
+! envi0i1
 , loc0: loc_t
 , i1vs: i1valist): i1val =
 (
@@ -142,7 +142,7 @@ val ilet = I1LETnew1(ireg, ibfi)
 //
 val (  ) =
 (
-  ti01env_insert_ilet(env0, ilet) )
+  envi0i1_insert_ilet(env0, ilet) )
 }(*where*)//end-of-[i1val_tup0(env0,...)]
 //
 (* ****** ****** *)
@@ -175,7 +175,7 @@ _(*otherwise*) => i1val_none1(iexp)
 fun
 f0_int
 ( env0:
-! ti01env
+! envi0i1
 , iexp: i0exp): i1val =
 (
   i1val_int(loc, tok) ) where
@@ -188,7 +188,7 @@ f0_int
 fun
 f0_btf
 ( env0:
-! ti01env
+! envi0i1
 , iexp: i0exp): i1val =
 (
   i1val_btf(loc, sym) ) where
@@ -201,7 +201,7 @@ f0_btf
 fun
 f0_str
 ( env0:
-! ti01env
+! envi0i1
 , iexp: i0exp): i1val =
 (
   i1val_str(loc, tok) ) where
@@ -214,7 +214,7 @@ f0_str
 fun
 f0_dapp
 ( env0:
-! ti01env
+! envi0i1
 , iexp: i0exp): i1val =
 let
 //
@@ -246,7 +246,7 @@ prerrln("f0_dapp(01): iexp = ", iexp))
 fun
 f0_tup0
 ( env0:
-! ti01env
+! envi0i1
 , iexp: i0exp): i1val =
 let
 //
