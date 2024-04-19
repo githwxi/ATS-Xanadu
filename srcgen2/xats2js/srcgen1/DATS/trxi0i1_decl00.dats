@@ -48,6 +48,12 @@ XATSOPT "./../../.."
 "./../../..\
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+#include
+"./../HATS/xats2js_dats.hats"
+(* ****** ****** *)
+//
+#staload "./../SATS/intrep0.sats"
+#staload "./../SATS/intrep1.sats"
 //
 #staload "./../SATS/trxi0i1.sats"
 //
@@ -59,12 +65,52 @@ _(*DATS*)="./../DATS/trxi0i1.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#symload lctn with i0dcl_get_lctn
+#symload node with i0dcl_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxi0i1_i0dcl
+(env0 , dcl0) =
+(
+case+
+dcl0.node() of
+//
+) where
+{
+//
+(* ****** ****** *)
+//
+val
+loc0 = dcl0.lctn((*0*))
+//
+val () =
+(
+  prerrln("trxi0i1_i0dcl: dcl0 = ", dcl0) )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+} (*where*) // end of [trxi0i1_i0dcl(env0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 trxi0i1_i0dclist
 ( env0, dcls ) =
 (
   list_trxi0i1_fnp(env0, dcls, trxi0i1_i0dcl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxi0i1_i0dclistopt
+  (env0, dopt) =
+(
+  optn_trxi0i1_fnp(env0, dopt, trxi0i1_i0dclist))
 //
 (* ****** ****** *)
 (* ****** ****** *)
