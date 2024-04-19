@@ -34,7 +34,11 @@ val (  ) = prerrln
 #staload
 "./../../SATS/intrep0.sats"
 #staload
+"./../../SATS/intrep1.sats"
+#staload
 "./../../SATS/trxd3i0.sats"
+#staload
+"./../../SATS/trxi0i1.sats"
 #staload
 "./../../SATS/xats2js.sats"
 *)
@@ -59,9 +63,9 @@ val (  ) = prerrln
 (* ****** ****** *)
 //
 #include
-"./../../DATS/interp1.dats"
+"./../../DATS/intrep1.dats"
 #include
-"./../../DATS/interp1_print0.dats"
+"./../../DATS/intrep1_print0.dats"
 //
 #include
 "./../../DATS/trxi0i1.dats"

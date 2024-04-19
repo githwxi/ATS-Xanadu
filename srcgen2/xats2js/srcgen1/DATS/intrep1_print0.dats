@@ -57,6 +57,10 @@ XATSOPT "./../../.."
 #staload "./../SATS/intrep1.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+#symload lctn with i1dcl_get_lctn
+#symload node with i1dcl_get_node
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 i1val_fprint

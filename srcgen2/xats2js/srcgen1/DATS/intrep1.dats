@@ -55,7 +55,38 @@ XATSOPT "./../../.."
 #staload
 "./../../../SATS/xsymbol.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 #staload "./../SATS/intrep1.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1val_none0
+(  loc0  ) =
+i1val_make_node
+(loc0,I1Vnone0((*void*)))
+#implfun
+i1val_none1
+(  i0e0  ) =
+i1val_make_node
+(
+i0e0.lctn(),I1Vnone1(i0e0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1dcl_none0
+(  loc0  ) =
+i1dcl_make_node
+(loc0,I1Dnone0((*void*)))
+#implfun
+i1dcl_none1
+(  dcl0  ) =
+i1dcl_make_node
+(
+dcl0.lctn(),I1Dnone1(dcl0))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -134,36 +165,6 @@ in//let
   print("I1REG(", stmp, ")") endlet
 //
 end (*local*) // end of [local(i1reg_tbox)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-i1val_none0
-(  loc0  ) =
-i1val_make_node
-(loc0,I1Vnone0((*void*)))
-#implfun
-i1val_none1
-(  i0e0  ) =
-i1val_make_node
-(
-i0e0.lctn(),I1Vnone1(i0e0))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-i1dcl_none0
-(  loc0  ) =
-i1dcl_make_node
-(loc0,I1Dnone0((*void*)))
-#implfun
-i1dcl_none1
-(  i0e0  ) =
-i1dcl_make_node
-(
-i0e0.lctn(),I1Dnone1(i0e0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
