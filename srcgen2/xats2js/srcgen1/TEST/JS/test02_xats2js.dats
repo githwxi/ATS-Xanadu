@@ -64,13 +64,13 @@ val (  ) = prerrln
 "./../../DATS/interp1_print0.dats"
 //
 #include
-"./../../DATS/trcmp01.dats"
+"./../../DATS/trxi0i1.dats"
 #include
-"./../../DATS/trcmp01_myenv0.dats"
+"./../../DATS/trxi0i1_myenv0.dats"
 #include
-"./../../DATS/trcmp01_dynexp.dats"
+"./../../DATS/trxi0i1_dynexp.dats"
 #include
-"./../../DATS/trcmp01_decl00.dats"
+"./../../DATS/trxi0i1_decl00.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -78,7 +78,7 @@ val (  ) = prerrln
 val
 mytest02_dats =
 (
-i1parsed_of_trcmp01(ipar)
+i1parsed_of_trxi0i1(ipar)
 ) where
 {
 //

@@ -91,11 +91,11 @@ iltstk =
 (* ****** ****** *)
 //
 datavwtp
-ti01env =
-TI01ENV of
+envi0i1 =
+ENVI0I1 of
 (d2vtop,d2vstk,iltstk)
 //
-#absimpl ti01env_vtbx = ti01env
+#absimpl envi0i1_vtbx = envi0i1
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -153,12 +153,30 @@ iltstk_pshcas0
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
 #implfun
-ti01env_pshlam0
+envi0i1_make_nil
+  ((*void*)) =
+(
+ENVI0I1
+(d2vtop,d2vstk,iltstk)) where
+{
+  val iltstk = iltstk_nil()
+  val d2vtop = topmap_make_nil()
+  val d2vstk = stkmap_make_nil()
+}(*where*) // end of [envi0i1_make_nil]
+//
+(* ****** ****** *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+envi0i1_pshlam0
 (     env0     ) = let
 //
 val+
-@TI01ENV
+@ENVI0I1
 (d2vtop,
 !d2vstk,!iltstk) = env0
 //
@@ -168,16 +186,16 @@ in//let
 stkmap_pshlam0(d2vstk);
 iltstk_pshlam0(iltstk); $fold(env0))
 //
-end (*let*)//end-of-(ti01env_pshlam0(env0))
+end (*let*)//end-of-(envi0i1_pshlam0(env0))
 //
 (* ****** ****** *)
 //
 #implfun
-ti01env_pshlet0
+envi0i1_pshlet0
 (     env0     ) = let
 //
 val+
-@TI01ENV
+@ENVI0I1
 (d2vtop,
 !d2vstk,!iltstk) = env0
 //
@@ -187,17 +205,17 @@ in//let
 stkmap_pshlet0(d2vstk);
 iltstk_pshlet0(iltstk); $fold(env0))
 //
-end (*let*)//end-of-(ti01env_pshlet0(env0))
+end (*let*)//end-of-(envi0i1_pshlet0(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-ti01env_pshift0
+envi0i1_pshift0
 (     env0     ) = let
 //
 val+
-@TI01ENV
+@ENVI0I1
 (d2vtop,
 !d2vstk,!iltstk) = env0
 //
@@ -206,16 +224,16 @@ in//let
 (
 iltstk_pshift0(iltstk); $fold(env0))
 //
-end (*let*)//end-of-(ti01env_pshift0(env0))
+end (*let*)//end-of-(envi0i1_pshift0(env0))
 //
 (* ****** ****** *)
 //
 #implfun
-ti01env_pshcas0
+envi0i1_pshcas0
 (     env0     ) = let
 //
 val+
-@TI01ENV
+@ENVI0I1
 (d2vtop,
 !d2vstk,!iltstk) = env0
 //
@@ -225,12 +243,12 @@ in//let
 stkmap_pshlam0(d2vstk);
 iltstk_pshcas0(iltstk); $fold(env0))
 //
-end (*let*)//end-of-(ti01env_pshcas0(env0))
+end (*let*)//end-of-(envi0i1_pshcas0(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-endloc (*local*) // end of [ local(ti01env...) ]
+endloc (*local*) // end of [ local(envi0i1...) ]
 //
 (* ****** ****** *)
 (* ****** ****** *)

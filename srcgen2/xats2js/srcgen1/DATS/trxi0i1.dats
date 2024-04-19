@@ -73,14 +73,14 @@ i0parsed_get_source(dpar)
 val parsed =
 i0parsed_get_parsed(dpar)
 //
-val env0 = ti01env_make_nil()
+val env0 = envi0i1_make_nil()
 //
 val parsed =
 trxi0i1_i0dclistopt(env0, parsed)
 //
 in//let
 let
-val ((*0*)) = ti01env_free_top(env0)
+val ((*0*)) = envi0i1_free_top(env0)
 in//let
 (
   i1parsed(stadyn,nerror,source,parsed))
@@ -97,7 +97,7 @@ list_trxi0i1_fnp
 (
 list_map_e1nv<x0><y0><e1>(xs, e1)) where
 {
-#vwtpdef e1 = ti01env
+#vwtpdef e1 = envi0i1
 #impltmp
 map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 } (*where*)//end of [list_trxi0i1_fnp(e1,xs,fopr)]
@@ -111,7 +111,7 @@ optn_trxi0i1_fnp
 (
 optn_map_e1nv<x0><y0><e1>(xs, e1)) where
 {
-#vwtpdef e1 = ti01env
+#vwtpdef e1 = envi0i1
 #impltmp
 map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 } (*where*)//end of [optn_trxi0i1_fnp(e1,xs,fopr)]
