@@ -77,6 +77,8 @@ trxi0i1_i0dcl
 case+
 dcl0.node() of
 //
+|_(* otherwise *) => i1dcl_none1(dcl0)
+//
 ) where
 {
 //

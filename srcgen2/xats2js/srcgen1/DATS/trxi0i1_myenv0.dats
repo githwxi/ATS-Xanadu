@@ -167,6 +167,21 @@ ENVI0I1
 //
 (* ****** ****** *)
 //
+#implfun
+envi0i1_free_top
+  (  env0  ) =
+let
+//
+val+
+~ENVI0I1
+(d2vtop,d2vstk,iltstk) = env0
+//
+in//let
+  stkmap_free_nil(d2vstk);
+  iltstk_free_nil(iltstk); ((*void*))
+end//let
+(*case+*)//end-of-(envi0i1_free_top(env0))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
