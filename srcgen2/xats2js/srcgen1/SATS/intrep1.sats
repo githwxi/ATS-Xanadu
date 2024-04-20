@@ -337,6 +337,7 @@ i1vardcl_get_lctn:(i1vardcl)->loc_t
 fun
 i1fundcl_get_lctn:(i1fundcl)->loc_t
 (* ****** ****** *)
+(* ****** ****** *)
 fun
 i1valdcl_get_dpat:(i1valdcl)->i0pat
 fun
@@ -344,6 +345,52 @@ i1valdcl_get_tdxp:(i1valdcl)->teqi1cmp
 (* ****** ****** *)
 #symload dpat with i1valdcl_get_dpat
 #symload tdxp with i1valdcl_get_tdxp(*opt*)
+(* ****** ****** *)
+fun
+i1vardcl_get_dpid:(i1vardcl)->d2var
+fun
+i1vardcl_get_dini:(i1vardcl)->teqi1cmp
+(* ****** ****** *)
+#symload dpid with i1vardcl_get_dpid
+#symload dini with i1vardcl_get_dini(*opt*)
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+i1fundcl_get_dpid:(i1fundcl)->d2var
+fun
+i1fundcl_get_farg:(i1fundcl)->fiarglst
+fun
+i1fundcl_get_tdxp:(i1fundcl)->teqi1cmp
+(* ****** ****** *)
+#symload dpid with i1fundcl_get_dpid
+#symload farg with i1fundcl_get_farg(*lst*)
+#symload tdxp with i1fundcl_get_tdxp(*opt*)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1valdcl_make_args
+( lctn:loc_t
+, ipat:i0pat, tdxp:teqi1cmp):i1valdcl
+fun
+i1vardcl_make_args
+( lctn:loc_t
+, dpid:d2var, dini:teqi1cmp):i1vardcl
+//
+(* ****** ****** *)
+//
+fun
+i1fundcl_make_args
+( lctn:loc_t
+, dpid:d2var
+, farg:fiarglst, tdxp:teqi1cmp):i1fundcl
+//
+(* ****** ****** *)
+//
+#symload i1valdcl with i1valdcl_make_args
+#symload i1vardcl with i1vardcl_make_args
+#symload i1fundcl with i1fundcl_make_args
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
