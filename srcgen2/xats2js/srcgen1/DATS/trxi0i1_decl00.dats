@@ -215,18 +215,46 @@ val () =
 (* ****** ****** *)
 //
 #implfun
+trxi0i1_teqi0exp
+  (env0, tdxp) =
+(
+case+ tdxp of
+|
+TEQI0EXPnone() =>
+TEQI1CMPnone((*void*))
+|
+TEQI0EXPsome(teq1, i0e2) =>
+TEQI1CMPsome(teq1, icmp) where
+{
+  val (  ) =
+  (
+    envi0i1_pshblk0(env0))
+  val ival =
+  (
+    trxi0i1_i0exp(env0, i0e2) )
+  val ilts = envi0i1_popblk0(env0)
+  val icmp = I1CMPcons(ilts, ival) }
+//
+) (*case+*)//end-of(trxd3i0_teqd3exp(...))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 trxi0i1_i0valdcl
   (env0, ival) = let
 //
 val loc0 =
-i0valdcl_get_lctn(dval)
+i0valdcl_get_lctn(ival)
 val ipat =
-i0valdcl_get_dpat(dval)
+i0valdcl_get_dpat(ival)
 val tdxp =
-i0valdcl_get_tdxp(dval)
+i0valdcl_get_tdxp(ival)
 //
+(*
 val ipat =
 trxi0i1_i0pat(env0, ipat)
+*)
 val tdxp =
 trxi0i1_teqi0exp(env0, tdxp)
 //

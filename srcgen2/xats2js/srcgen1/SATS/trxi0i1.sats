@@ -99,6 +99,15 @@ iltstk_popcas0
 (* ****** ****** *)
 //
 fun
+iltstk_pshblk0
+( stk: &iltstk >> _ ): void
+fun
+iltstk_popblk0
+(stk: &iltstk >> _): i1letlst
+//
+(* ****** ****** *)
+//
+fun
 iltstk_insert_any
 (stk:
 &iltstk >> _, ilt: i1let):void
@@ -160,6 +169,15 @@ envi0i1_popcas0
 (* ****** ****** *)
 //
 fun
+envi0i1_pshblk0
+(env0: !envi0i1): void//end-fun
+fun
+envi0i1_popblk0
+(env0: !envi0i1): i1letlst//fun
+//
+(* ****** ****** *)
+//
+fun
 envi0i1_insert_dvar
 ( env0: 
 ! envi0i1,d2var,i1val): (void)
@@ -212,6 +230,12 @@ trxi0i1_i0explst
 fun
 trxi0i1_i0dclist
 (env0: !envi0i1, dcls: i0dclist): i1dclist
+//
+(* ****** ****** *)
+//
+fun
+trxi0i1_teqi0exp
+(env0: !envi0i1, tdxp: teqi0exp): teqi1cmp
 //
 (* ****** ****** *)
 //

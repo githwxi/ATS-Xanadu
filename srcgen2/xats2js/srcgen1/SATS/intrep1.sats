@@ -200,7 +200,7 @@ and i1bfi =
 |I1BFIrcd2 of (token, l1i1vlst)
 //
 |I1BFIift0 of
-( i1val
+( i1val(*test*)
 , i1cmp(*then*), i1cmp(*else*) )
 //
 where
@@ -250,7 +250,7 @@ teqi1cmp =
 |
 TEQI1CMPnone of ((*void*))
 |
-TEQI1COMsome of (token(*EQ0*), i1cmp)
+TEQI1CMPsome of (token(*EQ0*), i1cmp)
 //
 (* ****** ****** *)
 (* ****** ****** *)
