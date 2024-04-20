@@ -56,6 +56,7 @@ XATSOPT "./../../.."
 "./../../../SATS/xsymbol.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+#staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
 (* ****** ****** *)
 (* ****** ****** *)
@@ -240,6 +241,176 @@ I1DCL(loc,nod) = i1d in nod end
 //
 endloc (*local*) // end of [local(i1dcl)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+
+local
+//
+datatype
+i1valdcl =
+I1VALDCL of
+( loc_t
+, i0pat, teqi1cmp)
+//
+#absimpl
+i1valdcl_tbox = i1valdcl
+//
+in//local
+
+#implfun
+i1valdcl_get_lctn
+  (  ival  ) = let
+val+
+I1VALDCL
+( lctn
+, ipat, tdxp) = ival in lctn end
+
+#implfun
+i1valdcl_get_dpat
+  (  ival  ) = let
+val+
+I1VALDCL
+( lctn
+, ipat, tdxp) = ival in ipat end
+
+#implfun
+i1valdcl_get_tdxp
+  (  ival  ) = let
+val+
+I1VALDCL
+( lctn
+, ipat, tdxp) = ival in tdxp end
+
+(* ****** ****** *)
+//
+#implfun
+i1valdcl_make_args
+(lctn, ipat, tdxp) =
+(
+  I1VALDCL(lctn, ipat, tdxp(*opt*)))
+//
+(* ****** ****** *)
+
+endloc (*local*) // end of [local(i1valdcl)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+i1vardcl =
+I1VARDCL of
+( loc_t
+, d2var, teqi1cmp)
+//
+#absimpl
+i1vardcl_tbox = i1vardcl
+//
+in//local
+
+#implfun
+i1vardcl_get_lctn
+  (  ivar  ) = let
+val+
+I1VARDCL
+( lctn
+, dpid, dini) = ivar in lctn end
+
+#implfun
+i1vardcl_get_dpid
+  (  ivar  ) = let
+val+
+I1VARDCL
+( lctn
+, dpid, dini) = ivar in dpid end
+
+#implfun
+i1vardcl_get_dini
+  (  ivar  ) = let
+val+
+I1VARDCL
+( lctn
+, dpid, dini) = ivar in dini end
+
+(* ****** ****** *)
+//
+#implfun
+i1vardcl_make_args
+( lctn, dpid, dini) =
+(
+  I1VARDCL(lctn, dpid, dini(*opt*)) )
+//
+(* ****** ****** *)
+
+endloc (*local*) // end of [ local(i1vardcl) ]
+
+(* ****** ****** *)
+(* ****** ****** *)
+
+local
+//
+datatype
+i1fundcl =
+I1FUNDCL of
+( loc_t
+, d2var
+, fiarglst, teqi1cmp)
+//
+#absimpl
+i1fundcl_tbox = i1fundcl
+//
+in//local
+
+#implfun
+i1fundcl_get_lctn
+  (  ifun  ) = let
+val+
+I1FUNDCL
+( lctn
+, dpid
+, farg, tdxp) = ifun in lctn end
+
+#implfun
+i1fundcl_get_dpid
+  (  ifun  ) = let
+val+
+I1FUNDCL
+( lctn
+, dpid
+, farg, tdxp) = ifun in dpid end
+
+#implfun
+i1fundcl_get_farg
+  (  ifun  ) = let
+val+
+I1FUNDCL
+( lctn
+, dpid
+, farg, tdxp) = ifun in farg end
+
+(* ****** ****** *)
+
+#implfun
+i1fundcl_get_tdxp
+  (  ifun  ) = let
+val+
+I1FUNDCL
+( lctn
+, dpid
+, farg, tdxp) = ifun in tdxp end
+
+(* ****** ****** *)
+//
+#implfun
+i1fundcl_make_args
+(lctn, dpid, farg, tdxp) =
+(
+  I1FUNDCL(lctn, dpid, farg, tdxp))
+//
+(* ****** ****** *)
+
+endloc (*local*) // end of [ local(i1fundcl) ]
+
 (* ****** ****** *)
 (* ****** ****** *)
 
