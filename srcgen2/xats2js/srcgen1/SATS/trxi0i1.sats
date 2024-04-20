@@ -214,6 +214,33 @@ trxi0i1_i0dclist
 (env0: !envi0i1, dcls: i0dclist): i1dclist
 //
 (* ****** ****** *)
+//
+fun
+trxi0i1_i0valdcl
+(env0: !envi0i1, i0v0: i0valdcl): i1valdcl
+fun
+trxi0i1_i0vardcl
+(env0: !envi0i1, i0v0: i0vardcl): i1vardcl
+//
+fun
+trxi0i1_i0fundcl
+(env0: !envi0i1, i0f0: i0fundcl): i1fundcl
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+trxi0i1_i0valdclist
+(env0: !envi0i1, i0vs: i0valdclist): i1valdclist
+fun
+trxi0i1_i0vardclist
+(env0: !envi0i1, i0vs: i0vardclist): i1vardclist
+//
+fun
+trxi0i1_i0fundclist
+(env0: !envi0i1, i0fs: i0fundclist): i1fundclist
+//
+(* ****** ****** *)
 (* ****** ****** *)
 fun
 trxi0i1_i0dclistopt
