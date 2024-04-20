@@ -222,6 +222,8 @@ f0_valdclst
 , d3cl: d3ecl): i0dcl =
 let
 //
+val loc0 = d3cl.lctn()
+//
 val-
 D3Cvaldclst
 (tknd, d3vs) = d3cl.node()
@@ -235,9 +237,8 @@ in//let
 end where
 {
 //
-val loc0 = d3cl.lctn()
-//
 (*
+val loc0 = d3cl.lctn()
 val (  ) =
 prerrln("f0_valdclst(di): d3cl = ", d3cl)
 *)
@@ -253,6 +254,8 @@ f0_vardclst
 , d3cl: d3ecl): i0dcl =
 let
 //
+val loc0 = d3cl.lctn()
+//
 val-
 D3Cvardclst
 (tknd, d3vs) = d3cl.node()
@@ -266,9 +269,8 @@ in//let
 end where
 {
 //
-val loc0 = d3cl.lctn()
-//
 (*
+val loc0 = d3cl.lctn()
 val (  ) =
 prerrln("f0_vardclst(di): d3cl = ", d3cl)
 *)
@@ -314,6 +316,7 @@ prerrln("f0_fundclst(di): d3cl = ", d3cl)
 //
 }(*where*) // end of [f0_fundclst(env0,d3cl)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
