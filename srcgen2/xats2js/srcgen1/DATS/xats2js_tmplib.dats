@@ -221,12 +221,53 @@ endlet // end-of-[g_print<teqi0exp>(tdxp)]
 //
 #impltmp
 g_print
+<teqi0exp>(tdxp) =
+let
+(*
+#impltmp
+g_print$out<>() = out
+*)
+in//let
+(
+case+ tdxp of
+|
+TEQI0EXPnone() =>
+print("TEQI0EXPnone(", ")")
+|
+TEQI0EXPsome(tok0, i0e1) =>
+print("TEQI0EXPsome(",tok0,";",i0e1,")"))
+endlet // end-of-[g_print<teqi0exp>(tdxp)]
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
+<teqi1cmp>(tdxp) =
+let
+(*
+#impltmp
+g_print$out<>() = out
+*)
+in//let
+(
+case+ tdxp of
+|
+TEQI1CMPnone() =>
+print("TEQI1CMPnone(", ")")
+|
+TEQI1CMPsome(tok0, icmp) =>
+print("TEQI1CMPsome(",tok0,";",icmp,")"))
+endlet // end-of-[g_print<teqi1cmp>(tdxp)]
+//
+(* ****** ****** *)
+//
+#impltmp
+g_print
 <i0parsed>(ipar) =
 let
 val () =
 i0parsed_fprint(g_print$out<>(), ipar)end
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
