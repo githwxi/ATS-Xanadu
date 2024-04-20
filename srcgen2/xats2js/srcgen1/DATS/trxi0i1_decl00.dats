@@ -77,6 +77,15 @@ trxi0i1_i0dcl
 case+
 dcl0.node() of
 //
+|I0Dvaldclst _ =>
+(
+  f0_valdclst(env0, dcl0))
+(*
+|I0Dvardclst _ =>
+(
+  f0_vardclst(env0, dcl0))
+*)
+//
 |_(* otherwise *) => i1dcl_none1(dcl0)
 //
 ) where
@@ -86,6 +95,72 @@ dcl0.node() of
 //
 val
 loc0 = dcl0.lctn((*0*))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_valdclst
+( env0:
+! envi0i1
+, dcl0: i0dcl): i1dcl =
+let
+//
+val-
+I0Dvaldclst
+(tknd, i0vs) = dcl0.node()
+//
+val
+i1vs =
+trxi0i1_i0valdclist(env0, i0vs)
+//
+in//let
+  i1dcl(loc0, I1Dvaldclst(tknd, i1vs))
+end where
+{
+//
+val loc0 = dcl0.lctn()
+//
+(*
+val (  ) =
+prerrln("f0_valdclst(di): d3cl = ", d3cl)
+*)
+//
+}(*where*) // end of [f0_valdclst(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_vardclst
+( env0:
+! envi0i1
+, dcl0: i0dcl): i1dcl =
+let
+//
+val-
+I0Dvardclst
+(tknd, i0vs) = dcl0.node()
+//
+val
+i0vs =
+trxi0i1_i0vardclist(env0, i0vs)
+//
+in//let
+  i1dcl(loc0, I1Dvardclst(tknd, i0vs))
+end where
+{
+//
+val loc0 = dcl0.lctn()
+//
+(*
+val (  ) =
+prerrln("f0_vardclst(di): dcl0 = ", dcl0)
+*)
+//
+}(*where*) // end of [f0_vardclst(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 val () =
 (

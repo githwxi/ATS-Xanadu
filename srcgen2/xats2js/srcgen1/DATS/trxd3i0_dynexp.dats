@@ -213,7 +213,7 @@ val loc0 = d3p0.lctn((*0*))
 fun
 f0_annot
 ( env0:
-! trdienv
+! envd3i0
 , d3p0: d3pat): i0pat =
 (
 trxd3i0_d3pat(env0, d3p1)
@@ -369,7 +369,7 @@ val loc0 = d3e0.lctn((*0*))
 fun
 f0_timp
 ( env0:
-! trdienv
+! envd3i0
 , d3e0: d3exp): i0exp =
 let
 //
@@ -396,7 +396,7 @@ end//let//end-of-[f0_timp(env0,d3e0)]
 fun
 f0_sapp
 ( env0:
-! trdienv
+! envd3i0
 , d3e0: d3exp): i0exp =
 (
 trxd3i0_d3exp(env0, d3f0)
@@ -411,7 +411,7 @@ D3Esapp
 fun
 f0_sapq
 ( env0:
-! trdienv
+! envd3i0
 , d3e0: d3exp): i0exp =
 (
 trxd3i0_d3exp(env0, d3f0)
@@ -428,7 +428,7 @@ D3Esapq
 fun
 f0_tapp
 ( env0:
-! trdienv
+! envd3i0
 , d3e0: d3exp): i0exp =
 let
 //
@@ -448,7 +448,7 @@ end//let//end-of-[f0_tapp(env0,d3e0)]
 fun
 f0_tapq
 ( env0:
-! trdienv
+! envd3i0
 , d3e0: d3exp): i0exp =
 let
 //
@@ -470,7 +470,7 @@ end//let//end-of-[f0_tapq(env0,d3e0)]
 fun
 f0_dapp
 ( env0:
-! trdienv
+! envd3i0
 , d3e0: d3exp): i0exp =
 let
 //
@@ -503,7 +503,7 @@ end (*let*) // end of [f0_dapp(env0,d3e0)]
 fun
 f0_let0
 ( env0:
-! trdienv
+! envd3i0
 , d3e0: d3exp): i0exp =
 let
 //
@@ -528,7 +528,7 @@ end(*let*)//end-of-[f0_let0(env0,d3e0)]
 fun
 f0_ift0
 ( env0:
-! trdienv
+! envd3i0
 , d3e0: d3exp): i0exp =
 let
 //
@@ -554,7 +554,7 @@ end(*let*)//end-of-[f0_ift0(env0,d3e0)]
 fun
 f0_cas0
 ( env0:
-! trdienv
+! envd3i0
 , d3e0: d3exp): i0exp =
 let
 //
@@ -578,7 +578,7 @@ end(*let*)//end-of-[f0_cas0(env0,d3e0)]
 fun
 f0_seqn
 ( env0:
-! trdienv
+! envd3i0
 , d3e0: d3exp): i0exp =
 let
 //
@@ -604,7 +604,7 @@ end(*let*)//end-of-[f0_seqn(env0,d3e0)]
 fun
 f0_tup0
 ( env0:
-! trdienv
+! envd3i0
 , d3e0: d3exp): i0exp =
 let
 //
@@ -634,7 +634,7 @@ end(*let*)//end-of-[f0_tup0(env0,d3e0)]
 fun
 f0_tup1
 ( env0:
-! trdienv
+! envd3i0
 , d3e0: d3exp): i0exp =
 let
 //
@@ -661,7 +661,7 @@ end(*let*)//end-of-[f0_tup1(env0,d3e0)]
 fun
 f0_rcd2
 ( env0:
-! trdienv
+! envd3i0
 , d3e0: d3exp): i0exp =
 let
 //
@@ -688,7 +688,7 @@ end(*let*)//end-of-[f0_rcd2(env0,d3e0)]
 fun
 f0_lam0
 ( env0:
-! trdienv
+! envd3i0
 , d3e0: d3exp): i0exp =
 let
 //
@@ -715,7 +715,7 @@ end(*let*)//end-of-[f0_lam0(env0,d3e0)]
 fun
 f0_fix0
 ( env0:
-! trdienv
+! envd3i0
 , d3e0: d3exp): i0exp =
 let
 //
@@ -745,7 +745,7 @@ end(*let*)//end-of-[f0_fix0(env0,d3e0)]
 fun
 f0_addr
 ( env0:
-! trdienv
+! envd3i0
 , d3e0: d3exp): i0exp =
 let
 //
@@ -766,7 +766,7 @@ end(*let*)//end-of-[f0_addr(env0,d3e0)]
 fun
 f0_flat
 ( env0:
-! trdienv
+! envd3i0
 , d3e0: d3exp): i0exp =
 let
 //
@@ -787,7 +787,7 @@ end(*let*)//end-of-[f0_flat(env0,d3e0)]
 fun
 f0_where
 ( env0:
-! trdienv
+! envd3i0
 , d3e0: d3exp): i0exp =
 let
 //
@@ -812,7 +812,7 @@ end(*let*)//end-of-[f0_where(env0,d3e0)]
 fun
 f0_assgn
 ( env0:
-! trdienv
+! envd3i0
 , d3e0: d3exp): i0exp =
 let
 //
@@ -938,7 +938,7 @@ trxd3i0_f3arglst(env0, f3as)
 fun
 f0_dyn0
 ( env0:
-! trdienv
+! envd3i0
 , f3a1: f3arg): fiarg =
 let
 //

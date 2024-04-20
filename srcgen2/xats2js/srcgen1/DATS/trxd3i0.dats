@@ -79,14 +79,14 @@ d3parsed_get_source(dpar)
 val parsed =
 d3parsed_get_parsed(dpar)
 //
-val env0 = trdienv_make_nil()
+val env0 = envd3i0_make_nil()
 //
 val parsed =
 trxd3i0_d3eclistopt(env0, parsed)
 //
 in//let
 let
-val ((*0*)) = trdienv_free_top(env0)
+val ((*0*)) = envd3i0_free_top(env0)
 in//let
 (
   i0parsed(stadyn,nerror,source,parsed))
@@ -103,7 +103,7 @@ list_trxd3i0_fnp
 (
 list_map_e1nv<x0><y0><e1>(xs, e1)) where
 {
-#vwtpdef e1 = trdienv
+#vwtpdef e1 = envd3i0
 #impltmp
 map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 } (*where*)//end of [list_trxd3i0_fnp(e1,xs,fopr)]
@@ -117,7 +117,7 @@ optn_trxd3i0_fnp
 (
 optn_map_e1nv<x0><y0><e1>(xs, e1)) where
 {
-#vwtpdef e1 = trdienv
+#vwtpdef e1 = envd3i0
 #impltmp
 map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
 } (*where*)//end of [optn_trxd3i0_fnp(e1,xs,fopr)]
