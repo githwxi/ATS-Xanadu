@@ -169,7 +169,7 @@ loc0 = d3cl.lctn((*0*))
 fun
 f0_tmpsub
 ( env0: 
-! trdienv
+! envd3i0
 , d3cl: d3ecl): i0dcl =
 let
 //
@@ -192,7 +192,7 @@ end//let//end-of-[f0_tmpsub(env0,d3cl)]
 fun
 f0_local0
 ( env0: 
-! trdienv
+! envd3i0
 , d3cl: d3ecl): i0dcl =
 let
 //
@@ -218,7 +218,7 @@ end//let//end-of-[f0_local0(env0,d3cl)]
 fun
 f0_valdclst
 ( env0:
-! trdienv
+! envd3i0
 , d3cl: d3ecl): i0dcl =
 let
 //
@@ -236,6 +236,7 @@ end where
 {
 //
 val loc0 = d3cl.lctn()
+//
 (*
 val (  ) =
 prerrln("f0_valdclst(di): d3cl = ", d3cl)
@@ -248,7 +249,7 @@ prerrln("f0_valdclst(di): d3cl = ", d3cl)
 fun
 f0_vardclst
 ( env0:
-! trdienv
+! envd3i0
 , d3cl: d3ecl): i0dcl =
 let
 //
@@ -266,6 +267,7 @@ end where
 {
 //
 val loc0 = d3cl.lctn()
+//
 (*
 val (  ) =
 prerrln("f0_vardclst(di): d3cl = ", d3cl)
@@ -278,7 +280,7 @@ prerrln("f0_vardclst(di): d3cl = ", d3cl)
 fun
 f0_fundclst
 ( env0:
-! trdienv
+! envd3i0
 , d3cl: d3ecl): i0dcl =
 let
 //
@@ -317,7 +319,7 @@ prerrln("f0_fundclst(di): d3cl = ", d3cl)
 fun
 f0_implmnt0
 ( env0:
-! trdienv
+! envd3i0
 , d3cl: d3ecl): i0dcl =
 let
 //

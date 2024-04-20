@@ -50,29 +50,30 @@ XATSOPT "./../../.."
 local
 //
 datavwtp
-trdienv =
-TRDIENV of ()
-#absimpl trdienv_vtbx = trdienv
+envd3i0 =
+ENVD3I0 of ()
+#absimpl envd3i0_vtbx = envd3i0
 //
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
 //
 #implfun
-trdienv_make_nil
-  ((*void*)) = TRDIENV( (*void*) )
+envd3i0_make_nil
+  ((*void*)) = ENVD3I0( (*void*) )
 //
 (* ****** ****** *)
 //
 #implfun
-trdienv_free_top
+envd3i0_free_top
   (  env0  ) =
 (
-case+ env0 of ~TRDIENV( (*0*) ) => ()
-) (*case+*)//end-of-(trdienv_free_top(env0))
+case+ env0 of ~ENVD3I0( (*0*) ) => ()
+)
+(*case+*)//end-of-(envd3i0_free_top(env0))
 //
 (* ****** ****** *)
-end(*local*) // end of [local(trdienv)]
+end (*local*) // end of [ local(envd3i0) ]
 (* ****** ****** *)
 
 (***********************************************************************)
