@@ -246,6 +246,16 @@ i1val_make_node
 (* ****** ****** *)
 //
 datatype
+teqi1cmp =
+|
+TEQI1CMPnone of ((*void*))
+|
+TEQI1COMsome of (token(*EQ0*), i1cmp)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
 i1dcl_node =
 //
 |
@@ -267,7 +277,11 @@ I1Dvaldclst of
 I1Dvardclst of
 (token(*VAR(vlk)*), i1vardclist)
 //
-|I1Dnone0 of () |I1Dnone1 of (i0dcl)
+|
+I1Dfundclst of
+( token(*knd*), d2cstlst, i1fundclist)
+//
+|I1Dnone0 of ((*0*)) |I1Dnone1 of (i0dcl)
 //
 where
 {
@@ -302,6 +316,34 @@ i1dcl_make_node
 (loc0:loc_t,node:i1dcl_node):i1dcl
 (* ****** ****** *)
 #symload i1dcl with i1dcl_make_node
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+i1valdcl_fprint
+(out: FILR, ival: i1valdcl): void
+fun
+i1vardcl_fprint
+(out: FILR, ivar: i1vardcl): void
+(* ****** ****** *)
+fun
+i1fundcl_fprint
+(out: FILR, ifun: i1fundcl): void
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+i1valdcl_get_lctn:(i1valdcl)->loc_t
+fun
+i1vardcl_get_lctn:(i1vardcl)->loc_t
+fun
+i1fundcl_get_lctn:(i1fundcl)->loc_t
+(* ****** ****** *)
+fun
+i1valdcl_get_dpat:(i1valdcl)->i0pat
+fun
+i1valdcl_get_tdxp:(i1valdcl)->teqi1cmp
+(* ****** ****** *)
+#symload dpat with i1valdcl_get_dpat
+#symload tdxp with i1valdcl_get_tdxp(*opt*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
