@@ -96,9 +96,6 @@ local
 val
 stamper = stamper_new((*0*))
 //
-val
-_(*nil*) = stamper.getinc((*0*))
-//
 in//local
 fun
 the_i1reg_stamp_new

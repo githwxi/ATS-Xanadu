@@ -68,18 +68,61 @@ d2vtop = $MAP.topmap(i1val)
 #vwtpdef
 d2vstk = $MAP.stkmap(i1val)
 (* ****** ****** *)
+(* ****** ****** *)
+#symload
+lctn
+with d2var_get_lctn
+#symload
+name
+with d2var_get_name
+(* ****** ****** *)
+//
+#symload
+stkmap_nilq
+with
+$MAP.stkmap_nilq(*cbv*)
+//
+(* ****** ****** *)
+//
+#symload
+stkmap_pshlam0 with
+$MAP.stkmap_pshlam0(*cbr*)
+#symload
+stkmap_pshlet0 with
+$MAP.stkmap_pshlet0(*cbr*)
+//
+//
+(* ****** ****** *)
 //
 #symload
 topmap_make_nil
-with $MAP.topmap_make_nil(*void*)
+with
+$MAP.topmap_make_nil(*void*)
+#symload
+stkmap_make_nil with
+$MAP.stkmap_make_nil(*void*)
 //
 #symload
-stkmap_make_nil
-with $MAP.stkmap_make_nil(*void*)
-#symload
-stkmap_free_nil
-with $MAP.stkmap_free_nil(*void*)
+stkmap_free_nil with
+$MAP.stkmap_free_nil(*void*)
 //
+(* ****** ****** *)
+//
+#symload
+topmap_search_opt with
+$MAP.topmap_search_opt(*cbr*)
+#symload
+stkmap_search_opt with
+$MAP.stkmap_search_opt(*cbr*)
+//
+#symload
+topmap_insert_any with
+$MAP.topmap_insert_any(*cbr*)
+#symload
+stkmap_insert_any with
+$MAP.stkmap_insert_any(*cbr*)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 local
@@ -324,14 +367,6 @@ $fold(env0); ilts) where
 end(*let*)//end-of-(envi0i1_popblk0(env0))
 //
 (* ****** ****** *)
-//
-#symload
-stkmap_pshlam0 with
-$MAP.stkmap_pshlam0(*&stk*)
-#symload
-stkmap_pshlet0 with
-$MAP.stkmap_pshlet0(*&stk*)
-//
 (* ****** ****** *)
 //
 #implfun
@@ -456,10 +491,43 @@ end (*let*)//end-of-(envi0i1_pshcas0(env0))
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#symload
-stkmap_insert_any with
-$MAP.stkmap_insert_any(*&stk*)
+#implfun
+envi0i1_search_dvar
+  (env0, d2v1) = let
 //
+val+
+@ENVI0I1
+(d2vtop,
+ d2vstk,!iltstk) = env0
+//
+val sym1 = d2v1.name((*void*))
+//
+val opt1 =
+stkmap_search_opt(d2vstk, sym1)
+//
+in//let
+//
+case+ opt1 of
+| ~
+optn_vt_nil() =>
+(
+(
+case+ opt2 of
+| ~
+optn_vt_nil() =>
+i1val_none0(d2v1.lctn())
+| ~
+optn_vt_cons(ival) => ival)
+where
+{
+val opt2 =
+topmap_search_opt(d2vtop, sym1)}
+)
+| ~optn_vt_cons(ival) => ( ival )//case+
+//
+end(*let*)//end-of-( envi0i1_search_dvar )
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -472,12 +540,19 @@ val+
 !d2vstk,!iltstk) = env0
 //
 val
-sym1 = d2var_get_name(d2v1)
+sym1 = d2v1.name((*void*))
 //
 in//let
 //
 let
 val () =
+if
+stkmap_nilq
+(  d2vstk  )
+then
+topmap_insert_any
+(d2vtop,sym1,ival)
+else
 stkmap_insert_any
 (d2vstk,sym1,ival) in $fold(env0) end
 //
