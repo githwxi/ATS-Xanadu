@@ -92,6 +92,7 @@ dcl0.lctn(),I1Dnone1(dcl0))
 (* ****** ****** *)
 //
 local
+//
 val
 stamper = stamper_new((*0*))
 //

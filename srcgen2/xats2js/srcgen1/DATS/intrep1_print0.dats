@@ -57,6 +57,9 @@ XATSOPT "./../../.."
 #staload "./../SATS/intrep1.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+#symload lctn with i1val_get_lctn
+#symload node with i1val_get_node
+(* ****** ****** *)
 #symload lctn with i1dcl_get_lctn
 #symload node with i1dcl_get_node
 (* ****** ****** *)
@@ -70,7 +73,8 @@ let
 g_print$out<>() = out
 in//let
 //
-case+ i1v0 of
+case+
+i1v0.node() of
 //
 |I1Vnil() =>
 print("I1Vnil(",")")
@@ -83,6 +87,9 @@ print("I1Vbtf(",btf,")")
 print("I1Vchr(",chr,")")
 |I1Vstr(str) =>
 print("I1Vstr(",str,")")
+//
+|I1Vreg(ireg) =>
+print("I1Vreg(",ireg,")")
 //
 (*
 |I1Vtup0(i1vs) =>
