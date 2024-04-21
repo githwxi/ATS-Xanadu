@@ -16,6 +16,9 @@ Mon 19 Feb 2024 10:54:31 AM
 #staload SYM =
 "./../../../SATS/xsymbol.sats"
 (* ****** ****** *)
+#staload MAP =
+"./../../../SATS/xsymmap.sats"
+(* ****** ****** *)
 //
 (*
 #staload LAB =
