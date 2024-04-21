@@ -64,6 +64,9 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 #typedef
+iltlst = list(i1let)
+(* ****** ****** *)
+#typedef
 d2vtop = topmap(i1valist)
 #vwtpdef
 d2vstk = stkmap(i1valist)
@@ -77,6 +80,8 @@ datavwtp
 iltstk =
 //
 |iltstk_nil of ( (*v0*) ) 
+//
+|iltstk_blk0 of ( iltstk ) 
 //
 |iltstk_lam0 of ( iltstk ) 
 |iltstk_let0 of ( iltstk ) 
@@ -119,6 +124,16 @@ iltstk_fprint1
 (gl_print$out<>( (*nil*) ), stk0)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+iltstk_pshblk0
+  (  stk0  ) =
+(
+  stk0 := iltstk_blk0(stk0))
+//(*end of [iltstk_pshift0(stk0)]*)
+//
+(* ****** ****** *)
 //
 #implfun
 iltstk_pshlam0
@@ -149,6 +164,75 @@ iltstk_pshcas0
 (
   stk0 := iltstk_cas0(stk0))
 //(*end of [iltstk_pshcas0(stk0)]*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+iltstk_popblk0
+  (  stk0  ) = let
+//
+fnx
+loop
+( kxs
+: iltstk
+, res: iltlst
+, err: &sint >> _):
+  @(iltstk, iltlst) =
+(
+case+ kxs of
+//
+| ~
+iltstk_blk0
+(   kxs   ) => (kxs, res)
+//
+| ~
+iltstk_cons
+(ilt , kxs) =>
+(
+  loop(kxs, res, err)) where
+{
+  val res = list_cons(ilt, res)
+}
+//
+| !
+iltstk_nil() =>
+let
+val () = err:=1 in (kxs,res) end
+//
+| !
+iltstk_lam0 _ =>
+let
+val () = err:=1 in (kxs,res) end
+| !
+iltstk_let0 _ =>
+let
+val () = err:=1 in (kxs,res) end
+//
+| !
+iltstk_ift0 _ =>
+let
+val () = err:=1 in (kxs,res) end
+| !
+iltstk_cas0 _ =>
+let
+val () = err:=1 in (kxs,res) end
+//
+)(*case+*)//end-[loop(kxs,res,err)]
+//
+in//let
+//
+let
+var err: int = 0
+val res: iltlst = list_nil()
+val
+(stk1,res) =
+loop
+(stk0,res,err) in stk0 := stk1; res
+end//let
+//
+end//let
+//(* end of [iltstk_popblk0(stk)] *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -186,6 +270,42 @@ end//let
 (* ****** ****** *)
 //
 #implfun
+envi0i1_pshblk0
+(     env0     ) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+!d2vstk,!iltstk) = env0
+//
+in//let
+//
+(
+iltstk_pshblk0(iltstk); $fold(env0))
+//
+end (*let*)//end-of-(envi0i1_pshblk0(env0))
+//
+#implfun
+envi0i1_popblk0
+(     env0     ) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+!d2vstk, !iltstk) = env0
+//
+in//let
+//
+(
+$fold(env0); ilts) where
+{
+  val ilts = iltstk_popblk0(iltstk) }
+//
+end(*let*)//end-of-(envi0i1_popblk0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
 envi0i1_pshlam0
 (     env0     ) = let
 //
@@ -201,6 +321,24 @@ stkmap_pshlam0(d2vstk);
 iltstk_pshlam0(iltstk); $fold(env0))
 //
 end (*let*)//end-of-(envi0i1_pshlam0(env0))
+//
+#implfun
+envi0i1_poplam0
+(     env0     ) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+!d2vstk, !iltstk) = env0
+//
+in//let
+//
+(
+$fold(env0); ilts) where
+{
+  val ilts = iltstk_poplam0(iltstk) }
+//
+end(*let*)//end-of-(envi0i1_poplam0(env0))
 //
 (* ****** ****** *)
 //
@@ -221,6 +359,24 @@ iltstk_pshlet0(iltstk); $fold(env0))
 //
 end (*let*)//end-of-(envi0i1_pshlet0(env0))
 //
+#implfun
+envi0i1_poplet0
+(     env0     ) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+!d2vstk, !iltstk) = env0
+//
+in//let
+//
+(
+$fold(env0); ilts) where
+{
+  val ilts = iltstk_poplet0(iltstk) }
+//
+end(*let*)//end-of-(envi0i1_poplet0(env0))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -236,6 +392,10 @@ val+
 in//let
 //
 (
+(*
+HX-2024:
+[d2vstk] is unchanged!
+*)
 iltstk_pshift0(iltstk); $fold(env0))
 //
 end (*let*)//end-of-(envi0i1_pshift0(env0))
@@ -254,6 +414,11 @@ val+
 in//let
 //
 (
+(*
+HX-2024:
+There is
+no [stkmap_pshcas0]!
+*)
 stkmap_pshlam0(d2vstk);
 iltstk_pshcas0(iltstk); $fold(env0))
 //
