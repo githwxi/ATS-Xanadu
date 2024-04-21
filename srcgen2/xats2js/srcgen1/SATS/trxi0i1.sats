@@ -67,11 +67,20 @@ iltstk_fprint1
 (* ****** ****** *)
 //
 fun
+iltstk_pshblk0
+(stk: &iltstk >> _): void
+fun
+iltstk_popblk0
+(stk: &iltstk >> _): i1letlst
+//
+(* ****** ****** *)
+//
+fun
 iltstk_pshlam0
-( stk: &iltstk >> _ ): void
+(stk: &iltstk >> _): void
 fun
 iltstk_pshlet0
-( stk: &iltstk >> _ ): void
+(stk: &iltstk >> _): void
 //
 fun
 iltstk_poplam0
@@ -84,25 +93,16 @@ iltstk_poplet0
 //
 fun
 iltstk_pshift0
-( stk: &iltstk >> _ ): void
+(stk: &iltstk >> _): void
 fun
 iltstk_pshcas0
-( stk: &iltstk >> _ ): void
+(stk: &iltstk >> _): void
 //
 fun
 iltstk_popift0
 (stk: &iltstk >> _): i1letlst
 fun
 iltstk_popcas0
-(stk: &iltstk >> _): i1letlst
-//
-(* ****** ****** *)
-//
-fun
-iltstk_pshblk0
-( stk: &iltstk >> _ ): void
-fun
-iltstk_popblk0
 (stk: &iltstk >> _): i1letlst
 //
 (* ****** ****** *)
@@ -137,6 +137,15 @@ envi0i1_free_top
 (* ****** ****** *)
 //
 fun
+envi0i1_pshblk0
+(env0: !envi0i1): void//end-fun
+fun
+envi0i1_popblk0
+(env0: !envi0i1): i1letlst//fun
+//
+(* ****** ****** *)
+//
+fun
 envi0i1_pshlam0
 (env0: !envi0i1): void//end-fun
 fun
@@ -167,14 +176,6 @@ envi0i1_popcas0
 (env0: !envi0i1): i1letlst//fun
 //
 (* ****** ****** *)
-//
-fun
-envi0i1_pshblk0
-(env0: !envi0i1): void//end-fun
-fun
-envi0i1_popblk0
-(env0: !envi0i1): i1letlst//fun
-//
 (* ****** ****** *)
 //
 fun
