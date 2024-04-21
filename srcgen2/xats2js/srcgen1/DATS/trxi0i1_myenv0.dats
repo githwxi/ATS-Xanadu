@@ -238,6 +238,16 @@ end//let
 (* ****** ****** *)
 //
 #implfun
+iltstk_insert_ilet
+  (  stk0, ilet  ) =
+(
+  stk0 := iltstk_cons(ilet, stk0))
+//(*end of [iltstk_insert_ilet(...)]*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 envi0i1_make_nil
   ((*void*)) =
 (
@@ -423,6 +433,27 @@ stkmap_pshlam0(d2vstk);
 iltstk_pshcas0(iltstk); $fold(env0))
 //
 end (*let*)//end-of-(envi0i1_pshcas0(env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+envi0i1_insert_ilet
+  (env0 , ilet) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+!d2vstk,!iltstk) = env0
+//
+in//let
+//
+let
+val () =
+iltstk_insert_ilet
+(  iltstk, ilet  ) in $fold(env0) end
+//
+end (*let*)//end-of-(envi0i1_pshift0(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)

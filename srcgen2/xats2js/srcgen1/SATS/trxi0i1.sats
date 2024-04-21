@@ -108,7 +108,7 @@ iltstk_popcas0
 (* ****** ****** *)
 //
 fun
-iltstk_insert_any
+iltstk_insert_ilet
 (stk:
 &iltstk >> _, ilt: i1let):void
 //
