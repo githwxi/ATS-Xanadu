@@ -88,6 +88,20 @@ i1val_btf
 i1val_make_node(loc,I1Vbtf(sym)))
 (* ****** ****** *)
 fun
+i1val_chr
+( loc: loc_t
+, tok: token): i1val =
+(
+i1val_make_node(loc,I1Vchr(tok)))
+(* ****** ****** *)
+fun
+i1val_flt
+( loc: loc_t
+, tok: token): i1val =
+(
+i1val_make_node(loc,I1Vflt(tok)))
+(* ****** ****** *)
+fun
 i1val_str
 ( loc: loc_t
 , tok: token): i1val =
@@ -157,8 +171,11 @@ iexp.node() of
 //
 |I0Eint _ => f0_int(env0, iexp)
 |I0Ebtf _ => f0_btf(env0, iexp)
-//
+|I0Echr _ => f0_chr(env0, iexp)
+|I0Eflt _ => f0_flt(env0, iexp)
 |I0Estr _ => f0_str(env0, iexp)
+//
+|I0Evar _ => f0_var(env0, iexp)
 //
 |I0Edapp _ => f0_dapp(env0, iexp)
 //
@@ -199,6 +216,32 @@ f0_btf
 (* ****** ****** *)
 //
 fun
+f0_chr
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+(
+  i1val_chr(loc, tok) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Echr(tok) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
+f0_flt
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+(
+  i1val_flt(loc, tok) ) where
+{
+  val loc = iexp.lctn()
+  val-I0Eflt(tok) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
 f0_str
 ( env0:
 ! envi0i1
@@ -208,6 +251,32 @@ f0_str
 {
   val loc = iexp.lctn()
   val-I0Estr(tok) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
+f0_var
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Evar(d2v1) = iexp.node()
+//
+in//let
+  envi0i1_search_dvar(env0, d2v1)
+end where
+{
+//
+val () =
+(
+prerr("trxi0i1_i0exp:");
+prerrln("f0_var(01): iexp = ", iexp))
+//
+}(*where*)//end-of-[f0_dapp(env0,iexp)]
 //
 (* ****** ****** *)
 //

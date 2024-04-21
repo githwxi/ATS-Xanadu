@@ -53,9 +53,6 @@ XATSOPT "./../../.."
 "./../HATS/libxats2js.hats"
 //
 (* ****** ****** *)
-#staload
-"./../../../SATS/xsymmap.sats"
-(* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
@@ -67,9 +64,22 @@ XATSOPT "./../../.."
 iltlst = list(i1let)
 (* ****** ****** *)
 #typedef
-d2vtop = topmap(i1valist)
+d2vtop = $MAP.topmap(i1val)
 #vwtpdef
-d2vstk = stkmap(i1valist)
+d2vstk = $MAP.stkmap(i1val)
+(* ****** ****** *)
+//
+#symload
+topmap_make_nil
+with $MAP.topmap_make_nil(*void*)
+//
+#symload
+stkmap_make_nil
+with $MAP.stkmap_make_nil(*void*)
+#symload
+stkmap_free_nil
+with $MAP.stkmap_free_nil(*void*)
+//
 (* ****** ****** *)
 //
 local
@@ -315,6 +325,15 @@ end(*let*)//end-of-(envi0i1_popblk0(env0))
 //
 (* ****** ****** *)
 //
+#symload
+stkmap_pshlam0 with
+$MAP.stkmap_pshlam0(*&stk*)
+#symload
+stkmap_pshlet0 with
+$MAP.stkmap_pshlet0(*&stk*)
+//
+(* ****** ****** *)
+//
 #implfun
 envi0i1_pshlam0
 (     env0     ) = let
@@ -437,6 +456,35 @@ end (*let*)//end-of-(envi0i1_pshcas0(env0))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#symload
+stkmap_insert_any with
+$MAP.stkmap_insert_any(*&stk*)
+//
+(* ****** ****** *)
+//
+#implfun
+envi0i1_insert_dvar
+(env0, d2v1, ival) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+!d2vstk,!iltstk) = env0
+//
+val
+sym1 = d2var_get_name(d2v1)
+//
+in//let
+//
+let
+val () =
+stkmap_insert_any
+(d2vstk,sym1,ival) in $fold(env0) end
+//
+end(*let*)//end-of-( envi0i1_insert_dvar )
+//
+(* ****** ****** *)
+//
 #implfun
 envi0i1_insert_ilet
   (env0 , ilet) = let
@@ -453,7 +501,7 @@ val () =
 iltstk_insert_ilet
 (  iltstk, ilet  ) in $fold(env0) end
 //
-end (*let*)//end-of-(envi0i1_pshift0(env0))
+end(*let*)//end-of-( envi0i1_insert_ilet )
 //
 (* ****** ****** *)
 (* ****** ****** *)

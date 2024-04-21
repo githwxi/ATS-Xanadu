@@ -179,9 +179,15 @@ envi0i1_popcas0
 (* ****** ****** *)
 //
 fun
+envi0i1_search_dvar
+( env0: 
+! envi0i1, d2v0: d2var): i1val
+//
+fun
 envi0i1_insert_dvar
 ( env0: 
-! envi0i1,d2var,i1val): (void)
+! envi0i1, d2var,i1val): (void)
+//
 fun
 envi0i1_insert_ilet
 ( env0:
