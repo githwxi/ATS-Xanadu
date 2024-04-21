@@ -204,10 +204,58 @@ dcl0.node() of
 print
 ("I1Dlocal0(", head, ";", body, ")")
 //
+|
+I1Dvaldclst
+(tknd, i1vs) =>
+print
+("I1Dvaldclst(", tknd, ";", i1vs, ")")
+|
+I1Dvardclst
+(tknd, i1vs) =>
+print
+("I1Dvardclst(", tknd, ";", i1vs, ")")
+//
 |I1Dnone0() => print( "I1Dnone0(",")" )
 |I1Dnone1(dcl1) => print("I1Dnone1(", dcl1, ")")
 //
 end(*let*)//end-of-[i1dcl_fprint(out, dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1valdcl_fprint
+  (out, ival) = let
+//
+val dpat =
+i1valdcl_get_dpat(ival)
+val tdxp =
+i1valdcl_get_tdxp(ival)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print("I1VALDCL(", dpat, ";", tdxp, ")"))
+end(*let*)//end-of-[i1valdcl_fprint(out,ival)]
+//
+(* ****** ****** *)
+//
+#implfun
+i1vardcl_fprint
+  (out, ivar) = let
+//
+val dpid =
+i1vardcl_get_dpid(ivar)
+val dini =
+i1vardcl_get_dini(ivar)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print("I1VARDCL(", dpid, ";", dini, ")"))
+end(*let*)//end-of-[i1vardcl_fprint(out,ivar)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

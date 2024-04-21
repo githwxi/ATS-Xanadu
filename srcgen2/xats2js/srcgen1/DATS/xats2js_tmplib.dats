@@ -199,24 +199,16 @@ i0fundcl_fprint(g_print$out<>(), ifun)
 (* ****** ****** *)
 //
 #impltmp
-g_print
-<teqi0exp>(tdxp) =
-let
-(*
+g_print<i1valdcl>(ival) =
+i1valdcl_fprint(g_print$out<>(), ival)
 #impltmp
-g_print$out<>() = out
-*)
-in//let
-(
-case+ tdxp of
-|
-TEQI0EXPnone() =>
-print("TEQI0EXPnone(", ")")
-|
-TEQI0EXPsome(tok0, i0e1) =>
-print("TEQI0EXPsome(",tok0,";",i0e1,")"))
-endlet // end-of-[g_print<teqi0exp>(tdxp)]
+g_print<i1vardcl>(ivar) =
+i1vardcl_fprint(g_print$out<>(), ivar)
+#impltmp
+g_print<i1fundcl>(ifun) =
+i1fundcl_fprint(g_print$out<>(), ifun)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
