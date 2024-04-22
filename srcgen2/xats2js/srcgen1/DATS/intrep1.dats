@@ -77,6 +77,23 @@ i0e0.lctn(),I1Vnone1(i0e0))
 (* ****** ****** *)
 //
 #implfun
+i1cmp_get_ival
+(  icmp  ) =
+(
+case+ icmp of
+|I1CMPcons(ilts, ival) => ival)
+//
+#implfun
+i1cmp_get_ilts
+(  icmp  ) =
+(
+case+ icmp of
+|I1CMPcons(ilts, ival) => ilts)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i1dcl_none0
 (  loc0  ) =
 i1dcl_make_node
