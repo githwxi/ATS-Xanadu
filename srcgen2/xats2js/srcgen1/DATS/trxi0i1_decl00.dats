@@ -68,6 +68,9 @@ _(*DATS*)="./../DATS/trxi0i1.dats"
 #symload lctn with i0dcl_get_lctn
 #symload node with i0dcl_get_node
 (* ****** ****** *)
+(*
+#symload ival with i1cmp_get_ival
+*)
 (* ****** ****** *)
 //
 #implfun
@@ -255,8 +258,24 @@ i0valdcl_get_tdxp(ival)
 val ipat =
 trxi0i1_i0pat(env0, ipat)
 *)
+//
 val tdxp =
 trxi0i1_teqi0exp(env0, tdxp)
+//
+val (  ) =
+(
+case+ tdxp of
+|
+TEQI1CMPnone
+( (*void*) ) => ( (*void*) )
+|
+TEQI1CMPsome
+(tkeq, icmp) =>
+let
+val i1v0 =
+i1cmp_get_ival(icmp)
+in // let
+  trxi0i1_i0pck(env0,ipat,i1v0) end)
 //
 in//let
 (

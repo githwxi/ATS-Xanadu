@@ -209,6 +209,7 @@ where
 //(*where*)//end-of-(i1val/cmp/let/bfi)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 i1val_fprint
@@ -221,6 +222,15 @@ i1let_fprint(FILR, i1let): void
 fun
 i1cmp_fprint(FILR, i1cmp): void
 //
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+i1cmp_get_ival(i1cmp): (i1val)
+fun
+i1cmp_get_ilts(i1cmp): i1letlst
+(* ****** ****** *)
+#symload ival with i1cmp_get_ival
+#symload ilts with i1cmp_get_ilts
 (* ****** ****** *)
 //
 fun
