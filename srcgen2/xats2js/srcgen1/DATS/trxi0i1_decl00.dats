@@ -70,6 +70,7 @@ _(*DATS*)="./../DATS/trxi0i1.dats"
 (* ****** ****** *)
 (*
 #symload ival with i1cmp_get_ival
+#symload ilts with i1cmp_get_ilts
 *)
 (* ****** ****** *)
 //

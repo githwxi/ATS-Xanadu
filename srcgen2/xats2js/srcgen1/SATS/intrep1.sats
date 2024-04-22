@@ -86,9 +86,12 @@ i1lab_fprint
 #abstype i1val_tbox // p0tr
 #abstype i1dcl_tbox // p0tr
 (* ****** ****** *)
+//
 #typedef i1val = i1val_tbox
 #typedef i1dcl = i1dcl_tbox
+//
 #typedef l1i1v = i1lab(i1val)
+//
 (* ****** ****** *)
 //
 #abstbox i1valdcl_tbox//p0tr
@@ -100,6 +103,7 @@ i1lab_fprint
 #abstbox i1parsed_tbox//p0tr
 //
 (* ****** ****** *)
+#typedef d2sub = (d2var, i1val)
 (* ****** ****** *)
 //
 #typedef i1reglst = list(i1reg)
@@ -182,6 +186,9 @@ and i1let =
 *)
 |I1LETnew1 of (i1reg, i1bfi)
 //
+and i1bnd =
+|I1BNDcons of (i1reg, d2sublst)
+//
 and i1cmp =
 |I1CMPcons of (i1letlst, i1val)
 //
@@ -205,6 +212,7 @@ and i1bfi =
 //
 where
 {
+  #typedef d2sublst = list(d2sub)
   #typedef i1letlst = list(i1let) }
 //(*where*)//end-of-(i1val/cmp/let/bfi)
 //
@@ -349,7 +357,7 @@ i1fundcl_get_lctn:(i1fundcl)->loc_t
 (* ****** ****** *)
 (* ****** ****** *)
 fun
-i1valdcl_get_dpat:(i1valdcl)->i0pat
+i1valdcl_get_dpat:(i1valdcl)->i1bnd
 fun
 i1valdcl_get_tdxp:(i1valdcl)->teqi1cmp
 (* ****** ****** *)
@@ -381,7 +389,7 @@ i1fundcl_get_tdxp:(i1fundcl)->teqi1cmp
 fun
 i1valdcl_make_args
 ( lctn:loc_t
-, ipat:i0pat, tdxp:teqi1cmp):i1valdcl
+, ibnd:i1bnd, tdxp:teqi1cmp):i1valdcl
 fun
 i1vardcl_make_args
 ( lctn:loc_t
