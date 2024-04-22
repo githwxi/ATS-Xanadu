@@ -216,9 +216,9 @@ optn_trxi0i1_fnp
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-trxi0i1_i0pck
-(env0: !envi0i1, i0pat,i1val): void
+fun // HX: Note that [trxi0i1]
+trxi0i1_i0pat // inserts into [env0]
+(env0: !envi0i1, ipat: i0pat): i1bnd
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -233,6 +233,7 @@ fun
 trxi0i1_i0dcl
 (env0: !envi0i1, idcl: i0dcl): i1dcl
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

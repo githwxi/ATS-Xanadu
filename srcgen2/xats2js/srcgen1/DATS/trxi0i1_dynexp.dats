@@ -361,6 +361,43 @@ trxi0i1_i0explst
 (* ****** ****** *)
 (* ****** ****** *)
 
+#implfun
+trxi0i1_i0pat_bind
+(env0, ipat, ival) =
+(
+case+
+ipat.node() of
+//
+|I0Pint _ => ( (*0*) )
+|I0Pbtf _ => ( (*0*) )
+|I0Pchr _ => ( (*0*) )
+|I0Pflt _ => ( (*0*) )
+|I0Pstr _ => ( (*0*) )
+//
+|I0Pvar _ => f0_var(env0, ipat)
+//
+) where
+{
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val () =
+prerrln
+("trxi0i1_i0pat_bind: ipat = ", ipat)
+val () =
+prerrln
+("trxi0i1_i0pat_bind: ival = ", ival)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+}(*where*)
+//end-of-[trxi0i1_i0pat_bind(env0,ipat,ival)]
+
+(* ****** ****** *)
+(* ****** ****** *)
+
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trxi0i1_dynexp.dats] *)
 (***********************************************************************)
