@@ -265,7 +265,7 @@ datatype
 i1valdcl =
 I1VALDCL of
 ( loc_t
-, i0pat, teqi1cmp)
+, i1bnd, teqi1cmp)
 //
 #absimpl
 i1valdcl_tbox = i1valdcl
@@ -278,7 +278,7 @@ i1valdcl_get_lctn
 val+
 I1VALDCL
 ( lctn
-, ipat, tdxp) = ival in lctn end
+, ibnd, tdxp) = ival in lctn end
 
 #implfun
 i1valdcl_get_dpat
@@ -286,7 +286,7 @@ i1valdcl_get_dpat
 val+
 I1VALDCL
 ( lctn
-, ipat, tdxp) = ival in ipat end
+, ibnd, tdxp) = ival in ibnd end
 
 #implfun
 i1valdcl_get_tdxp
@@ -294,15 +294,15 @@ i1valdcl_get_tdxp
 val+
 I1VALDCL
 ( lctn
-, ipat, tdxp) = ival in tdxp end
+, ibnd, tdxp) = ival in tdxp end
 
 (* ****** ****** *)
 //
 #implfun
 i1valdcl_make_args
-(lctn, ipat, tdxp) =
+(lctn, ibnd, tdxp) =
 (
-  I1VALDCL(lctn, ipat, tdxp(*opt*)))
+  I1VALDCL(lctn, ibnd, tdxp(*opt*)))
 //
 (* ****** ****** *)
 

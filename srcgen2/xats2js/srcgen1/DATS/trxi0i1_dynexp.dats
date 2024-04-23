@@ -163,6 +163,41 @@ val (  ) =
 (* ****** ****** *)
 
 #implfun
+trxi0i1_i0pat
+( env0, ipat ) =
+(
+case+
+ipat.node() of
+//
+|I0Pint _ => I1BNDnone()
+|I0Pbtf _ => I1BNDnone()
+|I0Pchr _ => I1BNDnone()
+|I0Pflt _ => I1BNDnone()
+|I0Pstr _ => I1BNDnone()
+//
+(*
+|I0Pvar _ => f0_var(env0, ipat)
+*)
+//
+) where
+{
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val () =
+prerrln
+("trxi0i1_i0pat_bind: ipat = ", ipat)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+}(*where*)//end-of-[trxi0i1_i0pat(env0,ipat)]
+
+(* ****** ****** *)
+(* ****** ****** *)
+
+#implfun
 trxi0i1_i0exp
 ( env0, iexp ) =
 (
@@ -358,43 +393,6 @@ trxi0i1_i0explst
 (
   list_trxi0i1_fnp(env0, i0es, trxi0i1_i0exp))
 //
-(* ****** ****** *)
-(* ****** ****** *)
-
-#implfun
-trxi0i1_i0pat_bind
-(env0, ipat, ival) =
-(
-case+
-ipat.node() of
-//
-|I0Pint _ => ( (*0*) )
-|I0Pbtf _ => ( (*0*) )
-|I0Pchr _ => ( (*0*) )
-|I0Pflt _ => ( (*0*) )
-|I0Pstr _ => ( (*0*) )
-//
-|I0Pvar _ => f0_var(env0, ipat)
-//
-) where
-{
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-val () =
-prerrln
-("trxi0i1_i0pat_bind: ipat = ", ipat)
-val () =
-prerrln
-("trxi0i1_i0pat_bind: ival = ", ival)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-}(*where*)
-//end-of-[trxi0i1_i0pat_bind(env0,ipat,ival)]
-
 (* ****** ****** *)
 (* ****** ****** *)
 
