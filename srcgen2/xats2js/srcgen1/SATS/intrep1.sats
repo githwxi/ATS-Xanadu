@@ -147,6 +147,47 @@ i1reg_fprint(FILR, i1reg): void
 (* ****** ****** *)
 //
 datatype
+i1let =
+(*
+|I1LETnew0 of (i1reg)
+*)
+|I1LETnew1 of (i1reg, i1bfi)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+and i1bnd =
+|
+I1BNDnone of ( (*void*) )
+|
+I1BNDsome of (i1reg, d2sublst)
+//
+and i1cmp =
+|I1CMPcons of (i1letlst, i1val)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+and i1bfi =
+//
+|I1BFIopr of
+( i1opr(*opnm*)
+, i1valist(*args*))//primopr
+//
+|I1BFIdapp of (i1val, i1valist)
+//
+|I1BFItup0 of (i1valist)//flat
+|I1BFItup1 of (token, i1valist)
+|I1BFIrcd2 of (token, l1i1vlst)
+//
+|I1BFIift0 of
+( i1val(*test*)
+, i1cmp(*then*), i1cmp(*else*) )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+and
 i1val_node =
 //
 |I1Vnil of ()
@@ -179,66 +220,42 @@ i1val_node =
 |I1Vnone0 of () |I1Vnone1 of (i0exp)
 //
 (* ****** ****** *)
-//
-and i1let =
-(*
-|I1LETnew0 of (i1reg)
-*)
-|I1LETnew1 of (i1reg, i1bfi)
-//
-and i1bnd =
-|I1BNDcons of (i1reg, d2sublst)
-//
-and i1cmp =
-|I1CMPcons of (i1letlst, i1val)
-//
 (* ****** ****** *)
-//
-and i1bfi =
-//
-|I1BFIopr of
-( i1opr(*opnm*)
-, i1valist(*args*))//primopr
-//
-|I1BFIdapp of (i1val, i1valist)
-//
-|I1BFItup0 of (i1valist)//flat
-|I1BFItup1 of (token, i1valist)
-|I1BFIrcd2 of (token, l1i1vlst)
-//
-|I1BFIift0 of
-( i1val(*test*)
-, i1cmp(*then*), i1cmp(*else*) )
 //
 where
 {
-  #typedef d2sublst = list(d2sub)
-  #typedef i1letlst = list(i1let) }
+#typedef d2sublst = list(d2sub)
+#typedef i1letlst = list(i1let) }
+//
 //(*where*)//end-of-(i1val/cmp/let/bfi)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-i1val_fprint
-(out: FILR, ival: i1val): void
+i1let_fprint:(FILR,i1let)->void
+fun
+i1bfi_fprint:(FILR,i1bfi)->void
 //
 fun
-i1bfi_fprint(FILR, i1bfi): void
+i1bnd_fprint:(FILR,i1bnd)->void
 fun
-i1let_fprint(FILR, i1let): void
+i1cmp_fprint:(FILR,i1cmp)->void
+//
 fun
-i1cmp_fprint(FILR, i1cmp): void
+i1val_fprint:(FILR,i1val)->void
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 fun
-i1cmp_get_ival(i1cmp): (i1val)
+i1cmp_get_ival(i1cmp): ( i1val )
 fun
-i1cmp_get_ilts(i1cmp): i1letlst
-(* ****** ****** *)
+i1cmp_get_ilts(i1cmp): (i1letlst)
+//
 #symload ival with i1cmp_get_ival
 #symload ilts with i1cmp_get_ilts
+//
 (* ****** ****** *)
 //
 fun
@@ -246,14 +263,14 @@ i1val_get_lctn(i1val): ( loc_t )
 fun
 i1val_get_node(i1val): i1val_node
 //
-(* ****** ****** *)
 #symload lctn with i1val_get_lctn
 #symload node with i1val_get_node
+//
 (* ****** ****** *)
 fun
-i1val_none0(loc_t): i1val
+i1val_none0(loc0: loc_t): (i1val)
 fun
-i1val_none1(iexp: i0exp): i1val
+i1val_none1(iexp: i0exp): (i1val)
 (* ****** ****** *)
 fun
 i1val_make_node

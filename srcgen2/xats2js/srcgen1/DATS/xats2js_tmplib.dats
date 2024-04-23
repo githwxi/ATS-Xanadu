@@ -169,12 +169,17 @@ g_print
 i1let_fprint(g_print$out<>(), ilet)
 #impltmp
 g_print
-<i1cmp>(icmp) =
-i1cmp_fprint(g_print$out<>(), icmp)
-#impltmp
-g_print
 <i1bfi>(ibfi) =
 i1bfi_fprint(g_print$out<>(), ibfi)
+//
+#impltmp
+g_print
+<i1bnd>(ibnd) =
+i1bnd_fprint(g_print$out<>(), ibnd)
+#impltmp
+g_print
+<i1cmp>(icmp) =
+i1cmp_fprint(g_print$out<>(), icmp)
 //
 (* ****** ****** *)
 //
