@@ -175,9 +175,59 @@ ipat.node() of
 |I0Pflt _ => I1BNDnone()
 |I0Pstr _ => I1BNDnone()
 //
-(*
-|I0Pvar _ => f0_var(env0, ipat)
-*)
+|_(*else*) => f0_main(env0, ipat)
+//
+) where
+{
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_main
+( env0:
+! envi0i1
+, ipat: i0pat): i1bnd =
+let
+//
+val loc0 = ipat.lctn()
+val ireg = i1reg_new0()
+val ival =
+i1val(loc0, I1Vreg(ireg))
+//
+in
+  trxi0i1_i0bnd(env0, ipat, ival)
+end // end-of-[f0_main(env0,ipat)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val () =
+prerrln("trxi0i1_i0pat: ipat = ", ipat)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+}(*where*)//end-of-[trxi0i1_i0pat(env0,ipat)]
+
+(* ****** ****** *)
+(* ****** ****** *)
+
+#implfun
+trxi0i1_i0bnd
+( env0
+, ipat, ival ) =
+(
+case+
+ipat.node() of
+//
+|I0Pint _ => I1BNDnone()
+|I0Pbtf _ => I1BNDnone()
+|I0Pchr _ => I1BNDnone()
+|I0Pflt _ => I1BNDnone()
+|I0Pstr _ => I1BNDnone()
+//
+|_(*else*) => I1BNDnone( (*void*) )
 //
 ) where
 {
@@ -186,13 +236,14 @@ ipat.node() of
 (* ****** ****** *)
 //
 val () =
-prerrln
-("trxi0i1_i0pat_bind: ipat = ", ipat)
+prerrln("trxi0i1_i0bnd: ipat = ", ipat)
+val () =
+prerrln("trxi0i1_i0bnd: ival = ", ival)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-}(*where*)//end-of-[trxi0i1_i0pat(env0,ipat)]
+}(*where*)//end-of-[trxi0i1_i0bnd(env0,ipat)]
 
 (* ****** ****** *)
 (* ****** ****** *)
