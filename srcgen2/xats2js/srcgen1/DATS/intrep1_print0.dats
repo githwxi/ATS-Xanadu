@@ -174,7 +174,25 @@ print("I1LETnew0(", ")")
 |I1LETnew1(ireg, ibfi) =>
 print("I1LETnew1(", ireg, ";", ibfi, ")")
 //
-end(*let*)//end-of-[i1cmp_fprint(out, ilet)]
+end(*let*)//end-of-[i1let_fprint(out, ilet)]
+//
+(* ****** ****** *)
+//
+#implfun
+i1bnd_fprint
+(out, ibnd) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+ ibnd of
+|I1BNDnone() =>
+print("I1BNDnone(", ")")
+|I1BNDsome(ireg, dsub) =>
+print("I1BNDcons(", ireg, ";", dsub, ")")
+//
+end(*let*)//end-of-[i1bnd_fprint(out, ibnd)]
 //
 (* ****** ****** *)
 //
