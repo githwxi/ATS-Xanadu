@@ -191,12 +191,18 @@ f0_main
 let
 //
 val loc0 = ipat.lctn()
+//
 val ireg = i1reg_new0()
 val ival =
 i1val(loc0, I1Vreg(ireg))
 //
 in
-  trxi0i1_i0bnd(env0, ipat, ival)
+//
+I1BNDsome(ireg, dvvs) where
+{
+val dvvs =
+trxi0i1_i0bnd(env0, ipat, ival) }
+//
 end // end-of-[f0_main(env0,ipat)]
 //
 (* ****** ****** *)
@@ -221,16 +227,40 @@ trxi0i1_i0bnd
 case+
 ipat.node() of
 //
-|I0Pint _ => I1BNDnone()
-|I0Pbtf _ => I1BNDnone()
-|I0Pchr _ => I1BNDnone()
-|I0Pflt _ => I1BNDnone()
-|I0Pstr _ => I1BNDnone()
+|I0Pint _ => list_nil()
+|I0Pbtf _ => list_nil()
+|I0Pchr _ => list_nil()
+|I0Pflt _ => list_nil()
+|I0Pstr _ => list_nil()
 //
-|_(*else*) => I1BNDnone( (*void*) )
+|I0Pvar _ =>
+f0_var(env0, ipat, ival)
+//
+|_(*else*) => list_nil( (*void*) )
 //
 ) where
 {
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_var
+( env0:
+! envi0i1
+, ipat: i0pat
+, ival: i1val): d2sublst =
+(
+list_sing(@(dvar, ival))
+) where
+{
+//
+val-
+I0Pvar(dvar) = ipat.node((*0*))
+//
+val ((*nil*)) =
+envi0i1_insert_dvar(env0, dvar, ival)
+}(*where*)//end-of-[f0_var(env0, ...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

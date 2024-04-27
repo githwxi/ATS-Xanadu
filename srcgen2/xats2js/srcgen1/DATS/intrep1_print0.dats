@@ -190,7 +190,7 @@ case+ ibnd of
 |I1BNDnone() =>
 print("I1BNDnone(", ")")
 |I1BNDsome(ireg, dsub) =>
-print("I1BNDcons(", ireg, ";", dsub, ")")
+print("I1BNDsome(", ireg, ";", dsub, ")")
 //
 end(*let*)//end-of-[i1bnd_fprint(out, ibnd)]
 //
