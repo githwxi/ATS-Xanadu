@@ -52,7 +52,6 @@ XATSOPT "./../../.."
 #staload "./intrep1.sats"
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 #absvtbx iltstk_vtbx // ptr
 #vwtpdef iltstk = iltstk_vtbx
@@ -224,7 +223,8 @@ trxi0i1_i0pat // inserts into [env0]
 fun // HX: Note that [trxi0i1_i0bnd]
 trxi0i1_i0bnd // inserts into [env0]
 ( env0:
-! envi0i1,ipat:i0pat,ival:i1val): i1bnd
+! envi0i1
+, ipat:i0pat,ival: i1val): d2sublst
 //
 (* ****** ****** *)
 (* ****** ****** *)
