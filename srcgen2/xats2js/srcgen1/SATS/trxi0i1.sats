@@ -216,14 +216,20 @@ optn_trxi0i1_fnp
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun // HX: Note that [trxi0i1]
+fun // HX: Note [trxi0i1_i0pat]
 trxi0i1_i0pat // inserts into [env0]
-(env0: !envi0i1, ipat: i0pat): i1bnd
+( env0:
+! envi0i1, ipat: i0pat): i1bnd
+//
+fun // HX: Note that [trxi0i1_i0bnd]
+trxi0i1_i0bnd // inserts into [env0]
+( env0:
+! envi0i1,ipat:i0pat,ival:i1val): i1bnd
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun // HX: Note that [trxi0i1]
+fun // HX: Note [trxi0i1_i0exp]
 trxi0i1_i0exp // inserts into [env0]
 (env0: !envi0i1, i0e0: i0exp): i1val
 //
