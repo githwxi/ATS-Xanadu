@@ -234,7 +234,9 @@ ipat.node() of
 |I0Pstr _ => list_nil()
 //
 |I0Pvar _ =>
-f0_var(env0, ipat, ival)
+(
+f0_var(env0, ipat, ival))
+|I0Pany _ => list_nil((*0*))
 //
 |_(*else*) => list_nil( (*void*) )
 //

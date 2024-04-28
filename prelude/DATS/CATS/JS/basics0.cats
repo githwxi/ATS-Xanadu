@@ -750,6 +750,7 @@ XATS2JS_strn_vt_set_at
   return (cs[i0] = c0);
 }
 /* ****** ****** */
+//
 function
 XATS2JS_strtmp_vt_alloc
   (bsz)
@@ -762,7 +763,9 @@ function
 XATS2JS_strtmp_vt_set_at
   (cs, i0, c0)
 { return (cs[i0] = c0); }
+//
 /* ****** ****** */
+//
 function
 XATS2JS_strn_forall_cfr
   (cs, f0)
@@ -780,7 +783,9 @@ if
 }
 return res; // strn_forall_cfr
 }
+//
 /* ****** ****** */
+//
 function
 XATS2JS_strn_rforall_cfr
   (cs, f0)
@@ -800,7 +805,9 @@ if
 }
 return res; // strn_rforall_cfr
 }
+//
 /* ****** ****** */
+//
 function
 XATS2JS_strn_vt_forall_cfr
   (cs, f0)
@@ -820,7 +827,9 @@ for
 }
 return res; // strn_vt_forall_cfr
 }
+//
 /* ****** ****** */
+//
 function
 XATS2JS_strn_vt_rforall_cfr
   (cs, f0)
@@ -840,6 +849,7 @@ for
 }
 return res; // strn_vt_rforall_cfr
 }
+//
 /* ****** ****** */
 
 /* end of [ATS3/XANADU_prelude_DATS_CATS_JS_basics0.cats] */
