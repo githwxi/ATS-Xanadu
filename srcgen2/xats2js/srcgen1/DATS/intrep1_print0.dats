@@ -100,6 +100,17 @@ print("I1Vtup1(",tknd,";",i1vs,")")
 print("I1Vrcd2(",tknd,";",livs,")")
 *)
 //
+|I1Vpcon
+(dcon, i1v1, idx2) =>
+(
+print("I1Vpcon(");
+print(dcon, ";", i1v1, ";", idx2, ")"))
+|I1Vproj
+(tknd, i1v1, idx2) =>
+(
+print("I1Vproj(");
+print(tknd, ";", i1v1, ";", idx2, ")"))
+//
 |I1Vnone0() => print( "I1Vnone0(",")" )
 |I1Vnone1(i0e1) => print("I1Vnone1(", i0e1, ")")
 //
