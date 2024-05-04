@@ -88,8 +88,8 @@ print("I1Vchr(",chr,")")
 |I1Vstr(str) =>
 print("I1Vstr(",str,")")
 //
-|I1Vreg(ireg) =>
-print("I1Vreg(",ireg,")")
+|I1Vtnm(itnm) =>
+print("I1Vtnm(",itnm,")")
 //
 (*
 |I1Vtup0(i1vs) =>
@@ -179,11 +179,11 @@ in//let
 //
 case+ ilet of
 (*
-|I1LETnew0(ireg) =>
+|I1LETnew0(itnm) =>
 print("I1LETnew0(", ")")
 *)
-|I1LETnew1(ireg, ibfi) =>
-print("I1LETnew1(", ireg, ";", ibfi, ")")
+|I1LETnew1(itnm, ibfi) =>
+print("I1LETnew1(", itnm, ";", ibfi, ")")
 //
 end(*let*)//end-of-[i1let_fprint(out, ilet)]
 //
@@ -200,8 +200,8 @@ in//let
 case+ ibnd of
 |I1BNDnone() =>
 print("I1BNDnone(", ")")
-|I1BNDsome(ireg, dsub) =>
-print("I1BNDsome(", ireg, ";", dsub, ")")
+|I1BNDsome(itnm, dsub) =>
+print("I1BNDsome(", itnm, ";", dsub, ")")
 //
 end(*let*)//end-of-[i1bnd_fprint(out, ibnd)]
 //

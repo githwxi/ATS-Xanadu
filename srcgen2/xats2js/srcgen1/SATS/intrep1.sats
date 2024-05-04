@@ -79,12 +79,12 @@ i1lab_fprint
 (* ****** ****** *)
 (* ****** ****** *)
 #abstype i1arg_tbox // p0tr
-#abstype i1reg_tbox // p0tr
 #abstype i1opr_tbox // p0tr
+#abstype i1tnm_tbox // p0tr
 (* ****** ****** *)
 #typedef i1arg = i1arg_tbox
-#typedef i1reg = i1reg_tbox
 #typedef i1opr = i1opr_tbox
+#typedef i1tnm = i1tnm_tbox
 (* ****** ****** *)
 #abstype i1val_tbox // p0tr
 (* ****** ****** *)
@@ -115,7 +115,7 @@ i1lab_fprint
 (* ****** ****** *)
 //
 #typedef i1arglst = list(i1arg)
-#typedef i1reglst = list(i1reg)
+#typedef i1tnmlst = list(i1tnm)
 //
 (* ****** ****** *)
 //
@@ -145,14 +145,14 @@ fun
 i1opr_make(name:sym_t): i1opr
 //
 fun
-i1reg_new0( (*void*) ): i1reg
+i1tnm_new0( (*void*) ): i1tnm
 //
 (* ****** ****** *)
 //
 fun
 i1opr_fprint(FILR, i1opr): void
 fun
-i1reg_fprint(FILR, i1reg): void
+i1tnm_fprint(FILR, i1tnm): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -160,9 +160,9 @@ i1reg_fprint(FILR, i1reg): void
 datatype
 i1let =
 (*
-|I1LETnew0 of (i1reg)
+|I1LETnew0 of (i1tnm)
 *)
-|I1LETnew1 of (i1reg, i1bfi)
+|I1LETnew1 of (i1tnm, i1bfi)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -171,7 +171,7 @@ and i1bnd =
 |
 I1BNDnone of ( (*void*) )
 |
-I1BNDsome of (i1reg, d2sublst)
+I1BNDsome of (i1tnm, d2sublst)
 //
 and i1cmp =
 |I1CMPcons of (i1letlst, i1val)
@@ -219,7 +219,7 @@ i1val_node =
 (* ****** ****** *)
 |I1Varg of (i1arg)
 (* ****** ****** *)
-|I1Vreg of (i1reg)
+|I1Vtnm of (i1tnm)
 (* ****** ****** *)
 //
 (*
