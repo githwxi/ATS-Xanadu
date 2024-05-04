@@ -299,6 +299,8 @@ iexp.node() of
 //
 |I0Etup0 _ => f0_tup0(env0, iexp)
 //
+|I0Elam0 _ => f0_lam0(env0, iexp)
+//
 |
 _(*otherwise*) => i1val_none1(iexp)
 //
@@ -456,6 +458,43 @@ prerr("trxi0i1_i0exp:");
 prerrln("f0_tup0(01): iexp = ", iexp))
 //
 }(*where*)//end-of-[f0_tup0(env0,iexp)]
+//
+(* ****** ****** *)
+//
+fun
+f0_lam0
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Elam0
+(tknd
+,fias,body) = iexp.node()
+//
+val (  ) =
+envi0i1_pshlam0(env0)
+//
+val fjas =
+trxi0i1_fiarglst(env0, fias)
+//
+val
+iret =
+trxi0i1_i0exp(env0, body)
+val
+ilts = envi0i1_poplam0( env0 )
+//
+val icmp = I1CMPcons(ilts, iret)
+//
+in//let
+(
+  i1val_make_node
+  (loc0, I1Vlam0(tknd, fjas, icmp)))
+end(*let*)//end-of-[f0_lam0(env0,iexp)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
