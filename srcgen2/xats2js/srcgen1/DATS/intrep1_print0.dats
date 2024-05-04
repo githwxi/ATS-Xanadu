@@ -91,6 +91,9 @@ print("I1Vstr(",str,")")
 |I1Vtnm(itnm) =>
 print("I1Vtnm(",itnm,")")
 //
+|I1Vfix(dvar) =>
+print("I1Vfix(",dvar,")")
+//
 (*
 |I1Vtup0(i1vs) =>
 print("I1Vtup0(", i1vs, ")")

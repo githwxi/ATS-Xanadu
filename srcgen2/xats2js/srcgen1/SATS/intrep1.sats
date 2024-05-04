@@ -221,6 +221,8 @@ i1val_node =
 (* ****** ****** *)
 |I1Vtnm of (i1tnm)
 (* ****** ****** *)
+|I1Vfix of (d2var)
+(* ****** ****** *)
 //
 (*
 |I1Vtup0 of (i1valist)
