@@ -78,12 +78,18 @@ i1lab_fprint
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#abstype i1opr_tbox // p0tr
+#abstype i1arg_tbox // p0tr
 #abstype i1reg_tbox // p0tr
-#typedef i1opr = i1opr_tbox
+#abstype i1opr_tbox // p0tr
+(* ****** ****** *)
+#typedef i1arg = i1arg_tbox
 #typedef i1reg = i1reg_tbox
+#typedef i1opr = i1opr_tbox
 (* ****** ****** *)
 #abstype i1val_tbox // p0tr
+(* ****** ****** *)
+#abstype fjarg_tbox // p0tr
+(* ****** ****** *)
 #abstype i1dcl_tbox // p0tr
 (* ****** ****** *)
 //
@@ -92,6 +98,8 @@ i1lab_fprint
 //
 #typedef l1i1v = i1lab(i1val)
 //
+(* ****** ****** *)
+#typedef fjarg = fjarg_tbox
 (* ****** ****** *)
 //
 #abstbox i1valdcl_tbox//p0tr
@@ -106,12 +114,15 @@ i1lab_fprint
 #typedef d2sub = (d2var, i1val)
 (* ****** ****** *)
 //
+#typedef i1arglst = list(i1arg)
 #typedef i1reglst = list(i1reg)
 //
 (* ****** ****** *)
 //
 #typedef i1valist = list(i1val)
 #typedef l1i1vlst = list(l1i1v)
+//
+#typedef fjarglst = list(fjarg)
 //
 #typedef i1dclist = list(i1dcl)
 //
@@ -206,6 +217,8 @@ i1val_node =
 *)
 //
 (* ****** ****** *)
+|I1Varg of (i1arg)
+(* ****** ****** *)
 |I1Vreg of (i1reg)
 (* ****** ****** *)
 //
@@ -222,6 +235,15 @@ i1val_node =
 |I1Vproj of (token, i1val, sint)
 //
 (* ****** ****** *)
+//
+|I1Vlam0 of
+( token(*knd*)
+, fjarglst(*args*), i1cmp(*body*))
+|I1Vfix0 of
+( token(*knd*)
+, d2var(*fid*)
+, fjarglst(*args*), i1cmp(*body*))
+//
 (* ****** ****** *)
 //
 |I1Vnone0 of () |I1Vnone1 of (i0exp)

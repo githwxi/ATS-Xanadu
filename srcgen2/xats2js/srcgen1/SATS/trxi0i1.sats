@@ -234,6 +234,14 @@ trxi0i1_i0exp // inserts into [env0]
 (env0: !envi0i1, i0e0: i0exp): i1val
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+trxi0i1_fiarg
+(env0: !envi0i1, farg: fiarg): fjarg
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 trxi0i1_i0dcl
@@ -245,6 +253,12 @@ trxi0i1_i0dcl
 fun
 trxi0i1_i0explst
 (env0: !envi0i1, i0es: i0explst): i1valist
+//
+(* ****** ****** *)
+//
+fun
+trxi0i1_fiarglst
+(env0: !envi0i1, fias: fiarglst): fjarglst
 //
 (* ****** ****** *)
 //
