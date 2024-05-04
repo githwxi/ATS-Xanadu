@@ -110,11 +110,11 @@ i1val_make_node(loc,I1Vstr(tok)))
 (* ****** ****** *)
 (* ****** ****** *)
 fun
-i1val_reg
+i1val_tnm
 ( loc0: loc_t
-, ireg: i1reg): i1val =
+, itnm: i1tnm): i1val =
 (
-i1val_make_node(loc0,I1Vreg(ireg)))
+i1val_make_node(loc0,I1Vtnm(itnm)))
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -126,12 +126,12 @@ i1val_dapp
 , i1f0: i1val
 , i1vs: i1valist): i1val =
 (
-i1val_reg(loc0, ireg)) where
+i1val_tnm(loc0, itnm)) where
 {
 //
-val ireg = i1reg_new0((*void*))
+val itnm = i1tnm_new0((*void*))
 val ibfi = I1BFIdapp(i1f0, i1vs)
-val ilet = I1LETnew1(ireg, ibfi)
+val ilet = I1LETnew1(itnm, ibfi)
 //
 val (  ) =
 (
@@ -147,12 +147,12 @@ i1val_tup0
 , loc0: loc_t
 , i1vs: i1valist): i1val =
 (
-i1val_reg(loc0, ireg)) where
+i1val_tnm(loc0, itnm)) where
 {
 //
 val ibfi = I1BFItup0( i1vs )
-val ireg = i1reg_new0((*void*))
-val ilet = I1LETnew1(ireg, ibfi)
+val itnm = i1tnm_new0((*void*))
+val ilet = I1LETnew1(itnm, ibfi)
 //
 val (  ) =
 (
@@ -192,13 +192,13 @@ let
 //
 val loc0 = ipat.lctn()
 //
-val ireg = i1reg_new0()
+val itnm = i1tnm_new0()
 val ival =
-i1val(loc0, I1Vreg(ireg))
+i1val(loc0, I1Vtnm(itnm))
 //
 in
 //
-I1BNDsome(ireg, dvvs) where
+I1BNDsome(itnm, dvvs) where
 {
 val dvvs =
 trxi0i1_i0bnd(env0, ipat, ival) }

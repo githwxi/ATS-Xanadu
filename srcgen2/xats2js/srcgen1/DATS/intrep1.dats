@@ -115,9 +115,9 @@ stamper = stamper_new((*0*))
 //
 in//local
 fun
-the_i1reg_stamp_new
+the_i1tnm_stamp_new
   ((*void*)): stamp = stamper.getinc()
-endloc // end-of-[the_i1reg_stamp_new()]
+endloc // end-of-[the_i1tnm_stamp_new()]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -152,35 +152,35 @@ end (*local*) // end of [local(i1opr_tbox)]
 local
 //
 datatype
-i1reg =
-I1REG of (stamp)
+i1tnm =
+I1TNM of (stamp)
 //
-#absimpl i1reg_tbox = i1reg
+#absimpl i1tnm_tbox = i1tnm
 //
 in//local
 //
 #implfun
-i1reg_new0() =
+i1tnm_new0() =
 (
-  I1REG(stmp)) where
+  I1TNM(stmp)) where
 {
-  val stmp = the_i1reg_stamp_new()
+  val stmp = the_i1tnm_stamp_new()
 }
 //
 #implfun
-i1reg_fprint
-(out, ireg) =
+i1tnm_fprint
+(out, itnm) =
 let
 //
 #impltmp
 g_print$out<>() = out
 //
-val+I1REG(stmp) = ireg
+val+I1TNM(stmp) = itnm
 //
 in//let
-  print("I1REG(", stmp, ")") endlet
+  print("I1TNM(", stmp, ")") endlet
 //
-end (*local*) // end of [local(i1reg_tbox)]
+end (*local*) // end of [local(i1tnm_tbox)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

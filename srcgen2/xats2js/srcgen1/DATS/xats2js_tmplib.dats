@@ -151,8 +151,8 @@ g_print
 i1opr_fprint(g_print$out<>(), iopr)
 #impltmp
 g_print
-<i1reg>(ireg) =
-i1reg_fprint(g_print$out<>(), ireg)
+<i1tnm>(itnm) =
+i1tnm_fprint(g_print$out<>(), itnm)
 //
 (* ****** ****** *)
 //
