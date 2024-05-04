@@ -224,7 +224,7 @@ fun // HX: Note that [trxi0i1_i0bnd]
 trxi0i1_i0bnd // inserts into [env0]
 ( env0:
 ! envi0i1
-, ipat:i0pat,ival: i1val): d2sublst
+, ipat:i0pat,ival:i1val): d2sublst
 //
 (* ****** ****** *)
 (* ****** ****** *)
