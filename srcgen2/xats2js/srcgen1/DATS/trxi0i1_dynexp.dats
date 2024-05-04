@@ -478,6 +478,15 @@ trxi0i1_i0explst
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#implfun
+trxi0i1_fiarglst
+( env0, fias ) =
+(
+  list_trxi0i1_fnp(env0, fias, trxi0i1_fiarg))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trxi0i1_dynexp.dats] *)
