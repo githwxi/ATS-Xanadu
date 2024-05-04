@@ -56,9 +56,44 @@ XATSOPT "./../../.."
 "./../../../SATS/xsymbol.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+#staload // D2E =
+"./../../../SATS/dynexp2.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1val_con(dcon) =
+let
+val loc0 =
+d2con_get_lctn(dcon)
+in//let
+i1val(loc0, I1Vcon(dcon))
+end//let//i1val_con(dcon)
+//
+#implfun
+i1val_cst(dcst) =
+let
+val loc0 =
+d2cst_get_lctn(dcst)
+in//let
+i1val(loc0, I1Vcst(dcst))
+end//let//i1val_cst(dcst)
+//
+(* ****** ****** *)
+//
+#implfun
+i1val_var(dvar) =
+let
+val loc0 =
+d2var_get_lctn(dvar)
+in//let
+i1val(loc0, I1Vvar(dvar))
+end//let//i1val_var(dvar)
+//
 (* ****** ****** *)
 //
 #implfun

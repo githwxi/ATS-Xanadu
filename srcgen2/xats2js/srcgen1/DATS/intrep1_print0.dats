@@ -91,8 +91,12 @@ print("I1Vstr(",str,")")
 |I1Vtnm(itnm) =>
 print("I1Vtnm(",itnm,")")
 //
-|I1Vfix(dvar) =>
-print("I1Vfix(",dvar,")")
+|I1Vvar(dcon) =>
+print("I1Vcon(",dcon,")")
+|I1Vvar(dcst) =>
+print("I1Vcst(",dcst,")")
+|I1Vvar(dvar) =>
+print("I1Vvar(",dvar,")")
 //
 (*
 |I1Vtup0(i1vs) =>
@@ -113,6 +117,19 @@ print(dcon, ";", i1v1, ";", idx2, ")"))
 (
 print("I1Vproj(");
 print(tknd, ";", i1v1, ";", idx2, ")"))
+//
+|I1Vlam0
+(tknd, fjas, icmp) =>
+(
+print("I1Vlam0(");
+print(tknd, ";", fjas, ";", icmp, ")"))
+|I1Vfix0
+(tknd
+,dvar, fjas, icmp) =>
+(
+print("I1Vfix0(");
+print( tknd, ";");
+print( dvar, ";", fjas, ";", icmp, ")"))
 //
 |I1Vnone0() => print( "I1Vnone0(",")" )
 |I1Vnone1(i0e1) => print("I1Vnone1(", i0e1, ")")

@@ -221,7 +221,9 @@ i1val_node =
 (* ****** ****** *)
 |I1Vtnm of (i1tnm)
 (* ****** ****** *)
-|I1Vfix of (d2var)
+|I1Vcon of (d2con)
+|I1Vcst of (d2cst)
+|I1Vvar of (d2var)
 (* ****** ****** *)
 //
 (*
@@ -298,16 +300,37 @@ i1val_get_node(i1val): i1val_node
 #symload node with i1val_get_node
 //
 (* ****** ****** *)
+//
+fun
+i1val_con(dcon: d2con): ( i1val )
+fun
+i1val_cst(dcst: d2cst): ( i1val )
+//
+fun
+i1val_var(dvar: d2var): ( i1val )
+//
+(* ****** ****** *)
+//
 fun
 i1val_none0(loc0: loc_t): (i1val)
 fun
 i1val_none1(iexp: i0exp): (i1val)
+//
 (* ****** ****** *)
+//
 fun
 i1val_make_node
 (loc0:loc_t,node:i1val_node):i1val
-(* ****** ****** *)
+//
 #symload i1val with i1val_make_node
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fjarg_fprint
+(out:FILR,farg:fjarg): ( void )
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -347,6 +370,13 @@ I1Dvardclst of
 I1Dfundclst of
 ( token(*knd*), d2cstlst, i1fundclist)
 //
+//
+|I1Dimplmnt0 of
+( token(*knd*)
+, stamp, dimpl, fjarglst, i1cmp(*body*))
+//
+(* ****** ****** *)
+//
 |I1Dnone0 of ((*0*)) |I1Dnone1 of (i0dcl)
 //
 where
@@ -359,7 +389,7 @@ where
 //
 fun
 i1dcl_fprint
-(out: FILR, idcl: i1dcl): void
+(out:FILR,idcl:i1dcl): ( void )
 //
 (* ****** ****** *)
 //
