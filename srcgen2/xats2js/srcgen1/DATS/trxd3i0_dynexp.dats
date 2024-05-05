@@ -918,8 +918,7 @@ list_cons(fia1, fias) where
 {
 //
 val
-fia1 =
-f0_dyn0(env0, f3a1)
+fia1 = f0_dapp(env0, f3a1)
 val
 fias =
 trxd3i0_f3arglst(env0, f3as)
@@ -936,7 +935,7 @@ trxd3i0_f3arglst(env0, f3as)
 {
 //
 fun
-f0_dyn0
+f0_dapp
 ( env0:
 ! envd3i0
 , f3a1: f3arg): fiarg =
@@ -958,7 +957,7 @@ fiarg
 {
 val
 i0ps = trxd3i0_d3patlst(env0, d3ps)}
-end//let//end-of-[f0_dyn0(env0,f3a1)]
+end//let//end-of-[f0_dapp(env0,f3a1)]
 //
 }(*where+*)//end-[trxd3i0_f3arglst(env0,f3as)]
 //

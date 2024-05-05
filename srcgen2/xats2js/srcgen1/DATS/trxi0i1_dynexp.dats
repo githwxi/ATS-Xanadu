@@ -71,6 +71,8 @@ _(*DATS*)="./../DATS/trxi0i1.dats"
 #symload lctn with i0exp_get_lctn
 #symload node with i0exp_get_node
 (* ****** ****** *)
+#symload lctn with fiarg_get_lctn
+#symload node with fiarg_get_node
 (* ****** ****** *)
 fun
 i1val_int
@@ -551,6 +553,70 @@ prerrln("trxi0i1_i0exp: iexp = ", iexp)
 }(*where*)//end-of-[trxi0i1_i0exp(env0,iexp)]
 
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxi0i1_fiarglst
+( env0, fias ) =
+(
+case+ fias of
+|
+list_nil
+( (*0*) ) =>
+list_nil((*void*))
+|
+list_cons
+(fia1, fias) =>
+(
+case+
+fia1.node() of
+|
+FIARGdapp _ =>
+list_cons(fja1, fjas) where
+{
+//
+val
+fja1 = f0_dapp(env0, fia1)
+val
+fjas =
+trxi0i1_fiarglst(env0, fias)
+//
+}(*where*)//end-[FIARGdapp(...)]
+)
+) where // end-of-[case+of(fia1)]
+{
+//
+fun
+f0_dapp
+( env0:
+! envi0i1
+, fia1: fiarg): fjarg =
+let
+//
+val loc0 = fia1.lctn()
+//
+val-
+FIARGdapp(i0ps) = fia1.node()
+//
+in//let
+(
+fjarg
+(loc0, FJARGdapp(i1bs))) where
+{
+val
+i1bs = trxi0i1_i0patlst(env0, i0ps)}
+end//let
+}(*where+*)//end-[trxi0i1_fiarglst(env0,fias)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxi0i1_i0patlst
+( env0, i0ps ) =
+(
+  list_trxi0i1_fnp(env0, i0ps, trxi0i1_i0pat))
+//
 (* ****** ****** *)
 //
 #implfun

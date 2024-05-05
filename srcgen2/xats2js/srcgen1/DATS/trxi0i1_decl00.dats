@@ -367,22 +367,23 @@ val tdxp =
 (
 case+ tdxp of
 |
-TEQI0EXPnone() =>
+TEQI0EXPnone
+( (*void*) ) =>
 TEQI1CMPnone() where
 {
 val
-ilts = envi0i1_poplam0(env0)
-}
+ilts = envi0i1_poplam0(env0)}
 |
-TEQI0EXPsome(teq1, iexp) =>
+TEQI0EXPsome
+(teq1, iexp) =>
 TEQI1CMPsome
 ( teq1
 , I1CMPcons(ilts, ival)) where
 {
 val ival =
-  trxi0i1_i0exp(env0, iexp)
-val ilts = envi0i1_poplam0(env0)
-}
+(
+  trxi0i1_i0exp(env0, iexp) )
+val ilts = envi0i1_poplam0(env0)}
 ) (*case+*) // end-of-( teqi0exp )
 //
 in//let
