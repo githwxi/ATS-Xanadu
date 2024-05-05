@@ -60,6 +60,9 @@ XATSOPT "./../../.."
 #symload lctn with i1val_get_lctn
 #symload node with i1val_get_node
 (* ****** ****** *)
+#symload lctn with fjarg_get_lctn
+#symload node with fjarg_get_node
+(* ****** ****** *)
 #symload lctn with i1dcl_get_lctn
 #symload node with i1dcl_get_node
 (* ****** ****** *)
@@ -240,6 +243,25 @@ case+ icmp of
 print("I1CMPcons(", ilts, ";", ival, ")")
 //
 end(*let*)//end-of-[i1cmp_fprint(out, icmp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+fjarg_fprint
+(out, farg) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+farg.node() of
+|FJARGdyn(i1bs) =>
+(
+  print("FJARGdyn(", i1bs, ")"))
+//
+end (*let*) // end of [fjarg_fprint(out,farg)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

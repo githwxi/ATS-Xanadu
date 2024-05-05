@@ -186,7 +186,7 @@ i1cmp_fprint(g_print$out<>(), icmp)
 #impltmp
 g_print
 <fjarg>(farg) =
-i1dcl_fprint(g_print$out<>(), farg)
+fjarg_fprint(g_print$out<>(), farg)
 //
 (* ****** ****** *)
 //

@@ -128,6 +128,38 @@ case+ icmp of
 (* ****** ****** *)
 (* ****** ****** *)
 //
+local
+//
+datatype
+fjarg =
+FJARG of
+(
+loctn, fjarg_node)
+#absimpl
+fjarg_tbox = fjarg
+//
+in (* in-of-local *)
+//
+#implfun
+fjarg_make_node
+(   loc,nod   ) = FJARG(loc,nod)
+//
+#implfun
+fjarg_get_lctn(fja) =
+let
+  val+FJARG(loc,nod) = fja in loc
+end
+#implfun
+fjarg_get_node(fja) =
+let
+  val+FJARG(loc,nod) = fja in nod
+end
+//
+endloc (*local*) // end of [local(fjarg)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 i1dcl_none0
 (  loc0  ) =
@@ -404,7 +436,7 @@ i1fundcl =
 I1FUNDCL of
 ( loc_t
 , d2var
-, fiarglst, teqi1cmp)
+, fjarglst, teqi1cmp)
 //
 #absimpl
 i1fundcl_tbox = i1fundcl
