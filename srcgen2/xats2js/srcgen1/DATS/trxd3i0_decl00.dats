@@ -161,11 +161,6 @@ d3cl.node() of
 //
 (* ****** ****** *)
 //
-val
-loc0 = d3cl.lctn((*0*))
-//
-(* ****** ****** *)
-//
 fun
 f0_tmpsub
 ( env0: 
@@ -173,6 +168,7 @@ f0_tmpsub
 , d3cl: d3ecl): i0dcl =
 let
 //
+val loc0 = d3cl.lctn()
 val-
 D3Ctmpsub
 (svts, dcl1) = d3cl.node()
@@ -196,6 +192,7 @@ f0_local0
 , d3cl: d3ecl): i0dcl =
 let
 //
+val loc0 = d3cl.lctn()
 val-
 D3Clocal0
 (head, body) = d3cl.node()
@@ -223,7 +220,6 @@ f0_valdclst
 let
 //
 val loc0 = d3cl.lctn()
-//
 val-
 D3Cvaldclst
 (tknd, d3vs) = d3cl.node()
@@ -240,7 +236,7 @@ end where
 (*
 val loc0 = d3cl.lctn()
 val (  ) =
-prerrln("f0_valdclst(di): d3cl = ", d3cl)
+prerrln("f0_valdclst(d3i0): d3cl = ", d3cl)
 *)
 //
 }(*where*) // end of [f0_valdclst(env0,d3cl)]
@@ -255,7 +251,6 @@ f0_vardclst
 let
 //
 val loc0 = d3cl.lctn()
-//
 val-
 D3Cvardclst
 (tknd, d3vs) = d3cl.node()
@@ -272,7 +267,7 @@ end where
 (*
 val loc0 = d3cl.lctn()
 val (  ) =
-prerrln("f0_vardclst(di): d3cl = ", d3cl)
+prerrln("f0_vardclst(d3i0): d3cl = ", d3cl)
 *)
 //
 }(*where*) // end of [f0_vardclst(env0,d3cl)]
@@ -286,9 +281,7 @@ f0_fundclst
 , d3cl: d3ecl): i0dcl =
 let
 //
-val
-loc0 = d3cl.lctn((*void*))
-//
+val loc0 = d3cl.lctn()
 val-
 D3Cfundclst
 ( tknd
@@ -311,7 +304,7 @@ end where
 val loc0 = d3cl.lctn((*void*))
 //
 val (  ) =
-prerrln("f0_fundclst(di): d3cl = ", d3cl)
+prerrln("f0_fundclst(d3i0): d3cl = ", d3cl)
 *)
 //
 }(*where*) // end of [f0_fundclst(env0,d3cl)]
@@ -326,9 +319,7 @@ f0_implmnt0
 , d3cl: d3ecl): i0dcl =
 let
 //
-val
-loc0 = d3cl.lctn((*void*))
-//
+val loc0 = d3cl.lctn()
 val-
 D3Cimplmnt0
 ( tknd
@@ -359,9 +350,9 @@ end where // end-of-[let]
 val loc0 = d3cl.lctn((*void*))
 //
 val (  ) =
-prerrln("f0_implmnt0(di): loc0 = ", loc0)
+prerrln("f0_implmnt0(d3i0): loc0 = ", loc0)
 val (  ) =
-prerrln("f0_implmnt0(di): d3cl = ", d3cl)
+prerrln("f0_implmnt0(d3i0): d3cl = ", d3cl)
 *)
 //
 } (*where*) // end of [f0_implmnt0(env0,d3cl)]
@@ -369,6 +360,11 @@ prerrln("f0_implmnt0(di): d3cl = ", d3cl)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+val loc0 = d3cl.lctn((*void*))
+//
+val (  ) =
+(
+  prerrln("trxd3i0_i0dcl: loc0 = ", loc0) )
 val () =
 (
   prerrln("trxd3i0_d3ecl: d3cl = ", d3cl) )
