@@ -458,7 +458,7 @@ d3fundcl_get_tdxp(dfun)
 //
 (*
 val (  ) = prerrln
-("trxd3i0_d3fundcl: f2as = ", f2as)
+("trxd3i0_d3fundcl: f3as = ", f3as)
 val (  ) = prerrln
 ("trxd3i0_d3fundcl: tdxp = ", tdxp)
 *)

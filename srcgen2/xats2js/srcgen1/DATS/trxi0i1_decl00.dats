@@ -298,7 +298,7 @@ TEQI1CMPsome(teq1, icmp) where
   val ilts = envi0i1_popblk0(env0)
   val icmp = I1CMPcons(ilts, ival) }
 //
-) (*case+*)//end-of(trxd3i0_teqd3exp(...))
+) (*case+*)//end-of(trxi0i1_teqi0exp(...))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -324,7 +324,72 @@ in//let
 (
   i1valdcl_make_args(loc0, ibnd, tdxp))
 end//let
-(*let*)//end-of-[trxd3i0_d3valdcl(env0,dval)]
+(*let*)//end-of-[trxi0i1_i0valdcl(env0,ival)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxi0i1_i0fundcl
+  (env0, ifun) = let
+//
+val loc0 =
+i0fundcl_get_lctn(ifun)
+//
+val dvar =
+i0fundcl_get_dpid(ifun)
+val fias =
+i0fundcl_get_farg(ifun)
+val tdxp =
+i0fundcl_get_tdxp(ifun)
+//
+(*
+val (  ) = prerrln
+("trxi0i1_i0fundcl: fias = ", fias)
+val (  ) = prerrln
+("trxi0i1_i0fundcl: tdxp = ", tdxp)
+*)
+//
+val (  ) =
+envi0i1_pshlam0(env0)
+//
+val (  ) =
+(
+envi0i1_insert_dvar
+( env0,dvar,ivar )) where
+{
+val ivar = i1val_var(dvar)}
+//
+val fjas =
+trxi0i1_fiarglst(env0, fias)
+//
+val tdxp =
+(
+case+ tdxp of
+|
+TEQI0EXPnone() =>
+TEQI1CMPnone() where
+{
+val
+ilts = envi0i1_poplam0(env0)
+}
+|
+TEQI0EXPsome(teq1, iexp) =>
+TEQI1CMPsome
+( teq1
+, I1CMPcons(ilts, ival)) where
+{
+val ival =
+  trxi0i1_i0exp(env0, iexp)
+val ilts = envi0i1_poplam0(env0)
+}
+) (*case+*) // end-of-( teqi0exp )
+//
+in//let
+(
+  i1fundcl(loc0, dvar, fjas, tdxp))
+end//let
+(*let*)//end-of-[trxi0i1_i0fundcl(env0,ifun)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -349,6 +414,14 @@ trxi0i1_i0vardclist
   ( env0 , i0vs ) =
 (
   list_trxi0i1_fnp(env0, i0vs, trxi0i1_i0vardcl))
+//
+(* ****** ****** *)
+//
+#implfun
+trxi0i1_i0fundclist
+  ( env0 , i0fs ) =
+(
+  list_trxi0i1_fnp(env0, i0fs, trxi0i1_i0fundcl))
 //
 (* ****** ****** *)
 (* ****** ****** *)
