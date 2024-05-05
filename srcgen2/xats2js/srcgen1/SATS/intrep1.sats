@@ -331,7 +331,7 @@ i1val_make_node
 datatype
 fjarg_node =
 |
-FJARGdyn of (i1bndlst)
+FJARGdapp of i1bndlst
 //
 #typedef
 fjarglst = list(fjarg)

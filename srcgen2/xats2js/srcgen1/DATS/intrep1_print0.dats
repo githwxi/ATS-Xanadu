@@ -257,9 +257,9 @@ in//let
 //
 case+
 farg.node() of
-|FJARGdyn(i1bs) =>
+|FJARGdapp(i1bs) =>
 (
-  print("FJARGdyn(", i1bs, ")"))
+  print("FJARGdapp(", i1bs, ")"))
 //
 end (*let*) // end of [fjarg_fprint(out,farg)]
 //

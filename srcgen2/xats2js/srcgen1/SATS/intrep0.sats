@@ -227,7 +227,7 @@ i0lab_fprint
 datatype
 fiarg_node =
 |
-FIARGdyn of (i0patlst)
+FIARGdapp of i0patlst
 //
 #typedef
 fiarglst = list(fiarg)

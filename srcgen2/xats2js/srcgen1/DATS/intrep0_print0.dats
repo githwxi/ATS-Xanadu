@@ -283,9 +283,9 @@ in//let
 //
 case+
 farg.node() of
-|FIARGdyn(i0ps) =>
+|FIARGdapp(i0ps) =>
 (
-  print("FIARGdyn(", i0ps, ")"))
+  print("FIARGdapp(", i0ps, ")"))
 //
 end (*let*) // end of [fiarg_fprint(out,farg)]
 //
