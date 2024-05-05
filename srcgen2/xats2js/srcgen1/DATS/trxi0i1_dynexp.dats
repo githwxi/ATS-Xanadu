@@ -556,6 +556,15 @@ prerrln("trxi0i1_i0exp: iexp = ", iexp)
 (* ****** ****** *)
 //
 #implfun
+trxi0i1_i0patlst
+( env0, i0ps ) =
+(
+list_trxi0i1_fnp(env0, i0ps, trxi0i1_i0pat))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 trxi0i1_fiarglst
 ( env0, fias ) =
 (
@@ -604,19 +613,10 @@ fjarg
 (loc0, FJARGdapp(i1bs))) where
 {
 val
-i1bs = trxi0i1_i0patlst(env0, i0ps)}
-end//let
+i1bs = trxi0i1_i0patlst(env0, i0ps)} end
 }(*where+*)//end-[trxi0i1_fiarglst(env0,fias)]
 //
 (* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-trxi0i1_i0patlst
-( env0, i0ps ) =
-(
-  list_trxi0i1_fnp(env0, i0ps, trxi0i1_i0pat))
-//
 (* ****** ****** *)
 //
 #implfun
@@ -628,11 +628,17 @@ trxi0i1_i0explst
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+(*
+HX:
+This one is implemented directly
+*)
 #implfun
 trxi0i1_fiarglst
 ( env0, fias ) =
 (
   list_trxi0i1_fnp(env0, fias, trxi0i1_fiarg))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

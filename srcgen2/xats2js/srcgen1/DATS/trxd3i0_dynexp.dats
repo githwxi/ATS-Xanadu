@@ -953,7 +953,7 @@ pfrmv_npf1_d3ps(npf1, d3ps)
 in//let
 (
 fiarg
-(loc0, FIARGdyn(i0ps))) where
+(loc0, FIARGdapp(i0ps))) where
 {
 val
 i0ps = trxd3i0_d3patlst(env0, d3ps)}
