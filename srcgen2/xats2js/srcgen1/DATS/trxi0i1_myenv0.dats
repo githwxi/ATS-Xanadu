@@ -88,8 +88,15 @@ $MAP.stkmap_nilq(*cbv*)
 stkmap_pshlam0 with
 $MAP.stkmap_pshlam0(*cbr*)
 #symload
+stkmap_poplam0 with
+$MAP.stkmap_poplam0(*cbr*)
+//
+#symload
 stkmap_pshlet0 with
 $MAP.stkmap_pshlet0(*cbr*)
+#symload
+stkmap_poplet0 with
+$MAP.stkmap_poplet0(*cbr*)
 //
 //
 (* ****** ****** *)
@@ -469,6 +476,7 @@ in//let
 (
 $fold(env0); ilts) where
 {
+  val nerr = stkmap_poplam0(d2vstk)
   val ilts = iltstk_poplam0(iltstk) }
 //
 end(*let*)//end-of-(envi0i1_poplam0(env0))
@@ -506,6 +514,7 @@ in//let
 (
 $fold(env0); ilts) where
 {
+  val nerr = stkmap_poplet0(d2vstk)
   val ilts = iltstk_poplet0(iltstk) }
 //
 end(*let*)//end-of-(envi0i1_poplet0(env0))
