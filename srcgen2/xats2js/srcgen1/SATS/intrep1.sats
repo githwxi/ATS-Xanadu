@@ -257,8 +257,9 @@ i1val_node =
 //
 where
 {
-#typedef d2sublst = list(d2sub)
-#typedef i1letlst = list(i1let) }
+  #typedef d2sublst = list(d2sub)
+  #typedef i1bndlst = list(i1bnd)
+  #typedef i1letlst = list(i1let) }
 //
 //(*where*)//end-of-(i1val/cmp/let/bfi)
 //
@@ -327,10 +328,35 @@ i1val_make_node
 (* ****** ****** *)
 (* ****** ****** *)
 //
+datatype
+fjarg_node =
+|
+FJARGdyn of (i1bndlst)
+//
+#typedef
+fjarglst = list(fjarg)
+#typedef
+fjarglstopt = optn(fjarglst)
+//
+(* ****** ****** *)
+//
 fun
 fjarg_fprint
 (out:FILR,farg:fjarg): ( void )
 //
+(* ****** ****** *)
+fun
+fjarg_get_lctn(fjarg): loc_t
+fun
+fjarg_get_node(fjarg): fjarg_node
+(* ****** ****** *)
+#symload lctn with fjarg_get_lctn
+#symload node with fjarg_get_node
+(* ****** ****** *)
+fun
+fjarg_make_node
+(loc:loc_t, nod:fjarg_node):fjarg
+#symload fjarg with fjarg_make_node
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -454,7 +480,7 @@ i1vardcl_get_dini:(i1vardcl)->teqi1cmp
 fun
 i1fundcl_get_dpid:(i1fundcl)->d2var
 fun
-i1fundcl_get_farg:(i1fundcl)->fiarglst
+i1fundcl_get_farg:(i1fundcl)->fjarglst
 fun
 i1fundcl_get_tdxp:(i1fundcl)->teqi1cmp
 (* ****** ****** *)
@@ -479,7 +505,7 @@ fun
 i1fundcl_make_args
 ( lctn:loc_t
 , dpid:d2var
-, farg:fiarglst, tdxp:teqi1cmp):i1fundcl
+, farg:fjarglst, tdxp:teqi1cmp):i1fundcl
 //
 (* ****** ****** *)
 //

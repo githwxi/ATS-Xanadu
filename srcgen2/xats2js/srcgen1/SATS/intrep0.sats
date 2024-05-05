@@ -234,11 +234,6 @@ fiarglst = list(fiarg)
 #typedef
 fiarglstopt = optn(fiarglst)
 //
-(*
-#abstbox fiarg_tbox // p0tr
-#typedef fiarg = fiarg_tbox
-*)
-//
 (* ****** ****** *)
 //
 fun
