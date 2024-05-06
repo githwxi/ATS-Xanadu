@@ -94,7 +94,7 @@ print("I1Vstr(",str,")")
 |I1Vtnm(itnm) =>
 print("I1Vtnm(",itnm,")")
 //
-|I1Vvar(dcon) =>
+|I1Vcon(dcon) =>
 print("I1Vcon(",dcon,")")
 |I1Vvar(dcst) =>
 print("I1Vcst(",dcst,")")
@@ -182,8 +182,7 @@ print(tknd, ";", livs, ")"))
 ( test
 , ithn, iels) =>
 (
-print
-("I1BFIif0(");
+print("I1BFIift0(");
 print
 (test,";",ithn,";",iels,")"))
 //
@@ -293,8 +292,30 @@ I1Dvardclst
 print
 ("I1Dvardclst(", tknd, ";", i1vs, ")")
 //
+|
+I1Dfundclst
+( tknd
+, d2cs, i1fs) =>
+( print("I1Dfundclst(")
+; print(tknd, ";", d2cs, ";", i1fs,")"))
+//
+(* ****** ****** *)
+//
+|
+I1Dimplmnt0
+(tknd
+,stmp, dimp
+,farg, body) =>
+( print("I0Dimplmnt0(")
+; print(tknd,";",stmp,";")
+; print(dimp, ";", farg, ";", body, ")"))
+//
+(* ****** ****** *)
+//
 |I1Dnone0() => print( "I1Dnone0(",")" )
 |I1Dnone1(dcl1) => print("I1Dnone1(", dcl1, ")")
+//
+(* ****** ****** *)
 //
 end(*let*)//end-of-[i1dcl_fprint(out, dcl0)]
 //
@@ -334,6 +355,28 @@ in//let
 (
 print("I1VARDCL(", dpid, ";", dini, ")"))
 end(*let*)//end-of-[i1vardcl_fprint(out,ivar)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1fundcl_fprint
+  (out, ifun) = let
+//
+val dpid =
+i1fundcl_get_dpid(ifun)
+val farg =
+i1fundcl_get_farg(ifun)
+val tdxp =
+i1fundcl_get_tdxp(ifun)
+//
+#impltmp g_print$out<>() = out
+//
+in//let
+(
+print
+("I1FUNDCL(",dpid,";",farg,";",tdxp,")"))
+end(*let*)//end-of-[i1fundcl_fprint(out,ifun)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

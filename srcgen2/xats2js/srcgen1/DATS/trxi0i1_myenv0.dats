@@ -88,16 +88,15 @@ $MAP.stkmap_nilq(*cbv*)
 stkmap_pshlam0 with
 $MAP.stkmap_pshlam0(*cbr*)
 #symload
-stkmap_poplam0 with
-$MAP.stkmap_poplam0(*cbr*)
-//
-#symload
 stkmap_pshlet0 with
 $MAP.stkmap_pshlet0(*cbr*)
+//
+#symload
+stkmap_poplam0 with
+$MAP.stkmap_poplam0(*cbr*)
 #symload
 stkmap_poplet0 with
 $MAP.stkmap_poplet0(*cbr*)
-//
 //
 (* ****** ****** *)
 //

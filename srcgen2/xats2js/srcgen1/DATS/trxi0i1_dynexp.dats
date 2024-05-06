@@ -142,6 +142,33 @@ val (  ) =
 (* ****** ****** *)
 //
 fun
+i1val_ift0
+( env0:
+! envi0i1
+, loc0: loc_t
+, i1v1: i1val
+, ithn: i1cmpopt
+, iels: i1cmpopt): i1val =
+(
+i1val_tnm(loc0, itnm)) where
+{
+//
+val
+itnm = i1tnm_new0((*void*))
+val
+ibfi =
+(
+  I1BFIift0(i1v1, ithn, iels))
+val ilet = I1LETnew1(itnm, ibfi)
+//
+val (  ) =
+(
+  envi0i1_insert_ilet(env0, ilet) )
+}(*where*)//end-of-[i1val_ift0(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
 i1val_tup0
 ( env0:
 ! envi0i1
@@ -298,6 +325,8 @@ iexp.node() of
 //
 |I0Edapp _ => f0_dapp(env0, iexp)
 //
+|I0Eift0 _ => f0_ift0(env0, iexp)
+//
 |I0Etup0 _ => f0_tup0(env0, iexp)
 //
 |I0Elam0 _ => f0_lam0(env0, iexp)
@@ -398,7 +427,7 @@ val () =
 prerr("trxi0i1_i0exp:");
 prerrln("f0_var(01): iexp = ", iexp))
 //
-}(*where*)//end-of-[f0_dapp(env0,iexp)]
+}(*where*)//end-of-[f0_var(env0,iexp)]
 //
 (* ****** ****** *)
 //
@@ -429,6 +458,59 @@ val () =
 (
 prerr("trxi0i1_i0exp:");
 prerrln("f0_dapp(01): iexp = ", iexp))
+//
+}(*where*)//end-of-[f0_dapp(env0,iexp)]
+//
+(* ****** ****** *)
+
+fun
+f0_ift0
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Eift0
+(
+i0e1,
+ithn, iels) = iexp.node()
+//
+val i1v1 =
+trxi0i1_i0exp(env0, i0e1)
+//
+val ithn =
+(
+case+ ithn of
+|
+optn_nil() => optn_nil()
+|
+optn_cons(i0e2) =>
+optn_cons
+(trxi0i1_i0blk(env0, i0e2)))
+//
+val iels =
+(
+case+ iels of
+|
+optn_nil() => optn_nil()
+|
+optn_cons(i0e2) =>
+optn_cons
+(trxi0i1_i0blk(env0, i0e2)))
+//
+in//let
+i1val_ift0
+(env0, loc0, i1v1, ithn, iels)
+end where
+{
+//
+val () =
+(
+prerr("trxi0i1_i0exp:");
+prerrln("f0_ift0(01): iexp = ", iexp))
 //
 }(*where*)//end-of-[f0_dapp(env0,iexp)]
 //
@@ -552,6 +634,27 @@ prerrln("trxi0i1_i0exp: iexp = ", iexp)
 //
 }(*where*)//end-of-[trxi0i1_i0exp(env0,iexp)]
 
+(* ****** ****** *)
+//
+#implfun
+trxi0i1_i0blk
+( env0, iexp ) =
+(
+I1CMPcons(ilts, ival)
+) where
+{
+val () =
+(
+  envi0i1_pshblk0(env0))
+//
+val ival =
+(
+  trxi0i1_i0exp(env0, iexp))
+//
+val ilts = envi0i1_popblk0(env0)
+//
+}(*where*)//end-of-[trxi0i1_i0blk(env0,iexp)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

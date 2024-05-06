@@ -120,6 +120,8 @@ i1lab_fprint
 (* ****** ****** *)
 //
 #typedef i1valist = list(i1val)
+#typedef i1valopt = optn(i1val)
+//
 #typedef l1i1vlst = list(l1i1v)
 //
 #typedef fjarglst = list(fjarg)
@@ -185,15 +187,18 @@ and i1bfi =
 ( i1opr(*opnm*)
 , i1valist(*args*))//primopr
 //
-|I1BFIdapp of (i1val, i1valist)
+|I1BFIdapp of
+( i1val(*fun0*)
+, i1valist(*args*))//funcall
+//
+|I1BFIift0 of
+( i1val(*test*)
+, i1cmpopt(*then*)
+, i1cmpopt(*else*))//ifthnels
 //
 |I1BFItup0 of (i1valist)//flat
 |I1BFItup1 of (token, i1valist)
 |I1BFIrcd2 of (token, l1i1vlst)
-//
-|I1BFIift0 of
-( i1val(*test*)
-, i1cmp(*then*), i1cmp(*else*) )
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -239,6 +244,7 @@ i1val_node =
 |I1Vproj of (token, i1val, sint)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |I1Vlam0 of
 ( token(*knd*)
@@ -249,6 +255,7 @@ i1val_node =
 , fjarglst(*args*), i1cmp(*body*))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |I1Vnone0 of () |I1Vnone1 of (i0exp)
 //
@@ -257,11 +264,17 @@ i1val_node =
 //
 where
 {
-  #typedef d2sublst = list(d2sub)
-  #typedef i1bndlst = list(i1bnd)
-  #typedef i1letlst = list(i1let) }
 //
-//(*where*)//end-of-(i1val/cmp/let/bfi)
+  #typedef d2sublst = list(d2sub)
+//
+  #typedef i1bndlst = list(i1bnd)
+//
+  #typedef i1cmplst = list(i1cmp)
+  #typedef i1cmpopt = optn(i1cmp)
+//
+  #typedef i1letlst = list(i1let)
+//
+} //(*where*)//end-of-(i1let/bfi/val)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -373,6 +386,8 @@ TEQI1CMPsome of (token(*EQ0*), i1cmp)
 datatype
 i1dcl_node =
 //
+(* ****** ****** *)
+//
 |
 I1Dlocal0 of
 ( i1dclist(*local-head*)
@@ -385,6 +400,8 @@ I1Dinclude of
 , fpathopt
 , i1dclistopt) // inclusion
 //
+(* ****** ****** *)
+//
 |
 I1Dvaldclst of
 (token(*VAL(vlk)*), i1valdclist)
@@ -396,6 +413,7 @@ I1Dvardclst of
 I1Dfundclst of
 ( token(*knd*), d2cstlst, i1fundclist)
 //
+(* ****** ****** *)
 //
 |I1Dimplmnt0 of
 ( token(*knd*)

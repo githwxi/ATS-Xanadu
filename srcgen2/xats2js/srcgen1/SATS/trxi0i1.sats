@@ -229,9 +229,13 @@ trxi0i1_i0bnd // inserts into [env0]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun // HX: Note [trxi0i1_i0exp]
-trxi0i1_i0exp // inserts into [env0]
+fun // HX: [trxi0i1_i0exp]
+trxi0i1_i0exp // insert into [env0]
 (env0: !envi0i1, i0e0: i0exp): i1val
+//
+fun // HX: [trxi0i1_i0blk]: not
+trxi0i1_i0blk // insert into [env0]
+(env0: !envi0i1, i0e0: i0exp): i1cmp
 //
 (* ****** ****** *)
 (* ****** ****** *)
