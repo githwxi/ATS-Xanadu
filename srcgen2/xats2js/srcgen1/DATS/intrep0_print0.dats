@@ -369,10 +369,10 @@ print("I0Dvardclst(",tknd,";",i0vs,")"))
 |I0Dimplmnt0
 (tknd
 ,stmp
-,dqid,farg,body) =>
+,dimp,farg,body) =>
 ( print("I0Dimplmnt0(")
 ; print(tknd,";",stmp,";")
-; print(dqid, ";", farg, ";", body, ")"))
+; print(dimp, ";", farg, ";", body, ")"))
 //
 (* ****** ****** *)
 //
