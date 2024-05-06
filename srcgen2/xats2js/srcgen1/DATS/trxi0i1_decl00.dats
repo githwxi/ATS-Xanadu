@@ -81,6 +81,10 @@ trxi0i1_i0dcl
 case+
 dcl0.node() of
 //
+|I0Dtmpsub _ =>
+(
+  f0_tmpsub(env0, dcl0))
+//
 |I0Dvaldclst _ =>
 (
   f0_valdclst(env0, dcl0))
@@ -102,6 +106,28 @@ dcl0.node() of
 //
 ) where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_tmpsub
+( env0:
+! envi0i1
+, dcl0: i0dcl): i1dcl =
+let
+//
+val
+loc0 = dcl0.lctn((*0*))
+val-
+I0Dtmpsub
+(svts, dcl1) = dcl0.node()
+val
+dcl1 = trxi0i1_i0dcl(env0, dcl1)
+//
+in//let
+(
+  i1dcl(loc0, I1Dtmpsub(svts, dcl1))
+end(*let*)//end of [f0_tmpsub(env0,d3cl)]
 //
 (* ****** ****** *)
 //
