@@ -323,6 +323,8 @@ iexp.node() of
 //
 |I0Evar _ => f0_var(env0, iexp)
 //
+|I0Etimp _ => f0_timp(env0, iexp)
+//
 |I0Edapp _ => f0_dapp(env0, iexp)
 //
 |I0Eift0 _ => f0_ift0(env0, iexp)
@@ -428,6 +430,37 @@ prerr("trxi0i1_i0exp:");
 prerrln("f0_var(01): iexp = ", iexp))
 //
 }(*where*)//end-of-[f0_var(env0,iexp)]
+//
+(* ****** ****** *)
+//
+fun
+f0_timp
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Etimp
+(i0e1, timp) = iexp.node()
+//
+val
+timp = trxi0i1_t0imp(env0, timp)
+//
+in//let
+(
+  i1val(loc0, I1Vtimp(i0e1, timp)))
+end where
+{
+//
+val () =
+(
+prerr("trxi0i1_i0exp:");
+prerrln("f0_timp(01): iexp = ", iexp))
+//
+}(*where*)//end-of-[f0_timp(env0,iexp)]
 //
 (* ****** ****** *)
 //

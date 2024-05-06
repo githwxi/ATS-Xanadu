@@ -159,6 +159,48 @@ endloc (*local*) // end of [local(fjarg)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+
+local
+//
+datatype
+t1imp =
+T1IMP of
+(
+stamp, t1imp_node)
+datatype
+t1imp_vt =
+T1IMP_vt of
+(
+stamp, t1imp_node)
+//
+#absimpl
+t1imp_tbox = t1imp
+//
+in (* in-of-local *)
+//
+#implfun
+t1imp_make_node
+(   stm,nod   ) = T1IMP(stm,nod)
+//
+(* ****** ****** *)
+//
+#implfun
+t1imp_get_stmp(tmp) =
+let
+  val+T1IMP(stm,nod) = tmp in stm
+end
+#implfun
+t1imp_get_node(tmp) =
+let
+  val+T1IMP(stm,nod) = tmp in nod
+end
+//
+(* ****** ****** *)
+//
+end (*local*) // end of [local(t1imp)]
+
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 i1dcl_none0
