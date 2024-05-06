@@ -692,6 +692,48 @@ val ilts = envi0i1_popblk0(env0)
 (* ****** ****** *)
 //
 #implfun
+trxi0i1_t0imp
+( env0, timp ) =
+let
+//
+val stmp =
+t0imp_get_stmp(timp)
+val node =
+t0imp_get_node(timp)
+//
+in//let
+t1imp_make_node(stmp, node) where
+{
+val node =
+(
+case+ node of
+|T0IMPall1
+(dcst, dcls) =>
+(
+case+ dcls of
+|list_nil() =>
+T1IMPall1(dcst, optn_nil())
+|list_cons(dcl1, _) =>
+T1IMPall1(dcst,
+optn_cons(trxi0i1_i0dcl(env0, dcl1))))
+//
+|T0IMPallx
+(dcst, dcls) =>
+(
+case+ dcls of
+|list_nil() =>
+T1IMPallx(dcst, optn_nil())
+|list_cons(dcl1, _) =>
+T1IMPallx(dcst,
+optn_cons(trxi0i1_i0dcl(env0, dcl1))))
+) : t1imp_node // end of [ val(node) ]
+}
+end(*let*)//end-of-[trxi0i1_t0imp(env0,timp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 trxi0i1_i0patlst
 ( env0, i0ps ) =
 (

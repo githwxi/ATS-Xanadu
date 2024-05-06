@@ -134,6 +134,7 @@ i1lab_fprint
 #typedef fjarglst = list(fjarg)
 //
 #typedef i1dclist = list(i1dcl)
+#typedef i1dclopt = optn(i1dcl)
 //
 (* ****** ****** *)
 #typedef i1valdcl = i1valdcl_tbox

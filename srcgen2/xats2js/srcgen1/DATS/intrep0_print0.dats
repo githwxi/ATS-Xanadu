@@ -83,6 +83,9 @@ UN = "prelude/SATS/unsafe.sats"
 #symload lctn with fiarg_get_lctn
 #symload node with fiarg_get_node
 (* ****** ****** *)
+#symload lctn with t0imp_get_stmp
+#symload node with t0imp_get_node
+(* ****** ****** *)
 #symload lctn with i0dcl_get_lctn
 #symload node with i0dcl_get_node
 (* ****** ****** *)

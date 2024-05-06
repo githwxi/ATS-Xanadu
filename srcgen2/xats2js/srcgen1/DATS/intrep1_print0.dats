@@ -63,6 +63,9 @@ XATSOPT "./../../.."
 #symload lctn with fjarg_get_lctn
 #symload node with fjarg_get_node
 (* ****** ****** *)
+#symload lctn with t1imp_get_stmp
+#symload node with t1imp_get_node
+(* ****** ****** *)
 #symload lctn with i1dcl_get_lctn
 #symload node with i1dcl_get_node
 (* ****** ****** *)

@@ -191,6 +191,12 @@ fjarg_fprint(g_print$out<>(), farg)
 (* ****** ****** *)
 //
 #impltmp
+g_print<t1imp>(timp) =
+t1imp_fprint(g_print$out<>(), timp)
+//
+(* ****** ****** *)
+//
+#impltmp
 g_print
 <i1dcl>(idcl) =
 i1dcl_fprint(g_print$out<>(), idcl)
