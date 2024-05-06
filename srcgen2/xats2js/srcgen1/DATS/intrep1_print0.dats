@@ -104,6 +104,12 @@ print("I1Vcst(",dcst,")")
 |I1Vvar(dvar) =>
 print("I1Vvar(",dvar,")")
 //
+|I1Vtimp
+( i0e1,timp ) =>
+(
+print("I1Vtimp(");
+print(i0e1, ";", timp, ")"))
+//
 (*
 |I1Vtup0(i1vs) =>
 print("I1Vtup0(", i1vs, ")")
@@ -308,6 +314,11 @@ in//let
 case+
 dcl0.node() of
 //
+|I1Dtmpsub
+(svts, idcl) =>
+print
+("I1Dtmpsub(", svts, ";", idcl, ")")
+//
 |I1Dlocal0
 (head, body) =>
 print
@@ -338,7 +349,7 @@ I1Dimplmnt0
 (tknd
 ,stmp, dimp
 ,farg, body) =>
-( print("I0Dimplmnt0(")
+( print("I1Dimplmnt0(")
 ; print(tknd,";",stmp,";")
 ; print(dimp, ";", farg, ";", body, ")"))
 //

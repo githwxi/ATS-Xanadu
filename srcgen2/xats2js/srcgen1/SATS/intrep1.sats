@@ -438,6 +438,9 @@ i1dcl_node =
 //
 (* ****** ****** *)
 //
+I1Dtmpsub of
+(s2vts(*tmpsub*), i1dcl)
+//
 |
 I1Dlocal0 of
 ( i1dclist(*local-head*)
