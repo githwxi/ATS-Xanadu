@@ -266,6 +266,35 @@ end (*let*) // end of [fjarg_fprint(out,farg)]
 (* ****** ****** *)
 //
 #implfun
+t1imp_fprint
+(out, timp) =
+let
+#implfun
+g_print$out<>() = out
+in//let
+case+
+timp.node() of
+//
+(*
+|T1IMPone1
+(  dcl1  ) =>
+print("T1IMPone1(", dcl1 ,")")
+*)
+//
+|T1IMPall1
+(d2c1, i0ds) =>
+print("T1IMPall1(",d2c1,";",i0ds,")")
+//
+|T1IMPallx
+(d2c1, i0ds) =>
+print("T1IMPallx(",d2c1,";",i0ds,")")
+//
+end (*let*) // end of [t1imp_fprint(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 i1dcl_fprint
 (out, dcl0) =
 let

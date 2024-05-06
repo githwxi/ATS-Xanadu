@@ -248,6 +248,13 @@ trxi0i1_fiarg
 (* ****** ****** *)
 //
 fun
+trxi0i1_t0imp
+(env0: !envi0i1, timp: t0imp): t1imp
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 trxi0i1_i0dcl
 (env0: !envi0i1, idcl: i0dcl): i1dcl
 //
