@@ -96,7 +96,7 @@ print("I1Vtnm(",itnm,")")
 //
 |I1Vcon(dcon) =>
 print("I1Vcon(",dcon,")")
-|I1Vvar(dcst) =>
+|I1Vcst(dcst) =>
 print("I1Vcst(",dcst,")")
 |I1Vvar(dvar) =>
 print("I1Vvar(",dvar,")")
