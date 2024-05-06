@@ -383,7 +383,7 @@ i0exp_node =
 (* ****** ****** *)
 //
 |I0Etimp of
-(i0exp(*cst*), t0imp)
+(i0exp(*tapp*), t0imp)
 //
 (* ****** ****** *)
 //
