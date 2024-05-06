@@ -92,14 +92,16 @@ i1lab_fprint
 (* ****** ****** *)
 #abstype i1dcl_tbox // p0tr
 (* ****** ****** *)
+#abstbox t1imp_tbox // p0tr
+(* ****** ****** *)
 //
 #typedef i1val = i1val_tbox
 #typedef i1dcl = i1dcl_tbox
 //
-#typedef l1i1v = i1lab(i1val)
+#typedef fjarg = fjarg_tbox
+#typedef t1imp = t1imp_tbox
 //
 (* ****** ****** *)
-#typedef fjarg = fjarg_tbox
 (* ****** ****** *)
 //
 #abstbox i1valdcl_tbox//p0tr
@@ -107,11 +109,16 @@ i1lab_fprint
 #abstbox i1fundcl_tbox//p0tr
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #abstbox i1parsed_tbox//p0tr
 //
 (* ****** ****** *)
+(* ****** ****** *)
+#typedef l1i1v = i1lab(i1val)
+(* ****** ****** *)
 #typedef d2sub = (d2var, i1val)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef i1arglst = list(i1arg)
@@ -229,6 +236,13 @@ i1val_node =
 |I1Vcon of (d2con)
 |I1Vcst of (d2cst)
 |I1Vvar of (d2var)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Vtimp of
+(i0exp(*tapp*), t1imp)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -370,6 +384,41 @@ fun
 fjarg_make_node
 (loc:loc_t, nod:fjarg_node):fjarg
 #symload fjarg with fjarg_make_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+t1imp_node =
+|T1IMPall1 of
+(d2cst(*implment*), i1dclopt)
+|T1IMPallx of
+(d2cst(*implment*), i1dclopt)
+//
+(* ****** ****** *)
+//
+fun
+t1imp_fprint
+(
+  out:FILR, timp:t1imp):(void)
+//
+(* ****** ****** *)
+//
+fun
+t1imp_get_stmp
+(timp: t1imp): stamp
+fun
+t1imp_get_node
+(timp: t1imp): t1imp_node
+//
+#symload stmp with t1imp_get_stmp
+#symload node with t1imp_get_node
+//
+fun
+t1imp_make_node
+(stm:stamp,nod:t1imp_node): t1imp
+//
+#symload t1imp with t1imp_make_node
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
