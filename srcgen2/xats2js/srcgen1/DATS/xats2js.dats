@@ -38,15 +38,36 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 #include
-"./../HATS/libxats2js.hats"
-//
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dats.hats"
+(* ****** ****** *)
+#include
+"./../HATS/xats2js_dats.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
 #staload "./../SATS/xats2js.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+strnfpr(filr, strn) =
+(
+ strn_fprint(filr, strn))//end-fun
+//
+#implfun
+nindfpr(filr, nind) =
+if nind > 0 then
+(
+strn_fprint
+(filr, " "); nindfpr(filr, nind-1))
 //
 (* ****** ****** *)
 (* ****** ****** *)

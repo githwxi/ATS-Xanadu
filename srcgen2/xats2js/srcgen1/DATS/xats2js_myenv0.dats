@@ -118,6 +118,40 @@ case+ env0 of
 (*case+*)//end-of-(envx2js_free_top(env0))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+envx2js_pshlam0
+(     env0     ) = let
+//
+val+
+@ENVX2JS(filr, nind) = env0
+//
+in//let
+//
+(
+  nind := nind + 2; $fold(env0))
+//
+end (*let*)//end-of-(envx2js_pshlam0(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+envx2js_poplam0
+(     env0     ) = let
+//
+val+
+@ENVX2JS(filr, nind) = env0
+//
+in//let
+//
+(
+  nind := nind - 2; $fold(env0))
+//
+end (*let*)//end-of-(envx2js_poplam0(env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 end (*local*) // end of [ local(envx2js) ]
 

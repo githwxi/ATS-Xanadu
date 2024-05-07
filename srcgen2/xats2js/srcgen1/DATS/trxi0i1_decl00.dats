@@ -126,7 +126,7 @@ dcl1 = trxi0i1_i0dcl(env0, dcl1)
 //
 in//let
 (
-  i1dcl(loc0, I1Dtmpsub(svts, dcl1))
+  i1dcl(loc0, I1Dtmpsub(svts, dcl1)))
 end(*let*)//end of [f0_tmpsub(env0,d3cl)]
 //
 (* ****** ****** *)

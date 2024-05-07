@@ -38,15 +38,78 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 #include
-"./../HATS/libxats2js.hats"
-//
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dats.hats"
+(* ****** ****** *)
+#include
+"./../HATS/xats2js_dats.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
 #staload "./../SATS/xats2js.sats"
+//
+(* ****** ****** *)
+//
+#staload
+_(*DATS*)="./../DATS/xats2js.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#symload lctn with fjarg_get_lctn
+#symload node with fjarg_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fprintln
+(filr: FILR): void =
+(
+ strn_fprint(filr,"\n"))//end-fun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xats2js_fjarg
+( env0,farg ) =
+let
+(*
+//
+val () =
+prerrln
+("xats2js_fjarg: farg = ", farg))
+//
+*)
+//
+val filr = envx2js_get_filr(env0)
+val nind = envx2js_get_nind(env0)
+//
+in//let
+//
+case+
+farg.node() of
+|
+FJARGdapp _ =>
+nindfpr(filr, nind);
+strnfpr(filr, "// ");
+fjarg_fprint(filr, farg); fprintln(filr)
+//
+end(*let*)//end-of-[xats2js_fjarg(env0,farg)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xats2js_fjarglst
+  (env0, fjas) =
+(
+  list_xats2js_fnp(env0, fjas, xats2js_fjarg))
 //
 (* ****** ****** *)
 (* ****** ****** *)
