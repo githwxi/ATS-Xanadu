@@ -50,6 +50,24 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#implfun
+xats2js_i0dclist
+  (env0, dcls) =
+(
+  list_xats2js_fnp(env0, dcls, xats2js_i0dcl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xats2js_i0dclistopt
+  (env0, dopt) =
+(
+  optn_xats2js_fnp(env0, dopt, xats2js_i0dclist))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_xats2js.dats] *)
