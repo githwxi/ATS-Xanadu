@@ -64,24 +64,35 @@ _(*DATS*)="./../DATS/xats2js.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+fprintln
+(filr: FILR): void =
+(
+ strn_fprint(filr,"\n"))//end-fun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 xats2js_i1dcl
 ( env0,dcl0 ) =
-(
+let
+val filr =
+envx2js_get_filr(env0)
+in//let
 case+
 dcl0.node() of
 |
 _(* otherwise *) =>
 (
-  i1dcl_fprint(filr, dcl0)) where
-{
-  val filr = envx2js_get_filr(env0)
-}
-) where
+fprint(filr, "// ")
+i1dcl_fprint(filr, dcl0); fprintln(filr))
+end where
 {
 //
 val () =
-println("xats2js_i1dcl: dcl0 = ", dcl0)
+(
+  prerrln("xats2js_i1dcl: dcl0 = ", dcl0))
 //
 }(*where*)//end-of-[xats2js_i1dcl(env0,dcl0)]
 //
