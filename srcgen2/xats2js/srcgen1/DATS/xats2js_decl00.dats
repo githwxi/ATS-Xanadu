@@ -47,6 +47,7 @@ Authoremail: gmhwxiATgmailDOTcom
 #include
 "./../HATS/xats2js_dats.hats"
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
@@ -70,21 +71,6 @@ fprintln
 (
  strn_fprint(filr,"\n"))//end-fun
 //
-fun
-strnfpr
-(filr: FILR, strn: strn): void =
-(
- strn_fprint(filr, strn))//end-fun
-//
-//
-fun
-nindfpr
-(filr: FILR, nind: sint): void =
-if nind > 0 then
-(
-strn_fprint
-(filr, " "); nindfpr(filr, nind-1))
-//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -92,7 +78,15 @@ strn_fprint
 xats2js_i1dcl
 ( env0,dcl0 ) =
 let
+(*
+//
+val () =
+prerrln
+("xats2js_i1dcl: dcl0 = ", dcl0))
+//
+*)
 in//let
+//
 case+
 dcl0.node() of
 //
@@ -146,12 +140,6 @@ prerrln("f0_fundclst(x2js): dcl0 = ", dcl0)
 *)
 //
 }(*where*) // end of [f0_fundclst(env0,dcl0)]
-//
-(* ****** ****** *)
-//
-val () =
-(
-  prerrln("xats2js_i1dcl: dcl0 = ", dcl0))
 //
 (* ****** ****** *)
 //

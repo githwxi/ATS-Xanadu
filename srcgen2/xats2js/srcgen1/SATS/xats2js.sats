@@ -111,6 +111,14 @@ optn_xats2js_fnp
 //
 (* ****** ****** *)
 (* ****** ****** *)
+fun
+nindfpr
+(filr: FILR, nind: sint): void
+fun
+strnfpr
+(filr: FILR, strn: strn): void
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 xats2js_i1parsed(i1parsed): (void)
