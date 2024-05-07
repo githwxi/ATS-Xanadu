@@ -1,10 +1,10 @@
 (* ****** ****** *)
 (*
-HX-2024-03-25:
+HX-2024-05-06:
 Testing [xats2js]
 as a way to test [xatsopt]
 //
-Mon 25 Mar 2024 06:06:45 PM EDT
+Mon 06 May 2024 11:42:43 PM EDT
 //
 *)
 (* ****** ****** *)
@@ -77,10 +77,15 @@ val (  ) = prerrln
 "./../../DATS/trxi0i1_decl00.dats"
 //
 (* ****** ****** *)
+#include
+"./../../DATS/xats2js.dats"
+#include
+"./../../DATS/xats2js_decl00.dats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val
-mytest02_dats =
+mytest03_dats =
 (
 i1parsed_of_trxi0i1(ipar)
 ) where
@@ -120,16 +125,12 @@ fperr33_d3parsed(out, dpar)
 } where
 {
 val dpar = d3parsed_from_fpath
-(1(*dyn*), "./DATA/mytest02.dats") }
+(1(*dyn*), "./DATA/mytest03.dats") }
 //
 (* ****** ****** *)
-//
-val ((*0*)) =
-(
-println
-("parsed(i1) = ", mytest02_dats.parsed()))
-//
+(* ****** ****** *)
+val () = xats2js_i1parsed(mytest03_dats)
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_JS_test02_xats2js.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_JS_test03_xats2js.dats] *)
