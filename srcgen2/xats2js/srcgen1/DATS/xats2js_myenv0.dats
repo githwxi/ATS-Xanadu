@@ -65,6 +65,39 @@ XATSOPT "./../../.."
 #staload "./../SATS/xats2js.sats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
+
+local
+//
+datavwtp
+envx2js =
+ENVX2JS of ()
+#absimpl envx2js_vtbx = envx2js
+//
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+//
+#implfun
+envx2js_make_nil
+  ((*void*)) = ENVX2JS( (*void*) )
+//
+(* ****** ****** *)
+//
+#implfun
+envx2js_free_top
+  (  env0  ) =
+(
+case+ env0 of ~ENVX2JS( (*0*) ) => ()
+)
+(*case+*)//end-of-(envx2js_free_top(env0))
+//
+(* ****** ****** *)
+
+end (*local*) // end of [ local(envx2js) ]
+
+(* ****** ****** *)
+(* ****** ****** *)
 
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_xats2js_myenv0.dats] *)

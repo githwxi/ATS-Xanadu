@@ -80,6 +80,8 @@ val (  ) = prerrln
 #include
 "./../../DATS/xats2js.dats"
 #include
+"./../../DATS/xats2js_myenv0.dats"
+#include
 "./../../DATS/xats2js_decl00.dats"
 (* ****** ****** *)
 (* ****** ****** *)

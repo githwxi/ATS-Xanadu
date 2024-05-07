@@ -49,18 +49,37 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#absvwtp xatsenv_vtbx // p0tr
-#vwtpdef xatsenv = xatsenv_vtbx
+#absvwtp envx2js_vtbx // p0tr
+#vwtpdef envx2js = envx2js_vtbx
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-xatsenv_make_nil
-(    (*nil*)    ): xatsenv
+envx2js_make_nil
+(    (*nil*)    ): envx2js
 fun
-xatsenv_free_top
-( env0: ~xatsenv ): void//fun
+envx2js_free_top
+( env0: ~envx2js ): void//fun
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:t0>
+list_xats2js_fnp
+( e1:
+! envx2js
+, xs: list(x0)
+, (!envx2js, x0) -> y0): list(y0)
+fun
+<x0:t0>
+<y0:t0>
+optn_xats2js_fnp
+( e1:
+! envx2js
+, xs: optn(x0)
+, (!envx2js, x0) -> y0): optn(y0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -73,33 +92,50 @@ xats2js_i1parsed(i1parsed): (void)
 //
 fun
 xats2js_i1bfi
-(env0: !xatsenv, ibfi: i1bfi): void
+(env0: !envx2js, ibfi: i1bfi): void
 //
 fun
 xats2js_i1val
-(env0: !xatsenv, ival: i1val): void
+(env0: !envx2js, ival: i1val): void
 //
 fun
 xats2js_i1let
-(env0: !xatsenv, ilet: i1let): void
+(env0: !envx2js, ilet: i1let): void
 //
 fun
 xats2js_i1cmp
-(env0: !xatsenv, icmp: i1cmp): void
+(env0: !envx2js, icmp: i1cmp): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 xats2js_i1dcl
-(env0: !xatsenv, dcl0: i1dcl): void
+(env0: !envx2js, dcl0: i1dcl): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+xats2js_i1valist
+(env0: !envx2js, i1vs: i1valist): void
+//
+fun
+xats2js_i1letlst
+(env0: !envx2js, i1vs: i1letlst): void
+//
+(* ****** ****** *)
+//
+fun
+xats2js_i1dclist
+(env0: !envx2js, dcls: i1dclist): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 xats2js_i1dclistopt
-(env0: !xatsenv, dopt: i1dclistopt): void
+(env0: !envx2js, dopt: i1dclistopt): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
