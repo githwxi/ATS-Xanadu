@@ -77,30 +77,26 @@ end (*let*) // end of [xats2js_i1parsed(ipar)]
 (* ****** ****** *)
 //
 #impltmp
-<x0><y0>
+<x0>(*tmp*)
 list_xats2js_fnp
 ( e1, xs, fopr ) =
 (
-list_map_e1nv<x0><y0><e1>(xs, e1)) where
+list_foreach_e1nv<x0><e1>(xs, e1)) where
 {
 #vwtpdef e1 = envx2js
 #impltmp
-map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+foreach$work_e1nv<x0><e1>(x0, e1) = fopr(e1, x0)
 } (*where*)//end of [list_xats2js_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
 //
 #impltmp
-<x0><y0>
+<x0>(*tmp*)
 optn_xats2js_fnp
 ( e1, xs, fopr ) =
 (
-optn_map_e1nv<x0><y0><e1>(xs, e1)) where
-{
-#vwtpdef e1 = envx2js
-#impltmp
-map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [optn_xats2js_fnp(e1,xs,fopr)]
+case+ xs of
+| optn_nil() => () | optn_cons(x1) => fopr(e1, x1))
 //
 (* ****** ****** *)
 (* ****** ****** *)

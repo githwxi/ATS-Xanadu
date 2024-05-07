@@ -56,6 +56,16 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
+envx2js_get_filr
+(env0: !envx2js): FILEref
+//
+fun
+envx2js_get_nind
+(env0: !envx2js): ( sint )
+//
+(* ****** ****** *)
+//
+fun
 envx2js_make_nil
 (    (*nil*)    ): envx2js
 fun
@@ -71,7 +81,7 @@ list_xats2js_fnp
 ( e1:
 ! envx2js
 , xs: list(x0)
-, (!envx2js, x0) -> y0): list(y0)
+, (!envx2js, x0) -> void): void
 fun
 <x0:t0>
 <y0:t0>
@@ -79,7 +89,7 @@ optn_xats2js_fnp
 ( e1:
 ! envx2js
 , xs: optn(x0)
-, (!envx2js, x0) -> y0): optn(y0)
+, (!envx2js, x0) -> void): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

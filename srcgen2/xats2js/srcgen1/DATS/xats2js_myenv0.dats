@@ -71,7 +71,10 @@ local
 //
 datavwtp
 envx2js =
-ENVX2JS of ()
+ENVX2JS of
+( FILR(*output*)
+, sint(*indent*))
+//
 #absimpl envx2js_vtbx = envx2js
 //
 (* ****** ****** *)
@@ -79,8 +82,30 @@ in//local
 (* ****** ****** *)
 //
 #implfun
+envx2js_get_filr
+  ( env0 ) =
+let
+val+
+ENVX2JS
+(filr, nind) = env0 in filr end
+//
+#implfun
+envx2js_get_nind
+  ( env0 ) =
+let
+val+
+ENVX2JS
+(filr, nind) = env0 in nind end
+//
+(* ****** ****** *)
+//
+#implfun
 envx2js_make_nil
-  ((*void*)) = ENVX2JS( (*void*) )
+  ((*void*)) =
+(
+  ENVX2JS(filr, 0)) where
+{
+val filr = g_stdout<>((*void*)) }
 //
 (* ****** ****** *)
 //
@@ -88,8 +113,8 @@ envx2js_make_nil
 envx2js_free_top
   (  env0  ) =
 (
-case+ env0 of ~ENVX2JS( (*0*) ) => ()
-)
+case+ env0 of
+| ~ENVX2JS(filr, nind) => ((*void*)))
 (*case+*)//end-of-(envx2js_free_top(env0))
 //
 (* ****** ****** *)

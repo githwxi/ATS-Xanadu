@@ -37,11 +37,15 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-(* ****** ****** *)
-//
 #include
-"./../HATS/libxats2js.hats"
-//
+"./../../..\
+/HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dats.hats"
+(* ****** ****** *)
+#include
+"./../HATS/xats2js_dats.hats"
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
@@ -49,22 +53,55 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload "./../SATS/xats2js.sats"
 //
 (* ****** ****** *)
+//
+#staload
+_(*DATS*)="./../DATS/xats2js.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#symload lctn with i1dcl_get_lctn
+#symload node with i1dcl_get_node
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2js_i0dclist
+xats2js_i1dcl
+( env0,dcl0 ) =
+(
+case+
+dcl0.node() of
+|
+_(* otherwise *) =>
+(
+  i1dcl_fprint(filr, dcl0)) where
+{
+  val filr = envx2js_get_filr(env0)
+}
+) where
+{
+//
+val () =
+println("xats2js_i1dcl: dcl0 = ", dcl0)
+//
+}(*where*)//end-of-[xats2js_i1dcl(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xats2js_i1dclist
   (env0, dcls) =
 (
-  list_xats2js_fnp(env0, dcls, xats2js_i0dcl))
+  list_xats2js_fnp(env0, dcls, xats2js_i1dcl))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-xats2js_i0dclistopt
+xats2js_i1dclistopt
   (env0, dopt) =
 (
-  optn_xats2js_fnp(env0, dopt, xats2js_i0dclist))
+  optn_xats2js_fnp(env0, dopt, xats2js_i1dclist))
 //
 (* ****** ****** *)
 (* ****** ****** *)
