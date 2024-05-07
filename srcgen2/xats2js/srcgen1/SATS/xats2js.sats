@@ -69,6 +69,33 @@ fun
 xats2js_i1parsed(i1parsed): (void)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+xats2js_i1bfi
+(env0: !xatsenv, ibfi: i1bfi): void
+//
+fun
+xats2js_i1val
+(env0: !xatsenv, ival: i1val): void
+//
+fun
+xats2js_i1let
+(env0: !xatsenv, ilet: i1let): void
+//
+fun
+xats2js_i1cmp
+(env0: !xatsenv, icmp: i1cmp): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+xats2js_i1dcl
+(env0: !xatsenv, dcl0: i1dcl): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 xats2js_i1dclistopt
