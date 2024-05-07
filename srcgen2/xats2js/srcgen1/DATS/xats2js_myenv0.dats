@@ -125,7 +125,7 @@ envx2js_pshlam0
 (     env0     ) = let
 //
 val+
-@ENVX2JS(filr, nind) = env0
+@ENVX2JS(filr, !nind) = env0
 //
 in//let
 //
@@ -141,7 +141,7 @@ envx2js_poplam0
 (     env0     ) = let
 //
 val+
-@ENVX2JS(filr, nind) = env0
+@ENVX2JS(filr, !nind) = env0
 //
 in//let
 //

@@ -125,7 +125,7 @@ I1Dfundclst
 , d2cs, i1fs) = dcl0.node()
 //
 val
-i1fs =
+(  ) =
 xats2js_i1fundclist(env0, i1fs)
 //
 end where
@@ -152,8 +152,7 @@ prerrln("f0_fundclst(x2js): dcl0 = ", dcl0)
 xats2js_i1fundcl
   (env0, ifun) = let
 //
-val loc0 =
-i1fundcl_get_lctn(ifun)
+(* ****** ****** *)
 //
 val dvar =
 i1fundcl_get_dpid(ifun)
@@ -162,7 +161,13 @@ i1fundcl_get_farg(ifun)
 val tdxp =
 i1fundcl_get_tdxp(ifun)
 //
+(* ****** ****** *)
+//
+val (  ) =
+xats2js_d2var(env0, dpid)
 (*
+val (  ) = prerrln
+("xats2js_i1fundcl: dvar = ", dvar)
 val (  ) = prerrln
 ("xats2js_i1fundcl: fjas = ", fjas)
 val (  ) = prerrln
@@ -170,7 +175,8 @@ val (  ) = prerrln
 *)
 //
 val (  ) =
-envx2js_pshlam0(env0)
+(
+  envx2js_pshlam0(env0) )
 //
 val (  ) =
 xats2js_fjarglst(env0, fjas)
@@ -204,6 +210,31 @@ xats2js_i1dclist
   (env0, dcls) =
 (
   list_xats2js_fnp(env0, dcls, xats2js_i1dcl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xats2js_i1valdclist
+  (env0, i1vs) =
+(
+  list_xats2js_fnp(env0, i1vs, xats2js_i1valdcl))
+//
+(* ****** ****** *)
+//
+#implfun
+xats2js_i1vardclist
+  (env0, i1vs) =
+(
+  list_xats2js_fnp(env0, i1vs, xats2js_i1vardcl))
+//
+(* ****** ****** *)
+//
+#implfun
+xats2js_i1fundclist
+  (env0, i1fs) =
+(
+  list_xats2js_fnp(env0, i1fs, xats2js_i1fundcl))
 //
 (* ****** ****** *)
 (* ****** ****** *)
