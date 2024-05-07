@@ -70,6 +70,21 @@ fprintln
 (
  strn_fprint(filr,"\n"))//end-fun
 //
+fun
+strnfpr
+(filr: FILR, strn: strn): void =
+(
+ strn_fprint(filr, strn))//end-fun
+//
+//
+fun
+nindfpr
+(filr: FILR, nind: sint): void =
+if nind > 0 then
+(
+strn_fprint
+(filr, " "); nindfpr(filr, nind-1))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -77,24 +92,121 @@ fprintln
 xats2js_i1dcl
 ( env0,dcl0 ) =
 let
-val filr =
-envx2js_get_filr(env0)
 in//let
 case+
 dcl0.node() of
+//
+|I1Dfundclst _ =>
+(
+  f0_fundclst(env0, dcl0))
+//
 |
 _(* otherwise *) =>
-(
-fprint(filr, "// ")
-i1dcl_fprint(filr, dcl0); fprintln(filr))
+let
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+in//let
+nindfpr(filr, nind);
+strnfpr(filr, "// ");
+i1dcl_fprint(filr, dcl0); fprintln(filr)
+end//let
+//
 end where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_fundclst
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val-
+I1Dfundclst
+( tknd
+, d2cs, i1fs) = dcl0.node()
+//
+val
+i1fs =
+xats2js_i1fundclist(env0, i1fs)
+//
+end where
+{
+//
+(*
+//
+val loc0 = dcl0.lctn((*void*))
+//
+val (  ) =
+prerrln("f0_fundclst(x2js): dcl0 = ", dcl0)
+*)
+//
+}(*where*) // end of [f0_fundclst(env0,dcl0)]
+//
+(* ****** ****** *)
 //
 val () =
 (
   prerrln("xats2js_i1dcl: dcl0 = ", dcl0))
 //
+(* ****** ****** *)
+//
 }(*where*)//end-of-[xats2js_i1dcl(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xats2js_i1fundcl
+  (env0, ifun) = let
+//
+val loc0 =
+i1fundcl_get_lctn(ifun)
+//
+val dvar =
+i1fundcl_get_dpid(ifun)
+val fjas =
+i1fundcl_get_farg(ifun)
+val tdxp =
+i1fundcl_get_tdxp(ifun)
+//
+(*
+val (  ) = prerrln
+("xats2js_i1fundcl: fjas = ", fjas)
+val (  ) = prerrln
+("xats2js_i1fundcl: tdxp = ", tdxp)
+*)
+//
+val (  ) =
+envx2js_pshlam0(env0)
+//
+val (  ) =
+xats2js_fjarglst(env0, fjas)
+//
+val (  ) =
+(
+case+ tdxp of
+|
+TEQI1CMPnone
+( (*void*) ) => ((*void*))
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+let
+val (  ) =
+(
+  xats2js_i1cmp(env0, icmp))
+end//let
+) (*case+*) // end-of-( teqi1exp )
+//
+val (  ) = envx2js_poplam0(env0)//leave
+//
+end//let
+(*let*)//end-of-[xats2js_i1fundcl(env0,ifun)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

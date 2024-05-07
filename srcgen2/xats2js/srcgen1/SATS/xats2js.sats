@@ -73,6 +73,24 @@ envx2js_free_top
 ( env0: ~envx2js ): void//fun
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+envx2js_pshlam0
+(env0: !envx2js): void//end-fun
+fun
+envx2js_pshlet0
+(env0: !envx2js): void//end-fun
+//
+fun
+envx2js_poplam0
+(env0: !envx2js): void//end-fun
+fun
+envx2js_poplet0
+(env0: !envx2js): void//end-fun
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <x0:t0>
@@ -118,6 +136,11 @@ xats2js_i1cmp
 //
 (* ****** ****** *)
 (* ****** ****** *)
+fun
+xats2js_fjarg
+(env0: !envx2js, farg: fjarg): void
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 xats2js_i1dcl
@@ -135,10 +158,46 @@ xats2js_i1letlst
 (env0: !envx2js, i1vs: i1letlst): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+xats2js_fjarglst
+(env0: !envx2js, fjas: fjarglst): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 xats2js_i1dclist
 (env0: !envx2js, dcls: i1dclist): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+xats2js_i1valdcl
+(env0: !envx2js, ival: i1valdcl): void
+fun
+xats2js_i1vardcl
+(env0: !envx2js, ivar: i1vardcl): void
+//
+fun
+xats2js_i1fundcl
+(env0: !envx2js, ifun: i1fundcl): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+xats2js_i1valdclist
+(env0: !envx2js, i1vs: i1valdclist): void
+fun
+xats2js_i1vardclist
+(env0: !envx2js, i1vs: i1vardclist): void
+//
+fun
+xats2js_i1fundclist
+(env0: !envx2js, i1fs: i1fundclist): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
