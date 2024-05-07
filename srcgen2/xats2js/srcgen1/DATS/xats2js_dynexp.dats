@@ -76,6 +76,23 @@ fprintln
 (* ****** ****** *)
 //
 #implfun
+xats2js_i1cmp
+( env0,icmp ) =
+let
+//
+val filr = envx2js_get_filr(env0)
+val nind = envx2js_get_nind(env0)
+//
+in//let
+nindfpr(filr, nind);
+strnfpr(filr, "// ");
+i1cmp_fprint(filr, icmp); fprintln(filr)
+end(*let*)//end-of-[xats2js_i1cmp(env0,farg)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 xats2js_fjarg
 ( env0,farg ) =
 let
