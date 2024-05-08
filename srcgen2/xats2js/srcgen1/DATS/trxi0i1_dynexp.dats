@@ -169,6 +169,32 @@ val (  ) =
 (* ****** ****** *)
 //
 fun
+i1val_let0
+( env0:
+! envi0i1
+, loc0: loc_t
+, dcls: i1dclist
+, icmp:
+  i1cmp (*body*)): i1val =
+(
+i1val_tnm(loc0, itnm)) where
+{
+//
+val
+itnm = i1tnm_new0((*void*))
+val
+ibfi = I1BFIlet0(dcls, icmp)
+//
+val ilet = I1LETnew1(itnm, ibfi)
+//
+val (  ) =
+(
+  envi0i1_insert_ilet(env0, ilet) )
+}(*where*)//end-of-[i1val_let0(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
 i1val_tup0
 ( env0:
 ! envi0i1
@@ -329,6 +355,8 @@ iexp.node() of
 |I0Edapp _ => f0_dapp(env0, iexp)
 //
 |I0Eift0 _ => f0_ift0(env0, iexp)
+//
+|I0Elet0 _ => f0_let0(env0, iexp)
 //
 |I0Etup0 _ => f0_tup0(env0, iexp)
 //
@@ -575,6 +603,39 @@ prerrln("f0_ift0(01): iexp = ", iexp))
 //
 }(*where*)//end-of-[f0_dapp(env0,iexp)]
 //
+(* ****** ****** *)
+//
+fun
+f0_let0
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Elet0
+(
+dcls, body) = iexp.node()
+//
+val (  ) =
+envi0i1_pshlet0(env0)
+//
+val dcls =
+trxi0i1_i0dclist(env0, dcls)
+//
+val
+iret =
+trxi0i1_i0exp(env0, body)
+val
+ilts = envi0i1_poplet0( env0 )
+//
+val icmp = I1CMPcons(ilts, iret)
+//
+in//let
+i1val_let0(env0, loc0, dcls, icmp)
+end(*let*)//end-of-[f0_let0(env0,iexp)]
 (* ****** ****** *)
 //
 fun

@@ -204,6 +204,9 @@ and i1bfi =
 , i1cmpopt(*then*)
 , i1cmpopt(*else*))//ifthnels
 //
+|I1BFIlet0 of
+( i1dclist, i1cmp )//letinend
+//
 |I1BFItup0 of (i1valist)//flat
 |I1BFItup1 of (token, i1valist)
 |I1BFIrcd2 of (token, l1i1vlst)

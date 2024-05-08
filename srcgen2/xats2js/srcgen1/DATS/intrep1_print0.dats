@@ -195,6 +195,11 @@ print("I1BFIift0(");
 print
 (test,";",ithn,";",iels,")"))
 //
+|I1BFIlet0
+( dcls, icmp) =>
+( print("I1BFIlet0(")
+; print(dcls, ";", icmp, ")"))
+//
 end(*let*)//end-of-[i1bfi_fprint(out, ibfi)]
 //
 (* ****** ****** *)

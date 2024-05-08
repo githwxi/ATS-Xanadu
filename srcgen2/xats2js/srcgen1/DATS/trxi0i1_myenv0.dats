@@ -363,6 +363,75 @@ end//let
 //(* end of [iltstk_poplam0(stk)] *)
 //
 (* ****** ****** *)
+//
+#implfun
+iltstk_poplet0
+  (  stk0  ) = let
+//
+fnx
+loop
+( kxs
+: iltstk
+, res: iltlst
+, err: &sint >> _):
+  @(iltstk, iltlst) =
+(
+case+ kxs of
+//
+| ~
+iltstk_let0
+(   kxs   ) => (kxs, res)
+//
+| ~
+iltstk_cons
+(ilt , kxs) =>
+(
+  loop(kxs, res, err)) where
+{
+  val res = list_cons(ilt, res)
+}
+//
+| !
+iltstk_nil() =>
+let
+val () = err:=1 in (kxs,res) end
+//
+| !
+iltstk_blk0 _ =>
+let
+val () = err:=1 in (kxs,res) end
+//
+| !
+iltstk_lam0 _ =>
+let
+val () = err:=1 in (kxs,res) end
+//
+| !
+iltstk_ift0 _ =>
+let
+val () = err:=1 in (kxs,res) end
+| !
+iltstk_cas0 _ =>
+let
+val () = err:=1 in (kxs,res) end
+//
+)(*case+*)//end-[loop(kxs,res,err)]
+//
+in//let
+//
+let
+var err: int = 0
+val res: iltlst = list_nil()
+val
+(stk1,res) =
+loop
+(stk0,res,err) in stk0 := stk1; res
+end//let
+//
+end//let
+//(* end of [iltstk_poplet0(stk)] *)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
