@@ -76,6 +76,17 @@ envx2js_free_top
 (* ****** ****** *)
 //
 fun
+envx2js_incnind
+( env0:
+! envx2js, ninc: sint): void
+fun
+envx2js_decnind
+( env0:
+! envx2js, ndec: sint): void
+//
+(* ****** ****** *)
+//
+fun
 envx2js_pshlam0
 (env0: !envx2js): void//end-fun
 fun
@@ -134,10 +145,6 @@ xats2js_d2var
 (* ****** ****** *)
 //
 fun
-xats2js_i1bfi
-(env0: !envx2js, ibfi: i1bfi): void
-//
-fun
 xats2js_i1val
 (env0: !envx2js, ival: i1val): void
 //
@@ -146,8 +153,16 @@ xats2js_i1let
 (env0: !envx2js, ilet: i1let): void
 //
 fun
+xats2js_i1bnd
+(env0: !envx2js, ibnd: i1bnd): void
+//
+fun
 xats2js_i1cmp
 (env0: !envx2js, icmp: i1cmp): void
+//
+fun
+xats2js_i1bfi
+(env0: !envx2js, ibfi: i1bfi): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -296,13 +296,14 @@ where
 //
 fun
 i1let_fprint:(FILR,i1let)->void
-fun
-i1bfi_fprint:(FILR,i1bfi)->void
 //
 fun
 i1bnd_fprint:(FILR,i1bnd)->void
 fun
 i1cmp_fprint:(FILR,i1cmp)->void
+//
+fun
+i1bfi_fprint:(FILR,i1bfi)->void
 //
 fun
 i1val_fprint:(FILR,i1val)->void
@@ -311,10 +312,14 @@ i1val_fprint:(FILR,i1val)->void
 (* ****** ****** *)
 //
 fun
+i1cmp_get_lctn(i1cmp): ( loc_t )
+//
+fun
 i1cmp_get_ival(i1cmp): ( i1val )
 fun
 i1cmp_get_ilts(i1cmp): (i1letlst)
 //
+#symload lctn with i1cmp_get_lctn
 #symload ival with i1cmp_get_ival
 #symload ilts with i1cmp_get_ilts
 //

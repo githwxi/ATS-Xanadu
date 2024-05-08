@@ -321,6 +321,7 @@ iexp.node() of
 |I0Eflt _ => f0_flt(env0, iexp)
 |I0Estr _ => f0_str(env0, iexp)
 //
+|I0Ecst _ => f0_cst(env0, iexp)
 |I0Evar _ => f0_var(env0, iexp)
 //
 |I0Etimp _ => f0_timp(env0, iexp)
@@ -404,6 +405,33 @@ f0_str
 {
   val loc = iexp.lctn()
   val-I0Estr(tok) = iexp.node() }
+//
+(* ****** ****** *)
+//
+fun
+f0_cst
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Ecst(d2c1) = iexp.node()
+//
+in//let
+(
+  i1val(loc0, I1Vcst(d2c1)))
+end where
+{
+//
+val () =
+(
+prerr("trxi0i1_i0exp:");
+prerrln("f0_cst(01): iexp = ", iexp))
+//
+}(*where*)//end-of-[f0_cst(env0,iexp)]
 //
 (* ****** ****** *)
 //
