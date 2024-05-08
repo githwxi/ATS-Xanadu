@@ -261,6 +261,17 @@ nindfpr
 (filr, nind); strnfpr
 (filr, "// I1BFIift0-end");
 )
+//
+|I1BFIlet0 _ =>
+(
+//
+f0_let0(env0, ibfi);
+//
+nindfpr
+(filr, nind); strnfpr
+(filr, "// I1BFIlet0-end");
+)
+//
 |_(* else *) =>
 (
   i1bfi_fprint(filr, ibfi)))
@@ -279,12 +290,14 @@ g_print$out<>() = filr
 //
 val-
 I1BFIift0
-(test, ithn, iels) = ibfi
+( test
+, ithn, iels) = ibfi
 //
 val () =
 (
-print("I1BFIift0(",test);
-print(";","...",";","...",")\n"))
+print
+("I1BFIift0(",test,";");
+print("...",";","...",")\n"))
 //
 val () =
 envx2js_incnind(env0, 2)
@@ -304,6 +317,41 @@ case+ iels of
 |optn_nil() => ()
 |optn_cons(icmp) =>
  xats2js_i1cmp(env0, icmp))//case
+val () = envx2js_decnind(env0, 2)
+//
+end//let//end-of-[ f0_ift0(env0,ibfi) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_let0
+( env0:
+! envx2js
+, ibfi: i1bfi): void =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+val-
+I1BFIlet0
+( dcls, icmp) = ibfi
+//
+val () =
+(
+print("I1BFIlet0(");
+print("...",";","...",")\n"))
+//
+val () =
+envx2js_incnind(env0, 2)
+//
+val () =
+(
+  xats2js_i1cmp(env0, icmp)
+) where
+{ val () =
+  xats2js_i1dclist(env0, dcls) }
+//
 val () = envx2js_decnind(env0, 2)
 //
 end//let//end-of-[ f0_ift0(env0,ibfi) ]

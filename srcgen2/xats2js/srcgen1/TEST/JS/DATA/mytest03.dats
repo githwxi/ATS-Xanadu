@@ -27,6 +27,25 @@ then x * fact1(x-1) else 1
 (* ****** ****** *)
 //
 fun
+fact2
+(x: sint): sint =
+let
+fun
+loop
+( x: sint
+, r: sint): sint =
+if (x > 0)
+then
+loop(x-1, x*r) else r
+in//in
+  loop(x, 1)
+end//let//end-of-[fact2(x)]
+//
+(* ****** ****** *)
+////
+(* ****** ****** *)
+//
+fun
 fibo1
 (x: sint): sint =
 if (x >= 2)
@@ -34,7 +53,6 @@ then
 fibo1(x-2)+fibo1(x-1) else x
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 //
 fun
