@@ -112,6 +112,12 @@ i0e0.lctn(),I1Vnone1(i0e0))
 (* ****** ****** *)
 //
 #implfun
+i1cmp_get_lctn
+(  icmp  ) =
+(
+i1val_get_lctn(icmp.ival()))
+//
+#implfun
 i1cmp_get_ival
 (  icmp  ) =
 (

@@ -164,7 +164,7 @@ i1fundcl_get_tdxp(ifun)
 (* ****** ****** *)
 //
 val (  ) =
-xats2js_d2var(env0, dpid)
+xats2js_d2var(env0, dvar)
 (*
 val (  ) = prerrln
 ("xats2js_i1fundcl: dvar = ", dvar)

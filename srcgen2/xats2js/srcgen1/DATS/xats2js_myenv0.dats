@@ -121,6 +121,39 @@ case+ env0 of
 (* ****** ****** *)
 //
 #implfun
+envx2js_incnind
+(  env0, ninc  ) = let
+//
+val+
+@ENVX2JS(filr, !nind) = env0
+//
+in//let
+//
+(
+  nind :=
+  nind + ninc; $fold(env0))
+//
+end (*let*)//end-of-(envx2js_incnind(env0))
+//
+#implfun
+envx2js_decnind
+(  env0, ndec  ) = let
+//
+val+
+@ENVX2JS(filr, !nind) = env0
+//
+in//let
+//
+(
+  nind :=
+  nind - ndec; $fold(env0))
+//
+end (*let*)//end-of-(envx2js_decnind(env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 envx2js_pshlam0
 (     env0     ) = let
 //
