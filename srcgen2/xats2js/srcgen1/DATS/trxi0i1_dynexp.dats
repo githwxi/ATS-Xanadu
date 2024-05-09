@@ -131,8 +131,8 @@ i1val_tnm(loc0, itnm)) where
 {
 //
 val itnm = i1tnm_new0((*void*))
-val ibfi = I1BFIdapp(i1f0, i1vs)
-val ilet = I1LETnew1(itnm, ibfi)
+val iins = I1INSdapp(i1f0, i1vs)
+val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
@@ -156,10 +156,10 @@ i1val_tnm(loc0, itnm)) where
 val
 itnm = i1tnm_new0((*void*))
 val
-ibfi =
+iins =
 (
-  I1BFIift0(i1v1, ithn, iels))
-val ilet = I1LETnew1(itnm, ibfi)
+  I1INSift0(i1v1, ithn, iels))
+val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
@@ -183,9 +183,9 @@ i1val_tnm(loc0, itnm)) where
 val
 itnm = i1tnm_new0((*void*))
 val
-ibfi = I1BFIlet0(dcls, icmp)
+iins = I1INSlet0(dcls, icmp)
 //
-val ilet = I1LETnew1(itnm, ibfi)
+val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
@@ -204,9 +204,9 @@ i1val_tup0
 i1val_tnm(loc0, itnm)) where
 {
 //
-val ibfi = I1BFItup0( i1vs )
+val iins = I1INStup0( i1vs )
 val itnm = i1tnm_new0((*void*))
-val ilet = I1LETnew1(itnm, ibfi)
+val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (
@@ -226,9 +226,9 @@ i1val_tup1
 i1val_tnm(loc0, itnm)) where
 {
 //
-val ibfi = I1BFItup1(tknd,i1vs)
+val iins = I1INStup1(tknd,i1vs)
 val itnm = i1tnm_new0((*void*))
-val ilet = I1LETnew1(itnm, ibfi)
+val ilet = I1LETnew1(itnm, iins)
 //
 val (  ) =
 (

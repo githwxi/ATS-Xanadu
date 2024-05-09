@@ -178,55 +178,55 @@ end(*let*)//end-of-[i1val_fprint(out, i1v0)]
 (* ****** ****** *)
 //
 #implfun
-i1bfi_fprint
-(out, ibfi) =
+i1ins_fprint
+(out, iins) =
 let
 #impltmp
 g_print$out<>() = out
 in//let
 //
-case+ ibfi of
+case+ iins of
 //
-|I1BFIopr
+|I1INSopr
 ( iopr, i1vs) =>
 (
-print("I1BFIopr(");
+print("I1INSopr(");
 print(iopr, ";", i1vs, ")"))
 //
-|I1BFIdapp
+|I1INSdapp
 ( i1f0, i1vs) =>
 (
-print("I1BFIdapp(");
+print("I1INSdapp(");
 print(i1f0, ";", i1vs, ")"))
 //
-|I1BFItup0(i1vs) =>
+|I1INStup0(i1vs) =>
 print
-("I1BFItup0(", i1vs, ")")
-|I1BFItup1
+("I1INStup0(", i1vs, ")")
+|I1INStup1
 (tknd, i1vs) =>
 (
-print("I1BFItup1(");
+print("I1INStup1(");
 print(tknd, ";", i1vs, ")"))
-|I1BFIrcd2
+|I1INSrcd2
 ( tknd, livs) =>
 (
-print("I1BFIrcd2(");
+print("I1INSrcd2(");
 print(tknd, ";", livs, ")"))
 //
-|I1BFIift0
+|I1INSift0
 ( test
 , ithn, iels) =>
 (
-print("I1BFIift0(");
+print("I1INSift0(");
 print
 (test,";",ithn,";",iels,")"))
 //
-|I1BFIlet0
+|I1INSlet0
 ( dcls, icmp) =>
-( print("I1BFIlet0(")
+( print("I1INSlet0(")
 ; print(dcls, ";", icmp, ")"))
 //
-end(*let*)//end-of-[i1bfi_fprint(out, ibfi)]
+end(*let*)//end-of-[i1ins_fprint(out, iins)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -244,8 +244,8 @@ case+ ilet of
 |I1LETnew0(itnm) =>
 print("I1LETnew0(", ")")
 *)
-|I1LETnew1(itnm, ibfi) =>
-print("I1LETnew1(", itnm, ";", ibfi, ")")
+|I1LETnew1(itnm, iins) =>
+print("I1LETnew1(", itnm, ";", iins, ")")
 //
 end(*let*)//end-of-[i1let_fprint(out, ilet)]
 //
