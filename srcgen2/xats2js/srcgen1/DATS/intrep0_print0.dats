@@ -114,6 +114,13 @@ print("I0Pchr(",tok,")")
 |I0Pstr(tok) =>
 print("I0Pstr(",tok,")")
 //
+|I0Ptup0
+(  i0ps  ) =>
+print("I0Ptup0(",i0ps,")")
+|I0Ptup1
+( tknd,i0ps ) =>
+print("I0Ptup1(",tknd,";",i0ps,")")
+//
 |I0Pnone0() => print( "I0Pnone0(",")" )
 |I0Pnone1(d3p1) => print("I0Pnone1(", d3p1, ")")
 //

@@ -197,6 +197,9 @@ i0pat(loc0, I0Pflt(tok))
 ( tok ) =>
 i0pat(loc0, I0Pstr(tok))
 //
+|D3Ptup0 _ => f0_tup0(env0, d3p0)
+|D3Ptup1 _ => f0_tup1(env0, d3p0)
+//
 |D3Pannot _ => f0_annot(env0, d3p0)
 //
 |_(* otherwise *) => i0pat_none1(d3p0)
@@ -205,9 +208,62 @@ i0pat(loc0, I0Pstr(tok))
 {
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
-val loc0 = d3p0.lctn((*0*))
+val loc0 = d3p0.lctn()
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_tup0
+( env0:
+! envd3i0
+, d3p0: d3pat): i0pat =
+let
+//
+val-
+D3Ptup0
+(npf1, d3ps) = d3p0.node()
+//
+val d3ps =
+pfrmv_npf1_d3ps(npf1, d3ps)
+//
+val i0ps =
+trxd3i0_d3patlst(env0, d3ps)
+//
+in//let
+(
+  i0pat(loc0, I0Ptup0(i0ps)))
+end(*let*)//end-of-[f0_tup0(...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup1
+( env0:
+! envd3i0
+, d3p0: d3pat): i0pat =
+let
+//
+val-
+D3Ptup1
+( tknd
+, npf1, d3ps) = d3p0.node()
+//
+val d3ps =
+pfrmv_npf1_d3ps(npf1, d3ps)
+//
+val i0ps =
+trxd3i0_d3patlst(env0, d3ps)
+//
+in//let
+(
+  i0pat_make_node
+  (loc0, I0Ptup1(tknd, i0ps)))
+end(*let*)//end-of-[f0_tup1(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -220,19 +276,20 @@ trxd3i0_d3pat(env0, d3p1)
 ) where
 {
 //
-val loc0 = d3p0.lctn((*0*))
-//
 val-
 D3Pannot
 ( d3p1
 , s1e2, s2e2) = d3p0.node((*0*))
 //
-} (*where*) // end of [f0_annot(env0,...)]
+}(*where*)//end-of-[f0_annot(env0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 val (  ) =
-prerrln("trxd3i0_d3pat: d3p0 = ", d3p0)
+(
+prerrln("trxd3i0_d3pat: d3p0 = ", d3p0))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
