@@ -54,8 +54,14 @@ XATSOPT "./../../.."
 "./../HATS/xats2js_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
+#staload // D2E =
+"./../../../SATS/dynexp2.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 #staload "./../SATS/intrep1.sats"
 (* ****** ****** *)
+(* ****** ****** *)
+#symload name with d2var_get_name
 (* ****** ****** *)
 #symload lctn with i1val_get_lctn
 #symload node with i1val_get_node
@@ -102,13 +108,33 @@ print("I1Vcon(",dcon,")")
 |I1Vcst(dcst) =>
 print("I1Vcst(",dcst,")")
 |I1Vvar(dvar) =>
-print("I1Vvar(",dvar,")")
+let
+val name = dvar.name()
+in//end
+print("I1Vvar(",name,")")
+end//let//end-[I1Vvar...]
 //
 |I1Vtimp
 ( i0e1,timp ) =>
 (
 print("I1Vtimp(");
-print(i0e1, ";", timp, ")"))
+print(i0e1, ";", "...", ")"))
+where
+{
+val
+i0e1 =
+(
+  detapp(i0e1)) where
+{
+fun
+detapp
+( i0e1
+: i0exp): i0exp =
+(
+case+ i0e1.node() of
+|
+I0Etapp(i0e1) => detapp(i0e1)
+| _ (*otherwise*) => ( i0e1 ) ) } }
 //
 (*
 |I1Vtup0(i1vs) =>

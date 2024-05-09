@@ -252,6 +252,11 @@ i1bfifpr
 , ibfi: i1bfi): void =
 (
 case+ ibfi of
+//
+|I1BFIdapp _ =>
+(
+f0_dapp(env0, ibfi))
+//
 |I1BFIift0 _ =>
 (
 //
@@ -279,19 +284,34 @@ where
 {
 //
 fun
+f0_dapp
+( env0:
+! envx2js
+, ibfi: i1bfi): void =
+let
+//
+val-
+I1BFIdapp
+(i1f0, i1vs) = ibfi
+in//let
+print
+("I1BFIdapp(", i1f0, ";", i1vs, ")")
+end//let//end-of-[ f0_dapp(env0,ibfi) ]
+//
+fun
 f0_ift0
 ( env0:
 ! envx2js
 , ibfi: i1bfi): void =
 let
 //
-#impltmp
-g_print$out<>() = filr
-//
 val-
 I1BFIift0
 ( test
 , ithn, iels) = ibfi
+//
+#impltmp
+g_print$out<>() = filr
 //
 val () =
 (
@@ -381,15 +401,43 @@ envx2js_get_nind(env0)
 //
 in//let
 //
+nindfpr(filr, nind);
+strnfpr(filr, "// ");
+fjargfpr(env0, farg); fprintln(filr)
+//
+end where
+{
+fun
+fjargfpr
+( env0:
+! envx2js
+, farg: fjarg): void =
+let
+//
+val filr =
+envx2js_get_filr(env0)
+#impltmp
+g_print$out<>() = filr
+//
+in//let
 case+
 farg.node() of
 |
-FJARGdapp _ =>
-nindfpr(filr, nind);
-strnfpr(filr, "// ");
-fjarg_fprint(filr, farg); fprintln(filr)
-//
-end(*let*)//end-of-[xats2js_fjarg(env0,farg)]
+FJARGdapp(i1bs) =>
+(
+print("FJARGdapp(", i1bs, ")")) where
+{
+#impltmp
+g_print<i1bnd>(ibnd) =
+(
+case+ ibnd of
+|I1BNDnone
+((*void*)) => print("I1BNDnone(", ")")
+|I1BNDsome
+(itnm,dvvs) => print("I1BNDsome(",itnm,")"))
+}
+end//let
+}(*where*)//end-of-[xats2js_fjarg(env0,farg)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
