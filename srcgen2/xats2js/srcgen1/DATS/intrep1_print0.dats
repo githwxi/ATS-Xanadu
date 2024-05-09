@@ -58,6 +58,7 @@ XATSOPT "./../../.."
 "./../../../SATS/dynexp2.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+#staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
 (* ****** ****** *)
 (* ****** ****** *)
@@ -149,21 +150,29 @@ print("I1Vrcd2(",tknd,";",livs,")")
 //
 (* ****** ****** *)
 //
-|I1Vprj0
+|I1Vp0rj
 ( i1v1,idx2 ) =>
 (
-print("I1Vprj0(");
+print("I1Vp0rj(");
 print(i1v1, ";", idx2, ")"))
-|I1Vprj1
-(tknd, i1v1, idx2) =>
-(
-print("I1Vprj1(");
-print(tknd, ";", i1v1, ";", idx2, ")"))
-|I1Vprj2
+//
+|I1Vp1cn
 (dcon, i1v1, idx2) =>
 (
-print("I1Vprj2(");
+print("I1Vp1cn(");
 print(dcon, ";", i1v1, ";", idx2, ")"))
+//
+|I1Vp1rj
+(tknd, i1v1, idx2) =>
+(
+print("I1Vp1rj(");
+print(tknd, ";", i1v1, ";", idx2, ")"))
+//
+|I1Vp2rj
+(tknd, i1v1, lab2) =>
+(
+print("I1Vp2rj(");
+print(tknd, ";", i1v1, ";", lab2, ")"))
 //
 (* ****** ****** *)
 //
@@ -210,32 +219,44 @@ print(iopr, ";", i1vs, ")"))
 print("I1INSdapp(");
 print(i1f0, ";", i1vs, ")"))
 //
+(* ****** ****** *)
+//
 |I1INStup0(i1vs) =>
-print
-("I1INStup0(", i1vs, ")")
+( print
+  ("I1INStup0(", i1vs, ")"))
+//
 |I1INStup1
 (tknd, i1vs) =>
-(
-print("I1INStup1(");
-print(tknd, ";", i1vs, ")"))
+( print("I1INStup1(")
+; print(tknd, ";", i1vs, ")"))
+//
 |I1INSrcd2
 ( tknd, livs) =>
-(
-print("I1INSrcd2(");
-print(tknd, ";", livs, ")"))
+( print("I1INSrcd2(")
+; print(tknd, ";", livs, ")"))
 //
-|I1INSift0
-( test
-, ithn, iels) =>
-(
-print("I1INSift0(");
-print
-(test,";",ithn,";",iels,")"))
+(* ****** ****** *)
+//
+|I1INSproj
+( tknd
+, dlab, itup) =>
+(print("I1INSproj(");
+ print
+ (tknd,";",dlab,";",itup,")"))
+//
+(* ****** ****** *)
 //
 |I1INSlet0
 ( dcls, icmp) =>
 ( print("I1INSlet0(")
 ; print(dcls, ";", icmp, ")"))
+//
+|I1INSift0
+( test
+, ithn, iels) =>
+( print("I1INSift0(")
+; print
+  (test,";",ithn,";",iels,")"))
 //
 end(*let*)//end-of-[i1ins_fprint(out, iins)]
 //

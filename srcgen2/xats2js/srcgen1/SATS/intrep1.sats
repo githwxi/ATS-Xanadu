@@ -190,20 +190,25 @@ and i1cmp =
 and i1ins =
 //
 |I1INSopr of
-( i1opr(*opnm*)
-, i1valist(*args*))//primopr
+(i1opr(*opnm*)
+,i1valist(*args*))//primopr
 //
 |I1INSdapp of
-( i1val(*fun0*)
-, i1valist(*args*))//funcall
+(i1val(*fun0*)
+,i1valist(*args*))//funcall
 //
-|I1INSift0 of
-( i1val(*test*)
-, i1cmpopt(*then*)
-, i1cmpopt(*else*))//ifthnels
+|I1INSproj of
+(token(*tknd*)
+,label(*int/sym*)
+,i1val(*tuproot*))//tupproj
 //
 |I1INSlet0 of
-( i1dclist, i1cmp )//letinend
+(i1dclist, i1cmp )//letinend
+//
+|I1INSift0 of
+(i1val(*test*)
+,i1cmpopt(*then*)
+,i1cmpopt(*else*))//ifthnels
 //
 |I1INStup0 of (i1valist)//flat
 |I1INStup1 of (token, i1valist)
@@ -256,9 +261,10 @@ i1val_node =
 (* ****** ****** *)
 (* ****** ****** *)
 //
-|I1Vprj0 of (i1val, sint)
-|I1Vprj1 of (token, i1val, sint)
-|I1Vprj2 of (d2con, i1val, sint)
+|I1Vp0rj of (i1val, sint)
+|I1Vp1cn of (d2con, i1val, sint)
+|I1Vp1rj of (token, i1val, sint)
+|I1Vp2rj of (token, i1val, label)
 //
 (* ****** ****** *)
 (* ****** ****** *)
