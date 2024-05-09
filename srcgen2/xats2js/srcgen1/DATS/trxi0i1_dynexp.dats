@@ -214,6 +214,28 @@ val (  ) =
 }(*where*)//end-of-[i1val_tup0(env0,...)]
 //
 (* ****** ****** *)
+//
+fun
+i1val_tup1
+( env0:
+! envi0i1
+, loc0: loc_t
+, tknd: token
+, i1vs: i1valist): i1val =
+(
+i1val_tnm(loc0, itnm)) where
+{
+//
+val ibfi = I1BFItup1(tknd,i1vs)
+val itnm = i1tnm_new0((*void*))
+val ilet = I1LETnew1(itnm, ibfi)
+//
+val (  ) =
+(
+  envi0i1_insert_ilet(env0, ilet) )
+}(*where*)//end-of-[i1val_tup1(env0,...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 #implfun
@@ -359,12 +381,14 @@ iexp.node() of
 |I0Elet0 _ => f0_let0(env0, iexp)
 //
 |I0Etup0 _ => f0_tup0(env0, iexp)
+|I0Etup1 _ => f0_tup1(env0, iexp)
 //
 |I0Elam0 _ => f0_lam0(env0, iexp)
 |I0Efix0 _ => f0_fix0(env0, iexp)
 //
-|
-_(*otherwise*) => i1val_none1(iexp)
+|I0Ewhere _ => f0_where(env0, iexp)
+//
+| _(*otherwise*) => i1val_none1(iexp)
 //
 ) where
 {
@@ -636,6 +660,7 @@ val icmp = I1CMPcons(ilts, iret)
 in//let
 i1val_let0(env0, loc0, dcls, icmp)
 end(*let*)//end-of-[f0_let0(env0,iexp)]
+//
 (* ****** ****** *)
 //
 fun
@@ -664,6 +689,36 @@ prerr("trxi0i1_i0exp:");
 prerrln("f0_tup0(01): iexp = ", iexp))
 //
 }(*where*)//end-of-[f0_tup0(env0,iexp)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup1
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Etup1
+(tknd, i0es) = iexp.node()
+val i1vs =
+trxi0i1_i0explst(env0, i0es)
+//
+in
+(
+i1val_tup1(env0, loc0, tknd, i1vs))
+end where
+{
+//
+val () =
+(
+prerr("trxi0i1_i0exp:");
+prerrln("f0_tup1(01): iexp = ", iexp))
+//
+}(*where*)//end-of-[f0_tup1(env0,iexp)]
 //
 (* ****** ****** *)
 //
@@ -746,10 +801,45 @@ i1val_make_node
 end(*let*)//end-of-[f0_fix0(env0,iexp)]
 //
 (* ****** ****** *)
+//
+fun
+f0_where
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Ewhere
+(
+body, dcls) = iexp.node()
+//
+val (  ) =
+envi0i1_pshlet0(env0)
+//
+val dcls =
+trxi0i1_i0dclist(env0, dcls)
+//
+val
+iret =
+trxi0i1_i0exp(env0, body)
+val
+ilts = envi0i1_poplet0( env0 )
+//
+val icmp = I1CMPcons(ilts, iret)
+//
+in//let
+i1val_let0(env0, loc0, dcls, icmp)
+end(*let*)//end-of-[f0_where(env0,iexp)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val () =
-prerrln("trxi0i1_i0exp: iexp = ", iexp)
+(
+  prerrln("trxi0i1_i0exp: iexp = ", iexp))
 //
 (* ****** ****** *)
 (* ****** ****** *)

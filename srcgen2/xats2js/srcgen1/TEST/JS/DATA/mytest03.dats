@@ -42,21 +42,10 @@ in//in
 end//let//end-of-[fact2(x)]
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 //
 fun
-fibo1
-(x: sint): sint =
-if (x >= 2)
-then
-fibo1(x-2)+fibo1(x-1) else x
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-fact2
+fact3
 (x: sint): sint =
 (
   loop@(x, 1)) where
@@ -69,6 +58,17 @@ then loop@(x-1, x*r) else (r)
 }
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fibo1
+(x: sint): sint =
+if (x >= 2)
+then
+fibo1(x-2)+fibo1(x-1) else x
+//
+(* ****** ****** *)
+////
 (* ****** ****** *)
 //
 fun
