@@ -169,8 +169,8 @@ g_print
 i1let_fprint(g_print$out<>(), ilet)
 #impltmp
 g_print
-<i1bfi>(ibfi) =
-i1bfi_fprint(g_print$out<>(), ibfi)
+<i1ins>(iins) =
+i1ins_fprint(g_print$out<>(), iins)
 //
 #impltmp
 g_print

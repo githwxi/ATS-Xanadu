@@ -172,9 +172,8 @@ i1let =
 (*
 |I1LETnew0 of (i1tnm)
 *)
-|I1LETnew1 of (i1tnm, i1bfi)
+|I1LETnew1 of (i1tnm, i1ins)
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 and i1bnd =
@@ -187,29 +186,28 @@ and i1cmp =
 |I1CMPcons of (i1letlst, i1val)
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
-and i1bfi =
+and i1ins =
 //
-|I1BFIopr of
+|I1INSopr of
 ( i1opr(*opnm*)
 , i1valist(*args*))//primopr
 //
-|I1BFIdapp of
+|I1INSdapp of
 ( i1val(*fun0*)
 , i1valist(*args*))//funcall
 //
-|I1BFIift0 of
+|I1INSift0 of
 ( i1val(*test*)
 , i1cmpopt(*then*)
 , i1cmpopt(*else*))//ifthnels
 //
-|I1BFIlet0 of
+|I1INSlet0 of
 ( i1dclist, i1cmp )//letinend
 //
-|I1BFItup0 of (i1valist)//flat
-|I1BFItup1 of (token, i1valist)
-|I1BFIrcd2 of (token, l1i1vlst)
+|I1INStup0 of (i1valist)//flat
+|I1INStup1 of (token, i1valist)
+|I1INSrcd2 of (token, l1i1vlst)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -292,7 +290,7 @@ where
 //
   #typedef i1letlst = list(i1let)
 //
-} //(*where*)//end-of-(i1let/bfi/val)
+} //(*where*)//end-of-(i1let/ins/val)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -306,7 +304,7 @@ fun
 i1cmp_fprint:(FILR,i1cmp)->void
 //
 fun
-i1bfi_fprint:(FILR,i1bfi)->void
+i1ins_fprint:(FILR,i1ins)->void
 //
 fun
 i1val_fprint:(FILR,i1val)->void
