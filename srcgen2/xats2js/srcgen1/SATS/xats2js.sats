@@ -161,8 +161,8 @@ xats2js_i1cmp
 (env0: !envx2js, icmp: i1cmp): void
 //
 fun
-xats2js_i1bfi
-(env0: !envx2js, ibfi: i1bfi): void
+xats2js_i1ins
+(env0: !envx2js, iins: i1ins): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

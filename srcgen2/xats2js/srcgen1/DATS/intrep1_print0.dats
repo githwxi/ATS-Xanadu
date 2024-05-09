@@ -136,6 +136,8 @@ case+ i0e1.node() of
 I0Etapp(i0e1) => detapp(i0e1)
 | _ (*otherwise*) => ( i0e1 ) ) } }
 //
+(* ****** ****** *)
+//
 (*
 |I1Vtup0(i1vs) =>
 print("I1Vtup0(", i1vs, ")")
@@ -145,16 +147,25 @@ print("I1Vtup1(",tknd,";",i1vs,")")
 print("I1Vrcd2(",tknd,";",livs,")")
 *)
 //
-|I1Vpcon
-(dcon, i1v1, idx2) =>
+(* ****** ****** *)
+//
+|I1Vprj0
+( i1v1,idx2 ) =>
 (
-print("I1Vpcon(");
-print(dcon, ";", i1v1, ";", idx2, ")"))
-|I1Vproj
+print("I1Vprj0(");
+print(i1v1, ";", idx2, ")"))
+|I1Vprj1
 (tknd, i1v1, idx2) =>
 (
-print("I1Vproj(");
+print("I1Vprj1(");
 print(tknd, ";", i1v1, ";", idx2, ")"))
+|I1Vprj2
+(dcon, i1v1, idx2) =>
+(
+print("I1Vprj2(");
+print(dcon, ";", i1v1, ";", idx2, ")"))
+//
+(* ****** ****** *)
 //
 |I1Vlam0
 (tknd, fjas, icmp) =>

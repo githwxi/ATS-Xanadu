@@ -140,6 +140,7 @@ val (  ) =
 }(*where*)//end-of-[i1val_dapp(env0,...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 i1val_ift0
@@ -167,6 +168,7 @@ val (  ) =
 }(*where*)//end-of-[i1val_ift0(env0,...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 i1val_let0
@@ -192,6 +194,7 @@ val (  ) =
   envi0i1_insert_ilet(env0, ilet) )
 }(*where*)//end-of-[i1val_let0(env0,...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -234,6 +237,35 @@ val (  ) =
 (
   envi0i1_insert_ilet(env0, ilet) )
 }(*where*)//end-of-[i1val_tup1(env0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i1val_prj0
+( env0:
+! envi0i1
+, ival: i1val
+, iprj: (sint)): i1val =
+let
+val loc0 = ival.lctn()
+in//let
+i1val(loc0, I1Vprj0(ival, iprj))
+end(*let*)//end-of-[i1val_prj1(env0,...)]
+//
+fun
+i1val_prj1
+( env0:
+! envi0i1
+, tknd: token
+, ival: i1val
+, iprj: (sint)): i1val =
+let
+val loc0 = ival.lctn()
+in//let
+i1val_make_node
+(loc0, I1Vprj1(tknd, ival, iprj))
+end(*let*)//end-of-[i1val_prj1(env0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -309,10 +341,23 @@ ipat.node() of
 |I0Pflt _ => list_nil()
 |I0Pstr _ => list_nil()
 //
-|I0Pvar _ =>
+|
+I0Pvar _ =>
 (
 f0_var(env0, ipat, ival))
-|I0Pany _ => list_nil((*0*))
+|
+I0Pany _ => list_nil((*0*))
+//
+(*
+|
+I0Ptup0 _ =>
+(
+  f0_tup0(env0, ipat, ival))
+*)
+|
+I0Ptup1 _ =>
+(
+  f0_tup1(env0, ipat, ival))
 //
 |_(*else*) => list_nil( (*void*) )
 //
@@ -339,6 +384,52 @@ I0Pvar(dvar) = ipat.node((*0*))
 val ((*nil*)) =
 envi0i1_insert_dvar(env0, dvar, ival)
 }(*where*)//end-of-[f0_var(env0, ...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tup1
+( env0:
+! envi0i1
+, ipat: i0pat
+, ival: i1val): d2sublst =
+let
+//
+val-
+I0Ptup1
+(tknd, i0ps) = ipat.node()
+//
+fun
+f1_i0ps
+( env0:
+! envi0i1
+, iprj: sint
+, i0ps: i0patlst): d2sublst =
+(
+case+ i0ps of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons(i0p1, i0ps) =>
+let
+val i1v1 =
+i1val_prj1
+(env0, tknd, ival, iprj)
+val dvvs =
+trxi0i1_i0bnd(env0,i0p1,i1v1)
+in//let
+(
+list_append
+( dvvs
+, f1_i0ps(env0, iprj+1, i0ps)))
+end//let
+)(*case+*)//end-of-[f0_i0ps(...)]
+//
+in//let
+(
+  f1_i0ps(env0, 0(*iprj*), i0ps) )
+end(*let*)//end-of-[f0_tup1(env0, ...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
