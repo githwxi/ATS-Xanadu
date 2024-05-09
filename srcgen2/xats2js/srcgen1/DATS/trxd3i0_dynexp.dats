@@ -373,6 +373,11 @@ i0exp(loc0, I0Ecst(d2c))
 //
 (* ****** ****** *)
 //
+|D3Epcon _ => f0_pcon(env0, d3e0)
+|D3Eproj _ => f0_proj(env0, d3e0)
+//
+(* ****** ****** *)
+//
 |D3Elet0 _ => f0_let0(env0, d3e0)
 //
 (* ****** ****** *)
@@ -554,6 +559,50 @@ in//let
 (
 i0exp(loc0, I0Edapp(i0f0, i0es)))
 end (*let*) // end of [f0_dapp(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_pcon
+( env0:
+! envd3i0
+, d3e0: d3exp): i0exp =
+let
+//
+val-
+D3Epcon
+( tknd
+, lab0, d3e1) = d3e0.node()
+//
+val i0e1 =
+(
+  trxd3i0_d3exp(env0, d3e1))
+//
+in//let
+i0exp_make_node
+(loc0, I0Epcon(tknd, lab0, i0e1))
+end(*let*)//end-of-[f0_pcon(env0,d3e0)]
+//
+fun
+f0_proj
+( env0:
+! envd3i0
+, d3e0: d3exp): i0exp =
+let
+//
+val-
+D3Eproj
+( tknd
+, lab0, d3e1) = d3e0.node()
+//
+val i0e1 =
+(
+  trxd3i0_d3exp(env0, d3e1))
+//
+in//let
+i0exp_make_node
+(loc0, I0Eproj(tknd, lab0, i0e1))
+end(*let*)//end-of-[f0_proj(env0,d3e0)]
 //
 (* ****** ****** *)
 //

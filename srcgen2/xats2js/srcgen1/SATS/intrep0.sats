@@ -397,8 +397,17 @@ i0exp_node =
 //
 (* ****** ****** *)
 //
+|I0Epcon of
+( token(*tknd*)
+, label(*LABsym*), i0exp(*con*))
+|I0Eproj of
+( token(*tknd*)
+, label(*LABint*), i0exp(*tup*))
+//
+(* ****** ****** *)
+//
 |I0Elet0 of
-(i0dclist(*ds*), i0exp(*scope*))
+(i0dclist(*dcls*), i0exp(*scp*))
 //
 (* ****** ****** *)
 //
