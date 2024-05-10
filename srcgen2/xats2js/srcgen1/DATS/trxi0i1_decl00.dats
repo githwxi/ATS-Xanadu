@@ -394,6 +394,34 @@ end//let
 (*let*)//end-of-[trxi0i1_i0valdcl(env0,ival)]
 //
 (* ****** ****** *)
+//
+#implfun
+trxi0i1_i0vardcl
+  (env0, ivar) = let
+//
+val loc0 =
+i0vardcl_get_lctn(ivar)
+val dvar =
+i0vardcl_get_dpid(ivar)
+val tdxp =
+i0vardcl_get_dini(ivar)
+//
+val tdxp =
+trxi0i1_teqi0exp(env0, tdxp)
+//
+val itnm = i1tnm_new0()
+val ival =
+i1val(loc0, I1Vtnm(itnm))
+val (  ) =
+envi0i1_insert_dvar(env0, dvar, ival)
+//
+in//let
+(
+  i1vardcl_make_args(loc0, dvar, tdxp))
+end//let
+(*let*)//end-of-[trxi0i1_i0vardcl(env0,ivar)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun

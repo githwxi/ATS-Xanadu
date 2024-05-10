@@ -66,6 +66,14 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 #implfun
+i1val_nil
+(  loc0  ) =
+i1val_make_node
+(loc0,I1Vnil((*void*)))
+//
+(* ****** ****** *)
+//
+#implfun
 i1val_con(dcon) =
 let
 val loc0 =

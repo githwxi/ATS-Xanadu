@@ -254,9 +254,14 @@ print(i1f0, ";", i1vs, ")"))
 |I1INSift0
 ( test
 , ithn, iels) =>
-( print("I1INSift0(")
-; print
-  (test,";",ithn,";",iels,")"))
+(print("I1INSift0(");
+ print
+ (test,";",ithn,";",iels,")"))
+//
+|I1INSassgn
+( i1vl, i1vr) =>
+( print("I1INSassgn(")
+; print(i1vl, ";", i1vr, ")"))
 //
 end(*let*)//end-of-[i1ins_fprint(out, iins)]
 //
@@ -272,10 +277,8 @@ g_print$out<>() = out
 in//let
 //
 case+ ilet of
-(*
-|I1LETnew0(itnm) =>
-print("I1LETnew0(", ")")
-*)
+|I1LETnew0(iins) =>
+print("I1LETnew0(", iins, ")")
 |I1LETnew1(itnm, iins) =>
 print("I1LETnew1(", itnm, ";", iins, ")")
 //

@@ -165,9 +165,7 @@ fun
 i1letfpr
 ( env0:
 ! envx2js
-, ilte: i1let): void =
-case+ ilte of
-I1LETnew1(itnm, iins) =>
+, ilet: i1let): void =
 let
 //
 #impltmp
@@ -176,6 +174,16 @@ envx2js_get_filr(env0)
 //
 in//let
 //
+case+ ilet of
+|I1LETnew0(iins) =>
+(
+print
+("I1LETnew0(", "...", ")\n");
+envx2js_incnind(env0,2(*inc*));
+xats2js_i1ins(  env0 , iins  );
+envx2js_decnind(env0,2(*dec*)))
+//
+|I1LETnew1(itnm, iins) =>
 (
 envx2js_incnind(env0,2(*inc*));
 xats2js_i1ins(  env0 , iins  );
@@ -183,8 +191,10 @@ envx2js_decnind(env0,2(*dec*))) where
 {
 val () =
 print
-("I1LETnew1(", itnm, ";", "...", ")\n")}
-end//let
+("I1LETnew1(", itnm, ";", "...", ")\n")
+}
+//
+end//let//end-of-[ i1letfpr(env0,ilet) ]
 //
 }(*where*)//end-of-[xats2js_i1let(env0,ilet)]
 //

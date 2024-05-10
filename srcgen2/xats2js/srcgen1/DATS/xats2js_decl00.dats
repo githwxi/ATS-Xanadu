@@ -147,6 +147,36 @@ prerrln("f0_valdclst(x2js): dcl0 = ", dcl0)
 (* ****** ****** *)
 //
 fun
+f0_vardclst
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val-
+I1Dvardclst
+( tknd, i1vs) = dcl0.node()
+//
+val
+(  ) =
+xats2js_i1vardclist(env0, i1vs)
+//
+end where
+{
+//
+(*
+//
+val loc0 = dcl0.lctn((*void*))
+//
+val (  ) =
+prerrln("f0_vardclst(x2js): dcl0 = ", dcl0)
+*)
+//
+}(*where*) // end of [f0_vardclst(env0,dcl0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_fundclst
 ( env0:
 ! envx2js
@@ -202,8 +232,10 @@ envx2js_get_filr(env0)
 val nind =
 envx2js_get_nind(env0)
 in//let
-nindfpr(filr, nind);
-strnfpr(filr, "// I1VALDCL\n")
+(
+nindfpr
+(filr, nind); // indentation
+strnfpr(filr, "// I1VALDCL\n"))
 end//let//end-of-[val()]
 //
 (* ****** ****** *)
@@ -247,6 +279,67 @@ end//let
 (* ****** ****** *)
 //
 #implfun
+xats2js_i1vardcl
+  (env0, ivar) = let
+//
+(* ****** ****** *)
+//
+val dvar =
+i1vardcl_get_dpid(ivar)
+val tdxp =
+i1vardcl_get_dini(ivar)
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+in//let
+(
+nindfpr
+(filr, nind); // indentation
+strnfpr(filr, "// I1VARDCL\n"))
+end//let//end-of-[val()]
+//
+(* ****** ****** *)
+//
+(*
+val (  ) = prerrln
+("xats2js_i1vardcl: dvar = ", dvar)
+val (  ) = prerrln
+("xats2js_i1vardcl: dini = ", tdxp)
+*)
+//
+(* ****** ****** *)
+//
+val (  ) =
+(
+case+ tdxp of
+|
+TEQI1CMPnone
+( (*void*) ) => ((*void*))
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+let
+val (  ) =
+(
+  xats2js_i1cmp(env0, icmp))
+end//let
+) (*case+*) // end-of-( teqi1exp )
+//
+(* ****** ****** *)
+//
+end//let
+(*let*)//end-of-[xats2js_i1vardcl(env0,ival)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 xats2js_i1fundcl
   (env0, ifun) = let
 //
@@ -268,8 +361,10 @@ envx2js_get_filr(env0)
 val nind =
 envx2js_get_nind(env0)
 in//let
-nindfpr(filr, nind);
-strnfpr(filr, "// I1FUNDCL\n")
+(
+nindfpr
+(filr, nind); // indentation
+strnfpr(filr, "// I1FUNDCL\n"))
 end//let//end-of-[val()]
 //
 (* ****** ****** *)
@@ -341,6 +436,7 @@ xats2js_i1vardclist
 (
   list_xats2js_fnp(env0, i1vs, xats2js_i1vardcl))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
