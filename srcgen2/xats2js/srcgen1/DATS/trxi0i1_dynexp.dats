@@ -320,6 +320,31 @@ end(*let*)//end-of-[i1val_p1rj(env0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+i1val_assgn
+( env0:
+! envi0i1
+, loc0: loc_t
+, i1vl: i1val
+  (*left-i1val*)
+, i1vr: i1val
+  (*right-i1val*)): i1val =
+(
+i1val_nil(loc0)) where
+{
+//
+val ilet =
+I1LETnew0
+(I1INSassgn(i1vl, i1vr))
+//
+val (  ) =
+(
+  envi0i1_insert_ilet(env0, ilet) )
+}(*where*)//end-of-[i1val_assgn(env0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 #implfun
 trxi0i1_i0pat
@@ -535,6 +560,8 @@ iexp.node() of
 |I0Efix0 _ => f0_fix0(env0, iexp)
 //
 |I0Ewhere _ => f0_where(env0, iexp)
+//
+|I0Eassgn _ => f0_assgn(env0, iexp)
 //
 | _(*otherwise*) => i1val_none1(iexp)
 //
@@ -755,7 +782,7 @@ val () =
 prerr("trxi0i1_i0exp:");
 prerrln("f0_proj(01): iexp = ", iexp))
 //
-}(*where*)//end-of-[f0_dapp(env0,iexp)]
+}(*where*)//end-of-[f0_proj(env0,iexp)]
 //
 (* ****** ****** *)
 //
@@ -844,7 +871,7 @@ val () =
 prerr("trxi0i1_i0exp:");
 prerrln("f0_ift0(01): iexp = ", iexp))
 //
-}(*where*)//end-of-[f0_dapp(env0,iexp)]
+}(*where*)//end-of-[f0_ift0(env0,iexp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1049,6 +1076,41 @@ in//let
 i1val_let0(env0, loc0, dcls, icmp)
 end(*let*)//end-of-[f0_where(env0,iexp)]
 //
+(* ****** ****** *)
+//
+fun
+f0_assgn
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Eassgn
+( i0el, i0er) = iexp.node()
+//
+val i1vl =
+(
+  trxi0i1_i0exp(env0, i0el))
+val i1vr =
+(
+  trxi0i1_i0exp(env0, i0er))
+//
+in//let
+(
+i1val_assgn(env0,loc0,i1vl,i1vr))
+end where
+{
+//
+val () =
+(
+prerr("trxi0i1_i0exp:");
+prerrln("f0_assgn(01): iexp = ", iexp))
+//
+}(*where*)//end-of-[f0_assgn(env0,iexp)]
+
 (* ****** ****** *)
 (* ****** ****** *)
 //

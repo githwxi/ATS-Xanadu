@@ -169,9 +169,7 @@ i1tnm_fprint(FILR, i1tnm): void
 //
 datatype
 i1let =
-(*
-|I1LETnew0 of (i1tnm)
-*)
+|I1LETnew0 of (i1ins)
 |I1LETnew1 of (i1tnm, i1ins)
 //
 (* ****** ****** *)
@@ -213,6 +211,9 @@ and i1ins =
 |I1INStup0 of (i1valist)//flat
 |I1INStup1 of (token, i1valist)
 |I1INSrcd2 of (token, l1i1vlst)
+//
+|I1INSassgn of
+(i1val(*l-val*), i1val(*r-val*))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -341,6 +342,9 @@ i1val_get_node(i1val): i1val_node
 #symload lctn with i1val_get_lctn
 #symload node with i1val_get_node
 //
+(* ****** ****** *)
+fun
+i1val_nil(loc0: loc_t): ( i1val )
 (* ****** ****** *)
 //
 fun
