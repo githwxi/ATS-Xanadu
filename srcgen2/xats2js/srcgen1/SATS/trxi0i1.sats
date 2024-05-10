@@ -196,6 +196,18 @@ envi0i1_insert_ilet
 (* ****** ****** *)
 //
 fun
+envi0i1_d2vins_self
+( env0: 
+! envi0i1, d2v0: d2var): (void)
+fun
+envi0i1_dvsins_self
+( env0: 
+! envi0i1, d2vs: d2varlst): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 <x0:t0>
 <y0:t0>
 list_trxi0i1_fnp

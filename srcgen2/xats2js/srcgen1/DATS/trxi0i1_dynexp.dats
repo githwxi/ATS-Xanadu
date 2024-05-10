@@ -995,10 +995,8 @@ envi0i1_pshlam0(env0)
 //
 val (  ) =
 (
-envi0i1_insert_dvar
-( env0,dvar,ivar )) where
-{
-val ivar = i1val_var(dvar)}
+envi0i1_d2vins_self
+( env0, dvar(*recursive*)))
 //
 val fjas =
 trxi0i1_fiarglst(env0, fias)
