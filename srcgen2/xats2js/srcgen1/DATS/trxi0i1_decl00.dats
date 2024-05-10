@@ -51,6 +51,13 @@ XATSOPT "./../../.."
 #include
 "./../HATS/xats2js_dats.hats"
 (* ****** ****** *)
+(* ****** ****** *)
+#staload
+"./../../../SATS/xbasics.sats"
+#staload
+"./../../../SATS/lexing0.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
@@ -210,9 +217,26 @@ I0Dfundclst
 ( tknd
 , d2cs, i0fs) = dcl0.node()
 //
+val recq =
+(
+case+
+tknd.node() of
+| T_FUN(fnk) =>
+(
+  funkind_recq(fnk) )
+| _(*else*) => false): bool
+//
+val (  ) =
+if // if
+recq then mydvsins(env0, i0fs)
+//
 val
 i1fs =
 trxi0i1_i0fundclist(env0, i0fs)
+//
+val (  ) =
+if // if
+~(recq) then mydvsins(env0, i0fs)
 //
 in//let
 //
@@ -221,6 +245,23 @@ i1dcl_make_node
 //
 end where
 {
+//
+fun
+mydvsins
+( env0: !envi0i1
+, i0fs: i0fundclist): void =
+(
+case+ i0fs of
+|
+list_nil() => ((*0*))
+|
+list_cons(i0f1, i0fs) =>
+mydvsins(env0, i0fs) where
+{
+val d2v1 = i0fundcl_get_dpid(i0f1)
+val (  ) = envi0i1_d2vins_self(env0, d2v1)
+}
+)
 //
 (*
 //
@@ -378,13 +419,6 @@ val (  ) = prerrln
 //
 val (  ) =
 envi0i1_pshlam0(env0)
-//
-val (  ) =
-(
-envi0i1_insert_dvar
-( env0,dvar,ivar )) where
-{
-val ivar = i1val_var(dvar)}
 //
 val fjas =
 trxi0i1_fiarglst(env0, fias)

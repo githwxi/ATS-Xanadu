@@ -2367,7 +2367,8 @@ val recq =
 case+
 tknd.node() of
 | T_FUN(fnk) =>
-  funkind_recq(fnk)
+(
+  funkind_recq(fnk) )
 | _(*else*) => false): bool
 //
 val d2vs =
