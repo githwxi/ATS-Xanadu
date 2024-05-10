@@ -142,9 +142,11 @@ then (xrr.rr.1) else (xrr.rr.0))
 (* ****** ****** *)
 val fact1_10 = fact1(10)//end-of-val
 (* ****** ****** *)
-val fibo1_10 = fibo1(10)//end-of-val
-(* ****** ****** *)
 val fact2_10 = fact2(10)//end-of-val
+(* ****** ****** *)
+val fact3_10 = fact3(10)//end-of-val
+(* ****** ****** *)
+val fibo1_10 = fibo1(10)//end-of-val
 (* ****** ****** *)
 val fibo2_10 = fibo2(10)//end-of-val
 (* ****** ****** *)

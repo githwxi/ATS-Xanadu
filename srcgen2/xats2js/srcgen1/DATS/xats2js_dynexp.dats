@@ -79,6 +79,31 @@ fprintln
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+i1bndfpr
+( out: FILR
+, ibnd: i1bnd): void =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+ ibnd of
+|I1BNDnone() =>
+print("I1BNDnone(", ")")
+|I1BNDsome(itnm, dsub) =>
+print
+("I1BNDsome(",itnm,";",dsub,")")
+end where
+{
+#impltmp
+g_print
+<d2var>
+( dvar ) = d2var_fprint(out, dvar)
+}(*let*)//end-of-[i1bndfpr(out,ibnd)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 xats2js_d2var
 ( env0,dvar ) =
@@ -177,9 +202,10 @@ val nind =
 envx2js_get_nind(env0)
 //
 in//let
+(
 nindfpr(filr, nind);
 strnfpr(filr, "// ");
-i1bnd_fprint(filr, ibnd); fprintln(filr)
+i1bndfpr(filr, ibnd); fprintln(filr))
 end(*let*)//end-of-[xats2js_i1bnd(env0,ibnd)]
 //
 (* ****** ****** *)
@@ -419,23 +445,18 @@ envx2js_get_filr(env0)
 #impltmp
 g_print$out<>() = filr
 //
+#impltmp
+g_print
+<i1bnd>
+( ibnd ) = i1bndfpr(filr, ibnd)
+//
 in//let
 case+
 farg.node() of
 |
 FJARGdapp(i1bs) =>
 (
-print("FJARGdapp(", i1bs, ")")) where
-{
-#impltmp
-g_print<i1bnd>(ibnd) =
-(
-case+ ibnd of
-|I1BNDnone
-((*void*)) => print("I1BNDnone(", ")")
-|I1BNDsome
-(itnm,dvvs) => print("I1BNDsome(",itnm,")"))
-}
+  print("FJARGdapp(", i1bs, ")"))
 end//let
 }(*where*)//end-of-[xats2js_fjarg(env0,farg)]
 //

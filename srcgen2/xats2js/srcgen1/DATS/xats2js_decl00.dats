@@ -90,6 +90,10 @@ in//let
 case+
 dcl0.node() of
 //
+|I1Dvaldclst _ =>
+(
+  f0_valdclst(env0, dcl0))
+//
 |I1Dfundclst _ =>
 (
   f0_fundclst(env0, dcl0))
@@ -109,6 +113,36 @@ end//let
 //
 end where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_valdclst
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val-
+I1Dvaldclst
+( tknd, i1vs) = dcl0.node()
+//
+val
+(  ) =
+xats2js_i1valdclist(env0, i1vs)
+//
+end where
+{
+//
+(*
+//
+val loc0 = dcl0.lctn((*void*))
+//
+val (  ) =
+prerrln("f0_valdclst(x2js): dcl0 = ", dcl0)
+*)
+//
+}(*where*) // end of [f0_valdclst(env0,dcl0)]
 //
 (* ****** ****** *)
 //
@@ -149,6 +183,70 @@ prerrln("f0_fundclst(x2js): dcl0 = ", dcl0)
 (* ****** ****** *)
 //
 #implfun
+xats2js_i1valdcl
+  (env0, ival) = let
+//
+(* ****** ****** *)
+//
+val dpat =
+i1valdcl_get_dpat(ival)
+val tdxp =
+i1valdcl_get_tdxp(ival)
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+in//let
+nindfpr(filr, nind);
+strnfpr(filr, "// I1VALDCL\n")
+end//let//end-of-[val()]
+//
+(* ****** ****** *)
+//
+val (  ) =
+xats2js_i1bnd(env0, dpat)
+//
+(* ****** ****** *)
+//
+(*
+val (  ) = prerrln
+("xats2js_i1valdcl: dpat = ", dpat)
+val (  ) = prerrln
+("xats2js_i1valdcl: tdxp = ", tdxp)
+*)
+//
+(* ****** ****** *)
+//
+val (  ) =
+(
+case+ tdxp of
+|
+TEQI1CMPnone
+( (*void*) ) => ((*void*))
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+let
+val (  ) =
+(
+  xats2js_i1cmp(env0, icmp))
+end//let
+) (*case+*) // end-of-( teqi1exp )
+//
+(* ****** ****** *)
+//
+end//let
+(*let*)//end-of-[xats2js_i1valdcl(env0,ival)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 xats2js_i1fundcl
   (env0, ifun) = let
 //
@@ -164,6 +262,19 @@ i1fundcl_get_tdxp(ifun)
 (* ****** ****** *)
 //
 val (  ) =
+let
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+in//let
+nindfpr(filr, nind);
+strnfpr(filr, "// I1FUNDCL\n")
+end//let//end-of-[val()]
+//
+(* ****** ****** *)
+//
+val (  ) =
 xats2js_d2var(env0, dvar)
 (*
 val (  ) = prerrln
@@ -174,7 +285,9 @@ val (  ) = prerrln
 ("xats2js_i1fundcl: tdxp = ", tdxp)
 *)
 //
-val (  ) =
+(* ****** ****** *)
+//
+val (  ) = // enter
 (
   envx2js_pshlam0(env0) )
 //
