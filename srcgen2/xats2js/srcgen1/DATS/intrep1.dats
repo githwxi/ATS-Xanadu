@@ -439,7 +439,7 @@ datatype
 i1vardcl =
 I1VARDCL of
 ( loc_t
-, d2var, teqi1cmp)
+, i1bnd, teqi1cmp)
 //
 #absimpl
 i1vardcl_tbox = i1vardcl

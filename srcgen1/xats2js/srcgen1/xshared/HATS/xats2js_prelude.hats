@@ -12,4 +12,4 @@ the prelude library for xats2js
 "prelude/HATS/CATS/JS/prelude_dats.hats"
 (* ****** ****** *)
 
-(* end of [XATS2JS_xshared_xats2js_srcgenx_prelude.hats] *)
+(* end of [XATS2JS_xshared_xats2js_srcgen1_prelude.hats] *)

@@ -175,6 +175,18 @@ envi0i1_popcas0
 (env0: !envi0i1): i1letlst//fun
 //
 (* ****** ****** *)
+//
+fun
+envi0i1_pshloc1
+(env0: !envi0i1): void//end-fun
+fun
+envi0i1_pshloc2
+(env0: !envi0i1): void//end-fun
+//
+fun // HX: pop1 and psh2
+envi0i1_locjoin(!envi0i1): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

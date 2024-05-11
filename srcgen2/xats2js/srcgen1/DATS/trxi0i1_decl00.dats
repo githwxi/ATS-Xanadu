@@ -88,6 +88,10 @@ trxi0i1_i0dcl
 case+
 dcl0.node() of
 //
+|I0Dlocal0 _ =>
+(
+  f0_local0(env0, dcl0))
+//
 |I0Dtmpsub _ =>
 (
   f0_tmpsub(env0, dcl0))
@@ -113,6 +117,37 @@ dcl0.node() of
 //
 ) where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_local0
+( env0:
+! envi0i1
+, dcl0: i0dcl): i1dcl =
+let
+//
+val
+loc0 = dcl0.lctn((*0*))
+val-
+I0Dlocal0
+(head, body) = dcl0.node()
+//
+val (  ) =
+envi0i1_pshloc1(env0)
+val head =
+trxi0i1_i0dclist(env0, head)
+val (  ) =
+envi0i1_pshloc2(env0)
+val body =
+trxi0i1_i0dclist(env0, body)
+//
+val (  ) = envi0i1_locjoin(env0)
+//
+in//let
+(
+  i1dcl(loc0, I1Dlocal0(head, body)))
+end(*let*)//end of [f0_local0(env0,d3cl)]
 //
 (* ****** ****** *)
 //
@@ -416,8 +451,12 @@ val (  ) =
 envi0i1_insert_dvar(env0, dvar, ival)
 //
 in//let
-(
-  i1vardcl_make_args(loc0, dvar, tdxp))
+let
+val ibnd = I1BNDsome
+  (itnm, list_sing@(dvar,ival))
+in//let
+  i1vardcl_make_args(loc0, ibnd, tdxp)
+end//let
 end//let
 (*let*)//end-of-[trxi0i1_i0vardcl(env0,ivar)]
 //

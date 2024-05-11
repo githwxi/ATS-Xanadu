@@ -557,7 +557,7 @@ i1valdcl_get_tdxp:(i1valdcl)->teqi1cmp
 #symload tdxp with i1valdcl_get_tdxp(*opt*)
 (* ****** ****** *)
 fun
-i1vardcl_get_dpid:(i1vardcl)->d2var
+i1vardcl_get_dpid:(i1vardcl)->i1bnd
 fun
 i1vardcl_get_dini:(i1vardcl)->teqi1cmp
 (* ****** ****** *)
@@ -581,11 +581,11 @@ i1fundcl_get_tdxp:(i1fundcl)->teqi1cmp
 fun
 i1valdcl_make_args
 ( lctn:loc_t
-, ibnd:i1bnd, tdxp:teqi1cmp):i1valdcl
+, dpat:i1bnd, tdxp:teqi1cmp):i1valdcl
 fun
 i1vardcl_make_args
 ( lctn:loc_t
-, dpid:d2var, dini:teqi1cmp):i1vardcl
+, dpid:i1bnd, dini:teqi1cmp):i1vardcl
 //
 (* ****** ****** *)
 //
