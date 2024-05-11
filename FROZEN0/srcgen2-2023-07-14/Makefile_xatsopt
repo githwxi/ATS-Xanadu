@@ -3,7 +3,7 @@
 # For building xatsopt
 #
 ########################################################################
-
+#
 AR=ar
 CP=cp
 MV=mv
@@ -13,10 +13,11 @@ CPF=cp -f
 MVF=mv -f
 RMF=rm -f
 WCL=wc -l
-
+#
 ######
 #
-XATSOPT=$(XATSHOME)/bin/xatsopt
+XATSOPT=\
+$(XATSHOME)/srcgen1/bin/xatsopt
 #
 ######
 all::
@@ -28,7 +29,7 @@ all:: all_dats
 
 ######
 #
-# HX: processing SATS-files
+# HX: for processing SATS-files
 #
 ######
 
@@ -179,7 +180,7 @@ xglobal_sats: ; $(XATSOPT) --static SATS/xglobal.sats
 
 ######
 #
-# HX: processing DATS-files
+# HX: for processing DATS-files
 #
 ######
 
