@@ -90,13 +90,25 @@ in//let
 case+
 dcl0.node() of
 //
+|I1Dlocal0 _ =>
+(
+  f0_local0(env0, dcl0))
+//
+(* ****** ****** *)
+//
 |I1Dvaldclst _ =>
 (
   f0_valdclst(env0, dcl0))
 //
+|I1Dvardclst _ =>
+(
+  f0_vardclst(env0, dcl0))
+//
 |I1Dfundclst _ =>
 (
   f0_fundclst(env0, dcl0))
+//
+(* ****** ****** *)
 //
 |
 _(* otherwise *) =>
@@ -113,6 +125,68 @@ end//let
 //
 end where
 {
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_local0
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val-
+I1Dlocal0
+( head, body) = dcl0.node()
+//
+val
+filr = envx2js_get_filr(env0)
+val
+nind = envx2js_get_nind(env0)
+//
+val
+(  ) =
+(
+nindfpr
+(filr, nind); // indentation
+strnfpr(filr, "// I1Dlocal0\n")
+)
+//
+val () =
+(
+  xats2js_i1dclist( env0, head ))
+//
+val
+(  ) =
+(
+nindfpr
+(filr, nind); // indentation
+strnfpr(filr, "// I1Dlocal0(in)\n"))
+//
+val () =
+(
+  xats2js_i1dclist( env0, body ))
+//
+val
+(  ) =
+(
+nindfpr
+(filr, nind); // indentation
+strnfpr(filr, "// I1Dlocal0(leave)\n"))
+//
+end where
+{
+//
+(*
+//
+val loc0 = dcl0.lctn((*void*))
+//
+val (  ) =
+prerrln("f0_local0(x2js): dcl0 = ", dcl0)
+*)
+//
+}(*where*) // end of [f0_local0(env0,dcl0)]
 //
 (* ****** ****** *)
 //
@@ -284,7 +358,7 @@ xats2js_i1vardcl
 //
 (* ****** ****** *)
 //
-val dvar =
+val dpid =
 i1vardcl_get_dpid(ivar)
 val tdxp =
 i1vardcl_get_dini(ivar)
@@ -303,6 +377,11 @@ nindfpr
 (filr, nind); // indentation
 strnfpr(filr, "// I1VARDCL\n"))
 end//let//end-of-[val()]
+//
+(* ****** ****** *)
+//
+val (  ) =
+xats2js_i1bnd(env0, dpid)
 //
 (* ****** ****** *)
 //

@@ -102,4 +102,4 @@ $XATSOPT.echo_argc_argv(out, argc, argv)
 //
 (* ****** ****** *)
 
-(* end of [xats_xats2js.dats] *)
+(* end of [ATS3/XANADU_srcgen1_xats2js_srcgen1_xats2js.dats] *)

@@ -90,6 +90,12 @@ $MAP.stkmap_pshlam0(*cbr*)
 #symload
 stkmap_pshlet0 with
 $MAP.stkmap_pshlet0(*cbr*)
+#symload
+stkmap_pshloc1 with
+$MAP.stkmap_pshloc1(*cbr*)
+#symload
+stkmap_pshloc2 with
+$MAP.stkmap_pshloc2(*cbr*)
 //
 #symload
 stkmap_poplam0 with
@@ -97,6 +103,9 @@ $MAP.stkmap_poplam0(*cbr*)
 #symload
 stkmap_poplet0 with
 $MAP.stkmap_poplet0(*cbr*)
+#symload
+stkmap_poploc0 with
+$MAP.stkmap_poploc0(*cbr*)
 //
 (* ****** ****** *)
 //
@@ -499,7 +508,7 @@ envi0i1_popblk0
 val+
 @ENVI0I1
 (d2vtop,
-!d2vstk, !iltstk) = env0
+!d2vstk,!iltstk) = env0
 //
 in//let
 //
@@ -537,7 +546,7 @@ envi0i1_poplam0
 val+
 @ENVI0I1
 (d2vtop,
-!d2vstk, !iltstk) = env0
+!d2vstk,!iltstk) = env0
 //
 in//let
 //
@@ -575,7 +584,7 @@ envi0i1_poplet0
 val+
 @ENVI0I1
 (d2vtop,
-!d2vstk, !iltstk) = env0
+!d2vstk,!iltstk) = env0
 //
 in//let
 //
@@ -633,6 +642,76 @@ stkmap_pshlam0(d2vstk);
 iltstk_pshcas0(iltstk); $fold(env0))
 //
 end (*let*)//end-of-(envi0i1_pshcas0(env0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+envi0i1_pshloc1
+(     env0     ) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+!d2vstk,!iltstk) = env0
+//
+in//let
+//
+(
+stkmap_pshloc1(d2vstk); $fold(env0))
+//
+end (*let*)//end-of-(envi0i1_pshloc1(env0))
+//
+#implfun
+envi0i1_pshloc2
+(     env0     ) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+!d2vstk,!iltstk) = env0
+//
+in//let
+//
+(
+stkmap_pshloc2(d2vstk); $fold(env0))
+//
+end (*let*)//end-of-(envi0i1_pshloc2(env0))
+//
+(* ****** ****** *)
+//
+#implfun
+envi0i1_locjoin
+(     env0     ) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+!d2vstk,!iltstk) = env0
+//
+val
+(nerr, kxs) =
+(
+  stkmap_poploc0(d2vstk))
+//
+in//let
+//
+if
+stkmap_nilq(d2vstk)
+then // if-then
+(
+  $fold(env0)) where
+{
+val () =
+$MAP.topmap_insert_kxs(d2vtop, kxs)}
+else // if-else
+(
+  $fold(env0)) where
+{
+val () =
+$MAP.stkmap_insert_kxs(d2vstk, kxs)}
+//
+end (*let*)//end-of-(envi0i1_locjoin(env0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
