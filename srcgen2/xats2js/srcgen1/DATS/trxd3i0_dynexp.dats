@@ -79,6 +79,8 @@ _(*DATS*)="./../DATS/trxd3i0.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#symload node with s2typ_get_node
+(* ****** ****** *)
 #symload lctn with d3pat_get_lctn
 #symload node with d3pat_get_node
 (* ****** ****** *)
@@ -163,6 +165,25 @@ pfrmv_npf1_ldes
 , ldes
 : l3d3elst): l3d3elst =
 pfrmv_npf1_itms<l3d3e>(npf1, ldes)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+i0exp_talf
+(i0e0: i0exp): i0exp =
+(
+case+
+i0e0.node() of
+|
+I0Eflat(i0e1) => i0e1
+|
+_(*otherwise*) =>
+let
+val loc0 = i0e0.lctn()
+in//let
+  i0exp(loc0, I0Eaddr(i0e0)) end
+)(*case+*)//end-of-[i0exp_talf(i0e0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -541,24 +562,87 @@ val loc0 = d3e0.lctn()
 val-
 D3Edapp
 ( d3f0
-, npf1, d3es) = d3e0.node()
+, npf1
+, d3es) = d3e0.node((*0*))
+//
+val t2p0 = d3f0.styp((*0*))
+//
+val t2ps =
+(
+case+
+t2p0.node() of
+|T2Pfun1
+( f2cl, npf1
+, targ, tres) => ( targ )
+|_(*otherwise*) => list_nil()
+)
 //
 val
 i0f0 =
 trxd3i0_d3exp(env0, d3f0)
 //
-val d3es =
-(
-  pfrmv_npf1_d3es(npf1, d3es))
+val targ =
+pfrmv_npf1_t2ps(npf1, t2ps)
+val darg =
+pfrmv_npf1_d3es(npf1, d3es)
 //
 val i0es =
 (
-  trxd3i0_d3explst(env0, d3es))
+  f0_darg(env0, darg, targ))
 //
 in//let
 (
 i0exp(loc0, I0Edapp(i0f0, i0es)))
 end (*let*) // end of [f0_dapp(env0,d3e0)]
+//
+and
+f0_darg
+( env0:
+! envd3i0
+, d3es
+: d3explst
+, t2ps
+: s2typlst): i0explst =
+(
+case+ d3es of
+|
+list_nil() =>
+list_nil((*void*))
+|
+list_cons(d3e1, d3es) =>
+(
+case+ t2ps of
+|
+list_nil() =>
+let
+val i0e1 =
+trxd3i0_d3exp(env0, d3e1)
+in//let
+list_cons
+(i0e1
+,f0_darg(env0, d3es, t2ps))
+end//let
+|
+list_cons
+(t2p1, t2ps) =>
+(
+list_cons
+(
+i0e1,
+f0_darg(env0, d3es, t2ps))
+) where
+{
+val i0e1 =
+(
+  trxd3i0_d3exp(env0, d3e1))
+val i0e1 =
+(
+if
+s2typ_cbrfq(t2p1)
+then i0exp_talf(i0e1) else i0e1): i0exp
+}
+)
+)(*case+*)//end-of[f0_darg(env0,d3es,t2ps)]
 //
 (* ****** ****** *)
 //
