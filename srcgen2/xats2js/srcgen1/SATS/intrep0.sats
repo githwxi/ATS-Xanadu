@@ -399,10 +399,13 @@ i0exp_node =
 //
 |I0Epcon of
 ( token(*tknd*)
-, label(*LABsym*), i0exp(*con*))
+, label(*LABint*), i0exp(*con*))
+|I0Epflt of
+( token(*tknd*)
+, label(*intsym*), i0exp(*tup*))
 |I0Eproj of
 ( token(*tknd*)
-, label(*LABint*), i0exp(*tup*))
+, label(*intsym*), i0exp(*tup*))
 //
 (* ****** ****** *)
 //

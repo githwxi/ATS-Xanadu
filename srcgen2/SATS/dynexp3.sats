@@ -570,6 +570,9 @@ D3Eexists of
 (* ****** ****** *)
 //
 fun
+d3exp_trcdfltq(d3exp): bool
+//
+fun
 d3ecl_impltmpq(d3ecl): bool
 fun
 d3ecl_impltmprq(d3ecl): bool

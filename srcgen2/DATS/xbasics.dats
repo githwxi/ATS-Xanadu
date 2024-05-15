@@ -217,6 +217,15 @@ F2CLfun() => false | F2CLclo(k2) => (k1 = k2)))
 (* ****** ****** *)
 //
 #implfun
+trcdknd_fltq
+  ( knd0 ) =
+(
+case+ knd0 of
+|TRCDflt0() => true | _ => false)
+//
+(* ****** ****** *)
+//
+#implfun
 trcdknd_equal
 (knd1, knd2) =
 (
