@@ -583,6 +583,8 @@ i0exp_make_node
 (loc0, I0Epcon(tknd, lab0, i0e1))
 end(*let*)//end-of-[f0_pcon(env0,d3e0)]
 //
+(* ****** ****** *)
+//
 fun
 f0_proj
 ( env0:
@@ -595,13 +597,24 @@ D3Eproj
 ( tknd
 , lab0, d3e1) = d3e0.node()
 //
+val fltq =
+(
+  d3exp_trcdfltq(d3e0))
+//
 val i0e1 =
 (
   trxd3i0_d3exp(env0, d3e1))
 //
 in//let
+(
+if
+fltq
+then
 i0exp_make_node
-(loc0, I0Eproj(tknd, lab0, i0e1))
+(loc0, I0Epflt(tknd, lab0, i0e1))
+else
+i0exp_make_node
+(loc0, I0Eproj(tknd, lab0, i0e1)))
 end(*let*)//end-of-[f0_proj(env0,d3e0)]
 //
 (* ****** ****** *)

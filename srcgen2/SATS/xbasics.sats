@@ -294,6 +294,9 @@ trcdknd =
 // end of [ datatype(trcdknd) ]
 (* ****** ****** *)
 fun
+trcdknd_fltq(knd0:trcdknd): bool
+(* ****** ****** *)
+fun
 trcdknd_equal
 (knd1:trcdknd, knd2:trcdknd): bool
 (* ****** ****** *)

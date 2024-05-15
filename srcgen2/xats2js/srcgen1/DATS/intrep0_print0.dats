@@ -199,6 +199,13 @@ print("I0Edapp(", i0f0, ";", i0es, ")")
 print("I0Epcon(");
 print(tknd, ";", lab0, ";", i0e1, ")"))
 //
+|I0Epflt
+(tknd
+,lab0, i0e1) =>
+(
+print("I0Epflt(");
+print(tknd, ";", lab0, ";", i0e1, ")"))
+//
 |I0Eproj
 (tknd
 ,lab0, i0e1) =>
@@ -210,7 +217,8 @@ print(tknd, ";", lab0, ";", i0e1, ")"))
 //
 |I0Elet0
 (dcls, i0e1) =>
-print("I0Elet0(", dcls, ";", i0e1, ")")
+(
+print("I0Elet0(", dcls, ";", i0e1, ")"))
 //
 (* ****** ****** *)
 //

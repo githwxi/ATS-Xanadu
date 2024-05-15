@@ -212,6 +212,9 @@ and i1ins =
 |I1INStup1 of (token, i1valist)
 |I1INSrcd2 of (token, l1i1vlst)
 //
+|I1INSflat of
+(i1val(*leftval*))//dereference
+//
 |I1INSassgn of
 (i1val(*l-val*), i1val(*r-val*))
 //
@@ -266,6 +269,14 @@ i1val_node =
 |I1Vp1cn of (d2con, i1val, sint)
 |I1Vp1rj of (token, i1val, sint)
 |I1Vp2rj of (token, i1val, label)
+//
+(* ****** ****** *)
+//
+(*
+HX-2024-05-15:
+This one is for a left value!
+*)
+|I1Vplft of (token, i1val, label)
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -322,6 +322,31 @@ end(*let*)//end-of-[i1val_p1rj(env0,...)]
 (* ****** ****** *)
 //
 fun
+i1val_flat
+( env0:
+! envi0i1
+, loc0: loc_t
+, i1v0: i1val
+  (*left-value*)): i1val =
+(
+i1val_tnm(loc0, itnm)) where
+{
+//
+val itnm = i1tnm_new0((*0*))
+val iins =
+(
+  I1INSflat(i1v0(*left-val*)))
+val ilet = I1LETnew1(itnm, iins)
+//
+val (  ) =
+(
+  envi0i1_insert_ilet(env0, ilet) )
+}(*where*)//end-of-[i1val_flat(env0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i1val_assgn
 ( env0:
 ! envi0i1
@@ -559,6 +584,8 @@ iexp.node() of
 |I0Elam0 _ => f0_lam0(env0, iexp)
 |I0Efix0 _ => f0_fix0(env0, iexp)
 //
+|I0Eflat _ => f0_flat(env0, iexp)
+//
 |I0Ewhere _ => f0_where(env0, iexp)
 //
 |I0Eassgn _ => f0_assgn(env0, iexp)
@@ -568,6 +595,7 @@ iexp.node() of
 ) where
 {
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1045,6 +1073,37 @@ end(*let*)//end-of-[f0_fix0(env0,iexp)]
 (* ****** ****** *)
 //
 fun
+f0_flat
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Eflat(i0e0) = iexp.node()
+//
+val i1v0 =
+(
+  trxi0i1_i0lft(env0, i0e0))
+//
+in//let
+(
+  i1val_flat(env0, loc0, i1v0))
+end where
+{
+//
+val () =
+(
+prerr("trxi0i1_i0exp:");
+prerrln("f0_flat(01): iexp = ", iexp))
+//
+}(*where*)//end-of-[f0_assgn(env0,iexp)]
+//
+(* ****** ****** *)
+//
+fun
 f0_where
 ( env0:
 ! envi0i1
@@ -1093,7 +1152,7 @@ I0Eassgn
 //
 val i1vl =
 (
-  trxi0i1_i0exp(env0, i0el))
+  trxi0i1_i0lft(env0, i0el))
 val i1vr =
 (
   trxi0i1_i0exp(env0, i0er))
@@ -1110,7 +1169,7 @@ prerr("trxi0i1_i0exp:");
 prerrln("f0_assgn(01): iexp = ", iexp))
 //
 }(*where*)//end-of-[f0_assgn(env0,iexp)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -1123,6 +1182,50 @@ val () =
 //
 }(*where*)//end-of-[trxi0i1_i0exp(env0,iexp)]
 
+(* ****** ****** *)
+//
+#implfun
+trxi0i1_i0lft
+( env0, iexp ) =
+(
+case+
+iexp.node() of
+|
+I0Eflat _ => f0_flat(env0, iexp)
+|
+_(*else*) => trxi0i1_i0exp(env0, iexp)
+) where
+{
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_flat
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val-
+I0Eflat(i0e1) = iexp.node()
+//
+in//let
+(
+  trxi0i1_i0exp(env0, i0e1)) end
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val () =
+(
+  prerrln("trxi0i1_i0lft: iexp = ", iexp))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+}(*where*)//end-of-[trxi0i1_i0lft(env0,iexp)]
+//
 (* ****** ****** *)
 //
 #implfun

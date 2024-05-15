@@ -91,6 +91,25 @@ s2typ_subst0(t2p0, svts))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+d3exp_trcdfltq
+  (  d3e0  ) =
+let
+val t2p0 = d3e0.styp()
+in//let
+//
+(
+case+
+t2p0.node() of
+|T2Ptrcd
+(knd0, npf1, ltps) =>
+(
+  trcdknd_fltq(knd0) )
+|_(*otherwise*) => false) end
+//let//end-of-[d3exp_trcdfltq(d3e0)]
+//
+(* ****** ****** *)
+//
 (*
 HX-2023-11-19:
 This one needs to be called on an

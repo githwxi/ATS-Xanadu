@@ -176,6 +176,18 @@ print(tknd, ";", i1v1, ";", lab2, ")"))
 //
 (* ****** ****** *)
 //
+(*
+HX-2024-05-15:
+This one is for a left-value!
+*)
+|I1Vplft
+(tknd, i1v1, lab2) =>
+(
+print("I1Vplft(");
+print(tknd, ";", i1v1, ";", lab2, ")"))
+//
+(* ****** ****** *)
+//
 |I1Vlam0
 (tknd, fjas, icmp) =>
 (
@@ -221,7 +233,8 @@ print(i1f0, ";", i1vs, ")"))
 //
 (* ****** ****** *)
 //
-|I1INStup0(i1vs) =>
+|I1INStup0
+(   i1vs   ) =>
 ( print
   ("I1INStup0(", i1vs, ")"))
 //
@@ -231,15 +244,15 @@ print(i1f0, ";", i1vs, ")"))
 ; print(tknd, ";", i1vs, ")"))
 //
 |I1INSrcd2
-( tknd, livs) =>
+(tknd, livs) =>
 ( print("I1INSrcd2(")
 ; print(tknd, ";", livs, ")"))
 //
 (* ****** ****** *)
 //
 |I1INSproj
-( tknd
-, dlab, itup) =>
+(tknd
+,dlab, itup) =>
 (print("I1INSproj(");
  print
  (tknd,";",dlab,";",itup,")"))
@@ -247,19 +260,23 @@ print(i1f0, ";", i1vs, ")"))
 (* ****** ****** *)
 //
 |I1INSlet0
-( dcls, icmp) =>
+(dcls, icmp) =>
 ( print("I1INSlet0(")
 ; print(dcls, ";", icmp, ")"))
 //
 |I1INSift0
-( test
-, ithn, iels) =>
+(test
+,ithn, iels) =>
 (print("I1INSift0(");
  print
  (test,";",ithn,";",iels,")"))
 //
+|I1INSflat
+(   i1v0   ) =>
+(print("I1INSflat(",i1v0,")"))
+//
 |I1INSassgn
-( i1vl, i1vr) =>
+(i1vl, i1vr) =>
 ( print("I1INSassgn(")
 ; print(i1vl, ";", i1vr, ")"))
 //
