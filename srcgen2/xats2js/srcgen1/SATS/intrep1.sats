@@ -195,10 +195,18 @@ and i1ins =
 (i1val(*fun0*)
 ,i1valist(*args*))//funcall
 //
+|I1INSpcon of
+(token(*tknd*)
+,label(*int/sym*)
+,i1val(*conroot*))//conproj
+|I1INSpflt of
+(token(*tknd*)
+,label(*int/sym*)
+,i1val(*tuproot*))//tfltprj
 |I1INSproj of
 (token(*tknd*)
 ,label(*int/sym*)
-,i1val(*tuproot*))//tupproj
+,i1val(*tuproot*))//tptrprj
 //
 |I1INSlet0 of
 (i1dclist, i1cmp )//letinend

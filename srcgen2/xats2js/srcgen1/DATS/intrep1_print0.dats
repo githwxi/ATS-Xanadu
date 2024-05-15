@@ -250,6 +250,20 @@ print(i1f0, ";", i1vs, ")"))
 //
 (* ****** ****** *)
 //
+|I1INSpcon
+(tknd
+,dlab, icon) =>
+(print("I1INSpcon(");
+ print
+ (tknd,";",dlab,";",icon,")"))
+//
+|I1INSpflt
+(tknd
+,dlab, itup) =>
+(print("I1INSpflt(");
+ print
+ (tknd,";",dlab,";",itup,")"))
+//
 |I1INSproj
 (tknd
 ,dlab, itup) =>

@@ -143,6 +143,62 @@ val (  ) =
 (* ****** ****** *)
 //
 fun
+i1val_pcon
+( env0:
+! envi0i1
+, loc0: loc_t
+, tknd: token
+, dlab: label
+, icon:
+  i1val(*tuple*)): i1val =
+(
+i1val_tnm(loc0, itnm)) where
+{
+//
+val itnm = i1tnm_new0((*0*))
+//
+val iins =
+(
+  I1INSpcon(tknd, dlab, icon) )
+//
+val ilet = I1LETnew1(itnm, iins)
+//
+val (  ) =
+(
+  envi0i1_insert_ilet(env0, ilet) )
+}(*where*)//end-of-[i1val_pcon(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
+i1val_pflt
+( env0:
+! envi0i1
+, loc0: loc_t
+, tknd: token
+, dlab: label
+, itup:
+  i1val(*tuple*)): i1val =
+(
+i1val_tnm(loc0, itnm)) where
+{
+//
+val itnm = i1tnm_new0((*0*))
+//
+val iins =
+(
+  I1INSpflt(tknd, dlab, itup) )
+//
+val ilet = I1LETnew1(itnm, iins)
+//
+val (  ) =
+(
+  envi0i1_insert_ilet(env0, ilet) )
+}(*where*)//end-of-[i1val_pflt(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
 i1val_proj
 ( env0:
 ! envi0i1
@@ -568,9 +624,8 @@ iexp.node() of
 //
 |I0Edapp _ => f0_dapp(env0, iexp)
 //
-(*
 |I0Epcon _ => f0_pcon(env0, iexp)
-*)
+|I0Epflt _ => f0_pflt(env0, iexp)
 |I0Eproj _ => f0_proj(env0, iexp)
 //
 |I0Elet0 _ => f0_let0(env0, iexp)
@@ -779,6 +834,75 @@ prerrln("f0_dapp(01): iexp = ", iexp))
 }(*where*)//end-of-[f0_dapp(env0,iexp)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_pcon
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Epcon
+(tknd
+,dlab, icon) = iexp.node()
+//
+val icon =
+(
+  trxi0i1_i0exp(env0, icon))
+//
+in//let
+(
+  i1val_pcon
+  (env0, loc0, tknd, dlab, icon))
+end where
+{
+//
+val () =
+(
+prerr("trxi0i1_i0exp:");
+prerrln("f0_pcon(01): iexp = ", iexp))
+//
+}(*where*)//end-of-[f0_pcon(env0,iexp)]
+//
+(* ****** ****** *)
+//
+fun
+f0_pflt
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Epflt
+(tknd
+,dlab, itup) = iexp.node()
+//
+val itup =
+(
+  trxi0i1_i0exp(env0, itup))
+//
+in//let
+(
+  i1val_pflt
+  (env0, loc0, tknd, dlab, itup))
+end where
+{
+//
+val () =
+(
+prerr("trxi0i1_i0exp:");
+prerrln("f0_pflt(01): iexp = ", iexp))
+//
+}(*where*)//end-of-[f0_pflt(env0,iexp)]
+//
+(* ****** ****** *)
 //
 fun
 f0_proj
@@ -812,6 +936,7 @@ prerrln("f0_proj(01): iexp = ", iexp))
 //
 }(*where*)//end-of-[f0_proj(env0,iexp)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
