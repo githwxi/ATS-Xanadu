@@ -70,6 +70,14 @@ XATSOPT "./../../.."
 #symload lctn with fjarg_get_lctn
 #symload node with fjarg_get_node
 (* ****** ****** *)
+#symload node with i1gua_get_lctn
+#symload node with i1gpt_get_lctn
+#symload node with i1cls_get_lctn
+(* ****** ****** *)
+#symload node with i1gua_get_node
+#symload node with i1gpt_get_node
+#symload node with i1cls_get_node
+(* ****** ****** *)
 #symload lctn with t1imp_get_stmp
 #symload node with t1imp_get_node
 (* ****** ****** *)
@@ -369,6 +377,64 @@ farg.node() of
   print("FJARGdarg(", i1bs, ")"))
 //
 end (*let*) // end of [fjarg_fprint(out,farg)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1gua_fprint
+(out, igua) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+igua.node() of
+|
+I1GUAexp(icmp) =>
+print("I1GUAexp(",icmp,")")
+|
+I1GUAmat(icmp,ibnd) =>
+print("I1GUAmat(",icmp,";",ibnd,")")
+//
+end (*let*) // end of [i1gua_fprint(out,igua)]
+//
+(* ****** ****** *)
+//
+#implfun
+i1gpt_fprint
+(out, igpt) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+igpt.node() of
+|
+I1GPTpat(ibnd) =>
+print("I1GPTpat(",ibnd,")")
+|
+I1GPTgua(ibnd,i1gs) =>
+print("I1GPTgua(",ibnd,";",i1gs,")")
+end (*let*) // end of [i1gpt_fprint(out,igpt)]
+//
+#implfun
+i1cls_fprint
+(out, icls) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+icls.node() of
+|
+I1CLSgpt(igpt) =>
+print("I1CLSgpt(",igpt,")")
+|
+I1CLScls(igpt,icmp) =>
+print("I1CLScls(",igpt,";",icmp,")")
+end (*let*) // end of [i1cls_fprint(out,icls)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
