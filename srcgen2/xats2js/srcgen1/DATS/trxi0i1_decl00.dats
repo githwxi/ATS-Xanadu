@@ -452,8 +452,11 @@ envi0i1_insert_dvar(env0, dvar, ival)
 //
 in//let
 let
-val ibnd = I1BNDsome
-  (itnm, list_sing@(dvar,ival))
+val ipat =
+i0pat_var(dvar)
+val ibnd =
+I1BNDcons
+(itnm, ipat, list_sing@(dvar,ival))
 in//let
   i1vardcl_make_args(loc0, ibnd, tdxp)
 end//let

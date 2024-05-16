@@ -309,9 +309,11 @@ in//let
 //
 case+ ilet of
 |I1LETnew0(iins) =>
-print("I1LETnew0(", iins, ")")
+(
+  print("I1LETnew0(", iins, ")"))
 |I1LETnew1(itnm, iins) =>
-print("I1LETnew1(", itnm, ";", iins, ")")
+( print
+  ("I1LETnew1(", itnm, ";", iins, ")"))
 //
 end(*let*)//end-of-[i1let_fprint(out, ilet)]
 //
@@ -326,10 +328,10 @@ g_print$out<>() = out
 in//let
 //
 case+ ibnd of
-|I1BNDnone() =>
-print("I1BNDnone(", ")")
-|I1BNDsome(itnm, dsub) =>
-print("I1BNDsome(", itnm, ";", dsub, ")")
+|I1BNDcons
+(itnm, ipat, dsub) =>
+( print("I1BNDcons(")
+; print(itnm, ";", ipat, ";", dsub, ")"))
 //
 end(*let*)//end-of-[i1bnd_fprint(out, ibnd)]
 //
@@ -362,9 +364,9 @@ in//let
 //
 case+
 farg.node() of
-|FJARGdapp(i1bs) =>
+|FJARGdarg(i1bs) =>
 (
-  print("FJARGdapp(", i1bs, ")"))
+  print("FJARGdarg(", i1bs, ")"))
 //
 end (*let*) // end of [fjarg_fprint(out,farg)]
 //

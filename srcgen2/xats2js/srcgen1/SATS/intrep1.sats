@@ -90,18 +90,26 @@ i1lab_fprint
 (* ****** ****** *)
 #abstype fjarg_tbox // p0tr
 (* ****** ****** *)
+#abstbox i1cls_tbox // p0tr
+#abstbox i1gua_tbox // p0tr
+#abstbox i1gpt_tbox // p0tr
+(* ****** ****** *)
 #abstype i1dcl_tbox // p0tr
 (* ****** ****** *)
 #abstbox t1imp_tbox // p0tr
 (* ****** ****** *)
 //
 #typedef i1val = i1val_tbox
+#typedef fjarg = fjarg_tbox
+//
+#typedef i1cls = i1cls_tbox
+#typedef i1gua = i1gua_tbox
+#typedef i1gpt = i1gpt_tbox
+//
 #typedef i1dcl = i1dcl_tbox
 //
-#typedef fjarg = fjarg_tbox
 #typedef t1imp = t1imp_tbox
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #abstbox i1valdcl_tbox//p0tr
@@ -132,6 +140,12 @@ i1lab_fprint
 #typedef l1i1vlst = list(l1i1v)
 //
 #typedef fjarglst = list(fjarg)
+//
+(* ****** ****** *)
+#typedef i1clslst = list(i1cls)
+#typedef i1gualst = list(i1gua)
+#typedef i1gptlst = list(i1gpt)
+(* ****** ****** *)
 //
 #typedef i1dclist = list(i1dcl)
 #typedef i1dclopt = optn(i1dcl)
@@ -176,9 +190,8 @@ i1let =
 //
 and i1bnd =
 |
-I1BNDnone of ( (*void*) )
-|
-I1BNDsome of (i1tnm, d2sublst)
+I1BNDcons of
+(i1tnm, i0pat, d2sublst)
 //
 and i1cmp =
 |I1CMPcons of (i1letlst, i1val)
@@ -208,13 +221,23 @@ and i1ins =
 ,label(*int/sym*)
 ,i1val(*tuproot*))//tptrprj
 //
+(* ****** ****** *)
+//
 |I1INSlet0 of
 (i1dclist, i1cmp )//letinend
+//
+(* ****** ****** *)
 //
 |I1INSift0 of
 (i1val(*test*)
 ,i1cmpopt(*then*)
 ,i1cmpopt(*else*))//ifthnels
+//
+|I1INScas0 of
+( token(*casknd*)
+, i1val(*casval*), i1clslst)
+//
+(* ****** ****** *)
 //
 |I1INStup0 of (i1valist)//flat
 |I1INStup1 of (token, i1valist)
@@ -395,7 +418,7 @@ i1val_make_node
 datatype
 fjarg_node =
 |
-FJARGdapp of i1bndlst
+FJARGdarg of i1bndlst
 //
 #typedef
 fjarglst = list(fjarg)
@@ -406,7 +429,7 @@ fjarglstopt = optn(fjarglst)
 //
 fun
 fjarg_fprint
-(out:FILR,farg:fjarg): ( void )
+(out:FILR,farg:fjarg): void
 //
 (* ****** ****** *)
 fun
@@ -421,6 +444,72 @@ fun
 fjarg_make_node
 (loc:loc_t, nod:fjarg_node):fjarg
 #symload fjarg with fjarg_make_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype
+i1gua_node =
+| I1GUAexp of (i1cmp)
+| I1GUAmat of (i1cmp, i1bnd)
+//
+datatype
+i1cls_node =
+| I1CLSgpt of (i1gpt)
+| I1CLScls of (i1gpt, i1cmp)
+and
+i1gpt_node =
+| I1GPTpat of (i1bnd)
+| I1GPTgua of (i1bnd, i1gualst)
+//
+(* ****** ****** *)
+//
+fun
+i1gua_fprint
+(out:FILR,igua:i1gua): void
+//
+fun
+i1gua_get_lctn(i1gua): loc_t
+fun
+i1gua_get_node(i1gua): i1gua_node
+//
+(* ****** ****** *)
+//
+fun
+i1gpt_fprint
+(out:FILR,igpt:i1gpt): void
+//
+fun
+i1gpt_get_lctn(i1gpt): loc_t
+fun
+i1gpt_get_node(i1gpt): i1gpt_node
+//
+(* ****** ****** *)
+//
+fun
+i1cls_fprint
+(out:FILR,icls:i1cls): void
+//
+fun
+i1cls_get_lctn(i1cls): loc_t
+fun
+i1cls_get_node(i1cls): i1cls_node
+//
+(* ****** ****** *)
+//
+fun
+i1gua_make_node
+(loc0:loc_t,node:i1gua_node):i1gua
+fun
+i1gpt_make_node
+(loc0:loc_t,node:i1gpt_node):i1gpt
+fun
+i1cls_make_node
+(loc0:loc_t,node:i1cls_node):i1cls
+//
+#symload i1gua with i1gua_make_node
+#symload i1gpt with i1gpt_make_node
+#symload i1cls with i1cls_make_node
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

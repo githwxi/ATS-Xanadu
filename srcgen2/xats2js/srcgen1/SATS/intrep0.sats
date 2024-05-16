@@ -227,7 +227,7 @@ i0lab_fprint
 datatype
 fiarg_node =
 |
-FIARGdapp of i0patlst
+FIARGdarg of i0patlst
 //
 #typedef
 fiarglst = list(fiarg)
@@ -278,6 +278,7 @@ fiarg_make_node
 #abstbox i0vardcl_tbox//p0tr
 #abstbox i0fundcl_tbox//p0tr
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #abstbox i0parsed_tbox//p0tr
@@ -348,6 +349,9 @@ i0pat_get_node(i0pat):i0pat_node
 (* ****** ****** *)
 #symload lctn with i0pat_get_lctn
 #symload node with i0pat_get_node
+(* ****** ****** *)
+fun
+i0pat_var(dvar: d2var): (i0pat)
 (* ****** ****** *)
 fun
 i0pat_none0(loc0: loctn): (i0pat)
@@ -559,6 +563,7 @@ i0gpt_make_node
 fun
 i0cls_make_node
 (loc0:loc_t,node:i0cls_node):i0cls
+//
 #symload i0gua with i0gua_make_node
 #symload i0gpt with i0gpt_make_node
 #symload i0cls with i0cls_make_node

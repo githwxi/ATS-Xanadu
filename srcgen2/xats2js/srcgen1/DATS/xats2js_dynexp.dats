@@ -88,11 +88,11 @@ let
 g_print$out<>() = out
 in//let
 case+ ibnd of
-|I1BNDnone() =>
-print("I1BNDnone(", ")")
-|I1BNDsome(itnm, dsub) =>
-print
-("I1BNDsome(",itnm,";",dsub,")")
+|I1BNDcons
+(itnm, ipat, dsub) =>
+(
+print("I1BNDcons(");
+print(itnm,";",ipat,";",dsub,")"))
 end where
 {
 #impltmp
@@ -464,9 +464,9 @@ in//let
 case+
 farg.node() of
 |
-FJARGdapp(i1bs) =>
+FJARGdarg(i1bs) =>
 (
-  print("FJARGdapp(", i1bs, ")"))
+  print("FJARGdarg(", i1bs, ")"))
 end//let
 }(*where*)//end-of-[xats2js_fjarg(env0,farg)]
 //
