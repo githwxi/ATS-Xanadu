@@ -175,5 +175,16 @@ val ((*0*)) = foo(myint) endloc // local
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+length
+(xs: list(int)): sint =
+(
+case+ xs of
+| list_nil() => 0
+| list_cons(_, xs) => 1 + length(xs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XINTERP_TEST_JS_DATA_mytest03.dats] *)
