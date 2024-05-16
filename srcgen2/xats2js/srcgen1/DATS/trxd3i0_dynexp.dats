@@ -90,6 +90,16 @@ _(*DATS*)="./../DATS/trxd3i0.dats"
 #symload lctn with f3arg_get_lctn
 #symload node with f3arg_get_node
 (* ****** ****** *)
+//
+#symload lctn with d3gua_get_lctn
+#symload lctn with d3gpt_get_lctn
+#symload lctn with d3cls_get_lctn
+//
+#symload node with d3gua_get_node
+#symload node with d3gpt_get_node
+#symload node with d3cls_get_node
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #static
@@ -1059,6 +1069,138 @@ D3LAB
 in//let
 I0LAB(lab0, trxd3i0_d3exp(env0, d3e1))
 end (*let*)//end-of-[trxd3i0_l3d3e(env0,ld3e)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxd3i0_d3gua
+  (env0, dgua) =
+(
+case+
+dgua.node() of
+|
+D3GUAexp(d3e1) =>
+let
+val i0e1 =
+trxd3i0_d3exp(env0, d3e1)
+in//let
+i0gua(loc0, I0GUAexp(i0e1))
+end//let//end-of-[D3GUAexp(...)]
+|
+D3GUAmat(d3e1,d3p2) =>
+let
+val i0e1 =
+trxd3i0_d3exp(env0, d3e1)
+val i0p2 =
+trxd3i0_d3pat(env0, d3p2)
+in//let
+i0gua(loc0, I0GUAmat(i0e1, i0p2))
+end//let//end-of-[D3GUAmat(...)]
+) where
+{
+//
+  val loc0 = dgua.lctn((*void*))
+//
+(*
+  val (  ) =
+  prerrln("trxd3i0_d3gua: dgua = ", dgua)
+*)
+//
+}(*where*)//end-of-[trxd3i0_d3gua(env0,...)]
+//
+(* ****** ****** *)
+//
+#implfun
+trxd3i0_d3gpt
+  (env0, dgpt) = let
+//
+val loc0 = dgpt.lctn()
+//
+(*
+val
+val () =
+prerrln
+("trxd3i0_d3gpt: dgpt = ", dgpt)
+*)
+//
+in//let
+//
+case+
+dgpt.node() of
+//
+|
+D3GPTpat(d3p1) =>
+i0gpt_make_node
+( loc0
+, I0GPTpat(i0p1)) where
+{
+val i0p1 =
+trxd3i0_d3pat(env0, d3p1)
+}
+|
+D3GPTgua(d3p1, d3gs) =>
+i0gpt_make_node
+( loc0
+, I0GPTgua(i0p1, i0gs)) where
+{
+val
+i0p1 = trxd3i0_d3pat(env0, d3p1)
+val
+i0gs = trxd3i0_d3gualst(env0, d3gs) }
+//
+//
+end(*let*)//end-of-[trxd3i0_d3gpt(env0,dgpt)]
+//
+(* ****** ****** *)
+//
+#implfun
+trxd3i0_d3cls
+  (env0, d3c0) = let
+//
+val loc0 = d3c0.lctn()
+//
+(*
+val
+val () =
+prerrln
+("trxd3i0_d3cls: d3c0 = ", d3c0)
+*)
+//
+in//let
+//
+case+
+d3c0.node() of
+|
+D3CLSgpt
+(  dgpt  ) =>
+(
+i0cls_make_node
+( loc0
+, I0CLSgpt(igpt))) where
+{
+//
+val
+igpt =
+trxd3i0_d3gpt(env0, dgpt)
+//
+}(*where*)//end-of-[D3CLSgpt(...)]
+//
+|
+D3CLScls
+(dgpt,d3e1) =>
+(
+i0cls_make_node
+( loc0
+, I0CLScls(igpt, i0e1))) where
+{
+//
+val igpt = trxd3i0_d3gpt(env0, dgpt)
+val i0e1 = trxd3i0_d3exp(env0, d3e1)
+//
+}(*where*)//end of [D3CLScls(dgpt,d3e1)]
+//
+end(*let*)//end-of-[trxd3i0_d3cls(env0,d3c0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
