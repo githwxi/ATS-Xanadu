@@ -50,12 +50,16 @@ XATSOPT "./../../.."
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #staload
+"./../../../SATS/dynexp2.sats"
+#staload
 "./../../../SATS/dynexp3.sats"
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
+#symload lctn with d2var_get_lctn
 (* ****** ****** *)
 #symload lctn with d3pat_get_lctn
 #symload node with d3pat_get_node
@@ -67,6 +71,16 @@ XATSOPT "./../../.."
 #symload node with d3ecl_get_node
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#implfun
+i0pat_var
+(  dvar  ) =
+let
+val
+loc0 = dvar.lctn()
+in//in
+i0pat(loc0,I0Pvar(dvar))
+end//let//end-(i0pat_var)
 //
 #implfun
 i0pat_none0
@@ -209,6 +223,100 @@ end
 //
 endloc (*local*) // end of [local(fiarg)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+
+local
+//
+datatype
+i0gua =
+I0GUA of
+(
+loctn, i0gua_node)
+#absimpl
+i0gua_tbox = i0gua
+//
+in (* in-of-local *)
+//
+#implfun
+i0gua_make_node
+(   loc,nod   ) = I0GUA(loc,nod)
+//
+#implfun
+i0gua_get_lctn(gua) =
+let
+  val+I0GUA(loc,nod) = gua in loc
+end
+#implfun
+i0gua_get_node(gua) =
+let
+  val+I0GUA(loc,nod) = gua in nod
+end
+//
+endloc (*local*) // end of [local(i0gua)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+i0gpt =
+I0GPT of
+(
+loctn, i0gpt_node)
+#absimpl
+i0gpt_tbox = i0gpt
+//
+in (* in-of-local *)
+//
+#implfun
+i0gpt_make_node
+(   loc,nod   ) = I0GPT(loc,nod)
+//
+#implfun
+i0gpt_get_lctn(gpt) =
+let
+  val+I0GPT(loc,nod) = gpt in loc
+end
+#implfun
+i0gpt_get_node(gpt) =
+let
+  val+I0GPT(loc,nod) = gpt in nod
+end
+//
+endloc (*local*) // end of [local(i0gpt)]
+
+(* ****** ****** *)
+
+local
+//
+datatype
+i0cls =
+I0CLS of
+(
+loctn, i0cls_node)
+#absimpl
+i0cls_tbox = i0cls
+//
+in (* in-of-local *)
+//
+#implfun
+i0cls_make_node
+(   loc,nod   ) = I0CLS(loc,nod)
+//
+#implfun
+i0cls_get_lctn(cls) =
+let
+  val+I0CLS(loc,nod) = cls in loc
+end
+#implfun
+i0cls_get_node(cls) =
+let
+  val+I0CLS(loc,nod) = cls in nod
+end
+//
+endloc (*local*) // end of [local(i0cls)]
+
 (* ****** ****** *)
 (* ****** ****** *)
 

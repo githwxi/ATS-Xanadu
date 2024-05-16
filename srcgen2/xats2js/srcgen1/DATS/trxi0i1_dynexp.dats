@@ -434,16 +434,29 @@ trxi0i1_i0pat
 case+
 ipat.node() of
 //
-|I0Pint _ => I1BNDnone()
-|I0Pbtf _ => I1BNDnone()
-|I0Pchr _ => I1BNDnone()
-|I0Pflt _ => I1BNDnone()
-|I0Pstr _ => I1BNDnone()
+|I0Pint _ => f0_nil(ipat)
+|I0Pbtf _ => f0_nil(ipat)
+|I0Pchr _ => f0_nil(ipat)
+|I0Pflt _ => f0_nil(ipat)
+|I0Pstr _ => f0_nil(ipat)
 //
 |_(*else*) => f0_main(env0, ipat)
 //
 ) where
 {
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_nil(ipat: i0pat) =
+let
+val
+itnm = i1tnm_new0()
+in//let
+I1BNDcons
+(itnm, ipat, list_nil(*void*))
+end//let//end-of-[f0_nil(ipat)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -463,7 +476,8 @@ i1val(loc0, I1Vtnm(itnm))
 //
 in
 //
-I1BNDsome(itnm, dvvs) where
+I1BNDcons
+(itnm, ipat, dvvs) where
 {
 val dvvs =
 trxi0i1_i0bnd(env0, ipat, ival) }
@@ -1467,12 +1481,12 @@ let
 val loc0 = fia1.lctn()
 //
 val-
-FIARGdapp(i0ps) = fia1.node()
+FIARGdarg(i0ps) = fia1.node()
 //
 in//let
 (
 fjarg
-(loc0, FJARGdapp(i1bs))) where
+(loc0, FJARGdarg(i1bs))) where
 {
 val
 i1bs = trxi0i1_i0patlst(env0, i0ps)} end

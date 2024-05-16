@@ -317,9 +317,9 @@ in//let
 //
 case+
 farg.node() of
-|FIARGdapp(i0ps) =>
+|FIARGdarg(i0ps) =>
 (
-  print("FIARGdapp(", i0ps, ")"))
+  print("FIARGdarg(", i0ps, ")"))
 //
 end (*let*) // end of [fiarg_fprint(out,farg)]
 //
