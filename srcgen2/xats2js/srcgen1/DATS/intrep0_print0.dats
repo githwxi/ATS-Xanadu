@@ -225,22 +225,21 @@ print("I0Elet0(", dcls, ";", i0e1, ")"))
 |I0Eift0
 (test
 ,ithn, iels) =>
-(
-print
-("I0Eift0(", test, ";", ithn, ";", iels, ")"))
+(print("I0Eift0(")
+;print(test, ";", ithn, ";", iels, ")"))
 //
 |I0Ecas0
 (tknd
-,i0e1, dcls) =>
-(
-print
-("I0Ecas0(", tknd, ";", i0e1, ";", dcls, ")"))
+,i0e1, icls) =>
+(print("I0Ecas0(")
+;print(tknd, ";", i0e1, ";", icls, ")"))
 //
 (* ****** ****** *)
 //
 |I0Eseqn
 (i0es, i0e1) =>
-print("I0Eseqn(", i0es, ";", i0e1, ")")
+(
+print("I0Eseqn(", i0es, ";", i0e1, ")"))
 //
 (* ****** ****** *)
 //
@@ -249,10 +248,12 @@ print("I0Eseqn(", i0es, ";", i0e1, ")")
 print("I0Etup0(", i0es, ")")
 |I0Etup1
 (tknd, i0es) =>
-print("I0Etup1(", tknd, ";", i0es, ")")
+(
+print("I0Etup1(", tknd, ";", i0es, ")"))
 |I0Ercd2
 (tknd, lies) =>
-print("I0Ercd2(", tknd, ";", lies, ")")
+(
+print("I0Ercd2(", tknd, ";", lies, ")"))
 //
 (* ****** ****** *)
 //
@@ -322,6 +323,64 @@ farg.node() of
   print("FIARGdarg(", i0ps, ")"))
 //
 end (*let*) // end of [fiarg_fprint(out,farg)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i0gua_fprint
+(out, igua) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+//
+case+
+igua.node() of
+|
+I0GUAexp(i0e1) =>
+print("I0GUAexp(",i0e1,")")
+|
+I0GUAmat(i0e1,i0p2) =>
+print("I0GUAmat(",i0e1,";",i0p2,")")
+//
+end (*let*) // end of [i0gua_fprint(out,igua)]
+//
+(* ****** ****** *)
+//
+#implfun
+i0gpt_fprint
+(out, igpt) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+igpt.node() of
+|
+I0GPTpat(i0p1) =>
+print("I0GPTpat(",i0p1,")")
+|
+I0GPTgua(i0p1,i0gs) =>
+print("I0GPTgua(",i0p1,";",i0gs,")")
+end (*let*) // end of [i0gpt_fprint(out,igpt)]
+//
+#implfun
+i0cls_fprint
+(out, icls) =
+let
+#impltmp
+g_print$out<>() = out
+in//let
+case+
+icls.node() of
+|
+I0CLSgpt(igpt) =>
+print("I0CLSgpt(",igpt,")")
+|
+I0CLScls(i0g1,i0e2) =>
+print("I0CLScls(",i0g1,";",i0e2,")")
+end (*let*) // end of [i0cls_fprint(out,icls)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
