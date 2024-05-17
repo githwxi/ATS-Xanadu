@@ -65,6 +65,7 @@ XATSOPT "./../../.."
 _(*DATS*)="./../DATS/trxi0i1.dats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #symload lctn with i0pat_get_lctn
 #symload node with i0pat_get_node
 (* ****** ****** *)
@@ -73,6 +74,10 @@ _(*DATS*)="./../DATS/trxi0i1.dats"
 (* ****** ****** *)
 #symload lctn with fiarg_get_lctn
 #symload node with fiarg_get_node
+(* ****** ****** *)
+#symload lctn with i0cls_get_lctn
+#symload node with i0cls_get_node
+(* ****** ****** *)
 (* ****** ****** *)
 fun
 i1val_int
@@ -1452,6 +1457,75 @@ val ival =
 val ilts = envi0i1_popblk0(env0)
 //
 }(*where*)//end-of-[trxi0i1_i0blk(env0,iexp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxi0i1_i0cls
+( env0, icls ) =
+(
+case+
+icls.node() of
+//
+|
+I0CLSgpt
+(  igpt  ) =>
+(
+i1cls
+(
+loc0,
+I1CLSgpt(igpt))) where
+{
+//
+val (  ) =
+envi0i1_pshlam0(env0)
+//
+val loc0 = icls.lctn()
+//
+val igpt =
+trxi0i1_i0gpt(env0, igpt)
+//
+val // HX: [ilts] is empty
+ilts = envi0i1_poplam0( env0 )
+//
+}(*where*)//end of [I0CLSgpt(igpt)]
+//
+|
+I0CLScls
+(igpt, iexp) =>
+let
+//
+val (  ) =
+envi0i1_pshlam0(env0)
+//
+val igpt =
+trxi0i1_i0gpt(env0, igpt)
+//
+val ival =
+trxi0i1_i0exp(env0, iexp)
+//
+val
+ilts = envi0i1_poplam0( env0 )
+//
+val icmp = I1CMPcons(ilts, ival)
+//
+in
+let
+val loc0 = icls.lctn()
+in//let
+  i1cls(loc0, I1CLScls(igpt, icmp))
+end//let
+end//let//end of [I0CLScls(igpt,iexp)]
+//
+) where
+{
+//
+val (  ) =
+(
+  prerrln("trxi0i1_i0cls: icls = ", icls))
+//
+}(*where*)//end-of-[trxi0i1_i0cls(env0,iexp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
