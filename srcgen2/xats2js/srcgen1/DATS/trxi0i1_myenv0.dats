@@ -154,8 +154,10 @@ iltstk =
 |iltstk_lam0 of ( iltstk ) 
 |iltstk_let0 of ( iltstk ) 
 //
+(*
 |iltstk_ift0 of ( iltstk ) 
 |iltstk_cas0 of ( iltstk ) 
+*)
 //
 |iltstk_cons of (i1let, iltstk)
 //
@@ -199,7 +201,7 @@ iltstk_pshblk0
   (  stk0  ) =
 (
   stk0 := iltstk_blk0(stk0))
-//(*end of [iltstk_pshift0(stk0)]*)
+//(*end of [iltstk_pshblk0(stk0)]*)
 //
 (* ****** ****** *)
 //
@@ -219,19 +221,23 @@ iltstk_pshlet0
 //
 (* ****** ****** *)
 //
+(*
 #implfun
 iltstk_pshift0
   (  stk0  ) =
 (
   stk0 := iltstk_ift0(stk0))
 //(*end of [iltstk_pshift0(stk0)]*)
+*)
 //
+(*
 #implfun
 iltstk_pshcas0
   (  stk0  ) =
 (
   stk0 := iltstk_cas0(stk0))
 //(*end of [iltstk_pshcas0(stk0)]*)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -277,6 +283,7 @@ iltstk_let0 _ =>
 let
 val () = err:=1 in (kxs,res) end
 //
+(*
 | !
 iltstk_ift0 _ =>
 let
@@ -285,6 +292,7 @@ val () = err:=1 in (kxs,res) end
 iltstk_cas0 _ =>
 let
 val () = err:=1 in (kxs,res) end
+*)
 //
 )(*case+*)//end-[loop(kxs,res,err)]
 //
@@ -346,6 +354,7 @@ iltstk_let0 _ =>
 let
 val () = err:=1 in (kxs,res) end
 //
+(*
 | !
 iltstk_ift0 _ =>
 let
@@ -354,6 +363,7 @@ val () = err:=1 in (kxs,res) end
 iltstk_cas0 _ =>
 let
 val () = err:=1 in (kxs,res) end
+*)
 //
 )(*case+*)//end-[loop(kxs,res,err)]
 //
@@ -415,6 +425,7 @@ iltstk_lam0 _ =>
 let
 val () = err:=1 in (kxs,res) end
 //
+(*
 | !
 iltstk_ift0 _ =>
 let
@@ -423,6 +434,7 @@ val () = err:=1 in (kxs,res) end
 iltstk_cas0 _ =>
 let
 val () = err:=1 in (kxs,res) end
+*)
 //
 )(*case+*)//end-[loop(kxs,res,err)]
 //

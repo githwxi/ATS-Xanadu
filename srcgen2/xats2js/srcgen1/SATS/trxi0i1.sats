@@ -90,19 +90,23 @@ iltstk_poplet0
 //
 (* ****** ****** *)
 //
+(*
 fun
 iltstk_pshift0
 (stk: &iltstk >> _): void
 fun
 iltstk_pshcas0
 (stk: &iltstk >> _): void
+*)
 //
+(*
 fun
 iltstk_popift0
 (stk: &iltstk >> _): i1letlst
 fun
 iltstk_popcas0
 (stk: &iltstk >> _): i1letlst
+*)
 //
 (* ****** ****** *)
 //
