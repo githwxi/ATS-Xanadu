@@ -293,6 +293,13 @@ print(i1f0, ";", i1vs, ")"))
  print
  (test,";",ithn,";",iels,")"))
 //
+|I1INScas0
+(cask
+,i1v1, icls) =>
+(print("I1INScas0(");
+ print
+ (cask,";",i1v1,";",icls,")"))
+//
 |I1INSflat
 (   i1v0   ) =>
 (print("I1INSflat(",i1v0,")"))

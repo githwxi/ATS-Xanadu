@@ -611,6 +611,7 @@ end(*let*)//end-of-(envi0i1_poplet0(env0))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #implfun
 envi0i1_pshift0
 (     env0     ) = let
@@ -630,9 +631,11 @@ HX-2024:
 iltstk_pshift0(iltstk); $fold(env0))
 //
 end (*let*)//end-of-(envi0i1_pshift0(env0))
+*)
 //
 (* ****** ****** *)
 //
+(*
 #implfun
 envi0i1_pshcas0
 (     env0     ) = let
@@ -654,6 +657,7 @@ stkmap_pshlam0(d2vstk);
 iltstk_pshcas0(iltstk); $fold(env0))
 //
 end (*let*)//end-of-(envi0i1_pshcas0(env0))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
