@@ -75,8 +75,15 @@ _(*DATS*)="./../DATS/trxi0i1.dats"
 #symload lctn with fiarg_get_lctn
 #symload node with fiarg_get_node
 (* ****** ****** *)
+//
+#symload lctn with i0gua_get_lctn
+#symload lctn with i0gpt_get_lctn
 #symload lctn with i0cls_get_lctn
+//
+#symload node with i0gua_get_node
+#symload node with i0gpt_get_node
 #symload node with i0cls_get_node
+//
 (* ****** ****** *)
 (* ****** ****** *)
 fun
@@ -1462,6 +1469,102 @@ val ilts = envi0i1_popblk0(env0)
 (* ****** ****** *)
 //
 #implfun
+trxi0i1_i0gua
+( env0, igua ) =
+(
+case+
+igua.node() of
+|
+I0GUAexp
+(  iexp  ) =>
+i1gua
+(
+loc0,
+I1GUAexp(icmp)) where
+{
+val icmp =
+trxi0i1_i0blk(env0, iexp)}
+|
+I0GUAmat
+(iexp, ipat) =>
+let
+//
+val icmp =
+trxi0i1_i0blk(env0, iexp)
+val ibnd =
+trxi0i1_i0pat(env0, ipat)
+//
+in//let
+  i1gua
+  (loc0, I1GUAmat(icmp,ibnd))
+end//let
+) where
+{
+//
+val loc0 = igua.lctn((*void*))
+//
+val (  ) =
+(
+  prerrln("trxi0i1_i0gua: igua = ", igua))
+//
+}(*where*)//end-of-[trxi0i1_i0cls(env0,iexp)]
+//
+(* ****** ****** *)
+//
+#implfun
+trxi0i1_i0gpt
+( env0, igpt ) =
+(
+case+
+igpt.node() of
+//
+|
+I0GPTpat
+(  ipat  ) =>
+(
+i1gpt
+(
+loc0,
+I1GPTpat(ibnd))) where
+{
+//
+val loc0 = igpt.lctn()
+//
+val ibnd =
+trxi0i1_i0pat(env0, ipat)}
+//
+|
+I0GPTgua
+(ipat, i0gs) =>
+let
+//
+val ibnd =
+trxi0i1_i0pat(env0, ipat)
+val i1gs =
+trxi0i1_i0gualst(env0, i0gs)
+//
+in//let
+//
+let
+val loc0 = igpt.lctn()
+in//let
+i1gpt(loc0,I1GPTgua(ibnd,i1gs))
+end//let
+//
+end//let//end of [I0GPTgua(ipat,i0gs)]
+//
+) where
+{
+//
+val (  ) =
+(
+  prerrln("trxi0i1_i0gpt: igpt = ", igpt))
+//
+}(*where*)//end-of-[trxi0i1_i0cls(env0,iexp)]
+//
+(* ****** ****** *)
+//
+#implfun
 trxi0i1_i0cls
 ( env0, icls ) =
 (
@@ -1661,6 +1764,14 @@ in//let
 end//let//end-of-[trxi0i1_l0i0elst(env0,lies)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+trxi0i1_i0gualst
+( env0, i0gs ) =
+(
+  list_trxi0i1_fnp(env0, i0gs, trxi0i1_i0gua))
+//
 (* ****** ****** *)
 //
 #implfun

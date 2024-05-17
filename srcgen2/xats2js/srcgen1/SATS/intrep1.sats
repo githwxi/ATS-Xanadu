@@ -90,9 +90,9 @@ i1lab_fprint
 (* ****** ****** *)
 #abstype fjarg_tbox // p0tr
 (* ****** ****** *)
-#abstbox i1cls_tbox // p0tr
 #abstbox i1gua_tbox // p0tr
 #abstbox i1gpt_tbox // p0tr
+#abstbox i1cls_tbox // p0tr
 (* ****** ****** *)
 #abstype i1dcl_tbox // p0tr
 (* ****** ****** *)
@@ -142,9 +142,8 @@ i1lab_fprint
 #typedef fjarglst = list(fjarg)
 //
 (* ****** ****** *)
-#typedef i1clslst = list(i1cls)
 #typedef i1gualst = list(i1gua)
-#typedef i1gptlst = list(i1gpt)
+#typedef i1clslst = list(i1cls)
 (* ****** ****** *)
 //
 #typedef i1dclist = list(i1dcl)
@@ -466,6 +465,14 @@ i1gpt_node =
 fun
 i1gua_fprint
 (out:FILR,igua:i1gua): void
+fun
+i1gpt_fprint
+(out:FILR,igpt:i1gpt): void
+fun
+i1cls_fprint
+(out:FILR,icls:i1cls): void
+//
+(* ****** ****** *)
 //
 fun
 i1gua_get_lctn(i1gua): loc_t
@@ -475,10 +482,6 @@ i1gua_get_node(i1gua): i1gua_node
 (* ****** ****** *)
 //
 fun
-i1gpt_fprint
-(out:FILR,igpt:i1gpt): void
-//
-fun
 i1gpt_get_lctn(i1gpt): loc_t
 fun
 i1gpt_get_node(i1gpt): i1gpt_node
@@ -486,13 +489,19 @@ i1gpt_get_node(i1gpt): i1gpt_node
 (* ****** ****** *)
 //
 fun
-i1cls_fprint
-(out:FILR,icls:i1cls): void
-//
-fun
 i1cls_get_lctn(i1cls): loc_t
 fun
 i1cls_get_node(i1cls): i1cls_node
+//
+(* ****** ****** *)
+//
+#symload lctn with i1gua_make_lctn
+#symload lctn with i1gpt_make_lctn
+#symload lctn with i1cls_make_lctn
+//
+#symload node with i1gua_make_node
+#symload node with i1gpt_make_node
+#symload node with i1cls_make_node
 //
 (* ****** ****** *)
 //

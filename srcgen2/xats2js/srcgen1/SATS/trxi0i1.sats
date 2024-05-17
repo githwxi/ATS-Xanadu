@@ -164,19 +164,23 @@ envi0i1_poplet0
 //
 (* ****** ****** *)
 //
+(*
 fun
 envi0i1_pshift0
 (env0: !envi0i1): void//end-fun
 fun
 envi0i1_pshcas0
 (env0: !envi0i1): void//end-fun
+*)
 //
+(*
 fun
 envi0i1_popift0
 (env0: !envi0i1): i1letlst//fun
 fun
 envi0i1_popcas0
 (env0: !envi0i1): i1letlst//fun
+*)
 //
 (* ****** ****** *)
 //
@@ -325,6 +329,9 @@ trxi0i1_fiarglst
 //
 (* ****** ****** *)
 //
+fun
+trxi0i1_i0gualst
+(env0: !envi0i1, i0gs: i0gualst): i1gualst
 fun
 trxi0i1_i0clslst
 (env0: !envi0i1, icls: i0clslst): i1clslst
