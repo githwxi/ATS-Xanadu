@@ -296,7 +296,7 @@ i1val_node =
 (* ****** ****** *)
 //
 |I1Vp0rj of (i1val, sint)
-|I1Vp1cn of (d2con, i1val, sint)
+|I1Vp1cn of (i0pat, i1val, sint)
 |I1Vp1rj of (token, i1val, sint)
 |I1Vp2rj of (token, i1val, label)
 //

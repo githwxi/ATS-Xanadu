@@ -305,7 +305,9 @@ datatype
 i0pat_node =
 //
 |I0Pnil of ()
+//
 |I0Pany of ()
+|I0Pvar of d2var
 //
 |I0Pint of token
 |I0Pbtf of sym_t
@@ -314,7 +316,7 @@ i0pat_node =
 |I0Pflt of token
 |I0Pstr of token
 //
-|I0Pvar of d2var
+|I0Pcon of (d2con)
 //
 |I0Pbang of (i0pat)
 //
@@ -323,8 +325,8 @@ i0pat_node =
 |I0Pfree of (i0pat)
 *)
 //
-|I0Pcapp of
-( d2con, i0patlst )
+|I0Pdapp of
+( i0pat, i0patlst )
 //
 |I0Ptup0 of (i0patlst)
 |I0Ptup1 of (token, i0patlst)

@@ -110,8 +110,19 @@ in//let
 case+
 i0p0.node() of
 //
+(* ****** ****** *)
+//
+|I0Pnil() =>
+print("I0Pnil(",")")
+//
+(* ****** ****** *)
+//
+|I0Pany() =>
+print("I0Pany(",")")
 |I0Pvar(d2v) =>
 print("I0Pvar(",d2v,")")
+//
+(* ****** ****** *)
 //
 |I0Pint(tok) =>
 print("I0Pint(",tok,")")
@@ -122,15 +133,32 @@ print("I0Pchr(",tok,")")
 |I0Pstr(tok) =>
 print("I0Pstr(",tok,")")
 //
-|I0Ptup0
-(  i0ps  ) =>
+(* ****** ****** *)
+|I0Pcon(d2c) =>
+print("I0Pcon(",d2c,")")
+(* ****** ****** *)
+//
+|
+I0Pdapp
+( i0f0,i0ps ) =>
+print("I0Pdapp(",i0f0,";",i0ps,")")
+//
+(* ****** ****** *)
+//
+|
+I0Ptup0(i0ps) =>
 print("I0Ptup0(",i0ps,")")
-|I0Ptup1
+|
+I0Ptup1
 ( tknd,i0ps ) =>
 print("I0Ptup1(",tknd,";",i0ps,")")
 //
+(* ****** ****** *)
+//
 |I0Pnone0() => print( "I0Pnone0(",")" )
 |I0Pnone1(d3p1) => print("I0Pnone1(", d3p1, ")")
+//
+(* ****** ****** *)
 //
 end(*let*)//end-of-[i0pat_fprint(out, i0p0)]
 //
