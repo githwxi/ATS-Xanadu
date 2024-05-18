@@ -228,12 +228,32 @@ i0pat(loc0, I0Pflt(tok))
 ( tok ) =>
 i0pat(loc0, I0Pstr(tok))
 //
+(* ****** ****** *)
+|D3Pcon
+( d2c ) =>
+i0pat(loc0, I0Pcon(d2c))
+(* ****** ****** *)
+//
+|D3Ptapq _ => f0_tapq(env0, d3p0)
+//
+(* ****** ****** *)
+//
+|D3Pdapp _ => f0_dapp(env0, d3p0)
+//
+(* ****** ****** *)
+//
 |D3Ptup0 _ => f0_tup0(env0, d3p0)
 |D3Ptup1 _ => f0_tup1(env0, d3p0)
 //
+(* ****** ****** *)
+//
 |D3Pannot _ => f0_annot(env0, d3p0)
 //
+(* ****** ****** *)
+//
 |_(* otherwise *) => i0pat_none1(d3p0)
+//
+(* ****** ****** *)
 //
 ) where
 {
@@ -242,6 +262,49 @@ i0pat(loc0, I0Pstr(tok))
 (* ****** ****** *)
 //
 val loc0 = d3p0.lctn()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_tapq
+( env0:
+! envd3i0
+, d3p0: d3pat): i0pat =
+(
+trxd3i0_d3pat(env0, d3f0)
+) where
+{
+val-
+D3Ptapq
+(d3f0, t2js) = d3p0.node()}
+//
+(* ****** ****** *)
+//
+fun
+f0_dapp
+( env0:
+! envd3i0
+, d3p0: d3pat): i0pat =
+let
+//
+val-
+D3Pdapp
+(d3f0
+,npf1, d3ps) = d3p0.node()
+//
+val d3ps =
+pfrmv_npf1_d3ps(npf1, d3ps)
+//
+val i0f0 =
+trxd3i0_d3pat(env0, d3f0)
+val i0ps =
+trxd3i0_d3patlst(env0, d3ps)
+//
+in//let
+  i0pat
+  (loc0, I0Pdapp(i0f0, i0ps))
+end(*let*)//end-of-[f0_dapp(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

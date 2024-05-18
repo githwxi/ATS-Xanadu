@@ -165,10 +165,10 @@ print("I1Vp0rj(");
 print(i1v1, ";", idx2, ")"))
 //
 |I1Vp1cn
-(dcon, i1v1, idx2) =>
+(i0f0, i1v1, idx2) =>
 (
 print("I1Vp1cn(");
-print(dcon, ";", i1v1, ";", idx2, ")"))
+print(i0f0, ";", i1v1, ";", idx2, ")"))
 //
 |I1Vp1rj
 (tknd, i1v1, idx2) =>
