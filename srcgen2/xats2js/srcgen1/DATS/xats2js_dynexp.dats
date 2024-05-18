@@ -68,6 +68,11 @@ _(*DATS*)="./../DATS/xats2js.dats"
 #symload lctn with fjarg_get_lctn
 #symload node with fjarg_get_node
 (* ****** ****** *)
+#symload lctn with i1gpt_get_lctn
+#symload lctn with i1cls_get_lctn
+#symload node with i1gpt_get_node
+#symload node with i1cls_get_node
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -83,23 +88,15 @@ fun
 i1bndfpr
 ( out: FILR
 , ibnd: i1bnd): void =
-let
-#impltmp
-g_print$out<>() = out
-in//let
-case+ ibnd of
-|I1BNDcons
-(itnm, ipat, dsub) =>
 (
-print("I1BNDcons(");
-print(itnm,";",ipat,";",dsub,")"))
-end where
-{
-#impltmp
-g_print
-<d2var>
-( dvar ) = d2var_fprint(out, dvar)
-}(*let*)//end-of-[i1bndfpr(out,ibnd)]
+  i1bnd_fprint(out, ibnd))
+//
+fun
+i1gptfpr
+( out: FILR
+, igpt: i1gpt): void =
+(
+  i1gpt_fprint(out, igpt))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -303,6 +300,16 @@ nindfpr
 (filr, "// I1INSift0-end");
 )
 //
+|I1INScas0 _ =>
+(
+//
+f0_cas0(env0, iins);
+//
+nindfpr
+(filr, nind); strnfpr
+(filr, "// I1INScas0-end");
+)
+//
 |I1INSlet0 _ =>
 (
 //
@@ -333,6 +340,8 @@ in//let
 print
 ("I1INSdapp(", i1f0, ";", i1vs, ")")
 end//let//end-of-[ f0_dapp(env0,iins) ]
+//
+(* ****** ****** *)
 //
 fun
 f0_ift0
@@ -376,6 +385,39 @@ case+ iels of
 val () = envx2js_decnind(env0, 2)
 //
 end//let//end-of-[ f0_ift0(env0,iins) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_cas0
+( env0:
+! envx2js
+, iins: i1ins): void =
+let
+//
+val-
+I1INScas0
+( cask
+, i1v1, icls) = iins
+//
+#impltmp
+g_print$out<>() = filr
+//
+val () =
+(
+print
+("I1INScas0(",cask,";");
+print(i1v1,";","...",")\n"))
+//
+val () =
+envx2js_incnind(env0, 2)
+//
+val () =
+xats2js_i1clslst(env0, icls)
+//
+val () = envx2js_decnind(env0, 2)
+//
+end//let//end-of-[ f0_cas0(env0,iins) ]
 //
 (* ****** ****** *)
 //
@@ -474,6 +516,76 @@ end//let
 (* ****** ****** *)
 //
 #implfun
+xats2js_i1gpt
+( env0,igpt ) =
+let
+(*
+//
+val () =
+prerrln
+("xats2js_i1gpt: igpt = ", igpt))
+//
+*)
+//
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+//
+in//let
+(
+nindfpr(filr, nind);
+strnfpr(filr, "// ");
+i1gptfpr(filr, igpt); fprintln(filr))
+end(*let*)//end-of-[xats2js_i1gpt(env0,i1gpt)]
+
+(* ****** ****** *)
+//
+#implfun
+xats2js_i1cls
+( env0,icls ) =
+let
+(*
+//
+val () =
+prerrln
+("xats2js_i1cls: icls = ", icls))
+//
+*)
+//
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+//
+in//let
+//
+case+
+icls.node() of
+//
+|
+I1CLSgpt(igpt) =>
+(
+xats2js_i1gpt(env0, igpt)
+)
+//
+|
+I1CLScls(igpt, icmp) =>
+(
+xats2js_i1gpt(env0, igpt);
+let
+val () =
+envx2js_incnind(env0, 2)
+val () =
+xats2js_i1cmp(env0, icmp)
+val () = envx2js_decnind(env0,2) end)
+//
+end(*let*)//end-of-[xats2js_i1cls(env0,i1cls)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 xats2js_i1letlst
   (env0, ilts) =
 (
@@ -487,6 +599,15 @@ xats2js_fjarglst
   (env0, fjas) =
 (
   list_xats2js_fnp(env0, fjas, xats2js_fjarg))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xats2js_i1clslst
+  (env0, icls) =
+(
+  list_xats2js_fnp(env0, icls, xats2js_i1cls))
 //
 (* ****** ****** *)
 (* ****** ****** *)

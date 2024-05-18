@@ -338,8 +338,16 @@ end(*let*)//end-of-[i1let_fprint(out, ilet)]
 i1bnd_fprint
 (out, ibnd) =
 let
+//
 #impltmp
-g_print$out<>() = out
+g_print$out
+<(*0*)>((*0*)) = out
+//
+#impltmp
+g_print
+<d2var>( dvar ) =
+d2var_fprint(out, dvar)
+//
 in//let
 //
 case+ ibnd of

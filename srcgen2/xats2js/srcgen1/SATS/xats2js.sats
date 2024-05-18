@@ -171,6 +171,14 @@ xats2js_fjarg
 (env0: !envx2js, farg: fjarg): void
 (* ****** ****** *)
 (* ****** ****** *)
+fun
+xats2js_i1gpt
+(env0: !envx2js, igpt: i1gpt): void
+fun
+xats2js_i1cls
+(env0: !envx2js, icls: i1cls): void
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 xats2js_i1dcl
@@ -193,6 +201,13 @@ xats2js_i1letlst
 fun
 xats2js_fjarglst
 (env0: !envx2js, fjas: fjarglst): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+xats2js_i1clslst
+(env0: !envx2js, icls: i1clslst): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

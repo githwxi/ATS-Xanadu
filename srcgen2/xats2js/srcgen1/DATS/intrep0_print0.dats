@@ -103,8 +103,16 @@ UN = "prelude/SATS/unsafe.sats"
 i0pat_fprint
 (out, i0p0) =
 let
+//
 #impltmp
-g_print$out<>() = out
+g_print$out
+<(*0*)>((*0*)) = out
+//
+#impltmp
+g_print
+<d2var>( dvar ) =
+d2var_fprint(out, dvar)
+//
 in//let
 //
 case+
