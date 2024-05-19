@@ -70,6 +70,9 @@ UN = "prelude/SATS/unsafe.sats"
 #staload
 "./../../../SATS/xbasics.sats"
 (* ****** ****** *)
+#staload // D2E =
+"./../../../SATS/dynexp2.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/intrep0.sats"
 (* ****** ****** *)
@@ -330,29 +333,48 @@ print("I0Ercd2(", tknd, ";", lies, ")"))
 ( i0e1 ) =>
 (
   print("I0Eaddr(", i0e1, ")") )//I0Eaddr
+//
 |I0Eflat
 ( i0e1 ) =>
 (
   print("I0Eflat(", i0e1, ")") )//I0Eflat
 //
-(* ****** ****** *)
 |I0Efold
 ( i0e1 ) =>
 (
   print("I0Efold(", i0e1, ")") )//I0Efold
+//
+(* ****** ****** *)
+//
+|
+I0Edp2tr
+( i0e1 ) =>
+(
+ print("I0Edp2tr(", i0e1, ")") )//de-p2tr
+|
+I0Edl0az
+( i0e1 ) =>
+(
+ print("I0Edl0az(", i0e1, ")") )//de-l0az
+|
+I0Edl1az
+( i0e1 ) =>
+(
+ print("I0Edl1az(", i0e1, ")") )//de-l1az
+//
 (* ****** ****** *)
 //
 |I0Ewhere
 (i0e1, dcls) =>
 (
- print("I0Ewhere(",i0e1,";",dcls,")"))
+ print("I0Ewhere(", i0e1, ";", dcls, ")"))
 //
 (* ****** ****** *)
 //
 |I0Eassgn
 (i0el, i0er) =>
 (
- print("I0Eassgn(",i0el,";",i0er,")"))
+ print("I0Eassgn(", i0el, ";", i0er, ")"))
 //
 (* ****** ****** *)
 //
