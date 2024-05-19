@@ -418,12 +418,30 @@ val (  ) =
   xats2js_dimpl(env0, dimp))
 //
 in//let
+//
+let
+//
+val (  ) = // enter
 (
-  xats2js_i1cmp(env0, icmp))
-where
-{
+  envx2js_pshlam0(env0) )
+//
 val (  ) =
-xats2js_fjarglst(env0, fjas)}
+(
+  xats2js_i1cmp(env0, icmp)
+) where
+{ val () =
+  xats2js_fjarglst(env0, fjas)}
+//
+val (  ) = envx2js_poplam0(env0)
+//
+val (  ) =
+(
+nindfpr
+(filr, nind); // indentation
+strnfpr(filr, "// I1Dimplmnt0(end)\n"))
+//
+end//let
+//
 end where
 {
 //
@@ -482,9 +500,9 @@ timp.node() of
 //
 nindfpr(filr, nind);
 strnfpr
-(filr, "// T1IMPall1: ");
-xats2js_d2cst
-( env0,dcst ); fprintln(filr);
+(filr,"// T1IMPall1(");
+xats2js_d2cst(env0,dcst);
+strnfpr(filr, ")\n"(*end*));
 //
 case+ dopt of
 |optn_nil() => ( (*void*) )
@@ -499,9 +517,9 @@ xats2js_i1dcl(env0,idcl(*tmp*))
 //
 nindfpr(filr, nind);
 strnfpr
-(filr, "// T1IMPallx: ");
-xats2js_d2cst
-( env0,dcst ); fprintln(filr);
+(filr,"// T1IMPallx(");
+xats2js_d2cst(env0,dcst);
+strnfpr(filr, ")\n"(*end*));
 //
 case+ dopt of
 |optn_nil() => ( (*void*) )
