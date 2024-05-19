@@ -234,6 +234,32 @@ i0pat(loc0, I0Pstr(tok))
 i0pat(loc0, I0Pcon(d2c))
 (* ****** ****** *)
 //
+|D3Pbang
+( d3p1 ) =>
+(
+i0pat(loc0, I0Pbang(i0p1))
+) where
+{ val i0p1 =
+  trxd3i0_d3pat(env0, d3p1)}
+//
+|D3Pflat
+( d3p1 ) =>
+(
+i0pat(loc0, I0Pflat(i0p1))
+) where
+{ val i0p1 =
+  trxd3i0_d3pat(env0, d3p1)}
+//
+|D3Pfree
+( d3p1 ) =>
+(
+i0pat(loc0, I0Pfree(i0p1))
+) where
+{ val i0p1 =
+  trxd3i0_d3pat(env0, d3p1)}
+//
+(* ****** ****** *)
+//
 |D3Ptapq _ => f0_tapq(env0, d3p0)
 //
 (* ****** ****** *)

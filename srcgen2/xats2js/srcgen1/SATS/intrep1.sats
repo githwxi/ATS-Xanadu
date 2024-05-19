@@ -578,13 +578,24 @@ i1dcl_node =
 //
 (* ****** ****** *)
 //
-I1Dtmpsub of
+|I1Dextern of
+(token(*kind*),i1dcl)
+|I1Dstatic of
+(token(*kind*),i1dcl)
+//
+(* ****** ****** *)
+//
+|I1Dlocal0 of
+(i1dclist(*local-head*)
+,i1dclist(*local-body*))
+//
+(* ****** ****** *)
+//
+|I1Dtmpsub of
 (s2vts(*tmpsub*), i1dcl)
 //
-|
-I1Dlocal0 of
-( i1dclist(*local-head*)
-, i1dclist(*local-body*))
+(* ****** ****** *)
+//
 |
 I1Dinclude of
 ( sint(*s/d*)

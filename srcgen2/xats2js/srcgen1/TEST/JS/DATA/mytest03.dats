@@ -206,15 +206,31 @@ case+ xs of
 
 fun
 length3
-(xs:list(int)): sint = list_length(xs)//fun
+(xs:
+list(int)): sint = list_length(xs)//fun
 
 (* ****** ****** *)
 (* ****** ****** *)
 
 fun
 length4
-(xs:list(int)): sint = gseq_length<list(int)><int>(xs)
+(xs:list(int)): sint =
+(
+  gseq_length<list(int)><int>(xs))//fun
 
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-01-03:
+More than 10 template layers!
+*)
+fun
+fact_mul_tail
+  (x: sint): sint =
+(
+  strm_vt_mul0(tail0(strmize(x+1))))//fun
+//
 (* ****** ****** *)
 (* ****** ****** *)
 

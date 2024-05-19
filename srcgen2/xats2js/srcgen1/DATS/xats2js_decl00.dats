@@ -103,6 +103,15 @@ dcl0.node() of
 //
 (* ****** ****** *)
 //
+|I1Dextern _ =>
+(
+  f0_extern(env0, dcl0))
+|I1Dstatic _ =>
+(
+  f0_static(env0, dcl0))
+//
+(* ****** ****** *)
+//
 |I1Dlocal0 _ =>
 (
   f0_local0(env0, dcl0))
@@ -175,6 +184,99 @@ loctn_fprint
 (* ****** ****** *)
 //
 fun
+f0_extern
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val
+filr =
+envx2js_get_filr(env0)
+val
+nind =
+envx2js_get_nind(env0)
+//
+val-
+I1Dextern
+( tknd, dcl1) = dcl0.node()
+//
+local
+#impltmp
+g_print$out<>() = filr
+in//local
+val (  ) =
+( print("// I1Dextern(")
+; print(tknd, "...", ")\n"))
+end//local
+//
+val (  ) =
+(
+  xats2js_i1dcl(env0, dcl1))
+//
+end where
+{
+//
+(*
+//
+val loc0 = dcl0.lctn((*void*))
+//
+val (  ) =
+prerrln("f0_extern(x2js): dcl0 = ", dcl0)
+*)
+//
+}(*where*) // end of [f0_extern(env0,dcl0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_static
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val
+filr =
+envx2js_get_filr(env0)
+val
+nind =
+envx2js_get_nind(env0)
+//
+val-
+I1Dstatic
+( tknd, dcl1) = dcl0.node()
+//
+local
+#impltmp
+g_print$out<>() = filr
+in//local
+val (  ) =
+( print("// I1Dstatic(")
+; print(tknd, "...", ")\n"))
+end//local
+//
+val (  ) =
+(
+  xats2js_i1dcl(env0, dcl1))
+//
+end where
+{
+//
+(*
+//
+val loc0 = dcl0.lctn((*void*))
+//
+val (  ) =
+prerrln("f0_static(x2js): dcl0 = ", dcl0)
+*)
+//
+}(*where*) // end of [f0_static(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 f0_local0
 ( env0:
 ! envx2js
@@ -202,7 +304,7 @@ strnfpr(filr, "// I1Dlocal0\n")
 //
 val () =
 (
-  xats2js_i1dclist( env0, head ))
+  xats2js_i1dclist(env0, head))
 //
 val
 (  ) =
@@ -213,7 +315,7 @@ strnfpr(filr, "// I1Dlocal0(in)\n"))
 //
 val () =
 (
-  xats2js_i1dclist( env0, body ))
+  xats2js_i1dclist(env0, body))
 //
 val
 (  ) =

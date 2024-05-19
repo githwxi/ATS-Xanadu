@@ -527,15 +527,32 @@ in//let
 case+
 dcl0.node() of
 //
-|I1Dtmpsub
-(svts, idcl) =>
+(* ****** ****** *)
+//
+|I1Dextern
+(tknd, dcl1) =>
 print
-("I1Dtmpsub(", svts, ";", idcl, ")")
+("I1Dextern(", tknd, ";", dcl1, ")")
+|I1Dstatic
+(tknd, dcl1) =>
+print
+("I1Dstatic(", tknd, ";", dcl1, ")")
+//
+(* ****** ****** *)
 //
 |I1Dlocal0
 (head, body) =>
 print
 ("I1Dlocal0(", head, ";", body, ")")
+//
+(* ****** ****** *)
+//
+|I1Dtmpsub
+(svts, idcl) =>
+print
+("I1Dtmpsub(", svts, ";", idcl, ")")
+//
+(* ****** ****** *)
 //
 |
 I1Dvaldclst

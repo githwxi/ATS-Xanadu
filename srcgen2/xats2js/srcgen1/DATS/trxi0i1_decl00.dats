@@ -88,13 +88,25 @@ trxi0i1_i0dcl
 case+
 dcl0.node() of
 //
+(* ****** ****** *)
+//
+|I0Dextern _ =>
+(
+  f0_extern(env0, dcl0))
+//
+(* ****** ****** *)
+//
 |I0Dlocal0 _ =>
 (
   f0_local0(env0, dcl0))
 //
+(* ****** ****** *)
+//
 |I0Dtmpsub _ =>
 (
   f0_tmpsub(env0, dcl0))
+//
+(* ****** ****** *)
 //
 |I0Dvaldclst _ =>
 (
@@ -103,9 +115,13 @@ dcl0.node() of
 (
   f0_vardclst(env0, dcl0))
 //
+(* ****** ****** *)
+//
 |I0Dfundclst _ =>
 (
   f0_fundclst(env0, dcl0))
+//
+(* ****** ****** *)
 //
 |I0Dimplmnt0 _ =>
 (
@@ -117,6 +133,50 @@ dcl0.node() of
 //
 ) where
 {
+//
+(* ****** ****** *)
+//
+fun
+f0_extern
+( env0:
+! envi0i1
+, dcl0: i0dcl): i1dcl =
+let
+//
+val
+loc0 = dcl0.lctn((*0*))
+val-
+I0Dextern
+(tknd, dcl1) = dcl0.node()
+//
+val dcl1 =
+(
+  trxi0i1_i0dcl(env0, dcl1))
+//
+in//let
+i1dcl(loc0, I1Dextern(tknd, dcl1))
+end(*let*)//end of [f0_extern(env0,d3cl)]
+//
+fun
+f0_static
+( env0:
+! envi0i1
+, dcl0: i0dcl): i1dcl =
+let
+//
+val
+loc0 = dcl0.lctn((*0*))
+val-
+I0Dstatic
+(tknd, dcl1) = dcl0.node()
+//
+val dcl1 =
+(
+  trxi0i1_i0dcl(env0, dcl1))
+//
+in//let
+i1dcl(loc0, I1Dstatic(tknd, dcl1))
+end(*let*)//end of [f0_static(env0,d3cl)]
 //
 (* ****** ****** *)
 //
