@@ -48,6 +48,14 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../HATS/xats2js_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
+#staload // LOC =
+"./../../../SATS/locinfo.sats"
+#staload // FIL =
+"./../../../SATS/filpath.sats"
+#staload // D2E =
+"./../../../SATS/dynexp2.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
@@ -62,6 +70,9 @@ _(*DATS*)="./../DATS/xats2js.dats"
 (* ****** ****** *)
 #symload lctn with i1dcl_get_lctn
 #symload node with i1dcl_get_node
+(* ****** ****** *)
+#symload node with t1imp_get_node
+#symload stmp with t1imp_get_stmp
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -90,9 +101,17 @@ in//let
 case+
 dcl0.node() of
 //
+(* ****** ****** *)
+//
 |I1Dlocal0 _ =>
 (
   f0_local0(env0, dcl0))
+//
+(* ****** ****** *)
+//
+|I1Dtmpsub _ =>
+(
+  f0_tmpsub(env0, dcl0))
 //
 (* ****** ****** *)
 //
@@ -110,6 +129,12 @@ dcl0.node() of
 //
 (* ****** ****** *)
 //
+|I1Dimplmnt0 _ =>
+(
+  f0_implmnt0(env0, dcl0))
+//
+(* ****** ****** *)
+//
 |
 _(* otherwise *) =>
 let
@@ -123,8 +148,28 @@ strnfpr(filr, "// ");
 i1dcl_fprint(filr, dcl0); fprintln(filr)
 end//let
 //
+(* ****** ****** *)
+//
 end where
 {
+//
+(* ****** ****** *)
+(* ****** ****** *)
+val loc0 = dcl0.lctn()
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+in//let
+nindfpr(filr, nind);
+strnfpr(filr, "// ");
+loctn_fprint
+(filr, loc0); fprintln(filr) end
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -136,14 +181,16 @@ f0_local0
 , dcl0: i1dcl): void =
 let
 //
+val
+filr =
+envx2js_get_filr(env0)
+val
+nind =
+envx2js_get_nind(env0)
+//
 val-
 I1Dlocal0
 ( head, body) = dcl0.node()
-//
-val
-filr = envx2js_get_filr(env0)
-val
-nind = envx2js_get_nind(env0)
 //
 val
 (  ) =
@@ -173,7 +220,7 @@ val
 (
 nindfpr
 (filr, nind); // indentation
-strnfpr(filr, "// I1Dlocal0(leave)\n"))
+strnfpr(filr, "// I1Dlocal0(end)\n"))
 //
 end where
 {
@@ -188,6 +235,56 @@ prerrln("f0_local0(x2js): dcl0 = ", dcl0)
 //
 }(*where*) // end of [f0_local0(env0,dcl0)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_tmpsub
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val
+filr =
+envx2js_get_filr(env0)
+val
+nind =
+envx2js_get_nind(env0)
+//
+val-
+I1Dtmpsub
+( svts, dcl1) = dcl0.node()
+//
+val
+(  ) =
+let
+#impltmp
+g_print$out<>() = filr
+in//let
+(
+nindfpr
+(filr, nind); // indentation
+print
+("// I1Dtmpsub(", svts, ")\n"))
+end//let
+//
+in//let
+xats2js_i1dcl(env0,dcl1(*tmp*))
+end where
+{
+//
+(*
+//
+val loc0 = dcl0.lctn((*void*))
+//
+val (  ) =
+prerrln("f0_tmpsub(x2js): dcl0 = ", dcl0)
+*)
+//
+}(*where*) // end of [f0_tmpsub(env0,dcl0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -280,8 +377,150 @@ prerrln("f0_fundclst(x2js): dcl0 = ", dcl0)
 }(*where*) // end of [f0_fundclst(env0,dcl0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_implmnt0
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val
+filr =
+envx2js_get_filr(env0)
+val
+nind =
+envx2js_get_nind(env0)
+//
+val-
+I1Dimplmnt0
+( tknd
+, stmp, dimp
+, fjas, icmp) = dcl0.node()
+//
+//
+val
+(  ) =
+let
+#impltmp
+g_print$out<>() = filr
+in//let
+(
+nindfpr
+(filr, nind); // indent
+print
+("// I1Dimplmnt0(...)\n"))
+end//let
+//
+val (  ) =
+(
+  xats2js_dimpl(env0, dimp))
+//
+in//let
+(
+  xats2js_i1cmp(env0, icmp))
+where
+{
+val (  ) =
+xats2js_fjarglst(env0, fjas)}
+end where
+{
+//
+(*
+//
+val loc0 = dcl0.lctn((*void*))
+//
+val (  ) =
+prerrln("f0_implmnt0(x2js): dcl0 = ", dcl0)
+*)
+//
+}(*where*) // end of [f0_fundclst(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 }(*where*)//end-of-[xats2js_i1dcl(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xats2js_dimpl
+( env0,dimp ) =
+(
+//
+nindfpr(filr, nind);
+strnfpr(filr, "// ");
+dimpl_fprint
+(filr, dimp); fprintln(filr)
+//
+) where
+{
+//
+val filr = envx2js_get_filr(env0)
+val nind = envx2js_get_nind(env0)
+//
+val (  ) =
+(
+  prerrln("xats2js_dimp: dimp = ", dimp))
+}(*where*)//end-of-[xats2js_dimpl(env0,dimp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xats2js_t1imp
+( env0,timp ) =
+(
+case+
+timp.node() of
+//
+|T1IMPall1
+(dcst, dopt) =>
+(
+//
+nindfpr(filr, nind);
+strnfpr
+(filr, "// T1IMPall1: ");
+xats2js_d2cst
+( env0,dcst ); fprintln(filr);
+//
+case+ dopt of
+|optn_nil() => ( (*void*) )
+|optn_cons(idcl) =>
+xats2js_i1dcl(env0,idcl(*tmp*))
+//
+)//end-of-[T1IMPall1(dcst,dopt)]
+//
+|T1IMPallx
+(dcst, dopt) =>
+(
+//
+nindfpr(filr, nind);
+strnfpr
+(filr, "// T1IMPallx: ");
+xats2js_d2cst
+( env0,dcst ); fprintln(filr);
+//
+case+ dopt of
+|optn_nil() => ( (*void*) )
+|optn_cons(idcl) =>
+xats2js_i1dcl(env0,idcl(*tmp*))
+//
+)//end-of-[T1IMPall1(dcst,dopt)]
+//
+) where
+{
+//
+val filr = envx2js_get_filr(env0)
+val nind = envx2js_get_nind(env0)
+//
+val (  ) =
+(
+  prerrln("xats2js_t1imp: timp = ", timp))
+//
+}(*where*)//end-of-[xats2js_t1imp(env0,timp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -442,14 +681,30 @@ envx2js_get_nind(env0)
 in//let
 (
 nindfpr
-(filr, nind); // indentation
-strnfpr(filr, "// I1FUNDCL\n"))
-end//let//end-of-[val()]
+(filr, nind); // indent
+strnfpr
+(filr, "// I1FUNDCL\n")) end
 //
 (* ****** ****** *)
 //
 val (  ) =
-xats2js_d2var(env0, dvar)
+let
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+in//let
+(
+nindfpr
+(filr, nind);
+strnfpr
+(filr, "// ");
+xats2js_d2var
+( env0,dvar ); fprintln(filr))
+end//let
+//
+(* ****** ****** *)
+//
 (*
 val (  ) = prerrln
 ("xats2js_i1fundcl: dvar = ", dvar)
@@ -466,7 +721,9 @@ val (  ) = // enter
   envx2js_pshlam0(env0) )
 //
 val (  ) =
-xats2js_fjarglst(env0, fjas)
+(
+xats2js_fjarglst(env0,fjas)
+)
 //
 val (  ) =
 (

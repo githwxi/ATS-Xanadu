@@ -43,12 +43,16 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 postn_cmp(ps1, ps2) =
 (ps1.ntot() \cmp ps2.ntot())
 #implfun
 loctn_cmp(lc1, lc2) =
 (lc1.pbeg() \cmp lc2.pbeg())
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 local
@@ -197,6 +201,7 @@ loctn_make_arg3
 (lcs, g_min(pb1, pb2), g_max(pe1, pe2))
 end (*let*) // end of [add_loctn_loctn]
 
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_locinfo.dats] *)

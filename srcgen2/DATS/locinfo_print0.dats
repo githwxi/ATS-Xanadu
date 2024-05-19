@@ -102,5 +102,27 @@ print(lsrc, "@(", pbeg, "--", pend, ")")
 end(*let*) // end of [loctn_fprint]
 
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-05-18:
+*)
+#implfun
+fprint_loctn_as_stamp
+  (out, loc) =
+(
+  print(ntot)) where
+{
+//
+  #impltmp
+  g_print$out<>() = out
+//
+  val pbeg = loc.pbeg()
+  val ntot = postn_get_ntot(pbeg)
+//
+}(*where*) // end of [fprint_loctn_as_stamp]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_locinfo_print0.dats] *)
