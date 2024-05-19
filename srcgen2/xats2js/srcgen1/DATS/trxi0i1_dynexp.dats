@@ -750,6 +750,11 @@ iexp.node() of
 //
 |I0Etimp _ => f0_timp(env0, iexp)
 //
+(*
+|I0Etapp _ => f0_tapp(env0, iexp)
+|I0Etapq _ => f0_tapq(env0, iexp)
+*)
+//
 |I0Edapp _ => f0_dapp(env0, iexp)
 //
 |I0Epcon _ => f0_pcon(env0, iexp)

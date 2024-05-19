@@ -204,4 +204,11 @@ case+ xs of
 (* ****** ****** *)
 (* ****** ****** *)
 
+fun
+length3
+(xs:list(int)): sint = list_length(xs)//fun
+
+(* ****** ****** *)
+(* ****** ****** *)
+
 (* end of [ATS3/XINTERP_TEST_JS_DATA_mytest03.dats] *)

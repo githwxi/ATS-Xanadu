@@ -1130,8 +1130,31 @@ D3Eextnam
 (* ****** ****** *)
 (* ****** ****** *)
 //
-} (*where*)//end-of-[trtmp3c_d3exp(env0,d3e0)]
+}(*where*)//end-of-[trtmp3c_d3exp(env0,d3e0)]
 
+(* ****** ****** *)
+//
+#implfun
+trtmp3c_l3d3e
+( env0,ld3e ) =
+let
+//
+val+
+D3LAB
+(lab0, d3e1) = ld3e
+//
+(*
+val loc0 = dgpt.lctn()
+val
+val () =
+prerrln
+("trtmp3c_l3d3e: ld3e = ", ld3e)
+*)
+//
+in//let
+D3LAB(lab0, trtmp3c_d3exp(env0, d3e1))
+end(*let*)//end-of-[trtmp3c_l3d3e(env0,ld3e)]
+//
 (* ****** ****** *)
 //
 #implfun
