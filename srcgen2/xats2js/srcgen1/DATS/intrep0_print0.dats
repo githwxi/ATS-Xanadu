@@ -343,6 +343,10 @@ print("I0Ercd2(", tknd, ";", lies, ")"))
 ( i0e1 ) =>
 (
   print("I0Efold(", i0e1, ")") )//I0Efold
+|I0Efree
+( i0e1 ) =>
+(
+  print("I0Efree(", i0e1, ")") )//I0Efree
 //
 (* ****** ****** *)
 //
@@ -377,10 +381,31 @@ I0Edp2tr
 (
  print("I0Eassgn(", i0el, ";", i0er, ")"))
 //
+|I0Eraise
+(tknd, iexn) =>
+(
+ print("I0Eraise(", tknd, ";", iexn, ")"))
+//
+(* ****** ****** *)
+//
+|I0El0azy
+(dknd, i0e1) =>
+(
+ print("I0El0azy(", dknd, ";", i0e1, ")"))
+|I0El1azy
+(dknd
+,i0e1, i0es) =>
+( print("I0El1azy(")
+; print( dknd, ";", i0e1, ";", i0es, ")"))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I0Enone0() => print( "I0Enone0(",")" )
 |I0Enone1(d3e1) => print("I0Enone1(", d3e1, ")")
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 end(*let*)//end-of-[i0exp_fprint(out, i0e0)]
 //

@@ -72,6 +72,8 @@ _(*DATS*)="./../DATS/trxi0i1.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#symload node with token_get_node
+(* ****** ****** *)
 #symload lctn with i0dcl_get_lctn
 #symload node with i0dcl_get_node
 (* ****** ****** *)
@@ -93,6 +95,10 @@ dcl0.node() of
 |I0Dextern _ =>
 (
   f0_extern(env0, dcl0))
+//
+|I0Dstatic _ =>
+(
+  f0_static(env0, dcl0))
 //
 (* ****** ****** *)
 //
