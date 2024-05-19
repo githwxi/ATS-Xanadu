@@ -147,6 +147,18 @@ print("I0Pcon(",d2c,")")
 (* ****** ****** *)
 //
 |
+I0Pbang i0p1 =>
+print("I0Pbang(",i0p1,")")
+|
+I0Pflat i0p1 =>
+print("I0Pflat(",i0p1,")")
+|
+I0Pfree i0p1 =>
+print("I0Pfree(",i0p1,")")
+//
+(* ****** ****** *)
+//
+|
 I0Pdapp
 ( i0f0,i0ps ) =>
 print("I0Pdapp(",i0f0,";",i0ps,")")
@@ -473,10 +485,19 @@ dcl0.node() of
 (  d3cl  ) =>
 print("I0Dd3ecl(", d3cl, ")")
 //
-|I0Dtmpsub
-(svts, idcl) =>
+(* ****** ****** *)
+//
+|I0Dextern
+(tknd, dcl1) =>
 print
-("I0Dtmpsub(", svts, ";", idcl, ")")
+("I0Dextern(", tknd, ";", dcl1, ")")
+//
+|I0Dstatic
+(tknd, dcl1) =>
+print
+("I0Dstatic(", tknd, ";", dcl1, ")")
+//
+(* ****** ****** *)
 //
 |I0Dlocal0
 (head, body) =>
@@ -485,10 +506,18 @@ print
 //
 (* ****** ****** *)
 //
+|I0Dtmpsub
+(svts, idcl) =>
+print
+("I0Dtmpsub(", svts, ";", idcl, ")")
+//
+(* ****** ****** *)
+//
 |I0Dvaldclst
 (  tknd, i0vs  ) =>
 (
 print("I0Dvaldclst(",tknd,";",i0vs,")"))
+//
 |I0Dvardclst
 (  tknd, i0vs  ) =>
 (

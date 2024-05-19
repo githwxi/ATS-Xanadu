@@ -131,13 +131,28 @@ trxd3i0_d3ecl
 case+
 d3cl.node() of
 //
-|D3Ctmpsub _ =>
+(* ****** ****** *)
+//
+|D3Cextern _ =>
 (
-  f0_tmpsub(env0, d3cl))
+  f0_extern(env0, d3cl))
+|D3Cstatic _ =>
+(
+  f0_static(env0, d3cl))
+//
+(* ****** ****** *)
 //
 |D3Clocal0 _ =>
 (
   f0_local0(env0, d3cl))
+//
+(* ****** ****** *)
+//
+|D3Ctmpsub _ =>
+(
+  f0_tmpsub(env0, d3cl))
+//
+(* ****** ****** *)
 //
 |D3Cvaldclst _ =>
 (
@@ -146,13 +161,19 @@ d3cl.node() of
 (
   f0_vardclst(env0, d3cl))
 //
+(* ****** ****** *)
+//
 |D3Cfundclst _ =>
 (
   f0_fundclst(env0, d3cl))
 //
+(* ****** ****** *)
+//
 |D3Cimplmnt0 _ =>
 (
   f0_implmnt0(env0, d3cl))
+//
+(* ****** ****** *)
 //
 |_(* otherwise *) => i0dcl_none1(d3cl)
 //
@@ -162,7 +183,7 @@ d3cl.node() of
 (* ****** ****** *)
 //
 fun
-f0_tmpsub
+f0_extern
 ( env0: 
 ! envd3i0
 , d3cl: d3ecl): i0dcl =
@@ -170,18 +191,40 @@ let
 //
 val loc0 = d3cl.lctn()
 val-
-D3Ctmpsub
-(svts, dcl1) = d3cl.node()
+D3Cextern
+(tknd, dcl1) = d3cl.node()
 //
-val i0d1 =
+val dcl1 =
 (
   trxd3i0_d3ecl(env0, dcl1))
 //
 in//let
 //
-i0dcl(loc0, I0Dtmpsub(svts, i0d1))
+i0dcl(loc0, I0Dextern(tknd, dcl1))
 //
-end//let//end-of-[f0_tmpsub(env0,d3cl)]
+end//let//end-of-[f0_extern(env0,d3cl)]
+//
+fun
+f0_static
+( env0: 
+! envd3i0
+, d3cl: d3ecl): i0dcl =
+let
+//
+val loc0 = d3cl.lctn()
+val-
+D3Cstatic
+(tknd, dcl1) = d3cl.node()
+//
+val dcl1 =
+(
+  trxd3i0_d3ecl(env0, dcl1))
+//
+in//let
+//
+i0dcl(loc0, I0Dstatic(tknd, dcl1))
+//
+end//let//end-of-[f0_static(env0,d3cl)]
 //
 (* ****** ****** *)
 //
@@ -209,6 +252,30 @@ in//let
 i0dcl(loc0, I0Dlocal0(head, body))
 //
 end//let//end-of-[f0_local0(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tmpsub
+( env0: 
+! envd3i0
+, d3cl: d3ecl): i0dcl =
+let
+//
+val loc0 = d3cl.lctn()
+val-
+D3Ctmpsub
+(svts, dcl1) = d3cl.node()
+//
+val i0d1 =
+(
+  trxd3i0_d3ecl(env0, dcl1))
+//
+in//let
+//
+i0dcl(loc0, I0Dtmpsub(svts, i0d1))
+//
+end//let//end-of-[f0_tmpsub(env0,d3cl)]
 //
 (* ****** ****** *)
 //
