@@ -49,8 +49,16 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../HATS/xats2js_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#staload // SYM =
+"./../../../SATS/xsymbol.sats"
+//
+#staload // LOC =
+"./../../../SATS/locinfo.sats"
+//
 #staload // D2E =
 "./../../../SATS/dynexp2.sats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -64,6 +72,15 @@ Authoremail: gmhwxiATgmailDOTcom
 _(*DATS*)="./../DATS/xats2js.dats"
 //
 (* ****** ****** *)
+//
+#symload lctn with d2con_get_lctn
+#symload lctn with d2cst_get_lctn
+#symload lctn with d2var_get_lctn
+//
+#symload name with d2con_get_name
+#symload name with d2cst_get_name
+#symload name with d2var_get_name
+//
 (* ****** ****** *)
 #symload lctn with fjarg_get_lctn
 #symload node with fjarg_get_node
@@ -102,19 +119,41 @@ i1gptfpr
 (* ****** ****** *)
 //
 #implfun
+xats2js_d2cst
+( env0,dcst ) =
+let
+//
+val filr =
+envx2js_get_filr(env0)
+//
+val name = dcst.name((*0*))
+//
+in//let
+(
+symbl_fprint
+(filr, name);
+fprint_loctn_as_stamp
+(filr, dcst.lctn((*void*))))
+end(*let*)//end-of-[xats2js_d2cst(env0,dcst)]
+//
+(* ****** ****** *)
+//
+#implfun
 xats2js_d2var
 ( env0,dvar ) =
 let
 //
 val filr =
 envx2js_get_filr(env0)
-val nind =
-envx2js_get_nind(env0)
+//
+val name = dvar.name((*0*))
 //
 in//let
-nindfpr(filr, nind);
-strnfpr(filr, "// ");
-d2var_fprint(filr, dvar); fprintln(filr)
+(
+symbl_fprint
+(filr, name);
+fprint_loctn_as_stamp
+(filr, dvar.lctn((*void*))))
 end(*let*)//end-of-[xats2js_d2var(env0,dvar)]
 //
 (* ****** ****** *)
@@ -248,7 +287,7 @@ val () =
 (
   xats2js_i1letlst(env0, ilts)) };
 //
-strnfpr(filr, " // I1CMP:leave\n");
+strnfpr(filr, " // I1CMP:return\n");
 )
 //
 end(*let*)//end-of-[xats2js_i1cmp(env0,icmp)]
@@ -337,8 +376,26 @@ val-
 I1INSdapp
 (i1f0, i1vs) = iins
 in//let
+//
+(
+case+
+i1f0.node() of
+|I1Vtimp
+(i0f0, timp) =>
+(
 print
-("I1INSdapp(", i1f0, ";", i1vs, ")")
+("I1INSdapp(timp):\n");
+xats2js_t1imp(env0, timp);
+//
+nindfpr(filr, nind);
+strnfpr(filr, "// ");
+print
+("I1INSdapp(",i1f0,";",i1vs,")"))
+|_(*non-I1Vtimp*) =>
+(
+print
+("I1INSdapp(",i1f0,";",i1vs,")"))
+)
 end//let//end-of-[ f0_dapp(env0,iins) ]
 //
 (* ****** ****** *)

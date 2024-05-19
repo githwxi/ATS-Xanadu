@@ -143,5 +143,15 @@ add_loctn_loctn
 #symload + with add_loctn_loctn of 1000
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-05-18:
+*)
+fun
+fprint_loctn_as_stamp: (FILR, loctn) -> void
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_locinfo.sats] *)

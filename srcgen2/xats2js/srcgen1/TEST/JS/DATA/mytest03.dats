@@ -177,12 +177,29 @@ val ((*0*)) = foo(myint) endloc // local
 (* ****** ****** *)
 //
 fun
-length
+length1
 (xs: list(int)): sint =
 (
 case+ xs of
 | list_nil() => 0
-| list_cons(_, xs) => 1 + length(xs))
+| list_cons(_, xs) => 1 + length1(xs))//fun
+//
+(* ****** ****** *)
+//
+fun
+length2
+(xs
+:list(int)): sint =
+(
+  loop(xs, 0) ) where
+{
+fun
+loop(xs, res) =
+(
+case+ xs of
+| list_nil() => res
+| list_cons(_, xs) => loop(xs, res+1))//fun
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)

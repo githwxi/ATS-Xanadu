@@ -138,6 +138,10 @@ xats2js_i1parsed(i1parsed): (void)
 (* ****** ****** *)
 //
 fun
+xats2js_d2cst
+(env0: !envx2js, dcst: d2cst): void
+//
+fun
 xats2js_d2var
 (env0: !envx2js, dvar: d2var): void
 //
@@ -183,6 +187,13 @@ xats2js_i1cls
 fun
 xats2js_i1dcl
 (env0: !envx2js, dcl0: i1dcl): void
+//
+fun
+xats2js_dimpl
+(env0: !envx2js, dimp: dimpl): void
+fun
+xats2js_t1imp
+(env0: !envx2js, timp: t1imp): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

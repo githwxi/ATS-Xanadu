@@ -114,7 +114,8 @@ envx2js_free_top
   (  env0  ) =
 (
 case+ env0 of
-| ~ENVX2JS(filr, nind) => ((*void*)))
+| ~
+ENVX2JS(filr, nind) => ((*void*)))
 (*case+*)//end-of-(envx2js_free_top(env0))
 //
 (* ****** ****** *)
