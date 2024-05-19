@@ -421,7 +421,7 @@ I1INStimp
 in//let
 //
 print("I1INStimp(");
-print(i0f0,";","...",")");
+print(i0f0,";","...",")\n");
 xats2js_t1imp(env0,timp(*impltmp*))
 end//let//end-of-[ f0_timp(env0,iins) ]
 //
