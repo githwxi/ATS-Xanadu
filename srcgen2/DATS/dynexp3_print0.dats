@@ -382,54 +382,43 @@ D3Etry0
 //
 (* ****** ****** *)
 //
-|
-D3Eaddr
+|D3Eaddr
 (   d3e1   ) =>
 print("D3Eaddr(",d3e1,")") // left-val
-|
-D3Eview
+|D3Eview
 (   d3e1   ) =>
 print("D3Eview(",d3e1,")") // left-val
-|
-D3Eflat
+|D3Eflat
 (   d3e1   ) =>
 print("D3Eflat(",d3e1,")") // left-val
 //
 (* ****** ****** *)
 //
-|
-D3Eeval
+|D3Eeval
 (   d3e1   ) =>
 print("D3Eeval(",d3e1,")") // eval-fun
 //
 (* ****** ****** *)
 //
-|
-D3Efold
+|D3Efold
 (   d3e1   ) =>
 print("D3Efold(",d3e1,")") // open-con
-|
-D3Efree
+|D3Efree
 (   d3e1   ) =>
 print("D3Efree(",d3e1,")") // free-con
 //
 (* ****** ****** *)
 //
-|
-D3Edp2tr
-(   d3e1   ) =>
-print("D3Edp2tr(",d3e1,")") // de-p2tr
-//
-(* ****** ****** *)
-//
-|
-D3Edl0az
+|D3Edl0az
 (   d3e1   ) =>
 print("D3Edl0az(",d3e1,")") // de-l0az
-|
-D3Edl1az
+|D3Edl1az
 (   d3e1   ) =>
 print("D3Edl1az(",d3e1,")") // de-l1az
+//
+|D3Edp2tr
+(   d3e1   ) =>
+print("D3Edp2tr(",d3e1,")") // de-p2tr
 //
 (* ****** ****** *)
 //

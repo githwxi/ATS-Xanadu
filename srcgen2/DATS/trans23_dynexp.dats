@@ -1965,7 +1965,7 @@ list_cons(telt, _) = t2ps
 in//let
 d3exp(loc0, telt, D3Edp2tr(d3e1))
 end
-) (* end-of-then *)
+)
 else
 (
 if
@@ -1999,7 +1999,7 @@ list_cons(telt, _) = t2ps
 in//let
 d3exp(loc0, telt, D3Edl1az(d3e1))
 end
-)
+) (* end-of-then *)
 else
 (
 let
@@ -2008,9 +2008,9 @@ s2typ_new0_x2tp(loc0) in
 (
 d3exp(loc0, t2p0, D3Eeval(d3e1)))
 endlet
+) // else // end-of-[if(isP2TR1)]
 ) // else // end-of-[if(isL1AZY)]
 ) // else // end-of-[if(isL0AZY)]
-) // else // end-of-[if(isP2TR1)]
 //
 end//let
 //
@@ -2019,13 +2019,14 @@ end where // end-of-let
 //
 fun
 isP2TR
-(t2p1: s2typ): bool = s2typ_p2tr1q(t2p1)
+(t2p1:s2typ): bool = s2typ_p2tr1q(t2p1)
+//
 fun
 isL0AZY
-(t2p1: s2typ): bool = s2typ_l0azy1q(t2p1)
+(t2p1:s2typ): bool = s2typ_l0azy1q(t2p1)
 fun
 isL1AZY
-(t2p1: s2typ): bool = s2typ_l1azy1q(t2p1)
+(t2p1:s2typ): bool = s2typ_l1azy1q(t2p1)
 //
 } (*where*) // end of [f0_eval(env0,...)]
 //
