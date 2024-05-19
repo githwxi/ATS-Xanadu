@@ -65,6 +65,10 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 #staload
+"./../../../SATS/dynexp1.sats"
+#staload
+"./../../../SATS/dynexp2.sats"
+#staload
 "./../../../SATS/dynexp3.sats"
 //
 (* ****** ****** *)
@@ -525,6 +529,9 @@ i0exp(loc0, I0Ecst(d2c))
 |D3Eaddr _ => f0_addr(env0, d3e0)
 |D3Eflat _ => f0_flat(env0, d3e0)
 //
+|D3Efold _ => f0_fold(env0, d3e0)
+|D3Efree _ => f0_free(env0, d3e0)
+//
 (* ****** ****** *)
 //
 |D3Edl0az _ => f0_dl0az(env0, d3e0)
@@ -538,6 +545,10 @@ i0exp(loc0, I0Ecst(d2c))
 (* ****** ****** *)
 //
 |D3Eassgn _ => f0_assgn(env0, d3e0)
+|D3Eraise _ => f0_raise(env0, d3e0)
+//
+|D3El0azy _ => f0_l0azy(env0, d3e0)
+|D3El1azy _ => f0_l1azy(env0, d3e0)
 //
 (* ****** ****** *)
 //
@@ -1093,6 +1104,46 @@ end(*let*)//end-of-[f0_flat(env0,d3e0)]
 (* ****** ****** *)
 //
 fun
+f0_fold
+( env0:
+! envd3i0
+, d3e0: d3exp): i0exp =
+let
+//
+val-
+D3Efold(d3e1) = d3e0.node()
+//
+val i0e1 =
+(
+  trxd3i0_d3exp(env0, d3e1))
+//
+in//let
+(
+  i0exp(loc0, I0Efold( i0e1 )) )
+end(*let*)//end-of-[f0_fold(env0,d3e0)]
+//
+fun
+f0_free
+( env0:
+! envd3i0
+, d3e0: d3exp): i0exp =
+let
+//
+val-
+D3Efree(d3e1) = d3e0.node()
+//
+val i0e1 =
+(
+  trxd3i0_d3exp(env0, d3e1))
+//
+in//let
+(
+  i0exp(loc0, I0Efree( i0e1 )) )
+end(*let*)//end-of-[f0_free(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
 f0_dl0az
 ( env0:
 ! envd3i0
@@ -1189,14 +1240,86 @@ D3Eassgn
 (d3el, d3er) = d3e0.node()
 //
 val i0el =
-trxd3i0_d3exp(env0, d3el)
+(
+  trxd3i0_d3exp(env0, d3el))
 val i0er =
-trxd3i0_d3exp(env0, d3er)
+(
+  trxd3i0_d3exp(env0, d3er))
 //
 in//let
 (
   i0exp(loc0, I0Eassgn(i0el, i0er)))
 end (*let*) // end of [f0_assgn(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_raise
+( env0:
+! envd3i0
+, d3e0: d3exp): i0exp =
+let
+//
+val loc0 = d3e0.lctn()
+val-
+D3Eraise
+(dknd, d3e1) = d3e0.node()
+//
+val iexn =
+(
+  trxd3i0_d3exp(env0, d3e1))
+//
+in//let
+(
+  i0exp(loc0, I0Eraise(dknd, iexn)))
+end (*let*) // end of [f0_raise(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_l0azy
+( env0:
+! envd3i0
+, d3e0: d3exp): i0exp =
+let
+//
+val loc0 = d3e0.lctn()
+val-
+D3El0azy
+(dknd, d3e1) = d3e0.node()
+//
+val i0e1 =
+(
+  trxd3i0_d3exp(env0, d3e1))
+//
+in//let
+(
+  i0exp(loc0, I0El0azy(dknd, i0e1)))
+end (*let*) // end of [f0_l0azy(env0,d3e0)]
+//
+fun
+f0_l1azy
+( env0:
+! envd3i0
+, d3e0: d3exp): i0exp =
+let
+//
+val loc0 = d3e0.lctn()
+val-
+D3El1azy
+(dknd
+,d3e1, d3es) = d3e0.node()
+//
+val i0e1 =
+(
+  trxd3i0_d3exp(env0, d3e1))
+val i0es =
+  trxd3i0_d3explst(env0, d3es)
+//
+in//let
+( i0exp_make_node
+  (loc0, I0El1azy(dknd, i0e1, i0es)))
+end (*let*) // end of [f0_l1azy(env0,d3e0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

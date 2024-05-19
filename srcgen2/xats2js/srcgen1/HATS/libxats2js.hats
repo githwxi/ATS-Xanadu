@@ -28,7 +28,12 @@ Mon 19 Feb 2024 10:54:31 AM
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
-"./../../../SATS/trans01.sats"
+"./../../../SATS/lexing0.sats"
+(* ****** ****** *)
+#staload
+"./../../../SATS/staexp1.sats"
+#staload
+"./../../../SATS/dynexp1.sats"
 (* ****** ****** *)
 #staload
 "./../../../SATS/staexp2.sats"
@@ -39,6 +44,11 @@ Mon 19 Feb 2024 10:54:31 AM
 "./../../../SATS/dynexp2.sats"
 #staload
 "./../../../SATS/dynexp3.sats"
+(* ****** ****** *)
+#staload
+"./../../../SATS/trans01.sats"
+#staload
+"./../../../SATS/tread01.sats"
 (* ****** ****** *)
 #staload
 "./../../../SATS/trans12.sats"

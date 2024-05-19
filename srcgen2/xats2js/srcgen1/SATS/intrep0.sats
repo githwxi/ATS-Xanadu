@@ -69,10 +69,10 @@ XATSOPT "./../../.."
 #staload
 "./../../../SATS/locinfo.sats"
 //
-(* ****** ****** *)
-//
-#staload
+#staload // LEX =
 "./../../../SATS/lexing0.sats"
+#staload // D1E =
+"./../../../SATS/dynexp1.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -464,7 +464,9 @@ i0exp_node =
 |I0Eflat of (i0exp)//left-val-content
 //
 |I0Efold of (i0exp)//open-con-folding
+|I0Efree of (i0exp)//free-builtin-fun
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I0Edl0az of (i0exp)//l0azy-eval-thunk
@@ -479,8 +481,17 @@ i0exp_node =
 (* ****** ****** *)
 //
 |I0Eassgn of
-(i0exp(*l-val*), i0exp(*r-val*))//assign
+(i0exp(*l-val*),i0exp(*r-val*))//assign
 //
+|I0Eraise of (token, i0exp(*lin-exn*) )
+//
+|I0El0azy of // nonlin-lazy-eval
+( d1exp(*$L0AZY*), i0exp(*non-thunk*) )
+|I0El1azy of // linear-lazy-eval
+( d1exp(*$LLAZY*)
+, i0exp(*lin-thunk*), i0explst(*frees*))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I0Enone0 of ((*0*)) |I0Enone1 of (d3exp)

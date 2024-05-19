@@ -854,6 +854,8 @@ iexp.node() of
 |I0Eift0 _ => f0_ift0(env0, iexp)
 |I0Ecas0 _ => f0_cas0(env0, iexp)
 //
+|I0Eseqn _ => f0_seqn(env0, iexp)
+//
 |I0Etup0 _ => f0_tup0(env0, iexp)
 |I0Etup1 _ => f0_tup1(env0, iexp)
 |I0Ercd2 _ => f0_rcd2(env0, iexp)
@@ -1304,6 +1306,64 @@ prerr("trxi0i1_i0exp:");
 prerrln("f0_cas0(01): iexp = ", iexp))
 //
 }(*where*)//end-of-[f0_cas0(env0,iexp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_seqn
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Eseqn
+(i0es, i0e1) = iexp.node()
+//
+val () =
+(
+  feach(env0, i0es)) where
+{
+//
+fun
+feach
+( env0:
+! envi0i1
+, i0es: i0explst): void =
+(
+case+ i0es of
+|
+list_nil
+( (*0*) ) => ((*0*))
+|
+list_cons
+(i0e1, i0es) =>
+(
+  feach(env0, i0es)) where
+{
+  val _(*i1v1*) =
+  trxi0i1_i0exp(env0, i0e1) }
+)
+//
+}(*where*)//end-[val()=feach...]
+//
+in//let
+(
+  trxi0i1_i0exp(env0, i0e1) )
+end where
+{
+//
+(*
+val () =
+(
+prerr("trxi0i1_i0exp:");
+prerrln("f0_seqn(01): iexp = ", iexp))
+*)
+//
+}(*where*)//end-of-[f0_seqn(env0,iexp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
