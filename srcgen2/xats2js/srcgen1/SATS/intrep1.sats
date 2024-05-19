@@ -207,6 +207,10 @@ and i1ins =
 (i1val(*fun0*)
 ,i1valist(*args*))//funcall
 //
+|I1INStimp of
+(i0exp(*tapp*)
+,t1imp(*tmpinst*))//impltmp
+//
 |I1INSpcon of
 (token(*tknd*)
 ,label(*int/sym*)
@@ -279,10 +283,12 @@ i1val_node =
 |I1Vvar of (d2var)
 (* ****** ****** *)
 (* ****** ****** *)
+(*
 //
 |I1Vtimp of
 (i0exp(*tapp*), t1imp)
 //
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 //

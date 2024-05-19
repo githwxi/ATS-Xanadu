@@ -123,6 +123,9 @@ in//end
 print("I1Vvar(",name,")")
 end//let//end-[I1Vvar...]
 //
+(* ****** ****** *)
+//
+(*
 |I1Vtimp
 ( i0e1,timp ) =>
 (
@@ -133,17 +136,18 @@ where
 val
 i0e1 =
 (
-  detapp(i0e1)) where
+  detapq(i0e1)) where
 {
 fun
-detapp
+detapq
 ( i0e1
 : i0exp): i0exp =
 (
 case+ i0e1.node() of
 |
-I0Etapp(i0e1) => detapp(i0e1)
+I0Etapq(i0e1) => detapq(i0e1)
 | _ (*otherwise*) => ( i0e1 ) ) } }
+*)
 //
 (* ****** ****** *)
 //
@@ -233,11 +237,40 @@ case+ iins of
 print("I1INSopr(");
 print(iopr, ";", i1vs, ")"))
 //
+(* ****** ****** *)
+//
 |I1INSdapp
 ( i1f0, i1vs) =>
 (
 print("I1INSdapp(");
 print(i1f0, ";", i1vs, ")"))
+//
+(* ****** ****** *)
+//
+|I1INStimp
+( i0e1,timp ) =>
+(
+print("I1INStimp(");
+print(i0e1, ";", "...", ")"))
+where
+{
+val
+i0e1 =
+(
+  detapq(i0e1)) where
+{
+fun
+detapq
+( i0e1
+: i0exp): i0exp =
+(
+case+ i0e1.node() of
+|
+I0Etapq
+( i0e1 ) => detapq(i0e1)
+|
+_(*otherwise*) => ( i0e1 ))}
+}
 //
 (* ****** ****** *)
 //

@@ -327,29 +327,23 @@ i1insfpr
 (
 case+ iins of
 //
+(* ****** ****** *)
+//
 |I1INSdapp _ =>
 (
 f0_dapp(env0, iins))
 //
-|I1INSift0 _ =>
+|I1INStimp _ =>
 (
 //
-f0_ift0(env0, iins);
+f0_timp(env0, iins);
 //
 nindfpr
 (filr, nind); strnfpr
-(filr, "// I1INSift0-end");
+(filr, "// I1INStimp-end");
 )
 //
-|I1INScas0 _ =>
-(
-//
-f0_cas0(env0, iins);
-//
-nindfpr
-(filr, nind); strnfpr
-(filr, "// I1INScas0-end");
-)
+(* ****** ****** *)
 //
 |I1INSlet0 _ =>
 (
@@ -361,9 +355,38 @@ nindfpr
 (filr, "// I1INSlet0-end");
 )
 //
+(* ****** ****** *)
+//
+|I1INSift0 _ =>
+(
+//
+f0_ift0(env0, iins);
+//
+nindfpr
+(filr, nind); strnfpr
+(filr, "// I1INSift0-end");
+)
+//
+(* ****** ****** *)
+//
+|I1INScas0 _ =>
+(
+//
+f0_cas0(env0, iins);
+//
+nindfpr
+(filr, nind); strnfpr
+(filr, "// I1INScas0-end");
+)
+//
+(* ****** ****** *)
+//
 |_(* else *) =>
 (
   i1ins_fprint(filr, iins)))
+//
+(* ****** ****** *)
+//
 where
 {
 //
@@ -379,26 +402,28 @@ I1INSdapp
 (i1f0, i1vs) = iins
 in//let
 //
-(
-case+
-i1f0.node() of
-|I1Vtimp
-(i0f0, timp) =>
-(
 print
-("I1INSdapp(timp):\n");
-xats2js_t1imp(env0, timp);
-//
-nindfpr(filr, nind);
-strnfpr(filr, "// ");
-print
-("I1INSdapp(",i1f0,";",i1vs,")"))
-|_(*non-I1Vtimp*) =>
-(
-print
-("I1INSdapp(",i1f0,";",i1vs,")"))
-)
+("I1INSdapp(",i1f0,";",i1vs,")")
 end//let//end-of-[ f0_dapp(env0,iins) ]
+//
+(* ****** ****** *)
+//
+fun
+f0_timp
+( env0:
+! envx2js
+, iins: i1ins): void =
+let
+//
+val-
+I1INStimp
+(i0f0, timp) = iins
+in//let
+//
+print("I1INStimp(");
+print(i0f0,";","...",")");
+xats2js_t1imp(env0,timp(*impltmp*))
+end//let//end-of-[ f0_timp(env0,iins) ]
 //
 (* ****** ****** *)
 //

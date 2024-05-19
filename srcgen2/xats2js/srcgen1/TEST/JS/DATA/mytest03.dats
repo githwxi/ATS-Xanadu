@@ -211,4 +211,11 @@ length3
 (* ****** ****** *)
 (* ****** ****** *)
 
+fun
+length4
+(xs:list(int)): sint = gseq_length<list(int)><int>(xs)
+
+(* ****** ****** *)
+(* ****** ****** *)
+
 (* end of [ATS3/XINTERP_TEST_JS_DATA_mytest03.dats] *)
