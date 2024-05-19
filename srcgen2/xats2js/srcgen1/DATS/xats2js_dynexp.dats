@@ -132,6 +132,7 @@ in//let
 (
 symbl_fprint
 (filr, name);
+strnfpr(filr, "_");
 fprint_loctn_as_stamp
 (filr, dcst.lctn((*void*))))
 end(*let*)//end-of-[xats2js_d2cst(env0,dcst)]
@@ -152,6 +153,7 @@ in//let
 (
 symbl_fprint
 (filr, name);
+strnfpr(filr, "_");
 fprint_loctn_as_stamp
 (filr, dvar.lctn((*void*))))
 end(*let*)//end-of-[xats2js_d2var(env0,dvar)]
