@@ -132,6 +132,29 @@ i1val_make_node(loc0,I1Vtnm(itnm)))
 (* ****** ****** *)
 //
 fun
+i1val_timp
+( env0:
+! envi0i1
+, loc0: loc_t
+, i0f0: i0exp
+, timp: t1imp
+  (* impltmp *)): i1val =
+(
+i1val_tnm(loc0, itnm)) where
+{
+//
+val itnm = i1tnm_new0((*0*))
+val iins = I1INStimp(i0f0, timp)
+val ilet = I1LETnew1(itnm, iins)
+//
+val (  ) =
+(
+  envi0i1_insert_ilet(env0, ilet) )
+}(*where*)//end-of-[i1val_timp(env0,...)]
+//
+(* ****** ****** *)
+//
+fun
 i1val_dapp
 ( env0:
 ! envi0i1
@@ -748,14 +771,20 @@ iexp.node() of
 |I0Ecst _ => f0_cst(env0, iexp)
 |I0Evar _ => f0_var(env0, iexp)
 //
+(* ****** ****** *)
+//
 |I0Etimp _ => f0_timp(env0, iexp)
 //
-(*
 |I0Etapp _ => f0_tapp(env0, iexp)
+(*
 |I0Etapq _ => f0_tapq(env0, iexp)
 *)
 //
+(* ****** ****** *)
+//
 |I0Edapp _ => f0_dapp(env0, iexp)
+//
+(* ****** ****** *)
 //
 |I0Epcon _ => f0_pcon(env0, iexp)
 |I0Epflt _ => f0_pflt(env0, iexp)
@@ -892,7 +921,7 @@ val-
 I0Evar(d2v1) = iexp.node()
 //
 in//let
-  envi0i1_search_dvar(env0, d2v1)
+envi0i1_search_dvar(env0, d2v1)
 end where
 {
 //
@@ -919,11 +948,13 @@ I0Etimp
 (i0e1, timp) = iexp.node()
 //
 val
-timp = trxi0i1_t0imp(env0, timp)
+timp =
+(
+  trxi0i1_t0imp(env0, timp))
 //
 in//let
 (
-  i1val(loc0, I1Vtimp(i0e1, timp)))
+i1val_timp(env0,loc0,i0e1,timp))
 end where
 {
 //
@@ -933,6 +964,23 @@ prerr("trxi0i1_i0exp:");
 prerrln("f0_timp(01): iexp = ", iexp))
 //
 }(*where*)//end-of-[f0_timp(env0,iexp)]
+//
+(* ****** ****** *)
+//
+fun
+f0_tapp
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Etapp(i0f0) = iexp.node()
+in//let
+(
+  trxi0i1_i0exp(env0, i0f0)) end//let
 //
 (* ****** ****** *)
 //
