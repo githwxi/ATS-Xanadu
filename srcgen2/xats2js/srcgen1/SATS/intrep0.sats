@@ -467,12 +467,19 @@ i0exp_node =
 //
 (* ****** ****** *)
 //
-|I0Ewhere of (i0exp, i0dclist)
+|I0Edp2tr of (i0exp)//p2tr-dereference
+|I0Edl0az of (i0exp)//l0azy-eval-thunk
+|I0Edl1az of (i0exp)//l1azy-eval-thunk
+//
+(* ****** ****** *)
+//
+|I0Ewhere of
+(i0exp(*scope*), i0dclist)//end-in-let
 //
 (* ****** ****** *)
 //
 |I0Eassgn of
-( i0exp(*l-val*), i0exp(*r-val*) )
+(i0exp(*l-val*), i0exp(*r-val*))//assign
 //
 (* ****** ****** *)
 //

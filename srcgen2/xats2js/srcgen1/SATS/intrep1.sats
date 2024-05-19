@@ -501,13 +501,13 @@ i1cls_get_node(i1cls): i1cls_node
 //
 (* ****** ****** *)
 //
-#symload lctn with i1gua_make_lctn
-#symload lctn with i1gpt_make_lctn
-#symload lctn with i1cls_make_lctn
+#symload lctn with i1gua_get_lctn
+#symload lctn with i1gpt_get_lctn
+#symload lctn with i1cls_get_lctn
 //
-#symload node with i1gua_make_node
-#symload node with i1gpt_make_node
-#symload node with i1cls_make_node
+#symload node with i1gua_get_node
+#symload node with i1gpt_get_node
+#symload node with i1cls_get_node
 //
 (* ****** ****** *)
 //

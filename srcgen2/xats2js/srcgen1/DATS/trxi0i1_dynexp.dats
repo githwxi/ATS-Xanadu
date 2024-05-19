@@ -599,6 +599,18 @@ I0Pany _ => list_nil((*0*))
 //
 (* ****** ****** *)
 //
+|I0Pbang _ =>
+(
+  f0_bang(env0, ipat, ival))
+|I0Pflat _ =>
+(
+  f0_flat(env0, ipat, ival))
+|I0Pfree _ =>
+(
+  f0_free(env0, ipat, ival))
+//
+(* ****** ****** *)
+//
 |
 I0Pdapp _ =>
 (
@@ -646,6 +658,53 @@ I0Pvar(dvar) = ipat.node((*0*))
 val ((*nil*)) =
 envi0i1_insert_dvar(env0, dvar, ival)
 }(*where*)//end-of-[f0_var(env0, ...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_bang
+( env0:
+! envi0i1
+, ipat: i0pat
+, ival: i1val): d2sublst =
+let
+//
+val-
+I0Pbang i0p1 = ipat.node()
+//
+in//let
+  trxi0i1_i0bnd(env0,i0p1,ival)
+end(*let*)//end-of-[f0_bang(env0, ...)]
+//
+fun
+f0_flat
+( env0:
+! envi0i1
+, ipat: i0pat
+, ival: i1val): d2sublst =
+let
+//
+val-
+I0Pflat i0p1 = ipat.node()
+//
+in//let
+  trxi0i1_i0bnd(env0,i0p1,ival)
+end(*let*)//end-of-[f0_flat(env0, ...)]
+//
+fun
+f0_free
+( env0:
+! envi0i1
+, ipat: i0pat
+, ival: i1val): d2sublst =
+let
+//
+val-
+I0Pfree i0p1 = ipat.node()
+//
+in//let
+  trxi0i1_i0bnd(env0,i0p1,ival)
+end(*let*)//end-of-[f0_free(env0, ...)]
 //
 (* ****** ****** *)
 //
