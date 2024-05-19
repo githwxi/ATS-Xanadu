@@ -467,9 +467,9 @@ i0exp_node =
 //
 (* ****** ****** *)
 //
-|I0Edp2tr of (i0exp)//p2tr-dereference
 |I0Edl0az of (i0exp)//l0azy-eval-thunk
 |I0Edl1az of (i0exp)//l1azy-eval-thunk
+|I0Edp2tr of (i0exp)//p2tr-dereference
 //
 (* ****** ****** *)
 //

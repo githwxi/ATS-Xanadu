@@ -347,11 +347,6 @@ print("I0Ercd2(", tknd, ";", lies, ")"))
 (* ****** ****** *)
 //
 |
-I0Edp2tr
-( i0e1 ) =>
-(
- print("I0Edp2tr(", i0e1, ")") )//de-p2tr
-|
 I0Edl0az
 ( i0e1 ) =>
 (
@@ -361,6 +356,12 @@ I0Edl1az
 ( i0e1 ) =>
 (
  print("I0Edl1az(", i0e1, ")") )//de-l1az
+//
+|
+I0Edp2tr
+( i0e1 ) =>
+(
+ print("I0Edp2tr(", i0e1, ")") )//de-p2tr
 //
 (* ****** ****** *)
 //
