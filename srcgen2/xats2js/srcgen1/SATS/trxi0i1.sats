@@ -318,6 +318,10 @@ fun
 trxi0i1_i0explst
 (env0: !envi0i1, i0es: i0explst): i1valist
 fun
+trxi0i1_i0blklst
+(env0: !envi0i1, i0es: i0explst): i1cmplst
+//
+fun
 trxi0i1_l0i0elst
 (env0: !envi0i1, lies: l0i0elst): l1i1vlst
 //

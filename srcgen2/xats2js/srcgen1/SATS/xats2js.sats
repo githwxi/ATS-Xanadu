@@ -198,13 +198,19 @@ xats2js_t1imp
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 fun
 xats2js_i1valist
 (env0: !envx2js, i1vs: i1valist): void
+*)
 //
 fun
 xats2js_i1letlst
 (env0: !envx2js, i1vs: i1letlst): void
+//
+fun
+xats2js_i1cmplst
+(env0: !envx2js, i1fs: i1cmplst): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
