@@ -528,6 +528,61 @@ val (  ) =
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+i1val_l0azy
+( env0:
+! envi0i1
+, loc0: loc_t
+, dknd: d1exp
+, icmp: i1cmp
+  (*l0azy-thunk*)): i1val =
+(
+i1val_tnm(loc0, itnm)) where
+{
+//
+val itnm = i1tnm_new0((*0*))
+//
+val
+iins = I1INSl0azy(dknd, icmp)
+//
+val ilet = I1LETnew1(itnm, iins)
+//
+val (  ) =
+(
+  envi0i1_insert_ilet(env0, ilet) )
+}(*where*)//end-of-[i1val_l0azy(env0,...)]
+//
+fun
+i1val_l1azy
+( env0:
+! envi0i1
+, loc0: loc_t
+, dknd: d1exp
+, icmp: i1cmp
+  (*l1azy-thunk*)
+, i1fs: i1cmplst
+  (*l1azy-frees*)): i1val =
+(
+i1val_tnm(loc0, itnm)) where
+{
+//
+val itnm = i1tnm_new0((*0*))
+//
+val
+iins =
+(
+ I1INSl1azy(dknd, icmp, i1fs))
+//
+val ilet = I1LETnew1(itnm, iins)
+//
+val (  ) =
+(
+  envi0i1_insert_ilet(env0, ilet) )
+}(*where*)//end-of-[i1val_l1azy(env0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 #implfun
 trxi0i1_i0pat
@@ -922,9 +977,7 @@ iexp.node() of
 *)
 //
 |I0El0azy _ => f0_l0azy(env0, iexp)
-(*
 |I0El1azy _ => f0_l1azy(env0, iexp)
-*)
 //
 (* ****** ****** *)
 | _(*otherwise*) => i1val_none1(iexp)
@@ -1535,11 +1588,12 @@ val (  ) =
 envi0i1_pshlam0(env0)
 //
 val fjas =
-trxi0i1_fiarglst(env0, fias)
+trxi0i1_fiarglst(env0,fias)
 //
-val
-iret =
-trxi0i1_i0exp(env0, body)
+val iret =
+(
+  trxi0i1_i0exp(env0, body))
+//
 val
 ilts = envi0i1_poplam0( env0 )
 //
@@ -1577,11 +1631,11 @@ envi0i1_d2vins_self
 ( env0, dvar(*recursive*)))
 //
 val fjas =
-trxi0i1_fiarglst(env0, fias)
+trxi0i1_fiarglst(env0,fias)
+val iret =
+(
+  trxi0i1_i0exp(env0, body))
 //
-val
-iret =
-trxi0i1_i0exp(env0, body)
 val
 ilts = envi0i1_poplam0( env0 )
 //
@@ -1742,17 +1796,68 @@ I0El0azy
 val (  ) =
 envi0i1_pshlam0(env0)
 //
-val
-iret =
+val iret =
 trxi0i1_i0exp(env0, body)
+//
 val
 ilts = envi0i1_poplam0( env0 )
 //
 val icmp = I1CMPcons(ilts, iret)
 //
 in//let
-  i1val(loc0, I1Vl0azy(dknd, icmp))
-end(*let*)//end-of-[f0_l0azy(env0,iexp)]
+  i1val_l0azy(env0,loc0,dknd,icmp)
+end where
+{
+//
+val () =
+(
+prerr("trxi0i1_i0exp:");
+prerrln("f0_l0azy(01): iexp = ", iexp))
+//
+}(*where*)//end-of-[f0_l0azy(env0,iexp)]
+//
+(* ****** ****** *)
+//
+fun
+f0_l1azy
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0El1azy
+(dknd
+,body,i0fs) = iexp.node()
+//
+val (  ) =
+envi0i1_pshlam0(env0)
+//
+val iret =
+trxi0i1_i0exp(env0, body)
+val i1fs =
+trxi0i1_i0blklst(env0, i0fs)
+//
+val
+ilts = envi0i1_poplam0( env0 )
+//
+val icmp = I1CMPcons(ilts, iret)
+//
+in//let
+(
+  i1val_l1azy
+  (env0, loc0, dknd, icmp, i1fs) )
+end where
+{
+//
+val () =
+(
+prerr("trxi0i1_i0exp:");
+prerrln("f0_l1azy(01): iexp = ", iexp))
+//
+}(*where*)//end-of-[f0_l1azy(env0,iexp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -2110,6 +2215,12 @@ trxi0i1_i0explst
 ( env0, i0es ) =
 (
  list_trxi0i1_fnp(env0, i0es, trxi0i1_i0exp))
+//
+#implfun
+trxi0i1_i0blklst
+( env0, i0es ) =
+(
+ list_trxi0i1_fnp(env0, i0es, trxi0i1_i0blk))
 //
 (* ****** ****** *)
 //

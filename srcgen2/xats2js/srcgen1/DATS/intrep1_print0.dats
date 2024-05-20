@@ -215,15 +215,19 @@ print( dvar, ";", fjas, ";", icmp, ")"))
 //
 (* ****** ****** *)
 //
+(*
 |I1Vl0azy
 (dknd, icmp) =>
 (
 print("I1Vl0azy(", dknd, ";", icmp, ")"))
+*)
 //
+(*
 |I1Vl1azy
-(dknd, icmp, i1vs) =>
-( print("I1Vl1azy(")
-; print(dknd, ";", icmp, ";", i1vs, ")"))
+(dknd, icmp, i1fs) =>
+( print("I1Vl1azy(") // i1fs: frees
+; print(dknd, ";", icmp, ";", i1fs, ")"))
+*)
 //
 (* ****** ****** *)
 //
@@ -365,10 +369,23 @@ _(*otherwise*) => ( i0e1 ))}
 //
 (* ****** ****** *)
 //
+|I1INSl0azy
+(dknd, icmp) =>
+( print("I1INSl0azy(")
+; print(dknd, ";", icmp, ")"))
+//
+|I1INSl1azy
+(dknd, icmp, i1fs) =>
+( print("I1INSl0azy(")
+; print
+  (dknd, ";", icmp, ";", i1fs, ")"))
+//
+(* ****** ****** *)
+//
 |I1INSassgn
 (i1vl, i1vr) =>
-( print("I1INSassgn(")
-; print(i1vl, ";", i1vr, ")"))
+print
+("I1INSassgn(", i1vl, ";", i1vr, ")")
 //
 (* ****** ****** *)
 //

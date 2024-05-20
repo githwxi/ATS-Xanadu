@@ -256,8 +256,15 @@ and i1ins =
 //
 (* ****** ****** *)
 //
+|I1INSl0azy of
+(d1exp,i1cmp(*lazy-thunk*))
+|I1INSl1azy of
+(d1exp,i1cmp,i1cmplst(*frees*))
+//
+(* ****** ****** *)
+//
 |I1INSassgn of
-(i1val(*l-val*), i1val(*r-val*))
+(i1val(*l-val*),i1val(*r-val*))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -334,11 +341,13 @@ This one is for a left value!
 //
 (* ****** ****** *)
 //
+(*
 |I1Vl0azy of
 (d1exp(*kind*), i1cmp(*body*))
 |I1Vl1azy of
 (d1exp(*kind*)
 ,i1cmp(*body*), i1cmplst(*frees*))
+*)
 //
 (* ****** ****** *)
 //
