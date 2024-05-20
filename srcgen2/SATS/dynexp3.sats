@@ -511,9 +511,10 @@ it may be of other uses in the future
 //
 (* ****** ****** *)
 //
+|D3Edp2tr of (d3exp)//p2tr-dereference
+//
 |D3Edl0az of (d3exp)//l0azy-eval-thunk
 |D3Edl1az of (d3exp)//l1azy-eval-thunk
-|D3Edp2tr of (d3exp)//p2tr-dereference
 //
 (* ****** ****** *)
 //

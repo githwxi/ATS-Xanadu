@@ -256,6 +256,11 @@ and i1ins =
 //
 (* ****** ****** *)
 //
+|I1INSdl0az of i1val//l0azy-fun
+|I1INSdl1az of i1val//l1azy-fun
+//
+(* ****** ****** *)
+//
 |I1INSl0azy of
 (d1exp,i1cmp(*lazy-thunk*))
 |I1INSl1azy of
