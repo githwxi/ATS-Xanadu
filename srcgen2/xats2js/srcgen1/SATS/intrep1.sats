@@ -246,8 +246,15 @@ and i1ins =
 |I1INStup1 of (token, i1valist)
 |I1INSrcd2 of (token, l1i1vlst)
 //
+(* ****** ****** *)
+//
 |I1INSflat of
 (i1val(*leftval*))//dereference
+//
+|I1INSfree of
+(i1val(*datacon*))//malloc-free
+//
+(* ****** ****** *)
 //
 |I1INSassgn of
 (i1val(*l-val*), i1val(*r-val*))
@@ -326,6 +333,13 @@ This one is for a left value!
 , fjarglst(*args*), i1cmp(*body*))
 //
 (* ****** ****** *)
+//
+|I1Vl0azy of
+(d1exp(*kind*), i1cmp(*body*))
+|I1Vl1azy of
+(d1exp(*kind*)
+,i1cmp(*body*), i1cmplst(*frees*))
+//
 (* ****** ****** *)
 //
 |I1Vnone0 of () |I1Vnone1 of (i0exp)

@@ -478,6 +478,30 @@ val (  ) =
 }(*where*)//end-of-[i1val_flat(env0,...)]
 //
 (* ****** ****** *)
+//
+fun
+i1val_free
+( env0:
+! envi0i1
+, loc0: loc_t
+, i1v0: i1val
+  (*left-value*)): i1val =
+(
+i1val_tnm(loc0, itnm)) where
+{
+//
+val itnm = i1tnm_new0((*0*))
+val iins =
+(
+  I1INSfree(i1v0(*left-val*)))
+val ilet = I1LETnew1(itnm, iins)
+//
+val (  ) =
+(
+  envi0i1_insert_ilet(env0, ilet) )
+}(*where*)//end-of-[i1val_free(env0,...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -849,27 +873,62 @@ iexp.node() of
 |I0Epflt _ => f0_pflt(env0, iexp)
 |I0Eproj _ => f0_proj(env0, iexp)
 //
+(* ****** ****** *)
+//
 |I0Elet0 _ => f0_let0(env0, iexp)
+//
+(* ****** ****** *)
 //
 |I0Eift0 _ => f0_ift0(env0, iexp)
 |I0Ecas0 _ => f0_cas0(env0, iexp)
 //
+(* ****** ****** *)
+//
 |I0Eseqn _ => f0_seqn(env0, iexp)
+//
+(* ****** ****** *)
 //
 |I0Etup0 _ => f0_tup0(env0, iexp)
 |I0Etup1 _ => f0_tup1(env0, iexp)
 |I0Ercd2 _ => f0_rcd2(env0, iexp)
 //
+(* ****** ****** *)
+//
 |I0Elam0 _ => f0_lam0(env0, iexp)
 |I0Efix0 _ => f0_fix0(env0, iexp)
 //
+(* ****** ****** *)
+//
+(*
+|I0Eaddr _ => f0_addr(env0, iexp)
+*)
 |I0Eflat _ => f0_flat(env0, iexp)
+//
+(*
+|I0Efold _ => f0_fold(env0, iexp)
+*)
+|I0Efree _ => f0_free(env0, iexp)
+//
+(* ****** ****** *)
 //
 |I0Ewhere _ => f0_where(env0, iexp)
 //
+(* ****** ****** *)
+//
 |I0Eassgn _ => f0_assgn(env0, iexp)
 //
+(*
+|I0Eraise _ => f0_raise(env0, iexp)
+*)
+//
+|I0El0azy _ => f0_l0azy(env0, iexp)
+(*
+|I0El1azy _ => f0_l1azy(env0, iexp)
+*)
+//
+(* ****** ****** *)
 | _(*otherwise*) => i1val_none1(iexp)
+(* ****** ****** *)
 //
 ) where
 {
@@ -1563,7 +1622,38 @@ val () =
 prerr("trxi0i1_i0exp:");
 prerrln("f0_flat(01): iexp = ", iexp))
 //
-}(*where*)//end-of-[f0_assgn(env0,iexp)]
+}(*where*)//end-of-[f0_flat(env0,iexp)]
+//
+(* ****** ****** *)
+//
+fun
+f0_free
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Efree(i0e0) = iexp.node()
+//
+val i1v0 =
+(
+  trxi0i1_i0lft(env0, i0e0))
+//
+in//let
+(
+  i1val_free(env0, loc0, i1v0))
+end where
+{
+//
+val () =
+(
+prerr("trxi0i1_i0exp:");
+prerrln("f0_free(01): iexp = ", iexp))
+//
+}(*where*)//end-of-[f0_free(env0,iexp)]
 //
 (* ****** ****** *)
 //
@@ -1633,6 +1723,36 @@ prerr("trxi0i1_i0exp:");
 prerrln("f0_assgn(01): iexp = ", iexp))
 //
 }(*where*)//end-of-[f0_assgn(env0,iexp)]
+//
+(* ****** ****** *)
+//
+fun
+f0_l0azy
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0El0azy
+(dknd,body) = iexp.node()
+//
+val (  ) =
+envi0i1_pshlam0(env0)
+//
+val
+iret =
+trxi0i1_i0exp(env0, body)
+val
+ilts = envi0i1_poplam0( env0 )
+//
+val icmp = I1CMPcons(ilts, iret)
+//
+in//let
+  i1val(loc0, I1Vl0azy(dknd, icmp))
+end(*let*)//end-of-[f0_l0azy(env0,iexp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

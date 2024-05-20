@@ -71,8 +71,6 @@ XATSOPT "./../../.."
 //
 #staload // LEX =
 "./../../../SATS/lexing0.sats"
-#staload // D1E =
-"./../../../SATS/dynexp1.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -93,6 +91,9 @@ XATSOPT "./../../.."
 #staload S1E =
 "./../../../SATS/staexp1.sats"
 (* ****** ****** *)
+#staload D1E =
+"./../../../SATS/dynexp1.sats"
+(* ****** ****** *)
 #staload S2E =
 "./../../../SATS/staexp2.sats"
 #staload T2P =
@@ -106,6 +107,8 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef g1exp = $S1E.g1exp
+(* ****** ****** *)
+#typedef d1exp = $D1E.d1exp
 (* ****** ****** *)
 #typedef s2exp = $S2E.s2exp
 #typedef s2typ = $S2E.s2typ
