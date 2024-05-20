@@ -281,13 +281,6 @@ i1val_node =
 |I1Vstr of token
 //
 (* ****** ****** *)
-//
-(*
-|I1Vcst of (d2cst)
-|I1Vcon of (d2con)
-*)
-//
-(* ****** ****** *)
 |I1Varg of (i1arg)
 (* ****** ****** *)
 |I1Vtnm of (i1tnm)

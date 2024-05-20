@@ -112,10 +112,15 @@ print("I1Vstr(",str,")")
 |I1Vtnm(itnm) =>
 print("I1Vtnm(",itnm,")")
 //
+(* ****** ****** *)
+//
 |I1Vcon(dcon) =>
 print("I1Vcon(",dcon,")")
 |I1Vcst(dcst) =>
 print("I1Vcst(",dcst,")")
+//
+(* ****** ****** *)
+//
 |I1Vvar(dvar) =>
 let
 val name = dvar.name()
