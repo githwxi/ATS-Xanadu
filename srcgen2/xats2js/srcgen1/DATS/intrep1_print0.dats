@@ -213,8 +213,24 @@ print("I1Vfix0(");
 print( tknd, ";");
 print( dvar, ";", fjas, ";", icmp, ")"))
 //
+(* ****** ****** *)
+//
+|I1Vl0azy
+(dknd, icmp) =>
+(
+print("I1Vl0azy(", dknd, ";", icmp, ")"))
+//
+|I1Vl1azy
+(dknd, icmp, i1vs) =>
+( print("I1Vl1azy(")
+; print(dknd, ";", icmp, ";", i1vs, ")"))
+//
+(* ****** ****** *)
+//
 |I1Vnone0() => print( "I1Vnone0(",")" )
 |I1Vnone1(i0e1) => print("I1Vnone1(", i0e1, ")")
+//
+(* ****** ****** *)
 //
 end(*let*)//end-of-[i1val_fprint(out, i1v0)]
 //
@@ -230,6 +246,8 @@ g_print$out<>() = out
 in//let
 //
 case+ iins of
+//
+(* ****** ****** *)
 //
 |I1INSopr
 ( iopr, i1vs) =>
@@ -319,6 +337,8 @@ _(*otherwise*) => ( i0e1 ))}
 ( print("I1INSlet0(")
 ; print(dcls, ";", icmp, ")"))
 //
+(* ****** ****** *)
+//
 |I1INSift0
 (test
 ,ithn, iels) =>
@@ -333,14 +353,24 @@ _(*otherwise*) => ( i0e1 ))}
  print
  (cask,";",i1v1,";",icls,")"))
 //
+(* ****** ****** *)
+//
 |I1INSflat
 (   i1v0   ) =>
 (print("I1INSflat(",i1v0,")"))
+//
+|I1INSfree
+(   i1v0   ) =>
+(print("I1INSfree(",i1v0,")"))
+//
+(* ****** ****** *)
 //
 |I1INSassgn
 (i1vl, i1vr) =>
 ( print("I1INSassgn(")
 ; print(i1vl, ";", i1vr, ")"))
+//
+(* ****** ****** *)
 //
 end(*let*)//end-of-[i1ins_fprint(out, iins)]
 //
