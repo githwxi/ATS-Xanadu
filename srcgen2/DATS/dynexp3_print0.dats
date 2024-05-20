@@ -409,16 +409,16 @@ print("D3Efree(",d3e1,")") // free-con
 //
 (* ****** ****** *)
 //
+|D3Edp2tr
+(   d3e1   ) =>
+print("D3Edp2tr(",d3e1,")") // de-p2tr
+//
 |D3Edl0az
 (   d3e1   ) =>
 print("D3Edl0az(",d3e1,")") // de-l0az
 |D3Edl1az
 (   d3e1   ) =>
 print("D3Edl1az(",d3e1,")") // de-l1az
-//
-|D3Edp2tr
-(   d3e1   ) =>
-print("D3Edp2tr(",d3e1,")") // de-p2tr
 //
 (* ****** ****** *)
 //
