@@ -52,8 +52,9 @@ local
 
 (* ****** ****** *)
 #staload
-"prelude\
-/DATS/CATS/JS/basics1.dats"
+"\
+srcgen1\
+/prelude/DATS/CATS/JS/basics1.dats"
 (* ****** ****** *)
 
 #typedef key = sint

@@ -110,8 +110,9 @@ local
 stmp with symbl_get_stmp
 (* ****** ****** *)
 #staload
-"prelude\
-/DATS/CATS/JS/basics1.dats"
+"\
+srcgen1\
+/prelude/DATS/CATS/JS/basics1.dats"
 (* ****** ****** *)
 //
 val
