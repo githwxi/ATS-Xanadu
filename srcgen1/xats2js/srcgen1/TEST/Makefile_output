@@ -1,0 +1,196 @@
+######
+#
+# For testing xats2js
+#
+######
+CAT=cat
+CPF=cp -f
+ECHO=echo
+######
+PRELUDE=./prelude
+GITHWXI=./xatslib_githwxi
+######
+XATS2JS="./../bin/xats2js"
+######
+all:: test
+######
+test:: ; $(XATS2JS)
+######
+#
+test:: bools
+bools: ; \
+$(XATS2JS) -d $(PRELUDE)/bools.dats
+test:: chars
+chars: ; \
+$(XATS2JS) -d $(PRELUDE)/chars.dats
+#
+######
+#
+test:: lists
+lists: ; \
+$(XATS2JS) -d $(PRELUDE)/lists.dats
+test:: strms
+strms: ; \
+$(XATS2JS) -d $(PRELUDE)/strms.dats
+#
+######
+test:: array
+array: ; \
+$(XATS2JS) -d $(PRELUDE)/array.dats
+######
+#
+test:: addrs
+addrs: ; \
+$(XATS2JS) -d $(PRELUDE)/addrs.dats
+#
+test:: pswap
+pswap: ; \
+$(XATS2JS) -d $(PRELUDE)/pswap.dats
+#
+######
+#
+test:: cbref
+cbref: ; \
+$(XATS2JS) -d $(PRELUDE)/cbref.dats
+#
+######
+#
+test:: fact2
+fact2: ; \
+$(XATS2JS) -d $(PRELUDE)/fact2.dats
+#
+######
+#
+test:: foldl
+foldl: ; \
+$(XATS2JS) -d $(PRELUDE)/foldl.dats
+#
+######
+#
+test:: gpats
+gpats: ; \
+$(XATS2JS) -d $(PRELUDE)/gpats.dats
+#
+######
+#
+test:: kfact
+kfact: ; \
+$(XATS2JS) -d $(PRELUDE)/kfact.dats
+test:: kfibo
+kfibo: ; \
+$(XATS2JS) -d $(PRELUDE)/kfibo.dats
+test:: kisevn
+kisevn: ; \
+$(XATS2JS) -d $(PRELUDE)/kisevn.dats
+#
+######
+test:: koka-amb
+koka-amb: ; \
+$(XATS2JS) -d $(PRELUDE)/koka-amb.dats
+######
+#
+test:: isAVL
+isAVL: ; \
+$(XATS2JS) -d $(PRELUDE)/isAVL.dats
+test:: rfind
+rfind: ; \
+$(XATS2JS) -d $(PRELUDE)/rfind.dats
+#
+######
+test:: sieve
+sieve: ; \
+$(XATS2JS) -d $(PRELUDE)/sieve.dats
+test:: sieve1
+sieve1: ; \
+$(XATS2JS) -d $(PRELUDE)/sieve1.dats
+######
+test:: sieve_vt
+sieve_vt: ; \
+$(XATS2JS) -d $(PRELUDE)/sieve_vt.dats
+test:: sieve1_vt
+sieve1_vt: ; \
+$(XATS2JS) -d $(PRELUDE)/sieve1_vt.dats
+######
+test:: \
+test-2020-03-21
+test-2020-03-21: ; \
+$(XATS2JS) -d $(GITHWXI)/test-2020-03-21.dats
+######
+test:: \
+test-2020-03-22
+test-2020-03-22: ; \
+$(XATS2JS) -d $(GITHWXI)/test-2020-03-22.dats
+######
+test:: \
+test-2020-04-19
+test-2020-04-19: ; \
+$(XATS2JS) -d $(GITHWXI)/test-2020-04-19.dats
+######
+test:: \
+test-2020-06-05
+test-2020-06-05: ; \
+$(XATS2JS) -d $(GITHWXI)/test-2020-06-05.dats
+######
+test:: \
+test-2020-06-20
+test-2020-06-20: ; \
+$(XATS2JS) -d $(GITHWXI)/test-2020-06-20.dats
+######
+test:: \
+test-2020-07-10
+test-2020-07-10: ; \
+$(XATS2JS) -d $(GITHWXI)/test-2020-07-10.dats
+######
+test:: \
+test-2020-07-25
+test-2020-07-25: ; \
+$(XATS2JS) -d $(GITHWXI)/test-2020-07-25.dats
+######
+test:: \
+test-2020-09-29
+test-2020-09-29: ; \
+$(XATS2JS) -d $(GITHWXI)/test-2020-09-29.dats
+######
+test:: \
+test-2020-10-01
+test-2020-10-01: ; \
+$(XATS2JS) -d $(GITHWXI)/test-2020-10-01.dats
+######
+test:: \
+test-2020-10-24
+test-2020-10-24: ; \
+$(XATS2JS) -d $(GITHWXI)/test-2020-10-24.dats
+######
+test:: \
+test-2020-10-25
+test-2020-10-25: ; \
+$(XATS2JS) -d $(GITHWXI)/test-2020-10-25.dats
+######
+test:: \
+test-2020-10-28
+test-2020-10-28: ; \
+$(XATS2JS) -d $(GITHWXI)/test-2020-10-28.dats
+######
+test:: \
+test-2020-10-29
+test-2020-10-29: ; \
+$(XATS2JS) -d $(GITHWXI)/test-2020-10-29.dats
+######
+test:: \
+test-ats2-queens
+test-ats2-queens: ; \
+$(XATS2JS) -d $(GITHWXI)/test-ats2-queens.dats
+######
+#
+# HX: for cleaning up
+#
+######
+clean:: ; rm -f *~
+######
+cleanall:: clean
+cleanall:: ; rm -f output
+######
+# export XATSHOME=$(XATSOPT)
+# XATSOPT=$(shell pwd)/../../modules/xatsopt
+######
+###### end of [Makefile_output] ######
