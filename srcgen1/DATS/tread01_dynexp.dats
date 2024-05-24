@@ -184,33 +184,51 @@ D1Cinclude
 | D1Cstaload _ => ()
 //
 | D1Csymload
-  ( tok
-  , sym1
-  , dqid, prec) =>
-  {
+( tok0
+, sym1
+, dqid, prec) =>
+{
 (*
     val () =
     tread01_dq0eid(dqid)
 *)
-  }
+}
+//
+| D1Cstacst0
+( tok0, sid0
+, tmas, s1t1) =>
+{
+(*
+  val () =
+  tread01_STACST0(tok0)
+*)
+//
+(*
+  val () =
+  tread01_s0eid(sid0)
+*)
+  val () =
+  tread01_sort1(s1t1)
+//
+}
 //
 | D1Csortdef
-  ( knd
-  , tid0, def1) =>
-  {
+( knd
+, tid0, def1) =>
+{
 (*
     val () =
     tread01_s0tid(tid0)  
 *)
     val () =
     tread01_s1rtdef(def1)
-  }
+}
 //
 | D1Csexpdef
-  ( knd
-  , sid0, smas
-  , res1, def2) =>
-  {
+( knd
+, sid0, smas
+, res1, def2) =>
+{
 (*
     val () =
     tread01_s0eid(sid0)
@@ -224,7 +242,7 @@ D1Cinclude
 //
     val () = tread01_s1exp(def2)
 //
-  }
+}
 //
 | D1Cabstype
   ( knd
@@ -250,6 +268,13 @@ D1Cinclude
 //
 | D1Cabsopen _ => ()
 | D1Cabsimpl _ => ()
+//
+| D1Cdatasort
+  (tok0, d1ts) =>
+  {
+    val () =
+    tread01_d1tsortlst(d1ts)
+  }
 //
 | D1Cexcptcon
   (tok0, d1cs) =>

@@ -348,6 +348,20 @@ synread_effs0expopt: synreader(effs0expopt)
 (* ****** ****** *)
 //
 fun//{}
+synread_s0rtcon: synreader(s0rtcon)
+fun//{}
+synread_s0rtconlst: synreader(s0rtconlst)
+//
+(* ****** ****** *)
+//
+fun//{}
+synread_d0tsort: synreader(d0tsort)
+fun//{}
+synread_d0tsortlst: synreader(d0tsortlst)
+//
+(* ****** ****** *)
+//
+fun//{}
 synread_d0atcon: synreader(d0atcon)
 fun//{}
 synread_d0atconlst: synreader(d0atconlst)

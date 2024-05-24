@@ -80,8 +80,8 @@ all_haskell:: ; \
 $(XATSOPT) -d $(XATSLIB)/haskell/DATS/traversable.dats
 ######
 all_githwxi_CATS:: ; \
-$(XATSOPT) -d $(XATSLIB)/githwxi/DATS/CATS/Xint/basics0.dats
+$(XATSOPT) -d ./../xatslib/githwxi/DATS/CATS/Xint/basics0.dats
 all_githwxi_CATS:: ; \
-$(XATSOPT) -d $(XATSLIB)/githwxi/DATS/CATS/JS/Node/basics0.dats
+$(XATSOPT) -d ./../xatslib/githwxi/DATS/CATS/JS/Node/basics0.dats
 ######
 ###### end of [Makefile_xatslib] ######

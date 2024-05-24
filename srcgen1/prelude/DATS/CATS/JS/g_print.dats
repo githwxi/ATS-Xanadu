@@ -98,4 +98,4 @@ XATS2JS_the_print_store_clear(): void = $extnam()
 //
 (* ****** ****** *)
 
-(* end of [prelude_DATS_CATS_JS_g_print.dats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_g_print.dats] *)

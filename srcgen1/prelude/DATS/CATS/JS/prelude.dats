@@ -593,4 +593,4 @@ a1ref_get0_at<a> = XATS2JS_a1ref_get0_at
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_prelude.dats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_prelude.dats] *)

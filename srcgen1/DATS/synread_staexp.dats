@@ -1277,6 +1277,67 @@ def0.node() of
 )
 
 (* ****** ****** *)
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+synread_s0rtcon
+  (s0c0) =
+(
+case+
+s0c0.node() of
+|S0RTCON
+(seid, topt) =>
+{
+val () = synread_s0eid(seid)
+val () = synread_sort0opt(topt)
+}
+)
+//
+implement
+//{}(*tmp*)
+synread_s0rtconlst
+  (s0cs) =
+(
+list_foreach<s0rtcon>(s0cs)
+) where
+{
+implement(env)
+list_foreach$fwork<s0rtcon><env>(s0c, env) = synread_s0rtcon(s0c)
+} (* end of [synread_s0rtconlst] *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+synread_d0tsort
+  (d0t0) =
+(
+case+
+d0t0.node() of
+|D0TSORT
+(stid, tkeq, s0cs) =>
+{
+val () = synread_s0tid(stid)
+val () = synread_s0rtconlst(s0cs)
+}
+)
+//
+implement
+//{}(*tmp*)
+synread_d0tsortlst
+  (d0ts) =
+(
+list_foreach<d0tsort>(d0ts)
+) where
+{
+implement(env)
+list_foreach$fwork<d0tsort><env>(d0t, env) = synread_d0tsort(d0t)
+} (* end of [synread_d0tsortlst] *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 implement
 //{}(*tmp*)

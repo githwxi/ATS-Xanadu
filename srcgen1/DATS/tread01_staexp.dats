@@ -447,6 +447,65 @@ case+ opt0 of
 )
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_s1rtcon
+  (s1c0) =
+(
+case+
+s1c0.node() of
+|
+S1RTCON(tok0, topt) =>
+{
+val () = tread01_sort1opt(topt)
+}
+)
+//
+implement
+//{}(*tmp*)
+tread01_s1rtconlst
+  (s1cs) =
+(
+list_foreach<s1rtcon>(s1cs)
+) where
+{
+implement(env)
+list_foreach$fwork<s1rtcon><env>(s1c, env) = tread01_s1rtcon(s1c)
+} (* end of [tread01_s1rtconlst] *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+implement
+//{}(*tmp*)
+tread01_d1tsort
+  (d1c0) =
+(
+case+
+d1c0.node() of
+|
+D1TSORT(tok0, s1cs) =>
+{
+val () = tread01_s1rtconlst(s1cs)
+}
+)
+//
+implement
+//{}(*tmp*)
+tread01_d1tsortlst
+  (d1ts) =
+(
+list_foreach<d1tsort>(d1ts)
+) where
+{
+implement(env)
+list_foreach$fwork<d1tsort><env>(d1t, env) = tread01_d1tsort(d1t)
+} (* end of [tread01_d1tsortlst] *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 implement
 //{}(*tmp*)
@@ -457,14 +516,14 @@ case+
 d1c0.node() of
 |
 D1ATCON
-( s0us
-, name, s0es, args) =>
+( s1us
+, name, s1es, args) =>
 {
 (*
 val () = tread01_d1eid(name) // dyncon
 *)
-val () = tread01_s1unilst(s0us) // quanty
-val () = tread01_s1explst(s0es) // indexes
+val () = tread01_s1unilst(s1us) // quanty
+val () = tread01_s1explst(s1es) // indexes
 val () = tread01_s1expopt(args) // arguments
 }
 )
@@ -479,8 +538,9 @@ list_foreach<d1atcon>(d1cs)
 {
 implement(env)
 list_foreach$fwork<d1atcon><env>(d1c, env) = tread01_d1atcon(d1c)
-} (* end of [tread01_d0atconlst] *)
+} (* end of [tread01_d1atconlst] *)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [xats_tread01_staexp.dats] *)
