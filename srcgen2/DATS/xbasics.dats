@@ -184,7 +184,7 @@ prerrln("implknd_recq: knd = ", knd)
 }(*where*)//end-of-[implknd_recq(knd)]
 //
 (* ****** ****** *)
-
+//
 #implfun
 f2clknd_linq(f2cl) =
 (
@@ -193,7 +193,7 @@ case+ f2cl of
 F2CLfun() => false
 |
 F2CLclo(knd0) => (knd0 >= LINCLOFLT))
-
+//
 (* ****** ****** *)
 
 #implfun

@@ -14,8 +14,9 @@ prelude\
 //
 #include
 "\
-prelude/HATS\
-/CATS/JS/prelude_dats.hats"
+srcgen1\
+/prelude\
+/HATS/CATS/JS/prelude_dats.hats"
 //
 // #endif // end of [ifdef(_XATSOPT_JS_)]
 //
@@ -46,8 +47,8 @@ xatslib\
 //
 #staload
 "\
-xatslib\
-/githwxi\
+srcgen1\
+/xatslib/githwxi\
 /DATS/CATS/JS/Node/basics0.dats"
 //
 // #endif // end of [ifdef(_XATSOPT_JS_)]

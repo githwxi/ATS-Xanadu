@@ -154,6 +154,12 @@ d3cl.node() of
 //
 (* ****** ****** *)
 //
+|D3Cinclude _ =>
+(
+  f0_include(env0, d3cl))
+//
+(* ****** ****** *)
+//
 |D3Cvaldclst _ =>
 (
   f0_valdclst(env0, d3cl))
@@ -280,6 +286,41 @@ end//let//end-of-[f0_tmpsub(env0,d3cl)]
 (* ****** ****** *)
 //
 fun
+f0_include
+( env0: 
+! envd3i0
+, d3cl: d3ecl): i0dcl =
+let
+//
+val loc0 = d3cl.lctn()
+//
+val-
+D3Cinclude
+( knd0
+, tknd, gsrc
+, fopt, dopt) = d3cl.node()
+//
+val dopt =
+(
+case+ dopt of
+|
+optn_nil() => optn_nil(*nil*)
+|
+optn_cons(dcls) =>
+optn_cons
+(trxd3i0_d3eclist(env0, dcls)))
+//
+in//let
+(
+  i0dcl_make_node
+  ( loc0
+  , I0Dinclude
+    (knd0, tknd, gsrc, fopt, dopt)))
+end//let//end-of-[f0_include(env0,d3cl)]
+//
+(* ****** ****** *)
+//
+fun
 f0_valdclst
 ( env0:
 ! envd3i0
@@ -360,8 +401,9 @@ i0fs =
 trxd3i0_d3fundclist(env0, d3fs)
 //
 in//let
-i0dcl_make_node
-(loc0, I0Dfundclst(tknd, d2cs, i0fs))
+(
+  i0dcl_make_node
+  (loc0, I0Dfundclst(tknd, d2cs, i0fs)))
 //
 end where
 {
@@ -405,9 +447,8 @@ val dexp = trxd3i0_d3exp(env0, dexp)
 in//let
 //
 i0dcl_make_node
-(
-loc0,
-I0Dimplmnt0(tknd,stmp,dimp,fias,dexp))
+( loc0
+, I0Dimplmnt0(tknd,stmp,dimp,fias,dexp))
 //
 end where // end-of-[let]
 {

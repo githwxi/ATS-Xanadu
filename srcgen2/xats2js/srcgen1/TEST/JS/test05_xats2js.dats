@@ -88,7 +88,7 @@ val (  ) = prerrln
 (* ****** ****** *)
 //
 val
-queens01_dats =
+xbasics_dats =
 (
 i1parsed_of_trxi0i1(ipar)
 ) where
@@ -139,14 +139,15 @@ fperr33_d3parsed(out, dpar)
 } where
 {
 val dpar = d3parsed_from_fpath
-(1(*dyn*), "./DATA/queens01.dats") }
+( 1(*dyn*)
+, "./../../../../DATS/xbasics.dats") }
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val () = xats2js_i1parsed(queens01_dats)
+val () = xats2js_i1parsed(xbasics_dats)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_JS_test04_xats2js.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_JS_test05_xats2js.dats] *)

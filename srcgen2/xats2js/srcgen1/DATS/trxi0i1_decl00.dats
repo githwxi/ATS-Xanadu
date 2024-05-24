@@ -114,6 +114,12 @@ dcl0.node() of
 //
 (* ****** ****** *)
 //
+|I0Dinclude _ =>
+(
+  f0_include(env0, dcl0))
+//
+(* ****** ****** *)
+//
 |I0Dvaldclst _ =>
 (
   f0_valdclst(env0, dcl0))
@@ -238,6 +244,43 @@ in//let
 end(*let*)//end of [f0_tmpsub(env0,d3cl)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_include
+( env0:
+! envi0i1
+, dcl0: i0dcl): i1dcl =
+let
+//
+val
+loc0 = dcl0.lctn((*0*))
+val-
+I0Dinclude
+(knd0
+,tknd,gsrc
+,fopt, dopt) = dcl0.node()
+//
+val dopt =
+(
+case+ dopt of
+|
+optn_nil() => optn_nil(*nil*)
+|
+optn_cons(dcls) =>
+optn_cons
+(trxi0i1_i0dclist(env0, dcls)))
+//
+in//let
+(
+  i1dcl_make_node
+  ( loc0
+  , I1Dinclude
+    (knd0, tknd, gsrc, fopt, dopt)))
+end(*let*)//end of [f0_include(env0,d3cl)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_valdclst
@@ -301,6 +344,7 @@ prerrln("f0_vardclst(i0i1): dcl0 = ", dcl0)
 //
 }(*where*) // end of [f0_vardclst(env0,dcl0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

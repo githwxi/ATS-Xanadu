@@ -60,7 +60,9 @@ local
 #typedef itm = symbl
 (* ****** ****** *)
 #staload
-"prelude\
+"\
+srcgen1\
+/prelude\
 /DATS/CATS/JS/basics1.dats"
 (* ****** ****** *)
 #absimpl
