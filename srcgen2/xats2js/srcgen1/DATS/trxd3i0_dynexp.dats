@@ -209,39 +209,56 @@ trxd3i0_d3pat
 case+
 d3p0.node() of
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |D3Pany
 ((*0*)) =>
-i0pat(loc0, I0Pany(   ))
+i0pat
+(d3p0.lctn(), I0Pany())
 |D3Pvar
 ( d2v ) =>
-i0pat(loc0, I0Pvar(d2v))
+i0pat
+(d3p0.lctn(), I0Pvar(d2v))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Pint
 ( tok ) =>
-i0pat(loc0, I0Pint(tok))
+i0pat
+(d3p0.lctn(), I0Pint(tok))
 |D3Pbtf
 ( sym ) =>
-i0pat(loc0, I0Pbtf(sym))
+i0pat
+(d3p0.lctn(), I0Pbtf(sym))
 |D3Pchr
 ( tok ) =>
-i0pat(loc0, I0Pchr(tok))
+i0pat
+(d3p0.lctn(), I0Pchr(tok))
 |D3Pflt
 ( tok ) =>
-i0pat(loc0, I0Pflt(tok))
+i0pat
+(d3p0.lctn(), I0Pflt(tok))
 |D3Pstr
 ( tok ) =>
-i0pat(loc0, I0Pstr(tok))
+i0pat
+(d3p0.lctn(), I0Pstr(tok))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 |D3Pcon
 ( d2c ) =>
-i0pat(loc0, I0Pcon(d2c))
+i0pat
+(d3p0.lctn(), I0Pcon(d2c))
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D3Pbang
 ( d3p1 ) =>
 (
-i0pat(loc0, I0Pbang(i0p1))
+i0pat
+(d3p0.lctn(),I0Pbang(i0p1))
 ) where
 { val i0p1 =
   trxd3i0_d3pat(env0, d3p1)}
@@ -249,7 +266,8 @@ i0pat(loc0, I0Pbang(i0p1))
 |D3Pflat
 ( d3p1 ) =>
 (
-i0pat(loc0, I0Pflat(i0p1))
+i0pat
+(d3p0.lctn(),I0Pflat(i0p1))
 ) where
 { val i0p1 =
   trxd3i0_d3pat(env0, d3p1)}
@@ -257,11 +275,13 @@ i0pat(loc0, I0Pflat(i0p1))
 |D3Pfree
 ( d3p1 ) =>
 (
-i0pat(loc0, I0Pfree(i0p1))
+i0pat
+(d3p0.lctn(),I0Pfree(i0p1))
 ) where
 { val i0p1 =
   trxd3i0_d3pat(env0, d3p1)}
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D3Ptapq _ => f0_tapq(env0, d3p0)
@@ -271,27 +291,24 @@ i0pat(loc0, I0Pfree(i0p1))
 |D3Pdapp _ => f0_dapp(env0, d3p0)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Ptup0 _ => f0_tup0(env0, d3p0)
 |D3Ptup1 _ => f0_tup1(env0, d3p0)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Pannot _ => f0_annot(env0, d3p0)
 //
 (* ****** ****** *)
-//
+(* ****** ****** *)
 |_(* otherwise *) => i0pat_none1(d3p0)
-//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 ) where
 {
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-val loc0 = d3p0.lctn()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -318,6 +335,8 @@ f0_dapp
 , d3p0: d3pat): i0pat =
 let
 //
+val loc0 = d3p0.lctn()
+//
 val-
 D3Pdapp
 (d3f0
@@ -327,7 +346,9 @@ val d3ps =
 pfrmv_npf1_d3ps(npf1, d3ps)
 //
 val i0f0 =
-trxd3i0_d3pat(env0, d3f0)
+(
+  trxd3i0_d3pat(env0, d3f0))
+//
 val i0ps =
 trxd3i0_d3patlst(env0, d3ps)
 //
@@ -345,6 +366,8 @@ f0_tup0
 ! envd3i0
 , d3p0: d3pat): i0pat =
 let
+//
+val loc0 = d3p0.lctn()
 //
 val-
 D3Ptup0
@@ -369,6 +392,8 @@ f0_tup1
 ! envd3i0
 , d3p0: d3pat): i0pat =
 let
+//
+val loc0 = d3p0.lctn()
 //
 val-
 D3Ptup1
@@ -448,34 +473,42 @@ d3e0.node() of
 //
 |D3Eint
 ( tok ) =>
-i0exp(loc0, I0Eint(tok))
+i0exp
+(d3e0.lctn(), I0Eint(tok))
 |D3Ebtf
 ( sym ) =>
-i0exp(loc0, I0Ebtf(sym))
+i0exp
+(d3e0.lctn(), I0Ebtf(sym))
 |D3Echr
 ( tok ) =>
-i0exp(loc0, I0Echr(tok))
+i0exp
+(d3e0.lctn(), I0Echr(tok))
 |D3Eflt
 ( tok ) =>
-i0exp(loc0, I0Eflt(tok))
+i0exp
+(d3e0.lctn(), I0Eflt(tok))
 |D3Estr
 ( tok ) =>
-i0exp(loc0, I0Estr(tok))
+i0exp
+(d3e0.lctn(), I0Estr(tok))
 //
 (* ****** ****** *)
 //
 |D3Evar
 ( d2v ) =>
-i0exp(loc0, I0Evar(d2v))
+i0exp
+(d3e0.lctn(), I0Evar(d2v))
 //
 (* ****** ****** *)
 //
 |D3Econ
 ( d2c ) =>
-i0exp(loc0, I0Econ(d2c))
+i0exp
+(d3e0.lctn(), I0Econ(d2c))
 |D3Ecst
 ( d2c ) =>
-i0exp(loc0, I0Ecst(d2c))
+i0exp
+(d3e0.lctn(), I0Ecst(d2c))
 //
 (* ****** ****** *)
 //
@@ -552,15 +585,21 @@ i0exp(loc0, I0Ecst(d2c))
 //
 (* ****** ****** *)
 //
+|D3Enone0() =>
+(
+  i0exp_none0(d3e0.lctn((*void*))))
+//
+|D3Enone1(d2e1) => i0exp_none1(d3e0)
+|D3Enone2(d3e1) => i0exp_none1(d3e0)
+//
+(* ****** ****** *)
+//
 |_(* otherwise *) => i0exp_none1(d3e0)
+//
+(* ****** ****** *)
 //
 ) where
 {
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-val loc0 = d3e0.lctn((*0*))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -769,6 +808,8 @@ f0_pcon
 , d3e0: d3exp): i0exp =
 let
 //
+val loc0 = d3e0.lctn()
+//
 val-
 D3Epcon
 ( tknd
@@ -791,6 +832,8 @@ f0_proj
 ! envd3i0
 , d3e0: d3exp): i0exp =
 let
+//
+val loc0 = d3e0.lctn()
 //
 val-
 D3Eproj
@@ -826,6 +869,8 @@ f0_let0
 , d3e0: d3exp): i0exp =
 let
 //
+val loc0 = d3e0.lctn()
+//
 val-
 D3Elet0
 ( dcls, d3e1) = d3e0.node()
@@ -850,6 +895,8 @@ f0_ift0
 ! envd3i0
 , d3e0: d3exp): i0exp =
 let
+//
+val loc0 = d3e0.lctn()
 //
 val-
 D3Eift0
@@ -877,6 +924,8 @@ f0_cas0
 , d3e0: d3exp): i0exp =
 let
 //
+val loc0 = d3e0.lctn()
+//
 val-
 D3Ecas0
 ( tknd
@@ -900,6 +949,8 @@ f0_seqn
 ! envd3i0
 , d3e0: d3exp): i0exp =
 let
+//
+val loc0 = d3e0.lctn()
 //
 val-
 D3Eseqn
@@ -926,6 +977,8 @@ f0_tup0
 ! envd3i0
 , d3e0: d3exp): i0exp =
 let
+//
+val loc0 = d3e0.lctn()
 //
 val-
 D3Etup0
@@ -957,6 +1010,8 @@ f0_tup1
 , d3e0: d3exp): i0exp =
 let
 //
+val loc0 = d3e0.lctn()
+//
 val-
 D3Etup1
 ( tknd
@@ -983,6 +1038,8 @@ f0_rcd2
 ! envd3i0
 , d3e0: d3exp): i0exp =
 let
+//
+val loc0 = d3e0.lctn()
 //
 val-
 D3Ercd2
@@ -1011,6 +1068,8 @@ f0_lam0
 , d3e0: d3exp): i0exp =
 let
 //
+val loc0 = d3e0.lctn()
+//
 val-
 D3Elam0
 (tknd
@@ -1037,6 +1096,8 @@ f0_fix0
 ! envd3i0
 , d3e0: d3exp): i0exp =
 let
+//
+val loc0 = d3e0.lctn()
 //
 val-
 D3Efix0
@@ -1068,6 +1129,8 @@ f0_addr
 , d3e0: d3exp): i0exp =
 let
 //
+val loc0 = d3e0.lctn()
+//
 val-
 D3Eaddr(d3e1) = d3e0.node()
 //
@@ -1088,6 +1151,8 @@ f0_flat
 ! envd3i0
 , d3e0: d3exp): i0exp =
 let
+//
+val loc0 = d3e0.lctn()
 //
 val-
 D3Eflat(d3e1) = d3e0.node()
@@ -1110,6 +1175,8 @@ f0_fold
 , d3e0: d3exp): i0exp =
 let
 //
+val loc0 = d3e0.lctn()
+//
 val-
 D3Efold(d3e1) = d3e0.node()
 //
@@ -1129,6 +1196,8 @@ f0_free
 , d3e0: d3exp): i0exp =
 let
 //
+val loc0 = d3e0.lctn()
+//
 val-
 D3Efree(d3e1) = d3e0.node()
 //
@@ -1142,6 +1211,29 @@ in//let
 end(*let*)//end-of-[f0_free(env0,d3e0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+fun
+f0_dp2tr
+( env0:
+! envd3i0
+, d3e0: d3exp): i0exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Edp2tr d3e1 = d3e0.node()
+//
+val i0e1 =
+(
+  trxd3i0_d3exp(env0, d3e1))
+//
+in//let
+(
+  i0exp(loc0, I0Edp2tr( i0e1 )))
+end(*let*)//end-of-[f0_dp2tr(env0,d3e0)]
+//
+(* ****** ****** *)
 //
 fun
 f0_dl0az
@@ -1149,6 +1241,8 @@ f0_dl0az
 ! envd3i0
 , d3e0: d3exp): i0exp =
 let
+//
+val loc0 = d3e0.lctn()
 //
 val-
 D3Edl0az d3e1 = d3e0.node()
@@ -1169,6 +1263,8 @@ f0_dl1az
 , d3e0: d3exp): i0exp =
 let
 //
+val loc0 = d3e0.lctn()
+//
 val-
 D3Edl1az d3e1 = d3e0.node()
 //
@@ -1181,25 +1277,7 @@ in//let
   i0exp(loc0, I0Edl1az( i0e1 )))
 end(*let*)//end-of-[f0_dl1az(env0,d3e0)]
 //
-fun
-f0_dp2tr
-( env0:
-! envd3i0
-, d3e0: d3exp): i0exp =
-let
-//
-val-
-D3Edp2tr d3e1 = d3e0.node()
-//
-val i0e1 =
-(
-  trxd3i0_d3exp(env0, d3e1))
-//
-in//let
-(
-  i0exp(loc0, I0Edp2tr( i0e1 )))
-end(*let*)//end-of-[f0_dp2tr(env0,d3e0)]
-//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1208,6 +1286,8 @@ f0_where
 ! envd3i0
 , d3e0: d3exp): i0exp =
 let
+//
+val loc0 = d3e0.lctn()
 //
 val-
 D3Ewhere
@@ -1235,6 +1315,7 @@ f0_assgn
 let
 //
 val loc0 = d3e0.lctn()
+//
 val-
 D3Eassgn
 (d3el, d3er) = d3e0.node()
@@ -1261,6 +1342,7 @@ f0_raise
 let
 //
 val loc0 = d3e0.lctn()
+//
 val-
 D3Eraise
 (dknd, d3e1) = d3e0.node()
@@ -1284,6 +1366,7 @@ f0_l0azy
 let
 //
 val loc0 = d3e0.lctn()
+//
 val-
 D3El0azy
 (dknd, d3e1) = d3e0.node()
@@ -1305,6 +1388,7 @@ f0_l1azy
 let
 //
 val loc0 = d3e0.lctn()
+//
 val-
 D3El1azy
 (dknd
@@ -1556,6 +1640,8 @@ trxd3i0_f3arglst(env0, f3as)
 ) where // end-of-[case+of(f3a1)]
 {
 //
+(* ****** ****** *)
+//
 fun
 f0_dapp
 ( env0:
@@ -1580,6 +1666,8 @@ fiarg
 val
 i0ps = trxd3i0_d3patlst(env0, d3ps)}
 end//let//end-of-[f0_dapp(env0,f3a1)]
+//
+(* ****** ****** *)
 //
 }(*where+*)//end-[trxd3i0_f3arglst(env0,f3as)]
 //
