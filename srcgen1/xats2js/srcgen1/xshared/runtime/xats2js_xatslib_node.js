@@ -37,6 +37,7 @@ return; // XATS2JS_NODE_bool_fprint
 }
 //
 /* ****** ****** */
+//
 function
 XATS2JS_NODE_bool_fprint
   (out, obj)
@@ -60,7 +61,9 @@ XATS2JS_NODE_strn_fprint
 XATS2JS_NODE_g_fprint(out, obj);
 return ; // XATS2JS_NODE_strn_fprint
 }
+//
 /* ****** ****** */
+//
 function
 XATS2JS_NODE_gint_fprint_sint
   (out, obj)
@@ -75,7 +78,9 @@ XATS2JS_NODE_gint_fprint_uint
 XATS2JS_NODE_g_fprint(out, obj);
 return ; // XATS2JS_NODE_gint_fprint_uint
 }
+//
 /* ****** ****** */
+//
 function
 XATS2JS_NODE_gflt_fprint_sflt
   (out, obj)
@@ -90,6 +95,7 @@ XATS2JS_NODE_gflt_fprint_dflt
 XATS2JS_NODE_g_fprint(out, obj);
 return ; // XATS2JS_NODE_gflt_fprint_dflt
 }
+//
 /* ****** ****** */
 //
 function

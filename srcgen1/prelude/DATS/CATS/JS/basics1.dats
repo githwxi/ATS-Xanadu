@@ -541,4 +541,4 @@ XATS2JS_jsarray_strmize(XATS2JS_jsobjmap_keys(kxs)))
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_basics1.dats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_basics1.dats] *)

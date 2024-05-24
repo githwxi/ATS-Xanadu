@@ -25,4 +25,4 @@ ATS3_XANADU_prelude/DATS/CATS/JS
 //
 (* ****** ****** *)
 
-(* end of [ATS3_XANADU_prelude_JS_prelude_dats.hats] *)
+(* end of [ATS3_XANADU_srcgen1_prelude_JS_prelude_dats.hats] *)

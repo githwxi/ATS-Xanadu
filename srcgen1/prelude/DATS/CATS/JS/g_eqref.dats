@@ -32,4 +32,4 @@ XATS2JS_g_neqrf
 //
 (* ****** ****** *)
 
-(* end of [prelude_DATS_CATS_JS_g_eqref.dats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_g_eqref.dats] *)

@@ -996,4 +996,4 @@ XATS2JS_strn_vt_rforall_cfr
 } (*where*) // end of [strn_vt_rforall1]
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_basics0.dats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_basics0.dats] *)

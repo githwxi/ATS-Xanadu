@@ -155,6 +155,20 @@ tread01_effs1expopt: treader01(effs1expopt)
 (* ****** ****** *)
 //
 fun//{}
+tread01_s1rtcon: treader01(s1rtcon)
+fun//{}
+tread01_s1rtconlst: treader01(s1rtconlst)
+//
+(* ****** ****** *)
+//
+fun//{}
+tread01_d1tsort: treader01(d1tsort)
+fun//{}
+tread01_d1tsortlst: treader01(d1tsortlst)
+//
+(* ****** ****** *)
+//
+fun//{}
 tread01_d1atcon: treader01(d1atcon)
 fun//{}
 tread01_d1atconlst: treader01(d1atconlst)

@@ -1259,6 +1259,19 @@ D0Cimplmnt0
 }
 //
 |
+D0Cdatasort
+(tok0, d0ts) =>
+{
+(*
+  val () =
+  synread_DATASORT(tok0)
+*)
+  val () =
+    synread_d0tsortlst(d0ts)
+  // end of [val]
+}
+//
+|
 D0Cexcptcon
 (tok0, d0cs) =>
 {

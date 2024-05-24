@@ -13,4 +13,4 @@ ATS3_XANADU_prelude/DATS/CATS/Xint
 //
 (* ****** ****** *)
 
-(* end of [ATS3_XANADU_prelude_Xint_prelude_dats.hats] *)
+(* end of [ATS3_XANADU_srcgen1_prelude_Xint_prelude_dats.hats] *)
