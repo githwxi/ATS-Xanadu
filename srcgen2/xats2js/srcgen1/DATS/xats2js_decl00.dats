@@ -124,6 +124,12 @@ dcl0.node() of
 //
 (* ****** ****** *)
 //
+|I1Dinclude _ =>
+(
+  f0_include(env0, dcl0))
+//
+(* ****** ****** *)
+//
 |I1Dvaldclst _ =>
 (
   f0_valdclst(env0, dcl0))
@@ -199,7 +205,7 @@ envx2js_get_nind(env0)
 //
 val-
 I1Dextern
-( tknd, dcl1) = dcl0.node()
+(tknd, dcl1) = dcl0.node()
 //
 local
 #impltmp
@@ -245,7 +251,7 @@ envx2js_get_nind(env0)
 //
 val-
 I1Dstatic
-( tknd, dcl1) = dcl0.node()
+(tknd, dcl1) = dcl0.node()
 //
 local
 #impltmp
@@ -292,7 +298,7 @@ envx2js_get_nind(env0)
 //
 val-
 I1Dlocal0
-( head, body) = dcl0.node()
+(head, body) = dcl0.node()
 //
 val
 (  ) =
@@ -356,7 +362,7 @@ envx2js_get_nind(env0)
 //
 val-
 I1Dtmpsub
-( svts, dcl1) = dcl0.node()
+(svts, dcl1) = dcl0.node()
 //
 val
 (  ) =
@@ -385,6 +391,64 @@ prerrln("f0_tmpsub(x2js): dcl0 = ", dcl0)
 *)
 //
 }(*where*) // end of [f0_tmpsub(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_include
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val
+filr =
+envx2js_get_filr(env0)
+val
+nind =
+envx2js_get_nind(env0)
+//
+val-
+I1Dinclude
+val-
+I1Dinclude
+( knd0
+, tknd, gsrc
+, fopt, dopt) = dcl0.node()
+//
+val
+(  ) =
+let
+#impltmp
+g_print$out<>() = filr
+in//let
+(
+nindfpr
+(filr, nind); // indentation
+print
+("// I1Dinclude(","...",")\n"))
+end//let
+//
+in//let
+(
+case+ dopt of
+|optn_nil() => ( (*void*) )
+|optn_cons(dcls) =>
+(
+  xats2js_i1dclist(env0, dcls)))
+end where
+{
+//
+(*
+//
+val loc0 = dcl0.lctn((*void*))
+//
+val (  ) =
+prerrln("f0_include(x2js): dcl0 = ", dcl0)
+*)
+//
+}(*where*) // end of [f0_include(env0,dcl0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
