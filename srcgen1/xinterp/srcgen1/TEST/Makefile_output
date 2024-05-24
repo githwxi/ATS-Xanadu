@@ -1,0 +1,367 @@
+######
+#
+# For testing xinterp
+#
+######
+ECHO=echo
+######
+XINTERP=\
+"./../bin/xinterp"
+######
+all:: test
+######
+test:: ; $(XINTERP)
+######
+#
+test:: bools
+bools: ; \
+$(XINTERP) -d ./prelude/bools.dats
+test:: chars
+chars: ; \
+$(XINTERP) -d ./prelude/chars.dats
+#
+######
+#
+test:: lists
+lists: ; \
+$(XINTERP) -d ./prelude/lists.dats
+#
+######
+#
+test:: lists
+strms: ; \
+$(XINTERP) -d ./prelude/strms.dats
+#
+######
+#
+test:: cbref
+cbref: ; \
+$(XINTERP) -d ./prelude/cbref.dats
+#
+######
+#
+test:: foldl
+foldl: ; \
+$(XINTERP) -d ./prelude/foldl.dats
+#
+######
+#
+test:: gfact
+gfact: ; \
+$(XINTERP) -d ./prelude/gfact.dats
+#
+######
+#
+test:: gfors
+gfors: ; \
+$(XINTERP) -d ./prelude/gfors.dats
+#
+######
+#
+test:: gfuns
+gfuns: ; \
+$(XINTERP) -d ./prelude/gfuns.dats
+#
+######
+#
+test:: gints
+gints: ; \
+$(XINTERP) -d ./prelude/gints.dats
+#
+######
+#
+test:: gpats
+gpats: ; \
+$(XINTERP) -d ./prelude/gpats.dats
+#
+######
+#
+test:: gtest1
+gtest1: ; \
+$(XINTERP) -d ./prelude/gtest1.dats
+test:: gtest2
+gtest2: ; \
+$(XINTERP) -d ./prelude/gtest2.dats
+test:: gtest3
+gtest3: ; \
+$(ECHO) "Hello!" | \
+$(XINTERP) -d ./prelude/gtest3.dats
+#
+######
+
+test:: kfact
+kfact: ; \
+$(XINTERP) -d ./prelude/kfact.dats
+test:: kfibo
+kfibo: ; \
+$(XINTERP) -d ./prelude/kfibo.dats
+test:: kisevn
+kisevn: ; \
+$(XINTERP) -d ./prelude/kisevn.dats
+
+######
+#
+test:: addrs
+addrs: ; \
+$(XINTERP) -d ./prelude/addrs.dats
+#
+test:: dtcon
+dtcon: ; \
+$(XINTERP) -d ./prelude/dtcon.dats
+#
+test:: pswap
+pswap: ; \
+$(XINTERP) -d ./prelude/pswap.dats
+#
+######
+#
+test:: array
+array: ; \
+$(XINTERP) -d ./prelude/array.dats
+#
+test:: tuple
+tuple: ; \
+$(XINTERP) -d ./prelude/tuple.dats
+#
+######
+
+test:: isAVL
+isAVL: ; \
+$(XINTERP) -d ./prelude/isAVL.dats
+test:: isAVL
+rfind: ; \
+$(XINTERP) -d ./prelude/rfind.dats
+
+######
+#
+test:: gmacro
+gmacro: ; \
+$(XINTERP) -d ./prelude/gmacro.dats
+#
+######
+
+test:: sieve
+sieve: ; \
+$(XINTERP) -d ./prelude/sieve.dats
+test:: sieve_vt
+sieve_vt: ; \
+$(XINTERP) -d ./prelude/sieve_vt.dats
+
+######
+
+test:: sieve1
+sieve1: ; \
+$(XINTERP) -d ./prelude/sieve1.dats
+test:: sieve1_vt
+sieve1_vt: ; \
+$(XINTERP) -d ./prelude/sieve1_vt.dats
+
+######
+
+test:: koka-amb
+koka-amb: ; \
+$(XINTERP) -d ./prelude/koka-amb.dats
+
+######
+
+test:: \
+ATSLF_test01
+ATSLF_test01: ; \
+$(XINTERP) -d ./prelude/ATSLF/test01.dats
+
+######
+
+test:: \
+test-2020-03-21
+test-2020-03-21: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-03-21.dats
+
+test:: \
+test-2020-03-22
+test-2020-03-22: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-03-22.dats
+
+######
+
+test:: \
+test-2020-04-19
+test-2020-04-19: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-04-19.dats
+
+######
+
+test:: \
+test-2020-05-17
+test-2020-05-17: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-05-17.dats
+
+######
+
+test:: \
+test-2020-06-02
+test-2020-06-02: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-06-02.dats
+
+test:: \
+test-2020-06-03
+test-2020-06-03: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-06-03.dats
+
+test:: \
+test-2020-06-05
+test-2020-06-05: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-06-05.dats
+
+test:: \
+test-2020-06-07
+test-2020-06-07: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-06-07.dats
+
+test:: \
+test-2020-06-08
+test-2020-06-08: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-06-08.dats
+
+test:: \
+test-2020-06-17
+test-2020-06-17: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-06-17.dats
+
+test:: \
+test-2020-06-18
+test-2020-06-18: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-06-18.dats
+
+test:: \
+test-2020-06-20
+test-2020-06-20: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-06-20.dats
+
+test:: \
+test-2020-06-22
+test-2020-06-22: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-06-22.dats
+
+test:: \
+test-2020-06-23
+test-2020-06-23: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-06-23.dats
+
+test:: \
+test-2020-06-26
+test-2020-06-26: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-06-26.dats
+
+test:: \
+test-2020-06-27
+test-2020-06-27: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-06-27.dats
+
+test:: \
+test-2020-06-28
+test-2020-06-28: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-06-28.dats
+
+######
+
+test:: \
+test-2020-07-01
+test-2020-07-01: ; \
+$(ECHO) "Hello, world!" | \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-07-01.dats
+
+#test:: \
+#test-2020-07-02
+#test-2020-07-02: ; \
+#$(ECHO) "Hello, world!" | \
+#$(XINTERP) -d ./xatslib_githwxi/test-2020-07-02.dats
+
+test:: \
+test-2020-07-03
+test-2020-07-03: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-07-03.dats
+
+test:: \
+test-2020-07-05
+test-2020-07-05: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-07-05.dats
+
+test:: \
+test-2020-07-06
+test-2020-07-06: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-07-06.dats
+
+test:: \
+test-2020-07-07
+test-2020-07-07: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-07-07.dats
+
+test:: \
+test-2020-07-10
+test-2020-07-10: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-07-10.dats
+
+test:: \
+test-2020-07-11
+test-2020-07-11: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-07-11.dats
+
+test:: \
+test-2020-07-12
+test-2020-07-12: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-07-12.dats
+
+test:: \
+test-2020-07-17
+test-2020-07-17: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-07-17.dats
+
+test:: \
+test-2020-07-25
+test-2020-07-25: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-07-25.dats
+
+test:: \
+test-2020-07-26
+test-2020-07-26: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-07-26.dats
+
+######
+
+test:: \
+test-2020-09-19
+test-2020-09-19: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2020-09-19.dats
+
+######
+
+test:: \
+test-2022-01-01
+test-2022-01-01: ; \
+$(ECHO) "hello!" | \
+$(XINTERP) -d ./xatslib_githwxi/test-2022-01-01.dats
+
+test:: \
+test-2022-06-04
+test-2022-06-04: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2022-06-04.dats
+
+test:: \
+test-2022-06-06
+test-2022-06-06: ; \
+$(XINTERP) -d ./xatslib_githwxi/test-2022-06-06.dats
+
+######
+#
+# HX: for cleaning up
+#
+######
+clean:: ; rm -f *~
+######
+cleanall:: clean
+cleanall:: ; rm -f output
+######
+# export XATSHOME=$(XANADU)
+# XANADU=$(shell pwd)/../../xanadu
+######
+###### end of [Makefile_output] ######
