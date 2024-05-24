@@ -1,0 +1,265 @@
+######
+#
+# For testing xats2js
+#
+######
+CAT=cat
+CPF=cp -f
+ECHO=echo
+NODE=node
+######
+XSHARED=./../xshared
+XATS2JS="./../bin/xats2js"
+######
+XATS2JS_PRELUDE=\
+"$(XSHARED)/runtime/xats2js_prelude.js"
+XATS2JS_PRELUDE_NODE=\
+"$(XSHARED)/runtime/xats2js_prelude_node.js"
+######
+all:: test
+######
+PRELUDE=./prelude
+GITHWXI=./xatslib_githwxi
+######
+test:: \
+addrs
+addrs:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(PRELUDE)/addrs.dats && $(NODE) output_dats.js
+######
+test:: \
+bools
+bools:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(PRELUDE)/bools.dats && $(NODE) output_dats.js
+######
+test:: \
+chars
+chars:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(PRELUDE)/chars.dats && $(NODE) output_dats.js
+######
+test:: \
+cbref
+cbref:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(PRELUDE)/cbref.dats && $(NODE) output_dats.js
+######
+test:: \
+eqref
+eqref:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(PRELUDE)/eqref.dats && $(NODE) output_dats.js
+######
+test:: \
+fact2
+fact2:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(PRELUDE)/fact2.dats && $(NODE) output_dats.js
+######
+test:: \
+pswap
+pswap:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(PRELUDE)/pswap.dats && $(NODE) output_dats.js
+######
+test:: \
+wtype
+wtype:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(PRELUDE)/wtype.dats && $(NODE) output_dats.js
+######
+test:: \
+lists
+lists:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(PRELUDE)/lists.dats && $(NODE) output_dats.js
+######
+test:: \
+strms
+strms:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(PRELUDE)/strms.dats && $(NODE) output_dats.js
+######
+test:: \
+sieve
+sieve:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(PRELUDE)/sieve.dats && $(NODE) output_dats.js
+######
+test:: \
+sieve1
+sieve1:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(PRELUDE)/sieve1.dats && $(NODE) output_dats.js
+######
+test:: \
+sieve_vt
+sieve_vt:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(PRELUDE)/sieve_vt.dats && $(NODE) output_dats.js
+######
+test:: \
+sieve1_vt
+sieve1_vt:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(PRELUDE)/sieve1_vt.dats && $(NODE) output_dats.js
+######
+test:: \
+test-2020-03-21
+test-2020-03-21:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(GITHWXI)/test-2020-03-21.dats && $(NODE) output_dats.js
+######
+test:: \
+test-2020-03-22
+test-2020-03-22:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(GITHWXI)/test-2020-03-22.dats && $(NODE) output_dats.js
+######
+test:: \
+test-2020-04-19
+test-2020-04-19:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(GITHWXI)/test-2020-04-19.dats && $(NODE) output_dats.js
+######
+test:: \
+test-2020-06-05
+test-2020-06-05:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(GITHWXI)/test-2020-06-05.dats && $(NODE) output_dats.js
+######
+test:: \
+test-2020-06-20
+test-2020-06-20:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(GITHWXI)/test-2020-06-20.dats && $(NODE) output_dats.js
+######
+test:: \
+test-2020-06-26
+test-2020-06-26:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(GITHWXI)/test-2020-06-26.dats && $(NODE) output_dats.js
+######
+test:: \
+test-2020-07-10
+test-2020-07-10:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(GITHWXI)/test-2020-07-10.dats && $(NODE) output_dats.js
+######
+test:: \
+test-2020-07-25
+test-2020-07-25:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(GITHWXI)/test-2020-07-25.dats && $(NODE) output_dats.js
+######
+test:: \
+test-2020-09-29
+test-2020-09-29:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(GITHWXI)/test-2020-09-29.dats && $(NODE) output_dats.js
+######
+test:: \
+test-2020-10-01
+test-2020-10-01:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(GITHWXI)/test-2020-10-01.dats && $(NODE) output_dats.js
+######
+test:: \
+test-2020-10-24
+test-2020-10-24:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(GITHWXI)/test-2020-10-24.dats && $(NODE) output_dats.js
+######
+test:: \
+test-2020-10-25
+test-2020-10-25:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(GITHWXI)/test-2020-10-25.dats && $(NODE) output_dats.js
+######
+test:: \
+test-2020-10-28
+test-2020-10-28:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(GITHWXI)/test-2020-10-28.dats && $(NODE) output_dats.js
+######
+test:: \
+test-2020-10-29
+test-2020-10-29:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(GITHWXI)/test-2020-10-29.dats && $(NODE) output_dats.js
+######
+test:: \
+test-2020-11-03
+test-2020-11-03:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(GITHWXI)/test-2020-11-03.dats && $(NODE) output_dats.js
+######
+test:: \
+test-2020-11-26
+test-2020-11-26:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(GITHWXI)/test-2020-11-26.dats && $(NODE) output_dats.js
+######
+test:: \
+test-2020-12-08
+test-2020-12-08:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(GITHWXI)/test-2020-12-08.dats && $(NODE) output_dats.js
+######
+test:: \
+test-ats2-queens
+test-ats2-queens:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(GITHWXI)/test-ats2-queens.dats && $(NODE) --stack-size=64 output_dats.js
+#
+# HX-2020-11-19: If no tailrec optimization is performed:
+# $(XATS2JS) --output-a output_dats.js -d $(GITHWXI)/test-ats2-queens.dats && $(NODE) --stack-size=8192 output_dats.js
+#
+######
+#
+# HX: for cleaning up
+#
+######
+clean:: ; rm -f *~
+######
+cleanall:: clean
+cleanall:: ; rm -f output
+cleanall:: ; rm -f output_dats.js
+######
+# export XATSHOME=$(XATSOPT)
+# XATSOPT=$(shell pwd)/../../modules/xatsopt
+######
+###### end of [Makefile_nodejs] ######
