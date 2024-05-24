@@ -599,6 +599,10 @@ i1dcl_node =
 //
 (* ****** ****** *)
 //
+|I1Di0dcl of (i0dcl)
+//
+(* ****** ****** *)
+//
 |I1Dextern of
 (token(*kind*),i1dcl)
 |I1Dstatic of

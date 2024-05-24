@@ -592,6 +592,12 @@ dcl0.node() of
 //
 (* ****** ****** *)
 //
+|I1Di0dcl
+(  dcl1  ) =>
+print("I1Di0dcl(", dcl1, ")")
+//
+(* ****** ****** *)
+//
 |I1Dextern
 (tknd, dcl1) =>
 print

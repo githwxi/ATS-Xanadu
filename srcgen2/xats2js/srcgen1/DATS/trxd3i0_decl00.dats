@@ -160,6 +160,12 @@ d3cl.node() of
 //
 (* ****** ****** *)
 //
+|D3Cstaload _ =>
+(
+  f0_staload(env0, d3cl))
+//
+(* ****** ****** *)
+//
 |D3Cvaldclst _ =>
 (
   f0_valdclst(env0, d3cl))
@@ -284,6 +290,7 @@ i0dcl(loc0, I0Dtmpsub(svts, i0d1))
 end//let//end-of-[f0_tmpsub(env0,d3cl)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_include
@@ -318,6 +325,29 @@ in//let
     (knd0, tknd, gsrc, fopt, dopt)))
 end//let//end-of-[f0_include(env0,d3cl)]
 //
+(* ****** ****** *)
+//
+fun
+f0_staload
+( env0: 
+! envd3i0
+, d3cl: d3ecl): i0dcl =
+(
+i0dcl_make_node
+(loc0, I0Dd3ecl(d3cl))
+) where
+{
+//
+val loc0 = d3cl.lctn((*0*))
+//
+val-
+D3Cstaload
+( knd0
+, tknd, gsrc
+, fopt, sopt) = d3cl.node() }
+(*where*)//end-of-[f0_staload(env0,d3cl)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
