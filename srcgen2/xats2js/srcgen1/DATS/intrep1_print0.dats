@@ -375,13 +375,13 @@ _(*otherwise*) => ( i0e1 ))}
 (* ****** ****** *)
 //
 |I1INSdl0az
-(   i1v0   ) =>
+(   i1f0   ) =>
 (
-print("I1INSdl0az(",i1v0,")"))
+print("I1INSdl0az(",i1f0,")"))
 |I1INSdl1az
-(   i1v0   ) =>
+(   i1f0   ) =>
 (
-print("I1INSdl1az(",i1v0,")"))
+print("I1INSdl1az(",i1f0,")"))
 //
 (* ****** ****** *)
 //

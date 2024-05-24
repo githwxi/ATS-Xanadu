@@ -226,10 +226,26 @@ HX-2024-01-03:
 More than 10 template layers!
 *)
 fun
-fact_mul_tail
+fact1_mul_tail
   (x: sint): sint =
 (
   strm_vt_mul0(tail0(strmize(x+1))))//fun
+//
+(* ****** ****** *)
+//
+(*
+HX-2024-01-04:
+Thu Jan  4 15:16:21 EST 2024
+*)
+fun
+fact2_mul_tail
+  (x: sint): sint =
+let
+#typedef x0 = sint
+#vwtpdef xs = strm_vt(x0)
+in//let
+glseq_mul0
+< xs >< x0 >(tail0(gseq_strmize(x+1))) end
 //
 (* ****** ****** *)
 (* ****** ****** *)

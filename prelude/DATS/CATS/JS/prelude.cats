@@ -142,7 +142,7 @@ function
 XATS2JS_UN_p2tr_set
   (ptr, obj)
 {
-  XATS2JS_lval_set(ptr, obj); return;
+  return XATS2JS_lval_set(ptr, obj);
 }
 //
 /* ****** ****** */

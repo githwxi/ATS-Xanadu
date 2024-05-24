@@ -383,6 +383,8 @@ d3pat_make_tpnd
 datatype
 d3exp_node =
 //
+(* ****** ****** *)
+//
 |D3Eint of token
 |D3Ebtf of sym_t
 |D3Echr of token

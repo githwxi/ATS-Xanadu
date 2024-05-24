@@ -195,7 +195,7 @@ else let
   val x1 = g_copy<a>(x0)
   val () =
   (r0 := list_vt_cons(x1, _))
-in
+in // let
 (
   loop(pred(i0), r0.1); $fold(r0) )
 end // end of [else]

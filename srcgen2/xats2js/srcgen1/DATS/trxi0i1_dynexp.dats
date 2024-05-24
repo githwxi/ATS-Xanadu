@@ -1030,6 +1030,10 @@ iexp.node() of
 |I0El1azy _ => f0_l1azy(env0, iexp)
 //
 (* ****** ****** *)
+//
+|I0Enone0 _ => f0_none0(env0, iexp)
+//
+(* ****** ****** *)
 | _(*otherwise*) => i1val_none1(iexp)
 (* ****** ****** *)
 //
@@ -2020,6 +2024,18 @@ prerr("trxi0i1_i0exp:");
 prerrln("f0_l1azy(01): iexp = ", iexp))
 //
 }(*where*)//end-of-[f0_l1azy(env0,iexp)]
+//
+(* ****** ****** *)
+//
+fun
+f0_none0
+( env0:
+! envi0i1, iexp: i0exp): i1val =
+let
+val-
+I0Enone0() =
+iexp.node() in i1val_nil(iexp.lctn())
+end(*let*)//end-of-[f0_none0(env0,iexp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
