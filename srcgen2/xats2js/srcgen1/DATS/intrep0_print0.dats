@@ -562,6 +562,17 @@ print
 ("I0Dtmpsub(", svts, ";", idcl, ")")
 //
 (* ****** ****** *)
+|
+I0Dinclude
+( knd0, tknd
+, gsrc, fopt, dopt ) =>
+(
+print("I0Dinclude(");
+print
+(
+knd0,";",
+tknd,";",gsrc,";",fopt,";","...",")"))
+(* ****** ****** *)
 //
 |I0Dvaldclst
 (  tknd, i0vs  ) =>

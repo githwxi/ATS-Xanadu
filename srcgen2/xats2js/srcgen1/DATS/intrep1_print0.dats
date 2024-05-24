@@ -617,6 +617,18 @@ print
 //
 (* ****** ****** *)
 //
+|I1Dinclude
+( knd0, tknd
+, gsrc, fopt, dopt ) =>
+(
+print("I1Dinclude(");
+print
+(
+knd0,";",
+tknd,";",gsrc,";",fopt,";","...",")"))
+//
+(* ****** ****** *)
+//
 |
 I1Dvaldclst
 (tknd, i1vs) =>

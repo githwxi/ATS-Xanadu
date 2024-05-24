@@ -258,7 +258,7 @@ loc0 = dcl0.lctn((*0*))
 val-
 I0Dinclude
 (knd0
-,tknd,gsrc
+,tknd, gsrc
 ,fopt, dopt) = dcl0.node()
 //
 val dopt =
