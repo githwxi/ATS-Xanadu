@@ -135,7 +135,7 @@ Should generative excptcons be supported?
 I would say no at this point. This feature
 does not seem to be particularly useful and
 it complicates reasoning greatly. Also, it
-can readily added later if needed.
+can be readily added later if needed.
 *)
 fun
 foo
