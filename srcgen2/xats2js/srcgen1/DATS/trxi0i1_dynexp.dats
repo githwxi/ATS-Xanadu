@@ -1034,7 +1034,14 @@ iexp.node() of
 |I0Enone0 _ => f0_none0(env0, iexp)
 //
 (* ****** ****** *)
+//
+|
+I0Eextnam _ => f0_extnam(env0, iexp)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 | _(*otherwise*) => i1val_none1(iexp)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 ) where
@@ -2031,11 +2038,50 @@ fun
 f0_none0
 ( env0:
 ! envi0i1, iexp: i0exp): i1val =
+(
+  i1val_nil(loc0)) where
+{
+  val loc0 = iexp.lctn((*0*))
+  val-I0Enone0() = iexp.node() }
+(*where*)//end-of-[f0_none0(env0,iexp)]
+//
+(* ****** ****** *)
+//
+(*
+fun
+f0_none1
+( env0:
+! envi0i1, iexp: i0exp): i1val =
+(
+  i1val_none1(iexp)) where
+{
+  val-I0Enone1(d3e1) = iexp.node() }
+end(*let*)//end-of-[f0_none1(env0,iexp)]
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_extnam
+( env0:
+! envi0i1, iexp: i0exp): i1val =
 let
+//
+val loc0 = iexp.lctn()
+//
 val-
-I0Enone0() =
-iexp.node() in i1val_nil(iexp.lctn())
-end(*let*)//end-of-[f0_none0(env0,iexp)]
+I0Eextnam
+(tknd, gnam) = iexp.node()
+//
+val i1nm =
+envi0i1_search_exnm(env0, loc0)
+//
+in//let
+(
+i1val_make_node
+(loc0, I1Vextnam(tknd, i1nm, gnam)))
+end(*let*)//end-of-[f0_extnam(env0,iexp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

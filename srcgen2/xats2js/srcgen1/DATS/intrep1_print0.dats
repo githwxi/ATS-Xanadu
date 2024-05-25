@@ -236,6 +236,14 @@ print("I1Vl0azy(", dknd, ";", icmp, ")"))
 //
 (* ****** ****** *)
 //
+|I1Vextnam
+( tknd
+, i1v1, g1ns) =>
+( print("I1Vextnam(")
+; print(tknd, ";", i1v1, ";", g1ns, ")"))
+//
+(* ****** ****** *)
+//
 |I1Vnone0() => print( "I1Vnone0(",")" )
 |I1Vnone1(i0e1) => print("I1Vnone1(", i0e1, ")")
 //

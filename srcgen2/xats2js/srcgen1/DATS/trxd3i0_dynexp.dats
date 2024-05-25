@@ -584,6 +584,13 @@ i0exp
 |D3El1azy _ => f0_l1azy(env0, d3e0)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+|
+D3Eextnam _ => f0_extnam(env0, d3e0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Enone0() =>
 (
@@ -592,6 +599,7 @@ i0exp
 |D3Enone1(d2e1) => i0exp_none1(d3e0)
 |D3Enone2(d3e1) => i0exp_none1(d3e0)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |_(* otherwise *) => i0exp_none1(d3e0)
@@ -1404,6 +1412,27 @@ in//let
 ( i0exp_make_node
   (loc0, I0El1azy(dknd, i0e1, i0es)))
 end (*let*) // end of [f0_l1azy(env0,d3e0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_extnam
+( env0:
+! envd3i0
+, d3e0: d3exp): i0exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Eextnam
+(tknd, gnam) = d3e0.node()
+//
+in//let
+(
+  i0exp(loc0, I0Eextnam(tknd, gnam)))
+end (*let*) // end of [f0_extnam(env0,d3e0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

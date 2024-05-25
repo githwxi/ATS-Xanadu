@@ -59,7 +59,11 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 #typedef fpath = fpath
-#typedef fpathopt = fpathopt
+#typedef g1nam = g1nam
+//
+(* ****** ****** *)
+//
+#typedef fpathopt=fpathopt
 //
 (* ****** ****** *)
 //
@@ -349,7 +353,13 @@ This one is for a left value!
 //
 (* ****** ****** *)
 //
-|I1Vnone0 of () |I1Vnone1 of (i0exp)
+|I1Vextnam of
+(
+token(*$EXTNAM*), i1val, g1nam)
+//
+(* ****** ****** *)
+//
+|I1Vnone0 of () | I1Vnone1 of (i0exp)
 //
 (* ****** ****** *)
 (* ****** ****** *)

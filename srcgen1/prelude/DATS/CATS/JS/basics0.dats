@@ -870,10 +870,11 @@ where
 fun
 XATS2JS_strn_get_at
 ( cs
-: strn, i0: sint): char = $extnam()
+: strn,i0: sint): char = $extnam()
 }
 //
 (* ****** ****** *)
+//
 #impltmp
 strn_forall<>(cs) =
 let
@@ -883,14 +884,16 @@ fun
 XATS2JS_strn_forall_cfr
 ( cs: strn
 , f0: (cgtz) -<cfr> bool): bool
-= $extnam((*self*))
+= $extnam((*self*))//native
 //
 in
 XATS2JS_strn_forall_cfr
 ( cs
 , lam(c0) => forall$test<cgtz>(c0))
-end // end of [strn_forall]
+end//let//end-of-[strn_forall<>(cs)]
+//
 (* ****** ****** *)
+//
 #impltmp
 strtmp_vt_alloc<> =
 XATS2JS_strtmp_vt_alloc
@@ -901,7 +904,9 @@ fun
 XATS2JS_strtmp_vt_alloc
 (bsz:sint): strtmp_vt = $extnam()
 }
+//
 (* ****** ****** *)
+//
 #impltmp
 strn_vt_get_at<> =
 XATS2JS_strn_vt_get_at
@@ -914,7 +919,9 @@ XATS2JS_strn_vt_get_at
 : strn_vt
 , i0:sint(*ind*)): char = $extnam()
 }
+//
 (* ****** ****** *)
+//
 #impltmp
 strn_vt_set_at<> =
 XATS2JS_strn_vt_set_at
@@ -926,7 +933,9 @@ XATS2JS_strn_vt_set_at
 ( cs:strn_vt
 , i0:sint, c0:char): void = $extnam()
 }
+//
 (* ****** ****** *)
+//
 #impltmp
 strtmp_vt_set_at<> =
 XATS2JS_strtmp_vt_set_at
@@ -938,7 +947,9 @@ XATS2JS_strtmp_vt_set_at
 ( cs:strtmp_vt
 , i0:sint, c0:char): void = $extnam()
 }
+//
 (* ****** ****** *)
+//
 #impltmp
 strn_vt_forall0<>(cs) =
 XATS2JS_strn_vt_forall_cfr
@@ -950,9 +961,12 @@ XATS2JS_strn_vt_forall_cfr
 fun
 XATS2JS_strn_vt_forall_cfr
 ( cs: ~strn_vt
-, f0: (cgtz) -<cfr> bool): bool = $extnam()
+, f0:
+  (cgtz) -<cfr> bool): bool = $extnam()
 } (*where*) // end of [strn_vt_forall0]
+//
 (* ****** ****** *)
+//
 #impltmp
 strn_vt_forall1<>(cs) =
 XATS2JS_strn_vt_forall_cfr
@@ -964,9 +978,12 @@ XATS2JS_strn_vt_forall_cfr
 fun
 XATS2JS_strn_vt_forall_cfr
 ( cs: !strn_vt
-, f0: (cgtz) -<cfr> bool): bool = $extnam()
+, f0:
+  (cgtz) -<cfr> bool): bool = $extnam()
 } (*where*) // end of [strn_vt_forall1]
+//
 (* ****** ****** *)
+//
 #impltmp
 strn_vt_rforall0<>(cs) =
 XATS2JS_strn_vt_rforall_cfr
@@ -978,9 +995,12 @@ XATS2JS_strn_vt_rforall_cfr
 fun
 XATS2JS_strn_vt_rforall_cfr
 ( cs: ~strn_vt
-, f0: (cgtz) -<cfr> bool): bool = $extnam()
+, f0:
+  (cgtz) -<cfr> bool): bool = $extnam()
 } (*where*) // end of [strn_vt_rforall0]
+//
 (* ****** ****** *)
+//
 #impltmp
 strn_vt_rforall1<>(cs) =
 XATS2JS_strn_vt_rforall_cfr
@@ -992,8 +1012,10 @@ XATS2JS_strn_vt_rforall_cfr
 fun
 XATS2JS_strn_vt_rforall_cfr
 ( cs: !strn_vt
-, f0: (cgtz) -<cfr> bool): bool = $extnam()
+, f0:
+  (cgtz) -<cfr> bool): bool = $extnam()
 } (*where*) // end of [strn_vt_rforall1]
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_basics0.dats] *)

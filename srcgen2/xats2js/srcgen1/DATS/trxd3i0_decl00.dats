@@ -133,6 +133,17 @@ d3cl.node() of
 //
 (* ****** ****** *)
 //
+|D3Cd2ecl _ =>
+let
+val
+loc0 = d3cl.lctn()
+in//let
+i0dcl_make_node
+(loc0, I0Dd3ecl(d3cl))
+end//let//end(D3Cd2ecl)
+//
+(* ****** ****** *)
+//
 |D3Cextern _ =>
 (
   f0_extern(env0, d3cl))

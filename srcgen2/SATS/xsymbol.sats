@@ -196,6 +196,9 @@ symbl_insert_any(sym: symbl): void
 (* ****** ****** *)
 //
 val
+DLR_EXTNAM_symbl: symbl //=symbl("$extnam")
+//
+val
 DLR_EXTBOX_symbl: symbl //=symbl("$extbox")
 val
 DLR_EXTYPE_symbl: symbl //=symbl("$extype")

@@ -198,10 +198,18 @@ envi0i1_locjoin(!envi0i1): void
 (* ****** ****** *)
 //
 fun
+envi0i1_search_exnm
+( env0:
+! envi0i1, loc0: loc_t): i1val
+fun
+envi0i1_insert_exnm
+( env0: 
+! envi0i1, ival: i1val): (void)
+//
+fun
 envi0i1_search_dvar
 ( env0: 
 ! envi0i1, d2v0: d2var): i1val
-//
 fun
 envi0i1_insert_dvar
 ( env0: 
