@@ -162,6 +162,10 @@ I0Pfree i0p1 =>
 print("I0Pfree(",i0p1,")")
 //
 (* ****** ****** *)
+|
+I0Pdap1 i0f0 =>
+print("I0Pdap1(",i0f0,")")
+(* ****** ****** *)
 //
 |
 I0Pdapp
