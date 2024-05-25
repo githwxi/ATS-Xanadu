@@ -287,6 +287,19 @@ end (*let*)//strn_reverse_vt
 end//end-of-[strn_reverse_vt(cs)]
 
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{r0:vt}
+strn_foldl<r0> =
+gseq_foldl<strn><cgtz><r0>
+#impltmp
+{r0:vt}
+strn_foldr<r0> =
+gseq_foldr<strn><cgtz><r0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp<>
 strn_forall
@@ -351,6 +364,7 @@ endlet//end-of-(else)//end-of-(if)
 } (*where*) // end of [strn_rforall]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 strn_foreach<> =
@@ -362,6 +376,7 @@ gseq_foreach<strn><cgtz>
 strn_rforeach<> =
 gseq_rforeach<strn><cgtz>
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp

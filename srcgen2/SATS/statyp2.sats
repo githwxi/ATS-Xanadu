@@ -139,8 +139,18 @@ x2t2p_fprint(FILR,x2t2p): void
 fun
 the_s2typ_void((*void*)): s2typ
 //
+(* ****** ****** *)
+//
 fun
 the_s2typ_sint((*void*)): s2typ
+fun
+the_s2typ_uint((*void*)): s2typ
+//
+fun
+intrep_s2typ_xint(token): s2typ
+//
+(* ****** ****** *)
+//
 fun
 the_s2typ_bool((*void*)): s2typ
 fun
@@ -166,10 +176,24 @@ fun
 the_s2typ_p2at1(elt:s2typ): s2typ
 //
 (* ****** ****** *)
+//
+fun
+the_s2typ_slint((*void*)): s2typ
+fun
+the_s2typ_ulint((*void*)): s2typ
+//
+fun
+the_s2typ_sllint((*void*)): s2typ
+fun
+the_s2typ_ullint((*void*)): s2typ
+//
+(* ****** ****** *)
+//
 fun
 the_s2typ_l0azy0((*void*)): s2typ
 fun
 the_s2typ_l0azy1(elt:s2typ): s2typ
+//
 (* ****** ****** *)
 fun
 the_s2typ_l1azy0((*void*)): s2typ
