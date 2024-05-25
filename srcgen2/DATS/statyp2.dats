@@ -473,5 +473,78 @@ end (*let*) // end of [ x2t2p_set_styp ]
 end (*local*) // end of [local(x2t2p_tbox)]
 
 (* ****** ****** *)
+(* ****** ****** *)
+
+#implfun
+intrep_s2typ_xint
+  (tint) =
+(
+case-
+tint.node() of
+|
+T_INT01 _ => the_s2typ_sint()
+|
+T_INT02 _ => the_s2typ_sint()
+|
+T_INT03
+(bas, rep, sfx) =>
+if sfx <= 0 then
+the_s2typ_sint() else f0_rep(rep)
+(*
+| _(*otherwise*) => the_s2typ_sint()
+*)
+) where
+{
+//
+fun
+f0_rep
+(rep: strn): s2typ =
+(
+if
+(nu <= 0)
+then
+(
+case+ nl of
+| 0 => the_s2typ_sint()
+| 1 => the_s2typ_slint()
+| _ => the_s2typ_sllint())
+else
+(
+case+ nl of
+| 0 => the_s2typ_uint()
+| 1 => the_s2typ_ulint()
+| _ => the_s2typ_ullint())
+) where
+{
+//
+#typedef x0 = cgtz
+#typedef r0 = sint
+//
+val nl =
+strn_foldl<r0>(rep, 0) where
+{
+#impltmp
+foldl$fopr<x0><r0>(r0, x0) =
+if
+x0 = 'l'
+then r0+1
+else (if x0 = 'L' then r0+1 else r0)}
+//
+val nu =
+strn_foldl<r0>(rep, 0) where
+{
+#impltmp
+foldl$fopr<x0><r0>(r0, x0) =
+if
+x0 = 'u'
+then r0+1
+else (if x0 = 'U' then r0+1 else r0)}
+//
+}(*where*)//end-of-[f0_rep(rep)]
+//
+}(*where*)//end-of-[intrep_s2typ_xint(tint)]
+
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_statyp2.dats] *)

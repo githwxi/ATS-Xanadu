@@ -278,6 +278,19 @@ strn_reverse_vt
 ( cs: strn(n) ) : strn_vt(n)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<r0:vt>
+strn_foldl
+(cs: strn, r0: r0): r0
+fun
+<r0:vt>
+strn_foldr
+(cs: strn, r0: r0): r0
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun<>
 strn_forall(strn): bool
@@ -291,6 +304,7 @@ strn_rforall(strn): bool
 fun<>
 strn_rforeach(strn): void
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun<>

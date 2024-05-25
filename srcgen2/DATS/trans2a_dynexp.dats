@@ -977,10 +977,13 @@ d2exp_make_tpnd
 ( loc0
 , t2p0, D2Eint(tok))) where
 {
-val loc0 = d2e0.lctn()
+val
+loc0 = d2e0.lctn()
 val-
 D2Eint(tok) = d2e0.node()
-val t2p0 = the_s2typ_sint() }
+val
+t2p0 = intrep_s2typ_xint(tok)
+}
 //
 fun
 f0_i00
@@ -993,9 +996,9 @@ d2exp_make_tpnd
 , t2p0, D2Ei00(int))) where
 {
 val loc0 = d2e0.lctn()
-val-
-D2Ei00(int) = d2e0.node()
-val t2p0 = the_s2typ_sint() }
+val t2p0 = the_s2typ_sint()
+val-D2Ei00(int) = d2e0.node()
+}
 //
 (* ****** ****** *)
 //
@@ -1010,9 +1013,9 @@ d2exp_make_tpnd
 , t2p0, D2Ebtf(sym))) where
 {
 val loc0 = d2e0.lctn()
-val-
-D2Ebtf(sym) = d2e0.node()
-val t2p0 = the_s2typ_bool() }
+val t2p0 = the_s2typ_bool()
+val-D2Ebtf(sym) = d2e0.node()
+}
 //
 fun
 f0_b00
@@ -1025,9 +1028,9 @@ d2exp_make_tpnd
 , t2p0, D2Eb00(btf))) where
 {
 val loc0 = d2e0.lctn()
-val-
-D2Eb00(btf) = d2e0.node()
-val t2p0 = the_s2typ_bool() }
+val t2p0 = the_s2typ_bool()
+val-D2Eb00(btf) = d2e0.node()
+}
 //
 (* ****** ****** *)
 //
@@ -1042,9 +1045,9 @@ d2exp_make_tpnd
 , t2p0, D2Echr(tok))) where
 {
 val loc0 = d2e0.lctn()
-val-
-D2Echr(tok) = d2e0.node()
-val t2p0 = the_s2typ_char() }
+val t2p0 = the_s2typ_char()
+val-D2Echr(tok) = d2e0.node()
+}
 //
 fun
 f0_c00
@@ -1057,9 +1060,9 @@ d2exp_make_tpnd
 , t2p0, D2Ec00(chr))) where
 {
 val loc0 = d2e0.lctn()
-val-
-D2Ec00(chr) = d2e0.node()
-val t2p0 = the_s2typ_char() }
+val t2p0 = the_s2typ_char()
+val-D2Ec00(chr) = d2e0.node()
+}
 //
 (* ****** ****** *)
 //
@@ -1074,9 +1077,9 @@ d2exp_make_tpnd
 , t2p0, D2Eflt(tok))) where
 {
 val loc0 = d2e0.lctn()
-val-
-D2Eflt(tok) = d2e0.node()
-val t2p0 = the_s2typ_dflt() }
+val t2p0 = the_s2typ_dflt()
+val-D2Eflt(tok) = d2e0.node()
+}
 //
 fun
 f0_f00
@@ -1089,9 +1092,9 @@ d2exp_make_tpnd
 , t2p0, D2Ef00(flt))) where
 {
 val loc0 = d2e0.lctn()
-val-
-D2Ef00(flt) = d2e0.node()
-val t2p0 = the_s2typ_dflt() }
+val t2p0 = the_s2typ_dflt()
+val-D2Ef00(flt) = d2e0.node()
+}
 //
 (* ****** ****** *)
 //
@@ -1106,9 +1109,9 @@ d2exp_make_tpnd
 , t2p0, D2Estr(tok))) where
 {
 val loc0 = d2e0.lctn()
-val-
-D2Estr(tok) = d2e0.node()
-val t2p0 = the_s2typ_strn() }
+val t2p0 = the_s2typ_strn()
+val-D2Estr(tok) = d2e0.node()
+}
 //
 fun
 f0_s00
@@ -1121,9 +1124,9 @@ d2exp_make_tpnd
 , t2p0, D2Es00(str))) where
 {
 val loc0 = d2e0.lctn()
-val-
-D2Es00(str) = d2e0.node()
-val t2p0 = the_s2typ_strn() }
+val t2p0 = the_s2typ_strn()
+val-D2Es00(str) = d2e0.node()
+}
 //
 (* ****** ****** *)
 //

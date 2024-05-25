@@ -77,6 +77,10 @@ val
 sint_name =
 symbl("the_s2exp_sint0")
 val
+uint_name =
+symbl("the_s2exp_uint0")
+//
+val
 bool_name =
 symbl("the_s2exp_bool0")
 val
@@ -102,9 +106,14 @@ in//local
 val
 void_t2pr =
 a0ref_make_1val<s2typ>(t2p0)
+//
 val
 sint_t2pr =
 a0ref_make_1val<s2typ>(t2p0)
+val
+uint_t2pr =
+a0ref_make_1val<s2typ>(t2p0)
+//
 val
 bool_t2pr =
 a0ref_make_1val<s2typ>(t2p0)
@@ -178,6 +187,10 @@ s2typ_name_t2pr(void_name, void_t2pr)
 #implfun
 the_s2typ_sint() =
 s2typ_name_t2pr(sint_name, sint_t2pr)
+#implfun
+the_s2typ_uint() =
+s2typ_name_t2pr(uint_name, uint_t2pr)
+//
 #implfun
 the_s2typ_bool() =
 s2typ_name_t2pr(bool_name, bool_t2pr)
