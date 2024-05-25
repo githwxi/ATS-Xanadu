@@ -415,11 +415,15 @@ val dpar = d3parsed_of_fildats(fpath)
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
-"prelude\
+"\
+srcgen1\
+/prelude\
 /DATS/CATS/JS/basics1.dats"
 (* ****** ****** *)
 #staload
-"prelude\
+"\
+srcgen1\
+/prelude\
 /DATS/CATS/JS/Node/process.dats"
 (* ****** ****** *)
 val () =
