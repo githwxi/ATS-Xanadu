@@ -474,7 +474,7 @@ end (*local*) // end of [local(x2t2p_tbox)]
 
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #implfun
 intrep_s2typ_xint
   (tint) =
@@ -527,8 +527,8 @@ strn_foldl<r0>(rep, 0) where
 foldl$fopr<x0><r0>(r0, x0) =
 if
 x0 = 'l'
-then r0+1
-else (if x0 = 'L' then r0+1 else r0)}
+then r0+1 else
+(if x0 = 'L' then r0+1 else r0) }
 //
 val nu =
 strn_foldl<r0>(rep, 0) where
@@ -537,13 +537,13 @@ strn_foldl<r0>(rep, 0) where
 foldl$fopr<x0><r0>(r0, x0) =
 if
 x0 = 'u'
-then r0+1
-else (if x0 = 'U' then r0+1 else r0)}
+then r0+1 else
+(if x0 = 'U' then r0+1 else r0) }
 //
 }(*where*)//end-of-[f0_rep(rep)]
 //
 }(*where*)//end-of-[intrep_s2typ_xint(tint)]
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 

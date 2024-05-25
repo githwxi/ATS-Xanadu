@@ -93,6 +93,20 @@ val
 strn_name =
 symbl("the_s2exp_strn0")
 //
+val
+slint_name =
+symbl("the_s2exp_slint0")
+val
+ulint_name =
+symbl("the_s2exp_ulint0")
+//
+val
+sllint_name =
+symbl("the_s2exp_sllint0")
+val
+ullint_name =
+symbl("the_s2exp_ullint0")
+//
 (* ****** ****** *)
 //
 local
@@ -125,6 +139,20 @@ dflt_t2pr =
 a0ref_make_1val<s2typ>(t2p0)
 val
 strn_t2pr =
+a0ref_make_1val<s2typ>(t2p0)
+//
+val
+slint_t2pr =
+a0ref_make_1val<s2typ>(t2p0)
+val
+ulint_t2pr =
+a0ref_make_1val<s2typ>(t2p0)
+//
+val
+sllint_t2pr =
+a0ref_make_1val<s2typ>(t2p0)
+val
+ullint_t2pr =
 a0ref_make_1val<s2typ>(t2p0)
 //
 end (*local*) // end-of-(local)
@@ -203,6 +231,20 @@ s2typ_name_t2pr(dflt_name, dflt_t2pr)
 #implfun
 the_s2typ_strn() =
 s2typ_name_t2pr(strn_name, strn_t2pr)
+//
+#implfun
+the_s2typ_slint() =
+s2typ_name_t2pr(slint_name, slint_t2pr)
+#implfun
+the_s2typ_ulint() =
+s2typ_name_t2pr(ulint_name, ulint_t2pr)
+//
+#implfun
+the_s2typ_sllint() =
+s2typ_name_t2pr(sllint_name, sllint_t2pr)
+#implfun
+the_s2typ_ullint() =
+s2typ_name_t2pr(ullint_name, ullint_t2pr)
 //
 (* ****** ****** *)
 //
