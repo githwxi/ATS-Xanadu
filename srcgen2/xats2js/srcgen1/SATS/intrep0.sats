@@ -343,10 +343,11 @@ i0pat_node =
 |I0Pfree of (i0pat)
 //
 (* ****** ****** *)
-//
+|I0Pdap1 of (i0pat)
+(* ****** ****** *)
 |I0Pdapp of
-( i0pat, i0patlst )
-//
+( i0pat(*con*)
+, i0patlst(*arglst*))
 (* ****** ****** *)
 //
 |I0Ptup0 of (i0patlst)

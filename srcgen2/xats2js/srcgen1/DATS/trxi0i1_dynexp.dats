@@ -734,6 +734,10 @@ I0Pany _ => list_nil((*0*))
 //
 (* ****** ****** *)
 //
+|I0Pdap1 _ =>
+(
+  f0_dap1(env0, ipat, ival))
+//
 |
 I0Pdapp _ =>
 (
@@ -828,6 +832,20 @@ I0Pfree i0p1 = ipat.node()
 in//let
   trxi0i1_i0bnd(env0,i0p1,ival)
 end(*let*)//end-of-[f0_free(env0, ...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dap1
+( env0:
+! envi0i1
+, ipat: i0pat
+, ival: i1val): d2sublst =
+(
+  list_nil((*void*))) where
+{
+val-I0Pdap1 i0f0 = ipat.node()}
+(*where*)//end-of-[f0_dap1(env0, ...)]
 //
 (* ****** ****** *)
 //
