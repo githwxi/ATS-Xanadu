@@ -93,8 +93,13 @@ dcl0.node() of
 (* ****** ****** *)
 //
 |I0Dd3ecl _ =>
-(
-  f0_d3ecl(env0, dcl0))
+let
+val
+loc0 = dcl0.lctn()
+in//let
+i1dcl_make_node
+(loc0, I1Di0dcl(dcl0))
+end//let//end(I0Dd3ecl)
 //
 (* ****** ****** *)
 //
@@ -151,24 +156,6 @@ dcl0.node() of
 //
 ) where
 {
-//
-(* ****** ****** *)
-//
-fun
-f0_d3ecl
-( env0:
-! envi0i1
-, dcl0: i0dcl): i1dcl =
-(
-i1dcl_make_node
-(loc0, I1Di0dcl(dcl0))
-) where
-{
-val
-loc0 = dcl0.lctn((*0*))
-val-
-I0Dd3ecl(dcl1) = dcl0.node() }
-(*where*)//end of [f0_d3ecl(env0,d3cl)]
 //
 (* ****** ****** *)
 //
@@ -623,6 +610,16 @@ val (  ) = prerrln
 //
 val (  ) =
 envi0i1_pshlam0(env0)
+//
+(*
+HX-2024-05-25:
+stkmap_nilq()=false! *)
+val (  ) =
+envi0i1_insert_exnm
+  (env0, i1f0) where
+{
+val i1f0 = i1val_var(dvar)
+}(*where*)//end-of-[val()]
 //
 val fjas =
 trxi0i1_fiarglst(env0, fias)

@@ -106,6 +106,7 @@ XATSOPT "./../../.."
 "./../../../SATS/dynexp3.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef g1nam = $S1E.g1nam
 #typedef g1exp = $S1E.g1exp
 (* ****** ****** *)
 #typedef d1exp = $D1E.d1exp
@@ -144,6 +145,11 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 #typedef d3ecl = $D3E.d3ecl
 (* ****** ****** *)
+(* ****** ****** *)
+(*
+#typedef g1namlst = $S1E.g1namlst
+#typedef g1explst = $S1E.g1explst
+*)
 (* ****** ****** *)
 #typedef s2explst = $S2E.s2explst
 #typedef s2typlst = $S2E.s2typlst
@@ -499,7 +505,12 @@ i0exp_node =
 (* ****** ****** *)
 (* ****** ****** *)
 //
-|I0Enone0 of ((*0*)) |I0Enone1 of (d3exp)
+|I0Eextnam of (token, g1nam)//HX: external
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I0Enone0 of ((*0*)) | I0Enone1 of (d3exp)
 //
 // HX-2023-??-??: end-of-[datatype(i0exp_node)]
 //

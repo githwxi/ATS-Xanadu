@@ -403,6 +403,14 @@ I0Edp2tr
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|I0Eextnam
+(tknd, gnam) =>
+(
+print("I0Eextnam(", tknd, ";", gnam, ")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |I0Enone0() => print( "I0Enone0(",")" )
 |I0Enone1(d3e1) => print("I0Enone1(", d3e1, ")")
 //

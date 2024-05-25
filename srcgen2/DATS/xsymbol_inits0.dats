@@ -136,6 +136,8 @@ HX-2022-10-01: Various symbols
 #implval DRAISE_symbl = symbl("$raise")
 (* ****** ****** *)
 //
+#implval DLR_EXTNAM_symbl = symbl("$extnam")
+//
 #implval DLR_EXTBOX_symbl = symbl("$extbox")
 #implval DLR_EXTYPE_symbl = symbl("$extype")
 //

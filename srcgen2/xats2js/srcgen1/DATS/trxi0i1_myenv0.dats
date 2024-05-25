@@ -41,6 +41,7 @@ Authoremail: gmhwxiATgmailDOTcom
 XATSOPT "./../../.."
 *)
 (* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
@@ -52,6 +53,7 @@ XATSOPT "./../../.."
 #include
 "./../HATS/libxats2js.hats"
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
@@ -733,6 +735,70 @@ end (*let*)//end-of-(envi0i1_locjoin(env0))
 (* ****** ****** *)
 //
 #implfun
+envi0i1_search_exnm
+  (env0, loc0) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+ d2vstk,!iltstk) = env0
+//
+val
+sym1 =
+(
+  $SYM.DLR_EXTNAM_symbl)
+//
+val
+opt1 =
+stkmap_search_opt(d2vstk, sym1)
+//
+in//let
+(
+case+ opt1 of
+| ~optn_vt_nil() =>
+(
+   i1val_none0(loc0))
+| ~optn_vt_cons(ival) => ( ival ))
+end//let//end-of-[envi0i1_search_exnm]
+//
+(* ****** ****** *)
+//
+#implfun
+envi0i1_insert_exnm
+  (env0, ival) = let
+//
+val+
+@ENVI0I1
+(d2vtop,
+!d2vstk,!iltstk) = env0
+//
+val
+sym1 =
+(
+  $SYM.DLR_EXTNAM_symbl)
+//
+in//let
+//
+let
+val () =
+(*
+if
+stkmap_nilq
+(  d2vstk  )
+then
+topmap_insert_any
+(d2vtop,sym1,ival)
+else
+*)
+stkmap_insert_any
+(d2vstk,sym1,ival) in $fold(env0) end
+//
+end(*let*)//end-of-( envi0i1_insert_exnm )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 envi0i1_search_dvar
   (env0, d2v1) = let
 //
@@ -741,9 +807,11 @@ val+
 (d2vtop,
  d2vstk,!iltstk) = env0
 //
-val sym1 = d2v1.name((*void*))
+val
+sym1 = d2v1.name((*void*))
 //
-val opt1 =
+val
+opt1 =
 stkmap_search_opt(d2vstk, sym1)
 //
 in//let
@@ -768,7 +836,6 @@ topmap_search_opt(d2vtop, sym1)}
 //
 end(*let*)//end-of-( envi0i1_search_dvar )
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -799,6 +866,7 @@ stkmap_insert_any
 //
 end(*let*)//end-of-( envi0i1_insert_dvar )
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
