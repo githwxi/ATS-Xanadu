@@ -176,9 +176,13 @@ js1emit_dats
 js1emit_dats: ; \
 $(XATSOPT) --dynamic DATS/js1emit.dats
 all_dats:: \
-js1emit_myenv0_dats
-js1emit_myenv0_dats: ; \
-$(XATSOPT) --dynamic DATS/js1emit_myenv0.dats
+js1emit_dynexp_dats
+js1emit_dynexp_dats: ; \
+$(XATSOPT) --dynamic DATS/js1emit_dynexp.dats
+all_dats:: \
+js1emit_decl00_dats
+js1emit_decl00_dats: ; \
+$(XATSOPT) --dynamic DATS/js1emit_decl00.dats
 ######
 
 ########################################################################
