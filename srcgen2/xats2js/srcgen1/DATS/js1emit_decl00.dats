@@ -30,32 +30,43 @@
 //
 (*
 Author: Hongwei Xi
-//
-Sun 26 May 2024 01:46:35 AM EDT
-//
+(*
+Sun 26 May 2024 09:32:10 AM EDT
+*)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-(*
-#define
-XATSOPT "./../../.."
-*)
-(* ****** ****** *)
 #include
 "./../../..\
 /HATS/xatsopt_sats.hats"
+#include
+"./../../..\
+/HATS/xatsopt_dats.hats"
+(* ****** ****** *)
+#include
+"./../HATS/xats2js_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../SATS/intrep0.sats"
-#staload "./../SATS/intrep1.sats"
-#staload "./../SATS/xats2js.sats"
+#staload // SYM =
+"./../../../SATS/xsymbol.sats"
+//
+#staload // LOC =
+"./../../../SATS/locinfo.sats"
+//
+#staload // D2E =
+"./../../../SATS/dynexp2.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload "./../SATS/js1emit.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_js1emit.sats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_js1emit_dynexp.dats] *)
 (***********************************************************************)
