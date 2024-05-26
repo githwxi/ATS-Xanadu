@@ -55,6 +55,29 @@ XATSOPT "./../../.."
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+js1emit_i1val
+(env0: !envx2js, ival: i1val): void
+//
+fun
+js1emit_i1let
+(env0: !envx2js, ilet: i1let): void
+//
+fun
+js1emit_i1bnd
+(env0: !envx2js, ibnd: i1bnd): void
+//
+fun
+js1emit_i1cmp
+(env0: !envx2js, icmp: i1cmp): void
+//
+fun
+js1emit_i1ins
+(env0: !envx2js, iins: i1ins): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_js1emit.sats] *)
