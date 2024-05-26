@@ -96,7 +96,7 @@ case+
 dcl0.node() of
 //
 (* ****** ****** *)
-|_(*otherwise*) => js1emit_i1dcl(env0, dcl0)
+|_(*otherwise*) => xats2js_i1dcl(env0, dcl0)
 (* ****** ****** *)
 //
 end where

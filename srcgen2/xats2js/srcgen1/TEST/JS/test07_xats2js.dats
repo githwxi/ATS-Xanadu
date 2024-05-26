@@ -85,6 +85,13 @@ val (  ) = prerrln
 #include
 "./../../DATS/xats2js_decl00.dats"
 (* ****** ****** *)
+#include
+"./../../DATS/js1emit.dats"
+#include
+"./../../DATS/js1emit_dynexp.dats"
+#include
+"./../../DATS/js1emit_decl00.dats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val
@@ -148,7 +155,7 @@ val dpar = d3parsed_from_fpath
 val () =
 let
 val filr = g_stdout<>() in
-xats2js_i1parsed(filr, statyp2_dats) end
+js1emit_i1parsed(filr, statyp2_dats) end
 //
 (* ****** ****** *)
 (* ****** ****** *)
