@@ -109,4 +109,4 @@ case+ xs of
 
 (* ****** ****** *)
 
-(* end of [ATS3-ConcreteSyntax.dats] *)
+(* end of [ATS3-Xanadu/docgenx/SYNTAX/ConcreteSyntax.dats] *)
