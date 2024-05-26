@@ -96,13 +96,375 @@ case+
 dcl0.node() of
 //
 (* ****** ****** *)
+//
+|I1Dextern _ =>
+(
+  f0_extern(env0, dcl0))
+|I1Dstatic _ =>
+(
+  f0_static(env0, dcl0))
+//
+(* ****** ****** *)
+//
+|I1Dlocal0 _ =>
+(
+  f0_local0(env0, dcl0))
+//
+(* ****** ****** *)
+//
+|I1Dinclude _ =>
+(
+  f0_include(env0, dcl0))
+//
+(* ****** ****** *)
+//
+|I1Dvaldclst _ =>
+(
+  f0_valdclst(env0, dcl0))
+|I1Dvardclst _ =>
+(
+  f0_vardclst(env0, dcl0))
+//
+(* ****** ****** *)
+//
+|I1Dfundclst _ =>
+(
+  f0_fundclst(env0, dcl0))
+//
+(* ****** ****** *)
 |_(*otherwise*) => xats2js_i1dcl(env0, dcl0)
 (* ****** ****** *)
 //
 end where
 {
-
+//
+(* ****** ****** *)
+//
+fun
+f0_extern
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val
+filr =
+envx2js_get_filr(env0)
+val
+nind =
+envx2js_get_nind(env0)
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dextern
+(tknd, dcl1) = dcl0.node()
+//
+val
+(  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+nindfpr(filr, nind);
+print
+("// I1Dextern(",loc0,")\n")
+end//let
+//
+val (  ) =
+(
+  xats2js_i1dcl( env0, dcl1 ))
+//
+end(*let*)//end-of-[f0_extern(env0,dcl0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_static
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val
+filr =
+envx2js_get_filr(env0)
+val
+nind =
+envx2js_get_nind(env0)
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dstatic
+(tknd, dcl1) = dcl0.node()
+//
+val
+(  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+nindfpr(filr, nind);
+print
+("// I1Dstatic(",loc0,")\n")
+end//let
+//
+val (  ) =
+(
+  xats2js_i1dcl( env0, dcl1 ))
+//
+end(*let*)//end-of-[f0_static(env0,dcl0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_local0
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val
+filr =
+envx2js_get_filr(env0)
+val
+nind =
+envx2js_get_nind(env0)
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dlocal0
+(head, body) = dcl0.node()
+//
+val
+(  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+(
+nindfpr(filr, nind);
+print
+("// I1Dlocal0(",loc0,")\n"))
+end//let
+//
+val () =
+(
+  js1emit_i1dclist(env0, head))
+val () =
+(
+  js1emit_i1dclist(env0, body))
+//
+end(*let*)//end-of-[f0_local0(env0,dcl0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_include
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val
+filr =
+envx2js_get_filr(env0)
+val
+nind =
+envx2js_get_nind(env0)
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dinclude
+( knd0
+, tknd, gsrc
+, fopt, dopt) = dcl0.node()
+//
+val (  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+(
+nindfpr(filr, nind);
+print
+("// I1Dinclude(",loc0,")\n"))
+end//let
+//
+in//let
+(
+case+ dopt of
+|optn_nil() => ( (*void*) )
+|optn_cons(dcls) =>
+(
+  js1emit_i1dclist(env0, dcls)))
+end(*let*)//end-of-[f0_include(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_valdclst
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val
+filr =
+envx2js_get_filr(env0)
+val
+nind =
+envx2js_get_nind(env0)
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dvaldclst
+( tknd, i1vs) = dcl0.node()
+//
+val (  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+nindfpr(filr, nind);
+print
+("// I1Dvaldclist(",loc0,")\n")
+end//let
+//
+val (  ) =
+(
+ js1emit_i1valdclist(env0, i1vs))
+//
+end(*let*)//end-of-[f0_valdclst(env0,dcl0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_vardclst
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val
+filr =
+envx2js_get_filr(env0)
+val
+nind =
+envx2js_get_nind(env0)
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dvardclst
+( tknd, i1vs) = dcl0.node()
+//
+val (  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+nindfpr(filr, nind);
+print
+("// I1Dvardclist(",loc0,")\n")
+end//let
+//
+val (  ) =
+(
+ js1emit_i1vardclist(env0, i1vs))
+//
+end(*let*)//end of [f0_vardclst(env0,dcl0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_fundclst
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val
+filr =
+envx2js_get_filr(env0)
+val
+nind =
+envx2js_get_nind(env0)
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dfundclst
+( tknd
+, d2cs, i1fs) = dcl0.node()
+//
+val (  ) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+nindfpr(filr, nind);
+print
+("// I1Dfundclist(",loc0,")\n")
+end//let
+//
+val (  ) =
+(
+ js1emit_i1fundclist(env0, i1fs))
+//
+end(*let*)//end-of-[f0_fundclst(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 }(*where*)//end-of-[js1emit_i1dcl(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+js1emit_i1valdcl
+  (env0, ival) =
+(
+  xats2js_i1valdcl(env0, ival))
+(*where*)//end-of-[js1emit_i1valdcl(env0,dcl0)]
+//
+(* ****** ****** *)
+//
+#implfun
+js1emit_i1vardcl
+  (env0, ivar) =
+(
+  xats2js_i1vardcl(env0, ivar))
+(*where*)//end-of-[js1emit_i1vardcl(env0,dcl0)]
+//
+(* ****** ****** *)
+//
+#implfun
+js1emit_i1fundcl
+  (env0, ifun) =
+(
+  xats2js_i1fundcl(env0, ifun))
+(*where*)//end-of-[js1emit_i1fundcl(env0,dcl0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -112,6 +474,7 @@ js1emit_i1dclist
   (env0, dcls) =
 (
   list_js1emit_fnp(env0, dcls, js1emit_i1dcl))
+(*where*)//end-of-[js1emit_i1dclist(env0,dcl0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
