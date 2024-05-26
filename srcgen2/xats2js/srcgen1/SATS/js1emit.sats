@@ -57,6 +57,12 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 fun
+js1emit_i1parsed(i1parsed): (void)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 js1emit_i1val
 (env0: !envx2js, ival: i1val): void
 //
@@ -75,6 +81,93 @@ js1emit_i1cmp
 fun
 js1emit_i1ins
 (env0: !envx2js, iins: i1ins): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+js1emit_i1dcl
+(env0: !envx2js, dcl0: i1dcl): void
+//
+fun
+js1emit_dimpl
+(env0: !envx2js, dimp: dimpl): void
+fun
+js1emit_t1imp
+(env0: !envx2js, timp: t1imp): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
+js1emit_i1valist
+(env0: !envx2js, i1vs: i1valist): void
+*)
+//
+fun
+js1emit_i1letlst
+(env0: !envx2js, i1vs: i1letlst): void
+//
+fun
+js1emit_i1cmplst
+(env0: !envx2js, i1fs: i1cmplst): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+js1emit_fjarglst
+(env0: !envx2js, fjas: fjarglst): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+js1emit_i1clslst
+(env0: !envx2js, icls: i1clslst): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+js1emit_i1dclist
+(env0: !envx2js, dcls: i1dclist): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+js1emit_i1valdcl
+(env0: !envx2js, ival: i1valdcl): void
+fun
+js1emit_i1vardcl
+(env0: !envx2js, ivar: i1vardcl): void
+//
+fun
+js1emit_i1fundcl
+(env0: !envx2js, ifun: i1fundcl): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+js1emit_i1valdclist
+(env0: !envx2js, i1vs: i1valdclist): void
+fun
+js1emit_i1vardclist
+(env0: !envx2js, i1vs: i1vardclist): void
+//
+fun
+js1emit_i1fundclist
+(env0: !envx2js, i1fs: i1fundclist): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+js1emit_i1dclistopt
+(env0: !envx2js, dopt: i1dclistopt): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

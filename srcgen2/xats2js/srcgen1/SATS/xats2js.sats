@@ -66,8 +66,8 @@ envx2js_get_nind
 (* ****** ****** *)
 //
 fun
-envx2js_make_nil
-(    (*nil*)    ): envx2js
+envx2js_make_out
+(  out: FILR   ): envx2js
 fun
 envx2js_free_top
 ( env0: ~envx2js ): void//fun
@@ -134,7 +134,8 @@ strnfpr
 (* ****** ****** *)
 //
 fun
-xats2js_i1parsed(i1parsed): (void)
+xats2js_i1parsed
+(out: FILR, ipar: i1parsed): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
