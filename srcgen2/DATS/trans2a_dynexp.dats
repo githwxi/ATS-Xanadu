@@ -130,6 +130,10 @@ T2Plft(t2p1) => t2p1
 _(*otherwise*) => s2typ_lft(t2p0)
 )
 //
+(*
+HX:
+For leftization!
+*)
 fun
 d2pat_bang
 (d2p0: d2pat): (void) =

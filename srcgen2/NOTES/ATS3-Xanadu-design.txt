@@ -46,6 +46,11 @@ Sun Dec 24 10:53:50 EST 2023
 Let's specify
 the meaning of some pattern modifiers.
 
+(
+HX-2024-05-26:
+Without modification:
+C(x1, x2) folds automatically at the end)
+
 ~: for freeing:
 ~x:
 what matches x is freed
@@ -54,7 +59,8 @@ the constructor is freed but x1 and x2 are not.
 Note that both x1 and x2 are names (not variables)
 
 (
-@: for flatness
+@: HX: used to be for flatness
+@: HX: explicit folding/freeing
 @C(x1, x2) matches unfolded constructor?
 )
 Note that @C(x1, x2) indicates that either folding
@@ -73,6 +79,8 @@ and a type-check error is issued if folding is needed.
 HX-2024-02-26:
 Note that folding is applied automatically at the end
 (if folding is not yet done).
+
+HX-2024-05-26: Please see [trans2a_dynexp.dats] for details!
 
 ########################################################################
 

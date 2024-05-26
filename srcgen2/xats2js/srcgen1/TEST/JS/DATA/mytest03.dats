@@ -174,7 +174,8 @@ var myint: int
 
 in//local
 
-val ((*0*)) = foo(myint) endloc // local
+val
+((*0*)) = foo(myint) endloc // local
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -184,8 +185,10 @@ length1
 (xs: list(int)): sint =
 (
 case+ xs of
-| list_nil() => 0
-| list_cons(_, xs) => 1 + length1(xs))//fun
+| list_nil
+  ( (*0*) ) => 0
+| list_cons
+  ( _, xs ) => 1 + length1(xs))//fun
 //
 (* ****** ****** *)
 //
@@ -200,11 +203,14 @@ fun
 loop(xs, res) =
 (
 case+ xs of
-| list_nil() => res
-| list_cons(_, xs) => loop(xs, res+1))//fun
+| list_nil
+  ( (*0*) ) => res
+| @list_cons
+  ( _, !xs ) => loop(xs, res+1))//fun
 }
 //
 (* ****** ****** *)
+////
 (* ****** ****** *)
 
 fun
