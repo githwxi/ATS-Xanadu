@@ -67,6 +67,11 @@ xats2js_sats
 xats2js_sats: ; \
 $(XATSOPT) --static SATS/xats2js.sats
 ######
+all_sats:: \
+js1emit_sats
+js1emit_sats: ; \
+$(XATSOPT) --static SATS/js1emit.sats
+######
 
 ######
 #
@@ -163,6 +168,17 @@ all_dats:: \
 xats2js_tmplib_dats
 xats2js_tmplib_dats: ; \
 $(XATSOPT) --dynamic DATS/xats2js_tmplib.dats
+######
+
+######
+all_dats:: \
+js1emit_dats
+js1emit_dats: ; \
+$(XATSOPT) --dynamic DATS/js1emit.dats
+all_dats:: \
+js1emit_myenv0_dats
+js1emit_myenv0_dats: ; \
+$(XATSOPT) --dynamic DATS/js1emit_myenv0.dats
 ######
 
 ########################################################################

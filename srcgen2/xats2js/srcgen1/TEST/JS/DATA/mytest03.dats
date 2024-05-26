@@ -205,12 +205,11 @@ loop(xs, res) =
 case+ xs of
 | list_nil
   ( (*0*) ) => res
-| @list_cons
+| list_cons
   ( _, !xs ) => loop(xs, res+1))//fun
 }
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 
 fun
