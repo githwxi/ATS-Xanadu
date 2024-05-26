@@ -100,12 +100,8 @@ ENVX2JS
 (* ****** ****** *)
 //
 #implfun
-envx2js_make_nil
-  ((*void*)) =
-(
-  ENVX2JS(filr, 0)) where
-{
-val filr = g_stdout<>((*void*)) }
+envx2js_make_out
+  (out: FILR) = ENVX2JS(out, 0)
 //
 (* ****** ****** *)
 //

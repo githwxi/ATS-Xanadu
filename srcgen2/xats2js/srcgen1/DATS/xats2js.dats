@@ -74,7 +74,7 @@ strn_fprint
 //
 #implfun
 xats2js_i1parsed
-  (ipar) = let
+  (filr, ipar) = let
 //
 val stadyn =
 i1parsed_get_stadyn(ipar)
@@ -85,7 +85,8 @@ i1parsed_get_source(ipar)
 val parsed =
 i1parsed_get_parsed(ipar)
 //
-val env0 = envx2js_make_nil()
+val
+env0 = envx2js_make_out(filr)
 //
 in//let
 (
