@@ -62,7 +62,91 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload "./../SATS/intrep0.sats"
+#staload "./../SATS/intrep1.sats"
+#staload "./../SATS/xats2js.sats"
 #staload "./../SATS/js1emit.sats"
+//
+(* ****** ****** *)
+//
+#staload
+_(*DATS*)="./../DATS/js1emit.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#symload lctn with i1dcl_get_lctn
+#symload node with i1dcl_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+js1emit_i1dcl
+( env0,dcl0 ) =
+let
+(*
+//
+val () =
+prerrln
+("js1emit_i1dcl: dcl0 = ", dcl0))
+//
+*)
+in//let
+//
+case+
+dcl0.node() of
+//
+(* ****** ****** *)
+|_(*otherwise*) => js1emit_i1dcl(env0, dcl0)
+(* ****** ****** *)
+//
+end where
+{
+
+}(*where*)//end-of-[js1emit_i1dcl(env0,dcl0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+js1emit_i1dclist
+  (env0, dcls) =
+(
+  list_js1emit_fnp(env0, dcls, js1emit_i1dcl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+js1emit_i1valdclist
+  (env0, i1vs) =
+(
+  list_js1emit_fnp(env0, i1vs, js1emit_i1valdcl))
+//
+(* ****** ****** *)
+//
+#implfun
+js1emit_i1vardclist
+  (env0, i1vs) =
+(
+  list_js1emit_fnp(env0, i1vs, js1emit_i1vardcl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+js1emit_i1fundclist
+  (env0, i1fs) =
+(
+  list_js1emit_fnp(env0, i1fs, js1emit_i1fundcl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+js1emit_i1dclistopt
+  (env0, dopt) =
+(
+  optn_js1emit_fnp(env0, dopt, js1emit_i1dclist))
 //
 (* ****** ****** *)
 (* ****** ****** *)

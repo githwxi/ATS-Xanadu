@@ -145,7 +145,10 @@ val dpar = d3parsed_from_fpath
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val () = xats2js_i1parsed(xstamp0_dats)
+val () =
+let
+val filr = g_stdout<>() in
+xats2js_i1parsed(filr, xstamp0_dats) end
 //
 (* ****** ****** *)
 (* ****** ****** *)
