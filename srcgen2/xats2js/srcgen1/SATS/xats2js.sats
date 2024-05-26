@@ -135,7 +135,7 @@ strnfpr
 //
 fun
 xats2js_i1parsed
-(out: FILR, ipar: i1parsed): void
+(filr: FILR, ipar: i1parsed): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

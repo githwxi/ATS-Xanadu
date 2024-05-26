@@ -57,7 +57,28 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 fun
-js1emit_i1parsed(i1parsed): (void)
+<x0:t0>
+<y0:t0>
+list_js1emit_fnp
+( e1:
+! envx2js
+, xs: list(x0)
+, (!envx2js, x0) -> void): void
+fun
+<x0:t0>
+<y0:t0>
+optn_js1emit_fnp
+( e1:
+! envx2js
+, xs: optn(x0)
+, (!envx2js, x0) -> void): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+js1emit_i1parsed
+(filr: FILR, ipar: i1parsed): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
