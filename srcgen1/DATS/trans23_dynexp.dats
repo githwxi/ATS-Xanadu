@@ -1060,7 +1060,7 @@ utplft
 let
 val
 t2p0 = t2ype_eval(t2p0)
-in
+in//let
 case+
 t2p0.node() of
 | T2Plft(t2p1) => t2p1 | _ => t2p0

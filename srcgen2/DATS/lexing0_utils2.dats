@@ -79,9 +79,9 @@ val+
 @PSTN1
 (!nt0, !nr1, !nc2) = pos
 in//in
-( nt0 := nt0+1
-//nr1 := nr1+0
-; nc2 := nc2+1; $fold(pos))
+( nt0 := nt0+1;
+//nr1 := nr1+0;
+  nc2 := nc2+1; $fold(pos))
 endlet // end of [pstn1_inc1]
 
 fun
@@ -93,9 +93,9 @@ val+
 @PSTN1
 (!nt0, !nr1, !nc2) = pos
 in//in
-( nc2 := 0
-; nt0 := nt0+1
-; nr1 := nr1+1; $fold(pos))
+( nc2 := 0;
+  nt0 := nt0+1;
+  nr1 := nr1+1; $fold(pos))
 endlet // end of [pstn1_inc1_nr]
 
 fun

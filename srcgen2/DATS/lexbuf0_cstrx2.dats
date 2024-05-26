@@ -139,8 +139,8 @@ if
 then
 (ncol := ncol+1)
 else
-( ncol := 0
-; nrow := nrow+1 ); $fold(  pos  )
+( ncol := 0;
+  nrow := nrow+1 ); $fold(  pos  )
 //
 endlet // end of [pstn1_incby_char]
 
@@ -288,7 +288,7 @@ else f0_nofs(ofs, res+1, ccs)
 in
 case+ pcur of
 |
-PSTN1
+@PSTN1
 (!ntot, !nrow, !ncol) =>
 if
 (ncol > 0)
