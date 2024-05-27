@@ -134,26 +134,48 @@ strnfpr
 (* ****** ****** *)
 //
 fun
+d2cstfpr
+(filr: FILR, dcst: d2cst): void
+fun
+d2varfpr
+(filr: FILR, dvar: d2var): void
+//
+fun
+i1tnmfpr
+(filr: FILR, itnm: i1tnm): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 xats2js_i1parsed
 (filr: FILR, ipar: i1parsed): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 fun
 xats2js_d2cst
 (env0: !envx2js, dcst: d2cst): void
+*)
 //
+(*
 fun
 xats2js_d2var
 (env0: !envx2js, dvar: d2var): void
+*)
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
+(*
 fun
 xats2js_i1val
 (env0: !envx2js, ival: i1val): void
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 xats2js_i1let

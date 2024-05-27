@@ -77,22 +77,11 @@ optn_js1emit_fnp
 (* ****** ****** *)
 //
 fun
-itnmfpr
-(filr: FILR, itnm: i1tnm): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
 js1emit_i1parsed
 (filr: FILR, ipar: i1parsed): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-fun
-js1emit_i1val
-(env0: !envx2js, ival: i1val): void
 //
 fun
 js1emit_i1let
@@ -110,6 +99,11 @@ fun
 js1emit_i1ins
 (env0: !envx2js, iins: i1ins): void
 //
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+js1emit_fjarg
+(env0: !envx2js, farg: fjarg): void
 (* ****** ****** *)
 (* ****** ****** *)
 //

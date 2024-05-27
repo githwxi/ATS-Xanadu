@@ -78,9 +78,9 @@ _(*DATS*)="./../DATS/xats2js.dats"
 //
 fun
 fprintln
-(filr: FILR): void =
+(out: FILR): void =
 (
- strn_fprint(filr,"\n"))//end-fun
+ strn_fprint(out,"\n"))//endfun
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -667,7 +667,7 @@ timp.node() of
 nindfpr(filr, nind);
 strnfpr
 (filr,"// T1IMPall1(");
-xats2js_d2cst(env0,dcst);
+d2cstfpr( filr, dcst );
 strnfpr(filr, ")\n"(*end*));
 //
 case+ dopt of
@@ -684,7 +684,7 @@ xats2js_i1dcl(env0,idcl(*tmp*))
 nindfpr(filr, nind);
 strnfpr
 (filr,"// T1IMPallx(");
-xats2js_d2cst(env0,dcst);
+d2cstfpr( filr, dcst );
 strnfpr(filr, ")\n"(*end*));
 //
 case+ dopt of
@@ -883,8 +883,8 @@ nindfpr
 (filr, nind);
 strnfpr
 (filr, "// ");
-xats2js_d2var
-( env0,dvar ); fprintln(filr))
+d2varfpr
+( filr,dvar ); fprintln(filr))
 end//let
 //
 (* ****** ****** *)
