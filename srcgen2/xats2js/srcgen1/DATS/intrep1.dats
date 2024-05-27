@@ -377,12 +377,23 @@ I1TNM of (stamp)
 in//local
 //
 #implfun
+i1tnm_get_stmp
+  ( itnm ) =
+let
+val+
+I1TNM(stmp) = itnm in stmp end
+//
+(* ****** ****** *)
+//
+#implfun
 i1tnm_new0() =
 (
   I1TNM(stmp)) where
-{
-  val stmp = the_i1tnm_stamp_new()
-}
+{ val
+  stmp = the_i1tnm_stamp_new()
+}(*where*)//end-of-[i1tnm_new0]
+//
+(* ****** ****** *)
 //
 #implfun
 i1tnm_fprint
@@ -396,6 +407,8 @@ val+I1TNM(stmp) = itnm
 //
 in//let
   print("I1TNM(", stmp, ")") endlet
+//
+(* ****** ****** *)
 //
 end (*local*) // end of [local(i1tnm_tbox)]
 //

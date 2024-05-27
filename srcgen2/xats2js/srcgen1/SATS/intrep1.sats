@@ -169,6 +169,11 @@ i1lab_fprint
 (* ****** ****** *)
 //
 fun
+i1tnm_get_stmp(i1tnm): stamp
+//
+(* ****** ****** *)
+//
+fun
 i1opr_make(name:sym_t): i1opr
 //
 fun

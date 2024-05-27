@@ -69,6 +69,22 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#implfun
+itnmfpr
+( filr,itnm ) =
+(
+print("tnm", stmp)) where
+{
+//
+#impltmp g_print$out<>() = filr
+//
+val stmp = i1tnm_get_stmp(itnm)
+//
+}(*where*)//end-of-[itnmfpr(filr,itnm)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 #implfun
 js1emit_i1val
@@ -90,6 +106,35 @@ _(*otherwise*) => xats2js_i1val(env0, ival)
 (* ****** ****** *)
 end(*let*)//end-of-[js1emit_i1val(env0,ival)]
 
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+js1emit_i1let
+( env0,ilet ) =
+let
+//
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+//
+in//let
+//
+case+ ilet of
+|I1LETnew0(iins) =>
+(
+js1emit_i1ins(env0, iins))
+//
+|I1LETnew1(itnm, iins) =>
+( strnfpr
+  (filr, "let ");
+  itnmfpr(filr, itnm);
+  strnfpr(filr, " = ");
+  js1emit_i1ins(env0, iins))//I1LETnew1
+//
+end(*let*)//end-of-[js1emit_i1let(env0,ilet)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
