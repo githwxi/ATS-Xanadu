@@ -928,6 +928,7 @@ in // let
 end(*let*)//end-of-[list_filter_vt]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX-2019-10:
@@ -949,6 +950,7 @@ tabulate$fopr<a><n>(i0) = f0(i0)
 } (*where*) // end of [list_tabulate_cfr]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
@@ -961,6 +963,7 @@ list_mergesort_vt
   (xs) =
 list_vt_mergesort0<a>(list_copy_vt<a>(xs))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -1014,12 +1017,69 @@ endlet // end of [list_cons(x0, xs)]
 }(*where*)//end-of-[list_subsetize_vt(xs)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{x0:t0}
+list_iforall<x0> =
+(
+  loop(0(*i0*), xs)) where
+{
+fnx
+loop
+( i0: sint
+, xs: list(x0)): void =
+(
+case+ xs of
+|
+list_nil() => ( true )
+|
+list_cons(x1, xs) =>
+(
+if
+test
+then
+loop(i0+1, xs) else false) where
+{
+val test = iforall$test<x0>(i0, x1)}
+)
+}(*where*)//end-of-[list_iforall<x0>(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+{x0:t0}
+list_iforeach<x0>(xs) =
+(
+  loop(0(*i0*), xs)) where
+{
+fnx
+loop
+( i0: sint
+, xs: list(x0)): void =
+(
+case+ xs of
+|
+list_nil() => ( (*void*) )
+|
+list_cons(x1, xs) =>
+(
+  loop(i0+1, xs)) where
+{
+val () = iforeach$work<x0>(i0, x1)}
+)
+}(*where*)//end-of-[list_iforeach<x0>(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 // HX-2022-07-23:
 // higher-order gseq-functions
 // Sun Jul 24 01:02:26 EDT 2022
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 <x0><y0>
 list_map_f1np
@@ -1038,6 +1098,7 @@ list_map_vt<x0><y0>(xs)) where
 {
 #impltmp map$fopr<x0><y0>(x0) = f0(x0)
 } (*where*)//end-[list_map_f1np_vt(xs,f0)]
+//
 (* ****** ****** *)
 //
 #impltmp
