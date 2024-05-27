@@ -62,8 +62,34 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload "./../SATS/intrep0.sats"
+#staload "./../SATS/intrep1.sats"
+#staload "./../SATS/xats2js.sats"
 #staload "./../SATS/js1emit.sats"
 //
+(* ****** ****** *)
+(* ****** ****** *)
+
+#implfun
+js1emit_i1val
+( env0,ival ) =
+let
+//
+(*
+val () =
+prerrln
+("js1emit_i1val: ival = ", ival)
+*)
+//
+in//let
+case+
+ival.node() of
+(* ****** ****** *)
+|
+_(*otherwise*) => xats2js_i1val(env0, ival)
+(* ****** ****** *)
+end(*let*)//end-of-[js1emit_i1val(env0,ival)]
+
 (* ****** ****** *)
 (* ****** ****** *)
 
