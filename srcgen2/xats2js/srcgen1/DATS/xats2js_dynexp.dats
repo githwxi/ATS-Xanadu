@@ -203,13 +203,14 @@ I1CMPcons
 (ilts, ival) =>
 (
 nindfpr(filr, nind);
-strnfpr(filr, "// I1CMP:start\n");
+strnfpr
+(filr,"// I1CMP:start\n");
 //
 (
 nindfpr(filr, nind);
 strnfpr
 (filr, "// I1CMP(ival):");
-i1val_fprint( filr, ival )) where
+i1valfpr(  filr , ival  )) where
 {
 val () =
 (
