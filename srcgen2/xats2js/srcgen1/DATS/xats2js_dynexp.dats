@@ -50,18 +50,6 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload // SYM =
-"./../../../SATS/xsymbol.sats"
-//
-#staload // LOC =
-"./../../../SATS/locinfo.sats"
-//
-#staload // D2E =
-"./../../../SATS/dynexp2.sats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
 #staload "./../SATS/xats2js.sats"
@@ -72,15 +60,6 @@ Authoremail: gmhwxiATgmailDOTcom
 _(*DATS*)="./../DATS/xats2js.dats"
 //
 (* ****** ****** *)
-//
-#symload lctn with d2con_get_lctn
-#symload lctn with d2cst_get_lctn
-#symload lctn with d2var_get_lctn
-//
-#symload name with d2con_get_name
-#symload name with d2cst_get_name
-#symload name with d2var_get_name
-//
 (* ****** ****** *)
 #symload lctn with fjarg_get_lctn
 #symload node with fjarg_get_node
@@ -94,9 +73,9 @@ _(*DATS*)="./../DATS/xats2js.dats"
 //
 fun
 fprintln
-(filr: FILR): void =
+(out: FILR): void =
 (
- strn_fprint(filr,"\n"))//end-fun
+ strn_fprint(out,"\n"))//endfun
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -106,69 +85,25 @@ i1bndfpr
 ( out: FILR
 , ibnd: i1bnd): void =
 (
-  i1bnd_fprint(out, ibnd))
+ i1bnd_fprint(out, ibnd))//endfun
 //
 fun
 i1gptfpr
-( out: FILR
-, igpt: i1gpt): void =
+(out: FILR
+,igpt: i1gpt): void =
 (
-  i1gpt_fprint(out, igpt))
+ i1gpt_fprint(out, igpt))//endfun
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#implfun
-xats2js_d2cst
-( env0,dcst ) =
-let
-//
-val filr =
-envx2js_get_filr(env0)
-//
-val name = dcst.name((*0*))
-//
-in//let
+fun
+i1valfpr
+( filr: FILR
+, ival: i1val): void =
 (
-symbl_fprint
-(filr, name);
-strnfpr(filr, "_");
-fprint_loctn_as_stamp
-(filr, dcst.lctn((*void*))))
-end(*let*)//end-of-[xats2js_d2cst(env0,dcst)]
-//
-(* ****** ****** *)
-//
-#implfun
-xats2js_d2var
-( env0,dvar ) =
-let
-//
-val filr =
-envx2js_get_filr(env0)
-//
-val name = dvar.name((*0*))
-//
-in//let
-(
-symbl_fprint
-(filr, name);
-strnfpr(filr, "_");
-fprint_loctn_as_stamp
-(filr, dvar.lctn((*void*))))
-end(*let*)//end-of-[xats2js_d2var(env0,dvar)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-xats2js_i1val
-( env0,ival ) =
-(
-i1val_fprint(filr, ival)) where
-{
-val filr = envx2js_get_filr(env0)
-}(*where*)//end-of-[xats2js_i1val(env0,ival)]
+  i1val_fprint( filr, ival )
+)(*where*)//end-of-[i1valfpr(env0,ival)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

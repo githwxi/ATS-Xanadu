@@ -69,32 +69,17 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#implfun
-itnmfpr
-( filr,itnm ) =
-(
-print("tnm", stmp)) where
-{
-//
-#impltmp g_print$out<>() = filr
-//
-val stmp = i1tnm_get_stmp(itnm)
-//
-}(*where*)//end-of-[itnmfpr(filr,itnm)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
 
-#implfun
-js1emit_i1val
-( env0,ival ) =
+fun
+i1valjs1
+( filr: FILR
+, ival: i1val): void =
 let
 //
 (*
 val () =
 prerrln
-("js1emit_i1val: ival = ", ival)
+("i1valfpr_js1: ival = ", ival)
 *)
 //
 in//let
@@ -102,9 +87,9 @@ case+
 ival.node() of
 (* ****** ****** *)
 |
-_(*otherwise*) => xats2js_i1val(env0, ival)
+_(*otherwise*) => i1val_fprint(filr, ival)
 (* ****** ****** *)
-end(*let*)//end-of-[js1emit_i1val(env0,ival)]
+end(*let*)//end-of-[i1valjs1(env0,ival)]
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -127,13 +112,28 @@ case+ ilet of
 js1emit_i1ins(env0, iins))
 //
 |I1LETnew1(itnm, iins) =>
-( strnfpr
-  (filr, "let ");
-  itnmfpr(filr, itnm);
-  strnfpr(filr, " = ");
-  js1emit_i1ins(env0, iins))//I1LETnew1
+(
+strnfpr(filr,"let ");i1tnmfpr(filr, itnm);
+strnfpr(filr, " = ");js1emit_i1ins(env0, iins)
+)
 //
 end(*let*)//end-of-[js1emit_i1let(env0,ilet)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+
+#implfun
+js1emit_fjarg
+  (env0, farg) = xats2js_fjarg(env0, farg)
+
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+js1emit_fjarglst
+  (env0, fjas) =
+(
+  list_js1emit_fnp(env0, fjas, js1emit_fjarg))
 //
 (* ****** ****** *)
 (* ****** ****** *)

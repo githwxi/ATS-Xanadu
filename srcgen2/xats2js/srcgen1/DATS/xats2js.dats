@@ -48,11 +48,32 @@ Authoremail: gmhwxiATgmailDOTcom
 #include
 "./../HATS/xats2js_dats.hats"
 (* ****** ****** *)
+//
+#staload // SYM =
+"./../../../SATS/xsymbol.sats"
+//
+#staload // LOC =
+"./../../../SATS/locinfo.sats"
+//
+#staload // D2E =
+"./../../../SATS/dynexp2.sats"
+//
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
 #staload "./../SATS/xats2js.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#symload lctn with d2con_get_lctn
+#symload lctn with d2cst_get_lctn
+#symload lctn with d2var_get_lctn
+//
+#symload name with d2con_get_name
+#symload name with d2cst_get_name
+#symload name with d2var_get_name
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -68,6 +89,58 @@ if nind > 0 then
 (
 strn_fprint
 (filr, " "); nindfpr(filr, nind-1))
+//
+(* ****** ****** *)
+//
+#implfun
+i1tnmfpr
+( filr,itnm ) =
+(
+print("tnm", stmp)) where
+{
+//
+#impltmp g_print$out<>() = filr
+//
+val stmp = i1tnm_get_stmp(itnm)
+//
+}(*where*)//end-of-[i1tnmfpr(filr,itnm)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d2cstfpr
+( filr,dcst ) =
+let
+//
+val name = dcst.name((*0*))
+//
+in//let
+(
+symbl_fprint
+(filr, name);
+strnfpr(filr, "_");
+fprint_loctn_as_stamp
+(filr, dcst.lctn((*void*))))
+end(*let*)//end-of-[d2cstfpr(env0,dcst)]
+//
+(* ****** ****** *)
+//
+#implfun
+d2varfpr
+( filr,dvar ) =
+let
+//
+val name = dvar.name((*0*))
+//
+in//let
+(
+symbl_fprint
+(filr, name);
+strnfpr(filr, "_");
+fprint_loctn_as_stamp
+(filr, dvar.lctn((*void*))))
+end(*let*)//end-of-[d2varfpr(env0,dvar)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

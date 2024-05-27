@@ -79,6 +79,15 @@ _(*DATS*)="./../DATS/js1emit.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+fprintln
+(filr: FILR): void =
+(
+ strn_fprint(filr,"\n"))//endfun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 js1emit_i1dcl
 ( env0,dcl0 ) =
@@ -459,12 +468,82 @@ js1emit_i1vardcl
 //
 (* ****** ****** *)
 //
+//
 #implfun
 js1emit_i1fundcl
-  (env0, ifun) =
+  (env0, ifun) = let
+//
+(* ****** ****** *)
+//
+val dvar =
+i1fundcl_get_dpid(ifun)
+val fjas =
+i1fundcl_get_farg(ifun)
+val tdxp =
+i1fundcl_get_tdxp(ifun)
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+in//let
 (
-  xats2js_i1fundcl(env0, ifun))
-(*where*)//end-of-[js1emit_i1fundcl(env0,dcl0)]
+nindfpr
+(filr, nind); // indent
+strnfpr
+(filr, "// I1FUNDCL\n")) end
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+in//let
+(
+nindfpr(filr, nind);
+strnfpr(filr, "function ");
+d2varfpr
+(filr, dvar); fprintln(filr))
+end//let
+//
+(* ****** ****** *)
+//
+val (  ) = // enter
+(
+  envx2js_pshlam0(env0) )
+//
+val (  ) =
+(
+js1emit_fjarglst(env0,fjas)
+)
+//
+val (  ) =
+(
+case+ tdxp of
+|
+TEQI1CMPnone
+( (*void*) ) => ((*void*))
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+let
+val (  ) =
+(
+  js1emit_i1cmp(env0, icmp))
+end//let
+) (*case+*) // end-of-( teqi1exp )
+//
+val (  ) = envx2js_poplam0(env0)//leave
+//
+end//let
+(*let*)//end-of-[js1emit_i1fundcl(env0,ifun)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
