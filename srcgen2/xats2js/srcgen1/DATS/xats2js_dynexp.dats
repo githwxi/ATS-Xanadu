@@ -161,23 +161,14 @@ end(*let*)//end-of-[xats2js_d2var(env0,dvar)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 #implfun
 xats2js_i1val
 ( env0,ival ) =
-let
-//
-val filr =
-envx2js_get_filr(env0)
-val nind =
-envx2js_get_nind(env0)
-//
-in//let
-nindfpr(filr, nind);
-strnfpr(filr, "// ");
-i1val_fprint(filr, ival); fprintln(filr)
-end(*let*)//end-of-[xats2js_i1val(env0,ival)]
-*)
+(
+i1val_fprint(filr, ival)) where
+{
+val filr = envx2js_get_filr(env0)
+}(*where*)//end-of-[xats2js_i1val(env0,ival)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

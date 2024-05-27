@@ -77,6 +77,13 @@ optn_js1emit_fnp
 (* ****** ****** *)
 //
 fun
+itnmfpr
+(filr: FILR, itnm: i1tnm): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 js1emit_i1parsed
 (filr: FILR, ipar: i1parsed): void
 //
