@@ -105,10 +105,36 @@ in//let
 case+
 ival.node() of
 (* ****** ****** *)
+|I1Vtnm(itnm) => i1tnmfpr(filr,itnm)
+(* ****** ****** *)
+|I1Vcst(dcst) => d2cstfpr(filr,dcst)
+(* ****** ****** *)
+|I1Vvar(dvar) => d2varfpr(filr,dvar)
+(* ****** ****** *)
 |
 _(*otherwise*) => i1val_fprint(filr,ival)
 (* ****** ****** *)
 end(*let*) // end-of-[i1valjs1(env0,ival)]
+//
+(* ****** ****** *)
+//
+fun
+i1valjs1_list
+( filr: FILR
+, i1vs: i1valist): void =
+(
+list_iforeach(i1vs)) where
+{
+#typedef x0 = i1val
+#typedef xs = i1valist
+#impltmp
+iforeach$work<x0>(i0, x0) =
+(
+if
+(i0 >= 1)
+then
+strnfpr(filr,", ");i1valjs1(filr, x0))
+}(*where*)//end-of-[i1valjs1_list(...)]
 //
 (* ****** ****** *)
 //
@@ -126,6 +152,14 @@ prerrln
 //
 in//let
 case+ iins of
+//
+|I1INSdapp
+(i1f0, i1vs) =>
+(
+i1valjs1(filr,i1f0);strnfpr(filr,"(");
+i1valjs1_list(filr,i1vs);strnfpr(filr,")")
+)
+//
 (* ****** ****** *)
 |
 _(*otherwise*) => i1ins_fprint(filr,iins)
@@ -298,9 +332,9 @@ strnfpr(filr, "{\n");
 case+ ithn of
 |optn_nil() => ()
 |optn_cons(icmp) =>
-(envx2js_incnind(env0,2(*inc*))
-;f0_i1tnmcmp(env0, itnm, icmp))
-;envx2js_decnind(env0,2(*dec*)))
+(envx2js_incnind(env0,2(*++*))
+;f0_i1tnmcmp(env0, itnm, icmp)
+;envx2js_decnind(env0,2(*--*))))
 //
 val () =
 (
@@ -309,9 +343,9 @@ strnfpr(filr, "} else {\n");
 case+ iels of
 |optn_nil() => ()
 |optn_cons(icmp) =>
-(envx2js_incnind(env0,2(*inc*))
-;f0_i1tnmcmp(env0, itnm, icmp))
-;envx2js_decnind(env0,2(*dec*)))
+(envx2js_incnind(env0,2(*++*))
+;f0_i1tnmcmp(env0, itnm, icmp)
+;envx2js_decnind(env0,2(*--*))))
 //
 val () =
 ( nindfpr(filr, nind);
