@@ -87,6 +87,8 @@ fun
 js1emit_i1let
 (env0: !envx2js, ilet: i1let): void
 //
+(* ****** ****** *)
+//
 fun
 js1emit_i1bnd
 (env0: !envx2js, ibnd: i1bnd): void
@@ -95,9 +97,16 @@ fun
 js1emit_i1cmp
 (env0: !envx2js, icmp: i1cmp): void
 //
+(* ****** ****** *)
+//
+(*
+HX-2024-05-27:
+This fuction is
+merged into [js1emit_i1let]!
 fun
 js1emit_i1ins
 (env0: !envx2js, iins: i1ins): void
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

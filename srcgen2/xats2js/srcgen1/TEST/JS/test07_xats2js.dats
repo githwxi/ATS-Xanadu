@@ -104,9 +104,12 @@ i1parsed_of_trxi0i1(ipar)
 val
 ipar =
 i0parsed_of_trxd3i0(dpar)
+(*
 val
 (  ) =
-println("parsed(i0) = ", ipar)
+println
+("i0parsed(i0) = ", ipar)
+*)
 //
 } where
 {
@@ -115,9 +118,11 @@ val
 dpar =
 d3parsed_of_trans3a(dpar)
 //
+(*
 val ( ) =
 prerrln
 ("d3parsed(3a) = ", dpar)
+*)
 //
 val
 dpar =
@@ -129,10 +134,11 @@ val
 dpar =
 d3parsed_of_tread33(dpar)
 //
+(*
 val ( ) =
 prerrln
 ("d3parsed(33) = ", dpar)
-//
+*)
 //
 val
 out = g_stderr((*0*))
