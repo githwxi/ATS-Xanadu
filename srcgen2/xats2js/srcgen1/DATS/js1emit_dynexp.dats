@@ -78,6 +78,8 @@ _(*DATS*)="./../DATS/js1emit.dats"
 #symload ival with i1cmp_get_ival
 #symload ilts with i1cmp_get_ilts
 (* ****** ****** *)
+#symload filr with envx2js_get_filr
+#symload nind with envx2js_get_nind
 (* ****** ****** *)
 //
 fun
@@ -212,10 +214,8 @@ js1emit_i1cmp
 ( env0,icmp ) =
 let
 //
-val filr =
-envx2js_get_filr(env0)
-val nind =
-envx2js_get_nind(env0)
+val filr = env0.filr()
+val nind = env0.nind()
 //
 in//let
 //
@@ -251,10 +251,8 @@ js1emit_i1let
 ( env0,ilet ) =
 let
 //
-val filr =
-envx2js_get_filr(env0)
-val nind =
-envx2js_get_nind(env0)
+val filr = env0.filr()
+val nind = env0.nind()
 //
 fun
 f0_i1tnmcmp
@@ -264,18 +262,24 @@ f0_i1tnmcmp
 , icmp: i1cmp): void =
 let
 //
-val
-ival = icmp.ival()
-val
-ilts = icmp.ilts()
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+//
+val ival = icmp.ival()
+val ilts = icmp.ilts()
 //
 val () =
 js1emit_i1letlst(env0, ilts)
+//
 val () =
-(
+let
 nindfpr(filr, nind);
 strnfpr(filr,"let ");
-i1tnmfpr(filr, itnm);strnfpr(filr, " = ");i1valjs1(filr, ival);fprintln(filr))
+i1tnmfpr(filr, itnm);strnfpr(filr, " = ");i1valjs1(filr, ival);fprintln(filr)
+end//let
+//
 end//let//end-of-[f0_i1tnmcmp(...)]
 //
 in//let
