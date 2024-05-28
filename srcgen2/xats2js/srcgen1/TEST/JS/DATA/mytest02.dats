@@ -159,4 +159,4 @@ val ((*0*)) = foo(myint) endloc // local
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XINTERP_TEST_JS_DATA_mytest02.dats] *)
+(* end of [ATS3/XATS2JS_TEST_JS_DATA_mytest02.dats] *)

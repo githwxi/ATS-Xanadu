@@ -258,4 +258,4 @@ glseq_mul0
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XINTERP_TEST_JS_DATA_mytest03.dats] *)
+(* end of [ATS3/XATS2JS_TEST_JS_DATA_mytest03.dats] *)
