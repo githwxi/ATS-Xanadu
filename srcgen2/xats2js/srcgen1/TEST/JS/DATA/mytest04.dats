@@ -45,4 +45,4 @@ end//let
 val list_btw_vt_sint = list_btw_vt<sint>(*void*)
 (* ****** ****** *)
 
-(* end of [ATS3/XINTERP_TEST_JS_DATA_mytest04.dats] *)
+(* end of [ATS3/XATS2JS_TEST_JS_DATA_mytest04.dats] *)

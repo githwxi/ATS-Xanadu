@@ -92,6 +92,25 @@ fprintln
 (* ****** ****** *)
 //
 fun
+i1intjs1
+( filr: FILR
+, tint: token): void =
+(
+case-
+tint.node() of
+|T_INT01
+(  rep  ) => strnfpr(filr, rep)
+|T_INT02
+(bas,rep) => strnfpr(filr, rep)
+|T_INT03
+(bas
+,rep,sfx) => strnfpr(filr, rep)
+)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i1valjs1
 ( filr: FILR
 , ival: i1val): void =
@@ -112,6 +131,8 @@ ival.node() of
 |I1Vcst(dcst) => d2cstfpr(filr,dcst)
 (* ****** ****** *)
 |I1Vvar(dvar) => d2varfpr(filr,dvar)
+(* ****** ****** *)
+|I1Vint(tint) => i1intjs1(filr,tint)
 (* ****** ****** *)
 |
 _(*otherwise*) => i1val_fprint(filr,ival)
