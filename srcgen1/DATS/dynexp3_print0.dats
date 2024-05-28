@@ -589,13 +589,13 @@ x0.node() of
   None() =>
   fprint!
   ( out
-  , "D2Edtsel("
+  , "D3Edtsel("
   , lab0, "(", dpis, ")", ")")
   |
   Some(d3es) =>
   fprint!
   ( out
-  , "D2Edtsel("
+  , "D3Edtsel("
   , lab0, "(", dpis, ")", "(", npf2, "; ", d3es, ")", ")")
   )
 //

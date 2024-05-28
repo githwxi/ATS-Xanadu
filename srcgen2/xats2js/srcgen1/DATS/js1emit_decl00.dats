@@ -77,6 +77,9 @@ _(*DATS*)="./../DATS/js1emit.dats"
 #symload lctn with i1dcl_get_lctn
 #symload node with i1dcl_get_node
 (* ****** ****** *)
+#symload filr with envx2js_get_filr
+#symload nind with envx2js_get_nind
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -156,12 +159,8 @@ f0_extern
 , dcl0: i1dcl): void =
 let
 //
-val
-filr =
-envx2js_get_filr(env0)
-val
-nind =
-envx2js_get_nind(env0)
+val filr = env0.filr()
+val nind = env0.nind()
 //
 val loc0 = dcl0.lctn()
 //
@@ -197,12 +196,8 @@ f0_static
 , dcl0: i1dcl): void =
 let
 //
-val
-filr =
-envx2js_get_filr(env0)
-val
-nind =
-envx2js_get_nind(env0)
+val filr = env0.filr()
+val nind = env0.nind()
 //
 val loc0 = dcl0.lctn()
 //
@@ -238,12 +233,8 @@ f0_local0
 , dcl0: i1dcl): void =
 let
 //
-val
-filr =
-envx2js_get_filr(env0)
-val
-nind =
-envx2js_get_nind(env0)
+val filr = env0.filr()
+val nind = env0.nind()
 //
 val loc0 = dcl0.lctn()
 //
@@ -283,12 +274,8 @@ f0_include
 , dcl0: i1dcl): void =
 let
 //
-val
-filr =
-envx2js_get_filr(env0)
-val
-nind =
-envx2js_get_nind(env0)
+val filr = env0.filr()
+val nind = env0.nind()
 //
 val loc0 = dcl0.lctn()
 //
@@ -330,12 +317,8 @@ f0_valdclst
 , dcl0: i1dcl): void =
 let
 //
-val
-filr =
-envx2js_get_filr(env0)
-val
-nind =
-envx2js_get_nind(env0)
+val filr = env0.filr()
+val nind = env0.nind()
 //
 val loc0 = dcl0.lctn()
 //
@@ -370,12 +353,8 @@ f0_vardclst
 , dcl0: i1dcl): void =
 let
 //
-val
-filr =
-envx2js_get_filr(env0)
-val
-nind =
-envx2js_get_nind(env0)
+val filr = env0.filr()
+val nind = env0.nind()
 //
 val loc0 = dcl0.lctn()
 //
@@ -410,12 +389,8 @@ f0_fundclst
 , dcl0: i1dcl): void =
 let
 //
-val
-filr =
-envx2js_get_filr(env0)
-val
-nind =
-envx2js_get_nind(env0)
+val filr = env0.filr()
+val nind = env0.nind()
 //
 val loc0 = dcl0.lctn()
 //
@@ -486,10 +461,8 @@ i1fundcl_get_tdxp(ifun)
 //
 val (  ) =
 let
-val filr =
-envx2js_get_filr(env0)
-val nind =
-envx2js_get_nind(env0)
+val filr = env0.filr()
+val nind = env0.nind()
 in//let
 (
 nindfpr
@@ -501,10 +474,8 @@ strnfpr
 //
 val (  ) =
 let
-val filr =
-envx2js_get_filr(env0)
-val nind =
-envx2js_get_nind(env0)
+val filr = env0.filr()
+val nind = env0.nind()
 in//let
 (
 nindfpr(filr, nind);
