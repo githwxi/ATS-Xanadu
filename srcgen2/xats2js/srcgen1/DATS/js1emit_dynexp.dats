@@ -56,6 +56,9 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload // LOC =
 "./../../../SATS/locinfo.sats"
 //
+#staload // LEX =
+"./../../../SATS/lexing0.sats"
+//
 #staload // D2E =
 "./../../../SATS/dynexp2.sats"
 //
@@ -99,13 +102,20 @@ i1intjs1
 case-
 tint.node() of
 |T_INT01
-(  rep  ) => strnfpr(filr, rep)
+(  rep  ) => print
+("XATSINT1(", rep, ")")
 |T_INT02
-(bas,rep) => strnfpr(filr, rep)
+(bas,rep) => print
+("XATSINT2(",bas,",",rep,")")
 |T_INT03
 (bas
-,rep,sfx) => strnfpr(filr, rep)
-)
+,rep,sfx) => print
+("XATSINT3("
+,bas, ",", rep, ",", sfx, ")")
+) where
+{
+#impltmp g_print$out<>() = filr
+}(*where*)//end-of-[i1intjs1(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -297,7 +307,6 @@ js1emit_i1letlst(env0, ilts)
 val () =
 let
 nindfpr(filr, nind);
-strnfpr(filr,"let ");
 i1tnmfpr(filr, itnm);strnfpr(filr, " = ");i1valjs1(filr, ival);fprintln(filr)
 end//let
 //
@@ -315,10 +324,6 @@ i1insjs1(filr, iins);fprintln(filr))
 |I1LETnew1
 (itnm, iins) =>
 (
-nindfpr
-(filr, nind);
-//
-(
 //
 case+ iins of
 //
@@ -329,11 +334,33 @@ case+ iins of
 let
 //
 val () =
-js1emit_i1dclist(env0, dcls)
+(
+nindfpr(filr, nind);
+strnfpr(filr, "let ");i1tnmfpr(filr, itnm);strnfpr(filr, " // let\n")
+)
 //
 val () =
 (
- f0_i1tnmcmp(env0, itnm, icmp))
+nindfpr(filr, nind);
+strnfpr(filr, "{ // let\n"))
+//
+val () =
+envx2js_incnind(env0,2(*++*))
+val () =
+(
+ js1emit_i1dclist(env0,dcls))
+val () =
+(
+ f0_i1tnmcmp(env0,itnm,icmp))
+val () =
+(
+ envx2js_decnind(env0,2(*--*)))
+//
+val () = 
+(
+nindfpr(filr, nind);
+strnfpr(filr, "} // endlet\n"))
+//
 end//let//end-of-[I1INSlet0(...)]
 //
 (* ****** ****** *)
@@ -345,10 +372,13 @@ let
 //
 val () =
 (
-strnfpr
-(filr, "if (");
-i1valjs1(filr,itst)
-;strnfpr(filr, ")\n"))
+nindfpr(filr, nind);
+strnfpr(filr, "let ");i1tnmfpr(filr, itnm);strnfpr(filr, " // ift\n"))
+//
+val () =
+(
+nindfpr(filr, nind);
+strnfpr(filr, "if (");i1valjs1(filr, itst);strnfpr(filr, ") // ift\n"))
 //
 val () =
 (
@@ -358,8 +388,8 @@ case+ ithn of
 |optn_nil() => ()
 |optn_cons(icmp) =>
 (envx2js_incnind(env0,2(*++*))
-;f0_i1tnmcmp(env0, itnm, icmp)
-;envx2js_decnind(env0,2(*--*))))
+;f0_i1tnmcmp( env0,itnm,icmp )
+;envx2js_decnind(env0,2(*--*))))//then
 //
 val () =
 (
@@ -369,12 +399,12 @@ case+ iels of
 |optn_nil() => ()
 |optn_cons(icmp) =>
 (envx2js_incnind(env0,2(*++*))
-;f0_i1tnmcmp(env0, itnm, icmp)
-;envx2js_decnind(env0,2(*--*))))
+;f0_i1tnmcmp( env0,itnm,icmp )
+;envx2js_decnind(env0,2(*--*))))//else
 //
 val () =
 ( nindfpr(filr, nind);
-  strnfpr(filr, "} // endif\n"))
+  strnfpr(filr, "} // endif\n"))//endif
 //
 end//let//end-of-[I1INSift0(...)]
 //
@@ -383,12 +413,10 @@ end//let//end-of-[I1INSift0(...)]
 |
 _(*otherwise*) =>
 (
-strnfpr(filr,"let ");
-i1tnmfpr(filr, itnm);strnfpr(filr, " = ");i1insjs1(filr, iins);fprintln(filr))
+nindfpr(filr, nind);
+strnfpr(filr, "let ");i1tnmfpr(filr, itnm);strnfpr(filr, " = ");i1insjs1(filr, iins);fprintln(filr))
 //
 (* ****** ****** *)
-//
-)(*case+-(iins)-of*)
 //
 )(*end-of-[I1LETnew1(itnm,iins)]*)
 //
