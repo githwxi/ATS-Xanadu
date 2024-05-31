@@ -92,6 +92,15 @@ fprintln
  strn_fprint(filr,"\n"))//endfun
 //
 (* ****** ****** *)
+//
+fun
+t1impfpr
+(filr: FILR
+,timp: t1imp): void =
+(
+ t1imp_fprint(filr,timp))//endfun
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -407,6 +416,8 @@ let
 val
 ival = icmp.ival()
 in//let
+nindfpr(filr, nind);
+strnfpr(filr, "// ");t1impfpr(filr, timp);fprintln(filr);
 nindfpr(filr, nind);
 strnfpr(filr, "let ");i1tnmfpr(filr, itnm)
 ;strnfpr(filr, " = ");i1valjs1(filr, ival);fprintln(filr)

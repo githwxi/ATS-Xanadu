@@ -575,12 +575,12 @@ print("T1IMPone1(", dcl1 ,")")
 *)
 //
 |T1IMPall1
-(d2c1, i0ds) =>
-print("T1IMPall1(",d2c1,";",i0ds,")")
+(d2c1, dopt) =>
+print("T1IMPall1(",d2c1,";",dopt,")")
 //
 |T1IMPallx
-(d2c1, i0ds) =>
-print("T1IMPallx(",d2c1,";",i0ds,")")
+(d2c1, dopt) =>
+print("T1IMPallx(",d2c1,";",dopt,")")
 //
 end (*let*) // end of [t1imp_fprint(...)]
 //
