@@ -574,6 +574,12 @@ t1imp_node =
 (* ****** ****** *)
 //
 fun
+t1imp_i1cmpq
+(timp: t1imp): i1cmpopt
+//
+(* ****** ****** *)
+//
+fun
 t1imp_fprint
 (
   out:FILR, timp:t1imp):(void)
@@ -582,13 +588,15 @@ t1imp_fprint
 //
 fun
 t1imp_get_stmp
-(timp: t1imp): stamp
+(timp: t1imp): (stamp)
 fun
 t1imp_get_node
 (timp: t1imp): t1imp_node
 //
 #symload stmp with t1imp_get_stmp
 #symload node with t1imp_get_node
+//
+(* ****** ****** *)
 //
 fun
 t1imp_make_node

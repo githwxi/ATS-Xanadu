@@ -998,7 +998,9 @@ val sym0 = d2v0.name((*0*))
 val t2p0 = d2v0.styp((*0*))
 val sexp = d2v0.sexp((*0*))
 //
-val stmp = the_d2cst_stamp_new()
+val stmp =
+(
+  the_d2cst_stamp_new((*void*)))
 //
 val xt2p = s2typ_none0((*void*))
 (*

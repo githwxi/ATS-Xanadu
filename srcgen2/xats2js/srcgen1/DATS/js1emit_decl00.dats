@@ -73,12 +73,14 @@ Authoremail: gmhwxiATgmailDOTcom
 _(*DATS*)="./../DATS/js1emit.dats"
 //
 (* ****** ****** *)
-(* ****** ****** *)
 #symload lctn with i1dcl_get_lctn
 #symload node with i1dcl_get_node
 (* ****** ****** *)
 #symload filr with envx2js_get_filr
 #symload nind with envx2js_get_nind
+(* ****** ****** *)
+#symload
+js1emit_fjas1 with js1emit_fjarglst
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -88,7 +90,6 @@ fprintln
 (
  strn_fprint(filr,"\n"))//endfun
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -443,7 +444,6 @@ js1emit_i1vardcl
 //
 (* ****** ****** *)
 //
-//
 #implfun
 js1emit_i1fundcl
   (env0, ifun) = let
@@ -465,10 +465,9 @@ val filr = env0.filr()
 val nind = env0.nind()
 in//let
 (
-nindfpr
-(filr, nind); // indent
-strnfpr
-(filr, "// I1FUNDCL\n")) end
+nindfpr(filr, nind); // indent
+strnfpr(filr, "// I1FUNDCL\n"))
+end//let
 //
 (* ****** ****** *)
 //
@@ -480,8 +479,19 @@ in//let
 (
 nindfpr(filr, nind);
 strnfpr(filr, "function ");
-d2varfpr
-(filr, dvar); fprintln(filr))
+d2varfpr(filr, dvar);
+fjas1js1(filr, fjas);fprintln(filr))
+end//let
+//
+(* ****** ****** *)
+//
+val ( ) =
+let
+val filr = env0.filr()
+val nind = env0.nind()
+val (  ) =
+(
+nindfpr(filr, nind);strnfpr(filr, "{ // fun\n"))
 end//let
 //
 (* ****** ****** *)
@@ -489,11 +499,6 @@ end//let
 val (  ) = // enter
 (
   envx2js_pshlam0(env0) )
-//
-val (  ) =
-(
-js1emit_fjarglst(env0,fjas)
-)
 //
 val (  ) =
 (
@@ -505,13 +510,47 @@ TEQI1CMPnone
 TEQI1CMPsome
 (teq1, icmp) =>
 let
+//
+val ival = icmp.ival()
+//
+val (  ) =
+(
+  js1emit_fjas1(env0, fjas))
 val (  ) =
 (
   js1emit_i1cmp(env0, icmp))
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr = env0.filr()
+val nind = env0.nind()
+in//let
+(
+nindfpr(filr, nind);
+strnfpr(filr, "return ");i1valjs1(filr, ival);fprintln(filr))
 end//let
-) (*case+*) // end-of-( teqi1exp )
+//
+(* ****** ****** *)
+end//let
+(* ****** ****** *)
+) (*case+*) // end-of-(teqi1exp)
 //
 val (  ) = envx2js_poplam0(env0)//leave
+//
+(* ****** ****** *)
+//
+val (  ) =
+let
+val filr = env0.filr()
+val nind = env0.nind()
+in//let
+(
+nindfpr(filr, nind);
+strnfpr(filr, "} // endfun\n")) end//let
+//
+(* ****** ****** *)
 //
 end//let
 (*let*)//end-of-[js1emit_i1fundcl(env0,ifun)]
