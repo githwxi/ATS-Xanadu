@@ -120,10 +120,74 @@ tint.node() of
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-i1valjs1
-( filr: FILR
-, ival: i1val): void =
+#implfun
+fjas1js1
+(filr,fjas) =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+fnx
+loop1
+(i0: sint
+,fjas: fjarglst): void =
+(
+case+ fjas of
+|
+list_nil
+((*void*)) => ((*0*))
+|
+list_cons
+(fja1, fjas) =>
+(
+  loop2(i0, fja1, fjas))
+)
+//
+and
+loop2
+(i0: sint
+,fja1: fjarg
+,fjas: fjarglst): void =
+(
+case+
+fja1.node() of
+|FJARGdarg(i1bs) =>
+(
+  loop3(i0, i1bs, fjas))
+)
+//
+and
+loop3
+(i0: sint
+,i1bs: i1bndlst
+,fjas: fjarglst): void =
+(
+case+ i1bs of
+|
+list_nil() =>
+(
+  loop1(i0, fjas))
+|
+list_cons(_, i1bs) =>
+( if
+  (i0 > 1)
+  then
+  print(", ")
+; print("arg", i0)
+; loop3(i0+1, i1bs, fjas))
+)
+//
+in
+(print("(")
+;loop1(1(*i0*),fjas);print(")"))
+end(*let*)//end-of-[fjas1js1(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+i1valjs1(filr, ival) =
 let
 //
 (*
@@ -184,6 +248,7 @@ prerrln
 *)
 //
 in//let
+//
 case+ iins of
 //
 |I1INSdapp
@@ -224,13 +289,6 @@ end(*let*) // end-of-[i1cmpjs1(env0,icmp)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#implfun
-js1emit_fjarg
-  (env0, farg) = xats2js_fjarg(env0, farg)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (*
 #implfun
 js1emit_i1ins
@@ -262,15 +320,15 @@ strnfpr
 (
 nindfpr(filr, nind);
 strnfpr
-(filr, "// I1CMP(ival):");
-i1valjs1(  filr , ival  )) where
+(filr,"// I1CMP:return:");
+i1valjs1
+(filr,ival);fprintln(filr)) where
 {
 val () =
 (
-  js1emit_i1letlst(env0, ilts)) };
+  js1emit_i1letlst(env0, ilts)) }
 //
-strnfpr(filr, " // I1CMP:return\n");
-)
+)(* end-of-[I1CMPcons(ilts,ival)] *)
 //
 end(*let*)//end-of-[js1emit_i1cmp(env0,icmp)]
 //
@@ -329,6 +387,35 @@ case+ iins of
 //
 (* ****** ****** *)
 //
+|I1INStimp
+(i0e1, timp) =>
+let
+//
+val
+iopt = t1imp_i1cmpq(timp)
+//
+in//let
+//
+case+ iopt of
+|
+optn_nil() =>
+(
+xats2js_i1let(env0, ilet))
+|
+optn_cons(icmp) =>
+let
+val
+ival = icmp.ival()
+in//let
+nindfpr(filr, nind);
+strnfpr(filr, "let ");i1tnmfpr(filr, itnm)
+;strnfpr(filr, " = ");i1valjs1(filr, ival);fprintln(filr)
+end//let
+//
+end//let//end-of-[I1INStimp(...)]
+//
+(* ****** ****** *)
+//
 |I1INSlet0
 (dcls, icmp) =>
 let
@@ -336,8 +423,7 @@ let
 val () =
 (
 nindfpr(filr, nind);
-strnfpr(filr, "let ");i1tnmfpr(filr, itnm);strnfpr(filr, " // let\n")
-)
+strnfpr(filr, "let ");i1tnmfpr(filr, itnm);strnfpr(filr, " // let\n"))
 //
 val () =
 (
@@ -426,19 +512,88 @@ end(*let*)//end-of-[js1emit_i1let(env0,ilet)]
 (* ****** ****** *)
 //
 #implfun
-js1emit_fjarglst
-  (env0, fjas) =
+js1emit_i1letlst
+  (env0, ilts) =
 (
-  list_js1emit_fnp(env0, fjas, js1emit_fjarg))
+  list_js1emit_fnp(env0, ilts, js1emit_i1let))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-js1emit_i1letlst
-  (env0, ilts) =
+js1emit_fjarglst
+  (env0, fjas) =
 (
-  list_js1emit_fnp(env0, ilts, js1emit_i1let))
+  loop1(1(*i0*), fjas)) where
+{
+//
+val filr =
+(
+  envx2js_get_filr(env0))
+val nind =
+(
+  envx2js_get_nind(env0))
+//
+fnx
+loop1
+( i0: sint
+, fjas: fjarglst): void =
+(
+case+ fjas of
+|
+list_nil
+( (*void*) ) => ( (*void*) )
+|
+list_cons
+(fja1, fjas) => loop2(i0, fja1, fjas)
+)
+//
+and
+loop2
+( i0: sint
+, fja1: fjarg
+, fjas: fjarglst): void =
+(
+case+
+fja1.node() of
+|
+FJARGdarg(i1bs) => loop3(i0, i1bs, fjas)
+)
+//
+and
+loop3
+( i0: sint
+, i1bs: i1bndlst
+, fjas: fjarglst): void =
+(
+case+ i1bs of
+|
+list_nil() =>
+loop1(i0, fjas)
+|
+list_cons(ibnd, i1bs) =>
+(
+  loop3(i0+1, i1bs, fjas)) where
+{
+//
+#impltmp
+g_print$out<>() = filr
+//
+#impltmp g_print
+<i1tnm>(itnm) = i1tnmfpr(filr, itnm)
+//
+val () =
+case+ ibnd of
+|
+I1BNDcons(itnm, i0p1, dvvs) =>
+(
+nindfpr(filr,nind);
+(
+  print("let ",itnm," = ","arg",i0,"\n")))
+}
+)
+//
+}(*where*)//end-of-[js1emit_fjarglst(env0,fjas)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

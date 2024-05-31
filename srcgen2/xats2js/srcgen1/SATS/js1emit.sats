@@ -57,6 +57,18 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 fun
+fjas1js1
+( filr
+: FILR, fjas:fjarglst): void
+//
+fun
+i1valjs1
+(filr:FILR, ival:i1val): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 <x0:t0>
 <y0:t0>
 list_js1emit_fnp
@@ -110,11 +122,6 @@ js1emit_i1ins
 //
 (* ****** ****** *)
 (* ****** ****** *)
-fun
-js1emit_fjarg
-(env0: !envx2js, farg: fjarg): void
-(* ****** ****** *)
-(* ****** ****** *)
 //
 fun
 js1emit_i1dcl
@@ -150,7 +157,6 @@ js1emit_i1cmplst
 fun
 js1emit_fjarglst
 (env0: !envx2js, fjas: fjarglst): void
-//
 (* ****** ****** *)
 (* ****** ****** *)
 //

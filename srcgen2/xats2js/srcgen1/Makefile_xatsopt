@@ -124,6 +124,11 @@ intrep1_print0_dats
 intrep1_print0_dats: ; \
 $(XATSOPT) --dynamic DATS/intrep1_print0.dats
 ######
+all_dats:: \
+intrep1_utils0_dats
+intrep1_utils0_dats: ; \
+$(XATSOPT) --dynamic DATS/intrep1_utils0.dats
+######
 
 ######
 all_dats:: \
