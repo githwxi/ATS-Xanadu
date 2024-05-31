@@ -81,6 +81,8 @@ _(*DATS*)="./../DATS/js1emit.dats"
 #symload ival with i1cmp_get_ival
 #symload ilts with i1cmp_get_ilts
 (* ****** ****** *)
+#symload node with t1imp_get_node
+(* ****** ****** *)
 #symload filr with envx2js_get_filr
 #symload nind with envx2js_get_nind
 (* ****** ****** *)
@@ -97,8 +99,39 @@ fun
 t1impfpr
 (filr: FILR
 ,timp: t1imp): void =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+//
+case+
+timp.node() of
+|T1IMPall1
+(dcst, dopt) =>
 (
- t1imp_fprint(filr,timp))//endfun
+case+ dopt of
+|optn_nil() =>
+print("T1IMPall1(", ")")
+|optn_cons(idcl) =>
+let
+val loc0 = idcl.lctn() in
+print("T1IMPall1(", loc0, ")") end
+)
+|T1IMPallx
+(dcst, dopt) =>
+(
+case+ dopt of
+|optn_nil() =>
+print("T1IMPallx(", ")")
+|optn_cons(idcl) =>
+let
+val loc0 = idcl.lctn() in
+print("T1IMPallx(", loc0, ")") end
+)
+//
+end//let//end-of-[t1impfpr(filr,timp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -415,6 +448,8 @@ optn_cons(icmp) =>
 let
 val
 ival = icmp.ival()
+val
+iloc = ival.lctn()
 in//let
 nindfpr(filr, nind);
 strnfpr(filr, "// ");t1impfpr(filr, timp);fprintln(filr);
