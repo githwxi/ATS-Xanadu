@@ -50,6 +50,8 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload // LAB =
+"./../../../SATS/xlabel0.sats"
 #staload // SYM =
 "./../../../SATS/xsymbol.sats"
 //
@@ -86,6 +88,7 @@ _(*DATS*)="./../DATS/js1emit.dats"
 #symload filr with envx2js_get_filr
 #symload nind with envx2js_get_nind
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 fprintln
@@ -96,7 +99,7 @@ fprintln
 (* ****** ****** *)
 //
 fun
-xtrcdfpr
+xtrcdjs1
 (filr: FILR
 ,tknd: token): void =
 let
@@ -117,12 +120,35 @@ print("XATSTRCD20(", knd0, ")"))
 (
 print("XATSTRCD??(", tknd, ")"))
 //
-end(*let*)//end-of-[xtrcdfpr(filr,tknd)]
+end(*let*)//end-of-[xtrcdjs1(filr,tknd)]
 //
 (* ****** ****** *)
 //
 fun
-t1impfpr
+labeljs1
+(filr: FILR
+,lab0: label): void =
+(
+case+ lab0 of
+|
+LABint(int) => print(int)
+|
+LABsym(sym) =>
+let
+val nam =
+symbl_get_name(sym) in//let
+  print("'", nam, "'") end//let
+) where
+{
+//
+  #impltmp g_print$out<>() = filr
+//
+}(*where*)//end-of-[labeljs1(filr,lab0)]
+//
+(* ****** ****** *)
+//
+fun
+t1impjs1
 (filr: FILR
 ,timp: t1imp): void =
 let
@@ -157,7 +183,7 @@ val loc0 = idcl.lctn() in
 print("T1IMPallx(", loc0, ")") end
 )
 //
-end//let//end-of-[t1impfpr(filr,timp)]
+end//let//end-of-[t1impjs1(filr,timp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -291,7 +317,7 @@ print
 (trcd, ", ", itup, "[", pind, "]", ")")
 ) where
 { #impltmp
-  g_print<token>(x) = xtrcdfpr(filr,x) }
+  g_print<token>(x) = xtrcdjs1(filr,x) }
 (* ****** ****** *)
 |
 _(*otherwise*) => i1val_fprint(filr,ival)
@@ -340,6 +366,13 @@ prerrln
 ("i1insjs1: iins = ", iins)
 *)
 //
+#impltmp
+g_print
+<label>(x) = labeljs1(filr, x)
+#impltmp
+g_print
+<i1val>(x) = i1valjs1(filr, x)
+//
 in//let
 //
 case+ iins of
@@ -355,6 +388,33 @@ i1valjs1_list(filr,i1vs);strnfpr(filr,")")//;strnfpr(filr,")")
 )
 //
 (* ****** ****** *)
+//
+|I1INSpflt
+( tknd
+, lab0, i1v1) =>
+(
+case+
+tknd.node() of
+|
+T_DOT((*0*)) =>
+(
+ print("XATSPFLT(", i1v1, "[", lab0, "]", ")"))
+)
+//
+|I1INSproj
+( tknd
+, lab0, i1v1) =>
+(
+case+
+tknd.node() of
+|
+T_DOT((*0*)) =>
+(
+ print("XATSPROJ(", i1v1, "[", lab0, "]", ")"))
+)
+//
+(* ****** ****** *)
+//
 |I1INStup0
 (   i1vs   ) =>
 (
@@ -366,9 +426,10 @@ strnfpr(filr,"[");i1valjs1_list(filr,i1vs);strnfpr(filr,"]");strnfpr(filr,")")
 (tknd, i1vs) =>
 (
 strnfpr(filr,"XATSTUP1(");
-xtrcdfpr(filr, tknd);strnfpr(filr,", ");
-strnfpr(filr,"[");i1valjs1_list(filr,i1vs);strnfpr(filr,"]");strnfpr(filr,")")
+xtrcdjs1(filr, tknd);strnfpr(filr,", ")
+;strnfpr(filr,"[");i1valjs1_list(filr,i1vs);strnfpr(filr,"]");strnfpr(filr,")")
 )
+//
 (* ****** ****** *)
 //
 |
@@ -522,7 +583,7 @@ val
 iloc = ival.lctn()
 in//let
 nindfpr(filr, nind);
-strnfpr(filr, "// ");t1impfpr(filr, timp);fprintln(filr);
+strnfpr(filr, "// ");t1impjs1(filr, timp);fprintln(filr);
 nindfpr(filr, nind);
 strnfpr(filr, "let ");i1tnmfpr(filr, itnm)
 ;strnfpr(filr, " = ");i1valjs1(filr, ival);fprintln(filr)

@@ -874,7 +874,7 @@ D3Eproj
 //
 val fltq =
 (
-  d3exp_trcdfltq(d3e0))
+  d3exp_trcdfltq(d3e1))
 //
 val i0e1 =
 (

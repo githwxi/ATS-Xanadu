@@ -95,7 +95,14 @@ s2typ_subst0(t2p0, svts))
 d3exp_trcdfltq
   (  d3e0  ) =
 let
+//
 val t2p0 = d3e0.styp()
+//
+val (  ) = prerrln
+("d3exp_trcdfltq: d3e0 = ", d3e0)
+val (  ) = prerrln
+("d3exp_trcdfltq: t2p0 = ", t2p0)
+//
 in//let
 //
 (
