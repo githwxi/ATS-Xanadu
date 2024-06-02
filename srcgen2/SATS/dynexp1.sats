@@ -1124,11 +1124,11 @@ d1fundcl_make_args
 datatype
 d1cstdcl =
 D1CSTDCL of @{
-  lctn= loc_t
-, dpid= token
-, darg= d1arglst
-, sres= s1res, dres= d1res
-} (*d1cstdcl*)
+ lctn= loc_t
+,dpid= token
+,darg= d1arglst
+,sres= s1res, dres= d1res
+} (* datatype(d1cstdcl) *)
 *)
 //
 (* ****** ****** *)

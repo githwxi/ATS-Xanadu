@@ -44,15 +44,25 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 #staload
+TMP = "./xstamp0.sats"
+(* ****** ****** *)
+#staload
 SYM = "./xsymbol.sats"
+(* ****** ****** *)
 #staload
 FP0 = "./filpath.sats"
+(* ****** ****** *)
+#staload
+MAP = "./xsymmap.sats"
 (* ****** ****** *)
 #typedef sym_t = $SYM.sym_t
 #typedef fpath = $FP0.fpath
 (* ****** ****** *)
-#staload
-MAP = "./xsymmap.sats"
+#typedef stamp = $TMP.stamp
+(* ****** ****** *)
+#typedef
+tmpmap(a:t0)= $TMP.tmpmap(a)
+(* ****** ****** *)
 #typedef
 topmap(a:t0)= $MAP.topmap(a)
 (* ****** ****** *)
@@ -96,26 +106,35 @@ D3E = "./dynexp3.sats"
 #typedef s2itm = $S2E.s2itm
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
 #typedef d2itm = $D2E.d2itm
 #typedef d2ptm = $D2E.d2ptm
 //
+#typedef x2nam = $D2E.x2nam
+//
+(* ****** ****** *)
 (* ****** ****** *)
 fun
 the_XATSHOME(): strn
 (* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 the_xsymbls_insert
   (sym: sym_t): void
 fun
 the_xsymbls_search
 (key:sint): optn_vt(sym_t)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 fun
 the_xatsopt_include
   ( (*void*) ): list(strn)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -126,6 +145,7 @@ the_fxtyenv_pvsfind
   (key: sym_t): fixtyopt_vt
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 filpath_pvsload
@@ -135,6 +155,7 @@ fun
 the_tr12env_pvsload
   ( (*void*) ): sint(*0/1*)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -154,11 +175,13 @@ the_dexpenv_pvs
   ((*void*)): topmap(d2itm)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX: funs for merging with
 *)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -192,11 +215,13 @@ the_dexpenv_pvsfind
   (key: sym_t): optn_vt(d2itm)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX-2023-06-02: for static loading
 *)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef d1parsed = $D1E.d1parsed
@@ -209,10 +234,12 @@ HX-2023-06-02: for static loading
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 the_d1parenv_pvs
   ((*void*)): topmap(d1parsed)
+//
 fun
 the_d1parenv_pvsfind
   (key: sym_t): optn_vt(d1parsed)
@@ -221,10 +248,26 @@ the_d1parenv_pvsadd0
   (key: sym_t, itm: d1parsed): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+the_d2cstmap_xnm
+  ((*void*)): tmpmap(x2nam)
+//
+fun
+the_d2cstmap_xnmfind
+  (key: stamp): optn_vt(x2nam)
+fun
+the_d2cstmap_xnmadd0
+  (key: stamp, itm: x2nam): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 the_d2parenv_pvs
   ((*void*)): topmap(d2parsed)
+//
 fun
 the_d2parenv_pvsfind
   (key: sym_t): optn_vt(d2parsed)
@@ -233,10 +276,12 @@ the_d2parenv_pvsadd0
   (key: sym_t, itm: d2parsed): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 the_d3parenv_pvs
   ((*void*)): topmap(d3parsed)
+//
 fun
 the_d3parenv_pvsfind
   (key: sym_t): optn_vt(d3parsed)
@@ -244,10 +289,12 @@ fun
 the_d3parenv_pvsadd0
   (key: sym_t, itm: d3parsed): void
 //
+(* ****** ****** *)
 //
 fun
 the_d3tmpenv_pvs
   ((*void*)): topmap(d3parsed)
+//
 fun
 the_d3tmpenv_pvsfind
   (key: sym_t): optn_vt(d3parsed)
@@ -255,6 +302,7 @@ fun
 the_d3tmpenv_pvsadd0
   (key: sym_t, itm: d3parsed): void
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -289,6 +337,7 @@ the_dexpenv_allist_prerr(): void
 fun
 the_dexpenv_allist_fprint( out:FILR ): void
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 the_sortenv_allist_add0(sym_t, s2tex): void
@@ -297,6 +346,7 @@ the_sexpenv_allist_add0(sym_t, s2itm): void
 fun
 the_dexpenv_allist_add0(sym_t, d2itm): void
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xglobal.sats] *)

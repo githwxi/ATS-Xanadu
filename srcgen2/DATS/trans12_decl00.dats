@@ -142,9 +142,12 @@ _(*TRANS12*) = "./trans12.dats"
 (* ****** ****** *)
 #symload name with s2var_get_name
 (* ****** ****** *)
+#symload stmp with d2cst_get_stmp
 #symload tqas with d2cst_get_tqas
 (* ****** ****** *)
 #symload node with dimpl_get_node
+(* ****** ****** *)
+#symload tdxp with d2fundcl_get_tdxp
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -2455,11 +2458,60 @@ val () =
 prerrln("f0_fundclst: d2cs = ", d2cs)
 *)
 //
+val () = f1_d2cs_d2fs_xnm(d2cs, d2fs)
+//
 in//let
 d2ecl_make_node
 ( loc0
 , D2Cfundclst(tknd, tqas, d2cs, d2fs) )
 end (*let*) // end of [f0_fundclst(env0,d1cl)]
+//
+and
+f1_d2cs_d2fs_xnm
+( d2cs: d2cstlst
+, d2fs: d2fundclist): void =
+(
+case+ d2cs of
+|
+list_nil() => ()
+|
+list_cons(d2c1, d2cs) =>
+(
+case+ d2fs of
+|
+list_nil() => ()
+|
+list_cons(d2f1, d2fs) =>
+(
+f1_d2cs_d2fs_xnm(d2cs, d2fs)
+) where
+{
+//
+val stmp =
+d2cst_get_stmp(d2c1)
+//
+val xnam =
+(
+case+
+d2f1.tdxp() of
+|TEQD2EXPnone
+(  (*nil*)  ) => X2NAMnone()
+|TEQD2EXPsome
+( tkeq,dexp ) =>
+(
+case+
+dexp.node() of
+|
+D2Eextnam _ => X2NAMsome(dexp)
+|
+_(*otherwise*) => X2NAMnone(*0*)))
+//
+val (  ) =
+(
+  the_d2cstmap_xnmadd0(stmp, xnam))
+}
+)(*end-of-[ list-cons(d2c1,d2cs) ]*)
+)(*case+*)//endof[f1_d2cs_d2fs_xnm(d2cs,d2fs)]
 //
 (* ****** ****** *)
 //
