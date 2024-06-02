@@ -334,6 +334,25 @@ end where
 //
 (* ****** ****** *)
 //
+#implfun
+l1i1vjs1(filr, liv0) =
+let
+val+
+I1LAB(lab1, i1v2) = liv0
+in//let
+(
+print(lab1, ": ", i1v2)) where
+{
+  #impltmp
+  g_print<label>(x) = labeljs1(filr, x)
+  #impltmp
+  g_print<i1val>(x) = i1valjs1(filr, x)
+}
+end(*end*)//end-of-[ l1i1vjs1(filr,ival) ]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 i1valjs1_list
 ( filr: FILR
@@ -352,6 +371,27 @@ then
 strnfpr(filr,", ");i1valjs1(filr, x0))
 }(*where*)//end-of-[i1valjs1_list(...)]
 //
+(* ****** ****** *)
+//
+fun
+l1i1vjs1_list
+( filr: FILR
+, livs: l1i1vlst): void =
+(
+list_iforeach(livs)) where
+{
+#typedef x0 = l1i1v
+#typedef xs = l1i1vlst
+#impltmp
+iforeach$work<x0>(i0, x0) =
+(
+if
+(i0 >= 1)
+then
+strnfpr(filr,", ");l1i1vjs1(filr, x0))
+}(*where*)//end-of-[i1valjs1_list(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -428,6 +468,14 @@ strnfpr(filr,"[");i1valjs1_list(filr,i1vs);strnfpr(filr,"]");strnfpr(filr,")")
 strnfpr(filr,"XATSTUP1(");
 xtrcdjs1(filr, tknd);strnfpr(filr,", ")
 ;strnfpr(filr,"[");i1valjs1_list(filr,i1vs);strnfpr(filr,"]");strnfpr(filr,")")
+)
+//
+|I1INSrcd2
+(tknd, livs) =>
+(
+strnfpr(filr,"XATSRCD2(");
+xtrcdjs1(filr, tknd);strnfpr(filr,", ")
+;strnfpr(filr,"{");l1i1vjs1_list(filr,livs);strnfpr(filr,"}");strnfpr(filr,")")
 )
 //
 (* ****** ****** *)
