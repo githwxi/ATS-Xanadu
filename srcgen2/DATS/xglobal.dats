@@ -172,6 +172,7 @@ the_xatsopt_include() = list_nil( (*void*) )
 end (*local*) // end-[local(the_xatsopt_include)]
 
 (* ****** ****** *)
+(* ****** ****** *)
 
 local
 //
@@ -991,31 +992,31 @@ prerrln("the_dexpenv_pvsfind: key = ", key)
 end(*loc*) // end of [the_tr12env_pvs(load|find)]
 
 (* ****** ****** *)
+(* ****** ****** *)
 
 local
 
 val
-the_list =
-a0ref_make_1val(list_nil())
+the_d2cstmap = tmpmap_make_nil()
 
-in//local
-//
-#implfun
-the_sortenv_allist
-  ((*void*)) = a0ref_get(the_list)
-//
-#implfun
-the_sortenv_allist_add0
-  ( k0, x0 ) =
-let
-val kxs = a0ref_get(the_list)
-in
-a0ref_set
-(the_list, list_cons(@(k0, x0), kxs))
-end(*let*) // end-[the_sortenv_allist_add0]
-//
-end(*loc*) // end of [local(the_sortenv_allist)]
+in(*local*)
 
+(* ****** ****** *)
+#implfun
+the_d2cstmap_xnm() = (the_d2cstmap)
+(* ****** ****** *)
+#implfun
+the_d2cstmap_xnmfind(key) =
+tmpmap_search_opt(the_d2cstmap, key)
+(* ****** ****** *)
+#implfun
+the_d2cstmap_xnmadd0(key, itm) =
+tmpmap_insert_any(the_d2cstmap, key, itm)
+(* ****** ****** *)
+
+end(*loc*) // end of [the_d2cstmap_xnm(srch|find)]
+
+(* ****** ****** *)
 (* ****** ****** *)
 
 local
@@ -1069,7 +1070,34 @@ topmap_insert_any(the_d3parenv, key, itm)
 the_d3tmpenv_pvsadd0(key, itm) =
 topmap_insert_any(the_d3tmpenv, key, itm)
 (* ****** ****** *)
-end (*loc*) // end-[local(the_d1/d2/d3parenv)]
+end (*loc*) // end-[local(the_d1/d2/d3parenv_pvs)]
+
+(* ****** ****** *)
+(* ****** ****** *)
+
+local
+
+val
+the_list =
+a0ref_make_1val(list_nil())
+
+in//local
+//
+#implfun
+the_sortenv_allist
+  ((*void*)) = a0ref_get(the_list)
+//
+#implfun
+the_sortenv_allist_add0
+  ( k0, x0 ) =
+let
+val kxs = a0ref_get(the_list)
+in
+a0ref_set
+(the_list, list_cons(@(k0, x0), kxs))
+end(*let*)//end-[the_sortenv_allist_add0]
+//
+end(*loc*)//end-of-[local(the_sortenv_allist(...))]
 
 (* ****** ****** *)
 
@@ -1093,9 +1121,9 @@ val kxs = a0ref_get(the_list)
 in
 a0ref_set
 (the_list, list_cons(@(k0, x0), kxs))
-end (*let*)//end-[the_sexpenv_allist_add0]
+end(*let*)//end-[the_sexpenv_allist_add0]
 //
-end (*loc*) // end of [local(the_sexpenv_allist)]
+end(*loc*)//end-of-[local(the_sexpenv_allist(...))]
 
 (* ****** ****** *)
 
@@ -1119,36 +1147,44 @@ val kxs = a0ref_get(the_list)
 in
 a0ref_set
 (the_list, list_cons(@(k0, x0), kxs))
-end (*let*)//end-[the_dexpenv_allist_add0]
+end(*let*)//end-[the_dexpenv_allist_add0]
 //
-end (*loc*) // end of [local(the_dexpenv_allist)]
+end(*loc*)//end-of-[local(the_dexpenv_allist(...))]
 
 (* ****** ****** *)
+//
 #implfun
 the_sortenv_allist_print
   ((*void*)) =
 the_sortenv_allist_fprint(g_stdout())
+//
 #implfun
 the_sexpenv_allist_print
   ((*void*)) =
 the_sexpenv_allist_fprint(g_stdout())
+//
 #implfun
 the_dexpenv_allist_print
   ((*void*)) =
 the_dexpenv_allist_fprint(g_stdout())
+//
 (* ****** ****** *)
+//
 #implfun
 the_sortenv_allist_prerr
   ((*void*)) =
 the_sortenv_allist_fprint(g_stderr())
+//
 #implfun
 the_sexpenv_allist_prerr
   ((*void*)) =
 the_sexpenv_allist_fprint(g_stderr())
+//
 #implfun
 the_dexpenv_allist_prerr
   ((*void*)) =
 the_dexpenv_allist_fprint(g_stderr())
+//
 (* ****** ****** *)
 //
 #implfun
@@ -1179,10 +1215,11 @@ auxloop(kxs)) where
 val () = println
 ("the_sortenv_allist:", "(", kx1.0, " -> ", kx1.1, ")")
 }
-) (*case+*)//end-[auxloop(kxs)]
-} (*where*)//end-[auxloop(kxs)]
-end (*let*)//end-[the_sortenv_allist_fprint]
+)(*case+*)//end-of-[auxloop(kxs)]
+}(*where*)//end-of-[auxloop(kxs)]
+end(*let*)//end-of-[the_sortenv_allist_fprint(...)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xglobal.dats] *)

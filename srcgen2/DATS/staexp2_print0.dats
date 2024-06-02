@@ -365,7 +365,7 @@ S2Enone2(s2e1) => print("S2Enone2(",s2e1,")")
 end (*let*) // end of [s2exp_fprint(out, s2e0)]
 
 (* ****** ****** *)
-
+//
 #implfun
 s2itm_fprint
 (out, s2i0) =
@@ -388,7 +388,8 @@ S2ITMenv(envs) =>
 print("S2ITMenv(", "...", ")")
 //
 end (*let*) // end of [s2itm_fprint(out, s2i0)]
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_staexp2_print0.dats] *)

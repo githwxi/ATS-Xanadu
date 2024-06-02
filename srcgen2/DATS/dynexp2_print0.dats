@@ -95,6 +95,28 @@ _(*?*) = "./lexing0_print0.dats"
 (* ****** ****** *)
 
 #implfun
+x2nam_fprint
+(out, xnam) =
+let
+//
+#impltmp
+g_print$out<>() = out
+//
+in//let
+case+ xnam of
+|
+X2NAMnone() =>
+(
+  print("X2NAMnone(", ")"))
+|
+X2NAMsome(dexp) =>
+(
+  print("X2NAMsome(", dexp, ")"))
+end(*let*)//end-of-[x2nam_fprint(out,xnam)]
+//
+(* ****** ****** *)
+
+#implfun
 d2con_fprint
 (out, d2c0) =
 let
@@ -109,7 +131,7 @@ stmp = d2con_get_stmp(d2c0)
 //
 in//let
   print(sym0, "(", stmp, ")")
-end (*let*) // end of [d2con_fprint(out,d2c0)]
+end(*let*)//end-of-[d2con_fprint(out,d2c0)]
 
 (* ****** ****** *)
 
@@ -128,7 +150,7 @@ stmp = d2cst_get_stmp(d2c0)
 //
 in//let
   print(sym0, "(", stmp, ")")
-end (*let*) // end of [d2cst_fprint(out,d2c0)]
+end(*let*)//end-of-[d2cst_fprint(out,d2c0)]
 
 (* ****** ****** *)
 
@@ -147,7 +169,7 @@ stmp = d2var_get_stmp(d2v0)
 //
 in//let
   print(sym0, "(", stmp, ")")
-end (*let*) // end of [d2var_fprint(out,d2v0)]
+end(*let*)//end-of-[d2var_fprint(out,d2v0)]
 
 (* ****** ****** *)
 
@@ -1009,6 +1031,7 @@ print("A2TDFdefn(",s2e1,")")
 end (*let*) // end of [a2tdf_fprint]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 s2eff_fprint
@@ -1025,6 +1048,8 @@ print("S2EFFnone(", ")")
 S2EFFsome(s2fs) =>
 print("S2EFFsome(",s2fs,")")
 end (*let*) // end of [s2eff_fprint]
+//
+(* ****** ****** *)
 //
 #implfun
 s2res_fprint
@@ -1043,6 +1068,7 @@ print
 ("S2RESsome(",seff,";",s2e1,")")
 end (*let*) // end of [s2res_fprint]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -1105,7 +1131,8 @@ print
 end (*let*) // end of [dimpl_fprint(...)]
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 d2arg_fprint
   (out, darg) =
@@ -1130,7 +1157,8 @@ D2ARGsta0
 print("D2ARGsta0(",s2vs,";",s2ps,")")
 //
 end (*let*) // end of [d2arg_fprint(...)]
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 #implfun
@@ -1151,7 +1179,7 @@ in//let
 print
 ("D2VALDCL(",dpat,";",tdxp,";",wsxp,")"))
 end(*let*)//end-of-[d2valdcl_fprint(out,dval)]
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -1176,7 +1204,8 @@ print(dpid,";",vpid,";",sres,";",dini,")"))
 end(*let*)//end-of-[d2vardcl_fprint(out,dvar)]
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 d2fundcl_fprint
   (out, dfun) = let
@@ -1199,9 +1228,10 @@ in//let
 print("D2FUNDCL(",dpid,";");
 print(farg,";",sres,";",tdxp,";",wsxp,")"))
 end(*let*)//end-of-[d2fundcl_fprint(out,dfun)]
-
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 d2cstdcl_fprint
   (out, dcst) = let
@@ -1222,7 +1252,8 @@ in//let
 print("D2CSTDCL(");
 print(dpid,";",darg,";",sres,";",dres,")"))
 end(*let*)//end-of-[d2cstdcl_fprint(out,dcst)]
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 #implfun
@@ -1252,6 +1283,7 @@ print
 (stadyn,";",nerror,";",source,";",parsed,")"))
 end (*let*) // end-of-[d2parsed_fprint(out,dpar)]
 
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_dynexp2_print0.dats] *)

@@ -58,6 +58,9 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload // D2E =
 "./../../../SATS/dynexp2.sats"
 //
+#staload // XGL =
+"./../../../SATS/xglobal.sats"
+//
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
@@ -75,6 +78,9 @@ Authoremail: gmhwxiATgmailDOTcom
 #symload name with d2cst_get_name
 #symload name with d2var_get_name
 //
+(* ****** ****** *)
+#symload lctn with d2exp_get_lctn
+#symload node with d2exp_get_node
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -113,15 +119,62 @@ d2cstfpr
 ( filr,dcst ) =
 let
 //
-val name = dcst.name((*0*))
+val stmp =
+d2cst_get_stmp(dcst)
+val xopt =
+the_d2cstmap_xnmfind(stmp)
 //
 in//let
 (
+case+
+xopt of
+| ~
+optn_vt_nil
+ ( (*0*) ) => f0_none(dcst)
+| ~
+optn_vt_cons
+ (  xnam  ) =>
+(
+case+ xnam of
+|X2NAMnone
+ ( (*0*) ) => f0_none(dcst)
+|X2NAMsome
+ (  dexp  ) => f0_some(dcst, dexp)
+)
+) where
+{
+//
+fun
+f0_none
+(dcst: d2cst): void =
+let
+val lctn = dcst.lctn((*0*))
+val name = dcst.name((*0*))
+//
+in//let
 symbl_fprint
-(filr, name);
-strnfpr(filr, "_");
-fprint_loctn_as_stamp
-(filr, dcst.lctn((*void*))))
+(filr, name);strnfpr(filr, "_");
+fprint_loctn_as_stamp(filr, lctn)end
+//
+fun
+f0_some
+(dcst: d2cst
+,dexp: d2exp): void =
+let
+//
+val name = dcst.name((*0*))
+//
+val-
+D2Eextnam
+(tknd, gnam) = dexp.node((*0*))
+//
+in//let
+case+ gnam of
+|
+_(* else *) => symbl_fprint(filr,name)
+end(*let*)//end-of-[f0_some(dcst,dexp)]
+//
+}(*where*)
 end(*let*)//end-of-[d2cstfpr(env0,dcst)]
 //
 (* ****** ****** *)
