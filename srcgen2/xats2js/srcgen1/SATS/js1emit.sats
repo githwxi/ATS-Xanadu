@@ -64,6 +64,9 @@ fjas1js1
 fun
 i1valjs1
 (filr:FILR, ival:i1val): void
+fun
+l1i1vjs1
+(filr:FILR, liv0:l1i1v): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
