@@ -96,6 +96,32 @@ fprintln
 (* ****** ****** *)
 //
 fun
+xtrcdfpr
+(filr: FILR
+,tknd: token): void =
+let
+#impltmp
+g_print$out<>() = filr
+in//let
+case+
+tknd.node() of
+//
+|T_TRCD10(knd0) =>
+(
+print("XATSTRCD10(", knd0, ")"))
+|T_TRCD20(knd0) =>
+(
+print("XATSTRCD20(", knd0, ")"))
+//
+|_(*otherwise*) =>
+(
+print("XATSTRCD??(", tknd, ")"))
+//
+end(*let*)//end-of-[xtrcdfpr(filr,tknd)]
+//
+(* ****** ****** *)
+//
+fun
 t1impfpr
 (filr: FILR
 ,timp: t1imp): void =
@@ -250,10 +276,35 @@ ival.node() of
 (* ****** ****** *)
 |I1Vint(tint) => i1intjs1(filr,tint)
 (* ****** ****** *)
+|I1Vp0rj
+( itup,pind ) =>
+(
+print
+("XATSP0RJ(",itup,"[",pind,"]", ")"))
+(* ****** ****** *)
+|I1Vp1rj
+( trcd
+, itup, pind) =>
+(
+print("XATSP1RJ(");
+print
+(trcd, ", ", itup, "[", pind, "]", ")")
+) where
+{ #impltmp
+  g_print<token>(x) = xtrcdfpr(filr,x) }
+(* ****** ****** *)
 |
 _(*otherwise*) => i1val_fprint(filr,ival)
 (* ****** ****** *)
-end(*let*) // end-of-[i1valjs1(env0,ival)]
+end where
+{
+//
+  #impltmp g_print$out<>() = filr
+//
+  #impltmp
+  g_print<i1val>(x) = i1valjs1(filr, x)
+//
+}(*where*)//end-of-[ i1valjs1(filr,ival) ]
 //
 (* ****** ****** *)
 //
@@ -296,11 +347,30 @@ case+ iins of
 |I1INSdapp
 (i1f0, i1vs) =>
 (
+(*
+strnfpr(filr,"XATSDAPP(");
+*)
 i1valjs1(filr,i1f0);strnfpr(filr,"(");
-i1valjs1_list(filr,i1vs);strnfpr(filr,")")
+i1valjs1_list(filr,i1vs);strnfpr(filr,")")//;strnfpr(filr,")")
 )
 //
 (* ****** ****** *)
+|I1INStup0
+(   i1vs   ) =>
+(
+strnfpr(filr,"XATSTUP0(");
+strnfpr(filr,"[");i1valjs1_list(filr,i1vs);strnfpr(filr,"]");strnfpr(filr,")")
+)
+//
+|I1INStup1
+(tknd, i1vs) =>
+(
+strnfpr(filr,"XATSTUP1(");
+xtrcdfpr(filr, tknd);strnfpr(filr,", ");
+strnfpr(filr,"[");i1valjs1_list(filr,i1vs);strnfpr(filr,"]");strnfpr(filr,")")
+)
+(* ****** ****** *)
+//
 |
 _(*otherwise*) => i1ins_fprint(filr,iins)
 (* ****** ****** *)
