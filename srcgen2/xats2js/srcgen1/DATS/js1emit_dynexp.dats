@@ -83,6 +83,8 @@ _(*DATS*)="./../DATS/js1emit.dats"
 #symload ival with i1cmp_get_ival
 #symload ilts with i1cmp_get_ilts
 (* ****** ****** *)
+#symload node with i1cls_get_node
+(* ****** ****** *)
 #symload node with t1imp_get_node
 (* ****** ****** *)
 #symload filr with envx2js_get_filr
@@ -95,6 +97,31 @@ fprintln
 (filr: FILR): void =
 (
  strn_fprint(filr,"\n"))//endfun
+//
+(* ****** ****** *)
+//
+//
+fun
+i0patjs1
+(filr: FILR
+,ipat: i0pat): void =
+let
+#impltmp
+g_print$out<>() = filr
+in//let
+case+
+ipat.node() of
+//
+|I0Pcon(d2c0) =>
+(
+  print('"', name, '"')) where
+{
+  val name = d2con_get_name(d2c0)
+}
+|
+_(*non-I0Pcon*) => print('"',ipat,'"')
+//
+end(*let*)//end-of-[i0patjs1(filr,tknd)]
 //
 (* ****** ****** *)
 //
@@ -307,6 +334,17 @@ ival.node() of
 (
 print
 ("XATSP0RJ(",itup,"[",pind,"]", ")"))
+(* ****** ****** *)
+|I1Vp1cn
+( ipat
+, icon, pind) =>
+(
+print("XATSP1CN(");
+print
+(ipat, ", ", icon, "[",pind,"+1]", ")")
+) where
+{ #impltmp
+  g_print<i0pat>(x) = i0patjs1(filr,x) }
 (* ****** ****** *)
 |I1Vp1rj
 ( trcd
@@ -561,8 +599,10 @@ js1emit_i1let
 ( env0,ilet ) =
 let
 //
+(* ****** ****** *)
 val filr = env0.filr()
 val nind = env0.nind()
+(* ****** ****** *)
 //
 fun
 f0_i1tnmcmp
@@ -590,6 +630,81 @@ i1tnmfpr(filr, itnm);strnfpr(filr, " = ");i1valjs1(filr, ival);fprintln(filr)
 end//let
 //
 end//let//end-of-[f0_i1tnmcmp(...)]
+//
+(* ****** ****** *)
+//
+fun
+f0_i1tnmvalcls
+( env0:
+! envx2js
+, itnm: i1tnm
+, ival: i1val
+, icl0: i1cls): void =
+let
+//
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+//
+in//let
+//
+case+
+icl0.node() of
+|
+I1CLScls(igpt, icmp) =>
+let
+val () =
+(
+nindfpr(filr, nind);
+strnfpr(filr, "{ // cls\n"))
+//
+val () =
+(
+  xats2js_i1gpt(env0, igpt))
+//
+val () =
+(
+  f0_i1tnmcmp(env0, itnm, icmp))
+//
+val () =
+nindstrnfpr(filr, nind, "} // cls\n")
+//
+end//let//end(I1CLScls(igpt,icmp))
+//
+end where
+{
+//
+val () =
+( prerrln
+  ("f0_i1tnmvalcls: itnm = ", itnm))
+val () =
+( prerrln
+  ("f0_i1tnmvalcls: ival = ", ival))
+val () =
+( prerrln
+  ("f0_i1tnmvalcls: icl0 = ", icl0))
+//
+}(*where*)//end-of-[f0_i1tnmvalcls(...)]
+//
+fun
+f0_i1tnmvalclslst
+( env0:
+! envx2js
+, itnm: i1tnm
+, ival: i1val
+, icls: i1clslst): void =
+(
+case+ icls of
+|
+list_nil() => ( (*void*) )
+|
+list_cons(icl1, icls) =>
+( f0_i1tnmvalcls(env0,itnm,ival,icl1)
+; f0_i1tnmvalclslst(env0,itnm,ival,icls) )
+)(*case+*)//end-of-[f0_i1tnmvalclslst(...)]
+//
+(* ****** ****** *)
 //
 in//let
 //
@@ -648,12 +763,12 @@ let
 val () =
 (
 nindfpr(filr, nind);
-strnfpr(filr, "let ");i1tnmfpr(filr, itnm);strnfpr(filr, " // let\n"))
+strnfpr(filr, "let ");i1tnmfpr(filr, itnm);strnfpr(filr, " //let\n"))
 //
 val () =
 (
 nindfpr(filr, nind);
-strnfpr(filr, "{ // let\n"))
+strnfpr(filr, "{ //let\n"))
 //
 val () =
 envx2js_incnind(env0,2(*++*))
@@ -684,12 +799,14 @@ let
 val () =
 (
 nindfpr(filr, nind);
-strnfpr(filr, "let ");i1tnmfpr(filr, itnm);strnfpr(filr, " // ift\n"))
+strnfpr(filr, "let ");
+i1tnmfpr(filr, itnm);strnfpr(filr, " // ift\n"))
 //
 val () =
 (
 nindfpr(filr, nind);
-strnfpr(filr, "if (");i1valjs1(filr, itst);strnfpr(filr, ") // ift\n"))
+strnfpr(filr, "if (");
+i1valjs1(filr, itst);strnfpr(filr, ") // ift\n"))
 //
 val () =
 (
@@ -714,10 +831,43 @@ case+ iels of
 ;envx2js_decnind(env0,2(*--*))))//else
 //
 val () =
-( nindfpr(filr, nind);
-  strnfpr(filr, "} // endif\n"))//endif
+(
+nindfpr(filr, nind);strnfpr(filr, "} // end(if)\n"))//end(val)
 //
 end//let//end-of-[I1INSift0(...)]
+//
+(* ****** ****** *)
+//
+|I1INScas0
+(cknd
+,i1v1, icls) =>
+let
+val () =
+(
+nindfpr(filr, nind);
+strnfpr(filr, "let ");
+i1tnmfpr(filr, itnm);strnfpr(filr, " // cas\n"))
+//
+val () =
+(
+nindfpr(filr, nind);
+strnfpr(filr, "do {\n"))
+//
+val () = // enter
+envx2js_incnind(env0,2(*++*))
+//
+val () =
+f0_i1tnmvalclslst
+( env0,itnm,i1v1,icls(*list*) )
+//
+val () =
+(
+  envx2js_decnind(env0,2(*--*)))//leave
+//
+val () =
+(
+nindfpr(filr, nind);strnfpr(filr, "} while (false) // end(do)\n"))//end(val)
+end//let//end-of-[I1INScas0(...)]
 //
 (* ****** ****** *)
 //

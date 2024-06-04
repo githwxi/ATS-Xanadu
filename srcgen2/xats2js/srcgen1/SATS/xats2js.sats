@@ -129,6 +129,10 @@ nindfpr
 fun
 strnfpr
 (filr: FILR, strn: strn): void
+fun
+nindstrnfpr
+(filr: FILR
+,nind: sint, strn: strn): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
