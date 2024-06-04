@@ -85,17 +85,27 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #implfun
-strnfpr(filr, strn) =
+strnfpr
+(filr, strn) =
 (
  strn_fprint(filr, strn))//end-fun
 //
 #implfun
-nindfpr(filr, nind) =
+nindfpr
+(filr, nind) =
 if nind > 0 then
 (
 strn_fprint
 (filr, " "); nindfpr(filr, nind-1))
 //
+#implfun
+nindstrnfpr
+(filr
+,nind, strn) =
+(
+nindfpr(filr, nind);strnfpr(filr, strn))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
