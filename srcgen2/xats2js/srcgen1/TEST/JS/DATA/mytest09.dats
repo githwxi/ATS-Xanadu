@@ -29,10 +29,19 @@ fun
 length2(xs: list(sint)): sint =
 (
 case+ xs of
-| list_nil() => 0
-| list_cons(_, list_nil()) => 1
-| list_cons(_, list_cons(_, xs)) => 2 + length2(xs)
+|
+list_nil() => 0
+|
+list_cons(_, list_nil()) => 1
+|
+list_cons(_, list_cons(_, xs)) => 2 + length2(xs)
 )
+
+(* ****** ****** *)
+(* ****** ****** *)
+
+fun
+length3(xs: list(sint)): sint = list_length<sint>(xs)
 
 (* ****** ****** *)
 (* ****** ****** *)

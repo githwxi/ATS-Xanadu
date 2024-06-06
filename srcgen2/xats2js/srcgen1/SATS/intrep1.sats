@@ -577,6 +577,10 @@ fun
 t1imp_i1cmpq
 (timp: t1imp): i1cmpopt
 //
+fun
+t1imp_i1dclq
+(timp: t1imp): i1dclopt
+//
 (* ****** ****** *)
 //
 fun

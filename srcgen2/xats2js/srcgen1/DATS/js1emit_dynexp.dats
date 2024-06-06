@@ -348,7 +348,7 @@ symbl_get_name(sym) in//let
 (* ****** ****** *)
 //
 fun
-t1impjs1
+t1imploc
 (filr: FILR
 ,timp: t1imp): void =
 let
@@ -383,7 +383,7 @@ val loc0 = idcl.lctn() in
 print("T1IMPallx(", loc0, ")") end
 )
 //
-end//let//end-of-[t1impjs1(filr,timp)]
+end//let//end-of-[t1imploc(filr,timp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -773,8 +773,79 @@ js1emit_i1let
 let
 //
 (* ****** ****** *)
+(* ****** ****** *)
 val filr = env0.filr()
 val nind = env0.nind()
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_t1imp
+( env0:
+! envx2js
+, timp: t1imp): void =
+let
+//
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+//
+val
+dopt = t1imp_i1dclq(timp)
+//
+in//let
+//
+case+ dopt of
+|
+optn_nil
+((*void*)) =>
+strnfpr(filr, "undefined // timp")
+|
+optn_cons
+(  idcl  ) =>
+(
+case+
+idcl.node() of
+I1Dimplmnt0
+( tknd
+, stmp, dimp
+, fjas, icmp) =>
+(
+strnfpr
+(filr, "function ");
+fjas1js1(filr, fjas);
+strnfpr(filr, " { // timp\n");
+(envx2js_incnind(env0,2(*++*))
+;js1emit_fjarglst(env0, fjas);f0_i1cmpret(env0, icmp));
+(envx2js_decnind(env0,2(*--*));nindstrnfpr(filr, nind, "} // endfun(timp)")))
+)
+//
+end//let//end-of-[f0_t1imp(...)]
+//
+(* ****** ****** *)
+//
+and
+f0_i1cmpret
+( env0:
+! envx2js
+, icmp: i1cmp): void =
+let
+//
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+//
+in//let
+let
+val ival = icmp.ival()
+val (  ) = js1emit_i1cmp(env0, icmp)
+in//let
+nindstrnfpr(filr, nind, "return ");i1valjs1(filr, ival);fprintln(filr)
+end//let
+end//let//end-of-[f0_i1cmpret(...)]
+//
 (* ****** ****** *)
 //
 fun
@@ -956,8 +1027,14 @@ in//let
 case+ iopt of
 |
 optn_nil() =>
-(
-xats2js_i1let(env0, ilet))
+let
+in//let
+nindfpr(filr, nind);
+strnfpr(filr, "// ");t1imploc(filr, timp);fprintln(filr);
+nindfpr(filr, nind);
+strnfpr(filr, "let ");i1tnmfpr(filr, itnm)
+;strnfpr(filr, " = ");f0_t1imp(env0, timp);fprintln(filr)
+end//let
 |
 optn_cons(icmp) =>
 let
@@ -967,7 +1044,7 @@ val
 iloc = ival.lctn()
 in//let
 nindfpr(filr, nind);
-strnfpr(filr, "// ");t1impjs1(filr, timp);fprintln(filr);
+strnfpr(filr, "// ");t1imploc(filr, timp);fprintln(filr);
 nindfpr(filr, nind);
 strnfpr(filr, "let ");i1tnmfpr(filr, itnm)
 ;strnfpr(filr, " = ");i1valjs1(filr, ival);fprintln(filr)

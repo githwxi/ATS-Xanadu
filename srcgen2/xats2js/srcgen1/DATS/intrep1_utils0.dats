@@ -122,6 +122,55 @@ prerrln("t1imp_i1cmpq: timp = ", timp)
 (* ****** ****** *)
 (* ****** ****** *)
 
+#implfun
+t1imp_i1dclq
+(   timp   ) =
+(
+case+
+timp.node() of
+|T1IMPall1
+(dcst, dopt) => f0_dopt(dopt)
+|T1IMPallx
+(dcst, dopt) => f0_dopt(dopt)
+) where
+{
+//
+fun
+f0_dopt
+( dopt
+: i1dclopt): i1dclopt =
+(
+case+ dopt of
+|
+optn_nil() => optn_nil((*0*))
+|
+optn_cons(idcl) => f1_idcl(idcl))
+//
+and
+f1_idcl
+(idcl: i1dcl): i1dclopt =
+(
+case+
+idcl.node() of
+//
+|I1Dtmpsub
+(svts,dcl1) => f1_idcl(dcl1)
+//
+|I1Dimplmnt0
+( _,_,_,_,_ ) => optn_cons(idcl)
+//
+| _(*otherwise*) => optn_nil((*0*))
+//
+)(*case+*)//end-of-[ f1_dopt(dopt) ]
+//
+val () =
+prerrln("t1imp_i1dclq: timp = ", timp)
+//
+}(*where*)//end-of-[t1imp_i1dclq( timp )]
+
+(* ****** ****** *)
+(* ****** ****** *)
+
 (***********************************************************************)
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_intrep1_utils0.dats] *)
 (***********************************************************************)
