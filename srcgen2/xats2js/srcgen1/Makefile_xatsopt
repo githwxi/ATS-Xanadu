@@ -90,6 +90,11 @@ intrep0_print0_dats
 intrep0_print0_dats: ; \
 $(XATSOPT) --dynamic DATS/intrep0_print0.dats
 ######
+all_dats:: \
+intrep0_utils0_dats
+intrep0_utils0_dats: ; \
+$(XATSOPT) --dynamic DATS/intrep0_utils0.dats
+######
 
 ######
 all_dats:: \
