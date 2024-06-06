@@ -126,6 +126,15 @@ js1emit_i1ins
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+fun
+js1emit_i1gpt
+(env0: !envx2js, igpt: i1gpt): void
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 js1emit_i1dcl
 (env0: !envx2js, dcl0: i1dcl): void
@@ -163,9 +172,11 @@ js1emit_fjarglst
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 fun
 js1emit_i1clslst
 (env0: !envx2js, icls: i1clslst): void
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
