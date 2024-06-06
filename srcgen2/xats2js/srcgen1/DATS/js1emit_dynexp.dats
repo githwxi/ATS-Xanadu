@@ -181,6 +181,34 @@ if
 then print(" && ") else ()
 //
 (* ****** ****** *)
+//
+fun
+proj
+(i0: sint
+,ival: i1val
+,ipat: i0pat): i1val =
+(
+case-
+ipat.node() of
+//
+|I0Ptup0 _ =>
+i1val
+(loc0,I1Vp0rj(ival, i0))
+//
+|I0Pdapp(i0f0, _) =>
+i1val(loc0,
+  I1Vp1cn(i0f0, ival, i0))
+//
+|I0Ptup1(tknd, _) =>
+i1val(loc0,
+  I1Vp1rj(tknd, ival, i0))
+//
+) where
+{
+  val loc0 = ival.lctn((*0*))
+}(*where*)//end-of-[proj(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -202,6 +230,7 @@ ipat.node() of
 _(*non-I0Pcon*) =>
 (
 conj(b0); print('"',ipat,'"'))
+//end-of-[f0_ipat(b0,ival,ipat)]
 //
 (* ****** ****** *)
 //
@@ -224,10 +253,42 @@ g_print
 <i1val>(x) = i1valjs1(filr, x)
 //
 in//let
-( conj(b0)
-; print("XATSCTAGEQ(")
-; print(i0f0, ", ", ival, ")"))
+(conj(b0)
+;print("XATSCTAGEQ(")
+;print(ival,", ",i0f0, ")")
+;f0_ipatlst(b0+1,0,ival,ipat,i0ps))
 end(*let*)//end-of-[f0_dapp(...)]
+//
+(* ****** ****** *)
+//
+and
+f0_ipatlst
+( b0: sint
+, i0: sint
+, ival: i1val
+, ipat: i0pat
+, i0ps: i0patlst): void =
+(
+case+ i0ps of
+|
+list_nil
+( (*void*) ) => ()
+|
+list_cons
+(i0p1, i0ps) =>
+if
+i0pat_allq(i0p1)
+then
+f0_ipatlst
+(b0, i0+1, ival, ipat, i0ps) else
+let
+val i1v1 =
+proj(i0, ival, ipat)
+in//let
+f0_ipat(b0+1, i1v1, i0p1);
+f0_ipatlst(b0+1, i0+1, ival, ipat, i0ps)
+end//let
+)(*case+*)//end-of-[f0_ipatlst(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -773,7 +834,7 @@ I1BNDcons
 nindfpr(filr, nind);
 strnfpr(filr, "if (");
 i0pckjs1(filr, ival, ipat);strnfpr(filr, ") { // gpt\n");
-nindfpr(filr, nind);
+nindfpr(filr, nind+2);
 i1tnmfpr(filr, itnm);strnfpr(filr, " = ");i1valjs1(filr, ival);fprintln(filr)
 )(* end-of-[I1BNDcons(...)] *)
 )
@@ -813,8 +874,16 @@ val () =
   f0_i1valgpt(env0, ival, igpt))
 //
 val () =
+let
+val () =
+(
+  envx2js_incnind(env0,2(*++*)))
+val () =
 (
   f0_i1tnmcmp(env0, itnm, icmp))
+val () =
+(
+  envx2js_decnind(env0,2(*--*))) end
 //
 val () =
 nindstrnfpr(filr, nind, "} // gpt\n")

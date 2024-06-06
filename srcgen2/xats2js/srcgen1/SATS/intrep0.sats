@@ -361,6 +361,12 @@ i0pat_node =
 (* ****** ****** *)
 (* ****** ****** *)
 //
+// HX-2024-06-06:
+fun // it matches all!
+i0pat_allq(i0p0:i0pat):bool
+//
+(* ****** ****** *)
+//
 fun
 i0pat_fprint
 (out:FILR, i0p0:i0pat): void

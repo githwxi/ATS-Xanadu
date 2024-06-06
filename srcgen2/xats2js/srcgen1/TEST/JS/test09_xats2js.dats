@@ -49,6 +49,8 @@ val (  ) = prerrln
 "./../../DATS/intrep0.dats"
 #include
 "./../../DATS/intrep0_print0.dats"
+#include
+"./../../DATS/intrep0_utils0.dats"
 //
 #include
 "./../../DATS/trxd3i0.dats"

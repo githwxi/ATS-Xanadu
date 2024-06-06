@@ -15,11 +15,23 @@ srcgen1\
 (* ****** ****** *)
 
 fun
-length(xs: list(sint)): sint =
+length1(xs: list(sint)): sint =
 (
 case+ xs of
 | list_nil() => 0
-| list_cons(_, xs) => 1 + length(xs)
+| list_cons(_, xs) => 1 + length1(xs)
+)
+
+(* ****** ****** *)
+(* ****** ****** *)
+
+fun
+length2(xs: list(sint)): sint =
+(
+case+ xs of
+| list_nil() => 0
+| list_cons(_, list_nil()) => 1
+| list_cons(_, list_cons(_, xs)) => 2 + length2(xs)
 )
 
 (* ****** ****** *)
