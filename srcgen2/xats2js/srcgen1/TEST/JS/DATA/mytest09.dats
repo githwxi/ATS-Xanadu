@@ -15,11 +15,26 @@ srcgen1\
 (* ****** ****** *)
 
 fun
-foo(): sint = 
+cube(x1: sint): sint =
 let
-  var x: sint = 0 in x := x + 1; x
-end
+val x2 = x1 * x1 in x1 * x2
+end // let // end (cube(x1))
 
+(* ****** ****** *)
+////
+(* ****** ****** *)
+//
+fun
+fact(n: sint): sint = 
+(
+  loop(0); res ) where
+{
+var res: sint = 1
+fun loop(i: sint): void =
+if i < n then
+(res := res * (i+1); loop(i+1))
+}
+//
 (* ****** ****** *)
 ////
 (* ****** ****** *)

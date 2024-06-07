@@ -723,21 +723,6 @@ i1valdcl_get_tdxp(ival)
 (* ****** ****** *)
 //
 val (  ) =
-let
-val filr =
-envx2js_get_filr(env0)
-val nind =
-envx2js_get_nind(env0)
-in//let
-(
-nindfpr
-(filr, nind); // indentation
-strnfpr(filr, "// I1VALDCL\n"))
-end//let//end-of-[val()]
-//
-(* ****** ****** *)
-//
-val (  ) =
 xats2js_i1bnd(env0, dpat)
 //
 (* ****** ****** *)
@@ -769,8 +754,21 @@ end//let
 //
 (* ****** ****** *)
 //
+end where
+{
+//
+val (  ) =
+let
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+in//let
+(
+nindstrnfpr(filr, nind, "// I1VALDCL\n"))
 end//let
-(*let*)//end-of-[xats2js_i1valdcl(env0,ival)]
+//
+}(*where*)//end-of-[xats2js_i1valdcl(env0,ival)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -785,21 +783,6 @@ val dpid =
 i1vardcl_get_dpid(ivar)
 val tdxp =
 i1vardcl_get_dini(ivar)
-//
-(* ****** ****** *)
-//
-val (  ) =
-let
-val filr =
-envx2js_get_filr(env0)
-val nind =
-envx2js_get_nind(env0)
-in//let
-(
-nindfpr
-(filr, nind); // indentation
-strnfpr(filr, "// I1VARDCL\n"))
-end//let//end-of-[val()]
 //
 (* ****** ****** *)
 //
@@ -835,8 +818,21 @@ end//let
 //
 (* ****** ****** *)
 //
+end where
+{
+//
+val (  ) =
+let
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+in//let
+(
+nindstrnfpr(filr, nind, "// I1VARDCL\n"))
 end//let
-(*let*)//end-of-[xats2js_i1vardcl(env0,ival)]
+//
+}(*where*)//end-of-[xats2js_i1vardcl(env0,ival)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -863,28 +859,9 @@ envx2js_get_filr(env0)
 val nind =
 envx2js_get_nind(env0)
 in//let
-(
-nindfpr
-(filr, nind); // indent
-strnfpr
-(filr, "// I1FUNDCL\n")) end
-//
-(* ****** ****** *)
-//
-val (  ) =
-let
-val filr =
-envx2js_get_filr(env0)
-val nind =
-envx2js_get_nind(env0)
-in//let
-(
-nindfpr
-(filr, nind);
-strnfpr
-(filr, "// ");
-d2varfpr
-( filr,dvar ); fprintln(filr))
+nindfpr(filr,nind);
+strnfpr(filr,"// ");
+d2varfpr(filr,dvar);fprintln(filr)
 end//let
 //
 (* ****** ****** *)
@@ -927,8 +904,21 @@ end//let
 //
 val (  ) = envx2js_poplam0(env0)//leave
 //
+end where
+{
+//
+val (  ) =
+let
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+in//let
+(
+nindstrnfpr(filr, nind, "// I1FUNDCL\n"))
 end//let
-(*let*)//end-of-[xats2js_i1fundcl(env0,ifun)]
+//
+}(*where*)//end-of-[xats2js_i1fundcl(env0,ifun)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

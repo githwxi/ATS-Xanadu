@@ -125,7 +125,7 @@ print
 |
 _(*non-I0Pcon*) => print('"',ipat,'"')
 //
-end(*let*)//end-of-[i0pcnjs1(filr,ipat)]
+end(*let*)//end-of-[i0ctgjs1(filr,ipat)]
 //
 (* ****** ****** *)
 //
@@ -154,15 +154,18 @@ end(*let*)//end-of-[i0pcnjs1(filr,ipat)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 fun
 i0pckjs1
 (filr: FILR
 ,ival: i1val
 ,ipat: i0pat): void =
-(
-f0_ipat
-(0, ival, ipat)) where
-{
+*)
+#implfun
+i0pckjs1
+( filr
+, ival, ipat) =
+let
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -280,20 +283,25 @@ if
 i0pat_allq(i0p1)
 then
 f0_ipatlst
-(b0, i0+1, ival, ipat, i0ps) else
+(b0,i0+1,ival,ipat,i0ps) else
 let
 val i1v1 =
 proj(i0, ival, ipat)
 in//let
-f0_ipat(b0+1, i1v1, i0p1);
-f0_ipatlst(b0+1, i0+1, ival, ipat, i0ps)
+f0_ipat(b0+1,i1v1,i0p1);
+f0_ipatlst(b0+1,i0+1,ival,ipat,i0ps)
 end//let
 )(*case+*)//end-of-[f0_ipatlst(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-}//where//end-(i0pckjs1(filr,ival,ipat))
+in
+( if
+  i0pat_allq(ipat)
+  then print("true")
+  else f0_ipat(0(*conj*), ival, ipat) )
+end(*let*)//end-(i0pckjs1(filr,ival,ipat))
 //
 (* ****** ****** *)
 (* ****** ****** *)
