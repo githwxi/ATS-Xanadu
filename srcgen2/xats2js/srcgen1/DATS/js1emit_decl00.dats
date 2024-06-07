@@ -64,6 +64,9 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #staload "./../SATS/intrep0.sats"
 #staload "./../SATS/intrep1.sats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/xats2js.sats"
 #staload "./../SATS/js1emit.sats"
 //
@@ -72,6 +75,11 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload
 _(*DATS*)="./../DATS/js1emit.dats"
 //
+(* ****** ****** *)
+(*
+#symload ival with i1cmp_get_ival
+#symload ilts with i1cmp_get_ilts
+*)
 (* ****** ****** *)
 #symload lctn with i1dcl_get_lctn
 #symload node with i1dcl_get_node
@@ -428,30 +436,132 @@ end(*let*)//end-of-[f0_fundclst(env0,dcl0)]
 //
 #implfun
 js1emit_i1valdcl
-  (env0, ival) =
+  (env0, idcl) = let
+//
+(* ****** ****** *)
+//
+val dpat =
+i1valdcl_get_dpat(idcl)
+val tdxp =
+i1valdcl_get_tdxp(idcl)
+//
+(* ****** ****** *)
+//
+val ipat =
 (
-  xats2js_i1valdcl(env0, ival))
-(*where*)//end-of-[js1emit_i1valdcl(env0,dcl0)]
+case+ dpat of
+|I1BNDcons(_,ipat,_) => ipat)
+val itnm =
+(
+case+ dpat of
+|I1BNDcons(itnm,_,_) => itnm)
+//
+(* ****** ****** *)
+//
+val (  ) =
+(
+case+ tdxp of
+//
+|
+TEQI1CMPnone
+( (*void*) ) => ( (*void*) )
+|
+TEQI1CMPsome
+(teq1, icmp) =>
+(
+f0_i1tnmcmp
+(env0, itnm, icmp)) where
+{
+//
+val
+ival = i1cmp_get_ival(icmp)
+//
+val
+filr = envx2js_get_filr(env0)
+val
+nind = envx2js_get_nind(env0)
+//
+val () =
+(
+nindfpr
+(filr, nind);strnfpr(filr, "XATSPATCK("))
+val () =
+(
+i0pckjs1
+(filr, ival, ipat);strnfpr(filr, ")");fprintln(filr))
+}(*where*)
+)
+//
+(* ****** ****** *)
+//
+end where
+{
+//
+val (  ) =
+let
+val filr =
+(
+envx2js_get_filr(env0))
+val nind =
+(
+envx2js_get_nind(env0))
+in//let
+(
+ nindstrnfpr(filr, nind, "// I1VALDCL\n"))
+end//let//end-of-[val()]
+//
+(* ****** ****** *)
+//
+fun
+f0_i1tnmcmp
+( env0:
+! envx2js
+, itnm: i1tnm
+, icmp: i1cmp): void =
+let
+//
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+//
+val
+ival = i1cmp_get_ival(icmp)
+val
+ilts = i1cmp_get_ilts(icmp)
+//
+val () =
+js1emit_i1letlst(env0, ilts)
+//
+val () =
+let
+nindfpr(filr, nind);
+i1tnmfpr(filr, itnm);strnfpr(filr, " = ");i1valjs1(filr, ival);fprintln(filr)
+end//let
+//
+end//let//end-of-[f0_i1tnmcmp(...)]
+//
+}(*where*)//end-of-[js1emit_i1valdcl(env0,dcl0)]
 //
 (* ****** ****** *)
 //
 #implfun
 js1emit_i1vardcl
-  (env0, ivar) = let
+  (env0, idcl) = let
 //
 (* ****** ****** *)
 //
 val dpid =
-i1vardcl_get_dpid(ivar)
+i1vardcl_get_dpid(idcl)
 val tdxp =
-i1vardcl_get_dini(ivar)
+i1vardcl_get_dini(idcl)
 //
 (* ****** ****** *)
 //
 val itnm =
 (
 case+ dpid of
-|I1BNDcons(itnm, _, _) => itnm)
+|I1BNDcons(itnm,_,_) => itnm)
 //
 (* ****** ****** *)
 //
@@ -506,8 +616,25 @@ end//let//end-of-[TEQI1CMPsome]
 //
 (* ****** ****** *)
 //
-end(*let*)//end-of-[js1emit_i1vardcl(env0,dcl0)]
+end where
+{
 //
+val (  ) =
+let
+val filr =
+(
+envx2js_get_filr(env0))
+val nind =
+(
+envx2js_get_nind(env0))
+in//let
+(
+ nindstrnfpr(filr, nind, "// I1VARDCL\n"))
+end//let//end-of-[val()]
+//
+}(*where*)//end-of-[js1emit_i1vardcl(env0,dcl0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -522,18 +649,6 @@ val fjas =
 i1fundcl_get_farg(ifun)
 val tdxp =
 i1fundcl_get_tdxp(ifun)
-//
-(* ****** ****** *)
-//
-val (  ) =
-let
-val filr = env0.filr()
-val nind = env0.nind()
-in//let
-(
-nindfpr(filr, nind); // indent
-strnfpr(filr, "// I1FUNDCL\n"))
-end//let
 //
 (* ****** ****** *)
 //
@@ -618,8 +733,23 @@ strnfpr(filr, "} // endfun\n")) end//let
 //
 (* ****** ****** *)
 //
-end//let
-(*let*)//end-of-[js1emit_i1fundcl(env0,ifun)]
+end where
+{
+//
+val (  ) =
+let
+val filr =
+(
+envx2js_get_filr(env0))
+val nind =
+(
+envx2js_get_nind(env0))
+in//let
+(
+ nindstrnfpr(filr, nind, "// I1FUNDCL\n"))
+end//let//end-of-[val()]
+//
+}(*where*)//end-of-[js1emit_i1fundcl(env0,ifun)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

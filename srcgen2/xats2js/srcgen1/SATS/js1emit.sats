@@ -61,12 +61,21 @@ fjas1js1
 ( filr
 : FILR, fjas:fjarglst): void
 //
+(* ****** ****** *)
+//
 fun
 i1valjs1
-(filr:FILR, ival:i1val): void
+(filr:FILR,ival:i1val): void
 fun
 l1i1vjs1
-(filr:FILR, liv0:l1i1v): void
+(filr:FILR,liv0:l1i1v): void
+//
+(* ****** ****** *)
+//
+fun
+i0pckjs1
+(filr:FILR
+,ival:i1val,ipat:i0pat): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
