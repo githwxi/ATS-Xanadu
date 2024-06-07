@@ -628,6 +628,8 @@ in//let
 //
 case+ iins of
 //
+(* ****** ****** *)
+//
 |I1INSdapp
 (i1f0, i1vs) =>
 (
@@ -677,7 +679,7 @@ strnfpr(filr,"[");i1valjs1_list(filr,i1vs);strnfpr(filr,"]");strnfpr(filr,")")
 (tknd, i1vs) =>
 (
 strnfpr(filr,"XATSTUP1(");
-xtrcdjs1(filr, tknd);strnfpr(filr,", ")
+xtrcdjs1(filr,tknd);strnfpr(filr,", ")
 ;strnfpr(filr,"[");i1valjs1_list(filr,i1vs);strnfpr(filr,"]");strnfpr(filr,")")
 )
 //
@@ -685,9 +687,16 @@ xtrcdjs1(filr, tknd);strnfpr(filr,", ")
 (tknd, livs) =>
 (
 strnfpr(filr,"XATSRCD2(");
-xtrcdjs1(filr, tknd);strnfpr(filr,", ")
+xtrcdjs1(filr,tknd);strnfpr(filr,", ")
 ;strnfpr(filr,"{");l1i1vjs1_list(filr,livs);strnfpr(filr,"}");strnfpr(filr,")")
 )
+//
+(* ****** ****** *)
+//
+|I1INSflat
+(   i1v1   ) =>
+(strnfpr(filr,"XATSFLAT(")
+;i1valjs1(filr,i1v1);strnfpr(filr,")"))
 //
 (* ****** ****** *)
 //
@@ -1001,11 +1010,29 @@ list_cons(icl1, icls) =>
 in//let
 //
 case+ ilet of
+//
 |I1LETnew0
 (   iins   ) =>
 (
-nindfpr(filr, nind);
-i1insjs1(filr, iins);fprintln(filr))
+case+ iins of
+//
+|I1INSassgn
+(i1vl, i1vr) =>
+(
+nindstrnfpr
+(filr, nind, "XATSASSGN(");
+i1valjs1(filr, i1vl);strnfpr(filr, ", ");
+i1valjs1(filr, i1vr);strnfpr(filr, ")\n"))
+//
+(* ****** ****** *)
+//
+|_(*otherwise*) =>
+(
+nindfpr(filr, nind);i1insjs1(filr, iins);fprintln(filr))
+//
+)(*end-of-[I1LETnew0(iins)]*)
+//
+(* ****** ****** *)
 //
 |I1LETnew1
 (itnm, iins) =>
@@ -1061,12 +1088,12 @@ let
 val () =
 (
 nindfpr(filr, nind);
-strnfpr(filr, "let ");i1tnmfpr(filr, itnm);strnfpr(filr, " //let\n"))
+strnfpr(filr, "let ");i1tnmfpr(filr, itnm);strnfpr(filr, " // let\n"))
 //
 val () =
 (
 nindfpr(filr, nind);
-strnfpr(filr, "{ //let\n"))
+strnfpr(filr, "{ // let\n"))
 //
 val () =
 envx2js_incnind(env0,2(*++*))

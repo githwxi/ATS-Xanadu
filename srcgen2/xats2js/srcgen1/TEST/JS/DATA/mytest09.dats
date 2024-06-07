@@ -15,16 +15,26 @@ srcgen1\
 (* ****** ****** *)
 
 fun
+foo(): sint = 
+let
+  var x: sint = 0 in x := x + 1; x
+end
+
+(* ****** ****** *)
+////
+(* ****** ****** *)
+//
+fun
 length1(xs: list(sint)): sint =
 (
 case+ xs of
 | list_nil() => 0
 | list_cons(_, xs) => 1 + length1(xs)
 )
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 fun
 length2(xs: list(sint)): sint =
 (
@@ -34,15 +44,31 @@ list_nil() => 0
 |
 list_cons(_, list_nil()) => 1
 |
-list_cons(_, list_cons(_, xs)) => 2 + length2(xs)
+list_cons
+(_, list_cons(_, xs)) => 2 + length2(xs)
 )
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 fun
-length3(xs: list(sint)): sint = list_length<sint>(xs)
-
+length3
+(xs: list(sint)): sint = list_length<sint>(xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+length4
+(xs: list(sint)): sint =
+(
+gseq_foldl<xs><x0><r0>(xs, 0))
+where
+{ #typedef x0 = sint
+  #typedef r0 = sint
+  #typedef xs = list(x0)
+  #impltmp foldl$fopr<x0><r0>(r0, x0) = r0+1 }//where
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
