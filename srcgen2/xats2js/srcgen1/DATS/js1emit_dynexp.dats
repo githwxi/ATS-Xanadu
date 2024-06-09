@@ -99,6 +99,14 @@ fprintln
  strn_fprint(filr,"\n"))//endfun
 //
 (* ****** ****** *)
+//
+fun
+i1cmpfpr
+(filr: FILR
+,icmp: i1cmp): void =
+(
+ i1cmp_fprint(filr,icmp))//endfun
+//
 (* ****** ****** *)
 //
 fun
@@ -809,6 +817,10 @@ val nind =
 envx2js_get_nind(env0)
 //
 val
+dcst =
+(
+  t1imp_get_dcst(timp))
+val
 dopt = t1imp_i1dclq(timp)
 //
 in//let
@@ -817,7 +829,11 @@ case+ dopt of
 |
 optn_nil
 ((*void*)) =>
-strnfpr(filr, "undefined // timp")
+(
+d2cst_fprint
+(filr, dcst)) where
+{ val () =
+  strnfpr(filr, "undefined // timp: ")}
 |
 optn_cons
 (  idcl  ) =>
@@ -830,9 +846,10 @@ I1Dimplmnt0
 , fjas, icmp) =>
 (
 strnfpr
-(filr, "function ");
-fjas1js1(filr, fjas);
-strnfpr(filr, " { // timp\n");
+(filr,"function ");fjas1js1(filr, fjas);
+(
+strnfpr(filr," { // timp: ");
+d2cst_fprint(filr, dcst);fprintln(filr));
 (envx2js_incnind(env0,2(*++*))
 ;js1emit_fjarglst(env0, fjas);f0_i1cmpret(env0, icmp));
 (envx2js_decnind(env0,2(*--*));nindstrnfpr(filr, nind, "} // endfun(timp)")))
@@ -966,9 +983,16 @@ let
 val () =
 (
   envx2js_incnind(env0,2(*++*)))
+//
 val () =
 (
   f0_i1tnmcmp(env0, itnm, icmp))
+//
+val () =
+(
+nindfpr(filr, nind+2);
+strnfpr(filr, "break // cls\n"))
+//
 val () =
 (
   envx2js_decnind(env0,2(*--*))) end
@@ -984,6 +1008,7 @@ end//let//end(I1CLScls(igpt,icmp))
 end where
 {
 //
+(*
 val () =
 ( prerrln
   ("f0_i1tnmvalcls: itnm = ", itnm))
@@ -993,6 +1018,7 @@ val () =
 val () =
 ( prerrln
   ("f0_i1tnmvalcls: icl0 = ", icl0))
+*)
 //
 }(*where*)//end-of-[f0_i1tnmvalcls(...)]
 //
@@ -1006,7 +1032,17 @@ f0_i1tnmvalclslst
 (
 case+ icls of
 |
-list_nil() => ( (*void*) )
+list_nil() =>
+let
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+in//let
+(
+nindstrnfpr(filr
+,nind,"XATSCASEF()");fprintln(filr))
+end//let
 |
 list_cons(icl1, icls) =>
 ( f0_i1tnmvalcls(env0,itnm,ival,icl1)
@@ -1062,28 +1098,21 @@ in//let
 case+ iopt of
 |
 optn_nil() =>
-let
-in//let
-nindfpr(filr, nind);
-strnfpr(filr, "// ");t1imploc(filr, timp);fprintln(filr);
-nindfpr(filr, nind);
-strnfpr(filr, "let ");i1tnmfpr(filr, itnm)
+(
+nindstrnfpr(filr, nind, "// ");
+t1imploc(filr, timp);fprintln(filr);
+nindstrnfpr(filr, nind, "let ");i1tnmfpr(filr, itnm)
 ;strnfpr(filr, " = ");f0_t1imp(env0, timp);fprintln(filr)
-end//let
+)
 |
 optn_cons(icmp) =>
-let
-val
-ival = icmp.ival()
-val
-iloc = ival.lctn()
-in//let
+(
+f0_i1tnmcmp(env0, itnm, icmp)) where
+{
+val () =
+(
 nindfpr(filr, nind);
-strnfpr(filr, "// ");t1imploc(filr, timp);fprintln(filr);
-nindfpr(filr, nind);
-strnfpr(filr, "let ");i1tnmfpr(filr, itnm)
-;strnfpr(filr, " = ");i1valjs1(filr, ival);fprintln(filr)
-end//let
+strnfpr(filr, "// ");t1imploc(filr, timp);fprintln(filr))}
 //
 end//let//end-of-[I1INStimp(...)]
 //

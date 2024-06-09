@@ -76,6 +76,8 @@ Authoremail: gmhwxiATgmailDOTcom
 _(*DATS*)="./../DATS/js1emit.dats"
 //
 (* ****** ****** *)
+#symload node with dimpl_get_node
+(* ****** ****** *)
 (*
 #symload ival with i1cmp_get_ival
 #symload ilts with i1cmp_get_ilts
@@ -98,6 +100,51 @@ fprintln
 (
  strn_fprint(filr,"\n"))//endfun
 //
+(* ****** ****** *)
+//
+fun
+lctnfpr
+(filr: FILR
+,loc0: loc_t): void =
+(
+ loctn_fprint(filr,loc0))//endfun
+//
+(* ****** ****** *)
+//
+fun
+dimplcst
+(filr: FILR
+,dimp: dimpl): void =
+(
+case+
+dimp.node() of
+|DIMPLone1
+(  dcst  ) =>
+(
+  d2cstfpr(filr, dcst))
+|DIMPLone2
+(dcst, svts) =>
+(
+  d2cstfpr(filr, dcst))
+|DIMPLall1
+(dqid, d2cs) =>
+(
+  d1qid_fprint(filr, dqid))
+|DIMPLopt2
+(dqid, _, _) =>
+(
+  d1qid_fprint(filr, dqid)))
+//
+(* ****** ****** *)
+//
+fun
+dimplfpr
+(filr: FILR
+,dimp: dimpl): void =
+(
+ dimpl_fprint(filr,dimp))//endfun
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -153,7 +200,15 @@ dcl0.node() of
   f0_fundclst(env0, dcl0))
 //
 (* ****** ****** *)
+//
+|I1Dimplmnt0 _ =>
+(
+  f0_implmnt0(env0, dcl0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 |_(*otherwise*) => xats2js_i1dcl(env0, dcl0)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 end where
@@ -425,6 +480,80 @@ val (  ) =
  js1emit_i1fundclist(env0, i1fs))
 //
 end(*let*)//end-of-[f0_fundclst(env0,dcl0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_implmnt0
+( env0:
+! envx2js
+, dcl0: i1dcl): void =
+let
+//
+val filr = env0.filr()
+val nind = env0.nind()
+//
+val loc0 = dcl0.lctn()
+//
+val-
+I1Dimplmnt0
+( tknd
+, stmp, dimp
+, fjas, icmp) = dcl0.node()
+//
+in//let
+//
+let
+//
+fun
+f1_i1cmpret
+( env0:
+! envx2js
+, icmp: i1cmp): void =
+let
+val filr = envx2js_get_filr(env0)
+val nind = envx2js_get_nind(env0)
+in//let
+let
+val ival = icmp.ival()
+val (  ) = js1emit_i1cmp(env0, icmp)
+in//let
+nindstrnfpr
+(filr, nind, "return ");i1valjs1(filr, ival);fprintln(filr)
+end//let
+end//let//end-of-[f1_i1cmpret(...)]
+//
+in//let
+//
+nindstrnfpr
+(filr,nind,"// I1Dimplmnt0(");
+lctnfpr(filr,loc0);strnfpr(filr,")\n");
+//
+if
+dimpl_tempq(dimp)
+then
+(
+nindstrnfpr
+(filr,nind,"// I1Dimplmnt0(");
+dimplfpr(filr,dimp);strnfpr(filr,"):timp\n"))
+else
+(
+//
+(
+nindfpr(filr,nind);dimplcst(filr,dimp);
+strnfpr(filr," = function ");fjas1js1(filr, fjas));
+(
+strnfpr(filr," { // impl\n");
+(envx2js_incnind(env0,2(*++*))
+;js1emit_fjarglst(env0, fjas);f1_i1cmpret(env0, icmp));
+(envx2js_decnind(env0,2(*--*))
+;nindstrnfpr(filr, nind, "} // endfun(impl)");fprintln(filr)))
+//
+)//endif
+//
+end(*let*)
+//
+end(*let*)//end-of-[f0_implmnt0(env0,dcl0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
