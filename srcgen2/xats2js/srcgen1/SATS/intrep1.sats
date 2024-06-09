@@ -591,6 +591,12 @@ t1imp_fprint
 (* ****** ****** *)
 //
 fun
+t1imp_get_dcst
+(timp: t1imp): (d2cst)
+//
+#symload dcst with t1imp_get_dcst
+//
+fun
 t1imp_get_stmp
 (timp: t1imp): (stamp)
 fun

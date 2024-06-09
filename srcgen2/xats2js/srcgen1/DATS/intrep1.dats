@@ -267,6 +267,19 @@ endloc (*local*) // end of [local(i1cls)]
 
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#implfun
+t1imp_get_dcst
+  (timp) =
+(
+case+ node of
+|T1IMPall1(dcst, _) => dcst
+|T1IMPallx(dcst, _) => dcst)
+where{
+ val node = t1imp_get_node(timp)
+}(*where*) // end(t1imp_get_dcst)
+//
+(* ****** ****** *)
 
 local
 //
