@@ -9,6 +9,11 @@ For ATS3/XATSOPT
 prelude\
 /HATS/prelude_dats.hats"
 (* ****** ****** *)
+#include
+"\
+srcgen1/prelude\
+/HATS/prelude_dats.hats"
+(* ****** ****** *)
 //
 // #ifdef(_XATSOPT_JS_)
 //
