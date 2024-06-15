@@ -8,6 +8,8 @@ ATS3_XANADU_srcgen1_prelude/DATS
 (* ****** ****** *)
 #staload _ = "./../DATS/tupl000.dats"
 (* ****** ****** *)
+#staload _ = "./../DATS/synoug0.dats"
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3_XANADU_srcgen1_prelude_prelude_dats.hats] *)
