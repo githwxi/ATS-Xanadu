@@ -1,24 +1,38 @@
 (* ****** ****** *)
+(* ****** ****** *)
 (*
 HX-2022-06-04:
 This is for loading
 ATS3_XANADU_prelude/DATS
 *)
 (* ****** ****** *)
-#staload _ = "./../DATS/gbas000.dats"
 (* ****** ****** *)
+(*
+#staload _ = "./../DATS/gbas000.dats"
+*)
+(* ****** ****** *)
+(*
 #staload _ = "./../DATS/gord000.dats"
 #staload _ = "./../DATS/gnum000.dats"
+*)
 (* ****** ****** *)
+(*
 #staload _ = "./../DATS/gseq000.dats"
 #staload _ = "./../DATS/gseqn00.dats"
+*)
 (* ****** ****** *)
+(*
 #staload _ = "./../DATS/gmap000.dats"
+*)
 (* ****** ****** *)
+(*
 #staload _ = "./../DATS/gfor000.dats"
 #staload _ = "./../DATS/gfun000.dats"
+*)
 (* ****** ****** *)
+(*
 #staload _ = "./../DATS/genv000.dats"
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 (*
