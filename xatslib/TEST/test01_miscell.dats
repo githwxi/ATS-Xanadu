@@ -524,12 +524,19 @@ prerrln0
 val () =
 prerrln0
 ("r(range1(0,10)) = ", rstrmize(range1(0,10)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val () =
 prerrln0
-("range1(10,0,-1) = ", listize(range1(10,0,-1)))
+("range1(10,0) = ", listize(range1(10,0)))
 val () =
 prerrln0
-("r(range1(10,0,-1)) = ", rlistize(range1(10,0,-1)))
+("r(range1(10,0)) = ", rlistize(range1(10,0)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 val () =
 let

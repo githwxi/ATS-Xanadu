@@ -93,7 +93,10 @@ thePrimes2 =
 strm_vt_takeif0<sint>(thePrimes2) where
 {
 #impltmp
+takeif0$test<sint>(p0) = (p0 <= 16*1024)
+(*
 takeif0$test<sint>(p0) = (p0 <= 16*1024*1024)
+*)
 }
 //
 (* ****** ****** *)
