@@ -4,10 +4,12 @@ HX-2022-06-06:
 For ATS3/XATSOPT
 *)
 (* ****** ****** *)
+(*
 #include
 "\
 prelude\
 /HATS/prelude_dats.hats"
+*)
 (* ****** ****** *)
 #include
 "\
