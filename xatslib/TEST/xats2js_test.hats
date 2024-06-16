@@ -36,12 +36,19 @@ srcgen1\
 #staload _ =
 "xatslib/libcats/DATS/synoug0.dats"
 (* ****** ****** *)
+(* ****** ****** *)
 #staload _ =
-"xatslib/githwxi/DATS/genv000.dats"
+"\
+srcgen1\
+/xatslib/githwxi/DATS/genv000.dats"
 #staload _ =
-"xatslib/githwxi/DATS/f00path.dats"
+"\
+srcgen1\
+/xatslib/githwxi/DATS/f00path.dats"
 #staload _ =
-"xatslib/githwxi/DATS/g00iout.dats"
+"\
+srcgen1\
+/xatslib/githwxi/DATS/g00iout.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
