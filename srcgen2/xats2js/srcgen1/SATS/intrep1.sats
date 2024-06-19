@@ -312,6 +312,9 @@ i1val_node =
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+|I1Vaddr of (i1val(*addr*))
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 |I1Vtup0 of (i1valist)
@@ -347,7 +350,6 @@ This one is for a left value!
 , fjarglst(*args*), i1cmp(*body*))
 //
 (* ****** ****** *)
-//
 (*
 |I1Vl0azy of
 (d1exp(*kind*), i1cmp(*body*))

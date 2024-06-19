@@ -5,11 +5,11 @@
 (* ****** ****** *)
 //
 #include
-"prelude/HATS/prelude_dats.hats"
+"srcgen1\
+/prelude/HATS/prelude_dats.hats"
 //
 #include
-"\
-srcgen1\
+"srcgen1\
 /prelude/HATS/CATS/JS/prelude_dats.hats"
 //
 (* ****** ****** *)

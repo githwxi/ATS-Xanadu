@@ -132,6 +132,17 @@ i1val_make_node(loc0,I1Vtnm(itnm)))
 (* ****** ****** *)
 //
 fun
+i1val_addr
+( loc
+: loc_t
+, i1v: i1val): i1val = 
+(
+i1val_make_node(loc, I1Vaddr(i1v)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i1val_timp
 ( env0:
 ! envi0i1
@@ -1017,10 +1028,11 @@ iexp.node() of
 //
 (* ****** ****** *)
 //
-(*
 |I0Eaddr _ => f0_addr(env0, iexp)
-*)
+//
 |I0Eflat _ => f0_flat(env0, iexp)
+//
+(* ****** ****** *)
 //
 (*
 |I0Efold _ => f0_fold(env0, iexp)
@@ -1773,6 +1785,46 @@ i1val_make_node
 end(*let*)//end-of-[f0_fix0(env0,iexp)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_addr
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Eaddr(addr) = iexp.node()
+//
+in
+//
+case+
+addr.node() of
+|
+I0Eflat(i0e1) =>
+(
+  i1val_addr(loc0, i1v1)
+) where
+{ val i1v1 =
+  trxi0i1_i0exp(env0, i0e1) }
+//
+|
+_(*otherwise*) => i1val_none1(iexp)
+//
+end where
+{
+//
+val () =
+(
+prerr("trxi0i1_i0exp:");
+prerrln("f0_addr(01): iexp = ", iexp))
+//
+}(*where*)//end-of-[f0_addr(env0,iexp)]
+//
+(* ****** ****** *)
 //
 fun
 f0_flat
@@ -1803,6 +1855,7 @@ prerrln("f0_flat(01): iexp = ", iexp))
 //
 }(*where*)//end-of-[f0_flat(env0,iexp)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
