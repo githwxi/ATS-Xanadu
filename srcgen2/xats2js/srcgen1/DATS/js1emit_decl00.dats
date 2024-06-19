@@ -56,6 +56,9 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload // LOC =
 "./../../../SATS/locinfo.sats"
 //
+#staload // S1E =
+"./../../../SATS/staexp1.sats"
+//
 #staload // D2E =
 "./../../../SATS/dynexp2.sats"
 //
