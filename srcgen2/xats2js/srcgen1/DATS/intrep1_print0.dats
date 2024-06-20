@@ -201,12 +201,17 @@ print(tknd, ";", i1v1, ";", lab2, ")"))
 //
 (*
 HX-2024-05-15:
-This one is for a left-value!
+For flat/boxed left-values
 *)
-|I1Vplft
+|I1Vprjt
 (tknd, i1v1, lab2) =>
 (
-print("I1Vplft(");
+print("I1Vprjt(");
+print(tknd, ";", i1v1, ";", lab2, ")"))
+|I1Vprjx
+(tknd, i1v1, lab2) =>
+(
+print("I1Vprjx(");
 print(tknd, ";", i1v1, ";", lab2, ")"))
 //
 (* ****** ****** *)

@@ -86,4 +86,18 @@ where
 (* ****** ****** *)
 (* ****** ****** *)
 
+fun foo(): void =
+let
+//
+var
+xyz = (0, 1, #(2, 3))
+//
+val ( ) = xyz.1 := 10
+//
+val ( ) = (xyz.2).0 := 20
+val ( ) = (xyz.2).1 := 30 endlet // end-of-[fun foo]
+
+(* ****** ****** *)
+(* ****** ****** *)
+
 (* end of [ATS3/XATS2JS_TEST_JS_DATA_mytest09.dats] *)
