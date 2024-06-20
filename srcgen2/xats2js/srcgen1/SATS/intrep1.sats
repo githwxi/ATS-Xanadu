@@ -334,9 +334,10 @@ i1val_node =
 //
 (*
 HX-2024-05-15:
-This one is for a left value!
+For flat/boxed left-values
 *)
-|I1Vplft of (token, i1val, label)
+|I1Vprjt of (token, i1val, label)
+|I1Vprjx of (token, i1val, label)
 //
 (* ****** ****** *)
 (* ****** ****** *)

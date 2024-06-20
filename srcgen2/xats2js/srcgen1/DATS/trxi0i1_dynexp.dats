@@ -1836,15 +1836,15 @@ let
 val loc0 = iexp.lctn()
 //
 val-
-I0Eflat(i0e0) = iexp.node()
+I0Eflat(i0e1) = iexp.node()
 //
-val i1v0 =
+val i1v1 =
 (
-  trxi0i1_i0lft(env0, i0e0))
+  trxi0i1_i0exp(env0, i0e1))
 //
 in//let
 (
-  i1val_flat(env0, loc0, i1v0))
+  i1val_flat(env0, loc0, i1v1))
 end where
 {
 //
@@ -1868,15 +1868,15 @@ let
 val loc0 = iexp.lctn()
 //
 val-
-I0Efree(i0e0) = iexp.node()
+I0Efree(i0e1) = iexp.node()
 //
-val i1v0 =
+val i1v1 =
 (
-  trxi0i1_i0lft(env0, i0e0))
+  trxi0i1_i0exp(env0, i0e1))
 //
 in//let
 (
-  i1val_free(env0, loc0, i1v0))
+  i1val_free(env0, loc0, i1v1))
 end where
 {
 //
@@ -2174,10 +2174,19 @@ trxi0i1_i0lft
 (
 case+
 iexp.node() of
-|
-I0Eflat _ => f0_flat(env0, iexp)
-|
-_(*else*) => trxi0i1_i0exp(env0, iexp)
+//
+|I0Eflat _ =>
+(
+  f0_flat(env0, iexp))
+//
+|I0Rproj _ =>
+(
+  f0_proj(env0, iexp))
+//
+|_(*else*) =>
+trxi0i1_i0exp
+(env0, i0exp_addr(iexp))
+//
 ) where
 {
 //
@@ -2197,6 +2206,33 @@ I0Eflat(i0e1) = iexp.node()
 in//let
 (
   trxi0i1_i0exp(env0, i0e1)) end
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_proj
+( env0:
+! envi0i1
+, iexp: i0exp): i1val =
+let
+//
+val loc0 = iexp.lctn()
+//
+val-
+I0Eproj
+(tknd
+,lab0, i0e1) = iexp.node()
+//
+in//let
+//
+i1val_make_node
+( loc0
+, I1Vprjx(tknd, i1v1, lab0)) where
+{ val
+  i1v1 = trxi0i1_i0exp(env0, i0e1) }
+//
+end//let//end-of-[f0_proj(env0,iexp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

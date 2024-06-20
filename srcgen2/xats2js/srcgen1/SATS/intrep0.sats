@@ -540,6 +540,9 @@ i0exp_get_node(i0exp):i0exp_node
 #symload node with i0exp_get_node
 (* ****** ****** *)
 fun
+i0exp_addr(iexp: i0exp): (i0exp)
+(* ****** ****** *)
+fun
 i0exp_none0(loc0: loctn): (i0exp)
 fun
 i0exp_none1(d3e0: d3exp): (i0exp)

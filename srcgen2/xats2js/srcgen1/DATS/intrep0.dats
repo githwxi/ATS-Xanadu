@@ -97,6 +97,15 @@ d3p0.lctn(),I0Pnone1(d3p0))
 (* ****** ****** *)
 //
 #implfun
+i0exp_addr
+(  iexp ) =
+i0exp_make_node
+(loc0,I0Eaddr(iexp))
+where
+{
+ val loc0 = iexp.lctn()}
+//
+#implfun
 i0exp_none0
 (  loc0  ) =
 i0exp_make_node
