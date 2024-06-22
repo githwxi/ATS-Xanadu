@@ -85,13 +85,13 @@ fibo4
 (x: sint): sint =
 (
 loop@{
-x=x, rr=$tup(0, 1)}) where
+x=x, rr=$tpl(0, 1)}) where
 {
 fun
 loop
 (xrr:
 @{x=sint
- ,rr=$tup(sint, sint)}) =
+ ,rr=$tpl(sint, sint)}) =
 if
 xrr.x >= 2
 then // if-then
@@ -101,7 +101,7 @@ loop
 x=
 (xrr.x)-1,
 rr=
-$tup(
+$tpl(
 xrr.rr.1, xrr.rr.0+xrr.rr.1)})
 else // if-else
 (

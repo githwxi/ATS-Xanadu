@@ -72,11 +72,29 @@ XATS2JS_char_cmp
 ////////////////////////////////////////////////////////////////////////////////////
 //
 function
+XATS2JS_gint_sint2uint
+  (int0)
+{
+    return int0;
+}
+//
+function
+XATS2JS_gint_uint2sint
+  (uix0)
+{
+    return uix0;
+}
+//
+////////////////////////////////////////////////////////////////////////////////////
+//
+function
 XATS2JS_gint_neg_sint
   (sint)
 {
     return (-sint); // neg
 }
+//
+/* ****** ****** */
 //
 function
 XATS2JS_gint_abs_sint
@@ -154,9 +172,9 @@ XATS2JS_gint_lxor_uint
 //
 function
 XATS2JS_gint_asrn_sint
-  (six0, n0)
+  (int0, n0)
 {
-    return (six0 >> n0); // asrn
+    return (int0 >> n0); // asrn
 }
 //
 function
@@ -176,9 +194,9 @@ XATS2JS_gint_lsrn_uint
 //
 function
 XATS2JS_gint_lt_sint_sint
-  (six1, six2)
+  (int1, int2)
 {
-    return (six1 < six2); // lt(<)
+    return (int1 < int2); // lt(<)
 }
 function
 XATS2JS_gint_lt_uint_uint
@@ -189,9 +207,9 @@ XATS2JS_gint_lt_uint_uint
 //
 function
 XATS2JS_gint_gt_sint_sint
-  (six1, six2)
+  (int1, int2)
 {
-    return (six1 > six2); // gt(>)
+    return (int1 > int2); // gt(>)
 }
 function
 XATS2JS_gint_gt_uint_uint
@@ -202,9 +220,9 @@ XATS2JS_gint_gt_uint_uint
 //
 function
 XATS2JS_gint_eq_sint_sint
-  (six1, six2)
+  (int1, int2)
 {
-    return (six1===six2); // eq(=)
+    return (int1===int2); // eq(=)
 }
 function
 XATS2JS_gint_eq_uint_uint
@@ -216,9 +234,9 @@ XATS2JS_gint_eq_uint_uint
 //
 function
 XATS2JS_gint_lte_sint_sint
-  (six1, six2)
+  (int1, int2)
 {
-    return (six1 <= six2); // lte(<=)
+    return (int1 <= int2); // lte(<=)
 }
 function
 XATS2JS_gint_lte_uint_uint
@@ -229,9 +247,9 @@ XATS2JS_gint_lte_uint_uint
 //
 function
 XATS2JS_gint_gte_sint_sint
-  (six1, six2)
+  (int1, int2)
 {
-    return (six1 >= six2); // gte(>=)
+    return (int1 >= int2); // gte(>=)
 }
 function
 XATS2JS_gint_gte_uint_uint
@@ -242,9 +260,9 @@ XATS2JS_gint_gte_uint_uint
 //
 function
 XATS2JS_gint_neq_sint_sint
-  (six1, six2)
+  (int1, int2)
 {
-    return (six1 !== six2); // neq(!=)
+    return (int1 !== int2); // neq(!=)
 }
 function
 XATS2JS_gint_neq_uint_uint
@@ -257,12 +275,12 @@ XATS2JS_gint_neq_uint_uint
 //
 function
 XATS2JS_gint_cmp_sint_sint
-  (six1, six2)
+  (int1, int2)
 {
-    if (six1 < six2)
+    if (int1 < int2)
 	return (-1);
     else
-	return (six1 <= six2 ? 0 : 1);
+	return (int1 <= int2 ? 0 : 1);
 }
 //
 function
@@ -273,6 +291,102 @@ XATS2JS_gint_cmp_uint_uint
 	return (-1);
     else
 	return (uix1 <= uix2 ? 0 : 1);
+}
+//
+////////////////////////////////////////////////////////////////////////////////////
+//
+function
+XATS2JS_gint_add_sint_sint
+  (int1, int2)
+{
+    return (int1 + int2); // add
+}
+//
+function
+XATS2JS_gint_sub_sint_sint
+  (int1, int2)
+{
+    return (int1 - int2); // sub
+}
+//
+function
+XATS2JS_gint_mul_sint_sint
+  (int1, int2)
+{
+    return (int1 * int2); // mul
+}
+//
+function
+XATS2JS_gint_mod_sint_sint
+  (int1, int2)
+{
+    return (int1 % int2); // mod
+}
+//
+function
+XATS2JS_gint_div_sint_sint
+  (int1, int2)
+{ 
+//
+    let quot = int1 / int2;
+//
+    if (quot < 0)
+	return Math.ceil( quot );
+    else
+	return Math.floor( quot );
+}
+//
+////////////////////////////////////////////////////////////////////////////////////
+//
+// prelude/SATS/gflt000.sats
+//
+////////////////////////////////////////////////////////////////////////////////////
+//
+function
+XATS2JS_gflt_si_sflt
+  (int0)
+{
+    return int0 ; // sint
+}
+function
+XATS2JS_gflt_si_dflt
+  (int0)
+{
+    return int0 ; // sint
+}
+//
+function
+XATS2JS_gflt_ui_sflt
+  (uix0)
+{
+    return uix0 ; // uint
+}
+function
+XATS2JS_gflt_ui_dflt
+  (uix0)
+{
+    return uix0 ; // uint
+}
+//
+////////////////////////////////////////////////////////////////////////////////////
+//
+function
+XATS2JS_gflt_neg_dflt
+  (flt0)
+{
+  return (-flt0); // neg
+}
+//
+/* ****** ****** */
+//
+function
+XATS2JS_gflt_abs_dflt
+  (flt0)
+{
+    if (flt0 >= 0.0)
+	return flt0; // abs
+    else
+	return (-flt0); // abs
 }
 //
 ////////////////////////////////////////////////////////////////////////////////////
