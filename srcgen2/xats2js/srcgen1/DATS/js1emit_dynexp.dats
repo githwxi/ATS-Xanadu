@@ -528,6 +528,9 @@ ival.node() of
 |I1Vaddr(i1v1) =>
 (
   print("XATSADDR(", i1v1, ")") )
+|I1Vaexp(i0e1) =>
+(
+  print("XATSAEXP(", i0e1, ")") )
 //
 (* ****** ****** *)
 |I1Vp0rj
@@ -558,8 +561,28 @@ print
 { #impltmp
   g_print<token>(x) = xtrcdjs1(filr,x) }
 (* ****** ****** *)
+//
+|I1Vlpft
+(plab, itup) =>
+( print
+  ("XATSLPFT(", plab, ", ", itup, ")")
+) where
+{ #impltmp
+  g_print<label>(x) = labeljs1(filr,x) }
+//
+|I1Vlpbx
+(plab, itup) =>
+( print
+  ("XATSLPBX(", plab, ", ", itup, ")")
+) where
+{ #impltmp
+  g_print<label>(x) = labeljs1(filr,x) }
+//
+(* ****** ****** *)
+(* ****** ****** *)
 |
 _(*otherwise*) => i1val_fprint(filr,ival)
+(* ****** ****** *)
 (* ****** ****** *)
 end where
 {
@@ -671,28 +694,14 @@ i1valjs1_list(filr,i1vs);strnfpr(filr,")")//;strnfpr(filr,")")
 (* ****** ****** *)
 //
 |I1INSpflt
-( tknd
-, lab0, i1v1) =>
+(lab0, i1v1) =>
 (
-case+
-tknd.node() of
-|
-T_DOT((*0*)) =>
-(
- print("XATSPFLT(", i1v1, "[", lab0, "]", ")"))
-)
+print("XATSPFLT(", i1v1, "[", lab0, "]", ")"))
 //
 |I1INSproj
-( tknd
-, lab0, i1v1) =>
+(lab0, i1v1) =>
 (
-case+
-tknd.node() of
-|
-T_DOT((*0*)) =>
-(
- print("XATSPROJ(", i1v1, "[", lab0, "]", ")"))
-)
+print("XATSPROJ(", i1v1, "[", lab0, "]", ")"))
 //
 (* ****** ****** *)
 //

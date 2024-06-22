@@ -89,8 +89,10 @@ where
 fun foo(): void =
 let
 //
-var
-xyz = (0, 1, #(2, 3))
+var xyz
+//
+val ( ) =
+xyz := #(0,1,(2,3))
 //
 val ( ) = xyz.1 := 10
 //

@@ -434,14 +434,14 @@ i0exp_node =
 (* ****** ****** *)
 //
 |I0Epcon of
-( token(*tknd*)
-, label(*LABint*), i0exp(*con*))
+( // token(*tknd*)
+  label(*LABint*), i0exp(*con*))
 |I0Epflt of
-( token(*tknd*)
-, label(*intsym*), i0exp(*tup*))
+( // token(*tknd*)
+  label(*intsym*), i0exp(*tup*))
 |I0Eproj of
-( token(*tknd*)
-, label(*intsym*), i0exp(*tup*))
+( // token(*tknd*)
+  label(*intsym*), i0exp(*tup*))
 //
 (* ****** ****** *)
 //
@@ -481,7 +481,9 @@ i0exp_node =
 |I0Eaddr of (i0exp)//left-val-address
 |I0Eflat of (i0exp)//left-val-content
 //
+|I0Eeval of (i0exp)//eval-builtin-fun
 |I0Efold of (i0exp)//open-con-folding
+//
 |I0Efree of (i0exp)//free-builtin-fun
 //
 (* ****** ****** *)
