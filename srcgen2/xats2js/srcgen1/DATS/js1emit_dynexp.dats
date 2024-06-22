@@ -265,7 +265,7 @@ g_print
 //
 in//let
 (conj(b0)
-;print("XATSCTAGEQ(")
+;print("XATS000_ctgeq(")
 ;print(ival,", ",i0f0, ")")
 ;f0_ipatlst(b0+1,0,ival,ipat,i0ps))
 end(*let*)//end-of-[f0_dapp(...)]
@@ -327,14 +327,15 @@ tknd.node() of
 //
 |T_TRCD10(knd0) =>
 (
-print("XATSTRCD10(", knd0, ")"))
+print("XATSTRCD(", knd0, ")"))
 |T_TRCD20(knd0) =>
 (
-print("XATSTRCD20(", knd0, ")"))
+print("XATSTRCD(", knd0, ")"))
 //
 |_(*otherwise*) =>
 (
-print("XATSTRCD??(", tknd, ")"))
+print
+("XATSTRCD(", "'", tknd, "'", ")"))
 //
 end(*let*)//end-of-[xtrcdjs1(filr,tknd)]
 //
@@ -957,10 +958,11 @@ case+ ibnd of
 I1BNDcons
 (itnm,ipat,dvvs) =>
 (
-nindfpr(filr, nind);
-strnfpr(filr, "if (");
+nindstrnfpr
+(filr, nind, "if (");
 i0pckjs1(filr, ival, ipat);strnfpr(filr, ") { // gpt\n");
-nindfpr(filr, nind+2);
+nindstrnfpr
+(filr, nind+2, "let "); // HX: [itnm] is new for each clause!
 i1tnmfpr(filr, itnm);strnfpr(filr, " = ");i1valjs1(filr, ival);fprintln(filr)
 )(* end-of-[I1BNDcons(...)] *)
 )
@@ -1061,8 +1063,9 @@ val nind =
 envx2js_get_nind(env0)
 in//let
 (
-nindstrnfpr(filr
-,nind,"XATSCASEF()");fprintln(filr))
+nindstrnfpr
+(filr,nind,
+"XATS000_casef()");fprintln(filr))
 end//let
 |
 list_cons(icl1, icls) =>
@@ -1120,11 +1123,11 @@ case+ iopt of
 |
 optn_nil() =>
 (
-nindstrnfpr(filr, nind, "// ");
+nindstrnfpr
+(filr, nind, "// ");
 t1imploc(filr, timp);fprintln(filr);
 nindstrnfpr(filr, nind, "let ");i1tnmfpr(filr, itnm)
-;strnfpr(filr, " = ");f0_t1imp(env0, timp);fprintln(filr)
-)
+;strnfpr(filr, " = ");f0_t1imp(env0, timp);fprintln(filr))
 |
 optn_cons(icmp) =>
 (
@@ -1132,8 +1135,11 @@ f0_i1tnmcmp(env0, itnm, icmp)) where
 {
 val () =
 (
-nindfpr(filr, nind);
-strnfpr(filr, "// ");t1imploc(filr, timp);fprintln(filr))}
+nindstrnfpr
+(filr, nind, "// ");
+t1imploc(filr, timp);fprintln(filr);
+nindstrnfpr
+(filr, nind, "let ");i1tnmfpr(filr, itnm);fprintln(filr))}//whr
 //
 end//let//end-of-[I1INStimp(...)]
 //

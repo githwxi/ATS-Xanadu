@@ -615,12 +615,18 @@ nind = envx2js_get_nind(env0)
 //
 val () =
 (
-nindfpr
-(filr, nind);strnfpr(filr, "XATSPATCK("))
+nindstrnfpr
+(filr, nind, "XATS000_patck("))
 val () =
 (
 i0pckjs1
 (filr, ival, ipat);strnfpr(filr, ")");fprintln(filr))
+//
+val () =
+(
+nindstrnfpr
+(filr, nind, "let ");i1tnmfpr(filr, itnm);fprintln(filr))
+//
 }(*where*)
 )
 //
