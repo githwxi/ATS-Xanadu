@@ -151,6 +151,131 @@ XATS2JS_gint_lxor_uint
 }
 //
 ////////////////////////////////////////////////////////////////////////////////////
+//
+function
+XATS2JS_gint_asrn_sint
+  (six0, n0)
+{
+    return (six0 >> n0); // asrn
+}
+//
+function
+XATS2JS_gint_lsln_uint
+  (uix0, n0)
+{
+    return (uix0 << n0); // lsln
+}
+function
+XATS2JS_gint_lsrn_uint
+  (uix0, n0)
+{
+    return (uix0 >>> n0); // lsrn
+}
+//
+////////////////////////////////////////////////////////////////////////////////////
+//
+function
+XATS2JS_gint_lt_sint_sint
+  (six1, six2)
+{
+    return (six1 < six2); // lt(<)
+}
+function
+XATS2JS_gint_lt_uint_uint
+  (uix1, uix2)
+{
+    return (uix1 < uix2); // lt(<)
+}
+//
+function
+XATS2JS_gint_gt_sint_sint
+  (six1, six2)
+{
+    return (six1 > six2); // gt(>)
+}
+function
+XATS2JS_gint_gt_uint_uint
+  (uix1, uix2)
+{
+    return (uix1 > uix2); // gt(>)
+}
+//
+function
+XATS2JS_gint_eq_sint_sint
+  (six1, six2)
+{
+    return (six1===six2); // eq(=)
+}
+function
+XATS2JS_gint_eq_uint_uint
+  (uix1, uix2)
+{
+    return (uix1===uix2); // eq(=)
+}
+////////////////////////////////////////////////////////////////////////////////////
+//
+function
+XATS2JS_gint_lte_sint_sint
+  (six1, six2)
+{
+    return (six1 <= six2); // lte(<=)
+}
+function
+XATS2JS_gint_lte_uint_uint
+  (uix1, uix2)
+{
+    return (uix1 <= uix2); // lte(<=)
+}
+//
+function
+XATS2JS_gint_gte_sint_sint
+  (six1, six2)
+{
+    return (six1 >= six2); // gte(>=)
+}
+function
+XATS2JS_gint_gte_uint_uint
+  (uix1, uix2)
+{
+    return (uix1 >= uix2); // gte(>=)
+}
+//
+function
+XATS2JS_gint_neq_sint_sint
+  (six1, six2)
+{
+    return (six1 !== six2); // neq(!=)
+}
+function
+XATS2JS_gint_neq_uint_uint
+  (uix1, uix2)
+{
+    return (uix1 !== uix2); // neq(!=)
+}
+//
+////////////////////////////////////////////////////////////////////////////////////
+//
+function
+XATS2JS_gint_cmp_sint_sint
+  (six1, six2)
+{
+    if (six1 < six2)
+	return (-1);
+    else
+	return (six1 <= six2 ? 0 : 1);
+}
+//
+function
+XATS2JS_gint_cmp_uint_uint
+  (uix1, uix2)
+{
+    if (uix1 < uix2)
+	return (-1);
+    else
+	return (uix1 <= uix2 ? 0 : 1);
+}
+//
+////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 //
 // end of [ATS3-XANADU/srcgen2/xats2js/srcgen1/xshared/runtime/xats2js_basics0.js]
