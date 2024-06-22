@@ -66,8 +66,12 @@ let XATS000_patck = function(pck)
 
 ////////////////////////////////////////////////////////////////////////////////////
 
-let XATS000_assgn =
-  (lval, rval) => XATS000_lvset(lval, rval)
+let XATS000_ftset =
+  function(tpl0, idx1, rval)
+  {
+    let tpl1 = tpl0.slice();
+    tpl1[idx1] = rval; return tpl1
+  }
 
 let XATS000_lvget = function(lval)
   {
@@ -91,6 +95,9 @@ let XATS000_lvset = function(lval, rval)
     }
     if (ctag === 1+1) return ( lval[1][lval[2]] = rval )
   }
+
+let XATS000_assgn =
+  (lval, rval) => XATS000_lvset(lval, rval)
 
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
