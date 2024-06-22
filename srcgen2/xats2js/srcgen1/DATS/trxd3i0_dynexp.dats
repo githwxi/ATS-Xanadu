@@ -852,8 +852,7 @@ val i0e1 =
   trxd3i0_d3exp(env0, d3e1))
 //
 in//let
-i0exp_make_node
-(loc0, I0Epcon(tknd, lab0, i0e1))
+i0exp(loc0, I0Epcon(lab0, i0e1))
 end(*let*)//end-of-[f0_pcon(env0,d3e0)]
 //
 (* ****** ****** *)
@@ -885,11 +884,9 @@ in//let
 if
 fltq
 then
-i0exp_make_node
-(loc0, I0Epflt(tknd, lab0, i0e1))
+i0exp(loc0, I0Epflt(lab0, i0e1))
 else
-i0exp_make_node
-(loc0, I0Eproj(tknd, lab0, i0e1)))
+i0exp(loc0, I0Eproj(lab0, i0e1)))
 end(*let*)//end-of-[f0_proj(env0,d3e0)]
 //
 (* ****** ****** *)

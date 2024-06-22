@@ -242,10 +242,12 @@ print("I0Etimp(",i0e1,";",timp,")"))
 //
 (* ****** ****** *)
 //
-|I0Etapp(i0f0) =>
+|I0Etapp
+(  i0f0  ) =>
 (
   print("I0Etapp(", i0f0, ")"))
-|I0Etapq(i0f0) =>
+|I0Etapq
+(  i0f0  ) =>
 (
   print("I0Etapq(", i0f0, ")"))
 //
@@ -258,25 +260,16 @@ print("I0Edapp(", i0f0, ";", i0es, ")")
 (* ****** ****** *)
 //
 |I0Epcon
-(tknd
-,lab0, i0e1) =>
-(
-print("I0Epcon(");
-print(tknd, ";", lab0, ";", i0e1, ")"))
+(lab0, i0e1) =>
+print("I0Epcon(", lab0, ";", i0e1, ")")
 //
 |I0Epflt
-(tknd
-,lab0, i0e1) =>
-(
-print("I0Epflt(");
-print(tknd, ";", lab0, ";", i0e1, ")"))
+(lab0, i0e1) =>
+print("I0Epflt(", lab0, ";", i0e1, ")")
 //
 |I0Eproj
-(tknd
-,lab0, i0e1) =>
-(
-print("I0Eproj(");
-print(tknd, ";", lab0, ";", i0e1, ")"))
+(lab0, i0e1) =>
+print("I0Eproj(", lab0, ";", i0e1, ")")
 //
 (* ****** ****** *)
 //
@@ -345,10 +338,16 @@ print("I0Ercd2(", tknd, ";", lies, ")"))
 (
   print("I0Eflat(", i0e1, ")") )//I0Eflat
 //
+|I0Eeval
+( i0e1 ) =>
+(
+  print("I0Eeval(", i0e1, ")") )//I0Eeval
+//
 |I0Efold
 ( i0e1 ) =>
 (
   print("I0Efold(", i0e1, ")") )//I0Efold
+//
 |I0Efree
 ( i0e1 ) =>
 (

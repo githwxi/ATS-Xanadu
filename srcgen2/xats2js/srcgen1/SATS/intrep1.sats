@@ -221,16 +221,13 @@ and i1ins =
 ,t1imp(*tmpinst*))//impltmp
 //
 |I1INSpcon of
-(token(*tknd*)
-,label(*int/sym*)
+(label(*int/sym*)
 ,i1val(*conroot*))//conproj
 |I1INSpflt of
-(token(*tknd*)
-,label(*int/sym*)
+(label(*int/sym*)
 ,i1val(*tuproot*))//tfltprj
 |I1INSproj of
-(token(*tknd*)
-,label(*int/sym*)
+(label(*int/sym*)
 ,i1val(*tuproot*))//tptrprj
 //
 (* ****** ****** *)
@@ -313,6 +310,7 @@ i1val_node =
 (* ****** ****** *)
 (* ****** ****** *)
 |I1Vaddr of (i1val(*addr*))
+|I1Vaexp of (i0exp(*flat*))
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -336,8 +334,8 @@ i1val_node =
 HX-2024-05-15:
 For flat/boxed left-values
 *)
-|I1Vprjt of (token, i1val, label)
-|I1Vprjx of (token, i1val, label)
+|I1Vlpft of (label, i1val)//flat
+|I1Vlpbx of (label, i1val)//boxed
 //
 (* ****** ****** *)
 (* ****** ****** *)
