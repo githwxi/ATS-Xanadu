@@ -735,9 +735,11 @@ I0Pany _ => list_nil((*0*))
 |I0Pbang _ =>
 (
   f0_bang(env0, ipat, ival))
+//
 |I0Pflat _ =>
 (
   f0_flat(env0, ipat, ival))
+//
 |I0Pfree _ =>
 (
   f0_free(env0, ipat, ival))

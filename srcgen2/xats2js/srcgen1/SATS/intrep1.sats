@@ -417,16 +417,6 @@ i1cmp_get_ilts(i1cmp): (i1letlst)
 #symload ilts with i1cmp_get_ilts
 //
 (* ****** ****** *)
-//
-fun
-i1val_get_lctn(i1val): ( loc_t )
-fun
-i1val_get_node(i1val): i1val_node
-//
-#symload lctn with i1val_get_lctn
-#symload node with i1val_get_node
-//
-(* ****** ****** *)
 fun
 i1val_nil(loc0: loc_t): ( i1val )
 (* ****** ****** *)
@@ -442,9 +432,29 @@ i1val_var(dvar: d2var): ( i1val )
 (* ****** ****** *)
 //
 fun
+i1val_conq(ival: i1val): ( bool )
+fun
+i1val_cstq(ival: i1val): ( bool )
+//
+fun
+i1val_varq(ival: i1val): ( bool )
+//
+(* ****** ****** *)
+//
+fun
 i1val_none0(loc0: loc_t): (i1val)
 fun
 i1val_none1(iexp: i0exp): (i1val)
+//
+(* ****** ****** *)
+//
+fun
+i1val_get_lctn(i1val): ( loc_t )
+fun
+i1val_get_node(i1val): i1val_node
+//
+#symload lctn with i1val_get_lctn
+#symload node with i1val_get_node
 //
 (* ****** ****** *)
 //

@@ -125,6 +125,24 @@ val stmp = i1tnm_get_stmp(itnm)
 (* ****** ****** *)
 //
 #implfun
+d2confpr
+( filr,dcon ) =
+let
+//
+val name = dcon.name((*0*))
+//
+in//let
+(
+symbl_fprint
+(filr, name);
+strnfpr(filr, "_");
+fprint_loctn_as_stamp
+(filr, dcon.lctn((*void*))))
+end(*let*)//end-of-[d2confpr(env0,dcon)]
+//
+(* ****** ****** *)
+//
+#implfun
 d2cstfpr
 ( filr,dcst ) =
 let

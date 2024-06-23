@@ -138,6 +138,9 @@ nindstrnfpr
 (* ****** ****** *)
 //
 fun
+d2confpr
+(filr: FILR, dcon: d2con): void
+fun
 d2cstfpr
 (filr: FILR, dcst: d2cst): void
 fun
