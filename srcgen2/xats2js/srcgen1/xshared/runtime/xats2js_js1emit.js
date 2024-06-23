@@ -41,9 +41,15 @@ let XATSRCD2 = (knd0, rcd2) => rcd2
 //
 ////////////////////////////////////////////////////////////////////////////////////
 
-let XATSADDR = (x) => [0, x]
+let XATSROOT = (x) => [0, x]
 let XATSLPFT = (i, x) => [1+0, x, i]
 let XATSLPBX = (i, x) => [1+1, x, i]
+
+let XATSVAR0 = () => XATSROOT([null])
+let XATSVAR1 = (init) => XATSROOT([init])
+
+let XATSADDR = (addr) => addr // HX: no-op
+let XATSFLAT = (addr) => XATS000_lvget(addr)
 
 ////////////////////////////////////////////////////////////////////////////////////
 

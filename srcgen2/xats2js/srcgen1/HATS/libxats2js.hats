@@ -73,6 +73,11 @@ Mon 19 Feb 2024 10:54:31 AM
 #staload
 "./../../../SATS/fperr33.sats"
 (* ****** ****** *)
+//
+#staload
+"./../../../SATS/xatsopt.sats"
+//
+(* ****** ****** *)
 #staload(* GLO = *)
 "./../../../SATS/xglobal.sats"
 (* ****** ****** *)
