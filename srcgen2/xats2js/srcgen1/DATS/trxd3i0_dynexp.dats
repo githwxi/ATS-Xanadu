@@ -190,13 +190,16 @@ i0exp_talf
 case+
 i0e0.node() of
 (*
+HX-2024-06-23:
+This does not
+support [cbref]
 |I0Eflat(i0e1) => i0e1
 *)
 |_(*otherwise*) =>
 let
 val loc0 = i0e0.lctn()
 in//let
-  i0exp(loc0, I0Eaddr(i0e0)) end
+  i0exp(loc0, I0Eaddr(i0e0)) endlet
 )(*case+*)//end-of-[i0exp_talf(i0e0)]
 //
 (* ****** ****** *)
