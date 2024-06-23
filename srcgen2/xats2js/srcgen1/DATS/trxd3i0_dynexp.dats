@@ -189,10 +189,10 @@ i0exp_talf
 (
 case+
 i0e0.node() of
-|
-I0Eflat(i0e1) => i0e1
-|
-_(*otherwise*) =>
+(*
+|I0Eflat(i0e1) => i0e1
+*)
+|_(*otherwise*) =>
 let
 val loc0 = i0e0.lctn()
 in//let

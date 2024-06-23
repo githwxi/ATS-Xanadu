@@ -175,6 +175,23 @@ $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 #
 ######
 #
+test:: \
+test11_xats2js
+test11_xats2js:: ; \
+$(CAT) \
+$(XATS2JS_PRELUDE) > $@_dats.js && \
+$(CAT) \
+$(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
+$(CAT) \
+$(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
+$(CAT) $(LIBXATSOPT_JS) >> $@_dats.js && \
+$(CAT) $(LIBXATS2JS_JS) >> $@_dats.js && \
+$(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
+test11_xats2js_run: ; \
+$(NODE) ./test11_xats2js_dats.js ./DATA/mytest11.dats 2>/dev/null
+#
+######
+#
 # HX: for cleaning up
 #
 ######
