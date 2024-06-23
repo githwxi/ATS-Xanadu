@@ -880,7 +880,9 @@ d2cst_fprint(filr, dcst);fprintln(filr));
 (
 envx2js_incnind(env0,2(*++*));
 js1emit_fjarglst(env0,fjas);f0_i1cmpret(env0, icmp));
-(envx2js_decnind(env0,2(*--*));nindstrnfpr(filr, nind, "} // endfun(timp)")))
+(
+envx2js_decnind(env0,2(*--*));
+nindstrnfpr(filr, nind, "} // endtimp(");d2cst_fprint(filr, dcst);strnfpr(filr, ")")))
 )
 //
 end//let//end-of-[f0_t1imp(...)]
@@ -1276,6 +1278,41 @@ val () =
 (
 nindstrnfpr(filr, nind, "} while (false) // end(do)\n"))
 end//let//end-of-[I1INScas0(...)]
+//
+(* ****** ****** *)
+//
+|I1INSl0azy
+(dknd, icmp) =>
+(
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmfpr(filr, itnm);strnfpr
+(filr
+," = function () { // l0azy\n");
+(
+envx2js_incnind
+( env0,2(*++*) );f0_i1cmpret(env0, icmp);
+(
+envx2js_decnind
+( env0,2(*--*) );nindstrnfpr(filr, nind, "} // endfun(l0azy)\n")))
+)
+//
+|I1INSl1azy
+(dknd
+,icmp, cmps) =>
+(
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmfpr(filr, itnm);strnfpr
+(filr
+," = function (tlaz) { // l1azy\n");
+(
+envx2js_incnind
+( env0,2(*++*) );f0_i1cmpret(env0, icmp);
+(
+envx2js_decnind
+( env0,2(*--*) );nindstrnfpr(filr, nind, "} // endfun(l1azy)\n")))
+)
 //
 (* ****** ****** *)
 //

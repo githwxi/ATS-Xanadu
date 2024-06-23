@@ -415,7 +415,7 @@ print("I1INSdl1az(",i1f0,")"))
 //
 |I1INSl1azy
 (dknd, icmp, i1fs) =>
-( print("I1INSl0azy(")
+( print("I1INSl1azy(")
 ; print
   (dknd, ";", icmp, ";", i1fs, ")"))
 //
