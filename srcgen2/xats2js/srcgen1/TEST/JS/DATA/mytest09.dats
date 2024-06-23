@@ -86,18 +86,31 @@ where
 (* ****** ****** *)
 (* ****** ****** *)
 
-fun foo(): void =
+fun foo1(): void =
 let
 //
 var xyz
 //
 val ( ) =
-xyz := #(0,1,(2,3))
+xyz := #(0,1,@(2,3))
 //
 val ( ) = xyz.1 := 10
 //
 val ( ) = (xyz.2).0 := 20
-val ( ) = (xyz.2).1 := 30 endlet // end-of-[fun foo]
+val ( ) = (xyz.2).1 := 30 endlet // end-of-[fun foo1]
+
+fun foo2(): void =
+let
+//
+var xyz
+//
+val ( ) =
+xyz := @(0,1,#(2,3))
+//
+val ( ) = xyz.1 := 10
+//
+val ( ) = (xyz.2).0 := 20
+val ( ) = (xyz.2).1 := 30 endlet // end-of-[fun foo2]
 
 (* ****** ****** *)
 (* ****** ****** *)
