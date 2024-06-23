@@ -65,6 +65,38 @@ XATSOPT "./../../.."
 #staload "./../SATS/intrep1.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#implfun
+i1val_conq
+  (ival) =
+(
+case+
+ival.node()
+of // case+
+| I1Vcon _ => true
+| _(*non-I1Vcon*) => false)
+//
+#implfun
+i1val_cstq
+  (ival) =
+(
+case+
+ival.node()
+of // case+
+| I1Vcst _ => true
+| _(*non-I1Vcst*) => false)
+//
+#implfun
+i1val_varq
+  (ival) =
+(
+case+
+ival.node()
+of // case+
+| I1Vvar _ => true
+| _(*non-I1Vvar*) => false)
+//
+(* ****** ****** *)
 
 #implfun
 t1imp_i1cmpq

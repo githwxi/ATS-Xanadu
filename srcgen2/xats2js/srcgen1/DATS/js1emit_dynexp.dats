@@ -101,11 +101,34 @@ fprintln
 (* ****** ****** *)
 //
 fun
-i1cmpfpr
+d2conjs1
 (filr: FILR
-,icmp: i1cmp): void =
+,dcon: d2con): void =
+let
+#impltmp
+g_print$out<>() = filr
+//
+val name =
 (
- i1cmp_fprint(filr,icmp))//endfun
+  d2con_get_name(dcon))
+//
+in//let
+(
+  print('"', name, '"') )
+end(*let*)//end-of-[d2conjs1(...)]
+//
+(* ****** ****** *)
+//
+fun
+d2ctgjs1
+(filr: FILR
+,dcon: d2con): void =
+let
+#impltmp
+g_print$out<>() = filr
+in//let
+print(d2con_get_ctag(dcon))
+end(*let*)//end-of-[d2ctgjs1(...)]
 //
 (* ****** ****** *)
 //
@@ -154,6 +177,7 @@ ipat.node() of
 {
   val name = d2con_get_name(d2c0)
 }
+//
 |
 _(*non-I0Pcon*) => print('"',ipat,'"')
 //
@@ -237,6 +261,10 @@ ipat.node() of
 (
   f0_dapp(b0, ival, ipat))
 //
+|I0Pfree _ =>
+(
+  f0_free(b0, ival, ipat))
+//
 |
 _(*non-I0Pcon*) =>
 (
@@ -270,6 +298,21 @@ in//let
 ;f0_ipatlst(b0+1,0,ival,ipat,i0ps))
 end(*let*)//end-of-[f0_dapp(...)]
 //
+(* ****** ****** *)
+//
+and
+f0_free
+( b0: sint
+, ival: i1val
+, ipat: i0pat): void =
+(
+f0_ipat(b0, ival, i0p1)
+) where
+{
+val-I0Pfree(i0p1) = ipat.node()
+}(*where*)//end-of-[f0_free(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 and
@@ -429,6 +472,19 @@ tint.node() of
 }(*where*)//end-of-[i1intjs1(...)]
 //
 (* ****** ****** *)
+//
+fun
+i1btfjs1
+( filr: FILR
+, btf0: symbl): void =
+(
+if
+(btf0 = TRUE_symbl)
+then print("XATSBOOL(true)")
+else print("XATSBOOL(false)")
+)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -519,9 +575,15 @@ ival.node() of
 |I1Vint
 ( tint ) => i1intjs1(filr,tint)
 (* ****** ****** *)
+|I1Vbtf
+( btf0 ) => i1btfjs1(filr,btf0)
+(* ****** ****** *)
 (* ****** ****** *)
 |I1Vtnm
 ( itnm ) => i1tnmfpr(filr,itnm)
+(* ****** ****** *)
+|I1Vcon
+( dcon ) => d2confpr(filr,dcon)
 (* ****** ****** *)
 |I1Vcst
 ( dcst ) => d2cstfpr(filr,dcst)
@@ -690,11 +752,33 @@ case+ iins of
 |I1INSdapp
 (i1f0, i1vs) =>
 (
-(*
-strnfpr(filr,"XATSDAPP(");
-*)
+if
+i1val_conq
+(  i1f0  )
+then
+let
+val-
+I1Vcon(dcon) = i1f0.node()
+in//let
+(
+//
+strnfpr
+(filr,"XATSCAPP(");
+d2conjs1(filr,dcon);
+strnfpr(filr,", [");d2ctgjs1(filr,dcon);
+//
+if // if
+list_consq(i1vs) then strnfpr(filr,", ");
+//
+i1valjs1_list(filr,i1vs);strnfpr(filr,"])"))
+end//let
+else let // else
+(
+strnfpr
+(filr,"XATSDAPP(");
 i1valjs1(filr,i1f0);strnfpr(filr,"(");
-i1valjs1_list(filr,i1vs);strnfpr(filr,")")//;strnfpr(filr,")")
+i1valjs1_list(filr,i1vs);strnfpr(filr,"))"))
+endlet//else//end-of-[if]
 )
 //
 (* ****** ****** *)
@@ -739,6 +823,18 @@ xtrcdjs1(filr,tknd);strnfpr(filr,", ")
 |I1INSflat
 (   i1v1   ) =>
 (strnfpr(filr,"XATSFLAT(")
+;i1valjs1(filr,i1v1);strnfpr(filr,")"))
+//
+(* ****** ****** *)
+//
+|I1INSdl0az
+(   i1v1   ) =>
+(strnfpr(filr,"XATS000_dl0az(")
+;i1valjs1(filr,i1v1);strnfpr(filr,")"))
+//
+|I1INSdl1az
+(   i1v1   ) =>
+(strnfpr(filr,"XATS000_dl1az(")
 ;i1valjs1(filr,i1v1);strnfpr(filr,")"))
 //
 (* ****** ****** *)
