@@ -21,6 +21,7 @@ XATS2JS=${XATSJSD}/bin/xats2js
 XATSJSD=\
 ./../../../../../srcgen1/xats2js/srcgenx
 ######
+LIBXATS2JS_JS="./../../lib/libxats2js.js"
 LIBXATSOPT_JS="./../../../../lib/libxatsopt.js"
 ######
 XATS2JS_PRELUDE="$(XSHARED)/runtime/xats2js_prelude.js"
@@ -155,6 +156,21 @@ $(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
 $(CAT) \
 $(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
 $(CAT) $(LIBXATSOPT_JS) >> $@_dats.js && \
+$(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
+#
+######
+#
+test:: \
+test10_xats2js
+test10_xats2js:: ; \
+$(CAT) \
+$(XATS2JS_PRELUDE) > $@_dats.js && \
+$(CAT) \
+$(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
+$(CAT) \
+$(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \
+$(CAT) $(LIBXATSOPT_JS) >> $@_dats.js && \
+$(CAT) $(LIBXATS2JS_JS) >> $@_dats.js && \
 $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 #
 ######

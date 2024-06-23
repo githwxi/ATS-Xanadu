@@ -1,0 +1,92 @@
+########################################################################
+#
+# For compiling with xats2js
+# Sat 22 Jun 2024 05:23:36 PM EDT
+#
+########################################################################
+
+AR=ar
+CP=cp
+MV=mv
+CC=gcc
+SED=sed
+CPF=cp -f
+MVF=mv -f
+RMF=rm -f
+WCL=wc -l
+
+########################################################################
+
+######
+CAT=cat
+CPF=cp -f
+ECHO=echo
+NODE=node
+NODE=node --stack-size=4096
+######
+MYTEST="."
+######
+XSHARED="${XATSJSD}/xshared"
+XATS2JS="${XATSJSD}/bin/xats2js"
+######
+XATSJSD=\
+./../../../srcgen1/xats2js/srcgen1
+######
+XATS2JS_PRELUDE=\
+"$(XSHARED)/runtime/xats2js_prelude.js"
+XATS2JS_PRELUDE_NODE=\
+"$(XSHARED)/runtime/xats2js_prelude_node.js"
+XATS2JS_XATSLIB_NODE=\
+"$(XSHARED)/runtime/xats2js_xatslib_node.js"
+######
+
+SRCSATS := \
+intrep0.sats \
+trxd3i0.sats \
+intrep1.sats \
+trxi0i1.sats \
+xats2js.sats \
+js1emit.sats \
+
+######
+
+SRCDATS := \
+intrep0.dats \
+intrep0_print0.dats \
+intrep0_utils0.dats \
+trxd3i0.dats \
+trxd3i0_myenv0.dats \
+trxd3i0_dynexp.dats \
+trxd3i0_decl00.dats \
+intrep1.dats \
+intrep1_print0.dats \
+intrep1_utils0.dats \
+trxi0i1.dats \
+trxi0i1_myenv0.dats \
+trxi0i1_dynexp.dats \
+trxi0i1_decl00.dats \
+xats2js.dats \
+xats2js_myenv0.dats \
+xats2js_dynexp.dats \
+xats2js_decl00.dats \
+js1emit.dats \
+js1emit_dynexp.dats \
+js1emit_decl00.dats \
+xats2js_tmplib.dats \
+
+########################################################################
+OBJSATS := \
+$(patsubst %.sats, BUILD/JS/%_sats.js, $(SRCSATS))
+OBJDATS := \
+$(patsubst %.dats, BUILD/JS/%_dats.js, $(SRCDATS))
+########################################################################
+all:: $(OBJDATS)
+########################################################################
+libxats2js:: $(OBJDATS); \
+$(CAT) $(OBJDATS) > lib/libxats2js.js
+########################################################################
+BUILD/JS/%_dats.js: \
+DATS/%.dats; $(XATS2JS) --output-a $@ --dynamic $<
+########################################################################
+cleanall:: ; rm -f BUILD/JS/*_dats.js
+########################################################################
