@@ -38,6 +38,17 @@ if i < n then
 (* ****** ****** *)
 //
 fun
+length1(xs: list(sint)): sint =
+(
+case+ xs of
+| list_nil() => 0
+| list_cons(_, xs) => 1 + length1(xs)
+)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 length2(xs: list(sint)): sint =
 (
 case+ xs of
@@ -50,6 +61,27 @@ list_cons
 list_cons
 (_, list_cons(_, xs)) => 2 + length2(xs)
 )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+length3
+(xs
+:list(sint)): sint = list_length<sint>(xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+length4
+(xs: list(sint)): sint =
+(
+list_foldl<x0><r0>(xs, 0))
+where
+{ #typedef x0 = sint
+  #typedef r0 = sint
+  #impltmp foldl$fopr<x0><r0>(r0, x0) = r0+1 }//where
 //
 (* ****** ****** *)
 (* ****** ****** *)

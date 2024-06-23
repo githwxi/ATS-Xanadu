@@ -512,6 +512,14 @@ case+
 ival.node() of
 (* ****** ****** *)
 (* ****** ****** *)
+|I1Vnil
+((*0*)) => print("[", "]")
+(* ****** ****** *)
+(* ****** ****** *)
+|I1Vint
+( tint ) => i1intjs1(filr,tint)
+(* ****** ****** *)
+(* ****** ****** *)
 |I1Vtnm
 ( itnm ) => i1tnmfpr(filr,itnm)
 (* ****** ****** *)
@@ -520,9 +528,6 @@ ival.node() of
 (* ****** ****** *)
 |I1Vvar
 ( dvar ) => d2varfpr(filr,dvar)
-(* ****** ****** *)
-|I1Vint
-( tint ) => i1intjs1(filr,tint)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -872,8 +877,9 @@ strnfpr
 (
 strnfpr(filr," { // timp: ");
 d2cst_fprint(filr, dcst);fprintln(filr));
-(envx2js_incnind(env0,2(*++*))
-;js1emit_fjarglst(env0, fjas);f0_i1cmpret(env0, icmp));
+(
+envx2js_incnind(env0,2(*++*));
+js1emit_fjarglst(env0,fjas);f0_i1cmpret(env0, icmp));
 (envx2js_decnind(env0,2(*--*));nindstrnfpr(filr, nind, "} // endfun(timp)")))
 )
 //
@@ -895,15 +901,27 @@ envx2js_get_nind(env0)
 //
 in//let
 let
+//
 val ival = icmp.ival()
-val (  ) = js1emit_i1cmp(env0, icmp)
+val (  ) =
+js1emit_i1cmp(env0, icmp)
+//
 in//let
-nindstrnfpr(filr, nind, "return ");i1valjs1(filr, ival);fprintln(filr)
+//
+nindstrnfpr
+(filr, nind, "return ");
+i1valjs1(filr, ival);fprintln(filr)
+//
 end//let
 end//let//end-of-[f0_i1cmpret(...)]
 //
 (* ****** ****** *)
 //
+(*
+HX-2024-06-22:
+Note that the temporary [itnm]
+is assumed to have been introduced
+*)
 fun
 f0_i1tnmcmp
 ( env0:
@@ -925,8 +943,8 @@ js1emit_i1letlst(env0, ilts)
 //
 val () =
 let
-nindfpr(filr, nind);
-i1tnmfpr(filr, itnm);strnfpr(filr, " = ");i1valjs1(filr, ival);fprintln(filr)
+nindfpr(filr, nind);i1tnmfpr(filr, itnm);
+strnfpr(filr, " = ");i1valjs1(filr, ival);fprintln(filr)
 end//let
 //
 end//let//end-of-[f0_i1tnmcmp(...)]
@@ -1088,7 +1106,7 @@ case+ iins of
 (i1vl, i1vr) =>
 (
 nindstrnfpr
-(filr, nind, "XATSASSGN(");
+(filr, nind, "XATS000_assgn(");
 i1valjs1(filr, i1vl);strnfpr(filr, ", ");
 i1valjs1(filr, i1vr);strnfpr(filr, ")\n"))
 //
@@ -1126,8 +1144,9 @@ optn_nil() =>
 nindstrnfpr
 (filr, nind, "// ");
 t1imploc(filr, timp);fprintln(filr);
-nindstrnfpr(filr, nind, "let ");i1tnmfpr(filr, itnm)
-;strnfpr(filr, " = ");f0_t1imp(env0, timp);fprintln(filr))
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmfpr(filr, itnm);strnfpr(filr, " = ");f0_t1imp(env0, timp);fprintln(filr))
 |
 optn_cons(icmp) =>
 (
@@ -1139,7 +1158,7 @@ nindstrnfpr
 (filr, nind, "// ");
 t1imploc(filr, timp);fprintln(filr);
 nindstrnfpr
-(filr, nind, "let ");i1tnmfpr(filr, itnm);fprintln(filr))}//whr
+(filr, nind, "let ");i1tnmfpr(filr, itnm);fprintln(filr))}
 //
 end//let//end-of-[I1INStimp(...)]
 //
@@ -1151,13 +1170,14 @@ let
 //
 val () =
 (
-nindfpr(filr, nind);
-strnfpr(filr, "let ");i1tnmfpr(filr, itnm);strnfpr(filr, " // let\n"))
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmfpr(filr, itnm);strnfpr(filr, " // let");fprintln(filr))
 //
 val () =
 (
-nindfpr(filr, nind);
-strnfpr(filr, "{ // let\n"))
+nindstrnfpr
+(filr, nind, "{ // let\n"))
 //
 val () =
 envx2js_incnind(env0,2(*++*))
@@ -1173,8 +1193,7 @@ val () =
 //
 val () = 
 (
-nindfpr(filr, nind);
-strnfpr(filr, "} // endlet\n"))
+nindstrnfpr(filr, nind, "} // endlet\n"))
 //
 end//let//end-of-[I1INSlet0(...)]
 //
@@ -1187,20 +1206,20 @@ let
 //
 val () =
 (
-nindfpr(filr, nind);
-strnfpr(filr, "let ");
+nindstrnfpr
+(filr, nind, "let ");
 i1tnmfpr(filr, itnm);strnfpr(filr, " // ift\n"))
 //
 val () =
 (
-nindfpr(filr, nind);
-strnfpr(filr, "if (");
+nindstrnfpr
+(filr, nind, "if (");
 i1valjs1(filr, itst);strnfpr(filr, ") // ift\n"))
 //
 val () =
 (
-nindfpr(filr, nind);
-strnfpr(filr, "{\n");
+nindstrnfpr
+(filr, nind, "{\n");
 case+ ithn of
 |optn_nil() => ()
 |optn_cons(icmp) =>
@@ -1210,8 +1229,8 @@ case+ ithn of
 //
 val () =
 (
-nindfpr(filr, nind);
-strnfpr(filr, "} else {\n");
+nindstrnfpr
+(filr, nind, "} else {\n");
 case+ iels of
 |optn_nil() => ()
 |optn_cons(icmp) =>
@@ -1221,7 +1240,7 @@ case+ iels of
 //
 val () =
 (
-nindfpr(filr, nind);strnfpr(filr, "} // end(if)\n"))//end(val)
+nindstrnfpr(filr, nind, "} // end(if)\n"))
 //
 end//let//end-of-[I1INSift0(...)]
 //
@@ -1233,14 +1252,14 @@ end//let//end-of-[I1INSift0(...)]
 let
 val () =
 (
-nindfpr(filr, nind);
-strnfpr(filr, "let ");
+nindstrnfpr
+(filr, nind, "let ");
 i1tnmfpr(filr, itnm);strnfpr(filr, " // cas\n"))
 //
 val () =
 (
-nindfpr(filr, nind);
-strnfpr(filr, "do {\n"))
+nindstrnfpr
+(filr, nind, "do {\n"))
 //
 val () = // enter
 envx2js_incnind(env0,2(*++*))
@@ -1255,7 +1274,7 @@ val () =
 //
 val () =
 (
-nindfpr(filr, nind);strnfpr(filr, "} while (false) // end(do)\n"))//end(val)
+nindstrnfpr(filr, nind, "} while (false) // end(do)\n"))
 end//let//end-of-[I1INScas0(...)]
 //
 (* ****** ****** *)
@@ -1263,8 +1282,9 @@ end//let//end-of-[I1INScas0(...)]
 |
 _(*otherwise*) =>
 (
-nindfpr(filr, nind);
-strnfpr(filr, "let ");i1tnmfpr(filr, itnm);strnfpr(filr, " = ");i1insjs1(filr, iins);fprintln(filr))
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmfpr(filr, itnm);strnfpr(filr, " = ");i1insjs1(filr, iins);fprintln(filr))
 //
 (* ****** ****** *)
 //
@@ -1353,7 +1373,7 @@ I1BNDcons(itnm, i0p1, dvvs) =>
 (
 nindfpr(filr,nind);
 (
-  print("let ",itnm," = ","arg",i0,"\n")))
+  print("let ", itnm, " = ", "arg", i0, "\n")))
 }
 )
 //

@@ -865,9 +865,12 @@ let
 val filr = env0.filr()
 val nind = env0.nind()
 in//let
-(
-nindfpr(filr, nind);
-strnfpr(filr, "} // endfun\n")) end//let
+//
+nindstrnfpr
+(filr, nind, "} // endfun(");
+d2varfpr(filr, dvar);strnfpr(filr, ")\n")
+//
+end//let
 //
 (* ****** ****** *)
 //
