@@ -107,5 +107,18 @@ end//let
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(*
+HX-2024-01-03:
+More than 10 template layers!
+*)
+fun
+fact1_mul_tail
+  (x: sint): sint =
+(
+  strm_vt_mul0(tail0(strmize(x+1))))//fun
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XATS2JS_TEST_JS_DATA_mytest11.dats] *)
