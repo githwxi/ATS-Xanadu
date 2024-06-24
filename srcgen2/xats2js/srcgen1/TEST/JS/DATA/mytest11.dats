@@ -102,7 +102,8 @@ res :=
 (i0+1) * res) in loop(i0+1, res) end
 in//let
 let
-var res: sint = 1 in loop(0, res); res end
+var
+res: sint = 1 in loop(0, res); res end
 end//let
 //
 (* ****** ****** *)
