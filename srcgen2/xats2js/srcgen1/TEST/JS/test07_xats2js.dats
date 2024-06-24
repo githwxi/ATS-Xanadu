@@ -14,7 +14,7 @@ as way to test [xatsopt]
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #include
-"./../../HATS/libxats2js.hats"
+"./../../HATS/libxatsopt.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //

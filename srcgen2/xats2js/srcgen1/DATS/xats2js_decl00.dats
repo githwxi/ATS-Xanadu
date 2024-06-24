@@ -45,7 +45,7 @@ Authoremail: gmhwxiATgmailDOTcom
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #include
-"./../HATS/xats2js_dats.hats"
+"./../HATS/mytmplib00.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload // LOC =

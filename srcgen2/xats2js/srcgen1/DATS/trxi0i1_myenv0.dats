@@ -51,7 +51,7 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 #include
-"./../HATS/libxats2js.hats"
+"./../HATS/libxatsopt.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)

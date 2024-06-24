@@ -13,7 +13,7 @@ Sat 22 Jun 2024 07:51:23 PM EDT
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #include
-"./../../HATS/libxats2js.hats"
+"./../../HATS/libxatsopt.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
