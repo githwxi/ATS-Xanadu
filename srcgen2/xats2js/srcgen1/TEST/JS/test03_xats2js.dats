@@ -16,7 +16,7 @@ Mon 06 May 2024 11:42:43 PM EDT
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #include
-"./../../HATS/libxats2js.hats"
+"./../../HATS/libxatsopt.hats"
 (* ****** ****** *)
 //
 val ret =

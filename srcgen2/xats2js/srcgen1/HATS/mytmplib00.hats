@@ -9,4 +9,4 @@ For ATS3/XANADU_srcgen2_xats2js
 "./../DATS/xats2js_tmplib.dats"
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_xats2js_dats.hats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_mytmplib00.hats] *)
