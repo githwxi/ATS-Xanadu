@@ -153,7 +153,7 @@ end//let
 //
 end where
 {
-val dpar = d3parsed_of_fildats(fpath)
+val dpar = d3parsed_of_filsats(fpath)
 }
 //
 (* ****** ****** *)
@@ -188,4 +188,4 @@ mytest(argv[2])) where
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_JS_test10_xats2js.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_JS_test11_xats2js.dats] *)
