@@ -34,7 +34,8 @@
 //
 (*
 #staload HX =
-"xatslib\
+"srcgen1\
+/xatslib\
 /githwxi/SATS/githwxi.sats"
 *)
 //
