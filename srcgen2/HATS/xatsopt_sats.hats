@@ -15,7 +15,7 @@ For ATS3/XATSOPT
 "xatslib/githwxi/SATS/genv000.sats"
 (* ****** ****** *)
 #staload
-"xatslib/githwxi/SATS/githwxi.sats"
+"srcgen1/xatslib/githwxi/SATS/githwxi.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 
