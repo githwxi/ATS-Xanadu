@@ -54,21 +54,6 @@ XATSOPT "./../../.."
 #include
 "./../HATS/mytmplib00.hats"
 (* ****** ****** *)
-//
-#staload
-"./../../../SATS/staexp2.sats"
-#staload
-"./../../../SATS/statyp2.sats"
-//
-(* ****** ****** *)
-//
-#staload
-"./../../../SATS/dynexp1.sats"
-#staload
-"./../../../SATS/dynexp2.sats"
-#staload
-"./../../../SATS/dynexp3.sats"
-//
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
