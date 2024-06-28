@@ -8,21 +8,14 @@ Tue Jan 23 00:01:55 EST 2024
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-#staload
-"./../SATS/xbasics.sats"
+#staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
-#staload
-STM = "./../SATS/xstamp0.sats"
 (* ****** ****** *)
-#staload
-SYM = "./../SATS/xsymbol.sats"
+#staload "./../SATS/xstamp0.sats"
 (* ****** ****** *)
-//
-(*
-#staload
-LAB = "./../SATS/xlabel0.sats"
-*)
-//
+#staload "./../SATS/xsymbol.sats"
+(* ****** ****** *)
+#staload "./../SATS/xlabel0.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/trans01.sats"
@@ -60,4 +53,4 @@ LAB = "./../SATS/xlabel0.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen2_libxatsopt.hats] *)
+(* end of [ATS3/XANADU_srcgen2_HATS_libxatsopt.hats] *)

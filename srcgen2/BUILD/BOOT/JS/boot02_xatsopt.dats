@@ -36,7 +36,8 @@ d0parsed_of_preadx0(dpar)
 {
 val
 dpar = d0parsed_from_fpath
-(0(*sta*), "./../../SATS/xbasics.sats")}
+(0(*sta*)
+,"./../../../SATS/xbasics.sats")}
 val ((*void*)) =
 d0parsed_fpemsg(g_stderr(), xbasics_sats)
 //
@@ -48,7 +49,8 @@ d0parsed_of_preadx0(dpar)
 {
 val
 dpar = d0parsed_from_fpath
-(1(*dyn*), "./../../DATS/xbasics.dats")}
+(1(*dyn*)
+,"./../../../DATS/xbasics.dats")}
 val ((*void*)) =
 d0parsed_fpemsg(g_stderr(), xbasics_dats)
 //
@@ -63,7 +65,8 @@ d0parsed_of_preadx0(dpar)
 {
 val
 dpar = d0parsed_from_fpath
-(0(*sta*), "./../../SATS/staexp0.sats")}
+(0(*sta*)
+,"./../../../SATS/staexp0.sats")}
 val ((*void*)) =
 d0parsed_fpemsg(g_stderr(), staexp0_sats)
 //
@@ -75,7 +78,8 @@ d0parsed_of_preadx0(dpar)
 {
 val
 dpar = d0parsed_from_fpath
-(1(*dyn*), "./../../DATS/staexp0.dats")}
+(1(*dyn*)
+,"./../../../DATS/staexp0.dats")}
 val ((*void*)) =
 d0parsed_fpemsg(g_stderr(), staexp0_dats)
 //
@@ -90,7 +94,8 @@ d0parsed_of_preadx0(dpar)
 {
 val
 dpar = d0parsed_from_fpath
-(0(*sta*), "./../../SATS/dynexp0.sats")}
+(0(*sta*)
+,"./../../../SATS/dynexp0.sats")}
 val ((*void*)) =
 d0parsed_fpemsg(g_stderr(), dynexp0_sats)
 //
@@ -102,7 +107,8 @@ d0parsed_of_preadx0(dpar)
 {
 val
 dpar = d0parsed_from_fpath
-(1(*dyn*), "./../../DATS/dynexp0.dats")}
+(1(*dyn*)
+,"./../../../DATS/dynexp0.dats")}
 val ((*void*)) =
 d0parsed_fpemsg(g_stderr(), dynexp0_dats)
 //
@@ -117,7 +123,8 @@ d0parsed_of_preadx0(dpar)
 {
 val
 dpar = d0parsed_from_fpath
-(0(*sta*), "./../../SATS/staexp1.sats")}
+(0(*sta*)
+,"./../../../SATS/staexp1.sats")}
 val ((*void*)) =
 d0parsed_fpemsg(g_stderr(), staexp1_sats)
 //
@@ -129,7 +136,8 @@ d0parsed_of_preadx0(dpar)
 {
 val
 dpar = d0parsed_from_fpath
-(1(*dyn*), "./../../DATS/staexp1.dats")}
+(1(*dyn*)
+,"./../../../DATS/staexp1.dats")}
 val ((*void*)) =
 d0parsed_fpemsg(g_stderr(), staexp1_dats)
 //
@@ -144,7 +152,8 @@ d0parsed_of_preadx0(dpar)
 {
 val
 dpar = d0parsed_from_fpath
-(0(*sta*), "./../../SATS/dynexp1.sats")}
+(0(*sta*)
+,"./../../../SATS/dynexp1.sats")}
 val ((*void*)) =
 d0parsed_fpemsg(g_stderr(), dynexp1_sats)
 //
@@ -156,7 +165,8 @@ d0parsed_of_preadx0(dpar)
 {
 val
 dpar = d0parsed_from_fpath
-(1(*dyn*), "./../../DATS/dynexp1.dats")}
+(1(*dyn*)
+,"./../../../DATS/dynexp1.dats")}
 val ((*void*)) =
 d0parsed_fpemsg(g_stderr(), dynexp1_dats)
 //
@@ -171,7 +181,8 @@ d0parsed_of_preadx0(dpar)
 {
 val
 dpar = d0parsed_from_fpath
-(0(*sta*), "./../../SATS/staexp2.sats")}
+(0(*sta*)
+,"./../../../SATS/staexp2.sats")}
 val ((*void*)) =
 d0parsed_fpemsg(g_stderr(), staexp2_sats)
 //
@@ -183,7 +194,8 @@ d0parsed_of_preadx0(dpar)
 {
 val
 dpar = d0parsed_from_fpath
-(1(*dyn*), "./../../DATS/staexp2.dats")}
+(1(*dyn*)
+,"./../../../DATS/staexp2.dats")}
 val ((*void*)) =
 d0parsed_fpemsg(g_stderr(), staexp2_dats)
 //
@@ -198,7 +210,8 @@ d0parsed_of_preadx0(dpar)
 {
 val
 dpar = d0parsed_from_fpath
-(0(*sta*), "./../../SATS/statyp2.sats")}
+(0(*sta*)
+,"./../../../SATS/statyp2.sats")}
 val ((*void*)) =
 d0parsed_fpemsg(g_stderr(), statyp2_sats)
 //
@@ -210,7 +223,8 @@ d0parsed_of_preadx0(dpar)
 {
 val
 dpar = d0parsed_from_fpath
-(1(*dyn*), "./../../DATS/statyp2.dats")}
+(1(*dyn*)
+,"./../../../DATS/statyp2.dats")}
 val ((*void*)) =
 d0parsed_fpemsg(g_stderr(), statyp2_dats)
 //
@@ -225,7 +239,8 @@ d0parsed_of_preadx0(dpar)
 {
 val
 dpar = d0parsed_from_fpath
-(0(*sta*), "./../../SATS/dynexp2.sats")}
+(0(*sta*)
+,"./../../../SATS/dynexp2.sats")}
 val ((*void*)) =
 d0parsed_fpemsg(g_stderr(), dynexp2_sats)
 //
@@ -237,7 +252,8 @@ d0parsed_of_preadx0(dpar)
 {
 val
 dpar = d0parsed_from_fpath
-(1(*dyn*), "./../../DATS/dynexp2.dats")}
+(1(*dyn*)
+,"./../../../DATS/dynexp2.dats")}
 val ((*void*)) =
 d0parsed_fpemsg(g_stderr(), dynexp2_dats)
 //
@@ -258,7 +274,8 @@ d0parsed_of_preadx0(dpar)
 {
 val
 dpar = d0parsed_from_fpath
-(0(*sta*), "./../../SATS/dynexp3.sats")}
+(0(*sta*)
+,"./../../../SATS/dynexp3.sats")}
 val ((*void*)) =
 d0parsed_fpemsg(g_stderr(), dynexp3_sats)
 //
@@ -270,7 +287,8 @@ d0parsed_of_preadx0(dpar)
 {
 val
 dpar = d0parsed_from_fpath
-(1(*dyn*), "./../../DATS/dynexp3.dats")}
+(1(*dyn*)
+,"./../../../DATS/dynexp3.dats")}
 val ((*void*)) =
 d0parsed_fpemsg(g_stderr(), dynexp3_dats)
 //
