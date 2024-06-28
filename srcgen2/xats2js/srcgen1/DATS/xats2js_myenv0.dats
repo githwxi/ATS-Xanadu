@@ -48,11 +48,14 @@ XATSOPT "./../../.."
 "./../../..\
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/libxatsopt.hats"
 (* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/mytmplib00.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload "./../SATS/intrep0.sats"
