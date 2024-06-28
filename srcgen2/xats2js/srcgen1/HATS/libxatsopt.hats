@@ -7,24 +7,22 @@ Mon 19 Feb 2024 10:54:31 AM
 *)
 *)
 (* ****** ****** *)
+(* ****** ****** *)
 #staload
 "./../../../SATS/xbasics.sats"
 (* ****** ****** *)
-#staload STM =
+(* ****** ****** *)
+#staload // STM =
 "./../../../SATS/xstamp0.sats"
 (* ****** ****** *)
-#staload SYM =
+#staload // SYM =
 "./../../../SATS/xsymbol.sats"
 (* ****** ****** *)
-#staload MAP =
+#staload // MAP =
 "./../../../SATS/xsymmap.sats"
 (* ****** ****** *)
-//
-(*
-#staload LAB =
+#staload // LAB =
 "./../../../SATS/xlabel0.sats"
-*)
-//
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
@@ -83,4 +81,4 @@ Mon 19 Feb 2024 10:54:31 AM
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_libxatsopt.hats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_HATS_libxatsopt.hats] *)
