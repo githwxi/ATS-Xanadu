@@ -1331,8 +1331,10 @@ tr11env_search_opt(tr11, k0)) where
 tr12env_find_g1mac
   ( env0, k0 ) =
 let
+//
 val opt =
 tr11env_search_opt(tr11, k0)
+//
 in//let
 //
 case+ opt of
@@ -1344,14 +1346,12 @@ let
 val opt =
 tr12env_ofind_g1mac(env0, k0)
 in//let
-//
 case+ opt of
 | // keep
 optn_vt_cons _ => opt
 | ~ // free
 optn_vt_nil((*0*))=>the_gmacenv_pvsfind(k0)
-//
-end
+end // let
 //
 end where // end-of-[let-val(opt)]
 {
