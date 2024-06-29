@@ -873,9 +873,8 @@ D2Cinclude
 (
 print("D2Cinclude(");
 print
-(
-knd0,";",
-tknd,";",gsrc,";",fopt,";","...",")"))
+(knd0,";"
+,tknd,";",gsrc,";",fopt,";",dopt,")"))
 //
 |
 D2Cstaload
@@ -884,7 +883,8 @@ D2Cstaload
 (
 print("D2Cstaload(");
 print
-(knd0,";",tknd,";",gsrc,";",fopt,")"))
+(knd0,";"
+,tknd,";",gsrc,";",fopt,";","...",")"))
 //
 |
 D2Cdatasort

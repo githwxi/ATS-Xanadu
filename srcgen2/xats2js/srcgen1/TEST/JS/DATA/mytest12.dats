@@ -122,4 +122,4 @@ fact1_mul_tail
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATS2JS_TEST_JS_DATA_mytest11.dats] *)
+(* end of [ATS3/XATS2JS_TEST_JS_DATA_mytest12.dats] *)

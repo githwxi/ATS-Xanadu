@@ -543,7 +543,8 @@ else
 (
 //
 (
-nindfpr(filr,nind);dimplcst(filr,dimp);
+nindstrnfpr
+(filr, nind, "let ");dimplcst(filr, dimp);
 strnfpr(filr," = function ");fjas1js1(filr, fjas));
 (
 strnfpr(filr," { // impl\n");

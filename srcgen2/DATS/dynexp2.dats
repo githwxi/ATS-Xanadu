@@ -412,6 +412,7 @@ local
 datatype
 f2env = F2ENV of
 ( lcsrc
+, $MAP.topmap(g1mac)
 , $MAP.topmap(s2tex)
 , $MAP.topmap(s2itm)
 , $MAP.topmap(d2itm))
@@ -426,6 +427,7 @@ f2env_of_d2parsed
 (
 F2ENV
 ( lcsrc
+, g1mac
 , s2tex, s2itm, d2itm)) where
 { 
 val
@@ -434,8 +436,18 @@ val
 d2env = d2par.t2penv()
 val+
 D2TOPENV
-(g2mac, s2tex, s2itm, d2itm) = d2env
+(g1mac, s2tex, s2itm, d2itm) = d2env
 }
+//
+#implfun
+f2env_get_g1macenv
+  (f2env) =
+let
+val+
+F2ENV
+( lcsrc
+, g1mac, s2tex
+, s2itm, d2itm) = f2env in g1mac end
 //
 #implfun
 f2env_get_sort2env
@@ -444,7 +456,8 @@ let
 val+
 F2ENV
 ( lcsrc
-, s2tex, s2itm, d2itm) = f2env in s2tex end
+, g1mac, s2tex
+, s2itm, d2itm) = f2env in s2tex end
 //
 #implfun
 f2env_get_s2expenv
@@ -453,7 +466,8 @@ let
 val+
 F2ENV
 ( lcsrc
-, s2tex, s2itm, d2itm) = f2env in s2itm end
+, g1mac, s2tex
+, s2itm, d2itm) = f2env in s2itm end
 //
 #implfun
 f2env_get_d2expenv
@@ -462,7 +476,8 @@ let
 val+
 F2ENV
 ( lcsrc
-, s2tex, s2itm, d2itm) = f2env in d2itm end
+, g1mac, s2tex
+, s2itm, d2itm) = f2env in d2itm end
 //
 endloc (*local*) // end of [ local(f2env) ]
 //
