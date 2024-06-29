@@ -2070,4 +2070,4 @@ g_fred2<list(a0)> = list_append<a0> }
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_synoug0.dats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_synoug0.dats] *)

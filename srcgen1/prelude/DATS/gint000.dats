@@ -473,4 +473,4 @@ gint_repeat_sint_c0fr
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_gint000.dats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_gint000.dats] *)

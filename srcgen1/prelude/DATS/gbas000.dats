@@ -190,4 +190,4 @@ x2iforeach_row$work = x2iforeach$work<x0,y0>
 x2iforeach_col$work = x2iforeach$work<x0,y0>
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_gbas000.dats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_gbas000.dats] *)

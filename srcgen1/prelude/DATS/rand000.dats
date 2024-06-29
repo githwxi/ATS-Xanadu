@@ -48,4 +48,4 @@ map$fopr<sint><a>(_) = g_rand<a>()
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_rand000.dats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_rand000.dats] *)

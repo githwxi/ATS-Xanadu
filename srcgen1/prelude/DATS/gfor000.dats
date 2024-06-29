@@ -228,4 +228,4 @@ gseq_strmize<range1(x0)><x0> = range1_strmize<x0>
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_gfor000.dats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_gfor000.dats] *)

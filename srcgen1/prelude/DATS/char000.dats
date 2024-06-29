@@ -157,4 +157,4 @@ char_make_code<>(i) where {val i = g0u2s(u)}
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_char000.dats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_char000.dats] *)
