@@ -884,6 +884,40 @@ sortenv, sexpenv, dexpenv)
 in//local
 
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-06-29:
+With [absopen],
+these implementations can be
+moved to [trans12_gmacro.dats]
+*)
+//
+#implfun
+trans12_g1mac
+( env0,g1m0 ) =
+(
+trans11_g1mac
+(tr11 , g1m0)) where
+{
+val+
+TR12ENV
+(tr11, tenv, senv, denv) = env0
+}(*where*)//end-of-[trans12_g1mac]
+//
+#implfun
+trans12_g1mac_apps
+(env0, g1f0, g1ms) =
+let
+val+
+TR12ENV
+(tr11, tenv, senv, denv) = env0
+in//let
+trans11_g1mac_apps(tr11, g1f0, g1ms)
+end(*let*)//end-[trans12_g1mac_apps]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 tr12env_make_nil
@@ -923,6 +957,7 @@ val+
 ~TR12ENV(tr11, tenv, senv, denv) = env0
 } (*where*)//end-of(tr12env_free_top(tenv))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -1038,7 +1073,7 @@ in//let
 end (*let*)//end-of-[tr12env_pshloc2(env0)]
 //
 (* ****** ****** *)
-
+//
 #implfun
 tr12env_locjoin
   ( env0 ) = let
@@ -1056,9 +1091,10 @@ val () = dexpenv_locjoin(denv)
 in//let
   // HX-2022-10-23: nothing
 end (*let*)//end-of-[tr12env_locjoin(env0)]
-
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 tr12env_add0_g1mac
 ( env0 , k0 , x0 ) =
@@ -1089,9 +1125,9 @@ end where
   prerrln("tr12env_add0_g1mac: x0 = ", x0)
 *)
 } (*where*)//end-[tr12env_add0_g1mac(env0,...)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 tr12env_add0_s2tex
 ( env0 , k0 , x0 ) =
@@ -1122,9 +1158,9 @@ end where
   prerrln("tr12env_add0_s2tex: x0 = ", x0)
 *)
 } (*where*)//end-[tr12env_add0_s2tex(env0,...)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 tr12env_add0_s2itm
 ( env0 , k0 , x0 ) =
@@ -1155,9 +1191,9 @@ val () =
 prerrln("tr12env_add0_s2itm: x0 = ", x0)
 *)
 } (*where*)//end-[tr12env_add0_s2itm(env0,...)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 tr12env_add0_d2itm
 ( env0, k0 , x0 ) =
@@ -1188,9 +1224,9 @@ val () =
 prerrln("tr12env_add0_d2itm: x0 = ", x0)
 *)
 } (*where*)//end-[tr12env_add0_d2itm(env0,...)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 tr12env_add1_f2env
   (env0, k0, x0) =
@@ -1248,7 +1284,85 @@ prerrln("tr12env_add1_f2env: fenv = ", x0)
 } (*where*)//end[tr12env_add1_f2env(env0,...)]
 
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
+#implfun
+f2envlst_find_g1mac
+  (envs, k0) =
+(
+case+ envs of
+|
+list_nil() =>
+optn_vt_nil((*void*))
+|
+list_cons(fenv, envs) =>
+(
+case+
+topt of
+|
+~ // free
+optn_vt_nil() =>
+f2envlst_find_g1mac
+( envs(*rest*), k0 )
+| // keep
+optn_vt_cons _ => topt) where
+{
+val topt =
+topmap_search_opt(fenv.g1macenv(), k0) }
+) (*case+*)//end-[f2envlst_find_g1mac(env0,k0)]
+//
+(* ****** ****** *)
+//
+(*
+#implfun
+tr12env_find_g1mac
+  ( env0, k0 ) =
+(
+tr11env_search_opt(tr11, k0)) where
+{
+//
+  val+
+  TR12ENV(tr11, tenv, senv, denv) = env0
+//
+}(*where*)//end-of-[tr12env_find_g1mac(env0,k0)]
+*)
+//
+#implfun
+tr12env_find_g1mac
+  ( env0, k0 ) =
+let
+val opt =
+tr11env_search_opt(tr11, k0)
+in//let
+//
+case+ opt of
+| // keep
+optn_vt_cons _ => opt
+| ~ // free
+optn_vt_nil((*0*)) =>
+let
+val opt =
+tr12env_ofind_g1mac(env0, k0)
+in//let
+//
+case+ opt of
+| // keep
+optn_vt_cons _ => opt
+| ~ // free
+optn_vt_nil((*0*))=>the_gmacenv_pvsfind(k0)
+//
+end
+//
+end where // end-of-[let-val(opt)]
+{
+//
+  val+TR12ENV(tr11, tenv, senv, denv) = env0
+//
+}(*where*)//end-of-[tr12env_find_g1mac(env0,k0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 f2envlst_find_s2tex
   (envs, k0) =
@@ -1273,9 +1387,9 @@ optn_vt_cons _ => topt) where
 val topt =
 topmap_search_opt(fenv.sort2env(), k0) }
 ) (*case+*)//end-[f2envlst_find_s2tex(env0,k0)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 f2envlst_find_s2itm
   (envs, k0) =
@@ -1300,9 +1414,9 @@ optn_vt_cons _ => sopt) where
 val sopt =
 topmap_search_opt(fenv.s2expenv(), k0) }
 ) (*case+*)//end-[f2envlst_find_s2itm(env0,k0)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 f2envlst_find_d2itm
   (envs, k0) =
@@ -1327,23 +1441,10 @@ optn_vt_cons _ => dopt) where
 val dopt =
 topmap_search_opt(fenv.d2expenv(), k0) }
 ) (*case+*)//end-[f2envlst_find_d2itm(env0,k0)]
-
-(* ****** ****** *)
-
-#implfun
-tr12env_find_g1mac
-  ( env0, k0 ) =
-(
-tr11env_search_opt(tr11, k0)) where
-{
 //
-  val+
-  TR12ENV(tr11, tenv, senv, denv) = env0
-//
-}(*where*)//end-of-[tr12env_find_g1mac(env0,k0)]
-
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 tr12env_find_s2tex
   ( env0, k0 ) =
@@ -1376,7 +1477,7 @@ end where // end-of-[let-val(opt)]
   val+TR12ENV(tr11, tenv, senv, denv) = env0
 //
 }(*where*)//end-of-[tr12env_find_s2tex(env0,k0)]
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -1562,7 +1663,8 @@ end where // end-of-[let-val(opt)]
 }(*where*)//end-of-[tr12env_find_s2itm(env0,k0)]
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 tr12env_find_d2itm
   ( env0, k0 ) =
@@ -1595,32 +1697,8 @@ end where // end-of-[let-val(opt)]
   val+TR12ENV(tr11, tenv, senv, denv) = env0
 //
 }(*where*)//end-of-[tr12env_find_d2itm(env0,k0)]
-
+//
 (* ****** ****** *)
-//
-#implfun
-trans12_g1mac
-( env0,g1m0 ) =
-(
-trans11_g1mac
-(tr11 , g1m0)) where
-{
-val+
-TR12ENV
-(tr11, tenv, senv, denv) = env0
-} (*where*) // end of [trans12_g1mac(env0,g1m0)]
-//
-#implfun
-trans12_g1mac_apps
-(env0, g1f0, g1ms) =
-let
-val+
-TR12ENV
-(tr11, tenv, senv, denv) = env0
-in//let
-  trans11_g1mac_apps(tr11, g1f0, g1ms)
-end (*let*) // end of [trans12_g1mac_apps(env0,...)]
-//
 (* ****** ****** *)
 
 endloc (*local*) // end of [ local(tr12env) ]
@@ -2081,14 +2159,45 @@ foreach$work_e1nv
 } (*where*)//end(tr12env_add0_f2arglst(env0,...))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+
+#implfun
+tr12env_ofind_g1mac
+  ( env0, key0 ) =
+let
+//
+val sopt =
+tr12env_find_s2env
+(env0, $SYM.DLRDT_symbl)
+//
+in//let
+//
+case+ sopt of
+| ~
+optn_vt_nil() =>
+optn_vt_nil((*void*))
+| ~
+optn_vt_cons(sitm) =>
+(
+case+ sitm of
+| S2ITMenv(envs) =>
+  f2envlst_find_g1mac(envs, key0)
+| _(*non-S2ITMenv*) => optn_vt_nil((*void*))
+)
+//
+end (*let*)//end of [tr12env_ofind_g1mac(env0,key0)]
+
+(* ****** ****** *)
 
 #implfun
 tr12env_ofind_s2tex
   ( env0, key0 ) =
 let
+//
 val sopt =
 tr12env_find_s2env
 (env0, $SYM.DLRDT_symbl)
+//
 in//let
 //
 case+ sopt of
@@ -2112,9 +2221,11 @@ end (*let*)//end of [tr12env_ofind_s2tex(env0,key0)]
 tr12env_ofind_s2itm
   ( env0, key0 ) =
 let
+//
 val sopt =
 tr12env_find_s2env
 (env0, $SYM.DLRDT_symbl)
+//
 in//let
 //
 case+ sopt of
@@ -2138,9 +2249,11 @@ end (*let*)//end of [tr12env_ofind_s2itm(env0,key0)]
 tr12env_ofind_d2itm
   ( env0, key0 ) =
 let
+//
 val sopt =
 tr12env_find_s2env
 (env0, $SYM.DLRDT_symbl)
+//
 in//let
 //
 case+ sopt of

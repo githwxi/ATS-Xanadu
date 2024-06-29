@@ -35,6 +35,8 @@
 "./../../DATS/xstamp0.dats"
 #include
 "./../../DATS/xstamp0_print0.dats"
+#include
+"./../../DATS/xstamp0_tmpmap.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/xsymbol.dats"
@@ -163,7 +165,8 @@ prerrln("p1_fun_test(0)")
 val
 opt1 =
 p1_fun_test<d0eclist>
-("./../../../prelude/DATS/bool000.dats", p1_d0eclsq1_dyn)
+("./../../..\
+/srcgen1/prelude/DATS/bool000.dats", p1_d0eclsq1_dyn)
 //
 val
 (  ) =
@@ -172,7 +175,8 @@ prerrln("p1_fun_test(1)")
 val
 opt2 =
 p1_fun_test<d0eclist>
-("./../../../prelude/DATS/char000.dats", p1_d0eclsq1_dyn)
+("./../../..\
+/srcgen1/prelude/DATS/char000.dats", p1_d0eclsq1_dyn)
 //
 val
 (  ) =
@@ -181,11 +185,13 @@ prerrln("p1_fun_test(2)")
 val
 opt30 =
 p1_fun_test<d0eclist>
-("./../../../prelude/SATS/gint000.sats", p1_d0eclsq1_sta)
+("./../../..\
+/prelude/SATS/gint000.sats", p1_d0eclsq1_sta)
 val
 opt31 =
 p1_fun_test<d0eclist>
-("./../../../prelude/DATS/gint000.dats", p1_d0eclsq1_dyn)
+("./../../..\
+/srcgen1/prelude/DATS/gint000.dats", p1_d0eclsq1_dyn)
 //
 val (  ) =
 prerrln("p1_fun_test(3)")
@@ -193,11 +199,13 @@ prerrln("p1_fun_test(3)")
 val
 opt40 =
 p1_fun_test<d0eclist>
-("./../../../prelude/SATS/gseq000.sats", p1_d0eclsq1_sta)
+("./../../..\
+/prelude/SATS/gseq000.sats", p1_d0eclsq1_sta)
 val
 opt41 =
 p1_fun_test<d0eclist>
-("./../../../prelude/DATS/gseq000.dats", p1_d0eclsq1_dyn)
+("./../../..\
+/srcgen1/prelude/DATS/gseq000.dats", p1_d0eclsq1_dyn)
 //
 val (  ) =
 prerrln("p1_fun_test(4)")
@@ -205,11 +213,13 @@ prerrln("p1_fun_test(4)")
 val
 opt50 =
 p1_fun_test<d0eclist>
-("./../../../prelude/SATS/list000.sats", p1_d0eclsq1_sta)
+("./../../..\
+/prelude/SATS/list000.sats", p1_d0eclsq1_sta)
 val
 opt51 =
 p1_fun_test<d0eclist>
-("./../../../prelude/DATS/list000.dats", p1_d0eclsq1_dyn)
+("./../../..\
+/srcgen1/prelude/DATS/list000.dats", p1_d0eclsq1_dyn)
 //
 val (  ) =
 prerrln("p1_fun_test(5)")
@@ -217,40 +227,52 @@ prerrln("p1_fun_test(5)")
 val
 opt60 =
 p1_fun_test<d0eclist>
-("./../../../prelude/SATS/strm000.sats", p1_d0eclsq1_sta)
+("./../../..\
+/prelude/SATS/strm000.sats", p1_d0eclsq1_sta)
 val
 opt61 =
 p1_fun_test<d0eclist>
-("./../../../prelude/DATS/strm000.dats", p1_d0eclsq1_dyn)
+("./../../..\
+/srcgen1/prelude/DATS/strm000.dats", p1_d0eclsq1_dyn)
 //
 val (  ) =
 prerrln("p1_fun_test(6)")
 //
 val (  ) =
-prerrln("p1_fun_test(\"./../../../prelude/DATS/bool000.dats\") =\n", opt1)
+prerrln
+("p1_fun_test(\"./../../../srcgen1/prelude/DATS/bool000.dats\") =\n", opt1)
 //
 val (  ) =
-prerrln("p1_fun_test(\"./../../../prelude/DATS/char000.dats\") =\n", opt2)
+prerrln
+("p1_fun_test(\"./../../../srcgen1/prelude/DATS/char000.dats\") =\n", opt2)
 //
 val (  ) =
-prerrln("p1_fun_test(\"./../../../prelude/SATS/gint000.sats\") =\n", opt30)
+prerrln
+("p1_fun_test(\"./../../../prelude/SATS/gint000.sats\") =\n", opt30)
 val (  ) =
-prerrln("p1_fun_test(\"./../../../prelude/DATS/gint000.dats\") =\n", opt31)
+prerrln
+("p1_fun_test(\"./../../../srcgen1/prelude/DATS/gint000.dats\") =\n", opt31)
 //
 val (  ) =
-prerrln("p1_fun_test(\"./../../../prelude/SATS/gseq000.sats\") =\n", opt40)
+prerrln
+("p1_fun_test(\"./../../../prelude/SATS/gseq000.sats\") =\n", opt40)
 val (  ) =
-prerrln("p1_fun_test(\"./../../../prelude/DATS/gseq000.dats\") =\n", opt41)
+prerrln
+("p1_fun_test(\"./../../../srcgen1/prelude/DATS/gseq000.dats\") =\n", opt41)
 //
 val (  ) =
-prerrln("p1_fun_test(\"./../../../prelude/SATS/list000.sats\") =\n", opt50)
+prerrln
+("p1_fun_test(\"./../../../prelude/SATS/list000.sats\") =\n", opt50)
 val (  ) =
-prerrln("p1_fun_test(\"./../../../prelude/DATS/list000.dats\") =\n", opt51)
+prerrln
+("p1_fun_test(\"./../../../srcgen1/prelude/DATS/list000.dats\") =\n", opt51)
 //
 val (  ) =
-prerrln("p1_fun_test(\"./../../../prelude/SATS/strm000.sats\") =\n", opt60)
+prerrln
+("p1_fun_test(\"./../../../prelude/SATS/strm000.sats\") =\n", opt60)
 val (  ) =
-prerrln("p1_fun_test(\"./../../../prelude/DATS/strm000.dats\") =\n", opt61)
+prerrln
+("p1_fun_test(\"./../../../srcgen1/prelude/DATS/strm000.dats\") =\n", opt61)
 //
 (* ****** ****** *)
 //

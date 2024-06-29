@@ -1969,6 +1969,7 @@ prerrln//trans12
 *)
 //
 in//let
+//
 case+ sopt of
 | ~
 optn_vt_nil
@@ -1988,6 +1989,7 @@ tr12env_add1_f2env
  val () =
  (dres := S2TALOADfenv(fenv)) }
 |_(* non-S2ITMenv *) => ((*0*)))
+//
 endlet//end-of-[optn_cons(sym0)]
 //
 end (*let*) // end of [optn_nil()]

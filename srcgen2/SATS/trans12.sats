@@ -401,6 +401,11 @@ tr12env_add1_f2env
 ! tr12env
 , gsym: sym_t, fenv: f2env): void
 (* ****** ****** *)
+//
+fun
+f2envlst_find_g1mac
+(f2envlst, key:sym_t): g1macopt_vt
+//
 fun
 f2envlst_find_s2tex
 (f2envlst, key:sym_t): s2texopt_vt
@@ -410,6 +415,7 @@ f2envlst_find_s2itm
 fun
 f2envlst_find_d2itm
 (f2envlst, key:sym_t): d2itmopt_vt
+//
 (* ****** ****** *)
 //
 fun
@@ -442,6 +448,11 @@ tr12env_find_d2itm
 ! tr12env, key:sym_t): d2itmopt_vt
 //
 (* ****** ****** *)
+//
+fun
+tr12env_ofind_g1mac
+( env:
+! tr12env, key:sym_t): g1macopt_vt
 //
 fun
 tr12env_ofind_s2tex

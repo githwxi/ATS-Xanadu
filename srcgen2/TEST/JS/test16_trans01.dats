@@ -37,6 +37,8 @@
 "./../../DATS/xstamp0.dats"
 #include
 "./../../DATS/xstamp0_print0.dats"
+#include
+"./../../DATS/xstamp0_tmpmap.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/xsymbol.dats"
@@ -197,7 +199,7 @@ val
 dpar =
 d0parsed_from_fpath
 ( 1(*dyn*)
-, "./../../../prelude/DATS/bool000.dats")
+, "./../../../srcgen1/prelude/DATS/bool000.dats")
 val
 dpar = d0parsed_of_preadx0(dpar)
 val
@@ -207,7 +209,7 @@ val (  ) =
 prerrln
 ("\
 dparsed_from_fpath\
-(\"./../../../prelude/DATS/bool000.dats\") =\n", dpar)
+(\"./../../../srcgen1/prelude/DATS/bool000.dats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
@@ -215,7 +217,7 @@ val
 dpar =
 d0parsed_from_fpath
 ( 1(*dyn*)
-, "./../../../prelude/DATS/char000.dats")
+, "./../../../srcgen1/prelude/DATS/char000.dats")
 val
 dpar = d0parsed_of_preadx0(dpar)
 val
@@ -225,7 +227,7 @@ val (  ) =
 prerrln
 ("\
 d1parsed_from_fpath\
-(\"./../../../prelude/DATS/char000.dats\") =\n", dpar)
+(\"./../../../srcgen1/prelude/DATS/char000.dats\") =\n", dpar)
 //
 (* ****** ****** *)
 //

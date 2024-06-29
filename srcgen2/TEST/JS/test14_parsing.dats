@@ -35,6 +35,8 @@
 "./../../DATS/xstamp0.dats"
 #include
 "./../../DATS/xstamp0_print0.dats"
+#include
+"./../../DATS/xstamp0_tmpmap.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/xsymbol.dats"
@@ -159,7 +161,7 @@ opt1 =
 p1_fun_test<d0eclist>
 (
 "./../../..\
-/prelude/DATS/bool000.dats", p1_d0eclsq1_dyn)
+/srcgen1/prelude/DATS/bool000.dats", p1_d0eclsq1_dyn)
 val opt1 = preadx0(opt1, err) where { var err: sint = 0 }
 //
 val
@@ -171,7 +173,7 @@ opt2 =
 p1_fun_test<d0eclist>
 (
 "./../../..\
-/prelude/DATS/char000.dats", p1_d0eclsq1_dyn)
+/srcgen1/prelude/DATS/char000.dats", p1_d0eclsq1_dyn)
 val opt2 = preadx0(opt2, err) where { var err: sint = 0 }
 //
 val

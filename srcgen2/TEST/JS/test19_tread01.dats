@@ -43,6 +43,8 @@
 "./../../DATS/xstamp0.dats"
 #include
 "./../../DATS/xstamp0_print0.dats"
+#include
+"./../../DATS/xstamp0_tmpmap.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/xsymbol.dats"
