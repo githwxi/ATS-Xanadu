@@ -8,14 +8,17 @@ For ATS3/XATSOPT
 (* ****** ****** *)
 #staload
 "xatslib/libcats/SATS/libcats.sats"
+(* ****** ****** *)
 #staload
 "xatslib/libcats/SATS/synoug0.sats"
 (* ****** ****** *)
 #staload
-"xatslib/githwxi/SATS/genv000.sats"
+"srcgen1\
+/xatslib/githwxi/SATS/genv000.sats"
 (* ****** ****** *)
 #staload
-"srcgen1/xatslib/githwxi/SATS/githwxi.sats"
+"srcgen1\
+/xatslib/githwxi/SATS/githwxi.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 

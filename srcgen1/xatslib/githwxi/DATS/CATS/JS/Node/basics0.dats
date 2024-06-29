@@ -9,7 +9,8 @@ for Xats2js/Node
 /libcats/SATS/libcats.sats"
 (* ****** ****** *)
 #staload
-"xatslib\
+"srcgen1\
+/xatslib\
 /githwxi/SATS/githwxi.sats"
 (* ****** ****** *)
 //

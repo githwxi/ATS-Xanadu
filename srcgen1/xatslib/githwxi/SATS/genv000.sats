@@ -189,4 +189,4 @@ list_map_e2nv_vt
 //
 (* ****** ****** *)
 
-(* end of [xatslib_githwxi_genv000.sats] *)
+(* end of [srcgen1_xatslib_githwxi_SATS_genv000.sats] *)

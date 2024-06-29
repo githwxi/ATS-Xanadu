@@ -116,4 +116,4 @@ strn_rand_length
 //
 (* ****** ****** *)
 
-(* end of [xatslib_githwxi_SATS_githwxi.sats] *)
+(* end of [srcgen1_xatslib_githwxi_SATS_githwxi.sats] *)
