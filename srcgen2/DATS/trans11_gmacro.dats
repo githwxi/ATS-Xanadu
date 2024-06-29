@@ -101,7 +101,7 @@ g1env_nil
 ((*void*)): g1env = list_nil()
 //
 (* ****** ****** *)
-
+//
 fun
 g1env_addlst
 ( genv: g1env
@@ -129,7 +129,7 @@ list_cons(@(gid1, g1m1), genv) }
 )
 ) (*case+*)
 // end of [g1env_addlst(genv,...)]
-
+//
 (* ****** ****** *)
 //
 fun
@@ -148,6 +148,7 @@ if
 (x0 = x1)
 then optn_vt_cons(v1)
 else g1env_search_opt(genv, x0)))
+// end-[g1env_search_opt(genv, ...)]
 //
 (* ****** ****** *)
 
@@ -537,7 +538,7 @@ end (*let*) // end of [f0_gid0(env0,g1m0)]
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
-
+//
 #implfun
 trans11_g1mac
 ( env0, g1m0 ) =
@@ -551,9 +552,9 @@ prerrln("trans11_g1mac: g1m0 = ", g1m0)
 *)
 //
 } (*where*) // end of [trans11_g1mac(g1m0)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 trans11_g1mac_apps
 (env0, g1f0, g1ms) =
@@ -567,7 +568,7 @@ val () =
 prerrln("trans11_g1mac_apps: g1ms = ", g1ms)
 *)
 } (*where*) // end-(trans11_g1mac_apps(g1f0,g1ms))
-
+//
 (* ****** ****** *)
 
 end (*local*) // end of [local(trans11_g1mac/apps)]
@@ -756,7 +757,9 @@ end (*let*) // end of [f0_apps(...)]
 (* ****** ****** *)
 in(* in-of-local *)
 (* ****** ****** *)
-
+//
+(* ****** ****** *)
+//
 #implfun
 trans11_g1mac_subs
 (env0, g1m0, genv) =
@@ -773,7 +776,9 @@ prerrln
 ("trans11_g1mac_subs: env0 = ", env0)
 *)
 } (*where*) // end of [trans11_g1mac_subs]
-
+//
+(* ****** ****** *)
+//
 end (*local*) // end of [local(trans11_g1mac_subs)]
 
 (* ****** ****** *)
