@@ -4334,4 +4334,4 @@ x2imap$fopr
 } (*where*)//end-of-[gseq_x2imap_f4np_lstrm(...)]
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_gseq000.dats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_gseq000.dats] *)

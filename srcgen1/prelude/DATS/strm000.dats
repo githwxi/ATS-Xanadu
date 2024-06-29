@@ -1219,4 +1219,4 @@ gseq_itakeif_lstrm
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_strm000.dats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_strm000.dats] *)

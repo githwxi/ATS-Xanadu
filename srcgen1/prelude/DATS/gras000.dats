@@ -29,4 +29,4 @@ gras_rstrmize = gseq_rstrmize<xs><x0>
 *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_gras000.dats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_gras000.dats] *)

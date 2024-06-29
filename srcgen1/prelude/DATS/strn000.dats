@@ -846,4 +846,4 @@ end (*local*) // end of [local] // g/gseq-ops
 
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_strn000.dats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_strn000.dats] *)

@@ -1120,4 +1120,4 @@ gseq_x2foreach_c2fr<xs,ys><x0,y0>
 
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_tupl000.dats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_tupl000.dats] *)

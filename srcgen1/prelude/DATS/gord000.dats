@@ -193,4 +193,4 @@ then g_copy<a>(x) else g_copy<a>(y)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_gord000.dats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_DATS_gord000.dats] *)
