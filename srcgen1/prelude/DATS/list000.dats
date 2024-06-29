@@ -1020,15 +1020,15 @@ endlet // end of [list_cons(x0, xs)]
 (* ****** ****** *)
 //
 #impltmp
-{x0:t0}
-list_iforall<x0> =
+<x0>(*tmp*)
+list_iforall(xs) =
 (
-  loop(0(*i0*), xs)) where
+loop(0(*i0*), xs)) where
 {
 fnx
 loop
 ( i0: sint
-, xs: list(x0)): void =
+, xs: list(x0)): bool =
 (
 case+ xs of
 |
@@ -1048,10 +1048,10 @@ val test = iforall$test<x0>(i0, x1)}
 (* ****** ****** *)
 //
 #impltmp
-{x0:t0}
-list_iforeach<x0>(xs) =
+<x0>(*tmp*)
+list_iforeach(xs) =
 (
-  loop(0(*i0*), xs)) where
+loop(0(*i0*), xs)) where
 {
 fnx
 loop

@@ -12,6 +12,9 @@ XATSOPT=\
 PRELUDE=./../../prelude
 XATSLIB=./../../xatslib
 ######
+PRELUDE1=./../../srcgen1/prelude
+XATSLIB1=./../../srcgen1/xatslib
+######
 
 ######
 #
@@ -145,102 +148,102 @@ $(XATSOPT) -s $(PRELUDE)/SATS/VT/synoug0_vt.sats
 ######
 
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/gbas000.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/gbas000.dats
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/gnum000.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/gnum000.dats
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/gord000.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/gord000.dats
 
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/bool000.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/bool000.dats
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/char000.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/char000.dats
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/gint000.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/gint000.dats
 
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/gfor000.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/gfor000.dats
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/gfun000.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/gfun000.dats
 
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/gseq000.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/gseq000.dats
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/gseq001.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/gseq001.dats
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/gras000.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/gras000.dats
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/gmap000.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/gmap000.dats
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/gseqn00.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/gseqn00.dats
 
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/genv000.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/genv000.dats
 
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/arrn000.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/arrn000.dats
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/arrn001.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/arrn001.dats
 
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/strn000.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/strn000.dats
 
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/list000.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/list000.dats
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/optn000.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/optn000.dats
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/strm000.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/strm000.dats
 
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/rand000.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/rand000.dats
 
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/tupl000.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/tupl000.dats
 
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/excptn0.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/excptn0.dats
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/synoug0.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/synoug0.dats
 
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/unsafex.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/unsafex.dats
 
 ######
 
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/VT/gseq000_vt.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/VT/gseq000_vt.dats
 
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/VT/arrn000_vt.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/VT/arrn000_vt.dats
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/VT/arrn001_vt.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/VT/arrn001_vt.dats
 
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/VT/strn000_vt.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/VT/strn000_vt.dats
 
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/VT/list000_vt.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/VT/list000_vt.dats
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/VT/optn000_vt.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/VT/optn000_vt.dats
 
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/VT/strm000_vt.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/VT/strm000_vt.dats
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/VT/strm001_vt.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/VT/strm001_vt.dats
 
 all_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/VT/synoug0_vt.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/VT/synoug0_vt.dats
 
 ######
 
 all_TEST:: ; \
-$(XATSOPT) -d $(PRELUDE)/TEST/list000_test000.dats
+$(XATSOPT) -d $(PRELUDE1)/TEST/list000_test000.dats
 
 ######
 
 all_CC_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/CATS/CC/basics0.dats
+$(XATSOPT) -d $(PRELUDE1)/DATS/CATS/CC/basics0.dats
 
 ######
 

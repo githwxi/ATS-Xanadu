@@ -8,9 +8,11 @@ UN = // for casting
 "prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 #staload _ = 
-"prelude/DATS/strm000.dats"
+"srcgen1\
+/prelude/DATS/strm000.dats"
 #staload _ = 
-"prelude/DATS/VT/strm000_vt.dats"
+"srcgen1\
+/prelude/DATS/VT/strm000_vt.dats"
 (* ****** ****** *)
 (*
 #implfun
