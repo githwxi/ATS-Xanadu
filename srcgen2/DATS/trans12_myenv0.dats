@@ -304,11 +304,13 @@ let
 val opt =
 topmap_search_opt(topmap, k0)
 in//let
+(
 case+ opt of
 | // keep
 optn_vt_cons _ => opt
 | ~ // free
 optn_vt_nil((*0*))=>the_sortenv_pvsfind(k0)
+)
 endlet//end-of-[opt_vt_nil()]
 //
 endlet//end-of-[sortenv_search_opt(tenv,k0)]
@@ -562,11 +564,13 @@ let
 val opt =
 topmap_search_opt(topmap, k0)
 in//let
+(
 case+ opt of
 | // keep
 optn_vt_cons _ => opt
 | ~ // free
 optn_vt_nil((*0*))=>the_sexpenv_pvsfind(k0)
+)
 endlet//end-of-[opt_vt_nil()]
 //
 endlet//end-of-[sexpenv_search_opt(senv,k0)]
@@ -822,7 +826,8 @@ case+ opt of
 optn_vt_cons _ => opt
 | ~ // free
 optn_vt_nil( ) =>
-topmap_search_opt(topmap, k0)
+(
+  topmap_search_opt(topmap, k0))
 //
 endlet
 //end-of-[dexpenv_search_opt(denv,k0)]

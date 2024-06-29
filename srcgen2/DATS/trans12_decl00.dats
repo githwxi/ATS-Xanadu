@@ -894,7 +894,16 @@ D1Cdefine
 val sym0 = gexpid_sym(gid0)
 //
 val
-def1 = trans11_gmdef(gmas, def1)
+def1 =
+(
+  trans11_gmdef(gmas, def1))
+//
+val () =
+prerrln
+("f0_define(12): sym0 = ", sym0)
+val () =
+prerrln
+("f0_define(12): def1 = ", def1)
 //
 val () =
 tr12env_add0_g1mac(env0, sym0, def1)
@@ -1962,9 +1971,11 @@ prerrln//trans12
 in//let
 case+ sopt of
 | ~
-optn_vt_nil() => ()
+optn_vt_nil
+ ((*void*)) => ()
 | ~
-optn_vt_cons(s2i0) =>
+optn_vt_cons
+ (  s2i0  ) =>
 (
 case+ s2i0 of
 |S2ITMenv(envs) =>

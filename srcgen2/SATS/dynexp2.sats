@@ -1769,6 +1769,9 @@ f2env_of_d2parsed
 ( dpar:d2parsed ): f2env
 //
 fun
+f2env_get_g1macenv
+(fenv:f2env): $MAP.topmap(g1mac)
+fun
 f2env_get_sort2env
 (fenv:f2env): $MAP.topmap(s2tex)
 fun
@@ -1778,6 +1781,8 @@ fun
 f2env_get_d2expenv
 (fenv:f2env): $MAP.topmap(d2itm)
 //
+#symload
+g1macenv with f2env_get_g1macenv
 #symload
 sort2env with f2env_get_sort2env
 #symload
