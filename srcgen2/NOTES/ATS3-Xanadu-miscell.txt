@@ -1,0 +1,61 @@
+########################################################################
+########################################################################
+#
+# Miscellaneous notes on
+# ATS3/Xanadu design and implementation
+#
+########################################################################
+########################################################################
+
+(*
+HX-2024-06-29
+Sat 29 Jun 2024 07:04:40 PM EDT
+*)
+
+I have long thought about writing a definitive book (or even several
+books) on ATS. There is certainly a lot to write about. And I need to
+get started ASAP.
+
+This file acts like a bag for collecting miscellaneous notes on ATS,
+which will later be processed to produce proper book contents.
+
+########################################################################
+########################################################################
+
+(*
+Sat 29 Jun 2024 08:11:02 PM EDT
+*)
+
+My early experience on programming:
+
+In 1984, I took a programming class on Algol 60 when I was a junior at
+Nanjing University, China. This was my first exposure to programming
+on a real computer. Please note that each of us in the class could
+have access to a real computer for only ONE hour during the entire
+semester. Basically, we had to write code on paper and double-check it
+before typing the code into a computer. I can now remember very little
+about what I learned in the class except for the fact that I did enjoy
+programming HUGELY. I voluntarily did homework for some of my
+classmates so that I could use their alloted computer time. However,
+after the programming class, I did not get a chance to continue
+programming. I switched back to studying mathematical logic.
+
+As far as programming is of the concern, I did practically next to
+nothing between 1985 and 1990. I suppose I learned a little bit about
+Pascal and Basic, though.
+
+I moved to Shanghai Jiao Tong University in 1988. I started to learn C
+around 1990. I used Turbo C (running on MS-DOS) for learning C, which
+was a popular integrated development environment (IDE) and compiler
+for the C programming language from Borland.
+
+########################################################################
+########################################################################
+
+(*
+Sat 29 Jun 2024 08:11:20 PM EDT
+*)
+The overall implementation of ATS3/Xanadu
+
+########################################################################
+########################################################################
