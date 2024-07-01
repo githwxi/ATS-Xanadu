@@ -388,4 +388,4 @@ list_fperr22_fnp(out, d2fs, fperr22_d2fundcl)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_fperr22_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_fperr22_decl00.dats] *)

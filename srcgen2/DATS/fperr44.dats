@@ -131,4 +131,4 @@ optn_cons(dcls) => fperr44_d4eclist(out, dcls)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_fperr44.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_fperr44.dats] *)

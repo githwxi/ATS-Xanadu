@@ -437,4 +437,4 @@ end (*local*) // end of [local(fsrch_dirsbase)]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_filpath_search.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_filpath_search.dats] *)

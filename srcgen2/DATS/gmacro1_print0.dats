@@ -111,4 +111,4 @@ end (*let*) // end of [ g1mac_fprint(out,g1m0) ]
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_gmacro1_print0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_gmacro1_print0.dats] *)

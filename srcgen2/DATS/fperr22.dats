@@ -130,4 +130,4 @@ optn_cons(d2cs) => fperr22_d2eclist(out, d2cs)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_fperr22.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_fperr22.dats] *)

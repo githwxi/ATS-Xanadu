@@ -186,4 +186,4 @@ list_fperr44_fnp(out, d4fs, fperr44_d4fundcl))
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_fperr44_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_fperr44_decl00.dats] *)
