@@ -239,7 +239,7 @@ case+ 0 of
 | _ when(ch = '\}') => T_RBRACE()
 //
 | _ (* otherwise *) => T_EOF(*nil*)
-end (*let*) // end of [char2node]
+end (*let*) // end of [char2node(ch)]
 
 (* ****** ****** *)
 
