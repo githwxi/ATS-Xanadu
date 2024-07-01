@@ -72,6 +72,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trans34.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 #symload stmp with s2cst_get_stmp
 #symload stmp with s2var_get_stmp
 (* ****** ****** *)
@@ -80,6 +81,7 @@ ATS_PACKNAME
 #symload stmp with d2con_get_stmp
 #symload stmp with d2cst_get_stmp
 #symload stmp with d2var_get_stmp
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp

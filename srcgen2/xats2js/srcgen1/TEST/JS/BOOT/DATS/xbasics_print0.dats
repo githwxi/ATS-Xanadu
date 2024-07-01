@@ -34,22 +34,19 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-(* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
-(* ****** ****** *)
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
-(* ****** ****** *)
 #staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
 (* ****** ****** *)
-//
+
 #implfun
 //<>(*tmp*)
 dctkind_fprint
@@ -76,9 +73,10 @@ DCKnspec() => print("DCKnspec")
 {
   #impltmp g_print$out<>() = out
 }(*where*)//end-of(dctkind_fprint)
-//
+
 (* ****** ****** *)
-//
+(* ****** ****** *)
+
 #implfun
 //<>(*tmp*)
 valkind_fprint
@@ -100,9 +98,10 @@ case+ vlk of
 | VLKprval() => print("VLKprval")
 //
 end(*let*)//end-of(valkind_fprint)
-//
+
 (* ****** ****** *)
-//
+(* ****** ****** *)
+
 #implfun
 //<>(*tmp*)
 varkind_fprint
@@ -116,9 +115,9 @@ case+ vrk of
 | VRKvar() => print( "VAKvar" )
 //
 end(*let*)//end-of(varkind_fprint)
-//
+
 (* ****** ****** *)
-//
+
 #implfun
 //<>(*tmp*)
 funkind_fprint
@@ -144,9 +143,10 @@ case+ fnk of
 | FNKfcast() => print("FNKfcast")
 //
 end(*let*)//end-of(funkind_fprint)
-//
+
 (* ****** ****** *)
-//
+(* ****** ****** *)
+
 #implfun
 //<>(*tmp*)
 caskind_fprint
@@ -167,9 +167,10 @@ case+ csk of
 | CSKcasn() => print( "CSKcasn" )
 //
 end(*let*)//end-of(caskind_fprint)
-//
+
 (* ****** ****** *)
-//
+(* ****** ****** *)
+
 #implfun
 //<>(*tmp*)
 implknd_fprint
@@ -189,9 +190,10 @@ case+ knd of
 | IMPLtmpr() => print( "IMPLtmpr" )
 //
 end(*let*)//end-of(implknd_fprint)
-//
+
 (* ****** ****** *)
-//
+(* ****** ****** *)
+
 #implfun
 //<>(*tmp*)
 f2clknd_fprint
@@ -214,10 +216,10 @@ case+ f2cl of
     print( "F2CLclo(", knd, ")" )
 //
 end(*let*)//end-of(f2clknd_fprint)
-//
+
 (* ****** ****** *)
 (* ****** ****** *)
-//
+
 #implfun
 //<>(*tmp*)
 trcdknd_fprint
@@ -246,8 +248,7 @@ TRCDflt2
 *)
 //
 end(*let*)//end-of(trcdknd_fprint(out,tknd))
-//
-(* ****** ****** *)
+
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_xbasics_print0.dats] *)

@@ -67,10 +67,8 @@ tr3cenv_timp_process
 (
 case+
 timp.node() of
-|
-TIMPLallx _ => timp
-|
-TIMPLall1 _ =>
+|TIMPLallx _ => timp
+|TIMPLall1 _ =>
 (
 if
 nimp >= NIMP
@@ -84,13 +82,17 @@ then timp else
 val NIMP = 10
 *)
 val NIMP = 99//FIXME?!
+val nimp = tr3cenv_getnimp(env0)
 //
-val nimp =
-(
-  tr3cenv_getnimp(env0))
-}
+(*
+val (  ) =
+prerrln(
+"tr3cenv_timp_process: nimp = ", nimp)
+*)
 //
-) where // end-of-(case+)
+}//whr//end-of-[ TIMPLall1(...) ]
+//
+) where//end-of-(case-of(timp.node()))
 {
 //
 fun
@@ -151,11 +153,11 @@ end//let
 end//let//end-of-[list_cons( ... )]
 end//let//end-of-[f0_all1(env0,timp)]
 //
+(*
 val () =
-// (*
 prerrln
 ("tr3cenv_timp_process: timp = ", timp)
-// *)
+*)
 //
 }(*where*)//end-of-[tr3cenv_timp_process]
 //
@@ -331,19 +333,18 @@ dcl1.node() of
 (
   d3ecl_tmpsub(tsub,dcl1) ) )
 //
-// (*
+(*
 val (  ) =
-prerr
-("tr3cenv_tapq_resolve:")
+prerr("tr3cenv_tapq_resolve:")
 val (  ) =
-prerrln
-("implfilter: dcl1 = ", dcl1)
-// *)
+prerrln("implfilter: dcl1 = ", dcl1)
+*)
 //
 in//let
-list_vt_cons(dcl1, implfilter(dcls))
+(
+list_vt_cons(dcl1, implfilter(dcls)))
 end//let
-end//let // end-of-[ list_cons(...) ]
+end//let // end-of-[list_vt_cons(...)]
 //
 )(*case+*) // end of [implfilter(dcls)]
 //
@@ -387,11 +388,13 @@ else impltmprec(env0, dcls))
 //
 val
 test = // test: stamp
-tr3cenv_impltmprecq(env0, dcl1, t2js)
-//
-val () =
 (
- prerrln("impltmprec: test = ", test) )
+tr3cenv_impltmprecq(env0,dcl1,t2js))
+//
+(*
+val () =
+prerrln("impltmprec: test = ", test)
+*)
 //
 }(*where*) // end of [ list_cons(...) ]
 //
@@ -401,12 +404,14 @@ val () =
 //
 } where {
 //
+(*
 val () =
 prerrln
 ("tr3cenv_tapq_resolve: d2c0 = ", d2c0)
 val () =
 prerrln
 ("tr3cenv_tapq_resolve: t2js = ", t2js)
+*)
 //
 (*
 HX:
@@ -423,20 +428,24 @@ guarantees [svts] to exist
 val
 svts = tr3cenv_getsvts(env0)//val(svts) 
 //
+(*
 val () =
 prerrln
 ("tr3cenv_tapq_resolve: stmp = ", stmp)
 val () =
 prerrln
 ("tr3cenv_tapq_resolve: svts = ", svts)
+*)
 //
 val t2js =
 (
  t2jaglst_subst0(t2js, svts))//val(t2js)
 //
+(*
 val () =
-prerrln
-("tr3cenv_tapq_resolve: t2js = ", t2js)
+(prerrln
+ ("tr3cenv_tapq_resolve: t2js = ", t2js))
+*)
 //
 val dcls =
 (

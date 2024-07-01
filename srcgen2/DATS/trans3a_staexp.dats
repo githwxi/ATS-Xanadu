@@ -115,6 +115,8 @@ f0_lft(env0, t2p0)
 //
 |T2Ptrcd _ => f0_trcd(env0, t2p0)
 //
+|T2Pnone0 _ => f0_none0(env0, t2p0)
+|T2Pnone1 _ => f0_none1(env0, t2p0)
 |T2Ps2exp _ => f0_s2exp(env0, t2p0)
 //
 |
@@ -409,6 +411,16 @@ end(*let*)//end-of-[ f0_trcd(env0,t2p0) ]
 //
 (* ****** ****** *)
 //
+fun
+f0_none0
+( env0:
+! tr3aenv
+, t2p0: s2typ): s2typ = t2p0 // end-of-fun
+fun
+f0_none1
+( env0:
+! tr3aenv
+, t2p0: s2typ): s2typ = t2p0 // end-of-fun
 fun
 f0_s2exp
 ( env0:

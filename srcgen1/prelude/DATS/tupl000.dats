@@ -1,7 +1,9 @@
 (* ****** ****** *)
+(* ****** ****** *)
 (*
 ** for tuples
 *)
+(* ****** ****** *)
 (* ****** ****** *)
 #impltmp<>
 t0up_print$beg()=strn_print("@(")
@@ -18,6 +20,7 @@ t0up_print$sep() = strn_print(",")
 #impltmp<>
 t1up_print$sep() = strn_print(",")
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX-2022-07-03
@@ -25,6 +28,7 @@ g_print for flat-tuples
 Sun Jul  3 22:18:42 EDT 2022
 *)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -297,6 +301,7 @@ val () = t0up_print$end((*nil*))
 end // end of [g_print<t0up10>(tup)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX-2022-07-03:
@@ -304,6 +309,7 @@ Sun Jul  3 22:18:42 EDT 2022
 gl_print for flat/boxed tuples
 *)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -318,6 +324,7 @@ val () = gl_print1<a0>(tup.0)
 val () = t1up_print$end((*nil*))
 end // end of [gl_print1<t1up1>(tup)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -350,6 +357,7 @@ val () = gl_print1<a1>(tup.1)
 val () = t1up_print$end((*nil*))
 end // end of [gl_print1<t1up2>(tup)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -391,6 +399,7 @@ val () = t1up_print$end((*nil*))
 end // end of [gl_print1<t1up3>(tup)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 {a0:vt
@@ -412,7 +421,7 @@ val () = gl_print1<a2>(tup.2)
 val () = t0up_print$sep()
 val () = gl_print1<a3>(tup.3)
 val () = t0up_print$end((*nil*))
-end // end of [gl_print1<t0up3>(tup)]
+end // end of [gl_print1<t0up4>(tup)]
 //
 #impltmp
 {a0:vt
@@ -434,8 +443,9 @@ val () = gl_print1<a2>(tup.2)
 val () = t1up_print$sep()
 val () = gl_print1<a3>(tup.3)
 val () = t1up_print$end((*nil*))
-end // end of [gl_print1<t1up3>(tup)]
+end // end of [gl_print1<t1up4>(tup)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp

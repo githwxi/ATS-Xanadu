@@ -28,14 +28,8 @@
 (* ****** ****** *)
 (*
 ** for flat tuples
-** for boxed tuples
+** for boxd tuples
 *)
-(* ****** ****** *)
-//
-// Author: Hongwei Xi
-// (Around some time in 2022)
-// Authoremail: gmhwxiATgmailDOTcom
-//
 (* ****** ****** *)
 (*
 // HX-2023-08-06:
@@ -45,6 +39,12 @@
 // (Change: $(...) -> #(...))
 // Sun Aug  6 19:45:40 EDT 2023
 *)
+(* ****** ****** *)
+//
+// Author: Hongwei Xi
+// (Around some time in 2022)
+// Authoremail: gmhwxiATgmailDOTcom
+//
 (* ****** ****** *)
 //
 (*
@@ -170,19 +170,19 @@ t1up10
 ,a8:vt,a9:vt) = $tup(a0,a1,a2,a3,a4,a5,a6,a7,a8,a9)
 (* ****** ****** *)
 fun<>
-t0up_print$beg(): void // print("@(") // flat-tupl
+t0up_print$beg(): void // print("@(") // flat-tuple
 fun<>
-t1up_print$beg(): void // print("#(") // boxd-tupl
+t1up_print$beg(): void // print("#(") // boxd-tuple
 (* ****** ****** *)
 fun<>
-t0up_print$end(): void // print (")" ) // flat-tupl
+t0up_print$end(): void // print (")" ) // flat-tuple
 fun<>
-t1up_print$end(): void // print( ")" ) // boxd-tupl
+t1up_print$end(): void // print( ")" ) // boxd-tuple
 (* ****** ****** *)
 fun<>
-t0up_print$sep(): void // print( "," ) // flat-tupl
+t0up_print$sep(): void // print( "," ) // flat-tuple
 fun<>
-t1up_print$sep(): void // print( "," ) // boxd-tupl
+t1up_print$sep(): void // print( "," ) // boxd-tuple
 (* ****** ****** *)
 fun
 <a0:t0>

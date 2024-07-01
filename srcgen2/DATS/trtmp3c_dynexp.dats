@@ -45,14 +45,17 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-//
-#staload
-_(*Trtmp3c*) = "./trtmp3c.dats"
-//
 (* ****** ****** *)
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
 #staload "./../SATS/trtmp3c.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
+_(* TRTMP3C *) = "./trtmp3c.dats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 #symload lctn with d3exp_get_lctn
 #symload node with d3exp_get_node
@@ -62,6 +65,7 @@ _(*Trtmp3c*) = "./trtmp3c.dats"
 (* ****** ****** *)
 #symload lctn with d3cls_get_lctn
 #symload node with d3cls_get_node
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun

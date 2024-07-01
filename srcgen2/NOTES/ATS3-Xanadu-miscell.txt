@@ -57,5 +57,17 @@ Sat 29 Jun 2024 08:11:20 PM EDT
 *)
 The overall implementation of ATS3/Xanadu
 
+lexing0: lexing is implemented manually. Nothing special. Just a lot of
+mutually recursively defined functions.
+
+parsing: parsing is implemented manually. Nothing special. Just a lot of
+mutually recursively defined functions.
+
+There are two official file name extensions in use: 'sats' and 'dats',
+where 's' and 'd' mean 'static' and 'dynamic', respectively.
+
+Other file name extensions (e.g., cats and hats) are conventional; they
+are not enforced by the parser for ATS3/Xanadu.
+
 ########################################################################
 ########################################################################
