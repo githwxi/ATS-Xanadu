@@ -126,4 +126,4 @@ end (*local*) // end of [local]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_filpath_fpath0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_filpath_fpath0.dats] *)

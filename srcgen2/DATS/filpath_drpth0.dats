@@ -149,4 +149,4 @@ end (*local*) // end of [the_drpth/the_drpthlst]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_filpath_drpth0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_filpath_drpth0.dats] *)

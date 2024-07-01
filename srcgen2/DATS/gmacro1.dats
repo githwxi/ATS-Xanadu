@@ -269,4 +269,4 @@ list_map<x0><y0>(d1es)) where
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_gmacro1.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_gmacro1.dats] *)
