@@ -495,4 +495,4 @@ token_fprint
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_lexing0_print0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_lexing0_print0.dats] *)

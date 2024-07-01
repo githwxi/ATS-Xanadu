@@ -292,4 +292,4 @@ strmcon_vt_cons
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_lexbuf0_cstrx1.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_lexbuf0_cstrx1.dats] *)

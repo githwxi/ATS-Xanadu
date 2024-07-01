@@ -623,4 +623,4 @@ end (*local*) // end of [local(the_s2typ_excptn)]
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_statyp2_inits0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_statyp2_inits0.dats] *)

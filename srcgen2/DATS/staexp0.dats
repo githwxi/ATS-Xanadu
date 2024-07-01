@@ -834,4 +834,4 @@ endloc (*local*) // end of [ local ]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_staexp0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_staexp0.dats] *)

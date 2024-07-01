@@ -717,4 +717,4 @@ end (*let*)
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_statyp2_utils1.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_statyp2_utils1.dats] *)

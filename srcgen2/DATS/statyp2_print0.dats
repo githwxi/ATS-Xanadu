@@ -196,4 +196,4 @@ end (*let*) // end of [s2typ_fprint(out,t2p0)]
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_statyp2_print0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_statyp2_print0.dats] *)

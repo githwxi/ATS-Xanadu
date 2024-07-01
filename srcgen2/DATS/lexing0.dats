@@ -144,4 +144,4 @@ endlet // end of [fpath_tokenize(fpath)]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_lexing0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_lexing0.dats] *)

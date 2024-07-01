@@ -1986,4 +1986,4 @@ end (*local*) // end of [match00_s2typ_e1nv]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_statyp2_tmplib.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_statyp2_tmplib.dats] *)

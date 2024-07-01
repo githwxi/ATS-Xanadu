@@ -392,4 +392,4 @@ end (*let*) // end of [s2itm_fprint(out, s2i0)]
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_staexp2_print0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_staexp2_print0.dats] *)

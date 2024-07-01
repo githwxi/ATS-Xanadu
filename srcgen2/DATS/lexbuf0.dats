@@ -52,4 +52,4 @@ HX-2024-07-01: It is yet to be used!!!
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_lexbuf0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_lexbuf0.dats] *)

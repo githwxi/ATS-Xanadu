@@ -85,4 +85,4 @@ end(*let*)//end-of(d0parsed_from_fpath)
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_parsing.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_parsing.dats] *)

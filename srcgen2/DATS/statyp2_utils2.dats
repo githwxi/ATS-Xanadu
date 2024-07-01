@@ -142,4 +142,4 @@ map$fopr<x0><y0>(x0) = s2typ_subst0(x0, svts)
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_statyp2_utils2.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_statyp2_utils2.dats] *)

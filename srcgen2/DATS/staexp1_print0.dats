@@ -662,4 +662,4 @@ end (*let*) // end of [d1typ_fprint(out,dtyp)]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_staexp1_print0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_staexp1_print0.dats] *)

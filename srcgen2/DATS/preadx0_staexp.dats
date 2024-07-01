@@ -1888,4 +1888,4 @@ endlet // end of [l0s0e_RBRACE_cons1]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_preadx0_staexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_preadx0_staexp.dats] *)

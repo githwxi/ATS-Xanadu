@@ -1705,4 +1705,4 @@ l2s2e_get_node
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_staexp2.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_staexp2.dats] *)
