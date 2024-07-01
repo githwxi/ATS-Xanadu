@@ -2231,4 +2231,4 @@ list_trans01_fnp(tenv, d0ts, trans01_d0typ))
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans01_staexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trans01_staexp.dats] *)

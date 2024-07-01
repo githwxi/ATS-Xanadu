@@ -2183,4 +2183,4 @@ trans01_d0eclistopt
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans01_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trans01_decl00.dats] *)
