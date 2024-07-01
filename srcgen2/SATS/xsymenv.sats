@@ -64,4 +64,4 @@ symenv_make_nil
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xats_xsymenv.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_xsymenv.sats] *)

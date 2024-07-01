@@ -195,4 +195,4 @@ fun tread33_d3explstopt: ftread33(d3explstopt)
 fun tread33_d3eclistopt: ftread33(d3eclistopt)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_tread33.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_tread33.sats] *)

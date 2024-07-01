@@ -227,4 +227,4 @@ stkmap_insmix_kxs
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_xsymmap.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_xsymmap.sats] *)

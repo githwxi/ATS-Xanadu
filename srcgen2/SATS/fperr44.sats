@@ -168,4 +168,4 @@ fperr44_d4eclistopt(FILR, d4eclistopt): void
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_fperr44.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_fperr44.sats] *)

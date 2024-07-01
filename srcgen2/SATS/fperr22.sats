@@ -183,4 +183,4 @@ fperr22_d2eclistopt(FILR, d2eclistopt): void
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_fperr22.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_fperr22.sats] *)

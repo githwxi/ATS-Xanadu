@@ -271,4 +271,4 @@ match2a_d2ptmlst
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trsym2b.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_trsym2b.sats] *)

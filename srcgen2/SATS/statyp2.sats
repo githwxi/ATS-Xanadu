@@ -523,4 +523,4 @@ s2typ_substx_e1nv
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_statyp2.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_statyp2.sats] *)

@@ -1003,4 +1003,4 @@ d0typ_make_node
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_staexp0.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_staexp0.sats] *)

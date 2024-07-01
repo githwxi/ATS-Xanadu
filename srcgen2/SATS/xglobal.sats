@@ -349,4 +349,4 @@ the_dexpenv_allist_add0(sym_t, d2itm): void
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_xglobal.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_xglobal.sats] *)

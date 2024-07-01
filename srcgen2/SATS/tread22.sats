@@ -229,4 +229,4 @@ fun tread22_d2explstopt: ftread22(d2explstopt)
 fun tread22_d2eclistopt: ftread22(d2eclistopt)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_tread22.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_tread22.sats] *)

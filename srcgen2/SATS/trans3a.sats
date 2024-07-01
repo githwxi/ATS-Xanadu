@@ -493,4 +493,4 @@ trans3a_d3eclistopt
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans3a.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_trans3a.sats] *)

@@ -408,4 +408,4 @@ tr3benv_tapq_resolve
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trtmp3b.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_trtmp3b.sats] *)

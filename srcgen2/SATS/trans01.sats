@@ -827,4 +827,4 @@ d1parsed_from_fpath
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans01.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_trans01.sats] *)
