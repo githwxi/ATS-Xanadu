@@ -654,4 +654,4 @@ trans2a_f2arglst_elim
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans2a.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_trans2a.sats] *)

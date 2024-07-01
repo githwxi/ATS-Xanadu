@@ -122,4 +122,4 @@ tmpmap_insert_any
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_xstamp0.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_xstamp0.sats] *)

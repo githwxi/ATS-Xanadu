@@ -432,4 +432,4 @@ fpath_tokenize(fpx:strn): list_vt(token)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_lexing0.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_lexing0.sats] *)

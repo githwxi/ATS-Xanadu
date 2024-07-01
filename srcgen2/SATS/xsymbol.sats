@@ -239,4 +239,4 @@ TOP1_VT_T0_symbl: symbl //=symbl("top1_vt_t0")
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_xsymbol.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_xsymbol.sats] *)

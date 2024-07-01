@@ -154,4 +154,4 @@ fprint_loctn_as_stamp: (FILR, loctn) -> void
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_locinfo.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_locinfo.sats] *)

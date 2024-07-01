@@ -216,4 +216,70 @@ BUILD/JS/lexing0_utils2_dats.js: ; \
 $(NODE) ./../test12_xats2js_dats.js \
 DATS/lexing0_utils2.dats 2>/dev/null 1>BUILD/JS/lexing0_utils2_dats.js
 ############################################################
+all:: \
+BUILD/JS/staexp0_dats.js
+BUILD/JS/staexp0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/staexp0.dats 2>/dev/null 1>BUILD/JS/staexp0_dats.js
+############################################################
+all:: \
+BUILD/JS/staexp0_print0_dats.js
+BUILD/JS/staexp0_print0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/staexp0_print0.dats 2>/dev/null 1>BUILD/JS/staexp0_print0_dats.js
+############################################################
+all:: \
+BUILD/JS/dynexp0_dats.js
+BUILD/JS/dynexp0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/dynexp0.dats 2>/dev/null 1>BUILD/JS/dynexp0_dats.js
+############################################################
+all:: \
+BUILD/JS/dynexp0_print0_dats.js
+BUILD/JS/dynexp0_print0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/dynexp0_print0.dats 2>/dev/null 1>BUILD/JS/dynexp0_print0_dats.js
+############################################################
+all:: \
+BUILD/JS/parsing_dats.js
+BUILD/JS/parsing_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/parsing.dats 2>/dev/null 1>BUILD/JS/parsing_dats.js
+############################################################
+all:: \
+BUILD/JS/parsing_basics_dats.js
+BUILD/JS/parsing_basics_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/parsing_basics.dats 2>/dev/null 1>BUILD/JS/parsing_basics_dats.js
+############################################################
+all:: \
+BUILD/JS/parsing_tokbuf_dats.js
+BUILD/JS/parsing_tokbuf_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/parsing_tokbuf.dats 2>/dev/null 1>BUILD/JS/parsing_tokbuf_dats.js
+############################################################
+all:: \
+BUILD/JS/parsing_utils0_dats.js
+BUILD/JS/parsing_utils0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/parsing_utils0.dats 2>/dev/null 1>BUILD/JS/parsing_utils0_dats.js
+############################################################
+all:: \
+BUILD/JS/parsing_staexp_dats.js
+BUILD/JS/parsing_staexp_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/parsing_staexp.dats 2>/dev/null 1>BUILD/JS/parsing_staexp_dats.js
+############################################################
+all:: \
+BUILD/JS/parsing_dynexp_dats.js
+BUILD/JS/parsing_dynexp_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/parsing_dynexp.dats 2>/dev/null 1>BUILD/JS/parsing_dynexp_dats.js
+############################################################
+all:: \
+BUILD/JS/parsing_decl00_dats.js
+BUILD/JS/parsing_decl00_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/parsing_decl00.dats 2>/dev/null 1>BUILD/JS/parsing_decl00_dats.js
+############################################################
 ############################################################

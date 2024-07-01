@@ -65,4 +65,4 @@ the_nmspace_cfrfind{a:tbox}
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_nmspace.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_nmspace.sats] *)

@@ -270,4 +270,4 @@ trans11_g1mac_apps
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_gmacro1.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_gmacro1.sats] *)

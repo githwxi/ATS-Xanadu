@@ -239,4 +239,4 @@ d3eclistopt_fpemsg(FILR, d3eclistopt): void
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_tread23.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_tread23.sats] *)

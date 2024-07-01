@@ -118,4 +118,4 @@ d3parsed_of_trans03(dpar: d0parsed): d3parsed
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_xatsopt.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_xatsopt.sats] *)
