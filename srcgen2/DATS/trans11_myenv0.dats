@@ -286,4 +286,4 @@ end (*local*) // end of [local(tr11env)]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans11_myenv0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trans11_myenv0.dats] *)

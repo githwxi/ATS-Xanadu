@@ -783,4 +783,4 @@ end (*local*) // end of [local(trans11_g1mac_subs)]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans11_gmacro.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trans11_gmacro.dats] *)
