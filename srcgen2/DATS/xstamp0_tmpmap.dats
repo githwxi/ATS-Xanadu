@@ -77,7 +77,8 @@ XATS2JS_jsobjmap_make_nil<key>()
 (* ****** ****** *)
 //
 #implfun
-tmpmap_strmize{itm}(map) =
+tmpmap_strmize
+  {itm:tbox}(map) =
 (
 gmap_strmize<gmap><key,itm>(map)
 ) where
@@ -88,7 +89,7 @@ gmap_strmize<gmap><key,itm>(map)
 //
 #implfun
 tmpmap_search_opt
-  {itm}(map, key) =
+  {itm:tbox}(map,key) =
 let
 //
 val key = g0u2s(uint(key))
@@ -103,8 +104,7 @@ end (*let*) // end of [tmpmap_search_opt(...)]
 //
 #implfun
 tmpmap_insert_any
-  {itm}
-  (map, key, itm) =
+{itm:tbox}(map,key,itm) =
 let
 //
 val key = g0u2s(uint(key))
