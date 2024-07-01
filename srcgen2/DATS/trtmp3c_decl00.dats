@@ -312,14 +312,14 @@ D3Cfundclst
 , tqas
 , d3cs, d3fs) = d3cl.node()
 //
-// (*
+(*
 val () =
 prerrln
 ("f0_fundclst(3c): loc0 = ", loc0)
 val () =
 prerrln
 ("f0_fundclst(3c): d3cl = ", d3cl)
-// *)
+*)
 //
 val
 d3fs =
@@ -457,9 +457,11 @@ end(*let*)//end-of-[f0_implmnt0(env0,d3cl)]
 //
 (* ****** ****** *)
 //
+(*
 val () =
 (
   prerrln("trtmp3c_impltmpx: d3cl = ", d3cl))
+*)
 //
 (* ****** ****** *)
 //

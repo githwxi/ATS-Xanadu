@@ -98,10 +98,12 @@ let
 //
 val t2p0 = d3e0.styp()
 //
+(*
 val (  ) = prerrln
 ("d3exp_trcdfltq: d3e0 = ", d3e0)
 val (  ) = prerrln
 ("d3exp_trcdfltq: t2p0 = ", t2p0)
+*)
 //
 in//let
 //
@@ -1186,8 +1188,11 @@ tip1.node() of
 (g2_trcd_tjp1(tip1,tjp1,tsub))
 //
 |T2Pnone0((*0*)) => (   true   )
-|T2Pnone1(s2typ) => (   true   )
-|T2Ps2exp(s2exp) => (   true   )
+//
+(*
+|T2Pnone1(s2typ) => (   false   )
+|T2Ps2exp(s2exp) => (   false   )
+*)
 //
 |_(* otherwise *) => (   false   )
 //
@@ -1585,7 +1590,7 @@ case+ svts of
 endlet//end-of-[list_cons(t2j1,t2js)]
 )(*case+*)//end-[f1_svt1_svts_tjps_t2js]
 //
-(*
+// (*
 val () =
 (
   prerrln("f0_targmat: svts = ", svts) )
@@ -1598,7 +1603,7 @@ val () =
 val () =
 (
   prerrln("f0_targmat: t2qs = ", t2qs) )
-*)
+// *)
 //
 }(*where*)//end-of-[f0_targmat(svts,...)]
 //
@@ -1673,12 +1678,21 @@ end(*let*) // end of [ D3Ctmpsub(...) ]
 //
 } where {
 //
-(*
+// (*
+//
+val () =
+let
+val loc0 = d3cl.lctn()
+in//let
+prerrln("tmpmatch_d3cl_t2js: loc0 = ", loc0)
+end//let
+//
 val () =
 prerrln("tmpmatch_d3cl_t2js: d3cl = ", d3cl)
 val () =
 prerrln("tmpmatch_d3cl_t2js: t2js = ", t2js)
-*)
+//
+// *)
 //
 }(*where*)//end-of-[tmpmatch_d3cl_t2js(d3cl,t2js)]
 //

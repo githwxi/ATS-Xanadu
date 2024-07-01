@@ -49,61 +49,6 @@ val (  ) = prerrln
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val
-mytest10_dats =
-(
-i1parsed_of_trxi0i1(ipar)
-) where
-{
-//
-val
-ipar =
-i0parsed_of_trxd3i0(dpar)
-(*
-val
-(  ) =
-println
-("i0parsed(i0) = ", ipar)
-*)
-//
-} where
-{
-//
-val
-dpar =
-d3parsed_of_trans3a(dpar)
-//
-(*
-val ( ) =
-prerrln
-("d3parsed(3a) = ", dpar)
-*)
-//
-val
-dpar =
-d3parsed_of_trtmp3b(dpar)
-val
-dpar =
-d3parsed_of_trtmp3c(dpar)
-val
-dpar =
-d3parsed_of_tread33(dpar)
-//
-// (*
-val ( ) =
-prerrln
-("d3parsed(33) = ", dpar)
-// *)
-//
-//
-} where
-{
-val dpar = d3parsed_from_fpath
-(1(*dyn*), "./DATA/mytest10.dats") }
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 fun
 mytest
 (fpath: string): void =

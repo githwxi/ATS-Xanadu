@@ -671,7 +671,7 @@ in//let
 if // if
 sort2_imprq(s2t0)
 then f0_impr(s2e0) else
-s2typ_make_node(s2t0, T2Ps2exp(s2e0))
+s2typ_make_node(s2t0, T2Pnone0(*nil*))
 endlet where // end of [let]
 {
 (*

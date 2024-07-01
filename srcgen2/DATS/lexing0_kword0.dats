@@ -137,9 +137,15 @@ val T0WITHVWTP = T_WITHTYPE(VWTPSORT)
 (* ****** ****** *)
 //
 val T0TRCD11 = T_TRCD10(1) //HX: #()
+and T0TRCD12 = T_TRCD10(2) //HX: $tup
+and T0TRCD13 = T_TRCD10(3) //HX: $tup_t0
+and T0TRCD14 = T_TRCD10(4) //HX: $tup_vt
+//
+(*
 and T0TRCD12 = T_TRCD10(2) //HX: $tpl
 and T0TRCD13 = T_TRCD10(3) //HX: $tpl_t0
 and T0TRCD14 = T_TRCD10(4) //HX: $tpl_vt
+*)
 //
 val T0TRCD21 = T_TRCD20(1) //HX: #{}
 and T0TRCD22 = T_TRCD20(2) //HX: $rcd
@@ -331,19 +337,30 @@ val () = kwdins("withvwtp", T0WITHVWTP)
 val () = kwdins("withvtype", T0WITHVTYPE)
 *)
 //
-(* HX: for IDDLR-keywords in ATS3 *)
+(* ****** ****** *)
 //
+(* HX: for tuples and records *)
+//
+val () = kwdins("$tup", T0TRCD12)//_t0/vt
 val () = kwdins("$tpl", T0TRCD12)//_t0/vt
 val () = kwdins("$rcd", T0TRCD22)//_t0/vt
+//
+val () = kwdins("$tup_t0", T0TRCD13)//tbox
 val () = kwdins("$tpl_t0", T0TRCD13)//tbox
 val () = kwdins("$rcd_t0", T0TRCD23)//tbox
+//
+val () = kwdins("$tup_vt", T0TRCD14)//vtbx
 val () = kwdins("$tpl_vt", T0TRCD14)//vtbx
 val () = kwdins("$rcd_vt", T0TRCD24)//vtbx
+//
+(* ****** ****** *)
 //
 val () = kwdins("$raise", T_DLR_RAISE)
 //
 val () = kwdins("$extnam", T_DLR_EXTNAM)
 val () = kwdins("$exists", T_DLR_EXISTS)
+//
+(* ****** ****** *)
 //
 (* HX: for IDSRP-keywords in ATS3 *)
 //
@@ -367,6 +384,8 @@ val () = kwdins("#staload", T_SRP_STALOAD)
 val () = kwdins("#symload", T_SRP_SYMLOAD)
 //
 val () = kwdins("#dyninit", T_SRP_DYNINIT)
+//
+(* ****** ****** *)
 //
 end where
 {

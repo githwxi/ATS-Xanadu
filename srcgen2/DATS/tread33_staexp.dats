@@ -283,8 +283,11 @@ t2p0.node() of
 //
 |T2Ptrcd _ => f0_trcd(t2p0, err)
 //
+|T2Pnone0 _ => f0_none0(t2p0, err)
+|T2Pnone1 _ => f0_none1(t2p0, err)
 |T2Ps2exp _ => f0_s2exp(t2p0, err)
 //
+(*
 |
 _(* otherwise *) =>
 let
@@ -293,6 +296,7 @@ in//let
 (
 err := err+1; s2typ_errck(lvl0,t2p0))
 endlet // end of [ _(* otherwise *) ]
+*)
 ) where // end-of-[(*case+(t2p0)-of*)]
 {
 //
@@ -592,9 +596,24 @@ end(*let*)// end-of-[ f0_trcd(t2p,err) ]
 (* ****** ****** *)
 //
 fun
+f0_none0
+( t2p: s2typ
+, err: &sint >> _): s2typ = t2p//endfun
+//
+fun
+f0_none1
+( t2p: s2typ
+, err: &sint >> _): s2typ =
+let
+val lvl0 = 1
+in//let
+  err := err+1; s2typ_errck(lvl0, t2p0)
+end//let
+//
+fun
 f0_s2exp
 ( t2p: s2typ
-, err: &sint >> _): s2typ = t2p//end-fun
+, err: &sint >> _): s2typ = t2p//endfun
 //
 (* ****** ****** *)
 //

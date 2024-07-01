@@ -504,7 +504,7 @@ val loc0 = d3cl.lctn((*void*))
 //
 val (  ) =
 (
-  prerrln("trxd3i0_i0dcl: loc0 = ", loc0) )
+  prerrln("trxd3i0_d3ecl: loc0 = ", loc0) )
 val () =
 (
   prerrln("trxd3i0_d3ecl: d3cl = ", d3cl) )

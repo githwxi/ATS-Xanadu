@@ -82,26 +82,28 @@ for the main purpose of debugging!
 (* ****** ****** *)
 #staload _ = "./xsymmap_topmap.dats"
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 local
-
+//
 (*
 HX-2022-11-12:
 For getting 'S{XATSHOME}'
 *)
-
+//
 in//local
 //
 #implfun
 the_XATSHOME() =
 "/home/hwxi/Research/ATS-Xanadu"
 //
-end (*local*) // end of [local(XATSHOME)]
-
+end(*local*)//end-of-[local(XATSHOME)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 local
-
+//
 (* ****** ****** *)
 #typedef key = sint
 #typedef itm = sym_t
@@ -120,7 +122,7 @@ the_xsymbls =
 XATS2JS_jsobjmap_make_nil<key>{itm}()
 //
 in//local
-
+//
 (* ****** ****** *)
 
 #implfun
@@ -159,16 +161,16 @@ end (*local*) // end of [local(the_xsymbls_...)]
 (* ****** ****** *)
 
 local
-
+//
 (*
 HX-2023-07-18; nothing
 *)
-
+//
 in//local
-
+//
 #implfun
 the_xatsopt_include() = list_nil( (*void*) )
-
+//
 end (*local*) // end-[local(the_xatsopt_include)]
 
 (* ****** ****** *)
@@ -323,7 +325,7 @@ auxkxs1
 : gmacenv, kxs1: kxs_t): void =
 let
 val (k1, xs1) = kxs1
-val-list_cons(x1, xs1) = xs1
+val-list_cons(x1, xs1) = (xs1)
 in//let
 //
 (
@@ -383,7 +385,7 @@ val (k1, xs1) = kxs1
 val-
 ~optn_vt_cons(k1) =
 the_xsymbls_search(k1)
-val-list_cons(x1, xs1) = xs1
+val-list_cons(x1, xs1) = (xs1)
 in//let
   topmap_insert_any(env0, k1, x1)
 end (*let*) // end of [auxkxs1(env0,kxs1)]
@@ -431,7 +433,7 @@ auxkxs1
 : sexpenv, kxs1: kxs_t): void =
 let
 val (k1, xs1) = kxs1
-val-list_cons(x1, xs1) = xs1
+val-list_cons(x1, xs1) = (xs1)
 //
 in//let
 //
@@ -499,7 +501,7 @@ auxkxs1
 : dexpenv, kxs1: kxs_t): void =
 let
 val (k1, xs1) = kxs1
-val-list_cons(x1, xs1) = xs1
+val-list_cons(x1, xs1) = (xs1)
 in//let
 (
 case+ x1 of
@@ -1213,7 +1215,7 @@ list_cons(kx1, kxs) =>
 auxloop(kxs)) where
 {
 val () = println
-("the_sortenv_allist:", "(", kx1.0, " -> ", kx1.1, ")")
+("the_sortenv_allist:","(",kx1.0," -> ",kx1.1,")")
 }
 )(*case+*)//end-of-[auxloop(kxs)]
 }(*where*)//end-of-[auxloop(kxs)]
@@ -1222,4 +1224,4 @@ end(*let*)//end-of-[the_sortenv_allist_fprint(...)]
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_xglobal.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_xglobal.dats] *)

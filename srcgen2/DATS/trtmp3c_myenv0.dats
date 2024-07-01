@@ -643,14 +643,14 @@ tmqstk_timp
 (stmp, d3cl, stk0)) where
 {
 //
-// (*
+(*
 val () =
 prerrln
 ("tmqstk_insert_timp: stmp = ", stmp)
 val () =
 prerrln
 ("tmqstk_insert_timp: d3cl = ", d3cl)
-// *)
+*)
 //
 }(*where*)//end-of-[tmqstk_insert_timp(...)]
 //
@@ -688,11 +688,11 @@ in//let
   tmqstk_decl(stmp, d3cl, stk0) )
 end where
 {
-// (*
+(*
 val () =
 prerrln
 ("tmqstk_insert_decl: d3cl = ", d3cl)
-// *)
+*)
 }(*where*)//end-of-[tmqstk_insert_decl(...)]
 //
 (* ****** ****** *)
@@ -740,7 +740,7 @@ _(* otherwise *) => (   false   )
 ) where
 {
 //
-// (*
+(*
 //
 val () =
 prerr("tmqstk_search_dcst:")//val()
@@ -752,7 +752,7 @@ prerr("tmqstk_search_dcst:")//val()
 val () =
 prerrln("test: d2c = ", d2c)//val()
 //
-// *)
+*)
 //
 }(*where*) // end of [test(dcl, d2c)]
 //
@@ -1150,10 +1150,12 @@ val
 test =
 tmpequal_d3cl_t2js(dcl1, t2js)
 //
+(*
 val () =
 prerr("tmqstk_impltmprecq:")
 val () =
 prerrln("tmpequal: test = ", test)
+*)
 //
 in//let
 //
@@ -1168,10 +1170,12 @@ tmqstk_impltmprecq(stk1,d3cl,t2js))
 ) where
 {
 //
+(*
 val () =
 prerr("tmqstk_impltmprecq:")
 val () =
 prerrln("tmqstk_timp: dcl1 = ", dcl1)
+*)
 //
 }(*where*)//end-of-[tmqstk_timp(...)]
 //
@@ -1199,10 +1203,12 @@ tmqstk_impltmprecq(stk1, d3cl, t2js)
 ) where
 {
 //
+(*
 val () = // d3cl: stamp
 prerrln("tmqstk_impltmprecq: d3cl = ", d3cl)
 val () =
 prerrln("tmqstk_impltmprecq: t2js = ", t2js)
+*)
 //
 }(*where*) // end-of-[tmqstk_impltmprecq(...)]
 //
@@ -1230,10 +1236,12 @@ end//let
 end where
 {
 //
+(*
 val () =
 prerrln("tr3cenv_impltmprecq: d3cl = ", d3cl)
 val () =
 prerrln("tr3cenv_impltmprecq: t2js = ", t2js)
+*)
 //
 }(*where*) // end-of-(tr3cenv_impltmprecq(env0))
 //

@@ -121,5 +121,9 @@ fact1_mul_tail
 //
 (* ****** ****** *)
 (* ****** ****** *)
+val () = println
+("mytest12:fact1_mul_tail(10)=",fact1_mul_tail(10))
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XATS2JS_TEST_JS_DATA_mytest12.dats] *)
