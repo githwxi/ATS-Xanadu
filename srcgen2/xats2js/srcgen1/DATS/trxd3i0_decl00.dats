@@ -107,8 +107,10 @@ trxd3i0_d3eclist(env0, dcls)}
 //
 val stmp = timp.stmp((*void*))
 //
+(*
 val (  ) =
 prerrln("trxd3i0_timpl: timp = ", timp)
+*)
 //
 }(*where*)//end-of-[trxd3i0_timpl(env0,...)]
 //
@@ -500,6 +502,7 @@ prerrln("f0_implmnt0(d3i0): d3cl = ", d3cl)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 val loc0 = d3cl.lctn((*void*))
 //
 val (  ) =
@@ -508,6 +511,7 @@ val (  ) =
 val () =
 (
   prerrln("trxd3i0_d3ecl: d3cl = ", d3cl) )
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -160,7 +160,7 @@ glseq_z2cmp11
 //
 val nms =
 gseq_group_lstrm_llist
-  (   fpx   ) where
+< strn >< cgtz >( fpx ) where
 {
 #impltmp
 group$test<cgtz>(ch) = (ch != DS) }
@@ -185,14 +185,6 @@ fnms=strm_vt(clst)
 val DS = theDirSep_get()
 val CD = theCurDir_get()
 val PD = theParDir_get()
-//
-val nms =
-gseq_group_lstrm_llist
-  (   fpx   ) where
-{
-#impltmp
-group$test<cgtz>(ch) = (ch != DS)
-}
 //
 fnx
 fcats
@@ -292,7 +284,7 @@ glseq_z2cmp11
 //
 val nms =
 gseq_group_lstrm_llist
-  (   fpx   ) where
+< strn >< cgtz >( fpx ) where
 {
 #impltmp
 group$test<cgtz>(ch) = (ch != DS) }
