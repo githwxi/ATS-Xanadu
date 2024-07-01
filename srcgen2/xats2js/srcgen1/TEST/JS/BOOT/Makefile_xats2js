@@ -1,0 +1,63 @@
+############################################################
+CAT=cat
+CPF=cp -f
+ECHO=echo
+############################################################
+NODE=node
+############################################################
+NODE=node \
+--stack-size=4096
+############################################################
+# NODE=node \
+# --stack-size=4096 \
+# --max-old-space-size=4096
+############################################################
+all:: \
+BUILD/JS/xbasics_dats.js
+BUILD/JS/xbasics_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/xbasics.dats 2>/dev/null 1>BUILD/JS/xbasics_dats.js
+############################################################
+all:: \
+BUILD/JS/xbasics_print0_dats.js
+BUILD/JS/xbasics_print0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/xbasics.dats 2>/dev/null 1>BUILD/JS/xbasics_print0_dats.js
+############################################################
+all:: \
+BUILD/JS/xsynoug_dats.js
+BUILD/JS/xsynoug_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/xsynoug.dats 2>/dev/null 1>BUILD/JS/xsynoug_dats.js
+############################################################
+all:: \
+BUILD/JS/xerrory_dats.js
+BUILD/JS/xerrory_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/xerrory.dats 2>/dev/null 1>BUILD/JS/xerrory_dats.js
+############################################################
+all:: \
+BUILD/JS/xglobal_dats.js
+BUILD/JS/xglobal_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/xglobal.dats 2>/dev/null 1>BUILD/JS/xglobal_dats.js
+############################################################
+all:: \
+BUILD/JS/xstamp0_dats.js
+BUILD/JS/xstamp0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/xstamp0.dats 2>/dev/null 1>BUILD/JS/xstamp0_dats.js
+############################################################
+all:: \
+BUILD/JS/xstamp0_print0_dats.js
+BUILD/JS/xstamp0_print0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/xstamp0_print0.dats 2>/dev/null 1>BUILD/JS/xstamp0_print0_dats.js
+############################################################
+all:: \
+BUILD/JS/xstamp0_tmpmap_dats.js
+BUILD/JS/xstamp0_tmpmap_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/xstamp0_tmpmap.dats 2>/dev/null 1>BUILD/JS/xstamp0_tmpmap_dats.js
+############################################################
+############################################################
