@@ -547,4 +547,4 @@ then r0+1 else
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_statyp2.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_statyp2.dats] *)

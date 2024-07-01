@@ -788,4 +788,4 @@ end (*let*) // end of [d0typ_fprint]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_staexp0_print0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_staexp0_print0.dats] *)

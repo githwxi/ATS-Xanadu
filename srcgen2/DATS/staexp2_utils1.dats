@@ -824,4 +824,4 @@ end (*local*) // end of [local(l2s2elst_make)]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_staexp2_utils1.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_staexp2_utils1.dats] *)

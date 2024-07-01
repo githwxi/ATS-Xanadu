@@ -2815,4 +2815,4 @@ foreach$work<d0cstdcl>(d0c1) = d0cstdcl_fpemsg(out,d0c1)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_preadx0_errmsg.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_preadx0_errmsg.dats] *)

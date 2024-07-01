@@ -580,4 +580,4 @@ end (*local*) // end of [local(the_s2cst_d2conlst)]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_staexp2_inits0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_staexp2_inits0.dats] *)

@@ -125,4 +125,4 @@ fprint_loctn_as_stamp
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_locinfo_print0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_locinfo_print0.dats] *)

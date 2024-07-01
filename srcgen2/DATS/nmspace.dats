@@ -345,4 +345,4 @@ end(*local*)//end-of-[local(the_nmitmlst,...)]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_nmspace.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_nmspace.dats] *)
