@@ -8,9 +8,9 @@ NODE=node
 NODE=node \
 --stack-size=4096
 ############################################################
-# NODE=node \
-# --stack-size=4096 \
-# --max-old-space-size=4096
+NODE=node \
+--stack-size=4096 \
+--max-old-space-size=4096
 ############################################################
 all:: \
 BUILD/JS/xbasics_dats.js
@@ -59,5 +59,161 @@ BUILD/JS/xstamp0_tmpmap_dats.js
 BUILD/JS/xstamp0_tmpmap_dats.js: ; \
 $(NODE) ./../test12_xats2js_dats.js \
 DATS/xstamp0_tmpmap.dats 2>/dev/null 1>BUILD/JS/xstamp0_tmpmap_dats.js
+############################################################
+all:: \
+BUILD/JS/xsymbol_dats.js
+BUILD/JS/xsymbol_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/xsymbol.dats 2>/dev/null 1>BUILD/JS/xsymbol_dats.js
+############################################################
+all:: \
+BUILD/JS/xsymbol_print0_dats.js
+BUILD/JS/xsymbol_print0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/xsymbol_print0.dats 2>/dev/null 1>BUILD/JS/xsymbol_print0_dats.js
+############################################################
+all:: \
+BUILD/JS/xsymbol_mymap0_dats.js
+BUILD/JS/xsymbol_mymap0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/xsymbol_mymap0.dats 2>/dev/null 1>BUILD/JS/xsymbol_mymap0_dats.js
+############################################################
+all:: \
+BUILD/JS/xsymbol_inits0_dats.js
+BUILD/JS/xsymbol_inits0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/xsymbol_inits0.dats 2>/dev/null 1>BUILD/JS/xsymbol_inits0_dats.js
+############################################################
+all:: \
+BUILD/JS/xlabel0_dats.js
+BUILD/JS/xlabel0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/xlabel0.dats 2>/dev/null 1>BUILD/JS/xlabel0_dats.js
+############################################################
+all:: \
+BUILD/JS/xlabel0_print0_dats.js
+BUILD/JS/xlabel0_print0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/xlabel0_print0.dats 2>/dev/null 1>BUILD/JS/xlabel0_print0_dats.js
+############################################################
+all:: \
+BUILD/JS/filpath_dats.js
+BUILD/JS/filpath_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/filpath.dats 2>/dev/null 1>BUILD/JS/filpath_dats.js
+############################################################
+all:: \
+BUILD/JS/filpath_print0_dats.js
+BUILD/JS/filpath_print0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/filpath_print0.dats 2>/dev/null 1>BUILD/JS/filpath_print0_dats.js
+############################################################
+all:: \
+BUILD/JS/filpath_drpth0_dats.js
+BUILD/JS/filpath_drpth0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/filpath_drpth0.dats 2>/dev/null 1>BUILD/JS/filpath_drpth0_dats.js
+############################################################
+all:: \
+BUILD/JS/filpath_fpath0_dats.js
+BUILD/JS/filpath_fpath0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/filpath_fpath0.dats 2>/dev/null 1>BUILD/JS/filpath_fpath0_dats.js
+############################################################
+all:: \
+BUILD/JS/filpath_search_dats.js
+BUILD/JS/filpath_search_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/filpath_search.dats 2>/dev/null 1>BUILD/JS/filpath_search_dats.js
+############################################################
+all:: \
+BUILD/JS/locinfo_dats.js
+BUILD/JS/locinfo_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/locinfo.dats 2>/dev/null 1>BUILD/JS/locinfo_dats.js
+############################################################
+all:: \
+BUILD/JS/locinfo_print0_dats.js
+BUILD/JS/locinfo_print0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/locinfo_print0.dats 2>/dev/null 1>BUILD/JS/locinfo_print0_dats.js
+############################################################
+all:: \
+BUILD/JS/xsymmap_dats.js
+BUILD/JS/xsymmap_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/xsymmap.dats 2>/dev/null 1>BUILD/JS/xsymmap_dats.js
+############################################################
+all:: \
+BUILD/JS/xsymmap_stkmap_dats.js
+BUILD/JS/xsymmap_stkmap_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/xsymmap_stkmap.dats 2>/dev/null 1>BUILD/JS/xsymmap_stkmap_dats.js
+############################################################
+all:: \
+BUILD/JS/xsymmap_topmap_dats.js
+BUILD/JS/xsymmap_topmap_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/xsymmap_topmap.dats 2>/dev/null 1>BUILD/JS/xsymmap_topmap_dats.js
+############################################################
+all:: \
+BUILD/JS/lexbuf0_dats.js
+BUILD/JS/lexbuf0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/lexbuf0.dats 2>/dev/null 1>BUILD/JS/lexbuf0_dats.js
+############################################################
+all:: \
+BUILD/JS/lexbuf0_cstrx1_dats.js
+BUILD/JS/lexbuf0_cstrx1_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/lexbuf0_cstrx1.dats 2>/dev/null 1>BUILD/JS/lexbuf0_cstrx1_dats.js
+############################################################
+all:: \
+BUILD/JS/lexbuf0_cstrx2_dats.js
+BUILD/JS/lexbuf0_cstrx2_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/lexbuf0_cstrx2.dats 2>/dev/null 1>BUILD/JS/lexbuf0_cstrx2_dats.js
+############################################################
+all:: \
+BUILD/JS/lexing0_dats.js
+BUILD/JS/lexing0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/lexing0.dats 2>/dev/null 1>BUILD/JS/lexing0_dats.js
+############################################################
+all:: \
+BUILD/JS/lexing0_print0_dats.js
+BUILD/JS/lexing0_print0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/lexing0_print0.dats 2>/dev/null 1>BUILD/JS/lexing0_print0_dats.js
+############################################################
+all:: \
+BUILD/JS/lexing0_mymap0_dats.js
+BUILD/JS/lexing0_mymap0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/lexing0_mymap0.dats 2>/dev/null 1>BUILD/JS/lexing0_mymap0_dats.js
+############################################################
+all:: \
+BUILD/JS/lexing0_kword0_dats.js
+BUILD/JS/lexing0_kword0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/lexing0_kword0.dats 2>/dev/null 1>BUILD/JS/lexing0_kword0_dats.js
+############################################################
+all:: \
+BUILD/JS/lexing0_token0_dats.js
+BUILD/JS/lexing0_token0_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/lexing0_token0.dats 2>/dev/null 1>BUILD/JS/lexing0_token0_dats.js
+############################################################
+all:: \
+BUILD/JS/lexing0_utils1_dats.js
+BUILD/JS/lexing0_utils1_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/lexing0_utils1.dats 2>/dev/null 1>BUILD/JS/lexing0_utils1_dats.js
+############################################################
+all:: \
+BUILD/JS/lexing0_utils2_dats.js
+BUILD/JS/lexing0_utils2_dats.js: ; \
+$(NODE) ./../test12_xats2js_dats.js \
+DATS/lexing0_utils2.dats 2>/dev/null 1>BUILD/JS/lexing0_utils2_dats.js
 ############################################################
 ############################################################

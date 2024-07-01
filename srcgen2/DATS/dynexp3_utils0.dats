@@ -1590,7 +1590,7 @@ case+ svts of
 endlet//end-of-[list_cons(t2j1,t2js)]
 )(*case+*)//end-[f1_svt1_svts_tjps_t2js]
 //
-// (*
+(*
 val () =
 (
   prerrln("f0_targmat: svts = ", svts) )
@@ -1603,7 +1603,7 @@ val () =
 val () =
 (
   prerrln("f0_targmat: t2qs = ", t2qs) )
-// *)
+*)
 //
 }(*where*)//end-of-[f0_targmat(svts,...)]
 //
@@ -1678,7 +1678,7 @@ end(*let*) // end of [ D3Ctmpsub(...) ]
 //
 } where {
 //
-// (*
+(*
 //
 val () =
 let
@@ -1692,7 +1692,7 @@ prerrln("tmpmatch_d3cl_t2js: d3cl = ", d3cl)
 val () =
 prerrln("tmpmatch_d3cl_t2js: t2js = ", t2js)
 //
-// *)
+*)
 //
 }(*where*)//end-of-[tmpmatch_d3cl_t2js(d3cl,t2js)]
 //
