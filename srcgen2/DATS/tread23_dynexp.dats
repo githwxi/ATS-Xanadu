@@ -2725,4 +2725,4 @@ list_tread23_fnp(dcls, err, tread23_d3ecl)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_tread23_dynexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_tread23_dynexp.dats] *)

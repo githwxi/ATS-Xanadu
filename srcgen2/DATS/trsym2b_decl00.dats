@@ -457,4 +457,4 @@ trsym2b_d2eclistopt
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trsym2b_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trsym2b_decl00.dats] *)

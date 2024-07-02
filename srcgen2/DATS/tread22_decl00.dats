@@ -789,4 +789,4 @@ tread22_d2fundclist
 list_tread22_fnp(d2fs, err, tread22_d2fundcl)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_tread22_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_tread22_decl00.dats] *)

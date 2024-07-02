@@ -2249,4 +2249,4 @@ trans3a_d3clslst
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans3a_dynexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trans3a_dynexp.dats] *)

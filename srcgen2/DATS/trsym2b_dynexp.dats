@@ -1431,4 +1431,4 @@ list_trsym2b_fnp(env0, d2cs, trsym2b_d2cls)
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trsym2b_dynexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trsym2b_dynexp.dats] *)

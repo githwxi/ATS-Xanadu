@@ -1247,4 +1247,4 @@ list_tread12_fnp(lses, err, tread12_l2s2e))
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_tread12_staexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_tread12_staexp.dats] *)

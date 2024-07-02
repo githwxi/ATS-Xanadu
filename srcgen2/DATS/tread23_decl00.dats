@@ -727,4 +727,4 @@ tread23_d3fundclist
 list_tread23_fnp(d3fs, err, tread23_d3fundcl)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_tread23_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_tread23_decl00.dats] *)

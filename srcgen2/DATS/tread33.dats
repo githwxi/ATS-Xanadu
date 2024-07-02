@@ -176,4 +176,4 @@ optn_tread33_fnp(dopt, err0, tread33_d3eclist)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_tread33.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_tread33.dats] *)

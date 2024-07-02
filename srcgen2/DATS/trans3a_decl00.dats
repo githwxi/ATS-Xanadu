@@ -738,4 +738,4 @@ trans3a_d3eclistopt
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans3a_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trans3a_decl00.dats] *)
