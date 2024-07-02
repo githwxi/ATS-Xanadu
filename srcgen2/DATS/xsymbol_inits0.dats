@@ -162,4 +162,4 @@ HX-2022-10-01: Various symbols
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_xsymbol_inits0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_xsymbol_inits0.dats] *)

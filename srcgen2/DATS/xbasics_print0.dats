@@ -250,4 +250,4 @@ end(*let*)//end-of(trcdknd_fprint(out,tknd))
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_xbasics_print0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_xbasics_print0.dats] *)

@@ -109,4 +109,4 @@ stamp_cmp(x1, x2) = x1.uint()\cmp(x2.uint())
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_xstamp0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_xstamp0.dats] *)

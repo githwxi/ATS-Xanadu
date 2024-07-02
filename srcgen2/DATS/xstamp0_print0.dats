@@ -57,4 +57,4 @@ stamp_fprint
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_xstamp0_print0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_xstamp0_print0.dats] *)

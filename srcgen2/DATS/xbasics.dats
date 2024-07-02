@@ -264,4 +264,4 @@ case+ knd2 of
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_xbasics.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_xbasics.dats] *)

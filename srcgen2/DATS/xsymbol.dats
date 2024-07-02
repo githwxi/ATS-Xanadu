@@ -169,4 +169,4 @@ loop(cs, r0+1) else (g_free(cs); -1)
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_xsymbol.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_xsymbol.dats] *)

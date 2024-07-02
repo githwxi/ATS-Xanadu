@@ -315,4 +315,4 @@ end (*let*) // end of [topmap_fprint(out,map)]
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_xsymmap_topmap.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_xsymmap_topmap.dats] *)

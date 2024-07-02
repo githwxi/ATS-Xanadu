@@ -70,4 +70,4 @@ case+ lab2 of
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_xlabel0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_xlabel0.dats] *)
