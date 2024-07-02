@@ -1,8 +1,11 @@
-/* ****** ****** */
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
 /*
 JSBasics for Xats2js
 */
-/* ****** ****** */
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+//
 function
 XATS2JS_jsobj_get_at
   (obj, key)
@@ -87,7 +90,7 @@ XATS2JS_jsobjmap_search_opt
    (obj, key)
 {
 //
-let itm0 = obj[key];
+var itm0 = obj[key];
 //
 if(itm0===undefined)
 {
@@ -121,7 +124,7 @@ XATS2JS_jsobjmap_insert_opt
    (obj, key, itm1)
 {
 //
-let itm0 = obj[key];
+var itm0 = obj[key];
 //
 if(itm0===undefined)
 {
@@ -139,7 +142,7 @@ XATS2JS_jsobjmap_remove_opt
    (obj, key)
 {
 //
-let itm0 = obj[key];
+var itm0 = obj[key];
 //
 if(itm0===undefined)
 {
@@ -151,6 +154,7 @@ if(itm0===undefined)
 //
 } // [ XATS2JS_jsobjmap_remove_opt ]
 
-/* ****** ****** */
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
 
 /* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_basics1.cats] */
