@@ -1714,4 +1714,4 @@ tread01_d1cstdclist
 list_tread01_fnp(d1cs, err, tread01_d1cstdcl)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_tread01_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_tread01_decl00.dats] *)

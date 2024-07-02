@@ -695,4 +695,4 @@ optn_trans34_fnp(env0, dopt, trans34_d3eclist))
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans34_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trans34_decl00.dats] *)

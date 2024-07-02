@@ -206,4 +206,4 @@ case+ dopt of
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_tread23.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_tread23.dats] *)

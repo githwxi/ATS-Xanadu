@@ -77,4 +77,4 @@ end (*let*) // end of [d4lft_fprint(out, lft0)]
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans34_print0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trans34_print0.dats] *)

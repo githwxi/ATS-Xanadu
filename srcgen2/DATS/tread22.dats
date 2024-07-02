@@ -164,4 +164,4 @@ optn_tread22_fnp(dopt, err0, tread22_d2eclist)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_tread22.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_tread22.dats] *)

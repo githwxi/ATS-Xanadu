@@ -1846,4 +1846,4 @@ foreach$work<d1cstdcl>(dcst) = d1cstdcl_fpemsg(out,dcst)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_tread01_errmsg.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_tread01_errmsg.dats] *)

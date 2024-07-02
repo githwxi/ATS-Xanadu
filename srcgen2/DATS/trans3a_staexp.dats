@@ -484,4 +484,4 @@ trans3a_t2jaglst
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans3a_staexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trans3a_staexp.dats] *)

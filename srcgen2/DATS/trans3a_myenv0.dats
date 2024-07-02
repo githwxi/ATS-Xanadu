@@ -399,4 +399,4 @@ end(*let*)//end-of-[f0_tmplocal(env0,d3cl)]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans3a_myenv0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trans3a_myenv0.dats] *)

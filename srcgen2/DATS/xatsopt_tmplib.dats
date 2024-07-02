@@ -1783,4 +1783,4 @@ end (*let*) // end of [g_print<d2exp>(d2e0)]
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_xatsopt_tmplib.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_xatsopt_tmplib.dats] *)

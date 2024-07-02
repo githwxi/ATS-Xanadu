@@ -1290,4 +1290,4 @@ trtmp3c_d3clslst
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trtmp3c_dynexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trtmp3c_dynexp.dats] *)

@@ -618,4 +618,4 @@ trtmp3c_d3eclistopt
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trtmp3c_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trtmp3c_decl00.dats] *)

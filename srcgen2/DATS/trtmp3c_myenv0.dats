@@ -1254,4 +1254,4 @@ endloc (*local*) // end of [ local(tr3cenv...) ]
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trtmp3c_myenv0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trtmp3c_myenv0.dats] *)
