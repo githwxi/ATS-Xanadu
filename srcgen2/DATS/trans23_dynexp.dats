@@ -2937,4 +2937,4 @@ trans23_d2explstopt
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans23_dynexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trans23_dynexp.dats] *)

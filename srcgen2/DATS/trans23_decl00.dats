@@ -837,4 +837,4 @@ optn_trans23_fnp(env0, dopt, trans23_d2eclist))
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans23_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trans23_decl00.dats] *)

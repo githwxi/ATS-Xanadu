@@ -313,4 +313,4 @@ end(*let*) // end of [tr2aenv_evstyp_cst(...)]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans2a_myenv0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trans2a_myenv0.dats] *)

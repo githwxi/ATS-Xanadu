@@ -2149,4 +2149,4 @@ end (*let*) // end of [S1ARGsome(...)]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans12_staexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trans12_staexp.dats] *)

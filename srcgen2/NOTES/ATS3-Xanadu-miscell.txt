@@ -71,3 +71,15 @@ are not enforced by the parser for ATS3/Xanadu.
 
 ########################################################################
 ########################################################################
+
+(*
+Mon 01 Jul 2024 11:53:28 PM EDT
+*)
+ATS3/Xanadu:xats2js:
+
+The runtime-library is now written in ECMASCRIPT6 (ES6).
+And we can use google-closure-compiler to translate ES6 to ES3.
+It can also be readily done to write the runtime-library in ES3 directly.
+
+########################################################################
+########################################################################
