@@ -121,4 +121,4 @@ endloc (*local*) // end of [  local(topmap)  ]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_xstamp0_tmpmap.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_xstamp0_tmpmap.dats] *)
