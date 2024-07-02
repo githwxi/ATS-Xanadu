@@ -319,4 +319,4 @@ end(*let*) // end of [tr23env_evstyp_cst(...)]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans23_myenv0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trans23_myenv0.dats] *)

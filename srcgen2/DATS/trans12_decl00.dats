@@ -4189,4 +4189,4 @@ map$fopr_e1nv
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans12_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trans12_decl00.dats] *)

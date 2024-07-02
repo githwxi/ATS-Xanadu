@@ -107,4 +107,4 @@ end (*let*) // end of [trans12_g1mac_apps(env0,...)]
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans12_gmacro.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trans12_gmacro.dats] *)

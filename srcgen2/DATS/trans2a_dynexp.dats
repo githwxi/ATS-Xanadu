@@ -3390,4 +3390,4 @@ trans2a_d2explstopt
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans2a_dynexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trans2a_dynexp.dats] *)

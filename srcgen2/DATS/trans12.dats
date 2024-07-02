@@ -577,4 +577,4 @@ val dpar = d1parsed_of_tread01(dpar)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans12.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trans12.dats] *)

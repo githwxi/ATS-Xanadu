@@ -682,4 +682,4 @@ end (*let*) // end of [unify23_s2typ(env0,...)]
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_trans23_utils0.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_trans23_utils0.dats] *)
