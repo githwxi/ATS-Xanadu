@@ -1,9 +1,11 @@
 (* ****** ****** *)
 #staload _ =
-"prelude/DATS/bool000.dats"
+"srcgen1\
+/prelude/DATS/bool000.dats"
 (* ****** ****** *)
 #staload _ =
-"prelude/DATS/char000.dats"
+"srcgen1\
+/prelude/DATS/char000.dats"
 (* ****** ****** *)
 #staload
 "srcgen1\

@@ -72,7 +72,9 @@ STDIO =
 //
 #staload "./../SATS/intrep1.sats"
 //
-#staload "./../SATS/xcomp01.sats"
+#staload "./../SATS/js1comp.sats"
+//
+#staload "./../SATS/js1emit.sats"
 //
 #staload "./../SATS/xats2js.sats"
 //
@@ -85,7 +87,7 @@ $GLO.the_XATSHOME_get((*void*))
 #staload
 _(*TMP*) = "./intrep1_print0.dats"
 #staload
-_(*TMP*) = "./intrep1_xemit0.dats"
+_(*TMP*) = "./js1emit_dynexp.dats"
 //
 (* ****** ****** *)
 //
@@ -817,7 +819,7 @@ l1pkg =
 let
   val
   l1pkg =
-  xcomp01_package(h0pkg)
+  js1comp_package(h0pkg)
 in
 l1pkg where
 {
@@ -828,7 +830,7 @@ val out =
 outchan_get_filref
 (st0.outchan)
 in
-  xemit01_package(out, l1pkg)
+  js1emit_package(out, l1pkg)
 end // end of [let]
 //
 (*

@@ -39,18 +39,19 @@ LIBGC=-lgc
 ######
 
 SRCSATS := \
-xcomp01.sats \
 intrep1.sats \
+js1comp.sats \
+js1emit.sats \
 xats2js.sats \
 
 SRCDATS := \
 intrep1.dats \
 intrep1_print0.dats \
-intrep1_xemit0.dats \
+js1emit_dynexp.dats \
 xats2js_mymain.dats \
-xcomp01_utils0.dats \
-xcomp01_envmap.dats \
-xcomp01_dynexp.dats \
+js1comp_utils0.dats \
+js1comp_envmap.dats \
+js1comp_dynexp.dats \
 
 ######
 BUILD=BUILD/CC
