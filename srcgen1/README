@@ -1,19 +1,20 @@
-############ Start of [README] ############
+################## Start of [README] ##################
+
+HX-2024-07-03:
+(*
+Wed 03 Jul 2024 09:21:50 AM EDT
+*)
+ATS3/Xanadu/srcgen1:
+This project was the first attempt to implement ATS3!
+It started around April, 2018 and produced a typechecker
+(xatsopt) and then a compiler (xats2js) by November, 2020.
 
 ############
-# xutil:
+# UTIL:
 ############
 
 For utilities needed by xats that are platform-dependent.
 
-############
-# xcomp:
-############
-
-For the ATS/Xanadu compiler proper. Directly using libc-functions
-should be avoided (but it is not regarded as a big issue as we could
-always make fixes later).
-
-############ Finish of [README] ############
+################## Finish of [README] ##################
 
 
