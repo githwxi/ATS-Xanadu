@@ -52,7 +52,7 @@ UN = "prelude/SATS/unsafe.sats"
 #staload $INTREP0(* open *)
 (* ****** ****** *)
 #staload "./../SATS/intrep1.sats"
-#staload "./../SATS/xcomp01.sats"
+#staload "./../SATS/js1comp.sats"
 (* ****** ****** *)
 //
 static
@@ -290,7 +290,7 @@ val-~l1cmdstk_nil() = rcd.l1cmdstk
 (* ****** ****** *)
 //
 implement
-xcomp01_flevget
+js1comp_flevget
   (env0) =
 (
   rcd.flevel
@@ -301,7 +301,7 @@ COMPENV(rcd) = env0
 }
 //
 implement
-xcomp01_flevinc
+js1comp_flevinc
   (env0) =
   fold@(env0) where
 {
@@ -311,7 +311,7 @@ val () =
 rcd.flevel := rcd.flevel + 1
 }
 implement
-xcomp01_flevdec
+js1comp_flevdec
   (env0) =
   fold@(env0) where
 {
@@ -323,7 +323,7 @@ rcd.flevel := rcd.flevel - 1
 //
 (* ****** ****** *)
 implement
-xcomp01_dvarfind
+js1comp_dvarfind
   (env0, k0) =
 let
 val p2 =
@@ -337,11 +337,11 @@ else let
   val-
   list_cons(x0, xs) = xs in Some_vt(x0)
 end // end of [if]
-end (* end of [xcomp01_dvarfind] *)
+end (* end of [js1comp_dvarfind] *)
 (* ****** ****** *)
 //
 implement
-xcomp01_dvaradd_fun0
+js1comp_dvaradd_fun0
   (env0) =
   fold@(env0) where
 {
@@ -353,10 +353,10 @@ val xs = rcd.h0varstk
 val xs = h0varstk_fun0(xs)
 val () = rcd.h0varstk := xs
 //
-} (* end of [xcomp01_dvaradd_fun0] *)
+} (* end of [js1comp_dvaradd_fun0] *)
 //
 implement
-xcomp01_dvarpop_fun0
+js1comp_dvarpop_fun0
   (env0) =
   fold@(env0) where
 {
@@ -375,12 +375,12 @@ val () =
 val-
 ~h0varstk_fun0(xs) = rcd.h0varstk
 }
-} (* end of [xcomp01_dvarpop_fun0] *)
+} (* end of [js1comp_dvarpop_fun0] *)
 //
 (* ****** ****** *)
 //
 implement
-xcomp01_dvaradd_bind
+js1comp_dvaradd_bind
   (env0, x0, v0) =
   fold@(env0) where
 {
@@ -398,13 +398,13 @@ rcd.h0varstk := h0varstk_cons(x0, xs)
 //
 } where
 {
-val v0 = xcomp01_l1valize(env0, v0)
-} (* end of [xcomp01_dvaradd_bind] *)
+val v0 = js1comp_l1valize(env0, v0)
+} (* end of [js1comp_dvaradd_bind] *)
 //
 (* ****** ****** *)
 //
 implement
-xcomp01_ltmpnew_tmp0
+js1comp_ltmpnew_tmp0
 ( env0, loc0 ) =
 let
 prval () =
@@ -415,7 +415,7 @@ val x0 =
 l1tmp_new_tmp(loc0)
 local
 val n0 =
-xcomp01_flevget(env0)
+js1comp_flevget(env0)
 in
 val () = x0.lev( n0 )
 end // end of [local]
@@ -428,10 +428,10 @@ val xs = rcd.l1tmpstk
 val () =
 rcd.l1tmpstk := l1tmpstk_cons(x0, xs)
 //
-} (* end of [xcomp01_ltmpnew_tmp0] *)
+} (* end of [js1comp_ltmpnew_tmp0] *)
 //
 implement
-xcomp01_ltmpnew_arg1
+js1comp_ltmpnew_arg1
 ( env0
 , loc0, idx1) =
 let
@@ -444,7 +444,7 @@ l1tmp_new_arg
 ( loc0, idx1(*>0*))
 local
 val n0 =
-xcomp01_flevget(env0)
+js1comp_flevget(env0)
 in
 val () = x0.lev( n0 )
 end // end of [local]
@@ -457,12 +457,12 @@ val xs = rcd.l1tmpstk
 val () =
 rcd.l1tmpstk := l1tmpstk_cons(x0, xs)
 //
-} (* end of [xcomp01_ltmpnew_arg1] *)
+} (* end of [js1comp_ltmpnew_arg1] *)
 //
 (* ****** ****** *)
 //
 implement
-xcomp01_ltmpadd_fun0
+js1comp_ltmpadd_fun0
   (env0) =
   fold@(env0) where
 {
@@ -474,10 +474,10 @@ val xs = rcd.l1tmpstk
 val xs = l1tmpstk_fun0(xs)
 val () = rcd.l1tmpstk := xs
 //
-} (* end of [xcomp01_ltmpadd_fun0] *)
+} (* end of [js1comp_ltmpadd_fun0] *)
 //
 implement
-xcomp01_ltmppop_fun0
+js1comp_ltmppop_fun0
   (env0) =
 (
   fold@(env0); ts
@@ -498,12 +498,12 @@ val () =
 val-
 ~l1tmpstk_fun0(xs) = rcd.l1tmpstk
 }
-} (* end of [xcomp01_ltmppop_fun0] *)
+} (* end of [js1comp_ltmppop_fun0] *)
 //
 (* ****** ****** *)
 
 implement
-xcomp01_lcmdadd_lcmd
+js1comp_lcmdadd_lcmd
   (env0, x0) =
   fold@(env0) where
 {
@@ -516,12 +516,12 @@ val xs = rcd.l1cmdstk
 val () =
 rcd.l1cmdstk := l1cmdstk_cons(x0, xs)
 //
-} (* end of [xcomp01_lcmdadd_lcmd] *)
+} (* end of [js1comp_lcmdadd_lcmd] *)
 
 (* ****** ****** *)
 
 implement
-xcomp01_lcmdpush_nil
+js1comp_lcmdpush_nil
   (env0) =
   fold@(env0) where
 {
@@ -533,12 +533,12 @@ val xs = rcd.l1cmdstk
 val () =
 rcd.l1cmdstk := l1cmdstk_push(xs)
 //
-} (* end of [xcomp01_lcmdadd] *)
+} (* end of [js1comp_lcmdadd] *)
 
 (* ****** ****** *)
 
 implement
-xcomp01_lcmdpop0_lst
+js1comp_lcmdpop0_lst
   (env0) =
 let
 val () = fold@(env0) in xs
@@ -551,7 +551,7 @@ val+
 val xs =
 l1cmdstk_pop0_lst(rcd.l1cmdstk)
 //
-} (* end of [xcomp01_lcmdpop0] *)
+} (* end of [js1comp_lcmdpop0] *)
 
 (* ****** ****** *)
 
@@ -560,11 +560,11 @@ end // end of [local]
 (* ****** ****** *)
 //
 implement
-xcomp01_lcmdpop0_blk
+js1comp_lcmdpop0_blk
   (env0) =
 (
   l1blk_some
-  ( xcomp01_lcmdpop0_lst(env0) )
+  ( js1comp_lcmdpop0_lst(env0) )
 )
 //
 (* ****** ****** *)
@@ -725,4 +725,4 @@ end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen1_xats2js_srcgen1_xcomp01_envmap.dats] *)
+(* end of [ATS3/XANADU_srcgen1_xats2js_srcgen1_js1comp_envmap.dats] *)

@@ -52,7 +52,8 @@ UN = "prelude/SATS/unsafe.sats"
 #staload $INTREP0(* open *)
 (* ****** ****** *)
 #staload "./../SATS/intrep1.sats"
-#staload "./../SATS/xcomp01.sats"
+(* ****** ****** *)
+#staload "./../SATS/js1comp.sats"
 (* ****** ****** *)
 
 local
@@ -72,10 +73,10 @@ L1VALflat
 ( l1v1 ) = l1v0.node()
 val
 l1v1 =
-xcomp01_l1valize(env0, l1v1)
+js1comp_l1valize(env0, l1v1)
 val
 tres =
-xcomp01_ltmpnew_tmp0(env0, loc0)
+js1comp_ltmpnew_tmp0(env0, loc0)
 val () =
 let
   val
@@ -83,7 +84,7 @@ let
   l1cmd_make_node
   ( loc0, L1CMDflat(tres, l1v1) )
 in
-  xcomp01_lcmdadd_lcmd(env0, lcmd)
+  js1comp_lcmdadd_lcmd(env0, lcmd)
 end
 in
 l1val_make_node(loc0, L1VALtmp(tres))
@@ -105,10 +106,10 @@ L1VALcarg
 , idx2 ) = l1v0.node()
 val
 l1v1 =
-xcomp01_l1valize(env0, l1v1)
+js1comp_l1valize(env0, l1v1)
 val
 tres =
-xcomp01_ltmpnew_tmp0(env0, loc0)
+js1comp_ltmpnew_tmp0(env0, loc0)
 val () =
 let
   val
@@ -117,7 +118,7 @@ let
   ( loc0
   , L1CMDcarg(tres, l1v1, idx2) )
 in
-  xcomp01_lcmdadd_lcmd(env0, lcmd)
+  js1comp_lcmdadd_lcmd(env0, lcmd)
 end
 in
 l1val_make_node(loc0, L1VALtmp(tres))
@@ -139,10 +140,10 @@ L1VALcofs
 , idx2 ) = l1v0.node()
 val
 l1v1 =
-xcomp01_l1valize(env0, l1v1)
+js1comp_l1valize(env0, l1v1)
 val
 tres =
-xcomp01_ltmpnew_tmp0(env0, loc0)
+js1comp_ltmpnew_tmp0(env0, loc0)
 val () =
 let
   val
@@ -151,7 +152,7 @@ let
   ( loc0
   , L1CMDcofs(tres, l1v1, idx2) )
 in
-  xcomp01_lcmdadd_lcmd(env0, lcmd)
+  js1comp_lcmdadd_lcmd(env0, lcmd)
 end
 in
 l1val_make_node(loc0, L1VALtmp(tres))
@@ -173,10 +174,10 @@ L1VALtarg
 , idx2 ) = l1v0.node()
 val
 l1v1 =
-xcomp01_l1valize(env0, l1v1)
+js1comp_l1valize(env0, l1v1)
 val
 tres =
-xcomp01_ltmpnew_tmp0(env0, loc0)
+js1comp_ltmpnew_tmp0(env0, loc0)
 val () =
 let
   val
@@ -185,7 +186,7 @@ let
   ( loc0
   , L1CMDtarg(tres, l1v1, idx2) )
 in
-  xcomp01_lcmdadd_lcmd(env0, lcmd)
+  js1comp_lcmdadd_lcmd(env0, lcmd)
 end
 in
 l1val_make_node(loc0, L1VALtmp(tres))
@@ -206,10 +207,10 @@ L1VALeval1
  ( l1v1 ) = l1v0.node()
 val
 l1v1 =
-xcomp01_l1valize(env0, l1v1)
+js1comp_l1valize(env0, l1v1)
 val
 tres =
-xcomp01_ltmpnew_tmp0(env0, loc0)
+js1comp_ltmpnew_tmp0(env0, loc0)
 val () =
 let
   val
@@ -217,7 +218,7 @@ let
   l1cmd_make_node
   ( loc0, L1CMDeval1(tres, l1v1) )
 in
-  xcomp01_lcmdadd_lcmd(env0, lcmd)
+  js1comp_lcmdadd_lcmd(env0, lcmd)
 end
 in
 l1val_make_node(loc0, L1VALtmp(tres))
@@ -238,10 +239,10 @@ L1VALeval2
  ( l1v1 ) = l1v0.node()
 val
 l1v1 =
-xcomp01_l1valize(env0, l1v1)
+js1comp_l1valize(env0, l1v1)
 val
 tres =
-xcomp01_ltmpnew_tmp0(env0, loc0)
+js1comp_ltmpnew_tmp0(env0, loc0)
 val () =
 let
   val
@@ -249,7 +250,7 @@ let
   l1cmd_make_node
   ( loc0, L1CMDeval2(tres, l1v1) )
 in
-  xcomp01_lcmdadd_lcmd(env0, lcmd)
+  js1comp_lcmdadd_lcmd(env0, lcmd)
 end
 in
 l1val_make_node(loc0, L1VALtmp(tres))
@@ -270,10 +271,10 @@ L1VALeval3
  ( l1v1 ) = l1v0.node()
 val
 l1v1 =
-xcomp01_l1valize(env0, l1v1)
+js1comp_l1valize(env0, l1v1)
 val
 tres =
-xcomp01_ltmpnew_tmp0(env0, loc0)
+js1comp_ltmpnew_tmp0(env0, loc0)
 val () =
 let
   val
@@ -281,7 +282,7 @@ let
   l1cmd_make_node
   ( loc0, L1CMDeval3(tres, l1v1) )
 in
-  xcomp01_lcmdadd_lcmd(env0, lcmd)
+  js1comp_lcmdadd_lcmd(env0, lcmd)
 end
 in
 l1val_make_node(loc0, L1VALtmp(tres))
@@ -302,10 +303,10 @@ L1VALfree1
  ( l1v1 ) = l1v0.node()
 val
 l1v1 =
-xcomp01_l1valize(env0, l1v1)
+js1comp_l1valize(env0, l1v1)
 val
 tres =
-xcomp01_ltmpnew_tmp0(env0, loc0)
+js1comp_ltmpnew_tmp0(env0, loc0)
 val () =
 let
   val
@@ -313,7 +314,7 @@ let
   l1cmd_make_node
   ( loc0, L1CMDfree1(tres, l1v1) )
 in
-  xcomp01_lcmdadd_lcmd(env0, lcmd)
+  js1comp_lcmdadd_lcmd(env0, lcmd)
 end
 in
 l1val_make_node(loc0, L1VALtmp(tres))
@@ -334,10 +335,10 @@ L1VALfree2
  ( l1v1 ) = l1v0.node()
 val
 l1v1 =
-xcomp01_l1valize(env0, l1v1)
+js1comp_l1valize(env0, l1v1)
 val
 tres =
-xcomp01_ltmpnew_tmp0(env0, loc0)
+js1comp_ltmpnew_tmp0(env0, loc0)
 val () =
 let
   val
@@ -345,7 +346,7 @@ let
   l1cmd_make_node
   ( loc0, L1CMDfree2(tres, l1v1) )
 in
-  xcomp01_lcmdadd_lcmd(env0, lcmd)
+  js1comp_lcmdadd_lcmd(env0, lcmd)
 end
 in
 l1val_make_node(loc0, L1VALtmp(tres))
@@ -366,10 +367,10 @@ L1VALfree3
  ( l1v1 ) = l1v0.node()
 val
 l1v1 =
-xcomp01_l1valize(env0, l1v1)
+js1comp_l1valize(env0, l1v1)
 val
 tres =
-xcomp01_ltmpnew_tmp0(env0, loc0)
+js1comp_ltmpnew_tmp0(env0, loc0)
 val () =
 let
   val
@@ -377,7 +378,7 @@ let
   l1cmd_make_node
   ( loc0, L1CMDfree3(tres, l1v1) )
 in
-  xcomp01_lcmdadd_lcmd(env0, lcmd)
+  js1comp_lcmdadd_lcmd(env0, lcmd)
 end
 in
 l1val_make_node(loc0, L1VALtmp(tres))
@@ -390,7 +391,7 @@ in(*in-of-local*)
 (* ****** ****** *)
 //
 implement
-xcomp01_l1valize
+js1comp_l1valize
   (env0, l1v0) =
 (
 case+
@@ -433,4 +434,4 @@ end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen1_xats2js_srcgen1_xcomp01_utils0.dats] *)
+(* end of [ATS3/XANADU_srcgen1_xats2js_srcgen1_js1comp_utils0.dats] *)

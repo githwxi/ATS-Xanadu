@@ -58,13 +58,14 @@ UN =
 //
 #dynload "./../DATS/intrep1.dats"
 #dynload "./../DATS/intrep1_print0.dats"
-#dynload "./../DATS/intrep1_xemit0.dats"
+//
+#dynload "./../DATS/js1emit_dynexp.dats"
 //
 #dynload "./../DATS/xats2js_mymain.dats"
 //
-#dynload "./../DATS/xcomp01_utils0.dats"
-#dynload "./../DATS/xcomp01_envmap.dats"
-#dynload "./../DATS/xcomp01_dynexp.dats"
+#dynload "./../DATS/js1comp_utils0.dats"
+#dynload "./../DATS/js1comp_envmap.dats"
+#dynload "./../DATS/js1comp_dynexp.dats"
 //
 (* ****** ****** *)
 //

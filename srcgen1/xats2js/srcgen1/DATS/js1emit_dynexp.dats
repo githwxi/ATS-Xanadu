@@ -67,7 +67,10 @@ overload
 fprint
 with $FP0.fprint_filpath_full2
 (* ****** ****** *)
+(* ****** ****** *)
 #staload "./../SATS/intrep1.sats"
+(* ****** ****** *)
+#staload "./../SATS/js1emit.sats"
 (* ****** ****** *)
 
 implement
@@ -127,39 +130,39 @@ val () = fprint(out, time%10) }
 //
 (* ****** ****** *)
 implement
-xemit01_int00
+js1emit_int00
 (out, int) =
 (
 fprint(out, int)
 )
 implement
-xemit01_btf00
+js1emit_btf00
 (out, btf) =
 (
 fprint(out, btf))
 (* ****** ****** *)
 implement
-xemit01_txt00
+js1emit_txt00
 (out, txt) =
 (
 fprint(out, txt)
 )
 implement
-xemit01_txtln
+js1emit_txtln
 (out, txt) =
 (
 fprint!(out, txt, '\n')
 )
 (* ****** ****** *)
 implement
-xemit01_newln
+js1emit_newln
 ( out ) =
 (
   fprint_char(out, '\n')
 )
 (* ****** ****** *)
 implement
-xemit01_blnk1
+js1emit_blnk1
 ( out ) =
 (
   fprint_char( out, ' ' )
@@ -167,7 +170,7 @@ xemit01_blnk1
 (* ****** ****** *)
 
 implement
-xemit01_nblnk
+js1emit_nblnk
 ( out, n0) =
 ( loop(n0) ) where
 {
@@ -177,14 +180,14 @@ if n0 > 0
 then
 loop(n0-1) where
 {
-val () = xemit01_blnk1(out)
+val () = js1emit_blnk1(out)
 }
-} (* end of [xemit01_nblnk] *)
+} (* end of [js1emit_nblnk] *)
 
 (* ****** ****** *)
 
 implement
-xemit01_indnt
+js1emit_indnt
 (out, nind) =
 loop(nind) where
 {
@@ -194,18 +197,18 @@ if n0 > 0
 then
 loop(n0-1) where
 {
-val () = xemit01_blnk1(out)
+val () = js1emit_blnk1(out)
 }
-} (* end of [xemit01_indnt] *)
+} (* end of [js1emit_indnt] *)
 
 (* ****** ****** *)
 implement
-xemit01_h0var
+js1emit_h0var
 (out, hdv) =
 fprint(out, hdv.sym())
 (* ****** ****** *)
 implement
-xemit01_h0con
+js1emit_h0con
 (out, hdc) =
 let
 val
@@ -219,7 +222,7 @@ then
 fprint(out, tag)
 else
 fprint(out, hdc.sym())
-end // end of [xemit01_h0con]
+end // end of [js1emit_h0con]
 (* ****** ****** *)
 
 local
@@ -341,7 +344,7 @@ end // end of [auxsome_rest]
 in(*in-of-local*)
 //
 implement
-xemit01_h0cst
+js1emit_h0cst
 (out, hdc) =
 let
 val
@@ -360,7 +363,7 @@ X2NAMsome(gnm) =>
   auxsome(out, gnm, hdc)
 )
 //
-end // end of [xemit01_h0cst]
+end // end of [js1emit_h0cst]
 //
 end // end of [local]
 
@@ -368,12 +371,12 @@ end // end of [local]
 //
 (*
 implement
-xemit01_l1cst
+js1emit_l1cst
 (out, l1c) =
 {
 //
 val () =
-xemit01_h0cst
+js1emit_h0cst
 (out, l1c.hdc())
 //
 val () =
@@ -383,34 +386,34 @@ fprint!
 } where
 {
   val stmp = l1c.stamp()
-} (*where*) // [xemit01_l1cst]
+} (*where*) // [js1emit_l1cst]
 *)
 //
 implement
-xemit01_l1cst
+js1emit_l1cst
 (out, l1c) =
 let
 val
 hdc = l1c.h0cst()
 in
-xemit01_h0cst(out, hdc)
-end (*let*) // [xemit01_l1cst]
+js1emit_h0cst(out, hdc)
+end (*let*) // [js1emit_l1cst]
 //
 (* ****** ****** *)
 implement
-xemit01_l1con
+js1emit_l1con
 (out, l1c) =
 (
 case+ l1c of
 | L1CONcon(hdc) =>
-  xemit01_h0con(out, hdc)
+  js1emit_h0con(out, hdc)
 | L1CONval(l1v) =>
-  xemit01_l1val(out, l1v)
-) (* end of [xemit01_l1con] *)
+  js1emit_l1val(out, l1v)
+) (* end of [js1emit_l1con] *)
 (* ****** ****** *)
 
 implement
-xemit01_h0fag
+js1emit_h0fag
 ( out
 , lev
 , hfg, i0) =
@@ -421,15 +424,15 @@ hfg.node() of
 H0FAGnpats
 (npf1, h0ps) => i1 where
 {
-val () = xemit01_txt00(out, "(")
+val () = js1emit_txt00(out, "(")
 val i1 = auxlst(npf1, i0, i0, h0ps)
-val () = xemit01_txt00(out, ")")
+val () = js1emit_txt00(out, ")")
 }
 |
 H0FAGnone0 _ => i0 where
 {
-val () = xemit01_txt00(out, "(")
-val () = xemit01_txt00(out, ")")
+val () = js1emit_txt00(out, "(")
+val () = js1emit_txt00(out, ")")
 }
 |
 H0FAGnone1 _ => i0 // skipped
@@ -469,7 +472,7 @@ val () =
 if
 (i1 > i0)
 then
-xemit01_txt00(out, ", ")
+js1emit_txt00(out, ", ")
 //
 val i1 = i1 + 1
 //
@@ -481,12 +484,12 @@ auxlst(npf1, i0, i1, h0ps)
 end
 ) (* end of [auxlst] *)
 //
-} (* end of [xemit01_h0fag] *)
+} (* end of [js1emit_h0fag] *)
 
 (* ****** ****** *)
 
 implement
-xemit01_h0faglst
+js1emit_h0faglst
 ( out
 , lev
 , hfgs, i0) =
@@ -498,47 +501,47 @@ list_nil() => i0
 list_cons(hfg1, hfgs) =>
 let
 val i1 =
-xemit01_h0fag(out, lev, hfg1, i0)
+js1emit_h0fag(out, lev, hfg1, i0)
 in
-xemit01_h0faglst(out, lev, hfgs, i1)
+js1emit_h0faglst(out, lev, hfgs, i1)
 end
-) (* end of [xemit01_h0faglst] *)
+) (* end of [js1emit_h0faglst] *)
 
 (* ****** ****** *)
 //
 implement
-xemit01_lvnam
+js1emit_lvnam
 (out, nam) =
 fprint(out, nam)
 //
 (* ****** ****** *)
 //
 implement
-xemit01_lvtop
+js1emit_lvtop
 (out, tok) =
 fprint(out, "XATS2JS_top")
 //
 (* ****** ****** *)
 //
 implement
-xemit01_lvi00
+js1emit_lvi00
 ( out
 , int) = fprint(out, int)
 //
 implement
-xemit01_lvb00
+js1emit_lvb00
 ( out
 , btf) = fprint(out, btf)
 //
 implement
-xemit01_lvc00
+js1emit_lvc00
 ( out
 , chr) =
 (
  fprint(out, chr) ) where
 {
   val chr = char2uint0(chr)
-} // end of [xemit01_lvc00]
+} // end of [js1emit_lvc00]
 //
 (* ****** ****** *)
 //
@@ -579,7 +582,7 @@ end (*let*) // end of [auxrep]
 in//local
 
 implement
-xemit01_lvint
+js1emit_lvint
 (out, tok) =
 let
 val
@@ -600,14 +603,14 @@ T_INT3
 (bas, rep, _) =>
 fprint(out, aux2(bas, rep))
 //
-end // end of [xemit01_lvint]
+end // end of [js1emit_lvint]
 //
 end (*local*) // end of [local]
 //
 (* ****** ****** *)
 //
 implement
-xemit01_lvbtf
+js1emit_lvbtf
 (out, tok) =
 let
 val
@@ -619,12 +622,12 @@ case- tnd of
 T_IDENT_alp
 ( rep ) => fprint(out, rep)
 //
-end // end of [xemit01_lvbtf]
+end // end of [js1emit_lvbtf]
 //
 (* ****** ****** *)
 //
 implement
-xemit01_lvchr
+js1emit_lvchr
 (out, tok) =
 let
 val
@@ -649,11 +652,11 @@ fprint!
 , "XATS2JS_char(", rep, ")")
 )
 //
-end // end of [xemit01_lvchr]
+end // end of [js1emit_lvchr]
 (* ****** ****** *)
 //
 implement
-xemit01_lvflt
+js1emit_lvflt
 (out, tok) =
 let
 val
@@ -665,11 +668,11 @@ case- tnd of
 T_FLT1(rep) =>
   fprint(out, rep) // HX: FIXME!!!
 //
-end // end of [xemit01_lvstr]
+end // end of [js1emit_lvstr]
 (* ****** ****** *)
 //
 implement
-xemit01_lvstr
+js1emit_lvstr
 (out, tok) =
 let
 val
@@ -682,11 +685,11 @@ T_STRING_closed
   (rep) =>
   fprint(out, rep) // HX: FIXME!!!
 //
-end // end of [xemit01_lvstr]
+end // end of [js1emit_lvstr]
 (* ****** ****** *)
 //
 implement
-xemit01_l1exn
+js1emit_l1exn
 (out, exn0) =
 let
 val
@@ -698,7 +701,7 @@ end // end of [let]
 (* ****** ****** *)
 //
 implement
-xemit01_l1tmp
+js1emit_l1tmp
 (out, tmp0) =
 let
 val arg = tmp0.arg()
@@ -737,12 +740,12 @@ fprint(out, "_"); fprint_xstamp(out))
 //
 end // end of [else]
 //
-end // end of [xemit01_l1tmp]
+end // end of [js1emit_l1tmp]
 //
 (* ****** ****** *)
 
 implement
-xemit01_l1val
+js1emit_l1val
 (out, l1v0) =
 (
 case+
@@ -750,57 +753,57 @@ l1v0.node() of
 //
 |
 L1VALi00(int) =>
-xemit01_lvi00(out, int)
+js1emit_lvi00(out, int)
 |
 L1VALb00(btf) =>
-xemit01_lvb00(out, btf)
+js1emit_lvb00(out, btf)
 |
 L1VALc00(chr) =>
-xemit01_lvc00(out, chr)
+js1emit_lvc00(out, chr)
 (*
 |
 L1VALs00(str) =>
-xemit01_lvs00(out, str)
+js1emit_lvs00(out, str)
 *)
 //
 |
 L1VALint(tok) =>
-xemit01_lvint(out, tok)
+js1emit_lvint(out, tok)
 |
 L1VALbtf(tok) =>
-xemit01_lvbtf(out, tok)
+js1emit_lvbtf(out, tok)
 |
 L1VALchr(tok) =>
-xemit01_lvchr(out, tok)
+js1emit_lvchr(out, tok)
 |
 L1VALstr(tok) =>
-xemit01_lvstr(out, tok)
+js1emit_lvstr(out, tok)
 |
 L1VALflt(tok) =>
-xemit01_lvflt(out, tok)
+js1emit_lvflt(out, tok)
 //
 |
 L1VALtop(tok) =>
-xemit01_lvtop(out, tok)
+js1emit_lvtop(out, tok)
 //
 |
 L1VALnam(nam) =>
-xemit01_lvnam(out, nam)
+js1emit_lvnam(out, nam)
 //
 |
 L1VALexn(exn1) =>
-xemit01_l1exn(out, exn1)
+js1emit_l1exn(out, exn1)
 |
 L1VALtmp(tmp1) =>
-xemit01_l1tmp(out, tmp1)
+js1emit_l1tmp(out, tmp1)
 //
 |
 L1VALcon(l1c1) =>
-xemit01_l1con(out, l1c1)
+js1emit_l1con(out, l1c1)
 //
 |
 L1VALcfun(hdc1) =>
-xemit01_h0cst(out, hdc1)
+js1emit_h0cst(out, hdc1)
 |
 L1VALctmp
 ( l1c1, ldcl) =>
@@ -813,7 +816,7 @@ L1VALctmp
 //
 |
 L1VALvfix(hdv1) =>
-xemit01_h0var(out, hdv1)
+js1emit_h0var(out, hdv1)
 //
 |
 L1VALflat(l1v1) =>
@@ -823,7 +826,7 @@ L1VALflat(l1v1) =>
   ( out
   , "XATS2JS_lval_get(")
   val () =
-  xemit01_l1val(out, l1v1)
+  js1emit_l1val(out, l1v1)
   val () = fprint(out, ")")
 }
 (*
@@ -831,7 +834,7 @@ L1VALflat(l1v1) =>
 L1VALtalf(l1v1) =>
 {
   val () =
-  xemit01_l1val(out, l1v1)
+  js1emit_l1val(out, l1v1)
 }
 *)
 //
@@ -842,7 +845,7 @@ L1VALctag(l1v1) =>
   fprint
   ( out, "XATS2JS_ctag(" )
   val () =
-  xemit01_l1val(out, l1v1)
+  js1emit_l1val(out, l1v1)
   val () = fprint(out, ")")
 }
 |
@@ -852,7 +855,7 @@ val () =
 fprint
 (out, "XATS2JS_carg(")
 val () =
-xemit01_l1val(out, l1v1)
+js1emit_l1val(out, l1v1)
 val () =
 fprint!(out, ", ", argi+1, ")")
 }
@@ -864,7 +867,7 @@ fprint
 ( out
 , "XATS2JS_new_cofs(")
 val () =
-xemit01_l1val(out, l1v1)
+js1emit_l1val(out, l1v1)
 val () =
 fprint!(out, ",", idx2+1, ")")
 }
@@ -876,7 +879,7 @@ val () =
 fprint
 (out, "XATS2JS_targ(")
 val () =
-xemit01_l1val(out, l1v1)
+js1emit_l1val(out, l1v1)
 val () =
 fprint!(out, ", ", argi+1, ")")
 }
@@ -888,7 +891,7 @@ fprint!
 ( out
 , "XATS2JS_new_tptr(")
 val () =
-xemit01_l1val(out, l1v1)
+js1emit_l1val(out, l1v1)
 val () =
 fprint!(out, ",", argi+1, ")")
 }
@@ -901,9 +904,9 @@ L1VALeval1(l1v1) =>
   ( out
   , "XATS2JS_lval_get(")
   val () =
-  xemit01_l1val(out, l1v1)
+  js1emit_l1val(out, l1v1)
   val () =
-  xemit01_txt00( out, ")" )
+  js1emit_txt00( out, ")" )
 }
 //
 |
@@ -914,9 +917,9 @@ L1VALeval2(l1v1) =>
   ( out
   , "XATS2JS_lazy_eval(")
   val () =
-  xemit01_l1val(out, l1v1)
+  js1emit_l1val(out, l1v1)
   val () =
-  xemit01_txt00( out, ")" )
+  js1emit_txt00( out, ")" )
 }
 //
 |
@@ -927,9 +930,9 @@ L1VALeval3(l1v1) =>
   ( out
   , "XATS2JS_llazy_eval(")
   val () =
-  xemit01_l1val(out, l1v1)
+  js1emit_l1val(out, l1v1)
   val () =
-  xemit01_txt00( out, ")" )
+  js1emit_txt00( out, ")" )
 }
 //
 |
@@ -940,9 +943,9 @@ L1VALfree3(l1v1) =>
   ( out
   , "XATS2JS_llazy_free(")
   val () =
-  xemit01_l1val(out, l1v1)
+  js1emit_l1val(out, l1v1)
   val () =
-  xemit01_txt00( out, ")" )
+  js1emit_txt00( out, ")" )
 }
 //
 | L1VALnone0() =>
@@ -957,7 +960,7 @@ L1VALfree3(l1v1) =>
 (*
 val () =
 fprintln!
-(out, "xemit01_l1val: l1v0 = ", l1v0)
+(out, "js1emit_l1val: l1v0 = ", l1v0)
 *)
 //
 fun
@@ -998,19 +1001,19 @@ val opt = fdef(limp)
 in
 case+ opt of
 | None() =>
-  xemit01_l1cst(out, l1c1)
+  js1emit_l1cst(out, l1c1)
 | Some(l1v1) =>
-  xemit01_l1val(out, l1v1)
+  js1emit_l1val(out, l1v1)
 end
-| _ (*else*) => xemit01_l1cst(out, l1c1)
+| _ (*else*) => js1emit_l1cst(out, l1c1)
 end // end of [aux_l1cst]
 //
-} (*where*) // end of [xemit01_l1val]
+} (*where*) // end of [js1emit_l1val]
 
 (* ****** ****** *)
 //
 implement
-xemit01_l1pck
+js1emit_l1pck
 ( out, pck1 ) =
 {
   val () = fprintln!(out, pck1)
@@ -1019,7 +1022,7 @@ xemit01_l1pck
 (* ****** ****** *)
 
 fun
-xemit01_l1pcklst
+js1emit_l1pcklst
 ( out
 : FILEref
 , icas: int
@@ -1041,44 +1044,44 @@ fprintln!
 L1PCKi00(int, l1v) =>
 {
 val () =
-xemit01_txt00(out, "if(")
+js1emit_txt00(out, "if(")
 val () =
-xemit01_int00( out, int )
+js1emit_int00( out, int )
 val () =
-xemit01_txt00(out, "!==")
+js1emit_txt00(out, "!==")
 val () =
-xemit01_l1val( out, l1v )
+js1emit_l1val( out, l1v )
 val () =
-xemit01_txtln(out, ") break;")
+js1emit_txtln(out, ") break;")
 }
 |
 L1PCKb00(btf, l1v) =>
 {
 val () =
-xemit01_txt00(out, "if(")
+js1emit_txt00(out, "if(")
 val () =
-xemit01_btf00( out, btf )
+js1emit_btf00( out, btf )
 val () =
-xemit01_txt00(out, "!==")
+js1emit_txt00(out, "!==")
 val () =
-xemit01_l1val( out, l1v )
+js1emit_l1val( out, l1v )
 val () =
-xemit01_txtln(out, ") break;")
+js1emit_txtln(out, ") break;")
 }
 //
 |
 L1PCKint(int, l1v) =>
 {
 val () =
-xemit01_txt00(out, "if(")
+js1emit_txt00(out, "if(")
 val () =
-xemit01_lvint( out, int )
+js1emit_lvint( out, int )
 val () =
-xemit01_txt00(out, "!==")
+js1emit_txt00(out, "!==")
 val () =
-xemit01_l1val( out, l1v )
+js1emit_l1val( out, l1v )
 val () =
-xemit01_txtln(out, ") break;")
+js1emit_txtln(out, ") break;")
 }
 //
 //
@@ -1086,60 +1089,60 @@ xemit01_txtln(out, ") break;")
 L1PCKbtf(btf, l1v) =>
 {
 val () =
-xemit01_txt00(out, "if(")
+js1emit_txt00(out, "if(")
 val () =
-xemit01_lvbtf( out, btf )
+js1emit_lvbtf( out, btf )
 val () =
-xemit01_txt00(out, "!==")
+js1emit_txt00(out, "!==")
 val () =
-xemit01_l1val( out, l1v )
+js1emit_l1val( out, l1v )
 val () =
-xemit01_txtln(out, ") break;")
+js1emit_txtln(out, ") break;")
 }
 //
 |
 L1PCKchr(chr, l1v) =>
 {
 val () =
-xemit01_txt00(out, "if(")
+js1emit_txt00(out, "if(")
 val () =
-xemit01_lvchr( out, chr )
+js1emit_lvchr( out, chr )
 val () =
-xemit01_txt00(out, "!==")
+js1emit_txt00(out, "!==")
 val () =
-xemit01_l1val( out, l1v )
+js1emit_l1val( out, l1v )
 val () =
-xemit01_txtln(out, ") break;")
+js1emit_txtln(out, ") break;")
 }
 //
 |
 L1PCKstr(str, l1v) =>
 {
 val () =
-xemit01_txt00(out, "if(")
+js1emit_txt00(out, "if(")
 val () =
-xemit01_lvstr( out, str )
+js1emit_lvstr( out, str )
 val () =
-xemit01_txt00(out, "!==")
+js1emit_txt00(out, "!==")
 val () =
-xemit01_l1val( out, l1v )
+js1emit_l1val( out, l1v )
 val () =
-xemit01_txtln(out, ") break;")
+js1emit_txtln(out, ") break;")
 }
 //
 |
 L1PCKcon(l1c, l1v) =>
 {
 val () =
-xemit01_txt00(out, "if(")
+js1emit_txt00(out, "if(")
 val () =
-xemit01_l1con( out, l1c )
+js1emit_l1con( out, l1c )
 val () =
-xemit01_txt00(out, "!==")
+js1emit_txt00(out, "!==")
 val () =
-xemit01_l1val( out, l1v )
+js1emit_l1val( out, l1v )
 val () =
-xemit01_txtln(out, ") break;")
+js1emit_txtln(out, ") break;")
 }
 //
 |
@@ -1159,17 +1162,17 @@ L1PCKtup(knd0, pcks) =>
 L1PCKgexp(l1v1, blk1) =>
 {
 val () =
-xemit01_l1blk(out, blk1)
+js1emit_l1blk(out, blk1)
 val () =
-xemit01_txt00(out, "if(")
+js1emit_txt00(out, "if(")
 val () =
-xemit01_l1val(out, l1v1)
+js1emit_l1val(out, l1v1)
 val () =
-xemit01_txt00(out, "!==")
+js1emit_txt00(out, "!==")
 val () =
-xemit01_txt00(out, "true")
+js1emit_txt00(out, "true")
 val () =
-xemit01_txtln(out, ") break;")
+js1emit_txtln(out, ") break;")
 }
 //
 |
@@ -1210,32 +1213,32 @@ list_cons
 (pck1, pcks) =>
 let
 val () =
-xemit01_txtln
+js1emit_txtln
 ( out, "do {" )
 //
 val () = auxpck0(pck1)
 //
 val () =
-xemit01_l1tmp(out, tcas)
+js1emit_l1tmp(out, tcas)
 val () =
 fprint!
 (out, " = ", icas, ";\n")
 val () =
-xemit01_txtln
+js1emit_txtln
 ( out, "} while(false);")
 val () =
-xemit01_txt00(out, "if(")
+js1emit_txt00(out, "if(")
 val () =
-xemit01_l1tmp( out, tcas )
+js1emit_l1tmp( out, tcas )
 val () =
-xemit01_txt00( out, " > 0) break;\n")
+js1emit_txt00( out, " > 0) break;\n")
 //
 in
-  xemit01_l1pcklst
+  js1emit_l1pcklst
   (out, icas+1, tcas, pcks)
 end (*let*)
 //
-end (*let*) // end of [xemit01_pcklst]
+end (*let*) // end of [js1emit_pcklst]
 
 (* ****** ****** *)
 
@@ -1249,11 +1252,11 @@ aux_mov
 : l1cmd): void =
 {
 val () =
-xemit01_l1tmp(out, tres)
+js1emit_l1tmp(out, tres)
 val () =
-xemit01_txt00(out, " = ")
+js1emit_txt00(out, " = ")
 val () =
-xemit01_l1val(out, l1v1)
+js1emit_l1val(out, l1v1)
 } where
 {
 val-
@@ -1269,12 +1272,12 @@ aux_con
 : l1cmd): void =
 {
 val () =
-xemit01_l1tmp(out, tres)
+js1emit_l1tmp(out, tres)
 val () =
-xemit01_txt00(out, " = ")
+js1emit_txt00(out, " = ")
 //
 val () =
-xemit01_txt00(out, "[")
+js1emit_txt00(out, "[")
 //
 local
 fun
@@ -1296,8 +1299,8 @@ val () =
 if
 (n0 > 0)
 then
-xemit01_txt00(out, ", ")
-val () = xemit01_l1val(out, x0)
+js1emit_txt00(out, ", ")
+val () = js1emit_l1val(out, x0)
 } (* list_cons *)
 )
 in (*in-of-local*)
@@ -1308,10 +1311,10 @@ val-
 L1VALcon
 ( l1c0 ) = l1f0.node()
 in
-xemit01_l1con(out, l1c0)
+js1emit_l1con(out, l1c0)
 end
 val () = loop( 1, l1vs )
-val () = xemit01_txt00(out, "]")
+val () = js1emit_txt00(out, "]")
 //
 end (* end of [local] *)
 //
@@ -1333,9 +1336,9 @@ aux_tup
 : l1cmd): void =
 {
 val () =
-xemit01_l1tmp(out, tres)
+js1emit_l1tmp(out, tres)
 val () =
-xemit01_txt00(out, " = ")
+js1emit_txt00(out, " = ")
 //
 local
 fun
@@ -1357,9 +1360,9 @@ val () =
 if
 (n0 > 0)
 then
-xemit01_txt00(out, ", ")
+js1emit_txt00(out, ", ")
 val () =
-xemit01_l1val( out, x0 )
+js1emit_l1val( out, x0 )
 } (* list_cons *)
 )
 in(* in-of-local *)
@@ -1373,7 +1376,7 @@ else // boxed
 fprint!(out, "[",  0)
 //
 val () = loop( 1, l1vs )
-val () = xemit01_txt00(out, "]")
+val () = js1emit_txt00(out, "]")
 //
 end (* end of [local] *)
 //
@@ -1395,12 +1398,12 @@ aux_app
 : l1cmd): void =
 {
 val () =
-xemit01_l1tmp(out, tres)
+js1emit_l1tmp(out, tres)
 val () =
-xemit01_txt00(out, " = ")
+js1emit_txt00(out, " = ")
 //
 val () =
-xemit01_l1val( out, l1f0 )
+js1emit_l1val( out, l1f0 )
 //
 local
 fun
@@ -1423,19 +1426,19 @@ val () =
 if
 (n0 > 0)
 then
-xemit01_txt00(out, ", ")
+js1emit_txt00(out, ", ")
 //
 val () =
-xemit01_l1val( out, x0 )
+js1emit_l1val( out, x0 )
 //
 } (* list_cons *)
 )
 in(* in-of-local *)
 //
 val () =
-xemit01_txt00(out, "(")
+js1emit_txt00(out, "(")
 val () = loop( 0, l1vs )
-val () = xemit01_txt00(out, ")")
+val () = js1emit_txt00(out, ")")
 //
 end (* end of [local] *)
 //
@@ -1461,30 +1464,30 @@ val+
 L1LAMEXP(rcd) = l1am
 //
 val () =
-xemit01_l1tmp
+js1emit_l1tmp
 ( out, tres )
 val () =
-xemit01_txt00
+js1emit_txt00
 (out, " =\nfunction")
 //
 val
 narg =
-xemit01_h0faglst
+js1emit_h0faglst
 ( out
 , rcd.lev
 , rcd.hfg, 0(*base*))
-val () = xemit01_newln(out)
+val () = js1emit_newln(out)
 //
 val () =
-xemit01_txtln(out, "{")
+js1emit_txtln(out, "{")
 //
 val () =
-xemit01_ftmpdecs(out, rcd.lts)
+js1emit_ftmpdecs(out, rcd.lts)
 //
 val () =
-xemit01_l1blk(out, rcd.hfg_blk)
+js1emit_l1blk(out, rcd.hfg_blk)
 val () =
-xemit01_l1blk(out, rcd.def_blk)
+js1emit_l1blk(out, rcd.def_blk)
 val () =
 (
 case+
@@ -1496,9 +1499,9 @@ Some(res) =>
 {
 //
 val () =
-xemit01_txt00(out, "return ")
-val () = xemit01_l1val(out, res)
-val () = xemit01_txt00(out, ";\n")
+js1emit_txt00(out, "return ")
+val () = js1emit_l1val(out, res)
+val () = js1emit_txt00(out, ";\n")
 //
 }
 ) : void // end-of-val
@@ -1527,33 +1530,33 @@ val+
 L1FIXEXP(rcd) = lfix
 //
 val () =
-xemit01_l1tmp
+js1emit_l1tmp
 ( out, tres )
 val () =
-xemit01_txt00
+js1emit_txt00
 ( out, " =\nfunction\n" )
 //
 val () =
-xemit01_h0var(out, rcd.nam)
+js1emit_h0var(out, rcd.nam)
 //
 val
 narg =
-xemit01_h0faglst
+js1emit_h0faglst
 ( out
 , rcd.lev
 , rcd.hfg, 0(*base*))
-val () = xemit01_newln(out)
+val () = js1emit_newln(out)
 //
 val () =
-xemit01_txtln(out, "{")
+js1emit_txtln(out, "{")
 //
 val () =
-xemit01_ftmpdecs(out, rcd.lts)
+js1emit_ftmpdecs(out, rcd.lts)
 //
 val () =
-xemit01_l1blk(out, rcd.hfg_blk)
+js1emit_l1blk(out, rcd.hfg_blk)
 val () =
-xemit01_l1blk(out, rcd.def_blk)
+js1emit_l1blk(out, rcd.def_blk)
 val () =
 (
 case+
@@ -1565,9 +1568,9 @@ Some(res) =>
 {
 //
 val () =
-xemit01_txt00(out, "return ")
-val () = xemit01_l1val(out, res)
-val () = xemit01_txt00(out, ";\n")
+js1emit_txt00(out, "return ")
+val () = js1emit_l1val(out, res)
+val () = js1emit_txt00(out, ";\n")
 //
 }
 ) : void // end-of-val
@@ -1598,11 +1601,11 @@ L1BLKnone() => ()
 L1BLKsome(xs) =>
 {
 val () =
-xemit01_txtln( out, "{" )
+js1emit_txtln( out, "{" )
 val () =
-xemit01_l1cmdlst(out, xs)
+js1emit_l1cmdlst(out, xs)
 val () =
-xemit01_txtln( out, "}" )
+js1emit_txtln( out, "}" )
 }
 ) where
 {
@@ -1617,7 +1620,7 @@ aux_dcl
 , lcmd
 : l1cmd): void =
 (
-  xemit01_l1dcl(out, ldcl)
+  js1emit_l1dcl(out, ldcl)
 ) where
 {
 val-
@@ -1635,22 +1638,22 @@ aux_ift1
 {
 //
 val() =
-xemit01_txtln(out, "if")
-val() = xemit01_txt00(out, "(")
-val() = xemit01_l1val(out, l1v1)
-val() = xemit01_txtln(out, ")")
+js1emit_txtln(out, "if")
+val() = js1emit_txt00(out, "(")
+val() = js1emit_l1val(out, l1v1)
+val() = js1emit_txtln(out, ")")
 //
 val() =
 fprint!(out, "// then\n")
-val() = xemit01_txtln(out, "{")
-val() = xemit01_l1blk(out, blk2)
-val() = xemit01_txtln(out, "} // if-then")
+val() = js1emit_txtln(out, "{")
+val() = js1emit_l1blk(out, blk2)
+val() = js1emit_txtln(out, "} // if-then")
 //
 val() =
-xemit01_txtln(out, "else")
-val() = xemit01_txtln(out, "{")
-val() = xemit01_l1blk(out, blk3)
-val() = xemit01_txtln(out, "} // if-else")
+js1emit_txtln(out, "else")
+val() = js1emit_txtln(out, "{")
+val() = js1emit_l1blk(out, blk3)
+val() = js1emit_txtln(out, "} // if-else")
 //
 } where
 {
@@ -1667,7 +1670,7 @@ local
 
 #define
 auxpcklst
-xemit01_l1pcklst
+js1emit_l1pcklst
 
 (* ****** ****** *)
 
@@ -1686,7 +1689,7 @@ auxblk0
 : FILEref
 , blk1
 : l1blk ) : void =
-xemit01_l1blk(out, blk1)
+js1emit_l1blk(out, blk1)
 //
 in
 case+ blks of
@@ -1700,7 +1703,7 @@ fprint!
 (out, "case ", icas, ":\n")
 val () = auxblk0(out, blk1)
 val () =
-xemit01_txt00(out, "break;\n")
+js1emit_txt00(out, "break;\n")
 in
 auxblklst(out, icas+1, tcas, blks)
 end (* end-of-let *)
@@ -1721,14 +1724,14 @@ aux_case
 {
 //
 val () =
-xemit01_txt00(out, "{\n")
+js1emit_txt00(out, "{\n")
 //
 val () =
-xemit01_l1tmp(out, tcas)
+js1emit_l1tmp(out, tcas)
 val () =
-xemit01_txtln(out, " = 0;")
+js1emit_txtln(out, " = 0;")
 val () =
-xemit01_txt00(out, "do {\n")
+js1emit_txt00(out, "do {\n")
 val () =
 auxpcklst(out, 1(*i*), tcas, pcks)
 val () =
@@ -1738,12 +1741,12 @@ val () =
 fprintln!( out, "} // case-patck0" )
 //
 val () =
-xemit01_txt00
+js1emit_txt00
 (out, "switch\n(")
 val () =
-xemit01_l1tmp(out, tcas)
+js1emit_l1tmp(out, tcas)
 val () =
-xemit01_txt00(out, ") {\n")
+js1emit_txt00(out, ") {\n")
 //
 val () =
 auxblklst(out, 1(*i*), tcas, blks)
@@ -1753,7 +1756,7 @@ fprint!
 ( out
 , "default: XATS2JS_matcherr0();\n")
 val () =
-xemit01_txtln(out, "} // case-switch")
+js1emit_txtln(out, "} // case-switch")
 //
 } where
 {
@@ -1781,34 +1784,34 @@ aux_try0
 val () =
 fprint!(out, "try\n{\n")
 val () =
-xemit01_l1blk(out, blk1)
+js1emit_l1blk(out, blk1)
 val () =
 fprint!(out, "}//try\n")
 val () =
 fprint!(out, "catch\n(")
 val () =
-xemit01_l1exn(out, texn)
+js1emit_l1exn(out, texn)
 val () =
-xemit01_txt00(out, ") {\n")
+js1emit_txt00(out, ") {\n")
 //
 val () =
-xemit01_l1tmp(out, tcas)
+js1emit_l1tmp(out, tcas)
 val () =
-xemit01_txtln(out, " = 0;")
+js1emit_txtln(out, " = 0;")
 val () =
-xemit01_txt00(out, "do {\n")
+js1emit_txt00(out, "do {\n")
 val () =
 auxpcklst(out, 1(*i*), tcas, pcks)
 val () =
 fprint!( out, "} while(false);\n" )
 //
 val () =
-xemit01_txt00
+js1emit_txt00
 (out, "switch\n(")
 val () =
-xemit01_l1tmp(out, tcas)
+js1emit_l1tmp(out, tcas)
 val () =
-xemit01_txt00(out, ") {\n")
+js1emit_txt00(out, ") {\n")
 //
 val () =
 auxblklst(out, 1(*i*), tcas, blks)
@@ -1820,13 +1823,13 @@ val () =
 fprint!
 (out, "XATS2JS_reraise(")
 val () =
-xemit01_l1exn( out, texn )
+js1emit_l1exn( out, texn )
 val () = fprint!(out, ");\n")
 //
 val () =
-xemit01_txtln(out, "} // with-switch")
+js1emit_txtln(out, "} // with-switch")
 val () =
-xemit01_txtln(out, "} // try0-with-catch")
+js1emit_txtln(out, "} // try0-with-catch")
 //
 } where
 {
@@ -1877,15 +1880,15 @@ L1PCKany() => ()
 L1PCKcon(l1c, l1v) =>
 {
 val () =
-xemit01_txt00(out, "if(")
+js1emit_txt00(out, "if(")
 val () =
-xemit01_l1con( out, l1c )
+js1emit_l1con( out, l1c )
 val () =
-xemit01_txt00(out, "!==")
+js1emit_txt00(out, "!==")
 val () =
-xemit01_l1val( out, l1v )
+js1emit_l1val( out, l1v )
 val () =
-xemit01_txtln
+js1emit_txtln
 (out, ") XATS2JS_patckerr0();")
 }
 |
@@ -1935,7 +1938,7 @@ L1CMDflat
 , l1v1) = lcmd.node()
 //
 val () =
-xemit01_l1tmp(out, tres)
+js1emit_l1tmp(out, tres)
 //
 in
 {
@@ -1948,9 +1951,9 @@ fprint
 ( out
 , "XATS2JS_lval_get(")
 val () =
-xemit01_l1val(out, l1v1)
+js1emit_l1val(out, l1v1)
 val () =
-xemit01_txt00( out, ")" )
+js1emit_txt00( out, ")" )
 //
 }
 end // end of [aux_flat]
@@ -1975,7 +1978,7 @@ L1CMDcarg
 , idx2) = lcmd.node()
 //
 val () =
-xemit01_l1tmp(out, tres)
+js1emit_l1tmp(out, tres)
 //
 in
 {
@@ -1984,7 +1987,7 @@ val () =
 fprint( out, " = " )
 //
 val () =
-xemit01_l1val(out, l1v1)
+js1emit_l1val(out, l1v1)
 val () =
 fprint!(out, "[", idx2+1, "]")
 //
@@ -2011,7 +2014,7 @@ L1CMDcofs
 , idx2) = lcmd.node()
 //
 val () =
-xemit01_l1tmp(out, tres)
+js1emit_l1tmp(out, tres)
 //
 in
 {
@@ -2024,7 +2027,7 @@ fprint
 ( out
 , "XATS2JS_new_cofs(")
 val () =
-xemit01_l1val(out, l1v1)
+js1emit_l1val(out, l1v1)
 val () =
 fprint!(out, ",", idx2+1, ")")
 //
@@ -2051,7 +2054,7 @@ L1CMDtarg
 , idx2) = lcmd.node()
 //
 val () =
-xemit01_l1tmp(out, tres)
+js1emit_l1tmp(out, tres)
 //
 in
 {
@@ -2060,7 +2063,7 @@ val () =
 fprint( out, " = " )
 //
 val () =
-xemit01_l1val(out, l1v1)
+js1emit_l1val(out, l1v1)
 val () =
 fprint!(out, "[", idx2+1, "]")
 //
@@ -2087,7 +2090,7 @@ L1CMDtofs
 , idx2) = lcmd.node()
 //
 val () =
-xemit01_l1tmp(out, tres)
+js1emit_l1tmp(out, tres)
 //
 in
 {
@@ -2100,7 +2103,7 @@ fprint
 ( out
 , "XATS2JS_new_tofs(")
 val () =
-xemit01_l1val(out, l1v1)
+js1emit_l1val(out, l1v1)
 val () =
 fprint!(out, ",", idx2+1, ")")
 //
@@ -2126,7 +2129,7 @@ L1CMDlazy
 , l1v1) = lcmd.node()
 //
 val () =
-xemit01_l1tmp(out, tres)
+js1emit_l1tmp(out, tres)
 //
 in
 {
@@ -2139,9 +2142,9 @@ fprint
 ( out
 , "XATS2JS_new_lazy(")
 val () =
-xemit01_l1val(out, l1v1)
+js1emit_l1val(out, l1v1)
 val () =
-xemit01_txt00( out, ")" )
+js1emit_txt00( out, ")" )
 //
 }
 end // end of [aux_lazy]
@@ -2166,7 +2169,7 @@ L1CMDllazy
 , l1v2) = lcmd.node()
 //
 val () =
-xemit01_l1tmp(out, tres)
+js1emit_l1tmp(out, tres)
 //
 in
 {
@@ -2179,13 +2182,13 @@ fprint
 ( out
 , "XATS2JS_new_llazy(")
 val () =
-xemit01_l1val(out, l1v1)
+js1emit_l1val(out, l1v1)
 val () =
-xemit01_txt00( out, "," )
+js1emit_txt00( out, "," )
 val () =
-xemit01_l1val(out, l1v2)
+js1emit_l1val(out, l1v2)
 val () =
-xemit01_txt00( out, ")" )
+js1emit_txt00( out, ")" )
 //
 }
 end // end of [aux_llazy]
@@ -2208,7 +2211,7 @@ L1CMDexcon
 ( tmp1 ) = lcmd.node()
 //
 val () =
-xemit01_l1tmp(out, tmp1)
+js1emit_l1tmp(out, tmp1)
 //
 in
 {
@@ -2247,7 +2250,7 @@ fprint
 ( out
 , "XATS2JS_raise(")
 val () =
-xemit01_l1val(out, l1v1)
+js1emit_l1val(out, l1v1)
 val () = fprint(out, ")")
 }
 end // end of [aux_raise]
@@ -2277,11 +2280,11 @@ fprint
 ( out
 , "XATS2JS_lval_set(")
 val () =
-xemit01_l1val(out, l1v1)
+js1emit_l1val(out, l1v1)
 val () =
-xemit01_txt00(out, ", ")  
+js1emit_txt00(out, ", ")  
 val () =
-xemit01_l1val(out, l1v2)
+js1emit_l1val(out, l1v2)
 val () = fprint(out, ")")
 }
 end // end of [aux_assgn]
@@ -2305,7 +2308,7 @@ L1CMDeval1
 , l1v1 ) = lcmd.node()
 //
 val () =
-xemit01_l1tmp(out, tres)
+js1emit_l1tmp(out, tres)
 //
 in
 {
@@ -2318,9 +2321,9 @@ fprint
 ( out
 , "XATS2JS_lval_get(")
 val () =
-xemit01_l1val(out, l1v1)
+js1emit_l1val(out, l1v1)
 val () =
-xemit01_txt00( out, ")" )
+js1emit_txt00( out, ")" )
 }
 end // end of [aux_eval1]
 
@@ -2343,7 +2346,7 @@ L1CMDeval2
 , l1v1 ) = lcmd.node()
 //
 val () =
-xemit01_l1tmp(out, tres)
+js1emit_l1tmp(out, tres)
 //
 in
 {
@@ -2356,9 +2359,9 @@ fprint
 ( out
 , "XATS2JS_lazy_eval(")
 val () =
-xemit01_l1val(out, l1v1)
+js1emit_l1val(out, l1v1)
 val () =
-xemit01_txt00( out, ")" )
+js1emit_txt00( out, ")" )
 }
 end // end of [aux_eval2]
 
@@ -2381,7 +2384,7 @@ L1CMDeval3
 , l1v1 ) = lcmd.node()
 //
 val () =
-xemit01_l1tmp(out, tres)
+js1emit_l1tmp(out, tres)
 //
 in
 {
@@ -2394,9 +2397,9 @@ fprint
 ( out
 , "XATS2JS_llazy_eval(")
 val () =
-xemit01_l1val(out, l1v1)
+js1emit_l1val(out, l1v1)
 val () =
-xemit01_txt00( out, ")" )
+js1emit_txt00( out, ")" )
 }
 end // end of [aux_eval3]
 
@@ -2419,7 +2422,7 @@ L1CMDfree3
 , l1v1 ) = lcmd.node()
 //
 val () =
-xemit01_l1tmp(out, tres)
+js1emit_l1tmp(out, tres)
 //
 in
 {
@@ -2432,9 +2435,9 @@ fprint
 ( out
 , "XATS2JS_llazy_free(")
 val () =
-xemit01_l1val(out, l1v1)
+js1emit_l1val(out, l1v1)
 val () =
-xemit01_txt00( out, ")" )
+js1emit_txt00( out, ")" )
 }
 end // end of [aux_free3]
 
@@ -2445,7 +2448,7 @@ in(* in-of-local *)
 (* ****** ****** *)
 
 implement
-xemit01_l1cmd
+js1emit_l1cmd
 (out, lcmd) =
 (
 case+
@@ -2533,11 +2536,11 @@ L1CMDfree3 _ => aux_free3(out, lcmd)
 |
 _ (* else *) => fprint!(out, "//", lcmd)
 //
-) (*xemit01_l1cmd*) end // end of [local]
+) (*js1emit_l1cmd*) end // end of [local]
 
 (* ****** ****** *)
 implement
-xemit01_l1cmdlst
+js1emit_l1cmdlst
   (out, cmds) =
 (
   loop( cmds )
@@ -2557,15 +2560,15 @@ list_cons
 loop(cmds) where
 {
 val()=
-xemit01_l1cmd(out, x0)
+js1emit_l1cmd(out, x0)
 val()=
-xemit01_txtln(out, ";")
+js1emit_txtln(out, ";")
 }
 )
-} (*end*) // xemit01_l1cmdlst
+} (*end*) // js1emit_l1cmdlst
 (* ****** ****** *)
 implement
-xemit01_l1blk
+js1emit_l1blk
 (out, blk0) =
 (
 case+ blk0 of
@@ -2575,13 +2578,13 @@ L1BLKnone() => ()
 L1BLKsome(cmds) =>
 {
   val() =
-  xemit01_l1cmdlst(out, cmds)
+  js1emit_l1cmdlst(out, cmds)
 }
-) (* end of [xemit01_l1blk] *)
+) (* end of [js1emit_l1blk] *)
 (* ****** ****** *)
 
 implement
-xemit01_fargdecs
+js1emit_fargdecs
 ( out
 , narg, flev) =
 (
@@ -2605,12 +2608,12 @@ fprint!
 , "a", flev, "y", i1, ";\n")
 }
 // else () // end-of-else
-} (* end of [xemit01_fargdecs] *)
+} (* end of [js1emit_fargdecs] *)
 
 (* ****** ****** *)
 
 implement
-xemit01_ftmpdecs
+js1emit_ftmpdecs
 ( out, tmps ) =
 (
 case+ tmps of
@@ -2625,23 +2628,23 @@ if
 (i0 > 0)
 then
 (
-xemit01_ftmpdecs(out, ts)
+js1emit_ftmpdecs(out, ts)
 )
 else
 (
-xemit01_ftmpdecs(out, ts)
+js1emit_ftmpdecs(out, ts)
 ) where
 {
 //
 val () =
-xemit01_txt00(out, "let ")
+js1emit_txt00(out, "let ")
 //
-val () = xemit01_l1tmp(out, t1)
-val () = xemit01_txtln(out, ";")
+val () = js1emit_l1tmp(out, t1)
+val () = js1emit_txtln(out, ";")
 //
 } (* end of [else] *)
 end // end of [let]
-) (* end of [xemit01_ftmpdecs] *)
+) (* end of [js1emit_ftmpdecs] *)
 
 (* ****** ****** *)
 
@@ -2670,7 +2673,7 @@ aux_h0cst
 : FILEref
 , dcl0: l1dcl
 , hdc1: h0cst): void =
-xemit01_h0cst(out, hdc1)
+js1emit_h0cst(out, hdc1)
 
 (* ****** ****** *)
 
@@ -2711,10 +2714,10 @@ in
 ifcase
 |
 isfnx(knd0) =>
-xemit01_l1dcl_fnx(out, dcl0)
+js1emit_l1dcl_fnx(out, dcl0)
 |
 _(* else *) =>
-xemit01_l1dcl_fun(out, dcl0)
+js1emit_l1dcl_fun(out, dcl0)
 end // end of [aux_fundclst]
 
 (* ****** ****** *)
@@ -2736,9 +2739,9 @@ val+
 L1VALDECL(rcd) = lvd0
 //
 val () =
-xemit01_txtln(out, "{")
+js1emit_txtln(out, "{")
 val () =
-xemit01_l1blk(out, rcd.def_blk)
+js1emit_l1blk(out, rcd.def_blk)
 val () =
 fprintln!
 ( out, "} // val(", rcd.pat, ")" )
@@ -2794,15 +2797,15 @@ val+
 L1VARDECL(rcd) = lvd0
 //
 val () =
-xemit01_txtln(out, "{")
+js1emit_txtln(out, "{")
 //
 val () =
-xemit01_l1blk(out, rcd.ini_blk)
+js1emit_l1blk(out, rcd.ini_blk)
 //
 val () =
 let
 val () =
-xemit01_l1tmp(out, rcd.hdv_tmp)
+js1emit_l1tmp(out, rcd.hdv_tmp)
 in(*in-of-let*)
 //
 case+
@@ -2824,7 +2827,7 @@ Some(ini) =>
   ( out
   , " = XATS2JS_new_var1(")
   val () =
-  xemit01_l1val( out, ini )
+  js1emit_l1val( out, ini )
   val () = fprint!(out, ");\n")
 }
 //
@@ -2924,28 +2927,28 @@ val+
 L1IMPLMNT(rcd) = limp
 //
 val () =
-xemit01_txtln
+js1emit_txtln
 (out, "// { // val-implmnt")
 //
 val () =
-xemit01_ftmpdecs(out, rcd.lts)
+js1emit_ftmpdecs(out, rcd.lts)
 //
 val () =
-xemit01_l1blk(out, rcd.def_blk)
+js1emit_l1blk(out, rcd.def_blk)
 //
 val () =
-xemit01_txtln
+js1emit_txtln
 ( out, "// } // val-implmnt" )
 //
 val () =
-xemit01_txtln
+js1emit_txtln
 ( out, "const // implval/fun" )
 //
 val () =
 aux_h0cst( out, dcl2, rcd.hdc )
 (*
 val () =
-xemit01_h0cst(out, rcd.hdc(*name*))
+js1emit_h0cst(out, rcd.hdc(*name*))
 *)
 //
 in
@@ -2958,9 +2961,9 @@ None() => ()
 Some(res) =>
 {
 //
-val () = xemit01_txt00(out, " = ")
-val () = xemit01_l1val( out, res )
-val () = xemit01_txt00( out, "\n" )
+val () = js1emit_txt00(out, " = ")
+val () = js1emit_l1val( out, res )
+val () = js1emit_txt00( out, "\n" )
 //
 } (* end of [Some] *)
 end (*let*) // end of [aux_implmnt30]
@@ -2983,35 +2986,35 @@ val+
 L1IMPLMNT(rcd) = limp
 //
 val () =
-xemit01_txtln
+js1emit_txtln
 (out, "function")
 //
 val () =
 aux_h0cst(out, dcl2, rcd.hdc)
 (*
 val () =
-xemit01_h0cst(out, hdc1(*name*))
+js1emit_h0cst(out, hdc1(*name*))
 *)
 //
 val
 narg =
-xemit01_h0faglst
+js1emit_h0faglst
 ( out
 , rcd.lev
 , rcd.hfg, 0(*base*))
-val () = xemit01_newln(out)
+val () = js1emit_newln(out)
 //
 val () =
-xemit01_txtln(out, "{")
+js1emit_txtln(out, "{")
 //
 val () =
-xemit01_ftmpdecs
+js1emit_ftmpdecs
 ( out, rcd.lts(*ltmps*) )
 //
 val () =
-xemit01_l1blk(out, rcd.hfg_blk)
+js1emit_l1blk(out, rcd.hfg_blk)
 val () =
-xemit01_l1blk(out, rcd.def_blk)
+js1emit_l1blk(out, rcd.def_blk)
 //
 val () =
 (
@@ -3024,9 +3027,9 @@ Some(res) =>
 {
 //
 val () =
-xemit01_txt00(out, "return ")
-val () = xemit01_l1val(out, res)
-val () = xemit01_txt00(out, ";\n")
+js1emit_txt00(out, "return ")
+val () = js1emit_l1val(out, res)
+val () = js1emit_txt00(out, ";\n")
 //
 }
 ) : void // end-of-val
@@ -3086,7 +3089,7 @@ L1DCLexcptcon
 (hdcs, blk0) = dcl0.node()
 //
 in
-  xemit01_l1blk(out, blk0(*init*))
+  js1emit_l1blk(out, blk0(*init*))
 end (*let*) // end of [aux_excptcon]
 
 (* ****** ****** *)
@@ -3094,7 +3097,7 @@ end (*let*) // end of [aux_excptcon]
 in(*in-of-local*)
 //
 implement
-xemit01_l1dcl
+js1emit_l1dcl
 (out, dcl0) =
 let
 //
@@ -3123,12 +3126,12 @@ val () =
 fprint
 (out, "// { // local\n")
 val () =
-xemit01_l1dclist(out, head)
+js1emit_l1dclist(out, head)
 val () =
 fprint
 (out, "// in-of-local\n")
 val () =
-xemit01_l1dclist(out, body)
+js1emit_l1dclist(out, body)
 val () =
 fprint
 (out, "// } // end-of-local\n")
@@ -3159,7 +3162,7 @@ case+ opt2 of
 None() => ((*void*))
 |
 Some(body) =>
-xemit01_l1dclist(out, body)
+js1emit_l1dclist(out, body)
 )
 val () =
 fprint!
@@ -3207,12 +3210,12 @@ val()=aux_excptcon(out, dcl0)
 val () = fprint!(out, "// ", dcl0)
 }
 //
-end (*xemit01_l1dcl*) end // end-of-local
+end (*js1emit_l1dcl*) end // end-of-local
 
 (* ****** ****** *)
 
 implement
-xemit01_l1dclist
+js1emit_l1dclist
   (out, dcls) =
 (
   auxlst(dcls)
@@ -3232,18 +3235,18 @@ list_cons
 (dcl1, dcls) =>
 let
 val () =
-xemit01_l1dcl
+js1emit_l1dcl
 ( out, dcl1 )
 val () =
-xemit01_newln(out) in auxlst(dcls)
+js1emit_newln(out) in auxlst(dcls)
 end // list_cons]
 ) (* end of [auxlst] *)
-} (*where*) // end of [xemit01_l1dclist]
+} (*where*) // end of [js1emit_l1dclist]
 
 (* ****** ****** *)
 
 implement
-xemit01_package
+js1emit_package
   (out, lpkg) =
 {
 val () = auxtmps(tmps)
@@ -3269,9 +3272,9 @@ list_cons(x0, xs) =>
   auxtmps(xs)) where
 {
 val () =
-xemit01_txt00(out, "var ")
-val () = xemit01_l1tmp(out, x0)
-val () = xemit01_txtln(out, ";")
+js1emit_txt00(out, "var ")
+val () = js1emit_l1tmp(out, x0)
+val () = js1emit_txtln(out, ";")
 } (* list_cons *)
 ) (* end of [auxtmps] *)
 //
@@ -3290,13 +3293,13 @@ let
 val () = xindnt(0)
 *)
 val () =
-xemit01_l1dcl(out, x0)
-val () = xemit01_newln(out)
-val () = xemit01_newln(out) in auxdcls(xs)
+js1emit_l1dcl(out, x0)
+val () = js1emit_newln(out)
+val () = js1emit_newln(out) in auxdcls(xs)
 end // list_cons
 ) (* end of [auxdcls] *)
 //
-} (*where*) // end of [xemit01_program]
+} (*where*) // end of [js1emit_program]
 
 (* ****** ****** *)
 //
@@ -3538,14 +3541,14 @@ aux_h0cst
 : FILEref
 , dcl0: l1dcl
 , hdc1: h0cst): void =
-xemit01_h0cst(out, hdc1)
+js1emit_h0cst(out, hdc1)
 
 in (*in-of-local*)
 
 (* ****** ****** *)
 
 implement
-xemit01_l1dcl_fun
+js1emit_l1dcl_fun
   (out, dcl0) =
 let
 //
@@ -3578,14 +3581,14 @@ val+
 L1FUNDECL(rcd) = lfd0
 //
 val () =
-xemit01_txtln
+js1emit_txtln
 (out, "function")
 //
 val () =
 aux_h0cst(out, dcl0, rcd.hdc)
 (*
 val () =
-xemit01_h0cst(out, rcd.hdc(*name*))
+js1emit_h0cst(out, rcd.hdc(*name*))
 *)
 //
 val narg =
@@ -3600,24 +3603,24 @@ Some
 {
 val
 narg =
-xemit01_h0faglst
+js1emit_h0faglst
 ( out
 , rcd.lev
 , rcd_hfg, 0(*base*) )
-val () = xemit01_newln(out)
+val () = js1emit_newln(out)
 }
 )
 //
 val () =
-xemit01_txtln(out, "{")
+js1emit_txtln(out, "{")
 //
 val () =
-xemit01_ftmpdecs(out, rcd.lts)
+js1emit_ftmpdecs(out, rcd.lts)
 //
 val () =
-xemit01_l1blk(out, rcd.hfg_blk)
+js1emit_l1blk(out, rcd.hfg_blk)
 val () =
-xemit01_l1blk(out, rcd.def_blk)
+js1emit_l1blk(out, rcd.def_blk)
 //
 val () =
 (
@@ -3630,9 +3633,9 @@ Some(res) =>
 {
 //
 val () =
-xemit01_txt00(out, "return ")
-val () = xemit01_l1val(out, res)
-val () = xemit01_txt00(out, ";\n")
+js1emit_txt00(out, "return ")
+val () = js1emit_l1val(out, res)
+val () = js1emit_txt00(out, ";\n")
 //
 }
 ) : void // end-of-val
@@ -3679,14 +3682,14 @@ end where
 (*
   val () =
   println!
-  ("xemit01_l1dcl_fun: dcl0 = ", dcl0)
+  ("js1emit_l1dcl_fun: dcl0 = ", dcl0)
 *)
-} (*where*) // end of [xemit01_l1dcl_fun]
+} (*where*) // end of [js1emit_l1dcl_fun]
 
 (* ****** ****** *)
 
 implement
-xemit01_l1dcl_fnx
+js1emit_l1dcl_fnx
   (out, dcl0) =
 let
 
@@ -3708,7 +3711,7 @@ isret
 (* ****** ****** *)
 
 fun{}
-myxemit01_l1blk
+myjs1emit_l1blk
 ( out
 : FILEref
 , blk0: l1blk): void =
@@ -3767,11 +3770,11 @@ isrec
 then
 a2ux_trc(out, cmd0)
 else
-xemit01_l1cmd(out, cmd0)
+js1emit_l1cmd(out, cmd0)
 //
 end // end of [then]
 else
-xemit01_l1cmd(out, cmd0)
+js1emit_l1cmd(out, cmd0)
 //
 end where
 {
@@ -3812,11 +3815,11 @@ val () =
 fprint!
 (out, "a", lev, "y", i1)
 val () =
-xemit01_txt00(out, " = ")
+js1emit_txt00(out, " = ")
 val () =
-xemit01_l1val( out, l1v1 )
+js1emit_l1val( out, l1v1 )
 val () =
-xemit01_txt00( out, "; " )
+js1emit_txt00( out, "; " )
 } (* where *)
 ) (* end of [loop1] *)
 //
@@ -3906,27 +3909,27 @@ L1CMDift1
 , blk2, blk3) = cmd0.node()
 //
 val() =
-xemit01_txtln(out, "if")
-val() = xemit01_txt00(out, "(")
-val() = xemit01_l1val(out, l1v1)
-val() = xemit01_txtln(out, ")")
+js1emit_txtln(out, "if")
+val() = js1emit_txt00(out, "(")
+val() = js1emit_l1val(out, l1v1)
+val() = js1emit_txtln(out, ")")
 //
 val() =
 fprint!
 (out, "// then\n")
 val() =
-xemit01_txtln(out, "{")
+js1emit_txtln(out, "{")
 val() = a1ux_l1blk(out, blk2)
 val() =
-xemit01_txtln(out, "} // if-then")
+js1emit_txtln(out, "} // if-then")
 //
 val() =
 fprint!(out, "else\n")
 val() =
-xemit01_txtln(out, "{")
+js1emit_txtln(out, "{")
 val() = a1ux_l1blk(out, blk3)
 val() =
-xemit01_txtln(out, "} // if-else")
+js1emit_txtln(out, "} // if-else")
 //
 } (* where *) // end of [a2ux_ift1]
 //
@@ -3943,7 +3946,7 @@ let
 //
 #define
 auxpcklst
-xemit01_l1pcklst
+js1emit_l1pcklst
 //
 (* ****** ****** *)
 //
@@ -3976,7 +3979,7 @@ fprint!
 (out, "case ", icas, ":\n")
 val () = auxblk0(out, blk1)
 val () =
-xemit01_txt00(out, "break;\n")
+js1emit_txt00(out, "break;\n")
 in
 auxblklst(out, icas+1, tcas, blks)
 end (* end-of-let *)
@@ -3996,14 +3999,14 @@ L1CMDcase
 , blks) = lcmd.node()
 //
 val () =
-xemit01_txt00(out, "{\n")
+js1emit_txt00(out, "{\n")
 //
 val () =
-xemit01_l1tmp(out, tcas)
+js1emit_l1tmp(out, tcas)
 val () =
-xemit01_txtln(out, " = 0;")
+js1emit_txtln(out, " = 0;")
 val () =
-xemit01_txt00(out, "do {\n")
+js1emit_txt00(out, "do {\n")
 val () =
 auxpcklst(out, 1(*i*), tcas, pcks)
 val () =
@@ -4013,12 +4016,12 @@ val () =
 fprintln!( out, "} // case-patck0" )
 //
 val () =
-xemit01_txt00
+js1emit_txt00
 (out, "switch\n(")
 val () =
-xemit01_l1tmp(out, tcas)
+js1emit_l1tmp(out, tcas)
 val () =
-xemit01_txt00(out, ") {\n")
+js1emit_txt00(out, ") {\n")
 //
 val () =
 auxblklst(out, 1(*i*), tcas, blks)
@@ -4028,7 +4031,7 @@ fprint!
 ( out
 , "default: XATS2JS_matcherr0();\n")
 val () =
-xemit01_txtln(out, "} // case-switch")
+js1emit_txtln(out, "} // case-switch")
 //
 } end (*let*) // end of [a2ux_case]
 
@@ -4057,7 +4060,7 @@ cmd0.node() of
   a2ux_case(out, cmd0)
 //
 | _(* else *) =>
-  xemit01_l1cmd(out, cmd0)
+  js1emit_l1cmd(out, cmd0)
 //
 end // end of [a1ux_l1cmd]
 //
@@ -4082,7 +4085,7 @@ a1ux_l1cmdlst(out, cmds)
   val () =
   a1ux_l1cmd(out, cmd1)
   val () =
-  xemit01_txtln( out, ";" )
+  js1emit_txtln( out, ";" )
 } // end of [a1ux_l1cmdlst]
 )
 //
@@ -4121,14 +4124,14 @@ val+
 L1FUNDECL(rcd) = lfd0
 //
 val () =
-xemit01_txtln
+js1emit_txtln
 (out, "function")
 //
 val () =
 aux_h0cst(out, dcl0, rcd.hdc)
 (*
 val () =
-xemit01_h0cst(out, rcd.hdc(*name*))
+js1emit_h0cst(out, rcd.hdc(*name*))
 *)
 //
 val narg =
@@ -4143,30 +4146,30 @@ Some(rcd_hfg) => narg where
 //
 val
 narg =
-xemit01_h0faglst
+js1emit_h0faglst
 ( out
 , rcd.lev
 , rcd_hfg, 0(*base*) )
 //
-val () = xemit01_newln(out)
+val () = js1emit_newln(out)
 //
 } (* Some *)
 ) (* end of [val] *)
 //
 val () =
-xemit01_txtln(out, "{")
+js1emit_txtln(out, "{")
 //
 val () =
-xemit01_fargdecs
+js1emit_fargdecs
 (out, narg, rcd.lev(*flev*))
 val () =
-xemit01_ftmpdecs(out, rcd.lts)
+js1emit_ftmpdecs(out, rcd.lts)
 //
 val () =
-xemit01_txtln(out, "do {")
+js1emit_txtln(out, "do {")
 //
 val () =
-xemit01_l1blk(out, rcd.hfg_blk)
+js1emit_l1blk(out, rcd.hfg_blk)
 //
 local
 //
@@ -4210,13 +4213,13 @@ l1f0.node() of
 //
 in(*in-of-local*)
 val () =
-myxemit01_l1blk<>(out, rcd.def_blk)
+myjs1emit_l1blk<>(out, rcd.def_blk)
 end // end of [local]
 //
 val () =
-xemit01_txtln(out, "break;//return")
+js1emit_txtln(out, "break;//return")
 val () =
-xemit01_txtln(out, "} while( true );")
+js1emit_txtln(out, "} while( true );")
 //
 val () =
 (
@@ -4229,9 +4232,9 @@ Some(res) =>
 {
 //
 val () =
-xemit01_txt00(out, "return ")
-val () = xemit01_l1val(out, res)
-val () = xemit01_txt00(out, ";\n")
+js1emit_txt00(out, "return ")
+val () = js1emit_l1val(out, res)
+val () = js1emit_txt00(out, ";\n")
 //
 }
 ) : void // end-of-val
@@ -4278,9 +4281,9 @@ end where
 (*
   val () =
   println!
-  ("xemit01_l1dcl_fun: dcl0 = ", dcl0)
+  ("js1emit_l1dcl_fun: dcl0 = ", dcl0)
 *)
-} (*where*) // end of [xemit01_l1dcl_fnx]
+} (*where*) // end of [js1emit_l1dcl_fnx]
 
 (* ****** ****** *)
 
@@ -4288,4 +4291,4 @@ end // end of [local]
 
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen1_xats2js_srcgen1_intrep1_xemit0.dats] *)
+(* end of [ATS3/XANADU_srcgen1_xats2js_srcgen1_js1emit_dynexp.dats] *)

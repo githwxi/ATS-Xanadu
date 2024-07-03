@@ -73,22 +73,22 @@ compenv_free_top
 (* ****** ****** *)
 //
 fun
-xcomp01_package
+js1comp_package
 (h0pkg: h0comped): l1pkg
 //
 (* ****** ****** *)
 fun
-xcomp01_flevget
+js1comp_flevget
 (env0: !compenv): int
 fun
-xcomp01_flevinc
+js1comp_flevinc
 (env0: !compenv): void
 fun
-xcomp01_flevdec
+js1comp_flevdec
 (env0: !compenv): void
 (* ****** ****** *)
 fun
-xcomp01_dvarfind
+js1comp_dvarfind
 ( env0:
 ! compenv
 , hdv0
@@ -96,7 +96,7 @@ xcomp01_dvarfind
 (* ****** ****** *)
 //
 fun
-xcomp01_l1valize
+js1comp_l1valize
 ( env0:
 ! compenv
 , l1v0: l1val): l1val
@@ -104,49 +104,49 @@ xcomp01_l1valize
 (* ****** ****** *)
 //
 fun
-xcomp01_dvaradd_bind
+js1comp_dvaradd_bind
 ( env0:
 ! compenv
 , hdv0: h0var
 , l1v1: l1val): void
 //
 fun
-xcomp01_dvaradd_fun0
+js1comp_dvaradd_fun0
   (env0: !compenv): void
 fun
-xcomp01_dvarpop_fun0
+js1comp_dvarpop_fun0
   (env0: !compenv): void
 //
 (* ****** ****** *)
 //
 (*
 fun
-xcomp01_ltmpadd_ltmp
+js1comp_ltmpadd_ltmp
 ( env0:
 ! compenv
 , ltmp: l1tmp): void
 *)
 //
 fun
-xcomp01_ltmpadd_fun0
+js1comp_ltmpadd_fun0
 ( env0: !compenv ): void
 fun
-xcomp01_ltmppop_fun0
+js1comp_ltmppop_fun0
 ( env0: !compenv ): l1tmplst
 //
 fun
-xcomp01_ltmpnew_tmp0
+js1comp_ltmpnew_tmp0
 ( env0:
 ! compenv, loc_t ): l1tmp
 fun
-xcomp01_ltmpnew_arg1
+js1comp_ltmpnew_arg1
 ( env0:
 ! compenv, loc_t, int): l1tmp
 //
 (* ****** ****** *)
 //
 fun
-xcomp01_lcmdadd_lcmd
+js1comp_lcmdadd_lcmd
 ( env0:
 ! compenv
 , lcmd: l1cmd): void
@@ -154,20 +154,20 @@ xcomp01_lcmdadd_lcmd
 (* ****** ****** *)
 //
 fun
-xcomp01_lcmdpush_nil
+js1comp_lcmdpush_nil
 ( env0: !compenv ): void
 //
 fun
-xcomp01_lcmdpop0_blk
+js1comp_lcmdpop0_blk
 ( env0: !compenv): l1blk
 fun
-xcomp01_lcmdpop0_lst
+js1comp_lcmdpop0_lst
 ( env0: !compenv): l1cmdlst
 //
 (* ****** ****** *)
 //
 fun
-xcomp01_hdcon
+js1comp_hdcon
 ( env0:
 ! compenv
 , hdc0: h0con): l1con
@@ -179,7 +179,7 @@ xcomp01_hdcon
 // the pattern matches the value
 //
 fun
-xcomp01_h0pat_ck0
+js1comp_h0pat_ck0
 ( env0:
 ! compenv
 , h0p0
@@ -192,7 +192,7 @@ xcomp01_h0pat_ck0
 // the pattern matches the value
 //
 fun
-xcomp01_h0pat_ck1
+js1comp_h0pat_ck1
 ( env0:
 ! compenv
 , h0p0
@@ -201,7 +201,7 @@ xcomp01_h0pat_ck1
 (* ****** ****** *)
 //
 fun
-xcomp01_h0pat_ck01
+js1comp_h0pat_ck01
 ( env0:
 ! compenv
 , h0p0
@@ -210,7 +210,7 @@ xcomp01_h0pat_ck01
 (* ****** ****** *)
 //
 fun
-xcomp01_h0gpat_ck0
+js1comp_h0gpat_ck0
 ( env0:
 ! compenv
 , hgp0
@@ -218,7 +218,7 @@ xcomp01_h0gpat_ck0
 , l1v1: l1val): l1pck
 //
 fun
-xcomp01_h0gpat_ck1
+js1comp_h0gpat_ck1
 ( env0:
 ! compenv
 , hgp0
@@ -227,18 +227,18 @@ xcomp01_h0gpat_ck1
 (* ****** ****** *)
 //
 fun
-xcomp01_h0faglst_ck01
+js1comp_h0faglst_ck01
 ( env0:
 ! compenv, hfgs: h0faglst): l1blk
 //
 (* ****** ****** *)
 
 fun
-xcomp01_h0exp_val
+js1comp_h0exp_val
 ( env0:
 ! compenv, h0e0: h0exp): l1val
 fun
-xcomp01_h0exp_set
+js1comp_h0exp_set
 ( env0:
 ! compenv
 , h0e0: h0exp, tres: l1tmp): void
@@ -246,13 +246,13 @@ xcomp01_h0exp_set
 (* ****** ****** *)
 //
 fun
-xcomp01_h0explst_val
+js1comp_h0explst_val
 ( env0:
 ! compenv
 , h0es: h0explst): l1valist
 //
 fun
-xcomp01_h0explst_arg
+js1comp_h0explst_arg
 ( env0:
 ! compenv
 , npf: int
@@ -261,12 +261,12 @@ xcomp01_h0explst_arg
 (* ****** ****** *)
 //
 fun
-xcomp01_h0exp_blk
+js1comp_h0exp_blk
 ( env0:
 ! compenv
 , h0e0: h0exp, tres: l1tmp): l1blk
 fun
-xcomp01_h0expopt_blk
+js1comp_h0expopt_blk
 ( env0:
 ! compenv
 , opt0: h0expopt, tres: l1tmp): l1blk
@@ -274,53 +274,53 @@ xcomp01_h0expopt_blk
 (* ****** ****** *)
 //
 fun
-xcomp01_h0dcl
+js1comp_h0dcl
 ( env0:
 ! compenv, dcl0: h0dcl): l1dcl
 fun
-xcomp01_h0dclist
+js1comp_h0dclist
 ( env0:
 ! compenv, dcls: h0dclist): l1dclist
 //
 (* ****** ****** *)
 fun
-xcomp01_h0dcl_timp
+js1comp_h0dcl_timp
 ( env0:
 ! compenv
 , l1c1: l1cst, dcl2: h0dcl): l1dcl
 (* ****** ****** *)
 //
 fun
-xcomp01_hfundecl
+js1comp_hfundecl
 ( env0:
 ! compenv, hfd0: h0fundecl): l1fundecl
 fun
-xcomp01_hfundeclist
+js1comp_hfundeclist
 ( env0:
 ! compenv, hfds: h0fundeclist): l1fundeclist
 //
 (* ****** ****** *)
 //
 fun
-xcomp01_hvaldecl
+js1comp_hvaldecl
 ( env0:
 ! compenv, hvd0: h0valdecl): l1valdecl
 fun
-xcomp01_hvaldeclist
+js1comp_hvaldeclist
 ( env0:
 ! compenv, hvds: h0valdeclist): l1valdeclist
 //
 (* ****** ****** *)
 //
 fun
-xcomp01_hvardecl
+js1comp_hvardecl
 ( env0:
 ! compenv, hvd0: h0vardecl): l1vardecl
 fun
-xcomp01_hvardeclist
+js1comp_hvardeclist
 ( env0:
 ! compenv, hvds: h0vardeclist): l1vardeclist
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen1_xats2js_srcgen1_xcomp01.sats] *)
+(* end of [ATS3/XANADU_srcgen1_xats2js_srcgen1_js1comp.sats] *)

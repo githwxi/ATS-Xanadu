@@ -52,15 +52,15 @@ UN = "prelude/SATS/unsafe.sats"
 #staload $INTREP0(* open *)
 (* ****** ****** *)
 #staload "./../SATS/intrep1.sats"
-#staload "./../SATS/xcomp01.sats"
+#staload "./../SATS/js1comp.sats"
 (* ****** ****** *)
 //
 macdef
 xltmpnew_tmp0 =
-xcomp01_ltmpnew_tmp0
+js1comp_ltmpnew_tmp0
 macdef
 xltmpnew_arg1 =
-xcomp01_ltmpnew_arg1
+js1comp_ltmpnew_arg1
 //
 (* ****** ****** *)
 
@@ -70,7 +70,7 @@ fprint_val<l1tmp> = fprint_l1tmp
 (* ****** ****** *)
 
 implement
-xcomp01_package
+js1comp_package
   (h0pkg) =
 (
   L1PKG
@@ -80,7 +80,7 @@ xcomp01_package
 //
 (*
 val () =
-xcomp01_initize()
+js1comp_initize()
 *)
 //
 val
@@ -101,16 +101,16 @@ rcd.comped of
 //
 val
 ldcls =
-xcomp01_h0dclist(env0, hdcls)
+js1comp_h0dclist(env0, hdcls)
 //
 val ltmps = compenv_free_top(env0)
 //
-} (* end of [xcomp01_package] *)
+} (* end of [js1comp_package] *)
 
 (* ****** ****** *)
 
 implement
-xcomp01_hdcon
+js1comp_hdcon
   (env0, hdc) =
 let
 //
@@ -132,15 +132,15 @@ let
 val hdv =
 h0con_get_dvar(hdc)
 val opt =
-xcomp01_dvarfind(env0, hdv)
+js1comp_dvarfind(env0, hdv)
 //
 // (*
 val () =
 println!
-("xcomp01_hdcon: hdc = ", hdc)
+("js1comp_hdcon: hdc = ", hdc)
 val () =
 println!
-("xcomp01_hdcon: hdv = ", hdv)
+("js1comp_hdcon: hdv = ", hdv)
 // *)
 //
 in
@@ -148,7 +148,7 @@ case- opt of
 | ~Some_vt(l1v) => L1CONval(l1v)
 end // end of [else]
 //
-end(*let*)//end-of-[xcomp01_hdcon]
+end(*let*)//end-of-[js1comp_hdcon]
 
 (* ****** ****** *)
 
@@ -169,7 +169,7 @@ val-
 H0Pdap1
 ( h0f0) = h0p0.node()
 in
-xcomp01_h0pat_ck0
+js1comp_h0pat_ck0
 (env0, h0f0, ltag) where
 {
 val
@@ -201,7 +201,7 @@ l1val_ctag
 (l1v1.loc(), l1v1)
 val
 pckf =
-xcomp01_h0pat_ck0
+js1comp_h0pat_ck0
 ( env0, h0f0, ltag )
 //
 in
@@ -266,7 +266,7 @@ l1val_carg
 (loc1, l1v1, idx0)
 val
 pck1 = 
-xcomp01_h0pat_ck0
+js1comp_h0pat_ck0
 (env0, h0p1, arg1)
 in
 list_cons(pck1, pcks) where
@@ -359,7 +359,7 @@ l1val_targ
 //
 val
 pck1 = 
-xcomp01_h0pat_ck0
+js1comp_h0pat_ck0
 (env0, h0p1, arg1)
 //
 in
@@ -380,7 +380,7 @@ end (* end of [aux_trcd1] *)
 in(*in-of-local*)
 
 implement
-xcomp01_h0pat_ck0
+js1comp_h0pat_ck0
 ( env0
 , h0p0, l1v1) =
 let
@@ -429,22 +429,22 @@ H0Pstr
 //
 |
 H0Pbang(h0p1) =>
-xcomp01_h0pat_ck0
+js1comp_h0pat_ck0
 ( env0, h0p1(*var*), l1v1 )
 |
 H0Pflat(h0p1) =>
-xcomp01_h0pat_ck0
+js1comp_h0pat_ck0
 ( env0, h0p1(*con*), l1v1 )
 |
 H0Pfree(h0p1) =>
-xcomp01_h0pat_ck0
+js1comp_h0pat_ck0
 ( env0, h0p1(*con*), l1v1 )
 //
 |
 H0Pcon( hdc1 ) =>
 let
 val ldc1 =
-xcomp01_hdcon(env0, hdc1)
+js1comp_hdcon(env0, hdc1)
 in
   L1PCKcon(ldc1, l1v1(*ctag*))
 end
@@ -473,7 +473,7 @@ aux_trcd1
 |
 _ (*else*) => L1PCKxpat(h0p0, l1v1)
 //
-end // end of [xcomp01_h0pat_ck0]
+end // end of [js1comp_h0pat_ck0]
 
 end // end of [local]
 
@@ -488,7 +488,7 @@ auxvar
 , h0p0: h0pat
 , l1v1: l1val): void =
 (
-xcomp01_dvaradd_bind
+js1comp_dvaradd_bind
 ( env0, hdv0, l1v1 )
 ) where
 {
@@ -554,10 +554,10 @@ println!
 *)
 //
 in
-xcomp01_h0pat_ck1(env0, h0p1, lptr)
+js1comp_h0pat_ck1(env0, h0p1, lptr)
 end // end of [H0Pvar]
 | _ (* else *) =>
-xcomp01_h0pat_ck1(env0, h0p1, l1v1)
+js1comp_h0pat_ck1(env0, h0p1, l1v1)
 end (*let*) // end of [auxbang]
 
 end // end of [local]
@@ -578,7 +578,7 @@ val-
 H0Pflat
 ( h0p1 ) = h0p0.node()
 in
-xcomp01_h0pat_ck1(env0, h0p1, l1v1)
+js1comp_h0pat_ck1(env0, h0p1, l1v1)
 end (*let*) // end of [auxflat]
 
 (* ****** ****** *)
@@ -597,7 +597,7 @@ val-
 H0Pfree
 ( h0p1 ) = h0p0.node()
 in
-xcomp01_h0pat_ck1(env0, h0p1, l1v1)
+js1comp_h0pat_ck1(env0, h0p1, l1v1)
 end (*let*) // end of [auxfree]
 
 (* ****** ****** *)
@@ -656,7 +656,7 @@ carg =
 l1val_carg
 (loc1, l1v1, idx0)
 val () =
-xcomp01_h0pat_ck1
+js1comp_h0pat_ck1
 (env0, h0p1, carg)
 in
 let
@@ -738,7 +738,7 @@ l1val_targ
 (loc1, l1v1, idx0)): l1val
 //
 val () =
-xcomp01_h0pat_ck1
+js1comp_h0pat_ck1
 (env0, h0p1, arg1)
 //
 in
@@ -759,7 +759,7 @@ end (*let*) // end of [aux_trcd1]
 in(*in-of-local*)
 
 implement
-xcomp01_h0pat_ck1
+js1comp_h0pat_ck1
 ( env0
 , h0p0, l1v1) =
 let
@@ -796,34 +796,34 @@ val lcmd =
 l1cmd_make_node
 (loc0, L1CMDmatch(h0p0, l1v1))
 in
-xcomp01_lcmdadd_lcmd(env0, lcmd)
+js1comp_lcmdadd_lcmd(env0, lcmd)
 end
 //
-end // end of [xcomp01_h0pat_ck1]
+end // end of [js1comp_h0pat_ck1]
 
 end // end of [local]
 
 (* ****** ****** *)
 implement
-xcomp01_h0pat_ck01
+js1comp_h0pat_ck01
 (env0, h0p0, l1v1) =
 let
 val
 loc0 = h0p0.loc()
 val
 lpck =
-xcomp01_h0pat_ck0
+js1comp_h0pat_ck0
 (env0, h0p0, l1v1)
 val
 lcmd =
 l1cmd_make_node
 (loc0, L1CMDpatck(lpck))
 val () =
-xcomp01_lcmdadd_lcmd(env0, lcmd)
+js1comp_lcmdadd_lcmd(env0, lcmd)
 //
 in
-xcomp01_h0pat_ck1(env0, h0p0, l1v1)
-end // end of [xcomp01_h0pat_ck01]
+js1comp_h0pat_ck1(env0, h0p0, l1v1)
+end // end of [js1comp_h0pat_ck01]
 (* ****** ****** *)
 
 local
@@ -842,15 +842,15 @@ H0GUAexp
 (h0e1) =>
 let
 val () =
-xcomp01_lcmdpush_nil(env0)
+js1comp_lcmdpush_nil(env0)
 val l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 in
 L1PCKgexp(l1v1, blk1) where
 {
   val
   blk1 =
-  xcomp01_lcmdpop0_blk(env0)
+  js1comp_lcmdpop0_blk(env0)
 }
 end // end of [H0GUAexp]
 |
@@ -885,7 +885,7 @@ val pcks = auxh0gs(env0, h0gs)
 in(*in-of-local*)
 
 implement
-xcomp01_h0gpat_ck0
+js1comp_h0gpat_ck0
 ( env0
 , hgp0, l1v1) =
 (
@@ -893,7 +893,7 @@ case-
 hgp0.node() of
 |
 H0GPATpat(h0p1) =>
-xcomp01_h0pat_ck0
+js1comp_h0pat_ck0
 ( env0, h0p1, l1v1 )
 |
 H0GPATgua(h0p1, h0gs) =>
@@ -901,7 +901,7 @@ let
 //
 val
 pck1 =
-xcomp01_h0pat_ck0
+js1comp_h0pat_ck0
 ( env0, h0p1, l1v1 )
 //
 val
@@ -916,17 +916,17 @@ end
 (*
 val () =
 println! (
-"xcomp01_h0gpat_ck0: hgp0 = ", hgp0
+"js1comp_h0gpat_ck0: hgp0 = ", hgp0
 ) (* println! *)
 *)
-} (* end of [xcomp01_h0gpat_ck0] *)
+} (* end of [js1comp_h0gpat_ck0] *)
 
 end // end of [local]
 
 (* ****** ****** *)
 
 implement
-xcomp01_h0gpat_ck1
+js1comp_h0gpat_ck1
 ( env0
 , hgp0, l1v1) =
 (
@@ -934,20 +934,20 @@ case-
 hgp0.node() of
 |
 H0GPATpat(h0p1) =>
-xcomp01_h0pat_ck1
+js1comp_h0pat_ck1
 ( env0, h0p1, l1v1 )
 |
 H0GPATgua(h0p1, h0gs) =>
 let
   val () = 
-  xcomp01_h0pat_ck1
+  js1comp_h0pat_ck1
   ( env0, h0p1, l1v1 )
 in
 (*
-  xcomp01_h0gualst_ck1(h0gs)
+  js1comp_h0gualst_ck1(h0gs)
 *)
 end
-) (* end of [xcomp01_h0gpat_ck1] *)
+) (* end of [js1comp_h0gpat_ck1] *)
 
 (* ****** ****** *)
 
@@ -974,7 +974,7 @@ xltmpnew_arg1(env0, loc0, arg0)
 }
 //
 in
-xcomp01_h0pat_ck01(env0, h0p1, l1v0)
+js1comp_h0pat_ck01(env0, h0p1, l1v0)
 end // end of [auxpat_ck01]
 //
 (* ****** ****** *)
@@ -1060,22 +1060,22 @@ in
 in(*in-of-local*)
 
 implement
-xcomp01_h0faglst_ck01
+js1comp_h0faglst_ck01
   (env0, hfgs) =
 (
-xcomp01_lcmdpop0_blk(env0)
+js1comp_lcmdpop0_blk(env0)
 ) where
 {
 //
   val () =
-  xcomp01_lcmdpush_nil(env0)
+  js1comp_lcmdpush_nil(env0)
 //
   val i0 = 0 (* arg index *)
 //
   val narg =
   auxlst_ck01(env0, i0, hfgs)
 //
-} // end of [xcomp01_h0faglst_ck01]
+} // end of [js1comp_h0faglst_ck01]
 
 end // end of [local]
 
@@ -1106,7 +1106,7 @@ val-
 H0Evar(x0) = h0e0.node()
 //
 val
-opt0 = xcomp01_dvarfind(env0, x0)
+opt0 = js1comp_dvarfind(env0, x0)
 in
 //
 case+ opt0 of
@@ -1143,7 +1143,7 @@ _ (* else *) =>
 let
 val
 opt0 =
-xcomp01_dvarfind(env0, x0)
+js1comp_dvarfind(env0, x0)
 //
 in
 //
@@ -1175,7 +1175,7 @@ H0Efcon
 in
 let
 val ldc =
-xcomp01_hdcon(env0, hdc)
+js1comp_hdcon(env0, hdc)
 in
 l1val_make_node(loc0, L1VALcon(ldc))
 end
@@ -1198,7 +1198,7 @@ in//let
 //
 let
 val ldc =
-xcomp01_hdcon(env0, hdc)
+js1comp_hdcon(env0, hdc)
 in
 l1val_make_node(loc0, L1VALcon(ldc))
 end
@@ -1260,11 +1260,11 @@ l1c1 =
 l1cst_new_h0cst( loc0, hdc1 )
 val
 ldcl =
-xcomp01_h0dcl_timp(env0, l1c1, hdcl)
+js1comp_h0dcl_timp(env0, l1c1, hdcl)
 //
 val () =
 (
-xcomp01_lcmdadd_lcmd(env0, lcmd)
+js1comp_lcmdadd_lcmd(env0, lcmd)
 ) where
 {
 val
@@ -1293,7 +1293,7 @@ H0Epcon
 //
 val
 l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 //
 in
 let
@@ -1327,7 +1327,7 @@ H0Epbox
 //
 val
 l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 //
 in
 let
@@ -1363,7 +1363,7 @@ H0Eproj
 //
 val
 l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 //
 in
 let
@@ -1399,7 +1399,7 @@ H0Eplft
 //
 val
 l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 //
 in
 let
@@ -1435,7 +1435,7 @@ H0Epptr
 //
 val
 l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 //
 in
 let
@@ -1475,13 +1475,13 @@ auxlst_h0dcl(env0, dcls)
 {
 val
 ldcl =
-xcomp01_h0dcl(env0, hdcl)
+js1comp_h0dcl(env0, hdcl)
 val
 lcmd =
 l1cmd_make_node
 ( hdcl.loc(), L1CMDdcl(ldcl) )
 val () =
-xcomp01_lcmdadd_lcmd(env0, lcmd)
+js1comp_lcmdadd_lcmd(env0, lcmd)
 }
 ) (* end of [auxlst_h0dcl] *)
 
@@ -1502,7 +1502,7 @@ val () =
 auxlst_h0dcl( env0, dcls )
 //
 in
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 end // end of [auxval_let]
 
 end // end of [local]
@@ -1541,13 +1541,13 @@ list_cons
 auxlst(env0, h0es) where
 {
 val l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 }
 )
 } (* where *) // end-of-val
 //
 in
-  xcomp01_h0exp_val(env0, h0ez)
+  js1comp_h0exp_val(env0, h0ez)
 end // end of [auxval_seqn]
 
 (* ****** ****** *)
@@ -1567,10 +1567,10 @@ H0Eassgn
 //
 val
 l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 val
 l1v2 =
-xcomp01_h0exp_val(env0, h0e2)
+js1comp_h0exp_val(env0, h0e2)
 //
 val () =
 let
@@ -1579,7 +1579,7 @@ lcmd =
 l1cmd_make_node
 (loc0, L1CMDassgn(l1v1, l1v2))
 in
-xcomp01_lcmdadd_lcmd(env0, lcmd)
+js1comp_lcmdadd_lcmd(env0, lcmd)
 end // end of [val]
 //
 in
@@ -1609,7 +1609,7 @@ h0e1.node() of
 l1val_addrize(l1v1) where
 {
 val l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 }
 //
 end // end of [auxval_addr]
@@ -1633,7 +1633,7 @@ in
   l1val_flat(l1v1) where
 {
 val l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 }
 end // end of [auxval_flat]
 
@@ -1661,7 +1661,7 @@ _ (* else *) =>
 l1val_talfize(l1v1) where
 {
 val l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 }
 //
 end // end of [auxval_talf]
@@ -1698,7 +1698,7 @@ l1val_eval
 (knd0, l1v1(*src*)) where
 {
 val l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 }
 //
 end // end of [auxval_eval]
@@ -1735,7 +1735,7 @@ l1val_free
 (knd0, l1v1(*src*)) where
 {
 val l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 }
 //
 end // end of [auxval_free]
@@ -1765,10 +1765,10 @@ l1cmd_make_node
 {
 val
 l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 }
 in
-xcomp01_lcmdadd_lcmd(env0, lcmd)
+js1comp_lcmdadd_lcmd(env0, lcmd)
 end // end of [val]
 //
 in
@@ -1794,7 +1794,7 @@ H0Edapp
 , h0es) = h0e0.node()
 //
 val () =
-xcomp01_lcmdpush_nil(env0)
+js1comp_lcmdpush_nil(env0)
 //
 in
 let
@@ -1804,23 +1804,23 @@ l1cmd_make_node
 ( loc0
 , L1CMDapp(tres, l1f0, l1vs))
 val () =
-xcomp01_lcmdadd_lcmd(env0, lapp)
+js1comp_lcmdadd_lcmd(env0, lapp)
 //
 val lblk =
 l1cmd_make_node
 (loc0, L1CMDblk(blk0)) where
 {
 val
-blk0 = xcomp01_lcmdpop0_blk(env0)
+blk0 = js1comp_lcmdpop0_blk(env0)
 }
 in
-  xcomp01_lcmdadd_lcmd(env0, lblk)
+  js1comp_lcmdadd_lcmd(env0, lblk)
 end where
 {
 val l1f0 =
-xcomp01_h0exp_val(env0, h0f0)
+js1comp_h0exp_val(env0, h0f0)
 val l1vs =
-xcomp01_h0explst_arg(env0, npf1, h0es)
+js1comp_h0explst_arg(env0, npf1, h0es)
 }
 end (*let*) // end of [auxset_dapp]
 
@@ -1843,7 +1843,7 @@ H0Etrcd1
 , h0es) = h0e0.node()
 //
 val () =
-xcomp01_lcmdpush_nil(env0)
+js1comp_lcmdpush_nil(env0)
 //
 in
 let
@@ -1853,21 +1853,21 @@ l1cmd_make_node
 ( loc0
 , L1CMDtup(tres, knd0, l1vs))
 val () =
-xcomp01_lcmdadd_lcmd(env0, ltup)
+js1comp_lcmdadd_lcmd(env0, ltup)
 //
 val lblk =
 l1cmd_make_node
 (loc0, L1CMDblk(blk0)) where
 {
 val
-blk0 = xcomp01_lcmdpop0_blk(env0)
+blk0 = js1comp_lcmdpop0_blk(env0)
 }
 in
-  xcomp01_lcmdadd_lcmd(env0, lblk)
+  js1comp_lcmdadd_lcmd(env0, lblk)
 end where
 {
 val l1vs =
-xcomp01_h0explst_arg(env0, npf1, h0es)
+js1comp_h0explst_arg(env0, npf1, h0es)
 }
 end (*let*) // end of [auxset_trcd1]
 
@@ -1890,17 +1890,17 @@ H0Eift1
 , opt3) = h0e0.node()
 //
 val l1v1 =
-xcomp01_l1valize
+js1comp_l1valize
   (env0, l1v1) where
 {
 val l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 }
 //
 val blk2 =
-xcomp01_h0exp_blk(env0, h0e2, tres)
+js1comp_h0exp_blk(env0, h0e2, tres)
 val blk3 =
-xcomp01_h0expopt_blk(env0, opt3, tres)
+js1comp_h0expopt_blk(env0, opt3, tres)
 //
 in
   let
@@ -1910,7 +1910,7 @@ in
   ( loc0
   , L1CMDift1(l1v1, blk2, blk3))
   in
-    xcomp01_lcmdadd_lcmd(env0, lcmd)
+    js1comp_lcmdadd_lcmd(env0, lcmd)
   end
 end (*let*) // end of [ auxset_ift1 ]
 
@@ -1931,11 +1931,11 @@ case-
 hcl1.node() of
 | H0CLAUpat
   (hgp1) =>
-  xcomp01_h0gpat_ck0
+  js1comp_h0gpat_ck0
   ( env0, hgp1, l1v1 )
 | H0CLAUexp
   (hgp1, h0e1) =>
-  xcomp01_h0gpat_ck0
+  js1comp_h0gpat_ck0
   ( env0, hgp1, l1v1 )
 )
 and
@@ -1978,18 +1978,18 @@ H0CLAUexp
 (h0gp, h0e1) =>
 let
 val () =
-xcomp01_lcmdpush_nil(env0)
+js1comp_lcmdpush_nil(env0)
 //
 val () =
-xcomp01_h0exp_set
+js1comp_h0exp_set
 ( env0, h0e1, tres ) where
 {
 val () =
-xcomp01_h0gpat_ck1(env0, h0gp, l1v1)
+js1comp_h0gpat_ck1(env0, h0gp, l1v1)
 }
 //
 in
-  xcomp01_lcmdpop0_blk(env0)
+  js1comp_lcmdpop0_blk(env0)
 end // end of [H0CLAUexp]
 )
 //
@@ -2037,12 +2037,12 @@ H0Ecase
 //
 val
 l1v1 =
-xcomp01_l1valize
+js1comp_l1valize
   ( env0, l1v1 ) where
 {
 val
 l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 }
 //
 val
@@ -2065,7 +2065,7 @@ l1cmd_make_node
   ( knd0
   , l1v1, tcas, pcks, blks))
 in
-  xcomp01_lcmdadd_lcmd(env0, lcmd)
+  js1comp_lcmdadd_lcmd(env0, lcmd)
 end (* end-of-let *) end (* auxset_case *)
 
 (* ****** ****** *)
@@ -2090,14 +2090,14 @@ val
 blk1 =
 let
 val () =
-xcomp01_lcmdpush_nil(env0)
+js1comp_lcmdpush_nil(env0)
 in
 let
 val () =
-xcomp01_h0exp_set
+js1comp_h0exp_set
 (env0, h0e1, tres)
 in
-xcomp01_lcmdpop0_blk(env0)
+js1comp_lcmdpop0_blk(env0)
 end // end of [let]
 end // end of [let]
 //
@@ -2126,7 +2126,7 @@ l1cmd_make_node
   ( blk1
   , texn, tcas, pcks, blks))
 in
-  xcomp01_lcmdadd_lcmd(env0, lcmd)
+  js1comp_lcmdadd_lcmd(env0, lcmd)
 end (* end-of-let *) end (* auxset_try0 *)
 
 (* ****** ****** *)
@@ -2155,44 +2155,44 @@ var res1
   : l1valopt = None()
 //
 val () =
-xcomp01_flevinc(env0)
+js1comp_flevinc(env0)
 val () =
-xcomp01_dvaradd_fun0(env0)
+js1comp_dvaradd_fun0(env0)
 val () =
-xcomp01_ltmpadd_fun0(env0)
+js1comp_ltmpadd_fun0(env0)
 //
 val
 flev =
-xcomp01_flevget(env0)
+js1comp_flevget(env0)
 //
 val
 blk0 =
-xcomp01_h0faglst_ck01
+js1comp_h0faglst_ck01
   (env0, hfgs(*multi*))
 //
 val
 blk1 =
 let
 val () =
-xcomp01_lcmdpush_nil(env0)
+js1comp_lcmdpush_nil(env0)
 val
 l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 val () = (res1 := Some(l1v1))
 //
 in
-  xcomp01_lcmdpop0_blk( env0 )
+  js1comp_lcmdpop0_blk( env0 )
 end : l1blk // end of [val]
 //
 in
 let
 //
   val () =
-  xcomp01_flevdec(env0)
+  js1comp_flevdec(env0)
   val () =
-  xcomp01_dvarpop_fun0(env0)
+  js1comp_dvarpop_fun0(env0)
   val flts =
-  xcomp01_ltmppop_fun0(env0)
+  js1comp_ltmppop_fun0(env0)
 //
 (*
 val () =
@@ -2219,7 +2219,7 @@ let
   l1cmd_make_node
   ( loc0, L1CMDlam(tres, l1am) )
 in
-  xcomp01_lcmdadd_lcmd(env0, lcmd)
+  js1comp_lcmdadd_lcmd(env0, lcmd)
 end // end of [let]
 end // end of [let]
 end (*let*) // end of [auxset_lam]
@@ -2247,44 +2247,44 @@ var res1
   : l1valopt = None()
 //
 val () =
-xcomp01_flevinc(env0)
+js1comp_flevinc(env0)
 val () =
-xcomp01_dvaradd_fun0(env0)
+js1comp_dvaradd_fun0(env0)
 val () =
-xcomp01_ltmpadd_fun0(env0)
+js1comp_ltmpadd_fun0(env0)
 //
 val
 flev =
-xcomp01_flevget(env0)
+js1comp_flevget(env0)
 //
 val
 blk0 =
-xcomp01_h0faglst_ck01
+js1comp_h0faglst_ck01
   (env0, hfgs(*multi*))
 //
 val
 blk1 =
 let
 val () =
-xcomp01_lcmdpush_nil(env0)
+js1comp_lcmdpush_nil(env0)
 val
 l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 val () = (res1 := Some(l1v1))
 //
 in
-  xcomp01_lcmdpop0_blk( env0 )
+  js1comp_lcmdpop0_blk( env0 )
 end : l1blk // end of [val]
 //
 in
 let
 //
   val () =
-  xcomp01_flevdec(env0)
+  js1comp_flevdec(env0)
   val () =
-  xcomp01_dvarpop_fun0(env0)
+  js1comp_dvarpop_fun0(env0)
   val flts =
-  xcomp01_ltmppop_fun0(env0)
+  js1comp_ltmppop_fun0(env0)
 //
 (*
 val () =
@@ -2309,7 +2309,7 @@ let
   l1cmd_make_node
   ( loc0, L1CMDfix(tres, lfix) )
 in
-  xcomp01_lcmdadd_lcmd(env0, lcmd)
+  js1comp_lcmdadd_lcmd(env0, lcmd)
 end // end of [let]
 end // end of [let]
 end (*let*) // end of [auxset_fix]
@@ -2342,15 +2342,15 @@ var res1
   : l1valopt = None( )
 //
 val () =
-xcomp01_flevinc( env0 )
+js1comp_flevinc( env0 )
 val () =
-xcomp01_dvaradd_fun0(env0)
+js1comp_dvaradd_fun0(env0)
 val () =
-xcomp01_ltmpadd_fun0(env0)
+js1comp_ltmpadd_fun0(env0)
 //
 val
 flev =
-xcomp01_flevget(env0)
+js1comp_flevget(env0)
 //
 val
 blk0 =
@@ -2360,25 +2360,25 @@ val
 blk1 =
 let
 val () =
-xcomp01_lcmdpush_nil(env0)
+js1comp_lcmdpush_nil(env0)
 val
 l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 val () = (res1 := Some(l1v1))
 //
 in
-  xcomp01_lcmdpop0_blk( env0 )
+  js1comp_lcmdpop0_blk( env0 )
 end : l1blk // end of [val]
 //
 in
 let
 //
   val () =
-  xcomp01_flevdec(env0)
+  js1comp_flevdec(env0)
   val () =
-  xcomp01_dvarpop_fun0(env0)
+  js1comp_dvarpop_fun0(env0)
   val flts =
-  xcomp01_ltmppop_fun0(env0)
+  js1comp_ltmppop_fun0(env0)
 //
 (*
 val () =
@@ -2408,7 +2408,7 @@ let
   l1cmd_make_node
   ( loc0, L1CMDlam(tlam, l1am) )
   val () =
-  xcomp01_lcmdadd_lcmd(env0, lcmd)
+  js1comp_lcmdadd_lcmd(env0, lcmd)
 in
 //
 let
@@ -2419,7 +2419,7 @@ let
   l1cmd_make_node
   ( loc0, L1CMDlazy(tres, l1v1) )  
 in
-  xcomp01_lcmdadd_lcmd(env0, lcmd)
+  js1comp_lcmdadd_lcmd(env0, lcmd)
 end // end of [let]
 //
 end // end of [let]
@@ -2457,15 +2457,15 @@ var res2
   : l1valopt = None( )
 //
 val () =
-xcomp01_flevinc( env0 )
+js1comp_flevinc( env0 )
 val () =
-xcomp01_dvaradd_fun0(env0)
+js1comp_dvaradd_fun0(env0)
 val () =
-xcomp01_ltmpadd_fun0(env0)
+js1comp_ltmpadd_fun0(env0)
 //
 val
 flev =
-xcomp01_flevget(env0)
+js1comp_flevget(env0)
 //
 val
 blk0 =
@@ -2475,14 +2475,14 @@ val
 blk1 =
 let
 val () =
-xcomp01_lcmdpush_nil(env0)
+js1comp_lcmdpush_nil(env0)
 val
 lres =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 val () = (res1 := Some(lres))
 //
 in
-  xcomp01_lcmdpop0_blk( env0 )
+  js1comp_lcmdpop0_blk( env0 )
 end : l1blk // end of [val blk1]
 //
 val
@@ -2504,27 +2504,27 @@ list_cons(x0, xs) =>
 ) where
 {
 val _ =
-xcomp01_h0exp_val(env0, x0)
+js1comp_h0exp_val(env0, x0)
 }
 ) (* end of [auxlst] *)
 //
 val () =
-xcomp01_lcmdpush_nil(env0)
+js1comp_lcmdpush_nil(env0)
 val () = auxlst(env0, h0es)
 //
 in
-  xcomp01_lcmdpop0_blk(env0)
+  js1comp_lcmdpop0_blk(env0)
 end : l1blk // end of [val blk2]
 //
 in
 let
 //
   val () =
-  xcomp01_flevdec(env0)
+  js1comp_flevdec(env0)
   val () =
-  xcomp01_dvarpop_fun0(env0)
+  js1comp_dvarpop_fun0(env0)
   val flts =
-  xcomp01_ltmppop_fun0(env0)
+  js1comp_ltmppop_fun0(env0)
 //
 (*
 val () =
@@ -2553,7 +2553,7 @@ let
   l1cmd_make_node
   ( loc0, L1CMDlam(tlam, l1am) )
   val () =
-  xcomp01_lcmdadd_lcmd(env0, lcmd)
+  js1comp_lcmdadd_lcmd(env0, lcmd)
 //
   val
   lfrs =
@@ -2573,7 +2573,7 @@ let
   l1cmd_make_node
   ( loc0, L1CMDlam(tfrs, lfrs) )
   val () =
-  xcomp01_lcmdadd_lcmd(env0, lcmd)
+  js1comp_lcmdadd_lcmd(env0, lcmd)
 //
 in
 //
@@ -2588,7 +2588,7 @@ let
   ( loc0
   , L1CMDllazy(tres, l1v1, l1v2))
 in
-  xcomp01_lcmdadd_lcmd(env0, lcmd)
+  js1comp_lcmdadd_lcmd(env0, lcmd)
 end // end of [let]
 //
 end // end of [let]
@@ -2600,7 +2600,7 @@ end (*let*) // end of [auxset_llazy]
 in(*in-of-local*)
 
 implement
-xcomp01_h0exp_val
+js1comp_h0exp_val
   (env0, h0e0) =
 let
 val loc0 = h0e0.loc()
@@ -2824,10 +2824,10 @@ auxset_llazy(env0, h0e0, tres)
 l1val_make_node(loc0, L1VALnone1(h0e0))
 )
 //
-end // end of [xcomp01_h0exp_val]
+end // end of [js1comp_h0exp_val]
 
 implement
-xcomp01_h0exp_set
+js1comp_h0exp_set
   (env0, h0e0, tres) =
 let
 val loc0 = h0e0.loc()
@@ -2885,7 +2885,7 @@ _ (*rest-of-h0exp*) =>
 let
 val
 l1v0 =
-xcomp01_h0exp_val(env0, h0e0)
+js1comp_h0exp_val(env0, h0e0)
 in
 let
 val
@@ -2893,18 +2893,18 @@ cmd0 =
 l1cmd_make_node
 ( loc0, L1CMDmov(tres, l1v0) )
 in
-xcomp01_lcmdadd_lcmd(env0, cmd0)
+js1comp_lcmdadd_lcmd(env0, cmd0)
 end
 end // end of [rest-of-h0exp]
 //
-end // end of [xcomp01_h0exp_set]
+end // end of [js1comp_h0exp_set]
 
 end // end of [local]
 
 (* ****** ****** *)
 
 implement
-xcomp01_h0explst_val
+js1comp_h0explst_val
   (env0, h0es) =
 (
 case+ h0es of
@@ -2915,20 +2915,20 @@ list_nil()
 list_cons(h0e1, h0es) =>
 let
 val l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 in
 list_cons(l1v1, l1vs) where
 {
 val l1vs =
-xcomp01_h0explst_val(env0, h0es)
+js1comp_h0explst_val(env0, h0es)
 }
 end
-) (* end of [xcomp01_h0explst_val] *)
+) (* end of [js1comp_h0explst_val] *)
 
 (* ****** ****** *)
 
 implement
-xcomp01_h0explst_arg
+js1comp_h0explst_arg
   (env0, npf1, h0es) =
 (
 case+ h0es of
@@ -2942,47 +2942,47 @@ npf1 <= 0
 then
 let
 val l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 in
   list_cons(l1v1, l1vs) where
   {
   val l1vs =
-  xcomp01_h0explst_val(env0, h0es)
+  js1comp_h0explst_val(env0, h0es)
   }
 end // end of [then]
 else
 let
 val npf1 = npf1 - 1
 in
-xcomp01_h0explst_arg(env0, npf1, h0es)
+js1comp_h0explst_arg(env0, npf1, h0es)
 end // end of [else]
-) (* end of [xcomp01_h0explst_arg] *)
+) (* end of [js1comp_h0explst_arg] *)
 
 (* ****** ****** *)
 //
 implement
-xcomp01_h0exp_blk
+js1comp_h0exp_blk
   (env0, h0e0, tres) =
 (
-xcomp01_lcmdpop0_blk(env0)
+js1comp_lcmdpop0_blk(env0)
 ) where
 {
   val () =
-  xcomp01_lcmdpush_nil(env0)
+  js1comp_lcmdpush_nil(env0)
   val () =
-  xcomp01_h0exp_set(env0, h0e0, tres)
-} (* end of [xcomp01_h0exp_blk] *)
+  js1comp_h0exp_set(env0, h0e0, tres)
+} (* end of [js1comp_h0exp_blk] *)
 //
 (* ****** ****** *)
 //
 implement
-xcomp01_h0expopt_blk
+js1comp_h0expopt_blk
   (env0, opt0, tres) =
 (
 case+ opt0 of
 | None() => l1blk_none()
 | Some(h0e0) =>
-  xcomp01_h0exp_blk(env0, h0e0, tres)
+  js1comp_h0exp_blk(env0, h0e0, tres)
 )
 //
 (* ****** ****** *)
@@ -3005,9 +3005,9 @@ H0Clocal
 , body) = dcl0.node()
 //
 val head =
-xcomp01_h0dclist(env0, head)
+js1comp_h0dclist(env0, head)
 val body =
-xcomp01_h0dclist(env0, body)
+js1comp_h0dclist(env0, body)
 //
 in
 l1dcl_make_node
@@ -3044,7 +3044,7 @@ None((*void*))
 Some(dcls) =>
 Some
 (
-xcomp01_h0dclist(env0, dcls)
+js1comp_h0dclist(env0, dcls)
 )
 ) : l1dclistopt // end-of-val
 //
@@ -3109,7 +3109,7 @@ H0Cfundclst
 , hfds) = dcl0.node()
 //
 val () =
-xcomp01_dvaradd_fun0(env0)
+js1comp_dvaradd_fun0(env0)
 //
 val () =
 let
@@ -3141,7 +3141,7 @@ let
   l1val_make_node
   (loc, L1VALcfun(hdc))
   val () =
-  xcomp01_dvaradd_bind
+  js1comp_dvaradd_bind
   (env0, nam, itm(*l1val*))
 in
   auxlst_bind( env0, hfds )
@@ -3154,9 +3154,9 @@ end
 //
 val
 lfds =
-xcomp01_hfundeclist(env0, hfds)
+js1comp_hfundeclist(env0, hfds)
 //
-val () = xcomp01_dvarpop_fun0(env0)
+val () = js1comp_dvarpop_fun0(env0)
 //
 in
 l1dcl_make_node
@@ -3199,7 +3199,7 @@ H0Cvaldclst
 , mopt, hvds) = dcl0.node()
 val
 lvds =
-xcomp01_hvaldeclist(env0, hvds)
+js1comp_hvaldeclist(env0, hvds)
 in
 l1dcl_make_node
 (loc0, L1DCLvaldclst(knd0, mopt, lvds))
@@ -3221,7 +3221,7 @@ H0Cvardclst
 , mopt, hvds) = dcl0.node()
 val
 lvds =
-xcomp01_hvardeclist(env0, hvds)
+js1comp_hvardeclist(env0, hvds)
 in
 l1dcl_make_node
 (loc0, L1DCLvardclst(knd0, mopt, lvds))
@@ -3282,35 +3282,35 @@ list_nil() =>
 list_cons _ =>
 {
 val () =
-xcomp01_flevinc(env0)
+js1comp_flevinc(env0)
 val () =
-xcomp01_dvaradd_fun0(env0)
+js1comp_dvaradd_fun0(env0)
 val () =
-xcomp01_ltmpadd_fun0(env0)
+js1comp_ltmpadd_fun0(env0)
 }
 //
 val
 flev =
-xcomp01_flevget(env0)
+js1comp_flevget(env0)
 //
 val
 blk0 =
-xcomp01_h0faglst_ck01
+js1comp_h0faglst_ck01
   (env0, hfgs(*multi*))
 //
 val
 blk1 =
 let
 val ( ) =
-xcomp01_lcmdpush_nil(env0)
+js1comp_lcmdpush_nil(env0)
 //
 val
 l1v1 =
-xcomp01_h0exp_val(env0, body)
+js1comp_h0exp_val(env0, body)
 val ( ) = (res1 := Some(l1v1))
 //
 in
-  xcomp01_lcmdpop0_blk( env0 )
+  js1comp_lcmdpop0_blk( env0 )
 end // end of [Some]
 //
 in
@@ -3328,18 +3328,18 @@ list_cons _ =>
   tmps ) where
 {
 val () =
-xcomp01_flevdec(env0)
+js1comp_flevdec(env0)
 val () =
-xcomp01_dvarpop_fun0( env0 )
+js1comp_dvarpop_fun0( env0 )
 val tmps =
-xcomp01_ltmppop_fun0( env0 )
+js1comp_ltmppop_fun0( env0 )
 }
 ) : l1tmplst // end-of-[tmps]
 //
 (*
 val ( ) =
 println!
-("xcomp01_implmnt3: tmps = ", tmps)
+("js1comp_implmnt3: tmps = ", tmps)
 *)
 //
 val
@@ -3392,7 +3392,7 @@ H0Cexcptcon
 val
 blk0 = let
 val () =
-xcomp01_lcmdpush_nil(env0)
+js1comp_lcmdpush_nil(env0)
 in
 let
 val () =
@@ -3435,7 +3435,7 @@ println!
 *)
 //
 val () =
-xcomp01_dvaradd_bind
+js1comp_dvaradd_bind
 (env0, hdv1, l1val_tmp(tmp1))
 //
 local
@@ -3445,14 +3445,14 @@ l1cmd_make_node
 (loc1, L1CMDexcon(tmp1))
 in
 val () =
-xcomp01_lcmdadd_lcmd(env0, cmd1)
+js1comp_lcmdadd_lcmd(env0, cmd1)
 end // end of [local]
 //
 } (* end of [where] *)
 ) (* end of [auxhdcs] *)
 } (* where *) // end-of-val
 in
-  xcomp01_lcmdpop0_blk(env0)
+  js1comp_lcmdpop0_blk(env0)
 end
 end // end of [val()=auxhdcs()]
 //
@@ -3468,7 +3468,7 @@ in(*in-of-local*)
 (* ****** ****** *)
 
 implement
-xcomp01_h0dcl
+js1comp_h0dcl
   (env0, dcl0) =
 let
 (*
@@ -3483,12 +3483,12 @@ dcl0.node() of
 |
 H0Cstatic
 (tok0, dcl1) =>
-xcomp01_h0dcl
+js1comp_h0dcl
 ( env0, dcl1 )
 |
 H0Cextern
 (tok0, dcl1) =>
-xcomp01_h0dcl
+js1comp_h0dcl
 ( env0, dcl1 )
 //
 |
@@ -3525,12 +3525,12 @@ aux_excptcon(env0, dcl0)
   l1dcl_make_node(loc0, L1DCLnone1(dcl0))
   end
 //
-end // end of [xcomp01_h0dcl]
+end // end of [js1comp_h0dcl]
 
 (* ****** ****** *)
 
 implement
-xcomp01_h0dcl_timp
+js1comp_h0dcl_timp
 (env0, l1c1, hdcl) =
 let
 val
@@ -3572,7 +3572,7 @@ val ldcl =
 l1dcl_make_node(loc0, L1DCLnone1(hdcl))
 }
 //
-end (*let*) // end of [xcomp01_h0dcl_timp]
+end (*let*) // end of [js1comp_h0dcl_timp]
 
 (* ****** ****** *)
 
@@ -3581,7 +3581,7 @@ end // end of [local]
 (* ****** ****** *)
 
 implement
-xcomp01_h0dclist
+js1comp_h0dclist
   (env0, dcls) =
 (
 case+ dcls of
@@ -3593,21 +3593,21 @@ list_cons
 (dcl1, dcls) =>
 let
 val dcl1 =
-xcomp01_h0dcl(env0, dcl1)
+js1comp_h0dcl(env0, dcl1)
 in
 list_cons(dcl1, dcls) where
 {
 val
 dcls =
-xcomp01_h0dclist(env0, dcls)
+js1comp_h0dclist(env0, dcls)
 }
 end
-) (* end of [xcomp01_h0dclist] *)
+) (* end of [js1comp_h0dclist] *)
 
 (* ****** ****** *)
 
 implement
-xcomp01_hfundecl
+js1comp_hfundecl
   (env0, dcl0) =
 let
 //
@@ -3625,11 +3625,11 @@ var res
   : l1valopt = None()
 //
 val () =
-xcomp01_flevinc(env0)
+js1comp_flevinc(env0)
 val () =
-xcomp01_dvaradd_fun0(env0)
+js1comp_dvaradd_fun0(env0)
 val () =
-xcomp01_ltmpadd_fun0(env0)
+js1comp_ltmpadd_fun0(env0)
 //
 (*
 //
@@ -3646,7 +3646,7 @@ local
   (loc, L1VALfcst(hdc))
 in
   val () =
-  xcomp01_dvaradd_bind
+  js1comp_dvaradd_bind
   (env0, nam, itm(*l1val*))
 end // end of [local]
 //
@@ -3654,7 +3654,7 @@ end // end of [local]
 //
 val
 flev =
-xcomp01_flevget(env0)
+js1comp_flevget(env0)
 //
 val
 blk0 =
@@ -3665,7 +3665,7 @@ None() =>
 l1blk_none()
 |
 Some(hfgs) =>
-xcomp01_h0faglst_ck01
+js1comp_h0faglst_ck01
 ( env0, hfgs(*multi*) )
 ) : l1blk // end-of-val
 //
@@ -3679,15 +3679,15 @@ None() => l1blk_none()
 Some(h0e1) =>
 let
 val ( ) =
-xcomp01_lcmdpush_nil(env0)
+js1comp_lcmdpush_nil(env0)
 //
 val
 l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 val ( ) = (res := Some(l1v1))
 //
 in
-  xcomp01_lcmdpop0_blk( env0 )
+  js1comp_lcmdpop0_blk( env0 )
 end // end of [Some]
 ) : l1blk // end of [val]
 //
@@ -3696,16 +3696,16 @@ in
 let
 //
   val () =
-  xcomp01_flevdec(env0)
+  js1comp_flevdec(env0)
   val () =
-  xcomp01_dvarpop_fun0(env0)
+  js1comp_dvarpop_fun0(env0)
   val flts =
-  xcomp01_ltmppop_fun0(env0)
+  js1comp_ltmppop_fun0(env0)
 //
 (*
 val ( ) =
 println!
-("xcomp01_hfundecl: lts = ", lts)
+("js1comp_hfundecl: lts = ", lts)
 *)
 //
 in
@@ -3720,7 +3720,7 @@ in
   , hfg_blk=blk0, def_blk=blk1
 } (* L1FUNDECL *)
 end
-end (*let*) // end of [xcomp01_hfundecl]
+end (*let*) // end of [js1comp_hfundecl]
 
 (* ****** ****** *)
 
@@ -3744,7 +3744,7 @@ in(*in-of-local*)
 (* ****** ****** *)
 
 implement
-xcomp01_hfundeclist
+js1comp_hfundeclist
   (env0, xs) =
 (
 case+ xs of
@@ -3755,10 +3755,10 @@ list_nil()
 list_cons(x0, xs) =>
 list_cons(x0, xs) where
 {
-val x0 = xcomp01_hfundecl(env0, x0)
-val xs = xcomp01_hfundeclist(env0, xs)
+val x0 = js1comp_hfundecl(env0, x0)
+val xs = js1comp_hfundeclist(env0, xs)
 }
-)(*case*)//end-of[xcomp01_hfundeclist]
+)(*case*)//end-of[js1comp_hfundeclist]
 
 (* ****** ****** *)
 
@@ -3767,7 +3767,7 @@ end (*local*) // end of [local]
 (* ****** ****** *)
 
 implement
-xcomp01_hvaldecl
+js1comp_hvaldecl
   (env0, dcl0) =
 let
 //
@@ -3790,25 +3790,25 @@ None() => l1blk_none()
 |
 Some(h0e1) =>
 (
-xcomp01_lcmdpop0_blk(env0)
+js1comp_lcmdpop0_blk(env0)
 ) where
 {
 val () =
-xcomp01_lcmdpush_nil(env0)
+js1comp_lcmdpush_nil(env0)
 //
 val
 l1v1 =
-xcomp01_l1valize
+js1comp_l1valize
   (env0, l1v1) where
 {
 val
 l1v1 =
-xcomp01_h0exp_val(env0, h0e1)
+js1comp_h0exp_val(env0, h0e1)
 }
 val () = ( res := Some(l1v1) )
 //
 val () =
-xcomp01_h0pat_ck01(env0, pat, l1v1)
+js1comp_h0pat_ck01(env0, pat, l1v1)
 //
 } (* end of [Some] *)
 ) : l1blk // end of [val]
@@ -3819,12 +3819,12 @@ in
   , pat=pat, def=res, def_blk=blk
   } (* L1VALDECL *)
 end
-(*let*) // end of [xcomp01_hvaldecl]
+(*let*) // end of [js1comp_hvaldecl]
 
 (* ****** ****** *)
 
 implement
-xcomp01_hvaldeclist
+js1comp_hvaldeclist
   (env0, xs) =
 (
 case+ xs of
@@ -3835,15 +3835,15 @@ list_nil()
 list_cons(x0, xs) =>
 list_cons(x0, xs) where
 {
-val x0 = xcomp01_hvaldecl(env0, x0)
-val xs = xcomp01_hvaldeclist(env0, xs)
+val x0 = js1comp_hvaldecl(env0, x0)
+val xs = js1comp_hvaldeclist(env0, xs)
 }
-) (* end of [xcomp01_hvaldeclist] *)
+) (* end of [js1comp_hvaldeclist] *)
 
 (* ****** ****** *)
 
 implement
-xcomp01_hvardecl
+js1comp_hvardecl
   (env0, dcl0) =
 let
 //
@@ -3867,19 +3867,19 @@ None() => l1blk_none()
 Some(h0e) =>
 let
 val ( ) =
-xcomp01_lcmdpush_nil(env0)
+js1comp_lcmdpush_nil(env0)
 //
 val ini =
-xcomp01_h0exp_val(env0, h0e)
+js1comp_h0exp_val(env0, h0e)
 val ( ) = (res := Some(ini))
 //
 (*
 val ( ) =
-xcomp01_bind(env0, hdv, l1v)
+js1comp_bind(env0, hdv, l1v)
 *)
 //
 in
-  xcomp01_lcmdpop0_blk(env0)
+  js1comp_lcmdpop0_blk(env0)
 end // end of [Some]
 ) : l1blk // end of [val]
 //
@@ -3891,7 +3891,7 @@ val l1v =
 l1val_make_node
 (loc, L1VALtmp(tmp))
 in
-xcomp01_dvaradd_bind(env0, hdv, l1v)
+js1comp_dvaradd_bind(env0, hdv, l1v)
 end // end of [val]
 //
 in
@@ -3900,12 +3900,12 @@ in
   , hdv=hdv, ini=res
   , hdv_tmp=tmp, ini_blk=blk
   } (* L1VARDECL *)
-end // end of [xcomp01_hvardecl]
+end // end of [js1comp_hvardecl]
 
 (* ****** ****** *)
 
 implement
-xcomp01_hvardeclist
+js1comp_hvardeclist
   (env0, xs) =
 (
 case+ xs of
@@ -3915,11 +3915,11 @@ list_nil() => list_nil()
 list_cons(x0, xs) =>
 list_cons(x0, xs) where
 {
-val x0 = xcomp01_hvardecl(env0, x0)
-val xs = xcomp01_hvardeclist(env0, xs)
+val x0 = js1comp_hvardecl(env0, x0)
+val xs = js1comp_hvardeclist(env0, xs)
 }
-) (* end of [xcomp01_hvardeclist] *)
+) (* end of [js1comp_hvardeclist] *)
 
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen1_xats2js_srcgen1_xcomp01_dynexp.dats] *)
+(* end of [ATS3/XANADU_srcgen1_xats2js_srcgen1_js1comp_dynexp.dats] *)
