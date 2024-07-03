@@ -1197,6 +1197,7 @@ case+ x0.node() of
 | T_DLR() =>
   (
     case+ x1.node() of
+(*
     | T_LPAREN() => let
         val loc = x0.loc()+x1.loc()
         val x01 =
@@ -1204,6 +1205,8 @@ case+ x0.node() of
       in
         loop0(xs2, list_vt_cons(x01, res))
       end // end of ["("]
+*)
+(*
     | T_LBRACE() => let
         val loc = x0.loc()+x1.loc()
         val x01 =
@@ -1211,6 +1214,7 @@ case+ x0.node() of
       in
         loop0(xs2, list_vt_cons(x01, res))
       end // end of ["{"]
+*)
 //
     | _ (* rest-of-tnode *) =>
       (
@@ -1221,6 +1225,23 @@ case+ x0.node() of
 | T_SRP() =>
   (
     case+ x1.node() of
+//
+    | T_LPAREN() => let
+        val loc = x0.loc()+x1.loc()
+        val x01 =
+        token_make_node(loc, T_TRCD1(1))
+      in
+        loop0(xs2, list_vt_cons(x01, res))
+      end // end of ["("]
+//
+    | T_LBRACE() => let
+        val loc = x0.loc()+x1.loc()
+        val x01 =
+        token_make_node(loc, T_TRCD2(1))
+      in
+        loop0(xs2, list_vt_cons(x01, res))
+      end // end of ["{"]
+//
     | T_LBRACK() => let
         val loc = x0.loc()+x1.loc()
         val x01 =
@@ -1228,8 +1249,12 @@ case+ x0.node() of
       in
         loop0(xs2, list_vt_cons(x01, res))
       end // end of ["("]
+//
     | _ (* rest-of-tnode *) =>
+      (
         loop1(x1, xs2, list_vt_cons(x0, res))
+      )
+//
   )
 //
 (*
