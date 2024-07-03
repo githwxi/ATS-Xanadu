@@ -53,18 +53,18 @@ xcomp01_envmap.dats \
 xcomp01_dynexp.dats \
 
 ######
-
-OBJSATS := \
-$(patsubst %.sats, BUILD/%_sats.o, $(SRCSATS))
-OBJDATS := \
-$(patsubst %.dats, BUILD/%_dats.o, $(SRCDATS))
-
+BUILD=BUILD/CC
 ######
 INCLUDE:=
 INCLUDE+=-I"."
 INCLUDE+=-I"$(XATSOPT)"
 ######
 LIBRARY:=-L"$(XATSOPT)/lib" -lxatsopt
+######
+OBJSATS = \
+$(patsubst %.sats, $(BUILD)/%_sats.o, $(SRCSATS))
+OBJDATS = \
+$(patsubst %.dats, $(BUILD)/%_dats.o, $(SRCDATS))
 ######
 #
 all:: \
@@ -74,33 +74,21 @@ libxatsopt
 xats2js:: \
 DATS/xats2js.dats \
 $(OBJSATS) $(OBJDATS) ; \
-$(PATSCC) -cleanaft \
--o ./bin/xats2js $(INCLUDE) \
-$(CFLAGS) $(GCFLAG) $^ $(LIBGC) $(LIBRARY)
+$(PATSCC) -cleanaft -o ./bin/xats2js \
+$(INCLUDE) $(CFLAGS) $(GCFLAG) $^ $(LIBGC) $(LIBRARY)
 #
 ######
 #
 all:: \
 libxatsopt
-libxatsopt: ; \
-(cd $(XATSOPT) && $(MAKE) libxatsopt)
+libxatsopt: ; (cd $(XATSOPT) && $(MAKE) libxatsopt)
 #
 ######
-
-BUILD/%_sats.c: \
-./SATS/%.sats ; $(PATSOPT) -o $@ --static $<
-BUILD/%_dats.c: \
-./DATS/%.dats ; $(PATSOPT) -o $@ --dynamic $<
-
+BUILD/CC/%_sats.c: ./SATS/%.sats ; $(PATSOPT) -o $@ --static $<
+BUILD/CC/%_dats.c: ./DATS/%.dats ; $(PATSOPT) -o $@ --dynamic $<
 ######
-
-BUILD/%_sats.o: \
-BUILD/%_sats.c; \
-$(PATSCC) $(INCLUDE) $(CFLAGS) -o $@ -c $<
-BUILD/%_dats.o: \
-BUILD/%_dats.c; \
-$(PATSCC) $(INCLUDE) $(CFLAGS) $(GCFLAG) -o $@ -c $<
-
+BUILD/CC/%_sats.o: BUILD/CC/%_sats.c; $(PATSCC) $(INCLUDE) $(CFLAGS) -o $@ -c $<
+BUILD/CC/%_dats.o: BUILD/CC/%_dats.c; $(PATSCC) $(INCLUDE) $(CFLAGS) $(GCFLAG) -o $@ -c $<
 ######
 #
 # HX-2018-10-07:
@@ -115,23 +103,26 @@ $(patsubst %.dats, DATS/%.dats, $(SRCDATS))
 depend:: ; $(RMF) .depend
 #
 depend:: ; \
-$(PATSOPT) --output-a .depend --depgen -s $(SATS_SRCSATS)
+$(PATSOPT) \
+--output-a .depend --depgen -s $(SATS_SRCSATS)
 depend:: ; \
-$(PATSOPT) --output-a .depend --depgen -d $(DATS_SRCDATS)
+$(PATSOPT) \
+--output-a .depend --depgen -d $(DATS_SRCDATS)
 depend:: ; \
-$(PATSOPT) --output-a .depend --depgen -d DATS/xats2js.dats
+$(PATSOPT) \
+--output-a .depend --depgen -d DATS/xats2js.dats
 #
 depend:: ; \
-$(SED) -i -e 's/^SATS/BUILD/' -e 's/^DATS/BUILD/' .depend
+$(SED) -i -e 's/^SATS/BUILD\/CC/' -e 's/^DATS/BUILD\/CC/' .depend
 #
 -include .depend
 #
 ######
 
-clean:: ; $(RMF) BUILD/*_?ats.c
-clean:: ; $(RMF) BUILD/*_?ats.o
 clean:: ; $(RMF) xats2js_dats.o
 clean:: ; $(RMF) xats2js_dats.c
+clean:: ; $(RMF) $(BUILD)/*_?ats.c
+clean:: ; $(RMF) $(BUILD)/*_?ats.o
 
 ######
 
