@@ -174,33 +174,28 @@ trcmp30_dynexp.dats \
 xatsopt_utils0.dats xatsopt_mymain.dats \
 
 ######
-
-OBJSATS := \
-$(patsubst %.sats, BUILD/%_sats.o, $(SRCSATS))
-OBJDATS := \
-$(patsubst %.dats, BUILD/%_dats.o, $(SRCDATS))
-
+BUILD=BUILD/CC
 ######
 INCLUDE=-I"."
 ######
-
+OBJSATS = \
+$(patsubst %.sats, $(BUILD)/%_sats.o, $(SRCSATS))
+OBJDATS = \
+$(patsubst %.dats, $(BUILD)/%_dats.o, $(SRCDATS))
 ######
 
+######
 all:: xatsopt
-
 ######
-
 #all:: ; echo "make xatsopt"
 #all:: ; echo "make srclines"
 #all:: ; echo "make libxatsopt"
-
 ######
 #
 xatsopt: \
-BUILD/xatsopt; $(MVF) $< ./bin/.
-BUILD/xatsopt: \
-DATS/xatsopt.dats \
-$(OBJSATS) $(OBJDATS); \
+BUILD/CC/xatsopt; $(MVF) $< ./bin/.
+BUILD/CC/xatsopt: \
+DATS/xatsopt.dats $(OBJSATS) $(OBJDATS); \
 $(PATSCC) -cleanaft -o $@ \
 $(INCLUDE) $(CFLAGS) $(GCFLAG) $^ $(LIBGC)
 #
@@ -211,28 +206,25 @@ srclines:: ; $(WCL) ./UTIL/?ATS/*.?ats
 srclines:: ; $(WCL) ./UTIL/?ATS/Posix/*.?ats
 
 ######
+
 libxatsopt: \
 $(OBJSATS) $(OBJDATS) \
-BUILD/libxatsopt_dats.o; \
+BUILD/CC/libxatsopt_dats.o; \
 ($(AR) -r $@.a $^ && $(MVF) $@.a ./lib/.)
-BUILD/libxatsopt_dats.o: DATS/xatsopt.dats; \
+BUILD/CC/libxatsopt_dats.o: DATS/xatsopt.dats; \
 $(PATSCC) $(INCLUDE) -DATS __LIBXATSOPT__ -o $@ -c $<
 
 ######
 
-BUILD/%_sats.c: \
-./SATS/%.sats ; $(PATSOPT) -o $@ --static $<
-BUILD/%_dats.c: \
-./DATS/%.dats ; $(PATSOPT) -o $@ --dynamic $<
+BUILD/CC/%_sats.c: ./SATS/%.sats ; $(PATSOPT) -o $@ --static $<
+BUILD/CC/%_dats.c: ./DATS/%.dats ; $(PATSOPT) -o $@ --dynamic $<
 
 ######
 
-BUILD/%_sats.o: \
-BUILD/%_sats.c; \
-$(PATSCC) $(INCLUDE) $(CFLAGS) -o $@ -c $<
-BUILD/%_dats.o: \
-BUILD/%_dats.c; \
-$(PATSCC) $(INCLUDE) $(CFLAGS) $(GCFLAG) -o $@ -c $<
+BUILD/CC/%_sats.o: \
+BUILD/CC/%_sats.c; $(PATSCC) $(INCLUDE) $(CFLAGS) -o $@ -c $<
+BUILD/CC/%_dats.o: \
+BUILD/CC/%_dats.c; $(PATSCC) $(INCLUDE) $(CFLAGS) $(GCFLAG) -o $@ -c $<
 
 ######
 #
@@ -255,7 +247,7 @@ depend:: ; \
 $(PATSOPT) --output-a .depend --depgen -d DATS/xatsopt.dats
 #
 depend:: ; \
-$(SED) -i -e 's/^SATS/BUILD/' -e 's/^DATS/BUILD/' .depend
+$(SED) -i -e 's/^SATS/BUILD\/CC/' -e 's/^DATS/BUILD\/CC/' .depend
 #
 -include .depend
 #
@@ -264,10 +256,10 @@ $(SED) -i -e 's/^SATS/BUILD/' -e 's/^DATS/BUILD/' .depend
 # For cleaning
 #
 ######
-clean:: ; $(RMF) BUILD/*_?ats.c
-clean:: ; $(RMF) BUILD/*_?ats.o
 clean:: ; $(RMF) xatsopt_dats.o
 clean:: ; $(RMF) xatsopt_dats.c
+clean:: ; $(RMF) $(BUILD)/*_?ats.c
+clean:: ; $(RMF) $(BUILD)/*_?ats.o
 ######
 cleanall:: clean
 cleanall:: ; $(RMF) ./.depend
