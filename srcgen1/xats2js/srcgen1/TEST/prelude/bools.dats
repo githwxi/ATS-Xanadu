@@ -39,4 +39,4 @@ val () = char_print( '\n' )
 
 (* ****** ****** *)
 
-(* end of [xats2js/srcgen1/TEST/prelude_bools.dats] *)
+(* end of [ATS3-Xanadu/srcgen1/xats2js/srcgen1/TEST/prelude_bools.dats] *)

@@ -115,4 +115,4 @@ g_print
 
 (* ****** ****** *)
 
-(* end of [cbref.dats] *)
+(* end of [ATS3-Xanadu/srcgen1/xats2js/srcgen1/TEST/prelude_cbref.dats] *)
