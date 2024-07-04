@@ -1,4 +1,4 @@
-################## Start of [README] ##################
+#################### Start of [README] ####################
 
 HX-2024-07-03:
 (*
@@ -6,6 +6,17 @@ Wed 03 Jul 2024 10:16:17 AM EDT
 *)
 ATS3/Xanadu/srcgen1/xats2js/srcgen1:
 For constructing a compiler from ATS3 to JavaScript
+
+###########################################################
+
+HX-2024-07-03:
+(*
+Wed 03 Jul 2024 08:33:23 PM EDT
+*)
+Q: How is the compiler [xats2js] supposed to be used?
+A: Basically, [xats2js] compiles a program in ATS3 into
+   some JS code, which can be treated as if it were written
+   manually.
   
-################## Finish of [README] ##################
+#################### Finish of [README] ####################
 

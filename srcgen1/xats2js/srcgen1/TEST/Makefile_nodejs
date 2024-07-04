@@ -29,6 +29,13 @@ $(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
 $(XATS2JS) --output-a output_dats.js -d $(PRELUDE)/addrs.dats && $(NODE) output_dats.js
 ######
 test:: \
+array
+array:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(PRELUDE)/array.dats && $(NODE) output_dats.js
+######
+test:: \
 bools
 bools:: ; \
 $(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \

@@ -172,4 +172,4 @@ g_print<strn>(cs) =
 //
 (* ****** ****** *)
 
-(* end of [chars.dats] *)
+(* end of [ATS3-Xanadu/srcgen1/xats2js/srcgen1/TEST/prelude_char.dats] *)
