@@ -83,3 +83,32 @@ It can also be readily done to write the runtime-library in ES3 directly.
 
 ########################################################################
 ########################################################################
+
+(*
+Fri 05 Jul 2024 05:58:48 PM EDT
+*)
+What is a project in ATS3 like?
+
+Let us say that the home directory for the project is MYPROJ.
+One should probably have a file MYPROJ/README for describing
+the project.
+
+In MYPROJ, the following directories can be expected:
+
+MYPROJ/bin: For executables produced by the project
+MYPROJ/lib: For library code produced by the project
+
+MYPROJ/SATS:
+For storing SATS files containing typedefs and interfaces
+
+MYPROJ/DATS:
+For storing DATS files implementing the interfaces in MYPROJ/SATS
+
+MYPROJ/HATS:
+For various loading scripts (for loading SATS files and DATS files)
+
+MYPROJ/DOCS: For documentation of all sorts
+MyPROJ/TEST: For storing testing code of all sorts
+
+########################################################################
+########################################################################
