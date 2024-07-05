@@ -45,7 +45,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #include
-"./../HATS/libxinterp.hats"
+"./../HATS/libxatsopt.hats"
 //
 (* ****** ****** *)
 //

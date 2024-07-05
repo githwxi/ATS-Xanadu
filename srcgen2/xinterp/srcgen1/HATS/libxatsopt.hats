@@ -10,18 +10,18 @@ Tue Nov 28 08:48:38 EST 2023
 #staload
 "./../../../SATS/xbasics.sats"
 (* ****** ****** *)
-#staload STM =
+#staload // STM =
 "./../../../SATS/xstamp0.sats"
 (* ****** ****** *)
-#staload SYM =
+#staload // SYM =
 "./../../../SATS/xsymbol.sats"
 (* ****** ****** *)
-//
-(*
-#staload LAB =
+#staload // LAB =
 "./../../../SATS/xlabel0.sats"
-*)
-//
+(* ****** ****** *)
+(* ****** ****** *)
+#staload
+"./../../../SATS/lexing0.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
@@ -65,4 +65,4 @@ Tue Nov 28 08:48:38 EST 2023
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_libxinterp.hats] *)
+(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_libxatsopt.hats] *)

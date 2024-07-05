@@ -46,19 +46,12 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload UN =
 "prelude/SATS/unsafex.sats"
 (* ****** ****** *)
-//
-#include
-"./../HATS/libxinterp.hats"
-//
 (* ****** ****** *)
 //
-#staload // STM =
-"./../../../SATS/xstamp0.sats"
-#staload // LAB =
-"./../../../SATS/xlabel0.sats"
-#staload // LEX =
-"./../../../SATS/lexing0.sats"
+#include
+"./../HATS/libxatsopt.hats"
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #include

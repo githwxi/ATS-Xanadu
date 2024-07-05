@@ -45,12 +45,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #include
-"./../HATS/libxinterp.hats"
-//
-(* ****** ****** *)
-//
-#staload // LAB =
-"./../../../SATS/xlabel0.sats"
+"./../HATS/libxatsopt.hats"
 //
 (* ****** ****** *)
 //
@@ -726,10 +721,10 @@ case- opt1 of
 optn_vt_cons(irv1) => irv1)
 where
 {
-val tmp1 =
-$SYM.symbl_get_stmp(sym1)
+val tmp1 = symbl_get_stmp(sym1)
 val opt1 =
-$STM.tmpmap_search_opt(livs, tmp1)
+(
+  tmpmap_search_opt(livs, tmp1))
 }
 )(* end-of-[IRVrcd2(tknd,livs)] *)
 //
