@@ -13,7 +13,7 @@ as way to test [xatsopt]
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #include
-"./../../HATS/libxinterp.hats"
+"./../../HATS/libxatsopt.hats"
 (* ****** ****** *)
 //
 val ret =
