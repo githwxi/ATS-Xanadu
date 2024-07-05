@@ -18,5 +18,27 @@ A: Basically, [xats2js] compiles a program in ATS3 into
    some JS code, which can be treated as if it were written
    manually.
   
+###########################################################
+
+HX-2024-07-04:
+(*
+Thu 04 Jul 2024 10:04:00 PM EDT
+*)
+ATS3/Xanadu/srcgen1/xats2js/srcgen1:
+The generated JavaScript code is indented
+(according to the so-called two-space indentation)
+Also, google-closure-compiler can be successfully applied
+to the ENTIRE xats2js to shrink it from 48105517 bytes to 2674209:
+//
+-rw-rw-r-- 1 hwxi hwxi 48105517 Jul  4 21:01 test12_xats2js_dats.js
+-rw-rw-r-- 1 hwxi hwxi  2674209 Jul  4 21:55 test12_xats2js_dats_closured.js
+//
+This is almost like a 20-fold shrinkage! Closure is really impressive :)
+#
+# HX-2024-07-04:
+# time npx google-closure-compiler -W QUIET --compilation_level SIMPLE --js=test12_xats2js_dats.js --js_output_file=test12_xats2js_dats_closured1.js
+# real: 1m27.170s
+# user: 1m25.091s
+#
 #################### Finish of [README] ####################
 

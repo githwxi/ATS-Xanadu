@@ -205,7 +205,14 @@ $(CAT) $(LIBXATSOPT_JS) >> $@_dats.js && \
 $(CAT) $(LIBXATS2JS_JS) >> $@_dats.js && \
 $(XATS2JS) --output-a $@_dats.js --dynamic $@.dats
 test12_xats2js_run: ; \
-$(NODE) ./test12_xats2js_dats.js ./DATA/mytest12.dats 2>/dev/null
+$(NODE) ./test12_xats2js_dats_closured.js ./DATA/mytest12.dats 2>/dev/null
+#
+######
+#
+# HX-2024-07-04:
+# time npx google-closure-compiler -W QUIET --compilation_level SIMPLE --js=test12_xats2js_dats.js --js_output_file=test12_xats2js_dats_closured1.js
+# real: 1m27.170s
+# user: 1m25.091s
 #
 ######
 #
