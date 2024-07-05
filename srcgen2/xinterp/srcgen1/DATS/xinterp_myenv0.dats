@@ -50,7 +50,7 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 #include
-"./../HATS/libxinterp.hats"
+"./../HATS/libxatsopt.hats"
 //
 (* ****** ****** *)
 //
@@ -102,10 +102,8 @@ irstk_dvar of
 //
 (* ****** ****** *)
 //
-#typedef
-cmap = $STM.tmpmap(irval)
-#typedef
-vmap = $STM.tmpmap(irval)
+#typedef cmap = tmpmap(irval)
+#typedef vmap = tmpmap(irval)
 //
 datavwtp
 xintenv =
@@ -370,10 +368,10 @@ XINTENV
 ( cmap
 , vmap, irstk_nil())) where
 {
-val cmap =
-$STM.tmpmap_make_nil{irval}()
-val vmap =
-$STM.tmpmap_make_nil{irval}() }
+val
+cmap = tmpmap_make_nil{irval}()
+val
+vmap = tmpmap_make_nil{irval}() }
 //
 (* ****** ****** *)
 //
@@ -477,7 +475,7 @@ let
 val
 tmp0 = d2cst_get_stmp(d2c0)
 in//let
-$STM.tmpmap_search_opt(cmap, tmp0)
+  tmpmap_search_opt(cmap, tmp0)
 end//let
 | ~
 optn_vt_cons(irv0) => optn_vt_cons(irv0)
@@ -505,7 +503,7 @@ let
 val
 tmp0 = d2var_get_stmp(d2v0)
 in//let
-$STM.tmpmap_search_opt(vmap, tmp0)
+  tmpmap_search_opt(vmap, tmp0)
 end//let
 | ~
 optn_vt_cons(irv0) => optn_vt_cons(irv0)
@@ -535,7 +533,7 @@ else
 let
   val tmp0 = d2cst_get_stmp(d2c0)
 in//let
-$STM.tmpmap_insert_any(cmap, tmp0, irv1)
+  tmpmap_insert_any(cmap, tmp0, irv1)
 end//let
 )(*case+*)//end-of-[xintenv_d2cins_any(...)]
 //
@@ -562,7 +560,7 @@ else
 let
   val tmp0 = d2var_get_stmp(d2v0)
 in//let
-$STM.tmpmap_insert_any(vmap, tmp0, irv1)
+  tmpmap_insert_any(vmap, tmp0, irv1)
 end//let//else
 )(*case+*)//end-of-[xintenv_d2vins_any(...)]
 //
@@ -576,7 +574,8 @@ local
 //
 val
 the_cmap =
-$STM.tmpmap_make_nil{irval}()
+(
+  tmpmap_make_nil{irval}())
 //
 in//local
 //
@@ -596,7 +595,8 @@ case+ opt1 of
 | ~optn_cons(irv1) => irv1) where
 {
 val opt1 =
-$STM.tmpmap_search_opt(the_cmap,tmp0)
+(
+  tmpmap_search_opt(the_cmap,tmp0))
 }
 end//let//end-of-[the_ircst_search(d2c0)]
 //
@@ -619,7 +619,7 @@ prerrln
 ("the_ircst_insval: irv1 = ", irv1)
 //
 in//let
-$STM.tmpmap_insert_any(the_cmap, tmp0, irv1)
+tmpmap_insert_any(the_cmap, tmp0, irv1)
 end(*let*) // end-of-[ the_ircst_insval(...) ]
 //
 (* ****** ****** *)

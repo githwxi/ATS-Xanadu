@@ -50,7 +50,7 @@ XATSOPT "./../../.."
 (* ****** ****** *)
 //
 #include
-"./../HATS/libxinterp.hats"
+"./../HATS/libxatsopt.hats"
 //
 (* ****** ****** *)
 //
