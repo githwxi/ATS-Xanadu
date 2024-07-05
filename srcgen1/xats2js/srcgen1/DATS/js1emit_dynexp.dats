@@ -72,12 +72,13 @@ with $FP0.fprint_filpath_full2
 (* ****** ****** *)
 #staload "./../SATS/js1emit.sats"
 (* ****** ****** *)
-
-implement
-fprint_val<l1tmp> = fprint_l1tmp
-
 (* ****** ****** *)
-
+implement
+fprint_val<l1tmp> =
+fprint_l1tmp(*out,ltmp*)
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 chrunq
 ( rep
@@ -104,7 +105,8 @@ xatsopt_strunq
 : string
 ) : char = "ext#xatsopt_strunq"
 }
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -124,49 +126,52 @@ if i0 < 6 then
 (
 loop
 (i0+1, time/10)) where
-{
-val () = fprint(out, time%10) }
-} (*where*) // end of [fprint_xstamp(out)]
+{ val () =
+  fprint(out, time%10) } }
+// end of [fprint_xstamp(out)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
 implement
 js1emit_int00
-(out, int) =
+  (out, int) =
 (
-fprint(out, int)
-)
+  fprint(out, int) )
 implement
 js1emit_btf00
-(out, btf) =
+  (out, btf) =
 (
-fprint(out, btf))
+  fprint(out, btf) )
+//
 (* ****** ****** *)
+//
 implement
 js1emit_txt00
-(out, txt) =
+  (out, txt) =
 (
-fprint(out, txt)
-)
+  fprint(out, txt) )
 implement
 js1emit_txtln
-(out, txt) =
-(
-fprint!(out, txt, '\n')
-)
+  (out, txt) =
+  fprint!(out, txt, '\n')
+//
 (* ****** ****** *)
+//
 implement
 js1emit_newln
-( out ) =
+  ( out ) =
 (
-  fprint_char(out, '\n')
-)
+  fprint_char(out, '\n') )
+//
 (* ****** ****** *)
+//
 implement
 js1emit_blnk1
-( out ) =
+  ( out ) =
 (
-  fprint_char( out, ' ' )
-)
+  fprint_char( out, ' ' ) )
+//
 (* ****** ****** *)
 
 implement
@@ -189,7 +194,8 @@ val () = js1emit_blnk1(out)
 implement
 js1emit_indnt
 (out, nind) =
-loop(nind) where
+(
+  loop(nind)) where
 {
 fun
 loop(n0: int): void =
@@ -652,7 +658,7 @@ fprint!
 , "XATS2JS_char(", rep, ")")
 )
 //
-end // end of [js1emit_lvchr]
+end // end of [js1emit_lvchr(...)]
 (* ****** ****** *)
 //
 implement
@@ -666,9 +672,11 @@ in
 case- tnd of 
 |
 T_FLT1(rep) =>
-  fprint(out, rep) // HX: FIXME!!!
+(
+  fprint(out, rep)) // HX: FIXME!!!
 //
-end // end of [js1emit_lvstr]
+end // end of [js1emit_lvflt(...)]
+//
 (* ****** ****** *)
 //
 implement
@@ -685,7 +693,8 @@ T_STRING_closed
   (rep) =>
   fprint(out, rep) // HX: FIXME!!!
 //
-end // end of [js1emit_lvstr]
+end // end of [js1emit_lvstr(...)]
+//
 (* ****** ****** *)
 //
 implement
@@ -696,7 +705,7 @@ val
 stm = exn0.stamp()
 in
   fprint!(out, "exn", stm)
-end // end of [let]
+end // end of [js1emit_l1exn(...)]
 //
 (* ****** ****** *)
 //
@@ -740,7 +749,7 @@ fprint(out, "_"); fprint_xstamp(out))
 //
 end // end of [else]
 //
-end // end of [js1emit_l1tmp]
+end // end of [js1emit_l1tmp(...)]
 //
 (* ****** ****** *)
 
@@ -990,7 +999,8 @@ val-
 L1DCLtimpcst0
 ( l1c1, ldcl ) = ldcl.node()
 //
-in
+in//
+//
 case+
 ldcl.node() of
 |
@@ -1005,26 +1015,36 @@ case+ opt of
 | Some(l1v1) =>
   js1emit_l1val(out, l1v1)
 end
-| _ (*else*) => js1emit_l1cst(out, l1c1)
-end // end of [aux_l1cst]
+|
+_(*otherwise*) =>
+(
+  js1emit_l1cst(out, l1c1))
+//
+end // end of [aux_l1cst(...)]
 //
 } (*where*) // end of [js1emit_l1val]
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 implement
 js1emit_l1pck
-( out, pck1 ) =
+( fout, nind, pck1 ) =
 {
-  val () = fprintln!(out, pck1)
-}
+//
+  val () =
+  js1emit_indnt(fout, nind)
+  val () = fprintln!(fout, pck1)
+//
+} (* end of [js1emit_l1pck(...)] *)
 //
 (* ****** ****** *)
-
+//
 fun
 js1emit_l1pcklst
-( out
+( fout
 : FILEref
+, nind: int
 , icas: int
 , tcas: l1tmp
 , pcks: l1pcklst): void =
@@ -1032,178 +1052,218 @@ let
 //
 fun
 auxpck0
-(pck0: l1pck) : void =
+( nind: int
+, pck0: l1pck) : void =
 (
 case+ pck0 of
-|
-L1PCKany() =>
+//
+|L1PCKany() =>
+(
 fprintln!
-(out, "//", pck0, ";")
+(fout, "//", pck0, ";")
+) where
+{
+val () =
+js1emit_indnt(fout, nind)
+}
+//
+|L1PCKi00(int1, l1v2) =>
+{
+//
+val () =
+js1emit_indnt(fout, nind)
+val () =
+js1emit_txt00(fout, "if(")
+//
+val () =
+js1emit_int00(fout, int1)
+val () =
+js1emit_txt00(fout, "!==")
+val () =
+js1emit_l1val( fout, l1v2 )
+val () =
+js1emit_txtln(fout, ") break;")
+//
+}
+//
+|L1PCKb00(btf1, l1v2) =>
+{
+//
+val () =
+js1emit_indnt(fout, nind)
+val () =
+js1emit_txt00(fout, "if(")
+//
+val () =
+js1emit_btf00(fout, btf1)
+val () =
+js1emit_txt00(fout, "!==")
+val () =
+js1emit_l1val( fout, l1v2 )
+val () =
+js1emit_txtln(fout, ") break;")
+}
+//
+|L1PCKint(int1, l1v2) =>
+{
+//
+val () =
+js1emit_indnt(fout, nind)
+val () =
+js1emit_txt00(fout, "if(")
+//
+val () =
+js1emit_lvint( fout, int1 )
+val () =
+js1emit_txt00(fout, "!==")
+val () =
+js1emit_l1val( fout, l1v2 )
+val () =
+js1emit_txtln(fout, ") break;")
+}
+//
+|L1PCKbtf(btf1, l1v2) =>
+{
+//
+val () =
+js1emit_indnt(fout, nind)
+val () =
+js1emit_txt00(fout, "if(")
+//
+val () =
+js1emit_lvbtf( fout, btf1 )
+val () =
+js1emit_txt00(fout, "!==")
+val () =
+js1emit_l1val( fout, l1v2 )
+val () =
+js1emit_txtln(fout, ") break;")
+}
+//
+|L1PCKchr(chr1, l1v2) =>
+{
+//
+val () =
+js1emit_indnt(fout, nind)
+val () =
+js1emit_txt00(fout, "if(")
+//
+val () =
+js1emit_lvchr( fout, chr1 )
+val () =
+js1emit_txt00(fout, "!==")
+val () =
+js1emit_l1val( fout, l1v2 )
+val () =
+js1emit_txtln(fout, ") break;")
+}
+//
+|L1PCKstr(str1, l1v2) =>
+{
+//
+val () =
+js1emit_indnt(fout, nind)
+val () =
+js1emit_txt00(fout, "if(")
+//
+val () =
+js1emit_lvstr( fout, str1 )
+val () =
+js1emit_txt00(fout, "!==")
+val () =
+js1emit_l1val( fout, l1v2 )
+val () =
+js1emit_txtln(fout, ") break;")
+}
+//
+|L1PCKcon
+(l1c1, l1v2) =>
+{
+//
+val () =
+js1emit_indnt(fout, nind)
+val () =
+js1emit_txt00(fout, "if(")
+//
+val () =
+js1emit_l1con( fout, l1c1 )
+val () =
+js1emit_txt00(fout, "!==")
+val () =
+js1emit_l1val( fout, l1v2 )
+val () =
+js1emit_txtln(fout, ") break;")
+}
+//
+|L1PCKapp
+(pck1, pcks) =>
+(
+auxpcks(nind, pcks)) where
+{
+ val () = auxpck0(nind, pck1) }
 //
 |
-L1PCKi00(int, l1v) =>
+L1PCKtup
+(knd0, pcks) =>
+{
+ val () = auxpcks(nind, pcks) }
+//
+|L1PCKgexp(l1v1, blk1) =>
 {
 val () =
-js1emit_txt00(out, "if(")
+js1emit_l1blk
+(fout, nind, blk1)//val
+//
 val () =
-js1emit_int00( out, int )
+js1emit_indnt(fout, nind)
 val () =
-js1emit_txt00(out, "!==")
+js1emit_txt00(fout, "if(")
+//
 val () =
-js1emit_l1val( out, l1v )
+js1emit_l1val(fout, l1v1)
 val () =
-js1emit_txtln(out, ") break;")
-}
-|
-L1PCKb00(btf, l1v) =>
-{
+js1emit_txt00(fout, "!==")
 val () =
-js1emit_txt00(out, "if(")
+js1emit_txt00(fout, "true")
 val () =
-js1emit_btf00( out, btf )
-val () =
-js1emit_txt00(out, "!==")
-val () =
-js1emit_l1val( out, l1v )
-val () =
-js1emit_txtln(out, ") break;")
+js1emit_txtln(fout, ") break;")
 }
 //
-|
-L1PCKint(int, l1v) =>
+|L1PCKgpat
+(pck1, pcks) =>
+(
+  auxpcks(nind, pcks)) where
 {
-val () =
-js1emit_txt00(out, "if(")
-val () =
-js1emit_lvint( out, int )
-val () =
-js1emit_txt00(out, "!==")
-val () =
-js1emit_l1val( out, l1v )
-val () =
-js1emit_txtln(out, ") break;")
-}
+  val () = auxpck0(nind, pck1) }
 //
+| _ (* otherwise *) =>
+let
+val () =
+js1emit_indnt(fout, nind)
+in//let
+fprintln!(fout, "//", pck0, ";")
+end//let
 //
-|
-L1PCKbtf(btf, l1v) =>
-{
-val () =
-js1emit_txt00(out, "if(")
-val () =
-js1emit_lvbtf( out, btf )
-val () =
-js1emit_txt00(out, "!==")
-val () =
-js1emit_l1val( out, l1v )
-val () =
-js1emit_txtln(out, ") break;")
-}
-//
-|
-L1PCKchr(chr, l1v) =>
-{
-val () =
-js1emit_txt00(out, "if(")
-val () =
-js1emit_lvchr( out, chr )
-val () =
-js1emit_txt00(out, "!==")
-val () =
-js1emit_l1val( out, l1v )
-val () =
-js1emit_txtln(out, ") break;")
-}
-//
-|
-L1PCKstr(str, l1v) =>
-{
-val () =
-js1emit_txt00(out, "if(")
-val () =
-js1emit_lvstr( out, str )
-val () =
-js1emit_txt00(out, "!==")
-val () =
-js1emit_l1val( out, l1v )
-val () =
-js1emit_txtln(out, ") break;")
-}
-//
-|
-L1PCKcon(l1c, l1v) =>
-{
-val () =
-js1emit_txt00(out, "if(")
-val () =
-js1emit_l1con( out, l1c )
-val () =
-js1emit_txt00(out, "!==")
-val () =
-js1emit_l1val( out, l1v )
-val () =
-js1emit_txtln(out, ") break;")
-}
-//
-|
-L1PCKapp(pck1, pcks) =>
-{
-  val () = auxpck0(pck1)
-  val () = auxpcks(pcks)
-}
-//
-|
-L1PCKtup(knd0, pcks) =>
-{
-  val () = auxpcks(pcks)
-}
-//
-|
-L1PCKgexp(l1v1, blk1) =>
-{
-val () =
-js1emit_l1blk(out, blk1)
-val () =
-js1emit_txt00(out, "if(")
-val () =
-js1emit_l1val(out, l1v1)
-val () =
-js1emit_txt00(out, "!==")
-val () =
-js1emit_txt00(out, "true")
-val () =
-js1emit_txtln(out, ") break;")
-}
-//
-|
-L1PCKgpat(pck1, pcks) =>
-{
-  val () = auxpck0(pck1)
-  val () = auxpcks(pcks)
-}
-//
-| _ (* else *) =>
-{
-val () =
-fprintln!(out, "//", pck0, ";")
-}
 )
 //
 and
 auxpcks
-(pcks: l1pcklst): void =
+( nind: int
+, pcks: l1pcklst): void =
 (
 case+ pcks of
 |
 list_nil() => ()
 |
 list_cons(pck1, pcks) =>
-{
-  val () = auxpck0( pck1 )
-  val () = auxpcks( pcks )
-}
+let
+val () =
+auxpck0
+(nind, pck1) in auxpcks(nind, pcks)
+end//let
 )
-in
+//
+in//let
 //
 case+ pcks of
 |
@@ -1212,72 +1272,122 @@ list_nil() => ()
 list_cons
 (pck1, pcks) =>
 let
-val () =
-js1emit_txtln
-( out, "do {" )
-//
-val () = auxpck0(pck1)
 //
 val () =
-js1emit_l1tmp(out, tcas)
-val () =
-fprint!
-(out, " = ", icas, ";\n")
+js1emit_indnt
+( fout, nind )
 val () =
 js1emit_txtln
-( out, "} while(false);")
+( fout, "do {" )
+//
 val () =
-js1emit_txt00(out, "if(")
+auxpck0(nind+2, pck1)
+//
 val () =
-js1emit_l1tmp( out, tcas )
+js1emit_indnt
+(fout, nind+2)
 val () =
-js1emit_txt00( out, " > 0) break;\n")
+js1emit_l1tmp(fout, tcas)
+val () =
+fprintln!(fout, " = ", icas, ";")
+//
+val () =
+js1emit_indnt(fout, nind)
+val () =
+js1emit_txtln
+( fout, "} while(false);")
+//
+val () =
+js1emit_indnt(fout, nind)
+val () =
+js1emit_txt00(fout, "if(")
+//
+val () =
+js1emit_l1tmp( fout, tcas )
+val () =
+js1emit_txt00(fout, " > 0) break;\n")
 //
 in
+(
   js1emit_l1pcklst
-  (out, icas+1, tcas, pcks)
+  (fout, nind, icas+1, tcas, pcks))
 end (*let*)
 //
-end (*let*) // end of [js1emit_pcklst]
+end (*let*) // end of [js1emit_pcklst(...)]
 
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+js1emitln_l1tmp
+( fout
+: FILEref
+, ltmp: l1tmp): void =
+(
+  fprintln!(fout)) where
+{
+  val () = js1emit_l1tmp(fout, ltmp)
+}
+//
+fun
+js1emitln_l1val
+( fout
+: FILEref
+, lval: l1val): void =
+(
+  fprintln!(fout)) where
+{
+  val () = js1emit_l1val(fout, lval)
+}
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 local
 //
 fun
 aux_mov
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 {
+//
 val () =
-js1emit_l1tmp(out, tres)
+js1emit_indnt(fout, nind)
+//
 val () =
-js1emit_txt00(out, " = ")
+js1emit_l1tmp(fout, tres)
 val () =
-js1emit_l1val(out, l1v1)
+js1emit_txt00(fout, " = ")
+val () =
+js1emitln_l1val(fout, l1v1)
+//
 } where
 {
 val-
-L1CMDmov
-(tres, l1v1) = lcmd.node()
+L1CMDmov(tres, l1v1) = lcmd.node()
 }
 //
 fun
 aux_con
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 {
-val () =
-js1emit_l1tmp(out, tres)
-val () =
-js1emit_txt00(out, " = ")
 //
 val () =
-js1emit_txt00(out, "[")
+js1emit_indnt(fout, nind)
+//
+val () =
+js1emit_l1tmp(fout, tres)
+val () =
+js1emit_txt00(fout, " = ")
+//
+val () =
+(
+  js1emit_txt00(fout, "["))
 //
 local
 fun
@@ -1299,8 +1409,8 @@ val () =
 if
 (n0 > 0)
 then
-js1emit_txt00(out, ", ")
-val () = js1emit_l1val(out, x0)
+js1emit_txt00(fout, ", ")
+val () = js1emit_l1val(fout, x0)
 } (* list_cons *)
 )
 in (*in-of-local*)
@@ -1311,10 +1421,10 @@ val-
 L1VALcon
 ( l1c0 ) = l1f0.node()
 in
-js1emit_l1con(out, l1c0)
+js1emit_l1con(fout, l1c0)
 end
 val () = loop( 1, l1vs )
-val () = js1emit_txt00(out, "]")
+val () = js1emit_txtln(fout, "]")
 //
 end (* end of [local] *)
 //
@@ -1330,15 +1440,19 @@ L1CMDapp
 //
 fun
 aux_tup
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 {
+//
 val () =
-js1emit_l1tmp(out, tres)
+js1emit_indnt(fout, nind)
+//
 val () =
-js1emit_txt00(out, " = ")
+js1emit_l1tmp(fout, tres)
+val () =
+js1emit_txt00(fout, " = ")
 //
 local
 fun
@@ -1360,9 +1474,12 @@ val () =
 if
 (n0 > 0)
 then
-js1emit_txt00(out, ", ")
+js1emit_txt00(fout, ", ")
+//
 val () =
-js1emit_l1val( out, x0 )
+(
+  js1emit_l1val(fout, x0))
+//
 } (* list_cons *)
 )
 in(* in-of-local *)
@@ -1371,12 +1488,12 @@ val () =
 if
 knd0 <= 0
 then // flat
-fprint!(out, "[", ~1)
+fprint!(fout, "[", ~1)
 else // boxed
-fprint!(out, "[",  0)
+fprint!(fout, "[",  0)
 //
 val () = loop( 1, l1vs )
-val () = js1emit_txt00(out, "]")
+val () = js1emit_txtln(fout, "]")
 //
 end (* end of [local] *)
 //
@@ -1392,18 +1509,23 @@ L1CMDtup
 //
 fun
 aux_app
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 {
-val () =
-js1emit_l1tmp(out, tres)
-val () =
-js1emit_txt00(out, " = ")
 //
 val () =
-js1emit_l1val( out, l1f0 )
+js1emit_indnt(fout, nind)
+//
+val () =
+js1emit_l1tmp(fout, tres)
+val () =
+js1emit_txt00(fout, " = ")
+//
+val () =
+(
+  js1emit_l1val(fout, l1f0))
 //
 local
 fun
@@ -1426,19 +1548,20 @@ val () =
 if
 (n0 > 0)
 then
-js1emit_txt00(out, ", ")
+js1emit_txt00(fout, ", ")
 //
 val () =
-js1emit_l1val( out, x0 )
+(
+  js1emit_l1val(fout, x0))
 //
 } (* list_cons *)
 )
 in(* in-of-local *)
 //
 val () =
-js1emit_txt00(out, "(")
+js1emit_txt00(fout, "(")
 val () = loop( 0, l1vs )
-val () = js1emit_txt00(out, ")")
+val () = fprintln!(fout, ")")
 //
 end (* end of [local] *)
 //
@@ -1454,40 +1577,40 @@ L1CMDapp
 //
 fun
 aux_lam
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 {
 //
 val+
 L1LAMEXP(rcd) = l1am
 //
 val () =
-js1emit_l1tmp
-( out, tres )
+js1emit_indnt(fout, nind)
+val () =
+js1emit_l1tmp(fout, tres)
+//
 val () =
 js1emit_txt00
-(out, " =\nfunction")
-//
+(fout, " = function ")
 val
 narg =
 js1emit_h0faglst
-( out
+( fout
 , rcd.lev
 , rcd.hfg, 0(*base*))
-val () = js1emit_newln(out)
+val () =
+js1emit_txtln( fout, " {" )
 //
 val () =
-js1emit_txtln(out, "{")
+js1emit_ftmpdecs
+(fout, nind+2, rcd.lts(*ltmps*))
 //
 val () =
-js1emit_ftmpdecs(out, rcd.lts)
-//
+js1emit_l1blk(fout, nind+2, rcd.hfg_blk)
 val () =
-js1emit_l1blk(out, rcd.hfg_blk)
-val () =
-js1emit_l1blk(out, rcd.def_blk)
+js1emit_l1blk(fout, nind+2, rcd.def_blk)
 val () =
 (
 case+
@@ -1499,64 +1622,71 @@ Some(res) =>
 {
 //
 val () =
-js1emit_txt00(out, "return ")
-val () = js1emit_l1val(out, res)
-val () = js1emit_txt00(out, ";\n")
+js1emit_indnt(fout, nind+2)
+val () =
+js1emit_txt00(fout, "return ")
+//
+val () =
+js1emit_l1val(fout, res)
+val () =
+fprintln!(fout, " // lam-fun")
 //
 }
 ) : void // end-of-val
 //
 val () =
-fprintln!(out, "} // lam-function")
+js1emit_indnt(fout, nind+0)
+val () =
+fprintln!(fout, "} // lam-function")
 //
 } where
 {
 //
-val-
-L1CMDlam
-(tres, l1am) = lcmd.node()
+val-L1CMDlam(tres, l1am) = lcmd.node()
 //
-} (* where *) // end of [aux_lam]
+} (* where *) // end of [aux_lam(...)]
 //
 fun
 aux_fix
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 {
 //
 val+
 L1FIXEXP(rcd) = lfix
 //
 val () =
-js1emit_l1tmp
-( out, tres )
+js1emit_indnt(fout, nind)
 val () =
-js1emit_txt00
-( out, " =\nfunction\n" )
+js1emit_l1tmp(fout, tres)
 //
 val () =
-js1emit_h0var(out, rcd.nam)
+js1emit_txt00
+(fout, " = function " )
+val () =
+js1emit_h0var
+(fout, rcd.nam(*recursive*))
 //
 val
 narg =
 js1emit_h0faglst
-( out
+( fout
 , rcd.lev
 , rcd.hfg, 0(*base*))
-val () = js1emit_newln(out)
+val () =
+(
+  js1emit_txtln( fout, " {" ))
 //
 val () =
-js1emit_txtln(out, "{")
+js1emit_ftmpdecs
+(fout, nind+2, rcd.lts(*ltmps*))
 //
 val () =
-js1emit_ftmpdecs(out, rcd.lts)
-//
+js1emit_l1blk(fout, nind+2, rcd.hfg_blk)
 val () =
-js1emit_l1blk(out, rcd.hfg_blk)
-val () =
-js1emit_l1blk(out, rcd.def_blk)
+js1emit_l1blk(fout, nind+2, rcd.def_blk)
 val () =
 (
 case+
@@ -1568,99 +1698,118 @@ Some(res) =>
 {
 //
 val () =
-js1emit_txt00(out, "return ")
-val () = js1emit_l1val(out, res)
-val () = js1emit_txt00(out, ";\n")
+js1emit_indnt(fout, nind+2)
+val () =
+js1emit_txt00(fout, "return ")
+//
+val () =
+js1emit_l1val(fout, res)
+val () =
+fprintln!(fout, " // fix-fun")
 //
 }
 ) : void // end-of-val
 //
 val () =
-fprintln!(out, "} // fix-function")
+js1emit_indnt(fout, nind+0)
+val () =
+fprintln!(fout, "} // fix-function")
 //
 } where
 {
 //
-val-
-L1CMDfix
-(tres, lfix) = lcmd.node()
+val-L1CMDfix(tres, lfix) = lcmd.node()
 //
-} (* where *) // end of [aux_fix]
+} (* where *) // end of [aux_fix(...)]
+//
+(* ****** ****** *)
 //
 fun
 aux_blk
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 (
 case+ blk1 of
 |
 L1BLKnone() => ()
 |
-L1BLKsome(xs) =>
+L1BLKsome(cmds) =>
 {
+//
 val () =
-js1emit_txtln( out, "{" )
+js1emit_indnt(fout, nind)
 val () =
-js1emit_l1cmdlst(out, xs)
+js1emit_txtln( fout, "{" )
+//
 val () =
-js1emit_txtln( out, "}" )
+js1emit_l1cmdlst(fout, nind+2, cmds)
+//
+val () = js1emit_indnt(fout, nind)
+val () = js1emit_txtln( fout, "}" )
+//
 }
 ) where
 {
-val-
-L1CMDblk(blk1) = lcmd.node()
-}
+  val-L1CMDblk(blk1) = lcmd.node() }
 //
 fun
 aux_dcl
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 (
-  js1emit_l1dcl(out, ldcl)
+  js1emit_l1dcl(fout, nind, ldcl)
 ) where
 {
-val-
-L1CMDdcl(ldcl) = lcmd.node()
-}
-
+  val-L1CMDdcl(ldcl) = lcmd.node() }
+//
 (* ****** ****** *)
 
 fun
 aux_ift1
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 {
 //
-val() =
-js1emit_txtln(out, "if")
-val() = js1emit_txt00(out, "(")
-val() = js1emit_l1val(out, l1v1)
-val() = js1emit_txtln(out, ")")
+val () =
+js1emit_indnt(fout, nind)
+val () =
+js1emit_txt00(fout, "if ")
 //
-val() =
-fprint!(out, "// then\n")
-val() = js1emit_txtln(out, "{")
-val() = js1emit_l1blk(out, blk2)
-val() = js1emit_txtln(out, "} // if-then")
+val () = js1emit_txt00(fout, "(")
+val () = js1emit_l1val(fout, l1v1)
+val () = js1emit_txtln( fout, ")" )
 //
-val() =
-js1emit_txtln(out, "else")
-val() = js1emit_txtln(out, "{")
-val() = js1emit_l1blk(out, blk3)
-val() = js1emit_txtln(out, "} // if-else")
+(*
+val () = js1emit_txtln(fout, "then")
+*)
+val () = js1emit_indnt(fout, nind)
+val () = js1emit_txtln(fout, "{ // then")
+//
+val () = js1emit_l1blk(fout, nind+2, blk2)
+//
+val () = js1emit_indnt(fout, nind)
+val () = js1emit_txtln(fout, "} // if-then")
+//
+val () = js1emit_indnt(fout, nind)
+val () = js1emit_txtln(fout, "else")
+val () = js1emit_indnt(fout, nind)
+val () = js1emit_txtln(fout, "{ // else")
+//
+val () = js1emit_l1blk(fout, nind+2, blk3)
+//
+val () = js1emit_indnt(fout, nind)
+val () = js1emit_txtln(fout, "} // if-else")
 //
 } where
 {
-val-
-L1CMDift1
-(l1v1, blk2, blk3) = lcmd.node()
-} (* where *) // end of [aux_ift1]
+val-L1CMDift1(l1v1, blk2, blk3) = lcmd.node()
+} (* where *) // end of [aux_ift1(...)]
 
 (* ****** ****** *)
 
@@ -1676,8 +1825,9 @@ js1emit_l1pcklst
 
 fun
 auxblklst
-( out
+( fout
 : FILEref
+, nind: int
 , icas: int
 , tcas: l1tmp
 , blks: l1blklst): void =
@@ -1685,11 +1835,11 @@ let
 //
 fun
 auxblk0
-( out
+( fout
 : FILEref
-, blk1
-: l1blk ) : void =
-js1emit_l1blk(out, blk1)
+, nind: int
+, blk1: l1blk ) : void =
+js1emit_l1blk(fout, nind, blk1)
 //
 in
 case+ blks of
@@ -1698,14 +1848,28 @@ list_nil() => ()
 |
 list_cons(blk1, blks) =>
 let
+//
+val () =
+js1emit_indnt(fout, nind)
 val () =
 fprint!
-(out, "case ", icas, ":\n")
-val () = auxblk0(out, blk1)
+(fout, "case ", icas, ":\n")
+//
 val () =
-js1emit_txt00(out, "break;\n")
-in
-auxblklst(out, icas+1, tcas, blks)
+(
+  auxblk0(fout, nind, blk1))
+//
+val () =
+(
+  js1emit_indnt(fout, nind))
+val () =
+(
+  js1emit_txtln(fout, "break;"))
+//
+in//let
+(
+  auxblklst
+  (fout, nind, icas+1, tcas, blks))
 end (* end-of-let *)
 end (* end-of-let *) // end of [auxblklst]
 
@@ -1717,119 +1881,154 @@ in(* in-of-local*)
 
 fun
 aux_case
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 {
 //
 val () =
-js1emit_txt00(out, "{\n")
+js1emit_indnt(fout, nind)
+val () =
+js1emit_txtln( fout, "{" )
 //
 val () =
-js1emit_l1tmp(out, tcas)
+js1emit_indnt(fout, nind+2)
 val () =
-js1emit_txtln(out, " = 0;")
+js1emit_l1tmp( fout, tcas )
 val () =
-js1emit_txt00(out, "do {\n")
-val () =
-auxpcklst(out, 1(*i*), tcas, pcks)
-val () =
-fprint!( out, "} while(false);\n" )
+js1emit_txtln(fout, " = 0;")
 //
 val () =
-fprintln!( out, "} // case-patck0" )
+js1emit_indnt(fout, nind+2)
+val () =
+js1emit_txtln( fout, "do {" )
 //
 val () =
-js1emit_txt00
-(out, "switch\n(")
-val () =
-js1emit_l1tmp(out, tcas)
-val () =
-js1emit_txt00(out, ") {\n")
+auxpcklst
+(fout, nind+2, 1(*i*), tcas, pcks)
 //
 val () =
-auxblklst(out, 1(*i*), tcas, blks)
+js1emit_indnt(fout, nind+2)
+val () =
+fprintln!(fout, "} while(false);")
 //
 val () =
+let
+val () =
+js1emit_indnt(fout, nind+0)
+in//let
+fprintln!(fout, "} // case-patck0")
+end//let
+//
+val () =
+js1emit_indnt(fout, nind+0)
+val () = fprint(fout, "switch(")
+val () = js1emit_l1tmp(fout, tcas)
+val () = js1emit_txtln(fout, ") {")
+//
+val () =
+auxblklst(fout, nind+2, 1(*i*), tcas, blks)
+//
+val () =
+let
+val () =
+js1emit_indnt(fout, nind+2)
+in//let
 fprint!
-( out
+( fout
 , "default: XATS2JS_matcherr0();\n")
+end//let
+//
 val () =
-js1emit_txtln(out, "} // case-switch")
+let
+val () =
+js1emit_indnt(fout, nind+0)
+in//let
+js1emit_txtln(fout, "} // case-switch")
+end//let
 //
 } where
 {
 //
-  val-
-  L1CMDcase
-  ( knd0
-  , l1v1
-  , tcas
-  , pcks
-  , blks) = lcmd.node((*void*))
+val-
+L1CMDcase
+( knd0
+, l1v1
+, tcas, pcks, blks) = lcmd.node((*nil*))
 //
-} (* where *) // end of [aux_case]
+} (* where *) // end- of-[aux_case(...)]
 
 (* ****** ****** *)
 
 fun
 aux_try0
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 {
 //
 val () =
-fprint!(out, "try\n{\n")
+fprint!(fout, "try\n{\n")
 val () =
-js1emit_l1blk(out, blk1)
+js1emit_l1blk(fout, nind, blk1)
 val () =
-fprint!(out, "}//try\n")
+fprint!(fout, "}//try\n")
 val () =
-fprint!(out, "catch\n(")
+fprint!(fout, "catch\n(")
 val () =
-js1emit_l1exn(out, texn)
+js1emit_l1exn(fout, texn)
 val () =
-js1emit_txt00(out, ") {\n")
+js1emit_txt00(fout, ") {\n")
 //
 val () =
-js1emit_l1tmp(out, tcas)
+js1emit_indnt(fout, nind)
 val () =
-js1emit_txtln(out, " = 0;")
+js1emit_l1tmp(fout, tcas)
 val () =
-js1emit_txt00(out, "do {\n")
-val () =
-auxpcklst(out, 1(*i*), tcas, pcks)
-val () =
-fprint!( out, "} while(false);\n" )
+js1emit_txtln(fout, " = 0;")
 //
 val () =
-js1emit_txt00
-(out, "switch\n(")
+js1emit_indnt(fout, nind+0)
 val () =
-js1emit_l1tmp(out, tcas)
-val () =
-js1emit_txt00(out, ") {\n")
+js1emit_txtln( fout, "do {" )
 //
 val () =
-auxblklst(out, 1(*i*), tcas, blks)
+auxpcklst
+(fout, nind+2, 1(*i*), tcas, pcks)
 //
+val () =
+js1emit_indnt(fout, nind+0)
+val () =
+fprintln!(fout, "} while(false);")
+//
+val () =
+js1emit_indnt(fout, nind+0)
+val () = fprint(fout, "switch(")
+val () = js1emit_l1tmp(fout, tcas)
+val () = js1emit_txtln(fout, ") {")
+//
+val () =
+auxblklst(fout, nind+2, 1(*i*), tcas, blks)
+//
+val () =
+js1emit_indnt
+(fout, nind+2)
 val () =
 fprint!
-(out, "default: ")
+(fout, "default: ")
 val () =
 fprint!
-(out, "XATS2JS_reraise(")
+(fout, "XATS2JS_reraise(")
 val () =
-js1emit_l1exn( out, texn )
-val () = fprint!(out, ");\n")
+js1emit_l1exn( fout, texn )
+val () = fprintln!(fout, ")")
 //
 val () =
-js1emit_txtln(out, "} // with-switch")
+js1emit_txtln(fout, "} // with-switch")
 val () =
-js1emit_txtln(out, "} // try0-with-catch")
+js1emit_txtln(fout, "} // try0-with-catch")
 //
 } where
 {
@@ -1849,16 +2048,16 @@ js1emit_txtln(out, "} // try0-with-catch")
 end (* end-of-local *) 
 
 (* ****** ****** *)
-
+//
 fun
 aux_patck
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 (
-  auxpck0(pck0)
-) where
+  auxpck0
+  (nind, pck0)) where
 {
 (*
 val
@@ -1871,62 +2070,71 @@ L1CMDpatck
 {
 fun
 auxpck0
-(pck0: l1pck): void =
+(nind: int
+,pck0: l1pck): void =
 (
 case+ pck0 of
 |
 L1PCKany() => ()
 |
-L1PCKcon(l1c, l1v) =>
+L1PCKcon(l1c1, l1v2) =>
 {
+//
 val () =
-js1emit_txt00(out, "if(")
+js1emit_indnt(fout, nind)
 val () =
-js1emit_l1con( out, l1c )
+js1emit_txt00(fout, "if(")
+//
 val () =
-js1emit_txt00(out, "!==")
+js1emit_l1con( fout, l1c1 )
 val () =
-js1emit_l1val( out, l1v )
+js1emit_txt00(fout, "!==")
+val () =
+js1emit_l1val( fout, l1v2 )
 val () =
 js1emit_txtln
-(out, ") XATS2JS_patckerr0();")
+(fout, ") XATS2JS_patckerr0();")
 }
 |
 L1PCKapp(pck1, pcks) =>
+(
+  auxpcks(nind, pcks)) where
 {
-  val () = auxpck0(pck1)
-  val () = auxpcks(pcks)
-}
+  val () = auxpck0(nind, pck1) }
 | _ (* else *) =>
-{
-  val () =
-  fprint!(out, "//", pck0)
-}
+let
+val () =
+js1emit_indnt(fout, nind)
+in//let
+fprintln!(fout, "//", pck0, ";")
+end//let
 )
+//
 and
 auxpcks
-(pcks: l1pcklst): void =
+( nind: int
+, pcks: l1pcklst): void =
 (
 case+ pcks of
 |
 list_nil() => ()
 |
 list_cons(pck1, pcks) =>
+(
+  auxpcks(nind, pcks)) where
 {
-  val () = auxpck0( pck1 )
-  val () = auxpcks( pcks )
-}
-) (* end of [auxpcks] *)
+  val () = auxpck0(nind, pck1) }
+) (* end of [auxpcks(...)] *)
 } (* where *) // end of [aux_patck]
-
+//
 (* ****** ****** *)
 
 fun
 aux_flat
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 let
 (*
 val
@@ -1938,34 +2146,35 @@ L1CMDflat
 , l1v1) = lcmd.node()
 //
 val () =
-js1emit_l1tmp(out, tres)
+js1emit_indnt(fout, nind)
+val () =
+js1emit_l1tmp(fout, tres)
 //
 in
 {
 //
 val () =
-fprint( out, " = " )
+fprint( fout, " = " )
 //
 val () =
 fprint
-( out
+( fout
 , "XATS2JS_lval_get(")
 val () =
-js1emit_l1val(out, l1v1)
-val () =
-js1emit_txt00( out, ")" )
+js1emit_l1val(fout, l1v1)
+val () = fprintln!(fout, ")")
 //
 }
-end // end of [aux_flat]
+end // end of [aux_flat(...)]
 
 (* ****** ****** *)
 
 fun
 aux_carg
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 let
 (*
 val
@@ -1978,30 +2187,32 @@ L1CMDcarg
 , idx2) = lcmd.node()
 //
 val () =
-js1emit_l1tmp(out, tres)
+js1emit_indnt(fout, nind)
+val () =
+js1emit_l1tmp(fout, tres)
 //
 in
 {
 //
 val () =
-fprint( out, " = " )
+fprint( fout, " = " )
 //
 val () =
-js1emit_l1val(out, l1v1)
+js1emit_l1val(fout, l1v1)
 val () =
-fprint!(out, "[", idx2+1, "]")
+fprintln!(fout, "[", idx2+1, "]")
 //
 }
-end // end of [aux_carg]
+end // let // end-of-[aux_carg(...)]
 
 (* ****** ****** *)
 
 fun
 aux_cofs
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 let
 (*
 val
@@ -2014,22 +2225,24 @@ L1CMDcofs
 , idx2) = lcmd.node()
 //
 val () =
-js1emit_l1tmp(out, tres)
+js1emit_indnt(fout, nind)
+val () =
+js1emit_l1tmp(fout, tres)
 //
 in
 {
 //
 val () =
-fprint( out, " = " )
+fprint( fout, " = " )
 //
 val () =
 fprint
-( out
+( fout
 , "XATS2JS_new_cofs(")
 val () =
-js1emit_l1val(out, l1v1)
+js1emit_l1val(fout, l1v1)
 val () =
-fprint!(out, ",", idx2+1, ")")
+fprintln!(fout, ",", idx2+1, ")")
 //
 }
 end // end of [aux_cofs]
@@ -2038,10 +2251,10 @@ end // end of [aux_cofs]
 
 fun
 aux_targ
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 let
 (*
 val
@@ -2054,30 +2267,32 @@ L1CMDtarg
 , idx2) = lcmd.node()
 //
 val () =
-js1emit_l1tmp(out, tres)
+js1emit_indnt(fout, nind)
+val () =
+js1emit_l1tmp(fout, tres)
 //
 in
 {
 //
 val () =
-fprint( out, " = " )
+fprint( fout, " = " )
 //
 val () =
-js1emit_l1val(out, l1v1)
+js1emit_l1val(fout, l1v1)
 val () =
-fprint!(out, "[", idx2+1, "]")
+fprintln!(fout, "[", idx2+1, "]")
 //
 }
-end // end of [aux_targ]
+end // let // end of [aux_targ(...)]
 
 (* ****** ****** *)
 
 fun
 aux_tofs
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 let
 (*
 val
@@ -2090,34 +2305,36 @@ L1CMDtofs
 , idx2) = lcmd.node()
 //
 val () =
-js1emit_l1tmp(out, tres)
+js1emit_indnt(fout, nind)
+val () =
+js1emit_l1tmp(fout, tres)
 //
 in
 {
 //
 val () =
-fprint( out, " = " )
+fprint( fout, " = " )
 //
 val () =
 fprint
-( out
+( fout
 , "XATS2JS_new_tofs(")
 val () =
-js1emit_l1val(out, l1v1)
+js1emit_l1val(fout, l1v1)
 val () =
-fprint!(out, ",", idx2+1, ")")
+fprintln!(fout, ",", idx2+1, ")")
 //
 }
-end // end of [aux_tofs]
+end // end of [aux_tofs(...)]
 
 (* ****** ****** *)
 
 fun
 aux_lazy
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 let
 (*
 val
@@ -2129,34 +2346,35 @@ L1CMDlazy
 , l1v1) = lcmd.node()
 //
 val () =
-js1emit_l1tmp(out, tres)
+js1emit_indnt(fout, nind)
+val () =
+js1emit_l1tmp(fout, tres)
 //
 in
 {
 //
 val () =
-fprint( out, " = " )
+fprint( fout, " = " )
 //
 val () =
 fprint
-( out
+( fout
 , "XATS2JS_new_lazy(")
 val () =
-js1emit_l1val(out, l1v1)
-val () =
-js1emit_txt00( out, ")" )
+js1emit_l1val(fout, l1v1)
+val () = fprintln!(fout, ")")
 //
 }
-end // end of [aux_lazy]
+end // end of [aux_lazy(...)]
 
 (* ****** ****** *)
 
 fun
 aux_llazy
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 let
 (*
 val
@@ -2169,26 +2387,27 @@ L1CMDllazy
 , l1v2) = lcmd.node()
 //
 val () =
-js1emit_l1tmp(out, tres)
+js1emit_indnt(fout, nind)
+val () =
+js1emit_l1tmp(fout, tres)
 //
 in
 {
 //
 val () =
-fprint( out, " = " )
+fprint( fout, " = " )
 //
 val () =
 fprint
-( out
+( fout
 , "XATS2JS_new_llazy(")
 val () =
-js1emit_l1val(out, l1v1)
+js1emit_l1val(fout, l1v1)
 val () =
-js1emit_txt00( out, "," )
+js1emit_txt00( fout, "," )
 val () =
-js1emit_l1val(out, l1v2)
-val () =
-js1emit_txt00( out, ")" )
+js1emit_l1val(fout, l1v2)
+val () = fprintln!(fout, ")")
 //
 }
 end // end of [aux_llazy]
@@ -2197,43 +2416,44 @@ end // end of [aux_llazy]
 
 fun
 aux_excon
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 let
 (*
-val
-loc0 = lcmd.loc()
+val loc0 = lcmd.loc()
 *)
 val-
 L1CMDexcon
 ( tmp1 ) = lcmd.node()
 //
 val () =
-js1emit_l1tmp(out, tmp1)
+js1emit_indnt(fout, nind)
+val () =
+js1emit_l1tmp(fout, tmp1)
 //
 in
 {
 //
 val () =
-fprint( out, " = " )
+fprint( fout, " = " )
 //
 val () =
-fprint
-( out
+fprintln!
+( fout
 , "XATS2JS_new_exctag()")
 }
-end // end of [aux_excon]
+end // end of [aux_excon(...)]
 
 (* ****** ****** *)
 
 fun
 aux_raise
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 let
 (*
 val
@@ -2243,26 +2463,28 @@ val-
 L1CMDraise
 ( l1v1 ) = lcmd.node()
 //
-in
+val () =
+js1emit_indnt(fout, nind)
+//
+in//let
 {
 val () =
 fprint
-( out
-, "XATS2JS_raise(")
+(fout, "XATS2JS_raise(")
 val () =
-js1emit_l1val(out, l1v1)
-val () = fprint(out, ")")
+js1emit_l1val(fout, l1v1)
+val () = fprintln!(fout, ")")
 }
-end // end of [aux_raise]
+end // end of [aux_raise(...)]
 
 (* ****** ****** *)
 
 fun
 aux_assgn
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 let
 (*
 val
@@ -2273,30 +2495,33 @@ L1CMDassgn
 ( l1v1
 , l1v2 ) = lcmd.node()
 //
+val () =
+js1emit_indnt(fout, nind)
+//
 in
 {
 val () =
 fprint
-( out
+( fout
 , "XATS2JS_lval_set(")
 val () =
-js1emit_l1val(out, l1v1)
+js1emit_l1val(fout, l1v1)
 val () =
-js1emit_txt00(out, ", ")  
+js1emit_txt00(fout, ", ")  
 val () =
-js1emit_l1val(out, l1v2)
-val () = fprint(out, ")")
+js1emit_l1val(fout, l1v2)
+val () = fprintln!(fout, ")")
 }
-end // end of [aux_assgn]
+end // end of [aux_assgn(...)]
 
 (* ****** ****** *)
 
 fun
 aux_eval1
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 let
 (*
 val
@@ -2308,33 +2533,34 @@ L1CMDeval1
 , l1v1 ) = lcmd.node()
 //
 val () =
-js1emit_l1tmp(out, tres)
+js1emit_indnt(fout, nind)
+val () =
+js1emit_l1tmp(fout, tres)
 //
 in
 {
 //
 val () =
-fprint( out, " = " )
+fprint( fout, " = " )
 //
 val () =
 fprint
-( out
+( fout
 , "XATS2JS_lval_get(")
 val () =
-js1emit_l1val(out, l1v1)
-val () =
-js1emit_txt00( out, ")" )
+js1emit_l1val(fout, l1v1)
+val () = fprintln!(fout, ")")
 }
-end // end of [aux_eval1]
+end // end of [aux_eval1(...)]
 
 (* ****** ****** *)
 
 fun
 aux_eval2
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 let
 (*
 val
@@ -2346,33 +2572,34 @@ L1CMDeval2
 , l1v1 ) = lcmd.node()
 //
 val () =
-js1emit_l1tmp(out, tres)
+js1emit_indnt(fout, nind)
+val () =
+js1emit_l1tmp(fout, tres)
 //
 in
 {
 //
 val () =
-fprint( out, " = " )
+fprint( fout, " = " )
 //
 val () =
 fprint
-( out
+( fout
 , "XATS2JS_lazy_eval(")
 val () =
-js1emit_l1val(out, l1v1)
-val () =
-js1emit_txt00( out, ")" )
+js1emit_l1val(fout, l1v1)
+val () = fprintln!(fout, ")")
 }
-end // end of [aux_eval2]
+end // end of [aux_eval2(...)]
 
 (* ****** ****** *)
 
 fun
 aux_eval3
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 let
 (*
 val
@@ -2384,33 +2611,34 @@ L1CMDeval3
 , l1v1 ) = lcmd.node()
 //
 val () =
-js1emit_l1tmp(out, tres)
+js1emit_indnt(fout, nind)
+val () =
+js1emit_l1tmp(fout, tres)
 //
 in
 {
 //
 val () =
-fprint( out, " = " )
+fprint( fout, " = " )
 //
 val () =
 fprint
-( out
+( fout
 , "XATS2JS_llazy_eval(")
 val () =
-js1emit_l1val(out, l1v1)
-val () =
-js1emit_txt00( out, ")" )
+js1emit_l1val(fout, l1v1)
+val () = fprintln!(fout, ")")
 }
-end // end of [aux_eval3]
+end // end of [aux_eval3(...)]
 
 (* ****** ****** *)
 
 fun
 aux_free3
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 let
 (*
 val
@@ -2422,24 +2650,25 @@ L1CMDfree3
 , l1v1 ) = lcmd.node()
 //
 val () =
-js1emit_l1tmp(out, tres)
+js1emit_indnt(fout, nind)
+val () =
+js1emit_l1tmp(fout, tres)
 //
 in
 {
 //
 val () =
-fprint( out, " = " )
+fprint( fout, " = " )
 //
 val () =
 fprint
-( out
+( fout
 , "XATS2JS_llazy_free(")
 val () =
-js1emit_l1val(out, l1v1)
-val () =
-js1emit_txt00( out, ")" )
+js1emit_l1val(fout, l1v1)
+val () = fprintln!(fout, ")")
 }
-end // end of [aux_free3]
+end // end of [aux_free3(...)]
 
 (* ****** ****** *)
 
@@ -2449,12 +2678,14 @@ in(* in-of-local *)
 
 implement
 js1emit_l1cmd
-(out, lcmd) =
+( fout
+, nind, lcmd) =
 (
 case+
 lcmd.node() of
 |
-L1CMDmov _ => aux_mov(out, lcmd)
+L1CMDmov _ =>
+aux_mov(fout, nind, lcmd)
 |
 L1CMDapp
 (_, l1f0, _) =>
@@ -2462,89 +2693,156 @@ L1CMDapp
 case+
 l1f0.node() of
 |
-L1VALcon _ => aux_con(out, lcmd)
+L1VALcon _ =>
+aux_con(fout, nind, lcmd)
 |
-_ (*else*) => aux_app(out, lcmd)
+_ (*else*) =>
+aux_app(fout, nind, lcmd)
 )
 //
 |
-L1CMDtup _ => aux_tup(out, lcmd)
+L1CMDtup _ =>
+aux_tup(fout, nind, lcmd)
 //
 |
-L1CMDlam _ => aux_lam(out, lcmd)
+L1CMDlam _ =>
+aux_lam(fout, nind, lcmd)
 |
-L1CMDfix _ => aux_fix(out, lcmd)
+L1CMDfix _ =>
+aux_fix(fout, nind, lcmd)
 //
 |
-L1CMDblk _ => aux_blk(out, lcmd)
+L1CMDblk _ =>
+aux_blk(fout, nind, lcmd)
 //
 |
-L1CMDdcl _ => aux_dcl(out, lcmd)
+L1CMDdcl _ =>
+aux_dcl(fout, nind, lcmd)
 //
 |
-L1CMDift1 _ => aux_ift1(out, lcmd)
+L1CMDift1 _ =>
+aux_ift1(fout, nind, lcmd)
 //
 |
-L1CMDcase _ => aux_case(out, lcmd)
+L1CMDcase _ =>
+aux_case(fout, nind, lcmd)
 |
-L1CMDtry0 _ => aux_try0(out, lcmd)
+L1CMDtry0 _ =>
+aux_try0(fout, nind, lcmd)
 //
 |
-L1CMDpatck _ => aux_patck(out, lcmd)
+L1CMDpatck _ =>
+(
+aux_patck(fout, nind, lcmd))
 //
 |
-L1CMDflat _ => aux_flat(out, lcmd)
+L1CMDflat _ =>
+(
+  aux_flat(fout, nind, lcmd))
 //
 |
-L1CMDcarg _ => aux_carg(out, lcmd)
+L1CMDcarg _ =>
+(
+  aux_carg(fout, nind, lcmd))
 |
-L1CMDcofs _ => aux_cofs(out, lcmd)
+L1CMDcofs _ =>
+(
+  aux_cofs(fout, nind, lcmd))
 //
 |
-L1CMDtarg _ => aux_targ(out, lcmd)
+L1CMDtarg _ =>
+(
+  aux_targ(fout, nind, lcmd))
 |
-L1CMDtofs _ => aux_tofs(out, lcmd)
+L1CMDtofs _ =>
+(
+  aux_tofs(fout, nind, lcmd))
 //
 (*
 |
-L1CMDpofs _ => aux_pofs(out, lcmd)
+L1CMDpofs _ =>
+(
+  aux_pofs(fout, nind, lcmd))
 *)
 //
 |
-L1CMDlazy _ => aux_lazy(out, lcmd)
+L1CMDlazy _ =>
+(
+  aux_lazy(fout, nind, lcmd))
 |
-L1CMDllazy _ => aux_llazy(out, lcmd)
+L1CMDllazy _ =>
+(
+  aux_llazy(fout, nind, lcmd))
 //
 |
-L1CMDexcon _ => aux_excon(out, lcmd)
+L1CMDexcon _ =>
+(
+  aux_excon(fout, nind, lcmd))
 |
-L1CMDraise _ => aux_raise(out, lcmd)
+L1CMDraise _ =>
+(
+  aux_raise(fout, nind, lcmd))
 //
 |
-L1CMDassgn _ => aux_assgn(out, lcmd)
+L1CMDassgn _ =>
+(
+  aux_assgn(fout, nind, lcmd))
 //
 |
-L1CMDeval1 _ => aux_eval1(out, lcmd)
+L1CMDeval1 _ =>
+(
+  aux_eval1(fout, nind, lcmd))
 |
-L1CMDeval2 _ => aux_eval2(out, lcmd)
+L1CMDeval2 _ =>
+(
+  aux_eval2(fout, nind, lcmd))
 |
-L1CMDeval3 _ => aux_eval3(out, lcmd)
+L1CMDeval3 _ =>
+(
+  aux_eval3(fout, nind, lcmd))
 //
 |
-L1CMDfree3 _ => aux_free3(out, lcmd)
+L1CMDfree3 _ =>
+(
+  aux_free3(fout, nind, lcmd))
 //
 |
-_ (* else *) => fprint!(out, "//", lcmd)
+_(*otherwise *) =>
+let
+val () =
+js1emit_indnt(fout, nind)
+in//let
+fprintln!(fout, "//", lcmd, ";")
+end//let
 //
-) (*js1emit_l1cmd*) end // end of [local]
+) (*js1emit_l1cmd(...)*) end // end of [local]
 
 (* ****** ****** *)
+//
+implement
+js1emit_l1blk
+( fout
+, nind, blk0) =
+(
+case+ blk0 of
+|
+L1BLKnone() => ()
+|
+L1BLKsome(cmds) =>
+{
+val () =
+js1emit_l1cmdlst(fout, nind, cmds)
+}
+)(*case+*)//end-of-[js1emit_l1blk(...)]
+//
+(* ****** ****** *)
+//
 implement
 js1emit_l1cmdlst
-  (out, cmds) =
+( fout
+, nind, cmds) =
 (
-  loop( cmds )
-) where
+  loop( cmds )) where
 {
 fun
 loop
@@ -2556,36 +2854,20 @@ case+ cmds of
 list_nil() => ()
 |
 list_cons
-(x0, cmds) =>
-loop(cmds) where
-{
-val()=
-js1emit_l1cmd(out, x0)
-val()=
-js1emit_txtln(out, ";")
-}
-)
-} (*end*) // js1emit_l1cmdlst
-(* ****** ****** *)
-implement
-js1emit_l1blk
-(out, blk0) =
+(cmd1, cmds) =>
 (
-case+ blk0 of
-|
-L1BLKnone() => ()
-|
-L1BLKsome(cmds) =>
+  loop(cmds)) where
 {
-  val() =
-  js1emit_l1cmdlst(out, cmds)
-}
-) (* end of [js1emit_l1blk] *)
+val () =
+js1emit_l1cmd(fout, nind, cmd1)})
+} (*end*) // js1emit_l1cmdlst(...)
+//
 (* ****** ****** *)
 
 implement
 js1emit_fargdecs
-( out
+( fout
+, nind
 , narg, flev) =
 (
   loop(0(*i0*))
@@ -2600,10 +2882,15 @@ then
   loop(i1) // end-of-then
 ) where
 {
+//
 val i1 = i0+1
+//
+val () =
+js1emit_indnt(fout, nind)
+//
 val () =
 fprint!
-( out
+( fout
 , "let", " "
 , "a", flev, "y", i1, ";\n")
 }
@@ -2614,37 +2901,44 @@ fprint!
 
 implement
 js1emit_ftmpdecs
-( out, tmps ) =
+( fout
+, nind, tmps) =
 (
 case+ tmps of
 |
 list_nil() => ()
 |
-list_cons(t1, ts) =>
+list_cons
+(tmp1, tmps) =>
 let
-val i0 = t1.arg()
-in
+//
+val i1 = tmp1.arg()
+//
+in//let
+//
 if
-(i0 > 0)
+(i1 > 0)
 then
 (
-js1emit_ftmpdecs(out, ts)
-)
+js1emit_ftmpdecs
+(fout, nind, tmps))
 else
 (
-js1emit_ftmpdecs(out, ts)
-) where
+js1emit_ftmpdecs
+(fout, nind, tmps)) where
 {
 //
 val () =
-js1emit_txt00(out, "let ")
+js1emit_indnt(fout, nind)
+val () =
+js1emit_txt00(fout, "let ")
 //
-val () = js1emit_l1tmp(out, t1)
-val () = js1emit_txtln(out, ";")
+val () = js1emitln_l1tmp(fout, tmp1)
 //
 } (* end of [else] *)
+//
 end // end of [let]
-) (* end of [js1emit_ftmpdecs] *)
+) (* end of [js1emit_ftmpdecs(...)] *)
 
 (* ****** ****** *)
 
@@ -2666,21 +2960,30 @@ L1DCLtimpcst0
 )
 //
 (* ****** ****** *)
-
+//
+fun
+nindent
+( fout
+: FILEref, nind: int) =
+js1emit_indnt(fout, nind)
+//
+(* ****** ****** *)
+//
 fun
 aux_h0cst
-( out
+( fout
 : FILEref
 , dcl0: l1dcl
 , hdc1: h0cst): void =
-js1emit_h0cst(out, hdc1)
-
+js1emit_h0cst(fout, hdc1)
+//
 (* ****** ****** *)
 
 fun
 aux_fundclst
-( out
+( fout
 : FILEref
+, nind: int
 , dcl0: l1dcl): void =
 let
 //
@@ -2714,18 +3017,19 @@ in
 ifcase
 |
 isfnx(knd0) =>
-js1emit_l1dcl_fnx(out, dcl0)
+js1emit_l1dcl_fnx(fout, nind, dcl0)
 |
 _(* else *) =>
-js1emit_l1dcl_fun(out, dcl0)
-end // end of [aux_fundclst]
+js1emit_l1dcl_fun(fout, nind, dcl0)
+end // end of [aux_fundclst(...)]
 
 (* ****** ****** *)
 
 fun
 aux_valdclst
-( out
+( fout
 : FILEref
+, nind: int
 , dcl0: l1dcl): void =
 let
 //
@@ -2739,14 +3043,19 @@ val+
 L1VALDECL(rcd) = lvd0
 //
 val () =
-js1emit_txtln(out, "{")
+js1emit_indnt(fout, nind)
 val () =
-js1emit_l1blk(out, rcd.def_blk)
-val () =
-fprintln!
-( out, "} // val(", rcd.pat, ")" )
+js1emit_txtln( fout, "{" )
 //
-} (* end of [auxlvd0] *)
+val () =
+js1emit_l1blk(fout, nind+2, rcd.def_blk)
+//
+val () =
+js1emit_indnt( fout, nind )
+val () =
+fprintln!(fout, "} // val(", rcd.pat, ")")
+//
+} (* end of [auxlvd0(...)] *)
 
 (* ****** ****** *)
 //
@@ -2768,6 +3077,7 @@ list_cons
 ) (* end of [auxlvds] *)
 //
 in
+//
 let
 val-
 L1DCLvaldclst
@@ -2776,14 +3086,16 @@ L1DCLvaldclst
 , lvds) =
   dcl0.node() in auxlvds(lvds)
 end
-end // end of [aux_valdclst]
+//
+end // end of [aux_valdclst(...)]
 
 (* ****** ****** *)
 
 fun
 aux_vardclst
-( out
+( fout
 : FILEref
+, nind: int
 , dcl0: l1dcl): void =
 let
 //
@@ -2797,15 +3109,19 @@ val+
 L1VARDECL(rcd) = lvd0
 //
 val () =
-js1emit_txtln(out, "{")
+js1emit_indnt(fout, nind)
+val () =
+js1emit_txtln(fout,  "{" )
 //
 val () =
-js1emit_l1blk(out, rcd.ini_blk)
+js1emit_l1blk(fout, nind+2, rcd.ini_blk)
 //
 val () =
 let
 val () =
-js1emit_l1tmp(out, rcd.hdv_tmp)
+js1emit_indnt(fout, nind+2)
+val () =
+js1emit_l1tmp(fout, rcd.hdv_tmp)
 in(*in-of-let*)
 //
 case+
@@ -2815,29 +3131,32 @@ None() =>
 {
   val () =
   fprint!
-  ( out
+  ( fout
   , " = XATS2JS_new_var0(")
-  val () = fprint!(out, ");\n")
+  val () = fprintln!(fout, ")")
 }
 |
 Some(ini) =>
 {
   val () =
   fprint!
-  ( out
+  ( fout
   , " = XATS2JS_new_var1(")
   val () =
-  js1emit_l1val( out, ini )
-  val () = fprint!(out, ");\n")
+  js1emit_l1val( fout, ini )
+//
+  val () = fprintln!(fout, ")")
+//
 }
 //
 end // end of [val]
 //
 val () =
-fprintln!
-( out, "} // val(", rcd.hdv, ")" )
+js1emit_indnt(fout, nind)
+val () =
+fprintln!( fout, "} // var(", rcd.hdv, ")" )
 //
-} (* end of [auxlvd0] *)
+} (* end of [auxlvd0(lvd0:l1vardecl)] *)
 
 (* ****** ****** *)
 //
@@ -2867,14 +3186,15 @@ L1DCLvardclst
 , lvds) =
   dcl0.node() in auxlvds(lvds)
 end
-end // end of [aux_vardclst]
+end // end of [aux_vardclst(lvds:l1vardeclist)]
 
 (* ****** ****** *)
 
 fun
 aux_implmnt3
-( out
+( fout
 : FILEref
+, nind: int
 , dcl0: l1dcl): void =
 let
 //
@@ -2897,17 +3217,19 @@ case+
 rcd.hfg of
 |
 list_nil _ =>
-aux_implmnt30(out, dcl2)
+aux_implmnt30(fout, nind, dcl2)
 |
 list_cons _ =>
-aux_implmnt31(out, dcl2)
+aux_implmnt31(fout, nind, dcl2)
 //
-end // end of [aux_implmnt]
+end
+// end of [aux_implmnt(...)]
 //
 and
 aux_implmnt30
-( out
+( fout
 : FILEref
+, nind: int
 , dcl2: l1dcl): void =
 let
 //
@@ -2927,28 +3249,35 @@ val+
 L1IMPLMNT(rcd) = limp
 //
 val () =
-js1emit_txtln
-(out, "// { // val-implmnt")
+js1emit_indnt(fout, nind+0)
+val () =
+js1emit_txtln(fout, "// { // val-implmnt")
 //
 val () =
-js1emit_ftmpdecs(out, rcd.lts)
+js1emit_ftmpdecs
+(fout, nind+0, rcd.lts(*ltmps*))
 //
 val () =
-js1emit_l1blk(out, rcd.def_blk)
+js1emit_l1blk(fout, nind+0, rcd.def_blk)
 //
 val () =
-js1emit_txtln
-( out, "// } // val-implmnt" )
+js1emit_indnt(fout, nind+0)
+val () =
+js1emit_txtln(fout, "// } // val-implmnt")
 //
 val () =
-js1emit_txtln
-( out, "const // implval/fun" )
+js1emit_indnt(fout, nind+0)
+val () =
+js1emit_txtln(fout, "var // const // implval/fun")
 //
 val () =
-aux_h0cst( out, dcl2, rcd.hdc )
+js1emit_indnt(fout, nind+0)
+val () =
+(
+  aux_h0cst(fout, dcl2, rcd.hdc))
 (*
 val () =
-js1emit_h0cst(out, rcd.hdc(*name*))
+js1emit_h0cst(fout, rcd.hdc(*name*))
 *)
 //
 in
@@ -2961,17 +3290,17 @@ None() => ()
 Some(res) =>
 {
 //
-val () = js1emit_txt00(out, " = ")
-val () = js1emit_l1val( out, res )
-val () = js1emit_txt00( out, "\n" )
+val () = js1emit_txt00(fout, " = ")
+val () = js1emitln_l1val(fout, res)
 //
 } (* end of [Some] *)
 end (*let*) // end of [aux_implmnt30]
 //
 and
 aux_implmnt31
-( out
+( fout
 : FILEref
+, nind: int
 , dcl2: l1dcl): void =
 let
 //
@@ -2986,35 +3315,42 @@ val+
 L1IMPLMNT(rcd) = limp
 //
 val () =
-js1emit_txtln
-(out, "function")
+js1emit_indnt(fout, nind)
+val () =
+js1emit_txtln(fout, "function")
 //
 val () =
-aux_h0cst(out, dcl2, rcd.hdc)
+(
+  js1emit_indnt(fout, nind);
+  aux_h0cst(fout, dcl2, rcd.hdc))
 (*
 val () =
-js1emit_h0cst(out, hdc1(*name*))
+js1emit_h0cst(fout, hdc1(*name*))
 *)
 //
 val
 narg =
 js1emit_h0faglst
-( out
+( fout
 , rcd.lev
 , rcd.hfg, 0(*base*))
-val () = js1emit_newln(out)
+val () =
+(
+  js1emit_newln(fout))
 //
 val () =
-js1emit_txtln(out, "{")
+js1emit_indnt(fout, nind)
+val () =
+js1emit_txtln( fout, "{" )
 //
 val () =
 js1emit_ftmpdecs
-( out, rcd.lts(*ltmps*) )
+( fout, nind+2, rcd.lts(*ltmps*) )
 //
 val () =
-js1emit_l1blk(out, rcd.hfg_blk)
+js1emit_l1blk(fout, nind+2, rcd.hfg_blk)
 val () =
-js1emit_l1blk(out, rcd.def_blk)
+js1emit_l1blk(fout, nind+2, rcd.def_blk)
 //
 val () =
 (
@@ -3027,23 +3363,26 @@ Some(res) =>
 {
 //
 val () =
-js1emit_txt00(out, "return ")
-val () = js1emit_l1val(out, res)
-val () = js1emit_txt00(out, ";\n")
+js1emit_indnt(fout, nind+2)
+val () =
+js1emit_txt00(fout, "return ")
+//
+val () = js1emitln_l1val(fout, res)
 //
 }
 ) : void // end-of-val
 in
-fprintln!
-(out, "} // function // ", rcd.hdc)
+js1emit_indnt(fout, nind);
+fprintln!(fout, "} // function // ", rcd.hdc)
 end (*let*) // end of [aux_implmnt31]
 
 (* ****** ****** *)
 
 fun
 aux_timpcst0
-( out
+( fout
 : FILEref
+, nind: int
 , dcl0: l1dcl): void =
 let
 //
@@ -3059,18 +3398,26 @@ dcl2.node() of
 | 
 L1DCLfundclst _ =>
 {
-val()=aux_fundclst(out, dcl0)
+val () =
+aux_fundclst(fout, nind, dcl0)
 }
 //
 |
 L1DCLimplmnt3 _ =>
 {
-val()=aux_implmnt3(out, dcl0)
+val () =
+aux_implmnt3(fout, nind, dcl0)
 }
 //
 | _ (* else *) =>
 {
-val () = fprint!(out, "// ", dcl0)
+val () =
+let
+  val () =
+  js1emit_indnt(fout, nind)
+in//let
+  fprintln!(fout, "//", dcl0, ";")
+end//let
 }
 //
 end (*let*) // end of [aux_timpcst0]
@@ -3079,8 +3426,9 @@ end (*let*) // end of [aux_timpcst0]
 
 fun
 aux_excptcon
-( out
+( fout
 : FILEref
+, nind: int
 , dcl0: l1dcl): void =
 let
 //
@@ -3089,7 +3437,9 @@ L1DCLexcptcon
 (hdcs, blk0) = dcl0.node()
 //
 in
-  js1emit_l1blk(out, blk0(*init*))
+(
+  js1emit_l1blk
+  (fout, nind, blk0(*init*)))
 end (*let*) // end of [aux_excptcon]
 
 (* ****** ****** *)
@@ -3098,21 +3448,18 @@ in(*in-of-local*)
 //
 implement
 js1emit_l1dcl
-(out, dcl0) =
+(fout, nind, dcl0) =
 let
 //
 val
-loc0 = dcl0.loc()
-//
-val () =
-fprint!(out, "// ")
-val () =
-fprintln!(out, loc0)
+loc0 = dcl0.loc((*void*))
 //
 (*
-val () = fprint!(out, "// ")
-val () = fprintln!(out, dcl0)
+val () = nindent(fout, nind)
 *)
+val () = fprint!(fout, "// ")
+val () = fprintln!(fout, loc0)
+//
 in(*in-of-let*)
 //
 case+
@@ -3123,18 +3470,15 @@ L1DCLlocal
 (head, body) =>
 {
 val () =
-fprint
-(out, "// { // local\n")
+fprint(fout, "// { // local\n")
 val () =
-js1emit_l1dclist(out, head)
+js1emit_l1dclist(fout, nind, head)
 val () =
-fprint
-(out, "// in-of-local\n")
+fprint(fout, "// in-of-local\n")
 val () =
-js1emit_l1dclist(out, body)
+js1emit_l1dclist(fout, nind, body)
 val () =
-fprint
-(out, "// } // end-of-local\n")
+fprint(fout, "// } // end-of-local\n")
 }
 //
 |
@@ -3145,7 +3489,7 @@ L1DCLinclude
 {
 val () =
 fprint
-(out, "// { // include\n")
+(fout, "// { // include\n")
 val () =
 (
 case+ opt1 of
@@ -3153,7 +3497,7 @@ case+ opt1 of
 None() => ((*void*))
 |
 Some(path) =>
-fprint!(out, "// ", path, "\n")
+fprintln!(fout, "// ", path)
 )
 val () =
 (
@@ -3162,53 +3506,52 @@ case+ opt2 of
 None() => ((*void*))
 |
 Some(body) =>
-js1emit_l1dclist(out, body)
+js1emit_l1dclist(fout, nind, body)
 )
 val () =
 fprint!
-(out, "// } // end-of-include\n")
+(fout, "// } // end-of-include\n")
 }
 //
 |
 L1DCLfundclst _ =>
 {
-val()=aux_fundclst(out, dcl0)
-}
+  val () =
+  aux_fundclst(fout, nind, dcl0) }
 //
 |
 L1DCLvaldclst _ =>
 {
-val()=aux_valdclst(out, dcl0)
-}
+  val () =
+  aux_valdclst(fout, nind, dcl0) }
 //
 |
 L1DCLvardclst _ =>
 {
-val()=aux_vardclst(out, dcl0)
-}
+  val () =
+  aux_vardclst(fout, nind, dcl0) }
 //
 |
 L1DCLimplmnt3 _ =>
 {
-val()=aux_implmnt3(out, dcl0)
-}
+  val () =
+  aux_implmnt3(fout, nind, dcl0) }
 //
 |
 L1DCLtimpcst0 _ =>
 {
-val()=aux_timpcst0(out, dcl0)
-}
+  val () =
+  aux_timpcst0(fout, nind, dcl0) }
 //
 |
 L1DCLexcptcon _ =>
 {
-val()=aux_excptcon(out, dcl0)
-}
+  val () =
+  aux_excptcon(fout, nind, dcl0) }
 //
 | _ (* else *) =>
 {
-val () = fprint!(out, "// ", dcl0)
-}
+val () = fprintln!(fout, "// ", dcl0) }
 //
 end (*js1emit_l1dcl*) end // end-of-local
 
@@ -3216,10 +3559,9 @@ end (*js1emit_l1dcl*) end // end-of-local
 
 implement
 js1emit_l1dclist
-  (out, dcls) =
+(fout, nind, dcls) =
 (
-  auxlst(dcls)
-) where
+  auxlst(dcls)) where
 {
 fun
 auxlst
@@ -3229,16 +3571,16 @@ auxlst
 case+ dcls of
 |
 list_nil
-((*void*)) => ()
+((*void*)) => ( (*void*) )
 |
 list_cons
 (dcl1, dcls) =>
 let
 val () =
 js1emit_l1dcl
-( out, dcl1 )
+(fout, nind, dcl1)
 val () =
-js1emit_newln(out) in auxlst(dcls)
+js1emit_newln(fout) in auxlst(dcls)
 end // list_cons]
 ) (* end of [auxlst] *)
 } (*where*) // end of [js1emit_l1dclist]
@@ -3247,7 +3589,7 @@ end // list_cons]
 
 implement
 js1emit_package
-  (out, lpkg) =
+  (fout, lpkg) =
 {
 val () = auxtmps(tmps)
 val () = auxdcls(dcls) 
@@ -3260,23 +3602,25 @@ L1PKG
 //
 fun
 auxtmps
-( xs
+( tmps
 : l1tmplst): void =
 (
-case+ xs of
+//
+case+ tmps of
 |
 list_nil() => ()
 |
-list_cons(x0, xs) =>
+list_cons
+(tmp1, tmps) =>
 (
-  auxtmps(xs)) where
+  auxtmps(tmps)) where
 {
 val () =
-js1emit_txt00(out, "var ")
-val () = js1emit_l1tmp(out, x0)
-val () = js1emit_txtln(out, ";")
-} (* list_cons *)
-) (* end of [auxtmps] *)
+js1emit_txt00(fout, "var ")
+val () =
+js1emitln_l1tmp(fout, tmp1) }
+//
+) (* end of [auxtmps(...)] *)
 //
 fun
 auxdcls
@@ -3289,13 +3633,16 @@ list_nil() => ()
 |
 list_cons(x0, xs) =>
 let
-(*
-val () = xindnt(0)
-*)
+//
 val () =
-js1emit_l1dcl(out, x0)
-val () = js1emit_newln(out)
-val () = js1emit_newln(out) in auxdcls(xs)
+js1emit_l1dcl
+(fout, nind, x0) where
+{
+  val nind = 0(*init*) }
+//
+val () = js1emit_newln(fout)
+val () = js1emit_newln(fout) in auxdcls(xs)
+//
 end // list_cons
 ) (* end of [auxdcls] *)
 //
@@ -3537,11 +3884,11 @@ L1DCLtimpcst0
 
 fun
 aux_h0cst
-( out
+( fout
 : FILEref
 , dcl0: l1dcl
 , hdc1: h0cst): void =
-js1emit_h0cst(out, hdc1)
+js1emit_h0cst(fout, hdc1)
 
 in (*in-of-local*)
 
@@ -3549,12 +3896,13 @@ in (*in-of-local*)
 
 implement
 js1emit_l1dcl_fun
-  (out, dcl0) =
+(fout, nind, dcl0) =
 let
 //
 fun
 auxlfd0
-( lfd0
+( nind: int
+, lfd0
 : l1fundecl): void =
 let
 //
@@ -3568,12 +3916,13 @@ rcd.def_blk of
 L1BLKnone _ => ()
 |
 L1BLKsome _ =>
-auxlfd0_some(lfd0)
-end // end of [auxlfd0]
+auxlfd0_some(nind, lfd0)
+end // end of [auxlfd0(...)]
 //
 and
 auxlfd0_some
-( lfd0
+( nind: int
+, lfd0
 : l1fundecl): void =
 let
 //
@@ -3581,14 +3930,17 @@ val+
 L1FUNDECL(rcd) = lfd0
 //
 val () =
-js1emit_txtln
-(out, "function")
+js1emit_indnt(fout, nind)
+val () =
+js1emit_txtln(fout, "function")
 //
 val () =
-aux_h0cst(out, dcl0, rcd.hdc)
+(
+  js1emit_indnt(fout, nind);
+  aux_h0cst(fout, dcl0, rcd.hdc))
 (*
 val () =
-js1emit_h0cst(out, rcd.hdc(*name*))
+js1emit_h0cst(fout, rcd.hdc(*name*))
 *)
 //
 val narg =
@@ -3604,23 +3956,26 @@ Some
 val
 narg =
 js1emit_h0faglst
-( out
+( fout
 , rcd.lev
 , rcd_hfg, 0(*base*) )
-val () = js1emit_newln(out)
+val () = js1emit_newln(fout)
 }
 )
 //
 val () =
-js1emit_txtln(out, "{")
+js1emit_indnt(fout, nind)
+val () =
+js1emit_txtln( fout, "{" )
 //
 val () =
-js1emit_ftmpdecs(out, rcd.lts)
+js1emit_ftmpdecs
+(fout, nind+2, rcd.lts(*ltmps*))
 //
 val () =
-js1emit_l1blk(out, rcd.hfg_blk)
+js1emit_l1blk(fout, nind+2, rcd.hfg_blk)
 val () =
-js1emit_l1blk(out, rcd.def_blk)
+js1emit_l1blk(fout, nind+2, rcd.def_blk)
 //
 val () =
 (
@@ -3633,22 +3988,30 @@ Some(res) =>
 {
 //
 val () =
-js1emit_txt00(out, "return ")
-val () = js1emit_l1val(out, res)
-val () = js1emit_txt00(out, ";\n")
+js1emit_indnt(fout, nind+2)
+val () =
+js1emit_txt00(fout, "return ")
+//
+val () = js1emitln_l1val(fout, res)
 //
 }
 ) : void // end-of-val
-in
-  fprintln!
-  (out, "} // function // ", rcd.hdc)
-end (* end of [auxlfd0_some] *)
+in//let
+//
+let
+val () = js1emit_indnt(fout, nind)
+in//let
+fprintln!(fout, "} // function // ", rcd.hdc)
+end//let
+//
+end (* end of [auxlfd0_some(...)] *)
 //
 (* ****** ****** *)
 //
 and
 auxlfds
-( lfds
+( nind: int
+, lfds
 : l1fundeclist): void =
 (
 case lfds of
@@ -3657,9 +4020,10 @@ list_nil() => ()
 |
 list_cons
 (lfd0, lfds) =>
+(
+  auxlfds(nind, lfds)) where
 {
-  val () = auxlfd0(lfd0)
-  val () = auxlfds(lfds)
+  val () = auxlfd0(nind, lfd0)
 }
 )
 //
@@ -3674,8 +4038,9 @@ val-
 L1DCLfundclst
 ( knd0
 , mopt
-, lfds) = dcl2.node() in auxlfds(lfds)
-end // end of [let]
+, lfds) =
+  dcl2.node() in auxlfds(nind, lfds)
+end//let
 //
 end where
 {
@@ -3690,7 +4055,7 @@ end where
 
 implement
 js1emit_l1dcl_fnx
-  (out, dcl0) =
+(fout, nind, dcl0) =
 let
 
 (* ****** ****** *)
@@ -3712,16 +4077,20 @@ isret
 
 fun{}
 myjs1emit_l1blk
-( out
+( fout
 : FILEref
+, nind: int
 , blk0: l1blk): void =
 ( a1ux_l1blk
-  (out, blk0)) where
+  (fout, nind, blk0)) where
 {
 (* ****** ****** *)
+//
 fun
 a1ux_l1blk
-( out: FILEref
+( fout
+: FILEref
+, nind: int
 , blk0: l1blk): void =
 let
 (*
@@ -3734,23 +4103,26 @@ println!
 in
 //
 case+ blk0 of
-| L1BLKnone() => ()
-| L1BLKsome(cmds) =>
-  a1ux_l1cmdlst(out, cmds)
+|L1BLKnone() => ()
+|L1BLKsome(cmds) =>
+(
+a1ux_l1cmdlst(fout,nind,cmds))
 //
-end // end of [a1ux_l1blk]
+end // end of [a1ux_l1blk(...)]
 //
 and
 a1ux_l1cmd
-( out
+( fout
 : FILEref
+, nind: int
 , cmd0: l1cmd): void =
 let
 //
 fun
 a2ux_app
-( out
+( fout
 : FILEref
+, nind: int
 , cmd0: l1cmd): void =
 let
 val
@@ -3761,20 +4133,22 @@ if
 isret
 then
 let
+//
 val
 isrec = isrec<>(l1f0)
-in
+//
+in//let
 //
 if
 isrec
 then
-a2ux_trc(out, cmd0)
+a2ux_trc(fout, nind, cmd0)
 else
-js1emit_l1cmd(out, cmd0)
+js1emit_l1cmd(fout, nind, cmd0)
 //
 end // end of [then]
 else
-js1emit_l1cmd(out, cmd0)
+js1emit_l1cmd(fout, nind, cmd0)
 //
 end where
 {
@@ -3786,10 +4160,10 @@ L1CMDapp
 //
 and
 a2ux_trc
-( out
+( fout
 : FILEref
-, cmd0
-: l1cmd): void =
+, nind: int
+, cmd0: l1cmd): void =
 let
 val
 lev = mylev()
@@ -3813,13 +4187,13 @@ val i1 = i0 + 1
 //
 val () =
 fprint!
-(out, "a", lev, "y", i1)
+(fout, "a", lev, "y", i1)
 val () =
-js1emit_txt00(out, " = ")
+js1emit_txt00(fout, " = ")
 val () =
-js1emit_l1val( out, l1v1 )
+js1emit_l1val( fout, l1v1 )
 val () =
-js1emit_txt00( out, "; " )
+js1emit_txt00( fout, "; " )
 } (* where *)
 ) (* end of [loop1] *)
 //
@@ -3832,8 +4206,8 @@ loop2
 case+ l1vs of
 |
 list_nil() =>
-fprint!
-(out, "continue")
+fprintln!
+(fout, "continue")
 |
 list_cons
 (l1v1, l1vs) =>
@@ -3845,62 +4219,82 @@ val i1 = i0 + 1
 //
 val () =
 fprint!
-(out
+(fout
 , "a", lev, "x", i1
 , " = "
 , "a", lev, "y", i1, "; ")
 }
 ) (* end of [loop2] *)
 //
-in
-(
-loop1(0, l1vs);
-loop2(0, l1vs);
-) where
+in//let
+//
+let
+val () =
+js1emit_indnt(fout, nind+0)
+in//let
+loop1(0, l1vs); loop2(0, l1vs)
+//
+end where // end of [let]
 {
+//
+val () =
+(
+  js1emit_indnt(fout, nind+0))
 val () =
 fprint!
-(out, "// tail-recursion:\n")
+(fout, "// tail-recursion:\n")
+//
 val () =
-fprint!(out, "// ", cmd0, "\n")
+(
+  js1emit_indnt(fout, nind+0))
+val () =
+fprintln!(fout, "// ", cmd0, ";")
+//
 }
 end where
 {
 val-
 L1CMDapp
-( tres
-, l1f0, l1vs) = cmd0.node()
-} (*where*) // end of [a2ux_trc]
+(tres, l1f0, l1vs) = cmd0.node()
+} (*where*) // end of [a2ux_trc(...)]
 (* ****** ****** *)
 //
 fun
 a2ux_blk
-( out
+( fout
 : FILEref
-, cmd0
-: l1cmd): void =
+, nind: int
+, cmd0: l1cmd): void =
 {
+//
 val () =
-fprint!( out, "{\n" )
+js1emit_indnt(fout, nind)
 val () =
-a1ux_l1blk(out, blk1)
+js1emit_txtln( fout, "{" )
+//
 val () =
-fprint!( out, "}\n" )
+a1ux_l1blk(fout, nind+2, blk1)
+//
+val () =
+(
+  js1emit_indnt(fout, nind))
+val () =
+(
+  js1emit_txtln( fout, "}" ))
+//
 } where
 {
-  val-
-  L1CMDblk
-  ( blk1 ) = cmd0.node()
+val-L1CMDblk(blk1) = cmd0.node()
 } (*where*) // end of [a2ux_blk]
 //
 (* ****** ****** *)
 //
 fun
 a2ux_ift1
-( out
+( fout
 : FILEref
-, cmd0
-: l1cmd): void =
+, nind: int
+, cmd0: l1cmd): void =
 {
 //
 val-
@@ -3908,28 +4302,33 @@ L1CMDift1
 ( l1v1
 , blk2, blk3) = cmd0.node()
 //
+val () =
+js1emit_indnt(fout, nind)
 val() =
-js1emit_txtln(out, "if")
-val() = js1emit_txt00(out, "(")
-val() = js1emit_l1val(out, l1v1)
-val() = js1emit_txtln(out, ")")
+js1emit_txt00(fout, "if ")
 //
-val() =
-fprint!
-(out, "// then\n")
-val() =
-js1emit_txtln(out, "{")
-val() = a1ux_l1blk(out, blk2)
-val() =
-js1emit_txtln(out, "} // if-then")
+val() = js1emit_txt00(fout, "(")
+val() = js1emit_l1val(fout, l1v1)
+val() = js1emit_txtln( fout, ")" )
 //
-val() =
-fprint!(out, "else\n")
-val() =
-js1emit_txtln(out, "{")
-val() = a1ux_l1blk(out, blk3)
-val() =
-js1emit_txtln(out, "} // if-else")
+val () = js1emit_indnt(fout, nind)
+val () = js1emit_txtln(fout, "{ // then")
+
+val () =
+a1ux_l1blk(fout, nind+2, blk2)//if-then
+//
+val () = js1emit_txtln(fout, "} // if-then")
+//
+val () = js1emit_indnt(fout, nind)
+val () = js1emit_txtln(fout, "else")
+val () = js1emit_indnt(fout, nind)
+val () = js1emit_txtln(fout, "{ // else")
+//
+val () =
+a1ux_l1blk(fout, nind+2, blk3)//if-else
+//
+val () = js1emit_indnt(fout, nind)
+val () = js1emit_txtln(fout, "} // if-else")
 //
 } (* where *) // end of [a2ux_ift1]
 //
@@ -3937,10 +4336,10 @@ js1emit_txtln(out, "} // if-else")
 //
 fun
 a2ux_case
-( out
+( fout
 : FILEref
-, lcmd
-: l1cmd): void =
+, nind: int
+, lcmd: l1cmd): void =
 let
 (* ****** ****** *)
 //
@@ -3952,8 +4351,9 @@ js1emit_l1pcklst
 //
 fun
 auxblklst
-( out
+( fout
 : FILEref
+, nind: int
 , icas: int
 , tcas: l1tmp
 , blks: l1blklst): void =
@@ -3961,11 +4361,11 @@ let
 //
 fun
 auxblk0
-( out
+( fout
 : FILEref
-, blk1
-: l1blk ) : void =
-a1ux_l1blk(out, blk1)
+, nind: int
+, blk1: l1blk) : void =
+a1ux_l1blk(fout, nind, blk1)
 //
 in
 case+ blks of
@@ -3974,14 +4374,26 @@ list_nil() => ()
 |
 list_cons(blk1, blks) =>
 let
+//
 val () =
-fprint!
-(out, "case ", icas, ":\n")
-val () = auxblk0(out, blk1)
+js1emit_indnt(fout, nind)
 val () =
-js1emit_txt00(out, "break;\n")
-in
-auxblklst(out, icas+1, tcas, blks)
+fprintln!
+(fout, "case ", icas, ":")
+//
+val () =
+(
+  auxblk0(fout, nind, blk1))
+//
+val () =
+(
+  js1emit_indnt(fout, nind))
+val () =
+(
+  js1emit_txtln(fout, "break;"))
+//
+in//let
+auxblklst(fout, nind, icas+1, tcas, blks)
 end (* end-of-let *)
 end (* end-of-let *) // end of [auxblklst]
 //
@@ -3999,39 +4411,62 @@ L1CMDcase
 , blks) = lcmd.node()
 //
 val () =
-js1emit_txt00(out, "{\n")
+js1emit_indnt(fout, nind)
+val () =
+js1emit_txt00(fout, "{\n")
 //
 val () =
-js1emit_l1tmp(out, tcas)
+js1emit_indnt(fout, nind+2)
 val () =
-js1emit_txtln(out, " = 0;")
+js1emit_l1tmp( fout, tcas )
 val () =
-js1emit_txt00(out, "do {\n")
-val () =
-auxpcklst(out, 1(*i*), tcas, pcks)
-val () =
-fprint!( out, "} while(false);\n" )
+js1emit_txtln(fout, " = 0;")
 //
 val () =
-fprintln!( out, "} // case-patck0" )
+js1emit_indnt(fout, nind+2)
+val () =
+js1emit_txtln( fout, "do {" )
 //
 val () =
-js1emit_txt00
-(out, "switch\n(")
-val () =
-js1emit_l1tmp(out, tcas)
-val () =
-js1emit_txt00(out, ") {\n")
+auxpcklst
+(fout, nind+2, 1(*i*), tcas, pcks)
 //
 val () =
-auxblklst(out, 1(*i*), tcas, blks)
+js1emit_indnt(fout, nind+2)
+val () =
+fprint!(fout, "} while(false);\n" )
 //
 val () =
+js1emit_indnt(fout, nind+0)
+val () =
+fprintln!(fout, "} // case-patck0" )
+//
+val () =
+js1emit_indnt(fout, nind+0)
+val () = fprint(fout, "switch(")
+val () = js1emit_l1tmp(fout, tcas)
+val () = js1emit_txtln(fout, ") {")
+//
+val () =
+auxblklst(fout, nind+2, 1(*i*), tcas, blks)
+//
+val () =
+let
+val () =
+js1emit_indnt(fout, nind+2)
+in//let
 fprint!
-( out
+( fout
 , "default: XATS2JS_matcherr0();\n")
+end//let
+//
 val () =
-js1emit_txtln(out, "} // case-switch")
+let
+val () =
+js1emit_indnt(fout, nind+0)
+in//let
+js1emit_txtln(fout, "} // case-switch")
+end//let
 //
 } end (*let*) // end of [a2ux_case]
 
@@ -4048,28 +4483,28 @@ case+
 cmd0.node() of
 //
 | L1CMDapp _ =>
-  a2ux_app(out, cmd0)
+  a2ux_app(fout, nind, cmd0)
 //
 | L1CMDblk _ =>
-  a2ux_blk(out, cmd0)
+  a2ux_blk(fout, nind, cmd0)
 //
 | L1CMDift1 _ =>
-  a2ux_ift1(out, cmd0)
+  a2ux_ift1(fout, nind, cmd0)
 //
 | L1CMDcase _ =>
-  a2ux_case(out, cmd0)
+  a2ux_case(fout, nind, cmd0)
 //
 | _(* else *) =>
-  js1emit_l1cmd(out, cmd0)
+  js1emit_l1cmd(fout, nind, cmd0)
 //
 end // end of [a1ux_l1cmd]
 //
 and
 a1ux_l1cmdlst
-( out
+( fout
 : FILEref
-, cmds
-: l1cmdlst): void =
+, nind: int
+, cmds: l1cmdlst): void =
 (
 case+ cmds of
 |
@@ -4079,14 +4514,15 @@ list_nil
 list_cons
 (cmd1, cmds) =>
 (
-a1ux_l1cmdlst(out, cmds)
-) where
+a1ux_l1cmdlst
+(fout, nind, cmds)) where
 {
-  val () =
-  a1ux_l1cmd(out, cmd1)
-  val () =
-  js1emit_txtln( out, ";" )
-} // end of [a1ux_l1cmdlst]
+//
+val () =
+(
+a1ux_l1cmd(fout, nind, cmd1))
+//
+}(*where*)//end-[a1ux_l1cmdlst(...)]
 )
 //
 (* ****** ****** *)
@@ -4097,7 +4533,8 @@ a1ux_l1cmdlst(out, cmds)
 
 fun
 auxlfd0
-( lfd0
+( nind: int
+, lfd0
 : l1fundecl): void =
 let
 //
@@ -4111,12 +4548,13 @@ rcd.def_blk of
 L1BLKnone _ => ()
 |
 L1BLKsome _ =>
-auxlfd0_some(lfd0)
-end // end of [auxlfd0]
+auxlfd0_some(nind, lfd0)
+end // end of [auxlfd0(...)]
 //
 and
 auxlfd0_some
-( lfd0
+( nind: int
+, lfd0
 : l1fundecl): void =
 let
 //
@@ -4124,11 +4562,14 @@ val+
 L1FUNDECL(rcd) = lfd0
 //
 val () =
-js1emit_txtln
-(out, "function")
+js1emit_indnt(fout, nind)
+val () =
+js1emit_txtln(fout, "function")
 //
 val () =
-aux_h0cst(out, dcl0, rcd.hdc)
+(
+  js1emit_indnt(fout, nind);
+  aux_h0cst(fout, dcl0, rcd.hdc))
 (*
 val () =
 js1emit_h0cst(out, rcd.hdc(*name*))
@@ -4147,29 +4588,37 @@ Some(rcd_hfg) => narg where
 val
 narg =
 js1emit_h0faglst
-( out
+( fout
 , rcd.lev
 , rcd_hfg, 0(*base*) )
 //
-val () = js1emit_newln(out)
+val () = js1emit_newln(fout)
 //
 } (* Some *)
 ) (* end of [val] *)
 //
 val () =
-js1emit_txtln(out, "{")
+js1emit_indnt(fout, nind)
+val () =
+js1emit_txtln( fout, "{" )
 //
 val () =
 js1emit_fargdecs
-(out, narg, rcd.lev(*flev*))
+(fout
+,nind+2, narg, rcd.lev(*flev*))
 val () =
-js1emit_ftmpdecs(out, rcd.lts)
+js1emit_ftmpdecs
+(fout, nind+2, rcd.lts(*ltmps*))
 //
 val () =
-js1emit_txtln(out, "do {")
+(
+  js1emit_indnt(fout, nind+2))
+val () =
+(
+  js1emit_txtln(fout, "do {"))
 //
 val () =
-js1emit_l1blk(out, rcd.hfg_blk)
+js1emit_l1blk(fout, nind+2, rcd.hfg_blk)
 //
 local
 //
@@ -4181,8 +4630,7 @@ fundecl_get_tmprets(lfd0)
 //
 (*
 val () =
-println!
-("auxlfd0_some: trts = ", trts)
+println!("auxlfd0_some: trts = ", trts)
 *)
 //
 implement
@@ -4213,41 +4661,49 @@ l1f0.node() of
 //
 in(*in-of-local*)
 val () =
-myjs1emit_l1blk<>(out, rcd.def_blk)
-end // end of [local]
+myjs1emit_l1blk<>
+(fout,nind+2,rcd.def_blk) end//local
 //
 val () =
-js1emit_txtln(out, "break;//return")
+js1emit_indnt(fout, nind+2)
 val () =
-js1emit_txtln(out, "} while( true );")
+js1emit_txtln(fout, "break;//return")
+val () =
+js1emit_indnt(fout, nind+2)
+val () =
+js1emit_txtln(fout, "} while( true );")
 //
 val () =
 (
 case+
 rcd.def of
-|
-None() => ()
-|
-Some(res) =>
+|None() => ()
+|Some(res) =>
 {
 //
 val () =
-js1emit_txt00(out, "return ")
-val () = js1emit_l1val(out, res)
-val () = js1emit_txt00(out, ";\n")
+js1emit_indnt(fout, nind+2)
+val () =
+js1emit_txt00(fout, "return ")
+//
+val () = js1emitln_l1val(fout, res)
 //
 }
 ) : void // end-of-val
 in
-fprintln!
-(out, "} // function // ", rcd.hdc)
-end (* end of [auxlfd0_some] *)
+let
+val () = js1emit_indnt(fout, nind)
+in//let
+fprintln!(fout, "} // function // ", rcd.hdc)
+end//let
+end (* end of [auxlfd0_some(...)] *)
 //
 (* ****** ****** *)
 //
 and
 auxlfds
-( lfds
+( nind: int
+, lfds
 : l1fundeclist): void =
 (
 case lfds of
@@ -4256,9 +4712,10 @@ list_nil() => ()
 |
 list_cons
 (lfd0, lfds) =>
+(
+auxlfds(nind, lfds)) where
 {
-  val () = auxlfd0(lfd0)
-  val () = auxlfds(lfds)
+  val () = auxlfd0(nind, lfd0)
 }
 )
 //
@@ -4273,7 +4730,8 @@ val-
 L1DCLfundclst
 ( knd0
 , mopt
-, lfds) = dcl2.node() in auxlfds(lfds)
+, lfds) =
+  dcl2.node() in auxlfds(nind, lfds)
 end // end of [let]
 //
 end where
@@ -4281,7 +4739,7 @@ end where
 (*
   val () =
   println!
-  ("js1emit_l1dcl_fun: dcl0 = ", dcl0)
+  ("js1emit_l1dcl_fnx: dcl0 = ", dcl0)
 *)
 } (*where*) // end of [js1emit_l1dcl_fnx]
 

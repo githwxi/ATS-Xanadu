@@ -82,7 +82,7 @@ XATS2JS_NODE_strn_print(cs)
 }
 /* ****** ****** */
 
-/* end of [ATS3/XANADU_prelude_DATS_CATS_JS_NODE_g_print.cats] */
+/* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_NODE_g_print.cats] */
 /* ****** ****** */
 /*
 Process for Xats2js/Node
@@ -97,4 +97,4 @@ XATS2JS_NODE_argv_get
 //
 /* ****** ****** */
 
-/* end of [ATS3/XANADU_prelude_DATS_CATS_JS_NODE_process.cats] */
+/* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_NODE_process.cats] */

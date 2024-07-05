@@ -51,6 +51,16 @@ XATSOPT_targetloc "./../../.."
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+absvtype
+emitenv_vtbox = ptr
+vtypedef
+emitenv = emitenv_vtbox
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 js1emit_int00
 (FILEref, int): void
@@ -105,85 +115,140 @@ js1emit_h0faglst
 (* ****** ****** *)
 //
 fun
-js1emit_lvi00(FILEref, int): void
+js1emit_lvi00
+( out
+: FILEref, int: int): void
 fun
-js1emit_lvb00(FILEref, bool): void
+js1emit_lvb00
+( out
+: FILEref, btf: bool): void
 fun
-js1emit_lvc00(FILEref, char): void
+js1emit_lvc00
+( out
+: FILEref, chr: char): void
 //
 (* ****** ****** *)
 //
 fun
-js1emit_lvint(FILEref, token): void
+js1emit_lvint
+( out
+: FILEref, lint: token): void
 fun
-js1emit_lvbtf(FILEref, token): void
+js1emit_lvbtf
+( out
+: FILEref, lbtf: token): void
 fun
-js1emit_lvchr(FILEref, token): void
+js1emit_lvchr
+( out
+: FILEref, lchr: token): void
 //
 (* ****** ****** *)
 //
 fun
-js1emit_lvflt(FILEref, token): void
+js1emit_lvflt
+( out
+: FILEref, lflt: token): void
 fun
-js1emit_lvstr(FILEref, token): void
+js1emit_lvstr
+( out
+: FILEref, lstr: token): void
 //
 (* ****** ****** *)
 fun
-js1emit_lvtop(FILEref, token): void
+js1emit_lvtop
+( out
+: FILEref, ltop: token): void
 (* ****** ****** *)
 fun
-js1emit_lvnam(FILEref, lvnam): void
+js1emit_lvnam
+( out
+: FILEref, lnam: lvnam): void
 (* ****** ****** *)
 fun
-js1emit_l1exn(FILEref, l1exn): void
+js1emit_l1exn
+( out
+: FILEref, lexn: l1exn): void
 fun
-js1emit_l1tmp(FILEref, l1tmp): void
+js1emit_l1tmp
+( out
+: FILEref, ltmp: l1tmp): void
 (* ****** ****** *)
 fun
-js1emit_l1val(FILEref, l1val): void
+js1emit_l1val
+( out
+: FILEref, lval: l1val): void
 (* ****** ****** *)
-fun
-js1emit_l1pck(FILEref, l1pck): void
 (* ****** ****** *)
 //
 fun
-js1emit_l1cmd(FILEref, l1cmd): void
+js1emit_l1pck
+( fout
+: FILEref
+, nind: int, pck0: l1pck): void
+//
+(* ****** ****** *)
+//
 fun
-js1emit_l1blk(FILEref, l1blk): void
+js1emit_l1cmd
+( fout: FILEref
+, nind: int, cmd0: l1cmd): void
+fun
+js1emit_l1blk
+( fout: FILEref
+, nind: int, blk0: l1blk): void
 //
 (* ****** ****** *)
 fun
 js1emit_l1cmdlst
-(out: FILEref, cmds: l1cmdlst): void
+( out: FILEref
+, nind: int, cmds: l1cmdlst): void
 (* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 js1emit_fargdecs
-( out: FILEref
+( out
+: FILEref, nind: int
 , narg: int, flev: int): void
 fun
 js1emit_ftmpdecs
-(out: FILEref, tmps: l1tmplst): void
+( out
+: FILEref
+, nind: int, tmps: l1tmplst): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 js1emit_l1dcl
-(out: FILEref, dcl0: l1dcl): void
+( out: FILEref
+, nind: int, dcl0: l1dcl): void
 fun
 js1emit_l1dclist
-(out: FILEref, dcls: l1dclist): void
+( out: FILEref
+, nind: int, dcls: l1dclist): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 js1emit_l1dcl_fun
-(out: FILEref, dcl0: l1dcl): void
+( fout
+: FILEref, nind: int, dcl0: l1dcl): void
 fun
 js1emit_l1dcl_fnx
-(out: FILEref, dcl0: l1dcl): void
+( fout
+: FILEref, nind: int, dcl0: l1dcl): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-js1emit_package(FILEref, l1pkg): void
+js1emit_package(fout: FILEref, pkg0: l1pkg): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
 
+(* ************************************************************ *)
 (* end of [ATS3/XANADU_srcgen1_xats2js_srcgen1_js1emit.sats] *)
+(* ************************************************************ *)

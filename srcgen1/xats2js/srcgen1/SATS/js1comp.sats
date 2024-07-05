@@ -49,12 +49,12 @@ XATSOPT_targetloc "./../../.."
 "{$XATSOPT}/SATS/intrep0.sats"
 //
 (* ****** ****** *)
-
+//
 absvtype
 compenv_vtbox = ptr
 vtypedef
 compenv = compenv_vtbox
-
+//
 (* ****** ****** *)
 //
 vtypedef
@@ -91,15 +91,13 @@ fun
 js1comp_dvarfind
 ( env0:
 ! compenv
-, hdv0
-: h0var): l1valopt_vt
+, hdv0: h0var): l1valopt_vt
 (* ****** ****** *)
 //
 fun
 js1comp_l1valize
 ( env0:
-! compenv
-, l1v0: l1val): l1val
+! compenv, l1v0: l1val): l1val
 //
 (* ****** ****** *)
 //
@@ -107,8 +105,9 @@ fun
 js1comp_dvaradd_bind
 ( env0:
 ! compenv
-, hdv0: h0var
-, l1v1: l1val): void
+, hdv0: h0var, l1v1: l1val): void
+//
+(* ****** ****** *)
 //
 fun
 js1comp_dvaradd_fun0
