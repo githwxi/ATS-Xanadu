@@ -1,14 +1,19 @@
 (* ****** ****** *)
+(* ****** ****** *)
 #staload UN =
 "prelude/SATS/unsafex.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #include
-"prelude/HATS/prelude_dats.hats"
+"srcgen1\
+/prelude/HATS/prelude_dats.hats"
 //
 #include
-"prelude/HATS/CATS/Xint/prelude_dats.hats"
+"srcgen1\
+/prelude/HATS/CATS/Xint/prelude_dats.hats"
 //
+(* ****** ****** *)
 (* ****** ****** *)
 var x: int = 10
 (* ****** ****** *)
@@ -133,7 +138,7 @@ mylist26 =
 list_vt2t
 (
 strn_listize
-( "ABCDEFGHIJKLMNOPQRSTUVWXYZ"))
+("ABCDEFGHIJKLMNOPQRSTUVWXYZ"))
 val
 mylength26 = mylength(mylist26)
 //

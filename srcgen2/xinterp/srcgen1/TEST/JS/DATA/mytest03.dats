@@ -1,13 +1,17 @@
 (* ****** ****** *)
+(* ****** ****** *)
 #staload UN =
 "prelude/SATS/unsafex.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #include
-"prelude/HATS/prelude_dats.hats"
+"srcgen1\
+/prelude/HATS/prelude_dats.hats"
 //
 #include
-"prelude\
+"srcgen1\
+/prelude\
 /HATS/CATS/Xint/prelude_dats.hats"
 //
 (* ****** ****** *)
