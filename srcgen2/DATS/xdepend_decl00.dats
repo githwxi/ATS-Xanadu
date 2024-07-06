@@ -26,20 +26,11 @@
 *)
 
 (* ****** ****** *)
-(*
-HX-2024-07-05:
-For gathering dependency info!
-HX-2024-07-06:
-This also serves as a precursor to
-a future implementation of certain
-generic tree processing combinators.
-*)
-(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 (*
-Fri 05 Jul 2024 09:18:43 PM EDT
+Sat 06 Jul 2024 10:45:01 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -48,82 +39,33 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
+#include
+"./../HATS/xatsopt_dats.hats"
+(* ****** ****** *)
 (* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#absvtbx xd2penv_vtbx
-#vwtpdef xd2penv = xd2penv_vtbx
-//
-(* ****** ****** *)
-//
-#staload D2E = "./dynexp2.sats"
-//
-(* ****** ****** *)
-//
-#typedef d2exp = $D2E.d2exp
-#typedef d2ecl = $D2E.d2ecl
-//
-#typedef d2explst = $D2E.d2explst
-#typedef d2eclist = $D2E.d2eclist
-//
-#typedef d2parsed = $D2E.d2parsed
-//
+#staload
+_(*XDEPEND*) = "./xdepend.dats"
 (* ****** ****** *)
 (* ****** ****** *)
-//
-fun
-<x0:t0>
-list_xd2penv_fnp
-( e1:
-! xd2penv
-, xs: list(x0)
-, (!xd2penv, x0) -> void): void
-fun
-<x0:t0>
-<y0:t0>
-optn_xd2penv_fnp
-( e1:
-! xd2penv
-, xs: optn(x0)
-, (!xd2penv, x0) -> void): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-xd2penv_d2exp
-( env0:
-! xd2penv, d2e0: d2exp): void
-//
-fun
-xd2penv_d2ecl
-( env0:
-! xd2penv, d2cl: d2ecl): void
-//
-(* ****** ****** *)
-//
-fun
-xd2penv_d2explst
-( env0:
-! xd2penv, d2es: d2explst): void
-//
-(* ****** ****** *)
-//
-fun
-xd2penv_d2eclist
-( env0:
-! xd2penv, dcls: d2eclist): void
-//
-(* ****** ****** *)
-//
-fun
-xd2pend_d2parsed(dpar: d2parsed): d2eclist
-//
+#staload "./../SATS/xdepend.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_SATS_xdepend.sats] *)
+#implfun
+xd2penv_d2ecl(env0, dexp) = ()
+
+(* ****** ****** *)
+
+#implfun
+xd2penv_d2eclist(env0, d2es) =
+list_xd2penv_fnp(env0, d2es, xd2penv_d2ecl)
+
+(* ****** ****** *)
+(* ****** ****** *)
+
+(* end of [ATS3/XATSOPT_srcgen2_DATS_xdepend_decl00.dats] *)

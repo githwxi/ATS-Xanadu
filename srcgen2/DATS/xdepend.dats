@@ -54,7 +54,7 @@ ATS_PACKNAME
 //
 #implfun
 <x0>(*tmp*)
-list_xdepend_fnp
+list_xd2penv_fnp
 ( e1, xs, work ) =
 (
   loop(e1, xs) ) where
@@ -69,19 +69,19 @@ case+ xs of
 | list_nil() => ()
 | list_cons(x1, xs) =>
   (work(e1, x1); loop(e1, xs)))
-}(*where*)//end(list_xdepend_fnp(e1,xs,work))
+}(*where*)//end(list_xd2penv_fnp(e1,xs,work))
 //
 (* ****** ****** *)
 //
 #implfun
 <x0>(*tmp*)
-optn_xdepend_fnp
+optn_xd2penv_fnp
 ( e1, xs, work ) =
 (
 case+ xs of
 | optn_nil() => ()
 | optn_cons(x1) => work(e1, x1)
-)(*case+*)//end(optn_xdepend_fnp(e1,xs,work))
+)(*case+*)//end(optn_xd2penv_fnp(e1,xs,work))
 //
 (* ****** ****** *)
 (* ****** ****** *)
