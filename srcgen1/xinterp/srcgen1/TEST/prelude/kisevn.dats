@@ -33,4 +33,4 @@ val isodd10 = kisodd(10, lam r => r)
 
 (* ****** ****** *)
 
-(* end of [prelude_kisevn.dats] *)
+(* end of [ATS-Xanadu/srcgen1/xinterp/srcgen1/TEST/prelude_kisevn.dats] *)
