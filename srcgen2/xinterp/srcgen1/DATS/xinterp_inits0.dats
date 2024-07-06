@@ -160,11 +160,7 @@ d2parsed_from_fpath
 (
 1//stadyn
 ,
-XATSHOME ^
-"\
-/prelude\
-/HATS/CATS\
-/Xint/prelude_dats.hats")
+XATSHOME ^ "/srcgen1/prelude/HATS/CATS/Xint/prelude_dats.hats")
 val dopt =
 d2parsed_get_parsed(dpar)
 //

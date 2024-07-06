@@ -145,10 +145,6 @@ srclines_dats:: ; wc -l DATS/*.dats
 ########################################################################
 
 ######
-clean:: ; rm -f ./SATS/*~
-clean:: ; rm -f ./DATS/*~
-clean:: ; rm -f ./HATS/*~
-######
 cleanall:: clean
 ######
 cleanall:: ; rm -f BUILD/JS/*.js
