@@ -23,32 +23,45 @@ srcgen1\
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
-"xatslib/libcats/SATS/libcats.sats"
+"\
+srcgen1\
+/xatslib/libcats/SATS/libcats.sats"
 #staload
-"xatslib/libcats/SATS/synoug0.sats"
+"\
+srcgen1\
+/xatslib/libcats/SATS/synoug0.sats"
 (* ****** ****** *)
 #staload
-"xatslib/githwxi/SATS/genv000.sats"
+"\
+srcgen1\
+/xatslib/githwxi/SATS/genv000.sats"
 #staload
-"xatslib/githwxi/SATS/githwxi.sats"
+"\
+srcgen1\
+/xatslib/githwxi/SATS/githwxi.sats"
 (* ****** ****** *)
 (* ****** ****** *)
-#staload _ =
-"xatslib/libcats/DATS/synoug0.dats"
-(* ****** ****** *)
-(* ****** ****** *)
+//
 #staload _ =
 "\
 srcgen1\
 /xatslib/githwxi/DATS/genv000.dats"
+//
 #staload _ =
 "\
 srcgen1\
 /xatslib/githwxi/DATS/f00path.dats"
+//
 #staload _ =
 "\
 srcgen1\
 /xatslib/githwxi/DATS/g00iout.dats"
+//
+(* ****** ****** *)
+#staload _ =
+"\
+srcgen1\
+/xatslib/libcats/DATS/synoug0.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //

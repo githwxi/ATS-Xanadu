@@ -105,11 +105,11 @@ let
 //
 val loc0 = d3e0.loc()
 //
-(*
+// (*
 val () =
 println!
 ("auxtcst: d3e0 = ", d3e0)
-*)
+// *)
 //
 val-
 D3Etimp

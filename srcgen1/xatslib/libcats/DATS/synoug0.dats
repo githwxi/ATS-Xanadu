@@ -1248,4 +1248,4 @@ prerr1_a10
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_xatslib_libcats_synoug0.dats] *)
+(* end of [ATS3/XANADU_srcgen1_xatslib_DATS_libcats_synoug0.dats] *)

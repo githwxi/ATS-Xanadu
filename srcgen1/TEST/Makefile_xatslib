@@ -9,10 +9,6 @@
 XATSOPT=\
 ./../bin/xatsopt
 ######
-PRELUDE=./../../prelude
-XATSLIB=./../../xatslib
-######
-PRELUDE1=./../../srcgen1/prelude
 XATSLIB1=./../../srcgen1/xatslib
 ######
 
@@ -25,12 +21,12 @@ all:: all_githwxi_CATS
 
 ######
 all_libcats:: ; \
-$(XATSOPT) -s $(XATSLIB)/libcats/SATS/libcats.sats
+$(XATSOPT) -s $(XATSLIB1)/libcats/SATS/libcats.sats
 all_libcats:: ; \
-$(XATSOPT) -s $(XATSLIB)/libcats/SATS/synoug0.sats
+$(XATSOPT) -s $(XATSLIB1)/libcats/SATS/synoug0.sats
 ######
 all_libcats:: ; \
-$(XATSOPT) -d $(XATSLIB)/libcats/DATS/synoug0.dats
+$(XATSOPT) -d $(XATSLIB1)/libcats/DATS/synoug0.dats
 ######
 all_githwxi:: ; \
 $(XATSOPT) -s $(XATSLIB1)/githwxi/SATS/genv000.sats
