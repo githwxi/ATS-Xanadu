@@ -220,6 +220,10 @@ xglobal_sats
 xglobal_sats: ; $(XATSOPT) --static SATS/xglobal.sats
 ######
 all_sats:: \
+xdepend_sats
+xdepend_sats: ; $(XATSOPT) --static SATS/xdepend.sats
+######
+all_sats:: \
 xatsopt_sats
 xatsopt_sats: ; $(XATSOPT) --static SATS/xatsopt.sats
 ######
