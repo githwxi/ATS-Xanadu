@@ -867,6 +867,12 @@ fperr44_decl00_dats: ; $(XATSOPT) --dynamic DATS/fperr44_decl00.dats
 all_dats:: \
 xdepend_dats
 xdepend_dats: ; $(XATSOPT) --dynamic DATS/xdepend.dats
+all_dats:: \
+xdepend_dynexp_dats
+xdepend_dynexp_dats: ; $(XATSOPT) --dynamic DATS/xdepend_dynexp.dats
+all_dats:: \
+xdepend_decl00_dats
+xdepend_decl00_dats: ; $(XATSOPT) --dynamic DATS/xdepend_decl00.dats
 ######
 
 ######
