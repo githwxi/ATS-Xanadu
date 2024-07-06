@@ -54,15 +54,14 @@ XATSOPT_targetloc
 #staload TR12 =
   "{$XATSOPT}/SATS/trans12.sats"
 (* ****** ****** *)
-//
-#staload INTREP0 =
-  "{$XATSOPT}/SATS/intrep0.sats"
-//
 (* ****** ****** *)
 //
-#staload XATSOPT =
-  "{$XATSOPT}/SATS/xatsopt.sats"
+#staload
+INTREP0 = "{$XATSOPT}/SATS/intrep0.sats"
+#staload
+XATSOPT = "{$XATSOPT}/SATS/xatsopt.sats"
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen1_xinterp_srcgen1_libxintrep.hats] *)

@@ -110,5 +110,7 @@ For various loading scripts (for loading SATS files and DATS files)
 MYPROJ/DOCS: For documentation of all sorts
 MyPROJ/TEST: For storing testing code of all sorts
 
+MYPROJ/BUILD: For storing the files generated from building MYPROJ
+
 ########################################################################
 ########################################################################

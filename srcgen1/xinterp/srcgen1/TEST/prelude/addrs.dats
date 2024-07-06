@@ -1,4 +1,5 @@
 (* ****** ****** *)
+(* ****** ****** *)
 #staload // _ =
 "srcgen1\
 /prelude\
@@ -7,6 +8,7 @@
 "srcgen1\
 /xatslib/githwxi\
 /DATS/CATS/Xint/basics0.dats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 var x0: int = 0
@@ -32,4 +34,4 @@ val ys = $eval($addr(xs.1))
 //
 (* ****** ****** *)
 
-(* end of [xinterp/srcgen1/TEST/prelude_addrs.dats] *)
+(* end of [ATS-Xanadu/srcgen1/xinterp/srcgen1/TEST/prelude_addrs.dats] *)
