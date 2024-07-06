@@ -29,6 +29,10 @@
 (*
 HX-2024-07-05:
 For gathering dependency info!
+HX-2024-07-06:
+This also serves as a precursor to
+a future implementation of certain
+generic tree processing combinators.
 *)
 (* ****** ****** *)
 //
@@ -67,6 +71,25 @@ ATS_PACKNAME
 #typedef d2eclist = $D2E.d2eclist
 //
 #typedef d2parsed = $D2E.d2parsed
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+list_xdepend_fnp
+( e1:
+! xd2penv
+, xs: list(x0)
+, (!xd2penv, x0) -> void): void
+fun
+<x0:t0>
+<y0:t0>
+optn_xdepend_fnp
+( e1:
+! xd2penv
+, xs: optn(x0)
+, (!xd2penv, x0) -> void): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
