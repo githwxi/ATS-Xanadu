@@ -51,19 +51,105 @@ ATS_PACKNAME
 #staload
 _(*XDEPEND*) = "./xdepend.dats"
 (* ****** ****** *)
+#staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/xdepend.sats"
 (* ****** ****** *)
 (* ****** ****** *)
-
+#symload lctn with d2ecl_get_lctn
+#symload node with d2ecl_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
-xd2penv_d2ecl(env0, dexp) = ()
-
+xd2penv_d2ecl
+( env0,d2cl ) =
+(
+case+
+d2cl.node() of
+|
+D2Clocal _ =>
+f0_local(env0, d2cl)
+//
+|D2Cinclude _ =>
+f0_include(env0, d2cl)
+|D2Cstaload _ =>
+f0_staload(env0, d2cl)
+//
+| _(*otherwise*) => ( (*void*) )
+//
+) where
+{
+//
+fun
+f0_local
+( env0:
+! xd2penv
+, d2cl: d2ecl): void =
+let
+//
+val-
+D2Clocal0
+(head, body) = d2cl.node()
+//
+val () =
+xd2penv_d2eclist(env0, head)
+val () =
+xd2penv_d2eclist(env0, body)
+//
+end//let//end-of-[f0_local(env0,d2cl)]
+//
+(* ****** ****** *)
+//
+fun
+f0_include
+( env0:
+! xd2penv
+, d2cl: d2ecl): void =
+let
+//
+val-
+D2Einclude _ = d2cl.node()
+//
+val () =
+prerrln
+("f0_include(xdp): d2cl = ", d2cl)
+//
+end//let//end-of-[f0_include(env0,d2cl)]
+//
+fun
+f0_staload
+( env0:
+! xd2penv
+, d2cl: d2ecl): void =
+let
+//
+val-
+D2Estaload _ = d2cl.node()
+//
+val () =
+prerrln
+("f0_staload(xdp): d2cl = ", d2cl)
+//
+end//let//end-of-[f0_staload(env0,d2cl)]
+//
+(* ****** ****** *)
+//
+(*
+val () =
+(
+  prerrln("xd2penv_d2ecl: d2cl = ", d2cl))
+*)
+//
+(* ****** ****** *)
+//
+}(*where*)//end-of-[xd2penv_d2ecl(env0,d2cl)]
+//
 (* ****** ****** *)
 
 #implfun
-xd2penv_d2eclist(env0, d2es) =
-list_xd2penv_fnp(env0, d2es, xd2penv_d2ecl)
+xd2penv_d2eclist(env0, dcls) =
+list_xd2penv_fnp(env0, dcls, xd2penv_d2ecl)
 
 (* ****** ****** *)
 (* ****** ****** *)
