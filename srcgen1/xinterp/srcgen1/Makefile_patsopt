@@ -1,8 +1,8 @@
-######
+################################################
 #
 # For building xinterp
 #
-######
+################################################
 
 CC=gcc
 SED=sed
@@ -52,11 +52,13 @@ xinterp_envmap.dats \
 xinterp_dynexp.dats \
 
 ######
+BUILD=BUILD/CC
+######
 
-OBJSATS := \
-$(patsubst %.sats, BUILD/%_sats.o, $(SRCSATS))
-OBJDATS := \
-$(patsubst %.dats, BUILD/%_dats.o, $(SRCDATS))
+OBJSATS=\
+$(patsubst %.sats, $(BUILD)/%_sats.o, $(SRCSATS))
+OBJDATS=\
+$(patsubst %.dats, $(BUILD)/%_dats.o, $(SRCDATS))
 
 ######
 INCLUDE:=
@@ -87,18 +89,18 @@ libxatsopt: ; \
 #
 ######
 
-BUILD/%_sats.c: \
+BUILD/CC/%_sats.c: \
 ./SATS/%.sats ; $(PATSOPT) -o $@ --static $<
-BUILD/%_dats.c: \
+BUILD/CC/%_dats.c: \
 ./DATS/%.dats ; $(PATSOPT) -o $@ --dynamic $<
 
 ######
 
-BUILD/%_sats.o: \
-BUILD/%_sats.c; \
+BUILD/CC/%_sats.o: \
+BUILD/CC/%_sats.c; \
 $(PATSCC) $(INCLUDE) $(CFLAGS) -o $@ -c $<
-BUILD/%_dats.o: \
-BUILD/%_dats.c; \
+BUILD/CC/%_dats.o: \
+BUILD/CC/%_dats.c; \
 $(PATSCC) $(INCLUDE) $(CFLAGS) $(GCFLAG) -o $@ -c $<
 
 ######
@@ -122,7 +124,7 @@ depend:: ; \
 $(PATSOPT) --output-a .depend --depgen -d DATS/xinterp.dats
 #
 depend:: ; \
-$(SED) -i -e 's/^SATS/BUILD/' -e 's/^DATS/BUILD/' .depend
+$(SED) -i -e 's/^SATS/BUILD\/CC/' -e 's/^DATS/BUILD\/CC/' .depend
 #
 -include .depend
 #
@@ -142,4 +144,4 @@ cleanall:: ; $(MAKE) -C $(XATSOPT)/. cleanall
 
 ######
 
-###### end of [Makefile_xinterp] ######
+################## end of [Makefile_patsopt] ##################
