@@ -865,11 +865,17 @@ fperr44_decl00_dats: ; $(XATSOPT) --dynamic DATS/fperr44_decl00.dats
 
 ######
 all_dats:: \
-xatsopt_tmplib_dats
-xatsopt_tmplib_dats: ; $(XATSOPT) --dynamic DATS/xatsopt_tmplib.dats
+xdepend_dats
+xdepend_dats: ; $(XATSOPT) --dynamic DATS/xdepend.dats
 ######
 
 ######
+all_dats:: \
+xatsopt_dats
+xatsopt_dats: ; $(XATSOPT) --dynamic DATS/xatsopt.dats
+all_dats:: \
+xatsopt_tmplib_dats
+xatsopt_tmplib_dats: ; $(XATSOPT) --dynamic DATS/xatsopt_tmplib.dats
 all_dats:: \
 xatsopt_utils0_dats
 xatsopt_utils0_dats: ; $(XATSOPT) --dynamic DATS/xatsopt_utils0.dats
