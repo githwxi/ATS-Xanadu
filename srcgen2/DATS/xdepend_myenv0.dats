@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sat 06 Jul 2024 10:43:02 AM EDT
+Sat 06 Jul 2024 07:34:54 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -47,26 +47,27 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
-(* ****** ****** *)
-#staload
-_(*XDEPEND*) = "./xdepend.dats"
-(* ****** ****** *)
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
 #staload "./../SATS/xdepend.sats"
 (* ****** ****** *)
 (* ****** ****** *)
-
-#implfun
-xd2penv_d2exp(env0, dexp) = ()
-
+//
+local
+//
+datavwtp
+xd2penv =
+XD2PENV of (d2eclist)
+//
+#absimpl xd2penv_vtbx = xd2penv
+//
+(* ****** ****** *)
+in//local
 (* ****** ****** *)
 
-#implfun
-xd2penv_d2explst(env0, d2es) =
-list_xd2penv_fnp(env0, d2es, xd2penv_d2exp)
-
+endloc (*local*) // end of [ local(xd2penv...) ]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_DATS_xdepend_dynexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_xdepend_myenv0.dats] *)
