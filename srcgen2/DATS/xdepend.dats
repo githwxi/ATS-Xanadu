@@ -51,5 +51,39 @@ ATS_PACKNAME
 #staload "./../SATS/xdepend.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#implfun
+<x0>(*tmp*)
+list_xdepend_fnp
+( e1, xs, work ) =
+(
+  loop(e1, xs) ) where
+{
+fun
+loop
+( e1:
+! xd2penv
+, xs: list(x0)): void =
+(
+case+ xs of
+| list_nil() => ()
+| list_cons(x1, xs) =>
+  (work(e1, x1); loop(e1, xs)))
+}(*where*)//end(list_xdepend_fnp(e1,xs,work))
+//
+(* ****** ****** *)
+//
+#implfun
+<x0>(*tmp*)
+optn_xdepend_fnp
+( e1, xs, work ) =
+(
+case+ xs of
+| optn_nil() => ()
+| optn_cons(x1) => work(e1, x1)
+)(*case+*)//end(optn_xdepend_fnp(e1,xs,work))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_DATS_xdepend.dats] *)

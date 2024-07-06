@@ -87,7 +87,8 @@ list_trsym2b_fnp
 {
 fun
 loop
-( e1: !tr2aenv
+( e1:
+! tr2aenv
 , xs: list(x0)): void =
 (
 case+ xs of
