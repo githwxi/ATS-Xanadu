@@ -90,4 +90,4 @@ val ans3 = isAVL(t3)
 
 (* ****** ****** *)
 
-(* end of [prelude_isAVL.dats] *)
+(* end of [ATS-Xanadu/srcgen1/xinterp/srcgen1/TEST/prelude_isAVL.dats] *)
