@@ -6,17 +6,10 @@ For ATS3/XATSOPT
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-(*
 #include
 "\
-prelude\
-/HATS/prelude_dats.hats"
-*)
-(* ****** ****** *)
-(* ****** ****** *)
-#include
-"\
-srcgen1/prelude\
+srcgen1\
+/prelude\
 /HATS/prelude_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
@@ -35,7 +28,8 @@ srcgen1\
 (* ****** ****** *)
 #staload _ =
 "\
-xatslib/libcats/DATS/synoug0.dats"
+srcgen1\
+/xatslib/libcats/DATS/synoug0.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload _ =
@@ -68,4 +62,4 @@ srcgen1\
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xatsopt_dats.hats] *)
+(* end of [ATS3/XATSOPT_srcgen2_HATS_xatsopt_dats.hats] *)

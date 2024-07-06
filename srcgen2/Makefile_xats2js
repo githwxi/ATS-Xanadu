@@ -262,7 +262,7 @@ libxatsopt:: $(OBJDATS); \
 $(CAT) $(OBJDATS) > lib/libxatsopt.js
 ########################################################################
 BUILD/JS/%_dats.js: \
-DATS/%.dats; $(XATS2JS) --output-a $@ --dynamic $<
+DATS/%.dats; $(XATS2JS) --output-w $@ --dynamic $<
 ########################################################################
 cleanall:: ; rm -f BUILD/JS/*_dats.js
 ########################################################################

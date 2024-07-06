@@ -53,6 +53,7 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 (*
 #impltmp
 <>(*tmp*)
@@ -69,6 +70,7 @@ is randomly chosen
 nint_rand$limit() = 1024
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 <>(*tmp*)
@@ -76,7 +78,8 @@ rand_set_nil() =
 rand_set_seed<>(rand_seed<>())
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #impltmp
 g_rand<bool>() =
 let
@@ -85,9 +88,9 @@ nint_rand_limit<>(2)
 in
 if (tf > 0) then true else false
 end
-
+//
 (* ****** ****** *)
-
+//
 #impltmp
 g_rand<char>() =
 let
@@ -97,7 +100,7 @@ in
 char_make_sint
 (if (n0<128) then n0 else n0-256)
 end
-
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -109,7 +112,7 @@ nint_rand() =
 )
 //
 (* ****** ****** *)
-
+//
 #impltmp
 g_rand<sint>() =
 let
@@ -119,13 +122,24 @@ nint_rand$limit<>()
 in//let
 nint_rand_limit<>(2*limit)-limit
 end // end of [g_rand<sint>]
-
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#sexpdef t0up = t0up2
+#sexpdef t0up = t0up3
+//
+#sexpdef t1up = t1up2
+#sexpdef t1up = t1up3
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 {a0:vt
 ,a1:vt}
-g_rand<(a0,a1)>() =
+g_rand
+<t0up(a0,a1)>() =
 let
 val x0 =
 g_rand<a0>()
@@ -134,18 +148,20 @@ g_rand<a1>() in @(x0, x1) end
 #impltmp
 {a0:vt
 ,a1:vt}
-g_rand<$(a0,a1)>() =
+g_rand
+<t1up(a0,a1)>() =
 let
 val x0 =
 g_rand<a0>()
 val x1 =
-g_rand<a1>() in $(x0, x1) end
+g_rand<a1>() in $tup(x0, x1) end
 //
 #impltmp
 {a0:vt
 ,a1:vt
 ,a2:vt}
-g_rand<(a0,a1,a2)>() =
+g_rand
+<t0up(a0,a1,a2)>() =
 let
 val x0 =
 g_rand<a0>()
@@ -157,15 +173,17 @@ g_rand<a2>() in @(x0, x1, x2) end
 {a0:vt
 ,a1:vt
 ,a2:vt}
-g_rand<$(a0,a1,a2)>() =
+g_rand
+<t1up(a0,a1,a2)>() =
 let
 val x0 =
 g_rand<a0>()
 val x1 =
 g_rand<a1>()
 val x2 =
-g_rand<a2>() in $(x0, x1, x2) end
+g_rand<a2>() in $tup(x0, x1, x2) end
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -227,6 +245,7 @@ strn_vt2t(strn_rand<>())
 #impltmp
 g_rand<strn_vt> = strn_rand<>(*void*)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_xatslib_githwxi_myrand0.dats] *)

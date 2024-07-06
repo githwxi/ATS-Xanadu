@@ -7,10 +7,13 @@ For ATS3/XATSOPT
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
-"xatslib/libcats/SATS/libcats.sats"
+"srcgen1\
+/xatslib/libcats/SATS/libcats.sats"
 (* ****** ****** *)
 #staload
-"xatslib/libcats/SATS/synoug0.sats"
+"srcgen1\
+/xatslib/libcats/SATS/synoug0.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #staload
 "srcgen1\
@@ -22,4 +25,4 @@ For ATS3/XATSOPT
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_xatsopt_sats.hats] *)
+(* end of [ATS3/XATSOPT_srcgen2_HATS_xatsopt_sats.hats] *)

@@ -8,7 +8,8 @@ UN = // for casting
 "prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 #staload
-"xatslib\
+"srcgen1\
+/xatslib\
 /libcats/SATS/libcats.sats"
 (* ****** ****** *)
 (*

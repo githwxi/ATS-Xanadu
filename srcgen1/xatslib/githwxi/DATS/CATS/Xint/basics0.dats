@@ -4,7 +4,8 @@ Basics for Xinterp
 *)
 (* ****** ****** *)
 #staload
-"xatslib\
+"srcgen1\
+/xatslib\
 /libcats/SATS/libcats.sats"
 (* ****** ****** *)
 #staload
