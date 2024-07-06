@@ -68,8 +68,8 @@ xd2penv_d2ecl
 case+
 d2cl.node() of
 |
-D2Clocal _ =>
-f0_local(env0, d2cl)
+D2Clocal0 _ =>
+f0_local0(env0, d2cl)
 //
 |D2Cinclude _ =>
 f0_include(env0, d2cl)
@@ -82,7 +82,7 @@ f0_staload(env0, d2cl)
 {
 //
 fun
-f0_local
+f0_local0
 ( env0:
 ! xd2penv
 , d2cl: d2ecl): void =
@@ -97,7 +97,7 @@ xd2penv_d2eclist(env0, head)
 val () =
 xd2penv_d2eclist(env0, body)
 //
-end//let//end-of-[f0_local(env0,d2cl)]
+end//let//end-of-[f0_local0(env0,d2cl)]
 //
 (* ****** ****** *)
 //
@@ -113,7 +113,7 @@ D2Einclude _ = d2cl.node()
 //
 val () =
 prerrln
-("f0_include(xdp): d2cl = ", d2cl)
+("f0_include(dp): d2cl = ", d2cl)
 //
 end//let//end-of-[f0_include(env0,d2cl)]
 //
@@ -129,7 +129,7 @@ D2Estaload _ = d2cl.node()
 //
 val () =
 prerrln
-("f0_staload(xdp): d2cl = ", d2cl)
+("f0_staload(dp): d2cl = ", d2cl)
 //
 end//let//end-of-[f0_staload(env0,d2cl)]
 //
@@ -146,12 +146,21 @@ val () =
 }(*where*)//end-of-[xd2penv_d2ecl(env0,d2cl)]
 //
 (* ****** ****** *)
-
+//
 #implfun
 xd2penv_d2eclist(env0, dcls) =
-list_xd2penv_fnp(env0, dcls, xd2penv_d2ecl)
-
+(
+  list_xd2penv_fnp(env0, dcls, xd2penv_d2ecl))
+//
 (* ****** ****** *)
+//
+#implfun
+xd2penv_d2eclistopt(env0, dopt) =
+(
+case+ dopt of
+| optn_nil((*0*)) => ( (*void*) )
+| optn_cons(dcls) => xd2penv_d2eclist(env0, dcls))
+//
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_DATS_xdepend_decl00.dats] *)

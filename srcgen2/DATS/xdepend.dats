@@ -48,7 +48,44 @@ ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
 (* ****** ****** *)
+#staload "./../SATS/dynexp2.sats"
+(* ****** ****** *)
 #staload "./../SATS/xdepend.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xdepend_d2parsed
+  (  dpar  ) = let
+//
+(*
+val stadyn =
+d2parsed_get_stadyn(dpar)
+val nerror =
+d2parsed_get_nerror(dpar)
+val source =
+d2parsed_get_source(dpar)
+val t1penv =
+d2parsed_get_t1penv(dpar)
+val t2penv =
+d2parsed_get_t2penv(dpar)
+*)
+//
+val parsed =
+d2parsed_get_parsed(dpar)
+//
+in//let
+//
+(
+  xd2penv_free_top(env0)) where
+{
+  val env0 =
+  xd2penv_make_nil((*void*))
+  val (  ) =
+  xd2penv_d2eclistopt(env0, parsed) }
+//
+end (*let*) // end of [xdepend_d2parsed(dpar)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -69,7 +106,7 @@ case+ xs of
 | list_nil() => ()
 | list_cons(x1, xs) =>
   (work(e1, x1); loop(e1, xs)))
-}(*where*)//end(list_xd2penv_fnp(e1,xs,work))
+}(*where*)//end-of-(list_xd2penv_fnp(e1,xs,work))
 //
 (* ****** ****** *)
 //
@@ -81,7 +118,7 @@ optn_xd2penv_fnp
 case+ xs of
 | optn_nil() => ()
 | optn_cons(x1) => work(e1, x1)
-)(*case+*)//end(optn_xd2penv_fnp(e1,xs,work))
+)(*case+*)//end-of[(optn_xd2penv_fnp(e1,xs,work))
 //
 (* ****** ****** *)
 (* ****** ****** *)
