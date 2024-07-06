@@ -76,6 +76,16 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 fun
+xd2penv_make_nil
+  ( (*void*) ): xd2penv
+fun
+xd2penv_free_top
+  (env0: ~xd2penv): d2eclist
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 <x0:t0>
 list_xd2penv_fnp
 ( e1:
@@ -121,7 +131,15 @@ xd2penv_d2eclist
 (* ****** ****** *)
 //
 fun
-xd2pend_d2parsed(dpar: d2parsed): d2eclist
+xd2penv_d2eclistopt
+( env0:
+! xd2penv, dopt: optn(d2eclist)): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+xdepend_d2parsed(dpar: d2parsed): d2eclist
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -557,7 +557,7 @@ d2parsed
 ( stadyn
 , nerror, source, t1penv, t2penv, parsed)
 end
-end (*let*) // end of [d1parsed_trans12(dpar)]
+end (*let*) // end-of-[d2parsed_of_trans12(dpar)]
 
 (* ****** ****** *)
 //
@@ -565,15 +565,16 @@ end (*let*) // end of [d1parsed_trans12(dpar)]
 d2parsed_from_fpath
   (stadyn, source) =
 (
-  d2parsed_of_trans12(dpar)) where
+  d2parsed_of_trans12(d1par)) where
 {
 //
-val dpar =
-d1parsed_from_fpath(stadyn, source)
+  val d2par =
+  (
+    d1parsed_from_fpath(stadyn, source))
 //
-val dpar = d1parsed_of_tread01(dpar)
+  val d1par = d1parsed_of_tread01( d1par )
 //
-} (*where*)//end-of-[d2parsed_from_fpath(...)]
+} (*where*) // end-of-[d2parsed_from_fpath( ... )]
 //
 (* ****** ****** *)
 
