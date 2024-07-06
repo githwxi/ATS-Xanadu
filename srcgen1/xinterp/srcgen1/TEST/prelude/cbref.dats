@@ -2,15 +2,13 @@
 (* ****** ****** *)
 #staload // _ =
 "srcgen1\
-/prelude/DATS/bool000.dats"
+/prelude\
+/DATS/CATS/Xint/basics0.dats"
 (* ****** ****** *)
 #staload // _ =
 "srcgen1\
-/prelude/DATS/CATS/Xint/basics0.dats"
-(* ****** ****** *)
-#staload // _ =
-"srcgen1\
-/xatslib/githwxi/DATS/CATS/Xint/basics0.dats"
+/xatslib\
+/githwxi/DATS/CATS/Xint/basics0.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 
