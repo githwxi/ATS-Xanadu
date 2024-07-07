@@ -642,6 +642,14 @@ pq_fun_test_fpath
 #staload FP0 = "./filpath.sats"
 (* ****** ****** *)
 //
+(*
+HX-2024-07-07:
+These two functions are the same!
+*)
+//
+fun
+trans00_from_fpath
+(stadyn: sint, source: strn(*fpath*)): d0parsed
 fun
 d0parsed_from_fpath
 (stadyn: sint, source: strn(*fpath*)): d0parsed

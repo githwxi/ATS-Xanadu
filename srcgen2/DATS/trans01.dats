@@ -176,7 +176,7 @@ end(*let*)//end-of-[d1parsed_trans01(dpar)]
 (* ****** ****** *)
 //
 #implfun
-d1parsed_from_fpath
+trans01_from_fpath
   (stadyn, source) =
 (
 d1parsed_of_trans01(dpar)) where

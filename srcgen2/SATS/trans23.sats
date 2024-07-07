@@ -609,7 +609,7 @@ trans23_d3explst_tpcks
 (* ****** ****** *)
 //
 fun
-d3parsed_from_fpath
+trans03_from_fpath
 (stadyn: sint, source: strn(*fpath*)): d3parsed
 //
 (* ****** ****** *)

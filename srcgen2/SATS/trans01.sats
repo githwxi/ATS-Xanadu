@@ -822,7 +822,7 @@ trans01_d0eclistopt
 (* ****** ****** *)
 //
 fun
-d1parsed_from_fpath
+trans01_from_fpath
 (stadyn: sint, source: strn(*fpath*)): d1parsed
 //
 (* ****** ****** *)

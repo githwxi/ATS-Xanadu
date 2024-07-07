@@ -81,23 +81,27 @@ ATS_PACKNAME
 #implfun
 d2parsed_of_filsats(fpth) =
 d2parsed_of_trans02
-(d0parsed_from_fpath(0(*sta*), fpth))
+(
+d0parsed_from_fpath(0(*sta*), fpth))
 #implfun
 d2parsed_of_fildats(fpth) =
 d2parsed_of_trans02
-(d0parsed_from_fpath(1(*dyn*), fpth))
-
+(
+d0parsed_from_fpath(1(*dyn*), fpth))
+//
 (* ****** ****** *)
-
+//
 #implfun
 d3parsed_of_filsats(fpth) =
 d3parsed_of_trans03
-(d0parsed_from_fpath(0(*sta*), fpth))
+(
+d0parsed_from_fpath(0(*sta*), fpth))
 #implfun
 d3parsed_of_fildats(fpth) =
 d3parsed_of_trans03
-(d0parsed_from_fpath(1(*dyn*), fpth))
-
+(
+d0parsed_from_fpath(1(*dyn*), fpth))
+//
 (* ****** ****** *)
 
 #implfun

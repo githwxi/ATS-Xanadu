@@ -34,14 +34,17 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+(* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
@@ -52,13 +55,10 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/parsing.sats"
 (* ****** ****** *)
-
-(*
-HX-2022-07:
-[fpath] is a string
-*)
+(* ****** ****** *)
+//
 #impltmp
-d0parsed_from_fpath
+trans00_from_fpath
   (stadyn, source) =
 let
 //
@@ -81,8 +81,14 @@ val ( ) = tokbuf_free(buf)
 in//let
 //HX: nerror=-1: unknown of errors
 d0parsed(knd,(-1),LCSRCsome1(fpx),res)
-end(*let*)//end-of(d0parsed_from_fpath)
-
+end(*let*)//end-of(trans00_from_fpath(...))
+//
+(* ****** ****** *)
+//
+#implfun
+d0parsed_from_fpath = trans00_from_fpath//alias
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_DATS_parsing.dats] *)
