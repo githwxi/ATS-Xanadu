@@ -59,7 +59,7 @@ val dpar =
 val dpar =
   d3parsed_of_trtmp3c(dpar)
 val dpar =
-  d3parsed_of_tread33(dpar)
+  d3parsed_of_tread30(dpar)
 //
 val (  ) =
 (
@@ -74,8 +74,8 @@ out = g_stderr((*0*))
 in//let
 //
 prerrln
-("FPERR33_D3PARSED:");
-fperr33_d3parsed(out, dpar)
+("FPERR30_D3PARSED:");
+fperr30_d3parsed(out, dpar)
 end//let
 //
 val ipar =

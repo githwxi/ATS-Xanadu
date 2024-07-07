@@ -2427,7 +2427,7 @@ XATS2JS_jsarray_strmize(a1x1)
         // { // val-implmnt
         // } // val-implmnt
         var // const // implval/fun
-        gint_gte_sint_sint_266041_3042_ = XATS2JS_gint_gte_sint_sint
+        gint_gte_sint_sint_568183_3042_ = XATS2JS_gint_gte_sint_sint
         xtmp5 = XATS2JS_gint_gte_sint_sint(a2x1, xtmp1)
       }
       if (xtmp5)
@@ -2451,7 +2451,7 @@ XATS2JS_jsarray_strmize(a1x1)
               // { // val-implmnt
               // } // val-implmnt
               var // const // implval/fun
-              gint_add_sint_sint_266041_3989_ = XATS2JS_gint_add_sint_sint
+              gint_add_sint_sint_568183_3989_ = XATS2JS_gint_add_sint_sint
               xtmp9 = XATS2JS_gint_add_sint_sint(a2x1, 1)
             }
             xtmp8 = auxmain_2184_(xtmp9)
@@ -3224,14 +3224,14 @@ XATS2JS_strm_vt_map0_cfr(a1x1, a1x2)
 // ./../../../../prelude/DATS/CATS/JS/prelude.dats@(6253(line=380,offs=1)--6292(line=380,offs=40))
 // L1DCLnone0()
   {
-// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(9664(line=744,offs=1)--10045(line=776,offs=9))
+// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(9660(line=744,offs=1)--10041(line=776,offs=9))
     function
-    strm_vt_map0_266041_4616_(a2x1)
+    strm_vt_map0_568183_4616_(a2x1)
     {
       let xtmp112
-// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(9730(line=752,offs=1)--10009(line=775,offs=12))
+// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(9726(line=752,offs=1)--10005(line=775,offs=12))
       function
-      auxmain_9733_(a3x1)
+      auxmain_9729_(a3x1)
       {
         let xtmp97
         let xtmp110
@@ -3273,12 +3273,12 @@ XATS2JS_strm_vt_map0_cfr(a1x1, a1x2)
             case 2:
             xtmp101 = xtmp99[1]
             xtmp102 = xtmp99[2]
-// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(9905(line=770,offs=3)--9937(line=771,offs=24))
+// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(9901(line=770,offs=3)--9933(line=771,offs=24))
             {
               {
 // ./../../../../prelude/DATS/CATS/JS/prelude.dats@(6253(line=380,offs=1)--6292(line=380,offs=40))
                 function
-                map0$fopr_266041_2940_(a5x1)
+                map0$fopr_568183_2934_(a5x1)
                 {
                   let xtmp105
                   {
@@ -3286,12 +3286,12 @@ XATS2JS_strm_vt_map0_cfr(a1x1, a1x2)
                   }
                   return xtmp105
                 } // function // map0$fopr(24)
-                xtmp103 = map0$fopr_266041_2940_(xtmp101)
+                xtmp103 = map0$fopr_568183_2934_(xtmp101)
               }
             } // val(H0Pvar(y0(95)))
             {
               {
-                xtmp107 = auxmain_9733_(xtmp102)
+                xtmp107 = auxmain_9729_(xtmp102)
               }
               xtmp106 = [2, xtmp103, xtmp107]
             }
@@ -3312,29 +3312,29 @@ XATS2JS_strm_vt_map0_cfr(a1x1, a1x2)
           let xtmp107
           let xtmp108
           {
-// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(25297(line=1961,offs=1)--25349(line=1963,offs=37))
+// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(25288(line=1961,offs=1)--25340(line=1963,offs=37))
             // { // val-implmnt
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(1792(line=150,offs=1)--1842(line=152,offs=31))
             function
-            strm_vt_free_266041_2268_(a5x1)
+            strm_vt_free_568183_2268_(a5x1)
             {
               return XATS2JS_llazy_free(a5x1)
             } // function // strm_vt_free(28)
             // } // val-implmnt
             var // const // implval/fun
-            g_free_266041_1640_ = strm_vt_free_266041_2268_
-            xtmp108 = strm_vt_free_266041_2268_(a3x1)
+            g_free_568183_1640_ = strm_vt_free_568183_2268_
+            xtmp108 = strm_vt_free_568183_2268_(a3x1)
           }
         } // lam-function
         xtmp97 = XATS2JS_new_llazy(xtmp110,xtmp111)
         return xtmp97
       } // function // auxmain(26)
       {
-        xtmp112 = auxmain_9733_(a2x1)
+        xtmp112 = auxmain_9729_(a2x1)
       }
       return xtmp112
     } // function // strm_vt_map0(25)
-    xtmp94 = strm_vt_map0_266041_4616_(a1x1)
+    xtmp94 = strm_vt_map0_568183_4616_(a1x1)
   }
   return xtmp94
 } // function // XATS2JS_strm_vt_map0_cfr(23)
@@ -3353,14 +3353,14 @@ XATS2JS_strm_vt_filter0_cfr(a1x1, a1x2)
 // ./../../../../prelude/DATS/CATS/JS/prelude.dats@(6610(line=402,offs=3)--6648(line=402,offs=41))
 // L1DCLnone0()
   {
-// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(10109(line=780,offs=1)--10591(line=823,offs=13))
+// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(10105(line=780,offs=1)--10587(line=823,offs=13))
     function
-    strm_vt_filter0_266041_4738_(a2x1)
+    strm_vt_filter0_568183_4738_(a2x1)
     {
       let xtmp138
-// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(10181(line=788,offs=1)--10586(line=821,offs=8))
+// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(10177(line=788,offs=1)--10582(line=821,offs=8))
       function
-      auxmain_10184_(a3x1)
+      auxmain_10180_(a3x1)
       {
         let a3y1;
         let xtmp118
@@ -3371,7 +3371,7 @@ XATS2JS_strm_vt_filter0_cfr(a1x1, a1x2)
           let xtmp119
           let xtmp120
           {
-            xtmp119 = auxloop_10269_(a3x1)
+            xtmp119 = auxloop_10265_(a3x1)
           }
           return xtmp119 // lam-fun
         } // lam-function
@@ -3379,18 +3379,18 @@ XATS2JS_strm_vt_filter0_cfr(a1x1, a1x2)
           let xtmp119
           let xtmp120
           {
-// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(25297(line=1961,offs=1)--25349(line=1963,offs=37))
+// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(25288(line=1961,offs=1)--25340(line=1963,offs=37))
             // { // val-implmnt
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(1792(line=150,offs=1)--1842(line=152,offs=31))
             function
-            strm_vt_free_266041_2268_(a5x1)
+            strm_vt_free_568183_2268_(a5x1)
             {
               return XATS2JS_llazy_free(a5x1)
             } // function // strm_vt_free(28)
             // } // val-implmnt
             var // const // implval/fun
-            g_free_266041_1640_ = strm_vt_free_266041_2268_
-            xtmp120 = strm_vt_free_266041_2268_(a3x1)
+            g_free_568183_1640_ = strm_vt_free_568183_2268_
+            xtmp120 = strm_vt_free_568183_2268_(a3x1)
           }
         } // lam-function
         xtmp118 = XATS2JS_new_llazy(xtmp122,xtmp123)
@@ -3399,7 +3399,7 @@ XATS2JS_strm_vt_filter0_cfr(a1x1, a1x2)
         return xtmp118
       } // function // auxmain(32)
       function
-      auxloop_10269_(a3x1)
+      auxloop_10265_(a3x1)
       {
         let a3y1;
         let xtmp125
@@ -3442,7 +3442,7 @@ XATS2JS_strm_vt_filter0_cfr(a1x1, a1x2)
           {
 // ./../../../../prelude/DATS/CATS/JS/prelude.dats@(6610(line=402,offs=3)--6648(line=402,offs=41))
             function
-            filter0$test_266041_3789_(a4x1)
+            filter0$test_568183_3783_(a4x1)
             {
               let xtmp132
               {
@@ -3450,25 +3450,25 @@ XATS2JS_strm_vt_filter0_cfr(a1x1, a1x2)
               }
               return xtmp132
             } // function // filter0$test(30)
-            xtmp130 = filter0$test_266041_3789_(xtmp128)
+            xtmp130 = filter0$test_568183_3783_(xtmp128)
           }
           if (xtmp130)
           { // then
             {
               {
-                xtmp133 = auxmain_10184_(xtmp129)
+                xtmp133 = auxmain_10180_(xtmp129)
               }
               xtmp125 = [2, xtmp128, xtmp133]
             }
 } // if-then
           else
           { // else
-// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(10496(line=818,offs=3)--10515(line=818,offs=22))
+// /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(10492(line=818,offs=3)--10511(line=818,offs=22))
             {
               {
 // ./../../../../prelude/DATS/CATS/JS/prelude.dats@(6565(line=399,offs=3)--6595(line=400,offs=22))
                 function
-                g_free_266041_1640_(a4x1)
+                g_free_568183_1640_(a4x1)
                 {
                   let xtmp136
                   {
@@ -3476,7 +3476,7 @@ XATS2JS_strm_vt_filter0_cfr(a1x1, a1x2)
                   }
                   return xtmp136
                 } // function // g_free(27)
-                xtmp134 = g_free_266041_1640_(xtmp128)
+                xtmp134 = g_free_568183_1640_(xtmp128)
               }
               //L1PCKxpat(H0Pnil(); L1VALtmp(tmp(134)));
               //L1CMDmatch(H0Pnil(); L1VALtmp(tmp(134)));
@@ -3496,11 +3496,11 @@ XATS2JS_strm_vt_filter0_cfr(a1x1, a1x2)
         return xtmp125
       } // function // auxloop(33)
       {
-        xtmp138 = auxmain_10184_(a2x1)
+        xtmp138 = auxmain_10180_(a2x1)
       }
       return xtmp138
     } // function // strm_vt_filter0(31)
-    xtmp115 = strm_vt_filter0_266041_4738_(a1x1)
+    xtmp115 = strm_vt_filter0_568183_4738_(a1x1)
   }
   return xtmp115
 } // function // XATS2JS_strm_vt_filter0_cfr(29)

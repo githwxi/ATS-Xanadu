@@ -157,11 +157,11 @@ HX-2024-01-07:
 Sun Jan  7 19:15:56 EST 2024
 //
 The sorts of xs and x0 are
-inferred from [glseq_forall0]
+inferred from [gseq_forall0]
 //
 #impltmp
 <xs><x0>
-glseq_forall0(xs) = ( ...... )
+gseq_forall0(xs) = ( ...... )
 //
 *)
 #extern

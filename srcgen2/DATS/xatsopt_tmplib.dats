@@ -241,10 +241,10 @@ topmap_fprint<x0>
 //
 #impltmp
 {x0:t0}
-gl_print1
+g_print1
 <stkmap(x0)>(map) =
 stkmap_fprint1<x0>
-( gl_print$out<>( (*void*) ), map )
+( g_print$out<>( (*void*) ), map )
 //
 (* ****** ****** *)
 
@@ -1680,9 +1680,9 @@ d4typ_fprint(g_print$out<>(), dtyp)//trans34
 (* ****** ****** *)
 //
 #impltmp
-gl_print1<linstk>(stk0) =
+g_print1<linstk>(stk0) =
 linstk_fprint1
-( gl_print$out<>( (*nil*) ), stk0 )//trans34
+( g_print$out<>( (*nil*) ), stk0 )//trans34
 //
 (* ****** ****** *)
 (* ****** ****** *)

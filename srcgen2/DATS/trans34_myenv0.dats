@@ -154,9 +154,9 @@ stk0 of ~linstk_nil() => ())
 (* ****** ****** *)
 //
 #impltmp
-gl_print1<linstk>(stk0) =
+g_print1<linstk>(stk0) =
 linstk_fprint1
-(gl_print$out<>( (*nil*) ), stk0)
+(g_print$out<>( (*nil*) ), stk0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1087,9 +1087,7 @@ print1(d2v1,";",dtp1,";",stk1,")"))
 {
 //
 #impltmp
-g_print$out<>((*void*)) = (  out  )
-#impltmp
-gl_print$out<>((*void*)) = (  out  )
+g_print$out<>((*void*)) = (   out   )
 //
 }(*where*)//endof(linstk_fprint1(out,stk0))
 //
