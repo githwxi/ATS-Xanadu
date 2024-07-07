@@ -382,11 +382,9 @@ prerrln("the_tr12env_pvsload() = ", ret)
 val dpar =
 d3parsed_of_fildats
 (
-"\
-./../../../\
-prelude/DATS/VT/gseq000_vt.dats")
-val (  ) =
-fperr30_d3parsed(g_stderr((*tmp*)), dpar)
+"./../../..\
+/srcgen1/prelude/DATS/VT/gseq000_vt.dats")
+val (  ) = fperr30_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_TEST_JS_test42_xatsopt.dats] *)
