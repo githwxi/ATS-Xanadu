@@ -156,13 +156,13 @@ sint = 0
 (*
 val opt =
 p1_fun_test<d0eclist>
-("./mytest1.sats", p1_d0eclseq_sta)
+("./DATA/mytest1.sats", p1_d0eclseq_sta)
 *)
 //
 // (*
 val opt =
 p1_fun_test<d0eclist>
-("./basics0.sats", p1_d0eclseq_sta)
+("./DATA/basics0.sats", p1_d0eclseq_sta)
 // *)
 //
 val opt =
@@ -189,7 +189,7 @@ where { val out = g_stderr<>() }
 //
 // (*
 val ( ) =
-prerrln("p1_fun_test(\"./basics0.sats\") =\n", opt)
+prerrln("p1_fun_test(\"./DATA/basics0.sats\") =\n", opt)
 // *)
 //
 (* ****** ****** *)
@@ -197,4 +197,4 @@ endloc (*local*) // end-of-[local(p1_fun_test)]
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_TEST_JS_test10_parsing.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_TEST_JS_test10_parsing.dats] *)

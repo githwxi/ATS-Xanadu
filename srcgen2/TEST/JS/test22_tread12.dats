@@ -235,6 +235,19 @@
 #include
 "./../../DATS/trans12_decl00.dats"
 (* ****** ****** *)
+//
+#include
+"./../../DATS/xdepend.dats"
+#include
+"./../../DATS/xdepend_myenv0.dats"
+#include
+"./../../DATS/xdepend_staexp.dats"
+#include
+"./../../DATS/xdepend_dynexp.dats"
+#include
+"./../../DATS/xdepend_decl00.dats"
+//
+(* ****** ****** *)
 #include
 "./../../DATS/tread12.dats"
 #include
@@ -327,6 +340,14 @@ prerrln
 val
 dpar =
 d2parsed_of_trans12(dpar)
+//
+(* ****** ****** *)
+//
+val dcls =
+(
+  xdepend_d2parsed(dpar))
+//
+(* ****** ****** *)
 //
 val
 dpar =
