@@ -62,14 +62,15 @@ ATS_PACKNAME
 (* ****** ****** *)
 //
 #implfun
-d3parsed_from_fpath
+trans03_from_fpath
   (stadyn, source) =
 (
   d3parsed_of_trans23(dpar)) where
 {
 //
 val dpar =
-d2parsed_from_fpath(stadyn, source)
+(
+trans02_from_fpath(stadyn, source))
 //
 val dpar = d2parsed_of_tread12(dpar)
 //
@@ -81,10 +82,10 @@ val dpar = d2parsed_of_tread20(dpar)
 //
 (*
 val (  ) =
-prerrln("d3parsed_from_fpath: dpar = ", dpar)
+prerrln("trans03_from_fpath: dpar = ", dpar)
 *)
 //
-} (*where*)//end-of-[d3parsed_from_fpath(...)]
+} (*where*)//end-of-[trans03_from_fpath(...)]
 //
 (* ****** ****** *)
 

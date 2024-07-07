@@ -204,11 +204,9 @@ in
   d0parsed_fpemsg( out, dpar )
 end
 //
-val
-dpar = d1parsed_of_trans01(dpar)
+val dpar = d1parsed_of_trans01(dpar)
 //
-val (  ) =
-prerrln
+val (  ) = prerrln
 ("d1parsed_from_fpath(\"./DATA/mytest1.sats\") =\n", dpar)
 //
 (* ****** ****** *)

@@ -67,6 +67,7 @@ ATS_PACKNAME
 #symload lctn with s1exp_get_lctn
 #symload node with s1exp_get_node
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 g_lte<sort2> = lte_sort2_sort2
@@ -74,33 +75,6 @@ g_lte<sort2> = lte_sort2_sort2
 g_lte<sort2lst> = lte_sort2lst_sort2lst
 //
 (* ****** ****** *)
-//
-#impltmp
-<x0><y0>
-list_trans12_fnp
-( e1, xs, fopr ) =
-(
-list_map_e1nv<x0><y0><e1>(xs, e1)) where
-{
-#vwtpdef e1 = tr12env
-#impltmp
-map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [list_trans12_fnp(e1,xs,fopr)]
-//
-(* ****** ****** *)
-//
-#impltmp
-<x0><y0>
-optn_trans12_fnp
-( e1, xs, fopr ) =
-(
-optn_map_e1nv<x0><y0><e1>(xs, e1)) where
-{
-#vwtpdef e1 = tr12env
-#impltmp
-map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
-} (*where*)//end of [optn_trans12_fnp(e1,xs,fopr)]
-//
 (* ****** ****** *)
 //
 (*
@@ -149,34 +123,40 @@ case+ xs of
 } (*where*) // end of [s2cst_select_any(...)]
 
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 local
 //
 fun
-mat // match
+mat//match
 ( x1: sort2
 , x2: sort2): bool =
 (
 case+ x1 of
-S2Tnone0()=>true | _ =>(x1 <= x2))
+|S2Tnone0() => ( true )
+|_(*S2T...*) => (x1 <= x2)
+)
+//
+(* ****** ****** *)
 //
 fun
 f0_test1
 ( s2c0: s2cst
 , s2t1: sort2
-, s2t2: sort2): bool = let
+, s2t2: sort2): bool =
+let
 //
 val
-s2t0 = s2c0.sort()
+s2t0 =
+s2c0.sort((*nil*))
 //
 in//let
 //
 case+ s2t0 of
-|
-S2Tfun1(s2ts, _) =>
-f0_test2(s2ts, s2t1, s2t2)
-|
-_(* non-S2Tfun1 *) => false
+|S2Tfun1(s2ts, tres) =>
+(
+  f0_test2(s2ts, s2t1, s2t2))
+|_(* non-S2Tfun1 *) => (false)
 //
 end (*let*)//end-[f0_test1(s2c0,s1t1,s2t2)]
 //
@@ -207,13 +187,13 @@ if
 s2t1\mat(t2x1)
 then
 s2t2\mat(t2x2) else false)
-|list_cons(_, _) => false))
+|list_cons(_, _) => false))//list_cons
 ) (*case+*)//end-[f0_test2(s2ts,s2t1,s2t2)]
 //
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
-
+//
 (*
 #implfun
 s2cst_select_bin
@@ -250,9 +230,9 @@ then optn_vt_cons(s2c1) else loop(s2cs))
 }
 end (*let*) // end of [s2cst_select_bin(...)]
 *)
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 s2cst_selects_bin
 (s2cs, s2t1, s2t2) =
@@ -280,9 +260,10 @@ filter$test
 }
 //
 end (*let*) // end of [s2cst_selects_bin(...)]
-
-end (*local*)//end-of-[local(s2cst_select/s_bin)]
-
+//
+end (*local*)//end-of-[local(s2cst_selects_bin)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 local
@@ -387,6 +368,7 @@ filter$test
 
 end (*local*)//end-of-[local(s2cst_select/s_list)]
 
+(* ****** ****** *)
 (* ****** ****** *)
 
 local
@@ -528,6 +510,7 @@ prerrln("s1exp_get_s2cstlst: s1e0 = ", s1e0)
 end (*local*) // end of [s1exp_get_s2cstlst(...)]
 
 (* ****** ****** *)
+(* ****** ****** *)
 
 #implfun
 d2parsed_of_trans12
@@ -562,7 +545,7 @@ end (*let*) // end-of-[d2parsed_of_trans12(dpar)]
 (* ****** ****** *)
 //
 #implfun
-d2parsed_from_fpath
+trans02_from_fpath
   (stadyn, source) =
 (
   d2parsed_of_trans12(d1par)) where
@@ -570,12 +553,42 @@ d2parsed_from_fpath
 //
   val d1par =
   (
-    d1parsed_from_fpath(stadyn, source))
+    trans01_from_fpath(stadyn, source))
 //
   val d1par = d1parsed_of_tread01( d1par )
 //
 } (*where*) // end-of-[d2parsed_from_fpath( ... )]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<x0><y0>
+list_trans12_fnp
+( e1, xs, fopr ) =
+(
+list_map_e1nv<x0><y0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = tr12env
+#impltmp
+map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [list_trans12_fnp(e1,xs,fopr)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0><y0>
+optn_trans12_fnp
+( e1, xs, fopr ) =
+(
+optn_map_e1nv<x0><y0><e1>(xs, e1)) where
+{
+#vwtpdef e1 = tr12env
+#impltmp
+map$fopr_e1nv<x0><y0><e1>(x0, e1) = fopr(e1, x0)
+} (*where*)//end of [optn_trans12_fnp(e1,xs,fopr)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_DATS_trans12.dats] *)
