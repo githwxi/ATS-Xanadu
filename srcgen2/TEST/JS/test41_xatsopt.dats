@@ -381,33 +381,28 @@ prerrln("the_tr12env_pvsload() = ", ret)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
-("./../../../prelude/DATS/bool000.dats")
-val (  ) =
-fperr30_d3parsed(g_stderr((*tmp*)), dpar)
+("./../../../srcgen1/prelude/DATS/bool000.dats")
+val (  ) = fperr30_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
-("./../../../prelude/DATS/char000.dats")
-val (  ) =
-fperr30_d3parsed(g_stderr((*tmp*)), dpar)
+("./../../../srcgen1/prelude/DATS/char000.dats")
+val (  ) = fperr30_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
-("./../../../prelude/DATS/gint000.dats")
-val (  ) =
-fperr30_d3parsed(g_stderr((*tmp*)), dpar)
+("./../../../srcgen1/prelude/DATS/gint000.dats")
+val (  ) = fperr30_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
-("./../../../prelude/DATS/gflt000.dats")
-val (  ) =
-fperr30_d3parsed(g_stderr((*tmp*)), dpar)
+("./../../../srcgen1/prelude/DATS/gflt000.dats")
+val (  ) = fperr30_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
-("./../../../prelude/DATS/strn000.dats")
-val (  ) =
-fperr30_d3parsed(g_stderr((*tmp*)), dpar)
+("./../../../srcgen1/prelude/DATS/strn000.dats")
+val (  ) = fperr30_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_TEST_JS_test41_xatsopt.dats] *)

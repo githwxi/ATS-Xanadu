@@ -382,49 +382,37 @@ prerrln("the_tr12env_pvsload() = ", ret)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
-(
-"./../../../prelude/DATS/gfor000.dats")
-val (  ) =
-fperr30_d3parsed(g_stderr((*tmp*)), dpar)
+("./../../../srcgen1/prelude/DATS/gfor000.dats")
+val (  ) = fperr30_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
-(
-"./../../../prelude/DATS/gfun000.dats")
-val (  ) =
-fperr30_d3parsed(g_stderr((*tmp*)), dpar)
+("./../../../srcgen1/prelude/DATS/gfun000.dats")
+val (  ) = fperr30_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
-(
-"./../../../prelude/DATS/gmap000.dats")
-val (  ) =
-fperr30_d3parsed(g_stderr((*tmp*)), dpar)
+("./../../..\/srcgen1/prelude/DATS/gmap000.dats")
+val (  ) = fperr30_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
-(
-"./../../../prelude/DATS/gras000.dats")
-val (  ) =
-fperr30_d3parsed(g_stderr((*tmp*)), dpar)
+("./../../../srcgen1/prelude/DATS/gras000.dats")
+val (  ) = fperr30_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
-(
-"./../../../prelude/DATS/gseq000.dats")
-val (  ) =
-fperr30_d3parsed(g_stderr((*tmp*)), dpar)
+("./../../../srcgen1/prelude/DATS/gseq000.dats")
+val (  ) = fperr30_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
-(
-"./../../../prelude/DATS/gseqn00.dats")
-val (  ) =
-fperr30_d3parsed(g_stderr((*tmp*)), dpar)
+("./../../../srcgen1/prelude/DATS/gseqn00.dats")
+val (  ) = fperr30_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_TEST_JS_test39_xatsopt.dats] *)
