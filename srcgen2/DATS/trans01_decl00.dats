@@ -603,7 +603,8 @@ f0_dynconst(tenv, d0cl)
 (
 case+ tok.node() of
 |T_EOF() =>
- d1ecl_none0(d0cl.lctn())
+(
+ d1ecl_none0(d0cl.lctn()))
 |_(*else*) => d1ecl_none1(d0cl))
 //
 |
