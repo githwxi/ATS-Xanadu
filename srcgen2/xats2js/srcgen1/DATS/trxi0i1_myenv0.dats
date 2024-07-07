@@ -190,9 +190,9 @@ stk0 of ~iltstk_nil() => ())
 (* ****** ****** *)
 //
 #impltmp
-gl_print1<iltstk>(stk0) =
+g_print1<iltstk>(stk0) =
 iltstk_fprint1
-(gl_print$out<>( (*nil*) ), stk0)
+(g_print$out<>( (*nil*) ), stk0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

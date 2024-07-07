@@ -52,9 +52,9 @@
 "./../../SATS/trsym2b.sats"
 (* ****** ****** *)
 #staload
-"./../../SATS/tread22.sats"
+"./../../SATS/tread20.sats"
 #staload
-"./../../SATS/fperr22.sats"
+"./../../SATS/fperr20.sats"
 (* ****** ****** *)
 #staload
 "./../../SATS/trans23.sats"
@@ -65,9 +65,9 @@
 "./../../SATS/trans3a.sats"
 (* ****** ****** *)
 #staload
-"./../../SATS/tread33.sats"
+"./../../SATS/tread30.sats"
 #staload
-"./../../SATS/fperr33.sats"
+"./../../SATS/fperr30.sats"
 (* ****** ****** *)
 #include
 "./../../DATS/xbasics.dats"
@@ -295,18 +295,18 @@
 "./../../DATS/trsym2b_decl00.dats"
 (* ****** ****** *)
 #include
-"./../../DATS/tread22.dats"
+"./../../DATS/tread20.dats"
 #include
-"./../../DATS/tread22_dynexp.dats"
+"./../../DATS/tread20_dynexp.dats"
 #include
-"./../../DATS/tread22_decl00.dats"
+"./../../DATS/tread20_decl00.dats"
 (* ****** ****** *)
 #include
-"./../../DATS/fperr22.dats"
+"./../../DATS/fperr20.dats"
 #include
-"./../../DATS/fperr22_dynexp.dats"
+"./../../DATS/fperr20_dynexp.dats"
 #include
-"./../../DATS/fperr22_decl00.dats"
+"./../../DATS/fperr20_decl00.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/dynexp3.dats"
@@ -347,20 +347,20 @@
 "./../../DATS/trans3a_decl00.dats"
 (* ****** ****** *)
 #include
-"./../../DATS/tread33.dats"
+"./../../DATS/tread30.dats"
 #include
-"./../../DATS/tread33_staexp.dats"
+"./../../DATS/tread30_staexp.dats"
 #include
-"./../../DATS/tread33_dynexp.dats"
+"./../../DATS/tread30_dynexp.dats"
 #include
-"./../../DATS/tread33_decl00.dats"
+"./../../DATS/tread30_decl00.dats"
 (* ****** ****** *)
 #include
-"./../../DATS/fperr33.dats"
+"./../../DATS/fperr30.dats"
 #include
-"./../../DATS/fperr33_dynexp.dats"
+"./../../DATS/fperr30_dynexp.dats"
 #include
-"./../../DATS/fperr33_decl00.dats"
+"./../../DATS/fperr30_decl00.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/xatsopt.dats"
@@ -384,28 +384,28 @@ val dpar =
 d3parsed_of_fildats
 ("./../../../prelude/DATS/list000.dats")
 val (  ) =
-fperr33_d3parsed(g_stderr((*tmp*)), dpar)
+fperr30_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
 ("./../../../prelude/DATS/optn000.dats")
 val (  ) =
-fperr33_d3parsed(g_stderr((*tmp*)), dpar)
+fperr30_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
 ("./../../../prelude/DATS/strm000.dats")
 val (  ) =
-fperr33_d3parsed(g_stderr((*tmp*)), dpar)
+fperr30_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 (* ****** ****** *)
 val dpar =
 d3parsed_of_fildats
 ("./../../../prelude/DATS/tupl000.dats")
 val (  ) =
-fperr33_d3parsed(g_stderr((*tmp*)), dpar)
+fperr30_d3parsed(g_stderr((*tmp*)), dpar)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_TEST_JS_test40_xatsopt.dats] *)
