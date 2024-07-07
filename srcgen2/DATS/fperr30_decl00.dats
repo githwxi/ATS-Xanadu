@@ -53,9 +53,9 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
-#staload "./../SATS/fperr33.sats"
+#staload "./../SATS/fperr30.sats"
 (* ****** ****** *)
-#define FPERR33_ERRVL 2
+#define FPERR30_ERRVL 2
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
@@ -89,22 +89,22 @@ dcl.node() of
 (tknd, dcl1) =>
 let
 val () =
-fperr33_d3ecl(out, dcl1)
+fperr30_d3ecl(out, dcl1)
 endlet//end-of(D3Cstatic(_,_))
 |D3Cextern
 (tknd, dcl1) =>
 let
 val () =
-fperr33_d3ecl(out, dcl1)
+fperr30_d3ecl(out, dcl1)
 endlet//end-of(D3Cextern(_,_))
 //
 |D3Clocal0
 (dcs1, dcs2) =>
 let
 val () =
-fperr33_d3eclist(out, dcs1)
+fperr30_d3eclist(out, dcs1)
 val () =
-fperr33_d3eclist(out, dcs2)
+fperr30_d3eclist(out, dcs2)
 endlet // end of [D3Clocal0(...)]
 //
 (* ****** ****** *)
@@ -114,7 +114,7 @@ endlet // end of [D3Clocal0(...)]
 ,tknd, gsrc
 ,fopt, dopt) => let
 val () =
-fperr33_d3eclistopt(out, dopt)
+fperr30_d3eclistopt(out, dopt)
 endlet // end-of-(D3Cinclude(...))
 //
 |D3Cstaload
@@ -123,7 +123,7 @@ endlet // end-of-(D3Cinclude(...))
 ,fopt, dopt) => let
 (*
 val () =
-fperr33_s2taloadopt(out, dopt)
+fperr30_s2taloadopt(out, dopt)
 *)
 endlet // end-of-(D3Cstaload(...))
 //
@@ -133,13 +133,13 @@ endlet // end-of-(D3Cstaload(...))
 D3Cvaldclst
 (tknd, d3vs) => let
 val () =
-  fperr33_d3valdclist(out, d3vs)
+  fperr30_d3valdclist(out, d3vs)
 endlet//end-of-(D3Cvaldclst(_,_,_))
 |
 D3Cvardclst
 (tknd, d3vs) => let
 val () =
-  fperr33_d3vardclist(out, d3vs)
+  fperr30_d3vardclist(out, d3vs)
 endlet//end-of-(D3Cvardclst(_,_,_))
 //
 |
@@ -149,12 +149,12 @@ D3Cfundclst
 , d2cs, d3fs) => let
 (*
 val () =
-  fperr33_t3qaglst(out, tqas)
+  fperr30_t3qaglst(out, tqas)
 val () =
-  fperr33_d3cstlst(out, d3cs)
+  fperr30_d3cstlst(out, d3cs)
 *)
 val () =
-  fperr33_d3fundclist(out, d3fs)
+  fperr30_d3fundclist(out, d3fs)
 endlet//end-of-(D3Cfundclst(_,_,_))
 //
 (* ****** ****** *)
@@ -170,22 +170,22 @@ let
 //
 (*
 val () =
-  fperr33_s2qaglst(out, sqas)
+  fperr30_s2qaglst(out, sqas)
 val () =
-  fperr33_t2qaglst(out, tqas)
+  fperr30_t2qaglst(out, tqas)
 val () =
-  fperr33_t2iaglst(out, tias)
+  fperr30_t2iaglst(out, tias)
 *)
 //
 val () =
 (
-  fperr33_f3arglst(out, f3as))
+  fperr30_f3arglst(out, f3as))
 //
 (*
-val () = fperr33_s2res(out, sres)
+val () = fperr30_s2res(out, sres)
 *)
 //
-val () = fperr33_d3exp(out, dexp)
+val () = fperr30_d3exp(out, dexp)
 //
 endlet//end of [ D3Cimplmnt0(...) ]
 //
@@ -193,7 +193,7 @@ endlet//end of [ D3Cimplmnt0(...) ]
 |D3Cnone1 _ => () | D3Cnone2 _ => ()
 //
 |
-D3Cerrck(_,_) => fperr33_d3ecl(out, dcl)
+D3Cerrck(_,_) => fperr30_d3ecl(out, dcl)
 //
 |
 _(*otherwise*) =>
@@ -202,9 +202,9 @@ let
   val
   loc = dcl.lctn()
   val () = prerrln
-  ("fperr33_d3ecl: auxmain: loc = ", loc)
+  ("fperr30_d3ecl: auxmain: loc = ", loc)
   val () = prerrln
-  ("fperr33_d3ecl: auxmain: dcl = ", dcl)
+  ("fperr30_d3ecl: auxmain: dcl = ", dcl)
 //
 end (*let*) // end-of-[ (* otherwise *) ]
 //
@@ -215,7 +215,7 @@ in(* in-of-local *)
 (* ****** ****** *)
 
 #implfun
-fperr33_d3ecl
+fperr30_d3ecl
 (out, dcl0) =
 let
 //
@@ -228,13 +228,13 @@ val loc0 = dcl0.lctn()
 in//let
 (*
 prerrln
-("fperr33_d3pat: loc0 = ", loc0)
+("fperr30_d3pat: loc0 = ", loc0)
 *)
 end//let
 (*
 val () =
 prerrln
-("fperr33_d3ecl: dcl0 = ", dcl0)
+("fperr30_d3ecl: dcl0 = ", dcl0)
 *)
 //
 in//let
@@ -248,32 +248,32 @@ D3Cerrck(lvl, d3cl)  =>
 auxmain( out, d3cl );
 if
 (lvl
->FPERR33_ERRVL) then () else
+>FPERR30_ERRVL) then () else
 let
 val loc0 = dcl0.lctn() in
 println
-("FPERR33-ERROR:",loc0,":",dcl0)
+("FPERR30-ERROR:",loc0,":",dcl0)
 end
 )
 //
 | _(* otherwise *) => (   (*skipped*)   )
 //
-end (*let*)//end-of(fperr33_d3ecl(out,dcl0))
+end (*let*)//end-of(fperr30_d3ecl(out,dcl0))
 //
-endloc(*local*)//end-of(local(fperr33_d3ecl))
+endloc(*local*)//end-of(local(fperr30_d3ecl))
 
 (* ****** ****** *)
 //
 #implfun
-fperr33_d3eclist
+fperr30_d3eclist
   (out, dcls) =
 (
-  list_fperr33_fnp(out, dcls, fperr33_d3ecl))
+  list_fperr30_fnp(out, dcls, fperr30_d3ecl))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr33_teqd3exp
+fperr30_teqd3exp
   (out, tdxp) =
 (
 case+ tdxp of
@@ -282,22 +282,22 @@ TEQD3EXPnone() => ()
 |
 TEQD3EXPsome(teq1, d3e2) =>
 let
-val (  ) = fperr33_d3exp(out, d3e2)
+val (  ) = fperr30_d3exp(out, d3e2)
 endlet // end of [TEQD3EXPsome(_,_)]
-) (*case+*)//end-(fperr33_teqd3exp(out,tdxp))
+) (*case+*)//end-(fperr30_teqd3exp(out,tdxp))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr33_d3valdcl
+fperr30_d3valdcl
 (out, dval) =
 let
 //
 val (  ) =
-fperr33_d3pat(out, dpat)
+fperr30_d3pat(out, dpat)
 //
 val (  ) =
-fperr33_teqd3exp(out, tdxp)
+fperr30_teqd3exp(out, tdxp)
 //
 endlet where
 {
@@ -309,17 +309,17 @@ val tdxp = d3valdcl_get_tdxp(dval)
 val wsxp = d3valdcl_get_wsxp(dval)
 *)
 //
-} (*where*)//end-of-[fperr33_d3valdcl(...)]
+} (*where*)//end-of-[fperr30_d3valdcl(...)]
 //
 (* ****** ****** *)
 //
 #implfun
-fperr33_d3vardcl
+fperr30_d3vardcl
 (out, dvar) =
 let
 //
 val (  ) =
-fperr33_teqd3exp(out, dini)
+fperr30_teqd3exp(out, dini)
 //
 endlet where
 {
@@ -332,20 +332,20 @@ val sres = d3vardcl_get_sres(dvar)
 //
 val dini = d3vardcl_get_dini(dvar)
 //
-} (*where*)//end-of-[fperr33_d3vardcl(...)]
+} (*where*)//end-of-[fperr30_d3vardcl(...)]
 //
 (* ****** ****** *)
 //
 #implfun
-fperr33_d3fundcl
+fperr30_d3fundcl
 (out, dfun) =
 let
 //
 val (  ) =
-fperr33_f3arglst(out, fags)
+fperr30_f3arglst(out, fags)
 //
 val (  ) =
-fperr33_teqd3exp(out, tdxp)
+fperr30_teqd3exp(out, tdxp)
 //
 endlet where
 {
@@ -364,30 +364,30 @@ endlet where
   val wsxp = d3fundcl_get_wsxp(dfun)
 *)
 //
-} (*where*)//end-of-[fperr33_d3fundcl(out,dfun)]
+} (*where*)//end-of-[fperr30_d3fundcl(out,dfun)]
 //
 (* ****** ****** *)
 //
 #implfun
-fperr33_d3valdclist
+fperr30_d3valdclist
   (out, d3vs) =
 (
-list_fperr33_fnp(out, d3vs, fperr33_d3valdcl))
+list_fperr30_fnp(out, d3vs, fperr30_d3valdcl))
 //
 #implfun
-fperr33_d3vardclist
+fperr30_d3vardclist
   (out, d3vs) =
 (
-list_fperr33_fnp(out, d3vs, fperr33_d3vardcl))
+list_fperr30_fnp(out, d3vs, fperr30_d3vardcl))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr33_d3fundclist
+fperr30_d3fundclist
   (out, d3fs) =
 (
-list_fperr33_fnp(out, d3fs, fperr33_d3fundcl))
+list_fperr30_fnp(out, d3fs, fperr30_d3fundcl))
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_DATS_fperr33_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_fperr30_decl00.dats] *)

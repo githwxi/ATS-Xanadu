@@ -53,10 +53,10 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp3.sats"
 #staload "./../SATS/dynexp4.sats"
 (* ****** ****** *)
-#staload "./../SATS/fperr44.sats"
+#staload "./../SATS/fperr40.sats"
 (* ****** ****** *)
 (* ****** ****** *)
-#define FPERR44_ERRVL 2
+#define FPERR40_ERRVL 2
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
@@ -95,11 +95,11 @@ let
   val t2p = d4p.styp((*void*))
 //
   val ( ) = prerrln
-  ("fperr44_d4pat: auxmain: loc = ", loc)
+  ("fperr40_d4pat: auxmain: loc = ", loc)
   val ( ) = prerrln
-  ("fperr44_d4pat: auxmain: t2p = ", t2p)
+  ("fperr40_d4pat: auxmain: t2p = ", t2p)
   val ( ) = prerrln
-  ("fperr44_d4pat: auxmain: d4p = ", d4p)
+  ("fperr40_d4pat: auxmain: d4p = ", d4p)
 //
 endlet
 //
@@ -108,7 +108,7 @@ end (*let*) // end-of-[ auxmain(out, d4p) ]
 in//local
 //
 #implfun
-fperr44_d4pat
+fperr40_d4pat
 ( out, d4p0 ) =
 let
 //
@@ -121,13 +121,13 @@ val loc0 = d4p0.lctn()
 in//let
 (*
 prerrln
-("fperr44_d4pat: loc0 = ", loc0)
+("fperr40_d4pat: loc0 = ", loc0)
 *)
 end//let
 (*
 val () =
 prerrln
-("fperr44_d4pat: d4p0 = ", d4p0)
+("fperr40_d4pat: d4p0 = ", d4p0)
 *)
 //
 in//let
@@ -140,24 +140,24 @@ D4Perrck(lvl, d4p1) =>
 auxmain( out, d4p1 ); 
 if
 (lvl
->FPERR44_ERRVL)
+>FPERR40_ERRVL)
 then ((*void*)) else
 let
 val loc0 = d4p0.lctn((*0*))
 in//let
 (*
 prerrln
-("FPERR44-ERROR:",loc0,":",d4p0)
+("FPERR40-ERROR:",loc0,":",d4p0)
 *)
 end//let
 )
 | _(* otherwise *) => (  (* skipped *)  )
 //
-end(*let*)//end-of(fperr44_d4pat(out,d4p0))
+end(*let*)//end-of(fperr40_d4pat(out,d4p0))
 //
 (* ****** ****** *)
 //
-endloc(*local*)//end-of(local(fperr44_d4pat))
+endloc(*local*)//end-of(local(fperr40_d4pat))
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -186,11 +186,11 @@ let
   val t2p = d4e.styp((*void*))
 //
   val ( ) = prerrln
-  ("fperr44_d4exp: auxmain: loc = ", loc)
+  ("fperr40_d4exp: auxmain: loc = ", loc)
   val ( ) = prerrln
-  ("fperr44_d4exp: auxmain: t2p = ", t2p)
+  ("fperr40_d4exp: auxmain: t2p = ", t2p)
   val ( ) = prerrln
-  ("fperr44_d4exp: auxmain: d4e = ", d4e)
+  ("fperr40_d4exp: auxmain: d4e = ", d4e)
 //
 endlet
 //
@@ -199,7 +199,7 @@ end (*let*) // end-of-[ auxmain(out, d4e) ]
 in//local
 //
 #implfun
-fperr44_d4exp
+fperr40_d4exp
 ( out, d4e0 ) =
 let
 //
@@ -212,13 +212,13 @@ val loc0 = d4e0.lctn()
 in//let
 (*
 prerrln
-("fperr44_d4exp: loc0 = ", loc0)
+("fperr40_d4exp: loc0 = ", loc0)
 *)
 end//let
 (*
 val () =
 prerrln
-("fperr44_d4exp: d4e0 = ", d4e0)
+("fperr40_d4exp: d4e0 = ", d4e0)
 *)
 //
 in//let
@@ -231,60 +231,60 @@ D4Eerrck(lvl, d4e1) =>
 auxmain( out, d4e1 ); 
 if
 (lvl
->FPERR44_ERRVL)
+>FPERR40_ERRVL)
 then ((*void*)) else
 let
 val loc0 = d4e0.lctn((*0*))
 in//let
 (*
 prerrln
-("FPERR44-ERROR:",loc0,":",d4e0)
+("FPERR40-ERROR:",loc0,":",d4e0)
 *)
 end//let
 )
 | _(* otherwise *) => (  (* skipped *)  )
 //
-end(*let*)//end-of(fperr44_d4exp(out,d4e0))
+end(*let*)//end-of(fperr40_d4exp(out,d4e0))
 //
 (* ****** ****** *)
 //
-endloc(*local*)//end-of(local(fperr44_d4exp))
+endloc(*local*)//end-of(local(fperr40_d4exp))
 
 (* ****** ****** *)
 //
 #implfun
-fperr44_l4d4e
+fperr40_l4d4e
 (out, ld4e) =
 (
 case+ ld4e of
 |
-D4LAB(lab,d4e1) => fperr44_d4exp(out,d4e1)
-) (*case+*)//end-of-(fperr44_d4exp(out,ld4e))
+D4LAB(lab,d4e1) => fperr40_d4exp(out,d4e1)
+) (*case+*)//end-of-(fperr40_d4exp(out,ld4e))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-fperr44_d4explst
+fperr40_d4explst
   (out, d4es) =
 (
-  list_fperr44_fnp(out, d4es, fperr44_d4exp))
+  list_fperr40_fnp(out, d4es, fperr40_d4exp))
 //
 #implfun
-fperr44_d4expopt
+fperr40_d4expopt
   (out, dopt) =
 (
-  optn_fperr44_fnp(out, dopt, fperr44_d4exp))
+  optn_fperr40_fnp(out, dopt, fperr40_d4exp))
 //
 (* ****** ****** *)
 //
 #implfun
-fperr44_l4d4elst
+fperr40_l4d4elst
   (out, ldes) =
 (
-  list_fperr44_fnp(out, ldes, fperr44_l4d4e))
+  list_fperr40_fnp(out, ldes, fperr40_l4d4e))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_DATS_fperr44_dynexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_fperr40_dynexp.dats] *)

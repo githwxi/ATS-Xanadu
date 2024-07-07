@@ -112,93 +112,93 @@ D3E = "./dynexp3.sats"
 *)
 (* ****** ****** *)
 #typedef
-fperr33_t
+fperr30_t
 (syn:tbox) = (FILR, syn)->void
 (* ****** ****** *)
 //
 fun
-list_fperr33_fnp
+list_fperr30_fnp
 { syn:tbox }
 ( out: FILR,
-  list(syn), fperr33_t(syn)): void
+  list(syn), fperr30_t(syn)): void
 fun
-optn_fperr33_fnp
+optn_fperr30_fnp
 { syn:tbox }
 ( out: FILR,
-  optn(syn), fperr33_t(syn)): void
+  optn(syn), fperr30_t(syn)): void
 //
 (* ****** ****** *)
 (*
-HX: fperr33 for statics
+HX: fperr30 for statics
 *)
 (* ****** ****** *)
-fun fperr33_s2typ(FILR, s2typ): void
+fun fperr30_s2typ(FILR, s2typ): void
 (* ****** ****** *)
 (*
-HX: fperr33 for dynamics
+HX: fperr30 for dynamics
 *)
 (* ****** ****** *)
-fun fperr33_d3pat(FILR, d3pat): void
-fun fperr33_d3exp(FILR, d3exp): void
+fun fperr30_d3pat(FILR, d3pat): void
+fun fperr30_d3exp(FILR, d3exp): void
 (* ****** ****** *)
-fun fperr33_l3d3p(FILR, l3d3p): void
-fun fperr33_l3d3e(FILR, l3d3e): void
+fun fperr30_l3d3p(FILR, l3d3p): void
+fun fperr30_l3d3e(FILR, l3d3e): void
 (* ****** ****** *)
-fun fperr33_f3arg(FILR, f3arg): void
+fun fperr30_f3arg(FILR, f3arg): void
 (* ****** ****** *)
-fun fperr33_d3gua(FILR, d3gua): void
-fun fperr33_d3gpt(FILR, d3gpt): void
-fun fperr33_d3cls(FILR, d3cls): void
+fun fperr30_d3gua(FILR, d3gua): void
+fun fperr30_d3gpt(FILR, d3gpt): void
+fun fperr30_d3cls(FILR, d3cls): void
 (* ****** ****** *)
-fun fperr33_d3ecl(FILR, d3ecl): void
+fun fperr30_d3ecl(FILR, d3ecl): void
 (* ****** ****** *)
-fun fperr33_s2typlst(FILR, s2typlst): void
+fun fperr30_s2typlst(FILR, s2typlst): void
 (* ****** ****** *)
-fun fperr33_d3patlst(FILR, d3patlst): void
-fun fperr33_d3patopt(FILR, d3patopt): void
+fun fperr30_d3patlst(FILR, d3patlst): void
+fun fperr30_d3patopt(FILR, d3patopt): void
 (* ****** ****** *)
-fun fperr33_d3explst(FILR, d3explst): void
-fun fperr33_d3expopt(FILR, d3expopt): void
+fun fperr30_d3explst(FILR, d3explst): void
+fun fperr30_d3expopt(FILR, d3expopt): void
 (* ****** ****** *)
-fun fperr33_l3d3plst(FILR, l3d3plst): void
-fun fperr33_l3d3elst(FILR, l3d3elst): void
+fun fperr30_l3d3plst(FILR, l3d3plst): void
+fun fperr30_l3d3elst(FILR, l3d3elst): void
 (* ****** ****** *)
-fun fperr33_f3arglst(FILR, f3arglst): void
+fun fperr30_f3arglst(FILR, f3arglst): void
 (* ****** ****** *)
-fun fperr33_d3gualst(FILR, d3gualst): void
-fun fperr33_d3clslst(FILR, d3clslst): void
+fun fperr30_d3gualst(FILR, d3gualst): void
+fun fperr30_d3clslst(FILR, d3clslst): void
 (* ****** ****** *)
-fun fperr33_d3eclist(FILR, d3eclist): void
+fun fperr30_d3eclist(FILR, d3eclist): void
 (* ****** ****** *)
-fun fperr33_teqd3exp(FILR, teqd3exp): void
+fun fperr30_teqd3exp(FILR, teqd3exp): void
 (* ****** ****** *)
-fun fperr33_d3valdcl(FILR, d3valdcl): void
-fun fperr33_d3vardcl(FILR, d3vardcl): void
-fun fperr33_d3fundcl(FILR, d3fundcl): void
-(* ****** ****** *)
-fun
-fperr33_d3valdclist(FILR, d3valdclist): void
+fun fperr30_d3valdcl(FILR, d3valdcl): void
+fun fperr30_d3vardcl(FILR, d3vardcl): void
+fun fperr30_d3fundcl(FILR, d3fundcl): void
 (* ****** ****** *)
 fun
-fperr33_d3vardclist(FILR, d3vardclist): void
+fperr30_d3valdclist(FILR, d3valdclist): void
 (* ****** ****** *)
 fun
-fperr33_d3fundclist(FILR, d3fundclist): void
+fperr30_d3vardclist(FILR, d3vardclist): void
+(* ****** ****** *)
+fun
+fperr30_d3fundclist(FILR, d3fundclist): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-fperr33_d3parsed
+fperr30_d3parsed
 ( out: FILR, dpar: d3parsed ): void//end-fun
 //
 (* ****** ****** *)
 //
 fun
-fperr33_d3explstopt(FILR, d3explstopt): void
+fperr30_d3explstopt(FILR, d3explstopt): void
 fun
-fperr33_d3eclistopt(FILR, d3eclistopt): void
+fperr30_d3eclistopt(FILR, d3eclistopt): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_SATS_fperr33.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_fperr30.sats] *)

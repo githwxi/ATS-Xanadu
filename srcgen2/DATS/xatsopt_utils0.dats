@@ -65,13 +65,15 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trans2a.sats"
 #staload "./../SATS/trsym2b.sats"
-#staload "./../SATS/tread22.sats"
+(* ****** ****** *)
+#staload "./../SATS/tread20.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans23.sats"
 #staload "./../SATS/tread23.sats"
 (* ****** ****** *)
 #staload "./../SATS/trans3a.sats"
-#staload "./../SATS/tread33.sats"
+(* ****** ****** *)
+#staload "./../SATS/tread30.sats"
 (* ****** ****** *)
 #staload "./../SATS/xatsopt.sats"
 (* ****** ****** *)
@@ -106,7 +108,7 @@ val dpar = d2parsed_of_trans12(dpar)
 val dpar = d2parsed_of_tread12(dpar)
 val dpar = d2parsed_of_trans2a(dpar)
 val (  ) = d2parsed_at_trsym2b(dpar)
-val dpar = d2parsed_of_tread22(dpar) in dpar
+val dpar = d2parsed_of_tread20(dpar) in dpar
 end (*let*) // end of [d2parsed_of_trans02(dpar)]
 
 (* ****** ****** *)
@@ -118,7 +120,7 @@ val dpar = d2parsed_of_trans02(dpar)
 val dpar = d3parsed_of_trans23(dpar)
 val dpar = d3parsed_of_tread23(dpar)
 val dpar = d3parsed_of_trans3a(dpar)
-val dpar = d3parsed_of_tread33(dpar) in dpar
+val dpar = d3parsed_of_tread30(dpar) in dpar
 end (*let*) // end of [d3parsed_of_trans03(dpar)]
 
 (* ****** ****** *)

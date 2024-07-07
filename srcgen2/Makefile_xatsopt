@@ -160,12 +160,12 @@ trsym2b_sats
 trsym2b_sats: ; $(XATSOPT) --static SATS/trsym2b.sats
 ######
 all_sats:: \
-tread22_sats
-tread22_sats: ; $(XATSOPT) --static SATS/tread22.sats
+tread20_sats
+tread20_sats: ; $(XATSOPT) --static SATS/tread20.sats
 ######
 all_sats:: \
-fperr22_sats
-fperr22_sats: ; $(XATSOPT) --static SATS/fperr22.sats
+fperr20_sats
+fperr20_sats: ; $(XATSOPT) --static SATS/fperr20.sats
 ######
 all_sats:: \
 dynexp3_sats
@@ -192,12 +192,12 @@ trtmp3c_sats
 trtmp3c_sats: ; $(XATSOPT) --static SATS/trtmp3c.sats
 ######
 all_sats:: \
-tread33_sats
-tread33_sats: ; $(XATSOPT) --static SATS/tread33.sats
+tread30_sats
+tread30_sats: ; $(XATSOPT) --static SATS/tread30.sats
 ######
 all_sats:: \
-fperr33_sats
-fperr33_sats: ; $(XATSOPT) --static SATS/fperr33.sats
+fperr30_sats
+fperr30_sats: ; $(XATSOPT) --static SATS/fperr30.sats
 ######
 all_sats:: \
 dynexp4_sats
@@ -212,8 +212,8 @@ tread34_sats
 tread34_sats: ; $(XATSOPT) --static SATS/tread34.sats
 ######
 all_sats:: \
-fperr44_sats
-fperr44_sats: ; $(XATSOPT) --static SATS/fperr44.sats
+fperr40_sats
+fperr40_sats: ; $(XATSOPT) --static SATS/fperr40.sats
 ######
 all_sats:: \
 xglobal_sats
@@ -671,25 +671,25 @@ trsym2b_decl00_dats: ; $(XATSOPT) --dynamic DATS/trsym2b_decl00.dats
 
 ######
 all_dats:: \
-tread22_dats
-tread22_dats: ; $(XATSOPT) --dynamic DATS/tread22.dats
+tread20_dats
+tread20_dats: ; $(XATSOPT) --dynamic DATS/tread20.dats
 all_dats:: \
-tread22_dynexp_dats
-tread22_dynexp_dats: ; $(XATSOPT) --dynamic DATS/tread22_dynexp.dats
+tread20_dynexp_dats
+tread20_dynexp_dats: ; $(XATSOPT) --dynamic DATS/tread20_dynexp.dats
 all_dats:: \
-tread22_decl00_dats
-tread22_decl00_dats: ; $(XATSOPT) --dynamic DATS/tread22_decl00.dats
+tread20_decl00_dats
+tread20_decl00_dats: ; $(XATSOPT) --dynamic DATS/tread20_decl00.dats
 ######
 
 all_dats:: \
-fperr22_dats
-fperr22_dats: ; $(XATSOPT) --dynamic DATS/fperr22.dats
+fperr20_dats
+fperr20_dats: ; $(XATSOPT) --dynamic DATS/fperr20.dats
 all_dats:: \
-fperr22_dynexp_dats
-fperr22_dynexp_dats: ; $(XATSOPT) --dynamic DATS/fperr22_dynexp.dats
+fperr20_dynexp_dats
+fperr20_dynexp_dats: ; $(XATSOPT) --dynamic DATS/fperr20_dynexp.dats
 all_dats:: \
-fperr22_decl00_dats
-fperr22_decl00_dats: ; $(XATSOPT) --dynamic DATS/fperr22_decl00.dats
+fperr20_decl00_dats
+fperr20_decl00_dats: ; $(XATSOPT) --dynamic DATS/fperr20_decl00.dats
 ######
 
 ######
@@ -793,29 +793,29 @@ trtmp3c_decl00_dats: ; $(XATSOPT) --dynamic DATS/trtmp3c_decl00.dats
 
 ######
 all_dats:: \
-tread33_dats
-tread33_dats: ; $(XATSOPT) --dynamic DATS/tread33.dats
+tread30_dats
+tread30_dats: ; $(XATSOPT) --dynamic DATS/tread30.dats
 all_dats:: \
-tread33_staexp_dats
-tread33_staexp_dats: ; $(XATSOPT) --dynamic DATS/tread33_staexp.dats
+tread30_staexp_dats
+tread30_staexp_dats: ; $(XATSOPT) --dynamic DATS/tread30_staexp.dats
 all_dats:: \
-tread33_dynexp_dats
-tread33_dynexp_dats: ; $(XATSOPT) --dynamic DATS/tread33_dynexp.dats
+tread30_dynexp_dats
+tread30_dynexp_dats: ; $(XATSOPT) --dynamic DATS/tread30_dynexp.dats
 all_dats:: \
-tread33_decl00_dats
-tread33_decl00_dats: ; $(XATSOPT) --dynamic DATS/tread33_decl00.dats
+tread30_decl00_dats
+tread30_decl00_dats: ; $(XATSOPT) --dynamic DATS/tread30_decl00.dats
 ######
 
 ######
 all_dats:: \
-fperr33_dats
-fperr33_dats: ; $(XATSOPT) --dynamic DATS/fperr33.dats
+fperr30_dats
+fperr30_dats: ; $(XATSOPT) --dynamic DATS/fperr30.dats
 all_dats:: \
-fperr33_dynexp_dats
-fperr33_dynexp_dats: ; $(XATSOPT) --dynamic DATS/fperr33_dynexp.dats
+fperr30_dynexp_dats
+fperr30_dynexp_dats: ; $(XATSOPT) --dynamic DATS/fperr30_dynexp.dats
 all_dats:: \
-fperr33_decl00_dats
-fperr33_decl00_dats: ; $(XATSOPT) --dynamic DATS/fperr33_decl00.dats
+fperr30_decl00_dats
+fperr30_decl00_dats: ; $(XATSOPT) --dynamic DATS/fperr30_decl00.dats
 ######
 
 ######
@@ -853,14 +853,14 @@ trans34_decl00_dats: ; $(XATSOPT) --dynamic DATS/trans34_decl00.dats
 
 ######
 all_dats:: \
-fperr44_dats
-fperr44_dats: ; $(XATSOPT) --dynamic DATS/fperr44.dats
+fperr40_dats
+fperr40_dats: ; $(XATSOPT) --dynamic DATS/fperr40.dats
 all_dats:: \
-fperr44_dynexp_dats
-fperr44_dynexp_dats: ; $(XATSOPT) --dynamic DATS/fperr44_dynexp.dats
+fperr40_dynexp_dats
+fperr40_dynexp_dats: ; $(XATSOPT) --dynamic DATS/fperr40_dynexp.dats
 all_dats:: \
-fperr44_decl00_dats
-fperr44_decl00_dats: ; $(XATSOPT) --dynamic DATS/fperr44_decl00.dats
+fperr40_decl00_dats
+fperr40_decl00_dats: ; $(XATSOPT) --dynamic DATS/fperr40_decl00.dats
 ######
 
 ######

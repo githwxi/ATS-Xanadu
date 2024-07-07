@@ -55,7 +55,7 @@ ATS_PACKNAME
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
-#staload "./../SATS/tread33.sats"
+#staload "./../SATS/tread30.sats"
 (* ****** ****** *)
 //
 (* ****** ****** *)
@@ -247,7 +247,7 @@ end//let//end-of(s2typ_trcd_errck(...))
 (* ****** ****** *)
 //
 #implfun
-tread33_s2typ
+tread30_s2typ
 ( t2p0, err ) =
 (
 case+
@@ -314,7 +314,7 @@ val-
 T2Plft(t2p1) = t2p.node()
 //
 val
-t2p1 = tread33_s2typ(t2p1, err)
+t2p1 = tread30_s2typ(t2p1, err)
 in//let
 if
 (err=e00)
@@ -337,7 +337,7 @@ val-
 T2Pxtv(xtv1) = t2p.node()
 in//let
 (
-tread33_s2typ(xtv1.styp((*0*)),err))
+tread30_s2typ(xtv1.styp((*0*)),err))
 end(*let*)// end-of-[ f0_xtv(t2p,err) ]
 //
 (* ****** ****** *)
@@ -353,7 +353,7 @@ val-
 T2Ptop0(t2p1) = t2p.node()
 //
 val
-t2p1 = tread33_s2typ(t2p1, err)
+t2p1 = tread30_s2typ(t2p1, err)
 //
 in//let
 if
@@ -374,7 +374,7 @@ val-
 T2Ptop1(t2p1) = t2p.node()
 //
 val
-t2p1 = tread33_s2typ(t2p1, err)
+t2p1 = tread30_s2typ(t2p1, err)
 //
 in//let
 if
@@ -398,7 +398,7 @@ T2Parg1
 ( knd0, t2p1) = t2p.node()
 //
 val
-t2p1 = tread33_s2typ(t2p1, err)
+t2p1 = tread30_s2typ(t2p1, err)
 //
 in//let
 if
@@ -421,9 +421,9 @@ T2Patx2
 ( t2p1, t2p2) = t2p.node()
 //
 val
-t2p1 = tread33_s2typ(t2p1, err)
+t2p1 = tread30_s2typ(t2p1, err)
 val
-t2p2 = tread33_s2typ(t2p2, err)
+t2p2 = tread30_s2typ(t2p2, err)
 //
 in//let
 if
@@ -446,9 +446,9 @@ T2Papps
 ( t2f0, t2ps) = t2p.node()
 //
 val
-t2f0 = tread33_s2typ(t2f0, err)
+t2f0 = tread30_s2typ(t2f0, err)
 val
-t2ps = tread33_s2typlst(t2ps, err)
+t2ps = tread30_s2typlst(t2ps, err)
 //
 in//let
 if
@@ -473,12 +473,12 @@ T2Pfun1
 //
 val
 f2cl =
-tread33_s2typ(f2cl, err)
+tread30_s2typ(f2cl, err)
 val
 t2ps =
-tread33_s2typlst(t2ps, err)
+tread30_s2typlst(t2ps, err)
 val
-tres = tread33_s2typ(tres, err)
+tres = tread30_s2typ(tres, err)
 //
 in//let
 if
@@ -503,7 +503,7 @@ T2Pexi0
 ( s2vs, t2p1) = t2p.node()
 //
 val
-t2p1 = tread33_s2typ(t2p1, err)
+t2p1 = tread30_s2typ(t2p1, err)
 //
 in//let
 if
@@ -529,7 +529,7 @@ T2Puni0
 ( s2vs, t2p1) = t2p.node()
 //
 val
-t2p1 = tread33_s2typ(t2p1, err)
+t2p1 = tread30_s2typ(t2p1, err)
 //
 in//let
 if
@@ -556,7 +556,7 @@ T2Ptext
 ( name, t2ps) = t2p.node()
 //
 val
-t2ps = tread33_s2typlst(t2ps, err)
+t2ps = tread30_s2typlst(t2ps, err)
 //
 in//let
 if
@@ -581,7 +581,7 @@ T2Ptrcd
 , npf1, ltps) = t2p.node()
 //
 val
-ltps = tread33_l2t2plst(ltps, err)
+ltps = tread30_l2t2plst(ltps, err)
 //
 in//let
 if
@@ -619,15 +619,15 @@ f0_s2exp
 //
 (*
   val (  ) =
-  prerrln("tread33_s2typ: t2p0 = ", t2p0)
+  prerrln("tread30_s2typ: t2p0 = ", t2p0)
 *)
 //
-}(*where*)//end-of[tread33_s2typ(t2p0,err)]
+}(*where*)//end-of[tread30_s2typ(t2p0,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_l2t2p
+tread30_l2t2p
   (lt2p, err) =
 let
 //
@@ -635,17 +635,17 @@ val e00 = err
 //
 val+
 S2LAB(lab,t2p) = lt2p
-val t2p = tread33_s2typ(t2p, err)
+val t2p = tread30_s2typ(t2p, err)
 //
 in//let
 if
 (err=e00) then lt2p else S2LAB(lab,t2p)
-endlet // end of [tread33_l2t2p(lt2p,err)]
+endlet // end of [tread30_l2t2p(lt2p,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_t2jag
+tread30_t2jag
 ( tjag, err ) =
 let
 //
@@ -654,39 +654,39 @@ val e00 = err
 val
 t2ps = t2jag_get_t2ps(tjag)
 val
-t2ps = tread33_s2typlst(t2ps, err)
+t2ps = tread30_s2typlst(t2ps, err)
 //
 in//let
 if
 (err=e00)
 then (tjag) else
 t2jag_make_t2ps(tjag.lctn((*0*)), t2ps)
-end(*let*)//end-of-[tread33_t2jag(tjag,err)]
+end(*let*)//end-of-[tread30_t2jag(tjag,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_s2typlst
+tread30_s2typlst
   (  t2ps, err  ) =
 (
-  list_tread33_fnp(t2ps, err, tread33_s2typ))
+  list_tread30_fnp(t2ps, err, tread30_s2typ))
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_l2t2plst
+tread30_l2t2plst
   (  ltps, err  ) =
 (
-  list_tread33_fnp(ltps, err, tread33_l2t2p))
+  list_tread30_fnp(ltps, err, tread30_l2t2p))
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_t2jaglst
+tread30_t2jaglst
   (  t2js, err  ) =
 (
-  list_tread33_fnp(t2js, err, tread33_t2jag))
+  list_tread30_fnp(t2js, err, tread30_t2jag))
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_DATS_tread33_staexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_tread30_staexp.dats] *)
