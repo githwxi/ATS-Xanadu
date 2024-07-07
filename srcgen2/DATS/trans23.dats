@@ -53,7 +53,8 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/trans2a.sats"
 #staload "./../SATS/trsym2b.sats"
-#staload "./../SATS/tread22.sats"
+(* ****** ****** *)
+#staload "./../SATS/tread20.sats"
 (* ****** ****** *)
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
@@ -76,7 +77,7 @@ val dpar = d2parsed_of_trans2a(dpar)
 //
 val (  ) = d2parsed_at_trsym2b(dpar)
 //
-val dpar = d2parsed_of_tread22(dpar)
+val dpar = d2parsed_of_tread20(dpar)
 //
 (*
 val (  ) =

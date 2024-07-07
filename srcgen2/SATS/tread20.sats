@@ -159,74 +159,74 @@ D2E = "./dynexp2.sats"
 (* ****** ****** *)
 //
 fun
-d2parsed_of_tread22
+d2parsed_of_tread20
 (dpar: d2parsed): (d2parsed)
 //
 (* ****** ****** *)
 //
 #typedef
-ftread22
+ftread20
 (syn: tx) =
 (syn , &sint >> _) -> ( syn )
 //
 (* ****** ****** *)
 //
 fun
-list_tread22_fnp
+list_tread20_fnp
 {syn:tx}
 ( lst: list(syn)
 , err: &sint >> _
-, fpr: ftread22(syn)): list(syn)
+, fpr: ftread20(syn)): list(syn)
 //
 fun
-optn_tread22_fnp
+optn_tread20_fnp
 {syn:tx}
 ( opt: optn(syn)
 , err: &sint >> _
-, fpr: ftread22(syn)): optn(syn)
+, fpr: ftread20(syn)): optn(syn)
 //
 (* ****** ****** *)
-fun tread22_d2pat: ftread22(d2pat)
-fun tread22_d2exp: ftread22(d2exp)
-fun tread22_l2d2p: ftread22(l2d2p)
-fun tread22_l2d2e: ftread22(l2d2e)
+fun tread20_d2pat: ftread20(d2pat)
+fun tread20_d2exp: ftread20(d2exp)
+fun tread20_l2d2p: ftread20(l2d2p)
+fun tread20_l2d2e: ftread20(l2d2e)
 (* ****** ****** *)
-fun tread22_f2arg: ftread22(f2arg)
+fun tread20_f2arg: ftread20(f2arg)
 (* ****** ****** *)
-fun tread22_d2gua: ftread22(d2gua)
-fun tread22_d2gpt: ftread22(d2gpt)
-fun tread22_d2cls: ftread22(d2cls)
+fun tread20_d2gua: ftread20(d2gua)
+fun tread20_d2gpt: ftread20(d2gpt)
+fun tread20_d2cls: ftread20(d2cls)
 (* ****** ****** *)
-fun tread22_d2ecl: ftread22(d2ecl)
+fun tread20_d2ecl: ftread20(d2ecl)
 (* ****** ****** *)
-fun tread22_d2patlst: ftread22(d2patlst)
-fun tread22_l2d2plst: ftread22(l2d2plst)
+fun tread20_d2patlst: ftread20(d2patlst)
+fun tread20_l2d2plst: ftread20(l2d2plst)
 (* ****** ****** *)
-fun tread22_d2explst: ftread22(d2explst)
-fun tread22_d2expopt: ftread22(d2expopt)
-fun tread22_l2d2elst: ftread22(l2d2elst)
+fun tread20_d2explst: ftread20(d2explst)
+fun tread20_d2expopt: ftread20(d2expopt)
+fun tread20_l2d2elst: ftread20(l2d2elst)
 (* ****** ****** *)
-fun tread22_f2arglst: ftread22(f2arglst)
+fun tread20_f2arglst: ftread20(f2arglst)
 (* ****** ****** *)
-fun tread22_d2gualst: ftread22(d2gualst)
-fun tread22_d2clslst: ftread22(d2clslst)
+fun tread20_d2gualst: ftread20(d2gualst)
+fun tread20_d2clslst: ftread20(d2clslst)
 (* ****** ****** *)
-fun tread22_d2eclist: ftread22(d2eclist)
+fun tread20_d2eclist: ftread20(d2eclist)
 (* ****** ****** *)
-fun tread22_teqd2exp: ftread22(teqd2exp)
+fun tread20_teqd2exp: ftread20(teqd2exp)
 (* ****** ****** *)
-fun tread22_d2valdcl: ftread22(d2valdcl)
-fun tread22_d2vardcl: ftread22(d2vardcl)
-fun tread22_d2fundcl: ftread22(d2fundcl)
-fun tread22_d2cstdcl: ftread22(d2cstdcl)
+fun tread20_d2valdcl: ftread20(d2valdcl)
+fun tread20_d2vardcl: ftread20(d2vardcl)
+fun tread20_d2fundcl: ftread20(d2fundcl)
+fun tread20_d2cstdcl: ftread20(d2cstdcl)
 (* ****** ****** *)
-fun tread22_d2valdclist: ftread22(d2valdclist)
-fun tread22_d2vardclist: ftread22(d2vardclist)
-fun tread22_d2fundclist: ftread22(d2fundclist)
-fun tread22_d2cstdclist: ftread22(d2cstdclist)
+fun tread20_d2valdclist: ftread20(d2valdclist)
+fun tread20_d2vardclist: ftread20(d2vardclist)
+fun tread20_d2fundclist: ftread20(d2fundclist)
+fun tread20_d2cstdclist: ftread20(d2cstdclist)
 (* ****** ****** *)
-fun tread22_d2explstopt: ftread22(d2explstopt)
-fun tread22_d2eclistopt: ftread22(d2eclistopt)
+fun tread20_d2explstopt: ftread20(d2explstopt)
+fun tread20_d2eclistopt: ftread20(d2eclistopt)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_SATS_tread22.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_tread20.sats] *)

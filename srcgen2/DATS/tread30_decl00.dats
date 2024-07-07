@@ -56,7 +56,7 @@ ATS_PACKNAME
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
-#staload "./../SATS/tread33.sats"
+#staload "./../SATS/tread30.sats"
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
@@ -215,7 +215,7 @@ end (*let*) // end of [d3ecl_implmnt0_errck]
 (* ****** ****** *)
 //
 #implfun
-tread33_d3ecl
+tread30_d3ecl
   (d3cl, err) =
 (
 case+
@@ -276,9 +276,9 @@ D3Clocal0
 (dcs1, dcs2) = dcl.node()
 //
 val dcs1 =
-tread33_d3eclist(dcs1, err)
+tread30_d3eclist(dcs1, err)
 val dcs2 =
-tread33_d3eclist(dcs2, err)
+tread30_d3eclist(dcs2, err)
 //
 in
 if
@@ -307,10 +307,10 @@ D3Cinclude
 (*
 val () =
 prerrln
-("f0_include(33): loc = ", loc)
+("f0_include(30): loc = ", loc)
 val () =
 prerrln
-("f0_include(33): dopt = ", dopt)
+("f0_include(30): dopt = ", dopt)
 *)
 //
 val dopt =
@@ -320,7 +320,7 @@ case+ dopt of
  (err := err+1; optn_nil(*0*))
 |optn_cons(dcls) =>
  optn_cons
- (tread33_d3eclist(dcls, err)))
+ (tread30_d3eclist(dcls, err)))
 : d3eclistopt // end of [val(dopt)]
 //
 in//let
@@ -368,7 +368,7 @@ D3Cvaldclst
 (tknd, d3vs) = dcl.node()
 //
 val d3vs =
-tread33_d3valdclist(d3vs, err)
+tread30_d3valdclist(d3vs, err)
 //
 in//let
 if
@@ -392,7 +392,7 @@ D3Cvardclst
 (tknd, d3vs) = dcl.node()
 //
 val d3vs =
-tread33_d3vardclist(d3vs, err)
+tread30_d3vardclist(d3vs, err)
 //
 in//let
 if
@@ -420,10 +420,10 @@ D3Cfundclst
 //
 (*
 val tqas =
-tread33_t2qaglst(tqas, err)
+tread30_t2qaglst(tqas, err)
 *)
 val d3fs =
-tread33_d3fundclist(d3fs, err)
+tread30_d3fundclist(d3fs, err)
 //
 in//let
 if
@@ -454,21 +454,21 @@ D3Cimplmnt0
 //
 (*
 val sqas =
-  tread33_s2qaglst(sqas, err)
+  tread30_s2qaglst(sqas, err)
 val tqas =
-  tread33_t2qaglst(tqas, err)
+  tread30_t2qaglst(tqas, err)
 val tias =
-  tread33_t2iaglst(tias, err)
+  tread30_t2iaglst(tias, err)
 *)
 //
 val fags =
-  tread33_f3arglst(fags, err)
+  tread30_f3arglst(fags, err)
 //
 (*
-val sres = tread33_s2res(sres, err)
+val sres = tread30_s2res(sres, err)
 *)
 //
-val dexp = tread33_d3exp(dexp, err)
+val dexp = tread30_d3exp(dexp, err)
 //
 in//let
 if
@@ -484,17 +484,17 @@ end (*let*) // end of [f0_implmnt0(dcl,err)]
 (*
 val () =
 (
-  prerrln("tread33_d3ecl: d3cl = ", d3cl) )
+  prerrln("tread30_d3ecl: d3cl = ", d3cl) )
 *)
 //
 (* ****** ****** *)
 //
-} (*where*) // end of [tread33_d3ecl(d3cl,err)]
+} (*where*) // end of [tread30_d3ecl(d3cl,err)]
 
 (* ****** ****** *)
 //
 #implfun
-tread33_teqd3exp
+tread30_teqd3exp
   (tdxp, err) =
 (
 case+ tdxp of
@@ -507,20 +507,20 @@ val e00 = err
 (*
 val ( ) =
 prerrln
-("tread33_teqd3exp: d3e2 = ", d3e2)
+("tread30_teqd3exp: d3e2 = ", d3e2)
 *)
-val d3e2 = tread33_d3exp(d3e2, err)
+val d3e2 = tread30_d3exp(d3e2, err)
 in//letp
 if
 (err=e00)
 then tdxp else TEQD3EXPsome(teq1, d3e2)
 endlet // end of [ TEQD3EXPsome( _,_ ) ]
-) (*case+*)//end-(tread33_teqd3exp(tdxp,err))
+) (*case+*)//end-(tread30_teqd3exp(tdxp,err))
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_d3valdcl
+tread30_d3valdcl
   (dval, err) =
 let
 //
@@ -536,12 +536,12 @@ val
 wsxp = d3valdcl_get_wsxp(dval)
 //
 val
-dpat = tread33_d3pat(dpat,err)
+dpat = tread30_d3pat(dpat,err)
 val
-tdxp = tread33_teqd3exp(tdxp,err)
+tdxp = tread30_teqd3exp(tdxp,err)
 (*
 val
-wsxp = tread33_wths2exp(wsxp,err)
+wsxp = tread30_wths2exp(wsxp,err)
 *)
 //
 in//let
@@ -549,12 +549,12 @@ if
 (err=e00)
 then (dval)
 else d3valdcl( loc, dpat, tdxp, wsxp )
-endlet // end-of-[tread33_d3valdcl(out,dval)]
+endlet // end-of-[tread30_d3valdcl(out,dval)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_d3vardcl
+tread30_d3vardcl
   (dvar, err) =
 let
 //
@@ -573,22 +573,22 @@ dini = d3vardcl_get_dini(dvar)
 //
 (*
 val
-sres = tread33_s2expopt(sres,err)
+sres = tread30_s2expopt(sres,err)
 *)
 val
-dini = tread33_teqd3exp(dini,err)
+dini = tread30_teqd3exp(dini,err)
 //
 in//let
 if
 (err=e00)
 then (dvar)
 else d3vardcl(loc,dpid,vpid,sres,dini)
-endlet // end-of-[tread33_d3vardcl(out,dvar)]
+endlet // end-of-[tread30_d3vardcl(out,dvar)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_d3fundcl
+tread30_d3fundcl
   (dfun, err) =
 let
 //
@@ -609,16 +609,16 @@ wsxp = d3fundcl_get_wsxp(dfun)
 //
 val
 farg =
-tread33_f3arglst(farg, err)
+tread30_f3arglst(farg, err)
 (*
 val
-sres = tread33_s3res(sres,err)
+sres = tread30_s3res(sres,err)
 *)
 val
-tdxp = tread33_teqd3exp(tdxp,err)
+tdxp = tread30_teqd3exp(tdxp,err)
 (*
 val
-wsxp = tread33_wths3exp(wsxp,err)
+wsxp = tread30_wths3exp(wsxp,err)
 *)
 //
 in//let
@@ -626,40 +626,40 @@ if
 (err=e00)
 then (dfun)
 else d3fundcl(loc,dpid,farg,sres,tdxp,wsxp)
-endlet // end-of-[tread33_d3fundcl(out,dfun)]
+endlet // end-of-[tread30_d3fundcl(out,dfun)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_d3eclist
+tread30_d3eclist
   (  dcls, err  ) =
 (
-  list_tread33_fnp(dcls, err, tread33_d3ecl))
+  list_tread30_fnp(dcls, err, tread30_d3ecl))
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_d3valdclist
+tread30_d3valdclist
   (  d3vs, err  ) =
 (
-  list_tread33_fnp(d3vs, err, tread33_d3valdcl))
+  list_tread30_fnp(d3vs, err, tread30_d3valdcl))
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_d3vardclist
+tread30_d3vardclist
   (  d3vs, err  ) =
 (
-  list_tread33_fnp(d3vs, err, tread33_d3vardcl))
+  list_tread30_fnp(d3vs, err, tread30_d3vardcl))
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_d3fundclist
+tread30_d3fundclist
   (  d3fs, err  ) =
 (
-  list_tread33_fnp(d3fs, err, tread33_d3fundcl))
+  list_tread30_fnp(d3fs, err, tread30_d3fundcl))
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_DATS_tread33_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_tread30_decl00.dats] *)

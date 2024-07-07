@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2023 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2024 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sat 28 Jan 2023 04:03:29 PM EST
+Tue Jan  9 07:54:19 EST 2024
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -49,119 +49,86 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
-#staload "./../SATS/staexp1.sats"
-#staload "./../SATS/dynexp1.sats"
-(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
-#staload "./../SATS/dynexp2.sats"
+#staload "./../SATS/dynexp3.sats"
+#staload "./../SATS/dynexp4.sats"
 (* ****** ****** *)
-#staload "./../SATS/tread22.sats"
-(* ****** ****** *)
-#symload lctn with token_get_lctn
-#symload node with token_get_node
+#staload "./../SATS/fperr40.sats"
 (* ****** ****** *)
 //
 #implfun
-list_tread22_fnp
+list_fperr40_fnp
 {  syn:tx  }
-(  lst , err , fpr  ) =
+(  out, lst, fpr  ) =
 (
-  auxlst(lst, err)) where
+list_foreach<syn>(lst)) where
 {
 //
-fun
-auxlst
-( lst: list(syn)
-, err: &sint >> _): list(syn) =
-case+ lst of
-|
-list_nil() =>
-list_nil()
-|
-list_cons(tm1, tms) =>
-let
-val e00 = err
-val tm1 = fpr(tm1, err)
-val tms = auxlst(tms, err)
-in//let
-if
-(err = e00)
-then lst else list_cons(tm1, tms)
-endlet // end of [auxlst(lst,err)]
+#impltmp
+foreach$work<syn>(syn) = fpr(out, syn)
 //
-}(*where*)//end(list_tread22_fnp(lst,err,fpr))
+}(*where*)//end(list_fperr40_fnp(lst,err,fpr))
 //
 (* ****** ****** *)
 //
 #implfun
-optn_tread22_fnp
+optn_fperr40_fnp
 {  syn:tx  }
-(  opt , err , fpr  ) =
+(  out, opt, fpr  ) =
 (
-case+ opt of
-|
-optn_nil() => opt
-|
-optn_cons(syn) =>
-let
-val e00 = err
-val syn = fpr(syn, err)
-in // let
-if
-(err=e00)
-then opt else optn_cons(syn)
-endlet // end of [optn_cons(syn)]
-)(*case+*)//end(optn_tread22_fnp(opt,err,fpr)
+optn_foreach<syn>(opt)) where
+{
+//
+#impltmp
+foreach$work<syn>(syn) = fpr(out, syn)
+//
+}(*where*)//end(optn_fperr40_fnp(opt,err,fpr))
 //
 (* ****** ****** *)
 //
 #implfun
-d2parsed_of_tread22
-  (dpar) =
-let
+fperr40_d4parsed
+  (out, dpar) = let
 //
-var nerror: sint = 0
-//
-val stadyn =
-d2parsed_get_stadyn(dpar)
-val source =
-d2parsed_get_source(dpar)
-//
-val t1penv =
-d2parsed_get_t1penv(dpar)
-val t2penv =
-d2parsed_get_t2penv(dpar)
-//
-val parsed =
-d2parsed_get_parsed(dpar)
-//
-val parsed =
-tread22_d2eclistopt(parsed, nerror)
+val nerror =
+d4parsed_get_nerror(dpar)
 //
 in//let
-//
 if
-(nerror=0)
-then (dpar) else
-d2parsed
-(stadyn,nerror,source,t1penv,t2penv,parsed)
-//
-end(*let*)//end-of(d2parsed_of_tread22(dpar))
-//
-(* ****** ****** *)
-//
-#implfun
-tread22_d2explstopt
-  (  dopt, err0  ) =
-optn_tread22_fnp(dopt, err0, tread22_d2explst)
+(nerror > 0) then
+let
+val parsed =
+d4parsed_get_parsed(dpar)
+in//let
+fperr40_d4eclistopt(out, parsed) end else ()
+end (*let*)//end-of-[fperr40_d4parsed(out,dpar)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread22_d2eclistopt
-  (  dopt, err0  ) =
-optn_tread22_fnp(dopt, err0, tread22_d2eclist)
+fperr40_d4explstopt
+  (out, dopt) =
+(
+case+ dopt of
+|
+optn_nil() => ((*void*))
+|
+optn_cons(d4es) => fperr40_d4explst(out, d4es)
+)
+//
+(* ****** ****** *)
+//
+#implfun
+fperr40_d4eclistopt
+  (out, dopt) =
+(
+case+ dopt of
+|
+optn_nil() => ((*void*))
+|
+optn_cons(dcls) => fperr40_d4eclist(out, dcls)
+)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_DATS_tread22.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_fperr40.dats] *)

@@ -55,7 +55,7 @@ ATS_PACKNAME
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
-#staload "./../SATS/tread22.sats"
+#staload "./../SATS/tread20.sats"
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
@@ -263,7 +263,7 @@ end (*let*) // end of [d2ecl_implmnt0_errck]
 (* ****** ****** *)
 
 #implfun
-tread22_d2ecl
+tread20_d2ecl
   (d2cl, err) =
 (
 case+
@@ -330,7 +330,7 @@ endlet // end of [  _(* otherwise *)  ]
 (* ****** ****** *)
 (*
 val (  ) =
-prerrln("tread22_d2ecl: d2cl = ", d2cl)
+prerrln("tread20_d2ecl: d2cl = ", d2cl)
 *)
 (* ****** ****** *)
 //
@@ -346,7 +346,7 @@ val-
 D2Cstatic
 ( tknd, dcl1) = dcl.node()
 //
-val dcl1 = tread22_d2ecl(dcl1, err)
+val dcl1 = tread20_d2ecl(dcl1, err)
 //
 in
 if
@@ -367,7 +367,7 @@ val-
 D2Cextern
 ( tknd, dcl1) = dcl.node()
 //
-val dcl1 = tread22_d2ecl(dcl1, err)
+val dcl1 = tread20_d2ecl(dcl1, err)
 //
 in
 if
@@ -392,9 +392,9 @@ D2Clocal0
 (dcs1, dcs2) = dcl.node()
 //
 val dcs1 =
-tread22_d2eclist(dcs1, err)
+tread20_d2eclist(dcs1, err)
 val dcs2 =
-tread22_d2eclist(dcs2, err)
+tread20_d2eclist(dcs2, err)
 //
 in
 if
@@ -436,7 +436,7 @@ case+ dopt of
  (err := err+1; optn_nil(*0*))
 |optn_cons(dcls) =>
  optn_cons
- (tread22_d2eclist(dcls, err)))
+ (tread20_d2eclist(dcls, err)))
 : d2eclistopt // end of [val(dopt)]
 //
 in//let
@@ -483,7 +483,7 @@ D2Cvaldclst
 (tknd, d2vs) = dcl.node()
 //
 val d2vs =
-tread22_d2valdclist(d2vs, err)
+tread20_d2valdclist(d2vs, err)
 //
 in//let
 if
@@ -507,7 +507,7 @@ D2Cvardclst
 (tknd, d2vs) = dcl.node()
 //
 val d2vs =
-tread22_d2vardclist(d2vs, err)
+tread20_d2vardclist(d2vs, err)
 //
 in//let
 if
@@ -535,10 +535,10 @@ D2Cfundclst
 //
 (*
 val tqas =
-tread22_t2qaglst(tqas, err)
+tread20_t2qaglst(tqas, err)
 *)
 val d2fs =
-tread22_d2fundclist(d2fs, err)
+tread20_d2fundclist(d2fs, err)
 //
 in//let
 if
@@ -568,21 +568,21 @@ D2Cimplmnt0
 //
 (*
 val sqas =
-  tread22_s2qaglst(sqas, err)
+  tread20_s2qaglst(sqas, err)
 val tqas =
-  tread22_t2qaglst(tqas, err)
+  tread20_t2qaglst(tqas, err)
 val tias =
-  tread22_t2iaglst(tias, err)
+  tread20_t2iaglst(tias, err)
 *)
 //
 val fags =
-  tread22_f2arglst(fags, err)
+  tread20_f2arglst(fags, err)
 //
 (*
-val sres = tread22_s2res(sres, err)
+val sres = tread20_s2res(sres, err)
 *)
 //
-val dexp = tread22_d2exp(dexp, err)
+val dexp = tread20_d2exp(dexp, err)
 //
 in//let
 if
@@ -626,12 +626,12 @@ D2Cdynconst
 //
 (* ****** ****** *)
 //
-} (*where*) // end of [tread22_d2ecl(d2cl,err)]
+} (*where*) // end of [tread20_d2ecl(d2cl,err)]
 
 (* ****** ****** *)
 //
 #implfun
-tread22_teqd2exp
+tread20_teqd2exp
   (tdxp, err) =
 (
 case+ tdxp of
@@ -644,20 +644,20 @@ val e00 = err
 (*
 val ( ) =
 prerrln
-("tread22_teqd2exp: d2e2 = ", d2e2)
+("tread20_teqd2exp: d2e2 = ", d2e2)
 *)
-val d2e2 = tread22_d2exp(d2e2, err)
+val d2e2 = tread20_d2exp(d2e2, err)
 in//letp
 if
 (err=e00)
 then tdxp else TEQD2EXPsome(teq1, d2e2)
 endlet // end of [ TEQD2EXPsome( _,_ ) ]
-) (*case+*)//end-(tread22_teqd2exp(tdxp,err))
+) (*case+*)//end-(tread20_teqd2exp(tdxp,err))
 //
 (* ****** ****** *)
 //
 #implfun
-tread22_d2valdcl
+tread20_d2valdcl
   (dval, err) =
 let
 //
@@ -673,12 +673,12 @@ val
 wsxp = d2valdcl_get_wsxp(dval)
 //
 val
-dpat = tread22_d2pat(dpat,err)
+dpat = tread20_d2pat(dpat,err)
 val
-tdxp = tread22_teqd2exp(tdxp,err)
+tdxp = tread20_teqd2exp(tdxp,err)
 (*
 val
-wsxp = tread22_wths2exp(wsxp,err)
+wsxp = tread20_wths2exp(wsxp,err)
 *)
 //
 in//let
@@ -686,12 +686,12 @@ if
 (err=e00)
 then (dval)
 else d2valdcl( loc, dpat, tdxp, wsxp )
-endlet // end-of-[tread22_d2valdcl(out,dval)]
+endlet // end-of-[tread20_d2valdcl(out,dval)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread22_d2vardcl
+tread20_d2vardcl
   (dvar, err) =
 let
 //
@@ -710,22 +710,22 @@ dini = d2vardcl_get_dini(dvar)
 //
 (*
 val
-sres = tread22_s2expopt(sres,err)
+sres = tread20_s2expopt(sres,err)
 *)
 val
-dini = tread22_teqd2exp(dini,err)
+dini = tread20_teqd2exp(dini,err)
 //
 in//let
 if
 (err=e00)
 then (dvar)
 else d2vardcl(loc,dpid,vpid,sres,dini)
-endlet // end-of-[tread22_d2vardcl(out,dvar)]
+endlet // end-of-[tread20_d2vardcl(out,dvar)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread22_d2fundcl
+tread20_d2fundcl
   (dfun, err) =
 let
 //
@@ -746,16 +746,16 @@ wsxp = d2fundcl_get_wsxp(dfun)
 //
 val
 farg =
-tread22_f2arglst(farg, err)
+tread20_f2arglst(farg, err)
 (*
 val
-sres = tread22_s2res(sres,err)
+sres = tread20_s2res(sres,err)
 *)
 val
-tdxp = tread22_teqd2exp(tdxp,err)
+tdxp = tread20_teqd2exp(tdxp,err)
 (*
 val
-wsxp = tread22_wths2exp(wsxp,err)
+wsxp = tread20_wths2exp(wsxp,err)
 *)
 //
 in//let
@@ -763,30 +763,30 @@ if
 (err=e00)
 then (dfun)
 else d2fundcl(loc,dpid,farg,sres,tdxp,wsxp)
-endlet // end-of-[tread22_d2fundcl(out,dfun)]
+endlet // end-of-[tread20_d2fundcl(out,dfun)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread22_d2eclist
+tread20_d2eclist
   (  dcls, err  ) =
-list_tread22_fnp(dcls, err, tread22_d2ecl)
+list_tread20_fnp(dcls, err, tread20_d2ecl)
 //
 (* ****** ****** *)
 #implfun
-tread22_d2valdclist
+tread20_d2valdclist
   (  d2vs, err  ) =
-list_tread22_fnp(d2vs, err, tread22_d2valdcl)
+list_tread20_fnp(d2vs, err, tread20_d2valdcl)
 (* ****** ****** *)
 #implfun
-tread22_d2vardclist
+tread20_d2vardclist
   (  d2vs, err  ) =
-list_tread22_fnp(d2vs, err, tread22_d2vardcl)
+list_tread20_fnp(d2vs, err, tread20_d2vardcl)
 (* ****** ****** *)
 #implfun
-tread22_d2fundclist
+tread20_d2fundclist
   (  d2fs, err  ) =
-list_tread22_fnp(d2fs, err, tread22_d2fundcl)
+list_tread20_fnp(d2fs, err, tread20_d2fundcl)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_DATS_tread22_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_tread20_decl00.dats] *)

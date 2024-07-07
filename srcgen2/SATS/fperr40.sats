@@ -101,71 +101,71 @@ D4E = "./dynexp4.sats"
 *)
 (* ****** ****** *)
 #typedef
-fperr44_t
+fperr40_t
 (syn:tbox) = (FILR, syn)->void
 (* ****** ****** *)
 //
 fun
-list_fperr44_fnp
+list_fperr40_fnp
 { syn:tbox }
 ( out: FILR,
-  list(syn), fperr44_t(syn)): void
+  list(syn), fperr40_t(syn)): void
 fun
-optn_fperr44_fnp
+optn_fperr40_fnp
 { syn:tbox }
 ( out: FILR,
-  optn(syn), fperr44_t(syn)): void
+  optn(syn), fperr40_t(syn)): void
 //
 (* ****** ****** *)
 (*
-HX: fperr44 for statics
+HX: fperr40 for statics
 *)
 (* ****** ****** *)
-fun fperr44_s2typ(FILR, s2typ): void
+fun fperr40_s2typ(FILR, s2typ): void
 (* ****** ****** *)
 (*
-HX: fperr44 for dynamics
+HX: fperr40 for dynamics
 *)
 (* ****** ****** *)
-fun fperr44_d4pat(FILR, d4pat): void
-fun fperr44_l4d4p(FILR, l4d4p): void
+fun fperr40_d4pat(FILR, d4pat): void
+fun fperr40_l4d4p(FILR, l4d4p): void
 (* ****** ****** *)
-fun fperr44_d4exp(FILR, d4exp): void
-fun fperr44_l4d4e(FILR, l4d4e): void
+fun fperr40_d4exp(FILR, d4exp): void
+fun fperr40_l4d4e(FILR, l4d4e): void
 (* ****** ****** *)
-fun fperr44_d4ecl(FILR, d4ecl): void
+fun fperr40_d4ecl(FILR, d4ecl): void
 (* ****** ****** *)
-fun fperr44_d4explst(FILR, d4explst): void
-fun fperr44_d4expopt(FILR, d4expopt): void
-fun fperr44_l4d4elst(FILR, l4d4elst): void
+fun fperr40_d4explst(FILR, d4explst): void
+fun fperr40_d4expopt(FILR, d4expopt): void
+fun fperr40_l4d4elst(FILR, l4d4elst): void
 (* ****** ****** *)
-fun fperr44_d4eclist(FILR, d4eclist): void
+fun fperr40_d4eclist(FILR, d4eclist): void
 (* ****** ****** *)
-fun fperr44_d4valdcl(FILR, d4valdcl): void
-fun fperr44_d4vardcl(FILR, d4vardcl): void
-fun fperr44_d4fundcl(FILR, d4fundcl): void
-(* ****** ****** *)
-fun
-fperr44_d4valdclist(FILR, d4valdclist): void
+fun fperr40_d4valdcl(FILR, d4valdcl): void
+fun fperr40_d4vardcl(FILR, d4vardcl): void
+fun fperr40_d4fundcl(FILR, d4fundcl): void
 (* ****** ****** *)
 fun
-fperr44_d4vardclist(FILR, d4vardclist): void
+fperr40_d4valdclist(FILR, d4valdclist): void
 (* ****** ****** *)
 fun
-fperr44_d4fundclist(FILR, d4fundclist): void
+fperr40_d4vardclist(FILR, d4vardclist): void
+(* ****** ****** *)
+fun
+fperr40_d4fundclist(FILR, d4fundclist): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-fperr44_d4parsed
+fperr40_d4parsed
 ( out: FILR, dpar: d4parsed ): void//end-fun
 //
 (* ****** ****** *)
 fun
-fperr44_d4explstopt(FILR, d4explstopt): void
+fperr40_d4explstopt(FILR, d4explstopt): void
 fun
-fperr44_d4eclistopt(FILR, d4eclistopt): void
+fperr40_d4eclistopt(FILR, d4eclistopt): void
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_SATS_fperr44.sats] *)
+(* end of [ATS3/XATSOPT_srcgen2_SATS_fperr40.sats] *)

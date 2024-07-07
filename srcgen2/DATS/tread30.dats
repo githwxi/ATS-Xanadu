@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2024 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2023 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Tue Jan  9 08:01:33 EST 2024
+Wed 26 Jul 2023 01:13:09 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -45,145 +45,135 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+#staload
+_(*?*) = "./xsymmap_topmap.dats"
+(* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
 (* ****** ****** *)
+#staload "./../SATS/staexp1.sats"
+#staload "./../SATS/dynexp1.sats"
+(* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
+#staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
-#staload "./../SATS/dynexp4.sats"
 (* ****** ****** *)
-#staload "./../SATS/fperr44.sats"
-(* ****** ****** *)
-(* ****** ****** *)
-#define FPERR44_ERRVL 2
+#staload "./../SATS/tread30.sats"
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
-#symload lctn with d4exp_get_lctn
-#symload node with d4exp_get_node
-(* ****** ****** *)
-#symload lctn with d4ecl_get_lctn
-#symload node with d4ecl_get_node
-(* ****** ****** *)
-(* ****** ****** *)
-
-local
-
+//
+#implfun
+list_tread30_fnp
+{  syn:tx  }
+(  lst , err , fpr  ) =
+(
+  auxlst(lst, err)) where
+{
+//
 fun
-auxmain
-( out: FILR
-, dcl: d4ecl): void =
-let
-//
-#impltmp
-g_print$out<>() = out
-//
-in//let
-//
-case+
-dcl.node() of
-//
+auxlst
+( lst: list(syn)
+, err: &sint >> _): list(syn) =
+case+ lst of
 |
-_(*otherwise*) =>
-let
-//
-  val
-  loc = dcl.lctn()
-  val () = prerrln
-  ("fperr44_d4ecl: auxmain: loc = ", loc)
-  val () = prerrln
-  ("fperr44_d4ecl: auxmain: dcl = ", dcl)
-//
-end (*let*) // end-of-[ (* otherwise *) ]
-//
-end (*let*) // end-of-[ auxmain(out, dcl) ]
-
-(* ****** ****** *)
-in(* in-of-local *)
-(* ****** ****** *)
-
-#implfun
-fperr44_d4ecl
-(out, dcl0) =
-let
-//
-#impltmp
-g_print$out<>() = out
-//
-val () =
-let
-val loc0 = dcl0.lctn()
-in//let
-(*
-prerrln
-("fperr44_d4pat: loc0 = ", loc0)
-*)
-end//let
-(*
-val () =
-prerrln
-("fperr44_d4ecl: dcl0 = ", dcl0)
-*)
-//
-in//let
-//
-case+
-dcl0.node() of
-//
+list_nil() =>
+list_nil()
 |
-D4Cerrck(lvl, d4cl)  =>
-(
-auxmain( out, d4cl );
+list_cons(tm1, tms) =>
+let
+val e00 = err
+val tm1 = fpr(tm1, err)
+val tms = auxlst(tms, err)
+in//let
 if
-(lvl
->FPERR44_ERRVL) then () else
+(err = e00)
+then lst else list_cons(tm1, tms)
+endlet // end of [auxlst(lst,err)]
+//
+}(*where*)//end(list_tread30_fnp(lst,err,fpr))
+//
+(* ****** ****** *)
+//
+#implfun
+optn_tread30_fnp
+{  syn:tx  }
+(  opt , err , fpr  ) =
+(
+case+ opt of
+|
+optn_nil() => opt
+|
+optn_cons(syn) =>
 let
-val loc0 = dcl0.lctn() in
-println
-("FPERR44-ERROR:",loc0,":",dcl0)
-end
-)
+val e00 = err
+val syn = fpr(syn, err)
+in // let
+if
+(err=e00)
+then opt else optn_cons(syn)
+endlet // end of [optn_cons(syn)]
+)(*case+*)//end(optn_tread30_fnp(opt,err,fpr)
 //
-| _(* otherwise *) => (   (*skipped*)   )
+(* ****** ****** *)
 //
-end (*let*)//end-of(fperr44_d4ecl(out,dcl0))
+#implfun
+d3parsed_of_tread30
+  (dpar) =
+let
 //
-endloc(*local*)//end-of(local(fperr44_d4ecl))
+var nerror: sint = 0
+//
+val stadyn =
+d3parsed_get_stadyn(dpar)
+val source =
+d3parsed_get_source(dpar)
+//
+val t1penv =
+d3parsed_get_t1penv(dpar)
+val t2penv =
+d3parsed_get_t2penv(dpar)
+val t3penv =
+d3parsed_get_t3penv(dpar)
+//
+val parsed =
+d3parsed_get_parsed(dpar)
+//
+val parsed =
+tread30_d3eclistopt(parsed, nerror)
+//
+(*
+val (    ) = prerrln
+("d3parsed_of_tread30: t3penv = ", t3penv)
+*)
+//
+in//let
+//
+if // if
+(nerror=0)
+then (dpar) else
+d3parsed
+(stadyn,
+ nerror,source,t1penv,t2penv,t3penv,parsed)
+//
+end(*let*)//end-of(d3parsed_of_tread30(dpar))
+//
+(* ****** ****** *)
+//
+#implfun
+tread30_d3explstopt
+  (  dopt, err0  ) =
+optn_tread30_fnp(dopt, err0, tread30_d3explst)
+//
+(* ****** ****** *)
+//
+#implfun
+tread30_d3eclistopt
+  (  dopt, err0  ) =
+optn_tread30_fnp(dopt, err0, tread30_d3eclist)
+//
+(* ****** ****** *)
 
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-fperr44_d4eclist
-  (out, dcls) =
-(
-  list_fperr44_fnp(out, dcls, fperr44_d4ecl))
-//
-(* ****** ****** *)
-//
-#implfun
-fperr44_d4valdclist
-  (out, d4vs) =
-(
-list_fperr44_fnp(out, d4vs, fperr44_d4valdcl))
-//
-#implfun
-fperr44_d4vardclist
-  (out, d4vs) =
-(
-list_fperr44_fnp(out, d4vs, fperr44_d4vardcl))
-//
-(* ****** ****** *)
-//
-#implfun
-fperr44_d4fundclist
-  (out, d4fs) =
-(
-list_fperr44_fnp(out, d4fs, fperr44_d4fundcl))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-
-(* end of [ATS3/XATSOPT_srcgen2_DATS_fperr44_decl00.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_tread30.dats] *)

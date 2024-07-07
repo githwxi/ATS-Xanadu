@@ -52,7 +52,7 @@ ATS_PACKNAME
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
-#staload "./../SATS/tread33.sats"
+#staload "./../SATS/tread30.sats"
 (* ****** ****** *)
 #symload lctn with d3pat_get_lctn
 #symload node with d3pat_get_node
@@ -1212,7 +1212,7 @@ for handling [d3pat] and [d3exp]
 (* ****** ****** *)
 //
 #implfun
-tread33_d3pat
+tread30_d3pat
 ( d3p0, err ) =
 (
 case+
@@ -1275,7 +1275,7 @@ val e00 = err
 //
 val t2p = d3p.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3p.styp(t2p)
 //
 val-
@@ -1305,7 +1305,7 @@ HX-2023-08-15:
 [t2p] can be anything!
 *)
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3p.styp(t2p)
 *)
 //
@@ -1332,14 +1332,14 @@ val e00 = err
 //
 val t2p = d3p.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3p.styp(t2p)
 //
 val-
 D3Pbang(d3p1) = d3p.node()
 //
 val
-d3p1 = tread33_d3pat(d3p1, err)
+d3p1 = tread30_d3pat(d3p1, err)
 //
 in//let
 if
@@ -1358,14 +1358,14 @@ val e00 = err
 //
 val t2p = d3p.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3p.styp(t2p)
 //
 val-
 D3Pflat(d3p1) = d3p.node()
 //
 val
-d3p1 = tread33_d3pat(d3p1, err)
+d3p1 = tread30_d3pat(d3p1, err)
 //
 in//let
 if
@@ -1384,14 +1384,14 @@ val e00 = err
 //
 val t2p = d3p.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3p.styp(t2p)
 //
 val-
 D3Pfree(d3p1) = d3p.node()
 //
 val
-d3p1 = tread33_d3pat(d3p1, err)
+d3p1 = tread30_d3pat(d3p1, err)
 //
 in//let
 if
@@ -1412,7 +1412,7 @@ val e00 = err
 //
 val t2p = d3p.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3p.styp(t2p)
 //
 val-
@@ -1420,7 +1420,7 @@ D3Psapq
 ( d3f0, s2as) = d3p.node()
 //
 val
-d3f0 = tread33_d3pat(d3f0, err)
+d3f0 = tread30_d3pat(d3f0, err)
 //
 in//let
 if
@@ -1444,7 +1444,7 @@ val e00 = err
 //
 val t2p = d3p.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3p.styp(t2p)
 //
 val-
@@ -1453,9 +1453,9 @@ D3Ptapq
 //
 val
 t2js =
-tread33_t2jaglst(t2js, err)
+tread30_t2jaglst(t2js, err)
 val
-d3f0 = tread33_d3pat(d3f0, err)
+d3f0 = tread30_d3pat(d3f0, err)
 //
 in//let
 if
@@ -1479,14 +1479,14 @@ val e00 = err
 //
 val t2p = d3p.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3p.styp(t2p)
 //
 val-
 D3Pdap1(d3f0) = d3p.node()
 //
 val
-d3f0 = tread33_d3pat(d3f0, err)
+d3f0 = tread30_d3pat(d3f0, err)
 //
 in//let
 if
@@ -1507,7 +1507,7 @@ val e00 = err
 //
 val t2p = d3p.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3p.styp(t2p)
 //
 val-
@@ -1516,9 +1516,9 @@ D3Pdapp
 , npf1, d3ps) = d3p.node()
 //
 val
-d3f0 = tread33_d3pat(d3f0, err)
+d3f0 = tread30_d3pat(d3f0, err)
 val
-d3ps = tread33_d3patlst(d3ps, err)
+d3ps = tread30_d3patlst(d3ps, err)
 //
 in//let
 if
@@ -1540,14 +1540,14 @@ val e00 = err
 //
 val t2p = d3p.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3p.styp(t2p)
 //
 val-
 D3Ptup0
 ( npf1, d3ps) = d3p.node()
 val
-d3ps = tread33_d3patlst(d3ps, err)
+d3ps = tread30_d3patlst(d3ps, err)
 //
 in//let
 if
@@ -1571,7 +1571,7 @@ val e00 = err
 //
 val t2p = d3p.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3p.styp(t2p)
 //
 val-
@@ -1579,7 +1579,7 @@ D3Ptup1
 ( knd0
 , npf1, d3ps) = d3p.node()
 val
-d3ps = tread33_d3patlst(d3ps, err)
+d3ps = tread30_d3patlst(d3ps, err)
 //
 in//let
 if
@@ -1602,7 +1602,7 @@ val e00 = err
 //
 val t2p = d3p.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3p.styp(t2p)
 //
 val-
@@ -1610,7 +1610,7 @@ D3Prcd2
 ( knd0
 , npf1, ldes) = d3p.node()
 val
-ldes = tread33_l3d3plst(ldes, err)
+ldes = tread30_l3d3plst(ldes, err)
 //
 in//let
 if
@@ -1633,7 +1633,7 @@ val e00 = err
 //
 val t2p = d3p.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3p.styp(t2p)
 //
 val-
@@ -1642,7 +1642,7 @@ D3Pannot
 , s1e2, s2e2) = d3p.node()
 //
 val
-d3p1 = tread33_d3pat(d3p1, err)
+d3p1 = tread30_d3pat(d3p1, err)
 //
 in//let
 if
@@ -1657,17 +1657,17 @@ end (*let*) // end of [f0_annot(d3p,err)]
 //
 (*
   val () =
-  prerrln("tread33_d3pat: d3p0 = ", d3p0)
+  prerrln("tread30_d3pat: d3p0 = ", d3p0)
 *)
 //
 (* ****** ****** *)
 //
-} (*where*)//end-[tread33_d3pat(d3p0,err)]
+} (*where*)//end-[tread30_d3pat(d3p0,err)]
 
 (* ****** ****** *)
 //
 #implfun
-tread33_d3exp
+tread30_d3exp
 ( d3e0, err ) =
 (
 case+
@@ -1780,7 +1780,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -1807,7 +1807,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -1837,7 +1837,7 @@ D3Etimp
 ( dtmp, timp) = d3e.node()
 //
 val
-dtmp = tread33_d3exp(dtmp, err)
+dtmp = tread30_d3exp(dtmp, err)
 //
 in//let
 if
@@ -1861,7 +1861,7 @@ val e00 = err
 (*
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 *)
 //
@@ -1870,7 +1870,7 @@ D3Esapp
 ( d3f0, s2es) = d3e.node()
 //
 val
-d3f0 = tread33_d3exp(d3f0, err)
+d3f0 = tread30_d3exp(d3f0, err)
 //
 in//let
 if
@@ -1893,7 +1893,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -1902,9 +1902,9 @@ D3Esapq
 //
 val
 t2ps =
-tread33_s2typlst(t2ps, err)
+tread30_s2typlst(t2ps, err)
 val
-d3f0 = tread33_d3exp(d3f0, err)
+d3f0 = tread30_d3exp(d3f0, err)
 //
 in//let
 if
@@ -1929,7 +1929,7 @@ val e00 = err
 (*
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 *)
 //
@@ -1938,7 +1938,7 @@ D3Etapp
 ( d3f0, s2es) = d3e.node()
 //
 val
-d3f0 = tread33_d3exp(d3f0, err)
+d3f0 = tread30_d3exp(d3f0, err)
 //
 in//let
 if
@@ -1961,7 +1961,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -1970,9 +1970,9 @@ D3Etapq
 //
 val
 t2js =
-tread33_t2jaglst(t2js, err)
+tread30_t2jaglst(t2js, err)
 val
-d3f0 = tread33_d3exp(d3f0, err)
+d3f0 = tread30_d3exp(d3f0, err)
 //
 in//let
 if
@@ -1996,13 +1996,13 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
 D3Edap0(d3f0) = d3e.node()
 val
-d3f0 = tread33_d3exp(d3f0, err)
+d3f0 = tread30_d3exp(d3f0, err)
 //
 in//let
 if
@@ -2025,7 +2025,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2033,9 +2033,9 @@ D3Edapp
 ( d3f0
 , npf1, d3es) = d3e.node()
 val
-d3f0 = tread33_d3exp(d3f0, err)
+d3f0 = tread30_d3exp(d3f0, err)
 val
-d3es = tread33_d3explst(d3es, err)
+d3es = tread30_d3explst(d3es, err)
 //
 in//let
 if
@@ -2059,7 +2059,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2067,7 +2067,7 @@ D3Epcon
 ( tknd
 , dlab, dcon) = d3e.node()
 val
-dcon = tread33_d3exp(dcon, err)
+dcon = tread30_d3exp(dcon, err)
 //
 in//let
 if
@@ -2089,7 +2089,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2097,7 +2097,7 @@ D3Eproj
 ( tknd
 , dlab, dtup) = d3e.node()
 val
-dtup = tread33_d3exp(dtup, err)
+dtup = tread30_d3exp(dtup, err)
 //
 in//let
 if
@@ -2121,7 +2121,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2129,9 +2129,9 @@ D3Elet0
 ( dcls, d3e1) = d3e.node()
 val
 dcls =
-tread33_d3eclist(dcls, err)
+tread30_d3eclist(dcls, err)
 val
-d3e1 = tread33_d3exp(d3e1, err)
+d3e1 = tread30_d3exp(d3e1, err)
 //
 in//let
 if
@@ -2155,7 +2155,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2164,11 +2164,11 @@ D3Eift0
 , dthn, dels) = d3e.node()
 //
 val
-d3e1 = tread33_d3exp(d3e1, err)
+d3e1 = tread30_d3exp(d3e1, err)
 val
-dthn = tread33_d3expopt(dthn, err)
+dthn = tread30_d3expopt(dthn, err)
 val
-dels = tread33_d3expopt(dels, err)
+dels = tread30_d3expopt(dels, err)
 //
 in//let
 //
@@ -2193,7 +2193,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2202,9 +2202,9 @@ D3Ecas0
 , d3e1, dcls) = d3e.node()
 //
 val
-d3e1 = tread33_d3exp(d3e1, err)
+d3e1 = tread30_d3exp(d3e1, err)
 val
-dcls = tread33_d3clslst(dcls, err)
+dcls = tread30_d3clslst(dcls, err)
 //
 in//let
 //
@@ -2229,7 +2229,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2237,9 +2237,9 @@ D3Eseqn
 ( d3es, d3e1) = d3e.node()
 val
 d3es =
-tread33_d3explst(d3es, err)
+tread30_d3explst(d3es, err)
 val
-d3e1 = tread33_d3exp(d3e1, err)
+d3e1 = tread30_d3exp(d3e1, err)
 //
 in//let
 if
@@ -2263,14 +2263,14 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
 D3Etup0
 ( npf1, d3es) = d3e.node()
 val
-d3es = tread33_d3explst(d3es, err)
+d3es = tread30_d3explst(d3es, err)
 //
 in//let
 if
@@ -2294,7 +2294,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2302,7 +2302,7 @@ D3Etup1
 ( knd0
 , npf1, d3es) = d3e.node()
 val
-d3es = tread33_d3explst(d3es, err)
+d3es = tread30_d3explst(d3es, err)
 //
 in//let
 if
@@ -2325,7 +2325,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2333,7 +2333,7 @@ D3Ercd2
 ( knd0
 , npf1, ldes) = d3e.node()
 val
-ldes = tread33_l3d3elst(ldes, err)
+ldes = tread30_l3d3elst(ldes, err)
 //
 in//let
 if
@@ -2356,7 +2356,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2366,11 +2366,11 @@ D3Elam0
 , arrw, dexp) = d3e.node()
 //
 val f3as =
-tread33_f3arglst(f3as, err)
+tread30_f3arglst(f3as, err)
 (*
-val sres = tread33_s2res(sres, err)
+val sres = tread30_s2res(sres, err)
 *)
-val dexp = tread33_d3exp(dexp, err)
+val dexp = tread30_d3exp(dexp, err)
 //
 in
 if
@@ -2392,7 +2392,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2403,11 +2403,11 @@ D3Efix0
 , arrw, dexp) = d3e.node()
 //
 val f3as =
-tread33_f3arglst(f3as, err)
+tread30_f3arglst(f3as, err)
 (*
-val sres = tread33_s2res(sres, err)
+val sres = tread30_s2res(sres, err)
 *)
-val dexp = tread33_d3exp(dexp, err)
+val dexp = tread30_d3exp(dexp, err)
 //
 in
 if
@@ -2433,7 +2433,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2442,9 +2442,9 @@ D3Etry0
 , d3e1, dcls) = d3e.node()
 //
 val
-d3e1 = tread33_d3exp(d3e1, err)
+d3e1 = tread30_d3exp(d3e1, err)
 val
-dcls = tread33_d3clslst(dcls, err)
+dcls = tread30_d3clslst(dcls, err)
 //
 in//let
 //
@@ -2469,7 +2469,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2478,7 +2478,7 @@ D3Eaddr
 //
 val
 d3e1 =
-tread33_d3exp(d3e1, err)
+tread30_d3exp(d3e1, err)
 //
 in//let
 if
@@ -2499,7 +2499,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2508,7 +2508,7 @@ D3Eview
 //
 val
 d3e1 =
-tread33_d3exp(d3e1, err)
+tread30_d3exp(d3e1, err)
 //
 in//let
 if
@@ -2529,7 +2529,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2538,7 +2538,7 @@ D3Eflat
 //
 val
 d3e1 =
-tread33_d3exp(d3e1, err)
+tread30_d3exp(d3e1, err)
 //
 in//let
 if
@@ -2559,7 +2559,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2568,7 +2568,7 @@ D3Eeval
 //
 val
 d3e1 =
-tread33_d3exp(d3e1, err)
+tread30_d3exp(d3e1, err)
 //
 in//let
 if
@@ -2589,7 +2589,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2598,7 +2598,7 @@ D3Efold
 //
 val
 d3e1 =
-tread33_d3exp(d3e1, err)
+tread30_d3exp(d3e1, err)
 //
 in//let
 if
@@ -2619,7 +2619,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2628,7 +2628,7 @@ D3Efree
 //
 val
 d3e1 =
-tread33_d3exp(d3e1, err)
+tread30_d3exp(d3e1, err)
 //
 in//let
 if
@@ -2650,7 +2650,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2659,7 +2659,7 @@ D3Edp2tr
 //
 val
 d3e1 =
-tread33_d3exp(d3e1, err)
+tread30_d3exp(d3e1, err)
 //
 in//let
 if
@@ -2680,7 +2680,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2689,7 +2689,7 @@ D3Edl0az
 //
 val
 d3e1 =
-tread33_d3exp(d3e1, err)
+tread30_d3exp(d3e1, err)
 //
 in//let
 if
@@ -2708,7 +2708,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2717,7 +2717,7 @@ D3Edl1az
 //
 val
 d3e1 =
-tread33_d3exp(d3e1, err)
+tread30_d3exp(d3e1, err)
 //
 in//let
 if
@@ -2739,7 +2739,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2747,9 +2747,9 @@ D3Ewhere
 ( d3e1, dcls) = d3e.node()
 val
 dcls =
-tread33_d3eclist(dcls, err)
+tread30_d3eclist(dcls, err)
 val
-d3e1 = tread33_d3exp(d3e1, err)
+d3e1 = tread30_d3exp(d3e1, err)
 //
 in//let
 if
@@ -2774,7 +2774,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2782,9 +2782,9 @@ D3Eassgn
 ( d3el, d3er) = d3e.node()
 //
 val
-d3el = tread33_d3exp(d3el, err)
+d3el = tread30_d3exp(d3el, err)
 val
-d3er = tread33_d3exp(d3er, err)
+d3er = tread30_d3exp(d3er, err)
 //
 in//let
 if
@@ -2808,7 +2808,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2816,7 +2816,7 @@ D3Eraise
 ( tknd, dexn) = d3e.node()
 //
 val
-dexn = tread33_d3exp(dexn, err)
+dexn = tread30_d3exp(dexn, err)
 //
 in//let
 if
@@ -2840,7 +2840,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2848,7 +2848,7 @@ D3El0azy
 ( dknd, d3e1) = d3e.node()
 //
 val
-d3e1 = tread33_d3exp(d3e1, err)
+d3e1 = tread30_d3exp(d3e1, err)
 //
 in//let
 if
@@ -2872,7 +2872,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2881,9 +2881,9 @@ D3El1azy
 , d3e1, d3es) = d3e.node()
 //
 val
-d3e1 = tread33_d3exp(d3e1, err)
+d3e1 = tread30_d3exp(d3e1, err)
 val
-d3es = tread33_d3explst(d3es, err)
+d3es = tread30_d3explst(d3es, err)
 //
 in//let
 if
@@ -2906,7 +2906,7 @@ val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
-tread33_s2typ(t2p, err)
+tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
 val-
@@ -2915,7 +2915,7 @@ D3Eannot
 , s1e2, s2e2) = d3e.node()
 //
 val
-d3e1 = tread33_d3exp(d3e1, err)
+d3e1 = tread30_d3exp(d3e1, err)
 //
 in//let
 if
@@ -2939,17 +2939,17 @@ val-D3Enone0() = d3e.node() in (d3e) end
 //
 (*
   val () =
-  prerrln("tread33_d3exp: d3e0 = ", d3e0)
+  prerrln("tread30_d3exp: d3e0 = ", d3e0)
 *)
 //
 (* ****** ****** *)
 //
-} (*where*)//end-[tread33_d3exp(d3e0,err)]
+} (*where*)//end-[tread30_d3exp(d3e0,err)]
 
 (* ****** ****** *)
 //
 #implfun
-tread33_l3d3e
+tread30_l3d3e
   (ld3e, err) =
 let
 //
@@ -2959,18 +2959,18 @@ val+
 D3LAB(lab0, d3e1) = ld3e
 //
 val
-d3e1 = tread33_d3exp(d3e1, err)
+d3e1 = tread30_d3exp(d3e1, err)
 //
 in//let
 if // if
 (err=e00)
 then (ld3e) else D3LAB(lab0, d3e1)
-end (*let*)//end-(tread33_l3d3e(ld3e,err))
+end (*let*)//end-(tread30_l3d3e(ld3e,err))
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_f3arg
+tread30_f3arg
   (farg, err) =
 (
 case+
@@ -2982,7 +2982,7 @@ F3ARGdapp
 let
 val e00 = err
 val d3ps =
-tread33_d3patlst(d3ps, err)
+tread30_d3patlst(d3ps, err)
 in//let
 if
 (err=e00)
@@ -2993,12 +2993,12 @@ endlet // end of [F3ARGdapp(npf1,d3ps)]
 //
 | _(* otherwise *) => (      farg      )
 //
-) (*case+*)//end-[tread33_f3arg(farg,err)]
+) (*case+*)//end-[tread30_f3arg(farg,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_d3gua
+tread30_d3gua
   (dgua, err) =
 (
 case+
@@ -3010,7 +3010,7 @@ D3GUAexp
 val e00 = err
 //
 val
-d3e1 = tread33_d3exp(d3e1, err)
+d3e1 = tread30_d3exp(d3e1, err)
 //
 in//let
 if
@@ -3025,8 +3025,8 @@ let
 //
 val e00 = err
 //
-val d3e1 = tread33_d3exp(d3e1, err)
-val d3p2 = tread33_d3pat(d3p2, err)
+val d3e1 = tread30_d3exp(d3e1, err)
+val d3p2 = tread30_d3pat(d3p2, err)
 //
 in//let
 if
@@ -3034,12 +3034,12 @@ if
 then (dgua) else
 d3gua(dgua.lctn(), D3GUAmat(d3e1,d3p2))
 endlet // end of [ D3GPTgua(_,_,_) ]
-) (*case+*)//end-of-[tread33_d3gua(dgua,err)]
+) (*case+*)//end-of-[tread30_d3gua(dgua,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_d3gpt
+tread30_d3gpt
   (dgpt, err) =
 (
 case+
@@ -3051,7 +3051,7 @@ D3GPTpat
 val e00 = err
 //
 val
-d3p1 = tread33_d3pat(d3p1, err)
+d3p1 = tread30_d3pat(d3p1, err)
 //
 in//let
 if
@@ -3066,9 +3066,9 @@ let
 //
 val e00 = err
 //
-val d3p1 = tread33_d3pat(d3p1, err)
+val d3p1 = tread30_d3pat(d3p1, err)
 //
-val d3gs = tread33_d3gualst(d3gs, err)
+val d3gs = tread30_d3gualst(d3gs, err)
 //
 in//let
 if
@@ -3076,12 +3076,12 @@ if
 then (dgpt) else
 d3gpt(dgpt.lctn(), D3GPTgua(d3p1,d3gs))
 endlet // end of [ D3GPTgua(_,_,_) ]
-) (*case+*)//end-of-[tread33_d3gpt(dgpt,err)]
+) (*case+*)//end-of-[tread30_d3gpt(dgpt,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_d3cls
+tread30_d3cls
   (dcls, err) =
 (
 case+
@@ -3093,7 +3093,7 @@ D3CLSgpt
 val e00 = err
 //
 val dgpt =
-tread33_d3gpt(dgpt, err)
+tread30_d3gpt(dgpt, err)
 in//let
 if
 (err=e00)
@@ -3108,8 +3108,8 @@ let
 //
 val e00 = err
 //
-val dgpt = tread33_d3gpt(dgpt, err)
-val d3e1 = tread33_d3exp(d3e1, err)
+val dgpt = tread30_d3gpt(dgpt, err)
+val d3e1 = tread30_d3exp(d3e1, err)
 //
 in//let
 if
@@ -3118,68 +3118,68 @@ then (dcls)
 else
 d3cls(dcls.lctn(), D3CLScls(dgpt,d3e1))
 endlet // end-of-[ D3CLScls(_,_,_) ]
-) (*case+*)//end-of-[tread33_d3cls(dcls,err)]
+) (*case+*)//end-of-[tread30_d3cls(dcls,err)]
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_d3patlst
+tread30_d3patlst
   (  d3ps, err  ) =
 (
-  list_tread33_fnp(d3ps, err, tread33_d3pat))
+  list_tread30_fnp(d3ps, err, tread30_d3pat))
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_l3d3plst
+tread30_l3d3plst
   (  ldps, err  ) =
 (
-  list_tread33_fnp(ldps, err, tread33_l3d3p))
+  list_tread30_fnp(ldps, err, tread30_l3d3p))
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_d3explst
+tread30_d3explst
   (  d3es, err  ) =
 (
-  list_tread33_fnp(d3es, err, tread33_d3exp))
+  list_tread30_fnp(d3es, err, tread30_d3exp))
 //
 #implfun
-tread33_d3expopt
+tread30_d3expopt
   (  dopt, err  ) =
 (
-  optn_tread33_fnp(dopt, err, tread33_d3exp))
+  optn_tread30_fnp(dopt, err, tread30_d3exp))
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_l3d3elst
+tread30_l3d3elst
   (  ldes, err  ) =
 (
-  list_tread33_fnp(ldes, err, tread33_l3d3e))
+  list_tread30_fnp(ldes, err, tread30_l3d3e))
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_f3arglst
+tread30_f3arglst
   (  f3as, err  ) =
 (
-  list_tread33_fnp(f3as, err, tread33_f3arg))
+  list_tread30_fnp(f3as, err, tread30_f3arg))
 //
 (* ****** ****** *)
 //
 #implfun
-tread33_d3gualst
+tread30_d3gualst
   (  d3gs, err  ) =
 (
-  list_tread33_fnp(d3gs, err, tread33_d3gua))
+  list_tread30_fnp(d3gs, err, tread30_d3gua))
 //
 #implfun
-tread33_d3clslst
+tread30_d3clslst
   (  dcls, err  ) =
 (
-  list_tread33_fnp(dcls, err, tread33_d3cls))
+  list_tread30_fnp(dcls, err, tread30_d3cls))
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_srcgen2_DATS_tread33_dynexp.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_DATS_tread30_dynexp.dats] *)
