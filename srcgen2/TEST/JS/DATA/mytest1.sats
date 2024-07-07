@@ -1,11 +1,14 @@
 (* ****** ****** *)
+(* ****** ****** *)
 #infixr -> of 10
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #infix0 < <= of 40 (*lt/eq*)
 #infix0 > >= of 40 (*gt/eq*)
 #infix0 = != of 30 (*equal*)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #infixl + of 50
@@ -15,9 +18,11 @@
 #prefix - of -(+1) (*uminus*)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #abssort tabs1
 #abssort tabs2
 #abssort tabs3
+(* ****** ****** *)
 (* ****** ****** *)
 local
 #abssort tabs1
@@ -74,7 +79,6 @@ fun
 <aa:t0>
 mylength(xs: mylist(aa)): sint = "mylength"
 (* ****** ****** *)
-////
 (* ****** ****** *)
 #sexpdef
 mysexp1(a:tabs1): tabs1 = a
@@ -113,7 +117,6 @@ mysexp10() = @{a=0, b=1, c=3}
 #sexpdef
 mysexp11() = @{a=0 | b=1, c=3}
 (* ****** ****** *)
-////
 (* ****** ****** *)
 //
 fun fact =
@@ -121,17 +124,21 @@ fix fact(x: sint): sint =>
 if x > 0 then x * fact(x-1) else 1
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
+//
 #infixl + of 50
 #infixl - of 50
 #infixl * of 60
 #prefix + of +(+1) (*uplus*)
 #prefix - of -(+1) (*uminus*)
+//
+(*
 #define foo1 = - x +
 #define foo2 = + * x
 #define foo3 = x + y * z
 #define foo4 = ((x + y * z * - - 1)
+*)
+//
 (* ****** ****** *)
 #nonfix op1 op2 op3
 #prefix op1 op2 op3
@@ -159,7 +166,7 @@ pos = {a:int | a > 0
 #sortdef
 neg = {a:int | a < 0}
 
-#sexpdef int1 = $(int)
+#sexpdef int1 = #(int)
 #sexpdef int2 = @(int, int)
 #typedef Nat0 = [a:pos] int(a)
 

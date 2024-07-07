@@ -201,7 +201,8 @@ in//local
 //
 val dpar =
 d0parsed_from_fpath
-(0(*sta*), "./mytest1.sats")
+( 0(*sta*)
+, "./DATA/mytest1.sats")
 //
 val
 dpar =
@@ -230,7 +231,7 @@ end
 //
 val (  ) =
 prerrln
-("d1parsed_from_fpath(\"./mytest1.sats\") =\n", dpar)
+("d1parsed_from_fpath(\"./DATA/mytest1.sats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
@@ -238,4 +239,4 @@ endloc (*local*) // end-of-[local]
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_TEST_JS_test17_tread01.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_TEST_JS_test17_tread01.dats] *)

@@ -65,8 +65,6 @@ XD2PENV of (d2eclist)
 in//local
 (* ****** ****** *)
 //
-(* ****** ****** *)
-//
 #implfun
 xd2penv_make_nil
   ( (*void*) ) =

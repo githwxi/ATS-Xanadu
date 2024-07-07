@@ -1,10 +1,6 @@
 (* ****** ****** *)
-(*
-#include
-"./../mytest1.sats"
-#include
-"./../mytest1.dats"
-*)
+#include "./mytest1.sats"
+#include "./mytest1.dats"
 (* ****** ****** *)
 #staload
 SMYTEST2 = "./mytest2.sats"

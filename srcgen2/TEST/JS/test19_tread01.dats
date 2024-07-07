@@ -205,9 +205,11 @@ prerrln
 in//local
 (* ****** ****** *)
 //
-val dpar =
+val
+dpar =
 d0parsed_from_fpath
-(0(*sta*), "./basics0.sats")
+( 0(*sta*)
+, "./DATA/basics0.sats")
 //
 val
 dpar =
@@ -236,7 +238,7 @@ end
 //
 val (  ) =
 prerrln
-("d1parsed_from_fpath(\"./basics0.sats\") =\n", dpar)
+("d1parsed_from_fpath(\"./DATA/basics0.sats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
@@ -244,4 +246,4 @@ endloc (*local*) // end-of-[local]
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_TEST_JS_test19_tread01.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_TEST_JS_test19_tread01.dats] *)

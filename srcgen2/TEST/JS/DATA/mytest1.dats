@@ -361,4 +361,4 @@ lam(x) => if x >= 0 then x * fact(x-1) else 1
 *)
 (* ****** ****** *)
 
-(* end of [mytest1.dats] *)
+(* end of [DATA/mytest1.dats] *)

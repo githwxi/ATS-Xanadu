@@ -1022,34 +1022,48 @@ auxmain
 ( out: FILR
 , dcl: d1ecl): void =
 let
+//
 #impltmp
 g_print$out<>() = out
+//
 in//let
 //
 case+
 dcl.node() of
 //
 |
-D1Cstatic(tknd,dcl1) =>
+D1Cd0ecl _ => ((*0*))
+//
+(* ****** ****** *)
+//
+|
+D1Cstatic
+(tknd,dcl1) =>
 let
 val () =
 d1ecl_fpemsg(out, dcl1)
 endlet//end-of(D1Cstatic(_,_))
 |
-D1Cextern(tknd,dcl1) =>
+D1Cextern
+(tknd,dcl1) =>
 let
 val () =
 d1ecl_fpemsg(out, dcl1)
 endlet//end-of(D1Cextern(_,_))
 //
+(* ****** ****** *)
+//
 |
-D1Clocal0(dcs1,dcs2) =>
+D1Clocal0
+(dcs1,dcs2) =>
 let
 val () =
 d1eclist_fpemsg(out, dcs1)
 val () =
 d1eclist_fpemsg(out, dcs2)
 endlet // end of [D1Clocal0(...)]
+//
+(* ****** ****** *)
 //
 |
 D1Cabssort _ => ( (*void*) )
@@ -1259,7 +1273,13 @@ endlet // end-of-(D1Cdynconst(_,_,_))
 |
 D1Cerrck(_,_) => d1ecl_fpemsg(out, dcl)
 //
-end (*let*) // end-of-(auxmain(out,dcl))
+end where
+{
+(*
+  val () = prerrln
+  ("d1ecl_fpemsg:auxmain: dcl = ", dcl)
+*)
+}(*where*) // end-of-[auxmain( out,dcl )]
 
 (* ****** ****** *)
 in(* in-of-local *)
@@ -1282,14 +1302,13 @@ if
 (lvl
 >FPEMSG_ERRVL) then () else
 let
-val loc0 = dcl0.lctn() in
+val loc0 = dcl0.lctn() in//let
 println
-("TREAD01-ERROR:",loc0,":",dcl0)
-end
-)
+("TREAD01-ERROR:",loc0,":",dcl0) end)
 //
 | _(* otherwise *) => (   (*skipped*)   )
-end (*let*)//end-of(d1ecl_fpemsg(out,dcl0))
+//
+end(*let*)//end-of(d1ecl_fpemsg(out,dcl0))
 //
 endloc(*local*)//end-of(local(d1ecl_fpemsg))
 

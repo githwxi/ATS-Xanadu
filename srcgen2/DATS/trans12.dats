@@ -568,7 +568,7 @@ d2parsed_from_fpath
   d2parsed_of_trans12(d1par)) where
 {
 //
-  val d2par =
+  val d1par =
   (
     d1parsed_from_fpath(stadyn, source))
 //

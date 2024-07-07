@@ -1,4 +1,5 @@
 (* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../..\
 /HATS/xatsopt_sats.hats"
@@ -6,26 +7,30 @@
 "./../..\
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
-#staload
-"./../../SATS/filpath.sats"
 (* ****** ****** *)
 #staload
+"./../../SATS/filpath.sats"
+#staload
 "./../../SATS/locinfo.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #staload
 "./../../SATS/lexbuf0.sats"
 #staload
 "./../../SATS/lexing0.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 #staload
 "./../../SATS/staexp0.sats"
 #staload
 "./../../SATS/dynexp0.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 #staload
 "./../../SATS/parsing.sats"
 #staload
 "./../../SATS/preadx0.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #staload
 "./../../SATS/staexp1.sats"
@@ -34,12 +39,14 @@
 #staload
 "./../../SATS/gmacro1.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 #staload
 "./../../SATS/staexp2.sats"
 #staload
 "./../../SATS/statyp2.sats"
 #staload
 "./../../SATS/dynexp2.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #include
 "./../../DATS/xbasics.dats"
@@ -266,7 +273,8 @@ in//local
 //
 val dpar =
 d0parsed_from_fpath
-(0(*sta*), "./mytest1.sats")
+( 0(*sta*)
+, "./DATA/mytest1.sats")
 //
 val
 dpar =
@@ -295,19 +303,17 @@ end
 //
 val (  ) =
 prerrln
-("d1parsed_from_fpath(\"./mytest1.sats\") =\n", dpar)
+("d1parsed_from_fpath(\"./DATA/mytest1.sats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
-val
-dpar =
-d2parsed_of_trans12(dpar)
+val dpar = d2parsed_of_trans12(dpar)
 //
 (* ****** ****** *)
 //
 val (  ) =
 prerrln
-("d2parsed_from_fpath(\"./mytest1.sats\") =\n", dpar)
+("d2parsed_from_fpath(\"./DATA/mytest1.sats\") =\n", dpar)
 //
 (* ****** ****** *)
 //
@@ -315,4 +321,4 @@ endloc (*local*) // end-of-[local]
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XATSOPT_TEST_JS_test20_trans12.dats] *)
+(* end of [ATS3/XATSOPT_srcgen2_TEST_JS_test20_trans12.dats] *)
