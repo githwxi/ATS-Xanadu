@@ -247,6 +247,7 @@ trans34_decl00.dats \
 fperr40.dats \
 fperr40_dynexp.dats \
 fperr40_decl00.dats \
+xatsopt.dats \
 xatsopt_tmplib.dats \
 xatsopt_utils0.dats \
 
