@@ -1834,5 +1834,25 @@ d2parsed_make_args
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+<e1:vt>
+d2pat_fproc_e1nv(x0: d2pat, e1: !e1): void
+fun
+<e1:vt>
+d2exp_fproc_e1nv(x0: d2exp, e1: !e1): void
+fun
+<e1:vt>
+d2ecl_fproc_e1nv(x0: d2ecl, e1: !e1): void
+//
+fun
+<e1:vt>
+d2explst_fproc_e1nv(xs: d2explst, e1: !e1): void
+fun
+<e1:vt>
+d2eclist_fproc_e1nv(xs: d2eclist, e1: !e1): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_SATS_dynexp2.sats] *)

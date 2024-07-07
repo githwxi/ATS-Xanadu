@@ -258,8 +258,8 @@ $(XATS2JS) --output-a $@_dats.js -d ./$@.dats && $(NODE) ./$@_dats.js
 ######
 #
 test:: \
-test24_tread22
-test24_tread22:: ; \
+test24_tread20
+test24_tread20:: ; \
 $(CAT) $(XATS2JS_PRELUDE) > $@_dats.js && \
 $(CAT) $(XATS2JS_PRELUDE_NODE) >> $@_dats.js && \
 $(CAT) $(XATS2JS_XATSLIB_NODE) >> $@_dats.js && \

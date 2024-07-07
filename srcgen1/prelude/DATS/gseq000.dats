@@ -743,6 +743,9 @@ in
 gseq_rmake0_llist<xs><x0>(xx)
 end // end of [gseq_make_list(xx)]
 //
+(* ****** ****** *)
+//
+(*
 #impltmp
 <xs><x0>
 gseq_make0_llist(xx) =
@@ -754,6 +757,7 @@ list_vt_reverse0<x0>(xx)
 in
   gseq_rmake0_llist<xs><x0>(xx)
 end // end of [gseq_make0_llist(xx)]
+*)
 //
 (* ****** ****** *)
 //
@@ -767,6 +771,9 @@ in
 gseq_rmake0_llist<xs><x0>(xx)
 end // end of [gseq_rmake_list(xx)]
 //
+(* ****** ****** *)
+//
+(*
 #impltmp
 <xs><x0>
 gseq_rmake0_llist
@@ -789,6 +796,7 @@ in
 (
   loop(xx, gseq_nil<xs><x0>()) )
 endlet//end-of-[gseq_rmake0_llist(xs)]
+*)
 //
 (* ****** ****** *)
 //
@@ -805,6 +813,7 @@ gseq_make_strm
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 <xs><x0>
 gseq_make0_lstrm
@@ -815,6 +824,7 @@ let
 in//let
   gseq_rmake0_llist<xs><x0>(xs)
 end(*let*)//end-(gseq_make0_lstrm(xx))
+*)
 //
 (* ****** ****** *)
 //
@@ -835,7 +845,7 @@ gseq_tabulate
 <xs><x0>
 <ys><y0>
 gseq_map(xs) =
-glseq_make0_lstrm
+gseq_make0_lstrm
 <  ys  ><  y0  >
 (gseq_map_lstrm<xs><x0><y0>( xs ))
 //
@@ -1048,6 +1058,7 @@ gseq_copy_list
 list_vt2t
 (
 gseq_copy_llist<xs><x0>(xs))
+(*
 #impltmp
 <xs><x0>
 gseq_copy_llist(xs) =
@@ -1057,6 +1068,9 @@ gseq_copy_llist(xs) =
 {
   #impltmp
   map$fopr<x0><x0>( x0 ) = x0 }
+*)
+//
+(* ****** ****** *)
 //
 #impltmp
 <xs><x0>
@@ -1065,6 +1079,8 @@ gseq_copy_rlist
 list_vt2t
 (
 gseq_copy_rllist<xs><x0>(xs))
+//
+(*
 #impltmp
 <xs><x0>
 gseq_copy_rllist(xs) =
@@ -1074,6 +1090,7 @@ gseq_copy_rllist(xs) =
 {
   #impltmp
   map$fopr<x0><x0>( x0 ) = x0 }
+*)
 //
 (* ****** ****** *)
 //
@@ -1081,7 +1098,7 @@ gseq_copy_rllist(xs) =
 <xs><x0>
 gseq_filter
 (   xs   ) =
-glseq_make0_lstrm
+gseq_make0_lstrm
 <  xs  ><  x0  >
 (gseq_filter_lstrm<xs><x0>(xs))
 //
@@ -2185,7 +2202,7 @@ end // end of [gseq_rindexof/iforeach]
 <xs><x0>
 <ys><y0>
 gseq_imap(xs) =
-glseq_make0_lstrm
+gseq_make0_lstrm
 <  ys  ><  y0  >
 (gseq_imap_lstrm<xs><x0><y0>( xs ))
 //
@@ -2555,7 +2572,7 @@ end // end-of-[gseq_z2foreach/z2forall]
 <zs><z0>
 gseq_z2map
   (xs, ys) =
-glseq_make0_lstrm
+gseq_make0_lstrm
 <  zs  ><  z0  >
 (
 gseq_z2map_lstrm<xs,ys><x0,y0><z0>(xs,ys)
@@ -2730,7 +2747,7 @@ z2iforeach0$work
 <zs><z0>
 gseq_z2imap
   (xs, ys) =
-glseq_make0_lstrm<zs><z0>
+gseq_make0_lstrm<zs><z0>
 (gseq_z2imap_lstrm<xs,ys><x0,y0><z0>(xs,ys))
 //
 (* ****** ****** *)
@@ -2778,7 +2795,7 @@ end(*let*)//end-[gseq_gseq_z2imap_lstrm(xs,ys)]
 <zs><z0>
 gseq_x2map
   (xs, ys) =
-glseq_make0_lstrm
+gseq_make0_lstrm
 <  zs  ><  z0  >
 (
 gseq_x2map_lstrm<xs,ys><x0,y0><z0>(xs,ys))
@@ -2997,7 +3014,7 @@ end(*let*)//end-of-[gseq_x2foreach_col(xs,ys)]
 <zs><z0>
 gseq_x2imap
   (xs, ys) =
-glseq_make0_lstrm<zs><z0>
+gseq_make0_lstrm<zs><z0>
 (gseq_x2imap_lstrm<xs,ys><x0,y0><z0>(xs,ys))
 //
 (* ****** ****** *)

@@ -29,78 +29,78 @@ Implementing prout0/proutln0
 //
 #impltmp
 <a1>
-prout0_a01 =
-glfproc0_a01
+gs_prout0_a01 =
+gs_fproc0_a01
 <  a1  > where
 {
 #impltmp
 {a0:vt}
-gl_fproc0<a0> = prout0_ref<a0>
+g_fproc0<a0> = prout0_ref<a0>
 }
 //
 #impltmp
 <a1><a2>
-prout0_a02 =
-glfproc0_a02
+gs_prout0_a02 =
+gs_fproc0_a02
 <a1><a2> where
 {
 #impltmp
 {a0:vt}
-gl_fproc0<a0> = prout0_ref<a0>
+g_fproc0<a0> = prout0_ref<a0>
 }
 //
 #impltmp
 <a1>
 <a2><a3>
-prout0_a03 =
-glfproc0_a03
+gs_prout0_a03 =
+gs_fproc0_a03
 <a1>
 <a2><a3> where
 {
 #impltmp
 {a0:vt}
-gl_fproc0<a0> = prout0_ref<a0>
+g_fproc0<a0> = prout0_ref<a0>
 }
 //
 #impltmp
 <a1><a2>
 <a3><a4>
-prout0_a04 =
-glfproc0_a04
+gs_prout0_a04 =
+gs_fproc0_a04
 <a1><a2>
 <a3><a4> where
 {
 #impltmp
 {a0:vt}
-gl_fproc0<a0> = prout0_ref<a0>
+g_fproc0<a0> = prout0_ref<a0>
 }
 //
 #impltmp
 <a1>
 <a2><a3>
 <a4><a5>
-prout0_a05 =
-glfproc0_a05
+gs_prout0_a05 =
+gs_fproc0_a05
 <a1><a2>
 <a3><a4><a5> where
 {
 #impltmp
 {a0:vt}
-gl_fproc0<a0> = prout0_ref<a0>
+g_fproc0<a0> = prout0_ref<a0>
 }
 //
 #impltmp
 <a1><a2>
 <a3><a4>
 <a5><a6>
-prout0_a06 =
-glfproc0_a06
+gs_prout0_a06 =
+gs_fproc0_a06
 <a1><a2><a3>
 <a4><a5><a6> where
 {
 #impltmp
 {a0:vt}
-gl_fproc0<a0> = prout0_ref<a0>
+g_fproc0<a0> = prout0_ref<a0>
 }
 //
 #impltmp
@@ -108,15 +108,15 @@ gl_fproc0<a0> = prout0_ref<a0>
 <a2><a3>
 <a4><a5>
 <a6><a7>
-prout0_a07 =
-glfproc0_a07
+gs_prout0_a07 =
+gs_fproc0_a07
 <a1>
 <a2><a3><a4>
 <a5><a6><a7> where
 {
 #impltmp
 {a0:vt}
-gl_fproc0<a0> = prout0_ref<a0>
+g_fproc0<a0> = prout0_ref<a0>
 }
 //
 #impltmp
@@ -124,15 +124,15 @@ gl_fproc0<a0> = prout0_ref<a0>
 <a3><a4>
 <a5><a6>
 <a7><a8>
-prout0_a08 =
-glfproc0_a08
+gs_prout0_a08 =
+gs_fproc0_a08
 <a1><a2>
 <a3><a4><a5>
 <a6><a7><a8> where
 {
 #impltmp
 {a0:vt}
-gl_fproc0<a0> = prout0_ref<a0>
+g_fproc0<a0> = prout0_ref<a0>
 }
 //
 #impltmp
@@ -141,15 +141,15 @@ gl_fproc0<a0> = prout0_ref<a0>
 <a4><a5>
 <a6><a7>
 <a8><a9>
-prout0_a09 =
-glfproc0_a09
+gs_prout0_a09 =
+gs_fproc0_a09
 <a1><a2><a3>
 <a4><a5><a6>
 <a7><a8><a9> where
 {
 #impltmp
 {a0:vt}
-gl_fproc0<a0> = prout0_ref<a0>
+g_fproc0<a0> = prout0_ref<a0>
 }
 //
 #impltmp
@@ -158,8 +158,8 @@ gl_fproc0<a0> = prout0_ref<a0>
 <a05><a06>
 <a07><a08>
 <a09><a10>
-prout0_a10 =
-glfproc0_a10
+gs_prout0_a10 =
+gs_fproc0_a10
 <a01>
 <a02><a03><a04>
 <a05><a06><a07>
@@ -167,13 +167,13 @@ glfproc0_a10
 {
 #impltmp
 {a0:vt}
-gl_fproc0<a0> = prout0_ref<a0>
+g_fproc0<a0> = prout0_ref<a0>
 }
 //
 (* ****** ****** *)
 //
 #impltmp
-proutln0_a00
+gs_proutln0_a00
 <>(*tmp*)
 ((*_*)) = prout_ref( "\n" )
 //
@@ -181,52 +181,52 @@ proutln0_a00
 //
 #impltmp
 <a1>
-proutln0_a01
+gs_proutln0_a01
 (   x1   ) =
 (
-prout0_a01
-(   x1   ) ; proutln0_a00<>()
-) (* end of [proutln0_a01] *)
+gs_prout0_a01
+(   x1   ) ; gs_proutln0_a00<>()
+) (* end of [gs_proutln0_a01] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
-proutln0_a02
+gs_proutln0_a02
 ( x1, x2 ) =
 (
-prout0_a02
-( x1, x2 ) ; proutln0_a00<>()
-) (* end of [proutln0_a02] *)
+gs_prout0_a02
+( x1, x2 ) ; gs_proutln0_a00<>()
+) (* end of [gs_proutln0_a02] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1>
 <a2><a3>
-proutln0_a03
+gs_proutln0_a03
 ( x1
 , x2
 , x3 ) =
 (
-prout0_a03
+gs_prout0_a03
 ( x1
-, x2, x3 ) ; proutln0_a00<>()
-) (* end of [proutln0_a03] *)
+, x2, x3 ) ; gs_proutln0_a00<>()
+) (* end of [gs_proutln0_a03] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
 <a3><a4>
-proutln0_a04
+gs_proutln0_a04
 ( x1, x2
 , x3, x4 ) =
 (
-prout0_a04
+gs_prout0_a04
 ( x1, x2
-, x3, x4 ) ; proutln0_a00<>()
-) (* end of [proutln0_a04] *)
+, x3, x4 ) ; gs_proutln0_a00<>()
+) (* end of [gs_proutln0_a04] *)
 //
 (* ****** ****** *)
 //
@@ -234,16 +234,16 @@ prout0_a04
 <a1>
 <a2><a3>
 <a4><a5>
-proutln0_a05
+gs_proutln0_a05
 ( x1
 , x2, x3
 , x4, x5 ) =
 (
-prout0_a05
+gs_prout0_a05
 ( x1
 , x2, x3
-, x4, x5 ) ; proutln0_a00<>()
-) (* end of [proutln0_a05] *)
+, x4, x5 ) ; gs_proutln0_a00<>()
+) (* end of [gs_proutln0_a05] *)
 //
 (* ****** ****** *)
 //
@@ -251,16 +251,16 @@ prout0_a05
 <a1><a2>
 <a3><a4>
 <a5><a6>
-proutln0_a06
+gs_proutln0_a06
 ( x1, x2
 , x3, x4
 , x5, x6 ) =
 (
-prout0_a06
+gs_prout0_a06
 ( x1, x2
 , x3, x4
-, x5, x6 ) ; proutln0_a00<>()
-) (* end of [proutln0_a06] *)
+, x5, x6 ) ; gs_proutln0_a00<>()
+) (* end of [gs_proutln0_a06] *)
 //
 (* ****** ****** *)
 //
@@ -269,17 +269,17 @@ prout0_a06
 <a2><a3>
 <a4><a5>
 <a6><a7>
-proutln0_a07
+gs_proutln0_a07
 ( x1
 , x2, x3
 , x4, x5 
 , x6, x7 ) =
 (
-prout0_a07
+gs_prout0_a07
 ( x1
 , x2, x3, x4
-, x5, x6, x7 ) ; proutln0_a00<>()
-) (* end of [proutln0_a07] *)
+, x5, x6, x7 ) ; gs_proutln0_a00<>()
+) (* end of [gs_proutln0_a07] *)
 //
 (* ****** ****** *)
 //
@@ -288,17 +288,17 @@ prout0_a07
 <a3><a4>
 <a5><a6>
 <a7><a8>
-proutln0_a08
+gs_proutln0_a08
 ( x1, x2
 , x3, x4
 , x5, x6
 , x7, x8 ) =
 (
-prout0_a08
+gs_prout0_a08
 ( x1, x2
 , x3, x4, x5
-, x6, x7, x8 ) ; proutln0_a00<>()
-) (* end of [proutln0_a08] *)
+, x6, x7, x8 ) ; gs_proutln0_a00<>()
+) (* end of [gs_proutln0_a08] *)
 //
 (* ****** ****** *)
 //
@@ -308,18 +308,18 @@ prout0_a08
 <a4><a5>
 <a6><a7>
 <a8><a9>
-proutln0_a09
+gs_proutln0_a09
 ( x1
 , x2, x3
 , x4, x5 
 , x6, x7
 , x8, x9 ) =
 (
-prout0_a09
+gs_prout0_a09
 ( x1, x2, x3
 , x4, x5, x6
-, x7, x8, x9 ) ; proutln0_a00<>()
-) (* end of [proutln0_a09] *)
+, x7, x8, x9 ) ; gs_proutln0_a00<>()
+) (* end of [gs_proutln0_a09] *)
 //
 (* ****** ****** *)
 //
@@ -329,19 +329,19 @@ prout0_a09
 <a05><a06>
 <a07><a08>
 <a09><a10>
-proutln0_a10
+gs_proutln0_a10
 ( x01, x02
 , x03, x04
 , x05, x06
 , x07, x08
 , x09, x10) =
 (
-prout1_a10
+gs_prout1_a10
 ( x01
 , x02,x03,x04
 , x05,x06,x07
-, x08,x09,x10 ) ; proutln0_a00<>()
-) (* end of [proutln0_a10] *)
+, x08,x09,x10 ) ; gs_proutln0_a00<>()
+) (* end of [gs_proutln0_a10] *)
 //
 (* ****** ****** *)
 //
@@ -353,78 +353,78 @@ Implementing prout1/proutln1
 //
 #impltmp
 <a1>
-prout1_a01 =
-glfproc1_a01
+gs_prout1_a01 =
+gs_fproc1_a01
 <  a1  > where
 {
 #impltmp
 {a0:vt}
-gl_fproc1<a0> = prout1_ref<a0>
+g_fproc1<a0> = prout1_ref<a0>
 }
 //
 #impltmp
 <a1><a2>
-prout1_a02 =
-glfproc1_a02
+gs_prout1_a02 =
+gs_fproc1_a02
 <a1><a2> where
 {
 #impltmp
 {a0:vt}
-gl_fproc1<a0> = prout1_ref<a0>
+g_fproc1<a0> = prout1_ref<a0>
 }
 //
 #impltmp
 <a1>
 <a2><a3>
-prout1_a03 =
-glfproc1_a03
+gs_prout1_a03 =
+gs_fproc1_a03
 <a1>
 <a2><a3> where
 {
 #impltmp
 {a0:vt}
-gl_fproc1<a0> = prout1_ref<a0>
+g_fproc1<a0> = prout1_ref<a0>
 }
 //
 #impltmp
 <a1><a2>
 <a3><a4>
-prout1_a04 =
-glfproc1_a04
+gs_prout1_a04 =
+gs_fproc1_a04
 <a1><a2>
 <a3><a4> where
 {
 #impltmp
 {a0:vt}
-gl_fproc1<a0> = prout1_ref<a0>
+g_fproc1<a0> = prout1_ref<a0>
 }
 //
 #impltmp
 <a1>
 <a2><a3>
 <a4><a5>
-prout1_a05 =
-glfproc1_a05
+gs_prout1_a05 =
+gs_fproc1_a05
 <a1><a2>
 <a3><a4><a5> where
 {
 #impltmp
 {a0:vt}
-gl_fproc1<a0> = prout1_ref<a0>
+g_fproc1<a0> = prout1_ref<a0>
 }
 //
 #impltmp
 <a1><a2>
 <a3><a4>
 <a5><a6>
-prout1_a06 =
-glfproc1_a06
+gs_prout1_a06 =
+gs_fproc1_a06
 <a1><a2><a3>
 <a4><a5><a6> where
 {
 #impltmp
 {a0:vt}
-gl_fproc1<a0> = prout1_ref<a0>
+g_fproc1<a0> = prout1_ref<a0>
 }
 //
 #impltmp
@@ -432,15 +432,15 @@ gl_fproc1<a0> = prout1_ref<a0>
 <a2><a3>
 <a4><a5>
 <a6><a7>
-prout1_a07 =
-glfproc1_a07
+gs_prout1_a07 =
+gs_fproc1_a07
 <a1>
 <a2><a3><a4>
 <a5><a6><a7> where
 {
 #impltmp
 {a0:vt}
-gl_fproc1<a0> = prout1_ref<a0>
+g_fproc1<a0> = prout1_ref<a0>
 }
 //
 #impltmp
@@ -448,15 +448,15 @@ gl_fproc1<a0> = prout1_ref<a0>
 <a3><a4>
 <a5><a6>
 <a7><a8>
-prout1_a08 =
-glfproc1_a08
+gs_prout1_a08 =
+gs_fproc1_a08
 <a1><a2>
 <a3><a4><a5>
 <a6><a7><a8> where
 {
 #impltmp
 {a0:vt}
-gl_fproc1<a0> = prout1_ref<a0>
+g_fproc1<a0> = prout1_ref<a0>
 }
 //
 #impltmp
@@ -465,15 +465,15 @@ gl_fproc1<a0> = prout1_ref<a0>
 <a4><a5>
 <a6><a7>
 <a8><a9>
-prout1_a09 =
-glfproc1_a09
+gs_prout1_a09 =
+gs_fproc1_a09
 <a1><a2><a3>
 <a4><a5><a6>
 <a7><a8><a9> where
 {
 #impltmp
 {a0:vt}
-gl_fproc1<a0> = prout1_ref<a0>
+g_fproc1<a0> = prout1_ref<a0>
 }
 //
 #impltmp
@@ -482,8 +482,8 @@ gl_fproc1<a0> = prout1_ref<a0>
 <a05><a06>
 <a07><a08>
 <a09><a10>
-prout1_a10 =
-glfproc1_a10
+gs_prout1_a10 =
+gs_fproc1_a10
 <a01>
 <a02><a03><a04>
 <a05><a06><a07>
@@ -491,13 +491,13 @@ glfproc1_a10
 {
 #impltmp
 {a0:vt}
-gl_fproc1<a0> = prout1_ref<a0>
+g_fproc1<a0> = prout1_ref<a0>
 }
 //
 (* ****** ****** *)
 //
 #impltmp
-proutln1_a00
+gs_proutln1_a00
 <>(*tmp*)
 ((*_*)) = prout_ref( "\n" )
 //
@@ -505,55 +505,55 @@ proutln1_a00
 //
 #impltmp
 <a1>
-proutln1_a01
+gs_proutln1_a01
 ( x1 ) =
 (
-prout1_a01
-(   x1   ) ; proutln1_a00<>()
-) (* end of [proutln1_a01] *)
+gs_prout1_a01
+(   x1   ) ; gs_proutln1_a00<>()
+) (* end of [gs_proutln1_a01] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
-proutln1_a02
+gs_proutln1_a02
 ( x1
 , x2 ) =
 (
-prout1_a02
-( x1, x2 ) ; proutln1_a00<>()
-) (* end of [proutln1_a02] *)
+gs_prout1_a02
+( x1, x2 ) ; gs_proutln1_a00<>()
+) (* end of [gs_proutln1_a02] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1>
 <a2><a3>
-proutln1_a03
+gs_proutln1_a03
 ( x1
 , x2
 , x3 ) =
 (
-prout1_a03
+gs_prout1_a03
 ( x1
-, x2, x3 ) ; proutln1_a00<>()
-) (* end of [proutln1_a03] *)
+, x2, x3 ) ; gs_proutln1_a00<>()
+) (* end of [gs_proutln1_a03] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
 <a3><a4>
-proutln1_a04
+gs_proutln1_a04
 ( x1
 , x2
 , x3
 , x4 ) =
 (
-prout1_a04
+gs_prout1_a04
 ( x1, x2
-, x3, x4 ) ; proutln1_a00<>()
-) (* end of [proutln1_a04] *)
+, x3, x4 ) ; gs_proutln1_a00<>()
+) (* end of [gs_proutln1_a04] *)
 //
 (* ****** ****** *)
 //
@@ -561,18 +561,18 @@ prout1_a04
 <a1>
 <a2><a3>
 <a4><a5>
-proutln1_a05
+gs_proutln1_a05
 ( x1
 , x2
 , x3
 , x4
 , x5 ) =
 (
-prout1_a05
+gs_prout1_a05
 ( x1
 , x2, x3
-, x4, x5 ) ; proutln1_a00<>()
-) (* end of [proutln1_a05] *)
+, x4, x5 ) ; gs_proutln1_a00<>()
+) (* end of [gs_proutln1_a05] *)
 //
 (* ****** ****** *)
 //
@@ -580,7 +580,7 @@ prout1_a05
 <a1><a2>
 <a3><a4>
 <a5><a6>
-proutln1_a06
+gs_proutln1_a06
 ( x1
 , x2
 , x3
@@ -588,11 +588,11 @@ proutln1_a06
 , x5
 , x6 ) =
 (
-prout1_a06
+gs_prout1_a06
 ( x1, x2
 , x3, x4
-, x5, x6 ) ; proutln1_a00<>()
-) (* end of [proutln1_a06] *)
+, x5, x6 ) ; gs_proutln1_a00<>()
+) (* end of [gs_proutln1_a06] *)
 //
 (* ****** ****** *)
 //
@@ -601,18 +601,18 @@ prout1_a06
 <a2><a3>
 <a4><a5>
 <a6><a7>
-proutln1_a07
+gs_proutln1_a07
 ( x1
 , x2, x3
 , x4, x5
 , x6, x7 ) =
 (
-prout1_a07
+gs_prout1_a07
 ( x1
 , x2, x3
 , x4, x5
-, x6, x7 ) ; proutln1_a00<>()
-) (* end of [proutln1_a07] *)
+, x6, x7 ) ; gs_proutln1_a00<>()
+) (* end of [gs_proutln1_a07] *)
 //
 (* ****** ****** *)
 //
@@ -621,18 +621,18 @@ prout1_a07
 <a3><a4>
 <a5><a6>
 <a7><a8>
-proutln1_a08
+gs_proutln1_a08
 ( x1, x2
 , x3, x4
 , x5, x6
 , x7, x8 ) =
 (
-prout1_a08
+gs_prout1_a08
 ( x1, x2
 , x3, x4
 , x5, x6
-, x7, x8 ) ; proutln1_a00<>()
-) (* end of [proutln1_a08] *)
+, x7, x8 ) ; gs_proutln1_a00<>()
+) (* end of [gs_proutln1_a08] *)
 //
 (* ****** ****** *)
 //
@@ -642,20 +642,20 @@ prout1_a08
 <a4><a5>
 <a6><a7>
 <a8><a9>
-proutln1_a09
+gs_proutln1_a09
 ( x1
 , x2, x3
 , x4, x5
 , x6, x7
 , x8, x9 ) =
 (
-prout1_a09
+gs_prout1_a09
 ( x1
 , x2, x3
 , x4, x5
 , x6, x7
-, x8, x9 ) ; proutln1_a00<>()
-) (* end of [proutln1_a09] *)
+, x8, x9 ) ; gs_proutln1_a00<>()
+) (* end of [gs_proutln1_a09] *)
 //
 (* ****** ****** *)
 //
@@ -665,19 +665,19 @@ prout1_a09
 <a05><a06>
 <a07><a08>
 <a09><a10>
-proutln1_a10
+gs_proutln1_a10
 ( x01, x02
 , x03, x04
 , x05, x06
 , x07, x08
 , x09, x10 ) =
 (
-prout1_a10
+gs_prout1_a10
 ( x01
 , x02,x03,x04
 , x05,x06,x07
-, x08,x09,x10 ) ; proutln1_a00<>()
-) (* end of [proutln1_a10] *)
+, x08,x09,x10 ) ; gs_proutln1_a00<>()
+) (* end of [gs_proutln1_a10] *)
 //
 (* ****** ****** *)
 //
@@ -696,80 +696,80 @@ prerr0/prerrln0-implementation
 //
 #impltmp
 <a1>
-prerr0_a01 =
-glfproc0_a01
+gs_prerr0_a01 =
+gs_fproc0_a01
 <  a1  > where
 {
 #impltmp
 {a0:vt}
-gl_fproc0<a0> = prerr0_ref<a0>
+g_fproc0<a0> = prerr0_ref<a0>
 }
 //
 #impltmp
 <a1><a2>
-prerr0_a02 =
-glfproc0_a02
+gs_prerr0_a02 =
+gs_fproc0_a02
 <a1><a2> where
 {
 #impltmp
 {a0:vt}
-gl_fproc0<a0> = prerr0_ref<a0>
+g_fproc0<a0> = prerr0_ref<a0>
 }
 //
 #impltmp
 <a1>
 <a2><a3>
-prerr0_a03 =
-glfproc0_a03
+gs_prerr0_a03 =
+gs_fproc0_a03
 <a1>
 <a2><a3> where
 {
 #impltmp
 {a0:vt}
-gl_fproc0<a0> = prerr0_ref<a0>
+g_fproc0<a0> = prerr0_ref<a0>
 }
 //
 #impltmp
 <a1><a2>
 <a3><a4>
-prerr0_a04 =
-glfproc0_a04
+gs_prerr0_a04 =
+gs_fproc0_a04
 <a1><a2>
 <a3><a4> where
 {
 #impltmp
 {a0:vt}
-gl_fproc0<a0> = prerr0_ref<a0>
+g_fproc0<a0> = prerr0_ref<a0>
 }
 //
 #impltmp
 <a1>
 <a2><a3>
 <a4><a5>
-prerr0_a05 =
-glfproc0_a05
+gs_prerr0_a05 =
+gs_fproc0_a05
 <a1>
 <a2><a3>
 <a4><a5> where
 {
 #impltmp
 {a0:vt}
-gl_fproc0<a0> = prerr0_ref<a0>
+g_fproc0<a0> = prerr0_ref<a0>
 }
 //
 #impltmp
 <a1><a2>
 <a3><a4>
 <a5><a6>
-prerr0_a06 =
-glfproc0_a06
+gs_prerr0_a06 =
+gs_fproc0_a06
 <a1><a2>
 <a3><a4>
 <a5><a6> where
 {
 #impltmp
 {a0:vt}
-gl_fproc0<a0> = prerr0_ref<a0>
+g_fproc0<a0> = prerr0_ref<a0>
 }
 //
 #impltmp
@@ -777,8 +777,8 @@ gl_fproc0<a0> = prerr0_ref<a0>
 <a2><a3>
 <a4><a5>
 <a6><a7>
-prerr0_a07 =
-glfproc0_a07
+gs_prerr0_a07 =
+gs_fproc0_a07
 <a1>
 <a2><a3>
 <a4><a5>
@@ -786,7 +786,7 @@ glfproc0_a07
 {
 #impltmp
 {a0:vt}
-gl_fproc0<a0> = prerr0_ref<a0>
+g_fproc0<a0> = prerr0_ref<a0>
 }
 //
 #impltmp
@@ -794,8 +794,8 @@ gl_fproc0<a0> = prerr0_ref<a0>
 <a3><a4>
 <a5><a6>
 <a7><a8>
-prerr0_a08 =
-glfproc0_a08
+gs_prerr0_a08 =
+gs_fproc0_a08
 <a1><a2>
 <a3><a4>
 <a5><a6>
@@ -803,7 +803,7 @@ glfproc0_a08
 {
 #impltmp
 {a0:vt}
-gl_fproc0<a0> = prerr0_ref<a0>
+g_fproc0<a0> = prerr0_ref<a0>
 }
 //
 #impltmp
@@ -812,8 +812,8 @@ gl_fproc0<a0> = prerr0_ref<a0>
 <a4><a5>
 <a6><a7>
 <a8><a9>
-prerr0_a09 =
-glfproc0_a09
+gs_prerr0_a09 =
+gs_fproc0_a09
 <a1>
 <a2><a3>
 <a4><a5>
@@ -822,7 +822,7 @@ glfproc0_a09
 {
 #impltmp
 {a0:vt}
-gl_fproc0<a0> = prerr0_ref<a0>
+g_fproc0<a0> = prerr0_ref<a0>
 }
 //
 #impltmp
@@ -831,8 +831,8 @@ gl_fproc0<a0> = prerr0_ref<a0>
 <a05><a06>
 <a07><a08>
 <a09><a10>
-prerr0_a10 =
-glfproc0_a10
+gs_prerr0_a10 =
+gs_fproc0_a10
 <a01><a02>
 <a03><a04>
 <a05><a06>
@@ -841,13 +841,13 @@ glfproc0_a10
 {
 #impltmp
 {a0:vt}
-gl_fproc0<a0> = prerr0_ref<a0>
+g_fproc0<a0> = prerr0_ref<a0>
 }
 //
 (* ****** ****** *)
 //
 #impltmp
-prerrln0_a00
+gs_prerrln0_a00
 <>(*tmp*)
 ((*_*)) = prerr_ref( "\n" )
 //
@@ -855,55 +855,55 @@ prerrln0_a00
 //
 #impltmp
 <a1>
-prerrln0_a01
+gs_prerrln0_a01
 ( x1 ) =
 (
-prerr0_a01
-(   x1   ) ; prerrln0_a00<>()
-) (* end of [prerrln0_a01] *)
+gs_prerr0_a01
+(   x1   ) ; gs_prerrln0_a00<>()
+) (* end of [gs_prerrln0_a01] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
-prerrln0_a02
+gs_prerrln0_a02
 ( x1
 , x2 ) =
 (
-prerr0_a02
-( x1, x2 ) ; prerrln0_a00<>()
-) (* end of [prerrln0_a02] *)
+gs_prerr0_a02
+( x1, x2 ) ; gs_prerrln0_a00<>()
+) (* end of [gs_prerrln0_a02] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1>
 <a2><a3>
-prerrln0_a03
+gs_prerrln0_a03
 ( x1
 , x2
 , x3 ) =
 (
-prerr0_a03
+gs_prerr0_a03
 ( x1
-, x2, x3 ) ; prerrln0_a00<>()
-) (* end of [prerrln0_a03] *)
+, x2, x3 ) ; gs_prerrln0_a00<>()
+) (* end of [gs_prerrln0_a03] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
 <a3><a4>
-prerrln0_a04
+gs_prerrln0_a04
 ( x1
 , x2
 , x3
 , x4 ) =
 (
-prerr0_a04
+gs_prerr0_a04
 ( x1, x2
-, x3, x4 ) ; prerrln0_a00<>()
-) (* end of [prerrln0_a04] *)
+, x3, x4 ) ; gs_prerrln0_a00<>()
+) (* end of [gs_prerrln0_a04] *)
 //
 (* ****** ****** *)
 (*
@@ -914,80 +914,80 @@ prerr1/prerrln1-implementation
 //
 #impltmp
 <a1>
-prerr1_a01 =
-glfproc1_a01
+gs_prerr1_a01 =
+gs_fproc1_a01
 <  a1  > where
 {
 #impltmp
 {a0:vt}
-gl_fproc1<a0> = prerr1_ref<a0>
+g_fproc1<a0> = prerr1_ref<a0>
 }
 //
 #impltmp
 <a1><a2>
-prerr1_a02 =
-glfproc1_a02
+gs_prerr1_a02 =
+gs_fproc1_a02
 <a1><a2> where
 {
 #impltmp
 {a0:vt}
-gl_fproc1<a0> = prerr1_ref<a0>
+g_fproc1<a0> = prerr1_ref<a0>
 }
 //
 #impltmp
 <a1>
 <a2><a3>
-prerr1_a03 =
-glfproc1_a03
+gs_prerr1_a03 =
+gs_fproc1_a03
 <a1>
 <a2><a3> where
 {
 #impltmp
 {a0:vt}
-gl_fproc1<a0> = prerr1_ref<a0>
+g_fproc1<a0> = prerr1_ref<a0>
 }
 //
 #impltmp
 <a1><a2>
 <a3><a4>
-prerr1_a04 =
-glfproc1_a04
+gs_prerr1_a04 =
+gs_fproc1_a04
 <a1><a2>
 <a3><a4> where
 {
 #impltmp
 {a0:vt}
-gl_fproc1<a0> = prerr1_ref<a0>
+g_fproc1<a0> = prerr1_ref<a0>
 }
 //
 #impltmp
 <a1>
 <a2><a3>
 <a4><a5>
-prerr1_a05 =
-glfproc1_a05
+gs_prerr1_a05 =
+gs_fproc1_a05
 <a1>
 <a2><a3>
 <a4><a5> where
 {
 #impltmp
 {a0:vt}
-gl_fproc1<a0> = prerr1_ref<a0>
+g_fproc1<a0> = prerr1_ref<a0>
 }
 //
 #impltmp
 <a1><a2>
 <a3><a4>
 <a5><a6>
-prerr1_a06 =
-glfproc1_a06
+gs_prerr1_a06 =
+gs_fproc1_a06
 <a1><a2>
 <a3><a4>
 <a5><a6> where
 {
 #impltmp
 {a0:vt}
-gl_fproc1<a0> = prerr1_ref<a0>
+g_fproc1<a0> = prerr1_ref<a0>
 }
 //
 #impltmp
@@ -995,8 +995,8 @@ gl_fproc1<a0> = prerr1_ref<a0>
 <a2><a3>
 <a4><a5>
 <a6><a7>
-prerr1_a07 =
-glfproc1_a07
+gs_prerr1_a07 =
+gs_fproc1_a07
 <a1>
 <a2><a3>
 <a4><a5>
@@ -1004,7 +1004,7 @@ glfproc1_a07
 {
 #impltmp
 {a0:vt}
-gl_fproc1<a0> = prerr1_ref<a0>
+g_fproc1<a0> = prerr1_ref<a0>
 }
 //
 #impltmp
@@ -1012,8 +1012,8 @@ gl_fproc1<a0> = prerr1_ref<a0>
 <a3><a4>
 <a5><a6>
 <a7><a8>
-prerr1_a08 =
-glfproc1_a08
+gs_prerr1_a08 =
+gs_fproc1_a08
 <a1><a2>
 <a3><a4>
 <a5><a6>
@@ -1021,7 +1021,7 @@ glfproc1_a08
 {
 #impltmp
 {a0:vt}
-gl_fproc1<a0> = prerr1_ref<a0>
+g_fproc1<a0> = prerr1_ref<a0>
 }
 //
 #impltmp
@@ -1030,8 +1030,8 @@ gl_fproc1<a0> = prerr1_ref<a0>
 <a4><a5>
 <a6><a7>
 <a8><a9>
-prerr1_a09 =
-glfproc1_a09
+gs_prerr1_a09 =
+gs_fproc1_a09
 <a1>
 <a2><a3>
 <a4><a5>
@@ -1040,7 +1040,7 @@ glfproc1_a09
 {
 #impltmp
 {a0:vt}
-gl_fproc1<a0> = prerr1_ref<a0>
+g_fproc1<a0> = prerr1_ref<a0>
 }
 //
 #impltmp
@@ -1049,8 +1049,8 @@ gl_fproc1<a0> = prerr1_ref<a0>
 <a05><a06>
 <a07><a08>
 <a09><a10>
-prerr1_a10 =
-glfproc1_a10
+gs_prerr1_a10 =
+gs_fproc1_a10
 <a01><a02>
 <a03><a04>
 <a05><a06>
@@ -1059,13 +1059,13 @@ glfproc1_a10
 {
 #impltmp
 {a0:vt}
-gl_fproc1<a0> = prerr1_ref<a0>
+g_fproc1<a0> = prerr1_ref<a0>
 }
 //
 (* ****** ****** *)
 //
 #impltmp
-prerrln1_a00
+gs_prerrln1_a00
 <>(*tmp*)
 ((*_*)) = prerr_ref( "\n" )
 //
@@ -1073,71 +1073,71 @@ prerrln1_a00
 //
 #impltmp
 <a1>
-prerrln1_a01
+gs_prerrln1_a01
 ( x1 ) =
 (
-prerr1_a01
+gs_prerr1_a01
 <   a1   >
-(   x1   ) ; prerrln1_a00<>()
-) (* end of [prerrln1_a01] *)
+(   x1   ) ; gs_prerrln1_a00<>()
+) (* end of [gs_prerrln1_a01] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
-prerrln1_a02
+gs_prerrln1_a02
 ( x1, x2 ) =
 (
-prerr1_a02
+gs_prerr1_a02
 < a1><a2 >
-( x1, x2 ) ; prerrln1_a00<>()
-) (* end of [prerrln1_a02] *)
+( x1, x2 ) ; gs_prerrln1_a00<>()
+) (* end of [gs_prerrln1_a02] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2><a3>
-prerrln1_a03
+gs_prerrln1_a03
 ( x1
 , x2, x3 ) =
 (
-prerr1_a03
+gs_prerr1_a03
 <a1><a2><a3>
 ( x1
-, x2, x3 ) ; prerrln1_a00<>()
-) (* end of [prerrln1_a03] *)
+, x2, x3 ) ; gs_prerrln1_a00<>()
+) (* end of [gs_prerrln1_a03] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1>
 <a2><a3><a4>
-prerrln1_a04
+gs_prerrln1_a04
 ( x1
 , x2, x3, x4 ) =
 (
-prerr1_a04
+gs_prerr1_a04
 <a1>
 <a2><a3><a4>
 ( x1
-, x2, x3, x4 ) ; prerrln1_a00<>()
-) (* end of [prerrln1_a04] *)
+, x2, x3, x4 ) ; gs_prerrln1_a00<>()
+) (* end of [gs_prerrln1_a04] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
 <a3><a4><a5>
-prerrln1_a05
+gs_prerrln1_a05
 ( x1, x2
 , x3, x4, x5 ) =
 (
-prerr1_a05
+gs_prerr1_a05
 <a1><a2>
 <a3><a4><a5>
 ( x1, x2
-, x3, x4, x5 ) ; prerrln1_a00<>()
-) (* end of [prerrln1_a05] *)
+, x3, x4, x5 ) ; gs_prerrln1_a00<>()
+) (* end of [gs_prerrln1_a05] *)
 //
 (* ****** ****** *)
 //
@@ -1145,7 +1145,7 @@ prerr1_a05
 <a1><a2>
 <a3><a4>
 <a5><a6>
-prerrln1_a06
+gs_prerrln1_a06
 ( x1
 , x2
 , x3
@@ -1153,14 +1153,14 @@ prerrln1_a06
 , x5
 , x6 ) =
 (
-prerr1_a06
+gs_prerr1_a06
 <a1><a2>
 <a3><a4>
 <a5><a6>
 ( x1, x2
 , x3, x4
-, x5, x6 ) ; prerrln1_a00<>()
-) (* end of [prerrln1_a06] *)
+, x5, x6 ) ; gs_prerrln1_a00<>()
+) (* end of [gs_prerrln1_a06] *)
 //
 (* ****** ****** *)
 //
@@ -1168,19 +1168,19 @@ prerr1_a06
 <a1><a2>
 <a3><a4>
 <a5><a6><a7>
-prerrln1_a07
+gs_prerrln1_a07
 ( x1
 , x2, x3
 , x4, x5
 , x6, x7 ) =
 (
-prerr1_a07
+gs_prerr1_a07
 <a1><a2>
 <a3><a4>
 <a5><a6><a7>
 ( x1, x2, x3
-, x4, x5, x6, x7 ) ; prerrln1_a00<>()
-) (* end of [prerrln1_a07] *)
+, x4, x5, x6, x7 ) ; gs_prerrln1_a00<>()
+) (* end of [gs_prerrln1_a07] *)
 //
 (* ****** ****** *)
 //
@@ -1188,19 +1188,19 @@ prerr1_a07
 <a1><a2>
 <a3><a4><a5>
 <a6><a7><a8>
-prerrln1_a08
+gs_prerrln1_a08
 ( x1, x2
 , x3, x4
 , x5, x6
 , x7, x8 ) =
 (
-prerr1_a08
+gs_prerr1_a08
 <a1><a2>
 <a3><a4><a5>
 <a6><a7><a8>
 ( x1, x2, x3, x4
-, x5, x6, x7, x8 ) ; prerrln1_a00<>()
-) (* end of [prerrln1_a08] *)
+, x5, x6, x7, x8 ) ; gs_prerrln1_a00<>()
+) (* end of [gs_prerrln1_a08] *)
 //
 (* ****** ****** *)
 //
@@ -1210,19 +1210,19 @@ prerr1_a08
 <a4><a5>
 <a6><a7>
 <a8><a9>
-prerrln1_a09
+gs_prerrln1_a09
 (x1,x2,x3,x4
 ,x5,x6,x7,x8,x9) =
 (
-prerr1_a09
+gs_prerr1_a09
 <a1>
 <a2><a3>
 <a4><a5>
 <a6><a7>
 <a8><a9>
 (x1,x2,x3,x4
-,x5,x6,x7,x8,x9) ; prerrln1_a00<>()
-) (* end of [prerrln1_a09] *)
+,x5,x6,x7,x8,x9) ; gs_prerrln1_a00<>()
+) (* end of [gs_prerrln1_a09] *)
 //
 (* ****** ****** *)
 //
@@ -1232,19 +1232,19 @@ prerr1_a09
 <a05><a06>
 <a07><a08>
 <a09><a10>
-prerrln1_a10
+gs_prerrln1_a10
 (x01,x02,x03,x04
 ,x05,x06,x07,x08,x09,x10) =
 (
-prerr1_a10
+gs_prerr1_a10
 <a01><a02>
 <a03><a04>
 <a05><a06>
 <a07><a08>
 <a09><a10>
 (x01,x02,x03,x04
-,x05,x06,x07,x08,x09,x10) ; prerrln1_a00<>()
-) (* end of [prerrln1_a10] *)
+,x05,x06,x07,x08,x09,x10) ; gs_prerrln1_a00<>()
+) (* end of [gs_prerrln1_a10] *)
 //
 (* ****** ****** *)
 

@@ -242,39 +242,39 @@ end//let
 //
 #impltmp
 {a:vt}
-glseq_copy
+gseq_copy
 <optn_vt(a)><a> = optn_vt_copy<a>
 //
 #impltmp
 {a:vt}
-glseq_free
+gseq_free
 <optn_vt(a)><a> = optn_vt_free<a>
 //
 (* ****** ****** *)
 //
 #impltmp
 {a:vt}
-glseq_forall0
+gseq_forall0
 <optn_vt(a)><a> = optn_vt_forall0<a>
 #impltmp
 {a:vt}
-glseq_forall1
+gseq_forall1
 <optn_vt(a)><a> = optn_vt_forall1<a>
 //
 (* ****** ****** *)
 //
 #impltmp
 {a:vt}
-glseq_listize0
+gseq_listize0
 <optn_vt(a)><a> = optn_vt_listize0<a>
 #impltmp
 {a:vt}
-glseq_strmize0
+gseq_strmize0
 <optn_vt(a)><a> = optn_vt_strmize0<a>
 //
 #impltmp
 {a:vt}
-glseq_rlistize0
+gseq_rlistize0
 <optn_vt(a)><a> = optn_vt_rlistize0<a>
 //
 (* ****** ****** *)
@@ -282,13 +282,13 @@ glseq_rlistize0
 #impltmp
 {a:vt}
 {b:vt}
-glseq_map0
+gseq_map0
 <optn_vt(a)><a>
 <optn_vt(b)><b> = optn_vt_map0<a><b>(*xs*)
 #impltmp
 {a:vt}
 {b:vt}
-glseq_map1
+gseq_map1
 <optn_vt(a)><a>
 <optn_vt(b)><b> = optn_vt_map1<a><b>(*xs*)
 //

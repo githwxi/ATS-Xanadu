@@ -127,17 +127,17 @@ g_noteq(a, a): bool
 //
 fun
 <a:vt>
-gl_equal0(~a, ~a): bool
+g_equal0(~a, ~a): bool
 fun
 <a:vt>
-gl_equal1(!a, !a): bool
+g_equal1(!a, !a): bool
 //
 fun
 <a:vt>
-gl_noteq0(~a, ~a): bool
+g_noteq0(~a, ~a): bool
 fun
 <a:vt>
-gl_noteq1(!a, !a): bool
+g_noteq1(!a, !a): bool
 //
 (* ****** ****** *)
 (*
@@ -172,10 +172,10 @@ fun
 g_print(x: a): void
 fun
 <a:vt>
-gl_print0(x: ~a): void
+g_print0(x: ~a): void
 fun
 <a:vt>
-gl_print1(x: !a): void
+g_print1(x: !a): void
 //
 (* ****** ****** *)
 //

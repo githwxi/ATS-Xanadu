@@ -73,13 +73,13 @@ strn_vt_print0(cs) =
 strn_vt_print1(cs) =
 let
 #impltmp
-glseq_print1$beg<>() = ()
+gseq_print1$beg<>() = ()
 #impltmp
-glseq_print1$sep<>() = ()
+gseq_print1$sep<>() = ()
 #impltmp
-glseq_print1$end<>() = ()
+gseq_print1$end<>() = ()
 in
-glseq_print1<strn_vt><cgtz>(cs)
+gseq_print1<strn_vt><cgtz>(cs)
 end // end of [strn_print1]
 //
 (* ****** ****** *)
@@ -101,7 +101,7 @@ end (* [strn_vt_length0] *)
 strn_vt_length1(cs) =
 $UN.cast01
 (
-glseq_length1<strn_vt><cgtz>(cs)
+gseq_length1<strn_vt><cgtz>(cs)
 ) (* end of [strn_vt_length1] *)
 //
 (* ****** ****** *)
@@ -306,7 +306,7 @@ let
 #vwtpdef xs = strn_vt
 in//let
 $UN.castlin01
-(glseq_copy_llist<xs><x0>(cs)) end
+(gseq_copy_llist<xs><x0>(cs)) end
 #impltmp
 <>(*tmp*)
 strn_vt_rlistize1(cs) =
@@ -315,7 +315,7 @@ let
 #vwtpdef xs = strn_vt
 in//let
 $UN.castlin01
-(glseq_rcopy_llist<xs><x0>(cs)) end
+(gseq_rcopy_llist<xs><x0>(cs)) end
 //
 (* ****** ****** *)
 
@@ -566,16 +566,16 @@ in//local
 (* ****** ****** *)
 //
 #impltmp
-gl_print0<xs> = strn_vt_print0<>
+g_print0<xs> = strn_vt_print0<>
 #impltmp
-gl_print1<xs> = strn_vt_print1<>
+g_print1<xs> = strn_vt_print1<>
 //
 (* ****** ****** *)
 
 #impltmp
-glseq_forall0<xs><x0> = strn_vt_forall0<>
+gseq_forall0<xs><x0> = strn_vt_forall0<>
 #impltmp
-glseq_forall1<xs><x0> = strn_vt_forall1<>
+gseq_forall1<xs><x0> = strn_vt_forall1<>
 
 (* ****** ****** *)
 
