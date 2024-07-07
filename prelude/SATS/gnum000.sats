@@ -36,42 +36,42 @@
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
-
+//
 fun
-<a:t0>
+<a:vt>
 g_0((*void*)): (a)
 fun
-<a:t0>
+<a:vt>
 g_1((*void*)): (a)
 fun
-<a:t0>
+<a:vt>
 g_2((*void*)): (a)
 fun
-<a:t0>
+<a:vt>
 g_3((*void*)): (a)
 fun
-<a:t0>
+<a:vt>
 g_4((*void*)): (a)
 fun
-<a:t0>
+<a:vt>
 g_5((*void*)): (a)
-
+//
 (* ****** ****** *)
 
 fun
-<a:t0>
+<a:vt>
 g_si(i0: sint): (a)
 fun
-<a:t0>
+<a:vt>
 g_ui(u0: uint): (a)
 
 (* ****** ****** *)
 //
 fun
-<a:t0>
+<a:vt>
 g_sf(f0: sflt): (a)
 fun
-<a:t0>
+<a:vt>
 g_df(f0: dflt): (a)
 //
 (* ****** ****** *)
@@ -113,80 +113,86 @@ g_mod(x: a, y: a): a
 //
 (* ****** ****** *)
 //
-// HX:
-// For linear gnums
+fun
+<a:vt>
+g_neg0(x: ~a): a
+fun
+<a:vt>
+g_neg1(x: !a): a
+//
+fun
+<a:vt>
+g_abs0(x: ~a): a
+fun
+<a:vt>
+g_abs1(x: !a): a
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-gl_0((*void*)): (a)
+g_succ0(x: ~a): a
 fun
 <a:vt>
-gl_1((*void*)): (a)
+g_succ1(x: !a): a
+//
 fun
 <a:vt>
-gl_2((*void*)): (a)
+g_pred0(x: ~a): a
 fun
 <a:vt>
-gl_3((*void*)): (a)
+g_pred1(x: !a): a
+//
+(* ****** ****** *)
+//
 fun
 <a:vt>
-gl_4((*void*)): (a)
+g_add00(x: ~a, y: ~a): a
 fun
 <a:vt>
-gl_5((*void*)): (a)
+g_add01(x: ~a, y: !a): a
+fun
+<a:vt>
+g_add10(x: !a, y: ~a): a
+fun
+<a:vt>
+g_add11(x: !a, y: !a): a
 //
 (* ****** ****** *)
 
 fun
 <a:vt>
-gl_add00(x: ~a, y: ~a): a
+g_sub00(x: ~a, y: ~a): a
 fun
 <a:vt>
-gl_add01(x: ~a, y: !a): a
-fun
-<a:vt>
-gl_add10(x: !a, y: ~a): a
-fun
-<a:vt>
-gl_add11(x: !a, y: !a): a
+g_sub11(x: !a, y: !a): a
 
 (* ****** ****** *)
 
 fun
 <a:vt>
-gl_sub00(x: ~a, y: ~a): a
+g_mul00(x: ~a, y: ~a): a
 fun
 <a:vt>
-gl_sub11(x: !a, y: !a): a
+g_mul11(x: !a, y: !a): a
 
 (* ****** ****** *)
 
 fun
 <a:vt>
-gl_mul00(x: ~a, y: ~a): a
+g_div00(x: ~a, y: ~a): a
 fun
 <a:vt>
-gl_mul11(x: !a, y: !a): a
+g_div11(x: !a, y: !a): a
 
 (* ****** ****** *)
 
 fun
 <a:vt>
-gl_div00(x: ~a, y: ~a): a
+g_mod00(x: ~a, y: ~a): a
 fun
 <a:vt>
-gl_div11(x: !a, y: !a): a
-
-(* ****** ****** *)
-
-fun
-<a:vt>
-gl_mod00(x: ~a, y: ~a): a
-fun
-<a:vt>
-gl_mod11(x: !a, y: !a): a
+g_mod11(x: !a, y: !a): a
 
 (* ****** ****** *)
 //

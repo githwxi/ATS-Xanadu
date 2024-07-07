@@ -427,7 +427,7 @@ strxcon_vt_cons
 (* ****** ****** *)
 //
 (*
-HX-2024-01-02: for glseq-operations
+HX-2024-01-02: for gseq-operations
 *)
 //
 (* ****** ****** *)
@@ -435,11 +435,11 @@ HX-2024-01-02: for glseq-operations
 //
 #impltmp
 {x0:vt}
-glseq_strmize0
+gseq_strmize0
 <strx_vt(x0)><x0> = strx_vt_strmize0<x0>
 #impltmp
 {x0:vt}
-glseq_strmize0
+gseq_strmize0
 <strq_vt(x0)><x0> = strq_vt_strmize0<x0>
 //
 (* ****** ****** *)

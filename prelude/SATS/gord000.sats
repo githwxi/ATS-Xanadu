@@ -106,74 +106,74 @@ g_cmpz(x: a): sint
 
 fun
 <a:vt>
-gl_eq00(~a, ~a): bool
+g_eq00(~a, ~a): bool
 fun
 <a:vt>
-gl_eq11(!a, !a): bool
+g_eq11(!a, !a): bool
 
 fun
 <a:vt>
-gl_neq00(~a, ~a): bool
+g_neq00(~a, ~a): bool
 fun
 <a:vt>
-gl_neq11(!a, !a): bool
-
-(* ****** ****** *)
-
-fun
-<a:vt>
-gl_lt00(~a, ~a): bool
-fun
-<a:vt>
-gl_lt11(!a, !a): bool
-
-fun
-<a:vt>
-gl_gt00(~a, ~a): bool
-fun
-<a:vt>
-gl_gt11(!a, !a): bool
-
-fun
-<a:vt>
-gl_lte00(~a, ~a): bool
-fun
-<a:vt>
-gl_lte11(!a, !a): bool
-
-fun
-<a:vt>
-gl_gte00(~a, ~a): bool
-fun
-<a:vt>
-gl_gte11(!a, !a): bool
+g_neq11(!a, !a): bool
 
 (* ****** ****** *)
 
 fun
 <a:vt>
-gl_cmp00(~a, ~a): sint
+g_lt00(~a, ~a): bool
 fun
 <a:vt>
-gl_cmp11(!a, !a): sint
+g_lt11(!a, !a): bool
+
+fun
+<a:vt>
+g_gt00(~a, ~a): bool
+fun
+<a:vt>
+g_gt11(!a, !a): bool
+
+fun
+<a:vt>
+g_lte00(~a, ~a): bool
+fun
+<a:vt>
+g_lte11(!a, !a): bool
+
+fun
+<a:vt>
+g_gte00(~a, ~a): bool
+fun
+<a:vt>
+g_gte11(!a, !a): bool
 
 (* ****** ****** *)
 
 fun
 <a:vt>
-gl_max00(x: ~a, y: ~a): (a)
+g_cmp00(~a, ~a): sint
 fun
 <a:vt>
-gl_max11(x: !a, y: !a): (a)
+g_cmp11(!a, !a): sint
 
 (* ****** ****** *)
 
 fun
 <a:vt>
-gl_min00(x: ~a, y: ~a): (a)
+g_max00(x: ~a, y: ~a): (a)
 fun
 <a:vt>
-gl_min11(x: !a, y: !a): (a)
+g_max11(x: !a, y: !a): (a)
+
+(* ****** ****** *)
+
+fun
+<a:vt>
+g_min00(x: ~a, y: ~a): (a)
+fun
+<a:vt>
+g_min11(x: !a, y: !a): (a)
 
 (* ****** ****** *)
 //

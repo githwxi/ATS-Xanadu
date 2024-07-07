@@ -81,7 +81,7 @@ lam(x0)=>gseq_memberq<xs><x0>(xs,x0))
 gfun_equal_at
   (f0, x0, y0) =
 (
-  gl_equal0<y0>(f0(x0), y0))
+  g_equal0<y0>(f0(x0), y0))
 //
 #impltmp
 <x0:t0>
@@ -92,7 +92,7 @@ let
   val x1 = g_rand<x0>((*0*))
   and x2 = g_rand<x0>((*0*))
 in
-  gl_equal0<y0>(f1(x1), f2(x2)) endlet
+  g_equal0<y0>(f1(x1), f2(x2)) endlet
 //
 #impltmp
 <x0:t0>
@@ -103,7 +103,7 @@ let
   val x1 = g_rand<x0>((*0*))
   and x2 = g_rand<x0>((*0*))
 in
-  gl_equal0<y0>(f1(x1), f2(x2)) endlet
+  g_equal0<y0>(f1(x1), f2(x2)) endlet
 //
 (* ****** ****** *)
 

@@ -1084,7 +1084,7 @@ end
 g_sel2<z0>(z1, z2) =
 let
 val sgn =
-gl_cmp11<z0>(z1, z2) in
+g_cmp11<z0>(z1, z2) in
 if (sgn <= 0) then 0 else 1 end
 //
 in//let

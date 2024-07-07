@@ -171,7 +171,7 @@ let
 val A0 =
 a1ptr_alloc(n0)
 val () =
-glseq_iforeach0(xs) where
+gseq_iforeach0(xs) where
 {
 #impltmp
 iforeach0$work<a>(i, x) =
@@ -206,12 +206,6 @@ val n0 = a1ptr_length1(A0)
 } (*where*) // g_free<a1ptr>
 //
 (* ****** ****** *)
-//
-(*
-HX:
-For implementing glseq-ops
-*)
-//
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_arrn000_vt.dats] *)

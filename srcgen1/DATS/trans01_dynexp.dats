@@ -2342,7 +2342,7 @@ implement
 trans01_dcstdecl
   (d0cl) = let
 //
-(*
+// (*
 val
 loc0 = d0cl.loc()
 val () =
@@ -2351,7 +2351,7 @@ println!
 val () =
 println!
 ("trans01_dcstdecl: d0cl = ", d0cl)
-*)
+// *)
 //
 val+
 D0CSTDECL(rcd) = d0cl
@@ -2360,8 +2360,10 @@ val
 loc = rcd.loc
 val
 nam = rcd.nam
+//
 val-
 I0DNTsome(tok) = nam.node()
+//
 val
 arg = trans01_darglst(rcd.arg)
 val

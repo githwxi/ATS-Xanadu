@@ -487,7 +487,7 @@ strmcon_vt_nil() =>
 strmcon_vt_cons(x2, xs2) =>
 let
   val
-  sgn = gl_cmp00<a>(x1, x2)
+  sgn = g_cmp00<a>(x1, x2)
 in
   if
   (sgn = 0)
@@ -546,9 +546,9 @@ strm_vt_gappend0
   (xs1, xs2) = let
 //
 val xs1 =
-glseq_strmize0<xs><x0>(xs1)
+gseq_strmize0<xs><x0>(xs1)
 val xs2 =
-glseq_strmize0<xs><x0>(xs2)
+gseq_strmize0<xs><x0>(xs2)
 //
 in
 (
@@ -576,7 +576,7 @@ strmcon_vt_nil()
 strmcon_vt_cons(xs0, xss) => !
 (
 strm_vt_append0<x0>
-(glseq_strmize0<xs><x0>(xs0),auxmain(xss)))
+(gseq_strmize0<xs><x0>(xs0),auxmain(xss)))
 )
 }(*where*) // end-of-[strm_vt_gconcat0(xss)]
 //
@@ -1135,7 +1135,7 @@ xs = strm_vt(x0)
 #impltmp
 map0$fopr<x0><x0>(x0) = x0
 in//let
-  glseq_map0_add0<xs><x0><x0>(xs)
+  gseq_map0_add0<xs><x0><x0>(xs)
 end(*let*)//end-of-(strm_vt_add0(xs)/map0)
 //
 #impltmp
@@ -1148,7 +1148,7 @@ xs = strm_vt(x0)
 #impltmp
 map0$fopr<x0><x0>(x0) = x0
 in//let
-  glseq_map0_mul0<xs><x0><x0>(xs)
+  gseq_map0_mul0<xs><x0><x0>(xs)
 end(*let*)//end-of-(strm_vt_mul0(xs)/map0)
 //
 (* ****** ****** *)
@@ -1331,7 +1331,7 @@ end // end of [strmcon_vt_cons]
 
 (* ****** ****** *)
 //
-// For glseq-i-operations
+// For gseq-i-operations
 //
 (* ****** ****** *)
 
@@ -1544,7 +1544,7 @@ strmcon_vt_cons
 (* ****** ****** *)
 (* ****** ****** *)
 //
-// For z2-glseq-operations
+// For z2-gseq-operations
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1954,7 +1954,7 @@ z2iforeach0$work<x0,y0>(i0,x0,y0)
 (* ****** ****** *)
 //
 (*
-HX-2020-06-02: for g/gl-operations
+HX-2020-06-02: for g/g-operations
 *)
 (* ****** ****** *)
 //
@@ -1971,7 +1971,7 @@ g_free<strx_vt(a)> = strx_vt_free<a>
 (* ****** ****** *)
 //
 (*
-HX-2020-06-02: for glseq-operations
+HX-2020-06-02: for gseq-operations
 *)
 //
 (* ****** ****** *)
@@ -1979,37 +1979,37 @@ HX-2020-06-02: for glseq-operations
 //
 #impltmp
 {x0:vt}
-glseq_listize0
+gseq_listize0
 <strm_vt(x0)><x0> = strm_vt_listize0<x0>
 //
 #impltmp
 {x0:vt}
-glseq_strmize0
+gseq_strmize0
 <strm_vt(x0)><x0> = strm_vt_strmize0<x0>
 //
 (* ****** ****** *)
 //
 #impltmp
 {x0:vt}
-glseq_make0_lstrm
+gseq_make0_lstrm
 <list_vt(x0)><x0> = strm_vt_listize0<x0>
 //
 (* ****** ****** *)
 //
 #impltmp
 {x0:vt}
-glseq_rlistize0
+gseq_rlistize0
 <strm_vt(x0)><x0> = strm_vt_rlistize0<x0>
 //
 (* ****** ****** *)
 //
 #impltmp
 {x0:vt}
-glseq_add0
+gseq_add0
 <strm_vt(x0)><x0> = strm_vt_add0<x0>(*xs*)
 #impltmp
 {x0:vt}
-glseq_mul0
+gseq_mul0
 <strm_vt(x0)><x0> = strm_vt_mul0<x0>(*xs*)
 //
 (* ****** ****** *)

@@ -84,111 +84,111 @@ For linear gord-ops
 //
 #impltmp
 {a:t0}
-gl_eq00<a> = g_eq<a>
+g_eq00<a> = g_eq<a>
 #impltmp
 {a:t0}
-gl_eq11<a> = g_eq<a>
+g_eq11<a> = g_eq<a>
 //
 (* ****** ****** *)
 //
 #impltmp
 {a:t0}
-gl_lt00<a> = g_lt<a>
+g_lt00<a> = g_lt<a>
 #impltmp
 {a:t0}
-gl_lt11<a> = g_lt<a>
+g_lt11<a> = g_lt<a>
 #impltmp
 {a:t0}
-gl_gt00<a> = g_gt<a>
+g_gt00<a> = g_gt<a>
 #impltmp
 {a:t0}
-gl_gt11<a> = g_gt<a>
+g_gt11<a> = g_gt<a>
 //
 (* ****** ****** *)
 //
 #impltmp
 {a:t0}
-gl_lte00<a> = g_lte<a>
+g_lte00<a> = g_lte<a>
 #impltmp
 {a:t0}
-gl_lte11<a> = g_lte<a>
+g_lte11<a> = g_lte<a>
 #impltmp
 {a:t0}
-gl_gte00<a> = g_gte<a>
+g_gte00<a> = g_gte<a>
 #impltmp
 {a:t0}
-gl_gte11<a> = g_gte<a>
+g_gte11<a> = g_gte<a>
 //
 (* ****** ****** *)
 //
 #impltmp
 {a:t0}
-gl_cmp00<a> = g_cmp<a>
+g_cmp00<a> = g_cmp<a>
 #impltmp
 {a:t0}
-gl_cmp11<a> = g_cmp<a>
+g_cmp11<a> = g_cmp<a>
 //
 (* ****** ****** *)
 //
 #impltmp
 {a:t0}
-gl_max00<a> = g_max<a>
+g_max00<a> = g_max<a>
 #impltmp
 {a:t0}
-gl_max11<a> = g_max<a>
+g_max11<a> = g_max<a>
 #impltmp
 {a:t0}
-gl_min00<a> = g_min<a>
+g_min00<a> = g_min<a>
 #impltmp
 {a:t0}
-gl_min11<a> = g_min<a>
-//
-(* ****** ****** *)
-//
-#impltmp
-{a:vt}
-gl_eq00<a>(x, y) =
-(gl_cmp00<a>(x, y) = 0)
-#impltmp
-{a:vt}
-gl_neq00<a>(x, y) =
-(gl_cmp00<a>(x, y) != 0)
+g_min11<a> = g_min<a>
 //
 (* ****** ****** *)
 //
 #impltmp
 {a:vt}
-gl_lt00<a>(x, y) =
-(gl_cmp00<a>(x, y) < 0)
+g_eq00<a>(x, y) =
+(g_cmp00<a>(x, y) = 0)
 #impltmp
 {a:vt}
-gl_gt00<a>(x, y) =
-(gl_cmp00<a>(x, y) > 0)
+g_neq00<a>(x, y) =
+(g_cmp00<a>(x, y) != 0)
 //
 (* ****** ****** *)
 //
 #impltmp
 {a:vt}
-gl_lte00<a>(x, y) =
-(gl_cmp00<a>(x, y) <= 0)
+g_lt00<a>(x, y) =
+(g_cmp00<a>(x, y) < 0)
 #impltmp
 {a:vt}
-gl_gte00<a>(x, y) =
-(gl_cmp00<a>(x, y) >= 0)
+g_gt00<a>(x, y) =
+(g_cmp00<a>(x, y) > 0)
 //
 (* ****** ****** *)
 //
 #impltmp
 {a:vt}
-gl_max11<a>(x, y) =
+g_lte00<a>(x, y) =
+(g_cmp00<a>(x, y) <= 0)
+#impltmp
+{a:vt}
+g_gte00<a>(x, y) =
+(g_cmp00<a>(x, y) >= 0)
+//
+(* ****** ****** *)
+//
+#impltmp
+{a:vt}
+g_max11<a>(x, y) =
 if
-(gl_gte11<a>(x, y))
+(g_gte11<a>(x, y))
 then g_copy<a>(x) else g_copy<a>(y)
 #impltmp
 {a:vt}
-gl_min11<a>(x, y) =
+g_min11<a>(x, y) =
 if
-(gl_lte11<a>(x, y))
+(g_lte11<a>(x, y))
 then g_copy<a>(x) else g_copy<a>(y)
 //
 (* ****** ****** *)

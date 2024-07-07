@@ -173,32 +173,32 @@ list_vt_a10
 //
 fun
 <a0:vt>
-gl_fproc0(x0: ~a0): void
+g_fproc0(x0: ~a0): void
 fun
 <a0:vt>
-gl_fproc1(x0: !a0): void
+g_fproc1(x0: !a0): void
 //
 (* ****** ****** *)
 //
 (*
 fun<>
-glfproc0_a00
+gs_fproc0_a00
 ((*void*)) : void
 *)
 fun
 <a1:vt>
-glfproc0_a01
+gs_fproc0_a01
 ( x1: ~a1 ) : void
 fun
 <a1:vt>
 <a2:vt>
-glfproc0_a02
+gs_fproc0_a02
 ( x1: ~a1, x2: ~a2 ) : void
 fun
 <a1:vt>
 <a2:vt>
 <a3:vt>
-glfproc0_a03
+gs_fproc0_a03
 ( x1: ~a1
 , x2: ~a2, x3: ~a3 ) : void
 fun
@@ -206,7 +206,7 @@ fun
 <a2:vt>
 <a3:vt>
 <a4:vt>
-glfproc0_a04
+gs_fproc0_a04
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4 ) : void
 fun
@@ -215,7 +215,7 @@ fun
 <a3:vt>
 <a4:vt>
 <a5:vt>
-glfproc0_a05
+gs_fproc0_a05
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5 ) : void
@@ -226,7 +226,7 @@ fun
 <a4:vt>
 <a5:vt>
 <a6:vt>
-glfproc0_a06
+gs_fproc0_a06
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4
 , x5: ~a5, x6: ~a6 ) : void
@@ -238,7 +238,7 @@ fun
 <a5:vt>
 <a6:vt>
 <a7:vt>
-glfproc0_a07
+gs_fproc0_a07
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5
@@ -252,7 +252,7 @@ fun
 <a6:vt>
 <a7:vt>
 <a8:vt>
-glfproc0_a08
+gs_fproc0_a08
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4
 , x5: ~a5, x6: ~a6
@@ -267,7 +267,7 @@ fun
 <a7:vt>
 <a8:vt>
 <a9:vt>
-glfproc0_a09
+gs_fproc0_a09
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5
@@ -284,7 +284,7 @@ fun
 <a08:vt>
 <a09:vt>
 <a10:vt>
-glfproc0_a10
+gs_fproc0_a10
 ( x01: ~a01, x02: ~a02
 , x03: ~a03, x04: ~a04
 , x05: ~a05, x06: ~a06
@@ -292,38 +292,38 @@ glfproc0_a10
 , x09: ~a09, x10: ~a10 ) : void
 (* ****** ****** *)
 //
-#symload glfproc0 with glfproc0_a01
-#symload glfproc0 with glfproc0_a02
-#symload glfproc0 with glfproc0_a03
-#symload glfproc0 with glfproc0_a04
-#symload glfproc0 with glfproc0_a05
-#symload glfproc0 with glfproc0_a06
-#symload glfproc0 with glfproc0_a07
-#symload glfproc0 with glfproc0_a08
-#symload glfproc0 with glfproc0_a09
-#symload glfproc0 with glfproc0_a10
+#symload fproc0 with gs_fproc0_a01
+#symload fproc0 with gs_fproc0_a02
+#symload fproc0 with gs_fproc0_a03
+#symload fproc0 with gs_fproc0_a04
+#symload fproc0 with gs_fproc0_a05
+#symload fproc0 with gs_fproc0_a06
+#symload fproc0 with gs_fproc0_a07
+#symload fproc0 with gs_fproc0_a08
+#symload fproc0 with gs_fproc0_a09
+#symload fproc0 with gs_fproc0_a10
 //
 (* ****** ****** *)
 //
 (*
 fun<>
-glfproc1_a00
+gs_fproc1_a00
 ((*void*)) : void
 *)
 fun
 <a1:vt>
-glfproc1_a01
+gs_fproc1_a01
 ( x1: !a1 ) : void
 fun
 <a1:vt>
 <a2:vt>
-glfproc1_a02
+gs_fproc1_a02
 ( x1: !a1, x2: !a2 ) : void
 fun
 <a1:vt>
 <a2:vt>
 <a3:vt>
-glfproc1_a03
+gs_fproc1_a03
 ( x1: !a1
 , x2: !a2, x3: !a3 ) : void
 fun
@@ -331,7 +331,7 @@ fun
 <a2:vt>
 <a3:vt>
 <a4:vt>
-glfproc1_a04
+gs_fproc1_a04
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4 ) : void
 fun
@@ -340,7 +340,7 @@ fun
 <a3:vt>
 <a4:vt>
 <a5:vt>
-glfproc1_a05
+gs_fproc1_a05
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5 ) : void
@@ -351,7 +351,7 @@ fun
 <a4:vt>
 <a5:vt>
 <a6:vt>
-glfproc1_a06
+gs_fproc1_a06
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4
 , x5: !a5, x6: !a6 ) : void
@@ -363,7 +363,7 @@ fun
 <a5:vt>
 <a6:vt>
 <a7:vt>
-glfproc1_a07
+gs_fproc1_a07
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5
@@ -377,7 +377,7 @@ fun
 <a6:vt>
 <a7:vt>
 <a8:vt>
-glfproc1_a08
+gs_fproc1_a08
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4
 , x5: !a5, x6: !a6
@@ -392,7 +392,7 @@ fun
 <a7:vt>
 <a8:vt>
 <a9:vt>
-glfproc1_a09
+gs_fproc1_a09
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5
@@ -409,7 +409,7 @@ fun
 <a08:vt>
 <a09:vt>
 <a10:vt>
-glfproc1_a10
+gs_fproc1_a10
 ( x01: !a01, x02: !a02
 , x03: !a03, x04: !a04
 , x05: !a05, x06: !a06
@@ -417,16 +417,16 @@ glfproc1_a10
 , x09: !a09, x10: !a10 ) : void
 (* ****** ****** *)
 //
-#symload glfproc1 with glfproc1_a01
-#symload glfproc1 with glfproc1_a02
-#symload glfproc1 with glfproc1_a03
-#symload glfproc1 with glfproc1_a04
-#symload glfproc1 with glfproc1_a05
-#symload glfproc1 with glfproc1_a06
-#symload glfproc1 with glfproc1_a07
-#symload glfproc1 with glfproc1_a08
-#symload glfproc1 with glfproc1_a09
-#symload glfproc1 with glfproc1_a10
+#symload fproc1 with gs_fproc1_a01
+#symload fproc1 with gs_fproc1_a02
+#symload fproc1 with gs_fproc1_a03
+#symload fproc1 with gs_fproc1_a04
+#symload fproc1 with gs_fproc1_a05
+#symload fproc1 with gs_fproc1_a06
+#symload fproc1 with gs_fproc1_a07
+#symload fproc1 with gs_fproc1_a08
+#symload fproc1 with gs_fproc1_a09
+#symload fproc1 with gs_fproc1_a10
 //
 (* ****** ****** *)
 //
@@ -437,55 +437,55 @@ glfproc1_a10
 //
 fun
 <a0:vt>
-gl_fred20(~a0, ~a0): a0
+g_fred20(~a0, ~a0): a0
 fun
 <a0:vt>
-gl_fred21(!a0, !a0): a0
+g_fred21(!a0, !a0): a0
 //
 (* ****** ****** *)
 fun
 <a0:vt>
-glfred2l0_a02
+gs_fred2l0_a02
 (x1: ~a0, x2: ~a0): a0
 fun
 <a0:vt>
-glfred2l0_a03
+gs_fred2l0_a03
 ( x1: ~a0
 , x2: ~a0, x3: ~a0): a0
 fun
 <a0:vt>
-glfred2l0_a04
+gs_fred2l0_a04
 ( x1: ~a0, x2: ~a0
 , x3: ~a0, x4: ~a0): a0
 fun
 <a0:vt>
-glfred2l0_a05
+gs_fred2l0_a05
 ( x1: ~a0
 , x2: ~a0, x3: ~a0
 , x4: ~a0, x5: ~a0): a0
 fun
 <a0:vt>
-glfred2l0_a06
+gs_fred2l0_a06
 ( x1: ~a0, x2: ~a0
 , x3: ~a0, x4: ~a0
 , x5: ~a0, x6: ~a0): a0
 fun
 <a0:vt>
-glfred2l0_a07
+gs_fred2l0_a07
 ( x1: ~a0
 , x2: ~a0, x3: ~a0
 , x4: ~a0, x5: ~a0
 , x6: ~a0, x7: ~a0): a0
 fun
 <a0:vt>
-glfred2l0_a08
+gs_fred2l0_a08
 ( x1: ~a0, x2: ~a0
 , x3: ~a0, x4: ~a0
 , x5: ~a0, x6: ~a0
 , x7: ~a0, x8: ~a0): a0
 fun
 <a0:vt>
-glfred2l0_a09
+gs_fred2l0_a09
 ( x1: ~a0
 , x2: ~a0, x3: ~a0
 , x4: ~a0, x5: ~a0
@@ -494,7 +494,7 @@ glfred2l0_a09
 //
 fun
 <a0:vt>
-glfred2l0_a10
+gs_fred2l0_a10
 ( x01: ~a0, x02: ~a0
 , x03: ~a0, x04: ~a0
 , x05: ~a0, x06: ~a0
@@ -504,47 +504,47 @@ glfred2l0_a10
 (* ****** ****** *)
 fun
 <a0:vt>
-glfred2l1_a02
+gs_fred2l1_a02
 (x1: !a0, x2: !a0): a0
 fun
 <a0:vt>
-glfred2l1_a03
+gs_fred2l1_a03
 ( x1: !a0
 , x2: !a0, x3: !a0): a0
 fun
 <a0:vt>
-glfred2l1_a04
+gs_fred2l1_a04
 ( x1: !a0, x2: !a0
 , x3: !a0, x4: !a0): a0
 fun
 <a0:vt>
-glfred2l1_a05
+gs_fred2l1_a05
 ( x1: !a0
 , x2: !a0, x3: !a0
 , x4: !a0, x5: !a0): a0
 fun
 <a0:vt>
-glfred2l1_a06
+gs_fred2l1_a06
 ( x1: !a0, x2: !a0
 , x3: !a0, x4: !a0
 , x5: !a0, x6: !a0): a0
 fun
 <a0:vt>
-glfred2l1_a07
+gs_fred2l1_a07
 ( x1: !a0
 , x2: !a0, x3: !a0
 , x4: !a0, x5: !a0
 , x6: !a0, x7: !a0): a0
 fun
 <a0:vt>
-glfred2l1_a08
+gs_fred2l1_a08
 ( x1: !a0, x2: !a0
 , x3: !a0, x4: !a0
 , x5: !a0, x6: !a0
 , x7: !a0, x8: !a0): a0
 fun
 <a0:vt>
-glfred2l1_a09
+gs_fred2l1_a09
 ( x1: !a0
 , x2: !a0, x3: !a0
 , x4: !a0, x5: !a0
@@ -553,7 +553,7 @@ glfred2l1_a09
 //
 fun
 <a0:vt>
-glfred2l1_a10
+gs_fred2l1_a10
 ( x01: !a0, x02: !a0
 , x03: !a0, x04: !a0
 , x05: !a0, x06: !a0
@@ -563,47 +563,47 @@ glfred2l1_a10
 (* ****** ****** *)
 fun
 <a0:vt>
-glfred2r0_a02
+gs_fred2r0_a02
 (x1: ~a0, x2: ~a0): a0
 fun
 <a0:vt>
-glfred2r0_a03
+gs_fred2r0_a03
 ( x1: ~a0
 , x2: ~a0, x3: ~a0): a0
 fun
 <a0:vt>
-glfred2r0_a04
+gs_fred2r0_a04
 ( x1: ~a0, x2: ~a0
 , x3: ~a0, x4: ~a0): a0
 fun
 <a0:vt>
-glfred2r0_a05
+gs_fred2r0_a05
 ( x1: ~a0
 , x2: ~a0, x3: ~a0
 , x4: ~a0, x5: ~a0): a0
 fun
 <a0:vt>
-glfred2r0_a06
+gs_fred2r0_a06
 ( x1: ~a0, x2: ~a0
 , x3: ~a0, x4: ~a0
 , x5: ~a0, x6: ~a0): a0
 fun
 <a0:vt>
-glfred2r0_a07
+gs_fred2r0_a07
 ( x1: ~a0
 , x2: ~a0, x3: ~a0
 , x4: ~a0, x5: ~a0
 , x6: ~a0, x7: ~a0): a0
 fun
 <a0:vt>
-glfred2r0_a08
+gs_fred2r0_a08
 ( x1: ~a0, x2: ~a0
 , x3: ~a0, x4: ~a0
 , x5: ~a0, x6: ~a0
 , x7: ~a0, x8: ~a0): a0
 fun
 <a0:vt>
-glfred2r0_a09
+gs_fred2r0_a09
 ( x1: ~a0
 , x2: ~a0, x3: ~a0
 , x4: ~a0, x5: ~a0
@@ -612,7 +612,7 @@ glfred2r0_a09
 //
 fun
 <a0:vt>
-glfred2r0_a10
+gs_fred2r0_a10
 ( x01: ~a0, x02: ~a0
 , x03: ~a0, x04: ~a0
 , x05: ~a0, x06: ~a0
@@ -622,47 +622,47 @@ glfred2r0_a10
 (* ****** ****** *)
 fun
 <a0:vt>
-glfred2r1_a02
+gs_fred2r1_a02
 (x1: !a0, x2: !a0): a0
 fun
 <a0:vt>
-glfred2r1_a03
+gs_fred2r1_a03
 ( x1: !a0
 , x2: !a0, x3: !a0): a0
 fun
 <a0:vt>
-glfred2r1_a04
+gs_fred2r1_a04
 ( x1: !a0, x2: !a0
 , x3: !a0, x4: !a0): a0
 fun
 <a0:vt>
-glfred2r1_a05
+gs_fred2r1_a05
 ( x1: !a0
 , x2: !a0, x3: !a0
 , x4: !a0, x5: !a0): a0
 fun
 <a0:vt>
-glfred2r1_a06
+gs_fred2r1_a06
 ( x1: !a0, x2: !a0
 , x3: !a0, x4: !a0
 , x5: !a0, x6: !a0): a0
 fun
 <a0:vt>
-glfred2r1_a07
+gs_fred2r1_a07
 ( x1: !a0
 , x2: !a0, x3: !a0
 , x4: !a0, x5: !a0
 , x6: !a0, x7: !a0): a0
 fun
 <a0:vt>
-glfred2r1_a08
+gs_fred2r1_a08
 ( x1: !a0, x2: !a0
 , x3: !a0, x4: !a0
 , x5: !a0, x6: !a0
 , x7: !a0, x8: !a0): a0
 fun
 <a0:vt>
-glfred2r1_a09
+gs_fred2r1_a09
 ( x1: !a0
 , x2: !a0, x3: !a0
 , x4: !a0, x5: !a0
@@ -671,7 +671,7 @@ glfred2r1_a09
 //
 fun
 <a0:vt>
-glfred2r1_a10
+gs_fred2r1_a10
 ( x01: !a0, x02: !a0
 , x03: !a0, x04: !a0
 , x05: !a0, x06: !a0
@@ -690,23 +690,23 @@ print0 and println0
 //
 (*
 fun<>
-print0_a00
+gs_print0_a00
 ((*void*)) : void
 *)
 fun
 <a1:vt>
-print0_a01
+gs_print0_a01
 ( x1: ~a1 ) : void
 fun
 <a1:vt>
 <a2:vt>
-print0_a02
+gs_print0_a02
 ( x1: ~a1, x2: ~a2 ) : void
 fun
 <a1:vt>
 <a2:vt>
 <a3:vt>
-print0_a03
+gs_print0_a03
 ( x1: ~a1
 , x2: ~a2, x3: ~a3 ) : void
 fun
@@ -714,7 +714,7 @@ fun
 <a2:vt>
 <a3:vt>
 <a4:vt>
-print0_a04
+gs_print0_a04
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4 ) : void
 fun
@@ -723,7 +723,7 @@ fun
 <a3:vt>
 <a4:vt>
 <a5:vt>
-print0_a05
+gs_print0_a05
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5 ) : void
@@ -734,7 +734,7 @@ fun
 <a4:vt>
 <a5:vt>
 <a6:vt>
-print0_a06
+gs_print0_a06
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4
 , x5: ~a5, x6: ~a6 ) : void
@@ -746,7 +746,7 @@ fun
 <a5:vt>
 <a6:vt>
 <a7:vt>
-print0_a07
+gs_print0_a07
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5
@@ -760,7 +760,7 @@ fun
 <a6:vt>
 <a7:vt>
 <a8:vt>
-print0_a08
+gs_print0_a08
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4
 , x5: ~a5, x6: ~a6
@@ -775,7 +775,7 @@ fun
 <a7:vt>
 <a8:vt>
 <a9:vt>
-print0_a09
+gs_print0_a09
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5
@@ -793,7 +793,7 @@ fun
 <a08:vt>
 <a09:vt>
 <a10:vt>
-print0_a10
+gs_print0_a10
 (x01: ~a01, x02: ~a02
 ,x03: ~a03, x04: ~a04
 ,x05: ~a05, x06: ~a06
@@ -801,36 +801,36 @@ print0_a10
 ,x09: ~a09, x10: ~a10) : void
 (* ****** ****** *)
 //
-#symload print0 with print0_a01
-#symload print0 with print0_a02
-#symload print0 with print0_a03
-#symload print0 with print0_a04
-#symload print0 with print0_a05
-#symload print0 with print0_a06
-#symload print0 with print0_a07
-#symload print0 with print0_a08
-#symload print0 with print0_a09
-#symload print0 with print0_a10
+#symload print0 with gs_print0_a01
+#symload print0 with gs_print0_a02
+#symload print0 with gs_print0_a03
+#symload print0 with gs_print0_a04
+#symload print0 with gs_print0_a05
+#symload print0 with gs_print0_a06
+#symload print0 with gs_print0_a07
+#symload print0 with gs_print0_a08
+#symload print0 with gs_print0_a09
+#symload print0 with gs_print0_a10
 //
 (* ****** ****** *)
 //
 fun<>
-println0_a00
+gs_println0_a00
 ((*void*)) : void
 fun
 <a1:vt>
-println0_a01
+gs_println0_a01
 ( x1: ~a1 ) : void
 fun
 <a1:vt>
 <a2:vt>
-println0_a02
+gs_println0_a02
 ( x1: ~a1, x2: ~a2 ) : void
 fun
 <a1:vt>
 <a2:vt>
 <a3:vt>
-println0_a03
+gs_println0_a03
 ( x1: ~a1
 , x2: ~a2, x3: ~a3 ) : void
 fun
@@ -838,7 +838,7 @@ fun
 <a2:vt>
 <a3:vt>
 <a4:vt>
-println0_a04
+gs_println0_a04
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4 ) : void
 fun
@@ -847,7 +847,7 @@ fun
 <a3:vt>
 <a4:vt>
 <a5:vt>
-println0_a05
+gs_println0_a05
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5 ) : void
@@ -858,7 +858,7 @@ fun
 <a4:vt>
 <a5:vt>
 <a6:vt>
-println0_a06
+gs_println0_a06
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4
 , x5: ~a5, x6: ~a6 ) : void
@@ -870,7 +870,7 @@ fun
 <a5:vt>
 <a6:vt>
 <a7:vt>
-println0_a07
+gs_println0_a07
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5
@@ -884,7 +884,7 @@ fun
 <a6:vt>
 <a7:vt>
 <a8:vt>
-println0_a08
+gs_println0_a08
 ( x1: ~a1, x2: ~a2
 , x3: ~a3, x4: ~a4
 , x5: ~a5, x6: ~a6
@@ -899,7 +899,7 @@ fun
 <a7:vt>
 <a8:vt>
 <a9:vt>
-println0_a09
+gs_println0_a09
 ( x1: ~a1
 , x2: ~a2, x3: ~a3
 , x4: ~a4, x5: ~a5
@@ -917,7 +917,7 @@ fun
 <a08:vt>
 <a09:vt>
 <a10:vt>
-println0_a10
+gs_println0_a10
 (x01: ~a01, x02: ~a02
 ,x03: ~a03, x04: ~a04
 ,x05: ~a05, x06: ~a06
@@ -925,17 +925,17 @@ println0_a10
 ,x09: ~a09, x10: ~a10) : void
 (* ****** ****** *)
 //
-#symload println0 with println0_a00
-#symload println0 with println0_a01
-#symload println0 with println0_a02
-#symload println0 with println0_a03
-#symload println0 with println0_a04
-#symload println0 with println0_a05
-#symload println0 with println0_a06
-#symload println0 with println0_a07
-#symload println0 with println0_a08
-#symload println0 with println0_a09
-#symload println0 with println0_a10
+#symload println0 with gs_println0_a00
+#symload println0 with gs_println0_a01
+#symload println0 with gs_println0_a02
+#symload println0 with gs_println0_a03
+#symload println0 with gs_println0_a04
+#symload println0 with gs_println0_a05
+#symload println0 with gs_println0_a06
+#symload println0 with gs_println0_a07
+#symload println0 with gs_println0_a08
+#symload println0 with gs_println0_a09
+#symload println0 with gs_println0_a10
 //
 (* ****** ****** *)
 //
@@ -949,23 +949,23 @@ print1 and println1
 //
 (*
 fun<>
-print1_a00
+gs_print1_a00
 ((*void*)) : void
 *)
 fun
 <a1:vt>
-print1_a01
+gs_print1_a01
 ( x1: !a1 ) : void
 fun
 <a1:vt>
 <a2:vt>
-print1_a02
+gs_print1_a02
 ( x1: !a1, x2: !a2 ) : void
 fun
 <a1:vt>
 <a2:vt>
 <a3:vt>
-print1_a03
+gs_print1_a03
 ( x1: !a1
 , x2: !a2, x3: !a3 ) : void
 fun
@@ -973,7 +973,7 @@ fun
 <a2:vt>
 <a3:vt>
 <a4:vt>
-print1_a04
+gs_print1_a04
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4 ) : void
 fun
@@ -982,7 +982,7 @@ fun
 <a3:vt>
 <a4:vt>
 <a5:vt>
-print1_a05
+gs_print1_a05
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5 ) : void
@@ -993,7 +993,7 @@ fun
 <a4:vt>
 <a5:vt>
 <a6:vt>
-print1_a06
+gs_print1_a06
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4
 , x5: !a5, x6: !a6 ) : void
@@ -1005,7 +1005,7 @@ fun
 <a5:vt>
 <a6:vt>
 <a7:vt>
-print1_a07
+gs_print1_a07
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5
@@ -1019,7 +1019,7 @@ fun
 <a6:vt>
 <a7:vt>
 <a8:vt>
-print1_a08
+gs_print1_a08
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4
 , x5: !a5, x6: !a6
@@ -1034,7 +1034,7 @@ fun
 <a7:vt>
 <a8:vt>
 <a9:vt>
-print1_a09
+gs_print1_a09
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5
@@ -1052,7 +1052,7 @@ fun
 <a08:vt>
 <a09:vt>
 <a10:vt>
-print1_a10
+gs_print1_a10
 (x01: !a01, x02: !a02
 ,x03: !a03, x04: !a04
 ,x05: !a05, x06: !a06
@@ -1060,36 +1060,36 @@ print1_a10
 ,x09: !a09, x10: !a10) : void
 (* ****** ****** *)
 //
-#symload print1 with print1_a01
-#symload print1 with print1_a02
-#symload print1 with print1_a03
-#symload print1 with print1_a04
-#symload print1 with print1_a05
-#symload print1 with print1_a06
-#symload print1 with print1_a07
-#symload print1 with print1_a08
-#symload print1 with print1_a09
-#symload print1 with print1_a10
+#symload print1 with gs_print1_a01
+#symload print1 with gs_print1_a02
+#symload print1 with gs_print1_a03
+#symload print1 with gs_print1_a04
+#symload print1 with gs_print1_a05
+#symload print1 with gs_print1_a06
+#symload print1 with gs_print1_a07
+#symload print1 with gs_print1_a08
+#symload print1 with gs_print1_a09
+#symload print1 with gs_print1_a10
 //
 (* ****** ****** *)
 //
 fun<>
-println1_a00
+gs_println1_a00
 ((*void*)) : void
 fun
 <a1:vt>
-println1_a01
+gs_println1_a01
 ( x1: !a1 ) : void
 fun
 <a1:vt>
 <a2:vt>
-println1_a02
+gs_println1_a02
 ( x1: !a1, x2: !a2 ) : void
 fun
 <a1:vt>
 <a2:vt>
 <a3:vt>
-println1_a03
+gs_println1_a03
 ( x1: !a1
 , x2: !a2, x3: !a3 ) : void
 fun
@@ -1097,7 +1097,7 @@ fun
 <a2:vt>
 <a3:vt>
 <a4:vt>
-println1_a04
+gs_println1_a04
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4 ) : void
 fun
@@ -1106,7 +1106,7 @@ fun
 <a3:vt>
 <a4:vt>
 <a5:vt>
-println1_a05
+gs_println1_a05
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5 ) : void
@@ -1117,7 +1117,7 @@ fun
 <a4:vt>
 <a5:vt>
 <a6:vt>
-println1_a06
+gs_println1_a06
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4
 , x5: !a5, x6: !a6 ) : void
@@ -1129,7 +1129,7 @@ fun
 <a5:vt>
 <a6:vt>
 <a7:vt>
-println1_a07
+gs_println1_a07
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5
@@ -1143,7 +1143,7 @@ fun
 <a6:vt>
 <a7:vt>
 <a8:vt>
-println1_a08
+gs_println1_a08
 ( x1: !a1, x2: !a2
 , x3: !a3, x4: !a4
 , x5: !a5, x6: !a6
@@ -1158,7 +1158,7 @@ fun
 <a7:vt>
 <a8:vt>
 <a9:vt>
-println1_a09
+gs_println1_a09
 ( x1: !a1
 , x2: !a2, x3: !a3
 , x4: !a4, x5: !a5
@@ -1176,7 +1176,7 @@ fun
 <a08:vt>
 <a09:vt>
 <a10:vt>
-println1_a10
+gs_println1_a10
 (x01: !a01, x02: !a02
 ,x03: !a03, x04: !a04
 ,x05: !a05, x06: !a06
@@ -1184,17 +1184,17 @@ println1_a10
 ,x09: !a09, x10: !a10) : void
 (* ****** ****** *)
 //
-#symload println1 with println1_a00
-#symload println1 with println1_a01
-#symload println1 with println1_a02
-#symload println1 with println1_a03
-#symload println1 with println1_a04
-#symload println1 with println1_a05
-#symload println1 with println1_a06
-#symload println1 with println1_a07
-#symload println1 with println1_a08
-#symload println1 with println1_a09
-#symload println1 with println1_a10
+#symload println1 with gs_println1_a00
+#symload println1 with gs_println1_a01
+#symload println1 with gs_println1_a02
+#symload println1 with gs_println1_a03
+#symload println1 with gs_println1_a04
+#symload println1 with gs_println1_a05
+#symload println1 with gs_println1_a06
+#symload println1 with gs_println1_a07
+#symload println1 with gs_println1_a08
+#symload println1 with gs_println1_a09
+#symload println1 with gs_println1_a10
 //
 (* ****** ****** *)
 (*
@@ -1318,42 +1318,42 @@ Tue Jul  5 15:08:37 EDT 2022
 *)
 //
 fun<>
-strn_vt_glappend0_a02
+strn_vt_append0_a02
 ( ~strn_vt
 , ~strn_vt ): strn_vt
 fun<>
-strn_vt_glappend0_a03
+strn_vt_append0_a03
 ( ~strn_vt
 , ~strn_vt, ~strn_vt): strn_vt
 fun<>
-strn_vt_glappend0_a04
+strn_vt_append0_a04
 ( ~strn_vt, ~strn_vt
 , ~strn_vt, ~strn_vt): strn_vt
 fun<>
-strn_vt_glappend0_a05
+strn_vt_append0_a05
 ( ~strn_vt, ~strn_vt
 , ~strn_vt, ~strn_vt, ~strn_vt): strn_vt
 fun<>
-strn_vt_glappend0_a06
+strn_vt_append0_a06
 ( ~strn_vt, ~strn_vt, ~strn_vt
 , ~strn_vt, ~strn_vt, ~strn_vt): strn_vt
 fun<>
-strn_vt_glappend0_a07
+strn_vt_append0_a07
 ( ~strn_vt
 , ~strn_vt, ~strn_vt, ~strn_vt
 , ~strn_vt, ~strn_vt, ~strn_vt): strn_vt
 fun<>
-strn_vt_glappend0_a08
+strn_vt_append0_a08
 ( ~strn_vt, ~strn_vt
 , ~strn_vt, ~strn_vt, ~strn_vt
 , ~strn_vt, ~strn_vt, ~strn_vt): strn_vt
 fun<>
-strn_vt_glappend0_a09
+strn_vt_append0_a09
 ( ~strn_vt, ~strn_vt, ~strn_vt
 , ~strn_vt, ~strn_vt, ~strn_vt
 , ~strn_vt, ~strn_vt, ~strn_vt): strn_vt
 fun<>
-strn_vt_glappend0_a10
+strn_vt_append0_a10
 ( ~strn_vt
 , ~strn_vt, ~strn_vt, ~strn_vt
 , ~strn_vt, ~strn_vt, ~strn_vt
@@ -1361,15 +1361,15 @@ strn_vt_glappend0_a10
 //
 (* ****** ****** *)
 //
-#symload glappend0 with strn_vt_glappend0_a02
-#symload glappend0 with strn_vt_glappend0_a03
-#symload glappend0 with strn_vt_glappend0_a04
-#symload glappend0 with strn_vt_glappend0_a05
-#symload glappend0 with strn_vt_glappend0_a06
-#symload glappend0 with strn_vt_glappend0_a07
-#symload glappend0 with strn_vt_glappend0_a08
-#symload glappend0 with strn_vt_glappend0_a09
-#symload glappend0 with strn_vt_glappend0_a10
+#symload append0 with strn_vt_append0_a02
+#symload append0 with strn_vt_append0_a03
+#symload append0 with strn_vt_append0_a04
+#symload append0 with strn_vt_append0_a05
+#symload append0 with strn_vt_append0_a06
+#symload append0 with strn_vt_append0_a07
+#symload append0 with strn_vt_append0_a08
+#symload append0 with strn_vt_append0_a09
+#symload append0 with strn_vt_append0_a10
 //
 (* ****** ****** *)
 //
@@ -1379,42 +1379,42 @@ Tue Jul  5 18:29:59 EDT 2022
 *)
 //
 fun<>
-strn_vt_glappend1_a02
+strn_vt_append1_a02
 ( !strn_vt
 , !strn_vt ): strn_vt
 fun<>
-strn_vt_glappend1_a03
+strn_vt_append1_a03
 ( !strn_vt
 , !strn_vt, !strn_vt): strn_vt
 fun<>
-strn_vt_glappend1_a04
+strn_vt_append1_a04
 ( !strn_vt, !strn_vt
 , !strn_vt, !strn_vt): strn_vt
 fun<>
-strn_vt_glappend1_a05
+strn_vt_append1_a05
 ( !strn_vt, !strn_vt
 , !strn_vt, !strn_vt, !strn_vt): strn_vt
 fun<>
-strn_vt_glappend1_a06
+strn_vt_append1_a06
 ( !strn_vt, !strn_vt, !strn_vt
 , !strn_vt, !strn_vt, !strn_vt): strn_vt
 fun<>
-strn_vt_glappend1_a07
+strn_vt_append1_a07
 ( !strn_vt
 , !strn_vt, !strn_vt, !strn_vt
 , !strn_vt, !strn_vt, !strn_vt): strn_vt
 fun<>
-strn_vt_glappend1_a08
+strn_vt_append1_a08
 ( !strn_vt, !strn_vt
 , !strn_vt, !strn_vt, !strn_vt
 , !strn_vt, !strn_vt, !strn_vt): strn_vt
 fun<>
-strn_vt_glappend1_a09
+strn_vt_append1_a09
 ( !strn_vt, !strn_vt, !strn_vt
 , !strn_vt, !strn_vt, !strn_vt
 , !strn_vt, !strn_vt, !strn_vt): strn_vt
 fun<>
-strn_vt_glappend1_a10
+strn_vt_append1_a10
 ( !strn_vt
 , !strn_vt, !strn_vt, !strn_vt
 , !strn_vt, !strn_vt, !strn_vt
@@ -1422,15 +1422,15 @@ strn_vt_glappend1_a10
 //
 (* ****** ****** *)
 //
-#symload glappend1 with strn_vt_glappend1_a02
-#symload glappend1 with strn_vt_glappend1_a03
-#symload glappend1 with strn_vt_glappend1_a04
-#symload glappend1 with strn_vt_glappend1_a05
-#symload glappend1 with strn_vt_glappend1_a06
-#symload glappend1 with strn_vt_glappend1_a07
-#symload glappend1 with strn_vt_glappend1_a08
-#symload glappend1 with strn_vt_glappend1_a09
-#symload glappend1 with strn_vt_glappend1_a10
+#symload append1 with strn_vt_append1_a02
+#symload append1 with strn_vt_append1_a03
+#symload append1 with strn_vt_append1_a04
+#symload append1 with strn_vt_append1_a05
+#symload append1 with strn_vt_append1_a06
+#symload append1 with strn_vt_append1_a07
+#symload append1 with strn_vt_append1_a08
+#symload append1 with strn_vt_append1_a09
+#symload append1 with strn_vt_append1_a10
 //
 (* ****** ****** *)
 //
@@ -1441,48 +1441,48 @@ Tue Jul  5 19:09:52 EDT 2022
 //
 fun
 <a0:vt>
-list_vt_glappend0_a02
+list_vt_append0_a02
 ( ~list_vt(a0)
 , ~list_vt(a0) ): list_vt(a0)
 fun
 <a0:vt>
-list_vt_glappend0_a03
+list_vt_append0_a03
 ( ~list_vt(a0)
 , ~list_vt(a0), ~list_vt(a0)): list_vt(a0)
 fun
 <a0:vt>
-list_vt_glappend0_a04
+list_vt_append0_a04
 ( ~list_vt(a0), ~list_vt(a0)
 , ~list_vt(a0), ~list_vt(a0)): list_vt(a0)
 fun
 <a0:vt>
-list_vt_glappend0_a05
+list_vt_append0_a05
 ( ~list_vt(a0)
 , ~list_vt(a0), ~list_vt(a0)
 , ~list_vt(a0), ~list_vt(a0)): list_vt(a0)
 fun
 <a0:vt>
-list_vt_glappend0_a06
+list_vt_append0_a06
 ( ~list_vt(a0), ~list_vt(a0)
 , ~list_vt(a0), ~list_vt(a0)
 , ~list_vt(a0), ~list_vt(a0)): list_vt(a0)
 fun
 <a0:vt>
-list_vt_glappend0_a07
+list_vt_append0_a07
 ( ~list_vt(a0)
 , ~list_vt(a0), ~list_vt(a0)
 , ~list_vt(a0), ~list_vt(a0)
 , ~list_vt(a0), ~list_vt(a0)): list_vt(a0)
 fun
 <a0:vt>
-list_vt_glappend0_a08
+list_vt_append0_a08
 ( ~list_vt(a0), ~list_vt(a0)
 , ~list_vt(a0), ~list_vt(a0)
 , ~list_vt(a0), ~list_vt(a0)
 , ~list_vt(a0), ~list_vt(a0)): list_vt(a0)
 fun
 <a0:vt>
-list_vt_glappend0_a09
+list_vt_append0_a09
 ( ~list_vt(a0)
 , ~list_vt(a0), ~list_vt(a0)
 , ~list_vt(a0), ~list_vt(a0)
@@ -1490,7 +1490,7 @@ list_vt_glappend0_a09
 , ~list_vt(a0), ~list_vt(a0)): list_vt(a0)
 fun
 <a0:vt>
-list_vt_glappend0_a10
+list_vt_append0_a10
 ( ~list_vt(a0), ~list_vt(a0)
 , ~list_vt(a0), ~list_vt(a0)
 , ~list_vt(a0), ~list_vt(a0)
@@ -1499,15 +1499,15 @@ list_vt_glappend0_a10
 //
 (* ****** ****** *)
 //
-#symload glappend0 with list_vt_glappend0_a02
-#symload glappend0 with list_vt_glappend0_a03
-#symload glappend0 with list_vt_glappend0_a04
-#symload glappend0 with list_vt_glappend0_a05
-#symload glappend0 with list_vt_glappend0_a06
-#symload glappend0 with list_vt_glappend0_a07
-#symload glappend0 with list_vt_glappend0_a08
-#symload glappend0 with list_vt_glappend0_a09
-#symload glappend0 with list_vt_glappend0_a10
+#symload append0 with list_vt_append0_a02
+#symload append0 with list_vt_append0_a03
+#symload append0 with list_vt_append0_a04
+#symload append0 with list_vt_append0_a05
+#symload append0 with list_vt_append0_a06
+#symload append0 with list_vt_append0_a07
+#symload append0 with list_vt_append0_a08
+#symload append0 with list_vt_append0_a09
+#symload append0 with list_vt_append0_a10
 //
 (* ****** ****** *)
 //
@@ -1518,48 +1518,48 @@ Tue Jul  5 20:25:07 EDT 2022
 //
 fun
 <a0:vt>
-list_vt_glappend1_a02
+list_vt_append1_a02
 ( !list_vt(a0)
 , !list_vt(a0) ): list_vt(a0)
 fun
 <a0:vt>
-list_vt_glappend1_a03
+list_vt_append1_a03
 ( !list_vt(a0)
 , !list_vt(a0), !list_vt(a0)): list_vt(a0)
 fun
 <a0:vt>
-list_vt_glappend1_a04
+list_vt_append1_a04
 ( !list_vt(a0), !list_vt(a0)
 , !list_vt(a0), !list_vt(a0)): list_vt(a0)
 fun
 <a0:vt>
-list_vt_glappend1_a05
+list_vt_append1_a05
 ( !list_vt(a0)
 , !list_vt(a0), !list_vt(a0)
 , !list_vt(a0), !list_vt(a0)): list_vt(a0)
 fun
 <a0:vt>
-list_vt_glappend1_a06
+list_vt_append1_a06
 ( !list_vt(a0), !list_vt(a0)
 , !list_vt(a0), !list_vt(a0)
 , !list_vt(a0), !list_vt(a0)): list_vt(a0)
 fun
 <a0:vt>
-list_vt_glappend1_a07
+list_vt_append1_a07
 ( !list_vt(a0)
 , !list_vt(a0), !list_vt(a0)
 , !list_vt(a0), !list_vt(a0)
 , !list_vt(a0), !list_vt(a0)): list_vt(a0)
 fun
 <a0:vt>
-list_vt_glappend1_a08
+list_vt_append1_a08
 ( !list_vt(a0), !list_vt(a0)
 , !list_vt(a0), !list_vt(a0)
 , !list_vt(a0), !list_vt(a0)
 , !list_vt(a0), !list_vt(a0)): list_vt(a0)
 fun
 <a0:vt>
-list_vt_glappend1_a09
+list_vt_append1_a09
 ( !list_vt(a0)
 , !list_vt(a0), !list_vt(a0)
 , !list_vt(a0), !list_vt(a0)
@@ -1567,7 +1567,7 @@ list_vt_glappend1_a09
 , !list_vt(a0), !list_vt(a0)): list_vt(a0)
 fun
 <a0:vt>
-list_vt_glappend1_a10
+list_vt_append1_a10
 ( !list_vt(a0), !list_vt(a0)
 , !list_vt(a0), !list_vt(a0)
 , !list_vt(a0), !list_vt(a0)
@@ -1576,15 +1576,15 @@ list_vt_glappend1_a10
 //
 (* ****** ****** *)
 //
-#symload glappend1 with list_vt_glappend1_a02
-#symload glappend1 with list_vt_glappend1_a03
-#symload glappend1 with list_vt_glappend1_a04
-#symload glappend1 with list_vt_glappend1_a05
-#symload glappend1 with list_vt_glappend1_a06
-#symload glappend1 with list_vt_glappend1_a07
-#symload glappend1 with list_vt_glappend1_a08
-#symload glappend1 with list_vt_glappend1_a09
-#symload glappend1 with list_vt_glappend1_a10
+#symload append1 with list_vt_append1_a02
+#symload append1 with list_vt_append1_a03
+#symload append1 with list_vt_append1_a04
+#symload append1 with list_vt_append1_a05
+#symload append1 with list_vt_append1_a06
+#symload append1 with list_vt_append1_a07
+#symload append1 with list_vt_append1_a08
+#symload append1 with list_vt_append1_a09
+#symload append1 with list_vt_append1_a10
 //
 (* ****** ****** *)
 

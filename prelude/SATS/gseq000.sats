@@ -164,6 +164,7 @@ fun
 <x0:t0>
 gseq_uncons_raw
   (xs: &xs >> xs): x0
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -174,6 +175,7 @@ fun
 <x0:t0>
 gseq_uncons_exn
   (xs: &xs >> xs): x0
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -437,19 +439,27 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_make_list(list(x0)): (xs)
+(*
+HX-2024-07-07:
+It is in [gseq000_vt.sats]
 fun
 <xs:t0>
 <x0:t0>
 gseq_make0_llist(list_vt(x0)): (xs)
+*)
 //
 fun
 <xs:t0>
 <x0:t0>
 gseq_rmake_list(list(x0)): (xs)
+(*
+HX-2024-07-07:
+It is in [gseq000_vt.sats]
 fun
 <xs:t0>
 <x0:t0>
 gseq_rmake0_llist(list_vt(x0)): (xs)
+*)
 //
 (* ****** ****** *)
 //
@@ -468,10 +478,14 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_make_strm(strm(x0)): (xs)
+(*
+HX-2024-07-07:
+It is in [gseq000_vt.sats]
 fun
 <xs:t0>
 <x0:t0>
 gseq_make0_lstrm(strm_vt(x0)): (xs)
+*)
 //
 (* ****** ****** *)
 //
@@ -583,6 +597,7 @@ fun
 <x0:t0>
 gseq_copy_rlist(xs): list(x0)
 //
+(*
 fun
 <xs:t0>
 <x0:t0>
@@ -591,6 +606,7 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_copy_rllist(xs): list_vt(x0)
+*)
 //
 (* ****** ****** *)
 //

@@ -476,17 +476,17 @@ gseq_make0_llist
 #impltmp
 {a:vt}
 {n:i0}
-glseq_forall1
+gseq_forall1
 <a1ref(a,n)><a> = a1ref_forall1<a>{n}
 #impltmp
 {a:vt}
 {n:i0}
-glseq_foreach1
+gseq_foreach1
 <a1ref(a,n)><a> = a1ref_foreach1<a>{n}
 #impltmp
 {a:vt}
 {n:i0}
-glseq_rforall1
+gseq_rforall1
 <a1ref(a,n)><a> = a1ref_rforall1<a>{n}
 //
 (* ****** ****** *)

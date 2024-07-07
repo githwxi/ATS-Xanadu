@@ -43,7 +43,7 @@ HX-2023-12-24:
 Sun Dec 24 10:53:50 EST 2023
 *)
 
-Let's specify
+Let me specify
 the meaning of some pattern modifiers.
 
 (
@@ -138,12 +138,13 @@ the latter!
 ########################################################################
 
 (*
+//
 HX-2024-01-13:
 Should generative excptcons be supported?
-I would say no at this point. This feature
-does not seem to be particularly useful and
-it complicates reasoning greatly. Also, it
-can be readily added later if needed.
+//
+I would say no at this point. This feature does not seem to
+be particularly useful and it complicates reasoning greatly.
+Also, it can be readily added later if needed.
 *)
 fun
 foo
@@ -151,6 +152,11 @@ foo
 (x:a, b:bool): a =
 let
 excptcon MyErrorExn of a
+(*
+HX-2024-07-07:
+For generative version:
+excptgen MyErrorExn of a
+*)
 in//let
 try
   if (b)

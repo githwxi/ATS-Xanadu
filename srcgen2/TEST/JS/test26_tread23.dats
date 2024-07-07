@@ -52,10 +52,10 @@
 "./../../SATS/trsym2b.sats"
 (* ****** ****** *)
 #staload
-"./../../SATS/tread22.sats"
+"./../../SATS/tread20.sats"
 (* ****** ****** *)
 #staload
-"./../../SATS/fperr22.sats"
+"./../../SATS/fperr20.sats"
 (* ****** ****** *)
 #staload
 "./../../SATS/trans23.sats"
@@ -286,18 +286,18 @@
 "./../../DATS/trsym2b_decl00.dats"
 (* ****** ****** *)
 #include
-"./../../DATS/tread22.dats"
+"./../../DATS/tread20.dats"
 #include
-"./../../DATS/tread22_dynexp.dats"
+"./../../DATS/tread20_dynexp.dats"
 #include
-"./../../DATS/tread22_decl00.dats"
+"./../../DATS/tread20_decl00.dats"
 (* ****** ****** *)
 #include
-"./../../DATS/fperr22.dats"
+"./../../DATS/fperr20.dats"
 #include
-"./../../DATS/fperr22_dynexp.dats"
+"./../../DATS/fperr20_dynexp.dats"
 #include
-"./../../DATS/fperr22_decl00.dats"
+"./../../DATS/fperr20_decl00.dats"
 (* ****** ****** *)
 #include
 "./../../DATS/dynexp3.dats"
@@ -431,10 +431,10 @@ end
 (* ****** ****** *)
 //
 val
-dpar = d2parsed_of_tread22(dpar)
+dpar = d2parsed_of_tread20(dpar)
 //
 val (  ) =
-fperr22_d2parsed(g_stderr(), dpar)
+fperr20_d2parsed(g_stderr(), dpar)
 //
 (* ****** ****** *)
 //

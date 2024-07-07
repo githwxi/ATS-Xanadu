@@ -50,10 +50,6 @@ Authoremail: gmhwxiATgmailDOTcom
 <>(*tmp*)
 g_print$out() =
 (g_stdout<>((*void*)))
-#impltmp
-<>(*tmp*)
-gl_print$out() =
-(g_stdout<>((*void*)))
 //
 (* ****** ****** *)
 //
@@ -161,14 +157,16 @@ but this seems so easy to actually forget!!!
 gl_print0<a> =
   g_print<a> where
 {
-#impltmp g_print$out<> = gl_print$out<>
+#impltmp
+g_print$out<> = gl_print$out<>
 } (*where*) // end-of(gl_print0)
 #impltmp
 {a:t0}
 gl_print1<a> =
   g_print<a> where
 {
-#impltmp g_print$out<> = gl_print$out<>
+#impltmp
+g_print$out<> = gl_print$out<>
 } (*where*) // end-of(gl_print1)
 *)
 //
@@ -243,10 +241,9 @@ val () = fprint1_ptr<x0>(out,x0)
 fprint0_ref<x0>
   (out, x0) =
 (
-  gl_print0<x0>(x0)) where
+  g_print0<x0>(x0)) where
 {
   #impltmp g_print$out<>() = out
-  #impltmp gl_print$out<>() = out
 } (*where*) // end-of(fprint_ref)
 //
 (* ****** ****** *)
@@ -256,10 +253,9 @@ fprint0_ref<x0>
 fprint1_ref<x0>
   (out, x0) =
 (
-  gl_print1<x0>(x0)) where
+  g_print1<x0>(x0)) where
 {
   #impltmp g_print$out<>() = out
-  #impltmp gl_print$out<>() = out
 } (*where*) // end-of(fprint_ref)
 //
 (* ****** ****** *)
