@@ -381,5 +381,13 @@ fun
 d2eclistopt_fpemsg(FILR, d2eclistopt): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+tread02_from_fpath
+(stadyn: sint, source: strn(*fpath*)): d2parsed
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_SATS_tread12.sats] *)

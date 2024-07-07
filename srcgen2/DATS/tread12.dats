@@ -36,14 +36,17 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+(* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
@@ -55,66 +58,15 @@ ATS_PACKNAME
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
+#staload "./../SATS/trans12.sats"
 #staload "./../SATS/tread12.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #symload lctn with token_get_lctn
 #symload node with token_get_node
 (* ****** ****** *)
-//
-#implfun
-list_tread12_fnp
-{  syn:tx  }
-(  lst , err , fpr  ) =
-(
-  auxlst(lst, err)) where
-{
-//
-fun
-auxlst
-( lst: list(syn)
-, err: &sint >> _): list(syn) =
-case+ lst of
-|
-list_nil() =>
-list_nil()
-|
-list_cons(tm1, tms) =>
-let
-val e00 = err
-val tm1 = fpr(tm1, err)
-val tms = auxlst(tms, err)
-in//let
-if
-(err = e00)
-then lst else list_cons(tm1, tms)
-endlet // end of [auxlst(lst,err)]
-//
-}(*where*)//end(list_tread12_fnp(lst,err,fpr))
-//
 (* ****** ****** *)
 //
-#implfun
-optn_tread12_fnp
-{  syn:tx  }
-(  opt , err , fpr  ) =
-(
-case+ opt of
-|
-optn_nil() => opt
-|
-optn_cons(syn) =>
-let
-val e00 = err
-val syn = fpr(syn, err)
-in // let
-if
-(err=e00)
-then opt else optn_cons(syn)
-endlet // end of [optn_cons(syn)]
-)(*case+*)//end(optn_tread12_fnp(opt,err,fpr)
-//
-(* ****** ****** *)
-
 #implfun
 d2parsed_of_tread12
   (dpar) =
@@ -144,10 +96,27 @@ if
 (nerror=0)
 then (dpar) else
 d2parsed
-(stadyn,nerror,source,t1penv,t2penv,parsed)
+( stadyn
+, nerror, source, t1penv, t2penv, parsed)
 //
-end(*let*)//end-of(d2parsed_of_tread12(dpar))
-
+end(*let*)//end-(d2parsed_of_tread12(dpar))
+//
+(* ****** ****** *)
+//
+#implfun
+tread02_from_fpath
+  (stadyn, source) =
+(
+  d2parsed_of_tread12(d2par)) where
+{
+//
+  val d2par =
+  (
+    trans02_from_fpath(stadyn, source))
+//
+}(*where*)//end-of-[tread02_from_fpath(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -216,6 +185,62 @@ case+ dopt of
 | optn_cons(d2cs) => d2eclist_fpemsg(out, d2cs)
 )
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+list_tread12_fnp
+{  syn:tx  }
+(  lst , err , fpr  ) =
+(
+  auxlst(lst, err)) where
+{
+//
+fun
+auxlst
+( lst: list(syn)
+, err: &sint >> _): list(syn) =
+case+ lst of
+|
+list_nil() =>
+list_nil()
+|
+list_cons(tm1, tms) =>
+let
+val e00 = err
+val tm1 = fpr(tm1, err)
+val tms = auxlst(tms, err)
+in//let
+if
+(err = e00)
+then lst else list_cons(tm1, tms)
+endlet // end of [auxlst(lst,err)]
+//
+}(*where*)//end(list_tread12_fnp(lst,err,fpr))
+//
+(* ****** ****** *)
+//
+#implfun
+optn_tread12_fnp
+{  syn:tx  }
+(  opt , err , fpr  ) =
+(
+case+ opt of
+|
+optn_nil() => opt
+|
+optn_cons(syn) =>
+let
+val e00 = err
+val syn = fpr(syn, err)
+in // let
+if
+(err=e00)
+then opt else optn_cons(syn)
+endlet // end of [optn_cons(syn)]
+)(*case+*)//end(optn_tread12_fnp(opt,err,fpr)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_DATS_tread12.dats] *)
