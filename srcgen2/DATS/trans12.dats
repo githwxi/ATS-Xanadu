@@ -116,12 +116,14 @@ xs: s2cstlst
 ) : s2cstopt_vt =
 (
 case+ xs of
-|list_nil() => optn_vt_nil()
-|list_cons(x1, xs) => optn_vt_cons(x1)
-) (*case+*) // end of [ f0_test2(xs) ]
+|
+list_nil() => optn_vt_nil()
+|
+list_cons(x1, xs) => optn_vt_cons(x1)
+)(*case+*)//end-of-[ f0_test2(  xs  ) ]
 //
-} (*where*) // end of [s2cst_select_any(...)]
-
+}(*where*)//end-of-[s2cst_select_any(...)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -158,7 +160,7 @@ case+ s2t0 of
   f0_test2(s2ts, s2t1, s2t2))
 |_(* non-S2Tfun1 *) => (false)
 //
-end (*let*)//end-[f0_test1(s2c0,s1t1,s2t2)]
+end(*let*)//end-[f0_test1(s2c0,s1t1,s2t2)]
 //
 and
 f0_test2
@@ -188,7 +190,7 @@ s2t1\mat(t2x1)
 then
 s2t2\mat(t2x2) else false)
 |list_cons(_, _) => false))//list_cons
-) (*case+*)//end-[f0_test2(s2ts,s2t1,s2t2)]
+)(*case+*)//end-[f0_test2(s2ts,s2t1,s2t2)]
 //
 (* ****** ****** *)
 in//local
@@ -228,7 +230,7 @@ if
 f0_test1(s2c1, s2t1, s2t2)
 then optn_vt_cons(s2c1) else loop(s2cs))
 }
-end (*let*) // end of [s2cst_select_bin(...)]
+end(*let*)//end-of-[s2cst_select_bin(...)]
 *)
 //
 (* ****** ****** *)
@@ -259,9 +261,9 @@ filter$test
 <s2cst>(s2c1) = f0_test1(s2c1, s2t1, s2t2)
 }
 //
-end (*let*) // end of [s2cst_selects_bin(...)]
+end(*let*)//end-of-[s2cst_selects_bin(...)]
 //
-end (*local*)//end-of-[local(s2cst_selects_bin)]
+end(*local*)//end-[local(s2cst_selects_bin)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -333,7 +335,7 @@ then f0_test2(s2ts, s2es) else false))
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
-
+//
 (*
 #implfun
 s2cst_select_list
@@ -349,9 +351,9 @@ search$test
 //
 } (*where*)//end-of-[s2cst_select_list(...)]
 *)
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 s2cst_selects_list
   (s2cs, s2es) =
@@ -364,9 +366,9 @@ list_filter
 filter$test
 <s2cst>(s2c0) = f0_test1(s2c0, s2es)
 //
-} (*where*)//end-of-[s2cst_selects_list(...)]
-
-end (*local*)//end-of-[local(s2cst_select/s_list)]
+}(*where*)//end-of-[s2cst_selects_list(...)]
+//
+end(*local*)//end-[local(s2cst_select/s_list)]
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -505,9 +507,9 @@ _(*non-S1Eid0(seid)*) => list_nil((*void*))
 val () =
 prerrln("s1exp_get_s2cstlst: s1e0 = ", s1e0)
 *)
-} (*where*) // end of [s1exp_get_s2cstlst(...)]
+}(*where*)//end of [s1exp_get_s2cstlst(...)]
 
-end (*local*) // end of [s1exp_get_s2cstlst(...)]
+end(*local*)//end-of-[s1exp_get_s2cstlst(...)]
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -540,7 +542,7 @@ d2parsed
 ( stadyn
 , nerror, source, t1penv, t2penv, parsed)
 end
-end (*let*) // end-of-[d2parsed_of_trans12(dpar)]
+end(*let*)//end-of-[d2parsed_of_trans12(dpar)]
 
 (* ****** ****** *)
 //
@@ -557,7 +559,7 @@ trans02_from_fpath
 //
   val d1par = d1parsed_of_tread01( d1par )
 //
-} (*where*) // end-of-[d2parsed_from_fpath( ... )]
+}(*where*)//end-of-[trans02_from_fpath( ... )]
 //
 (* ****** ****** *)
 (* ****** ****** *)

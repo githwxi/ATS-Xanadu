@@ -238,5 +238,13 @@ fun
 d3eclistopt_fpemsg(FILR, d3eclistopt): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+tread03_from_fpath
+(stadyn: sint, source: strn(*fpath*)): d3parsed
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_SATS_tread23.sats] *)
