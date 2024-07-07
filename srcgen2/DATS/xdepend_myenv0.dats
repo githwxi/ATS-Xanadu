@@ -64,7 +64,25 @@ XD2PENV of (d2eclist)
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
-
+//
+(* ****** ****** *)
+//
+#implfun
+xd2penv_make_nil
+  ( (*void*) ) =
+(
+  XD2PENV(list_nil(*void*)))
+//
+(* ****** ****** *)
+//
+#implfun
+xd2penv_free_top
+  (   env0   ) =
+let
+val~XD2PENV(dcls) = env0 in dcls end//let
+//
+(* ****** ****** *)
+//
 endloc (*local*) // end of [ local(xd2penv...) ]
 //
 (* ****** ****** *)
