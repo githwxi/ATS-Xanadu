@@ -7,8 +7,11 @@
 #abstbox box_tx
 #typedef box = box_tx
 (* ****** ****** *)
-#staload UN = //HX:unsafe
-"prelude/SATS/unsafex.sats"
+//
+#staload UN =
+"srcgen1\
+/prelude/SATS/unsafex.sats"
+//
 (* ****** ****** *)
 //
 #impltmp

@@ -12,8 +12,11 @@ HX: for pure C-arrays
 /SATS/VT/arrn000_vt.sats"
 *)
 (* ****** ****** *)
+//
 #staload UN =
-"prelude/SATS/unsafex.sats"
+"srcgen1\
+/prelude/SATS/unsafex.sats"
+//
 (* ****** ****** *)
 //
 (*

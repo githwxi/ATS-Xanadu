@@ -18,7 +18,8 @@ Sun Aug 13 12:32:58 EDT 2023
 (* ****** ****** *)
 //
 #staload UN =
-"prelude/SATS/unsafex.sats"
+"srcgen1\
+/prelude/SATS/unsafex.sats"
 //
 (* ****** ****** *)
 //

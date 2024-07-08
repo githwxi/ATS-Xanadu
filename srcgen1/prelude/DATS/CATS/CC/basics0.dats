@@ -6,9 +6,12 @@ Basics for Xats2cc
 // floats, strings
 *)
 (* ****** ****** *)
+//
 #staload
 UN = // for casting
-"prelude/SATS/unsafex.sats"
+"srcgen1\
+/prelude/SATS/unsafex.sats"
+//
 (* ****** ****** *)
 //
 // prelude/bool.sats

@@ -6,12 +6,14 @@
 //
 (*
 #staload
-"prelude/SATS/gfun000.sats"
+"srcgen1\
+/prelude/SATS/gfun000.sats"
 *)
 //
 (* ****** ****** *)
 #staload UN =
-"prelude/SATS/unsafex.sats"
+"srcgen1\
+/prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 //
 #impltmp

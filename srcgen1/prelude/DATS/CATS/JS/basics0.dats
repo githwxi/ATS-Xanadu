@@ -5,9 +5,12 @@ Basics for Xats2js
 // ints, floats, string
 *)
 (* ****** ****** *)
+//
 #staload
 UN = // for casting
-"prelude/SATS/unsafex.sats"
+"srcgen1\
+/prelude/SATS/unsafex.sats"
+//
 (* ****** ****** *)
 (*
 //prelude/SATS/bool000.sats

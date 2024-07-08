@@ -6,7 +6,8 @@
 (* ****** ****** *)
 //
 #staload UN =
-"prelude/SATS/unsafex.sats"
+"srcgen1\
+/prelude/SATS/unsafex.sats"
 //
 (* ****** ****** *)
 //
