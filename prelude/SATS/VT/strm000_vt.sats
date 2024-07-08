@@ -43,6 +43,11 @@ fun
 <ys:vt>
 g_make_lstrm
 (xs: strm_vt(x0)): (ys)
+fun
+<x0:vt>
+<ys:vt>
+g_make_lstrq
+(xs: strq_vt(x0)): (ys)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -51,6 +56,34 @@ fun
 <x0:vt>
 strm_vt_length0
 (xs: strm_vt(x0)): (nint)
+fun
+<x0:vt>
+strq_vt_length0
+{n0:i0}
+(xs: strq_vt(x0,n0)): sint(n0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+strm_vt_listize0
+(xs: strm_vt(x0)): list_vt(x0)
+fun
+<x0:vt>
+strm_vt_rlistize0
+(xs: strm_vt(x0)): list_vt(x0)
+//
+fun
+<x0:vt>
+strq_vt_listize0
+{n0:i0}
+(xs: strq_vt(x0,n0)): list_vt(x0,n0)
+fun
+<x0:vt>
+strq_vt_rlistize0
+{n0:i0}
+(xs: strq_vt(x0,n0)): list_vt(x0,n0)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
