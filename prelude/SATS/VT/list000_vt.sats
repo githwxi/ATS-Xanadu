@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Mon 08 Jul 2024 11:37:45 AM EDT
+Mon 08 Jul 2024 04:08:25 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -38,56 +38,91 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-< (*0*) >
-list_nil_
-((*void*)) = list_nil()
-#impltmp
-< x0:t0 >
-list_cons_
-( x1, xs ) = list_cons(x1, xs)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< x0:t0 >
-list_length
-  (xs) =
+fun<>
+list_vt_nil_
+{a:vt}(): list_vt(a, 0)
+fun
+<a:vt>
+list_vt_cons_
+{n:i0}
 (
-  gseq_length<list(x0)><x0>(xs))
+x0: (a),
+xs: list_vt(a, n)): list_vt(a, n+1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-{x0:t0}
-list_strqize
-  (xs) =
-(
-  auxmain(xs)) where
-{
-fun auxmain(xs) = $llazy
-(
-case+ xs of
-|
-list_nil() =>
-strqcon_vt_nil()
-|
-list_cons(x1, xs) =>
-strqcon_vt_cons(x1, auxmain(xs))
-)
-}(*where*)//end-of-[list_strqize(xs)]
-//
-#impltmp
-{x0:t0}
-gseq_strqize
-<list(x0)><x0> = list_strqize<x0>
+fun
+<a:vt>
+list_vt_make_1val
+(x1: a): list_vt(a, 1)
+fun
+<a:vt>
+list_vt_make_2val
+(x1: a, x2: a): list_vt(a, 2)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+fun
+<x0:vt>
+list_vt_length0
+{n0:i0}
+(xs: ~list_vt(x0,n0)): sint(n0)
+fun
+<a:vt>
+list_vt_length1
+{n:i0}
+(xs: !list_vt(x0,n0)): sint(n0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+list_vt_append00
+{n1,n2:i0}
+( xs: ~list_vt(x0,n1)
+, ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
+//
+fun
+<a:vt>
+list_vt_append10
+{n1,n2:i0}
+( xs: !list_vt(x0,n1)
+, ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+list_vt_reverse0
+{n0:i0}
+(xs: ~list_vt(x0,n0)): list_vt(x0,n0)
+//
+fun
+<x0:vt>
+list_vt_reverse1
+{n0:i0}
+(xs: !list_vt(x0,n0)): list_vt(x0,n0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+list_vt_rappend00
+{n1,n2:i0}
+( xs: ~list_vt(x0,n1)
+, ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
+//
+fun
+<x0:vt>
+list_vt_rappend10
+{n1,n2:i0}
+( xs: !list_vt(x0,n1)
+, ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_list000.dats] *)
+(* end of [ATS3/XANADU_prelude_SATS_VT_list000_vt.sats] *)

@@ -97,6 +97,30 @@ list_reverse_vt
 {n:i0}
 (xs: list(a, n)): list_vt(a, n)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+
+fun
+<a:t0>
+list_rappend
+{m,n:i0}
+( xs: list(a, m)
+, ys: list(a, n)): list(a, m+n)
+
+fun
+<a:t0>
+list_rappend_vt
+{m,n:i0}
+( xs: list(a, m)
+, ys: list(a, n)): list_vt(a, m+n)
+
+fun
+<a:t0>
+list_rappendx0_vt
+{m,n:i0}
+( xs: list(a, m)
+, ys: list_vt(a, n)): list_vt(a, m+n)
+
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
