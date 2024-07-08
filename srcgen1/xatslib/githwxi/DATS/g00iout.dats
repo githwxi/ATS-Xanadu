@@ -174,33 +174,33 @@ g_print$out<> = gl_print$out<>
 //
 #impltmp
 {x0:t0}
-prout_ref<x0>(x0) =
+g_prout<x0>(x0) =
 fprint_ref<x0>(g_stdout<>(), x0)
 #impltmp
 {x0:t0}
-prerr_ref<x0>(x0) =
+g_prerr<x0>(x0) =
 fprint_ref<x0>(g_stderr<>(), x0)
 //
 (* ****** ****** *)
 //
 #impltmp
 {x0:vt}
-prout0_ref<x0>(x0) =
+g_prout0<x0>(x0) =
 fprint0_ref<x0>(g_stdout<>(), x0)
 #impltmp
 {x0:vt}
-prerr0_ref<x0>(x0) =
+g_prerr0<x0>(x0) =
 fprint0_ref<x0>(g_stderr<>(), x0)
 //
 (* ****** ****** *)
 //
 #impltmp
 {x0:vt}
-prout1_ref<x0>(x0) =
+g_prout1<x0>(x0) =
 fprint1_ref<x0>(g_stdout<>(), x0)
 #impltmp
 {x0:vt}
-prerr1_ref<x0>(x0) =
+g_prerr1<x0>(x0) =
 fprint1_ref<x0>(g_stderr<>(), x0)
 //
 (* ****** ****** *)
