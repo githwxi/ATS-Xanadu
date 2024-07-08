@@ -51,4 +51,4 @@ the_s2exp_string1(n:int) = string1(n)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen1_INIT_xsetup0.sats] *)
+(* end of [ATS3/XANADU_srcgen1_INIT_srcgen1_xsetup0.sats] *)

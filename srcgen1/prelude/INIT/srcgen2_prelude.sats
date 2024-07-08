@@ -40,7 +40,8 @@ HX-2024-01-14:
 For further program verification
 *)
 //
-#include "prelude/SATS/stamped.sats"
+#include
+"srcgen1/prelude/SATS/stamped.sats"
 //
 *)
 (* ****** ****** *)
@@ -53,57 +54,85 @@ For further program verification
 //
 (* ****** ****** *)
 //
-#include "prelude/SATS/gbas000.sats"
-#include "prelude/SATS/gbas001.sats"
+#include
+"srcgen1/prelude/SATS/gbas000.sats"
+#include
+"srcgen1/prelude/SATS/gbas001.sats"
 //
 (* ****** ****** *)
 //
-#include "prelude/SATS/gnum000.sats"
-#include "prelude/SATS/gord000.sats"
+#include
+"srcgen1/prelude/SATS/gnum000.sats"
+#include
+"srcgen1/prelude/SATS/gord000.sats"
 //
 (* ****** ****** *)
-#include "prelude/SATS/rand000.sats"
+#include
+"srcgen1/prelude/SATS/rand000.sats"
 (* ****** ****** *)
-#include "prelude/SATS/gint000.sats"
-#include "prelude/SATS/gflt000.sats"
-#include "prelude/SATS/strn000.sats"
-//
-(* ****** ****** *)
-//
-#include "prelude/SATS/arrn000.sats"
-#include "prelude/SATS/arrn001.sats"
-//
-#include "prelude/SATS/tupn000.sats"
-#include "prelude/SATS/tupn001.sats"
-//
-#include "prelude/SATS/list000.sats"
-#include "prelude/SATS/optn000.sats"
-#include "prelude/SATS/strm000.sats"
-//
-#include "prelude/SATS/tupl000.sats"
-#include "prelude/SATS/utpl000.sats"
+#include
+"srcgen1/prelude/SATS/gint000.sats"
+#include
+"srcgen1/prelude/SATS/gflt000.sats"
+#include
+"srcgen1/prelude/SATS/strn000.sats"
 //
 (* ****** ****** *)
 //
-#include "prelude/SATS/gfor000.sats"
+#include
+"srcgen1/prelude/SATS/arrn000.sats"
+#include
+"srcgen1/prelude/SATS/arrn001.sats"
 //
-#include "prelude/SATS/gfun000.sats"
+#include
+"srcgen1/prelude/SATS/tupn000.sats"
+#include
+"srcgen1/prelude/SATS/tupn001.sats"
 //
-#include "prelude/SATS/gmap000.sats"
+#include
+"srcgen1/prelude/SATS/list000.sats"
+#include
+"srcgen1/prelude/SATS/optn000.sats"
+#include
+"srcgen1/prelude/SATS/strm000.sats"
 //
-#include "prelude/SATS/gras000.sats"
-#include "prelude/SATS/grasn00.sats"
-//
-#include "prelude/SATS/gseq000.sats"
-#include "prelude/SATS/gseq001.sats"
-#include "prelude/SATS/gseqn00.sats"
-//
-#include "prelude/SATS/genv000.sats"
+#include
+"srcgen1/prelude/SATS/tupl000.sats"
+#include
+"srcgen1/prelude/SATS/utpl000.sats"
 //
 (* ****** ****** *)
 //
-#include "prelude/SATS/excptn0.sats"
-#include "prelude/SATS/synoug0.sats"
+#include
+"srcgen1/prelude/SATS/gfor000.sats"
+//
+#include
+"srcgen1/prelude/SATS/gfun000.sats"
+//
+#include
+"srcgen1/prelude/SATS/gmap000.sats"
+//
+#include
+"srcgen1/prelude/SATS/gras000.sats"
+#include
+"srcgen1/prelude/SATS/grasn00.sats"
+//
+#include
+"srcgen1/prelude/SATS/gseq000.sats"
+#include
+"srcgen1/prelude/SATS/gseq001.sats"
+#include
+"srcgen1/prelude/SATS/gseqn00.sats"
+//
+#include
+"srcgen1/prelude/SATS/genv000.sats"
+//
+(* ****** ****** *)
+//
+#include
+"srcgen1/prelude/SATS/excptn0.sats"
+#include
+"srcgen1/prelude/SATS/synoug0.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -114,29 +143,40 @@ For viewtypes (that is, linear types)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#include "prelude/SATS/VT/strn000_vt.sats"
+#include
+"srcgen1/prelude/SATS/VT/strn000_vt.sats"
 //
 (* ****** ****** *)
 //
-#include "prelude/SATS/VT/arrn000_vt.sats"
-#include "prelude/SATS/VT/arrn001_vt.sats"
+#include
+"srcgen1/prelude/SATS/VT/arrn000_vt.sats"
+#include
+"srcgen1/prelude/SATS/VT/arrn001_vt.sats"
 //
-#include "prelude/SATS/VT/list000_vt.sats"
-#include "prelude/SATS/VT/optn000_vt.sats"
+#include
+"srcgen1/prelude/SATS/VT/list000_vt.sats"
+#include
+"srcgen1/prelude/SATS/VT/optn000_vt.sats"
 //
-#include "prelude/SATS/VT/strm000_vt.sats"
-#include "prelude/SATS/VT/strm001_vt.sats"
+#include
+"srcgen1/prelude/SATS/VT/strm000_vt.sats"
+#include
+"srcgen1/prelude/SATS/VT/strm001_vt.sats"
 //
-#include "prelude/SATS/VT/tupl000_vt.sats"
+#include
+"srcgen1/prelude/SATS/VT/tupl000_vt.sats"
 //
 (* ****** ****** *)
 //
-#include "prelude/SATS/VT/gseq000_vt.sats"
-#include "prelude/SATS/VT/gseqn00_vt.sats"
+#include
+"srcgen1/prelude/SATS/VT/gseq000_vt.sats"
+#include
+"srcgen1/prelude/SATS/VT/gseqn00_vt.sats"
 //
 (* ****** ****** *)
 //
-#include "prelude/SATS/VT/synoug0_vt.sats"
+#include
+"srcgen1/prelude/SATS/VT/synoug0_vt.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -151,11 +191,11 @@ files are not yet accessible!
 *)
 //
 #staload
-UNSF(*unsafe*) = "prelude/SATS/unsafex.sats"
+UNSF(*unsafe*) = "srcgen1/prelude/SATS/unsafex.sats"
 //
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_INIT_srcgen2_prelude.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_INIT_srcgen2_prelude.sats] *)
