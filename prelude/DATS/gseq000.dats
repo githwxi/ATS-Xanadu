@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Mon 08 Jul 2024 02:15:16 AM EDT
+Mon 08 Jul 2024 12:53:10 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -38,120 +38,26 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<xs:vt>
-<x0:vt>
-gseq_nil0((*nil*)): (xs)
-fun
-<xs:vt>
-<x0:vt>
-gseq_cons0(x0, xs): (xs)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
+#impltmp
 <xs:t0>
 <x0:t0>
-gseq_strmize
-  (xs: xs): strm_vt(x0)
-fun
-<xs:t0>
-<x0:t0>
-gseq_strqize
-  (xs: xs): strq_vt(x0)
+gseq_filter_self =
+gseq_filter_ares<xs><x0><xs>
 //
-fun
-<xs:vt>
-<x0:vt>
-gseq_strmize0
-  (xs: ~xs): strm_vt(x0)
-fun
-<xs:vt>
-<x0:vt>
-gseq_strqize0
-  (xs: ~xs): strq_vt(x0)
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-gseq_listize
-  (xs: xs): list_vt(x0)
-fun
-<xs:vt>
-<x0:vt>
-gseq_listize0
-  (xs: ~xs): list_vt(x0)
-//
-fun
-<xs:t0>
-<x0:t0>
-gseq_rlistize
-  (xs: xs): list_vt(x0)
-fun
-<xs:vt>
-<x0:vt>
-gseq_rlistize0
-  (xs: ~xs): list_vt(x0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-gseq_length(xs: xs): sint
-fun
-<xs:vt>
-<x0:vt>
-gseq_length0(xs: ~xs): sint
-fun
-<xs:vt>
-<x0:vt>
-gseq_length1(xs: !xs): sint
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
+#impltmp
 <xs:t0>
 <x0:t0>
 <ys:vt>
-gseq_filter_ares(xs: xs): (ys)
-fun
-<xs:t0>
-<x0:t0>
-gseq_filter_self(xs: xs): (xs)
-//
-fun
-<xs:vt>
-<x0:vt>
-<ys:vt>
-gseq_filter0_ares(xs: ~xs): (ys)
-fun
-<xs:vt>
-<x0:vt>
-gseq_filter0_self(xs: ~xs): (xs)
-//
-fun
-<xs:vt>
-<x0:vt>
-<ys:vt>
-gseq_filter1_ares(xs: !xs): (ys)
-fun
-<xs:vt>
-<x0:vt>
-gseq_filter1_self(xs: !xs): (xs)
+gseq_filter_ares
+  (xs) =
+g_make_lstrm<x0><ys>
+(
+gseq_filter_lstrm<xs><x0>(xs))
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
-#symload filter with gseq_filter_ares of 0100
-#symload filter with gseq_filter_self of 0101
-
-(* ****** ****** *)
-(* ****** ****** *)
-
-(* end of [ATS3/XANADU_prelude_SATS_gseq000.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_list000.dats] *)

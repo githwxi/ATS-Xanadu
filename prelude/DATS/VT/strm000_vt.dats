@@ -30,145 +30,15 @@
 (*
 Author: Hongwei Xi
 (*
-Mon 08 Jul 2024 08:46:41 AM EDT
+Mon 08 Jul 2024 01:04:34 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-fun
-<a:vt>
-g_free(x : ~a): void
-fun
-<a:vt>
-g_copy(x : !a): ( a )
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:t0>
-g_equal(a, a): bool
-fun
-<a:t0>
-g_noteq(a, a): bool
-//
-(* ****** ****** *)
-//
-fun
-<a:vt>
-g_equal0(~a, ~a): bool
-fun
-<a:vt>
-g_noteq0(~a, ~a): bool
-//
-fun
-<a:vt>
-g_equal1(!a, !a): bool
-fun
-<a:vt>
-g_noteq1(!a, !a): bool
-//
-(* ****** ****** *)
-//
-fun
-<a:t0>
-g_eqref(a, a): bool
-fun
-<a:t0>
-g_neqrf(a, a): bool
-//
-fun
-<a:vt>
-g_eqref1(!a, !a): bool
-fun
-<a:vt>
-g_neqrf1(!a, !a): bool
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:vt>
-g_input
-((*void*)): (  a  )
-//
-fun
-<a:vt>
-g_input$exn
-((*void*)): (  a  )
-fun
-<a:vt>
-g_input_exn
-((*void*)): (  a  )
-//
-fun
-<a:vt>
-g_input_opt
-((*void*)): optn_vt(a)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:vt>
-g_parse
-(rep: strn): (  a  )
-//
-fun
-<a:vt>
-g_parse$exn
-(rep: strn): (  a  )
-fun
-<a:vt>
-g_parse_exn
-(rep: strn): (  a  )
-//
-fun
-<a:vt>
-g_parse_opt
-(rep: strn): optn_vt(a)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:t0>
-g_torep(x : a): strn
-fun
-<a:t0>
-g_tostr(x : a): strn
-//
-fun
-<a:vt>
-g_torep0(x : ~a): strn
-fun
-<a:vt>
-g_tostr0(x : ~a): strn
-//
-fun
-<a:vt>
-g_torep1(x : !a): strn
-fun
-<a:vt>
-g_tostr1(x : !a): strn
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:t0>
-g_print(x: a): void
-fun
-<a:vt>
-g_print0(x: ~a): void
-fun
-<a:vt>
-g_print1(x: !a): void
-//
+
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_gbas000.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_VT_strm000_vt.dats] *)
