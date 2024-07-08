@@ -74,8 +74,6 @@ g_stderr(): FILR // STDERR=2
 //
 fun<>
 g_print$out(): FILR
-fun<>
-gl_print$out(): FILR
 //
 (* ****** ****** *)
 
@@ -104,24 +102,24 @@ g_inp_lline_rlist(): list_vt(char)
 //
 fun
 <x0:t0> // STDOUT
-prout_ref(x0: x0): void
+g_prout(x0: x0): void
 fun
 <x0:t0> // STDERR
-prerr_ref(x0: x0): void
+g_prerr(x0: x0): void
 //
 fun
 <x0:vt> // STDOUT
-prout0_ref(x0: ~x0): void
+g_prout0(x0: ~x0): void
 fun
 <x0:vt> // STDERR
-prerr0_ref(x0: ~x0): void
+g_prerr0(x0: ~x0): void
 //
 fun
 <x0:vt> // STDOUT
-prout1_ref(x0: !x0): void
+g_prout1(x0: !x0): void
 fun
 <x0:vt> // STDERR
-prerr1_ref(x0: !x0): void
+g_prerr1(x0: !x0): void
 //
 (* ****** ****** *)
 //

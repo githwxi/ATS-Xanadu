@@ -35,7 +35,7 @@ gs_fproc0_a01
 {
 #impltmp
 {a0:vt}
-g_fproc0<a0> = prout0_ref<a0>
+g_fproc0<a0> = g_prout0<a0>
 }
 //
 #impltmp
@@ -46,7 +46,7 @@ gs_fproc0_a02
 {
 #impltmp
 {a0:vt}
-g_fproc0<a0> = prout0_ref<a0>
+g_fproc0<a0> = g_prout0<a0>
 }
 //
 #impltmp
@@ -59,7 +59,7 @@ gs_fproc0_a03
 {
 #impltmp
 {a0:vt}
-g_fproc0<a0> = prout0_ref<a0>
+g_fproc0<a0> = g_prout0<a0>
 }
 //
 #impltmp
@@ -72,7 +72,7 @@ gs_fproc0_a04
 {
 #impltmp
 {a0:vt}
-g_fproc0<a0> = prout0_ref<a0>
+g_fproc0<a0> = g_prout0<a0>
 }
 //
 #impltmp
@@ -86,7 +86,7 @@ gs_fproc0_a05
 {
 #impltmp
 {a0:vt}
-g_fproc0<a0> = prout0_ref<a0>
+g_fproc0<a0> = g_prout0<a0>
 }
 //
 #impltmp
@@ -100,7 +100,7 @@ gs_fproc0_a06
 {
 #impltmp
 {a0:vt}
-g_fproc0<a0> = prout0_ref<a0>
+g_fproc0<a0> = g_prout0<a0>
 }
 //
 #impltmp
@@ -116,7 +116,7 @@ gs_fproc0_a07
 {
 #impltmp
 {a0:vt}
-g_fproc0<a0> = prout0_ref<a0>
+g_fproc0<a0> = g_prout0<a0>
 }
 //
 #impltmp
@@ -132,7 +132,7 @@ gs_fproc0_a08
 {
 #impltmp
 {a0:vt}
-g_fproc0<a0> = prout0_ref<a0>
+g_fproc0<a0> = g_prout0<a0>
 }
 //
 #impltmp
@@ -149,7 +149,7 @@ gs_fproc0_a09
 {
 #impltmp
 {a0:vt}
-g_fproc0<a0> = prout0_ref<a0>
+g_fproc0<a0> = g_prout0<a0>
 }
 //
 #impltmp
@@ -167,7 +167,7 @@ gs_fproc0_a10
 {
 #impltmp
 {a0:vt}
-g_fproc0<a0> = prout0_ref<a0>
+g_fproc0<a0> = g_prout0<a0>
 }
 //
 (* ****** ****** *)
@@ -175,7 +175,7 @@ g_fproc0<a0> = prout0_ref<a0>
 #impltmp
 gs_proutln0_a00
 <>(*tmp*)
-((*_*)) = prout_ref( "\n" )
+((*_*)) = g_prout( "\n" )
 //
 (* ****** ****** *)
 //
@@ -359,7 +359,7 @@ gs_fproc1_a01
 {
 #impltmp
 {a0:vt}
-g_fproc1<a0> = prout1_ref<a0>
+g_fproc1<a0> = g_prout1<a0>
 }
 //
 #impltmp
@@ -370,7 +370,7 @@ gs_fproc1_a02
 {
 #impltmp
 {a0:vt}
-g_fproc1<a0> = prout1_ref<a0>
+g_fproc1<a0> = g_prout1<a0>
 }
 //
 #impltmp
@@ -383,7 +383,7 @@ gs_fproc1_a03
 {
 #impltmp
 {a0:vt}
-g_fproc1<a0> = prout1_ref<a0>
+g_fproc1<a0> = g_prout1<a0>
 }
 //
 #impltmp
@@ -396,7 +396,7 @@ gs_fproc1_a04
 {
 #impltmp
 {a0:vt}
-g_fproc1<a0> = prout1_ref<a0>
+g_fproc1<a0> = g_prout1<a0>
 }
 //
 #impltmp
@@ -410,7 +410,7 @@ gs_fproc1_a05
 {
 #impltmp
 {a0:vt}
-g_fproc1<a0> = prout1_ref<a0>
+g_fproc1<a0> = g_prout1<a0>
 }
 //
 #impltmp
@@ -424,7 +424,7 @@ gs_fproc1_a06
 {
 #impltmp
 {a0:vt}
-g_fproc1<a0> = prout1_ref<a0>
+g_fproc1<a0> = g_prout1<a0>
 }
 //
 #impltmp
@@ -440,7 +440,7 @@ gs_fproc1_a07
 {
 #impltmp
 {a0:vt}
-g_fproc1<a0> = prout1_ref<a0>
+g_fproc1<a0> = g_prout1<a0>
 }
 //
 #impltmp
@@ -456,7 +456,7 @@ gs_fproc1_a08
 {
 #impltmp
 {a0:vt}
-g_fproc1<a0> = prout1_ref<a0>
+g_fproc1<a0> = g_prout1<a0>
 }
 //
 #impltmp
@@ -473,7 +473,7 @@ gs_fproc1_a09
 {
 #impltmp
 {a0:vt}
-g_fproc1<a0> = prout1_ref<a0>
+g_fproc1<a0> = g_prout1<a0>
 }
 //
 #impltmp
@@ -491,15 +491,15 @@ gs_fproc1_a10
 {
 #impltmp
 {a0:vt}
-g_fproc1<a0> = prout1_ref<a0>
+g_fproc1<a0> = g_prout1<a0>
 }
 //
 (* ****** ****** *)
 //
 #impltmp
 gs_proutln1_a00
-<>(*tmp*)
-((*_*)) = prout_ref( "\n" )
+<(*tmp*)>
+((*void*)) = g_prout( "\n" )
 //
 (* ****** ****** *)
 //
@@ -702,7 +702,7 @@ gs_fproc0_a01
 {
 #impltmp
 {a0:vt}
-g_fproc0<a0> = prerr0_ref<a0>
+g_fproc0<a0> = g_prerr0<a0>
 }
 //
 #impltmp
@@ -713,7 +713,7 @@ gs_fproc0_a02
 {
 #impltmp
 {a0:vt}
-g_fproc0<a0> = prerr0_ref<a0>
+g_fproc0<a0> = g_prerr0<a0>
 }
 //
 #impltmp
@@ -726,7 +726,7 @@ gs_fproc0_a03
 {
 #impltmp
 {a0:vt}
-g_fproc0<a0> = prerr0_ref<a0>
+g_fproc0<a0> = g_prerr0<a0>
 }
 //
 #impltmp
@@ -739,7 +739,7 @@ gs_fproc0_a04
 {
 #impltmp
 {a0:vt}
-g_fproc0<a0> = prerr0_ref<a0>
+g_fproc0<a0> = g_prerr0<a0>
 }
 //
 #impltmp
@@ -754,7 +754,7 @@ gs_fproc0_a05
 {
 #impltmp
 {a0:vt}
-g_fproc0<a0> = prerr0_ref<a0>
+g_fproc0<a0> = g_prerr0<a0>
 }
 //
 #impltmp
@@ -769,7 +769,7 @@ gs_fproc0_a06
 {
 #impltmp
 {a0:vt}
-g_fproc0<a0> = prerr0_ref<a0>
+g_fproc0<a0> = g_prerr0<a0>
 }
 //
 #impltmp
@@ -786,7 +786,7 @@ gs_fproc0_a07
 {
 #impltmp
 {a0:vt}
-g_fproc0<a0> = prerr0_ref<a0>
+g_fproc0<a0> = g_prerr0<a0>
 }
 //
 #impltmp
@@ -803,7 +803,7 @@ gs_fproc0_a08
 {
 #impltmp
 {a0:vt}
-g_fproc0<a0> = prerr0_ref<a0>
+g_fproc0<a0> = g_prerr0<a0>
 }
 //
 #impltmp
@@ -822,7 +822,7 @@ gs_fproc0_a09
 {
 #impltmp
 {a0:vt}
-g_fproc0<a0> = prerr0_ref<a0>
+g_fproc0<a0> = g_prerr0<a0>
 }
 //
 #impltmp
@@ -841,7 +841,7 @@ gs_fproc0_a10
 {
 #impltmp
 {a0:vt}
-g_fproc0<a0> = prerr0_ref<a0>
+g_fproc0<a0> = g_prerr0<a0>
 }
 //
 (* ****** ****** *)
@@ -849,7 +849,7 @@ g_fproc0<a0> = prerr0_ref<a0>
 #impltmp
 gs_prerrln0_a00
 <>(*tmp*)
-((*_*)) = prerr_ref( "\n" )
+((*_*)) = g_prerr( "\n" )
 //
 (* ****** ****** *)
 //
@@ -920,7 +920,7 @@ gs_fproc1_a01
 {
 #impltmp
 {a0:vt}
-g_fproc1<a0> = prerr1_ref<a0>
+g_fproc1<a0> = g_prerr1<a0>
 }
 //
 #impltmp
@@ -931,7 +931,7 @@ gs_fproc1_a02
 {
 #impltmp
 {a0:vt}
-g_fproc1<a0> = prerr1_ref<a0>
+g_fproc1<a0> = g_prerr1<a0>
 }
 //
 #impltmp
@@ -944,7 +944,7 @@ gs_fproc1_a03
 {
 #impltmp
 {a0:vt}
-g_fproc1<a0> = prerr1_ref<a0>
+g_fproc1<a0> = g_prerr1<a0>
 }
 //
 #impltmp
@@ -957,7 +957,7 @@ gs_fproc1_a04
 {
 #impltmp
 {a0:vt}
-g_fproc1<a0> = prerr1_ref<a0>
+g_fproc1<a0> = g_prerr1<a0>
 }
 //
 #impltmp
@@ -972,7 +972,7 @@ gs_fproc1_a05
 {
 #impltmp
 {a0:vt}
-g_fproc1<a0> = prerr1_ref<a0>
+g_fproc1<a0> = g_prerr1<a0>
 }
 //
 #impltmp
@@ -987,7 +987,7 @@ gs_fproc1_a06
 {
 #impltmp
 {a0:vt}
-g_fproc1<a0> = prerr1_ref<a0>
+g_fproc1<a0> = g_prerr1<a0>
 }
 //
 #impltmp
@@ -1004,7 +1004,7 @@ gs_fproc1_a07
 {
 #impltmp
 {a0:vt}
-g_fproc1<a0> = prerr1_ref<a0>
+g_fproc1<a0> = g_prerr1<a0>
 }
 //
 #impltmp
@@ -1021,7 +1021,7 @@ gs_fproc1_a08
 {
 #impltmp
 {a0:vt}
-g_fproc1<a0> = prerr1_ref<a0>
+g_fproc1<a0> = g_prerr1<a0>
 }
 //
 #impltmp
@@ -1040,7 +1040,7 @@ gs_fproc1_a09
 {
 #impltmp
 {a0:vt}
-g_fproc1<a0> = prerr1_ref<a0>
+g_fproc1<a0> = g_prerr1<a0>
 }
 //
 #impltmp
@@ -1059,7 +1059,7 @@ gs_fproc1_a10
 {
 #impltmp
 {a0:vt}
-g_fproc1<a0> = prerr1_ref<a0>
+g_fproc1<a0> = g_prerr1<a0>
 }
 //
 (* ****** ****** *)
@@ -1067,7 +1067,7 @@ g_fproc1<a0> = prerr1_ref<a0>
 #impltmp
 gs_prerrln1_a00
 <>(*tmp*)
-((*_*)) = prerr_ref( "\n" )
+((*_*)) = g_prerr( "\n" )
 //
 (* ****** ****** *)
 //
