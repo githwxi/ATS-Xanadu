@@ -22,123 +22,148 @@ XATSLIB1=./../../srcgen1/xatslib
 #
 ######
 
-all:: all_sats
-all:: all_dats
-#
-# all:: all_TEST
-#
-all:: all_CC_dats
-all:: all_JS_dats
-all:: all_Xint_dats
+all:: all0
+all:: all1
 
 ######
 
-all_sats:: ; \
+all0:: all0_sats
+all0:: all0_dats
+
+######
+
+all1:: all1_sats
+all1:: all1_dats
+all1:: all1_CC_dats
+all1:: all1_JS_dats
+all1:: all1_Xint_dats
+
+######
+
+all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/basics0.sats
 
 ######
+#
+# static declarations
+#
+######
 
-all_sats:: ; \
+all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gbas000.sats
+all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gseq000.sats
+all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/list000.sats
+
+all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/VT/strm000_vt.sats
+all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/VT/strn000_vt.sats
+
+######
+
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gbas000.sats
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gord000.sats
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gnum000.sats
 
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/bool000.sats
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/char000.sats
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gint000.sats
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gflt000.sats
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gintb00.sats
 
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gfor000.sats
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gfun000.sats
 
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gseq000.sats
-  all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gseq001.sats
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gras000.sats
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gmap000.sats
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gseqn00.sats
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/grasn00.sats
 
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/genv000.sats
 
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/arrn000.sats
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/arrn001.sats
 
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/tupn000.sats
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/tupn001.sats
 
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/strn000.sats
 
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/optn000.sats
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/list000.sats
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/strm000.sats
 
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/rand000.sats
 
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/tupl000.sats
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/utpl000.sats
 
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/excptn0.sats
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/synoug0.sats
 
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/unsafex.sats
 
 ######
 
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/VT/gseq000_vt.sats
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/VT/gseqn00_vt.sats
 
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/VT/arrn000_vt.sats
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/VT/arrn001_vt.sats
 
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/VT/strn000_vt.sats
 
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/VT/optn000_vt.sats
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/VT/list000_vt.sats
 
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/VT/strm000_vt.sats
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/VT/strm001_vt.sats
 
-all_sats:: ; \
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/VT/synoug0_vt.sats
 
 ######
@@ -147,121 +172,126 @@ $(XATSOPT) -s $(PRELUDE1)/SATS/VT/synoug0_vt.sats
 #
 ######
 
-all_dats:: ; \
+all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/list000.dats
+
+######
+
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/gbas000.dats
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/gnum000.dats
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/gord000.dats
 
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/bool000.dats
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/char000.dats
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/gint000.dats
 
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/gfor000.dats
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/gfun000.dats
 
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/gseq000.dats
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/gseq001.dats
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/gras000.dats
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/gmap000.dats
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/gseqn00.dats
 
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/genv000.dats
 
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/arrn000.dats
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/arrn001.dats
 
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/strn000.dats
 
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/list000.dats
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/optn000.dats
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/strm000.dats
 
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/rand000.dats
 
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/tupl000.dats
 
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/excptn0.dats
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/synoug0.dats
 
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/unsafex.dats
 
 ######
 
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/VT/gseq000_vt.dats
 
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/VT/arrn000_vt.dats
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/VT/arrn001_vt.dats
 
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/VT/strn000_vt.dats
 
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/VT/list000_vt.dats
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/VT/optn000_vt.dats
 
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/VT/strm000_vt.dats
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/VT/strm001_vt.dats
 
-all_dats:: ; \
+all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/VT/synoug0_vt.dats
 
 ######
 
-all_TEST:: ; \
+all1_TEST:: ; \
 $(XATSOPT) -d $(PRELUDE1)/TEST/list000_test000.dats
 
 ######
 
-all_CC_dats:: ; \
+all1_CC_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/CATS/CC/basics0.dats
 
 ######
 
-all_JS_dats:: ; \
-$(XATSOPT) -d ./../prelude/DATS/CATS/JS/basics0.dats
-all_JS_dats:: ; \
-$(XATSOPT) -d ./../prelude/DATS/CATS/JS/basics1.dats
-all_JS_dats:: ; \
-$(XATSOPT) -d ./../prelude/DATS/CATS/JS/prelude.dats
-all_JS_dats:: ; \
-$(XATSOPT) -d ./../prelude/DATS/CATS/JS/unsafex.dats
+all1_JS_dats:: ; \
+$(XATSOPT) -d $(PRELUDE1)/DATS/CATS/JS/basics0.dats
+all1_JS_dats:: ; \
+$(XATSOPT) -d $(PRELUDE1)/DATS/CATS/JS/basics1.dats
+all1_JS_dats:: ; \
+$(XATSOPT) -d $(PRELUDE1)/DATS/CATS/JS/prelude.dats
+all1_JS_dats:: ; \
+$(XATSOPT) -d $(PRELUDE1)/DATS/CATS/JS/unsafex.dats
   
 ######
 
-all_Xint_dats:: ; \
-$(XATSOPT) -d ./../prelude/DATS/CATS/Xint/basics0.dats
-all_Xint_dats:: ; \
-$(XATSOPT) -d ./../prelude/DATS/CATS/Xint/prelude.dats
+all1_Xint_dats:: ; \
+$(XATSOPT) -d $(PRELUDE1)/DATS/CATS/Xint/basics0.dats
+all1_Xint_dats:: ; \
+$(XATSOPT) -d $(PRELUDE1)/DATS/CATS/Xint/prelude.dats
 
 ######
 

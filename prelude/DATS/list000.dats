@@ -37,19 +37,27 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#staload
+"./../SATS/list000.sats"
+#staload
+"./../SATS/gseq000.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
-impltmp<>
+#impltmp
+< (*0*) >
 list_nil_
 ((*void*)) = list_nil()
-impltmp<a>
+#impltmp
+< x0:t0 >
 list_cons_
 ( x1, xs ) = list_cons(x1, xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-impltmp
-<x0:t0>
+#impltmp
+< x0:t0 >
 list_length
   (xs) =
 (
@@ -58,8 +66,8 @@ list_length
 (* ****** ****** *)
 (* ****** ****** *)
 //
-impltmp
-<x0:t0>
+#impltmp
+{x0:t0}
 list_strqize
   (xs) =
 (
@@ -77,8 +85,8 @@ strqcon_vt_cons(x1, auxmain(xs))
 )
 }(*where*)//end-of-[list_strqize(xs)]
 //
-impltmp
-<x0:t0>
+#impltmp
+{x0:t0}
 gseq_strqize
 <list(x0)><x0> = list_strqize<x0>
 //
