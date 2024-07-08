@@ -1,0 +1,40 @@
+######
+#
+# For testing
+# the files in prelude
+#
+######
+
+######
+XATSOPT=\
+./../bin/xatsopt
+######
+PRELUDE=./../../prelude
+######
+PRELUDE2=./../../srcgen2/prelude
+######
+
+######
+#
+# Static declarations
+#
+######
+
+all:: all_sats
+all:: all_dats
+
+######
+
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/basics0.sats
+
+######
+
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE2)/SATS/gbas000.sats
+all_sats:: ; \
+$(XATSOPT) -s $(PRELUDE2)/SATS/gseq000.sats
+
+######
+
+############### end of [Makefile_prelude] ###############
