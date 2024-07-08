@@ -103,4 +103,4 @@ ATS3_XANADU_prelude/DATS
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3_XANADU_prelude_prelude_dats.hats] *)
+(* end of [ATS3_XANADU_prelude_HATS_prelude_dats.hats] *)

@@ -130,11 +130,11 @@ fun
 g_equal0(~a, ~a): bool
 fun
 <a:vt>
-g_equal1(!a, !a): bool
+g_noteq0(~a, ~a): bool
 //
 fun
 <a:vt>
-g_noteq0(~a, ~a): bool
+g_equal1(!a, !a): bool
 fun
 <a:vt>
 g_noteq1(!a, !a): bool
