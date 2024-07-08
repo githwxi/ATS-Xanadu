@@ -13,8 +13,11 @@ Wed Dec 20 23:11:33 EST 2023
 /SATS/VT/arrn000_vt.sats"
 *)
 (* ****** ****** *)
+//
 #staload UN =
-"prelude/SATS/unsafex.sats"
+"srcgen1\
+/prelude/SATS/unsafex.sats"
+//
 (* ****** ****** *)
 //
 local

@@ -13,7 +13,8 @@ HX: for pure C-arrays
 *)
 (* ****** ****** *)
 #staload UN =
-"prelude/SATS/unsafex.sats"
+"srcgen1\
+/prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 //
 (*

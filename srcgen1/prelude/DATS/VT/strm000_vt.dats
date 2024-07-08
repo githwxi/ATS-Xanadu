@@ -8,8 +8,11 @@
 #abstbox box_tx
 #typedef box = box_tx
 (* ****** ****** *)
-#staload UN =
-"prelude/SATS/unsafex.sats"
+//
+#staload UN = //HX:unsafe
+"srcgen1\
+/prelude/SATS/unsafex.sats"
+//
 (* ****** ****** *)
 //
 (*

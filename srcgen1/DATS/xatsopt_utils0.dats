@@ -544,12 +544,12 @@ val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/gbas000.sats")
+, "srcgen1/prelude/SATS/gbas000.sats")
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/gbas001.sats")
+, "srcgen1/prelude/SATS/gbas001.sats")
 //
 (* ****** ****** *)
 //
@@ -557,12 +557,12 @@ val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/gnum000.sats")
+, "srcgen1/prelude/SATS/gnum000.sats")
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/gord000.sats")
+, "srcgen1/prelude/SATS/gord000.sats")
 //
 (* ****** ****** *)
 //
@@ -570,7 +570,7 @@ val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/rand000.sats")
+, "srcgen1/prelude/SATS/rand000.sats")
 //
 (* ****** ****** *)
 //
@@ -578,12 +578,12 @@ val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/gfor000.sats")
+, "srcgen1/prelude/SATS/gfor000.sats")
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/gfun000.sats")
+, "srcgen1/prelude/SATS/gfun000.sats")
 //
 (* ****** ****** *)
 //
@@ -591,37 +591,18 @@ val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/gseq000.sats")
+, "srcgen1/prelude/SATS/gseq000.sats")
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/gseq001.sats")
+, "srcgen1/prelude/SATS/gseq001.sats")
 //
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/gseqn00.sats")
-//
-(* ****** ****** *)
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/gmap000.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/gras000.sats")
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/genv000.sats")
+, "srcgen1/prelude/SATS/gseqn00.sats")
 //
 (* ****** ****** *)
 //
@@ -629,75 +610,18 @@ val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/gint000.sats")
+, "srcgen1/prelude/SATS/gmap000.sats")
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "srcgen1/prelude/SATS/gras000.sats")
 //
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/bool000.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/char000.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/gflt000.sats")
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/strn000.sats")
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/arrn000.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/arrn001.sats")
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/tupn000.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/tupn001.sats")
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/list000.sats")
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/optn000.sats")
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/strm000.sats")
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "prelude/SATS/tupl000.sats")
+, "srcgen1/prelude/SATS/genv000.sats")
 //
 (* ****** ****** *)
 //
@@ -705,13 +629,89 @@ val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/excptn0.sats")
+, "srcgen1/prelude/SATS/gint000.sats")
 //
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/synoug0.sats")
+, "srcgen1/prelude/SATS/bool000.sats")
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "srcgen1/prelude/SATS/char000.sats")
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "srcgen1/prelude/SATS/gflt000.sats")
+//
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "srcgen1/prelude/SATS/strn000.sats")
+//
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "srcgen1/prelude/SATS/arrn000.sats")
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "srcgen1/prelude/SATS/arrn001.sats")
+//
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "srcgen1/prelude/SATS/tupn000.sats")
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "srcgen1/prelude/SATS/tupn001.sats")
+//
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "srcgen1/prelude/SATS/list000.sats")
+//
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "srcgen1/prelude/SATS/optn000.sats")
+//
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "srcgen1/prelude/SATS/strm000.sats")
+//
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "srcgen1/prelude/SATS/tupl000.sats")
+//
+(* ****** ****** *)
+//
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "srcgen1/prelude/SATS/excptn0.sats")
+//
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "srcgen1/prelude/SATS/synoug0.sats")
 //
 (* ****** ****** *)
 //
@@ -721,70 +721,69 @@ val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/VT/gseq000_vt.sats")
+, "srcgen1/prelude/SATS/VT/gseq000_vt.sats")
 //
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/VT/strn000_vt.sats")
+, "srcgen1/prelude/SATS/VT/strn000_vt.sats")
 //
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/VT/arrn000_vt.sats")
+, "srcgen1/prelude/SATS/VT/arrn000_vt.sats")
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/VT/arrn001_vt.sats")
+, "srcgen1/prelude/SATS/VT/arrn001_vt.sats")
 //
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/VT/list000_vt.sats")
+, "srcgen1/prelude/SATS/VT/list000_vt.sats")
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/VT/optn000_vt.sats")
+, "srcgen1/prelude/SATS/VT/optn000_vt.sats")
 //
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/VT/strm000_vt.sats")
+, "srcgen1/prelude/SATS/VT/strm000_vt.sats")
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/VT/strm001_vt.sats")
+, "srcgen1/prelude/SATS/VT/strm001_vt.sats")
 //
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/SATS/VT/synoug0_vt.sats")
+, "srcgen1/prelude/SATS/VT/synoug0_vt.sats")
 //
 (* ****** ****** *)
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "prelude/INIT/srcgen1_xsetup0.sats")
+, "srcgen1/prelude/INIT/srcgen1_xsetup0.sats")
 (* ****** ****** *)
 //
 (*
 val () =
-println!
-("//[the_preludes_load] is finished.")
+println!("//[the_preludes_load] is finished.")
 *)
 //
 (* ****** ****** *)
 //
-} (* end of [the_preludes_load(XATSENV_] *)
+} (* end of [ the_preludes_load(  XATSENV ) ] *)
 
 (* ****** ****** *)
 //
@@ -800,8 +799,9 @@ then let
   (flag := flag + 1) in the_preludes_load(XATSENV)
 end // end of [then]
 //
-) (* end of [the_preludes_load_if] *)
+) (* end of [the_preludes_load_if(XATSENV,flag)] *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 
-(* end of [xats_xatsopt_util0.dats] *)
+(* end of [ATS3/XANADU_srcgen1_DATS_xatsopt_util0.dats] *)

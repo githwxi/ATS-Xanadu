@@ -5,9 +5,11 @@
 ** for unsafe functions
 *)
 (* ****** ****** *)
-#staload
-UN =
-"prelude/SATS/unsafex.sats"
+//
+#staload UN =
+"srcgen1\
+/prelude/SATS/unsafex.sats"
+//
 (* ****** ****** *)
 #impltmp
 <a>(*tmp*)

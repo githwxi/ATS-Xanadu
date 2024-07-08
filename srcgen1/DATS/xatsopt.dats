@@ -99,4 +99,6 @@ echo_argc_argv(out, argc, argv)
 (* ****** ****** *)
 #endif // #ifdef(__LIBXATSOPT__)
 (* ****** ****** *)
-(* end of [xats_xatsopt.dats] *)
+(* ****** ****** *)
+
+(* end of [ATS3/XANADU_srcgen1_DATS_xatsopt.dats] *)

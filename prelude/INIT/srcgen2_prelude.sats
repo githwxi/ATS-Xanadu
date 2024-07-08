@@ -46,6 +46,13 @@ For further program verification
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#include
+"srcgen1/prelude/SATS/bool000.sats"
+#include
+"srcgen1/prelude/SATS/char000.sats"
+//
+(* ****** ****** *)
+//
 #include "prelude/SATS/gbas000.sats"
 #include "prelude/SATS/gbas001.sats"
 //
@@ -57,9 +64,6 @@ For further program verification
 (* ****** ****** *)
 #include "prelude/SATS/rand000.sats"
 (* ****** ****** *)
-//
-#include "prelude/SATS/bool000.sats"
-#include "prelude/SATS/char000.sats"
 #include "prelude/SATS/gint000.sats"
 #include "prelude/SATS/gflt000.sats"
 #include "prelude/SATS/strn000.sats"
