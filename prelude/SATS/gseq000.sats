@@ -615,6 +615,17 @@ fun
 <x0:t0>
 gseq_filter(xs: xs): (xs)
 //
+(*
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+gseq_filter_ares(xs: xs): (ys)
+fun
+<xs:t0>
+<x0:t0>
+gseq_filter_self(xs: xs): (xs)
+*)
 (* ****** ****** *)
 //
 fun
