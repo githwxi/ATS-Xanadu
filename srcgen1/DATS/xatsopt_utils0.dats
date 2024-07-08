@@ -769,21 +769,23 @@ the_prelude_load
 , "srcgen1/prelude/SATS/VT/synoug0_vt.sats")
 //
 (* ****** ****** *)
+(*
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
 , "srcgen1/prelude/INIT/srcgen1_xsetup0.sats")
+*)
 (* ****** ****** *)
 //
 (*
 val () =
-println!("//[the_preludes_load] is finished.")
+println!("// [the_preludes_load] is finished.")
 *)
 //
 (* ****** ****** *)
 //
-} (* end of [ the_preludes_load(  XATSENV ) ] *)
+} (* end of [ the_preludes_load(  XATSENV  ) ] *)
 
 (* ****** ****** *)
 //
