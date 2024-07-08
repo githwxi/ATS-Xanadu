@@ -2342,7 +2342,7 @@ implement
 trans01_dcstdecl
   (d0cl) = let
 //
-// (*
+(*
 val
 loc0 = d0cl.loc()
 val () =
@@ -2351,7 +2351,7 @@ println!
 val () =
 println!
 ("trans01_dcstdecl: d0cl = ", d0cl)
-// *)
+*)
 //
 val+
 D0CSTDECL(rcd) = d0cl

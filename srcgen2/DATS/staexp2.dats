@@ -37,7 +37,8 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 #staload UN =
-"prelude/SATS/unsafex.sats"
+"srcgen1\
+/prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"

@@ -37,7 +37,8 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 #staload UN =
-"prelude/SATS/unsafex.sats"
+"srcgen1\
+/prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
@@ -808,95 +809,28 @@ f0_pvsload
 //
 val () =
 f0_pvsload
-(0(*sta*),"/prelude/INIT/excptn0.sats")
-val () =
-f0_pvsload
-(0(*sta*),"/prelude/INIT/xsetup0.sats")
-//
-val () =
-f0_pvsload
-( 0(*sta*)
-, "/prelude/INIT/srcgen2_xsetup0.sats")
-//
-val () =
-f0_pvsload
-( 0(*sta*)
-, "/prelude/INIT/srcgen2_prelude.sats")
-//
-(* ****** ****** *)
-//
-(*
-val () =
-f0_pvsload
-(0(*sta*), "/prelude/SATS/gbas000.sats")
-val () =
-f0_pvsload
-(0(*sta*), "/prelude/SATS/gnum000.sats")
-val () =
-f0_pvsload
-(0(*sta*), "/prelude/SATS/gord000.sats")
-*)
-//
-(* ****** ****** *)
-//
-(*
-val () =
-f0_pvsload
-(0(*sta*), "/prelude/SATS/bool000.sats")
-val () =
-f0_pvsload
-(0(*sta*), "/prelude/SATS/char000.sats")
-val () =
-f0_pvsload
-(0(*sta*), "/prelude/SATS/gint000.sats")
-val () =
-f0_pvsload
-(0(*sta*), "/prelude/SATS/gflt000.sats")
-val () =
-f0_pvsload
-(0(*sta*), "/prelude/SATS/strn000.sats")
-*)
-//
-(* ****** ****** *)
-//
-(*
-val () =
-f0_pvsload
-(0(*sta*), "/prelude/SATS/arrn000.sats")
-val () =
-f0_pvsload
-(0(*sta*), "/prelude/SATS/optn000.sats")
-val () =
-f0_pvsload
-(0(*sta*), "/prelude/SATS/list000.sats")
-val () =
-f0_pvsload
-(0(*sta*), "/prelude/SATS/strm000.sats")
-val () =
-f0_pvsload
-(0(*sta*), "/prelude/SATS/tupl000.sats")
-*)
-//
-(* ****** ****** *)
-//
-(*
+(
+0(*sta*),
+"/srcgen1/prelude/INIT/excptn0.sats")
 val () =
 f0_pvsload
 (
-0(*static*),
-"/prelude/SATS/VT/optn000_vt.sats"(*src*))
-val () =
-f0_pvsload
-(
-0(*static*),
-"/prelude/SATS/VT/list000_vt.sats"(*src*))
-val () =
-f0_pvsload
-(
-0(*static*),
-"/prelude/SATS/VT/strm000_vt.sats"(*src*))
-*)
+0(*sta*),
+"/srcgen1/prelude/INIT/xsetup0.sats")
 //
+val () =
+f0_pvsload
+(
+0(*sta*),
+"/srcgen1/prelude/INIT/srcgen2_xsetup0.sats")
+//
+val () =
+f0_pvsload
+(
+0(*sta*),
+"/srcgen1/prelude/INIT/srcgen2_prelude.sats")
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 // HX-2023-01-09:
@@ -964,9 +898,10 @@ end where
 {
 (*
 val () =
-prerrln("the_sexpenv_pvsfind: key = ", key)
+prerrln
+("the_sexpenv_pvsfind: key = ", key)
 *)
-} (*where*) // [the_sexpenv_pvsfind]
+} (*where*) // end-of-[the_sexpenv_pvsfind]
 //
 (* ****** ****** *)
 //
@@ -985,9 +920,10 @@ end where
 {
 (*
 val () =
-prerrln("the_dexpenv_pvsfind: key = ", key)
+prerrln
+("the_dexpenv_pvsfind: key = ", key)
 *)
-} (*where*) // [the_dexpenv_pvsfind]
+} (*where*) // end-of-[the_dexpenv_pvsfind]
 //
 (* ****** ****** *)
 //
