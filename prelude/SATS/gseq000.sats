@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2020 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2024 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -27,64 +27,54 @@
 
 (* ****** ****** *)
 //
-// For pure arrays in C
+(*
+Author: Hongwei Xi
+(*
+Mon 08 Jul 2024 02:15:16 AM EDT
+*)
+Authoremail: gmhwxiATgmailDOTcom
+*)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
-praxi
-array_view_nil :
-{a:vt}
-{l:a0}
-((*void*)) -<prf> arrvw(a,l,0)
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+gseq_filter_ares(xs: xs): (ys)
+fun
+<xs:t0>
+<x0:t0>
+gseq_filter_self(xs: xs): (xs)
 //
-praxi
-array_view_cons
-{a:vt}
-{l:a0}
-{n:i0}
-( pf1
-: a @ l
-, pf2
-: arrvw(a,l+sz(a),n)): arrvw(a,l,n+1)
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_filter0_ares(xs: ~xs): (ys)
+fun
+<xs:vt>
+<x0:vt>
+gseq_filter0_self(xs: ~xs): (xs)
 //
-praxi
-array_view_uncons :
-{a:vt}
-{l:a0}
-{n:i0|n > 0}
-(
-! arrvw(a,l,n) >>
-  arrvw(a,l+sz(a),n-1)) -<prf> (a @ l)
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_filter1_ares(xs: !xs): (ys)
+fun
+<xs:vt>
+<x0:vt>
+gseq_filter1_self(xs: !xs): (xs)
 //
 (* ****** ****** *)
-
-#symload nil with array_view_cons
-#symload cons with array_view_cons
-#symload uncons with array_view_uncons
-
-(* ****** ****** *)
-prfun
-array_view_split_at
-{a:vt}
-{l:a0}
-{n:i0}{i:nat|i<=n}
-( A0:
-  arrvw(a,l,n) | i0: int(i) )
-:
-(
-  arrvw(a,l,i), arrvw(a,l+i*sz(a),n-i)
-) (* end of [array_v_split_at] *)
-(* ****** ****** *)
-prfun
-array_view_unsplit
-{a:vt}
-{l:a0}
-{n1:i0
-;n2:i0}
-( pf1
-: arrvw(a,l, n1)
-, pf2
-: arrvw(a,l+n1*sz(a),n2)): arrvw(a,l,n1+n2)
 (* ****** ****** *)
 
-(* end of [prelude_CC_carrvw0.sats]
+#symload filter with gseq_filter_ares of 0100
+#symload filter with gseq_filter_self of 0101
+
+(* ****** ****** *)
+(* ****** ****** *)
+
+(* end of [ATS3/XANADU_prelude_SATS_gseq000.sats] *)
