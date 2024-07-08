@@ -40,17 +40,17 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 <x0:vt>
-<y0:vt>
+<ys:vt>
 g_make_lstrm
-(xs: strm_vt(a)): (ys)
+(xs: strm_vt(x0)): (ys)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-<a:vt>
+<x0:vt>
 strm_vt_length0
-(xs: strm_vt(a)): nint
+(xs: strm_vt(x0)): (nint)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
