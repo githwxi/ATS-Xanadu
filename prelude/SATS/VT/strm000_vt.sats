@@ -67,6 +67,13 @@ strq_vt_length0
 //
 fun
 <x0:vt>
+strm_vt_strqize0
+(xs: strm_vt(x0)): strq_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
 strm_vt_listize0
 (xs: strm_vt(x0)): list_vt(x0)
 fun
@@ -85,7 +92,7 @@ strq_vt_rlistize0
 {n0:i0}
 (xs: strq_vt(x0,n0)): list_vt(x0,n0)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_SATS_VT_strn000_vt.sats] *)
