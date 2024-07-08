@@ -37,7 +37,23 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
+#impltmp
+<x0:vt>
+g_make_lstrm
+<strm_vt(x0)>(xs) = xs
+#impltmp
+<x0:vt>
+g_make_lstrq
+<strq_vt(x0)>(xs) = xs
+//
+(* ****** ****** *)
+//
+#impltmp
+{x0:vt}
+g_make_lstrq
+<x0><list_vt(x0)> = strq_vt_listize0
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
