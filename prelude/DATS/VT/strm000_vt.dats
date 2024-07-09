@@ -39,26 +39,26 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
-<x0:vt>
+< x0:vt >
 g_make_lstrm
 <strm_vt(x0)>(xs) = xs
 #impltmp
-<x0:vt>
+< x0:vt >
 g_make_lstrq
 <strq_vt(x0)>(xs) = xs
 //
 (* ****** ****** *)
 //
 #impltmp
-{x0:vt}
+{ x0:vt }
 g_make_lstrm
 <x0><list_vt(x0)> = strm_vt_listize0
 #impltmp
-{x0:vt}
+{ x0:vt }
 g_make_lstrq
 <x0><list_vt(x0)> = strq_vt_listize0
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_DATS_VT_strm000_vt.dats] *)

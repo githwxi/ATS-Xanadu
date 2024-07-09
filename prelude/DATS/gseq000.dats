@@ -41,6 +41,17 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 <xs:t0>
 <x0:t0>
+gseq_length(xs) =
+strm_vt_length0<x0>
+(
+gseq_strmize<xs><x0>(xs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<xs:t0>
+<x0:t0>
 gseq_filter_self =
 gseq_filter_ares<xs><x0><xs>
 //
@@ -60,4 +71,4 @@ gseq_filter_lstrm<xs><x0>(xs))
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_list000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_gseq000.dats] *)
