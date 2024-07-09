@@ -926,26 +926,26 @@ list1(a:t0) = [n:i0 | n >= 1] list(a, n)
 //
 #typedef
 listlt
-(a:t0, n:i0) = [k:nat | k < n] list(a, k)
+(a:t0, n:i0) = [i:nat | i < n] list(a, i)
 #typedef
 listgt
-(a:t0, n:i0) = [k:nat | k > n] list(a, k)
+(a:t0, n:i0) = [k:int | k > n] list(a, k)
 //
 #typedef
 listlte
-(a:t0, n:i0) = [k:nat | k <= n] list(a, k)
+(a:t0, n:i0) = [i:nat | i <= n] list(a, i)
 #typedef
 listgte
-(a:t0, n:i0) = [k:nat | k >= n] list(a, k)
+(a:t0, n:i0) = [k:int | k >= n] list(a, k)
 //
 #typedef
 listbtw
 ( a:t0
-, m:i0, n:i0) = [k:nat | m <= k; k < n] list(a, k)
+, m:i0, n:i0) = [i:nat | m <= i; i < n] list(a, i)
 #typedef
 listbtwe
 ( a:t0
-, m:i0, n:i0) = [k:nat | m <= k; k <= n] list(a, k)
+, m:i0, n:i0) = [i:nat | m <= i; i <= n] list(a, i)
 //
 (* ****** ****** *)
 //
@@ -963,13 +963,13 @@ llist1(a:vt) =
 //
 #vwtpdef
 llistlt
-(a:vt, n:i0) = [k:nat | k < n] llist(a, k)
+(a:vt, n:i0) = [i:nat | i < n] llist(a, i)
 #vwtpdef
 llistgt
 (a:vt, n:i0) = [k:int | k > n] llist(a, k)
 #vwtpdef
 llistlte
-(a:vt, n:i0) = [k:nat | k <= n] llist(a, k)
+(a:vt, n:i0) = [i:nat | i <= n] llist(a, i)
 #vwtpdef
 llistgte
 (a:vt, n:i0) = [k:int | k >= n] llist(a, k)
@@ -977,11 +977,11 @@ llistgte
 #vwtpdef
 llistbtw
 ( a:vt
-, m:i0, n:i0) = [k:i0 | m <= k; k < n] llist(a, k)
+, m:i0, n:i0) = [i:i0 | m <= i; i < n] llist(a, i)
 #vwtpdef
 llistbtwe
 ( a:vt
-, m:i0, n:i0) = [k:i0 | m <= k; k <= n] llist(a, k)
+, m:i0, n:i0) = [i:i0 | m <= i; i <= n] llist(a, i)
 //
 (* ****** ****** *)
 //
@@ -998,13 +998,13 @@ list1_vt(a:vt) =
 //
 #vwtpdef
 listlt_vt
-(a:vt, n:i0) = [k:nat | k < n] list_vt(a, k)
+(a:vt, n:i0) = [i:nat | i < n] list_vt(a, i)
 #vwtpdef
 listgt_vt
 (a:vt, n:i0) = [k:int | k > n] list_vt(a, k)
 #vwtpdef
 listlte_vt
-(a:vt, n:i0) = [k:nat | k <= n] list_vt(a, k)
+(a:vt, n:i0) = [i:nat | i <= n] list_vt(a, i)
 #vwtpdef
 listgte_vt
 (a:vt, n:i0) = [k:int | k >= n] list_vt(a, k)
@@ -1012,11 +1012,11 @@ listgte_vt
 #vwtpdef
 listbtw_vt
 ( a:vt
-, m:i0, n:i0) = [k:i0 | m <= k; k < n] list_vt(a, k)
+, m:i0, n:i0) = [i:i0 | m <= i; i < n] list_vt(a, i)
 #vwtpdef
 listbtwe_vt
 ( a:vt
-, m:i0, n:i0) = [k:i0 | m <= k; k <= n] list_vt(a, k)
+, m:i0, n:i0) = [i:i0 | m <= i; i <= n] list_vt(a, i)
 //
 (* ****** ****** *)
 //
@@ -1310,6 +1310,21 @@ strq(*a:vt,n:i0*) = streaq(*(a, n)*)
 lstrq(*a:vt,n:i0*) = streaq_vt(*(a, n)*)
 #sexpdef
 strq_vt(*a:vt,n:i0*) = streaq_vt(*(a, n)*)
+//
+(* ****** ****** *)
+//
+#vwtpdef
+strqlt_vt
+(a:vt, n:i0) = [i:nat | i < n] strq_vt(a, i)
+#vwtpdef
+strqgt_vt
+(a:vt, n:i0) = [k:int | k > n] strq_vt(a, k)
+#vwtpdef
+strqlte_vt
+(a:vt, n:i0) = [i:nat | i <= n] strq_vt(a, i)
+#vwtpdef
+strqgte_vt
+(a:vt, n:i0) = [k:int | k >= n] strq_vt(a, k)
 //
 (* ****** ****** *)
 (* ****** ****** *)
