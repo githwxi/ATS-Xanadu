@@ -61,12 +61,10 @@ g_make_lstrq
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 #impltmp
 < x0:vt >
 strm_vt_forall0 =
 gseq_forall0<strm_vt(x0)><x0>
-*)
 #impltmp
 < x0:vt >
 strm_vt_foreach0 =
