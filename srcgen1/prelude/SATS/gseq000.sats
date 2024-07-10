@@ -366,6 +366,12 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_arrnize(xs): a1psz(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_rarrnize(xs): a1psz(x0)
+//
+(* ****** ****** *)
 //
 fun
 <xs:t0>
@@ -374,19 +380,27 @@ gseq_listize(xs): list_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_strmize(xs): strm_vt(x0)
+gseq_rlistize(xs): list_vt(x0)
+//
+(* ****** ****** *)
+(*
+HX-2024-07-09:
+*)
+fun
+<xs:t0>
+<x0:t0>
+gseq_strqize(xs): strq_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_rstrqize(xs): strq_vt(x0)
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
-gseq_rarrnize(xs): a1psz(x0)
-//
-fun
-<xs:t0>
-<x0:t0>
-gseq_rlistize(xs): list_vt(x0)
+gseq_strmize(xs): strm_vt(x0)
 fun
 <xs:t0>
 <x0:t0>

@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Mon 08 Jul 2024 11:37:45 AM EDT
+Wed 10 Jul 2024 08:24:22 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -38,78 +38,57 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-< (*0*) >
-list_nil_
-((*void*)) = list_nil()
-#impltmp
-< x0:t0 >
-list_cons_
-( x1, xs ) = list_cons(x1, xs)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< x0:t0 >
-list_strqize
-  (xs) =
-(
-  auxmain(xs)) where
-{
-fun auxmain(xs) = $llazy
-(
-case+ xs of
-|
-list_nil() =>
-strqcon_vt_nil()
-|
-list_cons(x1, xs) =>
-strqcon_vt_cons(x1, auxmain(xs))
-)
-}(*where*)//end-of-[list_strqize(xs)]
-//
-#impltmp
-{x0:t0}
-gseq_strqize
-<list(x0)><x0> = list_strqize<x0>
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-//
-(*
-#impltmp
-< x0:t0 >
-list_length
-  (xs) =
-(
-  gseq_length<list(x0)><x0>(xs))
-*)
-//
-#impltmp
-< x0:t0 >
-list_length
-  (xs) =
-(
-  loop(xs, 0(*j0*))) where
-{
 fun
-loop{i,j:i0}
-(xs:
- list(x0), j0: sint(j)): sint(i+j) =
-(
-case+ xs of
-|list_nil() => j0
-|list_cons(x1, xs) => loop(xs, j0+1)
-)
-}
+<a:vt>
+g_equal0(~a, ~a): bool
+fun
+<a:vt>
+g_noteq0(~a, ~a): bool
 //
-#impltmp
-{ x0:t0 }
-gseq_length<list(x0)><x0> = list_length
+fun
+<a:vt>
+g_equal1(!a, !a): bool
+fun
+<a:vt>
+g_noteq1(!a, !a): bool
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+g_eqref1(!a, !a): bool
+fun
+<a:vt>
+g_neqrf1(!a, !a): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+g_torep0(x : ~a): strn
+fun
+<a:vt>
+g_tostr0(x : ~a): strn
+//
+fun
+<a:vt>
+g_torep1(x : !a): strn
+fun
+<a:vt>
+g_tostr1(x : !a): strn
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+g_print0(x: ~a): void
+fun
+<a:vt>
+g_print1(x: !a): void
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_list000.dats] *)
+(* end of [ATS3/XANADU_prelude_SATS_gbas000_vt.sats] *)

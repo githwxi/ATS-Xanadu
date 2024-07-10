@@ -58,34 +58,11 @@ g_noteq(a, a): bool
 (* ****** ****** *)
 //
 fun
-<a:vt>
-g_equal0(~a, ~a): bool
-fun
-<a:vt>
-g_noteq0(~a, ~a): bool
-//
-fun
-<a:vt>
-g_equal1(!a, !a): bool
-fun
-<a:vt>
-g_noteq1(!a, !a): bool
-//
-(* ****** ****** *)
-//
-fun
 <a:t0>
 g_eqref(a, a): bool
 fun
 <a:t0>
 g_neqrf(a, a): bool
-//
-fun
-<a:vt>
-g_eqref1(!a, !a): bool
-fun
-<a:vt>
-g_neqrf1(!a, !a): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -141,32 +118,12 @@ fun
 <a:t0>
 g_tostr(x : a): strn
 //
-fun
-<a:vt>
-g_torep0(x : ~a): strn
-fun
-<a:vt>
-g_tostr0(x : ~a): strn
-//
-fun
-<a:vt>
-g_torep1(x : !a): strn
-fun
-<a:vt>
-g_tostr1(x : !a): strn
-//
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 <a:t0>
 g_print(x: a): void
-fun
-<a:vt>
-g_print0(x: ~a): void
-fun
-<a:vt>
-g_print1(x: !a): void
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
