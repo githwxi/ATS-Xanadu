@@ -1,9 +1,34 @@
 (* ****** ****** *)
+(* ****** ****** *)
 (*
 HX-2024-07-10:
 These are newly designed
 function interfaces ATS3
 *)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<r0:vt>
+foldlft$fopr(r0, x0): (r0)
+fun
+<x0:t0>
+<r0:vt>
+foldall$fopr(r0, x0): (bool, r0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<r0:vt>
+rfoldlft$fopr(x0, r0): (r0)
+fun
+<x0:t0>
+<r0:vt>
+rfoldall$fopr(x0, r0): (bool, r0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
