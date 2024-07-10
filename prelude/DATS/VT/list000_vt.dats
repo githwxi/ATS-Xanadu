@@ -43,25 +43,56 @@ Authoremail: gmhwxiATgmailDOTcom
 list_vt_length0
   (xs) =
 (
-  loop(xs, 0(*j0*))) where
+  loop(xs, 0(*j0*)))
+where
 {
 fun
-loop{i,j:i0}
+loop
+{i,j:i0}
 (xs:
-~list_vt(x0), j0: sint(j)): sint(i+j) =
+~list_vt(x0)
+,j0: sint(j)): sint(i+j) =
 (
 case+ xs of
 | ~
 list_vt_nil() => j0
 | ~
-list_vt_cons
-  (x1, xs) => (free(x1); loop(xs, j0+1))
-)
+list_vt_cons(x1, xs) =>
+(free(x1); loop(xs, j0+1)))
 }
 //
 #impltmp
 { x0:vt }
 gseq_length0<list_vt(x0)><x0> = list_vt_length0
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+list_vt_foreach0
+  (xs) = 
+(
+  loop(xs) ) where
+{
+fun
+loop
+(xs: list_vt(x0)): void =
+(
+case+ xs of
+| ~
+list_vt_nil() => ( (*void*) )
+| ~
+list_vt_cons(x1, xs) =>
+(foreach0$work<x0>(x1); loop(xs)))
+}
+//
+#impltmp
+{ x0:vt }
+gseq_foreach0<list_vt(x0)><x0> = list_vt_foreach0<x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
