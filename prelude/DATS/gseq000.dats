@@ -83,12 +83,18 @@ gseq_forall(xs) =
 strm_vt_forall0<x0>
 (gseq_strmize<xs><x0>(xs))
 //
+(*
+HX-2024-07-10:
+It may be more efficient with
+an array-based implementation
+*)
 #impltmp
 < xs:t0 >
 < x0:t0 >
 gseq_rforall(xs) =
 list_vt_forall0<x0>
-(gseq_rlistize<xs><x0>(xs))
+(
+  gseq_rlistize<xs><x0>(xs))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -98,14 +104,21 @@ list_vt_forall0<x0>
 < x0:t0 >
 gseq_foreach(xs) =
 strm_vt_foreach0<x0>
-(gseq_strmize<xs><x0>(xs))
+(
+  gseq_strmize<xs><x0>(xs))
 //
+(*
+HX-2024-07-10:
+It may be more efficient with
+an array-based implementation
+*)
 #impltmp
 < xs:t0 >
 < x0:t0 >
 gseq_rforeach(xs) =
 list_vt_foreach0<x0>
-(gseq_rlistize<xs><x0>(xs))
+(
+  gseq_rlistize<xs><x0>(xs))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -118,6 +131,11 @@ gseq_foldlft(xs, r0) =
 strm_vt_foldlft0<x0><r0>
 (gseq_strmize<xs><x0>(xs), r0)
 //
+(*
+HX-2024-07-10:
+It may be more efficient with
+an array-based implementation
+*)
 #impltmp
 < xs:t0 >
 < x0:t0 >
