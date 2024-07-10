@@ -61,10 +61,23 @@ g_make_lstrq
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+#impltmp
+< x0:vt >
+strm_vt_forall0 =
+gseq_forall0<strm_vt(x0)><x0>
+*)
+#impltmp
+< x0:vt >
+strm_vt_foreach0 =
+gseq_foreach0<strm_vt(x0)><x0>
+//
+(* ****** ****** *)
+//
 #impltmp
 < x0:vt >
 strm_vt_forall0
-  (xs) =
+  ( xs ) =
 (
   auxmain(xs)) where
 {
@@ -85,14 +98,32 @@ then
 auxmain(xs) else (free(xs); false)))
 }(*where*)//end-of-[strm_vt_forall0(xs)]
 //
+#impltmp
+{ x0:vt }
+gseq_forall0
+<strm_vt(x0)><x0> = strm_vt_forall0<x0>
+//
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(*
+(*
+HX-2024-07-10:
+Making use of the most general one!
+(unless one is sure of a specific one)
+*)
+#impltmp
+< x0:vt >
+< y0:vt >
+strm_vt_map0 =
+gseq_map0_ares<strm_vt(x0)><x0><strm_vt(y0)>
+*)
 //
 #impltmp
 < x0:vt >
 < y0:vt >
 strm_vt_map0
-  (xs) =
+  ( xs ) =
 (
   auxmain(xs)) where
 {
@@ -112,11 +143,15 @@ strmcon_vt_cons(map0$fopr<x0><y0>(x1), auxmain(xs))
 )
 }(*where*)//end-of-[strm_vt_map0(xs)]
 //
+(*
+HX-2024-07-10:
+Implementing the most specific one!
+*)
 #impltmp
 { x0:vt }
 { y0:vt }
-gseq_map0_ares
-<strm_vt(x0)><x0><strm_vt(y0)> = strm_vt_map0<x0><y0>
+gseq_map0_lstrm
+<strm_vt(x0)><x0><y0> = strm_vt_map0<x0><y0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
