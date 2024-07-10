@@ -181,6 +181,10 @@ $(XATSOPT) -s $(PRELUDE1)/SATS/VT/synoug0_vt.sats
 ######
 
 all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/gbas000.dats
+all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/gbas001.dats
+all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gseq000.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/list000.dats
