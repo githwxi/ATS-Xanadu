@@ -226,4 +226,4 @@ gseqn_iforeachn(xs: xs(ln)): void
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_gseqn00.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_gseqn00.sats] *)

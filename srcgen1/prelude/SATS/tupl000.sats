@@ -211,4 +211,4 @@ x2tup_decode
 #symload put2x with x2tup_decode of 1000
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_tupl000.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_tupl000.sats] *)

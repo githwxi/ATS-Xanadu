@@ -651,4 +651,4 @@ list_rmake_fwork_vt
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_list000.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_list000.sats] *)

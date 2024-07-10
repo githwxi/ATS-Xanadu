@@ -54,4 +54,4 @@ gras_bsearch
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_gras000.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_gras000.sats] *)

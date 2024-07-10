@@ -226,4 +226,4 @@ pred with g_pred of 0101
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_gnum000.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_gnum000.sats] *)

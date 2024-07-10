@@ -147,4 +147,4 @@ range1_rstrmize(range1(x0)): strm_vt(x0)
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_gfor000.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_gfor000.sats] *)

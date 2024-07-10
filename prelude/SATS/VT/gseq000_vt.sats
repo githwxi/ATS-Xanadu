@@ -93,6 +93,29 @@ fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
+gseq_map0_ares(xs: ~xs): (ys)
+fun
+<xs:vt>
+<x0:vt>
+gseq_map0_self(xs: ~xs): (xs)
+//
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_map1_ares(xs: !xs): (ys)
+fun
+<xs:vt>
+<x0:vt>
+gseq_map1_self(xs: !xs): (xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
 gseq_filter0_ares(xs: ~xs): (ys)
 fun
 <xs:vt>

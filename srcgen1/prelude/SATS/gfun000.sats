@@ -132,5 +132,4 @@ gfun_rand_equal_f1np
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_gfun000.sats] *)
- 
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_gfun000.sats] *)

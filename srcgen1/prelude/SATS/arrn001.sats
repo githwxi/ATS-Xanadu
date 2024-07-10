@@ -164,4 +164,4 @@ a1rsz_foreach1
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_arrn001.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_arrn001.sats] *)

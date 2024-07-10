@@ -75,4 +75,4 @@ t2ref
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_tupn000.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_tupn000.sats] *)

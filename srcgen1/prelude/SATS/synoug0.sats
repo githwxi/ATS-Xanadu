@@ -1262,4 +1262,4 @@ list_append_a10
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_synoug0.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_synoug0.sats] *)

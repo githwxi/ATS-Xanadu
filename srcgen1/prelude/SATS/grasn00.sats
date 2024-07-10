@@ -63,4 +63,4 @@ grasn_get_at
 
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_grasn00.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_grasn00.sats] *)

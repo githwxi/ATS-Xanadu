@@ -150,4 +150,4 @@ gmap_unstrm_vt(strm_vt(@(key, itm))): map
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_gmap000.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_gmap000.sats] *)

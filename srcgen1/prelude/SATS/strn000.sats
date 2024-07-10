@@ -525,4 +525,4 @@ tail_exn with strn_tail_exn of 1000
 #symload rlistize with strn_rlistize of 1000
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_strn000.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_strn000.sats] *)

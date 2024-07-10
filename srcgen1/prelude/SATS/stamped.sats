@@ -65,4 +65,4 @@ list_cons_ss
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_stamped.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_stamped.sats] *)

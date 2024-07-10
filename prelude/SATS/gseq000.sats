@@ -39,13 +39,29 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
-<xs:t0>
-<x0:t0>
-gseq_nil((*nil*)): (xs)
+<xs:vt>
+<x0:vt>
+gseq_free
+( xs: ~xs ): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_copy
+( xs: !xs ): (xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>
-gseq_cons(x0, xs): (xs)
+gseq_nil
+( (*void*) ): (xs)
+fun
+<xs:t0>
+<x0:t0>
+gseq_cons
+(x0: x0, xs: xs): (xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)

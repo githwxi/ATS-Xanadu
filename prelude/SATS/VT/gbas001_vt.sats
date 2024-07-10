@@ -109,7 +109,61 @@ fun
 <r0:vt>
 rfoldall1$fopr(!x0, r0): (bool, r0)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<y0:vt>
+map0$fopr(x0: ~x0): ( y0 )
+fun
+<x0:vt>
+<y0:vt>
+map1$fopr(x0: !x0): ( y0 )
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<y0:vt>
+filter0$test(x0: ~x0): bool
+fun
+<x0:vt>
+<y0:vt>
+filter1$test(x0: !x0): bool
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<y0:vt>
+mapoptn0$fopr(x0: ~x0): optn_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+maplist0$fopr(x0: ~x0): list_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+mapstrq0$fopr(x0: ~x0): strq_vt(y0)
+//
+fun
+<x0:vt>
+<y0:vt>
+mapoptn1$fopr(x0: !x0): optn_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+maplist1$fopr(x0: !x0): list_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+mapstrq1$fopr(x0: !x0): strq_vt(y0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_gbas001.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_VT_gbas001_vt.sats] *)
