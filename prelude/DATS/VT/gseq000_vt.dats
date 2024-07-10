@@ -39,15 +39,27 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
-<xs:vt>
-<x0:vt>
+< xs:vt >
+< x0:vt >
 gseq_length0(xs) =
-strm_vt_length0<x0>
-(
-gseq_strmize0<xs><x0>(xs))
+let
+#typedef r0 = nint
+#impltmp
+foldlft0$fopr
+<x0><r0>(r0, x0) =
+(g_free<x0>(x0); r0 + 1)
+in//let
+  gseq_foldlft0<xs><x0><r0>(xs, 0)
+end//let//end-of-[gseq_length0(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#impltmp
+<xs:vt>
+<x0:vt>
+gseq_forall0(xs) =
+strm_vt_forall0<x0>(gseq_strmize0<xs><x0>(xs))
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)

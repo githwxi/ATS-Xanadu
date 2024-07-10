@@ -97,7 +97,7 @@ gseq_rlistize
 fun
 <xs:t0>
 <x0:t0>
-gseq_length(xs: xs): sint
+gseq_length(xs: xs): nint
 //
 (* ****** ****** *)
 (* ****** ****** *)

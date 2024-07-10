@@ -32,6 +32,29 @@ rfoldall$fopr(x0, r0): (bool, r0)
 (* ****** ****** *)
 //
 fun
+<x0:v0>
+<r0:vt>
+foldlft0$fopr(r0, x0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+foldall0$fopr(r0, x0): (bool, r0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<r0:vt>
+rfoldlft0$fopr(x0, r0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+rfoldall0$fopr(x0, r0): (bool, r0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 <x0:vt>
 <ys:vt>
 g_make_lstrm
@@ -132,6 +155,33 @@ fun
 <x0:t0>
 <r0:vt>
 gseq_rfoldall(xs, r0): ( r0 )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_foldlft0(xs, r0): ( r0 )
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_foldall0(xs, r0): ( r0 )
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_rfoldlft0(xs, r0): ( r0 )
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_rfoldall0(xs, r0): ( r0 )
 //
 (* ****** ****** *)
 (* ****** ****** *)
