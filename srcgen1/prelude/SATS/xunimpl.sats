@@ -46,6 +46,29 @@ g_make_lstrq
 (* ****** ****** *)
 //
 fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_map0_ares(xs: ~xs): (ys)
+fun
+<xs:vt>
+<x0:vt>
+gseq_map0_self(xs: ~xs): (xs)
+//
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_map1_ares(xs: !xs): (ys)
+fun
+<xs:vt>
+<x0:vt>
+gseq_map1_self(xs: !xs): (xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 <xs:t0>
 <x0:t0>
 <ys:vt>
@@ -76,6 +99,16 @@ fun
 gseq_filter1_self(xs: !xs): (xs)
 //
 (* ****** ****** *)
+//
+fun
+<x0:vt>
+<y0:vt>
+mapstrq0$fopr(x0: ~x0): strq_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+mapstrq1$fopr(x0: !x0): strq_vt(y0)
+//
 (* ****** ****** *)
 //
 fun
@@ -125,3 +158,5 @@ list_vt_rfoldlft0
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_xunimpl.sats] *)

@@ -48,4 +48,4 @@ c2hoose_foreach$work(x0,x0): void
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_gbas001.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_gbas001.sats] *)

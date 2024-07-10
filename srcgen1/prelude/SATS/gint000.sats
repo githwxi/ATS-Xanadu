@@ -510,4 +510,4 @@ Tue Aug 15 08:19:43 EDT 2023
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_gint000.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_gint000.sats] *)

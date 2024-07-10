@@ -297,4 +297,4 @@ cmp with gflt_cmp_dflt_sint of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_gflt000.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_gflt000.sats] *)

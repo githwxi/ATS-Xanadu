@@ -599,4 +599,4 @@ itakeif_vt with strm_itakeif_vt of 1000
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_strm0.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_strm000.sats] *)

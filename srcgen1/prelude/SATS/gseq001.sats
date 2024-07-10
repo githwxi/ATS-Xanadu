@@ -59,4 +59,4 @@ gseq_2choose_strmize
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_gseq001.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_gseq001.sats] *)

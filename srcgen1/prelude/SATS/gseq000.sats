@@ -2628,4 +2628,4 @@ imapopt_fnp_llist with gseq_imapopt_f2np_llist of 0100
 (* ****** ****** *)
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_gseq000.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_gseq000.sats] *)

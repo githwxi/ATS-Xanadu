@@ -213,4 +213,4 @@ symbol overloading for gord
 //
 (* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_gord000.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_gord000.sats] *)

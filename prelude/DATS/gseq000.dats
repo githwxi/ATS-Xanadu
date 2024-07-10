@@ -41,6 +41,33 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 < xs:t0 >
 < x0:t0 >
+gseq_free(xs) =
+(
+gseq_foreach0<xs><x0>(xs)
+) where
+{
+#impltmp
+foreach0$work<x0> = g_free<x0>
+}
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_copy(xs) =
+(
+gseq_map1_self<xs><x0>(xs)
+) where
+{
+#impltmp
+map1$fopr<x0><x0> = g_copy<x0>
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
 gseq_length(xs) =
 strm_vt_length0<x0>
 (
