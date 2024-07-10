@@ -52,12 +52,16 @@ $(XATSOPT) -s $(PRELUDE)/basics0.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gbas000.sats
 all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gbas001.sats
+all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gseq000.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/list000.sats
 
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/VT/gbas000_vt.sats
+all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/VT/gbas001_vt.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/VT/strm000_vt.sats
 all0_sats:: ; \

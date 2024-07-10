@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Mon 08 Jul 2024 08:46:41 AM EDT
+Wed 10 Jul 2024 09:26:36 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -39,93 +39,77 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
-<a:vt>
-g_free( ~a ): void
+<x0:vt>
+forall0$test(x0: ~x0): bool
 fun
-<a:vt>
-g_copy( !a ): ( a )
+<x0:vt>
+forall1$test(x0: !x0): bool
+//
+fun
+<x0:vt>
+foreach0$work(x0: ~x0): void
+fun
+<x0:vt>
+foreach1$work(x0: ~x0): void
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<r0:vt>
+foldlft0$fopr(r0, !x0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+foldlft1$fopr(r0, ~x0): (r0)
+//
+fun
+<x0:vt>
+<r0:vt>
+foldall0$fopr(r0, ~x0): (bool, r0)
+fun
+<x0:vt>
+<r0:vt>
+foldall1$fopr(r0, !x0): (bool, r0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-<a:t0>
-g_equal(a, a): bool
+<x0:vt>
+rforall0$test(x0: ~x0): bool
 fun
-<a:t0>
-g_noteq(a, a): bool
+<x0:vt>
+rforall1$test(x0: !x0): bool
+//
+fun
+<x0:vt>
+rforeach0$work(x0: ~x0): void
+fun
+<x0:vt>
+rforeach1$work(x0: !x0): void
 //
 (* ****** ****** *)
 //
 fun
-<a:t0>
-g_eqref(a, a): bool
+<x0:vt>
+<r0:vt>
+rfoldlft0$fopr(~x0, r0): (r0)
 fun
-<a:t0>
-g_neqrf(a, a): bool
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:vt>
-g_input
-((*void*)): (  a  )
+<x0:vt>
+<r0:vt>
+rfoldlft1$fopr(!x0, r0): (r0)
 //
 fun
-<a:vt>
-g_input$exn
-((*void*)): (  a  )
+<x0:vt>
+<r0:vt>
+rfoldall0$fopr(~x0, r0): (bool, r0)
 fun
-<a:vt>
-g_input_exn
-((*void*)): (  a  )
-//
-fun
-<a:vt>
-g_input_opt
-((*void*)): optn_vt(a)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:vt>
-g_parse
-(rep: strn): (  a  )
-//
-fun
-<a:vt>
-g_parse$exn
-(rep: strn): (  a  )
-fun
-<a:vt>
-g_parse_exn
-(rep: strn): (  a  )
-//
-fun
-<a:vt>
-g_parse_opt
-(rep: strn): optn_vt(a)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:t0>
-g_torep(obj: a): strn
-fun
-<a:t0>
-g_tostr(obj: a): strn
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:t0>
-g_print(obj: a): void
+<x0:vt>
+<r0:vt>
+rfoldall1$fopr(!x0, r0): (bool, r0)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_gbas000.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_gbas001.sats] *)

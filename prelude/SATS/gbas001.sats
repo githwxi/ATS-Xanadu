@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Mon 08 Jul 2024 08:46:41 AM EDT
+Wed 10 Jul 2024 09:08:28 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -39,93 +39,45 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
-<a:vt>
-g_free( ~a ): void
+<x0:t0>
+forall$test(x0: x0): bool
 fun
-<a:vt>
-g_copy( !a ): ( a )
+<x0:t0>
+foreach$work(x0: x0): void
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<r0:vt>
+foldlft$fopr(r0, x0): (r0)
+fun
+<x0:t0>
+<r0:vt>
+foldall$fopr(r0, x0): (bool, r0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-<a:t0>
-g_equal(a, a): bool
+<x0:t0>
+rforall$test(x0: x0): bool
 fun
-<a:t0>
-g_noteq(a, a): bool
+<x0:t0>
+rforeach$work(x0: x0): void
 //
 (* ****** ****** *)
 //
 fun
-<a:t0>
-g_eqref(a, a): bool
+<x0:t0>
+<r0:vt>
+rfoldlft$fopr(x0, r0): (r0)
 fun
-<a:t0>
-g_neqrf(a, a): bool
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:vt>
-g_input
-((*void*)): (  a  )
-//
-fun
-<a:vt>
-g_input$exn
-((*void*)): (  a  )
-fun
-<a:vt>
-g_input_exn
-((*void*)): (  a  )
-//
-fun
-<a:vt>
-g_input_opt
-((*void*)): optn_vt(a)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:vt>
-g_parse
-(rep: strn): (  a  )
-//
-fun
-<a:vt>
-g_parse$exn
-(rep: strn): (  a  )
-fun
-<a:vt>
-g_parse_exn
-(rep: strn): (  a  )
-//
-fun
-<a:vt>
-g_parse_opt
-(rep: strn): optn_vt(a)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:t0>
-g_torep(obj: a): strn
-fun
-<a:t0>
-g_tostr(obj: a): strn
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:t0>
-g_print(obj: a): void
+<x0:t0>
+<r0:vt>
+rfoldall$fopr(x0, r0): (bool, r0)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_gbas000.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_gbas001.sats] *)

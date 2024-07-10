@@ -40,6 +40,16 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 <a:vt>
+g_free0( ~a ): void
+fun
+<a:vt>
+g_copy1( !a ): ( a )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
 g_equal0(~a, ~a): bool
 fun
 <a:vt>
@@ -66,27 +76,27 @@ g_neqrf1(!a, !a): bool
 //
 fun
 <a:vt>
-g_torep0(x : ~a): strn
+g_torep0(obj: ~a): strn
 fun
 <a:vt>
-g_tostr0(x : ~a): strn
+g_tostr0(obj: ~a): strn
 //
 fun
 <a:vt>
-g_torep1(x : !a): strn
+g_torep1(obj: !a): strn
 fun
 <a:vt>
-g_tostr1(x : !a): strn
+g_tostr1(obj: !a): strn
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 <a:vt>
-g_print0(x: ~a): void
+g_print0(obj: ~a): void
 fun
 <a:vt>
-g_print1(x: !a): void
+g_print1(obj: !a): void
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
