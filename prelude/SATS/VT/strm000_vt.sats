@@ -40,20 +40,6 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 <x0:vt>
-<ys:vt>
-g_make_lstrm
-(xs: strm_vt(x0)): (ys)
-fun
-<x0:vt>
-<ys:vt>
-g_make_lstrq
-(xs: strq_vt(x0)): (ys)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:vt>
 strm_vt_length0
 (xs: strm_vt(x0)): (nint)
 fun
@@ -140,18 +126,93 @@ strq_vt_filter0
 fun
 <x0:vt>
 strm_vt_append00
-(strm_vt(x0), strm_vt(x0)): strm_vt(x0)
+( xs: strm_vt(x0)
+, ys: strm_vt(x0)): strm_vt(x0)
+//
+fun
+<x0:vt>
+strq_vt_append00
+{n1,n2:i0}
+( xs: strq_vt(x0,n1)
+, ys: strq_vt(x0,n2)): strq_vt(x0,n1+n2)
+//
+#symload append00 with strm_vt_append00
+#symload append00 with strq_vt_append00
 //
 (* ****** ****** *)
 //
 fun
 <x0:vt>
 strm_vt_prepend0__llist0
-(strm_vt(x0), list_vt(x0)): strm_vt(x0)
+( xs: strm_vt(x0)
+, ys: list_vt(x0)): strm_vt(x0)
 fun
 <x0:vt>
 strm_vt_prepend0__lstrm0
-(strm_vt(x0), strm_vt(x0)): strm_vt(x0)
+( xs: strm_vt(x0)
+, ys: strm_vt(x0)): strm_vt(x0)
+//
+fun
+<x0:vt>
+strq_vt_prepend0__llist0
+{n1,n2:i0}
+( xs: strq_vt(x0,n1)
+, ys: list_vt(x0,n2)): strq_vt(x0,n1+n2)
+fun
+<x0:vt>
+strq_vt_prepend0__lstrq0
+{n1,n2:i0}
+( xs: strq_vt(x0,n1)
+, ys: strq_vt(x0,n2)): strq_vt(x0,n1+n2)
+//
+#symload prepend0 with strm_vt_prepend0__llist0
+#symload prepend0 with strm_vt_prepend0__lstrq0
+#symload prepend0 with strq_vt_prepend0__llist0
+#symload prepend0 with strq_vt_prepend0__lstrq0
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<ys:vt>
+g_make_lstrm
+(xs: strm_vt(x0)): (ys)
+fun
+<x0:vt>
+<ys:vt>
+g_make_lstrq
+(xs: strq_vt(x0)): (ys)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+list_make_lstrm
+(xs: strm_vt(x0)): list(x0)
+fun
+<x0:t0>
+list_make_lstrq
+{n0:i0}
+(xs: strq_vt(x0, n0)): list(x0, n0)
+//
+#symload list with list_make_lstrm
+#symload list with list_make_lstrq
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+list_vt_make_lstrm
+(xs: strm_vt(x0)): list_vt(x0)
+fun
+<x0:vt>
+list_vt_make_lstrq
+{n0:i0}
+(xs: strq_vt(x0, n0)): list_vt(x0, n0)
+//
+#symload list_vt with list_vt_make_lstrm
+#symload list_vt with list_vt_make_lstrq
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -266,11 +266,13 @@ list_rappendx0_vt
 fun
 <a:t0>
 list_reverse
-{n:int}(list(a, n)): list(a, n)
+{n:int}
+(xs: list(a, n)): list(a, n)
 fun
 <a:t0>
 list_reverse_vt
-{n:int}(list(a, n)): list_vt(a, n)
+{n:int}
+(xs: list(a, n)): list_vt(a, n)
 //
 (* ****** ****** *)
 //
@@ -300,7 +302,8 @@ list_foreach(xs: list(x0)): void
 fun
 <a:t0>
 list_sortedq
-  {n:i0}(xs: list(a, n)): (bool)
+{n:i0}
+(xs: list(a, n)): bool
 //
 (* ****** ****** *)
 //
@@ -314,6 +317,20 @@ fun
 list_rlistize
 {n:int}
 (xs: list(x0, n)): list_vt(x0, n)
+//
+(*
+HX-2024-07-09:
+*)
+fun
+<x0:t0>
+list_strqize
+{n:int}
+(xs: list(x0, n)): strq_vt(x0, n)
+fun
+<x0:t0>
+list_rstrqize
+{n:int}
+(xs: list(x0, n)): strq_vt(x0, n)
 //
 fun
 <x0:t0>
@@ -333,12 +350,14 @@ fun
 <x0:t0>
 <y0:t0>
 list_map
-{n:int}(list(x0,n)): list(y0,n)
+{n:int}
+(xs: list(x0, n)): list(y0, n)
 fun
 <x0:t0>
 <y0:vt>
 list_map_vt
-{n:int}(list(x0,n)): list_vt(y0,n)
+{n:int}
+(xs: list(x0, n)): list_vt(y0, n)
 //
 (* ****** ****** *)
 //

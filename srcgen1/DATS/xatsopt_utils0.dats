@@ -707,11 +707,21 @@ the_prelude_load
 , 0(*static*)
 , "srcgen1/prelude/SATS/excptn0.sats")
 //
+(* ****** ****** *)
+//
 val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
 , "srcgen1/prelude/SATS/synoug0.sats")
+//
+(* ****** ****** *)
+//
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "srcgen1/prelude/SATS/xunimpl.sats")
 //
 (* ****** ****** *)
 //

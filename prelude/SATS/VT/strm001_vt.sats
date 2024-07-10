@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Mon 08 Jul 2024 11:37:45 AM EDT
+Wed 10 Jul 2024 07:53:15 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -38,78 +38,51 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-< (*0*) >
-list_nil_
-((*void*)) = list_nil()
-#impltmp
-< x0:t0 >
-list_cons_
-( x1, xs ) = list_cons(x1, xs)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< x0:t0 >
-list_strqize
-  (xs) =
-(
-  auxmain(xs)) where
-{
-fun auxmain(xs) = $llazy
-(
-case+ xs of
-|
-list_nil() =>
-strqcon_vt_nil()
-|
-list_cons(x1, xs) =>
-strqcon_vt_cons(x1, auxmain(xs))
-)
-}(*where*)//end-of-[list_strqize(xs)]
-//
-#impltmp
-{x0:t0}
-gseq_strqize
-<list(x0)><x0> = list_strqize<x0>
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-//
-(*
-#impltmp
-< x0:t0 >
-list_length
-  (xs) =
-(
-  gseq_length<list(x0)><x0>(xs))
-*)
-//
-#impltmp
-< x0:t0 >
-list_length
-  (xs) =
-(
-  loop(xs, 0(*j0*))) where
-{
 fun
-loop{i,j:i0}
-(xs:
- list(x0), j0: sint(j)): sint(i+j) =
-(
-case+ xs of
-|list_nil() => j0
-|list_cons(x1, xs) => loop(xs, j0+1)
-)
-}
+<x0:vt>
+<ys:vt>
+g_make_lstrm
+(xs: strm_vt(x0)): (ys)
+fun
+<x0:vt>
+<ys:vt>
+g_make_lstrq
+(xs: strq_vt(x0)): (ys)
 //
-#impltmp
-{ x0:t0 }
-gseq_length<list(x0)><x0> = list_length
+(* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+fun
+<x0:t0>
+list_make_lstrm
+(xs: strm_vt(x0)): list(x0)
+fun
+<x0:t0>
+list_make_lstrq
+{n0:i0}
+(xs: strq_vt(x0, n0)): list(x0, n0)
+//
+#symload list with list_make_lstrm
+#symload list with list_make_lstrq
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+list_vt_make_lstrm
+(xs: strm_vt(x0)): list_vt(x0)
+fun
+<x0:vt>
+list_vt_make_lstrq
+{n0:i0}
+(xs: strq_vt(x0, n0)): list_vt(x0, n0)
+//
+#symload list_vt with list_vt_make_lstrm
+#symload list_vt with list_vt_make_lstrq
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_list000.dats] *)
+(* end of [ATS3/XANADU_prelude_SATS_VT_strn001_vt.sats] *)

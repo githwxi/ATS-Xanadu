@@ -39,13 +39,13 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
-<xs:vt>
-<x0:vt>
-gseq_nil0((*nil*)): (xs)
+<xs:t0>
+<x0:t0>
+gseq_nil((*nil*)): (xs)
 fun
-<xs:vt>
-<x0:vt>
-gseq_cons0(x0, xs): (xs)
+<xs:t0>
+<x0:t0>
+gseq_cons(x0, xs): (xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -61,17 +61,6 @@ fun
 gseq_strqize
   (xs: xs): strq_vt(x0)
 //
-fun
-<xs:vt>
-<x0:vt>
-gseq_strmize0
-  (xs: ~xs): strm_vt(x0)
-fun
-<xs:vt>
-<x0:vt>
-gseq_strqize0
-  (xs: ~xs): strq_vt(x0)
-//
 (* ****** ****** *)
 //
 fun
@@ -79,22 +68,12 @@ fun
 <x0:t0>
 gseq_listize
   (xs: xs): list_vt(x0)
-fun
-<xs:vt>
-<x0:vt>
-gseq_listize0
-  (xs: ~xs): list_vt(x0)
 //
 fun
 <xs:t0>
 <x0:t0>
 gseq_rlistize
   (xs: xs): list_vt(x0)
-fun
-<xs:vt>
-<x0:vt>
-gseq_rlistize0
-  (xs: ~xs): list_vt(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -103,14 +82,6 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_length(xs: xs): sint
-fun
-<xs:vt>
-<x0:vt>
-gseq_length0(xs: ~xs): sint
-fun
-<xs:vt>
-<x0:vt>
-gseq_length1(xs: !xs): sint
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -124,26 +95,6 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_filter_self(xs: xs): (xs)
-//
-fun
-<xs:vt>
-<x0:vt>
-<ys:vt>
-gseq_filter0_ares(xs: ~xs): (ys)
-fun
-<xs:vt>
-<x0:vt>
-gseq_filter0_self(xs: ~xs): (xs)
-//
-fun
-<xs:vt>
-<x0:vt>
-<ys:vt>
-gseq_filter1_ares(xs: !xs): (ys)
-fun
-<xs:vt>
-<x0:vt>
-gseq_filter1_self(xs: !xs): (xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)
