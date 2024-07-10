@@ -65,6 +65,8 @@ $(XATSOPT) -s $(PRELUDE)/SATS/VT/gbas001_vt.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/VT/gseq000_vt.sats
 all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/VT/list000_vt.sats
+all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/VT/strm000_vt.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/VT/strm001_vt.sats
