@@ -121,6 +121,11 @@ fun
 <y0:vt>
 map1$fopr(x0: !x0): ( y0 )
 //
+fun
+<x0:vt>
+<y0:vt>
+map2$fopr(x0: &x0): ( y0 )
+//
 (* ****** ****** *)
 //
 fun

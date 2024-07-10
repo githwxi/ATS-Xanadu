@@ -83,7 +83,7 @@ strq_vt_rlistize0
 //
 fun
 <x0:vt>
-strm_vt_forall
+strm_vt_forall0
 (xs: strm_vt(x0)): bool
 //
 fun
