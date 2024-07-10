@@ -61,6 +61,26 @@ end//let//end-of-[gseq_length0(xs)]
 gseq_forall0(xs) =
 strm_vt_forall0<x0>(gseq_strmize0<xs><x0>(xs))
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_foreach0(xs) =
+(
+let
+val _ =
+gseq_forall0<xs><x0>(xs) in () end
+) where
+{
+#impltmp
+forall0$test<x0>(x0) = (foreach0$work<x0>(x0); true)
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
