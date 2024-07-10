@@ -112,6 +112,12 @@ strmcon_vt_cons(map0$fopr<x0><y0>(x1), auxmain(xs))
 )
 }(*where*)//end-of-[strm_vt_map0(xs)]
 //
+#impltmp
+{ x0:vt }
+{ y0:vt }
+gseq_map0_ares
+<strm_vt(x0)><x0><strm_vt(y0)> = strm_vt_map0<x0><y0>
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
