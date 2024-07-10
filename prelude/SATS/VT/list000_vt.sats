@@ -69,10 +69,11 @@ fun
 list_vt_length0
 {n0:i0}
 (xs: ~list_vt(x0,n0)): sint(n0)
+//
 fun
-<a:vt>
+<x0:vt>
 list_vt_length1
-{n:i0}
+{n0:i0}
 (xs: !list_vt(x0,n0)): sint(n0)
 //
 (* ****** ****** *)
@@ -80,9 +81,8 @@ list_vt_length1
 //
 fun
 <x0:vt>
-list_vt_forall
+list_vt_forall0
 (xs: list_vt(x0)): bool
-//
 fun
 <x0:vt>
 list_vt_foreach0
@@ -90,8 +90,24 @@ list_vt_foreach0
 //
 fun
 <x0:vt>
+list_vt_rforall0
+(xs: list_vt(x0)): bool
+fun
+<x0:vt>
+list_vt_rforeach0
+(xs: list_vt(x0)): void
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
 <r0:vt>
 list_vt_foldlft0
+(xs: list_vt(x0), r0: r0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+list_vt_rfoldlft0
 (xs: list_vt(x0), r0: r0): (r0)
 //
 (* ****** ****** *)
@@ -105,7 +121,7 @@ list_vt_append00
 , ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
 //
 fun
-<a:vt>
+<x0:vt>
 list_vt_append10
 {n1,n2:i0}
 ( xs: !list_vt(x0,n1)
