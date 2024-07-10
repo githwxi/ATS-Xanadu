@@ -166,7 +166,7 @@ strq_vt_prepend0__lstrq0
 , ys: strq_vt(x0,n2)): strq_vt(x0,n1+n2)
 //
 #symload prepend0 with strm_vt_prepend0__llist0
-#symload prepend0 with strm_vt_prepend0__lstrq0
+#symload prepend0 with strm_vt_prepend0__lstrm0
 #symload prepend0 with strq_vt_prepend0__llist0
 #symload prepend0 with strq_vt_prepend0__lstrq0
 //
