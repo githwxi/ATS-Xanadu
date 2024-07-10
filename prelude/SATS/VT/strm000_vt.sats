@@ -84,30 +84,15 @@ strq_vt_rlistize0
 fun
 <x0:vt>
 <y0:vt>
-strm_vt_map
+strm_vt_map0
 (xs: strm_vt(x0)): strm_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-strq_vt_map
+strq_vt_map0
 {n0:i0}
 (xs: strq_vt(x0,n0)): strq_vt(y0,n0)
 //
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-<y0:vt>
-strm_vt_mapoptn
-(xs: strm_vt(x0)): strm_vt(y0)
-fun
-<x0:vt>
-<y0:vt>
-strq_vt_mapoptn
-{n0:i0}
-(xs: strq_vt(x0,n0)): strqlte_vt(y0,n0)
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -119,6 +104,46 @@ fun
 strq_vt_filter0
 {n0:i0}
 (xs: strq_vt(x0,n0)): strqlte_vt(x0,n0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<y0:vt>
+strm_vt_mapoptn0
+(xs: strm_vt(x0)): strm_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+strq_vt_mapoptn0
+{n0:i0}
+(xs: strq_vt(x0,n0)): strqlte_vt(y0,n0)
+//
+fun
+<x0:vt>
+<y0:vt>
+strm_vt_maplist0
+(xs: strm_vt(x0)): strm_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+strq_vt_maplist0
+{n0:i0}
+(xs: strq_vt(x0,n0)): strqlte_vt(y0,n0)
+//
+(* ****** ****** *)
+//
+#symload map0 with strm_vt_map0
+#symload map0 with strq_vt_map0
+//
+#symload filter0 with strm_vt_filter0
+#symload filter0 with strq_vt_filter0
+//
+#symload mapoptn0 with strm_vt_mapoptn0
+#symload mapoptn0 with strq_vt_mapoptn0
+//
+#symload maplist0 with strm_vt_maplist0
+#symload maplist0 with strq_vt_maplist0
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -136,9 +161,12 @@ strq_vt_append00
 ( xs: strq_vt(x0,n1)
 , ys: strq_vt(x0,n2)): strq_vt(x0,n1+n2)
 //
+(* ****** ****** *)
+//
 #symload append00 with strm_vt_append00
 #symload append00 with strq_vt_append00
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -148,9 +176,11 @@ strm_vt_prepend0__llist0
 , ys: list_vt(x0)): strm_vt(x0)
 fun
 <x0:vt>
-strm_vt_prepend0__lstrm0
+strm_vt_prepend0__lstrq0
 ( xs: strm_vt(x0)
-, ys: strm_vt(x0)): strm_vt(x0)
+, ys: strq_vt(x0)): strm_vt(x0)
+//
+(* ****** ****** *)
 //
 fun
 <x0:vt>
@@ -165,54 +195,13 @@ strq_vt_prepend0__lstrq0
 ( xs: strq_vt(x0,n1)
 , ys: strq_vt(x0,n2)): strq_vt(x0,n1+n2)
 //
+(* ****** ****** *)
+//
 #symload prepend0 with strm_vt_prepend0__llist0
-#symload prepend0 with strm_vt_prepend0__lstrm0
+#symload prepend0 with strm_vt_prepend0__lstrq0
+//
 #symload prepend0 with strq_vt_prepend0__llist0
 #symload prepend0 with strq_vt_prepend0__lstrq0
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-<ys:vt>
-g_make_lstrm
-(xs: strm_vt(x0)): (ys)
-fun
-<x0:vt>
-<ys:vt>
-g_make_lstrq
-(xs: strq_vt(x0)): (ys)
-//
-(* ****** ****** *)
-//
-fun
-<x0:t0>
-list_make_lstrm
-(xs: strm_vt(x0)): list(x0)
-fun
-<x0:t0>
-list_make_lstrq
-{n0:i0}
-(xs: strq_vt(x0, n0)): list(x0, n0)
-//
-#symload list with list_make_lstrm
-#symload list with list_make_lstrq
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-list_vt_make_lstrm
-(xs: strm_vt(x0)): list_vt(x0)
-fun
-<x0:vt>
-list_vt_make_lstrq
-{n0:i0}
-(xs: strq_vt(x0, n0)): list_vt(x0, n0)
-//
-#symload list_vt with list_vt_make_lstrm
-#symload list_vt with list_vt_make_lstrq
 //
 (* ****** ****** *)
 (* ****** ****** *)
