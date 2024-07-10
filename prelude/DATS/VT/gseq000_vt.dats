@@ -37,6 +37,11 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#staload UN =
+"srcgen1\
+/prelude/SATS/unsafex.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 < xs:vt >
@@ -58,7 +63,8 @@ end//let//end-of-[gseq_length0(xs)]
 #impltmp
 <xs:vt>
 <x0:vt>
-gseq_forall0(xs) =
+gseq_forall0
+  ( xs ) =
 strm_vt_forall0<x0>(gseq_strmize0<xs><x0>(xs))
 //
 (* ****** ****** *)
@@ -67,7 +73,8 @@ strm_vt_forall0<x0>(gseq_strmize0<xs><x0>(xs))
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_foreach0(xs) =
+gseq_foreach0
+  ( xs ) =
 (
 let
 val _ =
@@ -77,6 +84,37 @@ gseq_forall0<xs><x0>(xs) in () end
 #impltmp
 forall0$test<x0>(x0) = (foreach0$work<x0>(x0); true)
 }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< r0:vt >
+gseq_foldlft0
+  (xs, r0) = r0
+where {
+//
+var r0: r0 = r0
+//
+val p0 = $addr(r0)
+//
+val () =
+(
+gseq_foreach0<xs><x0>(xs)
+) where
+{
+#impltmp
+foreach0$work<x0>(x0) =
+(
+  $UN.p2tr_set<r0>(p0, r0))
+where
+{
+val r0 = $UN.p2tr_get<r0>(p0)
+val r0 = foldlft0$fopr<x0><r0>(r0, x0)}}
+//
+}(*where*)//end-of-[gseq_foldlft0(xs, r0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
