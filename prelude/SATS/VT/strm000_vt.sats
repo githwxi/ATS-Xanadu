@@ -83,6 +83,25 @@ strq_vt_rlistize0
 //
 fun
 <x0:vt>
+strm_vt_forall
+(xs: strm_vt(x0)): bool
+//
+fun
+<x0:vt>
+strm_vt_foreach0
+(xs: strm_vt(x0)): void
+//
+fun
+<x0:vt>
+<r0:vt>
+strm_vt_foldlft0
+(xs: strm_vt(x0), r0: r0): (r0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
 <y0:vt>
 strm_vt_map0
 (xs: strm_vt(x0)): strm_vt(y0)

@@ -45,6 +45,15 @@ fun
 <x0:t0>
 foreach$work(x0: x0): void
 //
+//
+fun
+<x0:t0>
+rforall$test(x0: x0): bool
+fun
+<x0:t0>
+rforeach$work(x0: x0): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -55,16 +64,6 @@ fun
 <x0:t0>
 <r0:vt>
 foldall$fopr(r0, x0): (bool, r0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:t0>
-rforall$test(x0: x0): bool
-fun
-<x0:t0>
-rforeach$work(x0: x0): void
 //
 (* ****** ****** *)
 //

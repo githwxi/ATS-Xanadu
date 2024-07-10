@@ -89,6 +89,53 @@ gseq_length(xs: xs): sint
 fun
 <xs:t0>
 <x0:t0>
+gseq_forall(xs: xs): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_foreach(xs: xs): void
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_rforall(xs: xs): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_rforeach(xs: xs): void
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_foldlft(xs, r0): ( r0 )
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_foldall(xs, r0): ( r0 )
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_rfoldlft(xs, r0): ( r0 )
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_rfoldall(xs, r0): ( r0 )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
 <ys:vt>
 gseq_filter_ares(xs: xs): (ys)
 fun
@@ -96,12 +143,6 @@ fun
 <x0:t0>
 gseq_filter_self(xs: xs): (xs)
 //
-(* ****** ****** *)
-(* ****** ****** *)
-
-#symload filter with gseq_filter_ares of 0100
-#symload filter with gseq_filter_self of 0101
-
 (* ****** ****** *)
 (* ****** ****** *)
 

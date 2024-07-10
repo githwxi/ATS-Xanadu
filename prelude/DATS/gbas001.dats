@@ -38,19 +38,24 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #impltmp
 < x0:t0 >
 rforall$test =
 forall$test<x0>
+*)
 //
+(*
 #impltmp
 < x0:t0 >
 rforeach$work =
 foreach$work<x0>
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #impltmp
 < x0:t0 >
 < r0:vt >
@@ -59,7 +64,9 @@ rfoldlft$fopr
 , r0 ) =
 (
   foldlft$fopr<x0><r0>(r0, x0))
+*)
 //
+(*
 #impltmp
 < x0:t0 >
 < r0:vt >
@@ -68,6 +75,7 @@ rfoldall$fopr
 , r0 ) =
 (
   foldall$fopr<x0><r0>(r0, x0))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

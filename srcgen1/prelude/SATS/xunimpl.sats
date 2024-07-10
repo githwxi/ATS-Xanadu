@@ -75,5 +75,45 @@ fun
 <x0:vt>
 gseq_filter1_self(xs: !xs): (xs)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_foldlft(xs, r0): ( r0 )
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_foldall(xs, r0): ( r0 )
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_rfoldlft(xs, r0): ( r0 )
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_rfoldall(xs, r0): ( r0 )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<r0:vt>
+list_vt_foldlft0
+(xs: list_vt(x0), r0: r0): (r0)
+//
+fun
+<x0:vt>
+<r0:vt>
+strm_vt_foldlft0
+(xs: strm_vt(x0), r0: r0): (r0)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)

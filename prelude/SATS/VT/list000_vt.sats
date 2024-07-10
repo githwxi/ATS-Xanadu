@@ -80,6 +80,25 @@ list_vt_length1
 //
 fun
 <x0:vt>
+list_vt_forall
+(xs: list_vt(x0)): bool
+//
+fun
+<x0:vt>
+list_vt_foreach0
+(xs: list_vt(x0)): void
+//
+fun
+<x0:vt>
+<r0:vt>
+list_vt_foldlft0
+(xs: list_vt(x0), r0: r0): (r0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
 list_vt_append00
 {n1,n2:i0}
 ( xs: ~list_vt(x0,n1)
