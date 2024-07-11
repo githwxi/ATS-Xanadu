@@ -48,8 +48,8 @@ forall$test<x0>
 (*
 #impltmp
 < x0:t0 >
-rforeach$work =
-foreach$work<x0>
+rforlft$work =
+forlft$work<x0>
 *)
 //
 (* ****** ****** *)

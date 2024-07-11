@@ -47,21 +47,21 @@ forall1$test(x0: !x0): bool
 //
 fun
 <x0:vt>
-foreach0$work(x0: ~x0): void
+forlft0$work(x0: ~x0): void
 fun
 <x0:vt>
-foreach1$work(x0: ~x0): void
+forlft1$work(x0: ~x0): void
 //
 (* ****** ****** *)
 //
 fun
 <x0:vt>
 <r0:vt>
-foldlft0$fopr(r0, !x0): (r0)
+foldlft0$fopr(r0, ~x0): (r0)
 fun
 <x0:vt>
 <r0:vt>
-foldlft1$fopr(r0, ~x0): (r0)
+foldlft1$fopr(r0, !x0): (r0)
 //
 fun
 <x0:vt>
@@ -84,10 +84,10 @@ rforall1$test(x0: !x0): bool
 //
 fun
 <x0:vt>
-rforeach0$work(x0: ~x0): void
+rforlft0$work(x0: ~x0): void
 fun
 <x0:vt>
-rforeach1$work(x0: !x0): void
+rforlft1$work(x0: !x0): void
 //
 (* ****** ****** *)
 //

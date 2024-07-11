@@ -43,11 +43,11 @@ Authoremail: gmhwxiATgmailDOTcom
 < x0:t0 >
 gseq_free(xs) =
 (
-gseq_foreach0<xs><x0>(xs)
+gseq_forlft0<xs><x0>(xs)
 ) where
 {
 #impltmp
-foreach0$work<x0> = g_free<x0>
+forlft0$work<x0> = g_free<x0>
 }
 //
 #impltmp
@@ -102,8 +102,8 @@ list_vt_forall0<x0>
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq_foreach(xs) =
-strm_vt_foreach0<x0>
+gseq_forlft(xs) =
+strm_vt_forlft0<x0>
 (
   gseq_strmize<xs><x0>(xs))
 //
@@ -115,8 +115,8 @@ an array-based implementation
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq_rforeach(xs) =
-list_vt_foreach0<x0>
+gseq_rforlft(xs) =
+list_vt_forlft0<x0>
 (
   gseq_rlistize<xs><x0>(xs))
 //

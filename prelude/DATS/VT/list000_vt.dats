@@ -70,7 +70,36 @@ gseq_length0<list_vt(x0)><x0> = list_vt_length0
 //
 #impltmp
 < x0:vt >
-list_vt_foreach0
+list_vt_forall0
+  (xs) = 
+(
+  loop(xs) ) where
+{
+fun
+loop
+(xs: list_vt(x0)): void =
+(
+case+ xs of
+| ~
+list_vt_nil() => ( true )
+| ~
+list_vt_cons(x1, xs) =>
+let
+val test =
+forall0$test<x0>(x1) in
+if test then loop(xs) else false end)
+}
+//
+#impltmp
+{ x0:vt }
+gseq_forall0<list_vt(x0)><x0> = list_vt_forall0<x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+list_vt_forlft0
   (xs) = 
 (
   loop(xs) ) where
@@ -84,12 +113,14 @@ case+ xs of
 list_vt_nil() => ( (*void*) )
 | ~
 list_vt_cons(x1, xs) =>
-(foreach0$work<x0>(x1); loop(xs)))
+let
+val () =
+forlft0$work<x0>(x1) in loop(xs) end)
 }
 //
 #impltmp
 { x0:vt }
-gseq_foreach0<list_vt(x0)><x0> = list_vt_foreach0<x0>
+gseq_forlft0<list_vt(x0)><x0> = list_vt_forlft0<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)

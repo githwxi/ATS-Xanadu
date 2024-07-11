@@ -109,7 +109,7 @@ gseq_forall(xs: xs): bool
 fun
 <xs:t0>
 <x0:t0>
-gseq_foreach(xs: xs): void
+gseq_forlft(xs: xs): void
 //
 (* ****** ****** *)
 //
@@ -120,7 +120,7 @@ gseq_rforall(xs: xs): bool
 fun
 <xs:t0>
 <x0:t0>
-gseq_rforeach(xs: xs): void
+gseq_rforlft(xs: xs): void
 //
 (* ****** ****** *)
 //
@@ -128,23 +128,23 @@ fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-gseq_foldlft(xs, r0): ( r0 )
+gseq_foldall(xs, r0): ( r0 )
 fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-gseq_foldall(xs, r0): ( r0 )
+gseq_foldlft(xs, r0): ( r0 )
 //
 fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-gseq_rfoldlft(xs, r0): ( r0 )
+gseq_rfoldall(xs, r0): ( r0 )
 fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-gseq_rfoldall(xs, r0): ( r0 )
+gseq_rfoldlft(xs, r0): ( r0 )
 //
 (* ****** ****** *)
 (* ****** ****** *)
