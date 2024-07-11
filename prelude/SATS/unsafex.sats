@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Mon 08 Jul 2024 04:08:25 PM EDT
+Mon 08 Jul 2024 02:15:16 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -38,126 +38,136 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun<>
-list_vt_nil_
-{a:vt}(): list_vt(a, 0)
+// For casting of all sorts
+//
+(* ****** ****** *)
+//
+fcast
+detop0{a0:t0}(x0: ?a0): (a0)
+fcast
+detop1{a0:vt}(x0: ?a0): (a0)
+//
+(* ****** ****** *)
+//
+fcast
+cast01{a0:t0}{a1:t0}(a0):(a1)
+fcast
+cast10{a1:t0}{a0:t0}(a0):(a1)
+//
+(* ****** ****** *)
+//
+fcast
+delinear{a0:vt}( a0 ): ( ?!a0 )
+fcast
+enlinear{a0:vt}(?!a0): (  a0  )
+//
+(* ****** ****** *)
+//
+fcast
+castlin01{a0:vt}{a1:vt}(a0):(a1)
+fcast
+castlin10{a1:vt}{a0:vt}(a0):(a1)
+//
+(* ****** ****** *)
+//
+(*
+Mon Jul  4 17:58:26 EDT 2022
+*)
+fcast//HX: it is safe!
+datacopy{a0:vt}(x0: !a0): (?!a0)
+//
+(* ****** ****** *)
+//
+fcast
+optn_vt2t
+{a:t0}{b:b0}
+(xs: !optn_vt(a, b)): optn(a, b)
+fcast
+list_vt2t
+{a:t0}{n:i0}
+(xs: !list_vt(a, n)): list(a, n)
+//
+(* ****** ****** *)
+//
 fun
 <a:vt>
-list_vt_cons_
-{n:i0}
-(
-x0: (a),
-xs: list_vt(a, n)): list_vt(a, n+1)
+p1tr_get(p0: p1tr): (a)
+fun
+<a:vt>
+p1tr_set(p0: p1tr, x0: a): void
+fun
+<a:vt>
+p1tr_ret(p0: p1tr, x0: a): void
+//
+fun
+<a:vt>
+p2tr_get(p0: p2tr(a)): (a)
+fun
+<a:vt>
+p2tr_set(p0: p2tr(a), x0: a): void
+fun
+<a:vt>
+p2tr_ret(p0: p2tr(a), x0: a): void
 //
 (* ****** ****** *)
+//
+(*
+HX-2020-07-29:
+const pointers are read-only
+*)
+//
+fun
+<a:vt>
+cp1tr_get(cp: cp1tr): a
+fun
+<a:vt>
+cp2tr_get(cp: cp2tr(a)): a
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+p2tr_set_list_nil
+(p0: p2tr(list(a))): void
+fun
+<a:t0>
+p2tr_set_list_cons
+(p0: p2tr(list(a)), x0: a): void
+//
+fun
+<a:t0>
+p2tr_set_list_vt_nil
+(p0: p2tr(list_vt(a))): void
+fun
+<a:vt>
+p2tr_set_list_vt_cons
+(p0: p2tr(list_vt(a)), x0: a): void
+//
 (* ****** ****** *)
 //
 fun
 <a:vt>
-list_vt_make_1val
-(x1: a): list_vt(a, 1)
-fun
-<a:vt>
-list_vt_make_2val
-(x1: a, x2: a): list_vt(a, 2)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-list_vt_length0
-{n0:i0}
-(xs: ~list_vt(x0,n0)): sint(n0)
-//
-fun
-<x0:vt>
-list_vt_length1
-{n0:i0}
-(xs: !list_vt(x0,n0)): sint(n0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-list_vt_forall0
-(xs: list_vt(x0)): bool
-fun
-<x0:vt>
-list_vt_forlft0
-(xs: list_vt(x0)): void
-//
-fun
-<x0:vt>
-list_vt_rforall0
-(xs: list_vt(x0)): bool
-fun
-<x0:vt>
-list_vt_rforlft0
-(xs: list_vt(x0)): void
+a0ref_set0
+(A0: a0ref(a), x0: ?!a): void
 //
 (* ****** ****** *)
 //
-fun
-<x0:vt>
-<r0:vt>
-list_vt_foldlft0
-(xs: list_vt(x0), r0: r0): (r0)
-fun
-<x0:vt>
-<r0:vt>
-list_vt_rfoldlft0
-(xs: list_vt(x0), r0: r0): (r0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-list_vt_append00
-{n1,n2:i0}
-( xs: ~list_vt(x0,n1)
-, ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
-//
-fun
-<x0:vt>
-list_vt_append10
-{n1,n2:i0}
-( xs: !list_vt(x0,n1)
-, ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
+// HX-2020-05-30:
+// symbol overloading for unsafe
 //
 (* ****** ****** *)
 //
-fun
-<x0:vt>
-list_vt_reverse0
-{n0:i0}
-(xs: ~list_vt(x0,n0)): list_vt(x0,n0)
+#symload ptr_get with p1tr_get of 1000
+#symload ptr_set with p1tr_set of 1000
 //
-fun
-<x0:vt>
-list_vt_reverse1
-{n0:i0}
-(xs: !list_vt(x0,n0)): list_vt(x0,n0)
+#symload ptr_get with p2tr_get of 1000
+#symload ptr_set with p2tr_set of 1000
 //
 (* ****** ****** *)
 //
-fun
-<x0:vt>
-list_vt_rappend00
-{n1,n2:i0}
-( xs: ~list_vt(x0,n1)
-, ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
+#symload cptr_get with cp1tr_get of 1000
+#symload cptr_get with cp2tr_get of 1000
 //
-fun
-<x0:vt>
-list_vt_rappend10
-{n1,n2:i0}
-( xs: !list_vt(x0,n1)
-, ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
-//
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_VT_list000_vt.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_unsafex.sats] *)
