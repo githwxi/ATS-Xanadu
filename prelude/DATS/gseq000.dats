@@ -127,8 +127,8 @@ list_vt_foritm0<x0>
 < xs:t0 >
 < x0:t0 >
 < r0:vt >
-gseq_foldlft(xs, r0) =
-strm_vt_foldlft0<x0><r0>
+gseq_folditm(xs, r0) =
+strm_vt_folditm0<x0><r0>
 (gseq_strmize<xs><x0>(xs), r0)
 //
 (*
@@ -140,16 +140,16 @@ an array-based implementation
 < xs:t0 >
 < x0:t0 >
 < r0:vt >
-gseq_rfoldlft(xs, r0) =
+gseq_rfolditm(xs, r0) =
 let
 #impltmp
-foldlft$fopr
+folditm$fopr
 < x0><r0 >
 ( r0, x0 ) =
 (
-rfoldlft$fopr<x0><r0>(x0, r0))
+rfolditm$fopr<x0><r0>(x0, r0))
 in//let
-list_vt_foldlft0<x0><r0>
+list_vt_folditm0<x0><r0>
 (gseq_rlistize<xs><x0>(xs), r0)
 end//let
 //

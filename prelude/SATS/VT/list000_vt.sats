@@ -102,12 +102,12 @@ list_vt_rforitm0
 fun
 <x0:vt>
 <r0:vt>
-list_vt_foldlft0
+list_vt_folditm0
 (xs: list_vt(x0), r0: r0): (r0)
 fun
 <x0:vt>
 <r0:vt>
-list_vt_rfoldlft0
+list_vt_rfolditm0
 (xs: list_vt(x0), r0: r0): (r0)
 //
 (* ****** ****** *)

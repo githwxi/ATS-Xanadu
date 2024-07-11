@@ -59,7 +59,7 @@ rforitm$work(x0: x0): void
 fun
 <x0:t0>
 <r0:vt>
-foldlft$fopr(r0, x0): (r0)
+folditm$fopr(r0, x0): (r0)
 fun
 <x0:t0>
 <r0:vt>
@@ -70,7 +70,7 @@ foldall$fopr(r0, x0): (bool, r0)
 fun
 <x0:t0>
 <r0:vt>
-rfoldlft$fopr(x0, r0): (r0)
+rfolditm$fopr(x0, r0): (r0)
 fun
 <x0:t0>
 <r0:vt>
