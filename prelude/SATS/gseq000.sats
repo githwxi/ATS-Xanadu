@@ -109,7 +109,7 @@ gseq_forall(xs: xs): bool
 fun
 <xs:t0>
 <x0:t0>
-gseq_forlft(xs: xs): void
+gseq_foritm(xs: xs): void
 //
 (* ****** ****** *)
 //
@@ -120,7 +120,7 @@ gseq_rforall(xs: xs): bool
 fun
 <xs:t0>
 <x0:t0>
-gseq_rforlft(xs: xs): void
+gseq_rforitm(xs: xs): void
 //
 (* ****** ****** *)
 //

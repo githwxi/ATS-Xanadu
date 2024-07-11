@@ -87,7 +87,7 @@ strm_vt_forall0
 (xs: strm_vt(x0)): bool
 fun
 <x0:vt>
-strm_vt_forlft0
+strm_vt_foritm0
 (xs: strm_vt(x0)): void
 //
 fun

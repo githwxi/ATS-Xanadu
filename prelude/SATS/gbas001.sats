@@ -43,7 +43,7 @@ fun
 forall$test(x0: x0): bool
 fun
 <x0:t0>
-forlft$work(x0: x0): void
+foritm$work(x0: x0): void
 //
 //
 fun
@@ -51,7 +51,7 @@ fun
 rforall$test(x0: x0): bool
 fun
 <x0:t0>
-rforlft$work(x0: x0): void
+rforitm$work(x0: x0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

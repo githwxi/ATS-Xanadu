@@ -72,7 +72,7 @@ strm_vt_forall0<x0>(gseq_strmize0<xs><x0>(xs))
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_forlft0
+gseq_foritm0
   ( xs ) =
 (
 let
@@ -81,7 +81,7 @@ gseq_forall0<xs><x0>(xs) in () end
 ) where
 {
 #impltmp
-forall0$test<x0>(x0) = (forlft0$work<x0>(x0); true)
+forall0$test<x0>(x0) = (foritm0$work<x0>(x0); true)
 }
 //
 (* ****** ****** *)
@@ -101,11 +101,11 @@ val p0 = $addr(r0)
 //
 val () =
 (
-gseq_forlft0<xs><x0>(xs)
+gseq_foritm0<xs><x0>(xs)
 ) where
 {
 #impltmp
-forlft0$work<x0>(x0) =
+foritm0$work<x0>(x0) =
 (
   $UN.p2tr_set<r0>(p0, r0))
 where

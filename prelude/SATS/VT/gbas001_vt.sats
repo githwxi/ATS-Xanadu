@@ -47,10 +47,10 @@ forall1$test(x0: !x0): bool
 //
 fun
 <x0:vt>
-forlft0$work(x0: ~x0): void
+foritm0$work(x0: ~x0): void
 fun
 <x0:vt>
-forlft1$work(x0: ~x0): void
+foritm1$work(x0: ~x0): void
 //
 (* ****** ****** *)
 //
@@ -84,10 +84,10 @@ rforall1$test(x0: !x0): bool
 //
 fun
 <x0:vt>
-rforlft0$work(x0: ~x0): void
+rforitm0$work(x0: ~x0): void
 fun
 <x0:vt>
-rforlft1$work(x0: !x0): void
+rforitm1$work(x0: !x0): void
 //
 (* ****** ****** *)
 //
