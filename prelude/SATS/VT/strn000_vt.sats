@@ -40,13 +40,29 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 <a:t0>
-strn_vt_gfrom(x : a): strn_vt
+strn_vt_gmake(a): strn_vt
 fun
 <a:vt>
-strn_vt_gfrom0(x : ~a): strn_vt
+strn_vt_gmake0(~a): strn_vt
 fun
 <a:vt>
-strn_vt_gfrom1(x : !a): strn_vt
+strn_vt_gmake1(!a): strn_vt
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+strn_vt_make_list
+(cs: list(cgtz)): strn_vt
+fun<>
+strn_vt_make0_llist
+(cs: ~list_vt(cgtz)): strn_vt
+fun<>
+strn_vt_make0_llist
+(cs: !list_vt(cgtz)): strn_vt
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
