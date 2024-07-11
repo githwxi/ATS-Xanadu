@@ -10,6 +10,10 @@ function interfaces ATS3
 //
 fun
 <x0:t0>
+forlft$work(x0: x0): void
+//
+fun
+<x0:t0>
 <r0:vt>
 foldlft$fopr(r0, x0): (r0)
 fun
@@ -18,6 +22,10 @@ fun
 foldall$fopr(r0, x0): (bool, r0)
 //
 (* ****** ****** *)
+//
+fun
+<x0:t0>
+rforlft$work(x0: x0): void
 //
 fun
 <x0:t0>
@@ -32,15 +40,46 @@ rfoldall$fopr(x0, r0): (bool, r0)
 (* ****** ****** *)
 //
 fun
-<x0:v0>
-<r0:vt>
-foldlft0$fopr(r0, x0): (r0)
+<xs:t0>
+<x0:t0>
+<ys:vt>
+gseq_map_ares(xs: xs): (ys)
+fun
+<xs:t0>
+<x0:t0>
+gseq_map_self(xs: xs): (xs)
+//
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+gseq_filter_ares(xs: xs): (ys)
+fun
+<xs:t0>
+<x0:t0>
+gseq_filter_self(xs: xs): (xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+forlft0$work(x0: ~x0): void
+//
 fun
 <x0:vt>
 <r0:vt>
-foldall0$fopr(r0, x0): (bool, r0)
+foldlft0$fopr(r0, ~x0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+foldall0$fopr(r0, ~x0): (bool, r0)
 //
 (* ****** ****** *)
+//
+fun
+<x0:vt>
+rforlft0$work(x0: ~x0): void
 //
 fun
 <x0:vt>
@@ -69,68 +108,13 @@ g_make_lstrq
 (* ****** ****** *)
 //
 fun
-<xs:vt>
-<x0:vt>
-<ys:vt>
-gseq_map0_ares(xs: ~xs): (ys)
-fun
-<xs:vt>
-<x0:vt>
-gseq_map0_self(xs: ~xs): (xs)
-//
-fun
-<xs:vt>
-<x0:vt>
-<ys:vt>
-gseq_map1_ares(xs: !xs): (ys)
-fun
-<xs:vt>
-<x0:vt>
-gseq_map1_self(xs: !xs): (xs)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
+<xs:t0>
+<x0:t0>
+gseq_forlft(xs: xs): void
 fun
 <xs:t0>
 <x0:t0>
-<ys:vt>
-gseq_filter_ares(xs: xs): (ys)
-fun
-<xs:t0>
-<x0:t0>
-gseq_filter_self(xs: xs): (xs)
-//
-fun
-<xs:vt>
-<x0:vt>
-<ys:vt>
-gseq_filter0_ares(xs: ~xs): (ys)
-fun
-<xs:vt>
-<x0:vt>
-gseq_filter0_self(xs: ~xs): (xs)
-//
-fun
-<xs:vt>
-<x0:vt>
-<ys:vt>
-gseq_filter1_ares(xs: !xs): (ys)
-fun
-<xs:vt>
-<x0:vt>
-gseq_filter1_self(xs: !xs): (xs)
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-<y0:vt>
-mapstrq0$fopr(x0: ~x0): strq_vt(y0)
-fun
-<x0:vt>
-<y0:vt>
-mapstrq1$fopr(x0: !x0): strq_vt(y0)
+gseq_rforlft(xs: xs): void
 //
 (* ****** ****** *)
 //
@@ -162,13 +146,11 @@ gseq_rfoldall(xs, r0): ( r0 )
 fun
 <xs:vt>
 <x0:vt>
-<r0:vt>
-gseq_foldlft0(xs, r0): ( r0 )
+gseq_forlft0(xs: ~xs): void
 fun
 <xs:vt>
 <x0:vt>
-<r0:vt>
-gseq_foldall0(xs, r0): ( r0 )
+gseq_rforlft0(xs: ~xs): void
 //
 (* ****** ****** *)
 //
@@ -176,35 +158,130 @@ fun
 <xs:vt>
 <x0:vt>
 <r0:vt>
-gseq_rfoldlft0(xs, r0): ( r0 )
+gseq_foldlft0(~xs, r0): ( r0 )
 fun
 <xs:vt>
 <x0:vt>
 <r0:vt>
-gseq_rfoldall0(xs, r0): ( r0 )
+gseq_foldall0(~xs, r0): ( r0 )
 //
 (* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_rfoldlft0(~xs, r0): ( r0 )
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_rfoldall0(~xs, r0): ( r0 )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<r0:vt>
+list_vt_forlft0
+(xs: ~list_vt(x0)): void
+fun
+<x0:vt>
+<r0:vt>
+list_vt_rforlft0
+(xs: ~list_vt(x0)): void
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<r0:vt>
+strm_vt_forlft0
+(xs: ~strm_vt(x0)): void
+fun
+<x0:vt>
+<r0:vt>
+strm_vt_rforlft0
+(xs: ~strm_vt(x0)): void
+//
 (* ****** ****** *)
 //
 fun
 <x0:vt>
 <r0:vt>
 list_vt_foldlft0
-(xs: list_vt(x0), r0: r0): (r0)
+(xs: ~list_vt(x0), r0: r0): (r0)
 fun
 <x0:vt>
 <r0:vt>
 strm_vt_foldlft0
-(xs: strm_vt(x0), r0: r0): (r0)
+(xs: ~strm_vt(x0), r0: r0): (r0)
+//
+(* ****** ****** *)
 //
 fun
 <x0:vt>
 <r0:vt>
 list_vt_rfoldlft0
-(xs: list_vt(x0), r0: r0): (r0)
+(xs: ~list_vt(x0), r0: r0): (r0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_map0_ares(xs: ~xs): (ys)
+fun
+<xs:vt>
+<x0:vt>
+gseq_map0_self(xs: ~xs): (xs)
+//
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_map1_ares(xs: !xs): (ys)
+fun
+<xs:vt>
+<x0:vt>
+gseq_map1_self(xs: !xs): (xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_filter0_ares(xs: ~xs): (ys)
+fun
+<xs:vt>
+<x0:vt>
+gseq_filter0_self(xs: ~xs): (xs)
+//
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_filter1_ares(xs: !xs): (ys)
+fun
+<xs:vt>
+<x0:vt>
+gseq_filter1_self(xs: !xs): (xs)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<y0:vt>
+mapstrq0$fopr(x0: ~x0): strq_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+mapstrq1$fopr(x0: !x0): strq_vt(y0)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)

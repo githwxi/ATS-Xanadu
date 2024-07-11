@@ -77,7 +77,7 @@ list_vt_forall0
 {
 fun
 loop
-(xs: list_vt(x0)): void =
+(xs: list_vt(x0)): bool =
 (
 case+ xs of
 | ~
