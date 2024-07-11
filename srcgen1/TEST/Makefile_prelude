@@ -189,6 +189,8 @@ $(XATSOPT) -d $(PRELUDE)/DATS/gbas000.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gbas001.dats
 all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/strn000.dats
+all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gseq000.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/list000.dats
@@ -197,6 +199,8 @@ $(XATSOPT) -d $(PRELUDE)/DATS/list000.dats
 
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/gseq000_vt.dats
+all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/VT/strn000_vt.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/list000_vt.dats
 all0_dats:: ; \

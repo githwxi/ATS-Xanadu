@@ -40,13 +40,13 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 <a:t0>
-strn_gfrom(x : a): strn
+strn_gmake( a ): strn
 fun
 <a:vt>
-strn_gfrom0(x : ~a): strn
+strn_gmake0( ~a ): strn
 fun
 <a:vt>
-strn_gfrom1(x : !a): strn
+strn_gmake1( !a ): strn
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -58,7 +58,7 @@ fun<>
 strn_make0_llist
 (cs: ~list_vt(cgtz)): strn
 fun<>
-strn_make0_llist
+strn_make1_llist
 (cs: !list_vt(cgtz)): strn
 //
 (* ****** ****** *)
