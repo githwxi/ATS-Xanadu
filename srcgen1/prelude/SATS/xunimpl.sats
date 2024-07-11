@@ -15,7 +15,7 @@ foritm$work(x0: x0): void
 fun
 <x0:t0>
 <r0:vt>
-foldlft$fopr(r0, x0): (r0)
+folditm$fopr(r0, x0): (r0)
 fun
 <x0:t0>
 <r0:vt>
@@ -30,7 +30,7 @@ rforitm$work(x0: x0): void
 fun
 <x0:t0>
 <r0:vt>
-rfoldlft$fopr(x0, r0): (r0)
+rfolditm$fopr(x0, r0): (r0)
 fun
 <x0:t0>
 <r0:vt>
@@ -69,7 +69,7 @@ foritm0$work(x0: ~x0): void
 fun
 <x0:vt>
 <r0:vt>
-foldlft0$fopr(r0, ~x0): (r0)
+folditm0$fopr(r0, ~x0): (r0)
 fun
 <x0:vt>
 <r0:vt>
@@ -84,7 +84,7 @@ rforitm0$work(x0: ~x0): void
 fun
 <x0:vt>
 <r0:vt>
-rfoldlft0$fopr(x0, r0): (r0)
+rfolditm0$fopr(x0, r0): (r0)
 fun
 <x0:vt>
 <r0:vt>
@@ -122,7 +122,7 @@ fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-gseq_foldlft(xs, r0): ( r0 )
+gseq_folditm(xs, r0): ( r0 )
 fun
 <xs:t0>
 <x0:t0>
@@ -133,7 +133,7 @@ fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-gseq_rfoldlft(xs, r0): ( r0 )
+gseq_rfolditm(xs, r0): ( r0 )
 fun
 <xs:t0>
 <x0:t0>
@@ -158,7 +158,7 @@ fun
 <xs:vt>
 <x0:vt>
 <r0:vt>
-gseq_foldlft0(~xs, r0): ( r0 )
+gseq_folditm0(~xs, r0): ( r0 )
 fun
 <xs:vt>
 <x0:vt>
@@ -171,7 +171,7 @@ fun
 <xs:vt>
 <x0:vt>
 <r0:vt>
-gseq_rfoldlft0(~xs, r0): ( r0 )
+gseq_rfolditm0(~xs, r0): ( r0 )
 fun
 <xs:vt>
 <x0:vt>
@@ -210,12 +210,12 @@ strm_vt_rforitm0
 fun
 <x0:vt>
 <r0:vt>
-list_vt_foldlft0
+list_vt_folditm0
 (xs: ~list_vt(x0), r0: r0): (r0)
 fun
 <x0:vt>
 <r0:vt>
-strm_vt_foldlft0
+strm_vt_folditm0
 (xs: ~strm_vt(x0), r0: r0): (r0)
 //
 (* ****** ****** *)
@@ -223,7 +223,7 @@ strm_vt_foldlft0
 fun
 <x0:vt>
 <r0:vt>
-list_vt_rfoldlft0
+list_vt_rfolditm0
 (xs: ~list_vt(x0), r0: r0): (r0)
 //
 (* ****** ****** *)

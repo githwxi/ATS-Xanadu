@@ -49,11 +49,11 @@ gseq_length0(xs) =
 let
 #typedef r0 = nint
 #impltmp
-foldlft0$fopr
+folditm0$fopr
 <x0><r0>(r0, x0) =
 (g_free<x0>(x0); r0 + 1)
 in//let
-  gseq_foldlft0<xs><x0><r0>(xs, 0)
+  gseq_folditm0<xs><x0><r0>(xs, 0)
 end//let//end-of-[gseq_length0(xs)]
 //
 (* ****** ****** *)
@@ -91,7 +91,7 @@ forall0$test<x0>(x0) = (foritm0$work<x0>(x0); true)
 < xs:vt >
 < x0:vt >
 < r0:vt >
-gseq_foldlft0
+gseq_folditm0
   (xs, r0) = r0
 where {
 //
@@ -111,9 +111,9 @@ foritm0$work<x0>(x0) =
 where
 {
 val r0 = $UN.p2tr_get<r0>(p0)
-val r0 = foldlft0$fopr<x0><r0>(r0, x0)}}
+val r0 = folditm0$fopr<x0><r0>(r0, x0)}}
 //
-}(*where*)//end-of-[gseq_foldlft0(xs, r0)]
+}(*where*)//end-of-[gseq_folditm0(xs, r0)]
 //
 (* ****** ****** *)
 //

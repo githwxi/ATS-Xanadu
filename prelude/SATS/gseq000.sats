@@ -133,7 +133,7 @@ fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-gseq_foldlft(xs, r0): ( r0 )
+gseq_folditm(xs, r0): ( r0 )
 //
 fun
 <xs:t0>
@@ -144,7 +144,7 @@ fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-gseq_rfoldlft(xs, r0): ( r0 )
+gseq_rfolditm(xs, r0): ( r0 )
 //
 (* ****** ****** *)
 (* ****** ****** *)

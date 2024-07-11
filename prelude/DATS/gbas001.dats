@@ -67,11 +67,11 @@ rforitm$work =
 #impltmp
 < x0:t0 >
 < r0:vt >
-rfoldlft$fopr
+rfolditm$fopr
 ( x0
 , r0 ) =
 (
-  foldlft$fopr<x0><r0>(r0, x0))
+  folditm$fopr<x0><r0>(r0, x0))
 *)
 //
 (*

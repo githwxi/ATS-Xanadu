@@ -98,7 +98,7 @@ strm_vt_foldall0
 fun
 <x0:vt>
 <r0:vt>
-strm_vt_foldlft0
+strm_vt_folditm0
 (xs: strm_vt(x0), r0: r0): (r0)
 //
 (* ****** ****** *)

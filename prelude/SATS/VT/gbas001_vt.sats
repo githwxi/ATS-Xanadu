@@ -57,11 +57,11 @@ foritm1$work(x0: ~x0): void
 fun
 <x0:vt>
 <r0:vt>
-foldlft0$fopr(r0, ~x0): (r0)
+folditm0$fopr(r0, ~x0): (r0)
 fun
 <x0:vt>
 <r0:vt>
-foldlft1$fopr(r0, !x0): (r0)
+folditm1$fopr(r0, !x0): (r0)
 //
 fun
 <x0:vt>
@@ -94,11 +94,11 @@ rforitm1$work(x0: !x0): void
 fun
 <x0:vt>
 <r0:vt>
-rfoldlft0$fopr(~x0, r0): (r0)
+rfolditm0$fopr(~x0, r0): (r0)
 fun
 <x0:vt>
 <r0:vt>
-rfoldlft1$fopr(!x0, r0): (r0)
+rfolditm1$fopr(!x0, r0): (r0)
 //
 fun
 <x0:vt>
