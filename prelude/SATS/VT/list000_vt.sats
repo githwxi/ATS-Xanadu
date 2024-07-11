@@ -85,7 +85,7 @@ list_vt_forall0
 (xs: list_vt(x0)): bool
 fun
 <x0:vt>
-list_vt_forlft0
+list_vt_foritm0
 (xs: list_vt(x0)): void
 //
 fun
@@ -94,7 +94,7 @@ list_vt_rforall0
 (xs: list_vt(x0)): bool
 fun
 <x0:vt>
-list_vt_rforlft0
+list_vt_rforitm0
 (xs: list_vt(x0)): void
 //
 (* ****** ****** *)

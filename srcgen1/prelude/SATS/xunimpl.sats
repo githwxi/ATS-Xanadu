@@ -10,7 +10,7 @@ function interfaces ATS3
 //
 fun
 <x0:t0>
-forlft$work(x0: x0): void
+foritm$work(x0: x0): void
 //
 fun
 <x0:t0>
@@ -25,7 +25,7 @@ foldall$fopr(r0, x0): (bool, r0)
 //
 fun
 <x0:t0>
-rforlft$work(x0: x0): void
+rforitm$work(x0: x0): void
 //
 fun
 <x0:t0>
@@ -64,7 +64,7 @@ gseq_filter_self(xs: xs): (xs)
 //
 fun
 <x0:vt>
-forlft0$work(x0: ~x0): void
+foritm0$work(x0: ~x0): void
 //
 fun
 <x0:vt>
@@ -79,7 +79,7 @@ foldall0$fopr(r0, ~x0): (bool, r0)
 //
 fun
 <x0:vt>
-rforlft0$work(x0: ~x0): void
+rforitm0$work(x0: ~x0): void
 //
 fun
 <x0:vt>
@@ -110,11 +110,11 @@ g_make_lstrq
 fun
 <xs:t0>
 <x0:t0>
-gseq_forlft(xs: xs): void
+gseq_foritm(xs: xs): void
 fun
 <xs:t0>
 <x0:t0>
-gseq_rforlft(xs: xs): void
+gseq_rforitm(xs: xs): void
 //
 (* ****** ****** *)
 //
@@ -146,11 +146,11 @@ gseq_rfoldall(xs, r0): ( r0 )
 fun
 <xs:vt>
 <x0:vt>
-gseq_forlft0(xs: ~xs): void
+gseq_foritm0(xs: ~xs): void
 fun
 <xs:vt>
 <x0:vt>
-gseq_rforlft0(xs: ~xs): void
+gseq_rforitm0(xs: ~xs): void
 //
 (* ****** ****** *)
 //
@@ -184,12 +184,12 @@ gseq_rfoldall0(~xs, r0): ( r0 )
 fun
 <x0:vt>
 <r0:vt>
-list_vt_forlft0
+list_vt_foritm0
 (xs: ~list_vt(x0)): void
 fun
 <x0:vt>
 <r0:vt>
-list_vt_rforlft0
+list_vt_rforitm0
 (xs: ~list_vt(x0)): void
 //
 (* ****** ****** *)
@@ -197,12 +197,12 @@ list_vt_rforlft0
 fun
 <x0:vt>
 <r0:vt>
-strm_vt_forlft0
+strm_vt_foritm0
 (xs: ~strm_vt(x0)): void
 fun
 <x0:vt>
 <r0:vt>
-strm_vt_rforlft0
+strm_vt_rforitm0
 (xs: ~strm_vt(x0)): void
 //
 (* ****** ****** *)
