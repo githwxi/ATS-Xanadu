@@ -48,6 +48,22 @@ fun
 <a:vt>
 strn_gfrom1(x : !a): strn
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+strn_make_list
+(cs: list(cgtz)): strn
+fun<>
+strn_make0_llist
+(cs: ~list_vt(cgtz)): strn
+fun<>
+strn_make0_llist
+(cs: !list_vt(cgtz)): strn
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
