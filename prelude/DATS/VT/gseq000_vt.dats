@@ -129,7 +129,7 @@ var r0: r0 = r0
 //
 val p0 = $addr(r0)
 //
-val () =
+val b0 =
 (
 gseq_forall0<xs><x0>(xs)
 ) where
