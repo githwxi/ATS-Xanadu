@@ -190,6 +190,8 @@ gseqn_map_rlist
 (*
 HX-2020-07-04:
 Is this interesting?!
+HX-2024-07-11:
+This looks very interesting!
 *)
 //
 (*
@@ -198,10 +200,11 @@ fun
 <xs:
 i0->t0>
 <x0:t0>
-<rz:vt>
+<rz:
+i0->vt>
 <ln:i0>
 gseqn_foldln
-  (xs: xs(ln), r0: rz(0)): (rz(ln))
+(xs: xs(ln), r0: rz(0)): rz(ln)
 *)
 //
 (* ****** ****** *)
