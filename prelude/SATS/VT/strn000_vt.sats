@@ -38,28 +38,60 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun<>
+strn_vt_length0
+{n0:i0}
+(cs: ~strn_vt(n0)): sint(n0)
+fun<>
+strn_vt_length1
+{n0:i0}
+(cs: !strn_vt(n0)): sint(n0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-11:
+The 'g' in 'gmake' means
+that the argument, which is
+the subject, is polymorphic.
+*)
 fun
 <a:t0>
-strn_vt_gmake(a): strn_vt
+strn_vt_gmake(x: a): strn_vt
 fun
 <a:vt>
-strn_vt_gmake0(~a): strn_vt
+strn_vt_gmake0(x: ~a): strn_vt
 fun
 <a:vt>
-strn_vt_gmake1(!a): strn_vt
+strn_vt_gmake1(x: !a): strn_vt
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun<>
 strn_vt_make_list
-(cs: list(cgtz)): strn_vt
+{n0:i0}
+(cs: list(cgtz, n0)): strn_vt(n0)
 fun<>
 strn_vt_make0_llist
-(cs: ~list_vt(cgtz)): strn_vt
+{n0:i0}
+(cs: ~list_vt(cgtz, n0)): strn_vt(n0)
 fun<>
-strn_vt_make0_llist
-(cs: !list_vt(cgtz)): strn_vt
+strn_vt_make1_llist
+{n0:i0}
+(cs: !list_vt(cgtz, n0)): strn_vt(n0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+strn_vt_strmize0
+(cs: ~strn_vt): strm_vt(cgtz)
+fun<>
+strn_vt_strqize0
+{n0:i0}
+(cs: ~strn_vt(n0)): strq_vt(cgtx, n0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

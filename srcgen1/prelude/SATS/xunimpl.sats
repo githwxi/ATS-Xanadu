@@ -2,8 +2,8 @@
 (* ****** ****** *)
 (*
 HX-2024-07-10:
-These are newly designed
-function interfaces ATS3
+These are newly designed function interfaces ATS3,
+which are not supposed to be implemented in srcgen1
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -298,7 +298,8 @@ strn_gmake1( !a ): strn
 //
 fun<>
 strn_make1_llist
-(cs: !list_vt(cgtz)): strn
+{n0:i0}
+(cs: !list_vt(cgtz, n0)): strn(n0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -315,7 +316,14 @@ strn_vt_gmake1(!a): strn_vt
 //
 fun<>
 strn_vt_make1_llist
-(cs: !list_vt(cgtz)): strn_vt
+{n0:i0}
+(cs: !list_vt(cgtz, n0)): strn_vt(n0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+strn_foritm(cs: strn): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

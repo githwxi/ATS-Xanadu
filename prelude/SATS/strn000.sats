@@ -38,28 +38,56 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-11:
+The 'g' in 'gmake' means
+that the argument, which is
+the subject, is polymorphic.
+*)
 fun
 <a:t0>
-strn_gmake( a ): strn
+strn_gmake(x: a): (strn)
 fun
 <a:vt>
-strn_gmake0( ~a ): strn
+strn_gmake0(x: ~a): (strn)
 fun
 <a:vt>
-strn_gmake1( !a ): strn
+strn_gmake1(x: !a): (strn)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun<>
 strn_make_list
-(cs: list(cgtz)): strn
+{n0:i0}
+(cs: list(cgtz, n0)): strn(n0)
 fun<>
 strn_make0_llist
-(cs: ~list_vt(cgtz)): strn
+{n0:i0}
+(cs: ~list_vt(cgtz, n0)): strn(n0)
 fun<>
 strn_make1_llist
-(cs: !list_vt(cgtz)): strn
+{n0:i0}
+(cs: !list_vt(cgtz, n0)): strn(n0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+strn_forall(cs: strn): void
+fun<>
+strn_foritm(cs: strn): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+strn_strmize
+(cs: strn): strm_vt(cgtz)
+fun<>
+strn_strqize
+{n0:i0}
+(cs: strn(n0)): strq_vt(cgtx, n0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
