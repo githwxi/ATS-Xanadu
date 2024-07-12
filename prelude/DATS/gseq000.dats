@@ -261,6 +261,36 @@ end//end-of-[gseq_rfolditm(xs, r0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_map_self =
+gseq_map_ares<xs><x0><xs>
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< ys:vt >
+gseq_map_ares
+  ( xs ) =
+g_make0_lstrm<x0><ys>
+(
+gseq_map_lstrm<xs><x0>(xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_map_lstrm
+  ( xs ) =
+strm_vt_map0<x0>(gseq_strmize<xs><x0>(xs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
@@ -274,7 +304,28 @@ gseq_filter_ares<xs><x0><xs>
 < ys:vt >
 gseq_filter_ares
   ( xs ) =
-g_make_lstrm<x0><ys>
+g_make0_lstrm<x0><ys>
+(
+gseq_filter_lstrm<xs><x0>(xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_filter_list
+  ( xs ) =
+list_vt2t{x0}
+(
+gseq_filter_llist<xs><x0>(xs))
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_filter_llist
+  ( xs ) =
+g_make0_lstrm
+<x0><list_vt(x0)>
 (
 gseq_filter_lstrm<xs><x0>(xs))
 //
@@ -286,6 +337,13 @@ gseq_filter_lstrm<xs><x0>(xs))
 gseq_filter_lstrm
   ( xs ) =
 strm_vt_filter0<x0>(gseq_strmize<xs><x0>(xs))
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_filter_lstrq
+  ( xs ) =
+strq_vt_filter0<x0>(gseq_strqize<xs><x0>(xs))
 //
 (* ****** ****** *)
 (* ****** ****** *)

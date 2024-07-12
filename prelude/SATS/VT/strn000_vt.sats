@@ -91,7 +91,7 @@ strn_vt_strmize0
 fun<>
 strn_vt_strqize0
 {n0:i0}
-(cs: ~strn_vt(n0)): strq_vt(cgtx, n0)
+(cs: ~strn_vt(n0)): strq_vt(cgtz, n0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

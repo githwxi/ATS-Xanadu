@@ -645,17 +645,32 @@ gseq_filter_self(xs: xs): (xs)
 fun
 <xs:t0>
 <x0:t0>
+gseq_filter_list(xs): list(x0)
+fun
+<xs:t0>
+<x0:t0>
 gseq_filter_llist(xs): list_vt(x0)
+//
 fun
 <xs:t0>
 <x0:t0>
 gseq_filter_lstrm(xs): strm_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_filter_lstrq(xs): strq_vt(x0)
 //
 (* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_filter_rlist(xs): list(x0)
 fun
 <xs:t0>
 <x0:t0>
 gseq_filter_rllist(xs): list_vt(x0)
+//
 (* ****** ****** *)
 //
 fun

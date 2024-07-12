@@ -28,8 +28,16 @@ all:: all_dats
 # srcgen1 is
 # implemented in ATS2
 #
+# XATSOPT=\
+# $(XATSHOME)/srcgen1/bin/xatsopt
+#
+# HX-2024-07-12: Kudos to Gavin!
+#
 XATSOPT=\
-$(XATSHOME)/srcgen1/bin/xatsopt
+nix run \
+github:GZGavinZhao/ATS-Xanadu/nixify\#xatsopt \
+--extra-experimental-features flakes \
+--extra-experimental-features nix-command --
 #
 ######
 

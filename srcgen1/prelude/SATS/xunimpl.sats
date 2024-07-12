@@ -105,12 +105,12 @@ rfoldall0$fopr(x0, r0): (bool, r0)
 fun
 <x0:vt>
 <ys:vt>
-g_make_lstrm
+g_make0_lstrm
 (xs: strm_vt(x0)): (ys)
 fun
 <x0:vt>
 <ys:vt>
-g_make_lstrq
+g_make0_lstrq
 (xs: strq_vt(x0)): (ys)
 //
 (* ****** ****** *)
@@ -295,6 +295,24 @@ mapstrq1$fopr(x0: !x0): strq_vt(y0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun<>
+nint_forall(xs: nint): bool
+fun<>
+nint_foritm(xs: nint): bool
+//
+fun<>
+nint_rforall(xs: nint): bool
+fun<>
+nint_rforitm(xs: nint): bool
+//
+fun<>
+nint_iforall(xs: nint): bool
+fun<>
+nint_iforitm(xs: nint): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <a:t0>
 strn_gmake( a ): strn
@@ -304,6 +322,12 @@ strn_gmake0( ~a ): strn
 fun
 <a:vt>
 strn_gmake1( !a ): strn
+//
+//
+fun<>
+strn_foritm(cs: strn): void
+//
+(* ****** ****** *)
 //
 fun<>
 strn_make1_llist
@@ -323,6 +347,11 @@ fun
 <a:vt>
 strn_vt_gmake1(!a): strn_vt
 //
+(* ****** ****** *)
+//
+fun<>
+strn_vt_foritm0(cs: ~strn): void
+//
 fun<>
 strn_vt_make1_llist
 {n0:i0}
@@ -331,8 +360,11 @@ strn_vt_make1_llist
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun<>
-strn_foritm(cs: strn): void
+fun
+<x0:vt>
+strq_vt_filter0
+{n0:i0}
+(xs: strq_vt(x0,n0)): strqlte_vt(x0,n0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
