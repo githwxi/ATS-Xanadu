@@ -38,6 +38,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+#impltmp
+< x0:t0 >
+list_vt_length0 =
+gseq_length0<list_vt(x0)><x0>
+*)
 #impltmp
 < x0:vt >
 list_vt_length0
@@ -50,7 +56,8 @@ fun
 loop
 {i,j:i0}
 (xs:
-~list_vt(x0)
+~list_vt
+ (x0, i)
 ,j0: sint(j)): sint(i+j) =
 (
 case+ xs of
@@ -58,12 +65,47 @@ case+ xs of
 list_vt_nil() => j0
 | ~
 list_vt_cons(x1, xs) =>
-(free(x1); loop(xs, j0+1)))
+(
+  free(x1); loop(xs, j0+1)))
 }
 //
 #impltmp
 { x0:vt }
 gseq_length0<list_vt(x0)><x0> = list_vt_length0
+//
+(* ****** ****** *)
+//
+(*
+#impltmp
+< x0:t0 >
+list_vt_length1 =
+gseq_length1<list_vt(x0)><x0>
+*)
+//
+#impltmp
+< x0:vt >
+list_vt_length1
+  (xs) =
+(
+  loop(xs, 0(*j0*)))
+where
+{
+fun
+loop
+{i,j:i0}
+(xs:
+!list_vt
+ (x0, i)
+,j0: sint(j)): sint(i+j) =
+(
+case+ xs of
+|list_vt_nil() => j0
+|list_vt_cons(x1, xs) => loop(xs, j0+1))
+}
+//
+#impltmp
+{ x0:vt }
+gseq_length1<list_vt(x0)><x0> = list_vt_length1
 //
 (* ****** ****** *)
 (* ****** ****** *)

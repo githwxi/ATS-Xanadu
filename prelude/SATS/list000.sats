@@ -40,14 +40,14 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun<>
 list_nil_
-{a:t0}(): list(a, 0)
+{a:t0}(): list(a,0)
 fun
 <a:t0>
 list_cons_
 {n:i0}
 (
 x0: (a),
-xs: list(a, n)): list(a, n+1)
+xs: list(a,n)): list(a,n+1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -55,11 +55,16 @@ xs: list(a, n)): list(a, n+1)
 fun
 <a:t0>
 list_make_1val
-( x1: a): list(a, 1)
+( x1: a): list(a,1)
 fun
 <a:t0>
 list_make_2val
-(x1: a, x2: a): list(a, 2)
+(x1: a, x2: a): list(a,2)
+fun
+<a:t0>
+list_make_2val
+(x1: a
+,x2: a, x3: a): list(a,3)
 //
 (* ****** ****** *)
 (* ****** ****** *)
