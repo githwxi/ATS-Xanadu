@@ -153,11 +153,81 @@ fun
 <xs:t0>
 <x0:t0>
 <ys:vt>
+gseq_map_ares(xs: xs): (ys)
+fun
+<xs:t0>
+<x0:t0>
+gseq_map_self(xs: xs): (xs)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_map_list(xs: xs): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_llist(xs: xs): list_vt(y0)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_lstrm(xs: xs): strm_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_lstrq(xs: xs): strq_vt(y0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
 gseq_filter_ares(xs: xs): (ys)
 fun
 <xs:t0>
 <x0:t0>
 gseq_filter_self(xs: xs): (xs)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_filter_list(xs: xs): list(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_filter_llist(xs: xs): list_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_filter_lstrm(xs: xs): strm_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_filter_lstrq(xs: xs): strq_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_filter_rlist(xs: xs): list(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_filter_rllist(xs: xs): list_vt(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

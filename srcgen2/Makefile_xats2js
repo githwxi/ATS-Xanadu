@@ -29,7 +29,14 @@ NODE=node --stack-size=4096
 MYTEST="."
 ######
 XSHARED="${XATSJSD}/xshared"
+######
 XATS2JS="${XATSJSD}/bin/xats2js"
+######
+XATS2JS=\
+nix run \
+github:GZGavinZhao/ATS-Xanadu/nixify\#xats2js \
+--extra-experimental-features flakes \
+--extra-experimental-features nix-command --
 ######
 XATS2JS_PRELUDE=\
 "$(XSHARED)/runtime/xats2js_prelude.js"

@@ -41,43 +41,43 @@ Authoremail: gmhwxiATgmailDOTcom
 fun
 <x0:vt>
 <ys:vt>
-g_make_lstrm
+g_make0_lstrm
 (xs: strm_vt(x0)): (ys)
 fun
 <x0:vt>
 <ys:vt>
-g_make_lstrq
+g_make0_lstrq
 (xs: strq_vt(x0)): (ys)
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
-list_make_lstrm
+list_make0_lstrm
 (xs: strm_vt(x0)): list(x0)
 fun
 <x0:t0>
-list_make_lstrq
+list_make0_lstrq
 {n0:i0}
 (xs: strq_vt(x0, n0)): list(x0, n0)
 //
-#symload list with list_make_lstrm
-#symload list with list_make_lstrq
+#symload list with list_make0_lstrm
+#symload list with list_make0_lstrq
 //
 (* ****** ****** *)
 //
 fun
 <x0:vt>
-list_vt_make_lstrm
+list_vt_make0_lstrm
 (xs: strm_vt(x0)): list_vt(x0)
 fun
 <x0:vt>
-list_vt_make_lstrq
+list_vt_make0_lstrq
 {n0:i0}
 (xs: strq_vt(x0, n0)): list_vt(x0, n0)
 //
-#symload list_vt with list_vt_make_lstrm
-#symload list_vt with list_vt_make_lstrq
+#symload list_vt with list_vt_make0_lstrm
+#symload list_vt with list_vt_make0_lstrq
 //
 (* ****** ****** *)
 (* ****** ****** *)
