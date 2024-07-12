@@ -40,14 +40,14 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun<>
 list_vt_nil_
-{a:vt}(): list_vt(a, 0)
+{a:vt}(): list_vt(a,0)
 fun
 <a:vt>
 list_vt_cons_
 {n:i0}
 (
 x0: (a),
-xs: list_vt(a, n)): list_vt(a, n+1)
+xs: list_vt(a,n)): list_vt(a,n+1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -55,11 +55,16 @@ xs: list_vt(a, n)): list_vt(a, n+1)
 fun
 <a:vt>
 list_vt_make_1val
-(x1: a): list_vt(a, 1)
+(x1: a): list_vt(a,1)
 fun
 <a:vt>
 list_vt_make_2val
-(x1: a, x2: a): list_vt(a, 2)
+(x1: a, x2: a): list_vt(a,2)
+fun
+<a:vt>
+list_vt_make_3val
+(x1: a
+,x2: a, x3: a): list_vt(a,3)
 //
 (* ****** ****** *)
 (* ****** ****** *)

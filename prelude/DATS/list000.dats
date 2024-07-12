@@ -81,10 +81,8 @@ gseq_strqize
 (*
 #impltmp
 < x0:t0 >
-list_length
-  (xs) =
-(
-  gseq_length<list(x0)><x0>(xs))
+list_length =
+gseq_length<list(x0)><x0>
 *)
 //
 #impltmp
