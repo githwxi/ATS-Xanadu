@@ -7,10 +7,23 @@ which are not supposed to be implemented in srcgen1
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef ni = nint
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <x0:t0>
 foritm$work(x0: x0): void
+//
+fun
+<x0:t0>
+rforitm$work(x0: x0): void
+//
+fun
+<x0:t0>
+iforitm$work(ni, x0): void
+//
+(* ****** ****** *)
 //
 fun
 <x0:t0>
@@ -22,10 +35,6 @@ fun
 foldall$fopr(r0, x0): (bool, r0)
 //
 (* ****** ****** *)
-//
-fun
-<x0:t0>
-rforitm$work(x0: x0): void
 //
 fun
 <x0:t0>
@@ -74,6 +83,14 @@ gseq_filter_self(xs: xs): (xs)
 fun
 <x0:vt>
 foritm0$work(x0: ~x0): void
+fun
+<x0:vt>
+rforitm0$work(x0: ~x0): void
+fun
+<x0:vt>
+iforitm0$work(ni, ~x0): void
+//
+(* ****** ****** *)
 //
 fun
 <x0:vt>
@@ -85,10 +102,6 @@ fun
 foldall0$fopr(r0, ~x0): (bool, r0)
 //
 (* ****** ****** *)
-//
-fun
-<x0:vt>
-rforitm0$work(x0: ~x0): void
 //
 fun
 <x0:vt>
@@ -124,6 +137,10 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_rforitm(xs: xs): void
+fun
+<xs:t0>
+<x0:t0>
+gseq_iforitm(xs: xs): void
 //
 (* ****** ****** *)
 //
@@ -160,6 +177,10 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_rforitm0(xs: ~xs): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_iforitm0(xs: ~xs): void
 //
 (* ****** ****** *)
 //
