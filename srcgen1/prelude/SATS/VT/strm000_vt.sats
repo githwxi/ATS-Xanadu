@@ -405,6 +405,13 @@ strm_vt_group0_llist
 //
 fun
 <x0:vt>
+strm_vt_iforall0
+  (xs: strm_vt(x0)): ( bool )
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
 <y0:vt>
 strm_vt_imap0
   (xs: strm_vt(x0)): strm_vt(y0)

@@ -116,6 +116,24 @@ strm_vt_foritm0
 //
 fun
 <x0:vt>
+strm_vt_rforall0
+(xs: strm_vt(x0)): bool
+fun
+<x0:vt>
+strm_vt_rforitm0
+(xs: strm_vt(x0)): void
+//
+fun
+<x0:vt>
+strm_vt_iforall0
+(xs: strm_vt(x0)): bool
+fun
+<x0:vt>
+strm_vt_iforitm0
+(xs: strm_vt(x0)): void
+//
+fun
+<x0:vt>
 <r0:vt>
 strm_vt_foldall0
 (xs: strm_vt(x0), r0: r0): (r0)
