@@ -226,11 +226,6 @@ end//end-of-[gseq_folditm(xs, r0)]
 (* ****** ****** *)
 //
 (*
-(*
-HX-2024-07-10:
-It may be more efficient with
-an array-based implementation
-*)
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -278,7 +273,7 @@ gseq_filter_ares<xs><x0><xs>
 < x0:t0 >
 < ys:vt >
 gseq_filter_ares
-  (xs) =
+  ( xs ) =
 g_make_lstrm<x0><ys>
 (
 gseq_filter_lstrm<xs><x0>(xs))
@@ -289,7 +284,7 @@ gseq_filter_lstrm<xs><x0>(xs))
 < xs:t0 >
 < x0:t0 >
 gseq_filter_lstrm
-  (xs) =
+  ( xs ) =
 strm_vt_filter0<x0>(gseq_strmize<xs><x0>(xs))
 //
 (* ****** ****** *)
