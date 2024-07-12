@@ -40,6 +40,15 @@ rfoldall$fopr(x0, r0): (bool, r0)
 (* ****** ****** *)
 //
 fun
+<xs:vt>
+<x0:vt>
+gseq_rstrqize0
+(xs: ~xs): strq_vt(x0)//fun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 <xs:t0>
 <x0:t0>
 <ys:vt>

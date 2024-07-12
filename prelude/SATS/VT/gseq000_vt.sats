@@ -53,38 +53,49 @@ gseq_cons0(x0, xs): (xs)
 fun
 <xs:vt>
 <x0:vt>
-gseq_strmize0
-  (xs: ~xs): strm_vt(x0)
-fun
-<xs:vt>
-<x0:vt>
-gseq_strqize0
-  (xs: ~xs): strq_vt(x0)
-//
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
-gseq_listize0
-  (xs: ~xs): list_vt(x0)
-fun
-<xs:vt>
-<x0:vt>
-gseq_rlistize0
-  (xs: ~xs): list_vt(x0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
 gseq_length0(xs: ~xs): sint
 fun
 <xs:vt>
 <x0:vt>
 gseq_length1(xs: !xs): sint
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_strmize0
+(xs: ~xs): strm_vt(x0)//fun
+fun
+<xs:vt>
+<x0:vt>
+gseq_strqize0
+(xs: ~xs): strq_vt(x0)//fun
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_listize0
+(xs: ~xs): list_vt(x0)//fun
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_rstrmize0
+(xs: ~xs): strm_vt(x0)//fun
+fun
+<xs:vt>
+<x0:vt>
+gseq_rstrqize0
+(xs: ~xs): strq_vt(x0)//fun
+fun
+<xs:vt>
+<x0:vt>
+gseq_rlistize0
+(xs: ~xs): list_vt(x0)//fun
 //
 (* ****** ****** *)
 (* ****** ****** *)

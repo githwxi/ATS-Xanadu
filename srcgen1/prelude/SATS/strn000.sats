@@ -250,7 +250,7 @@ strn_get_at
 {n:int}
 {i:nat|i < n}
 ( cs:
-  strn(n), i0: int(i)): cgtz
+  strn(n), i0: sint(i)): cgtz
 //
 (* ****** ****** *)
 //
