@@ -110,6 +110,26 @@ fun
 rfoldall1$fopr(!x0, r0): (bool, r0)
 //
 (* ****** ****** *)
+//
+fun
+<x0:vt>
+<r0:vt>
+ifolditm0$fopr(r0, ni, ~x0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+ifolditm1$fopr(r0, ni, !x0): (r0)
+//
+fun
+<x0:vt>
+<r0:vt>
+ifoldall0$fopr(r0, ni, ~x0): (bool, r0)
+fun
+<x0:vt>
+<r0:vt>
+ifoldall1$fopr(r0, ni, !x0): (bool, r0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

@@ -103,6 +103,71 @@ gseq_rlistize0
 fun
 <xs:vt>
 <x0:vt>
+gseq_forall0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_foritm0(xs: ~xs): void
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_rforall0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_rforitm0(xs: ~xs): void
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_iforall0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_iforitm0(xs: ~xs): void
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_folditm0(xs: ~xs, r0): r0
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_foldall0(xs: ~xs, r0): r0
+//
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_rfolditm0(xs: ~xs, r0): r0
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_rfoldall0(xs: ~xs, r0): r0
+//
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_ifolditm0(xs: ~xs, r0): r0
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_ifoldall0(xs: ~xs, r0): r0
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
 <ys:vt>
 gseq_map0_ares(xs: ~xs): (ys)
 fun
