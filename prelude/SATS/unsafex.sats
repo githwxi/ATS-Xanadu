@@ -152,8 +152,20 @@ a0ref_set0
 //
 (* ****** ****** *)
 //
+fun<>
+strn_get_at
+(cs: strn, i0: sint): cgtz
+fun<>
+strn_vt_get1_at
+(cs: !strn_vt, i0: sint): cgtz
+fun<>
+strn_vt_set1_at
+( cs: !strn_vt, i0: sint, c0, cgtz): void
+//
+(* ****** ****** *)
+//
 // HX-2020-05-30:
-// symbol overloading for unsafe
+// symbol overloading for unsafex
 //
 (* ****** ****** *)
 //

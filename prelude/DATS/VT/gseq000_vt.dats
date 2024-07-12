@@ -42,6 +42,15 @@ UN = "prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_length0(xs) =
+strm_vt_length0<x0>
+(
+gseq_strmize0<xs><x0>(xs))
+*)
 #impltmp
 < xs:vt >
 < x0:vt >
@@ -60,8 +69,51 @@ end//let//end-of-[gseq_length0(xs)]
 (* ****** ****** *)
 //
 #impltmp
-<xs:vt>
-<x0:vt>
+< xs:vt >
+< x0:vt >
+gseq_rstrmize0
+  ( xs ) =
+list_vt_strmize0<x0>
+(
+  gseq_rlistize0<xs><x0>(xs))
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_rstrqize0
+  ( xs ) =
+list_vt_strqize0<x0>
+(
+  gseq_rlistize0<xs><x0>(xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_rlistize0
+  ( xs ) =
+(
+gseq_folditm0<xs><x0><r0>(xs, r0)
+) where
+{
+val r0 = list_vt_nil()
+#vwtpdef r0 = list_vt(x0)
+#impltmp
+folditm0$fopr
+<x0><r0>(r0, x0) = list_vt_cons(x0, r0)
+}
+//
+#impltmp
+{ x0:vt }
+gseq_rlistize0
+<list_vt(x0)><x0> = list_vt_reverse0<x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
 gseq_forall0
   ( xs ) =
 strm_vt_forall0<x0>(gseq_strmize0<xs><x0>(xs))
