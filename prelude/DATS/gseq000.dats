@@ -138,6 +138,22 @@ gseq_rforall0<xs><x0>(xs)
 end//end-of-[gseq_rforall]
 //
 (* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_iforall(xs) =
+(
+gseq_iforall0<xs><x0>(xs)
+) where
+{
+#impltmp
+iforall0$test<x0>(ni, x0) =
+(
+  iforall$test<x0>(ni, x0)) }
+//(*where*)//end[gseq_iforall]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -192,6 +208,22 @@ rforitm0$work<x0>(x0) =
 in//let
 gseq_rforitm0<xs><x0>(xs)
 end//end-of-[gseq_rforitm]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_iforitm(xs) =
+(
+gseq_iforitm0<xs><x0>(xs)
+) where
+{
+#impltmp
+iforitm0$work<x0>(ni, x0) =
+(
+  iforitm$work<x0>(ni, x0)) }
+//(*where*)//end[gseq_iforitm]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -259,8 +291,6 @@ in//let
 gseq_rfolditm0<xs><x0><r0>(xs, r0)
 end//end-of-[gseq_rfolditm(xs, r0)]
 //
-(* ****** ****** *)
-(* ****** ****** *)
 (* ****** ****** *)
 (* ****** ****** *)
 //
