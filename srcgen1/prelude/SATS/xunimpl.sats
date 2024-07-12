@@ -46,6 +46,17 @@ fun
 rfoldall$fopr(x0, r0): (bool, r0)
 //
 (* ****** ****** *)
+//
+fun
+<x0:t0>
+<r0:vt>
+ifolditm$fopr(r0, ni, x0): (r0)
+fun
+<x0:t0>
+<r0:vt>
+ifoldall$fopr(r0, n0, x0): (bool, r0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -113,6 +124,17 @@ fun
 rfoldall0$fopr(x0, r0): (bool, r0)
 //
 (* ****** ****** *)
+//
+fun
+<x0:vt>
+<r0:vt>
+ifolditm0$fopr(r0, ni, x0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+ifoldall0$fopr(r0, ni, x0): (bool, r0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -173,10 +195,12 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_foritm0(xs: ~xs): void
+//
 fun
 <xs:vt>
 <x0:vt>
 gseq_rforitm0(xs: ~xs): void
+//
 fun
 <xs:vt>
 <x0:vt>
@@ -207,6 +231,19 @@ fun
 <x0:vt>
 <r0:vt>
 gseq_rfoldall0(~xs, r0): ( r0 )
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_ifolditm0(~xs, r0): ( r0 )
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_ifoldall0(~xs, r0): ( r0 )
 //
 (* ****** ****** *)
 (* ****** ****** *)
