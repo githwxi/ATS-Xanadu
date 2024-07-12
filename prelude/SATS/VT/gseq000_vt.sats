@@ -317,10 +317,10 @@ gseq_filter1_self(xs: !xs): (xs)
 (* ****** ****** *)
 //
 #symload filter0 with gseq_filter0_ares of 0100
-#symload filter0 with gseq_filter0_self of 0101
-//
 #symload filter1 with gseq_filter1_ares of 0100
+//
 #symload filter1 with gseq_filter1_self of 0101
+#symload filter0 with gseq_filter0_self of 0101
 //
 (* ****** ****** *)
 (* ****** ****** *)

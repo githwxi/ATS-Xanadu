@@ -55,6 +55,18 @@ g_4((*void*)): (a)
 fun
 <a:vt>
 g_5((*void*)): (a)
+fun
+<a:vt>
+g_6((*void*)): (a)
+fun
+<a:vt>
+g_7((*void*)): (a)
+fun
+<a:vt>
+g_8((*void*)): (a)
+fun
+<a:vt>
+g_9((*void*)): (a)
 //
 (* ****** ****** *)
 
