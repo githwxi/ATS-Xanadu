@@ -52,11 +52,11 @@ g_make0_lstrq
 #impltmp
 { x0:vt }
 g_make0_lstrm
-<x0><list_vt(x0)> = strm_vt_listize0
+<x0><list_vt(x0)> = strm_vt_listize0<x0>
 #impltmp
 { x0:vt }
 g_make0_lstrq
-<x0><list_vt(x0)> = strq_vt_listize0
+<x0><list_vt(x0)> = strq_vt_listize0<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
