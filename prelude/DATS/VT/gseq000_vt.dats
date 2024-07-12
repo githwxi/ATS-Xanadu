@@ -119,7 +119,6 @@ gseq_forall0
 strm_vt_forall0<x0>(gseq_strmize0<xs><x0>(xs))
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 #impltmp
 < xs:vt >
@@ -133,7 +132,67 @@ gseq_forall0<xs><x0>(xs) in () end
 ) where
 {
 #impltmp
-forall0$test<x0>(x0) = (foritm0$work<x0>(x0); true)
+forall0$test<x0>(x0) =
+let
+val () = foritm0$work<x0>(x0) in true end
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_rforall0
+  ( xs ) =
+list_vt_forall0<x0>(gseq_rlistize0<xs><x0>(xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_rforitm0
+  ( xs ) =
+(
+let
+val _ =
+gseq_rforall0<xs><x0>(xs) in () end
+) where
+{
+#impltmp
+rforall0$test<x0>(x0) =
+let
+val () = rforitm0$work<x0>(x0) in true end
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_iforall0
+  ( xs ) =
+strm_vt_iforall0<x0>(gseq_strmize0<xs><x0>(xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_iforitm0
+  ( xs ) =
+(
+let
+val _ =
+gseq_iforall0<xs><x0>(xs) in () end
+) where
+{
+#impltmp
+iforall0$test<x0>(i0, x0) =
+let
+val () = iforitm0$work<x0>(i0, x0) in true end
 }
 //
 (* ****** ****** *)
