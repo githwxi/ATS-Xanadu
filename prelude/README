@@ -1,0 +1,25 @@
+############################################################
+HX-2024-07-13:
+############################################################
+The prelude library for ATS3/Xanadu is
+a concrete example that clearly demonstrates
+the power of template-based programming.
+############################################################
+Here are some notes for helping understand the
+design and implementation of this library.
+############################################################
+This may look kind of cryptic :)
+For geq-functions, we have the following (partial) ordering:
+strmize < forall0
+forall0 < foritm0
+forall0 < iforall0
+foritm0 < iforitm0
+forall0 < foldall0
+foritm0 < folditm0
+rlistize < rforall0
+folditm0 < map0
+folditm0 < filter0
+foldall0 < ifoldall0
+folditm0 < ifolditm0
+(strmize, strmize) < z2forall
+############################################################

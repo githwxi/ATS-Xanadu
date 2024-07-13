@@ -779,6 +779,14 @@ the_prelude_load
 , "srcgen1/prelude/SATS/VT/synoug0_vt.sats")
 //
 (* ****** ****** *)
+//
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "srcgen1/prelude/SATS/VT/xunimpl_vt.sats")
+//
+(* ****** ****** *)
 (*
 val () =
 the_prelude_load

@@ -135,6 +135,11 @@ For further program verification
 "srcgen1/prelude/SATS/synoug0.sats"
 //
 (* ****** ****** *)
+//
+#include
+"srcgen1/prelude/SATS/xunimpl.sats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 (*
 HX:
@@ -177,6 +182,11 @@ For viewtypes (that is, linear types)
 //
 #include
 "srcgen1/prelude/SATS/VT/synoug0_vt.sats"
+//
+(* ****** ****** *)
+//
+#include
+"srcgen1/prelude/SATS/VT/xunimpl_vt.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
