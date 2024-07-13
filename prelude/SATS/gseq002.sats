@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Fri 12 Jul 2024 06:59:23 PM EDT
+Sat 13 Jul 2024 09:56:55 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -39,84 +39,14 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
-<a:vt>
-g_0((*void*)): (a)
-fun
-<a:vt>
-g_1((*void*)): (a)
-fun
-<a:vt>
-g_2((*void*)): (a)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:vt>
-g_si(i0: sint): (a)
-fun
-<a:vt>
-g_ui(u0: uint): (a)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:vt>
-g_sf(f0: sflt): (a)
-fun
-<a:vt>
-g_df(f0: dflt): (a)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
+<xs:t0>
+,ys:t0>
 <x0:t0>
-g_neg(x0: x0): (x0)
-fun
-<x0:t0>
-g_abs(x0: x0): (x0)
-//
-fun
-<x0:t0>
-g_succ(x0: x0): (x0)
-fun
-<x0:t0>
-g_pred(x0: x0): (x0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:t0>
-g_max( x0, x0 ): (x0)
-fun
-<x0:t0>
-g_min( x0, x0 ): (x0)
-//
-(* ****** ****** *)
-//
-fun
-<x0:t0>
-g_add( x0, x0 ): (x0)
-fun
-<x0:t0>
-g_sub( x0, x0 ): (x0)
-fun
-<x0:t0>
-g_mul( x0, x0 ): (x0)
-fun
-<x0:t0>
-g_div( x0, x0 ): (x0)
-fun
-<x0:t0>
-g_mod( x0, x0 ): (x0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
+,y0:t0>
+gseq_z2listize
+  (xs: xs, ys: ys): list_vt@(x0, y0)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_gnum000.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_gseq002.sats] *)

@@ -172,6 +172,21 @@ fun
 imapstrm$fopr(pos: ni, itm: x0): strm_vt(y0)
 //
 (* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:vt>
+mapstrq$fopr(itm: x0): strq_vt(y0)
+fun
+<x0:t0>
+<y0:vt>
+rmapstrq$fopr(itm: x0): strq_vt(y0)
+fun
+<x0:t0>
+<y0:vt>
+imapstrq$fopr(pos: ni, itm: x0): strq_vt(y0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)

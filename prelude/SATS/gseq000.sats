@@ -39,20 +39,6 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
-<xs:vt>
-<x0:vt>
-gseq_free
-( xs: ~xs ): void
-fun
-<xs:vt>
-<x0:vt>
-gseq_copy
-( xs: !xs ): (xs)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
 <xs:t0>
 <x0:t0>
 gseq_nil
@@ -67,29 +53,13 @@ gseq_cons
 (* ****** ****** *)
 //
 fun
-<xs:t0>
-<x0:t0>
-gseq_strmize
-  (xs: xs): strm_vt(x0)
+<xs:vt>
+<x0:vt>
+gseq_free( ~xs ): void
 fun
-<xs:t0>
-<x0:t0>
-gseq_strqize
-  (xs: xs): strq_vt(x0)
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-gseq_listize
-  (xs: xs): list_vt(x0)
-//
-fun
-<xs:t0>
-<x0:t0>
-gseq_rlistize
-  (xs: xs): list_vt(x0)
+<xs:vt>
+<x0:vt>
+gseq_copy( !xs ): (xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -97,7 +67,22 @@ gseq_rlistize
 fun
 <xs:t0>
 <x0:t0>
-gseq_length(xs: xs): nint
+gseq_max(xs: xs): (x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_min(xs: xs): (x0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_sum(xs: xs): (x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_prod(xs: xs): (x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -105,131 +90,12 @@ gseq_length(xs: xs): nint
 fun
 <xs:t0>
 <x0:t0>
-gseq_forall(xs: xs): bool
-fun
-<xs:t0>
-<x0:t0>
-gseq_foritm(xs: xs): void
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-gseq_rforall(xs: xs): bool
-fun
-<xs:t0>
-<x0:t0>
-gseq_rforitm(xs: xs): void
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-<r0:vt>
-gseq_foldall(xs, r0): ( r0 )
-fun
-<xs:t0>
-<x0:t0>
-<r0:vt>
-gseq_folditm(xs, r0): ( r0 )
-//
-fun
-<xs:t0>
-<x0:t0>
-<r0:vt>
-gseq_rfoldall(xs, r0): ( r0 )
-fun
-<xs:t0>
-<x0:t0>
-<r0:vt>
-gseq_rfolditm(xs, r0): ( r0 )
+gseq_print( xs ): (xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<xs:t0>
-<x0:t0>
-<ys:vt>
-gseq_map_ares(xs: xs): (ys)
-fun
-<xs:t0>
-<x0:t0>
-gseq_map_self(xs: xs): (xs)
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-<y0:t0>
-gseq_map_list(xs: xs): list(y0)
-fun
-<xs:t0>
-<x0:t0>
-<y0:vt>
-gseq_map_llist(xs: xs): list_vt(y0)
-//
-fun
-<xs:t0>
-<x0:t0>
-<y0:vt>
-gseq_map_lstrm(xs: xs): strm_vt(y0)
-fun
-<xs:t0>
-<x0:t0>
-<y0:vt>
-gseq_map_lstrq(xs: xs): strq_vt(y0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-<ys:vt>
-gseq_filter_ares(xs: xs): (ys)
-fun
-<xs:t0>
-<x0:t0>
-gseq_filter_self(xs: xs): (xs)
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-gseq_filter_list(xs: xs): list(x0)
-fun
-<xs:t0>
-<x0:t0>
-gseq_filter_llist(xs: xs): list_vt(x0)
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-gseq_filter_lstrm(xs: xs): strm_vt(x0)
-fun
-<xs:t0>
-<x0:t0>
-gseq_filter_lstrq(xs: xs): strq_vt(x0)
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-gseq_filter_rlist(xs: xs): list(x0)
-fun
-<xs:t0>
-<x0:t0>
-gseq_filter_rllist(xs: xs): list_vt(x0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_SATS_gseq000.sats] *)
