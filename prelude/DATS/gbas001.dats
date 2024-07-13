@@ -45,8 +45,7 @@ forall$test =
 rforall$test<x0>
 #impltmp
 < x0:t0 >
-rforall$test =
- forall$test<x0>
+rforall$test = forall$test<x0>
 *)
 //
 (*
@@ -56,8 +55,7 @@ foritm$work =
 rforitm$work<x0>
 #impltmp
 < x0:t0 >
-rforitm$work =
- foritm$work<x0>
+rforitm$work = foritm$work<x0>
 *)
 //
 (* ****** ****** *)

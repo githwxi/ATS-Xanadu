@@ -30,88 +30,72 @@
 (*
 Author: Hongwei Xi
 (*
-Fri 12 Jul 2024 06:59:23 PM EDT
+Sat 13 Jul 2024 09:24:55 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef ni = nint
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
-<a:vt>
-g_0((*void*)): (a)
+<x1:t0
+,x2:t0>
+z2forall(x1: x1, x2: x2): bool
+//
 fun
-<a:vt>
-g_1((*void*)): (a)
-fun
-<a:vt>
-g_2((*void*)): (a)
+<x1:t0
+,x2:t0>
+z2foritm(x1: x1, x2: x2): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-<a:vt>
-g_si(i0: sint): (a)
+<x1:t0
+,x2:t0>
+<r0:vt>
+z2folditm(x1, x2, r0): (r0)
 fun
-<a:vt>
-g_ui(u0: uint): (a)
+<x1:t0
+,x2:t0>
+<r0:vt>
+z2foldall(x1, x2, r0): (bool, r0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-<a:vt>
-g_sf(f0: sflt): (a)
-fun
-<a:vt>
-g_df(f0: dflt): (a)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:t0>
-g_neg(x0: x0): (x0)
-fun
-<x0:t0>
-g_abs(x0: x0): (x0)
-//
-fun
-<x0:t0>
-g_succ(x0: x0): (x0)
-fun
-<x0:t0>
-g_pred(x0: x0): (x0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:t0>
-g_max( x0, x0 ): (x0)
-fun
-<x0:t0>
-g_min( x0, x0 ): (x0)
+<x1:t0
+,x2:t0>
+<y0:vt>
+z2map$fopr(x1: x1, x2: x2): (y0)
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0>
-g_add( x0, x0 ): (x0)
+<x1:t0
+,x2:t0>
+<y0:vt>
+z2mapoptn$fopr(x1, x2): optn_vt(y0)
 fun
-<x0:t0>
-g_sub( x0, x0 ): (x0)
+<x1:t0
+,x2:t0>
+<y0:vt>
+z2maplist$fopr(x1, x2): list_vt(y0)
 fun
-<x0:t0>
-g_mul( x0, x0 ): (x0)
+<x1:t0
+,x2:t0>
+<y0:vt>
+z2mapstrm$fopr(x1, x2): strm_vt(y0)
 fun
-<x0:t0>
-g_div( x0, x0 ): (x0)
-fun
-<x0:t0>
-g_mod( x0, x0 ): (x0)
+<x1:t0
+,x2:t0>
+<y0:vt>
+z2mapstrq$fopr(x1, x2): strq_vt(y0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -119,4 +103,4 @@ g_mod( x0, x0 ): (x0)
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_gnum000.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_gbas002.sats] *)

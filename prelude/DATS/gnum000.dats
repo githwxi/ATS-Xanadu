@@ -56,31 +56,6 @@ g_div<x0> = g_div00<x0>
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_max = gseq_max0<xs><x0>
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_min = gseq_min0<xs><x0>
-//
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_add = gseq_add0<xs><x0>
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_mul = gseq_mul0<xs><x0>
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

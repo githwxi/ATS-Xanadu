@@ -78,30 +78,9 @@ fun
 g_div00(~x0, ~x0): (x0)
 //
 (* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
-gseq_max0(xs: ~xs): (x0)
-fun
-<xs:vt>
-<x0:vt>
-gseq_min0(xs: ~xs): (x0)
-//
 (* ****** ****** *)
 //
-fun
-<xs:vt>
-<x0:vt>
-gseq_add0(xs: ~xs): (x0)
-fun
-<xs:vt>
-<x0:vt>
-gseq_mul0(xs: ~xs): (x0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_SATS_VT_gnum000_vt.sats] *)

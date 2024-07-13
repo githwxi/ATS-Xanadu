@@ -120,6 +120,15 @@ maplstrm0$fopr = maplstrm$fopr
 < y0:vt >
 maplstrm1$fopr = maplstrm$fopr
 //
+#impltmp
+< x0:t0 >
+< y0:vt >
+maplstrq0$fopr = maplstrq$fopr
+#impltmp
+< x0:t0 >
+< y0:vt >
+maplstrq1$fopr = maplstrq$fopr
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

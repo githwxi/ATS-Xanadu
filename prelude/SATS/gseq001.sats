@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Fri 12 Jul 2024 06:59:23 PM EDT
+Sat 13 Jul 2024 09:24:55 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -39,84 +39,170 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
-<a:vt>
-g_0((*void*)): (a)
+<xs:t0>
+<x0:t0>
+gseq_listize
+  (xs: xs): list_vt(x0)
+//
 fun
-<a:vt>
-g_1((*void*)): (a)
+<xs:t0>
+<x0:t0>
+gseq_strmize
+  (xs: xs): strm_vt(x0)
+//
 fun
-<a:vt>
-g_2((*void*)): (a)
+<xs:t0>
+<x0:t0>
+gseq_strqize
+  (xs: xs): strq_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_rlistize
+  (xs: xs): list_vt(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-<a:vt>
-g_si(i0: sint): (a)
-fun
-<a:vt>
-g_ui(u0: uint): (a)
+<xs:t0>
+<x0:t0>
+gseq_length(xs: xs): nint
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-<a:vt>
-g_sf(f0: sflt): (a)
+<xs:t0>
+<x0:t0>
+gseq_forall(xs: xs): bool
 fun
-<a:vt>
-g_df(f0: dflt): (a)
+<xs:t0>
+<x0:t0>
+gseq_foritm(xs: xs): void
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_rforall(xs: xs): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_rforitm(xs: xs): void
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_foldall(xs, r0): ( r0 )
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_folditm(xs, r0): ( r0 )
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_rfoldall(xs, r0): ( r0 )
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_rfolditm(xs, r0): ( r0 )
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
+<xs:t0>
 <x0:t0>
-g_neg(x0: x0): (x0)
+<ys:vt>
+gseq_map_ares(xs: xs): (ys)
 fun
+<xs:t0>
 <x0:t0>
-g_abs(x0: x0): (x0)
+gseq_map_self(xs: xs): (xs)
+//
+(* ****** ****** *)
 //
 fun
+<xs:t0>
 <x0:t0>
-g_succ(x0: x0): (x0)
+<y0:t0>
+gseq_map_list(xs: xs): list(y0)
 fun
+<xs:t0>
 <x0:t0>
-g_pred(x0: x0): (x0)
+<y0:vt>
+gseq_map_llist(xs: xs): list_vt(y0)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_lstrm(xs: xs): strm_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_lstrq(xs: xs): strq_vt(y0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
+<xs:t0>
 <x0:t0>
-g_max( x0, x0 ): (x0)
+<ys:vt>
+gseq_filter_ares(xs: xs): (ys)
 fun
+<xs:t0>
 <x0:t0>
-g_min( x0, x0 ): (x0)
+gseq_filter_self(xs: xs): (xs)
 //
 (* ****** ****** *)
 //
 fun
+<xs:t0>
 <x0:t0>
-g_add( x0, x0 ): (x0)
+gseq_filter_list(xs: xs): list(x0)
 fun
+<xs:t0>
 <x0:t0>
-g_sub( x0, x0 ): (x0)
-fun
-<x0:t0>
-g_mul( x0, x0 ): (x0)
-fun
-<x0:t0>
-g_div( x0, x0 ): (x0)
-fun
-<x0:t0>
-g_mod( x0, x0 ): (x0)
+gseq_filter_llist(xs: xs): list_vt(x0)
 //
 (* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_filter_lstrm(xs: xs): strm_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_filter_lstrq(xs: xs): strq_vt(x0)
+//
 (* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_filter_rlist(xs: xs): list(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_filter_rllist(xs: xs): list_vt(x0)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_gnum000.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_gseq001.sats] *)
