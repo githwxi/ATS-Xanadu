@@ -266,17 +266,38 @@ gseq_map0_ares(xs: ~xs): (ys)
 fun
 <xs:vt>
 <x0:vt>
-gseq_map0_self(xs: ~xs): (xs)
+<ys:vt>
+gseq_map1_ares(xs: !xs): (ys)
 //
 fun
 <xs:vt>
 <x0:vt>
-<ys:vt>
-gseq_map1_ares(xs: !xs): (ys)
+gseq_map0_self(xs: ~xs): (xs)
 fun
 <xs:vt>
 <x0:vt>
 gseq_map1_self(xs: !xs): (xs)
+//
+#symload map0 with gseq_map0_ares of 0100
+#symload map1 with gseq_map0_ares of 0100
+#symload map0 with gseq_map0_self of 0101
+#symload map1 with gseq_map0_self of 0101
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_map0_llist(xs: ~xs): list_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_map1_llist(xs: !xs): list_vt(y0)
+//
+#symload map0 with gseq_map0_llist of 0110
+#symload map1 with gseq_map1_llist of 0110
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -301,14 +322,27 @@ fun
 <x0:vt>
 gseq_filter1_self(xs: !xs): (xs)
 //
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #symload filter0 with gseq_filter0_ares of 0100
 #symload filter1 with gseq_filter1_ares of 0100
-//
 #symload filter1 with gseq_filter1_self of 0101
 #symload filter0 with gseq_filter0_self of 0101
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_imap0_llist(xs: ~xs): list_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_imap1_llist(xs: !xs): list_vt(y0)
+//
+#symload imap0 with gseq_imap0_llist of 0110
+#symload imap1 with gseq_imap1_llist of 0110
 //
 (* ****** ****** *)
 (* ****** ****** *)

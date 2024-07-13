@@ -590,6 +590,46 @@ fun
 //
 (* ****** ****** *)
 //
+// HX-2024-07-12:
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_imap0_llist(~xs): list_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_imap1_llist(!xs): list_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_imap0_lstrm(~xs): strm_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_imap1_lstrm(!xs): strm_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_imap0_lstrq(~xs): strq_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_imap1_lstrq(!xs): strq_vt(y0)
+//
+(* ****** ****** *)
+//
 // HX-2022-06-09:
 // For z2-gseq-operations
 //
@@ -710,6 +750,11 @@ fun
 <x0:vt>
 gseq_filter0_c1fr_lstrm
 (xs: ~xs, f0: (!x0) -<cfr> bool): strm_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_filter0_c1fr_lstrq
+(xs: ~xs, f0: (!x0) -<cfr> bool): strq_vt(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -749,6 +794,8 @@ forall1_cfr with gseq_forall1_c1fr of 0100
 //
 #symload
 filter0_cfr_lstrm with gseq_filter0_c1fr_lstrm of 0100
+#symload
+filter0_cfr_lstrq with gseq_filter0_c1fr_lstrq of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
