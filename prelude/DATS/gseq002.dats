@@ -70,6 +70,22 @@ gseq_ifoldall0<xs><x0><r0>(xs, r0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:t0 >
+gseq_imap_list(xs) =
+list_vt2t{y0}
+(
+gseq_imap_llist<xs><x0><y0>(xs))
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_imap_llist(xs) =
+gseq_imap0_llist<xs><x0><y0>(xs)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

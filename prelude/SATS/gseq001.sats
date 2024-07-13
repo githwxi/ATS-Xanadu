@@ -84,8 +84,6 @@ fun
 <x0:t0>
 gseq_foritm(xs: xs): void
 //
-(* ****** ****** *)
-//
 fun
 <xs:t0>
 <x0:t0>
@@ -94,6 +92,15 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_rforitm(xs: xs): void
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_iforall(xs: xs): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_iforitm(xs: xs): void
 //
 (* ****** ****** *)
 //
@@ -118,6 +125,17 @@ fun
 <x0:t0>
 <r0:vt>
 gseq_rfolditm(xs, r0): ( r0 )
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_ifoldall(xs, r0): ( r0 )
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_ifolditm(xs, r0): ( r0 )
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -157,6 +175,19 @@ fun
 gseq_map_lstrq(xs: xs): strq_vt(y0)
 //
 (* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_map_rlist(xs: xs): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_rllist(xs: xs): list_vt(y0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -180,8 +211,6 @@ fun
 <x0:t0>
 gseq_filter_llist(xs: xs): list_vt(x0)
 //
-(* ****** ****** *)
-//
 fun
 <xs:t0>
 <x0:t0>
@@ -201,6 +230,43 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_filter_rllist(xs: xs): list_vt(x0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+gseq_imap_ares(xs: xs): (ys)
+fun
+<xs:t0>
+<x0:t0>
+gseq_imap_self(xs: xs): (xs)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_imap_list(xs: xs): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_imap_llist(xs: xs): list_vt(y0)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_imap_lstrm(xs: xs): strm_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_imap_lstrq(xs: xs): strq_vt(y0)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
