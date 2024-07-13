@@ -43,16 +43,16 @@ Authoremail: gmhwxiATgmailDOTcom
 forall0$test = forall$test<x0>
 #impltmp
 < x0:t0 >
-foritm0$test = foritm$test<x0>
+foritm0$work = foritm$work<x0>
 //
 #impltmp
 < x0:t0 >
 < r0:vt >
-foldall0$test = foldall$test<x0><r0>
+foldall0$fopr = foldall$fopr<x0><r0>
 #impltmp
 < x0:t0 >
 < r0:vt >
-folditm0$test = folditm$test<x0><r0>
+folditm0$fopr = folditm$fopr<x0><r0>
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
