@@ -148,10 +148,15 @@ map2$fopr(x0: &x0): ( y0 )
 //
 (* ****** ****** *)
 //
+(*
+HX-2024-07-13:
+Note that [filter0$test]
+does not consumes its arg!
+*)
 fun
 <x0:vt>
 <y0:vt>
-filter0$test(x0: ~x0): bool
+filter0$test(x0: !x0): bool
 fun
 <x0:vt>
 <y0:vt>
