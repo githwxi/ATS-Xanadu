@@ -76,7 +76,6 @@ z2foritm0$work<x0,y0>(x0, y0) in true end
 }
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 #impltmp
 < xs:vt
@@ -108,6 +107,27 @@ val b0 =
   iz2forall0$test<x0,y0>(i0, x0, y0) } }
 //
 }(*where*)//end-of-[gseq_iz2forall0(xs,ys)]
+//
+#impltmp
+< xs:vt
+, ys:vt >
+< x0:vt
+, y0:vt >
+gseq_iz2foritm0
+  (xs, ys) =
+(
+let
+val _ =
+gseq_iz2forall0
+<xs,ys><x0,y0>(xs, ys) in () end
+) where
+{
+#impltmp
+iz2forall0$test<x0,y0>(i0, x0, y0) =
+let
+val () =
+iz2foritm0$work<x0,y0>(i0, x0, y0) in true end
+}
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
