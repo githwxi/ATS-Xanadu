@@ -262,6 +262,17 @@ fun
 <r0:vt>
 gseq_rfoldall(xs, r0): ( r0 )
 //
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_ifolditm(xs, r0): ( r0 )
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_ifoldall(xs, r0): ( r0 )
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
