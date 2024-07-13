@@ -43,7 +43,14 @@ Authoremail: gmhwxiATgmailDOTcom
 forall0$test = forall$test<x0>
 #impltmp
 < x0:t0 >
+forall1$test = forall$test<x0>
+//
+#impltmp
+< x0:t0 >
 foritm0$work = foritm$work<x0>
+#impltmp
+< x0:t0 >
+foritm1$work = foritm$work<x0>
 //
 #impltmp
 < x0:t0 >
@@ -52,7 +59,69 @@ foldall0$fopr = foldall$fopr<x0><r0>
 #impltmp
 < x0:t0 >
 < r0:vt >
+foldall1$fopr = foldall$fopr<x0><r0>
+//
+#impltmp
+< x0:t0 >
+< r0:vt >
 folditm0$fopr = folditm$fopr<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+folditm1$fopr = folditm$fopr<x0><r0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+< y0:vt >
+map0$fopr = map$fopr
+#impltmp
+< x0:t0 >
+< y0:vt >
+map1$fopr = map$fopr
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+filter0$fopr = filter$fopr
+#impltmp
+< x0:t0 >
+filter1$fopr = filter$fopr
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+< y0:vt >
+mapoptn0$fopr = mapoptn$fopr
+#impltmp
+< x0:t0 >
+< y0:vt >
+mapoptn1$fopr = mapoptn$fopr
+//
+#impltmp
+< x0:t0 >
+< y0:vt >
+maplist0$fopr = maplist$fopr
+#impltmp
+< x0:t0 >
+< y0:vt >
+maplist1$fopr = maplist$fopr
+//
+#impltmp
+< x0:t0 >
+< y0:vt >
+maplstrm0$fopr = maplstrm$fopr
+#impltmp
+< x0:t0 >
+< y0:vt >
+maplstrm1$fopr = maplstrm$fopr
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
