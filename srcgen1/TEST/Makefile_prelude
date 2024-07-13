@@ -208,6 +208,8 @@ $(XATSOPT) -d $(PRELUDE)/DATS/list000.dats
 ######
 
 all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/VT/gbas001_vt.dats
+all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/gnum000_vt.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/gseq000_vt.dats
