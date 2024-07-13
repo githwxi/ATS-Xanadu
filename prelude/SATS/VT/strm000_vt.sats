@@ -88,14 +88,14 @@ strm_vt_listize0
 (xs: strm_vt(x0)): list_vt(x0)
 fun
 <x0:vt>
-strm_vt_rlistize0
-(xs: strm_vt(x0)): list_vt(x0)
-//
-fun
-<x0:vt>
 strq_vt_listize0
 {n0:i0}
 (xs: strq_vt(x0,n0)): list_vt(x0,n0)
+//
+fun
+<x0:vt>
+strm_vt_rlistize0
+(xs: strm_vt(x0)): list_vt(x0)
 fun
 <x0:vt>
 strq_vt_rlistize0
@@ -132,6 +132,8 @@ fun
 strm_vt_iforitm0
 (xs: strm_vt(x0)): void
 //
+(* ****** ****** *)
+//
 fun
 <x0:vt>
 <r0:vt>
@@ -141,6 +143,17 @@ fun
 <x0:vt>
 <r0:vt>
 strm_vt_folditm0
+(xs: strm_vt(x0), r0: r0): (r0)
+//
+fun
+<x0:vt>
+<r0:vt>
+strm_vt_ifoldall0
+(xs: strm_vt(x0), r0: r0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+strm_vt_ifolditm0
 (xs: strm_vt(x0), r0: r0): (r0)
 //
 (* ****** ****** *)
