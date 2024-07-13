@@ -45,4 +45,4 @@ UN = "prelude/SATS/unsafex.sats"
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_VT_gseq000_vt.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_VT_gseq002_vt.dats] *)

@@ -50,7 +50,7 @@ fun
 foritm0$work(x0: ~x0): void
 fun
 <x0:vt>
-foritm1$work(x0: ~x0): void
+foritm1$work(x0: !x0): void
 //
 (* ****** ****** *)
 //

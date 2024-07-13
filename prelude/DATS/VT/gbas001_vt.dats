@@ -86,10 +86,10 @@ map1$fopr = map$fopr
 //
 #impltmp
 < x0:t0 >
-filter0$fopr = filter$fopr
+filter0$test = filter$test
 #impltmp
 < x0:t0 >
-filter1$fopr = filter$fopr
+filter1$test = filter$test
 //
 (* ****** ****** *)
 //
@@ -114,20 +114,20 @@ maplist1$fopr = maplist$fopr
 #impltmp
 < x0:t0 >
 < y0:vt >
-maplstrm0$fopr = maplstrm$fopr
+mapstrm0$fopr = mapstrm$fopr
 #impltmp
 < x0:t0 >
 < y0:vt >
-maplstrm1$fopr = maplstrm$fopr
+mapstrm1$fopr = mapstrm$fopr
 //
 #impltmp
 < x0:t0 >
 < y0:vt >
-maplstrq0$fopr = maplstrq$fopr
+mapstrq0$fopr = mapstrq$fopr
 #impltmp
 < x0:t0 >
 < y0:vt >
-maplstrq1$fopr = maplstrq$fopr
+mapstrq1$fopr = mapstrq$fopr
 //
 (* ****** ****** *)
 (* ****** ****** *)
