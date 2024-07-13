@@ -38,65 +38,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #typedef ni = nint
 (* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_iforitm(xs) =
-gseq_iforitm0<xs><x0>(xs)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_iforall(xs) =
-gseq_iforall0<xs><x0>(xs)
-//
 (* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< r0:vt >
-gseq_ifolditm(xs, r0) =
-gseq_ifolditm0<xs><x0><r0>(xs, r0)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< r0:vt >
-gseq_ifoldall(xs, r0) =
-gseq_ifoldall0<xs><x0><r0>(xs, r0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< y0:t0 >
-gseq_imap_list(xs) =
-list_vt2t{y0}
-(
-gseq_imap_llist<xs><x0><y0>(xs))
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< y0:vt >
-gseq_imap_llist(xs) =
-gseq_imap0_llist<xs><x0><y0>(xs)
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< y0:vt >
-gseq_imap_lstrm(xs) =
-gseq_imap0_lstrm<xs><x0><y0>(xs)
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< y0:vt >
-gseq_imap_lstrq(xs) =
-gseq_imap0_lstrq<xs><x0><y0>(xs)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
