@@ -101,6 +101,79 @@ irfoldall$fopr
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<x0:t0>
+<y0:vt>
+map$fopr(itm: x0): (y0)
+fun
+<x0:t0>
+<y0:vt>
+rmap$fopr(itm: x0): (y0)
+fun
+<x0:t0>
+<y0:vt>
+imap$fopr(pos: ni, itm: x0): (y0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+filter$fopr(itm: x0): bool
+fun
+<x0:t0>
+rfilter$fopr(itm: x0): bool
+fun
+<x0:t0>
+ifilter$fopr(pos: ni, itm: x0): bool
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:vt>
+mapoptn$fopr(itm: x0): optn_vt(y0)
+fun
+<x0:t0>
+<y0:vt>
+rmapoptn$fopr(itm: x0): optn_vt(y0)
+fun
+<x0:t0>
+<y0:vt>
+imapoptn$fopr(pos: ni, itm: x0): optn_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:vt>
+maplist$fopr(itm: x0): list_vt(y0)
+fun
+<x0:t0>
+<y0:vt>
+rmaplist$fopr(itm: x0): list_vt(y0)
+fun
+<x0:t0>
+<y0:vt>
+imaplist$fopr(pos: ni, itm: x0): list_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:vt>
+mapstrm$fopr(itm: x0): strm_vt(y0)
+fun
+<x0:t0>
+<y0:vt>
+rmapstrm$fopr(itm: x0): strm_vt(y0)
+fun
+<x0:t0>
+<y0:vt>
+imapstrm$fopr(pos: ni, itm: x0): strm_vt(y0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
