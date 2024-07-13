@@ -187,6 +187,15 @@ fun
 <x0:vt>
 gseq_strmize1(!xs): strm_vt(x0)
 //
+fun
+<xs:vt>
+<x0:vt>
+gseq_strqize0(~xs): strq_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_strqize1(!xs): strq_vt(x0)
+//
 (* ****** ****** *)
 //
 fun

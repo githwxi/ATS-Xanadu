@@ -1047,13 +1047,6 @@ gseq_imap_list
 fun
 <xs:t0>
 <x0:t0>
-<y0:t0>
-gseq_imap_rlist
-  (xs: xs): list(y0)
-//
-fun
-<xs:t0>
-<x0:t0>
 <y0:vt>
 gseq_imap_llist
   (xs: xs): list_vt(y0)
@@ -1063,6 +1056,21 @@ fun
 <y0:vt>
 gseq_imap_lstrm
   (xs: xs): strm_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_imap_lstrq
+  (xs: xs): strq_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_imap_rlist
+  (xs: xs): list(y0)
 fun
 <xs:t0>
 <x0:t0>

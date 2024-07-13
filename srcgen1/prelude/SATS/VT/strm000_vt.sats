@@ -415,6 +415,11 @@ fun
 <y0:vt>
 strm_vt_imap0
   (xs: strm_vt(x0)): strm_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+strq_vt_imap0
+  (xs: strq_vt(x0)): strq_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -422,6 +427,10 @@ fun
 <x0:vt>
 strm_vt_ifilter0
   (xs: strm_vt(x0)): strm_vt(x0)
+fun
+<x0:vt>
+strq_vt_ifilter0
+  (xs: strq_vt(x0)): strq_vt(x0)
 //
 (* ****** ****** *)
 fun
