@@ -78,7 +78,7 @@ forall0$test<x0>(x0) =
   forall$test<x0>(x0))
 in//let
 gseq_forall0<xs><x0>(xs)
-end//end-of-[gseq_rforall]
+end//end-of-[gseq_forall]
 //
 (* ****** ****** *)
 //

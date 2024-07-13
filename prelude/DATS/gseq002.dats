@@ -36,6 +36,38 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+#typedef ni = nint
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_iforitm(xs) =
+gseq_iforitm0<xs><x0>(xs)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_iforall(xs) =
+gseq_iforall0<xs><x0>(xs)
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_ifolditm(xs, r0) =
+gseq_ifolditm0<xs><x0><r0>(xs, r0)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_ifoldall(xs, r0) =
+gseq_ifoldall0<xs><x0><r0>(xs, r0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
