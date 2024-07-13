@@ -600,6 +600,7 @@ fun
 (* ****** ****** *)
 //
 // HX-2024-07-12:
+//
 fun
 <xs:vt>
 <x0:vt>
@@ -636,6 +637,35 @@ fun
 <x0:vt>
 <y0:vt>
 gseq_imap1_lstrq(!xs): strq_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_ifilter0_llist(~xs): list_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_ifilter1_llist(!xs): list_vt(x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_ifilter0_lstrm(~xs): strm_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_ifilter1_lstrm(!xs): strm_vt(x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_ifilter0_lstrq(~xs): strq_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_ifilter1_lstrq(!xs): strq_vt(x0)
 //
 (* ****** ****** *)
 //

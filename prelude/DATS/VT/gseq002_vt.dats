@@ -45,6 +45,47 @@ UN = "prelude/SATS/unsafex.sats"
 #impltmp
 < xs:vt >
 < x0:vt >
+gseq_iforall0
+  ( xs ) =
+strm_vt_iforall0<x0>
+(gseq_strmize0<xs><x0>(xs))
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_iforitm0
+  ( xs ) =
+strm_vt_iforitm0<x0>
+(gseq_strmize0<xs><x0>(xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< r0:vt >
+gseq_ifoldall0
+  (xs, r0) =
+strm_vt_ifoldall0<x0><r0>
+(
+gseq_strmize0<xs><x0>(xs), r0)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< r0:vt >
+gseq_ifolditm0
+  (xs, r0) =
+strm_vt_ifolditm0<x0><r0>
+(
+gseq_strmize0<xs><x0>(xs), r0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
 < y0:vt >
 gseq_imap0_llist
   ( xs ) =
@@ -68,6 +109,36 @@ gseq_imap0_lstrq
   ( xs ) =
 strq_vt_imap0<x0>
 (gseq_strqize0<xs><x0>(xs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_ifilter0_lstrm
+  ( xs ) =
+strm_vt_ifilter0<x0>
+(gseq_strmize0<xs><x0>(xs))
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_ifilter0_lstrq
+  ( xs ) =
+strq_vt_ifilter0<x0>
+(gseq_strqize0<xs><x0>(xs))
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_ifilter0_llist
+  ( xs ) =
+strq_vt_listize0<x0>
+(
+gseq_ifilter0_lstrq<xs><x0>(xs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
