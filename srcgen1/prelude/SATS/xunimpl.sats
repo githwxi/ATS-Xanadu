@@ -60,6 +60,37 @@ ifoldall$fopr(r0, n0, x0): (bool, r0)
 (* ****** ****** *)
 //
 fun
+<x0:t0
+,y0:t0>
+z2forall$work(x0, y0): void
+fun
+<x0:t0
+,y0:t0>
+rz2forall$work(x0, y0): void
+fun
+<x0:t0
+,y0:t0>
+iz2forall$work(ni, x0, y0): void
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0
+,y0:t0>
+z2foritm$work(x0, y0): void
+fun
+<x0:t0
+,y0:t0>
+rz2foritm$work(x0, y0): void
+fun
+<x0:t0
+,y0:t0>
+iz2foritm$work(ni, x0, y0): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 <xs:t0>
 <x0:t0>
 gseq_sum(xs: xs): (x0)
@@ -192,6 +223,37 @@ fun
 <x0:vt>
 <r0:vt>
 ifoldall1$fopr(r0, ni, !x0): (bool, r0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt
+,y0:vt>
+z2forall0$test(~x0, ~y0): bool
+fun
+<x0:vt
+,y0:vt>
+rz2forall0$test(~x0, ~y0): bool
+fun
+<x0:vt
+,y0:vt>
+iz2forall0$test(ni, ~x0, ~y0): bool
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt
+,y0:vt>
+z2foritm0$work(~x0, ~y0): void
+fun
+<x0:vt
+,y0:vt>
+rz2foritm0$work(~x0, ~y0): void
+fun
+<x0:vt
+,y0:vt>
+iz2foritm0$work(ni, ~x0, ~y0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -534,6 +596,37 @@ fun
 strq_vt_filter0
 {n0:i0}
 (xs: strq_vt(x0,n0)): strqlte_vt(x0,n0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_z2forall0(xs: ~xs, ys: ~ys): bool
+*)
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_z2foritm0(xs: ~xs, ys: ~ys): void
+//
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_iz2forall0(xs: ~xs, ys: ~ys): bool
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_iz2foritm0(xs: ~xs, ys: ~ys): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

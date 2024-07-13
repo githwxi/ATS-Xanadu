@@ -51,21 +51,23 @@ not go higher to handle z3!!!
 fun
 <x1:t0
 ,x2:t0>
-z2forall(x1: x1, x2: x2): bool
+z2forall$test
+(x1: x1, x2: x2): bool
 fun
 <x1:t0
 ,x2:t0>
-iz2forall
+iz2forall$test
 (i0: ni, x1: x1, x2: x2): bool
 //
 fun
 <x1:t0
 ,x2:t0>
-z2foritm(x1: x1, x2: x2): void
+z2foritm$work
+(x1: x1, x2: x2): void
 fun
 <x1:t0
 ,x2:t0>
-iz2foritm
+iz2foritm$work
 (i0: ni, x1: x1, x2: x2): void
 //
 (* ****** ****** *)
@@ -75,25 +77,27 @@ fun
 <x1:t0
 ,x2:t0>
 <r0:vt>
-z2folditm(x1, x2, r0): (r0)
+z2folditm$fopr
+(x1: x1, x2: x2, r0: r0): (r0)
 fun
 <x1:t0
 ,x2:t0>
 <r0:vt>
-z2foldall(x1, x2, r0): (bool, r0)
+z2foldall$fopr
+(x1: x1, x2: x2, r0: r0): (bool, r0)
 //
 fun
 <x1:t0
 ,x2:t0>
 <r0:vt>
-iz2folditm
+iz2folditm$fopr
 (i0: ni
 ,x1: x1, x2: x2, r0: r0): (r0)
 fun
 <x1:t0
 ,x2:t0>
 <r0:vt>
-iz2foldall
+iz2foldall$fopr
 (i0: ni
 ,x1: x1, x2: x2, r0: r0): (bool, r0)
 //
