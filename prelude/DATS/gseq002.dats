@@ -85,6 +85,18 @@ gseq_imap_llist<xs><x0><y0>(xs))
 < y0:vt >
 gseq_imap_llist(xs) =
 gseq_imap0_llist<xs><x0><y0>(xs)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_imap_lstrm(xs) =
+gseq_imap0_lstrm<xs><x0><y0>(xs)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_imap_lstrq(xs) =
+gseq_imap0_lstrq<xs><x0><y0>(xs)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
