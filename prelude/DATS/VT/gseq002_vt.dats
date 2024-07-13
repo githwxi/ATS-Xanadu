@@ -52,7 +52,7 @@ gseq_z2forall0
 strm_vt_z2forall0<x0,y0>
 (
 gseq_strmize0<xs><x0>(xs),
-gseq_strmize0<ys><y0>(ys))//end-of-[gseq_z2forall0]
+gseq_strmize0<ys><y0>(ys))//end-impltmp
 //
 #impltmp
 < xs:vt
@@ -61,13 +61,53 @@ gseq_strmize0<ys><y0>(ys))//end-of-[gseq_z2forall0]
 , y0:vt >
 gseq_z2foritm0
   (xs, ys) =
-strq_vt_z2foritm0<x0,y0>
 (
-gseq_strqize0<xs><x0>(xs),
-gseq_strqize0<ys><y0>(ys))//end-of-[gseq_z2foritm0]
+let
+val _ =
+gseq_z2forall0
+<xs,ys><x0,y0>(xs, ys) in () end
+) where
+{
+#impltmp
+z2forall0$test<x0,y0>(x0, y0) =
+let
+val () =
+z2foritm0$work<x0,y0>(x0, y0) in true end
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#impltmp
+< xs:vt
+, ys:vt >
+< x0:vt
+, y0:vt >
+gseq_iz2forall0
+  (xs, ys) = b0
+where {
+//
+var i0: ni = (0)
+//
+val p0 = $addr(i0)
+//
+val b0 =
+(
+gseq_z2forall0
+<xs,ys><x0,y0>(xs, ys)) where
+{
+#impltmp
+z2forall0$test
+<x0,y0>(x0, y0) =
+(
+$UN.p2tr_set<ni>(p0, i0+1); b0)
+where
+{
+val i0 = $UN.p2tr_get<ni>(p0)
+val b0 =
+  iz2forall0$test<x0,y0>(i0, x0, y0) } }
+//
+}(*where*)//end-of-[gseq_iz2forall0(xs,ys)]
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
