@@ -187,10 +187,12 @@ test =
 filter0$test<x0>(x1)
 in//let
 if
-not(test)
-then auxloop(!xs) else
+test
+then
 strmcon_vt_cons
-(x1, $llazy(auxloop(!xs))) end
+(x1, $llazy(auxloop(!xs)))
+else
+(g_free<x0>(x1); auxloop(!xs)) end
 )
 }(*where*)//end-of-[strm_vt_filter0(xs)]
 //
