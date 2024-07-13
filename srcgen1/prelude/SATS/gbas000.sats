@@ -334,6 +334,21 @@ mapstrm1$fopr(x0: !x0): strm_vt(y0)
 //
 fun
 <x0:t0>
+<y0:vt>
+mapstrq$fopr(x0: x0): strq_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+mapstrq0$fopr(x0: ~x0): strq_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+mapstrq1$fopr(x0: !x0): strq_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
 exists$test(x0: x0): bool
 fun
 <x0:vt>

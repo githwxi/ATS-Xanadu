@@ -30,19 +30,15 @@
 (*
 Author: Hongwei Xi
 (*
-Mon 08 Jul 2024 12:53:10 PM EDT
+Sat 13 Jul 2024 10:17:23 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload
-UN = "prelude/SATS/unsafex.sats"
-(* ****** ****** *)
-(* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_VT_gseq000_vt.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_gseq002.dats] *)

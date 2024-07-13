@@ -203,6 +203,10 @@ $(XATSOPT) -d $(PRELUDE)/DATS/strn000.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gseq000.dats
 all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/gseq001.dats
+all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/gseq002.dats
+all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/list000.dats
 
 ######
@@ -215,6 +219,10 @@ all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/gnum000_vt.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/gseq000_vt.dats
+all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/VT/gseq001_vt.dats
+all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/VT/gseq002_vt.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/strn000_vt.dats
 all0_dats:: ; \
