@@ -42,6 +42,33 @@ UN = "prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+gseq_imap0_llist
+  ( xs ) =
+list_vt_imap0<x0>
+(gseq_listize0<xs><x0>(xs))
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+gseq_imap0_lstrm
+  ( xs ) =
+strm_vt_imap0<x0>
+(gseq_strmize0<xs><x0>(xs))
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+gseq_imap0_lstrq
+  ( xs ) =
+strq_vt_imap0<x0>
+(gseq_strqize0<xs><x0>(xs))
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

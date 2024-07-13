@@ -307,11 +307,18 @@ list_vt_rstrqize0
 (xs: ~list_vt(x0, n)): strq_vt(x0, n)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <x0:vt>
 <y0:vt>
 list_vt_map0
+{n:int}
+(xs: ~list_vt(x0, n)): list_vt(y0, n)
+fun
+<x0:vt>
+<y0:vt>
+list_vt_imap0
 {n:int}
 (xs: ~list_vt(x0, n)): list_vt(y0, n)
 fun
@@ -323,7 +330,6 @@ list_vt_maprev0
 //
 (* ****** ****** *)
 //
-//
 fun
 <x0:vt>
 <y0:vt>
@@ -333,10 +339,17 @@ list_vt_map1
 fun
 <x0:vt>
 <y0:vt>
+list_vt_imap1
+{n:int}
+(xs: !list_vt(x0, n)): list_vt(y0, n)
+fun
+<x0:vt>
+<y0:vt>
 list_vt_maprev1
 {n:int}
 (xs: !list_vt(x0, n)): list_vt(y0, n)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
