@@ -107,8 +107,8 @@ gseq_forall0
 (*
 (*
 HX-2024-07-10:
-Making use of the most general one!
-(unless one is sure of a specific one)
+Making use of the most general one
+(unless you are sure of a specific one)
 *)
 #impltmp
 < x0:vt >
@@ -153,6 +153,52 @@ gseq_map0_lstrm
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+strm_vt_filter0
+  ( xs ) =
+$llazy
+(auxloop(!xs)) where
+{
+(*
+HX-2024-07-13:
+[auxloop] nees to
+be tail-recursive!
+*)
+fnx
+auxloop
+( cs
+: strmcon_vt(x0)
+) : strmcon_vt(x0) =
+(
+case+ cs of
+| ~
+strmcon_vt_nil() =>
+strmcon_vt_nil(*void*)
+| ~
+strmcon_vt_cons(x1, xs) =>
+let
+val
+test =
+filter0$test<x0>(x1)
+in//let
+if
+not(test)
+then auxloop(!xs) else
+strmcon_vt_cons
+(x1, $llazy(auxloop(!xs))) end
+)
+}(*where*)//end-of-[strm_vt_filter0(xs)]
+//
+(*
+HX-2024-07-10:
+Implementing the most specific one!
+*)
+#impltmp
+{ x0:vt }
+gseq_filter0_lstrm
+<strm_vt(x0)><x0> = strm_vt_filter0<x0>(*void*)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)

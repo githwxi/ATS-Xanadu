@@ -37,19 +37,20 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef ni = nint
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
 gseq_listize
   (xs: xs): list_vt(x0)
-//
 fun
 <xs:t0>
 <x0:t0>
 gseq_strmize
   (xs: xs): strm_vt(x0)
-//
 fun
 <xs:t0>
 <x0:t0>
@@ -63,6 +64,24 @@ fun
 <x0:t0>
 gseq_rlistize
   (xs: xs): list_vt(x0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_ilistize
+  (xs: xs): ilist_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_istrmize
+  (xs: xs): istrm_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_istrqize
+  (xs: xs): istrq_vt(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
