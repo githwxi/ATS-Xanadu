@@ -368,6 +368,160 @@ val (b0, r0) =
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_iforall0
+  ( xs ) =
+strm_vt_iforall0<x0>
+(gseq_strmize0<xs><x0>(xs))
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_iforitm0
+  ( xs ) =
+strm_vt_iforitm0<x0>
+(gseq_strmize0<xs><x0>(xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< r0:vt >
+gseq_ifoldall0
+  (xs, r0) =
+strm_vt_ifoldall0<x0><r0>
+(
+gseq_strmize0<xs><x0>(xs), r0)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< r0:vt >
+gseq_ifolditm0
+  (xs, r0) =
+strm_vt_ifolditm0<x0><r0>
+(
+gseq_strmize0<xs><x0>(xs), r0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+gseq_map0_llist
+  ( xs ) =
+list_vt_map0<x0>
+(gseq_listize0<xs><x0>(xs))
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+gseq_imap0_llist
+  ( xs ) =
+list_vt_imap0<x0>
+(gseq_listize0<xs><x0>(xs))
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+gseq_map0_lstrm
+  ( xs ) =
+strm_vt_map0<x0>
+(gseq_strmize0<xs><x0>(xs))
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+gseq_imap0_lstrm
+  ( xs ) =
+strm_vt_imap0<x0>
+(gseq_strmize0<xs><x0>(xs))
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+gseq_map0_lstrq
+  ( xs ) =
+strq_vt_map0<x0>
+(gseq_strqize0<xs><x0>(xs))
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+gseq_imap0_lstrq
+  ( xs ) =
+strq_vt_imap0<x0>
+(gseq_strqize0<xs><x0>(xs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_filter0_lstrm
+  ( xs ) =
+strm_vt_filter0<x0>
+(gseq_strmize0<xs><x0>(xs))
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_ifilter0_lstrm
+  ( xs ) =
+strm_vt_ifilter0<x0>
+(gseq_strmize0<xs><x0>(xs))
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_filter0_lstrq
+  ( xs ) =
+strq_vt_filter0<x0>
+(gseq_strqize0<xs><x0>(xs))
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_ifilter0_lstrq
+  ( xs ) =
+strq_vt_ifilter0<x0>
+(gseq_strqize0<xs><x0>(xs))
+//
+(* ****** ****** *)
+//
+(*
+HX-2024-07-13:
+Laziness here can prevent
+the creation of an unnecessarily
+long list for temporary use!
+*)
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_filter0_llist
+  ( xs ) =
+strq_vt_listize0<x0>
+(
+gseq_filter0_lstrq<xs><x0>(xs))
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_ifilter0_llist
+  ( xs ) =
+strq_vt_listize0<x0>
+(
+gseq_ifilter0_lstrq<xs><x0>(xs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

@@ -283,6 +283,7 @@ strm_vt_foreach0(strm_vt(x0)): void
 //
 (*
 strm_vt_map0: map0$fopr
+strq_vt_map0: map0$fopr
 *)
 //
 fun
@@ -290,6 +291,11 @@ fun
 <y0:vt>
 strm_vt_map0
   (xs: strm_vt(x0)): strm_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+strq_vt_map0
+  (xs: strq_vt(x0)): strq_vt(y0)
 //
 (* ****** ****** *)
 //

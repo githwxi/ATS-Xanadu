@@ -448,6 +448,17 @@ fun
 <y0:vt>
 gseq_map1_lstrm(!xs): strm_vt(y0)
 //
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_map0_lstrq(~xs): strq_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_map1_lstrq(!xs): strq_vt(y0)
+//
 (* ****** ****** *)
 //
 fun
@@ -512,6 +523,7 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_filter0(~xs): ( xs )
+//
 fun
 <xs:vt>
 <x0:vt>
@@ -520,6 +532,10 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_filter0_lstrm(~xs): strm_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_filter0_lstrq(~xs): strq_vt(x0)
 //
 (* ****** ****** *)
 //

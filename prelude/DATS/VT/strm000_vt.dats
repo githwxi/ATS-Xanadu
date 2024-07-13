@@ -143,7 +143,10 @@ strmcon_vt_cons(map0$fopr<x0><y0>(x1), auxmain(xs))
 //
 (*
 HX-2024-07-10:
-Implementing the most specific one!
+Implementing the most specific one.
+HX-2024-07-13:
+This one is already added as the default!
+It is not harm to keep it here as a reference.
 *)
 #impltmp
 { x0:vt }
@@ -193,7 +196,10 @@ strmcon_vt_cons
 //
 (*
 HX-2024-07-10:
-Implementing the most specific one!
+Implementing the most specific one.
+HX-2024-07-13:
+This one is already added as the default!
+It is not harm to keep it here as a reference.
 *)
 #impltmp
 { x0:vt }
