@@ -1328,5 +1328,32 @@ strqgte_vt
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(*
+HX-2024-07-13
+*)
+#typedef
+ilist(a:t0) = list@(nint, a)
+#vwtpdef
+ilist_vt(a:vt) = list_vt@(nint, a)
+//
+#vwtpdef
+istrm_vt(a:vt) = strm_vt@(nint, a)
+#vwtpdef
+istrq_vt(a:vt) = strq_vt@(nint, a)
+//
+#vwtpdef
+ilist
+(a:t0,n:i0) = list(@(nintlt(n), a), n)
+#vwtpdef
+ilist_vt
+(a:v0,n:i0) = list_vt(@(nintlt(n), a), n)
+//
+#vwtpdef
+istrq_vt
+(a:v0,n:i0) = strq_vt(@(nintlt(n), a), n)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_basics0.sats] *)

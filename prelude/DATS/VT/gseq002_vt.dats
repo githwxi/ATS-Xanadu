@@ -128,6 +128,12 @@ gseq_ifilter0_lstrq
 strq_vt_ifilter0<x0>
 (gseq_strqize0<xs><x0>(xs))
 //
+(*
+HX-2024-07-13:
+Laziness here can prevent
+the creation of an unnecessarily
+long list for temporary use!
+*)
 #impltmp
 < xs:vt >
 < x0:vt >

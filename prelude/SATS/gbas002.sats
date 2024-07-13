@@ -45,11 +45,21 @@ fun
 <x1:t0
 ,x2:t0>
 z2forall(x1: x1, x2: x2): bool
+fun
+<x1:t0
+,x2:t0>
+iz2forall
+(i0: ni, x1: x1, x2: x2): bool
 //
 fun
 <x1:t0
 ,x2:t0>
 z2foritm(x1: x1, x2: x2): void
+fun
+<x1:t0
+,x2:t0>
+iz2foritm
+(i0: ni, x1: x1, x2: x2): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -65,6 +75,21 @@ fun
 <r0:vt>
 z2foldall(x1, x2, r0): (bool, r0)
 //
+fun
+<x1:t0
+,x2:t0>
+<r0:vt>
+iz2folditm
+(i0: ni
+,x1: x1, x2: x2, r0: r0): (r0)
+fun
+<x1:t0
+,x2:t0>
+<r0:vt>
+iz2foldall
+(i0: ni
+,x1: x1, x2: x2, r0: r0): (bool, r0)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -73,7 +98,14 @@ fun
 ,x2:t0>
 <y0:vt>
 z2map$fopr(x1: x1, x2: x2): (y0)
+fun
+<x1:t0
+,x2:t0>
+<y0:vt>
+iz2map$fopr
+  (i0: ni, x1: x1, x2: x2): (y0)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -96,6 +128,33 @@ fun
 ,x2:t0>
 <y0:vt>
 z2mapstrq$fopr(x1, x2): strq_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<x1:t0
+,x2:t0>
+<y0:vt>
+iz2mapoptn$fopr
+(i0: ni, x1: x1, x2: x2): optn_vt(y0)
+fun
+<x1:t0
+,x2:t0>
+<y0:vt>
+iz2maplist$fopr
+(i0: ni, x1: x1, x2: x2): list_vt(y0)
+fun
+<x1:t0
+,x2:t0>
+<y0:vt>
+iz2mapstrm$fopr
+(i0: ni, x1: x1, x2: x2): strm_vt(y0)
+fun
+<x1:t0
+,x2:t0>
+<y0:vt>
+iz2mapstrq$fopr
+(i0: ni, x1: x1, x2: x2): strq_vt(y0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
