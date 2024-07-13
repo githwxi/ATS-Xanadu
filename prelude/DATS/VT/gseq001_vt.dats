@@ -133,8 +133,7 @@ gseq_forall0<xs><x0>(xs) in () end
 {
 #impltmp
 forall0$test<x0>(x0) =
-let
-val () = foritm0$work<x0>(x0) in true end
+let val () = foritm0$work<x0>(x0) in true end
 }
 //
 (* ****** ****** *)

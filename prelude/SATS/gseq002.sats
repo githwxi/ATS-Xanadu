@@ -42,24 +42,24 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
-<xs:t0>
+<xs:t0
 ,ys:t0>
-<x0:t0>
+<x0:t0
 ,y0:t0>
 gseq_z2listize
   (xs: xs, ys: ys): list_vt@(x0, y0)
 fun
-<xs:t0>
+<xs:t0
 ,ys:t0>
-<x0:t0>
+<x0:t0
 ,y0:t0>
 gseq_rz2listize
   (xs: xs, ys: ys): list_vt@(x0, y0)
 //
 fun
-<xs:t0>
+<xs:t0
 ,ys:t0>
-<x0:t0>
+<x0:t0
 ,y0:t0>
 gseq_iz2listize
   (xs: xs, ys: ys): list_vt@(ni, x0, y0)
@@ -67,31 +67,31 @@ gseq_iz2listize
 (* ****** ****** *)
 //
 fun
-<xs:t0>
+<xs:t0
 ,ys:t0>
-<x0:t0>
+<x0:t0
 ,y0:t0>
 gseq_z2strmize
   (xs: xs, ys: ys): strm_vt@(x0, y0)
 fun
-<xs:t0>
+<xs:t0
 ,ys:t0>
-<x0:t0>
+<x0:t0
 ,y0:t0>
 gseq_iz2strmize
   (xs: xs, ys: ys): strm_vt@(ni, x0, y0)
 //
 fun
-<xs:t0>
+<xs:t0
 ,ys:t0>
-<x0:t0>
+<x0:t0
 ,y0:t0>
 gseq_z2strqize
   (xs: xs, ys: ys): strq_vt@(x0, y0)
 fun
-<xs:t0>
+<xs:t0
 ,ys:t0>
-<x0:t0>
+<x0:t0
 ,y0:t0>
 gseq_iz2strqize
   (xs: xs, ys: ys): strq_vt@(ni, x0, y0)

@@ -42,6 +42,33 @@ UN = "prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< xs:vt
+, ys:vt >
+< x0:vt
+, y0:vt >
+gseq_z2forall0
+  (xs, ys) =
+strm_vt_z2forall0<x0,y0>
+(
+gseq_strmize0<xs><x0>(xs),
+gseq_strmize0<ys><y0>(ys))//end-of-[gseq_z2forall0]
+//
+#impltmp
+< xs:vt
+, ys:vt >
+< x0:vt
+, y0:vt >
+gseq_z2foritm0
+  (xs, ys) =
+strq_vt_z2foritm0<x0,y0>
+(
+gseq_strqize0<xs><x0>(xs),
+gseq_strqize0<ys><y0>(ys))//end-of-[gseq_z2foritm0]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
