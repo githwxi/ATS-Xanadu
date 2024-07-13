@@ -8,6 +8,11 @@ the power of template-based programming.
 Here are some notes for helping understand the
 design and implementation of this library.
 ############################################################
+Rough split:
+gbas000: basic
+gbas001: forall, rforall, and iforall
+gbas002: z2forall, rz2forall, and iz2forall
+############################################################
 This may look kind of cryptic :)
 For geq-functions, we have the following (partial) ordering:
 strmize < forall0
