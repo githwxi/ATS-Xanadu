@@ -364,11 +364,18 @@ strn_copy_vt
 fun<>
 strn_make_list
 {n:int}
-(cs:list(cgtz, n)): strn(n)
+(cs:
+ list(cgtz, n)): strn(n)
 fun<>
 strn_make0_llist
 {n:int}
-(cs:list_vt(cgtz, n)): strn(n)
+( cs:
+~ list_vt(cgtz, n)): strn(n)
+fun<>
+strn_make1_llist
+{n:int}
+( cs:
+! list_vt(cgtz, n)): strn(n)
 //
 (* ****** ****** *)
 //
@@ -377,6 +384,9 @@ strn_make_strm
   (cs:strm(cgtz)): strn(*0*)
 fun<>
 strn_make0_lstrm
+  (cs:strm_vt(cgtz)): strn(*0*)
+fun<>
+strn_make1_lstrm
   (cs:strm_vt(cgtz)): strn(*0*)
 //
 (* ****** ****** *)
