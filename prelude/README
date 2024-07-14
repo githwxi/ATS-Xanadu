@@ -10,8 +10,11 @@ design and implementation of this library.
 ############################################################
 Rough split:
 gbas000: basic
-gbas001: forall, rforall, and iforall
-gbas002: z2forall, rz2forall, and iz2forall
+gbas001: strmize,
+         forall, foldall,
+         map, filter, etc
+gbas001: r-variants and i-variants
+gbas002: z2-variants and x2-variants
 ############################################################
 This may look kind of cryptic :)
 For geq-functions, we have the following (partial) ordering:

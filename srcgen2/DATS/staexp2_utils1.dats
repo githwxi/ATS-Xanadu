@@ -238,8 +238,8 @@ S2Tbas(tbas) =>
 (
 case+ tbas of
 |
-T2Bimpr(knd, _) => sortprf(knd) <= 0
-| _ => false
+T2Bimpr(knd, _) =>
+(sortprf(knd) <= 0) | _(*else*) => false
 )
 |
 _ (* non-S2Tbas *) => false) // sort2_prgmq
@@ -566,41 +566,42 @@ s2e0.node() of
 #implfun
 s2explst_linq(s2es) =
 (
-  list_forall(s2es)) where
+  list_exists(s2es)) where
 {
-  #impltmp
-  forall$test<s2exp> = s2exp_linq }
+#impltmp
+exists$test<s2exp> = s2exp_linq }
 #implfun
 s2explst_prfq(s2es) =
 (
   list_forall(s2es)) where
 {
-  #impltmp
-  forall$test<s2exp> = s2exp_prfq }
+#impltmp
+forall$test<s2exp> = s2exp_prfq }
+//
 #implfun
 s2explst_imprq(s2es) =
 (
-  list_forall(s2es)) where
+  list_exists(s2es)) where
 {
-  #impltmp
-  forall$test<s2exp> = s2exp_imprq }
+#impltmp
+exists$test<s2exp> = s2exp_imprq }
 #implfun
 s2explst_prgmq(s2es) =
 (
-  list_forall(s2es)) where
+  list_exists(s2es)) where
 {
-  #impltmp
-  forall$test<s2exp> = s2exp_prgmq }
+#impltmp
+exists$test<s2exp> = s2exp_prgmq }
 //
 (* ****** ****** *)
 //
 #implfun
 l2s2elst_linq(lses) =
 (
-  list_forall(lses)) where
+  list_exists(lses)) where
 {
 #impltmp
-forall$test
+exists$test
 <l2s2e>(ls2e) = s2exp_linq(ls2e.itm())
 }
 //
@@ -617,20 +618,20 @@ forall$test
 #implfun
 l2s2elst_imprq(lses) =
 (
-  list_forall(lses)) where
+  list_exists(lses)) where
 {
 #impltmp
-forall$test
+exists$test
 <l2s2e>(ls2e) = s2exp_imprq(ls2e.itm())
 }
 //
 #implfun
 l2s2elst_prgmq(lses) =
 (
-  list_forall(lses)) where
+  list_exists(lses)) where
 {
 #impltmp
-forall$test
+exists$test
 <l2s2e>(ls2e) = s2exp_prgmq(ls2e.itm())
 }
 //
