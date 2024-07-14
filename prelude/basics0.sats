@@ -1312,6 +1312,26 @@ lstrq(*a:vt,n:i0*) = streaq_vt(*(a, n)*)
 strq_vt(*a:vt,n:i0*) = streaq_vt(*(a, n)*)
 //
 (* ****** ****** *)
+#typedef
+strq(a:t0) = [n:i0] strq(a, n)
+#vwtpdef
+strq_vt(a:vt) = [n:i0] strq_vt(a, n)
+(* ****** ****** *)
+//
+#vwtpdef
+strqlt
+(a:t0, n:i0) = [i:nat | i < n] strq(a, i)
+#vwtpdef
+strqgt
+(a:t0, n:i0) = [k:int | k > n] strq(a, k)
+#vwtpdef
+strqlte
+(a:t0, n:i0) = [i:nat | i <= n] strq(a, i)
+#vwtpdef
+strqgte
+(a:t0, n:i0) = [k:int | k >= n] strq(a, k)
+//
+(* ****** ****** *)
 //
 #vwtpdef
 strqlt_vt
@@ -1334,26 +1354,30 @@ HX-2024-07-13
 *)
 #typedef
 ilist(a:t0) = list@(nint, a)
+#typedef
+istrm(a:t0) = strm@(nint, a)
+#typedef
+istrq(a:t0) = strq@(nint, a)
+#typedef
+ilist(a:t0,n:i0) = list(@(nintlt(n), a), n)
+#typedef
+istrq(a:t0,n:i0) = strq(@(nintlt(n), a), n)
+//
 #vwtpdef
 ilist_vt(a:vt) = list_vt@(nint, a)
-//
 #vwtpdef
 istrm_vt(a:vt) = strm_vt@(nint, a)
 #vwtpdef
 istrq_vt(a:vt) = strq_vt@(nint, a)
-//
 #vwtpdef
-ilist
-(a:t0,n:i0) = list(@(nintlt(n), a), n)
+ilist_vt(a:v0,n:i0) = list_vt(@(nintlt(n), a), n)
 #vwtpdef
-ilist_vt
-(a:v0,n:i0) = list_vt(@(nintlt(n), a), n)
-//
-#vwtpdef
-istrq_vt
-(a:v0,n:i0) = strq_vt(@(nintlt(n), a), n)
+istrq_vt(a:v0,n:i0) = strq_vt(@(nintlt(n), a), n)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_basics0.sats] *)

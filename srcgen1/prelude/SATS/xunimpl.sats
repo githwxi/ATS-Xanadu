@@ -210,6 +210,18 @@ strn_vt_gmake(obj: a): strn_vt
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<x0:t0>
+list_foritm(xs: list(x0)): void
+fun
+<x0:t0>
+list_rforitm(xs: list(x0)): void
+fun
+<x0:t0>
+list_iforitm(xs: list(x0)): void
+//
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
