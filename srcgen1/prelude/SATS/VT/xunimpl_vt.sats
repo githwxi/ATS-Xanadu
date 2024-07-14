@@ -348,34 +348,56 @@ gseq_filter1_self(xs: !xs): (xs)
 //
 (* ****** ****** *)
 //
+(*
 fun
 <x0:vt>
 <y0:vt>
-mapstrq0$fopr(x0: ~x0): strq_vt(y0)
+mapstrq0$fopr(~x0): strq_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-mapstrq1$fopr(x0: !x0): strq_vt(y0)
+mapstrq1$fopr(!x0): strq_vt(y0)
+*)
+//
+fun
+<x0:vt>
+<y0:vt>
+rmapstrq0$fopr(~x0): strq_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+rmapstrq1$fopr(!x0): strq_vt(y0)
+//
+fun
+<x0:vt>
+<y0:vt>
+imapstrq0$fopr
+  (pos: ni, itm: ~x0): strq_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+imapstrq1$fopr
+  (pos: ni, itm: !x0): strq_vt(y0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 <a:vt>
-strn_gmake0( ~a ): strn
+strn_gmake0( x: ~a ): strn
 fun
 <a:vt>
-strn_gmake1( !a ): strn
+strn_gmake1( x: !a ): strn
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 <a:vt>
-strn_vt_gmake0(~a): strn_vt
+strn_vt_gmake0(x : ~a): strn_vt
 fun
 <a:vt>
-strn_vt_gmake1(!a): strn_vt
+strn_vt_gmake1(x : !a): strn_vt
 //
 (* ****** ****** *)
 //

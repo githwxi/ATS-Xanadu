@@ -1,4 +1,4 @@
-########################################################################
+##################################################################
 NODE=node \
 --stack-size=4096 
 NODE=node \
@@ -7,11 +7,11 @@ NODE=node \
 TEST11=test11_xats2js_dats.js
 TEST12=test12_xats2js_dats.js
 PRELUDE=./../../../../../prelude
-########################################################################
+##################################################################
 all::
 all::all_sats
 all::all_dats
-########################################################################
+##################################################################
 # SATS
 all_sats::\
 gbas000_sats
@@ -25,9 +25,81 @@ all_sats::\
 gbas002_sats
 gbas002_sats: ; \
 $(NODE) $(TEST11) $(PRELUDE)/SATS/gbas002.sats 2>/dev/null
-########################################################################
+############
+all_sats::\
+gint001_sats
+gint001_sats: ; \
+$(NODE) $(TEST11) $(PRELUDE)/SATS/gint001.sats 2>/dev/null
+############
+all_sats::\
+gnum000_sats
+gnum000_sats: ; \
+$(NODE) $(TEST11) $(PRELUDE)/SATS/gnum000.sats 2>/dev/null
+############
+all_sats::\
+gseq000_sats
+gseq000_sats: ; \
+$(NODE) $(TEST11) $(PRELUDE)/SATS/gseq000.sats 2>/dev/null
+all_sats::\
+gseq001_sats
+gseq001_sats: ; \
+$(NODE) $(TEST11) $(PRELUDE)/SATS/gseq001.sats 2>/dev/null
+all_sats::\
+gseq002_sats
+gseq002_sats: ; \
+$(NODE) $(TEST11) $(PRELUDE)/SATS/gseq002.sats 2>/dev/null
+############
+all_sats::\
+strn000_sats
+strn000_sats: ; \
+$(NODE) $(TEST11) $(PRELUDE)/SATS/strn000.sats 2>/dev/null
+############
+all_sats::\
+list000_sats
+list000_sats: ; \
+$(NODE) $(TEST11) $(PRELUDE)/SATS/list000.sats 2>/dev/null
+##################################################################
+# DATS
+##################################################################
+all_dats::\
+gbas000_dats
+gbas000_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/gbas000.dats 2>/dev/null
+all_dats::\
+gbas001_dats
+gbas001_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/gbas001.dats 2>/dev/null
+all_dats::\
+gbas002_dats
+gbas002_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/gbas002.dats 2>/dev/null
+############
+all_dats::\
+gnum000_dats
+gnum000_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/gnum000.dats 2>/dev/null
+############
+all_dats::\
+gint001_dats
+gint001_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/gint001.dats 2>/dev/null
+############
+all_dats::\
+strn000_dats
+strn000_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/strn000.dats 2>/dev/null
+############
+all_dats::\
+list000_dats
+list000_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/list000.dats 2>/dev/null
+all_dats::\
+list001_dats
+list001_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/list001.dats 2>/dev/null
+##################################################################
 # SATS/VT
-########################################################################
+##################################################################
 all_sats::\
 gbas000_vt_sats
 gbas000_vt_sats: ; \
@@ -58,25 +130,36 @@ all_sats::\
 strm001_vt_sats
 strm001_vt_sats: ; \
 $(NODE) $(TEST11) $(PRELUDE)/SATS/VT/strm001_vt.sats 2>/dev/null
-########################################################################
-# DATS
-########################################################################
+##################################################################
+# DATS/VT
+##################################################################
 all_dats::\
-strn000_dats
-strn000_dats: ; \
-$(NODE) $(TEST12) $(PRELUDE)/DATS/strn000.dats 2>/dev/null
+gbas000_vt_dats
+gbas000_vt_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/VT/gbas000_vt.dats 2>/dev/null
+all_dats::\
+gbas001_vt_dats
+gbas001_vt_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/VT/gbas001_vt.dats 2>/dev/null
 ############
 all_dats::\
-list000_dats
-list000_dats: ; \
-$(NODE) $(TEST12) $(PRELUDE)/DATS/list000.dats 2>/dev/null
+gnum000_vt_dats
+gnum000_vt_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/VT/gnum000_vt.dats 2>/dev/null
+############
 all_dats::\
-list001_dats
-list001_dats: ; \
-$(NODE) $(TEST12) $(PRELUDE)/DATS/list001.dats 2>/dev/null
-########################################################################
-# DATS/VT
-########################################################################
+gseq000_vt_dats
+gseq000_vt_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/VT/gseq000_vt.dats 2>/dev/null
+all_dats::\
+gseq001_vt_dats
+gseq001_vt_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/VT/gseq001_vt.dats 2>/dev/null
+all_dats::\
+gseq002_vt_dats
+gseq002_vt_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/VT/gseq002_vt.dats 2>/dev/null
+############
 all_dats::\
 strn000_vt_dats
 strn000_vt_dats: ; \
@@ -99,4 +182,4 @@ all_dats::\
 strm001_vt_dats
 strm001_vt_dats: ; \
 $(NODE) $(TEST12) $(PRELUDE)/DATS/VT/strm001_vt.dats 2>/dev/null
-########################################################################
+##################################################################

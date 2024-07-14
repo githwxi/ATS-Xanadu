@@ -1372,7 +1372,7 @@ d2e0.node() of
 |D2Enone0 _ => f0_none0(d2e0, err)
 //
 |
-D2Eextname _ => f0_extnam(d2e0, err)
+D2Eextnam _ => f0_extnam(d2e0, err)
 //
 | _(*otherwise*) =>
 let

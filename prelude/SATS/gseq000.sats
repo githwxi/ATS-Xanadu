@@ -90,7 +90,7 @@ gseq_prod(xs: xs): (x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_print( xs ): (xs)
+gseq_print(xs: xs): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

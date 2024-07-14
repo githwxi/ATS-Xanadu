@@ -76,58 +76,58 @@ folditm1$fopr = folditm$fopr<x0><r0>
 #impltmp
 < x0:t0 >
 < y0:vt >
-map0$fopr = map$fopr
+map0$fopr = map$fopr<x0><y0>
 #impltmp
 < x0:t0 >
 < y0:vt >
-map1$fopr = map$fopr
+map1$fopr = map$fopr<x0><y0>
 //
 (* ****** ****** *)
 //
 #impltmp
 < x0:t0 >
-filter0$test = filter$test
+filter0$test = filter$test<x0>
 #impltmp
 < x0:t0 >
-filter1$test = filter$test
+filter1$test = filter$test<x0>
 //
 (* ****** ****** *)
 //
 #impltmp
 < x0:t0 >
 < y0:vt >
-mapoptn0$fopr = mapoptn$fopr
+mapoptn0$fopr = mapoptn$fopr<x0><y0>
 #impltmp
 < x0:t0 >
 < y0:vt >
-mapoptn1$fopr = mapoptn$fopr
+mapoptn1$fopr = mapoptn$fopr<x0><y0>
 //
 #impltmp
 < x0:t0 >
 < y0:vt >
-maplist0$fopr = maplist$fopr
+maplist0$fopr = maplist$fopr<x0><y0>
 #impltmp
 < x0:t0 >
 < y0:vt >
-maplist1$fopr = maplist$fopr
+maplist1$fopr = maplist$fopr<x0><y0>
 //
 #impltmp
 < x0:t0 >
 < y0:vt >
-mapstrm0$fopr = mapstrm$fopr
+mapstrm0$fopr = mapstrm$fopr<x0><y0>
 #impltmp
 < x0:t0 >
 < y0:vt >
-mapstrm1$fopr = mapstrm$fopr
+mapstrm1$fopr = mapstrm$fopr<x0><y0>
 //
 #impltmp
 < x0:t0 >
 < y0:vt >
-mapstrq0$fopr = mapstrq$fopr
+mapstrq0$fopr = mapstrq$fopr<x0><y0>
 #impltmp
 < x0:t0 >
 < y0:vt >
-mapstrq1$fopr = mapstrq$fopr
+mapstrq1$fopr = mapstrq$fopr<x0><y0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
