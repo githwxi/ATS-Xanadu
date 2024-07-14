@@ -238,6 +238,10 @@ fun
 <x0:vt>
 list_vt_rforitm0
 (xs: ~list_vt(x0)): void
+fun
+<x0:vt>
+list_vt_iforitm0
+(xs: ~list_vt(x0)): void
 //
 (* ****** ****** *)
 //
@@ -264,12 +268,12 @@ list_vt_folditm0
 fun
 <x0:vt>
 <r0:vt>
-list_vt_ifolditm0
+list_vt_rfolditm0
 (xs: ~list_vt(x0), r0: r0): (r0)
 fun
 <x0:vt>
 <r0:vt>
-list_vt_rfolditm0
+list_vt_ifolditm0
 (xs: ~list_vt(x0), r0: r0): (r0)
 //
 (* ****** ****** *)
