@@ -68,16 +68,121 @@ list_make0_lstrq
 //
 fun
 <x0:vt>
-list_vt_make0_lstrm
-(xs: strm_vt(x0)): list_vt(x0)
+strm_vt_forall0
+(xs: strm_vt(x0)): bool
 fun
 <x0:vt>
-list_vt_make0_lstrq
-{n0:i0}
-(xs: strq_vt(x0, n0)): list_vt(x0, n0)
+strm_vt_foritm0
+(xs: strm_vt(x0)): void
 //
-#symload list_vt with list_vt_make0_lstrm
-#symload list_vt with list_vt_make0_lstrq
+fun
+<x0:vt>
+strm_vt_rforall0
+(xs: strm_vt(x0)): bool
+fun
+<x0:vt>
+strm_vt_rforitm0
+(xs: strm_vt(x0)): void
+//
+fun
+<x0:vt>
+strm_vt_iforall0
+(xs: strm_vt(x0)): bool
+fun
+<x0:vt>
+strm_vt_iforitm0
+(xs: strm_vt(x0)): void
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<r0:vt>
+strm_vt_foldall0
+(xs: strm_vt(x0), r0: r0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+strm_vt_folditm0
+(xs: strm_vt(x0), r0: r0): (r0)
+//
+fun
+<x0:vt>
+<r0:vt>
+strm_vt_ifoldall0
+(xs: strm_vt(x0), r0: r0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+strm_vt_ifolditm0
+(xs: strm_vt(x0), r0: r0): (r0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<y0:vt>
+strm_vt_map0
+(xs: strm_vt(x0)): strm_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+strq_vt_map0
+{n0:i0}
+(xs: strq_vt(x0,n0)): strq_vt(y0,n0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+strm_vt_filter0
+(xs: strm_vt(x0)): strm_vt(x0)
+fun
+<x0:vt>
+strq_vt_filter0
+{n0:i0}
+(xs: strq_vt(x0,n0)): strqlte_vt(x0,n0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<y0:vt>
+strm_vt_mapoptn0
+(xs: strm_vt(x0)): strm_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+strq_vt_mapoptn0
+{n0:i0}
+(xs: strq_vt(x0,n0)): strqlte_vt(y0,n0)
+//
+fun
+<x0:vt>
+<y0:vt>
+strm_vt_maplist0
+(xs: strm_vt(x0)): strm_vt(y0)
+fun
+<x0:vt>
+<y0:vt>
+strq_vt_maplist0
+{n0:i0}
+(xs: strq_vt(x0,n0)): strqlte_vt(y0,n0)
+//
+(* ****** ****** *)
+//
+#symload map0 with strm_vt_map0
+#symload map0 with strq_vt_map0
+//
+#symload filter0 with strm_vt_filter0
+#symload filter0 with strq_vt_filter0
+//
+#symload mapoptn0 with strm_vt_mapoptn0
+#symload mapoptn0 with strq_vt_mapoptn0
+//
+#symload maplist0 with strm_vt_maplist0
+#symload maplist0 with strq_vt_maplist0
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -85,4 +190,4 @@ list_vt_make0_lstrq
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_VT_strn001_vt.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_VT_strm001_vt.sats] *)

@@ -38,112 +38,36 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun<>
-list_vt_nil_
-{a:vt}(): list_vt(a,0)
 fun
-<a:vt>
-list_vt_cons_
-{n:i0}
-(
-x0: (a),
-xs: list_vt(a,n)): list_vt(a,n+1)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
+<x0:vt>
+list_vt_forall0
+(xs: list_vt(x0)): bool
 fun
-<a:vt>
-list_vt_make_1val
-(x1: a): list_vt(a,1)
-fun
-<a:vt>
-list_vt_make_2val
-(x1: a, x2: a): list_vt(a,2)
-fun
-<a:vt>
-list_vt_make_3val
-(x1: a
-,x2: a, x3: a): list_vt(a,3)
-//
-(* ****** ****** *)
-(* ****** ****** *)
+<x0:vt>
+list_vt_foritm0
+(xs: list_vt(x0)): void
 //
 fun
 <x0:vt>
-list_vt_length0
-{n0:i0}
-(xs: ~list_vt(x0,n0)): sint(n0)
-//
+list_vt_rforall0
+(xs: list_vt(x0)): bool
 fun
 <x0:vt>
-list_vt_length1
-{n0:i0}
-(xs: !list_vt(x0,n0)): sint(n0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-list_vt_make0_lstrm
-(xs: strm_vt(x0)): list_vt(x0)
-fun
-<x0:vt>
-list_vt_make0_lstrq
-{n0:i0}
-(xs: strq_vt(x0, n0)): list_vt(x0, n0)
-//
-#symload list_vt with list_vt_make0_lstrm
-#symload list_vt with list_vt_make0_lstrq
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-//
-fun
-<x0:vt>
-list_vt_append00
-{n1,n2:i0}
-( xs: ~list_vt(x0,n1)
-, ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
-//
-fun
-<x0:vt>
-list_vt_append10
-{n1,n2:i0}
-( xs: !list_vt(x0,n1)
-, ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
+list_vt_rforitm0
+(xs: list_vt(x0)): void
 //
 (* ****** ****** *)
 //
 fun
 <x0:vt>
-list_vt_reverse0
-{n0:i0}
-(xs: ~list_vt(x0,n0)): list_vt(x0,n0)
-//
+<r0:vt>
+list_vt_folditm0
+(xs: list_vt(x0), r0: r0): (r0)
 fun
 <x0:vt>
-list_vt_reverse1
-{n0:i0}
-(xs: !list_vt(x0,n0)): list_vt(x0,n0)
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-list_vt_rappend00
-{n1,n2:i0}
-( xs: ~list_vt(x0,n1)
-, ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
-//
-fun
-<x0:vt>
-list_vt_rappend10
-{n1,n2:i0}
-( xs: !list_vt(x0,n1)
-, ys: ~list_vt(x0,n2)): list_vt(x0,n1+n2)
+<r0:vt>
+list_vt_rfolditm0
+(xs: list_vt(x0), r0: r0): (r0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -151,4 +75,4 @@ list_vt_rappend10
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_VT_list000_vt.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_VT_list001_vt.sats] *)
