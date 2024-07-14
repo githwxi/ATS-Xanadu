@@ -1,0 +1,37 @@
+########################################################################
+NODE=node \
+--stack-size=4096 
+NODE=node \
+--stack-size=4096 \
+--max-old-space-size=4096
+TEST11=test11_xats2js_dats.js
+TEST12=test12_xats2js_dats.js
+PRELUDE=./../../../../../prelude
+########################################################################
+all::
+all::all_sats
+all::all_dats
+########################################################################
+all_sats::\
+list000_vt_sats
+list000_vt_sats: ; \
+$(NODE) $(TEST11) $(PRELUDE)/SATS/VT/list000_vt.sats 2>/dev/null
+########################################################################
+all_dats::\
+list000_vt_dats
+list000_vt_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/VT/list000_vt.dats 2>/dev/null
+all_dats::\
+list001_vt_dats
+list001_vt_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/VT/list001_vt.dats 2>/dev/null
+######
+all_dats::\
+strm000_vt_dats
+strm000_vt_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/VT/strm000_vt.dats 2>/dev/null
+all_dats::\
+strm001_vt_dats
+strm001_vt_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/VT/strm001_vt.dats 2>/dev/null
+########################################################################

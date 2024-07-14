@@ -232,12 +232,10 @@ gseq_ifoldall0(~xs, r0): ( r0 )
 //
 fun
 <x0:vt>
-<r0:vt>
 list_vt_foritm0
 (xs: ~list_vt(x0)): void
 fun
 <x0:vt>
-<r0:vt>
 list_vt_rforitm0
 (xs: ~list_vt(x0)): void
 //
@@ -245,12 +243,10 @@ list_vt_rforitm0
 //
 fun
 <x0:vt>
-<r0:vt>
 strm_vt_foritm0
 (xs: ~strm_vt(x0)): void
 fun
 <x0:vt>
-<r0:vt>
 strm_vt_rforitm0
 (xs: ~strm_vt(x0)): void
 fun
