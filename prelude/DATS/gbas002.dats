@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Wed 10 Jul 2024 10:42:18 AM EDT
+Sun 14 Jul 2024 12:24:44 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -40,47 +40,26 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (*
 #impltmp
-< x0:t0 >
-forall$test =
-rforall$test<x0>
+< x0:t0
+, y0:t0 >
+z2forall$test =
+rz2forall$test<x0,y0>
 #impltmp
-< x0:t0 >
-rforall$test = forall$test<x0>
+< x0:t0
+, y0:t0 >
+rz2forall$test = z2forall$test<x0,y0>
 *)
 //
 (*
 #impltmp
-< x0:t0 >
-foritm$work =
-rforitm$work<x0>
+< x0:t0
+, y0:t0 >
+z2foritm$work =
+rz2foritm$work<x0,y0>
 #impltmp
-< x0:t0 >
-rforitm$work = foritm$work<x0>
-*)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-#impltmp
-< x0:t0 >
-< r0:vt >
-rfolditm$fopr
-( x0
-, r0 ) =
-(
-  folditm$fopr<x0><r0>(r0, x0))
-*)
-//
-(*
-#impltmp
-< x0:t0 >
-< r0:vt >
-rfoldall$fopr
-( x0
-, r0 ) =
-(
-  foldall$fopr<x0><r0>(r0, x0))
+< x0:t0
+, y0:t0 >
+rz2foritm$work = z2foritm$work<x0,y0>
 *)
 //
 (* ****** ****** *)
@@ -89,4 +68,4 @@ rfoldall$fopr
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_gbas001.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_gbas002.dats] *)
