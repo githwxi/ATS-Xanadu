@@ -87,7 +87,7 @@ strn_strmize
 fun<>
 strn_strqize
 {n0:i0}
-(cs: strn(n0)): strq_vt(cgtx, n0)
+(cs: strn(n0)): strq_vt(cgtz, n0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -105,29 +105,6 @@ gseq_prod(xs: xs): (x0)
 fun
 <xs:t0>
 <x0:t0>
-<ys:vt>
-gseq_map_ares(xs: xs): (ys)
-fun
-<xs:t0>
-<x0:t0>
-gseq_map_self(xs: xs): (xs)
-//
-fun
-<xs:t0>
-<x0:t0>
-<ys:vt>
-gseq_filter_ares(xs: xs): (ys)
-fun
-<xs:t0>
-<x0:t0>
-gseq_filter_self(xs: xs): (xs)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
 gseq_foritm(xs: xs): void
 fun
 <xs:t0>
@@ -172,6 +149,47 @@ fun
 <x0:t0>
 <r0:vt>
 gseq_ifoldall(xs, r0): ( r0 )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+gseq_map_ares(xs: xs): (ys)
+fun
+<xs:t0>
+<x0:t0>
+gseq_map_self(xs: xs): (xs)
+//
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+gseq_filter_ares(xs: xs): (ys)
+fun
+<xs:t0>
+<x0:t0>
+gseq_filter_self(xs: xs): (xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
+<x0:t0>
+<y0:vt>
+mapstrq$fopr(itm: x0): strq_vt(y0)
+*)
+fun
+<x0:t0>
+<y0:vt>
+rmapstrq$fopr(itm: x0): strq_vt(y0)
+fun
+<x0:t0>
+<y0:vt>
+imapstrq$fopr(pos: ni, itm: x0): strq_vt(y0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
