@@ -6,12 +6,15 @@
 #include
 "srcgen1\
 /prelude/HATS/prelude_dats.hats"
+#include
+"srcgen2\
+/prelude/HATS/prelude_dats.hats"
+(* ****** ****** *)
 //
 #include
 "srcgen1\
 /prelude/HATS/CATS/JS/prelude_dats.hats"
 //
-(* ****** ****** *)
 (* ****** ****** *)
 
 fun
@@ -114,15 +117,15 @@ HX-2024-01-03:
 More than 10 template layers!
 *)
 fun
-fact1_mul_tail
+fact1_prod_tail
   (x: sint): sint =
 (
-  strm_vt_mul0(tail0(strmize(x+1))))//fun
+  prod0(tail0(strmize(x+1))))//fun
 //
 (* ****** ****** *)
 (* ****** ****** *)
 val () = println
-("mytest12:fact1_mul_tail(10)=",fact1_mul_tail(10))
+("mytest12:fact1_prod_tail(10)=",fact1_prod_tail(10))
 (* ****** ****** *)
 (* ****** ****** *)
 

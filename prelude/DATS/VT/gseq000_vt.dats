@@ -42,6 +42,41 @@ UN = "prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_sum0(xs) =
+let
+val r0 = g_0<x0>()
+in//let
+gseq_folditm0<xs><x0><x0>(xs, r0)
+end where // end-of-[let]
+{
+#impltmp
+folditm0$fopr
+<x0><x0>(r0, x0) = g_add00<x0>(x0, x0)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_prod0(xs) =
+let
+val r0 = g_1<x0>()
+in//let
+gseq_folditm0<xs><x0><x0>(xs, r0)
+end where // end-of-[let]
+{
+#impltmp
+folditm0$fopr
+<x0><x0>(r0, x0) = g_mul00<x0>(x0, x0)
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
