@@ -84,6 +84,11 @@ fun
 <x0:t0>
 gseq_prod(xs: xs): (x0)
 //
+(*
+#symload sum with gseq_sum of 0100
+#symload prod with gseq_prod of 0100
+*)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -92,7 +97,9 @@ fun
 <x0:t0>
 gseq_print(xs: xs): void
 //
-(* ****** ****** *)
+(*
+#symload print with gseq_print of 0100
+*)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)

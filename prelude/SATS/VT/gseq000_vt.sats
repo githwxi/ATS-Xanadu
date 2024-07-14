@@ -70,6 +70,27 @@ fun
 <x0:vt>
 gseq_prod0(xs: ~xs): (x0)
 //
+(*
+#symload sum0 with gseq_sum0 of 0100
+#symload prod0 with gseq_prod0 of 0100
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_print0(xs: ~xs): void
+fun
+<xs:t0>
+<x0:t0>
+gseq_print1(xs: !xs): void
+//
+(*
+#symload print0 with gseq_print0 of 0100
+#symload print1 with gseq_print1 of 0100
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
