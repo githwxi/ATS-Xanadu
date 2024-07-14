@@ -12,11 +12,76 @@ all::
 all::all_sats
 all::all_dats
 ########################################################################
+# SATS
+all_sats::\
+gbas000_sats
+gbas000_sats: ; \
+$(NODE) $(TEST11) $(PRELUDE)/SATS/gbas000.sats 2>/dev/null
+all_sats::\
+gbas001_sats
+gbas001_sats: ; \
+$(NODE) $(TEST11) $(PRELUDE)/SATS/gbas001.sats 2>/dev/null
+all_sats::\
+gbas002_sats
+gbas002_sats: ; \
+$(NODE) $(TEST11) $(PRELUDE)/SATS/gbas002.sats 2>/dev/null
+########################################################################
+# SATS/VT
+########################################################################
+all_sats::\
+gbas000_vt_sats
+gbas000_vt_sats: ; \
+$(NODE) $(TEST11) $(PRELUDE)/SATS/VT/gbas000_vt.sats 2>/dev/null
+all_sats::\
+gbas001_vt_sats
+gbas001_vt_sats: ; \
+$(NODE) $(TEST11) $(PRELUDE)/SATS/VT/gbas001_vt.sats 2>/dev/null
+all_sats::\
+gbas002_vt_sats
+gbas002_vt_sats: ; \
+$(NODE) $(TEST11) $(PRELUDE)/SATS/VT/gbas002_vt.sats 2>/dev/null
+############
 all_sats::\
 list000_vt_sats
 list000_vt_sats: ; \
 $(NODE) $(TEST11) $(PRELUDE)/SATS/VT/list000_vt.sats 2>/dev/null
+all_sats::\
+list001_vt_sats
+list001_vt_sats: ; \
+$(NODE) $(TEST11) $(PRELUDE)/SATS/VT/list001_vt.sats 2>/dev/null
+############
+all_sats::\
+strm000_vt_sats
+strm000_vt_sats: ; \
+$(NODE) $(TEST11) $(PRELUDE)/SATS/VT/strm000_vt.sats 2>/dev/null
+all_sats::\
+strm001_vt_sats
+strm001_vt_sats: ; \
+$(NODE) $(TEST11) $(PRELUDE)/SATS/VT/strm001_vt.sats 2>/dev/null
 ########################################################################
+# DATS
+########################################################################
+all_dats::\
+strn000_dats
+strn000_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/strn000.dats 2>/dev/null
+############
+all_dats::\
+list000_dats
+list000_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/list000.dats 2>/dev/null
+all_dats::\
+list001_dats
+list001_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/list001.dats 2>/dev/null
+########################################################################
+# DATS/VT
+########################################################################
+all_dats::\
+strn000_vt_dats
+strn000_vt_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/VT/strn000_vt.dats 2>/dev/null
+############
 all_dats::\
 list000_vt_dats
 list000_vt_dats: ; \
@@ -25,7 +90,7 @@ all_dats::\
 list001_vt_dats
 list001_vt_dats: ; \
 $(NODE) $(TEST12) $(PRELUDE)/DATS/VT/list001_vt.dats 2>/dev/null
-######
+############
 all_dats::\
 strm000_vt_dats
 strm000_vt_dats: ; \

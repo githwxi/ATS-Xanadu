@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Mon 08 Jul 2024 12:53:10 PM EDT
+Sun 14 Jul 2024 09:17:49 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -38,62 +38,60 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
 #impltmp
-< xs:t0 >
 < x0:t0 >
-gseq_free(xs) =
+list_forall
+  (xs) = 
 (
-gseq_foritm0<xs><x0>(xs)
-) where
+  loop(xs) ) where
 {
-#impltmp
-foritm0$work<x0> = g_free<x0>
+fun
+loop
+(xs: list(x0)): bool =
+(
+case+ xs of
+| ~
+list_nil() => ( true )
+| ~
+list_cons(x1, xs) =>
+let
+val test =
+forall$test<x0>(x1) in
+if test then loop(xs) else false end)
 }
 //
 #impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_copy(xs) =
-(
-gseq_map1_self<xs><x0>(xs)
-) where
-{
+{ x0:t0 }
+gseq_forall<list(x0)><x0> = list_forall<x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
-map1$fopr<x0><x0> = g_copy<x0>
+< x0:t0 >
+list_foritm
+  (xs) = 
+(
+  loop(xs) ) where
+{
+fun
+loop
+(xs: list(x0)): void =
+(
+case+ xs of
+| ~
+list_nil() => ( (*void*) )
+| ~
+list_cons(x1, xs) =>
+let
+val () =
+foritm$work<x0>(x1) in loop(xs) end)
 }
 //
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_max = gseq_max0<xs><x0>
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_min = gseq_min0<xs><x0>
-//
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_sum = gseq_sum0<xs><x0>
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_prod = gseq_prod0<xs><x0>
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_length = gseq_length0<xs><x0>
+{ x0:t0 }
+gseq_foritm<list(x0)><x0> = list_foritm<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -101,4 +99,4 @@ gseq_length = gseq_length0<xs><x0>
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_gseq000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_list001.dats] *)

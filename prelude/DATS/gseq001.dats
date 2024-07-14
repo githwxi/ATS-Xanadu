@@ -41,15 +41,6 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq_length =
-gseq_length0<xs><x0>(*void*)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
 gseq_forall =
 gseq_forall0<xs><x0>(*void*)
 #impltmp
