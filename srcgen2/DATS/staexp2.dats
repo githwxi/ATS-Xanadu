@@ -1102,14 +1102,14 @@ then
 (
 if
 prfq
-then the_sort2_view(* lin*)
-else the_sort2_vwtp(*~lin*))
+then the_sort2_view(* prf*)
+else the_sort2_vwtp(*~prf*))
 else
 (
 if
 prfq
-then the_sort2_prop(* lin*)
-else the_sort2_type(*~lin*))
+then the_sort2_prop(* prf*)
+else the_sort2_type(*~prf*))
 ) : sort2//end-of-[val(s2t0)]
 //
 val
