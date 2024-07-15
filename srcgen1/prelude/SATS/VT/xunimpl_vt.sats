@@ -125,10 +125,12 @@ ifoldall1$fopr(r0, ni, !x0): (bool, r0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 fun
 <x0:vt
 ,y0:vt>
 z2forall0$test(~x0, ~y0): bool
+*)
 fun
 <x0:vt
 ,y0:vt>
