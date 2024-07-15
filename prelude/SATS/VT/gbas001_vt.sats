@@ -36,6 +36,36 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+#typedef ni = nint
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+max0$nil((*nil*)): (x0)
+fun
+<x0:vt>
+min0$nil((*nil*)): (x0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+get0_at$exn
+(xs: ~xs, i0: ni): x0
+fun
+<xs:vt>
+<x0:vt>
+set0_at$exn
+(~xs, i0:ni, x0:x0): void
+fun
+<xs:vt>
+<x0:vt>
+fset0_at$exn
+(~xs, i0:ni, x0:x0): (xs)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

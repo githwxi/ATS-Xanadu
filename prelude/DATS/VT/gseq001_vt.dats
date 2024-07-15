@@ -495,6 +495,42 @@ gseq_ifilter0_lstrq<xs><x0>(xs))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-15:
+Mon 15 Jul 2024 04:25:27 PM EDT
+*)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_get0_at
+  (xs, i0) =
+let
+//
+var r0: x0 // x0?
+val p0 = $addr(r0)
+//
+val b0 =
+(
+gseq_iforall0<xs><x0>(xs)
+) where
+{
+#impltmp
+iforall0$test
+<x0>(j0, x0) =
+if j0 < i0 then true else
+(
+$UN.p2tr_set<x0>(p0, x0); false)
+}
+in//let
+  if not(b0)
+  then $UN.p2tr_get<x0>(p0)
+  else get0_at$exn<xs><x0>(xs, i0)
+end//let//end-of-[gseq_get0_at(xs, i0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

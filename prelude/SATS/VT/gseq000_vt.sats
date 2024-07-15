@@ -141,9 +141,20 @@ fun
 <x0:vt>
 gseq_nilq1(xs: !xs): bool
 //
+fun
+<xs:vt>
+<x0:vt>
+gseq_consq0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_consq1(xs: !xs): bool
+//
 (*
 #symload nilq0 with gseq_nilq0 of 0100
 #symload nilq0 with gseq_nilq1 of 0100
+#symload consq0 with gseq_consq0 of 0100
+#symload consq0 with gseq_consq1 of 0100
 *)
 (* ****** ****** *)
 (* ****** ****** *)

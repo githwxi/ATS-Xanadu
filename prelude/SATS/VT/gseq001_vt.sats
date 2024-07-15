@@ -41,6 +41,12 @@ Authoremail: gmhwxiATgmailDOTcom
 fun
 <xs:vt>
 <x0:vt>
+gseq_listize0
+(xs: ~xs): list_vt(x0)//fun
+//
+fun
+<xs:vt>
+<x0:vt>
 gseq_strmize0
 (xs: ~xs): strm_vt(x0)//fun
 fun
@@ -49,18 +55,17 @@ fun
 gseq_strqize0
 (xs: ~xs): strq_vt(x0)//fun
 //
-fun
-<xs:vt>
-<x0:vt>
-gseq_listize0
-(xs: ~xs): list_vt(x0)//fun
-//
+#symload listize0 with gseq_listize0 of 0100
 #symload strmize0 with gseq_strmize0 of 0100
 #symload strqize0 with gseq_strqize0 of 0100
-#symload listize0 with gseq_listize0 of 0100
 //
 (* ****** ****** *)
 //
+fun
+<xs:vt>
+<x0:vt>
+gseq_rlistize0
+(xs: ~xs): list_vt(x0)//fun
 fun
 <xs:vt>
 <x0:vt>
@@ -71,15 +76,10 @@ fun
 <x0:vt>
 gseq_rstrqize0
 (xs: ~xs): strq_vt(x0)//fun
-fun
-<xs:vt>
-<x0:vt>
-gseq_rlistize0
-(xs: ~xs): list_vt(x0)//fun
 //
+#symload rlistize0 with gseq_rlistize0 of 0100
 #symload rstrmize0 with gseq_rstrmize0 of 0100
 #symload rstrqize0 with gseq_rstrqize0 of 0100
-#symload rlistize0 with gseq_rlistize0 of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -264,9 +264,9 @@ fun
 gseq_map1_self(xs: !xs): (xs)
 //
 #symload map0 with gseq_map0_ares of 0100
-#symload map1 with gseq_map0_ares of 0100
+#symload map1 with gseq_map1_ares of 0100
 #symload map0 with gseq_map0_self of 0101
-#symload map1 with gseq_map0_self of 0101
+#symload map1 with gseq_map1_self of 0101
 //
 (* ****** ****** *)
 //
@@ -285,34 +285,34 @@ gseq_map1_llist(xs: !xs): list_vt(y0)
 #symload map1 with gseq_map1_llist of 0110
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 fun
 <xs:vt>
 <x0:vt>
-<ys:vt>
-gseq_filter0_ares(xs: ~xs): (ys)
+<y0:vt>
+gseq_map0_lstrm(xs: ~xs): strm_vt(y0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_filter0_self(xs: ~xs): (xs)
+<y0:vt>
+gseq_map1_lstrm(xs: !xs): strm_vt(y0)
 //
 fun
 <xs:vt>
 <x0:vt>
-<ys:vt>
-gseq_filter1_ares(xs: !xs): (ys)
+<y0:vt>
+gseq_map0_lstrq(xs: ~xs): strq_vt(y0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_filter1_self(xs: !xs): (xs)
+<y0:vt>
+gseq_map1_lstrq(xs: !xs): strq_vt(y0)
 //
-#symload filter0 with gseq_filter0_ares of 0100
-#symload filter1 with gseq_filter1_ares of 0100
-#symload filter1 with gseq_filter1_self of 0101
-#symload filter0 with gseq_filter0_self of 0101
+#symload map0 with gseq_map0_lstrm of 0110
+#symload map1 with gseq_map1_lstrm of 0110
+#symload map0 with gseq_map0_lstrq of 0110
+#symload map1 with gseq_map1_lstrq of 0110
 //
-(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -330,6 +330,164 @@ gseq_imap1_llist(xs: !xs): list_vt(y0)
 #symload imap1 with gseq_imap1_llist of 0110
 //
 (* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_imap0_lstrm(xs: ~xs): strm_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_imap1_lstrm(xs: !xs): strm_vt(y0)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_imap0_lstrq(xs: ~xs): strq_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_imap1_lstrq(xs: !xs): strq_vt(y0)
+//
+#symload imap0 with gseq_imap0_lstrm of 0110
+#symload imap1 with gseq_imap1_lstrm of 0110
+#symload imap0 with gseq_imap0_lstrq of 0110
+#symload imap1 with gseq_imap1_lstrq of 0110
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_filter0_ares(xs: ~xs): (ys)
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_filter1_ares(xs: !xs): (ys)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_filter0_self(xs: ~xs): (xs)
+fun
+<xs:vt>
+<x0:vt>
+gseq_filter1_self(xs: !xs): (xs)
+//
+#symload filter0 with gseq_filter0_ares of 0100
+#symload filter1 with gseq_filter1_ares of 0100
+#symload filter0 with gseq_filter0_self of 0101
+#symload filter1 with gseq_filter1_self of 0101
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_filter0_llist(xs: ~xs): list_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_filter1_llist(xs: !xs): list_vt(x0)
+//
+#symload filter0 with gseq_filter0_llist of 0110
+#symload filter1 with gseq_filter1_llist of 0110
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_filter0_lstrm(xs: ~xs): strm_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_filter1_lstrm(xs: !xs): strm_vt(x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_filter0_lstrq(xs: ~xs): strq_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_filter1_lstrq(xs: !xs): strq_vt(x0)
+//
+#symload filter0 with gseq_filter0_lstrm of 0110
+#symload filter1 with gseq_filter1_lstrm of 0110
+#symload filter0 with gseq_filter0_lstrq of 0110
+#symload filter1 with gseq_filter1_lstrq of 0110
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_ifilter0_llist(xs: ~xs): list_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_ifilter1_llist(xs: !xs): list_vt(x0)
+//
+#symload ifilter0 with gseq_ifilter0_llist of 0110
+#symload ifilter1 with gseq_ifilter1_llist of 0110
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_ifilter0_lstrm(xs: ~xs): strm_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_ifilter1_lstrm(xs: !xs): strm_vt(x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_ifilter0_lstrq(xs: ~xs): strq_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_ifilter1_lstrq(xs: !xs): strq_vt(x0)
+//
+#symload ifilter0 with gseq_ifilter0_lstrm of 0110
+#symload ifilter1 with gseq_ifilter1_lstrm of 0110
+#symload ifilter0 with gseq_ifilter0_lstrq of 0110
+#symload ifilter1 with gseq_ifilter1_lstrq of 0110
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+(*
+HX-2024-07-15:
+Mon 15 Jul 2024 04:09:48 PM EDT
+*)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_get0_at
+(xs: ~xs, i0: ni): (x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_get0_at_opt
+(xs: ~xs, i0: ni): optn_vt(x0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_SATS_VT_gseq001_vt.sats] *)
