@@ -40,32 +40,6 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #impltmp
 < x0:t0 >
-max0$nil = max$nil<x0>(*nil*)
-#impltmp
-< x0:t0 >
-min0$nil = min$nil<x0>(*nil*)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-get0_at$exn = get_at$exn<xs><x0>
-#impltmp
-< xs:t0 >
-< x0:t0 >
-set0_at$exn = set_at$exn<xs><x0>
-#impltmp
-< xs:t0 >
-< x0:t0 >
-fset0_at$exn = fset_at$exn<xs><x0>
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< x0:t0 >
 forall0$test = forall$test<x0>
 #impltmp
 < x0:t0 >

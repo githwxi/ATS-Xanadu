@@ -55,18 +55,6 @@ gseq_cons
 fun
 <xs:t0>
 <x0:t0>
-gseq_head( xs ): (x0)
-fun
-<xs:t0>
-<x0:t0>
-gseq_tail( xs ): (xs)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
 gseq_max(xs: xs): (x0)
 fun
 <xs:t0>
@@ -101,11 +89,63 @@ gseq_print(xs: xs): void
 #symload print with gseq_print of 0100
 *)
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
-gseq_length(xs: xs): nint
+gseq_head(xs: xs): (x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_tail(xs: xs): (xs)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_head_opt
+  (xs: xs): optn_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_tail_opt
+  (xs: xs): optn_vt(xs)
+//
+(*
+#symload head with gseq_head of 0100
+#symload tail with gseq_tail of 0100
+#symload head_opt with gseq_head_opt of 0100
+#symload tail_opt with gseq_tail_opt of 0100
+*)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_length(xs: xs): nint // >= 0
+//
+(*
+#symload length with gseq_length of 0100
+*)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-15:
+Mon 15 Jul 2024 03:44:51 PM EDT
+*)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_get_at
+(xs: xs, i0: ni): (x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_get_at_opt
+(xs: xs, i0: ni): optn_vt(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
