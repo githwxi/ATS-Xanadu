@@ -281,24 +281,5 @@ gseq_imap_lstrq(xs: xs): strq_vt(y0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-(*
-HX-2024-07-15:
-Mon 15 Jul 2024 03:44:51 PM EDT
-*)
-//
-fun
-<xs:t0>
-<x0:t0>
-gseq_get_at
-(xs: xs, i0: ni): (x0)
-fun
-<xs:t0>
-<x0:t0>
-gseq_get_at_opt
-(xs: xs, i0: ni): optn_vt(x0)
-//
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_SATS_gseq001.sats] *)

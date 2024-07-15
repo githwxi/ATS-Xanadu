@@ -222,6 +222,42 @@ gseq_length1(xs: !xs): sint
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-15:
+Mon 15 Jul 2024 04:09:48 PM EDT
+*)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_get0_at
+(xs: ~xs, i0: ni): (x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_get1_at
+(xs: !xs, i0: ni): (x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_get0_at_opt
+(xs: ~xs, i0: ni): optn_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_get1_at_opt
+(xs: !xs, i0: ni): optn_vt(x0)
+//
+(*
+#symload get0_at with gseq_get0_at of 0100
+#symload get1_at with gseq_get1_at of 0100
+#symload get0_at_opt with gseq_get0_at_opt of 0100
+#symload get1_at_opt with gseq_get1_at_opt of 0100
+*)
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

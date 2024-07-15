@@ -52,6 +52,35 @@ g_noteq0<x0> = g_noteq<x0>
 { x0:t0 }
 g_noteq1<x0> = g_noteq<x0>
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+max0$nil<x0> = max$nil<x0>(*nil*)
+#impltmp
+{ x0:t0 }
+min0$nil<x0> = min$nil<x0>(*nil*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+get0_at$exn = get_at$exn<xs><x0>
+#impltmp
+< xs:t0 >
+< x0:t0 >
+set0_at$exn = set_at$exn<xs><x0>
+#impltmp
+< xs:t0 >
+< x0:t0 >
+fset0_at$exn = fset_at$exn<xs><x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
