@@ -69,13 +69,28 @@ fun
 g_add00(~x0, ~x0): (x0)
 fun
 <x0:vt>
+g_add01(~x0, !x0): (x0)
+//
+fun
+<x0:vt>
 g_sub00(~x0, ~x0): (x0)
+fun
+<x0:vt>
+g_sub00(~x0, !x0): (x0)
+//
 fun
 <x0:vt>
 g_mul00(~x0, ~x0): (x0)
 fun
 <x0:vt>
+g_mul01(~x0, !x0): (x0)
+//
+fun
+<x0:vt>
 g_div00(~x0, ~x0): (x0)
+fun
+<x0:vt>
+g_div01(~x0, !x0): (x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

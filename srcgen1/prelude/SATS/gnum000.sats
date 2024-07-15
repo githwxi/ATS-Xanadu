@@ -186,6 +186,12 @@ fun
 g_mul00(x: ~a, y: ~a): a
 fun
 <a:vt>
+g_mul01(x: ~a, y: !a): a
+fun
+<a:vt>
+g_mul10(x: !a, y: ~a): a
+fun
+<a:vt>
 g_mul11(x: !a, y: !a): a
 
 (* ****** ****** *)

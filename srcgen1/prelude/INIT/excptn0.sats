@@ -56,6 +56,16 @@ SubscriptExn of ((*void*))
 //
 (* ****** ****** *)
 //
+(*
+HX-2024-07-15:
+Generally undefined value
+*)
+//
+excptcon
+UndefinedExn of ((*void*))
+//
+(* ****** ****** *)
+//
 // For indicating the failure of
 excptcon AssertExn of () // an assertion
 // For indicating something expected

@@ -19,12 +19,20 @@ gseq_cons0(x0, xs): xs
 fun
 <xs:vt>
 <x0:vt>
+gseq_nilq0(~xs): bool
+fun
+<xs:vt>
+<x0:vt>
 gseq_nilq1(!xs): bool
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_consq0(~xs): bool
 fun
 <xs:vt>
 <x0:vt>
 gseq_consq1(!xs): bool
-//
 //
 (* ****** ****** *)
 //
@@ -568,7 +576,10 @@ fun
 gseq_add0$nil(): (x0)
 fun
 <xs:vt>
-<x0:vt>gseq_add0(xs): (x0)
+<x0:vt>gseq_add0(~xs): (x0)
+fun
+<xs:vt>
+<x0:vt>gseq_add1(!xs): (x0)
 //
 fun
 <x0:vt>
@@ -576,6 +587,9 @@ gseq_mul0$nil(): (x0)
 fun
 <xs:vt>
 <x0:vt>gseq_mul0(~xs): (x0)
+fun
+<xs:vt>
+<x0:vt>gseq_mul1(!xs): (x0)
 //
 fun
 <xs:vt>

@@ -13,6 +13,35 @@ which are not supposed to be implemented in srcgen1
 //
 fun
 <x0:t0>
+max$nil((*nil*)): (x0)
+fun
+<x0:t0>
+min$nil((*nil*)): (x0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+get_at$exn
+(xs: xs, i0: si): x0
+fun
+<xs:t0>
+<x0:t0>
+set_at$exn
+(xs:xs,si:si,x0:x0): void
+fun
+<xs:t0>
+<x0:t0>
+fset_at$exn
+(xs:xs,si:si,x0:x0): (xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
 foritm$work(x0: x0): void
 //
 fun
