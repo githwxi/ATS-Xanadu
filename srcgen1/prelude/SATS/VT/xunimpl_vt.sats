@@ -18,7 +18,16 @@ gseq_sum0(xs: ~xs): (x0)
 fun
 <xs:vt>
 <x0:vt>
+gseq_sum1(xs: !xs): (x0)
+//
+fun
+<xs:vt>
+<x0:vt>
 gseq_prod0(xs: ~xs): (x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_prod1(xs: !xs): (x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -199,7 +208,18 @@ fun
 <xs:vt>
 <x0:vt>
 <r0:vt>
+gseq_folditm1(!xs, r0): ( r0 )
+//
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
 gseq_foldall0(~xs, r0): ( r0 )
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_foldall1(!xs, r0): ( r0 )
 //
 (* ****** ****** *)
 //
@@ -212,7 +232,18 @@ fun
 <xs:vt>
 <x0:vt>
 <r0:vt>
+gseq_rfolditm1(!xs, r0): ( r0 )
+//
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
 gseq_rfoldall0(~xs, r0): ( r0 )
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_rfoldall1(!xs, r0): ( r0 )
 //
 (* ****** ****** *)
 //
@@ -225,7 +256,18 @@ fun
 <xs:vt>
 <x0:vt>
 <r0:vt>
+gseq_ifolditm1(!xs, r0): ( r0 )
+//
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
 gseq_ifoldall0(~xs, r0): ( r0 )
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_ifoldall1(!xs, r0): ( r0 )
 //
 (* ****** ****** *)
 (* ****** ****** *)
