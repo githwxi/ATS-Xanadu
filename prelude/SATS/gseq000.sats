@@ -53,13 +53,13 @@ gseq_cons
 (* ****** ****** *)
 //
 fun
-<xs:vt>
-<x0:vt>
-gseq_free( ~xs ): void
+<xs:t0>
+<x0:t0>
+gseq_head( xs ): (x0)
 fun
-<xs:vt>
-<x0:vt>
-gseq_copy( !xs ): (xs)
+<xs:t0>
+<x0:t0>
+gseq_tail( xs ): (xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -100,6 +100,14 @@ gseq_print(xs: xs): void
 (*
 #symload print with gseq_print of 0100
 *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_length(xs: xs): nint
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)

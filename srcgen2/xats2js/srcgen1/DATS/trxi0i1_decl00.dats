@@ -539,11 +539,16 @@ i0valdcl_get_dpat(ival)
 val tdxp =
 i0valdcl_get_tdxp(ival)
 //
-val ibnd =
-trxi0i1_i0pat(env0, ipat)
-//
-val tdxp =
+val
+tdxp =
 trxi0i1_teqi0exp(env0, tdxp)
+//
+(*
+HX-2024-07-14:
+For non-recursive declaration!
+*)
+val
+ibnd = trxi0i1_i0pat(env0, ipat)
 //
 in//let
 (

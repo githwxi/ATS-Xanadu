@@ -112,6 +112,10 @@ end//let
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#symload prod0 with gseq_prod0
+//
+(* ****** ****** *)
+(* ****** ****** *)
 (*
 HX-2024-01-03:
 More than 10 template layers!
