@@ -513,12 +513,23 @@ fun
 gseq_min0_optn(xs: ~xs): optn_vt(x0)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+(*
+HX-2024-07-15:
+Mon 15 Jul 2024 06:32:03 PM EDT
+*)
 //
 fun
 <xs:vt>
 <x0:vt>
 get0_at$exn
 (xs: ~xs, i0: ni): x0
+fun
+<xs:vt>
+<x0:vt>
+get1_at$exn
+(xs: !xs, i0: ni): x0
+//
 fun
 <xs:vt>
 <x0:vt>
@@ -537,7 +548,20 @@ gseq_get0_at(xs: ~xs, i0: ni): (x0)
 fun
 <xs:vt>
 <x0:vt>
+gseq_set0_at(xs: ~xs, i0: ni, x0: ~x0): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_fset0_at(xs: ~xs, i0: ni, x0: ~x0): (xs)
+//
+fun
+<xs:vt>
+<x0:vt>
 gseq_get0_at_opt(xs: ~xs, i0: ni): optn_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_set0_at_opt(xs: ~xs, i0: ni, x0: ~x0): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -98,6 +98,21 @@ gseq_length = gseq_length0<xs><x0>
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_get_at = gseq_get0_at<xs><x0>
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_set_at = gseq_set0_at<xs><x0>
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_fset_at = gseq_fset0_at<xs><x0>
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

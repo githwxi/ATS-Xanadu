@@ -186,21 +186,65 @@ val p0 = $addr(r0)
 //
 val b0 =
 (
-gseq_iforall0<xs><x0>(xs)
+gseq_iforall1<xs><x0>(xs)
 ) where
 {
 #impltmp
-iforall0$test
+iforall1$test
 <x0>(j0, x0) =
-if j0 < i0 then true else
+if
+(j0 < i0)
+then true else
+let
+val x0 =
+g_copy<x0>(x0) in
+$UN.p2tr_set<x0>(p0, x0); false
+end//let//end-of-[if]
+}
+in//let
+  if
+  not(b0)
+  then
+  let val () =
+  g_free<xs>(xs) in
+  $UN.p2tr_get<x0>(p0) end
+  else get0_at$exn<xs><x0>(xs, i0)
+end//let//end-of-[gseq_get0_at(xs, i0)]
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_get1_at
+  (xs, i0) =
+let
+//
+var r0: x0 // x0?
+val p0 = $addr(r0)
+//
+val b0 =
 (
-$UN.p2tr_set<x0>(p0, x0); false)
+gseq_iforall1<xs><x0>(xs)
+) where
+{
+#impltmp
+iforall1$test
+<x0>(j0, x0) =
+if
+(j0 < i0)
+then true else
+let
+val x0 =
+g_copy<x0>(x0) in
+$UN.p2tr_set<x0>(p0, x0); false
+end//let//end-of-[if]
 }
 in//let
   if not(b0)
   then $UN.p2tr_get<x0>(p0)
-  else get0_at$exn<xs><x0>(xs, i0)
-end//let//end-of-[gseq_get0_at(xs, i0)]
+  else get1_at$exn<xs><x0>(xs, i0)
+end//let//end-of-[gseq_get1_at(xs, i0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
