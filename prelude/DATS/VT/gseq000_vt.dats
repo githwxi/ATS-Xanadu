@@ -54,7 +54,7 @@ end where // end-of-[let]
 {
 #impltmp
 folditm0$fopr
-<x0><x0>(r0, x0) = g_add00<x0>(x0, x0)
+<x0><x0>(r0, x0) = g_add00<x0>(r0, x0)
 }
 //
 (* ****** ****** *)
@@ -71,7 +71,7 @@ end where // end-of-[let]
 {
 #impltmp
 folditm0$fopr
-<x0><x0>(r0, x0) = g_mul00<x0>(x0, x0)
+<x0><x0>(r0, x0) = g_mul00<x0>(r0, x0)
 }
 //
 (* ****** ****** *)

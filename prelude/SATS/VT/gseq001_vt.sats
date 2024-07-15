@@ -41,21 +41,6 @@ Authoremail: gmhwxiATgmailDOTcom
 fun
 <xs:vt>
 <x0:vt>
-gseq_length0(xs: ~xs): sint
-fun
-<xs:vt>
-<x0:vt>
-gseq_length1(xs: !xs): sint
-//
-#symload length0 with gseq_length0
-#symload length1 with gseq_length1
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
 gseq_strmize0
 (xs: ~xs): strm_vt(x0)//fun
 fun

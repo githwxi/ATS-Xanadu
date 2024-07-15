@@ -41,6 +41,18 @@ Authoremail: gmhwxiATgmailDOTcom
 fun
 <xs:vt>
 <x0:vt>
+gseq_free( ~xs ): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_copy( !xs ): (xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
 gseq_nil0((*nil*)): (xs)
 fun
 <xs:vt>
@@ -57,7 +69,38 @@ gseq_max0(xs: ~xs): (x0)
 fun
 <xs:vt>
 <x0:vt>
+gseq_max1(xs: !xs): (x0)
+//
+fun
+<xs:vt>
+<x0:vt>
 gseq_min0(xs: ~xs): (x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_min1(xs: !xs): (x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_max0_opt
+  (xs: ~xs): optn_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_max1_opt
+  (xs: !xs): optn_vt(x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_min0_opt
+  (xs: ~xs): optn_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_min1_opt
+  (xs: !xs): optn_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -68,29 +111,103 @@ gseq_sum0(xs: ~xs): (x0)
 fun
 <xs:vt>
 <x0:vt>
+gseq_sum1(xs: !xs): (x0)
+//
+fun
+<xs:vt>
+<x0:vt>
 gseq_prod0(xs: ~xs): (x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_prod1(xs: !xs): (x0)
 //
 (*
 #symload sum0 with gseq_sum0 of 0100
+#symload sum1 with gseq_sum1 of 0100
 #symload prod0 with gseq_prod0 of 0100
+#symload prod1 with gseq_prod1 of 0100
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-<xs:t0>
-<x0:t0>
+<xs:vt>
+<x0:vt>
+gseq_nilq0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_nilq1(xs: !xs): bool
+//
+(*
+#symload nilq0 with gseq_nilq0 of 0100
+#symload nilq0 with gseq_nilq1 of 0100
+*)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_head0(xs: ~xs): (x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_head1(xs: !xs): (x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_head0_opt
+  (xs : ~xs): optn_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_head1_opt
+  (xs : !xs): optn_vt(x0)
+//
+(*
+#symload head0 with gseq_head0 of 0100
+#symload head0 with gseq_head1 of 0100
+#symload head0 with gseq_head0_opt of 0100
+#symload head0 with gseq_head1_opt of 0100
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
 gseq_print0(xs: ~xs): void
 fun
-<xs:t0>
-<x0:t0>
+<xs:vt>
+<x0:vt>
 gseq_print1(xs: !xs): void
 //
 (*
 #symload print0 with gseq_print0 of 0100
 #symload print1 with gseq_print1 of 0100
 *)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_length0(xs: ~xs): sint
+fun
+<xs:vt>
+<x0:vt>
+gseq_length1(xs: !xs): sint
+//
+(*
+#symload length0 with gseq_length0 of 0100
+#symload length1 with gseq_length1 of 0100
+*)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

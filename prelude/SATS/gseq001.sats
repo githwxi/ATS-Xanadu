@@ -89,14 +89,6 @@ gseq_istrqize
 fun
 <xs:t0>
 <x0:t0>
-gseq_length(xs: xs): nint
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
 gseq_forall(xs: xs): bool
 fun
 <xs:t0>
