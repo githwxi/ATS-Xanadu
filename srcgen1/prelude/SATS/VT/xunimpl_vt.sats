@@ -493,7 +493,14 @@ fun
 max0$nil((*nil*)): (x0)
 fun
 <x0:vt>
+max1$nil((*nil*)): (x0)
+//
+fun
+<x0:vt>
 min0$nil((*nil*)): (x0)
+fun
+<x0:vt>
+min1$nil((*nil*)): (x0)
 //
 fun
 <xs:vt>
