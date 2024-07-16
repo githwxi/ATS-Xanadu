@@ -170,6 +170,131 @@ end(*let*)//end-of-[gseq_length1(xs)]
 (* ****** ****** *)
 //
 (*
+HX-2024-07-16:
+Tue 16 Jul 2024 07:24:26 AM EDT
+*)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_max0
+  ( xs ) =
+//
+let
+//
+var r0: x0 // x0?
+val p0 = $addr(r0)
+//
+val i1 =
+(
+gseq_ifolditm0
+<xs><x0>(xs, 0)) where
+{
+#impltmp
+ifolditm0$fopr
+<x0>(i1, i0, x0) =
+if
+(i0 <= 0)
+then (i1+1) where
+{
+val () =
+$UN.p2tr_set<x0>(p0, x0)}
+else (i1+1) where
+{
+val r0 =
+$UN.p2tr_get<x0>(p0)
+val r0 = g_max00(r0, x0)
+val () =
+$UN.p2tr_set<x0>(p0, r0)}
+}
+//
+in//let
+(
+  if i1 <= 0
+  then max0$nil<x0>()
+  else $UN.p2tr_get<x0>(p0))
+end(*let*)//end-of-[gseq_max0(xs)]
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_max1
+  ( xs ) =
+//
+let
+//
+var r0: x0 // x0?
+val p0 = $addr(r0)
+//
+val i1 =
+(
+gseq_ifolditm1
+<xs><x0>(xs, 0)) where
+{
+#impltmp
+ifolditm1$fopr
+<x0>(i1, i0, x0) =
+if
+(i0 <= 0)
+then (i1+1) where
+{
+val x0 =
+(
+  g_copy<x0>(x0))
+val () =
+$UN.p2tr_set<x0>(p0, x0)}
+else (i1+1) where
+{
+val r0 =
+$UN.p2tr_get<x0>(p0)
+val r0 = g_max01(r0, x0)
+val () =
+$UN.p2tr_set<x0>(p0, r0)}
+}
+//
+in//let
+(
+  if i1 <= 0
+  then max1$nil<x0>()
+  else $UN.p2tr_get<x0>(p0))
+end(*let*)//end-of-[gseq_max1(xs)]
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_min0
+  ( xs ) =
+(
+gseq_max0<xs><x0>(xs)
+) where
+{
+#impltmp
+g_max00<x0> = g_min00<x0>
+#impltmp
+max0$nil<x0> = min0$nil<x0>
+}(*where*)//end-of-[gseq_min0(xs)]
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_min1
+  ( xs ) =
+(
+gseq_max1<xs><x0>(xs)
+) where
+{
+#impltmp
+g_max01<x0> = g_min01<x0>
+#impltmp
+max1$nil<x0> = min1$nil<x0>
+}(*where*)//end-of-[gseq_min1(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2024-07-15:
 Mon 15 Jul 2024 04:25:27 PM EDT
 *)

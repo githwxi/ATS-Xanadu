@@ -39,9 +39,19 @@ Authoremail: gmhwxiATgmailDOTcom
 #typedef ni = nint
 (* ****** ****** *)
 //
+(*
+HX-2024-07-15
+*)
 fun
 <x0:vt>
 max0$nil((*nil*)): (x0)
+fun
+<x0:vt>
+max1$nil((*nil*)): (x0)
+//
+fun
+<x0:vt>
+min1$nil((*nil*)): (x0)
 fun
 <x0:vt>
 min0$nil((*nil*)): (x0)
@@ -49,6 +59,9 @@ min0$nil((*nil*)): (x0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-15
+*)
 fun
 <xs:vt>
 <x0:vt>

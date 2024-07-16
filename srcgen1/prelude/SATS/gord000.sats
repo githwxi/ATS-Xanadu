@@ -164,6 +164,12 @@ fun
 g_max00(x: ~a, y: ~a): (a)
 fun
 <a:vt>
+g_max01(x: ~a, y: !a): (a)
+fun
+<a:vt>
+g_max10(x: !a, y: ~a): (a)
+fun
+<a:vt>
 g_max11(x: !a, y: !a): (a)
 
 (* ****** ****** *)
@@ -171,6 +177,12 @@ g_max11(x: !a, y: !a): (a)
 fun
 <a:vt>
 g_min00(x: ~a, y: ~a): (a)
+fun
+<a:vt>
+g_min01(x: ~a, y: !a): (a)
+fun
+<a:vt>
+g_min10(x: !a, y: ~a): (a)
 fun
 <a:vt>
 g_min11(x: !a, y: !a): (a)
