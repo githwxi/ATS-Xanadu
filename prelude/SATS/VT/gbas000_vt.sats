@@ -38,12 +38,22 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 fun
 <a:vt>
 g_free0( ~a ): void
 fun
 <a:vt>
+g_free1( !a ): void
+*)
+(*
+fun
+<a:vt>
+g_copy0( ~a ): ( a )
+fun
+<a:vt>
 g_copy1( !a ): ( a )
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

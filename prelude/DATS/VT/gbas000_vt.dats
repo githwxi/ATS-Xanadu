@@ -38,6 +38,27 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+#impltmp
+{ x0:t0 }
+g_free0<x0>(obj) = ()
+#impltmp
+{ x0:vt }
+g_free1<x0>(obj) = ()
+*)
+//
+(*
+#impltmp
+{ x0:vt }
+g_copy0<x0>(obj) = obj
+#impltmp
+{ x0:t0 }
+g_copy1<x0>(obj) = obj
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 { x0:t0 }
 g_equal0<x0> = g_equal<x0>
