@@ -495,6 +495,77 @@ gseq_ifilter0_lstrq<xs><x0>(xs))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-16:
+Tue 16 Jul 2024 11:19:32 AM EDT
+*)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_exists0
+  ( xs ) =
+let
+//
+#impltmp
+forall0$test<x0>(x0) =
+(
+  not(exists0$test<x0>(x0)))
+//
+in//let
+  not(gseq_forall0<xs><x0>(xs))
+end//let//end-of-[gseq_exists0(xs)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_rexists0
+  ( xs ) =
+let
+//
+#impltmp
+rforall0$test<x0>(x0) =
+(
+  not(rexists0$test<x0>(x0)))
+//
+in//let
+  not(gseq_rforall0<xs><x0>(xs))
+end(*let*)//end-of-[gseq_rexists0(xs)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_iexists0
+  ( xs ) =
+(
+not(gseq_iforall0<xs><x0>(xs))
+) where
+{
+//
+#impltmp
+iforall0$test<x0>(i0, x0) =
+(
+  not(iexists0$test<x0>(i0, x0)))
+//
+}(*where*)//end-of-[gseq_iexists0(xs)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_irexists0
+  ( xs ) =
+(
+not(gseq_irforall0<xs><x0>(xs))
+) where
+{
+//
+#impltmp
+irforall0$test<x0>(i0, x0) =
+(
+  not(irexists0$test<x0>(i0, x0)))
+//
+}(*where*)//end-of-[gseq_irexists0(xs)]
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
