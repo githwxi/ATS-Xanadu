@@ -99,6 +99,71 @@ gseq_iz2strqize
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_z2forall(xs: xs, ys: ys): bool
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_rz2forall(xs: xs, ys: ys): bool
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_iz2forall(xs: xs, ys: ys): bool
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_irz2forall(xs: xs, ys: ys): bool
+//
+#symload z2forall with gseq_z2forall of 0100
+#symload z2forall with gseq_z2forall of 0100
+#symload rz2forall with gseq_rz2forall of 0100
+#symload rz2forall with gseq_rz2forall of 0100
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_z2foritm(xs: xs, ys: ys): void
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_rz2foritm(xs: xs, ys: ys): void
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_iz2foritm(xs: xs, ys: ys): void
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_irz2foritm(xs: xs, ys: ys): void
+//
+#symload z2foritm with gseq_z2foritm of 0100
+#symload z2foritm with gseq_z2foritm of 0100
+#symload rz2foritm with gseq_rz2foritm of 0100
+#symload rz2foritm with gseq_rz2foritm of 0100
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

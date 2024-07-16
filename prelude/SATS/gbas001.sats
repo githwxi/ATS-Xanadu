@@ -153,6 +153,10 @@ fun
 <x0:t0>
 <y0:vt>
 imap$fopr(pos: ni, itm: x0): (y0)
+fun
+<x0:t0>
+<y0:vt>
+irmap$fopr(pos: ni, itm: x0): (y0)
 //
 (* ****** ****** *)
 //
@@ -165,6 +169,9 @@ rfilter$fopr(itm: x0): bool
 fun
 <x0:t0>
 ifilter$fopr(pos: ni, itm: x0): bool
+fun
+<x0:t0>
+irfilter$fopr(pos: ni, itm: x0): bool
 //
 (* ****** ****** *)
 //
@@ -180,6 +187,10 @@ fun
 <x0:t0>
 <y0:vt>
 imapoptn$fopr(pos: ni, itm: x0): optn_vt(y0)
+fun
+<x0:t0>
+<y0:vt>
+irmapoptn$fopr(pos: ni, itm: x0): optn_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -195,6 +206,10 @@ fun
 <x0:t0>
 <y0:vt>
 imaplist$fopr(pos: ni, itm: x0): list_vt(y0)
+fun
+<x0:t0>
+<y0:vt>
+irmaplist$fopr(pos: ni, itm: x0): list_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -210,6 +225,10 @@ fun
 <x0:t0>
 <y0:vt>
 imapstrm$fopr(pos: ni, itm: x0): strm_vt(y0)
+fun
+<x0:t0>
+<y0:vt>
+irmapstrm$fopr(pos: ni, itm: x0): strm_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -225,6 +244,10 @@ fun
 <x0:t0>
 <y0:vt>
 imapstrq$fopr(pos: ni, itm: x0): strq_vt(y0)
+fun
+<x0:t0>
+<y0:vt>
+irmapstrq$fopr(pos: ni, itm: x0): strq_vt(y0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
