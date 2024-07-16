@@ -174,9 +174,9 @@ HX-2024-07-16:
 Tue 16 Jul 2024 07:24:26 AM EDT
 *)
 //
-fun
-<xs:vt>
-<x0:vt>
+#impltmp
+< xs:vt >
+< x0:vt >
 gseq_max0
   ( xs ) =
 //
@@ -215,9 +215,9 @@ in//let
   else $UN.p2tr_get<x0>(p0))
 end(*let*)//end-of-[gseq_max0(xs)]
 //
-fun
-<xs:vt>
-<x0:vt>
+#impltmp
+< xs:vt >
+< x0:vt >
 gseq_max1
   ( xs ) =
 //
@@ -261,9 +261,9 @@ end(*let*)//end-of-[gseq_max1(xs)]
 //
 (* ****** ****** *)
 //
-fun
-<xs:vt>
-<x0:vt>
+#impltmp
+< xs:vt >
+< x0:vt >
 gseq_min0
   ( xs ) =
 (
@@ -276,9 +276,9 @@ g_max00<x0> = g_min00<x0>
 max0$nil<x0> = min0$nil<x0>
 }(*where*)//end-of-[gseq_min0(xs)]
 //
-fun
-<xs:vt>
-<x0:vt>
+#impltmp
+< xs:vt >
+< x0:vt >
 gseq_min1
   ( xs ) =
 (
@@ -292,6 +292,59 @@ max1$nil<x0> = min1$nil<x0>
 }(*where*)//end-of-[gseq_min1(xs)]
 //
 (* ****** ****** *)
+//
+(*
+HX-2024-07-16
+Tue 16 Jul 2024 06:43:04 PM EDT
+*)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_max0_opt
+  ( xs ) =
+if
+gseq_nilq1<xs><x0>(xs)
+then
+( g_free<xs>(xs)
+; optn_vt_nil(*void*)) else
+optn_vt_cons(gseq_max0<xs><x0>(xs))
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_max1_opt
+  ( xs ) =
+if
+gseq_nilq1<xs><x0>(xs)
+then optn_vt_nil(*void*) else
+optn_vt_cons(gseq_max1<xs><x0>(xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_min0_opt
+  ( xs ) =
+if
+gseq_nilq1<xs><x0>(xs)
+then
+( g_free<xs>(xs)
+; optn_vt_nil(*void*)) else
+optn_vt_cons(gseq_min0<xs><x0>(xs))
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_min1_opt
+  ( xs ) =
+if
+gseq_nilq1<xs><x0>(xs)
+then optn_vt_nil(*void*) else
+optn_vt_cons(gseq_min1<xs><x0>(xs))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -299,9 +352,9 @@ HX-2024-07-15:
 Mon 15 Jul 2024 04:25:27 PM EDT
 *)
 //
-fun
-<xs:vt>
-<x0:vt>
+#impltmp
+< xs:vt >
+< x0:vt >
 gseq_get0_at
   (xs, i0) =
 let
@@ -334,9 +387,9 @@ end//let//end-of-[gseq_get0_at(xs, i0)]
 //
 (* ****** ****** *)
 //
-fun
-<xs:vt>
-<x0:vt>
+#impltmp
+< xs:vt >
+< x0:vt >
 gseq_get1_at
   (xs, i0) =
 let
