@@ -43,6 +43,23 @@ gseq_rstrqize0
 //
 fun
 <x0:vt>
+irforall0$test(ni, ~x0): bool
+fun
+<x0:vt>
+irforall1$test(ni, !x0): bool
+//
+fun
+<x0:vt>
+irexists0$test(ni, ~x0): bool
+fun
+<x0:vt>
+irexists1$test(ni, !x0): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
 foritm0$work(x0: ~x0): void
 fun
 <x0:vt>
@@ -608,6 +625,59 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_fset0_at_opt(xs: ~xs, i0: ni, x0: ~x0): optn_vt(xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_irforall0(~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_irforall1(!xs): bool
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_irexists0(~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_irexists1(!xs): bool
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_irforitm0(~xs): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_irforitm1(!xs): void
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_irfolditm0(~xs, r0): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_irfolditm1(!xs, r0): void
+//
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_irfoldall0(~xs, r0): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_irfoldall1(!xs, r0): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)

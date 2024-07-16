@@ -356,6 +356,9 @@ exists0$test(x0: ~x0): bool
 fun
 <x0:vt>
 exists1$test(x0: !x0): bool
+fun
+<x0:vt>
+exists2$test(x0: &x0): bool
 //
 fun
 <x0:t0>

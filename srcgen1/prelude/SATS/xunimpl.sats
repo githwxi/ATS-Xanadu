@@ -282,6 +282,33 @@ fun
 list_iforitm(xs: list(x0)): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_irforall(xs): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_irexists(xs): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_irforitm(xs): void
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_irfolditm(xs, r0): void
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_irfoldall(xs, r0): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
