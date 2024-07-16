@@ -181,6 +181,7 @@ gseq_irforitm1(xs: !xs): void
 #symload irforitm1 with gseq_irforitm1 of 0100
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <xs:vt>
@@ -225,6 +226,17 @@ fun
 <x0:vt>
 <r0:vt>
 gseq_irfolditm1(!xs, r0): (r0)
+//
+(* ****** ****** *)
+//
+#symload folditm0 with gseq_folditm0 of 0100
+#symload folditm1 with gseq_folditm1 of 0100
+#symload rfolditm0 with gseq_rfolditm0 of 0100
+#symload rfolditm1 with gseq_rfolditm1 of 0100
+#symload ifolditm0 with gseq_ifolditm0 of 0100
+#symload ifolditm1 with gseq_ifolditm1 of 0100
+#symload irfolditm0 with gseq_irfolditm0 of 0100
+#symload irfolditm1 with gseq_irfolditm1 of 0100
 //
 (* ****** ****** *)
 //
@@ -282,15 +294,6 @@ gseq_irfoldall1(!xs, r0): (r0)
 #symload ifoldall1 with gseq_ifoldall1 of 0100
 #symload irfoldall0 with gseq_irfoldall0 of 0100
 #symload irfoldall1 with gseq_irfoldall1 of 0100
-//
-#symload folditm0 with gseq_folditm0 of 0100
-#symload folditm1 with gseq_folditm1 of 0100
-#symload rfolditm0 with gseq_rfolditm0 of 0100
-#symload rfolditm1 with gseq_rfolditm1 of 0100
-#symload ifolditm0 with gseq_ifolditm0 of 0100
-#symload ifolditm1 with gseq_ifolditm1 of 0100
-#symload irfolditm0 with gseq_irfolditm0 of 0100
-#symload irfolditm1 with gseq_irfolditm1 of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -47,10 +47,95 @@ forall1$test = forall$test<x0>
 //
 #impltmp
 < x0:t0 >
+rforall0$test = rforall$test<x0>
+#impltmp
+< x0:t0 >
+rforall1$test = rforall$test<x0>
+//
+#impltmp
+< x0:t0 >
+iforall0$test = iforall$test<x0>
+#impltmp
+< x0:t0 >
+iforall1$test = iforall$test<x0>
+//
+#impltmp
+< x0:t0 >
+irforall0$test = irforall$test<x0>
+#impltmp
+< x0:t0 >
+irforall1$test = irforall$test<x0>
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
 foritm0$work = foritm$work<x0>
 #impltmp
 < x0:t0 >
 foritm1$work = foritm$work<x0>
+//
+#impltmp
+< x0:t0 >
+rforitm0$work = rforitm$work<x0>
+#impltmp
+< x0:t0 >
+rforitm1$work = rforitm$work<x0>
+//
+#impltmp
+< x0:t0 >
+iforitm0$work = iforitm$work<x0>
+#impltmp
+< x0:t0 >
+iforitm1$work = iforitm$work<x0>
+//
+#impltmp
+< x0:t0 >
+irforitm0$work = irforitm$work<x0>
+#impltmp
+< x0:t0 >
+irforitm1$work = irforitm$work<x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+< r0:vt >
+folditm0$fopr = folditm$fopr<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+folditm1$fopr = folditm$fopr<x0><r0>
+//
+#impltmp
+< x0:t0 >
+< r0:vt >
+rfolditm0$fopr = rfolditm$fopr<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+rfolditm1$fopr = rfolditm$fopr<x0><r0>
+//
+#impltmp
+< x0:t0 >
+< r0:vt >
+ifolditm0$fopr = ifolditm$fopr<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+ifolditm1$fopr = ifolditm$fopr<x0><r0>
+//
+#impltmp
+< x0:t0 >
+< r0:vt >
+irfolditm0$fopr = irfolditm$fopr<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+irfolditm1$fopr = irfolditm$fopr<x0><r0>
+//
+(* ****** ****** *)
 //
 #impltmp
 < x0:t0 >
@@ -64,11 +149,29 @@ foldall1$fopr = foldall$fopr<x0><r0>
 #impltmp
 < x0:t0 >
 < r0:vt >
-folditm0$fopr = folditm$fopr<x0><r0>
+rfoldall0$fopr = rfoldall$fopr<x0><r0>
 #impltmp
 < x0:t0 >
 < r0:vt >
-folditm1$fopr = folditm$fopr<x0><r0>
+rfoldall1$fopr = rfoldall$fopr<x0><r0>
+//
+#impltmp
+< x0:t0 >
+< r0:vt >
+ifoldall0$fopr = ifoldall$fopr<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+ifoldall1$fopr = ifoldall$fopr<x0><r0>
+//
+#impltmp
+< x0:t0 >
+< r0:vt >
+irfoldall0$fopr = irfoldall$fopr<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+irfoldall1$fopr = irfoldall$fopr<x0><r0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -82,6 +185,15 @@ map0$fopr = map$fopr<x0><y0>
 < y0:vt >
 map1$fopr = map$fopr<x0><y0>
 //
+#impltmp
+< x0:t0 >
+< y0:vt >
+rmap0$fopr = rmap$fopr<x0><y0>
+#impltmp
+< x0:t0 >
+< y0:vt >
+rmap1$fopr = rmap$fopr<x0><y0>
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -90,6 +202,13 @@ filter0$test = filter$test<x0>
 #impltmp
 < x0:t0 >
 filter1$test = filter$test<x0>
+//
+#impltmp
+< x0:t0 >
+rfilter0$test = rfilter$test<x0>
+#impltmp
+< x0:t0 >
+rfilter1$test = rfilter$test<x0>
 //
 (* ****** ****** *)
 //
