@@ -523,7 +523,7 @@ fun
 <xs:vt>
 <x0:vt>
 get0_at$exn
-(xs: ~xs, i0: ni): x0
+  (i0: ni): x0
 fun
 <xs:vt>
 <x0:vt>
@@ -534,12 +534,23 @@ fun
 <xs:vt>
 <x0:vt>
 set0_at$exn
-(~xs, i0:ni, x0:x0): void
+  (i0: ni): void
+fun
+<xs:vt>
+<x0:vt>
+set1_at$exn
+(xs: !xs, i0: ni): void
+//
 fun
 <xs:vt>
 <x0:vt>
 fset0_at$exn
-(~xs, i0:ni, x0:x0): (xs)
+  (i0: ni): (xs)
+fun
+<xs:vt>
+<x0:vt>
+fset1_at$exn
+(xs: !xs, i0:ni): (xs)
 //
 fun
 <xs:vt>
@@ -548,11 +559,25 @@ gseq_get0_at(xs: ~xs, i0: ni): (x0)
 fun
 <xs:vt>
 <x0:vt>
+gseq_get1_at(xs: !xs, i0: ni): (x0)
+//
+fun
+<xs:vt>
+<x0:vt>
 gseq_set0_at(xs: ~xs, i0: ni, x0: ~x0): void
 fun
 <xs:vt>
 <x0:vt>
+gseq_set1_at(xs: !xs, i0: ni, x0: ~x0): void
+//
+fun
+<xs:vt>
+<x0:vt>
 gseq_fset0_at(xs: ~xs, i0: ni, x0: ~x0): (xs)
+fun
+<xs:vt>
+<x0:vt>
+gseq_fset1_at(xs: !xs, i0: ni, x0: ~x0): (xs)
 //
 fun
 <xs:vt>
@@ -561,7 +586,21 @@ gseq_get0_at_opt(xs: ~xs, i0: ni): optn_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
+gseq_get1_at_opt(xs: !xs, i0: ni): optn_vt(x0)
+//
+fun
+<xs:vt>
+<x0:vt>
 gseq_set0_at_opt(xs: ~xs, i0: ni, x0: ~x0): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_set1_at_opt(xs: !xs, i0: ni, x0: ~x0): bool
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_fset0_at_opt(xs: ~xs, i0: ni, x0: ~x0): optn_vt(xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)
