@@ -83,19 +83,25 @@ fun
 forall$test(x0: x0): bool
 fun
 <x0:t0>
-foritm$work(x0: x0): void
+rforall$test(x0: x0): bool
 fun
 <x0:t0>
-iforitm$work(ni, x0): void
+iforall$test(ni, x0): bool
+fun
+<x0:t0>
+irforall$test(ni, x0): bool
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
-rforall$test(x0: x0): bool
+foritm$work(x0: x0): void
 fun
 <x0:t0>
 rforitm$work(x0: x0): void
+fun
+<x0:t0>
+iforitm$work(ni, x0): void
 fun
 <x0:t0>
 irforitm$work(ni, x0): void
@@ -110,25 +116,22 @@ folditm$fopr(r0, x0): (r0)
 fun
 <x0:t0>
 <r0:vt>
+rfolditm$fopr(x0, r0): (r0)
+//
+fun
+<x0:t0>
+<r0:vt>
 foldall$fopr(r0, x0): (bool, r0)
+fun
+<x0:t0>
+<r0:vt>
+rfoldall$fopr(x0, r0): (bool, r0)
 //
 fun
 <x0:t0>
 <r0:vt>
 ifoldall$fopr
 (res: r0, pos: ni, itm: x0): (bool, r0)
-//
-(* ****** ****** *)
-//
-fun
-<x0:t0>
-<r0:vt>
-rfolditm$fopr(x0, r0): (r0)
-fun
-<x0:t0>
-<r0:vt>
-rfoldall$fopr(x0, r0): (bool, r0)
-//
 fun
 <x0:t0>
 <r0:vt>
@@ -222,6 +225,26 @@ fun
 <x0:t0>
 <y0:vt>
 imapstrq$fopr(pos: ni, itm: x0): strq_vt(y0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-16:
+Tue 16 Jul 2024 10:43:39 AM EDT
+*)
+fun
+<x0:t0>
+exists$test(x0: x0): bool
+fun
+<x0:t0>
+rexists$test(x0: x0): bool
+fun
+<x0:t0>
+iexists$test(ni, x0): bool
+fun
+<x0:t0>
+irexists$test(ni, x0): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)

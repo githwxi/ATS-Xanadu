@@ -91,7 +91,17 @@ rforall$test<x0>
 #impltmp
 < x0:t0 >
 rforall$test = forall$test<x0>
+//
+#impltmp
+< x0:t0 >
+iforall$test =
+irforall$test<x0>
+#impltmp
+< x0:t0 >
+irforall$test = iforall$test<x0>
 *)
+//
+(* ****** ****** *)
 //
 (*
 #impltmp
@@ -101,12 +111,28 @@ rforitm$work<x0>
 #impltmp
 < x0:t0 >
 rforitm$work = foritm$work<x0>
+//
+#impltmp
+< x0:t0 >
+iforitm$work =
+irforitm$work<x0>
+#impltmp
+< x0:t0 >
+irforitm$work = iforitm$work<x0>
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (*
+#impltmp
+< x0:t0 >
+< r0:vt >
+folditm$fopr
+( r0
+, x0 ) =
+(
+rfolditm$fopr<x0><r0>(x0, r0))
 #impltmp
 < x0:t0 >
 < r0:vt >
@@ -117,7 +143,17 @@ rfolditm$fopr
   folditm$fopr<x0><r0>(r0, x0))
 *)
 //
+(* ****** ****** *)
+//
 (*
+#impltmp
+< x0:t0 >
+< r0:vt >
+foldall$fopr
+( r0
+, x0 ) =
+(
+rfoldall$fopr<x0><r0>(x0, r0))
 #impltmp
 < x0:t0 >
 < r0:vt >
@@ -126,6 +162,31 @@ rfoldall$fopr
 , r0 ) =
 (
   foldall$fopr<x0><r0>(r0, x0))
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-16:
+Tue 16 Jul 2024 10:43:39 AM EDT
+*)
+(*
+#impltmp
+< x0:t0 >
+exists$test =
+rexists$test<x0>
+#impltmp
+< x0:t0 >
+rexists$test = exists$test<x0>
+//
+#impltmp
+< x0:t0 >
+iexists$test =
+irexists$test<x0>
+#impltmp
+< x0:t0 >
+irexists$test = iexists$test<x0>
 *)
 //
 (* ****** ****** *)

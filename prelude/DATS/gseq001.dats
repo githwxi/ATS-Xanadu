@@ -53,6 +53,11 @@ gseq_rforall0<xs><x0>(*void*)
 < x0:t0 >
 gseq_iforall =
 gseq_iforall0<xs><x0>(*void*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_irforall =
+gseq_irforall0<xs><x0>(*void*)
 //
 (* ****** ****** *)
 //
@@ -71,6 +76,11 @@ gseq_rforitm0<xs><x0>(*void*)
 < x0:t0 >
 gseq_iforitm =
 gseq_iforitm0<xs><x0>(*void*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_irforitm =
+gseq_irforitm0<xs><x0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -93,6 +103,12 @@ gseq_rfoldall0<xs><x0><r0>(*void*)
 < r0:vt >
 gseq_ifoldall =
 gseq_ifoldall0<xs><x0><r0>(*void*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_irfoldall =
+gseq_irfoldall0<xs><x0><r0>(*void*)
 //
 (* ****** ****** *)
 //
@@ -114,6 +130,12 @@ gseq_rfolditm0<xs><x0><r0>(*void*)
 < r0:vt >
 gseq_ifolditm =
 gseq_ifolditm0<xs><x0><r0>(*void*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_irfolditm =
+gseq_irfolditm0<xs><x0><r0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -234,6 +256,30 @@ gseq_get1_at<xs><x0>(*void*)
 < x0:t0 >
 gseq_get_at_opt =
 gseq_get1_at_opt<xs><x0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_exists =
+gseq_exists0<xs><x0>(*void*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_rexists =
+gseq_rexists0<xs><x0>(*void*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_iexists =
+gseq_iexists0<xs><x0>(*void*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_irexists =
+gseq_irexists0<xs><x0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

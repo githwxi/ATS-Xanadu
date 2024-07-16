@@ -93,17 +93,7 @@ gseq_forall(xs: xs): bool
 fun
 <xs:t0>
 <x0:t0>
-gseq_foritm(xs: xs): void
-//
-fun
-<xs:t0>
-<x0:t0>
 gseq_rforall(xs: xs): bool
-fun
-<xs:t0>
-<x0:t0>
-gseq_rforitm(xs: xs): void
-//
 fun
 <xs:t0>
 <x0:t0>
@@ -111,8 +101,28 @@ gseq_iforall(xs: xs): bool
 fun
 <xs:t0>
 <x0:t0>
-gseq_iforitm(xs: xs): void
+gseq_irforall(xs: xs): bool
 //
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_foritm(xs: xs): void
+fun
+<xs:t0>
+<x0:t0>
+gseq_rforitm(xs: xs): void
+fun
+<xs:t0>
+<x0:t0>
+gseq_iforitm(xs: xs): void
+fun
+<xs:t0>
+<x0:t0>
+gseq_irforitm(xs: xs): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -124,19 +134,7 @@ fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-gseq_folditm(xs, r0): ( r0 )
-//
-fun
-<xs:t0>
-<x0:t0>
-<r0:vt>
 gseq_rfoldall(xs, r0): ( r0 )
-fun
-<xs:t0>
-<x0:t0>
-<r0:vt>
-gseq_rfolditm(xs, r0): ( r0 )
-//
 fun
 <xs:t0>
 <x0:t0>
@@ -146,7 +144,30 @@ fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
+gseq_irfoldall(xs, r0): ( r0 )
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_folditm(xs, r0): ( r0 )
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_rfolditm(xs, r0): ( r0 )
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
 gseq_ifolditm(xs, r0): ( r0 )
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_irfolditm(xs, r0): ( r0 )
 //
 (* ****** ****** *)
 (* ****** ****** *)
