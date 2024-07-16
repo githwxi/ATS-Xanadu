@@ -79,6 +79,13 @@ fun
 <x0:vt>
 iforitm1$work(ni, !x0): void
 //
+fun
+<x0:vt>
+irforitm0$work(ni, ~x0): void
+fun
+<x0:vt>
+irforitm1$work(ni, !x0): void
+//
 (* ****** ****** *)
 //
 fun
@@ -93,33 +100,11 @@ folditm1$fopr(r0, !x0): (r0)
 fun
 <x0:vt>
 <r0:vt>
-foldall0$fopr(r0, ~x0): (bool, r0)
-fun
-<x0:vt>
-<r0:vt>
-foldall1$fopr(r0, !x0): (bool, r0)
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-<r0:vt>
 rfolditm0$fopr(~x0, r0): (r0)
 fun
 <x0:vt>
 <r0:vt>
 rfolditm1$fopr(!x0, r0): (r0)
-//
-fun
-<x0:vt>
-<r0:vt>
-rfoldall0$fopr(~x0, r0): (bool, r0)
-fun
-<x0:vt>
-<r0:vt>
-rfoldall1$fopr(!x0, r0): (bool, r0)
-//
-(* ****** ****** *)
 //
 fun
 <x0:vt>
@@ -133,11 +118,50 @@ ifolditm1$fopr(r0, ni, !x0): (r0)
 fun
 <x0:vt>
 <r0:vt>
+irfolditm0$fopr(ni, ~x0, r0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+irfolditm1$fopr(ni, !x0, r0): (r0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<r0:vt>
+foldall0$fopr(r0, ~x0): (bool, r0)
+fun
+<x0:vt>
+<r0:vt>
+foldall1$fopr(r0, !x0): (bool, r0)
+//
+fun
+<x0:vt>
+<r0:vt>
+rfoldall0$fopr(~x0, r0): (bool, r0)
+fun
+<x0:vt>
+<r0:vt>
+rfoldall1$fopr(!x0, r0): (bool, r0)
+//
+fun
+<x0:vt>
+<r0:vt>
 ifoldall0$fopr(r0, ni, ~x0): (bool, r0)
 fun
 <x0:vt>
 <r0:vt>
 ifoldall1$fopr(r0, ni, !x0): (bool, r0)
+//
+fun
+<x0:vt>
+<r0:vt>
+irfoldall0$fopr(ni, ~x0, r0): (bool, r0)
+fun
+<x0:vt>
+<r0:vt>
+irfoldall1$fopr(ni, !x0, r0): (bool, r0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -663,21 +687,21 @@ fun
 <xs:vt>
 <x0:vt>
 <r0:vt>
-gseq_irfolditm0(~xs, r0): void
+gseq_irfolditm0(~xs, r0): (r0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_irfolditm1(!xs, r0): void
+gseq_irfolditm1(!xs, r0): (r0)
 //
 fun
 <xs:vt>
 <x0:vt>
 <r0:vt>
-gseq_irfoldall0(~xs, r0): bool
+gseq_irfoldall0(~xs, r0): (r0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_irfoldall1(!xs, r0): bool
+gseq_irfoldall1(!xs, r0): (r0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
