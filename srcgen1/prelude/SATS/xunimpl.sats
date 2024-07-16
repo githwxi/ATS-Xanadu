@@ -40,17 +40,35 @@ fset_at$exn
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+fun
+<x0:vt>
+forall$test(ni, x0): bool
+fun
+<x0:vt>
+rforall$test(ni, x0): bool
+fun
+<x0:vt>
+iforall$test(ni, x0): bool
+*)
+fun
+<x0:vt>
+irforall$test(ni, x0): bool
+//
+(* ****** ****** *)
+//
 fun
 <x0:t0>
 foritm$work(x0: x0): void
-//
 fun
 <x0:t0>
 rforitm$work(x0: x0): void
-//
 fun
 <x0:t0>
 iforitm$work(ni, x0): void
+fun
+<x0:t0>
+irforitm$work(ni, x0): void
 //
 (* ****** ****** *)
 //
@@ -61,21 +79,7 @@ folditm$fopr(r0, x0): (r0)
 fun
 <x0:t0>
 <r0:vt>
-foldall$fopr(r0, x0): (bool, r0)
-//
-(* ****** ****** *)
-//
-fun
-<x0:t0>
-<r0:vt>
 rfolditm$fopr(x0, r0): (r0)
-fun
-<x0:t0>
-<r0:vt>
-rfoldall$fopr(x0, r0): (bool, r0)
-//
-(* ****** ****** *)
-//
 fun
 <x0:t0>
 <r0:vt>
@@ -83,7 +87,41 @@ ifolditm$fopr(r0, ni, x0): (r0)
 fun
 <x0:t0>
 <r0:vt>
+irfolditm$fopr(ni, x0, r0): (r0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<r0:vt>
+foldall$fopr(r0, x0): (bool, r0)
+fun
+<x0:t0>
+<r0:vt>
+rfoldall$fopr(x0, r0): (bool, r0)
+fun
+<x0:t0>
+<r0:vt>
 ifoldall$fopr(r0, n0, x0): (bool, r0)
+fun
+<x0:t0>
+<r0:vt>
+irfoldall$fopr(n0, x0, r0): (bool, r0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+rfilter$test(x0: x0): bool
+(*
+fun
+<x0:vt>
+ifilter$test(ni, x0): bool
+*)
+fun
+<x0:vt>
+irfilter$test(ni, x0): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)

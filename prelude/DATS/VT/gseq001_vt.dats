@@ -93,7 +93,7 @@ gseq_rstrmize0
   ( xs ) =
 list_vt_strmize0<x0>
 (
-  gseq_rlistize0<xs><x0>(xs))
+  gseq_rlistize0<xs><x0>(xs))//reverse
 #impltmp
 < xs:vt >
 < x0:vt >
@@ -101,7 +101,7 @@ gseq_rstrqize0
   ( xs ) =
 list_vt_strqize0<x0>
 (
-  gseq_rlistize0<xs><x0>(xs))
+  gseq_rlistize0<xs><x0>(xs))//reverse
 //
 (* ****** ****** *)
 (* ****** ****** *)

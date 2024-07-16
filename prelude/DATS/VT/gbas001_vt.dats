@@ -210,6 +210,13 @@ rfilter0$test = rfilter$test<x0>
 < x0:t0 >
 rfilter1$test = rfilter$test<x0>
 //
+#impltmp
+< x0:t0 >
+ifilter0$test = ifilter$test<x0>
+#impltmp
+< x0:t0 >
+ifilter1$test = ifilter$test<x0>
+//
 (* ****** ****** *)
 //
 #impltmp

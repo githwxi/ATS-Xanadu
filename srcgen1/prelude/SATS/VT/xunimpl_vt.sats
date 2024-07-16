@@ -168,6 +168,41 @@ irfoldall1$fopr(ni, !x0, r0): (bool, r0)
 //
 (*
 fun
+<x0:vt>
+filter0$test(x0: !x0): bool
+fun
+<x0:vt>
+filter1$test(x0: !x0): bool
+*)
+//
+fun
+<x0:vt>
+rfilter0$test(x0: !x0): bool
+fun
+<x0:vt>
+rfilter1$test(x0: !x0): bool
+//
+(*
+fun
+<x0:vt>
+ifilter0$test(x0: !x0): bool
+fun
+<x0:vt>
+ifilter1$test(x0: !x0): bool
+*)
+//
+fun
+<x0:vt>
+irfilter0$test(x0: !x0): bool
+fun
+<x0:vt>
+irfilter1$test(x0: !x0): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
 <x0:vt
 ,y0:vt>
 z2forall0$test(~x0, ~y0): bool
