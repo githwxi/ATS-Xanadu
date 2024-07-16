@@ -122,6 +122,17 @@ gseq_irforall1(xs: !xs): bool
 //
 (* ****** ****** *)
 //
+#symload forall0 with gseq_forall0 of 0100
+#symload forall1 with gseq_forall1 of 0100
+#symload rforall0 with gseq_rforall0 of 0100
+#symload rforall1 with gseq_rforall1 of 0100
+#symload iforall0 with gseq_iforall0 of 0100
+#symload iforall1 with gseq_iforall1 of 0100
+#symload irforall0 with gseq_irforall0 of 0100
+#symload irforall1 with gseq_irforall1 of 0100
+//
+(* ****** ****** *)
+//
 fun
 <xs:vt>
 <x0:vt>
@@ -159,15 +170,6 @@ fun
 gseq_irforitm1(xs: !xs): void
 //
 (* ****** ****** *)
-//
-#symload forall0 with gseq_forall0 of 0100
-#symload forall1 with gseq_forall1 of 0100
-#symload rforall0 with gseq_rforall0 of 0100
-#symload rforall1 with gseq_rforall1 of 0100
-#symload iforall0 with gseq_iforall0 of 0100
-#symload iforall1 with gseq_iforall1 of 0100
-#symload irforall0 with gseq_irforall0 of 0100
-#symload irforall1 with gseq_irforall1 of 0100
 //
 #symload foritm0 with gseq_foritm0 of 0100
 #symload foritm1 with gseq_foritm1 of 0100
@@ -557,6 +559,17 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_irexists1(xs: !xs): bool
+//
+(* ****** ****** *)
+//
+#symload exists0 with gseq_exists0 of 0100
+#symload exists1 with gseq_exists1 of 0100
+#symload rexists0 with gseq_rexists0 of 0100
+#symload rexists1 with gseq_rexists1 of 0100
+#symload iexists0 with gseq_iexists0 of 0100
+#symload iexists1 with gseq_iexists1 of 0100
+#symload irexists0 with gseq_irexists0 of 0100
+#symload irexists1 with gseq_irexists1 of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)

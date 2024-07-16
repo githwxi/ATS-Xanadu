@@ -44,7 +44,64 @@ fun
 <x0:vt
 ,y0:vt>
 gseq_z2forall0(xs: ~xs, ys: ~ys): bool
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_z2forall1(xs: !xs, ys: !ys): bool
 //
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_rz2forall0(xs: ~xs, ys: ~ys): bool
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_rz2forall1(xs: !xs, ys: !ys): bool
+//
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_iz2forall0(xs: ~xs, ys: ~ys): bool
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_iz2forall1(xs: !xs, ys: !ys): bool
+//
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_irz2forall0(xs: ~xs, ys: ~ys): bool
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_irz2forall1(xs: !xs, ys: !ys): bool
+//
+(* ****** ****** *)
+//
+#symload z2forall0 with gseq_z2forall0 of 0100
+#symload z2forall1 with gseq_z2forall1 of 0100
+#symload rz2forall0 with gseq_rz2forall0 of 0100
+#symload rz2forall1 with gseq_rz2forall1 of 0100
+#symload iz2forall0 with gseq_iz2forall0 of 0100
+#symload iz2forall1 with gseq_iz2forall1 of 0100
+#symload irz2forall0 with gseq_irz2forall0 of 0100
+#symload irz2forall1 with gseq_irz2forall1 of 0100
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -53,8 +110,67 @@ fun
 <x0:vt
 ,y0:vt>
 gseq_z2foritm0(xs: ~xs, ys: ~ys): void
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_z2foritm1(xs: !xs, ys: !ys): void
+//
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_rz2foritm0(xs: ~xs, ys: ~ys): void
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_rz2foritm1(xs: !xs, ys: !ys): void
+//
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_iz2foritm0(xs: ~xs, ys: ~ys): void
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_iz2foritm1(xs: !xs, ys: !ys): void
+//
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_irz2foritm0(xs: ~xs, ys: ~ys): void
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_irz2foritm1(xs: !xs, ys: !ys): void
+//
+(* ****** ****** *)
+//
+#symload z2foritm0 with gseq_z2foritm0 of 0100
+#symload z2foritm1 with gseq_z2foritm1 of 0100
+#symload rz2foritm0 with gseq_rz2foritm0 of 0100
+#symload rz2foritm1 with gseq_rz2foritm1 of 0100
+#symload iz2foritm0 with gseq_iz2foritm0 of 0100
+#symload iz2foritm1 with gseq_iz2foritm1 of 0100
+#symload irz2foritm0 with gseq_irz2foritm0 of 0100
+#symload irz2foritm1 with gseq_irz2foritm1 of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_SATS_VT_gseq002_vt.sats] *)
