@@ -2,8 +2,10 @@
 (* ****** ****** *)
 (*
 HX-2024-07-10:
-These are newly designed function interfaces ATS3,
-which are not supposed to be implemented in srcgen1
+These are newly designed
+function interfaces in ATS3,
+which are not meant to be
+implemented in ATS3/srcgen1.
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -215,6 +217,10 @@ fun
 <x0:vt
 ,y0:vt>
 iz2forall0$test(ni, ~x0, ~y0): bool
+fun
+<x0:vt
+,y0:vt>
+irz2forall0$test(ni, ~x0, ~y0): bool
 //
 (* ****** ****** *)
 //
@@ -230,6 +236,10 @@ fun
 <x0:vt
 ,y0:vt>
 iz2foritm0$work(ni, ~x0, ~y0): void
+fun
+<x0:vt
+,y0:vt>
+irz2foritm0$work(ni, ~x0, ~y0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -744,4 +754,4 @@ gseq_irfoldall1(!xs, r0): (r0)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_srcgen1_prelude_SATS_xunimpl.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_VT_xunimpl_vt.sats] *)
