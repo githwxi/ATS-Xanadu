@@ -807,13 +807,13 @@ f0_pvsload
 //
 (* ****** ****** *)
 //
-(*
 val () =
 f0_pvsload
 (
 0(*sta*),
 "/srcgen1/prelude/INIT/excptn0.sats")
-*)
+//
+(* ****** ****** *)
 //
 (*
 val () =

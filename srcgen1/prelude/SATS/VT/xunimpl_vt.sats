@@ -595,15 +595,34 @@ gseq_max0(xs: ~xs): (x0)
 fun
 <xs:vt>
 <x0:vt>
+gseq_max1(xs: !xs): (x0)
+//
+fun
+<xs:vt>
+<x0:vt>
 gseq_min0(xs: ~xs): (x0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_max0_optn(xs: ~xs): optn_vt(x0)
+gseq_min1(xs: !xs): (x0)
+//
 fun
 <xs:vt>
 <x0:vt>
-gseq_min0_optn(xs: ~xs): optn_vt(x0)
+gseq_max0_opt(xs: ~xs): optn_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_max1_opt(xs: !xs): optn_vt(x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_min0_opt(xs: ~xs): optn_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_min1_opt(xs: !xs): optn_vt(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
