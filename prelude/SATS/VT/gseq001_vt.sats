@@ -96,29 +96,11 @@ gseq_forall1(xs: !xs): bool
 fun
 <xs:vt>
 <x0:vt>
-gseq_foritm0(xs: ~xs): void
-fun
-<xs:vt>
-<x0:vt>
-gseq_foritm1(xs: !xs): void
-//
-fun
-<xs:vt>
-<x0:vt>
 gseq_rforall0(xs: ~xs): bool
 fun
 <xs:vt>
 <x0:vt>
 gseq_rforall1(xs: !xs): bool
-//
-fun
-<xs:vt>
-<x0:vt>
-gseq_rforitm0(xs: ~xs): void
-fun
-<xs:vt>
-<x0:vt>
-gseq_rforitm1(xs: !xs): void
 //
 fun
 <xs:vt>
@@ -132,28 +114,69 @@ gseq_iforall1(xs: !xs): bool
 fun
 <xs:vt>
 <x0:vt>
+gseq_irforall0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_irforall1(xs: !xs): bool
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_foritm0(xs: ~xs): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_foritm1(xs: !xs): void
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_rforitm0(xs: ~xs): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_rforitm1(xs: !xs): void
+//
+fun
+<xs:vt>
+<x0:vt>
 gseq_iforitm0(xs: ~xs): void
 fun
 <xs:vt>
 <x0:vt>
 gseq_iforitm1(xs: !xs): void
 //
+fun
+<xs:vt>
+<x0:vt>
+gseq_irforitm0(xs: ~xs): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_irforitm1(xs: !xs): void
+//
 (* ****** ****** *)
 //
 #symload forall0 with gseq_forall0 of 0100
 #symload forall1 with gseq_forall1 of 0100
-#symload foritm0 with gseq_foritm0 of 0100
-#symload foritm1 with gseq_foritm1 of 0100
-//
 #symload rforall0 with gseq_rforall0 of 0100
 #symload rforall1 with gseq_rforall1 of 0100
-#symload rforitm0 with gseq_rforitm0 of 0100
-#symload rforitm1 with gseq_rforitm1 of 0100
-//
 #symload iforall0 with gseq_iforall0 of 0100
 #symload iforall1 with gseq_iforall1 of 0100
+#symload irforall0 with gseq_irforall0 of 0100
+#symload irforall1 with gseq_irforall1 of 0100
+//
+#symload foritm0 with gseq_foritm0 of 0100
+#symload foritm1 with gseq_foritm1 of 0100
+#symload rforitm0 with gseq_rforitm0 of 0100
+#symload rforitm1 with gseq_rforitm1 of 0100
 #symload iforitm0 with gseq_iforitm0 of 0100
 #symload iforitm1 with gseq_iforitm1 of 0100
+#symload irforitm0 with gseq_irforitm0 of 0100
+#symload irforitm1 with gseq_irforitm1 of 0100
 //
 (* ****** ****** *)
 //
@@ -172,34 +195,12 @@ fun
 <xs:vt>
 <x0:vt>
 <r0:vt>
-gseq_foldall0(~xs, r0): (r0)
-fun
-<xs:vt>
-<x0:vt>
-<r0:vt>
-gseq_foldall1(!xs, r0): (r0)
-//
-fun
-<xs:vt>
-<x0:vt>
-<r0:vt>
 gseq_rfolditm0(~xs, r0): (r0)
 fun
 <xs:vt>
 <x0:vt>
 <r0:vt>
 gseq_rfolditm1(!xs, r0): (r0)
-//
-fun
-<xs:vt>
-<x0:vt>
-<r0:vt>
-gseq_rfoldall0(~xs, r0): (r0)
-fun
-<xs:vt>
-<x0:vt>
-<r0:vt>
-gseq_rfoldall1(!xs, r0): (r0)
 //
 fun
 <xs:vt>
@@ -216,6 +217,41 @@ fun
 <xs:vt>
 <x0:vt>
 <r0:vt>
+gseq_irfolditm0(~xs, r0): (r0)
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_irfolditm1(!xs, r0): (r0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_foldall0(~xs, r0): (r0)
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_foldall1(!xs, r0): (r0)
+//
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_rfoldall0(~xs, r0): (r0)
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_rfoldall1(!xs, r0): (r0)
+//
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
 gseq_ifoldall0(~xs, r0): (r0)
 fun
 <xs:vt>
@@ -223,22 +259,36 @@ fun
 <r0:vt>
 gseq_ifoldall1(!xs, r0): (r0)
 //
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_irfoldall0(~xs, r0): (r0)
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_irfoldall1(!xs, r0): (r0)
+//
 (* ****** ****** *)
 //
 #symload foldall0 with gseq_foldall0 of 0100
 #symload foldall1 with gseq_foldall1 of 0100
-#symload folditm0 with gseq_folditm0 of 0100
-#symload folditm1 with gseq_folditm1 of 0100
-//
 #symload rfoldall0 with gseq_rfoldall0 of 0100
 #symload rfoldall1 with gseq_rfoldall1 of 0100
-#symload rfolditm0 with gseq_rfolditm0 of 0100
-#symload rfolditm1 with gseq_rfolditm1 of 0100
-//
 #symload ifoldall0 with gseq_ifoldall0 of 0100
 #symload ifoldall1 with gseq_ifoldall1 of 0100
+#symload irfoldall0 with gseq_irfoldall0 of 0100
+#symload irfoldall1 with gseq_irfoldall1 of 0100
+//
+#symload folditm0 with gseq_folditm0 of 0100
+#symload folditm1 with gseq_folditm1 of 0100
+#symload rfolditm0 with gseq_rfolditm0 of 0100
+#symload rfolditm1 with gseq_rfolditm1 of 0100
 #symload ifolditm0 with gseq_ifolditm0 of 0100
 #symload ifolditm1 with gseq_ifolditm1 of 0100
+#symload irfolditm0 with gseq_irfolditm0 of 0100
+#symload irfolditm1 with gseq_irfolditm1 of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -463,6 +513,50 @@ gseq_ifilter1_lstrq(xs: !xs): strq_vt(x0)
 #symload ifilter1 with gseq_ifilter1_lstrm of 0110
 #symload ifilter0 with gseq_ifilter0_lstrq of 0110
 #symload ifilter1 with gseq_ifilter1_lstrq of 0110
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-16:
+Tue 16 Jul 2024 11:17:56 AM EDT
+*)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_exists0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_exists1(xs: !xs): bool
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_rexists0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_rexists1(xs: !xs): bool
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_iexists0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_iexists1(xs: !xs): bool
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_irexists0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_irexists1(xs: !xs): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)
