@@ -228,12 +228,12 @@ Mon 15 Jul 2024 03:48:15 PM EDT
 < xs:t0 >
 < x0:t0 >
 gseq_get_at =
-gseq_get0_at<xs><x0>(*void*)
+gseq_get1_at<xs><x0>(*void*)
 #impltmp
 < xs:t0 >
 < x0:t0 >
 gseq_get_at_opt =
-gseq_get0_at_opt<xs><x0>(*void*)
+gseq_get1_at_opt<xs><x0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

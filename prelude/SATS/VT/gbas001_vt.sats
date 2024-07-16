@@ -53,17 +53,34 @@ fun
 <xs:vt>
 <x0:vt>
 get0_at$exn
-(xs: ~xs, i0: ni): x0
+  (i0: ni): x0
+fun
+<xs:vt>
+<x0:vt>
+get1_at$exn
+(xs: !xs, i0: ni): x0
+//
 fun
 <xs:vt>
 <x0:vt>
 set0_at$exn
-(~xs, i0:ni, x0:x0): void
+  (i0: ni): void
+fun
+<xs:vt>
+<x0:vt>
+set1_at$exn
+(xs: !xs, i0: ni): void
+//
 fun
 <xs:vt>
 <x0:vt>
 fset0_at$exn
-(~xs, i0:ni, x0:x0): (xs)
+  (i0: ni): (xs)
+fun
+<xs:vt>
+<x0:vt>
+fset1_at$exn
+(xs: !xs, i0: ni): (xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)

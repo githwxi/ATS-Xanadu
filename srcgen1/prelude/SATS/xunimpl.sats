@@ -30,12 +30,12 @@ fun
 <xs:t0>
 <x0:t0>
 set_at$exn
-(xs:xs,i0:ni,x0:x0): void
+(xs: xs, i0: ni): void
 fun
 <xs:t0>
 <x0:t0>
 fset_at$exn
-(xs:xs,i0:ni,x0:x0): (xs)
+(xs: xs, i0: ni): (xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)
