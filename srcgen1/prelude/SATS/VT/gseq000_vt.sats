@@ -608,24 +608,30 @@ fun
 //
 fun
 <xs:vt>
-<x0:vt>gseq_iexists0(~xs): bool
+<x0:vt>
+gseq_iexists0(~xs): bool
 fun
 <xs:vt>
-<x0:vt>gseq_iexists1(!xs): bool
+<x0:vt>
+gseq_iexists1(!xs): bool
 //
 fun
 <xs:vt>
-<x0:vt>gseq_iforall0(~xs): bool
+<x0:vt>
+gseq_iforall0(~xs): bool
 fun
 <xs:vt>
-<x0:vt>gseq_iforall1(!xs): bool
+<x0:vt>
+gseq_iforall1(!xs): bool
 //
 fun
 <xs:vt>
-<x0:vt>gseq_iforeach0(~xs): void
+<x0:vt>
+gseq_iforeach0(~xs): void
 fun
 <xs:vt>
-<x0:vt>gseq_iforeach1(!xs): void
+<x0:vt>
+gseq_iforeach1(!xs): void
 //
 (* ****** ****** *)
 //
