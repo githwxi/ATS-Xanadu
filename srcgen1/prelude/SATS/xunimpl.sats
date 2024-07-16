@@ -300,12 +300,12 @@ fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-gseq_irfolditm(xs, r0): void
+gseq_irfolditm(xs, r0): (r0)
 fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-gseq_irfoldall(xs, r0): bool
+gseq_irfoldall(xs, r0): (r0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
