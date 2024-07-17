@@ -900,8 +900,12 @@ gseq_rmap_rllist(xs): list_vt(y0)
 fun
 <xs:t0>
 <x0:t0>
+<ys:vt>
 gseq_append
-(xs1: xs, xs2: xs): xs
+(xs: xs, ys: ~ys): xs
+//
+(* ****** ****** *)
+//
 fun
 <xz:t0>
 <xs:t0>
@@ -917,16 +921,18 @@ gseq_reverse
 fun
 <xs:t0>
 <x0:t0>
+<ys:vt>
 gseq_rappend
-( xs1: xs, xs2: xs ): xs
+( xs: xs, ys: ~ys ): xs
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
+<ys:vt>
 gseq_append_lstrm
-(xs1: xs, xs2: xs): strm_vt(x0)
+(xs: xs, ys: ~ys): strm_vt(x0)
 //
 (* ****** ****** *)
 //
@@ -954,8 +960,9 @@ gseq_concat_lstrm
 fun
 <xs:t0>
 <x0:t0>
+<ys:vt>
 gseq_rappend_lstrm
-(xs1: xs, xs2: xs): strm_vt(x0)
+(xs: xs, ys: ~ys): strm_vt(x0)
 //
 (* ****** ****** *)
 //
