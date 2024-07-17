@@ -458,9 +458,13 @@ Wed 17 Jul 2024 12:48:59 PM EDT
 < ys:vt >
 gseq_append00(xs, ys) =
 g_make0_lstrm<x0><xs>
-( strm_vt_append00<x0>
-( gseq_strmize0<xs><x0>(xs)
-, gseq_strmize0<ys><x0>(ys)))//end-of-[impltmp]
+(
+strm_vt_append00<x0>(xs, ys))
+where
+{
+val xs = gseq_strmize0<xs><x0>(xs)
+val ys = gseq_strmize0<ys><x0>(ys)
+}
 //
 #impltmp
 < xs:vt >
@@ -468,9 +472,13 @@ g_make0_lstrm<x0><xs>
 < ys:vt >
 gseq_append01(xs, ys) =
 g_make0_lstrm<x0><xs>
-( strm_vt_append00<x0>
-( gseq_strmize0<xs><x0>(xs)
-, gseq_strmize1<ys><x0>(ys)))//end-of-[impltmp]
+(
+strm_vt_append00<x0>(xs, ys))
+where
+{
+val xs = gseq_strmize0<xs><x0>(xs)
+val ys = gseq_strmize1<ys><x0>(ys)
+}
 //
 #impltmp
 < xs:vt >
@@ -478,9 +486,13 @@ g_make0_lstrm<x0><xs>
 < ys:vt >
 gseq_append10(xs, ys) =
 g_make0_lstrm<x0><xs>
-( strm_vt_append00<x0>
-( gseq_strmize1<xs><x0>(xs)
-, gseq_strmize0<ys><x0>(ys)))//end-of-[impltmp]
+(
+strm_vt_append00<x0>(xs, ys))
+where
+{
+val xs = gseq_strmize1<xs><x0>(xs)
+val ys = gseq_strmize0<ys><x0>(ys)
+}
 //
 #impltmp
 < xs:vt >
@@ -488,11 +500,20 @@ g_make0_lstrm<x0><xs>
 < ys:vt >
 gseq_append11(xs, ys) =
 g_make0_lstrm<x0><xs>
-( strm_vt_append00<x0>
-( gseq_strmize1<xs><x0>(xs)
-, gseq_strmize1<ys><x0>(ys)))//end-of-[impltmp]
+(
+strm_vt_append00<x0>(xs, ys))
+where
+{
+val xs = gseq_strmize1<xs><x0>(xs)
+val ys = gseq_strmize1<ys><x0>(ys)
+}
 //
 (* ****** ****** *)
+//
+(*
+HX-2024-07-17:
+Wed 17 Jul 2024 12:48:59 PM EDT
+*)
 //
 #impltmp
 < xs:vt >
@@ -500,9 +521,13 @@ g_make0_lstrm<x0><xs>
 < ys:vt >
 gseq_prepend00(xs, ys) =
 g_make0_lstrm<x0><xs>
-( strm_vt_prepend00<x0>
-( gseq_strmize0<xs><x0>(xs)
-, gseq_strmize0<ys><x0>(ys)))//end-of-[impltmp]
+(
+strm_vt_append00<x0>(ys, xs))
+where
+{
+val xs = gseq_strmize0<xs><x0>(xs)
+val ys = gseq_strmize0<ys><x0>(ys)
+}
 //
 #impltmp
 < xs:vt >
@@ -510,9 +535,13 @@ g_make0_lstrm<x0><xs>
 < ys:vt >
 gseq_prepend01(xs, ys) =
 g_make0_lstrm<x0><xs>
-( strm_vt_prepend00<x0>
-( gseq_strmize0<xs><x0>(xs)
-, gseq_strmize1<ys><x0>(ys)))//end-of-[impltmp]
+(
+strm_vt_append00<x0>(ys, xs))
+where
+{
+val xs = gseq_strmize0<xs><x0>(xs)
+val ys = gseq_strmize1<ys><x0>(ys)
+}
 //
 #impltmp
 < xs:vt >
@@ -520,9 +549,13 @@ g_make0_lstrm<x0><xs>
 < ys:vt >
 gseq_prepend10(xs, ys) =
 g_make0_lstrm<x0><xs>
-( strm_vt_prepend00<x0>
-( gseq_strmize1<xs><x0>(xs)
-, gseq_strmize0<ys><x0>(ys)))//end-of-[impltmp]
+(
+strm_vt_append00<x0>(ys, xs))
+where
+{
+val xs = gseq_strmize1<xs><x0>(xs)
+val ys = gseq_strmize0<ys><x0>(ys)
+}
 //
 #impltmp
 < xs:vt >
@@ -530,9 +563,76 @@ g_make0_lstrm<x0><xs>
 < ys:vt >
 gseq_prepend11(xs, ys) =
 g_make0_lstrm<x0><xs>
-( strm_vt_prepend00<x0>
-( gseq_strmize1<xs><x0>(xs)
-, gseq_strmize1<ys><x0>(ys)))//end-of-[impltmp]
+(
+strm_vt_append00<x0>(ys, xs))
+where
+{
+val xs = gseq_strmize1<xs><x0>(xs)
+val ys = gseq_strmize1<ys><x0>(ys)
+}
+//
+(* ****** ****** *)
+//
+(*
+HX-2024-07-17:
+Wed 17 Jul 2024 04:14:16 PM EDT
+*)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< ys:vt >
+gseq_rappend00(xs, ys) =
+g_make0_lstrm<x0><xs>
+(
+strm_vt_append00<x0>(xs, ys))
+where
+{
+val ys = gseq_strmize0<ys><x0>(ys)
+val xs = gseq_rstrmize0<xs><x0>(xs)
+}
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< ys:vt >
+gseq_rappend01(xs, ys) =
+g_make0_lstrm<x0><xs>
+(
+strm_vt_append00<x0>(xs, ys))
+where
+{
+val ys = gseq_strmize1<ys><x0>(ys)
+val xs = gseq_rstrmize0<xs><x0>(xs)
+}
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< ys:vt >
+gseq_rappend10(xs, ys) =
+g_make0_lstrm<x0><xs>
+(
+strm_vt_append00<x0>(xs, ys))
+where
+{
+val ys = gseq_strmize0<ys><x0>(ys)
+val xs = gseq_rstrmize1<xs><x0>(xs)
+}
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< ys:vt >
+gseq_rappend11(xs, ys) =
+g_make0_lstrm<x0><xs>
+(
+strm_vt_append00<x0>(xs, ys))
+where
+{
+val ys = gseq_strmize1<ys><x0>(ys)
+val xs = gseq_rstrmize1<xs><x0>(xs)
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
