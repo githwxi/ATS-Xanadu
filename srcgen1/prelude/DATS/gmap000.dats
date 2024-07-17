@@ -112,8 +112,9 @@ optn_vt_cons
 (
 gmap_search
 <map><key,itm>(kxs, k0)) with
-| ~NotFoundExn() => optn_vt_nil((*0*))
-end(*try*)//end-of[gmap_search_opt(...)]
+|
+~NotFoundExn() => optn_vt_nil((*0*))
+endtry//end-of-[gmap_search_opt(kxs,k0)]
 //
 (* ****** ****** *)
 //

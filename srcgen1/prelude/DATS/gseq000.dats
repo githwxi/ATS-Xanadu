@@ -1682,13 +1682,15 @@ gseq_cons<xs><x0>(x0, r0)
 }(*whr*)//end(gseq_append/foldr)
 *)
 //
+(*
 #impltmp
-<xs><x0>
+<xs><x0><ys>
 gseq_append
-(xs1, xs2) = 
+  (xs, ys) = 
 gseq_make0_lstrm<xs><x0>
 (
-gseq_append_lstrm<xs><x0>(xs1,xs2))
+gseq_append_lstrm<xs><x0><ys>(xs,ys))
+*)
 //
 (* ****** ****** *)
 //
@@ -1746,31 +1748,31 @@ end(*let*)//end-of-(foldl$fopr)
 }(*where*)//end-of-(gseq_rappend)
 *)
 //
+(*
 #impltmp
-<xs><x0>
+<xs><x0><ys>
 gseq_rappend
-  (xs1, xs2) =
+  (xs, ys) =
 gseq_make0_lstrm<xs><x0>
 (
-gseq_rappend_lstrm<xs><x0>(xs1,xs2))
+gseq_rappend_lstrm<xs><x0><ys>(xs,xs))
+*)
 //
 (* ****** ****** *)
 //
 #impltmp
-<xs><x0>
+<xs><x0><ys>
 gseq_append_lstrm
-  (xs1, xs2) = let
+  (xs, ys) = let
 //
-val
-xs1 =
-gseq_strmize<xs><x0>(xs1)
-val
-xs2 =
-gseq_strmize<xs><x0>(xs2)
+val xs =
+gseq_strmize<xs><x0>(xs)
+val ys =
+gseq_strmize0<ys><x0>(ys)
 //
 in
 (
-  strm_vt_append0<x0>(xs1, xs2))
+  strm_vt_append0<x0>(xs, ys))
 end // end-of [gseq_append_lstrm(...)]
 //
 (* ****** ****** *)
@@ -1819,20 +1821,17 @@ end // end of [gseq_concat_lstrm(...)]
 (* ****** ****** *)
 //
 #impltmp
-<xs><x0>
+<xs><x0><ys>
 gseq_rappend_lstrm
-  (xs1, xs2) = let
+  (xs, ys) = let
 //
-val
-xs1 =
-gseq_rstrmize<xs><x0>(xs1)
-val
-xs2 =
-(
- gseq_strmize<xs><x0>(xs2))
+val xs =
+gseq_rstrmize<xs><x0>(xs)
+val ys =
+gseq_strmize0<ys><x0>(ys)
 //
 in//let
-  strm_vt_append0<x0>(xs1, xs2)
+  strm_vt_append0<x0>(xs, ys)
 end // end-of-[gseq_rappend_lstrm(...)]
 //
 (* ****** ****** *)
