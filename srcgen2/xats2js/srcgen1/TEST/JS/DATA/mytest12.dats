@@ -82,9 +82,10 @@ length4
 (
 list_foldl<x0><r0>(xs, 0))
 where
-{ #typedef x0 = sint
-  #typedef r0 = sint
-  #impltmp foldl$fopr<x0><r0>(r0, x0) = r0+1 }//where
+{
+#typedef x0 = sint
+#typedef r0 = sint
+#impltmp foldl$fopr<x0><r0>(r0, x0) = r0+1 }
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -112,6 +113,7 @@ end//let
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#symload sum0 with gseq_sum0
 #symload prod0 with gseq_prod0
 //
 (* ****** ****** *)
@@ -120,6 +122,17 @@ end//let
 HX-2024-01-03:
 More than 10 template layers!
 *)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+nsum0_tail
+  (x: sint): sint =
+(
+  sum0(tail0(strmize(x+1))))//fun
+//
+(* ****** ****** *)
+//
 fun
 fact1_prod_tail
   (x: sint): sint =
@@ -128,8 +141,25 @@ fact1_prod_tail
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 val () = println
-("mytest12:fact1_prod_tail(10)=",fact1_prod_tail(10))
+(
+"mytest12:nsum0_tail(10)=",nsum0_tail(10))
+val () = println
+(
+"mytest12:fact1_prod_tail(10)=",fact1_prod_tail(10))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+
+val xs1 = list_pair(1, 2)
+val xs2 = list_pair(3, 4)
+val ( ) = println("|xs1| = ", length(xs1))
+val xs3 = append(xs1, xs2)
+val ( ) = println("|xs3| = ", length(xs3))
+val xs4 = reverse(xs3)//val
+val ( ) = println("|xs4| = ", length(xs4))
+
 (* ****** ****** *)
 (* ****** ****** *)
 
