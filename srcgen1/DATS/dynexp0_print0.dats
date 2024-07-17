@@ -745,29 +745,34 @@ case+ x0.node() of
   ( out
   , "D0Edtsel(", tdot, "; ", lab1, "; ", arg2, ")")
 //
-| D0Elam
-  ( tok0
-  , arg1, res2
-  , arrw, body, tend) =>
-  fprint!
-  ( out
-  , "D0Elam(", tok0, "; "
-  , arg1, "; ", res2, "; ", arrw, "; ", body, "; ", tend, ")")
-| D0Efix
-  ( tok0, fid0
-  , arg1, res2
-  , arrw, body, tend) =>
-  fprint!
-  ( out
-  , "D0Efix(", tok0, "; ", fid0, "; "
-  , arg1, "; ", res2, "; ", arrw, "; ", body, "; ", tend, ")")
+|
+D0Elam
+( tok0
+, arg1, res2
+, arrw, body, tend) =>
+fprint!
+( out
+, "D0Elam("
+, tok0, "; ", arg1, "; "
+, res2, "; ", arrw, "; ", body, "; ", tend, ")")//lam
+|
+D0Efix
+( tok0, fid0
+, arg1, res2
+, arrw, body, tend) =>
+fprint!
+( out
+, "D0Efix("
+, tok0, "; ", fid0, "; ", arg1, "; "
+, res2, "; ", arrw, "; ", body, "; ", tend, ")")//fix
 //
-| D0Etry0
-  (tok0, d0e1, twth, tbar, d0cs, tend) =>
-  fprint!
-  ( out
-  , "D0Etry0(", tok0, "; "
-  , d0e1, "; ", twth, "; ", tbar, "; ", "...", "; ", tend, ")")
+|
+D0Etry0
+(tok0, d0e1, twth, tbar, d0cs, tend) =>
+fprint!
+( out
+, "D0Etry0(", tok0, "; "
+, d0e1, "; ", twth, "; ", tbar, "; ", "...", "; ", tend, ")")
 //
 | D0Eanno
   (d0e1, s0e2) =>

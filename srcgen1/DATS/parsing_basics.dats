@@ -323,6 +323,7 @@ in
     let val () = (err := e0 + 1) in tok end
 end // end of [p_ENDLET]
 
+(*
 implement
 p_ENDTRY(buf, err) = let
   val e0 = err
@@ -337,6 +338,7 @@ in
   | _ (* non-END *) =>
     let val () = (err := e0 + 1) in tok end
 end // end of [p_ENDTRY]
+*)
 
 implement
 p_ENDLOCAL(buf, err) = let
@@ -499,7 +501,34 @@ in
 end // end of [popt_ENDCAS]
 //
 (* ****** ****** *)
-
+//
+implement
+popt_ENDTRY
+  (buf, err) = let
+//
+  val tok = buf.get0()
+//
+in
+  case+
+  tok.node() of
+(*
+  | T_END() =>
+    Some(tok) where
+    {
+      val () = buf.incby1()
+    } (* T_END *)
+*)
+  | T_ENDTRY() =>
+    Some(tok) where
+    {
+      val () = buf.incby1()
+    } (* T_ENDTRY *)
+  | _ (* non-END *) => None(*void*)
+end // end of [popt_ENDTRY]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 implement
 popt_ENDLAM
   (buf, err) = let
@@ -523,9 +552,9 @@ in
     } (* T_ENDLAM *)
   | _ (* non-END *) => None(*void*)
 end // end of [popt_ENDLAM]
-
+//
 (* ****** ****** *)
-
+//
 implement
 popt_ENDFIX
   (buf, err) = let
@@ -549,7 +578,8 @@ in
     } (* T_ENDFIX *)
   | _ (* non-END *) => None(*void*)
 end // end of [popt_ENDFIX]
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 implement

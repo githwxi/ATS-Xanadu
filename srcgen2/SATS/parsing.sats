@@ -245,10 +245,10 @@ fun pq_ENDFIX: pq_fun(token)
 fun p1_ENDLET: p1_fun(token)
 fun p1_ENDLOC: p1_fun(token)
 //
-fun p1_ENDTRY: p1_fun(token)
 (*
-fun pq_ENDTRY: pq_fun(token)
+fun p1_ENDTRY: p1_fun(token)
 *)
+fun pq_ENDTRY: pq_fun(token)
 //
 (* ****** ****** *)
 

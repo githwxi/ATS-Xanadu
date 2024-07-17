@@ -545,11 +545,15 @@ d0e0.node() of
 //
     val () =
       synread_WITH(tmid)
+    // end of [val()]
 //
     val () =
       synread_d0claulst(dcls)
+    // end of [val()]
 //
+(*
     val () = synread_ENDTRY(tend)
+*)
 //
   }
 //

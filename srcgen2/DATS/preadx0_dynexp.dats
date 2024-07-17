@@ -940,7 +940,7 @@ d0exp_try0_errck
 , twth: token
 , tbar: tokenopt
 , dcls: d0clslst
-, tend: token   ): d0exp =
+, tend: tokenopt): d0exp =
 let
 val lvl =
 gmax(errvl(d0es),errvl(dcls))
@@ -1934,6 +1934,9 @@ _(*non-T_WITH*) => (err := err+1)
 val
 dcls = preadx0_d0clslst(dcls, err)
 //
+(*
+HX-2024-07-16:
+[tend] is optional (tokenopt)!
 val (  ) =
 (
 case+
@@ -1941,8 +1944,8 @@ tend.node() of
 | T_END() => ()
 | T_ENDTRY() => ()
 |
-_(*non-T_ENDTRY*) => (err := err+1)
-)
+_(*non-T_ENDTRY*) => (err := err+1))
+*)
 //
 in//let
 if

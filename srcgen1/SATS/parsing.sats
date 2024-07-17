@@ -265,8 +265,10 @@ p_END: parser(token)
 //
 fun
 p_ENDLET: parser(token)
+(*
 fun
 p_ENDTRY: parser(token)
+*)
 fun
 p_ENDLOCAL: parser(token)
 //
@@ -294,6 +296,9 @@ popt_ENDIF0: parser(tokenopt)
 //
 fun
 popt_ENDCAS: parser(tokenopt)
+//
+fun
+popt_ENDTRY: parser(tokenopt)
 //
 (* ****** ****** *)
 //

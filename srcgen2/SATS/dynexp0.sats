@@ -463,19 +463,20 @@ D0Etry0 of
 ( token
 , d0explst // SMCLN-sequence
 , token(*WITH*)
-, tokenopt(*BAR*), d0clslst, token )
+, tokenopt(*BAR*)
+, d0clslst, tokenopt(*ENDTRY*))//try
 //
 |
 D0Elam0 of
 ( token(*lam/lam@*)
 , f0arglst(*arglst*)
-, s0res, f0unarrw, d0exp, tokenopt )
+, s0res, f0unarrw, d0exp, tokenopt)//lam
 |
 D0Efix0 of
 ( token(*fix/fix@*)
 , d0pid(*fixed-pnt*)
 , f0arglst(*arglst*)
-, s0res, f0unarrw, d0exp, tokenopt )
+, s0res, f0unarrw, d0exp, tokenopt)//fix
 //
 |
 D0Eraise of (token, d0exp) // HX: raising

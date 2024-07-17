@@ -717,7 +717,6 @@ gseq_fset0_at_opt(xs: ~xs, i0: ni, x0: ~x0): optn_vt(xs)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 fun
 <xs:vt>
 <x0:vt>
@@ -766,6 +765,75 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_irfoldall1(!xs, r0): (r0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+Wed 17 Jul 2024 02:15:09 PM EDT
+*)
+//
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_append00(xs: ~xs, ys: ~ys): xs
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_append01(xs: ~xs, ys: !ys): xs
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_append10(xs: !xs, ys: ~ys): xs
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_append11(xs: !xs, ys: !ys): xs
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+Wed 17 Jul 2024 02:16:48 PM EDT
+*)
+//
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_prepend00(xs: ~xs, ys: ~ys): xs
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_prepend01(xs: ~xs, ys: !ys): xs
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_prepend10(xs: !xs, ys: ~ys): xs
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_prepend11(xs: !xs, ys: !ys): xs
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+strm_vt_append00
+(strm_vt(x0), strm_vt(x0)): strm_vt(x0)
+//
+fun
+<x0:vt>
+strm_vt_prepend00
+(strm_vt(x0), strm_vt(x0)): strm_vt(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
