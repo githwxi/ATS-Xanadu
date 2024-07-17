@@ -85,6 +85,13 @@ $(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
 $(XATS2JS) --output-a output_dats.js -d $(PRELUDE)/wtype.dats && $(NODE) output_dats.js
 ######
 test:: \
+isAVL
+isAVL:: ; \
+$(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
+$(CAT) $(XATS2JS_PRELUDE_NODE) >> output_dats.js && \
+$(XATS2JS) --output-a output_dats.js -d $(PRELUDE)/isAVL.dats && $(NODE) output_dats.js
+######
+test:: \
 lists
 lists:: ; \
 $(CAT) $(XATS2JS_PRELUDE) > output_dats.js && \
