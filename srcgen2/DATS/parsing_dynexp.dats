@@ -853,7 +853,8 @@ case+ dcls of
 list_nil() =>
 (
 case+ tbar of
-|optn_nil() => lknd+tof0.lctn()
+|
+optn_nil() => lknd+tof0.lctn()
 |
 optn_cons(tbar) => lknd+tbar.lctn()
 )
@@ -1510,37 +1511,74 @@ in//let
   , D0Elet0(tok1, d0cs, topt, d0es, tok2))
 end (*let*) // end-of-[ T_LET() ]
 //
+(* ****** ****** *)
+//
 |
 T_TRY() => let
 //
-  val tok1 = tok
-  val (  ) = buf.skip1()
+val tok1 = tok
+val (  ) = buf.skip1()
 //
 (*
-  val d0e1 =
-    p1_d0exp_app(buf, err)
+val d0e1 =
+  p1_d0exp_app(buf, err)
 *)
-  val d0es =
-  p1_d0expseq_SMCLN(buf, err)
+val d0es =
+p1_d0expseq_SMCLN(buf, err)
 //
-  val tok2 = p1_WITH(buf, err)
+val tok2 = p1_WITH(buf, err)
 //
-  val tbar =
-    pq_BAR(buf, err)
-  val dcls =
-    p1_d0clsseq_BAR( buf, err )
+val tbar =
+  pq_BAR(buf, err)
+val dcls =
+  p1_d0clsseq_BAR( buf, err )
 //
-  val tend = p1_ENDTRY(buf, err)
+(*
+val tend =
+  p1_ENDTRY(buf, err)
+val lres =
+  tok1.lctn()+tend.lctn()
+*)
 //
-  val lres = tok1.lctn()+tend.lctn()
+val tend = // HX: [tend] is
+  pq_ENDTRY(buf, err)//optional
+val lres =
+let
+val lknd = tok1.lctn()//tok1=tknd
+in//let
 //
-in
+case+ tend of
+|
+optn_nil() =>
+(
+case+ dcls of
+|
+list_nil() =>
+(
+case+ tbar of
+|optn_nil() => lknd+tok2.lctn()
+|optn_cons(tbar) => lknd+tbar.lctn())
+|
+list_cons(_, _) =>
+let
+  val dcl1 =
+  list_last(dcls) in lknd+dcl1.lctn()
+end (*let*) // end of [list_cons(...)]
+)
+|
+optn_cons(tok3) => lknd+tok3.lctn((*0*))
+//
+end : loc_t // end-of-(let) // end-of-(val)
+//
+in//let
   err := e00
 ; d0exp_make_node
   ( lres
   , D0Etry0
     (tok1, d0es, tok2, tbar, dcls, tend))
 end (*let*) // end-of-[ T_TRY() ]
+//
+(* ****** ****** *)
 //
 (*
 |T_DOT()=>|T_MSGT()=>

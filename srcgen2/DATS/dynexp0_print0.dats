@@ -320,13 +320,15 @@ print(tof0,";",tbar,";",dcls,";",tinv,")"))
 |
 D0Etup1
 (tbeg,topt,d0es,tend) =>
-print
-("D0Etup1(",tbeg,";",topt,";",d0es,";",tend,")")
+(
+print("D0Etup1(");
+print(tbeg,";",topt,";",d0es,";",tend,")"))
 |
 D0Ercd2
 (tbeg,topt,ldes,tend) =>
-print
-("D0Ercd2(",tbeg,";",topt,";",ldes,";",tend,")")
+(
+print("D0Ercd2(");
+print(tbeg,";",topt,";",ldes,";",tend,")"))
 //
 |
 D0Elet0

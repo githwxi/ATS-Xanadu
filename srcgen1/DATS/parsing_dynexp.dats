@@ -1864,10 +1864,11 @@ case+ tnd of
           | Some(tbar) => loc + tbar.loc()
           )
         | list_cons(_, _) =>
-          let
-          val d0cl =
-          list_last(dcls) in loc + d0cl.loc()
-          end // end of [list_cons]
+          (
+            loc + d0cl.loc()) where
+          {
+            val d0cl = list_last(dcls) }
+          // end-of-[ list_cons( ... ) ]
         )
       | ENDST0INVsome
         ( tend, inv0 ) => loc + inv0.loc()
@@ -2340,18 +2341,43 @@ end // end of [T_OP_par]
       p_WITH(buf, err)
     val tbar =
       popt_BAR(buf, err)
-    val d0cs =
+    val dcls =
       p_d0clauseq_BAR(buf, err)
+(*
     val tend = p_ENDTRY(buf, err)
+*)
+    val topt = popt_ENDTRY(buf, err)
 //
-    val loc_res = tok.loc()+tend.loc()
+    val
+    loc_res = let
+      val loc = tok.loc()
+    in
+      case+ topt of
+      | None() =>
+        (
+        case+ dcls of
+        | list_nil() =>
+          (
+          case+ tbar of
+          | None() => loc + tok2.loc()
+          | Some(tbar) => loc + tbar.loc()
+          )
+        | list_cons(_, _) =>
+          (
+            loc + d0cl.loc()) where
+          {
+            val d0cl = list_last(dcls) }
+          // end-of-[ list_cons( ... ) ]
+        )
+      | Some(tend) => loc + tend.loc((*0*))
+    end : loc_t // end of [let] // end of [val]
 //
   in
     err := e0;
     d0exp_make_node
     ( loc_res
     , D0Etry0
-      (tok, d0e1, tok2, tbar, d0cs, tend))
+      (tok, d0e1, tok2, tbar, dcls, topt))
   end // end of [T_TRY]
 //
 | T_DOT() => let

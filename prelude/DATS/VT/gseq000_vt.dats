@@ -303,22 +303,42 @@ Tue 16 Jul 2024 06:43:04 PM EDT
 < x0:vt >
 gseq_max0_opt
   ( xs ) =
-if
-gseq_nilq1<xs><x0>(xs)
-then
-( g_free<xs>(xs)
-; optn_vt_nil(*void*)) else
-optn_vt_cons(gseq_max0<xs><x0>(xs))
+let
+//
+excptcon NIL of ()
+//
+#impltmp
+max0$nil<x0>() = $raise NIL()
+//
+in//let
+(
+try
+optn_vt_cons
+(gseq_max0<xs><x0>(xs))
+with
+| ~NIL() => optn_vt_nil(*nil*))
+end(*let*)//end-of-[gseq_max0_opt]
 //
 #impltmp
 < xs:vt >
 < x0:vt >
 gseq_max1_opt
   ( xs ) =
-if
-gseq_nilq1<xs><x0>(xs)
-then optn_vt_nil(*void*) else
-optn_vt_cons(gseq_max1<xs><x0>(xs))
+let
+//
+excptcon NIL of ()
+//
+#impltmp
+max1$nil<x0>() = $raise NIL()
+//
+in//let
+try
+optn_vt_cons
+(gseq_max0<xs><x0>(xs))
+with
+| ~NIL() => optn_vt_nil(*nil*)
+endtry//HX: [endtry] is optional
+end(*let*)//end-of-[gseq_max1_opt]
 //
 (* ****** ****** *)
 //
@@ -327,22 +347,26 @@ optn_vt_cons(gseq_max1<xs><x0>(xs))
 < x0:vt >
 gseq_min0_opt
   ( xs ) =
-if
-gseq_nilq1<xs><x0>(xs)
-then
-( g_free<xs>(xs)
-; optn_vt_nil(*void*)) else
-optn_vt_cons(gseq_min0<xs><x0>(xs))
+(
+gseq_max0_opt<xs><x0>(xs)
+) where
+{
+#impltmp
+g_max00<x0> = g_min00<x0>
+}(*where*)//end-of-[gseq_min0_opt]
 //
 #impltmp
 < xs:vt >
 < x0:vt >
 gseq_min1_opt
   ( xs ) =
-if
-gseq_nilq1<xs><x0>(xs)
-then optn_vt_nil(*void*) else
-optn_vt_cons(gseq_min1<xs><x0>(xs))
+(
+gseq_max1_opt<xs><x0>(xs)
+) where
+{
+#impltmp
+g_max01<x0> = g_min01<x0>
+}(*where*)//end-of-[gseq_min1_opt]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -419,6 +443,96 @@ in//let
   then $UN.p2tr_get<x0>(p0)
   else get1_at$exn<xs><x0>(xs, i0)
 end//let//end-of-[gseq_get1_at(xs, i0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-17:
+Wed 17 Jul 2024 12:48:59 PM EDT
+*)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< ys:vt >
+gseq_append00(xs, ys) =
+g_make0_lstrm<x0><xs>
+( strm_vt_append00<x0>
+( gseq_strmize0<xs><x0>(xs)
+, gseq_strmize0<ys><x0>(ys)))//end-of-[impltmp]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< ys:vt >
+gseq_append01(xs, ys) =
+g_make0_lstrm<x0><xs>
+( strm_vt_append00<x0>
+( gseq_strmize0<xs><x0>(xs)
+, gseq_strmize1<ys><x0>(ys)))//end-of-[impltmp]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< ys:vt >
+gseq_append10(xs, ys) =
+g_make0_lstrm<x0><xs>
+( strm_vt_append00<x0>
+( gseq_strmize1<xs><x0>(xs)
+, gseq_strmize0<ys><x0>(ys)))//end-of-[impltmp]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< ys:vt >
+gseq_append11(xs, ys) =
+g_make0_lstrm<x0><xs>
+( strm_vt_append00<x0>
+( gseq_strmize1<xs><x0>(xs)
+, gseq_strmize1<ys><x0>(ys)))//end-of-[impltmp]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< ys:vt >
+gseq_prepend00(xs, ys) =
+g_make0_lstrm<x0><xs>
+( strm_vt_prepend00<x0>
+( gseq_strmize0<xs><x0>(xs)
+, gseq_strmize0<ys><x0>(ys)))//end-of-[impltmp]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< ys:vt >
+gseq_prepend01(xs, ys) =
+g_make0_lstrm<x0><xs>
+( strm_vt_prepend00<x0>
+( gseq_strmize0<xs><x0>(xs)
+, gseq_strmize1<ys><x0>(ys)))//end-of-[impltmp]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< ys:vt >
+gseq_prepend10(xs, ys) =
+g_make0_lstrm<x0><xs>
+( strm_vt_prepend00<x0>
+( gseq_strmize1<xs><x0>(xs)
+, gseq_strmize0<ys><x0>(ys)))//end-of-[impltmp]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< ys:vt >
+gseq_prepend11(xs, ys) =
+g_make0_lstrm<x0><xs>
+( strm_vt_prepend00<x0>
+( gseq_strmize1<xs><x0>(xs)
+, gseq_strmize1<ys><x0>(ys)))//end-of-[impltmp]
 //
 (* ****** ****** *)
 (* ****** ****** *)

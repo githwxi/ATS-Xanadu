@@ -638,7 +638,8 @@ T_END() =>
 let val () = buf.skip1() in tok end
 |
 _(* non-END *) =>
-let val () = (err := e00 + 1) in tok end
+let
+val () = (err := e00 + 1) in tok end
 end (*let*) // end of [p1_END(buf,err)]
 
 (* ****** ****** *)
@@ -735,12 +736,13 @@ T_ENDLET() =>
 let val () = buf.skip1() in tok end
 |
 _(* non-ENDLET *) =>
-let val () = (err := e00 + 1) in tok end
+let
+val () = (err := e00 + 1) in tok end
 end (*let*) // end of [p1_ENDLET(...)]
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
-(*
 #implfun
 pq_ENDTRY(buf, err) =
 let
@@ -751,18 +753,16 @@ in//let
 case+
 tok.node() of
 |
-T_END() =>
-optn_cons(tok) where
-{ val () = buf.skip1() }
-|
 T_ENDTRY() =>
 optn_cons(tok) where
 { val () = buf.skip1() }
 |
 _ (* non-ENDTRY *) => optn_nil()
 end (*let*) // end of [pq_ENDTRY]
-*)
 //
+(* ****** ****** *)
+//
+(*
 #implfun
 p1_ENDTRY(buf, err) =
 let
@@ -779,9 +779,12 @@ T_ENDTRY() =>
 let val () = buf.skip1() in tok end
 |
 _(* non-ENDTRY *) =>
-let val () = (err := e00 + 1) in tok end
+let
+val () = (err := e00 + 1) in tok end
 end (*let*) // end of [p1_ENDTRY(...)]
+*)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 (*

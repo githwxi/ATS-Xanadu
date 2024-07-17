@@ -128,6 +128,23 @@ strq_vt_append00
 //
 fun
 <x0:vt>
+strm_vt_prepend00
+( xs: strm_vt(x0)
+, ys: strm_vt(x0)): strm_vt(x0)
+fun
+<x0:vt>
+strq_vt_prepend00
+{n1,n2:i0}
+( xs: strq_vt(x0,n1)
+, ys: strq_vt(x0,n2)): strq_vt(x0,n1+n2)
+//
+#symload prepend00 with strm_vt_prepend00
+#symload prepend00 with strq_vt_prepend00
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
 strm_vt_prepend0__llist0
 ( xs: strm_vt(x0)
 , ys: list_vt(x0)): strm_vt(x0)
@@ -145,20 +162,12 @@ strq_vt_prepend0__llist0
 {n1,n2:i0}
 ( xs: strq_vt(x0,n1)
 , ys: list_vt(x0,n2)): strq_vt(x0,n1+n2)
-fun
-<x0:vt>
-strq_vt_prepend0__lstrq0
-{n1,n2:i0}
-( xs: strq_vt(x0,n1)
-, ys: strq_vt(x0,n2)): strq_vt(x0,n1+n2)
 //
 (* ****** ****** *)
 //
-#symload prepend0 with strm_vt_prepend0__llist0
-#symload prepend0 with strm_vt_prepend0__lstrq0
-//
-#symload prepend0 with strq_vt_prepend0__llist0
-#symload prepend0 with strq_vt_prepend0__lstrq0
+#symload prepend00 with strm_vt_prepend0__llist0
+#symload prepend00 with strm_vt_prepend0__lstrq0
+#symload prepend00 with strq_vt_prepend0__llist0
 //
 (* ****** ****** *)
 (* ****** ****** *)

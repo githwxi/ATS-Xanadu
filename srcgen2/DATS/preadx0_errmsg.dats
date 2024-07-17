@@ -1128,11 +1128,13 @@ let
 //
 val () = d0exp_fpemsg(out, d0e1)
 val () = d0eclist_fpemsg(out, d0cs)
-val () = tkend_WHERE_fpemsg(out,topt,tend)
+val () =
+(
+  tkend_WHERE_fpemsg(out,topt,tend))
 //
-endlet // end-(d0eclseq_WHERE(...))
+endlet//end-of-(d0eclseq_WHERE(...))
 )
-endlet // end of [  D0Ewhere(_, _)  ]
+endlet // end-of-[  D0Ewhere(_, _)  ]
 //
 |
 D0Ebrckt
@@ -1154,13 +1156,17 @@ D0Etry0
 ,tbar,dcls,tend) =>
 let
 val () =
-  d0explst_fpemsg(out, d0es)
+d0explst_fpemsg(out, d0es)
 val () =
-  token_WITH_fpemsg(out, twth)
-val () =
-  d0clslst_fpemsg(out, dcls)
-val () =
-  token_ENDTRY_fpemsg(out, tend)
+token_WITH_fpemsg(out, twth)
+val () = d0clslst_fpemsg(out, dcls)
+(*
+(*
+HX-2024-07-16:
+[tend] changes to be optional!
+*)
+val () = token_ENDTRY_fpemsg(out, tend)
+*)
 endlet // end of [D0Etry0(_,_,_,_,_,_)]
 //
 |
@@ -1168,6 +1174,9 @@ D0Elam0
 (tknd,fags,sres
 ,arrw,body,tend) =>
 let
+(*
+HX-2024-07-16: [tend] is optional
+*)
 val () = f0arglst_fpemsg(out, fags)
 in//let
 ( fpemsg(out, sres);
@@ -1181,6 +1190,9 @@ D0Efix0
 ,sres,body,tend) =>
 let
 val () = i0dnt_fpemsg(out, dpid)
+(*
+HX-2024-07-16: [tend] is optional
+*)
 val () = f0arglst_fpemsg(out, fags)
 in//let
 ( fpemsg(out, sres);

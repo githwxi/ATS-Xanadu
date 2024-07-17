@@ -657,20 +657,20 @@ d0exp_node =
 | D0Edtsel of (token, l0abl, d0expopt)
 //
 | D0Elam of
-  ( token(*lam/lam@*)
-  , f0arglst(*arglst*)
-  , effs0expopt, f0unarrow, d0exp, tokenopt)
+( token(*lam/lam@*)
+, f0arglst(*arglst*)
+, effs0expopt, f0unarrow, d0exp, tokenopt)
 | D0Efix of
-  ( token(*fix/fix@*)
-  , d0eid(*fixed-pnt*)
-  , f0arglst(*arglst*)
-  , effs0expopt, f0unarrow, d0exp, tokenopt)
+( token(*fix/fix@*)
+, d0eid(*fixed-pnt*)
+, f0arglst(*arglst*)
+, effs0expopt, f0unarrow, d0exp, tokenopt)
 //
 | D0Etry0 of
-  ( token
-  , d0exp
-  , token(*WITH*)
-  , tokenopt(*BAR*), d0claulst, token(*END*))
+( token
+, d0exp
+, token(*WITH*)
+, tokenopt(*BAR*), d0claulst, tokenopt(*END*))
 //
 (*
 | D0Elexn of
