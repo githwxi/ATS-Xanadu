@@ -105,7 +105,84 @@ case+ xs of
 //
 #impltmp
 { x0:t0 }
-gseq_length<list(x0)><x0> = list_length
+gseq_length
+<list(x0)><x0> = list_length(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-17:
+Wed 17 Jul 2024 06:14:38 PM EDT
+*)
+//
+#impltmp
+< x0:t0 >
+list_reverse
+  ( xs ) =
+(
+list_vt2t(list_reverse_vt<x0>(xs)))
+//
+#impltmp
+{ x0:t0 }
+gseq_reverse
+<list(x0)><x0> = list_reverse<x0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_reverse_vt
+  (xs) =
+(
+list_rappendx0_vt<x0>(xs, list_vt_nil()))
+//
+(* ****** ****** *)
+//
+(*
+HX-2024-07-17:
+Wed 17 Jul 2024 06:32:33 PM EDT
+*)
+//
+#impltmp
+< x0:t0 >
+list_rappend_vt
+  (xs, ys) =
+let
+  val ys =
+  list_copy_vt<x0>(ys)
+in
+  list_rappendx0_vt<x0>(xs, ys)
+end(*let*)//endof(list_rappend_vt(xs,ys))
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_rappendx0_vt
+  (xs, ys) =
+(
+  loop(xs, ys)) where
+{
+//
+fnx
+loop
+{m,n:nat}.<m>.
+( xs
+: list(x0, m)
+, ys
+: list_vt(x0, n)
+) : list_vt(x0,m+n) =
+(
+case+ xs of
+| list_nil() => ys
+| list_cons(x0, xs) =>
+  loop(xs, list_vt_cons(x0, ys)))//fnx
+//
+}(*where*)//end(list_rappendx0_vt(xs,ys))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)

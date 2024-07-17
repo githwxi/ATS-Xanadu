@@ -67,6 +67,11 @@ list_make_2val
 ,x2: a, x3: a): list(a,3)
 //
 (* ****** ****** *)
+#symload
+list_sing with list_make_1val of 1000
+#symload
+list_pair with list_make_2val of 1000
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -74,6 +79,10 @@ fun
 list_length
 {n:i0}
 (xs: list(a, n)): sint(n)
+//
+(*
+#symload length with list_length of 1000
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -91,6 +100,39 @@ list_strqize
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-17:
+Wed 17 Jul 2024 05:27:03 PM EDT
+*)
+//
+fun
+<a:t0>
+list_append
+{m,n:i0}
+( xs: list(a, m)
+, ys: list(a, n)): list(a, m+n)
+//
+fun
+<a:t0>
+list_append_vt
+{m,n:i0}
+( xs: list(a, m)
+, ys: list(a, n)): list_vt(a, m+n)
+//
+fun
+<a:t0>
+list_appendx0_vt
+{m,n:i0}
+( xs: list(a, m)
+, ys: list_vt(a, n)): list_vt(a, m+n)
+//
+#symload append with list_append of 1000
+#symload append_vt with list_append_vt of 1000
+#symload appendx0_vt with list_appendx0_vt of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <a:t0>
 list_reverse
@@ -102,30 +144,37 @@ list_reverse_vt
 {n:i0}
 (xs: list(a, n)): list_vt(a, n)
 //
+#symload reverse with list_reverse of 1000
+#symload reverse_vt with list_reverse_vt of 1000
+//
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 fun
 <a:t0>
 list_rappend
 {m,n:i0}
 ( xs: list(a, m)
 , ys: list(a, n)): list(a, m+n)
-
+//
 fun
 <a:t0>
 list_rappend_vt
 {m,n:i0}
 ( xs: list(a, m)
 , ys: list(a, n)): list_vt(a, m+n)
-
+//
 fun
 <a:t0>
 list_rappendx0_vt
 {m,n:i0}
 ( xs: list(a, m)
 , ys: list_vt(a, n)): list_vt(a, m+n)
-
+//
+#symload rappend with list_rappend of 1000
+#symload rappend_vt with list_rappend_vt of 1000
+#symload rappendx0_vt with list_rappendx0_vt of 1000
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
