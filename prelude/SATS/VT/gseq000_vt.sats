@@ -283,6 +283,11 @@ gseq_append11(xs: !xs, ys: !ys): (xs)
 //
 (* ****** ****** *)
 //
+(*
+HX-2024-07-17:
+Wed 17 Jul 2024 12:48:59 PM EDT
+*)
+//
 fun
 <xs:vt>
 <x0:vt>
@@ -309,6 +314,41 @@ gseq_prepend11(xs: !xs, ys: !ys): (xs)
 #symload prepend01 with gseq_prepend01 of 0100
 #symload prepend10 with gseq_prepend10 of 0100
 #symload prepend11 with gseq_prepend11 of 0100
+*)
+//
+(* ****** ****** *)
+//
+(*
+HX-2024-07-17:
+Wed 17 Jul 2024 04:12:58 PM EDT
+*)
+//
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_rappend00(xs: ~xs, ys: ~ys): (xs)
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_rappend01(xs: ~xs, ys: !ys): (xs)
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_rappend10(xs: !xs, ys: ~ys): (xs)
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_rappend11(xs: !xs, ys: !ys): (xs)
+//
+(*
+#symload rappend00 with gseq_rappend00 of 0100
+#symload rappend01 with gseq_rappend01 of 0100
+#symload rappend10 with gseq_rappend10 of 0100
+#symload rappend11 with gseq_rappend11 of 0100
 *)
 //
 (* ****** ****** *)

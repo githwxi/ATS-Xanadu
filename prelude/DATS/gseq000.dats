@@ -141,6 +141,16 @@ Wed 17 Jul 2024 01:36:53 PM EDT
 gseq_prepend = gseq_prepend00<xs><x0><ys>
 //
 (* ****** ****** *)
+(*
+Wed 17 Jul 2024 04:10:30 PM EDT
+*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< ys:vt >
+gseq_rappend = gseq_rappend00<xs><x0><ys>
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)

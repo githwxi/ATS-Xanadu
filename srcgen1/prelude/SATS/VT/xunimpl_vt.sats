@@ -825,6 +825,34 @@ gseq_prepend11(xs: !xs, ys: !ys): xs
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+Wed 17 Jul 2024 04:30:36 PM EDT
+*)
+//
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_rappend00(xs: ~xs, ys: ~ys): xs
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_rappend01(xs: ~xs, ys: !ys): xs
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_rappend10(xs: !xs, ys: ~ys): xs
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+gseq_rappend11(xs: !xs, ys: !ys): xs
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <x0:vt>
 strm_vt_append00
