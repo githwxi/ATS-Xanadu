@@ -129,6 +129,39 @@ forall1$test<x0>(x0) = false
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+Wed 17 Jul 2024 09:55:22 PM EDT
+*)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_print0(xs) =
+let
+val () =
+strn_print<>
+(gseq$beg<xs><x0>())
+val () =
+(
+gseq_iforitm0<xs><x0>(xs)
+) where
+{
+#impltmp
+iforitm0$work<x0>(ni, x0) =
+(
+  g_print0<x0>(x0)) where
+{
+val () =
+if ni > 0 then
+strn_print<>(gseq$sep<xs><x0>())
+}
+}
+val () =
+strn_print<>(gseq$end<xs><x0>())
+endlet // end-of-[gseq_print0(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 #impltmp

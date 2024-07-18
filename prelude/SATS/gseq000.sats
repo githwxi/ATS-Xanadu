@@ -80,6 +80,28 @@ gseq_prod(xs: xs): (x0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-17:
+Wed 17 Jul 2024 09:37:48 PM EDT
+*)
+//
+(*
+HX-2024-07-17:
+For print0/1 as well
+*)
+fun
+<xs:vt>
+<x0:vt>
+gseq$beg((*0*)): strn
+fun
+<xs:vt>
+<x0:vt>
+gseq$end((*0*)): strn
+fun
+<xs:vt>
+<x0:vt>
+gseq$sep((*0*)): strn
+//
 fun
 <xs:t0>
 <x0:t0>

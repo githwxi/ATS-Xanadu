@@ -93,6 +93,14 @@ gseq_prod = gseq_prod0<xs><x0>
 #impltmp
 < xs:t0 >
 < x0:t0 >
+gseq_print = gseq_print0<xs><x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
 gseq_length = gseq_length0<xs><x0>
 //
 (* ****** ****** *)

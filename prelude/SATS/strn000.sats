@@ -39,6 +39,17 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 (*
+HX-2024-07-17:
+Note strn_print may not
+be the same as g_print<strn>
+*)
+fun<>
+strn_print(strn): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2024-07-11:
 The 'g' in 'gmake' means
 that the argument, which is
