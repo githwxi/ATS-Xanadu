@@ -73,7 +73,7 @@ g_print
 <list(x0)>(xs) =
 (
 gseq_print<list(x0)><x0>(xs)
-)(*let*)//end-[g_print(list)]
+)(*let*)//end-[g_print<list>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
