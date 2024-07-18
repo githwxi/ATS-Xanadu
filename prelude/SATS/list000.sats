@@ -82,9 +82,7 @@ list_length
 {n:i0}
 (xs: list(a, n)): sint(n)
 //
-(*
 #symload length with list_length of 1000
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -128,9 +126,14 @@ list_appendx0_vt
 ( xs: list(a, m)
 , ys: list_vt(a, n)): list_vt(a, m+n)
 //
-#symload append with list_append of 1000
-#symload append_vt with list_append_vt of 1000
-#symload appendx0_vt with list_appendx0_vt of 1000
+(* ****** ****** *)
+//
+#symload
+append with list_append of 1000
+#symload
+append_vt with list_append_vt of 1000
+#symload
+appendx0_vt with list_appendx0_vt of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -146,8 +149,12 @@ list_reverse_vt
 {n:i0}
 (xs: list(a, n)): list_vt(a, n)
 //
-#symload reverse with list_reverse of 1000
-#symload reverse_vt with list_reverse_vt of 1000
+(* ****** ****** *)
+//
+#symload
+reverse with list_reverse of 1000
+#symload
+reverse_vt with list_reverse_vt of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -173,9 +180,14 @@ list_rappendx0_vt
 ( xs: list(a, m)
 , ys: list_vt(a, n)): list_vt(a, m+n)
 //
-#symload rappend with list_rappend of 1000
-#symload rappend_vt with list_rappend_vt of 1000
-#symload rappendx0_vt with list_rappendx0_vt of 1000
+(* ****** ****** *)
+//
+#symload
+rappend with list_rappend of 1000
+#symload
+rappend_vt with list_rappend_vt of 1000
+#symload
+rappendx0_vt with list_rappendx0_vt of 1000
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)

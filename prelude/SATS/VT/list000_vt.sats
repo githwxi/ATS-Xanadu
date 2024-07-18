@@ -67,6 +67,15 @@ list_vt_make_3val
 ,x2: a, x3: a): list_vt(a,3)
 //
 (* ****** ****** *)
+//
+#symload
+llist_sing with list_vt_make_1val
+#symload
+llist_pair with list_vt_make_2val
+#symload
+llist_triple with list_vt_make_3val
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -94,8 +103,10 @@ list_vt_make0_lstrq
 {n0:i0}
 (xs: strq_vt(x0, n0)): list_vt(x0, n0)
 //
-#symload list_vt with list_vt_make0_lstrm
-#symload list_vt with list_vt_make0_lstrq
+#symload
+llist_make0 with list_vt_make0_lstrm
+#symload
+llist_make0 with list_vt_make0_lstrq
 //
 (* ****** ****** *)
 (* ****** ****** *)
