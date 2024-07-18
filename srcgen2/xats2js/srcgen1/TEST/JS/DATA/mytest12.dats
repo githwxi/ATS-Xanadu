@@ -157,7 +157,7 @@ val xs2 = list_pair(3, 4)
 val ( ) = println("|xs1| = ", length(xs1))
 val xs3 = append(xs1, xs2)
 val ( ) = println("|xs3| = ", length(xs3))
-val xs4 = reverse(xs3)//val
+val xs4 = reverse(  xs3  )
 val ( ) = println("|xs4| = ", length(xs4))
 
 (* ****** ****** *)
