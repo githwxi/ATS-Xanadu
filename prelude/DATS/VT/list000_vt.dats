@@ -39,6 +39,50 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 (*
+HX-2024-07-17:
+Wed 17 Jul 2024 10:06:19 PM EDT
+*)
+//
+#impltmp
+{ x0:t0 }
+g_print0
+<list_vt(x0)>(xs) =
+let
+//
+#vwtpdef xs = llist(x0)
+//
+#impltmp
+gseq$sep<xs><x0>() = ","
+#impltmp
+gseq$end<xs><x0>() = ")"
+#impltmp
+gseq$beg<xs><x0>() = "llist("
+in//let
+gseq_print0<list_vt(x0)><x0>(xs)
+end//let//end-[g_print0(list_vt)]
+//
+#impltmp
+{ x0:t0 }
+g_print1
+<list_vt(x0)>(xs) =
+let
+//
+#vwtpdef xs = llist(x0)
+//
+#impltmp
+gseq$sep<xs><x0>() = ","
+#impltmp
+gseq$end<xs><x0>() = ")"
+#impltmp
+gseq$beg<xs><x0>() = "llist("
+in//let
+gseq_print1<list_vt(x0)><x0>(xs)
+end//let//end-[g_print1(list_vt)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 #impltmp
 < x0:t0 >
 list_vt_length0 =
@@ -71,7 +115,8 @@ list_vt_cons(x1, xs) =>
 //
 #impltmp
 { x0:vt }
-gseq_length0<list_vt(x0)><x0> = list_vt_length0
+gseq_length0
+<list_vt(x0)><x0> = list_vt_length0<x0>
 //
 (* ****** ****** *)
 //
@@ -105,7 +150,8 @@ case+ xs of
 //
 #impltmp
 { x0:vt }
-gseq_length1<list_vt(x0)><x0> = list_vt_length1
+gseq_length1
+<list_vt(x0)><x0> = list_vt_length1<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)

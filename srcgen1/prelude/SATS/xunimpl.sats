@@ -184,6 +184,22 @@ gseq_prod(xs: xs): (x0)
 (* ****** ****** *)
 //
 fun
+<xs:vt>
+<x0:vt>
+gseq$beg((*0*)): strn
+fun
+<xs:vt>
+<x0:vt>
+gseq$end((*0*)): strn
+fun
+<xs:vt>
+<x0:vt>
+gseq$sep((*0*)): strn
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 <xs:t0>
 <x0:t0>
 gseq_foritm(xs: xs): void
