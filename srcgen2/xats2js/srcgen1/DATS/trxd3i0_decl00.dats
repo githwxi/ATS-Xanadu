@@ -670,5 +670,5 @@ trxd3i0_d3eclistopt
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_srcgen2_xinterp_srcgen1_DATS_trxd3i0_decl00.dats] *)
+(* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_DATS_trxd3i0_decl00.dats] *)
 (***********************************************************************)
