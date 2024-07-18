@@ -38,6 +38,37 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-17:
+Wed 17 Jul 2024 10:27:26 PM EDT
+*)
+//
+#impltmp
+{ x0:vt }
+gseq$sep
+<strm_vt(x0)><x0>() = ","
+#impltmp
+{ x0:vt }
+gseq$end
+<strm_vt(x0)><x0>() = ")"
+#impltmp
+{ x0:vt }
+gseq$beg
+<strm_vt(x0)><x0>() = "lstrm("
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:vt }
+g_print0
+<strm_vt(x0)>(xs) =
+(
+gseq_print0<strm_vt(x0)><x0>(xs)
+)(*let*)//end-[g_print0<strm_vt>]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 < x0:vt >
 g_make0_lstrm
