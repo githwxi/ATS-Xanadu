@@ -44,37 +44,36 @@ Wed 17 Jul 2024 10:06:19 PM EDT
 *)
 //
 #impltmp
-{ x0:t0 }
+{ x0:vt }
+gseq$sep
+<llist(x0)><x0>() = ","
+#impltmp
+{ x0:vt }
+gseq$end
+<llist(x0)><x0>() = ")"
+#impltmp
+{ x0:vt }
+gseq$beg
+<llist(x0)><x0>() = "llist("
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:vt }
 g_print0
 <list_vt(x0)>(xs) =
-let
-//
-#vwtpdef xs = llist(x0)
-//
-#impltmp
-gseq$sep<xs><x0>() = ","
-#impltmp
-gseq$end<xs><x0>() = ")"
-#impltmp
-gseq$beg<xs><x0>() = "llist("
-in//let
+(
 gseq_print0<list_vt(x0)><x0>(xs)
-end//let//end-[g_print0(list_vt)]
+)(*let*)//end-[g_print0(list_vt)]
 //
 #impltmp
-{ x0:t0 }
+{ x0:vt }
 g_print1
 <list_vt(x0)>(xs) =
 let
 //
 #vwtpdef xs = llist(x0)
 //
-#impltmp
-gseq$sep<xs><x0>() = ","
-#impltmp
-gseq$end<xs><x0>() = ")"
-#impltmp
-gseq$beg<xs><x0>() = "llist("
 in//let
 gseq_print1<list_vt(x0)><x0>(xs)
 end//let//end-[g_print1(list_vt)]
