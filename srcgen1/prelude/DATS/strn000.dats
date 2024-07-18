@@ -380,6 +380,16 @@ strn_rforeach<> =
 gseq_rforeach<strn><cgtz>
 //
 (* ****** ****** *)
+//
+#impltmp
+strn_iforall<> =
+gseq_iforall<strn><cgtz>
+//
+#impltmp
+strn_iforeach<> =
+gseq_iforeach<strn><cgtz>
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp

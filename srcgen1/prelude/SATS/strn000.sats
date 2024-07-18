@@ -305,6 +305,13 @@ fun<>
 strn_rforeach(strn): void
 //
 (* ****** ****** *)
+//
+fun<>
+strn_iforall(strn): bool
+fun<>
+strn_iforeach(strn): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun<>

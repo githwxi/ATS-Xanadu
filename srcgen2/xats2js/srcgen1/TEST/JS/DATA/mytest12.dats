@@ -151,17 +151,20 @@ val () = println
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 val xs1 = list_pair(1, 2)
 val xs2 = list_pair(3, 4)
 val ( ) = println("xs1 = ", xs1)
 val ( ) = println("xs2 = ", xs2)
 val ( ) = println("|xs1| = ", length(xs1))
+val ( ) = println("|xs2| = ", length(xs2))
 val xs3 = append(xs1, xs2)
+val ( ) = println("xs3 = ", xs3)
 val ( ) = println("|xs3| = ", length(xs3))
 val xs4 = reverse(  xs3  )
+val ( ) = println("xs4 = ", xs4)
 val ( ) = println("|xs4| = ", length(xs4))
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
