@@ -56,21 +56,24 @@ Wed 17 Jul 2024 09:49:09 PM EDT
 //
 #impltmp
 { x0:t0 }
+gseq$sep
+<list(x0)><x0>() = ","
+#impltmp
+{ x0:t0 }
+gseq$end
+<list(x0)><x0>() = ")"
+#impltmp
+{ x0:t0 }
+gseq$beg
+<list(x0)><x0>() = "list("
+//
+#impltmp
+{ x0:t0 }
 g_print
 <list(x0)>(xs) =
-let
-//
-#typedef xs = list(x0)
-//
-#impltmp
-gseq$sep<xs><x0>() = ","
-#impltmp
-gseq$end<xs><x0>() = ")"
-#impltmp
-gseq$beg<xs><x0>() = "list("
-in//let
+(
 gseq_print<list(x0)><x0>(xs)
-end//let//end-[g_print(list)]
+)(*let*)//end-[g_print(list)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
