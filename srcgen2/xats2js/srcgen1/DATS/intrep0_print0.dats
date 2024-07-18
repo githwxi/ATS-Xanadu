@@ -253,6 +253,10 @@ print("I0Etimp(",i0e1,";",timp,")"))
 //
 (* ****** ****** *)
 //
+|I0Edap0
+(  i0f0  ) =>
+(
+  print("I0Edap0(", i0f0, ")"))
 |I0Edapp
 (i0f0, i0es) =>
 print("I0Edapp(", i0f0, ";", i0es, ")")

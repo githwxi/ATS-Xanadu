@@ -145,10 +145,18 @@ i1lab_fprint(g_print$out<>(), ilab)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+#impltmp
+g_print
+<i1arg>(iarg) =
+i1arg_fprint(g_print$out<>(), iarg)
+*)
+//
 #impltmp
 g_print
 <i1opr>(iopr) =
 i1opr_fprint(g_print$out<>(), iopr)
+//
 #impltmp
 g_print
 <i1tnm>(itnm) =

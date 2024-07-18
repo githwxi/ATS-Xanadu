@@ -482,7 +482,85 @@ if
 (btf0 = TRUE_symbl)
 then print("XATSBOOL(true)")
 else print("XATSBOOL(false)")
+) where
+{
+#impltmp g_print$out<>() = filr
+}(*where*)//end-of-[i1btfjs1(...)]
+//
+(* ****** ****** *)
+//
+fun
+i1strjs1
+( filr: FILR
+, tint: token): void =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+//
+case-
+tint.node() of
+|
+T_STRN1_clsd
+( rep1,len2 ) =>
+(
+print
+("XATSSTRN(");
+f0_strn(rep1, len2); print(")"))
+|
+T_STRN2_ncls
+( rep1,len2 ) =>
+(
+print
+("XATSSTRN(\"");
+f0_strn(rep1, len2); print("\")"))
+//
+end where // end-of-[let]
+{
+//
+fun
+f0_strn
+(rep1: strn
+,len2: sint): void =
+(
+strn_iforeach(rep1)) where
+{
+#impltmp
+iforeach$work
+<cgtz>(i0, ch) =
+(
+case+ ch of
+| '"' =>
+(
+if
+(0 = i0)
+then
+strn_fprint(filr, "\"")
+else
+if
+(i0+1 = len2)
+then
+strn_fprint(filr, "\"")
+else
+strn_fprint(filr, "\\\""))
+//
+| '\n' => strn_fprint(filr, "\\n")
+| '\t' => strn_fprint(filr, "\\t")
+//
+| '\b' => strn_fprint(filr, "\\b")
+| '\f' => strn_fprint(filr, "\\f")
+//
+| '\g' => strn_fprint(filr, "\\g")
+//
+| '\v' => strn_fprint(filr, "\\v")
+//
+| _(*else*) => char_fprint(filr, ch)
 )
+}
+//
+}(*where*)//end-of-[i1strjs1(filr,tchr)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -578,6 +656,15 @@ ival.node() of
 |I1Vbtf
 ( btf0 ) => i1btfjs1(filr,btf0)
 (* ****** ****** *)
+|I1Vstr
+( tstr ) => i1strjs1(filr,tstr)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Vtop
+( sym0 ) => print( "XATSTOP0" )
+//
+(* ****** ****** *)
 (* ****** ****** *)
 |I1Vtnm
 ( itnm ) => i1tnmfpr(filr,itnm)
@@ -600,6 +687,7 @@ ival.node() of
 (
   print("XATSAEXP(", i0e1, ")") )
 //
+(* ****** ****** *)
 (* ****** ****** *)
 |I1Vp0rj
 ( itup,pind ) =>
@@ -629,6 +717,15 @@ print
 { #impltmp
   g_print<token>(x) = xtrcdjs1(filr,x) }
 (* ****** ****** *)
+(* ****** ****** *)
+//
+|I1Vlpcn
+(plab, itup) =>
+( print
+  ("XATSLPCN(", plab, ", ", itup, ")")
+) where
+{ #impltmp
+  g_print<label>(x) = labeljs1(filr,x) }
 //
 |I1Vlpft
 (plab, itup) =>
@@ -755,7 +852,7 @@ case+ iins of
 if
 i1val_conq
 (  i1f0  )
-then
+then//then
 let
 val-
 I1Vcon(dcon) = i1f0.node()
@@ -772,13 +869,26 @@ list_consq(i1vs) then strnfpr(filr,", ");
 //
 i1valjs1_list(filr,i1vs);strnfpr(filr,"])"))
 end//let
-else let // else
+else//else
+(
+if
+i1val_cfnq
+(  i1f0  )
+then // then
+(
+strnfpr
+(filr,"XATSCAST(");
+strnfpr(filr,"\"");
+i1valjs1(filr,i1f0);strnfpr(filr,"\"");
+strnfpr(filr,", [");
+i1valjs1_list(filr,i1vs);strnfpr(filr,"])"))
+else // else
 (
 strnfpr
 (filr,"XATSDAPP(");
 i1valjs1(filr,i1f0);strnfpr(filr,"(");
 i1valjs1_list(filr,i1vs);strnfpr(filr,"))"))
-endlet//else//end-of-[if]
+)
 )
 //
 (* ****** ****** *)
@@ -1199,6 +1309,26 @@ case+ ilet of
 (   iins   ) =>
 (
 case+ iins of
+//
+(* ****** ****** *)
+//
+|I1INSfold
+(  i1v0  ) =>
+(
+nindstrnfpr
+(filr, nind, "XATS000_fold(");
+i1valjs1(filr, i1v0);strnfpr(filr, ")\n"))
+//
+(* ****** ****** *)
+//
+|I1INSfree
+(  i1v0  ) =>
+(
+nindstrnfpr
+(filr, nind, "XATS000_free(");
+i1valjs1(filr, i1v0);strnfpr(filr, ")\n"))
+//
+(* ****** ****** *)
 //
 |I1INSassgn
 (i1vl, i1vr) =>

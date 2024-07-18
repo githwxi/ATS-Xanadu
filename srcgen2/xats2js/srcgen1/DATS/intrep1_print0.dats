@@ -97,6 +97,8 @@ in//let
 case+
 i1v0.node() of
 //
+(* ****** ****** *)
+//
 |I1Vnil() =>
 print("I1Vnil(",")")
 //
@@ -108,6 +110,20 @@ print("I1Vbtf(",btf,")")
 print("I1Vchr(",chr,")")
 |I1Vstr(str) =>
 print("I1Vstr(",str,")")
+//
+(* ****** ****** *)
+//
+|I1Vtop(sym) =>
+print("I1Vtop(",sym,")")
+//
+(* ****** ****** *)
+//
+(*
+|I1Varg(iarg) =>
+print("I1Varg(",iarg,")")
+*)
+//
+(* ****** ****** *)
 //
 |I1Vtnm(itnm) =>
 print("I1Vtnm(",itnm,")")
@@ -212,16 +228,31 @@ print
 //
 (*
 HX-2024-05-15:
-For flat/boxed left-values
+For flat left-values
 *)
+//
 |I1Vlpft
 (lab0, i1v1) =>
 (
 print("I1Vlpft(",lab0,";",i1v1,")"))
+//
+(*
+HX-2024-05-15:
+For boxed left-values
+*)
 |I1Vlpbx
 (lab0, i1v1) =>
 (
 print("I1Vlpbx(",lab0,";",i1v1,")"))
+//
+(*
+HX-2024-07-18:
+For consd left-values
+*)
+|I1Vlpcn
+(lab0, i1v1) =>
+(
+print("I1Vlpcn(",lab0,";",i1v1,")"))
 //
 (* ****** ****** *)
 //
@@ -390,6 +421,12 @@ _(*otherwise*) => ( i0e1 ))}
 |I1INSflat
 (   i1v0   ) =>
 (print("I1INSflat(",i1v0,")"))
+//
+(* ****** ****** *)
+//
+|I1INSfold
+(   i1v0   ) =>
+(print("I1INSfold(",i1v0,")"))
 //
 |I1INSfree
 (   i1v0   ) =>

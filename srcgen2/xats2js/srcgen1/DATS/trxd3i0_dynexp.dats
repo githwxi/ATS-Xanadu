@@ -505,6 +505,11 @@ i0exp
 (d3e0.lctn(), I0Estr(tok))
 //
 (* ****** ****** *)
+|D3Etop
+( sym ) =>
+i0exp
+(d3e0.lctn(), I0Etop(sym))
+(* ****** ****** *)
 //
 |D3Evar
 ( d2v ) =>
@@ -538,6 +543,7 @@ i0exp
 //
 (* ****** ****** *)
 //
+|D3Edap0 _ => f0_dap0(env0, d3e0)
 |D3Edapp _ => f0_dapp(env0, d3e0)
 //
 (* ****** ****** *)
@@ -722,6 +728,28 @@ in//let
 (
   i0exp(loc0, I0Etapq(i0f0)) )
 end//let//end-of-[f0_tapq(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_dap0
+( env0:
+! envd3i0
+, d3e0: d3exp): i0exp =
+(
+i0exp
+(loc0, I0Edap0(i0f0)))
+where
+{
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Edap0(d3f0) = d3e0.node()
+val
+i0f0 = trxd3i0_d3exp(env0, d3f0)
+//
+}(*where*)//endof[f0_dap0(env0,d3e0)]
 //
 (* ****** ****** *)
 //

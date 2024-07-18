@@ -428,6 +428,7 @@ i0exp_node =
 //
 (* ****** ****** *)
 //
+|I0Edap0 of (i0exp(*con*))
 |I0Edapp of
 (i0exp(*fun*), i0explst(*arg*))
 //
@@ -436,6 +437,7 @@ i0exp_node =
 |I0Epcon of
 ( // token(*tknd*)
   label(*LABint*), i0exp(*con*))
+//
 |I0Epflt of
 ( // token(*tknd*)
   label(*intsym*), i0exp(*tup*))
