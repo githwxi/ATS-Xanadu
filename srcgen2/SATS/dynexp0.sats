@@ -479,19 +479,29 @@ D0Efix0 of
 , s0res, f0unarrw, d0exp, tokenopt)//fix
 //
 |
-D0Eraise of (token, d0exp) // HX: raising
+D0Eraise of (token, d0exp) //HX:raising
 //
 |
-D0Eannot of (d0exp, s0exp) // HX: annotation
+D0Eannot of (d0exp, s0exp) //HX:annotation
 | // qualified-id
-D0Equal0 of (token, d0exp) // HX: qual-d0exp
+D0Equal0 of (token, d0exp) //HX:qual-d0exp
 //
 | // HX-2020-11-04: for specifying
-D0Eextnam of (token, g0nam) // external names
+D0Eextnam of (token, g0nam) //extern names
 |
 D0Eexists of
-( token // HX-2021-01-14: $exists{..}..{..}
-, d0explst(*D0Esarglst*), d0exp ) // (d0exp)
+( token//HX-2021-01-14:$exists{..}..{..}
+, d0explst(*D0Esarglst*), d0exp )//(d0exp)
+//
+|
+//
+(*
+HX-2024-07-19:
+Note that [d0exp] should
+evaluate to a literal string!
+Fri 19 Jul 2024 05:12:46 PM EDT
+*)
+D0Esynext of (token, d0exp(*lit-string*))
 //
 |
 (*

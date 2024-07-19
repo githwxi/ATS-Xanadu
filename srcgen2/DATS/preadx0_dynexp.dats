@@ -1050,12 +1050,12 @@ fun
 d0exp_extnam_errck
 ( loc
 : loc_t
-, tok1: token
-, gnm2: g0nam): d0exp =
+, tknd: token
+, gnm1: g0nam): d0exp =
 let
 val lvl = 0 in
 d0exp_errck
-(lvl+1,d0exp(loc,D0Eextnam(tok1,gnm2)))
+(lvl+1,d0exp(loc,D0Eextnam(tknd,gnm1)))
 end (*let*) // end of [d0exp_extnam_errck]
 //
 (* ****** ****** *)
@@ -1077,11 +1077,27 @@ d0exp_errck
 end (*let*) // end of [d0exp_exists_errck]
 //
 (* ****** ****** *)
+//
+fun
+d0exp_synext_errck
+( loc
+: loc_t
+, tknd: token
+, d0e1: d0exp): d0exp =
+let
+val lvl = 0 in
+d0exp_errck
+(lvl+1,d0exp(loc,D0Esynext(tknd,d0e1)))
+end (*let*) // end of [d0exp_synext_errck]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 (*
 HX-2022-07:
 implement [preadx0_d0pat]
 implement [preadx0_d0exp]
 *)
+(* ****** ****** *)
 (* ****** ****** *)
 #extern
 fun
@@ -1411,6 +1427,11 @@ D0Edtsel _ => f0_dtsel(d0e, err)
 D0Eextnam _ => f0_extnam( d0e, err )
 |
 D0Eexists _ => f0_exists( d0e, err )
+//
+(* ****** ****** *)
+//
+|
+D0Esynext _ => f0_synext( d0e, err )
 //
 (* ****** ****** *)
 //
@@ -2113,17 +2134,17 @@ val e00 = err
 //
 val-
 D0Eextnam
-( tok1, gnm2) = d0e.node()
+( tknd, gnm1) = d0e.node()
 //
 (*
-val gnm2 = preadx0_g0nam(gnm2, err)
+val gnm1 = preadx0_g0nam(gnm1, err)
 *)
 //
 in//let
 if
 (err=e00)
 then (d0e) else
-d0exp_extnam_errck(d0e.lctn(),tok1,gnm2)
+d0exp_extnam_errck(d0e.lctn(),tknd,gnm1)
 end (*let*) // end of [f0_extnam(d0e,err)]
 //
 (* ****** ****** *)
@@ -2153,11 +2174,36 @@ end
 end (*let*) // end of [f0_extnam(d0e,err)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_none0
 ( d0e: d0exp
 , err: &sint >> _): d0exp = d0e//f0_none0
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_synext
+( d0e: d0exp
+, err: &sint >> _): d0exp =
+let
+//
+val e00 = err
+//
+val-
+D0Esynext
+( tknd, d0e1) = d0e.node()
+//
+val d0e1 = preadx0_d0exp(d0e1, err)
+//
+in//let
+if
+(err=e00)
+then (d0e) else
+d0exp_synext_errck(d0e.lctn(),tknd,d0e1)
+end (*let*) // end-of-[f0_synext(d0e,err)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -402,7 +402,13 @@ print("D0Eextnam(", tknd, ";", gnam, ")")
 |
 D0Eexists
 (tknd,d0es,d0e1) =>
-print("D0Eexists(",tknd,";",d0es,";",d0e1,")")
+print
+("D0Eexists(",tknd,";",d0es,";",d0e1,")")
+//
+|
+D0Esynext
+(tknd,d0e1) =>
+print("D0Esynext(", tknd, ";", d0e1, ")")
 //
 |
 D0Etkerr(terr) => print("D0Etkerr(", terr, ")")

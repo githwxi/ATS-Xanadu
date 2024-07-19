@@ -597,10 +597,18 @@ D1Eexists of
 ( // HX-2021-01-14: $exists{..}..{..}(d1exp)
 token, d1explst(*D1Esarglst*), d1exp(*scope*))
 //
-| D1Enone0 of ((*void*)) | D1Enone1 of (d0exp)
+| // HX-2024-07-19: [d1exp] evaluates
+D1Esynext of (token, d1exp)//to literal string
 //
+(* ****** ****** *)
+|
+D1Enone0 of ((*void*)) | D1Enone1 of ( d0exp )
+//
+(* ****** ****** *)
 |
 D1Eerrck of (sint(*lvl*), d1exp)//HX:tread01-error
+//
+(* ****** ****** *)
 //
 // end of [d1exp_node] // end of [ datatype(...) ]
 //

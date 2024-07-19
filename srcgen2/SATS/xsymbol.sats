@@ -197,6 +197,8 @@ symbl_insert_any(sym: symbl): void
 //
 val
 DLR_EXTNAM_symbl: symbl //=symbl("$extnam")
+val
+DLR_EXTVAL_symbl: symbl //=symbl("$extval")
 //
 val
 DLR_EXTBOX_symbl: symbl //=symbl("$extbox")
@@ -236,6 +238,16 @@ val
 TOP0_VT_T0_symbl: symbl //=symbl("top0_vt_t0")
 val
 TOP1_VT_T0_symbl: symbl //=symbl("top1_vt_t0")
+//
+(* ****** ****** *)
+//
+(*
+HX-2024-07-19:
+For external syntax
+(usually of the target)
+Fri 19 Jul 2024 05:07:03 PM EDT
+*)
+val DLR_SYNEXT_symbl: symbl // =symbl("$synext")
 //
 (* ****** ****** *)
 
