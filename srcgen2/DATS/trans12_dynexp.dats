@@ -519,7 +519,8 @@ in//let
 end (*let*) // end of [trans12_d1pid(env0,dpid)]
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 local
 //
 (* ****** ****** *)
@@ -1483,7 +1484,7 @@ end//let
 } (*where*)//end of [trans12_d1pat(env0,d1p0)
 //
 end (*local*)//end of [local( trans12_d1pat )]
-
+//
 (* ****** ****** *)
 //
 #implfun
@@ -1500,7 +1501,8 @@ D2LAB(lab0, trans12_d1pat(env0, d1p1))
 end (*let*)//end-of-[trans12_l1d1p(env0,ld1p)]
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
 trans12_d1exp
 ( env0,d1e0 ) = let
@@ -1611,11 +1613,20 @@ There is no D1Eassgn!
 //
 |D1Enone0 _ => f0_none0(env0, d1e0)
 //
+(* ****** ****** *)
+//
 |
 D1Eextnam _ => f0_extnam(env0, d1e0)
 //
 |
+D1Esynext _ => f0_synext(env0, d1e0)
+//
+(* ****** ****** *)
+//
+|
 _(*otherwise*) => (d2exp_none1(d1e0))
+//
+(* ****** ****** *)
 //
 end where // end-of-[trans12_d1exp(...)]
 {
@@ -3199,8 +3210,36 @@ in//let
 //
 (* ****** ****** *)
 //
+(*
+HX-2024-0719:
+Fri 19 Jul 2024 07:21:31 PM EDT
+*)
+//
+fun
+f0_synext
+( env0:
+! tr12env
+, d1e0: d1exp): d2exp =
+let
+//
+val loc0 = d1e0.lctn()
+//
+val-
+D1Esynext
+(tknd, d1e1) = d1e0.node()
+//
+val d2e1 =
+trans12_d1exp(env0, d1e1)
+//
+in//let
+( d2exp_make_node
+  (loc0, D2Esynext(tknd, d2e1))) endlet//fun
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 } (*where*)//end of [trans12_d1exp(env0,d1e0)]
-
+//
 (* ****** ****** *)
 //
 #implfun

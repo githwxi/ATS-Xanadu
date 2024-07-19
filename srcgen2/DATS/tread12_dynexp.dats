@@ -938,6 +938,26 @@ d2exp_errck
 endlet // end of [d2exp_annot_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-0719:
+Fri 19 Jul 2024 07:29:07 PM EDT
+*)
+fun
+d2exp_synext_errck
+( loc0: loc_t
+, tknd: token
+, d2e1: d2exp): d2exp =
+let
+val lvl0 = errvl(d2e1) in//let
+d2exp_errck
+( lvl0+1
+, d2exp(loc0, D2Esynext( tknd, d2e1 )))
+endlet // end-of-[d2exp_synext_errck(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (* ****** ****** *)
 (*
@@ -1414,8 +1434,15 @@ D2Edtsel _ => f0_dtsel(d2e0, err)
 //
 |D2Enone0 _ => f0_none0(d2e0, err)
 //
+(* ****** ****** *)
+//
 |
 D2Eextnam _ => f0_extnam(d2e0, err)
+//
+|
+D2Esynext _ => f0_synext(d2e0, err)
+//
+(* ****** ****** *)
 //
 | _(*otherwise*) =>
 let
@@ -2220,6 +2247,34 @@ f0_extnam
 ,err: &sint >> _): d2exp =
 let
 val-D2Eextnam _ = d2e.node() in (d2e) end
+//
+(* ****** ****** *)
+//
+fun
+f0_synext
+(d2e: d2exp
+,err: &sint >> _): d2exp =
+let
+//
+val e00 = err
+//
+val-
+D2Esynext
+(tknd, d2e1) = d2e.node()
+//
+val
+d2e1 = tread12_d2exp(d2e1, err)
+//
+in//let
+if
+(err=e00)
+then (d2e) else
+let
+val loc = d2e.lctn() in
+(
+  d2exp_synext_errck(loc, tknd, d2e1))
+end (*let*) // end-of-[else]
+end (*let*) // end of [f0_synext(d2e,err)]
 //
 (* ****** ****** *)
 //
