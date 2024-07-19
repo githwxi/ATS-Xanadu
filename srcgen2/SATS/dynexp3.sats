@@ -559,6 +559,9 @@ D3Eexists of
   s2explst(*witness*), d3exp(*scopexp*) )
 //
 (* ****** ****** *)
+| // HX-2024-07-19: [d3exp] evaluates
+D3Esynext of (token, d3exp)//to lit-string
+(* ****** ****** *)
 //
 |D3Enone0 of ((*0*))
 |D3Enone1 of (d2exp) | D3Enone2 of (d3exp)

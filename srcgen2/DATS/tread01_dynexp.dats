@@ -72,6 +72,7 @@ ATS_PACKNAME
 #symload lctn with d1arg_get_lctn
 #symload node with d1arg_get_node
 (* ****** ****** *)
+(* ****** ****** *)
 (*
 HX-2022-08-21:
 A placeholder for the moment
@@ -81,6 +82,7 @@ fun
 s1exp_errvl_lst
 (ses: s1explst): sint = 0
 #symload errvl with s1exp_errvl_lst
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -547,6 +549,7 @@ then (ld1p) else D1LAB(lab0, d1p1)
 end (*let*)//end(tread01_l1d1p(ld1p,err))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d1exp_errck
@@ -682,6 +685,7 @@ list_cons(dcl1,dcls) => gmax
 ) (*case+*)//end-of-(d1cls_errvl_lst)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX-2022-08-21:
@@ -693,6 +697,7 @@ d1ecl_errvl_lst
 (dcs: d1eclist): sint = 0
 #symload errvl with d1ecl_errvl_lst
 //
+(* ****** ****** *)
 (* ****** ****** *)
 fun
 d1exp_b0sh_errck
@@ -1152,6 +1157,7 @@ d1exp_errck
 (lvl+1, d1exp(loc, D1Equal0(tok1,d1e2)))
 endlet // end of [d1exp_qual0_errck(...)]
 (* ****** ****** *)
+//
 fun
 d1exp_exists_errck
 ( loc
@@ -1169,6 +1175,23 @@ d1exp_errck
 ( lvl+1
 , d1exp(loc, D1Eexists(tknd,d1es,d1e1)))
 endlet // end of [d1exp_exists_errck(...)]
+//
+(* ****** ****** *)
+//
+fun
+d1exp_synext_errck
+( loc: loc_t
+, tknd: token
+, d1e1: d1exp): d1exp =
+let
+val lvl = errvl(d1e1)
+in//let
+d1exp_errck
+(
+lvl+1, d1exp(loc,D1Esynext(tknd, d1e1)))
+endlet // end of [d1exp_synext_errck(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 #implfun
@@ -1721,9 +1744,12 @@ endlet // end of [D1Equal0(tok1,d1e2)]
 D1Enone0
 (  (*nil*)  ) => (       d1e0       )
 //
+(* ****** ****** *)
 |
 D1Eextnam
 ( tknd, gnam) => d1e0//HX:fixity-less
+//
+(* ****** ****** *)
 //
 |
 D1Eexists
@@ -1745,6 +1771,29 @@ if
 then (d1e0) else
 d1exp_exists_errck(loc0,tknd,d1es,d1e1)
 endlet//end-[D1Eexists(tknd,d1es,d1e1)]
+//
+(* ****** ****** *)
+//
+|
+D1Esynext
+( tknd, d1e1) =>
+let
+//
+val e00 = err
+//
+val d1e1 =
+tread01_d1exp(d1e1, err)
+//
+in//let
+if
+(err=e00)
+then (d1e0) else
+(
+  d1exp_synext_errck(loc0,tknd,d1e1))
+endlet//end-of-[D1Esynext(tknd, d1e1)]
+//
+(* ****** ****** *)
+//
 |
 _(* otherwise *) =>
 let

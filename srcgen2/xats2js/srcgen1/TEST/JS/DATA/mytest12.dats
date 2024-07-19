@@ -15,6 +15,19 @@
 "srcgen1\
 /prelude/HATS/CATS/JS/prelude_dats.hats"
 //
+#staload _ =
+"srcgen1\
+/prelude/DATS/CATS/JS/Node/g_print.dats"
+(* ****** ****** *)
+//
+#extcode
+"
+var A = [1,2,3]
+"(*end-of-[extcode]*)
+//
+val A =
+$synext("A"):jsa1ref(sint)
+//
 (* ****** ****** *)
 
 fun

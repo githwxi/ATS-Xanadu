@@ -1054,14 +1054,23 @@ D2Elabck of (d2exp, label)//HX: casting
 D2Et2pck of (d2exp, s2typ)//HX: casting
 //
 |
-D2Eextnam of (token, g1nam)//HX: external
+D2Eextnam of (token, g1nam)//HX:external
 |
 D2Eexists of
 (
   s2explst(*witness*), d2exp(*scopexp*) )
 //
+(* ****** ****** *)
+//
+| // HX-2024-07-19: [d2exp] evaluates
+D2Esynext of (token, d2exp)//to lit-string
+//
+(* ****** ****** *)
+//
 |D2Enone0 of ((*0*))
 |D2Enone1 of (d1exp) | D2Enone2 of (d2exp)
+//
+(* ****** ****** *)
 //
 |D2Eerrck of
  (sint(*lvl*), d2exp(*err*))//HX:tread12-error

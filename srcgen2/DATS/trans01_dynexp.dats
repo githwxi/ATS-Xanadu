@@ -1038,6 +1038,21 @@ in // let
 FXITMatm
 (d1exp(loc0, D1Eexists(tknd,d1es,d1e1)))
 endlet//end-of-[D0Eexists(tknd,d0es,d0e1)]
+//
+|
+D0Esynext
+(tknd, dexp) =>
+let
+//
+val loc0 = d0e0.lctn()
+//
+val
+dexp = trans01_d0exp(tenv, dexp)
+in // let
+FXITMatm
+(d1exp(loc0, D1Esynext(tknd, dexp)))
+end (*let*)//end-of(D0Esynext(tknd,dexp))
+//
 |
 _(* otherwise *) =>
 let

@@ -508,6 +508,13 @@ print("D3Eexists(",s2es,";",d3e1,")") )
 //
 (* ****** ****** *)
 //
+|
+D3Esynext
+( tknd, d3e1) =>
+print("D3Esynext(", tknd, ";", d3e1, ")")
+//
+(* ****** ****** *)
+//
 |D3Enone0() => print( "D3Enone0(", ")" )
 |D3Enone1(d2e1) => print("D3Enone1(", d2e1, ")")
 |D3Enone2(d3e1) => print("D3Enone2(", d3e1, ")")
