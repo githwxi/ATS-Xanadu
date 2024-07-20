@@ -3226,14 +3226,11 @@ val loc0 = d1e0.lctn()
 //
 val-
 D1Esynext
-(tknd, d1e1) = d1e0.node()
-//
-val d2e1 =
-trans12_d1exp(env0, d1e1)
+(tknd, gexp) = d1e0.node()
 //
 in//let
 ( d2exp_make_node
-  (loc0, D2Esynext(tknd, d2e1))) endlet//fun
+  (loc0, D2Esynext(tknd, gexp))) endlet//fun
 //
 (* ****** ****** *)
 (* ****** ****** *)

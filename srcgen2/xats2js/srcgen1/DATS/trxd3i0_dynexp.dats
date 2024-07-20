@@ -1496,6 +1496,10 @@ end (*let*) // end of [f0_extnam(env0,d3e0)]
 //
 (* ****** ****** *)
 //
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 12:03:51 PM EDT
+*)
 fun
 f0_synext
 ( env0:
@@ -1507,15 +1511,11 @@ val loc0 = d3e0.lctn()
 //
 val-
 D3Esynext
-(tknd, dtxt) = d3e0.node()
-//
-val itxt =
-(
-  trxd3i0_d3exp(env0, dtxt))
+(tknd, gexp) = d3e0.node()
 //
 in//let
 (
-  i0exp(loc0, I0Esynext(tknd, itxt)))
+  i0exp(loc0, I0Esynext(tknd, gexp)))
 end (*let*) // end of [f0_synext(env0,d3e0)]
 //
 (* ****** ****** *)

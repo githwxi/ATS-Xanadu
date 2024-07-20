@@ -43,13 +43,19 @@ Authoremail: gmhwxiATgmailDOTcom
 ATS_PACKNAME // namespace
 "ATS3.XANADU.xatsopt-20220500"
 (* ****** ****** *)
+//
 #staload
-LEX = "./lexing0.sats"
+  LEX = "./lexing0.sats"
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #staload
-S1E = "./staexp1.sats"
+  S1E = "./staexp1.sats"
 #staload
-D1E = "./dynexp1.sats"
+  D1E = "./dynexp1.sats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 #typedef token = $LEX.token
 (* ****** ****** *)
@@ -183,11 +189,13 @@ D1E = "./dynexp1.sats"
 (* ****** ****** *)
 #typedef a1typlstopt = $D1E.a1typlstopt
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d1parsed_of_tread01
 (dpar: d1parsed): (d1parsed)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef
@@ -195,6 +203,7 @@ ftread01
 (syn: tx) =
 (syn , &sint >> _) -> ( syn )
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -212,7 +221,9 @@ optn_tread01_fnp
 , fpr: ftread01(syn)): optn(syn)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 fun tread01_g1exp: ftread01(g1exp)
+(* ****** ****** *)
 (* ****** ****** *)
 fun tread01_sort1: ftread01(sort1)
 fun tread01_s1exp: ftread01(s1exp)

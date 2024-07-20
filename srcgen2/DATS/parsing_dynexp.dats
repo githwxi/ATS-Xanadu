@@ -72,6 +72,8 @@ lctn with l0abl_get_lctn//staexp0
 (* ****** ****** *)
 #symload
 lctn with g0nam_get_lctn//staexp0
+#symload
+lctn with g0exp_get_lctn//staexp0
 (* ****** ****** *)
 #symload
 lctn with sort0_get_lctn//staexp0
@@ -1688,13 +1690,13 @@ T_DLR_SYNEXT _ =>
 let
   val tok0 = tok
   val (  ) = buf.skip1()
-  val d0e1 = p1_g0exp_atm(buf, err)
+  val gexp = p1_g0exp_atm(buf, err)
 in//let
   err := e00
 ; d0exp_make_node
-  (lres, D0Esynext(tok0, d0e1)) where
+  (lres, D0Esynext(tok0, gexp)) where
   {
-    val lres = tok0.lctn()+d0e1.lctn() }
+    val lres = tok0.lctn()+gexp.lctn() }
 end(*let*) // end of [ T_DLR_SYNEXT(_) ]
 //
 (* ****** ****** *)
