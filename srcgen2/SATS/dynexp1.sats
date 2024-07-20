@@ -597,8 +597,10 @@ D1Eexists of
 ( // HX-2021-01-14: $exists{..}..{..}(d1exp)
 token, d1explst(*D1Esarglst*), d1exp(*scope*))
 //
-| // HX-2024-07-19: [d1exp] evaluates
-D1Esynext of (token, d1exp)//to literal string
+(* ****** ****** *)
+//
+| // HX-2024-07-19: [g1exp] evaluates
+D1Esynext of (token, g1exp)//to literal string
 //
 (* ****** ****** *)
 |

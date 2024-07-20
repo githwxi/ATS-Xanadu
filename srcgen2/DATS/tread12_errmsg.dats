@@ -721,14 +721,16 @@ endlet//end-of-[D2Eannot(d2e1,...)]
 |D2Enone0(    ) => (   (*void*)   )
 |D2Enone1(d1e1) => (   (*void*)   )
 //
+(* ****** ****** *)
+//
 |
 D2Eextnam
-( tknd, gnm1) =>
+( tknd, gnam) =>
 let
-// HX-2023-11-03: (* nothing yet *)
-endlet//end-of-[D2Eextnam(tknd,gnm1)]
-//
-(* ****** ****** *)
+(*
+  val () = g1nam_fpemsg(out, gnam)
+*)
+endlet//end-of-[D2Eextnam(tknd,gnam)]
 //
 (*
 HX-2024-07-20:
@@ -736,10 +738,12 @@ Sat 20 Jul 2024 08:55:24 AM EDT
 *)
 |
 D2Esynext
-( tknd, d2e1) =>
+( tknd, gexp) =>
 let
-  val () = d2exp_fpemsg(out, d2e1)
-endlet//end-of-[D2Esynext(tknd,d2e1)]
+(*
+  val () = g1exp_fpemsg(out, gexp)
+*)
+endlet//end-of-[D2Esynext(tknd,gexp)]
 //
 (* ****** ****** *)
 //

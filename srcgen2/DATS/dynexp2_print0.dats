@@ -625,11 +625,8 @@ t2p1 = d2e1.styp() in
 ; print( d2e1,";",t2p1,";",t2p2,")") )
 endlet // end of [D2Et2pck(d2e1, t2p2)]
 //
-|
-D2Eextnam
-( tknd, gnam) =>
-(
-print("D2Eextnam(",tknd,";",gnam,")") )
+(* ****** ****** *)
+//
 |
 D2Eexists
 ( s2es, d2e1) =>
@@ -639,9 +636,16 @@ print("D2Eexists(",s2es,";",d2e1,")") )
 (* ****** ****** *)
 //
 |
+D2Eextnam
+( tknd, gnam) =>
+(
+print("D2Eextnam(",tknd,";",gnam,")") )
+//
+|
 D2Esynext
-( tknd, d2e1) =>
-print("D2Esynext(", tknd, ";", d2e1, ")")
+( tknd, gexp) =>
+(
+print("D2Esynext(",tknd,";",gexp,")") )
 //
 (* ****** ****** *)
 //

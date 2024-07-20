@@ -1039,19 +1039,29 @@ FXITMatm
 (d1exp(loc0, D1Eexists(tknd,d1es,d1e1)))
 endlet//end-of-[D0Eexists(tknd,d0es,d0e1)]
 //
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 11:12:32 AM EDT
+*)
 |
 D0Esynext
-(tknd, dexp) =>
+(tknd, gexp) =>
 let
 //
 val loc0 = d0e0.lctn()
 //
 val
-dexp = trans01_d0exp(tenv, dexp)
+gexp = trans01_g0exp(tenv, gexp)
+//
 in // let
 FXITMatm
-(d1exp(loc0, D1Esynext(tknd, dexp)))
-end (*let*)//end-of(D0Esynext(tknd,dexp))
+(
+  d1exp(loc0, D1Esynext( tknd, gexp )) )
+end (*let*)//end-of(D0Esynext(tknd,gexp))
+//
+(* ****** ****** *)
 //
 |
 _(* otherwise *) =>
@@ -1059,6 +1069,8 @@ let
 val
 d1e0 = d1exp_none1(d0e0) in FXITMatm(d1e0)
 endlet // end of [ _(*otherwise*) ]
+//
+(* ****** ****** *)
 //
 ) (*case+*) // end of [f0_dexp(tenv,d0e0)]
 //

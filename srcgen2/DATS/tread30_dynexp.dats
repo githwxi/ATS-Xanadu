@@ -1206,26 +1206,6 @@ endlet // end of [d3exp_annot_errck(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-fun
-d3exp_synext_errck
-( loc0: loc_t
-, t2p0: s2typ
-, tknd: token
-, d3e1: d3exp
-  (*lit-string*)): d3exp =
-let
-val
-lvl0 = d3exp_errvl(d3e1) in//let
-d3exp_errck
-(
-lvl0+1,
-d3exp_make_tpnd
-(loc0, t2p0, D3Esynext(tknd, d3e1)))
-endlet // end of [d3exp_synext_errck(...)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
 (*
 HX-2023-07-30:
 for handling [d3pat] and [d3exp]
@@ -2968,35 +2948,36 @@ val-D3Enone0() = d3e.node() in (d3e) end
 (* ****** ****** *)
 //
 fun
-f0_synext
-( d3e: d3exp
-, err: &sint >> _): d3exp =
+f0_extnam
+(d3e: d3exp
+,err: &sint >> _): d3exp =
 let
-//
-val e00 = err
 //
 val t2p = d3e.styp()
 val t2p =
 tread30_s2typ(t2p, err)
 val ( ) = d3e.styp(t2p)
 //
-val-
-D3Esynext
-( tknd, d3e1) = d3e.node()
+val-D3Eextnam _ = d3e.node() in (d3e) end
 //
-val
-d3e1 = tread30_d3exp(d3e1, err)
+(* ****** ****** *)
 //
-in//let
-if
-(err=e00)
-then (d3e) else
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 11:56:06 AM EDT
+*)
+fun
+f0_synext
+( d3e: d3exp
+, err: &sint >> _): d3exp =
 let
-val loc = d3e.lctn()
-in//let
-  d3exp_synext_errck(loc,t2p,tknd,d3e1)
-end//let
-end (*let*) // end of [f0_synext(d3e,err)]
+//
+val t2p = d3e.styp()
+val t2p =
+tread30_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-D3Esynext _ = d3e.node() in (d3e) end
 //
 (* ****** ****** *)
 (* ****** ****** *)

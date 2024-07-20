@@ -1017,22 +1017,6 @@ endlet // end of [d3exp_annot_errck(...)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-d3exp_synext_errck
-( loc0: loc_t
-, tknd: token
-, d3e1:
-  d3exp(*syntax*)): d3exp =
-let
-val lvl0 = errvl(d3e1) in//let
-d3exp_errck
-( lvl0+1
-, d3exp(loc0, D3Esynext( tknd, d3e1 )))
-endlet // end of [d3exp_synext_errck(...)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #implfun
 tread23_d3pat
 ( d3p0, err ) =
@@ -1489,14 +1473,14 @@ d3e0.node() of
 |D3Enone1 _ => f0_none1(d3e0, err)
 |D3Enone2 _ => f0_none2(d3e0, err)
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |
 D3Eextnam _ => f0_extnam(d3e0, err)
-//
-(* ****** ****** *)
 |
 D3Esynext _ => f0_synext(d3e0, err)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 |
 _(*otherwise*) =>
@@ -1506,6 +1490,7 @@ val lvl0 = 1 in//let
 err := err+1; d3exp_errck(lvl0,d3e0))
 endlet // end of [ _(* otherwise *) ]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 ) where // end-of-[(*case+(d3e0)-of*)]
@@ -2506,33 +2491,13 @@ let
 val-
 D3Eextnam _ = d3e.node() in (d3e) endlet
 //
-(* ****** ****** *)
-//
 fun
 f0_synext
 (d3e: d3exp
 ,err: &sint >> _): d3exp =
 let
-//
-val e00 = err
-//
 val-
-D3Esynext
-(tknd, d3e1) = d3e.node()
-//
-val
-d3e1 = tread23_d3exp(d3e1, err)
-//
-in//let
-if
-(err=e00)
-then (d3e) else
-let
-val loc = d3e.lctn() in
-(
-  d3exp_synext_errck(loc, tknd, d3e1))
-end (*let*) // end-of-[else]
-end (*let*) // end of [f0_annot(d3e,err)]
+D3Esynext _ = d3e.node() in (d3e) endlet
 //
 (* ****** ****** *)
 (* ****** ****** *)

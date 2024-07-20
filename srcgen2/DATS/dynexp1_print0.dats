@@ -440,10 +440,7 @@ D1Equal0
 (tok1,d1e2) =>
 print("D1Equal0(",tok1,";",d1e2,")")
 //
-|
-D1Eextnam
-(tknd,gnam) =>
-print("D1Eextnam(",tknd,";",gnam,")")
+(* ****** ****** *)
 |
 D1Eexists
 (tknd,d1es,d1e1) =>
@@ -461,9 +458,14 @@ D1Eg1mac
 (* ****** ****** *)
 //
 |
+D1Eextnam
+(tknd,gnam) =>
+print("D1Eextnam(", tknd, ";", gnam, ")")
+//
+|
 D1Esynext
-(tknd,d1e1) =>
-print("D1Esynext(", tknd, ";", d1e1, ")")
+(tknd,gexp) =>
+print("D1Esynext(", tknd, ";", gexp, ")")
 //
 (* ****** ****** *)
 //

@@ -1928,6 +1928,7 @@ d3exp(d3e0.lctn(), t2p0, D3Enone0(*0*))
 end (*let*) // end of [f0_none0(env0,...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_extnam
@@ -1957,8 +1958,11 @@ in//let
 end (*let*) // end of [f0_extnam(env0,...)]
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 11:52:20 AM EDT
+*)
 fun
 f0_synext
 ( env0:
@@ -1971,7 +1975,7 @@ val loc0 = d3e0.lctn()
 val-
 D3Esynext
 ( tknd
-, d3e1 ) = d3e0.node((*0*))
+, gexp ) = d3e0.node((*0*))
 //
 val t2p0 =
   d3e0.styp((*0*))
@@ -1980,13 +1984,15 @@ val t2p0 =
 val t2p0 =
   trans3a_s2typ(env0, t2p0)
 //
+(*
 val
-d3e1 = trans3a_d3exp(env0, d3e1)
+gexp = trans3a_g1exp(env0, gexp)
+*)
 //
 in//let
 (
   d3exp_make_tpnd
-  (loc0, t2p0, D3Esynext(tknd, d3e1)) )
+  (loc0, t2p0, D3Esynext(tknd, gexp)) )
 end (*let*) // end of [f0_synext(env0,...)]
 //
 (* ****** ****** *)

@@ -1061,7 +1061,7 @@ let
 //
 val-
 D3Eextnam
-( tknd, gnm1) = d3e0.node() in (d3e0) end
+( tknd, gnam) = d3e0.node() in (d3e0) end
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1075,7 +1075,7 @@ let
 //
 val-
 D3Esynext
-( tknd, d3e1) = d3e0.node() in (d3e0) end
+( tknd, gexp) = d3e0.node() in (d3e0) end
 //
 (* ****** ****** *)
 (* ****** ****** *)

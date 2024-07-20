@@ -1135,11 +1135,15 @@ let
 //
 val-
 D3Eextnam
-( tknd, gnm1) = d3e0.node() in (d3e0) end
+( tknd, gnam) = d3e0.node() in (d3e0) end
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 12:00:52 PM EDT
+*)
 fun
 f0_synext
 ( env0:
@@ -1149,7 +1153,7 @@ let
 //
 val-
 D3Esynext
-( tknd, d3e1) = d3e0.node() in (d3e0) end
+( tknd, gexp) = d3e0.node() in (d3e0) end
 //
 (* ****** ****** *)
 (* ****** ****** *)

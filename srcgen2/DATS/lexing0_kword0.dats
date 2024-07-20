@@ -357,9 +357,12 @@ val () = kwdins("$rcd_vt", T0TRCD24)//vtbx
 //
 val () = kwdins("$raise", T_DLR_RAISE)
 //
+(* ****** ****** *)
+//
 val () = kwdins("$extnam", T_DLR_EXTNAM)
 val () = kwdins("$exists", T_DLR_EXISTS)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -368,6 +371,7 @@ Fri 19 Jul 2024 10:11:19 PM EDT
 *)
 val () = kwdins("$synext", T_DLR_SYNEXT)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (* HX: for IDSRP-keywords in ATS3 *)
@@ -388,11 +392,27 @@ val () = kwdins("#define", T_SRP_DEFINE)
 val () = kwdins("#macdef", T_SRP_MACDEF)
 //
 val () = kwdins("#include", T_SRP_INCLUDE)
+(*
+val () = kwdins("#inpaste", T_SRP_INPASTE)
+*)
+//
 val () = kwdins("#staload", T_SRP_STALOAD)
 val () = kwdins("#symload", T_SRP_SYMLOAD)
 //
+(* ****** ****** *)
+//
 val () = kwdins("#dyninit", T_SRP_DYNINIT)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 10:55:13 AM EDT
+*)
+val () = kwdins("#extcode", T_SRP_EXTCODE)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 end where
