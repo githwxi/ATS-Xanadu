@@ -724,6 +724,19 @@ D0Cdyninit(tknd,g0e1) =>
 (
   print("D0Cdyninit(",tknd,";",g0e1,")") )
 //
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20
+Sat 20 Jul 2024 01:30:55 PM EDT
+*)
+|
+D0Cextcode(tknd,g0e1) =>
+(
+  print("D0Cextcode(",tknd,";",g0e1,")") )
+//
+(* ****** ****** *)
+//
 |
 D0Cdatasort(tknd,dtcs) =>
 (

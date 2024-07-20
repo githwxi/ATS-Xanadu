@@ -990,10 +990,8 @@ D0Cdyninit of (token, g0exp)//initization
 HX-2024-07-20:
 Sat 20 Jul 2024 11:01:57 AM EDT
 *)
-(*
 |
 D0Cextcode of (token, g0exp)//extern-code
-*)
 //
 |
 D0Cdatasort of

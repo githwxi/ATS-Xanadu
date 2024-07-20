@@ -901,6 +901,25 @@ print
 (knd0,";"
 ,tknd,";",gsrc,";",fopt,";","...",")"))
 //
+(* ****** ****** *)
+|
+D2Cdyninit(tknd,g1e1) =>
+(
+print("D2Cdyninit(",tknd,";",g1e1,")"))
+//
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 01:33:42 PM EDT
+*)
+|
+D2Cextcode(tknd,g1e1) =>
+(
+print("D2Cextcode(",tknd,";",g1e1,")"))
+//
+(* ****** ****** *)
+//
 |
 D2Cdatasort
 ( d1cl , s2cs ) =>
