@@ -1394,6 +1394,26 @@ D2Cstaload of
 , fpathopt
 , s2taloadopt) // staloading
 //
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 01:40:24 PM EDT
+*)
+|
+D2Cdyninit of
+(token(*DYNLOAD*), g1exp(*fpath*))
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 01:40:24 PM EDT
+*)
+|
+D2Cextcode of
+(token(*EXTCODE*), g1exp(*xcode*))
+//
+(* ****** ****** *)
+//
 |
 D2Cdatasort of (d1ecl, sort2lst)
 //

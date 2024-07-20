@@ -882,6 +882,14 @@ D1Cstaload of
 D1Cdyninit of
 (token(*DYNLOAD*), g1exp(*fpath*))
 //
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 01:33:24 PM EDT
+*)
+|
+D1Cextcode of
+(token(*EXTCODE*), g1exp(*xcode*))
+//
 |
 D1Cdatasort of
 (token(*DATASORT*), d1tstlst(*def*))

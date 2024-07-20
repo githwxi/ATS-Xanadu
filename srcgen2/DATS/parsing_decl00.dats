@@ -1005,6 +1005,25 @@ d0ecl_make_node(lres, D0Cdyninit(tknd, g0e1))
 end (*let*) // end of [T_SRP_DYNINIT(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 01:37:18 PM EDT
+*)
+|
+T_SRP_EXTCODE() =>
+let
+  val tknd = tok
+  val (  ) = buf.skip1()
+  val g0e1 = p1_g0exp(buf, err)
+  val lres = tknd.lctn()+g0e1.lctn()
+in//let
+err := e00;
+d0ecl_make_node(lres, D0Cextcode(tknd, g0e1))
+end (*let*) // end of [T_SRP_EXTCODE(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 | T_SRP_NONFIX() =>
 let

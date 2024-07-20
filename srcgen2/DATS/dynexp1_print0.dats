@@ -637,10 +637,24 @@ print
 , g1e1,";",fopt,";","...",")") )
 }
 //
+(* ****** ****** *)
 |
 D1Cdyninit(tknd,g1e1) =>
 (
 print("D1Cdyninit(",tknd,";",g1e1,")"))
+//
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 01:33:42 PM EDT
+*)
+|
+D1Cextcode(tknd,g1e1) =>
+(
+print("D1Cextcode(",tknd,";",g1e1,")"))
+//
+(* ****** ****** *)
 //
 |
 D1Cdatasort
