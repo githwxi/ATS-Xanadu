@@ -938,6 +938,11 @@ D2Elabck(_, _) => f0_labck(env0, d2e0)
 |
 D2Et2pck(_, _) => f0_t2pck(env0, d2e0)
 //
+|
+D2Eextnam(_, _) => (   (*skipped!*)   )
+|
+D2Esynext(_, _) => (   (*skipped?*)   )
+//
 | _(* otherwise *) => (   (*skipped*)   )
 //
 endlet where

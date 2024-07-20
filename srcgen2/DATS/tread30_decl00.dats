@@ -477,7 +477,7 @@ then (dcl) else
 d3ecl_implmnt0_errck
 (dcl.lctn(), tknd, stmp
 ,sqas, tqas, dqid, tias, fags, sres, dexp)
-end (*let*) // end of [f0_implmnt0(dcl,err)]
+end (*let*) // end-of-[f0_implmnt0(dcl,err)]
 //
 (* ****** ****** *)
 //
@@ -489,7 +489,7 @@ val () =
 //
 (* ****** ****** *)
 //
-} (*where*) // end of [tread30_d3ecl(d3cl,err)]
+} (*where*) // end-of-[tread30_d3ecl(d3cl,err)]
 
 (* ****** ****** *)
 //

@@ -167,6 +167,9 @@ d3e0.node() of
 |
 D3Eextnam _ => f0_extnam(env0, d3e0)
 //
+|
+D3Esynext _ => f0_synext(env0, d3e0)
+//
 (* ****** ****** *)
 |D3Enone0() => d3e0 |D3Enone1(d2e1) => d3e0
 (* ****** ****** *)
@@ -1060,6 +1063,21 @@ val-
 D3Eextnam
 ( tknd, gnm1) = d3e0.node() in (d3e0) end
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_synext
+( env0:
+! tr3benv
+, d3e0: d3exp): d3exp =
+let
+//
+val-
+D3Esynext
+( tknd, d3e1) = d3e0.node() in (d3e0) end
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 } (*where*)//end-of-[trtmp3b_d3exp(env0,d3e0)]

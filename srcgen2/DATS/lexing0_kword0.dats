@@ -362,6 +362,14 @@ val () = kwdins("$exists", T_DLR_EXISTS)
 //
 (* ****** ****** *)
 //
+(*
+HX-2024-07-19:
+Fri 19 Jul 2024 10:11:19 PM EDT
+*)
+val () = kwdins("$synext", T_DLR_SYNEXT)
+//
+(* ****** ****** *)
+//
 (* HX: for IDSRP-keywords in ATS3 *)
 //
 val () = kwdins("#infix0", T0SRP_INFIX0)

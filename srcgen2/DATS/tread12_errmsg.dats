@@ -728,8 +728,25 @@ let
 // HX-2023-11-03: (* nothing yet *)
 endlet//end-of-[D2Eextnam(tknd,gnm1)]
 //
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 08:55:24 AM EDT
+*)
+|
+D2Esynext
+( tknd, d2e1) =>
+let
+  val () = d2exp_fpemsg(out, d2e1)
+endlet//end-of-[D2Esynext(tknd,d2e1)]
+//
+(* ****** ****** *)
+//
 |
 D2Eerrck(_,_) => d2exp_fpemsg(out, d2e)
+//
+(* ****** ****** *)
 //
 end where
 {

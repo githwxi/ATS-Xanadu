@@ -1205,6 +1205,27 @@ d3exp_make_tpnd
 endlet // end of [d3exp_annot_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3exp_synext_errck
+( loc0: loc_t
+, t2p0: s2typ
+, tknd: token
+, d3e1: d3exp
+  (*lit-string*)): d3exp =
+let
+val
+lvl0 = d3exp_errvl(d3e1) in//let
+d3exp_errck
+(
+lvl0+1,
+d3exp_make_tpnd
+(loc0, t2p0, D3Esynext(tknd, d3e1)))
+endlet // end of [d3exp_synext_errck(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 (*
 HX-2023-07-30:
 for handling [d3pat] and [d3exp]
@@ -1748,15 +1769,21 @@ f0_var(d3e0, err)
 //
 |D3Eraise _ => f0_raise(d3e0, err)
 //
+(* ****** ****** *)
 |D3El0azy _ => f0_l0azy(d3e0, err)
 |D3El1azy _ => f0_l1azy(d3e0, err)
+(* ****** ****** *)
 //
 |D3Eannot _ => f0_annot(d3e0, err)
 //
 |D3Enone0 _ => f0_none0(d3e0, err)
 //
+(* ****** ****** *)
 |
-_(*D3E...*) => //HX: rest-of-d3exp
+D3Esynext _ => f0_synext(d3e0, err)
+(* ****** ****** *)
+|
+_(*D3E...*) => // HX: rest-of-d3exp
 (
 let
 val lvl0 = 1 in//let
@@ -1764,6 +1791,8 @@ val lvl0 = 1 in//let
 (err + 1); d3exp_errck(lvl0, d3e0))
 endlet // end of [ _(* otherwise *) ]
 )
+//
+(* ****** ****** *)
 //
 ) where // end-of-[(*case+(d3e0)-of*)]
 {
@@ -2936,12 +2965,48 @@ let
 val-D3Enone0() = d3e.node() in (d3e) end
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_synext
+( d3e: d3exp
+, err: &sint >> _): d3exp =
+let
+//
+val e00 = err
+//
+val t2p = d3e.styp()
+val t2p =
+tread30_s2typ(t2p, err)
+val ( ) = d3e.styp(t2p)
+//
+val-
+D3Esynext
+( tknd, d3e1) = d3e.node()
+//
+val
+d3e1 = tread30_d3exp(d3e1, err)
+//
+in//let
+if
+(err=e00)
+then (d3e) else
+let
+val loc = d3e.lctn()
+in//let
+  d3exp_synext_errck(loc,t2p,tknd,d3e1)
+end//let
+end (*let*) // end of [f0_synext(d3e,err)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (*
   val () =
   prerrln("tread30_d3exp: d3e0 = ", d3e0)
 *)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 } (*where*)//end-[tread30_d3exp(d3e0,err)]

@@ -2171,7 +2171,7 @@ val loc = d0e.lctn()
 in
   d0exp_exists_errck(loc,tknd,d0es,d0e1)
 end
-end (*let*) // end of [f0_extnam(d0e,err)]
+end (*let*) // end of [f0_exists(d0e,err)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
