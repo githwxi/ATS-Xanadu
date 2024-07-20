@@ -1690,11 +1690,26 @@ D0Cstaload
 (knd0,tknd,g0e1) =>
 (
   g0exp_fpemsg(out, g0e1))
+//
 |
 D0Cdyninit
 (tknd, g0e1) =>
 (
   g0exp_fpemsg(out, g0e1))
+//
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 01:48:34 PM EDT
+*)
+|
+D0Cextcode
+(tknd, g0e1) =>
+(
+  g0exp_fpemsg(out, g0e1))
+//
+(* ****** ****** *)
 //
 |
 D0Cdatasort

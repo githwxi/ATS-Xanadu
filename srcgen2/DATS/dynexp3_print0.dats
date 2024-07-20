@@ -707,6 +707,24 @@ print("D3Cstaload(");
 print
 (knd0,";",tknd,";",gsrc,";",fopt,")"))
 //
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 02:18:49 PM EDT
+*)
+//
+|
+D3Cdyninit(tknd,g1e1) =>
+(
+print("D3Cdyninit(",tknd,";",g1e1,")"))
+|
+D3Cextcode(tknd,g1e1) =>
+(
+print("D3Cextcode(",tknd,";",g1e1,")"))
+//
+(* ****** ****** *)
+//
 |
 D3Cvaldclst
 (  tknd, d3vs  ) =>

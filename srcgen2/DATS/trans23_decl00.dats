@@ -221,6 +221,15 @@ D2Cinclude _ => f0_include(env0, d2cl)
 |
 D2Cstaload _ => f0_staload(env0, d2cl)
 //
+(* ****** ****** *)
+//
+|
+D2Cdyninit _ => f0_dyninit(env0, d2cl)
+|
+D2Cextcode _ => f0_extcode(env0, d2cl)
+//
+(* ****** ****** *)
+//
 |
 D2Cvaldclst _ => f0_valdclst(env0, d2cl)
 |
@@ -480,6 +489,72 @@ in//let
     (knd0, tknd, gsrc, fopt, dopt) ) )
 end (*let*) // end of [f0_staload(...)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 02:26:43 PM EDT
+*)
+//
+fun
+f0_dyninit
+( env0:
+! tr23env
+, d2cl: d2ecl): d3ecl =
+let
+//
+val-
+D2Cdyninit
+(tknd, g1e1) = d2cl.node()
+//
+in//let
+  d3ecl(loc0, D3Cdyninit(tknd, g1e1))
+end where
+{
+//
+val loc0 = d2cl.lctn((*void*))
+//
+(*
+val () = prerrln
+("trans23_d2ecl: f0_dyninit: d2cl = ", d2cl)
+*)
+//
+} (*where*) // end of [f0_dyninit(env0,d2cl)]
+//
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 02:26:43 PM EDT
+*)
+//
+fun
+f0_extcode
+( env0:
+! tr23env
+, d2cl: d2ecl): d3ecl =
+let
+//
+val-
+D2Cextcode
+(tknd, g1e1) = d2cl.node()
+//
+in//let
+  d3ecl(loc0, D3Cextcode(tknd, g1e1))
+end where
+{
+//
+val loc0 = d2cl.lctn((*void*))
+//
+(*
+val () = prerrln
+("trans23_d2ecl: f0_extcode: d2cl = ", d2cl)
+*)
+//
+} (*where*) // end of [f0_extcode(env0,d2cl)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

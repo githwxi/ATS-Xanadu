@@ -286,6 +286,7 @@ d2ecl_make_node
 end (*let*) // end of [d2ecl_staload_errck]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d2ecl_datasort_errck
@@ -299,6 +300,7 @@ d2ecl_errck
 (lvl+1,d2ecl(loc0,D2Cdatasort(d1cl,s2ts)))
 end (*let*) // end of [d2ecl_datasort_errck]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -357,6 +359,7 @@ d2ecl_errck
 end (*let*) // end of [d2ecl_fundclst_errck]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d2ecl_implmnt0_errck
@@ -391,6 +394,7 @@ d2ecl_make_node
 end (*let*) // end of [d2ecl_implmnt0_errck]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d2ecl_excptcon_errck
@@ -419,6 +423,7 @@ d2ecl_errck
 end (*let*) // end of [d2ecl_datatype_errck]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d2ecl_dynconst_errck
@@ -434,6 +439,7 @@ d2ecl_errck
 , d2ecl(loc0, D2Cdynconst(tknd,tqas,d2cs)))
 end (*let*) // end of [d2ecl_dynconst_errck]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 #implfun
@@ -479,6 +485,20 @@ D2Csymload _ => f0_symload(d2cl, err)
 D2Cinclude _ => f0_include(d2cl, err)
 |
 D2Cstaload _ => f0_staload(d2cl, err)
+//
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 01:50:44 PM EDT
+*)
+//
+|
+D2Cdyninit _ => f0_dyninit(d2cl, err)
+|
+D2Cextcode _ => f0_extcode(d2cl, err)
+//
+(* ****** ****** *)
 //
 |
 D2Cdatasort _ => f0_datasort(d2cl, err)
@@ -899,6 +919,29 @@ d2ecl_staload_errck
 ( loc, knd0, tknd, gsrc, fopt, dres )
 end (*let*) // end of [f0_staload(dcl,err)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 01:52:57 PM EDT
+*)
+//
+fun
+f0_dyninit
+(dcl: d2ecl
+,err: &sint >> _): d2ecl =
+let
+val-D2Cdyninit _ = dcl.node() in (dcl) end
+//
+fun
+f0_extcode
+(dcl: d2ecl
+,err: &sint >> _): d2ecl =
+let
+val-D2Cextcode _ = dcl.node() in (dcl) end
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 local

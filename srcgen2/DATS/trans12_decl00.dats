@@ -841,6 +841,15 @@ D1Cinclude _ => f0_include(env0, d1cl)
 |
 D1Cstaload _ => f0_staload(env0, d1cl)
 //
+(* ****** ****** *)
+//
+|
+D1Cdyninit _ => f0_dyninit(env0, d1cl)
+|
+D1Cextcode _ => f0_extcode(env0, d1cl)
+//
+(* ****** ****** *)
+//
 |
 D1Cdatasort _ => f0_datasort(env0, d1cl)
 //
@@ -2045,6 +2054,72 @@ optn_cons(sym2)
 //
 } (*where*) // end of [f0_staload(env0, d1cl)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 02:24:02 PM EDT
+*)
+//
+fun
+f0_dyninit
+( env0:
+! tr12env
+, d1cl: d1ecl): d2ecl =
+let
+//
+val-
+D1Cdyninit
+(tknd, g1e1) = d1cl.node()
+//
+in//let
+  d2ecl(loc0, D2Cdyninit(tknd, g1e1))
+end where
+{
+//
+val loc0 = d1cl.lctn((*void*))
+//
+(*
+val () = prerrln
+("trans12_d1ecl: f0_dyninit: d1cl = ", d1cl)
+*)
+//
+} (*where*) // end of [f0_dyninit(env0,d1cl)]
+//
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 02:24:02 PM EDT
+*)
+//
+fun
+f0_extcode
+( env0:
+! tr12env
+, d1cl: d1ecl): d2ecl =
+let
+//
+val-
+D1Cextcode
+(tknd, g1e1) = d1cl.node()
+//
+in//let
+  d2ecl(loc0, D2Cextcode(tknd, g1e1))
+end where
+{
+//
+val loc0 = d1cl.lctn((*void*))
+//
+(*
+val () = prerrln
+("trans12_d1ecl: f0_extcode: d1cl = ", d1cl)
+*)
+//
+} (*where*) // end of [f0_extcode(env0,d1cl)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
