@@ -415,6 +415,12 @@ I0Edp2tr
 (
 print("I0Eextnam(", tknd, ";", gnam, ")"))
 //
+//
+|I0Esynext
+(tknd, istr) =>
+(
+print("I0Esynext(", tknd, ";", istr, ")"))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
