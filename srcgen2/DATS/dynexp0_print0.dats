@@ -396,19 +396,24 @@ D0Equal0(tok1,d0e2) =>
 print("D0Equal0(", tok1, ";", d0e2, ")")
 //
 |
-D0Eextnam
-(tknd,gnam) =>
-print("D0Eextnam(", tknd, ";", gnam, ")")
-|
 D0Eexists
 (tknd,d0es,d0e1) =>
 print
 ("D0Eexists(",tknd,";",d0es,";",d0e1,")")
 //
+(* ****** ****** *)
+//
+|
+D0Eextnam
+(tknd,gnam) =>
+print("D0Eextnam(", tknd, ";", gnam, ")")
+//
 |
 D0Esynext
-(tknd,d0e1) =>
-print("D0Esynext(", tknd, ";", d0e1, ")")
+(tknd,gexp) =>
+print("D0Esynext(", tknd, ";", gexp, ")")
+//
+(* ****** ****** *)
 //
 |
 D0Etkerr(terr) => print("D0Etkerr(", terr, ")")

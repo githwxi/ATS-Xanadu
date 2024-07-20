@@ -281,11 +281,13 @@ fun tread12_d2cstdclist: ftread12(d2cstdclist)
 fun tread12_d2explstopt: ftread12(d2explstopt)
 fun tread12_d2eclistopt: ftread12(d2eclistopt)
 (* ****** ****** *)
+(* ****** ****** *)
 (*
 //
 //HX-2022-12-16: printing errmsgs
 //
 *)
+(* ****** ****** *)
 (* ****** ****** *)
 fun sort2_fpemsg(FILR, sort2): void
 fun s2exp_fpemsg(FILR, s2exp): void

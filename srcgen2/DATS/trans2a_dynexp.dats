@@ -2882,6 +2882,10 @@ end (*let*) // end of [f0_extnam(env0,...)]
 //
 (* ****** ****** *)
 //
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 11:41:32 AM EDT
+*)
 fun
 f0_synext
 ( env0:
@@ -2893,17 +2897,13 @@ val loc0 = d2e0.lctn()
 //
 val-
 D2Esynext
-(tknd, d2e1) = d2e0.node()
-//
-val d2e1 =
-trans2a_d2exp_tpck
-(env0, d2e1, the_s2typ_strn())
+(tknd, gexp) = d2e0.node()
 //
 in//let
 //
 d2exp_make_tpnd
 ( loc0
-, t2p0, D2Esynext(tknd, d2e1))
+, t2p0, D2Esynext(tknd, gexp))
 where
 {
   val t2p0 = s2typ_new0_x2tp(loc0) }

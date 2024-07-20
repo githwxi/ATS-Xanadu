@@ -2373,6 +2373,7 @@ d3exp(d2e0.lctn(), t2p0, D3Enone0(*0*))
 end (*let*) // end of [f0_none0(env0,...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_extnam
@@ -2399,7 +2400,11 @@ where
 end (*let*) // end of [f0_extnam(env0,...)]
 //
 (* ****** ****** *)
-(* ****** ****** *)
+//
+(*
+HX-2024-07-24:
+Sat 20 Jul 2024 11:43:47 AM EDT
+*)
 //
 fun
 f0_synext
@@ -2412,17 +2417,13 @@ val loc0 = d2e0.lctn()
 //
 val-
 D2Esynext
-(tknd, d2e1) = d2e0.node()
-//
-val d3e1 =
-trans23_d2exp_tpck
-(env0, d2e1, the_s2typ_strn())
+(tknd, gexp) = d2e0.node()
 //
 in//let
 //
 d3exp_make_tpnd
 ( loc0
-, t2p0, D3Esynext(tknd, d3e1))
+, t2p0, D3Esynext(tknd, gexp))
 where
 {
   val t2p0 = s2typ_new0_x2tp(loc0) }

@@ -655,5 +655,23 @@ d0parsed_from_fpath
 (stadyn: sint, source: strn(*fpath*)): d0parsed
 //
 (* ****** ****** *)
+(* ****** ****** *)
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 11:27:35 AM EDT
+*)
+fun p1_g0nam_atm: p1_fun(g0nam)//[parsing_staexp]
+fun p1_g0exp_atm: p1_fun(g0exp)//[parsing_staexp]
+fun p1_g0exp_app: p1_fun(g0exp)//[parsing_staexp]
+//
+fun p1_sort0_atm: p1_fun(sort0)//[parsing_staexp]
+fun p1_s0exp_atm: p1_fun(s0exp)//[parsing_staexp]
+//
+fun p1_d0pat_atm: p1_fun(d0pat)//[parsing_dynexp]
+fun p1_d0exp_atm: p1_fun(d0exp)//[parsing_dynexp]
+fun p1_d0exp_app: p1_fun(d0exp)//[parsing_dynexp]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_SATS_parsing.sats] *)

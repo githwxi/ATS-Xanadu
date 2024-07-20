@@ -286,6 +286,14 @@ Fri 19 Jul 2024 10:07:36 PM EDT
   | T_SRP_INPASTE of () // #inpaste
 *)
 //
+(*
+HX-2024-07-20:
+For supporting
+co-programming with ATS
+For inclusion of external code
+Sat 20 Jul 2024 10:50:45 AM EDT
+*)
+  | T_SRP_EXTCODE of () // #extcode
 //
 // end-of-(datatype tnode)
 //

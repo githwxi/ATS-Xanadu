@@ -1051,11 +1051,11 @@ d0exp_extnam_errck
 ( loc
 : loc_t
 , tknd: token
-, gnm1: g0nam): d0exp =
+, gnam: g0nam): d0exp =
 let
 val lvl = 0 in
 d0exp_errck
-(lvl+1,d0exp(loc,D0Eextnam(tknd,gnm1)))
+(lvl+1,d0exp(loc,D0Eextnam(tknd,gnam)))
 end (*let*) // end of [d0exp_extnam_errck]
 //
 (* ****** ****** *)
@@ -1083,11 +1083,11 @@ d0exp_synext_errck
 ( loc
 : loc_t
 , tknd: token
-, d0e1: d0exp): d0exp =
+, gexp: g0exp): d0exp =
 let
 val lvl = 0 in
 d0exp_errck
-(lvl+1,d0exp(loc,D0Esynext(tknd,d0e1)))
+(lvl+1,d0exp(loc,D0Esynext(tknd,gexp)))
 end (*let*) // end of [d0exp_synext_errck]
 //
 (* ****** ****** *)
@@ -2134,17 +2134,17 @@ val e00 = err
 //
 val-
 D0Eextnam
-( tknd, gnm1) = d0e.node()
+( tknd, gnam) = d0e.node()
 //
 (*
-val gnm1 = preadx0_g0nam(gnm1, err)
+val gnam = preadx0_g0nam(gnam, err)
 *)
 //
 in//let
 if
 (err=e00)
 then (d0e) else
-d0exp_extnam_errck(d0e.lctn(),tknd,gnm1)
+d0exp_extnam_errck(d0e.lctn(),tknd,gnam)
 end (*let*) // end of [f0_extnam(d0e,err)]
 //
 (* ****** ****** *)
@@ -2194,15 +2194,17 @@ val e00 = err
 //
 val-
 D0Esynext
-( tknd, d0e1) = d0e.node()
+( tknd, gexp) = d0e.node()
 //
-val d0e1 = preadx0_d0exp(d0e1, err)
+(*
+val gexp = preadx0_g0exp(g0exp, err)
+*)
 //
 in//let
 if
 (err=e00)
 then (d0e) else
-d0exp_synext_errck(d0e.lctn(),tknd,d0e1)
+d0exp_synext_errck(d0e.lctn(),tknd,gexp)
 end (*let*) // end-of-[f0_synext(d0e,err)]
 //
 (* ****** ****** *)

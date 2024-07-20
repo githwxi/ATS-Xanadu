@@ -129,12 +129,8 @@ atmd0pat::
 *)
 //
 #extern
-fun
-p1_l0d0p: p1_fun(l0d0p)
+fun p1_l0d0p: p1_fun(l0d0p)
 //
-#extern
-fun
-p1_d0pat_atm: p1_fun(d0pat)
 #extern
 fun
 p1_d0patseq_atm: p1_fun(d0patlst)
@@ -210,7 +206,6 @@ end (*let*) // end of [p1_napp(buf,err)]
 (* ****** ****** *)
 in(* in-of-local *)
 (* ****** ****** *)
-
 //
 #implfun
 p1_d0pat(buf, err) =
@@ -587,14 +582,6 @@ atmd0exp ::=
 | { l0d0eseq_COMMA | l0d0eseq_COMMA }
 //
 *)
-//
-#extern
-fun
-p1_d0exp_atm: p1_fun(d0exp)
-//
-#extern
-fun
-p1_d0exp_app: p1_fun(d0exp)
 //
 #extern
 fun
@@ -1661,19 +1648,7 @@ in//let
   }
 end (*let*) // end of [  T_DLR_RAISE  ]
 //
-|
-T_DLR_EXTNAM _ =>
-let
-  val tok0 = tok
-  val (  ) = buf.skip1()
-  val gnm1 = p1_g0nam(buf, err)
-in
-  err := e00
-; d0exp_make_node
-  (lres,D0Eextnam(tok0,gnm1)) where
-  {
-    val lres = tok0.lctn()+gnm1.lctn() }
-end(*let*) // end-of-[ T_DLR_EXTNAM(_) ]
+(* ****** ****** *)
 //
 |
 T_DLR_EXISTS _ =>
@@ -1695,11 +1670,25 @@ end(*let*) // end-of-[ T_DLR_EXISTS(_) ]
 (* ****** ****** *)
 //
 |
+T_DLR_EXTNAM _ =>
+let
+  val tok0 = tok
+  val (  ) = buf.skip1()
+  val gnm1 = p1_g0nam(buf, err)
+in
+  err := e00
+; d0exp_make_node
+  (lres,D0Eextnam(tok0,gnm1)) where
+  {
+    val lres = tok0.lctn()+gnm1.lctn() }
+end(*let*) // end-of-[ T_DLR_EXTNAM(_) ]
+//
+|
 T_DLR_SYNEXT _ =>
 let
   val tok0 = tok
   val (  ) = buf.skip1()
-  val d0e1 = p1_d0exp_atm(buf, err)
+  val d0e1 = p1_g0exp_atm(buf, err)
 in//let
   err := e00
 ; d0exp_make_node

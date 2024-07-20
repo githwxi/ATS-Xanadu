@@ -486,22 +486,28 @@ D0Eannot of (d0exp, s0exp) //HX:annotation
 | // qualified-id
 D0Equal0 of (token, d0exp) //HX:qual-d0exp
 //
-| // HX-2020-11-04: for specifying
-D0Eextnam of (token, g0nam) //extern names
 |
 D0Eexists of
 ( token//HX-2021-01-14:$exists{..}..{..}
 , d0explst(*D0Esarglst*), d0exp )//(d0exp)
 //
+(* ****** ****** *)
+//
+| // HX-2020-11-04: for specifying
+D0Eextnam of (token, g0nam(*extern-name*))
+//
+(* ****** ****** *)
 |
 //
 (*
 HX-2024-07-19:
-Note that [d0exp] should
+Note that [g0exp] should
 evaluate to a literal string!
 Fri 19 Jul 2024 05:12:46 PM EDT
 *)
-D0Esynext of (token, d0exp(*lit-string*))
+D0Esynext of (token, g0exp(*literal-strn*))
+//
+(* ****** ****** *)
 //
 |
 (*
@@ -509,10 +515,14 @@ HX-2022-06-20:
 D0Etkerr(tok):
 tok is not consumed by the parser!
 *)
-D0Etkerr of (token) // HX: parsing error
+D0Etkerr of (token) // HX: for parsing error
+//
+(* ****** ****** *)
 //
 |
 D0Eerrck of (int(*lvl*), d0exp)//HX:pread-error
+//
+(* ****** ****** *)
 //
 // HX-2022-06-20: end-of-[datatype(d0exp_node)]
 //
@@ -975,6 +985,15 @@ D0Cstaload of
 (sint(*s/d*), token, g0exp)//staloading
 |
 D0Cdyninit of (token, g0exp)//initization
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 11:01:57 AM EDT
+*)
+(*
+|
+D0Cextcode of (token, g0exp)//extern-code
+*)
 //
 |
 D0Cdatasort of

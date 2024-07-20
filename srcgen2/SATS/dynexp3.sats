@@ -549,18 +549,18 @@ it may be of other uses in the future
 (* ****** ****** *)
 //
 |
-D3Eextnam of (token, g1nam)//HX: external
-//
-(* ****** ****** *)
-//
-|
 D3Eexists of
 (
   s2explst(*witness*), d3exp(*scopexp*) )
 //
 (* ****** ****** *)
+//
+|
+D3Eextnam of (token, g1nam)//HX: external
+//
 | // HX-2024-07-19: [d3exp] evaluates
-D3Esynext of (token, d3exp)//to lit-string
+D3Esynext of (token, g1exp)//to lit-string
+//
 (* ****** ****** *)
 //
 |D3Enone0 of ((*0*))

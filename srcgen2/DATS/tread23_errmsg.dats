@@ -478,28 +478,48 @@ let
 val () = d3exp_fpemsg(out , d3e1)
 endlet // end of [ D3Enone2( ... ) ]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |
 D3Eextnam
-( tknd, gnm1) =>
+( tknd, gnam) =>
 let
-// HX-2023-11-03: (* nothing yet *)
-endlet//end-of-[D3Eextnam(tknd,gnm1)]
+(*
+HX-2023-11-03: (* nothing yet *)
+*)
+(*
+  val () = g1nam_fpemsg(out, gnam)
+*)
+endlet//end-of-[D3Eextnam(tknd,gnam)]
 //
 |
 D3Esynext
-( tknd, d3e1) =>
+( tknd, gexp) =>
 let
-val () = d3exp_fpemsg(out , d3e1)
-endlet//end-of-[D3Esynext(tknd,d3e1)]
-//
-(* ****** ****** *)
-//
-|D3Eerrck(_, _) => d3exp_fpemsg(out, d3e)
-//
-(* ****** ****** *)
 (*
-|_(*otherwise*) => d3exp_fpemsg(out, d3e)
+HX-2024-07-20: (* nothing yet *)
 *)
+(*
+  val () = g1exp_fpemsg(out, gexp)
+*)
+endlet//end-of-[D3Esynext(tknd,gexp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|
+D3Eerrck(_, _) => d3exp_fpemsg(out, d3e)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+|
+_(*otherwise*) => d3exp_fpemsg(out, d3e)
+*)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 end (*let*) // end-of-[auxmain(out, d3e)]

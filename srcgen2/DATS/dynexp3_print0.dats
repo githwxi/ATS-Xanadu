@@ -493,14 +493,6 @@ endlet // end of [ D3Et2pck(d3e1, t2p2) ]
 (* ****** ****** *)
 //
 |
-D3Eextnam
-( tknd, gnam) =>
-(
-print("D3Eextnam(",tknd,";",gnam,")") )
-//
-(* ****** ****** *)
-//
-|
 D3Eexists
 ( s2es, d3e1) =>
 (
@@ -509,9 +501,16 @@ print("D3Eexists(",s2es,";",d3e1,")") )
 (* ****** ****** *)
 //
 |
+D3Eextnam
+( tknd, gnam) =>
+(
+print("D3Eextnam(",tknd,";",gnam,")") )
+//
+|
 D3Esynext
-( tknd, d3e1) =>
-print("D3Esynext(", tknd, ";", d3e1, ")")
+( tknd, gexp) =>
+(
+print("D3Esynext(",tknd,";",gexp,")") )
 //
 (* ****** ****** *)
 //

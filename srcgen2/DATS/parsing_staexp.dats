@@ -100,18 +100,10 @@ tnode with token_get_node//lexing0
 (* ****** ****** *)
 //
 #extern
-fun p1_g0nam_atm: p1_fun(g0nam)
-//
-#extern
 fun
 p1_g0namseq_COMMA: p1_fun(g0namlst)
 //
 (* ****** ****** *)
-//
-#extern
-fun p1_g0exp_atm: p1_fun(g0exp)
-#extern
-fun p1_g0exp_app: p1_fun(g0exp)
 //
 #extern
 fun
@@ -138,8 +130,6 @@ p1_g0argseq_COMMA: p1_fun(g0arglst)
 #extern
 fun p1_sort0_tid: p1_fun(sort0)
 #extern
-fun p1_sort0_atm: p1_fun(sort0)
-#extern
 fun p1_sort0seq_atm: p1_fun(sort0lst)
 #extern
 fun p1_sort0seq_COMMA: p1_fun(sort0lst)
@@ -161,8 +151,6 @@ fun p1_s0qua: p1_fun(s0qua)
 #extern
 fun p1_l0s0e: p1_fun(l0s0e)
 //
-#extern
-fun p1_s0exp_atm: p1_fun(s0exp)
 #extern
 fun
 p1_s0expseq_atm: p1_fun(s0explst)
