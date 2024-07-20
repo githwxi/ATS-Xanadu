@@ -959,6 +959,10 @@ d2e0.node() of
 D2Eextnam _ => f0_extnam(env0, d2e0)
 //
 (* ****** ****** *)
+|
+D2Esynext _ => f0_synext(env0, d2e0)
+//
+(* ****** ****** *)
 //
 |D2Eerrck _ => (f0_errck(env0, d2e0))
 //
@@ -2824,7 +2828,7 @@ D2Eannot
 val t2p2 = s2exp_stpize(s2e2)
 //
 val d2e1 =
-trans2a_d2exp_tpck(env0, d2e1, t2p2)
+trans2a_d2exp_tpck(env0,d2e1,t2p2)
 //
 in//let
 d2exp_make_tpnd
@@ -2876,6 +2880,37 @@ where
 //
 end (*let*) // end of [f0_extnam(env0,...)]
 //
+(* ****** ****** *)
+//
+fun
+f0_synext
+( env0:
+! tr2aenv
+, d2e0: d2exp): d2exp =
+let
+//
+val loc0 = d2e0.lctn()
+//
+val-
+D2Esynext
+(tknd, d2e1) = d2e0.node()
+//
+val d2e1 =
+trans2a_d2exp_tpck
+(env0, d2e1, the_s2typ_strn())
+//
+in//let
+//
+d2exp_make_tpnd
+( loc0
+, t2p0, D2Esynext(tknd, d2e1))
+where
+{
+  val t2p0 = s2typ_new0_x2tp(loc0) }
+//
+end (*let*) // end of [f0_synext(env0,...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 } (*where*) // end of [trans2a_d2exp(env0,d2e0)]
