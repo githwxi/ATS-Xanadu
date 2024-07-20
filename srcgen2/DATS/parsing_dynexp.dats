@@ -1692,6 +1692,24 @@ in//let
     val lres = tok0.lctn()+d0e1.lctn() }
 end(*let*) // end-of-[ T_DLR_EXISTS(_) ]
 //
+(* ****** ****** *)
+//
+|
+T_DLR_SYNEXT _ =>
+let
+  val tok0 = tok
+  val (  ) = buf.skip1()
+  val d0e1 = p1_d0exp_atm(buf, err)
+in//let
+  err := e00
+; d0exp_make_node
+  (lres, D0Esynext(tok0, d0e1)) where
+  {
+    val lres = tok0.lctn()+d0e1.lctn() }
+end(*let*) // end of [ T_DLR_SYNEXT(_) ]
+//
+(* ****** ****** *)
+//
 |
 _(* error-processing *) =>
 let
@@ -1707,9 +1725,11 @@ in//let
 (
 err := e00 + 1;
 d0exp_make_node(tok.lctn(), D0Etkerr(tok)))
-end(*let*)//end-of-[ (error-processing) ]
+end(*let*) // end-of-[ (error-processing) ]
 //
-end(*let*)//end-of-[ p1_d0exp_atm(buf,err) ]
+(* ****** ****** *)
+//
+end(*let*) // end-of-[p1_d0exp_atm(buf,err)]
 
 (* ****** ****** *)
 

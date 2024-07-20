@@ -835,6 +835,9 @@ d3exp_make_tpnd
 D2Eextnam _ => f0_extnam(env0, d2e0)
 //
 |
+D2Esynext _ => f0_synext(env0, d2e0)
+//
+|
 _(*otherwise*) => (d3exp_none1(d2e0))
 //
 end where // end-of-[trans23_d2exp(...)]
@@ -2311,12 +2314,11 @@ D2Elabck
 val
 d3e1 =
 (
-trans23_d2exp(env0, d2e1))
+ trans23_d2exp(env0, d2e1))
 //
-val
-t2p1 = d3e1.styp((*void*))
-val
-t2p1 = s2typ_hnfiz0( t2p1 )
+val t2p1 =
+(
+ s2typ_hnfiz0(d3e1.styp()))
 //
 in//let
 //
@@ -2326,8 +2328,10 @@ s2typ_dataq
 then d3e1 else // if
 let//let
 val topt =
-s2typ_prjout_opt(t2p1, lab2)
+(
+s2typ_prjout_opt(t2p1, lab2))
 in//let
+(
 case+ topt of
 | ~
 optn_vt_nil() =>
@@ -2335,7 +2339,7 @@ optn_vt_nil() =>
 d3exp_make_tpnd
 ( loc0
 , t2p1, D3Elabck(d3e1, lab2)))
-| ~optn_vt_cons(tprj) => (d3e1) end//let
+| ~optn_vt_cons(tprj) => (d3e1)) end//let
 //
 end (*let*) // end of [f0_labck(env0,d2e0)]
 //
@@ -2394,6 +2398,38 @@ where
 //
 end (*let*) // end of [f0_extnam(env0,...)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_synext
+( env0:
+! tr23env
+, d2e0: d2exp): d3exp =
+let
+//
+val loc0 = d2e0.lctn()
+//
+val-
+D2Esynext
+(tknd, d2e1) = d2e0.node()
+//
+val d3e1 =
+trans23_d2exp_tpck
+(env0, d2e1, the_s2typ_strn())
+//
+in//let
+//
+d3exp_make_tpnd
+( loc0
+, t2p0, D3Esynext(tknd, d3e1))
+where
+{
+  val t2p0 = s2typ_new0_x2tp(loc0) }
+//
+end (*let*) // end of [f0_synext(env0,...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 }(*where*)//end-of-[trans23_d2exp(env0,d2e0)]

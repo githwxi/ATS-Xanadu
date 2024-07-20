@@ -485,11 +485,22 @@ let
 // HX-2023-11-03: (* nothing yet *)
 endlet//end-of-[D3Eextnam(tknd,gnm1)]
 //
+|
+D3Esynext
+( tknd, d3e1) =>
+let
+val () = d3exp_fpemsg(out , d3e1)
+endlet//end-of-[D3Esynext(tknd,d3e1)]
+//
+(* ****** ****** *)
+//
 |D3Eerrck(_, _) => d3exp_fpemsg(out, d3e)
 //
+(* ****** ****** *)
 (*
 |_(*otherwise*) => d3exp_fpemsg(out, d3e)
 *)
+(* ****** ****** *)
 //
 end (*let*) // end-of-[auxmain(out, d3e)]
 

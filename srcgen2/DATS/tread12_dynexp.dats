@@ -2272,7 +2272,7 @@ then (d2e) else
 let
 val loc = d2e.lctn() in
 (
-  d2exp_synext_errck(loc, tknd, d2e1))
+  d2exp_synext_errck(loc, tknd, d2e1) )
 end (*let*) // end-of-[else]
 end (*let*) // end of [f0_synext(d2e,err)]
 //

@@ -1223,6 +1223,15 @@ D0Eexists
 (
   fpemsg(out, d0es); fpemsg(out, d0e1))
 //
+(* ****** ****** *)
+|
+D0Esynext
+(tok1, d0e2) =>
+(
+  fpemsg(out, d0e2(*literal-string*)) )
+//
+(* ****** ****** *)
+//
 |
 D0Etkerr(tok1) => () // fpemsg(out,tok1)
 //

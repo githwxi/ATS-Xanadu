@@ -249,6 +249,12 @@ datatype tnode =
   | T_DLR_EXTNAM of () // $exname
   | T_DLR_EXISTS of () // $exists
 //
+(*
+HX-2024-07-19:
+Fri 19 Jul 2024 10:07:36 PM EDT
+*)
+  | T_DLR_SYNEXT of () // $synext
+//
   | T_SRP_THEN of ()
   | T_SRP_ELSE of ()
   | T_SRP_IFDEC of int(*kind*)
