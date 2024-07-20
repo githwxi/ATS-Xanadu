@@ -345,6 +345,26 @@ d1ecl_errck
 end (*let*) // end of [d1ecl_dyninit_errck]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 01:45:37 PM EDT
+*)
+fun
+d1ecl_extcode_errck
+( loc0: loc_t
+, tknd: token
+, g1e1: g1exp) : d1ecl =
+let
+val lvl = 0
+in//let
+d1ecl_errck
+(lvl+1, d1ecl(loc0, D1Cextcode(tknd, g1e1)))
+end (*let*) // end of [d1ecl_extcode_errck]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d1ecl_datasort_errck
@@ -547,8 +567,14 @@ D1Csymload _ => f0_symload(d1cl, err)
 D1Cinclude _ => f0_include(d1cl, err)
 |
 D1Cstaload _ => f0_staload(d1cl, err)
+//
 |
 D1Cdyninit _ => f0_dyninit(d1cl, err)
+//
+(* ****** ****** *)
+|
+D1Cextcode _ => f0_extcode(d1cl, err)
+(* ****** ****** *)
 //
 |
 D1Cdatasort _ => f0_datasort(d1cl, err)
@@ -949,6 +975,35 @@ then (dcl) else
 d1ecl_dyninit_errck(dcl.lctn(),tknd,g1e1)
 end (*let*) // end of [f0_dyninit(dcl,err)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 01:47:14 PM EDT
+*)
+fun
+f0_extcode
+( dcl: d1ecl
+, err: &sint >> _): d1ecl =
+let
+//
+val e00 = err
+//
+val-
+D1Cextcode
+(tknd, g1e1) = dcl.node()
+//
+val
+g1e1 = tread01_g1exp(g1e1, err)
+//
+if
+(err=e00)
+then (dcl) else
+d1ecl_extcode_errck(dcl.lctn(),tknd,g1e1)
+end (*let*) // end of [f0_extcode(dcl,err)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

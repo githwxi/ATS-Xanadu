@@ -855,6 +855,28 @@ d3ecl_node =
 , fpathopt
 , s3taloadopt) // staloading
 //
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 02:17:15 PM EDT
+*)
+|
+D3Cdyninit of
+(token
+ (*DYNLOAD*), g1exp(*fpath*))
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 02:17:15 PM EDT
+*)
+|
+D3Cextcode of
+(token
+ (*EXTCODE*), g1exp(*xcode*))
+//
+(* ****** ****** *)
+//
 |
 D3Cvaldclst of
 (token(*VAL(vlk)*), d3valdclist)

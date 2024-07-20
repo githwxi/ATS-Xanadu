@@ -570,6 +570,14 @@ f0_staload(tenv, d0cl)
 D0Cdyninit _ =>
 f0_dyninit(tenv, d0cl)
 //
+(* ****** ****** *)
+//
+|
+D0Cextcode _ =>
+f0_extcode(tenv, d0cl)
+//
+(* ****** ****** *)
+//
 |
 D0Cdatasort _ =>
 f0_datasort(tenv, d0cl)
@@ -1678,7 +1686,8 @@ prerrln
 end (*local*) // end of [f0_staload(tenv,d0cl)]
 
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 fun
 f0_dyninit
 ( tenv:
@@ -1705,7 +1714,40 @@ val () = prerrln
 *)
 //
 } (*where*) // end of [f0_dyninit(tenv,d0cl)]
-
+//
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 01:44:09 PM EDT
+*)
+fun
+f0_extcode
+( tenv:
+! tr01env
+, d0cl: d0ecl): d1ecl =
+let
+//
+val-
+D0Cextcode
+(tknd, g0e1) = d0cl.node()
+//
+val g1e1 = trans01_g0exp(tenv, g0e1)
+//
+in//let
+  d1ecl(loc0, D1Cextcode(tknd, g1e1))
+end where
+{
+//
+val loc0 = d0cl.lctn()
+//
+(*
+val () = prerrln
+("trans01_d0ecl: f0_extcode: d0cl = ", d0cl)
+*)
+//
+} (*where*) // end of [f0_extcode(tenv,d0cl)]
+//
 (* ****** ****** *)
 
 fun
