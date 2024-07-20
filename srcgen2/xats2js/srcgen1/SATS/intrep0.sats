@@ -517,6 +517,7 @@ i0exp_node =
 (* ****** ****** *)
 //
 |I0Eextnam of (token, g1nam)//HX: external
+|I0Esynext of (token, i0exp)//HX: external
 //
 (* ****** ****** *)
 (* ****** ****** *)

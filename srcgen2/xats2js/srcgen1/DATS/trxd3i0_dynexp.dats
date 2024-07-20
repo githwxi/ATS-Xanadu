@@ -602,10 +602,17 @@ i0exp
 |D3El1azy _ => f0_l1azy(env0, d3e0)
 //
 (* ****** ****** *)
+//
+|D3Eannot _ => f0_annot(env0, d3e0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |
 D3Eextnam _ => f0_extnam(env0, d3e0)
+//
+|
+D3Esynext _ => f0_synext(env0, d3e0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1454,6 +1461,22 @@ end (*let*) // end of [f0_l1azy(env0,d3e0)]
 (* ****** ****** *)
 //
 fun
+f0_annot
+( env0:
+! envd3i0
+, d3e0: d3exp): i0exp =
+(
+trxd3i0_d3exp(env0, d3e1)
+) where
+{
+val-
+D3Eannot(d3e1,s1e2,s2e2) = d3e0.node()
+} (*where*) // end of [f0_annot(env0,d3e0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 f0_extnam
 ( env0:
 ! envd3i0
@@ -1470,6 +1493,30 @@ in//let
 (
   i0exp(loc0, I0Eextnam(tknd, gnam)))
 end (*let*) // end of [f0_extnam(env0,d3e0)]
+//
+(* ****** ****** *)
+//
+fun
+f0_synext
+( env0:
+! envd3i0
+, d3e0: d3exp): i0exp =
+let
+//
+val loc0 = d3e0.lctn()
+//
+val-
+D3Esynext
+(tknd, dtxt) = d3e0.node()
+//
+val itxt =
+(
+  trxd3i0_d3exp(env0, dtxt))
+//
+in//let
+(
+  i0exp(loc0, I0Esynext(tknd, itxt)))
+end (*let*) // end of [f0_synext(env0,d3e0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
