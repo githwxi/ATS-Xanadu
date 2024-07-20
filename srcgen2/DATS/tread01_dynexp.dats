@@ -73,6 +73,19 @@ ATS_PACKNAME
 #symload node with d1arg_get_node
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+A placeholder for the moment
+but it may actually just be okay!
+*)
+fun
+g1exp_errvl_a1
+(g1e: g1exp): sint = 0
+#symload errvl with g1exp_errvl_a1
+//
+(* ****** ****** *)
+(* ****** ****** *)
 (*
 HX-2022-08-21:
 A placeholder for the moment
@@ -1177,18 +1190,19 @@ d1exp_errck
 endlet // end of [d1exp_exists_errck(...)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d1exp_synext_errck
 ( loc: loc_t
 , tknd: token
-, d1e1: d1exp): d1exp =
+, gexp: g1exp): d1exp =
 let
-val lvl = errvl(d1e1)
+val lvl = errvl(gexp)
 in//let
 d1exp_errck
 (
-lvl+1, d1exp(loc,D1Esynext(tknd, d1e1)))
+lvl+1, d1exp(loc,D1Esynext(tknd, gexp)))
 endlet // end of [d1exp_synext_errck(...)]
 //
 (* ****** ****** *)
@@ -1773,25 +1787,27 @@ d1exp_exists_errck(loc0,tknd,d1es,d1e1)
 endlet//end-[D1Eexists(tknd,d1es,d1e1)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |
 D1Esynext
-( tknd, d1e1) =>
+( tknd, gexp) =>
 let
 //
 val e00 = err
 //
-val d1e1 =
-tread01_d1exp(d1e1, err)
+val gexp =
+tread01_g1exp(gexp, err)
 //
 in//let
 if
 (err=e00)
 then (d1e0) else
 (
-  d1exp_synext_errck(loc0,tknd,d1e1))
+  d1exp_synext_errck(loc0,tknd,gexp))
 endlet//end-of-[D1Esynext(tknd, d1e1)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |
