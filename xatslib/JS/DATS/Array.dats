@@ -78,4 +78,4 @@ jsarray_rforall_c1fr
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_xatslib_JS_DATS_Array.sats] *)
+(* end of [ATS3/XANADU_xatslib_JS_DATS_Array.dats] *)
