@@ -69,6 +69,16 @@ XATS2JS_jsarray_rforall_c1fr
 /* ****** ****** */
 /* ****** ****** */
 //
+function
+XATS2JS_jsarray_sortref_c2fr
+  (A, cmpr)
+{
+    A.sort(cmpr); return // HX: [A] is mutated!
+}
+//
+/* ****** ****** */
+/* ****** ****** */
+//
 /* ****** ****** *//* ****** ****** */
 /* ****** ****** *//* ****** ****** */
 
