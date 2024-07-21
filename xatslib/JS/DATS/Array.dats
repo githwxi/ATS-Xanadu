@@ -30,101 +30,52 @@
 (*
 Author: Hongwei Xi
 (*
-Sat 20 Jul 2024 09:41:27 PM EDT
+Sun 21 Jul 2024 01:21:25 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-abstype
-jsarray(a: vwtp, n: int)
-(* ****** ****** *)
-typedef
-jsarray
-(a: vwtp) = [n:int] jarray(a, n)
-(* ****** ****** *)
-(* ****** ****** *)
 //
-
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun<>
-jsarray_length
- {a:vt}{n:i0}
-(A: jsarray(a, n)): sint(n)
-//
-#symload
-length with jsarray_length of 1000
-//
-(* ****** ****** *)
-//
-fun<>
-jsarray_get_at
- {a:t0}{n:i0}
-(A: jsarray(a, n), i: natlt(n)): (a)
-fun<>
-jsarray_set_at
- {a:t0}{n:i0}
-(A: jsarray(a, n), i: natlt(n), x: a): void
-//
-#symload get_at with jsarray_get_at of 1000
-#symload set_at with jsarray_set_at of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun<>
-jsarray_strmize
-{a:vt}
-(A: jsarray(a)): strm_vt(a)
-fun<>
-jsarray_strqize
-{a:vt}{n:i0}
-(A: jsarray(a, n)): strq_vt(a)
-//
-#symload strmize with jsarray_strmize of 1000
-#symload strqize with jsarray_strqize of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun<>
+(*
+#impltmp
+< x0:t0 >
 jsarray_forall
-{a:t0}
-(A: jsarray(a)): bool
+  ( A ) =
+nint_forall<>
+(
+jsarray_length<>(A)) where
+{
+#impltmp
+forall$test
+<nint>( i0 ) =
+forall$test<x0>
+(jsarray_get_at<x0>(A, i0))}
+*)
 //
-fun<>
+#impltmp
+< x0:t0 >
+jsarray_forall
+  ( A ) =
+(
 jsarray_forall_c1fr
-{a:t0}
-( A: jsarray(a)
-, test: (a)-<cfr>test): bool
-//
-#symload
-forall with jsarray_forall of 1000
-#symload
-forall with jsarray_forall_c1fr of 1000
+(A,lam(x0)=>forall$test<x0>(x0))
 //
 (* ****** ****** *)
 //
-fun<>
+#impltmp
+< x0:t0 >
 jsarray_rforall
-{a:vt}
-(A: jsarray(a)): bool
-fun<>
+  ( A ) =
+(
 jsarray_rforall_c1fr
-{a:t0}
-( A: jsarray(a)
-, test: (a)-<cfr>test): bool
-//
-#symload
-rforall with jsarray_rforall of 1000
-#symload
-rforall with jsarray_rforall_c1fr of 1000
+(A,lam(x0)=>rforall$test<x0>(x0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_xatslib_JS_SATS_Array.sats] *)
+(* end of [ATS3/XANADU_xatslib_JS_DATS_Array.sats] *)
