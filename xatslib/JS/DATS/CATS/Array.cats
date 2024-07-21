@@ -39,16 +39,64 @@ Authoremail: gmhwxiATgmailDOTcom
 /* ****** ****** */
 //
 function
+XATS2JS_jsarray_length
+  ( A )
+{
+  return A.length
+}
+//
+/* ****** ****** */
+/* ****** ****** */
+//
+function
+XATS2JS_jsarray_make_1val
+  ( x1 )
+{
+  return [x1]; // len = 1
+}
+function
+XATS2JS_jsarray_make_2val
+  ( x1, x2 )
+{
+  return [x1, x2]; // len = 2
+}
+function
+XATS2JS_jsarray_make_3val
+  ( x1, x2, x3 )
+{
+  return [x1, x2, x3]; // len = 3
+}
+//
+/* ****** ****** */
+/* ****** ****** */
+//
+function
+XATS2JS_jsarray_make_nval
+  (n, x)
+{
+  let i
+  let A = new Array(n)
+  for (i = 0; i < n; i += 1)
+  {
+    A[i] = x
+  }
+  return A // HX: A = [x, x, ..., x]
+}
+//
+/* ****** ****** */
+/* ****** ****** */
+//
+function
 XATS2JS_jsarray_forall_c1fr
   (A, test)
 {
-    let i0
-    let n0 = A.length
-    for (i0 = 0; i0 < n0; i0 += 1)
-    {
-	if (!test(A[i0])) return false
-    }
-    return true // all xs in A pass the test
+  let i0
+  let n0 = A.length
+  for (i0 = 0; i0 < n0; i0 += 1)
+  {
+    if (!test(A[i0])) return false
+  }
+  return true // all xs in A pass the test
 }
 //
 /* ****** ****** */
@@ -57,13 +105,13 @@ function
 XATS2JS_jsarray_rforall_c1fr
   (A, test)
 {
-    let i0
-    let n0 = A.length
-    for (i0 = 0; i0 < n0; i0 += 1)
-    {
-	if (!test(A[n0-1-i0])) return false
-    }
-    return true // all xs in A pass the test
+  let i0
+  let n0 = A.length
+  for (i0 = 0; i0 < n0; i0 += 1)
+  {
+    if (!test(A[n0-1-i0])) return false
+  }
+  return true // all xs in A pass the test
 }
 //
 /* ****** ****** */
@@ -73,7 +121,7 @@ function
 XATS2JS_jsarray_sortref_c2fr
   (A, cmpr)
 {
-    A.sort(cmpr); return // HX: [A] is mutated!
+  A.sort(cmpr); return // HX: [A] is mutated!
 }
 //
 /* ****** ****** */

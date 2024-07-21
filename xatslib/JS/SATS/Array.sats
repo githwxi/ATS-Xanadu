@@ -42,11 +42,49 @@ jsarray(a: vwtp, n: int)
 (* ****** ****** *)
 #typedef
 jsarray
-(a: vwtp) = [n:int] jsarray(a, n)
+(a: vt) = [n:i0] jsarray(a, n)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-
+fun<>
+jsarray_make_1val
+ {a:t0}
+( x: a ): jsarray(a, 1)
+fun<>
+jsarray_make_2val
+ {a:t0}
+( a, a ): jsarray(a, 2)
+fun<>
+jsarray_make_3val
+ {a:t0}
+( a, a, a ): jsarray(a, 3)
+//
+#symload
+jsarray
+with jsarray_make_1val of 1000
+#symload
+jsarray
+with jsarray_make_2val of 1000
+#symload
+jsarray
+with jsarray_make_3val of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+jsarray_make_nval
+ {a:t0}{n:nat}
+(n:sint(n), x:a): jsarray(a, n)
+//
+(*
+#symload
+jsarray
+  with jsarray_make_nval of 1000
+*)
+#symload
+jsarray_make
+  with jsarray_make_nval of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -138,9 +176,9 @@ jsarray_sortref_c2fr
 , cmpr: (a, a)-<cfr>sint): void
 //
 #symload
-sortref with jsarray_rforall of 1000
+sortref with jsarray_sortref of 1000
 #symload
-sortref with jsarray_rforall_c2fr of 1000
+sortref with jsarray_sortref_c2fr of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
