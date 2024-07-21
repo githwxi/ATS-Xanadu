@@ -44,6 +44,95 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<(*tmp*)>
+jsarray_make_1val
+  ( x1 ) =
+(
+XATS2JS_jsarray_make_1val(x1)
+) where
+{
+#extern
+fun
+XATS2JS_jsarray_make_1val
+{ a : t0 }
+( x1: (a)): jsarray(a, 1) = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+jsarray_make_2val
+  (x1, x2) =
+(
+XATS2JS_jsarray_make_2val(x1, x2)
+) where
+{
+#extern
+fun
+XATS2JS_jsarray_make_2val
+{ a : t0 }
+( x1: (a)
+, x2: (a)): jsarray(a, 2) = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+jsarray_make_3val
+  (x1, x2, x3) =
+(
+XATS2JS_jsarray_make_3val(x1, x2, x3)
+) where
+{
+#extern
+fun
+XATS2JS_jsarray_make_3val
+{ a : t0 }
+( x1: (a)
+, x2: (a)
+, x3: (a)): jsarray(a, 3) = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jsarray_make_nval
+  (n, x) =
+(
+XATS2JS_jsarray_make_nval(n, x)
+) where
+{
+#extern
+fun
+XATS2JS_jsarray_make_nval
+{a:t0}{n:nat}
+( n
+: sint(n)
+, x:( a )): jsarray(a, n) = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jsarray_length
+  ( A ) =
+(
+XATS2JS_jsarray_length(A)
+) where
+{
+#extern
+fun
+XATS2JS_jsarray_length
+{a:t0}{n:nat}
+(A:jsarray(a, n)): nint(n) = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 #impltmp
 < x0:t0 >
