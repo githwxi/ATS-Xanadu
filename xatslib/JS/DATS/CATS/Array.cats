@@ -42,8 +42,9 @@ function
 XATS2JS_jsarray_forall_c1fr
   (A, test)
 {
-    let n0 = A.length()
-    for (i0 = 1; i0 < n0; i0 += 1)
+    let i0
+    let n0 = A.length
+    for (i0 = 0; i0 < n0; i0 += 1)
     {
 	if (!test(A[i0])) return false
     }
@@ -56,8 +57,9 @@ function
 XATS2JS_jsarray_rforall_c1fr
   (A, test)
 {
-    let n0 = A.length()
-    for (i0 = 1; i0 < n0; i0 += 1)
+    let i0
+    let n0 = A.length
+    for (i0 = 0; i0 < n0; i0 += 1)
     {
 	if (!test(A[n0-1-i0])) return false
     }

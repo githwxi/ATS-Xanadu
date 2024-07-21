@@ -91,12 +91,12 @@ jsarray_strqize
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun<>
+fun
+<a:t0>
 jsarray_forall
-{a:t0}
 (A: jsarray(a)): bool
 //
-fun//fun
+fun<>
 jsarray_forall_c1fr
 {a:t0}
 ( A: jsarray(a)
@@ -109,11 +109,11 @@ forall with jsarray_forall_c1fr of 1000
 //
 (* ****** ****** *)
 //
-fun<>
+fun
+<a:t0>
 jsarray_rforall
-{a:t0}
 (A: jsarray(a)): bool
-fun//fun
+fun<>
 jsarray_rforall_c1fr
 {a:t0}
 ( A: jsarray(a)
