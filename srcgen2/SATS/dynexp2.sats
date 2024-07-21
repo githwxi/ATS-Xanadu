@@ -1349,10 +1349,16 @@ d2ecl_node =
 //
 |D2Cd1ecl of (d1ecl)
 //
+(* ****** ****** *)
+//
 |D2Cstatic of
- (token(*STATIC*), d2ecl)
+(token
+ (*STATIC*), d2ecl) // locally
 |D2Cextern of
- (token(*EXTERN*), d2ecl)
+(token
+ (*EXTERN*), d2ecl) // globally
+//
+(* ****** ****** *)
 //
 |D2Clocal0 of
  ( d2eclist(*local-head*)

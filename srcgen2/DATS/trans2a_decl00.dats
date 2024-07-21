@@ -174,6 +174,19 @@ D2Cinclude _ => f0_include(env0, d2cl)
 |
 D2Cstaload _ => f0_staload(env0, d2cl)
 //
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 08:41:15 PM EDT
+*)
+|
+D2Cdyninit _ => f0_dyninit(env0, d2cl)
+|
+D2Cextcode _ => f0_extcode(env0, d2cl)
+//
+(* ****** ****** *)
+//
 |
 D2Cvaldclst _ => f0_valdclst(env0, d2cl)
 |
@@ -391,6 +404,7 @@ end where
 } (*where*) // end of [f0_absimpl(env0,d2cl)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_include
@@ -438,6 +452,36 @@ D2Cstaload
 , fopt, dopt) = d2cl.node() in d2cl
 end (*let*) // end of [f0_staload(...)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 08:41:58 PM EDT
+*)
+fun
+f0_dyninit
+( env0:
+! tr2aenv
+, d2cl: d2ecl): d2ecl =
+let
+val-
+D2Cdyninit
+(tknd, gexp) = d2cl.node() in d2cl
+end (*let*) // end of [f0_dyninit(...)]
+//
+fun
+f0_extcode
+( env0:
+! tr2aenv
+, d2cl: d2ecl): d2ecl =
+let
+val-
+D2Cextcode
+(tknd, gexp) = d2cl.node() in d2cl
+end (*let*) // end of [f0_extcode(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

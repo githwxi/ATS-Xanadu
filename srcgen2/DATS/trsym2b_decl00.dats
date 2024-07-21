@@ -201,6 +201,8 @@ endlet // end of [D2Clocal0(...)]
 |D2Cdatatype _ => ( (*void*) )
 *)
 //
+(* ****** ****** *)
+//
 |
 D2Cinclude
 ( knd0
@@ -216,6 +218,24 @@ D2Cstaload
 ( knd0
 , tknd, gsrc
 , fopt, dopt) => ((*_skipped_*))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 08:42:19 PM EDT
+*)
+//
+|
+D2Cdyninit
+( tknd, gexp) => ((*_skipped_*))
+|
+D2Cextcode
+( tknd, gexp) => ((*_skipped_*))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 |
 D2Cvaldclst

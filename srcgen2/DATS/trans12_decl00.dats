@@ -782,8 +782,9 @@ in//let
 d2ecl(loc0, D2Cd1ecl(d1cl))
 end (*let*) // end of [D1Cd0ecl]
 //
-|
-D1Cstatic
+(* ****** ****** *)
+//
+|D1Cstatic
 (tknd, dcl1) =>
 let
 val loc0 = d1cl.lctn()
@@ -794,8 +795,7 @@ process_static(env0, dcl1)
 in//let
 d2ecl(loc0, D2Cstatic(tknd, dcl1))
 end (*let*) // end of [D1Cstatic]
-|
-D1Cextern
+|D1Cextern
 (tknd, dcl1) =>
 let
 val loc0 = d1cl.lctn()
@@ -806,6 +806,8 @@ process_extern(env0, dcl1)
 in//let
 d2ecl(loc0, D2Cextern(tknd, dcl1))
 end (*let*) // end of [D1Cextern]
+//
+(* ****** ****** *)
 //
 |
 D1Cdefine _ => f0_define(env0, d1cl)

@@ -559,15 +559,15 @@ print("I0Dd3ecl(", d3cl, ")")
 //
 (* ****** ****** *)
 //
-|I0Dextern
-(tknd, dcl1) =>
-print
-("I0Dextern(", tknd, ";", dcl1, ")")
-//
 |I0Dstatic
 (tknd, dcl1) =>
 print
 ("I0Dstatic(", tknd, ";", dcl1, ")")
+//
+|I0Dextern
+(tknd, dcl1) =>
+print
+("I0Dextern(", tknd, ";", dcl1, ")")
 //
 (* ****** ****** *)
 //
@@ -594,31 +594,52 @@ print
 (
 knd0,";",
 tknd,";",gsrc,";",fopt,";","...",")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 07:38:45 PM EDT
+*)
+//
+|I0Ddyninit
+( tknd, gexp) =>
+(
+print("I0Ddyninit(",tknd,";",gexp,")"))
+//
+|I0Dextcode
+( tknd, gexp) =>
+(
+print("I0Dextcode(",tknd,";",gexp,")"))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |I0Dvaldclst
-(  tknd, i0vs  ) =>
+( tknd, i0vs) =>
 (
 print("I0Dvaldclst(",tknd,";",i0vs,")"))
 //
 |I0Dvardclst
-(  tknd, i0vs  ) =>
+( tknd, i0vs) =>
 (
 print("I0Dvardclst(",tknd,";",i0vs,")"))
 //
 (* ****** ****** *)
 //
 |I0Dfundclst
-(tknd,d2cs,i0fs) =>
+( tknd
+, d2cs, i0fs) =>
 ( print("I0Dfundclst(")
 ; print(tknd, ";", d2cs, ";", i0fs, ")"))
 //
 (* ****** ****** *)
 //
 |I0Dimplmnt0
-(tknd
-,stmp
-,dimp,farg,body) =>
+( tknd
+, stmp, dimp
+, farg, body) =>
 ( print("I0Dimplmnt0(")
 ; print(tknd,";",stmp,";")
 ; print(dimp, ";", farg, ";", body, ")"))
