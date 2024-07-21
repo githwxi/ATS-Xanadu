@@ -96,7 +96,7 @@ jsarray_forall
 {a:t0}
 (A: jsarray(a)): bool
 //
-fun<>
+fun//fun
 jsarray_forall_c1fr
 {a:t0}
 ( A: jsarray(a)
@@ -113,7 +113,7 @@ fun<>
 jsarray_rforall
 {a:t0}
 (A: jsarray(a)): bool
-fun<>
+fun//fun
 jsarray_rforall_c1fr
 {a:t0}
 ( A: jsarray(a)
