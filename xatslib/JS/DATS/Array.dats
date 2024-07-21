@@ -66,7 +66,15 @@ jsarray_forall
   {a}( A ) =
 (
 jsarray_forall_c1fr
-(A,lam(x)=>forall$test<a>(x)))
+(A
+,lam(x)=>forall$test<a>(x)))
+//
+#impltmp
+{ x0:t0 }
+gseq_forall
+<jsarray(x0)>(xs) =
+(
+  jsarray_forall<>{x0}( xs ))
 //
 (* ****** ****** *)
 //
@@ -76,7 +84,15 @@ jsarray_rforall
   {a}( A ) =
 (
 jsarray_rforall_c1fr
-(A,lam(x)=>rforall$test<a>(x)))
+(A
+,lam(x)=>rforall$test<a>(x)))
+//
+#impltmp
+{ x0:t0 }
+gseq_rforall
+<jsarray(x0)>(xs) =
+(
+  jsarray_rforall<>{x0}( xs ))
 //
 (* ****** ****** *)
 (* ****** ****** *)
