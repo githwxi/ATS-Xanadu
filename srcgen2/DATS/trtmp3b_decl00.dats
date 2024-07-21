@@ -132,6 +132,19 @@ D3Cinclude _ => f0_include(env0, d3cl)
 |
 D3Cstaload _ => f0_staload(env0, d3cl)
 //
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 07:22:10 PM EDT
+*)
+|
+D3Cdyninit _ => f0_dyninit(env0, d3cl)
+|
+D3Cextcode _ => f0_extcode(env0, d3cl)
+//
+(* ****** ****** *)
+//
 |
 D3Cvaldclst _ => f0_valdclst(env0, d3cl)
 |
@@ -255,6 +268,32 @@ tr3benv_insert_decl(env0, d3cl) in d3cl
 end//let
 end(*let*)//end-of-[f0_staload(env0,d3cl)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 07:24:37 PM EDT
+*)
+//
+fun
+f0_dyninit
+( env0:
+! tr3benv
+, d3cl: d3ecl): d3ecl =
+let
+val-D3Cdyninit _ = d3cl.node() in d3cl
+end(*let*)//end-of-[f0_dyninit(env0,d3cl)]
+fun
+f0_extcode
+( env0:
+! tr3benv
+, d3cl: d3ecl): d3ecl =
+let
+val-D3Cextcode _ = d3cl.node() in d3cl
+end(*let*)//end-of-[f0_extcode(env0,d3cl)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

@@ -688,10 +688,10 @@ i0dcl_node =
 //
 (* ****** ****** *)
 //
-|I0Dextern of
-(token(*kind*), i0dcl)
 |I0Dstatic of
-(token(*kind*), i0dcl)
+(token(*STATIC*), i0dcl)
+|I0Dextern of
+(token(*EXTERN*), i0dcl)
 //
 (* ****** ****** *)
 //
@@ -706,7 +706,8 @@ i0dcl_node =
 //
 (* ****** ****** *)
 //
-|I0Dinclude of
+|
+I0Dinclude of
 (sint(*s/d*)
 ,token
 ,g1exp // src
@@ -714,20 +715,33 @@ i0dcl_node =
 ,i0dclistopt) // inclusion
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
-|I0Dvaldclst of
+|
+I0Ddyninit of (token, g1exp)
+|
+I0Dextcode of (token, g1exp)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|
+I0Dvaldclst of
 (token(*VAL(vlk)*), i0valdclist)
-|I0Dvardclst of
+|
+I0Dvardclst of
 (token(*VAR(vlk)*), i0vardclist)
 //
 (* ****** ****** *)
 //
-|I0Dfundclst of
+|
+I0Dfundclst of
 (token(*knd*), d2cstlst, i0fundclist)
 //
 (* ****** ****** *)
 //
-|I0Dimplmnt0 of
+|
+I0Dimplmnt0 of
 ( token(*knd*)
 , stamp, dimpl, fiarglst, i0exp(*body*))
 //

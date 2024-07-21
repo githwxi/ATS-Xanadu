@@ -20,12 +20,12 @@
 /prelude/DATS/CATS/JS/Node/g_print.dats"
 (* ****** ****** *)
 //
-(*
+// (*
 #extcode
 "
 var A = [1,2,3]
 "(*end-of-[extcode]*)
-*)
+// *)
 //
 val A =
 $synext("A")

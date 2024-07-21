@@ -560,6 +560,8 @@ then dcl else
 d2ecl_static_errck(dcl.lctn(),tknd,dcl1)
 end (*let*) // end of [ f0_static(dcl,err) ]
 //
+(* ****** ****** *)
+//
 fun
 f0_extern
 ( dcl: d2ecl

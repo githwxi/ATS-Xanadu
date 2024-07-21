@@ -896,12 +896,19 @@ D0Cnonfix of
 (token, i0dntlst)
 |
 D0Cfixity of
-(token, i0dntlst, precopt)
+(
+token, i0dntlst, precopt)
+//
+(* ****** ****** *)
 //
 |
-D0Cstatic of (token, d0ecl)
+D0Cstatic of
+(token, d0ecl) // locally
 |
-D0Cextern of (token, d0ecl)
+D0Cextern of
+(token, d0ecl) // globally
+//
+(* ****** ****** *)
 //
 (*
 HX-2022-12-15:

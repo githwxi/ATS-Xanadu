@@ -126,6 +126,7 @@ d2ecl_errck
 end (*let*)//end-of-[d2ecl_extern_errck]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d2ecl_include_errck
@@ -170,6 +171,7 @@ end (*let*) // end of [d2ecl_staload_errck]
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d2ecl_valdclst_errck
@@ -204,6 +206,7 @@ d2ecl_errck
 end (*let*) // end of [d2ecl_vardclst_errck]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d2ecl_fundclst_errck
@@ -226,6 +229,7 @@ d2ecl_errck
   (loc0,D2Cfundclst(tknd,tqas,d2cs,d2fs)))
 end (*let*) // end of [d2ecl_fundclst_errck]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -260,6 +264,7 @@ d2ecl_make_node
   , sqas,tqas,dqid,tias,fags,sres,dexp ) ))
 end (*let*) // end of [d2ecl_implmnt0_errck]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 #implfun
@@ -299,6 +304,20 @@ D2Cinclude _ => f0_include(d2cl, err)
 |
 D2Cstaload _ => f0_staload(d2cl, err)
 //
+(* ****** ****** *)
+//
+(*
+HX-2024-07-20:
+Sat 20 Jul 2024 08:02:15 PM EDT
+*)
+//
+|
+D2Cdyninit _ => f0_dyninit(d2cl, err)
+|
+D2Cextcode _ => f0_extcode(d2cl, err)
+//
+(* ****** ****** *)
+//
 |
 D2Cvaldclst _ => f0_valdclst(d2cl, err)
 |
@@ -333,6 +352,7 @@ val (  ) =
 prerrln("tread20_d2ecl: d2cl = ", d2cl)
 *)
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 f0_static
@@ -355,6 +375,8 @@ then dcl else
 d2ecl_static_errck(dcl.lctn(),tknd,dcl1)
 end (*let*) // end of [ f0_static(dcl,err) ]
 //
+(* ****** ****** *)
+//
 fun
 f0_extern
 ( dcl: d2ecl
@@ -376,6 +398,7 @@ then dcl else
 d2ecl_extern_errck(dcl.lctn(),tknd,dcl1)
 end (*let*) // end of [ f0_extern(dcl,err) ]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -403,6 +426,7 @@ then dcl else
 d2ecl_local0_errck( loc, dcs1, dcs2 )
 end (*let*) // end of [ f0_local0(dcl,err) ]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -468,6 +492,32 @@ D2Cstaload
 , fopt, dopt) = dcl.node() in ( dcl )
 end (*let*) // end of [f0_staload(dcl,err)]
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_dyninit
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val-
+D2Cdyninit
+( tknd, gexp) = dcl.node() in ( dcl )
+end (*let*) // end of [f0_dyninit(dcl,err)]
+//
+fun
+f0_extcode
+( dcl: d2ecl
+, err: &sint >> _): d2ecl =
+let
+//
+val-
+D2Cextcode
+( tknd, gexp) = dcl.node() in ( dcl )
+end (*let*) // end of [f0_extcode(dcl,err)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

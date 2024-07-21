@@ -470,12 +470,6 @@ T_SRP_SYMLOAD() =>
 print("T_SRP_SYMLOAD(", ")")
 //
 |
-T_SRP_STALOAD() =>
-print("T_SRP_STALOAD(", ")")
-|
-T_SRP_DYNINIT() =>
-print("T_SRP_DYNINIT(", ")")
-|
 T_SRP_INCLUDE() =>
 print("T_SRP_INCLUDE(", ")")
 (*
@@ -483,6 +477,16 @@ print("T_SRP_INCLUDE(", ")")
 T_SRP_INPASTE() =>
 print("T_SRP_INPASTE(", ")")
 *)
+//
+|
+T_SRP_STALOAD() =>
+print("T_SRP_STALOAD(", ")")
+//
+|
+T_SRP_EXTCODE() =>
+print("T_SRP_EXTCODE(", ")")
+//
+(* ****** ****** *)
 //
 ) where
 {

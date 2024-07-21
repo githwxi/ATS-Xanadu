@@ -810,10 +810,12 @@ d1ecl_node =
   // updating fixity env
 *)
 //
+(* ****** ****** *)
 | D1Cstatic of
   (token, d1ecl) // locally
 | D1Cextern of
   (token, d1ecl) // globally
+(* ****** ****** *)
 //
 | D1Clocal0 of
   ( d1eclist(*local-head*)

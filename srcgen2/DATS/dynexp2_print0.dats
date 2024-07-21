@@ -826,6 +826,7 @@ dcl0.node() of
 (  d1cl  ) =>
 print("D2Cd1ecl(",d1cl,")")
 //
+(* ****** ****** *)
 |
 D2Cstatic
 ( tknd , dcl1 ) =>
@@ -834,6 +835,8 @@ print("D2Cstatic(",tknd,";",dcl1,")")
 D2Cextern
 ( tknd , dcl1 ) =>
 print("D2Cextern(",tknd,";",dcl1,")")
+//
+(* ****** ****** *)
 //
 |
 D2Clocal0

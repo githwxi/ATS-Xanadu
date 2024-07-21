@@ -137,12 +137,13 @@ end//let//end(D3Cd2ecl)
 //
 (* ****** ****** *)
 //
-|D3Cextern _ =>
-(
-  f0_extern(env0, d3cl))
 |D3Cstatic _ =>
 (
   f0_static(env0, d3cl))
+//
+|D3Cextern _ =>
+(
+  f0_extern(env0, d3cl))
 //
 (* ****** ****** *)
 //
@@ -157,6 +158,7 @@ end//let//end(D3Cd2ecl)
   f0_tmpsub(env0, d3cl))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Cinclude _ =>
 (
@@ -169,6 +171,18 @@ end//let//end(D3Cd2ecl)
   f0_staload(env0, d3cl))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+|D3Cdyninit _ =>
+(
+  f0_dyninit(env0, d3cl))
+//
+|D3Cextcode _ =>
+(
+  f0_extcode(env0, d3cl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Cvaldclst _ =>
 (
@@ -178,11 +192,13 @@ end//let//end(D3Cd2ecl)
   f0_vardclst(env0, d3cl))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Cfundclst _ =>
 (
   f0_fundclst(env0, d3cl))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D3Cimplmnt0 _ =>
@@ -190,11 +206,40 @@ end//let//end(D3Cd2ecl)
   f0_implmnt0(env0, d3cl))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |_(* otherwise *) => i0dcl_none1(d3cl)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
 ) where
 {
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_static
+( env0: 
+! envd3i0
+, d3cl: d3ecl): i0dcl =
+let
+//
+val loc0 = d3cl.lctn()
+val-
+D3Cstatic
+(tknd, dcl1) = d3cl.node()
+//
+val dcl1 =
+(
+  trxd3i0_d3ecl(env0, dcl1))
+//
+in//let
+//
+i0dcl(loc0, I0Dstatic(tknd, dcl1))
+//
+end//let//end-of-[f0_static(env0,d3cl)]
 //
 (* ****** ****** *)
 //
@@ -220,28 +265,7 @@ i0dcl(loc0, I0Dextern(tknd, dcl1))
 //
 end//let//end-of-[f0_extern(env0,d3cl)]
 //
-fun
-f0_static
-( env0: 
-! envd3i0
-, d3cl: d3ecl): i0dcl =
-let
-//
-val loc0 = d3cl.lctn()
-val-
-D3Cstatic
-(tknd, dcl1) = d3cl.node()
-//
-val dcl1 =
-(
-  trxd3i0_d3ecl(env0, dcl1))
-//
-in//let
-//
-i0dcl(loc0, I0Dstatic(tknd, dcl1))
-//
-end//let//end-of-[f0_static(env0,d3cl)]
-//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -350,6 +374,47 @@ D3Cstaload
 , tknd, gsrc
 , fopt, sopt) = d3cl.node() }
 (*where*)//end-of-[f0_staload(env0,d3cl)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+f0_dyninit
+( env0: 
+! envd3i0
+, d3cl: d3ecl): i0dcl =
+(
+i0dcl_make_node
+( loc0
+, I0Ddyninit(tknd, gexp))
+) where
+{
+//
+val loc0 = d3cl.lctn((*0*))
+//
+val-
+D3Cdyninit
+( tknd, gexp) = d3cl.node() }
+(*where*)//end-of-[f0_dyninit(env0,d3cl)]
+//
+fun
+f0_extcode
+( env0: 
+! envd3i0
+, d3cl: d3ecl): i0dcl =
+(
+i0dcl_make_node
+( loc0
+, I0Dextcode(tknd, gexp))
+) where
+{
+//
+val loc0 = d3cl.lctn((*0*))
+//
+val-
+D3Cextcode
+( tknd, gexp) = d3cl.node() }
+(*where*)//end-of-[f0_extcode(env0,d3cl)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
