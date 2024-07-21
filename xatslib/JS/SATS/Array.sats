@@ -37,12 +37,12 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-abstype
+#abstype
 jsarray(a: vwtp, n: int)
 (* ****** ****** *)
-typedef
+#typedef
 jsarray
-(a: vwtp) = [n:int] jarray(a, n)
+(a: vwtp) = [n:int] jsarray(a, n)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -64,11 +64,11 @@ length with jsarray_length of 1000
 fun<>
 jsarray_get_at
  {a:t0}{n:i0}
-(A: jsarray(a, n), i: natlt(n)): (a)
+(A:jsarray(a, n), i:nintlt(n)): (a)
 fun<>
 jsarray_set_at
  {a:t0}{n:i0}
-(A: jsarray(a, n), i: natlt(n), x: a): void
+(A:jsarray(a, n), i:nintlt(n), x:a): void
 //
 #symload get_at with jsarray_get_at of 1000
 #symload set_at with jsarray_set_at of 1000
@@ -100,7 +100,7 @@ fun<>
 jsarray_forall_c1fr
 {a:t0}
 ( A: jsarray(a)
-, test: (a)-<cfr>test): bool
+, test: (a)-<cfr>bool): bool
 //
 #symload
 forall with jsarray_forall of 1000
@@ -111,13 +111,13 @@ forall with jsarray_forall_c1fr of 1000
 //
 fun<>
 jsarray_rforall
-{a:vt}
+{a:t0}
 (A: jsarray(a)): bool
 fun<>
 jsarray_rforall_c1fr
 {a:t0}
 ( A: jsarray(a)
-, test: (a)-<cfr>test): bool
+, test: (a)-<cfr>bool): bool
 //
 #symload
 rforall with jsarray_rforall of 1000

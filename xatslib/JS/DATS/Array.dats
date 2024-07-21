@@ -38,6 +38,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload
+"./../SATS/Array.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 #impltmp
 < x0:t0 >
@@ -55,25 +61,57 @@ forall$test<x0>
 *)
 //
 #impltmp
-< x0:t0 >
+<(*tmp*)>
 jsarray_forall
-  ( A ) =
+  {a}( A ) =
 (
 jsarray_forall_c1fr
-(A,lam(x0)=>forall$test<x0>(x0))
+(A,lam(x)=>forall$test<a>(x)))
 //
 (* ****** ****** *)
 //
 #impltmp
-< x0:t0 >
+<(*tmp*)>
 jsarray_rforall
-  ( A ) =
+  {a}( A ) =
 (
 jsarray_rforall_c1fr
-(A,lam(x0)=>rforall$test<x0>(x0))
+(A,lam(x)=>rforall$test<a>(x)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#implfun
+jsarray_forall_c1fr
+  (A, test) =
+(
+XATS2JS_jsarray_forall_c1fr(A, test)
+) where
+{
+#extern
+fun
+XATS2JS_jsarray_forall_c1fr
+{ a: t0 }
+( A: jsarray(a)
+, test: (a)-<cfr>bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#implfun
+jsarray_rforall_c1fr
+  (A, test) =
+(
+XATS2JS_jsarray_rforall_c1fr(A, test)
+) where
+{
+#extern
+fun
+XATS2JS_jsarray_rforall_c1fr
+{ a: t0 }
+( A: jsarray(a)
+, test: (a)-<cfr>bool): bool = $extnam()
+}
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
