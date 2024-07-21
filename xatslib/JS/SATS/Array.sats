@@ -115,7 +115,7 @@ jsarray_rforall
 (A: jsarray(a)): bool
 fun<>
 jsarray_rforall_c1fr
-{a:t0}
+{ a: t0 }
 ( A: jsarray(a)
 , test: (a)-<cfr>bool): bool
 //
@@ -123,6 +123,24 @@ jsarray_rforall_c1fr
 rforall with jsarray_rforall of 1000
 #symload
 rforall with jsarray_rforall_c1fr of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:t0>
+jsarray_sortref
+(A: jsarray(a)): void
+fun<>
+jsarray_sortref_c2fr
+{ a: t0 }
+( A: jsarray(a)
+, cmpr: (a, a)-<cfr>sint): void
+//
+#symload
+sortref with jsarray_rforall of 1000
+#symload
+sortref with jsarray_rforall_c2fr of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
