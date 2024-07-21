@@ -1,6 +1,11 @@
 (* ****** ****** *)
+//
 #staload UN =
 "prelude/SATS/unsafex.sats"
+//
+#staload _(*UN*) =
+"prelude/DATS/unsafex.dats"
+//
 (* ****** ****** *)
 //
 #include
@@ -13,24 +18,55 @@
 //
 #include
 "srcgen1\
-/prelude/HATS/CATS/JS/prelude_dats.hats"
+/prelude\
+/HATS/CATS/JS/prelude_dats.hats"
+//
+(* ****** ****** *)
 //
 #staload _ =
 "srcgen1\
-/prelude/DATS/CATS/JS/Node/g_print.dats"
+/prelude\
+/DATS/CATS/JS/Node/g_print.dats"
+//
+(* ****** ****** *)
+#staload
+"xatslib/JS/SATS/Array.sats"
+#include
+"xatslib/JS/HATS/xatslib_JS_dats.hats"
 (* ****** ****** *)
 //
-// (*
+(*
+//
 #extcode
 "
 var A = [1,2,3]
 "(*end-of-[extcode]*)
-// *)
-//
 val A =
-$synext("A")
-:a1ref(sint,3)//:jsa1ref(sint)
+$synext("A"):jsarray(sint,3)
 //
+*)
+//
+excptcon NONE of ()
+val A = $raise NONE()
+//
+(* ****** ****** *)
+
+val iA =
+gseq_ifolditm
+<xs><x0><r0>(A, 0) where
+{
+#typedef r0 = sint
+#typedef x0 = sint
+#typedef xs = jsarray(sint)
+#impltmp
+ifolditm$fopr
+<r0><x0>
+(r0, i0, x0) = r0 + (i0+1)*x0
+}
+
+val () =
+println("iA = ", iA)
+
 (* ****** ****** *)
 
 fun

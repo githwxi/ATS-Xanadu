@@ -61,43 +61,91 @@ forall$test<x0>
 *)
 //
 #impltmp
-<(*tmp*)>
+< a: t0 >
 jsarray_forall
-  {a}( A ) =
+  ( A ) =
 (
-jsarray_forall_c1fr
+jsarray_forall_c1fr<>
 (A
 ,lam(x)=>forall$test<a>(x)))
 //
 #impltmp
 { x0:t0 }
 gseq_forall
-<jsarray(x0)>(xs) =
+<jsarray(x0)><x0>(xs) =
 (
   jsarray_forall<>{x0}( xs ))
+//
+#impltmp
+{ x0:t0 }
+gseq_forall0
+<jsarray(x0)><x0>(xs) =
+(
+gseq_forall
+<jsarray(x0)><x0>(xs)) where
+{
+#impltmp
+forall$test<x0> = forall0$test<x0>
+}
+//
+#impltmp
+{ x0:t0 }
+gseq_forall1
+<jsarray(x0)><x0> =
+(
+gseq_forall
+<jsarray(x0)><x0>(xs)) where
+{
+#impltmp
+forall$test<x0> = forall1$test<x0>
+}
 //
 (* ****** ****** *)
 //
 #impltmp
-<(*tmp*)>
+< a: t0 >
 jsarray_rforall
-  {a}( A ) =
+  ( A ) =
 (
-jsarray_rforall_c1fr
+jsarray_rforall_c1fr<>
 (A
 ,lam(x)=>rforall$test<a>(x)))
 //
 #impltmp
 { x0:t0 }
 gseq_rforall
-<jsarray(x0)>(xs) =
+<jsarray(x0)><x0>(xs) =
 (
   jsarray_rforall<>{x0}( xs ))
 //
+#impltmp
+{ x0:t0 }
+gseq_rforall0
+<jsarray(x0)><x0> =
+(
+gseq_rforall
+<jsarray(x0)><x0>(xs)) where
+{
+#impltmp
+rforall$test<x0> = rforall0$test<x0>
+}
+#impltmp
+{ x0:t0 }
+gseq_rforall1
+<jsarray(x0)><x0> =
+(
+gseq_rforall
+<jsarray(x0)><x0>(xs)) where
+{
+#impltmp
+rforall$test<x0> = rforall1$test<x0>
+}
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#implfun
+#impltmp
+<(*tmp*)>
 jsarray_forall_c1fr
   (A, test) =
 (
@@ -114,7 +162,8 @@ XATS2JS_jsarray_forall_c1fr
 //
 (* ****** ****** *)
 //
-#implfun
+#impltmp
+<(*tmp*)>
 jsarray_rforall_c1fr
   (A, test) =
 (
