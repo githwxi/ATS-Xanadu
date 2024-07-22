@@ -64,7 +64,7 @@ then loop(xs, i0+1) else false)}
 gseq_forall0
 <ni><ni>(xs) =
 (
-nint_forall<x0>(xs)) where
+nint_forall<>(xs)) where
 {
 #typedef x0 = ni
 #impltmp
@@ -82,22 +82,21 @@ nint_strmize(ni) =
 {
 fun
 auxmain
-(i0: ni): strm_vt(ni) =
-$llazy
+(i0: nint):
+strm_vt(ni) = $llazy
 (
 if
 (i0 >= ni)
-then
-strmcon_vt_nil() else
+then strmcon_vt_nil() else
 strmcon_vt_cons(i0, auxmain(i0+1))
 )
-}(*where*)//end-of-[nint_strmize(ni)]
+}(*where*)//end-[nint_strmize(ni)]
 //
 #impltmp
 <(*tmp*)>
 nint_strqize(ni) =
 (
-$UN.strm2q_vt(nint_strmize<>(ni)))
+ $UN.strm2q_vt(nint_strmize<>(ni)))
 //
 (* ****** ****** *)
 //
@@ -117,4 +116,4 @@ gseq_strqize1<ni><ni> = nint_strqize<>
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_gbas001.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_gint001.dats] *)
