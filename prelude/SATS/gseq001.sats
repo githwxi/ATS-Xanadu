@@ -64,6 +64,16 @@ fun
 <x0:t0>
 gseq_rlistize
   (xs: xs): list_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_rstrmize
+  (xs: xs): strm_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_rstrqize
+  (xs: xs): strq_vt(x0)
 //
 (* ****** ****** *)
 //
