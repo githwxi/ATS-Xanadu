@@ -30,102 +30,19 @@
 (*
 Author: Hongwei Xi
 (*
-Sun 21 Jul 2024 02:34:24 PM EDT
+Sun 21 Jul 2024 11:39:54 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef ni = nint
+#staload
+UN = "prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gasz_strmize =
-gasz_strmize0<xs><x0>
-//
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:vt >
-gasz_strmize0
-  ( xs ) =
-let
-val n0 = length(xs)
-in//let
-(
-nint_map_lstrm<ni>(n0)
-) where
-{
-#impltmp
-map$fopr<ni>(i0) =
-(gasz_get_at_raw<xs><x0>(xs, i0))
-}
-end//let//end-of-[gasz_strmize0(xs)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gasz_forall =
-gasz_forall0<xs><x0>(*void*)
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gasz_rforall =
-gasz_rforall0<xs><x0>(*void*)
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gasz_iforall =
-gasz_iforall0<xs><x0>(*void*)
-//
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:vt >
-gasz_forall0(xs) =
-let
-val n0 = length(xs)
-in//let
-nint_forall<ni>(n0) where
-{
-#impltmp
-forall$test<ni>(i0) =
-forall0$test<x0>
-(gasz_get_at_raw<xs><x0>(xs, i0))
-}
-end//let//end-of-[gasz_forall0(xs)]
-//
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:vt >
-gasz_rforall0(xs) =
-let
-val n0 = length(xs)
-in//let
-nint_rforall<ni>(n0) where
-{
-#impltmp
-rforall$test<ni>(i0) =
-rforall0$test<x0>
-(gasz_get_at_raw<xs><x0>(xs, i0))
-}
-end//let//end-of-[gasz_rforall0(xs)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_gseq001.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_VT_gasz001_vt.dats] *)
