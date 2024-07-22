@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sun 21 Jul 2024 02:16:49 PM EDT
+Mon 22 Jul 2024 12:14:37 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -40,42 +40,45 @@ Authoremail: gmhwxiATgmailDOTcom
 #typedef ni = nint
 (* ****** ****** *)
 (* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:vt>
-gasz_length(xs: xs): nint
-//
+#typedef ni = nint
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-<xs:t0>
+<xs:vt>
 <x0:vt>
-gasz_get_at
-(xs: xs, i0: ni): (x0)
-fun
-<xs:t0>
-<x0:vt>
-gasz_set_at
-(xs: xs, i0: ni, x0: x0): void
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:vt>
-gasz_get_at_raw
-(xs: xs, i0: ni): (x0)
-fun
-<xs:t0>
-<x0:vt>
-gasz_set_at_raw
-(xs: xs, i0: ni, x0: x0): void
+gasz_length1(xs: !xs): nint
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+fun
+<xs:vt>
+<x0:vt>
+gasz_get1_at
+(xs: !xs, i0: ni): (x0)
+fun
+<xs:vt>
+<x0:vt>
+gasz_set1_at
+(xs: !xs, i0: ni, x0: x0): void
+//
+(* ****** ****** *)
+fun
+<xs:vt>
+<x0:vt>
+gasz_get1_at_raw
+(xs: !xs, i0: ni): (x0)
+fun
+<xs:vt>
+<x0:vt>
+gasz_set1_at_raw
+(xs: !xs, i0: ni, x0: x0): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_gasz000.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_VT_gasz000_vt.sats] *)

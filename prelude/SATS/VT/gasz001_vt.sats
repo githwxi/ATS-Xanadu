@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sun 21 Jul 2024 02:16:49 PM EDT
+Mon 22 Jul 2024 12:14:37 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -42,40 +42,49 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
-<xs:t0>
+<xs:vt>
 <x0:vt>
-gasz_length(xs: xs): nint
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:vt>
-gasz_get_at
-(xs: xs, i0: ni): (x0)
-fun
-<xs:t0>
-<x0:vt>
-gasz_set_at
-(xs: xs, i0: ni, x0: x0): void
-//
-(* ****** ****** *)
+gasz_listize0
+(xs: ~xs): list_vt(x0)//fun
 //
 fun
-<xs:t0>
+<xs:vt>
 <x0:vt>
-gasz_get_at_raw
-(xs: xs, i0: ni): (x0)
+gasz_strmize0
+(xs: ~xs): strm_vt(x0)//fun
 fun
-<xs:t0>
+<xs:vt>
 <x0:vt>
-gasz_set_at_raw
-(xs: xs, i0: ni, x0: x0): void
+gasz_strqize0
+(xs: ~xs): strq_vt(x0)//fun
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+fun
+<xs:vt>
+<x0:vt>
+gasz_forall0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gasz_forall1(xs: !xs): bool
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gasz_rforall0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gasz_rforall1(xs: !xs): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_gasz000.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_VT_gasz001_vt.sats] *)
