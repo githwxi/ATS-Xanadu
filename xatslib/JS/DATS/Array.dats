@@ -175,7 +175,7 @@ gseq_forall0
 jsarray_forall<x0>(xs)) where
 {
 #impltmp
-forall$test<x0> = forall0$test<x0>
+forall$test<x0> = forall$test0<x0>
 }
 //
 #impltmp
@@ -186,7 +186,7 @@ gseq_forall1
 jsarray_forall<x0>(xs)) where
 {
 #impltmp
-forall$test<x0> = forall1$test<x0>
+forall$test<x0> = forall$test1<x0>
 }
 //
 (* ****** ****** *)
@@ -227,7 +227,7 @@ gseq_rforall0
 jsarray_rforall<x0>(xs)) where
 {
 #impltmp
-rforall$test<x0> = rforall0$test<x0>
+rforall$test<x0> = rforall$test0<x0>
 }
 #impltmp
 { x0:t0 }
@@ -237,7 +237,7 @@ gseq_rforall1
 jsarray_rforall<x0>(xs)) where
 {
 #impltmp
-rforall$test<x0> = rforall1$test<x0>
+rforall$test<x0> = rforall$test1<x0>
 }
 //
 (* ****** ****** *)

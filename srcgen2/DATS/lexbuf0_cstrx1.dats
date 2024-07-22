@@ -243,12 +243,12 @@ strx_vt_map0(strn_strxize(src))
 ) where
 {
 #impltmp
-map0$fopr
+map$fopr0
 <char><sint>(cc) =
 let
 val ci =
 char_code(cc) in if ci > 0 then ci else (-1)
-endlet // end of [map0$fopr]
+endlet // end of [map$fopr0]
 } (*where*) // end-of-[lxbf1_make_strn(src)]
 
 (* ****** ****** *)

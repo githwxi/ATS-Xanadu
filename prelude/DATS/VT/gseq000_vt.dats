@@ -63,7 +63,7 @@ gseq_sum1(xs) =
 let
 val r0 = g_0<x0>()
 #impltmp
-folditm1$fopr
+folditm$fopr1
 <x0><x0>
 (r0, x0) = g_add01<x0>(r0, x0)
 in//let
@@ -93,7 +93,7 @@ gseq_prod1(xs) =
 let
 val r0 = g_1<x0>()
 #impltmp
-folditm1$fopr
+folditm$fopr1
 <x0><x0>
 (r0, x0) = g_mul01<x0>(r0, x0)
 in//let
@@ -124,7 +124,7 @@ gseq_forall1<xs><x0>(xs)
 ) where
 {
 #impltmp
-forall1$test<x0>(x0) = false
+forall$test1<x0>(x0) = false
 }(*where*)//end-of-[gseq_nilq1(xs)]
 //
 (* ****** ****** *)
@@ -193,7 +193,7 @@ gseq_length1(xs) =
 let
 #typedef r0 = nint
 #impltmp
-folditm1$fopr
+folditm$fopr1
 <x0><r0>(r0, x0) = r0 + 1
 in//let
   gseq_folditm1<xs><x0><r0>(xs, 0)
@@ -265,7 +265,7 @@ gseq_ifolditm1
 <xs><x0>(xs, 0)) where
 {
 #impltmp
-ifolditm1$fopr
+ifolditm$fopr1
 <x0>(i1, i0, x0) =
 if
 (i0 <= 0)
@@ -460,7 +460,7 @@ gseq_iforall1<xs><x0>(xs)
 ) where
 {
 #impltmp
-iforall1$test
+iforall$test1
 <x0>(j0, x0) =
 if
 (j0 < i0)

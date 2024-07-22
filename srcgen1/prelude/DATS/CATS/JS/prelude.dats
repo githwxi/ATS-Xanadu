@@ -377,7 +377,7 @@ XATS2JS_strm_vt_map0_cfr
 strm_vt_map0<x0><y0>(xs)
 ) where
 {
-#impltmp map0$fopr<x0><y0>(x0) = f0(x0)
+#impltmp map$fopr0<x0><y0>(x0) = f0(x0)
 } (* end of [XATS2JS_strm_vt_map0_cfr] *)
 
 (* ****** ****** *)
@@ -399,7 +399,7 @@ strm_vt_filter0<x0>(xs)
   #impltmp
   g_free<x0>(x0) = () // leak!
 //
-  #impltmp filter0$test<x0>(x0) = f0(x0)
+  #impltmp filter$test0<x0>(x0) = f0(x0)
 //
 } (* end of [XATS2JS_strm_vt_filter0_cfr] *)
 

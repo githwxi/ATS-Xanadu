@@ -115,16 +115,16 @@ else
 //
 #impltmp
 <x0><y0>
-mapoptn0$fopr(x0) =
+mapoptn$fopr0(x0) =
 if
-filter0$test<x0>(x0)
+filter$test0<x0>(x0)
 then
 (
   optn_vt_cons(y0)
 ) where
 {
   val y0 =
-  map0$fopr<x0><y0>(x0)
+  map$fopr0<x0><y0>(x0)
 }
 else
 (
@@ -132,31 +132,31 @@ else
 ) where
 {
   val () = g_free<x0>(x0)
-} (* end of [mapoptn0$fopr] *)
+} (* end of [mapoptn$fopr0] *)
 //
 #impltmp
 <x0><y0>
-mapoptn1$fopr(x0) =
+mapoptn$fopr1(x0) =
 if
-filter1$test<x0>(x0)
+filter$test1<x0>(x0)
 then
 (
   optn_vt_cons(y0)
 ) where
 {
   val y0 =
-  map1$fopr<x0><y0>(x0)
+  map$fopr1<x0><y0>(x0)
 }
 else
 (
   optn_vt_nil((*void*))
-) (* end of [mapoptn1$fopr] *)
+) (* end of [mapoptn$fopr1] *)
 
 (* ****** ****** *)
 (*
 imptmp
 {x0:t0}
-group0$test<x0> = group$test<x0>
+group$test0<x0> = group$test<x0>
 *)
 (* ****** ****** *)
 //

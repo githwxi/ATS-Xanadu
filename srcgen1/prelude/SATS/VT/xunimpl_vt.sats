@@ -45,201 +45,201 @@ gseq_rstrqize0
 //
 fun
 <x0:vt>
-irforall0$test(ni, ~x0): bool
+irforall$test0(ni, ~x0): bool
 fun
 <x0:vt>
-irforall1$test(ni, !x0): bool
+irforall$test1(ni, !x0): bool
 //
 fun
 <x0:vt>
-irexists0$test(ni, ~x0): bool
+irexists$test0(ni, ~x0): bool
 fun
 <x0:vt>
-irexists1$test(ni, !x0): bool
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-foritm0$work(x0: ~x0): void
-fun
-<x0:vt>
-foritm1$work(x0: !x0): void
-//
-fun
-<x0:vt>
-rforitm0$work(x0: ~x0): void
-fun
-<x0:vt>
-rforitm1$work(x0: !x0): void
-//
-fun
-<x0:vt>
-iforitm0$work(ni, ~x0): void
-fun
-<x0:vt>
-iforitm1$work(ni, !x0): void
-//
-fun
-<x0:vt>
-irforitm0$work(ni, ~x0): void
-fun
-<x0:vt>
-irforitm1$work(ni, !x0): void
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-<r0:vt>
-folditm0$fopr(r0, ~x0): (r0)
-fun
-<x0:vt>
-<r0:vt>
-folditm1$fopr(r0, !x0): (r0)
-//
-fun
-<x0:vt>
-<r0:vt>
-rfolditm0$fopr(~x0, r0): (r0)
-fun
-<x0:vt>
-<r0:vt>
-rfolditm1$fopr(!x0, r0): (r0)
-//
-fun
-<x0:vt>
-<r0:vt>
-ifolditm0$fopr(r0, ni, ~x0): (r0)
-fun
-<x0:vt>
-<r0:vt>
-ifolditm1$fopr(r0, ni, !x0): (r0)
-//
-fun
-<x0:vt>
-<r0:vt>
-irfolditm0$fopr(ni, ~x0, r0): (r0)
-fun
-<x0:vt>
-<r0:vt>
-irfolditm1$fopr(ni, !x0, r0): (r0)
+irexists$test1(ni, !x0): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 <x0:vt>
-<r0:vt>
-foldall0$fopr(r0, ~x0): (bool, r0)
+foritm$work0(x0: ~x0): void
 fun
 <x0:vt>
-<r0:vt>
-foldall1$fopr(r0, !x0): (bool, r0)
+foritm$work1(x0: !x0): void
+//
+fun
+<x0:vt>
+rforitm$work0(x0: ~x0): void
+fun
+<x0:vt>
+rforitm$work1(x0: !x0): void
+//
+fun
+<x0:vt>
+iforitm$work0(ni, ~x0): void
+fun
+<x0:vt>
+iforitm$work1(ni, !x0): void
+//
+fun
+<x0:vt>
+irforitm$work0(ni, ~x0): void
+fun
+<x0:vt>
+irforitm$work1(ni, !x0): void
+//
+(* ****** ****** *)
 //
 fun
 <x0:vt>
 <r0:vt>
-rfoldall0$fopr(~x0, r0): (bool, r0)
+folditm$fopr0(r0, ~x0): (r0)
 fun
 <x0:vt>
 <r0:vt>
-rfoldall1$fopr(!x0, r0): (bool, r0)
+folditm$fopr1(r0, !x0): (r0)
 //
 fun
 <x0:vt>
 <r0:vt>
-ifoldall0$fopr(r0, ni, ~x0): (bool, r0)
+rfolditm$fopr0(~x0, r0): (r0)
 fun
 <x0:vt>
 <r0:vt>
-ifoldall1$fopr(r0, ni, !x0): (bool, r0)
+rfolditm$fopr1(!x0, r0): (r0)
 //
 fun
 <x0:vt>
 <r0:vt>
-irfoldall0$fopr(ni, ~x0, r0): (bool, r0)
+ifolditm$fopr0(r0, ni, ~x0): (r0)
 fun
 <x0:vt>
 <r0:vt>
-irfoldall1$fopr(ni, !x0, r0): (bool, r0)
+ifolditm$fopr1(r0, ni, !x0): (r0)
+//
+fun
+<x0:vt>
+<r0:vt>
+irfolditm$fopr0(ni, ~x0, r0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+irfolditm$fopr1(ni, !x0, r0): (r0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 fun
 <x0:vt>
-filter0$test(x0: !x0): bool
+<r0:vt>
+foldall$fopr0(r0, ~x0): (bool, r0)
 fun
 <x0:vt>
-filter1$test(x0: !x0): bool
-*)
+<r0:vt>
+foldall$fopr1(r0, !x0): (bool, r0)
 //
 fun
 <x0:vt>
-rfilter0$test(x0: !x0): bool
+<r0:vt>
+rfoldall$fopr0(~x0, r0): (bool, r0)
 fun
 <x0:vt>
-rfilter1$test(x0: !x0): bool
-//
-(*
-fun
-<x0:vt>
-ifilter0$test(x0: !x0): bool
-fun
-<x0:vt>
-ifilter1$test(x0: !x0): bool
-*)
+<r0:vt>
+rfoldall$fopr1(!x0, r0): (bool, r0)
 //
 fun
 <x0:vt>
-irfilter0$test(x0: !x0): bool
+<r0:vt>
+ifoldall$fopr0(r0, ni, ~x0): (bool, r0)
 fun
 <x0:vt>
-irfilter1$test(x0: !x0): bool
+<r0:vt>
+ifoldall$fopr1(r0, ni, !x0): (bool, r0)
+//
+fun
+<x0:vt>
+<r0:vt>
+irfoldall$fopr0(ni, ~x0, r0): (bool, r0)
+fun
+<x0:vt>
+<r0:vt>
+irfoldall$fopr1(ni, !x0, r0): (bool, r0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (*
 fun
+<x0:vt>
+filter$test0(x0: !x0): bool
+fun
+<x0:vt>
+filter$test1(x0: !x0): bool
+*)
+//
+fun
+<x0:vt>
+rfilter$test0(x0: !x0): bool
+fun
+<x0:vt>
+rfilter$test1(x0: !x0): bool
+//
+(*
+fun
+<x0:vt>
+ifilter$test0(x0: !x0): bool
+fun
+<x0:vt>
+ifilter$test1(x0: !x0): bool
+*)
+//
+fun
+<x0:vt>
+irfilter$test0(x0: !x0): bool
+fun
+<x0:vt>
+irfilter$test1(x0: !x0): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
 <x0:vt
 ,y0:vt>
-z2forall0$test(~x0, ~y0): bool
+z2forall$test0(~x0, ~y0): bool
 *)
 fun
 <x0:vt
 ,y0:vt>
-rz2forall0$test(~x0, ~y0): bool
+rz2forall$test0(~x0, ~y0): bool
 fun
 <x0:vt
 ,y0:vt>
-iz2forall0$test(ni, ~x0, ~y0): bool
+iz2forall$test0(ni, ~x0, ~y0): bool
 fun
 <x0:vt
 ,y0:vt>
-irz2forall0$test(ni, ~x0, ~y0): bool
+irz2forall$test0(ni, ~x0, ~y0): bool
 //
 (* ****** ****** *)
 //
 fun
 <x0:vt
 ,y0:vt>
-z2foritm0$work(~x0, ~y0): void
+z2foritm$work0(~x0, ~y0): void
 fun
 <x0:vt
 ,y0:vt>
-rz2foritm0$work(~x0, ~y0): void
+rz2foritm$work0(~x0, ~y0): void
 fun
 <x0:vt
 ,y0:vt>
-iz2foritm0$work(ni, ~x0, ~y0): void
+iz2foritm$work0(ni, ~x0, ~y0): void
 fun
 <x0:vt
 ,y0:vt>
-irz2foritm0$work(ni, ~x0, ~y0): void
+irz2foritm$work0(ni, ~x0, ~y0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -470,31 +470,31 @@ gseq_filter1_self(xs: !xs): (xs)
 fun
 <x0:vt>
 <y0:vt>
-mapstrq0$fopr(~x0): strq_vt(y0)
+mapstrq$fopr0(~x0): strq_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-mapstrq1$fopr(!x0): strq_vt(y0)
+mapstrq$fopr1(!x0): strq_vt(y0)
 *)
 //
 fun
 <x0:vt>
 <y0:vt>
-rmapstrq0$fopr(~x0): strq_vt(y0)
+rmapstrq$fopr0(~x0): strq_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-rmapstrq1$fopr(!x0): strq_vt(y0)
+rmapstrq$fopr1(!x0): strq_vt(y0)
 //
 fun
 <x0:vt>
 <y0:vt>
-imapstrq0$fopr
+imapstrq$fopr0
   (pos: ni, itm: ~x0): strq_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-imapstrq1$fopr
+imapstrq$fopr1
   (pos: ni, itm: !x0): strq_vt(y0)
 //
 (* ****** ****** *)

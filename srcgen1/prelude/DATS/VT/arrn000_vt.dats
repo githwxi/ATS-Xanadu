@@ -177,7 +177,7 @@ val () =
 gseq_iforeach0(xs) where
 {
 #impltmp
-iforeach0$work<a>(i, x) =
+iforeach$work0<a>(i, x) =
 let
 val i =
 $UN.cast10{nintlt(n)}(i)

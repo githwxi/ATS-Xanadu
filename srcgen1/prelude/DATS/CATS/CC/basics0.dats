@@ -866,7 +866,7 @@ in
 XATS2CC_strn_vt_forall_cfr
 ( cs
 , lam(c0) =>
-  forall0$test<cgtz>(c0))
+  forall$test0<cgtz>(c0))
 end // end of [strn_vt_forall0]
 (* ****** ****** *)
 #impltmp
@@ -883,7 +883,7 @@ in
 XATS2CC_strn_vt_forall_cfr
 ( cs
 , lam(c0) =>
-  forall1$test<cgtz>(c0))
+  forall$test1<cgtz>(c0))
 end // end of [strn_vt_forall1]
 (* ****** ****** *)
 

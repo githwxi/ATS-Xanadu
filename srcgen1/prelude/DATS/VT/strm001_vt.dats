@@ -155,7 +155,7 @@ case+ !xs of
 strxcon_vt_cons(x0, xs) =>
 let
   val y0 =
-  map0$fopr<x0><y0>(x0)
+  map$fopr0<x0><y0>(x0)
 in
   strxcon_vt_cons(y0, auxmain(xs))
 end//let//end-[strxcon_vt_cons]
@@ -194,7 +194,7 @@ case+ xs of
 strxcon_vt_cons
   (x0, xs) =>
 ( if
-  filter0$test(x0)
+  filter$test0(x0)
   then
   strxcon_vt_cons(x0, auxmain(xs))
   else
@@ -239,10 +239,10 @@ let
 (*
   val
   opt =
-  mapopt0$fopr<x0><y0>(x0)
+  mapopt$fopr0<x0><y0>(x0)
 *)
   val
-  opt = filter0$test<x0>(x0)
+  opt = filter$test0<x0>(x0)
 in
 (*
   case+ opt of
@@ -256,7 +256,7 @@ in
   then
   let
     val y0 =
-    map0$fopr<x0><y0>(x0)
+    map$fopr0<x0><y0>(x0)
   in
     strxcon_vt_cons(y0, auxmain(xs))
   end
@@ -297,8 +297,8 @@ in
 end where
 {
 #impltmp
-filter0$test
-< x0 >( x2 ) = sieve0$test<x0>(x1, x2)
+filter$test0
+< x0 >( x2 ) = sieve$test0<x0>(x1, x2)
 }
 )
 } (*where*) // end-of-[ strx_vt_sieve0(xs) ]
@@ -330,7 +330,7 @@ case+ !xs of
 strxcon_vt_cons(x0, xs) =>
 let
 val y0 =
-imap0$fopr<x0><y0>(i0, x0)
+imap$fopr0<x0><y0>(i0, x0)
 in
 strxcon_vt_cons(y0, auxmain(i0+1, xs))
 end // strxcon_vt_cons
@@ -374,7 +374,7 @@ strxcon_vt_cons(x0, xs) =>
 let
   val i1 = succ(i0)
   val
-  opt = ifilter0$test<x0>(i0, x0)
+  opt = ifilter$test0<x0>(i0, x0)
 in
 //
 if
@@ -382,7 +382,7 @@ opt
 then
 let
 val y0 =
-imap0$fopr<x0><y0>(i0, x0)
+imap$fopr0<x0><y0>(i0, x0)
 in
 strxcon_vt_cons(y0, auxmain(i1, xs))
 end // end of [then]

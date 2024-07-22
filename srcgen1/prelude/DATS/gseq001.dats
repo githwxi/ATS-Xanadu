@@ -102,7 +102,7 @@ strm_vt_forall0
 (gseq_uncons_strmize<xs><x0>(xs))
 ) where
 { #impltmp
-  forall0$test<(x0,xs)>(xxs) = 
+  forall$test0<(x0,xs)>(xxs) = 
   uncons_forall$test<xs><x0>(xxs.0,xxs.1) }
 //(*where*)//end-of-[gseq_uncons_forall(xs)]
 //
@@ -117,7 +117,7 @@ strm_vt_foreach0
 (gseq_uncons_strmize<xs><x0>(xs))
 ) where
 { #impltmp
-  foreach0$work<(x0,xs)>(xxs) = 
+  foreach$work0<(x0,xs)>(xxs) = 
   uncons_foreach$work<xs><x0>(xxs.0,xxs.1) }
 //(*where*)//end-of-[gseq_uncons_foreach(xs)]
 //
