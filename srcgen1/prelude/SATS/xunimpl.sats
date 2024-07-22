@@ -308,6 +308,7 @@ nint_iforitm(xs: nint): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 fun<>
 nint_strmize
 (xs: nint): strm_vt(ni)
@@ -315,6 +316,7 @@ fun<>
 nint_strqize
 {n:i0}
 (xs: nint(n)): strq_vt(ni, n)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

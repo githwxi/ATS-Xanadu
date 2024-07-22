@@ -909,6 +909,7 @@ fun
 gseq_rmap_rllist(xs): list_vt(y0)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <xs:t0>
@@ -947,6 +948,7 @@ fun
 gseq_append_lstrm
 (xs: xs, ys: ~ys): strm_vt(x0)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
