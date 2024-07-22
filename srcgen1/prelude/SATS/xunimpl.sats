@@ -438,6 +438,7 @@ gasz_set_at_raw
 (xs: xs, i0: ni, x0: x0): void
 //
 (* ****** ****** *)
+//
 fun
 <xs:vt>
 <x0:vt>

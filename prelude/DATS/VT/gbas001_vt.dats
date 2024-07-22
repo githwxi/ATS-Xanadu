@@ -40,220 +40,419 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #impltmp
 < x0:t0 >
-forall0$test = forall$test<x0>
+forall$test = forall$test0<x0>
 #impltmp
 < x0:t0 >
-forall1$test = forall$test<x0>
+forall$test = forall$test1<x0>
+#impltmp
+< x0:t0 >
+forall$test0 = forall$test<x0>
+#impltmp
+< x0:t0 >
+forall$test1 = forall$test<x0>
 //
 #impltmp
 < x0:t0 >
-rforall0$test = rforall$test<x0>
+rforall$test = rforall$test0<x0>
 #impltmp
 < x0:t0 >
-rforall1$test = rforall$test<x0>
+rforall$test = rforall$test1<x0>
+#impltmp
+< x0:t0 >
+rforall$test0 = rforall$test<x0>
+#impltmp
+< x0:t0 >
+rforall$test1 = rforall$test<x0>
 //
 #impltmp
 < x0:t0 >
-iforall0$test = iforall$test<x0>
+iforall$test = iforall$test0<x0>
 #impltmp
 < x0:t0 >
-iforall1$test = iforall$test<x0>
+iforall$test = iforall$test1<x0>
+#impltmp
+< x0:t0 >
+iforall$test0 = iforall$test<x0>
+#impltmp
+< x0:t0 >
+iforall$test1 = iforall$test<x0>
 //
 #impltmp
 < x0:t0 >
-irforall0$test = irforall$test<x0>
+irforall$test = irforall$test0<x0>
 #impltmp
 < x0:t0 >
-irforall1$test = irforall$test<x0>
-//
-(* ****** ****** *)
-//
+irforall$test = irforall$test1<x0>
 #impltmp
 < x0:t0 >
-foritm0$work = foritm$work<x0>
+irforall$test0 = irforall$test<x0>
 #impltmp
 < x0:t0 >
-foritm1$work = foritm$work<x0>
-//
-#impltmp
-< x0:t0 >
-rforitm0$work = rforitm$work<x0>
-#impltmp
-< x0:t0 >
-rforitm1$work = rforitm$work<x0>
-//
-#impltmp
-< x0:t0 >
-iforitm0$work = iforitm$work<x0>
-#impltmp
-< x0:t0 >
-iforitm1$work = iforitm$work<x0>
-//
-#impltmp
-< x0:t0 >
-irforitm0$work = irforitm$work<x0>
-#impltmp
-< x0:t0 >
-irforitm1$work = irforitm$work<x0>
+irforall$test1 = irforall$test<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 < x0:t0 >
-< r0:vt >
-folditm0$fopr = folditm$fopr<x0><r0>
+foritm$work = foritm$work0<x0>
 #impltmp
 < x0:t0 >
-< r0:vt >
-folditm1$fopr = folditm$fopr<x0><r0>
+foritm$work = foritm$work1<x0>
+#impltmp
+< x0:t0 >
+foritm$work0 = foritm$work<x0>
+#impltmp
+< x0:t0 >
+foritm$work1 = foritm$work<x0>
 //
 #impltmp
 < x0:t0 >
-< r0:vt >
-rfolditm0$fopr = rfolditm$fopr<x0><r0>
+rforitm$work = rforitm$work0<x0>
 #impltmp
 < x0:t0 >
-< r0:vt >
-rfolditm1$fopr = rfolditm$fopr<x0><r0>
+rforitm$work = rforitm$work1<x0>
+#impltmp
+< x0:t0 >
+rforitm$work0 = rforitm$work<x0>
+#impltmp
+< x0:t0 >
+rforitm$work1 = rforitm$work<x0>
 //
 #impltmp
 < x0:t0 >
-< r0:vt >
-ifolditm0$fopr = ifolditm$fopr<x0><r0>
+iforitm$work = iforitm$work0<x0>
 #impltmp
 < x0:t0 >
-< r0:vt >
-ifolditm1$fopr = ifolditm$fopr<x0><r0>
+iforitm$work = iforitm$work1<x0>
+#impltmp
+< x0:t0 >
+iforitm$work0 = iforitm$work<x0>
+#impltmp
+< x0:t0 >
+iforitm$work1 = iforitm$work<x0>
 //
 #impltmp
 < x0:t0 >
-< r0:vt >
-irfolditm0$fopr = irfolditm$fopr<x0><r0>
+irforitm$work = irforitm$work0<x0>
 #impltmp
 < x0:t0 >
-< r0:vt >
-irfolditm1$fopr = irfolditm$fopr<x0><r0>
-//
-(* ****** ****** *)
-//
+irforitm$work = irforitm$work1<x0>
 #impltmp
 < x0:t0 >
-< r0:vt >
-foldall0$fopr = foldall$fopr<x0><r0>
+irforitm$work0 = irforitm$work<x0>
 #impltmp
 < x0:t0 >
-< r0:vt >
-foldall1$fopr = foldall$fopr<x0><r0>
-//
-#impltmp
-< x0:t0 >
-< r0:vt >
-rfoldall0$fopr = rfoldall$fopr<x0><r0>
-#impltmp
-< x0:t0 >
-< r0:vt >
-rfoldall1$fopr = rfoldall$fopr<x0><r0>
-//
-#impltmp
-< x0:t0 >
-< r0:vt >
-ifoldall0$fopr = ifoldall$fopr<x0><r0>
-#impltmp
-< x0:t0 >
-< r0:vt >
-ifoldall1$fopr = ifoldall$fopr<x0><r0>
-//
-#impltmp
-< x0:t0 >
-< r0:vt >
-irfoldall0$fopr = irfoldall$fopr<x0><r0>
-#impltmp
-< x0:t0 >
-< r0:vt >
-irfoldall1$fopr = irfoldall$fopr<x0><r0>
+irforitm$work1 = irforitm$work<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 < x0:t0 >
-< y0:vt >
-map0$fopr = map$fopr<x0><y0>
+< r0:vt >
+folditm$fopr = folditm$fopr0<x0><r0>
 #impltmp
 < x0:t0 >
-< y0:vt >
-map1$fopr = map$fopr<x0><y0>
+< r0:vt >
+folditm$fopr = folditm$fopr1<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+folditm$fopr0 = folditm$fopr<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+folditm$fopr1 = folditm$fopr<x0><r0>
 //
 #impltmp
 < x0:t0 >
-< y0:vt >
-rmap0$fopr = rmap$fopr<x0><y0>
+< r0:vt >
+rfolditm$fopr = rfolditm$fopr0<x0><r0>
 #impltmp
 < x0:t0 >
-< y0:vt >
-rmap1$fopr = rmap$fopr<x0><y0>
+< r0:vt >
+rfolditm$fopr = rfolditm$fopr1<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+rfolditm$fopr0 = rfolditm$fopr<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+rfolditm$fopr1 = rfolditm$fopr<x0><r0>
 //
+#impltmp
+< x0:t0 >
+< r0:vt >
+ifolditm$fopr = ifolditm$fopr0<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+ifolditm$fopr = ifolditm$fopr1<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+ifolditm$fopr0 = ifolditm$fopr<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+ifolditm$fopr1 = ifolditm$fopr<x0><r0>
+//
+#impltmp
+< x0:t0 >
+< r0:vt >
+irfolditm$fopr = irfolditm$fopr0<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+irfolditm$fopr = irfolditm$fopr1<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+irfolditm$fopr0 = irfolditm$fopr<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+irfolditm$fopr1 = irfolditm$fopr<x0><r0>
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 < x0:t0 >
-filter0$test = filter$test<x0>
+< r0:vt >
+foldall$fopr = foldall$fopr0<x0><r0>
 #impltmp
 < x0:t0 >
-filter1$test = filter$test<x0>
+< r0:vt >
+foldall$fopr = foldall$fopr1<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+foldall$fopr0 = foldall$fopr<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+foldall$fopr1 = foldall$fopr<x0><r0>
 //
 #impltmp
 < x0:t0 >
-rfilter0$test = rfilter$test<x0>
+< r0:vt >
+rfoldall$fopr = rfoldall$fopr0<x0><r0>
 #impltmp
 < x0:t0 >
-rfilter1$test = rfilter$test<x0>
+< r0:vt >
+rfoldall$fopr = rfoldall$fopr0<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+rfoldall$fopr0 = rfoldall$fopr<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+rfoldall$fopr1 = rfoldall$fopr<x0><r0>
 //
 #impltmp
 < x0:t0 >
-ifilter0$test = ifilter$test<x0>
+< r0:vt >
+ifoldall$fopr = ifoldall$fopr0<x0><r0>
 #impltmp
 < x0:t0 >
-ifilter1$test = ifilter$test<x0>
+< r0:vt >
+ifoldall$fopr = ifoldall$fopr1<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+ifoldall$fopr0 = ifoldall$fopr<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+ifoldall$fopr1 = ifoldall$fopr<x0><r0>
 //
+#impltmp
+< x0:t0 >
+< r0:vt >
+irfoldall$fopr = irfoldall$fopr0<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+irfoldall$fopr = irfoldall$fopr1<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+irfoldall$fopr0 = irfoldall$fopr<x0><r0>
+#impltmp
+< x0:t0 >
+< r0:vt >
+irfoldall$fopr1 = irfoldall$fopr<x0><r0>
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 < x0:t0 >
 < y0:vt >
-mapoptn0$fopr = mapoptn$fopr<x0><y0>
+map$fopr = map$fopr0<x0><y0>
 #impltmp
 < x0:t0 >
 < y0:vt >
-mapoptn1$fopr = mapoptn$fopr<x0><y0>
+map$fopr = map$fopr1<x0><y0>
+#impltmp
+< x0:t0 >
+< y0:vt >
+map$fopr0 = map$fopr<x0><y0>
+#impltmp
+< x0:t0 >
+< y0:vt >
+map$fopr1 = map$fopr<x0><y0>
 //
 #impltmp
 < x0:t0 >
 < y0:vt >
-maplist0$fopr = maplist$fopr<x0><y0>
+rmap$fopr = rmap$fopr0<x0><y0>
 #impltmp
 < x0:t0 >
 < y0:vt >
-maplist1$fopr = maplist$fopr<x0><y0>
+rmap$fopr = rmap$fopr1<x0><y0>
+#impltmp
+< x0:t0 >
+< y0:vt >
+rmap$fopr0 = rmap$fopr<x0><y0>
+#impltmp
+< x0:t0 >
+< y0:vt >
+rmap$fopr1 = rmap$fopr<x0><y0>
 //
 #impltmp
 < x0:t0 >
 < y0:vt >
-mapstrm0$fopr = mapstrm$fopr<x0><y0>
+imap$fopr = imap$fopr0<x0><y0>
 #impltmp
 < x0:t0 >
 < y0:vt >
-mapstrm1$fopr = mapstrm$fopr<x0><y0>
+imap$fopr = imap$fopr1<x0><y0>
+#impltmp
+< x0:t0 >
+< y0:vt >
+imap$fopr0 = imap$fopr<x0><y0>
+#impltmp
+< x0:t0 >
+< y0:vt >
+imap$fopr1 = imap$fopr<x0><y0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+filter$test = filter$test0<x0>
+#impltmp
+< x0:t0 >
+filter$test = filter$test1<x0>
+#impltmp
+< x0:t0 >
+filter$test0 = filter$test<x0>
+#impltmp
+< x0:t0 >
+filter$test1 = filter$test<x0>
+//
+#impltmp
+< x0:t0 >
+rfilter$test = rfilter$test0<x0>
+#impltmp
+< x0:t0 >
+rfilter$test = rfilter$test1<x0>
+#impltmp
+< x0:t0 >
+rfilter$test0 = rfilter$test<x0>
+#impltmp
+< x0:t0 >
+rfilter$test1 = rfilter$test<x0>
+//
+#impltmp
+< x0:t0 >
+ifilter$test = ifilter$test0<x0>
+#impltmp
+< x0:t0 >
+ifilter$test = ifilter$test1<x0>
+#impltmp
+< x0:t0 >
+ifilter$test0 = ifilter$test<x0>
+#impltmp
+< x0:t0 >
+ifilter$test1 = ifilter$test<x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 < x0:t0 >
 < y0:vt >
-mapstrq0$fopr = mapstrq$fopr<x0><y0>
+mapoptn$fopr = mapoptn$fopr0<x0><y0>
 #impltmp
 < x0:t0 >
 < y0:vt >
-mapstrq1$fopr = mapstrq$fopr<x0><y0>
+mapoptn$fopr = mapoptn$fopr0<x0><y0>
+#impltmp
+< x0:t0 >
+< y0:vt >
+mapoptn$fopr0 = mapoptn$fopr<x0><y0>
+#impltmp
+< x0:t0 >
+< y0:vt >
+mapoptn$fopr1 = mapoptn$fopr<x0><y0>
+//
+#impltmp
+< x0:t0 >
+< y0:vt >
+maplist$fopr = maplist$fopr0<x0><y0>
+#impltmp
+< x0:t0 >
+< y0:vt >
+maplist$fopr = maplist$fopr1<x0><y0>
+#impltmp
+< x0:t0 >
+< y0:vt >
+maplist$fopr0 = maplist$fopr<x0><y0>
+#impltmp
+< x0:t0 >
+< y0:vt >
+maplist$fopr1 = maplist$fopr<x0><y0>
+//
+#impltmp
+< x0:t0 >
+< y0:vt >
+mapstrm$fopr = mapstrm$fopr0<x0><y0>
+#impltmp
+< x0:t0 >
+< y0:vt >
+mapstrm$fopr = mapstrm$fopr1<x0><y0>
+#impltmp
+< x0:t0 >
+< y0:vt >
+mapstrm$fopr0 = mapstrm$fopr<x0><y0>
+#impltmp
+< x0:t0 >
+< y0:vt >
+mapstrm$fopr1 = mapstrm$fopr<x0><y0>
+//
+#impltmp
+< x0:t0 >
+< y0:vt >
+mapstrq$fopr = mapstrq$fopr0<x0><y0>
+#impltmp
+< x0:t0 >
+< y0:vt >
+mapstrq$fopr = mapstrq$fopr1<x0><y0>
+#impltmp
+< x0:t0 >
+< y0:vt >
+mapstrq$fopr0 = mapstrq$fopr<x0><y0>
+#impltmp
+< x0:t0 >
+< y0:vt >
+mapstrq$fopr1 = mapstrq$fopr<x0><y0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
