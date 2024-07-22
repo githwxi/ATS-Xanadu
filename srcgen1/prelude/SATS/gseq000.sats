@@ -588,11 +588,17 @@ fun
 <x0:t0>
 <y0:vt>
 gseq_map_llist(xs): list_vt(y0)
+//
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
 gseq_map_lstrm(xs): strm_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_lstrq(xs): strq_vt(y0)
 //
 fun
 <xs:t0>
@@ -884,11 +890,18 @@ fun
 <x0:t0>
 <y0:vt>
 gseq_rmap_llist(xs): list_vt(y0)
+//
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
 gseq_rmap_lstrm(xs): strm_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_rmap_lstrq(xs): strq_vt(y0)
+//
 fun
 <xs:t0>
 <x0:t0>

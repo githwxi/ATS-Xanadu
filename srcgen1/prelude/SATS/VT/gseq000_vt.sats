@@ -481,6 +481,78 @@ fun
 gseq_map1_rllist(!xs): list_vt(y0)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-22:
+Mon 22 Jul 2024 11:09:13 AM EDT
+*)
+//
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
+gseq_rmap0(xs: ~xs): ( ys )
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
+gseq_rmap1(xs: !xs): ( ys )
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_rmap0_llist(~xs): list_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_rmap1_llist(!xs): list_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_rmap0_lstrm(~xs): strm_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_rmap1_lstrm(!xs): strm_vt(y0)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_rmap0_lstrq(~xs): strq_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_rmap1_lstrq(!xs): strq_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_rmap0_rllist(~xs): list_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_rmap1_rllist(!xs): list_vt(y0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX-2022-06-02:
@@ -635,7 +707,11 @@ gseq_iforeach1(!xs): void
 //
 (* ****** ****** *)
 //
+(*
+//
 // HX-2024-07-12:
+//
+*)
 //
 fun
 <xs:vt>
@@ -674,6 +750,20 @@ fun
 <y0:vt>
 gseq_imap1_lstrq(!xs): strq_vt(y0)
 //
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_imap0_rllist(~xs): list_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_imap1_rllist(!xs): list_vt(y0)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
