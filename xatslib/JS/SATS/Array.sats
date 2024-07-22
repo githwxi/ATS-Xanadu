@@ -38,13 +38,13 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #abstype
-jsarray_tbox(a: vt, n: int)
+jsarray_tbox(a:vt, n:i0)
 (* ****** ****** *)
 #typedef
 jsarray
-(a: vt, n: i0) = jsarray_tbox(a, n)
+(a:vt, n:i0) = jsarray_tbox(a, n)
 #typedef
-jsarray(a: vt) = [n:i0] jsarray(a, n)
+jsarray(a:vt) = [n:i0] jsarray(a, n)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -71,9 +71,10 @@ with jsarray_make_3val of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun<>
+fun
+<a:vt>
 jsarray_make_nval
- {a:vt}{n:nat}
+ {n:nat}
 (n:sint(n), x:a): jsarray(a, n)
 //
 (*
@@ -135,7 +136,7 @@ jsarray_forall
 //
 fun<>
 jsarray_forall_c1fr
-{a:vt}
+ {a:vt}
 ( A: jsarray(a)
 , test: (!a)-<cfr>bool): bool
 //
@@ -152,7 +153,7 @@ jsarray_rforall
 (A: jsarray(a)): bool
 fun<>
 jsarray_rforall_c1fr
-{ a: t0 }
+ {a:vt}
 ( A: jsarray(a)
 , test: (a)-<cfr>bool): bool
 //
@@ -170,7 +171,7 @@ jsarray_sortref
 (A: jsarray(a)): void
 fun<>
 jsarray_sortref_c2fr
-{ a: t0 }
+ {a:vt}
 ( A: jsarray(a)
 , cmpr: (!a, !a)-<cfr>sint): void
 //
