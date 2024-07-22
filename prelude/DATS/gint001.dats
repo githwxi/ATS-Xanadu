@@ -72,6 +72,35 @@ forall$test<x0> = forall0$test<x0>
 }
 //
 (* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+nint_rforall(xs) =
+loop(xs, 0(*i0*)) where
+{
+fun
+loop
+(xs: ni, i0: ni): bool =
+if
+(i0 >= xs)
+then false else
+(
+if
+rforall$test<ni>(xs-1-i0)
+then loop(xs, i0+1) else false)}
+//
+#impltmp
+gseq_rforall0
+<ni><ni>(xs) =
+(
+nint_rforall<>(xs)) where
+{
+#typedef x0 = ni
+#impltmp
+rforall$test<x0> = rforall0$test<x0>
+}
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
