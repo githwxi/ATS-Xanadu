@@ -68,7 +68,7 @@ nint_forall<>(xs)) where
 {
 #typedef x0 = ni
 #impltmp
-forall$test<x0> = forall0$test<x0>
+forall$test<x0> = forall$test0<x0>
 }
 //
 (* ****** ****** *)
@@ -97,7 +97,7 @@ nint_rforall<>(xs)) where
 {
 #typedef x0 = ni
 #impltmp
-rforall$test<x0> = rforall0$test<x0>
+rforall$test<x0> = rforall$test0<x0>
 }
 //
 (* ****** ****** *)

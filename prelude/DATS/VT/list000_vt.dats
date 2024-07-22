@@ -169,7 +169,7 @@ list_vt_nil() => ( true )
 list_vt_cons(x1, xs) =>
 let
 val test =
-forall0$test<x0>(x1) in
+forall$test0<x0>(x1) in
 if test then loop(xs) else false end)
 }
 //
@@ -198,7 +198,7 @@ list_vt_nil() => ( (*void*) )
 list_vt_cons(x1, xs) =>
 let
 val () =
-foritm0$work<x0>(x1) in loop(xs) end)
+foritm$work0<x0>(x1) in loop(xs) end)
 }
 //
 #impltmp

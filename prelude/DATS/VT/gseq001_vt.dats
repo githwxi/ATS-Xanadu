@@ -62,7 +62,7 @@ where
 val r0 = list_vt_nil()
 #vwtpdef r0 = list_vt(x0)
 #impltmp
-folditm0$fopr
+folditm$fopr0
 <x0><r0>(r0, x0) = list_vt_cons(x0, r0)
 }
 //
@@ -161,13 +161,13 @@ gseq_forall0<xs><x0>(xs)
 ) where
 {
 #impltmp
-forall0$test<x0>(x0) =
+forall$test0<x0>(x0) =
 (
 $UN.p2tr_set<ni>(p0, i0+1); b0)
 where
 {
 val i0 = $UN.p2tr_get<ni>(p0)
-val b0 = iforall0$test<x0>(i0, x0) }
+val b0 = iforall$test0<x0>(i0, x0) }
 }
 //
 }(*where*)//end-of-[gseq_iforall0(xs)]
@@ -200,13 +200,13 @@ gseq_rforall0<xs><x0>(xs)
 ) where
 {
 #impltmp
-rforall0$test<x0>(x0) =
+rforall$test0<x0>(x0) =
 (
 $UN.p2tr_set<ni>(p0, i0+1); b0)
 where
 {
 val i0 = $UN.p2tr_get<ni>(p0)
-val b0 = irforall0$test<x0>(i0, x0) }
+val b0 = irforall$test0<x0>(i0, x0) }
 }
 //
 }(*where*)//end-of-[gseq_irforall0(xs)]
@@ -226,9 +226,9 @@ gseq_forall0<xs><x0>(xs) in () end
 ) where
 {
 #impltmp
-forall0$test<x0>(x0) =
+forall$test0<x0>(x0) =
 let
-val () = foritm0$work<x0>(x0) in true end
+val () = foritm$work0<x0>(x0) in true end
 }
 //
 (* ****** ****** *)
@@ -245,9 +245,9 @@ gseq_rforall0<xs><x0>(xs) in () end
 ) where
 {
 #impltmp
-rforall0$test<x0>(x0) =
+rforall$test0<x0>(x0) =
 let
-val () = rforitm0$work<x0>(x0) in true end
+val () = rforitm$work0<x0>(x0) in true end
 }
 //
 (* ****** ****** *)
@@ -264,9 +264,9 @@ gseq_iforall0<xs><x0>(xs) in () end
 ) where
 {
 #impltmp
-iforall0$test<x0>(i0, x0) =
+iforall$test0<x0>(i0, x0) =
 let
-val () = iforitm0$work<x0>(i0, x0) in true end
+val () = iforitm$work0<x0>(i0, x0) in true end
 }
 //
 (* ****** ****** *)
@@ -283,9 +283,9 @@ gseq_irforall0<xs><x0>(xs) in () end
 ) where
 {
 #impltmp
-irforall0$test<x0>(i0, x0) =
+irforall$test0<x0>(i0, x0) =
 let
-val () = irforitm0$work<x0>(i0, x0) in true end
+val () = irforitm$work0<x0>(i0, x0) in true end
 }
 //
 (* ****** ****** *)
@@ -309,13 +309,13 @@ gseq_foritm0<xs><x0>(xs)
 ) where
 {
 #impltmp
-foritm0$work<x0>(x0) =
+foritm$work0<x0>(x0) =
 (
   $UN.p2tr_set<r0>(p0, r0))
 where
 {
 val r0 = $UN.p2tr_get<r0>(p0)
-val r0 = folditm0$fopr<x0><r0>(r0, x0)}}
+val r0 = folditm$fopr0<x0><r0>(r0, x0)}}
 //
 }(*where*)//end-of-[gseq_folditm0(xs, r0)]
 //
@@ -339,13 +339,13 @@ gseq_rforitm0<xs><x0>(xs)
 ) where
 {
 #impltmp
-rforitm0$work<x0>(x0) =
+rforitm$work0<x0>(x0) =
 (
   $UN.p2tr_set<r0>(p0, r0))
 where
 {
 val r0 = $UN.p2tr_get<r0>(p0)
-val r0 = rfolditm0$fopr<x0><r0>(x0, r0)}}
+val r0 = rfolditm$fopr0<x0><r0>(x0, r0)}}
 //
 }(*where*)//end-of-[gseq_rfolditm0(xs, r0)]
 //
@@ -384,7 +384,7 @@ gseq_foritm0<xs><x0>(xs)
 ) where
 {
 #impltmp
-foritm0$work<x0>(x0) =
+foritm$work0<x0>(x0) =
 (
   $UN.p2tr_set<r0>(pr, r0)
 ; $UN.p2tr_set<ni>(pi, i0+1))
@@ -394,7 +394,7 @@ val i0 = $UN.p2tr_get<ni>(pi)
 val r0 = $UN.p2tr_get<r0>(pr)
 val r0 =
 (
-  ifolditm0$fopr<x0><r0>(r0, i0, x0))}}
+  ifolditm$fopr0<x0><r0>(r0, i0, x0))}}
 //
 }(*where*)//end-of-[gseq_ifolditm0(xs, r0)]
 //
@@ -432,7 +432,7 @@ gseq_rforitm0<xs><x0>(xs)
 ) where
 {
 #impltmp
-rforitm0$work<x0>(x0) =
+rforitm$work0<x0>(x0) =
 (
   $UN.p2tr_set<r0>(pr, r0)
 ; $UN.p2tr_set<ni>(pi, i0+1))
@@ -442,7 +442,7 @@ val i0 = $UN.p2tr_get<ni>(pi)
 val r0 = $UN.p2tr_get<r0>(pr)
 val r0 =
 (
-  irfolditm0$fopr<x0><r0>(i0, x0, r0))}}
+  irfolditm$fopr0<x0><r0>(i0, x0, r0))}}
 //
 }(*where*)//end-of-[gseq_irfolditm0(xs, r0)]
 //
@@ -467,7 +467,7 @@ gseq_forall0<xs><x0>(xs)
 ) where
 {
 #impltmp
-forall0$test<x0>(x0) =
+forall$test0<x0>(x0) =
 (
 $UN.p2tr_set<r0>(p0, r0); b0)
 where
@@ -475,7 +475,7 @@ where
 val r0 = $UN.p2tr_get<r0>(p0)
 val (b0, r0) =
 (
-  foldall0$fopr<x0><r0>(r0, x0)) } }
+  foldall$fopr0<x0><r0>(r0, x0)) } }
 //
 }(*where*)//end-of-[gseq_foldall0(xs, r0)]
 //
@@ -499,7 +499,7 @@ gseq_rforall0<xs><x0>(xs)
 ) where
 {
 #impltmp
-rforall0$test<x0>(x0) =
+rforall$test0<x0>(x0) =
 (
 $UN.p2tr_set<r0>(p0, r0); b0)
 where
@@ -507,7 +507,7 @@ where
 val r0 = $UN.p2tr_get<r0>(p0)
 val (b0, r0) =
 (
-  rfoldall0$fopr<x0><r0>(x0, r0)) } }
+  rfoldall$fopr0<x0><r0>(x0, r0)) } }
 //
 }(*where*)//end-of-[gseq_rfoldall0(xs, r0)]
 //
@@ -544,7 +544,7 @@ gseq_forall0<xs><x0>(xs)
 ) where
 {
 #impltmp
-forall0$test
+forall$test0
 < x0 >( x0 ) = ( b0 )
 where
 {
@@ -558,7 +558,7 @@ val i0 = $UN.p2tr_get<ni>(pi)
 val r0 = $UN.p2tr_get<r0>(pr)
 val (b0, r0) =
 (
-  ifoldall0$fopr<x0><r0>(r0, i0, x0))}}
+  ifoldall$fopr0<x0><r0>(r0, i0, x0))}}
 //
 }(*where*)//end-of-[gseq_ifoldall0(xs, r0)]
 //
@@ -595,7 +595,7 @@ gseq_rforall0<xs><x0>(xs)
 ) where
 {
 #impltmp
-rforall0$test
+rforall$test0
 < x0 >( x0 ) = ( b0 )
 where
 {
@@ -609,7 +609,7 @@ val i0 = $UN.p2tr_get<ni>(pi)
 val r0 = $UN.p2tr_get<r0>(pr)
 val (b0, r0) =
 (
-  irfoldall0$fopr<x0><r0>(i0, x0, r0))}}
+  irfoldall$fopr0<x0><r0>(i0, x0, r0))}}
 //
 }(*where*)//end-of-[gseq_irfoldall0(xs, r0)]
 //
@@ -769,9 +769,9 @@ gseq_exists0
 let
 //
 #impltmp
-forall0$test<x0>(x0) =
+forall$test0<x0>(x0) =
 (
-  not(exists0$test<x0>(x0)))
+  not(exists$test0<x0>(x0)))
 //
 in//let
   not(gseq_forall0<xs><x0>(xs))
@@ -785,9 +785,9 @@ gseq_rexists0
 let
 //
 #impltmp
-rforall0$test<x0>(x0) =
+rforall$test0<x0>(x0) =
 (
-  not(rexists0$test<x0>(x0)))
+  not(rexists$test0<x0>(x0)))
 //
 in//let
   not(gseq_rforall0<xs><x0>(xs))
@@ -804,9 +804,9 @@ not(gseq_iforall0<xs><x0>(xs))
 {
 //
 #impltmp
-iforall0$test<x0>(i0, x0) =
+iforall$test0<x0>(i0, x0) =
 (
-  not(iexists0$test<x0>(i0, x0)))
+  not(iexists$test0<x0>(i0, x0)))
 //
 }(*where*)//end-of-[gseq_iexists0(xs)]
 //
@@ -821,9 +821,9 @@ not(gseq_irforall0<xs><x0>(xs))
 {
 //
 #impltmp
-irforall0$test<x0>(i0, x0) =
+irforall$test0<x0>(i0, x0) =
 (
-  not(irexists0$test<x0>(i0, x0)))
+  not(irexists$test0<x0>(i0, x0)))
 //
 }(*where*)//end-of-[gseq_irexists0(xs)]
 //
