@@ -38,35 +38,34 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #abstype
-jsarray(a: type, n: int)
+jsarray_tbox(a: vt, n: int)
 (* ****** ****** *)
 #typedef
 jsarray
-(a: t0) = [n:i0] jsarray(a, n)
+(a: vt, n: i0) = jsarray_tbox(a, n)
+#typedef
+jsarray(a: vt) = [n:i0] jsarray(a, n)
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun<>
 jsarray_make_1val
- {a:t0}
+ {a:vt}
 ( x: a ): jsarray(a, 1)
 fun<>
 jsarray_make_2val
- {a:t0}
+ {a:vt}
 ( a, a ): jsarray(a, 2)
 fun<>
 jsarray_make_3val
- {a:t0}
+ {a:vt}
 ( a, a, a ): jsarray(a, 3)
 //
-#symload
-jsarray
+#symload jsarray
 with jsarray_make_1val of 1000
-#symload
-jsarray
+#symload jsarray
 with jsarray_make_2val of 1000
-#symload
-jsarray
+#symload jsarray
 with jsarray_make_3val of 1000
 //
 (* ****** ****** *)
@@ -74,7 +73,7 @@ with jsarray_make_3val of 1000
 //
 fun<>
 jsarray_make_nval
- {a:t0}{n:nat}
+ {a:vt}{n:nat}
 (n:sint(n), x:a): jsarray(a, n)
 //
 (*
@@ -91,7 +90,7 @@ jsarray_make
 //
 fun<>
 jsarray_length
- {a:t0}{n:i0}
+ {a:vt}{n:nat}
 (A: jsarray(a, n)): sint(n)
 //
 #symload
@@ -101,11 +100,11 @@ length with jsarray_length of 1000
 //
 fun<>
 jsarray_get_at
- {a:t0}{n:i0}
+ {a:vt}{n:i0}
 (A:jsarray(a, n), i:nintlt(n)): (a)
 fun<>
 jsarray_set_at
- {a:t0}{n:i0}
+ {a:vt}{n:i0}
 (A:jsarray(a, n), i:nintlt(n), x:a): void
 //
 #symload get_at with jsarray_get_at of 1000
@@ -116,11 +115,11 @@ jsarray_set_at
 //
 fun<>
 jsarray_strmize
-{a:t0}
+{a:vt}
 (A: jsarray(a)): strm_vt(a)
 fun<>
 jsarray_strqize
-{a:t0}{n:i0}
+{a:vt}{n:i0}
 (A: jsarray(a, n)): strq_vt(a)
 //
 #symload strmize with jsarray_strmize of 1000
@@ -130,15 +129,15 @@ jsarray_strqize
 (* ****** ****** *)
 //
 fun
-<a:t0>
+<a:vt>
 jsarray_forall
 (A: jsarray(a)): bool
 //
 fun<>
 jsarray_forall_c1fr
-{a:t0}
+{a:vt}
 ( A: jsarray(a)
-, test: (a)-<cfr>bool): bool
+, test: (!a)-<cfr>bool): bool
 //
 #symload
 forall with jsarray_forall of 1000
@@ -148,7 +147,7 @@ forall with jsarray_forall_c1fr of 1000
 (* ****** ****** *)
 //
 fun
-<a:t0>
+<a:vt>
 jsarray_rforall
 (A: jsarray(a)): bool
 fun<>
@@ -166,14 +165,14 @@ rforall with jsarray_rforall_c1fr of 1000
 (* ****** ****** *)
 //
 fun
-<a:t0>
+<a:vt>
 jsarray_sortref
 (A: jsarray(a)): void
 fun<>
 jsarray_sortref_c2fr
 { a: t0 }
 ( A: jsarray(a)
-, cmpr: (a, a)-<cfr>sint): void
+, cmpr: (!a, !a)-<cfr>sint): void
 //
 #symload
 sortref with jsarray_sortref of 1000
