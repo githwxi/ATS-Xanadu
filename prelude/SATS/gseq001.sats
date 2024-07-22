@@ -226,6 +226,106 @@ fun
 <xs:t0>
 <x0:t0>
 <ys:vt>
+gseq_rmap_ares(xs: xs): (ys)
+fun
+<xs:t0>
+<x0:t0>
+gseq_rmap_self(xs: xs): (xs)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_rmap_list(xs: xs): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_rmap_llist(xs: xs): list_vt(y0)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_rmap_lstrm(xs: xs): strm_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_rmap_lstrq(xs: xs): strq_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_rmap_rlist(xs: xs): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_rmap_rllist(xs: xs): list_vt(y0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+gseq_imap_ares(xs: xs): (ys)
+fun
+<xs:t0>
+<x0:t0>
+gseq_imap_self(xs: xs): (xs)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_imap_list(xs: xs): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_imap_llist(xs: xs): list_vt(y0)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_imap_lstrm(xs: xs): strm_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_imap_lstrq(xs: xs): strq_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_imap_rlist(xs: xs): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_imap_rllist(xs: xs): list_vt(y0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
 gseq_filter_ares(xs: xs): (ys)
 fun
 <xs:t0>
@@ -265,40 +365,6 @@ gseq_filter_rllist(xs: xs): list_vt(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-<ys:vt>
-gseq_imap_ares(xs: xs): (ys)
-fun
-<xs:t0>
-<x0:t0>
-gseq_imap_self(xs: xs): (xs)
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-<y0:t0>
-gseq_imap_list(xs: xs): list(y0)
-fun
-<xs:t0>
-<x0:t0>
-<y0:vt>
-gseq_imap_llist(xs: xs): list_vt(y0)
-//
-fun
-<xs:t0>
-<x0:t0>
-<y0:vt>
-gseq_imap_lstrm(xs: xs): strm_vt(y0)
-fun
-<xs:t0>
-<x0:t0>
-<y0:vt>
-gseq_imap_lstrq(xs: xs): strq_vt(y0)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)

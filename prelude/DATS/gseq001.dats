@@ -161,6 +161,86 @@ gseq_map_ares<xs><x0><xs>(*void*)
 < xs:t0 >
 < x0:t0 >
 < y0:t0 >
+gseq_map_list(xs) =
+list_vt2t{y0}
+(
+gseq_map_llist<xs><x0><y0>(xs))
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_map_llist =
+gseq_map0_llist<xs><x0><y0>(*void*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_map_lstrm =
+gseq_map0_lstrm<xs><x0><y0>(*void*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_map_lstrq =
+gseq_map0_lstrq<xs><x0><y0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:t0 >
+gseq_rmap_list(xs) =
+list_vt2t{y0}
+(
+gseq_rmap_llist<xs><x0><y0>(xs))
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_rmap_llist =
+gseq_rmap0_llist<xs><x0><y0>(*void*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_rmap_lstrm =
+gseq_rmap0_lstrm<xs><x0><y0>(*void*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_rmap_lstrq =
+gseq_rmap0_lstrq<xs><x0><y0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:t0 >
+gseq_rmap_rlist(xs) =
+list_vt2t{y0}
+(
+gseq_rmap_rllist<xs><x0><y0>(xs))
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_rmap_rllist =
+gseq_rmap0_rllist<xs><x0><y0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:t0 >
 gseq_imap_list(xs) =
 list_vt2t{y0}
 (
@@ -184,6 +264,24 @@ gseq_imap0_lstrm<xs><x0><y0>(*void*)
 < y0:vt >
 gseq_imap_lstrq =
 gseq_imap0_lstrq<xs><x0><y0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:t0 >
+gseq_imap_rlist(xs) =
+list_vt2t{y0}
+(
+gseq_imap_rllist<xs><x0><y0>(xs))
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_imap_rllist =
+gseq_imap0_rllist<xs><x0><y0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
