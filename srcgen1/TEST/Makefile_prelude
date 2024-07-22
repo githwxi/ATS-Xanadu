@@ -87,6 +87,12 @@ $(XATSOPT) -s $(PRELUDE)/SATS/VT/gseq001_vt.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/VT/gseq002_vt.sats
 all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/VT/gasz000_vt.sats
+all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/VT/gasz001_vt.sats
+all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/VT/strn000_vt.sats
+all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/VT/list000_vt.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/VT/list001_vt.sats
@@ -94,8 +100,6 @@ all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/VT/strm000_vt.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/VT/strm001_vt.sats
-all0_sats:: ; \
-$(XATSOPT) -s $(PRELUDE)/SATS/VT/strn000_vt.sats
 
 ######
 
