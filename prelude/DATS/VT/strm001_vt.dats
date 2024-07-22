@@ -68,7 +68,7 @@ strmcon_vt_nil() => true
 strmcon_vt_cons(x1, xs) =>
 (
 if
-forall0$test<x0>(x1)
+forall$test0<x0>(x1)
 then
 auxmain(xs) else (free(xs); false)))
 }(*where*)//end-of-[strm_vt_forall0(xs)]
@@ -114,7 +114,7 @@ strmcon_vt_nil() =>
 strmcon_vt_nil(*void*)
 | ~
 strmcon_vt_cons(x1, xs) =>
-strmcon_vt_cons(map0$fopr<x0><y0>(x1), auxmain(xs))
+strmcon_vt_cons(map$fopr0<x0><y0>(x1), auxmain(xs))
 )
 }(*where*)//end-of-[strm_vt_map0(xs)]
 //
@@ -161,7 +161,7 @@ strmcon_vt_cons(x1, xs) =>
 let
 val
 test =
-filter0$test<x0>(x1)
+filter$test0<x0>(x1)
 in//let
 if
 test

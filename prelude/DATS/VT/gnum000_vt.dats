@@ -95,7 +95,7 @@ gseq_folditm0<xs><x0>(xs, r0)
 ) where
 {
 #impltmp
-folditm0$fopr
+folditm$fopr0
 <x0><x0>(r0, x0) = g_add00<x0>(r0, x0)
 }
 end//let//end-of-[gseq_add0(xs)]
@@ -114,7 +114,7 @@ gseq_folditm0<xs><x0>(xs, r0)
 ) where
 {
 #impltmp
-folditm0$fopr
+folditm$fopr0
 <x0><x0>(r0, x0) = g_mul00<x0>(r0, x0)
 }
 end//let//end-of-[gseq_mul0(xs)]

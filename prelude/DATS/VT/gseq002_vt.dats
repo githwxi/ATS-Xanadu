@@ -69,10 +69,10 @@ gseq_z2forall0
 ) where
 {
 #impltmp
-z2forall0$test<x0,y0>(x0, y0) =
+z2forall$test0<x0,y0>(x0, y0) =
 let
 val () =
-z2foritm0$work<x0,y0>(x0, y0) in true end
+z2foritm$work0<x0,y0>(x0, y0) in true end
 }
 //
 (* ****** ****** *)
@@ -96,7 +96,7 @@ gseq_z2forall0
 <xs,ys><x0,y0>(xs, ys)) where
 {
 #impltmp
-z2forall0$test
+z2forall$test0
 <x0,y0>(x0, y0) =
 (
 $UN.p2tr_set<ni>(p0, i0+1); b0)
@@ -104,7 +104,7 @@ where
 {
 val i0 = $UN.p2tr_get<ni>(p0)
 val b0 =
-  iz2forall0$test<x0,y0>(i0, x0, y0) } }
+  iz2forall$test0<x0,y0>(i0, x0, y0) } }
 //
 }(*where*)//end-of-[gseq_iz2forall0(xs,ys)]
 //
@@ -123,10 +123,10 @@ gseq_iz2forall0
 ) where
 {
 #impltmp
-iz2forall0$test<x0,y0>(i0, x0, y0) =
+iz2forall$test0<x0,y0>(i0, x0, y0) =
 let
 val () =
-iz2foritm0$work<x0,y0>(i0, x0, y0) in true end
+iz2foritm$work0<x0,y0>(i0, x0, y0) in true end
 }
 //
 (* ****** ****** *)

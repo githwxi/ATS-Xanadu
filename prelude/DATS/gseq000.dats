@@ -48,7 +48,7 @@ gseq_foritm0<xs><x0>(xs)
 ) where
 {
 #impltmp
-foritm0$work<x0> = g_free<x0>
+foritm$work0<x0> = g_free<x0>
 }
 //
 #impltmp
@@ -60,7 +60,7 @@ gseq_map1_self<xs><x0>(xs)
 ) where
 {
 #impltmp
-map1$fopr<x0><x0> = g_copy<x0>
+map$fopr1<x0><x0> = g_copy<x0>
 }
 //
 (* ****** ****** *)
