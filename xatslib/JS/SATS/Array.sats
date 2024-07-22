@@ -38,11 +38,11 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #abstype
-jsarray(a: vwtp, n: int)
+jsarray(a: type, n: int)
 (* ****** ****** *)
 #typedef
 jsarray
-(a: vt) = [n:i0] jsarray(a, n)
+(a: t0) = [n:i0] jsarray(a, n)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -91,7 +91,7 @@ jsarray_make
 //
 fun<>
 jsarray_length
- {a:vt}{n:i0}
+ {a:t0}{n:i0}
 (A: jsarray(a, n)): sint(n)
 //
 #symload
@@ -116,11 +116,11 @@ jsarray_set_at
 //
 fun<>
 jsarray_strmize
-{a:vt}
+{a:t0}
 (A: jsarray(a)): strm_vt(a)
 fun<>
 jsarray_strqize
-{a:vt}{n:i0}
+{a:t0}{n:i0}
 (A: jsarray(a, n)): strq_vt(a)
 //
 #symload strmize with jsarray_strmize of 1000

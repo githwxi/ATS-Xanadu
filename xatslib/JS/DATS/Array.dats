@@ -127,8 +127,17 @@ XATS2JS_jsarray_length(A)
 fun
 XATS2JS_jsarray_length
 {a:t0}{n:nat}
-(A:jsarray(a, n)): nint(n) = $extnam()
+(jsarray(a, n)):nint(n) = $extnam()
 }
+//
+#impltmp
+< a: t0 >
+gseq_length
+<jsarray(a)><a> = jsarray_length<>{a}
+#impltmp
+< a: t0 >
+gasz_length
+<jsarray(a)><a> = jsarray_length<>{a}
 //
 (* ****** ****** *)
 (* ****** ****** *)

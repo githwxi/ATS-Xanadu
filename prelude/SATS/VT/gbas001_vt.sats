@@ -100,110 +100,110 @@ fset1_at$exn
 //
 fun
 <x0:vt>
-forall0$test(x0: ~x0): bool
+forall$test0(x0: ~x0): bool
 fun
 <x0:vt>
-forall1$test(x0: !x0): bool
+forall$test1(x0: !x0): bool
 //
 fun
 <x0:vt>
-rforall0$test(x0: ~x0): bool
+rforall$test0(x0: ~x0): bool
 fun
 <x0:vt>
-rforall1$test(x0: !x0): bool
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-exists0$test(x0: ~x0): bool
-fun
-<x0:vt>
-exists1$test(x0: !x0): bool
-//
-fun
-<x0:vt>
-rexists0$test(x0: ~x0): bool
-fun
-<x0:vt>
-rexists1$test(x0: !x0): bool
+rforall$test1(x0: !x0): bool
 //
 (* ****** ****** *)
 //
 fun
 <x0:vt>
-foritm0$work(x0: ~x0): void
+exists$test0(x0: ~x0): bool
 fun
 <x0:vt>
-foritm1$work(x0: !x0): void
+exists$test1(x0: !x0): bool
 //
 fun
 <x0:vt>
-rforitm0$work(x0: ~x0): void
+rexists$test0(x0: ~x0): bool
 fun
 <x0:vt>
-rforitm1$work(x0: !x0): void
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-<r0:vt>
-folditm0$fopr(r0, ~x0): (r0)
-fun
-<x0:vt>
-<r0:vt>
-folditm1$fopr(r0, !x0): (r0)
-//
-fun
-<x0:vt>
-<r0:vt>
-foldall0$fopr(r0, ~x0): (bool, r0)
-fun
-<x0:vt>
-<r0:vt>
-foldall1$fopr(r0, !x0): (bool, r0)
+rexists$test1(x0: !x0): bool
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 fun
 <x0:vt>
-<r0:vt>
-rfolditm0$fopr(~x0, r0): (r0)
+foritm$work0(x0: ~x0): void
 fun
 <x0:vt>
-<r0:vt>
-rfolditm1$fopr(!x0, r0): (r0)
+foritm$work1(x0: !x0): void
 //
 fun
 <x0:vt>
-<r0:vt>
-ifolditm0$fopr(r0, ni, ~x0): (r0)
+rforitm$work0(x0: ~x0): void
 fun
 <x0:vt>
-<r0:vt>
-ifolditm1$fopr(r0, ni, !x0): (r0)
+rforitm$work1(x0: !x0): void
 //
 (* ****** ****** *)
 //
 fun
 <x0:vt>
 <r0:vt>
-rfoldall0$fopr(~x0, r0): (bool, r0)
+folditm$fopr0(r0, ~x0): (r0)
 fun
 <x0:vt>
 <r0:vt>
-rfoldall1$fopr(!x0, r0): (bool, r0)
+folditm$fopr1(r0, !x0): (r0)
 //
 fun
 <x0:vt>
 <r0:vt>
-ifoldall0$fopr(r0, ni, ~x0): (bool, r0)
+foldall$fopr0(r0, ~x0): (bool, r0)
 fun
 <x0:vt>
 <r0:vt>
-ifoldall1$fopr(r0, ni, !x0): (bool, r0)
+foldall$fopr1(r0, !x0): (bool, r0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<r0:vt>
+rfolditm$fopr0(~x0, r0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+rfolditm$fopr1(!x0, r0): (r0)
+//
+fun
+<x0:vt>
+<r0:vt>
+ifolditm$fopr0(r0, ni, ~x0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+ifolditm$fopr1(r0, ni, !x0): (r0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<r0:vt>
+rfoldall$fopr0(~x0, r0): (bool, r0)
+fun
+<x0:vt>
+<r0:vt>
+rfoldall$fopr1(!x0, r0): (bool, r0)
+//
+fun
+<x0:vt>
+<r0:vt>
+ifoldall$fopr0(r0, ni, ~x0): (bool, r0)
+fun
+<x0:vt>
+<r0:vt>
+ifoldall$fopr1(r0, ni, !x0): (bool, r0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -211,11 +211,11 @@ ifoldall1$fopr(r0, ni, !x0): (bool, r0)
 fun
 <x0:vt>
 <y0:vt>
-map0$fopr(x0: ~x0): ( y0 )
+map$fopr0(x0: ~x0): ( y0 )
 fun
 <x0:vt>
 <y0:vt>
-map1$fopr(x0: !x0): ( y0 )
+map$fopr1(x0: !x0): ( y0 )
 //
 fun
 <x0:vt>
@@ -226,45 +226,45 @@ map2$fopr(x0: &x0): ( y0 )
 //
 (*
 HX-2024-07-13:
-Note that [filter0$test]
+Note that [filter$test0]
 does not consumes its arg!
 *)
 fun
 <x0:vt>
 <y0:vt>
-filter0$test(x0: !x0): bool
+filter$test0(x0: !x0): bool
 fun
 <x0:vt>
 <y0:vt>
-filter1$test(x0: !x0): bool
+filter$test1(x0: !x0): bool
 //
 (* ****** ****** *)
 //
 fun
 <x0:vt>
 <y0:vt>
-mapoptn0$fopr(x0: ~x0): optn_vt(y0)
+mapoptn$fopr0(x0: ~x0): optn_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-maplist0$fopr(x0: ~x0): list_vt(y0)
+maplist$fopr0(x0: ~x0): list_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-mapstrq0$fopr(x0: ~x0): strq_vt(y0)
+mapstrq$fopr0(x0: ~x0): strq_vt(y0)
 //
 fun
 <x0:vt>
 <y0:vt>
-mapoptn1$fopr(x0: !x0): optn_vt(y0)
+mapoptn$fopr1(x0: !x0): optn_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-maplist1$fopr(x0: !x0): list_vt(y0)
+maplist$fopr1(x0: !x0): list_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-mapstrq1$fopr(x0: !x0): strq_vt(y0)
+mapstrq$fopr1(x0: !x0): strq_vt(y0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
