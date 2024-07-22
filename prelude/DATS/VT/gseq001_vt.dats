@@ -86,6 +86,13 @@ gseq_strmize0
 gseq_strqize0
 <strq_vt(x0)><x0>(xs) = (xs)
 //
+(* ****** ****** *)
+//
+(*
+HX-2024-07-22:
+This is inefficent
+for random-access gseq!
+*)
 #impltmp
 < xs:vt >
 < x0:vt >
@@ -123,8 +130,8 @@ strm_vt_forall0<x0>
 gseq_rforall0
   ( xs ) =
 (
-list_vt_forall0<x0>
-(gseq_rlistize0<xs><x0>(xs)))
+strm_vt_forall0<x0>
+(gseq_rstrmize0<xs><x0>(xs)))
 //
 (* ****** ****** *)
 //
@@ -615,49 +622,77 @@ val (b0, r0) =
 < y0:vt >
 gseq_map0_llist
   ( xs ) =
-list_vt_map0<x0>
+list_vt_map0<x0><y0>
 (gseq_listize0<xs><x0>(xs))
-#impltmp
-< xs:vt >
-< x0:vt >
-< y0:vt >
-gseq_imap0_llist
-  ( xs ) =
-list_vt_imap0<x0>
-(gseq_listize0<xs><x0>(xs))
-//
 #impltmp
 < xs:vt >
 < x0:vt >
 < y0:vt >
 gseq_map0_lstrm
   ( xs ) =
-strm_vt_map0<x0>
+strm_vt_map0<x0><y0>
 (gseq_strmize0<xs><x0>(xs))
-#impltmp
-< xs:vt >
-< x0:vt >
-< y0:vt >
-gseq_imap0_lstrm
-  ( xs ) =
-strm_vt_imap0<x0>
-(gseq_strmize0<xs><x0>(xs))
-//
 #impltmp
 < xs:vt >
 < x0:vt >
 < y0:vt >
 gseq_map0_lstrq
   ( xs ) =
-strq_vt_map0<x0>
+strq_vt_map0<x0><y0>
 (gseq_strqize0<xs><x0>(xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+gseq_rmap0_llist
+  ( xs ) =
+list_vt_map0<x0><y0>
+(gseq_rlistize0<xs><x0>(xs))
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+gseq_rmap0_lstrm
+  ( xs ) =
+strm_vt_map0<x0><y0>
+(gseq_rstrmize0<xs><x0>(xs))
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+gseq_rmap0_lstrq
+  ( xs ) =
+strq_vt_map0<x0><y0>
+(gseq_rstrqize0<xs><x0>(xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+gseq_imap0_llist
+  ( xs ) =
+list_vt_imap0<x0><y0>
+(gseq_listize0<xs><x0>(xs))
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+gseq_imap0_lstrm
+  ( xs ) =
+strm_vt_imap0<x0><y0>
+(gseq_strmize0<xs><x0>(xs))
 #impltmp
 < xs:vt >
 < x0:vt >
 < y0:vt >
 gseq_imap0_lstrq
   ( xs ) =
-strq_vt_imap0<x0>
+strq_vt_imap0<x0><y0>
 (gseq_strqize0<xs><x0>(xs))
 //
 (* ****** ****** *)
