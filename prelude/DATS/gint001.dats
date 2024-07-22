@@ -36,7 +36,12 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #typedef ni = nint
+(* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsafex.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -52,12 +57,63 @@ if
 then false else
 (
 if
-forall$test<nint>(i0)
+forall$test<ni>(i0)
 then loop(xs, i0+1) else false)}
+//
+#impltmp
+gseq_forall0
+<ni><ni>(xs) =
+(
+nint_forall<x0>(xs)) where
+{
+#typedef x0 = ni
+#impltmp
+forall$test<x0> = forall0$test<x0>
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
+#impltmp
+<(*tmp*)>
+nint_strmize(ni) =
+(
+  auxmain(0)) where
+{
+fun
+auxmain
+(i0: ni): strm_vt(ni) =
+$llazy
+(
+if
+(i0 >= ni)
+then
+strmcon_vt_nil() else
+strmcon_vt_cons(i0, auxmain(i0+1))
+)
+}(*where*)//end-of-[nint_strmize(ni)]
+//
+#impltmp
+<(*tmp*)>
+nint_strqize(ni) =
+(
+$UN.strm2q_vt(nint_strmize<>(ni)))
+//
+(* ****** ****** *)
+//
+#impltmp
+gseq_strmize0<ni><ni> = nint_strmize<>
+#impltmp
+gseq_strmize1<ni><ni> = nint_strmize<>
+//
+#impltmp
+gseq_strqize0<ni><ni> = nint_strqize<>
+#impltmp
+gseq_strqize1<ni><ni> = nint_strqize<>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

@@ -36,8 +36,8 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
-#staload
-UN = "prelude/SATS/unsafex.sats"
+#staload UN =
+"prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 //
 #impltmp
