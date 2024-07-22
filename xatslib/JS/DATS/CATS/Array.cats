@@ -66,8 +66,8 @@ XATS2JS_jsarray_make_3val
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_make_nval
-  (n, x)
+XATS2JS_jsarray_make_nval_t0
+  (n, x) // HX: [x]: nonlin
 {
   let i
   let A = new Array(n)

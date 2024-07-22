@@ -96,17 +96,17 @@ XATS2JS_jsarray_make_3val
 (* ****** ****** *)
 //
 #impltmp
-<(*tmp*)>
+< a: t0 >
 jsarray_make_nval
   (n, x) =
 (
-XATS2JS_jsarray_make_nval(n, x)
-) where
+XATS2JS_jsarray_make_nval_t0
+  (n, x)) where
 {
 #extern
 fun
-XATS2JS_jsarray_make_nval
- {a:vt}{n:nat}
+XATS2JS_jsarray_make_nval_t0
+ {a:t0}{n:nat}
 ( n
 : sint(n)
 , x:( a )): jsarray(a, n) = $extnam()
