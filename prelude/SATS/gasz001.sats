@@ -42,18 +42,18 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
-<xs:vt>
+<xs:t0>
 <x0:vt>
 gasz_listize
  ( xs: xs ): list_vt(x0)
 //
 fun
-<xs:vt>
+<xs:t0>
 <x0:vt>
 gasz_strmize
  ( xs: xs ): strm_vt(x0)
 fun
-<xs:vt>
+<xs:t0>
 <x0:vt>
 gasz_strqize
  ( xs: xs ): strq_vt(x0)
@@ -63,12 +63,12 @@ gasz_strqize
 //
 fun
 <xs:t0>
-<x0:t0>
+<x0:vt>
 gasz_forall(xs: xs): bool
 //
 fun
 <xs:t0>
-<x0:t0>
+<x0:vt>
 gasz_rforall(xs: xs): bool
 //
 (* ****** ****** *)
