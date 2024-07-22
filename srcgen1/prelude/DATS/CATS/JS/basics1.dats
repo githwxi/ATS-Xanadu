@@ -521,7 +521,7 @@ gmap_strmize_key
 <jsobjmap(k0,x0)><k0,x0>(kxs)
 ) where
 {
-#impltmp map0$fopr<k0><(k0,x0)>(k0) =
+#impltmp map$fopr0<k0><(k0,x0)>(k0) =
 let
 val-
 ~optn_vt_cons(x0) =

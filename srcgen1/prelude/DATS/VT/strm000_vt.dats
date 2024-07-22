@@ -242,10 +242,10 @@ strm_vt_foldl0<a><nint>(xs, 0)
 {
 //
 #impltmp
-foldl0$fopr<a><nint>(r0, x0) =
+foldl$fopr0<a><nint>(r0, x0) =
 let
 val () = g_free<a>(x0) in succ(r0)
-end // let // end of [foldl0$fopr]
+end // let // end of [foldl$fopr0]
 //
 } (*where*)//end-of-(strm_vt_length0)
 
@@ -678,15 +678,15 @@ val () =
 ) where
 {
 #impltmp
-foreach0$work<x0>(x0) =
+foreach$work0<x0>(x0) =
 let
 val r0 = $UN.p2tr_get<r0>(p0)
 in
 //
 $UN.p2tr_set<r0>
-  (p0, foldl0$fopr<x0><r0>(r0, x0))
+  (p0, foldl$fopr0<x0><r0>(r0, x0))
 //
-end // end of [foreach0$work]
+end // end of [foreach$work0]
 }
 //
 }(*where*)//end-of(strm_foldl0/foreach0...)
@@ -711,7 +711,7 @@ strmcon_vt_nil() => true
 strmcon_vt_cons(x0, xs) =>
 let
   val
-  test = forall0$test<x0>(x0)
+  test = forall$test0<x0>(x0)
 in//let
 if
 test
@@ -732,9 +732,9 @@ test =
 strm_vt_forall0<x0>(xs) where
 {
 #impltmp
-forall0$test<x0>(x0) =
+forall$test0<x0>(x0) =
 let
-val () = foreach0$work<x0>(x0) in true
+val () = foreach$work0<x0>(x0) in true
 end
 }
 //
@@ -771,7 +771,7 @@ strmcon_vt_nil((*void*))
 strmcon_vt_cons(x0, xs) =>
 let
   val y0 =
-  map0$fopr<x0><y0>(x0)
+  map$fopr0<x0><y0>(x0)
 in
   strmcon_vt_cons(y0, auxmain(xs))
 end//let//end-[strmcon_vt_cons]
@@ -813,7 +813,7 @@ strmcon_vt_nil()
 strmcon_vt_cons
   (x0, xs) =>
 ( if
-  filter0$test<x0>(x0)
+  filter$test0<x0>(x0)
   then
   strmcon_vt_cons(x0, auxmain(xs))
   else
@@ -835,7 +835,7 @@ strm_vt_drop0
 strm_vt_idropif0<x0>(xs)) where
 {
 #impltmp
-idropif0$test<x0>(i0, x0) = (i0 < n0)
+idropif$test0<x0>(i0, x0) = (i0 < n0)
 } (*where*)//end-of(gseq_drop0/idropif0...)
 //
 #impltmp
@@ -846,7 +846,7 @@ strm_vt_take0
 strm_vt_itakeif0<x0>(xs)) where
 {
 #impltmp
-itakeif0$test<x0>(i0, x0) = (i0 < n0)
+itakeif$test0<x0>(i0, x0) = (i0 < n0)
 } (*where*)//end-of(gseq_take0/itakeif0...)
 //
 #impltmp
@@ -857,7 +857,7 @@ strm_vt_dropif0
 strm_vt_idropif0<x0>(xs)) where
 {
 #impltmp
-idropif0$test<x0>(i0,x0) = dropif0$test<x0>(x0)
+idropif$test0<x0>(i0,x0) = dropif$test0<x0>(x0)
 }(*where*)//end-of(strm_vt_dropif0/idropif0)
 //
 #impltmp
@@ -868,7 +868,7 @@ strm_vt_takeif0
 strm_vt_itakeif0<x0>(xs)) where
 {
 #impltmp
-itakeif0$test<x0>(i0,x0) = takeif0$test<x0>(x0)
+itakeif$test0<x0>(i0,x0) = takeif$test0<x0>(x0)
 }(*where*)//end-of(strm_vt_takeif0/itakeif0)
 //
 (* ****** ****** *)
@@ -908,10 +908,10 @@ let
 (*
   val
   opt =
-  mapopt0$fopr<x0><y0>(x0)
+  mapopt$fopr0<x0><y0>(x0)
 *)
   val
-  opt = filter0$test<x0>(x0)
+  opt = filter$test0<x0>(x0)
 in
 (*
   case+ opt of
@@ -925,7 +925,7 @@ in
   then
   let
     val y0 =
-    map0$fopr<x0><y0>(x0)
+    map$fopr0<x0><y0>(x0)
   in
     strmcon_vt_cons(y0, auxmain(xs))
   end
@@ -975,7 +975,7 @@ strmcon_vt_cons(x0, xs) =>
 let
   val
   opt =
-  mapoptn0$fopr<x0><y0>(x0)
+  mapoptn$fopr0<x0><y0>(x0)
 in
   case+ opt of
   | optn_vt_nil() =>
@@ -1043,7 +1043,7 @@ strmcon_vt_cons(x0, xs) =>
 let
   val
   ys =
-  maplist0$fopr<x0><y0>(x0)
+  maplist$fopr0<x0><y0>(x0)
 in
 case+ ys of
 | ~
@@ -1113,7 +1113,7 @@ strmcon_vt_cons(x0, xs) =>
 let
   val
   ys =
-  mapstrm0$fopr<x0><y0>(x0)
+  mapstrm$fopr0<x0><y0>(x0)
 in
 case+ !ys of
 | ~
@@ -1136,7 +1136,7 @@ let
 #vwtpdef
 xs = strm_vt(x0)
 #impltmp
-map0$fopr<x0><x0>(x0) = x0
+map$fopr0<x0><x0>(x0) = x0
 in//let
   gseq_map0_add0<xs><x0><x0>(xs)
 end(*let*)//end-of-(strm_vt_add0(xs)/map0)
@@ -1149,7 +1149,7 @@ let
 #vwtpdef
 xs = strm_vt(x0)
 #impltmp
-map0$fopr<x0><x0>(x0) = x0
+map$fopr0<x0><x0>(x0) = x0
 in//let
   gseq_map0_mul0<xs><x0><x0>(xs)
 end(*let*)//end-of-(strm_vt_mul0(xs)/map0)
@@ -1184,7 +1184,7 @@ in
 end where
 {
 #impltmp
-filter0$test<x0>(x2) = sieve0$test<x0>(x1, x2)
+filter$test0<x0>(x2) = sieve$test0<x0>(x1, x2)
 }
 )
 } (*where*) // end-of-[ strm_vt_sieve0(xs) ]
@@ -1317,7 +1317,7 @@ end // end of [strmcon_vt_cons]
 strmcon_vt_cons
   ( x0, xs ) =>
 if
-group0$test<x0>(x0)
+group$test0<x0>(x0)
 then
 auxmain1
 (xs, list_vt_cons(x0, r0))
@@ -1366,7 +1366,7 @@ strmcon_vt_nil((*void*))
 strmcon_vt_cons(x0, xs) =>
 let
   val y0 =
-  imap0$fopr<x0><y0>(i0, x0)
+  imap$fopr0<x0><y0>(i0, x0)
 in//let
 strmcon_vt_cons(y0, auxmain(i0+1, xs))
 end//let
@@ -1402,7 +1402,7 @@ strmcon_vt_nil
 strmcon_vt_cons
   ( x0, xs ) =>
 if
-idropif0$test<x0>(i0, x0)
+idropif$test0<x0>(i0, x0)
 then
 ( g_free<x0>(x0)
 ; auxloop(xs, succ(i0)) )
@@ -1439,7 +1439,7 @@ strmcon_vt_nil()
 strmcon_vt_cons
   ( x0, xs ) =>
 if
-itakeif0$test<x0>(i0, x0)
+itakeif$test0<x0>(i0, x0)
 then
 strmcon_vt_cons
 (x0, auxmain(xs, succ(i0)))
@@ -1489,7 +1489,7 @@ strmcon_vt_cons(x0, xs) =>
 let
   val i1 = succ(i0)
   val
-  opt = ifilter0$test<x0>(i0, x0)
+  opt = ifilter$test0<x0>(i0, x0)
 in
 //
 if
@@ -1497,7 +1497,7 @@ opt
 then
 let
 val y0 =
-imap0$fopr<x0><y0>(i0, x0)
+imap$fopr0<x0><y0>(i0, x0)
 in
 strmcon_vt_cons(y0, auxmain(i1, xs))
 end // end of [then]
@@ -1584,7 +1584,7 @@ strmcon_vt_cons(y0, ys) =>
 let
   val
   test =
-  z2forall0$test<x0,y0>(x0, y0)
+  z2forall$test0<x0,y0>(x0, y0)
 in//let
 if
 test
@@ -1638,7 +1638,7 @@ strmcon_vt_cons(y0, ys) =>
 let
   val
   sgn =
-  z2forcmp0$fcmp<x0,y0>(x0, y0)
+  z2forcmp$fcmp0<x0,y0>(x0, y0)
 in
   if
   (sgn = 0)
@@ -1685,7 +1685,7 @@ strmcon_vt_cons
   loop(xs, ys) ) where
 {
 val () =
-z2foreach0$work<x0,y0>(x0, y0)
+z2foreach$work0<x0,y0>(x0, y0)
 }(*where*)//end(strmcon_vt_cons)
 )
 ) (*case+*) // end of [loop(xs,ys)]
@@ -1732,7 +1732,7 @@ strmcon_vt_cons
 ( y0, ys ) =>
 let
 val z0 =
-  z2map0$fopr<x0,y0><z0>(x0,y0)
+  z2map$fopr0<x0,y0><z0>(x0,y0)
 in//let
 strmcon_vt_cons(z0,auxmain(xs,ys))
 endlet // strmcon_vt_cons(y0,ys)
@@ -1751,7 +1751,7 @@ strm_vt_z2map0(xs, ys) where
 {
 #vwtpdef z0 = @(x0, y0)
 #impltmp
-z2map0$fopr<x0,y0><z0>(x0, y0) = (x0, y0)
+z2map$fopr0<x0,y0><z0>(x0, y0) = (x0, y0)
 }(*where*)//end-of-(strm_vt_z2strmize0(xs,ys))
 //
 (* ****** ****** *)
@@ -1796,7 +1796,7 @@ strmcon_vt_cons
 ( y0, ys ) =>
 let
 val z0 =
-z2imap0$fopr<x0,y0><z0>(i0,x0,y0)
+z2imap$fopr0<x0,y0><z0>(i0,x0,y0)
 in//let
 strmcon_vt_cons(z0,auxmain(i0+1,xs,ys))
 endlet // strmcon_vt_cons(y0,ys)
@@ -1844,7 +1844,7 @@ strmcon_vt_cons
 ( y0, ys ) =>
 let
 val test =
-z2iforall0$test<x0,y0>(i0,x0,y0)
+z2iforall$test0<x0,y0>(i0,x0,y0)
 in//let
 if test then auxloop(i0+1,xs,ys) else false
 endlet // strmcon_vt_cons(y0,ys)
@@ -1897,7 +1897,7 @@ strmcon_vt_cons(y0, ys) =>
 let
 val
 sgn =
-z2iforcmp0$fcmp<x0,y0>(i0, x0, y0)
+z2iforcmp$fcmp0<x0,y0>(i0, x0, y0)
 in
   if
   (sgn = 0)
@@ -1946,7 +1946,7 @@ strmcon_vt_cons
 auxloop(i0+1,xs,ys) where
 {
 val () =
-z2iforeach0$work<x0,y0>(i0,x0,y0)
+z2iforeach$work0<x0,y0>(i0,x0,y0)
 } // strmcon_vt_cons(y0,ys)
 )(*case+*)// strmcon_vt_cons(x0,xs)
 //

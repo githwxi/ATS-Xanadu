@@ -338,7 +338,7 @@ let
 val x0 =
 a1ref_get0_at<a>(A0, i0)
 val x0 = $UN.castlin10{ a}(x0)
-val b0 = forall1$test< a >(x0)
+val b0 = forall$test1< a >(x0)
 val x0 = $UN.castlin10{?a}(x0)
 in//let
 if b0 then loop(succ(i0)) else false
@@ -374,7 +374,7 @@ then
   val x0 =
   a1ref_get0_at<a>(A0, i0)
   val x0 = $UN.castlin10{ a}(x0)
-  val () = foreach1$work< a>(x0)
+  val () = foreach$work1< a>(x0)
   val x0 = $UN.castlin10{?a}(x0)
 }
 //
@@ -403,7 +403,7 @@ val i1 = pred(i0)
 val x0 =
 a1ref_get0_at<a>(A0, i1)
 val x0 = $UN.castlin10{ a}(x0)
-val b0 = rforall1$test< a>(x0)
+val b0 = rforall$test1< a>(x0)
 val x0 = $UN.castlin10{?a}(x0)
 in//let
 if (b0) then loop(i1) else false

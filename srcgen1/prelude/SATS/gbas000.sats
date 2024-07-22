@@ -186,15 +186,15 @@ map$fopr(x0: x0): (y0)
 fun
 <x0:vt>
 <y0:vt>
-map0$fopr(x0: ~x0): (y0)
+map$fopr0(x0: ~x0): (y0)
 fun
 <x0:vt>
 <y0:vt>
-map1$fopr(x0: !x0): (y0)
+map$fopr1(x0: !x0): (y0)
 fun
 <x0:vt>
 <y0:vt>
-map2$fopr(x0: &x0): (y0)
+map2fopr2(x0: &x0): (y0)
 //
 (* ****** ****** *)
 //
@@ -214,23 +214,23 @@ scanr$fopr
 fun
 <x0:vt>
 <r0:vt>
-scanl0$fopr
+scanl$fopr0
 ( r0: r0, x0: ~x0 ): (r0)
 fun
 <x0:vt>
 <r0:vt>
-scanl1$fopr
+scanl$fopr1
 ( r0: r0, x0: !x0 ): (r0)
 //
 fun
 <x0:vt>
 <r0:vt>
-scanr0$fopr
+scanr$fopr0
 ( x0: ~x0, r0: r0 ): (r0)
 fun
 <x0:vt>
 <r0:vt>
-scanr1$fopr
+scanr$fopr1
 ( x0: !x0, r0: r0 ): (r0)
 //
 (* ****** ****** *)
@@ -241,13 +241,13 @@ fun<x0:t0>
 takeif$test(x0: x0): bool
 //
 fun<x0:vt>
-dropif0$test(x0: !x0): bool
+dropif$test0(x0: !x0): bool
 fun<x0:vt>
-takeif0$test(x0: !x0): bool
+takeif$test0(x0: !x0): bool
 fun<x0:vt>
-dropif1$test(x0: !x0): bool
+dropif$test1(x0: !x0): bool
 fun<x0:vt>
-takeif1$test(x0: !x0): bool
+takeif$test1(x0: !x0): bool
 //
 (* ****** ****** *)
 //
@@ -256,10 +256,10 @@ fun
 filter$test(x0: x0): bool
 fun
 <x0:vt>
-filter0$test(x0: !x0): bool
+filter$test0(x0: !x0): bool
 fun
 <x0:vt>
-filter1$test(x0: !x0): bool
+filter$test1(x0: !x0): bool
 //
 (* ****** ****** *)
 //
@@ -268,10 +268,10 @@ fun
 search$test(x0: x0): bool
 fun
 <x0:t0>
-search0$test(x0: !x0): bool
+search$test0(x0: !x0): bool
 fun
 <x0:t0>
-search1$test(x0: !x0): bool
+search$test1(x0: !x0): bool
 //
 (* ****** ****** *)
 //
@@ -280,10 +280,10 @@ fun
 rsearch$test(x0: x0): bool
 fun
 <x0:t0>
-rsearch0$test(x0: !x0): bool
+rsearch$test0(x0: !x0): bool
 fun
 <x0:t0>
-rsearch1$test(x0: !x0): bool
+rsearch$test1(x0: !x0): bool
 //
 (* ****** ****** *)
 //
@@ -294,11 +294,11 @@ mapoptn$fopr(x0: x0): optn_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-mapoptn0$fopr(x0: ~x0): optn_vt(y0)
+mapoptn$fopr0(x0: ~x0): optn_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-mapoptn1$fopr(x0: !x0): optn_vt(y0)
+mapoptn$fopr1(x0: !x0): optn_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -309,11 +309,11 @@ maplist$fopr(x0: x0): list_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-maplist0$fopr(x0: ~x0): list_vt(y0)
+maplist$fopr0(x0: ~x0): list_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-maplist1$fopr(x0: !x0): list_vt(y0)
+maplist$fopr1(x0: !x0): list_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -324,11 +324,11 @@ mapstrm$fopr(x0: x0): strm_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-mapstrm0$fopr(x0: ~x0): strm_vt(y0)
+mapstrm$fopr0(x0: ~x0): strm_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-mapstrm1$fopr(x0: !x0): strm_vt(y0)
+mapstrm$fopr1(x0: !x0): strm_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -339,11 +339,11 @@ mapstrq$fopr(x0: x0): strq_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-mapstrq0$fopr(x0: ~x0): strq_vt(y0)
+mapstrq$fopr0(x0: ~x0): strq_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
-mapstrq1$fopr(x0: !x0): strq_vt(y0)
+mapstrq$fopr1(x0: !x0): strq_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -352,26 +352,26 @@ fun
 exists$test(x0: x0): bool
 fun
 <x0:vt>
-exists0$test(x0: ~x0): bool
+exists$test0(x0: ~x0): bool
 fun
 <x0:vt>
-exists1$test(x0: !x0): bool
+exists$test1(x0: !x0): bool
 fun
 <x0:vt>
-exists2$test(x0: &x0): bool
+exists$test2(x0: &x0): bool
 //
 fun
 <x0:t0>
 forall$test(x0: x0): bool
 fun
 <x0:vt>
-forall0$test(x0: ~x0): bool
+forall$test0(x0: ~x0): bool
 fun
 <x0:vt>
-forall1$test(x0: !x0): bool
+forall$test1(x0: !x0): bool
 fun
 <x0:vt>
-forall2$test(x0: &x0): bool
+forall$test2(x0: &x0): bool
 //
 (* ****** ****** *)
 
@@ -380,13 +380,13 @@ fun
 foreach$work(x0: x0): void
 fun
 <x0:vt>
-foreach0$work(x0: ~x0): void
+foreach$work0(x0: ~x0): void
 fun
 <x0:vt>
-foreach1$work(x0: !x0): void
+foreach$work1(x0: !x0): void
 fun
 <x0:vt>
-foreach2$work(x0: &x0): void
+foreach$work2(x0: &x0): void
 
 (* ****** ****** *)
 //
@@ -397,11 +397,11 @@ foldl$fopr(r0: r0, x0: x0): r0
 fun
 <x0:vt>
 <r0:vt>
-foldl0$fopr(r0: r0, x0: ~x0): r0
+foldl$fopr0(r0: r0, x0: ~x0): r0
 fun
 <x0:vt>
 <r0:vt>
-foldl1$fopr(r0: r0, x0: !x0): r0
+foldl$fopr1(r0: r0, x0: !x0): r0
 //
 (* ****** ****** *)
 //
@@ -412,11 +412,11 @@ foldr$fopr(x0: x0, r0: r0): r0
 fun
 <x0:vt>
 <r0:vt>
-foldr0$fopr(x0: ~x0, r0: r0): r0
+foldr$fopr0(x0: ~x0, r0: r0): r0
 fun
 <x0:vt>
 <r0:vt>
-foldr1$fopr(x0: !x0, r0: r0): r0
+foldr$fopr1(x0: !x0, r0: r0): r0
 //
 (* ****** ****** *)
 //
@@ -425,7 +425,7 @@ fun
 group$test(x0: x0): bool
 fun
 <x0:vt>
-group0$test(x0: !x0): bool
+group$test0(x0: !x0): bool
 //
 (* ****** ****** *)
 //
@@ -442,7 +442,7 @@ fun
 sieve$test(x1: x0, x2: x0): bool
 fun
 <x0:vt>
-sieve0$test(x1: !x0, x2: !x0): bool
+sieve$test0(x1: !x0, x2: !x0): bool
 //
 (* ****** ****** *)
 //
@@ -461,15 +461,15 @@ rmap$fopr(x0: x0): (y0)
 fun
 <x0:vt>
 <y0:vt>
-rmap0$fopr(x0: ~x0): (y0)
+rmap$fopr0(x0: ~x0): (y0)
 fun
 <x0:vt>
 <y0:vt>
-rmap1$fopr(x0: !x0): (y0)
+rmap$fopr1(x0: !x0): (y0)
 fun
 <x0:vt>
 <y0:vt>
-rmap2$fopr(x0: &x0): (y0)
+rmap$fopr2(x0: &x0): (y0)
 //
 (* ****** ****** *)
 //
@@ -478,23 +478,23 @@ fun
 rexists$test(x0: x0): bool
 fun
 <x0:vt>
-rexists0$test(x0: ~x0): bool
+rexists$test0(x0: ~x0): bool
 fun
 <x0:vt>
-rexists1$test(x0: !x0): bool
+rexists$test1(x0: !x0): bool
 //
 fun
 <x0:t0>
 rforall$test(x0: x0): bool
 fun
 <x0:vt>
-rforall0$test(x0: ~x0): bool
+rforall$test0(x0: ~x0): bool
 fun
 <x0:vt>
-rforall1$test(x0: !x0): bool
+rforall$test1(x0: !x0): bool
 fun
 <x0:vt>
-rforall2$test(x0: &x0): bool
+rforall$test2(x0: &x0): bool
 //
 (* ****** ****** *)
 //
@@ -503,13 +503,13 @@ fun
 rforeach$work(x0: x0): void
 fun
 <x0:vt>
-rforeach0$work(x0: ~x0): void
+rforeach$work0(x0: ~x0): void
 fun
 <x0:vt>
-rforeach1$work(x0: !x0): void
+rforeach$work1(x0: !x0): void
 fun
 <x0:vt>
-rforeach2$work(x0: &x0): void
+rforeach$work2(x0: &x0): void
 //
 (* ****** ****** *)
 //
@@ -524,15 +524,15 @@ imap$fopr(nint, x0): (y0)
 fun
 <x0:vt>
 <y0:vt>
-imap0$fopr(nint, ~x0): (y0)
+imap$fopr0(nint, ~x0): (y0)
 fun
 <x0:vt>
 <y0:vt>
-imap1$fopr(nint, !x0): (y0)
+imap$fopr1(nint, !x0): (y0)
 fun
 <x0:vt>
 <y0:vt>
-imap2$fopr(nint, &x0): (y0)
+imap$fopr2(nint, &x0): (y0)
 //
 (* ****** ****** *)
 //
@@ -542,13 +542,13 @@ fun<x0:t0>
 itakeif$test(nint, x0): bool
 //
 fun<x0:vt>
-idropif0$test(nint, !x0): bool
+idropif$test0(nint, !x0): bool
 fun<x0:vt>
-itakeif0$test(nint, !x0): bool
+itakeif$test0(nint, !x0): bool
 fun<x0:vt>
-idropif1$test(nint, !x0): bool
+idropif$test1(nint, !x0): bool
 fun<x0:vt>
-itakeif1$test(nint, !x0): bool
+itakeif$test1(nint, !x0): bool
 //
 (* ****** ****** *)
 //
@@ -557,10 +557,10 @@ fun
 ifilter$test(nint, x0): bool
 fun
 <x0:vt>
-ifilter0$test(nint, !x0): bool
+ifilter$test0(nint, !x0): bool
 fun
 <x0:vt>
-ifilter1$test(nint, !x0): bool
+ifilter$test1(nint, !x0): bool
 //
 (* ****** ****** *)
 //
@@ -569,23 +569,23 @@ fun
 iexists$test(nint, x0): bool
 fun
 <x0:vt>
-iexists0$test(nint, ~x0): bool
+iexists$test0(nint, ~x0): bool
 fun
 <x0:vt>
-iexists1$test(nint, !x0): bool
+iexists$test1(nint, !x0): bool
 //
 fun
 <x0:t0>
 iforall$test(nint, x0): bool
 fun
 <x0:vt>
-iforall0$test(nint, ~x0): bool
+iforall$test0(nint, ~x0): bool
 fun
 <x0:vt>
-iforall1$test(nint, !x0): bool
+iforall$test1(nint, !x0): bool
 fun
 <x0:vt>
-iforall2$test(nint, &x0): bool
+iforall$test2(nint, &x0): bool
 //
 (* ****** ****** *)
 //
@@ -602,13 +602,13 @@ fun
 iforeach$work(nint, x0): void
 fun
 <x0:vt>
-iforeach0$work(nint, ~x0): void
+iforeach$work0(nint, ~x0): void
 fun
 <x0:vt>
-iforeach1$work(nint, !x0): void
+iforeach$work1(nint, !x0): void
 fun
 <x0:vt>
-iforeach2$work(nint, &x0): void
+iforeach$work2(nint, &x0): void
 //
 (* ****** ****** *)
 //
@@ -649,12 +649,12 @@ fun
 <x0:vt
 ,y0:vt>
 <z0:vt>
-z2map0$fopr(~x0, ~y0): (z0)
+z2map$fopr0(~x0, ~y0): (z0)
 fun
 <x0:vt
 ,y0:vt>
 <z0:vt>
-z2map1$fopr(!x0, !y0): (z0)
+z2map$fopr1(!x0, !y0): (z0)
 //
 (* ****** ****** *)
 //
@@ -678,11 +678,11 @@ z2forall$test(x0, y0): bool
 fun
 <x0:vt
 ,y0:vt>
-z2forall0$test(~x0, ~y0): bool
+z2forall$test0(~x0, ~y0): bool
 fun
 <x0:vt
 ,y0:vt>
-z2forall1$test(!x0, !y0): bool
+z2forall$test1(!x0, !y0): bool
 //
 fun
 <x0:t0
@@ -691,11 +691,11 @@ z2forcmp$fcmp(x0, y0): sint
 fun
 <x0:vt
 ,y0:vt>
-z2forcmp0$fcmp(~x0, ~y0): sint
+z2forcmp$fcmp0(~x0, ~y0): sint
 fun
 <x0:vt
 ,y0:vt>
-z2forcmp1$fcmp(!x0, !y0): sint
+z2forcmp$fcmp1(!x0, !y0): sint
 //
 fun
 <x0:t0
@@ -704,11 +704,11 @@ z2foreach$work(x0, y0): void
 fun
 <x0:vt
 ,y0:vt>
-z2foreach0$work(~x0, ~y0): void
+z2foreach$work0(~x0, ~y0): void
 fun
 <x0:vt
 ,y0:vt>
-z2foreach1$work(!x0, !y0): void
+z2foreach$work1(!x0, !y0): void
 //
 (* ****** ****** *)
 //
@@ -721,12 +721,12 @@ fun
 <x0:vt
 ,y0:vt>
 <z0:vt>
-z2imap0$fopr(nint,~x0,~y0): (z0)
+z2imap$fopr0(nint,~x0,~y0): (z0)
 fun
 <x0:vt
 ,y0:vt>
 <z0:vt>
-z2imap1$fopr(nint,!x0,!y0): (z0)
+z2imap$fopr1(nint,!x0,!y0): (z0)
 //
 (* ****** ****** *)
 //
@@ -737,11 +737,11 @@ z2iforall$test(nint,x0,y0): bool
 fun
 <x0:vt
 ,y0:vt>
-z2iforall0$test(nint,~x0,~y0): bool
+z2iforall$test0(nint,~x0,~y0): bool
 fun
 <x0:vt
 ,y0:vt>
-z2iforall1$test(nint,!x0,!y0): bool
+z2iforall$test1(nint,!x0,!y0): bool
 //
 (* ****** ****** *)
 //
@@ -752,11 +752,11 @@ z2iforcmp$fcmp(nint,x0,y0): sint
 fun
 <x0:vt
 ,y0:vt>
-z2iforcmp0$fcmp(nint,~x0,~y0): sint
+z2iforcmp$fcmp0(nint,~x0,~y0): sint
 fun
 <x0:vt
 ,y0:vt>
-z2iforcmp1$fcmp(nint,!x0,!y0): sint
+z2iforcmp$fcmp1(nint,!x0,!y0): sint
 //
 (* ****** ****** *)
 //
@@ -767,11 +767,11 @@ z2iforeach$work(nint,x0,y0): void
 fun
 <x0:vt
 ,y0:vt>
-z2iforeach0$work(nint,~x0,~y0): void
+z2iforeach$work0(nint,~x0,~y0): void
 fun
 <x0:vt
 ,y0:vt>
-z2iforeach1$work(nint,!x0,!y0): void
+z2iforeach$work1(nint,!x0,!y0): void
 //
 (* ****** ****** *)
 //

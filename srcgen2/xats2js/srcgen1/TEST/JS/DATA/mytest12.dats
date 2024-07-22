@@ -46,10 +46,10 @@ $synext("A"):jsarray(sint,3)
 //
 *)
 //
-excptcon NONE of ()
-val A = $raise NONE()
-//
 (* ****** ****** *)
+
+val A =
+jsarray(1, 2, 3)
 
 val iA =
 gseq_ifolditm
@@ -60,13 +60,13 @@ gseq_ifolditm
 #typedef xs = jsarray(sint)
 #impltmp
 ifolditm$fopr
-<r0><x0>
-(r0, i0, x0) = r0 + (i0+1)*x0
+<r0><x0>(r0, i0, x0) = r0 + (i0+1)*x0
 }
-
+//
 val () =
-println("iA = ", iA)
-
+(
+  println("iA = ", iA))
+//
 (* ****** ****** *)
 
 fun

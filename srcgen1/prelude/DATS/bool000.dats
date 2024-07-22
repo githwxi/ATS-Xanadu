@@ -113,14 +113,14 @@ some verbs in [gbas.sats]
 *)
 //
 #impltmp forall$test<bool>(x0) = x0
-#impltmp forall0$test<bool>(x0) = x0
-#impltmp forall1$test<bool>(x0) = x0
+#impltmp forall$test0<bool>(x0) = x0
+#impltmp forall$test1<bool>(x0) = x0
 //
 (* ****** ****** *)
 //
 #impltmp exists$test<bool>(x0) = x0
-#impltmp exists0$test<bool>(x0) = x0
-#impltmp exists1$test<bool>(x0) = x0
+#impltmp exists$test0<bool>(x0) = x0
+#impltmp exists$test1<bool>(x0) = x0
 //
 (* ****** ****** *)
 

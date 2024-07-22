@@ -958,7 +958,7 @@ strn_vt_forall0<>(cs) =
 XATS2JS_strn_vt_forall_cfr
 ( cs
 , lam(c0) =>
-  forall0$test<cgtz>(c0) ) where
+  forall$test0<cgtz>(c0) ) where
 {
 #extern
 fun
@@ -975,7 +975,7 @@ strn_vt_forall1<>(cs) =
 XATS2JS_strn_vt_forall_cfr
 ( cs
 , lam(c0) =>
-  forall1$test<cgtz>(c0) ) where
+  forall$test1<cgtz>(c0) ) where
 {
 #extern
 fun
@@ -992,7 +992,7 @@ strn_vt_rforall0<>(cs) =
 XATS2JS_strn_vt_rforall_cfr
 ( cs
 , lam(c0) =>
-  rforall0$test<cgtz>(c0) ) where
+  rforall$test0<cgtz>(c0) ) where
 {
 #extern
 fun
@@ -1009,7 +1009,7 @@ strn_vt_rforall1<>(cs) =
 XATS2JS_strn_vt_rforall_cfr
 ( cs
 , lam(c0) =>
-  rforall1$test<cgtz>(c0) ) where
+  rforall$test1<cgtz>(c0) ) where
 {
 #extern
 fun

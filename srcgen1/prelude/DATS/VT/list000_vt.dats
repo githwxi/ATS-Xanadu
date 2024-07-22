@@ -499,7 +499,7 @@ list_vt_nil() => true
 list_vt_cons(x0, xs) =>
 let
 val
-test = forall0$test<a>(x0)
+test = forall$test0<a>(x0)
 in
 //
 if
@@ -534,7 +534,7 @@ list_vt_nil() => true
 list_vt_cons(x0, xs) =>
 let
 val
-test = forall1$test<a>(x0)
+test = forall$test1<a>(x0)
 in//let
 //
 if test then loop(xs) else false
@@ -563,7 +563,7 @@ list_vt_nil() => true
 list_vt_cons(!x0, xs) =>
 let
 val
-test = forall2$test<a>(x0)
+test = forall$test2<a>(x0)
 in//let
 //
 if test then loop(xs) else false
@@ -593,7 +593,7 @@ list_vt_nil() => ()
 list_vt_cons(x0, xs) =>
 let
 val () =
-foreach0$work<a>(x0) in loop(xs)
+foreach$work0<a>(x0) in loop(xs)
 end // end of [list_vt_cons]
 )
 }(*where*)//end-of-[list_vt_foreach0]
@@ -618,7 +618,7 @@ list_vt_nil() => ()
 list_vt_cons(x0, xs) =>
 let
 val () =
-foreach1$work<a>(x0) in loop(xs)
+foreach$work1<a>(x0) in loop(xs)
 end // end of [list_vt_cons]
 )
 }(*where*)//end-of-[list_vt_foreach1]
@@ -643,7 +643,7 @@ list_vt_nil() => ()
 list_vt_cons(!x0, xs) =>
 let
 val () =
-foreach2$work<a>(x0) in loop(xs)
+foreach$work2<a>(x0) in loop(xs)
 end // end of [list_vt_cons]
 )
 }(*where*)//end-of-[list_vt_foreach2]
@@ -706,7 +706,7 @@ list_vt_nil() =>
 list_vt_cons(x0, xs) =>
 let
   val y0 =
-  map0$fopr<x0><y0>(x0)
+  map$fopr0<x0><y0>(x0)
   val () =
   (r0 := list_vt_cons(y0, _))
 in
@@ -750,7 +750,7 @@ list_vt_nil() => ys
 list_vt_cons(x0, xs) =>
 let
   val y0 =
-  map0$fopr<x0><y0>(x0)
+  map$fopr0<x0><y0>(x0)
 in
   loop(xs, list_vt_cons(y0, ys))
 end
@@ -955,7 +955,7 @@ strm_vt_map0
 #sexpdef n0 = i+j
 #sexpdef n1 = n0-1
 #impltmp
-map0$fopr
+map$fopr0
 <xs(n1)>
 <xs(n0)>(xx) = list_vt_cons(x0, xx)
 }

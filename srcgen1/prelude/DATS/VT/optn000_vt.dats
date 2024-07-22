@@ -160,7 +160,7 @@ case+ xs of
 | ~
 optn_vt_nil() => (true)
 | ~
-optn_vt_cons(x0) => forall0$test<a>(x0)
+optn_vt_cons(x0) => forall$test0<a>(x0)
 ) (*case+*)//end of [optn_vt_forall0(xs)]
 //
 #impltmp
@@ -171,7 +171,7 @@ case+ xs of
 | // !
 optn_vt_nil() => (true)
 | // !
-optn_vt_cons(x0) => forall1$test<a>(x0)
+optn_vt_cons(x0) => forall$test1<a>(x0)
 ) (*case+*)//end of [optn_vt_forall1(xs)]
 //
 (* ****** ****** *)
@@ -184,7 +184,7 @@ case+ xs of
 | ~
 optn_vt_nil() => ((*void*))
 | ~
-optn_vt_cons(x0) => foreach0$work<a>(x0)
+optn_vt_cons(x0) => foreach$work0<a>(x0)
 ) (*case+*)//end-of-[optn_vt_foreach0(xs)]
 //
 #impltmp
@@ -195,7 +195,7 @@ case+ xs of
 | // !
 optn_vt_nil() => ((*void*))
 | // !
-optn_vt_cons(x0) => foreach1$work<a>(x0)
+optn_vt_cons(x0) => foreach$work1<a>(x0)
 ) (*case+*)//end-of-[optn_vt_foreach1(xs)]
 //
 (* ****** ****** *)
@@ -213,7 +213,7 @@ optn_vt_nil((*void*))
 optn_vt_cons(x0) =>
 let
 val y0 =
-map0$fopr<a><b>(x0) in optn_vt_cons(y0)
+map$fopr0<a><b>(x0) in optn_vt_cons(y0)
 end//let
 ) (*case+*) // end-of-[ optn_vt_map0(xs) ]
 //
@@ -230,7 +230,7 @@ optn_vt_nil((*0*))
 optn_vt_cons(x0) =>
 let
 val y0 =
-map1$fopr<a><b>(x0) in optn_vt_cons(y0)
+map$fopr1<a><b>(x0) in optn_vt_cons(y0)
 end//let
 ) (*case+*) // end-of-[ optn_vt_map1(xs) ]
 //

@@ -130,7 +130,7 @@ gmap_strmize_key
 ) where // end-of(strm_vt_exists0<key>)
 {
 #impltmp
-exists0$test<key>(k1)=g_equal<key>(k0,k1)
+exists$test0<key>(k1)=g_equal<key>(k0,k1)
 } (*where*) // end of [gmap_keyq(kxs, k0)]
 //
 (* ****** ****** *)
@@ -141,7 +141,7 @@ exists0$test<key>(k1)=g_equal<key>(k0,k1)
 gmap_strmize_key(kxs) =
 let
 #impltmp
-map0$fopr
+map$fopr0
 <(key,itm)><key>(kx) = kx.0
 in
 strm_vt_map0<(key,itm)>(gmap_strmize(kxs))
@@ -155,7 +155,7 @@ end(*let*)//end-of-[gmap_strmize_key(kxs)]
 gmap_strmize_itm(kxs) =
 let
 #impltmp
-map0$fopr
+map$fopr0
 <(key,itm)><itm>(kx) = kx.1
 in
 strm_vt_map0<(key,itm)>(gmap_strmize(kxs))

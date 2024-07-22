@@ -371,7 +371,7 @@ strm_vt_forall0<x0>
 (gseq_strmize<xs><x0>(xs)) where
 {
   #impltmp
-  forall0$test<x0> = forall$test<x0>
+  forall$test0<x0> = forall$test<x0>
 }(*where*)//end-of[gseq_forall/strmize]
 //
 (* ****** ****** *)
@@ -971,7 +971,7 @@ strm_vt_map0<x0><y0>(xs)
 ) where
 {
 #impltmp
-map0$fopr
+map$fopr0
 <x0><y0> = map$fopr<x0><y0>}//where
 end//end-of(gseq_map_lstrm/strmize(...))
 
@@ -1036,10 +1036,10 @@ strm_vt_mapopt0<x0><y0>(xs)
 ) where
 {
 #impltmp
-map0$fopr
+map$fopr0
 <x0><y0> = map$fopr<x0><y0>
 #impltmp
-filter0$test<x0> = filter$test<x0> }
+filter$test0<x0> = filter$test<x0> }
 end // end-of(impltmp)
 //end-(gseq_mapopt_lstrm/strmize(...))
 //
@@ -1154,7 +1154,7 @@ strm_vt_filter0
 ) where
 {
 #impltmp
-filter0$test<x0> = filter$test<x0>
+filter$test0<x0> = filter$test<x0>
 }(*where*)//end-of[gseq_filter_lstrm(xs)]
 
 (* ****** ****** *)
@@ -1609,7 +1609,7 @@ in//let
 ) where
 {
 #impltmp
-forall0$test
+forall$test0
 < x0 >( x0 ) = rforall$test<x0>(x0)
 }
 endlet//end-of-(let)
@@ -1628,7 +1628,7 @@ in//let
 ) where
 {
 #impltmp
-forall0$test
+forall$test0
 < x0 >( x0 ) = rforall$test<x0>(x0)
 }
 endlet//end-of-(let)
@@ -1886,7 +1886,7 @@ strm_vt_map0<r0>(xz)
 ) where
 {
 #impltmp
-map0$fopr<r0><xs> =
+map$fopr0<r0><xs> =
 gseq_make0_llist<xs><x0>
 }
 ) where
@@ -1911,7 +1911,7 @@ in//let
 strm_vt_group0_llist<x0>(xs)
 ) where
 { #impltmp
-  group0$test<x0> = group$test<x0> }
+  group$test0<x0> = group$test<x0> }
 end(*let*)//end-of-[gseq_group_lstrm_llist]
 //
 (* ****** ****** *)
@@ -1990,7 +1990,7 @@ gseq_itakeif_lstrm
 ) where
 {
 #impltmp
-itakeif0$test<x0> = itakeif$test<x0>
+itakeif$test0<x0> = itakeif$test<x0>
 } (* end of [gseq_itakeif_lstrm(xs)] *)
 
 (* ****** ****** *)
@@ -2290,7 +2290,7 @@ strm_vt_imap0<x0><y0>(xs)
 ) where
 {
 #impltmp
-imap0$fopr<x0><y0> = imap$fopr<x0><y0>
+imap$fopr0<x0><y0> = imap$fopr<x0><y0>
 }
 end//end-of-[gseq_imap_lstrm/strmize(xs)]
 
@@ -2336,10 +2336,10 @@ strm_vt_imapopt0<x0><y0>(xs)
 ) where
 {
 #impltmp
-imap0$fopr
+imap$fopr0
 <x0><y0> = imap$fopr<x0><y0>
 #impltmp
-ifilter0$test<x0> = ifilter$test<x0>
+ifilter$test0<x0> = ifilter$test<x0>
 }
 end//end-of-(gseq_imap_lstrm/strmize(xs))
 
@@ -2407,7 +2407,7 @@ in//let
 ) where
 {
   #impltmp
-  map0$fopr
+  map$fopr0
   <y0><xs> = gseq_make0_llist<xs><x0>
 }
 end(*let*)//end-of-[gseq_permutize_lstrm(xs)]
@@ -2516,7 +2516,7 @@ strm_vt_z2forall0<x0,y0>
 ) where
 {
 #impltmp
-z2forall0$test
+z2forall$test0
 <x0,y0>(*x0,y0*) = z2forall$test<x0,y0>
 } (*where*) // end of [gseq_z2forall(...)]
 
@@ -2536,7 +2536,7 @@ strm_vt_z2forcmp0<x0,y0>
 ) where
 {
 #impltmp
-z2forcmp0$fcmp
+z2forcmp$fcmp0
 <x0,y0>(*x0,y0*) = z2forcmp$fcmp<x0,y0>
 } (*where*) // end of [gseq_z2forcmp(...)]
 //
@@ -2660,7 +2660,7 @@ gseq_strmize<ys><y0>(ys)
 in//let
 let
 #impltmp
-z2map0$fopr
+z2map$fopr0
 <x0,y0><z0>(*x0,y0*) =
 z2map$fopr<x0,y0><z0>(*x0,y0*)
 in//let
@@ -2687,7 +2687,7 @@ strm_vt_z2iforall0<x0,y0>(xs, ys)
 ) where
 {
 #impltmp
-z2iforall0$test
+z2iforall$test0
 <x0,y0>(*x0,y0*) = z2iforall$test<x0,y0>
 } endlet // end-of-[gseq_z2iforall(xs,ys)]
 //
@@ -2711,7 +2711,7 @@ strm_vt_z2iforcmp0<x0,y0>(xs, ys)
 ) where
 {
 #impltmp
-z2iforcmp0$fcmp
+z2iforcmp$fcmp0
 <x0,y0>(*x0,y0*) = z2iforcmp$fcmp<x0,y0>
 } endlet // end-of-[gseq_z2iforcmp(xs,ys)]
 //
@@ -2735,7 +2735,7 @@ strm_vt_z2iforeach0<x0,y0>(xs, ys)
 ) where
 {
 #impltmp
-z2iforeach0$work
+z2iforeach$work0
 <x0,y0>(*x0,y0*)= z2iforeach$work<x0,y0>
 } endlet // end-of-[gseq_z2iforeach(xs,ys)]
 //
@@ -2779,7 +2779,7 @@ strm_vt_z2imap0<x0,y0>(xs, ys)
 ) where
 {
 #impltmp
-z2imap0$fopr
+z2imap$fopr0
 < x0, y0 >< z0 > = z2imap$fopr<x0,y0><z0> }
 end(*let*)//end-[gseq_gseq_z2imap_lstrm(xs,ys)]
 //

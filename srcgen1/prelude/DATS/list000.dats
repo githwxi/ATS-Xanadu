@@ -1006,7 +1006,7 @@ strm_vt_map0(res2) where
 #sexpdef n0 = n
 #sexpdef n1 = n-1
 #impltmp
-map0$fopr
+map$fopr0
 <xs(n1)><xs(n0)>(xs) =
 (
   list_vt_cons(x0, xs))
