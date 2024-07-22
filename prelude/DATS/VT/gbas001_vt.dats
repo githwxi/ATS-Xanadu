@@ -45,6 +45,32 @@ forall$test0 = forall$test<x0>
 < x0:t0 >
 forall$test1 = forall$test<x0>
 //
+(* ****** ****** *)
+//
+(*
+//
+#impltmp
+< x0:vt >
+forall$test0(x0) =
+let
+val r0 =
+forall$test1<x0>(x0)
+in//let
+(
+  g_free<x0>(x0); r0) end//let
+//
+#impltmp
+< x0:vt >
+forall$test1(x0) =
+let
+val x0 =
+g_copy<x0>(x0) in//let
+(forall$test0<x0>(x0)) end//let
+//
+*)
+//
+(* ****** ****** *)
+//
 #impltmp
 < x0:t0 >
 rforall$test0 = rforall$test<x0>
