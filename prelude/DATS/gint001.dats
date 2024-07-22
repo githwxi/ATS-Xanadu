@@ -79,6 +79,7 @@ HX-2024-07-22:
 Mon 22 Jul 2024 09:02:06 AM EDT
 *)
 //
+(*
 #impltmp
 <(*tmp*)>
 nint_strmize(ni) =
@@ -95,6 +96,22 @@ if
 then strmcon_vt_nil() else
 strmcon_vt_cons(i0, auxmain(i0+1))
 )
+}(*where*)//end-[nint_strmize(ni)]
+*)
+//
+(*
+HX-2024-07-22:
+Mon 22 Jul 2024 11:48:37 AM EDT
+*)
+#impltmp
+<(*tmp*)>
+nint_strmize(ni) =
+(
+nint_map_lstrm<ni>(ni))
+where
+{
+#impltmp
+map$fopr<ni><ni>(i0) = (i0)
 }(*where*)//end-[nint_strmize(ni)]
 //
 #impltmp
@@ -114,6 +131,37 @@ gseq_strmize1<ni><ni> = nint_strmize<>
 gseq_strqize0<ni><ni> = nint_strqize<>
 #impltmp
 gseq_strqize1<ni><ni> = nint_strqize<>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-22:
+Mon 22 Jul 2024 11:48:37 AM EDT
+*)
+//
+#impltmp
+< y0:vt >
+nint_map_lstrm
+  ( ni ) =
+(
+  auxmain(0)) where
+{
+fun
+auxmain
+(i0: nint):
+strm_vt(y0) = $llazy
+(
+if
+(i0 >= ni)
+then strmcon_vt_nil() else
+let
+val y0 =
+map$fopr<ni><y0>(i0) in//let
+strmcon_vt_cons(y0, auxmain(i0+1))
+end(*let*)//else//end-of-[if]
+)
+}(*where*)//end-[nint_map_lstrm(ni)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

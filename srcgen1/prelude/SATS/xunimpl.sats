@@ -317,6 +317,10 @@ nint_strqize
 {n:i0}
 (xs: nint(n)): strq_vt(ni, n)
 //
+fun
+<y0:vt>
+nint_map_lstrm(xs: nint): strm_vt(y0)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

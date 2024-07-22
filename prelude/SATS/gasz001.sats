@@ -42,19 +42,34 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
-<xs:t0>
+<xs:vt>
 <x0:vt>
+gasz_listize
+ ( xs: xs ): list_vt(x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gasz_strmize
+ ( xs: xs ): strm_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gasz_strqize
+ ( xs: xs ): strq_vt(x0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
 gasz_forall(xs: xs): bool
+//
 fun
 <xs:t0>
-<x0:vt>
-gasz_forall0(xs: xs): bool
-(*
-fun
-<xs:t0>
-<x0:vt>
-gasz_forall1(xs: xs): bool
-*)
+<x0:t0>
+gasz_rforall(xs: xs): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)
