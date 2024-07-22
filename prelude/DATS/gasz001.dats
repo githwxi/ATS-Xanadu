@@ -44,15 +44,7 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gasz_strmize =
-gasz_strmize0<xs><x0>
-//
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:vt >
-gasz_strmize0
+gasz_strmize
   ( xs ) =
 let
 val n0 = length(xs)
@@ -73,54 +65,40 @@ end//let//end-of-[gasz_strmize0(xs)]
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gasz_forall =
-gasz_forall0<xs><x0>(*void*)
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gasz_rforall =
-gasz_rforall0<xs><x0>(*void*)
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gasz_iforall =
-gasz_iforall0<xs><x0>(*void*)
-//
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:vt >
-gasz_forall0(xs) =
+gasz_forall(xs) =
 let
 val n0 = length(xs)
 in//let
-nint_forall<ni>(n0) where
+(
+nint_forall<ni>(n0)
+) where
 {
 #impltmp
 forall$test<ni>(i0) =
-forall0$test<x0>
+forall$test<x0>
 (gasz_get_at_raw<xs><x0>(xs, i0))
 }
-end//let//end-of-[gasz_forall0(xs)]
+end//let//end-of-[gasz_forall(xs)]
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
-< x0:vt >
-gasz_rforall0(xs) =
+< x0:t0 >
+gasz_rforall(xs) =
 let
 val n0 = length(xs)
 in//let
-nint_rforall<ni>(n0) where
+(
+nint_rforall<ni>(n0)
+) where
 {
 #impltmp
 rforall$test<ni>(i0) =
-rforall0$test<x0>
+rforall$test<x0>
 (gasz_get_at_raw<xs><x0>(xs, i0))
 }
-end//let//end-of-[gasz_rforall0(xs)]
+end//let//end-of-[gasz_rforall(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
