@@ -47,11 +47,13 @@ Authoremail: gmhwxiATgmailDOTcom
 gasz_strmize
   ( xs ) =
 let
-val n0 = length(xs)
+val n0 =
+gasz_length
+<xs><x0>(xs)
 in//let
 (
-nint_map_lstrm<ni>(n0)
-) where
+nint_map_lstrm<>(n0))
+where
 {
 #impltmp
 map$fopr<ni>(i0) =
@@ -67,12 +69,19 @@ end//let//end-of-[gasz_strmize0(xs)]
 < x0:t0 >
 gasz_forall(xs) =
 let
-val n0 = length(xs)
+val n0 =
+gasz_length
+<xs><x0>(xs)
 in//let
 (
-nint_forall<ni>(n0)
-) where
+nint_forall<>(n0))
+where
 {
+(*
+HX-2024-07-22:
+This example shows
+the need for non-rec templates!
+*)
 #impltmp
 forall$test<ni>(i0) =
 forall$test<x0>
@@ -87,11 +96,13 @@ end//let//end-of-[gasz_forall(xs)]
 < x0:t0 >
 gasz_rforall(xs) =
 let
-val n0 = length(xs)
+val n0 =
+gasz_length
+<xs><x0>(xs)
 in//let
 (
-nint_rforall<ni>(n0)
-) where
+nint_rforall<>(n0))
+where
 {
 #impltmp
 rforall$test<ni>(i0) =
