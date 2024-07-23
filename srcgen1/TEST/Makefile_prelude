@@ -227,6 +227,8 @@ $(XATSOPT) -d $(PRELUDE)/DATS/gseq001.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gseq002.dats
 all0_dats:: ; \
+$(XATSOPT) -s $(PRELUDE)/DATS/gasz000.dats
+all0_dats:: ; \
 $(XATSOPT) -s $(PRELUDE)/DATS/gasz001.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gint001.dats

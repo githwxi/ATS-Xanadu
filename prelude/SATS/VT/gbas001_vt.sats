@@ -44,17 +44,17 @@ HX-2024-07-15
 *)
 fun
 <x0:vt>
-max0$nil((*nil*)): (x0)
+max$nil0((*nil*)): (x0)
 fun
 <x0:vt>
-max1$nil((*nil*)): (x0)
+max$nil1((*nil*)): (x0)
 //
 fun
 <x0:vt>
-min1$nil((*nil*)): (x0)
+min$nil0((*nil*)): (x0)
 fun
 <x0:vt>
-min0$nil((*nil*)): (x0)
+min$nil1((*nil*)): (x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -66,7 +66,7 @@ fun
 <xs:vt>
 <x0:vt>
 get0_at$exn
-  (i0: ni): x0
+(xs: ~xs, i0: ni): x0
 fun
 <xs:vt>
 <x0:vt>
@@ -77,23 +77,23 @@ fun
 <xs:vt>
 <x0:vt>
 set0_at$exn
-  (i0: ni): void
+(xs: ~xs, x0, ni): void
 fun
 <xs:vt>
 <x0:vt>
 set1_at$exn
-(xs: !xs, i0: ni): void
+(xs: !xs, x0, ni): void
 //
 fun
 <xs:vt>
 <x0:vt>
 fset0_at$exn
-  (i0: ni): (xs)
+(xs: ~xs, x0, ni): (xs)
 fun
 <xs:vt>
 <x0:vt>
 fset1_at$exn
-(xs: !xs, i0: ni): (xs)
+(xs: !xs, x0, ni): (xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)

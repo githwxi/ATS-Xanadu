@@ -88,11 +88,11 @@ min0$nil<x0> = min$nil<x0>(*nil*)
 //
 #impltmp
 < xs:t0 >
-< x0:t0 >
+< x0:vt >
 get1_at$exn = get_at$exn<xs><x0>
 #impltmp
 < xs:t0 >
-< x0:t0 >
+< x0:vt >
 set1_at$exn = set_at$exn<xs><x0>
 #impltmp
 < xs:t0 >

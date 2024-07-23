@@ -23,19 +23,21 @@ min$nil((*nil*)): (x0)
 //
 fun
 <xs:t0>
-<x0:t0>
+<x0:vt>
 get_at$exn
 (xs: xs, i0: ni): x0
 fun
 <xs:t0>
-<x0:t0>
+<x0:vt>
 set_at$exn
-(xs: xs, i0: ni): void
+( xs: xs
+, i0: ni, x0: x0): void
 fun
 <xs:t0>
 <x0:t0>
 fset_at$exn
-(xs: xs, i0: ni): (xs)
+( xs: xs
+, i0: ni, x0: x0): (xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -646,23 +646,25 @@ fun
 <xs:vt>
 <x0:vt>
 set0_at$exn
-  (i0: ni): void
+(xs: ~xs, ni, x0): void
 fun
 <xs:vt>
 <x0:vt>
 set1_at$exn
-(xs: !xs, i0: ni): void
+(xs: !xs, ni, x0): void
 //
 fun
 <xs:vt>
 <x0:vt>
 fset0_at$exn
-  (i0: ni): (xs)
+(xs: ~xs, ni, x0): (xs)
 fun
 <xs:vt>
 <x0:vt>
 fset1_at$exn
-(xs: !xs, i0:ni): (xs)
+(xs: !xs, ni, x0): (xs)
+//
+(* ****** ****** *)
 //
 fun
 <xs:vt>
