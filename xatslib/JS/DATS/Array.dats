@@ -45,16 +45,25 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
-< a: vt >
-g_print<jsarray(a)> =
+{ a: vt }
+g_print<jsarray(a)>
+  ( xs ) =
+let
+//
+#typedef
+xs = jsarray(a)
+//
+#impltmp
+gseq$beg
+<xs><x0>() = "jsarray("
+#impltmp
+gseq$end<xs><x0>() = ")"
+#impltmp
+gseq$sep<xs><x0>() = ","
+in//let
 (
-gseq_print1<jsarray(a)><a>
-) where
-{
-#impltmp gseq$sep = ")"
-#impltmp gseq$end = ")"
-#impltmp gseq$beg = "jsarray("
-}
+gseq_print1<jsarray(a)><a>(xs))
+end//end-of-[g_print<jsarray(a)>]
 //
 (* ****** ****** *)
 (* ****** ****** *)

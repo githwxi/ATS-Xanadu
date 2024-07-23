@@ -262,16 +262,28 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_foritm0(xs: ~xs): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_foritm1(xs: !xs): void
 //
 fun
 <xs:vt>
 <x0:vt>
 gseq_rforitm0(xs: ~xs): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_rforitm1(xs: !xs): void
 //
 fun
 <xs:vt>
 <x0:vt>
 gseq_iforitm0(xs: ~xs): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_iforitm1(xs: !xs): void
 //
 (* ****** ****** *)
 //
