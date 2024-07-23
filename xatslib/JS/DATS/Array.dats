@@ -171,6 +171,18 @@ jsarray_forall_c1fr<>
 { x0:t0 }
 gseq_forall
 <jsarray(x0)><x0> = jsarray_forall<x0>
+//
+#impltmp
+{ x0:t0 }
+gseq_forall0
+<jsarray(x0)><x0>
+ ( xs ) =
+(
+jsarray_forall<x0>(xs)) where
+{
+#impltmp
+forall$test1<x0> = forall$test0<x0> }
+//
 #impltmp
 { x0:vt }
 gseq_forall1

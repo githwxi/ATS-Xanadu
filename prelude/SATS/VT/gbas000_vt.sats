@@ -102,11 +102,11 @@ g_tostr1(obj: !a): strn
 (* ****** ****** *)
 //
 fun
-<a:vt>
-g_print0(obj: ~a): void
+<x0:vt>
+g_print0(obj: ~x0): void
 fun
-<a:vt>
-g_print1(obj: !a): void
+<x0:vt>
+g_print1(obj: !x0): void
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)

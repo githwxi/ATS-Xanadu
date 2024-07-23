@@ -273,33 +273,36 @@ and i1ins =
 //
 (* ****** ****** *)
 //
+|I1INSlam0 of
+(token // kind
+,fjarglst(*args*),i1cmp(*body*))
+//
+(* ****** ****** *)
+//
 |I1INSflat of
-(i1val(*leftval*))//dereference
+(i1val(*leftval*)) // de-leftval
 //
 (* ****** ****** *)
 //
 |I1INSfold of
-(i1val(*datacon*))//fold:no-op
+(i1val(*datacon*)) // fold:no-op
 //
 |I1INSfree of
-(i1val(*datacon*))//malloc-free
+(i1val(*datacon*)) // malloc-free
 //
 (* ****** ****** *)
 //
-|I1INSdl0az of i1val//l0azy-fun
-|I1INSdl1az of i1val//l1azy-fun
+|I1INSdl0az of (i1val) // l0azy-fun
+|I1INSdl1az of (i1val) // l1azy-fun
 //
 (* ****** ****** *)
 //
-|I1INSl0azy of
-(d1exp,i1cmp(*lazy-thunk*))
-|I1INSl1azy of
-(d1exp,i1cmp,i1cmplst(*frees*))
+|I1INSl0azy of (d1exp,i1cmp(*lazy-thunk*))
+|I1INSl1azy of (d1exp,i1cmp,i1cmplst(*frees*))
 //
 (* ****** ****** *)
 //
-|I1INSassgn of
-(i1val(*l-val*),i1val(*r-val*))
+|I1INSassgn of (i1val(*l-val*),i1val(*r-val*))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -376,9 +379,12 @@ For consed left-values
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 |I1Vlam0 of
 ( token(*knd*)
 , fjarglst(*args*), i1cmp(*body*))
+*)
+//
 |I1Vfix0 of
 ( token(*knd*)
 , d2var(*fid*)

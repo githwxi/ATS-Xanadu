@@ -1507,6 +1507,29 @@ end//let//end-of-[I1INScas0(...)]
 //
 (* ****** ****** *)
 //
+|I1INSlam0
+(tknd
+,fjas, icmp) =>
+(
+nindstrnfpr
+(filr, nind, "let ");
+i1tnmfpr(filr, itnm);
+strnfpr(filr," = function ");
+fjas1js1(filr, fjas);
+strnfpr(filr, " { // lam0(");
+tokenfpr(filr, tknd);
+strnfpr(filr, ")");fprintln(filr);
+(
+envx2js_incnind
+( env0,2(*++*) );
+js1emit_fjarglst(env0, fjas);f0_i1cmpret(env0, icmp));
+(
+envx2js_decnind
+( env0,2(*--*) );nindstrnfpr(filr, nind, "} // endfun(lam0)\n"))
+)
+//
+(* ****** ****** *)
+//
 |I1INSl0azy
 (dknd, icmp) =>
 (

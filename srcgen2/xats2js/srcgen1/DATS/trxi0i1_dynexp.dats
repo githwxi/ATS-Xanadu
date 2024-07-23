@@ -455,6 +455,33 @@ val (  ) =
 (* ****** ****** *)
 //
 fun
+i1val_lam0
+( env0:
+! envi0i1
+, loc0: loc_t
+, tknd: token
+, fjas: fjarglst
+, icmp: i1cmp
+  (*lam0-fbody*)): i1val =
+(
+i1val_tnm(loc0, itnm)) where
+{
+//
+val itnm = i1tnm_new0((*0*))
+val iins =
+  I1INSlam0(tknd, fjas, icmp)
+//
+val ilet = I1LETnew1(itnm, iins)
+//
+val (  ) =
+(
+  envi0i1_insert_ilet(env0, ilet) )
+}(*where*)//end-of-[i1val_lam0(env0,...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 i1val_p0rj
 ( env0:
 ! envi0i1
@@ -1858,8 +1885,8 @@ val icmp = I1CMPcons(ilts, iret)
 //
 in//let
 (
-  i1val_make_node
-  (loc0, I1Vlam0(tknd, fjas, icmp)))
+  i1val_lam0
+  (env0, loc0, tknd, fjas, icmp))
 end(*let*)//end-of-[f0_lam0(env0,iexp)]
 //
 (* ****** ****** *)
