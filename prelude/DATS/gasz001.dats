@@ -43,7 +43,7 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #impltmp
 < xs:t0 >
-< x0:t0 >
+< x0:vt >
 gasz_strmize
   ( xs ) =
 let
@@ -52,7 +52,7 @@ gasz_length
 <xs><x0>(xs)
 in//let
 (
-nint_map_lstrm<>(n0))
+nint_map_lstrm<x0>(n0))
 where
 {
 #impltmp
@@ -66,26 +66,32 @@ end//let//end-of-[gasz_strmize0(xs)]
 //
 #impltmp
 < xs:t0 >
-< x0:t0 >
+< x0:vt >
 gasz_forall(xs) =
 let
 val n0 =
 gasz_length
 <xs><x0>(xs)
 in//let
-(
-nint_forall<>(n0))
-where
-{
 (*
 HX-2024-07-22:
 This example shows
 the need for non-rec templates!
 *)
+(
+nint_forall<>(n0))
+where
+{
 #impltmp
 forall$test<ni>(i0) =
-forall$test<x0>
-(gasz_get_at_raw<xs><x0>(xs, i0))
+(
+  g_free<x0>(x0); r0)
+where
+{
+val x0 =
+gasz_get_at_raw
+<xs><x0>(xs, i0)
+val r0 = forall$test1<x0>(x0) }
 }
 end//let//end-of-[gasz_forall(xs)]
 //
@@ -93,21 +99,32 @@ end//let//end-of-[gasz_forall(xs)]
 //
 #impltmp
 < xs:t0 >
-< x0:t0 >
+< x0:vt >
 gasz_rforall(xs) =
 let
 val n0 =
 gasz_length
 <xs><x0>(xs)
 in//let
+(*
+HX-2024-07-22:
+This example shows
+the need for non-rec templates!
+*)
 (
 nint_rforall<>(n0))
 where
 {
 #impltmp
 rforall$test<ni>(i0) =
-rforall$test<x0>
-(gasz_get_at_raw<xs><x0>(xs, i0))
+(
+  g_free<x0>(x0); r0)
+where
+{
+val x0 =
+gasz_get_at_raw
+<xs><x0>(xs, i0)
+val r0 = rforall$test1<x0>(x0) }
 }
 end//let//end-of-[gasz_rforall(xs)]
 //
