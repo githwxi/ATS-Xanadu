@@ -38,15 +38,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-< x0:t0 >
-forall$test0 = forall$test<x0>
-#impltmp
-< x0:t0 >
-forall$test1 = forall$test<x0>
-//
-(* ****** ****** *)
-//
+(*
+HX-2024-07-22:
+Should this kind of
+routing be supported?
+Mon 22 Jul 2024 08:28:43 PM EDT
+*)
 (*
 //
 #impltmp
@@ -68,6 +65,15 @@ g_copy<x0>(x0) in//let
 (forall$test0<x0>(x0)) end//let
 //
 *)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+forall$test0 = forall$test<x0>
+#impltmp
+< x0:t0 >
+forall$test1 = forall$test<x0>
 //
 (* ****** ****** *)
 //
@@ -256,6 +262,11 @@ ifilter$test1 = ifilter$test<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(*
+HX-2024-07-22:
+Mon 22 Jul 2024 08:28:43 PM EDT
+*)
 //
 #impltmp
 < x0:t0 >
