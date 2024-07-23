@@ -159,13 +159,13 @@ strm_vt_forall0<x0>
 gseq_rforall1
   ( xs ) =
 (
-strm_vt_rforall0<x0>
+strm_vt_forall0<x0>
 (
-gseq_strmize1<xs><x0>(xs)))
+gseq_rstrmize1<xs><x0>(xs)))
 where
 {
 #impltmp
-rforall$test0<x0>(x0) =
+forall$test0<x0>(x0) =
 let
 val b0 =
 rforall$test1<x0>(x0)
@@ -638,6 +638,40 @@ val r0 =
 //
 }(*where*)//end-of-[gseq_ifolditm0(xs, r0)]
 //
+#impltmp
+< xs:vt >
+< x0:vt >
+< r0:vt >
+gseq_ifolditm1
+  (xs, r0) = r0
+where {
+//
+var i0: ni = 0
+var r0: r0 = r0
+//
+val pi = $addr(i0)
+val pr = $addr(r0)
+//
+val () =
+(
+gseq_foritm1<xs><x0>(xs)
+) where
+{
+#impltmp
+foritm$work1<x0>(x0) =
+(
+  $UN.p2tr_set<r0>(pr, r0)
+; $UN.p2tr_set<ni>(pi, i0+1))
+where
+{
+val i0 = $UN.p2tr_get<ni>(pi)
+val r0 = $UN.p2tr_get<r0>(pr)
+val r0 =
+(
+  ifolditm$fopr1<x0><r0>(r0, i0, x0))}}
+//
+}(*where*)//end-of-[gseq_ifolditm1(xs, r0)]
+//
 (* ****** ****** *)
 //
 (*
@@ -685,6 +719,40 @@ val r0 =
   irfolditm$fopr0<x0><r0>(i0, x0, r0))}}
 //
 }(*where*)//end-of-[gseq_irfolditm0(xs, r0)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< r0:vt >
+gseq_irfolditm1
+  (xs, r0) = r0
+where {
+//
+var i0: ni = 0
+var r0: r0 = r0
+//
+val pi = $addr(i0)
+val pr = $addr(r0)
+//
+val () =
+(
+gseq_rforitm1<xs><x0>(xs)
+) where
+{
+#impltmp
+rforitm$work1<x0>(x0) =
+(
+  $UN.p2tr_set<r0>(pr, r0)
+; $UN.p2tr_set<ni>(pi, i0+1))
+where
+{
+val i0 = $UN.p2tr_get<ni>(pi)
+val r0 = $UN.p2tr_get<r0>(pr)
+val r0 =
+(
+  irfolditm$fopr1<x0><r0>(i0, x0, r0))}}
+//
+}(*where*)//end-of-[gseq_irfolditm1(xs, r0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -862,6 +930,44 @@ val (b0, r0) =
 //
 }(*where*)//end-of-[gseq_ifoldall0(xs, r0)]
 //
+#impltmp
+< xs:vt >
+< x0:vt >
+< r0:vt >
+gseq_ifoldall1
+  (xs, r0) = r0
+where {
+//
+var i0: ni = 0
+var r0: r0 = r0
+//
+val pi = $addr(i0)
+val pr = $addr(r0)
+//
+val b0 =
+(
+gseq_forall1<xs><x0>(xs)
+) where
+{
+#impltmp
+forall$test1
+< x0 >( x0 ) = ( b0 )
+where
+{
+val () =
+$UN.p2tr_set<r0>(pr, r0)
+val () =
+$UN.p2tr_set<ni>(pi, i0+1)}
+where
+{
+val i0 = $UN.p2tr_get<ni>(pi)
+val r0 = $UN.p2tr_get<r0>(pr)
+val (b0, r0) =
+(
+  ifoldall$fopr1<x0><r0>(r0, i0, x0))}}
+//
+}(*where*)//end-of-[gseq_ifoldall1(xs, r0)]
+//
 (* ****** ****** *)
 //
 (*
@@ -912,6 +1018,44 @@ val (b0, r0) =
   irfoldall$fopr0<x0><r0>(i0, x0, r0))}}
 //
 }(*where*)//end-of-[gseq_irfoldall0(xs, r0)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< r0:vt >
+gseq_irfoldall1
+  (xs, r0) = r0
+where {
+//
+var i0: ni = 0
+var r0: r0 = r0
+//
+val pi = $addr(i0)
+val pr = $addr(r0)
+//
+val b0 =
+(
+gseq_rforall1<xs><x0>(xs)
+) where
+{
+#impltmp
+rforall$test1
+< x0 >( x0 ) = ( b0 )
+where
+{
+val () =
+$UN.p2tr_set<r0>(pr, r0)
+val () =
+$UN.p2tr_set<ni>(pi, i0+1)}
+where
+{
+val i0 = $UN.p2tr_get<ni>(pi)
+val r0 = $UN.p2tr_get<r0>(pr)
+val (b0, r0) =
+(
+  irfoldall$fopr1<x0><r0>(i0, x0, r0))}}
+//
+}(*where*)//end-of-[gseq_irfoldall1(xs, r0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1077,6 +1221,22 @@ in//let
   not(gseq_forall0<xs><x0>(xs))
 end//let//end-of-[gseq_exists0(xs)]
 //
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_exists1
+  ( xs ) =
+let
+//
+#impltmp
+forall$test1<x0>(x0) =
+(
+  not(exists$test1<x0>(x0)))
+//
+in//let
+  not(gseq_forall1<xs><x0>(xs))
+end//let//end-of-[gseq_exists1(xs)]
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -1094,6 +1254,22 @@ rforall$test0<x0>(x0) =
 in//let
   not(gseq_rforall0<xs><x0>(xs))
 end(*let*)//end-of-[gseq_rexists0(xs)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_rexists1
+  ( xs ) =
+let
+//
+#impltmp
+rforall$test1<x0>(x0) =
+(
+  not(rexists$test1<x0>(x0)))
+//
+in//let
+  not(gseq_rforall1<xs><x0>(xs))
+end(*let*)//end-of-[gseq_rexists1(xs)]
 //
 (* ****** ****** *)
 //
@@ -1114,6 +1290,23 @@ iforall$test0<x0>(i0, x0) =
 //
 }(*where*)//end-of-[gseq_iexists0(xs)]
 //
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_iexists1
+  ( xs ) =
+(
+not(gseq_iforall1<xs><x0>(xs))
+) where
+{
+//
+#impltmp
+iforall$test1<x0>(i0, x0) =
+(
+  not(iexists$test1<x0>(i0, x0)))
+//
+}(*where*)//end-of-[gseq_iexists1(xs)]
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -1132,6 +1325,23 @@ irforall$test0<x0>(i0, x0) =
   not(irexists$test0<x0>(i0, x0)))
 //
 }(*where*)//end-of-[gseq_irexists0(xs)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_irexists1
+  ( xs ) =
+(
+not(gseq_irforall1<xs><x0>(xs))
+) where
+{
+//
+#impltmp
+irforall$test1<x0>(i0, x0) =
+(
+  not(irexists$test1<x0>(i0, x0)))
+//
+}(*where*)//end-of-[gseq_irexists1(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
