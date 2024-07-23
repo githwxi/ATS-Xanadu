@@ -45,6 +45,21 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
+< a: vt >
+g_print<jsarray(a)> =
+(
+gseq_print1<jsarray(a)><a>
+) where
+{
+#impltmp gseq$sep = ")"
+#impltmp gseq$end = ")"
+#impltmp gseq$beg = "jsarray("
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 <(*tmp*)>
 jsarray_make_1val
   ( x1 ) =

@@ -49,7 +49,14 @@ $synext("A"):jsarray(sint,3)
 (* ****** ****** *)
 
 val A =
-jsarray(1, 2, 3)
+jsarray(1, 3, 2)
+val () =
+(
+println("A = ", A))
+val () = A.sortref()
+val () =
+(
+println("A = ", A))
 
 val iA =
 gseq_ifolditm
