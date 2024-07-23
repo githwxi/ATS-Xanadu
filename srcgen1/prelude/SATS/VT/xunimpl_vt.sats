@@ -768,6 +768,7 @@ gseq_irfolditm0(~xs, r0): (r0)
 fun
 <xs:vt>
 <x0:vt>
+<r0:vt>
 gseq_irfolditm1(!xs, r0): (r0)
 //
 fun
@@ -778,6 +779,7 @@ gseq_irfoldall0(~xs, r0): (r0)
 fun
 <xs:vt>
 <x0:vt>
+<r0:vt>
 gseq_irfoldall1(!xs, r0): (r0)
 //
 (* ****** ****** *)
