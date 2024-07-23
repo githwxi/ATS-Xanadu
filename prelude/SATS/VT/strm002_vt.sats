@@ -30,62 +30,32 @@
 (*
 Author: Hongwei Xi
 (*
-Tue 23 Jul 2024 05:53:46 PM EDT
+Tue 23 Jul 2024 05:28:07 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef ni = nint
+//
+fun
+<x0:vt
+,y0:vt>
+strm_vt_z2forall0
+( xs: ~strm_vt(x0)
+, ys: ~strm_vt(y0)): bool//end-of-[fun]
+//
+fun
+<x0:vt
+,y0:vt>
+strm_vt_iz2forall0
+( xs: ~strm_vt(x0)
+, ys: ~strm_vt(y0)): bool//end-of-[fun]
+//
 (* ****** ****** *)
 (* ****** ****** *)
-//
-fun
-<x0:vt
-,y0:vt>
-z2forall$test0
-(x0: ~x0, y0: ~y0): bool
-fun
-<x0:vt
-,y0:vt>
-z2forall$test1
-(x0: !x0, y0: !y0): bool
-//
-fun
-<x0:vt
-,y0:vt>
-rz2forall$test0
-(x0: ~x0, y0: ~y0): bool
-fun
-<x0:vt
-,y0:vt>
-rz2forall$test1
-(x0: !x0, y0: !y0): bool
-//
-fun
-<x0:vt
-,y0:vt>
-iz2forall$test0
-(i0: ni, x0: ~x0, y0: ~y0): bool
-fun
-<x0:vt
-,y0:vt>
-iz2forall$test1
-(i0: ni, x0: !x0, y0: !y0): bool
-//
-fun
-<x0:vt
-,y0:vt>
-irz2forall$test0
-(i0: ni, x0: ~x0, y0: ~y0): bool
-fun
-<x0:vt
-,y0:vt>
-irz2forall$test1
-(i0: ni, x0: !x0, y0: !y0): bool
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_VT_gbas002_vt.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_VT_strm002_vt.sats] *)
