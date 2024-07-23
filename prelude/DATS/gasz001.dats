@@ -134,4 +134,4 @@ end//let//end-of-[gasz_rforall(xs)]
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_gseq001.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_gasz001.dats] *)

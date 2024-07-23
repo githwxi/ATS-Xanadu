@@ -61,12 +61,12 @@ HX-2024-07-15
 //
 fun
 <xs:t0>
-<x0:t0>
+<x0:vt>
 get_at$exn
 (xs: xs, i0: ni): x0
 fun
 <xs:t0>
-<x0:t0>
+<x0:vt>
 set_at$exn
 (xs:xs,i0:ni,x0:x0): void
 fun
