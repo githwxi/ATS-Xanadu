@@ -161,6 +161,35 @@ strn_print<>(gseq$end<xs><x0>())
 endlet // end-of-[gseq_print0(xs)]
 //
 (* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_print1(xs) =
+let
+val () =
+strn_print<>
+(gseq$beg<xs><x0>())
+val () =
+(
+gseq_iforitm1<xs><x0>(xs)
+) where
+{
+#impltmp
+iforitm$work1<x0>(ni, x0) =
+(
+  g_print1<x0>(x0)) where
+{
+val () =
+if ni > 0 then
+strn_print<>(gseq$sep<xs><x0>())
+}
+}
+val () =
+strn_print<>(gseq$end<xs><x0>())
+endlet // end-of-[gseq_print1(xs)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
