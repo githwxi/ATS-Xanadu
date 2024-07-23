@@ -138,6 +138,10 @@ nindstrnfpr
 (* ****** ****** *)
 //
 fun
+tokenfpr
+(filr: FILR, tok0: token): void
+//
+fun
 d2confpr
 (filr: FILR, dcon: d2con): void
 fun

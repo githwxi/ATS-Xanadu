@@ -55,6 +55,9 @@ Authoremail: gmhwxiATgmailDOTcom
 #staload // LOC =
 "./../../../SATS/locinfo.sats"
 //
+#staload // LEX =
+"./../../../SATS/lexing0.sats"
+//
 #staload // D2E =
 "./../../../SATS/dynexp2.sats"
 //
@@ -122,6 +125,16 @@ val stmp = i1tnm_get_stmp(itnm)
 }(*where*)//end-of-[i1tnmfpr(filr,itnm)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+tokenfpr
+( filr,tok0 ) =
+let
+(
+  token_fprint(filr, tok0))
+end(*let*)//end-of-[tokenfpr(env0,tok0)]
+//
 (* ****** ****** *)
 //
 #implfun

@@ -256,12 +256,15 @@ print("I1Vlpcn(",lab0,";",i1v1,")"))
 //
 (* ****** ****** *)
 //
+(*
 |I1Vlam0
 (tknd
 ,fjas, icmp) =>
 (
 print("I1Vlam0(");
 print(tknd, ";", fjas, ";", icmp, ")"))
+*)
+//
 |I1Vfix0
 (tknd, dvar
 ,fjas, icmp) =>
@@ -378,6 +381,16 @@ _(*otherwise*) => ( i0e1 ))}
 //
 (* ****** ****** *)
 //
+|I1INSlam0
+(tknd
+,fjas, icmp) =>
+( print
+( "I1INSlam0(" )
+; print
+( tknd,";",fjas,";",icmp,")"))
+//
+(* ****** ****** *)
+//
 |I1INSpcon
 (dlab, icon) =>
 ( print("I1INSpcon(")
@@ -460,8 +473,9 @@ print("I1INSdl1az(",i1f0,")"))
 //
 |I1INSassgn
 (i1vl, i1vr) =>
+(
 print
-("I1INSassgn(", i1vl, ";", i1vr, ")")
+("I1INSassgn(", i1vl, ";", i1vr, ")"))
 //
 (* ****** ****** *)
 //
