@@ -857,6 +857,16 @@ fun
 gseq_z2foreach1(xs: !xs, ys: !ys): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+<z0:vt>
+gseq_z2map0_lstrm(xs: ~xs, ys: ~ys): strm_vt(z0)
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX-2023-08-14:
