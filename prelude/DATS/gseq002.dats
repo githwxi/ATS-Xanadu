@@ -40,6 +40,41 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< xs:t0
+, ys:t0 >
+< x0:t0
+, y0:t0 >
+gseq_z2forall =
+gseq_z2forall0<xs,ys><x0,y0>(*void*)
+//
+#impltmp
+< xs:t0
+, ys:t0 >
+< x0:t0
+, y0:t0 >
+gseq_rz2forall =
+gseq_rz2forall0<xs,ys><x0,y0>(*void*)
+//
+#impltmp
+< xs:t0
+, ys:t0 >
+< x0:t0
+, y0:t0 >
+gseq_iz2forall =
+gseq_iz2forall0<xs,ys><x0,y0>(*void*)
+//
+#impltmp
+< xs:t0
+, ys:t0 >
+< x0:t0
+, y0:t0 >
+gseq_irz2forall =
+gseq_irz2forall0<xs,ys><x0,y0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

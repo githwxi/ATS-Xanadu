@@ -140,6 +140,10 @@ fun
 <x0:t0
 ,y0:t0>
 iz2forall$work(ni, x0, y0): void
+fun
+<x0:t0
+,y0:t0>
+irz2forall$work(ni, x0, y0): void
 //
 (* ****** ****** *)
 //
@@ -469,6 +473,36 @@ fun
 <xs:t0>
 <x0:vt>
 gasz_rforall(xs: xs): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_z2forall(xs: xs, ys: ys): bool
+*)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_rz2forall(xs: xs, ys: ys): bool
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_iz2forall(xs: xs, ys: ys): bool
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_irz2forall(xs: xs, ys: ys): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)

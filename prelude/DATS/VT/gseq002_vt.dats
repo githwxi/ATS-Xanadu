@@ -242,7 +242,7 @@ z2forall$test0<x0,y0>(x0, y0) =
 let
 val () =
 z2foritm$work0<x0,y0>(x0, y0) in true end
-}
+}(*where*)//end-of-[gseq_z2foritm0(xs,ys)]
 //
 #impltmp
 < xs:vt
@@ -263,7 +263,7 @@ z2forall$test1<x0,y0>(x0, y0) =
 let
 val () =
 z2foritm$work1<x0,y0>(x0, y0) in true end
-}
+}(*where*)//end-of-[gseq_z2foritm1(xs,ys)]
 //
 (* ****** ****** *)
 //
@@ -286,7 +286,7 @@ rz2forall$test0<x0,y0>(x0, y0) =
 let
 val () =
 rz2foritm$work0<x0,y0>(x0, y0) in true end
-}
+}(*where*)//end-of-[gseq_rz2foritm0(xs,ys)]
 //
 #impltmp
 < xs:vt
@@ -307,7 +307,7 @@ rz2forall$test1<x0,y0>(x0, y0) =
 let
 val () =
 rz2foritm$work1<x0,y0>(x0, y0) in true end
-}
+}(*where*)//end-of-[gseq_rz2foritm1(xs,ys)]
 //
 (* ****** ****** *)
 //
@@ -330,7 +330,7 @@ iz2forall$test0<x0,y0>(i0, x0, y0) =
 let
 val () =
 iz2foritm$work0<x0,y0>(i0, x0, y0) in true end
-}
+}(*where*)//end-of-[gseq_iz2foritm0(xs,ys)]
 //
 #impltmp
 < xs:vt
@@ -351,7 +351,7 @@ iz2forall$test1<x0,y0>(i0, x0, y0) =
 let
 val () =
 iz2foritm$work1<x0,y0>(i0, x0, y0) in true end
-}
+}(*where*)//end-of-[gseq_iz2foritm1(xs,ys)]
 //
 (* ****** ****** *)
 //
@@ -374,7 +374,7 @@ irz2forall$test0<x0,y0>(i0, x0, y0) =
 let
 val () =
 irz2foritm$work0<x0,y0>(i0, x0, y0) in true end
-}
+}(*where*)//end-of-[gseq_irz2foritm0(xs,ys)]
 //
 #impltmp
 < xs:vt
@@ -395,7 +395,7 @@ irz2forall$test1<x0,y0>(i0, x0, y0) =
 let
 val () =
 irz2foritm$work1<x0,y0>(i0, x0, y0) in true end
-}
+}(*where*)//end-of-[gseq_irz2foritm1(xs,ys)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
