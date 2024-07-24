@@ -160,6 +160,50 @@ gseq_z2forall0
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< x0:vt
+, y0:vt >
+< z0:vt >
+strm_vt_z2map0
+  (xs, ys) =
+(
+  auxmain(xs, ys)) where
+{
+fun
+auxmain
+( xs
+: strm_vt(x0)
+, ys
+: strm_vt(y0)
+) : strm_vt(z0) = $llazy
+(
+case+ !xs of
+| ~
+strmcon_vt_nil() =>
+(
+free(ys);
+strmcon_vt_nil())
+| ~
+strmcon_vt_cons(x1, xs) =>
+(
+case+ !ys of
+| ~
+strmcon_vt_nil() =>
+(
+strmcon_vt_nil())
+| ~
+strmcon_vt_cons(y1, ys) =>
+let
+val z0 =
+z2map$fopr0<x0,y0><z0>(x1, y1) in
+strmcon_vt_cons(z0, auxmain(xs, ys)) end
+)
+)(*llazy*)
+}(*where*)//end-of-[strm_vt_z2map0(xs,ys)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
