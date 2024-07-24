@@ -220,23 +220,58 @@ map$fopr1(x0: !x0): ( y0 )
 fun
 <x0:vt>
 <y0:vt>
-map2$fopr(x0: &x0): ( y0 )
-//
-(* ****** ****** *)
-//
-(*
-HX-2024-07-13:
-Note that [filter$test0]
-does not consumes its arg!
-*)
+rmap$fopr0(x0: ~x0): ( y0 )
 fun
 <x0:vt>
 <y0:vt>
-filter$test0(x0: !x0): bool
+rmap$fopr1(x0: !x0): ( y0 )
+//
+fun
+<x0:vt>
+<y0:vt>
+imap$fopr0(ni, ~x0): ( y0 )
+fun
+<x0:vt>
+<y0:vt>
+imap$fopr1(ni, !x0): ( y0 )
+//
+fun
+<x0:vt>
+<y0:vt>
+irmap$fopr0(ni, ~x0): ( y0 )
+fun
+<x0:vt>
+<y0:vt>
+irmap$fopr1(ni, !x0): ( y0 )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-24:
+[filter$test0] is removed!
+fun
+<x0:vt>
+<y0:vt>
+filter$test0(x0: ~x0): bool
+*)
+//
 fun
 <x0:vt>
 <y0:vt>
 filter$test1(x0: !x0): bool
+fun
+<x0:vt>
+<y0:vt>
+rfilter$test1(x0: !x0): bool
+fun
+<x0:vt>
+<y0:vt>
+ifilter$test1(x0: !x0): bool
+fun
+<x0:vt>
+<y0:vt>
+irfilter$test1(x0: !x0): bool
 //
 (* ****** ****** *)
 //

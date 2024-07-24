@@ -186,6 +186,7 @@ fun
 <xs:t0>
 <x0:t0>
 <ys:vt>
+<y0:vt>
 gseq_map_ares(xs: xs): (ys)
 fun
 <xs:t0>
@@ -236,6 +237,7 @@ fun
 <xs:t0>
 <x0:t0>
 <ys:vt>
+<y0:vt>
 gseq_rmap_ares(xs: xs): (ys)
 fun
 <xs:t0>
@@ -286,6 +288,7 @@ fun
 <xs:t0>
 <x0:t0>
 <ys:vt>
+<y0:vt>
 gseq_imap_ares(xs: xs): (ys)
 fun
 <xs:t0>

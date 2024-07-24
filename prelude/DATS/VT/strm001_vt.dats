@@ -238,7 +238,7 @@ strmcon_vt_cons(x1, xs) =>
 let
 val
 test =
-filter$test0<x0>(x1)
+filter$test1<x0>(x1)
 in//let
 if
 test
@@ -292,7 +292,7 @@ strmcon_vt_cons(x1, xs) =>
 let
 val
 test =
-ifilter$test0<x0>(i0, x1)
+ifilter$test1<x0>(i0, x1)
 in//let
 if
 test

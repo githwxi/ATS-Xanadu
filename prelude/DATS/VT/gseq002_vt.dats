@@ -400,6 +400,38 @@ irz2foritm$work1<x0,y0>(i0, x0, y0) in true end
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-24:
+Wed 24 Jul 2024 07:03:35 PM EDT
+*)
+//
+#impltmp
+< xs:vt
+, ys:vt >
+< x0:vt
+, y0:vt >
+< zs:vt >
+< z0:vt >
+gseq_z2map0_ares
+  (xs, ys) =
+g_make0_lstrm<z0><zs>
+(
+gseq_z2map0_lstrm<xs,ys><x0,y0><z0>(xs, ys))
+//
+#impltmp
+< xs:vt
+, ys:vt >
+< x0:vt
+, y0:vt >
+gseq_z2map0_self
+  (xs, ys) =
+g_make0_lstrm<x0><xs>
+(
+gseq_z2map0_lstrm<xs,ys><x0,y0><x0>(xs, ys))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

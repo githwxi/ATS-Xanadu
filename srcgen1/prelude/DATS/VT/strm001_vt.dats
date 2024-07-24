@@ -194,7 +194,7 @@ case+ xs of
 strxcon_vt_cons
   (x0, xs) =>
 ( if
-  filter$test0(x0)
+  filter$test1(x0)
   then
   strxcon_vt_cons(x0, auxmain(xs))
   else
@@ -242,7 +242,7 @@ let
   mapopt$fopr0<x0><y0>(x0)
 *)
   val
-  opt = filter$test0<x0>(x0)
+  opt = filter$test1<x0>(x0)
 in
 (*
   case+ opt of
@@ -297,8 +297,8 @@ in
 end where
 {
 #impltmp
-filter$test0
-< x0 >( x2 ) = sieve$test0<x0>(x1, x2)
+filter$test1
+< x0 >( x2 ) = sieve$test1<x0>(x1, x2)
 }
 )
 } (*where*) // end-of-[ strx_vt_sieve0(xs) ]
@@ -374,7 +374,7 @@ strxcon_vt_cons(x0, xs) =>
 let
   val i1 = succ(i0)
   val
-  opt = ifilter$test0<x0>(i0, x0)
+  opt = ifilter$test1<x0>(i0, x0)
 in
 //
 if

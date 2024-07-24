@@ -260,6 +260,7 @@ fun
 <xs:t0>
 <x0:t0>
 <ys:vt>
+<y0:vt>
 gseq_map_ares(xs: xs): (ys)
 fun
 <xs:t0>
