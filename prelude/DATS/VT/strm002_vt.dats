@@ -201,6 +201,14 @@ strmcon_vt_cons(z0, auxmain(xs, ys)) end
 )(*llazy*)
 }(*where*)//end-of-[strm_vt_z2map0(xs,ys)]
 //
+#impltmp
+{ x0:vt
+, y0:vt
+, z0:vt }
+gseq_z2map0_lstrm
+<strm_vt(x0)
+,strm_vt(y0)><x0,y0><z0> = strm_vt_z2map0<x0,y0><z0>
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
