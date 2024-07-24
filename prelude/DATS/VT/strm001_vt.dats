@@ -70,15 +70,51 @@ strmcon_vt_nil() => true
 strmcon_vt_cons(x1, xs) =>
 (
 if
-forall$test0<x0>(x1)
-then
-auxmain(xs) else (free(xs); false)))
+forall$test0
+< x0 >( x1 )
+then auxmain(xs)
+else (free(xs); false)))//end-of-[if]
 }(*where*)//end-of-[strm_vt_forall0(xs)]
 //
 #impltmp
 { x0:vt }
 gseq_forall0
 <strm_vt(x0)><x0> = strm_vt_forall0<x0>
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+strm_vt_iforall0
+  ( xs ) =
+(
+auxmain(0, xs)) where
+{
+fun
+auxmain
+( i0: nint
+, xs
+: strm_vt(x0)): bool =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil
+  ((*void*)) => true
+| ~
+strmcon_vt_cons
+  ( x1, xs ) =>
+(
+if
+iforall$test0
+<x0>( i0, x1 )
+then auxmain(i0+1, xs)
+else (free(xs); false)))//end-of-[if]
+}(*where*)//end-of-[strm_vt_iforall0(xs)]
+//
+#impltmp
+{ x0:vt }
+gseq_iforall0
+<strm_vt(x0)><x0> = strm_vt_iforall0<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)

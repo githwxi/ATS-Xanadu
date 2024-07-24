@@ -83,10 +83,72 @@ strmcon_vt_nil() =>
 strmcon_vt_cons(y1, ys) =>
 (
 if
-z2forall$test0<x0,y0>(x1, y1)
+z2forall$test0
+<x0,y0>(x1, y1)
 then auxmain(xs, ys)
 else (free(xs);free(ys);false))))
 }(*where*)//end-of-[strm_vt_z2forall0(xs,ys)]
+//
+#impltmp
+{ x0:vt
+, y0:vt }
+gseq_z2forall0
+<strm_vt(x0)
+,strm_vt(y0)><x0,y0> = strm_vt_z2forall0<x0,y0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt
+, y0:vt >
+strm_vt_iz2forall0 =
+gseq_iz2forall0<strm_vt(x0),strm_vt(y0)><x0,y0>
+//
+#impltmp
+< x0:vt
+, y0:vt >
+strm_vt_iz2foritm0 =
+gseq_iz2foritm0<strm_vt(x0),strm_vt(y0)><x0,y0>
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt
+, y0:vt >
+strm_vt_iz2forall0
+  ( xs, ys ) =
+(
+auxmain(0, xs, ys)) where
+{
+fun
+auxmain
+( i0: nint
+, xs
+: strm_vt(x0)
+, ys
+: strm_vt(y0)): bool =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil() =>
+(free(ys); true)
+| ~
+strmcon_vt_cons(x1, xs) =>
+(
+case+ !ys of
+| ~
+strmcon_vt_nil() =>
+(free(x1);free(xs);true)
+| ~
+strmcon_vt_cons(y1, ys) =>
+(
+if
+iz2forall$test0
+<x0,y0>(i0, x1, y1)
+then auxmain(i0+1, xs, ys)
+else (free(xs);free(ys);false))))
+}(*where*)//end-of-[strm_vt_iz2forall0(xs,ys)]
 //
 #impltmp
 { x0:vt
