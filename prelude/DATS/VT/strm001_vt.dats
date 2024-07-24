@@ -223,6 +223,51 @@ It is not harm to keep it here as a reference.
 gseq_filter0_lstrm
 <strm_vt(x0)><x0> = strm_vt_filter0<x0>(*void*)
 //
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+strm_vt_ifilter0
+  ( xs ) =
+$llazy
+(auxloop(0, !xs)) where
+{
+(*
+HX-2024-07-13:
+[auxloop] nees to
+be tail-recursive!
+*)
+fnx
+auxloop
+( i0: nint
+, xs
+: strmcon_vt(x0)
+) : strmcon_vt(x0) =
+(
+case+ xs of
+| ~
+strmcon_vt_nil() =>
+strmcon_vt_nil(*void*)
+| ~
+strmcon_vt_cons(x1, xs) =>
+let
+val
+test =
+ifilter$test0<x0>(i0, x1)
+in//let
+if
+test
+then
+strmcon_vt_cons
+(x1, $llazy(auxloop(i0+1, !xs)))
+else
+(g_free<x0>(x1); auxloop(i0+1, !xs)) end
+)
+}(*where*)//end-of-[strm_vt_ifilter0(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

@@ -518,6 +518,42 @@ gseq_filter1_lstrq(xs: !xs): strq_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
+gseq_rfilter0_llist(xs: ~xs): list_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_rfilter1_llist(xs: !xs): list_vt(x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_rfilter0_lstrm(xs: ~xs): strm_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_rfilter1_lstrm(xs: !xs): strm_vt(x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_rfilter0_lstrq(xs: ~xs): strq_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_rfilter1_lstrq(xs: !xs): strq_vt(x0)
+//
+#symload rfilter0 with gseq_rfilter0_llist of 0110
+#symload rfilter1 with gseq_rfilter1_llist of 0110
+#symload rfilter0 with gseq_rfilter0_lstrm of 0110
+#symload rfilter1 with gseq_rfilter1_lstrm of 0110
+#symload rfilter0 with gseq_rfilter0_lstrq of 0110
+#symload rfilter1 with gseq_rfilter1_lstrq of 0110
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
 gseq_ifilter0_llist(xs: ~xs): list_vt(x0)
 fun
 <xs:vt>

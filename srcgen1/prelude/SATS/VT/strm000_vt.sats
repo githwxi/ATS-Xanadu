@@ -307,6 +307,12 @@ fun
 <x0:vt>
 strm_vt_filter0
   (xs: strm_vt(x0)): strm_vt(x0)
+(*
+fun
+<x0:vt>
+strq_vt_filter0
+  (xs: strq_vt(x0)): strq_vt(x0)
+*)
 //
 (* ****** ****** *)
 //

@@ -1060,6 +1060,7 @@ val (b0, r0) =
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #impltmp
 < xs:vt >
 < x0:vt >
@@ -1068,6 +1069,8 @@ gseq_map0_llist
   ( xs ) =
 list_vt_map0<x0><y0>
 (gseq_listize0<xs><x0>(xs))
+*)
+//
 #impltmp
 < xs:vt >
 < x0:vt >
@@ -1085,8 +1088,18 @@ gseq_map0_lstrq
 strq_vt_map0<x0><y0>
 (gseq_strqize0<xs><x0>(xs))
 //
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+gseq_map0_llist
+  ( xs ) =
+strm_vt_listize0<y0>
+(gseq_map0_lstrm<xs><x0><y0>(xs))
+//
 (* ****** ****** *)
 //
+(*
 #impltmp
 < xs:vt >
 < x0:vt >
@@ -1095,6 +1108,8 @@ gseq_rmap0_llist
   ( xs ) =
 list_vt_map0<x0><y0>
 (gseq_rlistize0<xs><x0>(xs))
+*)
+//
 #impltmp
 < xs:vt >
 < x0:vt >
@@ -1112,8 +1127,18 @@ gseq_rmap0_lstrq
 strq_vt_map0<x0><y0>
 (gseq_rstrqize0<xs><x0>(xs))
 //
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+gseq_map0_rllist
+  ( xs ) =
+strm_vt_listize0<y0>
+(gseq_rmap0_lstrm<xs><x0><y0>(xs))
+//
 (* ****** ****** *)
 //
+(*
 #impltmp
 < xs:vt >
 < x0:vt >
@@ -1122,6 +1147,8 @@ gseq_imap0_llist
   ( xs ) =
 list_vt_imap0<x0><y0>
 (gseq_listize0<xs><x0>(xs))
+*)
+//
 #impltmp
 < xs:vt >
 < x0:vt >
@@ -1139,6 +1166,15 @@ gseq_imap0_lstrq
 strq_vt_imap0<x0><y0>
 (gseq_strqize0<xs><x0>(xs))
 //
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+gseq_imap0_llist
+  ( xs ) =
+strm_vt_listize0<y0>
+(gseq_imap0_lstrm<xs><x0><y0>(xs))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -1152,27 +1188,10 @@ strm_vt_filter0<x0>
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_ifilter0_lstrm
-  ( xs ) =
-strm_vt_ifilter0<x0>
-(gseq_strmize0<xs><x0>(xs))
-//
-#impltmp
-< xs:vt >
-< x0:vt >
 gseq_filter0_lstrq
   ( xs ) =
 strq_vt_filter0<x0>
 (gseq_strqize0<xs><x0>(xs))
-#impltmp
-< xs:vt >
-< x0:vt >
-gseq_ifilter0_lstrq
-  ( xs ) =
-strq_vt_ifilter0<x0>
-(gseq_strqize0<xs><x0>(xs))
-//
-(* ****** ****** *)
 //
 (*
 HX-2024-07-13:
@@ -1185,17 +1204,71 @@ long list for temporary use!
 < x0:vt >
 gseq_filter0_llist
   ( xs ) =
-strq_vt_listize0<x0>
+strm_vt_listize0<x0>
 (
-gseq_filter0_lstrq<xs><x0>(xs))
+gseq_filter0_lstrm<xs><x0>(xs))
+//
+(* ****** ****** *)
+//
+(*
+HX-2024-07-24:
+Wed 24 Jul 2024 04:33:40 PM EDT
+*)
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_rfilter0_lstrm
+  ( xs ) =
+strm_vt_filter0<x0>
+(gseq_rstrmize0<xs><x0>(xs))
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_rfilter0_lstrq
+  ( xs ) =
+strq_vt_filter0<x0>
+(gseq_rstrqize0<xs><x0>(xs))
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_rfilter0_llist
+  ( xs ) =
+strm_vt_listize0<x0>
+(
+gseq_rfilter0_lstrm<xs><x0>(xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_ifilter0_lstrm
+  ( xs ) =
+strm_vt_ifilter0<x0>
+(gseq_strmize0<xs><x0>(xs))
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_ifilter0_lstrq
+  ( xs ) =
+strq_vt_ifilter0<x0>
+(gseq_strqize0<xs><x0>(xs))
+//
+(*
+HX-2024-07-13:
+Laziness here can prevent
+the creation of an unnecessarily
+long list for temporary use!
+*)
 #impltmp
 < xs:vt >
 < x0:vt >
 gseq_ifilter0_llist
   ( xs ) =
-strq_vt_listize0<x0>
+strm_vt_listize0<x0>
 (
-gseq_ifilter0_lstrq<xs><x0>(xs))
+gseq_ifilter0_lstrm<xs><x0>(xs))
 //
 (* ****** ****** *)
 (* ****** ****** *)
