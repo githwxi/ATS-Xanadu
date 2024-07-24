@@ -902,6 +902,37 @@ gseq_irfoldall1(!xs, r0): (r0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<xs:vt>
+<x0:vt>
+gseq_rfilter0_llist(xs: ~xs): list_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_rfilter1_llist(xs: !xs): list_vt(x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_rfilter0_lstrm(xs: ~xs): strm_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_rfilter1_lstrm(xs: !xs): strm_vt(x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_rfilter0_lstrq(xs: ~xs): strq_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_rfilter1_lstrq(xs: !xs): strq_vt(x0)
+//
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 Wed 17 Jul 2024 02:15:09 PM EDT
 *)
