@@ -54,7 +54,8 @@ gseq_z2foritm0<strm_vt(x0),strm_vt(y0)><x0,y0>
 (* ****** ****** *)
 //
 #impltmp
-< x0:vt >
+< x0:vt
+, y0:vt >
 strm_vt_z2forall0
   ( xs, ys ) =
 (
@@ -77,15 +78,14 @@ strmcon_vt_cons(x1, xs) =>
 case+ !ys of
 | ~
 strmcon_vt_nil() =>
-(free(x0);free(xs);true)
+(free(x1);free(xs);true)
 | ~
 strmcon_vt_cons(y1, ys) =>
-)
 (
 if
 z2forall$test0<x0,y0>(x1, y1)
 then auxmain(xs, ys)
-else (free(xs);free(ys);false)))
+else (free(xs);free(ys);false))))
 }(*where*)//end-of-[strm_vt_z2forall0(xs,ys)]
 //
 #impltmp
