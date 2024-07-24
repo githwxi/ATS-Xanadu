@@ -1135,6 +1135,32 @@ strm_vt_irz2map0
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<x0:vt
+,y0:vt>
+<r0:vt>
+strm_vt_z2folditm0
+(xs: ~strm_vt(x0), ys: ~strm_vt(y0), r0: r0): (r0)
+fun
+<x0:vt
+,y0:vt>
+<r0:vt>
+strm_vt_iz2folditm0
+(xs: ~strm_vt(x0), ys: ~strm_vt(y0), r0: r0): (r0)
+//
+fun
+<x0:vt
+,y0:vt>
+<r0:vt>
+strm_vt_z2foldall0
+(xs: ~strm_vt(x0), ys: ~strm_vt(y0), r0: r0): (r0)
+fun
+<x0:vt
+,y0:vt>
+<r0:vt>
+strm_vt_iz2foldall0
+(xs: ~strm_vt(x0), ys: ~strm_vt(y0), r0: r0): (r0)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
