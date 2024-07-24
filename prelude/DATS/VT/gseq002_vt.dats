@@ -59,6 +59,20 @@ gseq_strmize0<ys><y0>(ys))//end-impltmp
 , ys:vt >
 < x0:vt
 , y0:vt >
+gseq_z2forall1
+  (xs, ys) =
+strm_vt_z2forall0<x0,y0>
+(
+gseq_strmize1<xs><x0>(xs),
+gseq_strmize1<ys><y0>(ys))//end-impltmp
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt
+, ys:vt >
+< x0:vt
+, y0:vt >
 gseq_z2foritm0
   (xs, ys) =
 (
@@ -74,6 +88,32 @@ let
 val () =
 z2foritm$work0<x0,y0>(x0, y0) in true end
 }
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt
+, ys:vt >
+< x0:vt
+, y0:vt >
+gseq_rz2forall0
+  (xs, ys) =
+strm_vt_z2forall0<x0,y0>
+(
+gseq_rstrmize0<xs><x0>(xs),
+gseq_rstrmize0<ys><y0>(ys))//end-impltmp
+//
+#impltmp
+< xs:vt
+, ys:vt >
+< x0:vt
+, y0:vt >
+gseq_rz2forall1
+  (xs, ys) =
+strm_vt_z2forall0<x0,y0>
+(
+gseq_rstrmize1<xs><x0>(xs),
+gseq_rstrmize1<ys><y0>(ys))//end-impltmp
 //
 (* ****** ****** *)
 //
@@ -107,6 +147,8 @@ val b0 =
   iz2forall$test0<x0,y0>(i0, x0, y0) } }
 //
 }(*where*)//end-of-[gseq_iz2forall0(xs,ys)]
+//
+(* ****** ****** *)
 //
 #impltmp
 < xs:vt

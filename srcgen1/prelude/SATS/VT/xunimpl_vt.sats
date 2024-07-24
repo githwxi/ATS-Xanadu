@@ -208,6 +208,10 @@ fun
 <x0:vt
 ,y0:vt>
 z2forall$test0(~x0, ~y0): bool
+fun
+<x0:vt
+,y0:vt>
+z2forall$test1(!x0, !y0): bool
 *)
 fun
 <x0:vt
@@ -216,11 +220,25 @@ rz2forall$test0(~x0, ~y0): bool
 fun
 <x0:vt
 ,y0:vt>
+rz2forall$test1(!x0, !y0): bool
+//
+fun
+<x0:vt
+,y0:vt>
 iz2forall$test0(ni, ~x0, ~y0): bool
 fun
 <x0:vt
 ,y0:vt>
+iz2forall$test1(ni, !x0, !y0): bool
+//
+fun
+<x0:vt
+,y0:vt>
 irz2forall$test0(ni, ~x0, ~y0): bool
+fun
+<x0:vt
+,y0:vt>
+irz2forall$test1(ni, !x0, !y0): bool
 //
 (* ****** ****** *)
 //
@@ -231,7 +249,17 @@ z2foritm$work0(~x0, ~y0): void
 fun
 <x0:vt
 ,y0:vt>
+z2foritm$work1(!x0, !y0): void
+//
+fun
+<x0:vt
+,y0:vt>
 rz2foritm$work0(~x0, ~y0): void
+fun
+<x0:vt
+,y0:vt>
+rz2foritm$work1(!x0, !y0): void
+//
 fun
 <x0:vt
 ,y0:vt>
@@ -239,7 +267,16 @@ iz2foritm$work0(ni, ~x0, ~y0): void
 fun
 <x0:vt
 ,y0:vt>
+iz2foritm$work1(ni, !x0, !y0): void
+//
+fun
+<x0:vt
+,y0:vt>
 irz2foritm$work0(ni, ~x0, ~y0): void
+fun
+<x0:vt
+,y0:vt>
+irz2foritm$work1(ni, !x0, !y0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -558,13 +595,26 @@ fun
 <x0:vt
 ,y0:vt>
 gseq_z2forall0(xs: ~xs, ys: ~ys): bool
-*)
 fun
 <xs:vt
 ,ys:vt>
 <x0:vt
 ,y0:vt>
-gseq_z2foritm0(xs: ~xs, ys: ~ys): void
+gseq_z2forall1(xs: !xs, ys: !ys): bool
+*)
+//
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_rz2forall0(xs: ~xs, ys: ~ys): bool
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_rz2forall1(xs: !xs, ys: !ys): bool
 //
 fun
 <xs:vt
@@ -577,7 +627,74 @@ fun
 ,ys:vt>
 <x0:vt
 ,y0:vt>
+gseq_iz2forall1(xs: !xs, ys: !ys): bool
+//
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_irz2forall0(xs: ~xs, ys: ~ys): bool
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_irz2forall1(xs: !xs, ys: !ys): bool
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_z2foritm0(xs: ~xs, ys: ~ys): void
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_z2foritm1(xs: !xs, ys: !ys): void
+//
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_rz2foritm0(xs: ~xs, ys: ~ys): void
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_rz2foritm1(xs: !xs, ys: !ys): void
+//
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
 gseq_iz2foritm0(xs: ~xs, ys: ~ys): void
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_iz2foritm1(xs: !xs, ys: !ys): void
+//
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_irz2foritm0(xs: ~xs, ys: ~ys): void
+fun
+<xs:vt
+,ys:vt>
+<x0:vt
+,y0:vt>
+gseq_irz2foritm1(xs: !xs, ys: !ys): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
