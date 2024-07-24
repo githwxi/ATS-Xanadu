@@ -152,7 +152,8 @@ strmcon_vt_nil() =>
 strmcon_vt_nil(*void*)
 | ~
 strmcon_vt_cons(x1, xs) =>
-strmcon_vt_cons(map$fopr0<x0><y0>(x1), auxmain(xs))
+strmcon_vt_cons
+(map$fopr0<x0><y0>(x1), auxmain(xs))
 )
 }(*where*)//end-of-[strm_vt_map0(xs)]
 //
@@ -168,6 +169,44 @@ It is not harm to keep it here as a reference.
 { y0:vt }
 gseq_map0_lstrm
 <strm_vt(x0)><x0><y0> = strm_vt_map0<x0><y0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+< y0:vt >
+strm_vt_imap0
+  ( xs ) =
+(
+auxmain(0, xs)) where
+{
+fun
+auxmain
+( i0: nint
+, xs
+: strm_vt(x0)
+) : strm_vt(y0) = $llazy
+(
+case+ !xs of
+| ~
+strmcon_vt_nil() =>
+strmcon_vt_nil(*void*)
+| ~
+strmcon_vt_cons(x1, xs) =>
+let
+val y1 =
+imap$fopr0<x0><y0>(i0, x1)
+in//let
+strmcon_vt_cons(y1,auxmain(i0+1,xs))
+end//let
+)
+}(*where*)//end-of-[strm_vt_imap0(xs)]
+//
+#impltmp
+{ x0:vt }
+{ y0:vt }
+gseq_imap0_lstrm
+<strm_vt(x0)><x0><y0> = strm_vt_imap0<x0><y0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -261,7 +300,8 @@ then
 strmcon_vt_cons
 (x1, $llazy(auxloop(i0+1, !xs)))
 else
-(g_free<x0>(x1); auxloop(i0+1, !xs)) end
+(
+g_free<x0>(x1); auxloop(i0+1, !xs)) end
 )
 }(*where*)//end-of-[strm_vt_ifilter0(xs)]
 //
