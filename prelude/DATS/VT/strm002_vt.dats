@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Tue 23 Jul 2024 05:28:07 PM EDT
+Tue 23 Jul 2024 06:07:30 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -38,35 +38,62 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<x0:vt
-,y0:vt>
-strm_vt_z2forall0
-( xs: ~strm_vt(x0)
-, ys: ~strm_vt(y0)): bool//end-of-[fun]
+#impltmp
+< x0:vt
+, y0:vt >
+strm_vt_z2forall0 =
+gseq_z2forall0<strm_vt(x0),strm_vt(y0)><x0,y0>
 //
-fun
-<x0:vt
-,y0:vt>
-strm_vt_iz2forall0
-( xs: ~strm_vt(x0)
-, ys: ~strm_vt(y0)): bool//end-of-[fun]
+#impltmp
+< x0:vt
+, y0:vt >
+strm_vt_z2foritm0 =
+gseq_z2foritm0<strm_vt(x0),strm_vt(y0)><x0,y0>
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
+#impltmp
+< x0:vt >
+strm_vt_z2forall0
+  ( xs, ys ) =
+(
+  auxmain(xs, ys)) where
+{
 fun
-<x0:vt
-,y0:vt>
-strm_vt_z2foritm0
-( xs: ~strm_vt(x0)
-, ys: ~strm_vt(y0)): void//end-of-[fun]
+auxmain
+( xs
+: strm_vt(x0)
+, ys
+: strm_vt(y0)): bool =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil() =>
+(free(ys); true)
+| ~
+strmcon_vt_cons(x1, xs) =>
+(
+case+ !ys of
+| ~
+strmcon_vt_nil() =>
+(free(x0);free(xs);true)
+| ~
+strmcon_vt_cons(y1, ys) =>
+)
+(
+if
+z2forall$test0<x0,y0>(x1, y1)
+then auxmain(xs, ys)
+else (free(xs);free(ys);false)))
+}(*where*)//end-of-[strm_vt_z2forall0(xs,ys)]
 //
-fun
-<x0:vt
-,y0:vt>
-strm_vt_iz2foritm0
-( xs: ~strm_vt(x0)
-, ys: ~strm_vt(y0)): void//end-of-[fun]
+#impltmp
+{ x0:vt
+, y0:vt }
+gseq_z2forall0
+<strm_vt(x0)
+,strm_vt(y0)><x0,y0> = strm_vt_z2forall0<x0,y0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -74,4 +101,4 @@ strm_vt_iz2foritm0
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_VT_strm002_vt.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_VT_strm001_vt.dats] *)
