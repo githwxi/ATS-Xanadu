@@ -144,16 +144,19 @@ gseq_irfolditm0<xs><x0><r0>(*void*)
 < xs:t0 >
 < x0:t0 >
 < ys:vt >
+< y0:vt >
 gseq_map_ares(xs) =
-g_make0_lstrm<x0><ys>
+g_make0_lstrm<y0><ys>
 (
-gseq_map_lstrm<xs><x0>(xs))
+gseq_map_lstrm<xs><x0><y0>(xs))
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq_map_self =
-gseq_map_ares<xs><x0><xs>(*void*)
+gseq_map_self(xs) =
+g_make0_lstrm<x0><xs>
+(
+gseq_map_lstrm<xs><x0><x0>(xs))
 //
 (* ****** ****** *)
 //
@@ -299,8 +302,11 @@ gseq_filter_lstrm<xs><x0>(xs))
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq_filter_self =
-gseq_filter_ares<xs><x0><xs>(*void*)
+gseq_filter_self
+  ( xs ) =
+g_make0_lstrm<x0><xs>
+(
+gseq_filter_lstrm<xs><x0>(xs))
 //
 (* ****** ****** *)
 //
@@ -318,8 +324,7 @@ gseq_filter_llist<xs><x0>(xs))
 < x0:t0 >
 gseq_filter_llist
   ( xs ) =
-g_make0_lstrm
-<x0><list_vt(x0)>
+strm_vt_listize0<x0>
 (
 gseq_filter_lstrm<xs><x0>(xs))
 //

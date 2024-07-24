@@ -1218,7 +1218,7 @@ gseq_filter0_c1fr_lstrm
 gseq_filter0_lstrm<xs><x0>(xs)
 ) where
 {
-  #impltmp filter$test0<x0>( x0 ) = f0(x0) }
+  #impltmp filter$test1<x0>( x0 ) = f0(x0) }
 //(*where*)//end-of[gseq_filter0_c1fr_lstrm(xs,f0)]
 //
 (* ****** ****** *)

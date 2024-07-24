@@ -378,24 +378,16 @@ imap$fopr = imap$fopr1<x0><y0>
 //
 #impltmp
 < x0:t0 >
-filter$test = filter$test0<x0>
-#impltmp
-< x0:t0 >
 filter$test = filter$test1<x0>
-//
-#impltmp
-< x0:t0 >
-rfilter$test = rfilter$test0<x0>
 #impltmp
 < x0:t0 >
 rfilter$test = rfilter$test1<x0>
-//
-#impltmp
-< x0:t0 >
-ifilter$test = ifilter$test0<x0>
 #impltmp
 < x0:t0 >
 ifilter$test = ifilter$test1<x0>
+#impltmp
+< x0:t0 >
+irfilter$test = irfilter$test1<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)

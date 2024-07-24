@@ -440,9 +440,16 @@ the [sieve$test] on it passes
 fun
 <x0:t0>
 sieve$test(x1: x0, x2: x0): bool
+(*
+HX-2024-07-24:
+This is not supported!!!
 fun
 <x0:vt>
-sieve$test0(x1: !x0, x2: !x0): bool
+sieve$test0(x1: ~x0, x2: ~x0): bool
+*)
+fun
+<x0:vt>
+sieve$test1(x1: !x0, x2: !x0): bool
 //
 (* ****** ****** *)
 //

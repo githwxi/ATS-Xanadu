@@ -162,16 +162,16 @@ irmap$fopr(pos: ni, itm: x0): (y0)
 //
 fun
 <x0:t0>
-filter$fopr(itm: x0): bool
+filter$test(itm: x0): bool
 fun
 <x0:t0>
-rfilter$fopr(itm: x0): bool
+rfilter$test(itm: x0): bool
 fun
 <x0:t0>
-ifilter$fopr(pos: ni, itm: x0): bool
+ifilter$test(pos: ni, itm: x0): bool
 fun
 <x0:t0>
-irfilter$fopr(pos: ni, itm: x0): bool
+irfilter$test(pos: ni, itm: x0): bool
 //
 (* ****** ****** *)
 //

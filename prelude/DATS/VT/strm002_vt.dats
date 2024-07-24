@@ -38,11 +38,13 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #impltmp
 < x0:vt
 , y0:vt >
 strm_vt_z2forall0 =
 gseq_z2forall0<strm_vt(x0),strm_vt(y0)><x0,y0>
+*)
 //
 #impltmp
 < x0:vt
@@ -99,11 +101,13 @@ gseq_z2forall0
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #impltmp
 < x0:vt
 , y0:vt >
 strm_vt_iz2forall0 =
 gseq_iz2forall0<strm_vt(x0),strm_vt(y0)><x0,y0>
+*)
 //
 #impltmp
 < x0:vt
@@ -160,6 +164,18 @@ gseq_z2forall0
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+#impltmp
+< x0:vt
+, y0:vt >
+< z0:vt >
+strm_vt_z2map0 =
+gseq_z2map0_lstrm
+<strm_vt(x0),strm_vt(y0)><x0,y0><z0>(*void*)
+*)
+//
+(* ****** ****** *)
+//
 #impltmp
 < x0:vt
 , y0:vt >
@@ -208,6 +224,72 @@ strmcon_vt_cons(z0, auxmain(xs, ys)) end
 gseq_z2map0_lstrm
 <strm_vt(x0)
 ,strm_vt(y0)><x0,y0><z0> = strm_vt_z2map0<x0,y0><z0>
+//
+(* ****** ****** *)
+//
+(*
+#impltmp
+< x0:vt
+, y0:vt >
+< z0:vt >
+strm_vt_iz2map0 =
+gseq_iz2map0_lstrm
+<strm_vt(x0),strm_vt(y0)><x0,y0><z0>(*void*)
+*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt
+, y0:vt >
+< z0:vt >
+strm_vt_iz2map0
+  (xs, ys) =
+(
+auxmain(0, xs, ys)) where
+{
+fun
+auxmain
+( i0: nint
+, xs
+: strm_vt(x0)
+, ys
+: strm_vt(y0)
+) : strm_vt(z0) = $llazy
+(
+case+ !xs of
+| ~
+strmcon_vt_nil() =>
+(
+free(ys);
+strmcon_vt_nil())
+| ~
+strmcon_vt_cons(x1, xs) =>
+(
+case+ !ys of
+| ~
+strmcon_vt_nil() =>
+(
+strmcon_vt_nil())
+| ~
+strmcon_vt_cons(y1, ys) =>
+let
+val z0 =
+iz2map$fopr0
+<x0,y0><z0>(i0, x1, y1) in//let
+strmcon_vt_cons(z0, auxmain(i0+1,xs,ys))
+end//let//end-of-[strmcon_vt_cons( ... )]
+)
+)(*llazy*)
+}(*where*)//end-of-[strm_vt_iz2map0(xs,ys)]
+//
+#impltmp
+{ x0:vt
+, y0:vt
+, z0:vt }
+gseq_iz2map0_lstrm
+<strm_vt(x0)
+,strm_vt(y0)><x0,y0><z0> = strm_vt_iz2map0<x0,y0><z0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
