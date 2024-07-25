@@ -71,10 +71,9 @@ with jsarray_make_3val of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<a:vt>
+fun<>
 jsarray_make_nval
- {n:nat}
+ {a:t0}{n:nat}
 (n:sint(n), x:a): jsarray(a, n)
 //
 (*
@@ -101,11 +100,11 @@ length with jsarray_length of 1000
 //
 fun<>
 jsarray_get_at
- {a:vt}{n:i0}
+ {a:t0}{n:nat}
 (A:jsarray(a, n), i:nintlt(n)): (a)
 fun<>
 jsarray_set_at
- {a:vt}{n:i0}
+ {a:t0}{n:nat}
 (A:jsarray(a, n), i:nintlt(n), x:a): void
 //
 #symload get_at with jsarray_get_at of 1000
