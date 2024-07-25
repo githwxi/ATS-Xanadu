@@ -57,12 +57,10 @@ println("A = ", A))
 //
 (* ****** ****** *)
 val () =
-println
+A.foritm
 (
-"false = ",
-A.rfolditm
-(lam x => g_print(x))
-)
+lam
+(x:nint) => println(x))
 (* ****** ****** *)
 //
 val iA =
