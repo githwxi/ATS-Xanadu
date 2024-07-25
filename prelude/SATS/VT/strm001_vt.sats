@@ -40,34 +40,6 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 <x0:vt>
-<ys:vt>
-g_make0_lstrm
-(xs: strm_vt(x0)): (ys)
-fun
-<x0:vt>
-<ys:vt>
-g_make0_lstrq
-(xs: strq_vt(x0)): (ys)
-//
-(* ****** ****** *)
-//
-fun
-<x0:t0>
-list_make0_lstrm
-(xs: strm_vt(x0)): list(x0)
-fun
-<x0:t0>
-list_make0_lstrq
-{n0:i0}
-(xs: strq_vt(x0, n0)): list(x0, n0)
-//
-#symload list with list_make0_lstrm of 1000
-#symload list with list_make0_lstrq of 1000
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
 strm_vt_forall0
 (xs: strm_vt(x0)): bool
 fun

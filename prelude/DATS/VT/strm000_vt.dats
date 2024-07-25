@@ -72,11 +72,11 @@ gseq_print0<strm_vt(x0)><x0>(xs)
 #impltmp
 < x0:vt >
 g_make0_lstrm
-<strm_vt(x0)>(xs) = xs
+<strm_vt(x0)>(xs) = xs//identity
 #impltmp
 < x0:vt >
 g_make0_lstrq
-<strq_vt(x0)>(xs) = xs
+<strq_vt(x0)>(xs) = xs//identity
 //
 (* ****** ****** *)
 //
