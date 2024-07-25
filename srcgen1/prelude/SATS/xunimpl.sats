@@ -577,6 +577,22 @@ gseq_map_self_f1np
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<x0:vt>
+mapref$fopr0(~x0): x0
+//
+fun
+<xs:t0>
+<x0:vt>
+gasz_mapref(xs: xs): void
+fun
+<xs:t0>
+<x0:vt>
+gasz_mapref_c1fr
+(xs: xs, fopr: (~x0)-<cfr>(x0)): void
+//
+#symload mapref with gseq_mapref_c1fr of 0110
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
