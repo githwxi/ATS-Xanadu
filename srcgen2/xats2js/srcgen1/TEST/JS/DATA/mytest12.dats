@@ -1,11 +1,8 @@
 (* ****** ****** *)
-//
+(* ****** ****** *)
 #staload UN =
-"prelude/SATS/unsafex.sats"
-//
-#staload _(*UN*) =
-"prelude/DATS/unsafex.dats"
-//
+"prelude/SATS/unsfx00.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #include
