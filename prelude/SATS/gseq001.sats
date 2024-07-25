@@ -304,7 +304,6 @@ fun
 <x0:t0>
 <y0:vt>
 gseq_map_llist(xs: xs): list_vt(y0)
-//
 fun
 <xs:t0>
 <x0:t0>
@@ -315,6 +314,20 @@ fun
 <x0:t0>
 <y0:vt>
 gseq_map_lstrq(xs: xs): strq_vt(y0)
+//
+#symload map_list with gseq_map_list of 0100
+#symload map_llist with gseq_map_llist of 0100
+#symload map_lstrm with gseq_map_lstrm of 0100
+#symload map_lstrq with gseq_map_lstrq of 0100
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_map_list_c1fr
+(xs: xs, fopr: (x0)-<cfr>(y0)): list(y0)
+//
+#symload map_list with gseq_map_list_c1fr of 0100
 //
 (* ****** ****** *)
 //
