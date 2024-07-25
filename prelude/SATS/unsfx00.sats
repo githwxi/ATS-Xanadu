@@ -69,23 +69,13 @@ fcast
 castlin10{a1:vt}{a0:vt}(a0):(a1)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Mon Jul  4 17:58:26 EDT 2022
 *)
 fcast//HX: it is safe!
 datacopy{a0:vt}(x0: !a0): (?!a0)
-//
-(* ****** ****** *)
-//
-fcast
-optn_vt2t
-{a:t0}{b:b0}
-(xs: !optn_vt(a, b)): optn(a, b)
-fcast
-list_vt2t
-{a:t0}{n:i0}
-(xs: !list_vt(a, n)): list(a, n)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -149,15 +139,6 @@ fun
 p2tr_set_list_cons
 (p0: p2tr(list(a)), x0: a): void
 //
-fun
-<a:t0>
-p2tr_set_list_vt_nil
-(p0: p2tr(list_vt(a))): void
-fun
-<a:vt>
-p2tr_set_list_vt_cons
-(p0: p2tr(list_vt(a)), x0: a): void
-//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -172,25 +153,11 @@ a0ref_set0
 fun<>
 strn_get_at
 (cs: strn, i0: sint): cgtz
-fun<>
-strn_vt_get1_at
-(cs: !strn_vt, i0: sint): cgtz
-fun<>
-strn_vt_set1_at
-( cs: !strn_vt, i0: sint, c0, cgtz): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2024-07-22:
-Mon 22 Jul 2024 08:20:12 AM EDT
-*)
-//
-fcast
-strm2q_vt
-{a:vt}{n:nat}
-(xs: strm_vt(a)): strq_vt(a, n)
+#include "./VT/unsfx00_vt.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -198,4 +165,4 @@ strm2q_vt
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_unsafex.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_unsfx00.sats] *)

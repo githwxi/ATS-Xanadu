@@ -47,7 +47,7 @@ $synext("A"):jsarray(sint,3)
 *)
 //
 (* ****** ****** *)
-
+//
 val A =
 jsarray(1, 3, 2)
 val () =
@@ -57,7 +57,16 @@ val () = A.sortref()
 val () =
 (
 println("A = ", A))
-
+//
+(* ****** ****** *)
+val () =
+println
+(
+"false = ",
+A.forall(lam x => x < 3)
+)
+(* ****** ****** *)
+//
 val iA =
 gseq_ifolditm
 <xs><x0><r0>(A, 0) where

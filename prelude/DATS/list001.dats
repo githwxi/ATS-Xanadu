@@ -64,6 +64,12 @@ if test then loop(xs) else false end)
 #impltmp
 { x0:t0 }
 gseq_forall<list(x0)><x0> = list_forall<x0>
+#impltmp
+{ x0:t0 }
+gseq_forall0<list(x0)><x0> = list_forall<x0>
+#impltmp
+{ x0:t0 }
+gseq_forall1<list(x0)><x0> = list_forall<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -92,6 +98,12 @@ foritm$work<x0>(x1) in loop(xs) end)
 #impltmp
 { x0:t0 }
 gseq_foritm<list(x0)><x0> = list_foritm<x0>
+#impltmp
+{ x0:t0 }
+gseq_foritm0<list(x0)><x0> = list_foritm<x0>
+#impltmp
+{ x0:t0 }
+gseq_foritm1<list(x0)><x0> = list_foritm<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
