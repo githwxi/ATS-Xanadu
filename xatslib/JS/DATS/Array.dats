@@ -342,12 +342,38 @@ XATS2JS_jsarray_rforall_c1fr
 //
 #impltmp
 < a: vt >
+jsarray_mapref
+  ( A ) =
+(
+jsarray_mapref_c1fr<>
+(A, lam(x)=>mapref$fopr0<a>(x)))
+//
+#impltmp
+<(*tmp*)>
+jsarray_mapref_c1fr
+  (A, fopr) =
+(
+XATS2JS_jsarray_mapref_c1fr
+  (A, fopr)) where
+{
+#extern
+fun
+XATS2JS_jsarray_mapref_c1fr
+ {a:vt}
+( A: jsa(a)
+, fopr: (~a)-<cfr>(a)): void = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a: vt >
 jsarray_sortref
   ( A ) =
 (
 jsarray_sortref_c2fr<>
-(A
-,lam(x,y)=>g_cmp11<a>(x,y)))
+(A, lam(x,y)=>g_cmp11<a>(x, y)))
 //
 (*
 #impltmp
@@ -359,8 +385,6 @@ gasz_sortref
 gasz_sortref1
 <jsa(x0)><x0> = jsarray_sortref<x0>
 *)
-//
-(* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
@@ -375,7 +399,8 @@ fun
 XATS2JS_jsarray_sortref_c2fr
  {a:vt}
 ( A: jsa(a)
-, cmpr: (!a, !a)-<cfr>sint): void = $extnam()
+, cmpr
+: (!a, !a)-<cfr>sint): void = $extnam()
 }
 //
 (* ****** ****** *)
@@ -389,6 +414,42 @@ gseq_strmize
 { x0:vt }
 gseq_strmize1
 <jsa(x0)><x0> = gasz_strmize<jsa(x0)><x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-25:
+Thu 25 Jul 2024 03:08:18 PM EDT
+*)
+//
+#impltmp
+<(*tmp*)>
+jsarray_make0_lstrm
+  {a:vt}( xs ) =
+(
+jsarray_make_fwork<>
+(lam(work) => foritm0(xs, work)))
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jsarray_make_fwork
+  (fwork) =
+(
+XATS2JS_jsarray_make_fwork
+  (fwork)) where
+{
+#extern
+fun
+XATS2JS_jsarray_make_fwork
+ {a:vt}
+(fwork: fwork(a)): jsa(a) = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)

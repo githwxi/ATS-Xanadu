@@ -1161,6 +1161,130 @@ fun
 strm_vt_iz2foldall0
 (xs: ~strm_vt(x0), ys: ~strm_vt(y0), r0: r0): (r0)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-25:
+Thu 25 Jul 2024 04:53:04 PM EDT
+*)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_forall0_c1fr
+(xs: xs, test: (~x0)-<cfr>bool): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_forall0_f1np
+(xs: xs, test: (~x0)-<fnp>bool): bool
+//
+#symload forall0 with gseq_forall0_c1fr of 0100
+#symload forall0_cfr with gseq_forall0_c1fr of 0100
+#symload forall0_fnp with gseq_forall0_f1np of 0100
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_forall1_c1fr
+(xs: xs, test: (!x0)-<cfr>bool): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_forall1_f1np
+(xs: xs, test: (!x0)-<fnp>bool): bool
+//
+#symload forall1 with gseq_forall1_c1fr of 0100
+#symload forall1_cfr with gseq_forall1_c1fr of 0100
+#symload forall1_fnp with gseq_forall1_f1np of 0100
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-25:
+Thu 25 Jul 2024 04:53:04 PM EDT
+*)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_foritm0_c1fr
+(xs: xs, work: (~x0)-<cfr>void): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_foritm0_f1np
+(xs: xs, work: (~x0)-<fnp>void): void
+//
+#symload foritm0 with gseq_foritm0_c1fr of 0100
+#symload foritm0_cfr with gseq_foritm0_c1fr of 0100
+#symload foritm0_fnp with gseq_foritm0_f1np of 0100
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_foritm1_c1fr
+(xs: xs, work: (!x0)-<cfr>void): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_foritm1_f1np
+(xs: xs, work: (!x0)-<fnp>void): void
+//
+#symload foritm1 with gseq_foritm1_c1fr of 0100
+#symload foritm1_cfr with gseq_foritm1_c1fr of 0100
+#symload foritm1_fnp with gseq_foritm1_f1np of 0100
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-25:
+Thu 25 Jul 2024 04:53:04 PM EDT
+*)
+fun
+<x0:vt>
+strm_vt_forall0_c1fr
+( xs: strm_vt(x0)
+, test: (~x0)-<cfr>bool): bool
+fun
+<x0:vt>
+strm_vt_forall0_f1np
+( xs: strm_vt(x0)
+, test: (~x0)-<fnp>bool): bool
+//
+#symload
+forall0 with strm_vt_forall0_c1fr of 1000
+#symload
+forall0_cfr with strm_vt_forall0_c1fr of 1000
+#symload
+forall0_fnp with strm_vt_forall0_f1np of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+strm_vt_foritm0_c1fr
+( xs: strm_vt(x0)
+, work: (~x0)-<cfr>void): void
+fun
+<x0:vt>
+strm_vt_foritm0_f1np
+( xs: strm_vt(x0)
+, work: (~x0)-<fnp>void): void
+//
+#symload
+foritm0 with strm_vt_foritm0_c1fr of 1000
+#symload
+foritm0_cfr with strm_vt_foritm0_c1fr of 1000
+#symload
+foritm0_fnp with strm_vt_foritm0_f1np of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
