@@ -164,6 +164,10 @@ gseq_irz2foritm(xs: xs, ys: ys): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-24:
+Wed 24 Jul 2024 08:33:48 PM EDT
+*)
 fun
 <xs:t0
 ,ys:t0>
@@ -172,6 +176,115 @@ fun
 <zs:vt>
 <z0:vt>
 gseq_z2map_ares(xs: xs, ys: ys): (zs)
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_z2map_self(xs: xs, ys: ys): (xs)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_z2map_llist(xs: xs, ys: ys): list_vt(z0)
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_z2map_lstrm(xs: xs, ys: ys): strm_vt(z0)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_z2map_lstrq(xs: xs, ys: ys): strq_vt(z0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_rz2map_llist(xs: xs, ys: ys): list_vt(z0)
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_rz2map_lstrm(xs: xs, ys: ys): strm_vt(z0)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_rz2map_lstrq(xs: xs, ys: ys): strq_vt(z0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_iz2map_llist(xs: xs, ys: ys): list_vt(z0)
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_iz2map_lstrm(xs: xs, ys: ys): strm_vt(z0)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_iz2map_lstrq(xs: xs, ys: ys): strq_vt(z0)
+//
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_irz2map_llist(xs: xs, ys: ys): list_vt(z0)
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_irz2map_lstrm(xs: xs, ys: ys): strm_vt(z0)
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+<z0:vt>
+gseq_irz2map_lstrq(xs: xs, ys: ys): strq_vt(z0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
