@@ -61,8 +61,8 @@ list_make0_lstrq
 {n0:i0}
 (xs: strq_vt(x0, n0)): list(x0, n0)
 //
-#symload list with list_make0_lstrm
-#symload list with list_make0_lstrq
+#symload list with list_make0_lstrm of 1000
+#symload list with list_make0_lstrq of 1000
 //
 (* ****** ****** *)
 //
@@ -135,11 +135,10 @@ strq_vt_imap0
 {n0:i0}
 (xs: strq_vt(x0,n0)): strq_vt(y0,n0)
 //
-//
-#symload map0 with strm_vt_map0
-#symload map0 with strq_vt_map0
-#symload imap0 with strm_vt_imap0
-#symload imap0 with strq_vt_imap0
+#symload map0 with strm_vt_map0 of 1000
+#symload map0 with strq_vt_map0 of 1000
+#symload imap0 with strm_vt_imap0 of 1000
+#symload imap0 with strq_vt_imap0 of 1000
 //
 (* ****** ****** *)
 //
@@ -163,10 +162,10 @@ strq_vt_ifilter0
 {n0:i0}
 (xs: strq_vt(x0,n0)): strqlte_vt(x0,n0)
 //
-#symload filter0 with strm_vt_filter0
-#symload filter0 with strq_vt_filter0
-#symload ifilter0 with strm_vt_ifilter0
-#symload ifilter0 with strq_vt_ifilter0
+#symload filter0 with strm_vt_filter0 of 1000
+#symload filter0 with strq_vt_filter0 of 1000
+#symload ifilter0 with strm_vt_ifilter0 of 1000
+#symload ifilter0 with strq_vt_ifilter0 of 1000
 //
 (* ****** ****** *)
 //
@@ -174,31 +173,29 @@ fun
 <x0:vt>
 <y0:vt>
 strm_vt_mapoptn0
-(xs: strm_vt(x0)): strm_vt(y0)
+(xs: ~strm_vt(x0)): strm_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
 strq_vt_mapoptn0
-{n0:i0}
-(xs: strq_vt(x0,n0)): strqlte_vt(y0,n0)
+(xs: ~strq_vt(x0)): strq_vt(y0)
 //
-#symload mapoptn0 with strm_vt_mapoptn0
-#symload mapoptn0 with strq_vt_mapoptn0
+#symload mapoptn0 with strm_vt_mapoptn0 of 1000
+#symload mapoptn0 with strq_vt_mapoptn0 of 1000
 //
 fun
 <x0:vt>
 <y0:vt>
 strm_vt_maplist0
-(xs: strm_vt(x0)): strm_vt(y0)
+(xs: ~strm_vt(x0)): strm_vt(y0)
 fun
 <x0:vt>
 <y0:vt>
 strq_vt_maplist0
-{n0:i0}
-(xs: strq_vt(x0,n0)): strqlte_vt(y0,n0)
+(xs: ~strq_vt(x0)): strq_vt(y0)
 //
-#symload maplist0 with strm_vt_maplist0
-#symload maplist0 with strq_vt_maplist0
+#symload maplist0 with strm_vt_maplist0 of 1000
+#symload maplist0 with strq_vt_maplist0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -219,6 +216,9 @@ strq_vt_scanitm0
 {n0:i0}
 (xs:
 ~strq_vt(x0,n0), r0: r0): strq_vt(r0,n0+1)
+//
+#symload scanitm0 with strm_vt_scanitm0 of 1000
+#symload scanitm0 with strq_vt_scanitm0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
