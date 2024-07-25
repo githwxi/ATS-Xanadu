@@ -80,11 +80,11 @@ gseq_rlistize0
 #impltmp
 { x0:vt }
 gseq_strmize0
-<strm_vt(x0)><x0>(xs) = (xs)
+<strm_vt(x0)><x0>(xs) = (xs)//identity
 #impltmp
 { x0:vt }
 gseq_strqize0
-<strq_vt(x0)><x0>(xs) = (xs)
+<strq_vt(x0)><x0>(xs) = (xs)//identity
 //
 (* ****** ****** *)
 //

@@ -52,6 +52,11 @@ strm_vt_iz2forall0
 ( xs: ~strm_vt(x0)
 , ys: ~strm_vt(y0)): bool//end-of-[fun]
 //
+#symload
+z2forall0 with strm_vt_z2forall0 of 1000
+#symload
+iz2forall0 with strq_vt_iz2forall0 of 1000
+//
 (* ****** ****** *)
 //
 fun
@@ -67,6 +72,11 @@ fun
 strm_vt_iz2foritm0
 ( xs: ~strm_vt(x0)
 , ys: ~strm_vt(y0)): void//end-of-[fun]
+//
+#symload
+z2foritm0 with strm_vt_z2foritm0 of 1000
+#symload
+iz2foritm0 with strq_vt_iz2foritm0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -84,6 +94,11 @@ fun
 strm_vt_iz2folditm0
 (~strm_vt(x0), ~strm_vt(y0), r0): (r0)
 //
+#symload
+z2folditm0 with strm_vt_z2folditm0 of 1000
+#symload
+iz2folditm0 with strq_vt_iz2folditm0 of 1000
+//
 (* ****** ****** *)
 //
 fun
@@ -98,6 +113,11 @@ fun
 <r0:vt>
 strm_vt_iz2foldall0
 (~strm_vt(x0), ~strm_vt(y0), r0): (r0)
+//
+#symload
+z2foldall0 with strm_vt_z2foldall0 of 1000
+#symload
+iz2foldall0 with strq_vt_iz2foldall0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -117,8 +137,16 @@ strm_vt_iz2map0
 ( xs: ~strm_vt(x0)
 , ys: ~strm_vt(y0)): strm_vt(z0)//endfun
 //
+#symload z2map with strm_vt_z2map of 1000
+#symload iz2map with strq_vt_iz2map of 1000
+//
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(*
+HX-2024-07-24:
+Wed 24 Jul 2024 08:25:27 PM EDT
+*)
 //
 fun
 <x0:vt
@@ -134,6 +162,11 @@ fun
 strm_vt_iz2scanitm0
 ( xs: ~strm_vt(x0)
 , ys: ~strm_vt(y0), r0: r0): strm_vt(r0)
+//
+#symload
+z2scanitm0 with strm_vt_z2scanitm0 of 1000
+#symload
+iz2scanitm0 with strq_vt_iz2scanitm0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
