@@ -131,6 +131,22 @@ end//let//end-of-[gasz_rforall(xs)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gasz_mapref_c1fr
+  (xs, fopr) =
+(
+gasz_mapref
+<xs><x0>(xs)) where
+{
+#impltmp
+mapref$fopr0<x0>(x0) = fopr(x0)
+}(*where*)//end-of-[gasz_mapref_c1fr]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

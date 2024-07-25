@@ -74,6 +74,38 @@ gasz_rforall(xs: xs): bool
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-25:
+Thu 25 Jul 2024 01:47:26 PM EDT
+*)
+//
+fun
+<x0:vt>
+mapref$fopr0(~x0): x0
+(*
+fun
+<x0:vt>
+mapref$fopr$ref
+( ref: &x0 >> x0 ): void
+fun
+<x0:vt>
+mapref$fopr$clr
+( ref: &x0 >> ?x0 ): void
+*)
+//
+fun
+<xs:t0>
+<x0:vt>
+gasz_mapref(xs: xs): void
+fun
+<xs:t0>
+<x0:vt>
+gasz_mapref_c1fr
+(xs: xs, fopr: (~x0)-<cfr>(x0)): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
