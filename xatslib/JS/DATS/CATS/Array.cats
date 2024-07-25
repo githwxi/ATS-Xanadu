@@ -126,6 +126,21 @@ XATS2JS_jsarray_rforall_c1fr
 /////////////////////////////////////////////////////////////////////////
 //
 function
+XATS2JS_jsarray_mapref_c1fr
+  (A, fopr)
+{
+  let i0
+  let n0 = A.length
+  for (i0 = 0; i0 < n0; i0 += 1)
+  {
+    A[i0] = fopr(A[i0])
+  }
+  return // HX: Applying (x)=>fopr(x) to [A]
+}
+//
+/////////////////////////////////////////////////////////////////////////
+//
+function
 XATS2JS_jsarray_sortref_c2fr
   (A, cmpr)
 {

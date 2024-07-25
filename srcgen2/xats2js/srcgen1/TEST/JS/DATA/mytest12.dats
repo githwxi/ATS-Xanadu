@@ -57,6 +57,9 @@ println("A = ", A))
 //
 (* ****** ****** *)
 val () =
+A.mapref(lam x => x*x)
+(* ****** ****** *)
+val () =
 A.foritm
 (
 lam

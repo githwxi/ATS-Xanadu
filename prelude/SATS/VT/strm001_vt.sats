@@ -44,18 +44,107 @@ strm_vt_forall0
 (xs: strm_vt(x0)): bool
 fun
 <x0:vt>
-strm_vt_foritm0
-(xs: strm_vt(x0)): void
+strm_vt_iforall0
+(xs: strm_vt(x0)): bool
+//
+#symload
+forall0 with strm_vt_forall0 of 1000
+#symload
+iforall0 with strm_vt_iforall0 of 1000
 //
 fun
 <x0:vt>
-strm_vt_iforall0
-(xs: strm_vt(x0)): bool
+strm_vt_forall0_c1fr
+( xs: strm_vt(x0)
+, test: (~x0)-<cfr>bool): bool
+fun
+<x0:vt>
+strm_vt_forall0_f1np
+( xs: strm_vt(x0)
+, test: (~x0)-<fnp>bool): bool
+//
+#symload
+forall0 with strm_vt_forall0_c1fr of 1000
+#symload
+forall0_cfr with strm_vt_forall0_c1fr of 1000
+#symload
+forall0_fnp with strm_vt_forall0_f1np of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+strm_vt_foritm0
+(xs: strm_vt(x0)): void
 fun
 <x0:vt>
 strm_vt_iforitm0
 (xs: strm_vt(x0)): void
 //
+#symload
+foritm0 with strm_vt_foritm0 of 1000
+#symload
+iforitm0 with strm_vt_iforitm0 of 1000
+//
+fun
+<x0:vt>
+strm_vt_foritm0_c1fr
+( xs: strm_vt(x0)
+, work: (~x0)-<cfr>void): void
+fun
+<x0:vt>
+strm_vt_foritm0_f1np
+( xs: strm_vt(x0)
+, work: (~x0)-<fnp>void): void
+//
+#symload
+foritm0 with strm_vt_foritm0_c1fr of 1000
+#symload
+foritm0_cfr with strm_vt_foritm0_c1fr of 1000
+#symload
+foritm0_fnp with strm_vt_foritm0_f1np of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<r0:vt>
+strm_vt_folditm0
+(xs: strm_vt(x0), r0: r0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+strm_vt_ifolditm0
+(xs: strm_vt(x0), r0: r0): (r0)
+//
+#symload
+folditm0 with strm_vt_folditm0 of 1000
+#symload
+ifolditm0 with strm_vt_ifolditm0 of 1000
+//
+fun
+<x0:vt>
+<r0:vt>
+strm_vt_folditm0_c1fr
+( xs: strm_vt(x0)
+, fopr: (r0, ~x0)-<fnp>void): void
+fun
+<x0:vt>
+<r0:vt>
+strm_vt_folditm0_f1np
+( xs: strm_vt(x0)
+, fopr: (r0, ~x0)-<fnp>void): void
+//
+#symload
+folditm0 with strm_vt_folditm0_c1fr of 1000
+#symload
+folditm0_cfr with strm_vt_folditm0_c1fr of 1000
+#symload
+folditm0_fnp with strm_vt_folditm0_f1np of 1000
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -66,18 +155,7 @@ strm_vt_foldall0
 fun
 <x0:vt>
 <r0:vt>
-strm_vt_folditm0
-(xs: strm_vt(x0), r0: r0): (r0)
-//
-fun
-<x0:vt>
-<r0:vt>
 strm_vt_ifoldall0
-(xs: strm_vt(x0), r0: r0): (r0)
-fun
-<x0:vt>
-<r0:vt>
-strm_vt_ifolditm0
 (xs: strm_vt(x0), r0: r0): (r0)
 //
 (* ****** ****** *)

@@ -74,16 +74,56 @@ with jsarray_make_3val of 1000
 fun<>
 jsarray_make_nval
  {a:t0}{n:nat}
-(n:sint(n), x:a): jsarray(a, n)
+(n:sint(n),x:a):jsarray(a,n)
 //
-(*
 #symload
 jsarray
-  with jsarray_make_nval of 1000
-*)
+with jsarray_make_nval of 1000
 #symload
 jsarray_make
-  with jsarray_make_nval of 1000
+with jsarray_make_nval of 1000
+//
+(* ****** ****** *)
+//
+#typedef
+fwork(a:vt) =
+((~a)-<cfr>void)->void
+//
+fun<>
+jsarray_make_fwork
+{a:vt}
+(fwork: fwork(a)): jsarray(a)
+//
+#symload
+jsarray
+with jsarray_make_fwork of 1000
+#symload
+jsarray_make
+with jsarray_make_fwork of 1000
+//
+(* ****** ****** *)
+//
+fun<>
+jsarray_make0_lstrm
+ {a:vt}
+(xs: strm_vt(a)):jsarray(a)
+fun<>
+jsarray_make0_lstrq
+ {a:vt}{n:nat}
+(xs: strq_vt(a,n)):jsarray(a,n)
+//
+#symload
+jsarray
+with jsarray_make0_lstrm of 1000
+#symload
+jsarray
+with jsarray_make0_lstrq of 1000
+#symload
+jsarray_make0
+with jsarray_make0_lstrm of 1000
+#symload
+jsarray_make0
+with jsarray_make0_lstrq of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -184,6 +224,24 @@ jsarray_rforall_c1fr
 rforall with jsarray_rforall of 1000
 #symload
 rforall with jsarray_rforall_c1fr of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+jsarray_mapref
+(A: jsarray(a)): void
+fun<>
+jsarray_mapref_c1fr
+ {a:vt}
+( A: jsarray(a)
+, fopr: (~a)-<cfr>(a)): void
+//
+#symload
+mapref with jsarray_mapref of 1000
+#symload
+mapref with jsarray_mapref_c1fr of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
