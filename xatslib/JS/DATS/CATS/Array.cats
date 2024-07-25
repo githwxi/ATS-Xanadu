@@ -45,6 +45,21 @@ XATS2JS_jsarray_length
 /////////////////////////////////////////////////////////////////////////
 //
 function
+XATS2JS_jsarray_get_at
+  (A, i)
+{
+  return A[i]
+}
+function
+XATS2JS_jsarray_set_at
+  (A, i, x)
+{
+  return (A[i] = x)
+}
+//
+/////////////////////////////////////////////////////////////////////////
+//
+function
 XATS2JS_jsarray_make_1val
   ( x1 )
 {
@@ -66,7 +81,7 @@ XATS2JS_jsarray_make_3val
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_make_nval_t0
+XATS2JS_jsarray_make_nval
   (n, x) // HX: [x]: nonlin
 {
   let i

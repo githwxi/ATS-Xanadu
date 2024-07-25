@@ -120,16 +120,16 @@ XATS2JS_jsarray_make_3val
 (* ****** ****** *)
 //
 #impltmp
-< a: t0 >
+<(*tmp*)>
 jsarray_make_nval
   (n, x) =
 (
-XATS2JS_jsarray_make_nval_t0
+XATS2JS_jsarray_make_nval
   (n, x)) where
 {
 #extern
 fun
-XATS2JS_jsarray_make_nval_t0
+XATS2JS_jsarray_make_nval
  {a:t0}{n:nat}
 ( n
 : sint(n)
@@ -162,6 +162,64 @@ gseq_length
 { x0:vt }
 gasz_length
 <jsarray(x0)><x0> = jsarray_length<>{x0}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-24:
+Wed 24 Jul 2024 09:09:12 PM EDT
+*)
+//
+#impltmp
+<(*tmp*)>
+jsarray_get_at
+  {a}(A, i) =
+(
+XATS2JS_jsarray_get_at
+  (A, i)) where
+{
+fun
+XATS2JS_jsarray_get_at
+{a:t0}{n:nat}
+( A
+: jsarray(a,n)
+, i: nintlt(n)): (a) = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+jsarray_set_at
+  {a}(A, i, x) =
+(
+XATS2JS_jsarray_set_at
+  (A, i, x)) where
+{
+fun
+XATS2JS_jsarray_set_at
+{a:t0}{n:nat}
+( A
+: jsarray(a,n)
+, i:nintlt(n), x:a): void = $extnam()
+}
+//
+#impltmp
+< x0:t0 >
+gasp_get_at
+<jsarray(x0)><x0> = jsarray_get_at<x0>
+#impltmp
+< x0:t0 >
+gasp_set_at
+<jsarray(x0)><x0> = jsarray_set_at<x0>
+//
+#impltmp
+< x0:t0 >
+gasp_get_at_raw
+<jsarray(x0)><x0> = jsarray_get_at<x0>
+#impltmp
+< x0:t0 >
+gasp_set_at_raw
+<jsarray(x0)><x0> = jsarray_set_at<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -314,6 +372,15 @@ XATS2JS_jsarray_sortref_c2fr
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#impltmp
+< a:t0 >
+gseq_strmize
+<jsarray(a)><a> = gasp_strmize<jsarray(a)><a>
+#impltmp
+< a:vt >
+gseq_strmize1
+<jsarray(a)><a> = gasp_strmize<jsarray(a)><a>
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
