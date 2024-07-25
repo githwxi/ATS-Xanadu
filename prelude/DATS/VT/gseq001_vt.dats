@@ -45,7 +45,7 @@ UN = "prelude/SATS/unsafex.sats"
 #impltmp
 { x0:vt }
 gseq_listize0
-<list_vt(x0)><x0>(xs) = (xs)
+<list_vt(x0)><x0>(xs) = (xs)//identity
 //
 (* ****** ****** *)
 //
