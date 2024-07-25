@@ -97,19 +97,43 @@ jsarray_length
 length with jsarray_length of 1000
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun<>
 jsarray_get_at
- {a:t0}{n:nat}
-(A:jsarray(a, n), i:nintlt(n)): (a)
+ {a:t0}
+(A:jsarray(a), i:nint): (a)
 fun<>
 jsarray_set_at
- {a:t0}{n:nat}
-(A:jsarray(a, n), i:nintlt(n), x:a): void
+ {a:t0}
+(A:jsarray(a), i:nint, x:a): void
 //
 #symload get_at with jsarray_get_at of 1000
 #symload set_at with jsarray_set_at of 1000
 //
+(* ****** ****** *)
+(* ****** ****** *)
+(*
+//
+HX-2024-07-25:
+We will come back here
+when dependent type-checking
+is supported!
+Thu 25 Jul 2024 06:42:41 AM EDT
+//
+fun<>
+jsarray_getn_at
+ {a:t0}{n:nat}
+(A:jsarray(a, n), i:nintlt(n)): (a)
+fun<>
+jsarray_setn_at
+ {a:t0}{n:nat}
+(A:jsarray(a, n), i:nintlt(n), x:a): void
+//
+#symload getn_at with jsarray_getn_at of 1000
+#symload setn_at with jsarray_setn_at of 1000
+//
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 //

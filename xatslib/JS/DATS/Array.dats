@@ -43,27 +43,31 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef
+jsa(a:vt) = jsarray(a)
+#typedef
+jsa(a:vt,n:i0) = jsarray(a,n)
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 { a: vt }
-g_print<jsarray(a)>
+g_print<jsa(a)>
   ( xs ) =
 let
 //
-#typedef
-xs = jsarray(a)
+#vwtpdef x0 = (a)
+#typedef xs = jsa(a)
 //
 #impltmp
-gseq$beg
-<xs><x0>() = "jsarray("
+gseq$sep<xs><x0>() = ","
+#impltmp
+gseq$beg<xs><x0>() = "jsarray("
 #impltmp
 gseq$end<xs><x0>() = ")"
-#impltmp
-gseq$sep<xs><x0>() = ","
 in//let
-(
-gseq_print1<jsarray(a)><a>(xs))
-end//end-of-[g_print<jsarray(a)>]
+  gseq_print1<xs><x0>(xs)
+end//end-of-[g_print<jsa(a)>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -73,14 +77,14 @@ end//end-of-[g_print<jsarray(a)>]
 jsarray_make_1val
   ( x1 ) =
 (
-XATS2JS_jsarray_make_1val(x1)
-) where
+XATS2JS_jsarray_make_1val
+  (x1)) where
 {
 #extern
 fun
 XATS2JS_jsarray_make_1val
  {a:vt}
-( x1: (a)): jsarray(a, 1) = $extnam()
+( x1: (a)): jsa(a, 1) = $extnam()
 }
 //
 #impltmp
@@ -88,15 +92,15 @@ XATS2JS_jsarray_make_1val
 jsarray_make_2val
   (x1, x2) =
 (
-XATS2JS_jsarray_make_2val(x1, x2)
-) where
+XATS2JS_jsarray_make_2val
+  (x1, x2)) where
 {
 #extern
 fun
 XATS2JS_jsarray_make_2val
  {a:vt}
 ( x1: (a)
-, x2: (a)): jsarray(a, 2) = $extnam()
+, x2: (a)): jsa(a, 2) = $extnam()
 }
 //
 #impltmp
@@ -104,8 +108,8 @@ XATS2JS_jsarray_make_2val
 jsarray_make_3val
   (x1, x2, x3) =
 (
-XATS2JS_jsarray_make_3val(x1, x2, x3)
-) where
+XATS2JS_jsarray_make_3val
+  (x1, x2, x3)) where
 {
 #extern
 fun
@@ -113,7 +117,7 @@ XATS2JS_jsarray_make_3val
  {a:vt}
 ( x1: (a)
 , x2: (a)
-, x3: (a)): jsarray(a, 3) = $extnam()
+, x3: (a)): jsa(a, 3) = $extnam()
 }
 //
 (* ****** ****** *)
@@ -133,7 +137,7 @@ XATS2JS_jsarray_make_nval
  {a:t0}{n:nat}
 ( n
 : sint(n)
-, x:( a )): jsarray(a, n) = $extnam()
+, x:( a )): jsa(a, n) = $extnam()
 }
 //
 (* ****** ****** *)
@@ -151,17 +155,17 @@ XATS2JS_jsarray_length(A)
 fun
 XATS2JS_jsarray_length
  {a:vt}{n:nat}
-(A:jsarray(a,n)):sint(n) = $extnam()
+(A: jsa(a, n)):sint(n) = $extnam()
 }
 //
 #impltmp
 { x0:t0 }
 gseq_length
-<jsarray(x0)><x0> = jsarray_length<>{x0}
+<jsa(x0)><x0> = jsarray_length<>{x0}
 #impltmp
 { x0:vt }
 gasz_length
-<jsarray(x0)><x0> = jsarray_length<>{x0}
+<jsa(x0)><x0> = jsarray_length<>{x0}
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -179,12 +183,11 @@ jsarray_get_at
 XATS2JS_jsarray_get_at
   (A, i)) where
 {
+#extern
 fun
 XATS2JS_jsarray_get_at
 {a:t0}{n:nat}
-( A
-: jsarray(a,n)
-, i: nintlt(n)): (a) = $extnam()
+(A: jsa(a, n), i: nint): (a) = $extnam()
 }
 //
 #impltmp
@@ -195,31 +198,30 @@ jsarray_set_at
 XATS2JS_jsarray_set_at
   (A, i, x)) where
 {
+#extern
 fun
 XATS2JS_jsarray_set_at
 {a:t0}{n:nat}
-( A
-: jsarray(a,n)
-, i:nintlt(n), x:a): void = $extnam()
+(A: jsa(a, n), i:nint, x:a): void = $extnam()
 }
 //
 #impltmp
-< x0:t0 >
-gasp_get_at
-<jsarray(x0)><x0> = jsarray_get_at<x0>
+{ x0:t0 }
+gasz_get_at
+<jsa(x0)><x0> = jsarray_get_at<>{x0}
 #impltmp
-< x0:t0 >
-gasp_set_at
-<jsarray(x0)><x0> = jsarray_set_at<x0>
+{ x0:t0 }
+gasz_set_at
+<jsa(x0)><x0> = jsarray_set_at<>{x0}
 //
 #impltmp
-< x0:t0 >
-gasp_get_at_raw
-<jsarray(x0)><x0> = jsarray_get_at<x0>
+{ x0:t0 }
+gasz_get_at_raw
+<jsa(x0)><x0> = jsarray_get_at<>{x0}//safe
 #impltmp
-< x0:t0 >
-gasp_set_at_raw
-<jsarray(x0)><x0> = jsarray_set_at<x0>
+{ x0:t0 }
+gasz_set_at_raw
+<jsa(x0)><x0> = jsarray_set_at<>{x0}//safe
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -252,23 +254,24 @@ jsarray_forall_c1fr<>
 #impltmp
 { x0:t0 }
 gseq_forall
-<jsarray(x0)><x0> = jsarray_forall<x0>
+<jsa(x0)><x0> = jsarray_forall<x0>
 //
 #impltmp
 { x0:t0 }
 gseq_forall0
-<jsarray(x0)><x0>
+<jsa(x0)><x0>
  ( xs ) =
 (
 jsarray_forall<x0>(xs)) where
 {
 #impltmp
-forall$test1<x0> = forall$test0<x0> }
+forall$test1<x0> = forall$test0<x0>
+}
 //
 #impltmp
 { x0:vt }
 gseq_forall1
-<jsarray(x0)><x0> = jsarray_forall<x0>
+<jsa(x0)><x0> = jsarray_forall<x0>
 //
 (* ****** ****** *)
 //
@@ -284,10 +287,8 @@ XATS2JS_jsarray_forall_c1fr
 fun
 XATS2JS_jsarray_forall_c1fr
  {a:vt}
-( A
-: jsarray(a)
-, test
-: (!a)-<cfr>bool): bool = $extnam()
+( A: jsa(a)
+, test: (!a)-<cfr>bool): bool = $extnam()
 }
 //
 (* ****** ****** *)
@@ -304,12 +305,19 @@ jsarray_rforall_c1fr<>
 //
 #impltmp
 { x0:t0 }
-gseq_rforall
-<jsarray(x0)><x0> = jsarray_rforall<x0>
+gseq_rforall0
+<jsa(x0)><x0>
+ ( xs ) =
+(
+jsarray_rforall<x0>(xs)) where
+{
+#impltmp
+rforall$test1<x0> = rforall$test0<x0>
+}
 #impltmp
 { x0:vt }
 gseq_rforall1
-<jsarray(x0)><x0> = jsarray_rforall<x0>
+<jsa(x0)><x0> = jsarray_rforall<x0>
 //
 (* ****** ****** *)
 //
@@ -325,7 +333,7 @@ XATS2JS_jsarray_rforall_c1fr
 fun
 XATS2JS_jsarray_rforall_c1fr
  {a:vt}
-( A: jsarray(a)
+( A: jsa(a)
 , test: (a)-<cfr>bool): bool = $extnam()
 }
 //
@@ -345,11 +353,11 @@ jsarray_sortref_c2fr<>
 #impltmp
 { x0:vt }
 gasz_sortref
-<jsarray(x0)><x0> = jsarray_sortref<x0>
+<jsa(x0)><x0> = jsarray_sortref<x0>
 #impltmp
 { x0:vt }
 gasz_sortref1
-<jsarray(x0)><x0> = jsarray_sortref<x0>
+<jsa(x0)><x0> = jsarray_sortref<x0>
 *)
 //
 (* ****** ****** *)
@@ -366,7 +374,7 @@ XATS2JS_jsarray_sortref_c2fr
 fun
 XATS2JS_jsarray_sortref_c2fr
  {a:vt}
-( A: jsarray(a)
+( A: jsa(a)
 , cmpr: (!a, !a)-<cfr>sint): void = $extnam()
 }
 //
@@ -374,13 +382,13 @@ XATS2JS_jsarray_sortref_c2fr
 (* ****** ****** *)
 //
 #impltmp
-< a:t0 >
+{ x0:t0 }
 gseq_strmize
-<jsarray(a)><a> = gasp_strmize<jsarray(a)><a>
+<jsa(x0)><x0> = gasz_strmize<jsa(x0)><x0>
 #impltmp
-< a:vt >
+{ x0:vt }
 gseq_strmize1
-<jsarray(a)><a> = gasp_strmize<jsarray(a)><a>
+<jsa(x0)><x0> = gasz_strmize<jsa(x0)><x0>
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)

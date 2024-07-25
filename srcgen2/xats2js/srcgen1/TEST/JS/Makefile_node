@@ -7,6 +7,7 @@ NODE=node \
 TEST11=test11_xats2js_dats.js
 TEST12=test12_xats2js_dats.js
 PRELUDE=./../../../../../prelude
+XATSLIB=./../../../../../xatslib
 ##################################################################
 all::
 all::all_sats
@@ -48,6 +49,15 @@ all_sats::\
 gseq002_sats
 gseq002_sats: ; \
 $(NODE) $(TEST11) $(PRELUDE)/SATS/gseq002.sats 2>/dev/null
+############
+all_sats::\
+gasz000_sats
+gasz000_sats: ; \
+$(NODE) $(TEST11) $(PRELUDE)/SATS/gasz000.sats 2>/dev/null
+all_sats::\
+gasz001_sats
+gasz001_sats: ; \
+$(NODE) $(TEST11) $(PRELUDE)/SATS/gasz001.sats 2>/dev/null
 ############
 all_sats::\
 strn000_sats
@@ -161,6 +171,15 @@ gseq002_vt_dats: ; \
 $(NODE) $(TEST12) $(PRELUDE)/DATS/VT/gseq002_vt.dats 2>/dev/null
 ############
 all_dats::\
+gasz000_vt_dats
+gasz000_vt_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/VT/gasz000_vt.dats 2>/dev/null
+all_dats::\
+gasz001_vt_dats
+gasz001_vt_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/VT/gasz001_vt.dats 2>/dev/null
+############
+all_dats::\
 strn000_vt_dats
 strn000_vt_dats: ; \
 $(NODE) $(TEST12) $(PRELUDE)/DATS/VT/strn000_vt.dats 2>/dev/null
@@ -182,4 +201,21 @@ all_dats::\
 strm001_vt_dats
 strm001_vt_dats: ; \
 $(NODE) $(TEST12) $(PRELUDE)/DATS/VT/strm001_vt.dats 2>/dev/null
+all_dats::\
+strm002_vt_dats
+strm002_vt_dats: ; \
+$(NODE) $(TEST12) $(PRELUDE)/DATS/VT/strm002_vt.dats 2>/dev/null
+##################################################################
+##################################################################
+# JS/SATS
+all_sats::\
+JS_Array_sats
+JS_Array_sats: ; \
+$(NODE) $(TEST11) $(XATSLIB)/JS/SATS/Array.sats 2>/dev/null
+##################################################################
+# JS/DATS
+all_dats::\
+JS_Array_dats
+JS_Array_dats: ; \
+$(NODE) $(TEST12) $(XATSLIB)/JS/DATS/Array.dats 2>/dev/null
 ##################################################################
