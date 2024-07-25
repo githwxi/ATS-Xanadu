@@ -92,7 +92,8 @@ gseq_irforall0<xs><x0>(*void*)
 gseq_forall_c1fr
   (xs, test) =
 (
-  gseq_forall(xs)) where
+gseq_forall
+<xs><x0>(xs)) where
 {
 #impltmp
 forall$test<x0>(x0) = test(x0)
@@ -104,7 +105,8 @@ forall$test<x0>(x0) = test(x0)
 gseq_forall_f1np
   (xs, test) =
 (
-  gseq_forall(xs)) where
+gseq_forall
+<xs><x0>(xs)) where
 {
 #impltmp
 forall$test<x0>(x0) = test(x0)
@@ -135,33 +137,34 @@ gseq_irforitm =
 gseq_irforitm0<xs><x0>(*void*)
 //
 (* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_foritm_c1fr
+  (xs, work) =
+(
+gseq_foritm
+<xs><x0>(xs)) where
+{
+#impltmp
+foritm$work<x0>(x0) = work(x0)
+}
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_foritm_f1np
+  (xs, work) =
+(
+gseq_foritm
+<xs><x0>(xs)) where
+{
+#impltmp
+foritm$work<x0>(x0) = work(x0)
+}
+//
 (* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< r0:vt >
-gseq_foldall =
-gseq_foldall0<xs><x0><r0>(*void*)
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< r0:vt >
-gseq_rfoldall =
-gseq_rfoldall0<xs><x0><r0>(*void*)
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< r0:vt >
-gseq_ifoldall =
-gseq_ifoldall0<xs><x0><r0>(*void*)
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< r0:vt >
-gseq_irfoldall =
-gseq_irfoldall0<xs><x0><r0>(*void*)
-//
 (* ****** ****** *)
 //
 #impltmp
@@ -190,6 +193,64 @@ gseq_irfolditm =
 gseq_irfolditm0<xs><x0><r0>(*void*)
 //
 (* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_folditm_c2fr
+  (xs, r0, fopr) =
+(
+gseq_folditm
+<xs><x0><r0>(xs, r0)) where
+{
+#impltmp
+folditm$fopr<x0>(r0, x0) = fopr(r0, x0)
+}
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_folditm_f2np
+  (xs, r0, fopr) =
+(
+gseq_folditm
+<xs><x0><r0>(xs, r0)) where
+{
+#impltmp
+folditm$fopr<x0>(r0, x0) = fopr(r0, x0)
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_foldall =
+gseq_foldall0<xs><x0><r0>(*void*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_rfoldall =
+gseq_rfoldall0<xs><x0><r0>(*void*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_ifoldall =
+gseq_ifoldall0<xs><x0><r0>(*void*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_irfoldall =
+gseq_irfoldall0<xs><x0><r0>(*void*)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -210,6 +271,69 @@ g_make0_lstrm<x0><xs>
 (
 gseq_map_lstrm<xs><x0><x0>(xs))
 //
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< ys:vt >
+< y0:vt >
+gseq_map_ares_c1fr
+  (xs, fopr) =
+(
+gseq_map_ares
+<xs><x0>
+<ys><y0>( xs )) where
+{
+#impltmp
+map$fopr<x0><y0>(x0) = fopr(x0)
+}
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< ys:vt >
+< y0:vt >
+gseq_map_ares_f1np
+  (xs, fopr) =
+(
+gseq_map_ares
+<xs><x0>
+<ys><y0>( xs )) where
+{
+#impltmp
+map$fopr<x0><y0>(x0) = fopr(x0)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_map_self_c1fr
+  (xs, fopr) =
+(
+gseq_map_self
+<xs><x0>( xs )) where
+{
+#impltmp
+map$fopr<x0><x0>(x0) = fopr(x0)
+}
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_map_self_f1np
+  (xs, fopr) =
+(
+gseq_map_self
+<xs><x0>( xs )) where
+{
+#impltmp
+map$fopr<x0><x0>(x0) = fopr(x0)
+}
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp

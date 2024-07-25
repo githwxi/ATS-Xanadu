@@ -206,13 +206,15 @@ fun
 <x0:t0>
 <r0:vt>
 gseq_folditm_c2fr
-(xs: xs, fopr: (r0, x0)-<cfr>(r0)): (r0)
+( xs: xs
+, r0: r0, fopr: (r0, x0)-<cfr>(r0)): (r0)
 fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
 gseq_folditm_f2np
-(xs: xs, fopr: (r0, x0)-<fnp>(r0)): (r0)
+( xs: xs
+, r0: r0, fopr: (r0, x0)-<fnp>(r0)): (r0)
 //
 #symload folditm with gseq_folditm_c2fr of 0100
 #symload folditm_cfr with gseq_folditm_c2fr of 0100

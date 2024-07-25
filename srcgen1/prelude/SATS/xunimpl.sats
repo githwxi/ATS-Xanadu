@@ -497,6 +497,68 @@ gasz_set_at_raw(xs: xs, i0: ni, x0: x0): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-25:
+Thu 25 Jul 2024 12:19:14 PM EDT
+*)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_foritm_c1fr
+(xs: xs, work: (x0)-<cfr>void): void
+fun
+<xs:t0>
+<x0:t0>
+gseq_foritm_f1np
+(xs: xs, work: (x0)-<fnp>void): void
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_folditm_c2fr
+( xs: xs
+, r0: r0, fopr: (r0, x0)-<cfr>(r0)): (r0)
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_folditm_f2np
+( xs: xs
+, r0: r0, fopr: (r0, x0)-<fnp>(r0)): (r0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+<y0:vt>
+gseq_map_ares_c1fr
+(xs: xs, fopr: (x0)-<cfr>(y0)): (ys)
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+<y0:vt>
+gseq_map_ares_f1np
+(xs: xs, fopr: (x0)-<cfr>(y0)): (ys)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_map_self_c1fr
+(xs: xs, fopr: (x0)-<cfr>(x0)): (xs)
+fun
+<xs:t0>
+<x0:t0>
+gseq_map_self_f1np
+(xs: xs, fopr: (x0)-<cfr>(x0)): (xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
