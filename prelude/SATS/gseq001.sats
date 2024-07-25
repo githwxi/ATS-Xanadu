@@ -113,6 +113,26 @@ fun
 <x0:t0>
 gseq_irforall(xs: xs): bool
 //
+#symload forall with gseq_forall of 0100
+#symload forall with gseq_rforall of 0100
+#symload forall with gseq_iforall of 0100
+#symload forall with gseq_irforall of 0100
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_forall_c1fr
+(xs: xs, test: (x0) -<cfr> bool): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_forall_f1np
+(xs: xs, test: (x0) -<fnp> bool): bool
+//
+#symload forall with gseq_forall_c1fr of 0100
+#symload forall_cfr with gseq_forall_c1fr of 0100
+#symload forall_fnp with gseq_forall_f1np of 0100
+//
 (* ****** ****** *)
 //
 fun

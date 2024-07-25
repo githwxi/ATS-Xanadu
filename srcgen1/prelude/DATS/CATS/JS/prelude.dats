@@ -399,7 +399,7 @@ strm_vt_filter0<x0>(xs)
   #impltmp
   g_free<x0>(x0) = () // leak!
 //
-  #impltmp filter$test0<x0>(x0) = f0(x0)
+  #impltmp filter$test1<x0>(x0) = f0(x0)
 //
 } (* end of [XATS2JS_strm_vt_filter0_cfr] *)
 

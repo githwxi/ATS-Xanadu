@@ -89,6 +89,33 @@ gseq_irforall0<xs><x0>(*void*)
 #impltmp
 < xs:t0 >
 < x0:t0 >
+gseq_forall_c1fr
+  (xs, test) =
+(
+  gseq_forall(xs)) where
+{
+#impltmp
+forall$test<x0>(x0) = test(x0)
+}
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_forall_f1np
+  (xs, test) =
+(
+  gseq_forall(xs)) where
+{
+#impltmp
+forall$test<x0>(x0) = test(x0)
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
 gseq_foritm =
 gseq_foritm0<xs><x0>(*void*)
 #impltmp
