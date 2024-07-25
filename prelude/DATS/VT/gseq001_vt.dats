@@ -43,6 +43,17 @@ UN = "prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 //
 #impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_listize =
+gseq_listize0<xs><x0>
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_listize =
+gseq_listize1<xs><x0>
+//
+#impltmp
 { x0:vt }
 gseq_listize0
 <list_vt(x0)><x0>(xs) = (xs)//identity
@@ -76,6 +87,28 @@ gseq_rlistize0
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_strmize =
+gseq_strmize0<xs><x0>
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_strmize =
+gseq_strmize1<xs><x0>
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_strqize =
+gseq_strqize0<xs><x0>
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_strqize =
+gseq_strqize1<xs><x0>
 //
 #impltmp
 { x0:vt }
