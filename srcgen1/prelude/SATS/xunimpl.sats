@@ -513,6 +513,12 @@ fun
 gseq_foritm_f1np
 (xs: xs, work: (x0)-<fnp>void): void
 //
+#symload foritm with gseq_foritm_c1fr of 0100
+#symload foritm_cfr with gseq_foritm_c1fr of 0100
+#symload foritm_fnp with gseq_foritm_f1np of 0100
+//
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -527,6 +533,10 @@ fun
 gseq_folditm_f2np
 ( xs: xs
 , r0: r0, fopr: (r0, x0)-<fnp>(r0)): (r0)
+//
+#symload folditm with gseq_folditm_c2fr of 0100
+#symload folditm_cfr with gseq_folditm_c2fr of 0100
+#symload folditm_fnp with gseq_folditm_f2np of 0100
 //
 (* ****** ****** *)
 //
@@ -555,6 +565,14 @@ fun
 <x0:t0>
 gseq_map_self_f1np
 (xs: xs, fopr: (x0)-<cfr>(x0)): (xs)
+//
+#symload map with gseq_map_ares_c1fr of 0100
+#symload map_cfr with gseq_map_ares_c1fr of 0100
+#symload map_fnp with gseq_map_ares_c1fr of 0100
+//
+#symload map with gseq_map_self_c1fr of 0110
+#symload map_cfr with gseq_map_self_c1fr of 0110
+#symload map_fnp with gseq_map_self_c1fr of 0110
 //
 (* ****** ****** *)
 (* ****** ****** *)

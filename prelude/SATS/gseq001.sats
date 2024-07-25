@@ -113,10 +113,12 @@ fun
 <x0:t0>
 gseq_irforall(xs: xs): bool
 //
+(*
 #symload forall with gseq_forall of 0100
-#symload forall with gseq_rforall of 0100
-#symload forall with gseq_iforall of 0100
-#symload forall with gseq_irforall of 0100
+#symload rforall with gseq_rforall of 0100
+#symload iforall with gseq_iforall of 0100
+#symload irforall with gseq_irforall of 0100
+*)
 //
 fun
 <xs:t0>
@@ -152,10 +154,12 @@ fun
 <x0:t0>
 gseq_irforitm(xs: xs): void
 //
+(*
 #symload foritm with gseq_foritm of 0100
-#symload foritm with gseq_rforitm of 0100
-#symload foritm with gseq_iforitm of 0100
-#symload foritm with gseq_irforitm of 0100
+#symload rforitm with gseq_rforitm of 0100
+#symload iforitm with gseq_iforitm of 0100
+#symload irforitm with gseq_irforitm of 0100
+*)
 //
 fun
 <xs:t0>
@@ -196,10 +200,12 @@ fun
 <r0:vt>
 gseq_irfolditm(xs, r0): ( r0 )
 //
+(*
 #symload folditm with gseq_folditm of 0100
-#symload folditm with gseq_rfolditm of 0100
-#symload folditm with gseq_ifolditm of 0100
-#symload folditm with gseq_irfolditm of 0100
+#symload rfolditm with gseq_rfolditm of 0100
+#symload ifolditm with gseq_ifolditm of 0100
+#symload irfolditm with gseq_irfolditm of 0100
+*)
 //
 fun
 <xs:t0>
@@ -257,8 +263,10 @@ fun
 <x0:t0>
 gseq_map_self(xs: xs): (xs)
 //
+(*
 #symload map with gseq_map_ares of 0100
 #symload map with gseq_map_self of 0110
+*)
 //
 fun
 <xs:t0>
@@ -317,10 +325,12 @@ fun
 <y0:vt>
 gseq_map_lstrq(xs: xs): strq_vt(y0)
 //
+(*
 #symload map_list with gseq_map_list of 0100
 #symload map_llist with gseq_map_llist of 0100
 #symload map_lstrm with gseq_map_lstrm of 0100
 #symload map_lstrq with gseq_map_lstrq of 0100
+*)
 //
 fun
 <xs:t0>
@@ -330,6 +340,15 @@ gseq_map_list_c1fr
 (xs: xs, fopr: (x0)-<cfr>(y0)): list(y0)
 //
 #symload map_list with gseq_map_list_c1fr of 0100
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_llist_c1fr
+(xs: xs, fopr: (x0)-<cfr>(y0)): list_vt(y0)
+//
+#symload map_llist with gseq_map_llist_c1fr of 0100
 //
 (* ****** ****** *)
 //
@@ -343,6 +362,24 @@ fun
 <x0:t0>
 <y0:vt>
 gseq_map_rllist(xs: xs): list_vt(y0)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_map_rlist_c1fr
+(xs: xs, fopr: (x0)-<cfr>(y0)): list(y0)
+//
+#symload map_rlist with gseq_map_rlist_c1fr of 0100
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_rllist_c1fr
+(xs: xs, fopr: (x0)-<cfr>(y0)): list_vt(y0)
+//
+#symload map_rllist with gseq_map_rllist_c1fr of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
