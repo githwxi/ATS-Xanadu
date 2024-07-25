@@ -60,7 +60,8 @@ val () =
 println
 (
 "false = ",
-A.forall(lam x => x < 3)
+A.rfolditm
+(lam x => g_print(x))
 )
 (* ****** ****** *)
 //
