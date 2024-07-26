@@ -151,7 +151,20 @@ let
 val b0 =
 forall$test1<x0>(x0)
 in (g_free<x0>(x0); b0) end//let
-}
+}(*where*)//end-of-[gseq_forall0(xs)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_forall0_c1fr
+  (xs, test) =
+(
+gseq_forall0
+<xs><x0>(xs)) where
+{
+#impltmp
+forall$test0<x0>(x0) = test(x0)
+}(*where*)//end(gseq_forall0_c1fr(...))
 //
 (* ****** ****** *)
 //
@@ -181,7 +194,7 @@ let
 val b0 =
 rforall$test1<x0>(x0)
 in (g_free<x0>(x0); b0) end//let
-}
+}(*where*)//end-of[gseq_rforall1(xs)]
 //
 (* ****** ****** *)
 //
@@ -348,9 +361,25 @@ gseq_forall0<xs><x0>(xs) end//let
 #impltmp
 forall$test0<x0>(x0) =
 let
-  val () =
-  foritm$work0<x0>(x0) in true end
+val () =
+foritm$work0<x0>(x0) in true end
 }(*where*)//end-of-[gseq_foritm0(xs)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_foritm0_c1fr
+  (xs, work) =
+(
+gseq_foritm0
+<xs><x0>(xs)) where
+{
+#impltmp
+foritm$work0<x0>(x0) = work(x0)
+}(*where*)//end(gseq_foritm0_c1fr(...))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 < xs:vt >
@@ -370,6 +399,20 @@ let
   foritm$work1<x0>(x0) in true end
 }(*where*)//end-of-[gseq_foritm1(xs)]
 //
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_foritm1_c1fr
+  (xs, work) =
+(
+gseq_foritm1
+<xs><x0>(xs)) where
+{
+#impltmp
+foritm$work1<x0>(x0) = work(x0)
+}(*where*)//end(gseq_foritm1_c1fr(...))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp

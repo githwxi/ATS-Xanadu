@@ -183,6 +183,10 @@ fun
 <ys:vt>
 gseq_append(xs: xs, ys: ~ys): xs
 //
+(*
+#symload append with gseq_append of 0100
+*)
+//
 (* ****** ****** *)
 //
 (*
@@ -196,6 +200,10 @@ fun
 <ys:vt>
 gseq_prepend(xs: xs, ys: ~ys): xs
 //
+(*
+#symload prepend with gseq_prepend of 0100
+*)
+//
 (* ****** ****** *)
 //
 (*
@@ -208,6 +216,8 @@ fun
 <x0:t0>
 <ys:vt>
 gseq_rappend(xs: xs, ys: ~ys): xs
+//
+#symload rappend with gseq_rappend of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)

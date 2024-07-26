@@ -47,6 +47,8 @@ fun
 gasz_listize
  ( xs: xs ): list_vt(x0)
 //
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:vt>
@@ -55,7 +57,18 @@ gasz_strmize
 fun
 <xs:t0>
 <x0:vt>
+gasz_rstrmize
+ ( xs: xs ): strm_vt(x0)
+//
+fun
+<xs:t0>
+<x0:vt>
 gasz_strqize
+ ( xs: xs ): strq_vt(x0)
+fun
+<xs:t0>
+<x0:vt>
+gasz_rstrqize
  ( xs: xs ): strq_vt(x0)
 //
 (* ****** ****** *)

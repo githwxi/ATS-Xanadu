@@ -60,27 +60,6 @@ XATS2JS_jsarray_set_at
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_make_1val
-  ( x1 )
-{
-  return [x1]; // len = 1
-}
-function
-XATS2JS_jsarray_make_2val
-  ( x1, x2 )
-{
-  return [x1, x2]; // len = 2
-}
-function
-XATS2JS_jsarray_make_3val
-  ( x1, x2, x3 )
-{
-  return [x1, x2, x3]; // len = 3
-}
-//
-/////////////////////////////////////////////////////////////////////////
-//
-function
 XATS2JS_jsarray_make_nval
   (n, x) // HX: [x]: nonlin
 {
@@ -91,6 +70,40 @@ XATS2JS_jsarray_make_nval
     A[i] = x
   }
   return A // HX: A = [x, x, ..., x]
+}
+//
+/////////////////////////////////////////////////////////////////////////
+//
+function
+XATS2JS_jsarray_make0_1val
+  ( x1 )
+{
+  return [x1]; // len = 1
+}
+function
+XATS2JS_jsarray_make0_2val
+  ( x1, x2 )
+{
+  return [x1, x2]; // len = 2
+}
+function
+XATS2JS_jsarray_make0_3val
+  ( x1, x2, x3 )
+{
+  return [x1, x2, x3]; // len = 3
+}
+//
+/////////////////////////////////////////////////////////////////////////
+//
+// HX-2024-07-25:
+// Thu 25 Jul 2024 06:03:30 PM EDT
+//
+function
+XATS2JS_jsarray_make0_fwork
+  (fwork)
+{
+  let A = []
+  fwork((x) => A.push(x)); return A
 }
 //
 /////////////////////////////////////////////////////////////////////////

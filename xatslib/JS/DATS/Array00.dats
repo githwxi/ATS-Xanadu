@@ -74,57 +74,6 @@ end//end-of-[g_print<jsa(a)>]
 //
 #impltmp
 <(*tmp*)>
-jsarray_make_1val
-  ( x1 ) =
-(
-XATS2JS_jsarray_make_1val
-  (x1)) where
-{
-#extern
-fun
-XATS2JS_jsarray_make_1val
- {a:vt}
-( x1: (a)): jsa(a, 1) = $extnam()
-}
-//
-#impltmp
-<(*tmp*)>
-jsarray_make_2val
-  (x1, x2) =
-(
-XATS2JS_jsarray_make_2val
-  (x1, x2)) where
-{
-#extern
-fun
-XATS2JS_jsarray_make_2val
- {a:vt}
-( x1: (a)
-, x2: (a)): jsa(a, 2) = $extnam()
-}
-//
-#impltmp
-<(*tmp*)>
-jsarray_make_3val
-  (x1, x2, x3) =
-(
-XATS2JS_jsarray_make_3val
-  (x1, x2, x3)) where
-{
-#extern
-fun
-XATS2JS_jsarray_make_3val
- {a:vt}
-( x1: (a)
-, x2: (a)
-, x3: (a)): jsa(a, 3) = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
 jsarray_make_nval
   (n, x) =
 (
@@ -138,6 +87,57 @@ XATS2JS_jsarray_make_nval
 ( n
 : sint(n)
 , x:( a )): jsa(a, n) = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jsarray_make0_1val
+  ( x1 ) =
+(
+XATS2JS_jsarray_make0_1val
+  (x1)) where
+{
+#extern
+fun
+XATS2JS_jsarray_make0_1val
+ {a:vt}
+( x1: (a)): jsa(a, 1) = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+jsarray_make0_2val
+  (x1, x2) =
+(
+XATS2JS_jsarray_make0_2val
+  (x1, x2)) where
+{
+#extern
+fun
+XATS2JS_jsarray_make0_2val
+ {a:vt}
+( x1: (a)
+, x2: (a)): jsa(a, 2) = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+jsarray_make0_3val
+  (x1, x2, x3) =
+(
+XATS2JS_jsarray_make0_3val
+  (x1, x2, x3)) where
+{
+#extern
+fun
+XATS2JS_jsarray_make0_3val
+ {a:vt}
+( x1: (a)
+, x2: (a)
+, x3: (a)): jsa(a, 3) = $extnam()
 }
 //
 (* ****** ****** *)
@@ -226,6 +226,35 @@ gasz_set_at_raw
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+{ x0:t0 }
+gseq_strmize
+<jsa(x0)><x0> = gasz_strmize<jsa(x0)><x0>
+#impltmp
+{ x0:vt }
+gseq_strmize0
+<jsa(x0)><x0> = gasz_strmize<jsa(x0)><x0>
+#impltmp
+{ x0:vt }
+gseq_strmize1
+<jsa(x0)><x0> = gasz_strmize<jsa(x0)><x0>
+//
+#impltmp
+{ x0:t0 }
+gseq_rstrmize
+<jsa(x0)><x0> = gasz_rstrmize<jsa(x0)><x0>
+#impltmp
+{ x0:vt }
+gseq_rstrmize0
+<jsa(x0)><x0> = gasz_rstrmize<jsa(x0)><x0>
+#impltmp
+{ x0:vt }
+gseq_rstrmize1
+<jsa(x0)><x0> = gasz_rstrmize<jsa(x0)><x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 #impltmp
 < x0:vt >
@@ -257,6 +286,11 @@ gseq_forall
 <jsa(x0)><x0> = jsarray_forall<x0>
 //
 #impltmp
+{ x0:vt }
+gseq_forall1
+<jsa(x0)><x0> = jsarray_forall<x0>
+//
+#impltmp
 { x0:t0 }
 gseq_forall0
 <jsa(x0)><x0>
@@ -267,11 +301,6 @@ jsarray_forall<x0>(xs)) where
 #impltmp
 forall$test1<x0> = forall$test0<x0>
 }
-//
-#impltmp
-{ x0:vt }
-gseq_forall1
-<jsa(x0)><x0> = jsarray_forall<x0>
 //
 (* ****** ****** *)
 //
@@ -406,18 +435,6 @@ XATS2JS_jsarray_sortref_c2fr
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-{ x0:t0 }
-gseq_strmize
-<jsa(x0)><x0> = gasz_strmize<jsa(x0)><x0>
-#impltmp
-{ x0:vt }
-gseq_strmize1
-<jsa(x0)><x0> = gasz_strmize<jsa(x0)><x0>
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (*
 HX-2024-07-25:
 Thu 25 Jul 2024 03:08:18 PM EDT
@@ -428,24 +445,31 @@ Thu 25 Jul 2024 03:08:18 PM EDT
 jsarray_make0_lstrm
   {a:vt}( xs ) =
 (
-jsarray_make_fwork<>
-(lam(work) => foritm0(xs, work)))
+jsarray_make0_fwork<>
+(lam(work) => xs.foritm0(work)))
+//
+#impltmp
+{ x0:vt }
+g_make0_lstrm
+<x0><jsa(x0)>(xs) =
+(
+  jsarray_make0_lstrm<>{x0}(xs))
 //
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-jsarray_make_fwork
+jsarray_make0_fwork
   (fwork) =
 (
-XATS2JS_jsarray_make_fwork
+XATS2JS_jsarray_make0_fwork
   (fwork)) where
 {
 #extern
 fun
-XATS2JS_jsarray_make_fwork
+XATS2JS_jsarray_make0_fwork
  {a:vt}
-(fwork: fwork(a)): jsa(a) = $extnam()
+(fwork: ~fwork(a)): jsa(a) = $extnam()
 }
 //
 (* ****** ****** *)
@@ -454,4 +478,4 @@ XATS2JS_jsarray_make_fwork
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_xatslib_JS_DATS_Array.dats] *)
+(* end of [ATS3/XANADU_xatslib_JS_DATS_Array00.dats] *)

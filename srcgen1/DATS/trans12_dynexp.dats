@@ -6184,6 +6184,9 @@ D1Csymload
 , sym
 , dqid, opt) = d1cl.node()
 //
+val () = prerrln!
+("aux_symload: d1cl = ", d1cl)
+//
 val pval =
 (
 case+ opt of

@@ -239,6 +239,36 @@ It is not harm to keep it here as a reference.
 gseq_filter0_lstrm
 <strm_vt(x0)><x0> = strm_vt_filter0<x0>(*void*)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+strm_vt_append00
+  (xs, ys) =
+(
+  auxmain(xs, ys)) where
+{
+fun
+auxmain
+( xs: strm_vt(a)
+, ys: strm_vt(a)): strm_vt(a) =
+$llazy
+(
+free(xs);
+free(ys);
+case+ !xs of
+| ~
+strmcon_vt_nil() => !ys
+| ~
+strmcon_vt_cons(x0, xs) =>
+strmcon_vt_cons(x0, auxmain(xs, ys))
+) (*case+*)
+} (*where*)//end-of(strm_vt_append00(xs,ys))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

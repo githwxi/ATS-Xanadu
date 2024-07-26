@@ -79,6 +79,57 @@ fun
 <y0:vt>
 nint_map_lstrm(xs: nint): strm_vt(y0)
 //
+#symload
+map_lstrm with nint_map_lstrm of 1000
+//
+fun
+<y0:vt>
+nint_map_lstrm_c1fr
+( xs: nint
+, fopr: (nint)-<cfr>(y0)): strm_vt(y0)
+fun
+<y0:vt>
+nint_map_lstrm_f1np
+( xs: nint
+, fopr: (nint)-<fnp>(y0)): strm_vt(y0)
+//
+#symload
+map_lstrm with nint_map_lstrm_c1fr of 1000
+#symload
+map_lstrm_cfr with nint_map_lstrm_c1fr of 1000
+#symload
+map_lstrm_fnp with nint_map_lstrm_f1np of 1000
+//
+(* ****** ****** *)
+//
+fun
+<y0:vt>
+nint_rmap_lstrm(xs: nint): strm_vt(y0)
+//
+#symload
+rmap_lstrm with nint_rmap_lstrm of 1000
+//
+fun
+<y0:vt>
+nint_rmap_lstrm_c1fr
+( xs: nint
+, fopr: (nint)-<cfr>(y0)): strm_vt(y0)
+fun
+<y0:vt>
+nint_rmap_lstrm_f1np
+( xs: nint
+, fopr: (nint)-<fnp>(y0)): strm_vt(y0)
+//
+#symload
+rmap_lstrm with nint_rmap_lstrm_c1fr of 1000
+#symload
+rmap_lstrm_cfr with nint_rmap_lstrm_c1fr of 1000
+#symload
+rmap_lstrm_fnp with nint_rmap_lstrm_f1np of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

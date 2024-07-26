@@ -28,6 +28,8 @@
 (* ****** ****** *)
 #staload
 "xatslib/JS/SATS/Array.sats"
+#staload
+"xatslib/JS/DATS/Array01.dats"
 #include
 "xatslib/JS/HATS/xatslib_JS_dats.hats"
 (* ****** ****** *)
@@ -83,13 +85,43 @@ val () =
   println("iA = ", iA))
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
+val B =
+jsarray
+(map_lstrm(10,lam(i)=>i+1))
+val () = println("B = ", B)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val AB =
+jsarray_append(A, B)
+val () = println("AB = ", AB)
+val BA =
+jsarray_prepend(A, B)
+val () = println("BA = ", BA)
+val A1B =
+jsarray_rappend(A, B)
+val () = println("A1B = ", A1B)
+val () =
+A1B.sortref() where
+{
+#typedef x0 = sint
+#impltmp
+g_cmp11<x0,x0>(x, y) = y - x
+}
+val () = println("A1B = ", A1B)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 cube(x1: sint): sint =
 let
-val x2 = x1 * x1 in x1 * x2
-end // let // end (cube(x1))
-
+  val x2 = x1 * x1 in x1 * x2
+end // let // end-of(cube(x1))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
