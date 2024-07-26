@@ -54,12 +54,12 @@ gasz_length1(xs: !xs): nint
 //
 fun
 <xs:vt>
-<x0:vt>
+<x0:t0> // HX: t0(not(vt))
 gasz_get1_at
 (xs: !xs, i0: ni): (x0)
 fun
 <xs:vt>
-<x0:vt>
+<x0:t0> // HX: t0(not(vt))
 gasz_set1_at
 (xs: !xs, i0: ni, x0: x0): void
 //

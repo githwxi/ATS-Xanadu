@@ -142,11 +142,11 @@ jsarray_vt_length1
 //
 fun<>
 jsarray_vt_get1_at
- {a:t0}
+ {a:t0}//HX: it's t0; not vt
 (A: !jsarray_vt(a), i:nint): (a)
 fun<>
 jsarray_vt_set1_at
- {a:t0}
+ {a:t0}//HX: it's t0; not vt
 (A: !jsarray_vt(a), i:nint, x:a): void
 //
 #symload get1_at with jsarray_vt_get1_at of 1000
