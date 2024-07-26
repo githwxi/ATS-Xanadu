@@ -49,10 +49,10 @@ jsarray
 #typedef
 jsarray(a:vt) = [n:i0] jsarray(a,n)
 (* ****** ****** *)
-#typedef
+#vwtpdef
 jsarray_vt
 (a:vt,n:i0) = jsarray_vtbx(a,n)
-#typedef
+#vwtpdef
 jsarray_vt(a:vt) = [n:i0] jsarray_vt(a,n)
 (* ****** ****** *)
 (* ****** ****** *)

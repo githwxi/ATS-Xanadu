@@ -42,6 +42,19 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fcast
+UN_jsarray_t2vt
+ {a:vt}{n:i0}
+(jsarray(a,n)): jsarray_vt(a,n)
+//
+fcast
+UN_jsarray_vt2t
+ {a:vt}{n:i0}
+(!jsarray_vt(a,n)): jsarray(a,n)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2024-07-26:
 Fri 26 Jul 2024 10:52:28 AM EDT

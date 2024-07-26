@@ -39,9 +39,9 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #staload
-"./../SATS/Array.sats"
+"./../../SATS/Array.sats"
 #staload
-"./../SATS/Array_vt.sats"
+"./../../SATS/VT/Array_vt.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -50,21 +50,21 @@ jsa(a:vt) = jsarray(a)
 #typedef
 jsa(a:vt,n:i0) = jsarray(a,n)
 (* ****** ****** *)
-#typedef
+#vwtpdef
 jsla(a:vt) = jsarray_vt(a)
-#typedef
+#vwtpdef
 jsla(a:vt,n:i0) = jsarray_vt(a,n)
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 { a: vt }
-g_print<jsla(a)>
+g_print1<jsla(a)>
   ( xs ) =
 let
 //
 #vwtpdef x0 = (a)
-#typedef xs = jsla(a)
+#vwtpdef xs = jsla(a)
 //
 #impltmp
 gseq$sep<xs><x0>() = ","
@@ -79,7 +79,69 @@ end//end-of-[g_print1<jsla(a)>]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+#impltmp
+<(*tmp*)>
+jsarray_vt_make0_1val
+  ( x1 ) =
+UN_jsarray_t2vt
+(jsarray_make0_1val<>(x1))
+//
+#impltmp
+<(*tmp*)>
+jsarray_vt_make0_2val
+  (x1, x2) =
+UN_jsarray_t2vt
+(jsarray_make0_2val<>(x1, x2))
+//
+#impltmp
+<(*tmp*)>
+jsarray_vt_make0_3val
+  (x1, x2, x3) =
+UN_jsarray_t2vt
+(jsarray_make0_3val<>(x1, x2, x3))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jsarray_vt_length1
+  ( A ) =
+(
+jsarray_length<>(UN_jsarray_vt2t(A)))
+//
+#impltmp
+{ x0:vt }
+gseq_length1
+<jsla(x0)><x0> = jsarray_vt_length1<>{x0}
+(*
+#impltmp
+{ x0:vt }
+gasz_length1
+<jsla(x0)><x0> = jsarray_vt_length1<>{x0}
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jsarray_vt_get1_at
+  {a}(A, i) =
+(
+jsarray_get_at<>(UN_jsarray_vt2t(A), i))
+//
+#impltmp
+<(*tmp*)>
+jsarray_vt_set1_at
+  {a}(A, i, x) =
+(
+jsarray_set_at<>(UN_jsarray_vt2t(A), i, x))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_xatslib_JS_DATS_VT_Array00_vt.dats] *)
