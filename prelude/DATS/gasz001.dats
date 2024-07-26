@@ -153,8 +153,24 @@ end//let//end-of-[gasz_rforall(xs)]
 (* ****** ****** *)
 //
 #impltmp
+< x0:vt >
+mapref$fopr0(x0) =
+let
+var x0 = x0
+in//let
+(
+mapref$fopr1r<x0>(x0);x0)
+end//let//(mapref$fopr0(x0))
+#impltmp
+< x0:vt >
+mapref$fopr1r(x0) =
+(x0 := mapref$fopr0<x0>(x0))
+//
+(* ****** ****** *)
+//
+#impltmp
 < xs:t0 >
-< x0:t0 >
+< x0:vt >
 gasz_mapref_c1fr
   (xs, fopr) =
 (

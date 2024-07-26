@@ -411,6 +411,10 @@ gasz_sortref
 <jsa(x0)><x0> = jsarray_sortref<x0>
 #impltmp
 { x0:vt }
+gasz_sortref0
+<jsa(x0)><x0> = jsarray_sortref<x0>
+#impltmp
+{ x0:vt }
 gasz_sortref1
 <jsa(x0)><x0> = jsarray_sortref<x0>
 *)

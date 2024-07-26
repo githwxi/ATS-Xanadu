@@ -95,11 +95,14 @@ Thu 25 Jul 2024 01:47:26 PM EDT
 fun
 <x0:vt>
 mapref$fopr0(~x0): x0
-(*
 fun
 <x0:vt>
-mapref$fopr$ref
+mapref$fopr1(!x0): x0
+fun
+<x0:vt>
+mapref$fopr1r
 ( ref: &x0 >> x0 ): void
+(*
 fun
 <x0:vt>
 mapref$fopr$clr
