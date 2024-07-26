@@ -50,17 +50,22 @@ gasz_length(xs: xs): nint
 //
 fun
 <xs:t0>
-<x0:vt>
+<x0:t0>
 gasz_get_at
 (xs: xs, i0: ni): (x0)
 fun
 <xs:t0>
-<x0:vt>
+<x0:t0>
 gasz_set_at
 (xs: xs, i0: ni, x0: x0): void
 //
 (* ****** ****** *)
 //
+(*
+HX-2024-07-26:
+These should be
+used with caution!!!
+*)
 fun
 <xs:t0>
 <x0:vt>

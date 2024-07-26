@@ -138,6 +138,15 @@ jsarray_vt_set1_at
 (
 jsarray_set_at<>(UN_jsarray_vt2t(A), i, x))
 //
+#impltmp
+{ x0:t0 }
+gasz_get1_at
+<jsla(x0)><x0> = jsarray_vt_get1_at<>{x0}
+#impltmp
+{ x0:t0 }
+gasz_set_at
+<jsla(x0)><x0> = jsarray_vt_set1_at<>{x0}
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

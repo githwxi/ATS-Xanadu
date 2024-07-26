@@ -146,11 +146,11 @@ jsarray_length
 //
 fun<>
 jsarray_get_at
- {a:t0}
+ {a:t0}//HX: t0(not vt)
 (A:jsarray(a), i:nint): (a)
 fun<>
 jsarray_set_at
- {a:t0}
+ {a:t0}//HX: t0(not vt)
 (A:jsarray(a), i:nint, x:a): void
 //
 #symload get_at with jsarray_get_at of 1000
