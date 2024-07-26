@@ -50,9 +50,13 @@ ENV = "./../SATS/xsymenv.sats"
 NMS = "./../SATS/nmspace.sats"
 //
 (* ****** ****** *)
-
+//
 #staload "./../SATS/xbasics.sats"
-
+//
+(* ****** ****** *)
+//
+#staload "./../SATS/xerrory.sats"
+//
 (* ****** ****** *)
 
 #staload "./../SATS/xlabel0.sats"
@@ -83,6 +87,9 @@ NMS = "./../SATS/nmspace.sats"
 #staload "./../SATS/trans01.sats"
 #staload "./../SATS/trans12.sats"
 
+(* ****** ****** *)
+implement
+fprint_val<token> = fprint_token
 (* ****** ****** *)
 implement
 fprint_val<s1qua> = fprint_s1qua
@@ -6184,23 +6191,47 @@ D1Csymload
 , sym
 , dqid, opt) = d1cl.node()
 //
+(*
 val () = prerrln!
 ("aux_symload: d1cl = ", d1cl)
+*)
 //
 val pval =
 (
 case+ opt of
-| None() =>
-  (0)(*default*)
-| Some(int) =>
-  (
+|
+None() =>
+(0)(*default*)
+|
+Some(int) =>
+(
   token2sint(tok)
-  ) where
-  {
-    val-
-    T0INTsome(tok) = int.node()
-  }
-) : int // end of [val]
+) where
+{
+val tok =
+(
+case+
+int.node() of
+|
+T0INTsome(tok) => tok
+|
+_(*non-T0INTsome*) =>
+(
+$raise
+XATSOPT_TRERR12_EXN())
+where
+{
+//
+val () =
+prerrln!
+("trans12-error: ", int.loc())
+val () =
+prerrln!("trans12-error: ", int)
+//
+}(*where*)
+) : token // end-of-[val(tok)]
+}
+) : (int) // end-of-[val(pval)]
 //
 val
 sym = auxsym(sym)

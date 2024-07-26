@@ -918,6 +918,11 @@ fun
 gseq_append
 (xs: xs, ys: ~ys): xs
 //
+(*
+#symload
+append with gseq_append of 0100
+*)
+//
 (* ****** ****** *)
 //
 fun

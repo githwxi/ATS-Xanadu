@@ -652,7 +652,22 @@ gseq_map_self_f1np
 //
 fun
 <x0:vt>
-mapref$fopr0(~x0): x0
+mapref$fopr0
+  (x0: ~x0): x0
+fun
+<x0:vt>
+mapref$fopr1
+  (x0: !x0): x0
+fun
+<x0:vt>
+mapref$fopr1r
+( ref: &x0 >> x0 ): void
+(*
+fun
+<x0:vt>
+mapref$fopr0r
+( ref: &x0 >> ?x0 ): void
+*)
 //
 fun
 <xs:t0>
