@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -38,35 +39,28 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #abstype
-jsarray_tbox(a:vt, n:i0)
+jsarray_tbox(a:vt,n:i0)
+#absvwtp
+jsarray_vtbx(a:vt,n:i0)
 (* ****** ****** *)
 #typedef
 jsarray
-(a:vt, n:i0) = jsarray_tbox(a, n)
+(a:vt, n:i0) = jsarray_tbox(a,n)
 #typedef
-jsarray(a:vt) = [n:i0] jsarray(a, n)
+jsarray(a:vt) = [n:i0] jsarray(a,n)
+(* ****** ****** *)
+#typedef
+jsarray_vt
+(a:vt, n:i0) = jsarray_vtbx(a,n)
+#typedef
+jsarray_vt(a:vt) = [n:i0] jsarray_vt(a,n)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun<>
-jsarray_make_1val
- {a:vt}
-( x: a ): jsarray(a, 1)
-fun<>
-jsarray_make_2val
- {a:vt}
-( a, a ): jsarray(a, 2)
-fun<>
-jsarray_make_3val
- {a:vt}
-( a, a, a ): jsarray(a, 3)
-//
-#symload jsarray
-with jsarray_make_1val of 1000
-#symload jsarray
-with jsarray_make_2val of 1000
-#symload jsarray
-with jsarray_make_3val of 1000
+fcast
+jsarray_vt2t
+ {a:vt}{n:i0}
+(A:jsarray_vt(a,n)): jsarray(a,n)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -77,53 +71,65 @@ jsarray_make_nval
 (n:sint(n),x:a):jsarray(a,n)
 //
 #symload
-jsarray
-with jsarray_make_nval of 1000
-#symload
-jsarray_make
-with jsarray_make_nval of 1000
+jsarray with jsarray_make_nval of 1000
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
-#typedef
+fun<>
+jsarray_make0_1val
+ {a:vt}
+( x: a ): jsarray(a, 1)
+fun<>
+jsarray_make0_2val
+ {a:vt}
+( a, a ): jsarray(a, 2)
+fun<>
+jsarray_make0_3val
+ {a:vt}
+( a, a, a ): jsarray(a, 3)
+//
+#symload
+jsarray with jsarray_make0_1val of 1000
+#symload
+jsarray with jsarray_make0_2val of 1000
+#symload
+jsarray with jsarray_make0_3val of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-25:
+[fwork] is linear!
+*)
+#vwtpdef
 fwork(a:vt) =
 ((~a)-<cfr>void)->void
 //
 fun<>
-jsarray_make_fwork
+jsarray_make0_fwork
 {a:vt}
-(fwork: fwork(a)): jsarray(a)
+(fwork: ~fwork(a)): jsarray(a)
 //
 #symload
-jsarray
-with jsarray_make_fwork of 1000
-#symload
-jsarray_make
-with jsarray_make_fwork of 1000
+jsarray with jsarray_make0_fwork of 1000
 //
 (* ****** ****** *)
 //
 fun<>
 jsarray_make0_lstrm
  {a:vt}
-(xs: strm_vt(a)):jsarray(a)
+(xs: ~strm_vt(a)):jsarray(a)
 fun<>
 jsarray_make0_lstrq
  {a:vt}{n:nat}
-(xs: strq_vt(a,n)):jsarray(a,n)
+(xs: ~strq_vt(a,n)):jsarray(a,n)
 //
 #symload
-jsarray
-with jsarray_make0_lstrm of 1000
+jsarray with jsarray_make0_lstrm of 1000
 #symload
-jsarray
-with jsarray_make0_lstrq of 1000
-#symload
-jsarray_make0
-with jsarray_make0_lstrm of 1000
-#symload
-jsarray_make0
-with jsarray_make0_lstrq of 1000
+jsarray with jsarray_make0_lstrq of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -131,10 +137,9 @@ with jsarray_make0_lstrq of 1000
 fun<>
 jsarray_length
  {a:vt}{n:nat}
-(A: jsarray(a, n)): sint(n)
+(A: jsarray(a,n)): sint(n)
 //
-#symload
-length with jsarray_length of 1000
+#symload length with jsarray_length of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -164,11 +169,11 @@ Thu 25 Jul 2024 06:42:41 AM EDT
 fun<>
 jsarray_getn_at
  {a:t0}{n:nat}
-(A:jsarray(a, n), i:nintlt(n)): (a)
+(A:jsarray(a,n), i:nintlt(n)): (a)
 fun<>
 jsarray_setn_at
  {a:t0}{n:nat}
-(A:jsarray(a, n), i:nintlt(n), x:a): void
+(A:jsarray(a,n), i:nintlt(n), x:a): void
 //
 #symload getn_at with jsarray_getn_at of 1000
 #symload setn_at with jsarray_setn_at of 1000
@@ -184,7 +189,7 @@ jsarray_strmize
 fun<>
 jsarray_strqize
 {a:vt}{n:i0}
-(A: jsarray(a, n)): strq_vt(a)
+(A: jsarray(a,n)): strq_vt(a,n)
 //
 #symload strmize with jsarray_strmize of 1000
 #symload strqize with jsarray_strqize of 1000
@@ -195,7 +200,7 @@ jsarray_strqize
 fun
 <a:vt>
 jsarray_forall
-(A: jsarray(a)): bool
+( A: jsarray(a)): bool
 //
 fun<>
 jsarray_forall_c1fr
@@ -213,12 +218,12 @@ forall with jsarray_forall_c1fr of 1000
 fun
 <a:vt>
 jsarray_rforall
-(A: jsarray(a)): bool
+( A: jsarray(a)): bool
 fun<>
 jsarray_rforall_c1fr
  {a:vt}
 ( A: jsarray(a)
-, test: (a)-<cfr>bool): bool
+, test: (!a)-<cfr>bool): bool
 //
 #symload
 rforall with jsarray_rforall of 1000
@@ -231,7 +236,7 @@ rforall with jsarray_rforall_c1fr of 1000
 fun
 <a:vt>
 jsarray_mapref
-(A: jsarray(a)): void
+( A: jsarray(a)): void
 fun<>
 jsarray_mapref_c1fr
  {a:vt}

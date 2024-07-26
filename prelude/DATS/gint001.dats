@@ -193,6 +193,53 @@ end(*let*)//else//end-of-[if]
 )
 }(*where*)//end-[nint_map_lstrm(ni)]
 //
+#impltmp
+< y0:vt >
+nint_map_lstrm_c1fr
+  (ni, fopr) =
+(
+nint_map_lstrm<y0>(ni))
+where
+{ #impltmp
+  map$fopr<ni><y0>(i0) = (fopr(i0))
+}(*where*)//end-[nint_map_lstrm_c1fr]
+//
+(* ****** ****** *)
+//
+#impltmp
+< y0:vt >
+nint_rmap_lstrm
+  ( ni ) =
+(
+  auxmain(ni)) where
+{
+fun
+auxmain
+(i0: nint):
+strm_vt(y0) = $llazy
+(
+if
+(i0 <= 0)
+then strmcon_vt_nil() else
+let
+val y0 =
+rmap$fopr<ni><y0>(i0-1) in//let
+strmcon_vt_cons(y0, auxmain(i0-1))
+end(*let*)//else//end-of-[if]
+)
+}(*where*)//end-[nint_rmap_lstrm(ni)]
+//
+#impltmp
+< y0:vt >
+nint_rmap_lstrm_c1fr
+  (ni, fopr) =
+(
+nint_rmap_lstrm<y0>(ni))
+where
+{ #impltmp
+  rmap$fopr<ni><y0>(i0) = (fopr(i0))
+}(*where*)//end-[nint_rmap_lstrm_c1fr]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

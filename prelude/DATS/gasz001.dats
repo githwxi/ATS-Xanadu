@@ -59,7 +59,28 @@ where
 map$fopr<ni>(i0) =
 (gasz_get_at_raw<xs><x0>(xs, i0))
 }
-end//let//end-of-[gasz_strmize0(xs)]
+end//let//end-of-[gasz_strmize(xs)]
+//
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasz_rstrmize
+  ( xs ) =
+let
+val n0 =
+gasz_length
+<xs><x0>(xs)
+in//let
+(
+nint_rmap_lstrm<x0>(n0))
+where
+{
+#impltmp
+rmap$fopr<ni>(i0) =
+(gasz_get_at_raw<xs><x0>(xs, i0))
+}
+end//let//end-of-[gasz_rstrmize(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
