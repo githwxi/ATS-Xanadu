@@ -42,6 +42,23 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-26:
+Fri 26 Jul 2024 10:52:28 AM EDT
+*)
+//
+fun<>
+jsarray_vt_make_jsarray
+ {a:vt}{n:nat}
+(jsarray(a,n)): jsarray_vt(a,n)
+//
+#symload
+jsarray_vt with
+jsarray_vt_make_jsarray of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun<>
 jsarray_vt_make0_1val
  {a:vt}

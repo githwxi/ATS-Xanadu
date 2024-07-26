@@ -45,13 +45,13 @@ jsarray_vtbx(a:vt,n:i0)
 (* ****** ****** *)
 #typedef
 jsarray
-(a:vt, n:i0) = jsarray_tbox(a,n)
+(a:vt,n:i0) = jsarray_tbox(a,n)
 #typedef
 jsarray(a:vt) = [n:i0] jsarray(a,n)
 (* ****** ****** *)
 #typedef
 jsarray_vt
-(a:vt, n:i0) = jsarray_vtbx(a,n)
+(a:vt,n:i0) = jsarray_vtbx(a,n)
 #typedef
 jsarray_vt(a:vt) = [n:i0] jsarray_vt(a,n)
 (* ****** ****** *)
@@ -60,7 +60,7 @@ jsarray_vt(a:vt) = [n:i0] jsarray_vt(a,n)
 fcast
 jsarray_vt2t
  {a:vt}{n:i0}
-(A:jsarray_vt(a,n)): jsarray(a,n)
+(jsarray_vt(a,n)): jsarray(a,n)
 //
 (* ****** ****** *)
 (* ****** ****** *)
