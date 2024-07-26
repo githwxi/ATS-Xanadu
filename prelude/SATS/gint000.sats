@@ -30,71 +30,18 @@
 (*
 Author: Hongwei Xi
 (*
-Mon 08 Jul 2024 09:12:42 AM EDT
+Fri 26 Jul 2024 09:27:30 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-(*
-HX-2024-07-17:
-Note strn_print may not
-be the same as g_print<strn>
-*)
-fun<>
-strn_print(strn): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun<>
-strn_length
-{n0:i0}
-(cs: strn(n0)): sint(n0)
-//
-#symload
-length with strn_length of 1000
-//
-(* ****** ****** *)
-//
-(*
-HX-2024-07-11:
-The 'g' in 'gmake' means
-that the argument, which is
-the subject, is polymorphic.
-*)
-fun
-<a:t0>
-strn_gmake(x: a): (strn)
-fun
-<a:vt>
-strn_gmake0(x: ~a): (strn)
-fun
-<a:vt>
-strn_gmake1(x: !a): (strn)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun<>
-strn_make_list
-{n0:i0}
-(cs: list(cgtz, n0)): strn(n0)
-fun<>
-strn_make0_llist
-{n0:i0}
-(cs: ~list_vt(cgtz, n0)): strn(n0)
-fun<>
-strn_make1_llist
-{n0:i0}
-(cs: !list_vt(cgtz, n0)): strn(n0)
-//
+#typedef ni = nint
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_strn000.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_gint000.sats] *)

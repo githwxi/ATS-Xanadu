@@ -70,6 +70,10 @@ $(XATSOPT) -s $(PRELUDE)/SATS/gasz001.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gint001.sats
 all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/strn000.sats
+all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/strn001.sats
+all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/list000.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/unsfx00.sats
