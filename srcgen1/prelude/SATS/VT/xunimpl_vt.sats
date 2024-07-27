@@ -1304,6 +1304,7 @@ gasz_set1_at
 (xs: !xs, i0: ni, x0: x0): void
 //
 (* ****** ****** *)
+//
 fun
 <xs:vt>
 <x0:vt>

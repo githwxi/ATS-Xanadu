@@ -30,102 +30,103 @@
 (*
 Author: Hongwei Xi
 (*
-Mon 08 Jul 2024 08:46:41 AM EDT
+Sat 27 Jul 2024 01:25:30 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-fun
-<a:vt>
-g_free( ~a ): void
-fun
-<a:vt>
-g_copy( !a ): ( a )
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:t0>
-g_equal(a, a): bool
-fun
-<a:t0>
-g_noteq(a, a): bool
-//
-(* ****** ****** *)
-//
-fun
-<a:t0>
-g_eqref(a, a): bool
-fun
-<a:t0>
-g_neqrf(a, a): bool
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:vt>
-g_input
-((*void*)): (  a  )
-//
-fun
-<a:vt>
-g_input$exn
-((*void*)): (  a  )
-fun
-<a:vt>
-g_input_exn
-((*void*)): (  a  )
-//
-fun
-<a:vt>
-g_input_opt
-((*void*)): optn_vt(a)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:vt>
-g_parse
-(rep: strn): (  a  )
-//
-fun
-<a:vt>
-g_parse$exn
-(rep: strn): (  a  )
-fun
-<a:vt>
-g_parse_exn
-(rep: strn): (  a  )
-//
-fun
-<a:vt>
-g_parse_opt
-(rep: strn): optn_vt(a)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:t0>
-g_torep(obj: a): strn
-fun
-<a:t0>
-g_tostr(obj: a): strn
-//
+#typedef ni = nint
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 <x0:t0>
-g_print(obj: x0): void
+gs_print_a1(x0): void
+fun
+<x0:t0>
+<x1:t0>
+gs_print_a2(x0, x1): void
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+gs_print_a3(x0, x1, x2): void
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+gs_print_a4(x0, x1, x2, x3): void
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+gs_print_a5(x0, x1, x2, x3, x4): void
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+gs_print_a6(x0, x1, x2, x3, x4, x5): void
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+gs_print_a7(x0, x1, x2, x3, x4, x5, x6): void
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+<x7:t0>
+gs_print_a8(x0, x1, x2, x3, x4, x5, x6, x7): void
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+<x7:t0>
+<x8:t0>
+gs_print_a9(x0, x1, x2, x3, x4, x5, x6, x7, x8): void
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+<x7:t0>
+<x8:t0>
+<x9:t0>
+gs_print_a10(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9): void
 //
-#symload print with g_print of 0100
+#symload prints with gs_print_a1
+#symload prints with gs_print_a2
+#symload prints with gs_print_a3
+#symload prints with gs_print_a4
+#symload prints with gs_print_a5
+#symload prints with gs_print_a6
+#symload prints with gs_print_a7
+#symload prints with gs_print_a8
+#symload prints with gs_print_a9
+#symload prints with gs_print_a10
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -133,4 +134,4 @@ g_print(obj: x0): void
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_gbas000.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_gsyn000.sats] *)

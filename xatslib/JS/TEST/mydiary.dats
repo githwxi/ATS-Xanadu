@@ -20,9 +20,13 @@ val A1 = jsarray(1)
 val A2 = jsarray('1', '2')
 val A3 = jsarray("1", "2", "3")
 //
-val An = jsarray_make(10, 0(*init*))
+val An = jsarray_make_nval(10, -1(*init*))
+//
+val () = prints("An = ", An, '\n')
 //
 val xs = listize(An)
+//
+val () = prints("xs = ", xs, '\n')
 //
 (* ****** ****** *)
 (* ****** ****** *)
