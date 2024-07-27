@@ -12,6 +12,13 @@ which are not supposed to be implemented in srcgen1
 (* ****** ****** *)
 //
 fun
+<a:vt>
+g_iden(obj: a): (a)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 <x0:t0>
 max$nil((*nil*)): (x0)
 fun

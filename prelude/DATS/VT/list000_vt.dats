@@ -192,7 +192,7 @@ list_vt(a) in loop(xs, r0); r0 end
 end (*let*) // end of [list_vt_copy]
 //
 #impltmp
-< x0:vt >
+{ x0:vt }
 gseq_copy
 <list_vt(x0)><x0> = list_vt_copy<x0>
 //
@@ -205,7 +205,7 @@ Sat 27 Jul 2024 05:56:34 PM EDT
 *)
 //
 #impltmp
-<a>(*tmp*)
+< a: vt >
 list_vt_append00
   (xs, ys) =
 let
@@ -243,7 +243,7 @@ end // end of [list_vt_cons]
 } (* end of [list_vt_append00(xs,ys)] *)
 //
 #impltmp
-< x0:vt >
+{ x0:vt }
 gseq_append00
 <list_vt(x0)>
 <x0>
@@ -252,7 +252,7 @@ gseq_append00
 (* ****** ****** *)
 //
 #impltmp
-<a>(*tmp*)
+< a: vt >
 list_vt_append10
   (xs, ys) =
 (
@@ -260,10 +260,10 @@ list_vt_append00<a>(xs, ys))
 where
 {
   val xs = list_vt_copy<a>(xs)
-} (* end of [list_vt_append1(xs,ys)] *)
+} (* end of [list_vt_append10(xs,ys)] *)
 //
 #impltmp
-< x0:vt >
+{ x0:vt }
 gseq_append10
 <list_vt(x0)>
 <x0>
