@@ -138,22 +138,24 @@ jsarray_vt_set1_at
 (
 jsarray_set_at<>(UN_jsarray_vt2t(A), i, x))
 //
+(* ****** ****** *)
+//
 #impltmp
 { x0:t0 }
 gasz_get1_at
 <jsla(x0)><x0> = jsarray_vt_get1_at<>{x0}
 #impltmp
 { x0:t0 }
-gasz_set_at
+gasz_set1_at
 <jsla(x0)><x0> = jsarray_vt_set1_at<>{x0}
 //
 #impltmp
 { x0:t0 }
-gasz_get_at_raw
+gasz_get1_at_raw
 <jsla(x0)><x0> = jsarray_vt_get1_at<>{x0}//safe
 #impltmp
 { x0:t0 }
-gasz_set_at_raw
+gasz_set1_at_raw
 <jsla(x0)><x0> = jsarray_vt_set1_at<>{x0}//safe
 //
 (* ****** ****** *)
@@ -253,10 +255,10 @@ jsarray_vt_sortref1_c2fr<>
 //
 #impltmp
 <(*tmp*)>
-jsarray_vt_sortref1_c1fr
-  (A, fopr) =
+jsarray_vt_sortref1_c2fr
+  (A, cmpr) =
 (
-jsarray_sortref_c1fr<>(UN_jsarray_vt2t(A), cmpr))
+jsarray_sortref_c2fr<>(UN_jsarray_vt2t(A), cmpr))
 //
 (* ****** ****** *)
 (* ****** ****** *)
