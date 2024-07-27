@@ -43,7 +43,7 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #impltmp
 < xs:t0 >
-< x0:vt >
+< x0:t0 >
 gasz_get_at
  ( xs,i0 ) =
 let
@@ -62,7 +62,7 @@ end//let//end-of-[gasz_get_at(...)]
 //
 #impltmp
 < xs:t0 >
-< x0:vt >
+< x0:t0 >
 gasz_set_at
 (xs, i0, x0) =
 let

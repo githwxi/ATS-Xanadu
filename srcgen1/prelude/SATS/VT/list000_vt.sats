@@ -181,6 +181,25 @@ list_vt_append1
 ( !list_vt(a, m)
 , !list_vt(a, n)): list_vt(a, m+n)
 //
+fun
+<a:vt>
+list_vt_append00
+{m,n:int}
+( ~list_vt(a, m)
+, ~list_vt(a, n)): list_vt(a, m+n)
+fun
+<a:vt>
+list_vt_append10
+{m,n:int}
+( !list_vt(a, m)
+, ~list_vt(a, n)): list_vt(a, m+n)
+fun
+<a:vt>
+list_vt_append11
+{m,n:int}
+( !list_vt(a, m)
+, !list_vt(a, n)): list_vt(a, m+n)
+//
 (* ****** ****** *)
 //
 fun
@@ -195,7 +214,12 @@ fun
 <a:vt>
 list_vt_reverse0
 {n:int}
-(xs: list_vt(a, n)): list_vt(a, n)
+(xs: ~list_vt(a, n)): list_vt(a, n)
+fun
+<a:vt>
+list_vt_reverse1
+{n:int}
+(xs: !list_vt(a, n)): list_vt(a, n)
 //
 (* ****** ****** *)
 fun
