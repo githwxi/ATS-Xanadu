@@ -1377,6 +1377,25 @@ istrq_vt(a:v0,n:i0) = strq_vt(@(nintlt(n), a), n)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-27:
+Sat 27 Jul 2024 07:45:40 PM EDT
+*)
+//
+#absview
+owed_view(vt) // linprop
+#sexpdef owed = owed_view
+//
+prfun
+owed_t0_elim0
+{a:t0}(pf: owed(a)): void
+prfun
+owed_vt_return0
+{a:vt}(pf: owed(a), x0: a): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

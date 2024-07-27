@@ -189,6 +189,12 @@ list_vt_append00
 , ~list_vt(a, n)): list_vt(a, m+n)
 fun
 <a:vt>
+list_vt_append01
+{m,n:int}
+( ~list_vt(a, m)
+, !list_vt(a, n)): list_vt(a, m+n)
+fun
+<a:vt>
 list_vt_append10
 {m,n:int}
 ( !list_vt(a, m)
