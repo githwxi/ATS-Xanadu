@@ -111,6 +111,14 @@ llist_make0 with list_vt_make0_lstrq
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<x0:vt>
+list_vt_copy
+ {n0:i0}
+( xs: ~list_vt(x0,n0)): list_vt(x0,n0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <x0:vt>
