@@ -551,11 +551,11 @@ gasz_rstrqize(xs: xs): strq_vt(x0)
 //
 fun
 <xs:t0>
-<x0:vt>
+<x0:t0>
 gasz_get_at(xs: xs, i0: ni): (x0)
 fun
 <xs:t0>
-<x0:vt>
+<x0:t0>
 gasz_set_at(xs: xs, i0: ni, x0: x0): void
 //
 fun
