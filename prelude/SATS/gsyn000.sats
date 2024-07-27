@@ -37,9 +37,6 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef ni = nint
-(* ****** ****** *)
-(* ****** ****** *)
 //
 fun
 <x0:vt>
@@ -53,12 +50,14 @@ fun
 <x1:vt>
 <x2:vt>
 gs_free_a3(x0, x1, x2): void
+//
 fun
 <x0:vt>
 <x1:vt>
 <x2:vt>
 <x3:vt>
 gs_free_a4(x0, x1, x2, x3): void
+//
 fun
 <x0:vt>
 <x1:vt>
@@ -66,6 +65,7 @@ fun
 <x3:vt>
 <x4:vt>
 gs_free_a5(x0, x1, x2, x3, x4): void
+//
 fun
 <x0:vt>
 <x1:vt>
@@ -74,6 +74,7 @@ fun
 <x4:vt>
 <x5:vt>
 gs_free_a6(x0, x1, x2, x3, x4, x5): void
+//
 fun
 <x0:vt>
 <x1:vt>
@@ -83,6 +84,7 @@ fun
 <x5:vt>
 <x6:vt>
 gs_free_a7(x0, x1, x2, x3, x4, x5, x6): void
+//
 fun
 <x0:vt>
 <x1:vt>
@@ -93,6 +95,7 @@ fun
 <x6:vt>
 <x7:vt>
 gs_free_a8(x0, x1, x2, x3, x4, x5, x6, x7): void
+//
 fun
 <x0:vt>
 <x1:vt>
@@ -104,6 +107,7 @@ fun
 <x7:vt>
 <x8:vt>
 gs_free_a9(x0, x1, x2, x3, x4, x5, x6, x7, x8): void
+//
 fun
 <x0:vt>
 <x1:vt>
@@ -116,6 +120,9 @@ fun
 <x8:vt>
 <x9:vt>
 gs_free_a10(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9): void
+//
+(* ****** ****** *)
+//
 fun
 <x0:vt>
 <x1:vt>
@@ -129,6 +136,7 @@ fun
 <x9:vt>
 <x10:vt>
 gs_free_a11(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10): void
+//
 fun
 <x0:vt>
 <x1:vt>
@@ -143,6 +151,8 @@ fun
 <x10:vt>
 <x11:vt>
 gs_free_a12(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11): void
+//
+(* ****** ****** *)
 //
 #symload frees with gs_free_a1
 #symload frees with gs_free_a2
@@ -166,6 +176,7 @@ gs_print$beg(): void
 fun
 <(*tmp*)>
 gs_print$end(): void
+//
 (* ****** ****** *)
 //
 fun
@@ -180,12 +191,14 @@ fun
 <x1:t0>
 <x2:t0>
 gs_print_a3(x0, x1, x2): void
+//
 fun
 <x0:t0>
 <x1:t0>
 <x2:t0>
 <x3:t0>
 gs_print_a4(x0, x1, x2, x3): void
+//
 fun
 <x0:t0>
 <x1:t0>
@@ -193,6 +206,7 @@ fun
 <x3:t0>
 <x4:t0>
 gs_print_a5(x0, x1, x2, x3, x4): void
+//
 fun
 <x0:t0>
 <x1:t0>
@@ -201,6 +215,7 @@ fun
 <x4:t0>
 <x5:t0>
 gs_print_a6(x0, x1, x2, x3, x4, x5): void
+//
 fun
 <x0:t0>
 <x1:t0>
@@ -210,6 +225,7 @@ fun
 <x5:t0>
 <x6:t0>
 gs_print_a7(x0, x1, x2, x3, x4, x5, x6): void
+//
 fun
 <x0:t0>
 <x1:t0>
@@ -220,6 +236,7 @@ fun
 <x6:t0>
 <x7:t0>
 gs_print_a8(x0, x1, x2, x3, x4, x5, x6, x7): void
+//
 fun
 <x0:t0>
 <x1:t0>
@@ -231,6 +248,7 @@ fun
 <x7:t0>
 <x8:t0>
 gs_print_a9(x0, x1, x2, x3, x4, x5, x6, x7, x8): void
+//
 fun
 <x0:t0>
 <x1:t0>
@@ -243,6 +261,9 @@ fun
 <x8:t0>
 <x9:t0>
 gs_print_a10(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9): void
+//
+(* ****** ****** *)
+//
 fun
 <x0:t0>
 <x1:t0>
@@ -256,6 +277,7 @@ fun
 <x9:t0>
 <x10:t0>
 gs_print_a11(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10): void
+//
 fun
 <x0:t0>
 <x1:t0>
@@ -270,6 +292,8 @@ fun
 <x10:t0>
 <x11:t0>
 gs_print_a12(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11): void
+//
+(* ****** ****** *)
 //
 #symload prints with gs_print_a1
 #symload prints with gs_print_a2
