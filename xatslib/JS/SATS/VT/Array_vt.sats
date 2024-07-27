@@ -172,13 +172,13 @@ jsarray_vt_strqize0
 //
 fun
 <a:vt>
-jsarray_vt_forall0
-(A: ~jsarray_vt(a)): bool
+jsarray_vt_forall1
+(A: !jsarray_vt(a)): bool
 //
 fun<>
-jsarray_vt_forall0_c1fr
+jsarray_vt_forall1_c1fr
  {a:vt}
-( A: ~jsarray_vt(a)
+( A: !jsarray_vt(a)
 , test: (~a)-<cfr>bool): bool
 //
 #symload
@@ -190,12 +190,12 @@ forall0 with jsarray_vt_forall0_c1fr of 1000
 //
 fun
 <a:vt>
-jsarray_vt_rforall0
-( A: ~jsarray_vt(a)): bool
+jsarray_vt_rforall1
+( A: !jsarray_vt(a)): bool
 fun<>
-jsarray_vt_rforall0_c1fr
+jsarray_vt_rforall1_c1fr
  {a:vt}
-( A: ~jsarray_vt(a)
+( A: !jsarray_vt(a)
 , test: (~a)-<cfr>bool): bool
 //
 #symload

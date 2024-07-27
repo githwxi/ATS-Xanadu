@@ -147,6 +147,55 @@ gasz_get1_at
 gasz_set_at
 <jsla(x0)><x0> = jsarray_vt_set1_at<>{x0}
 //
+#impltmp
+{ x0:t0 }
+gasz_get_at_raw
+<jsla(x0)><x0> = jsarray_vt_get1_at<>{x0}//safe
+#impltmp
+{ x0:t0 }
+gasz_set_at_raw
+<jsla(x0)><x0> = jsarray_vt_set1_at<>{x0}//safe
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ x0:vt }
+gseq_strmize0
+<jsla(x0)><x0> = gasz_strmize0<jsla(x0)><x0>
+//
+#impltmp
+{ x0:vt }
+gseq_rstrmize0
+<jsla(x0)><x0> = gasz_rstrmize0<jsla(x0)><x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a: vt >
+jsarray_vt_forall1
+  ( A ) =
+(
+jsarray_vt_forall1_c1fr<>
+(A
+,lam(x)=>forall$test1<a>(x)))
+//
+#impltmp
+{ x0:vt }
+gseq_forall1
+<jsla(x0)><x0> = jsarray_vt_forall1<x0>
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jsarray_vt_forall1_c1fr
+  (A, test) =
+(
+jsarray_forall_c1fr<>
+(UN_jsarray_vt2t(A), test))//end(impltmp)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
