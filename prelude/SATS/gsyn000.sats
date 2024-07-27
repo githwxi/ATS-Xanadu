@@ -42,6 +42,125 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
+<x0:vt>
+gs_free_a1(x0): void
+fun
+<x0:vt>
+<x1:vt>
+gs_free_a2(x0, x1): void
+fun
+<x0:vt>
+<x1:vt>
+<x2:vt>
+gs_free_a3(x0, x1, x2): void
+fun
+<x0:vt>
+<x1:vt>
+<x2:vt>
+<x3:vt>
+gs_free_a4(x0, x1, x2, x3): void
+fun
+<x0:vt>
+<x1:vt>
+<x2:vt>
+<x3:vt>
+<x4:vt>
+gs_free_a5(x0, x1, x2, x3, x4): void
+fun
+<x0:vt>
+<x1:vt>
+<x2:vt>
+<x3:vt>
+<x4:vt>
+<x5:vt>
+gs_free_a6(x0, x1, x2, x3, x4, x5): void
+fun
+<x0:vt>
+<x1:vt>
+<x2:vt>
+<x3:vt>
+<x4:vt>
+<x5:vt>
+<x6:vt>
+gs_free_a7(x0, x1, x2, x3, x4, x5, x6): void
+fun
+<x0:vt>
+<x1:vt>
+<x2:vt>
+<x3:vt>
+<x4:vt>
+<x5:vt>
+<x6:vt>
+<x7:vt>
+gs_free_a8(x0, x1, x2, x3, x4, x5, x6, x7): void
+fun
+<x0:vt>
+<x1:vt>
+<x2:vt>
+<x3:vt>
+<x4:vt>
+<x5:vt>
+<x6:vt>
+<x7:vt>
+<x8:vt>
+gs_free_a9(x0, x1, x2, x3, x4, x5, x6, x7, x8): void
+fun
+<x0:vt>
+<x1:vt>
+<x2:vt>
+<x3:vt>
+<x4:vt>
+<x5:vt>
+<x6:vt>
+<x7:vt>
+<x8:vt>
+<x9:vt>
+gs_free_a10(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9): void
+fun
+<x0:vt>
+<x1:vt>
+<x2:vt>
+<x3:vt>
+<x4:vt>
+<x5:vt>
+<x6:vt>
+<x7:vt>
+<x8:vt>
+<x9:vt>
+<x10:vt>
+gs_free_a11(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10): void
+fun
+<x0:vt>
+<x1:vt>
+<x2:vt>
+<x3:vt>
+<x4:vt>
+<x5:vt>
+<x6:vt>
+<x7:vt>
+<x8:vt>
+<x9:vt>
+<x10:vt>
+<x11:vt>
+gs_free_a12(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11): void
+//
+#symload frees with gs_free_a1
+#symload frees with gs_free_a2
+#symload frees with gs_free_a3
+#symload frees with gs_free_a4
+#symload frees with gs_free_a5
+#symload frees with gs_free_a6
+#symload frees with gs_free_a7
+#symload frees with gs_free_a8
+#symload frees with gs_free_a9
+#symload frees with gs_free_a10
+#symload frees with gs_free_a11
+#symload frees with gs_free_a12
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 <(*tmp*)>
 gs_print$beg(): void
 fun
