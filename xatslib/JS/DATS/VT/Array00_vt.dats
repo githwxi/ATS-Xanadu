@@ -199,6 +199,68 @@ jsarray_forall_c1fr<>
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< a: vt >
+jsarray_vt_rforall1
+  ( A ) =
+(
+jsarray_vt_rforall1_c1fr<>
+(A
+,lam(x)=>rforall$test1<a>(x)))
+//
+#impltmp
+{ x0:vt }
+gseq_rforall1
+<jsla(x0)><x0> = jsarray_vt_rforall1<x0>
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jsarray_vt_rforall1_c1fr
+  (A, test) =
+(
+jsarray_rforall_c1fr<>(UN_jsarray_vt2t(A), test))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a: vt >
+jsarray_vt_mapref1
+  ( A ) =
+(
+jsarray_vt_mapref1_c1fr<>
+(A, lam(x)=>mapref$fopr0<a>(x)))
+//
+#impltmp
+<(*tmp*)>
+jsarray_vt_mapref1_c1fr
+  (A, fopr) =
+(
+jsarray_mapref_c1fr<>(UN_jsarray_vt2t(A), fopr))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a: vt >
+jsarray_vt_sortref1
+  ( A ) =
+(
+jsarray_vt_sortref1_c2fr<>
+(A, lam(x,y)=>g_cmp11<a>(x, y)))
+//
+#impltmp
+<(*tmp*)>
+jsarray_vt_sortref1_c1fr
+  (A, fopr) =
+(
+jsarray_sortref_c1fr<>(UN_jsarray_vt2t(A), cmpr))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
