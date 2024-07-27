@@ -12,6 +12,19 @@ jsa(a:vt) = jsarray(a)
 jsa(a:vt,n:i0) = jsarray(a,n)
 (* ****** ****** *)
 (* ****** ****** *)
+#extern
+fun<a:vt>
+jsarray_listize
+ {n:nat}
+( xs: jsa(a, n)): list_vt(a, n)
+#impltmp
+<a : vt >
+jsarray_listize =
+(
+  gasz_listize<jsa(a)><a>)//impltmp
+#symload listize with jsarray_listize of 1000
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #extern
 fun<a:vt>
