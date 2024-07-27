@@ -38,6 +38,13 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+{ x0:vt }
+g_iden<x0>(obj) = obj
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2024-07-16:
 g_free0 and g_copy1
@@ -45,7 +52,7 @@ are in [gbas001.dats]
 *)
 #impltmp
 { x0:t0 }
-g_free<x0>(obj) = ()
+g_free<x0>(obj) = ( )
 #impltmp
 { x0:t0 }
 g_copy<x0>(obj) = obj

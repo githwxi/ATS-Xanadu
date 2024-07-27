@@ -151,63 +151,6 @@ gseq_length1
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-< x0:vt >
-list_vt_forall0
-  (xs) = 
-(
-  loop(xs) ) where
-{
-fun
-loop
-(xs: list_vt(x0)): bool =
-(
-case+ xs of
-| ~
-list_vt_nil() => ( true )
-| ~
-list_vt_cons(x1, xs) =>
-let
-val test =
-forall$test0<x0>(x1) in
-if test then loop(xs) else false end)
-}
-//
-#impltmp
-{ x0:vt }
-gseq_forall0<list_vt(x0)><x0> = list_vt_forall0<x0>
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< x0:vt >
-list_vt_foritm0
-  (xs) = 
-(
-  loop(xs) ) where
-{
-fun
-loop
-(xs: list_vt(x0)): void =
-(
-case+ xs of
-| ~
-list_vt_nil() => ( (*void*) )
-| ~
-list_vt_cons(x1, xs) =>
-let
-val () =
-foritm$work0<x0>(x1) in loop(xs) end)
-}
-//
-#impltmp
-{ x0:vt }
-gseq_foritm0<list_vt(x0)><x0> = list_vt_foritm0<x0>
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

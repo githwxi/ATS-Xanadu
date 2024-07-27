@@ -40,6 +40,12 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 <a:vt>
+g_iden( a ): ( a )
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
 g_free( ~a ): void
 fun
 <a:vt>
