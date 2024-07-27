@@ -4,6 +4,11 @@ HX-2024-07-21:
 For testing xatslib/JS!
 *)
 (* ****** ****** *)
+(* ****** ****** *)
+#staload
+"prelude/SATS/gsyn000.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 (*
 HX-2024-07-21:
 Sun 21 Jul 2024 11:06:11 PM EDT
