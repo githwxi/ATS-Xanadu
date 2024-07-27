@@ -42,6 +42,14 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
+<(*tmp*)>
+gs_print$beg(): void
+fun
+<(*tmp*)>
+gs_print$end(): void
+(* ****** ****** *)
+//
+fun
 <x0:t0>
 gs_print_a1(x0): void
 fun
@@ -116,6 +124,33 @@ fun
 <x8:t0>
 <x9:t0>
 gs_print_a10(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9): void
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+<x7:t0>
+<x8:t0>
+<x9:t0>
+<x10:t0>
+gs_print_a11(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10): void
+fun
+<x0:t0>
+<x1:t0>
+<x2:t0>
+<x3:t0>
+<x4:t0>
+<x5:t0>
+<x6:t0>
+<x7:t0>
+<x8:t0>
+<x9:t0>
+<x10:t0>
+<x11:t0>
+gs_print_a12(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11): void
 //
 #symload prints with gs_print_a1
 #symload prints with gs_print_a2
@@ -127,6 +162,8 @@ gs_print_a10(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9): void
 #symload prints with gs_print_a8
 #symload prints with gs_print_a9
 #symload prints with gs_print_a10
+#symload prints with gs_print_a11
+#symload prints with gs_print_a12
 //
 (* ****** ****** *)
 (* ****** ****** *)
