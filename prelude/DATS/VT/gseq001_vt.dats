@@ -43,21 +43,52 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_listize =
-gseq_listize0<xs><x0>
+< xs:vt >
+< x0:vt >
+gseq_listize0
+  ( xs ) =
+(
+gseq_rfolditm0
+<xs><x0><r0>(xs, r0))
+where
+{
+val r0 = list_vt_nil()
+#vwtpdef r0 = list_vt(x0)
 #impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_listize =
-gseq_listize1<xs><x0>
+rfolditm$fopr0
+<x0><r0>(x0, r0) =
+(
+  list_vt_cons(x0, r0))
+}
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_listize1
+  ( xs ) =
+(
+gseq_rfolditm1
+<xs><x0><r0>(xs, r0))
+where
+{
+val r0 = list_vt_nil()
+#vwtpdef r0 = list_vt(x0)
+#impltmp
+rfolditm$fopr1
+<x0><r0>(x0, r0) =
+list_vt_cons(g_copy<x0>(x0), r0)
+}
 //
 #impltmp
 { x0:vt }
 gseq_listize0
-<list_vt(x0)><x0>(xs) = (xs)//identity
+<list_vt(x0)><x0> = g_iden<list_vt(x0)>
+#impltmp
+{ x0:vt }
+gseq_listize1
+<list_vt(x0)><x0> = g_copy<list_vt(x0)>
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -74,7 +105,28 @@ val r0 = list_vt_nil()
 #vwtpdef r0 = list_vt(x0)
 #impltmp
 folditm$fopr0
-<x0><r0>(r0, x0) = list_vt_cons(x0, r0)
+<x0><r0>(r0, x0) =
+(
+  list_vt_cons(x0, r0))
+}
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_rlistize1
+  ( xs ) =
+(
+gseq_folditm1
+<xs><x0><r0>(xs, r0))
+where
+{
+val r0 = list_vt_nil()
+#vwtpdef r0 = list_vt(x0)
+#impltmp
+folditm$fopr1
+<x0><r0>(r0, x0) =
+(
+list_vt_cons(g_copy<x0>(x0), r0))
 }
 //
 (*
@@ -84,6 +136,10 @@ HX: a special case!
 { x0:vt }
 gseq_rlistize0
 <list_vt(x0)><x0> = list_vt_reverse0<x0>
+#impltmp
+{ x0:vt }
+gseq_rlistize1
+<list_vt(x0)><x0> = list_vt_reverse1<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
