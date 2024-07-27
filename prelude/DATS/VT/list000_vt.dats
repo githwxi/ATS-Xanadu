@@ -151,6 +151,127 @@ gseq_length1
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-27:
+Sat 27 Jul 2024 05:56:34 PM EDT
+*)
+//
+#impltmp
+<a>(*tmp*)
+list_vt_copy
+  ( xs ) =
+let
+//
+fnx
+loop
+{n:nat}.<n>.
+( xs:
+! list_vt(a,n)
+, r0:
+& (?list_vt(a)>>list_vt(a,n))
+) : void =
+(
+//
+case+ xs of
+| // !
+list_vt_nil() =>
+(r0 := list_vt_nil())
+| // !
+list_vt_cons(x0, xs) =>
+let
+val x0 = g_copy<a>(x0)
+val () =
+(r0 := list_vt_cons(x0, _))
+in//let
+  loop(xs, r0.1); $fold(r0) end)
+//
+in//let
+let
+var r0:
+list_vt(a) in loop(xs, r0); r0 end
+end (*let*) // end of [list_vt_copy]
+//
+#impltmp
+< x0:vt >
+gseq_copy
+<list_vt(x0)><x0> = list_vt_copy<x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-27:
+Sat 27 Jul 2024 05:56:34 PM EDT
+*)
+//
+#impltmp
+<a>(*tmp*)
+list_vt_append00
+  (xs, ys) =
+let
+var xs = xs
+val () =
+  loop(xs, ys) in (xs)
+end where // end-of-[let]
+{
+//
+fnx
+loop
+{m,n:nat} .<m>.
+( xs:
+& list_vt(a, m  )
+  >>
+  list_vt(a, m+n)
+, ys:
+~ list_vt(a, n  )) : void =
+(
+case+ xs of
+| ~
+list_vt_nil
+ ((*0*)) => (xs := ys)
+| @
+list_vt_cons
+  (_, _) =>
+let
+  val () = loop(xs.1, ys)
+in//let
+let
+prval () = $fold(xs) in () end
+end // end of [list_vt_cons]
+) (*case*) // end of [loop(xs, ys)]
+//
+} (* end of [list_vt_append00(xs,ys)] *)
+//
+#impltmp
+< x0:vt >
+gseq_append00
+<list_vt(x0)>
+<x0>
+<list_vt(x0)> = list_vt_append00<x0>
+//
+(* ****** ****** *)
+//
+#impltmp
+<a>(*tmp*)
+list_vt_append10
+  (xs, ys) =
+(
+list_vt_append00<a>(xs, ys))
+where
+{
+  val xs = list_vt_copy<a>(xs)
+} (* end of [list_vt_append1(xs,ys)] *)
+//
+#impltmp
+< x0:vt >
+gseq_append10
+<list_vt(x0)>
+<x0>
+<list_vt(x0)> = list_vt_append10<x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
