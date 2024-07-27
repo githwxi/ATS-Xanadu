@@ -44,6 +44,168 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../SATS/gsyn000.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+gs_free_a1
+  ( x0 ) =
+(
+  g_free<x0>(x0))
+//
+#impltmp
+< x0:vt >
+< x1:vt >
+gs_free_a2
+  (x0, x1) =
+(
+  g_free<x0>(x0); g_free<x1>(x1))
+//
+#impltmp
+< x0:vt >
+< x1:vt >
+< x2:vt >
+gs_free_a3
+  (x0, x1, x2) =
+( g_free<x0>(x0)
+; g_free<x1>(x1); g_free<x2>(x2))
+//
+#impltmp
+< x0:vt >
+< x1:vt >
+< x2:vt >
+< x3:vt >
+gs_free_a4
+  (x0, x1, x2, x3) =
+( g_free<x0>(x0); g_free<x1>(x1)
+; g_free<x2>(x2); g_free<x3>(x3))
+//
+#impltmp
+< x0:vt >
+< x1:vt >
+< x2:vt >
+< x3:vt >
+< x4:vt >
+gs_free_a5
+  (x0, x1, x2, x3, x4) =
+( g_free<x0>(x0); g_free<x1>(x1)
+; g_free<x2>(x2); g_free<x3>(x3); g_free<x4>(x4))
+//
+#impltmp
+< x0:vt >
+< x1:vt >
+< x2:vt >
+< x3:vt >
+< x4:vt >
+< x5:vt >
+gs_free_a6
+  (x0, x1, x2, x3, x4, x5) =
+( g_free<x0>(x0); g_free<x1>(x1); g_free<x2>(x2)
+; g_free<x3>(x3); g_free<x4>(x4); g_free<x5>(x5))
+//
+#impltmp
+< x0:vt >
+< x1:vt >
+< x2:vt >
+< x3:vt >
+< x4:vt >
+< x5:vt >
+< x6:vt >
+gs_free_a7
+  (x0, x1, x2, x3, x4, x5, x6) =
+( g_free<x0>(x0)
+; g_free<x1>(x1); g_free<x2>(x2); g_free<x3>(x3)
+; g_free<x4>(x4); g_free<x5>(x5); g_free<x6>(x6))
+//
+#impltmp
+< x0:vt >
+< x1:vt >
+< x2:vt >
+< x3:vt >
+< x4:vt >
+< x5:vt >
+< x6:vt >
+< x7:vt >
+gs_free_a8
+  (x0, x1, x2, x3, x4, x5, x6, x7) =
+( g_free<x0>(x0); g_free<x1>(x1)
+; g_free<x2>(x2); g_free<x3>(x3); g_free<x4>(x4)
+; g_free<x5>(x5); g_free<x6>(x6); g_free<x7>(x7))
+//
+#impltmp
+< x0:vt >
+< x1:vt >
+< x2:vt >
+< x3:vt >
+< x4:vt >
+< x5:vt >
+< x6:vt >
+< x7:vt >
+< x8:vt >
+gs_free_a9
+  (x0, x1, x2, x3, x4, x5, x6, x7, x8) =
+( g_free<x0>(x0); g_free<x1>(x1); g_free<x2>(x2)
+; g_free<x3>(x3); g_free<x4>(x4); g_free<x5>(x5)
+; g_free<x6>(x6); g_free<x7>(x7); g_free<x8>(x8))
+//
+#impltmp
+< x0:vt >
+< x1:vt >
+< x2:vt >
+< x3:vt >
+< x4:vt >
+< x5:vt >
+< x6:vt >
+< x7:vt >
+< x8:vt >
+< x9:vt >
+gs_free_a10
+  (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9) =
+( g_free<x0>(x0); g_free<x1>(x1); g_free<x2>(x2)
+; g_free<x3>(x3); g_free<x4>(x4); g_free<x5>(x5)
+; g_free<x6>(x6); g_free<x7>(x7); g_free<x8>(x8); g_free<x9>(x9))
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+< x1:vt >
+< x2:vt >
+< x3:vt >
+< x4:vt >
+< x5:vt >
+< x6:vt >
+< x7:vt >
+< x8:vt >
+< x9:vt >
+< x10:vt >
+gs_free_a11
+  (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10) =
+( g_free<x0>(x0); g_free<x1>(x1); g_free<x2>(x2)
+; g_free<x3>(x3); g_free<x4>(x4); g_free<x5>(x5); g_free<x6>(x6)
+; g_free<x7>(x7); g_free<x8>(x8); g_free<x9>(x9); g_free<x10>(x10))
+//
+#impltmp
+< x0:vt >
+< x1:vt >
+< x2:vt >
+< x3:vt >
+< x4:vt >
+< x5:vt >
+< x6:vt >
+< x7:vt >
+< x8:vt >
+< x9:vt >
+< x10:vt >
+< x11:vt >
+gs_free_a12
+  (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11) =
+( g_free<x0>(x0); g_free<x1>(x1); g_free<x2>(x2); g_free<x3>(x3)
+; g_free<x4>(x4); g_free<x5>(x5); g_free<x6>(x6); g_free<x7>(x7)
+; g_free<x8>(x8); g_free<x9>(x9); g_free<x10>(x10); g_free<x11>(x11))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 <(*tmp*)>
 gs_print$beg() = ()
@@ -54,10 +216,9 @@ gs_print$end() = ()
 (*
 #impltmp
 <(*tmp*)>
-gs_print$end() =
-(
-  strn_print("\n"))
+gs_print$end() = strn_print("\n")
 *)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -87,7 +248,7 @@ gs_print_a3
   (x0, x1, x2) =
 ( gs_print$beg<>();
 ( g_print<x0>(x0)
-; g_print<x1>(x1); g_print<x2>(x2); gs_print$end<>())
+; g_print<x1>(x1); g_print<x2>(x2))
 ; gs_print$end<>())
 //
 #impltmp
@@ -99,7 +260,7 @@ gs_print_a4
   (x0, x1, x2, x3) =
 ( gs_print$beg<>();
 ( g_print<x0>(x0); g_print<x1>(x1)
-; g_print<x2>(x2); g_print<x3>(x3); gs_print$end<>())
+; g_print<x2>(x2); g_print<x3>(x3))
 ; gs_print$end<>())
 //
 #impltmp
@@ -112,7 +273,7 @@ gs_print_a5
   (x0, x1, x2, x3, x4) =
 ( gs_print$beg<>();
 ( g_print<x0>(x0); g_print<x1>(x1)
-; g_print<x2>(x2); g_print<x3>(x3); g_print<x4>(x4); gs_print$end<>())
+; g_print<x2>(x2); g_print<x3>(x3); g_print<x4>(x4))
 ; gs_print$end<>())
 //
 #impltmp
@@ -126,7 +287,7 @@ gs_print_a6
   (x0, x1, x2, x3, x4, x5) =
 ( gs_print$beg<>();
 ( g_print<x0>(x0); g_print<x1>(x1); g_print<x2>(x2)
-; g_print<x3>(x3); g_print<x4>(x4); g_print<x5>(x5); gs_print$end<>())
+; g_print<x3>(x3); g_print<x4>(x4); g_print<x5>(x5))
 ; gs_print$end<>())
 //
 #impltmp
@@ -142,7 +303,7 @@ gs_print_a7
 ( gs_print$beg<>();
 ( g_print<x0>(x0)
 ; g_print<x1>(x1); g_print<x2>(x2); g_print<x3>(x3)
-; g_print<x4>(x4); g_print<x5>(x5); g_print<x6>(x6); gs_print$end<>())
+; g_print<x4>(x4); g_print<x5>(x5); g_print<x6>(x6))
 ; gs_print$end<>())
 //
 #impltmp
@@ -198,6 +359,8 @@ gs_print_a10
 ; g_print<x3>(x3); g_print<x4>(x4); g_print<x5>(x5)
 ; g_print<x6>(x6); g_print<x7>(x7); g_print<x8>(x8); g_print<x9>(x9))
 ; gs_print$end<>())
+//
+(* ****** ****** *)
 //
 #impltmp
 < x0:t0 >
