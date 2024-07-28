@@ -1387,7 +1387,7 @@ owed_view(vt) // linprop
 #sexpdef owed = owed_view
 //
 prfun
-owed_t0_intr0
+owed_t0_make
 {a:t0}((*void*)): owed(a)
 prfun
 owed_t0_elim0

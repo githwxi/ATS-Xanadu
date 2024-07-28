@@ -565,6 +565,7 @@ fun
 <x0:t0>
 gasz_set_at(xs: xs, i0: ni, x0: x0): void
 //
+(*
 fun
 <xs:t0>
 <x0:vt>
@@ -573,6 +574,38 @@ fun
 <xs:t0>
 <x0:vt>
 gasz_set_at_raw(xs: xs, i0: ni, x0: x0): void
+*)
+//
+(* ****** ****** *)
+//
+#absview
+owed_view(vt) // linprop
+#sexpdef owed = owed_view
+//
+prfun
+owed_t0_make
+{a:t0}((*void*)): owed(a)
+prfun
+owed_t0_elim0
+{a:t0}(pf: ~owed(a)): void
+prfun
+owed_vt_return0
+{a:vt}(pf: ~owed(a), x0: a): void
+//
+#symload return0 with owed_vt_return0
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:vt>
+gasz_get_at_raw
+(xs: xs, i0: ni): (owed(x0) | x0)
+fun
+<xs:t0>
+<x0:vt>
+gasz_set_at_raw
+(pf: owed(x0) | xs: xs, i0: ni, x0: x0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
