@@ -41,14 +41,49 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 #impltmp
 < xs:t0 >
 < x0:vt >
 gasz_listize
   ( xs ) =
-*)
+let
+val n0 =
+gasz_length
+<xs><x0>(xs)
+in//let
+(
+nint_map_llist<x0>(n0))
+where
+{
+#impltmp
+map$fopr<ni>(i0) =
+(gasz_cget_at_raw<xs><x0>(xs, i0))
+}
+end//let//end-of-[gasz_listize(xs)]
 //
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasz_rlistize
+  ( xs ) =
+let
+val n0 =
+gasz_length
+<xs><x0>(xs)
+in//let
+(
+nint_rmap_llist<x0>(n0))
+where
+{
+#impltmp
+rmap$fopr<ni>(i0) =
+(gasz_cget_at_raw<xs><x0>(xs, i0))
+}
+end//let//end-of-[gasz_rlistize(xs)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
