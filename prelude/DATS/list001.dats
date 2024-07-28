@@ -63,13 +63,25 @@ if test then loop(xs) else false end)
 //
 #impltmp
 { x0:t0 }
-gseq_forall<list(x0)><x0> = list_forall<x0>
+gseq_forall
+<list(x0)><x0> = list_forall<x0>
 #impltmp
 { x0:t0 }
-gseq_forall0<list(x0)><x0> = list_forall<x0>
+gseq_forall0
+list_forall<x0>(xs) where
+{
+#impltmp
+forall$test<x0>(x0) = forall$test0<x0>(x0)
+}
 #impltmp
 { x0:t0 }
-gseq_forall1<list(x0)><x0> = list_forall<x0>
+gseq_forall1
+<list(x0)><x0>(xs) =
+list_forall<x0>(xs) where
+{
+#impltmp
+forall$test<x0>(x0) = forall$test1<x0>(x0)
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -104,6 +116,45 @@ gseq_foritm0<list(x0)><x0> = list_foritm<x0>
 #impltmp
 { x0:t0 }
 gseq_foritm1<list(x0)><x0> = list_foritm<x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX: 2024-07-28:
+Sun 28 Jul 2024 02:37:26 PM EDT
+*)
+//
+#impltmp
+<x0>(*tmp*)
+list_strmize
+  (xs) =
+let
+fun
+auxmain(xs) =
+$llazy
+(
+case+ xs of
+|
+list_nil() =>
+strmcon_vt_nil()
+|
+list_cons(x0, xs) =>
+strmcon_vt_cons(x0, auxmain(xs))
+)
+in
+  auxmain(xs)
+end(*let*)//end-of-[list_strmize(xs)]
+//
+#impltmp
+{ x0:t0 }
+gseq_strmize<list(x0)><x0> = list_strmize<x0>
+#impltmp
+{ x0:t0 }
+gseq_strmize0<list(x0)><x0> = list_strmize<x0>
+#impltmp
+{ x0:t0 }
+gseq_strmize1<list(x0)><x0> = list_strmize<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
