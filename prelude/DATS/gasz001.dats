@@ -41,6 +41,16 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasz_listize
+  ( xs ) =
+*)
+//
+(* ****** ****** *)
+//
 #impltmp
 < xs:t0 >
 < x0:vt >
@@ -57,10 +67,9 @@ where
 {
 #impltmp
 map$fopr<ni>(i0) =
-(gasz_get_at_raw<xs><x0>(xs, i0))
+(gasz_cget_at_raw<xs><x0>(xs, i0))
 }
 end//let//end-of-[gasz_strmize(xs)]
-//
 //
 #impltmp
 < xs:t0 >
@@ -78,7 +87,7 @@ where
 {
 #impltmp
 rmap$fopr<ni>(i0) =
-(gasz_get_at_raw<xs><x0>(xs, i0))
+(gasz_cget_at_raw<xs><x0>(xs, i0))
 }
 end//let//end-of-[gasz_rstrmize(xs)]
 //

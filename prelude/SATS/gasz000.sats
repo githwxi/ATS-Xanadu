@@ -79,6 +79,17 @@ gasz_set_at_raw
 ( pf: owed(x0)
 | xs: xs, i0: ni, x0: x0): void
 //
+fun
+<xs:t0>
+<x0:vt>
+gasz_cget_at_raw
+( xs: xs, i0: ni): x0
+fun
+<xs:t0>
+<x0:vt>
+gasz_setf_at_raw
+( xs: xs, i0: ni, x0: x0): void
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

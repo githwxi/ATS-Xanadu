@@ -93,6 +93,50 @@ end//let//end-of-[gasz_set_at(xs,i0,x0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasz_cget_at_raw
+  (xs, i0) =
+let
+//
+val
+(pf | x0) =
+gasz_get_at_raw(xs, i0)
+//
+in//let
+//
+let
+val x1 = g_copy<x0>(x0)
+prval () =
+  owed_vt_return0(pf, x0) in x1 end
+//
+end//let//end-of-[gasz_cget_at_raw(...)]
+//
+(* ****** ****** *)
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasz_setf_at_raw
+  (xs, i0, x0) =
+let
+//
+val
+(pf | x1) =
+gasz_get_at_raw(xs, i0)
+//
+in//let
+let
+  val () = g_free<x0>(x1)
+in//let
+(
+  gasz_set_at_raw(pf | xs, i0, x0))
+end//let
+end//let//end-of-[gasz_cget_at_raw(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

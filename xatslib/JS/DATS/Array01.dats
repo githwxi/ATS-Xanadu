@@ -12,6 +12,7 @@ jsa(a:vt) = jsarray(a)
 jsa(a:vt,n:i0) = jsarray(a,n)
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #extern
 fun<a:vt>
 jsarray_listize
@@ -22,7 +23,13 @@ jsarray_listize
 jsarray_listize =
 (
   gasz_listize<jsa(a)><a>)//impltmp
-#symload listize with jsarray_listize of 1000
+#symload
+listize with jsarray_listize of 1000
+//
+#impltmp
+{ x0:t0 }
+gseq_listize<xs><x0> = jsarray_listize<x0>
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
