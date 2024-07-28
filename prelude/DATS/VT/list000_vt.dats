@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -83,6 +84,7 @@ gseq_print1<list_vt(x0)><x0>(xs)
 list_vt_length0 =
 gseq_length0<list_vt(x0)><x0>
 *)
+//
 #impltmp
 < x0:vt >
 list_vt_length0
@@ -139,8 +141,10 @@ loop
 ,j0: sint(j)): sint(i+j) =
 (
 case+ xs of
-|list_vt_nil() => j0
-|list_vt_cons(x1, xs) => loop(xs, j0+1))
+|
+list_vt_nil() => j0
+|
+list_vt_cons(x1, xs) => loop(xs, j0+1))
 }
 //
 #impltmp
@@ -194,7 +198,7 @@ end (*let*) // end of [list_vt_copy]
 #impltmp
 { x0:vt }
 gseq_copy
-<list_vt(x0)><x0> = list_vt_copy<x0>
+<list_vt(x0)><x0> = list_vt_copy<x0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -247,7 +251,7 @@ end // end of [list_vt_cons]
 gseq_append00
 <list_vt(x0)>
 <x0>
-<list_vt(x0)> = list_vt_append00<x0>
+<list_vt(x0)> = list_vt_append00<x0>(*void*)
 //
 (* ****** ****** *)
 //
@@ -267,7 +271,7 @@ where
 gseq_append10
 <list_vt(x0)>
 <x0>
-<list_vt(x0)> = list_vt_append10<x0>
+<list_vt(x0)> = list_vt_append10<x0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
