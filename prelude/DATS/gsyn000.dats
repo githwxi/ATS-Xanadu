@@ -37,9 +37,6 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef ni = nint
-(* ****** ****** *)
-(* ****** ****** *)
 #staload
 "./../SATS/gsyn000.sats"
 (* ****** ****** *)
@@ -409,4 +406,4 @@ gs_print_a12
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_gsyn000.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_gsyn000.dats] *)
