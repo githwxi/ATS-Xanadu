@@ -191,6 +191,18 @@ case+ knd of
 ) (* end of [fprint_dctkind] *)
 
 (* ****** ****** *)
+//
+implement
+valkind_isprf
+  (vlk) =
+(
+case+ vlk of
+//
+| VLKprval() => true
+//
+| _(*rest-of-valkind*) => false)
+//
+(* ****** ****** *)
 
 implement
 fprint_valkind

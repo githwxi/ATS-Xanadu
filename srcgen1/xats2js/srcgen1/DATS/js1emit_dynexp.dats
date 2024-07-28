@@ -3083,9 +3083,23 @@ val-
 L1DCLvaldclst
 ( knd0
 , mopt
-, lvds) =
-  dcl0.node() in auxlvds(lvds)
-end
+, lvds) = dcl0.node()
+in//let
+(
+if
+isprf
+then () else auxlvds(lvds))
+where
+{
+val isprf =
+(
+case+
+knd0.node() of
+|
+T_VAL(vlk) =>
+valkind_isprf(vlk) | _ => false): bool
+}
+end//let
 //
 end // end of [aux_valdclst(...)]
 

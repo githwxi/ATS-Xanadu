@@ -217,11 +217,21 @@ gasz_set_at
 #impltmp
 { x0:t0 }
 gasz_get_at_raw
-<jsa(x0)><x0> = jsarray_get_at<>{x0}//safe
+<jsa(x0)><x0>(A, i) =
+(owed_t0_make() | x0) where
+{ val x0 =
+  jsarray_get_at<>{x0}(A, i) }
+(*where*)//end-[gasz_get_at_raw(...)]
+//
 #impltmp
 { x0:t0 }
 gasz_set_at_raw
-<jsa(x0)><x0> = jsarray_set_at<>{x0}//safe
+<jsa(x0)><x0>(pf | A, i, x) =
+let
+prval () = owed_t0_elim0(pf)
+in//let
+  jsarray_set_at<>{x0}(A, i, x)
+end//let//end-of-[gasz_set_at_raw(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
