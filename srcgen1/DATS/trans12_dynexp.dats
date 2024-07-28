@@ -6914,7 +6914,7 @@ let
   | None() => s2es
   | Some(arg1) =>
     (
-      s2es1 + s2es1
+      s2es1 + s2es2
     ) where
     {
       val () =

@@ -109,10 +109,18 @@ forall$test<ni>(i0) =
   g_free<x0>(x0); r0)
 where
 {
-val x0 =
+//
+val
+(pf | x0) =
 gasz_get_at_raw
 <xs><x0>(xs, i0)
-val r0 = forall$test1<x0>(x0) }
+//
+val r0 =
+  forall$test1<x0>(x0)
+//
+val () =
+gasz_set_at_raw
+<xs><x0>(pf | xs, i0, x0) }
 }
 end//let//end-of-[gasz_forall(xs)]
 //
@@ -142,10 +150,15 @@ rforall$test<ni>(i0) =
   g_free<x0>(x0); r0)
 where
 {
-val x0 =
+val
+(pf | x0) =
 gasz_get_at_raw
 <xs><x0>(xs, i0)
-val r0 = rforall$test1<x0>(x0) }
+val r0 =
+  rforall$test1<x0>(x0)
+val () =
+gasz_set_at_raw
+<xs><x0>(pf | xs, i0, x0) }
 }
 end//let//end-of-[gasz_rforall(xs)]
 //

@@ -62,6 +62,7 @@ in//let
 let
 prval () = owed_t0_elim0(pf) in x0
 end//let
+end//let
 end//let//end-of-[gasz_get_at(xs,i0)]
 //
 (* ****** ****** *)
@@ -82,10 +83,11 @@ set_at$exn<xs><x0>(xs,i0,x0)
 else
 let
 prval
-pf = owed_intr0{x0}()
+pf = owed_t0_make{x0}()
 in//let
-  gasz_set_at_raw<xs><x0>(pf|xs,i0,x0)
-end//let
+gasz_set_at_raw<xs><x0>(pf|xs,i0,x0)
+end//let//else//end-of-[if]
+//
 end//let//end-of-[gasz_set_at(xs,i0,x0)]
 //
 (* ****** ****** *)
