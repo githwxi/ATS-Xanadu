@@ -374,6 +374,39 @@ g_free<x0>(x1); auxloop(i0+1, !xs)) end
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< x0:vt >
+strm_vt_listize0
+  ( xs ) =
+list_vt_reverse0<x0>
+(strm_vt_rlistize0<x0>(xs))
+//
+#impltmp
+< x0:vt >
+strm_vt_rlistize0
+  ( xs ) =
+(
+  loop(xs, r0)) where
+{
+//
+val r0 = list_vt_nil()
+//
+fun loop
+( xs: strm_vt(x0)
+, r0: list_vt(x0)): list_vt(x0) =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil
+  ((*0*)) => (r0)
+| ~
+strmcon_vt_cons
+  (x1,xs) =>loop(xs,list_vt_cons(x1,r0)))
+}(*where*)//end-of-[strm_vt_rlistize0(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

@@ -55,7 +55,7 @@ jsarray_make_nval(10, -1(*init*))
 //
 val () = prints("An = ", An, '\n')
 //
-// val xs = listize(An)
+val xs = jsarray_listize(An)
 // val () = prints("xs = ", xs, '\n')
 //
 (* ****** ****** *)
