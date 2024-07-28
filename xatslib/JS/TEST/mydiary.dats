@@ -7,9 +7,13 @@ For testing xatslib/JS!
 (* ****** ****** *)
 #staload
 "prelude/SATS/gsyn000.sats"
-(* ****** ****** *)
 #staload _ =
 "prelude/DATS/gsyn000.dats"
+(* ****** ****** *)
+#staload
+"prelude/SATS/VT/gsyn000_vt.sats"
+#staload _ =
+"prelude/DATS/VT/gsyn000_vt.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -58,6 +62,12 @@ val () = prints("An = ", An, '\n')
 val xs =
   list_vt2t(jsarray_listize(An))
 val () = prints("xs = ", xs, '\n')
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val xs = jsarray_listize(An)
+val () = print1s("xs = ", xs, '\n')
 //
 (* ****** ****** *)
 (* ****** ****** *)
