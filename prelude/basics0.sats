@@ -1387,11 +1387,16 @@ owed_view(vt) // linprop
 #sexpdef owed = owed_view
 //
 prfun
+owed_t0_intr0
+{a:t0}((*void*)): owed(a)
+prfun
 owed_t0_elim0
-{a:t0}(pf: owed(a)): void
+{a:t0}(pf: ~owed(a)): void
 prfun
 owed_vt_return0
-{a:vt}(pf: owed(a), x0: a): void
+{a:vt}(pf: ~owed(a), x0: a): void
+//
+#symload return0 with owed_vt_return0
 //
 (* ****** ****** *)
 (* ****** ****** *)

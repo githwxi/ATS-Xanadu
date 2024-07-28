@@ -55,8 +55,14 @@ if
 then
 get_at$exn<xs><x0>(xs, i0)
 else
+let
+val (pf | x0) =
 gasz_get_at_raw<xs><x0>(xs, i0)
-end//let//end-of-[gasz_get_at(...)]
+in//let
+let
+prval () = owed_t0_elim0(pf) in x0
+end//let
+end//let//end-of-[gasz_get_at(xs,i0)]
 //
 (* ****** ****** *)
 //
@@ -74,8 +80,13 @@ if
 then
 set_at$exn<xs><x0>(xs,i0,x0)
 else
-gasz_set_at_raw<xs><x0>(xs,i0,x0)
-end//let//end-of-[gasz_set_at(...)]
+let
+prval
+pf = owed_intr0{x0}()
+in//let
+  gasz_set_at_raw<xs><x0>(pf|xs,i0,x0)
+end//let
+end//let//end-of-[gasz_set_at(xs,i0,x0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
