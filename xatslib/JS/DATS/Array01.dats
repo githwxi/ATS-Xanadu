@@ -19,7 +19,7 @@ jsarray_listize
  {n:nat}
 ( xs: jsa(a, n)): list_vt(a, n)
 #impltmp
-<a : vt >
+< a: vt >
 jsarray_listize =
 (
   gasz_listize<jsa(a)><a>)//impltmp
@@ -27,8 +27,54 @@ jsarray_listize =
 listize with jsarray_listize of 1000
 //
 #impltmp
-{ x0:t0 }
-gseq_listize<xs><x0> = jsarray_listize<x0>
+{ a: t0 }
+gseq_listize0<jsa(a)><a> = jsarray_listize<a>
+#impltmp
+{ a: vt }
+gseq_listize1<jsa(a)><a> = jsarray_listize<a>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun<a:vt>
+jsarray_strmize
+( A: jsa(a) ): strm_vt(a)
+#impltmp
+< a: vt >
+jsarray_strmize =
+(
+  gasz_strmize<jsa(a)><a>)//impltmp
+#symload
+strmize with jsarray_strmize of 1000
+//
+#impltmp
+{ a: t0 }
+gseq_strmize0<jsa(a)><a> = jsarray_strmize<a>
+#impltmp
+{ a: vt }
+gseq_strmize1<jsa(a)><a> = jsarray_strmize<a>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun<a:vt>
+jsarray_forall
+ ( A: jsa(a) ): bool
+#impltmp
+< a: vt >
+jsarray_forall =
+gasz_forall<jsa(a)><a>(*void*)
+#symload
+forall with jsarray_forall of 1000
+//
+#impltmp
+{ a: t0 }
+gseq_forall0<jsa(a)><a> = jsarray_forall<a>
+#impltmp
+{ a: vt }
+gseq_forall1<jsa(a)><a> = jsarray_forall<a>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -40,7 +86,7 @@ jsarray_append
 ( xs: jsa(a, m)
 , ys: jsa(a, n)): jsa(a, m+n)
 #impltmp
-<a : vt >
+< a: vt >
 jsarray_append =
 (
   gseq_append00<jsa(a)><a><jsa(a)>)
@@ -56,7 +102,7 @@ jsarray_prepend
 ( xs: jsa(a, m)
 , ys: jsa(a, n)): jsa(a, m+n)
 #impltmp
-<a : vt >
+< a: vt >
 jsarray_prepend =
 (
   gseq_prepend00<jsa(a)><a><jsa(a)>)
@@ -72,7 +118,7 @@ jsarray_rappend
 ( xs: jsa(a, m)
 , ys: jsa(a, n)): jsa(a, m+n)
 #impltmp
-<a : vt >
+< a: vt >
 jsarray_rappend =
 (
   gseq_rappend00<jsa(a)><a><jsa(a)>)

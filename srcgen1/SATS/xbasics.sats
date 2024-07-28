@@ -203,6 +203,9 @@ valkind =
 // end of [valkind]
 //
 fun
+valkind_isprf(valkind): bool
+//
+fun
 fprint_valkind:fprint_type(valkind)
 overload fprint with fprint_valkind
 //
