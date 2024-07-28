@@ -17,7 +17,7 @@ HX-2024-07-21:
 Sun 21 Jul 2024 11:06:11 PM EDT
 *)
 //
-#staload "xatslib/JS/SATS/Array.sats"
+#include "xatslib/JS/HATS/Array.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -27,7 +27,6 @@ Sun 21 Jul 2024 11:06:11 PM EDT
 "srcgen2/prelude/HATS/prelude_dats.hats"
 (* ****** ****** *)
 #staload _ = "xatslib/JS/DATS/Array00.dats"
-#staload _ = "xatslib/JS/DATS/Array01.dats"
 (* ****** ****** *)
 #include
 "srcgen1/prelude/HATS/CATS/JS/prelude_dats.hats"
@@ -45,10 +44,8 @@ val An = jsarray_make_nval(10, -1(*init*))
 //
 val () = prints("An = ", An, '\n')
 //
-(*
-val xs = listize(An)
-val () = prints("xs = ", xs, '\n')
-*)
+val xs = _listize(An)
+// val () = prints("xs = ", xs, '\n')
 //
 (* ****** ****** *)
 (* ****** ****** *)

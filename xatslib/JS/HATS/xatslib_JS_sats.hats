@@ -8,7 +8,8 @@ ATS3_XANADU/xatslib/JS/DATS
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload _ = "./../DATS/Array00.dats"
+#staload "./../SATS/Array.sats"
+#staload "./../DATS/Arrayhd.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -16,5 +17,5 @@ ATS3_XANADU/xatslib/JS/DATS
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3_XANADU/xatslib/JS/HATS/xatslib_JS_dats.hats] *)
+(* end of [ATS3_XANADU/xatslib/JS/HATS/xatslib_JS_sats.hats] *)
 
