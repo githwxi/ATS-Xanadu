@@ -273,6 +273,26 @@ strq_vt_scanitm0
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-28:
+Sun 28 Jul 2024 01:52:55 PM EDT
+*)
+//
+fun
+<x0:vt>
+strm_vt_listize0
+(xs: strm_vt(x0)): list_vt(x0)
+fun
+<x0:vt>
+strm_vt_rlistize0
+(xs: strm_vt(x0)): list_vt(x0)
+//
+#symload listize0 with strm_vt_listize0 of 1000
+#symload rlistize0 with strm_vt_rlistize0 of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
