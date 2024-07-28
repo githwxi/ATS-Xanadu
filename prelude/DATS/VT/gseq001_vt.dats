@@ -42,6 +42,44 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-28:
+Sun 28 Jul 2024 03:48:39 PM EDT
+*)
+(*
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_listize1
+  ( xs ) =
+let
+val xs =
+g_copy<xs>(xs) in
+gseq_listize0<xs><x0>(xs) end
+*)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_strmize1
+  ( xs ) =
+let
+val xs =
+g_copy<xs>(xs) in
+gseq_strmize0<xs><x0>(xs) end
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_strqize1
+  ( xs ) =
+let
+val xs =
+g_copy<xs>(xs) in
+gseq_strqize0<xs><x0>(xs) end
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 < xs:vt >
 < x0:vt >

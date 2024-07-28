@@ -95,6 +95,40 @@ gseq_foritm0<list_vt(x0)><x0> = list_vt_foritm0<x0>
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX: 2024-07-28:
+Sun 28 Jul 2024 02:37:26 PM EDT
+*)
+//
+#impltmp
+<x0>(*tmp*)
+list_vt_strmize0
+  (xs) =
+let
+fun
+auxmain(xs) =
+$llazy
+(
+case+ xs of
+| ~
+list_vt_nil() =>
+strmcon_vt_nil()
+| ~
+list_vt_cons(x0, xs) =>
+strmcon_vt_cons(x0, auxmain(xs))
+)
+in
+  auxmain(xs)
+end(*let*)//end-of-[list_vt_strmize0(xs)]
+//
+#impltmp
+{ x0:vt }
+gseq_strmize0
+<list_vt(x0)><x0> = list_vt_strmize0<x0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
