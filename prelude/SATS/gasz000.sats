@@ -70,12 +70,14 @@ fun
 <xs:t0>
 <x0:vt>
 gasz_get_at_raw
-(xs: xs, i0: ni): (x0)
+( xs: xs
+, i0: ni): (owed(x0) | x0)
 fun
 <xs:t0>
 <x0:vt>
 gasz_set_at_raw
-(xs: xs, i0: ni, x0: x0): void
+( pf: owed(x0)
+| xs: xs, i0: ni, x0: x0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
