@@ -70,6 +70,29 @@ nint_iforitm(xs: nint): bool
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<y0:vt>
+nint_map_llist
+ {n0:i0}
+(xs: nint(n0)): list_vt(y0, n0)
+//
+#symload
+map_llist with nint_map_llist of 1000
+//
+(* ****** ****** *)
+//
+fun
+<y0:vt>
+nint_rmap_llist
+ {n0:i0}
+(xs: nint(n0)): list_vt(y0, n0)
+//
+#symload
+map_llist with nint_rmap_llist of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2024-07-22:
 Mon 22 Jul 2024 11:48:37 AM EDT

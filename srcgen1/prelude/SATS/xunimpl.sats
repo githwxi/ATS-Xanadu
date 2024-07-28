@@ -332,6 +332,28 @@ nint_strqize
 (xs: nint(n)): strq_vt(ni, n)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<y0:vt>
+nint_map_llist
+ {n0:i0}
+(xs: nint(n0)): list_vt(y0, n0)
+//
+#symload
+map_llist with nint_map_llist of 1000
+//
+fun
+<y0:vt>
+nint_rmap_llist
+ {n0:i0}
+(xs: nint(n0)): list_vt(y0, n0)
+//
+#symload
+rmap_llist with nint_rmap_llist of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX-2024-07-22:
