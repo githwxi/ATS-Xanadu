@@ -54,7 +54,7 @@ gseq$end
 #impltmp
 { x0:vt }
 gseq$beg
-<list_vt(x0)><x0>() = "llist("
+<list_vt(x0)><x0>() = "list_vt("
 //
 (* ****** ****** *)
 //
