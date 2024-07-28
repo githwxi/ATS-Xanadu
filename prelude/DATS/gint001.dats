@@ -243,6 +243,80 @@ where
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-28:
+Sun 28 Jul 2024 02:03:24 PM EDT
+*)
+//
+#impltmp
+< y0:vt >
+nint_map_llist
+  ( ni ) =
+(
+list_vt_reverse0
+<y0>(loop(0, r0)))
+where
+{
+//
+#vwtpdef
+ys = list_vt(y0)
+//
+val
+r0 = list_vt_nil()
+//
+fun
+loop
+(i0: ni, r0: ys): ys =
+(
+if
+(i0 >= ni)
+then r0 else
+let
+val y0 = map$fopr<ni><y0>(i0)
+in//let
+  loop(i0+1, list_vt_cons(y0,r0))
+end(*let*)//else//end-of-[if(...)]
+)
+//
+}(*where*)//end-[nint_map_llist(ni)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< y0:vt >
+nint_rmap_llist
+  ( ni ) =
+(
+list_vt_reverse0
+<y0>(loop(ni, r0)))
+where
+{
+//
+#vwtpdef
+ys = list_vt(y0)
+//
+val
+r0 = list_vt_nil()
+//
+fun
+loop
+(i0: ni, r0: ys): ys =
+(
+if
+(i0 <= 0)
+then r0 else
+let
+val y0 = map$fopr<ni><y0>(i0-1)
+in//let
+  loop(i0-1, list_vt_cons(y0,r0))
+end(*let*)//else//end-of-[if(...)]
+)
+//
+}(*where*)//end-[nint_map_llist(ni)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
