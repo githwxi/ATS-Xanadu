@@ -1401,6 +1401,54 @@ owed_vt_return0
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-29:
+Mon 29 Jul 2024 04:56:14 PM EDT
+*)
+//
+fcast
+t0_{a:tt}(a): (a)
+fcast
+tx_{a:tx}(a): (a)
+fcast
+vt_{a:vt}(a): (a)
+fcast
+vx_{a:vx}(a): (a)
+//
+fcast
+fc_sflt(dflt): sflt
+fcast
+fc_dflt(dflt): dflt
+fcast
+fc_ldflt(ldflt): ldflt
+//
+fcast
+fc_bool
+{b:b0}(bool(b)): bool(b)
+fcast
+fc_char
+{c:c0}(char(c)): char(c)
+fcast
+fc_sint
+{i:i0}(sint(i)): sint(i)
+//
+fcast
+fc_strn
+{n:i0}(strn(n)): strn(n)
+fcast
+fc_strn_vt
+{n:i0}(strn_vt(n)): strn_vt(n)
+//
+fcast
+fc_list{a:t0}
+{n:i0}(list(a,n)): list(a, n)
+fcast
+fc_list_vt{a:vt}
+{n:i0}(list_vt(a,n)): list_vt(a, n)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
