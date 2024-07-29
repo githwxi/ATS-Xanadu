@@ -468,19 +468,6 @@ strn_vt_gmake(obj: a): strn_vt
 (* ****** ****** *)
 //
 fun
-<x0:t0>
-list_foritm(xs: list(x0)): void
-fun
-<x0:t0>
-list_rforitm(xs: list(x0)): void
-fun
-<x0:t0>
-list_iforitm(xs: list(x0)): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
 <xs:t0>
 <x0:t0>
 gseq_irforall(xs): bool
@@ -553,6 +540,41 @@ fun
 <x0:t0>
 <y0:vt>
 gseq_irmap_rllist(xs: xs): list_vt(y0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
+<x0:t0>
+list_forall(xs: list(x0)): bool
+*)
+fun
+<x0:t0>
+list_foritm(xs: list(x0)): void
+//
+fun
+<x0:t0>
+list_rforall(xs: list(x0)): bool
+fun
+<x0:t0>
+list_rforitm(xs: list(x0)): void
+//
+(*
+fun
+<x0:t0>
+list_iforall(xs: list(x0)): bool
+*)
+fun
+<x0:t0>
+list_iforitm(xs: list(x0)): void
+//
+fun
+<x0:t0>
+list_irforall(xs: list(x0)): bool
+fun
+<x0:t0>
+list_irforitm(xs: list(x0)): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

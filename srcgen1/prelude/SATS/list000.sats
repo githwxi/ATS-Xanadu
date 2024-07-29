@@ -289,10 +289,10 @@ list_foldr(list(x0), r0): (r0)
 //
 fun
 <x0:t0>
-list_exists(xs: list(x0)): bool
+list_forall(xs: list(x0)): bool
 fun
 <x0:t0>
-list_forall(xs: list(x0)): bool
+list_exists(xs: list(x0)): bool
 fun
 <x0:t0>
 list_foreach(xs: list(x0)): void

@@ -123,6 +123,7 @@ val sAn = sum(An)
 val ( ) = prints("sAn = ", sAn, '\n')
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 list$sint_sum(xs) =
@@ -136,6 +137,17 @@ val ( ) = prints("szs = ", szs, '\n')
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+val () =
+prints("An = ", An, '\n') where
+{
+  val () =
+  mapref(An, lam(x:sint) => x+x)
+}
+//
+val () = prints
+("map_list(An) = "
+, map_list(An, lam(x:sint) => x*x), '\n')
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
