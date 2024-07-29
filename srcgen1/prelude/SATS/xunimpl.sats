@@ -193,6 +193,10 @@ fun
 <x0:t0
 ,y0:t0>
 iz2foritm$work(ni, x0, y0): void
+fun
+<x0:t0
+,y0:t0>
+irz2foritm$work(ni, x0, y0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -599,6 +603,33 @@ fun
 <x0:t0
 ,y0:t0>
 gseq_irz2forall(xs: xs, ys: ys): bool
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_z2foritm(xs: xs, ys: ys): void
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_rz2foritm(xs: xs, ys: ys): void
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_iz2foritm(xs: xs, ys: ys): void
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_irz2foritm(xs: xs, ys: ys): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
