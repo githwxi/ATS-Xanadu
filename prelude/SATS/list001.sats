@@ -48,6 +48,40 @@ list_strqize
 {n:i0}
 (xs: list(a, n)): strq_vt(a, n)
 //
+#symload strmize with list_strmize
+#symload strqize with list_strqize
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+list_forall(xs: list(x0)): bool
+fun
+<x0:t0>
+list_rforall(xs: list(x0)): bool
+fun
+<x0:t0>
+list_iforall(xs: list(x0)): bool
+fun
+<x0:t0>
+list_irforall(xs: list(x0)): bool
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+list_foritm(xs: list(x0)): void
+fun
+<x0:t0>
+list_rforitm(xs: list(x0)): void
+fun
+<x0:t0>
+list_iforitm(xs: list(x0)): void
+fun
+<x0:t0>
+list_irforitm(xs: list(x0)): void
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

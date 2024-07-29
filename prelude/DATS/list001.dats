@@ -38,7 +38,6 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 #impltmp
 < x0:t0 >
 list_forall
@@ -152,6 +151,29 @@ gseq_foritm0<list(x0)><x0> = list_foritm<x0>
 #impltmp
 { x0:t0 }
 gseq_foritm1<list(x0)><x0> = list_foritm<x0>
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_rforitm(xs) =
+(
+list_vt_foritm0<x0>
+(list_reverse_vt<x0>(xs))) where
+{
+#impltmp
+foritm$work0<x0> = rforitm$work<x0>
+}
+//
+#impltmp
+{ x0:t0 }
+gseq_rforitm<list(x0)><x0> = list_rforitm<x0>
+#impltmp
+{ x0:t0 }
+gseq_rforitm0<list(x0)><x0> = list_rforitm<x0>
+#impltmp
+{ x0:t0 }
+gseq_rforitm1<list(x0)><x0> = list_rforitm<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)

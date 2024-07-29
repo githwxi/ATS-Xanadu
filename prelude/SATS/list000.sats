@@ -87,19 +87,6 @@ list_length
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<a:t0>
-list_strmize
-(xs: list(a)): strm_vt(a)
-fun
-<a:t0>
-list_strqize
-{n:i0}
-(xs: list(a, n)): strq_vt(a, n)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (*
 HX-2024-07-17:
 Wed 17 Jul 2024 05:27:03 PM EDT
