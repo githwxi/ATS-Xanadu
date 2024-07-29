@@ -47,12 +47,9 @@ fun
 <x0:t0>
 gs_add_a0
 ( (*void*) ): x0
-//
-(*
 fun
 <x0:t0>
 gs_add_a1(x0): x0
-*)
 fun
 <x0:t0>
 gs_add_a2(x0, x0): x0
@@ -90,9 +87,7 @@ gs_add_a12(x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
 (* ****** ****** *)
 //
 #symload adds with gs_add_a0
-(*
 #symload adds with gs_add_a1
-*)
 #symload adds with gs_add_a2
 #symload adds with gs_add_a3
 #symload adds with gs_add_a4
@@ -117,12 +112,9 @@ fun
 <x0:t0>
 gs_mul_a0
 ( (*void*) ): x0
-//
-(*
 fun
 <x0:t0>
 gs_mul_a1(x0): x0
-*)
 fun
 <x0:t0>
 gs_mul_a2(x0, x0): x0
@@ -160,9 +152,7 @@ gs_mul_a12(x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
 (* ****** ****** *)
 //
 #symload muls with gs_mul_a0
-(*
 #symload muls with gs_mul_a1
-*)
 #symload muls with gs_mul_a2
 #symload muls with gs_mul_a3
 #symload muls with gs_mul_a4
@@ -184,6 +174,9 @@ Mon 29 Jul 2024 03:17:20 PM EDT
 *)
 //
 (*
+fun
+<x0:t0>
+gs_max_a0(): x0
 fun
 <x0:t0>
 gs_max_a1(x0): x0
@@ -225,6 +218,7 @@ gs_max_a12(x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
 (* ****** ****** *)
 //
 (*
+#symload maxs with gs_max_a0
 #symload maxs with gs_max_a1
 *)
 #symload maxs with gs_max_a2
@@ -248,6 +242,9 @@ Mon 29 Jul 2024 03:17:20 PM EDT
 *)
 //
 (*
+fun
+<x0:t0>
+gs_min_a0(): x0
 fun
 <x0:t0>
 gs_min_a1(x0): x0
@@ -289,6 +286,7 @@ gs_min_a12(x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
 (* ****** ****** *)
 //
 (*
+#symload mins with gs_min_a0
 #symload mins with gs_min_a1
 *)
 #symload mins with gs_min_a2

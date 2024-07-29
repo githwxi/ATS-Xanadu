@@ -47,7 +47,291 @@ HX-2024-07-29:
 Mon 29 Jul 2024 03:17:20 PM EDT
 *)
 //
+#impltmp
+< x0:t0 >
+gs_add_a0() =
+g_0<x0>((*void*))
+//
+#impltmp
+< x0:t0 >
+gs_add_a1(x1) = x1
+//
+#impltmp
+< x0:t0 >
+gs_add_a2
+(x1, x2) =
+(
+g_add<x0>(x1, x2)
+) (* end of [gs_add_a2] *)
+#impltmp
+< x0:t0 >
+gs_add_a3
+(x1, x2, x3) =
+let
+fun
+f0(x, y) =
+g_add<x0>(x, y)
+in//let
+  f0(f0(x1, x2), x3)
+end (*let*) // end of [gs_add_a3]
+#impltmp
+< x0:t0 >
+gs_add_a4
+(x1, x2, x3, x4) =
+let
+fun
+f0(x, y) =
+g_add<x0>(x, y)
+in//let
+  f0(f0(f0(x1,x2),x3),x4)
+end (*let*) // end of [gs_add_a4]
+#impltmp
+< x0:t0 >
+gs_add_a5
+(x1, x2, x3, x4, x5) =
+let
+fun
+f0(x, y) =
+g_add<x0>(x, y)
+in//let
+f0(f0(f0(f0(x1,x2),x3),x4),x5)
+end (*let*) // end of [gs_add_a5]
+#impltmp
+< x0:t0 >
+gs_add_a6
+(x1, x2, x3, x4, x5, x6) =
+let
+fun
+f0(x, y) =
+g_add<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6)
+end (*let*) // end of [gs_add_a6]
+#impltmp
+< x0:t0 >
+gs_add_a7
+(x1, x2, x3, x4, x5, x6, x7) =
+let
+fun
+f0(x, y) =
+g_add<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7)
+end (*let*) // end of [gs_add_a7]
+#impltmp
+< x0:t0 >
+gs_add_a8
+(x1, x2, x3, x4, x5, x6, x7, x8) =
+let
+fun
+f0(x, y) =
+g_add<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8)
+end (*let*) // end of [gs_add_a8]
+#impltmp
+< x0:t0 >
+gs_add_a9
+(x1, x2, x3, x4, x5, x6, x7, x8, x9) =
+let
+fun
+f0(x, y) =
+g_add<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9)
+end (*let*) // end of [gs_add_a9]
+//
+#impltmp
+< x0:t0 >
+gs_add_a10
+(x1, x2, x3, x4, x5, x6, x7, x8, x9, x10) =
+let
+fun
+f0(x, y) =
+g_add<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9),x10)
+end (*let*) // end of [gs_add_a10]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+gs_add_a11
+(x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11) =
+let
+fun
+f0(x, y) =
+g_add<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9),x10),x11)
+end (*let*) // end of [gs_add_a11]
+//
+#impltmp
+< x0:t0 >
+gs_add_a12
+(x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12) =
+let
+fun
+f0(x, y) =
+g_add<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9),x10),x11),x12)
+end (*let*) // end of [gs_add_a12]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
+HX-2024-07-29:
+Mon 29 Jul 2024 03:17:20 PM EDT
+*)
+//
+#impltmp
+< x0:t0 >
+gs_mul_a0() =
+g_1<x0>((*void*))
+//
+#impltmp
+< x0:t0 >
+gs_mul_a1(x1) = x1
+//
+#impltmp
+< x0:t0 >
+gs_mul_a2
+(x1, x2) =
+(
+g_mul<x0>(x1, x2)
+) (* end of [gs_mul_a2] *)
+#impltmp
+< x0:t0 >
+gs_mul_a3
+(x1, x2, x3) =
+let
+fun
+f0(x, y) =
+g_mul<x0>(x, y)
+in//let
+  f0(f0(x1, x2), x3)
+end (*let*) // end of [gs_mul_a3]
+#impltmp
+< x0:t0 >
+gs_mul_a4
+(x1, x2, x3, x4) =
+let
+fun
+f0(x, y) =
+g_mul<x0>(x, y)
+in//let
+  f0(f0(f0(x1,x2),x3),x4)
+end (*let*) // end of [gs_mul_a4]
+#impltmp
+< x0:t0 >
+gs_mul_a5
+(x1, x2, x3, x4, x5) =
+let
+fun
+f0(x, y) =
+g_mul<x0>(x, y)
+in//let
+f0(f0(f0(f0(x1,x2),x3),x4),x5)
+end (*let*) // end of [gs_mul_a5]
+#impltmp
+< x0:t0 >
+gs_mul_a6
+(x1, x2, x3, x4, x5, x6) =
+let
+fun
+f0(x, y) =
+g_mul<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6)
+end (*let*) // end of [gs_mul_a6]
+#impltmp
+< x0:t0 >
+gs_mul_a7
+(x1, x2, x3, x4, x5, x6, x7) =
+let
+fun
+f0(x, y) =
+g_mul<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7)
+end (*let*) // end of [gs_mul_a7]
+#impltmp
+< x0:t0 >
+gs_mul_a8
+(x1, x2, x3, x4, x5, x6, x7, x8) =
+let
+fun
+f0(x, y) =
+g_mul<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8)
+end (*let*) // end of [gs_mul_a8]
+#impltmp
+< x0:t0 >
+gs_mul_a9
+(x1, x2, x3, x4, x5, x6, x7, x8, x9) =
+let
+fun
+f0(x, y) =
+g_mul<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9)
+end (*let*) // end of [gs_mul_a9]
+//
+#impltmp
+< x0:t0 >
+gs_mul_a10
+(x1, x2, x3, x4, x5, x6, x7, x8, x9, x10) =
+let
+fun
+f0(x, y) =
+g_mul<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9),x10)
+end (*let*) // end of [gs_mul_a10]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+gs_mul_a11
+(x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11) =
+let
+fun
+f0(x, y) =
+g_mul<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9),x10),x11)
+end (*let*) // end of [gs_mul_a11]
+//
+#impltmp
+< x0:t0 >
+gs_mul_a12
+(x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12) =
+let
+fun
+f0(x, y) =
+g_mul<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9),x10),x11),x12)
+end (*let*) // end of [gs_mul_a12]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-29:
+Mon 29 Jul 2024 03:17:20 PM EDT
+*)
+//
+(*
+#impltmp
+< x0:t0 >
+gs_max_a0() =
+( -infinity )
 #impltmp
 < x0:t0 >
 gs_max_a1(x1) = x1
@@ -185,6 +469,10 @@ Mon 29 Jul 2024 03:17:20 PM EDT
 *)
 //
 (*
+#impltmp
+< x0:t0 >
+gs_min_a0() =
+( +infinity )
 #impltmp
 < x0:t0 >
 gs_min_a1(x1) = x1
