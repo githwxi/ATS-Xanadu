@@ -42,7 +42,7 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 < x0:t0 >
 list_forall
-  (xs) = 
+  ( xs ) = 
 (
   loop(xs) ) where
 {
@@ -84,12 +84,48 @@ forall$test<x0>(x0) = forall$test1<x0>(x0)
 }
 //
 (* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_rforall
+  ( xs ) =
+(
+list_vt_forall0<x0>
+(list_reverse_vt<x0>(xs))) where
+{
+#impltmp
+forall$test0<x0> = rforall$test<x0>
+}
+//
+#impltmp
+{ x0:t0 }
+gseq_rforall
+<list(x0)><x0> = list_rforall<x0>
+#impltmp
+{ x0:t0 }
+gseq_rforall0
+list_rforall<x0>(xs) where
+{
+#impltmp
+rforall$test<x0>(x0) = rforall$test0<x0>(x0)
+}
+#impltmp
+{ x0:t0 }
+gseq_rforall1
+<list(x0)><x0>(xs) =
+list_rforall<x0>(xs) where
+{
+#impltmp
+rforall$test<x0>(x0) = rforall$test1<x0>(x0)
+}
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 < x0:t0 >
 list_foritm
-  (xs) = 
+  ( xs ) = 
 (
   loop(xs) ) where
 {
@@ -128,7 +164,7 @@ Sun 28 Jul 2024 02:37:26 PM EDT
 #impltmp
 <x0>(*tmp*)
 list_strmize
-  (xs) =
+  ( xs ) =
 let
 fun
 auxmain(xs) =
@@ -158,6 +194,23 @@ gseq_strmize1<list(x0)><x0> = list_strmize<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+list_rstrmize
+  ( xs ) =
+(
+list_vt_strmize0<x0>(list_reverse_vt<x0>(xs)))
+//
+#impltmp
+{ x0:t0 }
+gseq_rstrmize<list(x0)><x0> = list_rstrmize<x0>
+#impltmp
+{ x0:t0 }
+gseq_rstrmize0<list(x0)><x0> = list_rstrmize<x0>
+#impltmp
+{ x0:t0 }
+gseq_rstrmize1<list(x0)><x0> = list_rstrmize<x0>
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
