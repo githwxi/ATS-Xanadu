@@ -39,6 +39,151 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 (*
+HX-2024-07-29:
+Mon 29 Jul 2024 03:17:20 PM EDT
+*)
+//
+fun
+<x0:t0>
+gs_add_a0
+( (*void*) ): x0
+//
+(*
+fun
+<x0:t0>
+gs_add_a1(x0): x0
+*)
+fun
+<x0:t0>
+gs_add_a2(x0, x0): x0
+fun
+<x0:t0>
+gs_add_a3(x0, x0, x0): x0
+fun
+<x0:t0>
+gs_add_a4(x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_add_a5(x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_add_a6(x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_add_a7(x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_add_a8(x0, x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_add_a9(x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_add_a10(x0, x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_add_a11(x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_add_a12(x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
+//
+(* ****** ****** *)
+//
+#symload adds with gs_add_a0
+(*
+#symload adds with gs_add_a1
+*)
+#symload adds with gs_add_a2
+#symload adds with gs_add_a3
+#symload adds with gs_add_a4
+#symload adds with gs_add_a5
+#symload adds with gs_add_a6
+#symload adds with gs_add_a7
+#symload adds with gs_add_a8
+#symload adds with gs_add_a9
+#symload adds with gs_add_a10
+#symload adds with gs_add_a11
+#symload adds with gs_add_a12
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-29:
+Mon 29 Jul 2024 03:17:20 PM EDT
+*)
+//
+fun
+<x0:t0>
+gs_mul_a0
+( (*void*) ): x0
+//
+(*
+fun
+<x0:t0>
+gs_mul_a1(x0): x0
+*)
+fun
+<x0:t0>
+gs_mul_a2(x0, x0): x0
+fun
+<x0:t0>
+gs_mul_a3(x0, x0, x0): x0
+fun
+<x0:t0>
+gs_mul_a4(x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_mul_a5(x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_mul_a6(x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_mul_a7(x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_mul_a8(x0, x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_mul_a9(x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_mul_a10(x0, x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_mul_a11(x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_mul_a12(x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
+//
+(* ****** ****** *)
+//
+#symload muls with gs_mul_a0
+(*
+#symload muls with gs_mul_a1
+*)
+#symload muls with gs_mul_a2
+#symload muls with gs_mul_a3
+#symload muls with gs_mul_a4
+#symload muls with gs_mul_a5
+#symload muls with gs_mul_a6
+#symload muls with gs_mul_a7
+#symload muls with gs_mul_a8
+#symload muls with gs_mul_a9
+#symload muls with gs_mul_a10
+#symload muls with gs_mul_a11
+#symload muls with gs_mul_a12
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-29:
+Mon 29 Jul 2024 03:17:20 PM EDT
+*)
+//
+(*
 fun
 <x0:t0>
 gs_max_a1(x0): x0
@@ -96,6 +241,11 @@ gs_max_a12(x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(*
+HX-2024-07-29:
+Mon 29 Jul 2024 03:17:20 PM EDT
+*)
 //
 (*
 fun

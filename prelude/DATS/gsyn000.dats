@@ -42,6 +42,17 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-29:
+Mon 29 Jul 2024 03:17:20 PM EDT
+*)
+//
+(*
+#impltmp
+< x0:t0 >
+gs_max_a1(x1) = x1
+*)
+//
 #impltmp
 < x0:t0 >
 gs_max_a2
@@ -167,6 +178,17 @@ end (*let*) // end of [gs_max_a12]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(*
+HX-2024-07-29:
+Mon 29 Jul 2024 03:17:20 PM EDT
+*)
+//
+(*
+#impltmp
+< x0:t0 >
+gs_min_a1(x1) = x1
+*)
 //
 #impltmp
 < x0:t0 >
