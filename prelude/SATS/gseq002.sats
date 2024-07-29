@@ -124,11 +124,33 @@ fun
 ,y0:t0>
 gseq_irz2forall(xs: xs, ys: ys): bool
 //
+(*
 #symload z2forall with gseq_z2forall of 0100
 #symload rz2forall with gseq_rz2forall of 0100
 #symload iz2forall with gseq_iz2forall of 0100
 #symload irz2forall with gseq_irz2forall of 0100
+*)
 //
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_z2forall_c2fr
+(xs: xs, ys: ys, test: (x0, y0)-<cfr>bool): bool
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_z2forall_f2np
+(xs: xs, ys: ys, test: (x0, y0)-<fnp>bool): bool
+//
+#symload z2forall with gseq_z2forall_c2fr of 0100
+#symload z2forall_cfr with gseq_z2forall_c2fr of 0100
+#symload z2forall_fnp with gseq_z2forall_f2np of 0100
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -156,10 +178,31 @@ fun
 ,y0:t0>
 gseq_irz2foritm(xs: xs, ys: ys): void
 //
+(*
 #symload z2foritm with gseq_z2foritm of 0100
 #symload rz2foritm with gseq_rz2foritm of 0100
 #symload iz2foritm with gseq_iz2foritm of 0100
 #symload irz2foritm with gseq_irz2foritm of 0100
+*)
+//
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_z2foritm_c2fr
+(xs: xs, ys: ys, work: (x0, y0)-<cfr>void): void
+fun
+<xs:t0
+,ys:t0>
+<x0:t0
+,y0:t0>
+gseq_z2foritm_f2np
+(xs: xs, ys: ys, work: (x0, y0)-<fnp>void): void
+//
+#symload z2foritm with gseq_z2foritm_c2fr of 0100
+#symload z2foritm_cfr with gseq_z2foritm_c2fr of 0100
+#symload z2foritm_fnp with gseq_z2foritm_f2np of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -325,161 +325,27 @@ gseq_ifoldall1(!xs, r0): ( r0 )
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-(*
-fun
-<x0:vt>
-list_vt_forall0
-(xs: ~list_vt(x0)): bool
-fun
-<x0:vt>
-list_vt_forall1
-(xs: !list_vt(x0)): bool
-*)
-fun
-<x0:vt>
-list_vt_rforall0
-(xs: ~list_vt(x0)): bool
-fun
-<x0:vt>
-list_vt_rforall1
-(xs: !list_vt(x0)): bool
-//
-fun
-<x0:vt>
-list_vt_iforall0
-(xs: ~list_vt(x0)): bool
-fun
-<x0:vt>
-list_vt_iforall1
-(xs: !list_vt(x0)): bool
-//
-fun
-<x0:vt>
-list_vt_irforall0
-(xs: ~list_vt(x0)): bool
-fun
-<x0:vt>
-list_vt_irforall1
-(xs: !list_vt(x0)): bool
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-list_vt_foritm0
-(xs: ~list_vt(x0)): void
-fun
-<x0:vt>
-list_vt_foritm1
-(xs: !list_vt(x0)): void
-//
-fun
-<x0:vt>
-list_vt_rforitm0
-(xs: ~list_vt(x0)): void
-fun
-<x0:vt>
-list_vt_rforitm1
-(xs: !list_vt(x0)): void
-//
-fun
-<x0:vt>
-list_vt_iforitm0
-(xs: ~list_vt(x0)): void
-fun
-<x0:vt>
-list_vt_iforitm1
-(xs: !list_vt(x0)): void
-//
-fun
-<x0:vt>
-list_vt_irforitm0
-(xs: ~list_vt(x0)): void
-fun
-<x0:vt>
-list_vt_irforitm1
-(xs: !list_vt(x0)): void
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-strm_vt_foritm0
-(xs: ~strm_vt(x0)): void
-fun
-<x0:vt>
-strm_vt_rforitm0
-(xs: ~strm_vt(x0)): void
-fun
-<x0:vt>
-strm_vt_iforitm0
-(xs: ~strm_vt(x0)): void
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-<r0:vt>
-list_vt_folditm0
-(xs: ~list_vt(x0), r0: r0): (r0)
-fun
-<x0:vt>
-<r0:vt>
-list_vt_rfolditm0
-(xs: ~list_vt(x0), r0: r0): (r0)
-fun
-<x0:vt>
-<r0:vt>
-list_vt_ifolditm0
-(xs: ~list_vt(x0), r0: r0): (r0)
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-<r0:vt>
-strm_vt_folditm0
-(xs: ~strm_vt(x0), r0: r0): (r0)
-fun
-<x0:vt>
-<r0:vt>
-strm_vt_foldall0
-(xs: ~strm_vt(x0), r0: r0): (r0)
-//
-fun
-<x0:vt>
-<r0:vt>
-strm_vt_ifolditm0
-(xs: ~strm_vt(x0), r0: r0): (r0)
-fun
-<x0:vt>
-<r0:vt>
-strm_vt_ifoldall0
-(xs: ~strm_vt(x0), r0: r0): (r0)
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
-gseq_map0_ares(xs: ~xs): (ys)
+gseq_map0_ares(xs: ~xs): ( ys )
 fun
 <xs:vt>
 <x0:vt>
-gseq_map0_self(xs: ~xs): (xs)
+gseq_map0_self(xs: ~xs): ( xs )
 //
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
-gseq_map1_ares(xs: !xs): (ys)
+gseq_map1_ares(xs: !xs): ( ys )
 fun
 <xs:vt>
 <x0:vt>
-gseq_map1_self(xs: !xs): (xs)
+gseq_map1_self(xs: !xs): ( xs )
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -986,6 +852,290 @@ strm_vt_prepend00
 (* ****** ****** *)
 //
 (*
+HX-2024-07-25:
+Thu 25 Jul 2024 04:53:04 PM EDT
+*)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_forall0_f1np
+(xs: xs, test: (~x0)-<fnp>bool): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_forall1_f1np
+(xs: xs, test: (!x0)-<fnp>bool): bool
+//
+#symload forall0_fnp with gseq_forall0_f1np of 0100
+#symload forall1_fnp with gseq_forall1_f1np of 0100
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-25:
+Thu 25 Jul 2024 04:53:04 PM EDT
+*)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_foritm0_c1fr
+(xs: xs, work: (~x0)-<cfr>void): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_foritm0_f1np
+(xs: xs, work: (~x0)-<fnp>void): void
+//
+#symload foritm0 with gseq_foritm0_c1fr of 0100
+#symload foritm0_cfr with gseq_foritm0_c1fr of 0100
+#symload foritm0_fnp with gseq_foritm0_f1np of 0100
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_foritm1_c1fr
+(xs: xs, work: (!x0)-<cfr>void): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_foritm1_f1np
+(xs: xs, work: (!x0)-<fnp>void): void
+//
+#symload foritm1 with gseq_foritm1_c1fr of 0100
+#symload foritm1_cfr with gseq_foritm1_c1fr of 0100
+#symload foritm1_fnp with gseq_foritm1_f1np of 0100
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gasz_length1(xs: !xs): nint
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:t0> // HX: t0(not(vt))
+gasz_get1_at
+(xs: !xs, i0: ni): (x0)
+fun
+<xs:vt>
+<x0:t0> // HX: t0(not(vt))
+gasz_set1_at
+(xs: !xs, i0: ni, x0: x0): void
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gasz_get1_at_raw
+(xs: !xs, i0: ni): (x0)
+fun
+<xs:vt>
+<x0:vt>
+gasz_set1_at_raw
+(xs: !xs, i0: ni, x0: x0): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gasz_strmize0(xs: xs): strm_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gasz_strqize0(xs: xs): strq_vt(x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gasz_rstrmize0(xs: xs): strm_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gasz_rstrqize0(xs: xs): strq_vt(x0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
+<x0:vt>
+list_vt_forall0(xs: ~list_vt(x0)): bool
+fun
+<x0:vt>
+list_vt_forall1(xs: !list_vt(x0)): bool
+*)
+fun
+<x0:vt>
+list_vt_rforall0(xs: ~list_vt(x0)): bool
+fun
+<x0:vt>
+list_vt_rforall1(xs: !list_vt(x0)): bool
+//
+fun
+<x0:vt>
+list_vt_iforall0(xs: ~list_vt(x0)): bool
+fun
+<x0:vt>
+list_vt_iforall1(xs: !list_vt(x0)): bool
+//
+fun
+<x0:vt>
+list_vt_irforall0(xs: ~list_vt(x0)): bool
+fun
+<x0:vt>
+list_vt_irforall1(xs: !list_vt(x0)): bool
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+list_vt_foritm0(xs: ~list_vt(x0)): void
+fun
+<x0:vt>
+list_vt_foritm1(xs: !list_vt(x0)): void
+//
+fun
+<x0:vt>
+list_vt_rforitm0(xs: ~list_vt(x0)): void
+fun
+<x0:vt>
+list_vt_rforitm1(xs: !list_vt(x0)): void
+//
+fun
+<x0:vt>
+list_vt_iforitm0(xs: ~list_vt(x0)): void
+fun
+<x0:vt>
+list_vt_iforitm1(xs: !list_vt(x0)): void
+//
+fun
+<x0:vt>
+list_vt_irforitm0(xs: ~list_vt(x0)): void
+fun
+<x0:vt>
+list_vt_irforitm1(xs: !list_vt(x0)): void
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+strm_vt_foritm0(xs: ~strm_vt(x0)): void
+fun
+<x0:vt>
+strm_vt_rforitm0(xs: ~strm_vt(x0)): void
+fun
+<x0:vt>
+strm_vt_iforitm0(xs: ~strm_vt(x0)): void
+fun
+<x0:vt>
+strm_vt_irforitm0(xs: ~strm_vt(x0)): void
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<r0:vt>
+list_vt_folditm0(xs: ~list_vt(x0), r0: r0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+list_vt_rfolditm0(xs: ~list_vt(x0), r0: r0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+list_vt_ifolditm0(xs: ~list_vt(x0), r0: r0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+list_vt_irfolditm0(xs: ~list_vt(x0), r0: r0): (r0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<r0:vt>
+strm_vt_folditm0(xs: ~strm_vt(x0), r0: r0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+strm_vt_foldall0(xs: ~strm_vt(x0), r0: r0): (r0)
+//
+fun
+<x0:vt>
+<r0:vt>
+strm_vt_ifolditm0(xs: ~strm_vt(x0), r0: r0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+strm_vt_ifoldall0(xs: ~strm_vt(x0), r0: r0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+strm_vt_irfoldall0(xs: ~strm_vt(x0), r0: r0): (r0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-25:
+Thu 25 Jul 2024 04:53:04 PM EDT
+*)
+//
+fun
+<x0:vt>
+strm_vt_forall0_c1fr
+( xs: strm_vt(x0)
+, test: (~x0)-<cfr>bool): bool
+fun
+<x0:vt>
+strm_vt_forall0_f1np
+( xs: strm_vt(x0)
+, test: (~x0)-<fnp>bool): bool
+//
+#symload
+forall0 with strm_vt_forall0_c1fr of 1000
+#symload
+forall0_cfr with strm_vt_forall0_c1fr of 1000
+#symload
+forall0_fnp with strm_vt_forall0_f1np of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+strm_vt_foritm0_c1fr
+(xs: strm_vt(x0), work: (~x0)-<cfr>void): void
+fun
+<x0:vt>
+strm_vt_foritm0_f1np
+(xs: strm_vt(x0), work: (~x0)-<fnp>void): void
+//
+#symload
+foritm0 with strm_vt_foritm0_c1fr of 1000
+#symload
+foritm0_cfr with strm_vt_foritm0_c1fr of 1000
+#symload
+foritm0_fnp with strm_vt_foritm0_f1np of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-19:
+Mon 29 Jul 2024 12:57:10 PM EDT
+*)
+//
+(*
 fun
 <x0:vt
 ,y0:vt>
@@ -1317,166 +1467,6 @@ fun
 <r0:vt>
 strm_vt_iz2foldall0
 (xs: ~strm_vt(x0), ys: ~strm_vt(y0), r0: r0): (r0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2024-07-25:
-Thu 25 Jul 2024 04:53:04 PM EDT
-*)
-//
-fun
-<xs:vt>
-<x0:vt>
-gseq_forall0_f1np
-(xs: xs, test: (~x0)-<fnp>bool): bool
-fun
-<xs:vt>
-<x0:vt>
-gseq_forall1_f1np
-(xs: xs, test: (!x0)-<fnp>bool): bool
-//
-#symload forall0_fnp with gseq_forall0_f1np of 0100
-#symload forall1_fnp with gseq_forall1_f1np of 0100
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2024-07-25:
-Thu 25 Jul 2024 04:53:04 PM EDT
-*)
-//
-fun
-<xs:vt>
-<x0:vt>
-gseq_foritm0_c1fr
-(xs: xs, work: (~x0)-<cfr>void): void
-fun
-<xs:vt>
-<x0:vt>
-gseq_foritm0_f1np
-(xs: xs, work: (~x0)-<fnp>void): void
-//
-#symload foritm0 with gseq_foritm0_c1fr of 0100
-#symload foritm0_cfr with gseq_foritm0_c1fr of 0100
-#symload foritm0_fnp with gseq_foritm0_f1np of 0100
-//
-fun
-<xs:vt>
-<x0:vt>
-gseq_foritm1_c1fr
-(xs: xs, work: (!x0)-<cfr>void): void
-fun
-<xs:vt>
-<x0:vt>
-gseq_foritm1_f1np
-(xs: xs, work: (!x0)-<fnp>void): void
-//
-#symload foritm1 with gseq_foritm1_c1fr of 0100
-#symload foritm1_cfr with gseq_foritm1_c1fr of 0100
-#symload foritm1_fnp with gseq_foritm1_f1np of 0100
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2024-07-25:
-Thu 25 Jul 2024 04:53:04 PM EDT
-*)
-fun
-<x0:vt>
-strm_vt_forall0_c1fr
-( xs: strm_vt(x0)
-, test: (~x0)-<cfr>bool): bool
-fun
-<x0:vt>
-strm_vt_forall0_f1np
-( xs: strm_vt(x0)
-, test: (~x0)-<fnp>bool): bool
-//
-#symload
-forall0 with strm_vt_forall0_c1fr of 1000
-#symload
-forall0_cfr with strm_vt_forall0_c1fr of 1000
-#symload
-forall0_fnp with strm_vt_forall0_f1np of 1000
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-strm_vt_foritm0_c1fr
-( xs: strm_vt(x0)
-, work: (~x0)-<cfr>void): void
-fun
-<x0:vt>
-strm_vt_foritm0_f1np
-( xs: strm_vt(x0)
-, work: (~x0)-<fnp>void): void
-//
-#symload
-foritm0 with strm_vt_foritm0_c1fr of 1000
-#symload
-foritm0_cfr with strm_vt_foritm0_c1fr of 1000
-#symload
-foritm0_fnp with strm_vt_foritm0_f1np of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
-gasz_length1(xs: !xs): nint
-//
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:t0> // HX: t0(not(vt))
-gasz_get1_at
-(xs: !xs, i0: ni): (x0)
-fun
-<xs:vt>
-<x0:t0> // HX: t0(not(vt))
-gasz_set1_at
-(xs: !xs, i0: ni, x0: x0): void
-//
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
-gasz_get1_at_raw
-(xs: !xs, i0: ni): (x0)
-fun
-<xs:vt>
-<x0:vt>
-gasz_set1_at_raw
-(xs: !xs, i0: ni, x0: x0): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
-gasz_strmize0(xs: xs): strm_vt(x0)
-fun
-<xs:vt>
-<x0:vt>
-gasz_strqize0(xs: xs): strq_vt(x0)
-//
-fun
-<xs:vt>
-<x0:vt>
-gasz_rstrmize0(xs: xs): strm_vt(x0)
-fun
-<xs:vt>
-<x0:vt>
-gasz_rstrqize0(xs: xs): strq_vt(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

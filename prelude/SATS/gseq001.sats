@@ -136,6 +136,7 @@ gseq_forall_f1np
 #symload forall_fnp with gseq_forall_f1np of 0100
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <xs:t0>
