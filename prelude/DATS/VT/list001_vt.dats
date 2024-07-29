@@ -52,7 +52,8 @@ loop
 (
 case+ xs of
 | ~
-list_vt_nil() => ( true )
+list_vt_nil
+  ((*0*)) => (true)
 | ~
 list_vt_cons(x1, xs) =>
 let
@@ -62,10 +63,38 @@ if test then loop(xs) else false end)
 }
 //
 #impltmp
+< x0:vt >
+list_vt_forall1
+  ( xs ) = 
+(
+  loop(xs) ) where
+{
+fun
+loop
+(xs: list_vt(x0)): bool =
+(
+case+ xs of
+|
+list_vt_nil
+  ((*0*)) => (true)
+|
+list_vt_cons(x1, xs) =>
+let
+val test =
+forall$test1<x0>(x1) in
+if test then loop(xs) else false end)
+}
+//
+#impltmp
 { x0:vt }
 gseq_forall0
 <list_vt(x0)><x0> = list_vt_forall0<x0>(*void*)
+#impltmp
+{ x0:vt }
+gseq_forall1
+<list_vt(x0)><x0> = list_vt_forall1<x0>(*void*)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -81,19 +110,47 @@ forall$test0<x0> = rforall$test0<x0>
 }
 //
 #impltmp
+< x0:vt >
+list_vt_rforall1
+  ( xs ) = 
+(
+list_vt_forall0<x0>
+(list_vt_reverse1<x0>(xs))) where
+{
+#impltmp
+forall$test0<x0>(x0) =
+(
+g_free<x0>(x0); test) where
+{
+  val test = rforall$test1<x0>(x0) }
+}
+//
+#impltmp
 { x0:vt }
 gseq_rforall0
 <list_vt(x0)><x0> = list_vt_rforall0<x0>(*void*)
+#impltmp
+{ x0:vt }
+gseq_rforall1
+<list_vt(x0)><x0> = list_vt_rforall1<x0>(*void*)
 //
 (* ****** ****** *)
 //
 #impltmp
 < x0:vt >
 list_vt_iforall0 = gseq_iforall0<list_vt(x0)><x0>
+#impltmp
+< x0:vt >
+list_vt_iforall1 = gseq_iforall1<list_vt(x0)><x0>
+//
+(* ****** ****** *)
 //
 #impltmp
 < x0:vt >
 list_vt_irforall0 = gseq_irforall0<list_vt(x0)><x0>
+#impltmp
+< x0:vt >
+list_vt_irforall1 = gseq_irforall1<list_vt(x0)><x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -111,7 +168,8 @@ loop
 (
 case+ xs of
 | ~
-list_vt_nil() => ( (*void*) )
+list_vt_nil
+  ((*0*)) => ((*0*))
 | ~
 list_vt_cons(x1, xs) =>
 let
@@ -120,8 +178,61 @@ foritm$work0<x0>(x1) in loop(xs) end)
 }
 //
 #impltmp
+< x0:vt >
+list_vt_foritm1
+  (xs) = 
+(
+  loop(xs) ) where
+{
+fun
+loop
+(xs: !list_vt(x0)): void =
+(
+case+ xs of
+|list_vt_nil
+  ((*0*)) => ((*0*))
+|
+list_vt_cons(x1, xs) =>
+let
+val () =
+foritm$work1<x0>(x1) in loop(xs) end)
+}
+//
+#impltmp
 { x0:vt }
-gseq_foritm0<list_vt(x0)><x0> = list_vt_foritm0<x0>
+gseq_foritm0
+<list_vt(x0)><x0> = list_vt_foritm0<x0>(*void*)
+#impltmp
+{ x0:vt }
+gseq_foritm1
+<list_vt(x0)><x0> = list_vt_foritm1<x0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+list_vt_rforitm0 = gseq_rforitm0<list_vt(x0)><x0>
+#impltmp
+< x0:vt >
+list_vt_rforitm1 = gseq_rforitm1<list_vt(x0)><x0>
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+list_vt_iforitm0 = gseq_iforitm0<list_vt(x0)><x0>
+#impltmp
+< x0:vt >
+list_vt_iforitm1 = gseq_iforitm1<list_vt(x0)><x0>
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+list_vt_irforitm0 = gseq_irforitm0<list_vt(x0)><x0>
+#impltmp
+< x0:vt >
+list_vt_irforitm1 = gseq_irforitm1<list_vt(x0)><x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)

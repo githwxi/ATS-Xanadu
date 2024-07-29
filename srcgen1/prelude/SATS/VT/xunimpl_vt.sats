@@ -43,12 +43,46 @@ gseq_rstrqize0
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+fun
+<x0:vt>
+rforall$test0(x0: ~x0): bool
+fun
+<x0:vt>
+rforall$test1(x0: !x0): bool
+//
+fun
+<x0:vt>
+iforall$test0(ni, ~x0): bool
+fun
+<x0:vt>
+iforall$test1(ni, !x0): bool
+*)
+//
 fun
 <x0:vt>
 irforall$test0(ni, ~x0): bool
 fun
 <x0:vt>
 irforall$test1(ni, !x0): bool
+//
+(* ****** ****** *)
+//
+(*
+fun
+<x0:vt>
+rexists$test0(x0: ~x0): bool
+fun
+<x0:vt>
+rexists$test1(x0: !x0): bool
+//
+fun
+<x0:vt>
+iexists$test0(ni, ~x0): bool
+fun
+<x0:vt>
+iexists$test1(ni, !x0): bool
+*)
 //
 fun
 <x0:vt>
@@ -297,6 +331,10 @@ fun
 <x0:vt>
 list_vt_forall0
 (xs: ~list_vt(x0)): bool
+fun
+<x0:vt>
+list_vt_forall1
+(xs: !list_vt(x0)): bool
 *)
 fun
 <x0:vt>
@@ -304,12 +342,26 @@ list_vt_rforall0
 (xs: ~list_vt(x0)): bool
 fun
 <x0:vt>
+list_vt_rforall1
+(xs: !list_vt(x0)): bool
+//
+fun
+<x0:vt>
 list_vt_iforall0
 (xs: ~list_vt(x0)): bool
 fun
 <x0:vt>
+list_vt_iforall1
+(xs: !list_vt(x0)): bool
+//
+fun
+<x0:vt>
 list_vt_irforall0
 (xs: ~list_vt(x0)): bool
+fun
+<x0:vt>
+list_vt_irforall1
+(xs: !list_vt(x0)): bool
 //
 (* ****** ****** *)
 //
@@ -319,16 +371,35 @@ list_vt_foritm0
 (xs: ~list_vt(x0)): void
 fun
 <x0:vt>
+list_vt_foritm1
+(xs: !list_vt(x0)): void
+//
+fun
+<x0:vt>
 list_vt_rforitm0
 (xs: ~list_vt(x0)): void
+fun
+<x0:vt>
+list_vt_rforitm1
+(xs: !list_vt(x0)): void
+//
 fun
 <x0:vt>
 list_vt_iforitm0
 (xs: ~list_vt(x0)): void
 fun
 <x0:vt>
+list_vt_iforitm1
+(xs: !list_vt(x0)): void
+//
+fun
+<x0:vt>
 list_vt_irforitm0
 (xs: ~list_vt(x0)): void
+fun
+<x0:vt>
+list_vt_irforitm1
+(xs: !list_vt(x0)): void
 //
 (* ****** ****** *)
 //
