@@ -72,7 +72,7 @@ list_sing with list_make_1val of 1000
 #symload
 list_pair with list_make_2val of 1000
 #symload
-list_triple with list_make_2val of 1000
+list_triple with list_make_3val of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //

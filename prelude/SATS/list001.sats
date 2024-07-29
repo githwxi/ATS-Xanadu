@@ -30,110 +30,23 @@
 (*
 Author: Hongwei Xi
 (*
-Sun 21 Jul 2024 02:34:24 PM EDT
+Sun 28 Jul 2024 08:51:05 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef ni = nint
-(* ****** ****** *)
-(* ****** ****** *)
 //
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gasz_get_at
- ( xs,i0 ) =
-let
-val n0 =
-gasz_length<xs><x0>(xs)
-in//let
-if
-(i0 >= n0)
-then
-get_at$exn<xs><x0>(xs, i0)
-else
-let
-val (pf | x0) =
-gasz_get_at_raw<xs><x0>(xs, i0)
-in//let
-let
-prval () = owed_t0_elim0(pf) in x0
-end//let
-end//let
-end//let//end-of-[gasz_get_at(xs,i0)]
-//
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gasz_set_at
-(xs, i0, x0) =
-let
-val n0 =
-gasz_length<xs><x0>(xs)
-in//let
-if
-(i0 >= n0)
-then
-set_at$exn<xs><x0>(xs,i0,x0)
-else
-let
-prval
-pf = owed_t0_make{x0}()
-in//let
-gasz_set_at_raw<xs><x0>(pf|xs,i0,x0)
-end//let//else//end-of-[if]
-//
-end//let//end-of-[gasz_set_at(xs,i0,x0)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:vt >
-gasz_cget_at_raw
-  (xs, i0) =
-let
-//
-val
-(pf | x0) =
-gasz_get_at_raw(xs, i0)
-//
-in//let
-//
-let
-val x1 = g_copy<x0>(x0)
-prval () =
-  owed_vt_return0(pf, x0) in x1 end
-//
-end//let//end-of-[gasz_cget_at_raw(...)]
-//
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:vt >
-gasz_setf_at_raw
-  (xs, i0, x0) =
-let
-//
-val
-(pf | x1) =
-gasz_get_at_raw(xs, i0)
-//
-in//let
-let
-  val () = g_free<x0>(x1)
-in//let
-(
-  gasz_set_at_raw(pf | xs, i0, x0))
-end//let
-end//let//end-of-[gasz_cget_at_raw(...)]
+fun
+<a:t0>
+list_strmize
+(xs: list(a)): strm_vt(a)
+fun
+<a:t0>
+list_strqize
+{n:i0}
+(xs: list(a, n)): strq_vt(a, n)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -141,4 +54,4 @@ end//let//end-of-[gasz_cget_at_raw(...)]
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_gasz000.dats] *)
+(* end of [ATS3/XANADU_prelude_SATS_list000.sats] *)

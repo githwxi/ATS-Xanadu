@@ -26,136 +26,68 @@
 *)
 
 (* ****** ****** *)
-(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 (*
-Mon 08 Jul 2024 05:07:13 PM EDT
+Mon 08 Jul 2024 02:15:16 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+HX-2024-07-25:
+This one is already
+included by [./../unsfx00.sats]
+Thu 25 Jul 2024 10:28:59 AM EDT
+*)
+(* ****** ****** *)
+(* ****** ****** *)
 //
-#impltmp
-< x0:vt >
-list_vt_forall0
-  ( xs ) = 
-(
-  loop(xs) ) where
-{
+fcast
+optn_vt2t
+{a:t0}{b:b0}
+(xs: !optn_vt(a, b)): optn(a, b)
+fcast
+list_vt2t
+{a:t0}{n:i0}
+(xs: !list_vt(a, n)): list(a, n)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
-loop
-(xs: list_vt(x0)): bool =
-(
-case+ xs of
-| ~
-list_vt_nil() => ( true )
-| ~
-list_vt_cons(x1, xs) =>
-let
-val test =
-forall$test0<x0>(x1) in
-if test then loop(xs) else false end)
-}
-//
-#impltmp
-{ x0:vt }
-gseq_forall0
-<list_vt(x0)><x0> = list_vt_forall0<x0>(*void*)
-//
-(* ****** ****** *)
-//
-#impltmp
-< x0:vt >
-list_vt_rforall0
-  ( xs ) = 
-(
-list_vt_forall0<x0>
-(list_vt_reverse0<x0>(xs))) where
-{
-#impltmp
-forall$test0<x0> = rforall$test0<x0>
-}
-//
-#impltmp
-{ x0:vt }
-gseq_rforall0
-<list_vt(x0)><x0> = list_vt_rforall0<x0>(*void*)
-//
-(* ****** ****** *)
-//
-#impltmp
-< x0:vt >
-list_vt_iforall0 = gseq_iforall0<list_vt(x0)><x0>
-//
-#impltmp
-< x0:vt >
-list_vt_irforall0 = gseq_irforall0<list_vt(x0)><x0>
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< x0:vt >
-list_vt_foritm0
-  (xs) = 
-(
-  loop(xs) ) where
-{
+<a:t0>
+p2tr_set_list_vt_nil
+(p0: p2tr(list_vt(a))): void
 fun
-loop
-(xs: list_vt(x0)): void =
-(
-case+ xs of
-| ~
-list_vt_nil() => ( (*void*) )
-| ~
-list_vt_cons(x1, xs) =>
-let
-val () =
-foritm$work0<x0>(x1) in loop(xs) end)
-}
+<a:vt>
+p2tr_set_list_vt_cons
+(p0: p2tr(list_vt(a)), x0: a): void
 //
-#impltmp
-{ x0:vt }
-gseq_foritm0<list_vt(x0)><x0> = list_vt_foritm0<x0>
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+strn_vt_get1_at
+(cs: !strn_vt, i0: sint): cgtz
+fun<>
+strn_vt_set1_at
+(cs: !strn_vt, i0: sint, c0: cgtz): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (*
-HX: 2024-07-28:
-Sun 28 Jul 2024 02:37:26 PM EDT
+HX-2024-07-22:
+Mon 22 Jul 2024 08:20:12 AM EDT
 *)
 //
-#impltmp
-<x0>(*tmp*)
-list_vt_strmize0
-  (xs) =
-let
-fun
-auxmain(xs) =
-$llazy
-(
-case+ xs of
-| ~
-list_vt_nil() =>
-strmcon_vt_nil()
-| ~
-list_vt_cons(x0, xs) =>
-strmcon_vt_cons(x0, auxmain(xs))
-)
-in
-  auxmain(xs)
-end(*let*)//end-of-[list_vt_strmize0(xs)]
-//
-#impltmp
-{ x0:vt }
-gseq_strmize0
-<list_vt(x0)><x0> = list_vt_strmize0<x0>(*void*)
+fcast
+strm2q_vt
+{a:vt}{n:nat}(xs: strm_vt(a)): strq_vt(a, n)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -163,4 +95,4 @@ gseq_strmize0
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_VT_list001_vt.dats] *)
+(* end of [ATS3/XANADU_prelude_SATS_VT_unsfx00_vt.sats] *)

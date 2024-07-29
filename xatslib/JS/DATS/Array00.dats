@@ -74,15 +74,15 @@ end//end-of-[g_print<jsa(a)>]
 //
 #impltmp
 <(*tmp*)>
-jsarray_make_nval
+jsarray_make_ncpy
   (n, x) =
 (
-XATS2JS_jsarray_make_nval
+XATS2JS_jsarray_make_ncpy
   (n, x)) where
 {
 #extern
 fun
-XATS2JS_jsarray_make_nval
+XATS2JS_jsarray_make_ncpy
  {a:t0}{n:nat}
 ( n
 : sint(n)

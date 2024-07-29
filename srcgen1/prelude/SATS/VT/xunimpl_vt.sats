@@ -292,6 +292,27 @@ gseq_ifoldall1(!xs, r0): ( r0 )
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+fun
+<x0:vt>
+list_vt_forall0
+(xs: ~list_vt(x0)): bool
+*)
+fun
+<x0:vt>
+list_vt_rforall0
+(xs: ~list_vt(x0)): bool
+fun
+<x0:vt>
+list_vt_iforall0
+(xs: ~list_vt(x0)): bool
+fun
+<x0:vt>
+list_vt_irforall0
+(xs: ~list_vt(x0)): bool
+//
+(* ****** ****** *)
+//
 fun
 <x0:vt>
 list_vt_foritm0
@@ -303,6 +324,10 @@ list_vt_rforitm0
 fun
 <x0:vt>
 list_vt_iforitm0
+(xs: ~list_vt(x0)): void
+fun
+<x0:vt>
+list_vt_irforitm0
 (xs: ~list_vt(x0)): void
 //
 (* ****** ****** *)
@@ -407,6 +432,20 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_filter1_self(xs: !xs): (xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<y0:vt>
+irmap$fopr0
+(pos: ni, itm: ~x0): (y0)
+fun
+<x0:vt>
+<y0:vt>
+irmap$fopr1
+(pos: ni, itm: !x0): (y0)
 //
 (* ****** ****** *)
 //
@@ -696,6 +735,53 @@ fun
 <x0:vt>
 <r0:vt>
 gseq_irfoldall1(!xs, r0): (r0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_irmap0_llist(xs: ~xs): list_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_irmap1_llist(xs: !xs): list_vt(y0)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_irmap0_lstrm(xs: ~xs): strm_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_irmap1_lstrm(xs: !xs): strm_vt(y0)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_irmap0_lstrq(xs: ~xs): strq_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_irmap1_lstrq(xs: !xs): strq_vt(y0)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_irmap0_rllist(xs: ~xs): list_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_irmap1_rllist(xs: !xs): list_vt(y0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1172,31 +1258,15 @@ Thu 25 Jul 2024 04:53:04 PM EDT
 fun
 <xs:vt>
 <x0:vt>
-gseq_forall0_c1fr
-(xs: xs, test: (~x0)-<cfr>bool): bool
-fun
-<xs:vt>
-<x0:vt>
 gseq_forall0_f1np
 (xs: xs, test: (~x0)-<fnp>bool): bool
-//
-#symload forall0 with gseq_forall0_c1fr of 0100
-#symload forall0_cfr with gseq_forall0_c1fr of 0100
-#symload forall0_fnp with gseq_forall0_f1np of 0100
-//
-fun
-<xs:vt>
-<x0:vt>
-gseq_forall1_c1fr
-(xs: xs, test: (!x0)-<cfr>bool): bool
 fun
 <xs:vt>
 <x0:vt>
 gseq_forall1_f1np
 (xs: xs, test: (!x0)-<fnp>bool): bool
 //
-#symload forall1 with gseq_forall1_c1fr of 0100
-#symload forall1_cfr with gseq_forall1_c1fr of 0100
+#symload forall0_fnp with gseq_forall0_f1np of 0100
 #symload forall1_fnp with gseq_forall1_f1np of 0100
 //
 (* ****** ****** *)

@@ -41,21 +41,78 @@ Authoremail: gmhwxiATgmailDOTcom
 fun
 <x0:vt>
 list_vt_forall0
-(xs: list_vt(x0)): bool
+(xs: ~list_vt(x0)): bool
 fun
 <x0:vt>
-list_vt_foritm0
-(xs: list_vt(x0)): void
+list_vt_forall1
+(xs: !list_vt(x0)): bool
 //
 fun
 <x0:vt>
 list_vt_rforall0
-(xs: list_vt(x0)): bool
+(xs: ~list_vt(x0)): bool
+fun
+<x0:vt>
+list_vt_rforall1
+(xs: !list_vt(x0)): bool
+//
+fun
+<x0:vt>
+list_vt_iforall0
+(xs: ~list_vt(x0)): bool
+fun
+<x0:vt>
+list_vt_iforall1
+(xs: !list_vt(x0)): bool
+//
+fun
+<x0:vt>
+list_vt_irforall0
+(xs: ~list_vt(x0)): bool
+fun
+<x0:vt>
+list_vt_irforall1
+(xs: !list_vt(x0)): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+list_vt_foritm0
+(xs: ~list_vt(x0)): void
+fun
+<x0:vt>
+list_vt_foritm1
+(xs: !list_vt(x0)): void
+//
 fun
 <x0:vt>
 list_vt_rforitm0
-(xs: list_vt(x0)): void
+(xs: ~list_vt(x0)): void
+fun
+<x0:vt>
+list_vt_rforitm1
+(xs: !list_vt(x0)): void
 //
+fun
+<x0:vt>
+list_vt_iforitm0
+(xs: ~list_vt(x0)): void
+fun
+<x0:vt>
+list_vt_iforitm1
+(xs: !list_vt(x0)): void
+fun
+<x0:vt>
+list_vt_irforitm0
+(xs: ~list_vt(x0)): void
+fun
+<x0:vt>
+list_vt_irforitm1
+(xs: !list_vt(x0)): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -68,6 +125,40 @@ fun
 <r0:vt>
 list_vt_rfolditm0
 (xs: list_vt(x0), r0: r0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+list_vt_ifolditm0
+(xs: list_vt(x0), r0: r0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+list_vt_irfolditm0
+(xs: list_vt(x0), r0: r0): (r0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<r0:vt>
+list_vt_foldall0
+(xs: ~list_vt(x0), r0: r0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+list_vt_rfoldall0
+(xs: ~list_vt(x0), r0: r0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+list_vt_ifoldall0
+(xs: ~list_vt(x0), r0: r0): (r0)
+fun
+<x0:vt>
+<r0:vt>
+list_vt_irfoldall0
+(xs: ~list_vt(x0), r0: r0): (r0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -120,6 +120,33 @@ irfoldall$fopr(n0, x0, r0): (bool, r0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+fun
+<x0:t0>
+<y0:vt>
+map$fopr(itm: x0): (y0)
+fun
+<x0:t0>
+<y0:vt>
+rmap$fopr(itm: x0): (y0)
+fun
+<x0:t0>
+<y0:vt>
+imap$fopr(pos: ni, itm: x0): (y0)
+*)
+fun
+<x0:t0>
+<y0:vt>
+irmap$fopr(pos: ni, itm: x0): (y0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
+<x0:vt>
+filter$test(x0: x0): bool
+*)
 fun
 <x0:vt>
 rfilter$test(x0: x0): bool
@@ -471,6 +498,57 @@ fun
 <x0:t0>
 <r0:vt>
 gseq_irfoldall(xs, r0): (r0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+<y0:vt>
+gseq_irmap_ares(xs: xs): (ys)
+fun
+<xs:t0>
+<x0:t0>
+gseq_irmap_self(xs: xs): (xs)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_irmap_list(xs: xs): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_irmap_llist(xs: xs): list_vt(y0)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_irmap_lstrm(xs: xs): strm_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_irmap_lstrq(xs: xs): strq_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_irmap_rlist(xs: xs): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_irmap_rllist(xs: xs): list_vt(y0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

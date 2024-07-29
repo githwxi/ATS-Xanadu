@@ -66,12 +66,9 @@ jsarray_vt2t
 (* ****** ****** *)
 //
 fun<>
-jsarray_make_nval
+jsarray_make_ncpy
  {a:t0}{n:nat}
-(n:sint(n),x:a):jsarray(a,n)
-//
-#symload
-jsarray with jsarray_make_nval of 1000
+(n: sint(n), x: a):jsarray(a,n)
 //
 (* ****** ****** *)
 (* ****** ****** *)

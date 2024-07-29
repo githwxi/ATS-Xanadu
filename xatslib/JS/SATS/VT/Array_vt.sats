@@ -73,6 +73,14 @@ jsarray_vt_make_jsarray of 1000
 (* ****** ****** *)
 //
 fun<>
+jsarray_vt_make_ncpy
+ {a:t0}{n:nat}
+(n: sint(n), x: a):jsarray_vt(a,n)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
 jsarray_vt_make0_1val
  {a:vt}
 ( x: a ): jsarray_vt(a, 1)
