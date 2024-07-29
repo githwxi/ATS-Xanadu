@@ -1407,13 +1407,13 @@ Mon 29 Jul 2024 04:56:14 PM EDT
 *)
 //
 fcast
-t0_{a:tt}(a): (a)
+t0_{a:t0}(a): ( a )
 fcast
-tx_{a:tx}(a): (a)
+tx_{a:tx}(a): ( a )
 fcast
-vt_{a:vt}(a): (a)
+vt_{a:vt}(a): ( a )
 fcast
-vx_{a:vx}(a): (a)
+vx_{a:vx}(a): ( a )
 //
 fcast
 fc_sflt(dflt): sflt
