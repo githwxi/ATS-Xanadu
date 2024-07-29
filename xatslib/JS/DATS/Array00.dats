@@ -90,6 +90,14 @@ XATS2JS_jsarray_make_ncpy
 }
 //
 (* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jsarray_make_nfun
+  (n, f) =
+jsarray
+(nint_map_lstrm_c1fr<>(n, f))
+//
 (* ****** ****** *)
 //
 #impltmp
