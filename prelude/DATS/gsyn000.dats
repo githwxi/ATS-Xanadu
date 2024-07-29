@@ -43,6 +43,258 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
+< x0:t0 >
+gs_max_a2
+(x1, x2) =
+(
+g_max<x0>(x1, x2)
+) (* end of [gs_max_a2] *)
+#impltmp
+< x0:t0 >
+gs_max_a3
+(x1, x2, x3) =
+let
+fun
+f0(x, y) =
+g_max<x0>(x, y)
+in//let
+  f0(f0(x1, x2), x3)
+end (*let*) // end of [gs_max_a3]
+#impltmp
+< x0:t0 >
+gs_max_a4
+(x1, x2, x3, x4) =
+let
+fun
+f0(x, y) =
+g_max<x0>(x, y)
+in//let
+  f0(f0(f0(x1,x2),x3),x4)
+end (*let*) // end of [gs_max_a4]
+#impltmp
+< x0:t0 >
+gs_max_a5
+(x1, x2, x3, x4, x5) =
+let
+fun
+f0(x, y) =
+g_max<x0>(x, y)
+in//let
+f0(f0(f0(f0(x1,x2),x3),x4),x5)
+end (*let*) // end of [gs_max_a5]
+#impltmp
+< x0:t0 >
+gs_max_a6
+(x1, x2, x3, x4, x5, x6) =
+let
+fun
+f0(x, y) =
+g_max<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6)
+end (*let*) // end of [gs_max_a6]
+#impltmp
+< x0:t0 >
+gs_max_a7
+(x1, x2, x3, x4, x5, x6, x7) =
+let
+fun
+f0(x, y) =
+g_max<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7)
+end (*let*) // end of [gs_max_a7]
+#impltmp
+< x0:t0 >
+gs_max_a8
+(x1, x2, x3, x4, x5, x6, x7, x8) =
+let
+fun
+f0(x, y) =
+g_max<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8)
+end (*let*) // end of [gs_max_a8]
+#impltmp
+< x0:t0 >
+gs_max_a9
+(x1, x2, x3, x4, x5, x6, x7, x8, x9) =
+let
+fun
+f0(x, y) =
+g_max<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9)
+end (*let*) // end of [gs_max_a9]
+//
+#impltmp
+< x0:t0 >
+gs_max_a10
+(x1, x2, x3, x4, x5, x6, x7, x8, x9, x10) =
+let
+fun
+f0(x, y) =
+g_max<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9),x10)
+end (*let*) // end of [gs_max_a10]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+gs_max_a11
+(x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11) =
+let
+fun
+f0(x, y) =
+g_max<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9),x10),x11)
+end (*let*) // end of [gs_max_a11]
+//
+#impltmp
+< x0:t0 >
+gs_max_a12
+(x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12) =
+let
+fun
+f0(x, y) =
+g_max<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9),x10),x11),x12)
+end (*let*) // end of [gs_max_a12]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+gs_min_a2
+(x1, x2) =
+(
+g_min<x0>(x1, x2)
+) (* end of [gs_min_a2] *)
+#impltmp
+< x0:t0 >
+gs_min_a3
+(x1, x2, x3) =
+let
+fun
+f0(x, y) =
+g_min<x0>(x, y)
+in//let
+  f0(f0(x1, x2), x3)
+end (*let*) // end of [gs_min_a3]
+#impltmp
+< x0:t0 >
+gs_min_a4
+(x1, x2, x3, x4) =
+let
+fun
+f0(x, y) =
+g_min<x0>(x, y)
+in//let
+  f0(f0(f0(x1,x2),x3),x4)
+end (*let*) // end of [gs_min_a4]
+#impltmp
+< x0:t0 >
+gs_min_a5
+(x1, x2, x3, x4, x5) =
+let
+fun
+f0(x, y) =
+g_min<x0>(x, y)
+in//let
+f0(f0(f0(f0(x1,x2),x3),x4),x5)
+end (*let*) // end of [gs_min_a5]
+#impltmp
+< x0:t0 >
+gs_min_a6
+(x1, x2, x3, x4, x5, x6) =
+let
+fun
+f0(x, y) =
+g_min<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6)
+end (*let*) // end of [gs_min_a6]
+#impltmp
+< x0:t0 >
+gs_min_a7
+(x1, x2, x3, x4, x5, x6, x7) =
+let
+fun
+f0(x, y) =
+g_min<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7)
+end (*let*) // end of [gs_min_a7]
+#impltmp
+< x0:t0 >
+gs_min_a8
+(x1, x2, x3, x4, x5, x6, x7, x8) =
+let
+fun
+f0(x, y) =
+g_min<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8)
+end (*let*) // end of [gs_min_a8]
+#impltmp
+< x0:t0 >
+gs_min_a9
+(x1, x2, x3, x4, x5, x6, x7, x8, x9) =
+let
+fun
+f0(x, y) =
+g_min<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9)
+end (*let*) // end of [gs_min_a9]
+//
+#impltmp
+< x0:t0 >
+gs_min_a10
+(x1, x2, x3, x4, x5, x6, x7, x8, x9, x10) =
+let
+fun
+f0(x, y) =
+g_min<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9),x10)
+end (*let*) // end of [gs_min_a10]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+gs_min_a11
+(x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11) =
+let
+fun
+f0(x, y) =
+g_min<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9),x10),x11)
+end (*let*) // end of [gs_min_a11]
+//
+#impltmp
+< x0:t0 >
+gs_min_a12
+(x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12) =
+let
+fun
+f0(x, y) =
+g_min<x0>(x, y)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9),x10),x11),x12)
+end (*let*) // end of [gs_min_a12]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 < x0:vt >
 gs_free_a1
   ( x0 ) =

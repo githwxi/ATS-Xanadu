@@ -38,6 +38,124 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+fun
+<x0:t0>
+gs_max_a1(x0): x0
+*)
+fun
+<x0:t0>
+gs_max_a2(x0, x0): x0
+fun
+<x0:t0>
+gs_max_a3(x0, x0, x0): x0
+fun
+<x0:t0>
+gs_max_a4(x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_max_a5(x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_max_a6(x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_max_a7(x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_max_a8(x0, x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_max_a9(x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_max_a10(x0, x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_max_a11(x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_max_a12(x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
+//
+(* ****** ****** *)
+//
+(*
+#symload maxs with gs_max_a1
+*)
+#symload maxs with gs_max_a2
+#symload maxs with gs_max_a3
+#symload maxs with gs_max_a4
+#symload maxs with gs_max_a5
+#symload maxs with gs_max_a6
+#symload maxs with gs_max_a7
+#symload maxs with gs_max_a8
+#symload maxs with gs_max_a9
+#symload maxs with gs_max_a10
+#symload maxs with gs_max_a11
+#symload maxs with gs_max_a12
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
+<x0:t0>
+gs_min_a1(x0): x0
+*)
+fun
+<x0:t0>
+gs_min_a2(x0, x0): x0
+fun
+<x0:t0>
+gs_min_a3(x0, x0, x0): x0
+fun
+<x0:t0>
+gs_min_a4(x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_min_a5(x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_min_a6(x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_min_a7(x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_min_a8(x0, x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_min_a9(x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_min_a10(x0, x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_min_a11(x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_min_a12(x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
+//
+(* ****** ****** *)
+//
+(*
+#symload mins with gs_min_a1
+*)
+#symload mins with gs_min_a2
+#symload mins with gs_min_a3
+#symload mins with gs_min_a4
+#symload mins with gs_min_a5
+#symload mins with gs_min_a6
+#symload mins with gs_min_a7
+#symload mins with gs_min_a8
+#symload mins with gs_min_a9
+#symload mins with gs_min_a10
+#symload mins with gs_min_a11
+#symload mins with gs_min_a12
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <x0:vt>
 gs_free_a1(x0): void

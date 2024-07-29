@@ -13,6 +13,10 @@ jsa(a:vt,n:i0) = jsarray(a,n)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-27:
+*)
+//
 #extern
 fun<a:vt>
 jsarray_listize
@@ -36,6 +40,10 @@ gseq_listize1<jsa(a)><a> = jsarray_listize<a>
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-27:
+*)
+//
 #extern
 fun<a:vt>
 jsarray_strmize
@@ -58,6 +66,10 @@ gseq_strmize1<jsa(a)><a> = jsarray_strmize<a>
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-27:
+*)
+//
 #extern
 fun<a:vt>
 jsarray_forall
@@ -79,6 +91,10 @@ gseq_forall1<jsa(a)><a> = jsarray_forall<a>
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-27:
+*)
+//
 #extern
 fun<a:vt>
 jsarray_append
@@ -95,6 +111,10 @@ jsarray_append =
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-27:
+*)
+//
 #extern
 fun<a:vt>
 jsarray_prepend
@@ -110,6 +130,10 @@ jsarray_prepend =
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(*
+HX-2024-07-27:
+*)
 //
 #extern
 fun<a:vt>
@@ -148,6 +172,57 @@ jsarray_prod(A: jsa(a)): (a)
 jsarray_prod = gseq_prod0<jsa(a)><a>
 #symload prod with jsarray_prod of 1000
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-29:
+Mon 29 Jul 2024 01:40:18 PM EDT
+*)
+//
+#extern
+fun
+<a:vt>
+<b:t0>
+jsarray_map_list_c1fr
+{n:nat}
+( A: jsa(a, n)
+, fopr: (a) -<cfr> b): list(b, n)
+#extern
+fun
+<a:vt>
+<b:vt>
+jsarray_map_llist_c1fr
+{n:nat}
+( A: jsa(a, n)
+, fopr: (a) -<cfr> b): list_vt(b, n)
+//
+#impltmp
+< a: vt >
+< b: t0 >
+jsarray_map_list_c1fr
+  (A, fopr) =
+list_vt2t{b}
+(jsarray_map_llist_c1fr<a><b>(A, fopr))
+#impltmp
+< a: vt >
+< b: vt >
+jsarray_map_llist_c1fr
+  (A, fopr) =
+(
+gseq_map1_llist<jsa(a)><a><b>(A)
+) where
+{
+#impltmp map$fopr1<a><b>(x) = fopr(x)
+}
+//
+#symload
+map_list with jsarray_map_list_c1fr of 1000
+#symload
+map_llist with jsarray_map_llist_c1fr of 1000
+//
+(* ****** ****** *)
+
 (* ****** ****** *)
 (* ****** ****** *)
 //
