@@ -60,7 +60,7 @@ XATS2JS_jsarray_set_at
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_make_nval
+XATS2JS_jsarray_make_ncpy
   (n, x) // HX: [x]: nonlin
 {
   let i

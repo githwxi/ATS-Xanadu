@@ -81,6 +81,16 @@ end//end-of-[g_print1<jsla(a)>]
 //
 #impltmp
 <(*tmp*)>
+jsarray_vt_make_ncpy
+  (n, x) =
+UN_jsarray_t2vt
+(jsarray_make_ncpy<>(n,x))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
 jsarray_vt_make0_1val
   ( x1 ) =
 UN_jsarray_t2vt

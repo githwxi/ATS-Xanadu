@@ -478,6 +478,59 @@ gseq_imap0_rllist<xs><x0><y0>(*void*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-28:
+Sun 28 Jul 2024 05:43:53 PM EDT
+*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:t0 >
+gseq_irmap_list(xs) =
+list_vt2t{y0}
+(
+gseq_irmap_llist<xs><x0><y0>(xs))
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_irmap_llist =
+gseq_irmap0_llist<xs><x0><y0>(*void*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_irmap_lstrm =
+gseq_irmap0_lstrm<xs><x0><y0>(*void*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_irmap_lstrq =
+gseq_irmap0_lstrq<xs><x0><y0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:t0 >
+gseq_irmap_rlist(xs) =
+list_vt2t{y0}
+(
+gseq_irmap_rllist<xs><x0><y0>(xs))
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_irmap_rllist =
+gseq_irmap0_rllist<xs><x0><y0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 < xs:t0 >
 < x0:t0 >

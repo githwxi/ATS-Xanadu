@@ -374,6 +374,15 @@ imap$fopr = imap$fopr0<x0><y0>
 < y0:vt >
 imap$fopr = imap$fopr1<x0><y0>
 //
+#impltmp
+< x0:t0 >
+< y0:vt >
+irmap$fopr = irmap$fopr0<x0><y0>
+#impltmp
+< x0:t0 >
+< y0:vt >
+irmap$fopr = irmap$fopr1<x0><y0>
+//
 (* ****** ****** *)
 //
 #impltmp

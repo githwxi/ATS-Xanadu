@@ -1266,6 +1266,11 @@ gseq_rmap0_lstrm
   ( xs ) =
 strm_vt_map0<x0><y0>
 (gseq_rstrmize0<xs><x0>(xs))
+where {
+#impltmp
+map$fopr0
+< x0 >< y0 > = rmap$fopr0<x0><y0>
+}(*where*)
 #impltmp
 < xs:vt >
 < x0:vt >
@@ -1274,12 +1279,17 @@ gseq_rmap0_lstrq
   ( xs ) =
 strq_vt_map0<x0><y0>
 (gseq_rstrqize0<xs><x0>(xs))
+where {
+#impltmp
+map$fopr0
+< x0 >< y0 > = rmap$fopr0<x0><y0>
+}(*where*)
 //
 #impltmp
 < xs:vt >
 < x0:vt >
 < y0:vt >
-gseq_map0_rllist
+gseq_rmap0_llist
   ( xs ) =
 strm_vt_listize0<y0>
 (gseq_rmap0_lstrm<xs><x0><y0>(xs))
@@ -1322,6 +1332,45 @@ gseq_imap0_llist
   ( xs ) =
 strm_vt_listize0<y0>
 (gseq_imap0_lstrm<xs><x0><y0>(xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+gseq_irmap0_lstrm
+  ( xs ) =
+strm_vt_imap0<x0><y0>
+(gseq_rstrmize0<xs><x0>(xs))
+where {
+#impltmp
+imap$fopr0
+< x0 >< y0 > = irmap$fopr0<x0><y0>
+}(*where*)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+gseq_irmap0_lstrq
+  ( xs ) =
+strq_vt_imap0<x0><y0>
+(gseq_rstrqize0<xs><x0>(xs))
+where {
+#impltmp
+imap$fopr0
+< x0 >< y0 > = irmap$fopr0<x0><y0>
+}(*where*)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+< y0:vt >
+gseq_irmap0_llist
+  ( xs ) =
+strm_vt_listize0<y0>
+(gseq_irmap0_lstrm<xs><x0><y0>(xs))
 //
 (* ****** ****** *)
 (* ****** ****** *)

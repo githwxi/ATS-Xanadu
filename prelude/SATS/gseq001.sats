@@ -486,6 +486,62 @@ gseq_imap_rllist(xs: xs): list_vt(y0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-28:
+Sun 28 Jul 2024 05:41:08 PM EDT
+*)
+//
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+<y0:vt>
+gseq_irmap_ares(xs: xs): (ys)
+fun
+<xs:t0>
+<x0:t0>
+gseq_irmap_self(xs: xs): (xs)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_irmap_list(xs: xs): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_irmap_llist(xs: xs): list_vt(y0)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_irmap_lstrm(xs: xs): strm_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_irmap_lstrq(xs: xs): strq_vt(y0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_irmap_rlist(xs: xs): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_irmap_rllist(xs: xs): list_vt(y0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>

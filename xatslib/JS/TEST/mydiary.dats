@@ -50,24 +50,59 @@ Sun 21 Jul 2024 11:06:11 PM EDT
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val A1 = jsarray(1)
-val A2 = jsarray('1', '2')
-val A3 = jsarray("1", "2", "3")
+val A1 =
+jsarray(1)
+val A2 =
+jsarray('1', '2')
+val A3 =
+jsarray("1", "2", "3")
+//
+val A4 = append(A3, A3)
 //
 val An =
-jsarray_make_nval(10, -1(*init*))
+jsarray_make_ncpy
+( 10, -1(*init*) )
 //
-val () = prints("An = ", An, '\n')
+val () =
+prints("An = ", An, '\n')
 //
-val xs =
-  list_vt2t(jsarray_listize(An))
+val xs = listize(An)
+val () =
+print1s("xs = ", xs, '\n')
+//
+(* ****** ****** *)
+//
+val xs = list_vt2t(xs)
 val () = prints("xs = ", xs, '\n')
 //
 (* ****** ****** *)
+//
+val ys =
+gseq_imap_list
+<xs><x0><y0>(An) where
+{
+  #typedef x0 = nint
+  #typedef y0 = nint
+  #typedef xs = jsa(nint)
+  #impltmp
+  imap$fopr<x0><y0>(i0, x0) = i0*x0*x0 + 1
+}
+val () = prints("ys = ", ys, '\n')
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
-val xs = jsarray_listize(An)
-val () = print1s("xs = ", xs, '\n')
+val zs =
+gseq_irmap_list
+<xs><x0><z0>(An) where
+{
+  #typedef x0 = nint
+  #typedef z0 = nint
+  #typedef xs = jsa(nint)
+  #impltmp
+  irmap$fopr<x0><z0>(i0, x0) = i0*x0*x0 + 1
+}
+val () = prints("zs = ", zs, '\n')
 //
 (* ****** ****** *)
 (* ****** ****** *)
