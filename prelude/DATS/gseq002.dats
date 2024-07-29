@@ -75,6 +75,41 @@ gseq_irz2forall0<xs,ys><x0,y0>(*void*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< xs:t0
+, ys:t0 >
+< x0:t0
+, y0:t0 >
+gseq_z2foritm =
+gseq_z2foritm0<xs,ys><x0,y0>(*void*)
+//
+#impltmp
+< xs:t0
+, ys:t0 >
+< x0:t0
+, y0:t0 >
+gseq_rz2foritm =
+gseq_rz2foritm0<xs,ys><x0,y0>(*void*)
+//
+#impltmp
+< xs:t0
+, ys:t0 >
+< x0:t0
+, y0:t0 >
+gseq_iz2foritm =
+gseq_iz2foritm0<xs,ys><x0,y0>(*void*)
+//
+#impltmp
+< xs:t0
+, ys:t0 >
+< x0:t0
+, y0:t0 >
+gseq_irz2foritm =
+gseq_irz2foritm0<xs,ys><x0,y0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
