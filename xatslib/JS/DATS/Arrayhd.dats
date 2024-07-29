@@ -127,6 +127,30 @@ jsarray_rappend =
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-202-07-29:
+Mon 29 Jul 2024 07:59:38 AM EDT
+*)
+//
+#extern
+fun<a:vt>
+jsarray_sum(A: jsa(a)): (a)
+#impltmp
+< a: vt >
+jsarray_sum = gseq_sum0<jsa(a)><a>
+#symload sum with jsarray_sum of 1000
+//
+#extern
+fun<a:vt>
+jsarray_prod(A: jsa(a)): (a)
+#impltmp
+< a: vt >
+jsarray_prod = gseq_prod0<jsa(a)><a>
+#symload prod with jsarray_prod of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

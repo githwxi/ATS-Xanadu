@@ -70,6 +70,12 @@ jsarray_make_ncpy
  {a:t0}{n:nat}
 (n: sint(n), x: a):jsarray(a,n)
 //
+fun<>
+jsarray_make_nfun
+ {a:t0}{n:nat}
+( n: sint(n)
+, f: nintlt(n)-<cfr>a):jsarray(a,n)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

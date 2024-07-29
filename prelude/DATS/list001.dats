@@ -144,13 +144,28 @@ foritm$work<x0>(x1) in loop(xs) end)
 //
 #impltmp
 { x0:t0 }
-gseq_foritm<list(x0)><x0> = list_foritm<x0>
+gseq_foritm
+<list(x0)><x0> = list_foritm<x0>
 #impltmp
 { x0:t0 }
-gseq_foritm0<list(x0)><x0> = list_foritm<x0>
+gseq_foritm0
+<list(x0)><x0>(xs) =
+(
+list_foritm<x0>(xs)) where
+{
+#impltmp
+foritm$work<x0> = foritm$work0<x0>
+}
 #impltmp
 { x0:t0 }
-gseq_foritm1<list(x0)><x0> = list_foritm<x0>
+gseq_foritm1
+<list(x0)><x0>(xs) =
+(
+list_foritm<x0>(xs)) where
+{
+#impltmp
+foritm$work<x0> = foritm$work1<x0>
+}
 //
 (* ****** ****** *)
 //
@@ -167,13 +182,28 @@ foritm$work0<x0> = rforitm$work<x0>
 //
 #impltmp
 { x0:t0 }
-gseq_rforitm<list(x0)><x0> = list_rforitm<x0>
+gseq_rforitm
+<list(x0)><x0> = list_rforitm<x0>
 #impltmp
 { x0:t0 }
-gseq_rforitm0<list(x0)><x0> = list_rforitm<x0>
+gseq_rforitm0
+<list(x0)><x0>(xs) =
+(
+list_rforitm<x0>(xs)) where
+{
+#impltmp
+rforitm$work<x0> = rforitm$work0<x0>
+}
 #impltmp
 { x0:t0 }
-gseq_rforitm1<list(x0)><x0> = list_rforitm<x0>
+gseq_rforitm1
+<list(x0)><x0>(xs) =
+(
+list_rforitm<x0>(xs)) where
+{
+#impltmp
+rforitm$work<x0> = rforitm$work1<x0>
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
