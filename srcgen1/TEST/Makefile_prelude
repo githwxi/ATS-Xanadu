@@ -70,6 +70,12 @@ $(XATSOPT) -s $(PRELUDE)/SATS/gasz001.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gsyn000.sats
 all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/bool000.sats
+all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/char000.sats
+all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gint000.sats
+all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gint001.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/strn000.sats
@@ -248,6 +254,12 @@ all0_dats:: ; \
 $(XATSOPT) -s $(PRELUDE)/DATS/gasz001.dats
 all0_dats:: ; \
 $(XATSOPT) -s $(PRELUDE)/DATS/gsyn000.dats
+all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/bool000.dats
+all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/char000.dats
+all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/gint000.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gint001.dats
 all0_dats:: ; \
