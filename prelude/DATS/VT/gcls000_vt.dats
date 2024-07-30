@@ -38,6 +38,11 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload UN = 
+"./../../SATS/unsfx00.sats"
+//
+(* ****** ****** *)
+//
 #staload
 "./../../SATS/gcls000.sats"
 #staload
@@ -49,34 +54,45 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 <xs : vt>
 <x0 : vt>
-GSEQ_forall0
+GLSEQ_unmk0
+(  gseq  ) =
+(
+  $UN.castlinxy(gseq))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<xs : vt>
+<x0 : vt>
+GLSEQ_forall0
   (gseq) =
 (
 gseq_forall0
-<xs><x0>(GSEQ_unmk0(gseq)))
+<xs><x0>(GLSEQ_unmk0(gseq)))
 //
 (* ****** ****** *)
 //
 #impltmp
 <xs : vt>
 <x0 : vt>
-GSEQ_forall0_c1fr
+GLSEQ_forall0_c1fr
   (gseq, test) =
 (
 gseq_forall0_c1fr
-<xs><x0>(GSEQ_unmk0(gseq), test))
+<xs><x0>(GLSEQ_unmk0(gseq), test))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-GSEQ_make0_list_vt
+GLSEQ_make0_list_vt
 { x0:vt }(  xs  ) =
 let
 #vwtpdef xs = list_vt(x0)
 in//let
-$UN.castlinxy{xs}{GSEQ(xs,x0)}(xs)
-end//let//end-of-[GSEQ_make0_list_vt]
+$UN.castlinxy{xs}{GLSEQ(xs,x0)}(xs)
+end//let//end-of-[GLSEQ_make0_list_vt]
 //
 (* ****** ****** *)
 (* ****** ****** *)
