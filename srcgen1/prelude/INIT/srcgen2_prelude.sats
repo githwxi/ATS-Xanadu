@@ -67,6 +67,44 @@ For further program verification
 "srcgen1/prelude/SATS/gord000.sats"
 //
 (* ****** ****** *)
+//
+#include
+"srcgen1/prelude/SATS/gcls000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"srcgen1/prelude/SATS/gfor000.sats"
+//
+#include
+"srcgen1/prelude/SATS/gfun000.sats"
+//
+#include
+"srcgen1/prelude/SATS/gmap000.sats"
+//
+#include
+"srcgen1/prelude/SATS/gras000.sats"
+#include
+"srcgen1/prelude/SATS/grasn00.sats"
+//
+#include
+"srcgen1/prelude/SATS/gseq000.sats"
+#include
+"srcgen1/prelude/SATS/gseq001.sats"
+#include
+"srcgen1/prelude/SATS/gseqn00.sats"
+//
+#include
+"srcgen1/prelude/SATS/genv000.sats"
+//
+(* ****** ****** *)
+//
+#include
+"srcgen1/prelude/SATS/gsyn000.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #include
 "srcgen1/prelude/SATS/rand000.sats"
 (* ****** ****** *)
@@ -104,35 +142,12 @@ For further program verification
 (* ****** ****** *)
 //
 #include
-"srcgen1/prelude/SATS/gfor000.sats"
-//
-#include
-"srcgen1/prelude/SATS/gfun000.sats"
-//
-#include
-"srcgen1/prelude/SATS/gmap000.sats"
-//
-#include
-"srcgen1/prelude/SATS/gras000.sats"
-#include
-"srcgen1/prelude/SATS/grasn00.sats"
-//
-#include
-"srcgen1/prelude/SATS/gseq000.sats"
-#include
-"srcgen1/prelude/SATS/gseq001.sats"
-#include
-"srcgen1/prelude/SATS/gseqn00.sats"
-//
-#include
-"srcgen1/prelude/SATS/genv000.sats"
-//
-(* ****** ****** *)
-//
-#include
 "srcgen1/prelude/SATS/excptn0.sats"
+//
+(*
 #include
 "srcgen1/prelude/SATS/synoug0.sats"
+*)
 //
 (* ****** ****** *)
 //
@@ -146,6 +161,23 @@ HX:
 For viewtypes (that is, linear types)
 *)
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"srcgen1/prelude/SATS/VT/gcls000_vt.sats"
+//
+(* ****** ****** *)
+//
+#include
+"srcgen1/prelude/SATS/VT/gseq000_vt.sats"
+#include
+"srcgen1/prelude/SATS/VT/gseqn00_vt.sats"
+//
+(* ****** ****** *)
+//
+#include
+"srcgen1/prelude/SATS/VT/gsyn000_vt.sats"
+//
 (* ****** ****** *)
 //
 #include
@@ -173,15 +205,10 @@ For viewtypes (that is, linear types)
 //
 (* ****** ****** *)
 //
-#include
-"srcgen1/prelude/SATS/VT/gseq000_vt.sats"
-#include
-"srcgen1/prelude/SATS/VT/gseqn00_vt.sats"
-//
-(* ****** ****** *)
-//
+(*
 #include
 "srcgen1/prelude/SATS/VT/synoug0_vt.sats"
+*)
 //
 (* ****** ****** *)
 //

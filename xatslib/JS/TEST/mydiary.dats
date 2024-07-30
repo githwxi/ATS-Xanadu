@@ -162,10 +162,10 @@ with GASZ_forall_c1fr of 1000
 *)
 //
 val b0 =
-GSEQ(xs).forall(lam(x) => x >= 0)
+forall(GSEQ(xs), lam(x) => x >= 0)
 val () = prints("b0 = ", b0, "\n")
 val b1 =
-GASZ(An).forall(lam(x) => x >= 0)
+forall(GASZ(An), lam(x) => x >= 0)
 val () = prints("b1 = ", b1, "\n")
 //
 (* ****** ****** *)
