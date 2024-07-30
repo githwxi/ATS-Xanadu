@@ -38,15 +38,21 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#absprop
-GSEQ(xs: vt, x0: vt)
+#absvwtp
+GSEQ_vwtp
+(xs: vt, x0: vt) <= xs
+#sexpdef GSEQ = GSEQ_vwtp
 //
 (* ****** ****** *)
 //
-prfun
-GSEQ_list
-{a:t0}((*0*)): GSEQ(list(a), a)
-#symload GSEQ with GSEQ_list of 0100
+fun
+<xs:vt>
+<x0:vt>
+GSEQ_make0(~xs): GSEQ(xs, x0)
+fun
+<xs:vt>
+<x0:vt>
+GSEQ_unmk0(GSEQ(xs, x0)): (xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -55,27 +61,9 @@ fun
 <xs:t0>
 <x0:t0>
 GSEQ_forall
-(GSEQ(xs, x0) | xs): bool
-fun
-<xs:t0>
-<x0:t0>
-GSEQ_rforall
-(GSEQ(xs, x0) | xs): bool
-fun
-<xs:t0>
-<x0:t0>
-GSEQ_iforall
-(GSEQ(xs, x0) | xs): bool
-fun
-<xs:t0>
-<x0:t0>
-GSEQ_irforall
-(GSEQ(xs, x0) | xs): bool
+(gseq: GSEQ(xs, x0)): bool
 //
 #symload forall with GSEQ_forall of 0100
-#symload rforall with GSEQ_rforall of 0100
-#symload iforall with GSEQ_iforall of 0100
-#symload irforall with GSEQ_irforall of 0100
 //
 (* ****** ****** *)
 //
@@ -83,14 +71,14 @@ fun
 <xs:t0>
 <x0:t0>
 GSEQ_forall_c1fr
-( pf: GSEQ(xs, x0)
-| x0: xs, test: (x0)-<cfr>bool): bool
+( gseq: GSEQ(xs, x0)
+, test: (x0)-<cfr>bool): bool
 fun
 <xs:t0>
 <x0:t0>
 GSEQ_forall_f1np
-( pf: GSEQ(xs, x0)
-| x0: xs, test: (x0)-<fnp>bool): bool
+( gseq: GSEQ(xs, x0)
+, test: (x0)-<fnp>bool): bool
 //
 #symload forall with GSEQ_forall_c1fr of 0100
 #symload forall_c1fr with GSEQ_forall_c1fr of 0100
@@ -100,51 +88,26 @@ GSEQ_forall_f1np
 (* ****** ****** *)
 //
 fun
-<xs:t0>
-<x0:t0>
-GSEQ_foritm
-(GSEQ(xs, x0) | xs): void
-fun
-<xs:t0>
-<x0:t0>
-GSEQ_rforitm
-(GSEQ(xs, x0) | xs): void
-fun
-<xs:t0>
-<x0:t0>
-GSEQ_iforitm
-(GSEQ(xs, x0) | xs): void
-fun
-<xs:t0>
-<x0:t0>
-GSEQ_irforitm
-(GSEQ(xs, x0) | xs): void
-//
-#symload foritm with GSEQ_foritm of 0100
-#symload rforitm with GSEQ_rforitm of 0100
-#symload iforitm with GSEQ_iforitm of 0100
-#symload irforitm with GSEQ_irforitm of 0100
+GSEQ_make_list
+{a:t0}
+(xs: list(a)): GSEQ(list(a), a)
+#symload GSEQ with GSEQ_list of 0100
 //
 (* ****** ****** *)
 //
 fun
-<xs:t0>
-<x0:t0>
-GSEQ_foritm_c1fr
-( pf: GSEQ(xs, x0)
-| x0: xs, test: (x0)-<cfr>void): void
+GSEQ_make_nint0
+(xs: nint): GSEQ(nint, unit)
+(*
+HX-2024-07-30:
+no overloading for GSEQ_make_nint0
+*)
+//
 fun
-<xs:t0>
-<x0:t0>
-GSEQ_foritm_f1np
-( pf: GSEQ(xs, x0)
-| x0: xs, test: (x0)-<fnp>void): void
+GSEQ_make_nint1
+(xs: nint): GSEQ(nint, nint)
+#symload GSEQ with GSEQ_nint1 of 0100
 //
-#symload foritm with GSEQ_foritm_c1fr of 0100
-#symload foritm_c1fr with GSEQ_foritm_c1fr of 0100
-#symload foritm_f1np with GSEQ_foritm_f1np of 0100
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)

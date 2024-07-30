@@ -50,55 +50,33 @@ Authoremail: gmhwxiATgmailDOTcom
 <xs : vt>
 <x0 : vt>
 GSEQ_forall0
-  (pf | xs) =
+  (gseq) =
 (
-gseq_forall0<xs><x0>(xs))
-//
-#impltmp
-<xs : vt>
-<x0 : vt>
-GSEQ_rforall0
-  (pf | xs) =
-(
-gseq_rforall0<xs><x0>(xs))
-//
-#impltmp
-<xs : vt>
-<x0 : vt>
-GSEQ_iforall0
-  (pf | xs) =
-(
-gseq_iforall0<xs><x0>(xs))
-//
-#impltmp
-<xs : vt>
-<x0 : vt>
-GSEQ_irforall0
-  (pf | xs) =
-(
-gseq_irforall0<xs><x0>(xs))
+gseq_forall0
+<xs><x0>(GSEQ_unmk0(gseq)))
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 #impltmp
-{x0 : vt}
-GSEQ_forall0
-<llist(x0)><x0>
-  (pf | xs) =
-(
-  list_vt_forall0<x0>(xs))
-#impltmp
-{x0 : vt}
+<xs : vt>
+<x0 : vt>
 GSEQ_forall0_c1fr
-<llist(x0)><x0>
-  (pf | xs, test) =
+  (gseq, test) =
 (
-  list_vt_forall0<x0>(xs))
-where{
+gseq_forall0_c1fr
+<xs><x0>(GSEQ_unmk0(gseq), test))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
-forall$test0<x0>(x0) = test(x0)
-}(*where*)//end-of-[GSEQ_forall0_c1fr(pf|xs)]
+GSEQ_make0_list_vt
+{ x0:vt }(  xs  ) =
+let
+#vwtpdef xs = list_vt(x0)
+in//let
+$UN.castlinxy{xs}{GSEQ(xs,x0)}(xs)
+end//let//end-of-[GSEQ_make0_list_vt]
 //
 (* ****** ****** *)
 (* ****** ****** *)
