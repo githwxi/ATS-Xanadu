@@ -1431,6 +1431,7 @@ d23exp_trcd1_up(loc0, knd1, npf2, d3es)
 end // end of [aux_trcd1]
 
 (* ****** ****** *)
+//
 fun
 aux_assgn
 ( d2e0
@@ -1449,7 +1450,9 @@ val d3e2 = trans23_dexp(d2e2)
 in
   d23exp_assgn_up(loc0, d3e1, d3e2)
 end // end of [aux_assgn]
+//
 (* ****** ****** *)
+//
 fun
 aux_brack
 ( d2e0
@@ -1468,7 +1471,9 @@ trans23_dexplst(d2es)
 in
   d23exp_brack_up(loc0, dpis, d3es)
 end // end of [aux_brack]
+//
 (* ****** ****** *)
+//
 fun
 aux_dtsel
 ( d2e0
@@ -1496,6 +1501,7 @@ case+ arg3 of
 in
 d23exp_dtsel_up(loc0, lab0, dpis, npf2, arg3)
 end // end of [aux_dtsel]
+//
 (* ****** ****** *)
 
 fun

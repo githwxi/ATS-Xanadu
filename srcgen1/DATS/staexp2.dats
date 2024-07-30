@@ -207,26 +207,38 @@ case+ s2t0 of
 | S2Tbas(s2tb) =>
 (
 case+ s2tb of
-| T2BASimp
-  (k0, _) => sortprf(k0) <= 1
-| _ => false
+|
+T2BASimp
+(k0, _) =>
+(
+  sortprf(k0) >= 1)
+|
+_(*T2BASimp*) => ( false )
 )
-| _ (* non-S2Tbas *) => false
-) (* end of [sort2_is_proof] *)
+|
+_(*non-S2Tbas*) => ( false )
+)(* end of [sort2_is_proof] *)
+//
 implement
 sort2_is_tcode
   (s2t0) =
 (
 case+ s2t0 of
-| S2Tbas(s2tb) =>
+|
+S2Tbas(s2tb) =>
 (
 case+ s2tb of
-| T2BASimp
-  (k0, _) => sortprf(k0) <= 0
-| _ => false
+|
+T2BASimp
+(k0, _) =>
+(
+  sortprf(k0) <= 0)
+|
+_(*T2BASimp*) => ( false )
 )
-| _ (* non-S2Tbas *) => false
-) (* end of [sort2_is_tcode] *)
+|
+_(*non-S2Tbas*) => ( false )
+)(* end of [sort2_is_tcode] *)
 //
 (* ****** ****** *)
 //
