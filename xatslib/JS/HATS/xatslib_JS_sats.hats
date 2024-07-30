@@ -11,7 +11,7 @@ ATS3_XANADU/xatslib/JS/DATS
 #staload "./../DATS/Arrayhd.dats"
 (* ****** ****** *)
 #staload "./../SATS/VT/Array_vt.sats"
-#staload "./../DATS/VT/Arrayhd_vt.sats"
+#staload "./../DATS/VT/Arrayhd_vt.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //

@@ -1,9 +1,7 @@
 (* ****** ****** *)
 (* ****** ****** *)
-//
 #staload
 "./../SATS/Array.sats"
-//
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef
@@ -229,14 +227,24 @@ HX-2024-07-29:
 Mon 29 Jul 2024 11:19:25 PM EDT
 *)
 //
-#staload
-"prelude/SATS/gcls000.sats"
+(* ****** ****** *)
 //
 #extern
 fun
-GSEQ_jsarray
-{a:vt}((*0*)): GSEQ(jsarray(a), a)
-#symload GSEQ with GSEQ_jsarray of 0100
+GASZ_make_jsarray
+{ a:vt }
+(A: jsa(a)): GASZ(jsa(a), a)
+#impltmp
+GASZ_make_jsarray
+{ a:vt }(  A  ) =
+let
+#vwtpdef x0 = a
+#typedef xs = jsa(a)
+in//let
+$UN.castxy{xs}{GASZ(xs,x0)}(A)
+end//let//end-of-[GASZ_make_jsarray]
+//
+#symload GASZ with GASZ_make_jsarray of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

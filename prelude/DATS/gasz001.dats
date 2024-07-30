@@ -207,6 +207,34 @@ gasz_set_at_raw
 end//let//end-of-[gasz_rforall(xs)]
 //
 (* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasz_forall_c1fr
+  (xs, test) =
+(
+gasz_forall
+<xs><x0>(xs)) where
+{
+#impltmp
+forall$test1<x0>(x0) = test(x0)
+}
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasz_forall_f1np
+  (xs, test) =
+(
+gasz_forall
+<xs><x0>(xs)) where
+{
+#impltmp
+forall$test1<x0>(x0) = test(x0)
+}
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp

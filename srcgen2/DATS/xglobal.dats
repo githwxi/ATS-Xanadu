@@ -303,7 +303,8 @@ in//local
 (* ****** ****** *)
 
 #implfun
-the_gmacenv_pvsmrgw(map) =
+the_gmacenv_pvsmrgw
+  (     map     ) =
 let
 //
 #typedef
@@ -360,7 +361,8 @@ end (*let*) // end of [the_gmacenv_pvsmrgw(map)]
 (* ****** ****** *)
 
 #implfun
-the_sortenv_pvsmrgw(map) =
+the_sortenv_pvsmrgw
+  (     map     ) =
 let
 //
 #typedef
@@ -411,7 +413,8 @@ end (*let*) // end of [the_sortenv_pvsmrgw(map)]
 (* ****** ****** *)
 
 #implfun
-the_sexpenv_pvsmrgw(map) =
+the_sexpenv_pvsmrgw
+  (     map     ) =
 let
 //
 #typedef
@@ -479,7 +482,8 @@ end (*let*) // end of [the_sexpenv_pvsmrgw(map)]
 (* ****** ****** *)
 
 #implfun
-the_dexpenv_pvsmrgw(map) =
+the_dexpenv_pvsmrgw
+  (     map     ) =
 let
 //
 #typedef

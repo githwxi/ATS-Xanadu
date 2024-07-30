@@ -2,9 +2,9 @@
 (* ****** ****** *)
 //
 #staload
-"./../SATS/Array.sats"
+"./../../SATS/Array.sats"
 #staload
-"./../SATS/VT/Array_vt.sats"
+"./../../SATS/VT/Array_vt.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)

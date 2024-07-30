@@ -78,11 +78,30 @@ fun
 <xs:t0>
 <x0:vt>
 gasz_forall(xs: xs): bool
-//
 fun
 <xs:t0>
 <x0:vt>
 gasz_rforall(xs: xs): bool
+//
+(*
+#symload forall with gasz_forall of 0100
+#symload rforall with gasz_rforall of 0100
+*)
+//
+fun
+<xs:t0>
+<x0:vt>
+gasz_forall_c1fr
+(xs: xs, test: (!x0)-<cfr>bool): bool
+fun
+<xs:t0>
+<x0:vt>
+gasz_forall_f1np
+(xs: xs, test: (!x0)-<fnp>bool): bool
+//
+#symload forall with gasz_forall_c1fr of 0100
+#symload forall_cfr with gasz_forall_c1fr of 0100
+#symload forall_fnp with gasz_forall_f1np of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)

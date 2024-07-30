@@ -55,7 +55,7 @@ loop
 (xs: ni, i0: ni): bool =
 if
 (i0 >= xs)
-then false else
+then (true) else
 (
 if
 forall$test<ni>(i0)
@@ -84,7 +84,7 @@ loop
 (xs: ni, i0: ni): bool =
 if
 (i0 >= xs)
-then false else
+then (true) else
 (
 if
 rforall$test<ni>(xs-1-i0)

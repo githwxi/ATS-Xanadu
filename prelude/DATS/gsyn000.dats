@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -35,10 +36,6 @@ Sat 27 Jul 2024 01:32:19 PM EDT
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
-(* ****** ****** *)
-(* ****** ****** *)
-#staload
-"./../SATS/gsyn000.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //

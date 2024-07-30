@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -37,15 +38,6 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#staload
-"./../SATS/gsyn000.sats"
-#staload
-"./../../SATS/VT/gsyn000_vt.sats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 //
 #impltmp
 <(*tmp*)>
