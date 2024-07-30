@@ -37,64 +37,61 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload
-"./../SATS/gcls000.sats"
-(* ****** ****** *)
+#staload "./VT/gcls000.sats"
 (* ****** ****** *)
 //
-#impltmp
-<xs : t0>
-<x0 : t0>
-GSEQ_forall
-  (pf | xs) =
-(
-gseq_forall<xs><x0>(xs))
-//
-#impltmp
-<xs : t0>
-<x0 : t0>
-GSEQ_rforall
-  (pf | xs) =
-(
-gseq_rforall<xs><x0>(xs))
-//
-#impltmp
-<xs : t0>
-<x0 : t0>
-GSEQ_iforall
-  (pf | xs) =
-(
-gseq_iforall<xs><x0>(xs))
-//
-#impltmp
-<xs : t0>
-<x0 : t0>
-GSEQ_irforall
-  (pf | xs) =
-(
-gseq_irforall<xs><x0>(xs))
+prfun
+GSEQ_list_vt
+{a:vt}((*0*)): GSEQ(list_vt(a), a)
+#symload GSEQ with GSEQ_list_vt of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-{x0 : t0}
-GSEQ_forall
-<list(x0)><x0>
-  (pf | xs) =
-(
-  list_forall<x0>(xs))
-#impltmp
-{x0 : t0}
-GSEQ_forall_c1fr
-<list(x0)><x0>
-  (pf | xs, test) =
-(
-  list_forall<x0>(xs))
-where{
-#impltmp
-forall$test<x0>(x0) = test(x0)
-}(*where*)//end-of-[GSEQ_forall_c1fr(pf|xs)]
+fun
+<xs:vt>
+<x0:vt>
+GSEQ_forall0
+(GSEQ(xs, x0) | ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+GSEQ_rforall0
+(GSEQ(xs, x0) | ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+GSEQ_iforall0
+(GSEQ(xs, x0) | ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+GSEQ_irforall0
+(GSEQ(xs, x0) | ~xs): bool
+//
+#symload forall0 with GSEQ_forall0 of 0100
+#symload rforall0 with GSEQ_rforall0 of 0100
+#symload iforall0 with GSEQ_iforall0 of 0100
+#symload irforall0 with GSEQ_irforall0 of 0100
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+GSEQ_forall0_c1fr
+( pf: GSEQ(xs, x0)
+| x0: xs, test: (~x0)-<cfr>bool): bool
+fun
+<xs:vt>
+<x0:vt>
+GSEQ_forall0_f1np
+( pf: GSEQ(xs, x0)
+| x0: xs, test: (~x0)-<fnp>bool): bool
+//
+#symload forall0 with GSEQ_forall0_c1fr of 0100
+#symload forall0_c1fr with GSEQ_forall0_c1fr of 0100
+#symload forall0_f1np with GSEQ_forall0_f1np of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -102,4 +99,4 @@ forall$test<x0>(x0) = test(x0)
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_gcls000.dats] *)
+(* end of [ATS3/XANADU_prelude_SATS_VT_gcls000_vt.sats] *)

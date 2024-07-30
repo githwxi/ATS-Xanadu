@@ -37,69 +37,73 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #staload
-"./../SATS/gcls000.sats"
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-<xs : t0>
-<x0 : t0>
-GSEQ_forall
-  (pf | xs) =
-(
-gseq_forall<xs><x0>(xs))
-//
-#impltmp
-<xs : t0>
-<x0 : t0>
-GSEQ_rforall
-  (pf | xs) =
-(
-gseq_rforall<xs><x0>(xs))
-//
-#impltmp
-<xs : t0>
-<x0 : t0>
-GSEQ_iforall
-  (pf | xs) =
-(
-gseq_iforall<xs><x0>(xs))
-//
-#impltmp
-<xs : t0>
-<x0 : t0>
-GSEQ_irforall
-  (pf | xs) =
-(
-gseq_irforall<xs><x0>(xs))
+"./../../SATS/gcls000.sats"
+#staload
+"./../../SATS/VT/gcls000_vt.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-{x0 : t0}
-GSEQ_forall
-<list(x0)><x0>
+<xs : vt>
+<x0 : vt>
+GSEQ_forall0
   (pf | xs) =
 (
-  list_forall<x0>(xs))
+gseq_forall0<xs><x0>(xs))
+//
 #impltmp
-{x0 : t0}
-GSEQ_forall_c1fr
-<list(x0)><x0>
+<xs : vt>
+<x0 : vt>
+GSEQ_rforall0
+  (pf | xs) =
+(
+gseq_rforall0<xs><x0>(xs))
+//
+#impltmp
+<xs : vt>
+<x0 : vt>
+GSEQ_iforall0
+  (pf | xs) =
+(
+gseq_iforall0<xs><x0>(xs))
+//
+#impltmp
+<xs : vt>
+<x0 : vt>
+GSEQ_irforall0
+  (pf | xs) =
+(
+gseq_irforall0<xs><x0>(xs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{x0 : vt}
+GSEQ_forall0
+<llist(x0)><x0>
+  (pf | xs) =
+(
+  list_vt_forall0<x0>(xs))
+#impltmp
+{x0 : vt}
+GSEQ_forall0_c1fr
+<llist(x0)><x0>
   (pf | xs, test) =
 (
-  list_forall<x0>(xs))
+  list_vt_forall0<x0>(xs))
 where{
 #impltmp
-forall$test<x0>(x0) = test(x0)
-}(*where*)//end-of-[GSEQ_forall_c1fr(pf|xs)]
+forall$test0<x0>(x0) = test(x0)
+}(*where*)//end-of-[GSEQ_forall0_c1fr(pf|xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_gcls000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_VT_gcls000_vt.dats] *)

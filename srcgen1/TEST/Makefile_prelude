@@ -56,6 +56,8 @@ $(XATSOPT) -s $(PRELUDE)/SATS/gbas001.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gbas002.sats
 all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gcls000.sats
+all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gnum000.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gseq000.sats
@@ -94,6 +96,8 @@ all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/VT/gbas001_vt.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/VT/gbas002_vt.sats
+all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/VT/gcls000_vt.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/VT/gnum000_vt.sats
 all0_sats:: ; \
@@ -241,6 +245,8 @@ $(XATSOPT) -d $(PRELUDE)/DATS/gbas001.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gbas002.dats
 all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/gcls000.dats
+all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gnum000.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gseq000.dats
@@ -277,6 +283,8 @@ all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/gbas001_vt.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/gnum000_vt.dats
+all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/VT/gcls000_vt.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/gseq000_vt.dats
 all0_dats:: ; \
