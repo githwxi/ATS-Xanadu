@@ -172,15 +172,12 @@ val () = prints
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#symload
-forall with GSEQ_forall of 0100
-#symload
-forall with GSEQ_forall_c1fr of 0100
-//
 val b0 =
-forall(GSEQ(), xs, lam(x) => x >= 0)
+forall(GSEQ(xs), lam(x) => x >= 0)
+(*
 val b1 =
-forall(GSEQ(), An, lam(x) => x >= 0)
+forall(GSEQ(An), lam(x) => x >= 0)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -37,15 +37,23 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload
-"./../gcls000.sats"
+#absvwtp
+GSEQ_vwtp
+(xs: vt, x0: vt) <= xs
+#sexpdef GLSEQ = GSEQ_vwtp
+(* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 fun
-GSEQ_list_vt
-{a:vt}
-(xs:list_vt(a)): GSEQ(list_vt(a),a)
-#symload GSEQ with GSEQ_list_vt of 0100
+<xs:vt>
+<x0:vt>
+GLSEQ_make0(xs): GLSEQ(xs, x0)
+*)
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_unmk0(GLSEQ(xs, x0)): (xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -53,29 +61,63 @@ GSEQ_list_vt
 fun
 <xs:vt>
 <x0:vt>
-GSEQ_forall0
-(gseq: ~GSEQ(xs, x0)): bool
+GLSEQ_forall0
+(gseq: ~GLSEQ(xs, x0)): bool
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_forall1
+(gseq: !GLSEQ(xs, x0)): bool
 //
-#symload forall0 with GSEQ_forall0 of 0100
+#symload forall0 with GLSEQ_forall0 of 1000
+#symload forall1 with GLSEQ_forall1 of 1000
 //
 (* ****** ****** *)
 //
 fun
 <xs:vt>
 <x0:vt>
-GSEQ_forall0_c1fr
-( gseq: ~GSEQ(xs, x0)
+GLSEQ_forall0_c1fr
+( gseq: ~GLSEQ(xs, x0)
 , test: (~x0)-<cfr>bool): bool
 fun
 <xs:vt>
 <x0:vt>
-GSEQ_forall0_f1np
-( gseq: GSEQ(xs, x0)
+GLSEQ_forall0_f1np
+( gseq: ~GLSEQ(xs, x0)
 , test: (~x0)-<fnp>bool): bool
 //
-#symload forall0 with GSEQ_forall0_c1fr of 0100
-#symload forall0_c1fr with GSEQ_forall0_c1fr of 0100
-#symload forall0_f1np with GSEQ_forall0_f1np of 0100
+#symload forall0 with GLSEQ_forall0_c1fr of 0100
+#symload forall0_c1fr with GLSEQ_forall0_c1fr of 0100
+#symload forall0_f1np with GLSEQ_forall0_f1np of 0100
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_forall1_c1fr
+( gseq: !GLSEQ(xs, x0)
+, test: (!x0)-<cfr>bool): bool
+fun
+<xs:vt>
+<x0:vt>
+GLSEQ_forall1_f1np
+( gseq: !GLSEQ(xs, x0)
+, test: (!x0)-<fnp>bool): bool
+//
+#symload forall1 with GLSEQ_forall1_c1fr of 0100
+#symload forall1_c1fr with GLSEQ_forall1_c1fr of 0100
+#symload forall1_f1np with GLSEQ_forall1_f1np of 0100
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+GLSEQ_make0_list_vt
+{a:vt}
+(xs:list_vt(a)): GLSEQ(list_vt(a),a)
+#symload GLSEQ with GLSEQ_make0_list_vt of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

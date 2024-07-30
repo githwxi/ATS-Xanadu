@@ -39,20 +39,22 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #absvwtp
-GSEQ_vwtp
-(xs: vt, x0: vt) <= xs
-#sexpdef GSEQ = GSEQ_vwtp
+GSEQ_type
+(xs: t0, x0: t0) <= xs
+#sexpdef GSEQ = GSEQ_type
 //
 (* ****** ****** *)
 //
+(*
 fun
-<xs:vt>
-<x0:vt>
-GSEQ_make0(~xs): GSEQ(xs, x0)
+<xs:t0>
+<x0:t0>
+GSEQ_make(xs): GSEQ(xs, x0)
+*)
 fun
-<xs:vt>
-<x0:vt>
-GSEQ_unmk0(GSEQ(xs, x0)): (xs)
+<xs:t0>
+<x0:t0>
+GSEQ_unmk(GSEQ(xs, x0)): (xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -91,7 +93,7 @@ fun
 GSEQ_make_list
 {a:t0}
 (xs: list(a)): GSEQ(list(a), a)
-#symload GSEQ with GSEQ_list of 0100
+#symload GSEQ with GSEQ_make_list of 0100
 //
 (* ****** ****** *)
 //
@@ -106,7 +108,7 @@ no overloading for GSEQ_make_nint0
 fun
 GSEQ_make_nint1
 (xs: nint): GSEQ(nint, nint)
-#symload GSEQ with GSEQ_nint1 of 0100
+#symload GSEQ with GSEQ_make_nint1 of 0100
 //
 (* ****** ****** *)
 //

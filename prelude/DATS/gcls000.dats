@@ -37,18 +37,21 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#staload UN = 
+"./../SATS/unsfx00.sats"
+(* ****** ****** *)
 #staload
 "./../SATS/gcls000.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-<xs : vt>
-<x0 : vt>
-GSEQ_unmk0
+<xs : t0>
+<x0 : t0>
+GSEQ_unmk
 (  gseq  ) =
 (
-  $UN.castlinxy(gseq))
+  $UN.castxy(gseq))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -60,7 +63,7 @@ GSEQ_forall
   (gseq) =
 (
 gseq_forall
-<xs><x0>(GSEQ_unmk0(gseq)))
+<xs><x0>(GSEQ_unmk(gseq)))
 //
 (* ****** ****** *)
 //
@@ -71,7 +74,7 @@ GSEQ_forall_c1fr
   (gseq, test) =
 (
 gseq_forall_c1fr
-<xs><x0>(GSEQ_unmk0(gseq), test))
+<xs><x0>(GSEQ_unmk(gseq), test))
 //
 (* ****** ****** *)
 (* ****** ****** *)
