@@ -50,9 +50,9 @@ detop1{a0:vt}(x0: ?a0): (a0)
 (* ****** ****** *)
 //
 fcast
-cast01{a0:t0}{a1:t0}(a0):(a1)
+castxy{ax:t0}{ay:t0}(ax):(ay)
 fcast
-cast10{a1:t0}{a0:t0}(a0):(a1)
+castyx{ay:t0}{ax:t0}(ax):(ay)
 //
 (* ****** ****** *)
 //
@@ -64,9 +64,9 @@ enlinear{a0:vt}(?!a0): (  a0  )
 (* ****** ****** *)
 //
 fcast
-castlin01{a0:vt}{a1:vt}(a0):(a1)
+castlinxy{ax:vt}{ay:vt}(ax):(ay)
 fcast
-castlin10{a1:vt}{a0:vt}(a0):(a1)
+castlinyx{ay:vt}{ax:vt}(ax):(ay)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -142,22 +142,16 @@ p2tr_set_list_cons
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<a:vt>
-a0ref_set0
-(A0: a0ref(a), x0: ?!a): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 fun<>
-strn_get_at
-(cs: strn, i0: sint): cgtz
+strn_get_at(strn, sint): cgtz
+fun<>
+strn_get_at_raw(strn, sint): cgtz
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#include "./VT/unsfx00_vt.sats"
+// HX-2024-07-30: it should not be loaded
+#include "./VT/unsfx00_vt.sats" // elsewhere!
 //
 (* ****** ****** *)
 (* ****** ****** *)

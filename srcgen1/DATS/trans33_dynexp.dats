@@ -1382,9 +1382,12 @@ end // end of [None]
 Some(arg3) =>
 let
 //
+val
+tres = d3e0.type()
+//
 val-
 list_cons
-(d3e1, _) = d3es
+(d3e1, _) = (d3es)
 val
 d3e1 =
 trans33_dexp(env0, d3e1)
@@ -1392,27 +1395,12 @@ val
 arg3 =
 trans33_dexplst(env0, arg3)
 //
-val tres = d3e0.type()
-//
 val
 t2p1 = d3e1.type()
 val
-s2t1 = t2ype_sortrec(t2p1)
+s2t1 = t2p1.sort()
 val
 prf1 = sort2_is_proof(s2t1)
-//
-val () =
-println!("t2p1 = ", t2p1)
-val () =
-println!("s2t1 = ", s2t1)
-val () =
-println!("prf1 = ", prf1)
-val () =
-if prf1 then
-println!("prf1: d3e1 = ", d3e1)
-val () =
-if prf1 then
-println!("prf1: arg3 = ", arg3)
 //
 val
 targ =

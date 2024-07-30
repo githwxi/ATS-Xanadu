@@ -222,7 +222,22 @@ map_list with jsarray_map_list_c1fr of 1000
 map_llist with jsarray_map_llist_c1fr of 1000
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
+(*
+HX-2024-07-29:
+Mon 29 Jul 2024 11:19:25 PM EDT
+*)
+//
+#staload
+"prelude/SATS/gcls000.sats"
+//
+#extern
+fun
+GSEQ_jsarray
+{a:vt}((*0*)): GSEQ(jsarray(a), a)
+#symload GSEQ with GSEQ_jsarray of 0100
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

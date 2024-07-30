@@ -43,58 +43,69 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
-<xs : t0>
-<x0 : t0>
-GSEQ_forall
-  (pf | xs) =
+<xs : vt>
+<x0 : vt>
+GSEQ_unmk0
+(  gseq  ) =
 (
-gseq_forall<xs><x0>(xs))
-//
-#impltmp
-<xs : t0>
-<x0 : t0>
-GSEQ_rforall
-  (pf | xs) =
-(
-gseq_rforall<xs><x0>(xs))
-//
-#impltmp
-<xs : t0>
-<x0 : t0>
-GSEQ_iforall
-  (pf | xs) =
-(
-gseq_iforall<xs><x0>(xs))
-//
-#impltmp
-<xs : t0>
-<x0 : t0>
-GSEQ_irforall
-  (pf | xs) =
-(
-gseq_irforall<xs><x0>(xs))
+  $UN.castlinxy(gseq))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-{x0 : t0}
+<xs : t0>
+<x0 : t0>
 GSEQ_forall
-<list(x0)><x0>
-  (pf | xs) =
+  (gseq) =
 (
-  list_forall<x0>(xs))
+gseq_forall
+<xs><x0>(GSEQ_unmk0(gseq)))
+//
+(* ****** ****** *)
+//
 #impltmp
-{x0 : t0}
+<xs : t0>
+<x0 : t0>
 GSEQ_forall_c1fr
-<list(x0)><x0>
-  (pf | xs, test) =
+  (gseq, test) =
 (
-  list_forall<x0>(xs))
-where{
+gseq_forall_c1fr
+<xs><x0>(GSEQ_unmk0(gseq), test))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
-forall$test<x0>(x0) = test(x0)
-}(*where*)//end-of-[GSEQ_forall_c1fr(pf|xs)]
+GSEQ_make_list
+{ x0:t0 }(  xs  ) =
+let
+#typedef xs = list(x0)
+in//let
+$UN.castxy{xs}{GSEQ(xs,x0)}(xs)
+end//let//end-of-[GSEQ_make_list]
+//
+(* ****** ****** *)
+//
+#impltmp
+GSEQ_make_nint0
+(  xs  ) =
+let
+#typedef x0 = unit
+#typedef xs = nint
+in//let
+$UN.castxy{xs}{GSEQ(xs,x0)}(xs)
+end//let//end-of-[GSEQ_make_nint0]
+//
+#impltmp
+GSEQ_make_nint1
+(  xs  ) =
+let
+#typedef x0 = nint
+#typedef xs = nint
+in//let
+$UN.castxy{xs}{GSEQ(xs,x0)}(xs)
+end//let//end-of-[GSEQ_make_nint1]
 //
 (* ****** ****** *)
 (* ****** ****** *)

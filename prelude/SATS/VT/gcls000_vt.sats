@@ -37,12 +37,14 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload "./VT/gcls000.sats"
+#staload
+"./../gcls000.sats"
 (* ****** ****** *)
 //
-prfun
+fun
 GSEQ_list_vt
-{a:vt}((*0*)): GSEQ(list_vt(a), a)
+{a:vt}
+(xs:list_vt(a)): GSEQ(list_vt(a),a)
 #symload GSEQ with GSEQ_list_vt of 0100
 //
 (* ****** ****** *)
@@ -52,27 +54,9 @@ fun
 <xs:vt>
 <x0:vt>
 GSEQ_forall0
-(GSEQ(xs, x0) | ~xs): bool
-fun
-<xs:vt>
-<x0:vt>
-GSEQ_rforall0
-(GSEQ(xs, x0) | ~xs): bool
-fun
-<xs:vt>
-<x0:vt>
-GSEQ_iforall0
-(GSEQ(xs, x0) | ~xs): bool
-fun
-<xs:vt>
-<x0:vt>
-GSEQ_irforall0
-(GSEQ(xs, x0) | ~xs): bool
+(gseq: ~GSEQ(xs, x0)): bool
 //
 #symload forall0 with GSEQ_forall0 of 0100
-#symload rforall0 with GSEQ_rforall0 of 0100
-#symload iforall0 with GSEQ_iforall0 of 0100
-#symload irforall0 with GSEQ_irforall0 of 0100
 //
 (* ****** ****** *)
 //
@@ -80,14 +64,14 @@ fun
 <xs:vt>
 <x0:vt>
 GSEQ_forall0_c1fr
-( pf: GSEQ(xs, x0)
-| x0: xs, test: (~x0)-<cfr>bool): bool
+( gseq: ~GSEQ(xs, x0)
+, test: (~x0)-<cfr>bool): bool
 fun
 <xs:vt>
 <x0:vt>
 GSEQ_forall0_f1np
-( pf: GSEQ(xs, x0)
-| x0: xs, test: (~x0)-<fnp>bool): bool
+( gseq: GSEQ(xs, x0)
+, test: (~x0)-<fnp>bool): bool
 //
 #symload forall0 with GSEQ_forall0_c1fr of 0100
 #symload forall0_c1fr with GSEQ_forall0_c1fr of 0100
