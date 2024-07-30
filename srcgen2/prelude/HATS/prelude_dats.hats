@@ -21,6 +21,9 @@ Sun 14 Jul 2024 12:14:49 PM EDT
 #staload _ = "prelude/DATS/gnum000.dats"
 #staload _ = "prelude/DATS/VT/gnum000_vt.dats"
 (* ****** ****** *)
+#staload _ = "prelude/DATS/gcls000.dats"
+#staload _ = "prelude/DATS/VT/gcls000_vt.dats"
+(* ****** ****** *)
 #staload _ = "prelude/DATS/gseq000.dats"
 #staload _ = "prelude/DATS/gseq001.dats"
 #staload _ = "prelude/DATS/gseq002.dats"
@@ -32,6 +35,9 @@ Sun 14 Jul 2024 12:14:49 PM EDT
 #staload _ = "prelude/DATS/gasz001.dats"
 #staload _ = "prelude/DATS/VT/gasz000_vt.dats"
 #staload _ = "prelude/DATS/VT/gasz001_vt.dats"
+(* ****** ****** *)
+#staload _ = "prelude/DATS/gsyn000.dats"
+#staload _ = "prelude/DATS/VT/gsyn000_vt.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload _ = "prelude/DATS/bool000.dats"

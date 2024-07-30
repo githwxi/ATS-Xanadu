@@ -5,28 +5,6 @@ For testing xatslib/JS!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-#staload
-"prelude/SATS/gcls000.sats"
-#staload _ =
-"prelude/DATS/gcls000.dats"
-(* ****** ****** *)
-#staload
-"prelude/SATS/VT/gcls000_vt.sats"
-#staload _ =
-"prelude/DATS/VT/gcls000_vt.dats"
-(* ****** ****** *)
-(* ****** ****** *)
-#staload
-"prelude/SATS/gsyn000.sats"
-#staload _ =
-"prelude/DATS/gsyn000.dats"
-(* ****** ****** *)
-#staload
-"prelude/SATS/VT/gsyn000_vt.sats"
-#staload _ =
-"prelude/DATS/VT/gsyn000_vt.dats"
-(* ****** ****** *)
-(* ****** ****** *)
 //
 (*
 HX-2024-07-21:
@@ -172,12 +150,23 @@ val () = prints
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val b0 =
-forall(GSEQ(xs), lam(x) => x >= 0)
 (*
-val b1 =
-forall(GSEQ(An), lam(x) => x >= 0)
+#symload
+GSEQ with GSEQ_make_list
+#symload
+GASZ with GASZ_make_jsarray
+#symload forall
+with GSEQ_forall_c1fr of 1000
+#symload forall
+with GASZ_forall_c1fr of 1000
 *)
+//
+val b0 =
+GSEQ(xs).forall(lam(x) => x >= 0)
+val () = prints("b0 = ", b0, "\n")
+val b1 =
+GASZ(An).forall(lam(x) => x >= 0)
+val () = prints("b1 = ", b1, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)

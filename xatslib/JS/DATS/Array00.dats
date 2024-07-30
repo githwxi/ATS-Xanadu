@@ -216,11 +216,13 @@ XATS2JS_jsarray_set_at
 #impltmp
 { x0:t0 }
 gasz_get_at
-<jsa(x0)><x0> = jsarray_get_at<>{x0}
+<jsa(x0)><x0> =
+jsarray_get_at<>{x0}//HX:safe
 #impltmp
 { x0:t0 }
 gasz_set_at
-<jsa(x0)><x0> = jsarray_set_at<>{x0}
+<jsa(x0)><x0> =
+jsarray_set_at<>{x0}//HX:safe
 //
 #impltmp
 { x0:t0 }
@@ -493,42 +495,6 @@ XATS2JS_jsarray_make0_fwork
  {a:vt}
 (fwork: ~fwork(a)): jsa(a) = $extnam()
 }
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2024-07-29:
-Mon 29 Jul 2024 11:05:31 PM EDT
-*)
-//
-#staload
-"prelude/SATS/gcls000.sats"
-//
-#impltmp
-{x0 : t0}
-GSEQ_forall
-<jsa(x0)><x0>
-  (pf, xs) =
-(
-  jsarray_forall<x0>(xs))
-where{
-#impltmp
-forall$test1
-<x0>(x0) = forall$test<x0>(x0)
-}(*where*)//end-of-[GSEQ_forall(...)]
-//
-#impltmp
-{x0 : t0}
-GSEQ_forall_c1fr
-<jsa(x0)><x0>
-  (pf, xs, test) =
-(
-  jsarray_forall<x0>(xs))
-where{
-#impltmp
-forall$test1<x0>(x0) = test(x0)
-}(*where*)//end-of-[GSEQ_forall_c1fr(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -731,24 +731,6 @@ gasz_set_at_raw(xs: xs, i0: ni, x0: x0): void
 //
 (* ****** ****** *)
 //
-#absview
-owed_view(vt) // linprop
-#sexpdef owed = owed_view
-//
-prfun
-owed_t0_make
-{a:t0}((*void*)): owed(a)
-prfun
-owed_t0_elim0
-{a:t0}(pf: ~owed(a)): void
-prfun
-owed_vt_return0
-{a:vt}(pf: ~owed(a), x0: a): void
-//
-#symload return0 with owed_vt_return0
-//
-(* ****** ****** *)
-//
 fun
 <xs:t0>
 <x0:vt>
@@ -884,6 +866,31 @@ gasz_mapref_c1fr
 (xs: xs, fopr: (~x0)-<cfr>(x0)): void
 //
 #symload mapref with gseq_mapref_c1fr of 0110
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-30:
+Tue 30 Jul 2024 02:19:43 PM EDT
+*)
+fun
+<xs:t0>
+<x0:vt>
+gasz_forall_c1fr
+(xs: xs, test: (!x0)-<cfr>bool): bool
+fun
+<xs:t0>
+<x0:vt>
+gasz_forall_f1np
+(xs: xs, test: (!x0)-<fnp>bool): bool
+//
+#symload forall with gasz_forall_c1fr of 0100
+#symload forall_cfr with gasz_forall_c1fr of 0100
+#symload forall_fnp with gasz_forall_f1np of 0100
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
