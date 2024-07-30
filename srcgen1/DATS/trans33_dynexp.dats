@@ -73,12 +73,22 @@ UN = "prelude/SATS/unsafe.sats"
 #staload "./../SATS/trans33.sats"
 
 (* ****** ****** *)
-
+//
+implement
+fprint_val<sort2> = fprint_sort2
+implement
+fprint_val<t2ype> = fprint_t2ype
+//
+implement
+fprint_val<d3exp> = fprint_d3exp
+//
+(* ****** ****** *)
+//
 implement
 fprint_val<tq2arg> = fprint_tq2arg
 implement
 fprint_val<ti2arg> = fprint_ti2arg
-
+//
 (* ****** ****** *)
 //
 extern
@@ -1202,16 +1212,17 @@ in
   d33exp_dapp_up
   (loc0, env0, d3f0, npf1, d3es)
 end
+//
 |
 D3Ebrack _ =>
 (
-  auxdapp1(env0, d3e0)
-)
+  auxdapp1(env0, d3e0))//D3Ebrack
+//
 |
 D3Edtsel _ =>
 (
-  auxdapp2(env0, d3e0)
-)
+  auxdapp2(env0, d3e0))//D3Edtsel
+//
 |
 _(* else *) => let
 val
@@ -1381,79 +1392,135 @@ val
 arg3 =
 trans33_dexplst(env0, arg3)
 //
-val
-tres = d3e0.type()
-val
-targ =
-list_npf_cons
-(npf2, t2p1, t2ps) where
-{
+val tres = d3e0.type()
+//
 val
 t2p1 = d3e1.type()
+val
+s2t1 = t2ype_sortrec(t2p1)
+val
+prf1 = sort2_is_proof(s2t1)
+//
+val () =
+println!("t2p1 = ", t2p1)
+val () =
+println!("s2t1 = ", s2t1)
+val () =
+println!("prf1 = ", prf1)
+val () =
+if prf1 then
+println!("prf1: d3e1 = ", d3e1)
+val () =
+if prf1 then
+println!("prf1: arg3 = ", arg3)
+//
+val
+targ =
+(
+if
+prf1 then
+list_cons
+(t2p1, t2ps) else
+list_npf_cons
+(npf2, t2p1, t2ps)) where
+{
 val
 t2ps = d3explst_get_type(arg3)
 }
 //
+val npf3 =
+(
+if
+not(prf1)
+then npf2 else
+(
+if npf2 <= 0
+then (1) else npf2+1))
+//
 val tfun =
-t2ype_fun0(loc0, npf2, targ, tres)
+t2ype_fun0
+(loc0, npf3, targ, tres): t2ype
 //
 val opt1 =
 match2_d2pitmlst_t2ype(dpis, tfun)
 //
-in
+in//let
 //
 case+ opt1 of
 | ~
 None_vt() =>
 let
-val
-opt3 = Some(arg3)
-val
-d3es = list_sing(d3e1)
-val
-d3f0 =
-d3exp_make_node
-( d3f0.loc(), d3f0.type()
-, D3Edtsel(lab0, dpis, npf2, opt3))
-in
-  d3exp_make_node
-  ( loc0
-  , tres, D3Edapp(d3f0, npf2, d3es))
-end // end of [None_vt]
-| ~
-Some_vt(d2i0) => let
+//
+(*
+HX: unresolved sym!
+*)
+val opt3 = Some(arg3)
+val d3es = list_sing(d3e1)
 //
 val d3f0 =
 (
-  case- d2i0 of
-  | D2ITMvar(d2v1) =>
-  (
-    d2var_up(loc0, d2v1)
-  )
-  | D2ITMcon(d2cs) =>
-  (
-    d2con_up(loc0, d2c1)
-  ) where
-  {
-    val-list_cons(d2c1, _) = d2cs
-  }
-  | D2ITMcst(d2cs) =>
-  (
-    d2cst_up(loc0, d2c1)
-  ) where
-  {
-    val-list_cons(d2c1, _) = d2cs
-  }
-) : d3exp // end of [val d3f0]
+d3exp_make_node
+( d3f0.loc()
+, d3f0.type()
+, D3Edtsel
+  (lab0, dpis, npf2, opt3)))
 //
-in
+in//let
+//
+d3exp_make_node
+( loc0
+, tres, D3Edapp(d3f0, npf2, d3es))
+//
+end // end of [None_vt]
+| ~
+Some_vt(d2i0) =>
+let
+//
+(*
+HX: resolved symbol!
+*)
+//
+val d3f0 =
+(
+case- d2i0 of
+| D2ITMvar(d2v1) =>
+(
+  d2var_up(loc0, d2v1)
+)
+| D2ITMcon(d2cs) =>
+(
+  d2con_up(loc0, d2c1)
+) where
+{
+  val-
+  list_cons(d2c1, _) = d2cs
+}
+| D2ITMcst(d2cs) =>
+(
+  d2cst_up(loc0, d2c1)
+) where
+{
+  val-
+  list_cons(d2c1, _) = d2cs
+}
+) : d3exp // end of [val(d3f0)]
+//
+in//let
 //
 let
+//
 val darg =
-list_npf_cons(npf2, d3e1, arg3)
-in
-d33exp_dapp_up(loc0, env0, d3f0, npf2, darg)
-end
+(
+if
+prf1 then
+list_cons
+(d3e1, arg3) else
+list_npf_cons
+(npf2, d3e1, arg3)): d3explst
+//
+in//let
+d33exp_dapp_up(loc0, env0, d3f0, npf3, darg)
+end//let
 //
 end // end of [Some_vt]
 //

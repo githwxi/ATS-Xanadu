@@ -6,6 +6,17 @@ For testing xatslib/JS!
 (* ****** ****** *)
 (* ****** ****** *)
 #staload
+"prelude/SATS/gcls000.sats"
+#staload _ =
+"prelude/DATS/gcls000.dats"
+(* ****** ****** *)
+#staload
+"prelude/SATS/VT/gcls000_vt.sats"
+#staload _ =
+"prelude/DATS/VT/gcls000_vt.dats"
+(* ****** ****** *)
+(* ****** ****** *)
+#staload
 "prelude/SATS/gsyn000.sats"
 #staload _ =
 "prelude/DATS/gsyn000.dats"
@@ -157,6 +168,14 @@ val () = prints
 val () = prints
 ("fact(10) = "
 , muls(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), '\n')
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val b0 = GSEQ().forall(xs, lam(x) => x >= 0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
