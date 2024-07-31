@@ -85,6 +85,22 @@ list_irforitm(xs: list(x0)): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-31:
+Wed 31 Jul 2024 03:16:49 AM EDT
+*)
+fun
+<x0:t0>
+list_c2hoose0_lstrm
+(xs: list(x0)): strm_vt@(x0, x0)
+fun
+<x0:vt>
+list_c3hoose0_lstrm
+(xs: list(x0)): strm_vt@(x0, x0, x0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

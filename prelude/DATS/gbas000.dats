@@ -59,5 +59,11 @@ g_copy<x0>(obj) = obj
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#impltmp
+g_print<unit>(_) = strn_print("unit")
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_DATS_gbas000.dats] *)

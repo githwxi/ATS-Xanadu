@@ -136,6 +136,24 @@ gseq_rforall_c1fr<xs><x0>(GSEQ_unmk(gseq), test))
 #impltmp
 <xs : t0>
 <x0 : vt>
+GASZ_listize
+  (gasz) =
+(
+gasz_listize<xs><x0>(GASZ_unmk(gasz)))
+//
+#impltmp
+<xs : t0>
+<x0 : vt>
+GASZ_rlistize
+  (gasz) =
+(
+gasz_rlistize<xs><x0>(GASZ_unmk(gasz)))
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs : t0>
+<x0 : vt>
 GASZ_forall
   (gasz) =
 (
@@ -184,40 +202,6 @@ GASZ_rforall_c1fr
   (gasz, test) =
 (
 gasz_rforall_c1fr<xs><x0>(GASZ_unmk(gasz), test))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-GSEQ_make_list
-{ x0:t0 }(  xs  ) =
-let
-#typedef xs = list(x0)
-in//let
-$UN.castxy{xs}{GSEQ(xs,x0)}(xs)
-end//let//end-of-[GSEQ_make_list(xs)]
-//
-(* ****** ****** *)
-//
-#impltmp
-GSEQ_make_nint0
-(  xs  ) =
-let
-#typedef x0 = unit
-#typedef xs = nint
-in//let
-$UN.castxy{xs}{GSEQ(xs,x0)}(xs)
-end//let//end-of-[GSEQ_make_nint0(xs)]
-//
-#impltmp
-GSEQ_make_nint1
-(  xs  ) =
-let
-#typedef x0 = nint
-#typedef xs = nint
-in//let
-$UN.castxy{xs}{GSEQ(xs,x0)}(xs)
-end//let//end-of-[GSEQ_make_nint1(x)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

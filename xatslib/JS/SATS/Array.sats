@@ -271,5 +271,28 @@ sortref with jsarray_sortref_c2fr of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(*
+HX-2024-07-29:
+Mon 29 Jul 2024 11:19:25 PM EDT
+*)
+//
+fcast // fun
+GSEQ_make_jsarray
+{a:t0}
+(A:jsarray(a)): GSEQ(jsarray(a), a)
+#symload GSEQ with GSEQ_make_jsarray of 1000
+//
+fcast // fun
+GASZ_make_jsarray
+{a:vt}
+(A:jsarray(a)): GASZ(jsarray(a), a)
+#symload GASZ with GASZ_make_jsarray of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_xatslib_JS_SATS_Array.sats] *)

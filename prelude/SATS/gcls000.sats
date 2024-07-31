@@ -77,6 +77,28 @@ GASZ_unmk
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fcast // fun
+GSEQ_make_list
+{a:t0}
+(xs: list(a)): GSEQ(list(a), a)
+#symload GSEQ with GSEQ_make_list of 1000
+#symload GSEQ_list with GSEQ_make_list of 1000
+//
+(* ****** ****** *)
+//
+fcast // fun
+GSEQ_make_nint0
+(xs: nint): GSEQ(nint, unit)
+fcast // fun
+GSEQ_make_nint1
+(xs: nint): GSEQ(nint, nint)
+#symload GSEQ with GSEQ_make_nint1 of 1000
+#symload GSEQ_nint0 with GSEQ_make_nint0 of 1000
+#symload GSEQ_nint1 with GSEQ_make_nint1 of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -164,6 +186,23 @@ GSEQ_rforall_f1np
 fun
 <xs:t0>
 <x0:vt>
+GASZ_listize
+(GASZ(xs,x0)): list_vt(x0)
+fun
+<xs:t0>
+<x0:vt>
+GASZ_rlistize
+(GASZ(xs,x0)): list_vt(x0)
+//
+#symload listize with GASZ_listize of 1000
+#symload rlistize with GASZ_rlistize of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:vt>
 GASZ_forall
 (gasz: GASZ(xs, x0)): bool
 fun
@@ -224,30 +263,6 @@ GASZ_rforall_f1np
 #symload rforall with GASZ_rforall_c1fr of 1000
 #symload rforall_c1fr with GASZ_rforall_c1fr of 1000
 #symload rforall_f1np with GASZ_rforall_f1np of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-GSEQ_make_list
-{a:t0}
-(xs: list(a)): GSEQ(list(a), a)
-#symload GSEQ with GSEQ_make_list of 1000
-//
-(* ****** ****** *)
-//
-fun
-GSEQ_make_nint0
-(xs: nint): GSEQ(nint, unit)
-(*
-HX-2024-07-30:
-no overloading for GSEQ_make_nint0
-*)
-//
-fun
-GSEQ_make_nint1
-(xs: nint): GSEQ(nint, nint)
-#symload GSEQ with GSEQ_make_nint1 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
