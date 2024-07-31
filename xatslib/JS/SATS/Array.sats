@@ -114,7 +114,7 @@ fwork(a:vt) =
 fun<>
 jsarray_fmake_fwork
 {a:vt}
-(fwork: ~fwork(a)): jsarray(a)
+(fwork: fwork(a)): jsarray(a)
 //
 #symload
 jsarray with jsarray_fmake_fwork of 1000
