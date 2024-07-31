@@ -1623,10 +1623,13 @@ gseq_foldr_f2np
 ( xs, r0
 , f0: (x0, r0) -<fnp> r0): (r0)
 (* ****** ****** *)
+(* ****** ****** *)
 //
 // HX: gseq_exists
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -1639,11 +1642,30 @@ fun
 gseq_exists_f1np
 ( xs: xs
 , fnp: (x0) -<fnp> bool): (bool)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_rexists_c1fr
+( xs: xs
+, cfr: (x0) -<cfr> bool): (bool)
+fun
+<xs:t0>
+<x0:t0>
+gseq_rexists_f1np
+( xs: xs
+, fnp: (x0) -<fnp> bool): (bool)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 // HX: gseq_forall
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -1656,7 +1678,9 @@ fun
 gseq_forall_f1np
 ( xs: xs
 , fnp: (x0) -<fnp> bool): (bool)
+//
 (* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -1669,6 +1693,7 @@ fun
 gseq_rforall_f1np
 ( xs: xs
 , fnp: (x0) -<fnp> bool): (bool)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

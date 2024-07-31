@@ -103,6 +103,10 @@ gseq_forall(xs: xs): bool
 fun
 <xs:t0>
 <x0:t0>
+gseq_exists(xs: xs): bool
+fun
+<xs:t0>
+<x0:t0>
 gseq_rforall(xs: xs): bool
 fun
 <xs:t0>
@@ -134,6 +138,24 @@ gseq_forall_f1np
 #symload forall with gseq_forall_c1fr of 0100
 #symload forall_cfr with gseq_forall_c1fr of 0100
 #symload forall_fnp with gseq_forall_f1np of 0100
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_exists_c1fr
+(xs: xs, test: (x0)-<cfr>bool): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_exists_f1np
+(xs: xs, test: (x0)-<fnp>bool): bool
+//
+#symload exists with gseq_exists_c1fr of 0100
+#symload exists_cfr with gseq_exists_c1fr of 0100
+#symload exists_fnp with gseq_exists_f1np of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)

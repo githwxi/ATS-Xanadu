@@ -166,6 +166,25 @@ GSEQ_forall_f1np
 fun
 <xs:t0>
 <x0:t0>
+GSEQ_exists_c1fr
+( gseq: GSEQ(xs, x0)
+, test: (x0)-<cfr>bool): bool
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_exists_f1np
+( gseq: GSEQ(xs, x0)
+, test: (x0)-<fnp>bool): bool
+//
+#symload exists with GSEQ_exists_c1fr of 1000
+#symload exists_c1fr with GSEQ_exists_c1fr of 1000
+#symload exists_f1np with GSEQ_exists_f1np of 1000
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
 GSEQ_rforall_c1fr
 ( gseq: GSEQ(xs, x0)
 , test: (x0)-<cfr>bool): bool
@@ -179,6 +198,25 @@ GSEQ_rforall_f1np
 #symload rforall with GSEQ_rforall_c1fr of 1000
 #symload rforall_c1fr with GSEQ_rforall_c1fr of 1000
 #symload rforall_f1np with GSEQ_rforall_f1np of 1000
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_rexists_c1fr
+( gseq: GSEQ(xs, x0)
+, test: (x0)-<cfr>bool): bool
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_rexists_f1np
+( gseq: GSEQ(xs, x0)
+, test: (x0)-<fnp>bool): bool
+//
+#symload rexists with GSEQ_rexists_c1fr of 1000
+#symload rexists_c1fr with GSEQ_rexists_c1fr of 1000
+#symload rexists_f1np with GSEQ_rexists_f1np of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -250,6 +288,25 @@ GASZ_forall_f1np
 fun
 <xs:t0>
 <x0:vt>
+GASZ_exists_c1fr
+( gasz: GASZ(xs, x0)
+, test: (!x0)-<cfr>bool): bool
+fun
+<xs:t0>
+<x0:vt>
+GASZ_exists_f1np
+( gasz: GASZ(xs, x0)
+, test: (!x0)-<fnp>bool): bool
+//
+#symload exists with GASZ_exists_c1fr of 1000
+#symload exists_c1fr with GASZ_exists_c1fr of 1000
+#symload exists_f1np with GASZ_exists_f1np of 1000
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:vt>
 GASZ_rforall_c1fr
 ( gasz: GASZ(xs, x0)
 , test: (!x0)-<cfr>bool): bool
@@ -263,6 +320,25 @@ GASZ_rforall_f1np
 #symload rforall with GASZ_rforall_c1fr of 1000
 #symload rforall_c1fr with GASZ_rforall_c1fr of 1000
 #symload rforall_f1np with GASZ_rforall_f1np of 1000
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:vt>
+GASZ_rexists_c1fr
+( gasz: GASZ(xs, x0)
+, test: (!x0)-<cfr>bool): bool
+fun
+<xs:t0>
+<x0:vt>
+GASZ_rexists_f1np
+( gasz: GASZ(xs, x0)
+, test: (!x0)-<fnp>bool): bool
+//
+#symload rexists with GASZ_rexists_c1fr of 1000
+#symload rexists_c1fr with GASZ_rexists_c1fr of 1000
+#symload rexists_f1np with GASZ_rexists_f1np of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
