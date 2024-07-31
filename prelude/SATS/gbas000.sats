@@ -56,6 +56,16 @@ g_copy( !a ): ( a )
 //
 fun
 <a:t0>
+g_work(x : a): void
+fun
+<a:t0>
+g_test(x : a): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:t0>
 g_equal(a, a): bool
 fun
 <a:t0>

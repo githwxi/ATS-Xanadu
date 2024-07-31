@@ -72,15 +72,26 @@ fun
 g_updt(x : &(a) >> _): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:t0>
+g_work(x : a): void
+fun
+<a:t0>
+g_test(x : a): boo1
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <a:vt>
-g_sel2
+g_s2el
 ( x0: !(a)
 , x1: !(a)): nintlt(2)
 fun
 <a:vt>
-g_sel3
+g_s3el
 ( x0: !(a)
 , x1: !(a)
 , x2: !(a)): nintlt(3)

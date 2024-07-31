@@ -763,6 +763,167 @@ gs_free_a12
 (* ****** ****** *)
 //
 #impltmp
+< x0:t0 >
+gs_work_a1
+  ( x0 ) =
+(
+  g_work<x0>(x0))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+gs_work_a2
+  (x0, x1) =
+(
+  g_work<x0>(x0); g_work<x1>(x1))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+gs_work_a3
+  (x0, x1, x2) =
+( g_work<x0>(x0)
+; g_work<x1>(x1); g_work<x2>(x2))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+gs_work_a4
+  (x0, x1, x2, x3) =
+( g_work<x0>(x0); g_work<x1>(x1)
+; g_work<x2>(x2); g_work<x3>(x3))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+gs_work_a5
+  (x0, x1, x2, x3, x4) =
+( g_work<x0>(x0); g_work<x1>(x1)
+; g_work<x2>(x2); g_work<x3>(x3); g_work<x4>(x4))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+gs_work_a6
+  (x0, x1, x2, x3, x4, x5) =
+( g_work<x0>(x0); g_work<x1>(x1); g_work<x2>(x2)
+; g_work<x3>(x3); g_work<x4>(x4); g_work<x5>(x5))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
+gs_work_a7
+  (x0, x1, x2, x3, x4, x5, x6) =
+( g_work<x0>(x0)
+; g_work<x1>(x1); g_work<x2>(x2); g_work<x3>(x3)
+; g_work<x4>(x4); g_work<x5>(x5); g_work<x6>(x6))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
+< x7:t0 >
+gs_work_a8
+  (x0, x1, x2, x3, x4, x5, x6, x7) =
+( g_work<x0>(x0); g_work<x1>(x1)
+; g_work<x2>(x2); g_work<x3>(x3); g_work<x4>(x4)
+; g_work<x5>(x5); g_work<x6>(x6); g_work<x7>(x7))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
+< x7:t0 >
+< x8:t0 >
+gs_work_a9
+  (x0, x1, x2, x3, x4, x5, x6, x7, x8) =
+( g_work<x0>(x0); g_work<x1>(x1); g_work<x2>(x2)
+; g_work<x3>(x3); g_work<x4>(x4); g_work<x5>(x5)
+; g_work<x6>(x6); g_work<x7>(x7); g_work<x8>(x8))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
+< x7:t0 >
+< x8:t0 >
+< x9:t0 >
+gs_work_a10
+  (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9) =
+( g_work<x0>(x0); g_work<x1>(x1); g_work<x2>(x2)
+; g_work<x3>(x3); g_work<x4>(x4); g_work<x5>(x5)
+; g_work<x6>(x6); g_work<x7>(x7); g_work<x8>(x8); g_work<x9>(x9))
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
+< x7:t0 >
+< x8:t0 >
+< x9:t0 >
+< x10:t0 >
+gs_work_a11
+  (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10) =
+( g_work<x0>(x0); g_work<x1>(x1); g_work<x2>(x2)
+; g_work<x3>(x3); g_work<x4>(x4); g_work<x5>(x5); g_work<x6>(x6)
+; g_work<x7>(x7); g_work<x8>(x8); g_work<x9>(x9); g_work<x10>(x10))
+//
+#impltmp
+< x0:t0 >
+< x1:t0 >
+< x2:t0 >
+< x3:t0 >
+< x4:t0 >
+< x5:t0 >
+< x6:t0 >
+< x7:t0 >
+< x8:t0 >
+< x9:t0 >
+< x10:t0 >
+< x11:t0 >
+gs_work_a12
+  (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11) =
+( g_work<x0>(x0); g_work<x1>(x1); g_work<x2>(x2); g_work<x3>(x3)
+; g_work<x4>(x4); g_work<x5>(x5); g_work<x6>(x6); g_work<x7>(x7)
+; g_work<x8>(x8); g_work<x9>(x9); g_work<x10>(x10); g_work<x11>(x11))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 <(*tmp*)>
 gs_print$beg() = ()
 //
