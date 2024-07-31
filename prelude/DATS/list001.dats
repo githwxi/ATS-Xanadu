@@ -68,6 +68,7 @@ gseq_forall
 #impltmp
 { x0:t0 }
 gseq_forall0
+<list(x0)><x0>(xs) =
 list_forall<x0>(xs) where
 {
 #impltmp
@@ -104,6 +105,7 @@ gseq_rforall
 #impltmp
 { x0:t0 }
 gseq_rforall0
+<list(x0)><x0>(xs) =
 list_rforall<x0>(xs) where
 {
 #impltmp
@@ -286,6 +288,147 @@ gseq_rstrmize0<list(x0)><x0> = list_rstrmize<x0>
 #impltmp
 { x0:t0 }
 gseq_rstrmize1<list(x0)><x0> = list_rstrmize<x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-31:
+Wed 31 Jul 2024 10:34:56 AM EDT
+*)
+//
+#impltmp
+< x0:t0 >
+list_c2hoose_lstrm
+  ( xs ) =
+(
+  auxmain(xs)) where
+{
+fun auxmain(xs) = $llazy
+(
+//
+case+ xs of
+|
+list_nil() =>
+strmcon_vt_nil(*void*)
+|
+list_cons(x1, xs) => !
+(
+strm_vt_append00
+<y0>(r1, auxmain(xs))
+) where
+{
+//
+#typedef xs = list(x0)
+#typedef y0 = @(x0, x0)
+//
+val r1 =
+(
+gseq_map_lstrm<xs><x0><y0>(xs)
+) where
+{
+#impltmp
+map$fopr<x0><y0>(x2) = @(x1, x2) } }//whr
+)(*case+*)
+}(*where*)//end-of-[list_c2hoose_lstrm(xs)]
+//
+#impltmp
+< x0:t0 >
+list_c2hoose$forall
+  ( xs ) =
+(
+strm_vt_forall0<x2>
+(list_c2hoose_lstrm<x0>(xs))
+) where
+{
+#typedef x2 = @(x0, x0)
+#impltmp
+forall$test0<x2>(x2) =
+c2hoose$forall$test<x0>(x2.0, x2.1)
+}(*where*)//end-of-[list_c2hoose$forall(xs)]
+//
+#impltmp
+< x0:t0 >
+list_c2hoose$forall_c2fr
+  (xs, test) =
+(
+list_c2hoose$forall<x0>(xs)
+) where
+{
+#impltmp
+c2hoose$forall$test<x0>(x1, x2) = test(x1, x2)
+}(*where*)//end-of-[list_c2hoose$forall_c2fr(...)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_c3hoose_lstrm
+  ( xs ) =
+(
+  auxmain(xs)) where
+{
+fun auxmain(xs) = $llazy
+(
+//
+case+ xs of
+|
+list_nil() =>
+strmcon_vt_nil(*void*)
+//
+|
+list_cons(x1, xs) => !
+(
+strm_vt_append00
+<y0>(r1, auxmain(xs))
+) where
+{
+//
+#typedef xx = @(x0, x0)
+#typedef y0 = @(x0, x0, x0)
+//
+val r1 =
+(
+strm_vt_map0<xx><y0>
+(list_c2hoose_lstrm<x0>(xs))
+) where
+{
+#impltmp
+map$fopr
+<xx><y0>(xx) = @(x1, xx.0, xx.1) } }//whr
+//
+)(*case+*)
+}(*where*)//end-of-[list_c3hoose_lstrm(xs)]
+//
+#impltmp
+< x0:t0 >
+list_c3hoose$forall
+  ( xs ) =
+(
+strm_vt_forall0<x3>
+(list_c3hoose_lstrm<x0>(xs))
+) where
+{
+#typedef x3 = @(x0, x0, x0)
+#impltmp
+forall$test0<x3>(x3) =
+c3hoose$forall$test<x0>(x3.0, x3.1, x3.2)
+}(*where*)//end-of-[list_c3hoose$forall(xs)]
+//
+#impltmp
+< x0:t0 >
+list_c3hoose$forall_c3fr
+  (xs, test) =
+(
+list_c3hoose$forall<x0>(xs)
+) where
+{
+#impltmp
+c3hoose$forall$test<x0>(x1, x2, x3) = test(x1, x2, x3)
+}(*where*)//end-of-[list_c3hoose$forall_c3fr(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)

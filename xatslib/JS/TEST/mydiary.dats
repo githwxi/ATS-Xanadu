@@ -189,9 +189,21 @@ val () = print1s
 ("rlistize(",An,") = ",rlistize(GASZ(An)),"\n")
 //
 (* ****** ****** *)
+(* ****** ****** *)
 val N = 10
 val () = print1s
+("listize(",N,") = ",listize(GSEQ_nint0(N)),"\n")
+val () = print1s
 ("rlistize(",N,") = ",rlistize(GSEQ_nint0(N)),"\n")
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val x2s = list_c2hoose_lstrm(xs)
+val ( ) = print1s("x2s = ", listize0(x2s), "\n")
+val x3s = list_c3hoose_lstrm(xs)
+val ( ) = print1s("x3s = ", listize0(x3s), "\n")
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
