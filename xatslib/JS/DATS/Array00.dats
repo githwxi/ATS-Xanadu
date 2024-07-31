@@ -469,7 +469,7 @@ Thu 25 Jul 2024 03:08:18 PM EDT
 jsarray_make0_lstrm
   {a:vt}( xs ) =
 (
-jsarray_make0_fwork<>
+jsarray_fmake_fwork<>
 (lam(work) => xs.foritm0(work)))
 //
 #impltmp
@@ -483,15 +483,15 @@ g_make0_lstrm
 //
 #impltmp
 <(*tmp*)>
-jsarray_make0_fwork
+jsarray_fmake_fwork
   (fwork) =
 (
-XATS2JS_jsarray_make0_fwork
+XATS2JS_jsarray_fmake_fwork
   (fwork)) where
 {
 #extern
 fun
-XATS2JS_jsarray_make0_fwork
+XATS2JS_jsarray_fmake_fwork
  {a:vt}
 (fwork: ~fwork(a)): jsa(a) = $extnam()
 }

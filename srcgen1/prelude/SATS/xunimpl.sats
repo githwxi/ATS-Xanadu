@@ -686,6 +686,21 @@ gseq_foritm_f1np
 #symload foritm_cfr with gseq_foritm_c1fr of 0100
 #symload foritm_fnp with gseq_foritm_f1np of 0100
 //
+fun
+<xs:t0>
+<x0:t0>
+gseq_rforitm_c1fr
+(xs: xs, work: (x0)-<cfr>void): void
+fun
+<xs:t0>
+<x0:t0>
+gseq_rforitm_f1np
+(xs: xs, work: (x0)-<fnp>void): void
+//
+#symload rforitm with gseq_rforitm_c1fr of 0100
+#symload rforitm_cfr with gseq_rforitm_c1fr of 0100
+#symload rforitm_fnp with gseq_rforitm_f1np of 0100
+//
 (* ****** ****** *)
 //
 fun
@@ -799,6 +814,29 @@ list_c3hoose$forall_c3fr
 //
 #symload c3hoose$forall with list_c3hoose$forall
 #symload c3hoose$forall with list_c3hoose$forall_c3fr
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-31:
+Wed 31 Jul 2024 12:53:34 PM EDT
+*)
+//
+fun
+<x0:vt> // HX: vt!
+fmake$fwork((*void*)): void
+fun
+<x0:t0>
+fmake$fwork$work(x0: x0): void
+//
+fun
+<x0:t0>
+list_fmake((*void*)): list(x0)
+fun
+<x0:t0>
+list_fmake_fwork
+(fwork: (x0 -<cfr> void) -<cfr> void): list(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

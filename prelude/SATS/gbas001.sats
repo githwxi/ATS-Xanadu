@@ -273,6 +273,16 @@ irexists$test(ni, x0): bool
 (* ****** ****** *)
 //
 fun
+<x0:vt> // HX: vt!
+fmake$fwork((*void*)): void
+fun
+<x0:t0>
+fmake$fwork$work(x0: x0): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 <x0:t0>
 c2hoose$forall$test(x0, x0): bool
 fun
