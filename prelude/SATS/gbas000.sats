@@ -40,7 +40,7 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 <a:vt>
-g_iden( a ): ( a )
+g_self( a ): ( a )
 //
 (* ****** ****** *)
 //

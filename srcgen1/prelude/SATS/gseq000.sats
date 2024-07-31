@@ -1657,9 +1657,24 @@ gseq_forall_f1np
 ( xs: xs
 , fnp: (x0) -<fnp> bool): (bool)
 (* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+gseq_rforall_c1fr
+( xs: xs
+, cfr: (x0) -<cfr> bool): (bool)
+fun
+<xs:t0>
+<x0:t0>
+gseq_rforall_f1np
+( xs: xs
+, fnp: (x0) -<fnp> bool): (bool)
+(* ****** ****** *)
+(* ****** ****** *)
 //
 // HX: gseq_foreach
 //
+(* ****** ****** *)
 (* ****** ****** *)
 fun
 <xs:t0>
@@ -1673,6 +1688,7 @@ fun
 gseq_foreach_f1np
 ( xs: xs
 , fnp: (x0) -<fnp> void): (void)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*

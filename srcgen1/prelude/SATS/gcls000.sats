@@ -78,8 +78,26 @@ fun
 <x0:t0>
 GSEQ_forall
 (gseq: GSEQ(xs, x0)): bool
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_rforall
+(gseq: GSEQ(xs, x0)): bool
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_iforall
+(gseq: GSEQ(xs, x0)): bool
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_irforall
+(gseq: GSEQ(xs, x0)): bool
 //
 #symload forall with GSEQ_forall of 1000
+#symload rforall with GSEQ_rforall of 1000
+#symload iforall with GSEQ_rforall of 1000
+#symload irforall with GSEQ_rforall of 1000
 //
 (* ****** ****** *)
 //
@@ -101,6 +119,25 @@ GSEQ_forall_f1np
 #symload forall_f1np with GSEQ_forall_f1np of 1000
 //
 (* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_rforall_c1fr
+( gseq: GSEQ(xs, x0)
+, test: (x0)-<cfr>bool): bool
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_rforall_f1np
+( gseq: GSEQ(xs, x0)
+, test: (x0)-<fnp>bool): bool
+//
+#symload rforall with GSEQ_rforall_c1fr of 1000
+#symload rforall_c1fr with GSEQ_rforall_c1fr of 1000
+#symload rforall_f1np with GSEQ_rforall_f1np of 1000
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -108,8 +145,26 @@ fun
 <x0:vt>
 GASZ_forall
 (gasz: GASZ(xs, x0)): bool
+fun
+<xs:t0>
+<x0:vt>
+GASZ_rforall
+(gasz: GASZ(xs, x0)): bool
+fun
+<xs:t0>
+<x0:vt>
+GASZ_iforall
+(gasz: GASZ(xs, x0)): bool
+fun
+<xs:t0>
+<x0:vt>
+GASZ_irforall
+(gasz: GASZ(xs, x0)): bool
 //
 #symload forall with GASZ_forall of 1000
+#symload rforall with GASZ_rforall of 1000
+#symload iforall with GASZ_iforall of 1000
+#symload irforall with GASZ_irforall of 1000
 //
 (* ****** ****** *)
 //
@@ -129,6 +184,25 @@ GASZ_forall_f1np
 #symload forall with GASZ_forall_c1fr of 1000
 #symload forall_c1fr with GASZ_forall_c1fr of 1000
 #symload forall_f1np with GASZ_forall_f1np of 1000
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:vt>
+GASZ_rforall_c1fr
+( gasz: GASZ(xs, x0)
+, test: (!x0)-<cfr>bool): bool
+fun
+<xs:t0>
+<x0:vt>
+GASZ_rforall_f1np
+( gasz: GASZ(xs, x0)
+, test: (!x0)-<fnp>bool): bool
+//
+#symload rforall with GASZ_rforall_c1fr of 1000
+#symload rforall_c1fr with GASZ_rforall_c1fr of 1000
+#symload rforall_f1np with GASZ_rforall_f1np of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

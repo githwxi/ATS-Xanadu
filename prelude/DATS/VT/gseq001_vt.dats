@@ -120,7 +120,7 @@ list_vt_cons(g_copy<x0>(x0), r0)
 #impltmp
 { x0:vt }
 gseq_listize0
-<list_vt(x0)><x0> = g_iden<list_vt(x0)>
+<list_vt(x0)><x0> = g_self<list_vt(x0)>
 #impltmp
 { x0:vt }
 gseq_listize1
