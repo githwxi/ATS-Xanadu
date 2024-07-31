@@ -135,6 +135,27 @@ gseq_rforall_c1fr<xs><x0>(GSEQ_unmk(gseq), test))
 //
 #impltmp
 <xs : t0>
+<x0 : t0>
+GSEQ_exists_c1fr
+  (gseq, test) =
+(
+gseq_exists_c1fr<xs><x0>(GSEQ_unmk(gseq), test))
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+GSEQ_rexists_c1fr
+  (gseq, test) =
+(
+gseq_rexists_c1fr<xs><x0>(GSEQ_unmk(gseq), test))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<xs : t0>
 <x0 : vt>
 GASZ_listize
   (gasz) =
@@ -202,6 +223,27 @@ GASZ_rforall_c1fr
   (gasz, test) =
 (
 gasz_rforall_c1fr<xs><x0>(GASZ_unmk(gasz), test))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<xs : t0>
+<x0 : vt>
+GASZ_exists_c1fr
+  (gasz, test) =
+(
+gasz_exists_c1fr<xs><x0>(GASZ_unmk(gasz), test))
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs : t0>
+<x0 : vt>
+GASZ_rexists_c1fr
+  (gasz, test) =
+(
+gasz_rexists_c1fr<xs><x0>(GASZ_unmk(gasz), test))
 //
 (* ****** ****** *)
 (* ****** ****** *)
