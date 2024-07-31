@@ -661,6 +661,12 @@ the_prelude_load
 , 0(*static*)
 , "srcgen1/prelude/SATS/gsyn000.sats")
 //
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "srcgen1/prelude/SATS/gsyn001.sats")
+//
 (* ****** ****** *)
 //
 val () =
