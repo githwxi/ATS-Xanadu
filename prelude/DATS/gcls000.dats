@@ -62,6 +62,25 @@ GASZ_unmk
 #impltmp
 <xs : t0>
 <x0 : t0>
+GSEQ_listize
+  (gseq) =
+(
+gseq_listize<xs><x0>(GSEQ_unmk(gseq)))
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+GSEQ_rlistize
+  (gseq) =
+(
+gseq_rlistize<xs><x0>(GSEQ_unmk(gseq)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
 GSEQ_forall
   (gseq) =
 (
