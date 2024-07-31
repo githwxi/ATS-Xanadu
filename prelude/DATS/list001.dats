@@ -51,7 +51,8 @@ loop
 (
 case+ xs of
 | ~
-list_nil() => ( true )
+list_nil() =>
+  ( true )
 | ~
 list_cons(x1, xs) =>
 let
@@ -117,6 +118,16 @@ list_rforall<x0>(xs) where
 #impltmp
 rforall$test<x0>(x0) = rforall$test1<x0>(x0)
 }
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_iforall = gseq_iforall<list(x0)><x0>
+//
+#impltmp
+< x0:t0 >
+list_irforall = gseq_irforall<list(x0)><x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -204,6 +215,18 @@ list_rforitm<x0>(xs)) where
 #impltmp
 rforitm$work<x0> = rforitm$work1<x0>
 }
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_iforitm = gseq_iforitm<list(x0)><x0>
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_irforitm = gseq_irforitm<list(x0)><x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)

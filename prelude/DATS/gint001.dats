@@ -320,7 +320,7 @@ if
 (i0 <= 0)
 then r0 else
 let
-val y0 = map$fopr<ni><y0>(i0-1)
+val y0 = rmap$fopr<ni><y0>(i0-1)
 in//let
   loop(i0-1, list_vt_cons(y0,r0))
 end(*let*)//else//end-of-[if(...)]

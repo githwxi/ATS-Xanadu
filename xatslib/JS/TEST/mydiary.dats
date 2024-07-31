@@ -178,10 +178,20 @@ val () = prints("rb1 = ", rb1, "\n")
 (* ****** ****** *)
 (* ****** ****** *)
 //
+val N = 10
+val () = print1s
+("rlistize(",N,") = ",rlistize(GSEQ(N)),"\n")
 val () = print1s
 ("rlistize(",xs,") = ",rlistize(GSEQ(xs)),"\n")
+val () = print1s
+("rlistize(",An,") = ",rlistize(GSEQ(An)),"\n")
+val () = print1s
+("rlistize(",An,") = ",rlistize(GASZ(An)),"\n")
 //
 (* ****** ****** *)
+val N = 10
+val () = print1s
+("rlistize(",N,") = ",rlistize(GSEQ_nint0(N)),"\n")
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)

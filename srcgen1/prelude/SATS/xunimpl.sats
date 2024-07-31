@@ -59,6 +59,22 @@ fun
 irforall$test(ni, x0): bool
 //
 (* ****** ****** *)
+(*
+fun
+<x0:vt>
+exists$test(ni, x0): bool
+fun
+<x0:vt>
+rexists$test(ni, x0): bool
+fun
+<x0:vt>
+iexists$test(ni, x0): bool
+*)
+fun
+<x0:vt>
+irexists$test(ni, x0): bool
+//
+(* ****** ****** *)
 //
 fun
 <x0:t0>

@@ -222,33 +222,6 @@ map_llist with jsarray_map_llist_c1fr of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2024-07-29:
-Mon 29 Jul 2024 11:19:25 PM EDT
-*)
-//
-(* ****** ****** *)
-//
-#extern
-fun
-GASZ_make_jsarray
-{ a:vt }
-(A: jsa(a)): GASZ(jsa(a), a)
-#impltmp
-GASZ_make_jsarray
-{ a:vt }(  A  ) =
-let
-#vwtpdef x0 = a
-#typedef xs = jsa(a)
-in//let
-$UN.castxy{xs}{GASZ(xs,x0)}(A)
-end//let//end-of-[GASZ_make_jsarray]
-//
-#symload GASZ with GASZ_make_jsarray of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

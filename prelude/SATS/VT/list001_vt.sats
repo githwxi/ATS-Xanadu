@@ -163,6 +163,30 @@ list_vt_irfoldall0
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-31:
+Wed 31 Jul 2024 03:16:49 AM EDT
+*)
+fun
+<x0:vt>
+list_vt_c2hoose0_lstrm
+(xs: ~list_vt(x0)): strm_vt@(x0, x0)
+fun
+<x0:vt>
+list_vt_c3hoose0_lstrm
+(xs: ~list_vt(x0)): strm_vt@(x0, x0, x0)
+//
+fun
+<x0:vt>
+list_vt_nchoose0_lstrm$llist
+{n0:nat}
+( xs:
+~ list_vt(x0)
+, n0: nint(n0)): strm_vt(list_vt(x0, n0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

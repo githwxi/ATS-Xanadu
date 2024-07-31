@@ -58,6 +58,18 @@ GLSEQ_unmk0(GLSEQ(xs, x0)): (xs)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fcast // fun
+GLSEQ_make0_list_vt
+{a:vt}
+(xs:list_vt(a)): GLSEQ(list_vt(a),a)
+#symload
+GLSEQ with GLSEQ_make0_list_vt of 1000
+#symload
+GLSEQ_list_vt with GLSEQ_make0_list_vt of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <xs:vt>
 <x0:vt>
@@ -109,15 +121,6 @@ GLSEQ_forall1_f1np
 #symload forall1 with GLSEQ_forall1_c1fr of 1000
 #symload forall1_c1fr with GLSEQ_forall1_c1fr of 1000
 #symload forall1_f1np with GLSEQ_forall1_f1np of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-GLSEQ_make0_list_vt
-{a:vt}
-(xs:list_vt(a)): GLSEQ(list_vt(a),a)
-#symload GLSEQ with GLSEQ_make0_list_vt of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

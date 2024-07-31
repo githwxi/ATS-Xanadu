@@ -74,18 +74,6 @@ gseq_forall0_c1fr<xs><x0>(GLSEQ_unmk0(gseq), test))
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-GLSEQ_make0_list_vt
-{ x0:vt }(  xs  ) =
-let
-#vwtpdef xs = list_vt(x0)
-in//let
-$UN.castlinxy{xs}{GLSEQ(xs,x0)}(xs)
-end//let//end-of-[GLSEQ_make0_list_vt]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

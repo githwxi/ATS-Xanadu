@@ -56,7 +56,7 @@ nint_map_llist<x0>(n0))
 where
 {
 #impltmp
-map$fopr<ni>(i0) =
+map$fopr<ni><x0>(i0) =
 (gasz_cget_at_raw<xs><x0>(xs, i0))
 }
 end//let//end-of-[gasz_listize(xs)]
@@ -78,7 +78,7 @@ nint_rmap_llist<x0>(n0))
 where
 {
 #impltmp
-rmap$fopr<ni>(i0) =
+rmap$fopr<ni><x0>(i0) =
 (gasz_cget_at_raw<xs><x0>(xs, i0))
 }
 end//let//end-of-[gasz_rlistize(xs)]
