@@ -46,6 +46,11 @@ fun
 <x0:vt>
 gasz_listize
  ( xs: xs ): list_vt(x0)
+fun
+<xs:t0>
+<x0:vt>
+gasz_rlistize
+ ( xs: xs ): list_vt(x0)
 //
 (* ****** ****** *)
 //

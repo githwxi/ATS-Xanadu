@@ -176,11 +176,10 @@ rforall(GASZ(An), lam(x) => (print("x=",x);x >= 0))
 val () = prints("rb1 = ", rb1, "\n")
 //
 (* ****** ****** *)
-////
 (* ****** ****** *)
 //
 val () = print1s
-("ilistize(",xs,") = ",rlistize(GSEQ(xs)),"\n")
+("rlistize(",xs,") = ",rlistize(GSEQ(xs)),"\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -54,21 +54,42 @@ GASZ_type
 fun
 <xs:t0>
 <x0:t0>
-GSEQ_make(xs): GSEQ(xs, x0)
+GSEQ_make
+(xs: xs): GSEQ(xs, x0)
 fun
 <xs:t0>
 <x0:vt>
-GASZ_make(xs): GASZ(xs, x0)
+GASZ_make
+(xs: xs): GASZ(xs, x0)
 *)
 //
 fun
 <xs:t0>
 <x0:t0>
-GSEQ_unmk(GSEQ(xs, x0)): (xs)
+GSEQ_unmk
+(gseq: GSEQ(xs, x0)): (xs)
 fun
 <xs:t0>
 <x0:vt>
-GASZ_unmk(GASZ(xs, x0)): (xs)
+GASZ_unmk
+(gasz: GASZ(xs, x0)): (xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_listize
+(GSEQ(xs,x0)): list_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_rlistize
+(GSEQ(xs,x0)): list_vt(x0)
+//
+#symload listize with GSEQ_listize of 1000
+#symload rlistize with GSEQ_rlistize of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
