@@ -99,7 +99,7 @@ XATS2JS_jsarray_make0_3val
 // Thu 25 Jul 2024 06:03:30 PM EDT
 //
 function
-XATS2JS_jsarray_make0_fwork
+XATS2JS_jsarray_fmake_fwork
   (fwork)
 {
   let A = []

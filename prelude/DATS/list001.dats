@@ -37,6 +37,10 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsfx00.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 < x0:t0 >
@@ -426,6 +430,46 @@ list_c3hoose$forall<x0>(xs)
 #impltmp
 c3hoose$forall$test<x0>(x1, x2, x3) = test(x1, x2, x3)
 }(*where*)//end-of-[list_c3hoose$forall_c3fr(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_fmake() =
+(
+let
+val () = fmake$fwork<x0>()
+in//let
+list_vt2t(list_vt_reverse0<x0>(r0))
+end
+) where
+{
+//
+var r0:
+list_vt(x0) =
+list_vt_nil()
+val p0 = $addr(r0)
+//
+#impltmp
+fmake$fwork$work<x0>(x0) =
+$UN.p2tr_set
+(p0,list_vt_cons(x0, $UN.p2tr_get(p0)))
+}
+//
+#impltmp
+< x0:t0 >
+list_fmake_fwork
+  (fwork) =
+(
+  list_fmake<x0>()) where
+{
+#impltmp
+fmake$fwork<x0>
+  ((*void*)) =
+(
+  fwork(lam(x0) => fmake$fwork$work<x0>(x0)))
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)

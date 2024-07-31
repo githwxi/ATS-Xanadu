@@ -278,6 +278,34 @@ foritm$work<x0>(x0) = work(x0)
 }
 //
 (* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_rforitm_c1fr
+  (xs, work) =
+(
+gseq_rforitm
+<xs><x0>(xs)) where
+{
+#impltmp
+rforitm$work<x0>(x0) = work(x0)
+}
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_rforitm_f1np
+  (xs, work) =
+(
+gseq_rforitm
+<xs><x0>(xs)) where
+{
+#impltmp
+rforitm$work<x0>(x0) = work(x0)
+}
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp

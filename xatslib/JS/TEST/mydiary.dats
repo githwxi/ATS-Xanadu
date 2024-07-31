@@ -206,6 +206,19 @@ val ( ) = print1s("x3s = ", listize0(x3s), "\n")
 (* ****** ****** *)
 (* ****** ****** *)
 //
+val xs2 =
+list_fmake_fwork
+(lam(work)=>(foritm(xs, work);rforitm(xs, work)))
+val ( ) = prints("list_fmake_fwork(...) = ", xs2, "\n")
+//
+val An2 =
+jsarray_fmake_fwork
+(lam(work)=>(foritm(An, work);rforitm(An, work)))
+val ( ) = prints("jsarray_fmake_fwork(...) = ", An2, "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
