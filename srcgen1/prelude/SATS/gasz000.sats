@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sun 21 Jul 2024 02:22:12 PM EDT
+Sun 21 Jul 2024 02:16:49 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -44,122 +44,51 @@ Authoremail: gmhwxiATgmailDOTcom
 fun
 <xs:t0>
 <x0:vt>
-gasz_listize
- ( xs: xs ): list_vt(x0)
+gasz_length(xs: xs): nint
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
-<x0:vt>
-gasz_strmize
- ( xs: xs ): strm_vt(x0)
+<x0:t0>
+gasz_get_at
+(xs: xs, i0: ni): (x0)
 fun
 <xs:t0>
-<x0:vt>
-gasz_rstrmize
- ( xs: xs ): strm_vt(x0)
+<x0:t0>
+gasz_set_at
+(xs: xs, i0: ni, x0: x0): void
 //
-fun
-<xs:t0>
-<x0:vt>
-gasz_strqize
- ( xs: xs ): strq_vt(x0)
-fun
-<xs:t0>
-<x0:vt>
-gasz_rstrqize
- ( xs: xs ): strq_vt(x0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:vt>
-gasz_forall(xs: xs): bool
-fun
-<xs:t0>
-<x0:vt>
-gasz_rforall(xs: xs): bool
-fun
-<xs:t0>
-<x0:vt>
-gasz_iforall(xs: xs): bool
-fun
-<xs:t0>
-<x0:vt>
-gasz_irforall(xs: xs): bool
-//
-(*
-#symload forall with gasz_forall of 0100
-#symload rforall with gasz_rforall of 0100
-*)
-//
-fun
-<xs:t0>
-<x0:vt>
-gasz_forall_c1fr
-(xs: xs, test: (!x0)-<cfr>bool): bool
-fun
-<xs:t0>
-<x0:vt>
-gasz_forall_f1np
-(xs: xs, test: (!x0)-<fnp>bool): bool
-//
-#symload forall with gasz_forall_c1fr of 0100
-#symload forall_cfr with gasz_forall_c1fr of 0100
-#symload forall_fnp with gasz_forall_f1np of 0100
-//
-fun
-<xs:t0>
-<x0:vt>
-gasz_rforall_c1fr
-(xs: xs, test: (!x0)-<cfr>bool): bool
-fun
-<xs:t0>
-<x0:vt>
-gasz_rforall_f1np
-(xs: xs, test: (!x0)-<fnp>bool): bool
-//
-#symload rforall with gasz_rforall_c1fr of 0100
-#symload rforall_cfr with gasz_rforall_c1fr of 0100
-#symload rforall_fnp with gasz_rforall_f1np of 0100
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
-HX-2024-07-25:
-Thu 25 Jul 2024 01:47:26 PM EDT
+HX-2024-07-26:
+These should be
+used with caution!!!
 *)
-//
 fun
+<xs:t0>
 <x0:vt>
-mapref$fopr0(~x0): x0
+gasz_get_at_raw
+( xs: xs
+, i0: ni): (owed(x0) | x0)
 fun
+<xs:t0>
 <x0:vt>
-mapref$fopr1(!x0): x0
-fun
-<x0:vt>
-mapref$fopr1r
-( ref: &x0 >> x0 ): void
-(*
-fun
-<x0:vt>
-mapref$fopr$clr
-( ref: &x0 >> ?x0 ): void
-*)
+gasz_set_at_raw
+( pf: owed(x0)
+| xs: xs, i0: ni, x0: x0): void
 //
 fun
 <xs:t0>
 <x0:vt>
-gasz_mapref(xs: xs): void
+gasz_cget_at_raw
+( xs: xs, i0: ni): x0
 fun
 <xs:t0>
 <x0:vt>
-gasz_mapref_c1fr
-(xs: xs, fopr: (~x0)-<cfr>(x0)): void
+gasz_setf_at_raw
+( xs: xs, i0: ni, x0: x0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -167,4 +96,4 @@ gasz_mapref_c1fr
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_gasz001.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_gasz000.sats] *)

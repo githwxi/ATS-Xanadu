@@ -30,34 +30,55 @@
 (*
 Author: Hongwei Xi
 (*
-Wed 10 Jul 2024 10:39:58 AM EDT
+Mon 22 Jul 2024 12:14:37 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef ni = nint
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef ni = nint
+(* ****** ****** *)
+(* ****** ****** *)
 //
-#impltmp
-{ x0:vt }
-g_self<x0>(obj) = obj
+fun
+<xs:vt>
+<x0:vt>
+gasz_length1(xs: !xs): nint
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:t0> // HX: t0(not(vt))
+gasz_get1_at
+(xs: !xs, i0: ni): (x0)
+fun
+<xs:vt>
+<x0:t0> // HX: t0(not(vt))
+gasz_set1_at
+(xs: !xs, i0: ni, x0: x0): void
+//
+(* ****** ****** *)
+fun
+<xs:vt>
+<x0:vt>
+gasz_get1_at_raw
+(xs: !xs, i0: ni): (x0)
+fun
+<xs:vt>
+<x0:vt>
+gasz_set1_at_raw
+(xs: !xs, i0: ni, x0: x0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2024-07-16:
-g_free0 and g_copy1
-are in [gbas001.dats]
-*)
-#impltmp
-{ x0:t0 }
-g_free<x0>(obj) = ( )
-#impltmp
-{ x0:t0 }
-g_copy<x0>(obj) = obj
-//
-(* ****** ****** *)
-(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_gbas000.dats] *)
+(* end of [ATS3/XANADU_prelude_SATS_VT_gasz000_vt.sats] *)

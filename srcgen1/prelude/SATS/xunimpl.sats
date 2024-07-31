@@ -8,13 +8,7 @@ which are not supposed to be implemented in srcgen1
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef ni = nint
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:vt>
-g_iden(obj: a): (a)
-//
+#typedef si = sint
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -657,106 +651,6 @@ gseq_irz2foritm(xs: xs, ys: ys): void
 (* ****** ****** *)
 //
 (*
-HX-2024-07-22:
-Mon 22 Jul 2024 12:54:06 PM EDT
-*)
-//
-fun
-<xs:t0>
-<x0:vt>
-gasz_length(xs: xs): nint
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:vt>
-gasz_forall(xs: xs): bool
-//
-fun
-<xs:t0>
-<x0:vt>
-gasz_rforall(xs: xs): bool
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:vt>
-gasz_listize(xs: xs): list_vt(x0)
-fun
-<xs:t0>
-<x0:vt>
-gasz_rlistize(xs: xs): list_vt(x0)
-//
-fun
-<xs:t0>
-<x0:vt>
-gasz_strmize(xs: xs): strm_vt(x0)
-fun
-<xs:t0>
-<x0:vt>
-gasz_strqize(xs: xs): strq_vt(x0)
-//
-fun
-<xs:t0>
-<x0:vt>
-gasz_rstrmize(xs: xs): strm_vt(x0)
-fun
-<xs:t0>
-<x0:vt>
-gasz_rstrqize(xs: xs): strq_vt(x0)
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-gasz_get_at(xs: xs, i0: ni): (x0)
-fun
-<xs:t0>
-<x0:t0>
-gasz_set_at(xs: xs, i0: ni, x0: x0): void
-//
-(*
-fun
-<xs:t0>
-<x0:vt>
-gasz_get_at_raw(xs: xs, i0: ni): (x0)
-fun
-<xs:t0>
-<x0:vt>
-gasz_set_at_raw(xs: xs, i0: ni, x0: x0): void
-*)
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:vt>
-gasz_get_at_raw
-(xs: xs, i0: ni): (owed(x0) | x0)
-fun
-<xs:t0>
-<x0:vt>
-gasz_set_at_raw
-(pf: owed(x0) | xs: xs, i0: ni, x0: x0): void
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:vt>
-gasz_cget_at_raw(xs: xs, i0: ni): x0
-fun
-<xs:t0>
-<x0:vt>
-gasz_setf_at_raw(xs: xs, i0: ni, x0: x0): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
 HX-2024-07-25:
 Thu 25 Jul 2024 12:19:14 PM EDT
 *)
@@ -832,62 +726,6 @@ gseq_map_self_f1np
 #symload map with gseq_map_self_c1fr of 0110
 #symload map_cfr with gseq_map_self_c1fr of 0110
 #symload map_fnp with gseq_map_self_c1fr of 0110
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-mapref$fopr0
-  (x0: ~x0): x0
-fun
-<x0:vt>
-mapref$fopr1
-  (x0: !x0): x0
-fun
-<x0:vt>
-mapref$fopr1r
-( ref: &x0 >> x0 ): void
-(*
-fun
-<x0:vt>
-mapref$fopr0r
-( ref: &x0 >> ?x0 ): void
-*)
-//
-fun
-<xs:t0>
-<x0:vt>
-gasz_mapref(xs: xs): void
-fun
-<xs:t0>
-<x0:vt>
-gasz_mapref_c1fr
-(xs: xs, fopr: (~x0)-<cfr>(x0)): void
-//
-#symload mapref with gseq_mapref_c1fr of 0110
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2024-07-30:
-Tue 30 Jul 2024 02:19:43 PM EDT
-*)
-fun
-<xs:t0>
-<x0:vt>
-gasz_forall_c1fr
-(xs: xs, test: (!x0)-<cfr>bool): bool
-fun
-<xs:t0>
-<x0:vt>
-gasz_forall_f1np
-(xs: xs, test: (!x0)-<fnp>bool): bool
-//
-#symload forall with gasz_forall_c1fr of 0100
-#symload forall_cfr with gasz_forall_c1fr of 0100
-#symload forall_fnp with gasz_forall_f1np of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)

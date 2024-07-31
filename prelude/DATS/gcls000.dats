@@ -67,6 +67,30 @@ GSEQ_forall
 (
 gseq_forall<xs><x0>(GSEQ_unmk(gseq)))
 //
+#impltmp
+<xs : t0>
+<x0 : t0>
+GSEQ_rforall
+  (gseq) =
+(
+gseq_rforall<xs><x0>(GSEQ_unmk(gseq)))
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+GSEQ_iforall
+  (gseq) =
+(
+gseq_iforall<xs><x0>(GSEQ_unmk(gseq)))
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+GSEQ_irforall
+  (gseq) =
+(
+gseq_irforall<xs><x0>(GSEQ_unmk(gseq)))
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -76,6 +100,16 @@ GSEQ_forall_c1fr
   (gseq, test) =
 (
 gseq_forall_c1fr<xs><x0>(GSEQ_unmk(gseq), test))
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+GSEQ_rforall_c1fr
+  (gseq, test) =
+(
+gseq_rforall_c1fr<xs><x0>(GSEQ_unmk(gseq), test))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -88,6 +122,30 @@ GASZ_forall
 (
 gasz_forall<xs><x0>(GASZ_unmk(gasz)))
 //
+#impltmp
+<xs : t0>
+<x0 : vt>
+GASZ_rforall
+  (gasz) =
+(
+gasz_rforall<xs><x0>(GASZ_unmk(gasz)))
+//
+#impltmp
+<xs : t0>
+<x0 : vt>
+GASZ_iforall
+  (gasz) =
+(
+gasz_iforall<xs><x0>(GASZ_unmk(gasz)))
+//
+#impltmp
+<xs : t0>
+<x0 : vt>
+GASZ_irforall
+  (gasz) =
+(
+gasz_irforall<xs><x0>(GASZ_unmk(gasz)))
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -97,6 +155,16 @@ GASZ_forall_c1fr
   (gasz, test) =
 (
 gasz_forall_c1fr<xs><x0>(GASZ_unmk(gasz), test))
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs : t0>
+<x0 : vt>
+GASZ_rforall_c1fr
+  (gasz, test) =
+(
+gasz_rforall_c1fr<xs><x0>(GASZ_unmk(gasz), test))
 //
 (* ****** ****** *)
 (* ****** ****** *)

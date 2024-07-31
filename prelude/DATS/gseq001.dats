@@ -132,6 +132,34 @@ forall$test<x0>(x0) = test(x0)
 }
 //
 (* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_rforall_c1fr
+  (xs, test) =
+(
+gseq_rforall
+<xs><x0>(xs)) where
+{
+#impltmp
+rforall$test<x0>(x0) = test(x0)
+}
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_rforall_f1np
+  (xs, test) =
+(
+gseq_rforall
+<xs><x0>(xs)) where
+{
+#impltmp
+rforall$test<x0>(x0) = test(x0)
+}
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp

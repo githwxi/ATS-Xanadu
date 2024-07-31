@@ -30,34 +30,61 @@
 (*
 Author: Hongwei Xi
 (*
-Wed 10 Jul 2024 10:39:58 AM EDT
+Mon 22 Jul 2024 12:14:37 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef ni = nint
+(* ****** ****** *)
+(* ****** ****** *)
 //
-#impltmp
-{ x0:vt }
-g_self<x0>(obj) = obj
+fun
+<xs:vt>
+<x0:vt>
+gasz_listize0
+(xs: ~xs): list_vt(x0)//fun
+//
+fun
+<xs:vt>
+<x0:vt>
+gasz_strmize0
+(xs: ~xs): strm_vt(x0)//fun
+fun
+<xs:vt>
+<x0:vt>
+gasz_strqize0
+(xs: ~xs): strq_vt(x0)//fun
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2024-07-16:
-g_free0 and g_copy1
-are in [gbas001.dats]
-*)
-#impltmp
-{ x0:t0 }
-g_free<x0>(obj) = ( )
-#impltmp
-{ x0:t0 }
-g_copy<x0>(obj) = obj
+fun
+<xs:vt>
+<x0:vt>
+gasz_forall0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gasz_forall1(xs: !xs): bool
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gasz_rforall0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gasz_rforall1(xs: !xs): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_gbas000.dats] *)
+(* end of [ATS3/XANADU_prelude_SATS_VT_gasz001_vt.sats] *)

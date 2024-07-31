@@ -41,7 +41,21 @@ Authoremail: gmhwxiATgmailDOTcom
 "prelude/SATS/unsfx00.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef ut = unit
 #typedef ni = nint
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+gseq_forall
+<ni><ut>(ni) =
+(
+nint_forall(ni)) where
+{
+#impltmp
+forall$test<ni>(i0) = 
+forall$test<ut>(unit())}
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
