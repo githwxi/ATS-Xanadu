@@ -493,7 +493,7 @@ XATS2JS_jsarray_fmake_fwork
 fun
 XATS2JS_jsarray_fmake_fwork
  {a:vt}
-(fwork: ~fwork(a)): jsa(a) = $extnam()
+(fwork: fwork(a)): jsa(a) = $extnam()
 }
 //
 (* ****** ****** *)
