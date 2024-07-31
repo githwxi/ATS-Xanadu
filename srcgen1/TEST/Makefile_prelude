@@ -72,6 +72,8 @@ $(XATSOPT) -s $(PRELUDE)/SATS/gasz001.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gsyn000.sats
 all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gsyn001.sats
+all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/bool000.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/char000.sats
