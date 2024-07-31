@@ -273,6 +273,8 @@ $(XATSOPT) -d $(PRELUDE)/DATS/strn000.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/list000.dats
 all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/list001.dats
+all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/unsfx00.dats
 
 ######

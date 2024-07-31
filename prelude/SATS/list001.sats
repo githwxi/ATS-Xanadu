@@ -91,12 +91,41 @@ Wed 31 Jul 2024 03:16:49 AM EDT
 *)
 fun
 <x0:t0>
-list_c2hoose0_lstrm
+list_c2hoose_lstrm
 (xs: list(x0)): strm_vt@(x0, x0)
+//
+#symload c2hoose_lstrm with list_c2hoose_lstrm
+//
 fun
-<x0:vt>
-list_c3hoose0_lstrm
+<x0:t0>
+list_c2hoose$forall(list(x0)): bool
+fun
+<x0:t0>
+list_c2hoose$forall_c2fr
+(xs:list(x0), test:(x0,x0)-<cfr>bool): bool
+//
+#symload c2hoose$forall with list_c2hoose$forall
+#symload c2hoose$forall with list_c2hoose$forall_c2fr
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+list_c3hoose_lstrm
 (xs: list(x0)): strm_vt@(x0, x0, x0)
+//
+#symload c3hoose_lstrm with list_c3hoose_lstrm
+//
+fun
+<x0:t0>
+list_c3hoose$forall(list(x0)): bool
+fun
+<x0:t0>
+list_c3hoose$forall_c3fr
+(xs:list(x0), test:(x0,x0,x0)-<cfr>bool): bool
+//
+#symload c3hoose$forall with list_c3hoose$forall
+#symload c3hoose$forall with list_c3hoose$forall_c3fr
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -104,4 +133,4 @@ list_c3hoose0_lstrm
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_list000.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_list001.sats] *)

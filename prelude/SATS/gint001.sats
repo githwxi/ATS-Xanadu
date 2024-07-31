@@ -153,6 +153,25 @@ rmap_lstrm_fnp with nint_rmap_lstrm_f1np of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-31:
+Wed 31 Jul 2024 09:05:27 AM EDT
+*)
+//
+fun<>
+nint_digitize
+ (n0: nint): strm_vt(nintlt(10))
+fun<>
+nint_digitize_base
+{base:i0|base >= 2}
+(nint, sint(base)): strm_vt(nintlt(base))
+//
+#symload digitize with nint_digitize of 1000
+#symload digitize with nint_digitize_base of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

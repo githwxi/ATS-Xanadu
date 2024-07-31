@@ -56,6 +56,40 @@ nint_forall(ni)) where
 forall$test<ni>(i0) = 
 forall$test<ut>(unit())}
 //
+#impltmp
+gseq_forall0
+<ni><ut>(ni) =
+(
+gseq_forall<ni><ut>(ni)
+) where
+{
+#impltmp
+forall$test<ut> = forall$test0<ut>
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+gseq_rforall
+<ni><ut>(ni) =
+(
+nint_rforall(ni)) where
+{
+#impltmp
+rforall$test<ni>(i0) = 
+rforall$test<ut>(unit())}
+//
+#impltmp
+gseq_rforall0
+<ni><ut>(ni) =
+(
+gseq_rforall<ni><ut>(ni)
+) where
+{
+#impltmp
+rforall$test<ut> = rforall$test0<ut>
+}
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
