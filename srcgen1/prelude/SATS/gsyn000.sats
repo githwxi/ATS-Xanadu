@@ -706,6 +706,83 @@ gs_print_a12(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11): void
 #symload prints with gs_print_a11
 #symload prints with gs_print_a12
 //
+(*
+HX-2024-07-31:
+Wed 31 Jul 2024 07:34:41 PM EDT
+How about supporting
+the following style of macro form:
+#define printsln@xs (prints@xs; println())
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-31:
+Wed 31 Jul 2024 07:45:52 PM EDT
+*)
+//
+(*
+fun
+<x0:t0>
+gs_append_a0
+( (*void*) ): x0
+fun
+<x0:t0>
+gs_append_a1(x0): x0
+*)
+fun
+<x0:t0>
+gs_append_a2(x0, x0): x0
+fun
+<x0:t0>
+gs_append_a3(x0, x0, x0): x0
+fun
+<x0:t0>
+gs_append_a4(x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_append_a5(x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_append_a6(x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_append_a7(x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_append_a8(x0, x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_append_a9(x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_append_a10(x0, x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_append_a11(x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
+fun
+<x0:t0>
+gs_append_a12(x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0, x0): x0
+//
+(* ****** ****** *)
+//
+(*
+#symload appends with gs_append_a0
+#symload appends with gs_append_a1
+*)
+#symload appends with gs_append_a2
+#symload appends with gs_append_a3
+#symload appends with gs_append_a4
+#symload appends with gs_append_a5
+#symload appends with gs_append_a6
+#symload appends with gs_append_a7
+#symload appends with gs_append_a8
+#symload appends with gs_append_a9
+#symload appends with gs_append_a10
+#symload appends with gs_append_a11
+#symload appends with gs_append_a12
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

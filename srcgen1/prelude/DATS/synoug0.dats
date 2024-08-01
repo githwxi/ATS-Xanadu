@@ -1952,6 +1952,7 @@ HX-2022-07-05:
 Tue Jul  5 13:29:33 EDT 2022
 *)
 //
+(*
 #impltmp
 <>(*tmp*)
 strn_append_a02 =
@@ -1959,7 +1960,9 @@ gs_fred2r_a02<strn> where
 {
 #impltmp
 g_fred2<strn> = strn_append<> }
+*)
 //
+(*
 #impltmp
 <>(*tmp*)
 strn_append_a03 =
@@ -1967,7 +1970,9 @@ gs_fred2r_a03<strn> where
 {
 #impltmp
 g_fred2<strn> = strn_append<> }
+*)
 //
+(*
 #impltmp
 <>(*tmp*)
 strn_append_a04 =
@@ -1975,7 +1980,9 @@ gs_fred2r_a04<strn> where
 {
 #impltmp
 g_fred2<strn> = strn_append<> }
+*)
 //
+(*
 #impltmp
 <>(*tmp*)
 strn_append_a05 =
@@ -1983,7 +1990,9 @@ gs_fred2r_a05<strn> where
 {
 #impltmp
 g_fred2<strn> = strn_append<> }
+*)
 //
+(*
 #impltmp
 <>(*tmp*)
 strn_append_a06 =
@@ -1991,7 +2000,9 @@ gs_fred2r_a06<strn> where
 {
 #impltmp
 g_fred2<strn> = strn_append<> }
+*)
 //
+(*
 #impltmp
 <>(*tmp*)
 strn_append_a07 =
@@ -1999,7 +2010,9 @@ gs_fred2r_a07<strn> where
 {
 #impltmp
 g_fred2<strn> = strn_append<> }
+*)
 //
+(*
 #impltmp
 <>(*tmp*)
 strn_append_a08 =
@@ -2007,7 +2020,9 @@ gs_fred2r_a08<strn> where
 {
 #impltmp
 g_fred2<strn> = strn_append<> }
+*)
 //
+(*
 #impltmp
 <>(*tmp*)
 strn_append_a09 =
@@ -2015,7 +2030,9 @@ gs_fred2r_a09<strn> where
 {
 #impltmp
 g_fred2<strn> = strn_append<> }
+*)
 //
+(*
 #impltmp
 <>(*tmp*)
 strn_append_a10 =
@@ -2023,6 +2040,7 @@ gs_fred2r_a10<strn> where
 {
 #impltmp
 g_fred2<strn> = strn_append<> }
+*)
 //
 (* ****** ****** *)
 //
@@ -2031,6 +2049,7 @@ HX-2022-07-05:
 Tue Jul  5 13:50:57 EDT 2022
 *)
 //
+(*
 #impltmp
 <a0>(*tmp*)
 list_append_a02 =
@@ -2038,7 +2057,9 @@ gs_fred2r_a02<list(a0)> where
 {
 #impltmp
 g_fred2<list(a0)> = list_append<a0> }
+*)
 //
+(*
 #impltmp
 <a0>(*tmp*)
 list_append_a03 =
@@ -2046,7 +2067,9 @@ gs_fred2r_a03<list(a0)> where
 {
 #impltmp
 g_fred2<list(a0)> = list_append<a0> }
+*)
 //
+(*
 #impltmp
 <a0>(*tmp*)
 list_append_a04 =
@@ -2054,7 +2077,9 @@ gs_fred2r_a04<list(a0)> where
 {
 #impltmp
 g_fred2<list(a0)> = list_append<a0> }
+*)
 //
+(*
 #impltmp
 <a0>(*tmp*)
 list_append_a05 =
@@ -2062,7 +2087,9 @@ gs_fred2r_a05<list(a0)> where
 {
 #impltmp
 g_fred2<list(a0)> = list_append<a0> }
+*)
 //
+(*
 #impltmp
 <a0>(*tmp*)
 list_append_a06 =
@@ -2070,7 +2097,9 @@ gs_fred2r_a06<list(a0)> where
 {
 #impltmp
 g_fred2<list(a0)> = list_append<a0> }
+*)
 //
+(*
 #impltmp
 <a0>(*tmp*)
 list_append_a07 =
@@ -2078,7 +2107,9 @@ gs_fred2r_a07<list(a0)> where
 {
 #impltmp
 g_fred2<list(a0)> = list_append<a0> }
+*)
 //
+(*
 #impltmp
 <a0>(*tmp*)
 list_append_a08 =
@@ -2086,7 +2117,9 @@ gs_fred2r_a08<list(a0)> where
 {
 #impltmp
 g_fred2<list(a0)> = list_append<a0> }
+*)
 //
+(*
 #impltmp
 <a0>(*tmp*)
 list_append_a09 =
@@ -2094,7 +2127,9 @@ gs_fred2r_a09<list(a0)> where
 {
 #impltmp
 g_fred2<list(a0)> = list_append<a0> }
+*)
 //
+(*
 #impltmp
 <a0>(*tmp*)
 list_append_a10 =
@@ -2102,6 +2137,7 @@ gs_fred2r_a10<list(a0)> where
 {
 #impltmp
 g_fred2<list(a0)> = list_append<a0> }
+*)
 //
 (* ****** ****** *)
 

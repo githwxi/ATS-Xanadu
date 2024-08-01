@@ -44,6 +44,7 @@ UN = "prelude/SATS/unsafe.sats"
 STM = "./../SATS/xstamp0.sats"
 #staload
 SYM = "./../SATS/xsymbol.sats"
+//
 overload
 fprint with $STM.fprint_stamp
 overload
@@ -55,6 +56,9 @@ fprint with $SYM.fprint_symbol
 LOC = "./../SATS/locinfo.sats"
 #staload
 FP0 = "./../SATS/filpath.sats"
+//
+overload
+fprint with $LOC.fprint_location
 //
 (* ****** ****** *)
 //
@@ -203,8 +207,12 @@ implement
 fprint_d2cst
   (out, x0) =
 (
+(*
 fprint!
 (out, sym, "(", stamp, ")");
+*)
+fprint!
+(out, sym, "(", x0.loc(), ")");
 (*
 fprint!(out, "; tqas= ", x0.tqas());
 fprint!(out, "; sexp= ", x0.sexp());
@@ -212,7 +220,7 @@ fprint!(out, "; type= ", x0.type());
 *)
 ) where
 {
-  val sym = x0.sym() and stamp = x0.stamp()
+val sym = x0.sym() and stamp = x0.stamp()
 } (* end of [fprint_d2cst] *)
 //
 (* ****** ****** *)

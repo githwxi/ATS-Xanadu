@@ -43,6 +43,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
+g_0<strn>() = ("")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 strn_gmake
 <list(cgtz)> = strn_make_list<>
 //
@@ -66,7 +72,6 @@ gseq_foritm<strn><cgtz>
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 #impltmp
 <>(*tmp*)
 strn_forall(cs) =
@@ -75,18 +80,17 @@ strn_forall(cs) =
 where
 {
 //
-val n0 = strn_length(cs)
+val n0 = strn_length<>(cs)
 //
 #impltmp
 iforall$test
-<unit>(i0, _) =
+<nint>(i0, _) =
 (
   forall$test<cgtz>(c0)) where
 {
 val c0 = $UN.strn_get_at<>(cs, i0)
 }
-}
-*)
+}(*where*)//end-of-[strn_forall(cs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

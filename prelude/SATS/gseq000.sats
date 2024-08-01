@@ -173,6 +173,21 @@ gseq_get_at_opt
 (* ****** ****** *)
 //
 (*
+HX-2024-7-31:
+Wed 31 Jul 2024 07:58:53 PM EDT
+*)
+//
+fun
+<xs:t0>
+g_append(y1: xs, y2: xs): (xs)
+//
+(*
+#symload append with g_append of 0100
+*)
+//
+(* ****** ****** *)
+//
+(*
 HX-2024-07-17:
 Wed 17 Jul 2024 12:48:59 PM EDT
 *)
