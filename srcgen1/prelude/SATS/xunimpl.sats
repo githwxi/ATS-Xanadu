@@ -255,6 +255,10 @@ gseq$sep((*0*)): strn
 //
 fun
 <xs:t0>
+g_foritm(xs: xs): void
+//
+fun
+<xs:t0>
 <x0:t0>
 gseq_foritm(xs: xs): void
 fun

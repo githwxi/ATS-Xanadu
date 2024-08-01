@@ -237,9 +237,18 @@ gseq_foldr(xs, r0): r0
 //
 fun
 <xs:t0>
+g_exists(xs): bool
+fun
+<xs:t0>
+g_forall(xs): bool
+fun
+<xs:t0>
+g_foreach(xs): bool
+//
+fun
+<xs:t0>
 <x0:t0>
 gseq_exists(xs): bool
-//
 fun
 <xs:t0>
 <x0:t0>

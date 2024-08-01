@@ -74,6 +74,9 @@ print1s("xs = ", xs, '\n')
 val xs = list_vt2t(xs)
 val () = prints("xs = ", xs, '\n')
 //
+val xs2 = appends(xs, xs)
+val () = prints("xs2 = ", xs2, '\n')
+//
 (* ****** ****** *)
 //
 val ys =
@@ -163,17 +166,23 @@ with GASZ_forall_c1fr of 1000
 //
 val b0 =
 forall(GSEQ(xs), lam(x) => x >= 0)
-val () = prints("b0 = ", b0, "\n")
+val ( ) = prints("b0 = ", b0, "\n")
 val rb0 =
 rforall(GSEQ(xs), lam(x) => x >= 0)
-val () = prints("rb0 = ", rb0, "\n")
+val ( ) = prints("rb0 = ", rb0, "\n")
 //
 val b1 =
-forall(GASZ(An), lam(x) => (print("x=",x);x >= 0))
-val () = prints("b1 = ", b1, "\n")
+forall
+(
+GASZ(An),
+lam(x) => (print("x=", x); x >= 0))
+val ( ) = (prints("b1 = ", b1, "\n"))
 val rb1 =
-rforall(GASZ(An), lam(x) => (print("x=",x);x >= 0))
-val () = prints("rb1 = ", rb1, "\n")
+rforall
+(
+GASZ(An),
+lam(x) => (print("x=", x); x >= 0))
+val ( ) = (prints("rb1 = ", rb1, "\n"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -208,9 +217,12 @@ val ( ) = print1s("x3s = ", listize0(x3s), "\n")
 //
 val ( ) =
 (
-foritms(xs, xs); prints("\n")) where
+prints
+("foritms(xs, A4): ");
+foritms(xs, A4); prints("\n")) where
 {
-  #impltmp foritm$work<sint>(x0) = prints(x0) }//whr
+#impltmp foritm$work<sint>(x0) = prints(x0)
+#impltmp foritm$work<strn>(x0) = prints(x0) }//whr
 //
 (* ****** ****** *)
 (* ****** ****** *)

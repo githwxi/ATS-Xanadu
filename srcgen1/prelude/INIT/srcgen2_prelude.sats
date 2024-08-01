@@ -102,6 +102,8 @@ For further program verification
 //
 #include
 "srcgen1/prelude/SATS/gsyn000.sats"
+#include
+"srcgen1/prelude/SATS/gsyn001.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)

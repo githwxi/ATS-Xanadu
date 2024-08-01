@@ -43,6 +43,19 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
+{ x0:t0 }
+g_forall
+<list(x0)> =
+gseq_forall<list(x0)><x0>
+#impltmp
+{ x0:t0 }
+g_exists
+<list(x0)> =
+gseq_exists<list(x0)><x0>
+//
+(* ****** ****** *)
+//
+#impltmp
 < x0:t0 >
 list_forall
   ( xs ) = 
@@ -137,6 +150,12 @@ list_irforall = gseq_irforall<list(x0)><x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+g_foritm
+<list(x0)> =
+gseq_foritm<list(x0)><x0>
 //
 #impltmp
 < x0:t0 >

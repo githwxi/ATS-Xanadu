@@ -39,141 +39,265 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
-<xs:t0>
-<x0:t0>
-gseqs_forall_a1(xs): bool
+<y0:t0>
+gs_forall_a1(y0): bool
 fun
-<xs:t0>
-<x0:t0>
-gseqs_forall_a2(xs, xs): bool
+<y0:t0>
+<y1:t0>
+gs_forall_a2(y0, y1): bool
 fun
-<xs:t0>
-<x0:t0>
-gseqs_forall_a3(xs, xs, xs): bool
+<y0:t0>
+<y1:t0>
+<y2:t0>
+gs_forall_a3(y0, y1, y2): bool
+//
 fun
-<xs:t0>
-<x0:t0>
-gseqs_forall_a4(xs, xs, xs, xs): bool
+<y0:t0>
+<y1:t0>
+<y2:t0>
+<y3:t0>
+gs_forall_a4(y0, y1, y2, y3): bool
+//
 fun
-<xs:t0>
-<x0:t0>
-gseqs_forall_a5(xs, xs, xs, xs, xs): bool
+<y0:t0>
+<y1:t0>
+<y2:t0>
+<y3:t0>
+<y4:t0>
+gs_forall_a5(y0, y1, y2, y3, y4): bool
+//
 fun
-<xs:t0>
-<x0:t0>
-gseqs_forall_a6(xs, xs, xs, xs, xs, xs): bool
+<y0:t0>
+<y1:t0>
+<y2:t0>
+<y3:t0>
+<y4:t0>
+<y5:t0>
+gs_forall_a6(y0, y1, y2, y3, y4, y5): bool
+//
 fun
-<xs:t0>
-<x0:t0>
-gseqs_forall_a7(xs, xs, xs, xs, xs, xs, xs): bool
+<y0:t0>
+<y1:t0>
+<y2:t0>
+<y3:t0>
+<y4:t0>
+<y5:t0>
+<y6:t0>
+gs_forall_a7(y0, y1, y2, y3, y4, y5, y6): bool
+//
 fun
-<xs:t0>
-<x0:t0>
-gseqs_forall_a8(xs, xs, xs, xs, xs, xs, xs, xs): bool
+<y0:t0>
+<y1:t0>
+<y2:t0>
+<y3:t0>
+<y4:t0>
+<y5:t0>
+<y6:t0>
+<y7:t0>
+gs_forall_a8(y0, y1, y2, y3, y4, y5, y6, y7): bool
+//
 fun
-<xs:t0>
-<x0:t0>
-gseqs_forall_a9(xs, xs, xs, xs, xs, xs, xs, xs, xs): bool
+<y0:t0>
+<y1:t0>
+<y2:t0>
+<y3:t0>
+<y4:t0>
+<y5:t0>
+<y6:t0>
+<y7:t0>
+<y8:t0>
+gs_forall_a9(y0, y1, y2, y3, y4, y5, y6, y7, y8): bool
+//
 fun
-<xs:t0>
-<x0:t0>
-gseqs_forall_a10(xs, xs, xs, xs, xs, xs, xs, xs, xs, xs): bool
+<y0:t0>
+<y1:t0>
+<y2:t0>
+<y3:t0>
+<y4:t0>
+<y5:t0>
+<y6:t0>
+<y7:t0>
+<y8:t0>
+<y9:t0>
+gs_forall_a10(y0, y1, y2, y3, y4, y5, y6, y7, y8, y9): bool
 //
 (* ****** ****** *)
 //
 fun
-<xs:t0>
-<x0:t0>
-gseqs_forall_a11(xs, xs, xs, xs, xs, xs, xs, xs, xs, xs, xs): bool
+<y0:t0>
+<y1:t0>
+<y2:t0>
+<y3:t0>
+<y4:t0>
+<y5:t0>
+<y6:t0>
+<y7:t0>
+<y8:t0>
+<y9:t0>
+<y10:t0>
+gs_forall_a11(y0, y1, y2, y3, y4, y5, y6, y7, y8, y9, y10): bool
+//
 fun
-<xs:t0>
-<x0:t0>
-gseqs_forall_a12(xs, xs, xs, xs, xs, xs, xs, xs, xs, xs, xs, xs): bool
+<y0:t0>
+<y1:t0>
+<y2:t0>
+<y3:t0>
+<y4:t0>
+<y5:t0>
+<y6:t0>
+<y7:t0>
+<y8:t0>
+<y9:t0>
+<y10:t0>
+<y11:t0>
+gs_forall_a12(y0, y1, y2, y3, y4, y5, y6, y7, y8, y9, y10, y11): bool
 //
 (* ****** ****** *)
 //
-#symload foralls with gseqs_forall_a1
-#symload foralls with gseqs_forall_a2
-#symload foralls with gseqs_forall_a3
-#symload foralls with gseqs_forall_a4
-#symload foralls with gseqs_forall_a5
-#symload foralls with gseqs_forall_a6
-#symload foralls with gseqs_forall_a7
-#symload foralls with gseqs_forall_a8
-#symload foralls with gseqs_forall_a9
-#symload foralls with gseqs_forall_a10
-#symload foralls with gseqs_forall_a11
-#symload foralls with gseqs_forall_a12
+#symload foralls with gs_forall_a1
+#symload foralls with gs_forall_a2
+#symload foralls with gs_forall_a3
+#symload foralls with gs_forall_a4
+#symload foralls with gs_forall_a5
+#symload foralls with gs_forall_a6
+#symload foralls with gs_forall_a7
+#symload foralls with gs_forall_a8
+#symload foralls with gs_forall_a9
+#symload foralls with gs_forall_a10
+#symload foralls with gs_forall_a11
+#symload foralls with gs_forall_a12
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-<xs:t0>
-<x0:t0>
-gseqs_foritm_a1(xs): void
+<y0:t0>
+gs_foritm_a1(y0): void
 fun
-<xs:t0>
-<x0:t0>
-gseqs_foritm_a2(xs, xs): void
+<y0:t0>
+<y1:t0>
+gs_foritm_a2(y0, y1): void
 fun
-<xs:t0>
-<x0:t0>
-gseqs_foritm_a3(xs, xs, xs): void
+<y0:t0>
+<y1:t0>
+<y2:t0>
+gs_foritm_a3(y0, y1, y2): void
+//
 fun
-<xs:t0>
-<x0:t0>
-gseqs_foritm_a4(xs, xs, xs, xs): void
+<y0:t0>
+<y1:t0>
+<y2:t0>
+<y3:t0>
+gs_foritm_a4(y0, y1, y2, y3): void
+//
 fun
-<xs:t0>
-<x0:t0>
-gseqs_foritm_a5(xs, xs, xs, xs, xs): void
+<y0:t0>
+<y1:t0>
+<y2:t0>
+<y3:t0>
+<y4:t0>
+gs_foritm_a5(y0, y1, y2, y3, y4): void
+//
 fun
-<xs:t0>
-<x0:t0>
-gseqs_foritm_a6(xs, xs, xs, xs, xs, xs): void
+<y0:t0>
+<y1:t0>
+<y2:t0>
+<y3:t0>
+<y4:t0>
+<y5:t0>
+gs_foritm_a6(y0, y1, y2, y3, y4, y5): void
+//
 fun
-<xs:t0>
-<x0:t0>
-gseqs_foritm_a7(xs, xs, xs, xs, xs, xs, xs): void
+<y0:t0>
+<y1:t0>
+<y2:t0>
+<y3:t0>
+<y4:t0>
+<y5:t0>
+<y6:t0>
+gs_foritm_a7(y0, y1, y2, y3, y4, y5, y6): void
+//
 fun
-<xs:t0>
-<x0:t0>
-gseqs_foritm_a8(xs, xs, xs, xs, xs, xs, xs, xs): void
+<y0:t0>
+<y1:t0>
+<y2:t0>
+<y3:t0>
+<y4:t0>
+<y5:t0>
+<y6:t0>
+<y7:t0>
+gs_foritm_a8(y0, y1, y2, y3, y4, y5, y6, y7): void
+//
 fun
-<xs:t0>
-<x0:t0>
-gseqs_foritm_a9(xs, xs, xs, xs, xs, xs, xs, xs, xs): void
+<y0:t0>
+<y1:t0>
+<y2:t0>
+<y3:t0>
+<y4:t0>
+<y5:t0>
+<y6:t0>
+<y7:t0>
+<y8:t0>
+gs_foritm_a9(y0, y1, y2, y3, y4, y5, y6, y7, y8): void
+//
 fun
-<xs:t0>
-<x0:t0>
-gseqs_foritm_a10(xs, xs, xs, xs, xs, xs, xs, xs, xs, xs): void
+<y0:t0>
+<y1:t0>
+<y2:t0>
+<y3:t0>
+<y4:t0>
+<y5:t0>
+<y6:t0>
+<y7:t0>
+<y8:t0>
+<y9:t0>
+gs_foritm_a10(y0, y1, y2, y3, y4, y5, y6, y7, y8, y9): void
 //
 (* ****** ****** *)
 //
 fun
-<xs:t0>
-<x0:t0>
-gseqs_foritm_a11(xs, xs, xs, xs, xs, xs, xs, xs, xs, xs, xs): void
+<y0:t0>
+<y1:t0>
+<y2:t0>
+<y3:t0>
+<y4:t0>
+<y5:t0>
+<y6:t0>
+<y7:t0>
+<y8:t0>
+<y9:t0>
+<y10:t0>
+gs_foritm_a11(y0, y1, y2, y3, y4, y5, y6, y7, y8, y9, y10): void
+//
 fun
-<xs:t0>
-<x0:t0>
-gseqs_foritm_a12(xs, xs, xs, xs, xs, xs, xs, xs, xs, xs, xs, xs): void
+<y0:t0>
+<y1:t0>
+<y2:t0>
+<y3:t0>
+<y4:t0>
+<y5:t0>
+<y6:t0>
+<y7:t0>
+<y8:t0>
+<y9:t0>
+<y10:t0>
+<y11:t0>
+gs_foritm_a12(y0, y1, y2, y3, y4, y5, y6, y7, y8, y9, y10, y11): void
 //
 (* ****** ****** *)
 //
-#symload foritms with gseqs_foritm_a1
-#symload foritms with gseqs_foritm_a2
-#symload foritms with gseqs_foritm_a3
-#symload foritms with gseqs_foritm_a4
-#symload foritms with gseqs_foritm_a5
-#symload foritms with gseqs_foritm_a6
-#symload foritms with gseqs_foritm_a7
-#symload foritms with gseqs_foritm_a8
-#symload foritms with gseqs_foritm_a9
-#symload foritms with gseqs_foritm_a10
-#symload foritms with gseqs_foritm_a11
-#symload foritms with gseqs_foritm_a12
+#symload foritms with gs_foritm_a1
+#symload foritms with gs_foritm_a2
+#symload foritms with gs_foritm_a3
+#symload foritms with gs_foritm_a4
+#symload foritms with gs_foritm_a5
+#symload foritms with gs_foritm_a6
+#symload foritms with gs_foritm_a7
+#symload foritms with gs_foritm_a8
+#symload foritms with gs_foritm_a9
+#symload foritms with gs_foritm_a10
+#symload foritms with gs_foritm_a11
+#symload foritms with gs_foritm_a12
 //
 (* ****** ****** *)
 (* ****** ****** *)
