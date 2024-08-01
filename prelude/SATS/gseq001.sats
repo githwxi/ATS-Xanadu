@@ -96,6 +96,19 @@ gseq_istrqize
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX: for [gs_forall]
+*)
+fun
+<xs:t0>
+g_forall(xs: xs): bool
+(*
+HX: for [gs_exists]
+*)
+fun
+<xs:t0>
+g_exists(xs: xs): bool
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -159,6 +172,13 @@ gseq_exists_f1np
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(*
+HX: for [gs_foritm]
+*)
+fun
+<xs:t0>
+g_foritm(xs: xs): void
 //
 fun
 <xs:t0>

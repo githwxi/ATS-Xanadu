@@ -40,119 +40,173 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
-< xs:t0 >
-< x0:t0 >
-gseqs_foritm_a1
+< y0:t0 >
+gs_foritm_a1
   ( y0 ) =
 (
-  gseq_foritm<xs><x0>(y0))
+  g_foritm<y0>(y0))
 //
 #impltmp
-< xs:t0 >
-< x0:t0 >
-gseqs_foritm_a2
+< y0:t0 >
+< y1:t0 >
+gs_foritm_a2
   (y0, y1) =
 (
-  gseq_foritm<xs><x0>(y0); gseq_foritm<xs><x0>(y1))
+  g_foritm<y0>(y0); g_foritm<y1>(y1))
 //
 #impltmp
-< xs:t0 >
-< x0:t0 >
-gseqs_foritm_a3
+< y0:t0 >
+< y1:t0 >
+< y2:t0 >
+gs_foritm_a3
   (y0, y1, y2) =
 (
-  gseq_foritm<xs><x0>(y0)
-; gseq_foritm<xs><x0>(y1); gseq_foritm<xs><x0>(y2))
+  g_foritm<y0>(y0)
+; g_foritm<y1>(y1); g_foritm<y2>(y2))
 //
 #impltmp
-< xs:t0 >
-< x0:t0 >
-gseqs_foritm_a4
+< y0:t0 >
+< y1:t0 >
+< y2:t0 >
+< y3:t0 >
+gs_foritm_a4
   (y0, y1, y2, y3) =
 (
-  gseq_foritm<xs><x0>(y0); gseq_foritm<xs><x0>(y1)
-; gseq_foritm<xs><x0>(y2); gseq_foritm<xs><x0>(y3))
+  g_foritm<y0>(y0); g_foritm<y1>(y1)
+; g_foritm<y2>(y2); g_foritm<y3>(y3))
 //
 #impltmp
-< xs:t0 >
-< x0:t0 >
-gseqs_foritm_a5
+< y0:t0 >
+< y1:t0 >
+< y2:t0 >
+< y3:t0 >
+< y4:t0 >
+gs_foritm_a5
   (y0, y1, y2, y3, y4) =
 (
-  gseq_foritm<xs><x0>(y0); gseq_foritm<xs><x0>(y1)
-; gseq_foritm<xs><x0>(y2); gseq_foritm<xs><x0>(y3); gseq_foritm<xs><x0>(y4))
+  g_foritm<y0>(y0); g_foritm<y1>(y1)
+; g_foritm<y2>(y2); g_foritm<y3>(y3); g_foritm<y4>(y4))
 //
 #impltmp
-< xs:t0 >
-< x0:t0 >
-gseqs_foritm_a6
+< y0:t0 >
+< y1:t0 >
+< y2:t0 >
+< y3:t0 >
+< y4:t0 >
+< y5:t0 >
+gs_foritm_a6
   (y0, y1, y2, y3, y4, y5) =
 (
-  gseq_foritm<xs><x0>(y0); gseq_foritm<xs><x0>(y1); gseq_foritm<xs><x0>(y2)
-; gseq_foritm<xs><x0>(y3); gseq_foritm<xs><x0>(y4); gseq_foritm<xs><x0>(y5))
+  g_foritm<y0>(y0); g_foritm<y1>(y1); g_foritm<y2>(y2)
+; g_foritm<y3>(y3); g_foritm<y4>(y4); g_foritm<y5>(y5))
 //
 #impltmp
-< xs:t0 >
-< x0:t0 >
-gseqs_foritm_a7
+< y0:t0 >
+< y1:t0 >
+< y2:t0 >
+< y3:t0 >
+< y4:t0 >
+< y5:t0 >
+< y6:t0 >
+gs_foritm_a7
   (y0, y1, y2, y3, y4, y5, y6) =
 (
-  gseq_foritm<xs><x0>(y0)
-; gseq_foritm<xs><x0>(y1); gseq_foritm<xs><x0>(y2); gseq_foritm<xs><x0>(y3)
-; gseq_foritm<xs><x0>(y4); gseq_foritm<xs><x0>(y5); gseq_foritm<xs><x0>(y6))
+  g_foritm<y0>(y0)
+; g_foritm<y1>(y1); g_foritm<y2>(y2); g_foritm<y3>(y3)
+; g_foritm<y4>(y4); g_foritm<y5>(y5); g_foritm<y6>(y6))
 //
 #impltmp
-< xs:t0 >
-< x0:t0 >
-gseqs_foritm_a8
+< y0:t0 >
+< y1:t0 >
+< y2:t0 >
+< y3:t0 >
+< y4:t0 >
+< y5:t0 >
+< y6:t0 >
+< y7:t0 >
+gs_foritm_a8
   (y0, y1, y2, y3, y4, y5, y6, y7) =
 (
-  gseq_foritm<xs><x0>(y0); gseq_foritm<xs><x0>(y1)
-; gseq_foritm<xs><x0>(y2); gseq_foritm<xs><x0>(y3); gseq_foritm<xs><x0>(y4)
-; gseq_foritm<xs><x0>(y5); gseq_foritm<xs><x0>(y6); gseq_foritm<xs><x0>(y7))
+  g_foritm<y0>(y0); g_foritm<y1>(y1)
+; g_foritm<y2>(y2); g_foritm<y3>(y3); g_foritm<y4>(y4)
+; g_foritm<y5>(y5); g_foritm<y6>(y6); g_foritm<y7>(y7))
 //
 #impltmp
-< xs:t0 >
-< x0:t0 >
-gseqs_foritm_a9
+< y0:t0 >
+< y1:t0 >
+< y2:t0 >
+< y3:t0 >
+< y4:t0 >
+< y5:t0 >
+< y6:t0 >
+< y7:t0 >
+< y8:t0 >
+gs_foritm_a9
   (y0, y1, y2, y3, y4, y5, y6, y7, y8) =
 (
-  gseq_foritm<xs><x0>(y0); gseq_foritm<xs><x0>(y1); gseq_foritm<xs><x0>(y2)
-; gseq_foritm<xs><x0>(y3); gseq_foritm<xs><x0>(y4); gseq_foritm<xs><x0>(y5)
-; gseq_foritm<xs><x0>(y6); gseq_foritm<xs><x0>(y7); gseq_foritm<xs><x0>(y8))
+  g_foritm<y0>(y0); g_foritm<y1>(y1); g_foritm<y2>(y2)
+; g_foritm<y3>(y3); g_foritm<y4>(y4); g_foritm<y5>(y5)
+; g_foritm<y6>(y6); g_foritm<y7>(y7); g_foritm<y8>(y8))
 //
 #impltmp
-< xs:t0 >
-< x0:t0 >
-gseqs_foritm_a10
+< y0:t0 >
+< y1:t0 >
+< y2:t0 >
+< y3:t0 >
+< y4:t0 >
+< y5:t0 >
+< y6:t0 >
+< y7:t0 >
+< y8:t0 >
+< y9:t0 >
+gs_foritm_a10
   (y0, y1, y2, y3, y4, y5, y6, y7, y8, y9) =
 (
-  gseq_foritm<xs><x0>(y0)
-; gseq_foritm<xs><x0>(y1); gseq_foritm<xs><x0>(y2); gseq_foritm<xs><x0>(y3)
-; gseq_foritm<xs><x0>(y4); gseq_foritm<xs><x0>(y5); gseq_foritm<xs><x0>(y6)
-; gseq_foritm<xs><x0>(y7); gseq_foritm<xs><x0>(y8); gseq_foritm<xs><x0>(y9))
+  g_foritm<y0>(y0)
+; g_foritm<y1>(y1); g_foritm<y2>(y2); g_foritm<y3>(y3)
+; g_foritm<y4>(y4); g_foritm<y5>(y5); g_foritm<y6>(y6)
+; g_foritm<y7>(y7); g_foritm<y8>(y8); g_foritm<y9>(y9))
 //
 #impltmp
-< xs:t0 >
-< x0:t0 >
-gseqs_foritm_a11
+< y0:t0 >
+< y1:t0 >
+< y2:t0 >
+< y3:t0 >
+< y4:t0 >
+< y5:t0 >
+< y6:t0 >
+< y7:t0 >
+< y8:t0 >
+< y9:t0 >
+< y10:t0 >
+gs_foritm_a11
   (y0, y1, y2, y3, y4, y5, y6, y7, y8, y9, y10) =
 (
-  gseq_foritm<xs><x0>(y0); gseq_foritm<xs><x0>(y1)
-; gseq_foritm<xs><x0>(y2); gseq_foritm<xs><x0>(y3); gseq_foritm<xs><x0>(y4)
-; gseq_foritm<xs><x0>(y5); gseq_foritm<xs><x0>(y6); gseq_foritm<xs><x0>(y7)
-; gseq_foritm<xs><x0>(y8); gseq_foritm<xs><x0>(y9); gseq_foritm<xs><x0>(y10))
+  g_foritm<y0>(y0); g_foritm<y1>(y1)
+; g_foritm<y2>(y2); g_foritm<y3>(y3); g_foritm<y4>(y4)
+; g_foritm<y5>(y5); g_foritm<y6>(y6); g_foritm<y7>(y7)
+; g_foritm<y8>(y8); g_foritm<y9>(y9); g_foritm<y10>(y10))
 //
 #impltmp
-< xs:t0 >
-< x0:t0 >
-gseqs_foritm_a12
+< y0:t0 >
+< y1:t0 >
+< y2:t0 >
+< y3:t0 >
+< y4:t0 >
+< y5:t0 >
+< y6:t0 >
+< y7:t0 >
+< y8:t0 >
+< y9:t0 >
+< y10:t0 >
+< y11:t0 >
+gs_foritm_a12
   (y0, y1, y2, y3, y4, y5, y6, y7, y8, y9, y10, y11) =
 (
-  gseq_foritm<xs><x0>(y0); gseq_foritm<xs><x0>(y1); gseq_foritm<xs><x0>(y2)
-; gseq_foritm<xs><x0>(y3); gseq_foritm<xs><x0>(y4); gseq_foritm<xs><x0>(y5)
-; gseq_foritm<xs><x0>(y6); gseq_foritm<xs><x0>(y7); gseq_foritm<xs><x0>(y8)
-; gseq_foritm<xs><x0>(y9); gseq_foritm<xs><x0>(y10); gseq_foritm<xs><x0>(y11))
+  g_foritm<y0>(y0); g_foritm<y1>(y1); g_foritm<y2>(y2)
+; g_foritm<y3>(y3); g_foritm<y4>(y4); g_foritm<y5>(y5)
+; g_foritm<y6>(y6); g_foritm<y7>(y7); g_foritm<y8>(y8)
+; g_foritm<y9>(y9); g_foritm<y10>(y10); g_foritm<y11>(y11))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -160,4 +214,4 @@ gseqs_foritm_a12
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_gsyn000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_gsyn001.dats] *)
