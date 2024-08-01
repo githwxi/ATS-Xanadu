@@ -117,23 +117,43 @@ gseq_length<list(x0)><x0>
 list_length
   (xs) =
 (
-  loop(xs, 0(*j0*))) where
+loop(xs, 0(*j0*))) where
 {
 fun
 loop{i,j:i0}
 (xs:
- list(x0), j0: sint(j)): sint(i+j) =
+ list(x0)
+,j0: sint(j)): sint(i+j) =
 (
 case+ xs of
-|list_nil() => j0
-|list_cons(x1, xs) => loop(xs, j0+1)
+|
+list_nil
+((*void*)) => ( j0 )
+|
+list_cons
+( x1, xs ) => loop(xs, j0+1)
 )
 }
 //
 #impltmp
 { x0:t0 }
 gseq_length
-<list(x0)><x0> = list_length(*void*)
+<list(x0)><x0> = list_length<x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-24:
+there is a trec-implementation
+for [list_append]!
+Wed 31 Jul 2024 08:13:30 PM EDT
+*)
+#impltmp
+{ x0:t0 }
+g_append
+<list(x0)>(*x0*) =
+gseq_append<list(x0)><x0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

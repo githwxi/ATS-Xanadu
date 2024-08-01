@@ -46,7 +46,7 @@ jsarray('1', '2')
 val A3 =
 jsarray("1", "2", "3")
 //
-val A4 = append(A3, A3)
+val A4 = appends(A3, A3)
 //
 val () =
 prints("A4 = ", A4, '\n')
@@ -202,6 +202,15 @@ val x2s = list_c2hoose_lstrm(xs)
 val ( ) = print1s("x2s = ", listize0(x2s), "\n")
 val x3s = list_c3hoose_lstrm(xs)
 val ( ) = print1s("x3s = ", listize0(x3s), "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val ( ) =
+(
+foritms(xs, xs); prints("\n")) where
+{
+  #impltmp foritm$work<sint>(x0) = prints(x0) }//whr
 //
 (* ****** ****** *)
 (* ****** ****** *)

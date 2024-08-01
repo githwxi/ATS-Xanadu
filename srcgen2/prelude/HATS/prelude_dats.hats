@@ -37,6 +37,7 @@ Sun 14 Jul 2024 12:14:49 PM EDT
 #staload _ = "prelude/DATS/VT/gasz001_vt.dats"
 (* ****** ****** *)
 #staload _ = "prelude/DATS/gsyn000.dats"
+#staload _ = "prelude/DATS/gsyn001.dats"
 #staload _ = "prelude/DATS/VT/gsyn000_vt.dats"
 (* ****** ****** *)
 (* ****** ****** *)

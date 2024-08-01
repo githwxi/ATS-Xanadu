@@ -99,11 +99,17 @@ jsarray_append
  {m,n:nat}
 ( xs: jsa(a, m)
 , ys: jsa(a, n)): jsa(a, m+n)
+//
 #impltmp
 < a: vt >
 jsarray_append =
 (
   gseq_append00<jsa(a)><a><jsa(a)>)
+//
+#impltmp
+{ a: vt }
+g_append<jsa(a)> = jsarray_append<a>
+//
 #symload append with jsarray_append of 1000
 //
 (* ****** ****** *)

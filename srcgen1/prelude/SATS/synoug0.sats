@@ -1133,12 +1133,14 @@ a1ref_print1_begendsep
 , xbeg: strn, xend: strn, xsep: strn): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX-2022-07-05:
 Tue Jul  5 13:22:11 EDT 2022
 *)
 //
+(*
 fun<>
 strn_append_a02
 (strn, strn): strn
@@ -1186,6 +1188,8 @@ strn_append_a10
 #symload append with strn_append_a09
 #symload append with strn_append_a10
 //
+*)
+//
 (* ****** ****** *)
 //
 (*
@@ -1193,6 +1197,7 @@ HX-2022-07-05:
 Tue Jul  5 13:47:16 EDT 2022
 *)
 //
+(*
 fun
 <a0:t0>
 list_append_a02
@@ -1260,6 +1265,12 @@ list_append_a10
 #symload append with list_append_a09
 #symload append with list_append_a10
 //
+*)
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen1_prelude_SATS_synoug0.sats] *)

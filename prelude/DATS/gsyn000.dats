@@ -1123,6 +1123,152 @@ gs_print_a12
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-24:
+Wed 31 Jul 2024 08:01:45 PM EDT
+*)
+//
+(*
+#impltmp
+< xs:t0 >
+gs_append_a0
+  ((*0*)) =
+g_0<xs>((*void*))
+*)
+//
+(*
+#impltmp
+< xs:t0 >
+gs_append_a1
+  ( y1 ) = (y1)
+*)
+//
+#impltmp
+< xs:t0 >
+gs_append_a2
+  (y1, y2) =
+(
+g_append<xs>(y1, y2)
+) (* end of [gs_append_a2] *)
+#impltmp
+< xs:t0 >
+gs_append_a3
+(y1, y2, y3) =
+let
+fun
+f0(u, v) =
+g_append<xs>(u, v)
+in//let
+  f0(f0(y1, y2), y3)
+end (*let*) // end of [gs_append_a3]
+#impltmp
+< xs:t0 >
+gs_append_a4
+(y1, y2, y3, y4) =
+let
+fun
+f0(u, v) =
+g_append<xs>(u, v)
+in//let
+  f0(f0(f0(y1,y2),y3),y4)
+end (*let*) // end of [gs_append_a4]
+#impltmp
+< xs:t0 >
+gs_append_a5
+(y1, y2, y3, y4, y5) =
+let
+fun
+f0(u, v) =
+g_append<xs>(u, v)
+in//let
+f0(f0(f0(f0(y1,y2),y3),y4),y5)
+end (*let*) // end of [gs_append_a5]
+#impltmp
+< xs:t0 >
+gs_append_a6
+(y1, y2, y3, y4, y5, y6) =
+let
+fun
+f0(u, v) =
+g_append<xs>(u, v)
+in//let
+f0(f0(f0(f0(f0(y1,y2),y3),y4),y5),y6)
+end (*let*) // end of [gs_append_a6]
+#impltmp
+< xs:t0 >
+gs_append_a7
+(y1, y2, y3, y4, y5, y6, y7) =
+let
+fun
+f0(u, v) =
+g_append<xs>(u, v)
+in//let
+f0(f0(f0(f0(f0(f0(y1,y2),y3),y4),y5),y6),y7)
+end (*let*) // end of [gs_append_a7]
+#impltmp
+< xs:t0 >
+gs_append_a8
+(y1, y2, y3, y4, y5, y6, y7, y8) =
+let
+fun
+f0(u, v) =
+g_append<xs>(u, v)
+in//let
+f0(f0(f0(f0(f0(f0(f0(y1,y2),y3),y4),y5),y6),y7),y8)
+end (*let*) // end of [gs_append_a8]
+#impltmp
+< xs:t0 >
+gs_append_a9
+(y1, y2, y3, y4, y5, y6, y7, y8, y9) =
+let
+fun
+f0(u, v) =
+g_append<xs>(u, v)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(y1,y2),y3),y4),y5),y6),y7),y8),y9)
+end (*let*) // end of [gs_append_a9]
+//
+#impltmp
+< xs:t0 >
+gs_append_a10
+(y1, y2, y3, y4, y5, y6, y7, y8, y9, y10) =
+let
+fun
+f0(u, v) =
+g_append<xs>(u, v)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(f0(y1,y2),y3),y4),y5),y6),y7),y8),y9),y10)
+end (*let*) // end of [gs_append_a10]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+gs_append_a11
+(y1, y2, y3, y4, y5, y6, y7, y8, y9, y10, y11) =
+let
+fun
+f0(u, v) =
+g_append<xs>(u, v)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(f0(f0(y1,y2),y3),y4),y5),y6),y7),y8),y9),y10),y11)
+end (*let*) // end of [gs_append_a11]
+//
+#impltmp
+< xs:t0 >
+gs_append_a12
+(y1, y2, y3, y4, y5, y6, y7, y8, y9, y10, y11, y12) =
+let
+fun
+f0(u, v) =
+g_append<xs>(u, v)
+in//let
+f0(f0(f0(f0(f0(f0(f0(f0(f0(f0(f0(y1,y2),y3),y4),y5),y6),y7),y8),y9),y10),y11),y12)
+end (*let*) // end of [gs_append_a12]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
