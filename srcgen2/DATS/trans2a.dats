@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,14 +37,17 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+(* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
@@ -52,22 +56,20 @@ ATS_PACKNAME
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#staload "./../SATS/trans12.sats"
 #staload "./../SATS/trans2a.sats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 #symload lctn with d2var_get_lctn
 (* ****** ****** *)
-//
-#implfun
-x2t2p_make_dvar
-  (  d2v0  ) =
-x2t2p_make_lctn(d2v0.lctn())
-//
 (* ****** ****** *)
-
+//
 #implfun
 d2parsed_of_trans2a
-  (dpar) =
-let
+  (dpar) = let
 //
 val stadyn =
 d2parsed_get_stadyn(dpar)
@@ -95,7 +97,7 @@ d2parsed
 (stadyn,nerror,source,t1penv,t2penv,parsed)
 end
 end (*let*) // end of [d2parsed_trans2a(dpar)]
-
+//
 (* ****** ****** *)
 //
 #impltmp

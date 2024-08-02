@@ -412,8 +412,10 @@ f0_include
 ! tr2aenv
 , d2cl: d2ecl): d2ecl =
 let
+//
 val
 loc0 = d2cl.lctn()
+//
 val-
 D2Cinclude
 ( knd0
@@ -431,10 +433,11 @@ optn_cons
 (trans2a_d2eclist(env0, dcls)))
 //
 in//let
+(
 d2ecl_make_node
-(loc0,
- D2Cinclude
- (knd0, tknd, gsrc, fopt, dopt))
+( loc0
+, D2Cinclude
+  (knd0, tknd, gsrc, fopt, dopt) ) )
 end (*let*) // end of [f0_include(...)]
 //
 (* ****** ****** *)
@@ -445,11 +448,23 @@ f0_staload
 ! tr2aenv
 , d2cl: d2ecl): d2ecl =
 let
+//
+val
+loc0 = d2cl.lctn()
+//
 val-
 D2Cstaload
 ( knd0
 , tknd, gsrc
-, fopt, dopt) = d2cl.node() in d2cl
+, fopt, dopt) = d2cl.node()
+//
+in//let
+//
+(
+d2ecl_make_node
+( loc0
+, D2Cstaload
+  (knd0, tknd, gsrc, fopt, dopt) ) )
 end (*let*) // end of [f0_staload(...)]
 //
 (* ****** ****** *)
@@ -459,6 +474,7 @@ end (*let*) // end of [f0_staload(...)]
 HX-2024-07-20:
 Sat 20 Jul 2024 08:41:58 PM EDT
 *)
+//
 fun
 f0_dyninit
 ( env0:
@@ -563,14 +579,14 @@ D2Cfundclst
 , tqas
 , d2cs, d2fs) = d2cl.node()
 //
-(*
+// (*
 val () =
 prerrln
 ("f0_fundclst(2a): loc0 = ", loc0)
 val () =
 prerrln
 ("f0_fundclst(2a): d2cl = ", d2cl)
-*)
+// *)
 //
 val d2fs =
 (
@@ -605,8 +621,28 @@ case+ d2cs of
  val-
  list_cons
  (d2f1, d2fs) = d2fs
- val d2v1 = d2fundcl_get_dpid(d2f1)
- val (  ) = d2c1.styp(d2v1.styp((*0*))) }
+//
+ val d2v1 =
+   d2fundcl_get_dpid(d2f1)
+//
+ val t2p1 = d2v1.styp((*0*))
+ val (  ) =
+   d2cst_set_styp(d2c1, t2p1)
+//
+ val (  ) = d2cfn_fix_xtyp(d2c1)
+//
+(*
+ val (  ) =
+ prerrln("f1_d2cs_d2fs: d2c1 = ", d2c1)
+ val (  ) =
+ prerrln("f1_d2cs_d2fs: d2v1 = ", d2v1)
+ val (  ) =
+ prerrln("f1_d2cs_d2fs: t2p1 = ", t2p1)
+ val (  ) =
+ prerrln("f1_d2cs_d2fs: d2c1.xtyp = ", d2c1.xtyp())
+*)
+//
+}(*where*)
 )(*case+*) // end-of-[ f1_d2cs_d2fs(...) ]
 //
 }(*where*) // end of [f0_fundclst(env0,d2cl)]
@@ -926,12 +962,12 @@ s2typ_hnfiz0(s2exp_stpize(s2e1))
 val tfun =
 s2typ_fun1_f2arglst(f2as,f2cl,tres)
 //
-(*
+// (*
 val (  ) = prerrln
 ("trans2a_d2fundcl: dfun = ", dfun)
 val (  ) = prerrln
 ("trans2a_d2fundcl: tfun = ", tfun)
-*)
+// *)
 //
 (*
 HX-2023:
@@ -1166,12 +1202,14 @@ TEQD2EXPsome
 //
 val tres =
 f0_tres(f2as, dvar.styp())
+//
 (*
 val (  ) = prerrln
 ("f0_d2fundcl(2a): dvar = ", dvar)
 val (  ) = prerrln
 ("f0_d2fundcl(2a): tres = ", tres)
 *)
+//
 val d2e2 =
 trans2a_d2exp_tpck(env0,d2e2,tres)
 //

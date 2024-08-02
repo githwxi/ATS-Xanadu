@@ -82,42 +82,13 @@ s2typ_subst0(t2p0, svts))
 (* ****** ****** *)
 
 local
-
+//
 fun
-my_d2cst_set_xtyp
+myd2c_fix_xtyp
   (d2c1: d2cst): void =
 (
-  d2c1.xtyp(xt2p)) where
-{
+  d2cfn_fix_xtyp(d2c1))
 //
-val xt2p =
-s2typ_subst0(t2p1, svts)
-//
-(*
-val (  ) = prerrln
-("\
-my_d2cst_set_xtyp: d2c1 = ", d2c1)
-val (  ) = prerrln
-("\
-my_d2cst_set_xtyp: t2p1 = ", t2p1)
-val (  ) = prerrln
-("\
-my_d2cst_set_xtyp: xt2p = ", xt2p)
-*)
-//
-} where // end of [where]
-{
-//
-val loc1 = d2c1.lctn((*void*))
-val tqas = d2c1.tqas((*void*))
-val t2p1 = d2c1.styp((*void*))
-//
-val svts =
-(
-  s2vts_make_lctn_tqas(loc1, tqas))
-//
-}(*where*)//end-[my_d2cst_set_xtyp]
-
 (* ****** ****** *)
 in(* in-of-local *)
 (* ****** ****** *)
@@ -271,14 +242,21 @@ D2Cfundclst: tqas = ", tqas)
 //
 val () =
 (
-  list_foreach(d2cs)) where
+(*
+HX-2024-08-01:
+This part is moved
+to [trans2a_decl00]!
+(
+  list_foreach(d2cs)
+) where
 {
   #impltmp
   foreach$work
   <d2cst>(d2c1) =
   (
-    my_d2cst_set_xtyp(d2c1) )
-} where
+    myd2c_fix_xtyp(d2c1) ) }
+*)
+) where
 {
 //
 // HX-2023-08-15:

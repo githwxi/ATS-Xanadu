@@ -48,18 +48,28 @@ gseq_head_exn(xs) =
 if
 gseq_consq<xs><x0>(xs)
 then
-gseq_head_raw<xs><x0>(xs)
-else $raise SubscriptExn()
-endif//end-of(gseq_head_exn)
+(
+$UN.gseq_head_raw<xs><x0>
+  (        xs        )
+)
+else
+(
+  $raise SubscriptExn(*nil*))
+endif//end-of(gseq_head_exn(xs))
 #impltmp
 <xs><x0>
 gseq_tail_exn(xs) =
 if
 gseq_consq<xs><x0>(xs)
 then
-gseq_tail_raw<xs><x0>(xs)
-else $raise SubscriptExn()
-endif//end-of(gseq_tail_exn)
+(
+$UN.gseq_tail_raw<xs><x0>
+  (        xs        )
+)
+else
+(
+  $raise SubscriptExn(*nil*))
+endif//end-of(gseq_tail_exn(xs))
 //
 #impltmp
 <xs><x0>
@@ -70,7 +80,8 @@ gseq_consq
 then
 optn_vt_cons
 (
-gseq_head_raw<xs><x0>(xs)
+$UN.gseq_head_raw<xs><x0>
+  (        xs        )
 ) else optn_vt_nil((*void*))
 #impltmp
 <xs><x0>
@@ -81,21 +92,9 @@ gseq_consq
 then
 optn_vt_cons
 (
-gseq_tail_raw<xs><x0>(xs)
+$UN.gseq_tail_raw<xs><x0>
+  (        xs        )
 ) else optn_vt_nil((*void*))
-//
-(* ****** ****** *)
-//
-#impltmp
-<xs><x0>
-gseq_last_raw(xs) =
-let
-var xs = xs
-val x0 =
-gseq_uncons_raw<xs><x0>(xs)
-in
-gseq_last_ini<xs><x0>(xs, x0)
-end(*let*)//end(gseq_last_raw)
 //
 (* ****** ****** *)
 
@@ -138,22 +137,6 @@ gseq_foldl<xs><x0><r0>(xs, x0)
 end(*let*)//(gseq_last_ini/foldl)
 
 (* ****** ****** *)
-//
-#impltmp
-<xs><x0>
-gseq_uncons_raw(xs) =
-(
-let
-  val () = xs := tl in hd
-end
-) where
-{
-val hd =
-  gseq_head_raw<xs><x0>(xs)
-val tl =
-  gseq_tail_raw<xs><x0>(xs)
-}(*where*)//end(gseq-uncons_raw)
-//
 (* ****** ****** *)
 //
 (*
@@ -185,7 +168,8 @@ then
 (
   $raise SubscriptExn())
 else
-gseq_uncons_raw<xs><x0>(xs)
+(
+$UN.gseq_uncons_raw<xs><x0>(xs))
 )
 //
 #impltmp
@@ -196,13 +180,16 @@ gseq_uncons_opt
 if
 gseq_nilq<xs><x0>(xs)
 then
-  optn_vt_nil((*void*))
+(
+  optn_vt_nil((*void*)))
 else
-  optn_vt_cons
-  (gseq_uncons_raw<xs><x0>(xs))
+optn_vt_cons
+(
+$UN.gseq_uncons_raw<xs><x0>(xs))
 endif (* end of [if] *)
 )
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -683,9 +670,9 @@ gseq_nilq
 then strmcon_vt_nil()
 else let
 val x0 =
-gseq_head_raw<xs><x0>(xs)
+$UN.gseq_head_raw<xs><x0>(xs)
 val xs =
-gseq_tail_raw<xs><x0>(xs)
+$UN.gseq_tail_raw<xs><x0>(xs)
 in//let
 strmcon_vt_cons(x0, auxseq(xs))
 endlet // end of [else]
@@ -1433,8 +1420,8 @@ then
 $raise SubscriptExn()
 else
 gseq_max_ini
-( gseq_tail_raw<xs><x0>(xs)
-, gseq_head_raw<xs><x0>(xs))
+( $UN.gseq_tail_raw<xs><x0>(xs)
+, $UN.gseq_head_raw<xs><x0>(xs))
 endif // end-of-( if )
 ) (*if*) // end of [gseq_max_exn(xs)]
 //
@@ -1449,8 +1436,8 @@ then
 $raise SubscriptExn()
 else
 gseq_min_ini
-( gseq_tail_raw<xs><x0>(xs)
-, gseq_head_raw<xs><x0>(xs))
+( $UN.gseq_tail_raw<xs><x0>(xs)
+, $UN.gseq_head_raw<xs><x0>(xs))
 endif // end-of-( if )
 ) (*if*) // end of [gseq_min_exn(xs)]
 //
@@ -1469,8 +1456,8 @@ else
 optn_vt_cons
 (
 gseq_max_ini
-( gseq_tail_raw<xs><x0>(xs)
-, gseq_head_raw<xs><x0>(xs)))
+( $UN.gseq_tail_raw<xs><x0>(xs)
+, $UN.gseq_head_raw<xs><x0>(xs)))
 ) (*if*) // end of [gseq_max_opt(xs)]
 //
 #impltmp
@@ -1486,8 +1473,8 @@ else
 optn_vt_cons
 (
 gseq_min_ini
-( gseq_tail_raw<xs><x0>(xs)
-, gseq_head_raw<xs><x0>(xs))
+( $UN.gseq_tail_raw<xs><x0>(xs)
+, $UN.gseq_head_raw<xs><x0>(xs))
 )
 endif // end-of-( if )
 ) (*if*) // end of [gseq_min_opt(xs)]
@@ -1941,7 +1928,8 @@ then
 else
 let
 val x0 =
-gseq_head_raw<xs><x0>(xs)
+$UN.gseq_head_raw<xs><x0>
+  (        xs        )
 in//let
 if
 idropif$test<x0>(i0, x0)
@@ -1949,8 +1937,9 @@ then
 (
   loop(xs, succ(i0))) where
 {
-  val xs =
-  gseq_tail_raw<xs><x0>(xs) }
+val xs =
+$UN.gseq_tail_raw<xs><x0>(xs)
+}
 else (xs) // else // end-of-if
 endlet (* end-of-[loop(xs,i0)] *)
 //
@@ -2021,7 +2010,8 @@ gseq_nilq
 then (r0) else
 let
 val x0 =
-gseq_head_raw<xs><x0>(xs)
+$UN.gseq_head_raw<xs><x0>
+  (        xs        )
 in//let
 if
 itakeif$test<x0>(i0, x0)
@@ -2029,10 +2019,10 @@ then
 (
   loop(xs, i0, r0) ) where
 {
-  val i0 = succ(i0)
-  val xs =
-  gseq_tail_raw<xs><x0>(xs)
-  val r0 = list_vt_cons(x0, r0) }
+val i0 = succ(i0)
+val xs =
+$UN.gseq_tail_raw<xs><x0>(xs)
+val r0 = list_vt_cons(x0, r0) }
 else (r0) // else // end-of-(if)
 endlet (* end of [loop(xs,i0,r0)] *)
 //

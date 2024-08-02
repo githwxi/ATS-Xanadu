@@ -107,15 +107,6 @@ gseq_copy(xs): (xs)
 fun
 <xs:t0>
 <x0:t0>
-gseq_head_raw(xs): x0
-fun
-<xs:t0>
-<x0:t0>
-gseq_tail_raw(xs): xs
-//
-fun
-<xs:t0>
-<x0:t0>
 gseq_head_exn(xs): x0
 fun
 <xs:t0>
@@ -133,10 +124,6 @@ gseq_tail_opt(xs): optn_vt(xs)
 //
 (* ****** ****** *)
 //
-fun
-<xs:t0>
-<x0:t0>
-gseq_last_raw(xs): x0
 fun
 <xs:t0>
 <x0:t0>
@@ -158,11 +145,6 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_uncons
-  (xs: &xs >> xs): x0
-fun
-<xs:t0>
-<x0:t0>
-gseq_uncons_raw
   (xs: &xs >> xs): x0
 //
 fun

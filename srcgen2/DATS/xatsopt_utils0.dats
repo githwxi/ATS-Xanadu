@@ -111,7 +111,7 @@ val dpar = d1parsed_of_trans01(dpar)
 val dpar = d2parsed_of_trans12(dpar)
 val dpar = d2parsed_of_tread12(dpar)
 val dpar = d2parsed_of_trans2a(dpar)
-val (  ) = d2parsed_at_trsym2b(dpar)
+val (  ) = d2parsed_by_trsym2b(dpar)
 val dpar = d2parsed_of_tread20(dpar) in dpar
 end (*let*) // end of [d2parsed_of_trans02(dpar)]
 

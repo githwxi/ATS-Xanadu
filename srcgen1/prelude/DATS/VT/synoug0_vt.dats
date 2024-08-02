@@ -1052,7 +1052,7 @@ Implementing print0/println0
 //
 #impltmp
 <a1>
-gs_print0_a01 =
+gs_print0_b01 =
 gs_fproc0_a01
 <  a1  > where
 {
@@ -1063,7 +1063,7 @@ g_fproc0<a0> = g_print0<a0>
 //
 #impltmp
 <a1><a2>
-gs_print0_a02 =
+gs_print0_b02 =
 gs_fproc0_a02
 <a1><a2> where
 {
@@ -1075,7 +1075,7 @@ g_fproc0<a0> = g_print0<a0>
 #impltmp
 <a1>
 <a2><a3>
-gs_print0_a03 =
+gs_print0_b03 =
 gs_fproc0_a03
 <a1>
 <a2><a3> where
@@ -1088,7 +1088,7 @@ g_fproc0<a0> = g_print0<a0>
 #impltmp
 <a1><a2>
 <a3><a4>
-gs_print0_a04 =
+gs_print0_b04 =
 gs_fproc0_a04
 <a1><a2>
 <a3><a4> where
@@ -1102,7 +1102,7 @@ g_fproc0<a0> = g_print0<a0>
 <a1>
 <a2><a3>
 <a4><a5>
-gs_print0_a05 =
+gs_print0_b05 =
 gs_fproc0_a05
 <a1>
 <a2><a3>
@@ -1117,7 +1117,7 @@ g_fproc0<a0> = g_print0<a0>
 <a1><a2>
 <a3><a4>
 <a5><a6>
-gs_print0_a06 =
+gs_print0_b06 =
 gs_fproc0_a06
 <a1><a2>
 <a3><a4>
@@ -1133,7 +1133,7 @@ g_fproc0<a0> = g_print0<a0>
 <a2><a3>
 <a4><a5>
 <a6><a7>
-gs_print0_a07 =
+gs_print0_b07 =
 gs_fproc0_a07
 <a1>
 <a2><a3>
@@ -1150,7 +1150,7 @@ g_fproc0<a0> = g_print0<a0>
 <a3><a4>
 <a5><a6>
 <a7><a8>
-gs_print0_a08 =
+gs_print0_b08 =
 gs_fproc0_a08
 <a1><a2>
 <a3><a4>
@@ -1168,7 +1168,7 @@ g_fproc0<a0> = g_print0<a0>
 <a4><a5>
 <a6><a7>
 <a8><a9>
-gs_print0_a09 =
+gs_print0_b09 =
 gs_fproc0_a09
 <a1>
 <a2><a3>
@@ -1187,7 +1187,7 @@ g_fproc0<a0> = g_print0<a0>
 <a05><a06>
 <a07><a08>
 <a09><a10>
-gs_print0_a10 =
+gs_print0_b10 =
 gs_fproc0_a10
 <a01><a02>
 <a03><a04>
@@ -1203,7 +1203,7 @@ g_fproc0<a00> = g_print0<a00>
 (* ****** ****** *)
 //
 #impltmp
-gs_println0_a00
+gs_println0_b00
 <>(*tmp*)
 ( (*_*) ) = g_print( "\n" )
 //
@@ -1211,55 +1211,55 @@ gs_println0_a00
 //
 #impltmp
 <a1>
-gs_println0_a01
+gs_println0_b01
 ( x1 ) =
 (
-gs_print0_a01
-(   x1   ) ; gs_println0_a00<>()
-) (* end of [gs_println0_a01] *)
+gs_print0_b01
+(   x1   ) ; gs_println0_b00<>()
+) (* end of [gs_println0_b01] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
-gs_println0_a02
+gs_println0_b02
 ( x1
 , x2 ) =
 (
-gs_print0_a02
-( x1, x2 ) ; gs_println0_a00<>()
-) (* end of [gs_println0_a02] *)
+gs_print0_b02
+( x1, x2 ) ; gs_println0_b00<>()
+) (* end of [gs_println0_b02] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1>
 <a2><a3>
-gs_println0_a03
+gs_println0_b03
 ( x1
 , x2
 , x3 ) =
 (
-gs_print0_a03
+gs_print0_b03
 ( x1
-, x2, x3 ) ; gs_println0_a00<>()
-) (* end of [gs_println0_a03] *)
+, x2, x3 ) ; gs_println0_b00<>()
+) (* end of [gs_println0_b03] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
 <a3><a4>
-gs_println0_a04
+gs_println0_b04
 ( x1
 , x2
 , x3
 , x4 ) =
 (
-gs_print0_a04
+gs_print0_b04
 ( x1, x2
-, x3, x4 ) ; gs_println0_a00<>()
-) (* end of [gs_println0_a04] *)
+, x3, x4 ) ; gs_println0_b00<>()
+) (* end of [gs_println0_b04] *)
 //
 (* ****** ****** *)
 //
@@ -1267,18 +1267,18 @@ gs_print0_a04
 <a1>
 <a2><a3>
 <a4><a5>
-gs_println0_a05
+gs_println0_b05
 ( x1
 , x2
 , x3
 , x4
 , x5 ) =
 (
-gs_print0_a05
+gs_print0_b05
 ( x1
 , x2, x3
-, x4, x5 ) ; gs_println0_a00<>()
-) (* end of [gs_println0_a05] *)
+, x4, x5 ) ; gs_println0_b00<>()
+) (* end of [gs_println0_b05] *)
 //
 (* ****** ****** *)
 //
@@ -1286,7 +1286,7 @@ gs_print0_a05
 <a1><a2>
 <a3><a4>
 <a5><a6>
-gs_println0_a06
+gs_println0_b06
 ( x1
 , x2
 , x3
@@ -1294,11 +1294,11 @@ gs_println0_a06
 , x5
 , x6 ) =
 (
-gs_print0_a06
+gs_print0_b06
 ( x1, x2
 , x3, x4
-, x5, x6 ) ; gs_println0_a00<>()
-) (* end of [gs_println0_a06] *)
+, x5, x6 ) ; gs_println0_b00<>()
+) (* end of [gs_println0_b06] *)
 //
 (* ****** ****** *)
 //
@@ -1307,18 +1307,18 @@ gs_print0_a06
 <a2><a3>
 <a4><a5>
 <a6><a7>
-gs_println0_a07
+gs_println0_b07
 ( x1
 , x2, x3
 , x4, x5
 , x6, x7 ) =
 (
-gs_print0_a07
+gs_print0_b07
 ( x1
 , x2, x3
 , x4, x5
-, x6, x7 ) ; gs_println0_a00<>()
-) (* end of [gs_println0_a07] *)
+, x6, x7 ) ; gs_println0_b00<>()
+) (* end of [gs_println0_b07] *)
 //
 (* ****** ****** *)
 //
@@ -1327,18 +1327,18 @@ gs_print0_a07
 <a3><a4>
 <a5><a6>
 <a7><a8>
-gs_println0_a08
+gs_println0_b08
 ( x1, x2
 , x3, x4
 , x5, x6
 , x7, x8 ) =
 (
-gs_print0_a08
+gs_print0_b08
 ( x1, x2
 , x3, x4
 , x5, x6
-, x7, x8 ) ; gs_println0_a00<>()
-) (* end of [gs_println0_a08] *)
+, x7, x8 ) ; gs_println0_b00<>()
+) (* end of [gs_println0_b08] *)
 //
 (* ****** ****** *)
 //
@@ -1348,20 +1348,20 @@ gs_print0_a08
 <a4><a5>
 <a6><a7>
 <a8><a9>
-gs_println0_a09
+gs_println0_b09
 ( x1
 , x2, x3
 , x4, x5
 , x6, x7
 , x8, x9 ) =
 (
-gs_print0_a09
+gs_print0_b09
 ( x1
 , x2, x3
 , x4, x5
 , x6, x7
-, x8, x9 ) ; gs_println0_a00<>()
-) (* end of [gs_println0_a09] *)
+, x8, x9 ) ; gs_println0_b00<>()
+) (* end of [gs_println0_b09] *)
 //
 (* ****** ****** *)
 //
@@ -1371,18 +1371,18 @@ gs_print0_a09
 <a05><a06>
 <a07><a08>
 <a09><a10>
-gs_println0_a10
+gs_println0_b10
 ( x01
 , x02, x03, x04
 , x05, x06, x07
 , x08, x09, x10 ) =
 (
-gs_print0_a10
+gs_print0_b10
 ( x01
 , x02, x03, x04
 , x05, x06, x07
-, x08, x09, x10 ) ; gs_println0_a00<>()
-) (* end of [gs_println0_a10] *)
+, x08, x09, x10 ) ; gs_println0_b00<>()
+) (* end of [gs_println0_b10] *)
 //
 (* ****** ****** *)
 //
@@ -1395,7 +1395,7 @@ Implementing print1/println1
 //
 #impltmp
 <a1>
-gs_print1_a01 =
+gs_print1_b01 =
 gs_fproc1_a01
 <  a1  > where
 {
@@ -1406,7 +1406,7 @@ g_fproc1<a0> = g_print1<a0>
 //
 #impltmp
 <a1><a2>
-gs_print1_a02 =
+gs_print1_b02 =
 gs_fproc1_a02
 <a1><a2> where
 {
@@ -1418,7 +1418,7 @@ g_fproc1<a0> = g_print1<a0>
 #impltmp
 <a1>
 <a2><a3>
-gs_print1_a03 =
+gs_print1_b03 =
 gs_fproc1_a03
 <a1>
 <a2><a3> where
@@ -1431,7 +1431,7 @@ g_fproc1<a0> = g_print1<a0>
 #impltmp
 <a1><a2>
 <a3><a4>
-gs_print1_a04 =
+gs_print1_b04 =
 gs_fproc1_a04
 <a1><a2>
 <a3><a4> where
@@ -1445,7 +1445,7 @@ g_fproc1<a0> = g_print1<a0>
 <a1>
 <a2><a3>
 <a4><a5>
-gs_print1_a05 =
+gs_print1_b05 =
 gs_fproc1_a05
 <a1>
 <a2><a3>
@@ -1460,7 +1460,7 @@ g_fproc1<a0> = g_print1<a0>
 <a1><a2>
 <a3><a4>
 <a5><a6>
-gs_print1_a06 =
+gs_print1_b06 =
 gs_fproc1_a06
 <a1><a2>
 <a3><a4>
@@ -1476,7 +1476,7 @@ g_fproc1<a0> = g_print1<a0>
 <a2><a3>
 <a4><a5>
 <a6><a7>
-gs_print1_a07 =
+gs_print1_b07 =
 gs_fproc1_a07
 <a1>
 <a2><a3>
@@ -1493,7 +1493,7 @@ g_fproc1<a0> = g_print1<a0>
 <a3><a4>
 <a5><a6>
 <a7><a8>
-gs_print1_a08 =
+gs_print1_b08 =
 gs_fproc1_a08
 <a1><a2>
 <a3><a4>
@@ -1511,7 +1511,7 @@ g_fproc1<a0> = g_print1<a0>
 <a4><a5>
 <a6><a7>
 <a8><a9>
-gs_print1_a09 =
+gs_print1_b09 =
 gs_fproc1_a09
 <a1>
 <a2><a3>
@@ -1530,7 +1530,7 @@ g_fproc1<a0> = g_print1<a0>
 <a05><a06>
 <a07><a08>
 <a09><a10>
-gs_print1_a10 =
+gs_print1_b10 =
 gs_fproc1_a10
 <a01><a02>
 <a03><a04>
@@ -1546,7 +1546,7 @@ g_fproc1<a00> = g_print1<a00>
 (* ****** ****** *)
 //
 #impltmp
-gs_println1_a00
+gs_println1_b00
 <>(*tmp*)
 ( (*_*) ) = g_print( "\n" )
 //
@@ -1554,55 +1554,55 @@ gs_println1_a00
 //
 #impltmp
 <a1>
-gs_println1_a01
+gs_println1_b01
 ( x1 ) =
 (
-gs_print1_a01
-(   x1   ) ; gs_println1_a00<>()
-) (* end of [gs_println1_a01] *)
+gs_print1_b01
+(   x1   ) ; gs_println1_b00<>()
+) (* end of [gs_println1_b01] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
-gs_println1_a02
+gs_println1_b02
 ( x1
 , x2 ) =
 (
-gs_print1_a02
-( x1, x2 ) ; gs_println1_a00<>()
-) (* end of [gs_println1_a02] *)
+gs_print1_b02
+( x1, x2 ) ; gs_println1_b00<>()
+) (* end of [gs_println1_b02] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1>
 <a2><a3>
-gs_println1_a03
+gs_println1_b03
 ( x1
 , x2
 , x3 ) =
 (
-gs_print1_a03
+gs_print1_b03
 ( x1
-, x2, x3 ) ; gs_println1_a00<>()
-) (* end of [gs_println1_a03] *)
+, x2, x3 ) ; gs_println1_b00<>()
+) (* end of [gs_println1_b03] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
 <a3><a4>
-gs_println1_a04
+gs_println1_b04
 ( x1
 , x2
 , x3
 , x4 ) =
 (
-gs_print1_a04
+gs_print1_b04
 ( x1, x2
-, x3, x4 ) ; gs_println1_a00<>()
-) (* end of [gs_println1_a04] *)
+, x3, x4 ) ; gs_println1_b00<>()
+) (* end of [gs_println1_b04] *)
 //
 (* ****** ****** *)
 //
@@ -1610,18 +1610,18 @@ gs_print1_a04
 <a1>
 <a2><a3>
 <a4><a5>
-gs_println1_a05
+gs_println1_b05
 ( x1
 , x2
 , x3
 , x4
 , x5 ) =
 (
-gs_print1_a05
+gs_print1_b05
 ( x1
 , x2, x3
-, x4, x5 ) ; gs_println1_a00<>()
-) (* end of [gs_println1_a05] *)
+, x4, x5 ) ; gs_println1_b00<>()
+) (* end of [gs_println1_b05] *)
 //
 (* ****** ****** *)
 //
@@ -1629,7 +1629,7 @@ gs_print1_a05
 <a1><a2>
 <a3><a4>
 <a5><a6>
-gs_println1_a06
+gs_println1_b06
 ( x1
 , x2
 , x3
@@ -1637,11 +1637,11 @@ gs_println1_a06
 , x5
 , x6 ) =
 (
-gs_print1_a06
+gs_print1_b06
 ( x1, x2
 , x3, x4
-, x5, x6 ) ; gs_println1_a00<>()
-) (* end of [gs_println1_a06] *)
+, x5, x6 ) ; gs_println1_b00<>()
+) (* end of [gs_println1_b06] *)
 //
 (* ****** ****** *)
 //
@@ -1650,18 +1650,18 @@ gs_print1_a06
 <a2><a3>
 <a4><a5>
 <a6><a7>
-gs_println1_a07
+gs_println1_b07
 ( x1
 , x2, x3
 , x4, x5
 , x6, x7 ) =
 (
-gs_print1_a07
+gs_print1_b07
 ( x1
 , x2, x3
 , x4, x5
-, x6, x7 ) ; gs_println1_a00<>()
-) (* end of [gs_println1_a07] *)
+, x6, x7 ) ; gs_println1_b00<>()
+) (* end of [gs_println1_b07] *)
 //
 (* ****** ****** *)
 //
@@ -1670,18 +1670,18 @@ gs_print1_a07
 <a3><a4>
 <a5><a6>
 <a7><a8>
-gs_println1_a08
+gs_println1_b08
 ( x1, x2
 , x3, x4
 , x5, x6
 , x7, x8 ) =
 (
-gs_print1_a08
+gs_print1_b08
 ( x1, x2
 , x3, x4
 , x5, x6
-, x7, x8 ) ; gs_println1_a00<>()
-) (* end of [gs_println1_a08] *)
+, x7, x8 ) ; gs_println1_b00<>()
+) (* end of [gs_println1_b08] *)
 //
 (* ****** ****** *)
 //
@@ -1691,20 +1691,20 @@ gs_print1_a08
 <a4><a5>
 <a6><a7>
 <a8><a9>
-gs_println1_a09
+gs_println1_b09
 ( x1
 , x2, x3
 , x4, x5
 , x6, x7
 , x8, x9 ) =
 (
-gs_print1_a09
+gs_print1_b09
 ( x1
 , x2, x3
 , x4, x5
 , x6, x7
-, x8, x9 ) ; gs_println1_a00<>()
-) (* end of [gs_println1_a09] *)
+, x8, x9 ) ; gs_println1_b00<>()
+) (* end of [gs_println1_b09] *)
 //
 (* ****** ****** *)
 //
@@ -1714,18 +1714,18 @@ gs_print1_a09
 <a05><a06>
 <a07><a08>
 <a09><a10>
-gs_println1_a10
+gs_println1_b10
 ( x01
 , x02, x03, x04
 , x05, x06, x07
 , x08, x09, x10 ) =
 (
-gs_print1_a10
+gs_print1_b10
 ( x01
 , x02, x03, x04
 , x05, x06, x07
-, x08, x09, x10 ) ; gs_println1_a00<>()
-) (* end of [gs_println1_a10] *)
+, x08, x09, x10 ) ; gs_println1_b00<>()
+) (* end of [gs_println1_b10] *)
 //
 (* ****** ****** *)
 (*

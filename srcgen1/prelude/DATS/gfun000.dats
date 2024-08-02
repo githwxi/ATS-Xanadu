@@ -47,10 +47,10 @@ let
 (?strxcon_vt(x0))
 //
 val xs =
-a0ref_get0<t0>(A0)
+$UN.castlin10
+(
+a0ref_dtget<t0>(A0))
 //
-val xs =
-($UN.castlin10(xs))
 in//let
 case+ xs of
 | ~
@@ -60,7 +60,7 @@ let
 val xs =
 ($UN.castlin10(!xs))
 in
-  $UN.a0ref_set0<t0>(A0, xs); x1 end
+$UN.a0ref_dtset<t0>(A0, xs); x1 end
 //
 end(*let*)//end-of-lam
 end(*let*)//end-of-[gfun_enum_strx_vt]

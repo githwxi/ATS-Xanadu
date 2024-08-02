@@ -117,7 +117,7 @@ in (* in-of-local *)
 the_nmspace_top0() =
 let
 val xs =
-a0ref_get0
+a0ref_dtget
 <nmitmlst_vt>
 (the_nmitmlst)
 val xs =
@@ -139,7 +139,7 @@ val xs1 =
 let
 //
 val xss =
-a0ref_get0
+a0ref_dtget
 <nmitmlst2_vt>(the_nmitmlst2)
 val xss =
 $UN.enlinear(xss)
@@ -177,7 +177,7 @@ a0ref_exch
 <nmitmlst_vt>(the_nmitmlst, xs)
 //
 val xss =
-a0ref_get0
+a0ref_dtget
 <nmitmlst2_vt>( the_nmitmlst2 )
 val xss =
 $UN.delinear
@@ -185,7 +185,7 @@ $UN.delinear
 list_vt_cons(xs,$UN.enlinear(xss))
 )
 val ( ) =
-$UN.a0ref_set0
+$UN.a0ref_dtset
 <nmitmlst2_vt>(the_nmitmlst2, xss)
 //
 } (*where*) // end of [the_nmspace_push()]
@@ -210,7 +210,7 @@ a0ref_exch
 <nmitmlst2_vt>(the_nmitmlst2, xss)
 //
 val xys =
-a0ref_get0
+a0ref_dtget
 <savednmlst_vt>(the_savednmlst)
 val xys =
 $UN.delinear
@@ -219,7 +219,7 @@ list_vt_cons
 ( @(xs0, xss), $UN.enlinear(xys) )
 )
 val ( ) =
-$UN.a0ref_set0(the_savednmlst, xys)
+$UN.a0ref_dtset(the_savednmlst, xys)
 //
 } (*where*)//end-of-[the_nmspace_filsave]
 
@@ -233,7 +233,7 @@ the_nmspace_filrest
 val xy0 = xy0 where
 {
 val xys =
-a0ref_get0
+a0ref_dtget
 <savednmlst_vt>
 (the_savednmlst)
 val ~
@@ -242,7 +242,7 @@ list_vt_cons
 , xys ) = $UN.enlinear(xys)
 val xys = $UN.delinear(xys)
 val ( ) =
-$UN.a0ref_set0(the_savednmlst, xys)
+$UN.a0ref_dtset(the_savednmlst, xys)
 } (*where*) // [end-of-val]
 //
 val
@@ -315,7 +315,7 @@ list_vt_cons
 val ans = ans where
 {
   val xs0 =
-  a0ref_get0
+  a0ref_dtget
   <nmitmlst_vt>(the_nmitmlst)
   val xs0 = $UN.enlinear(xs0)
   val ans = auxlst(fopr, xs0)
@@ -330,7 +330,7 @@ case+ ans of
 optn_vt_nil() => ans where
 {
   val xss =
-  a0ref_get0
+  a0ref_dtget
   <nmitmlst2_vt>(the_nmitmlst2)
   val xss = $UN.enlinear( xss )
   val ans = auxlst2(fopr, xss )

@@ -105,19 +105,20 @@ jsarray_vt with jsarray_vt_make0_3val of 1000
 //
 (*
 HX-2024-07-25:
-[fwork] is linear!
-*)
+[fwork] may be linear
+in the future!
 #vwtpdef
-fwork(a:vt) =
-((~a)-<cfr>void)->void
+fwork_vt(a:vt) =
+((~a)-<lcfr>void)->void
+*)
 //
 fun<>
-jsarray_vt_make0_fwork
+jsarray_vt_make_fwork
 {a:vt}
 (fwork: ~fwork(a)): jsarray_vt(a)
 //
 #symload
-jsarray_vt with jsarray_vt_make0_fwork of 1000
+jsarray_vt with jsarray_vt_make_fwork of 1000
 //
 (* ****** ****** *)
 //

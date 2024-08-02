@@ -41,18 +41,27 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 // HX: 1-dimensional
 (* ****** ****** *)
+(* ****** ****** *)
 //
+(*
+HX-2024-08-02:
+This is done in [arrn000_vt.sats]
 #absvtbx
 a1psz_vt_i0_x0
 (elem:vt, ntot:i0)
-//
 #vwtpdef
 a1psz(a:vt,n:i0) = a1psz_vt_i0_x0(a, n)
+*)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 // HX: 2-dimensional
 (* ****** ****** *)
+(* ****** ****** *)
 //
+(*
+HX-2024-08-02:
+This is done in [arrn000_vt.sats]
 #absvtbx
 a2psz_vt_i0_i0_x0
 (elem:vt,nrow:i0,ncol:i0)
@@ -61,13 +70,16 @@ a2psz_vt_i0_i0_x0
 a2psz
 (a:vt
 ,m:i0,n:i0) = a2psz_vt_i0_i0_x0(a, m, n)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
 #vwtpdef
 a1psz(a:vt) = [n:i0] a1psz(a, n)
 #vwtpdef
 a2psz(a:vt) = [m:i0;n:i0] a2psz(a, m, n)
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 //

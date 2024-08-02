@@ -59,13 +59,13 @@ XATS2JS_a0ref_set
 /* ****** ****** */
 //
 function
-XATS2JS_a0ref_get0
+XATS2JS_a0ref_dtget
   (A0)
 {
     return A0[0]; }
 //
 function
-XATS2JS_UN_a0ref_set0
+XATS2JS_UN_a0ref_dtset
   (A0, x0)
 {
     return (A0[0] = x0); }
@@ -122,7 +122,7 @@ XATS2JS_a1ptr_set_at_raw
 /* ****** ****** */
 //
 function
-XATS2JS_a1ref_get0_at
+XATS2JS_a1ref_dtget_at
   (A0, i0)
 {
     return A0[   i0   ]; }

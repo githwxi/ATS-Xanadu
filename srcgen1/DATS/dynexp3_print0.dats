@@ -41,22 +41,37 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 //
 #staload
+STM = "./../SATS/xstamp0.sats"
+#staload
+SYM = "./../SATS/xsymbol.sats"
+//
+overload
+fprint with $STM.fprint_stamp
+overload
+fprint with $SYM.fprint_symbol
+//
+(* ****** ****** *)
+//
+#staload
 LOC = "./../SATS/locinfo.sats"
 #staload
 FP0 = "./../SATS/filpath.sats"
+//
+overload
+fprint with $LOC.fprint_location
+//
+(* ****** ****** *)
+//
+#staload
+LAB = "./../SATS/xlabel0.sats"
+overload
+fprint with $LAB.fprint_label
 //
 (* ****** ****** *)
 //
 #staload "./../SATS/xbasics.sats"
 //
 (* ****** ****** *)
-//
-#staload "./../SATS/xstamp0.sats"
-overload fprint with fprint_stamp
-//
-(* ****** ****** *)
-//
-#staload "./../SATS/xlabel0.sats"
 //
 #staload "./../SATS/lexing0.sats"
 //
@@ -435,9 +450,36 @@ x0.node() of
   fprint!(out, "D3Ecst1(", d2c1, ")")
 //
 | D3Econ2(d2cs) =>
+(
   fprint!(out, "D3Econ2(", d2cs, ")")
+) where
+{
+  implement
+  fprint_val<d2con>
+    (out, x0) =
+  let
+    val sym = x0.sym()
+    and loc = x0.loc() in
+  (
+    fprint!(out, sym, "(", loc, ")"))
+  end//let
+}
+//
 | D3Ecst2(d2cs) =>
+(
   fprint!(out, "D3Ecst2(", d2cs, ")")
+) where
+{
+  implement
+  fprint_val<d2cst>
+    (out, x0) =
+  let
+    val sym = x0.sym()
+    and loc = x0.loc() in//let
+  (
+    fprint!(out, sym, "(", loc, ")"))
+  end//let
+}
 //
 | D3Esym0
   (d1e1, dpis) =>
@@ -455,15 +497,16 @@ x0.node() of
   in
   fprint!
   ( out
-  , "D3Esym0(", d1e1, ": ", t2p0, ")"
-  )
+  , "D3Esym0(", d1e1, ": ", t2p0, ")")
   end
 // *)
 //
 | D3Efcon(d2c1) =>
-  fprint!(out, "D3Efcon(", d2c1, ")")
+(
+  fprint!(out, "D3Efcon(", d2c1, ")"))
 | D3Efcst(d2c1) =>
-  fprint!(out, "D3Efcst(", d2c1, ")")
+(
+  fprint!(out, "D3Efcst(", d2c1, ")"))
 //
 | D3Etcon
   (d2c1, ti3a, ti2s) =>

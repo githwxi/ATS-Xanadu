@@ -573,7 +573,9 @@ S0Eop2(tok) =>
 print("S0Eop2(",tok,")")
 |
 S0Eop3(tkb,id0,tke) =>
-print("S0Eop3(",tkb,";",id0,";",tke,")")
+(
+print
+("S0Eop3(",tkb,";",id0,";",tke,")"))
 //
 |
 S0Eint(int) => print("S0Eint(",int,")")
@@ -588,41 +590,60 @@ S0Estr(str) => print("S0Estr(",str,")")
 S0Eapps(ses) => print("S0Eapps(",ses,")")
 //
 |
-S0Efimp(tkb,ses,tke) =>
-print("S0Efimp(",tkb,";",ses,";",tke,")")
+S0Efimp
+(tkb,ses,tke) =>
+(
+print
+("S0Efimp(",tkb,";",ses,";",tke,")"))
 //
 |
-S0Elpar(tkb,ses,srp) =>
-print("S0Elist(",tkb,";",ses,";",srp,")")
+S0Elpar
+(tkb,ses,srp) =>
+(
+print
+("S0Elist(",tkb,";",ses,";",srp,")"))
 //
 |
-S0Etup1(tkb,opt,ses,srp) =>
-print("S0Etup1(",tkb,";",opt,";",ses,";",srp,")")
+S0Etup1
+(tkb,opt,ses,srp) =>
+(
+print("S0Etup1(");
+print(tkb,";",opt,";",ses,";",srp,")"))
 //
 |
-S0Ercd2(tkb,opt,lses,lsrb) =>
-print("S0Ercd2(",tkb,";",opt,";",lses,";",lsrb,")")
+S0Ercd2
+(tkb,opt,lses,lsrb) =>
+(
+print("S0Ercd2(");
+print(tkb,";",opt,";",lses,";",lsrb,")"))
 //
 |
 S0Elams
-(tlam
-,s0ms,tres,arrw,body,tend) =>
+(tlam,s0ms
+,tres,arrw,body,tend) =>
 (
-print("S0Elams(",tlam,";");
-print(s0ms,";",tres,";",arrw,";",body,";",tend,")"))
+print("S0Elams(");
+print(tlam,";",s0ms,";");
+print(tres,";",arrw,";",body,";",tend,")"))
 //
 |
 S0Euni0(tkb,sqs,tbe) =>
-print("S0Euni0(",tkb,";",sqs,";",tbe,")")
+(
+print
+("S0Euni0(",tkb,";",sqs,";",tbe,")"))
 |
 S0Eexi0(tkb,sqs,tbe) =>
-print("S0Eexi0(",tkb,";",sqs,";",tbe,")")
+(
+print
+("S0Eexi0(",tkb,";",sqs,";",tbe,")"))
 |
 S0Eannot(se1,st2) =>
-print("S0Eannot(",se1,";",st2,")") //HX:annotation
+(
+  print("S0Eannot(",se1,";",st2,")"))//HX:annotation
 |
 S0Equal0(tok,se1) =>
-print("S0Equal0(",tok,";",se1,")") //HX:qual-s0exp
+(
+  print("S0Equal0(",tok,";",se1,")"))//HX:qual-s0exp
 //
 |
 S0Etkerr(tok) => print("S0Etkerr(",tok,")")//HX:error

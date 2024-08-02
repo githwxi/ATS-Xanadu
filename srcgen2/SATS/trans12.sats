@@ -354,11 +354,22 @@ s2cst_selects_list
   s2es: s2explst): ( s2cstlst )
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 d2parsed_of_trans12
 ( dpar : d1parsed ): (d2parsed)
 //
+(* ****** ****** *)
+//
+fun
+d2parsed_of_trans2a
+( dpar : d2parsed ): (d2parsed)
+fun
+d2parsed_by_trsym2b
+( dpar : d2parsed ): (  void  )
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -1080,6 +1091,7 @@ fun
 trans02_from_fpath
 (stadyn: sint, source: strn(*fpath*)): d2parsed
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_SATS_trans12.sats] *)

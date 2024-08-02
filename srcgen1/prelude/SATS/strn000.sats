@@ -161,8 +161,6 @@ fun<>
 strn_head_exn(strn): cgtz
 fun<>
 strn_head_opt(strn): char
-fun<>
-strn_head_raw(strn): cgtz
 //
 (* ****** ****** *)
 //
@@ -177,9 +175,6 @@ strn_tail_exn
 fun<>
 strn_tail_opt
 (cs: strn): optn_vt(strn)
-//
-fun<>
-strn_tail_raw(strn): strn
 //
 (* ****** ****** *)
 
@@ -510,11 +505,13 @@ tail_opt with strn_tail_opt of 1000
 tail_exn with strn_tail_exn of 1000
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 #symload print with strn_print of 1000
 *)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #symload length with strn_length of 1000
@@ -528,18 +525,23 @@ tail_exn with strn_tail_exn of 1000
 #symload reverse with strn_reverse of 1000
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #symload forall with strn_forall of 1000
 #symload rforall with strn_rforall of 1000
-
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #symload listize with strn_listize of 1000
 #symload strmize with strn_strmize of 1000
 #symload strxize with strn_strxize of 1000
-
+//
 (* ****** ****** *)
+//
 #symload rlistize with strn_rlistize of 1000
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen1_prelude_SATS_strn000.sats] *)

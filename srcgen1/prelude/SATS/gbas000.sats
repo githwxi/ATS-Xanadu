@@ -79,7 +79,7 @@ fun
 g_work(x : a): void
 fun
 <a:t0>
-g_test(x : a): boo1
+g_test(x : a): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)

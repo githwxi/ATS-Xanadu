@@ -81,9 +81,11 @@ LEX = "./lexing0.sats"
 #typedef token = $LEX.token
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #staload S2E = "./staexp2.sats"
 #staload T2P = "./statyp2.sats"
 #staload D2E = "./dynexp2.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #typedef s2cst = $S2E.s2cst
 (* ****** ****** *)
@@ -187,13 +189,38 @@ LEX = "./lexing0.sats"
 #typedef d2explstopt = $D2E.d2explstopt
 #typedef d2eclistopt = $D2E.d2eclistopt
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 x2t2p_make_dvar
-( d2v0 : d2var): x2t2p
+( d2v0 : d2var ): x2t2p
 #symload
 x2t2p with x2t2p_make_dvar
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-31: For
+overloading functions
+declared via [d2fundcl];
+this is different from
+overloading dynamic consts!
+*)
+fun
+d2cfn_fix_xtyp
+( d2c1 : d2cst ): (void)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+x2t2p_make_dvar
+( d2v0 : d2var ): x2t2p
+#symload
+x2t2p with x2t2p_make_dvar
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -204,6 +231,7 @@ d2exp_sym0_styp
 : d2ptmlst, t2p0:s2typ):d2exp
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 s2typ_fun1_f2arglst
@@ -211,6 +239,7 @@ s2typ_fun1_f2arglst
 :f2arglst
 ,f2cl:f2clknd,tres:s2typ):s2typ
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -225,6 +254,7 @@ s2typlst_of_d2explst
 #symload
 s2typlst with s2typlst_of_d2explst
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -241,9 +271,15 @@ l2t2plst with l2t2plst_of_l2d2elst
 //
 (* ****** ****** *)
 //
+(*
+HX-2024-08-01:
+This one is needed
+for translating [D1Cstaload]
+inside [trans12]!!!
 fun
 d2parsed_of_trans2a
 ( dpar : d2parsed ): (d2parsed)
+*)
 //
 (* ****** ****** *)
 //

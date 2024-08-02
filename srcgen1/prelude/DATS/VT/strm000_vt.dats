@@ -1234,7 +1234,7 @@ strmcon_vt_cons(y0, ys1)
 | ~
 strmcon_vt_cons(x0, xs1) =>
 let
-val knd = g_sel2<a>(x0, y0)
+val knd = g_s2el<a>(x0, y0)
 in//let
 //
 if
@@ -1261,7 +1261,7 @@ strmcon_vt_cons(x0, xs1)
 | ~
 strmcon_vt_cons(y0, ys1) =>
 let
-val knd = g_sel2<a>(x0, y0)
+val knd = g_s2el<a>(x0, y0)
 in//let
 //
 if

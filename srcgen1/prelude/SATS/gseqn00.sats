@@ -15,13 +15,11 @@
 //
 #sexpdef
 listn(a:t0) =
-(
-lam(n:i0) => list(a,n))
+(lam(n:i0) => list(a,n))
 //
 #sexpdef
 strqn(a:t0) =
-(
-lam(n:i0) => strq(a,n))
+(lam(n:i0) => strq(a,n))
 //
 (* ****** ****** *)
 //

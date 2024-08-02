@@ -9,7 +9,7 @@ CPF=cp -f
 ECHO=echo
 
 ######
-MYHOME="./../../../.."
+MYHOME=./../../../../.
 ######
 XATS2JS="./../../bin/xats2js"
 ######

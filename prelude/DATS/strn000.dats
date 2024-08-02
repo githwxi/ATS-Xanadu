@@ -88,7 +88,8 @@ iforall$test
 (
   forall$test<cgtz>(c0)) where
 {
-val c0 = $UN.strn_get_at<>(cs, i0)
+val c0 =
+  $UN.strn_get_at_raw<>(cs, i0)
 }
 }(*where*)//end-of-[strn_forall(cs)]
 //
