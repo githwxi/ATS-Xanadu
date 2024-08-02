@@ -97,16 +97,10 @@ a0ref_set(a0ref(a), a): void
 (* ****** ****** *)
 //
 fun
-<a:vt> // read-only
-a0ref_get0(A0: a0ref(a)): ?!a
-(*
-//HX-2022-07-06:
-//this one is in unsafex.sats
-fun
 <a:vt>
-a0ref_set0
-(A0: a0ref(a), x0: ?!a): void
-*)
+a0ref_dtget(a0ref(a)): (?!a)
+//
+(* ****** ****** *)
 //
 fun
 <a:vt> // copy+get
@@ -202,7 +196,7 @@ a1ref_set_at
 //
 fun
 <a:vt>
-a1ref_get0_at
+a1ref_dtget_at
 {n:i0}
 ( A0:
   a1ref(a, n), i0: nintlt(n)): (?!a)

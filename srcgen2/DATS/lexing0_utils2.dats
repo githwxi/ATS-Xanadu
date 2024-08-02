@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -34,14 +35,21 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+#staload UN =
+"srcgen1\
+/prelude/SATS/unsafex.sats"
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+(* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
@@ -50,6 +58,7 @@ ATS_PACKNAME
 #staload "./../SATS/locinfo.sats"
 (* ****** ****** *)
 #staload "./../SATS/lexing0.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -834,7 +843,8 @@ let
 val lc0 = x0.lctn()
 val lc1 = x1.lctn()
 val loc = lc0 + lc1
-val sym = strn_tail_raw(sym)
+val sym =
+  $UN.strn_tail_raw(sym)
 in//let
 loop1
 ( x1
@@ -857,7 +867,8 @@ let
 val lc0 = x0.lctn()
 val lc1 = x1.lctn()
 val loc = lc0 + lc1
-val sym = strn_tail_raw(sym)
+val sym =
+  $UN.strn_tail_raw(sym)
 in//let
 loop1
 ( x1
@@ -1474,7 +1485,8 @@ let
 val lc0 = x0.lctn()
 val lc1 = x1.lctn()
 val loc = lc0 + lc1
-val sym = strn_tail_raw(sym)
+val sym =
+  $UN.strn_tail_raw(sym)
 in//let
 strmcon_vt_cons
 ( xx2
@@ -1497,7 +1509,8 @@ let
 val lc0 = x0.lctn()
 val lc1 = x1.lctn()
 val loc = lc0 + lc1
-val sym = strn_tail_raw(sym)
+val sym =
+  $UN.strn_tail_raw(sym)
 in//let
 strmcon_vt_cons
 ( xx2

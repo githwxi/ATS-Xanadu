@@ -46,11 +46,6 @@ jsarray('1', '2')
 val A3 =
 jsarray("1", "2", "3")
 //
-val A4 = appends(A3, A3)
-//
-val () =
-prints("A4 = ", A4, '\n')
-//
 val An =
 jsarray_make_ncpy
 ( 10, -1(*init*) )
@@ -60,10 +55,18 @@ prints("An = ", An, '\n')
 //
 val An =
 jsarray_make_nfun
-( 10, lam(i)=> i+1)
+( 10, lam(i) => i+1)
 //
 val () =
 prints("An = ", An, '\n')
+//
+val A4 =
+gs_append_a2(A3, A3)
+//
+val () =
+prints("A4 = ", A4, '\n')
+//
+(* ****** ****** *)
 //
 val xs = listize(An)
 val () =

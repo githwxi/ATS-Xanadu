@@ -30,11 +30,11 @@ XSHARED="${XATSJSD}/xshared"
 ######
 XATS2JS="${XATSJSD}/bin/xats2js"
 ######
-XATS2JS=\
-nix run \
-github:GZGavinZhao/ATS-Xanadu/nixify\#xats2js \
---extra-experimental-features flakes \
---extra-experimental-features nix-command --
+# XATS2JS=\
+# nix run \
+# github:GZGavinZhao/ATS-Xanadu/nixify\#xats2js \
+# --extra-experimental-features flakes \
+# --extra-experimental-features nix-command --
 ######
 XATSJSD=\
 ./../../../srcgen1/xats2js/srcgen1

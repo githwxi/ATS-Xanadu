@@ -80,13 +80,7 @@ For further program verification
 #include
 "srcgen1/prelude/SATS/gfun000.sats"
 //
-#include
-"srcgen1/prelude/SATS/gmap000.sats"
-//
-#include
-"srcgen1/prelude/SATS/gras000.sats"
-#include
-"srcgen1/prelude/SATS/grasn00.sats"
+(* ****** ****** *)
 //
 #include
 "srcgen1/prelude/SATS/gseq000.sats"
@@ -94,6 +88,27 @@ For further program verification
 "srcgen1/prelude/SATS/gseq001.sats"
 #include
 "srcgen1/prelude/SATS/gseqn00.sats"
+//
+(* ****** ****** *)
+//
+#include
+"srcgen1/prelude/SATS/gasz000.sats"
+#include
+"srcgen1/prelude/SATS/gasz001.sats"
+//
+(* ****** ****** *)
+//
+#include
+"srcgen1/prelude/SATS/gmap000.sats"
+//
+(* ****** ****** *)
+//
+#include
+"srcgen1/prelude/SATS/gras000.sats"
+#include
+"srcgen1/prelude/SATS/grasn00.sats"
+//
+(* ****** ****** *)
 //
 #include
 "srcgen1/prelude/SATS/genv000.sats"
@@ -110,6 +125,8 @@ For further program verification
 #include
 "srcgen1/prelude/SATS/rand000.sats"
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #include
 "srcgen1/prelude/SATS/gint000.sats"
 #include
@@ -117,6 +134,7 @@ For further program verification
 #include
 "srcgen1/prelude/SATS/strn000.sats"
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #include
@@ -146,10 +164,10 @@ For further program verification
 #include
 "srcgen1/prelude/SATS/excptn0.sats"
 //
-(*
+(* ****** ****** *)
+//
 #include
 "srcgen1/prelude/SATS/synoug0.sats"
-*)
 //
 (* ****** ****** *)
 //
@@ -207,10 +225,8 @@ For viewtypes (that is, linear types)
 //
 (* ****** ****** *)
 //
-(*
 #include
 "srcgen1/prelude/SATS/VT/synoug0_vt.sats"
-*)
 //
 (* ****** ****** *)
 //

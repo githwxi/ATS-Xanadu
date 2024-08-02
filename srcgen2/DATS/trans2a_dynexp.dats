@@ -3255,25 +3255,56 @@ prerrln("trans2a_d2pat_tpkc: t2p0 = ", t2p0)
 trans2a_d2exp_tpck
 (env0, d2e0, t2p0) =
 let
+//
 val d2e0 =
 trans2a_d2exp(env0,d2e0)
+//
+val t2p1 = d2e0.styp((*0*))
+//
 val ubtf =
-unify2a_s2typ(env0,d2e0.styp(),t2p0)
-in//let
-if
-ubtf then d2e0 else
+unify2a_s2typ(env0, t2p1, t2p0)
+//
+val () =
 let
-val loc0 = d2e0.lctn() in
-d2exp(loc0, t2p0, D2Et2pck(d2e0,t2p0)) end
-end where
+val
+loc0 = d2e0.lctn()
+in//let
+prerrln
+("trans2a_d2exp_tpck: loc0 = ", loc0)
+end//let
+//
+val () =
+prerrln
+("trans2a_d2exp_tpck: d2e0 = ", d2e0)
+val () =
+prerrln
+("trans2a_d2exp_tpck: t2p0 = ", t2p0)
+val () =
+prerrln
+("trans2a_d2exp_tpck: t2p1 = ", t2p1)
+val () =
+prerrln
+("trans2a_d2exp_tpck: ubtf = ", ubtf)
+//
+in//let
+//
+if
+ubtf
+then d2e0 else
+let
+val
+loc0 = d2e0.lctn()
+in//let
+d2exp(loc0, t2p0, D2Et2pck(d2e0, t2p0))
+end//let//else//end-[if]
+//
+end where // end-of-[let]
 {
 //
-(*
+// (*
 val () =
 prerrln("trans2a_d2exp_tpck: d2e0 = ", d2e0)
-val () =
-prerrln("trans2a_d2exp_tpck: t2p0 = ", t2p0)
-*)
+// *)
 //
 } (*where*) // end of [trans2a_d2exp_tpck(...)]
 //

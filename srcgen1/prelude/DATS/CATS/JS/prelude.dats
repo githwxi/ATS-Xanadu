@@ -5,7 +5,8 @@ Prelude for Xats2js
 (* ****** ****** *)
 #staload
 UN = // for casting
-"prelude/SATS/unsafex.sats"
+"srcgen1\
+/prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 #staload _ = 
 "srcgen1\
@@ -73,6 +74,7 @@ XATS2JS_optn_nil() = optn_nil()
 XATS2JS_optn_cons(x0) = optn_cons(x0)
 //
 (* ****** ****** *)
+//
 #extern
 fun
 XATS2JS_optn_uncons_cfr
@@ -88,6 +90,7 @@ XATS2JS_optn_uncons_cfr
   | optn_nil() => f0()
   | optn_cons(x0) => f1(x0)
 ) (* end of [XATS2JS_optn_uncons_cfr] *)
+//
 (* ****** ****** *)
 //
 // prelude/list.sats
@@ -421,14 +424,19 @@ Please note that
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 // HX: 0-dimensional
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 { a:vt }
 a0ptr_free<a>(A0) = ()
+//
 (* ****** ****** *)
+//
 #extern
 fun
 XATS2JS_a0ref_get
@@ -438,7 +446,9 @@ XATS2JS_a0ref_get
 #impltmp
 { a:t0 }
 a0ref_get<a> = XATS2JS_a0ref_get
+//
 (* ****** ****** *)
+//
 #extern
 fun
 XATS2JS_a0ref_set
@@ -449,17 +459,22 @@ XATS2JS_a0ref_set
 #impltmp
 { a:t0 }
 a0ref_set<a> = XATS2JS_a0ref_set
+//
 (* ****** ****** *)
+//
 #extern
 fun
-XATS2JS_a0ref_get0
+XATS2JS_a0ref_dtget
 {a:vt}
 ( A0
-: a0ref(a)): (~a) = $extnam()
+: a0ref(a)): (?!a) = $extnam()
 #impltmp
 { a:vt }
-a0ref_get0<a> = XATS2JS_a0ref_get0
+a0ref_dtget<a> = XATS2JS_a0ref_dtget
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #extern
 fun
 XATS2JS_a0ptr_alloc
@@ -470,7 +485,9 @@ XATS2JS_a0ptr_alloc
 #impltmp
 {a:vt}
 a0ptr_alloc<a> = XATS2JS_a0ptr_alloc
+//
 (* ****** ****** *)
+//
 #extern
 fun
 XATS2JS_a0ptr_make_1val
@@ -481,6 +498,8 @@ x0: a
 #impltmp
 { a:vt }
 a0ptr_make_1val<a> = XATS2JS_a0ptr_make_1val
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 // HX: 1-dimensional
@@ -583,7 +602,7 @@ a1ptr_set_at_raw<a> = XATS2JS_a1ptr_set_at_raw
 //
 #extern
 fun
-XATS2JS_a1ref_get0_at
+XATS2JS_a1ref_dtget_at
 {a:vt}
 {n:i0}
 ( A0:
@@ -591,7 +610,7 @@ XATS2JS_a1ref_get0_at
 , i0: nintlt(n)): ~a = $extnam()
 #impltmp
 { a:vt }
-a1ref_get0_at<a> = XATS2JS_a1ref_get0_at
+a1ref_dtget_at<a> = XATS2JS_a1ref_dtget_at
 //
 (* ****** ****** *)
 

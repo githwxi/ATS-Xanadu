@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,14 +37,17 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #include
 "./../HATS/xatsopt_sats.hats"
 #include
 "./../HATS/xatsopt_dats.hats"
 (* ****** ****** *)
+(* ****** ****** *)
 #define
 ATS_PACKNAME
 "ATS3.XANADU.xatsopt-20220500"
+(* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/dynexp1.sats"
@@ -52,12 +56,17 @@ ATS_PACKNAME
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#staload "./../SATS/trans12.sats"
 #staload "./../SATS/trans2a.sats"
 #staload "./../SATS/trsym2b.sats"
+//
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
-d2parsed_at_trsym2b
+d2parsed_by_trsym2b
   (dpar) = let
 //
 val
@@ -74,8 +83,8 @@ in//let
 let
 val d2cenv = tr2aenv_free_top(env0)
 end
-end (*let*)//end-of-[d2parsed_at_trsym2b(dpar)]
-
+end (*let*)//end-of-[d2parsed_by_trsym2b(dpar)]
+//
 (* ****** ****** *)
 //
 #implfun

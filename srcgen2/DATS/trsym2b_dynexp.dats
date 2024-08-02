@@ -933,10 +933,14 @@ prerrln
 *)
 }
 //
+(* ****** ****** *)
+//
 |
 D2Elabck(_, _) => f0_labck(env0, d2e0)
 |
 D2Et2pck(_, _) => f0_t2pck(env0, d2e0)
+//
+(* ****** ****** *)
 //
 |
 D2Eextnam(_, _) => (   (*skipped!*)   )
@@ -966,7 +970,7 @@ val loc0 = d2e0.lctn((*void*))
 val t2p1 = d2e0.styp((*void*))
 val dexp = drxp.dexp((*void*))
 //
-(*
+// (*
 val () =
 prerrln
 ("f0_sym0(2b): loc0 = ", loc0)
@@ -982,7 +986,7 @@ prerrln
 val () =
 prerrln
 ("f0_sym0(2b): drxp = ", drxp)
-*)
+// *)
 //
 in//let
 case+
@@ -995,14 +999,14 @@ val dpis =
 match2a_d2ptmlst
 (env0, dpis, t2p1)
 //
-(*
+// (*
 val () =
 prerrln
 ("f0_sym0(2b): t2p1 = ", t2p1)
 val () =
 prerrln
 ("f0_sym0(2b): dpis = ", dpis)
-*)
+// *)
 //
 val dsym =
 d2exp_make_dpis
@@ -1020,19 +1024,19 @@ list_nil() =>
 (
   f1_maxes(dpis) ) ): d2ptmlst
 //
-(*
+// (*
 val () =
 prerrln
 ("f0_sym0(2b): dpis = ", dpis)
-*)
+// *)
 //
 } (*where*) // end-of-[val(dsym)]
 //
-(*
+// (*
 val () =
 prerrln
 ("f0_sym0(2b): dsym = ", dsym)
-*)
+// *)
 //
 in//let
 let

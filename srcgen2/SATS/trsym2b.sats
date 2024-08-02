@@ -54,18 +54,21 @@ This one is a continuation of [trans2a]
 (* ****** ****** *)
 //
 (*
+//
 HX-2023-05-20:
 Note that the name is
 not [d2parsed_of_trsym2b]
-*)
-(*
+//
+HX-2024-08-01:
+This one is needed
+for translating [D1Cstaload]
+inside [trans12]!!!
+//
 fun
-trsym2b_at_d2parsed
-( dpar : d2parsed ): (void)
+d2parsed_by_trsym2b
+( dpar : d2parsed ): (  void  )
+//
 *)
-fun
-d2parsed_at_trsym2b
-( dpar : d2parsed ): (void)
 //
 (* ****** ****** *)
 //

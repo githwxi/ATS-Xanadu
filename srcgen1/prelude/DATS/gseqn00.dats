@@ -81,10 +81,11 @@ gseqn_unrlist_vt
 
 local
 //
+(*
 #sexpdef
 listn(a:t0) =
-(
-lam(n:i0) => list(a,n))
+(lam(n:i0) => list(a,n))
+*)
 //
 (* ****** ****** *)
 in(*local*)

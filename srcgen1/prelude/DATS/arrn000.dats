@@ -12,9 +12,13 @@ HX: for pure C-arrays
 /SATS/VT/arrn000_vt.sats"
 *)
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #staload UN =
 "srcgen1\
 /prelude/SATS/unsafex.sats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -22,17 +26,20 @@ HX: for pure C-arrays
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 < a:t0 >
 a0ref_get(A0) =
 (
-  a0ref_get0<a>(A0) )
+a0ref_dtget<a>(A0))
+//
 (* ****** ****** *)
 (*
 #impltmp
 <a:t0>
 a0ref_set(A0, x0) =
-a0ref_setf<a>(A0, x0)
+(a0ref_setf<a>(A0, x0))
 *)
 (* ****** ****** *)
 //
@@ -53,9 +60,13 @@ $UN.castlin10{a}(x1)
 {
 //
 val x1 =
-a0ref_get0<a>(A0)
+(
+  a0ref_dtget<a>(A0))
+//
 val x0 =
-$UN.castlin10{?a}(x0)
+(
+  $UN.castlin10{?a}(x0))
+//
 val A1 =
 $UN.cast10{a0ref(?a)}(A0)
 //
@@ -72,14 +83,18 @@ a0ptr2ref
 (a0ptr_make_1val<a>(x0))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 (*
 **HX: 1-dimensional
 *)
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 < a:t0 >
 a1ref_get_at(A0, i0) =
-a1ref_get0_at<a>(A0, i0)
+a1ref_dtget_at<a>(A0,i0)
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -336,7 +351,7 @@ if
 then
 let
 val x0 =
-a1ref_get0_at<a>(A0, i0)
+a1ref_dtget_at<a>(A0, i0)
 val x0 = $UN.castlin10{ a}(x0)
 val b0 = forall$test1< a >(x0)
 val x0 = $UN.castlin10{?a}(x0)
@@ -372,7 +387,7 @@ then
   loop(succ(i0))) where
 {
   val x0 =
-  a1ref_get0_at<a>(A0, i0)
+  a1ref_dtget_at<a>(A0, i0)
   val x0 = $UN.castlin10{ a}(x0)
   val () = foreach$work1< a>(x0)
   val x0 = $UN.castlin10{?a}(x0)
@@ -401,7 +416,7 @@ then
 let
 val i1 = pred(i0)
 val x0 =
-a1ref_get0_at<a>(A0, i1)
+a1ref_dtget_at<a>(A0, i1)
 val x0 = $UN.castlin10{ a}(x0)
 val b0 = rforall$test1< a>(x0)
 val x0 = $UN.castlin10{?a}(x0)

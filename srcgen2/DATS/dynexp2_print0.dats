@@ -61,6 +61,12 @@ _(*?*) = "./lexing0_print0.dats"
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/dynexp2.sats"
 (* ****** ****** *)
+(* ****** ****** *)
+#symload lctn with d2con_get_lctn
+#symload name with d2con_get_name
+#symload lctn with d2cst_get_lctn
+#symload name with d2cst_get_name
+(* ****** ****** *)
 #symload lctn with d2pat_get_lctn
 #symload node with d2pat_get_node
 #symload styp with d2pat_get_styp
@@ -92,6 +98,7 @@ _(*?*) = "./lexing0_print0.dats"
 (* ****** ****** *)
 #symload dpat with d2rpt_get_dpat
 #symload dexp with d2rxp_get_dexp
+(* ****** ****** *)
 (* ****** ****** *)
 
 #implfun
@@ -381,12 +388,30 @@ print("D2Econ(", d2c, ")")
 |D2Ecst(d2c) =>
 print("D2Ecst(", d2c, ")")
 //
+(* ****** ****** *)
+//
 |
 D2Econs(d2cs) =>
-print("D2Econs(", d2cs, ")")
+(
+print
+("D2Econs(", d2cs, ")"))
+where
+{
+#impltmp
+g_print<d2con>(x) =
+print
+(x.name(),"(",x.lctn(),")") }
 |
 D2Ecsts(d2cs) =>
-print("D2Ecsts(", d2cs, ")")
+(
+print
+("D2Ecsts(", d2cs, ")"))
+where
+{
+#impltmp
+g_print<d2cst>(x) =
+print
+(x.name(),"(",x.lctn(),")") }
 //
 (* ****** ****** *)
 //

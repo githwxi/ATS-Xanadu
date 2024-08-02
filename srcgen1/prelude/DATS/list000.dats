@@ -263,6 +263,8 @@ val+
 list_cons
 (x0 , xs) = xs in xs end
 //
+(* ****** ****** *)
+//
 (*
 #impltmp
 <a:type>
@@ -1199,28 +1201,6 @@ gseq_nilq
 {a:t0}
 gseq_consq
 <list(a)><a> = list_consq{a}
-//
-(* ****** ****** *)
-//
-#impltmp
-{a:t0}
-gseq_uncons_raw
-<list(a)><a>(xs) =
-let
-  val x0 = xs.0
-  val () = xs := xs.1 in x0
-end // end of [gseq_uncons_raw]
-//
-(* ****** ****** *)
-//
-#impltmp
-{a:type}
-gseq_head_raw
-<list(a)><a> = list_head_raw<a>
-#impltmp
-{a:type}
-gseq_tail_raw
-<list(a)><a> = list_tail_raw<a>
 //
 (* ****** ****** *)
 //

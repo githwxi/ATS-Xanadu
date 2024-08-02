@@ -121,8 +121,7 @@ endlet // end of [optn_cons(syn)]
 //
 #implfun
 d3parsed_of_tread30
-  (dpar) =
-let
+  (dpar) = let
 //
 var nerror: sint = 0
 //

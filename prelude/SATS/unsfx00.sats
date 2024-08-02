@@ -145,8 +145,6 @@ p2tr_set_list_cons
 (* ****** ****** *)
 //
 fun<>
-strn_get_at(strn, sint): cgtz
-fun<>
 strn_get_at_raw(strn, sint): cgtz
 //
 (* ****** ****** *)

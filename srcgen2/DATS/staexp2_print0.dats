@@ -56,12 +56,17 @@ _(*?*) = "./lexing0_print0.dats"
 (* ****** ****** *)
 #staload "./../SATS/staexp2.sats"
 (* ****** ****** *)
+(* ****** ****** *)
+#symload name with s2cst_get_name
+#symload lctn with s2cst_get_lctn
+(* ****** ****** *)
 #symload node with s2arg_get_node
 (* ****** ****** *)
 #symload node with s2exp_get_node
 #symload sort with s2exp_get_sort
 (* ****** ****** *)
 #symload node with l2s2e_get_node
+(* ****** ****** *)
 (* ****** ****** *)
 
 #implfun
@@ -278,7 +283,15 @@ print("S2Etop1(",s2e,")")
 //
 |
 S2Ecsts(s2cs) =>
+(
 print("S2Ecsts(",s2cs,")")
+) where
+{
+#impltmp
+g_print<s2cst>(x) =
+print
+(x.name(),"(", x.lctn(), ")")
+}
 //
 |
 S2Earg1(knd0,s2e1) =>

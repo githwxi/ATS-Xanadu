@@ -75,8 +75,7 @@ trans02_from_fpath(stadyn, source))
 val dpar = d2parsed_of_tread12(dpar)
 //
 val dpar = d2parsed_of_trans2a(dpar)
-//
-val (  ) = d2parsed_at_trsym2b(dpar)
+val (  ) = d2parsed_by_trsym2b(dpar)
 //
 val dpar = d2parsed_of_tread20(dpar)
 //
@@ -91,8 +90,7 @@ prerrln("trans03_from_fpath: dpar = ", dpar)
 
 #implfun
 d3parsed_of_trans23
-  (dpar) =
-let
+  (dpar) = let
 //
 val stadyn =
 d2parsed_get_stadyn(dpar)

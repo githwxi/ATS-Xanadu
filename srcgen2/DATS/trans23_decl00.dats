@@ -64,10 +64,14 @@ _(*TRANS23*) = "./trans23.dats"
 (* ****** ****** *)
 #staload "./../SATS/dynexp3.sats"
 (* ****** ****** *)
+//
+#staload "./../SATS/trans12.sats"
+(*
 #staload "./../SATS/trans2a.sats"
 #staload "./../SATS/trsym2b.sats"
-(* ****** ****** *)
+*)
 #staload "./../SATS/trans23.sats"
+//
 (* ****** ****** *)
 #staload "./../SATS/xglobal.sats"
 (* ****** ****** *)
@@ -110,12 +114,22 @@ let
 in(*let*)
 (0, dpar) where
 {
+//
+(*
+HX-2024-08-02:
+This part is already
+done inside [trans12]!!!
+//
 val dpar =
 d2parsed_of_trans2a(dpar)
 val (  ) =
-d2parsed_at_trsym2b(dpar)
+d2parsed_by_trsym2b(dpar)
+//
+*)
+//
 val dpar =
 d3parsed_of_trans23(dpar)
+//
 val (  ) =
 the_d3parenv_pvsadd0(fnm2, dpar) }
 end//let//end-of-[ optn_vt_nil() ]
@@ -461,10 +475,10 @@ d2parsed_get_stadyn(dpar)
 in//let
 if
 stadyn <= 0
-then
+then // static
 (
   S3TALOADnone(dopt) )
-else
+else // dynamic
 (
 case+ fopt of
 |optn_nil() =>

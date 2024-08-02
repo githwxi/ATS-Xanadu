@@ -139,9 +139,6 @@ list_head
 {n:pos}(list(a, n)): (a)
 fun
 <a:t0>
-list_head_raw(xs: list(a)): (a)
-fun
-<a:t0>
 list_head_exn(xs: list(a)): (a)
 fun
 <a:t0>
@@ -153,9 +150,6 @@ fun
 <a:t0>
 list_tail
 {n:pos}(list(a, n)): list(a, n-1)
-fun
-<a:t0>
-list_tail_raw(xs: list(a)): list(a)
 fun
 <a:t0>
 list_tail_exn(xs: list(a)): list(a)

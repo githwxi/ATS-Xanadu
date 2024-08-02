@@ -191,7 +191,7 @@ fprint!(out, ": ", x0.type());
 *)
 ) where
 {
-  val sym = x0.sym() and stamp = x0.stamp()
+val sym = x0.sym() and stamp = x0.stamp()
 } (* end of [fprint_d2con] *)
 //
 (* ****** ****** *)
@@ -207,13 +207,11 @@ implement
 fprint_d2cst
   (out, x0) =
 (
-(*
 fprint!
-(out, sym, "(", stamp, ")");
-*)
+(out, sym, "(", stamp, ")")
+(*
 fprint!
 (out, sym, "(", x0.loc(), ")");
-(*
 fprint!(out, "; tqas= ", x0.tqas());
 fprint!(out, "; sexp= ", x0.sexp());
 fprint!(out, "; type= ", x0.type());
@@ -245,8 +243,7 @@ fprint!(out, "; type= ", x0.type());
 *)
 ) where
 {
-val
-sym = x0.sym() and stamp = x0.stamp()
+val sym = x0.sym() and stamp = x0.stamp()
 } (*where*) // end of [fprint_d2var]
 //
 (* ****** ****** *)
@@ -297,8 +294,7 @@ case+ opt2 of
 |
 None() =>
 fprint!
-( out
-, "D2TYPsome_var(", d2v1, ")")
+(out, "D2TYPsome_var(", d2v1, ")")
 |
 Some(s2e2) =>
 fprint!
@@ -565,21 +561,50 @@ case- x0.node() of
 | D2Evar(d2v) =>
   fprint!(out, "D2Evar(", d2v, ")")
 //
-| D2Ecst1(d2c) =>
-  fprint!(out, "D2Ecst1(", d2c, ")")
 | D2Econ1(d2c) =>
   fprint!(out, "D2Econ1(", d2c, ")")
-| D2Ecst2(d2cs) =>
-  fprint!(out, "D2Ecst2(", d2cs, ")")
+| D2Ecst1(d2c) =>
+  fprint!(out, "D2Ecst1(", d2c, ")")
+//
 | D2Econ2(d2cs) =>
+(
   fprint!(out, "D2Econ2(", d2cs, ")")
+) where
+{
+  implement
+  fprint_val<d2con>
+    (out, x0) =
+  let
+  val sym = x0.sym()
+  and loc = x0.loc() in//let
+  (
+    fprint!(out, sym, "(", loc, ")"))
+  end//let
+}
+//
+| D2Ecst2(d2cs) =>
+(
+  fprint!(out, "D2Ecst2(", d2cs, ")")
+) where
+{
+  implement
+  fprint_val<d2cst>
+    (out, x0) =
+  let
+  val sym = x0.sym()
+  and loc = x0.loc() in//let
+  (
+    fprint!(out, sym, "(", loc, ")"))
+  end//let
+}
 //
 | D2Esym0
   (d1e1, dpis) =>
   fprint!(out, "D2Esym0(", d1e1, ")")
 (*
   fprint!
-  (out, "D2Esym0(", d1e1, "; ", dpis, ")")
+  ( out
+  , "D2Esym0(", d1e1, "; ", dpis, ")")
 *)
 //
 | D2Esapp

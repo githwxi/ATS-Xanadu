@@ -23,7 +23,7 @@ Wed Dec 20 23:11:33 EST 2023
 local
 //
 datavwtp
-a1psz //
+a1psz_dt //
 (a:vwtp,int(*sz*)) =
 {n:int}
 A1PSZ of
@@ -31,7 +31,7 @@ A1PSZ of
 //
 #absimpl
 a1psz_vt_i0_x0
-( a:vt, n:i0 ) = a1psz(a, n)
+( a:vt, n:i0 ) = a1psz_dt(a, n)
 //
 (* ****** ****** *)
 in(*local*)
@@ -40,7 +40,9 @@ in(*local*)
 #impltmp
 <a>(*tmp*)
 a1psz_make0_ptrsize
-  (A0, n0) = A1PSZ( A0, n0 )
+  (A0, n0) =
+(
+$UN.castlin01(A1PSZ(A0, n0)))
 //
 (* ****** ****** *)
 //
@@ -48,11 +50,15 @@ a1psz_make0_ptrsize
 <a>(*tmp*)
 a1psz_length1(AZ) =
 let
-val+A1PSZ(A0, n0) = AZ in n0 end
+val AZ =
+$UN.castlin01
+(
+$UN.datacopy(AZ))
+val+A1PSZ(A0, n0) = AZ in (n0) end
 //
 (* ****** ****** *)
 
-end (*local*) // end of [local(a1rsz)]
+end (*local*) // end of [local(a1psz)]
 
 (* ****** ****** *)
 

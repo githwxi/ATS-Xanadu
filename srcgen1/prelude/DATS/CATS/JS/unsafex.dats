@@ -38,12 +38,12 @@ XATS2JS_UN_p2tr_set
 (* ****** ****** *)
 #impltmp
 <a>(*tmp*)
-$UN.a0ref_set0 =
-XATS2JS_UN_a0ref_set0 where
+$UN.a0ref_dtset =
+XATS2JS_UN_a0ref_dtset where
 {
 #extern
 fun
-XATS2JS_UN_a0ref_set0
+XATS2JS_UN_a0ref_dtset
 {a:vt}
 ( A0
 : a0ref(a), x0: ~a): void = $extnam()

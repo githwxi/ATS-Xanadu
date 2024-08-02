@@ -67,11 +67,11 @@ char_neqz
 #impltmp
 <>(*tmp*)
 strn_head(cs) =
-(strn_head_raw<>(cs))
+$UN.strn_head_raw<>(cs)
 #impltmp
 <>(*tmp*)
 strn_tail(cs) =
-(strn_tail_raw<>(cs))
+$UN.strn_tail_raw<>(cs)
 
 (* ****** ****** *)
 //
@@ -88,7 +88,8 @@ strn_nilq(cs)
 then
 optn_vt_nil((*void*))
 else
-optn_vt_cons(strn_tail_raw(cs))
+optn_vt_cons
+($UN.strn_tail_raw(cs))
 //
 (* ****** ****** *)
 //
@@ -121,9 +122,9 @@ if
 strn_nilq(x2)
 then (1) else let
 val c1 =
-strn_head_raw(x1)
+$UN.strn_head_raw(x1)
 and c2 =
-strn_head_raw(x2)
+$UN.strn_head_raw(x2)
 val
 sgn = char_cmp(c1, c2)
 in//let
@@ -131,8 +132,8 @@ if
 (sgn != 0)
 then sgn else
 loop
-( strn_tail_raw(x1)
-, strn_tail_raw(x2)) end
+( $UN.strn_tail_raw(x1)
+, $UN.strn_tail_raw(x2)) end
 )
 //
 in
@@ -321,13 +322,14 @@ strn_nilq
 then true else
 let
 val x0 =
-strn_head_raw(xs)
+$UN.strn_head_raw(xs)
 in//let
 if
 forall$test<x0>(x0)
 then
 loop
-(strn_tail_raw(xs)) else false
+(
+$UN.strn_tail_raw(xs)) else false
 // end of [if]
 end // end of [else]
 } (* end of [strn_forall/uncons] *)
@@ -822,13 +824,6 @@ gseq_rlistize<xs><x0> = strn_rlistize<>
 gras_rstrmize<xs><x0> = strn_rstrmize<>
 #impltmp
 gseq_rstrmize<xs><x0> = strn_rstrmize<>
-//
-(* ****** ****** *)
-//
-#impltmp
-gseq_head_raw<xs><x0> = strn_head_raw<>
-#impltmp
-gseq_tail_raw<xs><x0> = strn_tail_raw<>
 //
 (* ****** ****** *)
 //

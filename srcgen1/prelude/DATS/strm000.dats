@@ -122,24 +122,6 @@ strm_cons(x0, strm_sing(y0))
 //
 #impltmp
 <a>(*tmp*)
-strm_head_raw(xs) =
-strmcon_head_raw<a>(!xs)
-#impltmp
-<a>(*tmp*)
-strm_tail_raw(xs) =
-strmcon_tail_raw<a>(!xs)
-//
-#impltmp
-<a>(*tmp*)
-strmcon_head_raw(xs) = xs.0
-#impltmp
-<a>(*tmp*)
-strmcon_tail_raw(xs) = xs.1
-//
-(* ****** ****** *)
-//
-#impltmp
-<a>(*tmp*)
 strm_from(x0) =
 (
 auxmain(x0) ) where
@@ -808,7 +790,7 @@ strmcon_nil
 strmcon_cons
 ( y0, ys1 ) =>
 let
-val knd = g_sel2<a>(x0, y0)
+val knd = g_s2el<a>(x0, y0)
 in//let
 //
 if
@@ -1083,7 +1065,7 @@ in
 end
 //
 #impltmp
-g_sel2<z0>(z1, z2) =
+g_s2el<z0>(z1, z2) =
 let
 val sgn =
 g_cmp11<z0>(z1, z2) in
@@ -1122,17 +1104,6 @@ gseq_nilq
 {a:t0}
 gseq_consq
 <strm(a)><a> = strm_consq<a>
-(* ****** ****** *)
-//
-#impltmp
-{a:type}
-gseq_head_raw
-<strm(a)><a> = strm_head_raw<a>
-#impltmp
-{a:type}
-gseq_tail_raw
-<strm(a)><a> = strm_tail_raw<a>
-//
 (* ****** ****** *)
 //
 #impltmp

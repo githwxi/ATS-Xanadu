@@ -74,14 +74,15 @@ datacopy{a0:vt}(x0: !a0): (?!a0)
 (* ****** ****** *)
 //
 fcast
-optn_vt2t
+optn_vt2t1
 {a:t0}{b:b0}
 (xs: !optn_vt(a, b)): optn(a, b)
 fcast
-list_vt2t
+list_vt2t1
 {a:t0}{n:i0}
 (xs: !list_vt(a, n)): list(a, n)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -94,6 +95,12 @@ fun
 <a:vt>
 p1tr_ret(p0: p1tr, x0: a): void
 //
+#symload ptr_get with p1tr_get of 1000
+#symload ptr_set with p1tr_set of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <a:vt>
 p2tr_get(p0: p2tr(a)): (a)
@@ -104,6 +111,10 @@ fun
 <a:vt>
 p2tr_ret(p0: p2tr(a), x0: a): void
 //
+#symload ptr_get with p2tr_get of 1000
+#symload ptr_set with p2tr_set of 1000
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -118,6 +129,10 @@ fun
 <a:vt>
 cp2tr_get(cp: cp2tr(a)): a
 //
+#symload cptr_get with cp1tr_get of 1000
+#symload cptr_get with cp2tr_get of 1000
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -139,30 +154,81 @@ p2tr_set_list_vt_cons
 (p0: p2tr(list_vt(a)), x0: a): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
+(*
+HX:
+this one is safe!
 fun
 <a:vt>
-a0ref_set0
-(A0: a0ref(a), x0: ?!a): void
+a0ref_dtget
+(A0: a0ref(a)): ?!a
+*)
+fun
+<a:vt>
+a0ref_dtset
+(a0ref(a), ?!a): void
 //
 (* ****** ****** *)
-//
-// HX-2020-05-30:
-// symbol overloading for unsafe
-//
 (* ****** ****** *)
 //
-#symload ptr_get with p1tr_get of 1000
-#symload ptr_set with p1tr_set of 1000
-//
-#symload ptr_get with p2tr_get of 1000
-#symload ptr_set with p2tr_set of 1000
-//
-(* ****** ****** *)
-//
-#symload cptr_get with cp1tr_get of 1000
-#symload cptr_get with cp2tr_get of 1000
+fun<>
+strn_head_raw(strn): cgtz
+fun<>
+strn_tail_raw(strn): strn
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_head_raw(xs): x0
+fun
+<xs:t0>
+<x0:t0>
+gseq_tail_raw(xs): xs
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_last_raw(xs): x0
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_uncons_raw(xs: &xs >> xs): x0
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:t0>
+list_head_raw(xs: list(a)): (a)
+fun
+<a:t0>
+list_tail_raw(xs: list(a)): list(a)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:t0>
+strm_head_raw(strm(a)): a
+fun
+<a:t0>
+strm_tail_raw(strm(a)): strm(a)
+fun
+<a:t0>
+strmcon_head_raw(strmcon(a)): a
+fun
+<a:t0>
+strmcon_tail_raw(strmcon(a)): strm(a)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen1_prelude_SATS_unsafex.sats] *)

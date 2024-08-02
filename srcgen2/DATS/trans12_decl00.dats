@@ -734,16 +734,28 @@ let
 *)
 //
 in(*let*)
-(0, dpar) where
+//
+(0(*nshr*), dpar) where
 {
+//
 val dpar =
-d2parsed_of_trans12(dpar)
+(
+  d2parsed_of_trans12(dpar))
+//
+val dpar =
+(
+  d2parsed_of_trans2a(dpar))
+val (  ) =
+(
+  d2parsed_by_trsym2b(dpar))
+//
 val (  ) =
 the_d2parenv_pvsadd0(fnm2, dpar) }
+//
 end//let//end-of-[ optn_vt_nil() ]
 //
 | ~
-optn_vt_cons(dpar) => @(1(*shr*),dpar)
+optn_vt_cons(dpar) => @(1(*shrd*),dpar)
 //
 end where
 {
@@ -837,6 +849,8 @@ D1Cabsimpl _ => f0_absimpl(env0, d1cl)
 //
 |
 D1Csymload _ => f0_symload(env0, d1cl)
+//
+(* ****** ****** *)
 //
 |
 D1Cinclude _ => f0_include(env0, d1cl)
@@ -1922,9 +1936,10 @@ let
   val-
   optn_cons@(shrd, dpar) = dopt
 in//let
-(
-optn_cons
-(s2taload_from_fpath(fpth, dpar)) )
+//
+ optn_cons
+ (s2taload_from_fpath(fpth, dpar))
+//
 end // let
 ) :
 optn@(sint,d2parsed) // [val(dopt)]

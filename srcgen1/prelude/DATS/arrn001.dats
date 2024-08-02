@@ -24,15 +24,15 @@ Wed Dec 20 19:13:09 EST 2023
 local
 //
 datatype
-a1rsz //
+a1rsz_dt //
 (a:vwtp,int(*sz*)) =
 {n:int}
 A1RSZ of
-(a1ref(a, n), sint(n))
+(a1ref(a,n), sint(n))
 //
 #absimpl
 a1rsz_vt_i0_x0
-( a:vt, n:i0 ) = a1rsz(a, n)
+(a:vt,n:i0) = a1rsz_dt(a,n)
 //
 (* ****** ****** *)
 in(*local*)

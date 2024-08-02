@@ -682,6 +682,7 @@ gflt_div_dflt_dflt<> = XATS2JS_gflt_div_dflt_dflt
 *)
 //
 (* ****** ****** *)
+//
 #impltmp
 strn_vt2t<> =
 XATS2JS_strn_vt2t
@@ -694,7 +695,7 @@ XATS2JS_strn_vt2t
 :strn_vt):strn = $extnam()
 }
 (* ****** ****** *)
-
+//
 #impltmp
 stropt_nilq<> =
 XATS2JS_stropt_nilq
@@ -715,8 +716,9 @@ fun
 XATS2JS_stropt_consq
 (opt: stropt): bool = $extnam()
 }
-
+//
 (* ****** ****** *)
+//
 #impltmp
 strn_lt<> =
 XATS2JS_strn_lt
@@ -750,7 +752,9 @@ XATS2JS_strn_eq
 (x1: strn
 ,x2: strn): bool = $extnam()
 }
+//
 (* ****** ****** *)
+//
 #impltmp
 strn_lte<> =
 XATS2JS_strn_lte
@@ -785,6 +789,7 @@ XATS2JS_strn_neq
 ,x2: strn): bool = $extnam()
 }
 (* ****** ****** *)
+//
 #impltmp
 strn_cmp<> =
 XATS2JS_strn_cmp
@@ -797,6 +802,50 @@ XATS2JS_strn_cmp
 ,x2: strn): sint = $extnam()
 }
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+$UN.strn_head_raw =
+XATS2JS_strn_head_raw
+where
+{
+#extern
+fun
+XATS2JS_strn_head_raw
+(cs: strn): char = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+$UN.strn_tail_raw =
+XATS2JS_strn_tail_raw
+where
+{
+#extern
+fun
+XATS2JS_strn_tail_raw
+(cs: strn): strn = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strn_get_at =
+XATS2JS_strn_get_at
+where
+{
+#extern
+fun
+XATS2JS_strn_get_at
+( cs
+: strn,i0: sint): char = $extnam()
+}
+//
+(* ****** ****** *)
+//
 #impltmp
 strn_head_opt<> =
 XATS2JS_strn_head_opt
@@ -807,29 +856,9 @@ fun
 XATS2JS_strn_head_opt
 (cs: strn): char = $extnam()
 }
+//
 (* ****** ****** *)
-#impltmp
-strn_head_raw<> =
-XATS2JS_strn_head_raw
-where
-{
-#extern
-fun
-XATS2JS_strn_head_raw
-(cs: strn): char = $extnam()
-}
-(* ****** ****** *)
-#impltmp
-strn_tail_raw<> =
-XATS2JS_strn_tail_raw
-where
-{
-#extern
-fun
-XATS2JS_strn_tail_raw
-(cs: strn): strn = $extnam()
-}
-(* ****** ****** *)
+//
 #impltmp
 strn_length<> =
 XATS2JS_strn_length
@@ -839,41 +868,6 @@ where
 fun
 XATS2JS_strn_length
 (cs : strn) : nint = $extnam()
-}
-//
-#impltmp
-strn_vt_length0<> =
-XATS2JS_strn_vt_length0
-where
-{
-#extern
-fun
-XATS2JS_strn_vt_length0
-(cs : !strn_vt) : nint = $extnam()
-}
-#impltmp
-strn_vt_length1<> =
-XATS2JS_strn_vt_length1
-where
-{
-#extern
-fun
-XATS2JS_strn_vt_length1
-(cs : !strn_vt) : nint = $extnam()
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-strn_get_at<> =
-XATS2JS_strn_get_at
-where
-{
-#extern
-fun
-XATS2JS_strn_get_at
-( cs
-: strn,i0: sint): char = $extnam()
 }
 //
 (* ****** ****** *)
@@ -895,6 +889,7 @@ XATS2JS_strn_forall_cfr
 , lam(c0) => forall$test<cgtz>(c0))
 end//let//end-of-[strn_forall<>(cs)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -951,6 +946,31 @@ XATS2JS_strtmp_vt_set_at
 , i0:sint, c0:char): void = $extnam()
 }
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+strn_vt_length0<> =
+XATS2JS_strn_vt_length0
+where
+{
+#extern
+fun
+XATS2JS_strn_vt_length0
+(cs : !strn_vt) : nint = $extnam()
+}
+#impltmp
+strn_vt_length1<> =
+XATS2JS_strn_vt_length1
+where
+{
+#extern
+fun
+XATS2JS_strn_vt_length1
+(cs : !strn_vt) : nint = $extnam()
+}
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -1020,5 +1040,9 @@ XATS2JS_strn_vt_rforall_cfr
 } (*where*) // end of [strn_vt_rforall1]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_basics0.dats] *)
