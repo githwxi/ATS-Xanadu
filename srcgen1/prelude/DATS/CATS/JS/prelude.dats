@@ -462,16 +462,31 @@ a0ref_set<a> = XATS2JS_a0ref_set
 //
 (* ****** ****** *)
 //
+#impltmp
+{ a:vt }
+a0ref_dtget<a> =
+XATS2JS_a0ref_dtget where
+{
 #extern
 fun
 XATS2JS_a0ref_dtget
 {a:vt}
 ( A0
 : a0ref(a)): (?!a) = $extnam()
+}
+//
 #impltmp
 { a:vt }
-a0ref_dtget<a> = XATS2JS_a0ref_dtget
-//
+a0ref_dtset<a> =
+XATS2JS_a0ref_dtset where
+{
+#extern
+fun
+XATS2JS_a0ref_dtset
+{a:vt}
+( A0
+: a0ref(a), x0: ?!a): void = $extnam()
+}
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -490,14 +505,14 @@ a0ptr_alloc<a> = XATS2JS_a0ptr_alloc
 //
 #extern
 fun
-XATS2JS_a0ptr_make_1val
+XATS2JS_a0ptr_make0_1val
 {a:vt}
 (
 x0: a
 ) : a0ptr(a) = $extnam()
 #impltmp
 { a:vt }
-a0ptr_make_1val<a> = XATS2JS_a0ptr_make_1val
+a0ptr_make0_1val<a> = XATS2JS_a0ptr_make0_1val
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -512,10 +527,10 @@ a1ptr_free<a>(A0, n0) = () // GC
 //
 #impltmp
 { a:vt }
-a1ptr_mfree<a>(  A0  ) = () // GC
+a1ptr_mfree0<a>(  A0  ) = () // GC
 #impltmp
 { a:vt }
-a1ptr_clear<a>(A0, n0) = () // GC
+a1ptr_clear1<a>(A0, n0) = () // GC
 //
 (* ****** ****** *)
 #extern
@@ -545,7 +560,7 @@ a1ref_get_at<a> = XATS2JS_a1ref_get_at
 //
 #extern
 fun
-XATS2JS_a1ptr_get_at
+XATS2JS_a1ptr_get1_at
 {a:t0}
 {n:i0}
 ( A0:
@@ -553,7 +568,7 @@ XATS2JS_a1ptr_get_at
 , i0: nintlt(n)): a = $extnam()
 #impltmp
 { a:t0 }
-a1ptr_get_at<a> = XATS2JS_a1ptr_get_at
+a1ptr_get1_at<a> = XATS2JS_a1ptr_get1_at
 //
 (* ****** ****** *)
 //
@@ -572,7 +587,7 @@ a1ref_set_at<a> = XATS2JS_a1ref_set_at
 //
 #extern
 fun
-XATS2JS_a1ptr_set_at
+XATS2JS_a1ptr_set1_at
 {a:t0}
 {n:i0}
 ( A0:
@@ -581,10 +596,11 @@ XATS2JS_a1ptr_set_at
 , x0: a(*new*)): void = $extnam()
 #impltmp
 { a:t0 }
-a1ptr_set_at<a> = XATS2JS_a1ptr_set_at
+a1ptr_set1_at<a> = XATS2JS_a1ptr_set1_at
 //
 (* ****** ****** *)
 //
+(*
 #extern
 fun
 XATS2JS_a1ptr_set_at_raw
@@ -597,9 +613,15 @@ XATS2JS_a1ptr_set_at_raw
 #impltmp
 { a:vt }
 a1ptr_set_at_raw<a> = XATS2JS_a1ptr_set_at_raw
+*)
 //
 (* ****** ****** *)
 //
+#impltmp
+{ a:vt }
+a1ref_dtget_at<a> =
+XATS2JS_a1ref_dtget_at where
+{
 #extern
 fun
 XATS2JS_a1ref_dtget_at
@@ -608,9 +630,7 @@ XATS2JS_a1ref_dtget_at
 ( A0:
   a1ref(a, n)
 , i0: nintlt(n)): ~a = $extnam()
-#impltmp
-{ a:vt }
-a1ref_dtget_at<a> = XATS2JS_a1ref_dtget_at
+}
 //
 (* ****** ****** *)
 

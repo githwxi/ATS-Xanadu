@@ -730,25 +730,25 @@ a1ptr_alloc<a> = XINTERP_a1ptr_alloc
 //
 #extern
 fun
-XINTERP_a0ref_get_raw
+XINTERP_a0ref_dtget
 {a:vt}
 (A0: a0ref(a)): (?!a) = $extnam()
 #extern
 fun
-XINTERP_a0ref_set_raw
+XINTERP_a0ref_dtset
 {a:vt}
 (A0
-:a0ref(a), x0: a): void = $extnam()
+:a0ref(a), x0: ?!a): void = $extnam()
 //
 (* ****** ****** *)
 //
 #impltmp
 {a:vt}
-a0ref_dtget<a> = XINTERP_a0ref_get_raw{a}
+a0ref_dtget<a> = XINTERP_a0ref_dtget{a}
 //
 #impltmp
 {a:vt}
-$UN.a0ref_dtset<a> = XINTERP_a0ref_set_raw{a}
+a0ref_dtset<a> = XINTERP_a0ref_dtset{a}
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -769,37 +769,37 @@ XINTERP_a1ref_tail_raw
 //
 #extern
 fun
-XINTERP_a1ref_get_at_raw
+XINTERP_a1ref_dtget_at
 {a:vt}{n:int}
 ( A0
 : a1ref(a, n)
 , i0
-: sint(*index*)): (~a) = $extnam((*self*))
+: sint(*index*)): (?!a) = $extnam((*self*))
 #extern
 fun
-XINTERP_a1ptr_get_at_raw
+XINTERP_a1ptr_dtget1_at
 {a:vt}{n:int}
 ( A0:
 ! a1ptr(a, n)
 , i0
-: sint(*index*)): (~a) = $extnam((*self*))
+: sint(*index*)): (?!a) = $extnam((*self*))
 //
 #extern
 fun
-XINTERP_a1ref_set_at_raw
+XINTERP_a1ref_dtset_at
 {a:vt}{n:int}
 ( A0
 : a1ref(a, n)
 , i0
-: sint(*idx*), x0: a): void = $extnam((*0*))
+: sint(*idx*), x0: ?!a): void = $extnam((*0*))
 #extern
 fun
-XINTERP_a1ptr_set_at_raw
+XINTERP_a1ptr_dtset1_at
 {a:vt}{n:int}
 ( A0:
 ! a1ptr(a, n)
 , i0
-: sint(*idx*), x0: a): void = $extnam((*0*))
+: sint(*idx*), x0: ?!a): void = $extnam((*0*))
 //
 (* ****** ****** *)
 //
@@ -818,25 +818,23 @@ XINTERP_a1ref_tail_raw{a}(A0)
 {a:t0}
 a1ref_get_at<a>
 (A0, i0) =
-XINTERP_a1ref_get_at_raw{a}(A0, i0)
+XINTERP_a1ref_dtget_at{a}(A0, i0)
 #impltmp
 {a:t0}
-a1ptr_get_at<a>
+a1ptr_get1_at<a>
 (A0, i0) =
-XINTERP_a1ptr_get_at_raw{a}(A0, i0)
+XINTERP_a1ptr_dtget1_at{a}(A0, i0)
 //
-(*
 #impltmp
 {a:vt}
 a1ref_dtget_at<a>
 (A0, i0) =
-XINTERP_a1ref_get_at_raw{a}(A0, i0)
+XINTERP_a1ref_dtget_at{a}(A0, i0)
 #impltmp
 {a:vt}
-a1ptr_dtget_at<a>
+a1ptr_dtget1_at<a>
 (A0, i0) =
-XINTERP_a1ptr_get_at_raw{a}(A0, i0)
-*)
+XINTERP_a1ptr_dtget1_at{a}(A0, i0)
 //
 (* ****** ****** *)
 //
@@ -844,19 +842,12 @@ XINTERP_a1ptr_get_at_raw{a}(A0, i0)
 {a:t0}
 a1ref_set_at<a>
 (A0, i0, x0) =
-XINTERP_a1ref_set_at_raw{a}(A0, i0, x0)
+XINTERP_a1ref_dtset_at{a}(A0, i0, x0)
 #impltmp
 {a:t0}
-a1ptr_set_at<a>
+a1ptr_set1_at<a>
 (A0, i0, x0) =
-XINTERP_a1ptr_set_at_raw{a}(A0, i0, x0)
-(*
-#impltmp
-{a:vt}
-$UN.a1ptr_set_at_raw<a>
-(A0, i0, x0) =
-XINTERP_a1ptr_set_at_raw{a}(A0, i0, x0)
-*)
+XINTERP_a1ptr_dtset1_at{a}(A0, i0, x0)
 //
 (* ****** ****** *)
 

@@ -35,7 +35,7 @@ XATS2JS_a0ptr_alloc
 }
 //
 function
-XATS2JS_a0ptr_make_1val
+XATS2JS_a0ptr_make0_1val
   (x0)
 {
   var A0 =
@@ -93,7 +93,7 @@ XATS2JS_a1ref_get_at
 {
     return A0[i0]; }
 function
-XATS2JS_a1ptr_get_at
+XATS2JS_a1ptr_get1_at
   (A0, i0)
 {
     return A0[i0]; }
@@ -107,17 +107,22 @@ XATS2JS_a1ref_set_at
     return (A0[i0] = x0);
 }
 function
-XATS2JS_a1ptr_set_at
+XATS2JS_a1ptr_set1_at
   (A0, i0, x0)
 {
     return (A0[i0] = x0);
 }
+//
+/* ****** ****** */
+//
+/*
 function
 XATS2JS_a1ptr_set_at_raw
   (A0, i0, x0)
 {
     return (A0[i0] = x0);
 }
+*/
 //
 /* ****** ****** */
 //

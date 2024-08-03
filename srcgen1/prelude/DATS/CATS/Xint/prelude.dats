@@ -31,7 +31,7 @@ does not work in general
 //
 #impltmp
 <a:vt>
-a0ptr_make_1val(x0) =
+a0ptr_make0_1val(x0) =
 let
 val A0 =
 a0ptr_alloc<a>((*nil*))
