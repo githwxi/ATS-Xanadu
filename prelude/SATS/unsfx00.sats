@@ -141,6 +141,7 @@ fun
 p2tr_set_list_cons
 (p0:p2tr(list(a)), x0: a): void
 //
+(*
 fun
 <a:t0>
 p2tr_set_list_vt_nil
@@ -149,6 +150,7 @@ fun
 <a:t0>
 p2tr_set_list_vt_cons
 (p0:p2tr(list_vt(a)), x0: a): void
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

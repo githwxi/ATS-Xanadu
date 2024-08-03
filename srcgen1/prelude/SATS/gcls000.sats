@@ -223,6 +223,93 @@ GSEQ_rexists_f1np
 //
 fun
 <xs:t0>
+<x0:t0>
+<r0:vt>
+GSEQ_folditm
+(
+gseq:
+GSEQ(xs,x0), r0: r0): (r0)
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+GSEQ_rfolditm
+(
+gseq:
+GSEQ(xs,x0), r0: r0): (r0)
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+GSEQ_ifolditm
+(
+gseq:
+GSEQ(xs,x0), r0: r0): (r0)
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+GSEQ_irfolditm
+(
+gseq:
+GSEQ(xs,x0), r0: r0): (r0)
+//
+#symload folditm with GSEQ_folditm of 1000
+#symload rfolditm with GSEQ_rfolditm of 1000
+#symload ifolditm with GSEQ_rfolditm of 1000
+#symload irfolditm with GSEQ_rfolditm of 1000
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+GSEQ_folditm_c2fr
+( gseq
+: GSEQ(xs, x0), r0: r0
+, fopr: (r0, x0)-<cfr>(r0)): (r0)
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+GSEQ_folditm_f2np
+( gseq
+: GSEQ(xs, x0), r0: r0
+, fopr: (r0, x0)-<fnp>(r0)): (r0)
+//
+#symload folditm with GSEQ_folditm_c2fr of 1000
+#symload folditm_c2fr with GSEQ_folditm_c2fr of 1000
+#symload folditm_f2np with GSEQ_folditm_f2np of 1000
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+GSEQ_rfolditm_c2fr
+( gseq
+: GSEQ(xs, x0), r0: r0
+, fopr: (x0, r0)-<cfr>(r0)): (r0)
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+GSEQ_rfolditm_f2np
+( gseq
+: GSEQ(xs, x0), r0: r0
+, fopr: (x0, r0)-<fnp>(r0)): (r0)
+//
+#symload rfolditm with GSEQ_rfolditm_c2fr of 1000
+#symload rfolditm_c2fr with GSEQ_rfolditm_c2fr of 1000
+#symload rfolditm_f2np with GSEQ_rfolditm_f2np of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
 <x0:vt>
 GASZ_listize
 (GASZ(xs,x0)): list_vt(x0)

@@ -925,6 +925,19 @@ gseq_forall1_c1fr
 fun
 <xs:vt>
 <x0:vt>
+gseq_rforall0_c1fr
+(xs: ~xs, f0: (~x0) -<cfr> bool): bool
+fun
+<xs:vt>
+<x0:vt>
+gseq_rforall1_c1fr
+(xs: !xs, f0: (!x0) -<cfr> bool): bool
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
 gseq_filter0_c1fr
 (xs: ~xs, f0: (!x0) -<cfr> bool): (xs)
 fun

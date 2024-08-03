@@ -731,6 +731,28 @@ gseq_folditm_f2np
 fun
 <xs:t0>
 <x0:t0>
+<r0:vt>
+gseq_rfolditm_c2fr
+( xs: xs
+, r0: r0, fopr: (x0, r0)-<cfr>(r0)): (r0)
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_rfolditm_f2np
+( xs: xs
+, r0: r0, fopr: (x0, r0)-<fnp>(r0)): (r0)
+//
+#symload rfolditm with gseq_rfolditm_c2fr of 0100
+#symload rfolditm_cfr with gseq_rfolditm_c2fr of 0100
+#symload rfolditm_fnp with gseq_rfolditm_f2np of 0100
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
 <ys:vt>
 <y0:vt>
 gseq_map_ares_c1fr
