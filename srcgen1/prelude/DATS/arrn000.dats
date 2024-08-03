@@ -34,20 +34,34 @@ a0ref_get(A0) =
 (
 a0ref_dtget<a>(A0))
 //
-(* ****** ****** *)
 (*
 #impltmp
 <a:t0>
 a0ref_set(A0, x0) =
-(a0ref_setf<a>(A0, x0))
+(a0ref_frset<a>(A0, x0))
 *)
+//
 (* ****** ****** *)
 //
 #impltmp
 < a:vt >
-a0ref_setf(A0, x0) =
-g_free<a>
-(a0ref_exch<a>(A0, x0))
+a0ref_cpget(A0) =
+let
+//
+val x0 =
+$UN.enlinear{a}
+(
+a0ref_dtget<a>(A0))
+//
+val x1 =
+g_copy<a>( x0 )
+val x0 =
+$UN.delinear{a}(x0) in x1 end
+
+#impltmp
+< a:vt >
+a0ref_frset(A0, x0) =
+g_free<a>(a0ref_exch<a>(A0, x0))
 //
 (* ****** ****** *)
 //
@@ -80,7 +94,7 @@ val () = a0ref_set<(?a)>(A1, x0)
 < a:vt >
 a0ref_make_1val(x0) =
 a0ptr2ref
-(a0ptr_make_1val<a>(x0))
+(a0ptr_make0_1val<a>(x0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -93,17 +107,23 @@ a0ptr2ref
 #impltmp
 < a:t0 >
 a1ref_get_at(A0, i0) =
-a1ref_dtget_at<a>(A0,i0)
+a1ref_dtget_at<a>(A0, i0)
+//
+#impltmp
+< a:t0 >
+a1ref_set_at(A0, i0, x0) =
+a1ref_dtset_at<a>(A0, i0, x0)
 //
 (* ****** ****** *)
 //
 #impltmp
-< a:vt >
+< a:t0 >
 a1ref_make_nval
   (asz, ini) =
 (
 a1ptr2ref
-(a1ptr_make_nval<a>(asz, ini))
+(
+a1ptr_make_nval<a>(asz, ini))
 )
 //
 (* ****** ****** *)

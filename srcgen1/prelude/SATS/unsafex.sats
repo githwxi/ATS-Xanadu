@@ -158,16 +158,16 @@ p2tr_set_list_vt_cons
 //
 (*
 HX:
-this one is safe!
+these two are safe!
 fun
 <a:vt>
 a0ref_dtget
 (A0: a0ref(a)): ?!a
-*)
 fun
 <a:vt>
 a0ref_dtset
 (a0ref(a), ?!a): void
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

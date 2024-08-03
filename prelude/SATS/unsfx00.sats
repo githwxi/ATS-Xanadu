@@ -144,8 +144,25 @@ p2tr_set_list_cons
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<xs:t0>
+<x0:t0>
+gseq_get_at_raw
+(xs: xs, i0: ni): (x0)
+//
 fun<>
-strn_get_at_raw(strn, sint): cgtz
+strn_get_at_raw(strn, ni): cgtz
+//
+fun
+<x0:t0>
+list_get_at_raw(list(x0), ni): (x0)
+//
+fun
+<x0:t0>
+strm_get_at_raw(strm(x0), ni): (x0)
+fun
+<x0:t0>
+strq_get_at_raw(strq(x0), ni): (x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

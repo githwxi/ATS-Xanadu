@@ -820,12 +820,13 @@ fun
 isCBV0
 (s2f0: s2exp): bool =
 f1_test
-(s2f0, CBV0_VT_VT_symbl)
+(s2f0, CBV0_V0_VT_symbl)
 fun
 isCBV1
 (s2f0: s2exp): bool =
 f1_test
-(s2f0, CBV1_VT_VT_symbl)
+(s2f0, CBV1_V0_VT_symbl)
+//
 fun
 isCBRF
 (s2f0: s2exp): bool =

@@ -72,9 +72,16 @@ UN = "prelude/SATS/unsafe.sats"
 (* ****** ****** *)
 #staload // D2E =
 "./../../../SATS/dynexp2.sats"
+#staload // D3E =
+"./../../../SATS/dynexp3.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/intrep0.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+#symload lctn with d3pat_get_lctn
+#symload lctn with d3exp_get_lctn
+#symload lctn with d3ecl_get_lctn
 (* ****** ****** *)
 (* ****** ****** *)
 #symload lctn with i0pat_get_lctn
@@ -151,41 +158,41 @@ print("I0Pstr(",tok,")")
 print("I0Pcon(",d2c,")")
 (* ****** ****** *)
 //
-|
-I0Pbang i0p1 =>
+|I0Pbang i0p1 =>
 print("I0Pbang(",i0p1,")")
-|
-I0Pflat i0p1 =>
+|I0Pflat i0p1 =>
 print("I0Pflat(",i0p1,")")
-|
-I0Pfree i0p1 =>
+|I0Pfree i0p1 =>
 print("I0Pfree(",i0p1,")")
 //
 (* ****** ****** *)
-|
-I0Pdap1 i0f0 =>
+|I0Pdap1 i0f0 =>
 print("I0Pdap1(",i0f0,")")
 (* ****** ****** *)
 //
-|
-I0Pdapp
+|I0Pdapp
 ( i0f0,i0ps ) =>
 print("I0Pdapp(",i0f0,";",i0ps,")")
 //
 (* ****** ****** *)
 //
-|
-I0Ptup0(i0ps) =>
+|I0Ptup0(i0ps) =>
 print("I0Ptup0(",i0ps,")")
-|
-I0Ptup1
+|I0Ptup1
 ( tknd,i0ps ) =>
 print("I0Ptup1(",tknd,";",i0ps,")")
 //
 (* ****** ****** *)
 //
-|I0Pnone0() => print( "I0Pnone0(",")" )
-|I0Pnone1(d3p1) => print("I0Pnone1(", d3p1, ")")
+|I0Pnone0() =>
+(
+  print( "I0Pnone0(",")" ))
+//
+|I0Pnone1(d3p1) =>
+let
+val loc0 = d3p1.lctn() in//let
+print
+("I0Pnone1(", loc0, ";", d3p1, ")") end
 //
 (* ****** ****** *)
 //
@@ -425,8 +432,16 @@ print("I0Esynext(", tknd, ";", gexp, ")"))
 (* ****** ****** *)
 (* ****** ****** *)
 //
-|I0Enone0() => print( "I0Enone0(",")" )
-|I0Enone1(d3e1) => print("I0Enone1(", d3e1, ")")
+|I0Enone0() =>
+(
+  print( "I0Enone0(",")" ))
+|I0Enone1(d3e1) =>
+let
+val
+loc0 = d3e1.lctn() in//let
+(
+  print("I0Enone1(", loc0, ";", d3e1, ")"))
+end//let//end-of-[I0Enone1(d3e1)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -646,8 +661,19 @@ print("I0Dvardclst(",tknd,";",i0vs,")"))
 //
 (* ****** ****** *)
 //
-|I0Dnone0() => print( "I0Dnone0(",")" )
-|I0Dnone1(d3cl) => print("I0Dnone1(", d3cl, ")")
+|I0Dnone0() =>
+(
+  print( "I0Dnone0(",")" ))
+//
+|I0Dnone1(d3cl) =>
+let
+val
+loc0 = d3cl.lctn() in//let
+(
+  print("I0Dnone1(", loc0, ";", d3cl, ")"))
+end//let//end-of-[I0Dnone1(d3cl)]
+//
+(* ****** ****** *)
 //
 end(*let*)//end-of-[i0dcl_fprint(out, dcl0)]
 //

@@ -89,34 +89,45 @@ a0ref_make_1val(a): a0ref(a)
 //
 fun
 <a:t0>
-a0ref_get(a0ref(a)): a//non
+a0ref_get
+(A0: a0ref(a)): ( a )
 fun
 <a:t0>
-a0ref_set(a0ref(a), a): void
+a0ref_set
+(A0: a0ref(a), x0: a): void
+//
+(* ****** ****** *)
+//
+(*
+HX: new<->old
+*)
+//
+fun
+<a:vt>
+a0ref_exch
+(A0: a0ref(a), x0: a): ( a )
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-a0ref_dtget(a0ref(a)): (?!a)
+a0ref_dtget
+(A0: a0ref(a)): (?!a)
+fun
+<a:vt>
+a0ref_dtset
+(A0: a0ref(a), x0: ?!a): void
 //
 (* ****** ****** *)
 //
 fun
 <a:vt> // copy+get
-a0ref_cget
+a0ref_cpget
   (A0: a0ref(a)): (a)
 fun
 <a:vt> // set+free
-a0ref_setf
+a0ref_frset
   (A0: a0ref(a), x0: a): void
-//
-(* ****** ****** *)
-//
-fun
-<a:vt>
-a0ref_exch
-(a0ref(a), a(*new*)): a(*old*)
 //
 (* ****** ****** *)
 //
@@ -136,7 +147,7 @@ a0ref_updt(A0: a0ref(a)): void
 (* ****** ****** *)
 //
 fun
-<a:vt>
+<a:t0>
 a1ref_make_nval
 {n:nat}
 ( asz
@@ -177,6 +188,7 @@ fun
 a1ref_length(a1ref(a, n)): nint(n)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <a:t0>
@@ -193,41 +205,6 @@ a1ref_set_at
 , i0: nintlt(n), x0: a(*new*)): void
 //
 (* ****** ****** *)
-//
-fun
-<a:vt>
-a1ref_dtget_at
-{n:i0}
-( A0:
-  a1ref(a, n), i0: nintlt(n)): (?!a)
-//
-(* ****** ****** *)
-//
-(*
-HX: [cget_at]: copy+get
-*)
-//
-fun
-<a:vt>
-a1ref_cget_at
-{n:i0}
-( A0:
-  a1ref(a, n), i0: nintlt(n)): (a)
-//
-(* ****** ****** *)
-//
-(*
-HX: [setf_at]: set_at+free
-*)
-//
-fun
-<a:vt>
-a1ref_setf_at
-{n:i0}
-( A0
-: a1ref(a, n)
-, i0: nintlt(n), x0 : a(*new*)): void
-//
 (* ****** ****** *)
 //
 fun
@@ -238,6 +215,52 @@ a1ref_exch_at
   a1ref(a, n)
 , i0: nintlt(n), x0: a(*new*)): a(*old*)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a1ref_dtget_at
+{n:i0}
+( A0:
+  a1ref(a, n), i0: nintlt(n)): (?!a)
+//
+fun
+<a:vt>
+a1ref_dtset_at
+{n:i0}
+( A0:
+  a1ref(a, n), i0: nintlt(n), x: ?!a): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX: [cget_at]: copy+get_at
+*)
+//
+fun
+<a:vt>
+a1ref_cpget_at
+{n:i0}
+( A0:
+  a1ref(a, n), i0: nintlt(n)): (a)
+//
+(* ****** ****** *)
+//
+(*
+HX: [frset_at]: free+set_at
+*)
+//
+fun
+<a:vt>
+a1ref_frset_at
+{n:i0}
+( A0
+: a1ref(a, n)
+, i0: nintlt(n), x0 : a(*new*)): void
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*

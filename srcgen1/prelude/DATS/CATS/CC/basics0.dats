@@ -744,8 +744,9 @@ XATS2CC_strn_head_opt
 (cs: strn): char = $extnam()
 }
 (* ****** ****** *)
+//
 #impltmp
-strn_head_raw<> =
+$UN.strn_head_raw<> =
 XATS2CC_strn_head_raw
 where
 {
@@ -754,9 +755,11 @@ fun
 XATS2CC_strn_head_raw
 (cs: strn): char = $extnam()
 }
+//
 (* ****** ****** *)
+//
 #impltmp
-strn_tail_raw<> =
+$UN.strn_tail_raw<> =
 XATS2CC_strn_tail_raw
 where
 {
@@ -765,6 +768,7 @@ fun
 XATS2CC_strn_tail_raw
 (cs: strn): strn = $extnam()
 }
+//
 (* ****** ****** *)
 #impltmp
 strn_length<> =
@@ -799,6 +803,7 @@ XATS2CC_strn_vt_length1
 }
 //
 (* ****** ****** *)
+//
 #impltmp
 strn_get_at<> =
 XATS2CC_strn_get_at
@@ -808,10 +813,10 @@ where
 fun
 XATS2CC_strn_get_at
 ( cs
-: strn, i0: sint): char
-= $extnam((*self*))
+: strn, i0: sint): char = $extnam()
 }
 (* ****** ****** *)
+//
 #impltmp
 strn_forall<>(cs) =
 let
@@ -819,16 +824,20 @@ let
 #extern
 fun
 XATS2CC_strn_forall_cfr
-( cs: strn
-, f0: (cgtz) -<cfr> bool): bool
-= $extnam((*self*))
+( cs
+: strn
+, f0:
+ (cgtz)-<cfr>bool): bool = $extnam()
 //
 in
 XATS2CC_strn_forall_cfr
 ( cs
-, lam(c0) => forall$test<cgtz>(c0))
+, lam(c0) => forall$test<cgtz>( c0 ))
 end // end of [strn_forall]
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 strtmp_vt_alloc<> =
 XATS2CC_strtmp_vt_alloc
@@ -837,9 +846,11 @@ where
 #extern
 fun
 XATS2CC_strtmp_vt_alloc
-(bsz: sint) : strtmp0_vt = $extnam()
+( bsz: sint) : strtmp0_vt = $extnam()
 }
+//
 (* ****** ****** *)
+//
 #impltmp
 strtmp_vt_set_at<> =
 XATS2CC_strtmp_vt_set_at
@@ -848,10 +859,14 @@ where
 #extern
 fun
 XATS2CC_strtmp_vt_set_at
-( cs:strtmp0_vt
-, i0:sint, c0:char): void = $extnam()
+(
+cs:strtmp0_vt,
+i0:sint, c0:char): void = $extnam()
 }
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 strn_vt_forall0<>(cs) =
 let
@@ -860,15 +875,17 @@ let
 fun
 XATS2CC_strn_vt_forall_cfr
 ( cs: ~strn_vt
-, f0: (cgtz) -<cfr> bool): bool = $extnam()
+, f0:
+ (cgtz)-<cfr>bool): bool = $extnam()
 //
-in
+in//let
 XATS2CC_strn_vt_forall_cfr
 ( cs
-, lam(c0) =>
-  forall$test0<cgtz>(c0))
-end // end of [strn_vt_forall0]
+, lam(c0) => forall$test0<cgtz>( c0 ))
+end(*let*)//end-of-[strn_vt_forall0(cs)]
+//
 (* ****** ****** *)
+//
 #impltmp
 strn_vt_forall1<>(cs) =
 let
@@ -877,14 +894,19 @@ let
 fun
 XATS2CC_strn_vt_forall_cfr
 ( cs: !strn_vt
-, f0: (cgtz) -<cfr> bool): bool = $extnam()
+, f0:
+ (cgtz)-<cfr>bool): bool = $extnam()
 //
-in
+in//let
 XATS2CC_strn_vt_forall_cfr
 ( cs
-, lam(c0) =>
-  forall$test1<cgtz>(c0))
-end // end of [strn_vt_forall1]
+, lam(c0) => forall$test1<cgtz>( c0 ))
+end(*let*)//end-of-[strn_vt_forall1<>(cs)]
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
-(* end of [prelude_DATS_CATS_CC_basics0.dats] *)
+(* end of [srcgen1_prelude_DATS_CATS_CC_basics0.dats] *)

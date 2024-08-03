@@ -229,14 +229,14 @@ foritms(xs, A4); prints("\n")) where
 //
 (* ****** ****** *)
 (* ****** ****** *)
-////
+//
 val xs2 =
-list_fmake_fwork
+list_fmake_fwork<sint>
 (lam(work)=>(foritm(xs, work);rforitm(xs, work)))
 val ( ) = prints("list_fmake_fwork(...) = ", xs2, "\n")
 //
 val An2 =
-jsarray_fmake_fwork
+jsarray_fmake_fwork{sint}
 (lam(work)=>(foritm(An, work);rforitm(An, work)))
 val ( ) = prints("jsarray_fmake_fwork(...) = ", An2, "\n")
 //

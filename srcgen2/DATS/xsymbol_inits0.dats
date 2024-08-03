@@ -160,8 +160,9 @@ HX-2022-10-01: Various symbols
 //
 (* ****** ****** *)
 //
-#implval CBV0_VT_VT_symbl = symbl("cbv0_vt_vt")
-#implval CBV1_VT_VT_symbl = symbl("cbv1_vt_vt")
+#implval CBV0_V0_VT_symbl = symbl("cbv0_v0_vt")
+#implval CBV1_V0_VT_symbl = symbl("cbv1_v0_vt")
+//
 #implval CBRF_VT_VT_symbl = symbl("cbrf_vt_vt")
 //
 #implval TOP0_VT_T0_symbl = symbl("top0_vt_t0")
