@@ -46,25 +46,31 @@ fun
 list_cons_
 {n:i0}
 (
-x0: (a),
-xs: list(a,n)): list(a,n+1)
+x0:(a),
+xs:list(a,n)): list(a,n+1)
 //
 (* ****** ****** *)
+//
+fun<>
+list_nilq
+{a:t0}{n:i0}
+(xs: list(a,n)): bool(n=0)
+//
 (* ****** ****** *)
 //
 fun
 <a:t0>
 list_make_1val
-( x1: a): list(a,1)
+( x1: a): list(a, 1)
 fun
 <a:t0>
 list_make_2val
-(x1: a, x2: a): list(a,2)
+(x1: a, x2: a): list(a, 2)
 fun
 <a:t0>
 list_make_3val
 (x1: a
-,x2: a, x3: a): list(a,3)
+,x2: a, x3: a): list(a, 3)
 //
 (* ****** ****** *)
 #symload
