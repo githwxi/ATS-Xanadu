@@ -158,6 +158,11 @@ fun
 <x0:t0>
 gseq_uncons_raw(xs): @(x0, xs)
 //
+fun
+<xs:t0>
+<x0:t0>
+gseq_unsnoc_raw(xs): @(xs, x0)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
