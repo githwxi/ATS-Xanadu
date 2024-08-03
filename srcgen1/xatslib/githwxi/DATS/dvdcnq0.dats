@@ -113,7 +113,7 @@ list_vt_map0<inp><out>(xs)
 ) where
 {
   #impltmp
-  map0$fopr<inp><out>(x1) =
+  map$fopr0<inp><out>(x1) =
   dvdcnq_solve_rec<inp><out>(x1)
 }(*where*)//end-of(dvdcnq_conquer)
 

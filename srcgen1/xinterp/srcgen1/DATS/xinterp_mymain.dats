@@ -367,14 +367,16 @@ The basics for primitive functions
 *)
 val () =
 the_prelude_load
-( XHOME
-, 1(*dynamic*)
-, "prelude/DATS/CATS/Xint/basics0.dats")
+(
+XHOME, 1(*dynamic*),
+"srcgen1\
+/prelude/DATS/CATS/Xint/basics0.dats")
 val () =
 the_prelude_load
-( XHOME
-, 1(*dynamic*)
-, "xatslib/githwxi/DATS/CATS/Xint/basics0.dats")
+(
+XHOME, 1(*dynamic*),
+"srcgen1\
+/xatslib/githwxi/DATS/CATS/Xint/basics0.dats")
 //
 } (* end of [then] *) // end-of-if
 ) (* end of [the_preludes_load_if] *)
