@@ -8,6 +8,12 @@ For implementing operations on generic trees
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload UN =
+"prelude/SATS/unsfx00.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2024-08-03:
 Let's first skip linearity.
@@ -18,27 +24,37 @@ This is usually the way to go!
 fun
 <node0:t0>
 <nodes:t0>
-gtree_node_neighbors(x0: node0): (xs)
+gtree_node_neighbors
+  (x0: node0): nodes
+//
 #extern
 fun
-<x0:t0>
-gtree_node_dfs$strmize(x0: node0): strm_vt(node0)
+<node0:t0>
+<nodes:t0>
+<store:t0>
+gtree_node_dfs$strmize
+  (x0: node0): strm_vt(node0)
 //
-#imptmp
+#impltmp
 <node0:t0>
 <nodes:t0>
 <store:t0>
 gtree_node_dfs$strmize
   (node0) = let
+//
 fun
 auxmain
 (
-store: nodes):
+store: store):
 strm_vt(node0) = $llazy
+(
 if
-gseq_nilq<store><node0>(store)
-then strm_vt_nil((*void*)) else
-let
+gseq_nilq
+<store>
+<node0>(store)
+then
+strmcon_vt_nil(*0*)
+else let // else
 //
 val
 (node1, store) =
@@ -50,7 +66,8 @@ gtree_node_neighbors
 //
 in//let
 (
-  strm_vt_cons(node1, store)) where
+  strmcon_vt_cons
+  (node1, auxmain(store))) where
 {
 val store =
 (
@@ -61,11 +78,13 @@ gseq_folditm
 #impltmp
 folditm$fopr
 <node0><store>(store, node0) =
-gseq_cons<store><node0>(node0, store) } }//whr
+gseq_cons<store><node0>(node0, store) } }
+end//[if(gseq_nilq<store><node0>(store))]
+) (*llazy*) // end-of-[ auxmain( store ) ]
 //
 in//let
 (
-  auxmain(gseq_sing<store><node0>(node0)))
+  auxmain(gseq_sing<store><node0>(node0)) )
 end//let//end-of-[gtree_node_dfs$strmize(node0)]
 //
 (* ****** ****** *)
