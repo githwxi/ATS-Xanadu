@@ -36,18 +36,5 @@ XATS2JS_UN_p2tr_set
 : p2tr(a), x0: a): void = $extnam()
 }
 (* ****** ****** *)
-#impltmp
-<a>(*tmp*)
-$UN.a0ref_dtset =
-XATS2JS_UN_a0ref_dtset where
-{
-#extern
-fun
-XATS2JS_UN_a0ref_dtset
-{a:vt}
-( A0
-: a0ref(a), x0: ~a): void = $extnam()
-}
-(* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_unsafex.dats] *)
