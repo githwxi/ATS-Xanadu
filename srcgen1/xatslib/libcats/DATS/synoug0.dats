@@ -158,8 +158,8 @@ g_fproc0<a0> = g_prout0<a0>
 <a05><a06>
 <a07><a08>
 <a09><a10>
-gs_prout0_a10 =
-gs_fproc0_a10
+gs_prout0_n10 =
+gs_fproc0_n10
 <a01>
 <a02><a03><a04>
 <a05><a06><a07>
@@ -329,19 +329,19 @@ gs_prout0_n9
 <a05><a06>
 <a07><a08>
 <a09><a10>
-gs_proutln0_a10
+gs_proutln0_n10
 ( x01, x02
 , x03, x04
 , x05, x06
 , x07, x08
 , x09, x10) =
 (
-gs_prout1_a10
+gs_prout1_n10
 ( x01
 , x02,x03,x04
 , x05,x06,x07
 , x08,x09,x10 ) ; gs_proutln0_n0<>()
-) (* end of [gs_proutln0_a10] *)
+) (* end of [gs_proutln0_n10] *)
 //
 (* ****** ****** *)
 //
@@ -482,8 +482,8 @@ g_fproc1<a0> = g_prout1<a0>
 <a05><a06>
 <a07><a08>
 <a09><a10>
-gs_prout1_a10 =
-gs_fproc1_a10
+gs_prout1_n10 =
+gs_fproc1_n10
 <a01>
 <a02><a03><a04>
 <a05><a06><a07>
@@ -665,19 +665,19 @@ gs_prout1_n9
 <a05><a06>
 <a07><a08>
 <a09><a10>
-gs_proutln1_a10
+gs_proutln1_n10
 ( x01, x02
 , x03, x04
 , x05, x06
 , x07, x08
 , x09, x10 ) =
 (
-gs_prout1_a10
+gs_prout1_n10
 ( x01
 , x02,x03,x04
 , x05,x06,x07
 , x08,x09,x10 ) ; gs_proutln1_n0<>()
-) (* end of [gs_proutln1_a10] *)
+) (* end of [gs_proutln1_n10] *)
 //
 (* ****** ****** *)
 //
@@ -831,8 +831,8 @@ g_fproc0<a0> = g_prerr0<a0>
 <a05><a06>
 <a07><a08>
 <a09><a10>
-gs_prerr0_a10 =
-gs_fproc0_a10
+gs_prerr0_n10 =
+gs_fproc0_n10
 <a01><a02>
 <a03><a04>
 <a05><a06>
@@ -1049,8 +1049,8 @@ g_fproc1<a0> = g_prerr1<a0>
 <a05><a06>
 <a07><a08>
 <a09><a10>
-gs_prerr1_a10 =
-gs_fproc1_a10
+gs_prerr1_n10 =
+gs_fproc1_n10
 <a01><a02>
 <a03><a04>
 <a05><a06>
@@ -1232,11 +1232,11 @@ gs_prerr1_n9
 <a05><a06>
 <a07><a08>
 <a09><a10>
-gs_prerrln1_a10
+gs_prerrln1_n10
 (x01,x02,x03,x04
 ,x05,x06,x07,x08,x09,x10) =
 (
-gs_prerr1_a10
+gs_prerr1_n10
 <a01><a02>
 <a03><a04>
 <a05><a06>
@@ -1244,7 +1244,7 @@ gs_prerr1_a10
 <a09><a10>
 (x01,x02,x03,x04
 ,x05,x06,x07,x08,x09,x10) ; gs_prerrln1_n0<>()
-) (* end of [gs_prerrln1_a10] *)
+) (* end of [gs_prerrln1_n10] *)
 //
 (* ****** ****** *)
 

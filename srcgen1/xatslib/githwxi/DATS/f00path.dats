@@ -93,7 +93,7 @@ fpath_strmize_line_vt<>(path)
 #vwtpdef x0 = strn_vt
 //
 #impltmp
-map0$fopr<x0><y0>(x0) = strn_vt2t(x0)
+map$fopr0<x0><y0>(x0) = strn_vt2t(x0)
 } (*where*) // [fpath_strmize_line]
 
 (* ****** ****** *)

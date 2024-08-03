@@ -1273,7 +1273,7 @@ $UN.castvwtp0
 )
 //
 fun
-a0ref_get_raw
+a0ref_dtget
 (A: irval): irval =
 let
 val-
@@ -1282,7 +1282,7 @@ in
   $UN.ptr0_get<irval>(A)
 end
 fun
-a0ref_set_raw
+a0ref_dtset
 ( A: irval
 , x: irval): irval =
 let
@@ -1332,14 +1332,14 @@ in
 end // end of [a1ref_tail_raw]
 //
 fun
-a1ref_get_at_raw
+a1ref_dtget_at
 ( A: irval
 , i: irval): irval =
 (
-  a1ptr_get_at_raw(A, i)
+  a1ptr_dtget1_at(A, i)
 )
 and
-a1ptr_get_at_raw
+a1ptr_dtget1_at
 ( A: irval
 , i: irval): irval =
 let
@@ -1347,18 +1347,18 @@ let
   val-IRVint(i) = i
 in
   $UN.ptr0_get_at<irval>(A, i)
-end // end of [a1ref_get_at_raw]
+end // end of [a1ref_dtget_at]
 //
 fun
-a1ref_set_at_raw
+a1ref_dtset_at
 ( A: irval
 , i: irval
 , x: irval): irval =
 (
-  a1ptr_set_at_raw(A, i, x)
+  a1ptr_dtset1_at(A, i, x)
 )
 and
-a1ptr_set_at_raw
+a1ptr_dtset1_at
 ( A: irval
 , i: irval
 , x: irval): irval =
@@ -1371,7 +1371,7 @@ in
   val () =
   $UN.ptr0_set_at<irval>(A, i, x)
   }
-end // end of [a1ref_set_at_raw]
+end // end of [a1ref_dtset_at]
 //
 (* ****** ****** *)
 
@@ -2052,10 +2052,10 @@ the_d2cstdef_insert
 //
 val () =
 the_d2cstdef_insert
-(d2cst("XINTERP_a0ref_get_raw"),IRVfun(firfun1(a0ref_get_raw)))
+(d2cst("XINTERP_a0ref_dtget"),IRVfun(firfun1(a0ref_dtget)))
 val () =
 the_d2cstdef_insert
-(d2cst("XINTERP_a0ref_set_raw"),IRVfun(firfun2(a0ref_set_raw)))
+(d2cst("XINTERP_a0ref_dtset"),IRVfun(firfun2(a0ref_dtset)))
 //
 (* ****** ****** *)
 //
@@ -2068,17 +2068,17 @@ the_d2cstdef_insert
 //
 val () =
 the_d2cstdef_insert
-(d2cst("XINTERP_a1ref_get_at_raw"),IRVfun(firfun2(a1ref_get_at_raw)))
+(d2cst("XINTERP_a1ref_dtget_at"),IRVfun(firfun2(a1ref_dtget_at)))
 val () =
 the_d2cstdef_insert
-(d2cst("XINTERP_a1ptr_get_at_raw"),IRVfun(firfun2(a1ptr_get_at_raw)))
+(d2cst("XINTERP_a1ptr_dtget1_at"),IRVfun(firfun2(a1ptr_dtget1_at)))
 //
 val () =
 the_d2cstdef_insert
-(d2cst("XINTERP_a1ref_set_at_raw"),IRVfun(firfun3(a1ref_set_at_raw)))
+(d2cst("XINTERP_a1ref_dtset_at"),IRVfun(firfun3(a1ref_dtset_at)))
 val () =
 the_d2cstdef_insert
-(d2cst("XINTERP_a1ptr_set_at_raw"),IRVfun(firfun3(a1ptr_set_at_raw)))
+(d2cst("XINTERP_a1ptr_dtset1_at"),IRVfun(firfun3(a1ptr_dtset1_at)))
 //
 (* ****** ****** *)
 //
