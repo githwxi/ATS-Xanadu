@@ -50,6 +50,29 @@ list_cons_
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+{ x0:t0 }
+gseq_nil
+<list(x0)><x0>
+((*void*)) = list_nil(*void*)
+#impltmp
+{ x0:t0 }
+gseq_cons
+<list(x0)><x0>
+( x0, xs ) = list_cons(x0, xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+gseq_nilq
+<list(x0)><x0>
+ (  xs  ) = (list_nilq{x0}(xs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 Wed 17 Jul 2024 09:49:09 PM EDT
 *)

@@ -42,6 +42,43 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 < xs:t0 >
 < x0:t0 >
+gseq$sep<xs><x0>() = ","
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq$end<xs><x0>() = ")"
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq$beg<xs><x0>() = "gseq("
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-08-03:
+Sat 03 Aug 2024 02:54:34 PM EDT
+*)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_nilq(xs) =
+not(gseq_consq<xs><x0>(xs))
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_consq(xs) =
+(
+ not(gseq_nilq<xs><x0>(xs)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
 gseq_free(xs) =
 (
 gseq_foritm0<xs><x0>(xs)
