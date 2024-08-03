@@ -241,7 +241,7 @@ XATS2JS_optn_vt_uncons_cfr
 #implfun
 XATS2JS_optn_vt_uncons_cfr
   (xs, f0, f1) =
-( case+ !xs of
+( case+ xs of
   | ~optn_vt_nil() => f0()
   | ~optn_vt_cons(x0) => f1(x0)
 ) (* end of [XATS2JS_optn_vt_uncons_cfr] *)
@@ -282,7 +282,7 @@ XATS2JS_list_vt_uncons_cfr
 #implfun
 XATS2JS_list_vt_uncons_cfr
   (xs, f0, f1) =
-( case+ !xs of
+( case+ xs of
   | ~list_vt_nil() => f0()
   | ~list_vt_cons(x0, xs) => f1(x0, xs)
 ) (* end of [XATS2JS_list_vt_uncons_cfr] *)
