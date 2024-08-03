@@ -909,6 +909,38 @@ gseq_foritm1_f1np
 #symload foritm1_fnp with gseq_foritm1_f1np of 0100
 //
 (* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_rforitm0_c1fr
+(xs: xs, work: (~x0)-<cfr>void): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_rforitm0_f1np
+(xs: xs, work: (~x0)-<fnp>void): void
+//
+#symload rforitm0 with gseq_rforitm0_c1fr of 0100
+#symload rforitm0_cfr with gseq_rforitm0_c1fr of 0100
+#symload rforitm0_fnp with gseq_rforitm0_f1np of 0100
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_rforitm1_c1fr
+(xs: xs, work: (!x0)-<cfr>void): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_rforitm1_f1np
+(xs: xs, work: (!x0)-<fnp>void): void
+//
+#symload rforitm1 with gseq_rforitm1_c1fr of 0100
+#symload rforitm1_cfr with gseq_rforitm1_c1fr of 0100
+#symload rforitm1_fnp with gseq_rforitm1_f1np of 0100
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

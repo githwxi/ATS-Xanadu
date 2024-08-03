@@ -1,3 +1,5 @@
+(* ****** ****** *)
+(* ****** ****** *)
 (*
 HX-2024-08-03:
 Sat 03 Aug 2024 01:39:53 PM EDT
@@ -27,7 +29,7 @@ qlist(a:t0) = qlist_t0_tx(a)
 (* ****** ****** *)
 //
 #extern
-fun
+fun<>
 qlist_nil{a:t0}(): qlist(a)
 //
 #extern
@@ -75,6 +77,7 @@ in//local
 (* ****** ****** *)
 //
 #impltmp
+<(*tmp*)>
 qlist_nil
 ((*nil*)) =
 QLIST(list_nil, list_nil)
@@ -82,6 +85,7 @@ QLIST(list_nil, list_nil)
 (* ****** ****** *)
 //
 #impltmp
+< a: t0 >
 qlist_snoc
 ( xs, x0 ) =
 let
@@ -94,6 +98,7 @@ end//let//end-(qlist_snoc(...))
 (* ****** ****** *)
 //
 #impltmp
+< a: t0 >
 qlist_nilq
  (  xs  ) =
 let
@@ -197,8 +202,18 @@ gseq$sep
 #impltmp
 { a: t0 }
 gseq$beg
-<qlist(a)><a>() = "qlist"
+<qlist(a)><a>() = "qlist("
 //
+(* ****** ****** *)
+//
+#impltmp
+{ a: t0 }
+g_print
+<qlist(a)>(xs) =
+(
+gseq_print<qlist(a)><a>(xs))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp

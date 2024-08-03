@@ -156,6 +156,47 @@ gseq_rexists_c1fr<xs><x0>(GSEQ_unmk(gseq), test))
 //
 #impltmp
 <xs : t0>
+<x0 : t0>
+<r0 : vt>
+GSEQ_folditm
+ (gseq, r0) =
+(
+gseq_folditm<xs><x0><r0>(GSEQ_unmk(gseq), r0))
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+<r0 : vt>
+GSEQ_rfolditm
+ (gseq, r0) =
+(
+gseq_rfolditm<xs><x0><r0>(GSEQ_unmk(gseq), r0))
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+<r0 : vt>
+GSEQ_folditm_c2fr
+ (gseq, r0, fopr) =
+(
+gseq_folditm_c2fr<xs><x0><r0>(GSEQ_unmk(gseq), r0, fopr))
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+<r0 : vt>
+GSEQ_rfolditm_c2fr
+ (gseq, r0, fopr) =
+(
+gseq_rfolditm_c2fr<xs><x0><r0>(GSEQ_unmk(gseq), r0, fopr))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<xs : t0>
 <x0 : vt>
 GASZ_listize
   (gasz) =
