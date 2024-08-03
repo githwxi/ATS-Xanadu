@@ -25,7 +25,10 @@ fun
 <node0:t0>
 <nodes:t0>
 ggrph_node_neighbors
-  (x0: node0): nodes
+  (node0: node0): nodes
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #extern
 fun
@@ -33,7 +36,7 @@ fun
 <nodes:t0>
 <store:t0>
 ggrph_node_bfs$strmize
-  (x0: node0): strm_vt(node0)
+  (node0: node0): strm_vt(node0)
 //
 #impltmp
 <node0:t0>
@@ -83,26 +86,13 @@ end//let//end-of-[ggrph_node_bfs$strmize(node0)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2024-08-03:
-Let's first skip linearity.
-This is usually the way to go!
-*)
-//
-#extern
-fun
-<node0:t0>
-<nodes:t0>
-ggrph_node_neighbors
-  (x0: node0): nodes
-//
 #extern
 fun
 <node0:t0>
 <nodes:t0>
 <store:t0>
 ggrph_node_dfs$strmize
-  (x0: node0): strm_vt(node0)
+  (node0: node0): strm_vt(node0)
 //
 #impltmp
 <node0:t0>
