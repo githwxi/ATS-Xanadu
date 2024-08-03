@@ -34,10 +34,16 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_nil(): xs
+//
 fun
 <xs:t0>
 <x0:t0>
 gseq_cons(x0, xs): xs
+fun
+<xs:t0>
+<x0:t0>
+gseq_snoc(xs, x0): xs
+//
 (* ****** ****** *)
 //
 fun

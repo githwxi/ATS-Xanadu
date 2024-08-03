@@ -43,11 +43,18 @@ fun
 <x0:t0>
 gseq_nil
 ( (*void*) ): (xs)
+//
 fun
 <xs:t0>
 <x0:t0>
 gseq_cons
 (x0: x0, xs: xs): (xs)
+fun
+<xs:t0>
+<x0:t0>
+gseq_snoc
+(xs: xs, x0: x0): (xs)
+//
 fun
 <xs:t0>
 <x0:t0>

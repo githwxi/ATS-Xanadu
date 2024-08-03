@@ -85,7 +85,9 @@
 #sortdef vw = view
 #sortdef t0 = type
 #sortdef tx = tbox
+(*
 #sortdef x0 = tbox
+*)
 #sortdef vt = vwtp
 #sortdef vx = vtbx
 //
@@ -772,7 +774,7 @@ unit_vt = unit_vt of ()
 (* ****** ****** *)
 //
 datatype
-optn_t0_i0_x0
+optn_t0_i0_tx
 (
   a:type+, bool ) =
 | optn_nil(a, ff) of ()
@@ -791,7 +793,8 @@ optn_vt_i0_vx
 //
 (* ****** ****** *)
 //
-#sexpdef optn = optn_t0_i0_x0
+#sexpdef optn = optn_t0_i0_tx
+//
 #sexpdef loptn = optn_vt_i0_vx
 #sexpdef optn_vt = optn_vt_i0_vx
 //
@@ -859,7 +862,7 @@ optn1_vt(a:vt,b:b0) = optn_vt(a, b)
 // HX-2018-10-01:
 //
 datatype
-list_t0_i0_x0
+list_t0_i0_tx
 (
   a:type+, int(*len*) ) =
 //
@@ -871,9 +874,9 @@ list_nil
 {n:i0 | n >= 0}
 list_cons
 (a, n+1(*len*)) of
-(a, list_t0_i0_x0(a, n))//cons
+(a, list_t0_i0_tx(a, n))//cons
 //
-// end of [ list_t0_i0_x0(a,n) ]
+// end of [ list_t0_i0_tx(a,n) ]
 //
 datavwtp
 list_vt_i0_vx
@@ -894,7 +897,8 @@ list_vt_cons
 //
 (* ****** ****** *)
 //
-#sexpdef list = list_t0_i0_x0
+#sexpdef list = list_t0_i0_tx
+//
 #sexpdef llist = list_vt_i0_vx
 #sexpdef list_vt = list_vt_i0_vx
 //
@@ -1057,23 +1061,23 @@ ldouble = ldflt // double precision
 (* ****** ****** *)
 //
 #abstype
-string_i0_x0(n:i0) <= p0tr
+string_i0_tx(n:i0) <= p0tr
 #abstype
-stropt_i0_x0(n:i0) <= p0tr
+stropt_i0_tx(n:i0) <= p0tr
 //
 #typedef
 string0 =
-[n:i0] string_i0_x0(n)
+[n:i0] string_i0_tx(n)
 #typedef
 string1
-(n:i0) = string_i0_x0( n )
+(n:i0) = string_i0_tx( n )
 //
 #typedef
 stropt0 =
-[n:i0] stropt_i0_x0(n)
+[n:i0] stropt_i0_tx(n)
 #typedef
 stropt1
-(n:i0) = stropt_i0_x0( n )
+(n:i0) = stropt_i0_tx( n )
 //
 (* ****** ****** *)
 //
@@ -1141,10 +1145,10 @@ stropt1_vt
 (* ****** ****** *)
 //
 #abstbox
-lazy_t0_x0
+lazy_t0_tx
 (elt:type+) <= p0tr
 #typedef
-lazy(a:t0) = lazy_t0_x0(a)
+lazy(a:t0) = lazy_t0_tx(a)
 //
 #absvtbx
 lazy_vt_vx
@@ -1261,6 +1265,7 @@ strx_vt(*a:vt*) = streax_vt(* a:vt *)
 *)
 //
 (* ****** ****** *)
+//
 datatype
 strqcon
 (a:type+, int) =
@@ -1275,7 +1280,9 @@ where
 {
 #typedef
 streaq(a:t0,n:i0) = lazy(strqcon(a,n))}
+//
 (* ****** ****** *)
+//
 datavwtp
 strqcon_vt
 (a:vwtp+, int) =
@@ -1292,6 +1299,7 @@ where
 streaq_vt
 ( a:vt,n:i0 ) = lazy_vt(strqcon_vt(a,n))
 } (* where *)//end-of-[strqcon_vt(a, n)]
+//
 (* ****** ****** *)
 //
 (*
