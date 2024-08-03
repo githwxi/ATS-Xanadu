@@ -143,7 +143,10 @@ XATS2JS_jsarray_strmize(xs)
 //
 #implfun
 XATS2JS_jsarray_strmize
-{x0}(xs) = auxmain(0) where
+{x0:t0}
+(  xs  ) =
+(
+  auxmain(0)) where
 {
 //
   val n0 = length(xs)
@@ -215,6 +218,7 @@ XATS2JS_jsobjmap_keys
 }
 //
 (* ****** ****** *)
+//
 #extern
 fun
 <k0:t0>
@@ -222,6 +226,7 @@ XATS2JS_jsobjmap_keyq
 {x0:vt}
 ( map
 : jsobjmap(k0, x0), key: k0): bool
+//
 (* ****** ****** *)
 //
 #impltmp

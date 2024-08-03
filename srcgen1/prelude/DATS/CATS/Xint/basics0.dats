@@ -5,7 +5,8 @@ Basics for Xinterp
 (* ****** ****** *)
 #staload
 UN = // for casting
-"prelude/SATS/unsafex.sats"
+"srcgen1\
+/prelude/SATS/unsafex.sats"
 (* ****** ****** *)
 #staload
 "srcgen1\
@@ -647,9 +648,9 @@ XINTERP_strn_tail_raw
 : strn ): strn = $extnam()
 //
 #impltmp
-strn_head_raw<> = XINTERP_strn_head_raw
+$UN.strn_head_raw<> = XINTERP_strn_head_raw
 #impltmp
-strn_tail_raw<> = XINTERP_strn_tail_raw
+$UN.strn_tail_raw<> = XINTERP_strn_tail_raw
 //
 (* ****** ****** *)
 //
@@ -731,24 +732,25 @@ a1ptr_alloc<a> = XINTERP_a1ptr_alloc
 fun
 XINTERP_a0ref_get_raw
 {a:vt}
-( A0
-: a0ref(a))
-: (~a) = $extnam()
+(A0: a0ref(a)): (?!a) = $extnam()
 #extern
 fun
 XINTERP_a0ref_set_raw
 {a:vt}
-( A0
-: a0ref(a), x0: a)
-: void = $extnam((*self*))
+(A0
+:a0ref(a), x0: a): void = $extnam()
+//
+(* ****** ****** *)
 //
 #impltmp
 {a:vt}
-a0ref_get0<a> = XINTERP_a0ref_get_raw{a}
+a0ref_dtget<a> = XINTERP_a0ref_get_raw{a}
+//
 #impltmp
 {a:vt}
-a0ref_setf<a> = XINTERP_a0ref_set_raw{a}
+$UN.a0ref_dtset<a> = XINTERP_a0ref_set_raw{a}
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
@@ -757,15 +759,13 @@ XINTERP_a1ref_head_raw
 {a:vt}
 {n:i0}
 ( A0
-: a1ref(a, n))
-: (~a) = $extnam((*self*))
+: a1ref(a, n)): (?!a) = $extnam()
 #extern
 fun
 XINTERP_a1ref_tail_raw
 {a:vt}{n:i0}
-( A0
-: a1ref(a, n))
-: a1ref(a, n-1) = $extnam((*self*))
+(A0
+:a1ref(a,n)): a1ref(a,n-1) = $extnam()
 //
 #extern
 fun
@@ -825,16 +825,18 @@ a1ptr_get_at<a>
 (A0, i0) =
 XINTERP_a1ptr_get_at_raw{a}(A0, i0)
 //
+(*
 #impltmp
 {a:vt}
-a1ref_get0_at<a>
+a1ref_dtget_at<a>
 (A0, i0) =
 XINTERP_a1ref_get_at_raw{a}(A0, i0)
 #impltmp
 {a:vt}
-a1ptr_get0_at<a>
+a1ptr_dtget_at<a>
 (A0, i0) =
 XINTERP_a1ptr_get_at_raw{a}(A0, i0)
+*)
 //
 (* ****** ****** *)
 //
@@ -848,11 +850,13 @@ XINTERP_a1ref_set_at_raw{a}(A0, i0, x0)
 a1ptr_set_at<a>
 (A0, i0, x0) =
 XINTERP_a1ptr_set_at_raw{a}(A0, i0, x0)
+(*
 #impltmp
 {a:vt}
-a1ptr_set_at_raw<a>
+$UN.a1ptr_set_at_raw<a>
 (A0, i0, x0) =
 XINTERP_a1ptr_set_at_raw{a}(A0, i0, x0)
+*)
 //
 (* ****** ****** *)
 

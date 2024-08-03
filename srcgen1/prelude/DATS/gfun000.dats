@@ -60,7 +60,8 @@ let
 val xs =
 ($UN.castlin10(!xs))
 in
-$UN.a0ref_dtset<t0>(A0, xs); x1 end
+(
+a0ref_dtset<t0>(A0, xs); x1) end
 //
 end(*let*)//end-of-lam
 end(*let*)//end-of-[gfun_enum_strx_vt]

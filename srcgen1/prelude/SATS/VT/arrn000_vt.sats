@@ -131,74 +131,83 @@ a0ptr_free
 //
 fun
 <a:vt>
-a0ptr_mfree
-(A0: a0ptr(~a)): void
+a0ptr_mfree0
+(A0: a0ptr(?a)): void
 //
 fun
 <a:vt>
-a0ptr_clear
+a0ptr_clear1
 {n:nat}
 ( A0:
-! a0ptr(a) >> a0ptr(~a)
+! a0ptr(a) >> a0ptr(?a)
 ) : void//end-of-function
 //
 (* ****** ****** *)
 //
 fun
 <a:vt>
-a0ptr_make_1val(a): a0ptr(a)
+a0ptr_make0_1val(a): a0ptr(a)
 //
+#symload
+a0ptr with a0ptr_make0_1val of 1000
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-<a:vt>
-a0ptr_get
-(!a0ptr(a) >> a0ptr(~a)): (a)
+<a:t0>
+a0ptr_get1(!a0ptr(a)): (a)
 fun
-<a:vt>
-a0ptr_set
-(!a0ptr(?a) >> a0ptr(a), x0: a): void
-//
-(* ****** ****** *)
-//
-fun
-<a:vt>
-a0ptr_get0
-(A0: !a0ptr(a)): ~a // get0: read
-fun
-<a:vt>
-a0ptr_get1
-( A0:
-! a0ptr(a) >> a0ptr(~a)): (a) // move
-//
-(*
-HX: [cget]: copy+get
-*)
-fun
-<a:vt>
-a0ptr_cget(A0: !a0ptr(a)): (a) // copy
-//
-(* ****** ****** *)
-//
-(*
-HX: [setf]: set+free
-*)
-//
-fun
-<a:vt>
-a0ptr_setf
-(A0: !a0ptr(a), x0: a): void // f: free
-fun
-<a:vt>
+<a:t0>
 a0ptr_set1
-(A0: a0ptr(~a), x0: a): void // 1: move
+(!a0ptr(a)>>a0ptr(a), x0: a): void
 //
+fun
+<a:vt>
+a0ptr_exch1
+(A0: !a0ptr(a), x0: a(*new*)): a(*old*)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 <a:vt>
-a0ptr_exch
-(A0: !a0ptr(a), x0: a(*new*)): a(*old*)
+a0ptr_vtget1
+(!a0ptr(a) >> a0ptr(?a)): (a)
+fun
+<a:vt>
+a0ptr_vtset1
+(!a0ptr(?a)>>a0ptr(a), x0: a): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a0ptr_dtget1
+(A0: !a0ptr(a)): ?!a(*HX: data only*)
+fun
+<a:vt>
+a0ptr_dtset1
+( A0:
+! a0ptr(a)>>a0ptr(a), x: (?!a)): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX: [cpget]: copy+get
+HX: [frset]: free+set
+*)
+//
+fun
+<a:vt>
+a0ptr_cpget1
+(A0: !a0ptr(a)): (a) //copy+get
+fun
+<a:vt>
+a0ptr_frset1
+(A0: !a0ptr(a), x0: a): void//free+set
 //
 (* ****** ****** *)
 //
@@ -206,10 +215,10 @@ a0ptr_exch
 fun
 <a:vt>
 g_updt(x0: &a >> _): void
-*)
 fun
 <a:vt>
-a0ptr_updt(A0: !a0ptr(a)): void
+a0ptr_updt!(A0: !a0ptr(a)): void
+*)
 //
 (* ****** ****** *)
 //
@@ -218,9 +227,6 @@ a0ptr_print$beg(): void
 fun<>
 a0ptr_print$end(): void
 //
-fun
-<a:vt>
-a0ptr_print(A0: !a0ptr(a)): void
 fun
 <a:vt>
 a0ptr_print0(A0: ~a0ptr(a)): void
@@ -259,37 +265,42 @@ a1ptr_free
 //
 fun
 <a:vt>
-a1ptr_mfree
-{n:nat}(A0: a1ptr(~a, n)): void
+a1ptr_mfree0
+{n:nat}(A0: a1ptr(?a, n)): void
 //
 fun
 <a:vt>
-a1ptr_clear
+a1ptr_clear1
 {n:nat}
 ( A0:
-! a1ptr(a,n) >> a1ptr(~a,n), n0: sint(n)
+! a1ptr(a,n) >> a1ptr(?a,n), n0: sint(n)
 ) : void // end-of-function
 //
 (* ****** ****** *)
 //
 fun
-<a:vt>
+<a:t0>
 a1ptr_make_nval
 {n:nat}
-( asz
-: sint(n), x0: a): a1ptr(a, n)
+(asz: sint(n), x0: a): a1ptr(a, n)
+//
+#symload a1ptr with a1ptr_make_nval of 1000
 //
 (* ****** ****** *)
 //
 fun
 <a:t0>
 a1ptr_make_list
-{n:i0}(list(a,n)): a1ptr(a, n)
+{n:i0}(xs: list(a,n)): a1ptr(a, n)
+//
+#symload a1ptr with a1ptr_make_list of 1000
 //
 fun
 <a:vt>
 a1ptr_make0_llist
-{n:i0}(list_vt(a,n)): a1ptr(a, n)
+{n:i0}(xs: list_vt(a,n)): a1ptr(a, n)
+//
+#symload a1ptr with a1ptr_make0_llist of 1000
 //
 (* ****** ****** *)
 //
@@ -297,13 +308,17 @@ fun
 <a:t0>
 a1ptr_make_listn
 {n:i0}
-(list(a,n), sint(n)): a1ptr(a, n)
+(xs: list(a,n), sint(n)): a1ptr(a, n)
+//
+#symload a1ptr with a1ptr_make_listn of 1000
 //
 fun
 <a:vt>
 a1ptr_make0_llistn
 {n:i0}
-(list_vt(a,n), sint(n)): a1ptr(a, n)
+(xs: list_vt(a,n), sint(n)): a1ptr(a, n)
+//
+#symload a1ptr with a1ptr_make0_llistn of 1000
 //
 (* ****** ****** *)
 //
@@ -327,86 +342,78 @@ a1ptr_length1
 //
 fun
 <a:t0>
-a1ptr_get_at
+a1ptr_get1_at
 {n:i0}
 ( A0:
 ! a1ptr(a, n), i0: nintlt(n)): a
 //
 fun
 <a:t0>
-a1ptr_set_at
+a1ptr_set1_at
 {n:i0}
 ( A0:
 ! a1ptr(a, n)
 , i0: nintlt(n), x0: a(*new*)): void
 //
-(* ****** ****** *)
-//
 fun
 <a:vt>
-a1ptr_set_at_raw
-{n:i0}
-( A0:
-! a1ptr(?a, n)
-, i0: nintlt(n), x0: a(*ini*)): void
-//
-(* ****** ****** *)
-//
-fun
-<a:vt>
-a1ptr_get0_at
-{n:i0}
-( A0:
-! a1ptr(a, n), i0: nintlt(n)): (~a)
-//
-(* ****** ****** *)
-//
-(*
-HX: [cget_at]: copy+get
-*)
-//
-fun
-<a:vt>
-a1ptr_cget_at
-{n:i0}
-(A0: !a1ptr(a, n), i0: nintlt(n)): a
-//
-(* ****** ****** *)
-//
-(*
-HX: [setf_at]: set_at+free
-*)
-//
-fun
-<a:vt>
-a1ptr_setf_at
-{n:i0}
-( A0:
-! a1ptr(a, n)
-, i0: nintlt(n), x0 : a(*new*)): void
-//
-(* ****** ****** *)
-//
-fun
-<a:vt>
-a1ptr_exch_at
+a1ptr_exch1_at
 {n:i0}
 ( A0:
 ! a1ptr(a, n)
 , i0: nintlt(n), x0: a(*new*)): a(*old*)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a1ptr_dtget1_at
+{n:i0}
+( A0:
+! a1ptr(a, n), i0: nintlt(n)): (?!a)
+//
+fun
+<a:vt>
+a1ptr_dtset1_at
+{n:i0}
+( A0:
+! a1ptr(a, n), i0: nintlt(n), x0: ?!a): void
+//
+(* ****** ****** *)
+//
+(*
+HX: [cpget_at]: copy+get
+HX: [frset_at]: set_at+free
+*)
+//
+fun
+<a:vt>
+a1ptr_cpget1_at
+{n:i0}
+( A0:
+! a1ptr(a, n), i0: nintlt(n)): a
+//
+fun
+<a:vt>
+a1ptr_frset1_at
+{n:i0}
+( A0:
+! a1ptr(a, n), i0: nintlt(n), x0 : a): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 fun
 <a:vt>
 g_updt(x0: &a >> _): void
-*)
 fun
 <a:vt>
-a1ptr_updt_at
+a1ptr_updt1_at
 {n:i0}
 (A0: !a1ptr(a, n), i0: nintlt(n)): void
+*)
 //
 (* ****** ****** *)
 //
@@ -467,22 +474,22 @@ a1ptr_rlistize0
 //
 (* ****** ****** *)
 //
-#symload [] with a0ptr_get of 1000
-#symload [] with a0ptr_set of 1000
-//
-#symload get with a0ptr_get of 1000
-#symload set with a0ptr_set of 1000
-//
-(* ****** ****** *)
-//
-#symload [] with a1ptr_get_at of 1000
-#symload [] with a1ptr_set_at of 1000
-#symload get_at with a1ptr_get_at of 1000
-#symload set_at with a1ptr_set_at of 1000
+#symload [] with a0ptr_get1 of 1000
+#symload [] with a0ptr_set1 of 1000
+#symload get1 with a0ptr_get1 of 1000
+#symload set1 with a0ptr_set1 of 1000
 //
 (* ****** ****** *)
-#symload a0ptr with a0ptr_make_1val of 1000
-#symload a1ptr with a1ptr_make_nval of 1000
+//
+#symload [] with a1ptr_get1_at of 1000
+#symload [] with a1ptr_set1_at of 1000
+#symload get1_at with a1ptr_get1_at of 1000
+#symload set1_at with a1ptr_set1_at of 1000
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_arrn000_vt.sats] *)

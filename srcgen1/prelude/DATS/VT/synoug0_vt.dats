@@ -13,12 +13,12 @@
 //
 #impltmp
 <a0>
-optn_vt_a00
+optn_vt_n0
 (      ) =
 optn_vt_nil((*nil*))
 #impltmp
 <a0>
-optn_vt_a01
+optn_vt_n1
 (  x1  ) =
 optn_vt_cons(  x1  )
 //
@@ -31,23 +31,23 @@ Tue Jul  5 20:38:08 EDT 2022
 //
 #impltmp
 <a0>
-list_vt_a00
+list_vt_n0
 (      ) =
 list_vt_nil((*void*))
 #impltmp
 <a0>
-list_vt_a01
+list_vt_n1
 (  x1  ) =
 list_vt_cons(x1, list_vt_nil())
 #impltmp
 <a0>
-list_vt_a02
+list_vt_n2
 (x1, x2) =
 list_vt_cons(x1,
 list_vt_cons(x2, list_vt_nil()))
 #impltmp
 <a0>
-list_vt_a03
+list_vt_n3
 (x1
 ,x2, x3) =
 list_vt_cons(x1,
@@ -55,7 +55,7 @@ list_vt_cons(x2,
 list_vt_cons(x3, list_vt_nil())))
 #impltmp
 <a0>
-list_vt_a04
+list_vt_n4
 (x1, x2
 ,x3, x4) =
 list_vt_cons(x1,
@@ -64,7 +64,7 @@ list_vt_cons(x3,
 list_vt_cons(x4, list_vt_nil()))))
 #impltmp
 <a0>
-list_vt_a05
+list_vt_n5
 (x1
 ,x2, x3
 ,x4, x5) =
@@ -75,7 +75,7 @@ list_vt_cons(x4,
 list_vt_cons(x5, list_vt_nil())))))
 #impltmp
 <a0>
-list_vt_a06
+list_vt_n6
 (x1, x2
 ,x3, x4
 ,x5, x6) =
@@ -87,7 +87,7 @@ list_vt_cons(x5,
 list_vt_cons(x6, list_vt_nil()))))))
 #impltmp
 <a0>
-list_vt_a07
+list_vt_n7
 (x1
 ,x2, x3
 ,x4, x5
@@ -101,7 +101,7 @@ list_vt_cons(x6,
 list_vt_cons(x7, list_vt_nil())))))))
 #impltmp
 <a0>
-list_vt_a08
+list_vt_n8
 (x1, x2
 ,x3, x4
 ,x5, x6
@@ -116,7 +116,7 @@ list_vt_cons(x7,
 list_vt_cons(x8, list_vt_nil()))))))))
 #impltmp
 <a0>
-list_vt_a09
+list_vt_n9
 (x1
 ,x2, x3
 ,x4, x5
@@ -133,7 +133,7 @@ list_vt_cons(x8,
 list_vt_cons(x9, list_vt_nil())))))))))
 #impltmp
 <a0>
-list_vt_a10
+list_vt_n10
 (x01,x02
 ,x03,x04
 ,x05,x06
@@ -159,7 +159,7 @@ list_vt_cons(x10, list_vt_nil()))))))))))
 //
 #impltmp
 <a1>
-gs_fproc0_a01
+gs_fproc0_n1
 ( x1 ) = () where
 {
   val () = g_fproc0<a1>(x1)
@@ -169,7 +169,7 @@ gs_fproc0_a01
 //
 #impltmp
 <a1><a2>
-gs_fproc0_a02
+gs_fproc0_n2
 ( x1
 , x2 ) = () where
 {
@@ -182,7 +182,7 @@ gs_fproc0_a02
 #impltmp
 <a1>
 <a2><a3>
-gs_fproc0_a03
+gs_fproc0_n3
 ( x1
 , x2
 , x3 ) = () where
@@ -197,7 +197,7 @@ gs_fproc0_a03
 #impltmp
 <a1><a2>
 <a3><a4>
-gs_fproc0_a04
+gs_fproc0_n4
 ( x1
 , x2
 , x3
@@ -215,7 +215,7 @@ gs_fproc0_a04
 <a1>
 <a2><a3>
 <a4><a5>
-gs_fproc0_a05
+gs_fproc0_n5
 ( x1
 , x2
 , x3
@@ -235,7 +235,7 @@ gs_fproc0_a05
 <a1><a2>
 <a3><a4>
 <a5><a6>
-gs_fproc0_a06
+gs_fproc0_n6
 ( x1
 , x2
 , x3
@@ -258,7 +258,7 @@ gs_fproc0_a06
 <a2><a3>
 <a4><a5>
 <a6><a7>
-gs_fproc0_a07
+gs_fproc0_n7
 ( x1
 , x2, x3
 , x4, x5
@@ -280,7 +280,7 @@ gs_fproc0_a07
 <a3><a4>
 <a5><a6>
 <a7><a8>
-gs_fproc0_a08
+gs_fproc0_n8
 ( x1, x2
 , x3, x4
 , x5, x6
@@ -304,7 +304,7 @@ gs_fproc0_a08
 <a4><a5>
 <a6><a7>
 <a8><a9>
-gs_fproc0_a09
+gs_fproc0_n9
 ( x1
 , x2, x3
 , x4, x5
@@ -330,7 +330,7 @@ gs_fproc0_a09
 <a05><a06>
 <a07><a08>
 <a09><a10>
-gs_fproc0_a10
+gs_fproc0_n10
 ( x01, x02
 , x03, x04
 , x05, x06
@@ -353,7 +353,7 @@ val () = g_fproc0<a10>(x10)
 //
 #impltmp
 <a1>
-gs_fproc1_a01
+gs_fproc1_n1
 ( x1 ) = () where
 {
   val () = g_fproc1<a1>(x1)
@@ -363,7 +363,7 @@ gs_fproc1_a01
 //
 #impltmp
 <a1><a2>
-gs_fproc1_a02
+gs_fproc1_n2
 ( x1
 , x2 ) = () where
 {
@@ -376,7 +376,7 @@ gs_fproc1_a02
 #impltmp
 <a1>
 <a2><a3>
-gs_fproc1_a03
+gs_fproc1_n3
 ( x1
 , x2
 , x3 ) = () where
@@ -391,7 +391,7 @@ gs_fproc1_a03
 #impltmp
 <a1><a2>
 <a3><a4>
-gs_fproc1_a04
+gs_fproc1_n4
 ( x1
 , x2
 , x3
@@ -409,7 +409,7 @@ gs_fproc1_a04
 <a1>
 <a2><a3>
 <a4><a5>
-gs_fproc1_a05
+gs_fproc1_n5
 ( x1
 , x2
 , x3
@@ -429,7 +429,7 @@ gs_fproc1_a05
 <a1><a2>
 <a3><a4>
 <a5><a6>
-gs_fproc1_a06
+gs_fproc1_n6
 ( x1
 , x2
 , x3
@@ -452,7 +452,7 @@ gs_fproc1_a06
 <a2><a3>
 <a4><a5>
 <a6><a7>
-gs_fproc1_a07
+gs_fproc1_n7
 ( x1
 , x2, x3
 , x4, x5
@@ -474,7 +474,7 @@ gs_fproc1_a07
 <a3><a4>
 <a5><a6>
 <a7><a8>
-gs_fproc1_a08
+gs_fproc1_n8
 ( x1, x2
 , x3, x4
 , x5, x6
@@ -498,7 +498,7 @@ gs_fproc1_a08
 <a4><a5>
 <a6><a7>
 <a8><a9>
-gs_fproc1_a09
+gs_fproc1_n9
 ( x1
 , x2, x3
 , x4, x5
@@ -524,7 +524,7 @@ gs_fproc1_a09
 <a05><a06>
 <a07><a08>
 <a09><a10>
-gs_fproc1_a10
+gs_fproc1_n10
 ( x01, x02
 , x03, x04
 , x05, x06
@@ -552,14 +552,14 @@ Tue Jul  5 16:35:26 EDT 2022
 //
 #impltmp
 <a0>
-gs_fred2l0_a02
+gs_fred2l0_n2
 (x1, x2) =
 (
 g_fred20<a0>(x1, x2)
-) (* end of [gs_fred2l0_a02] *)
+) (* end of [gs_fred2l0_n2] *)
 #impltmp
 <a0>
-gs_fred2l0_a03
+gs_fred2l0_n3
 ( x1
 , x2, x3) =
 let
@@ -568,10 +568,10 @@ f0(x, y) =
 g_fred20<a0>(x, y)
 in//let
   f0(f0(x1, x2), x3)
-end (*let*) // end of [gs_fred2l0_a03]
+end (*let*) // end of [gs_fred2l0_n3]
 #impltmp
 <a0>
-gs_fred2l0_a04
+gs_fred2l0_n4
 ( x1, x2
 , x3, x4) =
 let
@@ -580,10 +580,10 @@ f0(x, y) =
 g_fred20<a0>(x, y)
 in//let
   f0(f0(f0(x1,x2),x3),x4)
-end (*let*) // end of [gs_fred2l0_a04]
+end (*let*) // end of [gs_fred2l0_n4]
 #impltmp
 <a0>
-gs_fred2l0_a05
+gs_fred2l0_n5
 ( x1
 , x2, x3
 , x4, x5) =
@@ -593,10 +593,10 @@ f0(x, y) =
 g_fred20<a0>(x, y)
 in//let
 f0(f0(f0(f0(x1,x2),x3),x4),x5)
-end (*let*) // end of [gs_fred2l0_a05]
+end (*let*) // end of [gs_fred2l0_n5]
 #impltmp
 <a0>
-gs_fred2l0_a06
+gs_fred2l0_n6
 ( x1, x2
 , x3, x4
 , x5, x6) =
@@ -606,10 +606,10 @@ f0(x, y) =
 g_fred20<a0>(x, y)
 in//let
 f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6)
-end (*let*) // end of [gs_fred2l0_a06]
+end (*let*) // end of [gs_fred2l0_n6]
 #impltmp
 <a0>
-gs_fred2l0_a07
+gs_fred2l0_n7
 ( x1
 , x2, x3
 , x4, x5
@@ -620,10 +620,10 @@ f0(x, y) =
 g_fred20<a0>(x, y)
 in//let
 f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7)
-end (*let*) // end of [gs_fred2l0_a07]
+end (*let*) // end of [gs_fred2l0_n7]
 #impltmp
 <a0>
-gs_fred2l0_a08
+gs_fred2l0_n8
 ( x1, x2
 , x3, x4
 , x5, x6
@@ -634,10 +634,10 @@ f0(x, y) =
 g_fred20<a0>(x, y)
 in//let
 f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8)
-end (*let*) // end of [gs_fred2l0_a08]
+end (*let*) // end of [gs_fred2l0_n8]
 #impltmp
 <a0>
-gs_fred2l0_a09
+gs_fred2l0_n9
 ( x1
 , x2, x3
 , x4, x5
@@ -649,11 +649,11 @@ f0(x, y) =
 g_fred20<a0>(x, y)
 in//let
 f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9)
-end (*let*) // end of [gs_fred2l0_a09]
+end (*let*) // end of [gs_fred2l0_n9]
 //
 #impltmp
 <a0>
-gs_fred2l0_a10
+gs_fred2l0_n10
 ( x01, x02
 , x03, x04
 , x05, x06
@@ -666,7 +666,7 @@ g_fred20<a0>(x, y)
 in//let
 f0(f0(f0(f0(
 f0(f0(f0(f0(f0(x01,x02),x03),x04),x05),x06),x07),x08),x09),x10)
-end (*let*) // end of [gs_fred2l0_a10]
+end (*let*) // end of [gs_fred2l0_n10]
 //
 (* ****** ****** *)
 (*
@@ -677,14 +677,14 @@ Tue Jul  5 16:37:10 EDT 2022
 //
 #impltmp
 <a0>
-gs_fred2l1_a02
+gs_fred2l1_n2
 (x1, x2) =
 (
 g_fred20<a0>(x1, x2)
-) (* end of [gs_fred2l1_a02] *)
+) (* end of [gs_fred2l1_n2] *)
 #impltmp
 <a0>
-gs_fred2l1_a03
+gs_fred2l1_n3
 ( x1
 , x2, x3) =
 let
@@ -693,10 +693,10 @@ f0(x, y) =
 g_fred20<a0>(x, y)
 in//let
   f0(f0(x1, x2), x3)
-end (*let*) // end of [gs_fred2l1_a03]
+end (*let*) // end of [gs_fred2l1_n3]
 #impltmp
 <a0>
-gs_fred2l1_a04
+gs_fred2l1_n4
 ( x1, x2
 , x3, x4) =
 let
@@ -705,10 +705,10 @@ f0(x, y) =
 g_fred20<a0>(x, y)
 in//let
   f0(f0(f0(x1,x2),x3),x4)
-end (*let*) // end of [gs_fred2l1_a04]
+end (*let*) // end of [gs_fred2l1_n4]
 #impltmp
 <a0>
-gs_fred2l1_a05
+gs_fred2l1_n5
 ( x1
 , x2, x3
 , x4, x5) =
@@ -718,10 +718,10 @@ f0(x, y) =
 g_fred20<a0>(x, y)
 in//let
 f0(f0(f0(f0(x1,x2),x3),x4),x5)
-end (*let*) // end of [gs_fred2l1_a05]
+end (*let*) // end of [gs_fred2l1_n5]
 #impltmp
 <a0>
-gs_fred2l1_a06
+gs_fred2l1_n6
 ( x1, x2
 , x3, x4
 , x5, x6) =
@@ -731,10 +731,10 @@ f0(x, y) =
 g_fred20<a0>(x, y)
 in//let
 f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6)
-end (*let*) // end of [gs_fred2l1_a06]
+end (*let*) // end of [gs_fred2l1_n6]
 #impltmp
 <a0>
-gs_fred2l1_a07
+gs_fred2l1_n7
 ( x1
 , x2, x3
 , x4, x5
@@ -745,10 +745,10 @@ f0(x, y) =
 g_fred20<a0>(x, y)
 in//let
 f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7)
-end (*let*) // end of [gs_fred2l1_a07]
+end (*let*) // end of [gs_fred2l1_n7]
 #impltmp
 <a0>
-gs_fred2l1_a08
+gs_fred2l1_n8
 ( x1, x2
 , x3, x4
 , x5, x6
@@ -759,10 +759,10 @@ f0(x, y) =
 g_fred20<a0>(x, y)
 in//let
 f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8)
-end (*let*) // end of [gs_fred2l1_a08]
+end (*let*) // end of [gs_fred2l1_n8]
 #impltmp
 <a0>
-gs_fred2l1_a09
+gs_fred2l1_n9
 ( x1
 , x2, x3
 , x4, x5
@@ -774,11 +774,11 @@ f0(x, y) =
 g_fred20<a0>(x, y)
 in//let
 f0(f0(f0(f0(f0(f0(f0(f0(x1,x2),x3),x4),x5),x6),x7),x8),x9)
-end (*let*) // end of [gs_fred2l1_a09]
+end (*let*) // end of [gs_fred2l1_n9]
 //
 #impltmp
 <a0>
-gs_fred2l1_a10
+gs_fred2l1_n10
 ( x01, x02
 , x03, x04
 , x05, x06
@@ -791,7 +791,7 @@ g_fred20<a0>(x, y)
 in//let
 f0(f0(f0(f0(
 f0(f0(f0(f0(f0(x01,x02),x03),x04),x05),x06),x07),x08),x09),x10)
-end (*let*) // end of [gs_fred2l1_a10]
+end (*let*) // end of [gs_fred2l1_n10]
 //
 (* ****** ****** *)
 (*
@@ -802,14 +802,14 @@ Tue Jul  5 16:45:16 EDT 2022
 //
 #impltmp
 <a0>
-gs_fred2r0_a02
+gs_fred2r0_n2
 (x1, x2) =
 (
 g_fred20<a0>(x1, x2)
-) (* end of [gs_fred2r0_a02] *)
+) (* end of [gs_fred2r0_n2] *)
 #impltmp
 <a0>
-gs_fred2r0_a03
+gs_fred2r0_n3
 ( x1
 , x2, x3) =
 let
@@ -818,10 +818,10 @@ f0(x, y) =
 g_fred20<a0>(x, y)
 in//let
   f0(x1, f0(x2, x3))
-end (*let*) // end of [gs_fred2r0_a03]
+end (*let*) // end of [gs_fred2r0_n3]
 #impltmp
 <a0>
-gs_fred2r0_a04
+gs_fred2r0_n4
 ( x1, x2
 , x3, x4) =
 let
@@ -830,10 +830,10 @@ f0(x, y) =
 g_fred20<a0>(x, y)
 in//let
   f0(x1,f0(x2,f0(x3,x4)))
-end (*let*) // end of [gs_fred2r0_a04]
+end (*let*) // end of [gs_fred2r0_n4]
 #impltmp
 <a0>
-gs_fred2r0_a05
+gs_fred2r0_n5
 ( x1
 , x2, x3
 , x4, x5) =
@@ -843,10 +843,10 @@ f0(x, y) =
 g_fred20<a0>(x, y)
 in//let
   f0(x1,f0(x2,f0(x3,f0(x4,x5))))
-end (*let*) // end of [gs_fred2r0_a05]
+end (*let*) // end of [gs_fred2r0_n5]
 #impltmp
 <a0>
-gs_fred2r0_a06
+gs_fred2r0_n6
 ( x1, x2
 , x3, x4
 , x5, x6) =
@@ -856,10 +856,10 @@ f0(x, y) =
 g_fred20<a0>(x, y)
 in//let
   f0(x1,f0(x2,f0(x3,f0(x4,f0(x5,x6)))))
-end (*let*) // end of [gs_fred2r0_a06]
+end (*let*) // end of [gs_fred2r0_n6]
 #impltmp
 <a0>
-gs_fred2r0_a07
+gs_fred2r0_n7
 ( x1
 , x2, x3
 , x4, x5
@@ -870,10 +870,10 @@ f0(x, y) =
 g_fred20<a0>(x, y)
 in//let
   f0(x1,f0(x2,f0(x3,f0(x4,f0(x5,f0(x6,x7))))))
-end (*let*) // end of [gs_fred2r0_a07]
+end (*let*) // end of [gs_fred2r0_n7]
 #impltmp
 <a0>
-gs_fred2r0_a08
+gs_fred2r0_n8
 ( x1, x2
 , x3, x4
 , x5, x6
@@ -884,10 +884,10 @@ f0(x, y) =
 g_fred20<a0>(x, y)
 in//let
 f0(x1,f0(x2,f0(x3,f0(x4,f0(x5,f0(x6,f0(x7,x8)))))))
-end (*let*) // end of [gs_fred2r0_a08]
+end (*let*) // end of [gs_fred2r0_n8]
 #impltmp
 <a0>
-gs_fred2r0_a09
+gs_fred2r0_n9
 ( x1
 , x2, x3
 , x4, x5
@@ -899,11 +899,11 @@ f0(x, y) =
 g_fred20<a0>(x, y)
 in//let
 f0(x1,f0(x2,f0(x3,f0(x4,f0(x5,f0(x6,f0(x7,f0(x8,x9))))))))
-end (*let*) // end of [gs_fred2r0_a09]
+end (*let*) // end of [gs_fred2r0_n9]
 (* ****** ****** *)
 #impltmp
 <a0>
-gs_fred2r0_a10
+gs_fred2r0_n10
 ( x01, x02
 , x03, x04
 , x05, x06
@@ -916,7 +916,7 @@ g_fred20<a0>(x, y)
 in//let
 f0(x01,f0(x02,
 f0(x03,f0(x04,f0(x05,f0(x06,f0(x07,f0(x08,f0(x09,x10)))))))))
-end (*let*) // end of [gs_fred2r0_a10]
+end (*let*) // end of [gs_fred2r0_n10]
 (* ****** ****** *)
 (*
 HX: implementing gs_fred2r1
@@ -926,14 +926,14 @@ Tue Jul  5 16:46:17 EDT 2022
 //
 #impltmp
 <a0>
-gs_fred2r1_a02
+gs_fred2r1_n2
 (x1, x2) =
 (
 g_fred21<a0>(x1, x2)
-) (* end of [gs_fred2r1_a02] *)
+) (* end of [gs_fred2r1_n2] *)
 #impltmp
 <a0>
-gs_fred2r1_a03
+gs_fred2r1_n3
 ( x1
 , x2, x3) =
 let
@@ -942,10 +942,10 @@ f0(x, y) =
 g_fred21<a0>(x, y)
 in//let
   f0(x1, f0(x2, x3))
-end (*let*) // end of [gs_fred2r1_a03]
+end (*let*) // end of [gs_fred2r1_n3]
 #impltmp
 <a0>
-gs_fred2r1_a04
+gs_fred2r1_n4
 ( x1, x2
 , x3, x4) =
 let
@@ -954,10 +954,10 @@ f0(x, y) =
 g_fred21<a0>(x, y)
 in//let
   f0(x1,f0(x2,f0(x3,x4)))
-end (*let*) // end of [gs_fred2r1_a04]
+end (*let*) // end of [gs_fred2r1_n4]
 #impltmp
 <a0>
-gs_fred2r1_a05
+gs_fred2r1_n5
 ( x1
 , x2, x3
 , x4, x5) =
@@ -967,10 +967,10 @@ f0(x, y) =
 g_fred21<a0>(x, y)
 in//let
   f0(x1,f0(x2,f0(x3,f0(x4,x5))))
-end (*let*) // end of [gs_fred2r1_a05]
+end (*let*) // end of [gs_fred2r1_n5]
 #impltmp
 <a0>
-gs_fred2r1_a06
+gs_fred2r1_n6
 ( x1, x2
 , x3, x4
 , x5, x6) =
@@ -980,10 +980,10 @@ f0(x, y) =
 g_fred21<a0>(x, y)
 in//let
   f0(x1,f0(x2,f0(x3,f0(x4,f0(x5,x6)))))
-end (*let*) // end of [gs_fred2r1_a06]
+end (*let*) // end of [gs_fred2r1_n6]
 #impltmp
 <a0>
-gs_fred2r1_a07
+gs_fred2r1_n7
 ( x1
 , x2, x3
 , x4, x5
@@ -994,10 +994,10 @@ f0(x, y) =
 g_fred21<a0>(x, y)
 in//let
   f0(x1,f0(x2,f0(x3,f0(x4,f0(x5,f0(x6,x7))))))
-end (*let*) // end of [gs_fred2r1_a07]
+end (*let*) // end of [gs_fred2r1_n7]
 #impltmp
 <a0>
-gs_fred2r1_a08
+gs_fred2r1_n8
 ( x1, x2
 , x3, x4
 , x5, x6
@@ -1008,10 +1008,10 @@ f0(x, y) =
 g_fred21<a0>(x, y)
 in//let
 f0(x1,f0(x2,f0(x3,f0(x4,f0(x5,f0(x6,f0(x7,x8)))))))
-end (*let*) // end of [gs_fred2r1_a08]
+end (*let*) // end of [gs_fred2r1_n8]
 #impltmp
 <a0>
-gs_fred2r1_a09
+gs_fred2r1_n9
 ( x1
 , x2, x3
 , x4, x5
@@ -1023,11 +1023,11 @@ f0(x, y) =
 g_fred21<a0>(x, y)
 in//let
 f0(x1,f0(x2,f0(x3,f0(x4,f0(x5,f0(x6,f0(x7,f0(x8,x9))))))))
-end (*let*) // end of [gs_fred2r1_a09]
+end (*let*) // end of [gs_fred2r1_n9]
 (* ****** ****** *)
 #impltmp
 <a0>
-gs_fred2r1_a10
+gs_fred2r1_n10
 ( x01, x02
 , x03, x04
 , x05, x06
@@ -1040,7 +1040,7 @@ g_fred21<a0>(x, y)
 in//let
 f0(x01,f0(x02,
 f0(x03,f0(x04,f0(x05,f0(x06,f0(x07,f0(x08,f0(x09,x10)))))))))
-end (*let*) // end of [gs_fred2r1_a10]
+end (*let*) // end of [gs_fred2r1_n10]
 (* ****** ****** *)
 //
 (*
@@ -1052,8 +1052,8 @@ Implementing print0/println0
 //
 #impltmp
 <a1>
-gs_print0_b01 =
-gs_fproc0_a01
+gs_print0_n1 =
+gs_fproc0_n1
 <  a1  > where
 {
 #impltmp
@@ -1063,8 +1063,8 @@ g_fproc0<a0> = g_print0<a0>
 //
 #impltmp
 <a1><a2>
-gs_print0_b02 =
-gs_fproc0_a02
+gs_print0_n2 =
+gs_fproc0_n2
 <a1><a2> where
 {
 #impltmp
@@ -1075,8 +1075,8 @@ g_fproc0<a0> = g_print0<a0>
 #impltmp
 <a1>
 <a2><a3>
-gs_print0_b03 =
-gs_fproc0_a03
+gs_print0_n3 =
+gs_fproc0_n3
 <a1>
 <a2><a3> where
 {
@@ -1088,8 +1088,8 @@ g_fproc0<a0> = g_print0<a0>
 #impltmp
 <a1><a2>
 <a3><a4>
-gs_print0_b04 =
-gs_fproc0_a04
+gs_print0_n4 =
+gs_fproc0_n4
 <a1><a2>
 <a3><a4> where
 {
@@ -1102,8 +1102,8 @@ g_fproc0<a0> = g_print0<a0>
 <a1>
 <a2><a3>
 <a4><a5>
-gs_print0_b05 =
-gs_fproc0_a05
+gs_print0_n5 =
+gs_fproc0_n5
 <a1>
 <a2><a3>
 <a4><a5> where
@@ -1117,8 +1117,8 @@ g_fproc0<a0> = g_print0<a0>
 <a1><a2>
 <a3><a4>
 <a5><a6>
-gs_print0_b06 =
-gs_fproc0_a06
+gs_print0_n6 =
+gs_fproc0_n6
 <a1><a2>
 <a3><a4>
 <a5><a6> where
@@ -1133,8 +1133,8 @@ g_fproc0<a0> = g_print0<a0>
 <a2><a3>
 <a4><a5>
 <a6><a7>
-gs_print0_b07 =
-gs_fproc0_a07
+gs_print0_n7 =
+gs_fproc0_n7
 <a1>
 <a2><a3>
 <a4><a5>
@@ -1150,8 +1150,8 @@ g_fproc0<a0> = g_print0<a0>
 <a3><a4>
 <a5><a6>
 <a7><a8>
-gs_print0_b08 =
-gs_fproc0_a08
+gs_print0_n8 =
+gs_fproc0_n8
 <a1><a2>
 <a3><a4>
 <a5><a6>
@@ -1168,8 +1168,8 @@ g_fproc0<a0> = g_print0<a0>
 <a4><a5>
 <a6><a7>
 <a8><a9>
-gs_print0_b09 =
-gs_fproc0_a09
+gs_print0_n9 =
+gs_fproc0_n9
 <a1>
 <a2><a3>
 <a4><a5>
@@ -1187,8 +1187,8 @@ g_fproc0<a0> = g_print0<a0>
 <a05><a06>
 <a07><a08>
 <a09><a10>
-gs_print0_b10 =
-gs_fproc0_a10
+gs_print0_n10 =
+gs_fproc0_n10
 <a01><a02>
 <a03><a04>
 <a05><a06>
@@ -1203,7 +1203,7 @@ g_fproc0<a00> = g_print0<a00>
 (* ****** ****** *)
 //
 #impltmp
-gs_println0_b00
+gs_println0_n0
 <>(*tmp*)
 ( (*_*) ) = g_print( "\n" )
 //
@@ -1211,55 +1211,55 @@ gs_println0_b00
 //
 #impltmp
 <a1>
-gs_println0_b01
+gs_println0_n1
 ( x1 ) =
 (
-gs_print0_b01
-(   x1   ) ; gs_println0_b00<>()
-) (* end of [gs_println0_b01] *)
+gs_print0_n1
+(   x1   ) ; gs_println0_n0<>()
+) (* end of [gs_println0_n1] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
-gs_println0_b02
+gs_println0_n2
 ( x1
 , x2 ) =
 (
-gs_print0_b02
-( x1, x2 ) ; gs_println0_b00<>()
-) (* end of [gs_println0_b02] *)
+gs_print0_n2
+( x1, x2 ) ; gs_println0_n0<>()
+) (* end of [gs_println0_n2] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1>
 <a2><a3>
-gs_println0_b03
+gs_println0_n3
 ( x1
 , x2
 , x3 ) =
 (
-gs_print0_b03
+gs_print0_n3
 ( x1
-, x2, x3 ) ; gs_println0_b00<>()
-) (* end of [gs_println0_b03] *)
+, x2, x3 ) ; gs_println0_n0<>()
+) (* end of [gs_println0_n3] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
 <a3><a4>
-gs_println0_b04
+gs_println0_n4
 ( x1
 , x2
 , x3
 , x4 ) =
 (
-gs_print0_b04
+gs_print0_n4
 ( x1, x2
-, x3, x4 ) ; gs_println0_b00<>()
-) (* end of [gs_println0_b04] *)
+, x3, x4 ) ; gs_println0_n0<>()
+) (* end of [gs_println0_n4] *)
 //
 (* ****** ****** *)
 //
@@ -1267,18 +1267,18 @@ gs_print0_b04
 <a1>
 <a2><a3>
 <a4><a5>
-gs_println0_b05
+gs_println0_n5
 ( x1
 , x2
 , x3
 , x4
 , x5 ) =
 (
-gs_print0_b05
+gs_print0_n5
 ( x1
 , x2, x3
-, x4, x5 ) ; gs_println0_b00<>()
-) (* end of [gs_println0_b05] *)
+, x4, x5 ) ; gs_println0_n0<>()
+) (* end of [gs_println0_n5] *)
 //
 (* ****** ****** *)
 //
@@ -1286,7 +1286,7 @@ gs_print0_b05
 <a1><a2>
 <a3><a4>
 <a5><a6>
-gs_println0_b06
+gs_println0_n6
 ( x1
 , x2
 , x3
@@ -1294,11 +1294,11 @@ gs_println0_b06
 , x5
 , x6 ) =
 (
-gs_print0_b06
+gs_print0_n6
 ( x1, x2
 , x3, x4
-, x5, x6 ) ; gs_println0_b00<>()
-) (* end of [gs_println0_b06] *)
+, x5, x6 ) ; gs_println0_n0<>()
+) (* end of [gs_println0_n6] *)
 //
 (* ****** ****** *)
 //
@@ -1307,18 +1307,18 @@ gs_print0_b06
 <a2><a3>
 <a4><a5>
 <a6><a7>
-gs_println0_b07
+gs_println0_n7
 ( x1
 , x2, x3
 , x4, x5
 , x6, x7 ) =
 (
-gs_print0_b07
+gs_print0_n7
 ( x1
 , x2, x3
 , x4, x5
-, x6, x7 ) ; gs_println0_b00<>()
-) (* end of [gs_println0_b07] *)
+, x6, x7 ) ; gs_println0_n0<>()
+) (* end of [gs_println0_n7] *)
 //
 (* ****** ****** *)
 //
@@ -1327,18 +1327,18 @@ gs_print0_b07
 <a3><a4>
 <a5><a6>
 <a7><a8>
-gs_println0_b08
+gs_println0_n8
 ( x1, x2
 , x3, x4
 , x5, x6
 , x7, x8 ) =
 (
-gs_print0_b08
+gs_print0_n8
 ( x1, x2
 , x3, x4
 , x5, x6
-, x7, x8 ) ; gs_println0_b00<>()
-) (* end of [gs_println0_b08] *)
+, x7, x8 ) ; gs_println0_n0<>()
+) (* end of [gs_println0_n8] *)
 //
 (* ****** ****** *)
 //
@@ -1348,20 +1348,20 @@ gs_print0_b08
 <a4><a5>
 <a6><a7>
 <a8><a9>
-gs_println0_b09
+gs_println0_n9
 ( x1
 , x2, x3
 , x4, x5
 , x6, x7
 , x8, x9 ) =
 (
-gs_print0_b09
+gs_print0_n9
 ( x1
 , x2, x3
 , x4, x5
 , x6, x7
-, x8, x9 ) ; gs_println0_b00<>()
-) (* end of [gs_println0_b09] *)
+, x8, x9 ) ; gs_println0_n0<>()
+) (* end of [gs_println0_n9] *)
 //
 (* ****** ****** *)
 //
@@ -1371,18 +1371,18 @@ gs_print0_b09
 <a05><a06>
 <a07><a08>
 <a09><a10>
-gs_println0_b10
+gs_println0_n10
 ( x01
 , x02, x03, x04
 , x05, x06, x07
 , x08, x09, x10 ) =
 (
-gs_print0_b10
+gs_print0_n10
 ( x01
 , x02, x03, x04
 , x05, x06, x07
-, x08, x09, x10 ) ; gs_println0_b00<>()
-) (* end of [gs_println0_b10] *)
+, x08, x09, x10 ) ; gs_println0_n0<>()
+) (* end of [gs_println0_n10] *)
 //
 (* ****** ****** *)
 //
@@ -1395,8 +1395,8 @@ Implementing print1/println1
 //
 #impltmp
 <a1>
-gs_print1_b01 =
-gs_fproc1_a01
+gs_print1_n1 =
+gs_fproc1_n1
 <  a1  > where
 {
 #impltmp
@@ -1406,8 +1406,8 @@ g_fproc1<a0> = g_print1<a0>
 //
 #impltmp
 <a1><a2>
-gs_print1_b02 =
-gs_fproc1_a02
+gs_print1_n2 =
+gs_fproc1_n2
 <a1><a2> where
 {
 #impltmp
@@ -1418,8 +1418,8 @@ g_fproc1<a0> = g_print1<a0>
 #impltmp
 <a1>
 <a2><a3>
-gs_print1_b03 =
-gs_fproc1_a03
+gs_print1_n3 =
+gs_fproc1_n3
 <a1>
 <a2><a3> where
 {
@@ -1431,8 +1431,8 @@ g_fproc1<a0> = g_print1<a0>
 #impltmp
 <a1><a2>
 <a3><a4>
-gs_print1_b04 =
-gs_fproc1_a04
+gs_print1_n4 =
+gs_fproc1_n4
 <a1><a2>
 <a3><a4> where
 {
@@ -1445,8 +1445,8 @@ g_fproc1<a0> = g_print1<a0>
 <a1>
 <a2><a3>
 <a4><a5>
-gs_print1_b05 =
-gs_fproc1_a05
+gs_print1_n5 =
+gs_fproc1_n5
 <a1>
 <a2><a3>
 <a4><a5> where
@@ -1460,8 +1460,8 @@ g_fproc1<a0> = g_print1<a0>
 <a1><a2>
 <a3><a4>
 <a5><a6>
-gs_print1_b06 =
-gs_fproc1_a06
+gs_print1_n6 =
+gs_fproc1_n6
 <a1><a2>
 <a3><a4>
 <a5><a6> where
@@ -1476,8 +1476,8 @@ g_fproc1<a0> = g_print1<a0>
 <a2><a3>
 <a4><a5>
 <a6><a7>
-gs_print1_b07 =
-gs_fproc1_a07
+gs_print1_n7 =
+gs_fproc1_n7
 <a1>
 <a2><a3>
 <a4><a5>
@@ -1493,8 +1493,8 @@ g_fproc1<a0> = g_print1<a0>
 <a3><a4>
 <a5><a6>
 <a7><a8>
-gs_print1_b08 =
-gs_fproc1_a08
+gs_print1_n8 =
+gs_fproc1_n8
 <a1><a2>
 <a3><a4>
 <a5><a6>
@@ -1511,8 +1511,8 @@ g_fproc1<a0> = g_print1<a0>
 <a4><a5>
 <a6><a7>
 <a8><a9>
-gs_print1_b09 =
-gs_fproc1_a09
+gs_print1_n9 =
+gs_fproc1_n9
 <a1>
 <a2><a3>
 <a4><a5>
@@ -1530,8 +1530,8 @@ g_fproc1<a0> = g_print1<a0>
 <a05><a06>
 <a07><a08>
 <a09><a10>
-gs_print1_b10 =
-gs_fproc1_a10
+gs_print1_n10 =
+gs_fproc1_n10
 <a01><a02>
 <a03><a04>
 <a05><a06>
@@ -1546,7 +1546,7 @@ g_fproc1<a00> = g_print1<a00>
 (* ****** ****** *)
 //
 #impltmp
-gs_println1_b00
+gs_println1_n0
 <>(*tmp*)
 ( (*_*) ) = g_print( "\n" )
 //
@@ -1554,55 +1554,55 @@ gs_println1_b00
 //
 #impltmp
 <a1>
-gs_println1_b01
+gs_println1_n1
 ( x1 ) =
 (
-gs_print1_b01
-(   x1   ) ; gs_println1_b00<>()
-) (* end of [gs_println1_b01] *)
+gs_print1_n1
+(   x1   ) ; gs_println1_n0<>()
+) (* end of [gs_println1_n1] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
-gs_println1_b02
+gs_println1_n2
 ( x1
 , x2 ) =
 (
-gs_print1_b02
-( x1, x2 ) ; gs_println1_b00<>()
-) (* end of [gs_println1_b02] *)
+gs_print1_n2
+( x1, x2 ) ; gs_println1_n0<>()
+) (* end of [gs_println1_n2] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1>
 <a2><a3>
-gs_println1_b03
+gs_println1_n3
 ( x1
 , x2
 , x3 ) =
 (
-gs_print1_b03
+gs_print1_n3
 ( x1
-, x2, x3 ) ; gs_println1_b00<>()
-) (* end of [gs_println1_b03] *)
+, x2, x3 ) ; gs_println1_n0<>()
+) (* end of [gs_println1_n3] *)
 //
 (* ****** ****** *)
 //
 #impltmp
 <a1><a2>
 <a3><a4>
-gs_println1_b04
+gs_println1_n4
 ( x1
 , x2
 , x3
 , x4 ) =
 (
-gs_print1_b04
+gs_print1_n4
 ( x1, x2
-, x3, x4 ) ; gs_println1_b00<>()
-) (* end of [gs_println1_b04] *)
+, x3, x4 ) ; gs_println1_n0<>()
+) (* end of [gs_println1_n4] *)
 //
 (* ****** ****** *)
 //
@@ -1610,18 +1610,18 @@ gs_print1_b04
 <a1>
 <a2><a3>
 <a4><a5>
-gs_println1_b05
+gs_println1_n5
 ( x1
 , x2
 , x3
 , x4
 , x5 ) =
 (
-gs_print1_b05
+gs_print1_n5
 ( x1
 , x2, x3
-, x4, x5 ) ; gs_println1_b00<>()
-) (* end of [gs_println1_b05] *)
+, x4, x5 ) ; gs_println1_n0<>()
+) (* end of [gs_println1_n5] *)
 //
 (* ****** ****** *)
 //
@@ -1629,7 +1629,7 @@ gs_print1_b05
 <a1><a2>
 <a3><a4>
 <a5><a6>
-gs_println1_b06
+gs_println1_n6
 ( x1
 , x2
 , x3
@@ -1637,11 +1637,11 @@ gs_println1_b06
 , x5
 , x6 ) =
 (
-gs_print1_b06
+gs_print1_n6
 ( x1, x2
 , x3, x4
-, x5, x6 ) ; gs_println1_b00<>()
-) (* end of [gs_println1_b06] *)
+, x5, x6 ) ; gs_println1_n0<>()
+) (* end of [gs_println1_n6] *)
 //
 (* ****** ****** *)
 //
@@ -1650,18 +1650,18 @@ gs_print1_b06
 <a2><a3>
 <a4><a5>
 <a6><a7>
-gs_println1_b07
+gs_println1_n7
 ( x1
 , x2, x3
 , x4, x5
 , x6, x7 ) =
 (
-gs_print1_b07
+gs_print1_n7
 ( x1
 , x2, x3
 , x4, x5
-, x6, x7 ) ; gs_println1_b00<>()
-) (* end of [gs_println1_b07] *)
+, x6, x7 ) ; gs_println1_n0<>()
+) (* end of [gs_println1_n7] *)
 //
 (* ****** ****** *)
 //
@@ -1670,18 +1670,18 @@ gs_print1_b07
 <a3><a4>
 <a5><a6>
 <a7><a8>
-gs_println1_b08
+gs_println1_n8
 ( x1, x2
 , x3, x4
 , x5, x6
 , x7, x8 ) =
 (
-gs_print1_b08
+gs_print1_n8
 ( x1, x2
 , x3, x4
 , x5, x6
-, x7, x8 ) ; gs_println1_b00<>()
-) (* end of [gs_println1_b08] *)
+, x7, x8 ) ; gs_println1_n0<>()
+) (* end of [gs_println1_n8] *)
 //
 (* ****** ****** *)
 //
@@ -1691,20 +1691,20 @@ gs_print1_b08
 <a4><a5>
 <a6><a7>
 <a8><a9>
-gs_println1_b09
+gs_println1_n9
 ( x1
 , x2, x3
 , x4, x5
 , x6, x7
 , x8, x9 ) =
 (
-gs_print1_b09
+gs_print1_n9
 ( x1
 , x2, x3
 , x4, x5
 , x6, x7
-, x8, x9 ) ; gs_println1_b00<>()
-) (* end of [gs_println1_b09] *)
+, x8, x9 ) ; gs_println1_n0<>()
+) (* end of [gs_println1_n9] *)
 //
 (* ****** ****** *)
 //
@@ -1714,18 +1714,18 @@ gs_print1_b09
 <a05><a06>
 <a07><a08>
 <a09><a10>
-gs_println1_b10
+gs_println1_n10
 ( x01
 , x02, x03, x04
 , x05, x06, x07
 , x08, x09, x10 ) =
 (
-gs_print1_b10
+gs_print1_n10
 ( x01
 , x02, x03, x04
 , x05, x06, x07
-, x08, x09, x10 ) ; gs_println1_b00<>()
-) (* end of [gs_println1_b10] *)
+, x08, x09, x10 ) ; gs_println1_n0<>()
+) (* end of [gs_println1_n10] *)
 //
 (* ****** ****** *)
 (*
@@ -2179,71 +2179,71 @@ Tue Jul  5 15:12:21 EDT 2022
 //
 #impltmp
 <>(*tmp*)
-strn_vt_append0_a02 =
-gs_fred2r0_a02<strn_vt> where
+strn_vt_append0_n2 =
+gs_fred2r0_n2<strn_vt> where
 {
 #impltmp
 g_fred20<strn_vt> = strn_vt_append0<> }
 #impltmp
 <>(*tmp*)
-strn_vt_append0_a03 =
-gs_fred2r0_a03<strn_vt> where
-{
-#impltmp
-g_fred20<strn_vt> = strn_vt_append0<> }
-//
-#impltmp
-<>(*tmp*)
-strn_vt_append0_a04 =
-gs_fred2r0_a04<strn_vt> where
+strn_vt_append0_n3 =
+gs_fred2r0_n3<strn_vt> where
 {
 #impltmp
 g_fred20<strn_vt> = strn_vt_append0<> }
 //
 #impltmp
 <>(*tmp*)
-strn_vt_append0_a05 =
-gs_fred2r0_a05<strn_vt> where
+strn_vt_append0_n4 =
+gs_fred2r0_n4<strn_vt> where
 {
 #impltmp
 g_fred20<strn_vt> = strn_vt_append0<> }
 //
 #impltmp
 <>(*tmp*)
-strn_vt_append0_a06 =
-gs_fred2r0_a06<strn_vt> where
+strn_vt_append0_n5 =
+gs_fred2r0_n5<strn_vt> where
 {
 #impltmp
 g_fred20<strn_vt> = strn_vt_append0<> }
 //
 #impltmp
 <>(*tmp*)
-strn_vt_append0_a07 =
-gs_fred2r0_a07<strn_vt> where
+strn_vt_append0_n6 =
+gs_fred2r0_n6<strn_vt> where
 {
 #impltmp
 g_fred20<strn_vt> = strn_vt_append0<> }
 //
 #impltmp
 <>(*tmp*)
-strn_vt_append0_a08 =
-gs_fred2r0_a08<strn_vt> where
+strn_vt_append0_n7 =
+gs_fred2r0_n7<strn_vt> where
 {
 #impltmp
 g_fred20<strn_vt> = strn_vt_append0<> }
 //
 #impltmp
 <>(*tmp*)
-strn_vt_append0_a09 =
-gs_fred2r0_a09<strn_vt> where
+strn_vt_append0_n8 =
+gs_fred2r0_n8<strn_vt> where
 {
 #impltmp
 g_fred20<strn_vt> = strn_vt_append0<> }
 //
 #impltmp
 <>(*tmp*)
-strn_vt_append0_a10 =
-gs_fred2r0_a10<strn_vt> where
+strn_vt_append0_n9 =
+gs_fred2r0_n9<strn_vt> where
+{
+#impltmp
+g_fred20<strn_vt> = strn_vt_append0<> }
+//
+#impltmp
+<>(*tmp*)
+strn_vt_append0_n10 =
+gs_fred2r0_n10<strn_vt> where
 {
 #impltmp
 g_fred20<strn_vt> = strn_vt_append0<> }
@@ -2257,71 +2257,71 @@ Tue Jul  5 18:30:51 EDT 2022
 //
 #impltmp
 <>(*tmp*)
-strn_vt_append1_a02 =
-gs_fred2r1_a02<strn_vt> where
+strn_vt_append1_n2 =
+gs_fred2r1_n2<strn_vt> where
 {
 #impltmp
 g_fred21<strn_vt> = strn_vt_append1<> }
 #impltmp
 <>(*tmp*)
-strn_vt_append1_a03 =
-gs_fred2r1_a03<strn_vt> where
-{
-#impltmp
-g_fred21<strn_vt> = strn_vt_append1<> }
-//
-#impltmp
-<>(*tmp*)
-strn_vt_append1_a04 =
-gs_fred2r1_a04<strn_vt> where
+strn_vt_append1_n3 =
+gs_fred2r1_n3<strn_vt> where
 {
 #impltmp
 g_fred21<strn_vt> = strn_vt_append1<> }
 //
 #impltmp
 <>(*tmp*)
-strn_vt_append1_a05 =
-gs_fred2r1_a05<strn_vt> where
+strn_vt_append1_n4 =
+gs_fred2r1_n4<strn_vt> where
 {
 #impltmp
 g_fred21<strn_vt> = strn_vt_append1<> }
 //
 #impltmp
 <>(*tmp*)
-strn_vt_append1_a06 =
-gs_fred2r1_a06<strn_vt> where
+strn_vt_append1_n5 =
+gs_fred2r1_n5<strn_vt> where
 {
 #impltmp
 g_fred21<strn_vt> = strn_vt_append1<> }
 //
 #impltmp
 <>(*tmp*)
-strn_vt_append1_a07 =
-gs_fred2r1_a07<strn_vt> where
+strn_vt_append1_n6 =
+gs_fred2r1_n6<strn_vt> where
 {
 #impltmp
 g_fred21<strn_vt> = strn_vt_append1<> }
 //
 #impltmp
 <>(*tmp*)
-strn_vt_append1_a08 =
-gs_fred2r1_a08<strn_vt> where
+strn_vt_append1_n7 =
+gs_fred2r1_n7<strn_vt> where
 {
 #impltmp
 g_fred21<strn_vt> = strn_vt_append1<> }
 //
 #impltmp
 <>(*tmp*)
-strn_vt_append1_a09 =
-gs_fred2r1_a09<strn_vt> where
+strn_vt_append1_n8 =
+gs_fred2r1_n8<strn_vt> where
 {
 #impltmp
 g_fred21<strn_vt> = strn_vt_append1<> }
 //
 #impltmp
 <>(*tmp*)
-strn_vt_append1_a10 =
-gs_fred2r1_a10<strn_vt> where
+strn_vt_append1_n9 =
+gs_fred2r1_n9<strn_vt> where
+{
+#impltmp
+g_fred21<strn_vt> = strn_vt_append1<> }
+//
+#impltmp
+<>(*tmp*)
+strn_vt_append1_n10 =
+gs_fred2r1_n10<strn_vt> where
 {
 #impltmp
 g_fred21<strn_vt> = strn_vt_append1<> }
@@ -2335,72 +2335,72 @@ Tue Jul  5 19:07:51 EDT 2022
 //
 #impltmp
 <a0>(*tmp*)
-list_vt_append0_a02 =
-gs_fred2r0_a02<list_vt(a0)> where
+list_vt_append0_n2 =
+gs_fred2r0_n2<list_vt(a0)> where
 {
 #impltmp
 g_fred20<list_vt(a0)> = list_vt_append0<a0> }
 //
 #impltmp
 <a0>(*tmp*)
-list_vt_append0_a03 =
-gs_fred2r0_a03<list_vt(a0)> where
+list_vt_append0_n3 =
+gs_fred2r0_n3<list_vt(a0)> where
 {
 #impltmp
 g_fred20<list_vt(a0)> = list_vt_append0<a0> }
 //
 #impltmp
 <a0>(*tmp*)
-list_vt_append0_a04 =
-gs_fred2r0_a04<list_vt(a0)> where
+list_vt_append0_n4 =
+gs_fred2r0_n4<list_vt(a0)> where
 {
 #impltmp
 g_fred20<list_vt(a0)> = list_vt_append0<a0> }
 //
 #impltmp
 <a0>(*tmp*)
-list_vt_append0_a05 =
-gs_fred2r0_a05<list_vt(a0)> where
+list_vt_append0_n5 =
+gs_fred2r0_n5<list_vt(a0)> where
 {
 #impltmp
 g_fred20<list_vt(a0)> = list_vt_append0<a0> }
 //
 #impltmp
 <a0>(*tmp*)
-list_vt_append0_a06 =
-gs_fred2r0_a06<list_vt(a0)> where
+list_vt_append0_n6 =
+gs_fred2r0_n6<list_vt(a0)> where
 {
 #impltmp
 g_fred20<list_vt(a0)> = list_vt_append0<a0> }
 //
 #impltmp
 <a0>(*tmp*)
-list_vt_append0_a07 =
-gs_fred2r0_a07<list_vt(a0)> where
+list_vt_append0_n7 =
+gs_fred2r0_n7<list_vt(a0)> where
 {
 #impltmp
 g_fred20<list_vt(a0)> = list_vt_append0<a0> }
 //
 #impltmp
 <a0>(*tmp*)
-list_vt_append0_a08 =
-gs_fred2r0_a08<list_vt(a0)> where
+list_vt_append0_n8 =
+gs_fred2r0_n8<list_vt(a0)> where
 {
 #impltmp
 g_fred20<list_vt(a0)> = list_vt_append0<a0> }
 //
 #impltmp
 <a0>(*tmp*)
-list_vt_append0_a09 =
-gs_fred2r0_a09<list_vt(a0)> where
+list_vt_append0_n9 =
+gs_fred2r0_n9<list_vt(a0)> where
 {
 #impltmp
 g_fred20<list_vt(a0)> = list_vt_append0<a0> }
 //
 #impltmp
 <a0>(*tmp*)
-list_vt_append0_a10 =
-gs_fred2r0_a10<list_vt(a0)> where
+list_vt_append0_n10 =
+gs_fred2r0_n10<list_vt(a0)> where
 {
 #impltmp
 g_fred20<list_vt(a0)> = list_vt_append0<a0> }
@@ -2414,72 +2414,72 @@ Tue Jul  5 20:23:29 EDT 2022
 //
 #impltmp
 <a0>(*tmp*)
-list_vt_append1_a02 =
-gs_fred2r1_a02<list_vt(a0)> where
+list_vt_append1_n2 =
+gs_fred2r1_n2<list_vt(a0)> where
 {
 #impltmp
 g_fred21<list_vt(a0)> = list_vt_append1<a0> }
 //
 #impltmp
 <a0>(*tmp*)
-list_vt_append1_a03 =
-gs_fred2r1_a03<list_vt(a0)> where
+list_vt_append1_n3 =
+gs_fred2r1_n3<list_vt(a0)> where
 {
 #impltmp
 g_fred21<list_vt(a0)> = list_vt_append1<a0> }
 //
 #impltmp
 <a0>(*tmp*)
-list_vt_append1_a04 =
-gs_fred2r1_a04<list_vt(a0)> where
+list_vt_append1_n4 =
+gs_fred2r1_n4<list_vt(a0)> where
 {
 #impltmp
 g_fred21<list_vt(a0)> = list_vt_append1<a0> }
 //
 #impltmp
 <a0>(*tmp*)
-list_vt_append1_a05 =
-gs_fred2r1_a05<list_vt(a0)> where
+list_vt_append1_n5 =
+gs_fred2r1_n5<list_vt(a0)> where
 {
 #impltmp
 g_fred21<list_vt(a0)> = list_vt_append1<a0> }
 //
 #impltmp
 <a0>(*tmp*)
-list_vt_append1_a06 =
-gs_fred2r1_a06<list_vt(a0)> where
+list_vt_append1_n6 =
+gs_fred2r1_n6<list_vt(a0)> where
 {
 #impltmp
 g_fred21<list_vt(a0)> = list_vt_append1<a0> }
 //
 #impltmp
 <a0>(*tmp*)
-list_vt_append1_a07 =
-gs_fred2r1_a07<list_vt(a0)> where
+list_vt_append1_n7 =
+gs_fred2r1_n7<list_vt(a0)> where
 {
 #impltmp
 g_fred21<list_vt(a0)> = list_vt_append1<a0> }
 //
 #impltmp
 <a0>(*tmp*)
-list_vt_append1_a08 =
-gs_fred2r1_a08<list_vt(a0)> where
+list_vt_append1_n8 =
+gs_fred2r1_n8<list_vt(a0)> where
 {
 #impltmp
 g_fred21<list_vt(a0)> = list_vt_append1<a0> }
 //
 #impltmp
 <a0>(*tmp*)
-list_vt_append1_a09 =
-gs_fred2r1_a09<list_vt(a0)> where
+list_vt_append1_n9 =
+gs_fred2r1_n9<list_vt(a0)> where
 {
 #impltmp
 g_fred21<list_vt(a0)> = list_vt_append1<a0> }
 //
 #impltmp
 <a0>(*tmp*)
-list_vt_append1_a10 =
-gs_fred2r1_a10<list_vt(a0)> where
+list_vt_append1_n10 =
+gs_fred2r1_n10<list_vt(a0)> where
 {
 #impltmp
 g_fred21<list_vt(a0)> = list_vt_append1<a0> }

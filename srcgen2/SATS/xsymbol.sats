@@ -228,9 +228,14 @@ L1AZY_VTBX_symbl: symbl //=symbl("lazy_vt_vx")
 (* ****** ****** *)
 //
 val
-CBV0_VT_VT_symbl: symbl //=symbl("cbv0_vt_vt")
+(*
+[V0] is not [VT]! *)
+CBV0_V0_VT_symbl: symbl //=symbl("cbv0_v0_vt")
 val
-CBV1_VT_VT_symbl: symbl //=symbl("cbv1_vt_vt")
+(*
+[V0] is not [VT]! *)
+CBV1_V0_VT_symbl: symbl //=symbl("cbv1_v0_vt")
+//
 val
 CBRF_VT_VT_symbl: symbl //=symbl("cbrf_vt_vt")
 //

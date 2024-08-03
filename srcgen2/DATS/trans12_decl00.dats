@@ -509,7 +509,7 @@ end (*let*) // end-of-[trans12_t1iag(...)]
 (* ****** ****** *)
 
 local
-
+//
 fun
 f0_a1typ
 ( env0:
@@ -545,11 +545,11 @@ map$fopr_e1nv
 (  x0 , e1  ) = f0_a1typ(e1, x0)
 //
 } (*where*) // end of [f0_a1typlst(...)]
-
+//
 (* ****** ****** *)
 in//local
 (* ****** ****** *)
-
+//
 #implfun
 trans12_d1arg
 ( env0,darg ) = let
@@ -566,6 +566,7 @@ prerrln
 in
 case+
 darg.node() of
+//
 |
 D1ARGdyn1(dpid) =>
 let
@@ -587,6 +588,7 @@ in//let
 (
   d2arg(loc0, D2ARGdyn1(s2e1)) )
 end (*let*) // end of [D1ARGdyn1]
+//
 |
 D1ARGsta0(s1qs) =>
 let
@@ -596,6 +598,7 @@ trans12_s1qualst(env0, s1qs)
 in//let
 d2arg(loc0, D2ARGsta0(s2vs, s2ps))
 end (*let*) // end of [D1ARGsta0]
+//
 |
 D1ARGdyn2(a1ts,aopt) =>
 let
@@ -631,7 +634,7 @@ in//let
 end (*let*) // end of [D1ARGdyn2(...)]
 //
 end (*let*) // end of [trans12_d1arg(...)]
-
+//
 end (*local*)//end-of-[local(trans12_d1arg)]
 
 (* ****** ****** *)
@@ -742,6 +745,10 @@ val dpar =
 (
   d2parsed_of_trans12(dpar))
 //
+(*
+HX-2024-08-02:
+This is depth-first style!
+*)
 val dpar =
 (
   d2parsed_of_trans2a(dpar))
@@ -3752,7 +3759,7 @@ f1_f2cl
   else F2CLclo(1(*lin*)))
 //
 (* ****** ****** *)
-
+//
 fun
 f1_sres
 ( i0: sint
@@ -3764,9 +3771,9 @@ S2RESnone() => s2exp_none0()
 |
 S2RESsome(seff, s2e1) => s2e1
 )
-
+//
 (* ****** ****** *)
-
+//
 fun
 f1_d2a1
 ( i0: sint
@@ -3784,7 +3791,8 @@ D2ARGsta0
 (s2vs, s2ps) =>
 s2exp_uni0(s2vs, s2ps, fres)
 |
-D2ARGdyn1(s2e1) =>
+D2ARGdyn1
+(   s2e1   ) =>
 s2exp_fun1_full
 ( f2cl
 , npf1, s2es, fres) where
@@ -3793,17 +3801,19 @@ val npf1 = (-1)
 val f2cl = f1_f2cl(i0)
 val s2es = list_sing(s2e1) }
 |
-D2ARGdyn2(npf1, s2es) =>
+D2ARGdyn2
+(npf1, s2es) =>
 let
 val f2cl = f1_f2cl(i0)
 in//let
+//
   s2exp_fun1_full
   (f2cl, npf1, s2es, fres) end
 //
 end (*let*) // end of [f1_d2a1(...)]
-
+//
 (* ****** ****** *)
-
+//
 fun
 f1_d2as
 ( i0: sint
@@ -3813,7 +3823,10 @@ f1_d2as
 (
 case+ d2as of
 |
-list_nil() => f1_sres(i0, sres)
+list_nil() =>
+(
+  f1_sres(i0, sres))
+//
 |
 list_cons
 (d2a1, d2as) =>
@@ -3832,11 +3845,14 @@ d2a1.node() of
 D2ARGsta0
 (s2vs, s2ps) =>
 let
-val
-fres =
-f1_d2as(i0+0, d2as, sres)
+//
+val fres =
+(
+  f1_d2as(i0+0, d2as, sres))
+//
 in//let
-  s2exp_uni0(s2vs, s2ps, fres)
+(
+  s2exp_uni0(s2vs, s2ps, fres) )
 end (*let*) // end of [D2ARGsta0(...)]
 |
 D2ARGdyn1(s2e1) =>
@@ -3864,13 +3880,15 @@ end (*let*) // end of [D2ARGdyn2(npf1,s2es)]
 //
 ) (*case+*) // end of [list_cons]
 ) (*case+*) // end of [f1_d2as(i0,d2as,sres)]
-
+//
+(* ****** ****** *)
 in//local
+(* ****** ****** *)
 
 #implfun
 trans12_d1cstdcl
 ( env0
-, tok0
+, tknd
 , dcst, tqas) = let
 //
 val loc0 =
@@ -3910,13 +3928,13 @@ let
 val
 sfun = f1_d2as(0, d2as, sres)
 in//let
-d2cst_make_idtp(tok0,dpid,tqas,sfun)
+d2cst_make_idtp(tknd,dpid,tqas,sfun)
 end (*let*) // end-of-[ val(d2c1) ]
 //
 (*
 val () =
 prerrln
-("trans12_d1cstdcl: tok0 = ", tok0)
+("trans12_d1cstdcl: tknd = ", tknd)
 val () =
 prerrln
 ("trans12_d1cstdcl: d2as = ", d2as)
@@ -3930,8 +3948,9 @@ prerrln
 //
 in//let
 let
-  val () =
-  tr12env_add1_d2cst( env0 , d2c1 )
+val () =
+(
+  tr12env_add1_d2cst( env0 , d2c1 ) )
 in//let
   d2cstdcl(loc0, d2c1, d2as, sres, dres)
 end//let
@@ -4258,7 +4277,7 @@ end (*let*) // end of [ list_cons( ... ) ]
 //
 #implfun
 trans12_d1cstdclist
-  (env0, tok0
+  (env0, tknd
   ,d1cs, tqas) =
 (
 list_map_e1nv
@@ -4275,7 +4294,9 @@ y0 = d2cstdcl
 #impltmp
 map$fopr_e1nv
 <x0 >< y0><e1>
-  (x0, e1) = trans12_d1cstdcl(e1,tok0,x0,tqas)
+  ( x0, e1 ) =
+(
+  trans12_d1cstdcl(e1, tknd, x0, tqas) )
 //
 } (*where*) // end of [trans12_d1cstdclist(...)]
 //

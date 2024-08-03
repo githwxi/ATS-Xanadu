@@ -73,11 +73,15 @@ fun
 get1_at$exn
 (xs: !xs, i0: ni): x0
 //
+(*
+HX-2024-08-02:
+This makes no sense!
 fun
 <xs:vt>
 <x0:vt>
 set0_at$exn
 (xs: ~xs, x0, ni): void
+*)
 fun
 <xs:vt>
 <x0:vt>
