@@ -48,6 +48,30 @@ fun
 <x0:t0>
 gseq_cons
 (x0: x0, xs: xs): (xs)
+fun
+<xs:t0>
+<x0:t0>
+gseq_sing(x0:x0): (xs)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_nilq((*0*)): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_consq(xs:xs): bool
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_singq(xs:xs): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_pairq(xs:xs): bool
 //
 (* ****** ****** *)
 (* ****** ****** *)
