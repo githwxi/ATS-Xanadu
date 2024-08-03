@@ -1874,8 +1874,9 @@ val dcls =
 trans23_d2clslst_tpck1
 (env0, dcls, darg, tres)
 in//let
+(
   d3exp_make_tpnd
-  (loc0,tres,D3Etry0(tknd,d3e1,dcls))
+  (loc0,tres,D3Etry0(tknd,d3e1,dcls)))
 end (*let*)
 end (*let*) // end of [f0_try0(env0,...)]
 //
@@ -1900,7 +1901,8 @@ let
 val telt = d3e1.styp((*void*))
 val t2p0 = the_s2typ_p2tr1(telt)
 in//let
-  d3exp( loc0, t2p0, D3Eaddr( d3e1 ) )
+(
+  d3exp(loc0, t2p0, D3Eaddr( d3e1 )))
 end (*let*)
 end (*let*) // end of [f0_addr(env0,...)]
 //
@@ -1925,7 +1927,8 @@ let
 val telt = d3e1.styp((*void*))
 val t2p0 = the_s2typ_p2at1(telt)
 in//let
-  d3exp( loc0, t2p0, D3Eview( d3e1 ) )
+(
+  d3exp(loc0, t2p0, D3Eview( d3e1 )))
 end (*let*)
 end (*let*) // end of [f0_view(env0,...)]
 //
@@ -1948,10 +1951,18 @@ d3e1 = trans23_d2exp(env0, d2e1)
 in//let
 //
 let
+//
 val t2p1 = d3e1.styp((*0*))
-(*
 val t2p1 = s2typ_hnfiz0(t2p1)
+(*
+val (  ) =
+prerrln("f0_eval(23): loc0 = ", loc0)
+val (  ) =
+prerrln("f0_eval(23): d3e1 = ", d3e1)
+val (  ) =
+prerrln("f0_eval(23): t2p1 = ", t2p1)
 *)
+//
 in//let
 //
 if
@@ -1966,8 +1977,9 @@ let
 val-
 list_cons(telt, _) = t2ps
 in//let
-d3exp(loc0, telt, D3Edp2tr(d3e1))
-end
+(
+d3exp(loc0, telt, D3Edp2tr(d3e1)))
+end (*let*) // end-of-[isP2TR(t2p1)]
 )
 else
 (
@@ -1983,8 +1995,9 @@ let
 val-
 list_cons(telt, _) = t2ps
 in//let
-d3exp(loc0, telt, D3Edl0az(d3e1))
-end
+(
+d3exp(loc0, telt, D3Edl0az(d3e1)))
+end (*let*) // end-of-[isL0AZY(t2p1)]
 )
 else
 (
@@ -2000,20 +2013,22 @@ let
 val-
 list_cons(telt, _) = t2ps
 in//let
-d3exp(loc0, telt, D3Edl1az(d3e1))
-end
+(
+d3exp(loc0, telt, D3Edl1az(d3e1)))
+end (*let*) // end-of-[isL1AZY(t2p1)]
 ) (* end-of-then *)
 else
 (
 let
-val t2p0 =
-s2typ_new0_x2tp(loc0) in
+val
+t2p0 = s2typ_new0_x2tp(loc0)
+in//let
 (
-d3exp(loc0, t2p0, D3Eeval(d3e1)))
-endlet
-) // else // end-of-[if(isP2TR1)]
-) // else // end-of-[if(isL1AZY)]
-) // else // end-of-[if(isL0AZY)]
+  d3exp(loc0, t2p0, D3Eeval( d3e1 )))
+end//let
+) (* else *) // end-of-[ if(isL1AZY) ]
+) (* else *) // end-of-[ if(isL0AZY) ]
+) (* else *) // end-of-[ if(isP2TR1) ]
 //
 end//let
 //
@@ -2055,7 +2070,8 @@ val
 t2p0 = the_s2typ_void((*0*))
 //
 in//let
-  d3exp(loc0, t2p0, D3Efold(d3e1))
+(
+  d3exp(loc0, t2p0, D3Efold( d3e1 )))
 end (*let*) // end of [f0_fold(env0,...)]
 //
 (* ****** ****** *)
@@ -2080,7 +2096,8 @@ val
 t2p0 = the_s2typ_void((*0*))
 //
 in//let
-  d3exp(loc0, t2p0, D3Efree(d3e1))
+(
+  d3exp(loc0, t2p0, D3Efree( d3e1 )))
 end (*let*) // end of [f0_free(env0,...)]
 //
 (* ****** ****** *)
@@ -2109,9 +2126,10 @@ d3e1 = trans23_d2exp(env0, d2e1)
 val (  ) = tr23env_poplet0(env0)
 //
 in//let
+(
 d3exp_make_tpnd
 ( loc0
-, d3e1.styp(), D3Ewhere(d3e1, dcls))
+, d3e1.styp(), D3Ewhere(d3e1, dcls)) )
 end (*let*) // end of [f0_where(env0,...)]
 //
 (* ****** ****** *)
@@ -2159,8 +2177,9 @@ d3er =
 trans23_d2exp_tpck(env0,d2er,t2pl)
 //
 in//let
-d3exp_make_tpnd
-( loc0, t2p0, D3Eassgn(d3el, d3er) )
+(
+  d3exp_make_tpnd
+  (loc0, t2p0, D3Eassgn(d3el, d3er)))
 end (*let*) // end of [f0_assgn(env0,d2e0)]
 //
 (* ****** ****** *)
@@ -2249,8 +2268,7 @@ val t2p2 = s2typ_hnfiz0(t2p2)
 //
 (*
 val () =
-prerrln
-("f0_annot(23): t2p2 = ", t2p2)
+prerrln("f0_annot(23): t2p2 = ", t2p2)
 *)
 //
 val d3e1 =
