@@ -1,10 +1,32 @@
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
+#include
+"./../HATS\
+/prelude_dats.hats"
+//
+#staload
+"./../DATS/rand000.dats"
+//
+#include
+"./../HATS\
+/CATS/Xint/prelude_dats.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
 val N = 10
-
 (* ****** ****** *)
 #typedef int0 = sint
 #typedef ints = list(int0)
+(* ****** ****** *)
+(* ****** ****** *)
+(*
+//
+#impltmp
+g_rand<sint>()=(0)//HX:dummy!
+//
+*)
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -91,5 +113,9 @@ and ys = reverse(xs) in
 n0.forall_cfr(lam i => xs[i] = ys[n0-1-i]) end)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_TEST_list000_test000.dats] *)
