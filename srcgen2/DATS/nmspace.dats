@@ -185,7 +185,7 @@ $UN.delinear
 list_vt_cons(xs,$UN.enlinear(xss))
 )
 val ( ) =
-$UN.a0ref_dtset
+a0ref_dtset
 <nmitmlst2_vt>(the_nmitmlst2, xss)
 //
 } (*where*) // end of [the_nmspace_push()]
@@ -219,7 +219,8 @@ list_vt_cons
 ( @(xs0, xss), $UN.enlinear(xys) )
 )
 val ( ) =
-$UN.a0ref_dtset(the_savednmlst, xys)
+(
+  a0ref_dtset(the_savednmlst, xys))
 //
 } (*where*)//end-of-[the_nmspace_filsave]
 
@@ -242,7 +243,7 @@ list_vt_cons
 , xys ) = $UN.enlinear(xys)
 val xys = $UN.delinear(xys)
 val ( ) =
-$UN.a0ref_dtset(the_savednmlst, xys)
+a0ref_dtset(the_savednmlst, xys)
 } (*where*) // [end-of-val]
 //
 val
