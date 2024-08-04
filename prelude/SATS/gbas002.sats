@@ -47,6 +47,26 @@ not go higher to handle z3!!!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+#abstype
+z2tup_type
+(xs:t0,ys:t0) <= (xs,ys)
+#sexpdef z2tup = z2tup_type
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<ys:t0>
+z2tup_make
+( xs, ys ): z2tup(xs, ys)
+fun
+<xs:t0>
+<ys:t0>
+z2tup_unmk
+(z2tup(xs, ys)): @(xs, ys)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <x1:t0
@@ -281,8 +301,32 @@ irz2mapstrq$fopr
 //
 (*
 HX-2024-08-04:
+We should probably
+not go higher to handle x3!!!
 Sun 04 Aug 2024 08:10:45 AM EDT
 *)
+//
+#abstype
+x2tup_type
+(xs:t0,ys:t0) <= (xs,ys)
+#sexpdef x2tup = x2tup_type
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<ys:t0>
+x2tup_make
+( xs, ys ): x2tup(xs, ys)
+fun
+<xs:t0>
+<ys:t0>
+x2tup_unmk
+(x2tup(xs, ys)): @(xs, ys)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <x1:t0

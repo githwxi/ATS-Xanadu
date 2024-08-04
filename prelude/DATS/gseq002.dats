@@ -206,6 +206,107 @@ irforall$test<y0>(j0, y0) = x2irforall$test<x0,y0>(i0, x0, j0, y0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-08-04:
+Sun 04 Aug 2024 10:21:55 AM EDT
+//
+These defines show the need for
+[symload] that can not be easily
+substituted with templates.
+//
+Note that [GSEQ] is meant to
+be resolved during type-checking; if
+[GSEQ_make] is used, then some types
+cannot be obtained until the phase of
+template resolution.
+//
+*)
+#define
+GZ2SEQ(xs, ys) =
+GSEQ_make_z2tup
+(z2tup_make(GSEQ(xs), GSEQ(ys)))
+#define
+GX2SEQ(xs, ys) =
+GSEQ_make_x2tup
+(x2tup_make(GSEQ(xs), GSEQ(ys)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ xs:t0
+, ys:t0 }
+{ x0:t0
+, y0:t0 }
+GSEQ_forall
+<z2tup(xs,ys)><(x0,y0)>
+  (  xsys  ) =
+let
+val
+@(xs, ys) =
+z2tup_unmk
+(GSEQ_unmk(xsys))
+val xs = GSEQ_unmk(xs)
+and ys = GSEQ_unmk(ys) in gseq_z2forall<xs,ys><x0,y0>(xs, ys)
+end(*let*)//end-of-[GSEQ_forall(z2tup(xs, ys)]
+//
+#impltmp
+{ xs:t0
+, ys:t0 }
+{ x0:t0
+, y0:t0 }
+GSEQ_rforall
+<z2tup(xs,ys)><(x0,y0)>
+  (  xsys  ) =
+let
+val
+@(xs, ys) =
+z2tup_unmk
+(GSEQ_unmk(xsys))
+val xs = GSEQ_unmk(xs)
+and ys = GSEQ_unmk(ys) in gseq_z2rforall<xs,ys><x0,y0>(xs, ys)
+end(*let*)//end-of-[GSEQ_rforall(z2tup(xs, ys)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ xs:t0
+, ys:t0 }
+{ x0:t0
+, y0:t0 }
+GSEQ_forall
+<x2tup(xs,ys)><(x0,y0)>
+  (  xsys  ) =
+let
+val
+@(xs, ys) =
+x2tup_unmk
+(GSEQ_unmk(xsys))
+val xs = GSEQ_unmk(xs)
+and ys = GSEQ_unmk(ys) in gseq_x2forall<xs,ys><x0,y0>(xs, ys)
+end(*let*)//end-of-[GSEQ_forall(x2tup(xs, ys)]
+//
+#impltmp
+{ xs:t0
+, ys:t0 }
+{ x0:t0
+, y0:t0 }
+GSEQ_rforall
+<x2tup(xs,ys)><(x0,y0)>
+  (  xsys  ) =
+let
+val
+@(xs, ys) =
+x2tup_unmk
+(GSEQ_unmk(xsys))
+val xs = GSEQ_unmk(xs)
+and ys = GSEQ_unmk(ys) in gseq_x2rforall<xs,ys><x0,y0>(xs, ys)
+end(*let*)//end-of-[GSEQ_rforall(x2tup(xs, ys)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

@@ -41,8 +41,9 @@ Authoremail: gmhwxiATgmailDOTcom
 "prelude/SATS/unsfx00.sats"
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef si = sint
 #typedef ni = nint
+#typedef si = sint
+#typedef ut = unit
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -57,6 +58,15 @@ gseq_length<ni><ni>(ni) = ni
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(*
+Sun 04 Aug 2024 10:05:15 AM EDT
+*)
+//
+#impltmp
+GSEQ_make<nint><ut> = GSEQ_make_nint0<>
+#impltmp
+GSEQ_make<nint><ni> = GSEQ_make_nint1<>
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
