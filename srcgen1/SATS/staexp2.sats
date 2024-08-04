@@ -1493,7 +1493,7 @@ the_p2tr_tbox : s2cstref
 (* ****** ****** *)
 //
 val
-the_lazy_t0_x0 : s2cstref // (t0) -> x0
+the_lazy_t0_tx : s2cstref // (t0) -> tx
 val
 the_lazy_vt_vx : s2cstref // (vt) -> vx
 //

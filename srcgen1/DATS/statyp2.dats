@@ -471,7 +471,7 @@ t2pf.node() of
 (
   if
   s2c1 =
-  the_lazy_t0_x0.scst()
+  the_lazy_t0_tx.scst()
   then
   let
   val-

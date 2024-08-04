@@ -38,12 +38,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#absvwtp
+#abstype
 GSEQ_type
 (xs: t0, x0: t0) <= xs
 #sexpdef GSEQ = GSEQ_type
 //
-#absvwtp
+#abstype
 GASZ_type
 (xs: t0, x0: vt) <= xs
 #sexpdef GASZ = GASZ_type

@@ -196,8 +196,8 @@ the_p2tr_tbox =
 s2cstref_make_name("p2tr_tbox")
 //
 implement
-the_lazy_t0_x0 =
-s2cstref_make_name("lazy_t0_x0")
+the_lazy_t0_tx =
+s2cstref_make_name("lazy_t0_tx")
 implement
 the_lazy_vt_vx =
 s2cstref_make_name("lazy_vt_vx")
