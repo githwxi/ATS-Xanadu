@@ -1005,11 +1005,12 @@ end (*let*) // end of [d2cst_set_xtyp]
 //
 #implfun
 d2cst_make_dvar
-( d2v0 , tqas ) =
+( tok0
+, d2v0 , tqas ) =
 let
 //
 val loc0 = d2v0.lctn()
-val tknd = T_EOF((*void*))
+val tknd = tok0.node()
 val sym0 = d2v0.name((*0*))
 val t2p0 = d2v0.styp((*0*))
 val sexp = d2v0.sexp((*0*))
@@ -1047,7 +1048,9 @@ end (*let*) // end of [d2cst_make_dvar]
 //
 #implfun
 d2cst_make_idtp
-(tok0,dpid,tqas,sexp) =
+( tok0
+, dpid
+, tqas, sexp) =
 let
 //
 val loc0 = dpid.lctn()

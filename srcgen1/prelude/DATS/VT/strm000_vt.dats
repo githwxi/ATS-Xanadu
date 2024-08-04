@@ -1757,7 +1757,7 @@ z2map$fopr0<x0><y0><z0>(x0, y0) = (x0, y0)
 
 #impltmp
 <x0><y0><z0>
-strm_vt_z2imap0
+strm_vt_iz2map0
   ( xs, ys ) =
 auxmain(0, xs, ys) where
 {
@@ -1794,20 +1794,20 @@ strmcon_vt_cons
 ( y0, ys ) =>
 let
 val z0 =
-z2imap$fopr0<x0><y0><z0>(i0,x0,y0)
+iz2map$fopr0<x0><y0><z0>(i0,x0,y0)
 in//let
 strmcon_vt_cons(z0,auxmain(i0+1,xs,ys))
 endlet // strmcon_vt_cons(y0,ys)
 )(*case+*)//strmcon_vt_cons(x0,xs)
 //
 )(*llazy*)//end-of-[auxmain(i0,xs,ys)]
-}(*where*)//end-of-[strm_vt_z2imap0(xs,ys)]
+}(*where*)//end-of-[strm_vt_iz2map0(xs,ys)]
 
 (* ****** ****** *)
 
 #impltmp
 <x0><y0>
-strm_vt_z2iforall0
+strm_vt_iz2forall0
   ( xs, ys ) =
 (
 auxloop(0, xs, ys)) where
@@ -1842,20 +1842,20 @@ strmcon_vt_cons
 ( y0, ys ) =>
 let
 val test =
-z2iforall$test0<x0><y0>(i0,x0,y0)
+iz2forall$test0<x0><y0>(i0,x0,y0)
 in//let
 if test then auxloop(i0+1,xs,ys) else false
 endlet // strmcon_vt_cons(y0,ys)
 )(*case+*)//strmcon_vt_cons(x0,xs)
 //
 )(*where*)//end-of-[auxloop(i0,xs,ys)]
-}(*where*)//end-of-[strm_vt_z2iforall0(xs,ys)]
+}(*where*)//end-of-[strm_vt_iz2forall0(xs,ys)]
 
 (* ****** ****** *)
 
 #impltmp
 <x0><y0>
-strm_vt_z2iforcmp0
+strm_vt_iz2forcmp0
   (xs, ys) =
 (
 auxloop(0, xs, ys)) where
@@ -1895,7 +1895,7 @@ strmcon_vt_cons(y0, ys) =>
 let
 val
 sgn =
-z2iforcmp$fcmp0<x0><y0>(i0, x0, y0)
+iz2forcmp$fcmp0<x0><y0>(i0, x0, y0)
 in
   if
   (sgn = 0)
@@ -1904,13 +1904,13 @@ in
 end // end of [strmcon_vt_cons]
 )
 )(*case+*)//end-of-[auxloop(i0,xs,ys)]
-}(*where*)//end-of[strm_vt_z2iforcmp0(...)]
+}(*where*)//end-of[strm_vt_iz2forcmp0(...)]
 
 (* ****** ****** *)
 
 #impltmp
 <x0><y0>
-strm_vt_z2iforeach0
+strm_vt_iz2foreach0
   ( xs, ys ) =
 (
 auxloop(0, xs, ys)) where
@@ -1944,12 +1944,12 @@ strmcon_vt_cons
 auxloop(i0+1,xs,ys) where
 {
 val () =
-z2iforeach$work0<x0><y0>(i0,x0,y0)
+iz2foreach$work0<x0><y0>(i0,x0,y0)
 } // strmcon_vt_cons(y0,ys)
 )(*case+*)// strmcon_vt_cons(x0,xs)
 //
 )(*where*)//end-of-[auxloop(i0,xs,ys)]
-}(*where*)//end-of-[strm_vt_z2iforeach0(...)]
+}(*where*)//end-of-[strm_vt_iz2foreach0(...)]
 
 (* ****** ****** *)
 (* ****** ****** *)

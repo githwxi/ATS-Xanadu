@@ -38,7 +38,8 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef ni = nint
+#staload UN =
+"prelude/SATS/unsfx00.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -49,7 +50,7 @@ Authoremail: gmhwxiATgmailDOTcom
 < y0:t0 >
 gseq_z2forall =
 gseq_z2forall0<xs><x0><ys><y0>(*void*)
-////
+//
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -224,12 +225,31 @@ the phase of template resolution.
 //
 #define
 GZ2SEQ(xs, ys) =
-GSEQ_make_z2tup
-(z2tup_make(GSEQ(xs), GSEQ(ys)))
-#define
-GX2SEQ(xs, ys) =
-GSEQ_make_x2tup
-(x2tup_make(GSEQ(xs), GSEQ(ys)))
+GSEQ_z2make(GSEQ(xs), GSEQ(ys))
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+<ys : t0>
+<y0 : t0>
+GSEQ_z2make(gsqx, gsqy) = 
+(
+$UN.castxy
+(
+z2tup_make<xs><ys>
+(GSEQ_unmk(gsqx), GSEQ_unmk(gsqy))))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef
+gz2seq
+( xs: t0, x0: t0
+, ys: t0, y0: t0) =
+(
+  z2tup(GSEQ(xs, x0), GSEQ(ys, y0)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -240,7 +260,7 @@ GSEQ_make_x2tup
 , ys:t0
 , y0:t0 }
 GSEQ_forall
-<z2tup(xs,ys)><(x0,y0)>
+<gz2seq(xs,x0,ys,y0)><(x0,y0)>
   (  xsys  ) =
 let
 val
@@ -257,7 +277,7 @@ end(*let*)//end-of-[GSEQ_forall(z2tup(xs, ys)]
 , ys:t0
 , y0:t0 }
 GSEQ_rforall
-<z2tup(xs,ys)><(x0,y0)>
+<gz2seq(xs,x0,ys,y0)><(x0,y0)>
   (  xsys  ) =
 let
 val
@@ -265,8 +285,36 @@ val
 z2tup_unmk
 (GSEQ_unmk(xsys))
 val xs = GSEQ_unmk(xs)
-and ys = GSEQ_unmk(ys) in gseq_z2rforall<xs><x0><ys><y0>(xs, ys)
+and ys = GSEQ_unmk(ys) in gseq_rz2forall<xs><x0><ys><y0>(xs, ys)
 end(*let*)//end-of-[GSEQ_rforall(z2tup(xs, ys)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#define
+GX2SEQ(xs, ys) =
+GSEQ_x2make(GSEQ(xs), GSEQ(ys))
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+<ys : t0>
+<y0 : t0>
+GSEQ_x2make(gsqx, gsqy) = 
+(
+$UN.castxy
+(
+x2tup_make<xs><ys>
+(GSEQ_unmk(gsqx), GSEQ_unmk(gsqy))))
+//
+(* ****** ****** *)
+//
+#typedef
+gx2seq
+( xs: t0, x0: t0
+, ys: t0, y0: t0) =
+(
+  x2tup(GSEQ(xs, x0), GSEQ(ys, y0)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -277,7 +325,7 @@ end(*let*)//end-of-[GSEQ_rforall(z2tup(xs, ys)]
 , ys:t0
 , y0:t0 }
 GSEQ_forall
-<x2tup(xs,ys)><(x0,y0)>
+<gx2seq(xs,x0,ys,y0)><(x0,y0)>
   (  xsys  ) =
 let
 val
@@ -294,7 +342,7 @@ end(*let*)//end-of-[GSEQ_forall(x2tup(xs, ys)]
 , ys:t0
 , y0:t0 }
 GSEQ_rforall
-<x2tup(xs,ys)><(x0,y0)>
+<gx2seq(xs,x0,ys,y0)><(x0,y0)>
   (  xsys  ) =
 let
 val
@@ -313,7 +361,7 @@ end(*let*)//end-of-[GSEQ_rforall(x2tup(xs, ys)]
 , ys:t0
 , y0:t0 }
 GSEQ_iforall
-<x2tup(xs,ys)><(x0,y0)>
+<gx2seq(xs,x0,ys,y0)><(x0,y0)>
   (  xsys  ) =
 let
 val
@@ -330,7 +378,7 @@ end(*let*)//end-of-[GSEQ_iforall(x2tup(xs, ys)]
 , ys:t0
 , y0:t0 }
 GSEQ_irforall
-<x2tup(xs,ys)><(x0,y0)>
+<gx2seq(xs,x0,ys,y0)><(x0,y0)>
   (  xsys  ) =
 let
 val

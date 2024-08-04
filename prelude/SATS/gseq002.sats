@@ -623,17 +623,20 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-GSEQ_make_z2tup
+GSEQ_z2make
 ( xs: GSEQ(xs, x0)
-, ys: GSEQ(ys, y0)): GSEQ(z2tup(xs, ys), @(x0, y0))
+, ys: GSEQ(ys, y0)): GSEQ(z2tup(xs, ys), (x0, y0))
+//
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
-GSEQ_make_x2tup
+GSEQ_x2make
 ( xs: GSEQ(xs, x0)
-, ys: GSEQ(ys, y0)): GSEQ(x2tup(xs, ys), @(x0, y0))
+, ys: GSEQ(ys, y0)): GSEQ(x2tup(xs, ys), (x0, y0))
 //
 (* ****** ****** *)
 (* ****** ****** *)

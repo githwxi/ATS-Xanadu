@@ -522,7 +522,7 @@ fun
 <x0:vt>
 <y0:vt>
 <z0:vt>
-strm_vt_z2imap0//seq
+strm_vt_iz2map0//seq
 ( xs: strm_vt(x0)
 , ys: strm_vt(y0)): strm_vt(   z0   )
 //
@@ -531,12 +531,12 @@ strm_vt_z2imap0//seq
 fun
 <x0:vt>
 <y0:vt>
-strm_vt_z2iforall0
+strm_vt_iz2forall0
 (xs: strm_vt(x0), ys: strm_vt(y0)): bool
 fun
 <x0:vt>
 <y0:vt>
-strm_vt_z2iforcmp0
+strm_vt_iz2forcmp0
 (xs: strm_vt(x0), ys: strm_vt(y0)): sint
 //
 (* ****** ****** *)
@@ -544,7 +544,7 @@ strm_vt_z2iforcmp0
 fun
 <x0:vt>
 <y0:vt>
-strm_vt_z2iforeach0
+strm_vt_iz2foreach0
 (xs: strm_vt(x0), ys: strm_vt(y0)): void
 //
 (* ****** ****** *)

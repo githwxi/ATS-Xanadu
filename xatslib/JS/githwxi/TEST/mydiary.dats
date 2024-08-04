@@ -57,6 +57,11 @@ val () = print1s("listize(xs) = ", listize(GSEQ(xs)), "\n")
 val () = print1s("rlistize(xs) = ", rlistize(GSEQ(xs)), "\n")
 //
 (* ****** ****** *)
+
+val () =
+sum(GSEQ_z2make(GSEQ(xs), GSEQ(xs)))
+
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)

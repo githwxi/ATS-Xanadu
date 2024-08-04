@@ -1342,14 +1342,14 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_z2iforall
+gseq_iz2forall
   (xs: xs, ys: ys): bool
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_z2iforcmp
+gseq_iz2forcmp
   (xs: xs, ys: ys): sint
 //
 (* ****** ****** *)
@@ -1359,7 +1359,7 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_z2iforeach
+gseq_iz2foreach
   (xs: xs, ys: ys): void
 //
 (* ****** ****** *)
@@ -1371,7 +1371,7 @@ fun
 <y0:t0>
 <zs:vt>
 <z0:vt>
-gseq_z2imap
+gseq_iz2map
   (xs: xs, ys: ys): (  zs  )
 //
 fun
@@ -1380,7 +1380,7 @@ fun
 <ys:t0>
 <y0:t0>
 <z0:t0>
-gseq_z2imap_list
+gseq_iz2map_list
   (xs: xs, ys: ys): list(z0)
 fun
 <xs:t0>
@@ -1388,7 +1388,7 @@ fun
 <ys:t0>
 <y0:t0>
 <z0:t0>
-gseq_z2imap_rlist
+gseq_iz2map_rlist
   (xs: xs, ys: ys): list(z0)
 //
 fun
@@ -1397,7 +1397,7 @@ fun
 <ys:t0>
 <y0:t0>
 <z0:vt>
-gseq_z2imap_llist
+gseq_iz2map_llist
   (xs: xs, ys: ys): list_vt(z0)
 //
 fun
@@ -1406,7 +1406,7 @@ fun
 <ys:t0>
 <y0:t0>
 <z0:vt>
-gseq_z2imap_lstrm
+gseq_iz2map_lstrm
   (xs: xs, ys: ys): strm_vt(z0)
 //
 fun
@@ -1415,7 +1415,7 @@ fun
 <ys:t0>
 <y0:t0>
 <z0:vt>
-gseq_z2imap_rllist
+gseq_iz2map_rllist
   (xs: xs, ys: ys): list_vt(z0)
 //
 (* ****** ****** *)
@@ -1486,6 +1486,21 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
+gseq_x2forall(xs, ys): bool
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+gseq_x2rforall(xs, ys): bool
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
 gseq_x2foreach(xs, ys): void
 //
 fun
@@ -1546,6 +1561,15 @@ fun
 <y0:t0>
 <z0:vt>
 gseq_x2imapopt_lstrm(xs, ys): strm_vt(z0)
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+gseq_x2iforall(xs, ys): bool
 //
 (* ****** ****** *)
 //
@@ -2190,7 +2214,7 @@ gseq_z2map_f2np_lstrm
 , ys:ys, fopr:(x0,y0)-<fnp>z0): strm_vt(z0)
 (* ****** ****** *)
 //
-// HX: gseq_z2iforall
+// HX: gseq_iz2forall
 //
 (* ****** ****** *)
 //
@@ -2199,7 +2223,7 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_z2iforall_c3fr
+gseq_iz2forall_c3fr
 ( xs:xs
 , ys:ys
 , work: (nint, x0, y0) -<cfr> bool): bool
@@ -2208,14 +2232,14 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_z2iforall_f3np
+gseq_iz2forall_f3np
 ( xs:xs
 , ys:ys
 , work: (nint, x0, y0) -<fnp> bool): bool
 //
 (* ****** ****** *)
 //
-// HX: gseq_z2iforcmp
+// HX: gseq_iz2forcmp
 //
 (* ****** ****** *)
 fun
@@ -2223,7 +2247,7 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_z2iforcmp_c3fr
+gseq_iz2forcmp_c3fr
 ( xs:xs
 , ys:ys
 , work: (nint, x0, y0) -<cfr> sint): sint
@@ -2232,13 +2256,13 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_z2iforcmp_f3np
+gseq_iz2forcmp_f3np
 ( xs:xs
 , ys:ys
 , work: (nint, x0, y0) -<fnp> sint): sint
 (* ****** ****** *)
 //
-// HX: gseq_z2iforeach
+// HX: gseq_iz2foreach
 //
 (* ****** ****** *)
 fun
@@ -2246,7 +2270,7 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_z2iforeach_c3fr
+gseq_iz2foreach_c3fr
 ( xs:xs
 , ys:ys
 , work: (nint, x0, y0) -<cfr> void): void
@@ -2255,13 +2279,13 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_z2iforeach_f3np
+gseq_iz2foreach_f3np
 ( xs:xs
 , ys:ys
 , work: (nint, x0, y0) -<fnp> void): void
 (* ****** ****** *)
 //
-// HX: gseq_z2imap(seq)
+// HX: gseq_iz2map(seq)
 //
 (* ****** ****** *)
 fun
@@ -2271,7 +2295,7 @@ fun
 <y0:t0>
 <zs:vt>
 <z0:vt>
-gseq_z2imap_c3fr
+gseq_iz2map_c3fr
 ( xs:xs
 , ys:ys
 , fopr: (nint, x0, y0) -<cfr> z0): ( zs )
@@ -2282,7 +2306,7 @@ fun
 <y0:t0>
 <zs:vt>
 <z0:vt>
-gseq_z2imap_f3np
+gseq_iz2map_f3np
 ( xs:xs
 , ys:ys
 , fopr: (nint, x0, y0) -<fnp> z0): ( zs )

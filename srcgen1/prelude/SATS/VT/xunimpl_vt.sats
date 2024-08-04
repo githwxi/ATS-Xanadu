@@ -1189,15 +1189,6 @@ rz2forall$test1(!x0, !y0): bool
 fun
 <x0:vt>
 <y0:vt>
-iz2forall$test0(ni, ~x0, ~y0): bool
-fun
-<x0:vt>
-<y0:vt>
-iz2forall$test1(ni, !x0, !y0): bool
-//
-fun
-<x0:vt>
-<y0:vt>
 irz2forall$test0(ni, ~x0, ~y0): bool
 fun
 <x0:vt>
@@ -1260,18 +1251,6 @@ fun
 <x0:vt>
 <y0:vt>
 <z0:vt>
-iz2map$fopr0(ni, ~x0, ~y0): ( z0 )
-fun
-<x0:vt>
-<y0:vt>
-<z0:vt>
-iz2map$fopr1(ni, !x0, !y0): ( z0 )
-//
-//
-fun
-<x0:vt>
-<y0:vt>
-<z0:vt>
 irz2map$fopr0(ni, ~x0, ~y0): ( z0 )
 fun
 <x0:vt>
@@ -1309,19 +1288,6 @@ fun
 <ys:vt>
 <y0:vt>
 gseq_rz2forall1(xs: !xs, ys: !ys): bool
-//
-fun
-<xs:vt>
-<x0:vt>
-<ys:vt>
-<y0:vt>
-gseq_iz2forall0(xs: ~xs, ys: ~ys): bool
-fun
-<xs:vt>
-<x0:vt>
-<ys:vt>
-<y0:vt>
-gseq_iz2forall1(xs: !xs, ys: !ys): bool
 //
 fun
 <xs:vt>
@@ -1446,24 +1412,12 @@ strm_vt_z2foritm0
 fun
 <x0:vt>
 <y0:vt>
-strm_vt_iz2forall0
-(xs: ~strm_vt(x0), ys: ~strm_vt(y0)): bool
-//
-fun
-<x0:vt>
-<y0:vt>
 strm_vt_iz2foritm0
 (xs: ~strm_vt(x0), ys: ~strm_vt(y0)): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<x0:vt>
-<y0:vt>
-<z0:vt>
-strm_vt_iz2map0
-(xs: strm_vt(x0), ys: strm_vt(y0)): strm_vt(z0)
 fun
 <x0:vt>
 <y0:vt>

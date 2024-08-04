@@ -184,6 +184,18 @@ t0up_print$sep(): void // print( "," ) // flat-tuple
 fun<>
 t1up_print$sep(): void // print( "," ) // boxd-tuple
 (* ****** ****** *)
+//
+fun
+<a0:t0>
+<a1:t0>
+z2tup_make
+(x1: a0, x2: a1): z2tup(a0, a1)
+fun
+<a0:t0>
+<a1:t0>
+z2tup_unmk
+(tup: z2tup(a0, a1)): @(a0, a1)
+//
 fun
 <a0:t0>
 <a1:t0>
@@ -194,9 +206,23 @@ fun
 <a1:t0>
 z2tup_decode
 (tup: z2tup(a0, a1)): @(a0, a1)
+//
 #symload z2tup with z2tup_encode of 1000
 #symload put2z with z2tup_decode of 1000
+//
 (* ****** ****** *)
+//
+fun
+<a0:t0>
+<a1:t0>
+x2tup_make
+(x1: a0, x2: a1): x2tup(a0, a1)
+fun
+<a0:t0>
+<a1:t0>
+x2tup_unmk
+(tup: x2tup(a0, a1)): @(a0, a1)
+//
 fun
 <a0:t0>
 <a1:t0>
@@ -207,8 +233,14 @@ fun
 <a1:t0>
 x2tup_decode
 (tup: x2tup(a0, a1)): @(a0, a1)
+//
 #symload x2tup with x2tup_encode of 1000
 #symload put2x with x2tup_decode of 1000
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen1_prelude_SATS_tupl000.sats] *)
