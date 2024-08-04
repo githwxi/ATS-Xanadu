@@ -62,6 +62,36 @@ GASZ_unmk
 #impltmp
 <xs : t0>
 <x0 : t0>
+GSEQ_sum
+  (gseq) =
+(
+gseq_sum<xs><x0>(GSEQ_unmk(gseq)))
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+GSEQ_prod
+  (gseq) =
+(
+gseq_prod<xs><x0>(GSEQ_unmk(gseq)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+GSEQ_length
+  (gseq) =
+(
+gseq_length<xs><x0>(GSEQ_unmk(gseq)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
 GSEQ_listize
   (gseq) =
 (
@@ -85,6 +115,14 @@ GSEQ_forall
   (gseq) =
 (
 gseq_forall<xs><x0>(GSEQ_unmk(gseq)))
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+GSEQ_exists
+  (gseq) =
+(
+gseq_exists<xs><x0>(GSEQ_unmk(gseq)))
 //
 #impltmp
 <xs : t0>
@@ -125,17 +163,6 @@ gseq_forall_c1fr<xs><x0>(GSEQ_unmk(gseq), test))
 #impltmp
 <xs : t0>
 <x0 : t0>
-GSEQ_rforall_c1fr
-  (gseq, test) =
-(
-gseq_rforall_c1fr<xs><x0>(GSEQ_unmk(gseq), test))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-<xs : t0>
-<x0 : t0>
 GSEQ_exists_c1fr
   (gseq, test) =
 (
@@ -146,10 +173,38 @@ gseq_exists_c1fr<xs><x0>(GSEQ_unmk(gseq), test))
 #impltmp
 <xs : t0>
 <x0 : t0>
+GSEQ_rforall_c1fr
+  (gseq, test) =
+(
+gseq_rforall_c1fr<xs><x0>(GSEQ_unmk(gseq), test))
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
 GSEQ_rexists_c1fr
   (gseq, test) =
 (
 gseq_rexists_c1fr<xs><x0>(GSEQ_unmk(gseq), test))
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+GSEQ_iforall_c2fr
+  (gseq, test) =
+(
+gseq_iforall_c2fr<xs><x0>(GSEQ_unmk(gseq), test))
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+GSEQ_irforall_c2fr
+  (gseq, test) =
+(
+gseq_irforall_c2fr<xs><x0>(GSEQ_unmk(gseq), test))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -172,6 +227,24 @@ GSEQ_rfolditm
 (
 gseq_rfolditm<xs><x0><r0>(GSEQ_unmk(gseq), r0))
 //
+#impltmp
+<xs : t0>
+<x0 : t0>
+<r0 : vt>
+GSEQ_ifolditm
+ (gseq, r0) =
+(
+gseq_ifolditm<xs><x0><r0>(GSEQ_unmk(gseq), r0))
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+<r0 : vt>
+GSEQ_irfolditm
+ (gseq, r0) =
+(
+gseq_irfolditm<xs><x0><r0>(GSEQ_unmk(gseq), r0))
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -192,7 +265,35 @@ GSEQ_rfolditm_c2fr
 (
 gseq_rfolditm_c2fr<xs><x0><r0>(GSEQ_unmk(gseq), r0, fopr))
 //
+#impltmp
+<xs : t0>
+<x0 : t0>
+<r0 : vt>
+GSEQ_ifolditm_c3fr
+ (gseq, r0, fopr) =
+(
+gseq_ifolditm_c3fr<xs><x0><r0>(GSEQ_unmk(gseq), r0, fopr))
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+<r0 : vt>
+GSEQ_irfolditm_c3fr
+ (gseq, r0, fopr) =
+(
+gseq_irfolditm_c3fr<xs><x0><r0>(GSEQ_unmk(gseq), r0, fopr))
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<xs : t0>
+<x0 : vt>
+GASZ_length
+  (gasz) =
+(
+gasz_length<xs><x0>(GASZ_unmk(gasz)))
+//
 (* ****** ****** *)
 //
 #impltmp

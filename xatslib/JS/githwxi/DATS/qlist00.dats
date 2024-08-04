@@ -53,6 +53,17 @@ fun
 qlist_rforall(xs: qlist(a)): bool
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fcast // fun
+GSEQ_make_qlist
+{a:t0}
+(A:qlist(a)): GSEQ(qlist(a), a)
+#symload GSEQ with GSEQ_make_qlist of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #extern
 fun
@@ -231,9 +242,28 @@ gseq_nilq<qlist(a)><a> = qlist_nilq<a>
 #impltmp
 { a: t0 }
 gseq_forall<qlist(a)><a> = qlist_forall<a>
+//
 #impltmp
 { a: t0 }
 gseq_rforall<qlist(a)><a> = qlist_rforall<a>
+//
+(* ****** ****** *)
+//
+#impltmp
+{ a: t0 }
+gseq_forall0
+<qlist(a)><a>(xs) = qlist_forall<a>(xs)
+where
+{
+#impltmp forall$test<a> = forall$test0<a> }
+//
+#impltmp
+{ a: t0 }
+gseq_rforall0
+<qlist(a)><a>(xs) = qlist_rforall<a>(xs)
+where
+{
+#impltmp rforall$test<a> = rforall$test0<a> }
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -241,9 +271,6 @@ gseq_rforall<qlist(a)><a> = qlist_rforall<a>
 #impltmp
 { a: t0 }
 $UN.gseq_uncons_raw<qlist(a)><a> = UN_qlist_uncons_raw<a>
-//
-(* ****** ****** *)
-(* ****** ****** *)
 //
 (* ****** ****** *)
 (* ****** ****** *)

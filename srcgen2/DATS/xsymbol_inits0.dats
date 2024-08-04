@@ -155,7 +155,7 @@ HX-2022-10-01: Various symbols
 //
 (* ****** ****** *)
 //
-#implval L0AZY_TBOX_symbl = symbl("lazy_t0_x0")
+#implval L0AZY_TBOX_symbl = symbl("lazy_t0_tx")
 #implval L1AZY_VTBX_symbl = symbl("lazy_vt_vx")
 //
 (* ****** ****** *)
