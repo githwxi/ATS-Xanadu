@@ -40,24 +40,28 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (*
 #impltmp
-< x0:vt
-, y0:vt >
+< x0:vt >
+< y0:vt >
 strm_vt_z2forall0 =
-gseq_z2forall0<strm_vt(x0),strm_vt(y0)><x0,y0>
+gseq_z2forall0
+<strm_vt(x0)><x0><strm_vt(y0)><y0>
 *)
 //
+(*
 #impltmp
-< x0:vt
-, y0:vt >
+< x0:vt >
+< y0:vt >
 strm_vt_z2foritm0 =
-gseq_z2foritm0<strm_vt(x0),strm_vt(y0)><x0,y0>
+gseq_z2foritm0
+<strm_vt(x0)><x0><strm_vt(y0)><y0>
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-< x0:vt
-, y0:vt >
+< x0:vt >
+< y0:vt >
 strm_vt_z2forall0
   ( xs, ys ) =
 (
@@ -86,7 +90,7 @@ strmcon_vt_cons(y1, ys) =>
 (
 if
 z2forall$test0
-<x0,y0>(x1, y1)
+<x0><y0>(x1, y1)
 then auxmain(xs, ys)
 else (free(xs);free(ys);false))))
 }(*where*)//end-of-[strm_vt_z2forall0(xs,ys)]
@@ -95,31 +99,14 @@ else (free(xs);free(ys);false))))
 { x0:vt
 , y0:vt }
 gseq_z2forall0
-<strm_vt(x0)
-,strm_vt(y0)><x0,y0> = strm_vt_z2forall0<x0,y0>
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-#impltmp
-< x0:vt
-, y0:vt >
-strm_vt_iz2forall0 =
-gseq_iz2forall0<strm_vt(x0),strm_vt(y0)><x0,y0>
-*)
-//
-#impltmp
-< x0:vt
-, y0:vt >
-strm_vt_iz2foritm0 =
-gseq_iz2foritm0<strm_vt(x0),strm_vt(y0)><x0,y0>
+<strm_vt(x0)><x0>
+<strm_vt(y0)><y0> = strm_vt_z2forall0<x0><y0>
 //
 (* ****** ****** *)
 //
 #impltmp
-< x0:vt
-, y0:vt >
+< x0:vt >
+< y0:vt >
 strm_vt_iz2forall0
   ( xs, ys ) =
 (
@@ -149,7 +136,7 @@ strmcon_vt_cons(y1, ys) =>
 (
 if
 iz2forall$test0
-<x0,y0>(i0, x1, y1)
+<x0><y0>(i0, x1, y1)
 then auxmain(i0+1, xs, ys)
 else (free(xs);free(ys);false))))
 }(*where*)//end-of-[strm_vt_iz2forall0(xs,ys)]
@@ -157,28 +144,43 @@ else (free(xs);free(ys);false))))
 #impltmp
 { x0:vt
 , y0:vt }
-gseq_z2forall0
-<strm_vt(x0)
-,strm_vt(y0)><x0,y0> = strm_vt_z2forall0<x0,y0>
+gseq_iz2forall0
+<strm_vt(x0)><x0>
+<strm_vt(y0)><y0> = strm_vt_iz2forall0<x0><y0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+< y0:vt >
+strm_vt_z2foritm0 =
+gseq_z2foritm0<strm_vt(x0)><x0><strm_vt(y0)><y0>
+//
+#impltmp
+< x0:vt >
+< y0:vt >
+strm_vt_iz2foritm0 =
+gseq_iz2foritm0<strm_vt(x0)><x0><strm_vt(y0)><y0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (*
 #impltmp
-< x0:vt
-, y0:vt >
+< x0:vt >
+< y0:vt >
 < z0:vt >
 strm_vt_z2map0 =
 gseq_z2map0_lstrm
-<strm_vt(x0),strm_vt(y0)><x0,y0><z0>(*void*)
+<strm_vt(x0),strm_vt(y0)><x0><y0><z0>(*void*)
 *)
 //
 (* ****** ****** *)
 //
 #impltmp
-< x0:vt
-, y0:vt >
+< x0:vt >
+< y0:vt >
 < z0:vt >
 strm_vt_z2map0
   (xs, ys) =
@@ -211,7 +213,7 @@ strmcon_vt_nil())
 strmcon_vt_cons(y1, ys) =>
 let
 val z0 =
-z2map$fopr0<x0,y0><z0>(x1, y1) in
+z2map$fopr0<x0><y0><z0>(x1, y1) in
 strmcon_vt_cons(z0, auxmain(xs, ys)) end
 )
 )(*llazy*)
@@ -222,26 +224,26 @@ strmcon_vt_cons(z0, auxmain(xs, ys)) end
 , y0:vt
 , z0:vt }
 gseq_z2map0_lstrm
-<strm_vt(x0)
-,strm_vt(y0)><x0,y0><z0> = strm_vt_z2map0<x0,y0><z0>
+<strm_vt(x0)><x0>
+<strm_vt(y0)><y0><z0> = strm_vt_z2map0<x0><y0><z0>
 //
 (* ****** ****** *)
 //
 (*
 #impltmp
-< x0:vt
-, y0:vt >
+< x0:vt >
+< y0:vt >
 < z0:vt >
 strm_vt_iz2map0 =
 gseq_iz2map0_lstrm
-<strm_vt(x0),strm_vt(y0)><x0,y0><z0>(*void*)
+<strm_vt(x0),strm_vt(y0)><x0><y0><z0>(*void*)
 *)
 //
 (* ****** ****** *)
 //
 #impltmp
-< x0:vt
-, y0:vt >
+< x0:vt >
+< y0:vt >
 < z0:vt >
 strm_vt_iz2map0
   (xs, ys) =
@@ -276,7 +278,7 @@ strmcon_vt_cons(y1, ys) =>
 let
 val z0 =
 iz2map$fopr0
-<x0,y0><z0>(i0, x1, y1) in//let
+<x0><y0><z0>(i0, x1, y1) in//let
 strmcon_vt_cons(z0, auxmain(i0+1,xs,ys))
 end//let//end-of-[strmcon_vt_cons( ... )]
 )
@@ -288,8 +290,8 @@ end//let//end-of-[strmcon_vt_cons( ... )]
 , y0:vt
 , z0:vt }
 gseq_iz2map0_lstrm
-<strm_vt(x0)
-,strm_vt(y0)><x0,y0><z0> = strm_vt_iz2map0<x0,y0><z0>
+<strm_vt(x0)><x0>
+<strm_vt(y0)><y0><z0> = strm_vt_iz2map0<x0><y0><z0>
 //
 (* ****** ****** *)
 (* ****** ****** *)

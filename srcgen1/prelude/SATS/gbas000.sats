@@ -682,136 +682,136 @@ ifoldr$fopr
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 <z0:vt>
 z2map$fopr(x0, y0): (z0)
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <z0:vt>
 z2map$fopr0(~x0, ~y0): (z0)
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <z0:vt>
 z2map$fopr1(!x0, !y0): (z0)
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 <r0:vt>
 z2foldl$fopr(r0, x0, y0): r0
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 <r0:vt>
 z2foldr$fopr(x0, y0, r0): r0
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 z2forall$test(x0, y0): bool
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 z2forall$test0(~x0, ~y0): bool
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 z2forall$test1(!x0, !y0): bool
 //
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 z2forcmp$fcmp(x0, y0): sint
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 z2forcmp$fcmp0(~x0, ~y0): sint
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 z2forcmp$fcmp1(!x0, !y0): sint
 //
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 z2foreach$work(x0, y0): void
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 z2foreach$work0(~x0, ~y0): void
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 z2foreach$work1(!x0, !y0): void
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 <z0:vt>
 z2imap$fopr(nint,x0,y0): (z0)
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <z0:vt>
 z2imap$fopr0(nint,~x0,~y0): (z0)
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <z0:vt>
 z2imap$fopr1(nint,!x0,!y0): (z0)
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 z2iforall$test(nint,x0,y0): bool
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 z2iforall$test0(nint,~x0,~y0): bool
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 z2iforall$test1(nint,!x0,!y0): bool
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 z2iforcmp$fcmp(nint,x0,y0): sint
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 z2iforcmp$fcmp0(nint,~x0,~y0): sint
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 z2iforcmp$fcmp1(nint,!x0,!y0): sint
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 z2iforeach$work(nint,x0,y0): void
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 z2iforeach$work0(nint,~x0,~y0): void
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 z2iforeach$work1(nint,!x0,!y0): void
 //
 (* ****** ****** *)
@@ -823,21 +823,21 @@ z2iforeach$work1(nint,!x0,!y0): void
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 <z0:vt>
 x2map$fopr(x0, y0): z0
 //
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 x2filter$test
   (x0: x0, y0: y0): bool
 //
 (* ****** ****** *)
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 x2foreach$work(x0, y0): void
 (* ****** ****** *)
 //
@@ -846,8 +846,8 @@ x2foreach_row$beg(): void
 fun<>
 x2foreach_row$end(): void
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 x2foreach_row$work(x0, y0): void
 //
 (* ****** ****** *)
@@ -857,29 +857,29 @@ x2foreach_col$beg(): void
 fun<>
 x2foreach_col$end(): void
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 x2foreach_col$work(x0, y0): void
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 <z0:vt>
 x2imap$fopr
   (nint, x0, nint, y0): z0
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 x2ifilter$test
   (nint, x0, nint, y0): bool
 //
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 x2iforeach$work(nint, x0, nint, y0): void
 //
 (* ****** ****** *)
@@ -889,8 +889,8 @@ x2iforeach_row$beg(nint): void
 fun<>
 x2iforeach_row$end(nint): void
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 x2iforeach_row$work(nint, x0, nint, y0): void
 //
 (* ****** ****** *)
@@ -900,8 +900,8 @@ x2iforeach_col$beg(nint): void
 fun<>
 x2iforeach_col$end(nint): void
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 x2iforeach_col$work(nint, x0, nint, y0): void
 //
 (* ****** ****** *)

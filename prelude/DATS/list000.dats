@@ -265,7 +265,7 @@ Sun 04 Aug 2024 10:05:15 AM EDT
 //
 #impltmp
 { a: t0 }
-GSEQ_make<list(a)><a> = GSEQ_make_list<a>
+GSEQ_make<list(a)><a> = GSEQ_make_list<>{a}
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)

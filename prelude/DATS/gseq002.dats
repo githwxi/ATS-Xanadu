@@ -49,7 +49,7 @@ Authoremail: gmhwxiATgmailDOTcom
 < y0:t0 >
 gseq_z2forall =
 gseq_z2forall0<xs><x0><ys><y0>(*void*)
-//
+////
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -236,8 +236,8 @@ GSEQ_make_x2tup
 //
 #impltmp
 { xs:t0
-, ys:t0
 , x0:t0
+, ys:t0
 , y0:t0 }
 GSEQ_forall
 <z2tup(xs,ys)><(x0,y0)>
@@ -253,8 +253,8 @@ end(*let*)//end-of-[GSEQ_forall(z2tup(xs, ys)]
 //
 #impltmp
 { xs:t0
-, ys:t0
 , x0:t0
+, ys:t0
 , y0:t0 }
 GSEQ_rforall
 <z2tup(xs,ys)><(x0,y0)>
@@ -273,8 +273,8 @@ end(*let*)//end-of-[GSEQ_rforall(z2tup(xs, ys)]
 //
 #impltmp
 { xs:t0
-, ys:t0
 , x0:t0
+, ys:t0
 , y0:t0 }
 GSEQ_forall
 <x2tup(xs,ys)><(x0,y0)>
@@ -290,8 +290,8 @@ end(*let*)//end-of-[GSEQ_forall(x2tup(xs, ys)]
 //
 #impltmp
 { xs:t0
-, ys:t0
 , x0:t0
+, ys:t0
 , y0:t0 }
 GSEQ_rforall
 <x2tup(xs,ys)><(x0,y0)>
@@ -304,6 +304,42 @@ x2tup_unmk
 val xs = GSEQ_unmk(xs)
 and ys = GSEQ_unmk(ys) in gseq_x2rforall<xs><x0><ys><y0>(xs, ys)
 end(*let*)//end-of-[GSEQ_rforall(x2tup(xs, ys)]
+//
+(* ****** ****** *)
+//
+#impltmp
+{ xs:t0
+, x0:t0
+, ys:t0
+, y0:t0 }
+GSEQ_iforall
+<x2tup(xs,ys)><(x0,y0)>
+  (  xsys  ) =
+let
+val
+@(xs, ys) =
+x2tup_unmk
+(GSEQ_unmk(xsys))
+val xs = GSEQ_unmk(xs)
+and ys = GSEQ_unmk(ys) in gseq_x2iforall<xs><x0><ys><y0>(xs, ys)
+end(*let*)//end-of-[GSEQ_iforall(x2tup(xs, ys)]
+//
+#impltmp
+{ xs:t0
+, x0:t0
+, ys:t0
+, y0:t0 }
+GSEQ_irforall
+<x2tup(xs,ys)><(x0,y0)>
+  (  xsys  ) =
+let
+val
+@(xs, ys) =
+x2tup_unmk
+(GSEQ_unmk(xsys))
+val xs = GSEQ_unmk(xs)
+and ys = GSEQ_unmk(ys) in gseq_x2irforall<xs><x0><ys><y0>(xs, ys)
+end(*let*)//end-of-[GSEQ_irforall(x2tup(xs, ys)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

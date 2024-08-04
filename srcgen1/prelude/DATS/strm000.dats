@@ -1025,8 +1025,7 @@ else strmcon_vt_nil((*void*)))
 (* ****** ****** *)
 
 #impltmp
-<x0
-,y0><z0>
+<x0><y0><z0>
 strm_x2map_vt_cmp
   (xs, ys) =
 (
@@ -1054,12 +1053,12 @@ strmcon_cons(y0, ys1) =>
 let
 val z0 =
 x2map$fopr
-<x0,y0><z0>(x0, y0)
+<x0><y0><z0>(x0, y0)
 val zs1 =
 let
 #impltmp
 map$fopr<y0><z0>(y0) =
-x2map$fopr<x0,y0><z0>(x0, y0)
+x2map$fopr<x0><y0><z0>(x0, y0)
 in
   strm_map_vt<y0><z0>(ys1)
 end

@@ -81,11 +81,11 @@ gseq_cmp00
 (xs1, xs2) =
 (
 gseq_z2forcmp0
-<xs,xs><x0,x0>(xs1, xs2)
+<xs><x0><xs><x0>(xs1, xs2)
 ) where
 {
 #impltmp
-z2forcmp$fcmp0<x0,x0> = g_cmp00<x0>
+z2forcmp$fcmp0<x0><x0> = g_cmp00<x0>
 }(*where*) // [gseq_cmp00/z2forcmp0]
 
 (* ****** ****** *)
@@ -1002,42 +1002,42 @@ end // end of [gseq_iforeach1/iforall1]
 (* ****** ****** *)
 
 #impltmp
-<xs
-,ys><x0>
+<xs><x0>
+<ys><x0>
 gseq_z2cmp00
   (xs, ys) =
 (
 gseq_z2forcmp0
-<xs,ys><x0,x0>(xs, ys)
+<xs><x0><ys><x0>(xs, ys)
 ) where
 {
 #impltmp
-z2forcmp$fcmp0<x0,x0> = g_cmp00<x0>
+z2forcmp$fcmp0<x0><x0> = g_cmp00<x0>
 } (* end of [gseq_z2cmp00/z2forcmp0] *)
 
 #impltmp
-<xs
-,ys><x0>
+<xs><x0>
+<ys><x0>
 gseq_z2cmp11
   (xs, ys) =
 (
 gseq_z2forcmp1
-<xs,ys><x0,x0>(xs, ys)
+<xs><x0><ys><x0>(xs, ys)
 ) where
 {
 #impltmp
-z2forcmp$fcmp1<x0,x0> = g_cmp11<x0>
+z2forcmp$fcmp1<x0><x0> = g_cmp11<x0>
 } (* end of [gseq_z2cmp11/z2forcmp1] *)
 
 (* ****** ****** *)
 
 #impltmp
-<xs,ys>
-<x0,y0>
+<xs><x0>
+<ys><y0>
 gseq_z2forall0
   (xs, ys) =
 (
-strm_vt_z2forall0<x0,y0>
+strm_vt_z2forall0<x0><y0>
 (
   gseq_strmize0<xs><x0>(xs)
 ,
@@ -1047,12 +1047,12 @@ strm_vt_z2forall0<x0,y0>
 (* ****** ****** *)
 //
 #impltmp
-<xs,ys>
-<x0,y0>
+<xs><x0>
+<ys><y0>
 gseq_z2forcmp0
   (xs, ys) =
 (
-strm_vt_z2forcmp0<x0,y0>
+strm_vt_z2forcmp0<x0><y0>
 (
   gseq_strmize0<xs><x0>(xs)
 ,
@@ -1062,12 +1062,12 @@ strm_vt_z2forcmp0<x0,y0>
 (* ****** ****** *)
 //
 #impltmp
-<xs,ys>
-<x0,y0>
+<xs><x0>
+<ys><y0>
 gseq_z2forcmp1
   (xs, ys) =
 (
-strm_vt_z2forcmp0<x0,y0>
+strm_vt_z2forcmp0<x0><y0>
 (
   gseq_copy_lstrm<xs><x0>(xs)
 ,
@@ -1075,13 +1075,13 @@ strm_vt_z2forcmp0<x0,y0>
 ) where
 {
 #impltmp
-z2forcmp$fcmp0<x0,y0>
+z2forcmp$fcmp0<x0><y0>
   (x0, y0) =
 (
 g_free(x0); g_free(y0); sgn) where
 {
 val
-sgn = z2forcmp$fcmp1<x0,y0>(x0, y0)}
+sgn = z2forcmp$fcmp1<x0><y0>(x0, y0)}
 } (*where*)//end-of-[gseq_z2forcmp1]
 //
 (* ****** ****** *)
