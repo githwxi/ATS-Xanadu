@@ -43,71 +43,71 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
-< xs:t0
-, ys:t0 >
-< x0:t0
-, y0:t0 >
+< xs:t0 >
+< x0:t0 >
+< ys:t0 >
+< y0:t0 >
 gseq_z2forall =
-gseq_z2forall0<xs,ys><x0,y0>(*void*)
+gseq_z2forall0<xs><x0><ys><y0>(*void*)
 //
 #impltmp
-< xs:t0
-, ys:t0 >
-< x0:t0
-, y0:t0 >
+< xs:t0 >
+< x0:t0 >
+< ys:t0 >
+< y0:t0 >
 gseq_rz2forall =
-gseq_rz2forall0<xs,ys><x0,y0>(*void*)
+gseq_rz2forall0<xs><x0><ys><y0>(*void*)
 //
 #impltmp
-< xs:t0
-, ys:t0 >
-< x0:t0
-, y0:t0 >
+< xs:t0 >
+< x0:t0 >
+< ys:t0 >
+< y0:t0 >
 gseq_iz2forall =
-gseq_iz2forall0<xs,ys><x0,y0>(*void*)
+gseq_iz2forall0<xs><x0><ys><y0>(*void*)
 //
 #impltmp
-< xs:t0
-, ys:t0 >
-< x0:t0
-, y0:t0 >
+< xs:t0 >
+< x0:t0 >
+< ys:t0 >
+< y0:t0 >
 gseq_irz2forall =
-gseq_irz2forall0<xs,ys><x0,y0>(*void*)
+gseq_irz2forall0<xs><x0><ys><y0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-< xs:t0
-, ys:t0 >
-< x0:t0
-, y0:t0 >
+< xs:t0 >
+< x0:t0 >
+< ys:t0 >
+< y0:t0 >
 gseq_z2foritm =
-gseq_z2foritm0<xs,ys><x0,y0>(*void*)
+gseq_z2foritm0<xs><x0><ys><y0>(*void*)
 //
 #impltmp
-< xs:t0
-, ys:t0 >
-< x0:t0
-, y0:t0 >
+< xs:t0 >
+< x0:t0 >
+< ys:t0 >
+< y0:t0 >
 gseq_rz2foritm =
-gseq_rz2foritm0<xs,ys><x0,y0>(*void*)
+gseq_rz2foritm0<xs><x0><ys><y0>(*void*)
 //
 #impltmp
-< xs:t0
-, ys:t0 >
-< x0:t0
-, y0:t0 >
+< xs:t0 >
+< x0:t0 >
+< ys:t0 >
+< y0:t0 >
 gseq_iz2foritm =
-gseq_iz2foritm0<xs,ys><x0,y0>(*void*)
+gseq_iz2foritm0<xs><x0><ys><y0>(*void*)
 //
 #impltmp
-< xs:t0
-, ys:t0 >
-< x0:t0
-, y0:t0 >
+< xs:t0 >
+< x0:t0 >
+< ys:t0 >
+< y0:t0 >
 gseq_irz2foritm =
-gseq_irz2foritm0<xs,ys><x0,y0>(*void*)
+gseq_irz2foritm0<xs><x0><ys><y0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -118,10 +118,10 @@ Sun 04 Aug 2024 07:26:14 AM EDT
 *)
 //
 #impltmp
-< xs:t0
-, ys:t0 >
-< x0:t0
-, y0:t0 >
+< xs:t0 >
+< x0:t0 >
+< ys:t0 >
+< y0:t0 >
 gseq_x2forall
   (xs, ys) =
 (
@@ -133,17 +133,17 @@ forall$test<x0>(x0) =
 gseq_forall<ys><y0>(ys)) where
 {
 #impltmp
-forall$test<y0>(y0) = x2forall$test<x0,y0>(x0, y0)
+forall$test<y0>(y0) = x2forall$test<x0><y0>(x0, y0)
 }(*where*)
 }(*where*)//end-of-[gseq_x2forall(xs, ys)]
 //
 (* ****** ****** *)
 //
 #impltmp
-< xs:t0
-, ys:t0 >
-< x0:t0
-, y0:t0 >
+< xs:t0 >
+< x0:t0 >
+< ys:t0 >
+< y0:t0 >
 gseq_x2rforall
   (xs, ys) =
 (
@@ -155,17 +155,17 @@ rforall$test<x0>(x0) =
 gseq_rforall<ys><y0>(ys)) where
 {
 #impltmp
-rforall$test<y0>(y0) = x2rforall$test<x0,y0>(x0, y0)
+rforall$test<y0>(y0) = x2rforall$test<x0><y0>(x0, y0)
 }(*where*)
 }(*where*)//end-of-[gseq_x2rforall(xs, ys)]
 //
 (* ****** ****** *)
 //
 #impltmp
-< xs:t0
-, ys:t0 >
-< x0:t0
-, y0:t0 >
+< xs:t0 >
+< x0:t0 >
+< ys:t0 >
+< y0:t0 >
 gseq_x2iforall
   (xs, ys) =
 (
@@ -177,17 +177,17 @@ iforall$test<x0>(i0, x0) =
 gseq_iforall<ys><y0>(ys)) where
 {
 #impltmp
-iforall$test<y0>(j0, y0) = x2iforall$test<x0,y0>(i0, x0, j0, y0)
+iforall$test<y0>(j0, y0) = x2iforall$test<x0><y0>(i0, x0, j0, y0)
 }(*where*)
 }(*where*)//end-of-[gseq_x2iforall(xs, ys)]
 //
 (* ****** ****** *)
 //
 #impltmp
-< xs:t0
-, ys:t0 >
-< x0:t0
-, y0:t0 >
+< xs:t0 >
+< x0:t0 >
+< ys:t0 >
+< y0:t0 >
 gseq_x2irforall
   (xs, ys) =
 (
@@ -199,7 +199,7 @@ irforall$test<x0>(i0, x0) =
 gseq_irforall<ys><y0>(ys)) where
 {
 #impltmp
-irforall$test<y0>(j0, y0) = x2irforall$test<x0,y0>(i0, x0, j0, y0)
+irforall$test<y0>(j0, y0) = x2irforall$test<x0><y0>(i0, x0, j0, y0)
 }(*where*)
 }(*where*)//end-of-[gseq_x2irforall(xs, ys)]
 //
@@ -215,12 +215,13 @@ These defines show the need for
 substituted with templates.
 //
 Note that [GSEQ] is meant to
-be resolved during type-checking; if
-[GSEQ_make] is used, then some types
-cannot be obtained until the phase of
-template resolution.
+be resolved during type-checking;
+if [GSEQ_make] is used instead,
+some types cannot be obtained until
+the phase of template resolution.
 //
 *)
+//
 #define
 GZ2SEQ(xs, ys) =
 GSEQ_make_z2tup
@@ -235,8 +236,8 @@ GSEQ_make_x2tup
 //
 #impltmp
 { xs:t0
-, ys:t0 }
-{ x0:t0
+, ys:t0
+, x0:t0
 , y0:t0 }
 GSEQ_forall
 <z2tup(xs,ys)><(x0,y0)>
@@ -247,13 +248,13 @@ val
 z2tup_unmk
 (GSEQ_unmk(xsys))
 val xs = GSEQ_unmk(xs)
-and ys = GSEQ_unmk(ys) in gseq_z2forall<xs,ys><x0,y0>(xs, ys)
+and ys = GSEQ_unmk(ys) in gseq_z2forall<xs><x0><ys><y0>(xs, ys)
 end(*let*)//end-of-[GSEQ_forall(z2tup(xs, ys)]
 //
 #impltmp
 { xs:t0
-, ys:t0 }
-{ x0:t0
+, ys:t0
+, x0:t0
 , y0:t0 }
 GSEQ_rforall
 <z2tup(xs,ys)><(x0,y0)>
@@ -264,7 +265,7 @@ val
 z2tup_unmk
 (GSEQ_unmk(xsys))
 val xs = GSEQ_unmk(xs)
-and ys = GSEQ_unmk(ys) in gseq_z2rforall<xs,ys><x0,y0>(xs, ys)
+and ys = GSEQ_unmk(ys) in gseq_z2rforall<xs><x0><ys><y0>(xs, ys)
 end(*let*)//end-of-[GSEQ_rforall(z2tup(xs, ys)]
 //
 (* ****** ****** *)
@@ -272,8 +273,8 @@ end(*let*)//end-of-[GSEQ_rforall(z2tup(xs, ys)]
 //
 #impltmp
 { xs:t0
-, ys:t0 }
-{ x0:t0
+, ys:t0
+, x0:t0
 , y0:t0 }
 GSEQ_forall
 <x2tup(xs,ys)><(x0,y0)>
@@ -284,13 +285,13 @@ val
 x2tup_unmk
 (GSEQ_unmk(xsys))
 val xs = GSEQ_unmk(xs)
-and ys = GSEQ_unmk(ys) in gseq_x2forall<xs,ys><x0,y0>(xs, ys)
+and ys = GSEQ_unmk(ys) in gseq_x2forall<xs><x0><ys><y0>(xs, ys)
 end(*let*)//end-of-[GSEQ_forall(x2tup(xs, ys)]
 //
 #impltmp
 { xs:t0
-, ys:t0 }
-{ x0:t0
+, ys:t0
+, x0:t0
 , y0:t0 }
 GSEQ_rforall
 <x2tup(xs,ys)><(x0,y0)>
@@ -301,7 +302,7 @@ val
 x2tup_unmk
 (GSEQ_unmk(xsys))
 val xs = GSEQ_unmk(xs)
-and ys = GSEQ_unmk(ys) in gseq_x2rforall<xs,ys><x0,y0>(xs, ys)
+and ys = GSEQ_unmk(ys) in gseq_x2rforall<xs><x0><ys><y0>(xs, ys)
 end(*let*)//end-of-[GSEQ_rforall(x2tup(xs, ys)]
 //
 (* ****** ****** *)
