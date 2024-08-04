@@ -172,45 +172,6 @@ irfilter$test(ni, x0): bool
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<x0:t0
-,y0:t0>
-z2forall$work(x0, y0): void
-fun
-<x0:t0
-,y0:t0>
-rz2forall$work(x0, y0): void
-fun
-<x0:t0
-,y0:t0>
-iz2forall$work(ni, x0, y0): void
-fun
-<x0:t0
-,y0:t0>
-irz2forall$work(ni, x0, y0): void
-//
-(* ****** ****** *)
-//
-fun
-<x0:t0
-,y0:t0>
-z2foritm$work(x0, y0): void
-fun
-<x0:t0
-,y0:t0>
-rz2foritm$work(x0, y0): void
-fun
-<x0:t0
-,y0:t0>
-iz2foritm$work(ni, x0, y0): void
-fun
-<x0:t0
-,y0:t0>
-irz2foritm$work(ni, x0, y0): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (*
 fun
 <xs:t0>
@@ -613,63 +574,6 @@ gseq_prepend(xs: xs, ys: ~ys): xs
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-fun
-<xs:t0
-,ys:t0>
-<x0:t0
-,y0:t0>
-gseq_z2forall(xs: xs, ys: ys): bool
-*)
-fun
-<xs:t0
-,ys:t0>
-<x0:t0
-,y0:t0>
-gseq_rz2forall(xs: xs, ys: ys): bool
-fun
-<xs:t0
-,ys:t0>
-<x0:t0
-,y0:t0>
-gseq_iz2forall(xs: xs, ys: ys): bool
-fun
-<xs:t0
-,ys:t0>
-<x0:t0
-,y0:t0>
-gseq_irz2forall(xs: xs, ys: ys): bool
-//
-(* ****** ****** *)
-//
-fun
-<xs:t0
-,ys:t0>
-<x0:t0
-,y0:t0>
-gseq_z2foritm(xs: xs, ys: ys): void
-fun
-<xs:t0
-,ys:t0>
-<x0:t0
-,y0:t0>
-gseq_rz2foritm(xs: xs, ys: ys): void
-fun
-<xs:t0
-,ys:t0>
-<x0:t0
-,y0:t0>
-gseq_iz2foritm(xs: xs, ys: ys): void
-fun
-<xs:t0
-,ys:t0>
-<x0:t0
-,y0:t0>
-gseq_irz2foritm(xs: xs, ys: ys): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 fun
 <xs:t0>
 <x0:t0>
@@ -957,6 +861,26 @@ list_fmake_fwork
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fcast // fun
+GSEQ_make_list
+{a:t0}
+(xs: list(a)): GSEQ(list(a), a)
+#symload GSEQ with GSEQ_make_list of 1000
+#symload GSEQ_list with GSEQ_make_list of 1000
+//
+fcast // fun
+GSEQ_make_nint0
+(xs: nint): GSEQ(nint, unit)
+fcast // fun
+GSEQ_make_nint1
+(xs: nint): GSEQ(nint, nint)
+#symload GSEQ with GSEQ_make_nint1 of 1000
+#symload GSEQ_nint0 with GSEQ_make_nint0 of 1000
+#symload GSEQ_nint1 with GSEQ_make_nint1 of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2024-7-31:
 Wed 31 Jul 2024 07:58:53 PM EDT
@@ -965,6 +889,102 @@ Wed 31 Jul 2024 07:58:53 PM EDT
 fun
 <xs:t0>
 g_append(y1: xs, y2: xs): (xs) // for [appends]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:t0>
+z2forall$work(x0, y0): void
+fun
+<x0:t0>
+<y0:t0>
+rz2forall$work(x0, y0): void
+fun
+<x0:t0>
+<y0:t0>
+iz2forall$work(ni, x0, y0): void
+fun
+<x0:t0>
+<y0:t0>
+irz2forall$work(ni, x0, y0): void
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:t0>
+z2foritm$work(x0, y0): void
+fun
+<x0:t0>
+<y0:t0>
+rz2foritm$work(x0, y0): void
+fun
+<x0:t0>
+<y0:t0>
+iz2foritm$work(ni, x0, y0): void
+fun
+<x0:t0>
+<y0:t0>
+irz2foritm$work(ni, x0, y0): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+gseq_z2forall(xs: xs, ys: ys): bool
+*)
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+gseq_rz2forall(xs: xs, ys: ys): bool
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+gseq_iz2forall(xs: xs, ys: ys): bool
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+gseq_irz2forall(xs: xs, ys: ys): bool
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+gseq_z2foritm(xs: xs, ys: ys): void
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+gseq_rz2foritm(xs: xs, ys: ys): void
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+gseq_iz2foritm(xs: xs, ys: ys): void
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+gseq_irz2foritm(xs: xs, ys: ys): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

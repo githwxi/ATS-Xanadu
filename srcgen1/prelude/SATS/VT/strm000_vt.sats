@@ -476,14 +476,14 @@ strm_vt_istrmize0
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 strm_vt_z2forall0
   ( xs: strm_vt(x0)
   , ys: strm_vt(y0)): bool
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 strm_vt_z2forcmp0
   ( xs: strm_vt(x0)
   , ys: strm_vt(y0)): sint
@@ -491,8 +491,8 @@ strm_vt_z2forcmp0
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 strm_vt_z2foreach0
   ( xs: strm_vt(x0)
   , ys: strm_vt(y0)): void
@@ -500,8 +500,8 @@ strm_vt_z2foreach0
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <z0:vt>
 strm_vt_z2map0//seq
 ( xs: strm_vt(x0)
@@ -510,8 +510,8 @@ strm_vt_z2map0//seq
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 strm_vt_z2strmize0
 ( xs: strm_vt(x0)
 , ys: strm_vt(y0)): strm_vt(@(x0,y0))
@@ -519,8 +519,8 @@ strm_vt_z2strmize0
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <z0:vt>
 strm_vt_z2imap0//seq
 ( xs: strm_vt(x0)
@@ -529,21 +529,21 @@ strm_vt_z2imap0//seq
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 strm_vt_z2iforall0
 (xs: strm_vt(x0), ys: strm_vt(y0)): bool
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 strm_vt_z2iforcmp0
 (xs: strm_vt(x0), ys: strm_vt(y0)): sint
 //
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 strm_vt_z2iforeach0
 (xs: strm_vt(x0), ys: strm_vt(y0)): void
 //

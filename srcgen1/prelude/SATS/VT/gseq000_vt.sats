@@ -801,68 +801,70 @@ gseq_ifilter1_lstrq(!xs): strq_vt(x0)
 (* ****** ****** *)
 //
 fun
-<xs:vt
-,ys:vt>
+<xs:vt>
 <x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_z2cmp00(xs: ~xs, ys: ~ys): sint
 fun
-<xs:vt
-,ys:vt>
+<xs:vt>
 <x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_z2cmp11(xs: !xs, ys: !ys): sint
 //
 (* ****** ****** *)
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_z2forall0(xs: ~xs, ys: ~ys): bool
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_z2forall1(xs: !xs, ys: !ys): bool
 //
 (* ****** ****** *)
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_z2forcmp0(xs: ~xs, ys: ~ys): sint
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_z2forcmp1(xs: !xs, ys: !ys): sint
 //
 (* ****** ****** *)
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_z2foreach0(xs: ~xs, ys: ~ys): void
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_z2foreach1(xs: !xs, ys: !ys): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_z2map0_lstrm(xs: ~xs, ys: ~ys): strm_vt(z0)
 (* ****** ****** *)

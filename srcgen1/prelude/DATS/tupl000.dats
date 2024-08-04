@@ -1089,10 +1089,10 @@ gseq_foreach
 (* ****** ****** *)
 
 #impltmp
-{xs:t0}
-{ys:t0}
-{x0:t0}
-{y0:t0}
+{xs:t0
+,x0:t0
+,ys:t0
+,y0:t0}
 gseq_foreach_c1fr
 <
 z2tup
@@ -1104,16 +1104,16 @@ let
 val
 (xs, ys) =
 put2z(ztup) in//in
-gseq_z2foreach_c2fr<xs,ys><x0,y0>
+gseq_z2foreach_c2fr<xs><x0><ys><y0>
 (xs, ys, lam(x0, y0) => work@(x0, y0)) end
 
 (* ****** ****** *)
 
 #impltmp
-{xs:t0}
-{ys:t0}
-{x0:t0}
-{y0:t0}
+{xs:t0
+,x0:t0
+,ys:t0
+,y0:t0}
 gseq_foreach_c1fr
 <
 x2tup
@@ -1125,7 +1125,7 @@ let
 val
 (xs, ys) =
 put2x(xtup) in//in
-gseq_x2foreach_c2fr<xs,ys><x0,y0>
+gseq_x2foreach_c2fr<xs><x0><ys><y0>
 (xs, ys, lam(x0, y0) => work@(x0, y0)) end
 
 (* ****** ****** *)
