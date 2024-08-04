@@ -154,9 +154,11 @@ fun
 z2eq
 ( x1: clst
 , x2: strn): bool =
+(
 gseq_z2cmp11
-<clst,strn><cgtz>(x1, x2) = 0
-} (*where*) // end of [ftest]
+<clst><cgtz>
+<strn><cgtz>(x1, x2) = 0) }//whr
+// (*where*) // end of [ftest(...)]
 //
 val nms =
 gseq_group_lstrm_llist
@@ -278,8 +280,10 @@ fun
 z2eq
 ( x1: clst
 , x2: strn): bool =
+(
 gseq_z2cmp11
-<clst,strn><cgtz>(x1, x2) = 0 }
+<clst><cgtz>
+<strn><cgtz>(x1, x2) = 0) }//whr
 // (*where*) // end of [fmain(...)]
 //
 val nms =

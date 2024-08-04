@@ -681,6 +681,26 @@ ifoldr$fopr
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+#abstype
+z2tup_type
+(xs:t0,ys:t0) <= (xs,ys)
+#sexpdef z2tup = z2tup_type
+fun
+<xs:t0>
+<ys:t0>
+z2tup_make
+( xs, ys ): z2tup(xs, ys)
+fun
+<xs:t0>
+<ys:t0>
+z2tup_unmk
+(z2tup(xs, ys)): @(xs, ys)
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <x0:t0>
 <y0:t0>
@@ -757,67 +777,87 @@ fun
 <x0:t0>
 <y0:t0>
 <z0:vt>
-z2imap$fopr(nint,x0,y0): (z0)
+iz2map$fopr(nint,x0,y0): (z0)
 fun
 <x0:vt>
 <y0:vt>
 <z0:vt>
-z2imap$fopr0(nint,~x0,~y0): (z0)
+iz2map$fopr0(nint,~x0,~y0): (z0)
 fun
 <x0:vt>
 <y0:vt>
 <z0:vt>
-z2imap$fopr1(nint,!x0,!y0): (z0)
+iz2map$fopr1(nint,!x0,!y0): (z0)
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
 <y0:t0>
-z2iforall$test(nint,x0,y0): bool
+iz2forall$test(nint,x0,y0): bool
 fun
 <x0:vt>
 <y0:vt>
-z2iforall$test0(nint,~x0,~y0): bool
+iz2forall$test0(nint,~x0,~y0): bool
 fun
 <x0:vt>
 <y0:vt>
-z2iforall$test1(nint,!x0,!y0): bool
+iz2forall$test1(nint,!x0,!y0): bool
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
 <y0:t0>
-z2iforcmp$fcmp(nint,x0,y0): sint
+iz2forcmp$fcmp(nint,x0,y0): sint
 fun
 <x0:vt>
 <y0:vt>
-z2iforcmp$fcmp0(nint,~x0,~y0): sint
+iz2forcmp$fcmp0(nint,~x0,~y0): sint
 fun
 <x0:vt>
 <y0:vt>
-z2iforcmp$fcmp1(nint,!x0,!y0): sint
+iz2forcmp$fcmp1(nint,!x0,!y0): sint
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
 <y0:t0>
-z2iforeach$work(nint,x0,y0): void
+iz2foreach$work(nint,x0,y0): void
 fun
 <x0:vt>
 <y0:vt>
-z2iforeach$work0(nint,~x0,~y0): void
+iz2foreach$work0(nint,~x0,~y0): void
 fun
 <x0:vt>
 <y0:vt>
-z2iforeach$work1(nint,!x0,!y0): void
+iz2foreach$work1(nint,!x0,!y0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 // For x2-gseq-operations
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+#abstype
+x2tup_type
+(xs:t0,ys:t0) <= (xs,ys)
+#sexpdef x2tup = x2tup_type
+fun
+<xs:t0>
+<ys:t0>
+x2tup_make
+( xs, ys ): x2tup(xs, ys)
+fun
+<xs:t0>
+<ys:t0>
+x2tup_unmk
+(x2tup(xs, ys)): @(xs, ys)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -838,7 +878,20 @@ x2filter$test
 fun
 <x0:t0>
 <y0:t0>
+x2forall$test(x0, y0): bool
+fun
+<x0:t0>
+<y0:t0>
+x2rforall$test(x0, y0): bool
+(* ****** ****** *)
+fun
+<x0:t0>
+<y0:t0>
 x2foreach$work(x0, y0): void
+fun
+<x0:t0>
+<y0:t0>
+x2rforeach$work(x0, y0): void
 (* ****** ****** *)
 //
 fun<>
@@ -877,6 +930,10 @@ x2ifilter$test
 //
 (* ****** ****** *)
 //
+fun
+<x0:t0>
+<y0:t0>
+x2iforall$test(nint, x0, nint, y0): bool
 fun
 <x0:t0>
 <y0:t0>

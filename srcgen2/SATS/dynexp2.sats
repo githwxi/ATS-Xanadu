@@ -486,15 +486,16 @@ d2con_make_idtp
 //
 fun
 d2cst_make_dvar
-(dvar: d2var, tqas: t2qas): d2cst
+(tok0: token
+,dvar: d2var, tqas: t2qas): d2cst
 fun
 d2cst_make_idtp
 (tok0: token
 ,dpid: token
 ,tqas: t2qas, sexp: s2exp): d2cst
 //
-#symload d2cst with d2cst_make_dvar
 #symload d2con with d2con_make_idtp
+#symload d2cst with d2cst_make_dvar
 #symload d2cst with d2cst_make_idtp
 //
 (* ****** ****** *)

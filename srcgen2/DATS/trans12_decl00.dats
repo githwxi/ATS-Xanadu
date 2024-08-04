@@ -2569,7 +2569,10 @@ val d2cs =
 #impltmp
 map$fopr
 <x0><y0>
-(  x0  )=d2cst_make_dvar(x0,tqas) }
+( dvar )=
+(
+ d2cst_make_dvar(tknd, dvar, tqas))
+}
 //
 val () =
 (

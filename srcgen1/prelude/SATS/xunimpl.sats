@@ -896,19 +896,11 @@ g_append(y1: xs, y2: xs): (xs) // for [appends]
 fun
 <x0:t0>
 <y0:t0>
-z2forall$work(x0, y0): void
+rz2forall$test(x0, y0): void
 fun
 <x0:t0>
 <y0:t0>
-rz2forall$work(x0, y0): void
-fun
-<x0:t0>
-<y0:t0>
-iz2forall$work(ni, x0, y0): void
-fun
-<x0:t0>
-<y0:t0>
-irz2forall$work(ni, x0, y0): void
+irz2forall$test(ni, x0, y0): void
 //
 (* ****** ****** *)
 //
@@ -951,12 +943,6 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_iz2forall(xs: xs, ys: ys): bool
-fun
-<xs:t0>
-<x0:t0>
-<ys:t0>
-<y0:t0>
 gseq_irz2forall(xs: xs, ys: ys): bool
 //
 (* ****** ****** *)
@@ -985,6 +971,100 @@ fun
 <ys:t0>
 <y0:t0>
 gseq_irz2foritm(xs: xs, ys: ys): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+GSEQ_z2make
+( xs: GSEQ(xs, x0)
+, ys: GSEQ(ys, y0)): GSEQ(z2tup(xs, ys), (x0, y0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
+<x0:t0>
+<y0:t0>
+x2forall$test(x0, y0): bool
+fun
+<x0:t0>
+<y0:t0>
+x2rforall$test(x0, y0): bool
+fun
+<x0:t0>
+<y0:t0>
+x2iforall$test(ni, x0, ni, y0): bool
+*)
+fun
+<x0:t0>
+<y0:t0>
+x2irforall$test(ni, x0, ni, y0): bool
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:t0>
+x2foritm$work(x0, y0): void
+fun
+<x0:t0>
+<y0:t0>
+x2rforitm$work(x0, y0): void
+fun
+<x0:t0>
+<y0:t0>
+x2iforitm$work(ni, x0, y0): void
+fun
+<x0:t0>
+<y0:t0>
+x2irforitm$work(ni, x0, y0): void
+//
+(* ****** ****** *)
+//
+(*
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+gseq_x2forall(xs: xs, ys: ys): bool
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+gseq_x2rforall(xs: xs, ys: ys): bool
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+gseq_x2iforall(xs: xs, ys: ys): bool
+*)
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+gseq_x2irforall(xs: xs, ys: ys): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+GSEQ_x2make
+( xs: GSEQ(xs, x0)
+, ys: GSEQ(ys, y0)): GSEQ(x2tup(xs, ys), (x0, y0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
