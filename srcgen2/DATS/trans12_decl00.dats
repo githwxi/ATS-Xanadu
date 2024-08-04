@@ -1336,11 +1336,13 @@ trans12_t1maglst(env0, tmas)
 val tres =
 (
 case topt of
-| optn_nil() =>
-  abstype_sort2(tknd)
-| optn_cons(s1t1) =>
-  trans12_sort1(env0, s1t1)
-) : sort2 //  end-of-val(tres)
+|
+optn_nil() =>
+abstype_sort2(tknd)
+|
+optn_cons(s1t1) =>
+trans12_sort1(env0, s1t1)
+) : sort2 // end-of-val(tres)
 //
 val tfun =
 f1_stss(stss, tres) where
@@ -1353,34 +1355,40 @@ f1_stss
 (
 case+ stss of
 |
-list_nil() => tres
+list_nil
+( (*void*) ) => ( tres )
 |
 list_cons
 (s2ts, stss) =>
-S2Tfun1
-(s2ts, f1_stss(stss, tres)))
+S2Tfun1(s2ts, f1_stss(stss, tres)))
 }
 //
 (*
 val () =
-prerrln
-("f0_abstype: tfun = ", tfun)
+prerrln("f0_abstype: tfun = ", tfun)
 *)
 //
 in//let
+//
 let
+//
 val s2c1 =
 s2cst_make_idst(loc0, sid1, tfun)
+//
 val atdf =
 trans12_a1tdf_stck(env0, atdf, tres)
+//
 in//let
+//
 let
   val () =
   tr12env_add1_s2cst( env0, s2c1 )
 in//let
   d2ecl(loc0, D2Cabstype(s2c1, atdf))
 end (*let*)
+//
 end (*let*)
+//
 end (*let*) // end of [f0_abstype(env0,d1cl)]
 //
 (* ****** ****** *)
@@ -1664,7 +1672,8 @@ end // then // end-of-[ if ]
 end (*let*) // end of [val()]
 //
 val () =
-tr12env_pshlam0(env0)
+(
+  tr12env_pshlam0(env0))
 val
 sdef =
 f1_lams(env0,svss,tres,sdef)
@@ -1675,7 +1684,8 @@ val sqid =
 let
 val-
 SIMPLall1
-(sqid, s2cs) = sqid.node()
+(sqid, s2cs) = sqid.node((*0*))
+//
 in//let
 //
 if//if1
@@ -1684,8 +1694,9 @@ then
 let//if1
 val s2c1 = s2cs.head()
 in(*let*)
-simpl
-(sqid.lctn(), SIMPLone1(s2c1))
+(
+  simpl
+  (sqid.lctn(), SIMPLone1(s2c1)))
 end//then
 else//if1
 let
@@ -1703,8 +1714,9 @@ then
 let//if2
 val s2c1 = sopt.head()
 in(*let*)
+(
   simpl
-  (sqid.lctn(), SIMPLone1(s2c1))
+  (sqid.lctn(), SIMPLone1(s2c1)))
 end//then
 else//if2
 (

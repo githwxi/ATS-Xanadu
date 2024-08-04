@@ -18,6 +18,17 @@ Sun 14 Jul 2024 12:14:49 PM EDT
 #staload _ = "prelude/DATS/VT/gbas000_vt.dats"
 #staload _ = "prelude/DATS/VT/gbas001_vt.dats"
 (* ****** ****** *)
+//
+(*
+HX-2024-08-03:
+Sat 03 Aug 2024 05:44:33 PM EDT
+The code in these files serves as
+"switches" during template resolution!
+*)
+#staload _ = "prelude/DATS/gxyz000.dats"
+#staload _ = "prelude/DATS/VT/gxyz000_vt.dats"
+//
+(* ****** ****** *)
 #staload _ = "prelude/DATS/gnum000.dats"
 #staload _ = "prelude/DATS/VT/gnum000_vt.dats"
 (* ****** ****** *)
@@ -68,18 +79,6 @@ Sun 14 Jul 2024 12:14:49 PM EDT
 This one is included by [DATS/unsfx00.dats]
 #staload _ = "prelude/DATS/VT/unsfx00_vt.dats"
 *)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2024-08-03:
-Sat 03 Aug 2024 05:44:33 PM EDT
-The code in these files serves as
-"switches" during template resolution!
-*)
-#staload _ = "prelude/DATS/gxyz000.dats"
-#staload _ = "prelude/DATS/VT/gxyz000_vt.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
