@@ -221,7 +221,7 @@ P2TR_TBOX_symbl: symbl //=symbl("p2tr_tbox")
 (* ****** ****** *)
 
 val
-L0AZY_TBOX_symbl: symbl //=symbl("lazy_t0_x0")
+L0AZY_TBOX_symbl: symbl //=symbl("lazy_t0_tx")
 val
 L1AZY_VTBX_symbl: symbl //=symbl("lazy_vt_vx")
 

@@ -670,6 +670,23 @@ gseq_irz2foritm(xs: xs, ys: ys): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<xs:t0>
+<x0:t0>
+gseq_irforall_c2fr
+(xs: xs, test: (ni, x0)-<cfr>bool): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_irforall_f2np
+(xs: xs, test: (ni, x0)-<fnp>bool): bool
+//
+#symload irforall with gseq_irforall_c2fr of 0100
+#symload irforall_cfr with gseq_irforall_c2fr of 0100
+#symload irforall_fnp with gseq_irforall_f2np of 0100
+//
+(* ****** ****** *)
+//
 (*
 HX-2024-07-25:
 Thu 25 Jul 2024 12:19:14 PM EDT
@@ -705,6 +722,37 @@ gseq_rforitm_f1np
 #symload rforitm_cfr with gseq_rforitm_c1fr of 0100
 #symload rforitm_fnp with gseq_rforitm_f1np of 0100
 //
+fun
+<xs:t0>
+<x0:t0>
+gseq_iforitm_c1fr
+(xs: xs, work: (x0)-<cfr>void): void
+fun
+<xs:t0>
+<x0:t0>
+gseq_iforitm_f1np
+(xs: xs, work: (x0)-<fnp>void): void
+//
+#symload iforitm with gseq_iforitm_c1fr of 0100
+#symload iforitm_cfr with gseq_iforitm_c1fr of 0100
+#symload iforitm_fnp with gseq_iforitm_f1np of 0100
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_irforitm_c1fr
+(xs: xs, work: (x0)-<cfr>void): void
+fun
+<xs:t0>
+<x0:t0>
+gseq_irforitm_f1np
+(xs: xs, work: (x0)-<fnp>void): void
+//
+#symload irforitm with gseq_irforitm_c1fr of 0100
+#symload irforitm_cfr with gseq_irforitm_c1fr of 0100
+#symload irforitm_fnp with gseq_irforitm_f1np of 0100
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -746,6 +794,48 @@ gseq_rfolditm_f2np
 #symload rfolditm with gseq_rfolditm_c2fr of 0100
 #symload rfolditm_cfr with gseq_rfolditm_c2fr of 0100
 #symload rfolditm_fnp with gseq_rfolditm_f2np of 0100
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_ifolditm_c3fr
+( xs: xs
+, r0: r0, fopr: (r0, ni, x0)-<cfr>(r0)): (r0)
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_ifolditm_f3np
+( xs: xs
+, r0: r0, fopr: (r0, ni, x0)-<fnp>(r0)): (r0)
+//
+#symload ifolditm with gseq_ifolditm_c3fr of 0100
+#symload ifolditm_cfr with gseq_ifolditm_c3fr of 0100
+#symload ifolditm_fnp with gseq_ifolditm_f3np of 0100
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_irfolditm_c3fr
+( xs: xs
+, r0: r0, fopr: (ni, x0, r0)-<cfr>(r0)): (r0)
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_irfolditm_f3np
+( xs: xs
+, r0: r0, fopr: (ni, x0, r0)-<fnp>(r0)): (r0)
+//
+#symload irfolditm with gseq_irfolditm_c3fr of 0100
+#symload irfolditm_cfr with gseq_irfolditm_c3fr of 0100
+#symload irfolditm_fnp with gseq_irfolditm_f3np of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -137,6 +137,8 @@ gseq_irforall(xs: xs): bool
 #symload irforall with gseq_irforall of 0100
 *)
 //
+(* ****** ****** *)
+//
 fun
 <xs:t0>
 <x0:t0>
@@ -153,7 +155,6 @@ gseq_forall_f1np
 #symload forall_fnp with gseq_forall_f1np of 0100
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 fun
 <xs:t0>
@@ -169,6 +170,57 @@ gseq_exists_f1np
 #symload exists with gseq_exists_c1fr of 0100
 #symload exists_cfr with gseq_exists_c1fr of 0100
 #symload exists_fnp with gseq_exists_f1np of 0100
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_rforall_c1fr
+(xs: xs, test: (x0)-<cfr>bool): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_rforall_f1np
+(xs: xs, test: (x0)-<fnp>bool): bool
+//
+#symload rforall with gseq_rforall_c1fr of 0100
+#symload rforall_cfr with gseq_rforall_c1fr of 0100
+#symload rforall_fnp with gseq_rforall_f1np of 0100
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_iforall_c2fr
+(xs: xs, test: (ni, x0)-<cfr>bool): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_iforall_f2np
+(xs: xs, test: (ni, x0)-<fnp>bool): bool
+//
+#symload iforall with gseq_iforall_c2fr of 0100
+#symload iforall_cfr with gseq_iforall_c2fr of 0100
+#symload iforall_fnp with gseq_iforall_f2np of 0100
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_irforall_c2fr
+(xs: xs, test: (ni, x0)-<cfr>bool): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_irforall_f2np
+(xs: xs, test: (ni, x0)-<fnp>bool): bool
+//
+#symload irforall with gseq_irforall_c2fr of 0100
+#symload irforall_cfr with gseq_irforall_c2fr of 0100
+#symload irforall_fnp with gseq_irforall_f2np of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -233,6 +285,38 @@ gseq_rforitm_f1np
 #symload rforitm with gseq_rforitm_c1fr of 0100
 #symload rforitm_cfr with gseq_rforitm_c1fr of 0100
 #symload rforitm_fnp with gseq_rforitm_f1np of 0100
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_iforitm_c2fr
+(xs: xs, work: (ni, x0)-<cfr>void): void
+fun
+<xs:t0>
+<x0:t0>
+gseq_iforitm_f2np
+(xs: xs, work: (ni, x0)-<fnp>void): void
+//
+#symload iforitm with gseq_iforitm_c1fr of 0100
+#symload iforitm_cfr with gseq_iforitm_c1fr of 0100
+#symload iforitm_fnp with gseq_iforitm_f1np of 0100
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_irforitm_c2fr
+(xs: xs, work: (ni, x0)-<cfr>void): void
+fun
+<xs:t0>
+<x0:t0>
+gseq_irforitm_f2np
+(xs: xs, work: (ni, x0)-<fnp>void): void
+//
+#symload irforitm with gseq_irforitm_c1fr of 0100
+#symload irforitm_cfr with gseq_irforitm_c1fr of 0100
+#symload irforitm_fnp with gseq_irforitm_f1np of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)

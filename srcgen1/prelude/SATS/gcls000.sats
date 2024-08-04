@@ -36,6 +36,8 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+#typedef ni = nint
+#typedef si = sint
 (* ****** ****** *)
 //
 #abstype
@@ -76,6 +78,13 @@ GASZ_unmk
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+HX-2024-08-03:
+[GSEQ] is like
+a functional list with size
+*)
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fcast // fun
 GSEQ_make_list
@@ -102,6 +111,34 @@ GSEQ_make_nint1
 fun
 <xs:t0>
 <x0:t0>
+GSEQ_sum
+(gseq: GSEQ(xs, x0)): (x0)
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_prod
+(gseq: GSEQ(xs, x0)): (x0)
+//
+#symload sum with GSEQ_sum of 1000
+#symload prod with GSEQ_prod of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_length
+(gseq: GSEQ(xs, x0)): nint
+//
+#symload length with GSEQ_length of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
 GSEQ_listize
 (GSEQ(xs,x0)): list_vt(x0)
 fun
@@ -120,6 +157,11 @@ fun
 <xs:t0>
 <x0:t0>
 GSEQ_forall
+(gseq: GSEQ(xs, x0)): bool
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_exists
 (gseq: GSEQ(xs, x0)): bool
 fun
 <xs:t0>
@@ -158,8 +200,8 @@ GSEQ_forall_f1np
 , test: (x0)-<fnp>bool): bool
 //
 #symload forall with GSEQ_forall_c1fr of 1000
-#symload forall_c1fr with GSEQ_forall_c1fr of 1000
-#symload forall_f1np with GSEQ_forall_f1np of 1000
+#symload forall_cfr with GSEQ_forall_c1fr of 1000
+#symload forall_fnp with GSEQ_forall_f1np of 1000
 //
 (* ****** ****** *)
 //
@@ -177,8 +219,8 @@ GSEQ_exists_f1np
 , test: (x0)-<fnp>bool): bool
 //
 #symload exists with GSEQ_exists_c1fr of 1000
-#symload exists_c1fr with GSEQ_exists_c1fr of 1000
-#symload exists_f1np with GSEQ_exists_f1np of 1000
+#symload exists_cfr with GSEQ_exists_c1fr of 1000
+#symload exists_fnp with GSEQ_exists_f1np of 1000
 //
 (* ****** ****** *)
 //
@@ -196,8 +238,8 @@ GSEQ_rforall_f1np
 , test: (x0)-<fnp>bool): bool
 //
 #symload rforall with GSEQ_rforall_c1fr of 1000
-#symload rforall_c1fr with GSEQ_rforall_c1fr of 1000
-#symload rforall_f1np with GSEQ_rforall_f1np of 1000
+#symload rforall_cfr with GSEQ_rforall_c1fr of 1000
+#symload rforall_fnp with GSEQ_rforall_f1np of 1000
 //
 (* ****** ****** *)
 //
@@ -215,8 +257,46 @@ GSEQ_rexists_f1np
 , test: (x0)-<fnp>bool): bool
 //
 #symload rexists with GSEQ_rexists_c1fr of 1000
-#symload rexists_c1fr with GSEQ_rexists_c1fr of 1000
-#symload rexists_f1np with GSEQ_rexists_f1np of 1000
+#symload rexists_cfr with GSEQ_rexists_c1fr of 1000
+#symload rexists_fnp with GSEQ_rexists_f1np of 1000
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_iforall_c2fr
+( gseq: GSEQ(xs, x0)
+, test: (ni, x0)-<cfr>bool): bool
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_iforall_f2np
+( gseq: GSEQ(xs, x0)
+, test: (ni, x0)-<fnp>bool): bool
+//
+#symload iforall with GSEQ_iforall_c2fr of 1000
+#symload iforall_cfr with GSEQ_iforall_c2fr of 1000
+#symload iforall_fnp with GSEQ_iforall_f2np of 1000
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_irforall_c2fr
+( gseq: GSEQ(xs, x0)
+, test: (ni, x0)-<cfr>bool): bool
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_irforall_f2np
+( gseq: GSEQ(xs, x0)
+, test: (ni, x0)-<fnp>bool): bool
+//
+#symload irforall with GSEQ_irforall_c2fr of 1000
+#symload irforall_cfr with GSEQ_irforall_c2fr of 1000
+#symload irforall_fnp with GSEQ_irforall_f2np of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -279,8 +359,8 @@ GSEQ_folditm_f2np
 , fopr: (r0, x0)-<fnp>(r0)): (r0)
 //
 #symload folditm with GSEQ_folditm_c2fr of 1000
-#symload folditm_c2fr with GSEQ_folditm_c2fr of 1000
-#symload folditm_f2np with GSEQ_folditm_f2np of 1000
+#symload folditm_cfr with GSEQ_folditm_c2fr of 1000
+#symload folditm_fnp with GSEQ_folditm_f2np of 1000
 //
 (* ****** ****** *)
 //
@@ -302,8 +382,76 @@ GSEQ_rfolditm_f2np
 , fopr: (x0, r0)-<fnp>(r0)): (r0)
 //
 #symload rfolditm with GSEQ_rfolditm_c2fr of 1000
-#symload rfolditm_c2fr with GSEQ_rfolditm_c2fr of 1000
-#symload rfolditm_f2np with GSEQ_rfolditm_f2np of 1000
+#symload rfolditm_cfr with GSEQ_rfolditm_c2fr of 1000
+#symload rfolditm_fnp with GSEQ_rfolditm_f2np of 1000
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+GSEQ_ifolditm_c3fr
+( gseq
+: GSEQ(xs, x0), r0: r0
+, fopr: (r0, ni, x0)-<cfr>(r0)): (r0)
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+GSEQ_ifolditm_f3np
+( gseq
+: GSEQ(xs, x0), r0: r0
+, fopr: (r0, ni, x0)-<fnp>(r0)): (r0)
+//
+#symload ifolditm with GSEQ_ifolditm_c3fr of 1000
+#symload ifolditm_cfr with GSEQ_ifolditm_c3fr of 1000
+#symload ifolditm_fnp with GSEQ_ifolditm_f3np of 1000
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+GSEQ_irfolditm_c3fr
+( gseq
+: GSEQ(xs, x0), r0: r0
+, fopr: (ni, x0, r0)-<cfr>(r0)): (r0)
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+GSEQ_irfolditm_f3np
+( gseq
+: GSEQ(xs, x0), r0: r0
+, fopr: (ni, x0, r0)-<fnp>(r0)): (r0)
+//
+#symload irfolditm with GSEQ_irfolditm_c3fr of 1000
+#symload irfolditm_cfr with GSEQ_irfolditm_c3fr of 1000
+#symload irfolditm_fnp with GSEQ_irfolditm_f3np of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-08-03:
+[GASZ] is like
+a persistent array with size
+For instance, it should support
+binary search.
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:vt>
+GASZ_length
+(gseq: GASZ(xs, x0)): nint
+//
+#symload length with GASZ_length of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -367,8 +515,8 @@ GASZ_forall_f1np
 , test: (!x0)-<fnp>bool): bool
 //
 #symload forall with GASZ_forall_c1fr of 1000
-#symload forall_c1fr with GASZ_forall_c1fr of 1000
-#symload forall_f1np with GASZ_forall_f1np of 1000
+#symload forall_cfr with GASZ_forall_c1fr of 1000
+#symload forall_fnp with GASZ_forall_f1np of 1000
 //
 (* ****** ****** *)
 //
@@ -386,8 +534,8 @@ GASZ_exists_f1np
 , test: (!x0)-<fnp>bool): bool
 //
 #symload exists with GASZ_exists_c1fr of 1000
-#symload exists_c1fr with GASZ_exists_c1fr of 1000
-#symload exists_f1np with GASZ_exists_f1np of 1000
+#symload exists_cfr with GASZ_exists_c1fr of 1000
+#symload exists_fnp with GASZ_exists_f1np of 1000
 //
 (* ****** ****** *)
 //
@@ -405,8 +553,8 @@ GASZ_rforall_f1np
 , test: (!x0)-<fnp>bool): bool
 //
 #symload rforall with GASZ_rforall_c1fr of 1000
-#symload rforall_c1fr with GASZ_rforall_c1fr of 1000
-#symload rforall_f1np with GASZ_rforall_f1np of 1000
+#symload rforall_cfr with GASZ_rforall_c1fr of 1000
+#symload rforall_fnp with GASZ_rforall_f1np of 1000
 //
 (* ****** ****** *)
 //
@@ -424,8 +572,8 @@ GASZ_rexists_f1np
 , test: (!x0)-<fnp>bool): bool
 //
 #symload rexists with GASZ_rexists_c1fr of 1000
-#symload rexists_c1fr with GASZ_rexists_c1fr of 1000
-#symload rexists_f1np with GASZ_rexists_f1np of 1000
+#symload rexists_cfr with GASZ_rexists_c1fr of 1000
+#symload rexists_fnp with GASZ_rexists_f1np of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
