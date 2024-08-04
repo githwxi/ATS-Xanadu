@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,14 +37,27 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #typedef ni = nint
 #typedef si = sint
 (* ****** ****** *)
+(* ****** ****** *)
 //
+(*
+HX:
+For functional lists
+*)
 #abstype
 GSEQ_type
 (xs: t0, x0: t0) <= xs
 #sexpdef GSEQ = GSEQ_type
+//
+(* ****** ****** *)
+//
+(*
+HX:
+For persistent arrays
+*)
 //
 #abstype
 GASZ_type
@@ -51,8 +65,8 @@ GASZ_type
 #sexpdef GASZ = GASZ_type
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
-(*
 fun
 <xs:t0>
 <x0:t0>
@@ -63,7 +77,11 @@ fun
 <x0:vt>
 GASZ_make
 (xs: xs): GASZ(xs, x0)
-*)
+//
+#symload GSEQ with GSEQ_make of 0100
+#symload GASZ with GASZ_make of 0100
+//
+(* ****** ****** *)
 //
 fun
 <xs:t0>
@@ -76,35 +94,15 @@ fun
 GASZ_unmk
 (gasz: GASZ(xs, x0)): (xs)
 //
+#symload unmk with GSEQ_unmk of 0100
+#symload unmk with GASZ_unmk of 0100
+//
 (* ****** ****** *)
 (* ****** ****** *)
 (*
 HX-2024-08-03:
-[GSEQ] is like
-a functional list with size
+[GSEQ] is like a functional list
 *)
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fcast // fun
-GSEQ_make_list
-{a:t0}
-(xs: list(a)): GSEQ(list(a), a)
-#symload GSEQ with GSEQ_make_list of 1000
-#symload GSEQ_list with GSEQ_make_list of 1000
-//
-(* ****** ****** *)
-//
-fcast // fun
-GSEQ_make_nint0
-(xs: nint): GSEQ(nint, unit)
-fcast // fun
-GSEQ_make_nint1
-(xs: nint): GSEQ(nint, nint)
-#symload GSEQ with GSEQ_make_nint1 of 1000
-#symload GSEQ_nint0 with GSEQ_make_nint0 of 1000
-#symload GSEQ_nint1 with GSEQ_make_nint1 of 1000
-//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -436,10 +434,10 @@ GSEQ_irfolditm_f3np
 //
 (*
 HX-2024-08-03:
-[GASZ] is like
-a persistent array with size
-For instance, it should support
-binary search.
+[GASZ] is for
+persistent arrays with size attched
+For instance, it should support ops
+like binary search.
 *)
 //
 (* ****** ****** *)

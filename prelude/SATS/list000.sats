@@ -182,6 +182,24 @@ rappend_vt with list_rappend_vt of 1000
 #symload
 rappendx0_vt with list_rappendx0_vt of 1000
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-08-04:
+Is GSEQ coming of age?
+Sun 04 Aug 2024 08:24:43 AM EDT
+*)
+fcast // fun
+GSEQ_make_list
+{a:t0}
+(xs: list(a)): GSEQ(list(a), a)
+#symload GSEQ with GSEQ_make_list of 1000
+#symload GSEQ_list with GSEQ_make_list of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

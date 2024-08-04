@@ -163,6 +163,7 @@ gseq_fset_at = gseq_fset1_at<xs><x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 (*
 HX-2024-07-17:
 Wed 17 Jul 2024 01:31:56 PM EDT
@@ -180,6 +181,7 @@ gseq_append = gseq_append00<xs><x0><ys>
 HX-2024-07-17:
 Wed 17 Jul 2024 01:36:53 PM EDT
 *)
+//
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -187,9 +189,11 @@ Wed 17 Jul 2024 01:36:53 PM EDT
 gseq_prepend = gseq_prepend00<xs><x0><ys>
 //
 (* ****** ****** *)
+//
 (*
 Wed 17 Jul 2024 04:10:30 PM EDT
 *)
+//
 #impltmp
 < xs:t0 >
 < x0:t0 >
