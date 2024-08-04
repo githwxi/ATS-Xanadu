@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -35,6 +36,7 @@ Sat 13 Jul 2024 10:17:23 AM EDT
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 #typedef ni = nint
 (* ****** ****** *)
@@ -106,6 +108,100 @@ gseq_iz2foritm0<xs,ys><x0,y0>(*void*)
 , y0:t0 >
 gseq_irz2foritm =
 gseq_irz2foritm0<xs,ys><x0,y0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-08-04:
+Sun 04 Aug 2024 07:26:14 AM EDT
+*)
+//
+#impltmp
+< xs:t0
+, ys:t0 >
+< x0:t0
+, y0:t0 >
+gseq_x2forall
+  (xs, ys) =
+(
+gseq_forall<xs><x0>(xs)) where
+{
+#impltmp
+forall$test<x0>(x0) =
+(
+gseq_forall<ys><y0>(ys)) where
+{
+#impltmp
+forall$test<y0>(y0) = x2forall$test<x0,y0>(x0, y0)
+}(*where*)
+}(*where*)//end-of-[gseq_x2forall(xs, ys)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0
+, ys:t0 >
+< x0:t0
+, y0:t0 >
+gseq_x2rforall
+  (xs, ys) =
+(
+gseq_rforall<xs><x0>(xs)) where
+{
+#impltmp
+rforall$test<x0>(x0) =
+(
+gseq_rforall<ys><y0>(ys)) where
+{
+#impltmp
+rforall$test<y0>(y0) = x2rforall$test<x0,y0>(x0, y0)
+}(*where*)
+}(*where*)//end-of-[gseq_x2rforall(xs, ys)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0
+, ys:t0 >
+< x0:t0
+, y0:t0 >
+gseq_x2iforall
+  (xs, ys) =
+(
+gseq_iforall<xs><x0>(xs)) where
+{
+#impltmp
+iforall$test<x0>(i0, x0) =
+(
+gseq_iforall<ys><y0>(ys)) where
+{
+#impltmp
+iforall$test<y0>(j0, y0) = x2iforall$test<x0,y0>(i0, x0, j0, y0)
+}(*where*)
+}(*where*)//end-of-[gseq_x2iforall(xs, ys)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0
+, ys:t0 >
+< x0:t0
+, y0:t0 >
+gseq_x2irforall
+  (xs, ys) =
+(
+gseq_irforall<xs><x0>(xs)) where
+{
+#impltmp
+irforall$test<x0>(i0, x0) =
+(
+gseq_irforall<ys><y0>(ys)) where
+{
+#impltmp
+irforall$test<y0>(j0, y0) = x2irforall$test<x0,y0>(i0, x0, j0, y0)
+}(*where*)
+}(*where*)//end-of-[gseq_x2irforall(xs, ys)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
