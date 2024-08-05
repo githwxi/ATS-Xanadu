@@ -40,6 +40,24 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 <a:t0>
+list_listize
+{n:i0}
+(xs: list(a, n)): list_vt(a, n)
+//
+#symload listize with list_listize of 1000
+//
+fun
+<a:t0>
+list_rlistize
+{n:i0}
+(xs: list(a, n)): list_vt(a, n)
+//
+#symload rlistize with list_rlistize of 1000
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
 list_strmize
 (xs: list(a)): strm_vt(a)
 fun
@@ -48,8 +66,8 @@ list_strqize
 {n:i0}
 (xs: list(a, n)): strq_vt(a, n)
 //
-#symload strmize with list_strmize
-#symload strqize with list_strqize
+#symload strmize with list_strmize of 1000
+#symload strqize with list_strqize of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -67,6 +85,11 @@ fun
 <x0:t0>
 list_irforall(xs: list(x0)): bool
 //
+#symload forall with list_forall of 1000
+#symload rforall with list_rforall of 1000
+#symload iforall with list_iforall of 1000
+#symload irforall with list_irforall of 1000
+//
 (* ****** ****** *)
 //
 fun
@@ -81,6 +104,11 @@ list_iforitm(xs: list(x0)): void
 fun
 <x0:t0>
 list_irforitm(xs: list(x0)): void
+//
+#symload foritm with list_foritm of 1000
+#symload rforitm with list_rforitm of 1000
+#symload iforitm with list_iforitm of 1000
+#symload irforitm with list_irforitm of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -874,11 +874,11 @@ g_append(y1: xs, y2: xs): (xs) // for [appends]
 fun
 <x0:t0>
 <y0:t0>
-rz2forall$test(x0, y0): void
+rz2forall$test(x0, y0): bool
 fun
 <x0:t0>
 <y0:t0>
-irz2forall$test(ni, x0, y0): void
+irz2forall$test(ni, x0, y0): bool
 //
 (* ****** ****** *)
 //

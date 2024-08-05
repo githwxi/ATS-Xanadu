@@ -285,14 +285,17 @@ end(*let*)//end-of-[list_strmize(xs)]
 #impltmp
 { x0:t0 }
 gseq_strmize<list(x0)><x0> = list_strmize<x0>
-#impltmp
-{ x0:t0 }
-gseq_strmize0<list(x0)><x0> = list_strmize<x0>
-#impltmp
-{ x0:t0 }
-gseq_strmize1<list(x0)><x0> = list_strmize<x0>
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+list_rlistize = list_reverse_vt<x0>
+#impltmp
+{ x0:t0 }
+gseq_rlistize<list(x0)><x0> = list_rlistize<x0>
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -305,12 +308,6 @@ list_vt_strmize0<x0>(list_reverse_vt<x0>(xs)))
 #impltmp
 { x0:t0 }
 gseq_rstrmize<list(x0)><x0> = list_rstrmize<x0>
-#impltmp
-{ x0:t0 }
-gseq_rstrmize0<list(x0)><x0> = list_rstrmize<x0>
-#impltmp
-{ x0:t0 }
-gseq_rstrmize1<list(x0)><x0> = list_rstrmize<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -579,6 +579,34 @@ gseq_irfolditm_c3fr<xs><x0><r0>(xs, r0, fopr))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-08-05:
+Mon 05 Aug 2024 05:49:43 PM EDT
+*)
+//
+#impltmp
+< xs: t0 >
+< x0: t0 >
+gseq_strmize0 = gseq_strmize<xs><x0>
+#impltmp
+< xs: t0 >
+< x0: t0 >
+gseq_strmize1 = gseq_strmize<xs><x0>
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs: t0 >
+< x0: t0 >
+gseq_rstrmize0 = gseq_rstrmize<xs><x0>
+#impltmp
+< xs: t0 >
+< x0: t0 >
+gseq_rstrmize1 = gseq_rstrmize<xs><x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
