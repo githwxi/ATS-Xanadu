@@ -116,60 +116,36 @@ fun
 <x0:vt>
 gasz_forall_c1fr
 (xs: xs, test: (!x0)-<cfr>bool): bool
-fun
-<xs:t0>
-<x0:vt>
-gasz_forall_f1np
-(xs: xs, test: (!x0)-<fnp>bool): bool
 //
 #symload forall with gasz_forall_c1fr of 0100
 #symload forall_cfr with gasz_forall_c1fr of 0100
-#symload forall_fnp with gasz_forall_f1np of 0100
 //
 fun
 <xs:t0>
 <x0:vt>
 gasz_exists_c1fr
 (xs: xs, test: (!x0)-<cfr>bool): bool
-fun
-<xs:t0>
-<x0:vt>
-gasz_exists_f1np
-(xs: xs, test: (!x0)-<fnp>bool): bool
 //
 #symload exists with gasz_exists_c1fr of 0100
 #symload exists_cfr with gasz_exists_c1fr of 0100
-#symload exists_fnp with gasz_exists_f1np of 0100
 //
 fun
 <xs:t0>
 <x0:vt>
 gasz_rforall_c1fr
 (xs: xs, test: (!x0)-<cfr>bool): bool
-fun
-<xs:t0>
-<x0:vt>
-gasz_rforall_f1np
-(xs: xs, test: (!x0)-<fnp>bool): bool
 //
 #symload rforall with gasz_rforall_c1fr of 0100
 #symload rforall_cfr with gasz_rforall_c1fr of 0100
-#symload rforall_fnp with gasz_rforall_f1np of 0100
 //
 fun
 <xs:t0>
 <x0:vt>
 gasz_rexists_c1fr
 (xs: xs, test: (!x0)-<cfr>bool): bool
-fun
-<xs:t0>
-<x0:vt>
-gasz_rexists_f1np
-(xs: xs, test: (!x0)-<fnp>bool): bool
 //
 #symload rexists with gasz_rexists_c1fr of 0100
 #symload rexists_cfr with gasz_rexists_c1fr of 0100
-#symload rexists_fnp with gasz_rexists_f1np of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
