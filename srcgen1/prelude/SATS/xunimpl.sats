@@ -611,8 +611,8 @@ fun
 gseq_iforitm_c2fr
 (xs: xs, work: (ni,x0)-<cfr>void): void
 //
-#symload iforitm with gseq_iforitm_c1fr of 0100
-#symload iforitm_cfr with gseq_iforitm_c1fr of 0100
+#symload iforitm with gseq_iforitm_c2fr of 0100
+#symload iforitm_cfr with gseq_iforitm_c2fr of 0100
 //
 fun
 <xs:t0>

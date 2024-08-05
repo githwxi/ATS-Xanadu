@@ -398,7 +398,7 @@ val b0 = iforall$test1<x0>(i0, x0) }
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_iforall0_c1fr
+gseq_iforall0_c2fr
   (xs, test) =
 (
 gseq_iforall0
@@ -406,12 +406,12 @@ gseq_iforall0
 {
 #impltmp
 iforall$test0<x0>(i0,x0) = test(i0,x0)
-}(*where*)//end(gseq_iforall0_c1fr(...))
+}(*where*)//end(gseq_iforall0_c2fr(...))
 //
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_iforall1_c1fr
+gseq_iforall1_c2fr
   (xs, test) =
 (
 gseq_iforall1
@@ -419,7 +419,7 @@ gseq_iforall1
 {
 #impltmp
 iforall$test1<x0>(i0,x0) = test(i0,x0)
-}(*where*)//end(gseq_iforall1_c1fr(...))
+}(*where*)//end(gseq_iforall1_c2fr(...))
 //
 (* ****** ****** *)
 //
@@ -491,7 +491,7 @@ val b0 = irforall$test1<x0>(i0, x0) }
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_irforall0_c1fr
+gseq_irforall0_c2fr
   (xs, test) =
 (
 gseq_irforall0
@@ -499,12 +499,12 @@ gseq_irforall0
 {
 #impltmp
 irforall$test0<x0>(i0,x0) = test(i0,x0)
-}(*where*)//end(gseq_irforall0_c1fr(...))
+}(*where*)//end(gseq_irforall0_c2fr(...))
 //
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_irforall1_c1fr
+gseq_irforall1_c2fr
   (xs, test) =
 (
 gseq_irforall1
@@ -512,7 +512,7 @@ gseq_irforall1
 {
 #impltmp
 irforall$test1<x0>(i0,x0) = test(i0,x0)
-}(*where*)//end(gseq_irforall1_c1fr(...))
+}(*where*)//end(gseq_irforall1_c2fr(...))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -690,7 +690,7 @@ iforitm$work1<x0>(i0, x0) in true end
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_iforitm0_c1fr
+gseq_iforitm0_c2fr
   (xs, work) =
 (
 gseq_iforitm0
@@ -698,12 +698,12 @@ gseq_iforitm0
 {
 #impltmp
 iforitm$work0<x0>(i0,x0) = work(i0,x0)
-}(*where*)//end(gseq_iforitm0_c1fr(...))
+}(*where*)//end(gseq_iforitm0_c2fr(...))
 //
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_iforitm1_c1fr
+gseq_iforitm1_c2fr
   (xs, work) =
 (
 gseq_iforitm1
@@ -711,7 +711,7 @@ gseq_iforitm1
 {
 #impltmp
 iforitm$work1<x0>(i0,x0) = work(i0,x0)
-}(*where*)//end(gseq_iforitm1_c1fr(...))
+}(*where*)//end(gseq_iforitm1_c2fr(...))
 //
 (* ****** ****** *)
 //
@@ -756,7 +756,7 @@ irforitm$work1<x0>(i0, x0) in true end
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_irforitm0_c1fr
+gseq_irforitm0_c2fr
   (xs, work) =
 (
 gseq_irforitm0
@@ -764,12 +764,12 @@ gseq_irforitm0
 {
 #impltmp
 irforitm$work0<x0>(i0,x0) = work(i0,x0)
-}(*where*)//end(gseq_irforitm0_c1fr(...))
+}(*where*)//end(gseq_irforitm0_c2fr(...))
 //
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_irforitm1_c1fr
+gseq_irforitm1_c2fr
   (xs, work) =
 (
 gseq_irforitm1
@@ -777,7 +777,7 @@ gseq_irforitm1
 {
 #impltmp
 irforitm$work1<x0>(i0,x0) = work(i0,x0)
-}(*where*)//end(gseq_irforitm1_c1fr(...))
+}(*where*)//end(gseq_irforitm1_c2fr(...))
 //
 (* ****** ****** *)
 (* ****** ****** *)

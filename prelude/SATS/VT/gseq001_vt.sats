@@ -607,7 +607,7 @@ fun
 <r0:vt>
 gseq_ifolditm0_c3fr
 ( xs: ~xs, r0: r0
-, fopr: (ni, r0, ~x0)-<cfr> (r0)): (r0)
+, fopr: (r0, ni, ~x0)-<cfr> (r0)): (r0)
 //
 #symload
 ifolditm0 with gseq_ifolditm0_c3fr of 1000
@@ -620,7 +620,7 @@ fun
 <r0:vt>
 gseq_ifolditm1_c3fr
 ( xs: !xs, r0: r0
-, fopr: (ni, r0, !x0)-<cfr> (r0)): (r0)
+, fopr: (r0, ni, !x0)-<cfr> (r0)): (r0)
 //
 #symload
 ifolditm1 with gseq_ifolditm1_c3fr of 1000
