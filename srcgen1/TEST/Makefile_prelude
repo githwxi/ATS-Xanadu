@@ -208,6 +208,9 @@ $(XATSOPT) -s $(PRELUDE1)/SATS/synoug0.sats
 all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/unsafex.sats
 
+all1_sats:: ; \
+$(XATSOPT) -s $(PRELUDE1)/SATS/xunimpl.sats
+
 ######
 
 all1_sats:: ; \
@@ -235,6 +238,9 @@ $(XATSOPT) -s $(PRELUDE1)/SATS/VT/strm001_vt.sats
 
 all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/VT/synoug0_vt.sats
+
+all1_sats:: ; \
+$(XATSOPT) -s $(PRELUDE1)/SATS/VT/xunimpl_vt.sats
 
 ######
 #
