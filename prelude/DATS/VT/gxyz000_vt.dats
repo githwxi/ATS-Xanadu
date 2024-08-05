@@ -181,6 +181,40 @@ gseq_rforall1_c1fr
   gseq_rforall_c1fr<xs><x0>(xs, test))
 //
 (* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_iforall0_c2fr
+  (xs, test) =
+(
+  gseq_iforall_c2fr<xs><x0>(xs, test))
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_iforall1_c2fr
+  (xs, test) =
+(
+  gseq_iforall_c2fr<xs><x0>(xs, test))
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_irforall0_c2fr
+  (xs, test) =
+(
+  gseq_irforall_c2fr<xs><x0>(xs, test))
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_irforall1_c2fr
+  (xs, test) =
+(
+  gseq_irforall_c2fr<xs><x0>(xs, test))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -323,6 +357,224 @@ gseq_rforitm1_c1fr
   (xs, work) =
 (
   gseq_rforitm_c1fr<xs><x0>(xs, work))
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_iforitm0_c2fr
+  (xs, work) =
+(
+  gseq_iforitm_c2fr<xs><x0>(xs, work))
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_iforitm1_c2fr
+  (xs, work) =
+(
+  gseq_iforitm_c2fr<xs><x0>(xs, work))
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_irforitm0_c2fr
+  (xs, work) =
+(
+  gseq_irforitm_c2fr<xs><x0>(xs, work))
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_irforitm1_c2fr
+  (xs, work) =
+(
+  gseq_irforitm_c2fr<xs><x0>(xs, work))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+*)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_folditm0(xs, r0) =
+(
+gseq_folditm<xs><x0><r0>(xs, r0))
+where
+{
+#impltmp
+folditm$fopr<x0><r0> = folditm$fopr0<x0><r0>
+}
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_folditm1(xs, r0) =
+(
+gseq_folditm<xs><x0><r0>(xs, r0))
+where
+{
+#impltmp
+folditm$fopr<x0><r0> = folditm$fopr1<x0><r0>
+}
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_folditm0_c2fr
+  (xs, r0, fopr) =
+(
+gseq_folditm_c2fr<xs><x0><r0>(xs, r0, fopr))
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_folditm1_c2fr
+  (xs, r0, fopr) =
+(
+gseq_folditm_c2fr<xs><x0><r0>(xs, r0, fopr))
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_rfolditm0(xs, r0) =
+(
+gseq_rfolditm<xs><x0><r0>(xs, r0))
+where
+{
+#impltmp
+rfolditm$fopr<x0><r0> = rfolditm$fopr0<x0><r0>
+}
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_rfolditm1(xs, r0) =
+(
+gseq_rfolditm<xs><x0><r0>(xs, r0))
+where
+{
+#impltmp
+rfolditm$fopr<x0><r0> = rfolditm$fopr1<x0><r0>
+}
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_rfolditm0_c2fr
+  (xs, r0, fopr) =
+(
+gseq_rfolditm_c2fr<xs><x0><r0>(xs, r0, fopr))
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_rfolditm1_c2fr
+  (xs, r0, fopr) =
+(
+gseq_rfolditm_c2fr<xs><x0><r0>(xs, r0, fopr))
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_ifolditm0(xs, r0) =
+(
+gseq_ifolditm<xs><x0><r0>(xs, r0))
+where
+{
+#impltmp
+ifolditm$fopr<x0><r0> = ifolditm$fopr0<x0><r0>
+}
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_ifolditm1(xs, r0) =
+(
+gseq_ifolditm<xs><x0><r0>(xs, r0))
+where
+{
+#impltmp
+ifolditm$fopr<x0><r0> = ifolditm$fopr1<x0><r0>
+}
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_ifolditm0_c3fr
+  (xs, r0, fopr) =
+(
+gseq_ifolditm_c3fr<xs><x0><r0>(xs, r0, fopr))
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_ifolditm1_c3fr
+  (xs, r0, fopr) =
+(
+gseq_ifolditm_c3fr<xs><x0><r0>(xs, r0, fopr))
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_irfolditm0(xs, r0) =
+(
+gseq_irfolditm<xs><x0><r0>(xs, r0))
+where
+{
+#impltmp
+irfolditm$fopr<x0><r0> = irfolditm$fopr0<x0><r0>
+}
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_irfolditm1(xs, r0) =
+(
+gseq_irfolditm<xs><x0><r0>(xs, r0))
+where
+{
+#impltmp
+irfolditm$fopr<x0><r0> = irfolditm$fopr1<x0><r0>
+}
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_irfolditm0_c3fr
+  (xs, r0, fopr) =
+(
+gseq_irfolditm_c3fr<xs><x0><r0>(xs, r0, fopr))
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< r0:vt >
+gseq_irfolditm1_c3fr
+  (xs, r0, fopr) =
+(
+gseq_irfolditm_c3fr<xs><x0><r0>(xs, r0, fopr))
 //
 (* ****** ****** *)
 (* ****** ****** *)
