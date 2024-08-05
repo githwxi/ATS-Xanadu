@@ -618,14 +618,19 @@ gseq_x2irmap_lstrq(xs: xs, ys: ys): strq_vt(z0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<xs:t0>
-<x0:t0>
-<ys:t0>
-<y0:t0>
-GSEQ_z2make
-( xs: GSEQ(xs, x0)
-, ys: GSEQ(ys, y0)): GSEQ(z2tup(xs, ys), (x0, y0))
+#typedef
+gz2seq
+( xs: t0, x0: t0
+, ys: t0, y0: t0) =
+(
+  z2tup(GSEQ(xs, x0), GSEQ(ys, y0)))
+//
+#typedef
+gx2seq
+( xs: t0, x0: t0
+, ys: t0, y0: t0) =
+(
+  x2tup(GSEQ(xs, x0), GSEQ(ys, y0)))
 //
 (* ****** ****** *)
 //
@@ -634,9 +639,18 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
+GSEQ_z2make
+( xs: GSEQ(xs, x0)
+, ys: GSEQ(ys, y0)): GSEQ(gz2seq(xs,x0,ys,y0), (x0,y0))
+//
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
 GSEQ_x2make
 ( xs: GSEQ(xs, x0)
-, ys: GSEQ(ys, y0)): GSEQ(x2tup(xs, ys), (x0, y0))
+, ys: GSEQ(ys, y0)): GSEQ(gx2seq(xs,x0,ys,y0), (x0,y0))
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -118,6 +118,9 @@ HX-2024-08-04:
 Sun 04 Aug 2024 07:26:14 AM EDT
 *)
 //
+(*
+HX-2024-08-04:
+This one is BUGGY!!!
 #impltmp
 < xs:t0 >
 < x0:t0 >
@@ -137,6 +140,35 @@ gseq_forall<ys><y0>(ys)) where
 forall$test<y0>(y0) = x2forall$test<x0><y0>(x0, y0)
 }(*where*)
 }(*where*)//end-of-[gseq_x2forall(xs, ys)]
+*)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< ys:t0 >
+< y0:t0 >
+gseq_x2forall
+  (xs, ys) =
+let
+//
+fun
+forall$test_x0(x0) =
+(
+  gseq_forall<ys><y0>(ys)
+) where
+{
+#impltmp
+forall$test<y0>(y0) =
+x2forall$test<x0><y0>(x0, y0) }
+//
+in//let
+(
+  gseq_forall<xs><x0>(xs)) where
+{
+#impltmp
+forall$test<x0>(x0) = forall$test_x0(x0)
+}
+end//(*let*)//end-of-[gseq_x2forall(xs, ys)]
 //
 (* ****** ****** *)
 //
@@ -147,18 +179,26 @@ forall$test<y0>(y0) = x2forall$test<x0><y0>(x0, y0)
 < y0:t0 >
 gseq_x2rforall
   (xs, ys) =
+let
+//
+fun
+rforall$test_x0(x0) =
 (
-gseq_rforall<xs><x0>(xs)) where
+  gseq_rforall<ys><y0>(ys)
+) where
 {
 #impltmp
-rforall$test<x0>(x0) =
+rforall$test<y0>(y0) =
+x2rforall$test<x0><y0>(x0, y0) }
+//
+in//let
 (
-gseq_rforall<ys><y0>(ys)) where
+  gseq_rforall<xs><x0>(xs)) where
 {
 #impltmp
-rforall$test<y0>(y0) = x2rforall$test<x0><y0>(x0, y0)
-}(*where*)
-}(*where*)//end-of-[gseq_x2rforall(xs, ys)]
+rforall$test<x0>(x0) = rforall$test_x0(x0)
+}
+end//(*let*)//end-of-[gseq_x2rforall(xs, ys)]
 //
 (* ****** ****** *)
 //
@@ -169,18 +209,27 @@ rforall$test<y0>(y0) = x2rforall$test<x0><y0>(x0, y0)
 < y0:t0 >
 gseq_x2iforall
   (xs, ys) =
+let
+//
+fun
+iforall$test_x0(i0, x0) =
 (
-gseq_iforall<xs><x0>(xs)) where
+  gseq_iforall<ys><y0>(ys)
+) where
 {
 #impltmp
-iforall$test<x0>(i0, x0) =
+iforall$test<y0>(j0, y0) =
+x2iforall$test<x0><y0>(i0, x0, j0, y0)
+}
+//
+in//let
 (
-gseq_iforall<ys><y0>(ys)) where
+  gseq_iforall<xs><x0>(xs)) where
 {
 #impltmp
-iforall$test<y0>(j0, y0) = x2iforall$test<x0><y0>(i0, x0, j0, y0)
-}(*where*)
-}(*where*)//end-of-[gseq_x2iforall(xs, ys)]
+iforall$test<x0>(i0, x0) = iforall$test_x0(i0, x0)
+}
+end//(*let*)//end-of-[gseq_x2iforall(xs, ys)]
 //
 (* ****** ****** *)
 //
@@ -191,18 +240,27 @@ iforall$test<y0>(j0, y0) = x2iforall$test<x0><y0>(i0, x0, j0, y0)
 < y0:t0 >
 gseq_x2irforall
   (xs, ys) =
+let
+//
+fun
+irforall$test_x0(i0, x0) =
 (
-gseq_irforall<xs><x0>(xs)) where
+  gseq_irforall<ys><y0>(ys)
+) where
 {
 #impltmp
-irforall$test<x0>(i0, x0) =
+irforall$test<y0>(j0, y0) =
+x2irforall$test<x0><y0>(i0, x0, j0, y0)
+}
+//
+in//let
 (
-gseq_irforall<ys><y0>(ys)) where
+  gseq_irforall<xs><x0>(xs)) where
 {
 #impltmp
-irforall$test<y0>(j0, y0) = x2irforall$test<x0><y0>(i0, x0, j0, y0)
-}(*where*)
-}(*where*)//end-of-[gseq_x2irforall(xs, ys)]
+irforall$test<x0>(i0, x0) = irforall$test_x0(i0, x0)
+}
+end//(*let*)//end-of-[gseq_x2irforall(xs, ys)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -227,29 +285,24 @@ the phase of template resolution.
 GZ2SEQ(xs, ys) =
 GSEQ_z2make(GSEQ(xs), GSEQ(ys))
 //
-(* ****** ****** *)
+(*
+#typedef
+gz2seq
+( xs: t0, x0: t0
+, ys: t0, y0: t0) =
+(
+z2tup(GSEQ(xs, x0), GSEQ(ys, y0)))
+*)
 //
 #impltmp
 <xs : t0>
 <x0 : t0>
 <ys : t0>
 <y0 : t0>
-GSEQ_z2make(gsqx, gsqy) = 
-(
-$UN.castxy
-(
-z2tup_make<xs><ys>
-(GSEQ_unmk(gsqx), GSEQ_unmk(gsqy))))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#typedef
-gz2seq
-( xs: t0, x0: t0
-, ys: t0, y0: t0) =
-(
-  z2tup(GSEQ(xs, x0), GSEQ(ys, y0)))
+GSEQ_z2make
+(xgsq, ygsq) =
+$UN.castxy//GSEQ_make
+(z2tup_make(xgsq, ygsq))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -295,26 +348,24 @@ end(*let*)//end-of-[GSEQ_rforall(z2tup(xs, ys)]
 GX2SEQ(xs, ys) =
 GSEQ_x2make(GSEQ(xs), GSEQ(ys))
 //
-#impltmp
-<xs : t0>
-<x0 : t0>
-<ys : t0>
-<y0 : t0>
-GSEQ_x2make(gsqx, gsqy) = 
-(
-$UN.castxy
-(
-x2tup_make<xs><ys>
-(GSEQ_unmk(gsqx), GSEQ_unmk(gsqy))))
-//
-(* ****** ****** *)
-//
+(*
 #typedef
 gx2seq
 ( xs: t0, x0: t0
 , ys: t0, y0: t0) =
 (
-  x2tup(GSEQ(xs, x0), GSEQ(ys, y0)))
+x2tup(GSEQ(xs, x0), GSEQ(ys, y0)))
+*)
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+<ys : t0>
+<y0 : t0>
+GSEQ_x2make
+(xgsq, ygsq) = 
+$UN.castxy//GSEQ_make
+(x2tup_make(xgsq, ygsq))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -324,34 +375,36 @@ gx2seq
 , x0:t0
 , ys:t0
 , y0:t0 }
-GSEQ_forall
+gseq_forall
 <gx2seq(xs,x0,ys,y0)><(x0,y0)>
-  (  xsys  ) =
-let
+  (xsys) =
+(
+gseq_x2forall
+<xs><x0><ys><y0>(xs, ys))
+where
+{
 val
 @(xs, ys) =
-x2tup_unmk
-(GSEQ_unmk(xsys))
+x2tup_unmk(xsys)
 val xs = GSEQ_unmk(xs)
-and ys = GSEQ_unmk(ys) in gseq_x2forall<xs><x0><ys><y0>(xs, ys)
-end(*let*)//end-of-[GSEQ_forall(x2tup(xs, ys)]
+and ys = GSEQ_unmk(ys)
+#impltmp
+x2forall$test<x0><y0>(x0, y0) = forall$test@(x0, y0)
+}
 //
 #impltmp
 { xs:t0
 , x0:t0
 , ys:t0
 , y0:t0 }
-GSEQ_rforall
-<gx2seq(xs,x0,ys,y0)><(x0,y0)>
-  (  xsys  ) =
-let
-val
-@(xs, ys) =
-x2tup_unmk
-(GSEQ_unmk(xsys))
-val xs = GSEQ_unmk(xs)
-and ys = GSEQ_unmk(ys) in gseq_x2rforall<xs><x0><ys><y0>(xs, ys)
-end(*let*)//end-of-[GSEQ_rforall(x2tup(xs, ys)]
+gseq_forall0
+<gx2seq(xs,x0,ys,y0)><(x0,y0)>(xsys) =
+(
+gseq_forall
+<gx2seq(xs,x0,ys,y0)><(x0,y0)>(xsys)) where
+{
+#impltmp forall$test<(x0,y0)> = forall$test0<(x0,y0)>
+}
 //
 (* ****** ****** *)
 //
@@ -360,34 +413,36 @@ end(*let*)//end-of-[GSEQ_rforall(x2tup(xs, ys)]
 , x0:t0
 , ys:t0
 , y0:t0 }
-GSEQ_iforall
+gseq_rforall
 <gx2seq(xs,x0,ys,y0)><(x0,y0)>
-  (  xsys  ) =
-let
+  (xsys) =
+(
+gseq_x2rforall
+<xs><x0><ys><y0>(xs, ys))
+where
+{
 val
 @(xs, ys) =
-x2tup_unmk
-(GSEQ_unmk(xsys))
+x2tup_unmk(xsys)
 val xs = GSEQ_unmk(xs)
-and ys = GSEQ_unmk(ys) in gseq_x2iforall<xs><x0><ys><y0>(xs, ys)
-end(*let*)//end-of-[GSEQ_iforall(x2tup(xs, ys)]
+and ys = GSEQ_unmk(ys)
+#impltmp
+x2rforall$test<x0><y0>(x0, y0) = rforall$test@(x0, y0)
+}
 //
 #impltmp
 { xs:t0
 , x0:t0
 , ys:t0
 , y0:t0 }
-GSEQ_irforall
-<gx2seq(xs,x0,ys,y0)><(x0,y0)>
-  (  xsys  ) =
-let
-val
-@(xs, ys) =
-x2tup_unmk
-(GSEQ_unmk(xsys))
-val xs = GSEQ_unmk(xs)
-and ys = GSEQ_unmk(ys) in gseq_x2irforall<xs><x0><ys><y0>(xs, ys)
-end(*let*)//end-of-[GSEQ_irforall(x2tup(xs, ys)]
+gseq_rforall0
+<gx2seq(xs,x0,ys,y0)><(x0,y0)>(xsys) =
+(
+gseq_rforall
+<gx2seq(xs,x0,ys,y0)><(x0,y0)>(xsys)) where
+{
+#impltmp rforall$test<(x0,y0)> = rforall$test0<(x0,y0)>
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -899,18 +899,32 @@ ltis:l2t2plst,
 ltjs:l2t2plst): bool =
 (
 case+ ltis of
-|list_nil() => true
-|list_cons(lti1, ltis) =>
+|
+list_nil() =>
 (
 case+ ltjs of
-|list_nil() => true
-|list_cons(ltj1, ltjs) =>
+|
+list_nil() => true
+|
+list_cons _ => false)
+//
+|
+list_cons
+(lti1, ltis) =>
+(
+case+ ltjs of
+|
+list_nil() => false
+|
+list_cons
+(ltj1, ltjs) =>
 let
 //
 val
 S2LAB(li, tip1) = lti1
 val
 S2LAB(lj, tjp1) = ltj1
+//
 val res1 =
 if
 (li = lj)
@@ -1402,11 +1416,12 @@ val res1 =
 if res1 then 
 (npfi = npfj) else false
 in//let
-(if
- res1
- then
- f2_ltis_ltjs
- (ltis, ltjs, tsub) else false)
+(
+if
+res1
+then
+f2_ltis_ltjs
+(ltis, ltjs, tsub) else false)
 end//let
 //
 |
@@ -1473,30 +1488,42 @@ f2_ltis_ltjs
 : &s2vts_vt >> _): bool =
 (
 case+ ltis of
-|list_nil() => true
-|list_cons(lti1, ltis) =>
+|
+list_nil() =>
 (
 case+ ltjs of
-|list_nil() => true
-|list_cons(ltj1, ltjs) =>
+|
+list_nil() => true
+|
+list_cons _ => false)
+|
+list_cons
+(lti1, ltis) =>
+(
+case+ ltjs of
+|
+list_nil() => false
+|
+list_cons
+(ltj1, ltjs) =>
 let
 //
 val
 S2LAB(li, tip1) = lti1
 val
 S2LAB(lj, tjp1) = ltj1
+//
 val res1 =
 if (li = lj) then
 f2_tip1_tjp1
 (tip1, tjp1, tsub) else false
 //
 in//let
-(if
- res1
- then
- f2_ltis_ltjs
- (ltis, ltjs, tsub) else false)
-end//let
+if
+res1
+then
+f2_ltis_ltjs
+(ltis,ltjs,tsub) else false end//let
 )
 )(*case+*)
 //end-of-[f2_ltis_ltjs(ltis,ltjs,tsub)]

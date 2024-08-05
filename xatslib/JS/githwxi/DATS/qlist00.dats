@@ -144,8 +144,8 @@ if b0 then
 #impltmp
 rforall$test<a> = forall$test<a>
 }
-//
 else (false) // else // end-of-[if]
+//
 end//let//end-of-[qlist_forall(xs)]
 //
 (* ****** ****** *)
