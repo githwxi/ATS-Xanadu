@@ -221,38 +221,12 @@ gasz_forall
 forall$test1<x0>(x0) = test(x0)
 }
 //
-#impltmp
-< xs:t0 >
-< x0:vt >
-gasz_forall_f1np
-  (xs, test) =
-(
-gasz_forall
-<xs><x0>(xs)) where
-{
-#impltmp
-forall$test1<x0>(x0) = test(x0)
-}
-//
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
 gasz_rforall_c1fr
-  (xs, test) =
-(
-gasz_rforall
-<xs><x0>(xs)) where
-{
-#impltmp
-rforall$test1<x0>(x0) = test(x0)
-}
-//
-#impltmp
-< xs:t0 >
-< x0:vt >
-gasz_rforall_f1np
   (xs, test) =
 (
 gasz_rforall

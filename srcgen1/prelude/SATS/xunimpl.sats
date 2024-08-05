@@ -1135,6 +1135,7 @@ gseq_imap_c2fr_llist
 ( xs: xs
 , fopr: (ni, x0) -<cfr> y0): list_vt(y0)
 *)
+(*
 fun
 <xs:t0>
 <x0:t0>
@@ -1142,6 +1143,7 @@ fun
 gseq_imap_c2fr_lstrm
 ( xs: xs
 , fopr: (ni, x0) -<cfr> y0): strm_vt(y0)
+*)
 fun
 <xs:t0>
 <x0:t0>
