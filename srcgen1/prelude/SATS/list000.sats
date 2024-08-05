@@ -589,9 +589,6 @@ fun
 list_map_c1fr
 {n:int}
 (xs:list(x0,n), f0:(x0)-<cfr>y0): list(y0,n)
-//
-(* ****** ****** *)
-//
 fun
 <x0:t0>
 <y0:vt>
@@ -599,9 +596,9 @@ list_map_c1fr_vt
 {n:int}
 (xs:list(x0,n), f0:(x0)-<cfr>y0): list_vt(y0,n)
 //
-(* ****** ****** *)
 #symload map_cfr with list_map_c1fr of 1000
 #symload map_cfr_vt with list_map_c1fr_vt of 1000
+//
 (* ****** ****** *)
 //
 (*

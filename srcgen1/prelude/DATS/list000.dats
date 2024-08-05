@@ -1085,22 +1085,22 @@ val () = iforeach$work<x0>(i0, x1)}
 //
 #impltmp
 <x0><y0>
-list_map_f1np
+list_map_c1fr
 (    xs, f0    ) =
 (
 list_map<x0><y0>(xs)) where
 {
 #impltmp map$fopr<x0><y0>(x0) = f0(x0)
-} (*where*)//end-[list_map_f1np(xs,f0)]
+} (*where*)//end-[list_map_c1fr(xs,f0)]
 #impltmp
 <x0><y0>
-list_map_f1np_vt
+list_map_c1fr_vt
 (    xs, f0    ) =
 (
 list_map_vt<x0><y0>(xs)) where
 {
 #impltmp map$fopr<x0><y0>(x0) = f0(x0)
-} (*where*)//end-[list_map_f1np_vt(xs,f0)]
+} (*where*)//end-[list_map_c1fr_vt(xs,f0)]
 //
 (* ****** ****** *)
 //
