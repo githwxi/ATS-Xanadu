@@ -1814,6 +1814,21 @@ gseq_map_f1np_list
 fun
 <xs:t0>
 <x0:t0>
+<y0:t0>
+gseq_map_c1fr_rlist
+( xs: xs
+, fopr: (x0) -<cfr> y0): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_map_f1np_rlist
+( xs: xs
+, fopr: (x0) -<fnp> y0): list(y0)
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
 <y0:vt>
 gseq_map_c1fr_llist
 ( xs: xs
@@ -1846,6 +1861,21 @@ fun
 gseq_map_f1np_lstrm
 ( xs: xs
 , fopr: (x0) -<fnp> y0): strm_vt(y0)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_c1fr_lstrq
+( xs: xs
+, fopr: (x0) -<cfr> y0): strq_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_f1np_lstrq
+( xs: xs
+, fopr: (x0) -<fnp> y0): strq_vt(y0)
 (* ****** ****** *)
 //
 // HX: gseq_filter
@@ -1908,6 +1938,19 @@ fun
 gseq_filter_f1np_lstrm
 ( xs: xs
 , test: (x0)-<fnp>bool): strm_vt(x0)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_filter_c1fr_lstrq
+( xs: xs
+, test: (x0)-<cfr>bool): strq_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_filter_f1np_lstrq
+( xs: xs
+, test: (x0)-<fnp>bool): strq_vt(x0)
 //
 (* ****** ****** *)
 //

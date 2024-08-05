@@ -591,6 +591,23 @@ gseq_irforall_f2np
 //
 (* ****** ****** *)
 //
+fun
+<xs:t0>
+<x0:t0>
+gseq_irexists_c2fr
+(xs: xs, test: (ni, x0)-<cfr>bool): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_irexists_f2np
+(xs: xs, test: (ni, x0)-<fnp>bool): bool
+//
+#symload irexists with gseq_irexists_c2fr of 0100
+#symload irexists_cfr with gseq_irexists_c2fr of 0100
+#symload irexists_fnp with gseq_irexists_f2np of 0100
+//
+(* ****** ****** *)
+//
 (*
 HX-2024-07-25:
 Thu 25 Jul 2024 12:19:14 PM EDT
@@ -629,13 +646,13 @@ gseq_rforitm_f1np
 fun
 <xs:t0>
 <x0:t0>
-gseq_iforitm_c1fr
-(xs: xs, work: (x0)-<cfr>void): void
+gseq_iforitm_c2fr
+(xs: xs, work: (ni,x0)-<cfr>void): void
 fun
 <xs:t0>
 <x0:t0>
-gseq_iforitm_f1np
-(xs: xs, work: (x0)-<fnp>void): void
+gseq_iforitm_f2np
+(xs: xs, work: (ni,x0)-<fnp>void): void
 //
 #symload iforitm with gseq_iforitm_c1fr of 0100
 #symload iforitm_cfr with gseq_iforitm_c1fr of 0100
@@ -644,17 +661,17 @@ gseq_iforitm_f1np
 fun
 <xs:t0>
 <x0:t0>
-gseq_irforitm_c1fr
-(xs: xs, work: (x0)-<cfr>void): void
+gseq_irforitm_c2fr
+(xs: xs, work: (ni,x0)-<cfr>void): void
 fun
 <xs:t0>
 <x0:t0>
-gseq_irforitm_f1np
-(xs: xs, work: (x0)-<fnp>void): void
+gseq_irforitm_f2np
+(xs: xs, work: (ni,x0)-<fnp>void): void
 //
-#symload irforitm with gseq_irforitm_c1fr of 0100
-#symload irforitm_cfr with gseq_irforitm_c1fr of 0100
-#symload irforitm_fnp with gseq_irforitm_f1np of 0100
+#symload irforitm with gseq_irforitm_c2fr of 0100
+#symload irforitm_cfr with gseq_irforitm_c2fr of 0100
+#symload irforitm_fnp with gseq_irforitm_f2np of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -740,6 +757,99 @@ gseq_irfolditm_f3np
 #symload irfolditm with gseq_irfolditm_c3fr of 0100
 #symload irfolditm_cfr with gseq_irfolditm_c3fr of 0100
 #symload irfolditm_fnp with gseq_irfolditm_f3np of 0100
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_foldall_c2fr
+( xs: xs
+, r0: r0
+, fopr: (r0, x0)-<cfr>(bool, r0)): ( r0 )
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_foldall_f2np
+( xs: xs
+, r0: r0
+, fopr: (r0, x0)-<fnp>(bool, r0)): ( r0 )
+//
+#symload foldall with gseq_foldall_c2fr of 0100
+#symload foldall_cfr with gseq_foldall_c2fr of 0100
+#symload foldall_fnp with gseq_foldall_f2np of 0100
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_rfoldall_c2fr
+( xs: xs
+, r0: r0
+, fopr: (x0, r0)-<cfr>(bool, r0)): ( r0 )
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_rfoldall_f2np
+( xs: xs
+, r0: r0
+, fopr: (x0, r0)-<fnp>(bool, r0)): ( r0 )
+//
+#symload rfoldall with gseq_rfoldall_c2fr of 0100
+#symload rfoldall_cfr with gseq_rfoldall_c2fr of 0100
+#symload rfoldall_fnp with gseq_rfoldall_f2np of 0100
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_ifoldall_c3fr
+( xs: xs
+, r0: r0
+, fopr: (r0, ni, x0)-<cfr>(bool, r0)): (r0)
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_ifoldall_f3np
+( xs: xs
+, r0: r0
+, fopr: (r0, ni, x0)-<fnp>(bool, r0)): (r0)
+//
+#symload ifoldall with gseq_ifoldall_c3fr of 0100
+#symload ifoldall_cfr with gseq_ifoldall_c3fr of 0100
+#symload ifoldall_fnp with gseq_ifoldall_f3np of 0100
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_irfoldall_c3fr
+( xs: xs
+, r0: r0
+, fopr: (ni, x0, r0)-<cfr>(bool, r0)): (r0)
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_irfoldall_f3np
+( xs: xs
+, r0: r0
+, fopr: (ni, x0, r0)-<fnp>(bool, r0)): (r0)
+//
+#symload irfoldall with gseq_irfoldall_c3fr of 0100
+#symload irfoldall_cfr with gseq_irfoldall_c3fr of 0100
+#symload irfoldall_fnp with gseq_irfoldall_f3np of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1077,6 +1187,137 @@ fun
 GSEQ_x2make
 ( xs: GSEQ(xs, x0)
 , ys: GSEQ(ys, y0)): GSEQ(gx2seq(xs, x0, ys, y0), (x0, y0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_c1fr_llist
+( xs: xs
+, fopr: (x0) -<cfr> y0): list_vt(y0)
+*)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_c1fr_rllist
+( xs: xs
+, fopr: (x0) -<cfr> y0): list_vt(y0)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_rmap_c1fr_list
+( xs: xs
+, fopr: (x0) -<cfr> y0): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_rmap_c1fr_llist
+( xs: xs
+, fopr: (x0) -<cfr> y0): list_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_rmap_c1fr_lstrm
+( xs: xs
+, fopr: (x0) -<cfr> y0): strm_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_rmap_c1fr_lstrq
+( xs: xs
+, fopr: (x0) -<cfr> y0): strq_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_rmap_c1fr_rlist
+( xs: xs
+, fopr: (x0) -<cfr> y0): list(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_rmap_c1fr_rllist
+( xs: xs
+, fopr: (x0) -<cfr> y0): list_vt(y0)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+gseq_imap_c2fr_rlist
+( xs: xs
+, fopr: (ni, x0) -<cfr> y0): list(y0)
+(*
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_imap_c2fr_llist
+( xs: xs
+, fopr: (ni, x0) -<cfr> y0): list_vt(y0)
+*)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_imap_c2fr_lstrm
+( xs: xs
+, fopr: (ni, x0) -<cfr> y0): strm_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_imap_c2fr_lstrq
+( xs: xs
+, fopr: (ni, x0) -<cfr> y0): strq_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_imap_c2fr_rllist
+( xs: xs
+, fopr: (ni, x0) -<cfr> y0): list_vt(y0)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_irmap_c2fr_llist
+( xs: xs
+, fopr: (ni, x0) -<cfr> y0): list_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_irmap_c2fr_lstrm
+( xs: xs
+, fopr: (ni, x0) -<cfr> y0): strm_vt(y0)
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_irmap_c2fr_lstrq
+( xs: xs
+, fopr: (ni, x0) -<cfr> y0): strq_vt(y0)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_irmap_c2fr_rllist
+( xs: xs
+, fopr: (ni, x0) -<cfr> y0): list_vt(y0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
