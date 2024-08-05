@@ -259,6 +259,22 @@ GSEQ_rforitm_c1fr
 (
 gseq_rforitm_c1fr<xs><x0>(GSEQ_unmk(gseq), test))
 //
+#impltmp
+<xs : t0>
+<x0 : t0>
+GSEQ_iforitm_c2fr
+  (gseq, test) =
+(
+gseq_iforitm_c2fr<xs><x0>(GSEQ_unmk(gseq), test))
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+GSEQ_irforitm_c2fr
+  (gseq, test) =
+(
+gseq_irforitm_c2fr<xs><x0>(GSEQ_unmk(gseq), test))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

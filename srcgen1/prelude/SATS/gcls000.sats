@@ -364,6 +364,44 @@ GSEQ_rforitm_f1np
 #symload rforitm_fnp with GSEQ_rforitm_f1np of 1000
 //
 (* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_iforitm_c2fr
+( gseq: GSEQ(xs, x0)
+, test: (ni, x0)-<cfr>void): void
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_iforitm_f2np
+( gseq: GSEQ(xs, x0)
+, test: (ni, x0)-<fnp>void): void
+//
+#symload iforitm with GSEQ_iforitm_c2fr of 1000
+#symload iforitm_cfr with GSEQ_iforitm_c2fr of 1000
+#symload iforitm_fnp with GSEQ_iforitm_f2np of 1000
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_irforitm_c2fr
+( gseq: GSEQ(xs, x0)
+, test: (ni, x0)-<cfr>void): void
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_irforitm_f2np
+( gseq: GSEQ(xs, x0)
+, test: (ni, x0)-<fnp>void): void
+//
+#symload irforitm with GSEQ_irforitm_c2fr of 1000
+#symload irforitm_cfr with GSEQ_irforitm_c2fr of 1000
+#symload irforitm_fnp with GSEQ_irforitm_f2np of 1000
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

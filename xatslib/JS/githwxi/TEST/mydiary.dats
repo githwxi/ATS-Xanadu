@@ -67,6 +67,25 @@ GSEQ_x2make(GSEQ(xs), GSEQ(ys))
 //
 val ys =
 list(10,20,30,40,50)
+val () =
+irforitm
+( GSEQ(ys)
+, lam(i, x) => prints("(i, x) = (", i, ",", x, ")"))
+val () = prints("\n")
+////
+val rys = rlistize(GSEQ(ys))
+val ( ) = print1s("rys = ", rys, "\n")
+////
+////
+val xys =
+listize(GZ2SEQ(xs, ys))
+val ( ) =
+print1s("listize(GSEQ_z2make(GSEQ(xs), GSEQ(ys))) = ", xys, "\n")
+val rxys =
+rlistize(GZ2SEQ(xs, ys))
+val ( ) =
+print1s("rlistize(GSEQ_z2make(GSEQ(xs), GSEQ(ys))) = ", rxys, "\n")
+//
 val xys =
 listize(GX2SEQ(xs, ys))
 val ( ) =
