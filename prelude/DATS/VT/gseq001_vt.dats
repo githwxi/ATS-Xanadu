@@ -42,6 +42,18 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+{ x0:vt }
+gseq_strmize0
+<strm_vt(x0)><x0>(xs) = (xs)
+#impltmp
+{ x0:vt }
+gseq_strqize0
+<strq_vt(x0)><x0>(xs) = (xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2024-07-28:
 Sun 28 Jul 2024 03:48:39 PM EDT
@@ -94,10 +106,9 @@ val r0 = list_vt_nil()
 #vwtpdef r0 = list_vt(x0)
 #impltmp
 rfolditm$fopr0
-<x0><r0>(x0, r0) =
-(
-  list_vt_cons(x0, r0))
-}
+<x0><r0>
+(x0, r0) = list_vt_cons(x0, r0)
+}(*where*)//end(gseq_listize0(xs))
 //
 #impltmp
 < xs:vt >
@@ -115,7 +126,7 @@ val r0 = list_vt_nil()
 rfolditm$fopr1
 <x0><r0>(x0, r0) =
 list_vt_cons(g_copy<x0>(x0), r0)
-}
+}(*where*)//end(gseq_listize1(xs))
 //
 #impltmp
 { x0:vt }
@@ -143,10 +154,9 @@ val r0 = list_vt_nil()
 #vwtpdef r0 = list_vt(x0)
 #impltmp
 folditm$fopr0
-<x0><r0>(r0, x0) =
-(
-  list_vt_cons(x0, r0))
-}
+<x0><r0>
+(r0, x0) = list_vt_cons(x0, r0)
+}(*where*)//end(gseq_rlistize0(xs))
 //
 #impltmp
 < xs:vt >
@@ -165,7 +175,7 @@ folditm$fopr1
 <x0><r0>(r0, x0) =
 (
 list_vt_cons(g_copy<x0>(x0), r0))
-}
+}(*where*)//end(gseq_rlistize1(xs))
 //
 (*
 HX: a special case!
@@ -180,17 +190,6 @@ gseq_rlistize1
 <list_vt(x0)><x0> = list_vt_reverse1<x0>
 //
 (* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-{ x0:vt }
-gseq_strmize0
-<strm_vt(x0)><x0>(xs) = (xs)//identity
-#impltmp
-{ x0:vt }
-gseq_strqize0
-<strq_vt(x0)><x0>(xs) = (xs)//identity
-//
 (* ****** ****** *)
 //
 (*
@@ -245,7 +244,7 @@ let
 val b0 =
 forall$test1<x0>(x0)
 in (g_free<x0>(x0); b0) end//let
-}(*where*)//end-of-[gseq_forall0(xs)]
+}(*where*)//end-of-[gseq_forall1(xs)]
 //
 #impltmp
 < xs:vt >
@@ -259,6 +258,19 @@ gseq_forall0
 #impltmp
 forall$test0<x0>(x0) = test(x0)
 }(*where*)//end(gseq_forall0_c1fr(...))
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_forall1_c1fr
+  (xs, test) =
+(
+gseq_forall1
+<xs><x0>(xs)) where
+{
+#impltmp
+forall$test1<x0>(x0) = test(x0)
+}(*where*)//end(gseq_forall1_c1fr(...))
 //
 (* ****** ****** *)
 //
@@ -289,6 +301,32 @@ val b0 =
 rforall$test1<x0>(x0)
 in (g_free<x0>(x0); b0) end//let
 }(*where*)//end-of[gseq_rforall1(xs)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_rforall0_c1fr
+  (xs, test) =
+(
+gseq_rforall0
+<xs><x0>(xs)) where
+{
+#impltmp
+rforall$test0<x0>(x0) = test(x0)
+}(*where*)//end(gseq_rforall0_c1fr(...))
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_rforall1_c1fr
+  (xs, test) =
+(
+gseq_rforall1
+<xs><x0>(xs)) where
+{
+#impltmp
+rforall$test1<x0>(x0) = test(x0)
+}(*where*)//end(gseq_rforall1_c1fr(...))
 //
 (* ****** ****** *)
 //
@@ -357,19 +395,31 @@ val b0 = iforall$test1<x0>(i0, x0) }
 //
 }(*where*)//end-of-[gseq_iforall1(xs)]
 //
-(* ****** ****** *)
-(*
 #impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_iforall0 = gseq_iforall<xs><x0>
-*)
-(*
+< xs:vt >
+< x0:vt >
+gseq_iforall0_c1fr
+  (xs, test) =
+(
+gseq_iforall0
+<xs><x0>(xs)) where
+{
 #impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_iforall1 = gseq_iforall<xs><x0>
-*)
+iforall$test0<x0>(i0,x0) = test(i0,x0)
+}(*where*)//end(gseq_iforall0_c1fr(...))
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_iforall1_c1fr
+  (xs, test) =
+(
+gseq_iforall1
+<xs><x0>(xs)) where
+{
+#impltmp
+iforall$test1<x0>(i0,x0) = test(i0,x0)
+}(*where*)//end(gseq_iforall1_c1fr(...))
 //
 (* ****** ****** *)
 //
@@ -438,6 +488,32 @@ val b0 = irforall$test1<x0>(i0, x0) }
 //
 }(*where*)//end-of-[gseq_irforall1(xs)]
 //
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_irforall0_c1fr
+  (xs, test) =
+(
+gseq_irforall0
+<xs><x0>(xs)) where
+{
+#impltmp
+irforall$test0<x0>(i0,x0) = test(i0,x0)
+}(*where*)//end(gseq_irforall0_c1fr(...))
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_irforall1_c1fr
+  (xs, test) =
+(
+gseq_irforall1
+<xs><x0>(xs)) where
+{
+#impltmp
+irforall$test1<x0>(i0,x0) = test(i0,x0)
+}(*where*)//end(gseq_irforall1_c1fr(...))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -449,7 +525,8 @@ gseq_foritm0
 (
 let
 val _ =
-gseq_forall0<xs><x0>(xs) end//let
+gseq_forall0
+<xs><x0>(xs) end//let
 ) where
 {
 #impltmp
@@ -458,6 +535,25 @@ let
 val () =
 foritm$work0<x0>(x0) in true end
 }(*where*)//end-of-[gseq_foritm0(xs)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_foritm1
+  ( xs ) =
+(
+let
+val _ =
+gseq_forall1
+<xs><x0>(xs) end//let
+) where
+{
+#impltmp
+forall$test0<x0>(x0) =
+let
+val () =
+foritm$work1<x0>(x0) in true end
+}(*where*)//end-of-[gseq_foritm1(xs)]
 //
 #impltmp
 < xs:vt >
@@ -471,27 +567,6 @@ gseq_foritm0
 #impltmp
 foritm$work0<x0>(x0) = work(x0)
 }(*where*)//end(gseq_foritm0_c1fr(...))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< xs:vt >
-< x0:vt >
-gseq_foritm1
-  ( xs ) =
-(
-let
-val _ =
-gseq_forall1<xs><x0>(xs) end//let
-) where
-{
-#impltmp
-forall$test1<x0>(x0) =
-let
-  val () =
-  foritm$work1<x0>(x0) in true end
-}(*where*)//end-of-[gseq_foritm1(xs)]
 //
 #impltmp
 < xs:vt >
@@ -507,7 +582,6 @@ foritm$work1<x0>(x0) = work(x0)
 }(*where*)//end(gseq_foritm1_c1fr(...))
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 #impltmp
 < xs:vt >
@@ -517,7 +591,8 @@ gseq_rforitm0
 (
 let
 val _ =
-gseq_rforall0<xs><x0>(xs) end//let
+gseq_rforall0
+<xs><x0>( xs ) end//let
 ) where
 {
 #impltmp
@@ -535,7 +610,8 @@ gseq_rforitm1
 (
 let
 val _ =
-gseq_rforall1<xs><x0>(xs) end//let
+gseq_rforall1
+<xs><x0>( xs ) end//let
 ) where
 {
 #impltmp
@@ -544,6 +620,32 @@ let
 val () =
   rforitm$work1<x0>(x0) in true end
 }(*where*)//end-of-[gseq_rforitm1(xs)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_rforitm0_c1fr
+  (xs, work) =
+(
+gseq_rforitm0
+<xs><x0>( xs )) where
+{
+#impltmp
+rforitm$work0<x0>(x0) = work(x0)
+}(*where*)//end(gseq_rforitm0_c1fr(...))
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_rforitm1_c1fr
+  (xs, work) =
+(
+gseq_rforitm1
+<xs><x0>( xs )) where
+{
+#impltmp
+rforitm$work1<x0>(x0) = work(x0)
+}(*where*)//end(gseq_rforitm1_c1fr(...))
 //
 (* ****** ****** *)
 //
@@ -555,7 +657,8 @@ gseq_iforitm0
 (
 let
 val _ =
-gseq_iforall0<xs><x0>(xs) end//let
+gseq_iforall0
+<xs><x0>( xs ) end//let
 ) where
 {
 #impltmp
@@ -573,7 +676,8 @@ gseq_iforitm1
 (
 let
 val _ =
-gseq_iforall1<xs><x0>(xs) end//let
+gseq_iforall1
+<xs><x0>( xs ) end//let
 ) where
 {
 #impltmp
@@ -582,6 +686,32 @@ let
 val () =
 iforitm$work1<x0>(i0, x0) in true end
 }(*where*)//end-of-[gseq_iforitm1(xs)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_iforitm0_c1fr
+  (xs, work) =
+(
+gseq_iforitm0
+<xs><x0>( xs )) where
+{
+#impltmp
+iforitm$work0<x0>(i0,x0) = work(i0,x0)
+}(*where*)//end(gseq_iforitm0_c1fr(...))
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_iforitm1_c1fr
+  (xs, work) =
+(
+gseq_iforitm1
+<xs><x0>( xs )) where
+{
+#impltmp
+iforitm$work1<x0>(i0,x0) = work(i0,x0)
+}(*where*)//end(gseq_iforitm1_c1fr(...))
 //
 (* ****** ****** *)
 //
@@ -593,7 +723,8 @@ gseq_irforitm0
 (
 let
 val _ =
-gseq_irforall0<xs><x0>(xs) end//let
+gseq_irforall0
+<xs><x0>( xs ) end//let
 ) where
 {
 #impltmp
@@ -611,7 +742,8 @@ gseq_irforitm1
 (
 let
 val _ =
-gseq_irforall1<xs><x0>(xs) end//let
+gseq_irforall1
+<xs><x0>( xs ) end//let
 ) where
 {
 #impltmp
@@ -620,6 +752,32 @@ let
 val () =
 irforitm$work1<x0>(i0, x0) in true end
 }(*where*)//end-of-[gseq_irforitm1(xs)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_irforitm0_c1fr
+  (xs, work) =
+(
+gseq_irforitm0
+<xs><x0>( xs )) where
+{
+#impltmp
+irforitm$work0<x0>(i0,x0) = work(i0,x0)
+}(*where*)//end(gseq_irforitm0_c1fr(...))
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_irforitm1_c1fr
+  (xs, work) =
+(
+gseq_irforitm1
+<xs><x0>( xs )) where
+{
+#impltmp
+irforitm$work1<x0>(i0,x0) = work(i0,x0)
+}(*where*)//end(gseq_irforitm1_c1fr(...))
 //
 (* ****** ****** *)
 (* ****** ****** *)

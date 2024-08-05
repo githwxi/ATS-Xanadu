@@ -302,6 +302,73 @@ GSEQ_irforall_f2np
 fun
 <xs:t0>
 <x0:t0>
+GSEQ_foritm
+(gseq: GSEQ(xs, x0)): void
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_rforitm
+(gseq: GSEQ(xs, x0)): void
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_iforitm
+(gseq: GSEQ(xs, x0)): void
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_irforitm
+(gseq: GSEQ(xs, x0)): void
+//
+#symload foritm with GSEQ_foritm of 1000
+#symload rforitm with GSEQ_rforitm of 1000
+#symload iforitm with GSEQ_rforitm of 1000
+#symload irforitm with GSEQ_rforitm of 1000
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_foritm_c1fr
+( gseq: GSEQ(xs, x0)
+, test: (x0)-<cfr>void): void
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_foritm_f1np
+( gseq: GSEQ(xs, x0)
+, test: (x0)-<fnp>void): void
+//
+#symload foritm with GSEQ_foritm_c1fr of 1000
+#symload foritm_cfr with GSEQ_foritm_c1fr of 1000
+#symload foritm_fnp with GSEQ_foritm_f1np of 1000
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_rforitm_c1fr
+( gseq: GSEQ(xs, x0)
+, test: (x0)-<cfr>void): void
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_rforitm_f1np
+( gseq: GSEQ(xs, x0)
+, test: (x0)-<fnp>void): void
+//
+#symload rforitm with GSEQ_rforitm_c1fr of 1000
+#symload rforitm_cfr with GSEQ_rforitm_c1fr of 1000
+#symload rforitm_fnp with GSEQ_rforitm_f1np of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
 <r0:vt>
 GSEQ_folditm
 (

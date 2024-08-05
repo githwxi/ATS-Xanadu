@@ -212,6 +212,59 @@ gseq_irforall_c2fr<xs><x0>(GSEQ_unmk(gseq), test))
 #impltmp
 <xs : t0>
 <x0 : t0>
+GSEQ_foritm
+  (gseq) =
+(
+gseq_foritm<xs><x0>(GSEQ_unmk(gseq)))
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+GSEQ_rforitm
+  (gseq) =
+(
+gseq_rforitm<xs><x0>(GSEQ_unmk(gseq)))
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+GSEQ_iforitm
+  (gseq) =
+(
+gseq_iforitm<xs><x0>(GSEQ_unmk(gseq)))
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+GSEQ_irforitm
+  (gseq) =
+(
+gseq_irforitm<xs><x0>(GSEQ_unmk(gseq)))
+//
+(* ****** ****** *)
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+GSEQ_foritm_c1fr
+  (gseq, test) =
+(
+gseq_foritm_c1fr<xs><x0>(GSEQ_unmk(gseq), test))
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
+GSEQ_rforitm_c1fr
+  (gseq, test) =
+(
+gseq_rforitm_c1fr<xs><x0>(GSEQ_unmk(gseq), test))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<xs : t0>
+<x0 : t0>
 <r0 : vt>
 GSEQ_folditm
  (gseq, r0) =

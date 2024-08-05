@@ -993,6 +993,7 @@ gseq_rforall1_c1fr
 (xs: !xs, f0: (!x0) -<cfr> bool): bool
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <xs:vt>

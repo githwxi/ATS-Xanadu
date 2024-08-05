@@ -15,6 +15,7 @@ Sun 14 Jul 2024 12:14:49 PM EDT
 #staload _ = "prelude/DATS/gbas000.dats"
 #staload _ = "prelude/DATS/gbas001.dats"
 #staload _ = "prelude/DATS/gbas002.dats"
+(* ****** ****** *)
 #staload _ = "prelude/DATS/VT/gbas000_vt.dats"
 #staload _ = "prelude/DATS/VT/gbas001_vt.dats"
 (* ****** ****** *)
@@ -22,54 +23,10 @@ Sun 14 Jul 2024 12:14:49 PM EDT
 (*
 HX-2024-08-03:
 Sat 03 Aug 2024 05:44:33 PM EDT
-The code in these files serves as
+The code in this files serves as
 "switches" during template resolution!
 *)
 #staload _ = "prelude/DATS/gxyz000.dats"
-#staload _ = "prelude/DATS/VT/gxyz000_vt.dats"
-//
-(* ****** ****** *)
-#staload _ = "prelude/DATS/gnum000.dats"
-#staload _ = "prelude/DATS/VT/gnum000_vt.dats"
-(* ****** ****** *)
-#staload _ = "prelude/DATS/gcls000.dats"
-#staload _ = "prelude/DATS/VT/gcls000_vt.dats"
-(* ****** ****** *)
-#staload _ = "prelude/DATS/gseq000.dats"
-#staload _ = "prelude/DATS/gseq001.dats"
-#staload _ = "prelude/DATS/gseq002.dats"
-#staload _ = "prelude/DATS/VT/gseq000_vt.dats"
-#staload _ = "prelude/DATS/VT/gseq001_vt.dats"
-#staload _ = "prelude/DATS/VT/gseq002_vt.dats"
-(* ****** ****** *)
-#staload _ = "prelude/DATS/gasz000.dats"
-#staload _ = "prelude/DATS/gasz001.dats"
-#staload _ = "prelude/DATS/VT/gasz000_vt.dats"
-#staload _ = "prelude/DATS/VT/gasz001_vt.dats"
-(* ****** ****** *)
-#staload _ = "prelude/DATS/gsyn000.dats"
-#staload _ = "prelude/DATS/gsyn001.dats"
-#staload _ = "prelude/DATS/VT/gsyn000_vt.dats"
-(* ****** ****** *)
-(* ****** ****** *)
-#staload _ = "prelude/DATS/bool000.dats"
-#staload _ = "prelude/DATS/char000.dats"
-(* ****** ****** *)
-#staload _ = "prelude/DATS/gint000.dats"
-#staload _ = "prelude/DATS/gint001.dats"
-(* ****** ****** *)
-#staload _ = "prelude/DATS/strn000.dats"
-#staload _ = "prelude/DATS/VT/strn000_vt.dats"
-(* ****** ****** *)
-#staload _ = "prelude/DATS/list000.dats"
-#staload _ = "prelude/DATS/list001.dats"
-#staload _ = "prelude/DATS/VT/list000_vt.dats"
-#staload _ = "prelude/DATS/VT/list001_vt.dats"
-(* ****** ****** *)
-//
-#staload _ = "prelude/DATS/strm000.dats"
-#staload _ = "prelude/DATS/VT/strm000_vt.dats"
-#staload _ = "prelude/DATS/VT/strm001_vt.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -82,6 +39,50 @@ This one is included by [DATS/unsfx00.dats]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#staload _ = "prelude/DATS/gnum000.dats"
+#staload _ = "prelude/DATS/gcls000.dats"
+#staload _ = "prelude/DATS/gseq000.dats"
+#staload _ = "prelude/DATS/gseq001.dats"
+#staload _ = "prelude/DATS/gseq002.dats"
+#staload _ = "prelude/DATS/gasz000.dats"
+#staload _ = "prelude/DATS/gasz001.dats"
+#staload _ = "prelude/DATS/gsyn000.dats"
+#staload _ = "prelude/DATS/gsyn001.dats"
+(* ****** ****** *)
+#staload _ = "prelude/DATS/bool000.dats"
+#staload _ = "prelude/DATS/char000.dats"
+#staload _ = "prelude/DATS/gint000.dats"
+#staload _ = "prelude/DATS/gint001.dats"
+#staload _ = "prelude/DATS/strn000.dats"
+#staload _ = "prelude/DATS/tupl000.dats"
+#staload _ = "prelude/DATS/list000.dats"
+#staload _ = "prelude/DATS/list001.dats"
+#staload _ = "prelude/DATS/strm000.dats"
+(* ****** ****** *)
+#staload _ = "prelude/DATS/VT/gnum000_vt.dats"
+#staload _ = "prelude/DATS/VT/gcls000_vt.dats"
+#staload _ = "prelude/DATS/VT/gseq000_vt.dats"
+#staload _ = "prelude/DATS/VT/gseq001_vt.dats"
+#staload _ = "prelude/DATS/VT/gseq002_vt.dats"
+#staload _ = "prelude/DATS/VT/gasz000_vt.dats"
+#staload _ = "prelude/DATS/VT/gasz001_vt.dats"
+#staload _ = "prelude/DATS/VT/gsyn000_vt.dats"
+(* ****** ****** *)
+#staload _ = "prelude/DATS/VT/strn000_vt.dats"
+#staload _ = "prelude/DATS/VT/list000_vt.dats"
+#staload _ = "prelude/DATS/VT/list001_vt.dats"
+#staload _ = "prelude/DATS/VT/strm000_vt.dats"
+#staload _ = "prelude/DATS/VT/strm001_vt.dats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-08-04:
+Sun 04 Aug 2024 10:37:22 PM EDT
+The code in this file serves as
+"switches" during template resolution!
+*)
+#staload _ = "prelude/DATS/VT/gxyz000_vt.dats"
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)

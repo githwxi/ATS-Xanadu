@@ -57,10 +57,22 @@ val () = print1s("listize(xs) = ", listize(GSEQ(xs)), "\n")
 val () = print1s("rlistize(xs) = ", rlistize(GSEQ(xs)), "\n")
 //
 (* ****** ****** *)
-
-val () =
-sum(GSEQ_z2make(GSEQ(xs), GSEQ(xs)))
-
+//
+#define
+GX2SEQ(xs, ys) =
+GSEQ_x2make(GSEQ(xs), GSEQ(ys))
+//
+val ys =
+list(10,20,30,40,50)
+val xys =
+listize(GX2SEQ(xs, ys))
+val ( ) =
+print1s("listize(GSEQ_x2make(GSEQ(xs), GSEQ(ys))) = ", xys, "\n")
+val rxys =
+rlistize(GX2SEQ(xs, ys))
+val ( ) =
+print1s("rlistize(GSEQ_x2make(GSEQ(xs), GSEQ(ys))) = ", rxys, "\n")
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
