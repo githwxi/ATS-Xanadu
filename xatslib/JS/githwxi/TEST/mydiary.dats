@@ -59,6 +59,9 @@ val () = print1s("rlistize(xs) = ", rlistize(GSEQ(xs)), "\n")
 (* ****** ****** *)
 //
 #define
+GZ2SEQ(xs, ys) =
+GSEQ_z2make(GSEQ(xs), GSEQ(ys))
+#define
 GX2SEQ(xs, ys) =
 GSEQ_x2make(GSEQ(xs), GSEQ(ys))
 //
