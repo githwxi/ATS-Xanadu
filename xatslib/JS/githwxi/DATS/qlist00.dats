@@ -52,6 +52,15 @@ fun
 <a:t0>
 qlist_rforall(xs: qlist(a)): bool
 //
+#extern
+fun
+<a:t0>
+qlist_strmize(xs: qlist(a)): strm_vt(a)
+#extern
+fun
+<a:t0>
+qlist_rstrmize(xs: qlist(a)): strm_vt(a)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -172,6 +181,36 @@ list_rforall<a>(f1) else (false) )
 end//let//end-of-[qlist_rforall(xs)]
 //
 (* ****** ****** *)
+//
+#impltmp
+< a: t0 >
+qlist_strmize(xs) =
+let
+//
+val+
+QLIST(f1, r2) = xs
+//
+in//let
+  strm_vt_append00
+  (strmize(f1), rstrmize(r2))
+end//let//end-of-[qlist_strmize(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< a: t0 >
+qlist_rstrmize(xs) =
+let
+//
+val+
+QLIST(f1, r2) = xs
+//
+in//let
+  strm_vt_append00
+  (strmize(r2), rstrmize(f1))
+end//let//end-of-[qlist_rstrmize(xs)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -242,28 +281,16 @@ gseq_nilq<qlist(a)><a> = qlist_nilq<a>
 #impltmp
 { a: t0 }
 gseq_forall<qlist(a)><a> = qlist_forall<a>
-//
 #impltmp
 { a: t0 }
 gseq_rforall<qlist(a)><a> = qlist_rforall<a>
 //
-(* ****** ****** *)
-//
 #impltmp
 { a: t0 }
-gseq_forall0
-<qlist(a)><a>(xs) = qlist_forall<a>(xs)
-where
-{
-#impltmp forall$test<a> = forall$test0<a> }
-//
+gseq_strmize<qlist(a)><a> = qlist_strmize<a>
 #impltmp
 { a: t0 }
-gseq_rforall0
-<qlist(a)><a>(xs) = qlist_rforall<a>(xs)
-where
-{
-#impltmp rforall$test<a> = rforall$test0<a> }
+gseq_rstrmize<qlist(a)><a> = qlist_rstrmize<a>
 //
 (* ****** ****** *)
 (* ****** ****** *)
