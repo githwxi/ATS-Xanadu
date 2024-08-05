@@ -153,7 +153,7 @@ strm_vt_forall0<x0>
 where
 {
 #impltmp
-forall$test0<x0> = forall$test<x0>
+forall$test0<x0> = rforall$test<x0>
 }
 //
 #impltmp

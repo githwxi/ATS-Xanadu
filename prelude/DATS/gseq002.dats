@@ -43,37 +43,120 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< ys:t0 >
-< y0:t0 >
-gseq_z2forall =
-gseq_z2forall0<xs><x0><ys><y0>(*void*)
+(*
+HX-2024-08-05:
+Mon 05 Aug 2024 06:21:53 PM EDT
+*)
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
 < ys:t0 >
 < y0:t0 >
-gseq_rz2forall =
-gseq_rz2forall0<xs><x0><ys><y0>(*void*)
+gseq_z2forall
+  (xs, ys) =
+let
+val xs =
+gseq_strmize<xs><x0>(xs)
+val ys =
+gseq_strmize<ys><y0>(ys)
+in//let
+(
+strm_vt_z2forall0<x0><y0>(xs, ys))
+where
+{
+#impltmp
+z2forall$test0<x0><y0> = z2forall$test<x0><y0>
+} end//let//end-of-[gseq_z2forall(xs, ys)]
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
 < ys:t0 >
 < y0:t0 >
-gseq_iz2forall =
-gseq_iz2forall0<xs><x0><ys><y0>(*void*)
+gseq_rz2forall
+  (xs, ys) =
+let
+val xs =
+gseq_rstrmize<xs><x0>(xs)
+val ys =
+gseq_rstrmize<ys><y0>(ys)
+in//let
+(
+strm_vt_z2forall0<x0><y0>(xs, ys))
+where
+{
+#impltmp
+z2forall$test0<x0><y0> = rz2forall$test<x0><y0>
+} end//let//end-of-[gseq_rz2forall(xs, ys)]
+//
+(* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
 < ys:t0 >
 < y0:t0 >
-gseq_irz2forall =
-gseq_irz2forall0<xs><x0><ys><y0>(*void*)
+gseq_iz2forall
+  (xs, ys) = b0
+where {
+//
+var i0: ni = (0)
+//
+val p0 = $addr(i0)
+//
+val b0 =
+(
+gseq_z2forall
+<xs><x0><ys><y0>(xs, ys))
+where
+{
+#impltmp
+z2forall$test
+<x0><y0>(x0, y0) =
+(
+$UN.p2tr_set<ni>(p0, i0+1); b0)
+where
+{
+val i0 = $UN.p2tr_get<ni>(p0)
+val b0 = iz2forall$test<x0>(i0, x0, y0)
+}(*where*)
+}(*where*)
+//
+}(*where*)//end-of-[gseq_iz2forall(xs,ys)]
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< ys:t0 >
+< y0:t0 >
+gseq_irz2forall
+  (xs, ys) = b0
+where {
+//
+var i0: ni = (0)
+//
+val p0 = $addr(i0)
+//
+val b0 =
+(
+gseq_rz2forall
+<xs><x0><ys><y0>(xs, ys))
+where
+{
+#impltmp
+rz2forall$test
+<x0><y0>(x0, y0) =
+(
+$UN.p2tr_set<ni>(p0, i0+1); b0)
+where
+{
+val i0 = $UN.p2tr_get<ni>(p0)
+val b0 = irz2forall$test<x0>(i0, x0, y0)
+}(*where*)
+}(*where*)
+//
+}(*where*)//end-of-[gseq_irz2forall(xs, ys)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -83,32 +166,96 @@ gseq_irz2forall0<xs><x0><ys><y0>(*void*)
 < x0:t0 >
 < ys:t0 >
 < y0:t0 >
-gseq_z2foritm =
-gseq_z2foritm0<xs><x0><ys><y0>(*void*)
+gseq_z2foritm
+  (xs, ys) =
+(
+let
+val _ =
+gseq_z2forall
+<xs><x0><ys><y0>(xs, ys)
+end
+) where
+{
+#impltmp
+z2forall$test
+<x0><y0>(x0, y0) = true
+where
+{ val () =
+  z2foritm$work<x0><y0>(x0, y0) }
+}(*where*)//end-of-[gseq_z2foritm(xs,ys)]
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
 < ys:t0 >
 < y0:t0 >
-gseq_rz2foritm =
-gseq_rz2foritm0<xs><x0><ys><y0>(*void*)
+gseq_rz2foritm
+  (xs, ys) =
+(
+let
+val _ =
+gseq_rz2forall
+<xs><x0><ys><y0>(xs, ys)
+end
+) where
+{
+#impltmp
+rz2forall$test
+<x0><y0>(x0, y0) = true
+where
+{ val () =
+  rz2foritm$work<x0><y0>(x0, y0) }
+}(*where*)//end-of-[gseq_rz2foritm(xs,ys)]
+//
+(* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
 < ys:t0 >
 < y0:t0 >
-gseq_iz2foritm =
-gseq_iz2foritm0<xs><x0><ys><y0>(*void*)
+gseq_iz2foritm
+  (xs, ys) =
+(
+let
+val _ =
+gseq_iz2forall
+<xs><x0><ys><y0>(xs, ys)
+end
+) where
+{
+#impltmp
+iz2forall$test
+<x0><y0>(i0, x0, y0) = true
+where
+{
+val () =
+iz2foritm$work<x0><y0>(i0, x0, y0) }
+}(*where*)//end-of-[gseq_iz2foritm(xs,ys)]
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
 < ys:t0 >
 < y0:t0 >
-gseq_irz2foritm =
-gseq_irz2foritm0<xs><x0><ys><y0>(*void*)
+gseq_irz2foritm
+  (xs, ys) =
+(
+let
+val _ =
+gseq_irz2forall
+<xs><x0><ys><y0>(xs, ys)
+end
+) where
+{
+#impltmp
+irz2forall$test
+<x0><y0>(i0, x0, y0) = true
+where
+{
+val () =
+irz2foritm$work<x0><y0>(i0, x0, y0) }
+}(*where*)//end-of-[gseq_iz2foritm(xs,ys)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -121,6 +268,7 @@ Sun 04 Aug 2024 07:26:14 AM EDT
 (*
 HX-2024-08-04:
 This one is BUGGY!!!
+Can you spot the cause :)
 #impltmp
 < xs:t0 >
 < x0:t0 >
