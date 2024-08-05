@@ -364,9 +364,9 @@ fun
 gseq_iforitm_f2np
 (xs: xs, work: (ni, x0)-<fnp>void): void
 //
-#symload iforitm with gseq_iforitm_c1fr of 0100
-#symload iforitm_cfr with gseq_iforitm_c1fr of 0100
-#symload iforitm_fnp with gseq_iforitm_f1np of 0100
+#symload iforitm with gseq_iforitm_c2fr of 0100
+#symload iforitm_cfr with gseq_iforitm_c2fr of 0100
+#symload iforitm_fnp with gseq_iforitm_f2np of 0100
 //
 (* ****** ****** *)
 //
@@ -381,9 +381,9 @@ fun
 gseq_irforitm_f2np
 (xs: xs, work: (ni, x0)-<fnp>void): void
 //
-#symload irforitm with gseq_irforitm_c1fr of 0100
-#symload irforitm_cfr with gseq_irforitm_c1fr of 0100
-#symload irforitm_fnp with gseq_irforitm_f1np of 0100
+#symload irforitm with gseq_irforitm_c2fr of 0100
+#symload irforitm_cfr with gseq_irforitm_c2fr of 0100
+#symload irforitm_fnp with gseq_irforitm_f2np of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
