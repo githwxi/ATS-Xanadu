@@ -859,42 +859,16 @@ Thu 25 Jul 2024 04:53:04 PM EDT
 fun
 <xs:vt>
 <x0:vt>
-gseq_forall0_f1np
-(xs: xs, test: (~x0)-<fnp>bool): bool
-fun
-<xs:vt>
-<x0:vt>
-gseq_forall1_f1np
-(xs: xs, test: (!x0)-<fnp>bool): bool
-//
-#symload forall0_fnp with gseq_forall0_f1np of 0100
-#symload forall1_fnp with gseq_forall1_f1np of 0100
-//
-fun
-<xs:vt>
-<x0:vt>
 gseq_rforall0_c1fr
 (xs: xs, test: (~x0)-<cfr>bool): bool
 fun
 <xs:vt>
 <x0:vt>
-gseq_rforall0_f1np
-(xs: xs, test: (~x0)-<fnp>bool): bool
-fun
-<xs:vt>
-<x0:vt>
 gseq_rforall1_c1fr
 (xs: xs, test: (!x0)-<cfr>bool): bool
-fun
-<xs:vt>
-<x0:vt>
-gseq_rforall1_f1np
-(xs: xs, test: (!x0)-<fnp>bool): bool
 //
 #symload rforall0_cfr with gseq_rforall0_c1fr of 0100
-#symload rforall0_fnp with gseq_rforall0_f1np of 0100
 #symload rforall1_cfr with gseq_rforall1_c1fr of 0100
-#symload rforall1_fnp with gseq_rforall1_f1np of 0100
 //
 fun
 <xs:vt>
@@ -908,9 +882,7 @@ gseq_iforall1_c1fr
 (xs: !xs, f0: (ni, !x0) -<cfr> bool): bool
 //
 #symload iforall0_cfr with gseq_iforall0_c1fr of 0100
-#symload iforall0_fnp with gseq_iforall0_f1np of 0100
 #symload iforall1_cfr with gseq_iforall1_c1fr of 0100
-#symload iforall1_fnp with gseq_iforall1_f1np of 0100
 //
 fun
 <xs:vt>
@@ -924,9 +896,7 @@ gseq_irforall1_c1fr
 (xs: !xs, f0: (ni, !x0) -<cfr> bool): bool
 //
 #symload irforall0_cfr with gseq_irforall0_c1fr of 0100
-#symload irforall0_fnp with gseq_irforall0_f1np of 0100
 #symload irforall1_cfr with gseq_irforall1_c1fr of 0100
-#symload irforall1_fnp with gseq_irforall1_f1np of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -941,30 +911,18 @@ fun
 <x0:vt>
 gseq_foritm0_c1fr
 (xs: xs, work: (~x0)-<cfr>void): void
-fun
-<xs:vt>
-<x0:vt>
-gseq_foritm0_f1np
-(xs: xs, work: (~x0)-<fnp>void): void
 //
 #symload foritm0 with gseq_foritm0_c1fr of 0100
 #symload foritm0_cfr with gseq_foritm0_c1fr of 0100
-#symload foritm0_fnp with gseq_foritm0_f1np of 0100
 //
 fun
 <xs:vt>
 <x0:vt>
 gseq_foritm1_c1fr
 (xs: xs, work: (!x0)-<cfr>void): void
-fun
-<xs:vt>
-<x0:vt>
-gseq_foritm1_f1np
-(xs: xs, work: (!x0)-<fnp>void): void
 //
 #symload foritm1 with gseq_foritm1_c1fr of 0100
 #symload foritm1_cfr with gseq_foritm1_c1fr of 0100
-#symload foritm1_fnp with gseq_foritm1_f1np of 0100
 //
 (* ****** ****** *)
 //
@@ -973,30 +931,18 @@ fun
 <x0:vt>
 gseq_rforitm0_c1fr
 (xs: xs, work: (~x0)-<cfr>void): void
-fun
-<xs:vt>
-<x0:vt>
-gseq_rforitm0_f1np
-(xs: xs, work: (~x0)-<fnp>void): void
 //
 #symload rforitm0 with gseq_rforitm0_c1fr of 0100
 #symload rforitm0_cfr with gseq_rforitm0_c1fr of 0100
-#symload rforitm0_fnp with gseq_rforitm0_f1np of 0100
 //
 fun
 <xs:vt>
 <x0:vt>
 gseq_rforitm1_c1fr
 (xs: xs, work: (!x0)-<cfr>void): void
-fun
-<xs:vt>
-<x0:vt>
-gseq_rforitm1_f1np
-(xs: xs, work: (!x0)-<fnp>void): void
 //
 #symload rforitm1 with gseq_rforitm1_c1fr of 0100
 #symload rforitm1_cfr with gseq_rforitm1_c1fr of 0100
-#symload rforitm1_fnp with gseq_rforitm1_f1np of 0100
 //
 (* ****** ****** *)
 //
@@ -1005,30 +951,18 @@ fun
 <x0:vt>
 gseq_iforitm0_c1fr
 (xs: xs, work: (ni, ~x0)-<cfr>void): void
-fun
-<xs:vt>
-<x0:vt>
-gseq_iforitm0_f1np
-(xs: xs, work: (ni, ~x0)-<fnp>void): void
 //
 #symload iforitm0 with gseq_iforitm0_c1fr of 0100
 #symload iforitm0_cfr with gseq_iforitm0_c1fr of 0100
-#symload iforitm0_fnp with gseq_iforitm0_f1np of 0100
 //
 fun
 <xs:vt>
 <x0:vt>
 gseq_iforitm1_c1fr
 (xs: xs, work: (ni, !x0)-<cfr>void): void
-fun
-<xs:vt>
-<x0:vt>
-gseq_iforitm1_f1np
-(xs: xs, work: (ni, !x0)-<fnp>void): void
 //
 #symload iforitm1 with gseq_iforitm1_c1fr of 0100
 #symload iforitm1_cfr with gseq_iforitm1_c1fr of 0100
-#symload iforitm1_fnp with gseq_iforitm1_f1np of 0100
 //
 (* ****** ****** *)
 //
@@ -1037,30 +971,18 @@ fun
 <x0:vt>
 gseq_irforitm0_c1fr
 (xs: xs, work: (ni, ~x0)-<cfr>void): void
-fun
-<xs:vt>
-<x0:vt>
-gseq_irforitm0_f1np
-(xs: xs, work: (ni, ~x0)-<fnp>void): void
 //
 #symload irforitm0 with gseq_irforitm0_c1fr of 0100
 #symload irforitm0_cfr with gseq_irforitm0_c1fr of 0100
-#symload irforitm0_fnp with gseq_irforitm0_f1np of 0100
 //
 fun
 <xs:vt>
 <x0:vt>
 gseq_irforitm1_c1fr
 (xs: xs, work: (ni, !x0)-<cfr>void): void
-fun
-<xs:vt>
-<x0:vt>
-gseq_irforitm1_f1np
-(xs: xs, work: (ni, !x0)-<fnp>void): void
 //
 #symload irforitm1 with gseq_irforitm1_c1fr of 0100
 #symload irforitm1_cfr with gseq_irforitm1_c1fr of 0100
-#symload irforitm1_fnp with gseq_irforitm1_f1np of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1250,18 +1172,11 @@ fun
 strm_vt_forall0_c1fr
 ( xs: strm_vt(x0)
 , test: (~x0)-<cfr>bool): bool
-fun
-<x0:vt>
-strm_vt_forall0_f1np
-( xs: strm_vt(x0)
-, test: (~x0)-<fnp>bool): bool
 //
 #symload
 forall0 with strm_vt_forall0_c1fr of 1000
 #symload
 forall0_cfr with strm_vt_forall0_c1fr of 1000
-#symload
-forall0_fnp with strm_vt_forall0_f1np of 1000
 //
 (* ****** ****** *)
 //
@@ -1269,17 +1184,11 @@ fun
 <x0:vt>
 strm_vt_foritm0_c1fr
 (xs: strm_vt(x0), work: (~x0)-<cfr>void): void
-fun
-<x0:vt>
-strm_vt_foritm0_f1np
-(xs: strm_vt(x0), work: (~x0)-<fnp>void): void
 //
 #symload
 foritm0 with strm_vt_foritm0_c1fr of 1000
 #symload
 foritm0_cfr with strm_vt_foritm0_c1fr of 1000
-#symload
-foritm0_fnp with strm_vt_foritm0_f1np of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

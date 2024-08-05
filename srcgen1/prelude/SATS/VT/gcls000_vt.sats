@@ -92,16 +92,9 @@ fun
 GLSEQ_forall0_c1fr
 ( gseq: ~GLSEQ(xs, x0)
 , test: (~x0)-<cfr>bool): bool
-fun
-<xs:vt>
-<x0:vt>
-GLSEQ_forall0_f1np
-( gseq: ~GLSEQ(xs, x0)
-, test: (~x0)-<fnp>bool): bool
 //
 #symload forall0 with GLSEQ_forall0_c1fr of 1000
 #symload forall0_c1fr with GLSEQ_forall0_c1fr of 1000
-#symload forall0_f1np with GLSEQ_forall0_f1np of 1000
 //
 (* ****** ****** *)
 //
@@ -111,16 +104,9 @@ fun
 GLSEQ_forall1_c1fr
 ( gseq: !GLSEQ(xs, x0)
 , test: (!x0)-<cfr>bool): bool
-fun
-<xs:vt>
-<x0:vt>
-GLSEQ_forall1_f1np
-( gseq: !GLSEQ(xs, x0)
-, test: (!x0)-<fnp>bool): bool
 //
 #symload forall1 with GLSEQ_forall1_c1fr of 1000
 #symload forall1_c1fr with GLSEQ_forall1_c1fr of 1000
-#symload forall1_f1np with GLSEQ_forall1_f1np of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
