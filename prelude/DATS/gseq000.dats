@@ -144,26 +144,6 @@ gseq_length = gseq_length0<xs><x0>
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_get_at = gseq_get1_at<xs><x0>
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_set_at = gseq_set1_at<xs><x0>
-//
-(*
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_fset_at = gseq_fset1_at<xs><x0>
-*)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (*
 HX-2024-07-17:
 Wed 17 Jul 2024 01:31:56 PM EDT
