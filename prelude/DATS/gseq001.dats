@@ -106,7 +106,8 @@ gseq_forall_c1fr
 (
 gseq_forall
 <xs><x0>(xs)) where {
-#impltmp forall$test<x0>(x0) = test(x0)
+#impltmp
+forall$test<x0>(x0) = test(x0)//impl
 }(*where*)//end-of-[gseq_forall_c1fr(xs)]
 //
 #impltmp
@@ -117,7 +118,8 @@ gseq_forall_f1np
 (
 gseq_forall
 <xs><x0>(xs)) where {
-#impltmp forall$test<x0>(x0) = test(x0)
+#impltmp
+forall$test<x0>(x0) = test(x0)//impl
 }(*where*)//end-of-[gseq_forall_f1np(xs)]
 //
 (* ****** ****** *)
@@ -144,7 +146,8 @@ gseq_rforall_c1fr
 (
 gseq_rforall
 <xs><x0>(xs)) where {
-#impltmp rforall$test<x0>(x0) = test(x0)
+#impltmp
+rforall$test<x0>(x0) = test(x0)//impl
 }(*where*)//end-of-[gseq_rforall_c1fr(xs)]
 //
 #impltmp
@@ -155,7 +158,8 @@ gseq_rforall_f1np
 (
 gseq_rforall
 <xs><x0>(xs)) where {
-#impltmp rforall$test<x0>(x0) = test(x0)
+#impltmp
+rforall$test<x0>(x0) = test(x0)//impl
 }(*where*)//end-of-[gseq_rforall_f1np(xs)]
 //
 (* ****** ****** *)
