@@ -110,18 +110,6 @@ gseq_forall
 forall$test<x0>(x0) = test(x0)//impl
 }(*where*)//end-of-[gseq_forall_c1fr(xs)]
 //
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_forall_f1np
-  (xs, test) =
-(
-gseq_forall
-<xs><x0>(xs)) where {
-#impltmp
-forall$test<x0>(x0) = test(x0)//impl
-}(*where*)//end-of-[gseq_forall_f1np(xs)]
-//
 (* ****** ****** *)
 //
 #impltmp
@@ -152,18 +140,6 @@ gseq_exists
 exists$test<x0>(x0) = test(x0)//impl
 }(*where*)//end-of-[gseq_exists_c1fr(xs)]
 //
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_exists_f1np
-  (xs, test) =
-(
-gseq_exists
-<xs><x0>(xs)) where {
-#impltmp
-exists$test<x0>(x0) = test(x0)//impl
-}(*where*)//end-of-[gseq_exists_f1np(xs)]
-//
 (* ****** ****** *)
 //
 #impltmp
@@ -191,18 +167,6 @@ gseq_rforall
 #impltmp
 rforall$test<x0>(x0) = test(x0)//impl
 }(*where*)//end-of-[gseq_rforall_c1fr(xs)]
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_rforall_f1np
-  (xs, test) =
-(
-gseq_rforall
-<xs><x0>(xs)) where {
-#impltmp
-rforall$test<x0>(x0) = test(x0)//impl
-}(*where*)//end-of-[gseq_rforall_f1np(xs)]
 //
 (* ****** ****** *)
 //
@@ -233,18 +197,6 @@ gseq_rexists
 #impltmp
 rexists$test<x0>(x0) = test(x0)//impl
 }(*where*)//end-of-[gseq_rexists_c1fr(xs)]
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_rexists_f1np
-  (xs, test) =
-(
-gseq_rexists
-<xs><x0>(xs)) where {
-#impltmp
-rexists$test<x0>(x0) = test(x0)//impl
-}(*where*)//end-of-[gseq_rexists_f1np(xs)]
 //
 (* ****** ****** *)
 //
@@ -288,18 +240,6 @@ gseq_iforall
 iforall$test<x0>(i0, x0) = test(i0, x0)
 }(*where*)//end-of-[gseq_iforall_c2fr(xs)]
 //
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_iforall_f2np
-  (xs, test) =
-(
-gseq_iforall
-<xs><x0>(xs)) where {
-#impltmp
-iforall$test<x0>(i0, x0) = test(i0, x0)
-}(*where*)//end-of-[gseq_iforall_f2np(xs)]
-//
 (* ****** ****** *)
 //
 #impltmp
@@ -330,18 +270,6 @@ gseq_iexists
 #impltmp
 iexists$test<x0>(i0, x0) = test(i0, x0)
 }(*where*)//end-of-[gseq_iexists_c2fr(xs)]
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_iexists_f2np
-  (xs, test) =
-(
-gseq_iexists
-<xs><x0>(xs)) where {
-#impltmp
-iexists$test<x0>(i0, x0) = test(i0, x0)
-}(*where*)//end-of-[gseq_iexists_f2np(xs)]
 //
 (* ****** ****** *)
 //
@@ -385,18 +313,6 @@ gseq_irforall
 irforall$test<x0>(i0, x0) = test(i0, x0)
 }(*where*)//end-of-[gseq_irforall_c2fr(xs)]
 //
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_irforall_f2np
-  (xs, test) =
-(
-gseq_irforall
-<xs><x0>(xs)) where {
-#impltmp
-irforall$test<x0>(i0, x0) = test(i0, x0)
-}(*where*)//end-of-[gseq_irforall_f2np(xs)]
-//
 (* ****** ****** *)
 //
 #impltmp
@@ -427,18 +343,6 @@ gseq_irexists
 #impltmp
 irexists$test<x0>(i0, x0) = test(i0, x0)
 }(*where*)//end-of-[gseq_irexists_c2fr(xs)]
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_irexists_f2np
-  (xs, test) =
-(
-gseq_irexists
-<xs><x0>(xs)) where {
-#impltmp
-irexists$test<x0>(i0, x0) = test(i0, x0)
-}(*where*)//end-of-[gseq_irexists_f2np(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -473,18 +377,6 @@ gseq_foritm
 #impltmp foritm$work<x0>(x0) = work(x0)
 }(*where*)//end-of-[gseq_foritm_c1fr(xs)]
 //
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_foritm_f1np
-  (xs, work) =
-(
-gseq_foritm
-<xs><x0>(xs)) where
-{
-#impltmp foritm$work<x0>(x0) = work(x0)
-}(*where*)//end-of-[gseq_foritm_f1np(xs)]
-//
 (* ****** ****** *)
 //
 #impltmp
@@ -516,17 +408,6 @@ gseq_rforitm
 <xs><x0>(xs)) where {
 #impltmp rforitm$work<x0>(x0) = test(x0)
 }(*where*)//end-of-[gseq_rforitm_c1fr(xs)]
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_rforitm_f1np
-  (xs, test) =
-(
-gseq_rforitm
-<xs><x0>(xs)) where {
-#impltmp rforitm$work<x0>(x0) = test(x0)
-}(*where*)//end-of-[gseq_rforitm_f1np(xs)]
 //
 (* ****** ****** *)
 //
@@ -561,18 +442,6 @@ gseq_iforitm
 iforitm$work<x0>(i0, x0) = test(i0, x0)
 }(*where*)//end-of-[gseq_iforitm_c2fr(xs)]
 //
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_iforitm_f2np
-  (xs, test) =
-(
-gseq_iforitm
-<xs><x0>(xs)) where {
-#impltmp
-iforitm$work<x0>(i0, x0) = test(i0, x0)
-}(*where*)//end-of-[gseq_iforitm_f2np(xs)]
-//
 (* ****** ****** *)
 //
 #impltmp
@@ -605,18 +474,6 @@ gseq_irforitm
 #impltmp
 irforitm$work<x0>(i0, x0) = test(i0, x0)
 }(*where*)//end-of-[gseq_irforitm_c2fr(xs)]
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_irforitm_f2np
-  (xs, test) =
-(
-gseq_irforitm
-<xs><x0>(xs)) where {
-#impltmp
-irforitm$work<x0>(i0, x0) = test(i0, x0)
-}(*where*)//end-of-[gseq_irforitm_f2np(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -663,20 +520,6 @@ gseq_folditm
 folditm$fopr<x0><r0>(r0, x0) = fopr(r0, x0)
 }(*where*)//end-of-[gseq_folditm_c2fr(xs,r0)]
 //
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< r0:vt >
-gseq_folditm_f2np
-  (xs, r0, fopr) =
-(
-gseq_folditm
-<xs><x0><r0>(xs, r0)) where
-{
-#impltmp
-folditm$fopr<x0><r0>(r0, x0) = fopr(r0, x0)
-}(*where*)//end-of-[gseq_folditm_f2np(xs,r0)]
-//
 (* ****** ****** *)
 //
 #impltmp
@@ -720,20 +563,6 @@ gseq_rfolditm
 #impltmp
 rfolditm$fopr<x0><r0>(r0, x0) = fopr(r0, x0)
 }(*where*)//end-of-[gseq_rfolditm_c2fr(xs,r0)]
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< r0:vt >
-gseq_rfolditm_f2np
-  (xs, r0, fopr) =
-(
-gseq_rfolditm
-<xs><x0><r0>(xs, r0)) where
-{
-#impltmp
-rfolditm$fopr<x0><r0>(r0, x0) = fopr(r0, x0)
-}(*where*)//end-of-[gseq_rfolditm_f2np(xs,r0)]
 //
 (* ****** ****** *)
 //
@@ -786,21 +615,6 @@ ifolditm$fopr
 < x0 >< r0 >(r0, i0, x0) = fopr(r0, i0, x0)
 }(*where*)//end-of-[gseq_ifolditm_c3fr(xs,r0)]
 //
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< r0:vt >
-gseq_ifolditm_f3np
-  (xs, r0, fopr) =
-(
-gseq_ifolditm
-<xs><x0><r0>(xs, r0)) where
-{
-#impltmp
-ifolditm$fopr
-< x0 >< r0 >(r0, i0, x0) = fopr(r0, i0, x0)
-}(*where*)//end-of-[gseq_ifolditm_f3np(xs,r0)]
-//
 (* ****** ****** *)
 //
 #impltmp
@@ -852,21 +666,6 @@ irfolditm$fopr
 < x0 >< r0 >(r0, i0, x0) = fopr(r0, i0, x0)
 }(*where*)//end-of-[gseq_irfolditm_c3fr(xs,r0)]
 //
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< r0:vt >
-gseq_irfolditm_f3np
-  (xs, r0, fopr) =
-(
-gseq_irfolditm
-<xs><x0><r0>(xs, r0)) where
-{
-#impltmp
-irfolditm$fopr
-< x0 >< r0 >(r0, i0, x0) = fopr(r0, i0, x0)
-}(*where*)//end-of-[gseq_irfolditm_f3np(xs,r0)]
-//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -914,20 +713,6 @@ gseq_foldall
 foldall$fopr<x0><r0>(r0, x0) = fopr(r0, x0)
 }(*where*)//end-of-[gseq_foldall_c2fr(xs,r0)]
 //
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< r0:vt >
-gseq_foldall_f2np
-  (xs, r0, fopr) =
-(
-gseq_foldall
-<xs><x0><r0>(xs, r0)) where
-{
-#impltmp
-foldall$fopr<x0><r0>(r0, x0) = fopr(r0, x0)
-}(*where*)//end-of-[gseq_foldall_f2np(xs,r0)]
-//
 (* ****** ****** *)
 //
 #impltmp
@@ -973,20 +758,6 @@ gseq_rfoldall
 #impltmp
 rfoldall$fopr<x0><r0>(r0, x0) = fopr(r0, x0)
 }(*where*)//end-of-[gseq_rfoldall_c2fr(xs,r0)]
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< r0:vt >
-gseq_rfoldall_f2np
-  (xs, r0, fopr) =
-(
-gseq_rfoldall
-<xs><x0><r0>(xs, r0)) where
-{
-#impltmp
-rfoldall$fopr<x0><r0>(r0, x0) = fopr(r0, x0)
-}(*where*)//end-of-[gseq_rfoldall_f2np(xs,r0)]
 //
 (* ****** ****** *)
 //
@@ -1043,21 +814,6 @@ ifoldall$fopr
 < x0 >< r0 >(r0, i0, x0) = fopr(r0, i0, x0)
 }(*where*)//end-of-[gseq_ifoldall_c3fr(xs,r0)]
 //
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< r0:vt >
-gseq_ifoldall_f3np
-  (xs, r0, fopr) =
-(
-gseq_ifoldall
-<xs><x0><r0>(xs, r0)) where
-{
-#impltmp
-ifoldall$fopr
-< x0 >< r0 >(r0, i0, x0) = fopr(r0, i0, x0)
-}(*where*)//end-of-[gseq_ifoldall_f3np(xs,r0)]
-//
 (* ****** ****** *)
 //
 #impltmp
@@ -1113,21 +869,6 @@ irfoldall$fopr
 < x0 >< r0 >(r0, i0, x0) = fopr(r0, i0, x0)
 }(*where*)//end-of-[gseq_irfoldall_c3fr(xs,r0)]
 //
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< r0:vt >
-gseq_irfoldall_f3np
-  (xs, r0, fopr) =
-(
-gseq_irfoldall
-<xs><x0><r0>(xs, r0)) where
-{
-#impltmp
-irfoldall$fopr
-< x0 >< r0 >(r0, i0, x0) = fopr(r0, i0, x0)
-}(*where*)//end-of-[gseq_irfoldall_f3np(xs,r0)]
-//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -1167,41 +908,12 @@ gseq_map_ares
 map$fopr<x0><y0>(x0) = fopr(x0)
 }
 //
-#impltmp
-< xs:t0 >
-< x0:t0 >
-< ys:vt >
-< y0:vt >
-gseq_map_ares_f1np
-  (xs, fopr) =
-(
-gseq_map_ares
-<xs><x0>
-<ys><y0>( xs )) where
-{
-#impltmp
-map$fopr<x0><y0>(x0) = fopr(x0)
-}
-//
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
 gseq_map_self_c1fr
-  (xs, fopr) =
-(
-gseq_map_self
-<xs><x0>( xs )) where
-{
-#impltmp
-map$fopr<x0><x0>(x0) = fopr(x0)
-}
-//
-#impltmp
-< xs:t0 >
-< x0:t0 >
-gseq_map_self_f1np
   (xs, fopr) =
 (
 gseq_map_self
