@@ -62,6 +62,11 @@ For further program verification
 (* ****** ****** *)
 //
 #include
+"srcgen1/prelude/SATS/gdbg000.sats"
+//
+(* ****** ****** *)
+//
+#include
 "srcgen1/prelude/SATS/gnum000.sats"
 #include
 "srcgen1/prelude/SATS/gord000.sats"

@@ -43,13 +43,33 @@ Sun 21 Jul 2024 11:06:11 PM EDT
 #staload
 "./../DATS/qlist00.dats"
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val xs =
+list(1,2,3,4)
+val xss = list(xs)
+val ( ) =
+prints
+("type(xs) = ", type(xs), "\n")
+val ( ) =
+prints
+("type(xss) = ", type(xss), "\n")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val xs =
 qlist_nil{sint}()
 val xs = folditm
 ( GSEQ(list(1,2,3))
 , xs, lam(r, x) => qlist_snoc(r, x))
 //
-val () = prints("xs = ", xs, "\n")
+val ( ) =
+prints
+("xs(type) = ", type(xs), "\n")
+val () =
+prints("xs(value) = ", xs, "\n")
 //
 val () = prints("sum(xs) = ", sum(GSEQ(xs)), "\n")
 val () = prints("prod(xs) = ", prod(GSEQ(xs)), "\n")
@@ -65,17 +85,13 @@ GSEQ_z2make(GSEQ(xs), GSEQ(ys))
 GX2SEQ(xs, ys) =
 GSEQ_x2make(GSEQ(xs), GSEQ(ys))
 //
-val xs =
-list(1,2,3,4)
-val xss = list(xs)
-val ( ) = prtyp("abcde", type(xss)
 val ys =
 list(10,20,30,40,50)
 val xys =
 rlistize(GZ2SEQ(xs, ys))
 val ( ) =
 print1s("rlistize(GZ2SEQ(xs, ys))) = ", xys, "\n")
-////
+//
 val () =
 irforitm
 ( GSEQ(ys)

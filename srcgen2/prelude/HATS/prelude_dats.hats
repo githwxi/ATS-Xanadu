@@ -41,12 +41,12 @@ This one is included by [DATS/unsfx00.dats]
 (* ****** ****** *)
 #staload _ = "prelude/DATS/gdbg000.dats"
 #staload _ = "prelude/DATS/gnum000.dats"
-#staload _ = "prelude/DATS/gcls000.dats"
 #staload _ = "prelude/DATS/gseq000.dats"
 #staload _ = "prelude/DATS/gseq001.dats"
 #staload _ = "prelude/DATS/gseq002.dats"
 #staload _ = "prelude/DATS/gasz000.dats"
 #staload _ = "prelude/DATS/gasz001.dats"
+#staload _ = "prelude/DATS/gcls000.dats"
 #staload _ = "prelude/DATS/gsyn000.dats"
 #staload _ = "prelude/DATS/gsyn001.dats"
 (* ****** ****** *)
