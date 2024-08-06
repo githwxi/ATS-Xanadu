@@ -39,6 +39,7 @@ This one is included by [DATS/unsfx00.dats]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#staload _ = "prelude/DATS/gdbg000.dats"
 #staload _ = "prelude/DATS/gnum000.dats"
 #staload _ = "prelude/DATS/gcls000.dats"
 #staload _ = "prelude/DATS/gseq000.dats"

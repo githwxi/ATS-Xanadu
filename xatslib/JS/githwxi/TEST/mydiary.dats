@@ -67,6 +67,8 @@ GSEQ_x2make(GSEQ(xs), GSEQ(ys))
 //
 val xs =
 list(1,2,3,4)
+val xss = list(xs)
+val ( ) = prtyp("abcde", type(xss)
 val ys =
 list(10,20,30,40,50)
 val xys =
