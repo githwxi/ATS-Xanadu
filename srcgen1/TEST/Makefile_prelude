@@ -56,11 +56,9 @@ $(XATSOPT) -s $(PRELUDE)/SATS/gbas001.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gbas002.sats
 all0_sats:: ; \
-$(XATSOPT) -s $(PRELUDE)/SATS/gcls000.sats
+$(XATSOPT) -s $(PRELUDE)/SATS/gdbg000.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gnum000.sats
-all0_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/gxyz000.dats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gseq000.sats
 all0_sats:: ; \
@@ -71,6 +69,8 @@ all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gasz000.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gasz001.sats
+all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gcls000.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gsyn000.sats
 all0_sats:: ; \
@@ -255,9 +255,11 @@ $(XATSOPT) -d $(PRELUDE)/DATS/gbas001.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gbas002.dats
 all0_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/gcls000.dats
+$(XATSOPT) -d $(PRELUDE)/DATS/gdbg000.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gnum000.dats
+all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/gxyz000.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gseq000.dats
 all0_dats:: ; \
@@ -268,6 +270,8 @@ all0_dats:: ; \
 $(XATSOPT) -s $(PRELUDE)/DATS/gasz000.dats
 all0_dats:: ; \
 $(XATSOPT) -s $(PRELUDE)/DATS/gasz001.dats
+all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/gcls000.dats
 all0_dats:: ; \
 $(XATSOPT) -s $(PRELUDE)/DATS/gsyn000.dats
 all0_dats:: ; \
@@ -298,8 +302,6 @@ $(XATSOPT) -d $(PRELUDE)/DATS/VT/gbas001_vt.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/gnum000_vt.dats
 all0_dats:: ; \
-$(XATSOPT) -d $(PRELUDE)/DATS/VT/gcls000_vt.dats
-all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/gxyz000_vt.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/gseq000_vt.dats
@@ -311,6 +313,8 @@ all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/gasz000_vt.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/gasz001_vt.dats
+all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/VT/gcls000_vt.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/gsyn000_vt.dats
 all0_dats:: ; \
