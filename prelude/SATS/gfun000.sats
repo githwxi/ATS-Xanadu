@@ -30,156 +30,121 @@
 (*
 Author: Hongwei Xi
 (*
-Mon 05 Aug 2024 10:30:08 PM EDT
+Fri 26 Jul 2024 09:27:30 AM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload UN =
-"prelude/SATS/unsfx00.sats"
+(*
+HX:
+For functions
+(fnp, cfp, cfr, etc)
+*)
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-g_type
-{t0:t0}(_) =
-$UN.castxy(unit(*0*))
-#impltmp
-<(*tmp*)>
-g_vwtp
-{vt:vt}(_) =
-$UN.castxy(unit(*0*))
-//
+#typedef
+c0fr(r0:vt) = () -<cfr> r0
 (* ****** ****** *)
+#typedef
+c1fr
+(a1:t0,r0:vt) = (a1)-<cfr>r0
+#typedef
+f1np
+(a1:t0,r0:vt) = (a1)-<fnp>r0
 (* ****** ****** *)
-//
-#impltmp
-< vw:vw >
-g_ptype() =
-(
- strn_print("$typ(vw)"))
-#impltmp
-< pf:pf >
-g_ptype() =
-(
- strn_print("$typ(pf)"))
-//
-#impltmp
-< vt:vt >
-g_ptype() =
-(
- strn_print("$typ(vt)"))
-#impltmp
-< t0:t0 >
-g_ptype() =
-(
- strn_print("$typ(t0)"))
-//
+#typedef
+c2fr
+(a1:t0
+,a2:t0,r0:vt) = (a1,a2)-<cfr>r0
+#typedef
+f2np
+(a1:t0
+,a2:t0,r0:vt) = (a1,a2)-<fnp>r0
 (* ****** ****** *)
+#typedef
+c3fr
+(a1:t0
+,a2:t0
+,a3:t0,r0:vt) = (a1,a2,a3)-<cfr>r0
+#typedef
+f3np
+(a1:t0
+,a2:t0
+,a3:t0,r0:vt) = (a1,a2,a3)-<fnp>r0
 (* ****** ****** *)
-//
-#impltmp
-< t0:t0 >
-g_print(x0) =
-( pstrn"$val("
-; g_ptype<t0>(); pstrn")")
-//
-#impltmp
-< vt:vt >
-g_print1(x0) =
-( pstrn"$val("
-; g_ptype<vt>(); pstrn")")
-//
-(* ****** ****** *)
+#typedef
+c4fr
+(a1:t0
+,a2:t0
+,a3:t0
+,a4:t0,r0:vt) = (a1,a2,a3,a4)-<cfr>r0
+#typedef
+f4np
+(a1:t0
+,a2:t0
+,a3:t0
+,a4:t0,r0:vt) = (a1,a2,a3,a4)-<fnp>r0
 (* ****** ****** *)
 //
-#impltmp
-g_ptype
-< sint >
-( (*void*) ) = pstrn("sint")
+fun
+<a1:t0>
+c1fr_not
+( f0
+: c1fr(a1,bool)): c1fr(a1,bool)
 //
-#impltmp
-g_ptype
-< bool >
-( (*void*) ) = pstrn("bool")
-#impltmp
-g_ptype
-< char >
-( (*void*) ) = pstrn("char")
-//
-#impltmp
-g_ptype
-< strn >
-( (*void*) ) = pstrn("strn")
-//
-#impltmp
-g_ptype
-< sflt >
-( (*void*) ) = pstrn("sflt")
-#impltmp
-g_ptype
-< dflt >
-( (*void*) ) = pstrn("dflt")
+#symload not with c1fr_not of 1000
 //
 (* ****** ****** *)
 //
-#impltmp
-{ t0:t0 }
-g_ptype
-<list(t0)>
-( (*void*) ) =
-(
-pstrn("list(");
-g_ptype<t0>((*0*)); pstrn(")"))
+fun<>
+c0fr_repeat_nint
+( f0
+: c0fr(void), times: nint): void
 //
-#impltmp
-{ t0:t0 }
-g_ptype
-<strm(t0)>
-( (*void*) ) =
-(
-pstrn("strm(");
-g_ptype<t0>((*0*)); pstrn(")"))
+#symload repeat with c0fr_repeat_nint of 1000
 //
 (* ****** ****** *)
 //
-#impltmp
-{ vt:vt }
-g_ptype
-<list_vt(vt)>
-( (*void*) ) =
-(
-pstrn("list_vt(");
-g_ptype<vt>((*0*)); pstrn(")"))
-//
-#impltmp
-{ vt:vt }
-g_ptype
-<strm_vt(vt)>
-( (*void*) ) =
-(
-pstrn("strm_vt(");
-g_ptype<vt>((*0*)); pstrn(")"))
+fun
+<x0:vt>
+c0fr_enum$make0_strx_vt
+  (xs: strx_vt( x0 )): c0fr( x0 )
 //
 (* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+c1fr_srch$make_gseq(xs): c1fr(x0,bool)
+//
 (* ****** ****** *)
 //
 (*
-HX-2024-08-06:
-Tue 06 Aug 2024 07:17:33 AM EDT
+HX: for run-time testing
+Sun Aug 13 21:10:14 EDT 2023
 *)
-#impltmp
-{ vw:vw }
-g_print
-<type(vw)>(_(*0*)) = g_ptype<vw>()
+//
+(*
+HX: f0(x0) = r0?
+*)
+fun
+<x0:t0>
+<r0:vt>
+c1fr_equal_at
+( f0
+: c1fr(x0, r0)
+, x0: x0, r0: r0): bool
+//
+fun
+<x0:t0>
+<y0:vt>
+c1fr_rand$equal
+( f1: c1fr(x0, y0)
+, f2: c1fr(x0, y0)): bool // end-fun
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_gdbg000.dats] *)
+(* end of [ATS3/XANADU_prelude_SATS_gfun000.sats] *)

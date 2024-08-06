@@ -6,6 +6,10 @@ Sat 03 Aug 2024 03:08:26 PM EDT
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+#staload _ =
+"prelude/DATS/gdbg000.dats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX-2024-07-21:
@@ -87,15 +91,17 @@ GSEQ_x2make(GSEQ(xs), GSEQ(ys))
 //
 val ys =
 list(10,20,30,40,50)
-val xys =
-rlistize(GZ2SEQ(xs, ys))
+val ztup = GZ2SEQ(xs, ys)
+val zxys = rlistize(ztup)
 val ( ) =
-print1s("rlistize(GZ2SEQ(xs, ys))) = ", xys, "\n")
-//
+prints("ztup = ", ztup, "\n")
+val ( ) =
+print1s("rlistize(ztup) = ", zxys, "\n")
+////
 val () =
 irforitm
 ( GSEQ(ys)
-, lam(i, x) => prints("(i, x) = (", i, ",", x, ")"))
+, lam(i, y) => prints("(i, x) = (", i, ",", y, ")"))
 val () = prints("\n")
 ////
 val rys = rlistize(GSEQ(ys))

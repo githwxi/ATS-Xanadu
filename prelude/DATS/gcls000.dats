@@ -46,7 +46,19 @@ Authoremail: gmhwxiATgmailDOTcom
 < xs:t0 >
 < x0:t0 >
 GSEQ_unmk
-(  gseq  ) = $UN.castxy(gseq)
+(  gseq  ) =
+(
+  $UN.castxy(gseq))
+//
+#impltmp
+{ xs:t0 }
+{ x0:t0 }
+g_ptype
+<GSEQ(xs,x0)>
+(  (*void*)  ) =
+( pstrn"GSEQ("
+; g_ptype<xs>(); pstrn(",")
+; g_ptype<x0>(); pstrn(")"))
 //
 (* ****** ****** *)
 //
@@ -54,7 +66,19 @@ GSEQ_unmk
 < xs:t0 >
 < x0:vt >
 GASZ_unmk
-(  gasz  ) = $UN.castxy(gasz)
+(  gasz  ) =
+(
+  $UN.castxy(gasz))
+//
+#impltmp
+{ xs:t0 }
+{ x0:t0 }
+g_ptype
+<GASZ(xs,x0)>
+(  (*void*)  ) =
+( pstrn"GASZ("
+; g_ptype<xs>(); pstrn(",")
+; g_ptype<x0>(); pstrn(")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)

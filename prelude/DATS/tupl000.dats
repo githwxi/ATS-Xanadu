@@ -64,6 +64,29 @@ Sun 04 Aug 2024 05:41:59 PM EDT
 (* ****** ****** *)
 //
 #impltmp
+{ a0:t0 }
+{ a1:t0 }
+g_ptype
+<t0up2(a0,a1)>
+(  (*void*)  ) =
+( pstrn"t0up2("
+; g_ptype<a0>(); pstrn(",")
+; g_ptype<a1>(); pstrn(")"))
+//
+#impltmp
+{ a0:t0 }
+{ a1:t0 }
+g_ptype
+<t1up2(a0,a1)>
+(  (*void*)  ) =
+( pstrn"t1up2("
+; g_ptype<a0>(); pstrn(",")
+; g_ptype<a1>(); pstrn(")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 < a0:t0 >
 < a1:t0 >
 z2tup_make
@@ -79,7 +102,7 @@ z2tup_unmk
 #impltmp
 { a0:t0 }
 { a1:t0 }
-ptype
+g_ptype
 <z2tup(a0,a1)>
 (  (*void*)  ) =
 ( pstrn"z2tup("
@@ -104,7 +127,7 @@ x2tup_unmk
 #impltmp
 { a0:t0 }
 { a1:t0 }
-ptype
+g_ptype
 <x2tup(a0,a1)>
 (  (*void*)  ) =
 ( pstrn"x2tup("
