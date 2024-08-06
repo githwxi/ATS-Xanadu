@@ -64,30 +64,30 @@ Sun 04 Aug 2024 05:41:59 PM EDT
 (* ****** ****** *)
 //
 #impltmp
-<a0 : t0>
-<a1 : t0>
+< a0:t0 >
+< a1:t0 >
 z2tup_make
 ( x1, x2 ) =
 (
   $UN.castxy@(x1, x2))
 #impltmp
-<a0 : t0>
-<a1 : t0>
+< a0:t0 >
+< a1:t0 >
 z2tup_unmk
  ( ztup ) = $UN.castxy(ztup)
 //
 (* ****** ****** *)
 //
 #impltmp
-<a0 : t0>
-<a1 : t0>
+< a0:t0 >
+< a1:t0 >
 x2tup_make
 ( x1, x2 ) =
 (
   $UN.castxy@(x1, x2))
 #impltmp
-<a0 : t0>
-<a1 : t0>
+< a0:t0 >
+< a1:t0 >
 x2tup_unmk
  ( ztup ) = $UN.castxy(ztup)
 //

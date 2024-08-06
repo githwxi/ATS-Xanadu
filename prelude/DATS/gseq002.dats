@@ -44,6 +44,178 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 (*
+HX-2024-08-04:
+Sun 04 Aug 2024 10:21:55 AM EDT
+//
+These defines show the need for
+[symload] that can not be easily
+substituted with templates.
+//
+Note that [GSEQ] is meant to
+be resolved during type-checking;
+if [GSEQ_make] is used instead,
+some types cannot be obtained until
+the phase of template resolution.
+//
+*)
+//
+#define
+GZ2SEQ(xs, ys) =
+GSEQ_z2make(GSEQ(xs), GSEQ(ys))
+//
+(*
+#typedef
+gz2seq
+( xs: t0, x0: t0
+, ys: t0, y0: t0) =
+(
+z2tup(GSEQ(xs, x0), GSEQ(ys, y0)))
+*)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< ys:t0 >
+< y0:t0 >
+GSEQ_z2make
+(xgsq, ygsq) =
+$UN.castxy//GSEQ_make
+(z2tup_make(xgsq, ygsq))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ xs:t0
+, x0:t0
+, ys:t0
+, y0:t0 }
+gseq_forall
+<
+gz2seq
+(xs,x0,ys,y0)><(x0,y0)>
+  (xsys) =
+(
+gseq_z2forall
+<xs><x0><ys><y0>(xs, ys))
+where
+{
+val
+@(xs, ys) =
+z2tup_unmk(xsys)
+val xs = GSEQ_unmk(xs)
+and ys = GSEQ_unmk(ys)
+#impltmp
+z2forall$test<x0><y0>(x0, y0) = forall$test@(x0, y0)
+}
+//
+#impltmp
+{ xs:t0
+, x0:t0
+, ys:t0
+, y0:t0 }
+gseq_rforall
+<
+gz2seq
+(xs,x0,ys,y0)><(x0,y0)>
+  (xsys) =
+(
+gseq_rz2forall
+<xs><x0><ys><y0>(xs, ys))
+where
+{
+val
+@(xs, ys) =
+z2tup_unmk(xsys)
+val xs = GSEQ_unmk(xs)
+and ys = GSEQ_unmk(ys)
+#impltmp
+rz2forall$test<x0><y0>(x0, y0) = rforall$test@(x0, y0)
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#define
+GX2SEQ(xs, ys) =
+GSEQ_x2make(GSEQ(xs), GSEQ(ys))
+//
+(*
+#typedef
+gx2seq
+( xs: t0, x0: t0
+, ys: t0, y0: t0) =
+(
+x2tup(GSEQ(xs, x0), GSEQ(ys, y0)))
+*)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< ys:t0 >
+< y0:t0 >
+GSEQ_x2make
+(xgsq, ygsq) = 
+$UN.castxy//GSEQ_make
+(x2tup_make(xgsq, ygsq))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ xs:t0
+, x0:t0
+, ys:t0
+, y0:t0 }
+gseq_forall
+<
+gx2seq
+(xs,x0,ys,y0)><(x0,y0)>
+  (xsys) =
+(
+gseq_x2forall
+<xs><x0><ys><y0>(xs, ys))
+where
+{
+val
+@(xs, ys) =
+x2tup_unmk(xsys)
+val xs = GSEQ_unmk(xs)
+and ys = GSEQ_unmk(ys)
+#impltmp
+x2forall$test<x0><y0>(x0, y0) = forall$test@(x0, y0)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+{ xs:t0
+, x0:t0
+, ys:t0
+, y0:t0 }
+gseq_rforall
+<
+gx2seq
+(xs,x0,ys,y0)><(x0,y0)>
+  (xsys) =
+(
+gseq_x2rforall
+<xs><x0><ys><y0>(xs, ys))
+where
+{
+val
+@(xs, ys) =
+x2tup_unmk(xsys)
+val xs = GSEQ_unmk(xs)
+and ys = GSEQ_unmk(ys)
+#impltmp
+x2rforall$test<x0><y0>(x0, y0) = rforall$test@(x0, y0)
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2024-08-05:
 Mon 05 Aug 2024 06:21:53 PM EDT
 *)
@@ -67,7 +239,28 @@ where
 {
 #impltmp
 z2forall$test0<x0><y0> = z2forall$test<x0><y0>
-} end//let//end-of-[gseq_z2forall(xs, ys)]
+}
+end where
+{
+(*
+val () =
+(
+  prints("gseq_z2forall: xs = ", xs, "\n"))
+val () =
+(
+  prints("gseq_z2forall: ys = ", ys, "\n"))
+*)
+}(*where*)//let//end-of-[gseq_z2forall(xs, ys)]
+//
+(* ****** ****** *)
+//
+(*
+//
+HX-2024-08-05:
+This is so interestingly buggy
+(when |xs| does not equal |ys|).
+Please do not delete the code as
+it serves as a really good example!
 //
 #impltmp
 < xs:t0 >
@@ -88,7 +281,45 @@ where
 {
 #impltmp
 z2forall$test0<x0><y0> = rz2forall$test<x0><y0>
-} end//let//end-of-[gseq_rz2forall(xs, ys)]
+}
+end where
+{
+(*
+val () =
+(
+  prints("gseq_rz2forall: xs = ", xs, "\n"))
+val () =
+(
+  prints("gseq_rz2forall: ys = ", ys, "\n"))
+*)
+}(*where*)//let//end-of-[gseq_rz2forall(xs, ys)]
+*)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< ys:t0 >
+< y0:t0 >
+gseq_rz2forall
+  (xs, ys) =
+let
+val xs =
+gseq_strmize<xs><x0>(xs)
+val ys =
+gseq_strmize<ys><y0>(ys)
+//
+in//let
+list_vt_forall0<(x0,y0)>
+(
+strm_vt_z2rlistize0<x0><y0>(xs, ys)
+) where
+{
+#impltmp
+forall$test<(x0,y0)>(xy) =
+(
+  rz2forall$test<x0><y0>(xy.0, xy.1))
+}
+end//let//end-of-[gseq_rz2forall(xs,ys)]
 //
 (* ****** ****** *)
 //
@@ -124,6 +355,8 @@ val b0 = iz2forall$test<x0>(i0, x0, y0)
 }(*where*)
 //
 }(*where*)//end-of-[gseq_iz2forall(xs,ys)]
+//
+(* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
@@ -409,188 +642,6 @@ in//let
 irforall$test<x0>(i0, x0) = irforall$test_x0(i0, x0)
 }
 end//(*let*)//end-of-[gseq_x2irforall(xs, ys)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2024-08-04:
-Sun 04 Aug 2024 10:21:55 AM EDT
-//
-These defines show the need for
-[symload] that can not be easily
-substituted with templates.
-//
-Note that [GSEQ] is meant to
-be resolved during type-checking;
-if [GSEQ_make] is used instead,
-some types cannot be obtained until
-the phase of template resolution.
-//
-*)
-//
-#define
-GZ2SEQ(xs, ys) =
-GSEQ_z2make(GSEQ(xs), GSEQ(ys))
-//
-(*
-#typedef
-gz2seq
-( xs: t0, x0: t0
-, ys: t0, y0: t0) =
-(
-z2tup(GSEQ(xs, x0), GSEQ(ys, y0)))
-*)
-//
-#impltmp
-<xs : t0>
-<x0 : t0>
-<ys : t0>
-<y0 : t0>
-GSEQ_z2make
-(xgsq, ygsq) =
-$UN.castxy//GSEQ_make
-(z2tup_make(xgsq, ygsq))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-{ xs:t0
-, x0:t0
-, ys:t0
-, y0:t0 }
-GSEQ_forall
-<gz2seq(xs,x0,ys,y0)><(x0,y0)>
-  (  xsys  ) =
-let
-val
-@(xs, ys) =
-z2tup_unmk
-(GSEQ_unmk(xsys))
-val xs = GSEQ_unmk(xs)
-and ys = GSEQ_unmk(ys) in gseq_z2forall<xs><x0><ys><y0>(xs, ys)
-end(*let*)//end-of-[GSEQ_forall(z2tup(xs, ys)]
-//
-#impltmp
-{ xs:t0
-, x0:t0
-, ys:t0
-, y0:t0 }
-GSEQ_rforall
-<gz2seq(xs,x0,ys,y0)><(x0,y0)>
-  (  xsys  ) =
-let
-val
-@(xs, ys) =
-z2tup_unmk
-(GSEQ_unmk(xsys))
-val xs = GSEQ_unmk(xs)
-and ys = GSEQ_unmk(ys) in gseq_rz2forall<xs><x0><ys><y0>(xs, ys)
-end(*let*)//end-of-[GSEQ_rforall(z2tup(xs, ys)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#define
-GX2SEQ(xs, ys) =
-GSEQ_x2make(GSEQ(xs), GSEQ(ys))
-//
-(*
-#typedef
-gx2seq
-( xs: t0, x0: t0
-, ys: t0, y0: t0) =
-(
-x2tup(GSEQ(xs, x0), GSEQ(ys, y0)))
-*)
-//
-#impltmp
-<xs : t0>
-<x0 : t0>
-<ys : t0>
-<y0 : t0>
-GSEQ_x2make
-(xgsq, ygsq) = 
-$UN.castxy//GSEQ_make
-(x2tup_make(xgsq, ygsq))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-{ xs:t0
-, x0:t0
-, ys:t0
-, y0:t0 }
-gseq_forall
-<gx2seq(xs,x0,ys,y0)><(x0,y0)>
-  (xsys) =
-(
-gseq_x2forall
-<xs><x0><ys><y0>(xs, ys))
-where
-{
-val
-@(xs, ys) =
-x2tup_unmk(xsys)
-val xs = GSEQ_unmk(xs)
-and ys = GSEQ_unmk(ys)
-#impltmp
-x2forall$test<x0><y0>(x0, y0) = forall$test@(x0, y0)
-}
-//
-#impltmp
-{ xs:t0
-, x0:t0
-, ys:t0
-, y0:t0 }
-gseq_forall0
-<gx2seq(xs,x0,ys,y0)><(x0,y0)>(xsys) =
-(
-gseq_forall
-<gx2seq(xs,x0,ys,y0)><(x0,y0)>(xsys)) where
-{
-#impltmp forall$test<(x0,y0)> = forall$test0<(x0,y0)>
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-{ xs:t0
-, x0:t0
-, ys:t0
-, y0:t0 }
-gseq_rforall
-<gx2seq(xs,x0,ys,y0)><(x0,y0)>
-  (xsys) =
-(
-gseq_x2rforall
-<xs><x0><ys><y0>(xs, ys))
-where
-{
-val
-@(xs, ys) =
-x2tup_unmk(xsys)
-val xs = GSEQ_unmk(xs)
-and ys = GSEQ_unmk(ys)
-#impltmp
-x2rforall$test<x0><y0>(x0, y0) = rforall$test@(x0, y0)
-}
-//
-#impltmp
-{ xs:t0
-, x0:t0
-, ys:t0
-, y0:t0 }
-gseq_rforall0
-<gx2seq(xs,x0,ys,y0)><(x0,y0)>(xsys) =
-(
-gseq_rforall
-<gx2seq(xs,x0,ys,y0)><(x0,y0)>(xsys)) where
-{
-#impltmp rforall$test<(x0,y0)> = rforall$test0<(x0,y0)>
-}
 //
 (* ****** ****** *)
 (* ****** ****** *)

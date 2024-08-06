@@ -45,8 +45,8 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
-<xs : vt>
-<x0 : vt>
+< xs:vt >
+< x0:vt >
 GLSEQ_unmk0
 (  gseq  ) = $UN.castlinxy(gseq)
 //
@@ -54,8 +54,8 @@ GLSEQ_unmk0
 (* ****** ****** *)
 //
 #impltmp
-<xs : vt>
-<x0 : vt>
+< xs:vt >
+< x0:vt >
 GLSEQ_forall0
   (gseq) =
 (
@@ -64,8 +64,8 @@ gseq_forall0<xs><x0>(GLSEQ_unmk0(gseq)))
 (* ****** ****** *)
 //
 #impltmp
-<xs : vt>
-<x0 : vt>
+< xs:vt >
+< x0:vt >
 GLSEQ_forall0_c1fr
   (gseq, test) =
 (

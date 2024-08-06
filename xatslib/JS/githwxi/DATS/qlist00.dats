@@ -191,8 +191,8 @@ val+
 QLIST(f1, r2) = xs
 //
 in//let
-  strm_vt_append00
-  (strmize(f1), rstrmize(r2))
+strm_vt_append00
+(list_strmize(f1), list_rstrmize(r2))
 end//let//end-of-[qlist_strmize(xs)]
 //
 (* ****** ****** *)
@@ -206,8 +206,8 @@ val+
 QLIST(f1, r2) = xs
 //
 in//let
-  strm_vt_append00
-  (strmize(r2), rstrmize(f1))
+strm_vt_append00
+(list_strmize(r2), list_rstrmize(f1))
 end//let//end-of-[qlist_rstrmize(xs)]
 //
 (* ****** ****** *)

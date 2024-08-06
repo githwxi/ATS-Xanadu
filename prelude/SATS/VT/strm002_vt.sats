@@ -171,6 +171,29 @@ iz2scanitm0 with strm_vt_iz2scanitm0 of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-08-05:
+Mon 05 Aug 2024 07:50:06 PM EDT
+*)
+//
+fun
+<x0:vt>
+<y0:vt>
+strm_vt_z2strmize0
+( xs: strm_vt(x0)
+, ys: strm_vt(y0)): strm_vt@(x0, y0)
+//
+fun
+<x0:vt>
+<y0:vt>
+strm_vt_z2listize0
+(xs: strm_vt(x0), ys: strm_vt(y0)): list_vt@(x0, y0)
+fun
+<x0:vt>
+<y0:vt>
+strm_vt_z2rlistize0
+(xs: strm_vt(x0), ys: strm_vt(y0)): list_vt@(x0, y0)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
