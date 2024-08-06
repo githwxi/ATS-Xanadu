@@ -296,6 +296,49 @@ gseq_iz2map0_lstrm
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-08-05:
+Mon 05 Aug 2024 07:50:06 PM EDT
+*)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+strm_vt_z2listize0
+  (xs, ys) =
+list_vt_reverse0<(x0,y0)>
+(
+strm_vt_z2rlistize0<x0><y0>(xs, ys)
+)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+strm_vt_z2rlistize0
+  (xs, ys) =
+strm_vt_rlistize0<(x0,y0)>
+(
+ strm_vt_z2strmize0<x0><y0>(xs, ys))
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+strm_vt_z2strmize0
+  (xs, ys) =
+(
+ strm_vt_z2map0<x0><y0><z0>(xs, ys))
+where
+{
+//
+#typedef z0 = (x0, y0)
+//
+#impltmp
+z2map$fopr0<x0><y0><z0>(x0, y0) = @(x0, y0)
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

@@ -73,6 +73,7 @@ This one is included by [DATS/unsfx00.dats]
 #staload _ = "prelude/DATS/VT/list001_vt.dats"
 #staload _ = "prelude/DATS/VT/strm000_vt.dats"
 #staload _ = "prelude/DATS/VT/strm001_vt.dats"
+#staload _ = "prelude/DATS/VT/strm002_vt.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
