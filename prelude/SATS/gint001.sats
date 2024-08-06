@@ -55,17 +55,16 @@ nint_strqize
 fun<>
 nint_forall(xs: nint): bool
 fun<>
-nint_foritm(xs: nint): bool
-//
-fun<>
 nint_rforall(xs: nint): bool
 fun<>
-nint_rforitm(xs: nint): bool
+nint_iforall(xs: nint): bool
 //
 fun<>
-nint_iforall(xs: nint): bool
+nint_foritm(xs: nint): void
 fun<>
-nint_iforitm(xs: nint): bool
+nint_rforitm(xs: nint): void
+fun<>
+nint_iforitm(xs: nint): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -314,17 +314,16 @@ imapstrq$fopr(pos: ni, itm: x0): strq_vt(y0)
 fun<>
 nint_forall(xs: nint): bool
 fun<>
-nint_foritm(xs: nint): bool
-//
-fun<>
 nint_rforall(xs: nint): bool
 fun<>
-nint_rforitm(xs: nint): bool
+nint_iforall(xs: nint): bool
 //
 fun<>
-nint_iforall(xs: nint): bool
+nint_foritm(xs: nint): void
 fun<>
-nint_iforitm(xs: nint): bool
+nint_rforitm(xs: nint): void
+fun<>
+nint_iforitm(xs: nint): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1188,6 +1187,32 @@ fun
 gseq_irmap_c2fr_rllist
 ( xs: xs
 , fopr: (ni, x0) -<cfr> y0): list_vt(y0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX: gfun000.sats
+*)
+fun
+<a1:t0>
+c1fr_not
+( f0
+: c1fr(a1,bool)): c1fr(a1,bool)
+fun<>
+c0fr_repeat_nint
+( f0
+: c0fr(void), times: nint): void
+//
+fun
+<x0:vt>
+c0fr_enum$make0_strx_vt
+  (xs: strx_vt( x0 )): c0fr( x0 )
+//
+fun
+<xs:t0>
+<x0:t0>
+c1fr_srch$make_gseq(xs): c1fr(x0,bool)
 //
 (* ****** ****** *)
 (* ****** ****** *)

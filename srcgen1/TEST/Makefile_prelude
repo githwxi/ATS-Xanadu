@@ -60,6 +60,8 @@ $(XATSOPT) -s $(PRELUDE)/SATS/gdbg000.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gnum000.sats
 all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/gfun000.sats
+all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gseq000.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/gseq001.sats
@@ -136,9 +138,11 @@ $(XATSOPT) -s $(PRELUDE)/SATS/VT/unsfx00_vt.sats
 all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gbas000.sats
 all1_sats:: ; \
+$(XATSOPT) -s $(PRELUDE1)/SATS/gnum000.sats
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gord000.sats
 all1_sats:: ; \
-$(XATSOPT) -s $(PRELUDE1)/SATS/gnum000.sats
+$(XATSOPT) -s $(PRELUDE1)/SATS/gfun000.sats
 
 all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/bool000.sats
@@ -150,12 +154,10 @@ all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gflt000.sats
 all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gintb00.sats
-
+all1_sats:: ; \
+$(XATSOPT) -s $(PRELUDE1)/SATS/strn000.sats
 all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gfor000.sats
-all1_sats:: ; \
-$(XATSOPT) -s $(PRELUDE1)/SATS/gfun000.sats
-
 all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gseq000.sats
 all1_sats:: ; \
@@ -181,9 +183,6 @@ all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/tupn000.sats
 all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/tupn001.sats
-
-all1_sats:: ; \
-$(XATSOPT) -s $(PRELUDE1)/SATS/strn000.sats
 
 all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/optn000.sats
@@ -258,6 +257,8 @@ all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gdbg000.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gnum000.dats
+all0_dats:: ; \
+$(XATSOPT) -s $(PRELUDE)/DATS/gfun000.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/gxyz000.dats
 all0_dats:: ; \
@@ -342,6 +343,8 @@ all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/gnum000.dats
 all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/gord000.dats
+all1_dats:: ; \
+$(XATSOPT) -d $(PRELUDE1)/DATS/gfun000.dats
 
 all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/bool000.dats
@@ -349,12 +352,11 @@ all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/char000.dats
 all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/gint000.dats
+all1_dats:: ; \
+$(XATSOPT) -d $(PRELUDE1)/DATS/strn000.dats
 
 all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/gfor000.dats
-all1_dats:: ; \
-$(XATSOPT) -d $(PRELUDE1)/DATS/gfun000.dats
-
 all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/gseq000.dats
 all1_dats:: ; \
@@ -373,9 +375,6 @@ all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/arrn000.dats
 all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/arrn001.dats
-
-all1_dats:: ; \
-$(XATSOPT) -d $(PRELUDE1)/DATS/strn000.dats
 
 all1_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/list000.dats

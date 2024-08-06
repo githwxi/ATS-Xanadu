@@ -37,6 +37,10 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef ni = nint
+#typedef si = sint
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 <a1:t0>
@@ -44,6 +48,19 @@ c1fr_not
 (    f0    ) =
 (
   lam(x1:a1) => not(f0(x1)) )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+c0fr_repeat_nint
+(f0, times) =
+nint_foritm(times) where
+{
+#impltmp
+foritm$work<ni>(_) = f0((*void*))
+}(*where*)//end(c0fr_repeat_nint(f0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
