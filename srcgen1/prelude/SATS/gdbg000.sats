@@ -26,24 +26,12 @@
 *)
 
 (* ****** ****** *)
-(*
-** for flat tuples
-** for boxd tuples
-*)
-(* ****** ****** *)
-(*
-HX-2023-08-06:
-@(...): flat tuple
-#(...): boxd tuple
-$tup(...): boxd tuple
-(Change: $(...) -> #(...))
-Sun Aug  6 19:45:40 EDT 2023
-*)
-(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
-(Around some time in 2022)
+(*
+Mon 05 Aug 2024 10:10:05 PM EDT
+*)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
@@ -51,65 +39,55 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 (*
-HX-2024-08-04:
-Copying over from [srcgen1]
-Sun 04 Aug 2024 05:41:59 PM EDT
+HX-2024-08-05:
+Mon 05 Aug 2024 10:17:21 PM EDT
+ATS3 amply enables programmers to
+implement debugging support from the
+"outside"; the point to be stressed here
+is that these programmers are not supposed
+to have any direct access to the internals
+of the ATS3/Xanadu implemnetation!
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload UN =
-"prelude/SATS/unsfx00.sats"
+//
+(*
+HX-2024-08-06:
+This is the number 1
+function for debugging
+*)
+fun
+<vw:vw>
+g_ptype((*void*)): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#abstype
+type_vw_t0(a:vw) <= unit
+#sexpdef type = type_vw_t0
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-< a0:t0 >
-< a1:t0 >
-z2tup_make
-( x1, x2 ) =
-(
-  $UN.castxy@(x1, x2))
-#impltmp
-< a0:t0 >
-< a1:t0 >
-z2tup_unmk
- ( ztup ) = $UN.castxy(ztup)
+fun<>
+g_type
+{t0:t0}(x0: t0): type(t0)
+fun<>
+g_vwtp
+{vt:vt}(x0: !vt): type(vt)
+fun<>
+g_prop
+{pf:pf}(x0: pf|): type(pf)
+fun<>
+g_view
+{vw:vw}(x0: !vw|): type(vw)
 //
-#impltmp
-{ a0:t0 }
-{ a1:t0 }
-ptype
-<z2tup(a0,a1)>
-(  (*void*)  ) =
-( pstrn"z2tup("
-; g_ptype<a0>(); pstrn(",")
-; g_ptype<a1>(); pstrn(")"))
-//
-(* ****** ****** *)
-//
-#impltmp
-< a0:t0 >
-< a1:t0 >
-x2tup_make
-( x1, x2 ) =
-(
-  $UN.castxy@(x1, x2))
-#impltmp
-< a0:t0 >
-< a1:t0 >
-x2tup_unmk
- ( xtup ) = $UN.castxy(xtup)
-//
-#impltmp
-{ a0:t0 }
-{ a1:t0 }
-ptype
-<x2tup(a0,a1)>
-(  (*void*)  ) =
-( pstrn"x2tup("
-; g_ptype<a0>(); pstrn(",")
-; g_ptype<a1>(); pstrn(")"))
+#symload type with g_type of 0100
+#symload vwtp with g_vwtp of 0100
+#symload prop with g_prop of 0100
+#symload view with g_view of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -117,4 +95,4 @@ ptype
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_tupl000.dats] *)
+(* end of [ATS3/XANADU_prelude_SATS_gdbg000.sats] *)

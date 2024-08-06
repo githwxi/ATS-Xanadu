@@ -28,6 +28,18 @@ qlist(a:t0) = qlist_t0_tx(a)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+{ a:t0 }
+g_ptype
+<qlist(a)>() =
+(
+pstrn
+("qlist(");
+g_ptype<a>(); pstrn(")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #extern
 fun<>
 qlist_nil{a:t0}(): qlist(a)

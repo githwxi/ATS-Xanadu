@@ -37,46 +37,92 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsfx00.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
-g_print
-<type(sint)>
-( (*void*) ) = strn_print("sint")
+<(*tmp*)>
+g_type
+{t0:t0}(_) =
+$UN.castxy(unit(*0*))
+#impltmp
+<(*tmp*)>
+g_vwtp
+{vt:vt}(_) =
+$UN.castxy(unit(*0*))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
-g_print
-<type(bool)>
-( (*void*) ) = strn_print("bool")
+< vt:vt >
+g_ptype() =
+(
+  strn_print("vt(...)"))
 #impltmp
-g_print
-<type(char)>
-( (*void*) ) = strn_print("char")
+< t0:t0 >
+g_ptype() =
+(
+  strn_print("t0(...)"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
-g_print
-<type(strn)>
-( (*void*) ) = strn_print("strn")
+< t0:t0 >
+g_print(x0) =
+( pstrn"val("
+; g_ptype<t0>(); pstrn")")
 //
 #impltmp
-g_print
-<type(sflt)>
-( (*void*) ) = strn_print("sflt")
+< vt:vt >
+g_print1(x0) =
+( pstrn"val("
+; g_ptype<vt>(); pstrn")")
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
-g_print
-<type(dflt)>
-( (*void*) ) = strn_print("dflt")
+g_ptype
+< sint >
+( (*void*) ) = pstrn("sint")
+//
+#impltmp
+g_ptype
+< bool >
+( (*void*) ) = pstrn("bool")
+#impltmp
+g_ptype
+< char >
+( (*void*) ) = pstrn("char")
+//
+#impltmp
+g_ptype
+< strn >
+( (*void*) ) = pstrn("strn")
+//
+#impltmp
+g_ptype
+< sflt >
+( (*void*) ) = pstrn("sflt")
+#impltmp
+g_ptype
+< dflt >
+( (*void*) ) = pstrn("dflt")
 //
 (* ****** ****** *)
 //
 #impltmp
 { t0:t0 }
-g_print
-<type(list(t0))>
+g_ptype
+<list(t0)>
 ( (*void*) ) =
 (
-strn_print
-( "list(" );
-g_ptype<t0>((*0*)); strn_print(")"))
+pstrn("list(");
+g_ptype<t0>((*0*)); pstrn(")"))
 //
 #impltmp
 { t0:t0 }
@@ -84,9 +130,8 @@ g_ptype
 <strm(t0)>
 ( (*void*) ) =
 (
-strn_print
-( "strm(" );
-g_ptype<t0>((*0*)); strn_print(")"))
+pstrn("strm(");
+g_ptype<t0>((*0*)); pstrn(")"))
 //
 (* ****** ****** *)
 //
@@ -96,9 +141,8 @@ g_ptype
 <list_vt(vt)>
 ( (*void*) ) =
 (
-strn_print
-("list_vt(");
-g_ptype<vt>((*0*)); strn_print(")"))
+pstrn("list_vt(");
+g_ptype<vt>((*0*)); pstrn(")"))
 //
 #impltmp
 { vt:vt }
@@ -106,9 +150,8 @@ g_ptype
 <strm_vt(vt)>
 ( (*void*) ) =
 (
-strn_print
-("strm_vt(");
-g_ptype<vt>((*0*)); strn_print(")"))
+pstrn("strm_vt(");
+g_ptype<vt>((*0*)); pstrn(")"))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -119,7 +162,8 @@ Tue 06 Aug 2024 07:17:33 AM EDT
 *)
 #impltmp
 { vw:vw }
-g_print<type(vw)>(_) = g_ptype<vw>()
+g_print
+<type(vw)>(_(*0*)) = g_ptype<vw>()
 //
 (* ****** ****** *)
 (* ****** ****** *)

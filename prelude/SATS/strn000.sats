@@ -46,6 +46,9 @@ be the same as g_print<strn>
 fun<>
 strn_print(strn): void
 //
+#symload
+pstrn with strn_print of 1000
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

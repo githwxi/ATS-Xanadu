@@ -217,6 +217,8 @@ strn_cmp
 //
 fun<>
 strn_print(cs: strn): void
+#symload
+pstrn with strn_print of 1000
 //
 (* ****** ****** *)
 
