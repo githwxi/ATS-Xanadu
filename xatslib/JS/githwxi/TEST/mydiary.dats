@@ -56,6 +56,12 @@ prints
 ("type(f0) = ", type(f0), "\n")
 (* ****** ****** *)
 val b0 =
+GASZ("abcde").exists(lam(c)=>c='f')
+val () = prints("b0 = ", b0, "\n")
+(* ****** ****** *)
+////
+(* ****** ****** *)
+val b0 =
 GASZ(10).forall(lam(x)=>x<10)
 val () = prints("b0 = ", b0, "\n")
 (* ****** ****** *)

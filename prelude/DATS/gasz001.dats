@@ -181,6 +181,47 @@ prval () =
 }
 end//let//end-of-[gasz_forall(xs)]
 //
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasz_forall_f1un
+  (xs, test) =
+(
+gasz_forall
+<xs><x0>(xs)) where {
+#impltmp
+forall$test1<x0>(x0) = test(x0)//impl
+}(*where*)//end-of-[gasz_forall_f1un(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasz_exists(xs) =
+let
+//
+#impltmp
+forall$test1<x0>(x0) =
+(
+  not(exists$test1<x0>(x0)))
+//
+in//let
+  not(gasz_forall<xs><x0>(xs))
+end//let//end-of-[gasz_exists(xs)]
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasz_exists_f1un
+  (xs, test) =
+(
+gasz_exists
+<xs><x0>(xs)) where {
+#impltmp
+exists$test1<x0>(x0) = test(x0)//impl
+}(*where*)//end-of-[gasz_exists_f1un(xs)]
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -224,21 +265,6 @@ end//let//end-of-[gasz_rforall(xs)]
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_forall_f1un
-  (xs, test) =
-(
-gasz_forall
-<xs><x0>(xs)) where
-{
-#impltmp
-forall$test1<x0>(x0) = test(x0)
-}
-//
-(* ****** ****** *)
-//
-#impltmp
-< xs:t0 >
-< x0:vt >
 gasz_rforall_f1un
   (xs, test) =
 (
@@ -246,8 +272,37 @@ gasz_rforall
 <xs><x0>(xs)) where
 {
 #impltmp
-rforall$test1<x0>(x0) = test(x0)
-}
+rforall$test1<x0>(x0) = test(x0)//impl
+}(*where*)//end-of-[gasz_rforall_f1un(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasz_rexists(xs) =
+let
+//
+#impltmp
+rforall$test1<x0>(x0) =
+(
+  not(rexists$test1<x0>(x0)))
+//
+in//let
+  not(gasz_rforall<xs><x0>(xs))
+end//let//end-of-[gasz_rexists(xs)]
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasz_rexists_f1un
+  (xs, test) =
+(
+gasz_rexists
+<xs><x0>(xs)) where {
+#impltmp
+rexists$test1<x0>(x0) = test(x0)//impl
+}(*where*)//end-of-[gasz_rexists_f1un(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

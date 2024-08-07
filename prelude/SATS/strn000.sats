@@ -97,6 +97,15 @@ strn_make1_llist
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fcast // fun
+GASZ_make_strn
+(xs: strn): GASZ(strn, cgtz)
+#symload GASZ with GASZ_make_strn of 1000
+#symload GASZ_strn with GASZ_make_strn of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

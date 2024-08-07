@@ -95,6 +95,8 @@ fun
 <xs:t0>
 <x0:vt>
 gasz_rexists(xs: xs): bool
+//
+(*
 fun
 <xs:t0>
 <x0:vt>
@@ -103,6 +105,7 @@ fun
 <xs:t0>
 <x0:vt>
 gasz_irforall(xs: xs): bool
+*)
 //
 (*
 #symload forall with gasz_forall of 0100

@@ -55,15 +55,14 @@ gasz_forall<strn><cgtz>
 <>(*tmp*)
 strn_forall(cs) =
 (
-  nint_iforall<>(n0))
+  nint_forall<>(n0))
 where
 {
 //
 val n0 = strn_length<>(cs)
 //
 #impltmp
-iforall$test
-<nint>(i0, _) =
+forall$test<ni>(i0) =
 (
   forall$test<cgtz>(c0)) where
 {
@@ -73,11 +72,18 @@ val c0 =
 }(*where*)//end-of-[strn_forall(cs)]
 //
 #impltmp
-gasz_forall
-<strn><cgtz> = strn_forall<>(*void*)
-#impltmp
 gseq_forall
 <strn><cgtz> = strn_forall<>(*void*)
+//
+#impltmp
+gasz_forall
+<strn><cgtz>(cs) =
+(
+strn_forall<>(cs)) where
+{
+#impltmp
+forall$test<cgtz> = forall$test1<cgtz>
+}
 //
 (* ****** ****** *)
 //
@@ -94,7 +100,7 @@ val n0 = strn_length<>(cs)
 #impltmp
 rforall$test<ni>(i0) =
 (
-  forall$test<cgtz>(c0)) where
+  rforall$test<cgtz>(c0)) where
 {
 val c0 =
   $UN.strn_get_at_raw<>(cs, i0)
@@ -102,11 +108,18 @@ val c0 =
 }(*where*)//end-of-[strn_rforall(cs)]
 //
 #impltmp
-gasz_rforall
-<strn><cgtz> = strn_rforall<>(*void*)
-#impltmp
 gseq_rforall
 <strn><cgtz> = strn_rforall<>(*void*)
+//
+#impltmp
+gasz_rforall
+<strn><cgtz>(cs) =
+(
+strn_rforall<>(cs)) where
+{
+#impltmp
+rforall$test<cgtz> = rforall$test1<cgtz>
+}
 //
 (* ****** ****** *)
 //
