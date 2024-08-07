@@ -369,7 +369,7 @@ c2hoose$forall$test<x0>(x2.0, x2.1)
 //
 #impltmp
 < x0:t0 >
-list_c2hoose$forall_c2fr
+list_c2hoose$forall_f2un
   (xs, test) =
 (
 list_c2hoose$forall<x0>(xs)
@@ -377,7 +377,7 @@ list_c2hoose$forall<x0>(xs)
 {
 #impltmp
 c2hoose$forall$test<x0>(x1, x2) = test(x1, x2)
-}(*where*)//end-of-[list_c2hoose$forall_c2fr(...)]
+}(*where*)//end-of-[list_c2hoose$forall_f2un(...)]
 //
 (* ****** ****** *)
 //
@@ -437,7 +437,7 @@ c3hoose$forall$test<x0>(x3.0, x3.1, x3.2)
 //
 #impltmp
 < x0:t0 >
-list_c3hoose$forall_c3fr
+list_c3hoose$forall_f3un
   (xs, test) =
 (
 list_c3hoose$forall<x0>(xs)
@@ -445,7 +445,7 @@ list_c3hoose$forall<x0>(xs)
 {
 #impltmp
 c3hoose$forall$test<x0>(x1, x2, x3) = test(x1, x2, x3)
-}(*where*)//end-of-[list_c3hoose$forall_c3fr(...)]
+}(*where*)//end-of-[list_c3hoose$forall_f3un(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
