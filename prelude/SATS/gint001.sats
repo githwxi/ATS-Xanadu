@@ -50,6 +50,16 @@ nint_strqize
 (xs: nint(n)): strq_vt(ni, n)
 //
 (* ****** ****** *)
+//
+fun<>
+nint_rstrmize
+(xs: nint): strm_vt(ni)
+fun<>
+nint_rstrqize
+{n:i0}
+(xs: nint(n)): strq_vt(ni, n)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun<>
@@ -58,6 +68,8 @@ fun<>
 nint_rforall(xs: nint): bool
 fun<>
 nint_iforall(xs: nint): bool
+fun<>
+nint_irforall(xs: nint): bool
 //
 fun<>
 nint_foritm(xs: nint): void
@@ -65,6 +77,8 @@ fun<>
 nint_rforitm(xs: nint): void
 fun<>
 nint_iforitm(xs: nint): void
+fun<>
+nint_irforitm(xs: nint): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -55,9 +55,11 @@ val () =
 prints
 ("type(f0) = ", type(f0), "\n")
 (* ****** ****** *)
-////
+val b0 =
+GASZ(10).forall(lam(x)=>x<10)
+val () = prints("b0 = ", b0, "\n")
 (* ****** ****** *)
-//
+////
 val xs =
 list(1,2,3,4)
 val xss = list(xs)

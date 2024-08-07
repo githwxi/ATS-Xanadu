@@ -162,9 +162,9 @@ gasz_get_at_raw
 val r0 =
   forall$test1<x0>(x0)
 //
-val () =
-gasz_set_at_raw
-<xs><x0>(pf | xs, i0, x0) }
+prval () =
+(
+  owed_vt_return0(pf, x0)) }
 }
 end//let//end-of-[gasz_forall(xs)]
 //

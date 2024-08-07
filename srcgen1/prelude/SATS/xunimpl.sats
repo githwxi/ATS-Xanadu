@@ -337,6 +337,16 @@ nint_strqize
 (xs: nint(n)): strq_vt(ni, n)
 //
 (* ****** ****** *)
+//
+fun<>
+nint_rstrmize
+(xs: nint): strm_vt(ni)
+fun<>
+nint_rstrqize
+{n:i0}
+(xs: nint(n)): strq_vt(ni, n)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -846,14 +856,14 @@ GSEQ_make_list
 #symload GSEQ_list with GSEQ_make_list of 1000
 //
 fcast // fun
-GSEQ_make_nint0
-(xs: nint): GSEQ(nint, unit)
+GASZ_make_nint0
+(xs: nint): GASZ(nint, unit)
 fcast // fun
-GSEQ_make_nint1
-(xs: nint): GSEQ(nint, nint)
-#symload GSEQ with GSEQ_make_nint1 of 1000
-#symload GSEQ_nint0 with GSEQ_make_nint0 of 1000
-#symload GSEQ_nint1 with GSEQ_make_nint1 of 1000
+GASZ_make_nint1
+(xs: nint): GASZ(nint, nint)
+#symload GASZ with GASZ_make_nint1 of 1000
+#symload GASZ_nint0 with GASZ_make_nint0 of 1000
+#symload GASZ_nint1 with GASZ_make_nint1 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

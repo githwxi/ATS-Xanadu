@@ -47,7 +47,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
-gseq_forall
+gasz_forall
 <ni><ut>(ni) =
 (
 nint_forall(ni)) where
@@ -57,20 +57,15 @@ forall$test<ni>(i0) =
 forall$test<ut>(unit())}
 //
 #impltmp
-gseq_forall0
+gseq_forall
 <ni><ut>(ni) =
 (
-gseq_forall<ni><ut>(ni)
-) where
-{
-#impltmp
-forall$test<ut> = forall$test0<ut>
-}
+gasz_forall<ni><ut>(ni))
 //
 (* ****** ****** *)
 //
 #impltmp
-gseq_rforall
+gasz_rforall
 <ni><ut>(ni) =
 (
 nint_rforall(ni)) where
@@ -80,15 +75,10 @@ rforall$test<ni>(i0) =
 rforall$test<ut>(unit())}
 //
 #impltmp
-gseq_rforall0
+gseq_rforall
 <ni><ut>(ni) =
 (
-gseq_rforall<ni><ut>(ni)
-) where
-{
-#impltmp
-rforall$test<ut> = rforall$test0<ut>
-}
+gasz_rforall<ni><ut>(ni))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -110,14 +100,13 @@ forall$test<ni>(i0)
 then loop(xs, i0+1) else false)}
 //
 #impltmp
-gseq_forall0
-<ni><ni>(xs) =
+gasz_forall
+<ni><ni>(ni) =
 (
-nint_forall<>(xs)) where
+  nint_forall<>(ni)) where
 {
-#typedef x0 = ni
 #impltmp
-forall$test<x0> = forall$test0<x0>
+forall$test<ni> = forall$test1<ni>
 }
 //
 (* ****** ****** *)
@@ -139,14 +128,13 @@ rforall$test<ni>(xs-1-i0)
 then loop(xs, i0+1) else false)}
 //
 #impltmp
-gseq_rforall0
-<ni><ni>(xs) =
+gasz_rforall
+<ni><ni>(ni) =
 (
-nint_rforall<>(xs)) where
+  nint_rforall<>(ni)) where
 {
-#typedef x0 = ni
 #impltmp
-rforall$test<x0> = rforall$test0<x0>
+rforall$test<ni> = rforall$test1<ni>
 }
 //
 (* ****** ****** *)
@@ -201,14 +189,60 @@ nint_strqize(ni) =
 (* ****** ****** *)
 //
 #impltmp
-gseq_strmize0<ni><ni> = nint_strmize<>
+gasz_strmize
+<ni><ni> = nint_strmize<>
 #impltmp
-gseq_strmize1<ni><ni> = nint_strmize<>
+gasz_strqize
+<ni><ni> = nint_strqize<>
 //
 #impltmp
-gseq_strqize0<ni><ni> = nint_strqize<>
+gseq_strmize
+<ni><ni> = gasz_strmize<ni><ni>
 #impltmp
-gseq_strqize1<ni><ni> = nint_strqize<>
+gseq_strqize
+<ni><ni> = gasz_strqize<ni><ni>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+(*
+HX-2024-08-07:
+Wed 07 Aug 2024 08:46:10 AM EDT
+*)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+nint_rstrmize(ni) =
+(
+nint_rmap_lstrm<ni>(ni))
+where
+{
+#impltmp
+rmap$fopr<ni><ni>(i0) = (i0)
+}(*where*)//end-[nint_rstrmize(ni)]
+//
+#impltmp
+<(*tmp*)>
+nint_rstrqize(ni) =
+(
+ $UN.strm2q_vt(nint_rstrmize<>(ni)))
+//
+(* ****** ****** *)
+//
+#impltmp
+gasz_rstrmize
+<ni><ni> = nint_rstrmize<>
+#impltmp
+gasz_rstrqize
+<ni><ni> = nint_rstrqize<>
+//
+#impltmp
+gseq_rstrmize
+<ni><ni> = gasz_rstrmize<ni><ni>
+#impltmp
+gseq_rstrqize
+<ni><ni> = gasz_rstrqize<ni><ni>
 //
 (* ****** ****** *)
 (* ****** ****** *)

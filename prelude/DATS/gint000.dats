@@ -54,7 +54,14 @@ g_si<si>(i0) = (i0)
 (* ****** ****** *)
 //
 #impltmp
-gseq_length<ni><ni>(ni) = ni
+gasz_length<ni><ut>(ni) = (ni)
+#impltmp
+gseq_length<ni><ut>(ni) = (ni)
+//
+#impltmp
+gasz_length<ni><ni>(ni) = (ni)
+#impltmp
+gseq_length<ni><ni>(ni) = (ni)
 //
 (* ****** ****** *)
 (* ****** ****** *)

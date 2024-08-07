@@ -1791,9 +1791,12 @@ val dsym =
 d2exp_make_node
 (lsym, D2Esym0(drxp,d1e1,dpis))
 //
-val-list_cons(d2e1, _) = (d2es)
+val d2e1 =
+(
+case- d2es of
+| list_cons(d2e1, _) => (d2e1))
 //
-val d2es =
+val darg =
 (
 case+ darg of
 |optn_nil() =>
@@ -1802,9 +1805,19 @@ case+ darg of
  list_cons(d2e1, d2es)): d2explst
 //
 in//let
+//
 f0_dapp_elses
-(env0, d2exp(loc0, D2Edapp(dsym,npf1,d2es)))
-end (*let*) // end of [f0_dapp_dtsel(env0,...)]
+( env0
+, d2exp(loc0, D2Edapp(dsym,npf1,darg)))
+end where
+{
+//
+(*
+val () =
+prerrln("f0_dapp_dtsel(2a): d2e0 = ", d2e0)
+*)
+//
+} (*where*) // end of [f0_dapp_dtsel(env0,...)]
 //
 (* ****** ****** *)
 //
@@ -1843,9 +1856,11 @@ end (*let*) // end-of-[val(tfun)]
 //
 (*
 val () =
-prerrln("f0_dapp: d2f0 = ", d2f0)
+prerrln
+("f0_dapp_elses: d2f0 = ", d2f0)
 val () =
-prerrln("f0_dapp: tfun = ", tfun)
+prerrln
+("f0_dapp_elses: tfun = ", tfun)
 *)
 //
 val d2f0 =
@@ -1856,7 +1871,15 @@ in//let
 d2exp_make_tpnd
 (loc0, tres, D2Edapp(d2f0,npf1,d2es))
 //
-end (*let*) // end of [f0_dapp_elses(env0,...)]
+end where
+{
+//
+(*
+val () =
+prerrln("f0_dapp_elses(2a): d2e0 = ", d2e0)
+*)
+//
+} (*where*) // end of [f0_dapp_elses(env0,...)]
 //
 (* ****** ****** *)
 //

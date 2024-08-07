@@ -1200,7 +1200,7 @@ where
 stream(a:t0) = lazy(strmcon(a))
 #typedef
 streax(a:t0) = lazy(strxcon(a)) }
-//(* where *) // [strmcom/strxcom]
+//(* where *) // [strmcon/strxcon]
 //
 (* ****** ****** *)
 #sexpdef
