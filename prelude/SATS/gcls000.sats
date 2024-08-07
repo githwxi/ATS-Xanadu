@@ -406,13 +406,13 @@ fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-GSEQ_ifolditm_c3fr
+GSEQ_ifolditm_f3un
 ( gseq
 : GSEQ(xs, x0), r0: r0
 , fopr: (r0, ni, x0)->(r0)): (r0)
 //
-#symload ifolditm with GSEQ_ifolditm_c3fr of 1000
-#symload ifolditm_fun with GSEQ_ifolditm_c3fr of 1000
+#symload ifolditm with GSEQ_ifolditm_f3un of 1000
+#symload ifolditm_fun with GSEQ_ifolditm_f3un of 1000
 //
 (* ****** ****** *)
 //
@@ -420,13 +420,13 @@ fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-GSEQ_irfolditm_c3fr
+GSEQ_irfolditm_f3un
 ( gseq
 : GSEQ(xs, x0), r0: r0
 , fopr: (ni, x0, r0)->(r0)): (r0)
 //
-#symload irfolditm with GSEQ_irfolditm_c3fr of 1000
-#symload irfolditm_fun with GSEQ_irfolditm_c3fr of 1000
+#symload irfolditm with GSEQ_irfolditm_f3un of 1000
+#symload irfolditm_fun with GSEQ_irfolditm_f3un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

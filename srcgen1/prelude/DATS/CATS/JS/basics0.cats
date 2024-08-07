@@ -824,7 +824,7 @@ XATS2JS_strtmp_vt_set_at
 ////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_strn_forall_cfr
+XATS2JS_strn_forall_f1un
   (cs, f0)
 {
     var i0;
@@ -835,13 +835,13 @@ XATS2JS_strn_forall_cfr
 	var c0 = cs.charCodeAt(i0);
 	if(!f0(c0)){res = false; break;}
     }
-    return res; // strn_forall_cfr
+    return res; // strn_forall_f1un
 }
 //
 /* ****** ****** */
 //
 function
-XATS2JS_strn_rforall_cfr
+XATS2JS_strn_rforall_f1un
   (cs, f0)
 {
     var i0;
@@ -852,13 +852,13 @@ XATS2JS_strn_rforall_cfr
 	var c0 = cs.charCodeAt(i0-1);
 	if(!f0(c0)){res = false; break;}
     }
-    return res; // strn_rforall_cfr
+    return res; // strn_rforall_f1un
 }
 //
 ////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_strn_vt_forall_cfr
+XATS2JS_strn_vt_forall_f1un
   (cs, f0)
 {
     var i0;
@@ -868,13 +868,13 @@ XATS2JS_strn_vt_forall_cfr
     {
 	if(!f0(cs[i0])){res = false; break;}
     }
-    return res; // strn_vt_forall_cfr
+    return res; // strn_vt_forall_f1un
 }
 //
 /* ****** ****** */
 //
 function
-XATS2JS_strn_vt_rforall_cfr
+XATS2JS_strn_vt_rforall_f1un
   (cs, f0)
 {
     var i0;
@@ -884,7 +884,7 @@ XATS2JS_strn_vt_rforall_cfr
     {
 	if(!f0(cs[i0-1])){res = false; break;}
     }
-    return res; // strn_vt_rforall_cfr
+    return res; // strn_vt_rforall_f1un
 }
 //
 ////////////////////////////////////////////////////////////////

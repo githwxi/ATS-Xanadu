@@ -541,7 +541,7 @@ strtmp_vt_set_at<>(p0, i0, c0)
 //
 #impltmp
 <>(*tmp*)
-strn_vt_tabulate_cfr
+strn_vt_tabulate_f1un
 {n:i0}(n0, f0) =
 (
 strn_vt_tabulate<n>(n0)

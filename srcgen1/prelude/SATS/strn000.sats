@@ -419,12 +419,12 @@ strn_tabulate
 ( n0: sint(n) ) : strn(n)
 //
 fun<>
-strn_tabulate_cfr
+strn_tabulate_f1un
 {n:nat}
 ( n0
 : sint(n)
 , f0
-: nintlt(n) -<cfr> cgtz): strn(n)
+: nintlt(n) -> cgtz): strn(n)
 //
 (* ****** ****** *)
 //

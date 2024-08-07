@@ -351,17 +351,20 @@ gint_strmize_sint
 fun
 <a:t0>
 gint_map_list_nint
-{n:nat}( n0: sint(n) ): list(a,n)
+{n:nat}
+( n0: sint(n) ): list(a,n)
 fun
 <a:vt>
 gint_map_llist_nint
-{n:nat}( n0: sint(n) ): list_vt(a,n)
+{n:nat}
+( n0: sint(n) ): list_vt(a,n)
 //
 (* ****** ****** *)
 //
 fun<>
-gint_repeat_sint_c0fr
-(i0: sint, work: ()-<cfr>void): void
+gint_repeat_sint_f0un
+( i0: sint
+, work: ((*void*))->void): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -506,7 +509,7 @@ cmp with gint_cmp_uint_uint of 1000
 (*
 Tue Aug 15 08:19:43 EDT 2023
 *)
-#symload repeat_cfr with gint_repeat_sint_c0fr of 1000
+#symload repeat_fun with gint_repeat_sint_f0un of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 

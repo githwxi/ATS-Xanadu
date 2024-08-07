@@ -89,24 +89,24 @@ GLSEQ_forall1
 fun
 <xs:vt>
 <x0:vt>
-GLSEQ_forall0_c1fr
+GLSEQ_forall0_f1un
 ( gseq: ~GLSEQ(xs, x0)
-, test: (~x0)-<cfr>bool): bool
+, test: ( ~x0 ) -> bool): bool
 //
-#symload forall0 with GLSEQ_forall0_c1fr of 1000
-#symload forall0_c1fr with GLSEQ_forall0_c1fr of 1000
+#symload forall0 with GLSEQ_forall0_f1un of 1000
+#symload forall0_fun with GLSEQ_forall0_f1un of 1000
 //
 (* ****** ****** *)
 //
 fun
 <xs:vt>
 <x0:vt>
-GLSEQ_forall1_c1fr
+GLSEQ_forall1_f1un
 ( gseq: !GLSEQ(xs, x0)
-, test: (!x0)-<cfr>bool): bool
+, test: ( !x0 ) -> bool): bool
 //
-#symload forall1 with GLSEQ_forall1_c1fr of 1000
-#symload forall1_c1fr with GLSEQ_forall1_c1fr of 1000
+#symload forall1 with GLSEQ_forall1_f1un of 1000
+#symload forall1_fun with GLSEQ_forall1_f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

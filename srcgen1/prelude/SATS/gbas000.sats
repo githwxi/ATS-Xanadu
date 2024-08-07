@@ -970,78 +970,78 @@ HX-2023-02-26: Various combinator types
 (* ****** ****** *)
 #typedef
 strmize
-(xs:t0, x0:t0) = ( xs) -<cfr> strm_vt(x0)
+(xs:t0, x0:t0) = ( xs) -> strm_vt(x0)
 #typedef
 strmize0
-(xs:vt, x0:vt) = (~xs) -<cfr> strm_vt(x0)
+(xs:vt, x0:vt) = (~xs) -> strm_vt(x0)
 (* ****** ****** *)
 #typedef
 forall
-(xs:t0, x0:t0) = ( xs, x0 -<cfr> bool) -<cfr> bool
+(xs:t0, x0:t0) = ( xs, x0 -> bool) -> bool
 #typedef
 forall0
-(xs:vt, x0:vt) = (~xs, x0 -<cfr> bool) -<cfr> bool
+(xs:vt, x0:vt) = (~xs, x0 -> bool) -> bool
 #typedef
 forall1
-(xs:vt, x0:vt) = (!xs, x0 -<cfr> bool) -<cfr> bool
+(xs:vt, x0:vt) = (!xs, x0 -> bool) -> bool
 (* ****** ****** *)
 #typedef
 foreach
-(xs:t0, x0:t0) = ( xs, x0 -<cfr> void) -<cfr> void
+(xs:t0, x0:t0) = ( xs, x0 -> void) -> void
 #typedef
 foreach0
-(xs:vt, x0:t0) = (~xs, x0 -<cfr> void) -<cfr> void
+(xs:vt, x0:t0) = (~xs, x0 -> void) -> void
 #typedef
 foreach1
-(xs:vt, x0:t0) = (!xs, x0 -<cfr> void) -<cfr> void
+(xs:vt, x0:t0) = (!xs, x0 -> void) -> void
 (* ****** ****** *)
 #typedef
 rstrmize
-(xs:t0, x0:t0) = ( xs) -<cfr> strm_vt(x0)
+(xs:t0, x0:t0) = ( xs) -> strm_vt(x0)
 #typedef
 rstrmize0
-(xs:vt, x0:vt) = (~xs) -<cfr> strm_vt(x0)
+(xs:vt, x0:vt) = (~xs) -> strm_vt(x0)
 (* ****** ****** *)
 #typedef
 rforall
-(xs:t0, x0:t0) = ( xs, x0 -<cfr> bool) -<cfr> bool
+(xs:t0, x0:t0) = ( xs, x0 -> bool) -> bool
 #typedef
 rforall0
-(xs:vt, x0:vt) = (~xs, x0 -<cfr> bool) -<cfr> bool
+(xs:vt, x0:vt) = (~xs, x0 -> bool) -> bool
 #typedef
 rforall1
-(xs:vt, x0:vt) = (!xs, x0 -<cfr> bool) -<cfr> bool
+(xs:vt, x0:vt) = (!xs, x0 -> bool) -> bool
 (* ****** ****** *)
 #typedef
 rforeach
-(xs:t0, x0:t0) = ( xs, x0 -<cfr> void) -<cfr> void
+(xs:t0, x0:t0) = ( xs, x0 -> void) -> void
 #typedef
 rforeach0
-(xs:vt, x0:t0) = (~xs, x0 -<cfr> void) -<cfr> void
+(xs:vt, x0:t0) = (~xs, x0 -> void) -> void
 #typedef
 rforeach1
-(xs:vt, x0:t0) = (!xs, x0 -<cfr> void) -<cfr> void
+(xs:vt, x0:t0) = (!xs, x0 -> void) -> void
 (* ****** ****** *)
 //
 #typedef
 foldl//cfr
-(xs:t0,x0:t0,r0:vt) = ( xs,r0,(r0,x0) -<cfr> r0) -<cfr> r0
+(xs:t0,x0:t0,r0:vt) = ( xs,r0,(r0,x0) -> r0) -> r0
 #typedef
 foldl0//cfr
-(xs:vt,x0:vt,r0:vt) = (~xs,r0,(r0,x0) -<cfr> r0) -<cfr> r0
+(xs:vt,x0:vt,r0:vt) = (~xs,r0,(r0,x0) -> r0) -> r0
 #typedef
 foldl1//cfr
-(xs:vt,x0:vt,r0:vt) = (!xs,r0,(r0,x0) -<cfr> r0) -<cfr> r0
+(xs:vt,x0:vt,r0:vt) = (!xs,r0,(r0,x0) -> r0) -> r0
 //
 #typedef
 foldr//cfr
-(xs:t0,x0:t0,r0:vt) = ( xs,r0,(x0,r0) -<cfr> r0) -<cfr> r0
+(xs:t0,x0:t0,r0:vt) = ( xs,r0,(x0,r0) -> r0) -> r0
 #typedef
 foldr0//cfr
-(xs:vt,x0:t0,r0:vt) = (~xs,r0,(x0,r0) -<cfr> r0) -<cfr> r0
+(xs:vt,x0:t0,r0:vt) = (~xs,r0,(x0,r0) -> r0) -> r0
 #typedef
 foldr1//cfr
-(xs:vt,x0:t0,r0:vt) = (!xs,r0,(x0,r0) -<cfr> r0) -<cfr> r0
+(xs:vt,x0:t0,r0:vt) = (!xs,r0,(x0,r0) -> r0) -> r0
 //
 (* ****** ****** *)
 (* ****** ****** *)

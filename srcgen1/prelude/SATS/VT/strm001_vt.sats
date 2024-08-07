@@ -97,16 +97,16 @@ strxcon_vt_cons_
 fun
 <x0:vt>
 <r0:vt>
-strmcon_vt_uncons_cfr
-( xs: strmcon_vt( x0 )
-, f0: ((*void*)) -<cfr> r0
-, f1: (x0, strm_vt(x0)) -<cfr> r0): r0
+strmcon_vt_uncons_funs
+( xs: strmcon_vt(x0)
+, f0: ((*void*)) -> r0
+, f1: (x0, strm_vt(x0)) -> r0): r0
 fun
 <x0:vt>
 <r0:vt>
-strxcon_vt_uncons_cfr
-( xs: strxcon_vt( x0 )
-, f1: (x0, strx_vt(x0)) -<cfr> r0): r0
+strxcon_vt_uncons_funs
+( xs: strxcon_vt(x0)
+, f1: (x0, strx_vt(x0)) -> r0): r0
 //
 (* ****** ****** *)
 (* ****** ****** *)

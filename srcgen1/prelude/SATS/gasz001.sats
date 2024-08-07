@@ -114,38 +114,38 @@ gasz_irforall(xs: xs): bool
 fun
 <xs:t0>
 <x0:vt>
-gasz_forall_c1fr
-(xs: xs, test: (!x0)-<cfr>bool): bool
+gasz_forall_f1un
+(xs: xs, test: (!x0)->bool): bool
 //
-#symload forall with gasz_forall_c1fr of 0100
-#symload forall_cfr with gasz_forall_c1fr of 0100
-//
-fun
-<xs:t0>
-<x0:vt>
-gasz_exists_c1fr
-(xs: xs, test: (!x0)-<cfr>bool): bool
-//
-#symload exists with gasz_exists_c1fr of 0100
-#symload exists_cfr with gasz_exists_c1fr of 0100
+#symload forall with gasz_forall_f1un of 0100
+#symload forall_fun with gasz_forall_f1un of 0100
 //
 fun
 <xs:t0>
 <x0:vt>
-gasz_rforall_c1fr
-(xs: xs, test: (!x0)-<cfr>bool): bool
+gasz_exists_f1un
+(xs: xs, test: (!x0)->bool): bool
 //
-#symload rforall with gasz_rforall_c1fr of 0100
-#symload rforall_cfr with gasz_rforall_c1fr of 0100
+#symload exists with gasz_exists_f1un of 0100
+#symload exists_fun with gasz_exists_f1un of 0100
 //
 fun
 <xs:t0>
 <x0:vt>
-gasz_rexists_c1fr
-(xs: xs, test: (!x0)-<cfr>bool): bool
+gasz_rforall_f1un
+(xs: xs, test: (!x0)->bool): bool
 //
-#symload rexists with gasz_rexists_c1fr of 0100
-#symload rexists_cfr with gasz_rexists_c1fr of 0100
+#symload rforall with gasz_rforall_f1un of 0100
+#symload rforall_fun with gasz_rforall_f1un of 0100
+//
+fun
+<xs:t0>
+<x0:vt>
+gasz_rexists_f1un
+(xs: xs, test: (!x0)->bool): bool
+//
+#symload rexists with gasz_rexists_f1un of 0100
+#symload rexists_fun with gasz_rexists_f1un of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -179,8 +179,11 @@ gasz_mapref(xs: xs): void
 fun
 <xs:t0>
 <x0:vt>
-gasz_mapref_c1fr
-(xs: xs, fopr: (~x0)-<cfr>(x0)): void
+gasz_mapref_f1un
+(xs: xs, fopr: (~x0)->(x0)): void
+//
+#symload mapref with gasz_mapref_f1un of 0100
+#symload mapref_fun with gasz_mapref_f1un of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)

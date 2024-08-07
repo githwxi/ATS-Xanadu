@@ -18,16 +18,10 @@
 //
 #impltmp
 <a1:t0>
-gfun_not_c1fr
+gfun_not_f1un
 (    f0    ) =
 (
-  lam(x1) => not(f0(x1)) )//imp
-#impltmp
-<a1:t0>
-gfun_not_f1np
-(    f0    ) =
-(
-  lam(x1) => not(f0(x1)) )//imp
+  lam(x1) => not(f0(x1)) )//impl
 //
 (* ****** ****** *)
 //
@@ -40,7 +34,7 @@ val xs = !xs
 val A0 = a0ref(xs)
 in//let
 //
-lam() =<cfr>
+lam((*0*)) =>
 let
 //
 #typedef t0 =
@@ -89,18 +83,7 @@ gfun_equal_at
 #impltmp
 <x0:t0>
 <y0:vt>
-gfun_rand_equal_c1fr
-  (f1, f2) =
-let
-  val x1 = g_rand<x0>((*0*))
-  and x2 = g_rand<x0>((*0*))
-in
-  g_equal0<y0>(f1(x1), f2(x2)) endlet
-//
-#impltmp
-<x0:t0>
-<y0:vt>
-gfun_rand_equal_f1np
+gfun_rand_equal_f1un
   (f1, f2) =
 let
   val x1 = g_rand<x0>((*0*))

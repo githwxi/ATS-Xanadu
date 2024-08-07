@@ -878,13 +878,13 @@ let
 //
 #extern
 fun
-XATS2JS_strn_forall_cfr
+XATS2JS_strn_forall_f1un
 ( cs: strn
-, f0: (cgtz) -<cfr> bool): bool
+, f0: (cgtz) -> bool): bool
 = $extnam((*self*))//native
 //
 in
-XATS2JS_strn_forall_cfr
+XATS2JS_strn_forall_f1un
 ( cs
 , lam(c0) => forall$test<cgtz>(c0))
 end//let//end-of-[strn_forall<>(cs)]
@@ -975,68 +975,68 @@ XATS2JS_strn_vt_length1
 //
 #impltmp
 strn_vt_forall0<>(cs) =
-XATS2JS_strn_vt_forall_cfr
+XATS2JS_strn_vt_forall_f1un
 ( cs
 , lam(c0) =>
   forall$test0<cgtz>(c0) ) where
 {
 #extern
 fun
-XATS2JS_strn_vt_forall_cfr
+XATS2JS_strn_vt_forall_f1un
 ( cs: ~strn_vt
 , f0:
-  (cgtz) -<cfr> bool): bool = $extnam()
+  (cgtz) -> bool): bool = $extnam()
 } (*where*) // end of [strn_vt_forall0]
 //
 (* ****** ****** *)
 //
 #impltmp
 strn_vt_forall1<>(cs) =
-XATS2JS_strn_vt_forall_cfr
+XATS2JS_strn_vt_forall_f1un
 ( cs
 , lam(c0) =>
   forall$test1<cgtz>(c0) ) where
 {
 #extern
 fun
-XATS2JS_strn_vt_forall_cfr
+XATS2JS_strn_vt_forall_f1un
 ( cs: !strn_vt
 , f0:
-  (cgtz) -<cfr> bool): bool = $extnam()
+  (cgtz) -> bool): bool = $extnam()
 } (*where*) // end of [strn_vt_forall1]
 //
 (* ****** ****** *)
 //
 #impltmp
 strn_vt_rforall0<>(cs) =
-XATS2JS_strn_vt_rforall_cfr
+XATS2JS_strn_vt_rforall_f1un
 ( cs
 , lam(c0) =>
   rforall$test0<cgtz>(c0) ) where
 {
 #extern
 fun
-XATS2JS_strn_vt_rforall_cfr
+XATS2JS_strn_vt_rforall_f1un
 ( cs: ~strn_vt
 , f0:
-  (cgtz) -<cfr> bool): bool = $extnam()
+  (cgtz) -> bool): bool = $extnam()
 } (*where*) // end of [strn_vt_rforall0]
 //
 (* ****** ****** *)
 //
 #impltmp
 strn_vt_rforall1<>(cs) =
-XATS2JS_strn_vt_rforall_cfr
+XATS2JS_strn_vt_rforall_f1un
 ( cs
 , lam(c0) =>
   rforall$test1<cgtz>(c0) ) where
 {
 #extern
 fun
-XATS2JS_strn_vt_rforall_cfr
+XATS2JS_strn_vt_rforall_f1un
 ( cs: !strn_vt
 , f0:
-  (cgtz) -<cfr> bool): bool = $extnam()
+  (cgtz) -> bool): bool = $extnam()
 } (*where*) // end of [strn_vt_rforall1]
 //
 (* ****** ****** *)
