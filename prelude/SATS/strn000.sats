@@ -98,6 +98,12 @@ strn_make1_llist
 (* ****** ****** *)
 //
 fcast // fun
+GSEQ_make_strn
+(xs: strn): GSEQ(strn, cgtz)
+#symload GSEQ with GSEQ_make_strn of 1000
+#symload GSEQ_strn with GSEQ_make_strn of 1000
+//
+fcast // fun
 GASZ_make_strn
 (xs: strn): GASZ(strn, cgtz)
 #symload GASZ with GASZ_make_strn of 1000

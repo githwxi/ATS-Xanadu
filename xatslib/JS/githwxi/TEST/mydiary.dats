@@ -55,9 +55,39 @@ val () =
 prints
 ("type(f0) = ", type(f0), "\n")
 (* ****** ****** *)
+(*
 val b0 =
 GASZ("abcde").exists(lam(c)=>c='f')
-val () = prints("b0 = ", b0, "\n")
+*)
+(* ****** ****** *)
+//
+//
+(* ****** ****** *)
+//
+val word = "hello"
+val (  ) =
+GSEQ(26).foritm(
+  lam(i) =>
+  GSEQ(word).iforitm(
+    lam(j, cj) =>
+    let
+      val ci = 'a'+i
+    in
+      if ci = cj then ()
+      else prints("ci = ", ci, ";", "cj = ", cj, "\n")
+    end
+  )
+)
+//
+(* ****** ****** *)
+(*
+GSEQ(26).foritm(
+  lam(i) =>
+  GSEQ(length(word)).iforitm(
+    lam(j, c) => if word[i] != c then work(word.fset_at(i, c))
+  )
+)
+*)
 (* ****** ****** *)
 ////
 (* ****** ****** *)
