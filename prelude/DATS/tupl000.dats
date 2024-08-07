@@ -64,8 +64,8 @@ Sun 04 Aug 2024 05:41:59 PM EDT
 (* ****** ****** *)
 //
 #impltmp
-{ a0:t0 }
-{ a1:t0 }
+{ a0:t0
+, a1:t0 }
 g_ptype
 <t0up2(a0,a1)>
 (  (*void*)  ) =
@@ -74,8 +74,8 @@ g_ptype
 ; g_ptype<a1>(); pstrn(")"))
 //
 #impltmp
-{ a0:t0 }
-{ a1:t0 }
+{ a0:t0
+, a1:t0 }
 g_ptype
 <t1up2(a0,a1)>
 (  (*void*)  ) =

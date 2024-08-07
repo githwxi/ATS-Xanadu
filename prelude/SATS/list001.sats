@@ -129,11 +129,11 @@ fun
 list_c2hoose$forall(list(x0)): bool
 fun
 <x0:t0>
-list_c2hoose$forall_c2fr
-(xs:list(x0), test:(x0,x0)-<cfr>bool): bool
+list_c2hoose$forall_f2un
+(xs:list(x0), test:(x0,x0)->bool): bool
 //
 #symload c2hoose$forall with list_c2hoose$forall
-#symload c2hoose$forall with list_c2hoose$forall_c2fr
+#symload c2hoose$forall with list_c2hoose$forall_f2un
 //
 (* ****** ****** *)
 //
@@ -149,11 +149,11 @@ fun
 list_c3hoose$forall(list(x0)): bool
 fun
 <x0:t0>
-list_c3hoose$forall_c3fr
-(xs:list(x0), test:(x0,x0,x0)-<cfr>bool): bool
+list_c3hoose$forall_f3un
+(xs:list(x0), test:(x0,x0,x0)->bool): bool
 //
 #symload c3hoose$forall with list_c3hoose$forall
-#symload c3hoose$forall with list_c3hoose$forall_c3fr
+#symload c3hoose$forall with list_c3hoose$forall_f3un
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -169,7 +169,7 @@ list_fmake((*void*)): list(x0)
 fun
 <x0:t0>
 list_fmake_fwork
-(fwork: (x0 -<cfr> void) -<cfr> void): list(x0)
+(fwork: (x0 -> void) -> void): list(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

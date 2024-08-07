@@ -146,19 +146,11 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_z2forall_c2fr
-(xs: xs, ys: ys, test: (x0, y0)-<cfr>bool): bool
-fun
-<xs:t0>
-<x0:t0>
-<ys:t0>
-<y0:t0>
-gseq_z2forall_f2np
-(xs: xs, ys: ys, test: (x0, y0)-<fnp>bool): bool
+gseq_z2forall_f2un
+(xs: xs, ys: ys, test: (x0, y0)->bool): bool
 //
-#symload z2forall with gseq_z2forall_c2fr of 0100
-#symload z2forall_cfr with gseq_z2forall_c2fr of 0100
-#symload z2forall_fnp with gseq_z2forall_f2np of 0100
+#symload z2forall with gseq_z2forall_f2un of 0100
+#symload z2forall_fun with gseq_z2forall_f2un of 0100
 //
 (* ****** ****** *)
 //
@@ -199,19 +191,11 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_z2foritm_c2fr
-(xs: xs, ys: ys, work: (x0, y0)-<cfr>void): void
-fun
-<xs:t0>
-<x0:t0>
-<ys:t0>
-<y0:t0>
-gseq_z2foritm_f2np
-(xs: xs, ys: ys, work: (x0, y0)-<fnp>void): void
+gseq_z2foritm_f2un
+(xs: xs, ys: ys, work: (x0, y0)->void): void
 //
-#symload z2foritm with gseq_z2foritm_c2fr of 0100
-#symload z2foritm_cfr with gseq_z2foritm_c2fr of 0100
-#symload z2foritm_fnp with gseq_z2foritm_f2np of 0100
+#symload z2foritm with gseq_z2foritm_f2un of 0100
+#symload z2foritm_fun with gseq_z2foritm_f2un of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -430,19 +414,11 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_x2forall_c2fr
-(xs: xs, ys: ys, test: (x0, y0)-<cfr>bool): bool
-fun
-<xs:t0>
-<x0:t0>
-<ys:t0>
-<y0:t0>
-gseq_x2forall_f2np
-(xs: xs, ys: ys, test: (x0, y0)-<fnp>bool): bool
+gseq_x2forall_f2un
+(xs: xs, ys: ys, test: (x0, y0)->bool): bool
 //
-#symload x2forall with gseq_x2forall_c2fr of 0100
-#symload x2forall_cfr with gseq_x2forall_c2fr of 0100
-#symload x2forall_fnp with gseq_x2forall_f2np of 0100
+#symload x2forall with gseq_x2forall_f2un of 0100
+#symload x2forall_fun with gseq_x2forall_f2un of 0100
 //
 (* ****** ****** *)
 //
@@ -483,19 +459,11 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_x2foritm_c2fr
-(xs: xs, ys: ys, work: (x0, y0)-<cfr>void): void
-fun
-<xs:t0>
-<x0:t0>
-<ys:t0>
-<y0:t0>
-gseq_x2foritm_f2np
-(xs: xs, ys: ys, work: (x0, y0)-<fnp>void): void
+gseq_x2foritm_f2un
+(xs: xs, ys: ys, work: (x0, y0)->void): void
 //
-#symload x2foritm with gseq_x2foritm_c2fr of 0100
-#symload x2foritm_cfr with gseq_x2foritm_c2fr of 0100
-#symload x2foritm_fnp with gseq_x2foritm_f2np of 0100
+#symload x2foritm with gseq_x2foritm_f2un of 0100
+#symload x2foritm_fun with gseq_x2foritm_f2un of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)

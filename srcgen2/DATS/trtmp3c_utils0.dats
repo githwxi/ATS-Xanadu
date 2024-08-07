@@ -375,15 +375,18 @@ list_vt_cons(dcl1, dcls)
 else
 (
 if
-d3ecl_impltmprq(dcl1)
+(
+  d3ecl_impltmprq(dcl1))
 then
 (
 list_vt_cons(dcl1, dcls)
 ) where {
 val dcl1 =
 d3ecl_impltmpr(test, dcl1)
-}//whr//end-of-then
-else impltmprec(env0, dcls))
+}(*where*)//end-of-then
+else
+(
+  impltmprec( env0, dcls )))
 ) where {
 //
 val

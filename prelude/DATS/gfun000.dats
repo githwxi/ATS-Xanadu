@@ -43,8 +43,43 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
+{ r0:vt }
+g_ptype
+<f0un(r0)>
+(  (*void*)  ) =
+( pstrn"f0un("
+; g_ptype<r0>(); pstrn(")"))
+//
+#impltmp
+{ a1:t0 }
+{ r0:vt }
+g_ptype
+<f1un(a1,r0)>
+(  (*void*)  ) =
+( pstrn"f1un("
+; g_ptype<a1>(); pstrn(";")
+; g_ptype<r0>(); pstrn(")"))
+//
+#impltmp
+{ a1:t0
+, a2:t0 }
+{ r0:vt }
+g_ptype
+<
+f2un(a1,a2,r0)
+>
+(  (*void*)  ) =
+( pstrn"f2un("
+; g_ptype<a1>(); pstrn(",")
+; g_ptype<a2>(); pstrn(";")
+; g_ptype<r0>(); pstrn(")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 <a1:t0>
-c1fr_not
+f1un_not
 (    f0    ) =
 (
   lam(x1:a1) => not(f0(x1)) )
@@ -54,13 +89,13 @@ c1fr_not
 //
 #impltmp
 <(*tmp*)>
-c0fr_repeat_nint
+f0un_repeat_nint
 (f0, times) =
 nint_foritm(times) where
 {
 #impltmp
 foritm$work<ni>(_) = f0((*void*))
-}(*where*)//end(c0fr_repeat_nint(f0))
+}(*where*)//end(f0un_repeat_nint(f0))
 //
 (* ****** ****** *)
 (* ****** ****** *)

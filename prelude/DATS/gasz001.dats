@@ -211,7 +211,7 @@ end//let//end-of-[gasz_rforall(xs)]
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_forall_c1fr
+gasz_forall_f1un
   (xs, test) =
 (
 gasz_forall
@@ -226,7 +226,7 @@ forall$test1<x0>(x0) = test(x0)
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_rforall_c1fr
+gasz_rforall_f1un
   (xs, test) =
 (
 gasz_rforall
@@ -258,7 +258,7 @@ mapref$fopr1r(x0) =
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_mapref_c1fr
+gasz_mapref_f1un
   (xs, fopr) =
 (
 gasz_mapref
@@ -266,7 +266,7 @@ gasz_mapref
 {
 #impltmp
 mapref$fopr0<x0>(x0) = fopr(x0)
-}(*where*)//end-of-[gasz_mapref_c1fr]
+}(*where*)//end-of-[gasz_mapref_f1un]
 //
 (* ****** ****** *)
 (* ****** ****** *)

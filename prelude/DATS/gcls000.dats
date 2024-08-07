@@ -177,58 +177,58 @@ gseq_irforall<xs><x0>(GSEQ_unmk(gseq)))
 #impltmp
 < xs:t0 >
 < x0:t0 >
-GSEQ_forall_c1fr
+GSEQ_forall_f1un
   (gseq, test) =
 (
-gseq_forall_c1fr<xs><x0>(GSEQ_unmk(gseq), test))
+gseq_forall_f1un<xs><x0>(GSEQ_unmk(gseq), test))
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
-GSEQ_exists_c1fr
+GSEQ_exists_f1un
   (gseq, test) =
 (
-gseq_exists_c1fr<xs><x0>(GSEQ_unmk(gseq), test))
+gseq_exists_f1un<xs><x0>(GSEQ_unmk(gseq), test))
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
-GSEQ_rforall_c1fr
+GSEQ_rforall_f1un
   (gseq, test) =
 (
-gseq_rforall_c1fr<xs><x0>(GSEQ_unmk(gseq), test))
+gseq_rforall_f1un<xs><x0>(GSEQ_unmk(gseq), test))
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
-GSEQ_rexists_c1fr
+GSEQ_rexists_f1un
   (gseq, test) =
 (
-gseq_rexists_c1fr<xs><x0>(GSEQ_unmk(gseq), test))
+gseq_rexists_f1un<xs><x0>(GSEQ_unmk(gseq), test))
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
-GSEQ_iforall_c2fr
+GSEQ_iforall_f2un
   (gseq, test) =
 (
-gseq_iforall_c2fr<xs><x0>(GSEQ_unmk(gseq), test))
+gseq_iforall_f2un<xs><x0>(GSEQ_unmk(gseq), test))
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
-GSEQ_irforall_c2fr
+GSEQ_irforall_f2un
   (gseq, test) =
 (
-gseq_irforall_c2fr<xs><x0>(GSEQ_unmk(gseq), test))
+gseq_irforall_f2un<xs><x0>(GSEQ_unmk(gseq), test))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -270,34 +270,34 @@ gseq_irforitm<xs><x0>(GSEQ_unmk(gseq)))
 #impltmp
 < xs:t0 >
 < x0:t0 >
-GSEQ_foritm_c1fr
+GSEQ_foritm_f1un
   (gseq, test) =
 (
-gseq_foritm_c1fr<xs><x0>(GSEQ_unmk(gseq), test))
+gseq_foritm_f1un<xs><x0>(GSEQ_unmk(gseq), test))
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
-GSEQ_rforitm_c1fr
+GSEQ_rforitm_f1un
   (gseq, test) =
 (
-gseq_rforitm_c1fr<xs><x0>(GSEQ_unmk(gseq), test))
+gseq_rforitm_f1un<xs><x0>(GSEQ_unmk(gseq), test))
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
-GSEQ_iforitm_c2fr
+GSEQ_iforitm_f2un
   (gseq, test) =
 (
-gseq_iforitm_c2fr<xs><x0>(GSEQ_unmk(gseq), test))
+gseq_iforitm_f2un<xs><x0>(GSEQ_unmk(gseq), test))
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
-GSEQ_irforitm_c2fr
+GSEQ_irforitm_f2un
   (gseq, test) =
 (
-gseq_irforitm_c2fr<xs><x0>(GSEQ_unmk(gseq), test))
+gseq_irforitm_f2un<xs><x0>(GSEQ_unmk(gseq), test))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -344,37 +344,37 @@ gseq_irfolditm<xs><x0><r0>(GSEQ_unmk(gseq), r0))
 < xs:t0 >
 < x0:t0 >
 < r0:vt >
-GSEQ_folditm_c2fr
+GSEQ_folditm_f2un
  (gseq, r0, fopr) =
 (
-gseq_folditm_c2fr<xs><x0><r0>(GSEQ_unmk(gseq), r0, fopr))
+gseq_folditm_f2un<xs><x0><r0>(GSEQ_unmk(gseq), r0, fopr))
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
 < r0:vt >
-GSEQ_rfolditm_c2fr
+GSEQ_rfolditm_f2un
  (gseq, r0, fopr) =
 (
-gseq_rfolditm_c2fr<xs><x0><r0>(GSEQ_unmk(gseq), r0, fopr))
+gseq_rfolditm_f2un<xs><x0><r0>(GSEQ_unmk(gseq), r0, fopr))
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
 < r0:vt >
-GSEQ_ifolditm_c3fr
+GSEQ_ifolditm_f3un
  (gseq, r0, fopr) =
 (
-gseq_ifolditm_c3fr<xs><x0><r0>(GSEQ_unmk(gseq), r0, fopr))
+gseq_ifolditm_f3un<xs><x0><r0>(GSEQ_unmk(gseq), r0, fopr))
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
 < r0:vt >
-GSEQ_irfolditm_c3fr
+GSEQ_irfolditm_f3un
  (gseq, r0, fopr) =
 (
-gseq_irfolditm_c3fr<xs><x0><r0>(GSEQ_unmk(gseq), r0, fopr))
+gseq_irfolditm_f3un<xs><x0><r0>(GSEQ_unmk(gseq), r0, fopr))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -444,20 +444,20 @@ gasz_irforall<xs><x0>(GASZ_unmk(gasz)))
 #impltmp
 < xs:t0 >
 < x0:vt >
-GASZ_forall_c1fr
+GASZ_forall_f1un
   (gasz, test) =
 (
-gasz_forall_c1fr<xs><x0>(GASZ_unmk(gasz), test))
+gasz_forall_f1un<xs><x0>(GASZ_unmk(gasz), test))
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-GASZ_rforall_c1fr
+GASZ_rforall_f1un
   (gasz, test) =
 (
-gasz_rforall_c1fr<xs><x0>(GASZ_unmk(gasz), test))
+gasz_rforall_f1un<xs><x0>(GASZ_unmk(gasz), test))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -465,20 +465,20 @@ gasz_rforall_c1fr<xs><x0>(GASZ_unmk(gasz), test))
 #impltmp
 < xs:t0 >
 < x0:vt >
-GASZ_exists_c1fr
+GASZ_exists_f1un
   (gasz, test) =
 (
-gasz_exists_c1fr<xs><x0>(GASZ_unmk(gasz), test))
+gasz_exists_f1un<xs><x0>(GASZ_unmk(gasz), test))
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-GASZ_rexists_c1fr
+GASZ_rexists_f1un
   (gasz, test) =
 (
-gasz_rexists_c1fr<xs><x0>(GASZ_unmk(gasz), test))
+gasz_rexists_f1un<xs><x0>(GASZ_unmk(gasz), test))
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -1194,25 +1194,37 @@ gseq_irmap_c2fr_rllist
 (*
 HX: gfun000.sats
 *)
+//
+#typedef
+f0un(r0:vt) = () -> r0
+#typedef
+f1un
+(a1:t0,r0:vt) = (a1)->r0
+#typedef
+f2un
+(a1:t0
+,a2:t0,r0:vt) = (a1,a2)->r0
+//
+(* ****** ****** *)
 fun
 <a1:t0>
-c1fr_not
+f1un_not
 ( f0
-: c1fr(a1,bool)): c1fr(a1,bool)
+: f1un(a1,bool)): f1un(a1,bool)
 fun<>
-c0fr_repeat_nint
+f0un_repeat_nint
 ( f0
-: c0fr(void), times: nint): void
+: f0un(void), times: nint): void
 //
 fun
 <x0:vt>
-c0fr_enum$make0_strx_vt
-  (xs: strx_vt( x0 )): c0fr( x0 )
+f0un_enum$make0_strx_vt
+  (xs: strx_vt( x0 )): f0un( x0 )
 //
 fun
 <xs:t0>
 <x0:t0>
-c1fr_srch$make_gseq(xs): c1fr(x0,bool)
+f1un_srch$make_gseq(xs): f1un(x0,bool)
 //
 (* ****** ****** *)
 (* ****** ****** *)
