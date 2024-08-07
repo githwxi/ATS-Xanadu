@@ -858,6 +858,12 @@ GSEQ_make_list
 #symload GSEQ_list with GSEQ_make_list of 1000
 //
 fcast // fun
+GASZ_make_strn
+(xs: strn): GASZ(strn, cgtz)
+#symload GASZ with GASZ_make_strn of 1000
+#symload GASZ_strn with GASZ_make_strn of 1000
+//
+fcast // fun
 GASZ_make_nint0
 (xs: nint): GASZ(nint, unit)
 fcast // fun
