@@ -45,8 +45,8 @@ strm_vt_forall0 =
 gseq_forall0<strm_vt(x0)><x0>
 #impltmp
 < x0:vt >
-strm_vt_forall0_c1fr =
-gseq_forall0_c1fr<strm_vt(x0)><x0>
+strm_vt_forall0_f1un =
+gseq_forall0_f1un<strm_vt(x0)><x0>
 //
 #impltmp
 < x0:vt >
@@ -54,8 +54,8 @@ strm_vt_iforall0 =
 gseq_iforall0<strm_vt(x0)><x0>
 #impltmp
 < x0:vt >
-strm_vt_iforall0_c1fr =
-gseq_iforall0_c1fr<strm_vt(x0)><x0>
+strm_vt_iforall0_f1un =
+gseq_iforall0_f1un<strm_vt(x0)><x0>
 *)
 //
 (* ****** ****** *)
@@ -66,8 +66,8 @@ strm_vt_foritm0 =
 gseq_foritm0<strm_vt(x0)><x0>
 #impltmp
 < x0:vt >
-strm_vt_foritm0_c1fr =
-gseq_foritm0_c1fr<strm_vt(x0)><x0>
+strm_vt_foritm0_f1un =
+gseq_foritm0_f1un<strm_vt(x0)><x0>
 //
 (*
 #impltmp
@@ -76,8 +76,8 @@ strm_vt_iforitm0 =
 gseq_iforitm0<strm_vt(x0)><x0>
 #impltmp
 < x0:vt >
-strm_vt_iforitm0_c1fr =
-gseq_iforitm0_c1fr<strm_vt(x0)><x0>
+strm_vt_iforitm0_f1un =
+gseq_iforitm0_f1un<strm_vt(x0)><x0>
 *)
 //
 (* ****** ****** *)
@@ -117,7 +117,7 @@ gseq_forall0
 //
 #impltmp
 < x0:t0 >
-strm_vt_forall0_c1fr
+strm_vt_forall0_f1un
   (xs, test) =
 (
 strm_vt_forall0
@@ -125,12 +125,12 @@ strm_vt_forall0
 {
 #impltmp
 forall$test0<x0>(x0) = test(x0)
-}(*where*)//end-of-[strm_vt_forall0_c1fr]
+}(*where*)//end-of-[strm_vt_forall0_f1un]
 //
 #impltmp
 { x0:vt }
-gseq_forall0_c1fr
-<strm_vt(x0)><x0> = strm_vt_forall0_c1fr<x0>
+gseq_forall0_f1un
+<strm_vt(x0)><x0> = strm_vt_forall0_f1un<x0>
 //
 (* ****** ****** *)
 //

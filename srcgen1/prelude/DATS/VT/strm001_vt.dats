@@ -50,7 +50,7 @@ strmcon_vt_cons
 //
 #impltmp
 <x0><r0>
-strmcon_vt_uncons_cfr
+strmcon_vt_uncons_funs
 (xs, f0, f1) =
 (
 case+ xs of
@@ -61,7 +61,7 @@ strmcon_vt_cons(x0, xs) => f1(x0, xs)
 )
 #impltmp
 <x0><r0>
-strxcon_vt_uncons_cfr
+strxcon_vt_uncons_funs
 (xs, f1) =
 (
 case+ xs of

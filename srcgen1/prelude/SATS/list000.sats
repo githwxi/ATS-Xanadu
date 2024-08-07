@@ -404,10 +404,10 @@ list_tabulate
 (n0: nint(n0)): list(x0,n0)//end-fun
 fun
 <x0:t0>
-list_tabulate_cfr
+list_tabulate_f1un
 {n:int}
 (n0: nint(n)
-,f0: nintlt(n) -<cfr> x0): list(x0,n)
+,f0: nintlt(n) -> x0): list(x0,n)
 //
 (* ****** ****** *)
 //
@@ -586,18 +586,18 @@ list_subsetize_vt
 fun
 <x0:t0>
 <y0:t0>
-list_map_c1fr
+list_map_f1un
 {n:int}
-(xs:list(x0,n), f0:(x0)-<cfr>y0): list(y0,n)
+(xs:list(x0,n), f0:(x0)->(y0)): list(y0,n)
 fun
 <x0:t0>
 <y0:vt>
-list_map_c1fr_vt
+list_map_f1un_vt
 {n:int}
-(xs:list(x0,n), f0:(x0)-<cfr>y0): list_vt(y0,n)
+(xs:list(x0,n), f0:(x0)->(y0)): list_vt(y0,n)
 //
-#symload map_cfr with list_map_c1fr of 1000
-#symload map_cfr_vt with list_map_c1fr_vt of 1000
+#symload map_fun with list_map_f1un of 1000
+#symload map_fun_vt with list_map_f1un_vt of 1000
 //
 (* ****** ****** *)
 //
@@ -611,20 +611,20 @@ quite difficult for formal verification.
 fun
 <x0:t0>
 list_make_fwork
-(fwork: ((x0)-<cfr>void) -<cfr> void): list(x0)
+(fwork: ((x0)->void) -> void): list(x0)
 fun
 <x0:t0>
 list_rmake_fwork
-(fwork: ((x0)-<cfr>void) -<cfr> void): list(x0)
+(fwork: ((x0)->void) -> void): list(x0)
 //
 fun
 <x0:t0>
 list_make_fwork_vt
-(fwork: ((x0)-<cfr>void) -<cfr> void): list_vt(x0)
+(fwork: ((x0)->void) -> void): list_vt(x0)
 fun
 <x0:t0>
 list_rmake_fwork_vt
-(fwork: ((x0)-<cfr>void) -<cfr> void): list_vt(x0)
+(fwork: ((x0)->void) -> void): list_vt(x0)
 //
 (* ****** ****** *)
 

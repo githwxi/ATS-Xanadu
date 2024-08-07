@@ -375,12 +375,12 @@ strn_vt_tabulate
 ( n0: int(n) ) : strn_vt(n)
 //
 fun<>
-strn_vt_tabulate_cfr
+strn_vt_tabulate_f1un
 {n:nat}
 ( n0
 : int(n)
 , f0
-: nintlt(n) -<cfr> cgtz): strn_vt(n)
+: nintlt(n) -> cgtz): strn_vt(n)
 //
 (* ****** ****** *)
 //

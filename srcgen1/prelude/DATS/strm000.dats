@@ -44,7 +44,7 @@ strqcon_cons(x0, xs)//fcons
 //
 #impltmp
 <x0><r0>
-strmcon_uncons_cfr
+strmcon_uncons_funs
 (xs, f0, f1) =
 (
 case+ xs of
@@ -56,7 +56,7 @@ endcas // end of [case+(xs)]
 )
 #impltmp
 <x0><r0>
-strxcon_uncons_cfr
+strxcon_uncons_funs
 (xs, f1) =
 (
 case+ xs of

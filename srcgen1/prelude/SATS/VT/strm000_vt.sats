@@ -250,11 +250,11 @@ strm_vt_tabulate
 (n0: sint(n)): strm_vt( a )
 fun
 <a:vt>
-strm_vt_tabulate_cfr
+strm_vt_tabulate_f1un
 {n:nat}
-( n0: sint(n)
-, f0
-: nintlt(n) -<cfr> a): strm_vt( a )
+(
+n0: sint(n),
+f0: nintlt(n) -> a): strm_vt(a)
 //
 (* ****** ****** *)
 (*

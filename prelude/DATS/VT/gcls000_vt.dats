@@ -66,10 +66,10 @@ gseq_forall0<xs><x0>(GLSEQ_unmk0(gseq)))
 #impltmp
 < xs:vt >
 < x0:vt >
-GLSEQ_forall0_c1fr
+GLSEQ_forall0_f1un
   (gseq, test) =
 (
-gseq_forall0_c1fr<xs><x0>(GLSEQ_unmk0(gseq), test))
+gseq_forall0_f1un<xs><x0>(GLSEQ_unmk0(gseq), test))
 //
 (* ****** ****** *)
 (* ****** ****** *)

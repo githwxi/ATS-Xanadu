@@ -269,11 +269,11 @@ list_vt_tabulate
 (n0: sint(n)): list_vt(a, n)
 fun
 <a:vt>
-list_vt_tabulate_cfr
+list_vt_tabulate_f1un
 {n:nat}
-( n0: sint(n)
-, f0
-: nintlt(n) -<cfr> a): list_vt(a, n)
+(
+n0: sint(n),
+f0: nintlt(n) -> a): list_vt(a, n)
 //
 (* ****** ****** *)
 //

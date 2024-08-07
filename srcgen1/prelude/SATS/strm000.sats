@@ -76,17 +76,17 @@ strqcon_cons_
 fun
 <x0:t0>
 <r0:vt>
-strmcon_uncons_cfr
+strmcon_uncons_funs
 ( xs: strmcon( x0 )
-, f0: ((*void*)) -<cfr> r0
-, f1: (x0, strm(x0)) -<cfr> r0): r0
+, f0: ((*void*)) -> r0
+, f1: (x0, strm(x0)) -> r0): r0
 //
 fun
 <x0:t0>
 <r0:vt>
-strxcon_uncons_cfr
+strxcon_uncons_funs
 ( xs: strxcon(x0)
-, f1: (x0, strx(x0)) -<cfr> r0): r0
+, f1: (x0, strx(x0)) -> r0): r0
 //
 (* ****** ****** *)
 //

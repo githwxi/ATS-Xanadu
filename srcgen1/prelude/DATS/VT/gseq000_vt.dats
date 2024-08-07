@@ -1132,7 +1132,7 @@ Mon Aug 14 13:42:54 EDT 2023
 <xs: vt>
 <x0: vt>
 <r0: vt>
-gseq_foldl0_c2fr
+gseq_foldl0_f2un
 ( xs, r0, f0 ) =
 (
 gseq_foldl0
@@ -1140,13 +1140,13 @@ gseq_foldl0
 {
 #impltmp
 foldl$fopr0<x0><r0>(r0, x0) = f0(r0, x0)
-}(*where*)//end-of[gseq_foldl0_c2fr(xs,r0,f0)]
+}(*where*)//end-of[gseq_foldl0_f2un(xs,r0,f0)]
 //
 #impltmp
 <xs: vt>
 <x0: vt>
 <r0: vt>
-gseq_foldl1_c2fr
+gseq_foldl1_f2un
 ( xs, r0, f0 ) =
 (
 gseq_foldl1
@@ -1154,7 +1154,7 @@ gseq_foldl1
 {
 #impltmp
 foldl$fopr1<x0><r0>(r0, x0) = f0(r0, x0)
-}(*where*)//end-of[gseq_foldl1_c2fr(xs,r0,f0)]
+}(*where*)//end-of[gseq_foldl1_f2un(xs,r0,f0)]
 //
 (* ****** ****** *)
 //
@@ -1162,7 +1162,7 @@ foldl$fopr1<x0><r0>(r0, x0) = f0(r0, x0)
 <xs: vt>
 <x0: vt>
 <r0: vt>
-gseq_foldr0_c2fr
+gseq_foldr0_f2un
 ( xs, r0, f0 ) =
 (
 gseq_foldr0
@@ -1170,13 +1170,13 @@ gseq_foldr0
 {
 #impltmp
 foldr$fopr0<x0><r0>(x0, r0) = f0(x0, r0)
-}(*where*)//end-of[gseq_foldr0_c2fr(xs,r0,f0)]
+}(*where*)//end-of[gseq_foldr0_f2un(xs,r0,f0)]
 //
 #impltmp
 <xs: vt>
 <x0: vt>
 <r0: vt>
-gseq_foldr1_c2fr
+gseq_foldr1_f2un
 ( xs, r0, f0 ) =
 (
 gseq_foldr1
@@ -1184,42 +1184,42 @@ gseq_foldr1
 {
 #impltmp
 foldr$fopr1<x0><r0>(x0, r0) = f0(x0, r0)
-}(*where*)//end-of[gseq_foldr1_c2fr(xs,r0,f0)]
+}(*where*)//end-of[gseq_foldr1_f2un(xs,r0,f0)]
 //
 (* ****** ****** *)
 //
 #impltmp
 <xs><x0>
-gseq_forall0_c1fr
+gseq_forall0_f1un
 (    xs, f0    ) =
 (
 gseq_forall0<xs><x0>(xs)) where
 {
 #impltmp forall$test0<x0>( x0 ) = f0(x0) }
-//(*where*)//end-of[gseq_forall0_c1fr(xs,f0)]
+//(*where*)//end-of[gseq_forall0_f1un(xs,f0)]
 //
 #impltmp
 <xs><x0>
-gseq_forall1_c1fr
+gseq_forall1_f1un
 (    xs, f0    ) =
 (
 gseq_forall0<xs><x0>(xs)) where
 {
 #impltmp forall$test1<x0>( x0 ) = f0(x0) }
-//(*where*)//end-of[gseq_forall0xb_c1fr(xs,f0)]
+//(*where*)//end-of[gseq_forall0xb_f1un(xs,f0)]
 //
 (* ****** ****** *)
 //
 #impltmp
 <xs><x0>
-gseq_filter0_c1fr_lstrm
+gseq_filter0_f1un_lstrm
 (    xs, f0    ) =
 (
 gseq_filter0_lstrm<xs><x0>(xs)
 ) where
 {
   #impltmp filter$test1<x0>( x0 ) = f0(x0) }
-//(*where*)//end-of[gseq_filter0_c1fr_lstrm(xs,f0)]
+//(*where*)//end-of[gseq_filter0_f1un_lstrm(xs,f0)]
 //
 (* ****** ****** *)
 
