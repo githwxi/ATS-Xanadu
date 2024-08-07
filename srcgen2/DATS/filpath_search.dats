@@ -281,7 +281,7 @@ val n1 =
  then n0 else n0-1): sint
 val nb = strn_length(base)
 in//let
-strn_tabulate_cfr
+strn_tabulate_f1un
 ( n1+nb+1
 , lam i0 =>
   if

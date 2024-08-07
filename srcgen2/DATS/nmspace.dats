@@ -263,12 +263,12 @@ val ( ) = nmitmlst2_vt_free(xss)
 (* ****** ****** *)
 
 #implfun
-the_nmspace_cfrfind
+the_nmspace_find_f1un
   {a}(fopr) = let
 //
 #typedef
 fopr_t =
-(nmitm)-<cfr>optn_vt(a)
+( nmitm ) -> optn_vt(a)
 //
 fun
 auxlst
@@ -339,7 +339,7 @@ optn_vt_nil() => ans where
 }
 | _(*optn_vt_cons(itm)*) => ans)
 //
-end (*let*) // end of [the_nmspace_cfrfind]
+end(*let*)//end-of-[the_nmspace_find_f1un]
 
 (* ****** ****** *)
 

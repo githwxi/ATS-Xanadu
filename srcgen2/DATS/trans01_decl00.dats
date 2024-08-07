@@ -127,7 +127,7 @@ val ln =
 strn_length(src0)
 *)
 in//let
-strn_tabulate_cfr
+strn_tabulate_f1un
 ( ln-2
 , lam i0 => src0[i0+1]
 ) end//let//[xstrunqtize(src0,ln)]
