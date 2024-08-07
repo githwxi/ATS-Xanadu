@@ -67,12 +67,9 @@ strn_gmake1
 $UN.gasz_get_at_raw
 < strn >< cgtz >(cs, i0) =
 let
-//
-val pf =
-owed_t0_make{cgtz}((*void*))
 val c0 =
-$UN.strn_get_at_raw<>(cs, i0) in (pf | c0)
-//
+$UN.strn_get_at_raw<>(cs, i0)
+prval pf = owed_t0_make{cgtz}() in (pf|c0)
 end//let//end($UN.gasz_get_at_raw<strn><cgtz>)
 //
 (* ****** ****** *)
