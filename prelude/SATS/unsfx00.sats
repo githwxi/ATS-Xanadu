@@ -158,6 +158,17 @@ p2tr_set_list_vt_cons
 fun
 <xs:t0>
 <x0:t0>
+gseq_get_at_raw
+  (xs: xs, i0: ni): (x0)
+(*
+HX:
+[i0] is assumed to be
+less than the length of [xs]
+*)
+//
+fun
+<xs:t0>
+<x0:t0>
 gseq_uncons_raw(xs): @(x0, xs)
 //
 fun
@@ -168,25 +179,39 @@ gseq_unsnoc_raw(xs): @(xs, x0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-26:
+These should be
+used with caution!!!
+*)
 fun
 <xs:t0>
-<x0:t0>
-gseq_get_at_raw
-(xs: xs, i0: ni): (x0)
+<x0:vt>
+gasz_get_at_raw
+( xs: xs
+, i0: ni): (owed(x0) | x0)
+fun
+<xs:t0>
+<x0:vt>
+gasz_set_at_raw
+( pf: owed(x0)
+| xs: xs, i0: ni, x0: x0): void
+//
+fun
+<xs:t0>
+<x0:vt>
+gasz_cget_at_raw
+( xs: xs, i0: ni): x0
+fun
+<xs:t0>
+<x0:vt>
+gasz_setf_at_raw
+( xs: xs, i0: ni, x0: x0): void
+//
+(* ****** ****** *)
 //
 fun<>
 strn_get_at_raw(strn, ni): cgtz
-//
-fun
-<x0:t0>
-list_get_at_raw(list(x0), ni): (x0)
-//
-fun
-<x0:t0>
-strm_get_at_raw(strm(x0), ni): (x0)
-fun
-<x0:t0>
-strq_get_at_raw(strq(x0), ni): (x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
