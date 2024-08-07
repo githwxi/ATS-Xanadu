@@ -131,12 +131,22 @@ sub_prcdv_int
 ( cdv , int ) =
 prcdv(cdv.decd() - int)
 (* ****** ****** *)
+//
+(*
+HX-2024-08-07:
+Wed 07 Aug 2024
+11:45:37 AM EDT
+*)
+//
 #implval
 brckt_prcdv =
-add_prcdv_int(app_prcdv, 10)
+sub_prcdv_int
+(app_prcdv, 1)//f(A)[i]
 #implval
 dtsel_prcdv =
-add_prcdv_int(app_prcdv, 10)
+sub_prcdv_int
+(app_prcdv, 1)//f(A).m(x)
+//
 (* ****** ****** *)
 #implval
 forall_prcdv = prcdv( 0 )
