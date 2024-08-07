@@ -115,6 +115,7 @@ HX-2024-08-07:
 The following code simply
 indicate no need for these
 special function interfaces!
+The code is kept as a referece.
 Wed 07 Aug 2024 02:22:37 PM EDT
 *)
 #impltmp

@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -38,6 +39,10 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef ni = nint
+(* ****** ****** *)
+(* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsfx00.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -57,7 +62,8 @@ get_at$exn<xs><x0>(xs, i0)
 else
 let
 val (pf | x0) =
-gasz_get_at_raw<xs><x0>(xs, i0)
+$UN.gasz_get_at_raw
+<   xs   ><   x0   >(xs, i0)
 in//let
 let
 prval () = owed_t0_elim0(pf) in x0
@@ -82,10 +88,10 @@ then
 set_at$exn<xs><x0>(xs,i0,x0)
 else
 let
-prval
-pf = owed_t0_make{x0}()
+prval pf = owed_t0_make{x0}()
 in//let
-gasz_set_at_raw<xs><x0>(pf|xs,i0,x0)
+$UN.gasz_set_at_raw
+<   xs   ><   x0   >(pf | xs,i0,x0)
 end//let//else//end-of-[if]
 //
 end//let//end-of-[gasz_set_at(xs,i0,x0)]
@@ -96,13 +102,13 @@ end//let//end-of-[gasz_set_at(xs,i0,x0)]
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_cget_at_raw
+$UN.gasz_cget_at_raw
   (xs, i0) =
 let
 //
 val
 (pf | x0) =
-gasz_get_at_raw(xs, i0)
+$UN.gasz_get_at_raw(xs, i0)
 //
 in//let
 //
@@ -111,29 +117,29 @@ val x1 = g_copy<x0>(x0)
 prval () =
   owed_vt_return0(pf, x0) in x1 end
 //
-end//let//end-of-[gasz_cget_at_raw(...)]
+end//let//end-of-[$UN.gasz_cget_at_raw]
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_setf_at_raw
+$UN.gasz_setf_at_raw
   (xs, i0, x0) =
 let
 //
 val
 (pf | x1) =
-gasz_get_at_raw(xs, i0)
+$UN.gasz_get_at_raw(xs, i0)
 //
 in//let
 let
-  val () = g_free<x0>(x1)
+  val () = g_free< x0 >( x1 )
 in//let
 (
-  gasz_set_at_raw(pf | xs, i0, x0))
+$UN.gasz_set_at_raw(pf | xs, i0, x0))
 end//let
-end//let//end-of-[gasz_cget_at_raw(...)]
+end//let//end-of-[$UN.gasz_cget_at_raw]
 //
 (* ****** ****** *)
 (* ****** ****** *)
