@@ -66,6 +66,33 @@ gseq_length<ni><ni>(ni) = (ni)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-08-07:
+For some unsafe stuff:
+Wed 07 Aug 2024 03:56:12 PM EDT
+*)
+//
+#impltmp
+$UN.gasz_get_at_raw
+< nint >< unit >(ni, i0) =
+let
+prval pf =
+  owed_t0_make{cgtz}() in (pf|unit) end
+//let//end($UN.gasz_get_at_raw<strn><cgtz>)
+//
+(* ****** ****** *)
+//
+#impltmp
+$UN.gasz_get_at_raw
+< nint >< nint >(ni, i0) =
+let
+prval pf =
+  owed_t0_make{cgtz}() in (pf|(i0)) end
+//let//end($UN.gasz_get_at_raw<strn><cgtz>)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
