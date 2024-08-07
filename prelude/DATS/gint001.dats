@@ -72,13 +72,54 @@ nint_rforall(ni)) where
 {
 #impltmp
 rforall$test<ni>(i0) = 
-rforall$test<ut>(unit())}
+rforall$test<ut>(unit())
+}
 //
 #impltmp
 gseq_rforall
 <ni><ut>(ni) =
 (
 gasz_rforall<ni><ut>(ni))
+//
+(* ****** ****** *)
+//
+#impltmp
+gasz_iforall
+<ni><ut>(ni) =
+(
+nint_forall(ni)) where
+{
+val ut = unit()
+#impltmp
+forall$test<ni>(i0) =
+iforall$test<ut>(i0, ut)
+}
+//
+#impltmp
+gseq_iforall
+<ni><ut>(ni) =
+(
+gasz_iforall<ni><ut>(ni))
+//
+(* ****** ****** *)
+//
+#impltmp
+gasz_irforall
+<ni><ut>(ni) =
+(
+nint_rforall(ni)) where
+{
+val ut = unit()
+#impltmp
+rforall$test<ni>(i0) =
+irforall$test<ut>(i0, ut)
+}
+//
+#impltmp
+gseq_irforall
+<ni><ut>(ni) =
+(
+gasz_irforall<ni><ut>(ni))
 //
 (* ****** ****** *)
 (* ****** ****** *)

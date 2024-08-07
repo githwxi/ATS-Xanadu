@@ -62,40 +62,6 @@ strn_gmake1
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-strn_forall<> =
-gseq_forall<strn><cgtz>
-#impltmp
-strn_foritm<> =
-gseq_foritm<strn><cgtz>
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-<>(*tmp*)
-strn_forall(cs) =
-(
-  nint_iforall<>(n0))
-where
-{
-//
-val n0 = strn_length<>(cs)
-//
-#impltmp
-iforall$test
-<nint>(i0, _) =
-(
-  forall$test<cgtz>(c0)) where
-{
-val c0 =
-  $UN.strn_get_at_raw<>(cs, i0)
-}
-}(*where*)//end-of-[strn_forall(cs)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

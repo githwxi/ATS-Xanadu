@@ -26,42 +26,15 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 (*
-Fri 12 Jul 2024 11:29:01 AM EDT
+Wed 07 Aug 2024 02:30:05 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-#staload UN =
-"prelude/SATS/unsfx00.sats"
-(* ****** ****** *)
-(* ****** ****** *)
-#typedef ni = nint
-#typedef si = sint
-#typedef ut = unit
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-g_si<si>(i0) = (i0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-gasz_length<ni><ut>(ni) = (ni)
-#impltmp
-gseq_length<ni><ut>(ni) = (ni)
-//
-#impltmp
-gasz_length<ni><ni>(ni) = (ni)
-#impltmp
-gseq_length<ni><ni>(ni) = (ni)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -69,4 +42,4 @@ gseq_length<ni><ni>(ni) = (ni)
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_gint000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_tupl001.dats] *)
