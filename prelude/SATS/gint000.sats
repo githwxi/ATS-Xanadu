@@ -45,6 +45,16 @@ Sun 04 Aug 2024 08:24:43 AM EDT
 *)
 //
 fcast // fun
+GSEQ_make_nint0
+(xs: nint): GSEQ(nint, unit)
+fcast // fun
+GSEQ_make_nint1
+(xs: nint): GSEQ(nint, nint)
+#symload GSEQ with GSEQ_make_nint1 of 1000
+#symload GSEQ_nint0 with GSEQ_make_nint0 of 1000
+#symload GSEQ_nint1 with GSEQ_make_nint1 of 1000
+//
+fcast // fun
 GASZ_make_nint0
 (xs: nint): GASZ(nint, unit)
 fcast // fun
