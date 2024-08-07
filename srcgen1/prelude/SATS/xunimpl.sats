@@ -425,8 +425,10 @@ fun
 <a:t0>
 strn_gmake( a ): strn
 //
+(* ****** ****** *)
+//
 fun<>
-strn_foritm(cs: strn): void
+strn_irforall(cs: strn): bool
 //
 (* ****** ****** *)
 //

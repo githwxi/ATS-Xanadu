@@ -59,7 +59,6 @@ val b0 =
 GASZ(10).forall(lam(x)=>x<10)
 val () = prints("b0 = ", b0, "\n")
 (* ****** ****** *)
-////
 val xs =
 list(1,2,3,4)
 val xss = list(xs)
@@ -73,11 +72,10 @@ prints
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val xs =
-qlist_nil{sint}()
-val xs = folditm
-( GSEQ(list(1,2,3))
-, xs, lam(r, x) => qlist_snoc(r, x))
+val xs = 
+GSEQ(list(1,2,3)).folditm
+( qlist_nil()
+, lam(r0, x0) => qlist_snoc(r0, x0))
 //
 val ( ) =
 prints
