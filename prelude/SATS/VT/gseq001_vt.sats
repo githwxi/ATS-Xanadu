@@ -888,23 +888,75 @@ fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
-gseq_map0_lstrm(xs: ~xs): strm_vt(y0)
-fun
-<xs:vt>
-<x0:vt>
-<y0:vt>
-gseq_map1_lstrm(xs: !xs): strm_vt(y0)
+gseq_map0_f1un_llist
+(xs: xs, fopr: (~x0)->(y0)): list_vt(y0)
+//
+#symload map0_llist with gseq_map0_f1un_llist of 0100
 //
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
+gseq_map1_f1un_llist
+(xs: xs, fopr: (!x0)->(y0)): list_vt(y0)
+//
+#symload map1_llist with gseq_map1_f1un_llist of 0100
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_map0_lstrm(xs: ~xs): strm_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
 gseq_map0_lstrq(xs: ~xs): strq_vt(y0)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_map1_lstrm(xs: !xs): strm_vt(y0)
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
 gseq_map1_lstrq(xs: !xs): strq_vt(y0)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_map0_f1un_lstrm
+(xs: xs, fopr: (~x0)->(y0)): strm_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_map0_f1un_lstrq
+(xs: xs, fopr: (~x0)->(y0)): strq_vt(y0)
+//
+#symload map0_lstrm with gseq_map0_f1un_lstrm of 0100
+#symload map0_lstrq with gseq_map0_f1un_lstrq of 0100
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_map1_f1un_lstrm
+(xs: xs, fopr: (!x0)->(y0)): strm_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_map1_f1un_lstrq
+(xs: xs, fopr: (!x0)->(y0)): strq_vt(y0)
+//
+#symload map1_lstrm with gseq_map1_f1un_lstrm of 0100
+#symload map1_lstrq with gseq_map1_f1un_lstrq of 0100
 //
 (* ****** ****** *)
 //
@@ -923,23 +975,75 @@ fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
-gseq_rmap0_lstrm(xs: ~xs): strm_vt(y0)
-fun
-<xs:vt>
-<x0:vt>
-<y0:vt>
-gseq_rmap1_lstrm(xs: !xs): strm_vt(y0)
+gseq_rmap0_f1un_llist
+(xs: xs, fopr: (~x0)->(y0)): list_vt(y0)
+//
+#symload rmap0_llist with gseq_rmap0_f1un_llist of 0100
 //
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
+gseq_rmap1_f1un_llist
+(xs: xs, fopr: (!x0)->(y0)): list_vt(y0)
+//
+#symload rmap1_llist with gseq_rmap1_f1un_llist of 0100
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_rmap0_lstrm(xs: ~xs): strm_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
 gseq_rmap0_lstrq(xs: ~xs): strq_vt(y0)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_rmap1_lstrm(xs: !xs): strm_vt(y0)
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
 gseq_rmap1_lstrq(xs: !xs): strq_vt(y0)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_rmap0_f1un_lstrm
+(xs: xs, fopr: (~x0)->(y0)): strm_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_rmap0_f1un_lstrq
+(xs: xs, fopr: (~x0)->(y0)): strq_vt(y0)
+//
+#symload rmap0_lstrm with gseq_rmap0_f1un_lstrm of 0100
+#symload rmap0_lstrq with gseq_rmap0_f1un_lstrq of 0100
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_rmap1_f1un_lstrm
+(xs: xs, fopr: (!x0)->(y0)): strm_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_rmap1_f1un_lstrq
+(xs: xs, fopr: (!x0)->(y0)): strq_vt(y0)
+//
+#symload rmap1_lstrm with gseq_rmap1_f1un_lstrm of 0100
+#symload rmap1_lstrq with gseq_rmap1_f1un_lstrq of 0100
 //
 (* ****** ****** *)
 //
@@ -963,18 +1067,50 @@ fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
-gseq_imap1_lstrm(xs: !xs): strm_vt(y0)
+gseq_imap0_lstrq(xs: ~xs): strq_vt(y0)
 //
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
-gseq_imap0_lstrq(xs: ~xs): strq_vt(y0)
+gseq_imap1_lstrm(xs: !xs): strm_vt(y0)
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
 gseq_imap1_lstrq(xs: !xs): strq_vt(y0)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_imap0_f1un_lstrm
+(xs: xs, fopr: (ni,~x0)->(y0)): strm_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_imap0_f1un_lstrq
+(xs: xs, fopr: (ni,~x0)->(y0)): strq_vt(y0)
+//
+#symload imap0_lstrm with gseq_imap0_f1un_lstrm of 0100
+#symload imap0_lstrq with gseq_imap0_f1un_lstrq of 0100
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_imap1_f1un_lstrm
+(xs: xs, fopr: (ni,!x0)->(y0)): strm_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_imap1_f1un_lstrq
+(xs: xs, fopr: (ni,!x0)->(y0)): strq_vt(y0)
+//
+#symload imap1_lstrm with gseq_imap1_f1un_lstrm of 0100
+#symload imap1_lstrq with gseq_imap1_f1un_lstrq of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1004,18 +1140,51 @@ fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
-gseq_irmap1_lstrm(xs: !xs): strm_vt(y0)
+gseq_irmap0_lstrq(xs: ~xs): strq_vt(y0)
 //
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
-gseq_irmap0_lstrq(xs: ~xs): strq_vt(y0)
+gseq_irmap1_lstrm(xs: !xs): strm_vt(y0)
 fun
 <xs:vt>
 <x0:vt>
 <y0:vt>
 gseq_irmap1_lstrq(xs: !xs): strq_vt(y0)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_irmap0_f1un_lstrm
+(xs: xs, fopr: (ni,~x0)->(y0)): strm_vt(y0)
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_irmap0_f1un_lstrq
+(xs: xs, fopr: (ni,~x0)->(y0)): strq_vt(y0)
+//
+#symload irmap0_lstrm with gseq_irmap0_f1un_lstrm of 0100
+#symload irmap0_lstrq with gseq_irmap0_f1un_lstrq of 0100
+//
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_irmap1_f1un_lstrm
+(xs: xs, fopr: (ni,!x0)->(y0)): strm_vt(y0)
+fun
+<xs:vt>
+<x0:vt>
+<y0:vt>
+gseq_irmap1_f1un_lstrq
+(xs: xs, fopr: (ni,!x0)->(y0)): strq_vt(y0)
+//
+#symload irmap1_lstrm with gseq_irmap1_f1un_lstrm of 0100
+#symload irmap1_lstrq with gseq_irmap1_f1un_lstrq of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1054,20 +1223,64 @@ gseq_filter1_llist(xs: !xs): list_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_filter0_lstrm(xs: ~xs): strm_vt(x0)
+gseq_filter0_f1un_llist
+(xs: xs, fopr: (~x0)->bool): list_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_filter1_lstrm(xs: !xs): strm_vt(x0)
+gseq_filter1_f1un_llist
+(xs: xs, fopr: (!x0)->bool): list_vt(x0)
+//
+#symload filter0_llist with gseq_filter0_f1un_llist of 0100
+#symload filter1_llist with gseq_filter1_f1un_llist of 0100
+//
+(* ****** ****** *)
 //
 fun
 <xs:vt>
 <x0:vt>
+gseq_filter0_lstrm(xs: ~xs): strm_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
 gseq_filter0_lstrq(xs: ~xs): strq_vt(x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_filter1_lstrm(xs: !xs): strm_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
 gseq_filter1_lstrq(xs: !xs): strq_vt(x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_filter0_f1un_lstrm
+(xs: xs, fopr: (~x0)->bool): strm_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_filter0_f1un_lstrq
+(xs: xs, fopr: (~x0)->bool): strq_vt(x0)
+//
+#symload filter0_lstrm with gseq_filter0_f1un_lstrm of 0100
+#symload filter0_lstrq with gseq_filter0_f1un_lstrq of 0100
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_filter1_f1un_lstrm
+(xs: xs, fopr: (!x0)->bool): strm_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_filter1_f1un_lstrq
+(xs: xs, fopr: (!x0)->bool): strq_vt(x0)
+//
+#symload filter1_lstrm with gseq_filter1_f1un_lstrm of 0100
+#symload filter1_lstrq with gseq_filter1_f1un_lstrq of 0100
 //
 (* ****** ****** *)
 //
@@ -1083,20 +1296,64 @@ gseq_rfilter1_llist(xs: !xs): list_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_rfilter0_lstrm(xs: ~xs): strm_vt(x0)
+gseq_rfilter0_f1un_llist
+(xs: xs, fopr: (~x0)->bool): list_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_rfilter1_lstrm(xs: !xs): strm_vt(x0)
+gseq_rfilter1_f1un_llist
+(xs: xs, fopr: (!x0)->bool): list_vt(x0)
+//
+#symload rfilter0_llist with gseq_rfilter0_f1un_llist of 0100
+#symload rfilter1_llist with gseq_rfilter1_f1un_llist of 0100
+//
+(* ****** ****** *)
 //
 fun
 <xs:vt>
 <x0:vt>
+gseq_rfilter0_lstrm(xs: ~xs): strm_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
 gseq_rfilter0_lstrq(xs: ~xs): strq_vt(x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_rfilter1_lstrm(xs: !xs): strm_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
 gseq_rfilter1_lstrq(xs: !xs): strq_vt(x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_rfilter0_f1un_lstrm
+(xs: xs, fopr: (~x0)->bool): strm_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_rfilter0_f1un_lstrq
+(xs: xs, fopr: (~x0)->bool): strq_vt(x0)
+//
+#symload rfilter0_lstrm with gseq_rfilter0_f1un_lstrm of 0100
+#symload rfilter0_lstrq with gseq_rfilter0_f1un_lstrq of 0100
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_rfilter1_f1un_lstrm
+(xs: xs, fopr: (!x0)->bool): strm_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_rfilter1_f1un_lstrq
+(xs: xs, fopr: (!x0)->bool): strq_vt(x0)
+//
+#symload rfilter1_lstrm with gseq_rfilter1_f1un_lstrm of 0100
+#symload rfilter1_lstrq with gseq_rfilter1_f1un_lstrq of 0100
 //
 (* ****** ****** *)
 //
@@ -1112,20 +1369,64 @@ gseq_ifilter1_llist(xs: !xs): list_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_ifilter0_lstrm(xs: ~xs): strm_vt(x0)
+gseq_ifilter0_f1un_llist
+(xs: xs, fopr: (ni,~x0)->bool): list_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_ifilter1_lstrm(xs: !xs): strm_vt(x0)
+gseq_ifilter1_f1un_llist
+(xs: xs, fopr: (ni,!x0)->bool): list_vt(x0)
+//
+#symload ifilter0_llist with gseq_ifilter0_f1un_llist of 0100
+#symload ifilter1_llist with gseq_ifilter1_f1un_llist of 0100
+//
+(* ****** ****** *)
 //
 fun
 <xs:vt>
 <x0:vt>
+gseq_ifilter0_lstrm(xs: ~xs): strm_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
 gseq_ifilter0_lstrq(xs: ~xs): strq_vt(x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_ifilter1_lstrm(xs: !xs): strm_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
 gseq_ifilter1_lstrq(xs: !xs): strq_vt(x0)
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_ifilter0_f1un_lstrm
+(xs: xs, fopr: (ni,~x0)->bool): strm_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_ifilter0_f1un_lstrq
+(xs: xs, fopr: (ni,~x0)->bool): strq_vt(x0)
+//
+#symload ifilter0_lstrm with gseq_ifilter0_f1un_lstrm of 0100
+#symload ifilter0_lstrq with gseq_ifilter0_f1un_lstrq of 0100
+//
+fun
+<xs:vt>
+<x0:vt>
+gseq_ifilter1_f1un_lstrm
+(xs: xs, fopr: (ni,!x0)->bool): strm_vt(x0)
+fun
+<xs:vt>
+<x0:vt>
+gseq_ifilter1_f1un_lstrq
+(xs: xs, fopr: (ni,!x0)->bool): strq_vt(x0)
+//
+#symload ifilter1_lstrm with gseq_ifilter1_f1un_lstrm of 0100
+#symload ifilter1_lstrq with gseq_ifilter1_f1un_lstrq of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)

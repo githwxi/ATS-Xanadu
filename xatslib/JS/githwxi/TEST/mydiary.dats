@@ -50,7 +50,7 @@ Sun 21 Jul 2024 11:06:11 PM EDT
 (* ****** ****** *)
 (* ****** ****** *)
 val f0 =
-lam(x:int) => (x)
+lam(x:int) => @(x, x=x)
 val () =
 prints
 ("type(f0) = ", type(f0), "\n")
