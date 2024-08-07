@@ -270,14 +270,16 @@ local
 fun
 DLRDT
 (nm0: strn): strn =
-strn_tabulate_cfr
-( n0 + 2
-, lam i0 => fopr i0
-) where
+strn_tabulate_f1un
+(
+n0 + 2,
+lam i0 => fopr i0)
+where
 {
 //
 val n0 =
-strn_length(nm0)
+(
+  strn_length(nm0))
 //
 fun
 fopr

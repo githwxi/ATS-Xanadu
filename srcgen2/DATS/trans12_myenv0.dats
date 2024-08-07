@@ -1537,7 +1537,7 @@ f1_sub0
 let
 val df = i1-i0
 in//let
-strn_tabulate_cfr
+strn_tabulate_f1un
 ( df
 , lam j => name[i0+j])
 end//let//f1_sub0(i0, i1)
@@ -1548,7 +1548,7 @@ f1_sub1
 let
 val df = i1-i0
 in//let
-strn_tabulate_cfr
+strn_tabulate_f1un
 ( df+1
 , lam j =>
   if j < df then

@@ -99,7 +99,7 @@ in//let
 if
 pos >= 0
 then
-strn_tabulate_cfr
+strn_tabulate_f1un
 (pos+1, lam i0 => fpx[i0]) else ("")
 end (*let*) // end of [fpath_dpart(fpx)]
 

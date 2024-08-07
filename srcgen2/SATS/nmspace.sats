@@ -59,9 +59,10 @@ the_nmspace_filrest((*void*)): void
 (* ****** ****** *)
 //
 fun
-the_nmspace_cfrfind{a:tbox}
-(fopr: nmitm -<cfr> optn_vt(a)): optn_vt(a)
-// end of [the_nmspace_cfrfind]
+the_nmspace_find_f1un
+{a:tbox}
+(fopr: nmitm -> optn_vt(a)): optn_vt(a)
+// end of [the_nmspace_find_f1un]
 //
 (* ****** ****** *)
 
