@@ -728,7 +728,7 @@ XATS2JS_strn_cmp
 ////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_strn_head_raw
+XATS2JS_strn_head$raw
   (  cs  )
 {
     return cs.charCodeAt(0);
@@ -746,7 +746,7 @@ XATS2JS_strn_head$opt
 }
 //
 function
-XATS2JS_strn_tail_raw
+XATS2JS_strn_tail$raw
   (  cs  )
 {
     return cs.slice(1);//tail
