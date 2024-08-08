@@ -48,7 +48,12 @@ Authoremail: gmhwxiATgmailDOTcom
 < xs:vt >
 < x0:vt >
 GLSEQ_unmk0
-(  gseq  ) = $UN.castlinxy(gseq)
+(  gseq  ) = $UN.castxy0(gseq)
+#impltmp
+< xs:vt >
+< x0:vt >
+GLSEQ_unmk1
+(  gseq  ) = $UN.castxy1(gseq)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -61,6 +66,18 @@ GLSEQ_forall0
 (
 gseq_forall0<xs><x0>(GLSEQ_unmk0(gseq)))
 //
+#impltmp
+< xs:vt >
+< x0:vt >
+GLSEQ_forall1
+  (gseq) =
+let
+val
+(pf|xs) = GLSEQ_unmk1(gseq)
+val btf = gseq_forall1<xs><x0>(xs)
+prval () = owed_vt_return0(pf, xs) in btf
+end//let//end-of-[GLSEQ_forall1(gseq)]
+//
 (* ****** ****** *)
 //
 #impltmp
@@ -69,7 +86,21 @@ gseq_forall0<xs><x0>(GLSEQ_unmk0(gseq)))
 GLSEQ_forall0_f1un
   (gseq, test) =
 (
-gseq_forall0_f1un<xs><x0>(GLSEQ_unmk0(gseq), test))
+GLSEQ_forall0<xs><x0>(gseq)) where
+{
+#impltmp forall$test0<x0>(x0) = test(x0)
+}
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+GLSEQ_forall1_f1un
+  (gseq, test) =
+(
+GLSEQ_forall1<xs><x0>(gseq)) where
+{
+#impltmp forall$test1<x0>(x0) = test(x0)
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
