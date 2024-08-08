@@ -108,7 +108,8 @@ let
 //
 val
 (pf | x0) =
-$UN.gasz_get$at$raw(xs, i0)
+$UN.gasz_get$at$raw
+<  xs  ><  x0  >( xs, i0 )
 //
 in//let
 //
@@ -130,7 +131,8 @@ let
 //
 val
 (pf | x1) =
-$UN.gasz_get$at$raw(xs, i0)
+$UN.gasz_get$at$raw
+<  xs  ><  x0  >( xs, i0 )
 //
 in//let
 let

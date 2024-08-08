@@ -47,13 +47,9 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #typedef
 jsa(a:vt) = jsarray(a)
-#typedef
-jsa(a:vt,n:i0) = jsarray(a,n)
 (* ****** ****** *)
 #vwtpdef
 jsla(a:vt) = jsarray_vt(a)
-#vwtpdef
-jsla(a:vt,n:i0) = jsarray_vt(a,n)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -136,14 +132,14 @@ gasz_length1
 //
 #impltmp
 <(*tmp*)>
-jsarray_vt_get1_at
+jsarray_vt_get$at1
   {a}(A, i) =
 (
 jsarray_get_at<>(UN_jsarray_vt2t(A), i))
 //
 #impltmp
 <(*tmp*)>
-jsarray_vt_set1_at
+jsarray_vt_set$at1
   {a}(A, i, x) =
 (
 jsarray_set_at<>(UN_jsarray_vt2t(A), i, x))
@@ -152,21 +148,21 @@ jsarray_set_at<>(UN_jsarray_vt2t(A), i, x))
 //
 #impltmp
 { x0:t0 }
-gasz_get1_at
-<jsla(x0)><x0> = jsarray_vt_get1_at<>{x0}
+gasz_get$at1
+<jsla(x0)><x0> = jsarray_vt_get$at1<>{x0}
 #impltmp
 { x0:t0 }
-gasz_set1_at
-<jsla(x0)><x0> = jsarray_vt_set1_at<>{x0}
+gasz_set$at1
+<jsla(x0)><x0> = jsarray_vt_set$at1<>{x0}
 //
 #impltmp
 { x0:t0 }
-gasz_get1_at_raw
-<jsla(x0)><x0> = jsarray_vt_get1_at<>{x0}//safe
+gasz_get$at$raw1
+<jsla(x0)><x0> = jsarray_vt_get$at1<>{x0}//safe
 #impltmp
 { x0:t0 }
-gasz_set1_at_raw
-<jsla(x0)><x0> = jsarray_vt_set1_at<>{x0}//safe
+gasz_set$at$raw1
+<jsla(x0)><x0> = jsarray_vt_set$at1<>{x0}//safe
 //
 (* ****** ****** *)
 (* ****** ****** *)

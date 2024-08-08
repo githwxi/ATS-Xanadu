@@ -45,13 +45,13 @@ XATS2JS_jsarray_length
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_get_at
+XATS2JS_jsarray_get$at
   (A, i)
 {
   return A[i]
 }
 function
-XATS2JS_jsarray_set_at
+XATS2JS_jsarray_set$at
   (A, i, x)
 {
   return (A[i] = x)
