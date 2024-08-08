@@ -167,6 +167,12 @@ list_vt_rappend10
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fcast // fun
+GLSEQ_make0_list_vt
+{a:vt}
+(xs: list_vt(a)): GLSEQ(list_vt(a), a)
+#symload GLSEQ with GLSEQ_make_list_vt of 1000
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

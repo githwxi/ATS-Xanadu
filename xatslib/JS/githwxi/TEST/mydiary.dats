@@ -52,6 +52,25 @@ Sun 21 Jul 2024 11:06:11 PM EDT
 (* ****** ****** *)
 (* ****** ****** *)
 //
+val word = "hello"
+val (  ) =
+word.iforitm(
+  lam(i, ci) =>
+  (26).foritm(
+    lam(j) =>
+    let
+      val cj = 'a'+j
+    in
+      if ci = cj then ()
+      else prints("ci = ", ci, ";", "cj = ", cj, "\n")
+    end
+  )
+)
+//
+(* ****** ****** *)
+////
+(* ****** ****** *)
+//
 val ds =
 nint_dgt$listize(123456789)
 val () = print1s("ds = ", ds,"\n")

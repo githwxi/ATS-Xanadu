@@ -66,9 +66,27 @@ enlinear{a0:vt}(?!a0): (  a0  )
 (* ****** ****** *)
 //
 fcast
+castxy0
+{ax:vt}{ay:vt}(ax):(ay)
+fcast
+castyx0
+{ay:vt}{ax:vt}(ax):(ay)
+//
+fcast
+castxy1
+{ax:vt}
+{ay:vt}(!ax):(owed(ay) | ay)
+fcast
+castyx1
+{ay:vt}
+{ax:vt}(!ax):(owed(ay) | ay)
+//
+(*
+fcast
 castlinxy{ax:vt}{ay:vt}(ax):(ay)
 fcast
 castlinyx{ay:vt}{ax:vt}(ax):(ay)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -195,7 +195,6 @@ GSEQ_make_list
 {a:t0}
 (xs: list(a)): GSEQ(list(a), a)
 #symload GSEQ with GSEQ_make_list of 1000
-#symload GSEQ_list with GSEQ_make_list of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
