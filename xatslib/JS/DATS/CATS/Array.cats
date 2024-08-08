@@ -109,7 +109,7 @@ XATS2JS_jsarray_fmake_fwork
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_forall_c1fr
+XATS2JS_jsarray_forall_f1un
   (A, test)
 {
   let i0
@@ -124,7 +124,7 @@ XATS2JS_jsarray_forall_c1fr
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_rforall_c1fr
+XATS2JS_jsarray_rforall_f1un
   (A, test)
 {
   let i0
@@ -139,7 +139,7 @@ XATS2JS_jsarray_rforall_c1fr
 /////////////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsarray_mapref_c1fr
+XATS2JS_jsarray_mapref_f1un
   (A, fopr)
 {
   let i0

@@ -6,8 +6,6 @@
 (* ****** ****** *)
 #typedef
 jsa(a:vt) = jsarray(a)
-#typedef
-jsa(a:vt,n:i0) = jsarray(a,n)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -26,8 +24,7 @@ HX-2024-07-27:
 #extern
 fun<a:vt>
 jsarray_listize
- {n:nat}
-( xs: jsa(a, n)): list_vt(a, n)
+( xs: jsa(a)): list_vt(a)
 #impltmp
 < a: vt >
 jsarray_listize =
@@ -104,9 +101,7 @@ HX-2024-07-27:
 #extern
 fun<a:vt>
 jsarray_append
- {m,n:nat}
-( xs: jsa(a, m)
-, ys: jsa(a, n)): jsa(a, m+n)
+(xs: jsa(a), ys: jsa(a)): jsa(a)
 //
 #impltmp
 < a: vt >
@@ -130,9 +125,7 @@ HX-2024-07-27:
 #extern
 fun<a:vt>
 jsarray_prepend
- {m,n:nat}
-( xs: jsa(a, m)
-, ys: jsa(a, n)): jsa(a, m+n)
+(xs: jsa(a), ys: jsa(a)): jsa(a)
 #impltmp
 < a: vt >
 jsarray_prepend =
@@ -150,9 +143,7 @@ HX-2024-07-27:
 #extern
 fun<a:vt>
 jsarray_rappend
- {m,n:nat}
-( xs: jsa(a, m)
-, ys: jsa(a, n)): jsa(a, m+n)
+(xs: jsa(a), ys: jsa(a)): jsa(a)
 #impltmp
 < a: vt >
 jsarray_rappend =
@@ -196,30 +187,28 @@ Mon 29 Jul 2024 01:40:18 PM EDT
 fun
 <a:vt>
 <b:t0>
-jsarray_map_list_c1fr
-{n:nat}
-( A: jsa(a, n)
-, fopr: (a) -<cfr> b): list(b, n)
+jsarray_map_list_f1un
+( A: jsa(a)
+, fopr: (a) -> b): list(b)
 #extern
 fun
 <a:vt>
 <b:vt>
-jsarray_map_llist_c1fr
-{n:nat}
-( A: jsa(a, n)
-, fopr: (a) -<cfr> b): list_vt(b, n)
+jsarray_map_llist_f1un
+( A: jsa(a)
+, fopr: (a) -> b): list_vt(b)
 //
 #impltmp
 < a: vt >
 < b: t0 >
-jsarray_map_list_c1fr
+jsarray_map_list_f1un
   (A, fopr) =
 list_vt2t{b}
-(jsarray_map_llist_c1fr<a><b>(A, fopr))
+(jsarray_map_llist_f1un<a><b>(A, fopr))
 #impltmp
 < a: vt >
 < b: vt >
-jsarray_map_llist_c1fr
+jsarray_map_llist_f1un
   (A, fopr) =
 (
 gseq_map1_llist<jsa(a)><a><b>(A)
@@ -229,9 +218,9 @@ gseq_map1_llist<jsa(a)><a><b>(A)
 }
 //
 #symload
-map_list with jsarray_map_list_c1fr of 1000
+map_list with jsarray_map_list_f1un of 1000
 #symload
-map_llist with jsarray_map_llist_c1fr of 1000
+map_llist with jsarray_map_llist_f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

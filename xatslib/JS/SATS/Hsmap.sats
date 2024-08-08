@@ -51,9 +51,27 @@ jshsmap_tbox(k:t0,x:vt)
 (* ****** ****** *)
 //
 fun<>
+jshsmap_make_nil
+{ k:t0 }{ x:vt }
+(   (*void*)   ): jshsmap(k,x)
+//
+fun<>
+jshsmap_make_list
+{ k:t0 }{ x:t0 }
+( kxs:list@(k,x) ): jshsmap(k,x)
+//
+fun<>
+jshsmap_make0_list_vt
+{ k:t0 }{ x:vt }
+( kxs:list_vt@(k,x) ): jshsmap(k,x)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
 jshsmap_strmize
 { k:t0 }{ x:vt }
-( map:jshsmap(k, x)): strm_vt@(k,x)
+( map:jshsmap(k,x)): strm_vt@(k,x)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -62,12 +80,12 @@ fun<>
 jshsmap_search$tst
 { k:t0 }{ x:vt }
 ( map
-: jshsmap(k, x), key: k): bool
+: jshsmap(k,x), key: k): bool
 fun<>
 jshsmap_search$cpy
 { k:t0 }{ x:vt }
 ( map
-: jshsmap(k, x), key: k): optn_vt(x)
+: jshsmap(k,x), key: k): optn_vt(x)
 //
 (* ****** ****** *)
 //
@@ -75,7 +93,7 @@ fun<>
 jshsmap_remove$opt
 { k:t0 }{ x:vt }
 ( map
-: jshsmap(k, x), key: k): optn_vt(x)
+: jshsmap(k,x), key: k): optn_vt(x)
 //
 (* ****** ****** *)
 //
@@ -83,12 +101,12 @@ fun<>
 jshsmap_insert$any
 { k:t0 }{ x:vt }
 ( map
-: jshsmap(k, x), key: k, itm: x): void
+: jshsmap(k,x), key: k, itm: x): void
 fun<>
 jshsmap_insert$opt
 { k:t0 }{ x:vt }
 ( map
-: jshsmap(k, x), key: k, itm: x): optn_vt(x)
+: jshsmap(k,x), key: k, itm: x): optn_vt(x)
 //
 (* ****** ****** *)
 (* ****** ****** *)
