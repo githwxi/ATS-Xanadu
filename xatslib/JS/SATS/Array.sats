@@ -148,16 +148,16 @@ jsarray_length
 (* ****** ****** *)
 //
 fun<>
-jsarray_get_at
+jsarray_get$at
  {a:t0}//HX: t0(not vt)
 (A:jsarray(a), i:nint): (a)
 fun<>
-jsarray_set_at
+jsarray_set$at
  {a:t0}//HX: t0(not vt)
 (A:jsarray(a), i:nint, x:a): void
 //
-#symload get_at with jsarray_get_at of 1000
-#symload set_at with jsarray_set_at of 1000
+#symload get$at with jsarray_get$at of 1000
+#symload set$at with jsarray_set$at of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -183,7 +183,7 @@ jsarray_forall
 ( A: jsarray(a)): bool
 //
 fun<>
-jsarray_forall_c1fr
+jsarray_forall_f1un
  {a:vt}
 ( A: jsarray(a)
 , test: (!a)-<cfr>bool): bool
@@ -191,7 +191,7 @@ jsarray_forall_c1fr
 #symload
 forall with jsarray_forall of 1000
 #symload
-forall with jsarray_forall_c1fr of 1000
+forall with jsarray_forall_f1un of 1000
 //
 (* ****** ****** *)
 //
@@ -200,7 +200,7 @@ fun
 jsarray_rforall
 ( A: jsarray(a)): bool
 fun<>
-jsarray_rforall_c1fr
+jsarray_rforall_f1un
  {a:vt}
 ( A: jsarray(a)
 , test: (!a)-<cfr>bool): bool
@@ -208,7 +208,7 @@ jsarray_rforall_c1fr
 #symload
 rforall with jsarray_rforall of 1000
 #symload
-rforall with jsarray_rforall_c1fr of 1000
+rforall with jsarray_rforall_f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -218,7 +218,7 @@ fun
 jsarray_mapref
 ( A: jsarray(a)): void
 fun<>
-jsarray_mapref_c1fr
+jsarray_mapref_f1un
  {a:vt}
 ( A: jsarray(a)
 , fopr: (~a)-<cfr>(a)): void
@@ -226,7 +226,7 @@ jsarray_mapref_c1fr
 #symload
 mapref with jsarray_mapref of 1000
 #symload
-mapref with jsarray_mapref_c1fr of 1000
+mapref with jsarray_mapref_f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

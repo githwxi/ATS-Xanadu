@@ -43,6 +43,10 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsfx00.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 #typedef
 jsa(a:vt) = jsarray(a)
 #typedef
@@ -60,11 +64,11 @@ let
 #typedef xs = jsa(a)
 //
 #impltmp
-gseq$sep<xs><x0>() = ","
+gseq_sep<xs><x0>() = ","
 #impltmp
-gseq$beg<xs><x0>() = "jsarray("
+gseq_end<xs><x0>() = ")"
 #impltmp
-gseq$end<xs><x0>() = ")"
+gseq_beg<xs><x0>() = "jsarray("
 in//let
   gseq_print1<xs><x0>(xs)
 end//end-of-[g_print<jsa(a)>]
@@ -96,7 +100,7 @@ XATS2JS_jsarray_make_ncpy
 jsarray_make_nfun
   (n, f) =
 jsarray
-(nint_map_lstrm_c1fr<>(n, f))
+(nint_map_lstrm_f1un<>(n, f))
 //
 (* ****** ****** *)
 //
@@ -185,63 +189,85 @@ Wed 24 Jul 2024 09:09:12 PM EDT
 //
 #impltmp
 <(*tmp*)>
-jsarray_get_at
+jsarray_get$at
   {a}(A, i) =
 (
-XATS2JS_jsarray_get_at
+XATS2JS_jsarray_get$at
   (A, i)) where
 {
 #extern
 fun
-XATS2JS_jsarray_get_at
+XATS2JS_jsarray_get$at
 {a:t0}{n:nat}
 (A: jsa(a, n), i: nint): (a) = $extnam()
 }
 //
 #impltmp
 <(*tmp*)>
-jsarray_set_at
+jsarray_set$at
   {a}(A, i, x) =
 (
-XATS2JS_jsarray_set_at
+XATS2JS_jsarray_set$at
   (A, i, x)) where
 {
 #extern
 fun
-XATS2JS_jsarray_set_at
+XATS2JS_jsarray_set$at
 {a:t0}{n:nat}
 (A: jsa(a, n), i:nint, x:a): void = $extnam()
 }
 //
 #impltmp
 { x0:t0 }
-gasz_get_at
+gasz_get$at
 <jsa(x0)><x0> =
-jsarray_get_at<>{x0}//HX:safe
+jsarray_get$at<>{x0}//HX:safe
 #impltmp
 { x0:t0 }
-gasz_set_at
+gasz_set$at
 <jsa(x0)><x0> =
-jsarray_set_at<>{x0}//HX:safe
+jsarray_set$at<>{x0}//HX:safe
+//
+(* ****** ****** *)
 //
 #impltmp
 { x0:t0 }
-gasz_get_at_raw
+$UN.gasz_get$at$raw
 <jsa(x0)><x0>(A, i) =
 (owed_t0_make() | x0) where
-{ val x0 =
-  jsarray_get_at<>{x0}(A, i) }
-(*where*)//end-[gasz_get_at_raw(...)]
+{
+val x0 =
+jsarray_get$at<>{x0}(A, i) }
+(*where*)//end-[gasz_get$at$raw(...)]
 //
 #impltmp
 { x0:t0 }
-gasz_set_at_raw
+$UN.gasz_set$at$raw
 <jsa(x0)><x0>(pf | A, i, x) =
 let
 prval () = owed_t0_elim0(pf)
 in//let
-  jsarray_set_at<>{x0}(A, i, x)
-end//let//end-of-[gasz_set_at_raw(...)]
+(
+jsarray_set$at<>{x0}(A, i, x))
+end//let//end-of-[gasz_set$at$raw(...)]
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+$UN.gasz_cget$at$raw
+<jsa(x0)><x0>(A, i) =
+(
+  jsarray_get$at<>{x0}(A, i) )
+(*where*)//end-[gasz_cget$at$raw(...)]
+//
+#impltmp
+{ x0:t0 }
+$UN.gasz_setf$at$raw
+<jsa(x0)><x0>(A, i, x) =
+(
+  jsarray_set$at<>{x0}(A, i, x) )
+(*where*)//end-[gasz_setf$at$raw(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -288,7 +314,7 @@ jsarray_length<>(A)) where
 forall$test
 <nint>( i0 ) =
 forall$test0<x0>
-(jsarray_get_at<x0>(A, i0))}
+(jsarray_get$at<x0>(A, i0))}
 *)
 //
 #impltmp
@@ -296,7 +322,7 @@ forall$test0<x0>
 jsarray_forall
   ( A ) =
 (
-jsarray_forall_c1fr<>
+jsarray_forall_f1un<>
 (A
 ,lam(x)=>forall$test1<a>(x)))
 //
@@ -326,15 +352,15 @@ forall$test1<x0> = forall$test0<x0>
 //
 #impltmp
 <(*tmp*)>
-jsarray_forall_c1fr
+jsarray_forall_f1un
   (A, test) =
 (
-XATS2JS_jsarray_forall_c1fr
+XATS2JS_jsarray_forall_f1un
   (A, test)) where
 {
 #extern
 fun
-XATS2JS_jsarray_forall_c1fr
+XATS2JS_jsarray_forall_f1un
  {a:vt}
 ( A: jsa(a)
 , test: (!a)-<cfr>bool): bool = $extnam()
@@ -348,7 +374,7 @@ XATS2JS_jsarray_forall_c1fr
 jsarray_rforall
   ( A ) =
 (
-jsarray_rforall_c1fr<>
+jsarray_rforall_f1un<>
 (A
 ,lam(x)=>rforall$test1<a>(x)))
 //
@@ -372,15 +398,15 @@ gseq_rforall1
 //
 #impltmp
 <(*tmp*)>
-jsarray_rforall_c1fr
+jsarray_rforall_f1un
   (A, test) =
 (
-XATS2JS_jsarray_rforall_c1fr
+XATS2JS_jsarray_rforall_f1un
   (A, test)) where
 {
 #extern
 fun
-XATS2JS_jsarray_rforall_c1fr
+XATS2JS_jsarray_rforall_f1un
  {a:vt}
 ( A: jsa(a)
 , test: (a)-<cfr>bool): bool = $extnam()
@@ -394,20 +420,20 @@ XATS2JS_jsarray_rforall_c1fr
 jsarray_mapref
   ( A ) =
 (
-jsarray_mapref_c1fr<>
+jsarray_mapref_f1un<>
 (A, lam(x)=>mapref$fopr0<a>(x)))
 //
 #impltmp
 <(*tmp*)>
-jsarray_mapref_c1fr
+jsarray_mapref_f1un
   (A, fopr) =
 (
-XATS2JS_jsarray_mapref_c1fr
+XATS2JS_jsarray_mapref_f1un
   (A, fopr)) where
 {
 #extern
 fun
-XATS2JS_jsarray_mapref_c1fr
+XATS2JS_jsarray_mapref_f1un
  {a:vt}
 ( A: jsa(a)
 , fopr: (~a)-<cfr>(a)): void = $extnam()

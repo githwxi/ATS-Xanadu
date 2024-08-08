@@ -11,6 +11,17 @@ jsa(a:vt) = jsarray(a)
 //
 #impltmp
 { a: vt }
+g_ptype
+< jsa(a) >
+( (*void*) ) =
+(
+pstrn"jsarray(";
+g_ptype<a>();pstrn")")
+//
+(* ****** ****** *)
+//
+#impltmp
+{ a: vt }
 g_foritm<jsa(a)> =
 gseq_foritm1<jsa(a)><a>
 //

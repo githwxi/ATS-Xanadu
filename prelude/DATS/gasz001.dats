@@ -110,7 +110,7 @@ nint_map_lstrm<x0>(n0))
 where
 {
 #impltmp
-map$fopr<ni>(i0) =
+map$fopr<ni><x0>(i0) =
 (
 $UN.gasz_cget$at$raw
 <   xs   ><   x0   >( xs, i0 ))
@@ -132,7 +132,7 @@ nint_rmap_lstrm<x0>(n0))
 where
 {
 #impltmp
-rmap$fopr<ni>(i0) =
+rmap$fopr<ni><x0>(i0) =
 (
 $UN.gasz_cget$at$raw
 <   xs   ><   x0   >( xs, i0 ))
