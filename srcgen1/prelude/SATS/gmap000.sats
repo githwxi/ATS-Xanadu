@@ -68,7 +68,7 @@ fun
 <map:t0>
 <key:t0
 ,itm:t0>
-gmap_search_opt
+gmap_search$opt
 (kxs: map, key: key): optn_vt(itm)
 //
 (* ****** ****** *)
@@ -77,13 +77,13 @@ fun
 <map:t0>
 <key:t0
 ,itm:t0>
-gmap_insert_opt
+gmap_insert$opt
 (kxs: &map >> map, key, itm): optn_vt(itm)
 fun
 <map:t0>
 <key:t0
 ,itm:t0>
-gmap_remove_opt
+gmap_remove$opt
 (kxs: &map >> map, key: key): optn_vt(itm)
 //
 (* ****** ****** *)

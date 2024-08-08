@@ -106,13 +106,13 @@ a0ptr2ref
 //
 #impltmp
 < a:t0 >
-a1ref_get_at(A0, i0) =
-a1ref_dtget_at<a>(A0, i0)
+a1ref_get$at(A0, i0) =
+a1ref_dtget$at<a>(A0, i0)
 //
 #impltmp
 < a:t0 >
-a1ref_set_at(A0, i0, x0) =
-a1ref_dtset_at<a>(A0, i0, x0)
+a1ref_set$at(A0, i0, x0) =
+a1ref_dtset$at<a>(A0, i0, x0)
 //
 (* ****** ****** *)
 //
@@ -169,7 +169,7 @@ val n1 = pred(n0)
 x1forint$work<n>(i0) =
 let
   val j0 = n1 - i0
-  val x0 = get_at(A0, j0)
+  val x0 = get$at(A0, j0)
 in
 $UN.p2tr_set_list_vt_cons(p0, x0)
 end
@@ -205,7 +205,7 @@ val n0 = a1ref_length(A0)
 #impltmp
 x1forint$work<n>(i0) =
 let
-  val x0 = get_at(A0, i0)
+  val x0 = get$at(A0, i0)
 in
 $UN.p2tr_set_list_vt_cons(p0, x0)
 end
@@ -244,7 +244,7 @@ then
 strmcon_vt_nil((*void*))
 else
 strmcon_vt_cons
-(get_at(A0, i0), auxmain(succ(i0)))
+(get$at(A0, i0), auxmain(succ(i0)))
 ) (* end of [auxmain] *)
 } (*where*) // end-of(a1ref_strmize)
 
@@ -314,7 +314,7 @@ then
   loop(succ(i0))) where
 {
   val () =
-  foreach$work<a>(get_at(A0, i0))
+  foreach$work<a>(get$at(A0, i0))
 }
 //
 } (*where*) // end-of(a1ref_foreach)
@@ -340,7 +340,7 @@ then
 let
 val i1 = pred(i0)
 val b0 =
-rforall$test<a>(get_at(A0, i1))
+rforall$test<a>(get$at(A0, i1))
 in
   if b0 then loop(i1) else false
 end // then
@@ -371,7 +371,7 @@ if
 then
 let
 val x0 =
-a1ref_dtget_at<a>(A0, i0)
+a1ref_dtget$at<a>(A0, i0)
 val x0 = $UN.castlin10{ a}(x0)
 val b0 = forall$test1< a >(x0)
 val x0 = $UN.castlin10{?a}(x0)
@@ -407,7 +407,7 @@ then
   loop(succ(i0))) where
 {
   val x0 =
-  a1ref_dtget_at<a>(A0, i0)
+  a1ref_dtget$at<a>(A0, i0)
   val x0 = $UN.castlin10{ a}(x0)
   val () = foreach$work1< a>(x0)
   val x0 = $UN.castlin10{?a}(x0)
@@ -436,7 +436,7 @@ then
 let
 val i1 = pred(i0)
 val x0 =
-a1ref_dtget_at<a>(A0, i1)
+a1ref_dtget$at<a>(A0, i1)
 val x0 = $UN.castlin10{ a}(x0)
 val b0 = rforall$test1< a>(x0)
 val x0 = $UN.castlin10{?a}(x0)

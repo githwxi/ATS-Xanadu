@@ -25,18 +25,18 @@ min$nil((*nil*)): (x0)
 fun
 <xs:t0>
 <x0:vt>
-get_at$exn
+get$at$exn
 (xs: xs, i0: ni): x0
 fun
 <xs:t0>
 <x0:vt>
-set_at$exn
+set$at$exn
 ( xs: xs
 , i0: ni, x0: x0): void
 fun
 <xs:t0>
 <x0:t0>
-fset_at$exn
+fset$at$exn
 ( xs: xs
 , i0: ni, x0: x0): (xs)
 //
@@ -201,15 +201,15 @@ gseq_prod(xs: xs): (x0)
 fun
 <xs:vt>
 <x0:vt>
-gseq$beg((*0*)): strn
+gseq_beg((*0*)): strn
 fun
 <xs:vt>
 <x0:vt>
-gseq$end((*0*)): strn
+gseq_end((*0*)): strn
 fun
 <xs:vt>
 <x0:vt>
-gseq$sep((*0*)): strn
+gseq_sep((*0*)): strn
 //
 (* ****** ****** *)
 (* ****** ****** *)

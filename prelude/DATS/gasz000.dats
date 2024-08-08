@@ -49,7 +49,7 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gasz_get_at
+gasz_get$at
  ( xs,i0 ) =
 let
 val n0 =
@@ -58,25 +58,25 @@ in//let
 if
 (i0 >= n0)
 then
-get_at$exn<xs><x0>(xs, i0)
+get$at$exn<xs><x0>(xs, i0)
 else
 let
 val (pf | x0) =
-$UN.gasz_get_at_raw
+$UN.gasz_get$at$raw
 <   xs   ><   x0   >(xs, i0)
 in//let
 let
 prval () = owed_t0_elim0(pf) in x0
 end//let
 end//let
-end//let//end-of-[gasz_get_at(xs,i0)]
+end//let//end-of-[gasz_get$at(xs,i0)]
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gasz_set_at
+gasz_set$at
 (xs, i0, x0) =
 let
 val n0 =
@@ -85,16 +85,16 @@ in//let
 if
 (i0 >= n0)
 then
-set_at$exn<xs><x0>(xs,i0,x0)
+set$at$exn<xs><x0>(xs,i0,x0)
 else
 let
 prval pf = owed_t0_make{x0}()
 in//let
-$UN.gasz_set_at_raw
+$UN.gasz_set$at$raw
 <   xs   ><   x0   >(pf | xs,i0,x0)
 end//let//else//end-of-[if]
 //
-end//let//end-of-[gasz_set_at(xs,i0,x0)]
+end//let//end-of-[gasz_set$at(xs,i0,x0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -102,13 +102,13 @@ end//let//end-of-[gasz_set_at(xs,i0,x0)]
 #impltmp
 < xs:t0 >
 < x0:vt >
-$UN.gasz_cget_at_raw
+$UN.gasz_cget$at$raw
   (xs, i0) =
 let
 //
 val
 (pf | x0) =
-$UN.gasz_get_at_raw(xs, i0)
+$UN.gasz_get$at$raw(xs, i0)
 //
 in//let
 //
@@ -117,29 +117,29 @@ val x1 = g_copy<x0>(x0)
 prval () =
   owed_vt_return0(pf, x0) in x1 end
 //
-end//let//end-of-[$UN.gasz_cget_at_raw]
+end//let//end-of-[$UN.gasz_cget$at$raw]
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
 < x0:vt >
-$UN.gasz_setf_at_raw
+$UN.gasz_setf$at$raw
   (xs, i0, x0) =
 let
 //
 val
 (pf | x1) =
-$UN.gasz_get_at_raw(xs, i0)
+$UN.gasz_get$at$raw(xs, i0)
 //
 in//let
 let
   val () = g_free< x0 >( x1 )
 in//let
 (
-$UN.gasz_set_at_raw(pf | xs, i0, x0))
+$UN.gasz_set$at$raw(pf | xs, i0, x0))
 end//let
-end//let//end-of-[$UN.gasz_cget_at_raw]
+end//let//end-of-[$UN.gasz_cget$at$raw]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -74,7 +74,7 @@ gseq_head1_raw(!xs): (x0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_tail0_raw(~xs): (xs)
+gseq_tail$raw0(~xs): (xs)
 //
 (* ****** ****** *)
 //
@@ -86,24 +86,19 @@ gseq_uncons0
 fun
 <xs:vt>
 <x0:vt>
-gseq_uncons0_raw
+gseq_uncons$raw0
   (xs: &xs >> xs): ( x0 )
 //
 fun
 <xs:vt>
 <x0:vt>
-gseq_uncons0$exn
-  (xs: &xs >> xs): ( x0 )
-fun
-<xs:vt>
-<x0:vt>
-gseq_uncons0_exn
+gseq_uncons$exn0
   (xs: &xs >> xs): ( x0 )
 //
 fun
 <xs:vt>
 <x0:vt>
-gseq_uncons0_opt
+gseq_uncons$opt0
   (xs: &xs >> xs): optn_vt(x0)
 //
 (* ****** ****** *)
@@ -131,27 +126,28 @@ gseq_print1(xs: !xs): void
 fun
 <xs:vt>
 <x0:vt>
-gseq_print0$beg((*void*)): void
+gseq_print$beg0((*void*)): void
 fun
 <xs:vt>
 <x0:vt>
-gseq_print1$beg((*void*)): void
+gseq_print$end0((*void*)): void
 fun
 <xs:vt>
 <x0:vt>
-gseq_print0$end((*void*)): void
+gseq_print$sep0((*void*)): void
+//
 fun
 <xs:vt>
 <x0:vt>
-gseq_print1$end((*void*)): void
+gseq_print$beg1((*void*)): void
 fun
 <xs:vt>
 <x0:vt>
-gseq_print0$sep((*void*)): void
+gseq_print$end1((*void*)): void
 fun
 <xs:vt>
 <x0:vt>
-gseq_print1$sep((*void*)): void
+gseq_print$sep1((*void*)): void
 //
 (* ****** ****** *)
 //
@@ -645,7 +641,7 @@ gseq_mapstrm0_lstrm(~xs): strm_vt(y0)
 //
 fun
 <x0:vt>
-gseq_add0$nil(): (x0)
+gseq_add$nil0(): (x0)
 fun
 <xs:vt>
 <x0:vt>gseq_add0(~xs): (x0)
@@ -655,7 +651,7 @@ fun
 //
 fun
 <x0:vt>
-gseq_mul0$nil(): (x0)
+gseq_mul$nil0(): (x0)
 fun
 <xs:vt>
 <x0:vt>gseq_mul0(~xs): (x0)

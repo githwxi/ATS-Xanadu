@@ -283,7 +283,7 @@ list_tail_raw(xs) = (xs.1)
 //
 #impltmp
 <a:type>
-list_head_opt(xs) =
+list_head$opt(xs) =
 (
 case+ xs of
 |
@@ -292,11 +292,11 @@ list_nil
 |
 list_cons
 (x0 , xs) => optn_vt_cons(x0))
-(* end of [list_head_opt(xs)] *)
+(* end of [list_head$opt(xs)] *)
 //
 #impltmp
 <a:type>
-list_tail_opt(xs) =
+list_tail$opt(xs) =
 (
 case+ xs of
 |
@@ -305,7 +305,7 @@ list_nil
 |
 list_cons
 (x0 , xs) => optn_vt_cons(xs))
-(* end of [list_tail_opt(xs)] *)
+(* end of [list_tail$opt(xs)] *)
 //
 (* ****** ****** *)
 //
@@ -415,7 +415,7 @@ list_cons
 //
 #impltmp
 <a>(*tmp*)
-list_get_at
+list_get$at
   (xs, i0) =
 (
   loop(xs, i0)
@@ -438,13 +438,13 @@ then
 loop(xs, pred(i0)) else x0
 endif // end-of-(list_cons)
 )(*case+*)//end-(loop(xs,i0))
-}(*where*)//end-(list_get_at(xs,i0))
+}(*where*)//end-(list_get$at(xs,i0))
 //
 (* ****** ****** *)
 
 #impltmp
 <a>(*tmp*)
-list_fset_at
+list_fset$at
 (xs, i0, x0) =
 (
 auxmain
@@ -476,7 +476,7 @@ list_vt_cons(x1,ys) in auxmain(xs,i0,ys)
 end // end of [else]
 //
 end // end of [auxmain(xs,i0,ys) ]
-}(*where*)//end-of-[list_fset_at(xs,i0,x0)]
+}(*where*)//end-of-[list_fset$at(xs,i0,x0)]
 
 (* ****** ****** *)
 //
@@ -1408,7 +1408,7 @@ g_equal<k0>
 #impltmp
 {k0:t0}
 {x0:t0}
-gmap_search_opt
+gmap_search$opt
 <list@(k0,x0)><k0,x0>
 (kxs, key) =
 (
@@ -1430,21 +1430,21 @@ g_equal<k0>
 (key, kx1.0)
 then optn_vt_cons(kx1.1) else loop(kxs)
 )
-} (*where*)//end-of-[gmap_search_opt(...)]
+} (*where*)//end-of-[gmap_search$opt(...)]
 //
 (* ****** ****** *)
 //
 #impltmp
 {k0:t0}
 {x0:t0}
-gmap_insert_opt
+gmap_insert$opt
 <list@(k0,x0)><k0,x0>
 (kxs, key, itm) =
 optn_vt_nil(*void*) where
 {
 val () =
 ( kxs := list_cons((key, itm), kxs) )
-} (*where*)//end-of-[gmap_insert_opt(...)]
+} (*where*)//end-of-[gmap_insert$opt(...)]
 //
 (* ****** ****** *)
 //

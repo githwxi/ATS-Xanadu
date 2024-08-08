@@ -85,12 +85,12 @@ a1rsz_length
 //
 fun
 <a:t0>
-a1rsz_get_at
+a1rsz_get$at
 {n:i0}
 (a1rsz(a,n), nintlt(n)): (a)
 fun
 <a:t0>
-a1rsz_set_at
+a1rsz_set$at
 {n:i0}
 (a1rsz(a,n), nintlt(n), a): void
 //

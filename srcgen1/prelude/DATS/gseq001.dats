@@ -87,7 +87,7 @@ else
 let // if1
 var xs = xs
 val x0 = // head element
-$UN.gseq_uncons_raw<xs><x0>(xs) in//let
+$UN.gseq_uncons$raw<xs><x0>(xs) in//let
 strmcon_vt_cons(@(x0,xs),auxmain(xs)) end )
 }(*where*)//end-of-[gseq_uncons_strmize(xs)]
 //

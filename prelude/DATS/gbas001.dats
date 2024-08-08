@@ -55,7 +55,7 @@ min$nil() =
 #impltmp
 < xs:t0 >
 < x0:t0 >
-get_at$exn
+get$at$exn
   (xs, i0) =
 (
 $raise SubscriptExn(*void*))
@@ -65,7 +65,7 @@ $raise SubscriptExn(*void*))
 #impltmp
 < xs:t0 >
 < x0:t0 >
-set_at$exn
+set$at$exn
   (xs, i0, x0) =
 (
 $raise SubscriptExn(*void*))
@@ -75,7 +75,7 @@ $raise SubscriptExn(*void*))
 #impltmp
 < xs:t0 >
 < x0:t0 >
-fset_at$exn
+fset$at$exn
   (xs, i0, x0) =
 (
 $raise SubscriptExn(*void*))

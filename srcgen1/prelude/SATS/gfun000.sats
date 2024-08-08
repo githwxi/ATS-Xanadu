@@ -63,7 +63,7 @@ Sun Aug 13 21:10:14 EDT 2023
 fun
 <x0:t0>
 <y0:vt>
-gfun_equal_at
+gfun_equal$at
 ( f0
 : f1un(x0, y0)
 , x0: x0, y0: y0): bool

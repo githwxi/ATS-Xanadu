@@ -63,7 +63,7 @@ where
 #impltmp
 map$fopr<ni><x0>(i0) =
 (
-$UN.gasz_cget_at_raw
+$UN.gasz_cget$at$raw
 <   xs   ><   x0   >( xs, i0 ))
 }
 end//let//end-of-[gasz_listize(xs)]
@@ -87,7 +87,7 @@ where
 #impltmp
 rmap$fopr<ni><x0>(i0) =
 (
-$UN.gasz_cget_at_raw
+$UN.gasz_cget$at$raw
 <   xs   ><   x0   >( xs, i0 ))
 }
 end//let//end-of-[gasz_rlistize(xs)]
@@ -112,7 +112,7 @@ where
 #impltmp
 map$fopr<ni>(i0) =
 (
-$UN.gasz_cget_at_raw
+$UN.gasz_cget$at$raw
 <   xs   ><   x0   >( xs, i0 ))
 }
 end//let//end-of-[gasz_strmize(xs)]
@@ -134,7 +134,7 @@ where
 #impltmp
 rmap$fopr<ni>(i0) =
 (
-$UN.gasz_cget_at_raw
+$UN.gasz_cget$at$raw
 <   xs   ><   x0   >( xs, i0 ))
 }
 end//let//end-of-[gasz_rstrmize(xs)]
@@ -169,7 +169,7 @@ where
 //
 val
 (pf | x0) =
-$UN.gasz_get_at_raw
+$UN.gasz_get$at$raw
 < xs >< x0 >(xs, i0)
 //
 val r0 =
@@ -250,12 +250,12 @@ where
 {
 val
 (pf | x0) =
-$UN.gasz_get_at_raw
+$UN.gasz_get$at$raw
 < xs >< x0 >(xs, i0)
 val r0 =
   rforall$test1<x0>(x0)
 val () =
-$UN.gasz_set_at_raw
+$UN.gasz_set$at$raw
 <xs><x0>(pf | xs, i0, x0) }
 }
 end//let//end-of-[gasz_rforall(xs)]

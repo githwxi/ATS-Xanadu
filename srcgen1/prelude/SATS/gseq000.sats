@@ -113,31 +113,31 @@ gseq_copy(xs): (xs)
 fun
 <xs:t0>
 <x0:t0>
-gseq_head_exn(xs): x0
+gseq_head$exn(xs): x0
 fun
 <xs:t0>
 <x0:t0>
-gseq_tail_exn(xs): xs
+gseq_tail$exn(xs): xs
 //
 fun
 <xs:t0>
 <x0:t0>
-gseq_head_opt(xs): optn_vt(x0)
+gseq_head$opt(xs): optn_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_tail_opt(xs): optn_vt(xs)
+gseq_tail$opt(xs): optn_vt(xs)
 //
 (* ****** ****** *)
 //
 fun
 <xs:t0>
 <x0:t0>
-gseq_last_exn(xs): x0
+gseq_last$exn(xs): x0
 fun
 <xs:t0>
 <x0:t0>
-gseq_last_opt
+gseq_last$opt
 ( xs: xs ): optn_vt(x0)
 //
 fun
@@ -158,16 +158,11 @@ fun
 <x0:t0>
 gseq_uncons$exn
   (xs: &xs >> xs): x0
-fun
-<xs:t0>
-<x0:t0>
-gseq_uncons_exn
-  (xs: &xs >> xs): x0
 //
 fun
 <xs:t0>
 <x0:t0>
-gseq_uncons_opt
+gseq_uncons$opt
   (xs: &xs >> xs): optn_vt(x0)
 //
 (* ****** ****** *)
@@ -279,12 +274,12 @@ gseq_rsearch$exn(xs): x0
 fun
 <xs:t0>
 <x0:t0>
-gseq_search_opt
+gseq_search$opt
   (xs: xs): optn_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_rsearch_opt
+gseq_rsearch$opt
   (xs: xs): optn_vt(x0)
 //
 (* ****** ****** *)
@@ -292,12 +287,12 @@ gseq_rsearch_opt
 fun
 <xs:t0>
 <x0:t0>
-gseq_get_at
+gseq_get$at
 (xs: xs, i0: nint): x0
 fun
 <xs:t0>
 <x0:t0>
-gseq_get_at$exn
+gseq_get$at$exn
 (xs: xs, i0: nint): x0
 //
 (* ****** ****** *)
@@ -305,14 +300,14 @@ gseq_get_at$exn
 fun
 <xs:t0>
 <x0:t0>
-gseq_set_at
+gseq_set$at
 ( xs:
 & xs >> xs
 , i0: nint, x0: x0): void
 fun
 <xs:t0>
 <x0:t0>
-gseq_set_at$exn
+gseq_set$at$exn
 ( xs:
 & xs >> xs
 , i0: nint, x0: x0): void
@@ -322,13 +317,13 @@ gseq_set_at$exn
 fun
 <xs:t0>
 <x0:t0>
-gseq_fset_at
+gseq_fset$at
 ( xs: xs
 , i0: nint, x0: x0): (xs)
 fun
 <xs:t0>
 <x0:t0>
-gseq_fset_at$exn
+gseq_fset$at$exn
 ( xs: xs
 , i0: nint, x0: x0): (xs)
 //
@@ -337,13 +332,13 @@ gseq_fset_at$exn
 fun
 <xs:t0>
 <x0:t0>
-gseq_get_at_opt
+gseq_get$at$opt
 ( xs: xs
 , i0: nint): optn_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_set_at_opt
+gseq_set$at$opt
 ( xs:
 & xs >> xs
 , i0: nint, x0: x0): optn_vt(x0)
@@ -353,7 +348,7 @@ gseq_set_at_opt
 fun
 <xs:t0>
 <x0:t0>
-gseq_fset_at_opt
+gseq_fset$at$opt
 ( xs: xs
 , i0: nint, x0: x0): optn_vt(xs)
 //
@@ -814,21 +809,21 @@ gseq_min$nil((*nil*)): x0
 fun
 <xs:t0>
 <x0:t0>
-gseq_max_exn(xs:xs): x0
+gseq_max$exn(xs:xs): x0
 fun
 <xs:t0>
 <x0:t0>
-gseq_min_exn(xs:xs): x0
+gseq_min$exn(xs:xs): x0
 //
 fun
 <xs:t0>
 <x0:t0>
-gseq_max_opt
+gseq_max$opt
 (  xs: xs  ): optn_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_min_opt
+gseq_min$opt
 (  xs: xs  ): optn_vt(x0)
 //
 (* ****** ****** *)

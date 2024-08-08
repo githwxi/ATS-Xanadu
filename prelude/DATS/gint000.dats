@@ -73,22 +73,22 @@ Wed 07 Aug 2024 03:56:12 PM EDT
 *)
 //
 #impltmp
-$UN.gasz_get_at_raw
+$UN.gasz_get$at$raw
 < nint >< unit >(ni, i0) =
 let
 prval pf =
   owed_t0_make{unit}() in (pf|unit) end
-//let//end($UN.gasz_get_at_raw<strn><cgtz>)
+//let//end($UN.gasz_get$at$raw<strn><cgtz>)
 //
 (* ****** ****** *)
 //
 #impltmp
-$UN.gasz_get_at_raw
+$UN.gasz_get$at$raw
 < nint >< nint >(ni, i0) =
 let
 prval pf =
   owed_t0_make{nint}() in (pf|(i0)) end
-//let//end($UN.gasz_get_at_raw<strn><cgtz>)
+//let//end($UN.gasz_get$at$raw<strn><cgtz>)
 //
 (* ****** ****** *)
 (* ****** ****** *)

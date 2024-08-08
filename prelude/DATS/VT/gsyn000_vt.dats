@@ -41,15 +41,15 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #impltmp
 <(*tmp*)>
-gs_print0$beg() = ()
+gs_print$beg0() = ()
 //
 #impltmp
 <(*tmp*)>
-gs_print0$end() = ()
+gs_print$end0() = ()
 (*
 #impltmp
 <(*tmp*)>
-gs_print0$end() = strn_print("\n")
+gs_print$end0() = strn_print("\n")
 *)
 //
 (* ****** ****** *)
@@ -58,19 +58,19 @@ gs_print0$end() = strn_print("\n")
 < x0:vt >
 gs_print0_a1
   ( x0 ) =
-( gs_print0$beg<>();
+( gs_print$beg0<>();
 (
   g_print0<x0>(x0))
-; gs_print0$end<>())
+; gs_print$end0<>())
 //
 #impltmp
 < x0:vt >
 < x1:vt >
 gs_print0_a2
   (x0, x1) =
-( gs_print0$beg<>();
+( gs_print$beg0<>();
 ( g_print0<x0>(x0); g_print0<x1>(x1))
-; gs_print0$end<>())
+; gs_print$end0<>())
 //
 #impltmp
 < x0:vt >
@@ -78,10 +78,10 @@ gs_print0_a2
 < x2:vt >
 gs_print0_a3
   (x0, x1, x2) =
-( gs_print0$beg<>();
+( gs_print$beg0<>();
 ( g_print0<x0>(x0)
 ; g_print0<x1>(x1); g_print0<x2>(x2))
-; gs_print0$end<>())
+; gs_print$end0<>())
 //
 #impltmp
 < x0:vt >
@@ -90,10 +90,10 @@ gs_print0_a3
 < x3:vt >
 gs_print0_a4
   (x0, x1, x2, x3) =
-( gs_print0$beg<>();
+( gs_print$beg0<>();
 ( g_print0<x0>(x0); g_print0<x1>(x1)
 ; g_print0<x2>(x2); g_print0<x3>(x3))
-; gs_print0$end<>())
+; gs_print$end0<>())
 //
 #impltmp
 < x0:vt >
@@ -103,10 +103,10 @@ gs_print0_a4
 < x4:vt >
 gs_print0_a5
   (x0, x1, x2, x3, x4) =
-( gs_print0$beg<>();
+( gs_print$beg0<>();
 ( g_print0<x0>(x0); g_print0<x1>(x1)
 ; g_print0<x2>(x2); g_print0<x3>(x3); g_print0<x4>(x4))
-; gs_print0$end<>())
+; gs_print$end0<>())
 //
 #impltmp
 < x0:vt >
@@ -117,10 +117,10 @@ gs_print0_a5
 < x5:vt >
 gs_print0_a6
   (x0, x1, x2, x3, x4, x5) =
-( gs_print0$beg<>();
+( gs_print$beg0<>();
 ( g_print0<x0>(x0); g_print0<x1>(x1); g_print0<x2>(x2)
 ; g_print0<x3>(x3); g_print0<x4>(x4); g_print0<x5>(x5))
-; gs_print0$end<>())
+; gs_print$end0<>())
 //
 #impltmp
 < x0:vt >
@@ -132,11 +132,11 @@ gs_print0_a6
 < x6:vt >
 gs_print0_a7
   (x0, x1, x2, x3, x4, x5, x6) =
-( gs_print0$beg<>();
+( gs_print$beg0<>();
 ( g_print0<x0>(x0)
 ; g_print0<x1>(x1); g_print0<x2>(x2); g_print0<x3>(x3)
 ; g_print0<x4>(x4); g_print0<x5>(x5); g_print0<x6>(x6))
-; gs_print0$end<>())
+; gs_print$end0<>())
 //
 #impltmp
 < x0:vt >
@@ -149,11 +149,11 @@ gs_print0_a7
 < x7:vt >
 gs_print0_a8
   (x0, x1, x2, x3, x4, x5, x6, x7) =
-( gs_print0$beg<>();
+( gs_print$beg0<>();
 ( g_print0<x0>(x0); g_print0<x1>(x1)
 ; g_print0<x2>(x2); g_print0<x3>(x3); g_print0<x4>(x4)
 ; g_print0<x5>(x5); g_print0<x6>(x6); g_print0<x7>(x7))
-; gs_print0$end<>())
+; gs_print$end0<>())
 //
 #impltmp
 < x0:vt >
@@ -167,11 +167,11 @@ gs_print0_a8
 < x8:vt >
 gs_print0_a9
   (x0, x1, x2, x3, x4, x5, x6, x7, x8) =
-( gs_print0$beg<>();
+( gs_print$beg0<>();
 ( g_print0<x0>(x0); g_print0<x1>(x1); g_print0<x2>(x2)
 ; g_print0<x3>(x3); g_print0<x4>(x4); g_print0<x5>(x5)
 ; g_print0<x6>(x6); g_print0<x7>(x7); g_print0<x8>(x8))
-; gs_print0$end<>())
+; gs_print$end0<>())
 //
 #impltmp
 < x0:vt >
@@ -186,11 +186,11 @@ gs_print0_a9
 < x9:vt >
 gs_print0_a10
   (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9) =
-( gs_print0$beg<>();
+( gs_print$beg0<>();
 ( g_print0<x0>(x0); g_print0<x1>(x1); g_print0<x2>(x2)
 ; g_print0<x3>(x3); g_print0<x4>(x4); g_print0<x5>(x5)
 ; g_print0<x6>(x6); g_print0<x7>(x7); g_print0<x8>(x8); g_print0<x9>(x9))
-; gs_print0$end<>())
+; gs_print$end0<>())
 //
 (* ****** ****** *)
 //
@@ -208,11 +208,11 @@ gs_print0_a10
 < x10:vt >
 gs_print0_a11
   (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10) =
-( gs_print0$beg<>();
+( gs_print$beg0<>();
 ( g_print0<x0>(x0); g_print0<x1>(x1); g_print0<x2>(x2)
 ; g_print0<x3>(x3); g_print0<x4>(x4); g_print0<x5>(x5); g_print0<x6>(x6)
 ; g_print0<x7>(x7); g_print0<x8>(x8); g_print0<x9>(x9); g_print0<x10>(x10))
-; gs_print0$end<>())
+; gs_print$end0<>())
 //
 #impltmp
 < x0:vt >
@@ -229,26 +229,26 @@ gs_print0_a11
 < x11:vt >
 gs_print0_a12
   (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11) =
-( gs_print0$beg<>();
+( gs_print$beg0<>();
 ( g_print0<x0>(x0); g_print0<x1>(x1); g_print0<x2>(x2); g_print0<x3>(x3)
 ; g_print0<x4>(x4); g_print0<x5>(x5); g_print0<x6>(x6); g_print0<x7>(x7)
 ; g_print0<x8>(x8); g_print0<x9>(x9); g_print0<x10>(x10); g_print0<x11>(x11))
-; gs_print0$end<>())
+; gs_print$end0<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-gs_print1$beg() = ()
+gs_print$beg1() = ()
 //
 #impltmp
 <(*tmp*)>
-gs_print1$end() = ()
+gs_print$end1() = ()
 (*
 #impltmp
 <(*tmp*)>
-gs_print1$end() = strn_print("\n")
+gs_print$end1() = strn_print("\n")
 *)
 //
 (* ****** ****** *)
@@ -257,19 +257,19 @@ gs_print1$end() = strn_print("\n")
 < x0:vt >
 gs_print1_a1
   ( x0 ) =
-( gs_print1$beg<>();
+( gs_print$beg1<>();
 (
   g_print1<x0>(x0))
-; gs_print1$end<>())
+; gs_print$end1<>())
 //
 #impltmp
 < x0:vt >
 < x1:vt >
 gs_print1_a2
   (x0, x1) =
-( gs_print1$beg<>();
+( gs_print$beg1<>();
 ( g_print1<x0>(x0); g_print1<x1>(x1))
-; gs_print1$end<>())
+; gs_print$end1<>())
 //
 #impltmp
 < x0:vt >
@@ -277,10 +277,10 @@ gs_print1_a2
 < x2:vt >
 gs_print1_a3
   (x0, x1, x2) =
-( gs_print1$beg<>();
+( gs_print$beg1<>();
 ( g_print1<x0>(x0)
 ; g_print1<x1>(x1); g_print1<x2>(x2))
-; gs_print1$end<>())
+; gs_print$end1<>())
 //
 #impltmp
 < x0:vt >
@@ -289,10 +289,10 @@ gs_print1_a3
 < x3:vt >
 gs_print1_a4
   (x0, x1, x2, x3) =
-( gs_print1$beg<>();
+( gs_print$beg1<>();
 ( g_print1<x0>(x0); g_print1<x1>(x1)
 ; g_print1<x2>(x2); g_print1<x3>(x3))
-; gs_print1$end<>())
+; gs_print$end1<>())
 //
 #impltmp
 < x0:vt >
@@ -302,10 +302,10 @@ gs_print1_a4
 < x4:vt >
 gs_print1_a5
   (x0, x1, x2, x3, x4) =
-( gs_print1$beg<>();
+( gs_print$beg1<>();
 ( g_print1<x0>(x0); g_print1<x1>(x1)
 ; g_print1<x2>(x2); g_print1<x3>(x3); g_print1<x4>(x4))
-; gs_print1$end<>())
+; gs_print$end1<>())
 //
 #impltmp
 < x0:vt >
@@ -316,10 +316,10 @@ gs_print1_a5
 < x5:vt >
 gs_print1_a6
   (x0, x1, x2, x3, x4, x5) =
-( gs_print1$beg<>();
+( gs_print$beg1<>();
 ( g_print1<x0>(x0); g_print1<x1>(x1); g_print1<x2>(x2)
 ; g_print1<x3>(x3); g_print1<x4>(x4); g_print1<x5>(x5))
-; gs_print1$end<>())
+; gs_print$end1<>())
 //
 #impltmp
 < x0:vt >
@@ -331,11 +331,11 @@ gs_print1_a6
 < x6:vt >
 gs_print1_a7
   (x0, x1, x2, x3, x4, x5, x6) =
-( gs_print1$beg<>();
+( gs_print$beg1<>();
 ( g_print1<x0>(x0)
 ; g_print1<x1>(x1); g_print1<x2>(x2); g_print1<x3>(x3)
 ; g_print1<x4>(x4); g_print1<x5>(x5); g_print1<x6>(x6))
-; gs_print1$end<>())
+; gs_print$end1<>())
 //
 #impltmp
 < x0:vt >
@@ -348,11 +348,11 @@ gs_print1_a7
 < x7:vt >
 gs_print1_a8
   (x0, x1, x2, x3, x4, x5, x6, x7) =
-( gs_print1$beg<>();
+( gs_print$beg1<>();
 ( g_print1<x0>(x0); g_print1<x1>(x1)
 ; g_print1<x2>(x2); g_print1<x3>(x3); g_print1<x4>(x4)
 ; g_print1<x5>(x5); g_print1<x6>(x6); g_print1<x7>(x7))
-; gs_print1$end<>())
+; gs_print$end1<>())
 //
 #impltmp
 < x0:vt >
@@ -366,11 +366,11 @@ gs_print1_a8
 < x8:vt >
 gs_print1_a9
   (x0, x1, x2, x3, x4, x5, x6, x7, x8) =
-( gs_print1$beg<>();
+( gs_print$beg1<>();
 ( g_print1<x0>(x0); g_print1<x1>(x1); g_print1<x2>(x2)
 ; g_print1<x3>(x3); g_print1<x4>(x4); g_print1<x5>(x5)
 ; g_print1<x6>(x6); g_print1<x7>(x7); g_print1<x8>(x8))
-; gs_print1$end<>())
+; gs_print$end1<>())
 //
 #impltmp
 < x0:vt >
@@ -385,11 +385,11 @@ gs_print1_a9
 < x9:vt >
 gs_print1_a10
   (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9) =
-( gs_print1$beg<>();
+( gs_print$beg1<>();
 ( g_print1<x0>(x0); g_print1<x1>(x1); g_print1<x2>(x2)
 ; g_print1<x3>(x3); g_print1<x4>(x4); g_print1<x5>(x5)
 ; g_print1<x6>(x6); g_print1<x7>(x7); g_print1<x8>(x8); g_print1<x9>(x9))
-; gs_print1$end<>())
+; gs_print$end1<>())
 //
 (* ****** ****** *)
 //
@@ -407,11 +407,11 @@ gs_print1_a10
 < x10:vt >
 gs_print1_a11
   (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10) =
-( gs_print1$beg<>();
+( gs_print$beg1<>();
 ( g_print1<x0>(x0); g_print1<x1>(x1); g_print1<x2>(x2)
 ; g_print1<x3>(x3); g_print1<x4>(x4); g_print1<x5>(x5); g_print1<x6>(x6)
 ; g_print1<x7>(x7); g_print1<x8>(x8); g_print1<x9>(x9); g_print1<x10>(x10))
-; gs_print1$end<>())
+; gs_print$end1<>())
 //
 #impltmp
 < x0:vt >
@@ -428,11 +428,11 @@ gs_print1_a11
 < x11:vt >
 gs_print1_a12
   (x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11) =
-( gs_print1$beg<>();
+( gs_print$beg1<>();
 ( g_print1<x0>(x0); g_print1<x1>(x1); g_print1<x2>(x2); g_print1<x3>(x3)
 ; g_print1<x4>(x4); g_print1<x5>(x5); g_print1<x6>(x6); g_print1<x7>(x7)
 ; g_print1<x8>(x8); g_print1<x9>(x9); g_print1<x10>(x10); g_print1<x11>(x11))
-; gs_print1$end<>())
+; gs_print$end1<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)

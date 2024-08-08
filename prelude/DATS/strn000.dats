@@ -64,13 +64,13 @@ strn_gmake1
 (* ****** ****** *)
 //
 #impltmp
-$UN.gasz_get_at_raw
+$UN.gasz_get$at$raw
 < strn >< cgtz >(cs, i0) =
 let
 val c0 =
-$UN.strn_get_at_raw<>(cs, i0)
+$UN.strn_get$at$raw<>(cs, i0)
 prval pf = owed_t0_make{cgtz}() in (pf|c0)
-end//let//end($UN.gasz_get_at_raw<strn><cgtz>)
+end//let//end($UN.gasz_get$at$raw<strn><cgtz>)
 //
 (* ****** ****** *)
 (* ****** ****** *)

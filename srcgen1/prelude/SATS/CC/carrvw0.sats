@@ -64,7 +64,7 @@ array_view_uncons :
 
 (* ****** ****** *)
 prfun
-array_view_split_at
+array_view_split$at
 {a:vt}
 {l:a0}
 {n:i0}{i:nat|i<=n}
@@ -73,7 +73,7 @@ array_view_split_at
 :
 (
   arrvw(a,l,i), arrvw(a,l+i*sz(a),n-i)
-) (* end of [array_v_split_at] *)
+) (* end of [array_v_split$at] *)
 (* ****** ****** *)
 prfun
 array_view_unsplit

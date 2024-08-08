@@ -8,10 +8,20 @@ ATS3_XANADU/xatslib/JS/DATS
 (* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/Array.sats"
-#staload "./../DATS/Arrayhd.dats"
+#staload "./../DATS/Arrayh0.dats"
+(* ****** ****** *)
+(* ****** ****** *)
+#staload "./../SATS/Hsmap.sats"
+#staload "./../DATS/Hsmaph0.dats"
+(* ****** ****** *)
+(* ****** ****** *)
+(*
+HX: for linearly typed interfaces
+*)
+(* ****** ****** *)
 (* ****** ****** *)
 #staload "./../SATS/VT/Array_vt.sats"
-#staload "./../DATS/VT/Arrayhd_vt.dats"
+#staload "./../DATS/VT/Arrayh0_vt.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 //

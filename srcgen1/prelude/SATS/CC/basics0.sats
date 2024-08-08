@@ -160,7 +160,7 @@ UN_p2gtz_set(p0: p2gtz(a), x0: a): void
 (*
 prfun
 <a:vt>
-array_get_at
+array_get$at
 {n:int}
 {i:nat|i<n}
 (array(a,n)@l | int(i))
@@ -215,23 +215,23 @@ cp2trn
 (* ****** ****** *)
 fun
 <a:vt>
-UN_p2trn_get_at
+UN_p2trn_get$at
 {n:int}
 (p0: p2trn(a, n), i0: nintlt(n)): ( a )
 fun
 <a:vt>
-UN_cp2trn_get_at
+UN_cp2trn_get$at
 {n:int}
 (cp: cp2trn(a, n), i0: nintlt(n)): ( a )
 (* ****** ****** *)
 fun
 <a:vt>
-UN_p2trn_set_at
+UN_p2trn_set$at
 {n:int}
 (p0: p2trn(a, n), i0: nintlt(n), x0: a): void
 fun
 <a:vt>
-UN_p2trn_exch_at
+UN_p2trn_exch$at
 {n:int}
 (p0: p2trn(a, n), i0: nintlt(n), x0: a): ( a )
 (* ****** ****** *)

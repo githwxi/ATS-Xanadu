@@ -141,7 +141,7 @@ gseq_print0(xs) =
 let
 val () =
 strn_print<>
-(gseq$beg<xs><x0>())
+(gseq_beg<xs><x0>())
 val () =
 (
 gseq_iforitm0<xs><x0>(xs)
@@ -154,11 +154,11 @@ iforitm$work0<x0>(ni, x0) =
 {
 val () =
 if ni > 0 then
-strn_print<>(gseq$sep<xs><x0>())
+strn_print<>(gseq_sep<xs><x0>())
 }
 }
 val () =
-strn_print<>(gseq$end<xs><x0>())
+strn_print<>(gseq_end<xs><x0>())
 endlet // end-of-[gseq_print0(xs)]
 //
 (* ****** ****** *)
@@ -170,7 +170,7 @@ gseq_print1(xs) =
 let
 val () =
 strn_print<>
-(gseq$beg<xs><x0>())
+(gseq_beg<xs><x0>())
 val () =
 (
 gseq_iforitm1<xs><x0>(xs)
@@ -183,11 +183,11 @@ iforitm$work1<x0>(ni, x0) =
 {
 val () =
 if ni > 0 then
-strn_print<>(gseq$sep<xs><x0>())
+strn_print<>(gseq_sep<xs><x0>())
 }
 }
 val () =
-strn_print<>(gseq$end<xs><x0>())
+strn_print<>(gseq_end<xs><x0>())
 endlet // end-of-[gseq_print1(xs)]
 //
 (* ****** ****** *)
@@ -274,7 +274,7 @@ $UN.p2tr_set<x0>(p0, r0)}
 in//let
 (
   if i1 <= 0
-  then max0$nil<x0>()
+  then max$nil0<x0>()
   else $UN.p2tr_get<x0>(p0))
 end(*let*)//end-of-[gseq_max0(xs)]
 //
@@ -318,7 +318,7 @@ $UN.p2tr_set<x0>(p0, r0)}
 in//let
 (
   if i1 <= 0
-  then max1$nil<x0>()
+  then max$nil1<x0>()
   else $UN.p2tr_get<x0>(p0))
 end(*let*)//end-of-[gseq_max1(xs)]
 //
@@ -336,7 +336,7 @@ gseq_max0<xs><x0>(xs)
 #impltmp
 g_max00<x0> = g_min00<x0>
 #impltmp
-max0$nil<x0> = min0$nil<x0>
+max$nil0<x0> = min$nil0<x0>
 }(*where*)//end-of-[gseq_min0(xs)]
 //
 #impltmp
@@ -351,7 +351,7 @@ gseq_max1<xs><x0>(xs)
 #impltmp
 g_max01<x0> = g_min01<x0>
 #impltmp
-max1$nil<x0> = min1$nil<x0>
+max$nil1<x0> = min$nil1<x0>
 }(*where*)//end-of-[gseq_min1(xs)]
 //
 (* ****** ****** *)
@@ -364,14 +364,14 @@ Tue 16 Jul 2024 06:43:04 PM EDT
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_max0_opt
+gseq_max$opt0
   ( xs ) =
 let
 //
 excptcon NIL of ()
 //
 #impltmp
-max0$nil<x0>() = $raise NIL()
+max$nil0<x0>() = $raise NIL()
 //
 in//let
 (
@@ -380,19 +380,19 @@ optn_vt_cons
 (gseq_max0<xs><x0>(xs))
 with
 | ~NIL() => optn_vt_nil(*nil*))
-end(*let*)//end-of-[gseq_max0_opt]
+end(*let*)//end-of-[gseq_max$opt0]
 //
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_max1_opt
+gseq_max$opt1
   ( xs ) =
 let
 //
 excptcon NIL of ()
 //
 #impltmp
-max1$nil<x0>() = $raise NIL()
+max$nil1<x0>() = $raise NIL()
 //
 in//let
 try
@@ -401,35 +401,35 @@ optn_vt_cons
 with
 | ~NIL() => optn_vt_nil(*nil*)
 endtry//HX: [endtry] is optional
-end(*let*)//end-of-[gseq_max1_opt]
+end(*let*)//end-of-[gseq_max$opt1]
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_min0_opt
+gseq_min$opt0
   ( xs ) =
 (
-gseq_max0_opt<xs><x0>(xs)
+gseq_max$opt0<xs><x0>(xs)
 ) where
 {
 #impltmp
 g_max00<x0> = g_min00<x0>
-}(*where*)//end-of-[gseq_min0_opt]
+}(*where*)//end-of-[gseq_min$opt0]
 //
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_min1_opt
+gseq_min$opt1
   ( xs ) =
 (
-gseq_max1_opt<xs><x0>(xs)
+gseq_max$opt1<xs><x0>(xs)
 ) where
 {
 #impltmp
 g_max01<x0> = g_min01<x0>
-}(*where*)//end-of-[gseq_min1_opt]
+}(*where*)//end-of-[gseq_min$opt1]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -442,7 +442,7 @@ Mon 15 Jul 2024 04:25:27 PM EDT
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_get0_at
+gseq_get$at0
   (xs, i0) =
 let
 //
@@ -469,15 +469,15 @@ in//let
   not(b0)
   then
   $UN.p2tr_get<x0>(p0)
-  else get0_at$exn<xs><x0>(i0)
-end//let//end-of-[gseq_get0_at(xs, i0)]
+  else get$at$exn0<xs><x0>(i0)
+end//let//end-of-[gseq_get$at0(xs, i0)]
 //
 (* ****** ****** *)
 //
 #impltmp
 < xs:vt >
 < x0:vt >
-gseq_get1_at
+gseq_get$at1
   (xs, i0) =
 let
 //
@@ -504,8 +504,8 @@ end//let//end-of-[if]
 in//let
   if not(b0)
   then $UN.p2tr_get<x0>(p0)
-  else get1_at$exn<xs><x0>(xs, i0)
-end//let//end-of-[gseq_get1_at(xs, i0)]
+  else get$at$exn1<xs><x0>(xs, i0)
+end//let//end-of-[gseq_get$at1(xs, i0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

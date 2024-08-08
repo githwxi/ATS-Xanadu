@@ -1743,11 +1743,11 @@ g_print1
 //
 #impltmp
 {a0:vt}(*tmp*)
-gseq_print1$beg
+gseq_print$beg1
 <optn_vt(a0)><a0> = optn_vt_print$beg<>
 #impltmp
 {a0:vt}(*tmp*)
-gseq_print1$end
+gseq_print$end1
 <optn_vt(a0)><a0> = optn_vt_print$end<>
 //
 (* ****** ****** *)
@@ -1760,11 +1760,11 @@ gseq_print1<optn_vt(a0)><a0> where
 //
 #impltmp
 {a0:vt}(*tmp*)
-gseq_print1$beg
+gseq_print$beg1
 <optn_vt(a0)><a0> = optn_vt_print$beg<>
 #impltmp
 {a0:vt}(*tmp*)
-gseq_print1$end
+gseq_print$end1
 <optn_vt(a0)><a0> = optn_vt_print$end<>
 //
 }(*where*)//end-of-[optn_vt_print1<a0>]
@@ -1800,15 +1800,15 @@ g_print1
 //
 #impltmp
 {a0:vt}(*tmp*)
-gseq_print1$beg
+gseq_print$beg1
 <list_vt(a0)><a0> = list_vt_print$beg<>
 #impltmp
 {a0:vt}(*tmp*)
-gseq_print1$end
+gseq_print$end1
 <list_vt(a0)><a0> = list_vt_print$end<>
 #impltmp
 {a0:vt}(*tmp*)
-gseq_print1$sep
+gseq_print$sep1
 <list_vt(a0)><a0> = list_vt_print$sep<>
 //
 (* ****** ****** *)
@@ -1821,15 +1821,15 @@ gseq_print1<list_vt(a0)><a0> where
 //
 #impltmp
 {a0:vt}(*tmp*)
-gseq_print1$beg
+gseq_print$beg1
 <list_vt(a0)><a0> = list_vt_print$beg<>
 #impltmp
 {a0:vt}(*tmp*)
-gseq_print1$end
+gseq_print$end1
 <list_vt(a0)><a0> = list_vt_print$end<>
 #impltmp
 {a0:vt}(*tmp*)
-gseq_print1$sep
+gseq_print$sep1
 <list_vt(a0)><a0> = list_vt_print$sep<>
 //
 }(*where*)//end-of-[list_vt_print1<a0>]

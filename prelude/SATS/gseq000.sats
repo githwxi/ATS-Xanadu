@@ -123,15 +123,15 @@ For print0/1 as well
 fun
 <xs:vt>
 <x0:vt>
-gseq$beg((*0*)): strn
+gseq_beg((*0*)): strn
 fun
 <xs:vt>
 <x0:vt>
-gseq$end((*0*)): strn
+gseq_end((*0*)): strn
 fun
 <xs:vt>
 <x0:vt>
-gseq$sep((*0*)): strn
+gseq_sep((*0*)): strn
 //
 fun
 <xs:t0>
@@ -156,19 +156,19 @@ gseq_tail(xs: xs): (xs)
 fun
 <xs:t0>
 <x0:t0>
-gseq_head_opt
+gseq_head$opt
   (xs: xs): optn_vt(x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_tail_opt
+gseq_tail$opt
   (xs: xs): optn_vt(xs)
 //
 (*
 #symload head with gseq_head of 0100
 #symload tail with gseq_tail of 0100
-#symload head_opt with gseq_head_opt of 0100
-#symload tail_opt with gseq_tail_opt of 0100
+#symload head$opt with gseq_head$opt of 0100
+#symload tail$opt with gseq_tail$opt of 0100
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -192,12 +192,12 @@ Mon 15 Jul 2024 03:44:51 PM EDT
 fun
 <xs:t0>
 <x0:t0>
-gseq_get_at
+gseq_get$at
 (xs: xs, i0: ni): (x0)
 fun
 <xs:t0>
 <x0:t0>
-gseq_get_at_opt
+gseq_get$at$opt
 (xs: xs, i0: ni): optn_vt(x0)
 //
 (* ****** ****** *)

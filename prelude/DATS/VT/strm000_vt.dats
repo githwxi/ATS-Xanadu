@@ -45,15 +45,15 @@ Wed 17 Jul 2024 10:27:26 PM EDT
 //
 #impltmp
 { x0:vt }
-gseq$sep
+gseq_sep
 <strm_vt(x0)><x0>() = ","
 #impltmp
 { x0:vt }
-gseq$end
+gseq_end
 <strm_vt(x0)><x0>() = ")"
 #impltmp
 { x0:vt }
-gseq$beg
+gseq_beg
 <strm_vt(x0)><x0>() = "lstrm("
 //
 (* ****** ****** *)

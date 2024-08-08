@@ -217,7 +217,7 @@ strm_vt_prefixq0
 (* ****** ****** *)
 fun
 <x0:vt>
-strm_vt_fset0_at
+strm_vt_fset$at0
 ( xs: strm_vt(x0)
 , i0: nint, x0: x0): strm_vt(x0)
 (* ****** ****** *)
@@ -282,8 +282,8 @@ strm_vt_foreach0(strm_vt(x0)): void
 (* ****** ****** *)
 //
 (*
-strm_vt_map0: map0$fopr
-strq_vt_map0: map0$fopr
+strm_vt_map0: map$fopr0
+strq_vt_map0: map$fopr0
 *)
 //
 fun
@@ -300,7 +300,7 @@ strq_vt_map0
 (* ****** ****** *)
 //
 (*
-strm_vt_filter: filter0$test
+strm_vt_filter: filter$test0
 *)
 //
 fun

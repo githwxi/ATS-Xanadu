@@ -158,9 +158,9 @@ strn_head
 (cs: strn(n)): cgtz
 //
 fun<>
-strn_head_exn(strn): cgtz
+strn_head$exn(strn): cgtz
 fun<>
-strn_head_opt(strn): char
+strn_head$opt(strn): char
 //
 (* ****** ****** *)
 //
@@ -170,10 +170,10 @@ strn_tail
 (cs: strn(n)): strn(n-1)
 //
 fun<>
-strn_tail_exn
+strn_tail$exn
 (cs: strn): strn
 fun<>
-strn_tail_opt
+strn_tail$opt
 (cs: strn): optn_vt(strn)
 //
 (* ****** ****** *)
@@ -243,7 +243,7 @@ strn_length
 (* ****** ****** *)
 //
 fun<>
-strn_get_at
+strn_get$at
 {n:int}
 {i:nat|i < n}
 ( cs:
@@ -482,9 +482,9 @@ consq with strn_consq of 1000
 (* ****** ****** *)
 //
 #symload
-[] with strn_get_at of 1000
+[] with strn_get$at of 1000
 #symload
-get_at with strn_get_at of 1000
+get$at with strn_get$at of 1000
 //
 (* ****** ****** *)
 //
@@ -493,18 +493,18 @@ get_at with strn_get_at of 1000
 #symload
 head with strn_head of 1000
 #symload
-head_opt with strn_head_opt of 1000
+head$opt with strn_head$opt of 1000
 #symload
-head_exn with strn_head_exn of 1000
+head$exn with strn_head$exn of 1000
 //
 (* ****** ****** *)
 //
 #symload
 tail with strn_tail of 1000
 #symload
-tail_opt with strn_tail_opt of 1000
+tail$opt with strn_tail$opt of 1000
 #symload
-tail_exn with strn_tail_exn of 1000
+tail$exn with strn_tail$exn of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

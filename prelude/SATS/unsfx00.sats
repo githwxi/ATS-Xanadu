@@ -176,7 +176,7 @@ p2tr_set_list_vt_cons
 fun
 <xs:t0>
 <x0:t0>
-gseq_get_at_raw
+gseq_get$at$raw
   (xs: xs, i0: ni): (x0)
 (*
 HX:
@@ -187,12 +187,12 @@ less than the length of [xs]
 fun
 <xs:t0>
 <x0:t0>
-gseq_uncons_raw(xs): @(x0, xs)
+gseq_uncons$raw(xs): @(x0, xs)
 //
 fun
 <xs:t0>
 <x0:t0>
-gseq_unsnoc_raw(xs): @(xs, x0)
+gseq_unsnoc$raw(xs): @(xs, x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -205,31 +205,31 @@ used with caution!!!
 fun
 <xs:t0>
 <x0:vt>
-gasz_get_at_raw
+gasz_get$at$raw
 ( xs: xs
 , i0: ni): (owed(x0) | x0)
 fun
 <xs:t0>
 <x0:vt>
-gasz_set_at_raw
+gasz_set$at$raw
 ( pf: owed(x0)
 | xs: xs, i0: ni, x0: x0): void
 //
 fun
 <xs:t0>
 <x0:vt>
-gasz_cget_at_raw
+gasz_cget$at$raw
 ( xs: xs, i0: ni): x0
 fun
 <xs:t0>
 <x0:vt>
-gasz_setf_at_raw
+gasz_setf$at$raw
 ( xs: xs, i0: ni, x0: x0): void
 //
 (* ****** ****** *)
 //
 fun<>
-strn_get_at_raw(strn, ni): cgtz
+strn_get$at$raw(strn, ni): cgtz
 //
 (* ****** ****** *)
 (* ****** ****** *)

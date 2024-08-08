@@ -139,10 +139,10 @@ list_head
 {n:pos}(list(a, n)): (a)
 fun
 <a:t0>
-list_head_exn(xs: list(a)): (a)
+list_head$exn(xs: list(a)): (a)
 fun
 <a:t0>
-list_head_opt(xs: list(a)): optn_vt(a)
+list_head$opt(xs: list(a)): optn_vt(a)
 //
 (* ****** ****** *)
 //
@@ -152,10 +152,10 @@ list_tail
 {n:pos}(list(a, n)): list(a, n-1)
 fun
 <a:t0>
-list_tail_exn(xs: list(a)): list(a)
+list_tail$exn(xs: list(a)): list(a)
 fun
 <a:t0>
-list_tail_opt(xs: list(a)): optn_vt(list(a))
+list_tail$opt(xs: list(a)): optn_vt(list(a))
 //
 (* ****** ****** *)
 //
@@ -187,14 +187,14 @@ list_length
 //
 fun
 <a:t0>
-list_get_at
+list_get$at
 {n:int}
 (list(a, n), nintlt(n)): (a)
 //
 (* ****** ****** *)
 fun
 <a:t0>
-list_fset_at
+list_fset$at
 {n:int}
 ( xs: list(a,n)
 , i0: nintlt(n), x0: a): list(a,n)
@@ -518,12 +518,12 @@ list_subsetize_vt
 //
 (* ****** ****** *)
 
-#symload [] with list_get_at of 1000
-#symload get_at with list_get_at of 1000
+#symload [] with list_get$at of 1000
+#symload get$at with list_get$at of 1000
 
 (* ****** ****** *)
 
-#symload fset_at with list_fset_at of 1000
+#symload fset$at with list_fset$at of 1000
 
 (* ****** ****** *)
 //

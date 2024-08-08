@@ -51,12 +51,12 @@ gasz_length(xs: xs): nint
 fun
 <xs:t0>
 <x0:t0>
-gasz_get_at
+gasz_get$at
 (xs: xs, i0: ni): (x0)
 fun
 <xs:t0>
 <x0:t0>
-gasz_set_at
+gasz_set$at
 (xs: xs, i0: ni, x0: x0): void
 //
 (* ****** ****** *)

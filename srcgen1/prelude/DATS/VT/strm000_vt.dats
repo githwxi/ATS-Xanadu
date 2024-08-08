@@ -506,7 +506,7 @@ end // end of [let]
 
 #impltmp
 <x0>(*tmp*)
-strm_vt_fset0_at
+strm_vt_fset$at0
   (xs, i0, x0) =
 (
 auxmain
@@ -539,7 +539,7 @@ val () =
 g_free(x1) in strmcon_vt_cons(x0, xs)
 end // end of [else]
 )
-}(*where*)//end-of-[strm_vt_fset0_at(...)]
+}(*where*)//end-of-[strm_vt_fset$at0(...)]
 
 (* ****** ****** *)
 //

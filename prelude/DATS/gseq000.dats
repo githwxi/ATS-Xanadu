@@ -42,15 +42,15 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq$sep((*void*)) = ","
+gseq_sep((*void*)) = ","
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq$end((*void*)) = ")"
+gseq_end((*void*)) = ")"
 #impltmp
 < xs:t0 >
 < x0:t0 >
-gseq$beg((*void*)) = "gseq("
+gseq_beg((*void*)) = "gseq("
 //
 (* ****** ****** *)
 (* ****** ****** *)
