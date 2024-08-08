@@ -83,7 +83,7 @@ fun
 i0->t0>
 <x0:t0>
 <ln:i0>
-gseqn_get_at
+gseqn_get$at
 (xs:xs(ln),ln:nintlt(ln)): x0
 
 (* ****** ****** *)

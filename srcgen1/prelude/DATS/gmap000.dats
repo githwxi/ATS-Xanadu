@@ -82,7 +82,7 @@ gmap_search
 (kxs, k0) =
 let
 val opt =
-gmap_search_opt
+gmap_search$opt
 <map><key,itm>(kxs, k0)
 in
 case+ opt of
@@ -105,7 +105,7 @@ gmap_search$exn
 #impltmp
 <map>
 <key,itm>
-gmap_search_opt
+gmap_search$opt
 (kxs, k0) =
 try
 optn_vt_cons
@@ -114,7 +114,7 @@ gmap_search
 <map><key,itm>(kxs, k0)) with
 |
 ~NotFoundExn() => optn_vt_nil((*0*))
-endtry//end-of-[gmap_search_opt(kxs,k0)]
+endtry//end-of-[gmap_search$opt(kxs,k0)]
 //
 (* ****** ****** *)
 //
@@ -240,7 +240,7 @@ strmcon_vt_cons(kx1, kxs) =>
   loop(map, kxs)) where
 {
 val opt =
-gmap_insert_opt
+gmap_insert$opt
 <map><key,itm>(map, kx1.0, kx1.1)
 val ( ) =
 (

@@ -130,8 +130,8 @@ gseqn_length
 #impltmp
 {x0:t0}
 {ln:i0}
-gseqn_get_at
-<listn(x0)><x0><ln> = list_get_at<x0>{ln}
+gseqn_get$at
+<listn(x0)><x0><ln> = list_get$at<x0>{ln}
 
 (* ****** ****** *)
 

@@ -103,11 +103,11 @@ fun
 g_input(): a
 fun
 <a:vt>
-g_input_exn
+g_input$exn
 ((*void*)): a
 fun
 <a:vt>
-g_input_opt
+g_input$opt
 ((*void*)): optn_vt(a)
 //
 (* ****** ****** *)
@@ -118,11 +118,11 @@ g_parse
 (rep: strn): a
 fun
 <a:vt>
-g_parse_exn
+g_parse$exn
 (rep: strn): a
 fun
 <a:vt>
-g_parse_opt
+g_parse$opt
 (rep: strn): optn_vt(a)
 //
 (* ****** ****** *)

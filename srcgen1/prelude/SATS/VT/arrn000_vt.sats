@@ -342,14 +342,14 @@ a1ptr_length1
 //
 fun
 <a:t0>
-a1ptr_get1_at
+a1ptr_get$at1
 {n:i0}
 ( A0:
 ! a1ptr(a, n), i0: nintlt(n)): a
 //
 fun
 <a:t0>
-a1ptr_set1_at
+a1ptr_set$at1
 {n:i0}
 ( A0:
 ! a1ptr(a, n)
@@ -357,7 +357,7 @@ a1ptr_set1_at
 //
 fun
 <a:vt>
-a1ptr_exch1_at
+a1ptr_exch$at1
 {n:i0}
 ( A0:
 ! a1ptr(a, n)
@@ -368,14 +368,14 @@ a1ptr_exch1_at
 //
 fun
 <a:vt>
-a1ptr_dtget1_at
+a1ptr_dtget$at1
 {n:i0}
 ( A0:
 ! a1ptr(a, n), i0: nintlt(n)): (?!a)
 //
 fun
 <a:vt>
-a1ptr_dtset1_at
+a1ptr_dtset$at1
 {n:i0}
 ( A0:
 ! a1ptr(a, n), i0: nintlt(n), x0: ?!a): void
@@ -383,20 +383,20 @@ a1ptr_dtset1_at
 (* ****** ****** *)
 //
 (*
-HX: [cpget_at]: copy+get
-HX: [frset_at]: set_at+free
+HX: [cpget$at]: copy+(get$at)
+HX: [frset$at]: (set$at)+free
 *)
 //
 fun
 <a:vt>
-a1ptr_cpget1_at
+a1ptr_cpget$at1
 {n:i0}
 ( A0:
 ! a1ptr(a, n), i0: nintlt(n)): a
 //
 fun
 <a:vt>
-a1ptr_frset1_at
+a1ptr_frset$at1
 {n:i0}
 ( A0:
 ! a1ptr(a, n), i0: nintlt(n), x0 : a): void
@@ -410,7 +410,7 @@ fun
 g_updt(x0: &a >> _): void
 fun
 <a:vt>
-a1ptr_updt1_at
+a1ptr_updt$at1
 {n:i0}
 (A0: !a1ptr(a, n), i0: nintlt(n)): void
 *)
@@ -481,10 +481,10 @@ a1ptr_rlistize0
 //
 (* ****** ****** *)
 //
-#symload [] with a1ptr_get1_at of 1000
-#symload [] with a1ptr_set1_at of 1000
-#symload get1_at with a1ptr_get1_at of 1000
-#symload set1_at with a1ptr_set1_at of 1000
+#symload [] with a1ptr_get$at1 of 1000
+#symload [] with a1ptr_set$at1 of 1000
+#symload get$at1 with a1ptr_get$at1 of 1000
+#symload set$at1 with a1ptr_set$at1 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -478,17 +478,17 @@ Mon 15 Jul 2024 04:56:50 PM EDT
 *)
 fun
 <x0:vt>
-max0$nil((*nil*)): (x0)
+max$nil0((*nil*)): (x0)
 fun
 <x0:vt>
-max1$nil((*nil*)): (x0)
+max$nil1((*nil*)): (x0)
 //
 fun
 <x0:vt>
-min0$nil((*nil*)): (x0)
+min$nil0((*nil*)): (x0)
 fun
 <x0:vt>
-min1$nil((*nil*)): (x0)
+min$nil1((*nil*)): (x0)
 //
 fun
 <xs:vt>
@@ -511,20 +511,20 @@ gseq_min1(xs: !xs): (x0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_max0_opt(xs: ~xs): optn_vt(x0)
+gseq_max$opt0(xs: ~xs): optn_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_max1_opt(xs: !xs): optn_vt(x0)
+gseq_max$opt1(xs: !xs): optn_vt(x0)
 //
 fun
 <xs:vt>
 <x0:vt>
-gseq_min0_opt(xs: ~xs): optn_vt(x0)
+gseq_min$opt0(xs: ~xs): optn_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_min1_opt(xs: !xs): optn_vt(x0)
+gseq_min$opt1(xs: !xs): optn_vt(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -536,34 +536,34 @@ Mon 15 Jul 2024 06:32:03 PM EDT
 fun
 <xs:vt>
 <x0:vt>
-get0_at$exn
+get$at$exn0
   (i0: ni): x0
 fun
 <xs:vt>
 <x0:vt>
-get1_at$exn
+get$at$exn1
 (xs: !xs, i0: ni): x0
 //
 fun
 <xs:vt>
 <x0:vt>
-set0_at$exn
+set$at$exn0
 (xs: ~xs, ni, x0): void
 fun
 <xs:vt>
 <x0:vt>
-set1_at$exn
+set$at$exn1
 (xs: !xs, ni, x0): void
 //
 fun
 <xs:vt>
 <x0:vt>
-fset0_at$exn
+fset$at$exn0
 (xs: ~xs, ni, x0): (xs)
 fun
 <xs:vt>
 <x0:vt>
-fset1_at$exn
+fset$at$exn1
 (xs: !xs, ni, x0): (xs)
 //
 (* ****** ****** *)
@@ -571,52 +571,52 @@ fset1_at$exn
 fun
 <xs:vt>
 <x0:vt>
-gseq_get0_at(xs: ~xs, i0: ni): (x0)
+gseq_get$at0(xs: ~xs, i0: ni): (x0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_get1_at(xs: !xs, i0: ni): (x0)
+gseq_get$at1(xs: !xs, i0: ni): (x0)
 //
 fun
 <xs:vt>
 <x0:vt>
-gseq_set0_at(xs: ~xs, i0: ni, x0: ~x0): void
+gseq_set$at0(xs: ~xs, i0: ni, x0: ~x0): void
 fun
 <xs:vt>
 <x0:vt>
-gseq_set1_at(xs: !xs, i0: ni, x0: ~x0): void
+gseq_set$at1(xs: !xs, i0: ni, x0: ~x0): void
 //
 fun
 <xs:vt>
 <x0:vt>
-gseq_fset0_at(xs: ~xs, i0: ni, x0: ~x0): (xs)
+gseq_fset$at0(xs: ~xs, i0: ni, x0: ~x0): (xs)
 fun
 <xs:vt>
 <x0:vt>
-gseq_fset1_at(xs: !xs, i0: ni, x0: ~x0): (xs)
+gseq_fset$at1(xs: !xs, i0: ni, x0: ~x0): (xs)
 //
 fun
 <xs:vt>
 <x0:vt>
-gseq_get0_at_opt(xs: ~xs, i0: ni): optn_vt(x0)
+gseq_get$at$opt0(xs: ~xs, i0: ni): optn_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_get1_at_opt(xs: !xs, i0: ni): optn_vt(x0)
+gseq_get$at$opt1(xs: !xs, i0: ni): optn_vt(x0)
 //
 fun
 <xs:vt>
 <x0:vt>
-gseq_set0_at_opt(xs: ~xs, i0: ni, x0: ~x0): bool
+gseq_set$at$opt0(xs: ~xs, i0: ni, x0: ~x0): bool
 fun
 <xs:vt>
 <x0:vt>
-gseq_set1_at_opt(xs: !xs, i0: ni, x0: ~x0): bool
+gseq_set$at$opt1(xs: !xs, i0: ni, x0: ~x0): bool
 //
 fun
 <xs:vt>
 <x0:vt>
-gseq_fset0_at_opt(xs: ~xs, i0: ni, x0: ~x0): optn_vt(xs)
+gseq_fset$at$opt0(xs: ~xs, i0: ni, x0: ~x0): optn_vt(xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1109,12 +1109,12 @@ gasz_length1(xs: !xs): nint
 fun
 <xs:vt>
 <x0:t0> // HX: t0(not(vt))
-gasz_get1_at
+gasz_get$at1
 (xs: !xs, i0: ni): (x0)
 fun
 <xs:vt>
 <x0:t0> // HX: t0(not(vt))
-gasz_set1_at
+gasz_set$at1
 (xs: !xs, i0: ni, x0: x0): void
 //
 (* ****** ****** *)
@@ -1122,12 +1122,12 @@ gasz_set1_at
 fun
 <xs:vt>
 <x0:vt>
-gasz_get1_at_raw
+gasz_get$at$raw1
 (xs: !xs, i0: ni): (x0)
 fun
 <xs:vt>
 <x0:vt>
-gasz_set1_at_raw
+gasz_set$at$raw1
 (xs: !xs, i0: ni, x0: x0): void
 //
 (* ****** ****** *)

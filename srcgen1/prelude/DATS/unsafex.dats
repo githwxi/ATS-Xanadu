@@ -80,20 +80,20 @@ end//end-of-[$UN.p2tr_set_list_vt_nil(p0)]
 //
 #impltmp
 <xs><x0>
-$UN.gseq_last_raw(xs) =
+$UN.gseq_last$raw(xs) =
 (
 gseq_last_ini<xs><x0>(xs, x0)
 ) where
 {
 var xs = xs
 val x0 =
-$UN.gseq_uncons_raw<xs><x0>(xs)}
+$UN.gseq_uncons$raw<xs><x0>(xs)}
 //
 (* ****** ****** *)
 //
 #impltmp
 <xs><x0>
-$UN.gseq_uncons_raw(xs) =
+$UN.gseq_uncons$raw(xs) =
 (
 let
   val () = xs := tl in hd
@@ -101,10 +101,10 @@ end
 ) where
 {
 val hd =
-  $UN.gseq_head_raw<xs><x0>(xs)
+  $UN.gseq_head$raw<xs><x0>(xs)
 val tl =
-  $UN.gseq_tail_raw<xs><x0>(xs)
-}(*where*)//end(gseq-uncons_raw(xs))
+  $UN.gseq_tail$raw<xs><x0>(xs)
+}(*where*)//end(gseq-uncons$raw(xs))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -114,9 +114,9 @@ local
 #typedef x0 = cgtz
 in//local
 #impltmp
-$UN.gseq_head_raw<xs><x0> = $UN.strn_head_raw<>
+$UN.gseq_head$raw<xs><x0> = $UN.strn_head$raw<>
 #impltmp
-$UN.gseq_tail_raw<xs><x0> = $UN.strn_tail_raw<>
+$UN.gseq_tail$raw<xs><x0> = $UN.strn_tail$raw<>
 end//local
 //
 (* ****** ****** *)
@@ -124,49 +124,49 @@ end//local
 //
 #impltmp
 {a:t0}
-$UN.gseq_uncons_raw
+$UN.gseq_uncons$raw
 < list(a) >< a >(xs) =
 let
   val x0 = xs.0
   val () = xs := xs.1 in x0
-end // end of [gseq_uncons_raw]
+end // end of [gseq_uncons$raw]
 //
 (* ****** ****** *)
 //
 #impltmp
 {a:type}
-$UN.gseq_head_raw<list(a)><a> = $UN.list_head_raw<a>
+$UN.gseq_head$raw<list(a)><a> = $UN.list_head$raw<a>
 #impltmp
 {a:type}
-$UN.gseq_tail_raw<list(a)><a> = $UN.list_tail_raw<a>
+$UN.gseq_tail$raw<list(a)><a> = $UN.list_tail$raw<a>
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
-$UN.strm_head_raw(xs) =
-$UN.strmcon_head_raw<a>(!xs)
+$UN.strm_head$raw(xs) =
+$UN.strmcon_head$raw<a>(!xs)
 #impltmp
 <a>(*tmp*)
-$UN.strm_tail_raw(xs) =
-$UN.strmcon_tail_raw<a>(!xs)
+$UN.strm_tail$raw(xs) =
+$UN.strmcon_tail$raw<a>(!xs)
 //
 #impltmp
 <a>(*tmp*)
-$UN.strmcon_head_raw(xs) = xs.0
+$UN.strmcon_head$raw(xs) = xs.0
 #impltmp
 <a>(*tmp*)
-$UN.strmcon_tail_raw(xs) = xs.1
+$UN.strmcon_tail$raw(xs) = xs.1
 //
 (* ****** ****** *)
 //
 #impltmp
 {a:type}
-$UN.gseq_head_raw<strm(a)><a> = $UN.strm_head_raw<a>
+$UN.gseq_head$raw<strm(a)><a> = $UN.strm_head$raw<a>
 #impltmp
 {a:type}
-$UN.gseq_tail_raw<strm(a)><a> = $UN.strm_tail_raw<a>
+$UN.gseq_tail$raw<strm(a)><a> = $UN.strm_tail$raw<a>
 //
 (* ****** ****** *)
 (* ****** ****** *)

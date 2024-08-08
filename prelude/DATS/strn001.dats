@@ -67,7 +67,7 @@ forall$test<ni>(i0) =
   forall$test<cgtz>(c0)) where
 {
 val c0 =
-  $UN.strn_get_at_raw<>(cs, i0)
+  $UN.strn_get$at$raw<>(cs, i0)
 }
 }(*where*)//end-of-[strn_forall(cs)]
 //
@@ -103,7 +103,7 @@ rforall$test<ni>(i0) =
   rforall$test<cgtz>(c0)) where
 {
 val c0 =
-  $UN.strn_get_at_raw<>(cs, i0)
+  $UN.strn_get$at$raw<>(cs, i0)
 }
 }(*where*)//end-of-[strn_rforall(cs)]
 //

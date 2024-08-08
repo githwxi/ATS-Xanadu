@@ -58,7 +58,7 @@ fun
 <xs:
 i0->t0>
 <x0:t0>
-grasn_get_at
+grasn_get$at
 {ln:i0}(xs(ln),nintlt(ln)): (x0)
 
 (* ****** ****** *)

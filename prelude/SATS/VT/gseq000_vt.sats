@@ -83,23 +83,23 @@ gseq_min1(xs: !xs): (x0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_max0_opt
+gseq_max$opt0
   (xs: ~xs): optn_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_max1_opt
+gseq_max$opt1
   (xs: !xs): optn_vt(x0)
 //
 fun
 <xs:vt>
 <x0:vt>
-gseq_min0_opt
+gseq_min$opt0
   (xs: ~xs): optn_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_min1_opt
+gseq_min$opt1
   (xs: !xs): optn_vt(x0)
 //
 (* ****** ****** *)
@@ -171,19 +171,19 @@ gseq_head1(xs: !xs): (x0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_head0_opt
+gseq_head$opt0
   (xs : ~xs): optn_vt(x0)
 fun
 <xs:vt>
 <x0:vt>
-gseq_head1_opt
+gseq_head$opt1
   (xs : !xs): optn_vt(x0)
 //
 (*
 #symload head0 with gseq_head0 of 0100
 #symload head0 with gseq_head1 of 0100
-#symload head0 with gseq_head0_opt of 0100
-#symload head0 with gseq_head1_opt of 0100
+#symload head0 with gseq_head$opt0 of 0100
+#symload head0 with gseq_head$opt1 of 0100
 *)
 //
 (* ****** ****** *)
@@ -230,20 +230,20 @@ Mon 15 Jul 2024 04:09:48 PM EDT
 fun
 <xs:vt>
 <x0:vt>
-gseq_get1_at
+gseq_get$at1
 (xs: !xs, i0: ni): (x0)
 //
 fun
 <xs:vt>
 <x0:vt>
-gseq_get1_at_opt
+gseq_get$at$opt1
 (xs: !xs, i0: ni): optn_vt(x0)
 //
 (*
-#symload get0_at with gseq_get0_at of 0100
-#symload get1_at with gseq_get1_at of 0100
-#symload get0_at_opt with gseq_get0_at_opt of 0100
-#symload get1_at_opt with gseq_get1_at_opt of 0100
+#symload get$at0 with gseq_get$at0 of 0100
+#symload get$at1 with gseq_get$at1 of 0100
+#symload get$at$opt0 with gseq_get$at$opt0 of 0100
+#symload get$atopt$1 with gseq_get$atopt$1 of 0100
 *)
 (* ****** ****** *)
 (* ****** ****** *)

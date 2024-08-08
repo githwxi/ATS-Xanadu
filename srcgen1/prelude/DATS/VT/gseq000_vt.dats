@@ -34,7 +34,7 @@ foreach$work0<x0> = g_free<x0>
 //
 #impltmp
 <xs><x0>
-gseq_uncons0_exn
+gseq_uncons$exn0
   (xs) =
 (
 if
@@ -47,11 +47,11 @@ in//let
   $raise SubscriptExn())
 end // end of [then]
 else
-gseq_uncons0_raw<xs><x0>(xs))
+gseq_uncons$raw0<xs><x0>(xs))
 //
 #impltmp
 <xs><x0>
-gseq_uncons0_opt
+gseq_uncons$opt0
   (xs) =
 (
 if
@@ -61,7 +61,7 @@ then
   optn_vt_nil((*void*)))
 else
 optn_vt_cons
-(gseq_uncons0_raw<xs><x0>(xs)))
+(gseq_uncons$raw0<xs><x0>(xs)))
 //
 (* ****** ****** *)
 
@@ -96,7 +96,7 @@ gseq_print0(xs) =
 let
 //
 val () =
-gseq_print0$beg
+gseq_print$beg0
 <xs><x0>((*void*))
 //
 val () =
@@ -116,12 +116,12 @@ val () =
   if
   (i0 > 0)
   then
-  gseq_print0$sep<xs><x0>() }
+  gseq_print$sep0<xs><x0>() }
 //
 } (* where *)
 //
 val () =
-gseq_print0$end<xs><x0>((*0*))
+gseq_print$end0<xs><x0>((*0*))
 //
 endlet // end of [gseq_print0(xs)]
 //
@@ -133,7 +133,7 @@ gseq_print1(xs) =
 let
 //
 val () =
-gseq_print1$beg
+gseq_print$beg1
 <xs><x0>((*void*))
 //
 val () =
@@ -153,35 +153,35 @@ val () =
   if
   (i0 > 0)
   then
-  gseq_print1$sep<xs><x0>() }
+  gseq_print$sep1<xs><x0>() }
 //
 } (* where *)
 //
 val () =
-gseq_print1$end<xs><x0>((*0*))
+gseq_print$end1<xs><x0>((*0*))
 //
 endlet // end of [gseq_print1(xs)]
 //
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-gseq_print0$beg() = strn_print("(")
+gseq_print$beg0() = strn_print("(")
 #impltmp
 <xs><x0>
-gseq_print0$end() = strn_print(")")
+gseq_print$end0() = strn_print(")")
 #impltmp
 <xs><x0>
-gseq_print0$sep() = strn_print(";")
+gseq_print$sep0() = strn_print(";")
 (* ****** ****** *)
 #impltmp
 <xs><x0>
-gseq_print1$beg() = strn_print("(")
+gseq_print$beg1() = strn_print("(")
 #impltmp
 <xs><x0>
-gseq_print1$end() = strn_print(")")
+gseq_print$end1() = strn_print(")")
 #impltmp
 <xs><x0>
-gseq_print1$sep() = strn_print(";")
+gseq_print$sep1() = strn_print(";")
 (* ****** ****** *)
 //
 #impltmp
@@ -812,10 +812,10 @@ end (*let*) // end-of-[ gseq_mul0(xs) ]
 (* ****** ****** *)
 #impltmp
 <x0>
-gseq_add0$nil = g_0<x0> // add-unit
+gseq_add$nil0 = g_0<x0> // add-unit
 #impltmp
 <x0>
-gseq_mul0$nil = g_1<x0> // mul-unit
+gseq_mul$nil0 = g_1<x0> // mul-unit
 (* ****** ****** *)
 //
 #impltmp
@@ -835,7 +835,7 @@ in//let
 (
 gseq_foldl0
 <xs>
-<x0><y0>(xs, gseq_add0$nil<y0>()))
+<x0><y0>(xs, gseq_add$nil0<y0>()))
 endlet//end-of-[gseq_map0_add0(xs)/foldl]
 //
 #impltmp
@@ -855,7 +855,7 @@ in//let
 (
 gseq_foldl0
 <xs>
-<x0><y0>(xs, gseq_mul0$nil<y0>()))
+<x0><y0>(xs, gseq_mul$nil0<y0>()))
 endlet//end-of-[gseq_map0_mul0(xs)/foldl]
 //
 (* ****** ****** *)

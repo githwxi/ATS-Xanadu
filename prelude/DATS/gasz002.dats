@@ -102,10 +102,10 @@ end where
 //
 val
 (fx|x0) =
-$UN.gasz_get_at_raw<xs><x0>(xs, i0)
+$UN.gasz_get$at$raw<xs><x0>(xs, i0)
 val
 (fy|y0) =
-$UN.gasz_get_at_raw<ys><y0>(ys, i0)
+$UN.gasz_get$at$raw<ys><y0>(ys, i0)
 //
 val btf = z2forall$test1<x0><y0>(x0, y0)
 //
@@ -143,10 +143,10 @@ end where
 //
 val
 (fx|x0) =
-$UN.gasz_get_at_raw<xs><x0>(xs, i0)
+$UN.gasz_get$at$raw<xs><x0>(xs, i0)
 val
 (fy|y0) =
-$UN.gasz_get_at_raw<ys><y0>(ys, i0)
+$UN.gasz_get$at$raw<ys><y0>(ys, i0)
 //
 val btf = rz2forall$test1<x0><y0>(x0, y0)
 //

@@ -85,7 +85,7 @@ t1rsz_length
 //
 fun
 <a:t0>
-t1rsz_get_at
+t1rsz_get$at
 {n:i0}
 (t1rsz(a,n), nintlt(n)): (a)
 //

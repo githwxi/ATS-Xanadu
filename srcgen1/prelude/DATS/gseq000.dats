@@ -44,55 +44,55 @@ bool_neg<>
 //
 #impltmp
 <xs><x0>
-gseq_head_exn(xs) =
+gseq_head$exn(xs) =
 if
 gseq_consq<xs><x0>(xs)
 then
 (
-$UN.gseq_head_raw<xs><x0>
+$UN.gseq_head$raw<xs><x0>
   (        xs        )
 )
 else
 (
   $raise SubscriptExn(*nil*))
-endif//end-of(gseq_head_exn(xs))
+endif//end-of(gseq_head$exn(xs))
 #impltmp
 <xs><x0>
-gseq_tail_exn(xs) =
+gseq_tail$exn(xs) =
 if
 gseq_consq<xs><x0>(xs)
 then
 (
-$UN.gseq_tail_raw<xs><x0>
+$UN.gseq_tail$raw<xs><x0>
   (        xs        )
 )
 else
 (
   $raise SubscriptExn(*nil*))
-endif//end-of(gseq_tail_exn(xs))
+endif//end-of(gseq_tail$exn(xs))
 //
 #impltmp
 <xs><x0>
-gseq_head_opt(xs) =
+gseq_head$opt(xs) =
 if
 gseq_consq
 <xs><x0>(xs)
 then
 optn_vt_cons
 (
-$UN.gseq_head_raw<xs><x0>
+$UN.gseq_head$raw<xs><x0>
   (        xs        )
 ) else optn_vt_nil((*void*))
 #impltmp
 <xs><x0>
-gseq_tail_opt(xs) =
+gseq_tail$opt(xs) =
 if
 gseq_consq
 <xs><x0>(xs)
 then
 optn_vt_cons
 (
-$UN.gseq_tail_raw<xs><x0>
+$UN.gseq_tail$raw<xs><x0>
   (        xs        )
 ) else optn_vt_nil((*void*))
 //
@@ -100,13 +100,13 @@ $UN.gseq_tail_raw<xs><x0>
 
 #impltmp
 <xs><x0>
-gseq_last_opt(xs) =
+gseq_last$opt(xs) =
 let
 //
 var xs = xs
 //
 val opt =
-gseq_uncons_opt
+gseq_uncons$opt
 < xs >< x0 >( xs )
 in
 case+ opt of
@@ -117,7 +117,7 @@ optn_vt_nil()
 optn_vt_cons(x0) =>
 optn_vt_cons
 (gseq_last_ini<xs><x0>(xs, x0))
-end(*let*)//end-of(gseq_last_opt)
+end(*let*)//end-of(gseq_last$opt)
 
 (* ****** ****** *)
 
@@ -142,11 +142,11 @@ end(*let*)//(gseq_last_ini/foldl)
 (*
 #impltmp
 <xs><x0>
-gseq_uncons_exn
+gseq_uncons$exn
   (xs) =
 let
 val opt =
-gseq_uncons_opt<xs><x0>(xs)
+gseq_uncons$opt<xs><x0>(xs)
 in
 //
 case+ opt of
@@ -154,12 +154,12 @@ case+ opt of
   $raise SubscriptExn()
 | optn_vt_cons(x0) => x0
 //
-end // end of [gseq_uncons_exn]
+end // end of [gseq_uncons$exn]
 *)
 //
 #impltmp
 <xs><x0>
-gseq_uncons_exn
+gseq_uncons$exn
   (xs) =
 (
 if
@@ -169,12 +169,12 @@ then
   $raise SubscriptExn())
 else
 (
-$UN.gseq_uncons_raw<xs><x0>(xs))
+$UN.gseq_uncons$raw<xs><x0>(xs))
 )
 //
 #impltmp
 <xs><x0>
-gseq_uncons_opt
+gseq_uncons$opt
   (xs) =
 (
 if
@@ -185,7 +185,7 @@ then
 else
 optn_vt_cons
 (
-$UN.gseq_uncons_raw<xs><x0>(xs))
+$UN.gseq_uncons$raw<xs><x0>(xs))
 endif (* end of [if] *)
 )
 //
@@ -340,7 +340,7 @@ then true else
 let
 var xs = xs
 val x0 =
-gseq_uncons_raw<xs><x0>(xs)
+gseq_uncons$raw<xs><x0>(xs)
 in
 if
 forall$test<x0>(x0)
@@ -412,7 +412,7 @@ gseq_search$exn
 optn_vt_cons(x0) => x0) where
 {
 val
-opt = gseq_search_opt<xs><x0>(xs)
+opt = gseq_search$opt<xs><x0>(xs)
 }(*where*)//end-of-[ gseq_search(xs) ]
 //
 (* ****** ****** *)
@@ -431,7 +431,7 @@ gseq_rsearch$exn
 optn_vt_cons(x0) => x0) where
 {
 val
-opt = gseq_rsearch_opt<xs><x0>(xs)
+opt = gseq_rsearch$opt<xs><x0>(xs)
 }(*where*)//end-of-[gseq_rsearch(xs) ]
 //
 #impltmp
@@ -447,7 +447,7 @@ gseq_rsearch$exn
 //
 #impltmp
 <xs><x0>
-gseq_search_opt
+gseq_search$opt
   ( xs ) =
 let
 //
@@ -483,13 +483,13 @@ end where // end-of-[let]
 //
  var r0: res = optn_vt_nil((*void*))
 //
-}(*where*)//end-of-[gseq_search_opt(xs)]
+}(*where*)//end-of-[gseq_search$opt(xs)]
 //
 (* ****** ****** *)
 //
 #impltmp
 <xs><x0>
-gseq_rsearch_opt
+gseq_rsearch$opt
   ( xs ) =
 let
 //
@@ -525,30 +525,30 @@ end where // end-of-[let]
 //
 var r0: res = optn_vt_nil((*void*))
 //
-}(*where*)//end-of-[gseq_rsearch_opt]
+}(*where*)//end-of-[gseq_rsearch$opt]
 //
 (* ****** ****** *)
 //
 #impltmp
 <xs><x0>
-gseq_get_at
+gseq_get$at
   (xs, i0) =
 (
 case+ opt of
 | ~
 optn_vt_nil() =>
-gseq_get_at$exn
+gseq_get$at$exn
 <xs><x0>(xs, i0)//cont
 | ~
 optn_vt_cons(x0) => x0) where
 {
 val
-opt = gseq_get_at_opt<xs><x0>(xs, i0)
-}(*where*)//end-of-[gseq_get_at(xs,i0)]
+opt = gseq_get$at$opt<xs><x0>(xs, i0)
+}(*where*)//end-of-[gseq_get$at(xs,i0)]
 //
 #impltmp
 <xs><x0>
-gseq_get_at$exn
+gseq_get$at$exn
   (xs, i0) = $raise SubscriptExn((*0*))
 //
 (* ****** ****** *)
@@ -556,44 +556,44 @@ gseq_get_at$exn
 (*
 #impltmp
 <xs><x0>
-gseq_fset_at
+gseq_fset$at
   (xs, i0, x0) =
 let
   val xs =
   gseq_strmize<xs><x0>(xs)
 in
   gseq_make0_lstrm
-  (strm_vt_fset0_at<x0>(xs, i0, x0))
-end(*let*)//end(gseq_fset_at(xs,i0,x0))
+  (strm_vt_fset$at0<x0>(xs, i0, x0))
+end(*let*)//end(gseq_fset$at(xs,i0,x0))
 *)
 //
 #impltmp
 <xs><x0>
-gseq_fset_at
+gseq_fset$at
   (xs, i0, x0) =
 (
 case+ opt of
 | ~
 optn_vt_nil() =>
-gseq_fset_at$exn
+gseq_fset$at$exn
 <xs><x0>(xs, i0, x0)
 | ~
 optn_vt_cons(xs) => xs) where
 {
 val opt =
-gseq_fset_at_opt<xs><x0>(xs, i0, x0)
-} (*where*)//end of [gseq_fset_at(...)]
+gseq_fset$at$opt<xs><x0>(xs, i0, x0)
+} (*where*)//end of [gseq_fset$at(...)]
 //
 #impltmp
 <xs><x0>
-gseq_fset_at$exn
+gseq_fset$at$exn
   (xs, i0, x0) = $raise SubscriptExn()
 //
 (* ****** ****** *)
 //
 #impltmp
 <xs><x0>
-gseq_get_at_opt
+gseq_get$at$opt
   (xs, i0) =
 let
 //
@@ -630,7 +630,7 @@ end where // end-of-[let]
 //
  var r0: res = optn_vt_nil((*void*))
 //
-} (*where*) // end of [gseq_get_at_opt]
+} (*where*) // end of [gseq_get$at$opt]
 //
 (* ****** ****** *)
 //
@@ -670,9 +670,9 @@ gseq_nilq
 then strmcon_vt_nil()
 else let
 val x0 =
-$UN.gseq_head_raw<xs><x0>(xs)
+$UN.gseq_head$raw<xs><x0>(xs)
 val xs =
-$UN.gseq_tail_raw<xs><x0>(xs)
+$UN.gseq_tail$raw<xs><x0>(xs)
 in//let
 strmcon_vt_cons(x0, auxseq(xs))
 endlet // end of [else]
@@ -1411,7 +1411,7 @@ gseq_min_ini
 //
 #impltmp
 <xs><x0>
-gseq_max_exn
+gseq_max$exn
   (xs) =
 (
 if
@@ -1420,14 +1420,14 @@ then
 $raise SubscriptExn()
 else
 gseq_max_ini
-( $UN.gseq_tail_raw<xs><x0>(xs)
-, $UN.gseq_head_raw<xs><x0>(xs))
+( $UN.gseq_tail$raw<xs><x0>(xs)
+, $UN.gseq_head$raw<xs><x0>(xs))
 endif // end-of-( if )
-) (*if*) // end of [gseq_max_exn(xs)]
+) (*if*) // end of [gseq_max$exn(xs)]
 //
 #impltmp
 <xs><x0>
-gseq_min_exn
+gseq_min$exn
   (xs) =
 (
 if
@@ -1436,16 +1436,16 @@ then
 $raise SubscriptExn()
 else
 gseq_min_ini
-( $UN.gseq_tail_raw<xs><x0>(xs)
-, $UN.gseq_head_raw<xs><x0>(xs))
+( $UN.gseq_tail$raw<xs><x0>(xs)
+, $UN.gseq_head$raw<xs><x0>(xs))
 endif // end-of-( if )
-) (*if*) // end of [gseq_min_exn(xs)]
+) (*if*) // end of [gseq_min$exn(xs)]
 //
 (* ****** ****** *)
 //
 #impltmp
 <xs><x0>
-gseq_max_opt
+gseq_max$opt
   (xs) =
 (
 if
@@ -1456,13 +1456,13 @@ else
 optn_vt_cons
 (
 gseq_max_ini
-( $UN.gseq_tail_raw<xs><x0>(xs)
-, $UN.gseq_head_raw<xs><x0>(xs)))
-) (*if*) // end of [gseq_max_opt(xs)]
+( $UN.gseq_tail$raw<xs><x0>(xs)
+, $UN.gseq_head$raw<xs><x0>(xs)))
+) (*if*) // end of [gseq_max$opt(xs)]
 //
 #impltmp
 <xs><x0>
-gseq_min_opt
+gseq_min$opt
   (xs) =
 (
 if
@@ -1473,11 +1473,11 @@ else
 optn_vt_cons
 (
 gseq_min_ini
-( $UN.gseq_tail_raw<xs><x0>(xs)
-, $UN.gseq_head_raw<xs><x0>(xs))
+( $UN.gseq_tail$raw<xs><x0>(xs)
+, $UN.gseq_head$raw<xs><x0>(xs))
 )
 endif // end-of-( if )
-) (*if*) // end of [gseq_min_opt(xs)]
+) (*if*) // end of [gseq_min$opt(xs)]
 //
 (* ****** ****** *)
 //
@@ -1928,7 +1928,7 @@ then
 else
 let
 val x0 =
-$UN.gseq_head_raw<xs><x0>
+$UN.gseq_head$raw<xs><x0>
   (        xs        )
 in//let
 if
@@ -1938,7 +1938,7 @@ then
   loop(xs, succ(i0))) where
 {
 val xs =
-$UN.gseq_tail_raw<xs><x0>(xs)
+$UN.gseq_tail$raw<xs><x0>(xs)
 }
 else (xs) // else // end-of-if
 endlet (* end-of-[loop(xs,i0)] *)
@@ -2010,7 +2010,7 @@ gseq_nilq
 then (r0) else
 let
 val x0 =
-$UN.gseq_head_raw<xs><x0>
+$UN.gseq_head$raw<xs><x0>
   (        xs        )
 in//let
 if
@@ -2021,7 +2021,7 @@ then
 {
 val i0 = succ(i0)
 val xs =
-$UN.gseq_tail_raw<xs><x0>(xs)
+$UN.gseq_tail$raw<xs><x0>(xs)
 val r0 = list_vt_cons(x0, r0) }
 else (r0) // else // end-of-(if)
 endlet (* end of [loop(xs,i0,r0)] *)

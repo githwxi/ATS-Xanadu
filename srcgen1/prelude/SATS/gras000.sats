@@ -9,18 +9,19 @@
 fun
 <xs:t0>
 <x0:t0>
-gras_get_at
-(xs: xs, i0: nint): x0
-fun
-<xs:t0>
-<x0:t0>
-gras_get_at$exn
+gras_get$at
 (xs: xs, i0: nint): x0
 //
 fun
 <xs:t0>
 <x0:t0>
-gras_get_at_opt
+gras_get$at$exn
+(xs: xs, i0: nint): x0
+//
+fun
+<xs:t0>
+<x0:t0>
+gras_get$at$opt
 ( xs: xs
 , i0: nint ): optn_vt(x0)
 //

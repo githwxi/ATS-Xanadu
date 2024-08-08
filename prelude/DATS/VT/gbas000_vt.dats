@@ -78,10 +78,10 @@ g_noteq1<x0> = g_noteq<x0>
 //
 #impltmp
 { x0:t0 }
-max0$nil<x0> = max$nil<x0>(*nil*)
+max$nil0<x0> = max$nil<x0>(*nil*)
 #impltmp
 { x0:t0 }
-min0$nil<x0> = min$nil<x0>(*nil*)
+min$nil0<x0> = min$nil<x0>(*nil*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -89,15 +89,15 @@ min0$nil<x0> = min$nil<x0>(*nil*)
 #impltmp
 < xs:t0 >
 < x0:vt >
-get1_at$exn = get_at$exn<xs><x0>
+get$at$exn1 = get$at$exn<xs><x0>
 #impltmp
 < xs:t0 >
 < x0:vt >
-set1_at$exn = set_at$exn<xs><x0>
+set$at$exn1 = set$at$exn<xs><x0>
 #impltmp
 < xs:t0 >
 < x0:t0 >
-fset1_at$exn = fset_at$exn<xs><x0>
+fset$at$exn1 = fset$at$exn<xs><x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)

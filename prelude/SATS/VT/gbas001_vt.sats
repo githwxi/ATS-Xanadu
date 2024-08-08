@@ -65,12 +65,12 @@ HX-2024-07-15
 fun
 <xs:vt>
 <x0:vt>
-get0_at$exn
+get$at$exn0
 (xs: ~xs, i0: ni): x0
 fun
 <xs:vt>
 <x0:vt>
-get1_at$exn
+get$at$exn1
 (xs: !xs, i0: ni): x0
 //
 (*
@@ -79,24 +79,24 @@ This makes no sense!
 fun
 <xs:vt>
 <x0:vt>
-set0_at$exn
+set$at$exn0
 (xs: ~xs, x0, ni): void
 *)
 fun
 <xs:vt>
 <x0:vt>
-set1_at$exn
+set$at$exn1
 (xs: !xs, x0, ni): void
 //
 fun
 <xs:vt>
 <x0:vt>
-fset0_at$exn
+fset$at$exn0
 (xs: ~xs, x0, ni): (xs)
 fun
 <xs:vt>
 <x0:vt>
-fset1_at$exn
+fset$at$exn1
 (xs: !xs, x0, ni): (xs)
 //
 (* ****** ****** *)

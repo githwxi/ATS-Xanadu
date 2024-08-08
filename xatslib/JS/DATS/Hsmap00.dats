@@ -71,6 +71,32 @@ end//end-of-[g_print<jsm(k,x)>]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<(*tmp*)>
+jshsmap_make_list
+ {k:t0}{x:t0}(kxs) =
+let
+//
+val map =
+jshsmap_make_nil<>()
+//
+in//let
+(
+list_foritm(kxs); map
+) where
+{
+#impltmp
+foritm$work<(k,x)>(kx) =
+let
+val (k, x) = kx in
+UN_jshsmap_insert_raw(map, k, x)
+end//let//end-of-[forithm$work(...)]
+}
+end//let//end-of-[jshsmap_make_list]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

@@ -75,7 +75,7 @@ lam(x0)=>gseq_memberq<xs><x0>(xs,x0))
 #impltmp
 <x0:t0>
 <y0:vt>
-gfun_equal_at
+gfun_equal$at
   (f0, x0, y0) =
 (
   g_equal0<y0>(f0(x0), y0))

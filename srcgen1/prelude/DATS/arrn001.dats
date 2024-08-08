@@ -66,25 +66,25 @@ end(*local*)//end-of-[local(a1rsz)]
 //
 #impltmp
 <a>(*tmp*)
-a1rsz_get_at
+a1rsz_get$at
   (AZ, i0) =
 let
 val A0 =
 a1rsz_getref<>(AZ)
 in//let
-  a1ref_get_at<a>(A0, i0) end
-(*let*)//end-[a1rsz_get_at(...)]
+  a1ref_get$at<a>(A0, i0) end
+(*let*)//end-[a1rsz_get$at(...)]
 //
 #impltmp
 <a>(*tmp*)
-a1rsz_set_at
+a1rsz_set$at
   (AZ, i0, x0) =
 let
 val A0 =
 a1rsz_getref<>(AZ)
 in//let
-a1ref_set_at<a>(A0, i0, x0) end
-(*let*)//end-[a1rsz_set_at(...)]
+a1ref_set$at<a>(A0, i0, x0) end
+(*let*)//end-[a1rsz_set$at(...)]
 //
 (* ****** ****** *)
 //

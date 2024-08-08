@@ -192,13 +192,13 @@ a1ref_length(a1ref(a, n)): nint(n)
 //
 fun
 <a:t0>
-a1ref_get_at
+a1ref_get$at
 {n:i0}
 ( A0
 : a1ref(a, n), i0: nintlt(n)): (a)
 fun
 <a:t0>
-a1ref_set_at
+a1ref_set$at
 {n:i0}
 ( A0
 : a1ref(a, n)
@@ -209,7 +209,7 @@ a1ref_set_at
 //
 fun
 <a:vt>
-a1ref_exch_at
+a1ref_exch$at
 {n:i0}
 ( A0:
   a1ref(a, n)
@@ -220,14 +220,14 @@ a1ref_exch_at
 //
 fun
 <a:vt>
-a1ref_dtget_at
+a1ref_dtget$at
 {n:i0}
 ( A0:
   a1ref(a, n), i0: nintlt(n)): (?!a)
 //
 fun
 <a:vt>
-a1ref_dtset_at
+a1ref_dtset$at
 {n:i0}
 ( A0:
   a1ref(a, n), i0: nintlt(n), x: ?!a): void
@@ -236,12 +236,12 @@ a1ref_dtset_at
 (* ****** ****** *)
 //
 (*
-HX: [cget_at]: copy+get_at
+HX: [cget$at]: copy+get$at
 *)
 //
 fun
 <a:vt>
-a1ref_cpget_at
+a1ref_cpget$at
 {n:i0}
 ( A0:
   a1ref(a, n), i0: nintlt(n)): (a)
@@ -249,12 +249,12 @@ a1ref_cpget_at
 (* ****** ****** *)
 //
 (*
-HX: [frset_at]: free+set_at
+HX: [frset$at]: free+set$at
 *)
 //
 fun
 <a:vt>
-a1ref_frset_at
+a1ref_frset$at
 {n:i0}
 ( A0
 : a1ref(a, n)
@@ -270,7 +270,7 @@ g_updt(x0: &a >> _): void
 *)
 fun
 <a:vt>
-a1ref_updt_at
+a1ref_updt$at
 {n:i0}
 ( A0:
   a1ref(a, n), i0: nintlt(n)): void
@@ -350,10 +350,10 @@ a1ref_rforall1
 //
 (* ****** ****** *)
 //
-#symload [] with a1ref_get_at of 1000
-#symload [] with a1ref_set_at of 1000
-#symload get_at with a1ref_get_at of 1000
-#symload set_at with a1ref_set_at of 1000
+#symload [] with a1ref_get$at of 1000
+#symload [] with a1ref_set$at of 1000
+#symload get$at with a1ref_get$at of 1000
+#symload set$at with a1ref_set$at of 1000
 //
 (* ****** ****** *)
 #symload a0ref with a0ref_make_1val of 1000

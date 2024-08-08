@@ -173,9 +173,9 @@ a0ref_dtset
 (* ****** ****** *)
 //
 fun<>
-strn_head_raw(strn): cgtz
+strn_head$raw(strn): cgtz
 fun<>
-strn_tail_raw(strn): strn
+strn_tail$raw(strn): strn
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -183,47 +183,47 @@ strn_tail_raw(strn): strn
 fun
 <xs:t0>
 <x0:t0>
-gseq_head_raw(xs): x0
+gseq_head$raw(xs): x0
 fun
 <xs:t0>
 <x0:t0>
-gseq_tail_raw(xs): xs
-//
-fun
-<xs:t0>
-<x0:t0>
-gseq_last_raw(xs): x0
+gseq_tail$raw(xs): xs
 //
 fun
 <xs:t0>
 <x0:t0>
-gseq_uncons_raw(xs: &xs >> xs): x0
+gseq_last$raw(xs): x0
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_uncons$raw(xs: &xs >> xs): x0
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 <a:t0>
-list_head_raw(xs: list(a)): (a)
+list_head$raw(xs: list(a)): (a)
 fun
 <a:t0>
-list_tail_raw(xs: list(a)): list(a)
+list_tail$raw(xs: list(a)): list(a)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
 <a:t0>
-strm_head_raw(strm(a)): a
+strm_head$raw(strm(a)): a
 fun
 <a:t0>
-strm_tail_raw(strm(a)): strm(a)
+strm_tail$raw(strm(a)): strm(a)
 fun
 <a:t0>
-strmcon_head_raw(strmcon(a)): a
+strmcon_head$raw(strmcon(a)): a
 fun
 <a:t0>
-strmcon_tail_raw(strmcon(a)): strm(a)
+strmcon_tail$raw(strmcon(a)): strm(a)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -236,31 +236,31 @@ used with caution!!!
 fun
 <xs:t0>
 <x0:vt>
-gasz_get_at_raw
+gasz_get$at$raw
 ( xs: xs
 , i0: ni): (owed(x0) | x0)
 fun
 <xs:t0>
 <x0:vt>
-gasz_set_at_raw
+gasz_set$at$raw
 ( pf: owed(x0)
 | xs: xs, i0: ni, x0: x0): void
 //
 fun
 <xs:t0>
 <x0:vt>
-gasz_cget_at_raw
+gasz_cget$at$raw
 ( xs: xs, i0: ni): x0
 fun
 <xs:t0>
 <x0:vt>
-gasz_setf_at_raw
+gasz_setf$at$raw
 ( xs: xs, i0: ni, x0: x0): void
 //
 (* ****** ****** *)
 //
 fun<>
-strn_get_at_raw(strn, ni): cgtz
+strn_get$at$raw(strn, ni): cgtz
 //
 (* ****** ****** *)
 //

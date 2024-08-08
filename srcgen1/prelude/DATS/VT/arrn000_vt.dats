@@ -69,8 +69,8 @@ end(*let*)//end-of(a0ptr_make)
 (* ****** ****** *)
 #impltmp
 <a:t0>
-a1ptr_get1_at(A0, i0) =
-a1ptr_dtget1_at<a>(A0, i0)
+a1ptr_get$at1(A0, i0) =
+a1ptr_dtget$at1<a>(A0, i0)
 (* ****** ****** *)
 //
 #impltmp
@@ -108,7 +108,7 @@ end where
 {
 val () =
 (
-a1ptr_set1_at<(?a)>(A0,i0,x0))
+a1ptr_set$at1<(?a)>(A0,i0,x0))
 } (*end of [then]*)
 else
 (
@@ -154,7 +154,7 @@ let
 val i =
 $UN.cast10{nintlt(n)}(i)
 in//let
-a1ptr_set1_at<(?a)>(A0, i, x)
+a1ptr_set$at1<(?a)>(A0, i, x)
 end//let
 }
 in
@@ -180,7 +180,7 @@ val i =
 $UN.cast10{nintlt(n)}(i)
 in//let
 (
-  a1ptr_set1_at<(?a)>
+  a1ptr_set$at1<(?a)>
   (A0, i, $UN.delinear(x)))
 end//let
 }

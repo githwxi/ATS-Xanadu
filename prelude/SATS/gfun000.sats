@@ -116,7 +116,7 @@ HX: f0(x0) = r0?
 fun
 <x0:t0>
 <r0:vt>
-f1un_equal_at
+f1un_equal$at
 (f0: f1un(x0, r0), x0: x0, r0: r0): bool
 //
 fun

@@ -55,41 +55,41 @@ strn_make_list<>
 <>(*tmp*)
 strn_nilq(cs) =
 char_eqz
-(strn_head_opt<>(cs))
+(strn_head$opt<>(cs))
 #impltmp
 <>(*tmp*)
 strn_consq(cs) =
 char_neqz
-(strn_head_opt<>(cs))
+(strn_head$opt<>(cs))
 
 (* ****** ****** *)
 
 #impltmp
 <>(*tmp*)
 strn_head(cs) =
-$UN.strn_head_raw<>(cs)
+$UN.strn_head$raw<>(cs)
 #impltmp
 <>(*tmp*)
 strn_tail(cs) =
-$UN.strn_tail_raw<>(cs)
+$UN.strn_tail$raw<>(cs)
 
 (* ****** ****** *)
 //
 (*
 #impltmp<>
-strn_head_opt(cs) = ...
+strn_head$opt(cs) = ...
 *)
 //
 #impltmp
 <>(*tmp*)
-strn_tail_opt(cs) =
+strn_tail$opt(cs) =
 if
 strn_nilq(cs)
 then
 optn_vt_nil((*void*))
 else
 optn_vt_cons
-($UN.strn_tail_raw(cs))
+($UN.strn_tail$raw(cs))
 //
 (* ****** ****** *)
 //
@@ -122,9 +122,9 @@ if
 strn_nilq(x2)
 then (1) else let
 val c1 =
-$UN.strn_head_raw(x1)
+$UN.strn_head$raw(x1)
 and c2 =
-$UN.strn_head_raw(x2)
+$UN.strn_head$raw(x2)
 val
 sgn = char_cmp(c1, c2)
 in//let
@@ -132,8 +132,8 @@ if
 (sgn != 0)
 then sgn else
 loop
-( $UN.strn_tail_raw(x1)
-, $UN.strn_tail_raw(x2)) end
+( $UN.strn_tail$raw(x1)
+, $UN.strn_tail$raw(x2)) end
 )
 //
 in
@@ -250,14 +250,14 @@ tabulate$fopr
 let
 val j0 = (n0-1)-i0
 in//let
-strn_get_at<>(cs, j0)
-endlet//tabulate$fopr
+  strn_get$at<>(cs, j0)
+endlet//tabulate$fopr(...)
 //
 in
-  strn_tabulate<n0>(n0)
-end (*let*)//tabulate$fopr
+  strn_tabulate<n0>( n0 )
+end (*let*)//tabulate$fopr(...)
 //
-end//end of [strn_reverse(cs)]
+end//let//end-of-[strn_reverse(cs)]
 
 (* ****** ****** *)
 
@@ -281,7 +281,7 @@ tabulate$fopr
 let
 val j0 = (n0-1)-i0
 in//let
-  strn_get_at<>(cs, j0)
+  strn_get$at<>(cs, j0)
 end(*let*)//tabulate$fopr
 //
 in
@@ -322,14 +322,14 @@ strn_nilq
 then true else
 let
 val x0 =
-$UN.strn_head_raw(xs)
+$UN.strn_head$raw(xs)
 in//let
 if
 forall$test<x0>(x0)
 then
 loop
 (
-$UN.strn_tail_raw(xs)) else false
+$UN.strn_tail$raw(xs)) else false
 // end of [if]
 end // end of [else]
 } (* end of [strn_forall/uncons] *)
@@ -673,14 +673,14 @@ loop
 , s2: strn): bool =
 let
 val c1 =
-strn_head_opt(s1)
+strn_head$opt(s1)
 in//let
 if
 char_eqz(c1)
 then true else
 let
 val c2 =
-strn_head_opt(s2)
+strn_head$opt(s2)
 in//let
 if
 char_eqz(c2)

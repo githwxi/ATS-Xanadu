@@ -71,10 +71,10 @@ p2tr_set_list_vt_cons
 (* ****** ****** *)
 //
 fun<>
-strn_vt_get1_at
+strn_vt_get$at1
 (cs: !strn_vt, i0: sint): cgtz
 fun<>
-strn_vt_set1_at
+strn_vt_set$at1
 (cs: !strn_vt, i0: sint, c0: cgtz): void
 //
 (* ****** ****** *)
@@ -87,7 +87,22 @@ Mon 22 Jul 2024 08:20:12 AM EDT
 //
 fcast
 strm2q_vt
-{a:vt}{n:nat}(xs: strm_vt(a)): strq_vt(a, n)
+{a:vt}{n:nat}
+(xs: strm_vt(a)): strq_vt(a, n)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gasz_get$at$raw1
+(xs: !xs, i0: ni): (x0)
+fun
+<xs:vt>
+<x0:vt>
+gasz_set$at$raw1
+(xs: !xs, i0: ni, x0: x0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
