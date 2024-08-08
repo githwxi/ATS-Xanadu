@@ -38,19 +38,28 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+HX-2024-08-08:
+Note that jarray_vt(a) can
+be refined into jarray_vt(a)!
+But we do not do it here as we
+do need to keep things simple.
+*)
+(* ****** ****** *)
+(* ****** ****** *)
 #staload "./../Array.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fcast
 UN_jsarray_t2vt
- {a:vt}{n:i0}
-(jsarray(a,n)): jsarray_vt(a,n)
+ {a:vt}
+(jsarray(a)): jsarray_vt(a)
 //
 fcast
 UN_jsarray_vt2t
- {a:vt}{n:i0}
-(!jsarray_vt(a,n)): jsarray(a,n)
+ {a:vt}
+(!jsarray_vt(a)): jsarray(a)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -62,8 +71,8 @@ Fri 26 Jul 2024 10:52:28 AM EDT
 //
 fun<>
 jsarray_vt_make_jsarray
- {a:vt}{n:nat}
-(jsarray(a,n)): jsarray_vt(a,n)
+ {a:vt}
+(jsarray(a)): jsarray_vt(a)
 //
 #symload
 jsarray_vt with
@@ -74,24 +83,21 @@ jsarray_vt_make_jsarray of 1000
 //
 fun<>
 jsarray_vt_make_ncpy
- {a:t0}{n:nat}
-(n: sint(n), x: a):jsarray_vt(a,n)
+ {a:t0}
+(n0: nint, x0: a):jsarray_vt(a)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun<>
 jsarray_vt_make0_1val
- {a:vt}
-( x: a ): jsarray_vt(a, 1)
+ {a:vt}( x: a ): jsarray_vt(a)
 fun<>
 jsarray_vt_make0_2val
- {a:vt}
-( a, a ): jsarray_vt(a, 2)
+ {a:vt}( a, a ): jsarray_vt(a)
 fun<>
 jsarray_vt_make0_3val
- {a:vt}
-( a, a, a ): jsarray_vt(a, 3)
+ {a:vt}( a, a, a ): jsarray_vt(a)
 //
 #symload
 jsarray_vt with jsarray_vt_make0_1val of 1000
@@ -128,8 +134,8 @@ jsarray_vt_make0_lstrm
 (xs: ~strm_vt(a)):jsarray_vt(a)
 fun<>
 jsarray_vt_make0_lstrq
- {a:vt}{n:nat}
-(xs: ~strq_vt(a,n)):jsarray_vt(a,n)
+ {a:vt}
+(xs: ~strq_vt(a)):jsarray_vt(a)
 //
 #symload
 jsarray_vt with jsarray_vt_make0_lstrm of 1000
@@ -141,8 +147,8 @@ jsarray_vt with jsarray_vt_make0_lstrq of 1000
 //
 fun<>
 jsarray_vt_length1
- {a:vt}{n:nat}
-(A: !jsarray_vt(a, n)): sint(n)
+ {a:vt}
+(A: !jsarray_vt(a)): nint
 //
 #symload length1 with jsarray_vt_length1 of 1000
 //
@@ -163,6 +169,31 @@ jsarray_vt_set1_at
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+//
+HX-2024-07-25:
+Shall we come back here
+when dependent type-checking
+is supported?
+Thu 25 Jul 2024 06:42:41 AM EDT
+//
+fun<>
+jsarray_vt_getn1_at
+ {a:t0}{n:nat}
+(A:
+!jsarray_vt(a,n), i:nintlt(n)): (a)
+fun<>
+jsarray_vt_setn1_at
+ {a:t0}{n:nat}
+(A:
+!jsarray_vt(a,n), i:nintlt(n), x:a): void
+//
+#symload getn_at with jsarray_vt_getn1_at of 1000
+#symload setn_at with jsarray_vt_setn1_at of 1000
+//
+*)
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun<>
 jsarray_vt_strmize0
@@ -170,8 +201,8 @@ jsarray_vt_strmize0
 (A: ~jsarray_vt(a)): strm_vt(a)
 fun<>
 jsarray_vt_strqize0
-{a:vt}{n:i0}
-(A: ~jsarray_vt(a,n)): strq_vt(a,n)
+{a:vt}
+(A: ~jsarray_vt(a)): strq_vt(a)
 //
 #symload strmize0 with jsarray_vt_strmize0 of 1000
 #symload strqize0 with jsarray_vt_strqize0 of 1000

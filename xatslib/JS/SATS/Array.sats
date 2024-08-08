@@ -38,59 +38,58 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+HX-2024-08:
+JS arrays are dynamic!
+So we cannot have the
+an index type for capturing
+the size of such an array.
+*)
+(* ****** ****** *)
+(* ****** ****** *)
 #abstype
-jsarray_tbox(a:vt,n:i0)
+jsarray_tbox(a:vt)
 #absvwtp
-jsarray_vtbx(a:vt,n:i0)
+jsarray_vtbx(a:vt)
 (* ****** ****** *)
 #typedef
-jsarray
-(a:vt,n:i0) = jsarray_tbox(a,n)
-#typedef
-jsarray(a:vt) = [n:i0] jsarray(a,n)
-(* ****** ****** *)
+jsarray(a:vt) = jsarray_tbox(a)
 #vwtpdef
-jsarray_vt
-(a:vt,n:i0) = jsarray_vtbx(a,n)
-#vwtpdef
-jsarray_vt(a:vt) = [n:i0] jsarray_vt(a,n)
+jsarray_vt(a:vt) = jsarray_vtbx(a)
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fcast
 jsarray_vt2t
- {a:vt}{n:i0}
-(jsarray_vt(a,n)): jsarray(a,n)
+ {a:vt}
+(jsarray_vt(a)): jsarray(a)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun<>
 jsarray_make_ncpy
- {a:t0}{n:nat}
-(n: sint(n), x: a):jsarray(a,n)
+ {a:t0}
+(n0: nint, x0: a): jsarray(a)
 //
 fun<>
 jsarray_make_nfun
  {a:t0}{n:nat}
-( n: sint(n)
-, f: nintlt(n)-<cfr>a):jsarray(a,n)
+( n0: sint(n)
+, f0: nintlt(n)->(a)):jsarray(a)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun<>
 jsarray_make0_1val
- {a:vt}
-( x: a ): jsarray(a, 1)
+ {a:vt}( x: a ): jsarray(a)
 fun<>
 jsarray_make0_2val
- {a:vt}
-( a, a ): jsarray(a, 2)
+ {a:vt}( a, a ): jsarray(a)
 fun<>
 jsarray_make0_3val
- {a:vt}
-( a, a, a ): jsarray(a, 3)
+ {a:vt}( a, a, a ): jsarray(a)
 //
 #symload
 jsarray with jsarray_make0_1val of 1000
@@ -109,7 +108,7 @@ in the future!
 *)
 #typedef
 fwork(a:vt) =
-((~a)-<cfr>void)-<cfr>void
+((~a)->void)->void
 //
 fun<>
 jsarray_fmake_fwork
@@ -127,8 +126,8 @@ jsarray_make0_lstrm
 (xs: ~strm_vt(a)):jsarray(a)
 fun<>
 jsarray_make0_lstrq
- {a:vt}{n:nat}
-(xs: ~strq_vt(a,n)):jsarray(a,n)
+ {a:vt}
+(xs: ~strq_vt(a)):jsarray(a)
 //
 #symload
 jsarray with jsarray_make0_lstrm of 1000
@@ -140,8 +139,8 @@ jsarray with jsarray_make0_lstrq of 1000
 //
 fun<>
 jsarray_length
- {a:vt}{n:nat}
-(A: jsarray(a,n)): sint(n)
+ {a:vt}
+(A: jsarray(a)): nint
 //
 #symload length with jsarray_length of 1000
 //
@@ -162,29 +161,6 @@ jsarray_set_at
 //
 (* ****** ****** *)
 (* ****** ****** *)
-(*
-//
-HX-2024-07-25:
-We will come back here
-when dependent type-checking
-is supported!
-Thu 25 Jul 2024 06:42:41 AM EDT
-//
-fun<>
-jsarray_getn_at
- {a:t0}{n:nat}
-(A:jsarray(a,n), i:nintlt(n)): (a)
-fun<>
-jsarray_setn_at
- {a:t0}{n:nat}
-(A:jsarray(a,n), i:nintlt(n), x:a): void
-//
-#symload getn_at with jsarray_getn_at of 1000
-#symload setn_at with jsarray_setn_at of 1000
-//
-*)
-(* ****** ****** *)
-(* ****** ****** *)
 //
 fun<>
 jsarray_strmize
@@ -192,8 +168,8 @@ jsarray_strmize
 (A: jsarray(a)): strm_vt(a)
 fun<>
 jsarray_strqize
-{a:vt}{n:i0}
-(A: jsarray(a,n)): strq_vt(a,n)
+{a:vt}
+(A: jsarray(a)): strq_vt(a)
 //
 #symload strmize with jsarray_strmize of 1000
 #symload strqize with jsarray_strqize of 1000
