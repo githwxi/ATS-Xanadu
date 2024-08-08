@@ -945,7 +945,7 @@ d3f0.node() of
 |D3Ecst(d2c1) =>
 let
 val dcls =
-tr3aenv_d2crch_opt(env0, d2c1)
+tr3aenv_d2crch$opt(env0, d2c1)
 val timp =
 timpl(loc0, TIMPLall1(d2c1, dcls))
 in//let

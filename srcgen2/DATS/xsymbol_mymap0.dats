@@ -78,25 +78,25 @@ in//local
 (* ****** ****** *)
 //
 #implfun
-symbl_search_opt(key) =
+symbl_search$opt(key) =
 let
 val map = the_mymap
 in//let
-XATS2JS_jsobjmap_search_opt<key>{itm}(map, key)
-end (*let*) // end of [ symbl_search_opt(key) ]
+XATS2JS_jsobjmap_search$opt<key>{itm}(map, key)
+end (*let*) // end of [ symbl_search$opt(key) ]
 //
 #implfun
-symbl_insert_any(sym) =
+symbl_insert$any(sym) =
 let
 val map = the_mymap
 val key = sym.name()
 in//let
-XATS2JS_jsobjmap_insert_any<key>{itm}(map, key, sym)
-end (*let*) // end of [ symbl_insert_any(sym) ]
+XATS2JS_jsobjmap_insert$any<key>{itm}(map, key, sym)
+end (*let*) // end of [ symbl_insert$any(sym) ]
 //
 (* ****** ****** *)
 //
-end (*local*) // end of [local(mymap)]
+end (*local*) // end of [local(absimpl(mymap_tbox))]
 //
 (* ****** ****** *)
 

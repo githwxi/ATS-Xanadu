@@ -424,7 +424,7 @@ val () =
   ("trans12_q1arg_wth: q1a0 = ", q1a0) )
 *)
 //
-}(*where*)//end-of-[trans12_q1arg_opt(...)]
+}(*where*)//end-of-[trans12_q1arg_wth(...)]
 
 (* ****** ****** *)
 //

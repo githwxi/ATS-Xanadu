@@ -501,10 +501,10 @@ in//local
 //
 #implfun
 s2cst_get_sexp(s2c0) =
-topmap_search_opt(mymap, s2c0.name())
+topmap_search$opt(mymap, s2c0.name())
 #implfun
 s2cst_set_sexp(s2c0, sexp) =
-topmap_insert_any(mymap, s2c0.name(), sexp)
+topmap_insert$any(mymap, s2c0.name(), sexp)
 //
 end (*local*) // end of [local(the_s2cst_s2exp)]
 
@@ -536,10 +536,10 @@ s2c0.atdf() of
 //
 #implfun
 s2cst_get_atdf(s2c0) =
-topmap_search_opt(mymap, s2c0.name())
+topmap_search$opt(mymap, s2c0.name())
 #implfun
 s2cst_set_atdf(s2c0, atdf) =
-topmap_insert_any(mymap, s2c0.name(), atdf)
+topmap_insert$any(mymap, s2c0.name(), atdf)
 //
 end (*local*) // end of [local(the_s2cst_a2tdf)]
 
@@ -571,10 +571,10 @@ s2c0.d2cs() of
 //
 #implfun
 s2cst_get_d2cs(s2c0) =
-topmap_search_opt(mymap, s2c0.name())
+topmap_search$opt(mymap, s2c0.name())
 #implfun
 s2cst_set_d2cs(s2c0, d2cs) =
-topmap_insert_any(mymap, s2c0.name(), d2cs)
+topmap_insert$any(mymap, s2c0.name(), d2cs)
 //
 end (*local*) // end of [local(the_s2cst_d2conlst)]
 

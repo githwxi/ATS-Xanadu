@@ -551,7 +551,7 @@ list_nil((*void*))
 D3TOPENVsome(tmap) =>
 let
 val opt0 =
-topmap_search_opt
+topmap_search$opt
 (tmap, d2c0.name()) in//let
 //
 case+ opt0 of

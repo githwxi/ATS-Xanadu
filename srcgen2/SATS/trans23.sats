@@ -284,12 +284,12 @@ tr23env_locjoin(env0: !tr23env): void
 (* ****** ****** *)
 //
 fun
-tr23env_search_opt
+tr23env_search$opt
 ( env0:
 ! tr23env
 , s2c0: s2cst): s2cstlst
 fun
-tr23env_insert_any
+tr23env_insert$any
 ( env0: !tr23env, s2c0: s2cst): void
 //
 fun

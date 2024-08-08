@@ -95,7 +95,7 @@ symbl_make_name
   (  nam  ) =
 let
 val opt =
-symbl_search_opt(nam)
+symbl_search$opt(nam)
 in//let
 //
 case+ opt of
@@ -112,7 +112,7 @@ sym where
 {
 //
 val () =
-symbl_insert_any(sym)
+symbl_insert$any(sym)
 //
 val () =
 $GLB.the_xsymbls_insert(sym)

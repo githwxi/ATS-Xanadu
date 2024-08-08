@@ -96,7 +96,7 @@ gmap_strmize<gmap><key,itms>(map)
 (* ****** ****** *)
 
 #implfun
-topmap_search_opt
+topmap_search$opt
   {itm}(map, key) =
 let
 //
@@ -108,7 +108,7 @@ key =
 g0u2s(uint(key.stmp()))
 val
 opt = 
-XATS2JS_jsobjmap_search_opt<key>{itms}(map,key)
+XATS2JS_jsobjmap_search$opt<key>{itms}(map,key)
 //
 in//let
 //
@@ -122,12 +122,12 @@ let
 val-list_cons(itm, _) = itms in optn_vt_cons(itm)
 end (*let*) // end of [optn_vt_cons]
 //
-end (*let*) // end of [topmap_search_opt(...]
+end (*let*) // end of [topmap_search$opt(...]
 
 (* ****** ****** *)
 
 #implfun
-topmap_insert_any
+topmap_insert$any
   {itm}
   (map, key, itm) =
 let
@@ -140,7 +140,7 @@ key =
 g0u2s(uint(key.stmp()))
 val
 opt = 
-XATS2JS_jsobjmap_search_opt<key>{itms}(map,key)
+XATS2JS_jsobjmap_search$opt<key>{itms}(map,key)
 //
 in//let
 //
@@ -150,17 +150,17 @@ optn_vt_nil() =>
 let
 val itms = list_sing(itm)
 in//let
-XATS2JS_jsobjmap_insert_any<key>{itms}(map,key,itms)
+XATS2JS_jsobjmap_insert$any<key>{itms}(map,key,itms)
 end (*let*) // end of [optn_vt_nil()]
 | ~
 optn_vt_cons(itms) =>
 let
 val itms = list_cons(itm, itms)
 in
-XATS2JS_jsobjmap_insert_any<key>{itms}(map,key,itms)
+XATS2JS_jsobjmap_insert$any<key>{itms}(map,key,itms)
 end (*let*) // end of [optn_vt_cons(...)]
 //
-end (*let*) // end of [topmap_insert_any(...)]
+end (*let*) // end of [topmap_insert$any(...)]
 (* ****** ****** *)
 
 endloc (*local*) // end of [  local(topmap)  ]
@@ -169,7 +169,7 @@ endloc (*local*) // end of [  local(topmap)  ]
 (* ****** ****** *)
 
 #implfun
-topmap_insert_kxs
+topmap_insert$kxs
 {itm}( map, kxs ) =
 (
 loop(map, kxs) ) where
@@ -190,37 +190,37 @@ list_vt_cons
 ( kx1, kxs ) =>
 loop(map, kxs) where {
   val () =
-  topmap_insert_any(map, kx1.0, kx1.1)
+  topmap_insert$any(map, kx1.0, kx1.1)
 } // end of-(list_vt_cons)
 ) (* end of [loop(map, kxs)] *)
-} (*where*)//end-of-[topmap_insert_kxs(map,kxs)]
+} (*where*)//end-of-[topmap_insert$kxs(map,kxs)]
 
 (* ****** ****** *)
 
 #implfun
-topmap_insmix_any
+topmap_insmix$any
   {itm}
 ( map
 , k0, x0, mix ) =
 let
 val opt =
-topmap_search_opt(map, k0)
+topmap_search$opt(map, k0)
 in//let
 //
 case+ opt of
 | ~
 optn_vt_nil() =>
-topmap_insert_any(map, k0, x0)
+topmap_insert$any(map, k0, x0)
 | ~
 optn_vt_cons(x1) =>
-topmap_insert_any(map, k0, mix(x0, x1))
+topmap_insert$any(map, k0, mix(x0, x1))
 //
-end (*let*)//end(topmap_insmix_any(map,k0,x0,mix))
+end (*let*)//end(topmap_insmix$any(map,k0,x0,mix))
 
 (* ****** ****** *)
 
 #implfun
-topmap_insmix_kxs
+topmap_insmix$kxs
   {itm}
 ( map, kxs, mix ) =
 (
@@ -243,10 +243,10 @@ list_vt_cons
 ( kx1, kxs ) =>
 loop(map, kxs) where {
   val () =
-  topmap_insmix_any(map, kx1.0, kx1.1, mix)
+  topmap_insmix$any(map, kx1.0, kx1.1, mix)
 } // end of-(list_vt_cons)
 ) (* end of [loop(map,kxs)] *)
-} (*where*)//end-of-[topmap_insmix_kxs(map,kxs,mix)]
+} (*where*)//end-of-[topmap_insmix$kxs(map,kxs,mix)]
 
 (* ****** ****** *)
 //

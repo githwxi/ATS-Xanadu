@@ -1199,7 +1199,7 @@ in//let
   s2typ_hnfiz0(ttup) endlet
 //
 val topt =
-s2typ_prjout_opt(ttup, dlab)
+s2typ_prjout$opt(ttup, dlab)
 //
 in//let
 //

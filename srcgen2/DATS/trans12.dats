@@ -85,7 +85,7 @@ preferred over functional ones
 *)
 //
 #implfun
-s2cst_select_any
+s2cst_select$any
   (   s2cs   ) =
 (
 f0_test1(s2cs)) where
@@ -122,7 +122,7 @@ list_nil() => optn_vt_nil()
 list_cons(x1, xs) => optn_vt_cons(x1)
 )(*case+*)//end-of-[ f0_test2(  xs  ) ]
 //
-}(*where*)//end-of-[s2cst_select_any(...)]
+}(*where*)//end-of-[s2cst_select$any(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -341,7 +341,7 @@ in//local
 s2cst_select_list
   (s2cs, s2es) =
 (
-gseq_search_opt(s2cs)
+gseq_search$opt(s2cs)
 ) where
 {
 //

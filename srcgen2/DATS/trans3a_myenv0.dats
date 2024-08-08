@@ -203,14 +203,14 @@ val
 (nerr, kxs) =
 stkmap_poploc0(stkmap)
 val
-( ) = stkmap_insert_kxs(stkmap, kxs) }
+( ) = stkmap_insert$kxs(stkmap, kxs) }
 //
 end(*let*)//end-of-(tr3aenv_locjoin(env0))
 //
 (* ****** ****** *)
 //
 #implfun
-tr3aenv_d2crch_opt
+tr3aenv_d2crch$opt
   (env0, d2c0) = let
 //
 val k0 = d2c0.name()
@@ -220,7 +220,7 @@ val+
 (topmap, stkmap) = env0
 //
 val opt0 =
-stkmap_search_opt(stkmap, k0)
+stkmap_search$opt(stkmap, k0)
 //
 val opt1 =
 (
@@ -229,12 +229,12 @@ case+ opt0 of
 optn_vt_cons _ => opt0
 | ~ // free
 optn_vt_nil( ) =>
-topmap_search_opt(topmap, k0))
+topmap_search$opt(topmap, k0))
 //
 (*
 val () =
 prerrln
-("tr3aenv_search_opt: k0 = ", k0)
+("tr3aenv_search$opt: k0 = ", k0)
 *)
 //
 in//let
@@ -244,12 +244,12 @@ case+ opt1 of
 | ~ optn_vt_nil() => list_nil(*0*)
 | ~ optn_vt_cons(dcls) => (  dcls  ) )
 //
-end(*let*)//end-of-(tr3aenv_d2crch_opt(...))
+end(*let*)//end-of-(tr3aenv_d2crch$opt(...))
 //
 (* ****** ****** *)
 //
 #implfun
-tr3aenv_d2cins_any
+tr3aenv_d2cins$any
 (env0, d2c0, d3cl) = let
 //
 val dcls =
@@ -257,7 +257,7 @@ val dcls =
 list_cons(d3cl, dcls)) where
 {
 val dcls =
-tr3aenv_d2crch_opt(env0, d2c0)
+tr3aenv_d2crch$opt(env0, d2c0)
 }
 //
 in//let
@@ -270,10 +270,10 @@ val k0 = d2c0.name((*0*))
 (*
 val () =
 prerrln
-("tr3aenv_d2cins_any: k0 = ", k0)
+("tr3aenv_d2cins$any: k0 = ", k0)
 val () =
 prerrln
-("tr3aenv_d2cins_any: x0 = ", x0)
+("tr3aenv_d2cins$any: x0 = ", x0)
 *)
 //
 val+
@@ -283,11 +283,11 @@ val+
 if
 stkmap_nilq(stkmap)
 then
-topmap_insert_any(topmap, k0, x0)
+topmap_insert$any(topmap, k0, x0)
 else
-stkmap_insert_any(stkmap, k0, x0)) end
+stkmap_insert$any(stkmap, k0, x0)) end
 //
-endlet//end-of(tr3aenv_d2cins_any(env0,d2c0))
+endlet//end-of(tr3aenv_d2cins$any(env0,d2c0))
 //
 (* ****** ****** *)
 
@@ -342,7 +342,7 @@ list_foreach(d2cs)) where
 #impltmp
 foreach$work<x0>(x0) =
 (
-  tr3aenv_d2cins_any(env0, x0, d3cl)) }
+  tr3aenv_d2cins$any(env0, x0, d3cl)) }
 //
 end(*let*)//end-of-[f0_fundclst(env0,d3cl)]
 //
@@ -368,11 +368,11 @@ dimp.node() of
 |DIMPLone1
 (  d2c1  ) =>
 (
-tr3aenv_d2cins_any(env0, d2c1, d3cl) )
+tr3aenv_d2cins$any(env0, d2c1, d3cl) )
 |DIMPLone2
 (d2c1, svts) =>
 (
-tr3aenv_d2cins_any(env0, d2c1, d3cl) )
+tr3aenv_d2cins$any(env0, d2c1, d3cl) )
 | // HX: DIMPLall1/DIMPLopt2
 _ (* otherwise *) => ( (* nothing *) )
 //

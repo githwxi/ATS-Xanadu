@@ -741,7 +741,7 @@ XATS2JS_strn_head_raw
 }
 //
 function
-XATS2JS_strn_head_opt
+XATS2JS_strn_head$opt
   (  cs  )
 {
     if (cs.length <= 0)
@@ -787,7 +787,7 @@ XATS2JS_strn_vt_length1
 ////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_strn_get_at
+XATS2JS_strn_get$at
   (cs, i0)
 {
     return cs.charCodeAt(i0);
@@ -796,14 +796,14 @@ XATS2JS_strn_get_at
 /* ****** ****** */
 //
 function
-XATS2JS_strn_vt_get_at
+XATS2JS_strn_vt_get$at
   (cs, i0)
 {
     return cs[i0];
     //HX: cs:JS_array(char)
 }
 function
-XATS2JS_strn_vt_set_at
+XATS2JS_strn_vt_set$at
   (cs, i0, c0)
 {
     return (cs[i0] = c0);
@@ -821,7 +821,7 @@ XATS2JS_strtmp_vt_alloc
 }
 //
 function
-XATS2JS_strtmp_vt_set_at
+XATS2JS_strtmp_vt_set$at
   (cs, i0, c0)
 {
     return (cs[i0] = c0);
@@ -1338,12 +1338,12 @@ XATS2JS_a1ptr_alloc
 /* ****** ****** */
 //
 function
-XATS2JS_a1ref_get_at
+XATS2JS_a1ref_get$at
   (A0, i0)
 {
     return A0[i0]; }
 function
-XATS2JS_a1ptr_get1_at
+XATS2JS_a1ptr_get$at1
   (A0, i0)
 {
     return A0[i0]; }
@@ -1351,13 +1351,13 @@ XATS2JS_a1ptr_get1_at
 /* ****** ****** */
 //
 function
-XATS2JS_a1ref_set_at
+XATS2JS_a1ref_set$at
   (A0, i0, x0)
 {
     return (A0[i0] = x0);
 }
 function
-XATS2JS_a1ptr_set1_at
+XATS2JS_a1ptr_set$at1
   (A0, i0, x0)
 {
     return (A0[i0] = x0);
@@ -1367,7 +1367,7 @@ XATS2JS_a1ptr_set1_at
 //
 /*
 function
-XATS2JS_a1ptr_set_at_raw
+XATS2JS_a1ptr_set$at$raw
   (A0, i0, x0)
 {
     return (A0[i0] = x0);
@@ -1377,12 +1377,12 @@ XATS2JS_a1ptr_set_at_raw
 /* ****** ****** */
 //
 function
-XATS2JS_a1ref_dtget_at
+XATS2JS_a1ref_dtget$at
   (A0, i0)
 {
     return A0[   i0   ]; }
 function
-XATS2JS_a1ref_cget_at
+XATS2JS_a1ref_cget$at
   (A0, i0)
 {
     return A0[   i0   ]; }
@@ -1552,13 +1552,13 @@ JSBasics for Xats2js
 ////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsobj_get_at
+XATS2JS_jsobj_get$at
   (obj, key)
 {
   return obj[ key ];
 }
 function
-XATS2JS_jsobj_set_at
+XATS2JS_jsobj_set$at
   (obj, key, itm)
 {
   return (obj[key] = itm);
@@ -1584,13 +1584,13 @@ XATS2JS_jsarray_length
 /* ****** ****** */
 
 function
-XATS2JS_jsarray_get_at
+XATS2JS_jsarray_get$at
   (xs, i0)
 {
   return xs[i0];
 }
 function
-XATS2JS_jsarray_set_at
+XATS2JS_jsarray_set$at
   (xs, i0, x0)
 {
   return ( xs[i0] = x0 );
@@ -1631,7 +1631,7 @@ XATS2JS_jsobjmap_make_nil
 /* ****** ****** */
 
 function
-XATS2JS_jsobjmap_search_opt
+XATS2JS_jsobjmap_search$opt
    (obj, key)
 {
 //
@@ -1644,28 +1644,28 @@ if(itm0===undefined)
   return XATS2JS_optn_vt_cons(itm0);
 } // end of [if]
 //
-} // [ XATS2JS_jsobjmap_search_opt ]
+} // [ XATS2JS_jsobjmap_search$opt ]
 
 /* ****** ****** */
 
 function
-XATS2JS_jsobjmap_insert_any
+XATS2JS_jsobjmap_insert$any
    (obj, key, itm1)
 {
   obj[key] = itm1; return;
-} // [XATS2JS_jsobjmap_insert_any]
+} // [XATS2JS_jsobjmap_insert$any]
 
 function
-XATS2JS_jsobjmap_remove_any
+XATS2JS_jsobjmap_remove$any
    (obj, key)
 {
   delete object[key]; return ;
-} // [XATS2JS_jsobjmap_remove_any]
+} // [XATS2JS_jsobjmap_remove$any]
 
 /* ****** ****** */
 
 function
-XATS2JS_jsobjmap_insert_opt
+XATS2JS_jsobjmap_insert$opt
    (obj, key, itm1)
 {
 //
@@ -1680,10 +1680,10 @@ if(itm0===undefined)
   return XATS2JS_optn_vt_cons(itm0);
 } // end of [if]
 //
-} // [ XATS2JS_jsobjmap_insert_opt ]
+} // [ XATS2JS_jsobjmap_insert$opt ]
 
 function
-XATS2JS_jsobjmap_remove_opt
+XATS2JS_jsobjmap_remove$opt
    (obj, key)
 {
 //
@@ -1697,7 +1697,7 @@ if(itm0===undefined)
   return XATS2JS_optn_vt_cons(itm0);
 } // end of [if]
 //
-} // [ XATS2JS_jsobjmap_remove_opt ]
+} // [ XATS2JS_jsobjmap_remove$opt ]
 
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
@@ -2432,7 +2432,7 @@ XATS2JS_jsarray_strmize(a1x1)
         // { // val-implmnt
         // } // val-implmnt
         var // const // implval/fun
-        gint_gte_sint_sint_440030_3042_ = XATS2JS_gint_gte_sint_sint
+        gint_gte_sint_sint_054531_3042_ = XATS2JS_gint_gte_sint_sint
         xtmp5 = XATS2JS_gint_gte_sint_sint(a2x1, xtmp1)
       }
       if (xtmp5)
@@ -2446,7 +2446,7 @@ XATS2JS_jsarray_strmize(a1x1)
 // ./../../../.././prelude/DATS/CATS/JS/basics1.dats@(2344(line=167,offs=7)--2366(line=167,offs=29))
         {
           {
-            xtmp6 = XATS2JS_jsarray_get_at(a1x1, a2x1)
+            xtmp6 = XATS2JS_jsarray_get$at(a1x1, a2x1)
           }
         } // val(H0Pvar(x0(14)))
         {
@@ -2456,7 +2456,7 @@ XATS2JS_jsarray_strmize(a1x1)
               // { // val-implmnt
               // } // val-implmnt
               var // const // implval/fun
-              gint_add_sint_sint_440030_3989_ = XATS2JS_gint_add_sint_sint
+              gint_add_sint_sint_054531_3989_ = XATS2JS_gint_add_sint_sint
               xtmp9 = XATS2JS_gint_add_sint_sint(a2x1, 1)
             }
             xtmp8 = auxmain_2197_(xtmp9)
@@ -3231,7 +3231,7 @@ XATS2JS_strm_vt_map0_f1un(a1x1, a1x2)
   {
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(9690(line=747,offs=1)--10071(line=779,offs=9))
     function
-    strm_vt_map0_440030_4633_(a2x1)
+    strm_vt_map0_054531_4633_(a2x1)
     {
       let xtmp112
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(9756(line=755,offs=1)--10035(line=778,offs=12))
@@ -3283,7 +3283,7 @@ XATS2JS_strm_vt_map0_f1un(a1x1, a1x2)
               {
 // ./../../../.././prelude/DATS/CATS/JS/prelude.dats@(6332(line=396,offs=1)--6371(line=396,offs=40))
                 function
-                map$fopr0_440030_3102_(a5x1)
+                map$fopr0_054531_3102_(a5x1)
                 {
                   let xtmp105
                   {
@@ -3291,7 +3291,7 @@ XATS2JS_strm_vt_map0_f1un(a1x1, a1x2)
                   }
                   return xtmp105
                 } // function // map$fopr0(24)
-                xtmp103 = map$fopr0_440030_3102_(xtmp101)
+                xtmp103 = map$fopr0_054531_3102_(xtmp101)
               }
             } // val(H0Pvar(y0(95)))
             {
@@ -3321,14 +3321,14 @@ XATS2JS_strm_vt_map0_f1un(a1x1, a1x2)
             // { // val-implmnt
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(1820(line=153,offs=1)--1870(line=155,offs=31))
             function
-            strm_vt_free_440030_2268_(a5x1)
+            strm_vt_free_054531_2268_(a5x1)
             {
               return XATS2JS_llazy_free(a5x1)
             } // function // strm_vt_free(28)
             // } // val-implmnt
             var // const // implval/fun
-            g_free_440030_1640_ = strm_vt_free_440030_2268_
-            xtmp108 = strm_vt_free_440030_2268_(a3x1)
+            g_free_054531_1640_ = strm_vt_free_054531_2268_
+            xtmp108 = strm_vt_free_054531_2268_(a3x1)
           }
         } // lam-function
         xtmp97 = XATS2JS_new_llazy(xtmp110,xtmp111)
@@ -3339,7 +3339,7 @@ XATS2JS_strm_vt_map0_f1un(a1x1, a1x2)
       }
       return xtmp112
     } // function // strm_vt_map0(25)
-    xtmp94 = strm_vt_map0_440030_4633_(a1x1)
+    xtmp94 = strm_vt_map0_054531_4633_(a1x1)
   }
   return xtmp94
 } // function // XATS2JS_strm_vt_map0_f1un(23)
@@ -3360,7 +3360,7 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
   {
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(10135(line=783,offs=1)--10617(line=826,offs=13))
     function
-    strm_vt_filter0_440030_4821_(a2x1)
+    strm_vt_filter0_054531_4821_(a2x1)
     {
       let xtmp138
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(10207(line=791,offs=1)--10612(line=824,offs=8))
@@ -3388,14 +3388,14 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
             // { // val-implmnt
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(1820(line=153,offs=1)--1870(line=155,offs=31))
             function
-            strm_vt_free_440030_2268_(a5x1)
+            strm_vt_free_054531_2268_(a5x1)
             {
               return XATS2JS_llazy_free(a5x1)
             } // function // strm_vt_free(28)
             // } // val-implmnt
             var // const // implval/fun
-            g_free_440030_1640_ = strm_vt_free_440030_2268_
-            xtmp120 = strm_vt_free_440030_2268_(a3x1)
+            g_free_054531_1640_ = strm_vt_free_054531_2268_
+            xtmp120 = strm_vt_free_054531_2268_(a3x1)
           }
         } // lam-function
         xtmp118 = XATS2JS_new_llazy(xtmp122,xtmp123)
@@ -3447,7 +3447,7 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
           {
 // ./../../../.././prelude/DATS/CATS/JS/prelude.dats@(6695(line=419,offs=3)--6733(line=419,offs=41))
             function
-            filter$test1_440030_4071_(a4x1)
+            filter$test1_054531_4071_(a4x1)
             {
               let xtmp132
               {
@@ -3455,7 +3455,7 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
               }
               return xtmp132
             } // function // filter$test1(30)
-            xtmp130 = filter$test1_440030_4071_(xtmp128)
+            xtmp130 = filter$test1_054531_4071_(xtmp128)
           }
           if (xtmp130)
           { // then
@@ -3473,7 +3473,7 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
               {
 // ./../../../.././prelude/DATS/CATS/JS/prelude.dats@(6650(line=416,offs=3)--6680(line=417,offs=22))
                 function
-                g_free_440030_1640_(a4x1)
+                g_free_054531_1640_(a4x1)
                 {
                   let xtmp136
                   {
@@ -3481,7 +3481,7 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
                   }
                   return xtmp136
                 } // function // g_free(27)
-                xtmp134 = g_free_440030_1640_(xtmp128)
+                xtmp134 = g_free_054531_1640_(xtmp128)
               }
               //L1PCKxpat(H0Pnil(); L1VALtmp(tmp(134)));
               //L1CMDmatch(H0Pnil(); L1VALtmp(tmp(134)));
@@ -3505,7 +3505,7 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
       }
       return xtmp138
     } // function // strm_vt_filter0(31)
-    xtmp115 = strm_vt_filter0_440030_4821_(a1x1)
+    xtmp115 = strm_vt_filter0_054531_4821_(a1x1)
   }
   return xtmp115
 } // function // XATS2JS_strm_vt_filter0_f1un(29)

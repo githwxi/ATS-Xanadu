@@ -735,7 +735,7 @@ XATS2JS_strn_head_raw
 }
 //
 function
-XATS2JS_strn_head_opt
+XATS2JS_strn_head$opt
   (  cs  )
 {
     if (cs.length <= 0)
@@ -781,7 +781,7 @@ XATS2JS_strn_vt_length1
 ////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_strn_get_at
+XATS2JS_strn_get$at
   (cs, i0)
 {
     return cs.charCodeAt(i0);
@@ -790,14 +790,14 @@ XATS2JS_strn_get_at
 /* ****** ****** */
 //
 function
-XATS2JS_strn_vt_get_at
+XATS2JS_strn_vt_get$at
   (cs, i0)
 {
     return cs[i0];
     //HX: cs:JS_array(char)
 }
 function
-XATS2JS_strn_vt_set_at
+XATS2JS_strn_vt_set$at
   (cs, i0, c0)
 {
     return (cs[i0] = c0);
@@ -815,7 +815,7 @@ XATS2JS_strtmp_vt_alloc
 }
 //
 function
-XATS2JS_strtmp_vt_set_at
+XATS2JS_strtmp_vt_set$at
   (cs, i0, c0)
 {
     return (cs[i0] = c0);

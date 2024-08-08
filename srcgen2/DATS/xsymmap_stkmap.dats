@@ -405,7 +405,7 @@ end (*let*) // end of [stkmap_poploc0(map)]
 (* ****** ****** *)
 //
 #implfun
-stkmap_search_opt
+stkmap_search$opt
   {itm}
 ( map, key ) =
 (
@@ -442,12 +442,12 @@ optn_vt_cons(x1) else loop(kxs,k0))
 //
 ) (*case+*)//end of [ loop(kxs, k0) ]
 //
-} (*where*)//end of [stkmap_search_opt(...)]
+} (*where*)//end of [stkmap_search$opt(...)]
 //
 (* ****** ****** *)
 //
 #implfun
-stkmap_insert_any
+stkmap_insert$any
   {itm}
 ( map, key, itm ) =
 (
@@ -456,7 +456,7 @@ stkmap_insert_any
 (* ****** ****** *)
 
 #implfun
-stkmap_insert_kxs
+stkmap_insert$kxs
 {itm}( map, kxs ) =
 (
 map :=
@@ -481,7 +481,7 @@ loop(map, kxs) where {
   val map = stkmap_cons(kx1.0, kx1.1, map)
 } // end of-(list_vt_cons)
 ) (* end of [loop(map,kxs)] *)
-} (*where*)//end-of-[stkmap_insert_kxs(map,kxs)]
+} (*where*)//end-of-[stkmap_insert$kxs(map,kxs)]
 
 (* ****** ****** *)
 //
@@ -551,29 +551,29 @@ endloc (*local*) // end of [ local(stkmap) ]
 (* ****** ****** *)
 
 #implfun
-stkmap_insmix_any
+stkmap_insmix$any
   {itm}
 ( map
 , k0, x0, mix ) =
 let
 val opt =
-stkmap_search_opt(map, k0)
+stkmap_search$opt(map, k0)
 in//let
 //
 case+ opt of
 | ~
 optn_vt_nil() =>
-stkmap_insert_any(map, k0, x0)
+stkmap_insert$any(map, k0, x0)
 | ~
 optn_vt_cons(x1) =>
-stkmap_insert_any(map, k0, mix(x0, x1))
+stkmap_insert$any(map, k0, mix(x0, x1))
 //
-end (*let*)//end(stkmap_insmix_any(map,k0,x0,mix))
+end (*let*)//end(stkmap_insmix$any(map,k0,x0,mix))
 
 (* ****** ****** *)
 
 #implfun
-stkmap_insmix_kxs
+stkmap_insmix$kxs
   {itm}
 ( map, kxs, mix ) =
 (
@@ -597,10 +597,10 @@ list_vt_cons
 ( kx1, kxs ) =>
 loop(map, kxs) where {
   val () =
-  stkmap_insmix_any(map, kx1.0, kx1.1, mix)
+  stkmap_insmix$any(map, kx1.0, kx1.1, mix)
 } // end of-(list_vt_cons)
 ) (* end of [loop(map,kxs)] *)
-} (*where*)//end-of-[stkmap_insmix_kxs(map,kxs,mix)]
+} (*where*)//end-of-[stkmap_insmix$kxs(map,kxs,mix)]
 
 (* ****** ****** *)
 (* ****** ****** *)

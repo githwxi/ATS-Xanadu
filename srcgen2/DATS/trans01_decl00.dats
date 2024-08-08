@@ -711,7 +711,7 @@ in//let
 loop(tenv, id0s) where
 {
 val () =
-tr01env_insmix_any(tenv, sym, fxty)
+tr01env_insmix$any(tenv, sym, fxty)
 }
 endlet//end-of-[list_cons(id0,ids)]
 ) (*case+*) // end of [loop(tenv,ids)]
@@ -791,7 +791,7 @@ T_IDSYM(nam) => symbl(nam)
 //
 val
 fopt =
-tr01env_search_opt(tenv, sym)
+tr01env_search$opt(tenv, sym)
 //
 val pval =
 (
@@ -865,7 +865,7 @@ in
 loop(tenv, id0s) where
 {
 val () =
-tr01env_insert_any(tenv,sym,FIXTYnon)
+tr01env_insert$any(tenv,sym,FIXTYnon)
 }
 endlet//end-of-[list_cons(id0,ids)]
 ) (*case+*) // end of [loop(tenv,ids)]

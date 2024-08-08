@@ -233,15 +233,15 @@ val
 ((*void*)) =
 if
 stkmap_nilq(stkmap)
-then topmap_insert_kxs(topmap, kxs)
-else stkmap_insert_kxs(stkmap, kxs) }
+then topmap_insert$kxs(topmap, kxs)
+else stkmap_insert$kxs(stkmap, kxs) }
 //
 end (*let*)//end-of-(tr01env_locjoin(tenv))
 //
 (* ****** ****** *)
 
 #implfun
-tr01env_search_opt
+tr01env_search$opt
   (tenv, k0) = let
 //
 val+
@@ -249,7 +249,7 @@ TR01ENV
 (topmap, stkmap) = tenv
 //
 val opt =
-stkmap_search_opt(stkmap, k0)
+stkmap_search$opt(stkmap, k0)
 //
 in//let
 //
@@ -261,7 +261,7 @@ optn_vt_cons
 optn_vt_nil() =>
 let
 val opt =
-topmap_search_opt(topmap,k0)
+topmap_search$opt(topmap,k0)
 in//let
 (
 case+ opt of
@@ -273,12 +273,12 @@ optn_vt_nil() => the_fxtyenv_pvsfind(k0)
 )
 end (*let*)//end-of-[optn_nil()]
 //
-end (*let*)//end-of-[tr01env_search_opt(tenv,k0)]
+end (*let*)//end-of-[tr01env_search$opt(tenv,k0)]
 
 (* ****** ****** *)
 //
 #implfun
-tr01env_insert_any
+tr01env_insert$any
   (tenv, k0, x0) = let
 //
 val+
@@ -290,16 +290,16 @@ in//let
 if
 stkmap_nilq(stkmap)
 then
-topmap_insert_any(topmap, k0, x0)//top
+topmap_insert$any(topmap, k0, x0)//top
 else
-stkmap_insert_any(stkmap, k0, x0)//inner
+stkmap_insert$any(stkmap, k0, x0)//inner
 //
-end(*let*)//end-of(tr01env_insert_any(tenv,k0,x0))
+end(*let*)//end-of(tr01env_insert$any(tenv,k0,x0))
 //
 (* ****** ****** *)
 //
 #implfun
-tr01env_insmix_any
+tr01env_insmix$any
   (tenv, k0, x0) = let
 //
 val+
@@ -313,11 +313,11 @@ in//let
 if
 stkmap_nilq(stkmap)
 then
-topmap_insmix_any(topmap, k0, x0, mix)//top
+topmap_insmix$any(topmap, k0, x0, mix)//top
 else
-stkmap_insmix_any(stkmap, k0, x0, mix)//inner
+stkmap_insmix$any(stkmap, k0, x0, mix)//inner
 //
-end(*let*)//end-of(tr01env_insmix_any(tenv,k0,x0))
+end(*let*)//end-of(tr01env_insmix$any(tenv,k0,x0))
 //
 (* ****** ****** *)
 

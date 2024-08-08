@@ -200,14 +200,14 @@ val
 stkmap_poploc0(stkmap)
 val
 ( (*nil*) ) =
-stkmap_insert_kxs(stkmap, kxs) }
+stkmap_insert$kxs(stkmap, kxs) }
 //
 end(*let*)//end-of-(tr2aenv_locjoin(env0))
 //
 (* ****** ****** *)
 //
 #implfun
-tr2aenv_s2crch_opt
+tr2aenv_s2crch$opt
   (env0, s2c0) = let
 //
 val k0 = s2c0.name()
@@ -215,12 +215,12 @@ val k0 = s2c0.name()
 val+
 TR2AENV(stkmap) = env0
 val opt1 =
-stkmap_search_opt(stkmap, k0)
+stkmap_search$opt(stkmap, k0)
 //
 (*
 val () =
 prerrln
-("tr2aenv_search_opt: k0 = ", k0)
+("tr2aenv_search$opt: k0 = ", k0)
 *)
 //
 in//let
@@ -230,12 +230,12 @@ case+ opt1 of
 | ~ optn_vt_nil() => list_nil(*0*)
 | ~ optn_vt_cons(s2cs) => (  s2cs  ))
 //
-end(*let*)//end-of-(tr2aenv_s2crch_opt(...))
+end(*let*)//end-of-(tr2aenv_s2crch$opt(...))
 //
 (* ****** ****** *)
 //
 #implfun
-tr2aenv_s2cins_any
+tr2aenv_s2cins$any
   (env0, s2c0) = let
 //
 val s2cs =
@@ -243,7 +243,7 @@ val s2cs =
 list_cons(s2c0, s2cs)) where
 {
 val s2cs =
-tr2aenv_s2crch_opt(env0, s2c0) }
+tr2aenv_s2crch$opt(env0, s2c0) }
 //
 in//let
 //
@@ -255,17 +255,17 @@ val k0 = s2c0.name()
 (*
 val () =
 prerrln
-("tr2aenv_s2cins_any: k0 = ", k0)
+("tr2aenv_s2cins$any: k0 = ", k0)
 val () =
 prerrln
-("tr2aenv_s2cins_any: x0 = ", x0)
+("tr2aenv_s2cins$any: x0 = ", x0)
 *)
 //
 val+
 @TR2AENV(!stkmap) = env0 in//let
-stkmap_insert_any(stkmap, k0, x0) end
+stkmap_insert$any(stkmap, k0, x0) end
 //
-endlet//end-of(tr2aenv_s2cins_any(env0,s2c0))
+endlet//end-of(tr2aenv_s2cins$any(env0,s2c0))
 //
 (* ****** ****** *)
 //
@@ -278,7 +278,7 @@ tr2aenv_evstyp_cst
   (env0, s2c0) = let
 //
 val s2cs =
-tr2aenv_s2crch_opt(env0, s2c0)
+tr2aenv_s2crch$opt(env0, s2c0)
 //
 (*
 val (  ) =

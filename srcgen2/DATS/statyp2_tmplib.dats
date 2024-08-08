@@ -851,7 +851,7 @@ T2Pvar(s2v1) = t2p0.node()
 //
 val
 opt1 =
-s2vts_search_opt(svts, s2v1)
+s2vts_search$opt(svts, s2v1)
 //
 in//let
 case+ opt1 of

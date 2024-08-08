@@ -107,7 +107,7 @@ tmpmap_strmize
 (* ****** ****** *)
 //
 fun
-tmpmap_search_opt
+tmpmap_search$opt
 {itm:tbox}
 ( map:
   tmpmap(itm), key: key): optn_vt(itm)
@@ -115,7 +115,7 @@ tmpmap_search_opt
 (* ****** ****** *)
 //
 fun
-tmpmap_insert_any
+tmpmap_insert$any
 {itm:tbox}
 ( map:
   tmpmap(itm), key: key, itm: itm): void

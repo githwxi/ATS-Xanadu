@@ -147,7 +147,7 @@ in//let
 (* ****** ****** *)
 //
 #implfun
-s2vts_search_opt
+s2vts_search$opt
   (svts, s2v0) =
 (
   auxmain(svts) ) where
@@ -166,7 +166,7 @@ if
 then
 optn_vt_cons(svt1.1) else auxmain(svts)
 )
-} (*where*) // end of [s2vts_search_opt]
+} (*where*) // end of [s2vts_search$opt]
 //
 (* ****** ****** *)
 //
@@ -202,7 +202,7 @@ end (*let*)
 (* ****** ****** *)
 
 #implfun
-s2typ_prjout_opt
+s2typ_prjout$opt
   (t2p0, lab0) =
 (
 case+
@@ -240,7 +240,7 @@ optn_vt_cons(t2p1) else auxloop(ltps)
 end // end-of-[  list_cons(...)  ]
 )(*case+*)//end-of-[  auxloop(ltps)  ]
 //
-}(*where*)//end-of-[s2typ_search_opt(...)]
+}(*where*)//end-of-[s2typ_search$opt(...)]
 
 (* ****** ****** *)
 //

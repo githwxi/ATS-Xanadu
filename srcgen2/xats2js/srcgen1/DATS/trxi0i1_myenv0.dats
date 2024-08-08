@@ -125,18 +125,18 @@ $MAP.stkmap_free_nil(*void*)
 (* ****** ****** *)
 //
 #symload
-topmap_search_opt with
-$MAP.topmap_search_opt(*cbr*)
+topmap_search$opt with
+$MAP.topmap_search$opt(*cbr*)
 #symload
-stkmap_search_opt with
-$MAP.stkmap_search_opt(*cbr*)
+stkmap_search$opt with
+$MAP.stkmap_search$opt(*cbr*)
 //
 #symload
-topmap_insert_any with
-$MAP.topmap_insert_any(*cbr*)
+topmap_insert$any with
+$MAP.topmap_insert$any(*cbr*)
 #symload
-stkmap_insert_any with
-$MAP.stkmap_insert_any(*cbr*)
+stkmap_insert$any with
+$MAP.stkmap_insert$any(*cbr*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -720,13 +720,13 @@ then // if-then
   $fold(env0)) where
 {
 val () =
-$MAP.topmap_insert_kxs(d2vtop, kxs)}
+$MAP.topmap_insert$kxs(d2vtop, kxs)}
 else // if-else
 (
   $fold(env0)) where
 {
 val () =
-$MAP.stkmap_insert_kxs(d2vstk, kxs)}
+$MAP.stkmap_insert$kxs(d2vstk, kxs)}
 //
 end (*let*)//end-of-(envi0i1_locjoin(env0))
 //
@@ -749,7 +749,7 @@ sym1 =
 //
 val
 opt1 =
-stkmap_search_opt(d2vstk, sym1)
+stkmap_search$opt(d2vstk, sym1)
 //
 in//let
 (
@@ -785,11 +785,11 @@ if
 stkmap_nilq
 (  d2vstk  )
 then
-topmap_insert_any
+topmap_insert$any
 (d2vtop,sym1,ival)
 else
 *)
-stkmap_insert_any
+stkmap_insert$any
 (d2vstk,sym1,ival) in $fold(env0) end
 //
 end(*let*)//end-of-( envi0i1_insert_exnm )
@@ -811,7 +811,7 @@ sym1 = d2v1.name((*void*))
 //
 val
 opt1 =
-stkmap_search_opt(d2vstk, sym1)
+stkmap_search$opt(d2vstk, sym1)
 //
 in//let
 //
@@ -829,7 +829,7 @@ optn_vt_cons(ival) => ival)
 where
 {
 val opt2 =
-topmap_search_opt(d2vtop, sym1)}
+topmap_search$opt(d2vtop, sym1)}
 )
 | ~optn_vt_cons(ival) => ( ival )//case+
 //
@@ -857,10 +857,10 @@ if
 stkmap_nilq
 (  d2vstk  )
 then
-topmap_insert_any
+topmap_insert$any
 (d2vtop,sym1,ival)
 else
-stkmap_insert_any
+stkmap_insert$any
 (d2vstk,sym1,ival) in $fold(env0) end
 //
 end(*let*)//end-of-( envi0i1_insert_dvar )

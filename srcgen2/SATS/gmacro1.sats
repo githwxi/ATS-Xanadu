@@ -213,14 +213,14 @@ tr11env_locjoin(env0: !tr11env): void
 (* ****** ****** *)
 //
 fun
-tr11env_search_opt
+tr11env_search$opt
 ( env0:
 ! tr11env, key: sym_t): g1macopt_vt
 //
 (* ****** ****** *)
 //
 fun
-tr11env_insert_any
+tr11env_insert$any
 ( env0:
 ! tr11env, key: sym_t, itm: g1mac): void
 //

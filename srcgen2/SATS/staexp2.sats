@@ -489,16 +489,16 @@ s2cst_set_d2cs
 (* ****** ****** *)
 (*
 fun
-the_s2cstmap_insert_any(s2cst): void
+the_s2cstmap_insert$any(s2cst): void
 fun
-the_s2cstmap_search_opt(sym_t): s2cstopt_vt
+the_s2cstmap_search$opt(sym_t): s2cstopt_vt
 *)
 (* ****** ****** *)
 (*
 fun
-the_s2varmap_insert_any(s2var): void
+the_s2varmap_insert$any(s2var): void
 fun
-the_s2varmap_search_opt(sym_t): s2varopt_vt
+the_s2varmap_search$opt(sym_t): s2varopt_vt
 *)
 (* ****** ****** *)
 //

@@ -806,25 +806,25 @@ XATS2JS_strn_cmp
 //
 #impltmp
 <(*tmp*)>
-$UN.strn_head_raw =
-XATS2JS_strn_head_raw
+$UN.strn_head$raw =
+XATS2JS_strn_head$raw
 where
 {
 #extern
 fun
-XATS2JS_strn_head_raw
+XATS2JS_strn_head$raw
 (cs: strn): char = $extnam()
 }
 //
 #impltmp
 <(*tmp*)>
-$UN.strn_tail_raw =
-XATS2JS_strn_tail_raw
+$UN.strn_tail$raw =
+XATS2JS_strn_tail$raw
 where
 {
 #extern
 fun
-XATS2JS_strn_tail_raw
+XATS2JS_strn_tail$raw
 (cs: strn): strn = $extnam()
 }
 //
@@ -833,13 +833,13 @@ XATS2JS_strn_tail_raw
 //
 #impltmp
 <(*tmp*)>
-strn_get_at =
-XATS2JS_strn_get_at
+strn_get$at =
+XATS2JS_strn_get$at
 where
 {
 #extern
 fun
-XATS2JS_strn_get_at
+XATS2JS_strn_get$at
 ( cs
 : strn,i0: sint): char = $extnam()
 }
@@ -847,13 +847,13 @@ XATS2JS_strn_get_at
 (* ****** ****** *)
 //
 #impltmp
-strn_head_opt<> =
-XATS2JS_strn_head_opt
+strn_head$opt<> =
+XATS2JS_strn_head$opt
 where
 {
 #extern
 fun
-XATS2JS_strn_head_opt
+XATS2JS_strn_head$opt
 (cs: strn): char = $extnam()
 }
 //
@@ -906,13 +906,13 @@ XATS2JS_strtmp_vt_alloc
 (* ****** ****** *)
 //
 #impltmp
-strn_vt_get_at<> =
-XATS2JS_strn_vt_get_at
+strn_vt_get$at<> =
+XATS2JS_strn_vt_get$at
 where
 {
 #extern
 fun
-XATS2JS_strn_vt_get_at
+XATS2JS_strn_vt_get$at
 ( cs
 : strn_vt
 , i0:sint(*ind*)): char = $extnam()
@@ -921,13 +921,13 @@ XATS2JS_strn_vt_get_at
 (* ****** ****** *)
 //
 #impltmp
-strn_vt_set_at<> =
-XATS2JS_strn_vt_set_at
+strn_vt_set$at<> =
+XATS2JS_strn_vt_set$at
 where
 {
 #extern
 fun
-XATS2JS_strn_vt_set_at
+XATS2JS_strn_vt_set$at
 ( cs:strn_vt
 , i0:sint, c0:char): void = $extnam()
 }
@@ -935,13 +935,13 @@ XATS2JS_strn_vt_set_at
 (* ****** ****** *)
 //
 #impltmp
-strtmp_vt_set_at<> =
-XATS2JS_strtmp_vt_set_at
+strtmp_vt_set$at<> =
+XATS2JS_strtmp_vt_set$at
 where
 {
 #extern
 fun
-XATS2JS_strtmp_vt_set_at
+XATS2JS_strtmp_vt_set$at
 ( cs:strtmp_vt
 , i0:sint, c0:char): void = $extnam()
 }
