@@ -93,11 +93,12 @@ strn_irforall(cs: strn): bool
 (* ****** ****** *)
 //
 (*
-//
-(*
 HX-2024-08-07:
 There is no need for
 these special interfaces!
+HX-2024-08-08:
+However, they do support
+symbol overloading nicely!
 *)
 //
 fun<>
@@ -113,7 +114,6 @@ strn_irforitm(cs: strn): void
 #symload rforitm with strn_rforitm of 1000
 #symload iforitm with strn_iforitm of 1000
 #symload irforitm with strn_irforitm of 1000
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

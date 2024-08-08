@@ -133,10 +133,50 @@ Wed 07 Aug 2024 02:22:37 PM EDT
 *)
 #impltmp
 <>(*tmp*)
-strn_iforall = gasz_iforall<strn><cgtz>
+strn_iforall = gseq_iforall<strn><cgtz>
 #impltmp
 <>(*tmp*)
-strn_irforall = gasz_irforall<strn><cgtz>
+strn_irforall = gseq_irforall<strn><cgtz>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
+strn_foritm = gseq_foritm<strn><cgtz>
+#impltmp
+<>(*tmp*)
+strn_rforitm = gseq_rforitm<strn><cgtz>
+#impltmp
+<>(*tmp*)
+strn_iforitm = gseq_iforitm<strn><cgtz>
+#impltmp
+<>(*tmp*)
+strn_irforitm = gseq_irforitm<strn><cgtz>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+#impltmp
+<>(*tmp*)
+strn_listize = gasz_listize<strn><cgtz>
+#impltmp
+<>(*tmp*)
+strn_strmize = gasz_strmize<strn><cgtz>
+#impltmp
+<>(*tmp*)
+strn_strqize = gasz_strqize<strn><cgtz>
+//
+#impltmp
+<>(*tmp*)
+strn_rlistize = gasz_rlistize<strn><cgtz>
+#impltmp
+<>(*tmp*)
+strn_rstrmize = gasz_rstrmize<strn><cgtz>
+#impltmp
+<>(*tmp*)
+strn_rstrqize = gasz_rstrqize<strn><cgtz>
 //
 (* ****** ****** *)
 (* ****** ****** *)

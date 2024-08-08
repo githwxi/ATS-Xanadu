@@ -427,8 +427,25 @@ strn_gmake( a ): strn
 //
 (* ****** ****** *)
 //
+(*
+fun<>
+strn_forall(cs: strn): bool
+fun<>
+strn_rforall(cs: strn): bool
+fun<>
+strn_iforall(cs: strn): bool
+*)
 fun<>
 strn_irforall(cs: strn): bool
+//
+fun<>
+strn_foritm(cs: strn): void
+fun<>
+strn_rforitm(cs: strn): void
+fun<>
+strn_iforitm(cs: strn): void
+fun<>
+strn_irforitm(cs: strn): void
 //
 (* ****** ****** *)
 //
