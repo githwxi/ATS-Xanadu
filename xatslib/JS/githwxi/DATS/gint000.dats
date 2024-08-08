@@ -67,7 +67,7 @@ nint_dgt$listize_base<>(ni, 10))
 <(*tmp*)>
 nint_dgt$listize_base
   (ni, b0) =
-strm_vt_listize0
+strm_vt_rlistize0
 (nint_rdgt$strmize_base<>(ni, b0))
 //
 #impltmp
@@ -82,7 +82,7 @@ fun auxmain(ni) = $llazy
 if ni = 0
 then strmcon_vt_nil() else
 strmcon_vt_cons(ni % b0, auxmain(ni/b0)))
-}
+}(*where*)//end-of-[nint_rdgt$strmize_base]
 //
 (* ****** ****** *)
 (* ****** ****** *)
