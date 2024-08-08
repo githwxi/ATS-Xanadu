@@ -745,6 +745,8 @@ fun
 <y0:vt>
 z2forall$test1(!x0, !y0): bool
 //
+(* ****** ****** *)
+//
 fun
 <x0:t0>
 <y0:t0>
@@ -757,6 +759,8 @@ fun
 <x0:vt>
 <y0:vt>
 z2forcmp$fcmp1(!x0, !y0): sint
+//
+(* ****** ****** *)
 //
 fun
 <x0:t0>

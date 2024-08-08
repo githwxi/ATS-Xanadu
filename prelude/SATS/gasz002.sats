@@ -228,6 +228,43 @@ gasz_x2forall_f2un
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#typedef
+gz2asz
+( xs: t0, x0: vt
+, ys: t0, y0: vt) =
+(
+  z2tup(GASZ(xs, x0), GASZ(ys, y0)))
+//
+#typedef
+gx2asz
+( xs: t0, x0: vt
+, ys: t0, y0: vt) =
+(
+  x2tup(GASZ(xs, x0), GASZ(ys, y0)))
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:vt>
+<ys:t0>
+<y0:vt>
+GASZ_z2make
+( xs: GASZ(xs, x0)
+, ys: GASZ(ys, y0)): GASZ(gz2asz(xs,x0,ys,y0), (x0,y0))
+//
+fun
+<xs:t0>
+<x0:vt>
+<ys:t0>
+<y0:vt>
+GASZ_x2make
+( xs: GASZ(xs, x0)
+, ys: GASZ(ys, y0)): GASZ(gx2asz(xs,x0,ys,y0), (x0,y0))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
