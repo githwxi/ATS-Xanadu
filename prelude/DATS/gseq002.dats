@@ -78,9 +78,9 @@ z2tup(GSEQ(xs, x0), GSEQ(ys, y0)))
 < ys:t0 >
 < y0:t0 >
 GSEQ_z2make
-(xgsq, ygsq) =
+(xseq, yseq) =
 $UN.castxy//GSEQ_make
-(z2tup_make(xgsq, ygsq))
+(z2tup_make(xseq, yseq))
 //
 (* ****** ****** *)
 (* ****** ****** *)

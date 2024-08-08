@@ -923,6 +923,9 @@ fun
 <x0:t0>
 <y0:t0>
 rz2forall$test(x0, y0): bool
+//
+(* ****** ****** *)
+//
 fun
 <x0:t0>
 <y0:t0>

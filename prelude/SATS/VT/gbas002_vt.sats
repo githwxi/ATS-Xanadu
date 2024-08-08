@@ -42,46 +42,46 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 z2forall$test0
 (x0: ~x0, y0: ~y0): bool
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 z2forall$test1
 (x0: !x0, y0: !y0): bool
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 rz2forall$test0
 (x0: ~x0, y0: ~y0): bool
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 rz2forall$test1
 (x0: !x0, y0: !y0): bool
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 iz2forall$test0
 (i0: ni, x0: ~x0, y0: ~y0): bool
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 iz2forall$test1
 (i0: ni, x0: !x0, y0: !y0): bool
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 irz2forall$test0
 (i0: ni, x0: ~x0, y0: ~y0): bool
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 irz2forall$test1
 (i0: ni, x0: !x0, y0: !y0): bool
 //
@@ -89,46 +89,46 @@ irz2forall$test1
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <z0:vt>
 z2map$fopr0(x0: ~x0, y0: ~y0): ( z0 )
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <z0:vt>
 z2map$fopr1(x0: !x0, y0: !y0): ( z0 )
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <z0:vt>
 rz2map$fopr0(x0: ~x0, y0: ~y0): ( z0 )
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <z0:vt>
 rz2map$fopr1(x0: !x0, y0: !y0): ( z0 )
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <z0:vt>
 iz2map$fopr0(i0: ni, x0: ~x0, y0: ~y0): ( z0 )
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <z0:vt>
 iz2map$fopr1(i0: ni, x0: !x0, y0: !y0): ( z0 )
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <z0:vt>
 irz2map$fopr0(i0: ni, x0: ~x0, y0: ~y0): ( z0 )
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <z0:vt>
 irz2map$fopr1(i0: ni, x0: !x0, y0: !y0): ( z0 )
 //
