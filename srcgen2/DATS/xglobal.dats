@@ -132,7 +132,7 @@ the_xsymbls_search
 let
 val map = the_xsymbls
 in//let
-XATS2JS_jsobjmap_search_opt<key>(map,key)
+XATS2JS_jsobjmap_search$opt<key>(map,key)
 end (*let*) // end of [the_xsymbls_search(key)]
 
 (* ****** ****** *)
@@ -152,7 +152,7 @@ val x0 = sym
 val map = the_xsymbls
 //
 in//let
-XATS2JS_jsobjmap_insert_any<key>(map,k0,x0)
+XATS2JS_jsobjmap_insert$any<key>(map,k0,x0)
 end (*let*)//end of [the_xsymbls_insert(sym)]
 
 (* ****** ****** *)
@@ -256,7 +256,7 @@ optn_vt_nil(*void*) else
 let
   val topmap = the_fxtyenv[]
 in//let
-  topmap_search_opt(topmap, key)
+  topmap_search$opt(topmap, key)
 end (*let*) // [the_fxtyenv_pvsfind]
 //
 endloc // end of [the_fxtyenv_pvs(load|find)]
@@ -334,7 +334,7 @@ in//let
 case- opt of
 | ~
 optn_vt_cons(k1) =>
-topmap_insert_any(env0, k1, x1))
+topmap_insert$any(env0, k1, x1))
 where
 {
   val opt = the_xsymbls_search(k1) }
@@ -390,7 +390,7 @@ val-
 the_xsymbls_search(k1)
 val-list_cons(x1, xs1) = (xs1)
 in//let
-  topmap_insert_any(env0, k1, x1)
+  topmap_insert$any(env0, k1, x1)
 end (*let*) // end of [auxkxs1(env0,kxs1)]
 //
 fun
@@ -455,7 +455,7 @@ prerrln("auxkxs1: xs1 = ", xs1)
 *)
 //
 in//let
-  topmap_insert_any(env0, k1, x1)
+  topmap_insert$any(env0, k1, x1)
 end where // end-of-[let(S2ITM-else)]
 {
 val- ~
@@ -511,7 +511,7 @@ in//let
 (
 case+ x1 of
 |_(*D2ITM-else*) =>
-topmap_insert_any(env0, k1, x1))
+topmap_insert$any(env0, k1, x1))
 where
 {
 val- ~
@@ -577,49 +577,49 @@ val env0 = the_sortenv_pvs()
 in//local
 //
 val () =
-topmap_insert_any
+topmap_insert$any
 ( env0
 , INT, S2TEXsrt(the_sort2_int))
 val () =
-topmap_insert_any
+topmap_insert$any
 ( env0
 , BOOL, S2TEXsrt(the_sort2_bool))
 val () =
-topmap_insert_any
+topmap_insert$any
 ( env0
 , ADDR, S2TEXsrt(the_sort2_addr))
 val () =
-topmap_insert_any
+topmap_insert$any
 ( env0
 , CHAR, S2TEXsrt(the_sort2_char))
 val () =
-topmap_insert_any
+topmap_insert$any
 ( env0
 , STRN, S2TEXsrt(the_sort2_strn))
 //
 val () =
-topmap_insert_any
+topmap_insert$any
 ( env0
 , PROP, S2TEXsrt(the_sort2_prop))
 val () =
-topmap_insert_any
+topmap_insert$any
 ( env0
 , TYPE, S2TEXsrt(the_sort2_type))
 val () =
-topmap_insert_any
+topmap_insert$any
 ( env0
 , TBOX, S2TEXsrt(the_sort2_tbox))
 //
 val () =
-topmap_insert_any
+topmap_insert$any
 ( env0
 , VIEW, S2TEXsrt(the_sort2_view))
 val () =
-topmap_insert_any
+topmap_insert$any
 ( env0
 , VWTP, S2TEXsrt(the_sort2_vwtp))
 val () =
-topmap_insert_any
+topmap_insert$any
 ( env0
 , VTBX, S2TEXsrt(the_sort2_vtbx))
 end (*loc*) // end-of-[local(sortenv)]
@@ -868,7 +868,7 @@ optn_vt_nil(*void*) else
 let
 val topmap = the_gmacenv_pvs()
 in//let
-  topmap_search_opt(topmap, key)
+  topmap_search$opt(topmap, key)
 end (*let*) // [the_gmacenv_pvsfind]
 //
 (* ****** ****** *)
@@ -883,7 +883,7 @@ optn_vt_nil(*void*) else
 let
 val topmap = the_sortenv_pvs()
 in//let
-  topmap_search_opt(topmap, key)
+  topmap_search$opt(topmap, key)
 end where
 {
 (*
@@ -904,7 +904,7 @@ optn_vt_nil(*void*) else
 let
 val topmap = the_sexpenv_pvs()
 in//let
-  topmap_search_opt(topmap, key)
+  topmap_search$opt(topmap, key)
 end where
 {
 (*
@@ -926,7 +926,7 @@ optn_vt_nil(*void*) else
 let
 val topmap = the_dexpenv_pvs()
 in//let
-  topmap_search_opt(topmap, key)
+  topmap_search$opt(topmap, key)
 end where
 {
 (*
@@ -956,11 +956,11 @@ the_d2cstmap_xnm() = (the_d2cstmap)
 (* ****** ****** *)
 #implfun
 the_d2cstmap_xnmfind(key) =
-tmpmap_search_opt(the_d2cstmap, key)
+tmpmap_search$opt(the_d2cstmap, key)
 (* ****** ****** *)
 #implfun
 the_d2cstmap_xnmadd0(key, itm) =
-tmpmap_insert_any(the_d2cstmap, key, itm)
+tmpmap_insert$any(the_d2cstmap, key, itm)
 (* ****** ****** *)
 
 end(*loc*) // end of [the_d2cstmap_xnm(srch|find)]
@@ -995,29 +995,29 @@ the_d3tmpenv_pvs() = (the_d3tmpenv)
 (* ****** ****** *)
 #implfun
 the_d1parenv_pvsfind(key) =
-topmap_search_opt(the_d1parenv, key)
+topmap_search$opt(the_d1parenv, key)
 #implfun
 the_d2parenv_pvsfind(key) =
-topmap_search_opt(the_d2parenv, key)
+topmap_search$opt(the_d2parenv, key)
 #implfun
 the_d3parenv_pvsfind(key) =
-topmap_search_opt(the_d3parenv, key)
+topmap_search$opt(the_d3parenv, key)
 #implfun
 the_d3tmpenv_pvsfind(key) =
-topmap_search_opt(the_d3tmpenv, key)
+topmap_search$opt(the_d3tmpenv, key)
 (* ****** ****** *)
 #implfun
 the_d1parenv_pvsadd0(key, itm) =
-topmap_insert_any(the_d1parenv, key, itm)
+topmap_insert$any(the_d1parenv, key, itm)
 #implfun
 the_d2parenv_pvsadd0(key, itm) =
-topmap_insert_any(the_d2parenv, key, itm)
+topmap_insert$any(the_d2parenv, key, itm)
 #implfun
 the_d3parenv_pvsadd0(key, itm) =
-topmap_insert_any(the_d3parenv, key, itm)
+topmap_insert$any(the_d3parenv, key, itm)
 #implfun
 the_d3tmpenv_pvsadd0(key, itm) =
-topmap_insert_any(the_d3tmpenv, key, itm)
+topmap_insert$any(the_d3tmpenv, key, itm)
 (* ****** ****** *)
 end (*loc*) // end-[local(the_d1/d2/d3parenv_pvs)]
 

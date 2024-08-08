@@ -228,12 +228,12 @@ tr3aenv_locjoin
 (* ****** ****** *)
 //
 fun
-tr3aenv_d2crch_opt
+tr3aenv_d2crch$opt
 ( env0:
 ! tr3aenv
 , d2c0 : d2cst) : d3eclist
 fun
-tr3aenv_d2cins_any
+tr3aenv_d2cins$any
 ( env0:
 ! tr3aenv
 , d2c0:d2cst,d3cl:d3ecl): void

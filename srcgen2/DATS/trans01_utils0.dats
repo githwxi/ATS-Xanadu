@@ -201,7 +201,7 @@ T_CHAR1_nil0(_) => '\0'
 T_CHAR2_char(rep) =>
 let
 val opt =
-gseq_get_at_opt
+gseq_get$at$opt
 < strn >< cgtz >(rep, 1)
 in//let
 case- opt of
@@ -257,7 +257,7 @@ strn_tabulate(len-2) where
 {
 #impltmp
 tabulate$fopr
-  <cgtz>(i) = strn_get_at(rep, i+1)
+  <cgtz>(i) = strn_get$at(rep, i+1)
 }
 |
 T_STRN2_ncls(rep, len) =>
@@ -265,7 +265,7 @@ strn_tabulate(len-1) where
 {
 #impltmp
 tabulate$fopr
-  <cgtz>(i) = strn_get_at(rep, i+1)
+  <cgtz>(i) = strn_get$at(rep, i+1)
 }
 )(*case-*)//end-of-[token2sstr(tok)]
 

@@ -151,7 +151,7 @@ stkmap_pshloc2
 (* ****** ****** *)
 //
 fun
-topmap_search_opt
+topmap_search$opt
 {itm:tbox}
 ( map:
   topmap(itm), key: key): optn_vt(itm)
@@ -159,7 +159,7 @@ topmap_search_opt
 (* ****** ****** *)
 //
 fun
-stkmap_search_opt
+stkmap_search$opt
 {itm:tbox}
 ( map:
 ! stkmap(itm), key: key): optn_vt(itm)
@@ -167,12 +167,12 @@ stkmap_search_opt
 (* ****** ****** *)
 //
 fun
-topmap_insert_any
+topmap_insert$any
 {itm:tbox}
 ( map:
   topmap(itm), key: key, itm: itm): void
 fun
-topmap_insert_kxs
+topmap_insert$kxs
 {itm:tbox}
 ( map:
   topmap(itm), kxs: list_vt@(key,itm)): void
@@ -180,12 +180,12 @@ topmap_insert_kxs
 (* ****** ****** *)
 //
 fun
-stkmap_insert_any
+stkmap_insert$any
 {itm:tbox}
 ( map:
 & stkmap(itm) >> _, key, itm): void
 fun
-stkmap_insert_kxs
+stkmap_insert$kxs
 {itm:tbox}
 ( map:
 & stkmap(itm) >> _, list_vt@(key,itm)): void
@@ -198,12 +198,12 @@ stkmap_insert_kxs
 (* ****** ****** *)
 //
 fun
-topmap_insmix_any
+topmap_insmix$any
 {itm:tbox}
 ( map: topmap(itm)
 , key, itm, mix: (itm, itm) -> itm): void
 fun
-topmap_insmix_kxs
+topmap_insmix$kxs
 {itm:tbox}
 ( map: topmap(itm)
 , kxs
@@ -212,13 +212,13 @@ topmap_insmix_kxs
 (* ****** ****** *)
 //
 fun
-stkmap_insmix_any
+stkmap_insmix$any
 {itm:tbox}
 ( map:
 & stkmap(itm) >> _
 , key, itm, mix: (itm, itm) -> itm): void
 fun
-stkmap_insmix_kxs
+stkmap_insmix$kxs
 {itm:tbox}
 ( map:
 & stkmap(itm) >> _

@@ -316,11 +316,11 @@ tr2aenv_locjoin
 (* ****** ****** *)
 //
 fun
-tr2aenv_s2crch_opt
+tr2aenv_s2crch$opt
 ( env0:
 ! tr2aenv,s2c0:s2cst): s2cstlst
 fun
-tr2aenv_s2cins_any
+tr2aenv_s2cins$any
 ( env0:
 ! tr2aenv,s2c0:s2cst): ( void )
 //

@@ -326,7 +326,7 @@ g1exp_nmspace
 (* ****** ****** *)
 //
 fun
-s2cst_select_any
+s2cst_select$any
 (s2cs: s2cstlst): s2cstopt_vt
 //
 (* ****** ****** *)

@@ -669,24 +669,24 @@ strtmp_vt_alloc<> = XINTERP_strtmp_vt_alloc
 //
 #extern
 fun
-XINTERP_strn_get_at
+XINTERP_strn_get$at
 {n:nat}
 {i:int|i<n}
 ( p0: strn(n), i0: sint(i) ): cgtz
 = $extnam((*self*))
 #impltmp
-strn_get_at<> = XINTERP_strn_get_at
+strn_get$at<> = XINTERP_strn_get$at
 //
 #extern
 fun
-XINTERP_strtmp_vt_set_at
+XINTERP_strtmp_vt_set$at
 {n:nat}
 {i:int|i<n}
 ( p0:
 ! strtmp_vt(n), i0: sint(i), c0: cgtz): void
 = $extnam((*self*))
 #impltmp
-strtmp_vt_set_at<> = XINTERP_strtmp_vt_set_at
+strtmp_vt_set$at<> = XINTERP_strtmp_vt_set$at
 //
 (* ****** ****** *)
 //
@@ -769,7 +769,7 @@ XINTERP_a1ref_tail_raw
 //
 #extern
 fun
-XINTERP_a1ref_dtget_at
+XINTERP_a1ref_dtget$at
 {a:vt}{n:int}
 ( A0
 : a1ref(a, n)
@@ -777,7 +777,7 @@ XINTERP_a1ref_dtget_at
 : sint(*index*)): (?!a) = $extnam((*self*))
 #extern
 fun
-XINTERP_a1ptr_dtget1_at
+XINTERP_a1ptr_dtget$at1
 {a:vt}{n:int}
 ( A0:
 ! a1ptr(a, n)
@@ -786,7 +786,7 @@ XINTERP_a1ptr_dtget1_at
 //
 #extern
 fun
-XINTERP_a1ref_dtset_at
+XINTERP_a1ref_dtset$at
 {a:vt}{n:int}
 ( A0
 : a1ref(a, n)
@@ -794,7 +794,7 @@ XINTERP_a1ref_dtset_at
 : sint(*idx*), x0: ?!a): void = $extnam((*0*))
 #extern
 fun
-XINTERP_a1ptr_dtset1_at
+XINTERP_a1ptr_dtset$at1
 {a:vt}{n:int}
 ( A0:
 ! a1ptr(a, n)
@@ -816,38 +816,38 @@ XINTERP_a1ref_tail_raw{a}(A0)
 //
 #impltmp
 {a:t0}
-a1ref_get_at<a>
+a1ref_get$at<a>
 (A0, i0) =
-XINTERP_a1ref_dtget_at{a}(A0, i0)
+XINTERP_a1ref_dtget$at{a}(A0, i0)
 #impltmp
 {a:t0}
-a1ptr_get1_at<a>
+a1ptr_get$at1<a>
 (A0, i0) =
-XINTERP_a1ptr_dtget1_at{a}(A0, i0)
+XINTERP_a1ptr_dtget$at1{a}(A0, i0)
 //
 #impltmp
 {a:vt}
-a1ref_dtget_at<a>
+a1ref_dtget$at<a>
 (A0, i0) =
-XINTERP_a1ref_dtget_at{a}(A0, i0)
+XINTERP_a1ref_dtget$at{a}(A0, i0)
 #impltmp
 {a:vt}
-a1ptr_dtget1_at<a>
+a1ptr_dtget$at1<a>
 (A0, i0) =
-XINTERP_a1ptr_dtget1_at{a}(A0, i0)
+XINTERP_a1ptr_dtget$at1{a}(A0, i0)
 //
 (* ****** ****** *)
 //
 #impltmp
 {a:t0}
-a1ref_set_at<a>
+a1ref_set$at<a>
 (A0, i0, x0) =
-XINTERP_a1ref_dtset_at{a}(A0, i0, x0)
+XINTERP_a1ref_dtset$at{a}(A0, i0, x0)
 #impltmp
 {a:t0}
-a1ptr_set1_at<a>
+a1ptr_set$at1<a>
 (A0, i0, x0) =
-XINTERP_a1ptr_dtset1_at{a}(A0, i0, x0)
+XINTERP_a1ptr_dtset$at1{a}(A0, i0, x0)
 //
 (* ****** ****** *)
 

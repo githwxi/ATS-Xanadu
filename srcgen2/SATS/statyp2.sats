@@ -368,7 +368,7 @@ s2vts_stleq // s2var.sort()
 (* ****** ****** *)
 //
 fun
-s2vts_search_opt
+s2vts_search$opt
 ( s2vts, s2var ): s2typopt_vt
 //
 (* ****** ****** *)
@@ -384,7 +384,7 @@ s2vts with s2vts_make_s2vs_t2ps
 (* ****** ****** *)
 //
 fun
-s2typ_prjout_opt
+s2typ_prjout$opt
 ( s2typ, label ): s2typopt_vt
 //
 (* ****** ****** *)

@@ -466,7 +466,7 @@ val sym1 = symbl(nam1)
 val d1p0 =
 d1pat(loc0, D1Pid0(sym1))
 val fopt =
-tr01env_search_opt(tenv, sym1)
+tr01env_search$opt(tenv, sym1)
 //
 in
 case+ fopt of
@@ -1125,7 +1125,7 @@ val sym1 = symbl(nam1)
 val d1e0 =
 d1exp(loc0, D1Eid0(sym1))
 val fopt =
-tr01env_search_opt(tenv, sym1)
+tr01env_search$opt(tenv, sym1)
 //
 in
 case+ fopt of

@@ -562,7 +562,7 @@ a1ptr_alloc<a> = XATS2JS_a1ptr_alloc
 //
 #extern
 fun
-XATS2JS_a1ref_get_at
+XATS2JS_a1ref_get$at
 {a:t0}
 {n:i0}
 ( A0:
@@ -570,11 +570,11 @@ XATS2JS_a1ref_get_at
 , i0: nintlt(n)): a = $extnam()
 #impltmp
 { a:t0 }
-a1ref_get_at<a> = XATS2JS_a1ref_get_at
+a1ref_get$at<a> = XATS2JS_a1ref_get$at
 //
 #extern
 fun
-XATS2JS_a1ptr_get1_at
+XATS2JS_a1ptr_get$at1
 {a:t0}
 {n:i0}
 ( A0:
@@ -582,13 +582,13 @@ XATS2JS_a1ptr_get1_at
 , i0: nintlt(n)): a = $extnam()
 #impltmp
 { a:t0 }
-a1ptr_get1_at<a> = XATS2JS_a1ptr_get1_at
+a1ptr_get$at1<a> = XATS2JS_a1ptr_get$at1
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2JS_a1ref_set_at
+XATS2JS_a1ref_set$at
 {a:t0}
 {n:i0}
 ( A0:
@@ -597,11 +597,11 @@ XATS2JS_a1ref_set_at
 , x0: a(*new*)): void = $extnam()
 #impltmp
 { a:t0 }
-a1ref_set_at<a> = XATS2JS_a1ref_set_at
+a1ref_set$at<a> = XATS2JS_a1ref_set$at
 //
 #extern
 fun
-XATS2JS_a1ptr_set1_at
+XATS2JS_a1ptr_set$at1
 {a:t0}
 {n:i0}
 ( A0:
@@ -610,14 +610,14 @@ XATS2JS_a1ptr_set1_at
 , x0: a(*new*)): void = $extnam()
 #impltmp
 { a:t0 }
-a1ptr_set1_at<a> = XATS2JS_a1ptr_set1_at
+a1ptr_set$at1<a> = XATS2JS_a1ptr_set$at1
 //
 (* ****** ****** *)
 //
 (*
 #extern
 fun
-XATS2JS_a1ptr_set_at_raw
+XATS2JS_a1ptr_set$at$raw
 {a:vt}
 {n:i0}
 ( A0:
@@ -626,19 +626,19 @@ XATS2JS_a1ptr_set_at_raw
 , x0: a(*ini*)): void = $extnam()
 #impltmp
 { a:vt }
-a1ptr_set_at_raw<a> = XATS2JS_a1ptr_set_at_raw
+a1ptr_set$at$raw<a> = XATS2JS_a1ptr_set$at$raw
 *)
 //
 (* ****** ****** *)
 //
 #impltmp
 { a:vt }
-a1ref_dtget_at<a> =
-XATS2JS_a1ref_dtget_at where
+a1ref_dtget$at<a> =
+XATS2JS_a1ref_dtget$at where
 {
 #extern
 fun
-XATS2JS_a1ref_dtget_at
+XATS2JS_a1ref_dtget$at
 {a:vt}
 {n:i0}
 ( A0:

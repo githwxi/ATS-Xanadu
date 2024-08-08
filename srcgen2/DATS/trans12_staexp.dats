@@ -667,7 +667,7 @@ prerrln
 *)
 //
 val
-opt0 = s2cst_select_any(s2cs)
+opt0 = s2cst_select$any(s2cs)
 in//let
 case+ opt0 of
 | ~optn_vt_nil() => s2exp_none1(s1e0)
@@ -1396,7 +1396,7 @@ val s2t1 =
 case+
 s2f0.sort() of
 | S2Tfun1(s2ts, _) =>
-  list_get_at(s2ts, 0)
+  list_get$at(s2ts, 0)
 | _(*non-S2Tfun*) => S2Tnone0()
 ) : sort2 // end of [val s2t1]
 //
@@ -1405,7 +1405,7 @@ val s2t2 =
 case+
 s2f0.sort() of
 | S2Tfun1(s2ts, _) =>
-  list_get_at(s2ts, 1)
+  list_get$at(s2ts, 1)
 | _(*non-S2Tfun*) => S2Tnone0()
 ) : sort2 // end of [val s2t2]
 //
@@ -1688,7 +1688,7 @@ prerrln
 val s2cs =
 s1exp_get_s2cstlst(env0, s1e0)
 //
-val sopt = s2cst_select_any(s2cs)
+val sopt = s2cst_select$any(s2cs)
 //
 (*
 val (  ) =

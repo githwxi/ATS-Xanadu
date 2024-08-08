@@ -359,7 +359,7 @@ case+
 simp.node() of
 |SIMPLone1
 (s2c1) =>
-tr23env_insert_any(env0,s2c1)
+tr23env_insert$any(env0,s2c1)
 |_(*otherwise*) => ( (*void*) ))
 //
 in//let
@@ -385,7 +385,7 @@ case+
 simp.node() of
 |SIMPLone1
 (s2c1) =>
-tr23env_insert_any(env0,s2c1)
+tr23env_insert$any(env0,s2c1)
 //
 |SIMPLopt2
 (sqid,scs1,scs2) =>
@@ -393,7 +393,7 @@ tr23env_insert_any(env0,s2c1)
 case+ scs2 of
 |list_nil() => ()
 |list_cons(s2c1, _) =>
-tr23env_insert_any(env0,s2c1))
+tr23env_insert$any(env0,s2c1))
 //
 |SIMPLall1
 (sqid, s2cs) => ((*deadcode*)))

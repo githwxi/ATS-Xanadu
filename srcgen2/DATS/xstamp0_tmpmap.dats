@@ -88,7 +88,7 @@ gmap_strmize<gmap><key,itm>(map)
 (* ****** ****** *)
 //
 #implfun
-tmpmap_search_opt
+tmpmap_search$opt
   {itm:tbox}(map,key) =
 let
 //
@@ -96,14 +96,14 @@ val key = g0u2s(uint(key))
 //
 in//let
 //
-XATS2JS_jsobjmap_search_opt<key>{itm}(map,key)
+XATS2JS_jsobjmap_search$opt<key>{itm}(map,key)
 //
-end (*let*) // end of [tmpmap_search_opt(...)]
+end (*let*) // end of [tmpmap_search$opt(...)]
 //
 (* ****** ****** *)
 //
 #implfun
-tmpmap_insert_any
+tmpmap_insert$any
 {itm:tbox}(map,key,itm) =
 let
 //
@@ -111,9 +111,9 @@ val key = g0u2s(uint(key))
 //
 in//let
 //
-XATS2JS_jsobjmap_insert_any<key>{itm}(map,key,itm)
+XATS2JS_jsobjmap_insert$any<key>{itm}(map,key,itm)
 //
-end (*let*) // end of [tmpmap_insert_any(...)]
+end (*let*) // end of [tmpmap_insert$any(...)]
 //
 (* ****** ****** *)
 

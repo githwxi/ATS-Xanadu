@@ -7,13 +7,13 @@ JSBasics for Xats2js
 ////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_jsobj_get_at
+XATS2JS_jsobj_get$at
   (obj, key)
 {
   return obj[ key ];
 }
 function
-XATS2JS_jsobj_set_at
+XATS2JS_jsobj_set$at
   (obj, key, itm)
 {
   return (obj[key] = itm);
@@ -39,13 +39,13 @@ XATS2JS_jsarray_length
 /* ****** ****** */
 
 function
-XATS2JS_jsarray_get_at
+XATS2JS_jsarray_get$at
   (xs, i0)
 {
   return xs[i0];
 }
 function
-XATS2JS_jsarray_set_at
+XATS2JS_jsarray_set$at
   (xs, i0, x0)
 {
   return ( xs[i0] = x0 );
@@ -86,7 +86,7 @@ XATS2JS_jsobjmap_make_nil
 /* ****** ****** */
 
 function
-XATS2JS_jsobjmap_search_opt
+XATS2JS_jsobjmap_search$opt
    (obj, key)
 {
 //
@@ -99,28 +99,28 @@ if(itm0===undefined)
   return XATS2JS_optn_vt_cons(itm0);
 } // end of [if]
 //
-} // [ XATS2JS_jsobjmap_search_opt ]
+} // [ XATS2JS_jsobjmap_search$opt ]
 
 /* ****** ****** */
 
 function
-XATS2JS_jsobjmap_insert_any
+XATS2JS_jsobjmap_insert$any
    (obj, key, itm1)
 {
   obj[key] = itm1; return;
-} // [XATS2JS_jsobjmap_insert_any]
+} // [XATS2JS_jsobjmap_insert$any]
 
 function
-XATS2JS_jsobjmap_remove_any
+XATS2JS_jsobjmap_remove$any
    (obj, key)
 {
   delete object[key]; return ;
-} // [XATS2JS_jsobjmap_remove_any]
+} // [XATS2JS_jsobjmap_remove$any]
 
 /* ****** ****** */
 
 function
-XATS2JS_jsobjmap_insert_opt
+XATS2JS_jsobjmap_insert$opt
    (obj, key, itm1)
 {
 //
@@ -135,10 +135,10 @@ if(itm0===undefined)
   return XATS2JS_optn_vt_cons(itm0);
 } // end of [if]
 //
-} // [ XATS2JS_jsobjmap_insert_opt ]
+} // [ XATS2JS_jsobjmap_insert$opt ]
 
 function
-XATS2JS_jsobjmap_remove_opt
+XATS2JS_jsobjmap_remove$opt
    (obj, key)
 {
 //
@@ -152,7 +152,7 @@ if(itm0===undefined)
   return XATS2JS_optn_vt_cons(itm0);
 } // end of [if]
 //
-} // [ XATS2JS_jsobjmap_remove_opt ]
+} // [ XATS2JS_jsobjmap_remove$opt ]
 
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////

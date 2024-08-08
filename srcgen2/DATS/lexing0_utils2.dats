@@ -786,11 +786,11 @@ T_VAL(vlk) = x0.node()
 fun
 plusq
 (sym: strn): bool =
-(strn_head_opt(sym) = '+')
+(strn_head$opt(sym) = '+')
 fun
 mnusq
 (sym: strn): bool =
-(strn_head_opt(sym) = '-')
+(strn_head$opt(sym) = '-')
 //
 (*
 val () =
@@ -844,7 +844,7 @@ val lc0 = x0.lctn()
 val lc1 = x1.lctn()
 val loc = lc0 + lc1
 val sym =
-  $UN.strn_tail_raw(sym)
+  $UN.strn_tail$raw(sym)
 in//let
 loop1
 ( x1
@@ -868,7 +868,7 @@ val lc0 = x0.lctn()
 val lc1 = x1.lctn()
 val loc = lc0 + lc1
 val sym =
-  $UN.strn_tail_raw(sym)
+  $UN.strn_tail$raw(sym)
 in//let
 loop1
 ( x1
@@ -992,7 +992,7 @@ end where
   fun
   qbeg
   (sym: strn): bool =
-  (strn_head_opt(sym) = '?')
+  (strn_head$opt(sym) = '?')
 
 } (*where*)//end-of[f0_IDALP(......)]
 //
@@ -1428,11 +1428,11 @@ T_VAL(vlk) = x0.node()
 fun
 plusq
 (sym: strn): bool =
-(strn_head_opt(sym) = '+')
+(strn_head$opt(sym) = '+')
 fun
 mnusq
 (sym: strn): bool =
-(strn_head_opt(sym) = '-')
+(strn_head$opt(sym) = '-')
 //
 (*
 val () =
@@ -1486,7 +1486,7 @@ val lc0 = x0.lctn()
 val lc1 = x1.lctn()
 val loc = lc0 + lc1
 val sym =
-  $UN.strn_tail_raw(sym)
+  $UN.strn_tail$raw(sym)
 in//let
 strmcon_vt_cons
 ( xx2
@@ -1510,7 +1510,7 @@ val lc0 = x0.lctn()
 val lc1 = x1.lctn()
 val loc = lc0 + lc1
 val sym =
-  $UN.strn_tail_raw(sym)
+  $UN.strn_tail$raw(sym)
 in//let
 strmcon_vt_cons
 ( xx2
@@ -1636,7 +1636,7 @@ end where
   fun
   qbeg
   (sym: strn): bool =
-  (strn_head_opt(sym) = '?')
+  (strn_head$opt(sym) = '?')
 
 } (*where*)//end-of[f0_IDALP(......)]
 //

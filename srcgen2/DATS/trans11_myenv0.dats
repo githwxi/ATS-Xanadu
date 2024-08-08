@@ -217,15 +217,15 @@ val
 ((*void*)) =
 if
 stkmap_nilq(stkmap)
-then topmap_insert_kxs(topmap, kxs)
-else stkmap_insert_kxs(stkmap, kxs) }
+then topmap_insert$kxs(topmap, kxs)
+else stkmap_insert$kxs(stkmap, kxs) }
 //
 end (*let*)//end-of-(tr11env_locjoin(tr11))
 //
 (* ****** ****** *)
 
 #implfun
-tr11env_search_opt
+tr11env_search$opt
   (env0, k0) = let
 //
 val+
@@ -233,7 +233,7 @@ TR11ENV
 (topmap, stkmap) = env0
 //
 val opt =
-stkmap_search_opt(stkmap, k0)
+stkmap_search$opt(stkmap, k0)
 //
 in//let
 //
@@ -245,7 +245,7 @@ optn_vt_cons
 optn_vt_nil() =>
 let
 val opt =
-topmap_search_opt(topmap,k0)
+topmap_search$opt(topmap,k0)
 in//let
 (
 case+ opt of
@@ -257,12 +257,12 @@ optn_vt_nil() => the_gmacenv_pvsfind(k0)
 )
 end (*let*)//end-of-[optn_nil()]
 //
-end (*let*)//end-of-[tr11env_search_opt(env0,k0)]
+end (*let*)//end-of-[tr11env_search$opt(env0,k0)]
 
 (* ****** ****** *)
 //
 #implfun
-tr11env_insert_any
+tr11env_insert$any
   (tr11, k0, x0) = let
 //
 val+
@@ -274,11 +274,11 @@ in//let
 if
 stkmap_nilq(stkmap)
 then
-topmap_insert_any(topmap, k0, x0)//top
+topmap_insert$any(topmap, k0, x0)//top
 else
-stkmap_insert_any(stkmap, k0, x0)//inner
+stkmap_insert$any(stkmap, k0, x0)//inner
 //
-end (*let*)//end-of(tr11env_insert_any(tr11,k0,x0))
+end (*let*)//end-of(tr11env_insert$any(tr11,k0,x0))
 //
 (* ****** ****** *)
 

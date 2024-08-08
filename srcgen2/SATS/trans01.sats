@@ -404,15 +404,15 @@ tr01env_locjoin(env0: !tr01env): void
 (* ****** ****** *)
 //
 fun
-tr01env_search_opt
+tr01env_search$opt
 ( env0:
 ! tr01env, key: sym_t): fixtyopt_vt
 fun
-tr01env_insert_any
+tr01env_insert$any
 ( env0:
 ! tr01env, key: sym_t, itm: fixty): void
 fun
-tr01env_insmix_any
+tr01env_insmix$any
 ( env0:
 ! tr01env, key: sym_t, itm: fixty): void
 //

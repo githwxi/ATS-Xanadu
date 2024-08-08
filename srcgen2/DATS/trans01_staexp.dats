@@ -736,7 +736,7 @@ val sym1 = symbl(nam1)
 val g1e0 =
 g1exp(loc0, G1Eid0(sym1))
 val fopt =
-tr01env_search_opt(tenv, sym1)
+tr01env_search$opt(tenv, sym1)
 //
 in
 case+ fopt of
@@ -1168,7 +1168,7 @@ sym0=SUB_symbl)
 then
 optn_vt_cons
 (postmnus_fixty) else
-tr01env_search_opt(tenv, sym0))
+tr01env_search$opt(tenv, sym0))
 ) : fixtyopt_vt // end(val(opt))
 //
 val
@@ -1560,7 +1560,7 @@ val sym1 = symbl(nam1)
 val s1e0 =
 s1exp(loc0, S1Eid0(sym1))
 val fopt =
-tr01env_search_opt(tenv, sym1)
+tr01env_search$opt(tenv, sym1)
 //
 in
 case+ fopt of

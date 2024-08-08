@@ -1470,7 +1470,7 @@ optn_vt_cons(tprj) => tprj)
 where
 {val
  topt =
- s2typ_prjout_opt(ttup,dlab)}
+ s2typ_prjout$opt(ttup,dlab)}
 //
 in//let
 d3exp_make_tpnd
@@ -2347,7 +2347,7 @@ then d3e1 else // if
 let//let
 val topt =
 (
-s2typ_prjout_opt(t2p1, lab2))
+s2typ_prjout$opt(t2p1, lab2))
 in//let
 (
 case+ topt of

@@ -188,10 +188,10 @@ val DRAISE_symbl: symbl //=symbl("$raise")
 (* ****** ****** *)
 //
 fun
-symbl_search_opt
+symbl_search$opt
 (nam: strn): optn_vt(symbl)
 fun
-symbl_insert_any(sym: symbl): void
+symbl_insert$any(sym: symbl): void
 //
 (* ****** ****** *)
 //

@@ -1918,7 +1918,7 @@ prerrln
 //
 val
 topt =
-s2typ_prjout_opt(ttup,dlab)
+s2typ_prjout$opt(ttup,dlab)
 //
 val
 dtup =

@@ -87,13 +87,13 @@ case+ opt of
 ) where
 {
 val opt =
-XATS2JS_jsobjmap_search_opt<key>{itm}(mymaper, k0)
+XATS2JS_jsobjmap_search$opt<key>{itm}(mymaper, k0)
 }
 
 #implfun
 lexing_tnode_insert
   ( k0, x0 ) =
-XATS2JS_jsobjmap_insert_any<key>{itm}(mymaper, k0, x0)
+XATS2JS_jsobjmap_insert$any<key>{itm}(mymaper, k0, x0)
 
 end (*local*) // end of [local]
 

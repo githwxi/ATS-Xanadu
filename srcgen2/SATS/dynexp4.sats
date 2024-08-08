@@ -275,7 +275,7 @@ d2vtplst_vt = list_vt(d2vtp)
 s2typopt_vt = optn_vt(s2typ)
 //
 fun
-d2vts_search_opt
+d2vts_search$opt
 ( d2vts, d2var ): (s2typopt_vt)
 //
 (* ****** ****** *)
