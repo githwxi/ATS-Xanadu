@@ -45,9 +45,19 @@ Sun 21 Jul 2024 11:06:11 PM EDT
 (* ****** ****** *)
 //
 #staload
+"./../DATS/gint000.dats"
+#staload
 "./../DATS/qlist00.dats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+val ds =
+nint_dgt$listize(123456789)
+val () = print1s("ds = ", ds,"\n")
+//
+(* ****** ****** *)
+////
 (* ****** ****** *)
 val f0 =
 lam(x:int) => @(x, x=x)
