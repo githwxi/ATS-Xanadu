@@ -49,8 +49,6 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #typedef
 jsa(a:vt) = jsarray(a)
-#typedef
-jsa(a:vt,n:i0) = jsarray(a,n)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -87,10 +85,10 @@ XATS2JS_jsarray_make_ncpy
 #extern
 fun
 XATS2JS_jsarray_make_ncpy
- {a:t0}{n:nat}
+ {a:t0}
 ( n
-: sint(n)
-, x:( a )): jsa(a, n) = $extnam()
+: nint
+, x:( a )): jsa(a) = $extnam()
 }
 //
 (* ****** ****** *)
@@ -116,7 +114,7 @@ XATS2JS_jsarray_make0_1val
 fun
 XATS2JS_jsarray_make0_1val
  {a:vt}
-( x1: (a)): jsa(a, 1) = $extnam()
+( x1: (a)): jsa(a) = $extnam()
 }
 //
 #impltmp
@@ -132,7 +130,7 @@ fun
 XATS2JS_jsarray_make0_2val
  {a:vt}
 ( x1: (a)
-, x2: (a)): jsa(a, 2) = $extnam()
+, x2: (a)): jsa(a) = $extnam()
 }
 //
 #impltmp
@@ -149,7 +147,7 @@ XATS2JS_jsarray_make0_3val
  {a:vt}
 ( x1: (a)
 , x2: (a)
-, x3: (a)): jsa(a, 3) = $extnam()
+, x3: (a)): jsa(a) = $extnam()
 }
 //
 (* ****** ****** *)
@@ -166,8 +164,8 @@ XATS2JS_jsarray_length(A)
 #extern
 fun
 XATS2JS_jsarray_length
- {a:vt}{n:nat}
-(A: jsa(a, n)):sint(n) = $extnam()
+ {a:vt}
+(A: jsa(a)): nint = $extnam()
 }
 //
 #impltmp
@@ -198,8 +196,8 @@ XATS2JS_jsarray_get$at
 #extern
 fun
 XATS2JS_jsarray_get$at
-{a:t0}{n:nat}
-(A: jsa(a, n), i: nint): (a) = $extnam()
+{a:t0}
+(A: jsa(a), i: nint): (a) = $extnam()
 }
 //
 #impltmp
@@ -213,8 +211,8 @@ XATS2JS_jsarray_set$at
 #extern
 fun
 XATS2JS_jsarray_set$at
-{a:t0}{n:nat}
-(A: jsa(a, n), i:nint, x:a): void = $extnam()
+{a:t0}
+(A: jsa(a), i:nint, x:a): void = $extnam()
 }
 //
 #impltmp
@@ -363,7 +361,7 @@ fun
 XATS2JS_jsarray_forall_f1un
  {a:vt}
 ( A: jsa(a)
-, test: (!a)-<cfr>bool): bool = $extnam()
+, test: (!a) -> bool): bool = $extnam()
 }
 //
 (* ****** ****** *)
@@ -409,7 +407,7 @@ fun
 XATS2JS_jsarray_rforall_f1un
  {a:vt}
 ( A: jsa(a)
-, test: (a)-<cfr>bool): bool = $extnam()
+, test: (!a) -> bool): bool = $extnam()
 }
 //
 (* ****** ****** *)
@@ -436,7 +434,7 @@ fun
 XATS2JS_jsarray_mapref_f1un
  {a:vt}
 ( A: jsa(a)
-, fopr: (~a)-<cfr>(a)): void = $extnam()
+, fopr: (~a) -> (a)): void = $extnam()
 }
 //
 (* ****** ****** *)
@@ -447,7 +445,7 @@ XATS2JS_jsarray_mapref_f1un
 jsarray_sortref
   ( A ) =
 (
-jsarray_sortref_c2fr<>
+jsarray_sortref_f2un<>
 (A, lam(x,y)=>g_cmp11<a>(x, y)))
 //
 (*
@@ -467,19 +465,19 @@ gasz_sortref1
 //
 #impltmp
 <(*tmp*)>
-jsarray_sortref_c2fr
+jsarray_sortref_f2un
   (A, cmpr) =
 (
-XATS2JS_jsarray_sortref_c2fr
+XATS2JS_jsarray_sortref_f2un
   (A, cmpr)) where
 {
 #extern
 fun
-XATS2JS_jsarray_sortref_c2fr
+XATS2JS_jsarray_sortref_f2un
  {a:vt}
 ( A: jsa(a)
 , cmpr
-: (!a, !a)-<cfr>sint): void = $extnam()
+: (!a, !a) -> sint): void = $extnam()
 }
 //
 (* ****** ****** *)

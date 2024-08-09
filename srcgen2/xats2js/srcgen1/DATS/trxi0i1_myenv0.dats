@@ -61,8 +61,10 @@ XATSOPT "./../../.."
 #staload "./../SATS/trxi0i1.sats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #typedef
 iltlst = list(i1let)
+(* ****** ****** *)
 (* ****** ****** *)
 #typedef
 d2vtop = $MAP.topmap(i1val)
@@ -70,73 +72,55 @@ d2vtop = $MAP.topmap(i1val)
 d2vstk = $MAP.stkmap(i1val)
 (* ****** ****** *)
 (* ****** ****** *)
-#symload
-lctn
-with d2var_get_lctn
-#symload
-name
-with d2var_get_name
+#symload lctn with d2var_get_lctn
+(*
+#symload name with d2var_get_name
+*)
+#symload unam with d2var_get_unam
 (* ****** ****** *)
 //
 #symload
-stkmap_nilq
-with
-$MAP.stkmap_nilq(*cbv*)
-//
-(* ****** ****** *)
-//
-#symload
-stkmap_pshlam0 with
-$MAP.stkmap_pshlam0(*cbr*)
-#symload
-stkmap_pshlet0 with
-$MAP.stkmap_pshlet0(*cbr*)
-#symload
-stkmap_pshloc1 with
-$MAP.stkmap_pshloc1(*cbr*)
-#symload
-stkmap_pshloc2 with
-$MAP.stkmap_pshloc2(*cbr*)
-//
-#symload
-stkmap_poplam0 with
-$MAP.stkmap_poplam0(*cbr*)
-#symload
-stkmap_poplet0 with
-$MAP.stkmap_poplet0(*cbr*)
-#symload
-stkmap_poploc0 with
-$MAP.stkmap_poploc0(*cbr*)
+stkmap_nilq with $MAP.stkmap_nilq(*cbv*)
 //
 (* ****** ****** *)
 //
 #symload
-topmap_make_nil
-with
-$MAP.topmap_make_nil(*void*)
+stkmap_pshlam0 with $MAP.stkmap_pshlam0(*cbr*)
 #symload
-stkmap_make_nil with
-$MAP.stkmap_make_nil(*void*)
+stkmap_pshlet0 with $MAP.stkmap_pshlet0(*cbr*)
+#symload
+stkmap_pshloc1 with $MAP.stkmap_pshloc1(*cbr*)
+#symload
+stkmap_pshloc2 with $MAP.stkmap_pshloc2(*cbr*)
 //
 #symload
-stkmap_free_nil with
-$MAP.stkmap_free_nil(*void*)
+stkmap_poplam0 with $MAP.stkmap_poplam0(*cbr*)
+#symload
+stkmap_poplet0 with $MAP.stkmap_poplet0(*cbr*)
+#symload
+stkmap_poploc0 with $MAP.stkmap_poploc0(*cbr*)
 //
 (* ****** ****** *)
 //
 #symload
-topmap_search$opt with
-$MAP.topmap_search$opt(*cbr*)
+topmap_make_nil with $MAP.topmap_make_nil(*void*)
 #symload
-stkmap_search$opt with
-$MAP.stkmap_search$opt(*cbr*)
+stkmap_make_nil with $MAP.stkmap_make_nil(*void*)
 //
 #symload
-topmap_insert$any with
-$MAP.topmap_insert$any(*cbr*)
+stkmap_free_nil with $MAP.stkmap_free_nil(*void*)
+//
+(* ****** ****** *)
+//
 #symload
-stkmap_insert$any with
-$MAP.stkmap_insert$any(*cbr*)
+topmap_search$opt with $MAP.topmap_search$opt(*cbr*)
+#symload
+stkmap_search$opt with $MAP.stkmap_search$opt(*cbr*)
+//
+#symload
+topmap_insert$any with $MAP.topmap_insert$any(*cbr*)
+#symload
+stkmap_insert$any with $MAP.stkmap_insert$any(*cbr*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -807,7 +791,7 @@ val+
  d2vstk,!iltstk) = env0
 //
 val
-sym1 = d2v1.name((*void*))
+sym1 = d2v1.unam((*void*))
 //
 val
 opt1 =
@@ -847,7 +831,7 @@ val+
 !d2vstk,!iltstk) = env0
 //
 val
-sym1 = d2v1.name((*void*))
+sym1 = d2v1.unam((*void*))
 //
 in//let
 //

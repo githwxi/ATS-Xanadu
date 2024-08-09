@@ -75,7 +75,7 @@ val A4 = jsarray_append<>(A3, A3)
 //
 val () =
 prints("A4(", type(A4), " = ", A4, "\n")
-////
+//
 (* ****** ****** *)
 //
 val xs = listize(An)
@@ -166,17 +166,6 @@ val () = prints
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-#symload
-GSEQ with GSEQ_make_list
-#symload
-GASZ with GASZ_make_jsarray
-#symload forall
-with GSEQ_forall_c1fr of 1000
-#symload forall
-with GASZ_forall_c1fr of 1000
-*)
-//
 val b0 =
 forall(GSEQ(xs), lam(x) => x >= 0)
 val ( ) = prints("b0 = ", b0, "\n")
@@ -184,6 +173,7 @@ val rb0 =
 rforall(GSEQ(xs), lam(x) => x >= 0)
 val ( ) = prints("rb0 = ", rb0, "\n")
 //
+(*
 val b1 =
 forall
 (
@@ -196,6 +186,7 @@ rforall
 GASZ(An),
 lam(x) => (print("x=", x); x >= 0))
 val ( ) = (prints("rb1 = ", rb1, "\n"))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -212,11 +203,13 @@ val () = print1s
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
 val N = 10
 val () = print1s
 ("listize(",N,") = ",listize(GSEQ_nint0(N)),"\n")
 val () = print1s
 ("rlistize(",N,") = ",rlistize(GSEQ_nint0(N)),"\n")
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 //

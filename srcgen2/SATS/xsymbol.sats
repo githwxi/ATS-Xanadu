@@ -77,7 +77,8 @@ symbl_cmp(symbl, symbl): sint
 (* ****** ****** *)
 //
 fun//<>
-symbl_fprint(FILR, symbl): void
+symbl_fprint
+(out: FILR, sym: symbl): void
 //
 (* ****** ****** *)
 //
@@ -92,7 +93,8 @@ symbl_get_stmp(symbl): stamp
 (* ****** ****** *)
 //
 fun
-symbl_make_name(nam: strn): symbl
+symbl_make_name
+  (name: strn): symbl//end(fun)
 #symload symbl with symbl_make_name
 //
 (* ****** ****** *)
@@ -255,5 +257,18 @@ Fri 19 Jul 2024 05:07:03 PM EDT
 val DLR_SYNEXT_symbl: symbl // =symbl("$synext")
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-08-08:
+Thu 08 Aug 2024 10:07:35 PM EDT
+*)
+//
+fun
+symbl_extend_stamp
+(sym0: symbl, stmp: stamp): symbl
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_SATS_xsymbol.sats] *)

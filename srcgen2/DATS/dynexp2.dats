@@ -1093,8 +1093,9 @@ D2VAR of
 , sym_t // name
 , t2qas // tqas
 , s2exp // sexp
-, stamp // stmp // unicity
 , s2typ // styp // erasure
+, stamp // stmp // unicity
+, sym_t // unam // name+stamp
 )
 datavwtp
 d2var_vt =
@@ -1103,8 +1104,9 @@ D2VAR_vt of
 , sym_t // name
 , t2qas // tqas
 , s2exp // sexp
-, stamp // stmp // unicity
 , s2typ // styp // erasure
+, stamp // stmp // unicity
+, sym_t // unam // name+stamp
 )
 //
 #absimpl d2var_tbox = d2var
@@ -1119,8 +1121,9 @@ val+
 D2VAR
 (loc0
 ,sym0
-,tqas,s2e0
-,stmp,t2p0) = d2v0 in loc0 end
+,tqas
+,s2e0,t2p0
+,stmp,unam) = d2v0 in loc0 end
 //
 #implfun
 d2var_get_name
@@ -1130,8 +1133,9 @@ val+
 D2VAR
 (loc0
 ,sym0
-,tqas,s2e0
-,stmp,t2p0) = d2v0 in sym0 end
+,tqas
+,s2e0,t2p0
+,stmp,unam) = d2v0 in sym0 end
 //
 #implfun
 d2var_get_sexp
@@ -1141,8 +1145,9 @@ val+
 D2VAR
 (loc0
 ,sym0
-,tqas,s2e0
-,stmp,t2p0) = d2v0 in s2e0 end
+,tqas
+,s2e0,t2p0
+,stmp,unam) = d2v0 in s2e0 end
 //
 #implfun
 d2var_get_styp
@@ -1152,8 +1157,9 @@ val+
 D2VAR
 (loc0
 ,sym0
-,tqas,s2e0
-,stmp,t2p0) = d2v0 in t2p0 end
+,tqas
+,s2e0,t2p0
+,stmp,unam) = d2v0 in t2p0 end
 //
 #implfun
 d2var_get_stmp
@@ -1163,8 +1169,21 @@ val+
 D2VAR
 (loc0
 ,sym0
-,tqas,s2e0
-,stmp,t2p0) = d2v0 in stmp end
+,tqas
+,s2e0,t2p0
+,stmp,unam) = d2v0 in stmp end
+//
+#implfun
+d2var_get_unam
+  (  d2v0  ) =
+let
+val+
+D2VAR
+(loc0
+,sym0
+,tqas
+,s2e0,t2p0
+,stmp,unam) = d2v0 in unam end
 //
 (* ****** ****** *)
 //
@@ -1181,8 +1200,9 @@ val+
   sym0,
   tqas,
 ! sexp,
+  t2p0,
   stmp,
-  t2p0 ) = d2v0 in sexp := s2e0
+  unam ) = d2v0 in sexp := s2e0
 end (*let*) // end of [d2var_set_sexp]
 //
 (* ****** ****** *)
@@ -1200,8 +1220,9 @@ val+
   sym0,
   tqas,
   s2e0,
+! styp,
   stmp,
-! styp ) = d2v0 in styp := t2p0
+  unam ) = d2v0 in styp := t2p0
 end (*let*) // end of [d2var_set_styp]
 //
 (* ****** ****** *)
@@ -1214,13 +1235,17 @@ val tqas = list_nil()
 val s2e0 = s2exp_none0()
 val t2p0 = s2typ_none0()
 //
-val stmp = the_d2var_stamp_new()
+val stmp =
+the_d2var_stamp_new((*nil*))
+//
+val unam =
+symbl_extend_stamp(sym0, stmp)
 //
 in//let
 (
-  D2VAR
-  ( loc0
-  , sym0, tqas, s2e0, stmp, t2p0 ) )
+D2VAR
+( loc0
+, sym0,tqas,s2e0,t2p0,stmp,unam) )
 end (*let*) // end of [d2var_new2_name]
 //
 end (*local*) // end of [local(d2var_tbox)]
