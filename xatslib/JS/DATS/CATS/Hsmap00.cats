@@ -43,6 +43,32 @@ XATS2JS_jshsmap_make_nil
 }
 //
 /////////////////////////////////////////////////////////////////////////
+//
+/*
+fun<>
+UN_jshsmap_get$at$raw
+ {k:t0}{x:t0}
+(map: jshsmap(k,x), key: k): ( x )
+fun<>
+UN_jshsmap_set$at$raw
+ {k:t0}{x:t0}
+(map: jshsmap(k,x), key: k, itm: x): void
+*/
+//
+function
+XATS2JS_jshsmap_get$at$raw
+  (map, key)
+{
+  return map.get(key)
+}
+function
+XATS2JS_jshsmap_set$at$raw
+  (map, key, itm)
+{
+  map.set(key, itm); return // HX: void
+}
+//
+/////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
 //
 // end of [ATS3/XANADU_xatslib_JS_DATS_CATS_Hsmap00.cats]

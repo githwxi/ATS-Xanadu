@@ -89,7 +89,7 @@ jshsmap_set$at
 fun<>
 jshsmap_strmize
  {k:t0}{x:vt}
-( map:jshsmap(k,x)): strm_vt@(k,x)
+(map: jshsmap(k,x)): strm_vt@(k,x)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -97,34 +97,30 @@ jshsmap_strmize
 fun<>
 jshsmap_search$tst
  {k:t0}{x:vt}
-( map
-: jshsmap(k,x), key: k): bool
+(map: jshsmap(k,x), key: k): bool
+//
 fun<>
 jshsmap_search$cpy
  {k:t0}{x:vt}
-( map
-: jshsmap(k,x), key: k): optn_vt(x)
+(map: jshsmap(k,x), key: k): optn_vt(x)
 //
 (* ****** ****** *)
 //
 fun<>
 jshsmap_remove$opt
  {k:t0}{x:vt}
-( map
-: jshsmap(k,x), key: k): optn_vt(x)
+(map: jshsmap(k,x), key: k): optn_vt(x)
 //
 (* ****** ****** *)
 //
 fun<>
 jshsmap_insert$any
  {k:t0}{x:vt}
-( map
-: jshsmap(k,x), key: k, itm: x): void
+(map: jshsmap(k,x), key: k, itm: x): void
 fun<>
 jshsmap_insert$opt
  {k:t0}{x:vt}
-( map
-: jshsmap(k,x), key: k, itm: x): optn_vt(x)
+(map: jshsmap(k,x), key: k, itm: x): optn_vt(x)
 //
 (* ****** ****** *)
 //
@@ -136,10 +132,13 @@ in nature; it is usually only used
 to implement some safe functions.
 *)
 fun<>
-UN_jshsmap_insert$raw
- {k:t0}{x:vt}
-( map
-: jshsmap(k,x), key: k, itm: x): void
+UN_jshsmap_get$at$raw
+ {k:t0}{x:t0}
+(map: jshsmap(k,x), key: k): ( x )
+fun<>
+UN_jshsmap_set$at$raw
+ {k:t0}{x:t0}
+(map: jshsmap(k,x), key: k, itm: x): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
