@@ -95,6 +95,18 @@ jshsmap_strmize
 (* ****** ****** *)
 //
 fun<>
+jshsmap_forall_f2un
+ {k:t0}{x:vt}
+( map: jshsmap(k,x)
+, test: (k, !x) -> bool): bool
+//
+#symload
+forall with jshsmap_forall_f2un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
 jshsmap_search$tst
  {k:t0}{x:vt}
 (map: jshsmap(k,x), key: k): bool
