@@ -270,10 +270,26 @@ gasz_lset$at$raw
 | xs: xs, i0: ni, x0: x0): void
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gasz_get$at$raw1
+(xs: !xs, i0: ni): (x0)
+fun
+<xs:vt>
+<x0:vt>
+gasz_set$at$raw1
+(xs: !xs, i0: ni, x0: x0): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun<>
 strn_get$at$raw(strn, ni): (cgtz)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)

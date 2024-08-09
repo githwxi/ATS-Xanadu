@@ -45,8 +45,11 @@ HX: For hashmap support in JS
 (* ****** ****** *)
 #abstype
 jshsmap_tbox(k:t0,x:vt)
+#absvwtp
+jshsmap_vtbx(k:t0,x:vt)
 (* ****** ****** *)
 #sexpdef jshsmap = jshsmap_tbox
+#sexpdef jshsmap_vt = jshsmap_vtbx
 (* ****** ****** *)
 (* ****** ****** *)
 //

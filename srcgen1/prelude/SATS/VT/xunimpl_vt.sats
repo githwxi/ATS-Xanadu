@@ -1098,62 +1098,6 @@ irfolditm1_fun with gseq_irfolditm1_f3un of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<xs:vt>
-<x0:vt>
-gasz_length1(xs: !xs): nint
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:t0> // HX: t0(not(vt))
-gasz_get$at1
-(xs: !xs, i0: ni): (x0)
-fun
-<xs:vt>
-<x0:t0> // HX: t0(not(vt))
-gasz_set$at1
-(xs: !xs, i0: ni, x0: x0): void
-//
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
-gasz_get$at$raw1
-(xs: !xs, i0: ni): (x0)
-fun
-<xs:vt>
-<x0:vt>
-gasz_set$at$raw1
-(xs: !xs, i0: ni, x0: x0): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
-gasz_strmize0(xs: xs): strm_vt(x0)
-fun
-<xs:vt>
-<x0:vt>
-gasz_strqize0(xs: xs): strq_vt(x0)
-//
-fun
-<xs:vt>
-<x0:vt>
-gasz_rstrmize0(xs: xs): strm_vt(x0)
-fun
-<xs:vt>
-<x0:vt>
-gasz_rstrqize0(xs: xs): strq_vt(x0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (*
 fun
 <x0:vt>

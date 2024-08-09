@@ -115,7 +115,7 @@ HX-2024-07-25:
 in the future!
 #vwtpdef
 fwork_vt(a:vt) =
-((~a)-<lcfr>void)->void
+((~a)-<lfun>void)->void
 *)
 //
 fun<>
@@ -156,16 +156,16 @@ jsarray_vt_length1
 (* ****** ****** *)
 //
 fun<>
-jsarray_vt_get1_at
+jsarray_vt_get$at1
  {a:t0}//HX: it's t0; not vt
 (A: !jsarray_vt(a), i:nint): (a)
 fun<>
-jsarray_vt_set1_at
+jsarray_vt_set$at1
  {a:t0}//HX: it's t0; not vt
 (A: !jsarray_vt(a), i:nint, x:a): void
 //
-#symload get1_at with jsarray_vt_get1_at of 1000
-#symload set1_at with jsarray_vt_set1_at of 1000
+#symload get$at1 with jsarray_vt_get$at1 of 1000
+#symload set$at1 with jsarray_vt_set$at1 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -178,18 +178,18 @@ is supported?
 Thu 25 Jul 2024 06:42:41 AM EDT
 //
 fun<>
-jsarray_vt_getn1_at
+jsarray_vt_getn$at1
  {a:t0}{n:nat}
 (A:
 !jsarray_vt(a,n), i:nintlt(n)): (a)
 fun<>
-jsarray_vt_setn1_at
+jsarray_vt_setn$at1
  {a:t0}{n:nat}
 (A:
 !jsarray_vt(a,n), i:nintlt(n), x:a): void
 //
-#symload getn_at with jsarray_vt_getn1_at of 1000
-#symload setn_at with jsarray_vt_setn1_at of 1000
+#symload getn_at with jsarray_vt_getn$at1 of 1000
+#symload setn_at with jsarray_vt_setn$at1 of 1000
 //
 *)
 (* ****** ****** *)
@@ -210,56 +210,37 @@ jsarray_vt_strqize0
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<a:vt>
-jsarray_vt_forall1
-(A: !jsarray_vt(a)): bool
-//
 fun<>
-jsarray_vt_forall1_c1fr
+jsarray_vt_forall1_f1un
  {a:vt}
 ( A: !jsarray_vt(a)
-, test: (~a)-<cfr>bool): bool
+, test: (~a) -> bool): bool
 //
 #symload
-forall0 with jsarray_vt_forall0 of 1000
-#symload
-forall0 with jsarray_vt_forall0_c1fr of 1000
+forall1 with jsarray_vt_forall1_f1un of 1000
 //
 (* ****** ****** *)
 //
-fun
-<a:vt>
-jsarray_vt_rforall1
-( A: !jsarray_vt(a)): bool
 fun<>
-jsarray_vt_rforall1_c1fr
+jsarray_vt_rforall1_f1un
  {a:vt}
 ( A: !jsarray_vt(a)
-, test: (~a)-<cfr>bool): bool
+, test: (~a) -> bool): bool
 //
 #symload
-rforall0 with jsarray_vt_rforall0 of 1000
-#symload
-rforall0 with jsarray_vt_rforall0_c1fr of 1000
+rforall1 with jsarray_vt_rforall1_f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<a:vt>
-jsarray_vt_mapref1
-( A: !jsarray_vt(a)): void
 fun<>
-jsarray_vt_mapref1_c1fr
+jsarray_vt_mapref1_f1un
  {a:vt}
 ( A: !jsarray_vt(a)
-, fopr: (~a)-<cfr>(a)): void
+, fopr: (~a) -> (a)): void
 //
 #symload
-mapref1 with jsarray_vt_mapref1 of 1000
-#symload
-mapref1 with jsarray_vt_mapref1_c1fr of 1000
+mapref1 with jsarray_vt_mapref1_f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -269,15 +250,15 @@ fun
 jsarray_vt_sortref1
 (A: !jsarray_vt(a)): void
 fun<>
-jsarray_vt_sortref1_c2fr
+jsarray_vt_sortref1_f2un
  {a:vt}
 ( A: !jsarray_vt(a)
-, cmpr: (!a, !a)-<cfr>sint): void
+, cmpr: (!a, !a) -> sint): void
 //
 #symload
 sortref1 with jsarray_vt_sortref1 of 1000
 #symload
-sortref1 with jsarray_vt_sortref1_c2fr of 1000
+sortref1 with jsarray_vt_sortref1_f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
