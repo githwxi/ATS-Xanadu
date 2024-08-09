@@ -99,6 +99,32 @@ end//let//end-of-[jshsmap_make_list]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<(*tmp*)>
+jshsmap_make0_llist
+ {k:t0}{x:vt}(kxs) =
+let
+//
+val map =
+jshsmap_make_nil<>()
+//
+in//let
+(
+list_vt_foritm0(kxs); map
+) where
+{
+#impltmp
+foritm$work0<(k,x)>(kx) =
+let
+val (k, x) = kx in
+UN_jshsmap_insert$raw(map, k, x)
+end//let//end-of-[forithm$work0(...)]
+}
+end//let//end-of-[jshsmap_make0_llist]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

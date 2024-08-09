@@ -64,7 +64,7 @@ jshsmap_make_list
 ( kxs:list@(k,x) ): jshsmap(k,x)
 //
 fun<>
-jshsmap_make0_list_vt
+jshsmap_make0_llist
  {k:t0}{x:vt}
 ( kxs:list_vt@(k,x) ): jshsmap(k,x)
 //
@@ -138,6 +138,15 @@ UN_jshsmap_get$at$raw
 fun<>
 UN_jshsmap_set$at$raw
  {k:t0}{x:t0}
+(map: jshsmap(k,x), key: k, itm: x): void
+//
+(*
+HX-2024-08-09:
+This assume that [key] is not in [map]
+*)
+fun<>
+UN_jshsmap_insert$raw
+ {k:t0}{x:vt}
 (map: jshsmap(k,x), key: k, itm: x): void
 //
 (* ****** ****** *)
