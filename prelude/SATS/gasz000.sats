@@ -52,13 +52,66 @@ fun
 <xs:t0>
 <x0:t0>
 gasz_get$at
-(xs: xs, i0: ni): (x0)
+(xs: xs,i0: ni): (x0)
 fun
 <xs:t0>
 <x0:t0>
 gasz_set$at
 (xs: xs, i0: ni, x0: x0): void
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:vt>
+gasz_lget$at
+(xs: xs
+,i0: ni): (owed(x0) | x0)
+fun
+<xs:t0>
+<x0:vt>
+gasz_lset$at
+(pf: owed(x0)
+|xs: xs, i0: ni, x0: x0): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:vt>
+gasz_cget$at
+(xs: xs, i0: ni): (x0)
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:vt>
+gasz_setf$at
+(xs: xs, i0: ni, x0: x0): void
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:vt>
+gasz_cget$at$exn
+(xs: xs, i0: ni): (x0)
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:vt>
+gasz_setf$at$exn
+(xs: xs, i0: ni, x0: x0): void
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:vt>
+gasz_cget$at$opt
+(xs: xs, i0: ni): optn_vt(x0)
+(* ****** ****** *)
+fun
+<xs:t0>
+<x0:vt>
+gasz_setf$at$opt
+(xs: xs, i0: ni, x0: x0): optn_vt(x0)
 (* ****** ****** *)
 (* ****** ****** *)
 //

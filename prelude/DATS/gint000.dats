@@ -74,6 +74,9 @@ Wed 07 Aug 2024 03:56:12 PM EDT
 //
 #impltmp
 $UN.gasz_get$at$raw
+< nint >< unit >(ni, i0) = unit
+#impltmp
+$UN.gasz_lget$at$raw
 < nint >< unit >(ni, i0) =
 let
 prval pf =
@@ -84,6 +87,9 @@ prval pf =
 //
 #impltmp
 $UN.gasz_get$at$raw
+< nint >< nint >(ni, i0) = (i0)
+#impltmp
+$UN.gasz_lget$at$raw
 < nint >< nint >(ni, i0) =
 let
 prval pf =

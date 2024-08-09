@@ -69,6 +69,16 @@ jshsmap_make0_list_vt
 (* ****** ****** *)
 //
 fun<>
+ {k:t0}{x:vt}
+jshsmap_get$at$opt
+(jshsmap(k,x), k): optn_vt(x)
+//
+#symload [] with jshsmap_get$at of 100
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
 jshsmap_strmize
  {k:t0}{x:vt}
 ( map:jshsmap(k,x)): strm_vt@(k,x)
@@ -110,8 +120,15 @@ jshsmap_insert$opt
 //
 (* ****** ****** *)
 //
+(*
+HX-2024-08-09:
+The prefix "UN" indicate that
+the declared function is unsafe
+in nature; it is usually only used
+to implement some safe functions.
+*)
 fun<>
-UN_jshsmap_insert_raw
+UN_jshsmap_insert$raw
  {k:t0}{x:vt}
 ( map
 : jshsmap(k,x), key: k, itm: x): void

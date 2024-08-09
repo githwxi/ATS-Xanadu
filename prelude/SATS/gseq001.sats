@@ -98,13 +98,11 @@ gseq_istrqize
 //
 (*
 HX: for [gs_forall]
+HX: for [gs_exists]
 *)
 fun
 <xs:t0>
 g_forall(xs: xs): bool
-(*
-HX: for [gs_exists]
-*)
 fun
 <xs:t0>
 g_exists(xs: xs): bool
