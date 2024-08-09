@@ -186,7 +186,7 @@ fun<>
 jsarray_forall_f1un
  {a:vt}
 ( A: jsarray(a)
-, test: (!a)-<cfr>bool): bool
+, test: (!a) -> bool): bool
 //
 #symload
 forall with jsarray_forall of 1000
@@ -203,7 +203,7 @@ fun<>
 jsarray_rforall_f1un
  {a:vt}
 ( A: jsarray(a)
-, test: (!a)-<cfr>bool): bool
+, test: (!a) -> bool): bool
 //
 #symload
 rforall with jsarray_rforall of 1000
@@ -221,7 +221,7 @@ fun<>
 jsarray_mapref_f1un
  {a:vt}
 ( A: jsarray(a)
-, fopr: (~a)-<cfr>(a)): void
+, fopr: (~a) -> (a)): void
 //
 #symload
 mapref with jsarray_mapref of 1000
@@ -236,15 +236,15 @@ fun
 jsarray_sortref
 (A: jsarray(a)): void
 fun<>
-jsarray_sortref_c2fr
+jsarray_sortref_f2un
  {a:vt}
 ( A: jsarray(a)
-, cmpr: (!a, !a)-<cfr>sint): void
+, cmpr: (!a, !a) -> sint): void
 //
 #symload
 sortref with jsarray_sortref of 1000
 #symload
-sortref with jsarray_sortref_c2fr of 1000
+sortref with jsarray_sortref_f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

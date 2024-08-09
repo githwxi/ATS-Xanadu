@@ -59,13 +59,15 @@ let
 #typedef xs = jsm(k,x)
 //
 #impltmp
-gseq$sep<xs><x0>() = ","
+gseq_sep<xs><x0>() = ","
 #impltmp
-gseq$beg<xs><x0>() = "jshsmap("
+gseq_beg<xs><x0>() = "jshsmap("
 #impltmp
-gseq$end<xs><x0>() = ")"
+gseq_end<xs><x0>() = ")"
+//
 in//let
-  gseq_print1<xs><x0>(map)
+(
+  gseq_print1<xs><x0>(map) )
 end//end-of-[g_print<jsm(k,x)>]
 //
 (* ****** ****** *)
@@ -100,4 +102,4 @@ end//let//end-of-[jshsmap_make_list]
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_xatslib_JS_DATS_Array00.dats] *)
+(* end of [ATS3/XANADU_xatslib_JS_DATS_Hsmap00.dats] *)

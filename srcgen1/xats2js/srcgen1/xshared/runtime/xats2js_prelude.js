@@ -734,7 +734,7 @@ XATS2JS_strn_cmp
 ////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_strn_head_raw
+XATS2JS_strn_head$raw
   (  cs  )
 {
     return cs.charCodeAt(0);
@@ -752,7 +752,7 @@ XATS2JS_strn_head$opt
 }
 //
 function
-XATS2JS_strn_tail_raw
+XATS2JS_strn_tail$raw
   (  cs  )
 {
     return cs.slice(1);//tail
@@ -1703,6 +1703,28 @@ if(itm0===undefined)
 ////////////////////////////////////////////////////////////////
 
 /* end of [ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_basics1.cats] */
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+/*
+HX-2024-08-08:
+JS code for xatsopt
+Thu 08 Aug 2024 10:42:49 PM EDT
+*/
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+//
+function
+XATSOPT_strn_append_uint
+  (name, stmp)
+{
+  return name + stmp.toString();
+}
+//
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+//end-of-[ATS3/XANADU_srcgen1_prelude_DATS_CATS_JS_xatsopt.cats]
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////  
 // ./../../../.././prelude/DATS/CATS/JS/basics0.dats@(108(line=9,offs=1)--174(line=12,offs=28))
 // L1DCLnone1(...)
 
@@ -2432,7 +2454,7 @@ XATS2JS_jsarray_strmize(a1x1)
         // { // val-implmnt
         // } // val-implmnt
         var // const // implval/fun
-        gint_gte_sint_sint_054531_3042_ = XATS2JS_gint_gte_sint_sint
+        gint_gte_sint_sint_627571_3042_ = XATS2JS_gint_gte_sint_sint
         xtmp5 = XATS2JS_gint_gte_sint_sint(a2x1, xtmp1)
       }
       if (xtmp5)
@@ -2456,7 +2478,7 @@ XATS2JS_jsarray_strmize(a1x1)
               // { // val-implmnt
               // } // val-implmnt
               var // const // implval/fun
-              gint_add_sint_sint_054531_3989_ = XATS2JS_gint_add_sint_sint
+              gint_add_sint_sint_627571_3989_ = XATS2JS_gint_add_sint_sint
               xtmp9 = XATS2JS_gint_add_sint_sint(a2x1, 1)
             }
             xtmp8 = auxmain_2197_(xtmp9)
@@ -3231,7 +3253,7 @@ XATS2JS_strm_vt_map0_f1un(a1x1, a1x2)
   {
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(9690(line=747,offs=1)--10071(line=779,offs=9))
     function
-    strm_vt_map0_054531_4633_(a2x1)
+    strm_vt_map0_627571_4633_(a2x1)
     {
       let xtmp112
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(9756(line=755,offs=1)--10035(line=778,offs=12))
@@ -3283,7 +3305,7 @@ XATS2JS_strm_vt_map0_f1un(a1x1, a1x2)
               {
 // ./../../../.././prelude/DATS/CATS/JS/prelude.dats@(6332(line=396,offs=1)--6371(line=396,offs=40))
                 function
-                map$fopr0_054531_3102_(a5x1)
+                map$fopr0_627571_3102_(a5x1)
                 {
                   let xtmp105
                   {
@@ -3291,7 +3313,7 @@ XATS2JS_strm_vt_map0_f1un(a1x1, a1x2)
                   }
                   return xtmp105
                 } // function // map$fopr0(24)
-                xtmp103 = map$fopr0_054531_3102_(xtmp101)
+                xtmp103 = map$fopr0_627571_3102_(xtmp101)
               }
             } // val(H0Pvar(y0(95)))
             {
@@ -3321,14 +3343,14 @@ XATS2JS_strm_vt_map0_f1un(a1x1, a1x2)
             // { // val-implmnt
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(1820(line=153,offs=1)--1870(line=155,offs=31))
             function
-            strm_vt_free_054531_2268_(a5x1)
+            strm_vt_free_627571_2268_(a5x1)
             {
               return XATS2JS_llazy_free(a5x1)
             } // function // strm_vt_free(28)
             // } // val-implmnt
             var // const // implval/fun
-            g_free_054531_1640_ = strm_vt_free_054531_2268_
-            xtmp108 = strm_vt_free_054531_2268_(a3x1)
+            g_free_627571_1640_ = strm_vt_free_627571_2268_
+            xtmp108 = strm_vt_free_627571_2268_(a3x1)
           }
         } // lam-function
         xtmp97 = XATS2JS_new_llazy(xtmp110,xtmp111)
@@ -3339,7 +3361,7 @@ XATS2JS_strm_vt_map0_f1un(a1x1, a1x2)
       }
       return xtmp112
     } // function // strm_vt_map0(25)
-    xtmp94 = strm_vt_map0_054531_4633_(a1x1)
+    xtmp94 = strm_vt_map0_627571_4633_(a1x1)
   }
   return xtmp94
 } // function // XATS2JS_strm_vt_map0_f1un(23)
@@ -3360,7 +3382,7 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
   {
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(10135(line=783,offs=1)--10617(line=826,offs=13))
     function
-    strm_vt_filter0_054531_4821_(a2x1)
+    strm_vt_filter0_627571_4821_(a2x1)
     {
       let xtmp138
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(10207(line=791,offs=1)--10612(line=824,offs=8))
@@ -3388,14 +3410,14 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
             // { // val-implmnt
 // /home/hwxi/Research/ATS-Xanadu/srcgen1/prelude/DATS/VT/strm000_vt.dats@(1820(line=153,offs=1)--1870(line=155,offs=31))
             function
-            strm_vt_free_054531_2268_(a5x1)
+            strm_vt_free_627571_2268_(a5x1)
             {
               return XATS2JS_llazy_free(a5x1)
             } // function // strm_vt_free(28)
             // } // val-implmnt
             var // const // implval/fun
-            g_free_054531_1640_ = strm_vt_free_054531_2268_
-            xtmp120 = strm_vt_free_054531_2268_(a3x1)
+            g_free_627571_1640_ = strm_vt_free_627571_2268_
+            xtmp120 = strm_vt_free_627571_2268_(a3x1)
           }
         } // lam-function
         xtmp118 = XATS2JS_new_llazy(xtmp122,xtmp123)
@@ -3447,7 +3469,7 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
           {
 // ./../../../.././prelude/DATS/CATS/JS/prelude.dats@(6695(line=419,offs=3)--6733(line=419,offs=41))
             function
-            filter$test1_054531_4071_(a4x1)
+            filter$test1_627571_4071_(a4x1)
             {
               let xtmp132
               {
@@ -3455,7 +3477,7 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
               }
               return xtmp132
             } // function // filter$test1(30)
-            xtmp130 = filter$test1_054531_4071_(xtmp128)
+            xtmp130 = filter$test1_627571_4071_(xtmp128)
           }
           if (xtmp130)
           { // then
@@ -3473,7 +3495,7 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
               {
 // ./../../../.././prelude/DATS/CATS/JS/prelude.dats@(6650(line=416,offs=3)--6680(line=417,offs=22))
                 function
-                g_free_054531_1640_(a4x1)
+                g_free_627571_1640_(a4x1)
                 {
                   let xtmp136
                   {
@@ -3481,7 +3503,7 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
                   }
                   return xtmp136
                 } // function // g_free(27)
-                xtmp134 = g_free_054531_1640_(xtmp128)
+                xtmp134 = g_free_627571_1640_(xtmp128)
               }
               //L1PCKxpat(H0Pnil(); L1VALtmp(tmp(134)));
               //L1CMDmatch(H0Pnil(); L1VALtmp(tmp(134)));
@@ -3505,7 +3527,7 @@ XATS2JS_strm_vt_filter0_f1un(a1x1, a1x2)
       }
       return xtmp138
     } // function // strm_vt_filter0(31)
-    xtmp115 = strm_vt_filter0_054531_4821_(a1x1)
+    xtmp115 = strm_vt_filter0_627571_4821_(a1x1)
   }
   return xtmp115
 } // function // XATS2JS_strm_vt_filter0_f1un(29)

@@ -60,6 +60,10 @@ $(CAT) \
 $(MYHOME)/prelude/DATS/CATS/JS/basics1.cats >> xats2js_prelude.js
 #
 xats2js_prelude:: ; \
+$(CAT) \
+$(MYHOME)/prelude/DATS/CATS/JS/xatsopt.cats >> xats2js_prelude.js
+#
+xats2js_prelude:: ; \
 $(XATS2JS) \
 --output-a xats2js_prelude.js -d $(MYHOME)/prelude/DATS/CATS/JS/basics0.dats
 #

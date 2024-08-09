@@ -514,10 +514,24 @@ fun
 d2var_get_name:(d2var) -> sym_t
 fun
 d2var_get_stmp:(d2var) -> stamp
+(* ****** ****** *)
+//
+(*
+HX-2024-08-09:
+'unam': uniqe name
+Due to template resolution,
+code can be moved under lambdas
+Fri 09 Aug 2024 12:50:56 AM EDT
+*)
+fun
+d2var_get_unam:(d2var) -> sym_t
+//
+(* ****** ****** *)
 //
 #symload lctn with d2var_get_lctn
 #symload name with d2var_get_name
 #symload stmp with d2var_get_stmp
+#symload unam with d2var_get_unam
 //
 (* ****** ****** *)
 (* ****** ****** *)
