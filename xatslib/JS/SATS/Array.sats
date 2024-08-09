@@ -76,7 +76,7 @@ fun<>
 jsarray_make_nfun
  {a:t0}{n:nat}
 ( n0: sint(n)
-, f0: nintlt(n)->(a)):jsarray(a)
+, f0: nintlt(n) -> (a)):jsarray(a)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -164,11 +164,11 @@ jsarray_set$at
 //
 fun<>
 jsarray_strmize
-{a:vt}
+ {a:vt}
 (A: jsarray(a)): strm_vt(a)
 fun<>
 jsarray_strqize
-{a:vt}
+ {a:vt}
 (A: jsarray(a)): strq_vt(a)
 //
 #symload strmize with jsarray_strmize of 1000
@@ -177,11 +177,6 @@ jsarray_strqize
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<a:vt>
-jsarray_forall
-( A: jsarray(a)): bool
-//
 fun<>
 jsarray_forall_f1un
  {a:vt}
@@ -189,16 +184,8 @@ jsarray_forall_f1un
 , test: (!a) -> bool): bool
 //
 #symload
-forall with jsarray_forall of 1000
-#symload
 forall with jsarray_forall_f1un of 1000
 //
-(* ****** ****** *)
-//
-fun
-<a:vt>
-jsarray_rforall
-( A: jsarray(a)): bool
 fun<>
 jsarray_rforall_f1un
  {a:vt}
@@ -206,25 +193,26 @@ jsarray_rforall_f1un
 , test: (!a) -> bool): bool
 //
 #symload
-rforall with jsarray_rforall of 1000
-#symload
 rforall with jsarray_rforall_f1un of 1000
 //
+fun<>
+jsarray_iforall_f2un
+ {a:vt}
+( A: jsarray(a)
+, test: (nint, !a) -> bool): bool
+//
+#symload
+iforall with jsarray_iforall_f2un of 1000
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<a:vt>
-jsarray_mapref
-( A: jsarray(a)): void
 fun<>
 jsarray_mapref_f1un
  {a:vt}
 ( A: jsarray(a)
 , fopr: (~a) -> (a)): void
 //
-#symload
-mapref with jsarray_mapref of 1000
 #symload
 mapref with jsarray_mapref_f1un of 1000
 //
@@ -265,6 +253,24 @@ GASZ_make_jsarray
 {a:vt}
 (A:jsarray(a)): GASZ(jsarray(a), a)
 #symload GASZ with GASZ_make_jsarray of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-08-09:
+Fri 09 Aug 2024 08:24:11 AM EDT
+*)
+//
+#absvwtp
+jsarray_iter(a:vt)
+//
+(*
+HX: This is like istrmize
+*)
+fun
+jsarray_iter_next
+(jsarray_iter(a:vt)): optn_vt@(nint,a)
 //
 (* ****** ****** *)
 (* ****** ****** *)
