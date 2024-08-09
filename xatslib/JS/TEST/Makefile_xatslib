@@ -1,5 +1,5 @@
 ############################################################
-###### beg of [ATS3_XANADU/xatslib/JS/TEST/Makefile] ######
+### beg of [ATS3_XANADU/xatslib/JS/TEST/Makefile_xatslib]
 ############################################################
 ############################################################
 XATS2JS1=\
@@ -26,7 +26,13 @@ $(XATS2JS1) -s ./../DATS/Hsmaph0.dats
 ############################################################
 all1_dats:: ; \
 $(XATS2JS1) -s ./../DATS/VT/Array00_vt.dats
+all1_dats:: ; \
+$(XATS2JS1) -s ./../DATS/VT/Arrayh0_vt.dats
+all1_dats:: ; \
+$(XATS2JS1) -s ./../DATS/VT/Hsmap00_vt.dats
+all1_dats:: ; \
+$(XATS2JS1) -s ./../DATS/VT/Hsmaph0_vt.dats
 ############################################################
-###### end of [ATS3_XANADU/xatslib/JS/TEST/Makefile] ######
+### end of [ATS3_XANADU/xatslib/JS/TEST/Makefile_xatslib]
 ############################################################
 ############################################################
