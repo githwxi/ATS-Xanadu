@@ -243,35 +243,35 @@ jsarray_set$at<>{x0}(A, i, x)
 (*where*)//end-of-[gasz_set$at$raw(...)]
 //
 (* ****** ****** *)
-//
-#impltmp
-{ x0:t0 }
-$UN.gasz_setf$at$raw
-<jsa(x0)><x0>(A, i, x) =
-(
-  jsarray_set$at<>{x0}(A, i, x) )
-(*where*)//end-[gasz_setf$at$raw(...)]
-//
 (* ****** ****** *)
-(* ****** ****** *)
+//
+(*
+HX-2024-08-09:
+How can we avoid
+writing these boilerplates?
+*)
 //
 #impltmp
 { x0:t0 }
 gseq_strmize
-<jsa(x0)><x0> = gasz_strmize<jsa(x0)><x0>
+<jsa(x0)><x0> =
+gasz_strmize<jsa(x0)><x0>
 #impltmp
 { x0:vt }
 gseq_strmize1
-<jsa(x0)><x0> = gasz_strmize<jsa(x0)><x0>
+<jsa(x0)><x0> =
+gasz_strmize<jsa(x0)><x0>
 //
 #impltmp
 { x0:t0 }
 gseq_rstrmize
-<jsa(x0)><x0> = gasz_rstrmize<jsa(x0)><x0>
+<jsa(x0)><x0> =
+gasz_rstrmize<jsa(x0)><x0>
 #impltmp
 { x0:vt }
 gseq_rstrmize1
-<jsa(x0)><x0> = gasz_rstrmize<jsa(x0)><x0>
+<jsa(x0)><x0> =
+gasz_rstrmize<jsa(x0)><x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -316,7 +316,11 @@ gasz_forall<jsa(x0)><x0>(A)
 forall$test1<x0> = forall$test<x0>
 }
 //
-(* ****** ****** *)
+#impltmp
+{ x0:vt }
+gseq_forall1
+<jsa(x0)><x0> =
+gasz_forall<jsa(x0)><x0>
 //
 #impltmp
 <(*tmp*)>
@@ -362,6 +366,12 @@ rforall$test1<x0> = rforall$test<x0>
 }
 //
 #impltmp
+{ x0:vt }
+gseq_rforall1
+<jsa(x0)><x0> =
+gasz_rforall<jsa(x0)><x0>
+//
+#impltmp
 <(*tmp*)>
 jsarray_rforall_f1un
   (A, test) =
@@ -402,6 +412,12 @@ gasz_iforall<jsa(x0)><x0>(A)
 #impltmp
 iforall$test1<x0> = iforall$test<x0>
 }
+//
+#impltmp
+{ x0:vt }
+gseq_iforall1
+<jsa(x0)><x0> =
+gasz_iforall<jsa(x0)><x0>
 //
 #impltmp
 <(*tmp*)>
@@ -454,15 +470,18 @@ jsarray_sortref_f2un<>
 #impltmp
 { x0:vt }
 gasz_sortref
-<jsa(x0)><x0> = jsarray_sortref<x0>
+<jsa(x0)><x0> =
+jsarray_sortref<x0>(*void*)
 #impltmp
 { x0:vt }
 gasz_sortref0
-<jsa(x0)><x0> = jsarray_sortref<x0>
+<jsa(x0)><x0> =
+jsarray_sortref<x0>(*void*)
 #impltmp
 { x0:vt }
 gasz_sortref1
-<jsa(x0)><x0> = jsarray_sortref<x0>
+<jsa(x0)><x0> =
+jsarray_sortref<x0>(*void*)
 *)
 //
 #impltmp

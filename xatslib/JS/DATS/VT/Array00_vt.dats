@@ -37,6 +37,10 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/VT/unsfx00_vt.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #staload
 "./../../SATS/Array.sats"
@@ -63,11 +67,11 @@ let
 #vwtpdef xs = jsla(a)
 //
 #impltmp
-gseq$sep<xs><x0>() = ","
+gseq_sep<xs><x0>() = ","
 #impltmp
-gseq$beg<xs><x0>() = "jsarray_vt("
+gseq_beg<xs><x0>() = "jsarray_vt("
 #impltmp
-gseq$end<xs><x0>() = ")"
+gseq_end<xs><x0>() = ")"
 in//let
   gseq_print1<xs><x0>(xs)
 end//end-of-[g_print1<jsla(a)>]
@@ -110,22 +114,17 @@ UN_jsarray_t2vt
 (* ****** ****** *)
 //
 #impltmp
+{ x0:vt }
+gseq_length1
+<jsla(x0)><x0> =
+jsarray_vt_length1<>{x0}
+//
+#impltmp
 <(*tmp*)>
 jsarray_vt_length1
   ( A ) =
 (
 jsarray_length<>(UN_jsarray_vt2t(A)))
-//
-#impltmp
-{ x0:vt }
-gseq_length1
-<jsla(x0)><x0> = jsarray_vt_length1<>{x0}
-(*
-#impltmp
-{ x0:vt }
-gasz_length1
-<jsla(x0)><x0> = jsarray_vt_length1<>{x0}
-*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -135,34 +134,38 @@ gasz_length1
 jsarray_vt_get$at1
   {a}(A, i) =
 (
-jsarray_get_at<>(UN_jsarray_vt2t(A), i))
+jsarray_get$at<>(UN_jsarray_vt2t(A), i))
 //
 #impltmp
 <(*tmp*)>
 jsarray_vt_set$at1
   {a}(A, i, x) =
 (
-jsarray_set_at<>(UN_jsarray_vt2t(A), i, x))
+jsarray_set$at<>(UN_jsarray_vt2t(A), i, x))
 //
 (* ****** ****** *)
 //
 #impltmp
 { x0:t0 }
 gasz_get$at1
-<jsla(x0)><x0> = jsarray_vt_get$at1<>{x0}
+<jsla(x0)><x0> =
+jsarray_vt_get$at1<>{x0}
 #impltmp
 { x0:t0 }
 gasz_set$at1
-<jsla(x0)><x0> = jsarray_vt_set$at1<>{x0}
+<jsla(x0)><x0> =
+jsarray_vt_set$at1<>{x0}
 //
 #impltmp
 { x0:t0 }
-gasz_get$at$raw1
-<jsla(x0)><x0> = jsarray_vt_get$at1<>{x0}//safe
+$UN.gasz_get$at$raw1
+<jsla(x0)><x0> =
+jsarray_vt_get$at1<>{x0}//safe
 #impltmp
 { x0:t0 }
-gasz_set$at$raw1
-<jsla(x0)><x0> = jsarray_vt_set$at1<>{x0}//safe
+$UN.gasz_set$at$raw1
+<jsla(x0)><x0> =
+jsarray_vt_set$at1<>{x0}//safe
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -170,83 +173,65 @@ gasz_set$at$raw1
 #impltmp
 { x0:vt }
 gseq_strmize0
-<jsla(x0)><x0> = gasz_strmize0<jsla(x0)><x0>
+<jsla(x0)><x0> =
+gasz_strmize0<jsla(x0)><x0>
 //
 #impltmp
 { x0:vt }
 gseq_rstrmize0
-<jsla(x0)><x0> = gasz_rstrmize0<jsla(x0)><x0>
+<jsla(x0)><x0> =
+gasz_rstrmize0<jsla(x0)><x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#impltmp
-< a: vt >
-jsarray_vt_forall1
-  ( A ) =
-(
-jsarray_vt_forall1_c1fr<>
-(A
-,lam(x)=>forall$test1<a>(x)))
 //
 #impltmp
 { x0:vt }
 gseq_forall1
-<jsla(x0)><x0> = jsarray_vt_forall1<x0>
-//
-(* ****** ****** *)
+<jsla(x0)><x0>
+  ( A ) =
+(
+jsarray_vt_forall1_f1un<>
+(A
+,lam(x)=>forall$test1<x0>(x)))
 //
 #impltmp
 <(*tmp*)>
-jsarray_vt_forall1_c1fr
+jsarray_vt_forall1_f1un
   (A, test) =
 (
-jsarray_forall_c1fr<>
+jsarray_forall_f1un<>
 (UN_jsarray_vt2t(A), test))//end(impltmp)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-< a: vt >
-jsarray_vt_rforall1
-  ( A ) =
-(
-jsarray_vt_rforall1_c1fr<>
-(A
-,lam(x)=>rforall$test1<a>(x)))
-//
-#impltmp
 { x0:vt }
 gseq_rforall1
-<jsla(x0)><x0> = jsarray_vt_rforall1<x0>
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-jsarray_vt_rforall1_c1fr
-  (A, test) =
-(
-jsarray_rforall_c1fr<>(UN_jsarray_vt2t(A), test))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< a: vt >
-jsarray_vt_mapref1
+<jsla(x0)><x0>
   ( A ) =
 (
-jsarray_vt_mapref1_c1fr<>
-(A, lam(x)=>mapref$fopr0<a>(x)))
+jsarray_vt_rforall1_f1un<>
+(A
+,lam(x)=>rforall$test1<x0>(x)))
 //
 #impltmp
 <(*tmp*)>
-jsarray_vt_mapref1_c1fr
+jsarray_vt_rforall1_f1un
+  (A, test) =
+(
+jsarray_rforall_f1un<>(UN_jsarray_vt2t(A), test))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jsarray_vt_mapref1_f1un
   (A, fopr) =
 (
-jsarray_mapref_c1fr<>(UN_jsarray_vt2t(A), fopr))
+jsarray_mapref_f1un<>(UN_jsarray_vt2t(A), fopr))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -256,15 +241,15 @@ jsarray_mapref_c1fr<>(UN_jsarray_vt2t(A), fopr))
 jsarray_vt_sortref1
   ( A ) =
 (
-jsarray_vt_sortref1_c2fr<>
+jsarray_vt_sortref1_f2un<>
 (A, lam(x,y)=>g_cmp11<a>(x, y)))
 //
 #impltmp
 <(*tmp*)>
-jsarray_vt_sortref1_c2fr
+jsarray_vt_sortref1_f2un
   (A, cmpr) =
 (
-jsarray_sortref_c2fr<>(UN_jsarray_vt2t(A), cmpr))
+jsarray_sortref_f2un<>(UN_jsarray_vt2t(A), cmpr))
 //
 (* ****** ****** *)
 (* ****** ****** *)

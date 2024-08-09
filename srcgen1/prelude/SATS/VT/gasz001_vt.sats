@@ -59,6 +59,25 @@ gasz_strqize0
 (xs: ~xs): strq_vt(x0)//fun
 //
 (* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gasz_rlistize0
+(xs: ~xs): list_vt(x0)//fun
+//
+fun
+<xs:vt>
+<x0:vt>
+gasz_rstrmize0
+(xs: ~xs): strm_vt(x0)//fun
+fun
+<xs:vt>
+<x0:vt>
+gasz_rstrqize0
+(xs: ~xs): strq_vt(x0)//fun
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

@@ -26,84 +26,25 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 (*
-Mon 22 Jul 2024 12:14:37 PM EDT
+Fri 09 Aug 2024 03:06:19 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef ni = nint
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
-gasz_listize0
-(xs: ~xs): list_vt(x0)//fun
-//
-fun
-<xs:vt>
-<x0:vt>
-gasz_strmize0
-(xs: ~xs): strm_vt(x0)//fun
-fun
-<xs:vt>
-<x0:vt>
-gasz_strqize0
-(xs: ~xs): strq_vt(x0)//fun
-//
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
-gasz_rlistize0
-(xs: ~xs): list_vt(x0)//fun
-//
-fun
-<xs:vt>
-<x0:vt>
-gasz_rstrmize0
-(xs: ~xs): strm_vt(x0)//fun
-fun
-<xs:vt>
-<x0:vt>
-gasz_rstrqize0
-(xs: ~xs): strq_vt(x0)//fun
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
-gasz_forall0(xs: ~xs): bool
-fun
-<xs:vt>
-<x0:vt>
-gasz_forall1(xs: !xs): bool
-//
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
-gasz_rforall0(xs: ~xs): bool
-fun
-<xs:vt>
-<x0:vt>
-gasz_rforall1(xs: !xs): bool
-//
+(*
+HX: For hashmap support in JS
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_VT_gasz001_vt.sats] *)
+(* end of [ATS3/XANADU_xatslib_JS_SATS_VT_Hsmap_vt.sats] *)
