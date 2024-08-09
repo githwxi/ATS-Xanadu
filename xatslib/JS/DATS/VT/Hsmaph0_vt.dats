@@ -2,20 +2,20 @@
 (* ****** ****** *)
 //
 #staload
-"./../../SATS/Array.sats"
+"./../../SATS/Hsmap.sats"
 #staload
-"./../../SATS/VT/Array_vt.sats"
+"./../../SATS/VT/Hsmap_vt.sats"
 //
 (* ****** ****** *)
 #typedef
-jsa(a:vt) = jsarray(a)
+jsm(k:t0,x:vt) = jshsmap(k,x)
 (* ****** ****** *)
 #vwtpdef
-jsla(a:vt) = jsarray_vt(a)
+jslm(k:t0,x:vt) = jshsmap_vt(k,x)
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_xatslib_JS_DATS_VT_Arrayh0_vt.dats] *)
+(* end of [ATS3/XANADU_xatslib_JS_DATS_VT_Hsmaph0_vt.dats] *)
