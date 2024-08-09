@@ -91,7 +91,7 @@ list_foritm(kxs); map
 foritm$work<(k,x)>(kx) =
 let
 val (k, x) = kx in
-UN_jshsmap_insert_raw(map, k, x)
+UN_jshsmap_insert$raw(map, k, x)
 end//let//end-of-[forithm$work(...)]
 }
 end//let//end-of-[jshsmap_make_list]

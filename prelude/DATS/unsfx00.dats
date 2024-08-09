@@ -58,7 +58,6 @@ end//end-of-[$UN.p2tr_set_list_cons(...)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 #impltmp
 {xs:t0}
 {x0:t0}
@@ -69,9 +68,21 @@ prval() =
 (
   owed_t0_elim0(pf)) in x0 end
 where
-{ val (pf | x0) =
-  $UN.gasz_lget$at$raw<xs><x0>(xs, i0)
+{
+val (pf | x0) =
+$UN.gasz_lget$at$raw<xs><x0>(xs, i0)
 }(*where*)//end-of-[$UN.gasz_get$at$raw(...)]
+//
+#impltmp
+{xs:t0}
+{x0:t0}
+$UN.gasz_lget$at$raw
+  (xs, i0) =
+(
+  owed_t0_make() | x0) where
+{ val x0 =
+  $UN.gasz_get$at$raw<xs><x0>(xs, i0)
+}(*where*)//end-of-[$UN.gasz_lget$at$raw(...)]
 //
 (* ****** ****** *)
 //
@@ -85,6 +96,18 @@ prval pf = owed_t0_make()
 in//let
 $UN.gasz_lset$at$raw<xs><x0>(pf|xs,i0,x0)
 end(*let*)//end-of-[$UN.gasz_set$at$raw(...)]
+//
+#impltmp
+{xs:t0}
+{x0:t0}
+$UN.gasz_lset$at$raw
+  (pf | xs, i0, x0) =
+let
+prval () = owed_t0_elim0(pf)
+in//let
+(
+  $UN.gasz_set$at$raw<xs><x0>(xs, i0, x0))
+end(*let*)//end-of-$UN.gasz_lset$at$raw(...)]
 //
 (* ****** ****** *)
 //

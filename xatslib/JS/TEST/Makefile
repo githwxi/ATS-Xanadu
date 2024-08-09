@@ -10,6 +10,15 @@ $(XATS2JS1) -s ./../SATS/Array.sats
 all1_sats:: ; \
 $(XATS2JS1) -s ./../SATS/Hsmap.sats
 ############################################################
+all1_dats:: ; \
+$(XATS2JS1) -s ./../DATS/Array00.dats
+all1_dats:: ; \
+$(XATS2JS1) -s ./../DATS/Arrayh0.dats
+all1_dats:: ; \
+$(XATS2JS1) -s ./../DATS/Hsmap00.dats
+all1_dats:: ; \
+$(XATS2JS1) -s ./../DATS/Hsmaph0.dats
+############################################################
 ###### end of [ATS3_XANADU/xatslib/JS/TEST/Makefile] ######
 ############################################################
 ############################################################
