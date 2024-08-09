@@ -232,32 +232,17 @@ jsarray_set$at<>{x0}//HX:safe
 { x0:t0 }
 $UN.gasz_get$at$raw
 <jsa(x0)><x0>(A, i) =
-(owed_t0_make() | x0) where
-{
-val x0 =
-jsarray_get$at<>{x0}(A, i) }
+jsarray_get$at<>{x0}(A, i)
 (*where*)//end-[gasz_get$at$raw(...)]
 //
 #impltmp
 { x0:t0 }
 $UN.gasz_set$at$raw
-<jsa(x0)><x0>(pf | A, i, x) =
-let
-prval () = owed_t0_elim0(pf)
-in//let
-(
-jsarray_set$at<>{x0}(A, i, x))
-end//let//end-of-[gasz_set$at$raw(...)]
+<jsa(x0)><x0>(A, i, x) =
+jsarray_set$at<>{x0}(A, i, x)
+(*where*)//end-of-[gasz_set$at$raw(...)]
 //
 (* ****** ****** *)
-//
-#impltmp
-{ x0:t0 }
-$UN.gasz_cget$at$raw
-<jsa(x0)><x0>(A, i) =
-(
-  jsarray_get$at<>{x0}(A, i) )
-(*where*)//end-[gasz_cget$at$raw(...)]
 //
 #impltmp
 { x0:t0 }

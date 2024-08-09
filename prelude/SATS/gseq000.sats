@@ -211,9 +211,15 @@ Wed 31 Jul 2024 07:58:53 PM EDT
 fun
 <xs:t0>
 g_append(y1: xs, y2: xs): (xs)
-//
 (*
 #symload append with g_append of 0100
+*)
+//
+fun
+<xs:t0>
+g_prepend(y1: xs, y2: xs): (xs)
+(*
+#symload prepend with g_prepend of 0100
 *)
 //
 (* ****** ****** *)

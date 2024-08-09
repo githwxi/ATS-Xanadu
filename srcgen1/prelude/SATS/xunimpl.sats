@@ -915,6 +915,9 @@ Wed 31 Jul 2024 07:58:53 PM EDT
 fun
 <xs:t0>
 g_append(y1: xs, y2: xs): (xs) // for [appends]
+fun
+<xs:t0>
+g_prepend(y1: xs, y2: xs): (xs) // for [prepends]
 //
 (* ****** ****** *)
 (* ****** ****** *)

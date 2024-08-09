@@ -26,7 +26,7 @@ g_ptype<a>();pstrn")")
 #impltmp
 { a: vt }
 g_foritm<jsa(a)> =
-gasz_foritm<jsa(a)><a>
+gseq_foritm1<jsa(a)><a>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -94,9 +94,10 @@ jsarray_strmize
  {a:vt}
 (A: jsarray(a)): strm_vt(a)
 #impltmp
-<a:vt>
-jarray_strmize = gasz_strmize<jsa(a)><a>
-#symload strmize with jarray_strmize of 1000
+<(*tmp*)>
+jsarray_strmize
+  {a:vt}(xs) = gasz_strmize<jsa(a)><a>(xs)
+#symload strmize with jsarray_strmize of 1000
 //
 #extern
 fun<>
@@ -104,9 +105,10 @@ jsarray_strqize
  {a:vt}
 (A: jsarray(a)): strq_vt(a)
 #impltmp
-<a:vt>
-jarray_strqize = gasz_strqize<jsa(a)><a>
-#symload strqize with jarray_strqize of 1000
+<(*tmp*)>
+jsarray_strqize
+  {a:vt}(xs) = gasz_strqize<jsa(a)><a>(xs)
+#symload strqize with jsarray_strqize of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
