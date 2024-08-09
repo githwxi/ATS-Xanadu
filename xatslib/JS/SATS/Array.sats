@@ -163,21 +163,6 @@ jsarray_set$at
 (* ****** ****** *)
 //
 fun<>
-jsarray_strmize
- {a:vt}
-(A: jsarray(a)): strm_vt(a)
-fun<>
-jsarray_strqize
- {a:vt}
-(A: jsarray(a)): strq_vt(a)
-//
-#symload strmize with jsarray_strmize of 1000
-#symload strqize with jsarray_strqize of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun<>
 jsarray_forall_f1un
  {a:vt}
 ( A: jsarray(a)

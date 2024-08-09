@@ -62,7 +62,7 @@ get$at$exn<xs><x0>(xs, i0)
 else
 let
 val (pf | x0) =
-$UN.gasz_get$at$raw
+$UN.gasz_lget$at$raw
 <   xs   ><   x0   >(xs, i0)
 in//let
 let
@@ -90,7 +90,7 @@ else
 let
 prval pf = owed_t0_make{x0}()
 in//let
-$UN.gasz_set$at$raw
+$UN.gasz_lset$at$raw
 <   xs   ><   x0   >(pf | xs,i0,x0)
 end//let//else//end-of-[if]
 //
@@ -98,6 +98,12 @@ end//let//end-of-[gasz_set$at(xs,i0,x0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(*
+//
+HX:
+This one is
+moved to [unsfx00.dats]
 //
 #impltmp
 < xs:t0 >
@@ -108,7 +114,7 @@ let
 //
 val
 (pf | x0) =
-$UN.gasz_get$at$raw
+$UN.gasz_lget$at$raw
 <  xs  ><  x0  >( xs, i0 )
 //
 in//let
@@ -119,8 +125,15 @@ prval () =
   owed_vt_return0(pf, x0) in x1 end
 //
 end//let//end-of-[$UN.gasz_cget$at$raw]
+*)
 //
 (* ****** ****** *)
+//
+(*
+//
+HX:
+This one is
+moved to [unsfx00.dats]
 //
 #impltmp
 < xs:t0 >
@@ -131,7 +144,7 @@ let
 //
 val
 (pf | x1) =
-$UN.gasz_get$at$raw
+$UN.gasz_lget$at$raw
 <  xs  ><  x0  >( xs, i0 )
 //
 in//let
@@ -141,7 +154,8 @@ in//let
 (
 $UN.gasz_set$at$raw(pf | xs, i0, x0))
 end//let
-end//let//end-of-[$UN.gasz_cget$at$raw]
+end//let//end-of-[$UN.gasz_setf$at$raw]
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

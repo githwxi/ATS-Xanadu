@@ -173,22 +173,32 @@ p2tr_set_list_vt_cons
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<xs:t0>
-<x0:t0>
-gseq_get$at$raw
-  (xs: xs, i0: ni): (x0)
 (*
 HX:
 [i0] is assumed to be
 less than the length of [xs]
 *)
+fun
+<xs:t0>
+<x0:t0>
+gseq_get$at$raw
+  (xs: xs, i0: ni): (x0)
 //
 fun
 <xs:t0>
 <x0:t0>
-gseq_uncons$raw(xs): @(x0, xs)
+gseq_fset$at$raw
+(xs: xs,i0: ni,x0: x0): (xs)
 //
+(* ****** ****** *)
+//
+(*
+HX: |xs| > 0 is assumed
+*)
+fun
+<xs:t0>
+<x0:t0>
+gseq_uncons$raw(xs): @(x0, xs)
 fun
 <xs:t0>
 <x0:t0>
@@ -204,16 +214,14 @@ used with caution!!!
 *)
 fun
 <xs:t0>
-<x0:vt>
+<x0:t0>
 gasz_get$at$raw
-( xs: xs
-, i0: ni): (owed(x0) | x0)
+(xs: xs, i0: ni): (x0)
 fun
 <xs:t0>
-<x0:vt>
+<x0:t0>
 gasz_set$at$raw
-( pf: owed(x0)
-| xs: xs, i0: ni, x0: x0): void
+(xs: xs, i0: ni, x0: x0): void
 //
 fun
 <xs:t0>
@@ -225,6 +233,19 @@ fun
 <x0:vt>
 gasz_setf$at$raw
 ( xs: xs, i0: ni, x0: x0): void
+//
+fun
+<xs:t0>
+<x0:vt>
+gasz_lget$at$raw
+(xs: xs
+,i0: ni): (owed(x0) | x0)
+fun
+<xs:t0>
+<x0:vt>
+gasz_lset$at$raw
+(pf: owed(x0)
+|xs: xs, i0: ni, x0: x0): void
 //
 (* ****** ****** *)
 //

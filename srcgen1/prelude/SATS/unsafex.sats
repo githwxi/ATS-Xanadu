@@ -233,18 +233,17 @@ HX-2024-07-26:
 These should be
 used with caution!!!
 *)
+//
 fun
 <xs:t0>
-<x0:vt>
+<x0:t0>
 gasz_get$at$raw
-( xs: xs
-, i0: ni): (owed(x0) | x0)
+( xs: xs, i0: ni): x0
 fun
 <xs:t0>
-<x0:vt>
+<x0:t0>
 gasz_set$at$raw
-( pf: owed(x0)
-| xs: xs, i0: ni, x0: x0): void
+( xs: xs, i0: ni, x0: x0): void
 //
 fun
 <xs:t0>
@@ -257,10 +256,23 @@ fun
 gasz_setf$at$raw
 ( xs: xs, i0: ni, x0: x0): void
 //
+fun
+<xs:t0>
+<x0:vt>
+gasz_lget$at$raw
+( xs: xs
+, i0: ni): (owed(x0) | x0)
+fun
+<xs:t0>
+<x0:vt>
+gasz_lset$at$raw
+( pf: owed(x0)
+| xs: xs, i0: ni, x0: x0): void
+//
 (* ****** ****** *)
 //
 fun<>
-strn_get$at$raw(strn, ni): cgtz
+strn_get$at$raw(strn, ni): (cgtz)
 //
 (* ****** ****** *)
 //
