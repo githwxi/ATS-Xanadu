@@ -255,7 +255,8 @@ HX: This is like istrmize
 *)
 fun
 jsarray_iter_next
-(jsarray_iter(a:vt)): optn_vt@(nint,a)
+ {a:vt}
+(jsarray_iter(a)): optn_vt@(nint,a)
 //
 (* ****** ****** *)
 (* ****** ****** *)

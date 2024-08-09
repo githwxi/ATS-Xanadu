@@ -69,11 +69,16 @@ jshsmap_make0_list_vt
 (* ****** ****** *)
 //
 fun<>
- {k:t0}{x:vt}
-jshsmap_get$at$opt
-(jshsmap(k,x), k): optn_vt(x)
+jshsmap_get$at
+ {k:t0}{x:t0}
+(jshsmap(k,x), k): (x)
+fun<>
+jshsmap_set$at
+ {k:t0}{x:t0}
+(jshsmap(k,x), k, x): void
 //
-#symload [] with jshsmap_get$at of 100
+#symload [] with jshsmap_get$at of 1000
+#symload [] with jshsmap_set$at of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
