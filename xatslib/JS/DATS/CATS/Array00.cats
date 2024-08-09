@@ -161,6 +161,34 @@ XATS2JS_jsarray_sortref_f2un
 }
 //
 /////////////////////////////////////////////////////////////////////////
+//
+function
+XATS2JS_jsarray_iforall_f2un
+  (A, test)
+{
+  let i0
+  let n0 = A.length
+  for (i0 = 0; i0 < n0; i0 += 1)
+  {
+    if (!test(i0, A[i0])) return false
+  }
+  return true // HX: all xs in A have passed the test!
+}
+/*
+// HX-2024-08-09:
+// This is likely to be less efficient!
+function
+XATS2JS_jsarray_iforall_f2un
+  (A, test)
+{
+  for (const ix of A.entries()) {
+    if (!test(ix[0], ix[1])) return false
+  }
+  return true // HX: all xs in A have passed the test!
+}
+*/
+//
+/////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
 //
 // end of [ATS3/XANADU_xatslib_JS_DATS_CATS_Array00.cats]

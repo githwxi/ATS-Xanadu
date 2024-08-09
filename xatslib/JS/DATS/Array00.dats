@@ -276,20 +276,12 @@ gseq_strmize
 <jsa(x0)><x0> = gasz_strmize<jsa(x0)><x0>
 #impltmp
 { x0:vt }
-gseq_strmize0
-<jsa(x0)><x0> = gasz_strmize<jsa(x0)><x0>
-#impltmp
-{ x0:vt }
 gseq_strmize1
 <jsa(x0)><x0> = gasz_strmize<jsa(x0)><x0>
 //
 #impltmp
 { x0:t0 }
 gseq_rstrmize
-<jsa(x0)><x0> = gasz_rstrmize<jsa(x0)><x0>
-#impltmp
-{ x0:vt }
-gseq_rstrmize0
 <jsa(x0)><x0> = gasz_rstrmize<jsa(x0)><x0>
 #impltmp
 { x0:vt }
@@ -316,34 +308,27 @@ forall$test0<x0>
 *)
 //
 #impltmp
-< a: vt >
-jsarray_forall
+{ x0:t0 }
+gasz_forall
+<jsa(x0)><x0>
   ( A ) =
-(
-jsarray_forall_f1un<>
-(A
-,lam(x)=>forall$test1<a>(x)))
+jsarray_forall_f1un
+<  (*tmp*)  >{  x0  }
+( A
+, lam(x) =>
+  forall$test1<x0>(x) )
 //
 #impltmp
 { x0:t0 }
 gseq_forall
-<jsa(x0)><x0> = jsarray_forall<x0>
-//
-#impltmp
-{ x0:vt }
-gseq_forall1
-<jsa(x0)><x0> = jsarray_forall<x0>
-//
-#impltmp
-{ x0:t0 }
-gseq_forall0
 <jsa(x0)><x0>
- ( xs ) =
+  ( A ) =
 (
-jsarray_forall<x0>(xs)) where
+gasz_forall<jsa(x0)><x0>(A)
+) where
 {
 #impltmp
-forall$test1<x0> = forall$test0<x0>
+forall$test1<x0> = forall$test<x0>
 }
 //
 (* ****** ****** *)
@@ -368,31 +353,28 @@ XATS2JS_jsarray_forall_f1un
 (* ****** ****** *)
 //
 #impltmp
-< a: vt >
-jsarray_rforall
+{ x0:t0 }
+gasz_rforall
+<jsa(x0)><x0>
   ( A ) =
-(
-jsarray_rforall_f1un<>
-(A
-,lam(x)=>rforall$test1<a>(x)))
+jsarray_rforall_f1un
+<  (*tmp*)  >{  x0  }
+( A
+, lam(x) =>
+  rforall$test1<x0>(x) )
 //
 #impltmp
 { x0:t0 }
-gseq_rforall0
+gseq_rforall
 <jsa(x0)><x0>
- ( xs ) =
+  ( A ) =
 (
-jsarray_rforall<x0>(xs)) where
+gasz_rforall<jsa(x0)><x0>(A)
+) where
 {
 #impltmp
-rforall$test1<x0> = rforall$test0<x0>
+rforall$test1<x0> = rforall$test<x0>
 }
-#impltmp
-{ x0:vt }
-gseq_rforall1
-<jsa(x0)><x0> = jsarray_rforall<x0>
-//
-(* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
@@ -411,15 +393,50 @@ XATS2JS_jsarray_rforall_f1un
 }
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 #impltmp
-< a: vt >
-jsarray_mapref
+{ x0:t0 }
+gasz_iforall
+<jsa(x0)><x0>
+  ( A ) =
+jsarray_iforall_f2un
+<  (*tmp*)  >{  x0  }
+( A
+, lam(i, x) =>
+  iforall$test1<x0>(i, x) )
+//
+#impltmp
+{ x0:t0 }
+gseq_iforall
+<jsa(x0)><x0>
   ( A ) =
 (
-jsarray_mapref_f1un<>
-(A, lam(x)=>mapref$fopr0<a>(x)))
+gasz_iforall<jsa(x0)><x0>(A)
+) where
+{
+#impltmp
+iforall$test1<x0> = iforall$test<x0>
+}
+//
+#impltmp
+<(*tmp*)>
+jsarray_iforall_f2un
+  (A, test) =
+(
+XATS2JS_jsarray_iforall_f2un
+  (A, test)) where
+{
+#extern
+fun
+XATS2JS_jsarray_iforall_f2un
+ {a:vt}
+( A: jsa(a)
+, test
+: (nint, !a) -> bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>

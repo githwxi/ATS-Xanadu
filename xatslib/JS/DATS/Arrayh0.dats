@@ -4,6 +4,9 @@
 "./../SATS/Array.sats"
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef ni = nint
+(* ****** ****** *)
+(* ****** ****** *)
 #typedef
 jsa(a:vt) = jsarray(a)
 (* ****** ****** *)
@@ -33,12 +36,14 @@ HX-2024-07-27:
 *)
 //
 #extern
-fun<a:vt>
+fun<>
 jsarray_listize
+{a:vt}
 ( xs: jsa(a)): list_vt(a)
 #impltmp
-< a: vt >
-jsarray_listize =
+<(*tmp*)>
+jsarray_listize
+ {a:vt} =
 (
   gasz_listize<jsa(a)><a>)//impltmp
 #symload
@@ -46,10 +51,10 @@ listize with jsarray_listize of 1000
 //
 #impltmp
 { a: t0 }
-gseq_listize0<jsa(a)><a> = jsarray_listize<a>
+gseq_listize0<jsa(a)><a> = jsarray_listize<>{a}
 #impltmp
 { a: vt }
-gseq_listize1<jsa(a)><a> = jsarray_listize<a>
+gseq_listize1<jsa(a)><a> = jsarray_listize<>{a}
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -76,31 +81,6 @@ gseq_strmize0<jsa(a)><a> = jsarray_strmize<a>
 #impltmp
 { a: vt }
 gseq_strmize1<jsa(a)><a> = jsarray_strmize<a>
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2024-07-27:
-*)
-//
-#extern
-fun<a:vt>
-jsarray_forall
- ( A: jsa(a) ): bool
-#impltmp
-< a: vt >
-jsarray_forall =
-gasz_forall<jsa(a)><a>(*void*)
-#symload
-forall with jsarray_forall of 1000
-//
-#impltmp
-{ a: t0 }
-gseq_forall0<jsa(a)><a> = jsarray_forall<a>
-#impltmp
-{ a: vt }
-gseq_forall1<jsa(a)><a> = jsarray_forall<a>
 //
 (* ****** ****** *)
 (* ****** ****** *)
