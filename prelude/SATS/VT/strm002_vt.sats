@@ -58,6 +58,29 @@ z2forall0 with strm_vt_z2forall0 of 1000
 iz2forall0 with strm_vt_iz2forall0 of 1000
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt
+,y0:vt>
+strm_vt_z2forcmp0
+( xs: ~strm_vt(x0)
+, ys: ~strm_vt(y0)): sint//end-of-[fun]
+//
+fun
+<x0:vt
+,y0:vt>
+strm_vt_iz2forcmp0
+( xs: ~strm_vt(x0)
+, ys: ~strm_vt(y0)): sint//end-of-[fun]
+//
+#symload
+z2forcmp0 with strm_vt_z2forcmp0 of 1000
+#symload
+iz2forcmp0 with strm_vt_iz2forcmp0 of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <x0:vt

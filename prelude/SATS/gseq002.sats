@@ -51,6 +51,14 @@ given lists: z is short for zip
 //
 (* ****** ****** *)
 (* ****** ****** *)
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+gseq_cmp(xs, ys): sint(*sign*)
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <xs:t0>
@@ -355,23 +363,25 @@ fun
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_x2istrmize
-(xs: xs, ys: ys): strm_vt@(ni, x0, ni, y0)
+gseq_x2strqize
+(xs: xs, ys: ys): strq_vt@(x0, y0)
 //
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
-gseq_x2strqize
-(xs: xs, ys: ys): strq_vt@(x0, y0)
+gseq_x2istrmize
+( xs: xs
+, ys: ys): strm_vt@(ni, x0, ni, y0)
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
 gseq_x2istrqize
-(xs: xs, ys: ys): strq_vt@(ni, x0, ni, y0)
+( xs: xs
+, ys: ys): strq_vt@(ni, x0, ni, y0)
 //
 (* ****** ****** *)
 //

@@ -91,6 +91,31 @@ irz2forall$test1
 fun
 <x0:vt>
 <y0:vt>
+z2forcmp$fcmp0
+(x0: ~x0, y0: ~y0): sint
+fun
+<x0:vt>
+<y0:vt>
+z2forcmp$fcmp1
+(x0: !x0, y0: !y0): sint
+//
+fun
+<x0:vt>
+<y0:vt>
+iz2forcmp$fcmp0
+(i0: ni, x0: ~x0, y0: ~y0): sint
+fun
+<x0:vt>
+<y0:vt>
+iz2forcmp$fcmp1
+(i0: ni, x0: !x0, y0: !y0): sint
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<y0:vt>
 <z0:vt>
 z2map$fopr0(x0: ~x0, y0: ~y0): ( z0 )
 fun
