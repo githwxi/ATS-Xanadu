@@ -48,8 +48,8 @@ val (  ) = prints
 //
 val kxs1 =
 GSEQ(map1).listize()
-val (  ) = prints
-("kxs1(", type(kxs1), ") = ", kxs1, "\n")
+val (  ) = print1s
+("kxs1(", vwtp(kxs1), ") = ", kxs1, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
