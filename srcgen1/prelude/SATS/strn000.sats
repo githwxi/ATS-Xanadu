@@ -208,11 +208,15 @@ fun<>
 strn_neq
 (x1: strn, x2: strn): bool
 (* ****** ****** *)
-
+//
 fun<>
 strn_cmp
 (x1: strn, x2: strn): sint
-
+//
+fun<>
+strn_compare
+(x1: strn, x2: strn): sint
+//
 (* ****** ****** *)
 //
 fun<>

@@ -54,7 +54,7 @@ g_cmp
 < strn >
 (cs1, cs2) =
 (
-  strn_compare(x1, x2))
+  strn_compare(cs1, cs2))
 //
 (* ****** ****** *)
 //
