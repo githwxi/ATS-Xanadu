@@ -141,6 +141,54 @@ end//let//end-of-[jshsmap_make0_llist]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+{ k: t0 }
+{ x: t0 }
+gseq_forall
+<jsm(k,x)><(k,x)>
+  ( kxs ) =
+jshsmap_forall_f2un<>
+(kxs
+,lam(k,x) => forall$test@(k,x))
+//
+#impltmp
+{ k: t0 }
+{ x: vt }
+gasz_forall
+<jsm(k,x)><(k,x)>
+  ( kxs ) =
+jshsmap_forall_f2un<>
+(kxs
+,lam(k,x) => forall$test1@(k,x))
+//
+#impltmp
+{ k: t0 }
+{ x: vt }
+gseq_forall1
+<jsm(k,x)><(k,x)> =
+  ( kxs ) =
+(
+gasz_forall<jsm(k,x)><(k,x)>(kxs))
+//
+#impltmp
+<(*tmp*)>
+jshsmap_forall_f2un
+  (map, test) =
+(
+XATS2JS_jshsmap_forall_f2un
+  (map, test)) where
+{
+#extern
+fun
+XATS2JS_jshsmap_forall_f2un
+ {k:t0}{x:vt}
+( map: jshsmap(k,x)
+, test: (k, !x) -> bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

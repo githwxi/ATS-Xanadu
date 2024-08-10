@@ -101,6 +101,12 @@ jshsmap_strmize
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-08-10:
+There is no [rforall] as there
+is no natural ordering of pairs
+in a hashmap.
+*)
 fun<>
 jshsmap_forall_f2un
  {k:t0}{x:vt}

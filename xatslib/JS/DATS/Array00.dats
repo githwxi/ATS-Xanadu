@@ -343,6 +343,17 @@ XATS2JS_jsarray_forall_f1un
 //
 #impltmp
 { x0:t0 }
+gseq_rforall
+<jsa(x0)><x0>
+  ( A ) =
+jsarray_rforall_f1un
+<  (*tmp*)  >{  x0  }
+( A
+, lam(x) =>
+  rforall$test<x0>(x) )
+//
+#impltmp
+{ x0:t0 }
 gasz_rforall
 <jsa(x0)><x0>
   ( A ) =
@@ -351,19 +362,6 @@ jsarray_rforall_f1un
 ( A
 , lam(x) =>
   rforall$test1<x0>(x) )
-//
-#impltmp
-{ x0:t0 }
-gseq_rforall
-<jsa(x0)><x0>
-  ( A ) =
-(
-gasz_rforall<jsa(x0)><x0>(A)
-) where
-{
-#impltmp
-rforall$test1<x0> = rforall$test<x0>
-}
 //
 #impltmp
 { x0:vt }
