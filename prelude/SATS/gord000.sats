@@ -38,6 +38,43 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+fun
+<a:t0>
+g_lt(a, a): bool
+fun
+<a:t0>
+g_gt(a, a): bool
+fun
+<a:t0>
+g_eq(a, a): bool
+//
+fun
+<a:t0>
+g_lte(a, a): bool
+fun
+<a:t0>
+g_gte(a, a): bool
+fun
+<a:t0>
+g_neq(a, a): bool
+//
+(* ****** ****** *)
+//
+fun
+<a:t0>
+g_cmp(a, a): sint
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+g_max( x0, x0 ): (x0)
+fun
+<x0:t0>
+g_min( x0, x0 ): (x0)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

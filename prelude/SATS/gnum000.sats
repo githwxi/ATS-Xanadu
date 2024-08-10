@@ -90,15 +90,6 @@ g_pred(x0: x0): (x0)
 //
 fun
 <x0:t0>
-g_max( x0, x0 ): (x0)
-fun
-<x0:t0>
-g_min( x0, x0 ): (x0)
-//
-(* ****** ****** *)
-//
-fun
-<x0:t0>
 g_add( x0, x0 ): (x0)
 fun
 <x0:t0>
