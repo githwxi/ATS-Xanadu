@@ -35,7 +35,7 @@ jshsmap_forall_f2un<>
 //
 #impltmp
 { k: t0 }
-{ x: t0 }
+{ x: vt }
 gasz_forall
 <jsm(k,x)><(k,x)>
   ( kxs ) =
@@ -63,6 +63,7 @@ XATS2JS_jshsmap_forall_f2un
 (* ****** ****** *)
 //
 #impltmp
+<(*tmp*)>
 UN_jshsmap_get$at$raw
   (map, key) =
 (
@@ -77,6 +78,7 @@ XATS2JS_jshsmap_get$at$raw
 }
 //
 #impltmp
+<(*tmp*)>
 UN_jshsmap_set$at$raw
   (map, key, itm) =
 (
@@ -94,6 +96,7 @@ XATS2JS_jshsmap_set$at$raw
 (* ****** ****** *)
 //
 #impltmp
+<(*tmp*)>
 UN_jshsmap_insert$raw
   (map, key, itm) =
 (
