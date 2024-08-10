@@ -54,6 +54,14 @@ jshsmap_vtbx(k:t0,x:vt)
 (* ****** ****** *)
 //
 fun<>
+jshsmap_length
+ {k:t0}{x:t0}
+ (map: jshsmap(k,x)): nint
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
 jshsmap_make_nil
  {k:t0}{x:vt}
 (   (*void*)   ): jshsmap(k,x)

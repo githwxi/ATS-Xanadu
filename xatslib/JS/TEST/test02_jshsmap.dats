@@ -42,12 +42,12 @@ For testing xatslib/JS!
 //
 val map1 =
 jshsmap
-(list(@("a", 0), @("a", 1)))
+(list(@("a", 0),@("b", 1)))
 val (  ) = prints
 ("map1(", type(map1), ") = ", map1, "\n")
 //
 val kxs1 =
-GSEQ(map1).listize()
+GSEQ(map1).rlistize()
 val (  ) = print1s
 ("kxs1(", vwtp(kxs1), ") = ", kxs1, "\n")
 //
