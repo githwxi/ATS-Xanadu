@@ -49,31 +49,6 @@ jsm(k:t0,x:vt) = jshsmap(k,x)
 (* ****** ****** *)
 //
 #impltmp
-{ k: t0 }
-{ x: vt }
-g_print<jsm(k,x)>
-  ( map ) =
-let
-//
-#vwtpdef x0 = @(k,x)
-#typedef xs = jsm(k,x)
-//
-#impltmp
-gseq_sep<xs><x0>() = ","
-#impltmp
-gseq_end<xs><x0>() = ")"
-#impltmp
-gseq_beg<xs><x0>() = "jshsmap("
-//
-in//let
-(
-  gseq_print1<xs><x0>(map) )
-end//end-of-[g_print<jsm(k,x)>]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
 <(*tmp*)>
 jshsmap_make_nil
  {k:t0}{x:t0}() =
@@ -126,7 +101,10 @@ jshsmap_make_nil<>()
 //
 in//let
 (
-list_vt_foritm0(kxs); map
+map where
+{
+val () =
+list_vt_foritm0(kxs) }
 ) where
 {
 #impltmp
@@ -154,21 +132,12 @@ jshsmap_forall_f2un<>
 #impltmp
 { k: t0 }
 { x: vt }
-gasz_forall
+gseq_forall1
 <jsm(k,x)><(k,x)>
   ( kxs ) =
 jshsmap_forall_f2un<>
 (kxs
 ,lam(k,x) => forall$test1@(k,x))
-//
-#impltmp
-{ k: t0 }
-{ x: vt }
-gseq_forall1
-<jsm(k,x)><(k,x)> =
-  ( kxs ) =
-(
-gasz_forall<jsm(k,x)><(k,x)>(kxs))
 //
 #impltmp
 <(*tmp*)>
@@ -184,6 +153,57 @@ XATS2JS_jshsmap_forall_f2un
  {k:t0}{x:vt}
 ( map: jshsmap(k,x)
 , test: (k, !x) -> bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+UN_jshsmap_get$at$raw
+  (map, key) =
+(
+XATS2JS_jshsmap_get$at$raw
+  (map, key)) where
+{
+#extern
+fun
+XATS2JS_jshsmap_get$at$raw
+ {k:t0}{x:t0}
+(map: jshsmap(k,x), key: k): ( x ) = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+UN_jshsmap_set$at$raw
+  (map, key, itm) =
+(
+XATS2JS_jshsmap_set$at$raw
+  (map, key, itm)) where
+{
+#extern
+fun
+XATS2JS_jshsmap_set$at$raw
+ {k:t0}{x:t0}
+(map: jshsmap(k,x), key: k, itm: x): void = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+UN_jshsmap_insert$raw
+  (map, key, itm) =
+(
+XATS2JS_jshsmap_insert$raw
+  (map, key, itm)) where
+{
+#extern
+fun
+XATS2JS_jshsmap_insert$raw
+ {k:t0}{x:vt}
+(map: jshsmap(k,x), key: k, itm: x): void = $extnam()
 }
 //
 (* ****** ****** *)

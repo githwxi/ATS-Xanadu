@@ -57,6 +57,25 @@ $UN.castxy(unit(*0*))
 (* ****** ****** *)
 //
 #impltmp
+< vt:vt >
+g_psort() =
+(
+  strn_print("vwtp"))
+#impltmp
+< t0:t0 >
+g_psort() =
+(
+  strn_print("type"))
+#impltmp
+< tx:tx >
+g_psort() =
+(
+  strn_print("tbox"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 < vw:vw >
 g_ptype() =
 (
@@ -85,13 +104,15 @@ g_ptype() =
 < t0:t0 >
 g_print(x0) =
 ( pstrn"$val("
-; g_ptype<t0>(); pstrn")")
+; g_ptype<t0>(); pstrn":"
+; g_psort<t0>(); pstrn")")
 //
 #impltmp
 < vt:vt >
 g_print1(x0) =
 ( pstrn"$val("
-; g_ptype<vt>(); pstrn")")
+; g_ptype<vt>(); pstrn":"
+; g_psort<vt>(); pstrn")")
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -174,7 +195,9 @@ Tue 06 Aug 2024 07:17:33 AM EDT
 #impltmp
 { vw:vw }
 g_print
-<type(vw)>(_(*0*)) = g_ptype<vw>()
+<type(vw)>(_(*0*)) =
+(
+g_ptype<vw>();pstrn":";g_psort<vw>())
 //
 (* ****** ****** *)
 (* ****** ****** *)

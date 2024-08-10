@@ -41,9 +41,15 @@ For testing xatslib/JS!
 (* ****** ****** *)
 //
 val map1 =
-jshsmap(list(@("a", 0), @("b", 1)))
+jshsmap
+(list(@("a", 0), @("a", 1)))
 val (  ) = prints
 ("map1(", type(map1), ") = ", map1, "\n")
+//
+val kxs1 =
+GSEQ(map1).listize()
+val (  ) = prints
+("kxs1(", type(kxs1), ") = ", kxs1, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
