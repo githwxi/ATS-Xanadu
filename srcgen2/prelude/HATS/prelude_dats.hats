@@ -40,6 +40,7 @@ This one is included by [DATS/unsfx00.dats]
 (* ****** ****** *)
 (* ****** ****** *)
 #staload _ = "prelude/DATS/gnum000.dats"
+#staload _ = "prelude/DATS/gord000.dats"
 #staload _ = "prelude/DATS/gfun000.dats"
 #staload _ = "prelude/DATS/gseq000.dats"
 #staload _ = "prelude/DATS/gseq001.dats"
@@ -63,6 +64,8 @@ This one is included by [DATS/unsfx00.dats]
 #staload _ = "prelude/DATS/strm000.dats"
 (* ****** ****** *)
 #staload _ = "prelude/DATS/VT/gnum000_vt.dats"
+#staload _ = "prelude/DATS/VT/gord000_vt.dats"
+#staload _ = "prelude/DATS/VT/gfun000_vt.dats"
 #staload _ = "prelude/DATS/VT/gcls000_vt.dats"
 #staload _ = "prelude/DATS/VT/gseq000_vt.dats"
 #staload _ = "prelude/DATS/VT/gseq001_vt.dats"

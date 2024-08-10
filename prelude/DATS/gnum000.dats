@@ -38,25 +38,7 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-#impltmp
-{ x0:t0 }
-g_add<x0> = g_add00<x0>
-#impltmp
-{ x0:t0 }
-g_sub<x0> = g_sub00<x0>
-#impltmp
-{ x0:t0 }
-g_mul<x0> = g_mul00<x0>
-#impltmp
-{ x0:t0 }
-g_div<x0> = g_div00<x0>
-*)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_gseq000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_gnum000.dats] *)
