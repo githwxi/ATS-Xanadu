@@ -101,6 +101,17 @@ fun
 gasz_rforall1(xs: !xs): bool
 //
 (* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+gasz_iforall0(xs: ~xs): bool
+fun
+<xs:vt>
+<x0:vt>
+gasz_iforall1(xs: !xs): bool
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
