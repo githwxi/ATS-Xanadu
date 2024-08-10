@@ -138,14 +138,43 @@ jshsmap_search$cpy
 (map: jshsmap(k,x), key: k): optn_vt(x)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
+(*
+HX-2024-08-10:
+Sat 10 Aug 2024 12:18:20 PM EDT
+jshsmap_delete(map) = map.delete
+Note that:
+[jshsmap_delete$raw] is not needed!
+*)
 fun<>
-jshsmap_remove$opt
+jshsmap_delete
+  {k:t0}{x:t0}
+(map: jshsmap(k,x), key: k): void
+//
+(* ****** ****** *)
+//
+(*
+HX-2024-08-10:
+Using [getout$any] if [key]
+is known in the given map [map]
+*)
+fun<>
+jshsmap_getout$any
+ {k:t0}{x:vt}
+(map: jshsmap(k,x), key: k): ( x )
+fun<>
+jshsmap_getout$opt
  {k:t0}{x:vt}
 (map: jshsmap(k,x), key: k): optn_vt(x)
 //
 (* ****** ****** *)
 //
+(*
+HX-2024-08-10:
+Using [insert$any] if [key]
+is known not in the given map [map]
+*)
 fun<>
 jshsmap_insert$any
  {k:t0}{x:vt}

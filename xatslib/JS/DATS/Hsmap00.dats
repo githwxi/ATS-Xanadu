@@ -245,6 +245,31 @@ XATS2JS_jshsmap_insert$raw
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<(*tmp*)>
+jshsmap_remove$any
+  (map, key) =
+(    itm     ) where
+{
+val-
+~optn_vt_cons(itm) =
+jshsmap_remove$opt<>(map, key) }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jshsmap_insert$any
+  (map, k, x) =
+let
+val-
+~optn_vt_nil() =
+jshsmap_insert$opt<>(map, k, x) end
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
