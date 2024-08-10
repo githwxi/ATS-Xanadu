@@ -62,6 +62,14 @@ length with strn_length of 1000
 //
 (* ****** ****** *)
 //
+fun<>
+strn_compare
+(x:strn, y:strn): sintbtwe(-1,1)
+#symload
+compare with strn_compare of 1000
+//
+(* ****** ****** *)
+//
 (*
 HX-2024-07-11:
 The 'g' in 'gmake' means

@@ -26,71 +26,22 @@
 *)
 
 (* ****** ****** *)
-(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 (*
-Thu 11 Jul 2024 01:11:20 PM EDT
+Sat 10 Aug 2024 03:06:45 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload UN =
-"prelude/SATS/unsfx00.sats"
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-g_0<strn>() = ("")
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-g_cmp
-< strn >
-(cs1, cs2) =
-(
-  strn_compare(x1, x2))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-strn_gmake
-<list(cgtz)> = strn_make_list<>
-//
-#impltmp
-strn_gmake0
-<list_vt(cgtz)> = strn_make0_llist<>
-#impltmp
-strn_gmake1
-<list_vt(cgtz)> = strn_make1_llist<>
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-$UN.gasz_get$at$raw
-< strn >< cgtz >(cs, i0) =
-$UN.strn_get$at$raw<>(cs, i0)
-//
-#impltmp
-$UN.gasz_lget$at$raw
-< strn >< cgtz >(cs, i0) =
-let
-val c0 =
-$UN.strn_get$at$raw<>(cs, i0)
-prval pf = owed_t0_make{cgtz}() in (pf|c0)
-end//let//end($UN.gasz_lget$at$raw<strn><cgtz>)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_strn000.dats] *)
+(* end of [ATS3/XANADU_prelude_SATS_VT_gord000_vt.sats] *)
