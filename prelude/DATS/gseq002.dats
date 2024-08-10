@@ -398,6 +398,21 @@ val b0 = irz2forall$test<x0>(i0, x0, y0)
 HX-2024-08-10:
 Sat 10 Aug 2024 07:14:36 PM EDT
 *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_cmp
+  (xs, ys) =
+(
+gseq_z2forcmp
+<xs><x0><xs><x0>(xs, ys))
+where
+{
+#impltmp
+z2forcmp$fcmp<x0> = g_cmp<x0>
+}(*where*)//end-of-[gseq_cmp(xs,ys)]
+//
 #impltmp
 < xs:t0 >
 < x0:t0 >

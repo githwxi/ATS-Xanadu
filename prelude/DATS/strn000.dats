@@ -48,15 +48,8 @@ g_0<strn>
 ((*void*)) = ("")
 //
 (* ****** ****** *)
-(* ****** ****** *)
-//
 #impltmp
-g_cmp
-<  strn  >
-(cs1, cs2) =
-(
-  strn_compare(cs1, cs2))
-//
+g_cmp<strn> = strn_cmp<>
 (* ****** ****** *)
 //
 (*
@@ -68,6 +61,16 @@ g_ptype
 ( (*void*) ) = pstrn("strn")
 *)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+#impltmp
+<(*tmp*)>
+strn_cmp(*0*) = strn_compare<>
+*)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp

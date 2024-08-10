@@ -54,9 +54,8 @@ given lists: z is short for zip
 fun
 <xs:t0>
 <x0:t0>
-<ys:t0>
-<y0:t0>
-gseq_cmp(xs, ys): sint(*sign*)
+gseq_cmp
+(xs: xs, ys: xs): sint(*sign*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
