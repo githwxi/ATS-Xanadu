@@ -604,7 +604,38 @@ gseq_rstrmize1 = gseq_rstrmize<xs><x0>
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(*
+HX-2024-08-10:
+Sat 10 Aug 2024 06:58:19 AM EDT
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasz_forall1 = gasz_forall<xs><x0>
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasz_rforall1 = gasz_rforall<xs><x0>
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasz_iforall1 = gasz_iforall<xs><x0>
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+gasz_irforall1 = gasz_irforall<xs><x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_DATS_VT_gxyz000_vt.dats] *)
