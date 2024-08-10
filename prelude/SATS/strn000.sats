@@ -64,7 +64,7 @@ length with strn_length of 1000
 //
 fun<>
 strn_compare
-(x:strn, y:strn): sintbtwe(-1,1)
+(x:strn, y:strn): sint(*sign*)
 #symload
 compare with strn_compare of 1000
 //

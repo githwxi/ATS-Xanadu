@@ -151,6 +151,62 @@ gseq_iz2forall0
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-08-10:
+Sat 10 Aug 2024 07:14:04 PM EDT
+*)
+#impltmp
+< x0:vt >
+< y0:vt >
+strm_vt_z2forcmp0
+  ( xs, ys ) =
+(
+  auxmain(xs, ys)) where
+{
+fun
+auxmain
+( xs
+: strm_vt(x0)
+, ys
+: strm_vt(y0)): sint =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil() =>
+(
+case+ !ys of
+| ~
+strmcon_vt_nil
+(   (*nil*)  ) => 0
+| ~
+strmcon_vt_cons
+(   y1 , ys   ) =>
+(free(y1);free(ys);1)
+)
+| ~
+strmcon_vt_cons
+(   x1 , xs   ) =>
+(
+case+ !ys of
+| ~
+strmcon_vt_nil() =>
+(free(x1);free(xs);-1)
+| ~
+strmcon_vt_cons
+(   y1 , ys   ) =>
+(
+let
+val sgn =
+z2forcmp$fcmp0
+<x0><y0>(x1, y1) in
+if sgn = 0
+then auxmain(xs, ys)
+else (free(xs);free(ys);sgn) end)))
+}(*where*)//end-of-[strm_vt_z2forcmp0(xs,ys)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 < x0:vt >
 < y0:vt >

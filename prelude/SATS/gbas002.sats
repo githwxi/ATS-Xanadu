@@ -94,6 +94,19 @@ irz2forall$test
 fun
 <x1:t0>
 <x2:t0>
+z2forcmp$test
+(x1: x1, x2: x2): sint
+fun
+<x1:t0>
+<x2:t0>
+iz2forcmp$test
+(i0: ni, x1: x1, x2: x2): sint
+//
+(* ****** ****** *)
+//
+fun
+<x1:t0>
+<x2:t0>
 z2foritm$work
 (x1: x1, x2: x2): void
 fun

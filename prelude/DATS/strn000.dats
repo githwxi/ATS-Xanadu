@@ -44,14 +44,15 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
-g_0<strn>() = ("")
+g_0<strn>
+((*void*)) = ("")
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 g_cmp
-< strn >
+<  strn  >
 (cs1, cs2) =
 (
   strn_compare(cs1, cs2))
@@ -60,7 +61,7 @@ g_cmp
 //
 (*
 HX:
-This is in [gdb000.dats]:
+This is in [gdbg000.dats]:
 #impltmp
 g_ptype
 < strn >
