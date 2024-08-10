@@ -54,9 +54,12 @@ of the ATS3/Xanadu implemnetation!
 //
 (*
 HX-2024-08-06:
-This is the number 1
-function for debugging
+These are the number 1
+functions for debugging
 *)
+fun
+<vw:vw>
+g_psort((*void*)): void
 fun
 <vw:vw>
 g_ptype((*void*)): void

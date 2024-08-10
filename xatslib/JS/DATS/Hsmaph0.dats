@@ -24,55 +24,41 @@ g_ptype<x>();pstrn")")
 (* ****** ****** *)
 //
 #impltmp
-<(*tmp*)>
-UN_jshsmap_get$at$raw
-  (map, key) =
-(
-XATS2JS_jshsmap_get$at$raw
-  (map, key)) where
-{
-#extern
-fun
-XATS2JS_jshsmap_get$at$raw
- {k:t0}{x:t0}
-(map: jshsmap(k,x), key: k): ( x ) = $extnam()
-}
+{ k: t0 }
+{ x: vt }
+g_print<jsm(k,x)>
+  ( map ) =
+let
+//
+#vwtpdef x0 = @(k,x)
+#typedef xs = jsm(k,x)
 //
 #impltmp
-<(*tmp*)>
-UN_jshsmap_set$at$raw
-  (map, key, itm) =
+gseq_sep<xs><x0>() = ","
+#impltmp
+gseq_end<xs><x0>() = ")"
+#impltmp
+gseq_beg<xs><x0>() = "jshsmap("
+//
+in//let
 (
-XATS2JS_jshsmap_set$at$raw
-  (map, key, itm)) where
-{
-#extern
-fun
-XATS2JS_jshsmap_set$at$raw
- {k:t0}{x:t0}
-(map: jshsmap(k,x), key: k, itm: x): void = $extnam()
-}
+  gseq_print1<xs><x0>(map) )
+end//end-of-[g_print<jsm(k,x)>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-<(*tmp*)>
-UN_jshsmap_insert$raw
-  (map, key, itm) =
-(
-XATS2JS_jshsmap_insert$raw
-  (map, key, itm)) where
-{
-#extern
-fun
-XATS2JS_jshsmap_insert$raw
- {k:t0}{x:vt}
-(map: jshsmap(k,x), key: k, itm: x): void = $extnam()
-}
+{ k: t0 }
+{ x: vt }
+g_forall<jsm(k,x)> =
+gseq_forall1<jsm(k,x)><(k,x)>
 //
-(* ****** ****** *)
-(* ****** ****** *)
+#impltmp
+{ k: t0 }
+{ x: vt }
+g_foritm<jsm(k,x)> =
+gseq_foritm1<jsm(k,x)><(k,x)>
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)

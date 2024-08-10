@@ -53,28 +53,6 @@ jsa(a:vt) = jsarray(a)
 (* ****** ****** *)
 //
 #impltmp
-{ a: vt }
-g_print<jsa(a)>
-  ( xs ) =
-let
-//
-#vwtpdef x0 = (a)
-#typedef xs = jsa(a)
-//
-#impltmp
-gseq_sep<xs><x0>() = ","
-#impltmp
-gseq_end<xs><x0>() = ")"
-#impltmp
-gseq_beg<xs><x0>() = "jsarray("
-in//let
-  gseq_print1<xs><x0>(xs)
-end//end-of-[g_print<jsa(a)>]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
 <(*tmp*)>
 jsarray_make_ncpy
   (n, x) =

@@ -47,9 +47,9 @@ the size of such an array.
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-#abstype
+#abstbox
 jsarray_tbox(a:vt)
-#absvwtp
+#absvtbx
 jsarray_vtbx(a:vt)
 (* ****** ****** *)
 #typedef
@@ -247,11 +247,10 @@ HX-2024-08-09:
 Fri 09 Aug 2024 08:24:11 AM EDT
 *)
 //
-#absvwtp
-jsarray_iter(a:vt)
+#absvwtp jsarray_iter(a:vt)
 //
 (*
-HX: This is like istrmize
+HX: This is like jsarray_istrmize
 *)
 fun
 jsarray_iter_next

@@ -43,9 +43,9 @@ HX: For hashmap support in JS
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-#abstype
+#abstbox
 jshsmap_tbox(k:t0,x:vt)
-#absvwtp
+#absvtbx
 jshsmap_vtbx(k:t0,x:vt)
 (* ****** ****** *)
 #sexpdef jshsmap = jshsmap_tbox
@@ -173,6 +173,16 @@ fun<>
 UN_jshsmap_insert$raw
  {k:t0}{x:vt}
 (map: jshsmap(k,x), key: k, itm: x): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fcast // fun
+GSEQ_make_jshsmap
+{k:t0}{x:t0}
+( map: jshsmap(k, x))
+: GSEQ(jshsmap(k, x), @(k, x))
+#symload GSEQ with GSEQ_make_jshsmap of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
