@@ -51,6 +51,15 @@ end//end-of-[g_print<jsm(k,x)>]
 #impltmp
 { k: t0 }
 { x: vt }
+g_length<jsm(k,x)> =
+gseq_length1<jsm(k,x)><(k,x)>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ k: t0 }
+{ x: vt }
 g_forall<jsm(k,x)> =
 gseq_forall1<jsm(k,x)><(k,x)>
 //

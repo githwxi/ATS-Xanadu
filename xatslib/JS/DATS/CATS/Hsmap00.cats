@@ -36,8 +36,17 @@ Authoremail: gmhwxiATgmailDOTcom
 /////////////////////////////////////////////////////////////////////////
 //
 function
+XATS2JS_jshsmap_length
+  (map)
+{
+  return map.size // HX: field!
+}
+//
+/////////////////////////////////////////////////////////////////////////
+//
+function
 XATS2JS_jshsmap_make_nil
-  ()
+  (   )
 {
   var map = new Map(); return map
 }

@@ -50,6 +50,42 @@ jsm(k:t0,x:vt) = jshsmap(k,x)
 //
 #impltmp
 <(*tmp*)>
+jshsmap_length
+ {k:t0}{x:t0}
+ (    map    ) =
+(
+XATS2JS_jshsmap_length
+ (    map    )) where
+{
+#extern
+fun
+XATS2JS_jshsmap_length
+ {k:t0}{x:t0}
+(map: jshsmap(k,x)): nint = $extnam()
+}
+//
+#impltmp
+{ k: t0 }
+{ x: t0 }
+gseq_length
+<jsm(k,x)><(k,x)> =
+(
+  jshsmap_length<>{k}{x}(kxs))
+//
+#impltmp
+{ k: t0 }
+{ x: vt }
+gseq_length1
+<jsm(k,x)><(k,x)>
+  ( kxs ) =
+(
+  jshsmap_length<>{k}{x}(kxs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
 jshsmap_make_nil
  {k:t0}{x:t0}() =
 (
