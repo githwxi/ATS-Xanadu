@@ -38,6 +38,79 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< x0:t0 >
+g_lt(x1, x2) =
+g_gt<x0>(x2, x1)
+#impltmp
+< x0:t0 >
+g_gt(x1, x2) =
+g_lt<x0>(x2, x1)
+//
+#impltmp
+< x0:t0 >
+g_lt(x1, x2) =
+(
+g_cmp<x0>(x1, x2) < 0)
+#impltmp
+< x0:t0 >
+g_gt(x1, x2) =
+(
+g_cmp<x0>(x1, x2) > 0)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+g_lte(x1, x2) =
+g_gte<x0>(x2, x1)
+#impltmp
+< x0:t0 >
+g_gte(x1, x2) =
+g_lte<x0>(x2, x1)
+//
+#impltmp
+< x0:t0 >
+g_lte(x1, x2) =
+(
+g_cmp<x0>(x1, x2) <= 0)
+#impltmp
+< x0:t0 >
+g_gte(x1, x2) =
+(
+g_cmp<x0>(x1, x2) >= 0)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+g_cmp(x1, x2) =
+(
+if
+g_lt<x0>(x1, x2)
+then -1 else
+if
+g_lt<x0>(x2, x1) then -1 else 0
+)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+g_max(x1, x2) =
+if
+g_gte<x0>(x1, x2) then x1 else x2
+//
+#impltmp
+< x0:t0 >
+g_min(x1, x2) =
+if
+g_lte<x0>(x1, x2) then x1 else x2
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
