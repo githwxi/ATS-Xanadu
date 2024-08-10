@@ -68,6 +68,13 @@ jshsmap_make0_llist
  {k:t0}{x:vt}
 ( kxs:list_vt@(k,x) ): jshsmap(k,x)
 //
+#symload
+jshsmap with jshsmap_make_nil of 1000
+#symload
+jshsmap with jshsmap_make_list of 1000
+#symload
+jshsmap with jshsmap_make0_llist of 1000
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

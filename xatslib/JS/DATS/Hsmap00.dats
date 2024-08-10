@@ -61,9 +61,9 @@ let
 #impltmp
 gseq_sep<xs><x0>() = ","
 #impltmp
-gseq_beg<xs><x0>() = "jshsmap("
-#impltmp
 gseq_end<xs><x0>() = ")"
+#impltmp
+gseq_beg<xs><x0>() = "jshsmap("
 //
 in//let
 (
@@ -71,6 +71,22 @@ in//let
 end//end-of-[g_print<jsm(k,x)>]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jshsmap_make_nil
+ {k:t0}{x:t0}() =
+(
+XATS2JS_jshsmap_make_nil
+  ( (*void*) )) where
+{
+#extern
+fun
+XATS2JS_jshsmap_make_nil
+ {k:t0}{x:t0}(): jshsmap(k,x) = $extnam()
+}
+//
 (* ****** ****** *)
 //
 #impltmp
