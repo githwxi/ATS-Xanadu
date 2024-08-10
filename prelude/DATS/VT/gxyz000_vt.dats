@@ -605,12 +605,21 @@ gseq_rstrmize1 = gseq_rstrmize<xs><x0>
 (* ****** ****** *)
 //
 (*
+//
 HX-2024-08-10:
 Sat 10 Aug 2024 06:58:19 AM EDT
-*)
+Is it really a good ieda to allow
+gasz<t0><vt>?
 //
-(* ****** ****** *)
-(* ****** ****** *)
+HX-2024-08-10:
+Sat 10 Aug 2024 10:37:25 AM EDT
+We can certainly used instead:
+gasz_vt<t0><vt> for gasz<t0><vt>
+It does seem that this desgin of
+supporting gasz<t0><vt> makes some
+sense, though. So let us keep it!
+//
+*)
 //
 #impltmp
 < xs:t0 >
@@ -635,7 +644,7 @@ gasz_irforall1 = gasz_irforall<xs><x0>
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_prelude_DATS_VT_gxyz000_vt.dats] *)

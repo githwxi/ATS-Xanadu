@@ -62,6 +62,11 @@ g_psort() =
 (
   strn_print("vwtp"))
 #impltmp
+< vx:vx >
+g_psort() =
+(
+  strn_print("vtbx"))
+#impltmp
 < t0:t0 >
 g_psort() =
 (
