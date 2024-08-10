@@ -57,6 +57,16 @@ g_cmp
   strn_compare(x1, x2))
 //
 (* ****** ****** *)
+//
+(*
+HX:
+This is in [gdb000.dats]:
+#impltmp
+g_ptype
+< strn >
+( (*void*) ) = pstrn("strn")
+*)
+//
 (* ****** ****** *)
 //
 #impltmp
