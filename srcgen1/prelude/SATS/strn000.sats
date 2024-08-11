@@ -27,14 +27,22 @@
 
 (* ****** ****** *)
 //
-// For C-strings, that is,
-// char sequence ending with 0
+(*
+HX-2024-08-11:
+Note that [strn] should
+at least accomodate C-strings,
+that is, char sequences ending
+with the NULL char ('\000').
+Sun 11 Aug 2024 11:32:40 AM EDT
+*)
 //
 (* ****** ****** *)
 //
-// Author: Hongwei Xi
-// Start Time: March, 2020
-// Authoremail: gmhwxiATgmailDOTcom
+(*
+Author: Hongwei Xi
+Start Time: March, 2020
+Authoremail: gmhwxiATgmailDOTcom
+*)
 //
 (* ****** ****** *)
 (*
