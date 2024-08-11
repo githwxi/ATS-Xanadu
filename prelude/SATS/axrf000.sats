@@ -48,9 +48,9 @@ a0rf_vt_vx(elem:vwtp)
 #typedef
 a0rf(a0:vt) = a0rf_vt_tx(a0)
 //
-#typedef
+#vwtpdef
 a0pt(a0:vt) = a0rf_vt_vx(a0)
-#typedef
+#vwtpdef
 a0rf_vt(a0:vt) = a0rf_vt_vx(a0)
 //
 (* ****** ****** *)
