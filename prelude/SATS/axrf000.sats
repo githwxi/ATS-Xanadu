@@ -95,10 +95,22 @@ fun
 <a:t0>
 a0rf_set(A: a0rf(a), x: a): void
 //
-#symload with [] with a0rf_get of 1000
-#symload with [] with a0rf_set of 1000
-#symload with get with a0rf_get of 1000
-#symload with set with a0rf_set of 1000
+#symload [] with a0rf_get of 1000
+#symload [] with a0rf_set of 1000
+#symload get with a0rf_get of 1000
+#symload set with a0rf_set of 1000
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a0rf_cget(A: a0rf(a)): (a)
+fun
+<a:vt>
+a0rf_setf(A: a0rf(a), x: a): void
+//
+#symload cget with a0rf_cget of 1000
+#symload setf with a0rf_setf of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
