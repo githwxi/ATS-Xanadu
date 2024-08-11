@@ -65,10 +65,20 @@ g_ptype
 (* ****** ****** *)
 //
 (*
+HX-2024-08-10:
+This one should definitely
+be replaced later!!!
+Sat 10 Aug 2024 08:49:55 PM EDT
+*)
 #impltmp
 <(*tmp*)>
-strn_cmp(*0*) = strn_compare<>
-*)
+strn_cmp
+(xs, ys) =
+let
+#typedef xs = strn
+#typedef x0 = cgtz
+in//let
+gseq_cmp<xs><x0>(xs, ys) end
 //
 (* ****** ****** *)
 (* ****** ****** *)
