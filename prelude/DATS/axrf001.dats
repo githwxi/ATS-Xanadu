@@ -30,95 +30,37 @@
 //
 (*
 Author: Hongwei Xi
-Sun 11 Aug 2024 12:59:19 PM EDT
+Sun 11 Aug 2024 03:44:27 PM EDT
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#abstbox
-a0rf_vt_tx(a:vt) // 0-dim
-#absvtbx
-a0rf_vt_vx(a:vt) // 0-dim
-//
-#typedef
-a0rf(a0:vt) = a0rf_vt_tx(a0)
-//
-#vwtpdef
-a0pt(a0:vt) = a0rf_vt_vx(a0)
-#vwtpdef
-a0rf_vt(a0:vt) = a0rf_vt_vx(a0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#abstbox
-a1rf_vt_i0_tx(a:vt,n:i0)//1-dim
-#abstbox
-a1rf_vt_i0_vt(a:vt,n:i0)//1-dim
-//
-#typedef
-a1rf(a:vt,n:i0) = a1rf_vt_i0_tx(a,n)
-//
-#vwtpdef
-a1pt(a:vt,n:i0) = a1rf_vt_i0_vt(a,n)
-#vwtpdef
-a1rf_vt(a:vt,n:i0) = a1rf_vt_i0_vt(a,n)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#abstbox
-a2rf_vt_i0_i0_tx(a:vt,m:i0,n:i0)//2-dim
-#abstbox
-a2rf_vt_i0_i0_vt(a:vt,m:i0,n:i0)//2-dim
-//
-#typedef
-a2rf(a:vt,m:i0,n:i0) = a2rf_vt_i0_i0_tx(a,m,n)
-//
-#vwtpdef
-a2pt(a:vt,m:i0,n:i0) = a2rf_vt_i0_i0_vt(a,m,n)
-#vwtpdef
-a2rf_vt(a:vt,m:i0,n:i0) = a2rf_vt_i0_i0_vt(a,m,n)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:vt>
-a0rf_make_1val
-  (elem: a): a0rf(a)
-//
-#symload
-a0rf with a0rf_make_1val of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:t0>
-a0rf_get(A: a0rf(a)): (a)
-fun
-<a:t0>
-a0rf_set(A: a0rf(a), x: a): void
-//
-#symload [] with a0rf_get of 1000
-#symload [] with a0rf_set of 1000
-#symload get with a0rf_get of 1000
-#symload set with a0rf_set of 1000
-//
-(* ****** ****** *)
-//
-fun
-<a:vt>
-a0rf_cget(A: a0rf(a)): (a)
-fun
-<a:vt>
-a0rf_setf(A: a0rf(a), x: a): void
-//
-#symload cget with a0rf_cget of 1000
-#symload setf with a0rf_setf of 1000
+#impltmp
+{ x0:t0 }
+gasz_forall
+< a0rf(x0) >
+ (  arf  ) =
+forall$test<x0>(a0rf_get<x0>(arf))
+#impltmp
+< x0:t0 >
+gasz_rforall
+< a0rf(x0) >
+ (  arf  ) =
+rforall$test<x0>(a0rf_get<x0>(arf))
+#impltmp
+< x0:t0 >
+gasz_iforall
+< a0rf(x0) >
+ (  arf  ) =
+iforall$test<x0>(0, a0rf_get<x0>(arf))
+#impltmp
+< x0:t0 >
+gasz_irforall
+< a0rf(x0) >
+ (  arf  ) =
+irforall$test<x0>(0, a0rf_get<x0>(arf))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -126,4 +68,4 @@ a0rf_setf(A: a0rf(a), x: a): void
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_axrf000.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_axrf001.dats] *)
