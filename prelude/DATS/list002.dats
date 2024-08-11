@@ -37,6 +37,9 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef ni = nint
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX-2024-08-10:
@@ -82,6 +85,42 @@ if
 z2forall$test
 <x0><y0>(x1, y1)
 then auxloop(xs, ys) else false)))
+}(*where*)//end-of-[list_z2forall(xs,ys)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+list_iz2forall
+  ( xs, ys ) =
+(
+auxloop
+(0(*i0*), xs, ys)) where
+{
+fun
+auxloop
+( i0: ni
+, xs
+: list(x0)
+, ys
+: list(y0)): bool =
+(
+case+ xs of
+|list_nil() =>
+(   true   )
+|list_cons(x1, xs) =>
+(
+case+ ys of
+|list_nil() =>
+(   true   )
+|list_cons(y1, ys) =>
+(
+if
+iz2forall$test
+<x0><y0>(i0, x1, y1)
+then auxloop(i0+1,xs,ys) else false)))
 }(*where*)//end-of-[list_z2forall(xs,ys)]
 //
 (* ****** ****** *)
