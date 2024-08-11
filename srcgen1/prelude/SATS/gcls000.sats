@@ -46,4 +46,4 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_gcls000.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_gcls000.sats] *)
