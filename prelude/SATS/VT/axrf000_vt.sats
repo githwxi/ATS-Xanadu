@@ -33,30 +33,14 @@
 //
 (*
 Author: Hongwei Xi
-Sun 11 Aug 2024 12:59:19 PM EDT
+Sun 11 Aug 2024 01:10:04 PM EDT
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#abstbox
-a0rf_vt_tx(elem:vwtp)
-#absvtbx
-a0rf_vt_vx(elem:vwtp)
-//
-#typedef
-a0rf(a0:vt) = a0rf_vt_tx(a0)
-//
-#typedef
-a0pt(a0:vt) = a0rf_vt_vx(a0)
-#typedef
-a0rf_vt(a0:vt) = a0rf_vt_vx(a0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_axrf000.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_VT_axrf000_vt.sats] *)
