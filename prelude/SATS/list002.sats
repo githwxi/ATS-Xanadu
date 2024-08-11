@@ -41,21 +41,21 @@ Authoremail: gmhwxiATgmailDOTcom
 fun
 <x0:t0
 ,y0:t0>
-list_z2forall0
+list_z2forall
 ( xs: list(x0)
 , ys: list(y0)): bool//end-of-[fun]
 //
 fun
 <x0:t0
 ,y0:t0>
-list_iz2forall0
+list_iz2forall
 ( xs: list(x0)
 , ys: list(y0)): bool//end-of-[fun]
 //
 #symload
-z2forall0 with list_z2forall0 of 1000
+z2forall with list_z2forall of 1000
 #symload
-iz2forall0 with list_iz2forall0 of 1000
+iz2forall with list_iz2forall of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -63,21 +63,21 @@ iz2forall0 with list_iz2forall0 of 1000
 fun
 <x0:t0
 ,y0:t0>
-list_z2forcmp0
+list_z2forcmp
 ( xs: list(x0)
 , ys: list(y0)): sint//end-of-[fun]
 //
 fun
 <x0:t0
 ,y0:t0>
-list_iz2forcmp0
+list_iz2forcmp
 ( xs: list(x0)
 , ys: list(y0)): sint//end-of-[fun]
 //
 #symload
-z2forcmp0 with list_z2forcmp0 of 1000
+z2forcmp with list_z2forcmp of 1000
 #symload
-iz2forcmp0 with list_iz2forcmp0 of 1000
+iz2forcmp with list_iz2forcmp of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -85,21 +85,21 @@ iz2forcmp0 with list_iz2forcmp0 of 1000
 fun
 <x0:t0
 ,y0:t0>
-list_z2foritm0
+list_z2foritm
 ( xs: list(x0)
 , ys: list(y0)): void//end-of-[fun]
 //
 fun
 <x0:t0
 ,y0:t0>
-list_iz2foritm0
+list_iz2foritm
 ( xs: list(x0)
 , ys: list(y0)): void//end-of-[fun]
 //
 #symload
-z2foritm0 with list_z2foritm0 of 1000
+z2foritm with list_z2foritm of 1000
 #symload
-iz2foritm0 with list_iz2foritm0 of 1000
+iz2foritm with list_iz2foritm of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -108,19 +108,19 @@ fun
 <x0:t0
 ,y0:t0>
 <r0:t0>
-list_z2folditm0
+list_z2folditm
 (list(x0), list(y0), r0): (r0)
 fun
 <x0:t0
 ,y0:t0>
 <r0:t0>
-list_iz2folditm0
+list_iz2folditm
 (list(x0), list(y0), r0): (r0)
 //
 #symload
-z2folditm0 with list_z2folditm0 of 1000
+z2folditm with list_z2folditm of 1000
 #symload
-iz2folditm0 with list_iz2folditm0 of 1000
+iz2folditm with list_iz2folditm of 1000
 //
 (* ****** ****** *)
 //
@@ -128,19 +128,19 @@ fun
 <x0:t0
 ,y0:t0>
 <r0:t0>
-list_z2foldall0
+list_z2foldall
 (list(x0), list(y0), r0): (r0)
 fun
 <x0:t0
 ,y0:t0>
 <r0:t0>
-list_iz2foldall0
+list_iz2foldall
 (list(x0), list(y0), r0): (r0)
 //
 #symload
-z2foldall0 with list_z2foldall0 of 1000
+z2foldall with list_z2foldall of 1000
 #symload
-iz2foldall0 with list_iz2foldall0 of 1000
+iz2foldall with list_iz2foldall of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
