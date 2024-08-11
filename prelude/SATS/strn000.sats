@@ -38,6 +38,43 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#sortdef c0 = char
+#typedef cgtz =
+[c:c0 | c > 0] char(c)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+strn_nilq
+ {n:i0}
+(cs: strn(n)): bool(n=0)
+fun<>
+strn_consq
+ {n:i0}
+(cs: strn(n)): bool(n>0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+strn_cmp
+( xs: strn
+, ys: strn): sint(*sign*)
+#symload
+compare with strn_cmp of 1000
+//
+(*
+fun<>
+strn_compare // = strn_cmp
+(x:strn, y:strn): sint(*sign*)
+#symload
+compare with strn_compare of 1000
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2024-07-17:
 Note strn_print may not
@@ -61,21 +98,6 @@ strn_length
 length with strn_length of 1000
 //
 (* ****** ****** *)
-//
-fun<>
-strn_cmp
-(x:strn, y:strn): sint(*sign*)
-#symload
-compare with strn_cmp of 1000
-//
-(*
-fun<>
-strn_compare // = strn_cmp
-(x:strn, y:strn): sint(*sign*)
-#symload
-compare with strn_compare of 1000
-*)
-//
 (* ****** ****** *)
 //
 (*
