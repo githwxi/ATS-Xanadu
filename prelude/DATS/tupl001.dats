@@ -39,37 +39,21 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #impltmp
 { x0:t0 }
 gseq_forall
 <t0up2(x0,x0)><x0>
   ( tup ) =
-( forall$test<x0>(tup.0)
-; forall$test<x0>(tup.1))
+let
+val b0 =
+forall$test<x0>(tup.0)
+in//let
+if b0 then
+forall$test<x0>(tup.1) else false
+end//let//end-of-[gseq_forall(...)]
 //
-(* ****** ****** *)
-//
-#impltmp
-{ x0:t0 }
-gseq_forall
-<t0up3(x0,x0)><x0>
-  ( tup ) =
-( forall$test<x0>(tup.0)
-; forall$test<x0>(tup.1)
-; forall$test<x0>(tup.2))
-//
-(* ****** ****** *)
-//
-#impltmp
-{ x0:t0 }
-gseq_forall
-<t0up4(x0,x0)><x0>
-  ( tup ) =
-( forall$test<x0>(tup.0)
-; forall$test<x0>(tup.1)
-; forall$test<x0>(tup.2)
-; forall$test<x0>(tup.3))
-//
+*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
