@@ -30,42 +30,20 @@
 //
 (*
 Author: Hongwei Xi
-Sun 11 Aug 2024 03:44:27 PM EDT
+Sun 11 Aug 2024 07:23:41 PM EDT
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#impltmp
-{ x0:t0 }
-gasz_forall
-<a0rf(x0)><x0>
- (   arf   ) =
-forall$test<x0>(a0rf_get<x0>(arf))
-#impltmp
-{ x0:t0 }
-gasz_rforall
-<a0rf(x0)><x0>
- (   arf   ) =
-rforall$test<x0>(a0rf_get<x0>(arf))
-#impltmp
-{ x0:t0 }
-gasz_iforall
-<a0rf(x0)><x0>
- (   arf   ) =
-iforall$test<x0>(0, a0rf_get<x0>(arf))
-#impltmp
-{ x0:t0 }
-gasz_irforall
-<a0rf(x0)><x0>
- (   arf   ) =
-irforall$test<x0>(0, a0rf_get<x0>(arf))
-//
+#include
+"./../../../prelude/SATS/axrf000.sats"
+#include
+"./../../../prelude/SATS/axrf001.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_axrf001.dats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_axrf000.sats] *)
