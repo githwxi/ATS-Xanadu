@@ -88,6 +88,21 @@ a2rf_vt(a:vt,m:i0,n:i0) = a2rf_vt_i0_i0_vt(a,m,n)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<a:t0>
+a0rf_get(A: a0rf(a)): (a)
+fun
+<a:t0>
+a0rf_set(A: a0rf(a), x: a): void
+//
+#symload with [] with a0rf_get of 1000
+#symload with [] with a0rf_set of 1000
+#symload with get with a0rf_get of 1000
+#symload with set with a0rf_set of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
