@@ -171,6 +171,8 @@ $(XATSOPT) -s $(PRELUDE1)/SATS/gseq000.sats
 all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gseq001.sats
 all1_sats:: ; \
+$(XATSOPT) -s $(PRELUDE1)/SATS/gasz000.sats
+all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gras000.sats
 all1_sats:: ; \
 $(XATSOPT) -s $(PRELUDE1)/SATS/gmap000.sats
