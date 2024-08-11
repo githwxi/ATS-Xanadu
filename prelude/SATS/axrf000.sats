@@ -38,15 +38,12 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #abstbox
-a0rf_vt_tx(a:vt) // 0-dim
+a0rf_vt_tx(a:vt)//0-dim
 #absvtbx
-a0rf_vt_vx(a:vt) // 0-dim
+a0rf_vt_vx(a:vt)//0-dim
 //
 #typedef
 a0rf(a0:vt) = a0rf_vt_tx(a0)
-//
-#vwtpdef
-a0pt(a0:vt) = a0rf_vt_vx(a0)
 #vwtpdef
 a0rf_vt(a0:vt) = a0rf_vt_vx(a0)
 //
@@ -54,33 +51,33 @@ a0rf_vt(a0:vt) = a0rf_vt_vx(a0)
 (* ****** ****** *)
 //
 #abstbox
-a1rf_vt_i0_tx(a:vt,n:i0)//1-dim
+a1rf_vt_i0_tx(a:vt,n:i0)
 #abstbox
-a1rf_vt_i0_vt(a:vt,n:i0)//1-dim
+a1rf_vt_i0_vt(a:vt,n:i0)
 //
 #typedef
-a1rf(a:vt,n:i0) = a1rf_vt_i0_tx(a,n)
-//
+a1rf
+(a:vt,n:i0) = a1rf_vt_i0_tx(a,n)
 #vwtpdef
-a1pt(a:vt,n:i0) = a1rf_vt_i0_vt(a,n)
-#vwtpdef
-a1rf_vt(a:vt,n:i0) = a1rf_vt_i0_vt(a,n)
+a1rf_vt
+(a:vt,n:i0) = a1rf_vt_i0_vt(a,n)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #abstbox
-a2rf_vt_i0_i0_tx(a:vt,m:i0,n:i0)//2-dim
+a2rf_vt_i0_i0_tx(a:vt,m:i0,n:i0)
 #abstbox
-a2rf_vt_i0_i0_vt(a:vt,m:i0,n:i0)//2-dim
+a2rf_vt_i0_i0_vt(a:vt,m:i0,n:i0)
 //
 #typedef
-a2rf(a:vt,m:i0,n:i0) = a2rf_vt_i0_i0_tx(a,m,n)
-//
+a2rf
+(a:vt
+,m:i0,n:i0) = a2rf_vt_i0_i0_tx(a,m,n)
 #vwtpdef
-a2pt(a:vt,m:i0,n:i0) = a2rf_vt_i0_i0_vt(a,m,n)
-#vwtpdef
-a2rf_vt(a:vt,m:i0,n:i0) = a2rf_vt_i0_i0_vt(a,m,n)
+a2rf_vt
+(a:vt
+,m:i0,n:i0) = a2rf_vt_i0_i0_vt(a,m,n)
 //
 (* ****** ****** *)
 (* ****** ****** *)

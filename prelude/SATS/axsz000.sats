@@ -30,37 +30,51 @@
 //
 (*
 Author: Hongwei Xi
-Sun 11 Aug 2024 03:44:27 PM EDT
+Sun 11 Aug 2024 12:59:19 PM EDT
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-{ x0:t0 }
-gasz_forall
-<a0rf(x0)><x0>
- (   arf   ) =
-forall$test<x0>(a0rf_get<x0>(arf))
-#impltmp
-< x0:t0 >
-gasz_rforall
-<a0rf(x0)><x0>
- (   arf   ) =
-rforall$test<x0>(a0rf_get<x0>(arf))
-#impltmp
-< x0:t0 >
-gasz_iforall
-<a0rf(x0)><x0>
- (   arf   ) =
-iforall$test<x0>(0, a0rf_get<x0>(arf))
-#impltmp
-< x0:t0 >
-gasz_irforall
-<a0rf(x0)><x0>
- (   arf   ) =
-irforall$test<x0>(0, a0rf_get<x0>(arf))
+#abstbox
+a1sz_vt_i0_i0_tx(a:vt,n:i0)
+#abstbox
+a1sz_vt_i0_i0_vt(a:vt,n:i0)
+//
+#typedef
+a1sz
+(a:vt,n:i0) = a1sz_vt_i0_i0_tx(a,n)
+#vwtpdef
+a1sz_vt
+(a:vt,n:i0) = a1sz_vt_i0_i0_vt(a,n)
+//
+#typedef
+a1sz(x0:vt) = [n:i0] a1sz(x0,n)
+#vwtpdef
+a1sz_vt(x0:vt) = [n:i0] a1sz_vt(x0,n)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#abstbox
+a2sz_vt_i0_i0_tx(a:vt,m:i0,n:i0)
+#abstbox
+a2sz_vt_i0_i0_vt(a:vt,m:i0,n:i0)
+//
+#typedef
+a2sz
+(a:vt
+,m:i0,n:i0) = a2sz_vt_i0_i0_tx(a,m,n)
+#vwtpdef
+a2sz_vt
+(a:vt
+,m:i0,n:i0) = a2sz_vt_i0_i0_vt(a,m,n)
+//
+#typedef
+a2sz(x0:vt) = [m:i0;n:i0] a2sz(x0,m,n)
+#vwtpdef
+a2sz_vt(x0:vt) = [m:i0;n:i0] a2sz_vt(x0,m,n)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -68,4 +82,4 @@ irforall$test<x0>(0, a0rf_get<x0>(arf))
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_axrf001.dats] *)
+(* end of [ATS3/XANADU_prelude_SATS_axsz000.sats] *)
