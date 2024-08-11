@@ -734,38 +734,38 @@ XATS2CC_strn_cmp
 }
 (* ****** ****** *)
 #impltmp
-strn_head_opt<> =
-XATS2CC_strn_head_opt
+strn_head$opt<> =
+XATS2CC_strn_head$opt
 where
 {
 #extern
 fun
-XATS2CC_strn_head_opt
+XATS2CC_strn_head$opt
 (cs: strn): char = $extnam()
 }
 (* ****** ****** *)
 //
 #impltmp
-$UN.strn_head_raw<> =
-XATS2CC_strn_head_raw
+$UN.strn_head$raw<> =
+XATS2CC_strn_head$raw
 where
 {
 #extern
 fun
-XATS2CC_strn_head_raw
+XATS2CC_strn_head$raw
 (cs: strn): char = $extnam()
 }
 //
 (* ****** ****** *)
 //
 #impltmp
-$UN.strn_tail_raw<> =
-XATS2CC_strn_tail_raw
+$UN.strn_tail$raw<> =
+XATS2CC_strn_tail$raw
 where
 {
 #extern
 fun
-XATS2CC_strn_tail_raw
+XATS2CC_strn_tail$raw
 (cs: strn): strn = $extnam()
 }
 //
@@ -805,13 +805,13 @@ XATS2CC_strn_vt_length1
 (* ****** ****** *)
 //
 #impltmp
-strn_get_at<> =
-XATS2CC_strn_get_at
+strn_get$at<> =
+XATS2CC_strn_get$at
 where
 {
 #extern
 fun
-XATS2CC_strn_get_at
+XATS2CC_strn_get$at
 ( cs
 : strn, i0: sint): char = $extnam()
 }
@@ -852,13 +852,13 @@ XATS2CC_strtmp_vt_alloc
 (* ****** ****** *)
 //
 #impltmp
-strtmp_vt_set_at<> =
-XATS2CC_strtmp_vt_set_at
+strtmp_vt_set$at<> =
+XATS2CC_strtmp_vt_set$at
 where
 {
 #extern
 fun
-XATS2CC_strtmp_vt_set_at
+XATS2CC_strtmp_vt_set$at
 (
 cs:strtmp0_vt,
 i0:sint, c0:char): void = $extnam()

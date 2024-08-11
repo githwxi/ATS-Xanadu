@@ -628,29 +628,29 @@ strn_print<> = XINTERP_strn_print
 //
 #extern
 fun
-XINTERP_strn_head_opt
+XINTERP_strn_head$opt
 ( x0
 : strn ): char = $extnam()
 #impltmp
-strn_head_opt<> = XINTERP_strn_head_opt
+strn_head$opt<> = XINTERP_strn_head$opt
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XINTERP_strn_head_raw
+XINTERP_strn_head$raw
 ( x0
 : strn ): char = $extnam()
 #extern
 fun
-XINTERP_strn_tail_raw
+XINTERP_strn_tail$raw
 ( x0
 : strn ): strn = $extnam()
 //
 #impltmp
-$UN.strn_head_raw<> = XINTERP_strn_head_raw
+$UN.strn_head$raw<> = XINTERP_strn_head$raw
 #impltmp
-$UN.strn_tail_raw<> = XINTERP_strn_tail_raw
+$UN.strn_tail$raw<> = XINTERP_strn_tail$raw
 //
 (* ****** ****** *)
 //
@@ -755,14 +755,14 @@ a0ref_dtset<a> = XINTERP_a0ref_dtset{a}
 //
 #extern
 fun
-XINTERP_a1ref_head_raw
+XINTERP_a1ref_head$raw
 {a:vt}
 {n:i0}
 ( A0
 : a1ref(a, n)): (?!a) = $extnam()
 #extern
 fun
-XINTERP_a1ref_tail_raw
+XINTERP_a1ref_tail$raw
 {a:vt}{n:i0}
 (A0
 :a1ref(a,n)): a1ref(a,n-1) = $extnam()
@@ -807,12 +807,12 @@ XINTERP_a1ptr_dtset$at1
 {a:t0}
 a1ref_head<a>
 (A0) =
-XINTERP_a1ref_head_raw{a}(A0)
+XINTERP_a1ref_head$raw{a}(A0)
 #impltmp
 {a:vt}
 a1ref_tail<a>
 (A0) =
-XINTERP_a1ref_tail_raw{a}(A0)
+XINTERP_a1ref_tail$raw{a}(A0)
 //
 #impltmp
 {a:t0}
