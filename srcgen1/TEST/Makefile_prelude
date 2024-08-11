@@ -322,9 +322,9 @@ $(XATSOPT) -s $(PRELUDE)/DATS/axrf000.dats
 all0_dats:: ; \
 $(XATSOPT) -s $(PRELUDE)/DATS/axrf001.dats
 all0_dats:: ; \
-$(XATSOPT) -s $(PRELUDE)/DATS/axsx000.dats
+$(XATSOPT) -s $(PRELUDE)/DATS/axsz000.dats
 all0_dats:: ; \
-$(XATSOPT) -s $(PRELUDE)/DATS/axsx001.dats
+$(XATSOPT) -s $(PRELUDE)/DATS/axsz001.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/list000.dats
 all0_dats:: ; \

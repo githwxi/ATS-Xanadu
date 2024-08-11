@@ -704,12 +704,7 @@ val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
-, "srcgen1/prelude/SATS/arrn000.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "srcgen1/prelude/SATS/arrn001.sats")
+, "srcgen1/prelude/SATS/tupl000.sats")
 //
 val () =
 the_prelude_load
@@ -726,7 +721,29 @@ val () =
 the_prelude_load
 ( XATSENV
 , 0(*static*)
+, "srcgen1/prelude/SATS/arrn000.sats")
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "srcgen1/prelude/SATS/arrn001.sats")
+//
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
 , "srcgen1/prelude/SATS/list000.sats")
+//
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "srcgen1/prelude/SATS/axrf000.sats")
+val () =
+the_prelude_load
+( XATSENV
+, 0(*static*)
+, "srcgen1/prelude/SATS/axsz000.sats")
 //
 val () =
 the_prelude_load
@@ -739,12 +756,6 @@ the_prelude_load
 ( XATSENV
 , 0(*static*)
 , "srcgen1/prelude/SATS/strm000.sats")
-//
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "srcgen1/prelude/SATS/tupl000.sats")
 //
 (* ****** ****** *)
 //
