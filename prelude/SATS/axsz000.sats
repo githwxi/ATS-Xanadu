@@ -79,6 +79,32 @@ a2sz_vt(x0:vt) = [m:i0;n:i0] a2sz_vt(x0,m,n)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<a:vt>
+a1sz_length
+{n:i0}(asz: a1sz(a, n)): sint(n)
+#symload length with a1sz_length of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a2sz_d1mlen
+{m:i0;n:i0}(a2sz(a, m, n)): sint(m)
+#symload d1mlen with a2sz_d1mlen of 1000
+#symload rowlen with a2sz_d1mlen of 1000
+//
+fun
+<a:vt>
+a2sz_d2mlen
+{m:i0;n:i0}(a2sz(a, m, n)): sint(n)
+#symload d2mlen with a2sz_d2mlen of 1000
+#symload collen with a2sz_d2mlen of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
