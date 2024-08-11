@@ -39,15 +39,15 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 list_z2forall
 ( xs: list(x0)
 , ys: list(y0)): bool//end-of-[fun]
 //
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 list_iz2forall
 ( xs: list(x0)
 , ys: list(y0)): bool//end-of-[fun]
@@ -61,15 +61,15 @@ iz2forall with list_iz2forall of 1000
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 list_z2forcmp
 ( xs: list(x0)
 , ys: list(y0)): sint//end-of-[fun]
 //
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 list_iz2forcmp
 ( xs: list(x0)
 , ys: list(y0)): sint//end-of-[fun]
@@ -83,15 +83,15 @@ iz2forcmp with list_iz2forcmp of 1000
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 list_z2foritm
 ( xs: list(x0)
 , ys: list(y0)): void//end-of-[fun]
 //
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 list_iz2foritm
 ( xs: list(x0)
 , ys: list(y0)): void//end-of-[fun]
@@ -105,14 +105,14 @@ iz2foritm with list_iz2foritm of 1000
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 <r0:t0>
 list_z2folditm
 (list(x0), list(y0), r0): (r0)
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 <r0:t0>
 list_iz2folditm
 (list(x0), list(y0), r0): (r0)
@@ -125,14 +125,14 @@ iz2folditm with list_iz2folditm of 1000
 (* ****** ****** *)
 //
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 <r0:t0>
 list_z2foldall
 (list(x0), list(y0), r0): (r0)
 fun
-<x0:t0
-,y0:t0>
+<x0:t0>
+<y0:t0>
 <r0:t0>
 list_iz2foldall
 (list(x0), list(y0), r0): (r0)
