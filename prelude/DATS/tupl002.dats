@@ -26,113 +26,35 @@
 *)
 
 (* ****** ****** *)
-(*
-** for flat tuples
-** for boxd tuples
-*)
-(* ****** ****** *)
-(*
-HX-2023-08-06:
-@(...): flat tuple
-#(...): boxd tuple
-$tup(...): boxd tuple
-(Change: $(...) -> #(...))
-Sun Aug  6 19:45:40 EDT 2023
-*)
 (* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
-(Around some time in 2022)
+(*
+Sun 11 Aug 2024 08:24:54 AM EDT
+*)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2024-08-04:
-Copying over from [srcgen1]
-Sun 04 Aug 2024 05:41:59 PM EDT
-*)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-#staload UN =
-"prelude/SATS/unsfx00.sats"
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #impltmp
 { a0:t0
 , a1:t0 }
-g_ptype
+g_cmp
 <t0up2(a0,a1)>
-(  (*void*)  ) =
-( pstrn"t0up2("
-; g_ptype<a0>(); pstrn(",")
-; g_ptype<a1>(); pstrn(")"))
+  (x0, x1) =
+let
 //
-#impltmp
-{ a0:t0
-, a1:t0 }
-g_ptype
-<t1up2(a0,a1)>
-(  (*void*)  ) =
-( pstrn"t1up2("
-; g_ptype<a0>(); pstrn(",")
-; g_ptype<a1>(); pstrn(")"))
+val sgn =
+g_cmp<a0>(x0.0, x1.0)
 //
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< a0:t0 >
-< a1:t0 >
-z2tup_make
-( x1, x2 ) =
-(
-  $UN.castxy@(x1, x2))
-#impltmp
-< a0:t0 >
-< a1:t0 >
-z2tup_unmk
- ( ztup ) = $UN.castxy(ztup)
-//
-#impltmp
-{ a0:t0
-, a1:t0 }
-g_ptype
-<z2tup(a0,a1)>
-(  (*void*)  ) =
-( pstrn"z2tup("
-; g_ptype<a0>(); pstrn(",")
-; g_ptype<a1>(); pstrn(")"))
-//
-(* ****** ****** *)
-//
-#impltmp
-< a0:t0 >
-< a1:t0 >
-x2tup_make
-( x1, x2 ) =
-(
-  $UN.castxy@(x1, x2))
-#impltmp
-< a0:t0 >
-< a1:t0 >
-x2tup_unmk
- ( xtup ) = $UN.castxy(xtup)
-//
-#impltmp
-{ a0:t0
-, a1:t0 }
-g_ptype
-<x2tup(a0,a1)>
-(  (*void*)  ) =
-( pstrn"x2tup("
-; g_ptype<a0>(); pstrn(",")
-; g_ptype<a1>(); pstrn(")"))
+in//let
+if
+(sgn = 0) then
+g_cmp<a1>(x0.1, x1.1) else sgn
+end//let//end-of-[g_cmp<t0up2(...)>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -140,4 +62,4 @@ g_ptype
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_tupl000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_tupl002.dats] *)

@@ -26,10 +26,12 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 (*
 ** for flat tuples
 ** for boxd tuples
 *)
+(* ****** ****** *)
 (* ****** ****** *)
 (*
 // HX-2023-08-06:
@@ -40,11 +42,13 @@
 // Sun Aug  6 19:45:40 EDT 2023
 *)
 (* ****** ****** *)
+(* ****** ****** *)
 //
 // Author: Hongwei Xi
 // (Around some time in 2022)
 // Authoremail: gmhwxiATgmailDOTcom
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
@@ -85,6 +89,7 @@ t1up2_vt
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #abstype
 z2tup_type
 (a0:t0,a1:t0) <= (a0,a1)
@@ -93,6 +98,7 @@ x2tup_type
 (a0:t0,a1:t0) <= (a0,a1)
 #sexpdef z2tup = z2tup_type
 #sexpdef x2tup = x2tup_type
+//
 (* ****** ****** *)
 (* ****** ****** *)
 #vwtpdef

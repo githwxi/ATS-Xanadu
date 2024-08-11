@@ -53,6 +53,41 @@ gseq_cmp<list(x0)><x0>(*void*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+list_z2forall0
+  ( xs, ys ) =
+(
+  auxloop(xs, ys)) where
+{
+fun
+auxloop
+( xs
+: list(x0)
+, ys
+: list(y0)): bool =
+(
+case+ xs of
+|list_nil() =>
+(   true   )
+|list_cons(x1, xs) =>
+(
+case+ ys of
+|list_nil() =>
+(   true   )
+|list_cons(y1, ys) =>
+(
+if
+z2forall$test0
+<x0><y0>(x1, y1)
+then auxloop(xs, ys) else false)))
+}(*where*)//end-of-[list_z2forall0(xs,ys)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
