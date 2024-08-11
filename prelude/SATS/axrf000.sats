@@ -41,9 +41,11 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #abstbox
-a0rf_vt_tx(elem:vwtp)
+a0rf_vt_tx
+(elem:vwtp)
 #absvtbx
-a0rf_vt_vx(elem:vwtp)
+a0rf_vt_vx
+(elem:vwtp)
 //
 #typedef
 a0rf(a0:vt) = a0rf_vt_tx(a0)
@@ -52,6 +54,27 @@ a0rf(a0:vt) = a0rf_vt_tx(a0)
 a0pt(a0:vt) = a0rf_vt_vx(a0)
 #vwtpdef
 a0rf_vt(a0:vt) = a0rf_vt_vx(a0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#abstbox
+a1rf_vt_i0_tx
+(a:vt , n:i0)
+#abstbox
+a1rf_vt_i0_vt
+(a:vt , n:i0)
+//
+#typedef
+a1rf
+(a:vt,n:i0) = a1rf_vt_i0_tx(a,n)
+//
+#vwtpdef
+a1pt
+(a:vt,n:i0) = a1rf_vt_i0_vt(a,n)
+#vwtpdef
+a1rf_vt
+(a:vt,n:i0) = a1rf_vt_i0_vt(a,n)
 //
 (* ****** ****** *)
 (* ****** ****** *)
