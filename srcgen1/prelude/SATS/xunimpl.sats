@@ -1025,6 +1025,28 @@ GSEQ_z2make
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<x0:t0>
+<y0:t0>
+list_z2forall
+( xs: list(x0)
+, ys: list(y0)): bool//end-of-[fun]
+//
+fun
+<x0:t0>
+<y0:t0>
+list_iz2forall
+( xs: list(x0)
+, ys: list(y0)): bool//end-of-[fun]
+//
+#symload
+z2forall with list_z2forall of 1000
+#symload
+iz2forall with list_iz2forall of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 fun
 <x0:t0>

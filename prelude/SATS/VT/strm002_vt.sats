@@ -39,15 +39,15 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 strm_vt_z2forall0
 ( xs: ~strm_vt(x0)
 , ys: ~strm_vt(y0)): bool//end-of-[fun]
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 strm_vt_iz2forall0
 ( xs: ~strm_vt(x0)
 , ys: ~strm_vt(y0)): bool//end-of-[fun]
@@ -61,15 +61,15 @@ iz2forall0 with strm_vt_iz2forall0 of 1000
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 strm_vt_z2forcmp0
 ( xs: ~strm_vt(x0)
 , ys: ~strm_vt(y0)): sint//end-of-[fun]
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 strm_vt_iz2forcmp0
 ( xs: ~strm_vt(x0)
 , ys: ~strm_vt(y0)): sint//end-of-[fun]
@@ -83,15 +83,15 @@ iz2forcmp0 with strm_vt_iz2forcmp0 of 1000
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 strm_vt_z2foritm0
 ( xs: ~strm_vt(x0)
 , ys: ~strm_vt(y0)): void//end-of-[fun]
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 strm_vt_iz2foritm0
 ( xs: ~strm_vt(x0)
 , ys: ~strm_vt(y0)): void//end-of-[fun]
@@ -105,14 +105,14 @@ iz2foritm0 with strm_vt_iz2foritm0 of 1000
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <r0:vt>
 strm_vt_z2folditm0
 (~strm_vt(x0), ~strm_vt(y0), r0): (r0)
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <r0:vt>
 strm_vt_iz2folditm0
 (~strm_vt(x0), ~strm_vt(y0), r0): (r0)
@@ -125,14 +125,14 @@ iz2folditm0 with strm_vt_iz2folditm0 of 1000
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <r0:vt>
 strm_vt_z2foldall0
 (~strm_vt(x0), ~strm_vt(y0), r0): (r0)
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <r0:vt>
 strm_vt_iz2foldall0
 (~strm_vt(x0), ~strm_vt(y0), r0): (r0)
@@ -146,15 +146,15 @@ iz2foldall0 with strm_vt_iz2foldall0 of 1000
 (* ****** ****** *)
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <z0:vt>
 strm_vt_z2map0
 ( xs: ~strm_vt(x0)
 , ys: ~strm_vt(y0)): strm_vt(z0)//endfun
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <z0:vt>
 strm_vt_iz2map0
 ( xs: ~strm_vt(x0)
@@ -172,15 +172,15 @@ Wed 24 Jul 2024 08:25:27 PM EDT
 *)
 //
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <r0:vt>
 strm_vt_z2scanitm0
 ( xs: ~strm_vt(x0)
 , ys: ~strm_vt(y0), r0: r0): strm_vt(r0)
 fun
-<x0:vt
-,y0:vt>
+<x0:vt>
+<y0:vt>
 <r0:vt>
 strm_vt_iz2scanitm0
 ( xs: ~strm_vt(x0)

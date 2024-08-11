@@ -53,11 +53,10 @@ gseq_cmp<list(x0)><x0>(*void*)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 #impltmp
 < x0:t0 >
 < y0:t0 >
-list_z2forall0
+list_z2forall
   ( xs, ys ) =
 (
   auxloop(xs, ys)) where
@@ -80,10 +79,10 @@ case+ ys of
 |list_cons(y1, ys) =>
 (
 if
-z2forall$test0
+z2forall$test
 <x0><y0>(x1, y1)
 then auxloop(xs, ys) else false)))
-}(*where*)//end-of-[list_z2forall0(xs,ys)]
+}(*where*)//end-of-[list_z2forall(xs,ys)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -43,55 +43,55 @@ HX-2024-07-24:
 Wed 24 Jul 2024 06:54:17 PM EDT
 *)
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_z2forall0(xs: ~xs, ys: ~ys): bool
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_z2forall1(xs: !xs, ys: !ys): bool
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_rz2forall0(xs: ~xs, ys: ~ys): bool
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_rz2forall1(xs: !xs, ys: !ys): bool
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_iz2forall0(xs: ~xs, ys: ~ys): bool
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_iz2forall1(xs: !xs, ys: !ys): bool
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_irz2forall0(xs: ~xs, ys: ~ys): bool
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_irz2forall1(xs: !xs, ys: !ys): bool
 //
 (* ****** ****** *)
@@ -109,55 +109,55 @@ gseq_irz2forall1(xs: !xs, ys: !ys): bool
 (* ****** ****** *)
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_z2foritm0(xs: ~xs, ys: ~ys): void
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_z2foritm1(xs: !xs, ys: !ys): void
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_rz2foritm0(xs: ~xs, ys: ~ys): void
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_rz2foritm1(xs: !xs, ys: !ys): void
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_iz2foritm0(xs: ~xs, ys: ~ys): void
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_iz2foritm1(xs: !xs, ys: !ys): void
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_irz2foritm0(xs: ~xs, ys: ~ys): void
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_irz2foritm1(xs: !xs, ys: !ys): void
 //
 (* ****** ****** *)
@@ -180,62 +180,62 @@ Wed 24 Jul 2024 06:54:17 PM EDT
 *)
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <zs:vt>
 <z0:vt>
 gseq_z2map0_ares(xs: ~xs, ys: ~ys): ( zs )
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 gseq_z2map0_self(xs: ~xs, ys: ~ys): ( xs )
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_z2map0_llist(xs: ~xs, ys: ~ys): list_vt(z0)
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_z2map1_llist(xs: !xs, ys: !ys): list_vt(z0)
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_z2map0_lstrm(xs: ~xs, ys: ~ys): strm_vt(z0)
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_z2map1_lstrm(xs: !xs, ys: !ys): strm_vt(z0)
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_z2map0_lstrq(xs: ~xs, ys: ~ys): strq_vt(z0)
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_z2map1_lstrq(xs: !xs, ys: !ys): strq_vt(z0)
 //
@@ -249,47 +249,47 @@ gseq_z2map1_lstrq(xs: !xs, ys: !ys): strq_vt(z0)
 (* ****** ****** *)
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_rz2map0_llist(xs: ~xs, ys: ~ys): list_vt(z0)
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_rz2map1_llist(xs: !xs, ys: !ys): list_vt(z0)
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_rz2map0_lstrm(xs: ~xs, ys: ~ys): strm_vt(z0)
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_rz2map1_lstrm(xs: !xs, ys: !ys): strm_vt(z0)
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_rz2map0_lstrq(xs: ~xs, ys: ~ys): strq_vt(z0)
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_rz2map1_lstrq(xs: !xs, ys: !ys): strq_vt(z0)
 //
@@ -303,47 +303,47 @@ gseq_rz2map1_lstrq(xs: !xs, ys: !ys): strq_vt(z0)
 (* ****** ****** *)
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_iz2map0_llist(xs: ~xs, ys: ~ys): list_vt(z0)
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_iz2map1_llist(xs: !xs, ys: !ys): list_vt(z0)
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_iz2map0_lstrm(xs: ~xs, ys: ~ys): strm_vt(z0)
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_iz2map1_lstrm(xs: !xs, ys: !ys): strm_vt(z0)
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_iz2map0_lstrq(xs: ~xs, ys: ~ys): strq_vt(z0)
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_iz2map1_lstrq(xs: !xs, ys: !ys): strq_vt(z0)
 //
@@ -357,47 +357,47 @@ gseq_iz2map1_lstrq(xs: !xs, ys: !ys): strq_vt(z0)
 (* ****** ****** *)
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_irz2map0_llist(xs: ~xs, ys: ~ys): list_vt(z0)
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_irz2map1_llist(xs: !xs, ys: !ys): list_vt(z0)
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_irz2map0_lstrm(xs: ~xs, ys: ~ys): strm_vt(z0)
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_irz2map1_lstrm(xs: !xs, ys: !ys): strm_vt(z0)
 //
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_irz2map0_lstrq(xs: ~xs, ys: ~ys): strq_vt(z0)
 fun
-<xs:vt
-,ys:vt>
-<x0:vt
-,y0:vt>
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
 <z0:vt>
 gseq_irz2map1_lstrq(xs: !xs, ys: !ys): strq_vt(z0)
 //
