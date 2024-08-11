@@ -636,16 +636,6 @@ the_prelude_load
 ( XATSENV
 , 0(*static*)
 , "srcgen1/prelude/SATS/gasz000.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "srcgen1/prelude/SATS/gasz001.sats")
-val () =
-the_prelude_load
-( XATSENV
-, 0(*static*)
-, "srcgen1/prelude/SATS/gasz002.sats")
 //
 (* ****** ****** *)
 //
