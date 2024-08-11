@@ -62,12 +62,28 @@ a1rf_vt_i0_tx(a:vt,n:i0)//1-dim
 a1rf_vt_i0_vt(a:vt,n:i0)//1-dim
 //
 #typedef
-a1rf(a:vt, n:i0) = a1rf_vt_i0_tx(a,n)
+a1rf(a:vt,n:i0) = a1rf_vt_i0_tx(a,n)
 //
 #vwtpdef
 a1pt(a:vt,n:i0) = a1rf_vt_i0_vt(a,n)
 #vwtpdef
 a1rf_vt(a:vt,n:i0) = a1rf_vt_i0_vt(a,n)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#abstbox
+a2rf_vt_i0_i0_tx(a:vt,m:i0,n:i0)//2-dim
+#abstbox
+a2rf_vt_i0_i0_vt(a:vt,m:i0,n:i0)//2-dim
+//
+#typedef
+a2rf(a:vt,m:i0,n:i0) = a2rf_vt_i0_i0_tx(a,m,n)
+//
+#vwtpdef
+a2pt(a:vt,m:i0,n:i0) = a2rf_vt_i0_i0_vt(a,m,n)
+#vwtpdef
+a2rf_vt(a:vt,m:i0,n:i0) = a2rf_vt_i0_i0_vt(a,m,n)
 //
 (* ****** ****** *)
 (* ****** ****** *)
