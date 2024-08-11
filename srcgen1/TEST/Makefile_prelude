@@ -306,9 +306,13 @@ $(XATSOPT) -d $(PRELUDE)/DATS/tupl000.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/tupl001.dats
 all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/tupl002.dats
+all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/list000.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/list001.dats
+all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/list002.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/unsfx00.dats
 

@@ -59,6 +59,7 @@ This one is included by [DATS/unsfx00.dats]
 #staload _ = "prelude/DATS/strn001.dats"
 #staload _ = "prelude/DATS/tupl000.dats"
 #staload _ = "prelude/DATS/tupl001.dats"
+#staload _ = "prelude/DATS/tupl002.dats"
 #staload _ = "prelude/DATS/list000.dats"
 #staload _ = "prelude/DATS/list001.dats"
 #staload _ = "prelude/DATS/list002.dats"

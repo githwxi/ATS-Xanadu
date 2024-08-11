@@ -66,6 +66,90 @@ forall$test<x0>(tup.1) else false
 end//let//end-of-[gseq_forall(...)]
 //
 (* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+gseq_rforall
+<t0up2(x0,x0)><x0>
+  ( tup ) =
+let
+val b0 =
+rforall$test<x0>(tup.1)
+in//let
+if b0 then
+rforall$test<x0>(tup.0) else false
+end//let//end-of-[gseq_rforall(...)]
+//
+#impltmp
+{ x0:t0 }
+gseq_rforall
+<t1up2(x0,x0)><x0>
+  ( tup ) =
+let
+val b0 =
+rforall$test<x0>(tup.1)
+in//let
+if b0 then
+rforall$test<x0>(tup.0) else false
+end//let//end-of-[gseq_rforall(...)]
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+gseq_iforall
+<t0up2(x0,x0)><x0>
+  ( tup ) =
+let
+val b0 =
+iforall$test<x0>(0, tup.0)
+in//let
+if b0 then
+iforall$test<x0>(1, tup.1) else false
+end//let//end-of-[gseq_iforall(...)]
+//
+#impltmp
+{ x0:t0 }
+gseq_iforall
+<t1up2(x0,x0)><x0>
+  ( tup ) =
+let
+val b0 =
+iforall$test<x0>(0, tup.0)
+in//let
+if b0 then
+iforall$test<x0>(1, tup.1) else false
+end//let//end-of-[gseq_iforall(...)]
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+gseq_irforall
+<t0up2(x0,x0)><x0>
+  ( tup ) =
+let
+val b0 =
+irforall$test<x0>(1, tup.1)
+in//let
+if b0 then
+irforall$test<x0>(0, tup.0) else false
+end//let//end-of-[gseq_iforall(...)]
+//
+#impltmp
+{ x0:t0 }
+gseq_irforall
+<t1up2(x0,x0)><x0>
+  ( tup ) =
+let
+val b0 =
+irforall$test<x0>(1, tup.1)
+in//let
+if b0 then
+irforall$test<x0>(0, tup.0) else false
+end//let//end-of-[gseq_irforall(...)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
