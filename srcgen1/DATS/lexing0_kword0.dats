@@ -493,11 +493,11 @@ val () = myins("withvtype", T_WITHVTYPE_)
 *)
 //
 val () = myins("$tup"   , T_TRCD12_)
-val () = myins("$tup_t0" , T_TRCD13_)
+val () = myins("$tup_t0", T_TRCD13_)
 val () = myins("$tup_vt", T_TRCD14_)
 //
 val () = myins("$rec"   , T_TRCD22_)
-val () = myins("$rec_t0" , T_TRCD23_)
+val () = myins("$rec_t0", T_TRCD23_)
 val () = myins("$rec_vt", T_TRCD24_)
 //
 (*

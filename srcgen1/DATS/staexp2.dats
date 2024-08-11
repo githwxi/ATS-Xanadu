@@ -1211,6 +1211,9 @@ end // end of [s2exp_list2]
 HX-2020-07:
 boxed
 tuples are linear
+HX-2024-08-10:
+$tup_vt: linear
+$tup_t0: nonlin
 *)
 //
 implement
@@ -1234,7 +1237,12 @@ then (the_sort2_vwtp)
 else (the_sort2_type)
 end
 )
-else (the_sort2_vtbx) // linear
+else
+(
+if
+knd = 3 // $tup_t0
+then (the_sort2_tbox)
+else (the_sort2_vtbx))
 ) : sort2 // end of [val]
 //
 val knd =
@@ -1283,7 +1291,12 @@ islin
 then (the_sort2_vwtp)
 else (the_sort2_type)
 end
-else (the_sort2_vtbx) // linear
+else
+(
+if
+knd = 3 // $rcd_t0
+then (the_sort2_tbox)
+else (the_sort2_vtbx))
 ) : sort2 // end of [val]
 //
 val knd =
