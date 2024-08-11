@@ -3174,7 +3174,7 @@ in
 end // end of [auxseqn]
 
 (* ****** ****** *)
-
+//
 fun
 aux_trcd11
 ( d1e0
@@ -3197,7 +3197,7 @@ val d2es = trans12_dexplst(d1es)
 in
   d2exp_trcd1(loc0, knd, npf, d2es)
 end // end of [aux_trcd11]
-
+//
 fun
 aux_trcd12
 ( d1e0
@@ -3230,8 +3230,9 @@ val d2es =
 in
   d2exp_trcd1(loc0, knd, npf, d2es)
 end // end of [aux_trcd12]
-
+//
 (* ****** ****** *)
+//
 fun
 aux_brack
 ( d1e0
@@ -3276,8 +3277,9 @@ in
   d2exp_make_node
   (loc0, D2Ebrack(dpis, d2es))
 end // end of [aux_brack]
+//
 (* ****** ****** *)
-
+//
 fun
 aux_dtsel
 ( d1e0
@@ -3382,7 +3384,7 @@ in
 d2exp_make_node
 (loc0, D2Edtsel(lab, dpis, npf, arg))
 end // end of [aux_dtsel]
-
+//
 (* ****** ****** *)
 
 fun

@@ -39,7 +39,6 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 #impltmp
 { x0:t0 }
 gseq_forall
@@ -53,7 +52,19 @@ if b0 then
 forall$test<x0>(tup.1) else false
 end//let//end-of-[gseq_forall(...)]
 //
-*)
+#impltmp
+{ x0:t0 }
+gseq_forall
+<t1up2(x0,x0)><x0>
+  ( tup ) =
+let
+val b0 =
+forall$test<x0>(tup.0)
+in//let
+if b0 then
+forall$test<x0>(tup.1) else false
+end//let//end-of-[gseq_forall(...)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
