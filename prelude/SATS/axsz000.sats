@@ -81,6 +81,24 @@ a2sz_vt(x0:vt) = [m:i0;n:i0] a2sz_vt(x0,m,n)
 //
 fun
 <a:vt>
+a1sz_get$at
+{n:i0}
+(a1sz(a, n), nint(n)): ( a )
+fun
+<a:vt>
+a1sz_set$at
+{n:i0}
+(a1sz(a, n), nint(n), a): void
+//
+#symload [] with a1sz_get$at of 1000
+#symload [] with a1sz_set$at of 1000
+#symload get$at with a1sz_get$at of 1000
+#symload set$at with a1sz_set$at of 1000
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
 a1sz_length
 {n:i0}(asz: a1sz(a, n)): sint(n)
 #symload length with a1sz_length of 1000
@@ -90,17 +108,17 @@ a1sz_length
 //
 fun
 <a:vt>
-a2sz_d1mlen
+a2sz_d1size
 {m:i0;n:i0}(a2sz(a, m, n)): sint(m)
-#symload d1mlen with a2sz_d1mlen of 1000
-#symload rowlen with a2sz_d1mlen of 1000
+#symload d1size with a2sz_d1size of 1000
+#symload rowlen with a2sz_d1size of 1000
 //
 fun
 <a:vt>
-a2sz_d2mlen
+a2sz_d2size
 {m:i0;n:i0}(a2sz(a, m, n)): sint(n)
-#symload d2mlen with a2sz_d2mlen of 1000
-#symload collen with a2sz_d2mlen of 1000
+#symload d2size with a2sz_d2size of 1000
+#symload collen with a2sz_d2size of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
