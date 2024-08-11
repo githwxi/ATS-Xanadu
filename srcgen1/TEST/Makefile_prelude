@@ -94,6 +94,8 @@ $(XATSOPT) -s $(PRELUDE)/SATS/strn000.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/strn001.sats
 all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/tupl000.sats
+all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/list000.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/list001.sats
@@ -338,6 +340,8 @@ all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/gsyn000_vt.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/strn000_vt.dats
+all0_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/VT/tupl000_vt.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/VT/list000_vt.dats
 all0_dats:: ; \

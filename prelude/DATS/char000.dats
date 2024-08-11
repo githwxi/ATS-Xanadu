@@ -57,6 +57,17 @@ g_1<c0>() = '\001'
 g_cmp<char> = char_cmp<>
 //
 (* ****** ****** *)
+//
+(*
+HX:
+This is in [gdbg000.dats]:
+#impltmp
+g_ptype
+< char >
+( (*void*) ) = pstrn("char")
+*)
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
