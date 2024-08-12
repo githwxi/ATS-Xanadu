@@ -136,11 +136,59 @@ a0rf_lget
 fun
 <a:vt>
 a0rf_lset
-(pf:owed(a)|A:a0rf(a), x:a): void
+(f:owed(a) | A:a0rf(a), x:a): void
 //
 #symload lget with a0rf_lget of 1000
 #symload lset with a0rf_lset of 1000
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a1rf_make_f1un
+ {n:i0|n>0}
+( n: sint(n)
+, f: nint(n) -> a): a1rf(a, n)
+//
+#symload a1rf with a1rf_make_f1un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a1rf_get$at
+{n:nat}
+(A:a1rf(a,n), i:nintlt(n)): a
+fun
+<a:vt>
+a1rf_set$at
+{n:nat}
+(A:a1rf(a,n), i:nintlt(n), x:a): void
+//
+#symload [] with a1rf_get$at of 1000
+#symload [] with a1rf_set$at of 1000
+#symload get$at with a1rf_get$at of 1000
+#symload set$at with a1rf_set$at of 1000
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a1rf_lget$at
+{n:nat}
+( A: a1rf(a,n)
+, i: nintlt(n)): (owed(a) | a)
+fun
+<a:vt>
+a1rf_lset$at
+{n:nat}
+(f:owed(a) | A:a1rf(a,n), x:a): void
+//
+#symload lget$at with a1rf_lget$at of 1000
+#symload lset$at with a1rf_lset$at of 1000
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
