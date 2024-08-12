@@ -38,29 +38,29 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
-{ x0:vt }
-gasz_forall
+{ x0:t0 }
+gseq_forall
 <a0rf(x0)><x0>
  (   arf   ) =
-forall$test1<x0>(a0rf_get<x0>(arf))
+forall$test<x0>(a0rf_get<x0>(arf))
 #impltmp
-{ x0:vt }
-gasz_rforall
+{ x0:t0 }
+gseq_rforall
 <a0rf(x0)><x0>
  (   arf   ) =
-rforall$test1<x0>(a0rf_get<x0>(arf))
+rforall$test<x0>(a0rf_get<x0>(arf))
 #impltmp
-{ x0:vt }
-gasz_iforall
+{ x0:t0 }
+gseq_iforall
 <a0rf(x0)><x0>
  (   arf   ) =
-iforall$test1<x0>(0, a0rf_get<x0>(arf))
+iforall$test<x0>(0, a0rf_get<x0>(arf))
 #impltmp
-{ x0:vt }
-gasz_irforall
+{ x0:t0 }
+gseq_irforall
 <a0rf(x0)><x0>
  (   arf   ) =
-irforall$test1<x0>(0, a0rf_get<x0>(arf))
+irforall$test<x0>(0, a0rf_get<x0>(arf))
 //
 (* ****** ****** *)
 (* ****** ****** *)
