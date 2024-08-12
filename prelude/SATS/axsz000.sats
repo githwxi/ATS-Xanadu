@@ -81,6 +81,15 @@ a2sz_vt(x0:vt) = [m:i0;n:i0] a2sz_vt(x0,m,n)
 //
 fun
 <a:vt>
+a1sz_length
+{n:i0}(asz: a1sz(a, n)): sint(n)
+#symload length with a1sz_length of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
 a1sz_get$at
 {n:i0}
 (a1sz(a, n), nint(n)): ( a )
@@ -99,9 +108,35 @@ a1sz_set$at
 //
 fun
 <a:vt>
-a1sz_length
-{n:i0}(asz: a1sz(a, n)): sint(n)
-#symload length with a1sz_length of 1000
+a1sz_cget$at
+{n:nat}
+(A:a1sz(a,n), i:nintlt(n)): a
+fun
+<a:vt>
+a1sz_setf$at
+{n:nat}
+(A:a1sz(a,n), i:nintlt(n), x:a): void
+//
+#symload cget$at with a1sz_cget$at of 1000
+#symload setf$at with a1sz_setf$at of 1000
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a1sz_lget$at
+{n:nat}
+( A: a1sz(a,n)
+, i: nintlt(n)): (owed(a) | a)
+fun
+<a:vt>
+a1sz_lset$at
+{n:nat}
+(f: owed(a)
+|A: a1sz(a,n), i:nintlt(n), x:a): void
+//
+#symload lget$at with a1sz_lget$at of 1000
+#symload lset$at with a1sz_lset$at of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

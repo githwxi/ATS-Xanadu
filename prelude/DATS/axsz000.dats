@@ -71,17 +71,40 @@ gasz_length
 (* ****** ****** *)
 //
 #impltmp
-{ x0:t0 }
-$UN.gasz_get$at$raw
-<a1sz(x0)><x0>(A, i) =
-(
-  a1sz_get$at<x0>(A, i))//impltmp
+< x0:t0 >
+a1sz_get$at =
+$UN.gasz_get$at$raw<a1sz(x0)><x0>
 #impltmp
-{ x0:t0 }
-$UN.gasz_set$at$raw
-<a1sz(x0)><x0>(A, i, x) =
-(
-  a1sz_set$at<x0>(A, i, x))//impltmp
+< x0:t0 >
+a1sz_set$at =
+$UN.gasz_set$at$raw<a1sz(x0)><x0>
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+a1sz_cget$at =
+$UN.gasz_cget$at$raw<a1sz(x0)><x0>
+#impltmp
+< x0:vt >
+a1sz_setf$at =
+$UN.gasz_setf$at$raw<a1sz(x0)><x0>
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:vt }
+$UN.gasz_lget$at$raw
+<  a1sz(x0)  >< x0 >
+ ( A, i ) = a1sz_lget$at<x0>(A, i)
+#impltmp
+{ x0:vt }
+$UN.gasz_lset$at$raw
+<  a1sz(x0)  >< x0 >
+( pf | A,i,x ) = a1sz_lset$at<x0>(pf | A,i,x)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
