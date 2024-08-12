@@ -30,84 +30,60 @@
 //
 (*
 Author: Hongwei Xi
-Sun 11 Aug 2024 03:44:27 PM EDT
+Mon 12 Aug 2024 09:36:20 AM EDT
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload UN =
-"prelude/SATS/unsfx00.sats"
+#absimpl
+a0rf_vt_tx(a:vt) = $extype("jsarray")
+#absimpl
+a0rf_vt_vx(a:vt) = $extype("jsarray")
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-{ vt:vt }
-g_ptype
-<a0rf(vt)>
-( (*void*) ) =
+< a: vt >
+a0rf_lget(A) =
 (
-pstrn("a0rf(");
-g_ptype<vt>((*0*)); pstrn(")"))
+XATS2JS_a0rf_lget
+  ( A )) where
+{
+#extern
+fun
+XATS2JS_a0rf_lget
+{a:vt}(A: a0rf(a)): a = $extnam()
+}
 //
 #impltmp
-{ vt:vt }
-g_ptype
-<a1rf(vt)>
-( (*void*) ) =
+< a: vt >
+a0rf_lset(A, x) =
 (
-pstrn("a1rf(");
-g_ptype<vt>((*0*)); pstrn(")"))
+XATS2JS_a0rf_lset
+  (A, x)) where
+{
+#extern
+fun
+XATS2JS_a0rf_lset
+{a:vt}
+(A: a0rf(a), x: a): void = $extnam()
+}
+//
+(* ****** ****** *)
 //
 #impltmp
-{ vt:vt }
-g_ptype
-<a2rf(vt)>
-( (*void*) ) =
+< a: vt >
+a0rf_make_1val(x0) =
 (
-pstrn("a2rf(");
-g_ptype<vt>((*0*)); pstrn(")"))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-{ x0:t0 }
-gasz_length
-<a0rf(x0)><x0>( A ) = 1 // singleton
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< x0:vt >
-a0rf_get =
-$UN.gasz_get$raw<a0rf(x0)><x0>
-#impltmp
-< x0:vt >
-a0rf_set =
-$UN.gasz_set$raw<a0rf(x0)><x0>
-//
-#impltmp
-< x0:vt >
-a0rf_cget =
-$UN.gasz_cget$raw<a0rf(x0)><x0>
-#impltmp
-< x0:vt >
-a0rf_setf =
-$UN.gasz_setf$raw<a0rf(x0)><x0>
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< x0:vt >
-$UN.gasz_lget$raw
-< a0rf(x0) >< x0 > = a0rf_lget<x0>
-#impltmp
-< x0:vt >
-$UN.gasz_lset$raw
-< a0rf(x0) >< x0 > = a0rf_lset<x0>
+XATS2JS_a0rf_make_1val
+  ( x0 )) where
+{
+#extern
+fun
+XATS2JS_a0rf_make_1val
+{a:vt}(x0: a): a0rf(a) = $extnam()
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -115,4 +91,4 @@ $UN.gasz_lset$raw
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_axrf000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_axrf000.dats] *)
