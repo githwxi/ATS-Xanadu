@@ -37,9 +37,9 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #absimpl
-a0rf_vt_tx(a:vt) = $extype("jsarray")
+a0rf_vt_tx(a:vt) = $extbox("jsarray")
 #absimpl
-a0rf_vt_vx(a:vt) = $extype("jsarray")
+a0rf_vt_vx(a:vt) = $extbox("jsarray")
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -53,21 +53,26 @@ XATS2JS_a0rf_lget
 #extern
 fun
 XATS2JS_a0rf_lget
-{a:vt}(A: a0rf(a)): a = $extnam()
+{a:vt}
+( A
+: a0rf(a))
+: (owed(a) | a) = $extnam()
 }
 //
 #impltmp
 < a: vt >
-a0rf_lset(A, x) =
+a0rf_lset
+(f | A, x) =
 (
 XATS2JS_a0rf_lset
-  (A, x)) where
+  (f | A, x)) where
 {
 #extern
 fun
 XATS2JS_a0rf_lset
 {a:vt}
-(A: a0rf(a), x: a): void = $extnam()
+(f:owed(a)
+|A:a0rf(a), x:a): void = $extnam()
 }
 //
 (* ****** ****** *)
@@ -82,7 +87,7 @@ XATS2JS_a0rf_make_1val
 #extern
 fun
 XATS2JS_a0rf_make_1val
-{a:vt}(x0: a): a0rf(a) = $extnam()
+{a:vt}( x0: a ): a0rf(a) = $extnam()
 }
 //
 (* ****** ****** *)

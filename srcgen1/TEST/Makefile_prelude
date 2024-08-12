@@ -29,6 +29,7 @@ all:: all1
 
 all0:: all0_sats
 all0:: all0_dats
+all0:: all0_JS_dats
 
 ######
 
@@ -474,6 +475,11 @@ $(XATSOPT) -d $(PRELUDE1)/TEST/list000_test000.dats
 
 all1_CC_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/CATS/CC/basics0.dats
+
+######
+
+all0_JS_dats:: ; \
+$(XATSOPT) -d $(PRELUDE)/DATS/CATS/JS/axrf000.dats
 
 ######
 
