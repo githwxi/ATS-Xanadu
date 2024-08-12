@@ -68,4 +68,4 @@ irforall$test1<x0>(0, a0rf_get<x0>(arf))
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_axrf001.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_axsz001.dats] *)
