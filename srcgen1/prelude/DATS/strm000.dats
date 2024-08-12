@@ -137,7 +137,7 @@ strmcon_cons
 }
 #impltmp
 <a>(*tmp*)
-strm_from$next(x0) = g_succ<a>(x0)
+strm_from$next(x0) = g_suc<a>(x0)
 //
 (* ****** ****** *)
 //
@@ -158,7 +158,7 @@ strxcon_cons
 }
 #impltmp
 <a>(*tmp*)
-strx_from$next(x0) = g_succ<a>(x0)
+strx_from$next(x0) = g_suc<a>(x0)
 //
 (* ****** ****** *)
 
@@ -183,7 +183,7 @@ strmcon_nil
 ((*void*)) => i0
 |
 strmcon_cons
-( x0, xs ) => loop(xs, succ(i0))
+( x0, xs ) => loop(xs, suc(i0))
 )
 }(*where*)//end-of(strm_length(xs))
 
@@ -1018,7 +1018,7 @@ if
 itakeif$test<x0>(i0, x0)
 then
 strmcon_vt_cons
-(x0, auxmain(xs, succ(i0)))
+(x0, auxmain(xs, suc(i0)))
 else strmcon_vt_nil((*void*)))
 }(*where*)//end-of-(strm_itakeif(xs))
 //

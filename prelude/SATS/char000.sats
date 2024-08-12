@@ -102,6 +102,9 @@ fun<>
 char_neqz
 {c:c0}(c0: char(c)): bool(c>0)
 //
+#symload eqz with char_eqz of 1000
+#symload neqz with char_neqz of 1000
+//
 (* ****** ****** *)
 //
 fun<>
@@ -115,17 +118,34 @@ char_noteq
 ( c1: char(c1)
 , c2: char(c2)): bool(c1 != c2)
 //
+#symload equal with char_equal of 1000
+#symload noteq with char_noteq of 1000
+//
 (* ****** ****** *)
 //
 fun<>
+char_add_sint
+(c1: char, i2: sint): char
+(*
+fun<>
 add_char_sint
 (c1: char, i2: sint): char
+*)
+#symload + with char_add_sint of 1000
 //
+fun<>
+char_sub_char
+{c1,c2:c0}
+( c1: char(c1)
+, c2: char(c2)): sint(c1 - c2)
+(*
 fun<>
 sub_char_char
 {c1,c2:c0}
 ( c1: char(c1)
 , c2: char(c2)): sint(c1 - c2)
+*)
+#symload - with char_sub_char of 1000
 //
 (* ****** ****** *)
 //
@@ -160,6 +180,13 @@ char_neq
 ( c1: char(c1)
 , c2: char(c2)): bool(c1 != c2)
 //
+#symload < with char_lt of 1000
+#symload > with char_gt of 1000
+#symload = with char_eq of 1000
+#symload <= with char_lte of 1000
+#symload >= with char_gte of 1000
+#symload != with char_neq of 1000
+//
 (* ****** ****** *)
 //
 fun<>
@@ -168,27 +195,8 @@ char_cmp
 ( c1: char(c1)
 , c2: char(c2)): sint(sgn(c1-c2))
 //
-(* ****** ****** *)
-//
-#symload < with char_lt of 1000
-#symload > with char_gt of 1000
-#symload = with char_eq of 1000
-#symload <= with char_lte of 1000
-#symload >= with char_gte of 1000
-#symload != with char_neq of 1000
-//
 #symload cmp with char_cmp of 1000
 //
-#symload eqz with char_eqz of 1000
-#symload neqz with char_neqz of 1000
-//
-#symload + with add_char_sint of 1000
-#symload - with sub_char_char of 1000
-//
-#symload equal with char_equal of 1000
-#symload noteq with char_noteq of 1000
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
 fun<>
@@ -202,65 +210,55 @@ fun<>
 char_isalpha(c0: char): bool
 fun<>
 sint_isalpha(c0: sint): bool
+#symload isalpha with char_isalpha of 1000
+#symload isalpha with sint_isalpha of 1000
 //
 fun<>
 char_isalnum(c0: char): bool
 fun<>
 sint_isalnum(c0: sint): bool
+#symload isalnum with char_isalnum of 1000
+#symload isalnum with sint_isalnum of 1000
 //
 fun<>
 char_isascii(c0: char): bool
 fun<>
 sint_isascii(c0: sint): bool
+#symload isascii with char_isascii of 1000
+#symload isascii with sint_isascii of 1000
 //
 fun<>
 char_isblank(c0: char): bool
 fun<>
 sint_isblank(c0: sint): bool
+#symload isblank with char_isblank of 1000
+#symload isblank with sint_isblank of 1000
 //
 fun<>
 char_isspace(c0: char): bool
 fun<>
 sint_isspace(c0: sint): bool
+#symload isspace with char_isspace of 1000
+#symload isspace with sint_isspace of 1000
 //
 fun<>
 char_iscntrl(c0: char): bool
 fun<>
 sint_iscntrl(c0: sint): bool
+#symload iscntrl with char_iscntrl of 1000
+#symload iscntrl with sint_iscntrl of 1000
 //
 fun<>
 char_isdigit(c0: char): bool
 fun<>
 sint_isdigit(c0: sint): bool
+#symload isdigit with char_isdigit of 1000
+#symload isdigit with sint_isdigit of 1000
 //
 fun<>
 char_isxdigit(c0: char): bool
 fun<>
 sint_isxdigit(c0: sint): bool
-//
-(* ****** ****** *)
-//
-#symload isalpha with char_isalpha of 1000
-#symload isalpha with sint_isalpha of 1000
-//
-#symload isalnum with char_isalnum of 1000
-#symload isalnum with sint_isalnum of 1000
-//
-#symload isascii with char_isascii of 1000
-#symload isascii with sint_isascii of 1000
-//
-#symload isblank with char_isblank of 1000
-#symload isblank with sint_isblank of 1000
-//
-#symload isspace with char_isspace of 1000
-#symload isspace with sint_isspace of 1000
-//
-#symload iscntrl with char_iscntrl of 1000
-#symload iscntrl with sint_iscntrl of 1000
-//
-#symload isdigit with char_isdigit of 1000
-#symload isdigit with sint_isdigit of 1000
-//
 #symload isxdigit with char_isxdigit of 1000
 #symload isxdigit with sint_isxdigit of 1000
 //

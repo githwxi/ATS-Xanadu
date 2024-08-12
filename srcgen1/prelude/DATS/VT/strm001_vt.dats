@@ -372,7 +372,7 @@ case+ xs of
 | ~
 strxcon_vt_cons(x0, xs) =>
 let
-  val i1 = succ(i0)
+  val i1 = suc(i0)
   val
   opt = ifilter$test1<x0>(i0, x0)
 in

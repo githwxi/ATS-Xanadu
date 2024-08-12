@@ -103,7 +103,7 @@ then
 let
 val
 i1 =
-succ(i0) in loop(A0, i1, x0)
+suc(i0) in loop(A0, i1, x0)
 end where
 {
 val () =

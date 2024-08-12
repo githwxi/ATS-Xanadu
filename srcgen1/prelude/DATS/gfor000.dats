@@ -39,7 +39,7 @@ if
 (i1 < n1)
 then
 (
-loop(succ(i1), n1)
+loop(suc(i1), n1)
 ) where
 {
 val () = x1forint$work<n1>(i1)
@@ -150,19 +150,19 @@ range1_strmize(xs) =
 let
 //
 fun
-fsucc
+fsuc
 (s1: x0, d3: sint): x0 =
 if d3 > 0
 then
-fsucc
-(g_succ<x0>(s1), d3-1) else s1
+fsuc
+(g_suc<x0>(s1), d3-1) else s1
 fun
-fpred
+fpre
 (s1: x0, d3: sint): x0 =
 if d3 > 0
 then
-fpred
-(g_pred<x0>(s1), d3-1) else s1
+fpre
+(g_pre<x0>(s1), d3-1) else s1
 //
 fun
 auxmain1
@@ -178,7 +178,7 @@ strmcon_vt_cons
 s1,
 auxmain1
 (
-fsucc(s1,d3),f2,d3)
+fsuc(s1,d3),f2,d3)
 ) else strmcon_vt_nil((*void*)))
 //
 fun
@@ -195,7 +195,7 @@ strmcon_vt_cons
 s1,
 auxmain2
 (
-fpred(s1,d3),f2,d3)
+fpre(s1,d3),f2,d3)
 ) else strmcon_vt_nil((*void*)))
 //
 in

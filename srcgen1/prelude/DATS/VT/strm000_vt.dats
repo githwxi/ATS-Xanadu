@@ -225,11 +225,11 @@ strx_vt_from$next<a>(x0) }
 #impltmp
 {a:t0}(*tmp*)
 strm_vt_from$next<a>
-  ( x0 ) = g_succ<a>(x0)//default
+  ( x0 ) = g_suc<a>(x0)//default
 #impltmp
 {a:t0}(*tmp*)
 strx_vt_from$next<a>
-  ( x0 ) = g_succ<a>(x0)//default
+  ( x0 ) = g_suc<a>(x0)//default
 //
 (* ****** ****** *)
 
@@ -244,7 +244,7 @@ strm_vt_foldl0<a><nint>(xs, 0)
 #impltmp
 foldl$fopr0<a><nint>(r0, x0) =
 let
-val () = g_free<a>(x0) in succ(r0)
+val () = g_free<a>(x0) in suc(r0)
 end // let // end of [foldl$fopr0]
 //
 } (*where*)//end-of-(strm_vt_length0)
@@ -270,7 +270,7 @@ then
 strmcon_vt_cons
 ( s1
 , auxmain
-  (g_succ<a>(s1), f2))
+  (g_suc<a>(s1), f2))
 else
 (
   strmcon_vt_nil(*void*)))(*auxmain*)
@@ -298,7 +298,7 @@ then
 strmcon_vt_cons
 ( s1
 , auxmain
-  (g_succ<a>(s1), f2))
+  (g_suc<a>(s1), f2))
 else
 (
   strmcon_vt_nil(*void*)))(*auxmain*)
@@ -642,7 +642,7 @@ then strmcon_vt_nil() else
 let
 val x0 = tabulate$fopr<a><n>(i0)
 in//let
-strmcon_vt_cons(x0, auxmain(succ(i0)))
+strmcon_vt_cons(x0, auxmain(suc(i0)))
 end // let // end-of-[ auxmain(i0) ]
 )
 }(*where*) // end of [strm_vt_tabulate(n0)]
@@ -1405,7 +1405,7 @@ if
 idropif$test0<x0>(i0, x0)
 then
 ( g_free<x0>(x0)
-; auxloop(xs, succ(i0)) )
+; auxloop(xs, suc(i0)) )
 else strm_vt_cons(x0, xs) )(*auxloop*)
 //
 }(*where*)//end-of-(strm_vt_idropif0(xs))
@@ -1442,7 +1442,7 @@ if
 itakeif$test0<x0>(i0, x0)
 then
 strmcon_vt_cons
-(x0, auxmain(xs, succ(i0)))
+(x0, auxmain(xs, suc(i0)))
 else
 ( g_free(x0)
 ; g_free(xs); strmcon_vt_nil(*void*))
@@ -1487,7 +1487,7 @@ strmcon_vt_nil()
 | ~
 strmcon_vt_cons(x0, xs) =>
 let
-  val i1 = succ(i0)
+  val i1 = suc(i0)
   val
   opt = ifilter$test1<x0>(i0, x0)
 in

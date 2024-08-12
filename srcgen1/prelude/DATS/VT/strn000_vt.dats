@@ -171,7 +171,7 @@ in
 if
 forall$test<cgtz>(x0)
 then
-loop(xs, len, succ(ind)) else false
+loop(xs, len, suc(ind)) else false
 // end of [if]
 end // end of [else]
 //
@@ -355,7 +355,7 @@ if
 (i0 >= n0)
 then () else
 (
-loop(p0, succ(i0), cs)) where
+loop(p0, suc(i0), cs)) where
 {
   val c0 = cs[i0]
   val () =
@@ -400,7 +400,7 @@ list_nil() => ()
 |
 list_cons(c0, cs) =>
 (
-loop(p0, succ(i0), cs)) where
+loop(p0, suc(i0), cs)) where
 {
 val () =
 strtmp_vt_set$at<>(p0, i0, c0) } )
@@ -444,7 +444,7 @@ list_vt_nil() => ()
 | ~
 list_vt_cons(c0, cs) =>
 (
-  loop(p0, succ(i0), cs)
+  loop(p0, suc(i0), cs)
 ) where
 {
 val () =
@@ -526,7 +526,7 @@ if
 (i0 < n0)
 then
 (
-loop(p0, succ(i0))) where
+loop(p0, suc(i0))) where
 {
 val c0 =
 tabulate$fopr<cgtz><n0>(i0)

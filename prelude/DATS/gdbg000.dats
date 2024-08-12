@@ -126,6 +126,10 @@ g_print1(x0) =
 g_ptype
 < sint >
 ( (*void*) ) = pstrn("sint")
+#impltmp
+g_ptype
+< uint >
+( (*void*) ) = pstrn("uint")
 //
 #impltmp
 g_ptype
