@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -36,6 +37,7 @@ Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 { x0:t0 }
@@ -44,6 +46,16 @@ g_neg0<x0> = g_neg<x0>
 { x0:t0 }
 g_abs0<x0> = g_abs<x0>
 //
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+g_suc0<x0> = g_suc<x0>
+#impltmp
+{ x0:t0 }
+g_pre0<x0> = g_pre<x0>
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -70,15 +82,6 @@ g_div00<x0> = g_div<x0>
 #impltmp
 { x0:t0 }
 g_mod00<x0> = g_mod<x0>
-//
-(* ****** ****** *)
-//
-#impltmp
-{ x0:t0 }
-g_succ0<x0> = g_succ<x0>
-#impltmp
-{ x0:t0 }
-g_pred0<x0> = g_pred<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
