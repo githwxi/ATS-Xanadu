@@ -30,107 +30,39 @@
 //
 (*
 Author: Hongwei Xi
-Sun 11 Aug 2024 12:59:19 PM EDT
+Sun 11 Aug 2024 05:30:58 PM EDT
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsfx00.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
-#abstbox
-a0rf_vt_tx(a:vt)//0-dim
-#absvtbx
-a0rf_vt_vx(a:vt)//0-dim
-//
-#typedef
-a0rf(a0:vt) = a0rf_vt_tx(a0)
-#vwtpdef
-a0rf_vt(a0:vt) = a0rf_vt_vx(a0)
+#impltmp
+{ x0:t0 }
+gasz_length
+<a1sz(x0)><x0> = a1sz_length<x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#abstbox
-a1rf_vt_i0_tx(a:vt,n:i0)
-#abstbox
-a1rf_vt_i0_vt(a:vt,n:i0)
-//
-#typedef
-a1rf
-(a:vt,n:i0) = a1rf_vt_i0_tx(a,n)
-#vwtpdef
-a1rf_vt
-(a:vt,n:i0) = a1rf_vt_i0_vt(a,n)
-//
-#typedef
-a1rf(x0:vt) = [n:i0] a1rf(x0,n)
-#vwtpdef
-a1rf_vt(x0:vt) = [n:i0] a1rf_vt(x0,n)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#abstbox
-a2rf_vt_i0_i0_tx(a:vt,m:i0,n:i0)
-#abstbox
-a2rf_vt_i0_i0_vt(a:vt,m:i0,n:i0)
-//
-#typedef
-a2rf
-(a:vt
-,m:i0,n:i0) = a2rf_vt_i0_i0_tx(a,m,n)
-#vwtpdef
-a2rf_vt
-(a:vt
-,m:i0,n:i0) = a2rf_vt_i0_i0_vt(a,m,n)
-//
-#typedef
-a2rf(x0:vt) = [m:i0;n:i0] a2rf(x0,m,n)
-#vwtpdef
-a2rf_vt(x0:vt) = [m:i0;n:i0] a2rf_vt(x0,m,n)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:vt>
-a0rf_make_1val
-  (elem: a): a0rf(a)
-//
-#symload
-a0rf with a0rf_make_1val of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:t0>
-a0rf_get(A: a0rf(a)): (a)
-fun
-<a:t0>
-a0rf_set(A: a0rf(a), x: a): void
-//
-#symload [] with a0rf_get of 1000
-#symload [] with a0rf_set of 1000
-#symload get with a0rf_get of 1000
-#symload set with a0rf_set of 1000
-//
-(* ****** ****** *)
-//
-fun
-<a:vt>
-a0rf_cget(A: a0rf(a)): (a)
-fun
-<a:vt>
-a0rf_setf(A: a0rf(a), x: a): void
-//
-#symload cget with a0rf_cget of 1000
-#symload setf with a0rf_setf of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
+#impltmp
+{ x0:t0 }
+$UN.gasz_get$at$raw
+<a1sz(x0)><x0>(A, i) =
+(
+  a1sz_get$at<x0>(A, i))//impltmp
+#impltmp
+{ x0:t0 }
+$UN.gasz_set$at$raw
+<a1sz(x0)><x0>(A, i, x) =
+(
+  a1sz_set$at<x0>(A, i, x))//impltmp
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_axrf000.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_axsz000.dats] *)

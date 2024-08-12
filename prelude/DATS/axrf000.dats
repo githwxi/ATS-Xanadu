@@ -37,6 +37,44 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+{ vt:vt }
+g_ptype
+<a0rf(vt)>
+( (*void*) ) =
+(
+pstrn("a0rf(");
+g_ptype<vt>((*0*)); pstrn(")"))
+//
+#impltmp
+{ vt:vt }
+g_ptype
+<a1rf(vt)>
+( (*void*) ) =
+(
+pstrn("a1rf(");
+g_ptype<vt>((*0*)); pstrn(")"))
+//
+#impltmp
+{ vt:vt }
+g_ptype
+<a2rf(vt)>
+( (*void*) ) =
+(
+pstrn("a2rf(");
+g_ptype<vt>((*0*)); pstrn(")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+gasz_length
+<a0rf(x0)><x0>( A ) = 1 // singleton
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

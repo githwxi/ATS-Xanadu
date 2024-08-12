@@ -37,6 +37,20 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+HX:
+This is in [gdbg000.dats]:
+#impltmp
+{ t0:t0 }
+g_ptype
+<list(t0)>
+( (*void*) ) =
+(
+pstrn("list(");
+g_ptype<t0>((*0*)); pstrn(")"))
+*)
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 < (*0*) >
