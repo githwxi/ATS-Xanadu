@@ -80,22 +80,50 @@ gasz_length
 (* ****** ****** *)
 //
 #impltmp
-< x0:vt >
-a0rf_get =
-$UN.gasz_get$raw<a0rf(x0)><x0>
+< x0:t0 >
+a0rf_get(A) =
+let
+val
+(pf|x0) =
+a0rf_lget<x0>(A)
+prval () =
+owed_t0_elim0(pf) in x0 end
 #impltmp
-< x0:vt >
-a0rf_set =
-$UN.gasz_set$raw<a0rf(x0)><x0>
+< x0:t0 >
+a0rf_set(A, x) =
+let
+prval () =
+owed_t0_make((*0*)) in//let
+a0rf_lset<x0>(pf | A, x) end
+//
+(* ****** ****** *)
 //
 #impltmp
 < x0:vt >
-a0rf_cget =
-$UN.gasz_cget$raw<a0rf(x0)><x0>
+a0rf_cget(A) =
+let
+//
+val x1 = g_copy<x0>(x0)
+//
+prval() =
+(
+owed_vt_return0(pf,x1)) in x0 end
+where
+{
+  val (pf | x0) = a0rf_lget<x0>(A)
+}(*where*)//end-of-[a0rf_cget(...)]
+//
 #impltmp
 < x0:vt >
-a0rf_setf =
-$UN.gasz_setf$raw<a0rf(x0)><x0>
+a0rf_setf(A, x0) =
+let
+val () =
+g_free<x0>(x1) in
+  a0rf_lset<x0>(pf|A,x0) end//let
+where
+{
+  val (pf | x1) = a0rf_lget<x0>(A)
+}(*where*)//end-of-[a0rf_setf(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -103,11 +131,13 @@ $UN.gasz_setf$raw<a0rf(x0)><x0>
 #impltmp
 < x0:vt >
 $UN.gasz_lget$raw
-< a0rf(x0) >< x0 > = a0rf_lget<x0>
+< a0rf(x0) >< x0 >
+  (A, i) = a0rf_lget<x0>(A, 0)
 #impltmp
 < x0:vt >
 $UN.gasz_lset$raw
-< a0rf(x0) >< x0 > = a0rf_lset<x0>
+< a0rf(x0) >< x0 >
+  (A, i, x) = a0rf_lset<x0>(A, 0, x)
 //
 (* ****** ****** *)
 (* ****** ****** *)

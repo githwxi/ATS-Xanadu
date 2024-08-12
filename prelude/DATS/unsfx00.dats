@@ -159,7 +159,7 @@ in//let
 $UN.gasz_lset$at$raw<xs><x0>(pf|xs,i0,x0)
 end//let
 //
-end(*let*)//end-of-[$UN.gasz_set$at$raw(...)]
+end(*let*)//end-of-[$UN.gasz_setf$at$raw(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
