@@ -128,6 +128,19 @@ a0rf_setf(A: a0rf(a), x: a): void
 #symload setf with a0rf_setf of 1000
 //
 (* ****** ****** *)
+//
+fun
+<a:vt>
+a0rf_lget
+(A:a0rf(a)): (owed(a) | a)
+fun
+<a:vt>
+a0rf_lset
+(pf:owed(a)|A:a0rf(a), x:a): void
+//
+#symload lget with a0rf_lget of 1000
+#symload lset with a0rf_lset of 1000
+//
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)

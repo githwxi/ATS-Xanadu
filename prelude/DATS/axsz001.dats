@@ -37,34 +37,6 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-{ x0:t0 }
-gseq_forall
-<a0rf(x0)><x0>
- (   arf   ) =
-forall$test<x0>(a0rf_get<x0>(arf))
-#impltmp
-{ x0:t0 }
-gseq_rforall
-<a0rf(x0)><x0>
- (   arf   ) =
-rforall$test<x0>(a0rf_get<x0>(arf))
-#impltmp
-{ x0:t0 }
-gseq_iforall
-<a0rf(x0)><x0>
- (   arf   ) =
-iforall$test<x0>(0, a0rf_get<x0>(arf))
-#impltmp
-{ x0:t0 }
-gseq_irforall
-<a0rf(x0)><x0>
- (   arf   ) =
-irforall$test<x0>(0, a0rf_get<x0>(arf))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

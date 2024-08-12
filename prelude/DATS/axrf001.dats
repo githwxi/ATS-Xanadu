@@ -37,30 +37,80 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 { x0:t0 }
 gseq_forall
 <a0rf(x0)><x0>
  (   arf   ) =
-forall$test<x0>(a0rf_get<x0>(arf))
+let
+val x0 =
+a0rf_get<x0>(arf) in
+(
+  forall$test<x0>(x0)) end
 #impltmp
 { x0:t0 }
 gseq_rforall
 <a0rf(x0)><x0>
  (   arf   ) =
-rforall$test<x0>(a0rf_get<x0>(arf))
+let
+val x0 =
+a0rf_get<x0>(arf) in
+(
+  rforall$test<x0>(x0)) end
 #impltmp
 { x0:t0 }
 gseq_iforall
 <a0rf(x0)><x0>
  (   arf   ) =
-iforall$test<x0>(0, a0rf_get<x0>(arf))
+let
+val x0 =
+a0rf_get<x0>(arf) in
+(
+  iforall$test<x0>(0, x0)) end
 #impltmp
 { x0:t0 }
 gseq_irforall
 <a0rf(x0)><x0>
  (   arf   ) =
-irforall$test<x0>(0, a0rf_get<x0>(arf))
+let
+val x0 =
+a0rf_get<x0>(arf) in
+(
+  irforall$test<x0>(0, x0)) end
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ x0:vt }
+gasz_forall
+<a0rf(x0)><x0>
+ (   arf   ) =
+let
+val
+(pf|x0) = 
+a0rf_lget<x0>(arf)
+val btf =
+forall$test1<x0>(x0)
+prval () =
+owed_vt_return0(pf, x0) in btf end
+//
+#impltmp
+{ x0:vt }
+gasz_rforall
+<a0rf(x0)><x0>
+ (   arf   ) =
+let
+val
+(pf|x0) = 
+a0rf_lget<x0>(arf)
+val btf =
+rforall$test1<x0>(x0)
+prval () =
+owed_vt_return0(pf, x0) in btf end
 //
 (* ****** ****** *)
 (* ****** ****** *)
