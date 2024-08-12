@@ -142,6 +142,28 @@ $UN.gasz_lset$at$raw
 (* ****** ****** *)
 //
 #impltmp
+< x0:t0 >
+a1rf_get$at =
+$UN.gasz_get$at$raw<a1rf(x0)><x0>
+#impltmp
+< x0:t0 >
+a1rf_set$at =
+$UN.gasz_set$at$raw<a1rf(x0)><x0>
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+a1rf_cget$at =
+$UN.gasz_cget$at$raw<a1rf(x0)><x0>
+#impltmp
+< x0:vt >
+a1rf_setf$at =
+$UN.gasz_setf$at$raw<a1rf(x0)><x0>
+//
+(* ****** ****** *)
+//
+#impltmp
 { x0:vt }
 $UN.gasz_lget$at$raw
 <  a1rf(x0)  >< x0 >
