@@ -42,6 +42,27 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
+{ vt:vt }
+g_ptype
+<a1sz(vt)>
+( (*void*) ) =
+(
+pstrn("a1sz(");
+g_ptype<vt>((*0*)); pstrn(")"))
+//
+#impltmp
+{ vt:vt }
+g_ptype
+<a2sz(vt)>
+( (*void*) ) =
+(
+pstrn("a2sz(");
+g_ptype<vt>((*0*)); pstrn(")"))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 { x0:t0 }
 gasz_length
 <a1sz(x0)><x0> = a1sz_length<x0>
