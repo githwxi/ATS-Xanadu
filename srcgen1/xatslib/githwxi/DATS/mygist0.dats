@@ -494,7 +494,7 @@ auxmain
 : strm_vt(sintgte(i)) =
 $llazy
 (
-strmcon_vt_cons(i0, auxmain(succ(i0)))
+strmcon_vt_cons(i0, auxmain(suc(i0)))
 )
 }
 //
@@ -512,7 +512,7 @@ auxmain
 : strm_vt(sintlte(i)) =
 $llazy
 (
-strmcon_vt_cons(i0, auxmain(pred(i0)))
+strmcon_vt_cons(i0, auxmain(pre(i0)))
 )
 }
 //
@@ -548,7 +548,7 @@ $llazy
 if
 (i0 >= j0)
 then strmcon_vt_nil()
-else strmcon_vt_cons(i0, auxmain(succ(i0)))
+else strmcon_vt_cons(i0, auxmain(suc(i0)))
 )
 }
 //
@@ -569,7 +569,7 @@ $llazy
 if
 (i0 <= j0)
 then strmcon_vt_nil()
-else strmcon_vt_cons(i0, auxmain(pred(i0)))
+else strmcon_vt_cons(i0, auxmain(pre(i0)))
 )
 }
 //

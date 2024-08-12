@@ -504,6 +504,6 @@ $(XATSOPT) -d $(PRELUDE1)/DATS/CATS/Xint/basics0.dats
 all1_Xint_dats:: ; \
 $(XATSOPT) -d $(PRELUDE1)/DATS/CATS/Xint/prelude.dats
 
-######
-
+#########################################################
 ############### end of [Makefile_prelude] ###############
+#########################################################

@@ -448,7 +448,7 @@ case+ opt of
 | ~
 none_vt() => (inp, some_vt(nrs))
 | ~
-some_vt(_) => auxrep(inp, succ(nrs))
+some_vt(_) => auxrep(inp, suc(nrs))
 end
 //
 } (* end of [parcmb1_ignore] *)
