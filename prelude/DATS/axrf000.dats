@@ -126,7 +126,6 @@ where
 }(*where*)//end-of-[a0rf_setf(...)]
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 #impltmp
 { x0:vt }
@@ -137,7 +136,21 @@ $UN.gasz_lget$at$raw
 { x0:vt }
 $UN.gasz_lset$at$raw
 <  a0rf(x0)  >< x0 >
-( pf | A,i,x ) = a0rf_lset<x0>(pf | A, x) // i=0
+( pf | A,i,x ) = a0rf_lset<x0>(pf | A,x)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ x0:vt }
+$UN.gasz_lget$at$raw
+<  a1rf(x0)  >< x0 >
+ ( A, i ) = a1rf_lget$at<x0>(A, i)
+#impltmp
+{ x0:vt }
+$UN.gasz_lset$at$raw
+<  a1rf(x0)  >< x0 >
+( pf | A,i,x ) = a1rf_lset$at<x0>(pf | A,i,x)
 //
 (* ****** ****** *)
 (* ****** ****** *)
