@@ -66,7 +66,7 @@ sint_gte_sint
 fun<>
 sint_neq_sint
 {i,j:int}
-(x sint(i), y:sint(j)): bool(i!=j)
+(x:sint(i), y:sint(j)): bool(i!=j)
 //
 #symload <= with sint_lte_sint of 1000
 #symload >= with sint_gte_sint of 1000
