@@ -156,12 +156,12 @@ a1rf_make_f1un
 (* ****** ****** *)
 //
 fun
-<a:vt>
+<a:t0>
 a1rf_get$at
 {n:nat}
 (A:a1rf(a,n), i:nintlt(n)): a
 fun
-<a:vt>
+<a:t0>
 a1rf_set$at
 {n:nat}
 (A:a1rf(a,n), i:nintlt(n), x:a): void
@@ -170,6 +170,21 @@ a1rf_set$at
 #symload [] with a1rf_set$at of 1000
 #symload get$at with a1rf_get$at of 1000
 #symload set$at with a1rf_set$at of 1000
+//
+(* ****** ****** *)
+fun
+<a:vt>
+a1rf_cget$at
+{n:nat}
+(A:a1rf(a,n), i:nintlt(n)): a
+fun
+<a:vt>
+a1rf_setf$at
+{n:nat}
+(A:a1rf(a,n), i:nintlt(n), x:a): void
+//
+#symload cget$at with a1rf_cget$at of 1000
+#symload setf$at with a1rf_setf$at of 1000
 //
 (* ****** ****** *)
 //
@@ -183,7 +198,8 @@ fun
 <a:vt>
 a1rf_lset$at
 {n:nat}
-(f:owed(a) | A:a1rf(a,n), x:a): void
+(f: owed(a)
+|A: a1rf(a,n), i:nintlt(n), x:a): void
 //
 #symload lget$at with a1rf_lget$at of 1000
 #symload lset$at with a1rf_lset$at of 1000
