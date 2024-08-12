@@ -126,15 +126,6 @@ end // end of [g_rand<sint>]
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#sexpdef t0up = t0up2
-#sexpdef t0up = t0up3
-//
-#sexpdef t1up = t1up2
-#sexpdef t1up = t1up3
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #impltmp
 {a0:vt
 ,a1:vt}
@@ -145,6 +136,7 @@ val x0 =
 g_rand<a0>()
 val x1 =
 g_rand<a1>() in @(x0, x1) end
+//
 #impltmp
 {a0:vt
 ,a1:vt}
@@ -155,6 +147,13 @@ val x0 =
 g_rand<a0>()
 val x1 =
 g_rand<a1>() in $tup(x0, x1) end
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#sexpdef t0up = t0up3
+#sexpdef t1up = t1up3
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 {a0:vt

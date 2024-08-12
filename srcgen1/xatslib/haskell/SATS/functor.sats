@@ -10,8 +10,7 @@ fmap :: (a -> b) -> (f a -> f b)
 *)
 (* ****** ****** *)
 #typedef
-c1fr
-(a1:t0,r0:vt) = (a1)-<cfr>r0
+f1un(a1:t0,r0:vt) = (a1)->r0
 (* ****** ****** *)
 //
 fun
@@ -19,7 +18,7 @@ fun
 t0->t0>
 <x0:t0>
 <y0:t0>
-fmap(c1fr(x0, y0), f0(x0)): f0(y0)
+fmap(f1un(x0, y0), f0(x0)): f0(y0)
 //
 // This is not supported as '$' is
 // #symload <$> with fmap // special in ATS
