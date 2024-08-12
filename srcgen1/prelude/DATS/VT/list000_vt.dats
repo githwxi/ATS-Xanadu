@@ -200,7 +200,7 @@ else let
   (r0 := list_vt_cons(x1, _))
 in // let
 (
-  loop(pred(i0), r0.1); $fold(r0) )
+  loop(pre(i0), r0.1); $fold(r0) )
 end // end of [else]
 //
 in
@@ -941,7 +941,7 @@ list_vt_free<a>(ys)}
 list_vt_cons(x0, xs) =>
 let
 val n0 = i0+j0
-val n1 = pred(n0)
+val n1 = pre(n0)
 val res1 =
 auxmain1(xy, n1) where
 {

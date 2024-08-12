@@ -97,11 +97,18 @@ g_abs(x: a): a
 //
 fun
 <a:t0>
-g_succ(x: a): a
+g_suc(x: a): a
 fun
 <a:t0>
-g_pred(x: a): a
+g_pre(x: a): a
 //
+(* ****** ****** *)
+fun
+<a:t0>
+g_sqr(x: a): a
+fun
+<a:t0>
+g_cbe(x: a): a
 (* ****** ****** *)
 //
 fun
@@ -143,17 +150,17 @@ g_abs1(x: !a): a
 //
 fun
 <a:vt>
-g_succ0(x: ~a): a
+g_suc0(x: ~a): a
 fun
 <a:vt>
-g_succ1(x: !a): a
+g_suc1(x: !a): a
 //
 fun
 <a:vt>
-g_pred0(x: ~a): a
+g_pre0(x: ~a): a
 fun
 <a:vt>
-g_pred1(x: !a): a
+g_pre1(x: !a): a
 //
 (* ****** ****** *)
 //
@@ -227,9 +234,9 @@ abs with g_abs of 0101
 (* ****** ****** *)
 //
 #symload
-succ with g_succ of 0101
+suc with g_suc of 0101
 #symload
-pred with g_pred of 0101
+pre with g_pre of 0101
 //
 (* ****** ****** *)
 //

@@ -81,19 +81,19 @@ gint_abs_sint
 (* ****** ****** *)
 //
 fun<>
-gint_succ_sint
+gint_suc_sint
 {i:int}(x: sint(i)): sint(i+1)
 fun<>
-gint_pred_sint
+gint_pre_sint
 {i:int}(x: sint(i)): sint(i-1)
 //
 (* ****** ****** *)
 //
 fun<>
-gint_succ_uint
+gint_suc_uint
 {i:int}(x: uint(i)): uint(i+1)
 fun<>
-gint_pred_uint
+gint_pre_uint
 {i:int|i>0}(x: uint(i)): uint(i-1)
 //
 (* ****** ****** *)
@@ -383,11 +383,11 @@ gint_repeat_sint_f0un
 //
 (* ****** ****** *)
 //
-#symload succ with gint_succ_sint of 1002
-#symload pred with gint_pred_sint of 1002
+#symload suc with gint_suc_sint of 1002
+#symload pre with gint_pre_sint of 1002
 //
-#symload succ with gint_succ_uint of 1000
-#symload pred with gint_pred_uint of 1000
+#symload suc with gint_suc_uint of 1000
+#symload pre with gint_pre_uint of 1000
 //
 (* ****** ****** *)
 //

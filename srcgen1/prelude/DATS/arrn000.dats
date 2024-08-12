@@ -163,7 +163,7 @@ val p0 = $addr(res)
 //
 val n0 =
 a1ref_length(A0)
-val n1 = pred(n0)
+val n1 = pre(n0)
 //
 #impltmp
 x1forint$work<n>(i0) =
@@ -244,7 +244,7 @@ then
 strmcon_vt_nil((*void*))
 else
 strmcon_vt_cons
-(get$at(A0, i0), auxmain(succ(i0)))
+(get$at(A0, i0), auxmain(suc(i0)))
 ) (* end of [auxmain] *)
 } (*where*) // end-of(a1ref_strmize)
 
@@ -273,7 +273,7 @@ let
 val
 b0 = forall$test<a>(A0[i0])
 in//let
-if b0 then loop(succ(i0)) else false
+if b0 then loop(suc(i0)) else false
 end // then
 else false // else // end of [if]
 //
@@ -311,7 +311,7 @@ if
 (i0 < n0)
 then
 (
-  loop(succ(i0))) where
+  loop(suc(i0))) where
 {
   val () =
   foreach$work<a>(get$at(A0, i0))
@@ -338,7 +338,7 @@ if
 (i0 > 0)
 then
 let
-val i1 = pred(i0)
+val i1 = pre(i0)
 val b0 =
 rforall$test<a>(get$at(A0, i1))
 in
@@ -376,7 +376,7 @@ val x0 = $UN.castlin10{ a}(x0)
 val b0 = forall$test1< a >(x0)
 val x0 = $UN.castlin10{?a}(x0)
 in//let
-if b0 then loop(succ(i0)) else false
+if b0 then loop(suc(i0)) else false
 end // then
 else false // else // end of [if]
 //
@@ -404,7 +404,7 @@ if
 (i0 < n0)
 then
 (
-  loop(succ(i0))) where
+  loop(suc(i0))) where
 {
   val x0 =
   a1ref_dtget$at<a>(A0, i0)
@@ -434,7 +434,7 @@ if
 (i0 > 0)
 then
 let
-val i1 = pred(i0)
+val i1 = pre(i0)
 val x0 =
 a1ref_dtget$at<a>(A0, i1)
 val x0 = $UN.castlin10{ a}(x0)

@@ -200,7 +200,7 @@ foldl$fopr0
 <x0><r0>(r0, x0) =
 let
 val () =
-g_free<x0>(x0) in succ(r0)
+g_free<x0>(x0) in suc(r0)
 end
 //
 } (*whr*)//gseq_length0/foldl0
@@ -218,7 +218,7 @@ gseq_foldl1
 //
 #impltmp
 foldl$fopr1
-<x0><r0>(r0, x0) = succ(r0)
+<x0><r0>(r0, x0) = suc(r0)
 //
 } (*whr*)//gseq_length1/foldl1
 //
@@ -916,7 +916,7 @@ iforall$test0<x0>(i0, x0)
 val i0 =
 $UN.p2tr_get<nint>(p0)
 val () =
-$UN.p2tr_set<nint>(p0,succ(i0))
+$UN.p2tr_set<nint>(p0,suc(i0))
 }
 in//let
 (
@@ -945,7 +945,7 @@ iforall$test1<x0>(i0, x0)
 val i0 =
 $UN.p2tr_get<nint>(p0)
 val () =
-$UN.p2tr_set<nint>(p0,succ(i0))
+$UN.p2tr_set<nint>(p0,suc(i0))
 }
 in
 (

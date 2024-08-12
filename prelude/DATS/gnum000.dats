@@ -37,6 +37,57 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef ni = nint
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+g_suc(x0) =
+g_add<x0>(x0, g_1<x0>())
+#impltmp
+< x0:t0 >
+g_pre(x0) =
+g_sub<x0>(x0, g_1<x0>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+g_sqr(x0) =
+g_mul<x0>(x0, x0)
+#impltmp
+< x0:t0 >
+g_cbe(x0) =
+g_mul<x0>(g_sqr<x0>(x0), x0)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+g_pow(x0, n0) =
+(
+auxloop
+(x0, n0, g_1<x0>())) where
+{
+fun
+auxloop
+( x0: x0
+, n0: ni, rs: x0): x0 =
+if
+(n0 <= 0)
+then rs else
+auxloop(x0*x0, n1, rs) where
+{
+val n1 = n0 / 2
+val rs =
+if n0 % 2 = 0 then rs else x0*rs
+}
+}(*where*)//end-of-[g_pow(x0, n0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)

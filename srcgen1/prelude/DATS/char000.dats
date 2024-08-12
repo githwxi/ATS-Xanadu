@@ -122,7 +122,7 @@ g_cmp<char> = char_cmp<>
 (* ****** ****** *)
 //
 #impltmp
-g_succ<char>(ch) =
+g_suc<char>(ch) =
 char_make_code(code(ch)+1)
 //
 (* ****** ****** *)

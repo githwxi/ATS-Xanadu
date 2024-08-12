@@ -1944,7 +1944,7 @@ then
 strm_vt_print$sep<>()
 //
 in
-loop(xs, succ(i0)) where
+loop(xs, suc(i0)) where
 {
   val () = g_print0<a0>(x0)
 }
@@ -2013,7 +2013,7 @@ then
 strm_vt_print$sep<>()
 //
 in
-loop(xs, succ(i0)) where
+loop(xs, suc(i0)) where
 {
   val () = g_print0<a0>(x0)
 }
@@ -2142,7 +2142,7 @@ then
 strx_vt_print$sep<>()
 //
 in
-loop(xs, succ(i0)) where
+loop(xs, suc(i0)) where
 {
   val () = g_print0<a0>(x0)
 }

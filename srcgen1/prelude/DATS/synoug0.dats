@@ -1560,7 +1560,7 @@ if
 then
 strm_print$sep<>()
 val () =
-g_print<a0>(x0) in loop(xs, succ(i0))
+g_print<a0>(x0) in loop(xs, suc(i0))
 end // end of [strmcon_cons]
 )
 } (*where*) // end-of(strm_print_all)
@@ -1612,7 +1612,7 @@ if
 then
 strm_print$sep<>()
 val () =
-g_print<a0>(x0) in loop(xs, succ(i0))
+g_print<a0>(x0) in loop(xs, suc(i0))
 end // end of [else]
 ) (* strmcon_cons *)
 } (*where*) // end-of(strm_print_len)
@@ -1719,7 +1719,7 @@ if
 then
 strx_print$sep<>()
 val () =
-g_print<a0>(x0) in loop(xs, succ(i0))
+g_print<a0>(x0) in loop(xs, suc(i0))
 end // end of [else]
 ) (* strxcon_cons *)
 } (*where*) // end-of(strx_print_len)

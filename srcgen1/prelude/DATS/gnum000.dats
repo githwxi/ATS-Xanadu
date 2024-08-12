@@ -32,11 +32,11 @@ g_5<a>() = g_si<a>(5)
 
 #impltmp
 {a:t0}
-g_succ<a>(x) =
+g_suc<a>(x) =
 g_add<a>(x, g_1<a>())
 #impltmp
 {a:t0}
-g_pred<a>(x) =
+g_pre<a>(x) =
 g_sub<a>(x, g_1<a>())
 
 (* ****** ****** *)
@@ -52,10 +52,10 @@ g_abs0<a> = g_abs<a>
 
 #impltmp
 {a:t0}
-g_succ0<a> = g_succ<a>
+g_suc0<a> = g_suc<a>
 #impltmp
 {a:t0}
-g_pred0<a> = g_pred<a>
+g_pre0<a> = g_pre<a>
 
 (* ****** ****** *)
 

@@ -199,7 +199,7 @@ in
 if
 test
 then j0 else
-auxloop(strn_tail(xs), succ(j0))
+auxloop(strn_tail(xs), suc(j0))
 endlet // end of [auxloop(xs,j0)]
 // end of [if]
 }(*where*)//end-of[strn_length(xs)]
@@ -450,7 +450,7 @@ then
 else
 let
   val ci = cs[i0]
-  val i0 = succ(i0)
+  val i0 = suc(i0)
 in
   strmcon_vt_cons(ci, auxmain(i0))
 end // end of [else]
@@ -487,7 +487,7 @@ then (!auxtail())
 else
 let
   val ci = cs[i0]
-  val i0 = succ(i0)
+  val i0 = suc(i0)
 in
   strxcon_vt_cons(ci, auxmain(i0))
 end // end of [else]

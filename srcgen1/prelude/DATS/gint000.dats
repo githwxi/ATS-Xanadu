@@ -77,14 +77,15 @@ g_neqrf<sint> = g_noteq<sint>
 g_print<sint> = gint_print_sint<>
 
 (* ****** ****** *)
-
+//
 #impltmp
 g_neg<sint> = gint_neg_sint<>
+//
 #impltmp
-g_succ<sint> = gint_succ_sint<>
+g_suc<sint> = gint_suc_sint<>
 #impltmp
-g_pred<sint> = gint_pred_sint<>
-
+g_pre<sint> = gint_pre_sint<>
+//
 (* ****** ****** *)
 
 #impltmp
@@ -205,7 +206,7 @@ then
 (
 if
 forall$test<x0>(x0)
-  then loop(succ(x0)) else false
+  then loop(suc(x0)) else false
 ) (* then *)
 else true // end of [else]
 } (* end of [gint_forall_sint] *)
@@ -226,7 +227,7 @@ loop(x0: sint): void =
 if
 (x0 < xs)
 then
-loop(succ(x0)) where
+loop(suc(x0)) where
 {
 val () = foreach$work<x0>(x0)
 } else ((*void*)) //end(else)
@@ -249,7 +250,7 @@ if
 (xs > 0)
 then
 let
-val xs = pred(xs)
+val xs = pre(xs)
 in//let
 if
 rforall$test<x0>(xs)
@@ -337,7 +338,7 @@ then
 else
 let
 val x0 = i0
-val i0 = succ(i0)
+val i0 = suc(i0)
 val y0 =
 map$fopr<x0><y0>(x0)
 val () =
@@ -379,7 +380,7 @@ then
 strmcon_vt_nil()
 else
 strmcon_vt_cons
-(i0, auxmain(n0, succ(i0)))
+(i0, auxmain(n0, suc(i0)))
 )
 }(*where*)//end-of(gint_strmize_nint)
 

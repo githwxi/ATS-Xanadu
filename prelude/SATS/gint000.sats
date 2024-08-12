@@ -38,6 +38,73 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun<>
+sint_lt_sint
+{i,j:int}
+(x:sint(i), y:sint(j)): bool(i<j)
+fun<>
+sint_gt_sint
+{i,j:int}
+(x:sint(i), y:sint(j)): bool(i>j)
+fun<>
+sint_eq_sint
+{i,j:int}
+(x:sint(i), y:sint(j)): bool(i=j)
+//
+#symload < with gint_lt_sint_sint of 1000
+#symload > with gint_gt_sint_sint of 1000
+#symload = with gint_eq_sint_sint of 1000
+//
+fun<>
+sint_lte_sint
+{i,j:int}
+(x:sint(i), y:sint(j)): bool(i<=j)
+fun<>
+sint_gte_sint
+{i,j:int}
+(x:sint(i), y:sint(j)): bool(i>=j)
+fun<>
+sint_neq_sint
+{i,j:int}
+(x sint(i), y:sint(j)): bool(i!=j)
+//
+#symload <= with sint_lte_sint of 1000
+#symload >= with sint_gte_sint of 1000
+#symload != with sint_neq_sint of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+sint_add_sint
+{i,j:int}
+(x: sint(i), y: sint(j)): sint(i+j)
+fun<>
+sint_sub_sint
+{i,j:int}
+(x: sint(i), y: sint(j)): sint(i-j)
+fun<>
+sint_mul_sint
+{i,j:int}
+(x: sint(i), y: sint(j)): sint(i*j)
+fun<>
+sint_div_sint
+{i,j:int}
+(x: sint(i), y: sint(j)): sint(i/j)
+fun<>
+sint_mod_sint
+{i,j:int}
+(x: sint(i), y: sint(j)): sint(i%j)
+//
+#symload + with sint_add_sint of 1000
+#symload - with sint_sub_sint of 1000
+#symload * with sint_mul_sint of 1000
+#symload / with sint_div_sint of 1000
+#symload % with sint_mod_sint of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2024-08-04:
 Is GSEQ coming of age?

@@ -267,7 +267,7 @@ gseq_foldl
 #typedef r0 = nint
 //
 #impltmp
-foldl$fopr<x0><r0>(r0, _) = succ(r0)
+foldl$fopr<x0><r0>(r0, _) = suc(r0)
 //
 }(*where*)//end-of(gseq_length/foldl)
 
@@ -1935,7 +1935,7 @@ if
 idropif$test<x0>(i0, x0)
 then
 (
-  loop(xs, succ(i0))) where
+  loop(xs, suc(i0))) where
 {
 val xs =
 $UN.gseq_tail$raw<xs><x0>(xs)
@@ -2019,7 +2019,7 @@ then
 (
   loop(xs, i0, r0) ) where
 {
-val i0 = succ(i0)
+val i0 = suc(i0)
 val xs =
 $UN.gseq_tail$raw<xs><x0>(xs)
 val r0 = list_vt_cons(x0, r0) }
@@ -2099,7 +2099,7 @@ iforall$test<x0>(i0, x0)
 val i0 =
 $UN.p2tr_get<nint>(p0)
 val () =
-$UN.p2tr_set<nint>(p0, succ(i0))
+$UN.p2tr_set<nint>(p0, suc(i0))
 }
 in
   gseq_forall<xs><x0>(xs)

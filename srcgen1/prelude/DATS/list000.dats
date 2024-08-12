@@ -169,7 +169,7 @@ if
 (i0 > 0)
 then
 loop
-( pred(i0)
+( pre(i0)
 , list_vt_cons(x0, xs)) else xs
 )
 } (* end of [list_make_nval_vt] *)
@@ -435,7 +435,7 @@ list_cons(x0, xs) =>
 if
 (i0 > 0)
 then
-loop(xs, pred(i0)) else x0
+loop(xs, pre(i0)) else x0
 endif // end-of-(list_cons)
 )(*case+*)//end-(loop(xs,i0))
 }(*where*)//end-(list_get$at(xs,i0))
@@ -470,7 +470,7 @@ list_rappend0x<a>
 (ys, list_cons(x0, xs))
 else
 let
-val i0 = pred(i0)
+val i0 = pre(i0)
 val ys =
 list_vt_cons(x1,ys) in auxmain(xs,i0,ys)
 end // end of [else]
