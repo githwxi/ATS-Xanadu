@@ -92,7 +92,7 @@ owed_t0_elim0(pf) in x0 end
 < x0:t0 >
 a0rf_set(A, x) =
 let
-prval () =
+prval pf =
 owed_t0_make((*0*)) in//let
 a0rf_lset<x0>(pf | A, x) end
 //
@@ -129,15 +129,15 @@ where
 (* ****** ****** *)
 //
 #impltmp
-< x0:vt >
-$UN.gasz_lget$raw
-< a0rf(x0) >< x0 >
-  (A, i) = a0rf_lget<x0>(A, 0)
+{ x0:vt }
+$UN.gasz_lget$at$raw
+<  a0rf(x0)  >< x0 >
+ ( A, i ) = a0rf_lget<x0>(A) // i=0
 #impltmp
-< x0:vt >
-$UN.gasz_lset$raw
-< a0rf(x0) >< x0 >
-  (A, i, x) = a0rf_lset<x0>(A, 0, x)
+{ x0:vt }
+$UN.gasz_lset$at$raw
+<  a0rf(x0)  >< x0 >
+( pf | A,i,x ) = a0rf_lset<x0>(pf | A, x) // i=0
 //
 (* ****** ****** *)
 (* ****** ****** *)
