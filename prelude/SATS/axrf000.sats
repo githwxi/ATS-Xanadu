@@ -208,6 +208,22 @@ a1rf_lset$at
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<a:vt>
+a1rf_forall_size
+{n:nat}
+(A: a1rf(a,n), n: sint(n)): bool
+fun
+<a:vt>
+a1rf_forall_size_f1un
+{n:nat}
+( A
+: a1rf(a,n)
+, n: sint(n), test: (!a) -> bool): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
