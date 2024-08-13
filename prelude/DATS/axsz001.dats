@@ -52,22 +52,46 @@ a1sz_forall<x0>(A)) where
 forall$test1<x0>(x0) = test(x0)
 }(*where*)//end(a1sz_forall_f1un)
 //
+#impltmp
+{ x0:t0 }
+gseq_forall
+<a1sz(x0)><x0>
+  ( A ) =
+(
+a1sz_forall<x0>(A)) where
+{
+#impltmp
+forall$test1<x0> = forall$test<x0>
+}
+//
 (* ****** ****** *)
 //
 #impltmp
 < x0:vt >
-a1sz_iforall =
-gasz_iforall<a1sz(x0)><x0>
+a1sz_rforall =
+gasz_rforall<a1sz(x0)><x0>
 #impltmp
-< x0:vt >
-a1sz_iforall_f1un
+{ x0:vt }
+a1sz_rforall_f1un
   (A, test) =
 (
-a1sz_iforall<x0>(A)) where
+a1sz_rforall<x0>(A)) where
 {
 #impltmp
-iforall$test1<x0>(i0,x0) = test(i0,x0)
-}(*where*)//end(a1sz_iforall_f1un(...))
+rforall$test1<x0>(x0) = test(x0)
+}(*where*)//end(a1sz_rforall_f1un)
+//
+#impltmp
+{ x0:t0 }
+gseq_rforall
+<a1sz(x0)><x0>
+  ( A ) =
+(
+a1sz_rforall<x0>(A)) where
+{
+#impltmp
+rforall$test1<x0> = rforall$test<x0>
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)

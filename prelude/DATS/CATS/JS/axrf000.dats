@@ -80,15 +80,16 @@ XATS2JS_a0rf_lset
 //
 #impltmp
 < a: vt >
-a0rf_make_1val(x0) =
+a0rf_make_1val
+  ( x1 ) =
 (
 XATS2JS_a0rf_make_1val
-  ( x0 )) where
+  ( x1 )) where
 {
 #extern
 fun
 XATS2JS_a0rf_make_1val
-{a:vt}( x0: a ): a0rf(a) = $extnam()
+{a:vt}( x1: a ): a0rf(a) = $extnam()
 }
 //
 (* ****** ****** *)
@@ -126,6 +127,39 @@ XATS2JS_a1rf_lset$at
 {a:vt}
 (f:owed(a)
 |A:a1rf(a),i:nint,x:a): void = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+< a: t0 >
+a1rf_make_ncpy
+  (n, x) =
+(
+XATS2JS_a1rf_make_ncpy
+  (n, x)) where
+{
+#extern
+fun
+XATS2JS_a1rf_make_ncpy
+{a:t0}(n:nint, x:a): a1rf(a) = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+< a: vt >
+a1rf_make_nfun
+  (n, f) =
+(
+XATS2JS_a1rf_make_nfun
+  (n, f)) where
+{
+#extern
+fun
+XATS2JS_a1rf_make_nfun
+{a:t0}
+(n:nint, f:(nint)->(a)): a1rf(a) = $extnam()
 }
 //
 (* ****** ****** *)

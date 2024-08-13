@@ -116,6 +116,35 @@ owed_vt_return0(pf, x0) in btf end
 (* ****** ****** *)
 //
 #impltmp
+{ x0:t0 }
+gseq_forall
+<a1rf(x0)><x0>
+  ( A ) =
+(
+gasz_forall
+<a1rf(x0)><x0>(A))
+where
+{
+#impltmp
+forall$test1<x0> = forall$test<x0>
+}
+#impltmp
+{ x0:t0 }
+gseq_rforall
+<a1rf(x0)><x0>
+  ( A ) =
+(
+gasz_rforall
+<a1rf(x0)><x0>(A))
+where
+{
+#impltmp
+rforall$test1<x0> = rforall$test<x0>
+}
+//
+(* ****** ****** *)
+//
+#impltmp
 < x0:vt >
 a1rf_forall_size
   (A, n) =

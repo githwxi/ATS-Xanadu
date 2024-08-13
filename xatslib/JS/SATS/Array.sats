@@ -74,7 +74,7 @@ jsarray_make_ncpy
 //
 fun<>
 jsarray_make_nfun
- {a:t0}{n:nat}
+ {a:vt}{n:nat}
 ( n0: sint(n)
 , f0: nintlt(n) -> (a)):jsarray(a)
 //
