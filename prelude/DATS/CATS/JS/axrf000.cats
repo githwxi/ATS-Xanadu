@@ -71,6 +71,18 @@ XATS2JS_a1rf_lset$at
 }
 //
 function
+XATS2JS_a1rf_make_ncpy
+  (n, x)
+{
+  var i = 0
+  var A = new Array(n);
+  while (i < n) {
+    A[i] = (x); i += 1
+  }
+  return A // HX: A = [x, x, ..., x]
+}
+//
+function
 XATS2JS_a1rf_make_nfun
   (n, f)
 {

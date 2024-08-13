@@ -145,6 +145,12 @@ a0rf_lset
 (* ****** ****** *)
 //
 fun
+<a:t0>
+a1rf_make_ncpy
+ {n:i0|n>0}
+(n: sint(n), x:a): a1rf(a, n)
+//
+fun
 <a:vt>
 a1rf_make_nfun
  {n:i0|n>0}

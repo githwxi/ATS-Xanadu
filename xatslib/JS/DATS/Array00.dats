@@ -63,7 +63,7 @@ XATS2JS_jsarray_make_ncpy
 #extern
 fun
 XATS2JS_jsarray_make_ncpy
- {a:t0}
+ {a:vt}
 ( n
 : nint
 , x:( a )): jsa(a) = $extnam()
@@ -86,7 +86,7 @@ jsarray_make0_1val
   ( x1 ) =
 (
 XATS2JS_jsarray_make0_1val
-  (x1)) where
+  ( x1 )) where
 {
 #extern
 fun
