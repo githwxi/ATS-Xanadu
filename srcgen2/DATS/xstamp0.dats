@@ -92,7 +92,7 @@ stamper_getinc
 stamp(cnt)) where
 {
 val cnt = a0ref_get(obj)
-val ( ) = a0ref_set(obj,succ(cnt))
+val ( ) = a0ref_set(obj,suc(cnt))
 } (*where*)//end-of(stamper_getinc)
 //
 end (*local*) // end of [local]

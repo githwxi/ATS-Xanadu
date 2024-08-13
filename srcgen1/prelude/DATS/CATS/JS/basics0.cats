@@ -231,26 +231,26 @@ XATS2JS_gint_abs_sint
 ////////////////////////////////////////////////////////////////
 //
 function
-XATS2JS_gint_succ_sint
+XATS2JS_gint_suc_sint
   (  x0  )
 {
     return (x0 + 1); // +1
 }
 function
-XATS2JS_gint_succ_uint
+XATS2JS_gint_suc_uint
   (  x0  )
 {
     return (x0 + 1); // +1
 }
 //
 function
-XATS2JS_gint_pred_sint
+XATS2JS_gint_pre_sint
   (  x0  )
 {
     return (x0 - 1); // -1
 }
 function
-XATS2JS_gint_pred_uint
+XATS2JS_gint_pre_uint
   (  x0  )
 {
     return (x0 - 1); // -1
@@ -527,19 +527,22 @@ XATS2JS_gflt_abs_dflt
 }
 //
 /* ****** ****** */
+//
 function
-XATS2JS_gflt_succ_dflt
+XATS2JS_gflt_suc_dflt
   (  x0  )
 {
     return (x0 + 1); // +1
 }
 function
-XATS2JS_gflt_pred_dflt
+XATS2JS_gflt_pre_dflt
   (  x0  )
 {
     return (x0 - 1); // -1
 }
+//
 /* ****** ****** */
+//
 function
 XATS2JS_gflt_lt_dflt_dflt
   (x1, x2)
