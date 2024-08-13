@@ -65,12 +65,12 @@ ui8ck(i: int) =
 (* ****** ****** *)
 //
 fun<>
-gintb_succ_sint8
+gintb_suc_sint8
 { i : int
 | si8ck(i+1) }
 ( x : sint8(i) ) : sint8(i+1)
 fun<>
-gintb_pred_sint8
+gintb_pre_sint8
 { i : int
 | si8ck(i-1) }
 ( x : sint8(i) ) : sint8(i-1)

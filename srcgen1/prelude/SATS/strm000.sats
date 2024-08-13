@@ -135,7 +135,7 @@ strm_from$next(x0: a): (a)
 (*
 HX-2022-07-03:
 The default for [$next]:
-strm_from$next(x0) = g_succ(x0)
+strm_from$next(x0) = g_suc(x0)
 *)
 //
 fun
@@ -147,7 +147,7 @@ strx_from$next(x0: a): (a)
 (*
 HX-2022-07-03:
 The default for [$next]:
-strx_from$next(x0) = g_succ(x0)
+strx_from$next(x0) = g_suc(x0)
 *)
 //
 (* ****** ****** *)
