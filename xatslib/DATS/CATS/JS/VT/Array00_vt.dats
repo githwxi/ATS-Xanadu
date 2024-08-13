@@ -26,34 +26,52 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 (*
-Fri 26 Jul 2024 10:56:37 AM EDT
+Thu 25 Jul 2024 10:54:54 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload UN =
-"prelude/SATS/VT/unsfx00_vt.sats"
+(*
+HX-2024-08-08:
+Note that jarray_vt(a) can
+be refined into jarray_vt(a)!
+But we do not do it here as we
+do need to keep things simple.
+*)
+(* ****** ****** *)
+(* ****** ****** *)
+#staload "./../Array.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload
-"./../../SATS/Array.sats"
-#staload
-"./../../SATS/VT/Array_vt.sats"
+#extern
+fcast
+UN_jsarray_t2vt
+{a:vt}(A: jsa0(a)): jsla(a)
+#extern
+fcast
+UN_jsarray_vt2t
+{a:vt}(A: !jsla(a)): jsa0(a)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef
-jsa(a:vt) = jsarray(a)
-(* ****** ****** *)
-#vwtpdef
-jsla(a:vt) = jsarray_vt(a)
+//
+#impltmp
+{ a: vt }
+g_ptype
+<jsla(a)>
+( (*void*) ) =
+(
+pstrn"jsarray_vt(";
+g_ptype<a>();pstrn")")
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -79,12 +97,226 @@ end//end-of-[g_print1<jsla(a)>]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-07-26:
+Fri 26 Jul 2024 10:52:28 AM EDT
+*)
+//
+#extern
+fun<>
+jsarray_vt_make_jsarray
+ {a:vt}(A: jsa0(a)): jsla(a)
+//
+#symload
+jsarray_vt with
+jsarray_vt_make_jsarray of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun<>
+jsarray_vt_make_ncpy
+ {a:t0}(n:nint, x:a): jsla(a)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun<>
+jsarray_vt_make0_1val
+ {a:vt}( x1: (a) ): jsla(a)
+#extern
+fun<>
+jsarray_vt_make0_2val
+ {a:vt}( x1:a, x2:a ): jsla(a)
+#extern
+fun<>
+jsarray_vt_make0_3val
+ {a:vt}( x1:a, x2:a, x3:a ): jsla(a)
+//
+#symload
+jsarray_vt with jsarray_vt_make0_1val of 1000
+#symload
+jsarray_vt with jsarray_vt_make0_2val of 1000
+#symload
+jsarray_vt with jsarray_vt_make0_3val of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-25:
+[fwork] may be linear
+in the future!
+#vwtpdef
+fwork_vt(a:vt) =
+((~a)-<lfun>void)->void
+*)
+//
+#extern
+fun<>
+jsarray_vt_make_fwork
+{a:vt}
+(fwork: ~fwork(a)): jsla(a)
+//
+#symload
+jsarray_vt with jsarray_vt_make_fwork of 1000
+//
+(* ****** ****** *)
+//
+#extern
+fun<>
+jsarray_vt_make0_lstrm
+ {a:vt}(xs: ~strm_vt(a)): jsla(a)
+#extern
+fun<>
+jsarray_vt_make0_lstrq
+ {a:vt}(xs: ~strq_vt(a)): jsla(a)
+//
+#symload
+jsarray_vt with jsarray_vt_make0_lstrm of 1000
+#symload
+jsarray_vt with jsarray_vt_make0_lstrq of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun<>
+jsarray_vt_length1
+ {a:vt}(A: !jsla(a)): nint
+//
+#symload length1 with jsarray_vt_length1 of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun<>
+jsarray_vt_get$at1
+ {a:t0}//HX: it's t0; not vt
+(A: !jsla(a), i:nint): (a)
+#extern
+fun<>
+jsarray_vt_set$at1
+ {a:t0}//HX: it's t0; not vt
+(A: !jsla(a), i:nint, x:a): void
+//
+#symload get$at1 with jsarray_vt_get$at1 of 1000
+#symload set$at1 with jsarray_vt_set$at1 of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+(*
+//
+HX-2024-07-25:
+Shall we come back here
+when dependent type-checking
+is supported?
+Thu 25 Jul 2024 06:42:41 AM EDT
+//
+#extern
+fun<>
+jsarray_vt_getn$at1
+ {a:t0}{n:nat}
+(A: !jsla(a,n), i:nintlt(n)): (a)
+#extern
+fun<>
+jsarray_vt_setn$at1
+ {a:t0}{n:nat}
+(A: !jsla(a,n), i:nintlt(n), x:a): void
+//
+#symload getn_at with jsarray_vt_getn$at1 of 1000
+#symload setn_at with jsarray_vt_setn$at1 of 1000
+//
+*)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun<>
+jsarray_vt_strmize0
+{a:vt}(A: ~jsla(a)): strm_vt(a)
+#extern
+fun<>
+jsarray_vt_strqize0
+{a:vt}(A: ~jsla(a)): strq_vt(a)
+//
+#symload strmize0 with jsarray_vt_strmize0 of 1000
+#symload strqize0 with jsarray_vt_strqize0 of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun<>
+jsarray_vt_forall1_f1un
+ {a:vt}
+( A:
+! jsla(a)
+, test: (~a) -> bool): bool
+//
+#symload
+forall1 with jsarray_vt_forall1_f1un of 1000
+//
+(* ****** ****** *)
+//
+#extern
+fun<>
+jsarray_vt_rforall1_f1un
+ {a:vt}
+( A:
+! jsla(a)
+, test: (~a) -> bool): bool
+//
+#symload
+rforall1 with jsarray_vt_rforall1_f1un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun<>
+jsarray_vt_mapref1_f1un
+ {a:vt}
+( A:
+! jsla(a)
+, fopr: (~a) -> (a)): void
+//
+#symload
+mapref1 with jsarray_vt_mapref1_f1un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
+<a:vt>
+jsarray_vt_sortref1
+( A: !jsla(a) ): void
+#extern
+fun<>
+jsarray_vt_sortref1_f2un
+ {a:vt}
+( A:
+! jsla(a)
+, cmpr: (!a, !a) -> sint): void
+//
+#symload
+sortref1 with jsarray_vt_sortref1 of 1000
+#symload
+sortref1 with jsarray_vt_sortref1_f2un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 <(*tmp*)>
 jsarray_vt_make_ncpy
   (n, x) =
 UN_jsarray_t2vt
-(jsarray_make_ncpy<>(n,x))
+(jsarray_make_ncpy<>(n, x))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -112,6 +344,7 @@ UN_jsarray_t2vt
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 //
 #impltmp
 { x0:vt }
@@ -149,23 +382,23 @@ jsarray_set$at<>(UN_jsarray_vt2t(A), i, x))
 { x0:t0 }
 gasz_get$at1
 <jsla(x0)><x0> =
-jsarray_vt_get$at1<>{x0}
+jsarray_vt_get$at1<>{x0}(*void*)
 #impltmp
 { x0:t0 }
 gasz_set$at1
 <jsla(x0)><x0> =
-jsarray_vt_set$at1<>{x0}
+jsarray_vt_set$at1<>{x0}(*void*)
 //
 #impltmp
 { x0:t0 }
 $UN.gasz_get$at$raw1
 <jsla(x0)><x0> =
-jsarray_vt_get$at1<>{x0}//safe
+jsarray_vt_get$at1<>{x0}(*void*)
 #impltmp
 { x0:t0 }
 $UN.gasz_set$at$raw1
 <jsla(x0)><x0> =
-jsarray_vt_set$at1<>{x0}//safe
+jsarray_vt_set$at1<>{x0}(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -173,17 +406,16 @@ jsarray_vt_set$at1<>{x0}//safe
 #impltmp
 { x0:vt }
 gseq_strmize0
-<jsla(x0)><x0> =
-gasz_strmize0<jsla(x0)><x0>
+<jsla(x0)><x0> = gasz_strmize0<jsla(x0)><x0>
 //
 #impltmp
 { x0:vt }
 gseq_rstrmize0
-<jsla(x0)><x0> =
-gasz_rstrmize0<jsla(x0)><x0>
+<jsla(x0)><x0> = gasz_rstrmize0<jsla(x0)><x0>
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 //
 #impltmp
 { x0:vt }
@@ -200,8 +432,7 @@ jsarray_vt_forall1_f1un<>
 jsarray_vt_forall1_f1un
   (A, test) =
 (
-jsarray_forall_f1un<>
-(UN_jsarray_vt2t(A), test))//end(impltmp)
+jsarray_forall_f1un<>(UN_jsarray_vt2t(A), test))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -231,7 +462,7 @@ jsarray_rforall_f1un<>(UN_jsarray_vt2t(A), test))
 jsarray_vt_mapref1_f1un
   (A, fopr) =
 (
-jsarray_mapref_f1un<>(UN_jsarray_vt2t(A), fopr))
+ jsarray_mapref_f1un<>(UN_jsarray_vt2t(A), fopr))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -257,4 +488,4 @@ jsarray_sortref_f2un<>(UN_jsarray_vt2t(A), cmpr))
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_xatslib_JS_DATS_VT_Array00_vt.dats] *)
+(* end of [ATS3/XANADU_xatslib_DATS_CATS_JS_VT_Array00_vt.dats] *)
