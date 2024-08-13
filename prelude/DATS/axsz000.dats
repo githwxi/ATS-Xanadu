@@ -63,6 +63,30 @@ g_ptype<vt>((*0*)); pstrn(")"))
 (* ****** ****** *)
 //
 #impltmp
+{ a: vt }
+g_print<a1sz(a)>
+  ( xs ) =
+let
+//
+#vwtpdef x0 = (a)
+#typedef xs = a1sz(a)
+//
+#impltmp
+gseq_sep<xs><x0>() = ","
+#impltmp
+gseq_end<xs><x0>() = ")"
+#impltmp
+gseq_beg<xs><x0>() = "a1sz("
+//
+in//let
+(
+  gseq_print1<xs><x0>(xs) )
+end//let//end(g_print<a1sz(a)>)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 { x0:t0 }
 gasz_length
 <a1sz(x0)><x0> = a1sz_length<x0>

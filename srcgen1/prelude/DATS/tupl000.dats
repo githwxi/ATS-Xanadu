@@ -316,13 +316,13 @@ g_print for flat/boxed tuples
 {a0:vt}
 g_print1
 <
-t1up1
+t1up
 ( a0 )>(tup) =
 let
 val () = t1up_print$beg()
 val () = g_print1<a0>(tup.0)
 val () = t1up_print$end((*nil*))
-end // end of [g_print1<t1up1>(tup)]
+end // end of [g_print1<t1up>(tup)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -332,7 +332,7 @@ end // end of [g_print1<t1up1>(tup)]
 ,a1:vt}
 g_print1
 <
-t0up2
+t0up
 (a0,a1)>(tup) =
 let
 val () = t0up_print$beg()
@@ -340,14 +340,14 @@ val () = g_print1<a0>(tup.0)
 val () = t0up_print$sep()
 val () = g_print1<a1>(tup.1)
 val () = t0up_print$end((*nil*))
-end // end of [g_print1<t0up2>(tup)]
+end // end of [g_print1<t0up>(tup)]
 //
 #impltmp
 {a0:vt
 ,a1:vt}
 g_print1
 <
-t1up2
+t1up
 (a0,a1)>(tup) =
 let
 val () = t1up_print$beg()
@@ -355,7 +355,7 @@ val () = g_print1<a0>(tup.0)
 val () = t1up_print$sep()
 val () = g_print1<a1>(tup.1)
 val () = t1up_print$end((*nil*))
-end // end of [g_print1<t1up2>(tup)]
+end // end of [g_print1<t1up>(tup)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
