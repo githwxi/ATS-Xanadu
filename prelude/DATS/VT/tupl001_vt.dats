@@ -42,7 +42,7 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 { x0:vt }
 gseq_forall0
-<t0up2(x0,x0)><x0>
+<t0up(x0,x0)><x0>
   ( tup ) =
 let
 val b0 =
