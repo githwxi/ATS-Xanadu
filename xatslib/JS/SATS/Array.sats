@@ -232,7 +232,6 @@ GSEQ_make_jsarray
 {a:t0}
 (A:jsarray(a)): GSEQ(jsarray(a), a)
 #symload GSEQ with GSEQ_make_jsarray of 1000
-//
 fcast // fun
 GASZ_make_jsarray
 {a:vt}

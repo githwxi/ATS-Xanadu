@@ -224,6 +224,20 @@ a1rf_forall_size_f1un
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fcast // fun
+GSEQ_make_a1rf
+{a:t0}
+(A:a1rf(a)): GSEQ(a1rf(a), a)
+#symload GSEQ with GSEQ_make_a1rf of 1000
+fcast // fun
+GASZ_make_a1rf
+{a:vt}
+(A:a1rf(a)): GASZ(a1rf(a), a)
+#symload GASZ with GASZ_make_a1rf of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

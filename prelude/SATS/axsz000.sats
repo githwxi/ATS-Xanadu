@@ -158,6 +158,20 @@ a2sz_d2size
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fcast // fun
+GSEQ_make_a1sz
+{a:t0}
+(A:a1sz(a)): GSEQ(a1sz(a), a)
+#symload GSEQ with GSEQ_make_a1sz of 1000
+fcast // fun
+GASZ_make_a1sz
+{a:vt}
+(A:a1sz(a)): GASZ(a1sz(a), a)
+#symload GASZ with GASZ_make_a1sz of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
