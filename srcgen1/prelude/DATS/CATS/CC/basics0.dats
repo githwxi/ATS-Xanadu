@@ -189,20 +189,20 @@ gint_abs_sint<> = XATS2CC_gint_abs_sint
 //
 #extern
 fun
-XATS2CC_gint_succ_sint
+XATS2CC_gint_suc_sint
 {i:int}
 ( x0
 : sint(i)): sint(i+1) = $extnam()
 #extern
 fun
-XATS2CC_gint_pred_sint
+XATS2CC_gint_pre_sint
 {i:int}
 ( x0
 : sint(i)): sint(i-1) = $extnam()
 #impltmp
-gint_succ_sint<> = XATS2CC_gint_succ_sint
+gint_suc_sint<> = XATS2CC_gint_suc_sint
 #impltmp
-gint_pred_sint<> = XATS2CC_gint_pred_sint
+gint_pre_sint<> = XATS2CC_gint_pre_sint
 //
 (* ****** ****** *)
 //
@@ -373,16 +373,16 @@ gflt_abs_dflt<> = XATS2CC_gflt_abs_dflt
 //
 #extern
 fun
-XATS2CC_gflt_succ_dflt
+XATS2CC_gflt_suc_dflt
   ( x0: dflt ): dflt = $extnam()
 #impltmp
-gflt_succ_dflt<> = XATS2CC_gflt_succ_dflt
+gflt_suc_dflt<> = XATS2CC_gflt_suc_dflt
 #extern
 fun
-XATS2CC_gflt_pred_dflt
+XATS2CC_gflt_pre_dflt
   ( x0: dflt ): dflt = $extnam()
 #impltmp
-gflt_pred_dflt<> = XATS2CC_gflt_pred_dflt
+gflt_pre_dflt<> = XATS2CC_gflt_pre_dflt
 //
 (* ****** ****** *)
 //
