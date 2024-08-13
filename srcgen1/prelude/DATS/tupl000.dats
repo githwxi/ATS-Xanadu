@@ -315,8 +315,7 @@ g_print for flat/boxed tuples
 #impltmp
 {a0:vt}
 g_print1
-<
-t1up
+<t1up
 ( a0 )>(tup) =
 let
 val () = t1up_print$beg()
@@ -331,8 +330,7 @@ end // end of [g_print1<t1up>(tup)]
 {a0:vt
 ,a1:vt}
 g_print1
-<
-t0up
+<t0up
 (a0,a1)>(tup) =
 let
 val () = t0up_print$beg()
@@ -346,8 +344,7 @@ end // end of [g_print1<t0up>(tup)]
 {a0:vt
 ,a1:vt}
 g_print1
-<
-t1up
+<t1up
 (a0,a1)>(tup) =
 let
 val () = t1up_print$beg()
@@ -365,8 +362,7 @@ end // end of [g_print1<t1up>(tup)]
 ,a1:vt
 ,a2:vt}
 g_print1
-<
-t0up3
+<t0up3
 (a0
 ,a1,a2)>(tup) =
 let
@@ -384,8 +380,7 @@ end // end of [g_print1<t0up3>(tup)]
 ,a1:vt
 ,a2:vt}
 g_print1
-<
-t1up3
+<t1up3
 (a0
 ,a1,a2)>(tup) =
 let
@@ -407,8 +402,7 @@ end // end of [g_print1<t1up3>(tup)]
 ,a2:vt
 ,a3:vt}
 g_print1
-<
-t0up4
+<t0up4
 (a0,a1
 ,a2,a3)>(tup) =
 let
@@ -429,8 +423,7 @@ end // end of [g_print1<t0up4>(tup)]
 ,a2:vt
 ,a3:vt}
 g_print1
-<
-t1up4
+<t1up4
 (a0,a1
 ,a2,a3)>(tup) =
 let
@@ -455,8 +448,7 @@ end // end of [g_print1<t1up4>(tup)]
 ,a3:vt
 ,a4:vt}
 g_print1
-<
-t0up5
+<t0up5
 (a0
 ,a1,a2
 ,a3,a4)>(tup) =
@@ -481,8 +473,7 @@ end // end of [g_print1<t0up5>(tup)]
 ,a3:vt
 ,a4:vt}
 g_print1
-<
-t1up5
+<t1up5
 (a0
 ,a1,a2
 ,a3,a4)>(tup) =
@@ -510,8 +501,7 @@ end // end of [g_print1<t1up5>(tup)]
 ,a4:vt
 ,a5:vt}
 g_print1
-<
-t0up6
+<t0up6
 (a0,a1
 ,a2,a3
 ,a4,a5)>(tup) =
@@ -539,8 +529,7 @@ end // end of [g_print1<t0up6>(tup)]
 ,a4:vt
 ,a5:vt}
 g_print1
-<
-t1up6
+<t1up6
 (a0,a1
 ,a2,a3
 ,a4,a5)>(tup) =
@@ -571,8 +560,7 @@ end // end of [g_print1<t1up6>(tup)]
 ,a5:vt
 ,a6:vt}
 g_print1
-<
-t0up7
+<t0up7
 (a0
 ,a1,a2
 ,a3,a4
@@ -604,8 +592,7 @@ end // end of [g_print1<t0up7>(tup)]
 ,a5:vt
 ,a6:vt}
 g_print1
-<
-t1up7
+<t1up7
 (a0
 ,a1,a2
 ,a3,a4
@@ -640,8 +627,7 @@ end // end of [g_print1<t1up7>(tup)]
 ,a6:vt
 ,a7:vt}
 g_print1
-<
-t0up8
+<t0up8
 (a0,a1
 ,a2,a3
 ,a4,a5
@@ -676,8 +662,7 @@ end // end of [g_print1<t0up8>(tup)]
 ,a6:vt
 ,a7:vt}
 g_print1
-<
-t1up8
+<t1up8
 (a0,a1
 ,a2,a3
 ,a4,a5
@@ -715,8 +700,7 @@ end // end of [g_print1<t1up8>(tup)]
 ,a7:vt
 ,a8:vt}
 g_print1
-<
-t0up9
+<t0up9
 (a0
 ,a1,a2
 ,a3,a4
@@ -755,8 +739,7 @@ end // end of [g_print1<t0up9>(tup)]
 ,a7:vt
 ,a8:vt}
 g_print1
-<
-t1up9
+<t1up9
 (a0
 ,a1,a2
 ,a3,a4

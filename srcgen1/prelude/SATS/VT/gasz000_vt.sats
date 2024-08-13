@@ -37,32 +37,14 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef ni = nint
+#include
+"./../../../../prelude/SATS/VT/gasz000_vt.sats"
 (* ****** ****** *)
+#include
+"./../../../../prelude/SATS/VT/gasz001_vt.sats"
 (* ****** ****** *)
-#typedef ni = nint
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
-gasz_length1(xs: !xs): nint
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:t0> // HX: t0(not(vt))
-gasz_get$at1
-(xs: !xs, i0: ni): (x0)
-fun
-<xs:vt>
-<x0:t0> // HX: t0(not(vt))
-gasz_set$at1
-(xs: !xs, i0: ni, x0: x0): void
-//
+#include
+"./../../../../prelude/SATS/VT/gasz002_vt.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
