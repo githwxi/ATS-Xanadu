@@ -9,13 +9,6 @@ For testing xatslib/JS!
 "prelude/DATS/gdbg000.dats"
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#include
-"xatslib\
-/JS/HATS/xatslib_JS_sats.hats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
 #include
 "srcgen1\
 /prelude/HATS/prelude_dats.hats"
@@ -26,7 +19,7 @@ For testing xatslib/JS!
 (* ****** ****** *)
 //
 #include
-"xatslib/JS/HATS/xatslib_JS_dats.hats"
+"xatslib/HATS/xatslib_JS_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -50,7 +43,7 @@ val kxs1 =
 GSEQ(map1).listize()
 val (  ) = print1s
 ("kxs1(", vwtp(kxs1), ") = ", kxs1, "\n")
-//
+////
 val arr1 =
 jsarray
 (

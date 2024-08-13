@@ -325,8 +325,8 @@ XATS2JS_jshsmap_size
 }
 //
 #impltmp
-{ k: t0 }
-{ x: t0 }
+{ k: t0
+, x: t0 }
 gseq_length
 <jsm0(k,x)><(k,x)>
   ( kxs ) =
@@ -419,8 +419,8 @@ end//let//end-of-[jshsmap_make0_llist]
 (* ****** ****** *)
 //
 #impltmp
-{ k: t0 }
-{ x: t0 }
+{ k: t0
+, x: t0 }
 gseq_forall
 <jsm0(k,x)><(k,x)>
   ( kxs ) =

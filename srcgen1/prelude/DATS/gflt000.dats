@@ -73,13 +73,13 @@ g_abs<sflt> = gflt_abs_sflt<>
 g_abs<dflt> = gflt_abs_dflt<>
 //
 #impltmp
-g_succ<sflt> = gflt_succ_sflt<>
+g_suc<sflt> = gflt_suc_sflt<>
 #impltmp
-g_pred<sflt> = gflt_pred_sflt<>
+g_pre<sflt> = gflt_pre_sflt<>
 #impltmp
-g_succ<dflt> = gflt_succ_dflt<>
+g_suc<dflt> = gflt_suc_dflt<>
 #impltmp
-g_pred<dflt> = gflt_pred_dflt<>
+g_pre<dflt> = gflt_pre_dflt<>
 //
 (* ****** ****** *)
 //
