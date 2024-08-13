@@ -30,7 +30,7 @@
 //
 (*
 Author: Hongwei Xi
-Sun 11 Aug 2024 03:44:27 PM EDT
+Mon 12 Aug 2024 09:58:00 PM EDT
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
@@ -50,7 +50,9 @@ a1sz_forall<x0>(A)) where
 {
 #impltmp
 forall$test1<x0>(x0) = test(x0)
-}
+}(*where*)//end(a1sz_forall_f1un)
+//
+(* ****** ****** *)
 //
 #impltmp
 < x0:vt >
@@ -65,7 +67,7 @@ a1sz_iforall<x0>(A)) where
 {
 #impltmp
 iforall$test1<x0>(i0,x0) = test(i0,x0)
-}
+}(*where*)//end(a1sz_iforall_f1un(...))
 //
 (* ****** ****** *)
 (* ****** ****** *)
