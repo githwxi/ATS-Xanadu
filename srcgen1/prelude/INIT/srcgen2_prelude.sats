@@ -98,8 +98,6 @@ For further program verification
 //
 #include
 "srcgen1/prelude/SATS/gasz000.sats"
-#include
-"srcgen1/prelude/SATS/gasz001.sats"
 //
 (* ****** ****** *)
 //
@@ -122,8 +120,6 @@ For further program verification
 //
 #include
 "srcgen1/prelude/SATS/gsyn000.sats"
-#include
-"srcgen1/prelude/SATS/gsyn001.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -197,6 +193,11 @@ For viewtypes (that is, linear types)
 "srcgen1/prelude/SATS/VT/gseq000_vt.sats"
 #include
 "srcgen1/prelude/SATS/VT/gseqn00_vt.sats"
+//
+(* ****** ****** *)
+//
+#include
+"srcgen1/prelude/SATS/VT/gasz000_vt.sats"
 //
 (* ****** ****** *)
 //
