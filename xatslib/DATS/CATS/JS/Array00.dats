@@ -47,6 +47,9 @@ the size of such an array.
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef ni = nint
+(* ****** ****** *)
+(* ****** ****** *)
 #abstbox
 jsarray_tbox(a:vt)
 #absvtbx
@@ -180,15 +183,15 @@ jsarray_make_nfun
 #extern
 fun<>
 jsarray_make0_1val
- {a:vt}( x: a ): jsa0(a)
+ {a:vt}( x1: (a) ): jsa0(a)
 #extern
 fun<>
 jsarray_make0_2val
- {a:vt}( a, a ): jsa0(a)
+ {a:vt}( x1:a, x2:a ): jsa0(a)
 #extern
 fun<>
 jsarray_make0_3val
- {a:vt}( a, a, a ): jsa0(a)
+ {a:vt}( x1:a, x2:a, x3:a ): jsa0(a)
 //
 #symload
 jsarray with jsarray_make0_1val of 1000
@@ -296,8 +299,18 @@ jsarray_mapref_f1un
 ( A
 : jsa0(a)
 , fopr: (~a) -> (a)): void
+#extern
+fun<>
+jsarray_imapref_f1un
+ {a:vt}
+( A
+: jsa0(a)
+, fopr: (ni, ~a) -> (a)): void
+//
 #symload
 mapref with jsarray_mapref_f1un of 1000
+#symload
+imapref with jsarray_imapref_f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -700,6 +713,25 @@ XATS2JS_jsarray_mapref_f1un
 ( A
 : jsa0(a)
 , fopr: (~a) -> (a)): void = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jsarray_imapref_f1un
+  (A, fopr) =
+(
+XATS2JS_jsarray_imapref_f1un
+  (A, fopr)) where
+{
+#extern
+fun
+XATS2JS_jsarray_imapref_f1un
+ {a:vt}
+( A
+: jsa0(a)
+, fopr: (ni, ~a) -> (a)): void = $extnam()
 }
 //
 (* ****** ****** *)

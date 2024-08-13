@@ -3,22 +3,13 @@
 ############################################################
 ############################################################
 XATS2JS1=\
-./../../../../../\
-srcgen1/xats2js/srcgenx/bin/xats2js
+./../../../../../srcgen1/xats2js/srcgenx/bin/xats2js
 ############################################################
-all1_dats:: ; \
-$(XATS2JS1) -d ./../DATS/Array00.dats
-all1_dats:: ; \
-$(XATS2JS1) -d ./../DATS/Hsmap00.dats
+all1_dats:: ; $(XATS2JS1) -d ./../Array00.dats
+all1_dats:: ; $(XATS2JS1) -d ./../Hsmap00.dats
 ############################################################
-all1_dats:: ; \
-$(XATS2JS1) -d ./../DATS/VT/Array00_vt.dats
-all1_dats:: ; \
-$(XATS2JS1) -d ./../DATS/VT/Arrayh0_vt.dats
-all1_dats:: ; \
-$(XATS2JS1) -d ./../DATS/VT/Hsmap00_vt.dats
-all1_dats:: ; \
-$(XATS2JS1) -d ./../DATS/VT/Hsmaph0_vt.dats
+all1_dats:: ; $(XATS2JS1) -d ./../VT/Array00_vt.dats
+all1_dats:: ; $(XATS2JS1) -d ./../VT/Hsmap00_vt.dats
 ############################################################
 ### end of [ATS3_XANADU/xatslib/JS/TEST/Makefile_xatslib]
 ############################################################
