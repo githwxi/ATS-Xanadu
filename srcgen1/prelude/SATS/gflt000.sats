@@ -74,14 +74,14 @@ gflt_abs_dflt( f0: dflt ): dflt
 (* ****** ****** *)
 //
 fun<>
-gflt_succ_sflt( f0: sflt ): sflt
+gflt_suc_sflt( f0: sflt ): sflt
 fun<>
-gflt_succ_dflt( f0: dflt ): dflt
+gflt_suc_dflt( f0: dflt ): dflt
 //
 fun<>
-gflt_pred_sflt( f0: sflt ): sflt
+gflt_pre_sflt( f0: sflt ): sflt
 fun<>
-gflt_pred_dflt( f0: dflt ): dflt
+gflt_pre_dflt( f0: dflt ): dflt
 //
 (* ****** ****** *)
 //

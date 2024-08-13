@@ -38,6 +38,19 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #impltmp
+{ a: vt }
+g_forall<a1sz(a)> =
+gasz_forall<a1sz(a)><a>
+//
+#impltmp
+{ a: vt }
+g_foritm<a1sz(a)> =
+gseq_foritm1<a1sz(a)><a>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 < x0:vt >
 a1sz_forall =
 gasz_forall<a1sz(x0)><x0>
