@@ -64,7 +64,7 @@ val p0 = $addr(res)
 //
 val n0 =
 a1ref_length(A0)
-val n1 = pred(n0)
+val n1 = pre(n0)
 //
 #impltmp
 x1forint$work<n>(i0) =

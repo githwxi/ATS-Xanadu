@@ -252,39 +252,39 @@ gint_abs_sint<> = XATS2JS_gint_abs_sint
 //
 #extern
 fun
-XATS2JS_gint_succ_sint
+XATS2JS_gint_suc_sint
 {i:int}
 ( x0
 : sint(i)): sint(i+1) = $extnam()
 #extern
 fun
-XATS2JS_gint_succ_uint
+XATS2JS_gint_suc_uint
 {i:int}
 ( x0
 : uint(i)): uint(i+1) = $extnam()
 #impltmp
-gint_succ_sint<> = XATS2JS_gint_succ_sint
+gint_suc_sint<> = XATS2JS_gint_suc_sint
 #impltmp
-gint_succ_uint<> = XATS2JS_gint_succ_uint
+gint_suc_uint<> = XATS2JS_gint_suc_uint
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2JS_gint_pred_sint
+XATS2JS_gint_pre_sint
 {i:int}
 ( x0
 : sint(i)): sint(i-1) = $extnam()
 #extern
 fun
-XATS2JS_gint_pred_uint
+XATS2JS_gint_pre_uint
 {i:int|i>0}
 ( x0
 : uint(i)): uint(i-1) = $extnam()
 #impltmp
-gint_pred_sint<> = XATS2JS_gint_pred_sint
+gint_pre_sint<> = XATS2JS_gint_pre_sint
 #impltmp
-gint_pred_uint<> = XATS2JS_gint_pred_uint
+gint_pre_uint<> = XATS2JS_gint_pre_uint
 //
 (* ****** ****** *)
 //
@@ -587,16 +587,16 @@ gflt_abs_dflt<> = XATS2JS_gflt_abs_dflt
 //
 #extern
 fun
-XATS2JS_gflt_succ_dflt
+XATS2JS_gflt_suc_dflt
   ( x0: dflt ): dflt = $extnam()
 #impltmp
-gflt_succ_dflt<> = XATS2JS_gflt_succ_dflt
+gflt_suc_dflt<> = XATS2JS_gflt_suc_dflt
 #extern
 fun
-XATS2JS_gflt_pred_dflt
+XATS2JS_gflt_pre_dflt
   ( x0: dflt ): dflt = $extnam()
 #impltmp
-gflt_pred_dflt<> = XATS2JS_gflt_pred_dflt
+gflt_pre_dflt<> = XATS2JS_gflt_pre_dflt
 //
 (* ****** ****** *)
 //
