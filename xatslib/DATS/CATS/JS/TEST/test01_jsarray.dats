@@ -9,13 +9,6 @@ For testing xatslib/JS!
 "prelude/DATS/gdbg000.dats"
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#include
-"xatslib\
-/JS/HATS/xatslib_JS_sats.hats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
 #include
 "srcgen1\
 /prelude/HATS/prelude_dats.hats"
@@ -26,7 +19,7 @@ For testing xatslib/JS!
 (* ****** ****** *)
 //
 #include
-"xatslib/JS/HATS/xatslib_JS_dats.hats"
+"xatslib/HATS/xatslib_JS_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
