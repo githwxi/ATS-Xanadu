@@ -36,6 +36,9 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#typedef ni = nint
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 <a:vt>
@@ -43,10 +46,23 @@ a1sz_forall(A: a1sz(a)): bool
 fun
 <a:vt>
 a1sz_forall_f1un
-(A: a1sz(a), test: (!a) -> bool): bool
+(A:a1sz(a), test:(!a) -> bool): bool
 //
 #symload forall with a1sz_forall of 1000
 #symload forall with a1sz_forall_f1un of 1000
+//
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a1sz_iforall(A: a1sz(a)): bool
+fun
+<a:vt>
+a1sz_iforall_f1un
+(A:a1sz(a), test:(ni, !a) -> bool): bool
+//
+#symload iforall with a1sz_iforall of 1000
+#symload iforall with a1sz_iforall_f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
