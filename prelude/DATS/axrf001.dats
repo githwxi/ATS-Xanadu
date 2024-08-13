@@ -116,7 +116,7 @@ owed_vt_return0(pf, x0) in btf end
 (* ****** ****** *)
 //
 #impltmp
-< x0:t0 >
+< x0:vt >
 a1rf_forall_size
   (A, n) =
 let
@@ -128,7 +128,7 @@ in//let
 end//let//end-of-[a1rf_forall_size]
 //
 #impltmp
-< x0:t0 >
+< x0:vt >
 a1rf_forall_size_f1un
   (A, n, test) =
 (

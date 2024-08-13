@@ -42,7 +42,7 @@ Authoremail: gmhwxiATgmailDOTcom
 #impltmp
 { x0:t0 }
 gseq_forall
-<t0up2(x0,x0)><x0>
+<t0up(x0,x0)><x0>
   ( tup ) =
 let
 val b0 =
@@ -55,7 +55,7 @@ end//let//end-of-[gseq_forall(...)]
 #impltmp
 { x0:t0 }
 gseq_forall
-<t1up2(x0,x0)><x0>
+<t1up(x0,x0)><x0>
   ( tup ) =
 let
 val b0 =
@@ -70,7 +70,7 @@ end//let//end-of-[gseq_forall(...)]
 #impltmp
 { x0:t0 }
 gseq_rforall
-<t0up2(x0,x0)><x0>
+<t0up(x0,x0)><x0>
   ( tup ) =
 let
 val b0 =
@@ -83,7 +83,7 @@ end//let//end-of-[gseq_rforall(...)]
 #impltmp
 { x0:t0 }
 gseq_rforall
-<t1up2(x0,x0)><x0>
+<t1up(x0,x0)><x0>
   ( tup ) =
 let
 val b0 =
@@ -98,7 +98,7 @@ end//let//end-of-[gseq_rforall(...)]
 #impltmp
 { x0:t0 }
 gseq_iforall
-<t0up2(x0,x0)><x0>
+<t0up(x0,x0)><x0>
   ( tup ) =
 let
 val b0 =
@@ -111,7 +111,7 @@ end//let//end-of-[gseq_iforall(...)]
 #impltmp
 { x0:t0 }
 gseq_iforall
-<t1up2(x0,x0)><x0>
+<t1up(x0,x0)><x0>
   ( tup ) =
 let
 val b0 =
@@ -126,7 +126,7 @@ end//let//end-of-[gseq_iforall(...)]
 #impltmp
 { x0:t0 }
 gseq_irforall
-<t0up2(x0,x0)><x0>
+<t0up(x0,x0)><x0>
   ( tup ) =
 let
 val b0 =
@@ -139,7 +139,7 @@ end//let//end-of-[gseq_iforall(...)]
 #impltmp
 { x0:t0 }
 gseq_irforall
-<t1up2(x0,x0)><x0>
+<t1up(x0,x0)><x0>
   ( tup ) =
 let
 val b0 =

@@ -102,7 +102,11 @@ $(XATSOPT) -s $(PRELUDE)/SATS/tupl000.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/axrf000.sats
 all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/axrf001.sats
+all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/axsz000.sats
+all0_sats:: ; \
+$(XATSOPT) -s $(PRELUDE)/SATS/axsz001.sats
 all0_sats:: ; \
 $(XATSOPT) -s $(PRELUDE)/SATS/list000.sats
 all0_sats:: ; \

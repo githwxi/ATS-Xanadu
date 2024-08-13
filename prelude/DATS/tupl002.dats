@@ -43,7 +43,7 @@ Authoremail: gmhwxiATgmailDOTcom
 { a0:t0
 , a1:t0 }
 g_cmp
-<t0up2(a0,a1)>
+<t0up(a0,a1)>
   (x0, x1) =
 let
 //
@@ -54,7 +54,7 @@ in//let
 if
 (sgn = 0) then
 g_cmp<a1>(x0.1, x1.1) else sgn
-end//let//end-of-[g_cmp<t0up2(...)>]
+end//let//end-of-[g_cmp<t0up(...)>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
