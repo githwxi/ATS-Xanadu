@@ -41,14 +41,14 @@ fun
 <a:vt>
 a1rf_forall_size
 {n:nat}
-(A: a1rf(a,n), n: sint(n)): bool
+(A:a1rf(a,n), n:sint(n)): bool
 fun
 <a:vt>
 a1rf_forall_size_f1un
 {n:nat}
 ( A
 : a1rf(a,n)
-, n: sint(n), test: (!a) -> bool): bool
+, n:sint(n), test:(!a) -> bool): bool
 //
 #symload forall with a1rf_forall_size of 1000
 #symload forall with a1rf_forall_size_f1un of 1000

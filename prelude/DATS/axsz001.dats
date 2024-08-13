@@ -37,6 +37,39 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< x0:vt >
+a1sz_forall =
+gasz_forall<a1sz(x0)><x0>
+#impltmp
+< x0:vt >
+a1sz_forall_f1un
+  (A, test) =
+(
+a1sz_forall<x0>(A)) where
+{
+#impltmp
+forall$test1<x0>(x0) = test(x0)
+}
+//
+#impltmp
+< x0:vt >
+a1sz_iforall =
+gasz_iforall<a1sz(x0)><x0>
+#impltmp
+< x0:vt >
+a1sz_iforall_f1un
+  (A, test) =
+(
+a1sz_iforall<x0>(A)) where
+{
+#impltmp
+iforall$test1<x0>(i0,x0) = test(i0,x0)
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
