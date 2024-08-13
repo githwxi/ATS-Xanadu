@@ -45,7 +45,8 @@ a0rf_vt_vx(a:vt) = $extbox("jsarray")
 //
 #impltmp
 < a: vt >
-a0rf_lget(A) =
+a0rf_lget
+  ( A ) =
 (
 XATS2JS_a0rf_lget
   ( A )) where
@@ -88,6 +89,43 @@ XATS2JS_a0rf_make_1val
 fun
 XATS2JS_a0rf_make_1val
 {a:vt}( x0: a ): a0rf(a) = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+#impltmp
+< a: vt >
+a1rf_lget$at
+  (A, i) =
+(
+XATS2JS_a1rf_lget$at
+  (A, i)) where
+{
+#extern
+fun
+XATS2JS_a1rf_lget$at
+{a:vt}
+( A
+: a1rf(a)
+, i: nint): (owed(a) | a) = $extnam()
+}
+//
+#impltmp
+< a: vt >
+a1rf_lset$at
+  (f | A, i, x) =
+(
+XATS2JS_a1rf_lset$at
+  (f | A, i, x)) where
+{
+#extern
+fun
+XATS2JS_a1rf_lset$at
+{a:vt}
+(f:owed(a)
+|A:a1rf(a),i:nint,x:a): void = $extnam()
 }
 //
 (* ****** ****** *)

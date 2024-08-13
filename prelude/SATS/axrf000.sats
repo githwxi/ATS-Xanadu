@@ -146,12 +146,12 @@ a0rf_lset
 //
 fun
 <a:vt>
-a1rf_make_f1un
+a1rf_make_nfun
  {n:i0|n>0}
 ( n: sint(n)
 , f: nint(n) -> a): a1rf(a, n)
 //
-#symload a1rf with a1rf_make_f1un of 1000
+#symload a1rf with a1rf_make_nfun of 1000
 //
 (* ****** ****** *)
 //
