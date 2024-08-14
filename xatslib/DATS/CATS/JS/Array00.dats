@@ -336,26 +336,6 @@ sortref with jsarray_sortref_f2un of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2024-08-09:
-Fri 09 Aug 2024 08:24:11 AM EDT
-*)
-//
-#absvwtp jsarray_iter(a:vt)
-//
-(*
-HX: This is like jsarray_istrmize
-*)
-#extern
-fun
-jsarray_iter_next
- {a:vt}
-(iter
-:jsarray_iter(a)): optn_vt@(nint,a)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #impltmp
 <(*tmp*)>
 jsarray_make_ncpy
@@ -934,6 +914,71 @@ GASZ_make_jsarray
 {a:vt}
 (A:jsa0(a)): GASZ(jsa0(a), a)
 #symload GASZ with GASZ_make_jsarray of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+(*
+HX-2024-08-09:
+Fri 09 Aug 2024 08:24:11 AM EDT
+*)
+//
+#absvwtp
+jsarray_iter(a:vt)
+//
+(*
+HX-2024-08-14:
+This one is like
+lazy [jsarray_iforitm]
+*)
+#extern
+fun<>
+jsarray_iter_make
+ {a:vt}
+( A
+: jsarray(a)): jsarray_iter(a)
+//
+#extern
+fun<>
+jsarray_iter_next$work
+ {a:vt}
+( iter:
+! jsarray_iter(a)
+, work: (nint, !a) -> void): bool
+//
+#impltmp
+<(*tmp*)>
+jsarray_iter_make
+  ( A ) =
+(
+XATS2JS_jsarray_iter_make
+  ( A )) where
+{
+#extern
+fun
+XATS2JS_jsarray_iter_make
+ {a:vt}
+( A
+: jsarray(a)): jsarray_iter(a) = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+jsarray_iter_next$work
+  (iter, work) =
+(
+XATS2JS_jsarray_iter_next$work
+  (iter, work)) where
+{
+#extern
+fun
+XATS2JS_jsarray_iter_next$work
+ {a:vt}
+( iter:
+! jsarray_iter(a)
+, work: (nint, !a) -> void): bool = $extnam()
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -592,6 +592,27 @@ GSEQ_make_jshsmap
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+(*
+HX-2024-08-09:
+Fri 09 Aug 2024 08:24:11 AM EDT
+*)
+//
+#absvwtp jsarray_iter(a:vt)
+//
+(*
+HX: This is like jsarray_istrmize
+*)
+#extern
+fun
+jsarray_iter_next
+ {a:vt}
+(iter
+:jsarray_iter(a)): optn_vt@(nint,a)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
