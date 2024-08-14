@@ -87,6 +87,30 @@ g_ptype
 (* ****** ****** *)
 //
 #impltmp
+{ a0:t0
+, a1:t0 }
+g_print
+<t0up(a0,a1)>
+  ( tup ) =
+let
+//
+val () =
+  strn_print("@(")
+val () =
+  g_print<a0>(tup.0)
+//
+val () = pstrn(",")
+val () =
+  g_print<a1>(tup.1)
+//
+val () = strn_print(")")
+//
+end // end of [g_print<t0up2>(tup)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 < a0:t0 >
 < a1:t0 >
 z2tup_make

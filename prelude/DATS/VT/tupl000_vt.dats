@@ -39,6 +39,31 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+//
+#impltmp
+{ a0:vt
+, a1:vt }
+g_print1
+<t0up_vt(a0,a1)>
+  ( tup ) =
+let
+//
+val () =
+  strn_print("@(")
+val () =
+  g_print1<a0>(tup.0)
+//
+val () = pstrn(",")
+val () =
+  g_print1<a1>(tup.1)
+//
+val () = strn_print(")")
+//
+end // end of [g_print1<t0up2>(tup)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

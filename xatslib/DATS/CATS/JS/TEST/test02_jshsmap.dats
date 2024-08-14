@@ -43,15 +43,21 @@ val kxs1 =
 GSEQ(map1).listize()
 val (  ) = print1s
 ("kxs1(", vwtp(kxs1), ") = ", kxs1, "\n")
-////
-val arr1 =
-jsarray
-(
-lam(work) => GSEQ(map1).foritm(work))
+//
+val arr1 = jsarray
+(lam(work) => GSEQ(map1).foritm(work))
 val (  ) = prints
 ("arr1(", type(arr1), ") = ", arr1, "\n")
-val (  ) = sortref
-(arr1, lam(kx1, kx2) => -(kx1.0\cmp(kx2.0)))
+val (  ) =
+let
+#typedef a = (strn, sint)
+in//let
+sortref
+(arr1, lam(kx1:a, kx2:a) =>
+let val (k1, _) = kx1
+    and (k2, _) = kx2 in -(k1\cmp(k2)) end)
+end
+//
 val (  ) = prints
 ("arr1(", type(arr1), ") = ", arr1, "\n")
 //
