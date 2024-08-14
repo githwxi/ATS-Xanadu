@@ -65,7 +65,6 @@ Sun 04 Aug 2024 05:41:59 PM EDT
 (*
 #vwtpdef
 t0up1(a0:vt) = @(a0)
-*)
 #typedef
 t1up1_t0
 (a0: t0) = $tup_t0(a0)
@@ -75,6 +74,7 @@ t1up1_vt
 //
 #sexpdef t1up = t1up1_vt
 #sexpdef t1up = t1up1_t0
+*)
 //
 (* ****** ****** *)
 //
@@ -84,9 +84,9 @@ t0up2_t0
 #vwtpdef
 t0up2_vt
 (a0:vt,a1:vt) = @(a0,a1)
-
-#sexpdef t0up = t0up2_vt
+//
 #sexpdef t0up = t0up2_t0
+#sexpdef t0up_vt = t0up2_vt
 //
 #vwtpdef
 t1up2_vt
@@ -97,8 +97,8 @@ t1up2_t0
 (a0:t0
 ,a1:t0) = $tup_t0(a0,a1)
 //
-#sexpdef t1up = t1up2_vt
 #sexpdef t1up = t1up2_t0
+#sexpdef t1up_vt = t1up2_vt
 //
 (* ****** ****** *)
 (* ****** ****** *)

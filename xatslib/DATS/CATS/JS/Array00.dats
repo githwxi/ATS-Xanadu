@@ -319,7 +319,7 @@ imapref with jsarray_imapref_f1un of 1000
 fun
 <a:vt>
 jsarray_sortref
-(A: jsa0(a)): void
+( A: jsa0(a) ): void
 #extern
 fun<>
 jsarray_sortref_f2un

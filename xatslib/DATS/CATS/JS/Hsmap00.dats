@@ -84,7 +84,7 @@ g_ptype
 (
 pstrn"jshsmap(";
 g_ptype<k>();pstrn",";
-g_ptype<x>();pstrn")")
+g_ptype<x>();pstrn")")//impl
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -92,7 +92,8 @@ g_ptype<x>();pstrn")")
 #impltmp
 { k: t0
 , x: vt }
-g_print<jsm0(k,x)>
+g_print
+<jsm0(k,x)>
   ( map ) =
 let
 //
@@ -374,7 +375,10 @@ jshsmap_make_nil<>()
 //
 in//let
 (
-list_foritm(kxs); map
+map where
+{
+val () =
+list_foritm<(k,x)>(kxs) }
 ) where
 {
 #impltmp
@@ -403,7 +407,7 @@ in//let
 map where
 {
 val () =
-list_vt_foritm0(kxs) }
+list_vt_foritm0<(k,x)>(kxs) }
 ) where
 {
 #impltmp

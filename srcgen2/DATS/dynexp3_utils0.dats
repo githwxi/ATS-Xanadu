@@ -903,14 +903,14 @@ end(*let*)//end of [g2_trcd_tjp1(...)]
 //
 (* ****** ****** *)
 //
-(*
+// (*
 val () =
 prerrln
 ("f0_targequ:f2_tip1_tjp1: tip1 = ", tip1)
 val () =
 prerrln
 ("f0_targequ:f2_tip1_tjp1: tjp1 = ", tjp1)
-*)
+// *)
 //
 (* ****** ****** *)
 //
@@ -1544,14 +1544,14 @@ end(*let*)//end of [g2_trcd_tjp1(...)]
 //
 (* ****** ****** *)
 //
-(*
+// (*
 val () =
 prerrln
 ("f0_targmat:f2_tip1_tjp1: tip1 = ", tip1)
 val () =
 prerrln
 ("f0_targmat:f2_tip1_tjp1: tjp1 = ", tjp1)
-*)
+// *)
 //
 (* ****** ****** *)
 //

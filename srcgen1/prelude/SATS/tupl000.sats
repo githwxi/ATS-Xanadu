@@ -62,8 +62,8 @@ t1up1_t0
 t1up1_vt
 (a0: vt) = $tup_vt(a0)
 //
-#sexpdef t1up = t1up1_vt
 #sexpdef t1up = t1up1_t0
+#sexpdef t1up_vt = t1up1_vt
 //
 (* ****** ****** *)
 //
@@ -73,8 +73,9 @@ t0up2_t0
 #vwtpdef
 t0up2_vt
 (a0:vt,a1:vt) = @(a0,a1)
-#sexpdef t0up = t0up2_vt
+//
 #sexpdef t0up = t0up2_t0
+#sexpdef t0up_vt = t0up2_vt
 //
 #typedef
 t1up2_t0
@@ -84,8 +85,9 @@ t1up2_t0
 t1up2_vt
 (a0:vt
 ,a1:vt) = $tup_vt(a0,a1)
-#sexpdef t1up = t1up2_vt
+//
 #sexpdef t1up = t1up2_t0
+#sexpdef t1up_vt = t1up2_vt
 //
 (* ****** ****** *)
 (* ****** ****** *)
