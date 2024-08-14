@@ -59,8 +59,12 @@ prints("An(", type(An), ") = ", An, "\n")
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val iter = jsarray_iter(An)
-val (  ) = jsarray_iter_next$work(iter, lam(i, x) => print1s(x, 
+val iter =
+jsarray_iter_make(An)
+val-true =
+jsarray_iter_next$work
+(iter
+,lam(i, x) => print1s("(i,x) = (", i, ",", x, ")\n"))
 //
 (* ****** ****** *)
 (* ****** ****** *)

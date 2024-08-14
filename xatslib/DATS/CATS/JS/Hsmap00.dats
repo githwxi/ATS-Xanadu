@@ -599,6 +599,8 @@ Fri 09 Aug 2024 08:24:11 AM EDT
 #absvwtp
 jshsmap_iter(k:t0,x:vt)
 //
+(* ****** ****** *)
+//
 #impltmp
 { k: t0
 , x: vt }
@@ -618,7 +620,8 @@ g_ptype<x>(); pstrn")")
 fun<>
 jshsmap_iter_make
 {k:t0}{x:vt}
-(map:jshsmap(k,x)): jshsmap_iter(k,x)
+(map
+:jshsmap(k,x)): jshsmap_iter(k,x)
 //
 #extern
 fun<>
@@ -626,7 +629,8 @@ jshsmap_iter_next$work
 {k:t0}{x:vt}
 ( iter:
 ! jshsmap_iter(k,x)
-, work: (k, !x(*itm*)) -> void): bool
+, work
+: (k(*key*), !x(*itm*)) -> void): bool
 //
 (* ****** ****** *)
 //
@@ -643,8 +647,11 @@ fun
 XATS2JS_jshsmap_iter_make
 {k:t0}{x:vt}
 ( map
-: jshsmap(k,x)): jshsmap_iter(k,x) = $extnam()
+: jshsmap(k,x))
+: jshsmap_iter(k,x) = $extnam()
 }
+#symload
+jshsmap_iter with jshsmap_iter_make of 1000
 //
 (* ****** ****** *)
 //
@@ -662,8 +669,63 @@ XATS2JS_jshsmap_iter_next$work
 {k:t0}{x:vt}
 ( iter:
 ! jshsmap_iter(k, x)
-, work: (k, !x(*itm*)) -> void): bool = $extnam()
+, work
+: (k(*key*), !x(*itm*))->void): bool = $extnam()
 }
+//
+#symload next$work with jshsmap_iter_next$work of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jshsmap_strmize
+{k:t0}{x:vt}(map) =
+(
+auxmain
+(jshsmap_iter(map)))
+where
+{
+//
+#vwtpdef
+iter = jshsmap_iter(k,x)
+//
+var vk: k
+var vx: x
+val pk = $addr(vk)
+val px = $addr(vx)
+//
+fun
+auxmain
+( iter: iter)
+: strm_vt@(k,x) = $llazy
+let
+//
+fun
+work(k: k, x: !x): void =
+(
+$UN.p2tr_set<k>(pk, k);
+$UN.p2tr_set<x>(px, g_copy<x>(x)))
+//
+val done =
+jshsmap_iter_next$work<>(iter, work)
+//
+in//let
+//
+if done
+then strmcon_vt_nil()
+else let
+val k =
+$UN.p2tr_get<k>(pk)
+val x =
+$UN.p2tr_get<x>(px) in//let
+strmcon_vt_cons((k, x), auxmain(iter))
+end//let//else//end-of-[if(done)]
+//
+end(*let*)//end-of-[ auxmain( iter ) ]
+//
+}(*where*)//end-of-[jshsmap_strmize<>(map)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

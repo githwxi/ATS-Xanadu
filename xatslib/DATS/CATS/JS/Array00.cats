@@ -202,10 +202,10 @@ XATS2JS_jsarray_iter_next$work
   (iter, work)
 {
   var next = iter.next()
-  if (!next.done) return false
+  if (next.done) return false // HX: it is done!
   var value = next.value
   // HX: value != undefined
-  work(value[0], value[1]); return true
+  work(value[0], value[1]); return true // HX: more to do!
 }
 //
 /////////////////////////////////////////////////////////////////////////
