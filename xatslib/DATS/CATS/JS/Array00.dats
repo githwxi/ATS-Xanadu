@@ -866,7 +866,7 @@ jsarray_prod = gseq_prod0<jsa0(a)><a>
 //
 HX-2024-08-09:
 This seems to be a convenient
-style compared to the above one
+style compared to the one below
 Fri 09 Aug 2024 11:57:45 AM EDT
 //
 #extern
@@ -878,33 +878,39 @@ gasz_listize<jsa0(a)><a>
 //
 *)
 //
-(* ****** ****** *)
+#extern
+fun
+<a:vt>
+jsarray_listize
+( A0:jsa0( a )): list_vt(a)
+#impltmp
+< a: vt >
+jsarray_listize =
+gasz_listize<jsa0(a)><a>(*void*)
+#symload listize with jsarray_listize of 1000
+//
 (* ****** ****** *)
 //
 #extern
-fun<>
+fun
+<a:vt>
 jsarray_strmize
- {a:vt}
-(A: jsa0(a)): strm_vt(a)
+( A0:jsa0( a )): strm_vt(a)
 #impltmp
-<(*tmp*)>
-jsarray_strmize
-  {a:vt}(xs) =
-(
-  gasz_strmize<jsa0(a)><a>(xs))
+< a: vt >
+jsarray_strmize =
+gasz_strmize<jsa0(a)><a>(*void*)
 #symload strmize with jsarray_strmize of 1000
 //
 #extern
-fun<>
+fun
+<a:vt>
 jsarray_strqize
- {a:vt}
-(A: jsa0(a)): strq_vt(a)
+( A0:jsa0( a )): strq_vt(a)
 #impltmp
-<(*tmp*)>
-jsarray_strqize
-  {a:vt}(xs) =
-(
-  gasz_strqize<jsa0(a)><a>(xs))
+< a: vt >
+jsarray_strqize =
+gasz_strqize<jsa0(a)><a>(*void*)
 #symload strqize with jsarray_strqize of 1000
 //
 (* ****** ****** *)
