@@ -178,20 +178,18 @@ jshsmap_set$at
 (* ****** ****** *)
 //
 #extern
-fun
-<k:t0>
-<x:vt>
+fun<>
 jshsmap_listize
+{k:t0}{x:vt}
 (map: jsm0(k,x)): list_vt@(k,x)
 #symload listize with jshsmap_listize of 1000
 //
 (* ****** ****** *)
 //
 #extern
-fun
-<k:t0>
-<x:vt>
+fun<>
 jshsmap_strmize
+{k:t0}{x:vt}
 (map: jsm0(k,x)): strm_vt@(k,x)
 //
 #symload strmize with jshsmap_strmize of 1000
@@ -199,10 +197,9 @@ jshsmap_strmize
 (* ****** ****** *)
 //
 #extern
-fun
-<k:t0>
-<x:vt>
+fun<>
 jshsmap_rlistize
+{k:t0}{x:vt}
 (map: jsm0(k,x)): list_vt@(k,x)
 #symload rlistize with jshsmap_rlistize of 1000
 //
@@ -235,9 +232,8 @@ jshsmap_search$tst
 //
 #extern
 fun
-<k:t0>
-<x:vt>
 jshsmap_search$cpy
+{k:t0}{x:vt}
 (map: jsm0(k,x), key: k): optn_vt(x)
 //
 (* ****** ****** *)
@@ -486,15 +482,17 @@ XATS2JS_jshsmap_forall_f2un
 (* ****** ****** *)
 //
 #impltmp
-< k: t0 >
-< x: vt >
-jshsmap_listize =
-gseq_listize1<jsm0(k,x)><(k,x)>
+<(*tmp*)>
+jshsmap_listize
+{k:t0}{x:vt}(xs) =
+(
+  gseq_listize1<jsm0(k,x)><(k,x)>(xs))
 #impltmp
-< k: t0 >
-< x: vt >
-jshsmap_rlistize =
-gseq_rlistize1<jsm0(k,x)><(k,x)>
+<(*tmp*)>
+jshsmap_rlistize
+{k:t0}{x:vt}(xs) =
+(
+  gseq_rlistize1<jsm0(k,x)><(k,x)>(xs))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -598,17 +596,74 @@ HX-2024-08-09:
 Fri 09 Aug 2024 08:24:11 AM EDT
 *)
 //
-#absvwtp jsarray_iter(a:vt)
+#absvwtp
+jshsmap_iter(k:t0,x:vt)
 //
-(*
-HX: This is like jsarray_istrmize
-*)
+#impltmp
+{ k: t0
+, x: vt }
+g_ptype
+<
+jshsmap_iter(k,x)>
+(    (*void*)    ) =
+(
+pstrn
+"jshsmap_iter(";
+g_ptype<k>(); pstrn",";
+g_ptype<x>(); pstrn")")
+//
+(* ****** ****** *)
+//
+#extern
+fun<>
+jshsmap_iter_make
+{k:t0}{x:vt}
+(map:jshsmap(k,x)): jshsmap_iter(k,x)
+//
+#extern
+fun<>
+jshsmap_iter_next$work
+{k:t0}{x:vt}
+( iter:
+! jshsmap_iter(k,x)
+, work: (k, !x(*itm*)) -> void): bool
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jshsmap_iter_make
+  ( map ) =
+(
+XATS2JS_jshsmap_iter_make
+  ( map )) where
+{
 #extern
 fun
-jsarray_iter_next
- {a:vt}
-(iter
-:jsarray_iter(a)): optn_vt@(nint,a)
+XATS2JS_jshsmap_iter_make
+{k:t0}{x:vt}
+( map
+: jshsmap(k,x)): jshsmap_iter(k,x) = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jshsmap_iter_next$work
+  (iter, work) =
+(
+XATS2JS_jshsmap_iter_next$work
+  (iter, work)) where
+{
+#extern
+fun
+XATS2JS_jshsmap_iter_next$work
+{k:t0}{x:vt}
+( iter:
+! jshsmap_iter(k, x)
+, work: (k, !x(*itm*)) -> void): bool = $extnam()
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)

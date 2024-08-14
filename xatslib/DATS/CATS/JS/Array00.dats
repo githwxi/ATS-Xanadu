@@ -859,38 +859,44 @@ gasz_listize<jsa0(a)><a>
 *)
 //
 #extern
-fun
-<a:vt>
+fun<>
 jsarray_listize
+{ a:vt }
 ( A0:jsa0( a )): list_vt(a)
 #impltmp
-< a: vt >
-jsarray_listize =
-gasz_listize<jsa0(a)><a>(*void*)
+<(*tmp*)>
+jsarray_listize
+ {a:vt}( xs ) =
+(
+  gasz_listize<jsa0(a)><a>(xs))
 #symload listize with jsarray_listize of 1000
 //
 (* ****** ****** *)
 //
 #extern
-fun
-<a:vt>
+fun<>
 jsarray_strmize
+{ a:vt }
 ( A0:jsa0( a )): strm_vt(a)
 #impltmp
-< a: vt >
-jsarray_strmize =
-gasz_strmize<jsa0(a)><a>(*void*)
+<(*tmp*)>
+jsarray_strmize
+ {a:vt}( xs ) =
+(
+  gasz_strmize<jsa0(a)><a>(xs))
 #symload strmize with jsarray_strmize of 1000
 //
 #extern
-fun
-<a:vt>
+fun<>
 jsarray_strqize
+{ a:vt }
 ( A0:jsa0( a )): strq_vt(a)
 #impltmp
-< a: vt >
-jsarray_strqize =
-gasz_strqize<jsa0(a)><a>(*void*)
+<(*tmp*)>
+jsarray_strqize
+ {a:vt}( xs ) =
+(
+  gasz_strqize<jsa0(a)><a>(xs))
 #symload strqize with jsarray_strqize of 1000
 //
 (* ****** ****** *)
@@ -927,11 +933,25 @@ Fri 09 Aug 2024 08:24:11 AM EDT
 #absvwtp
 jsarray_iter(a:vt)
 //
+#impltmp
+{ a: vt }
+g_ptype
+<
+jsarray_iter(a)>
+(   (*void*)   ) =
+(
+pstrn
+"jsarray_iter(";
+g_ptype<a>();pstrn")")
+//
+(* ****** ****** *)
+//
 (*
 HX-2024-08-14:
 This one is like
 lazy [jsarray_iforitm]
 *)
+//
 #extern
 fun<>
 jsarray_iter_make

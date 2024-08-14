@@ -99,6 +99,26 @@ XATS2JS_jshsmap_forall_f2un
 }
 //
 /////////////////////////////////////////////////////////////////////////
+//
+function
+XATS2JS_jshsmap_iter_make
+  ( A )
+{
+  return A.entries() // HX: Hsmap iterator
+}
+//
+function
+XATS2JS_jshsmap_iter_next$work
+  (iter, work)
+{
+  var next = iter.next()
+  if (!next.done) return false // HX: done!
+  var value = next.value
+  // HX: value != undefined
+  work(value[0], value[1]); return true // HX: more to do!
+}
+//
+/////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
 //
 // end of [ATS3/XANADU_xatslib_DATS_CATS_JS_Hsmap00.cats]
