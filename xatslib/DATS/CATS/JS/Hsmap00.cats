@@ -112,7 +112,7 @@ XATS2JS_jshsmap_iter_next$work
   (iter, work)
 {
   var next = iter.next()
-  if (!next.done) return false // HX: done!
+  if (next.done) return false // HX: done!
   var value = next.value
   // HX: value != undefined
   work(value[0], value[1]); return true // HX: more to do!

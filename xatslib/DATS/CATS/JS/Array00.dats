@@ -967,6 +967,8 @@ jsarray_iter_next$work
 ! jsarray_iter(a)
 , work: (nint, !a) -> void): bool
 //
+(* ****** ****** *)
+//
 #impltmp
 <(*tmp*)>
 jsarray_iter_make
@@ -982,6 +984,8 @@ XATS2JS_jsarray_iter_make
 ( A
 : jsarray(a)): jsarray_iter(a) = $extnam()
 }
+#symload
+jsarray_iter with jsarray_iter_make of 1000
 //
 #impltmp
 <(*tmp*)>
@@ -999,6 +1003,8 @@ XATS2JS_jsarray_iter_next$work
 ! jsarray_iter(a)
 , work: (nint, !a) -> void): bool = $extnam()
 }
+//
+#symload next$work with jsarray_iter_next$work of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
