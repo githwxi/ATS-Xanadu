@@ -1790,9 +1790,11 @@ optn_vt_cons
 let
 val pval = f1_pval(gopt)
 in//let
-  D2PTMsome(pval, ditm) end): d2ptm
+  D2PTMsome(pval, ditm) end
+) : d2ptm//end-of-[val(dptm)]
 //
-val d2ps = let
+val d2ps =
+let
 //
 val opt1 =
 tr12env_find_d2itm(env0, sym1)
@@ -1811,17 +1813,16 @@ case+ d2i1 of
 D2ITMsym(_, d2ps) => d2ps
 |
 _(*non-D2ITMsym*) =>
-list_sing(D2PTMsome(0, d2i1)))
+(
+  list_sing(D2PTMsome(0, d2i1))))
 //
 end : d2ptmlst // end of [val(d2ps)]
 //
 in//let
 //
 let
-val
-ditm =
-D2ITMsym
-(sym1, list_cons(dptm, d2ps))
+val ditm =
+D2ITMsym(sym1,list_cons(dptm,d2ps))
 //
 (*
 val () =
@@ -1830,9 +1831,11 @@ prerrln("f0_symload: ditm = ", ditm)
 //
 val () =
 tr12env_add0_d2itm(env0, sym1, ditm)
-in
-  d2ecl_make_node
-  (loc0, D2Csymload(tknd, sym1, dptm))
+//
+in//let
+(
+ d2ecl_make_node
+ (loc0, D2Csymload(tknd, sym1, dptm)))
 end//let
 //
 end where
@@ -2020,10 +2023,10 @@ in//let
 case+ sopt of
 | ~
 optn_vt_nil
- ((*void*)) => ()
+( (*nil*) ) => ()
 | ~
 optn_vt_cons
- (  s2i0  ) =>
+(   s2i0   ) =>
 (
 case+ s2i0 of
 |S2ITMenv(envs) =>
@@ -2048,7 +2051,20 @@ tr12env_add1_f2env
 {
 //
 val
-fenv = f2env_of_d2parsed(dpar)
+fenv =
+(
+  f2env_of_d2parsed(dpar))
+//
+val () =
+(*
+HX-2024-08-14:
+For symload promotion
+*)
+if(
+gsym =
+$SYM.DLRDT_symbl) then
+(
+  f0_staload_aft(env0, dpar))
 //
 val () =
 (dres := S2TALOADdpar(shrd, dpar)) }
@@ -2063,12 +2079,15 @@ end where // end-of-[f0_staload(env0,...)]
 {
 fun
 f1_geid
-(gexp: g1exp): optn(sym_t) =
+( gexp
+: g1exp)
+: optn(sym_t) =
 (
 case+
 gexp.node() of
 |G1Eid0(sym1) =>
-optn_cons(sym1)
+(
+optn_cons(sym1))
 |G1Ea2pp
 (g1f0,g1e1,g1e2) =>
 (
@@ -2084,13 +2103,92 @@ case+
 g1e2.node() of
 |
 G1Eid0(sym2) =>
-optn_cons(sym2)
+(
+optn_cons(sym2))
 | _ => optn_nil((*void*)))//if
 | _(*non-G1Eid0*) => optn_nil())
 //
 | _(* otherwise *) => optn_nil()) // f1_geid
 //
 } (*where*) // end of [f0_staload(env0, d1cl)]
+//
+and
+f0_staload_aft
+( env0:
+! tr12env
+, dpar: d2parsed): void =
+let
+//
+val
+dopt =
+d2parsed_get_parsed(dpar)
+//
+in//let
+//
+case+ dopt of
+| optn_nil() => ()
+| optn_cons(dcls) => f1_dcls(env0, dcls)
+//
+end where
+{
+fun
+f1_dcls
+( env0:
+! tr12env
+, dcls: d2eclist): void =
+(
+case+ dcls of
+| list_nil() => ()
+| list_cons(dcl1, dcls) =>
+(
+case+
+dcl1.node() of
+//
+|D2Clocal0
+(head, body) =>
+f1_dcls(env0, dcls) where
+{
+  val () = f1_dcls(env0, body)
+}
+//
+|D2Csymload
+(tknd, sym1, dptm) =>
+f1_dcls(env0, dcls) where
+{
+//
+val opt1 =
+tr12env_find_d2itm(env0, sym1)
+val d2ps =
+(
+case+ opt1 of
+| ~
+optn_vt_nil() =>
+list_nil((*void*))
+| ~
+optn_vt_cons(d2i1) =>
+(
+case+ d2i1 of
+|
+D2ITMsym(_, d2ps) => d2ps
+|
+_(*non-D2ITMsym*) =>
+(
+  list_sing(D2PTMsome(0, d2i1))))
+) : d2ptmlst // end of [val(d2ps)]
+//
+val ditm =
+D2ITMsym(sym1,list_cons(dptm,d2ps))
+//
+val () =
+tr12env_add0_d2itm(env0, sym1, ditm)
+//
+}//end-of(D2Csymload(tknd,sym1,dptm))
+//
+|
+_(* otherwise *) => f1_dcls(env0, dcls)
+)
+)
+}(*where*)//end-of-[f0_staload_aft(env0, dpar)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

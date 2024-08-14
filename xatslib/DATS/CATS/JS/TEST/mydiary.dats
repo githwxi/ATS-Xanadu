@@ -9,18 +9,6 @@ For testing xatslib/JS!
 "prelude/DATS/gdbg000.dats"
 (* ****** ****** *)
 (* ****** ****** *)
-//
-(*
-HX-2024-07-21:
-Sun 21 Jul 2024 11:06:11 PM EDT
-*)
-//
-#include
-"xatslib\
-/JS/HATS/xatslib_JS_sats.hats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
 #include
 "srcgen1\
 /prelude/HATS/prelude_dats.hats"
@@ -30,7 +18,7 @@ Sun 21 Jul 2024 11:06:11 PM EDT
 (* ****** ****** *)
 //
 #include
-"xatslib/JS/HATS/xatslib_JS_dats.hats"
+"xatslib/HATS/xatslib_JS_dats.hats"
 //
 (* ****** ****** *)
 #include
@@ -67,21 +55,16 @@ jsarray_make_nfun
 val () =
 prints("An(", type(An), ") = ", An, "\n")
 //
-(*
-val A4 =
-gs_append_a2<strn>(A3, A3)
-*)
-val A4 = jsarray_append<>(A3, A3)
+val A4 = appends(A3, A3)
 //
 val () =
-prints("A4(", type(A4), " = ", A4, "\n")
+prints("A4(", type(A4), ") = ", A4, "\n")
 //
 (* ****** ****** *)
 //
-val xs = listize(An)
-val () =
-print1s("xs = ", xs, "\n")
-//
+val xs = GSEQ(An).listize((*0*))
+val () = print1s("xs = ", xs, "\n")
+////
 (* ****** ****** *)
 //
 val xs = list_vt2t(xs)
@@ -98,7 +81,7 @@ gseq_imap_list
 {
 #typedef x0 = nint
 #typedef y0 = nint
-#typedef xs = jsa(nint)
+#typedef xs = jsa0(nint)
 #impltmp
 imap$fopr
 <x0><y0>(i0, x0) = i0*x0*x0 + 1
@@ -114,7 +97,7 @@ gseq_irmap_list
 {
 #typedef x0 = nint
 #typedef z0 = nint
-#typedef xs = jsa(nint)
+#typedef xs = jsa0(nint)
 #impltmp
 irmap$fopr
 <x0><z0>(i0, x0) = i0*x0*x0 + 1
