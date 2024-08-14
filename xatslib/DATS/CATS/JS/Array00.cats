@@ -189,6 +189,26 @@ XATS2JS_jsarray_iforall_f2un
 */
 //
 /////////////////////////////////////////////////////////////////////////
+//
+function
+XATS2JS_jsarray_iter_make
+  ( A )
+{
+  return A.entries() // HX: Array iterator
+}
+//
+function
+XATS2JS_jsarray_iter_next$work
+  (iter, work)
+{
+  var next = iter.next()
+  if (!next.done) return false
+  var value = next.value
+  // HX: value != undefined
+  work(value[0], value[1]); return true
+}
+//
+/////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
 //
 // end of [ATS3/XANADU_xatslib_DATS_CATS_JS_Array00.cats]
