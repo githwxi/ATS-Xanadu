@@ -549,7 +549,7 @@ gseq_forall1
 ) where
 {
 #impltmp
-forall$test0<x0>(x0) =
+forall$test1<x0>(x0) =
 let
 val () =
 foritm$work1<x0>(x0) in true end

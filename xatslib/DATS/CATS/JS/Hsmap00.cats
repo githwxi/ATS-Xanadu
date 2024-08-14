@@ -100,6 +100,10 @@ XATS2JS_jshsmap_forall_f2un
 //
 /////////////////////////////////////////////////////////////////////////
 //
+/*
+HX-2024-08-14:
+Wed 14 Aug 2024 03:38:56 PM EDT
+*/
 function
 XATS2JS_jshsmap_iter_make
   ( A )

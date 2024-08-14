@@ -54,7 +54,7 @@ gseq_end
 #impltmp
 { x0:vt }
 gseq_beg
-<strm_vt(x0)><x0>() = "lstrm("
+<strm_vt(x0)><x0>() = "strm_vt("
 //
 (* ****** ****** *)
 //
@@ -72,11 +72,11 @@ gseq_print0<strm_vt(x0)><x0>(xs)
 #impltmp
 < x0:vt >
 g_make0_lstrm
-<strm_vt(x0)>(xs) = xs//identity
+<strm_vt(x0)>(xs) = (xs)//identity
 #impltmp
 < x0:vt >
 g_make0_lstrq
-<strq_vt(x0)>(xs) = xs//identity
+<strq_vt(x0)>(xs) = (xs)//identity
 //
 (* ****** ****** *)
 //
