@@ -3324,10 +3324,10 @@ end//let//else//end-[if]
 end where // end-of-[let]
 {
 //
-// (*
+(*
 val () =
 prerrln("trans2a_d2exp_tpck: d2e0 = ", d2e0)
-// *)
+*)
 //
 } (*where*) // end of [trans2a_d2exp_tpck(...)]
 //

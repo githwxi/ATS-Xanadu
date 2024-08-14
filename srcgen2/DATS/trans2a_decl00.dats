@@ -118,7 +118,7 @@ in//let
 trans2a_d2ecl
 ( env0, d2cl ) = let
 //
-// (*
+(*
 val
 loc0 = d2cl.lctn()
 val () =
@@ -127,7 +127,7 @@ prerrln
 val () =
 prerrln
 ("trans2a_d2ecl: d2cl = ", d2cl)
-// *)
+*)
 //
 in//let
 //
@@ -579,14 +579,14 @@ D2Cfundclst
 , tqas
 , d2cs, d2fs) = d2cl.node()
 //
-// (*
+(*
 val () =
 prerrln
 ("f0_fundclst(2a): loc0 = ", loc0)
 val () =
 prerrln
 ("f0_fundclst(2a): d2cl = ", d2cl)
-// *)
+*)
 //
 val d2fs =
 (
@@ -962,12 +962,12 @@ s2typ_hnfiz0(s2exp_stpize(s2e1))
 val tfun =
 s2typ_fun1_f2arglst(f2as,f2cl,tres)
 //
-// (*
+(*
 val (  ) = prerrln
 ("trans2a_d2fundcl: dfun = ", dfun)
 val (  ) = prerrln
 ("trans2a_d2fundcl: tfun = ", tfun)
-// *)
+*)
 //
 (*
 HX-2023:

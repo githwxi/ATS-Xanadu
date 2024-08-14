@@ -1405,7 +1405,7 @@ T_STRN1_clsd(base, ln) =>
 |
 _(*otherwise*) => optn_nil((*void*))
 )
-
+//
 in(*in-of-local*)
 
 fun
@@ -1424,6 +1424,7 @@ val g1e1 =
   trans01_g0exp(tenv, g0e1)
 //
 in//let
+//
 let
 //
 val opt0 =
@@ -1503,6 +1504,7 @@ d1ecl_make_node
 (loc0,
  D1Cinclude(knd0, tknd, g1e1, opt1, dopt))
 end//let
+//
 end where
 {
 //
@@ -1540,12 +1542,14 @@ val () =
 prerrln
 ("f0_g1e1: g1e1 = ", g1e1)
 *)
-in
+in//let
+//
 case+
 g1e1.node() of
 |G1Estr _ => f1_gstr(g1e1)
 |G1Ea2pp _ => f1_a2pp(g1e1)
 |_(*otherwise*) => optn_nil()
+//
 endlet // end of [f0_g1e1(g1e1)]
 //
 and
@@ -1574,6 +1578,7 @@ T_STRN1_clsd(base, ln) =>
 |
 _(*otherwise*) => optn_nil((*void*))
 )
+//
 and
 f1_a2pp
 (gapp: g1exp): fnameopt =
@@ -1582,7 +1587,8 @@ case-
 gapp.node() of
 |
 G1Ea2pp
-(g1f0,g1e1,g1e2) =>
+(g1f0
+,g1e1,g1e2) =>
 (
 case+
 g1f0.node() of
@@ -1596,11 +1602,12 @@ case+
 g1e2.node() of
 |
 G1Estr _ =>
-f1_gstr(g1e2) | _ => optn_nil())
+f1_gstr(g1e2) | _ => optn_nil()
+)(*end-of-[G1Eid0]*)
 |
 _(* non-G1Eid0 *) => optn_nil())
 ) (*case-*) // end of [f1_a2pp(gapp)] 
-
+//
 in(*in-of-local*)
 
 fun
