@@ -190,6 +190,10 @@ XATS2JS_jsarray_iforall_f2un
 //
 /////////////////////////////////////////////////////////////////////////
 //
+/*
+HX-2024-08-14:
+Wed 14 Aug 2024 03:37:41 PM EDT
+*/
 function
 XATS2JS_jsarray_iter_make
   ( A )

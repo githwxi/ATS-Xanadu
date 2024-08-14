@@ -472,8 +472,7 @@ XATS2JS_jshsmap_forall_f2un
 fun
 XATS2JS_jshsmap_forall_f2un
  {k:t0}{x:vt}
-( map
-: jsm0(k,x)
+( map: jsm0(k,x)
 , test
 : (k, !x) -> bool): bool = $extnam()
 }
@@ -485,8 +484,9 @@ XATS2JS_jshsmap_forall_f2un
 <(*tmp*)>
 jshsmap_listize
 {k:t0}{x:vt}(xs) =
-(
-  gseq_listize1<jsm0(k,x)><(k,x)>(xs))
+list_vt_reverse0<(k,x)>
+(jshsmap_rlistize<>{k}{x}(xs))
+//
 #impltmp
 <(*tmp*)>
 jshsmap_rlistize
@@ -708,24 +708,34 @@ work(k: k, x: !x): void =
 $UN.p2tr_set<k>(pk, k);
 $UN.p2tr_set<x>(px, g_copy<x>(x)))
 //
-val done =
+val wrkd =
 jshsmap_iter_next$work<>(iter, work)
 //
 in//let
 //
-if done
-then strmcon_vt_nil()
-else let
+if
+not(wrkd)
+then
+(
+strmcon_vt_nil()
+) else
+let
 val k =
 $UN.p2tr_get<k>(pk)
 val x =
 $UN.p2tr_get<x>(px) in//let
-strmcon_vt_cons((k, x), auxmain(iter))
-end//let//else//end-of-[if(done)]
+strmcon_vt_cons((k,x), auxmain(iter))
+end//let//else//end-of-[if(not(wrkd))]
 //
-end(*let*)//end-of-[ auxmain( iter ) ]
+end(*let*)//end-of-[auxmain(iter):strm_vt]
 //
 }(*where*)//end-of-[jshsmap_strmize<>(map)]
+//
+#impltmp
+{ k: t0
+, x: vt }
+gseq_strmize1
+<jsm0(k,x)><(k,x)> = jshsmap_strmize<>{k}{x}
 //
 (* ****** ****** *)
 (* ****** ****** *)
