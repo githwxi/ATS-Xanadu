@@ -64,7 +64,7 @@ prints("A4(", type(A4), ") = ", A4, "\n")
 //
 val xs = GSEQ(An).listize((*0*))
 val () = print1s("xs = ", xs, "\n")
-////
+//
 (* ****** ****** *)
 //
 val xs = list_vt2t(xs)

@@ -178,12 +178,33 @@ jshsmap_set$at
 (* ****** ****** *)
 //
 #extern
-fun<>
+fun
+<k:t0>
+<x:vt>
+jshsmap_listize
+(map: jsm0(k,x)): list_vt@(k,x)
+#symload listize with jshsmap_listize of 1000
+//
+(* ****** ****** *)
+//
+#extern
+fun
+<k:t0>
+<x:vt>
 jshsmap_strmize
- {k:t0}{x:vt}
 (map: jsm0(k,x)): strm_vt@(k,x)
 //
 #symload strmize with jshsmap_strmize of 1000
+//
+(* ****** ****** *)
+//
+#extern
+fun
+<k:t0>
+<x:vt>
+jshsmap_rlistize
+(map: jsm0(k,x)): list_vt@(k,x)
+#symload rlistize with jshsmap_rlistize of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -213,9 +234,10 @@ jshsmap_search$tst
 (map: jsm0(k,x), key: k): bool
 //
 #extern
-fun<>
+fun
+<k:t0>
+<x:vt>
 jshsmap_search$cpy
- {k:t0}{x:vt}
 (map: jsm0(k,x), key: k): optn_vt(x)
 //
 (* ****** ****** *)
@@ -312,7 +334,7 @@ jshsmap_size
 #impltmp
 <(*tmp*)>
 jshsmap_size
- {k:t0}{x:t0}
+ {k:t0}{x:vt}
  (    map    ) =
 (
 XATS2JS_jshsmap_size
@@ -321,7 +343,7 @@ XATS2JS_jshsmap_size
 #extern
 fun
 XATS2JS_jshsmap_size
- {k:t0}{x:t0}
+ {k:t0}{x:vt}
 (map: jsm0(k,x)): nint = $extnam()
 }
 //
@@ -351,7 +373,7 @@ gseq_length1
 #impltmp
 <(*tmp*)>
 jshsmap_make_nil
- {k:t0}{x:t0}() =
+ {k:t0}{x:vt}() =
 (
 XATS2JS_jshsmap_make_nil
   ( (*void*) )) where
@@ -359,7 +381,7 @@ XATS2JS_jshsmap_make_nil
 #extern
 fun
 XATS2JS_jshsmap_make_nil
- {k:t0}{x:t0}(): jsm0(k,x) = $extnam()
+ {k:t0}{x:vt}(): jsm0(k,x) = $extnam()
 }
 //
 (* ****** ****** *)
@@ -459,6 +481,20 @@ XATS2JS_jshsmap_forall_f2un
 , test
 : (k, !x) -> bool): bool = $extnam()
 }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< k: t0 >
+< x: vt >
+jshsmap_listize =
+gseq_listize1<jsm0(k,x)><(k,x)>
+#impltmp
+< k: t0 >
+< x: vt >
+jshsmap_rlistize =
+gseq_rlistize1<jsm0(k,x)><(k,x)>
 //
 (* ****** ****** *)
 (* ****** ****** *)
