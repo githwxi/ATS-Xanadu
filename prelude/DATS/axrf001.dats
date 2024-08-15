@@ -117,30 +117,56 @@ owed_vt_return0(pf, x0) in btf end
 //
 #impltmp
 { x0:t0 }
+gseq_strmize
+<a1rf(x0)><x0> =
+gasz_strmize<a1rf(x0)><x0>(*void*)
+#impltmp
+{ x0:vt }
+gseq_strmize1
+<a1rf(x0)><x0> =
+gasz_strmize<a1rf(x0)><x0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
 gseq_forall
 <a1rf(x0)><x0>
   ( A ) =
 (
-gasz_forall
-<a1rf(x0)><x0>(A))
-where
+gseq_forall1
+<a1rf(x0)><x0>(A)) where
 {
 #impltmp
 forall$test1<x0> = forall$test<x0>
 }
+#impltmp
+{ x0:vt }
+gseq_forall1
+<a1rf(x0)><x0>
+gasz_forall<a1rf(x0)><x0>(* void *)
+//
+(* ****** ****** *)
+//
 #impltmp
 { x0:t0 }
 gseq_rforall
 <a1rf(x0)><x0>
   ( A ) =
 (
-gasz_rforall
-<a1rf(x0)><x0>(A))
-where
+gseq_rforall1
+<a1rf(x0)><x0>(A)) where
 {
 #impltmp
 rforall$test1<x0> = rforall$test<x0>
 }
+//
+#impltmp
+{ x0:vt }
+gseq_rforall1
+<a1rf(x0)><x0>
+gasz_rforall<a1rf(x0)><x0>(* void *)
 //
 (* ****** ****** *)
 //
