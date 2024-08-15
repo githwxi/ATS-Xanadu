@@ -36,10 +36,22 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #absimpl
-a0rf_vt_tx(a:vt) = $extbox("jsarray")
+a0rf_vt_tx
+(  a:vt  ) = $extbox("jsarray")
 #absimpl
-a0rf_vt_vx(a:vt) = $extbox("jsarray")
+a0rf_vt_vx
+(  a:vt  ) = $extbox("jsarray")
+(* ****** ****** *)
+//
+#absimpl
+a1rf_vt_i0_tx
+( a:vt,n:i0 ) = $extbox("jsarray")
+#absimpl
+a1rf_vt_i0_vx
+( a:vt,n:i0 ) = $extbox("jsarray")
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -77,6 +89,7 @@ XATS2JS_a0rf_lset
 }
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 < a: vt >
@@ -94,7 +107,6 @@ XATS2JS_a0rf_make_1val
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 //
 #impltmp
 < a: vt >
@@ -129,6 +141,7 @@ XATS2JS_a1rf_lset$at
 |A:a1rf(a),i:nint,x:a): void = $extnam()
 }
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp

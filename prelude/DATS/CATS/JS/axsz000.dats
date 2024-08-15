@@ -38,10 +38,64 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #absimpl
 a1sz_vt_i0_tx
-( a: vt, n: i0 ) = $extbox("jsarray")
+(a: vt, n: i0) = $extbox("jsarray")
 #absimpl
 a1sz_vt_i0_vx
-( a: vt, n: i0 ) = $extbox("jsarray")
+(a: vt, n: i0) = $extbox("jsarray")
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a: vt >
+a1sz_length
+ {n:i0}( A ) =
+(
+XATS2JS_a1sz_length
+ {a}{n}( A )) where
+{
+#extern
+fun
+XATS2JS_a1sz_length
+{a:vt}
+{n:i0}(A: a1sz(a, n)): sint(n) = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a: vt >
+a1sz_lget$at
+  (A, i) =
+(
+XATS2JS_a1sz_lget$at
+  (A, i)) where
+{
+#extern
+fun
+XATS2JS_a1sz_lget$at
+{a:vt}
+( A
+: a1sz(a)
+, i: nint): (owed(a) | a) = $extnam()
+}
+//
+#impltmp
+< a: vt >
+a1sz_lset$at
+  (f | A, i, x) =
+(
+XATS2JS_a1sz_lset$at
+  (f | A, i, x)) where
+{
+#extern
+fun
+XATS2JS_a1sz_lset$at
+{a:vt}
+(f:owed(a)
+|A:a1sz(a),i:nint,x:a): void = $extnam()
+}
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
