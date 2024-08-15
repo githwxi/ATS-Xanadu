@@ -38,16 +38,16 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 #abstbox
-a1sz_vt_i0_i0_tx(a:vt,n:i0)
+a1sz_vt_i0_tx(a:vt,n:i0)
 #abstbox
-a1sz_vt_i0_i0_vt(a:vt,n:i0)
+a1sz_vt_i0_vx(a:vt,n:i0)
 //
 #typedef
 a1sz
-(a:vt,n:i0) = a1sz_vt_i0_i0_tx(a,n)
+(a:vt,n:i0) = a1sz_vt_i0_tx(a,n)
 #vwtpdef
 a1sz_vt
-(a:vt,n:i0) = a1sz_vt_i0_i0_vt(a,n)
+(a:vt,n:i0) = a1sz_vt_i0_vx(a,n)
 //
 #typedef
 a1sz(x0:vt) = [n:i0] a1sz(x0,n)
@@ -60,7 +60,7 @@ a1sz_vt(x0:vt) = [n:i0] a1sz_vt(x0,n)
 #abstbox
 a2sz_vt_i0_i0_tx(a:vt,m:i0,n:i0)
 #abstbox
-a2sz_vt_i0_i0_vt(a:vt,m:i0,n:i0)
+a2sz_vt_i0_i0_vx(a:vt,m:i0,n:i0)
 //
 #typedef
 a2sz
@@ -69,7 +69,7 @@ a2sz
 #vwtpdef
 a2sz_vt
 (a:vt
-,m:i0,n:i0) = a2sz_vt_i0_i0_vt(a,m,n)
+,m:i0,n:i0) = a2sz_vt_i0_i0_vx(a,m,n)
 //
 #typedef
 a2sz(x0:vt) = [m:i0;n:i0] a2sz(x0,m,n)

@@ -36,6 +36,15 @@ Authoremail: gmhwxiATgmailDOTcom
 ////////////////////////////////////////////////////////////////////////.
 //
 function
+XATS2JS_a1sz_length
+  (A, i)
+{
+  return A.length // HX: length field!
+}
+//
+////////////////////////////////////////////////////////////////////////.
+//
+function
 XATS2JS_a1sz_lget$at
   (A, i)
 {
@@ -45,8 +54,15 @@ function
 XATS2JS_a1sz_lset$at
   (A, i, x)
 {
-  A[i] = x; return
+  A[i] = x; return // HX: void is returned!
 }
+//
+////////////////////////////////////////////////////////////////////////.
+//
+/*
+HX-2024-08-15:
+Thu 15 Aug 2024 01:50:45 PM EDT
+*/
 //
 function
 XATS2JS_a1sz_make_ncpy
