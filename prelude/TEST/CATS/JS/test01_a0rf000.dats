@@ -16,12 +16,9 @@ For testing xatslib/JS!
 "srcgen2\
 /prelude/HATS/prelude_dats.hats"
 (* ****** ****** *)
-(* ****** ****** *)
-//
 #include
-"xatslib/HATS/xatslib_JS_dats.hats"
-//
-(* ****** ****** *)
+"srcgen2\
+/prelude/HATS/prelude_JS_dats.hats"
 (* ****** ****** *)
 #include
 "srcgen1\
@@ -33,38 +30,22 @@ For testing xatslib/JS!
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val A1 =
-jsarray(1)
-val A2 =
-jsarray("1", "2")
-val A3 =
-jsarray("1", "2", "3")
+#symload ref
+with a0rf_make_1val of 1000
 //
+val A0 = ref(0)
 val () =
-prints("A1(", type(A1), ") = ", A1, "\n")
-val () =
-prints("A2(", type(A2), ") = ", A2, "\n")
-val () =
-prints("A3(", type(A3), ") = ", A3, "\n")
+prints("A0(", type(A0), ") = ", A0, "\n")
 //
 (* ****** ****** *)
 //
-val An =
-jsarray_make_ncpy
-( 10, -1(*init*) )
-//
+val () = get(A0)
 val () =
-prints("An(", type(An), ") = ", An, "\n")
+prints("A0(", type(A0), ") = ", A0, "\n")
 //
-(* ****** ****** *)
-(* ****** ****** *)
-//
-val iter =
-jsarray_iter_make(An)
-val-true =
-jsarray_iter_next$work
-(iter
-,lam(i, x) => print1s("(i,x) = (", i, ",", x, ")\n"))
+val () = set(A0, 10)
+val () =
+prints("A0(", type(A0), ") = ", A0, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -72,4 +53,4 @@ jsarray_iter_next$work
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_xatslib_DATS_CATS_JS_TEST_test01_jsarray.dats] *)
+(* end of [ATS3/XANADU_prelude_TEST_CATS_JS_test01_a0rf000.dats] *)

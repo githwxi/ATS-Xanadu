@@ -161,6 +161,8 @@ valkind_fprint
 (* ****** ****** *)
 fun
 valkind_recq(vlk: valkind): bool
+fun
+valkind_prvq(vlk: valkind): bool
 (* ****** ****** *)
 //
 datatype
@@ -206,6 +208,8 @@ funkind_fprint
 (* ****** ****** *)
 fun
 funkind_recq(fnk: funkind): bool
+fun
+funkind_prfq(fnk: funkind): bool
 (* ****** ****** *)
 //
 datatype

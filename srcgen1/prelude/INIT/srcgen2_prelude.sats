@@ -144,6 +144,11 @@ For further program verification
 "srcgen1/prelude/SATS/arrn001.sats"
 //
 #include
+"srcgen1/prelude/SATS/axrf000.sats"
+#include
+"srcgen1/prelude/SATS/axsz000.sats"
+//
+#include
 "srcgen1/prelude/SATS/tupn000.sats"
 #include
 "srcgen1/prelude/SATS/tupn001.sats"
@@ -215,6 +220,11 @@ For viewtypes (that is, linear types)
 "srcgen1/prelude/SATS/VT/arrn000_vt.sats"
 #include
 "srcgen1/prelude/SATS/VT/arrn001_vt.sats"
+//
+#include
+"srcgen1/prelude/SATS/VT/axrf000_vt.sats"
+#include
+"srcgen1/prelude/SATS/VT/axsz000_vt.sats"
 //
 #include
 "srcgen1/prelude/SATS/VT/list000_vt.sats"

@@ -49,6 +49,9 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../HATS/mytmplib00.hats"
 (* ****** ****** *)
 //
+#staload
+"./../../../SATS/xbasics.sats"
+//
 #staload // SYM =
 "./../../../SATS/xsymbol.sats"
 //
@@ -84,6 +87,29 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 #symload lctn with d2exp_get_lctn
 #symload node with d2exp_get_node
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+valtok_prvq
+(   tok   ) =
+(
+case-
+tok.node() of
+|T_VAL
+( vlk ) => valkind_prvq(vlk))
+(* end-of-[valtok_prvq(tok)] *)
+//
+#implfun
+funtok_prfq
+(   tok   ) =
+(
+case-
+tok.node() of
+|T_FUN
+( fnk ) => funkind_prfq(fnk))
+(* end-of-[funtok_prfq(tok)] *)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

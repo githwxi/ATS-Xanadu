@@ -66,6 +66,8 @@ _(*DATS*)="./../DATS/trxd3i0.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#symload node with token_get_node
+(* ****** ****** *)
 #symload node with s2typ_get_node
 (* ****** ****** *)
 #symload lctn with d3pat_get_lctn
@@ -85,6 +87,21 @@ _(*DATS*)="./../DATS/trxd3i0.dats"
 #symload node with d3gua_get_node
 #symload node with d3gpt_get_node
 #symload node with d3cls_get_node
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+trcdtok_fltq
+(tknd: token): bool =
+(
+case-
+tknd.node() of
+| T_TRCD10(0) => true
+| T_TRCD20(0) => true
+| T_TRCD10(_) => false
+| T_TRCD20(_) => false)
+(* end-of-[trcdtok_fltq(tok)] *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -390,8 +407,12 @@ val i0ps =
 trxd3i0_d3patlst(env0, d3ps)
 //
 in//let
-(
-  i0pat(loc0, I0Ptup0(i0ps)))
+//
+if
+list_singq(i0ps)
+then list_head(i0ps)
+else i0pat(loc0, I0Ptup0(i0ps))
+//
 end(*let*)//end-of-[f0_tup0(...)]
 //
 (* ****** ****** *)
@@ -417,10 +438,19 @@ val i0ps =
 trxd3i0_d3patlst(env0, d3ps)
 //
 in//let
+//
+if
 (
-  i0pat_make_node
-  (loc0, I0Ptup1(tknd, i0ps)))
-end(*let*)//end-of-[f0_tup1(...)]
+if
+not(
+list_singq(i0ps))
+then (false) else
+trcdtok_fltq(tknd))
+then list_head(i0ps) else
+(
+  i0pat(loc0, I0Ptup1(tknd, i0ps)))
+// else // end-of-[if]
+end(*let*)//end-of-[f0_tup1(env0,...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1045,12 +1075,11 @@ val i0es =
   trxd3i0_d3explst(env0, d3es))
 //
 in//let
+(
 if
 list_singq(i0es)
 then list_head(i0es)
-else
-(
-  i0exp(loc0, I0Etup0(  i0es  )) )
+else i0exp(loc0, I0Etup0(i0es)))
 end(*let*)//end-of-[f0_tup0(env0,d3e0)]
 //
 (* ****** ****** *)
@@ -1078,6 +1107,15 @@ val i0es =
   trxd3i0_d3explst(env0, d3es))
 //
 in//let
+//
+if
+(
+if
+not(
+list_singq(i0es))
+then (false) else
+trcdtok_fltq(tknd))
+then list_head(i0es) else
 (
   i0exp(loc0, I0Etup1(tknd, i0es)))
 end(*let*)//end-of-[f0_tup1(env0,d3e0)]

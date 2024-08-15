@@ -80,4 +80,4 @@ val (  ) = prints
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_xatslib_JS_TEST_test01_jshsmap.dats] *)
+(* end of [ATS3/XANADU_xatslib_DATS_CATS_JS_TEST_test01_jshsmap.dats] *)

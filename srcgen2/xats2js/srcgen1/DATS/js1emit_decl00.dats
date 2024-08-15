@@ -384,14 +384,21 @@ f0_valdclst
 , dcl0: i1dcl): void =
 let
 //
-val filr = env0.filr()
-val nind = env0.nind()
-//
-val loc0 = dcl0.lctn()
+val filr =
+  env0.filr((*void*))
+val nind =
+  env0.nind((*void*))
+val loc0 =
+  dcl0.lctn((*void*))
 //
 val-
 I1Dvaldclst
-( tknd, i1vs) = dcl0.node()
+(tknd, i1vs) = dcl0.node()
+//
+val
+prvq =
+(
+  valtok_prvq( tknd ))
 //
 val (  ) =
 let
@@ -400,12 +407,26 @@ let
 g_print$out<>() = filr
 //
 in//let
-nindfpr(filr, nind);
-print
+//
+(
+  nindfpr(filr, nind));
+//
+if
+prvq
+then print
+("// I1Dprvdclist(",loc0,")\n")
+else print
 ("// I1Dvaldclist(",loc0,")\n")
+//
 end//let
 //
 val (  ) =
+if
+prvq
+then
+(
+ xats2js_i1valdclist(env0, i1vs))
+else
 (
  js1emit_i1valdclist(env0, i1vs))
 //
@@ -427,7 +448,7 @@ val loc0 = dcl0.lctn()
 //
 val-
 I1Dvardclst
-( tknd, i1vs) = dcl0.node()
+(tknd, i1vs) = dcl0.node()
 //
 val (  ) =
 let
@@ -456,15 +477,21 @@ f0_fundclst
 , dcl0: i1dcl): void =
 let
 //
-val filr = env0.filr()
-val nind = env0.nind()
-//
-val loc0 = dcl0.lctn()
+val filr =
+  env0.filr((*void*))
+val nind =
+  env0.nind((*void*))
+val loc0 =
+  dcl0.lctn((*void*))
 //
 val-
 I1Dfundclst
-( tknd
-, d2cs, i1fs) = dcl0.node()
+(tknd
+,d2cs, i1fs) = dcl0.node()
+//
+val prfq =
+(
+  funtok_prfq( tknd ))
 //
 val (  ) =
 let
@@ -473,12 +500,26 @@ let
 g_print$out<>() = filr
 //
 in//let
-nindfpr(filr, nind);
-print
+//
+(
+  nindfpr(filr, nind));
+//
+if
+prfq
+then print
+("// I1Dprfdclist(",loc0,")\n")
+else print
 ("// I1Dfundclist(",loc0,")\n")
+//
 end//let
 //
 val (  ) =
+if
+prfq
+then
+(
+ xats2js_i1fundclist(env0, i1fs))
+else
 (
  js1emit_i1fundclist(env0, i1fs))
 //

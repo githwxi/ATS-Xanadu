@@ -26,6 +26,7 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
@@ -33,6 +34,7 @@ Start Time: May 28th, 2022
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 #include
 "./../HATS/xatsopt_dats.hats"
@@ -43,6 +45,7 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xbasics.sats"
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 POLPOS
@@ -51,6 +54,7 @@ fun
 POLNEG
 (x:int):int=(x+0100(*64*))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 #implfun
@@ -91,6 +95,7 @@ sortpolneg
 )
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX-2022-10-28:
@@ -126,9 +131,11 @@ prerrln("subsort_test: t2 = ", t2)
 }(*where*)//end-of-[subsort_test(...)]
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
 #implfun
-valkind_recq(vlk) =
+valkind_recq
+(   vlk   ) =
 (
 case+ vlk of
 //
@@ -143,20 +150,41 @@ case+ vlk of
 {
   val tt = true and ff = false
 }(*where*)//end of [valkind_recq(vlk)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
-funkind_recq(fnk) =
+valkind_prvq
+(   vlk   ) =
+(
+case+ vlk of
+//
+| VLKprval() => tt
+| _(*otherwise*) => ff
+//
+) where
+{
+  val tt = true and ff = false
+}(*where*)//end of [valkind_prvq(vlk)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+funkind_recq
+(   fnk   ) =
 (
 case+ fnk of
+//
 | FNKfn0() => ff
+//
 | FNKfn1() => tt
 | FNKfn2() => tt
 | FNKfnx() => tt
 | FNKfun() => tt
 //
 | FNKprfn0() => ff
+//
 | FNKprfn1() => tt
 | FNKprfun() => tt
 //
@@ -165,7 +193,26 @@ case+ fnk of
 {
   val tt = true and ff = false
 }(*where*)//end-of-[funkind_recq(fnk)]
-
+//
+(* ****** ****** *)
+//
+#implfun
+funkind_prfq
+(   fnk   ) =
+(
+case+ fnk of
+//
+| FNKprfn0() => tt
+| FNKprfn1() => tt
+| FNKprfun() => tt
+//
+| _(*otherwise*) => ff
+) where
+{
+  val tt = true and ff = false
+}(*where*)//end-of-[funkind_prfq(fnk)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -184,6 +231,7 @@ prerrln("implknd_recq: knd = ", knd)
 }(*where*)//end-of-[implknd_recq(knd)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 f2clknd_linq(f2cl) =
@@ -195,7 +243,7 @@ F2CLfun() => false
 F2CLclo(knd0) => (knd0 >= LINCLOFLT))
 //
 (* ****** ****** *)
-
+//
 #implfun
 f2clknd_equal
 (fcl1, fcl2) =
@@ -213,7 +261,8 @@ F2CLclo(k1) =>
 case+ fcl2 of
 |
 F2CLfun() => false | F2CLclo(k2) => (k1 = k2)))
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -263,5 +312,9 @@ case+ knd2 of
 )(*case+*)//end-of-[trcdknd_equal(knd1,knd2)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_DATS_xbasics.dats] *)
