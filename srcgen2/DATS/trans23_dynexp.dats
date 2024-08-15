@@ -612,10 +612,11 @@ f0_tup1
 d3pat_make_tpnd
 (
 loc0, t2p0,
-D3Ptup1(tknd, npf1, d3ps))) where
+D3Ptup1
+(tknd, npf1, d3ps))) where
 {
 //
-val loc0 = d2p0.lctn()
+val loc0 = d2p0.lctn((*0*))
 //
 val-
 D2Ptup1

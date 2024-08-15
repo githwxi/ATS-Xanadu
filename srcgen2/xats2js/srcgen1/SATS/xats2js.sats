@@ -54,6 +54,14 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+fun
+valtok_prvq
+(tknd: token): ( bool )
+fun
+funtok_prfq
+(tknd: token): ( bool )
+(* ****** ****** *)
+(* ****** ****** *)
 //
 fun
 envx2js_get_filr
@@ -283,6 +291,13 @@ fun
 xats2js_i1fundcl
 (env0: !envx2js, ifun: i1fundcl): void
 //
+fun
+xats2js_i1prvdcl
+(env0: !envx2js, ifun: i1valdcl): void
+fun
+xats2js_i1prfdcl
+(env0: !envx2js, ifun: i1fundcl): void
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -295,6 +310,13 @@ xats2js_i1vardclist
 //
 fun
 xats2js_i1fundclist
+(env0: !envx2js, i1fs: i1fundclist): void
+//
+fun
+xats2js_i1prvdclist
+(env0: !envx2js, i1vs: i1valdclist): void
+fun
+xats2js_i1prfdclist
 (env0: !envx2js, i1fs: i1fundclist): void
 //
 (* ****** ****** *)

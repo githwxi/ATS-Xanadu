@@ -48,12 +48,14 @@ Authoremail: gmhwxiATgmailDOTcom
 "./../HATS/mytmplib00.hats"
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #staload // LOC =
 "./../../../SATS/locinfo.sats"
 #staload // FIL =
 "./../../../SATS/filpath.sats"
 #staload // D2E =
 "./../../../SATS/dynexp2.sats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -464,11 +466,15 @@ val-
 I1Dvaldclst
 ( tknd, i1vs) = dcl0.node()
 //
-val
-(  ) =
+val (  ) =
+if
+valtok_prvq(tknd)
+then
+xats2js_i1prvdclist(env0, i1vs)
+else
 xats2js_i1valdclist(env0, i1vs)
 //
-end where
+end where // end-of-[let]
 {
 //
 (*
@@ -525,11 +531,15 @@ I1Dfundclst
 ( tknd
 , d2cs, i1fs) = dcl0.node()
 //
-val
-(  ) =
+val (  ) =
+if
+funtok_prfq(tknd)
+then
+xats2js_i1prfdclist(env0, i1fs)
+else
 xats2js_i1fundclist(env0, i1fs)
 //
-end where
+end where // end-of-[let]
 {
 //
 (*
@@ -771,6 +781,26 @@ end//let
 }(*where*)//end-of-[xats2js_i1valdcl(env0,ival)]
 //
 (* ****** ****** *)
+//
+#implfun
+xats2js_i1prvdcl
+  (env0, iprv) = let
+//
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+//
+val dpat =
+i1valdcl_get_dpat(iprv)
+//
+in//let
+nindstrnfpr
+(filr, nind, "// I1PRVDCL: ");
+i1bnd_fprint(filr, dpat); fprintln(filr)
+end(*let*)//end-of-[xats2js_i1prvdcl(env0,iprv)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
@@ -898,8 +928,8 @@ TEQI1CMPsome
 let
 val (  ) =
 (
-  xats2js_i1cmp(env0, icmp))
-end//let
+  xats2js_i1cmp(env0, icmp) )
+end // end-of-[let]
 ) (*case+*) // end-of-( teqi1exp )
 //
 val (  ) = envx2js_poplam0(env0)//leave
@@ -919,6 +949,26 @@ nindstrnfpr(filr, nind, "// I1FUNDCL\n"))
 end//let
 //
 }(*where*)//end-of-[xats2js_i1fundcl(env0,ifun)]
+//
+(* ****** ****** *)
+//
+#implfun
+xats2js_i1prfdcl
+  (env0, iprf) = let
+//
+val filr =
+envx2js_get_filr(env0)
+val nind =
+envx2js_get_nind(env0)
+//
+val dvar =
+i1fundcl_get_dpid(iprf)
+//
+in//let
+nindstrnfpr
+(filr, nind, "// I1PRFDCL: ");
+d2var_fprint(filr, dvar); fprintln(filr)
+end(*let*)//end-of-[xats2js_i1prfdcl(env0,iprf)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -954,6 +1004,23 @@ xats2js_i1fundclist
   (env0, i1fs) =
 (
   list_xats2js_fnp(env0, i1fs, xats2js_i1fundcl))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+xats2js_i1prvdclist
+  (env0, i1vs) =
+(
+  list_xats2js_fnp(env0, i1vs, xats2js_i1prvdcl))
+//
+(* ****** ****** *)
+//
+#implfun
+xats2js_i1prfdclist
+  (env0, i1fs) =
+(
+  list_xats2js_fnp(env0, i1fs, xats2js_i1prfdcl))
 //
 (* ****** ****** *)
 (* ****** ****** *)
