@@ -157,8 +157,14 @@ a1rf_make_nfun
 ( n: sint(n)
 , f: nint(n) -> a): a1rf(a, n)
 //
-#symload a1rf with a1rf_make_nfun of 1000
+#symload
+a1rf with a1rf_make_nfun of 1000
+#symload
+a1rf_ncpy with a1rf_make_ncpy of 1000
+#symload
+a1rf_nfun with a1rf_make_nfun of 1000
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun

@@ -37,13 +37,44 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #absimpl
-a1rf_vt_i0_tx
+a1sz_vt_i0_tx
 ( a: vt, n: i0 ) = $extbox("jsarray")
 #absimpl
-a1rf_vt_i0_vx
+a1sz_vt_i0_vx
 ( a: vt, n: i0 ) = $extbox("jsarray")
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#impltmp
+< a: t0 >
+a1sz_make_ncpy
+  (n, x) =
+(
+XATS2JS_a1sz_make_ncpy
+  (n, x)) where
+{
+#extern
+fun
+XATS2JS_a1sz_make_ncpy
+{a:t0}(n:nint, x:a): a1sz(a) = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+< a: vt >
+a1sz_make_nfun
+  (n, f) =
+(
+XATS2JS_a1sz_make_nfun
+  (n, f)) where
+{
+#extern
+fun
+XATS2JS_a1sz_make_nfun
+{a:t0}
+(n:nint, f:(nint)->(a)): a1sz(a) = $extnam()
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
