@@ -80,6 +80,29 @@ a2sz_vt(x0:vt) = [m:i0;n:i0] a2sz_vt(x0,m,n)
 (* ****** ****** *)
 //
 fun
+<a:t0>
+a1sz_make_ncpy
+ {n:i0|n>0}
+(n: sint(n), x:a): a1sz(a, n)
+//
+fun
+<a:vt>
+a1sz_make_nfun
+ {n:i0|n>0}
+( n: sint(n)
+, f: nint(n) -> a): a1sz(a, n)
+//
+#symload
+a1sz with a1sz_make_nfun of 1000
+#symload
+a1sz_ncpy with a1sz_make_ncpy of 1000
+#symload
+a1sz_nfun with a1sz_make_ncpy of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 <a:vt>
 a1sz_length
 {n:i0}(asz: a1sz(a, n)): sint(n)
