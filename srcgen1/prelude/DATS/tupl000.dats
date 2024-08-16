@@ -315,8 +315,8 @@ g_print for flat/boxed tuples
 #impltmp
 {a0:vt}
 g_print1
-<t1up
-( a0 )>(tup) =
+<t1up_vt
+(  a0  )>(tup) =
 let
 val () = t1up_print$beg()
 val () = g_print1<a0>(tup.0)
@@ -330,8 +330,8 @@ end // end of [g_print1<t1up>(tup)]
 {a0:vt
 ,a1:vt}
 g_print1
-<t0up
-(a0,a1)>(tup) =
+<t0up_vt
+( a0,a1 )>(tup) =
 let
 val () = t0up_print$beg()
 val () = g_print1<a0>(tup.0)
@@ -344,8 +344,8 @@ end // end of [g_print1<t0up>(tup)]
 {a0:vt
 ,a1:vt}
 g_print1
-<t1up
-(a0,a1)>(tup) =
+<t1up_vt
+( a0,a1 )>(tup) =
 let
 val () = t1up_print$beg()
 val () = g_print1<a0>(tup.0)
