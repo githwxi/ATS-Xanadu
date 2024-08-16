@@ -20,12 +20,12 @@ For implementing operations on so-called
 //
 (*
 #abstype
-range_ilt == si
+range_ilt == sint
 #abstype
-range_igte == si
+range_igte == sint
 *)
 #abstype
-range_ibtw == (si, si)
+range_ibtw == @(si, si)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -64,21 +64,52 @@ range_igte(i0: si): range_igte
 (* ****** ****** *)
 //
 #extern
-fun
+fun<>
 range_ibtw_lb
 (range: range_ibtw): sint(*lower*)
 #extern
-fun
+fun<>
 range_ibtw_ub
 (range: range_ibtw): sint(*upper*)
 //
 #extern
 fun<>
-range_ibtw(i0:si, i1:si): range_ibtw
+range_ibtw(lb:si, ub:si): range_ibtw
 #extern
-fun
+fun<>
 <xs:t0>
-range_ibtwe(i0:si, i1:si): range_ibtw
+range_ibtwe(lb:si, ub:si): range_ibtw
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+#absimpl
+range_ibtw = @(si, si)
+//
+in//local
+//
+#impltmp
+<(*tmp*)>
+range_ibtw
+( lb, ub ) = @(lb, ub)
+//
+#impltmp
+<(*tmp*)>
+range_ibtw_lb(lbub) = lbub.0
+#impltmp
+<(*tmp*)>
+range_ibtw_ub(lbub) = lbub.1
+//
+end(*local*)//end-of-[absimpl(range_ibtw)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+range_ibtwe
+( lb, ub ) = range_ibtw<>(lb, ub+1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -86,23 +117,13 @@ range_ibtwe(i0:si, i1:si): range_ibtw
 #impltmp
 gseq_forall
 <range_ibtw><si>
- (   range   ) =
-let
-#impltmp
-map$fopr<si>(i0) = i0
-in//let
-gseq_map$forall
-<range_ibtw><si><si>(range)
-end//let//end(gseq_forall<range_ibtw>)
-//
-#impltmp
-{ y0:vt }
-gseq_map$forall
-<range_ibtw><si><y0>
- (   range   ) =
+(    range    ) =
 (
 auxloop(lb, ub)) where
 {
+//
+val lb = range_ibtw_lb(range)
+val ub = range_ibtw_ub(range)
 //
 fun
 auxloop
@@ -113,15 +134,10 @@ if
 then (true) else
 (
 if
-forall$test0<y0>
-(map$fopr<si><y0>(lb))
-then
-auxloop(lb+1, ub) else false)
+forall$test<si>(lb)
+then auxloop(lb+1, ub) else false)
 //
-val lb = range_ibtw_lb(range) // lower
-val ub = range_ibtw_ub(range) // upper
-//
-}(*where*)//end-of(gseq_map$forall<range_ibtw>)
+}(*where*)//end-of(gseq_forall<range_ibtw>)
 //
 (* ****** ****** *)
 (* ****** ****** *)
