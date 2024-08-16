@@ -122,8 +122,35 @@ Fri 16 Aug 2024 05:02:22 PM EDT
 #impltmp
 <(*tmp*)>
 strn_make_list(cs) =
-strn_fmake_fwork<> // HX: this one may not be
-(lam(work) => strn_foritm(cs, work))//efficient!
+strn_fmake_fwork<> //HX:it may not be
+(lam(work) => foritm(cs, work))//efficient!
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+UN_strn_get$at$raw
+  (cs, i0) =
+(
+XATS2JS_strn_get$at$raw
+  (cs, i0)) where
+{
+#extern
+fun
+XATS2JS_strn_get$at$raw
+  (cs: strn, i0: nint): cgtz = $extnam()
+}
+//
+#impltmp
+<(*tmp*)>
+UN_strn_fset$at$raw
+  (cs, i0, c0) =
+strn_fmake_fwork<>
+(
+lam(work) => iforitm(cs,
+lam(i1,c1) =>
+(if (i0 = i1) then work(c0) else work(c1))))
 //
 (* ****** ****** *)
 (* ****** ****** *)

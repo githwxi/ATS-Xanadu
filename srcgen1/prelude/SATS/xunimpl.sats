@@ -1331,6 +1331,71 @@ gseq_imap$iforall_f1un // [imap] with
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun<>
+UN_strn_get$at$raw
+(cs: strn, i0: nint): cgtz
+fun<>
+UN_strn_fset$at$raw
+( cs: strn
+, i0: nint, c0: cgtz): strn
+//
+(* ****** ****** *)
+//
+fun<>
+strn_fmake((*void*)): strn
+fun
+strn_fmake_fwork
+(fwork: (cgtz->void)->void): strn//HX:3rd-order!
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+strn_forall_f1un
+(cs: strn, test: (cgtz)->bool): bool
+#symload forall with strn_forall_f1un of 1000
+//
+fun<>
+strn_rforall_f1un
+(cs: strn, test: (cgtz)->bool): bool
+#symload rforall with strn_rforall_f1un of 1000
+//
+fun<>
+strn_iforall_f1un
+(cs: strn, test: (ni,cgtz)->bool): bool
+#symload iforall with strn_iforall_f1un of 1000
+//
+fun<>
+strn_irforall_f1un
+(cs: strn, test: (ni,cgtz)->bool): bool
+#symload irforall with strn_irforall_f1un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+strn_foritm_f1un
+(cs: strn, work: (cgtz)->void): void
+#symload foritm with strn_foritm_f1un of 1000
+//
+fun<>
+strn_rforitm_f1un
+(cs: strn, work: (cgtz)->void): void
+#symload rforitm with strn_rforitm_f1un of 1000
+//
+fun<>
+strn_iforitm_f1un
+(cs: strn, work: (ni,cgtz)->void): void
+#symload iforitm with strn_iforitm_f1un of 1000
+//
+fun<>
+strn_irforitm_f1un
+(cs: strn, work: (ni,cgtz)->void): void
+#symload irforitm with strn_irforitm_f1un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

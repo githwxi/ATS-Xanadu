@@ -100,6 +100,32 @@ length with strn_length of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun<>
+strn_get$at
+(cs: strn, i0: nint): cgtz
+fun<>
+strn_fset$at
+(cs: strn
+,i0: nint, c0: cgtz): strn
+//
+fun<>
+UN_strn_get$at$raw
+(cs: strn, i0: nint): cgtz
+fun<>
+UN_strn_fset$at$raw
+( cs: strn
+, i0: nint, c0: cgtz): strn
+//
+#symload
+[] with strn_get$at of 1000
+#symload
+get$at with strn_get$at of 1000
+#symload
+fset$at with strn_fset$at of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2024-07-11:
 The 'g' in 'gmake' means
