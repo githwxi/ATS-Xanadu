@@ -144,7 +144,7 @@ forall$test1<x0> = forall$test<x0>
 #impltmp
 { x0:vt }
 gseq_forall1
-<a1rf(x0)><x0>
+<a1rf(x0)><x0> =
 gasz_forall<a1rf(x0)><x0>(* void *)
 //
 (* ****** ****** *)
@@ -165,7 +165,7 @@ rforall$test1<x0> = rforall$test<x0>
 #impltmp
 { x0:vt }
 gseq_rforall1
-<a1rf(x0)><x0>
+<a1rf(x0)><x0> =
 gasz_rforall<a1rf(x0)><x0>(* void *)
 //
 (* ****** ****** *)

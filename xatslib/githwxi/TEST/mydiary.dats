@@ -54,15 +54,19 @@ Sun 21 Jul 2024 11:06:11 PM EDT
 //
 val word = "hello"
 val (  ) =
-word.iforitm(
-  lam(i, ci) =>
-  (26).foritm(
+jsarray_fmake
+(
+lam(work) =>
+GASZ(word).iforitm
+(
+  lam(i, ci) => GASZ(26).foritm
+  (
     lam(j) =>
     let
       val cj = 'a'+j
     in
       if ci = cj then ()
-      else prints("ci = ", ci, ";", "cj = ", cj, "\n")
+      else work<strn>(word.fset(i, cj))
     end
   )
 )
