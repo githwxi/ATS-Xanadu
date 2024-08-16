@@ -1643,9 +1643,14 @@ Fri 16 Aug 2024 08:45:52 AM EDT
 < y0:vt >
 gseq_map$forall
   ( xs ) =
-strm_vt_forall0<y0>
 (
-  gseq_map_lstrm<xs><x0><y0>(xs))
+gseq_forall<xs><x0>(xs))
+where
+{
+#impltmp
+forall$test<x0>(x0) =
+forall$test0<y0>(map$fopr<x0><y0>(x0))
+}
 //
 #impltmp
 < xs:t0 >
@@ -1653,9 +1658,14 @@ strm_vt_forall0<y0>
 < y0:vt >
 gseq_imap$iforall
   ( xs ) =
-strm_vt_iforall0<y0>
 (
-  gseq_imap_lstrm<xs><x0><y0>(xs))
+gseq_iforall<xs><x0>(xs))
+where
+{
+#impltmp
+iforall$test<x0>(i0, x0) =
+iforall$test0<y0>(i0, imap$fopr<x0><y0>(i0, x0))
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
