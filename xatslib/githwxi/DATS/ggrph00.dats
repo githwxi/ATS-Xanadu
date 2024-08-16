@@ -16,8 +16,8 @@ For implementing operations on generic graphs
 //
 (*
 HX-2024-08-03:
-Let's first skip linearity.
-This is usually the way to go!
+Let's first skip linearity for now.
+This is usually the way to get started!
 *)
 //
 #extern
