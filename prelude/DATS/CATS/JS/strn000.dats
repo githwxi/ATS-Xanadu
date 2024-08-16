@@ -30,100 +30,26 @@
 //
 (*
 Author: Hongwei Xi
-(*
-Thu 11 Jul 2024 01:11:20 PM EDT
-*)
+Fri 16 Aug 2024 05:24:40 PM EDT
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload UN =
-"prelude/SATS/unsfx00.sats"
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-g_0<strn>
-((*void*)) = ("")
-//
-(* ****** ****** *)
-#impltmp
-g_cmp<strn> = strn_cmp<>
-(* ****** ****** *)
-//
-(*
-HX:
-This is in [gdbg000.dats]:
-#impltmp
-g_ptype
-< strn >
-( (*void*) ) = pstrn("strn")
-*)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2024-08-10:
-This one should definitely
-be replaced later!!!
-Sat 10 Aug 2024 08:49:55 PM EDT
-*)
-#impltmp
-<(*tmp*)>
-strn_cmp
-(xs, ys) =
-let
-#typedef xs = strn
-#typedef x0 = cgtz
-in//let
-gseq_cmp<xs><x0>(xs, ys) end
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-strn_gmake
-<list(cgtz)> = strn_make_list<>
-//
-#impltmp
-strn_gmake0
-<list_vt(cgtz)> = strn_make0_llist<>
-#impltmp
-strn_gmake1
-<list_vt(cgtz)> = strn_make1_llist<>
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-$UN.gasz_get$at$raw
-< strn >< cgtz >(cs, i0) =
-$UN.strn_get$at$raw<>(cs, i0)
-//
-#impltmp
-$UN.gasz_lget$at$raw
-< strn >< cgtz >(cs, i0) =
-let
-val c0 =
-$UN.strn_get$at$raw<>(cs, i0)
-prval pf = owed_t0_make{cgtz}() in (pf|c0)
-end//let//end($UN.gasz_lget$at$raw<strn><cgtz>)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2024-08-16:
-Fri 16 Aug 2024 05:02:22 PM EDT
-*)
 //
 #impltmp
 <(*tmp*)>
-strn_make_list(cs) =
-strn_fmake_fwork<> // HX: this one may not be
-(lam(work) => strn_foritm(cs, work))//efficient!
+strn_fmake_fwork
+  (fwork) =
+(
+XATS2JS_strn_fmake_fwork
+  (fwork)) where
+{
+#extern
+fun
+XATS2JS_strn_fmake_fwork
+(fwork: ((cgtz)->void)->void): strn = $extnam()
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -131,4 +57,4 @@ strn_fmake_fwork<> // HX: this one may not be
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_DATS_strn000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_axrf000.dats] *)
