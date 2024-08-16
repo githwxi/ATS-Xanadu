@@ -274,11 +274,30 @@ case+ xs of
 (* ****** ****** *)
 //
 (*
+HX-2024-08-16:
+Note that
+[list_fmake] and list_fmake_fwork]
+are both implemented in [list001.dats]
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+//
+HX-2024-08-04:
+This is not needed for now as
+[GSEQ_make_list] is defined as a [fcast]
 Sun 04 Aug 2024 10:05:15 AM EDT
+//
 #impltmp
 { a: t0 }
 GSEQ_make<list(a)><a> = GSEQ_make_list<>{a}
+//
 *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)

@@ -4103,7 +4103,7 @@ d2ecl_make_node
 , D2Cinclude
   (tok, src1, knd2, fopt, body))
 //
-end // end of [aux_include]
+end // end of [aux_include(d1cl)]
 
 (* ****** ****** *)
 
@@ -4255,7 +4255,9 @@ None_vt() =>
 the_nmspace_open(menv)
 | ~
 Some_vt(nm0) =>
-the_sexpenv_add(nm0, S2ITMfmodenv(menv))
+(
+the_sexpenv_add
+(nm0, S2ITMfmodenv(menv)))
 end // end of [Some]
 ) : void // end of val
 //
@@ -4263,9 +4265,10 @@ in//let
 //
 d2ecl_make_node
 ( loc0
-, D2Cstaload(tok0, src1, knd2, fopt, flag, body))
+, D2Cstaload
+( tok0, src1, knd2, fopt, flag, body))
 //
-end // end of [aux_staload]
+end // end of [aux_staload(d1cl)]
 
 (* ****** ****** *)
 
@@ -4289,7 +4292,7 @@ val s2tx =
 in
 the_sortenv_add(tid, s2tx);
 d2ecl_make_node(loc0, D2Cabssort(tid))
-end // end of [aux_abssort]
+end // end of [aux_abssort(d1cl)]
 
 (* ****** ****** *)
 
@@ -4362,7 +4365,7 @@ println!
 //
 in
   d2ecl_make_node(loc0, D2Cstacst0(s2c0, s2t0))
-end // end of [aux_stacst0]
+end // end of [aux_stacst0(d1cl)]
 
 (* ****** ****** *)
 
@@ -4482,13 +4485,25 @@ aux_sexpdef
 //
 val
 loc0 = d1cl.loc()
+//
+(*
+val () =
+println!
+("aux_sexpdef: loc0 = ", loc0)
+val () =
+println!
+("aux_sexpdef: d1cl = ", d1cl)
+*)
+//
 val-
 D1Csexpdef
 ( knd, sid
 , arg, res, body) = d1cl.node()
 //
-val (pf0|()) =
-the_sexpenv_pushnil()
+val
+(pf0|()) =
+(
+the_sexpenv_pushnil())
 //
 val
 s2e0 =
@@ -4632,7 +4647,6 @@ println!
 //
 } (* end of [where] *) // end of [val]
 //
-//
 val
 s2t0 = s2e0.sort()
 val
@@ -4647,11 +4661,12 @@ val () = stamp_s2cst_type(s2c0, t2p0)
 //
 in
 let
+//
 val () = the_sexpenv_add_cst(s2c0)
-in
+in//let
 d2ecl_make_node(loc0, D2Csexpdef(s2c0, s2e0))
-end
-end // end of [aux_sexpdef]
+end//let
+end // end of [aux_sexpdef(d1cl)]
 
 (* ****** ****** *)
 
@@ -5715,6 +5730,7 @@ println!
 val d2cs =
 (
 case+ dqid of
+//
 |
 DQ0EIDnone(id0) =>
 let
@@ -5724,15 +5740,18 @@ let
   // end of [val]
   val sym = dexpid_sym(tok)
   val opt = the_dexpenv_find(sym)
-in
-  case+ opt of
-  | ~None_vt() =>
-     list_nil()
-  | ~Some_vt(d2i) =>
-    ( case+ d2i of
-      | D2ITMcst(d2cs) => d2cs | _ => list_nil()
-    ) (* end of [Some_vt] *)
-end
+in//let
+case+ opt of
+| ~
+None_vt() =>
+  list_nil()
+| ~
+Some_vt(d2i) =>
+( case+ d2i of
+| D2ITMcst(d2cs) => d2cs | _ => list_nil()
+) (* end of [Some_vt] *)
+end // end-of-(DQ0EIDnone(id0))
+//
 |
 DQ0EIDsome(qua, id0) =>
 let
@@ -5742,17 +5761,37 @@ let
   // end of [val]
   val sym = dexpid_sym(tok)
   val opt = the_dexpenv_qfind(qua, sym)
-in
-  case+ opt of
-  | ~None_vt() =>
-     list_nil()
-  | ~Some_vt(d2i) =>
-    ( case+ d2i of
-      | D2ITMcst(d2cs) => d2cs | _ => list_nil()
-    ) (* end of [Some_vt] *)
-end
-) : d2cstlst // end of [val]
-} (* where *) // end of [auxdqid] *)
+in//let
+case+ opt of
+| ~
+None_vt() =>
+  list_nil()
+| ~
+Some_vt(d2i) =>
+( case+ d2i of
+| D2ITMcst(d2cs) => d2cs | _ => list_nil()
+) (* end of [Some_vt] *)
+end // end of [DQ0EIDsome(qua,id0))
+//
+) : d2cstlst // end of [ val(d2cs) ]
+//
+(*
+val () =
+list_foreach<d2cst>(d2cs) where
+{
+implement
+list_foreach$fwork<d2cst><void>
+  (d2c, env) =
+let
+val loc =
+d2cst_get_loc(d2c)
+in//let
+  println!("auxdqid: d2c = ", d2c, "(", loc, ")")
+end//end-of-[let]
+}
+*)
+//
+} (* where *) // end of [auxdqid(dqid:dq0eid)] *)
 
 (* ****** ****** *)
 
@@ -6016,7 +6055,7 @@ sqas = trans12_sqarglst(sqas)
 val
 tqas = trans12_tqarglst(tqas)
 //
-(*
+// (*
 val () =
 println!
 ("aux_implmnt0: id2c = ", id2c)
@@ -6028,7 +6067,7 @@ println!
 val () =
 println!
 ("aux_implmnt0: tqas = ", tqas)
-*)
+// *)
 //
 val () =
 auxid2c_tqas(id2c, tqas)
@@ -7028,6 +7067,9 @@ val
 loc0 = d1cl.loc()
 //
 (*
+val () =
+println!
+("trans12_decl: loc0 = ", loc0)
 val () =
 println!
 ("trans12_decl: d1cl = ", d1cl)

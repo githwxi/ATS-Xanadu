@@ -326,13 +326,13 @@ $(XATSOPT) -d $(PRELUDE)/DATS/tupl001.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/tupl002.dats
 all0_dats:: ; \
-$(XATSOPT) -s $(PRELUDE)/DATS/axrf000.dats
+$(XATSOPT) -d $(PRELUDE)/DATS/axrf000.dats
 all0_dats:: ; \
-$(XATSOPT) -s $(PRELUDE)/DATS/axrf001.dats
+$(XATSOPT) -d $(PRELUDE)/DATS/axrf001.dats
 all0_dats:: ; \
-$(XATSOPT) -s $(PRELUDE)/DATS/axsz000.dats
+$(XATSOPT) -d $(PRELUDE)/DATS/axsz000.dats
 all0_dats:: ; \
-$(XATSOPT) -s $(PRELUDE)/DATS/axsz001.dats
+$(XATSOPT) -d $(PRELUDE)/DATS/axsz001.dats
 all0_dats:: ; \
 $(XATSOPT) -d $(PRELUDE)/DATS/list000.dats
 all0_dats:: ; \

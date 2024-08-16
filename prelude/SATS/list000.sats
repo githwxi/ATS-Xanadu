@@ -73,12 +73,20 @@ list_make_3val
 ,x2: a, x3: a): list(a, 3)
 //
 (* ****** ****** *)
+//
 #symload
 list_sing with list_make_1val of 1000
 #symload
+list_1val with list_make_1val of 1000
+//
+#symload
 list_pair with list_make_2val of 1000
 #symload
-list_triple with list_make_3val of 1000
+list_2val with list_make_2val of 1000
+//
+#symload
+list_3val with list_make_3val of 1000
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

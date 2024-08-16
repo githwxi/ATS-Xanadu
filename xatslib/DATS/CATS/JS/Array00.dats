@@ -194,11 +194,11 @@ jsarray_make0_3val
  {a:vt}( x1:a, x2:a, x3:a ): jsa0(a)
 //
 #symload
-jsarray with jsarray_make0_1val of 1000
+jsarray_1val with jsarray_make0_1val of 1000
 #symload
-jsarray with jsarray_make0_2val of 1000
+jsarray_2val with jsarray_make0_2val of 1000
 #symload
-jsarray with jsarray_make0_3val of 1000
+jsarray_3val with jsarray_make0_3val of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
