@@ -89,3 +89,5 @@ strmcon_vt_cons(ni % b0, auxmain(ni/b0)))
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+
+(* end of [ATS3/XANADU_xatslib_githwxi_DATS_gint000.dats] *)

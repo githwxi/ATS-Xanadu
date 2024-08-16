@@ -969,6 +969,28 @@ gseq_filter_f1un_rllist
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-08-16:
+Fri 16 Aug 2024 08:33:31 AM EDT
+*)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+// HX: this one composes [map]
+gseq_map$forall(xs: xs): bool // with [forall]
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+// HX: this one composes [imap]
+gseq_imap$iforall(xs: xs): bool // with [iforall]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

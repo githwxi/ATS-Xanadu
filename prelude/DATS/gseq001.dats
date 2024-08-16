@@ -1632,6 +1632,34 @@ filter$test<x0>( x0 ) = fopr( x0 )
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-08-16:
+Fri 16 Aug 2024 08:45:52 AM EDT
+*)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_map$forall
+  ( xs ) =
+strm_vt_forall0<y0>
+(
+  gseq_map_lstrm<xs><x0><y0>(xs))
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_imap$iforall
+  ( xs ) =
+strm_vt_iforall0<y0>
+(
+  gseq_imap_lstrm<xs><x0><y0>(xs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
