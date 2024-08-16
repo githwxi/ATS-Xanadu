@@ -66,4 +66,4 @@ gtree_node_dfs$strmize = $GGRPH.ggrph_node_dfs$strmize
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_xatslib_JS_githwxi_DATS_gtree00.dats] *)
+(* end of [ATS3/XANADU_xatslib_githwxi_DATS_gtree00.dats] *)
