@@ -123,6 +123,11 @@ get$at with strn_get$at of 1000
 #symload
 fset$at with strn_fset$at of 1000
 //
+#symload
+get$at$raw with UN_strn_get$at$raw of 1000
+#symload
+fset$at$raw with UN_strn_fset$at$raw of 1000
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

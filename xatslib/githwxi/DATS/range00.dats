@@ -122,14 +122,11 @@ gseq_forall
 <range_ibtw><si>
 (    range    ) =
 (
-auxloop(lb, ub))
-where
+  auxloop(lb, ub)) where
 {
 //
 val lb = range_ibtw_lb<>(range)
 val ub = range_ibtw_ub<>(range)
-where
-{
 //
 fun
 auxloop

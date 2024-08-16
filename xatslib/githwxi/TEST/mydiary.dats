@@ -18,8 +18,21 @@ Sun 21 Jul 2024 11:06:11 PM EDT
 //
 #include
 "xatslib\
-/JS/HATS/xatslib_JS_sats.hats"
+/HATS/xatslib_JS_dats.hats"
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#include
+"srcgen1\
+/prelude\
+/HATS/CATS/JS/prelude_dats.hats"
+//
+(* ****** ****** *)
+#staload _ =
+"srcgen1\
+/prelude\
+/DATS/CATS/JS/Node/g_print.dats"
 (* ****** ****** *)
 (* ****** ****** *)
 #include
@@ -29,35 +42,19 @@ Sun 21 Jul 2024 11:06:11 PM EDT
 "srcgen2\
 /prelude/HATS/prelude_dats.hats"
 (* ****** ****** *)
-//
-#include
-"xatslib/JS/HATS/xatslib_JS_dats.hats"
-//
-(* ****** ****** *)
-#include
-"srcgen1\
-/prelude/HATS/CATS/JS/prelude_dats.hats"
-(* ****** ****** *)
-#staload _ =
-"srcgen1\
-/prelude/DATS/CATS/JS/Node/g_print.dats"
-(* ****** ****** *)
 (* ****** ****** *)
 //
-#staload
-"./../DATS/gint000.dats"
-#staload
-"./../DATS/qlist00.dats"
+#staload "./../HATS/githwxi_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val word = "hello"
-val (  ) =
-jsarray_fmake
+val wrd0 = "hello"
+val wrds =
+list_fmake_fwork<strn>
 (
 lam(work) =>
-GASZ(word).iforitm
+GASZ(wrd0).iforitm
 (
   lam(i, ci) => GASZ(26).foritm
   (
@@ -66,9 +63,10 @@ GASZ(word).iforitm
       val cj = 'a'+j
     in
       if ci = cj then ()
-      else work<strn>(word.fset(i, cj))
+      else work(UN_strn_fset$at$raw(wrd0, i, cj))
     end
   )
+)
 )
 //
 (* ****** ****** *)
