@@ -83,33 +83,19 @@ range_ibtwe(lb:si, ub:si): range_ibtw
 (* ****** ****** *)
 (* ****** ****** *)
 //
-local
-//
-#absimpl
-range_ibtw = @(si, si)
-//
-in//local
-//
 #impltmp
-<(*tmp*)>
-range_ibtw
-( lb, ub ) = @(lb, ub)
-//
-#impltmp
-<(*tmp*)>
-range_ibtw_lb(lbub) = lbub.0
-#impltmp
-<(*tmp*)>
-range_ibtw_ub(lbub) = lbub.1
-//
-end(*local*)//end-of-[absimpl(range_ibtw)]
-//
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-range_ibtwe
-( lb, ub ) = range_ibtw<>(lb, ub+1)
+g_print
+<range_ibtw>
+(   range   ) =
+(
+pstrn"range(";
+g_print<sint>(lb);pstrn",";
+g_print<sint>(ub);pstrn")")
+where
+{
+val lb = range_ibtw_lb<>(range)
+val ub = range_ibtw_ub<>(range)
+}(*where*)//end(g_print<range_ibtw>)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -124,8 +110,8 @@ if
 then (0) else (ub - lb))
 where
 {
-val lb = range_ibtw_lb(range)
-val ub = range_ibtw_ub(range)
+val lb = range_ibtw_lb<>(range)
+val ub = range_ibtw_ub<>(range)
 }(*where*)//end(gasz_length<range_ibtw>)
 //
 (* ****** ****** *)
@@ -136,11 +122,14 @@ gseq_forall
 <range_ibtw><si>
 (    range    ) =
 (
-auxloop(lb, ub)) where
+auxloop(lb, ub))
+where
 {
 //
-val lb = range_ibtw_lb(range)
-val ub = range_ibtw_ub(range)
+val lb = range_ibtw_lb<>(range)
+val ub = range_ibtw_ub<>(range)
+where
+{
 //
 fun
 auxloop
@@ -208,6 +197,50 @@ $UN.gasz_get$at$raw
 (
 range_ibtw_lb(range)+index)
 (*where*)//end(gasz_get$at$raw<range_ibtw>)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+#absimpl
+range_ibtw = @(si, si)
+//
+in//local
+//
+#impltmp
+<(*tmp*)>
+range_ibtw
+( lb, ub ) = @(lb, ub)
+//
+#impltmp
+range_ibtw_lb<>(lbub) = lbub.0
+#impltmp
+range_ibtw_ub<>(lbub) = lbub.1
+//
+end(*local*)//end-of-[absimpl(range_ibtw)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+range_ibtwe
+( lb, ub ) = range_ibtw<>(lb,ub+1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fcast // fun
+GSEQ_make_range_ibtw
+(xs: range_ibtw): GSEQ(range_ibtw, sint)
+#symload GSEQ with GSEQ_make_range_ibtw of 1000
+//
+#extern
+fcast // fun
+GASZ_make_range_ibtw
+(xs: range_ibtw): GASZ(range_ibtw, sint)
+#symload GASZ with GASZ_make_range_ibtw of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
