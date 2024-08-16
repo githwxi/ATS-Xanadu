@@ -72,6 +72,17 @@ val c0 =
 }(*where*)//end-of-[strn_forall(cs)]
 //
 #impltmp
+<>(*tmp*)
+strn_forall_f1un
+  (cs, test) =
+(
+  strn_forall<>(cs)) where
+{
+#impltmp
+forall$test<cgtz>(ch) = test(ch)
+}(*where*)//end-of-[strn_forall_f1un]
+//
+#impltmp
 gseq_forall
 <strn><cgtz> = strn_forall<>(*void*)
 //
@@ -108,6 +119,17 @@ val c0 =
 }(*where*)//end-of-[strn_rforall(cs)]
 //
 #impltmp
+<>(*tmp*)
+strn_rforall_f1un
+  (cs, test) =
+(
+  strn_rforall<>(cs)) where
+{
+#impltmp
+rforall$test<cgtz>(ch) = test(ch)
+}(*where*)//end-of-[strn_rforall_f1un]
+//
+#impltmp
 gseq_rforall
 <strn><cgtz> = strn_rforall<>(*void*)
 //
@@ -131,28 +153,109 @@ special function interfaces!
 The code is kept as a referece.
 Wed 07 Aug 2024 02:22:37 PM EDT
 *)
+//
 #impltmp
 <>(*tmp*)
-strn_iforall = gseq_iforall<strn><cgtz>
+strn_iforall =
+gseq_iforall<strn><cgtz>
+//
 #impltmp
 <>(*tmp*)
-strn_irforall = gseq_irforall<strn><cgtz>
+strn_iforall_f1un
+  (cs, test) =
+(
+  strn_iforall<>(cs)) where
+{
+#impltmp
+iforall$test<cgtz>(i0,ch) = test(i0,ch)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
+strn_irforall =
+gseq_irforall<strn><cgtz>
+//
+#impltmp
+<>(*tmp*)
+strn_irforall_f1un
+  (cs, test) =
+(
+  strn_irforall<>(cs)) where
+{
+#impltmp
+irforall$test<cgtz>(i0,ch) = test(i0,ch)
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <>(*tmp*)
-strn_foritm = gseq_foritm<strn><cgtz>
+strn_foritm =
+gseq_foritm<strn><cgtz>
 #impltmp
 <>(*tmp*)
-strn_rforitm = gseq_rforitm<strn><cgtz>
+strn_foritm_f1un
+  (cs, work) =
+(
+  strn_foritm<>(cs)) where
+{
+#impltmp
+foritm$work<cgtz>(ch) = work(ch)
+}
+//
+(* ****** ****** *)
+//
 #impltmp
 <>(*tmp*)
-strn_iforitm = gseq_iforitm<strn><cgtz>
+strn_rforitm =
+gseq_rforitm<strn><cgtz>
 #impltmp
 <>(*tmp*)
-strn_irforitm = gseq_irforitm<strn><cgtz>
+strn_rforitm_f1un
+  (cs, work) =
+(
+  strn_rforitm<>(cs)) where
+{
+#impltmp
+rforitm$work<cgtz>(ch) = work(ch)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
+strn_iforitm =
+gseq_iforitm<strn><cgtz>
+#impltmp
+<>(*tmp*)
+strn_iforitm_f1un
+  (cs, work) =
+(
+  strn_iforitm<>(cs)) where
+{
+#impltmp
+iforitm$work<cgtz>(i0,ch) = work(i0,ch)
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
+strn_irforitm =
+gseq_irforitm<strn><cgtz>
+#impltmp
+<>(*tmp*)
+strn_irforitm_f1un
+  (cs, work) =
+(
+  strn_irforitm<>(cs)) where
+{
+#impltmp
+irforitm$work<cgtz>(i0,ch) = work(i0,ch)
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -177,6 +280,20 @@ strn_rstrmize = gasz_rstrmize<strn><cgtz>
 #impltmp
 <>(*tmp*)
 strn_rstrqize = gasz_rstrqize<strn><cgtz>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-08-16:
+Fri 16 Aug 2024 05:22:41 PM EDT
+#impltmp
+<(*tmp*)>
+strn_fmake_fwork(fwork) = (* ...... *)
+HX-2024-08-16: Externally!
+For instance, one JS version
+can be found in [DATS/CATS/JS/strn000.dats]
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

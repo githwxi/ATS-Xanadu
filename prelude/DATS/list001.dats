@@ -455,11 +455,13 @@ c3hoose$forall$test<x0>(x1, x2, x3) = test(x1, x2, x3)
 list_fmake() =
 (
 let
-val () = fmake$fwork<x0>()
+val () =
+fmake$fwork<x0>((*0*))
 in//let
-list_vt2t(list_vt_reverse0<x0>(r0))
+list_vt2t{x0}
+(list_vt_reverse0<x0>(r0))
 end
-) where
+) where // end-of-[list_fmake()]
 {
 //
 var r0:
@@ -471,7 +473,8 @@ val p0 = $addr(r0)
 fmake$fwork$work<x0>(x0) =
 $UN.p2tr_set
 (p0,list_vt_cons(x0, $UN.p2tr_get(p0)))
-}
+//
+}(*where*)//end-of-[list_fmake((*0*))]
 //
 #impltmp
 < x0:t0 >
@@ -484,8 +487,8 @@ list_fmake_fwork
 fmake$fwork<x0>
   ((*void*)) =
 (
-  fwork(lam(x0) => fmake$fwork$work<x0>(x0)))
-}
+fwork(lam(x0) => fmake$fwork$work<x0>(x0)))
+}(*where*)//end-of-[list_fmake_fwork(fwork)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
