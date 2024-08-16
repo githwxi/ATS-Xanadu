@@ -182,7 +182,7 @@ fun<>
 strn_fmake((*void*)): strn
 fun
 strn_fmake_fwork
-(fwork: (cgtz -> void) -> void): strn
+(fwork: (cgtz->void)->void): strn//HX:3rd-order!
 //
 (* ****** ****** *)
 (* ****** ****** *)
