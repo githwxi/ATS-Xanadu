@@ -15,10 +15,10 @@ For implementing operations on so-called
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#abstype
+#abstbox
 qlist_t0_tx(a:t0) <= p0tr
 (*
-#abstype
+#abstbox
 qlist_t0_i0_tx(a:t0) <= p0tr
 *)
 //
@@ -316,3 +316,5 @@ $UN.gseq_uncons_raw<qlist(a)><a> = UN_qlist_uncons_raw<a>
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+
+(* end of [ATS3/XANADU_xatslib_githwxi_DATS_qlist00.dats] *)
