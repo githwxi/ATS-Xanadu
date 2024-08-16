@@ -978,15 +978,29 @@ fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-// HX: this one composes [map]
-gseq_map$forall(xs: xs): bool // with [forall]
+// HX: this one composes [map] with
+gseq_map$forall(xs: xs): bool // [forall]
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+// HX: this one composes
+gseq_map$forall_f1un // [map] with
+(xs: xs, fopr: (x0)->y0): bool // [forall]
 //
 fun
 <xs:t0>
 <x0:t0>
 <y0:vt>
-// HX: this one composes [imap]
-gseq_imap$iforall(xs: xs): bool // with [iforall]
+// HX: this one composes [imap] with
+gseq_imap$iforall(xs: xs): bool // [iforall]
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+// HX: this one composes
+gseq_imap$iforall_f1un // [imap] with
+(xs: xs, fopr: (ni,x0)->y0): bool // [iforall]
 //
 (* ****** ****** *)
 (* ****** ****** *)
