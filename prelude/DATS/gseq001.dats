@@ -1644,13 +1644,30 @@ Fri 16 Aug 2024 08:45:52 AM EDT
 gseq_map$forall
   ( xs ) =
 (
-gseq_forall<xs><x0>(xs))
-where
+gseq_forall
+<xs><x0>(xs)) where
 {
 #impltmp
 forall$test<x0>(x0) =
-forall$test0<y0>(map$fopr<x0><y0>(x0))
+forall$test0<y0>
+(map$fopr<x0><y0>(x0))
 }
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_map$forall_f1un
+  (xs, fopr) =
+(
+gseq_map$forall
+<xs><x0><y0>(xs)) where
+{
+#impltmp
+map$fopr<x0><y0>(x0) = fopr(x0)
+}(*where*)//end(gseq_map$forall_f1un)
+//
+(* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
@@ -1659,13 +1676,28 @@ forall$test0<y0>(map$fopr<x0><y0>(x0))
 gseq_imap$iforall
   ( xs ) =
 (
-gseq_iforall<xs><x0>(xs))
-where
+gseq_iforall
+<xs><x0>(xs)) where
 {
 #impltmp
 iforall$test<x0>(i0, x0) =
-iforall$test0<y0>(i0, imap$fopr<x0><y0>(i0, x0))
+iforall$test0<y0>
+(i0, imap$fopr<x0><y0>(i0, x0))
 }
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_imap$iforall_f1un
+  (xs, fopr) =
+(
+gseq_imap$iforall
+<xs><x0><y0>( xs ))
+where {
+#impltmp
+imap$fopr<x0><y0>(i0, x0) = fopr(i0, x0)
+}(*where*)//end(gseq_imap$iforall_f1un(...))
 //
 (* ****** ****** *)
 (* ****** ****** *)
