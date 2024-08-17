@@ -172,7 +172,6 @@ strn_irforitm_f2un
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 (*
 HX-2024-08-16:
 Fri 16 Aug 2024 04:48:12 PM EDT
@@ -183,6 +182,18 @@ strn_fmake((*void*)): strn
 fun<>
 strn_fmake_fwork
 (fwork: (cgtz->void)->void): strn//HX:3rd-order!
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-08-17:
+Sat 17 Aug 2024 12:27:46 PM EDT
+*)
+fun
+<xs:t0>
+gseq_strn$concat(xs: xs(*strnseq*)): strn
+#symload strn$concat with gseq_strn$concat of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -323,6 +323,24 @@ strn_rstrqize = gasz_rstrqize<strn><cgtz>
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< xs:t0 >
+gseq_strn$concat
+  ( xs ) = let
+//
+#typedef x0 = strn
+//
+in//let
+strn_fmake_fwork<>
+(
+lam(work) =>
+gseq_foritm_f1un<xs><x0>(xs,
+lam(cs) => strn_foritm_f1un<>(cs, work)))
+end(*let*)//end-of-[gseq_strn$concat( xs )]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2024-08-16:
 Fri 16 Aug 2024 05:22:41 PM EDT
