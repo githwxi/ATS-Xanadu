@@ -109,6 +109,17 @@ rforall$test1<x0> = rforall$test<x0>
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-08-17:
+Sat 17 Aug 2024 07:31:59 PM EDT
+#impltmp
+<(*tmp*)>
+a1sz_fmake_fwork(fwork) = (* ...... *)
+HX-2024-08-17: Externally!
+For instance, one JS version
+can be found in [DATS/CATS/JS/axsz000.dats]
+*)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

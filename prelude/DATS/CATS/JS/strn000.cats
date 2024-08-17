@@ -58,7 +58,7 @@ XATS2JS_strn_fmake_fwork
   (fwork)
 {
   var cs = []
-  fwork((c) => {cs.push(c);return})
+  fwork((ch) => {cs.push(ch);return})
   return String.fromCharCode.apply(null, cs)
 }
 //
