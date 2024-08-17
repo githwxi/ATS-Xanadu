@@ -1373,6 +1373,13 @@ gseq_imap$iforall_f2un // [imap] with
 //
 fun
 <xs:t0>
+<x0:t0> // HX: this one is forall cond.
+gseq_uncons$forall(xs: xs): bool // on uncons
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
 <x0:t0> // HX: it is strmize cond. on
 gseq_uncons$strmize(xs:xs): strm_vt(x0)//uncons
 fun
