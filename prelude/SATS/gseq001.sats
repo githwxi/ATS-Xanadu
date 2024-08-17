@@ -955,7 +955,6 @@ fun
 <x0:t0>
 gseq_filter_f1un_rlist
 (xs: xs, fopr: (x0)->bool): list(x0)
-//
 #symload filter_rlist with gseq_filter_f1un_rlist of 0100
 //
 fun
@@ -963,8 +962,35 @@ fun
 <x0:t0>
 gseq_filter_f1un_rllist
 (xs: xs, fopr: (x0)->bool): list_vt(x0)
-//
 #symload filter_rllist with gseq_filter_f1un_rllist of 0100
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-08-17:
+Sat 17 Aug 2024 11:35:35 AM EDT
+*)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map$listize
+(xs: xs): list_vt(y0) //HX: [map_llist]
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map$strmize
+(xs: xs): strm_vt(y0) //HX: [map_lstrm]
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map$strqize
+(xs: xs): strq_vt(y0) //HX: [map_lstrq]
 //
 (* ****** ****** *)
 (* ****** ****** *)
