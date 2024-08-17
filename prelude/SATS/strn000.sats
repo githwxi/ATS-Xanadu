@@ -178,6 +178,16 @@ strn_make1_llist
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun<>
+strn_append
+{m,n:i0}
+( xs
+: strn(m), ys: strn(n)): strn(m+n)
+#symload append with strn_append of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fcast // fun
 GSEQ_make_strn
 (xs: strn): GSEQ(strn, cgtz)
