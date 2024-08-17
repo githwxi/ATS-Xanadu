@@ -133,6 +133,30 @@ XATS2JS_a1sz_make_nfun
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-08-17:
+Sat 17 Aug 2024 07:33:26 PM EDT
+*)
+//
+#impltmp
+< x0:vt >
+a1sz_fmake_fwork
+  (fwork) =
+(
+XATS2JS_a1sz_fmake_fwork
+  (fwork)) where
+{
+#extern
+fun
+XATS2JS_a1sz_fmake_fwork
+{ x0:vt }
+( fwork
+: ((~x0) -> void) -> void): a1sz(x0) = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

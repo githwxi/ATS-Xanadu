@@ -177,8 +177,10 @@ HX-2024-08-16:
 Fri 16 Aug 2024 04:48:12 PM EDT
 *)
 //
+(*
 fun<>
 strn_fmake((*void*)): strn
+*)
 fun<>
 strn_fmake_fwork
 (fwork: (cgtz->void)->void): strn//HX:3rd-order!
