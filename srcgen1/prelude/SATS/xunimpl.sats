@@ -1371,6 +1371,18 @@ gseq_imap$iforall_f2un // [imap] with
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<xs:t0>
+<x0:t0> // HX: it is strmize cond. on
+gseq_uncons$strmize(xs:xs): strm_vt(x0)//uncons
+fun
+<xs:t0>
+<x0:t0> // HX: it is strqize cond. on
+gseq_uncons$strqize(xs:xs): strq_vt(x0)//uncons
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun<>
 strn_fmake((*void*)): strn
 fun<>
@@ -1424,12 +1436,16 @@ strn_irforitm_f2un
 #symload irforitm with strn_irforitm_f2un of 1000
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
 fun
 <xs:t0>
 gseq_strn$concat(xs: xs(*strnseq*)): strn
 #symload strn$concat with gseq_strn$concat of 1000
+//
+fun
+<xs:t0>
+gseq_strn$rconcat(xs: xs(*strnseq*)): strn
+#symload strn$rconcat with gseq_strn$rconcat of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

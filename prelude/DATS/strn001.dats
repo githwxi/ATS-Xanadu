@@ -338,6 +338,21 @@ gseq_foritm_f1un<xs><x0>(xs,
 lam(cs) => strn_foritm_f1un<>(cs, work)))
 end(*let*)//end-of-[gseq_strn$concat( xs )]
 //
+#impltmp
+< xs:t0 >
+gseq_strn$rconcat
+  ( xs ) = let
+//
+#typedef x0 = strn
+//
+in//let
+strn_fmake_fwork<>
+(
+lam(work) =>
+gseq_rforitm_f1un<xs><x0>(xs,
+lam(cs) => strn_rforitm_f1un<>(cs, work)))
+end(*let*)//end-of-[gseq_strn$rconcat( xs )]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

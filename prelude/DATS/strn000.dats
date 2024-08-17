@@ -107,6 +107,23 @@ lam(work) =>
 (foritm(xs, work); foritm(ys, work)))
 //
 (* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strn_reverse
+  ( xs ) =
+strn_fmake_fwork<>
+(lam(work) => rforitm(xs, work))
+#impltmp
+<(*tmp*)>
+strn_rappend
+  (xs, ys) =
+strn_fmake_fwork<>
+(
+lam(work) =>
+(rforitm(xs, work); foritm(ys, work)))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp

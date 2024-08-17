@@ -180,10 +180,24 @@ strn_make1_llist
 //
 fun<>
 strn_append
-{m,n:i0}
-( xs
-: strn(m), ys: strn(n)): strn(m+n)
+{m0,n0:i0}
+( xs: strn(m0)
+, ys: strn(n0)): strn(m0+n0)
 #symload append with strn_append of 1000
+//
+(* ****** ****** *)
+//
+fun<>
+strn_reverse
+{n0:i0}
+( cs: strn(n0)): strn(n0)
+#symload reverse with strn_reverse of 1000
+fun<> // HX-2024-08-17: is
+strn_rappend // this one really useful?
+{m0,n0:i0}
+( xs: strn(m0)
+, ys: strn(n0)): strn(m0+n0)
+#symload rappend with strn_rappend of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
