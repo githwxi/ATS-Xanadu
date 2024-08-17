@@ -130,7 +130,7 @@ strn_fmake_fwork<> //HX:it may not be
 //
 #impltmp
 <(*tmp*)>
-UN_strn_get$at$raw
+$UN.strn_get$at$raw
   (cs, i0) =
 (
 XATS2JS_strn_get$at$raw
@@ -142,9 +142,12 @@ XATS2JS_strn_get$at$raw
   (cs: strn, i0: nint): cgtz = $extnam()
 }
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 <(*tmp*)>
-UN_strn_fset$at$raw
+$UN.strn_fset$at$raw
   (cs, i0, c0) =
 strn_fmake_fwork<>
 (

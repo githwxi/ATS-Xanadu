@@ -108,6 +108,9 @@ strn_fset$at
 (cs: strn
 ,i0: nint, c0: cgtz): strn
 //
+(*
+HX-2024-08-16:
+Plz see [unsfx00.sats]:
 fun<>
 UN_strn_get$at$raw
 (cs: strn, i0: nint): cgtz
@@ -115,6 +118,7 @@ fun<>
 UN_strn_fset$at$raw
 ( cs: strn
 , i0: nint, c0: cgtz): strn
+*)
 //
 #symload
 [] with strn_get$at of 1000
@@ -122,11 +126,6 @@ UN_strn_fset$at$raw
 get$at with strn_get$at of 1000
 #symload
 fset$at with strn_fset$at of 1000
-//
-#symload
-get$at$raw with UN_strn_get$at$raw of 1000
-#symload
-fset$at$raw with UN_strn_fset$at$raw of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

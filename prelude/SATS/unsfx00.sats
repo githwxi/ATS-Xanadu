@@ -250,7 +250,16 @@ gasz_lset$at$raw
 (* ****** ****** *)
 //
 fun<>
-strn_get$at$raw(strn, ni): cgtz
+strn_get$at$raw
+(cs:strn, i0:nint): cgtz
+fun<>
+strn_fset$at$raw
+(cs:strn, i0:nint, c0:cgtz): strn
+//
+#symload
+get$at$raw with strn_get$at$raw of 1000
+#symload
+fset$at$raw with strn_fset$at$raw of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

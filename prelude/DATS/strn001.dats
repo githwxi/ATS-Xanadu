@@ -48,9 +48,6 @@ strn_forall<> =
 gasz_forall<strn><cgtz>
 *)
 //
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #impltmp
 <>(*tmp*)
 strn_forall(cs) =
@@ -59,12 +56,15 @@ strn_forall(cs) =
 where
 {
 //
-val n0 = strn_length<>(cs)
+val n0 =
+(
+  strn_length<>(cs))
 //
 #impltmp
 forall$test<ni>(i0) =
 (
-  forall$test<cgtz>(c0)) where
+  forall$test<cgtz>(c0))
+where
 {
 val c0 =
   $UN.strn_get$at$raw<>(cs, i0)
@@ -154,20 +154,59 @@ The code is kept as a referece.
 Wed 07 Aug 2024 02:22:37 PM EDT
 *)
 //
+(*
 #impltmp
 <>(*tmp*)
 strn_iforall =
 gseq_iforall<strn><cgtz>
+*)
 //
 #impltmp
 <>(*tmp*)
-strn_iforall_f1un
+strn_iforall(cs) =
+(
+  nint_forall<>(n0))
+where
+{
+//
+val n0 =
+(
+  strn_length<>(cs))
+//
+#impltmp
+forall$test<ni>(i0) =
+(
+iforall$test<cgtz>(i0, c0))
+where
+{
+val c0 =
+  $UN.strn_get$at$raw<>(cs, i0)
+}
+}(*where*)//end-of-[strn_iforall(cs)]
+//
+#impltmp
+<>(*tmp*)
+strn_iforall_f2un
   (cs, test) =
 (
   strn_iforall<>(cs)) where
 {
 #impltmp
 iforall$test<cgtz>(i0,ch) = test(i0,ch)
+}
+//
+#impltmp
+gseq_iforall
+<strn><cgtz> = strn_iforall<>(*void*)
+//
+#impltmp
+gasz_iforall
+<strn><cgtz>(cs) =
+(
+strn_iforall<>(cs)) where
+{
+#impltmp
+iforall$test<cgtz> = iforall$test1<cgtz>
 }
 //
 (* ****** ****** *)
@@ -179,7 +218,7 @@ gseq_irforall<strn><cgtz>
 //
 #impltmp
 <>(*tmp*)
-strn_irforall_f1un
+strn_irforall_f2un
   (cs, test) =
 (
   strn_irforall<>(cs)) where
@@ -231,7 +270,7 @@ strn_iforitm =
 gseq_iforitm<strn><cgtz>
 #impltmp
 <>(*tmp*)
-strn_iforitm_f1un
+strn_iforitm_f2un
   (cs, work) =
 (
   strn_iforitm<>(cs)) where
@@ -248,7 +287,7 @@ strn_irforitm =
 gseq_irforitm<strn><cgtz>
 #impltmp
 <>(*tmp*)
-strn_irforitm_f1un
+strn_irforitm_f2un
   (cs, work) =
 (
   strn_irforitm<>(cs)) where
