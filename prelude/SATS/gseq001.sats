@@ -1031,6 +1031,39 @@ gseq_imap$iforall_f2un // [imap] with
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+//
+HX-2024-08-17:
+For instance,
+a typical use of
+gseq_uncons$forall:
+//
+#impltmp
+< x0:t0 >
+list_forall =
+gseq_uncons$forall<list(x0)><x0>
+//
+*)
+fun
+<xs:t0>
+<x0:t0> // HX: this one is forall cond.
+gseq_uncons$forall(xs: xs): bool // on uncons
+//
+(* ****** ****** *)
+//
+(*
+//
+HX-2024-08-17:
+For instance,
+a typical use of
+gseq_uncons$strmize:
+//
+#impltmp
+< x0:t0 >
+list_strmize =
+gseq_uncons$strmize<list(x0)><x0>
+//
+*)
 fun
 <xs:t0>
 <x0:t0> // HX: this one is strmize cond. on
