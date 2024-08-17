@@ -164,6 +164,18 @@ XATS2JS_strn_get$at$raw
 //
 #impltmp
 <(*tmp*)>
+strn_append
+  (xs, ys) =
+strn_fmake_fwork<>
+(
+lam(work) =>
+(foritm(xs, work); foritm(ys, work)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
 $UN.strn_fset$at$raw
   (cs, i0, c0) =
 strn_fmake_fwork<>

@@ -62,6 +62,16 @@ strn(26, lam(i)=>'a'+i)
 val () =
 prints("AB = ", AB, "\n")
 //
+val
+ABAB =
+adds(AB, AB) where
+{
+#impltmp
+g_add<strn> = strn_append
+}
+val () =
+prints("ABAB = ", ABAB, "\n")
+//
 (* ****** ****** *)
 ////
 (* ****** ****** *)
