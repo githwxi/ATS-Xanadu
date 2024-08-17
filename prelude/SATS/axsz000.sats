@@ -97,7 +97,7 @@ a1sz with a1sz_make_nfun of 1000
 #symload
 a1sz_ncpy with a1sz_make_ncpy of 1000
 #symload
-a1sz_nfun with a1sz_make_ncpy of 1000
+a1sz_nfun with a1sz_make_nfun of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -98,6 +98,18 @@ strn_gmake1
 (* ****** ****** *)
 //
 #impltmp
+<(*tmp*)>
+strn_append
+  (xs, ys) =
+strn_fmake_fwork<>
+(
+lam(work) =>
+(foritm(xs, work); foritm(ys, work)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
 $UN.gasz_get$at$raw
 < strn >< cgtz >(cs, i0) =
 $UN.strn_get$at$raw<>(cs, i0)
@@ -159,19 +171,6 @@ XATS2JS_strn_get$at$raw
   (cs: strn, i0: nint): cgtz = $extnam()
 }
 //
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-strn_append
-  (xs, ys) =
-strn_fmake_fwork<>
-(
-lam(work) =>
-(foritm(xs, work); foritm(ys, work)))
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
