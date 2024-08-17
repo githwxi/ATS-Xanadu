@@ -72,6 +72,12 @@ g_add<strn> = strn_append
 val () =
 prints("ABAB = ", ABAB, "\n")
 //
+val
+ABABAB =
+strn$concat(@(AB, AB, AB))
+val () =
+prints("ABABAB = ", ABABAB, "\n")
+//
 (* ****** ****** *)
 ////
 (* ****** ****** *)

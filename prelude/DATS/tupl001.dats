@@ -152,6 +152,128 @@ end//let//end-of-[gseq_irforall(...)]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-08-17:
+Sat 17 Aug 2024 02:55:13 PM EDT
+*)
+//
+#impltmp
+{ x0:t0 }
+gseq_forall
+<t0up(x0,x0,x0)><x0>
+  ( tup ) =
+(
+if not
+(forall$test<x0>(tup.0))
+then false else
+if not
+(forall$test<x0>(tup.1))
+then false
+else forall$test<x0>(tup.2))//forall
+#impltmp
+{ x0:t0 }
+gseq_exists
+<t0up(x0,x0,x0)><x0>
+  ( tup ) =
+(
+if
+exists$test<x0>(tup.0)
+then true
+else if // more
+exists$test<x0>(tup.1) 
+then true // more
+else exists$test<x0>(tup.2))//exists
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+gseq_forall
+<t1up(x0,x0,x0)><x0>
+  ( tup ) =
+(
+if not(
+forall$test<x0>(tup.0))
+then false else
+if not(
+forall$test<x0>(tup.1))
+then false
+else forall$test<x0>(tup.2))//forall
+#impltmp
+{ x0:t0 }
+gseq_exists
+<t1up(x0,x0,x0)><x0>
+  ( tup ) =
+(
+if
+exists$test<x0>(tup.0)
+then true
+else if // more
+exists$test<x0>(tup.1) 
+then true // more
+else exists$test<x0>(tup.2))//exists
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+gseq_rforall
+<t0up(x0,x0,x0)><x0>
+  ( tup ) =
+(
+if not(
+rforall$test<x0>(tup.2))
+then false else
+if not(
+rforall$test<x0>(tup.1))
+then false
+else rforall$test<x0>(tup.0))//rforall
+#impltmp
+{ x0:t0 }
+gseq_rexists
+<t0up(x0,x0,x0)><x0>
+  ( tup ) =
+(
+if
+rexists$test<x0>(tup.2)
+then true
+else if // more
+rexists$test<x0>(tup.1) 
+then true // more
+else rexists$test<x0>(tup.0))//rexists
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+gseq_rforall
+<t1up(x0,x0,x0)><x0>
+  ( tup ) =
+(
+if not(
+rforall$test<x0>(tup.2))
+then false else
+if not(
+rforall$test<x0>(tup.1))
+then false
+else rforall$test<x0>(tup.0))//rforall
+#impltmp
+{ x0:t0 }
+gseq_rexists
+<t1up(x0,x0,x0)><x0>
+  ( tup ) =
+(
+if
+rexists$test<x0>(tup.2)
+then true
+else if // more
+rexists$test<x0>(tup.1) 
+then true // more
+else rexists$test<x0>(tup.0))//rexists
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
