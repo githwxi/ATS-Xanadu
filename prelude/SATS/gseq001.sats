@@ -999,7 +999,7 @@ fun
 <x0:t0>
 <y0:vt>
 // HX: this one composes
-gseq_imap$iforall_f1un // [imap] with
+gseq_imap$iforall_f2un // [imap] with
 (xs: xs, fopr: (ni,x0)->y0): bool // [iforall]
 //
 (* ****** ****** *)

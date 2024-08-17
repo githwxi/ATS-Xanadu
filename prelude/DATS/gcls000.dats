@@ -135,6 +135,25 @@ gseq_rlistize<xs><x0>(GSEQ_unmk(gseq)))
 #impltmp
 < xs:t0 >
 < x0:t0 >
+GSEQ_strmize
+  (gseq) =
+(
+gseq_strmize<xs><x0>(GSEQ_unmk(gseq)))
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+GSEQ_rstrmize
+  (gseq) =
+(
+gseq_rstrmize<xs><x0>(GSEQ_unmk(gseq)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
 GSEQ_forall
   (gseq) =
 (
@@ -406,6 +425,26 @@ GASZ_rlistize
 gasz_rlistize<xs><x0>(GASZ_unmk(gasz)))
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+GASZ_strmize
+  (gasz) =
+(
+gasz_strmize<xs><x0>(GASZ_unmk(gasz)))
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+GASZ_rstrmize
+  (gasz) =
+(
+gasz_rstrmize<xs><x0>(GASZ_unmk(gasz)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 < xs:t0 >
@@ -414,6 +453,13 @@ GASZ_forall
   (gasz) =
 (
 gasz_forall<xs><x0>(GASZ_unmk(gasz)))
+#impltmp
+< xs:t0 >
+< x0:vt >
+GASZ_exists
+  (gasz) =
+(
+gasz_exists<xs><x0>(GASZ_unmk(gasz)))
 //
 #impltmp
 < xs:t0 >
@@ -479,6 +525,87 @@ GASZ_rexists_f1un
   (gasz, test) =
 (
 gasz_rexists_f1un<xs><x0>(GASZ_unmk(gasz), test))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-08-17:
+Sat 17 Aug 2024 07:34:48 AM EDT
+The following style seems to be a
+superior alternative to introducing
+templates like GASZ_foritm?
+*)
+//
+#impltmp
+{ xs:t0
+, x0:t0 }
+gseq_foritm
+<GASZ(xs,x0)><x0>
+ ( gasz ) =
+gseq_foritm<xs><x0>(GASZ_unmk(gasz))
+//
+#impltmp
+{ xs:t0
+, x0:t0 }
+gseq_foritm_f1un
+<GASZ(xs,x0)><x0>
+ (gasz, test) =
+gseq_foritm_f1un<xs><x0>(GASZ_unmk(gasz), test)
+//
+(* ****** ****** *)
+//
+#impltmp
+{ xs:t0
+, x0:t0 }
+gseq_rforitm
+<GASZ(xs,x0)><x0>
+ ( gasz ) =
+gseq_rforitm<xs><x0>(GASZ_unmk(gasz))
+//
+#impltmp
+{ xs:t0
+, x0:t0 }
+gseq_rforitm_f1un
+<GASZ(xs,x0)><x0>
+ (gasz, test) =
+gseq_rforitm_f1un<xs><x0>(GASZ_unmk(gasz), test)
+//
+(* ****** ****** *)
+//
+#impltmp
+{ xs:t0
+, x0:t0 }
+gseq_iforitm
+<GASZ(xs,x0)><x0>
+ ( gasz ) =
+gseq_iforitm<xs><x0>(GASZ_unmk(gasz))
+//
+#impltmp
+{ xs:t0
+, x0:t0 }
+gseq_iforitm_f2un
+<GASZ(xs,x0)><x0>
+ (gasz, test) =
+gseq_iforitm_f2un<xs><x0>(GASZ_unmk(gasz), test)
+//
+(* ****** ****** *)
+//
+#impltmp
+{ xs:t0
+, x0:t0 }
+gseq_irforitm
+<GASZ(xs,x0)><x0>
+ ( gasz ) =
+gseq_irforitm<xs><x0>(GASZ_unmk(gasz))
+//
+#impltmp
+{ xs:t0
+, x0:t0 }
+gseq_irforitm_f2un
+<GASZ(xs,x0)><x0>
+ (gasz, test) =
+gseq_irforitm_f2un<xs><x0>(GASZ_unmk(gasz), test)
 //
 (* ****** ****** *)
 (* ****** ****** *)

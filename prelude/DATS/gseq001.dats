@@ -1689,7 +1689,7 @@ iforall$test0<y0>
 < xs:t0 >
 < x0:t0 >
 < y0:vt >
-gseq_imap$iforall_f1un
+gseq_imap$iforall_f2un
   (xs, fopr) =
 (
 gseq_imap$iforall
@@ -1697,7 +1697,7 @@ gseq_imap$iforall
 where {
 #impltmp
 imap$fopr<x0><y0>(i0, x0) = fopr(i0, x0)
-}(*where*)//end(gseq_imap$iforall_f1un(...))
+}(*where*)//end(gseq_imap$iforall_f2un(...))
 //
 (* ****** ****** *)
 (* ****** ****** *)
