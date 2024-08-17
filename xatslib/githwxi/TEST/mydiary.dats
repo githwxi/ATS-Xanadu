@@ -41,11 +41,9 @@ Sun 21 Jul 2024 11:06:11 PM EDT
 /HATS/CATS/JS/prelude_dats.hats"
 //
 (* ****** ****** *)
-(*
 #include
 "srcgen2\
 /prelude/HATS/prelude_JS_dats.hats"
-*)
 (* ****** ****** *)
 #staload _ =
 "srcgen1\
@@ -60,21 +58,27 @@ Sun 21 Jul 2024 11:06:11 PM EDT
 (* ****** ****** *)
 //
 val wrd0 = "hello"
-val (  ) =
-GSEQ(wrd0).iforitm
+val wrds =
+list_fmake_fwork<strn>
 (
-  lam(i, ci) => GSEQ(26).foritm
-  (
-    lam(j) =>
-    let
-      val cj = 'a'+j
-    in
-      if ci = cj
-      then () else prints
-      ($UN.strn_fset$at$raw(wrd0, i, cj), "\n")
-    end
-  )
+lam(work) =>
+GASZ(wrd0).iforitm(
+lam(i, ci) => GASZ(26).foritm
+(
+  lam(j) =>
+  let
+    val cj = 'a'+j
+  in
+    if ci = cj
+    then () else work
+    ($UN.strn_fset$at$raw(wrd0, i, cj))
+  end
 )
+)
+)
+//
+val (  ) = prints("wrds = ", wrds, "\n")
+//
 ////
 val wrds =
 list_fmake_fwork<strn>

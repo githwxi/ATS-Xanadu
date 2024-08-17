@@ -154,6 +154,23 @@ GSEQ_rlistize
 fun
 <xs:t0>
 <x0:t0>
+GSEQ_strmize
+(GSEQ(xs,x0)): strm_vt(x0)
+fun
+<xs:t0>
+<x0:t0>
+GSEQ_rstrmize
+(GSEQ(xs,x0)): strm_vt(x0)
+//
+#symload strmize with GSEQ_strmize of 1000
+#symload rstrmize with GSEQ_rstrmize of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
 GSEQ_forall
 (gseq: GSEQ(xs, x0)): bool
 fun
@@ -473,8 +490,31 @@ GASZ_rlistize
 fun
 <xs:t0>
 <x0:vt>
+GASZ_strmize
+(GASZ(xs,x0)): strm_vt(x0)
+fun
+<xs:t0>
+<x0:vt>
+GASZ_rstrmize
+(GASZ(xs,x0)): strm_vt(x0)
+//
+#symload strmize with GASZ_strmize of 1000
+#symload rstrmize with GASZ_rstrmize of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:vt>
 GASZ_forall
 (gasz: GASZ(xs, x0)): bool
+fun
+<xs:t0>
+<x0:vt>
+GASZ_exists
+(gasz: GASZ(xs, x0)): bool
+//
 fun
 <xs:t0>
 <x0:vt>
