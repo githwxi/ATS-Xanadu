@@ -65,7 +65,7 @@ $UN.gseq_head$raw
   ( xs ) =
 let
 val (x0, xs) =
-$UN.gseq_uncons$raw<xs><x0> in (x0)
+$UN.gseq_uncons$raw<xs><x0>(xs) in (x0)
 end(*let*)//end-of-[$UN.gseq_head$raw(xs)]
 #impltmp
 { xs:t0 }
@@ -74,7 +74,7 @@ $UN.gseq_tail$raw
   ( xs ) =
 let
 val (x0, xs) =
-$UN.gseq_uncons$raw<xs><x0> in (xs)
+$UN.gseq_uncons$raw<xs><x0>(xs) in (xs)
 end(*let*)//end-of-[$UN.gseq_tail$raw(xs)]
 //
 #impltmp
@@ -85,8 +85,8 @@ $UN.gseq_uncons$raw
 ( 
  @(x0, xs)) where
 {
-val x0 = $UN.gseq_head$raw<xs><x0>(xs)
-val xs = $UN.gseq_tail$raw<xs><x0>(xs)
+  val x0 = $UN.gseq_head$raw<xs><x0>(xs)
+  val xs = $UN.gseq_tail$raw<xs><x0>(xs)
 }(*where*)//end-of-[$UN.gseq_uncons$raw(xs)]
 //
 (* ****** ****** *)
