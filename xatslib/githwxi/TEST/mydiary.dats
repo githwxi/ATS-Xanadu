@@ -57,6 +57,15 @@ Sun 21 Jul 2024 11:06:11 PM EDT
 (* ****** ****** *)
 (* ****** ****** *)
 //
+val AB =
+strn(26, lam(i)=>'a'+i)
+val () =
+prints("AB = ", AB, "\n")
+//
+(* ****** ****** *)
+////
+(* ****** ****** *)
+//
 val wrd0 = "hello"
 val wrds =
 list_fmake_fwork<strn>
