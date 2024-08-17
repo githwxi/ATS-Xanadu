@@ -108,14 +108,14 @@ strn_rforall_f1un
 #symload rforall with strn_rforall_f1un of 1000
 //
 fun<>
-strn_iforall_f1un
+strn_iforall_f2un
 (cs: strn, test: (ni,cgtz)->bool): bool
-#symload iforall with strn_iforall_f1un of 1000
+#symload iforall with strn_iforall_f2un of 1000
 //
 fun<>
-strn_irforall_f1un
+strn_irforall_f2un
 (cs: strn, test: (ni,cgtz)->bool): bool
-#symload irforall with strn_irforall_f1un of 1000
+#symload irforall with strn_irforall_f2un of 1000
 //
 (* ****** ****** *)
 //
@@ -160,14 +160,14 @@ strn_rforitm_f1un
 #symload rforitm with strn_rforitm_f1un of 1000
 //
 fun<>
-strn_iforitm_f1un
+strn_iforitm_f2un
 (cs: strn, work: (ni,cgtz)->void): void
-#symload iforitm with strn_iforitm_f1un of 1000
+#symload iforitm with strn_iforitm_f2un of 1000
 //
 fun<>
-strn_irforitm_f1un
+strn_irforitm_f2un
 (cs: strn, work: (ni,cgtz)->void): void
-#symload irforitm with strn_irforitm_f1un of 1000
+#symload irforitm with strn_irforitm_f2un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -180,7 +180,7 @@ Fri 16 Aug 2024 04:48:12 PM EDT
 //
 fun<>
 strn_fmake((*void*)): strn
-fun
+fun<>
 strn_fmake_fwork
 (fwork: (cgtz->void)->void): strn//HX:3rd-order!
 //

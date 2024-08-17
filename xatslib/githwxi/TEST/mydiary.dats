@@ -6,8 +6,20 @@ Sat 03 Aug 2024 03:08:26 PM EDT
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsfx00.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 #staload _ =
 "prelude/DATS/gdbg000.dats"
+(* ****** ****** *)
+(* ****** ****** *)
+#include
+"srcgen1\
+/prelude/HATS/prelude_dats.hats"
+#include
+"srcgen2\
+/prelude/HATS/prelude_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -29,18 +41,16 @@ Sun 21 Jul 2024 11:06:11 PM EDT
 /HATS/CATS/JS/prelude_dats.hats"
 //
 (* ****** ****** *)
+(*
+#include
+"srcgen2\
+/prelude/HATS/prelude_JS_dats.hats"
+*)
+(* ****** ****** *)
 #staload _ =
 "srcgen1\
 /prelude\
 /DATS/CATS/JS/Node/g_print.dats"
-(* ****** ****** *)
-(* ****** ****** *)
-#include
-"srcgen1\
-/prelude/HATS/prelude_dats.hats"
-#include
-"srcgen2\
-/prelude/HATS/prelude_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -50,11 +60,27 @@ Sun 21 Jul 2024 11:06:11 PM EDT
 (* ****** ****** *)
 //
 val wrd0 = "hello"
+val (  ) =
+GSEQ(wrd0).iforitm
+(
+  lam(i, ci) => GSEQ(26).foritm
+  (
+    lam(j) =>
+    let
+      val cj = 'a'+j
+    in
+      if ci = cj
+      then () else prints
+      ($UN.strn_fset$at$raw(wrd0, i, cj), "\n")
+    end
+  )
+)
+////
 val wrds =
 list_fmake_fwork<strn>
 (
 lam(work) =>
-GASZ(wrd0).iforitm
+GSEQ(wrd0).iforitm
 (
   lam(i, ci) => GASZ(26).foritm
   (
@@ -62,12 +88,15 @@ GASZ(wrd0).iforitm
     let
       val cj = 'a'+j
     in
-      if ci = cj then ()
-      else work(UN_strn_fset$at$raw(wrd0, i, cj))
+      if ci = cj
+      then () else work
+      ($UN.strn_fset$at$raw(wrd0, i, cj))
     end
   )
 )
 )
+//
+val (  ) = prints("wrds = ", wrds, "\n")
 //
 (* ****** ****** *)
 ////

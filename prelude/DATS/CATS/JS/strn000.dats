@@ -39,6 +39,23 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #impltmp
 <(*tmp*)>
+strn_length
+  ( cs ) =
+(
+XATS2JS_strn_length
+  ( cs )) where
+{
+#extern
+fun
+XATS2JS_strn_length
+  (cs: strn): nint = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
 strn_fmake_fwork
   (fwork) =
 (
