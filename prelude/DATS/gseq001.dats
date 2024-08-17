@@ -1650,20 +1650,20 @@ Sat 17 Aug 2024 11:47:00 AM EDT
 < xs:t0 >
 < x0:t0 >
 < y0:vt >
-gseq_map$listize
+gseq_map$listize =
 gseq_map_llist<xs><x0><y0>(*alias*)
 //
 #impltmp
 < xs:t0 >
 < x0:t0 >
 < y0:vt >
-gseq_map$strmize
+gseq_map$strmize =
 gseq_map_lstrm<xs><x0><y0>(*alias*)
 #impltmp
 < xs:t0 >
 < x0:t0 >
 < y0:vt >
-gseq_map$strqize
+gseq_map$strqize =
 gseq_map_lstrq<xs><x0><y0>(*alias*)
 //
 (* ****** ****** *)
