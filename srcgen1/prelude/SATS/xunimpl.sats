@@ -1308,6 +1308,34 @@ f1un_srch$make_gseq(xs): f1un(x0,bool)
 (* ****** ****** *)
 //
 (*
+HX-2024-08-17:
+Sat 17 Aug 2024 11:35:35 AM EDT
+*)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map$listize
+(xs: xs): list_vt(y0) //HX: [map_llist]
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map$strmize
+(xs: xs): strm_vt(y0) //HX: [map_lstrm]
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map$strqize
+(xs: xs): strq_vt(y0) //HX: [map_lstrq]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2024-08-16:
 Fri 16 Aug 2024 08:33:31 AM EDT
 *)
