@@ -69,24 +69,25 @@ t1up1_vt
 //
 #typedef
 t0up2_t0
-(a0:t0,a1:t0) = @(a0,a1)
+(a0: t0
+,a1: t0) = @(a0, a1)
 #vwtpdef
 t0up2_vt
-(a0:vt,a1:vt) = @(a0,a1)
-//
-#sexpdef t0up = t0up2_t0
-#sexpdef t0up_vt = t0up2_vt
+(a0: vt
+,a1: vt) = @(a0, a1)
 //
 #typedef
 t1up2_t0
-(a0:t0
-,a1:t0) = $tup_t0(a0,a1)
+(a0: t0
+,a1: t0) = $tup_t0(a0,a1)
 #vwtpdef
 t1up2_vt
-(a0:vt
-,a1:vt) = $tup_vt(a0,a1)
+(a0: vt
+,a1: vt) = $tup_vt(a0,a1)
 //
+#sexpdef t0up = t0up2_t0
 #sexpdef t1up = t1up2_t0
+#sexpdef t0up_vt = t0up2_vt
 #sexpdef t1up_vt = t1up2_vt
 //
 (* ****** ****** *)
@@ -103,6 +104,35 @@ x2tup_type
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#typedef
+t0up3_t0
+(a0: t0
+,a1: t0
+,a2: t0) = @(a0,a1,a2)
+#vwtpdef
+t0up3_vt
+(a0: vt
+,a1: vt
+,a2: vt) = @(a0,a1,a2)
+//
+#typedef
+t1up3_t0
+(a0: t0
+,a1: t0
+,a2: t0) = $tup_t0(a0,a1,a2)
+#vwtpdef
+t1up3_vt
+(a0: vt
+,a1: vt
+,a2: vt) = $tup_vt(a0,a1,a2)
+//
+#sexpdef t0up = t0up3_t0//len-3
+#sexpdef t1up = t1up3_t0//len-3
+#sexpdef t0up_vt = t0up3_vt//len-3
+#sexpdef t1up_vt = t1up3_vt//len-3
+//
+(*
 #vwtpdef
 t0up3
 (a0:vt
@@ -111,6 +141,7 @@ t0up3
 t1up3
 (a0:vt
 ,a1:vt,a2:vt) = $tup(a0,a1,a2)
+*)
 (* ****** ****** *)
 #vwtpdef
 t0up4

@@ -338,7 +338,7 @@ val () = g_print1<a0>(tup.0)
 val () = t0up_print$sep()
 val () = g_print1<a1>(tup.1)
 val () = t0up_print$end((*nil*))
-end // end of [g_print1<t0up>(tup)]
+end // end of [g_print1<t0up2_vt>(tup)]
 //
 #impltmp
 {a0:vt
@@ -352,7 +352,7 @@ val () = g_print1<a0>(tup.0)
 val () = t1up_print$sep()
 val () = g_print1<a1>(tup.1)
 val () = t1up_print$end((*nil*))
-end // end of [g_print1<t1up>(tup)]
+end // end of [g_print1<t1up2_vt>(tup)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -362,9 +362,8 @@ end // end of [g_print1<t1up>(tup)]
 ,a1:vt
 ,a2:vt}
 g_print1
-<t0up3
-(a0
-,a1,a2)>(tup) =
+<t0up_vt
+(a0,a1,a2)>(tup) =
 let
 val () = t0up_print$beg(   )
 val () = g_print1<a0>(tup.0)
@@ -373,16 +372,15 @@ val () = g_print1<a1>(tup.1)
 val () = t0up_print$sep(   )
 val () = g_print1<a2>(tup.2)
 val () = t0up_print$end((*nil*))
-end // end of [g_print1<t0up3>(tup)]
+end // end of [g_print1<t0up3_vt>(tup)]
 //
 #impltmp
 {a0:vt
 ,a1:vt
 ,a2:vt}
 g_print1
-<t1up3
-(a0
-,a1,a2)>(tup) =
+<t1up_vt
+(a0,a1,a2)>(tup) =
 let
 val () = t1up_print$beg()
 val () = g_print1<a0>(tup.0)
@@ -391,7 +389,7 @@ val () = g_print1<a1>(tup.1)
 val () = t1up_print$sep()
 val () = g_print1<a2>(tup.2)
 val () = t1up_print$end((*nil*))
-end // end of [g_print1<t1up3>(tup)]
+end // end of [g_print1<t1up3_vt>(tup)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
