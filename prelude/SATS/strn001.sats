@@ -195,6 +195,11 @@ fun
 gseq_strn$concat(xs: xs(*strnseq*)): strn
 #symload strn$concat with gseq_strn$concat of 1000
 //
+fun
+<xs:t0>
+gseq_strn$rconcat(xs: xs(*strnseq*)): strn
+#symload strn$rconcat with gseq_strn$rconcat of 1000
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

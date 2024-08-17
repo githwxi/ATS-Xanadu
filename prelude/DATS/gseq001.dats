@@ -1757,6 +1757,41 @@ imap$fopr<x0><y0>(i0, x0) = fopr(i0, x0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_uncons$strmize
+  ( xs ) =
+(
+  auxmain(xs)) where
+{
+//
+fun
+auxmain
+( xs: xs )
+: strm_vt(x0) = $llazy
+(
+if
+gseq_nilq
+<xs><x0>(xs)
+then
+(
+  strmcon_vt_nil()) else
+let
+//
+val x0 =
+$UN.gseq_head$raw<xs><x0>(xs)
+val xs =
+$UN.gseq_tail$raw<xs><x0>(xs)
+//
+in//let
+(
+  strmcon_vt_cons(x0, auxmain(xs)))
+end//let//else//end-of-[if]
+)(*llazy*)//end-of-[auxmain(xs)]
+//
+}(*where*)//end-of-(gseq_uncons$strmize(xs))
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

@@ -198,6 +198,15 @@ HX: |xs| > 0 is assumed
 fun
 <xs:t0>
 <x0:t0>
+gseq_head$raw(xs): (x0)
+fun
+<xs:t0>
+<x0:t0>
+gseq_tail$raw(xs): (xs)
+//
+fun
+<xs:t0>
+<x0:t0>
 gseq_uncons$raw(xs): @(x0, xs)
 fun
 <xs:t0>

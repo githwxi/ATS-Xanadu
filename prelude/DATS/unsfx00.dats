@@ -13,7 +13,7 @@
 (* ****** ****** *)
 //
 #impltmp
-<a>(*tmp*)
+< a: vt >
 $UN.p2tr_get
 (p0) = $eval(p0)
 #impltmp
@@ -24,7 +24,7 @@ $UN.p2tr_set
 (* ****** ****** *)
 //
 #impltmp
-<a>(*tmp*)
+< a: vt >
 $UN.p2tr_ret
 (p0, x0) =
 let
@@ -34,7 +34,7 @@ endlet // end of [$UN.p2tr_ret]
 (* ****** ****** *)
 //
 #impltmp
-<a>(*tmp*)
+< a: t0 >
 $UN.p2tr_set_list_nil
   (p0) =
 (
@@ -43,7 +43,7 @@ $UN.p2tr_set
 )
 //
 #impltmp
-<a>(*tmp*)
+< a: t0 >
 $UN.p2tr_set_list_cons
   (p0, x0) =
 let
@@ -59,8 +59,42 @@ end//end-of-[$UN.p2tr_set_list_cons(...)]
 (* ****** ****** *)
 //
 #impltmp
-{xs:t0}
-{x0:t0}
+{ xs:t0 }
+{ x0:t0 }
+$UN.gseq_head$raw
+  ( xs ) =
+let
+val (x0, xs) =
+$UN.gseq_uncons$raw<xs><x0> in (x0)
+end(*let*)//end-of-[$UN.gseq_head$raw(xs)]
+#impltmp
+{ xs:t0 }
+{ x0:t0 }
+$UN.gseq_tail$raw
+  ( xs ) =
+let
+val (x0, xs) =
+$UN.gseq_uncons$raw<xs><x0> in (xs)
+end(*let*)//end-of-[$UN.gseq_tail$raw(xs)]
+//
+#impltmp
+{ xs:t0 }
+{ x0:t0 }
+$UN.gseq_uncons$raw
+  ( xs ) =
+( 
+ @(x0, xs)) where
+{
+val x0 = $UN.gseq_head$raw<xs><x0>(xs)
+val xs = $UN.gseq_tail$raw<xs><x0>(xs)
+}(*where*)//end-of-[$UN.gseq_uncons$raw(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ xs:t0 }
+{ x0:t0 }
 $UN.gasz_get$at$raw
   (xs, i0) =
 let

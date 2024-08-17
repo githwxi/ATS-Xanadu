@@ -1031,6 +1031,15 @@ gseq_imap$iforall_f2un // [imap] with
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<xs:t0>
+<x0:t0> // HX: this one is strmize cond. on
+gseq_uncons$strmize(xs: xs): strm_vt(x0)//uncons
+fun
+<xs:t0>
+<x0:t0> // HX: this one is strqize cond. on
+gseq_uncons$strqize(xs: xs): strq_vt(x0)//uncons
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

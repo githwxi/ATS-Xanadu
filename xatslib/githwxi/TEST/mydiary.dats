@@ -73,6 +73,12 @@ val () =
 prints("ABAB = ", ABAB, "\n")
 //
 val
+rABAB =
+strn$rconcat(@(AB, AB))
+val () =
+prints("rABAB = ", rABAB, "\n")
+//
+val
 ABABAB =
 strn$concat(@(AB, AB, AB))
 val () =

@@ -278,9 +278,20 @@ strn_append_vt
 (* ****** ****** *)
 //
 fun<>
+strn_rappend
+{m,n:int}
+( xs: strn(m)
+, ys: strn(n)): strn(m+n)
+fun<>
 strn_reverse
 {n:int}
 ( cs: strn(n) ) : strn(n)
+//
+fun<>
+strn_rappend_vt
+{m,n:int}
+( xs: strn(m)
+, ys: strn(n)): strn_vt(m+n)
 fun<>
 strn_reverse_vt
 {n:int}

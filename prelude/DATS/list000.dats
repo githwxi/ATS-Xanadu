@@ -37,9 +37,16 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsfx00.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX:
-This is in [gdbg000.dats]:
+This one is also
+implemented in [gdbg000.dats]:
+*)
 #impltmp
 { t0:t0 }
 g_ptype
@@ -48,7 +55,7 @@ g_ptype
 (
 pstrn("list(");
 g_ptype<t0>((*0*)); pstrn(")"))
-*)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -279,6 +286,30 @@ Note that
 [list_fmake] and list_fmake_fwork]
 are both implemented in [list001.dats]
 *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+$UN.gseq_head$raw
+< list(x0) >< x0 >(xs) =
+let
+  val-list_cons(x0, xs) = xs in x0 end
+#impltmp
+{ x0:t0 }
+$UN.gseq_tail$raw
+< list(x0) >< x0 >(xs) =
+let
+  val-list_cons(x0, xs) = xs in xs end
+//
+#impltmp
+{ x0:t0 }
+$UN.gseq_uncons$raw
+< list(x0) >< x0 >(xs) =
+let
+  val-list_cons(x0, xs) = xs in (x0, xs)
+end(*let*)//end-of-[gseq_uncons$raw<list>]
 //
 (* ****** ****** *)
 (* ****** ****** *)
