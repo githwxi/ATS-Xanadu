@@ -1637,9 +1637,37 @@ HX-2024-08-16:
 Fri 16 Aug 2024 08:45:52 AM EDT
 This is some kind of "fusion" aiming at
 saving the intermediate structure that is
-otherwise needed in the explicit composition.
+otherwise needed in the standard explicit
+composition (as reference implementation)!
 *)
 //
+(*
+HX-2024-08-17:
+Sat 17 Aug 2024 11:47:00 AM EDT
+*)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_map$listize
+gseq_map_llist<xs><x0><y0>(*alias*)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_map$strmize
+gseq_map_lstrm<xs><x0><y0>(*alias*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_map$strqize
+gseq_map_lstrq<xs><x0><y0>(*alias*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 (*
 //
 HX:
