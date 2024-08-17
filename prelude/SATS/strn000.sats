@@ -134,33 +134,46 @@ fset$at with strn_fset$at of 1000
 HX-2024-07-11:
 The 'g' in 'gmake' means
 that the argument, which is
-the subject, is polymorphic.
+the subject here, is polymorphic.
 *)
 fun
 <a:t0>
 strn_gmake(x: a): (strn)
 fun
 <a:vt>
-strn_gmake0(x: ~a): (strn)
+strn_gmake0(x: (~a)): (strn)
 fun
 <a:vt>
-strn_gmake1(x: !a): (strn)
+strn_gmake1(x: (!a)): (strn)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+strn_make_nfun
+{n0:i0}
+(n0: nint(n0)
+,f0: nintlt(n0)->cgtz): strn(n0)
+#symload
+strn with strn_make_nfun of 1000
+//
 (* ****** ****** *)
 //
 fun<>
 strn_make_list
 {n0:i0}
 (cs: list(cgtz, n0)): strn(n0)
+#symload
+strn with strn_make_list of 1000
+//
 fun<>
 strn_make0_llist
 {n0:i0}
-(cs: ~list_vt(cgtz, n0)): strn(n0)
+(cs: ~list_vt(cgtz,n0)): strn(n0)
 fun<>
 strn_make1_llist
 {n0:i0}
-(cs: !list_vt(cgtz, n0)): strn(n0)
+(cs: !list_vt(cgtz,n0)): strn(n0)
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -1635,6 +1635,34 @@ filter$test<x0>( x0 ) = fopr( x0 )
 (*
 HX-2024-08-16:
 Fri 16 Aug 2024 08:45:52 AM EDT
+This is some kind of "fusion" aiming at
+saving the intermediate structure that is
+otherwise needed in the explicit composition.
+*)
+//
+(*
+//
+HX:
+This is the standard
+reference implementation:
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< y0:vt >
+gseq_map$forall
+  ( xs ) =
+(
+strm_vt_forall0<y0>
+(gseq_map<xs><x0><y0>(xs)))
+//
+*)
+//
+(*
+HX-2024-08-17:
+We need to think about generating
+the following style of "fused" code
+in some automated manner!!!
 *)
 //
 #impltmp
@@ -1649,8 +1677,7 @@ gseq_forall
 {
 #impltmp
 forall$test<x0>(x0) =
-forall$test0<y0>
-(map$fopr<x0><y0>(x0))
+forall$test0<y0>(map$fopr<x0><y0>(x0))
 }
 //
 #impltmp
@@ -1664,8 +1691,8 @@ gseq_map$forall
 <xs><x0><y0>(xs)) where
 {
 #impltmp
-map$fopr<x0><y0>(x0) = fopr(x0)
-}(*where*)//end(gseq_map$forall_f1un)
+map$fopr<x0><y0>(x0) = fopr(    x0    )
+}(*where*)//end(gseq_map$forall_f1un(...))
 //
 (* ****** ****** *)
 //

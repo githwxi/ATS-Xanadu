@@ -426,6 +426,18 @@ fun
 strn_gmake( a ): strn
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+strn_make_nfun
+{n0:i0}
+(n0: nint(n0)
+,f0: nintlt(n0)->cgtz): strn(n0)
+#symload
+strn with strn_make_nfun of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 fun<>

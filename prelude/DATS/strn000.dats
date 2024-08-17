@@ -115,6 +115,23 @@ end//let//end($UN.gasz_lget$at$raw<strn><cgtz>)
 (* ****** ****** *)
 //
 (*
+HX-2024-08-17:
+Sat 17 Aug 2024 08:32:31 AM EDT
+*)
+//
+#impltmp
+<(*tmp*)>
+strn_make_nfun
+  (n0, f0) =
+strn_fmake_fwork<>
+(
+lam(work) =>
+foritm(n0, //HX:it may not be
+  lam(i0) => work(f0(i0))))//efficient!
+//
+(* ****** ****** *)
+//
+(*
 HX-2024-08-16:
 Fri 16 Aug 2024 05:02:22 PM EDT
 *)
