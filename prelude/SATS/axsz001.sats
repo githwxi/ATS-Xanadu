@@ -81,11 +81,57 @@ fun
 <x0:vt>
 a1sz_fmake_fwork
 ( fwork
-: ((~x0)->void) -> void): a1sz(x0)//HX:3rd-order!
+: ((~x0)->void)->void): a1sz(x0)//HX:3rd-order!
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-08-18:
+Sun 18 Aug 2024 08:55:31 AM EDT
+*)
+//
+fun
+<x0:vt>
+a1sz_mapref(A: a1sz(x0)): void
+fun
+<x0:vt>
+a1sz_mapref_c1bv
+(A: a1sz(x0), fopr: (~x0)->(x0)): void
+(*
+fun
+<x0:vt>
+a1sz_mapref_c1br
+(A: a1sz(x0), fopr: (&x0)->void): void
+*)
+//
+#symload mapref with a1sz_mapref of 1000
+#symload mapref with a1sz_mapref_c1bv of 1000
+(*
+#symload mapref with a1sz_mapref_c1br of 1000
+*)
+//
+fun
+<x0:vt>
+a1sz_imapref(A: a1sz(x0)): void
+fun
+<x0:vt>
+a1sz_imapref_c2bv
+(A: a1sz(x0), fopr: (ni,~x0)->(x0)): void
+(*
+fun
+<x0:vt>
+a1sz_imapref_c2br
+(A: a1sz(x0), fopr: (ni,&x0)->void): void
+*)
+#symload imapref with a1sz_imapref of 1000
+#symload imapref with a1sz_imapref_c2bv of 1000
+(*
+#symload imapref with ia1sz_mapref_c2br of 1000
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX-2024-08-17:
@@ -112,6 +158,13 @@ fun
 gasz_map_f1un_a1sz
 (xs: xs, fopr: (!x0)->(y0)): a1sz(y0)
 #symload map_a1sz with gasz_map_f1un_a1sz of 0100
+(*
+HX-2024-08-18:
+This is another way to name the function:
+#symload map_a1sz with gasz_map_a1sz__f1un of 0100
+*)
+//
+(* ****** ****** *)
 //
 fun
 <xs:t0>

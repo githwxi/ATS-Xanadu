@@ -113,6 +113,27 @@ rforall$test1<x0> = rforall$test<x0>
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< x0:vt >
+a1sz_mapref =
+gasz_mapref<a1sz(x0)><x0>(*void*)
+#impltmp
+< x0:vt >
+a1sz_mapref_c1bv =
+gasz_mapref_c1bv<a1sz(x0)><x0>(*void*)
+//
+#impltmp
+< x0:vt >
+a1sz_imapref =
+gasz_imapref<a1sz(x0)><x0>(*void*)
+#impltmp
+< x0:vt >
+a1sz_imapref_c2bv =
+gasz_imapref_c2bv<a1sz(x0)><x0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
 HX-2024-08-17:
 Sat 17 Aug 2024 07:31:59 PM EDT
@@ -178,6 +199,7 @@ where
 #impltmp
 map$fopr1<x0><y0>(x0) = fopr(  x0  ) }
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)

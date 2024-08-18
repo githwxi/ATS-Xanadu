@@ -195,6 +195,30 @@ GASZ_make_a1sz
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-08-18:
+Sun 18 Aug 2024 09:19:36 AM EDT
+*)
+fun
+<x0:vt>
+a1sz_rvrsref(A: a1sz(x0)): void
+#symload rvrsref with a1sz_rvrsref of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+a1sz_sortref(A: a1sz(x0)): void
+#symload sortref with a1sz_sortref of 1000
+fun
+<x0:vt>
+a1sz_qsortref(A: a1sz(x0)): void
+#symload qsortref with a1sz_qsortref of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
