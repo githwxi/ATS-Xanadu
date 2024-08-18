@@ -97,6 +97,11 @@ fun
 <x0:vt>
 <y0:vt>
 gasz_map_a1sz(xs: xs): a1sz(y0)
+fun
+<xs:t0>
+<x0:vt>
+<y0:vt>
+gasz_map_la1sz(xs: xs): a1sz_vt(y0)
 //
 (* ****** ****** *)
 //
@@ -105,7 +110,7 @@ fun
 <x0:vt>
 <y0:vt>
 gasz_map_f1un_a1sz
-(xs: xs, fopr: (x0)->(y0)): a1sz(y0)
+(xs: xs, fopr: (!x0)->(y0)): a1sz(y0)
 #symload map_a1sz with gasz_map_f1un_a1sz of 0100
 //
 fun
@@ -113,7 +118,7 @@ fun
 <x0:vt>
 <y0:vt>
 gasz_map_f1un_la1sz
-(xs: xs, fopr: (x0)->(y0)): a1sz_vt(y0)
+(xs: xs, fopr: (!x0)->(y0)): a1sz_vt(y0)
 #symload map_la1sz with gasz_map_f1un_la1sz of 0100
 //
 (* ****** ****** *)

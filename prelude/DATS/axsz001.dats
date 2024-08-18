@@ -153,16 +153,31 @@ prval () =
 owed_vt_return0{x0}(pf, x0) in y0
 end//endof(let)
 where {
-  val (pf | x0) =
-  $UN.gasz_lget$at$raw<xs><x0>(xs,i0)
-  // end-of-[val(...)]
+val//val
+(pf|x0) =
+$UN.gasz_lget$at$raw<xs><x0>(xs,i0)
+// end-of-[val(...)]
 }(*where*)//end-of-[lam]
 //
-)(*end-of-[a1sz_make_nfun(n0,...)]*)
+)(*end-of-[a1sz_make_nfun(n0, ...)]*)
 //
 end(*let*)//end-of-[gasz_map_a1sz(xs)]
 //
 (* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+< y0:vt >
+gasz_map_f1un_a1sz
+  (xs, fopr) =
+(
+  gasz_map_a1sz(xs))
+where
+{
+#impltmp
+map$fopr1<x0><y0>(x0) = fopr(  x0  ) }
+//
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
