@@ -326,7 +326,7 @@ mapref$fopr1r(x0) =
 #impltmp
 < xs:t0 >
 < x0:vt >
-gasz_mapref_f1un
+gasz_mapref_c1bv
   (xs, fopr) =
 (
 gasz_mapref
@@ -334,7 +334,7 @@ gasz_mapref
 {
 #impltmp
 mapref$fopr0<x0>(x0) = fopr(x0)
-}(*where*)//end-of-[gasz_mapref_f1un]
+}(*where*)//end-of-[gasz_mapref_c1bv]
 //
 (* ****** ****** *)
 (* ****** ****** *)

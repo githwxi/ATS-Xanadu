@@ -169,8 +169,12 @@ mapref$fopr1r
 (*
 fun
 <x0:vt>
-mapref$fopr$clr
-( ref: &x0 >> ?x0 ): void
+mapref$fopr01r//ini
+( ref: &(?x0) >> x0 ): void
+fun
+<x0:vt>
+mapref$fopr10r//clr
+( ref: &(?x0) << x0 ): void
 *)
 //
 fun
@@ -180,11 +184,39 @@ gasz_mapref(xs: xs): void
 fun
 <xs:t0>
 <x0:vt>
-gasz_mapref_f1un
+gasz_mapref_c1bv
 (xs: xs, fopr: (~x0)->(x0)): void
 //
-#symload mapref with gasz_mapref_f1un of 0100
-#symload mapref_fun with gasz_mapref_f1un of 0100
+#symload mapref with gasz_mapref_c1bv of 0100
+#symload mapref_cbv with gasz_mapref_c1bv of 0100
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+imapref$fopr0(ni, ~x0): x0
+fun
+<x0:vt>
+imapref$fopr1(ni, !x0): x0
+fun
+<x0:vt>
+imapref$fopr1r
+(i0: ni, ref: &x0 >> x0): void
+//
+//
+fun
+<xs:t0>
+<x0:vt>
+gasz_imapref(xs: xs): void
+fun
+<xs:t0>
+<x0:vt>
+gasz_imapref_c2bv
+(xs: xs, fopr: (ni, ~x0)->(x0)): void
+//
+#symload imapref with gasz_imapref_c2bv of 0100
+#symload imapref_cbv with gasz_imapref_c2bv of 0100
 //
 (* ****** ****** *)
 (* ****** ****** *)
