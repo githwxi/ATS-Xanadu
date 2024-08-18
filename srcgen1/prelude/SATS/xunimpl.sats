@@ -428,6 +428,22 @@ strn_gmake( a ): strn
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun<>
+strn_prefix
+{n0:i0}
+{i0:i0|i0<=n0}
+( cs: strn(n0)
+, i0: sint(i0)): strn(i0)
+fun<>
+strn_suffix
+{n0:i0}
+{i0:i0|i0<=n0}
+( cs: strn(n0)
+, i0: sint(i0)): strn(n0-i0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
 <cs:t0>
 strn_make_gseq(cs: cs): strn
