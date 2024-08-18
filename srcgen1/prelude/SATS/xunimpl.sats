@@ -441,6 +441,11 @@ strn_suffix
 ( cs: strn(n0)
 , i0: sint(i0)): strn(n0-i0)
 //
+#symload
+prefix with strn_prefix of 1000
+#symload
+suffix with strn_suffix of 1000
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

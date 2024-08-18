@@ -58,9 +58,17 @@ Sun 21 Jul 2024 11:06:11 PM EDT
 (* ****** ****** *)
 //
 val AB =
-strn(26, lam(i)=>'a'+i)
+strn
+(26, lam(i)=>'a'+i)
 val () =
 prints("AB = ", AB, "\n")
+//
+val abc = prefix(AB, 3)
+val xyz = suffix(AB, 23)
+val () =
+prints("abc = ", abc, "\n")
+val () =
+prints("xyz = ", xyz, "\n")
 //
 val AB2 = AB\ncpy(2)
 val () =
