@@ -153,12 +153,25 @@ end//let//end($UN.gasz_lget$at$raw<strn><cgtz>)
 //
 #impltmp
 <(*tmp*)>
+strn_slice
+(cs, i0, j0) =
+(
+strn_make_nfun<>
+(
+j0-i0,
+lam(k0) =>
+$UN.strn_get$at$raw<>(cs,i0+k0)
+)
+)//end-of-[strn_slice(cs,i0,j0)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
 strn_prefix
   (cs, i0) =
 (
-strn_make_nfun<>(i0,
-lam(j0) =>
-$UN.strn_get$at$raw<>(cs, j0)))
+  strn_slice<>(cs, 0, i0))
 //
 #impltmp
 <(*tmp*)>
@@ -167,11 +180,11 @@ strn_suffix
 let
 val n0 =
 strn_length<>(cs) in//let
-strn_make_nfun<>(n0-i0,
-lam(j0) =>
-$UN.strn_get$at$raw<>(cs, i0+j0))
-end//let//end-of-[strn_suffix(...)]
+(
+  strn_slice<>(cs, i0, n0)) end
+//let//end-of-[strn_suffix(cs,i0)]
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*
