@@ -150,6 +150,27 @@ strn_gmake1(x: (!a)): (strn)
 (* ****** ****** *)
 //
 fun<>
+strn_prefix
+{n0:i0}
+{i0:i0|i0<=n0}
+( cs: strn(n0)
+, i0: sint(i0)): strn(i0)
+fun<>
+strn_suffix
+{n0:i0}
+{i0:i0|i0<=n0}
+( cs: strn(n0)
+, i0: sint(i0)): strn(n0-i0)
+//
+#symload
+prefix with strn_prefix of 1000
+#symload
+suffix with strn_suffix of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
 strn_make_nfun
 {n0:i0}
 (n0: nint(n0)

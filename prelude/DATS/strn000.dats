@@ -151,6 +151,29 @@ end//let//end($UN.gasz_lget$at$raw<strn><cgtz>)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<(*tmp*)>
+strn_prefix
+  (cs, i0) =
+(
+strn_make_nfun<>(i0,
+lam(j0) =>
+$UN.strn_get$at$raw<>(cs, j0)))
+//
+#impltmp
+<(*tmp*)>
+strn_suffix
+  (cs, i0) =
+let
+val n0 =
+strn_length<>(cs) in//let
+strn_make_nfun<>(n0-i0,
+lam(j0) =>
+$UN.strn_get$at$raw<>(cs, i0+j0))
+end//let//end-of-[strn_suffix(...)]
+//
+(* ****** ****** *)
+//
 (*
 HX-2024-08-17:
 Sat 17 Aug 2024 08:32:31 AM EDT
