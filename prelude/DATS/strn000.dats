@@ -175,9 +175,39 @@ Fri 16 Aug 2024 05:02:22 PM EDT
 //
 #impltmp
 <(*tmp*)>
-strn_make_list(cs) =
-strn_fmake_fwork<> //HX:it may not be
-(lam(work) => foritm(cs, work))//efficient!
+strn_make_list
+  ( cs ) =
+(
+strn_make_gseq<list(cgtz)>(cs))
+//
+#impltmp
+< cs:t0 >
+strn_make_gseq
+  ( cs ) =
+let
+#typedef c0=cgtz
+#impltmp
+map$fopr<c0><c0>(c0) = c0
+in//let
+(
+  strn_map$make_gseq<cs><c0>(cs))
+end//let//end-of-[strn_make_gseq(cs)]
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+strn_map$make_gseq
+  ( xs ) =
+let
+#typedef c0=cgtz
+in//let
+strn_fmake_fwork<> 
+(
+lam(work) => // HX: inefficent?
+gseq_foritm_f1un<xs><x0>
+( xs
+, lam(c0)=>work(map$fopr<x0><c0>(c0))))
+end//let//end-of-[strn_map$make_gseq(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

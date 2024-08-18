@@ -428,6 +428,18 @@ strn_gmake( a ): strn
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<cs:t0>
+strn_make_gseq(cs: cs): strn
+fun
+<xs:t0>
+<x0:t0>
+// HX: map$fopr(x0):cgtz
+strn_map$make_gseq(xs: xs): strn
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun<>
 strn_make_nfun
 {n0:i0}

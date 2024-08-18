@@ -72,6 +72,9 @@ fun<>
 range_ibtw_ub
 (range: range_ibtw): sint(*upper*)
 //
+#symload lb with range_ibtw_lb//of(0)
+#symload ub with range_ibtw_ub//of(0)
+//
 #extern
 fun<>
 range_ibtw(lb:si, ub:si): range_ibtw
@@ -222,7 +225,48 @@ end(*local*)//end-of-[absimpl(range_ibtw)]
 #impltmp
 <(*tmp*)>
 range_ibtwe
-( lb, ub ) = range_ibtw<>(lb,ub+1)
+( lb, ub ) = range_ibtw(lb,ub+1)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun<>
+range_ibtw_inter
+( r1:range_ibtw
+, r2:range_ibtw): range_ibtw
+#symload inter with range_ibtw_inter//of(0)
+//
+#extern
+fun<>
+range_ibtw_union
+( r1:range_ibtw
+, r2:range_ibtw): range_ibtw
+#symload union with range_ibtw_union//of(0)
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+range_ibtw_inter
+  (r1, r2) =
+let
+val lb = max
+(r1.lb(),r2.lb())
+val ub = min
+(r1.ub(),r2.ub()) in range_ibtw(lb, rb)
+end(*let*)//end-of-[range_ibtw_inter(r1,r2)]
+//
+#impltmp
+<(*tmp*)>
+range_ibtw_union
+  (r1, r2) =
+let
+val lb = min
+(r1.lb(),r2.lb())
+val ub = max
+(r1.ub(),r2.ub()) in range_ibtw(lb, rb)
+end(*let*)//end-of-[range_ibtw_inter(r1,r2)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -231,13 +275,13 @@ range_ibtwe
 fcast // fun
 GSEQ_make_range_ibtw
 (xs: range_ibtw): GSEQ(range_ibtw, sint)
-#symload GSEQ with GSEQ_make_range_ibtw of 1000
+#symload GSEQ with GSEQ_make_range_ibtw//of(0)
 //
 #extern
 fcast // fun
 GASZ_make_range_ibtw
 (xs: range_ibtw): GASZ(range_ibtw, sint)
-#symload GASZ with GASZ_make_range_ibtw of 1000
+#symload GASZ with GASZ_make_range_ibtw//of(0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
