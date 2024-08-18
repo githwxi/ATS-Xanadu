@@ -387,6 +387,7 @@ strn_copy_vt
 {n:int}(strn(n)): strn_vt(n)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 fun<>
 strn_make_list
