@@ -98,6 +98,14 @@ strn_gmake1
 (* ****** ****** *)
 //
 #impltmp
+g_add
+< strn > =
+g_append<strn>(*void*)
+#impltmp
+g_append
+< strn > = strn_append<>(*void*)
+//
+#impltmp
 <(*tmp*)>
 strn_append
   (xs, ys) =

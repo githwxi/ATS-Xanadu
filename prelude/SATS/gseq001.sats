@@ -538,7 +538,6 @@ fun
 <y0:t0>
 gseq_map_f1un_list
 (xs: xs, fopr: (x0)->(y0)): list(y0)
-//
 #symload map_list with gseq_map_f1un_list of 0100
 //
 fun
@@ -547,7 +546,6 @@ fun
 <y0:vt>
 gseq_map_f1un_llist
 (xs: xs, fopr: (x0)->(y0)): list_vt(y0)
-//
 #symload map_llist with gseq_map_f1un_llist of 0100
 //
 fun

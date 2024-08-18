@@ -36,6 +36,10 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsfx00.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
 { a: vt }
@@ -119,6 +123,47 @@ HX-2024-08-17: Externally!
 For instance, one JS version
 can be found in [DATS/CATS/JS/axsz000.dats]
 *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:vt >
+< y0:vt >
+gasz_map_a1sz
+  ( xs ) =
+let
+//
+val n0 =
+gasz_length
+<xs><x0>(xs)
+//
+in//let
+//
+a1sz_make_nfun<y0>
+(
+n0,
+//
+lam(i0):y0 =>
+let
+val y0 =
+map$fopr1<x0><y0>(x0)
+prval () =
+owed_vt_return0{x0}(pf, x0) in y0
+end//endof(let)
+where {
+  val (pf | x0) =
+  $UN.gasz_lget$at$raw<xs><x0>(xs,i0)
+  // end-of-[val(...)]
+}(*where*)//end-of-[lam]
+//
+)(*end-of-[a1sz_make_nfun(n0,...)]*)
+//
+end(*let*)//end-of-[gasz_map_a1sz(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)

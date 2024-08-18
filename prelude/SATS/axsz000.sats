@@ -133,7 +133,7 @@ fun
 <a:vt>
 a1sz_cget$at
 {n:nat}
-(A:a1sz(a,n), i:nintlt(n)): a
+(A:a1sz(a,n), i:nintlt(n)): (a)
 fun
 <a:vt>
 a1sz_setf$at
