@@ -920,6 +920,17 @@ GASZ_make_nint1
 (* ****** ****** *)
 //
 (*
+HX-2024-08-17:
+Sat 17 Aug 2024 09:20:01 PM EDT
+*)
+fun
+<x0:t0>
+g_ncpy(x0, nint): (x0)
+#symload ncpy with g_ncpy of 0100
+//
+(* ****** ****** *)
+//
+(*
 HX-2024-7-31:
 Wed 31 Jul 2024 07:58:53 PM EDT
 *)

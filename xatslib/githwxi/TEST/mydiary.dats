@@ -62,6 +62,10 @@ strn(26, lam(i)=>'a'+i)
 val () =
 prints("AB = ", AB, "\n")
 //
+val AB2 = AB\ncpy(2)
+val () =
+prints("AB2 = ", AB2, "\n")
+//
 val
 ABAB =
 adds(AB, AB) where

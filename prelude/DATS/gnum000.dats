@@ -87,6 +87,34 @@ if n0 % 2 = 0 then rs else x0*rs
 }(*where*)//end-of-[g_pow(x0, n0)]
 //
 (* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+g_ncpy(x0, n0) =
+(
+if
+(n0 <= 0)
+then
+(
+  g_0<x0>() )
+else
+(
+  loop(n0-1, x0))) where
+{
+//
+fun
+loop
+(i0: nint, r0: x0): (x0) =
+(
+if
+(i0 <= 0)
+then r0 else
+(
+  loop(i0-1, g_add<x0>(x0, r0))))
+//
+}(*where*)//end-of-[g_ncpy(x0, n0)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
