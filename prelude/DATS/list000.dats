@@ -195,6 +195,11 @@ Wed 31 Jul 2024 08:13:30 PM EDT
 *)
 #impltmp
 { x0:t0 }
+g_add
+<list(x0)> =
+g_append<list(x0)>(*void*)
+#impltmp
+{ x0:t0 }
 g_append
 <list(x0)>(*x0*) =
 gseq_append<list(x0)><x0>(*void*)

@@ -118,6 +118,19 @@ fun
 g_pow(x0, nint): (x0)
 //
 (* ****** ****** *)
+//
+(*
+HX-2024-08-17:
+This may not be
+a good place for g_ncpy!
+Sat 17 Aug 2024 09:20:01 PM EDT
+*)
+fun
+<x0:t0>
+g_ncpy(x0, nint): (x0)
+#symload ncpy with g_ncpy of 0100
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
