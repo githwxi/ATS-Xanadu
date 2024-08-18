@@ -429,6 +429,19 @@ strn_gmake( a ): strn
 (* ****** ****** *)
 //
 fun<>
+strn_slice
+{n0:i0}
+{i0:nat
+;j0:int
+|i0<=j0
+;j0<=n0}
+( cs: strn(n0)
+, i0: sint(i0)
+, j0: sint(j0)): strn(j0-i0)
+#symload
+slice with strn_slice of 1000
+//
+fun<>
 strn_prefix
 {n0:i0}
 {i0:i0|i0<=n0}
