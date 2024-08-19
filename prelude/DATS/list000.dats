@@ -335,6 +335,42 @@ GSEQ_make<list(a)><a> = GSEQ_make_list<>{a}
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< xs:t0 >
+< x0:t0 >
+list_make_gseq
+  ( xs ) =
+list_vt2t{x0}
+(
+gseq_listize<xs><x0>(xs))
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+list_map$make_gseq
+  ( xs ) =
+(
+gseq_map_list<xs><x0>(xs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_make_t0up1 =
+list_make_gseq<t0up(x0)><x0>
+#impltmp
+< x0:t0 >
+list_make_t0up2 =
+list_make_gseq<t0up(x0,x0)><x0>
+#impltmp
+< x0:t0 >
+list_make_t0up3 =
+list_make_gseq<t0up(x0,x0,x0)><x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

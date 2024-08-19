@@ -92,6 +92,44 @@ list_3val with list_make_3val of 1000
 //
 fun
 <a:t0>
+list_make_ncpy
+{n:nat}
+(n0: sint(n), x0: a): list(a, n)
+#symload
+list with list_make_ncpy of 1000
+#symload
+list_ncpy with list_make_ncpy of 1000
+//
+fun
+<a:t0>
+list_make_nfun
+{n:nat}
+( x0: (a)
+, f0: nintlt(n)->(a)): list(a, n)
+#symload
+list with list_make_nfun of 1000
+#symload
+list_nfun with list_make_nfun of 1000
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+list_make_gseq(xs: xs): list(x0)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+// HX: map$fopr(x0):y0
+list_map$make_gseq(xs: xs): list(y0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:t0>
 list_length
 {n:i0}
 (xs: list(a, n)): sint(n)
@@ -203,6 +241,45 @@ GSEQ_make_list
 {a:t0}
 (xs: list(a)): GSEQ(list(a), a)
 #symload GSEQ with GSEQ_make_list of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+list_make_t0up1
+(tup: t0up(x0)): list(x0,1)
+fun
+<x0:t0>
+list_make_t0up2
+(tup: t0up(x0,x0)): list(x0,2)
+fun
+<x0:t0>
+list_make_t0up3
+(tup: t0up(x0,x0,x0)): list(x0,3)
+(*
+fun
+<x0:t0>
+list_make_t0up4
+(tup: t0up(x0,x0,x0,x0)): list(x0,4)
+fun
+<x0:t0>
+list_make_t0up5
+(tup: t0up(x0,x0,x0,x0,x0)): list(x0,5)
+fun
+<x0:t0>
+list_make_t0up6
+(tup: t0up(x0,x0,x0,x0,x0,x0)): list(x0,6)
+*)
+//
+#symload list with list_make_t0up1 of 1000
+#symload list with list_make_t0up2 of 1000
+#symload list with list_make_t0up3 of 1000
+(*
+#symload list with list_make_t0up4 of 1000
+#symload list with list_make_t0up5 of 1000
+#symload list with list_make_t0up6 of 1000
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
