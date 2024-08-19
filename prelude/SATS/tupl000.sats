@@ -62,9 +62,12 @@ Sun 04 Aug 2024 05:41:59 PM EDT
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
 #vwtpdef
-t0up1(a0:vt) = @(a0)
+t0up1_t0
+(a0: t0) = @(  a0  )
+#vwtpdef
+t0up1_vt
+(a0: vt) = @(  a0  )
 #typedef
 t1up1_t0
 (a0: t0) = $tup_t0(a0)
@@ -72,10 +75,12 @@ t1up1_t0
 t1up1_vt
 (a0: vt) = $tup_vt(a0)
 //
-#sexpdef t1up = t1up1_vt
+#sexpdef t0up = t0up1_t0
 #sexpdef t1up = t1up1_t0
-*)
+#sexpdef t0up_vt = t0up1_vt
+#sexpdef t1up_vt = t1up1_vt
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef
@@ -116,12 +121,13 @@ fun
 <a0:t0>
 <a1:t0>
 z2tup_make
-(x1: a0, x2: a1): z2tup(a0, a1)
+( x1: a0
+, x2: a1): z2tup(a0,a1)
 fun
 <a0:t0>
 <a1:t0>
 z2tup_unmk
-(ztup: z2tup(a0, a1)): @(a0, a1)
+(ztup: z2tup(a0,a1)): @(a0,a1)
 //
 (* ****** ****** *)
 //
@@ -129,12 +135,13 @@ fun
 <a0:t0>
 <a1:t0>
 x2tup_make
-(x1: a0, x2: a1): x2tup(a0, a1)
+( x1: a0
+, x2: a1): x2tup(a0,a1)
 fun
 <a0:t0>
 <a1:t0>
 x2tup_unmk
-(xtup: x2tup(a0, a1)): @(a0, a1)
+(xtup: x2tup(a0,a1)): @(a0,a1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -144,26 +151,112 @@ HX-2024-08-17:
 *)
 #typedef
 t0up3_t0
-(a0:t0
-,a1:t0,a2:t0) = @(a0,a1,a2)
+(a0:t0,a1:t0,a2:t0) = @(a0,a1,a2)
 #vwtpdef
 t0up3_vt
-(a0:vt
-,a1:vt,a2:t0) = @(a0,a1,a2)
+(a0:vt,a1:vt,a2:vt) = @(a0,a1,a2)
 //
+#typedef
+t1up3_t0
+(a0:t0,a1:t0,a2:t0) = $tup_t0(a0,a1,a2)
 #vwtpdef
 t1up3_vt
-(a0:vt
-,a1:vt,a2:vt) = $tup_vt(a0,a1,a2)
-#vwtpdef
-t1up3_t0
-(a0:t0
-,a1:t0,a2:t0) = $tup_t0(a0,a1,a2)
+(a0:vt,a1:vt,a2:vt) = $tup_vt(a0,a1,a2)
 //
 #sexpdef t0up = t0up3_t0//len-3
 #sexpdef t1up = t1up3_t0//len-3
 #sexpdef t0up_vt = t0up3_vt//len-3
 #sexpdef t1up_vt = t1up3_vt//len-3
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-08-18:
+Sun 18 Aug 2024 09:16:41 PM EDT
+*)
+#typedef
+t0up4_t0
+(a0:t0
+,a1:t0,a2:t0,a3:t0) = @(a0,a1,a2,a3)
+#vwtpdef
+t0up4_vt
+(a0:vt
+,a1:vt,a2:vt,a3:vt) = @(a0,a1,a2,a3)
+//
+#typedef
+t1up4_t0
+(a0:t0
+,a1:t0,a2:t0,a3:t0) = $tup_t0(a0,a1,a2,a3)
+#vwtpdef
+t1up4_vt
+(a0:vt
+,a1:vt,a2:vt,a3:vt) = $tup_vt(a0,a1,a2,a3)
+//
+#sexpdef t0up = t0up4_t0//len-4
+#sexpdef t1up = t1up4_t0//len-4
+#sexpdef t0up_vt = t0up4_vt//len-4
+#sexpdef t1up_vt = t1up4_vt//len-4
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-08-18:
+Sun 18 Aug 2024 09:17:01 PM EDT
+*)
+#typedef
+t0up5_t0
+(a0:t0,a1:t0
+,a2:t0,a3:t0,a4:t0) = @(a0,a1,a2,a3,a4)
+#vwtpdef
+t0up5_vt
+(a0:vt,a1:vt
+,a2:vt,a3:vt,a4:vt) = @(a0,a1,a2,a3,a4)
+//
+#typedef
+t1up5_t0
+(a0:t0,a1:t0
+,a2:t0,a3:t0,a4:t0) = $tup_t0(a0,a1,a2,a3,a4)
+#vwtpdef
+t1up5_vt
+(a0:vt,a1:vt
+,a2:vt,a3:vt,a4:vt) = $tup_vt(a0,a1,a2,a3,a4)
+//
+#sexpdef t0up = t0up5_t0//len-5
+#sexpdef t1up = t1up5_t0//len-5
+#sexpdef t0up_vt = t0up5_vt//len-5
+#sexpdef t1up_vt = t1up5_vt//len-5
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-08-18:
+Sun 18 Aug 2024 09:17:01 PM EDT
+*)
+#typedef
+t0up6_t0
+(a0:t0,a1:t0,a2:t0
+,a3:t0,a4:t0,a5:t0) = @(a0,a1,a2,a3,a4,a5)
+#vwtpdef
+t0up6_vt
+(a0:vt,a1:vt,a2:vt
+,a3:vt,a4:vt,a5:vt) = @(a0,a1,a2,a3,a4,a5)
+//
+#typedef
+t1up6_t0
+(a0:t0,a1:t0,a2:t0
+,a3:t0,a4:t0,a5:t0) = $tup_t0(a0,a1,a2,a3,a4,a5)
+#vwtpdef
+t1up6_vt
+(a0:vt,a1:vt,a2:vt
+,a3:vt,a4:vt,a5:vt) = $tup_vt(a0,a1,a2,a3,a4,a5)
+//
+#sexpdef t0up = t0up6_t0//len-6
+#sexpdef t1up = t1up6_t0//len-6
+#sexpdef t0up_vt = t0up6_vt//len-6
+#sexpdef t1up_vt = t1up6_vt//len-6
 //
 (* ****** ****** *)
 (* ****** ****** *)

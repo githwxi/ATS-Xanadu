@@ -186,10 +186,17 @@ suffix with strn_suffix of 1000
 (* ****** ****** *)
 //
 fun<>
+strn_make_ncpy
+{n0:i0}
+(n0:nint(n0),ch:cgtz): strn(n0)
+#symload
+strn with strn_make_ncpy of 1000
+//
+fun<>
 strn_make_nfun
 {n0:i0}
-(n0: nint(n0)
-,f0: nintlt(n0)->cgtz): strn(n0)
+(n0:nint(n0)
+,f0:nintlt(n0)->cgtz): strn(n0)
 #symload
 strn with strn_make_nfun of 1000
 //
@@ -198,6 +205,7 @@ strn with strn_make_nfun of 1000
 fun
 <cs:t0>
 strn_make_gseq(cs: cs): strn
+//
 fun
 <xs:t0>
 <x0:t0>
