@@ -149,9 +149,9 @@ XATS2JS_a1sz_fmake_fwork
 #extern
 fun
 XATS2JS_a1sz_fmake_fwork
-{ x0:vt }
+{ x0:t0 }
 ( fwork
-: ((~x0) -> void) -> void): a1sz(x0) = $extnam()
+: ((x0) -> void) -> void): a1sz(x0) = $extnam()
 }
 //
 (* ****** ****** *)

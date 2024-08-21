@@ -186,6 +186,28 @@ suffix with strn_suffix of 1000
 (* ****** ****** *)
 //
 fun<>
+strn_make_1val
+(c0: cgtz): strn(1)
+//
+fun<>
+strn_make_2val
+(c0: cgtz, c1: cgtz): strn(2)
+fun<>
+strn_make_3val
+( c0: cgtz
+, c1: cgtz, c2: cgtz): strn(3)
+//
+#symload
+strn with strn_make_1val of 1000
+#symload
+strn with strn_make_2val of 1000
+#symload
+strn with strn_make_3val of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
 strn_make_ncpy
 {n0:i0}
 (n0:nint(n0),ch:cgtz): strn(n0)
