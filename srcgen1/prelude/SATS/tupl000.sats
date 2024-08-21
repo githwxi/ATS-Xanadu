@@ -51,10 +51,13 @@
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
+#typedef
+t0up1_t0
+(a0: t0) = @( a0 )
 #vwtpdef
-t0up1(a0:vt) = @(a0)
-*)
+t0up1_vt
+(a0: vt) = @( a0 )
+//
 #typedef
 t1up1_t0
 (a0: t0) = $tup_t0(a0)
@@ -62,7 +65,9 @@ t1up1_t0
 t1up1_vt
 (a0: vt) = $tup_vt(a0)
 //
+#sexpdef t0up = t0up1_t0
 #sexpdef t1up = t1up1_t0
+#sexpdef t0up_vt = t0up1_vt
 #sexpdef t1up_vt = t1up1_vt
 //
 (* ****** ****** *)

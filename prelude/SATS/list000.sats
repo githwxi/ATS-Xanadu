@@ -112,20 +112,6 @@ list with list_make_nfun of 1000
 list_nfun with list_make_nfun of 1000
 //
 (* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-list_make_gseq(xs: xs): list(x0)
-//
-fun
-<xs:t0>
-<x0:t0>
-<y0:t0>
-// HX: map$fopr(x0):y0
-list_map$make_gseq(xs: xs): list(y0)
-//
-(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -243,6 +229,20 @@ GSEQ_make_list
 #symload GSEQ with GSEQ_make_list of 1000
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+list_make_gseq(xs: xs): list(x0)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+// HX: map$fopr(x0):y0
+list_map$make_gseq(xs: xs): list(y0)
+//
 (* ****** ****** *)
 //
 fun

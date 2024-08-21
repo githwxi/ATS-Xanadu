@@ -1514,6 +1514,36 @@ gseq_strn$rconcat(xs: xs(*strnseq*)): strn
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+<xs:t0>
+<x0:t0>
+list_make_gseq(xs: xs): list(x0)
+//
+fun
+<xs:t0>
+<x0:t0>
+<y0:t0>
+// HX: map$fopr(x0):y0
+list_map$make_gseq(xs: xs): list(y0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+list_make_t0up1
+(tup: t0up(x0)): list(x0,1)
+fun
+<x0:t0>
+list_make_t0up2
+(tup: t0up(x0,x0)): list(x0,2)
+fun
+<x0:t0>
+list_make_t0up3
+(tup: t0up(x0,x0,x0)): list(x0,3)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 

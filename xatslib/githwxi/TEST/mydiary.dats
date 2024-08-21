@@ -59,9 +59,14 @@ Sun 21 Jul 2024 11:06:11 PM EDT
 //
 fun
 <a:t0>
-qsort
+quicksort
 ( xs
 : list(a)): list(a) =
+(
+  qsort(xs)) where
+{
+fun
+qsort(xs) =
 (
 case+ xs of
 |
@@ -72,11 +77,14 @@ list_cons(x0, xs) =>
 let
 val
 (ys, zs) =
-partition(xs, $lam($1<=x0))
+list_partit
+(xs, _ <= x0)
 in//let
 appends
 (qsort(ys), list@(x0), qsort(zs))
 end//let
+)
+}
 //
 val () =
 prints("qsort(9...1) = ",
