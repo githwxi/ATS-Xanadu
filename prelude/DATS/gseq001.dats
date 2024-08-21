@@ -1833,6 +1833,27 @@ end//let//else//end-of-[if]
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-08-21:
+Wed 21 Aug 2024 08:16:22 AM EDT
+*)
+#impltmp
+gseq_fmake_fwork
+<strn><cgtz>(f0) = strn_fmake_fwork<>(f0)
+//
+#impltmp
+{ x0:t0 }
+gseq_fmake_fwork
+<a1sz(x0)><x0>(f0) = a1sz_fmake_fwork<x0>(f0)
+//
+#impltmp
+{ x0:t0 }
+gseq_fmake_fwork
+<list(x0)><x0>(f0) = list_fmake_fwork<x0>(f0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

@@ -72,6 +72,19 @@ XATS2JS_jsarray_make_ncpy
   return A // HX: A = [x, x, ..., x]
 }
 //
+function
+XATS2JS_jsarray_make_nfun
+  (n, f)
+{
+  let i
+  let A = new Array(n)
+  for (i = 0; i < n; i += 1)
+  {
+    A[i] = f(i)
+  }
+  return A // HX: A = [f(0),...,f(n-1)]
+}
+//
 /////////////////////////////////////////////////////////////////////////
 //
 function

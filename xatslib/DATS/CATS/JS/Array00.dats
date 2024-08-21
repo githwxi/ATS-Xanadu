@@ -173,7 +173,7 @@ jsarray_make_ncpy
 #extern
 fun<>
 jsarray_make_nfun
- {a:vt}{n:nat}
+{a:vt}{n:n0}
 (n0: sint(n)
 ,f0: nintlt(n) -> (a)): jsa0(a)
 //
@@ -356,13 +356,13 @@ XATS2JS_jsarray_make_ncpy
 (*
 HX-2024-08-13:
 Maybe too inefficient!
-*)
 #impltmp
 <(*tmp*)>
 jsarray_make_nfun
   (n, f) =
 jsarray
 (nint_map_lstrm_f1un<>(n, f))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -413,6 +413,25 @@ XATS2JS_jsarray_make0_3val
 (x1: (a)
 ,x2: (a)
 ,x3: (a)): jsa0(a) = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+jsarray_make_nfun
+  (n, f) =
+(
+XATS2JS_jsarray_make_nfun
+  (n, f)) where
+{
+#extern
+fun
+XATS2JS_jsarray_make_nfun
+{a:vt}{n:n0}
+(n:sint(n)
+,f:nintlt(n)->(a)): jsa0(a) = $extnam()
 }
 //
 (* ****** ****** *)
