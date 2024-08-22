@@ -139,7 +139,7 @@ Sat 17 Aug 2024 07:33:26 PM EDT
 *)
 //
 #impltmp
-< x0:vt >
+< x0:t0 >
 a1sz_fmake_fwork
   (fwork) =
 (
