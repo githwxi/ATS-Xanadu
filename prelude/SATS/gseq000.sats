@@ -266,7 +266,8 @@ Wed 17 Jul 2024 04:11:09 PM EDT
 fun
 <xs:t0>
 <x0:t0>
-gseq_reverse(xs: xs): xs
+gseq_reverse(xs: xs): (xs)
+//
 fun
 <xs:t0>
 <x0:t0>
