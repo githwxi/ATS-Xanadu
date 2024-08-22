@@ -149,11 +149,27 @@ HX-2024-07-17:
 Wed 17 Jul 2024 01:31:56 PM EDT
 *)
 //
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
 < ys:vt >
-gseq_append = gseq_append00<xs><x0><ys>
+gseq_append =
+gseq_append00<xs><x0><ys>(*void*)
+*)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< ys:vt >
+gseq_append
+  (xs, ys) =
+gseq_fmake_fwork<xs><x0>
+(
+lam(work) =>
+(
+gseq_foritm_f1un<xs><x0>(xs, work);
+gseq_foritm0_f1un<ys><x0>(ys, work)))
 //
 (* ****** ****** *)
 //
@@ -162,11 +178,27 @@ HX-2024-07-17:
 Wed 17 Jul 2024 01:36:53 PM EDT
 *)
 //
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
 < ys:vt >
-gseq_prepend = gseq_prepend00<xs><x0><ys>
+gseq_prepend =
+gseq_prepend00<xs><x0><ys>(*void*)
+*)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< ys:vt >
+gseq_prepend
+  (xs, ys) =
+gseq_fmake_fwork<xs><x0>
+(
+lam(work) =>
+(
+gseq_foritm0_f1un<ys><x0>(ys, work)
+;gseq_foritm_f1un<xs><x0>(xs, work)))
 //
 (* ****** ****** *)
 //
@@ -174,11 +206,44 @@ gseq_prepend = gseq_prepend00<xs><x0><ys>
 Wed 17 Jul 2024 04:10:30 PM EDT
 *)
 //
+(*
 #impltmp
 < xs:t0 >
 < x0:t0 >
 < ys:vt >
-gseq_rappend = gseq_rappend00<xs><x0><ys>
+gseq_reverse =
+gseq_reverse0<xs><x0>(*void*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< ys:vt >
+gseq_rappend =
+gseq_rappend00<xs><x0><ys>(*void*)
+*)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_reverse
+  ( xs ) =
+gseq_fmake_fwork<xs><x0>
+(
+lam(work) =>
+(
+gseq_rforitm_f1un<xs><x0>(xs, work)))
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+< ys:vt >
+gseq_rappend
+  (xs, ys) =
+gseq_fmake_fwork<xs><x0>
+(
+lam(work) =>
+(
+gseq_rforitm_f1un<xs><x0>(xs, work);
+gseq_foritm0_f1un<ys><x0>(ys, work)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
