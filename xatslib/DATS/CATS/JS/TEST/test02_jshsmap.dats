@@ -39,19 +39,23 @@ jshsmap
 val (  ) = prints
 ("map1(", type(map1), ") = ", map1, "\n")
 //
-val kxs2 =
-map1.strmize((*symloaded*))
+(* ****** ****** *)
 //
-val (  ) = print0s
-("kxs2(", type(kxs2), ") = ", kxs2, "\n")
-//
-////
 val kxs1 =
 map1.listize((*symloaded*))
 val (  ) = print1s
 ("kxs1(", vwtp(kxs1), ") = ", kxs1, "\n")
 //
 (* ****** ****** *)
+//
+val kxs2 =
+map1.strmize((*symloaded*))
+//
+val (  ) = print0s
+("kxs2(", type(kxs2), ") = ", kxs2, "\n")
+//
+(* ****** ****** *)
+////
 (* ****** ****** *)
 //
 val arr1 = jsarray

@@ -32,8 +32,13 @@ For testing xatslib/JS!
 
 val AB =
 strn(26, lam(i) => 'a'+i)
-val () =
-prints("AB = ", AB, "\n")
+val () = prints("AB = ", AB, "\n")
+//
+val BA = reverse(AB)
+val () = prints("BA = ", BA, "\n")
+//
+val ABAB = appends(AB, AB)
+val () = prints("ABAB = ", ABAB, "\n")
 
 (* ****** ****** *)
 (* ****** ****** *)
@@ -41,4 +46,4 @@ prints("AB = ", AB, "\n")
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_TEST_CATS_JS_test03_a1sz000.dats] *)
+(* end of [ATS3/XANADU_prelude_TEST_CATS_JS_test04_strn000.dats] *)
