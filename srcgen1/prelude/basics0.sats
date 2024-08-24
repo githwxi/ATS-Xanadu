@@ -380,10 +380,12 @@ neq_i0_i0: (i0, i0) -> b0
 //
 (* ****** ****** *)
 //
-#sortdef pos = {a:i0 | a > 0}
+#sortdef n0 = {a:i0 | a >= 0}
+//
 #sortdef neg = {a:i0 | a < 0}
 //
 #sortdef nat = {a:i0 | a >= 0}
+#sortdef pos = {a:i0 | a >= 1}
 //
 (* ****** ****** *)
 //
