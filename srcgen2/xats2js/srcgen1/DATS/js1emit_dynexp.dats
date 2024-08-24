@@ -490,9 +490,34 @@ else print("XATSBOOL(false)")
 (* ****** ****** *)
 //
 fun
+i1chrjs1
+( filr: FILR
+, tchr: token): void =
+(
+//
+case-
+tchr.node() of
+|
+T_CHAR1_nil0 _ =>
+print("XATSCNUL(", ")")
+|
+T_CHAR2_char(rep) =>
+print("XATSCHAR(", rep, ")")
+|
+T_CHAR3_blsh(rep) =>
+print("XATSCHAR(", rep, ")")
+//
+) where
+{
+#impltmp g_print$out<>() = filr
+}(*where*)//end-of-[i1chrjs1(...)]
+//
+(* ****** ****** *)
+//
+fun
 i1strjs1
 ( filr: FILR
-, tint: token): void =
+, tstr: token): void =
 let
 //
 #impltmp
@@ -501,7 +526,7 @@ g_print$out<>() = filr
 in//let
 //
 case-
-tint.node() of
+tstr.node() of
 |
 T_STRN1_clsd
 ( rep1,len2 ) =>
@@ -560,7 +585,7 @@ strn_fprint(filr, "\\\""))
 )
 }
 //
-}(*where*)//end-of-[i1strjs1(filr,tchr)]
+}(*where*)//end-of-[i1strjs1(filr,tstr)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -655,6 +680,9 @@ ival.node() of
 (* ****** ****** *)
 |I1Vbtf
 ( btf0 ) => i1btfjs1(filr,btf0)
+(* ****** ****** *)
+|I1Vchr
+( tchr ) => i1chrjs1(filr,tchr)
 (* ****** ****** *)
 |I1Vstr
 ( tstr ) => i1strjs1(filr,tstr)

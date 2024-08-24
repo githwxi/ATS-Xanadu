@@ -5,14 +5,21 @@
 XATS2JS1=\
 ./../../../../../srcgen1/xats2js/srcgenx/bin/xats2js
 ############################################################
+############################################################
+all1:: \
+all1_test00
 all1_test00: \
 test00_xatslib.dats ; $(XATS2JS1) \
   -d ./test00_xatslib.dats > test00_xatslib_dats.js
 ############################################################
+all1:: \
+all1_test01
 all1_test01: \
 test01_jsarray.dats ; $(XATS2JS1) \
   -d ./test01_jsarray.dats > test01_jsarray_dats.js
 ############################################################
+all1:: \
+all1_test02
 all1_test02: \
 test02_jshsmap.dats ; $(XATS2JS1) \
   -d ./test02_jshsmap.dats > test02_jshsmap_dats.js
