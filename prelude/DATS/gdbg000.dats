@@ -211,6 +211,66 @@ g_ptype<vw>();pstrn":";g_psort<vw>())
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2024-08-24:
+Sat 24 Aug 2024 06:29:59 PM EDT
+*)
+//
+#impltmp
+< r0:vt >
+f_trace_f0un
+ (msg, f00) =
+lam((*0*)) => let
+//
+val () =
+prints(msg, ":", "\n")
+//
+val r0 = f00(              )
+//
+val () = print1s
+(msg, ": res0 = ", r0, "\n") in r0 end
+//
+(* ****** ****** *)
+//
+#impltmp
+< a1:t0 >
+< r0:vt >
+f_trace_f1un
+ (msg, f00) =
+lam(x1:a1) => let
+//
+val () = prints
+(msg, ": arg1 = ", x1, "\n")
+//
+val r0 = f00(      x1      )
+//
+val () = print1s
+(msg, ": res0 = ", r0, "\n") in r0 end
+//
+(* ****** ****** *)
+//
+#impltmp
+< a1:t0 >
+< a2:t0 >
+< r0:vt >
+f_trace_f2un
+ (msg, f00) =
+lam
+(x1:a1,x2:a2) => let
+//
+val () = prints
+(msg, ": arg1 = ", x1, "\n")
+val () = prints
+(msg, ": arg2 = ", x2, "\n")
+//
+val r0 = f00(    x1, x2    )
+//
+val () = print1s
+(msg, ": res0 = ", r0, "\n") in r0 end
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 

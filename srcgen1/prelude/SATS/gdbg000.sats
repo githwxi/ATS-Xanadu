@@ -26,76 +26,24 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 (*
-Mon 05 Aug 2024 10:10:05 PM EDT
+Sat 24 Aug 2024 06:59:59 PM EDT
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-(*
-HX-2024-08-05:
-Mon 05 Aug 2024 10:17:21 PM EDT
-ATS3 amply enables programmers to
-implement debugging support from the
-"outside"; the point to be stressed here
-is that these programmers are not supposed
-to have any direct access to the internals
-of the ATS3/Xanadu implemnetation!
-*)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2024-08-06:
-These are the number 1
-functions for debugging
-*)
-fun
-<vw:vw>
-g_psort((*void*)): void
-fun
-<vw:vw>
-g_ptype((*void*)): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#abstype
-type_vw_t0(a:vw) <= unit
-#sexpdef type = type_vw_t0
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun<>
-g_type
-{t0:t0}(x0: t0): type(t0)
-fun<>
-g_vwtp
-{vt:vt}(x0: !vt): type(vt)
-fun<>
-g_prop
-{pf:pf}(x0: pf|): type(pf)
-fun<>
-g_view
-{vw:vw}(x0: !vw|): type(vw)
-//
-#symload type with g_type of 0100
-#symload vwtp with g_vwtp of 0100
-#symload prop with g_prop of 0100
-#symload view with g_view of 0100
-//
+#include
+"./../../../prelude/SATS/gdbg000.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_gdbg000.sats] *)
+(* end of [ATS3/XANADU_srcgen1_prelude_SATS_gdbg000.sats] *)
