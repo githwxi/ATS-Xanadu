@@ -40,6 +40,11 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/mylib00.sats"
+#staload "./../DATS/mylib00.dats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/locinfo.sats"
 //
 (* ****** ****** *)
@@ -55,6 +60,7 @@ UN = "prelude/SATS/unsafe.sats"
 _(*TMP*) = "./../DATS/synread_basics.dats"
 //
 (* ****** ****** *)
+//
 implement
 //{}(*tmp*)
 synread_g0nid
@@ -74,8 +80,9 @@ in
   prerrln!(": SYNERR(g0nid): ", tok0);
 end // end of [let]
 ) (* end of [synread_g0nid] *)
+//
 (* ****** ****** *)
-
+//
 implement
 synread_g0nam
   (gnm0) =
@@ -138,6 +145,7 @@ in
 end // end of [let]
 //
 ) (* end of [synread_g0nam] *)
+//
 (* ****** ****** *)
 //
 implement
@@ -145,15 +153,16 @@ implement
 synread_g0namlst
   (gnms) =
 (
-list_foreach<g0nam>(gnms)
+list_foritm<g0nam>(gnms)
 ) where
 {
 implement
 (env)//tmp
-list_foreach$fwork<g0nam><env>(gnm, env) = synread_g0nam(gnm)
+list_foritm$work<g0nam><env>(gnm, env) = synread_g0nam(gnm)
 } (* end of [synread_g0explst] *)
 //
 (* ****** ****** *)
+//
 implement
 //{}(*tmp*)
 synread_g0eid
@@ -173,15 +182,18 @@ in
   prerrln!(": SYNERR(g0eid): ", tok0);
 end // end of [let]
 ) (* end of [synread_g0eid] *)
+//
 (* ****** ****** *)
+//
 implement
 synread_g0arg
   (g0a0) =
 (
   synread_g0eid(g0a0)
 ) (* end of [synread_g0arg] *)
+//
 (* ****** ****** *)
-
+//
 implement
 synread_g0exp
   (g0e0) =
@@ -263,7 +275,7 @@ in
 end // end of [let]
 //
 ) (* end of [synread_g0exp] *)
-
+//
 (* ****** ****** *)
 //
 implement
@@ -271,12 +283,12 @@ implement
 synread_g0explst
   (g0es) =
 (
-list_foreach<g0exp>(g0es)
+list_foritm<g0exp>(g0es)
 ) where
 {
 implement
 (env)//tmp
-list_foreach$fwork<g0exp><env>(g0e, env) = synread_g0exp(g0e)
+list_foritm$work<g0exp><env>(g0e, env) = synread_g0exp(g0e)
 } (* end of [synread_g0explst] *)
 //
 (* ****** ****** *)
@@ -308,7 +320,7 @@ case+ g0e0 of
 ) (* end of [synread_g0exp_ELSE] *)
 //
 (* ****** ****** *)
-
+//
 implement
 synread_g0marg
   (g0ma) =
@@ -351,6 +363,7 @@ in
   prerrln!(": SYNERR(g0marg): ", tok0);
 end
 )
+//
 (* ****** ****** *)
 //
 implement
@@ -358,12 +371,12 @@ implement
 synread_g0arglst
   (g0as) =
 (
-list_foreach<g0arg>(g0as)
+list_foritm<g0arg>(g0as)
 ) where
 {
 implement
 (env)//tmp
-list_foreach$fwork<g0arg><env>(g0a, env) = synread_g0arg(g0a)
+list_foritm$work<g0arg><env>(g0a, env) = synread_g0arg(g0a)
 } (* end of [synread_g0arglst] *)
 //
 implement
@@ -371,12 +384,12 @@ implement
 synread_g0marglst
   (gmas) =
 (
-list_foreach<g0marg>(gmas)
+list_foritm<g0marg>(gmas)
 ) where
 {
 implement
 (env)//tmp
-list_foreach$fwork<g0marg><env>(g0ma, env) = synread_g0marg(g0ma)
+list_foritm$work<g0marg><env>(g0ma, env) = synread_g0marg(g0ma)
 } (* end of [synread_g0marglst] *)
 //
 (* ****** ****** *)
@@ -622,11 +635,11 @@ implement
 synread_i0dntlst
   (i0ds) =
 (
-list_foreach<i0dnt>(i0ds)
+list_foritm<i0dnt>(i0ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<i0dnt><env>(id0, env) = synread_i0dnt(id0)
+list_foritm$work<i0dnt><env>(id0, env) = synread_i0dnt(id0)
 } (* end of [synread_i0dntlst] *)
 //
 (* ****** ****** *)
@@ -697,11 +710,11 @@ implement
 synread_sort0lst
   (s0ts) =
 (
-list_foreach<sort0>(s0ts)
+list_foritm<sort0>(s0ts)
 ) where
 {
 implement(env)
-list_foreach$fwork<sort0><env>(s0t, env) = synread_sort0(s0t)
+list_foritm$work<sort0><env>(s0t, env) = synread_sort0(s0t)
 } (* end of [synread_sort0lst] *)
 //
 (* ****** ****** *)
@@ -784,11 +797,11 @@ implement
 synread_s0arglst
   (s0as) =
 (
-list_foreach<s0arg>(s0as)
+list_foritm<s0arg>(s0as)
 ) where
 {
 implement(env)
-list_foreach$fwork<s0arg><env>(s0a, env) = synread_s0arg(s0a)
+list_foritm$work<s0arg><env>(s0a, env) = synread_s0arg(s0a)
 } (* end of [synread_s0arglst] *)
 //
 implement
@@ -796,11 +809,11 @@ implement
 synread_s0marglst
   (smas) =
 (
-list_foreach<s0marg>(smas)
+list_foritm<s0marg>(smas)
 ) where
 {
 implement(env)
-list_foreach$fwork<s0marg><env>(sma, env) = synread_s0marg(sma)
+list_foritm$work<s0marg><env>(sma, env) = synread_s0marg(sma)
 } (* end of [synread_s0marglst] *)
 //
 (* ****** ****** *)
@@ -883,11 +896,11 @@ implement
 synread_t0arglst
   (t0as) =
 (
-list_foreach<t0arg>(t0as)
+list_foritm<t0arg>(t0as)
 ) where
 {
 implement(env)
-list_foreach$fwork<t0arg><env>(t0a, env) = synread_t0arg(t0a)
+list_foritm$work<t0arg><env>(t0a, env) = synread_t0arg(t0a)
 } (* end of [synread_t0arglst] *)
 //
 implement
@@ -895,11 +908,11 @@ implement
 synread_t0marglst
   (tmas) =
 (
-list_foreach<t0marg>(tmas)
+list_foritm<t0marg>(tmas)
 ) where
 {
 implement(env)
-list_foreach$fwork<t0marg><env>(tma, env) = synread_t0marg(tma)
+list_foritm$work<t0marg><env>(tma, env) = synread_t0marg(tma)
 } (* end of [synread_t0marglst] *)
 //
 (* ****** ****** *)
@@ -925,11 +938,11 @@ implement
 synread_s0qualst
   (s0qs) =
 (
-list_foreach<s0qua>(s0qs)
+list_foritm<s0qua>(s0qs)
 ) where
 {
 implement(env)
-list_foreach$fwork<s0qua><env>(s0q, env) = synread_s0qua(s0q)
+list_foritm$work<s0qua><env>(s0q, env) = synread_s0qua(s0q)
 } (* end of [synread_s0qualst] *)
 //
 (* ****** ****** *)
@@ -969,11 +982,11 @@ implement
 synread_s0unilst
   (s0us) =
 (
-list_foreach<s0uni>(s0us)
+list_foritm<s0uni>(s0us)
 ) where
 {
 implement(env)
-list_foreach$fwork<s0uni><env>(s0u, env) = synread_s0uni(s0u)
+list_foritm$work<s0uni><env>(s0u, env) = synread_s0uni(s0u)
 } (* end of [synread_s0unilst] *)
 //
 (* ****** ****** *)
@@ -1147,11 +1160,11 @@ implement
 synread_s0explst
   (s0es) =
 (
-list_foreach<s0exp>(s0es)
+list_foritm<s0exp>(s0es)
 ) where
 {
 implement(env)
-list_foreach$fwork<s0exp><env>(s0e, env) = synread_s0exp(s0e)
+list_foritm$work<s0exp><env>(s0e, env) = synread_s0exp(s0e)
 } (* end of [synread_s0explst] *)
 //
 (* ****** ****** *)
@@ -1174,11 +1187,11 @@ implement
 synread_labs0explst
   (ls0es) =
 (
-list_foreach<labs0exp>(ls0es)
+list_foritm<labs0exp>(ls0es)
 ) where
 {
 implement(env)
-list_foreach$fwork<labs0exp><env>(ls0e, env) = synread_labs0exp(ls0e)
+list_foritm$work<labs0exp><env>(ls0e, env) = synread_labs0exp(ls0e)
 } (* end of [synread_labs0explst] *)
 //
 (* ****** ****** *)
@@ -1299,11 +1312,11 @@ implement
 synread_s0rtconlst
   (s0cs) =
 (
-list_foreach<s0rtcon>(s0cs)
+list_foritm<s0rtcon>(s0cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<s0rtcon><env>(s0c, env) = synread_s0rtcon(s0c)
+list_foritm$work<s0rtcon><env>(s0c, env) = synread_s0rtcon(s0c)
 } (* end of [synread_s0rtconlst] *)
 //
 (* ****** ****** *)
@@ -1329,11 +1342,11 @@ implement
 synread_d0tsortlst
   (d0ts) =
 (
-list_foreach<d0tsort>(d0ts)
+list_foritm<d0tsort>(d0ts)
 ) where
 {
 implement(env)
-list_foreach$fwork<d0tsort><env>(d0t, env) = synread_d0tsort(d0t)
+list_foritm$work<d0tsort><env>(d0t, env) = synread_d0tsort(d0t)
 } (* end of [synread_d0tsortlst] *)
 //
 (* ****** ****** *)
@@ -1363,11 +1376,11 @@ implement
 synread_d0atconlst
   (d0cs) =
 (
-list_foreach<d0atcon>(d0cs)
+list_foritm<d0atcon>(d0cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d0atcon><env>(d0c, env) = synread_d0atcon(d0c)
+list_foritm$work<d0atcon><env>(d0c, env) = synread_d0atcon(d0c)
 } (* end of [synread_d0atconlst] *)
 //
 (* ****** ****** *)

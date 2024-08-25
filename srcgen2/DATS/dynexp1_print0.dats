@@ -597,12 +597,12 @@ D1Cinclude
 (knd0,tknd
 ,g1e1,fopt,dopt) =>
 (
-// (*
+(*
 print("\n");
 print
 ("D1Cinclude: dopt =\n", dopt);
 print("\n");
-// *)
+*)
 ) where
 {
 val () =
@@ -619,12 +619,12 @@ D1Cstaload
 (knd0,tknd
 ,g1e1,fopt,dopt) =>
 (
-// (*
+(*
 print("\n");
 print
 ("D1Cstaload: dopt =\n", dopt);
 print("\n");
-// *)
+*)
 ) where
 {
 val () =

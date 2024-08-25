@@ -98,13 +98,13 @@ optn_cons(x0) => forall$test<a>(x0))
 //
 #impltmp
 <a>(*tmp*)
-optn_foreach(xs) =
+optn_foritm(xs) =
 (
 case+ xs of
 |
 optn_nil() => ((*0*))
 |
-optn_cons(x0) => foreach$work<a>(x0))
+optn_cons(x0) => foritm$work<a>(x0))
 //
 (* ****** ****** *)
 //
@@ -120,13 +120,13 @@ optn_cons(x0) => rforall$test<a>(x0))
 //
 #impltmp
 <a>(*tmp*)
-optn_rforeach(xs) =
+optn_rforitm(xs) =
 (
 case+ xs of
 |
 optn_nil() => ((*0*))
 |
-optn_cons(x0) => rforeach$work<a>(x0))
+optn_cons(x0) => rforitm$work<a>(x0))
 //
 (* ****** ****** *)
 //
@@ -229,13 +229,13 @@ gseq_print$end
 gseq_forall<optn(a)><a> = optn_forall<a>
 #impltmp
 {a:t0}//tmp
-gseq_foreach<optn(a)><a> = optn_foreach<a>
+gseq_foritm<optn(a)><a> = optn_foritm<a>
 #impltmp
 {a:t0}//tmp
 gseq_rforall<optn(a)><a> = optn_rforall<a>
 #impltmp
 {a:t0}//tmp
-gseq_rforeach<optn(a)><a> = optn_rforeach<a>
+gseq_rforitm<optn(a)><a> = optn_rforitm<a>
 
 (* ****** ****** *)
 

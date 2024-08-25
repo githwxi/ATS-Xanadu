@@ -26,11 +26,13 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 // Author: Hongwei Xi
 // Start Time: August, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #include
@@ -39,31 +41,39 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
-
-#staload "./../SATS/xbasics.sats"
-
 (* ****** ****** *)
-
+//
+#staload "./../SATS/mylib00.sats"
+#staload "./../DATS/mylib00.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload "./../SATS/xbasics.sats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/xstamp0.sats"
 #staload "./../SATS/xlabel0.sats"
 #staload "./../SATS/xsymbol.sats"
-
+//
 (* ****** ****** *)
-
+//
 #staload "./../SATS/locinfo.sats"
-
+//
 (* ****** ****** *)
-
+//
 #staload "./../SATS/staexp2.sats"
 #staload "./../SATS/statyp2.sats"
 #staload "./../SATS/dynexp2.sats"
 #staload "./../SATS/dynexp3.sats"
-
+//
 (* ****** ****** *)
-
+//
 #staload "./../SATS/trans23.sats"
 #staload "./../SATS/trans33.sats"
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 local
@@ -1117,12 +1127,12 @@ val+
 TI3ENV(_, xtvs, _) = ti3e
 in (* in-of-let *)
 (
-list_foreach<t2xtv>(xtvs)
+list_foritm<t2xtv>(xtvs)
 ) where
 {
 implement
 (env)(*tmp*)
-list_foreach$fwork<t2xtv><env>
+list_foritm$work<t2xtv><env>
   (xtv, env) = xtv.type(the_t2ype_none0)
 }
 end // end of [ti3env_reset]

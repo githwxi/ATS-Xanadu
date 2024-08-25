@@ -301,9 +301,9 @@ gint_forall_uint(ub: uint): bool
 (* ****** ****** *)
 //
 fun<>
-gint_foreach_sint(ub: sint): void
+gint_foritm_sint(ub: sint): void
 fun<>
-gint_foreach_uint(ub: uint): void
+gint_foritm_uint(ub: uint): void
 //
 (* ****** ****** *)
 //
@@ -483,8 +483,8 @@ cmp with gint_cmp_uint_uint of 1000
 //
 (* ****** ****** *)
 //
-#symload foreach with gint_foreach_sint of 1000
-#symload foreach with gint_foreach_uint of 1000
+#symload foritm with gint_foritm_sint of 1000
+#symload foritm with gint_foritm_uint of 1000
 //
 (* ****** ****** *)
 //

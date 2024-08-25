@@ -41,6 +41,8 @@
 #staload
 UN = "prelude/SATS/unsafe.sats"
 //
+(* ****** ****** *)
+//
 extern
 castfn
 UN_string_vt2t
@@ -48,21 +50,29 @@ UN_string_vt2t
 (cs: !strptr(l)):<> String0
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
+#staload
+"./../SATS/mylib00.sats"
+#staload
+"./../DATS/mylib00.dats"
+//
+(* ****** ****** *)
+//
+#staload SYM =
+"./../SATS/xsymbol.sats"
+//
+typedef symbol = $SYM.symbol
+//
+(* ****** ****** *)
+(* ****** ****** *)
 #staload
 "./../UTIL/SATS/mylibc0.sats"
-//
 (* ****** ****** *)
 //
-#staload
-SYM = "./../SATS/xsymbol.sats"
-//
-  typedef symbol = $SYM.symbol
-//
-(* ****** ****** *)
-
 #staload "./../SATS/filpath.sats"
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 
 local
@@ -1360,11 +1370,11 @@ the_filpathlst_fprint
 in
 $effmask_ref
 (
- list_vt_foreach<filpath>(!p0)
+ list_vt_foritm<filpath>(!p0)
 ) where
 {
 implement
-list_vt_foreach$fwork<filpath><void>
+list_vt_foritm$work<filpath><void>
   (fp, env) = fprintln_filpath_full2(out, fp)
 }
 end // end of [the_filpathlst_fprint]

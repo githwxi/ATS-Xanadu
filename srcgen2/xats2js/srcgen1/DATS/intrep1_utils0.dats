@@ -166,8 +166,10 @@ case+ fjas of
 //
 )(*case+*)//end-of-[ f1_dopt(dopt) ]
 //
+(*
 val () =
 prerrln("t1imp_i1cmpq: timp = ", timp)
+*)
 //
 }(*where*)//end-of-[t1imp_i1cmpq( timp )]
 

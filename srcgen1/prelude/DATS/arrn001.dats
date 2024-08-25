@@ -188,8 +188,8 @@ gseq_forall
 #impltmp
 {a:t0}
 {n:i0}
-gseq_foreach
-<a1rsz(a,n)><a> = a1rsz_foreach<a>{n}
+gseq_foritm
+<a1rsz(a,n)><a> = a1rsz_foritm<a>{n}
 //
 (* ****** ****** *)
 //

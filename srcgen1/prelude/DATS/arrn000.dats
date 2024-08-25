@@ -293,7 +293,7 @@ a1ref_length<?><?>(...) = ...
 //
 #impltmp
 < a:t0 >
-a1ref_foreach
+a1ref_foritm
   {n}(A0) =
 (
   loop(0(*i0*))
@@ -314,10 +314,10 @@ then
   loop(suc(i0))) where
 {
   val () =
-  foreach$work<a>(get$at(A0, i0))
+  foritm$work<a>(get$at(A0, i0))
 }
 //
-} (*where*) // end-of(a1ref_foreach)
+} (*where*) // end-of(a1ref_foritm)
 //
 (* ****** ****** *)
 //
@@ -386,7 +386,7 @@ else false // else // end of [if]
 //
 #impltmp
 < a:vt >
-a1ref_foreach1
+a1ref_foritm1
   {n}(A0) =
 (
   loop(0(*i0*))
@@ -408,12 +408,12 @@ then
 {
   val x0 =
   a1ref_dtget$at<a>(A0, i0)
-  val x0 = $UN.castlin10{ a}(x0)
-  val () = foreach$work1< a>(x0)
+  val x0 = $UN.castlin10{a}(x0)
+  val () = foritm$work1< a >(x0)
   val x0 = $UN.castlin10{?a}(x0)
 }
 //
-}(*where*)//end-of-[a1ref_foreach1]
+}(*where*)//end-of-[a1ref_foritm1]
 //
 (* ****** ****** *)
 //
@@ -469,8 +469,8 @@ gseq_forall
 #impltmp
 {a:t0}
 {n:i0}
-gseq_foreach
-<a1ref(a,n)><a> = a1ref_foreach<a>{n}
+gseq_foritm
+<a1ref(a,n)><a> = a1ref_foritm<a>{n}
 //
 (* ****** ****** *)
 //
@@ -517,8 +517,8 @@ gseq_forall1
 #impltmp
 {a:vt}
 {n:i0}
-gseq_foreach1
-<a1ref(a,n)><a> = a1ref_foreach1<a>{n}
+gseq_foritm1
+<a1ref(a,n)><a> = a1ref_foritm1<a>{n}
 #impltmp
 {a:vt}
 {n:i0}

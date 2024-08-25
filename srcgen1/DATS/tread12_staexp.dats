@@ -26,11 +26,13 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 // Author: Hongwei Xi
 // Start Time: June, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #include
@@ -38,6 +40,13 @@
 #staload
 UN = "prelude/SATS/unsafe.sats"
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload "./../SATS/mylib00.sats"
+#staload "./../DATS/mylib00.dats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload "./../SATS/locinfo.sats"
@@ -56,6 +65,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 #staload "./../SATS/tread12.sats"
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 implement
@@ -127,11 +137,11 @@ implement
 //{}(*tmp*)
 tread12_s2cstlst(s2cs) =
 (
-list_foreach<s2cst>(s2cs)
+list_foritm<s2cst>(s2cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<s2cst><env>(s2c, env) = tread12_s2cst(s2c)
+list_foritm$work<s2cst><env>(s2c, env) = tread12_s2cst(s2c)
 } (* end of [tread12_s2cstlst] *)
 //
 (* ****** ****** *)
@@ -332,11 +342,11 @@ implement
 //{}(*tmp*)
 tread12_s2explst(s2es) =
 (
-list_foreach<s2exp>(s2es)
+list_foritm<s2exp>(s2es)
 ) where
 {
 implement(env)
-list_foreach$fwork<s2exp><env>(s2e, env) = tread12_s2exp(s2e)
+list_foritm$work<s2exp><env>(s2e, env) = tread12_s2exp(s2e)
 } (* end of [tread12_s2explst] *)
 //
 (* ****** ****** *)
@@ -355,11 +365,11 @@ implement
 //{}(*tmp*)
 tread12_labs2explst(ls2es) =
 (
-list_foreach<labs2exp>(ls2es)
+list_foritm<labs2exp>(ls2es)
 ) where
 {
 implement(env)
-list_foreach$fwork<labs2exp><env>(ls2e, env) = tread12_labs2exp(ls2e)
+list_foritm$work<labs2exp><env>(ls2e, env) = tread12_labs2exp(ls2e)
 } (* end of [tread12_labs2explst] *)
 //
 (* ****** ****** *)

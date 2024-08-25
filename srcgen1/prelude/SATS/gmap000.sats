@@ -98,7 +98,7 @@ fun
 <map:t0>
 <key:t0
 ,itm:t0>
-gmap_foreach(kxs: map): void
+gmap_foritm(kxs: map): void
 *)
 //
 (* ****** ****** *)

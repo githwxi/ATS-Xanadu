@@ -277,7 +277,7 @@ fun
 strm_vt_forall0(strm_vt(x0)): bool
 fun
 <x0:vt>
-strm_vt_foreach0(strm_vt(x0)): void
+strm_vt_foritm0(strm_vt(x0)): void
 //
 (* ****** ****** *)
 //
@@ -493,7 +493,7 @@ strm_vt_z2forcmp0
 fun
 <x0:vt>
 <y0:vt>
-strm_vt_z2foreach0
+strm_vt_z2foritm0
   ( xs: strm_vt(x0)
   , ys: strm_vt(y0)): void
 //
@@ -544,7 +544,7 @@ strm_vt_iz2forcmp0
 fun
 <x0:vt>
 <y0:vt>
-strm_vt_iz2foreach0
+strm_vt_iz2foritm0
 (xs: strm_vt(x0), ys: strm_vt(y0)): void
 //
 (* ****** ****** *)
@@ -614,7 +614,7 @@ rlistize0 with strm_vt_rlistize0 of 1000
 (* ****** ****** *)
 #symload exists0 with strm_vt_exists0 of 1000
 #symload forall0 with strm_vt_forall0 of 1000
-#symload foreach0 with strm_vt_foreach0 of 1000
+#symload foritm0 with strm_vt_foritm0 of 1000
 (* ****** ****** *)
 (* ****** ****** *)
 

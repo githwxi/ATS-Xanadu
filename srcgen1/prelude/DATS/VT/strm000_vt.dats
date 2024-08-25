@@ -674,11 +674,11 @@ val p0 = $addr(r0)
 //
 val () =
 (
-  strm_vt_foreach0<x0>(xs)
+  strm_vt_foritm0<x0>(xs)
 ) where
 {
 #impltmp
-foreach$work0<x0>(x0) =
+foritm$work0<x0>(x0) =
 let
 val r0 = $UN.p2tr_get<r0>(p0)
 in
@@ -686,10 +686,10 @@ in
 $UN.p2tr_set<r0>
   (p0, foldl$fopr0<x0><r0>(r0, x0))
 //
-end // end of [foreach$work0]
+end // end of [foritm$work0]
 }
 //
-}(*where*)//end-of(strm_foldl0/foreach0...)
+}(*where*)//end-of(strm_foldl0/foritm0...)
 
 (* ****** ****** *)
 
@@ -724,7 +724,7 @@ end// let // end of [ loop(xs) ]
 
 #impltmp
 <x0>(*tmp*)
-strm_vt_foreach0
+strm_vt_foritm0
   (xs) = let
 //
 val
@@ -734,13 +734,13 @@ strm_vt_forall0<x0>(xs) where
 #impltmp
 forall$test0<x0>(x0) =
 let
-val () = foreach$work0<x0>(x0) in true
+val () = foritm$work0<x0>(x0) in true
 end
 }
 //
 in
   // nothing
-end(*let*)//end(strm_vt_foreach0/forall0,...)
+end(*let*)//end(strm_vt_foritm0/forall0,...)
 
 (* ****** ****** *)
 
@@ -1653,7 +1653,7 @@ end // end of [strmcon_vt_cons]
 
 #impltmp
 <x0><y0>
-strm_vt_z2foreach0
+strm_vt_z2foritm0
   (xs, ys) =
 (
   loop(xs, ys)
@@ -1685,11 +1685,11 @@ strmcon_vt_cons
   loop(xs, ys) ) where
 {
 val () =
-z2foreach$work0<x0><y0>(x0, y0)
+z2foritm$work0<x0><y0>(x0, y0)
 }(*where*)//end(strmcon_vt_cons)
 )
 ) (*case+*) // end of [loop(xs,ys)]
-} (*where*) // end-of(strm_vt_z2foreach0...)
+} (*where*) // end-of(strm_vt_z2foritm0...)
 
 (* ****** ****** *)
 
@@ -1910,7 +1910,7 @@ end // end of [strmcon_vt_cons]
 
 #impltmp
 <x0><y0>
-strm_vt_iz2foreach0
+strm_vt_iz2foritm0
   ( xs, ys ) =
 (
 auxloop(0, xs, ys)) where
@@ -1944,12 +1944,12 @@ strmcon_vt_cons
 auxloop(i0+1,xs,ys) where
 {
 val () =
-iz2foreach$work0<x0><y0>(i0,x0,y0)
+iz2foritm$work0<x0><y0>(i0,x0,y0)
 } // strmcon_vt_cons(y0,ys)
 )(*case+*)// strmcon_vt_cons(x0,xs)
 //
 )(*where*)//end-of-[auxloop(i0,xs,ys)]
-}(*where*)//end-of-[strm_vt_iz2foreach0(...)]
+}(*where*)//end-of-[strm_vt_iz2foritm0(...)]
 
 (* ****** ****** *)
 (* ****** ****** *)

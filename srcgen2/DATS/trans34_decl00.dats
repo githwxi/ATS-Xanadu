@@ -594,10 +594,10 @@ D4Cvaldclst
 //
 in//let
 (
-foreach(env0, d4vs)) where
+foritm(env0, d4vs)) where
 {
 fun
-foreach
+foritm
 ( env0:
 ! tr34env
 , d4vs: d4valdclist): void =
@@ -606,11 +606,11 @@ case+ d4vs of
 |list_nil() => ()
 |list_cons(d4v1, d4vs) =>
 (
-  foreach(env0, d4vs)) where
+  foritm(env0, d4vs)) where
 { val () =
   trans34_d4valdcl_fold(env0, d4v1) }
 )(*case+*)
-}(*where*)//end-of-[foreach(env0,d4vs)]
+}(*where*)//end-of-[foritm(env0,d4vs)]
 end(*let*)//end-of-[f0_valdclst( ... )]
 //
 val (  ) = prerrln
@@ -646,7 +646,7 @@ val (  ) = prerrln
 trans34_d4eclist_fold
   ( env0 , dcls ) =
 (
-list_foreach_e1nv
+list_foritm_e1nv
 <x0><e1>(dcls, env0)) where
 {
 (*
@@ -656,7 +656,7 @@ tqdes = list(tqd4e)
 #typedef x0 = d4ecl
 #vwtpdef e1 = tr34env
 #impltmp
-foreach$work_e1nv<x0><e1>
+foritm$work_e1nv<x0><e1>
 (d4cl, env0) = trans34_d4ecl_fold(env0, d4cl)
 } (*where*) // end of [list_trans34_fnp(e1,xs,fopr)]
 //

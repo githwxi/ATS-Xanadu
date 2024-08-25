@@ -40,6 +40,11 @@ UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
 //
+#staload "./../SATS/mylib00.sats"
+#staload "./../DATS/mylib00.dats"
+//
+(* ****** ****** *)
+//
 #staload "./../SATS/xerrory.sats"
 //
 (* ****** ****** *)
@@ -166,11 +171,11 @@ implement
 synread_d0patlst
   (d0ps) =
 (
-list_foreach<d0pat>(d0ps)
+list_foritm<d0pat>(d0ps)
 ) where
 {
 implement(env)
-list_foreach$fwork<d0pat><env>(d0p, env) = synread_d0pat(d0p)
+list_foritm$work<d0pat><env>(d0p, env) = synread_d0pat(d0p)
 } (* end of [synread_d0patlst] *)
 //
 (* ****** ****** *)
@@ -614,11 +619,11 @@ implement
 synread_d0explst
   (d0es) =
 (
-list_foreach<d0exp>(d0es)
+list_foritm<d0exp>(d0es)
 ) where
 {
 implement(env)
-list_foreach$fwork<d0exp><env>(d0e, env) = synread_d0exp(d0e)
+list_foritm$work<d0exp><env>(d0e, env) = synread_d0exp(d0e)
 } (* end of [synread_d0explst] *)
 //
 (* ****** ****** *)
@@ -820,11 +825,11 @@ implement
 synread_d0gualst
   (d0gs) =
 (
-list_foreach<d0gua>(d0gs)
+list_foritm<d0gua>(d0gs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d0gua><env>(d0g, env) = synread_d0gua(d0g)
+list_foritm$work<d0gua><env>(d0g, env) = synread_d0gua(d0g)
 } (* end of [synread_d0gualst] *)
 //
 (* ****** ****** *)
@@ -881,11 +886,11 @@ implement
 synread_d0claulst
   (dcls) =
 (
-list_foreach<d0clau>(dcls)
+list_foritm<d0clau>(dcls)
 ) where
 {
 implement(env)
-list_foreach$fwork<d0clau><env>(dcl, env) = synread_d0clau(dcl)
+list_foritm$work<d0clau><env>(dcl, env) = synread_d0clau(dcl)
 } (* end of [synread_d0claulst] *)
 //
 (* ****** ****** *)
@@ -1350,11 +1355,11 @@ implement
 synread_d0eclist
   (d0cs) =
 (
-list_foreach<d0ecl>(d0cs)
+list_foritm<d0ecl>(d0cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d0ecl><env>(d0c, env) = synread_d0ecl(d0c)
+list_foritm$work<d0ecl><env>(d0c, env) = synread_d0ecl(d0c)
 } (* end of [synread_d0eclist] *)
 //
 (* ****** ****** *)
@@ -1464,12 +1469,12 @@ implement
 synread_f0arglst
   (f0as) =
 (
-list_foreach<f0arg>(f0as)
+list_foritm<f0arg>(f0as)
 ) where
 {
 implement
 (env)//tmp
-list_foreach$fwork<f0arg><env>
+list_foritm$work<f0arg><env>
   (f0a0, env) =
 (
 case+
@@ -1505,7 +1510,7 @@ f0a0.node() of
     val () = synread_GTDOT( tend )
   }
 //
-) (* list_foreach$fwork *)
+) (* list_foritm$work *)
 } (* end of [synread_f0arglst] *)
 //
 (* ****** ****** *)
@@ -1515,13 +1520,13 @@ implement
 synread_q0arglst
   (q0as) =
 (
-list_foreach<q0arg>(q0as)
+list_foritm<q0arg>(q0as)
 ) where
 {
 //
 implement
 (env)//tmp
-list_foreach$fwork<q0arg><env>
+list_foritm$work<q0arg><env>
   (q0a0, env) =
 (
 case+
@@ -1542,12 +1547,12 @@ implement
 synread_tq0arglst
   (tqas) =
 (
-list_foreach<tq0arg>(tqas)
+list_foritm<tq0arg>(tqas)
 ) where
 {
 implement
 (env)//tmp
-list_foreach$fwork<tq0arg><env>
+list_foritm$work<tq0arg><env>
   (tq0a, env) =
 (
 case+
@@ -1613,12 +1618,12 @@ implement
 synread_d0valdeclist
   (v0ds) =
 (
-list_foreach<d0valdecl>(v0ds)
+list_foritm<d0valdecl>(v0ds)
 ) where
 {
 implement
 (env)//tmp
-list_foreach$fwork<d0valdecl><env>
+list_foritm$work<d0valdecl><env>
   (v0d, env) =
 {
 //
@@ -1638,12 +1643,12 @@ implement
 synread_d0vardeclist
   (v0ds) =
 (
-list_foreach<d0vardecl>(v0ds)
+list_foritm<d0vardecl>(v0ds)
 ) where
 {
 implement
 (env)//tmp
-list_foreach$fwork<d0vardecl><env>
+list_foritm$work<d0vardecl><env>
   (v0d, env) =
 {
 //
@@ -1673,12 +1678,12 @@ implement
 synread_d0fundeclist
   (f0ds) =
 (
-list_foreach<d0fundecl>(f0ds)
+list_foritm<d0fundecl>(f0ds)
 ) where
 {
 implement
 (env)//tmp
-list_foreach$fwork<d0fundecl><env>
+list_foritm$work<d0fundecl><env>
   (f0d, env) =
 {
 //
@@ -1785,12 +1790,12 @@ implement
 synread_a0typlst
   (atps) =
 (
-list_foreach<a0typ>(atps)
+list_foritm<a0typ>(atps)
 ) where
 {
 implement
 (env)//tmp
-list_foreach$fwork<a0typ><env>
+list_foritm$work<a0typ><env>
   (atp, env) =
 (
 case+
@@ -1818,12 +1823,12 @@ implement
 synread_d0arglst
   (d0as) =
 (
-list_foreach<d0arg>(d0as)
+list_foritm<d0arg>(d0as)
 ) where
 {
 implement
 (env)//tmp
-list_foreach$fwork<d0arg><env>
+list_foritm$work<d0arg><env>
   (d0a, env) =
 (
 case+
@@ -1862,12 +1867,12 @@ implement
 synread_d0typlst
   (d0ts) =
 (
-list_foreach<d0typ>(d0ts)
+list_foritm<d0typ>(d0ts)
 ) where
 {
 implement
 (env)//tmp
-list_foreach$fwork<d0typ><env>
+list_foritm$work<d0typ><env>
   (d0t, env) =
 (
 case+
@@ -1972,12 +1977,12 @@ implement
 synread_d0atypelst
   (d0ts) =
 (
-list_foreach<d0atype>(d0ts)
+list_foritm<d0atype>(d0ts)
 ) where
 {
 implement
 (env)//tmp
-list_foreach$fwork<d0atype><env>
+list_foritm$work<d0atype><env>
   (d0t, env) =
 {
   val () =
@@ -2009,12 +2014,12 @@ implement
 synread_d0cstdeclist
   (d0cs) =
 (
-list_foreach<d0cstdecl>(d0cs)
+list_foritm<d0cstdecl>(d0cs)
 ) where
 {
 implement
 (env)//tmp
-list_foreach$fwork<d0cstdecl><env>
+list_foritm$work<d0cstdecl><env>
   (d0c, env) =
 let
 val+

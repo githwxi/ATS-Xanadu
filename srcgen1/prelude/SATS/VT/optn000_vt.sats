@@ -139,10 +139,10 @@ optn_vt_forall1(xs: !optn_vt(x0)): bool
 //
 fun
 <x0:vt>
-optn_vt_foreach0(xs: ~optn_vt(x0)): void
+optn_vt_foritm0(xs: ~optn_vt(x0)): void
 fun
 <x0:vt>
-optn_vt_foreach1(xs: !optn_vt(x0)): void
+optn_vt_foritm1(xs: !optn_vt(x0)): void
 //
 (* ****** ****** *)
 //
@@ -247,10 +247,10 @@ rlistize0 with optn_vt_rlistize0 of 1000
 (* ****** ****** *)
 //
 (*
-#symload foreach with optn_vt_foreach0 of 1000
+#symload foritm with optn_vt_foritm0 of 1000
 *)
-#symload foreach0 with optn_vt_foreach0 of 1000
-#symload foreach1 with optn_vt_foreach1 of 1000
+#symload foritm0 with optn_vt_foritm0 of 1000
+#symload foritm1 with optn_vt_foritm1 of 1000
 //
 (* ****** ****** *)
 

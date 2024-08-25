@@ -60,11 +60,11 @@ list_fperr20_fnp
 {  syn:tx  }
 (  out, lst, fpr  ) =
 (
-list_foreach<syn>(lst)) where
+list_foritm<syn>(lst)) where
 {
 //
 #impltmp
-foreach$work<syn>(syn) = fpr(out, syn)
+foritm$work<syn>(syn) = fpr(out, syn)
 //
 }(*where*)//end(list_fperr20_fnp(lst,err,fpr))
 //
@@ -75,11 +75,11 @@ optn_fperr20_fnp
 {  syn:tx  }
 (  out, opt, fpr  ) =
 (
-optn_foreach<syn>(opt)) where
+optn_foritm<syn>(opt)) where
 {
 //
 #impltmp
-foreach$work<syn>(syn) = fpr(out, syn)
+foritm$work<syn>(syn) = fpr(out, syn)
 //
 }(*where*)//end(optn_fperr20_fnp(opt,err,fpr))
 //

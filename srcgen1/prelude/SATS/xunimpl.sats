@@ -45,46 +45,43 @@ fset$at$exn
 //
 (*
 fun
-<x0:vt>
+<x0:t0>
 forall$test(ni, x0): bool
 fun
-<x0:vt>
+<x0:t0>
 rforall$test(ni, x0): bool
 fun
-<x0:vt>
+<x0:t0>
 iforall$test(ni, x0): bool
 *)
 fun
-<x0:vt>
+<x0:t0>
 irforall$test(ni, x0): bool
 //
 (* ****** ****** *)
 (*
 fun
-<x0:vt>
+<x0:t0>
 exists$test(ni, x0): bool
 fun
-<x0:vt>
+<x0:t0>
 rexists$test(ni, x0): bool
 fun
-<x0:vt>
+<x0:t0>
 iexists$test(ni, x0): bool
 *)
 fun
-<x0:vt>
+<x0:t0>
 irexists$test(ni, x0): bool
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
-fun
-<x0:t0>
-foritm$work(x0: x0): void
-fun
-<x0:t0>
-rforitm$work(x0: x0): void
+(*
 fun
 <x0:t0>
 iforitm$work(ni, x0): void
+*)
 fun
 <x0:t0>
 irforitm$work(ni, x0): void
@@ -94,19 +91,19 @@ irforitm$work(ni, x0): void
 fun
 <x0:t0>
 <r0:vt>
-folditm$fopr(r0, x0): (r0)
+folditm$fopr(r0, x0): r0
 fun
 <x0:t0>
 <r0:vt>
-rfolditm$fopr(x0, r0): (r0)
+rfolditm$fopr(x0, r0): r0
 fun
 <x0:t0>
 <r0:vt>
-ifolditm$fopr(r0, ni, x0): (r0)
+ifolditm$fopr(r0, ni, x0): r0
 fun
 <x0:t0>
 <r0:vt>
-irfolditm$fopr(ni, x0, r0): (r0)
+irfolditm$fopr(ni, x0, r0): r0
 //
 (* ****** ****** *)
 //
@@ -121,11 +118,11 @@ rfoldall$fopr(x0, r0): (bool, r0)
 fun
 <x0:t0>
 <r0:vt>
-ifoldall$fopr(r0, n0, x0): (bool, r0)
+ifoldall$fopr(r0, ni, x0): (bool, r0)
 fun
 <x0:t0>
 <r0:vt>
-irfoldall$fopr(n0, x0, r0): (bool, r0)
+irfoldall$fopr(ni, x0, r0): (bool, r0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -216,8 +213,20 @@ gseq_sep((*0*)): strn
 //
 fun
 <xs:t0>
-g_foritm(xs: xs): void
+<x0:t0>
+gseq_irforall(xs): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_irexists(xs): bool
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+fun
+<xs:t0>
+g_foritm(xs: xs): void
 fun
 <xs:t0>
 <x0:t0>
@@ -230,6 +239,11 @@ fun
 <xs:t0>
 <x0:t0>
 gseq_iforitm(xs: xs): void
+*)
+fun
+<xs:t0>
+<x0:t0>
+gseq_irforitm(xs: xs): void
 //
 (* ****** ****** *)
 //
@@ -242,19 +256,7 @@ fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
-gseq_foldall(xs, r0): ( r0 )
-//
-fun
-<xs:t0>
-<x0:t0>
-<r0:vt>
 gseq_rfolditm(xs, r0): ( r0 )
-fun
-<xs:t0>
-<x0:t0>
-<r0:vt>
-gseq_rfoldall(xs, r0): ( r0 )
-//
 fun
 <xs:t0>
 <x0:t0>
@@ -264,7 +266,30 @@ fun
 <xs:t0>
 <x0:t0>
 <r0:vt>
+gseq_irfolditm(xs, r0): ( r0 )
+//
+(* ****** ****** *)
+//
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_foldall(xs, r0): ( r0 )
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_rfoldall(xs, r0): ( r0 )
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
 gseq_ifoldall(xs, r0): ( r0 )
+fun
+<xs:t0>
+<x0:t0>
+<r0:vt>
+gseq_irfoldall(xs, r0): ( r0 )
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -317,6 +342,8 @@ fun<>
 nint_rforall(xs: nint): bool
 fun<>
 nint_iforall(xs: nint): bool
+fun<>
+nint_irforall(xs: nint): bool
 //
 fun<>
 nint_foritm(xs: nint): void
@@ -324,6 +351,8 @@ fun<>
 nint_rforitm(xs: nint): void
 fun<>
 nint_iforitm(xs: nint): void
+fun<>
+nint_irforitm(xs: nint): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -496,12 +525,14 @@ strn_iforall(cs: strn): bool
 fun<>
 strn_irforall(cs: strn): bool
 //
+(*
 fun<>
 strn_foritm(cs: strn): void
 fun<>
 strn_rforitm(cs: strn): void
 fun<>
 strn_iforitm(cs: strn): void
+*)
 fun<>
 strn_irforitm(cs: strn): void
 //
@@ -510,32 +541,6 @@ strn_irforitm(cs: strn): void
 fun
 <a:t0>
 strn_vt_gmake(obj: a): strn_vt
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<xs:t0>
-<x0:t0>
-gseq_irforall(xs): bool
-fun
-<xs:t0>
-<x0:t0>
-gseq_irexists(xs): bool
-fun
-<xs:t0>
-<x0:t0>
-gseq_irforitm(xs): void
-fun
-<xs:t0>
-<x0:t0>
-<r0:vt>
-gseq_irfolditm(xs, r0): (r0)
-fun
-<xs:t0>
-<x0:t0>
-<r0:vt>
-gseq_irfoldall(xs, r0): (r0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -595,30 +600,28 @@ gseq_irmap_rllist(xs: xs): list_vt(y0)
 fun
 <x0:t0>
 list_forall(xs: list(x0)): bool
-*)
-fun
-<x0:t0>
-list_foritm(xs: list(x0)): void
-//
 fun
 <x0:t0>
 list_rforall(xs: list(x0)): bool
-fun
-<x0:t0>
-list_rforitm(xs: list(x0)): void
-//
-(*
 fun
 <x0:t0>
 list_iforall(xs: list(x0)): bool
 *)
 fun
 <x0:t0>
-list_iforitm(xs: list(x0)): void
+list_irforall(xs: list(x0)): bool
 //
+(*
 fun
 <x0:t0>
-list_irforall(xs: list(x0)): bool
+list_foritm(xs: list(x0)): void
+fun
+<x0:t0>
+list_rforitm(xs: list(x0)): void
+fun
+<x0:t0>
+list_iforitm(xs: list(x0)): void
+*)
 fun
 <x0:t0>
 list_irforitm(xs: list(x0)): void
@@ -673,41 +676,45 @@ HX-2024-07-25:
 Thu 25 Jul 2024 12:19:14 PM EDT
 *)
 //
+(*
 fun
 <xs:t0>
 <x0:t0>
 gseq_foritm_f1un
 (xs: xs, work: (x0)->void): void
-//
 #symload foritm with gseq_foritm_f1un of 0100
 #symload foritm_fun with gseq_foritm_f1un of 0100
+*)
 //
+(*
 fun
 <xs:t0>
 <x0:t0>
 gseq_rforitm_f1un
 (xs: xs, work: (x0)->void): void
-//
 #symload rforitm with gseq_rforitm_f1un of 0100
 #symload rforitm_fun with gseq_rforitm_f1un of 0100
+*)
 //
+(*
 fun
 <xs:t0>
 <x0:t0>
 gseq_iforitm_f2un
 (xs: xs, work: (ni,x0)->void): void
-//
 #symload iforitm with gseq_iforitm_f2un of 0100
 #symload iforitm_fun with gseq_iforitm_f2un of 0100
+*)
 //
+(*
 fun
 <xs:t0>
 <x0:t0>
 gseq_irforitm_f2un
 (xs: xs, work: (ni,x0)->void): void
-//
 #symload irforitm with gseq_irforitm_f2un of 0100
 #symload irforitm_fun with gseq_irforitm_f2un of 0100
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1005,18 +1012,22 @@ irz2forall$test(ni, x0, y0): bool
 //
 (* ****** ****** *)
 //
+(*
 fun
 <x0:t0>
 <y0:t0>
 z2foritm$work(x0, y0): void
+*)
 fun
 <x0:t0>
 <y0:t0>
 rz2foritm$work(x0, y0): void
+(*
 fun
 <x0:t0>
 <y0:t0>
 iz2foritm$work(ni, x0, y0): void
+*)
 fun
 <x0:t0>
 <y0:t0>
@@ -1039,6 +1050,14 @@ fun
 <ys:t0>
 <y0:t0>
 gseq_rz2forall(xs: xs, ys: ys): bool
+(*
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+gseq_iz2forall(xs: xs, ys: ys): bool
+*)
 fun
 <xs:t0>
 <x0:t0>
@@ -1048,24 +1067,28 @@ gseq_irz2forall(xs: xs, ys: ys): bool
 //
 (* ****** ****** *)
 //
+(*
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
 gseq_z2foritm(xs: xs, ys: ys): void
+*)
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
 gseq_rz2foritm(xs: xs, ys: ys): void
+(*
 fun
 <xs:t0>
 <x0:t0>
 <ys:t0>
 <y0:t0>
 gseq_iz2foritm(xs: xs, ys: ys): void
+*)
 fun
 <xs:t0>
 <x0:t0>
@@ -1137,6 +1160,7 @@ x2irforall$test(ni, x0, ni, y0): bool
 //
 (* ****** ****** *)
 //
+(*
 fun
 <x0:t0>
 <y0:t0>
@@ -1149,6 +1173,7 @@ fun
 <x0:t0>
 <y0:t0>
 x2iforitm$work(ni, x0, y0): void
+*)
 fun
 <x0:t0>
 <y0:t0>

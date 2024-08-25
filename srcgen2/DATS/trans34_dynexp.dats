@@ -527,11 +527,11 @@ t2p2 = s2typ_hnfiz0(t2p2)
 val
 t2p2 = d3p0.styp((*void*))
 //
-// (*
+(*
 val () =
 prerrln
 ("f0_annot(34): t2p2 = ", t2p2)
-// *)
+*)
 //
 val d4p1 =
 (
@@ -814,7 +814,7 @@ tfun.node() of
 , npf1, t2ps, tres) => tres
 | _(* non-T2Pfun1 *) => tfun): s2typ
 //
-// (*
+(*
 val () =
 prerrln
 ("trans34_d3exp:f0_dapp:tfun = ",tfun)
@@ -824,7 +824,7 @@ prerrln
 val () =
 prerrln
 ("trans34_d3exp:f0_dapp:tres = ",tres)
-// *)
+*)
 //
 in//let
 //

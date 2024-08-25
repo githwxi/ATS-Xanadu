@@ -1182,14 +1182,14 @@ linstk_dvar
 (d2v1, dtp1, stk0)) where
 {
 //
-// (*
+(*
 val () =
 prerrln
 ("linstk_d2vins_dvar: d2v1 = ", d2v1)
 val () =
 prerrln
 ("linstk_d2vins_dvar: dtp1 = ", dtp1)
-// *)
+*)
 //
 }(*where*)//end-of-[linstk_d2vins_dvar(...)]
 //
@@ -1204,14 +1204,14 @@ linstk_dget
 (d2v1, dtp1, stk0)) where
 {
 //
-// (*
+(*
 val () =
 prerrln
 ("linstk_d2vins_dget: d2v1 = ", d2v1)
 val () =
 prerrln
 ("linstk_d2vins_dget: dtp1 = ", dtp1)
-// *)
+*)
 //
 }(*where*)//end-of-[linstk_d2vins_dget(...)]
 //
@@ -1224,14 +1224,14 @@ linstk_dset
 (d2v1, dtp1, stk0)) where
 {
 //
-// (*
+(*
 val () =
 prerrln
 ("linstk_d2vins_dset: d2v1 = ", d2v1)
 val () =
 prerrln
 ("linstk_d2vins_dset: dtp1 = ", dtp1)
-// *)
+*)
 //
 }(*where*)//end-of-[linstk_d2vins_dset(...)]
 //
@@ -1246,14 +1246,14 @@ linstk_dvtp
 (d2v1, dtp1, stk0)) where
 {
 //
-// (*
+(*
 val () =
 prerrln
 ("linstk_d2vins_dvtp: d2v1 = ", d2v1)
 val () =
 prerrln
 ("linstk_d2vins_dvtp: dtp1 = ", dtp1)
-// *)
+*)
 //
 }(*where*)//end-of-[linstk_d2vins_dvtp(...)]
 //

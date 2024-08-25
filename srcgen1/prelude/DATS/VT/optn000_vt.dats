@@ -178,25 +178,25 @@ optn_vt_cons(x0) => forall$test1<a>(x0)
 //
 #impltmp
 <a>(*tmp*)
-optn_vt_foreach0(xs) =
+optn_vt_foritm0(xs) =
 (
 case+ xs of
 | ~
 optn_vt_nil() => ((*void*))
 | ~
-optn_vt_cons(x0) => foreach$work0<a>(x0)
-) (*case+*)//end-of-[optn_vt_foreach0(xs)]
+optn_vt_cons(x0) => foritm$work0<a>(x0)
+) (*case+*)//end-of-[optn_vt_foritm0(xs)]
 //
 #impltmp
 <a>(*tmp*)
-optn_vt_foreach1(xs) =
+optn_vt_foritm1(xs) =
 (
 case+ xs of
 | // !
 optn_vt_nil() => ((*void*))
 | // !
-optn_vt_cons(x0) => foreach$work1<a>(x0)
-) (*case+*)//end-of-[optn_vt_foreach1(xs)]
+optn_vt_cons(x0) => foritm$work1<a>(x0)
+) (*case+*)//end-of-[optn_vt_foritm1(xs)]
 //
 (* ****** ****** *)
 //

@@ -39,6 +39,7 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
 #staload
 _(*TMP*) =
 "./../DATS/staexp2_print0.dats"
@@ -54,6 +55,13 @@ _(*TMP*) =
 #staload
 _(*TMP*) =
 "./../DATS/dynexp3_print0.dats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload "./../SATS/mylib00.sats"
+#staload "./../DATS/mylib00.dats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload "./../SATS/xlabel0.sats"
@@ -116,11 +124,11 @@ implement
 //{}(*tmp*)
 tread23_d3explst(d3es) =
 (
-list_foreach<d3exp>(d3es)
+list_foritm<d3exp>(d3es)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3exp><env>(d3e, env) = tread23_d3exp(d3e)
+list_foritm$work<d3exp><env>(d3e, env) = tread23_d3exp(d3e)
 } (* end of [tread23_d3explst] *)
 
 (* ****** ****** *)
@@ -535,11 +543,11 @@ implement
 //{}(*tmp*)
 tread23_d3eclist(d3cs) =
 (
-list_foreach<d3ecl>(d3cs)
+list_foritm<d3ecl>(d3cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3ecl><env>(d3c, env) = tread23_d3ecl(d3c)
+list_foritm$work<d3ecl><env>(d3c, env) = tread23_d3ecl(d3c)
 } (* end of [tread23_d3eclist] *)
 //
 (* ****** ****** *)

@@ -120,25 +120,25 @@ iforall$test_e2nv
 fun
 <x0:t0>
 <e1:vt>
-foreach$work_e1nv
+foritm$work_e1nv
 (x0: x0, e1: !e1): void
 fun
 <x0:t0>
 <e1:vt>
-iforeach$work_e1nv
+iforitm$work_e1nv
 (i0: n0, x0: x0, e1: !e1): void
 //
 fun
 <x0:t0>
 <e1:vt>
 <e2:vt>
-foreach$work_e2nv
+foritm$work_e2nv
 (x0: x0, e1: !e1, e2: !e2): void
 fun
 <x0:t0>
 <e1:vt>
 <e2:vt>
-iforeach$work_e2nv
+iforitm$work_e2nv
 ( i0: n0
 , x0: x0, e1: !e1, e2: !e2): void
 //
@@ -266,24 +266,24 @@ fun
 <xs:t0>
 <x0:t0>
 <e1:vt>
-gseq_foreach_e1nv(xs, !e1): void
+gseq_foritm_e1nv(xs, !e1): void
 fun
 <xs:t0>
 <x0:t0>
 <e1:vt>
-gseq_iforeach_e1nv(xs, !e1): void
+gseq_iforitm_e1nv(xs, !e1): void
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
 <e1:vt>
-list_foreach_e1nv
+list_foritm_e1nv
 {n:i0}(list(x0, n), e1: !e1): void
 fun
 <x0:t0>
 <e1:vt>
-optn_foreach_e1nv
+optn_foritm_e1nv
 {b:b0}(optn(x0, b), e1: !e1): void
 //
 (* ****** ****** *)
@@ -293,14 +293,14 @@ fun
 <x0:t0>
 <e1:vt>
 <e2:vt>
-gseq_foreach_e2nv(xs,!e1,!e2): void
+gseq_foritm_e2nv(xs,!e1,!e2): void
 //
 fun
 <xs:t0>
 <x0:t0>
 <e1:vt>
 <e2:vt>
-gseq_iforeach_e2nv(xs,!e1,!e2): void
+gseq_iforitm_e2nv(xs,!e1,!e2): void
 //
 (* ****** ****** *)
 //

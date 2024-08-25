@@ -26,17 +26,25 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 // Author: Hongwei Xi
 // Start Time: September, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #include
 "share/atspre_staload.hats"
 #staload
 UN = "prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload "./../SATS/mylib00.sats"
+#staload "./../DATS/mylib00.dats"
 //
 (* ****** ****** *)
 //
@@ -60,6 +68,7 @@ UN = "prelude/SATS/unsafe.sats"
 _(*TMP*) = "./../DATS/tread01_staexp.dats"
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 implement
 //{}(*tmp*)
@@ -69,11 +78,11 @@ implement
 //{}(*tmp*)
 tread01_d1patlst(d1ps) =
 (
-list_foreach<d1pat>(d1ps)
+list_foritm<d1pat>(d1ps)
 ) where
 {
 implement(env)
-list_foreach$fwork<d1pat><env>(d1p, env) = tread01_d1pat(d1p)
+list_foritm$work<d1pat><env>(d1p, env) = tread01_d1pat(d1p)
 } (* end of [tread01_d1patlst] *)
 //
 (* ****** ****** *)
@@ -97,11 +106,11 @@ implement
 //{}(*tmp*)
 tread01_d1explst(d1es) =
 (
-list_foreach<d1exp>(d1es)
+list_foritm<d1exp>(d1es)
 ) where
 {
 implement(env)
-list_foreach$fwork<d1exp><env>(d1e, env) = tread01_d1exp(d1e)
+list_foritm$work<d1exp><env>(d1e, env) = tread01_d1exp(d1e)
 } (* end of [tread01_d1explst] *)
 //
 (* ****** ****** *)
@@ -370,11 +379,11 @@ implement
 //{}(*tmp*)
 tread01_d1eclist(dcls) =
 (
-list_foreach<d1ecl>(dcls)
+list_foritm<d1ecl>(dcls)
 ) where
 {
 implement(env)
-list_foreach$fwork<d1ecl><env>(dcl, env) = tread01_d1ecl(dcl)
+list_foritm$work<d1ecl><env>(dcl, env) = tread01_d1ecl(dcl)
 } (* end of [tread01_d1eclist] *)
 //
 (* ****** ****** *)
@@ -429,11 +438,11 @@ implement
 //{}(*tmp*)
 tread01_f1arglst(f1as) =
 (
-list_foreach<f1arg>(f1as)
+list_foritm<f1arg>(f1as)
 ) where
 {
 implement(env)
-list_foreach$fwork<f1arg><env>(f1a, env) = tread01_f1arg(f1a)
+list_foritm$work<f1arg><env>(f1a, env) = tread01_f1arg(f1a)
 } (* end of [tread01_f1arglst] *)
 //
 (* ****** ****** *)
@@ -457,11 +466,11 @@ implement
 //{}(*tmp*)
 tread01_q1arglst(q1as) =
 (
-list_foreach<q1arg>(q1as)
+list_foritm<q1arg>(q1as)
 ) where
 {
 implement(env)
-list_foreach$fwork<q1arg><env>(q1a, env) = tread01_q1arg(q1a)
+list_foritm$work<q1arg><env>(q1a, env) = tread01_q1arg(q1a)
 } (* end of [tread01_q1arglst] *)
 //
 (* ****** ****** *)
@@ -480,11 +489,11 @@ implement
 //{}(*tmp*)
 tread01_sq1arglst(sqas) =
 (
-list_foreach<sq1arg>(sqas)
+list_foritm<sq1arg>(sqas)
 ) where
 {
 implement(env)
-list_foreach$fwork<sq1arg><env>(sqa, env) = tread01_sq1arg(sqa)
+list_foritm$work<sq1arg><env>(sqa, env) = tread01_sq1arg(sqa)
 } (* end of [tread01_sq1arglst] *)
 //
 (* ****** ****** *)
@@ -503,11 +512,11 @@ implement
 //{}(*tmp*)
 tread01_tq1arglst(tqas) =
 (
-list_foreach<tq1arg>(tqas)
+list_foritm<tq1arg>(tqas)
 ) where
 {
 implement(env)
-list_foreach$fwork<tq1arg><env>(tqa, env) = tread01_tq1arg(tqa)
+list_foritm$work<tq1arg><env>(tqa, env) = tread01_tq1arg(tqa)
 } (* end of [tread01_tq1arglst] *)
 //
 (* ****** ****** *)
@@ -526,11 +535,11 @@ implement
 //{}(*tmp*)
 tread01_ti1arglst(tias) =
 (
-list_foreach<ti1arg>(tias)
+list_foritm<ti1arg>(tias)
 ) where
 {
 implement(env)
-list_foreach$fwork<ti1arg><env>(tia, env) = tread01_ti1arg(tia)
+list_foritm$work<ti1arg><env>(tia, env) = tread01_ti1arg(tia)
 } (* end of [tread01_ti1arglst] *)
 //
 (* ****** ****** *)
@@ -593,11 +602,11 @@ implement
 //{}(*tmp*)
 tread01_d1valdeclist(v1ds) =
 (
-list_foreach<d1valdecl>(v1ds)
+list_foritm<d1valdecl>(v1ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<d1valdecl><env>(v1d, env) = tread01_d1valdecl(v1d)
+list_foritm$work<d1valdecl><env>(v1d, env) = tread01_d1valdecl(v1d)
 } (* end of [tread01_d1valdeclist] *)
 //
 (* ****** ****** *)
@@ -606,11 +615,11 @@ implement
 //{}(*tmp*)
 tread01_d1vardeclist(v1ds) =
 (
-list_foreach<d1vardecl>(v1ds)
+list_foritm<d1vardecl>(v1ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<d1vardecl><env>(v1d, env) = tread01_d1vardecl(v1d)
+list_foritm$work<d1vardecl><env>(v1d, env) = tread01_d1vardecl(v1d)
 } (* end of [tread01_d1vardeclist] *)
 //
 (* ****** ****** *)
@@ -619,11 +628,11 @@ implement
 //{}(*tmp*)
 tread01_d1fundeclist(f1ds) =
 (
-list_foreach<d1fundecl>(f1ds)
+list_foritm<d1fundecl>(f1ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<d1fundecl><env>(f1d, env) = tread01_d1fundecl(f1d)
+list_foritm$work<d1fundecl><env>(f1d, env) = tread01_d1fundecl(f1d)
 } (* end of [tread01_d1fundeclist] *)
 //
 (* ****** ****** *)
@@ -649,12 +658,12 @@ implement
 tread01_d1atypelst
   (d1ts) =
 (
-list_foreach<d1atype>(d1ts)
+list_foritm<d1atype>(d1ts)
 ) where
 {
 implement
 (env)//tmp
-list_foreach$fwork<d1atype><env>
+list_foritm$work<d1atype><env>
   (d1t, env) =
 {
 (*

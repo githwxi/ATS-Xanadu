@@ -1303,17 +1303,17 @@ implement
 the_sexpenv_add_csts
   (s2cs) =
 (
-  foreach(s2cs)
+  foritm(s2cs)
 ) where
 {
 fun
-foreach
+foritm
 (s2cs: s2cstlst): void =
 (
 case+ s2cs of
 | list_nil() => ()
 | list_cons(s2c0, s2cs) =>
-  (the_sexpenv_add_cst(s2c0); foreach(s2cs))
+  (the_sexpenv_add_cst(s2c0); foritm(s2cs))
 )
 } (* end of [the_sexpenv_add_csts] *)
 
@@ -1321,17 +1321,17 @@ implement
 the_sexpenv_add_s2vs
   (s2vs) =
 (
-  foreach(s2vs)
+  foritm(s2vs)
 ) where
 {
 fun
-foreach
+foritm
 (s2vs: s2varlst): void =
 (
 case+ s2vs of
 | list_nil() => ()
 | list_cons(s2v0, s2vs) =>
-  (the_sexpenv_add_var(s2v0); foreach(s2vs))
+  (the_sexpenv_add_var(s2v0); foritm(s2vs))
 )
 } (* end of [the_sexpenv_add_s2vs] *)
 
@@ -1339,11 +1339,11 @@ implement
 the_sexpenv_add_tqas
   (tqas) =
 (
-  foreach(tqas)
+  foritm(tqas)
 ) where
 {
 fun
-foreach
+foritm
 (tqas: tq2arglst): void =
 (
 case+ tqas of
@@ -1352,7 +1352,7 @@ case+ tqas of
   let
   val s2vs = tqa0.s2vs()
   in
-  (the_sexpenv_add_s2vs(s2vs); foreach(tqas))
+  (the_sexpenv_add_s2vs(s2vs); foritm(tqas))
   end
 )
 } (* end of [the_sexpenv_add_tqas] *)
@@ -1361,17 +1361,17 @@ implement
 the_sexpenv_add_svss
   (svss) =
 (
-  foreach(svss)
+  foritm(svss)
 ) where
 {
 fun
-foreach
+foritm
 (svss: s2varlstlst): void =
 (
 case+ svss of
 | list_nil() => ()
 | list_cons(s2vs, svss) =>
-  (the_sexpenv_add_s2vs(s2vs); foreach(svss))
+  (the_sexpenv_add_s2vs(s2vs); foritm(svss))
 )
 } (* end of [the_sexpenv_add_svss] *)
 
@@ -1817,17 +1817,17 @@ implement
 the_dexpenv_add_cons
   (d2cs) =
 (
-  foreach(d2cs)
+  foritm(d2cs)
 ) where
 {
 fun
-foreach
+foritm
 (d2cs: d2conlst): void =
 (
 case+ d2cs of
 | list_nil() => ()
 | list_cons(d2c0, d2cs) =>
-  (the_dexpenv_add_con(d2c0); foreach(d2cs))
+  (the_dexpenv_add_con(d2c0); foritm(d2cs))
 )
 } (* end of [the_dexpenv_add_cons] *)
 
@@ -1837,18 +1837,18 @@ implement
 the_dexpenv_add_csts
   (d2cs) =
 (
-  foreach(d2cs)
+  foritm(d2cs)
 ) where
 {
-  fun
-  foreach
-  (d2cs: d2cstlst): void =
-  (
-  case+ d2cs of
-  | list_nil() => ()
-  | list_cons(d2c0, d2cs) =>
-    (the_dexpenv_add_cst(d2c0); foreach(d2cs))
-  )
+fun
+foritm
+(d2cs: d2cstlst): void =
+(
+case+ d2cs of
+| list_nil() => ()
+| list_cons(d2c0, d2cs) =>
+  (the_dexpenv_add_cst(d2c0); foritm(d2cs))
+)
 } (* end of [the_dexpenv_add_csts] *)
 
 (* ****** ****** *)
@@ -1857,18 +1857,18 @@ implement
 the_dexpenv_add_d2vs
   (d2vs) =
 (
-  foreach(d2vs)
+  foritm(d2vs)
 ) where
 {
-  fun
-  foreach
-  (d2vs: d2varlst): void =
-  (
-  case+ d2vs of
-  | list_nil() => ()
-  | list_cons(d2v0, d2vs) =>
-    (the_dexpenv_add_var(d2v0); foreach(d2vs))
-  )
+fun
+foritm
+(d2vs: d2varlst): void =
+(
+case+ d2vs of
+| list_nil() => ()
+| list_cons(d2v0, d2vs) =>
+  (the_dexpenv_add_var(d2v0); foritm(d2vs))
+)
 } (* end of [the_dexpenv_add_d2vs] *)
 
 (* ****** ****** *)

@@ -94,26 +94,26 @@ irexists$test1(ni, !x0): bool
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 fun
 <x0:vt>
 foritm$work0(x0: ~x0): void
 fun
 <x0:vt>
 foritm$work1(x0: !x0): void
-//
 fun
 <x0:vt>
 rforitm$work0(x0: ~x0): void
 fun
 <x0:vt>
 rforitm$work1(x0: !x0): void
-//
 fun
 <x0:vt>
 iforitm$work0(ni, ~x0): void
 fun
 <x0:vt>
 iforitm$work1(ni, !x0): void
+*)
 //
 fun
 <x0:vt>
@@ -224,6 +224,7 @@ irfilter$test1(ni, !x0): bool
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 fun
 <xs:vt>
 <x0:vt>
@@ -232,7 +233,9 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_foritm1(xs: !xs): void
+*)
 //
+(*
 fun
 <xs:vt>
 <x0:vt>
@@ -241,7 +244,9 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_rforitm1(xs: !xs): void
+*)
 //
+(*
 fun
 <xs:vt>
 <x0:vt>
@@ -250,6 +255,18 @@ fun
 <xs:vt>
 <x0:vt>
 gseq_iforitm1(xs: !xs): void
+*)
+//
+(*
+fun
+<xs:vt>
+<x0:vt>
+gseq_irforitm0(xs: ~xs): void
+fun
+<xs:vt>
+<x0:vt>
+gseq_irforitm1(xs: !xs): void
+*)
 //
 (* ****** ****** *)
 //
@@ -268,38 +285,12 @@ fun
 <xs:vt>
 <x0:vt>
 <r0:vt>
-gseq_foldall0(~xs, r0): ( r0 )
-fun
-<xs:vt>
-<x0:vt>
-<r0:vt>
-gseq_foldall1(!xs, r0): ( r0 )
-//
-(* ****** ****** *)
-//
-fun
-<xs:vt>
-<x0:vt>
-<r0:vt>
 gseq_rfolditm0(~xs, r0): ( r0 )
 fun
 <xs:vt>
 <x0:vt>
 <r0:vt>
 gseq_rfolditm1(!xs, r0): ( r0 )
-//
-fun
-<xs:vt>
-<x0:vt>
-<r0:vt>
-gseq_rfoldall0(~xs, r0): ( r0 )
-fun
-<xs:vt>
-<x0:vt>
-<r0:vt>
-gseq_rfoldall1(!xs, r0): ( r0 )
-//
-(* ****** ****** *)
 //
 fun
 <xs:vt>
@@ -316,12 +307,58 @@ fun
 <xs:vt>
 <x0:vt>
 <r0:vt>
+gseq_irfolditm0(~xs, r0): ( r0 )
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_irfolditm1(!xs, r0): ( r0 )
+//
+(* ****** ****** *)
+//
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_foldall0(~xs, r0): ( r0 )
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_foldall1(!xs, r0): ( r0 )
+//
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_rfoldall0(~xs, r0): ( r0 )
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_rfoldall1(!xs, r0): ( r0 )
+//
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
 gseq_ifoldall0(~xs, r0): ( r0 )
 fun
 <xs:vt>
 <x0:vt>
 <r0:vt>
 gseq_ifoldall1(!xs, r0): ( r0 )
+//
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_irfoldall0(~xs, r0): ( r0 )
+fun
+<xs:vt>
+<x0:vt>
+<r0:vt>
+gseq_irfoldall1(!xs, r0): ( r0 )
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1129,12 +1166,14 @@ list_vt_irforall1(xs: !list_vt(x0)): bool
 //
 (* ****** ****** *)
 //
+(*
 fun
 <x0:vt>
 list_vt_foritm0(xs: ~list_vt(x0)): void
 fun
 <x0:vt>
 list_vt_foritm1(xs: !list_vt(x0)): void
+*)
 //
 fun
 <x0:vt>
@@ -1159,9 +1198,11 @@ list_vt_irforitm1(xs: !list_vt(x0)): void
 //
 (* ****** ****** *)
 //
+(*
 fun
 <x0:vt>
 strm_vt_foritm0(xs: ~strm_vt(x0)): void
+*)
 fun
 <x0:vt>
 strm_vt_rforitm0(xs: ~strm_vt(x0)): void
@@ -1264,6 +1305,7 @@ fun
 <y0:vt>
 z2forall$test1(!x0, !y0): bool
 *)
+//
 fun
 <x0:vt>
 <y0:vt>
@@ -1272,6 +1314,16 @@ fun
 <x0:vt>
 <y0:vt>
 rz2forall$test1(!x0, !y0): bool
+//
+(*
+<x0:vt>
+<y0:vt>
+iz2forall$test0(ni, ~x0, ~y0): bool
+fun
+<x0:vt>
+<y0:vt>
+iz2forall$test1(ni, !x0, !y0): bool
+*)
 //
 fun
 <x0:vt>
@@ -1284,6 +1336,7 @@ irz2forall$test1(ni, !x0, !y0): bool
 //
 (* ****** ****** *)
 //
+(*
 fun
 <x0:vt>
 <y0:vt>
@@ -1292,6 +1345,7 @@ fun
 <x0:vt>
 <y0:vt>
 z2foritm$work1(!x0, !y0): void
+*)
 //
 fun
 <x0:vt>
@@ -1302,6 +1356,7 @@ fun
 <y0:vt>
 rz2foritm$work1(!x0, !y0): void
 //
+(*
 fun
 <x0:vt>
 <y0:vt>
@@ -1310,6 +1365,7 @@ fun
 <x0:vt>
 <y0:vt>
 iz2foritm$work1(ni, !x0, !y0): void
+*)
 //
 fun
 <x0:vt>
@@ -1376,6 +1432,21 @@ fun
 <y0:vt>
 gseq_rz2forall1(xs: !xs, ys: !ys): bool
 //
+(*
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
+gseq_iz2forall0(xs: ~xs, ys: ~ys): bool
+fun
+<xs:vt>
+<x0:vt>
+<ys:vt>
+<y0:vt>
+gseq_iz2forall1(xs: !xs, ys: !ys): bool
+*)
+//
 fun
 <xs:vt>
 <x0:vt>
@@ -1391,6 +1462,7 @@ gseq_irz2forall1(xs: !xs, ys: !ys): bool
 //
 (* ****** ****** *)
 //
+(*
 fun
 <xs:vt>
 <x0:vt>
@@ -1403,6 +1475,7 @@ fun
 <ys:vt>
 <y0:vt>
 gseq_z2foritm1(xs: !xs, ys: !ys): void
+*)
 //
 fun
 <xs:vt>
@@ -1417,6 +1490,7 @@ fun
 <y0:vt>
 gseq_rz2foritm1(xs: !xs, ys: !ys): void
 //
+(*
 fun
 <xs:vt>
 <x0:vt>
@@ -1429,6 +1503,7 @@ fun
 <ys:vt>
 <y0:vt>
 gseq_iz2foritm1(xs: !xs, ys: !ys): void
+*)
 //
 fun
 <xs:vt>
@@ -1484,23 +1559,6 @@ fun
 <y0:vt>
 <z0:vt>
 gseq_irz2map0_lstrm(~xs, ~ys): strm_vt(z0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-<y0:vt>
-strm_vt_z2foritm0
-(xs: ~strm_vt(x0), ys: ~strm_vt(y0)): void
-//
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-<y0:vt>
-strm_vt_iz2foritm0
-(xs: ~strm_vt(x0), ys: ~strm_vt(y0)): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

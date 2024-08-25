@@ -3439,10 +3439,10 @@ trans12_d1tcnlst
 (env0, tcns, s2c0, svss)
 //
 val (  ) =
-gseq_iforeach(d2cs) where
+gseq_iforitm(d2cs) where
 {
 #impltmp
-iforeach$work
+iforitm$work
 <d2con>(tag, d2c) =
 (
   d2con_set_ctag(d2c, tag) ) }

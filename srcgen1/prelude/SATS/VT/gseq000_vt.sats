@@ -376,15 +376,15 @@ gseq_forall2(!xs): bool
 fun
 <xs:vt>
 <x0:vt>
-gseq_foreach0(~xs): void
+gseq_foritm0(~xs): void
 fun
 <xs:vt>
 <x0:vt>
-gseq_foreach1(!xs): void
+gseq_foritm1(!xs): void
 fun
 <xs:vt>
 <x0:vt>
-gseq_foreach2(!xs): void
+gseq_foritm2(!xs): void
 //
 (* ****** ****** *)
 //
@@ -400,11 +400,11 @@ gseq_rforall1(!xs): bool
 fun
 <xs:vt>
 <x0:vt>
-gseq_rforeach0(~xs): void
+gseq_rforitm0(~xs): void
 fun
 <xs:vt>
 <x0:vt>
-gseq_rforeach1(!xs): void
+gseq_rforitm1(!xs): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -695,11 +695,11 @@ gseq_iforall1(!xs): bool
 fun
 <xs:vt>
 <x0:vt>
-gseq_iforeach0(~xs): void
+gseq_iforitm0(~xs): void
 fun
 <xs:vt>
 <x0:vt>
-gseq_iforeach1(!xs): void
+gseq_iforitm1(!xs): void
 //
 (* ****** ****** *)
 //
@@ -846,13 +846,13 @@ fun
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_z2foreach0(xs: ~xs, ys: ~ys): void
+gseq_z2foritm0(xs: ~xs, ys: ~ys): void
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_z2foreach1(xs: !xs, ys: !ys): void
+gseq_z2foritm1(xs: !xs, ys: !ys): void
 //
 (* ****** ****** *)
 //
@@ -902,13 +902,13 @@ fun
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_iz2foreach0(xs: ~xs, ys: ~ys): void
+gseq_iz2foritm0(xs: ~xs, ys: ~ys): void
 fun
 <xs:vt>
 <x0:vt>
 <ys:vt>
 <y0:vt>
-gseq_iz2foreach1(xs: !xs, ys: !ys): void
+gseq_iz2foritm1(xs: !xs, ys: !ys): void
 //
 (* ****** ****** *)
 //

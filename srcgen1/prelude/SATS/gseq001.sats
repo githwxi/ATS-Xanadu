@@ -20,7 +20,7 @@ fun
 <xz:t0>
 <xs:t0>
 <x0:t0>
-gseq_concat_foreach
+gseq_concat_foritm
 ( xss : xz ): void // xz=[xs]
 //
 (* ****** ****** *)
@@ -32,7 +32,7 @@ gseq_uncons_forall(xs): bool
 fun
 <xs:t0>
 <x0:t0>
-gseq_uncons_foreach(xs): void
+gseq_uncons_foritm(xs): void
 //
 fun
 <xs:t0>
@@ -49,7 +49,7 @@ gseq_2choose_forall(xs): bool
 fun
 <xs:t0>
 <x0:t0>
-gseq_2choose_foreach(xs): void
+gseq_2choose_foritm(xs): void
 //
 fun
 <xs:t0>

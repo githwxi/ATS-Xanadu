@@ -26,11 +26,13 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 // Author: Hongwei Xi
 // Start Time: December, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #include
@@ -38,6 +40,7 @@
 #staload
 UN = "prelude/SATS/unsafe.sats"
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload
@@ -49,6 +52,13 @@ ENV = "./../SATS/xsymenv.sats"
 #staload
 NMS = "./../SATS/nmspace.sats"
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload "./../SATS/mylib00.sats"
+#staload "./../DATS/mylib00.dats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload "./../SATS/xbasics.sats"
@@ -87,6 +97,7 @@ NMS = "./../SATS/nmspace.sats"
 #staload "./../SATS/trans01.sats"
 #staload "./../SATS/trans12.sats"
 
+(* ****** ****** *)
 (* ****** ****** *)
 implement
 fprint_val<token> = fprint_token
@@ -5777,10 +5788,10 @@ end // end of [DQ0EIDsome(qua,id0))
 //
 (*
 val () =
-list_foreach<d2cst>(d2cs) where
+list_foritm<d2cst>(d2cs) where
 {
 implement
-list_foreach$fwork<d2cst><void>
+list_foritm$work<d2cst><void>
   (d2c, env) =
 let
 val loc =
@@ -6078,21 +6089,21 @@ the_trans12_pushnil((*void*))
 //
 val () =
 (
-list_foreach<sq2arg>(sqas)
+list_foritm<sq2arg>(sqas)
 ) where
 {
 implement
-list_foreach$fwork<sq2arg><void>
+list_foritm$work<sq2arg><void>
   (sq2a, env) =
   the_sexpenv_add_s2vs(sq2a.s2vs())
 }
 val () =
 (
-list_foreach<tq2arg>(tqas)
+list_foritm<tq2arg>(tqas)
 ) where
 {
 implement
-list_foreach$fwork<tq2arg><void>
+list_foritm$work<tq2arg><void>
   (tq2a, env) =
   the_sexpenv_add_s2vs(tq2a.s2vs())
 }

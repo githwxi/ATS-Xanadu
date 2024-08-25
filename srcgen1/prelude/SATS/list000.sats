@@ -289,7 +289,19 @@ fun
 list_exists(xs: list(x0)): bool
 fun
 <x0:t0>
-list_foreach(xs: list(x0)): void
+list_foritm(xs: list(x0)): void
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+list_rforall(xs: list(x0)): bool
+fun
+<x0:t0>
+list_rexists(xs: list(x0)): bool
+fun
+<x0:t0>
+list_rforitm(xs: list(x0)): void
 //
 (* ****** ****** *)
 //
@@ -425,7 +437,7 @@ list_iforall
 //
 fun
 <x0:t0>
-list_iforeach
+list_iforitm
 {n:int}(xs: list(x0, n)): void//fun
 //
 (* ****** ****** *)
@@ -549,10 +561,10 @@ list_subsetize_vt
 //
 #symload exists with list_exists of 1000
 #symload forall with list_forall of 1000
-#symload foreach with list_foreach of 1000
+#symload foritm with list_foritm of 1000
 //
 #symload iforall with list_iforall of 1000
-#symload iforeach with list_iforeach of 1000
+#symload iforitm with list_iforitm of 1000
 //
 (* ****** ****** *)
 #symload listize with list_listize of 1000

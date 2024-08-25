@@ -666,12 +666,12 @@ s2typ_hnfiz0_e1nv
 //
 (* ****** ****** *)
 //
-// (*
+(*
 val () =
 prerrln("match2a_s2typ: t2p1 = ", t2p1)
 val () =
 prerrln("match2a_s2typ: t2p2 = ", t2p2)
-// *)
+*)
 //
 (* ****** ****** *)
 //
