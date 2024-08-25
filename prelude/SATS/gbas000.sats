@@ -39,9 +39,13 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
+<a:t0>
+g_void( a ): void
+fun
 <a:vt>
 g_self( a ): ( a )
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
@@ -132,6 +136,19 @@ g_tostr(obj: a): strn
 fun
 <x0:t0>
 g_print(obj: x0): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#symload void with g_void of 0100
+#symload self with g_self of 0100
+//
+(* ****** ****** *)
+//
+#symload torep with g_torep of 0100
+#symload tostr with g_tostr of 0100
+//
+(* ****** ****** *)
 //
 #symload print with g_print of 0100
 //

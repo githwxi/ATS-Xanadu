@@ -40,11 +40,20 @@ then n * fact(n-1) else 1
 (* ****** ****** *)
 //
 val
-fact5 =
-trace("fact5", fact)(5)
+fact = trace("fact", fact)
+//
+val (  ) =
+(20).foritm
+(lam(n:nint)=>g_void(fact(n)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val
-fact10 =
-trace("fact10", fact)(10)
+strn_append =
+trace("strn_append", strn_append<>)
+val strn_abc = strn_append("a", "bc")
+val strn_xyz = strn_append("x", "yz")
 //
 (* ****** ****** *)
 (* ****** ****** *)
