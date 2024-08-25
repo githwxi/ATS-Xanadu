@@ -97,29 +97,38 @@ ENV = "./../SATS/xsymenv.sats"
 NMS = "./../SATS/nmspace.sats"
 //
 (* ****** ****** *)
-
+(* ****** ****** *)
+//
+#staload "./../SATS/mylib00.sats"
+#staload "./../DATS/mylib00.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #staload "./../SATS/xbasics.sats"
-
+//
 (* ****** ****** *)
-
+//
 #staload "./../SATS/lexing0.sats"
-
+//
 (* ****** ****** *)
-
+//
 #staload "./../SATS/staexp0.sats"
 #staload "./../SATS/staexp1.sats"
 #staload "./../SATS/staexp2.sats"
-
+//
 (* ****** ****** *)
-
+//
 #staload "./../SATS/trans01.sats"
 #staload "./../SATS/trans12.sats"
-
+//
+(* ****** ****** *)
 (* ****** ****** *)
 implement
 fprint_val<s1qua> = fprint_s1qua
 implement
 fprint_val<s2exp> = fprint_s2exp
+(* ****** ****** *)
 (* ****** ****** *)
 
 local

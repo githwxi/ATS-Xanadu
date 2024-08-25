@@ -398,16 +398,16 @@ forall$test2(x0: &x0): bool
 //
 fun
 <x0:t0>
-foreach$work(x0: x0): void
+foritm$work(x0: x0): void
 fun
 <x0:vt>
-foreach$work0(x0: ~x0): void
+foritm$work0(x0: ~x0): void
 fun
 <x0:vt>
-foreach$work1(x0: !x0): void
+foritm$work1(x0: !x0): void
 fun
 <x0:vt>
-foreach$work2(x0: &x0): void
+foritm$work2(x0: &x0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -537,16 +537,16 @@ rforall$test2(x0: &x0): bool
 //
 fun
 <x0:t0>
-rforeach$work(x0: x0): void
+rforitm$work(x0: x0): void
 fun
 <x0:vt>
-rforeach$work0(x0: ~x0): void
+rforitm$work0(x0: ~x0): void
 fun
 <x0:vt>
-rforeach$work1(x0: !x0): void
+rforitm$work1(x0: !x0): void
 fun
 <x0:vt>
-rforeach$work2(x0: &x0): void
+rforitm$work2(x0: &x0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -638,23 +638,23 @@ iforalln$test
 //
 fun
 <x0:t0>
-iforeach$work(nint, x0): void
+iforitm$work(nint, x0): void
 fun
 <x0:vt>
-iforeach$work0(nint, ~x0): void
+iforitm$work0(nint, ~x0): void
 fun
 <x0:vt>
-iforeach$work1(nint, !x0): void
+iforitm$work1(nint, !x0): void
 fun
 <x0:vt>
-iforeach$work2(nint, &x0): void
+iforitm$work2(nint, &x0): void
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
 <ln:i0>
-iforeachn$work
+iforitmn$work
   (i0: sint(ln), x0: x0): void
 //
 (* ****** ****** *)
@@ -765,15 +765,15 @@ z2forcmp$fcmp1(!x0, !y0): sint
 fun
 <x0:t0>
 <y0:t0>
-z2foreach$work(x0, y0): void
+z2foritm$work(x0, y0): void
 fun
 <x0:vt>
 <y0:vt>
-z2foreach$work0(~x0, ~y0): void
+z2foritm$work0(~x0, ~y0): void
 fun
 <x0:vt>
 <y0:vt>
-z2foreach$work1(!x0, !y0): void
+z2foritm$work1(!x0, !y0): void
 //
 (* ****** ****** *)
 //
@@ -828,15 +828,15 @@ iz2forcmp$fcmp1(nint,!x0,!y0): sint
 fun
 <x0:t0>
 <y0:t0>
-iz2foreach$work(nint,x0,y0): void
+iz2foritm$work(nint,x0,y0): void
 fun
 <x0:vt>
 <y0:vt>
-iz2foreach$work0(nint,~x0,~y0): void
+iz2foritm$work0(nint,~x0,~y0): void
 fun
 <x0:vt>
 <y0:vt>
-iz2foreach$work1(nint,!x0,!y0): void
+iz2foritm$work1(nint,!x0,!y0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -891,32 +891,32 @@ x2rforall$test(x0, y0): bool
 fun
 <x0:t0>
 <y0:t0>
-x2foreach$work(x0, y0): void
+x2foritm$work(x0, y0): void
 fun
 <x0:t0>
 <y0:t0>
-x2rforeach$work(x0, y0): void
+x2rforitm$work(x0, y0): void
 (* ****** ****** *)
 //
 fun<>
-x2foreach_row$beg(): void
+x2foritm_row$beg(): void
 fun<>
-x2foreach_row$end(): void
+x2foritm_row$end(): void
 fun
 <x0:t0>
 <y0:t0>
-x2foreach_row$work(x0, y0): void
+x2foritm_row$work(x0, y0): void
 //
 (* ****** ****** *)
 //
 fun<>
-x2foreach_col$beg(): void
+x2foritm_col$beg(): void
 fun<>
-x2foreach_col$end(): void
+x2foritm_col$end(): void
 fun
 <x0:t0>
 <y0:t0>
-x2foreach_col$work(x0, y0): void
+x2foritm_col$work(x0, y0): void
 //
 (* ****** ****** *)
 //
@@ -941,29 +941,29 @@ x2iforall$test(nint, x0, nint, y0): bool
 fun
 <x0:t0>
 <y0:t0>
-x2iforeach$work(nint, x0, nint, y0): void
+x2iforitm$work(nint, x0, nint, y0): void
 //
 (* ****** ****** *)
 //
 fun<>
-x2iforeach_row$beg(nint): void
+x2iforitm_row$beg(nint): void
 fun<>
-x2iforeach_row$end(nint): void
+x2iforitm_row$end(nint): void
 fun
 <x0:t0>
 <y0:t0>
-x2iforeach_row$work(nint, x0, nint, y0): void
+x2iforitm_row$work(nint, x0, nint, y0): void
 //
 (* ****** ****** *)
 //
 fun<>
-x2iforeach_col$beg(nint): void
+x2iforitm_col$beg(nint): void
 fun<>
-x2iforeach_col$end(nint): void
+x2iforitm_col$end(nint): void
 fun
 <x0:t0>
 <y0:t0>
-x2iforeach_col$work(nint, x0, nint, y0): void
+x2iforitm_col$work(nint, x0, nint, y0): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -990,13 +990,13 @@ forall1
 (xs:vt, x0:vt) = (!xs, x0 -> bool) -> bool
 (* ****** ****** *)
 #typedef
-foreach
+foritm
 (xs:t0, x0:t0) = ( xs, x0 -> void) -> void
 #typedef
-foreach0
+foritm0
 (xs:vt, x0:t0) = (~xs, x0 -> void) -> void
 #typedef
-foreach1
+foritm1
 (xs:vt, x0:t0) = (!xs, x0 -> void) -> void
 (* ****** ****** *)
 #typedef
@@ -1017,13 +1017,13 @@ rforall1
 (xs:vt, x0:vt) = (!xs, x0 -> bool) -> bool
 (* ****** ****** *)
 #typedef
-rforeach
+rforitm
 (xs:t0, x0:t0) = ( xs, x0 -> void) -> void
 #typedef
-rforeach0
+rforitm0
 (xs:vt, x0:t0) = (~xs, x0 -> void) -> void
 #typedef
-rforeach1
+rforitm1
 (xs:vt, x0:t0) = (!xs, x0 -> void) -> void
 (* ****** ****** *)
 //

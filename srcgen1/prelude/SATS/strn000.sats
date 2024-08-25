@@ -315,21 +315,21 @@ strn_foldr
 fun<>
 strn_forall(strn): bool
 fun<>
-strn_foreach(strn): void
+strn_foritm(strn): void
 //
 (* ****** ****** *)
 //
 fun<>
 strn_rforall(strn): bool
 fun<>
-strn_rforeach(strn): void
+strn_rforitm(strn): void
 //
 (* ****** ****** *)
 //
 fun<>
 strn_iforall(strn): bool
 fun<>
-strn_iforeach(strn): void
+strn_iforitm(strn): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

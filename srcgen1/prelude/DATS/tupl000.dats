@@ -995,39 +995,39 @@ then false else
 #impltmp
 {a0:t0
 ,a1:t0}
-gseq_foreach
+gseq_foritm
 <(a0,a1)>(tup) =
-( foreach$work<a0>(tup.0)
-; foreach$work<a1>(tup.1) )
-// end of [gseq_foreach<t2up>(tup)]
+( foritm$work<a0>(tup.0)
+; foritm$work<a1>(tup.1) )
+// end of [gseq_foritm<t2up>(tup)]
 //
 #impltmp
 {a0:t0
 ,a1:t0
 ,a2:t0}
-gseq_foreach
+gseq_foritm
 <
 (a0
 ,a1,a2)>(tup) =
-( foreach$work<a0>(tup.0)
-; foreach$work<a1>(tup.1)
-; foreach$work<a2>(tup.2) )
-// end of [gseq_foreach<t3up>(tup)]
+( foritm$work<a0>(tup.0)
+; foritm$work<a1>(tup.1)
+; foritm$work<a2>(tup.2) )
+// end of [gseq_foritm<t3up>(tup)]
 //
 #impltmp
 {a0:t0
 ,a1:t0
 ,a2:t0
 ,a3:t0}
-gseq_foreach
+gseq_foritm
 <
 (a0,a1
 ,a2,a3)>(tup) =
-( foreach$work<a0>(tup.0)
-; foreach$work<a1>(tup.1)
-; foreach$work<a2>(tup.2)
-; foreach$work<a3>(tup.3) )
-// end of [gseq_foreach<t4up>(tup)]
+( foritm$work<a0>(tup.0)
+; foritm$work<a1>(tup.1)
+; foritm$work<a2>(tup.2)
+; foritm$work<a3>(tup.3) )
+// end of [gseq_foritm<t4up>(tup)]
 //
 #impltmp
 {a0:t0
@@ -1035,17 +1035,17 @@ gseq_foreach
 ,a2:t0
 ,a3:t0
 ,a4:t0}
-gseq_foreach
+gseq_foritm
 <
 (a0
 ,a1,a2
 ,a3,a4)>(tup) =
-( foreach$work<a0>(tup.0)
-; foreach$work<a1>(tup.1)
-; foreach$work<a2>(tup.2)
-; foreach$work<a3>(tup.3)
-; foreach$work<a4>(tup.4) )
-// end of [gseq_foreach<t5up>(tup)]
+( foritm$work<a0>(tup.0)
+; foritm$work<a1>(tup.1)
+; foritm$work<a2>(tup.2)
+; foritm$work<a3>(tup.3)
+; foritm$work<a4>(tup.4) )
+// end of [gseq_foritm<t5up>(tup)]
 //
 #impltmp
 {a0:t0
@@ -1054,18 +1054,18 @@ gseq_foreach
 ,a3:t0
 ,a4:t0
 ,a5:t0}
-gseq_foreach
+gseq_foritm
 <
 (a0,a1
 ,a2,a3
 ,a4,a5)>(tup) =
-( foreach$work<a0>(tup.0)
-; foreach$work<a1>(tup.1)
-; foreach$work<a2>(tup.2)
-; foreach$work<a3>(tup.3)
-; foreach$work<a4>(tup.4)
-; foreach$work<a5>(tup.5) )
-// end of [gseq_foreach<t6up>(tup)]
+( foritm$work<a0>(tup.0)
+; foritm$work<a1>(tup.1)
+; foritm$work<a2>(tup.2)
+; foritm$work<a3>(tup.3)
+; foritm$work<a4>(tup.4)
+; foritm$work<a5>(tup.5) )
+// end of [gseq_foritm<t6up>(tup)]
 //
 (* ****** ****** *)
 
@@ -1074,7 +1074,7 @@ gseq_foreach
 ,x0:t0
 ,ys:t0
 ,y0:t0}
-gseq_foreach_f1un
+gseq_foritm_f1un
 <
 z2tup
 (xs,ys)>
@@ -1085,7 +1085,7 @@ let
 val
 (xs, ys) =
 put2z(ztup) in//in
-gseq_z2foreach_f2un<xs><x0><ys><y0>
+gseq_z2foritm_f2un<xs><x0><ys><y0>
 (xs, ys, lam(x0, y0) => work@(x0, y0)) end
 
 (* ****** ****** *)
@@ -1095,7 +1095,7 @@ gseq_z2foreach_f2un<xs><x0><ys><y0>
 ,x0:t0
 ,ys:t0
 ,y0:t0}
-gseq_foreach_f1un
+gseq_foritm_f1un
 <
 x2tup
 (xs,ys)>
@@ -1106,7 +1106,7 @@ let
 val
 (xs, ys) =
 put2x(xtup) in//in
-gseq_x2foreach_f2un<xs><x0><ys><y0>
+gseq_x2foritm_f2un<xs><x0><ys><y0>
 (xs, ys, lam(x0, y0) => work@(x0, y0)) end
 
 (* ****** ****** *)

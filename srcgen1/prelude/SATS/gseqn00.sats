@@ -223,7 +223,7 @@ fun
 i0->t0>
 <x0:t0>
 <ln:i0>
-gseqn_iforeachn(xs: xs(ln)): void
+gseqn_iforitmn(xs: xs(ln)): void
 //
 (* ****** ****** *)
 

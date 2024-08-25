@@ -154,11 +154,11 @@ a1rsz_forall1
 //
 fun
 <x0:t0>
-a1rsz_foreach
+a1rsz_foritm
 {n:i0}(A0: a1rsz(x0, n)): (void)
 fun
 <x0:vt>
-a1rsz_foreach1
+a1rsz_foritm1
 {n:i0}(A0: a1rsz(x0, n)): (void)
 //
 (* ****** ****** *)

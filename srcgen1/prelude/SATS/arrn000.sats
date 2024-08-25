@@ -312,11 +312,11 @@ a1ref_forall1
 //
 fun
 <x0:t0>
-a1ref_foreach
+a1ref_foritm
 {n:i0}(A0: a1ref(x0, n)): (void)
 fun
 <x0:vt>
-a1ref_foreach1
+a1ref_foritm1
 {n:i0}(A0: a1ref(x0, n)): (void)
 //
 (* ****** ****** *)

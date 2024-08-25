@@ -143,14 +143,14 @@ match2a_s2typ
 //
 val t2p1 = d2cst_get_xtyp(d2c1)
 //
-// (*
+(*
 val (  ) =
 prerrln("match2a_d2cst: d2c1 = ", d2c1)
 val (  ) =
 prerrln("match2a_d2cst: t2p1 = ", t2p1)
 val (  ) =
 prerrln("match2a_d2cst: t2p2 = ", t2p2)
-// *)
+*)
 //
 } (*where*) // end of [match2a_d2cst(env0,...)]
 

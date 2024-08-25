@@ -334,13 +334,13 @@ case+ tqas of
 ((*nothing*))
 |list_cons _ =>
 (
-list_foreach(d2cs)) where
+list_foritm(d2cs)) where
 {
 //
 #typedef x0 = d2cst
 //
 #impltmp
-foreach$work<x0>(x0) =
+foritm$work<x0>(x0) =
 (
   tr3aenv_d2cins$any(env0, x0, d3cl)) }
 //

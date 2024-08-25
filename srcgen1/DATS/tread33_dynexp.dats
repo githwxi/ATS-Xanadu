@@ -26,11 +26,13 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 // Author: Hongwei Xi
 // Start Time: September, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #include
@@ -39,6 +41,8 @@
 UN = "prelude/SATS/unsafe.sats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
 #staload
 _(*TMP*) =
 "./../DATS/staexp2_print0.dats"
@@ -54,6 +58,14 @@ _(*TMP*) =
 #staload
 _(*TMP*) =
 "./../DATS/dynexp3_print0.dats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload "./../SATS/mylib00.sats"
+#staload "./../DATS/mylib00.dats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload "./../SATS/xlabel0.sats"
@@ -77,12 +89,14 @@ _(*TMP*) =
 #staload "./../SATS/tread33.sats"
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 overload
 print with pprint_t2ype of 10
 overload
 prerr with pprerr_t2ype of 10
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 implement
@@ -308,11 +322,11 @@ implement
 //{}(*tmp*)
 tread33_d3patlst(d3ps) =
 (
-list_foreach<d3pat>(d3ps)
+list_foritm<d3pat>(d3ps)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3pat><env>(d3p, env) = tread33_d3pat(d3p)
+list_foritm$work<d3pat><env>(d3p, env) = tread33_d3pat(d3p)
 } (* end of [tread33_d3patlst] *)
 //
 (* ****** ****** *)
@@ -782,11 +796,11 @@ implement
 //{}(*tmp*)
 tread33_d3explst(d3es) =
 (
-list_foreach<d3exp>(d3es)
+list_foritm<d3exp>(d3es)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3exp><env>(d3e, env) = tread33_d3exp(d3e)
+list_foritm$work<d3exp><env>(d3e, env) = tread33_d3exp(d3e)
 } (* end of [tread33_d3explst] *)
 //
 (* ****** ****** *)
@@ -850,22 +864,22 @@ implement
 //{}(*tmp*)
 tread33_d3gualst(d3gs) =
 (
-list_foreach<d3gua>(d3gs)
+list_foritm<d3gua>(d3gs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3gua><env>(d3g, env) = tread33_d3gua(d3g)
+list_foritm$work<d3gua><env>(d3g, env) = tread33_d3gua(d3g)
 } (* end of [tread33_d3gualst] *)
 //
 implement
 //{}(*tmp*)
 tread33_d3claulst(d3cs) =
 (
-list_foreach<d3clau>(d3cs)
+list_foritm<d3clau>(d3cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3clau><env>(d3cl, env) = tread33_d3clau(d3cl)
+list_foritm$work<d3clau><env>(d3cl, env) = tread33_d3clau(d3cl)
 } (* end of [tread33_d3claulst] *)
 //
 (* ****** ****** *)
@@ -1070,11 +1084,11 @@ implement
 //{}(*tmp*)
 tread33_d3eclist(d3cs) =
 (
-list_foreach<d3ecl>(d3cs)
+list_foritm<d3ecl>(d3cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3ecl><env>(d3c, env) = tread33_d3ecl(d3c)
+list_foritm$work<d3ecl><env>(d3c, env) = tread33_d3ecl(d3c)
 } (* end of [tread33_d3eclist] *)
 //
 (* ****** ****** *)
@@ -1141,11 +1155,11 @@ implement
 //{}(*tmp*)
 tread33_ti2arglst(tias) =
 (
-list_foreach<ti2arg>(tias)
+list_foritm<ti2arg>(tias)
 ) where
 {
 implement(env)
-list_foreach$fwork<ti2arg><env>(tia, env) = tread33_ti2arg(tia)
+list_foritm$work<ti2arg><env>(tia, env) = tread33_ti2arg(tia)
 } (* end of [tread33_ti2arglst] *)
 //
 (* ****** ****** *)
@@ -1192,11 +1206,11 @@ implement
 //{}(*tmp*)
 tread33_f3arglst(f3as) =
 (
-list_foreach<f3arg>(f3as)
+list_foritm<f3arg>(f3as)
 ) where
 {
 implement(env)
-list_foreach$fwork<f3arg><env>(f3a, env) = tread33_f3arg(f3a)
+list_foritm$work<f3arg><env>(f3a, env) = tread33_f3arg(f3a)
 } (* end of [tread33_f3arglst] *)
 //
 implement
@@ -1232,11 +1246,11 @@ implement
 //{}(*tmp*)
 tread33_d3valdeclist(v3ds) =
 (
-list_foreach<d3valdecl>(v3ds)
+list_foritm<d3valdecl>(v3ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3valdecl><env>(v3d, env) = tread33_d3valdecl(v3d)
+list_foritm$work<d3valdecl><env>(v3d, env) = tread33_d3valdecl(v3d)
 } (* end of [tread33_d3valdeclist] *)
 //
 (* ****** ****** *)
@@ -1261,11 +1275,11 @@ implement
 //{}(*tmp*)
 tread33_d3vardeclist(v3ds) =
 (
-list_foreach<d3vardecl>(v3ds)
+list_foritm<d3vardecl>(v3ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3vardecl><env>(v3d, env) = tread33_d3vardecl(v3d)
+list_foritm$work<d3vardecl><env>(v3d, env) = tread33_d3vardecl(v3d)
 } (* end of [tread33_d3vardeclist] *)
 //
 (* ****** ****** *)
@@ -1290,11 +1304,11 @@ implement
 //{}(*tmp*)
 tread33_d3fundeclist(f3ds) =
 (
-list_foreach<d3fundecl>(f3ds)
+list_foritm<d3fundecl>(f3ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<d3fundecl><env>(f3d, env) = tread33_d3fundecl(f3d)
+list_foritm$work<d3fundecl><env>(f3d, env) = tread33_d3fundecl(f3d)
 } (* end of [tread33_d3fundeclist] *)
 //
 (* ****** ****** *)

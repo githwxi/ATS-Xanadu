@@ -224,12 +224,12 @@ strq_forall
 //
 fun
 <a:t0>
-strm_foreach
-(xs: strm(a)): void // foreach
+strm_foritm
+(xs: strm(a)): void // foritm
 fun
 <a:t0>
-strq_foreach
-(xs: strq(a)): void // foreach
+strq_foritm
+(xs: strq(a)): void // foritm
 //
 (* ****** ****** *)
 //
@@ -483,7 +483,7 @@ concat with strm_concat of 1000
 forall with strm_forall of 1000
 (*
 #symload
-foreach with strm_foreach of 1000
+foritm with strm_foritm of 1000
 *)
 //
 (* ****** ****** *)

@@ -1395,19 +1395,19 @@ HX-2022-12-12: for various list/optn-derivatives
 #implfun
 g1explst_fpemsg
 (out, g1es) =
-list_foreach<g1exp>(g1es) where
+list_foritm<g1exp>(g1es) where
 {
 #impltmp
-foreach$work<g1exp>(g1e1) = g1exp_fpemsg(out,g1e1)
+foritm$work<g1exp>(g1e1) = g1exp_fpemsg(out,g1e1)
 }
 //
 #implfun
 g1expopt_fpemsg
 (out, gopt) =
-optn_foreach<g1exp>(gopt) where
+optn_foritm<g1exp>(gopt) where
 {
 #impltmp
-foreach$work<g1exp>(g1e1) = g1exp_fpemsg(out,g1e1)
+foritm$work<g1exp>(g1e1) = g1exp_fpemsg(out,g1e1)
 }
 //
 (* ****** ****** *)
@@ -1415,19 +1415,19 @@ foreach$work<g1exp>(g1e1) = g1exp_fpemsg(out,g1e1)
 #implfun
 sort1lst_fpemsg
 (out, s1ts) =
-list_foreach<sort1>(s1ts) where
+list_foritm<sort1>(s1ts) where
 {
 #impltmp
-foreach$work<sort1>(s1t1) = sort1_fpemsg(out,s1t1)
+foritm$work<sort1>(s1t1) = sort1_fpemsg(out,s1t1)
 }
 //
 #implfun
 sort1opt_fpemsg
 (out, topt) =
-optn_foreach<sort1>(topt) where
+optn_foritm<sort1>(topt) where
 {
 #impltmp
-foreach$work<sort1>(s1t1) = sort1_fpemsg(out,s1t1)
+foritm$work<sort1>(s1t1) = sort1_fpemsg(out,s1t1)
 }
 //
 (* ****** ****** *)
@@ -1435,19 +1435,19 @@ foreach$work<sort1>(s1t1) = sort1_fpemsg(out,s1t1)
 #implfun
 s1explst_fpemsg
 (out, s1es) =
-list_foreach<s1exp>(s1es) where
+list_foritm<s1exp>(s1es) where
 {
 #impltmp
-foreach$work<s1exp>(s1e1) = s1exp_fpemsg(out,s1e1)
+foritm$work<s1exp>(s1e1) = s1exp_fpemsg(out,s1e1)
 }
 //
 #implfun
 s1expopt_fpemsg
 (out, sopt) =
-optn_foreach<s1exp>(sopt) where
+optn_foritm<s1exp>(sopt) where
 {
 #impltmp
-foreach$work<s1exp>(s1e1) = s1exp_fpemsg(out,s1e1)
+foritm$work<s1exp>(s1e1) = s1exp_fpemsg(out,s1e1)
 }
 //
 (* ****** ****** *)
@@ -1455,10 +1455,10 @@ foreach$work<s1exp>(s1e1) = s1exp_fpemsg(out,s1e1)
 #implfun
 l1s1elst_fpemsg
 (out, lses) =
-list_foreach<l1s1e>(lses) where
+list_foritm<l1s1e>(lses) where
 {
 #impltmp
-foreach$work<l1s1e>(lse1) = l1s1e_fpemsg(out,lse1)
+foritm$work<l1s1e>(lse1) = l1s1e_fpemsg(out,lse1)
 }
 //
 (* ****** ****** *)
@@ -1466,10 +1466,10 @@ foreach$work<l1s1e>(lse1) = l1s1e_fpemsg(out,lse1)
 #implfun
 s1arglst_fpemsg
 (out, s1as) =
-list_foreach<s1arg>(s1as) where
+list_foritm<s1arg>(s1as) where
 {
 #impltmp
-foreach$work<s1arg>(s1a1) = s1arg_fpemsg(out,s1a1)
+foritm$work<s1arg>(s1a1) = s1arg_fpemsg(out,s1a1)
 }
 //
 (* ****** ****** *)
@@ -1477,10 +1477,10 @@ foreach$work<s1arg>(s1a1) = s1arg_fpemsg(out,s1a1)
 #implfun
 s1maglst_fpemsg
 (out, smas) =
-list_foreach<s1mag>(smas) where
+list_foritm<s1mag>(smas) where
 {
 #impltmp
-foreach$work<s1mag>(sma1) = s1mag_fpemsg(out,sma1)
+foritm$work<s1mag>(sma1) = s1mag_fpemsg(out,sma1)
 }
 //
 (* ****** ****** *)
@@ -1488,10 +1488,10 @@ foreach$work<s1mag>(sma1) = s1mag_fpemsg(out,sma1)
 #implfun
 t1arglst_fpemsg
 (out, t1as) =
-list_foreach<t1arg>(t1as) where
+list_foritm<t1arg>(t1as) where
 {
 #impltmp
-foreach$work<t1arg>(t1a1) = t1arg_fpemsg(out,t1a1)
+foritm$work<t1arg>(t1a1) = t1arg_fpemsg(out,t1a1)
 }
 //
 (* ****** ****** *)
@@ -1499,10 +1499,10 @@ foreach$work<t1arg>(t1a1) = t1arg_fpemsg(out,t1a1)
 #implfun
 t1maglst_fpemsg
 (out, tmas) =
-list_foreach<t1mag>(tmas) where
+list_foritm<t1mag>(tmas) where
 {
 #impltmp
-foreach$work<t1mag>(tma1) = t1mag_fpemsg(out,tma1)
+foritm$work<t1mag>(tma1) = t1mag_fpemsg(out,tma1)
 }
 //
 (* ****** ****** *)
@@ -1510,10 +1510,10 @@ foreach$work<t1mag>(tma1) = t1mag_fpemsg(out,tma1)
 #implfun
 s1tcnlst_fpemsg
 (out, tcns) =
-list_foreach<s1tcn>(tcns) where
+list_foritm<s1tcn>(tcns) where
 {
 #impltmp
-foreach$work<s1tcn>(tcn1) = s1tcn_fpemsg(out,tcn1)
+foritm$work<s1tcn>(tcn1) = s1tcn_fpemsg(out,tcn1)
 }
 //
 (* ****** ****** *)
@@ -1521,10 +1521,10 @@ foreach$work<s1tcn>(tcn1) = s1tcn_fpemsg(out,tcn1)
 #implfun
 d1tstlst_fpemsg
 (out, d1ts) =
-list_foreach<d1tst>(d1ts) where
+list_foritm<d1tst>(d1ts) where
 {
 #impltmp
-foreach$work<d1tst>(d1t1) = d1tst_fpemsg(out,d1t1)
+foritm$work<d1tst>(d1t1) = d1tst_fpemsg(out,d1t1)
 }
 //
 (* ****** ****** *)
@@ -1532,10 +1532,10 @@ foreach$work<d1tst>(d1t1) = d1tst_fpemsg(out,d1t1)
 #implfun
 d1patlst_fpemsg
 (out, d1ps) =
-list_foreach<d1pat>(d1ps) where
+list_foritm<d1pat>(d1ps) where
 {
 #impltmp
-foreach$work<d1pat>(d1p1) = d1pat_fpemsg(out,d1p1)
+foritm$work<d1pat>(d1p1) = d1pat_fpemsg(out,d1p1)
 }
 //
 (* ****** ****** *)
@@ -1543,10 +1543,10 @@ foreach$work<d1pat>(d1p1) = d1pat_fpemsg(out,d1p1)
 #implfun
 l1d1plst_fpemsg
 (out, ldps) =
-list_foreach<l1d1p>(ldps) where
+list_foritm<l1d1p>(ldps) where
 {
 #impltmp
-foreach$work<l1d1p>(ldp1) = l1d1p_fpemsg(out,ldp1)
+foritm$work<l1d1p>(ldp1) = l1d1p_fpemsg(out,ldp1)
 }
 //
 (* ****** ****** *)
@@ -1554,19 +1554,19 @@ foreach$work<l1d1p>(ldp1) = l1d1p_fpemsg(out,ldp1)
 #implfun
 d1explst_fpemsg
 (out, d1es) =
-list_foreach<d1exp>(d1es) where
+list_foritm<d1exp>(d1es) where
 {
 #impltmp
-foreach$work<d1exp>(d1e1) = d1exp_fpemsg(out,d1e1)
+foritm$work<d1exp>(d1e1) = d1exp_fpemsg(out,d1e1)
 }
 //
 #implfun
 d1expopt_fpemsg
 (out, dopt) =
-optn_foreach<d1exp>(dopt) where
+optn_foritm<d1exp>(dopt) where
 {
 #impltmp
-foreach$work<d1exp>(d1e1) = d1exp_fpemsg(out,d1e1)
+foritm$work<d1exp>(d1e1) = d1exp_fpemsg(out,d1e1)
 }
 //
 (* ****** ****** *)
@@ -1574,10 +1574,10 @@ foreach$work<d1exp>(d1e1) = d1exp_fpemsg(out,d1e1)
 #implfun
 l1d1elst_fpemsg
 (out, ldes) =
-list_foreach<l1d1e>(ldes) where
+list_foritm<l1d1e>(ldes) where
 {
 #impltmp
-foreach$work<l1d1e>(lde1) = l1d1e_fpemsg(out,lde1)
+foritm$work<l1d1e>(lde1) = l1d1e_fpemsg(out,lde1)
 }
 //
 (* ****** ****** *)
@@ -1585,10 +1585,10 @@ foreach$work<l1d1e>(lde1) = l1d1e_fpemsg(out,lde1)
 #implfun
 f1arglst_fpemsg
 (out, f1as) =
-list_foreach<f1arg>(f1as) where
+list_foritm<f1arg>(f1as) where
 {
 #impltmp
-foreach$work<f1arg>(f1a1) = f1arg_fpemsg(out,f1a1)
+foritm$work<f1arg>(f1a1) = f1arg_fpemsg(out,f1a1)
 }
 //
 (* ****** ****** *)
@@ -1596,19 +1596,19 @@ foreach$work<f1arg>(f1a1) = f1arg_fpemsg(out,f1a1)
 #implfun
 d1gualst_fpemsg
 (out, d1gs) =
-list_foreach<d1gua>(d1gs) where
+list_foritm<d1gua>(d1gs) where
 {
 #impltmp
-foreach$work<d1gua>(dgua) = d1gua_fpemsg(out,dgua)
+foritm$work<d1gua>(dgua) = d1gua_fpemsg(out,dgua)
 }
 //
 #implfun
 d1clslst_fpemsg
 (out, d1cs) =
-list_foreach<d1cls>(d1cs) where
+list_foritm<d1cls>(d1cs) where
 {
 #impltmp
-foreach$work<d1cls>(d1cl) = d1cls_fpemsg(out,d1cl)
+foritm$work<d1cls>(d1cl) = d1cls_fpemsg(out,d1cl)
 }
 //
 (* ****** ****** *)
@@ -1616,10 +1616,10 @@ foreach$work<d1cls>(d1cl) = d1cls_fpemsg(out,d1cl)
 #implfun
 d1eclist_fpemsg
 (out, dcls) =
-list_foreach<d1ecl>(dcls) where
+list_foritm<d1ecl>(dcls) where
 {
 #impltmp
-foreach$work<d1ecl>(dcl1) = d1ecl_fpemsg(out,dcl1)
+foritm$work<d1ecl>(dcl1) = d1ecl_fpemsg(out,dcl1)
 }
 //
 (* ****** ****** *)
@@ -1627,10 +1627,10 @@ foreach$work<d1ecl>(dcl1) = d1ecl_fpemsg(out,dcl1)
 #implfun
 q1arglst_fpemsg
 (out, q1as) =
-list_foreach<q1arg>(q1as) where
+list_foritm<q1arg>(q1as) where
 {
 #impltmp
-foreach$work<q1arg>(q1a1) = q1arg_fpemsg(out,q1a1)
+foritm$work<q1arg>(q1a1) = q1arg_fpemsg(out,q1a1)
 }
 //
 (* ****** ****** *)
@@ -1638,10 +1638,10 @@ foreach$work<q1arg>(q1a1) = q1arg_fpemsg(out,q1a1)
 #implfun
 s1qaglst_fpemsg
 (out, sqas) =
-list_foreach<s1qag>(sqas) where
+list_foritm<s1qag>(sqas) where
 {
 #impltmp
-foreach$work<s1qag>(sqa1) = s1qag_fpemsg(out,sqa1)
+foritm$work<s1qag>(sqa1) = s1qag_fpemsg(out,sqa1)
 }
 //
 (* ****** ****** *)
@@ -1649,10 +1649,10 @@ foreach$work<s1qag>(sqa1) = s1qag_fpemsg(out,sqa1)
 #implfun
 t1qaglst_fpemsg
 (out, tqas) =
-list_foreach<t1qag>(tqas) where
+list_foritm<t1qag>(tqas) where
 {
 #impltmp
-foreach$work<t1qag>(tqa1) = t1qag_fpemsg(out,tqa1)
+foritm$work<t1qag>(tqa1) = t1qag_fpemsg(out,tqa1)
 }
 //
 (* ****** ****** *)
@@ -1660,10 +1660,10 @@ foreach$work<t1qag>(tqa1) = t1qag_fpemsg(out,tqa1)
 #implfun
 t1iaglst_fpemsg
 (out, tias) =
-list_foreach<t1iag>(tias) where
+list_foritm<t1iag>(tias) where
 {
 #impltmp
-foreach$work<t1iag>(tia1) = t1iag_fpemsg(out,tia1)
+foritm$work<t1iag>(tia1) = t1iag_fpemsg(out,tia1)
 }
 //
 (* ****** ****** *)
@@ -1671,10 +1671,10 @@ foreach$work<t1iag>(tia1) = t1iag_fpemsg(out,tia1)
 #implfun
 d1arglst_fpemsg
 (out, d1as) =
-list_foreach<d1arg>(d1as) where
+list_foritm<d1arg>(d1as) where
 {
 #impltmp
-foreach$work<d1arg>(d1a1) = d1arg_fpemsg(out,d1a1)
+foritm$work<d1arg>(d1a1) = d1arg_fpemsg(out,d1a1)
 }
 //
 (* ****** ****** *)
@@ -1824,10 +1824,10 @@ endlet where
 #implfun
 d1valdclist_fpemsg
 (out, d1vs) =
-list_foreach<d1valdcl>(d1vs) where
+list_foritm<d1valdcl>(d1vs) where
 {
 #impltmp
-foreach$work<d1valdcl>(dval) = d1valdcl_fpemsg(out,dval)
+foritm$work<d1valdcl>(dval) = d1valdcl_fpemsg(out,dval)
 }
 //
 (* ****** ****** *)
@@ -1835,10 +1835,10 @@ foreach$work<d1valdcl>(dval) = d1valdcl_fpemsg(out,dval)
 #implfun
 d1vardclist_fpemsg
 (out, d1vs) =
-list_foreach<d1vardcl>(d1vs) where
+list_foritm<d1vardcl>(d1vs) where
 {
 #impltmp
-foreach$work<d1vardcl>(dvar) = d1vardcl_fpemsg(out,dvar)
+foritm$work<d1vardcl>(dvar) = d1vardcl_fpemsg(out,dvar)
 }
 //
 (* ****** ****** *)
@@ -1846,10 +1846,10 @@ foreach$work<d1vardcl>(dvar) = d1vardcl_fpemsg(out,dvar)
 #implfun
 d1fundclist_fpemsg
 (out, d1fs) =
-list_foreach<d1fundcl>(d1fs) where
+list_foritm<d1fundcl>(d1fs) where
 {
 #impltmp
-foreach$work<d1fundcl>(dfun) = d1fundcl_fpemsg(out,dfun)
+foritm$work<d1fundcl>(dfun) = d1fundcl_fpemsg(out,dfun)
 }
 //
 (* ****** ****** *)
@@ -1857,10 +1857,10 @@ foreach$work<d1fundcl>(dfun) = d1fundcl_fpemsg(out,dfun)
 #implfun
 d1cstdclist_fpemsg
 (out, d1cs) =
-list_foreach<d1cstdcl>(d1cs) where
+list_foritm<d1cstdcl>(d1cs) where
 {
 #impltmp
-foreach$work<d1cstdcl>(dcst) = d1cstdcl_fpemsg(out,dcst)
+foritm$work<d1cstdcl>(dcst) = d1cstdcl_fpemsg(out,dcst)
 }
 //
 (* ****** ****** *)

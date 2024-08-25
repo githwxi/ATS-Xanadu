@@ -146,10 +146,10 @@ let
 val A0 =
 a1ptr_alloc(n0)
 val () =
-gseq_iforeach(xs) where
+gseq_iforitm(xs) where
 {
 #impltmp
-iforeach$work<a>(i, x) =
+iforitm$work<a>(i, x) =
 let
 val i =
 $UN.cast10{nintlt(n)}(i)
@@ -171,10 +171,10 @@ let
 val A0 =
 a1ptr_alloc(n0)
 val () =
-gseq_iforeach0(xs) where
+gseq_iforitm0(xs) where
 {
 #impltmp
-iforeach$work0<a>(i, x) =
+iforitm$work0<a>(i, x) =
 let
 val i =
 $UN.cast10{nintlt(n)}(i)

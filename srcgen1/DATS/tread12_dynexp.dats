@@ -26,11 +26,13 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 // Author: Hongwei Xi
 // Start Time: June, 2019
 // Authoremail: gmhwxiATgmailDOTcom
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #include
@@ -38,6 +40,7 @@
 #staload
 UN = "prelude/SATS/unsafe.sats"
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload
@@ -50,6 +53,13 @@ _(*TMP*) =
 _(*TMP*) =
 "./../DATS/tread12_staexp.dats"
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload "./../SATS/mylib00.sats"
+#staload "./../DATS/mylib00.dats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload "./../SATS/xerrory.sats"
@@ -67,6 +77,7 @@ _(*TMP*) =
 //
 #staload "./../SATS/tread12.sats"
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 implement
@@ -89,11 +100,11 @@ implement
 //{}(*tmp*)
 tread12_d2conlst(d2cs) =
 (
-list_foreach<d2con>(d2cs)
+list_foritm<d2con>(d2cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d2con><env>(d2c, env) = tread12_d2con(d2c)
+list_foritm$work<d2con><env>(d2c, env) = tread12_d2con(d2c)
 } (* end of [tread12_d2conlst] *)
 //
 (* ****** ****** *)
@@ -118,11 +129,11 @@ implement
 //{}(*tmp*)
 tread12_d2cstlst(d2cs) =
 (
-list_foreach<d2cst>(d2cs)
+list_foritm<d2cst>(d2cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d2cst><env>(d2c, env) = tread12_d2cst(d2c)
+list_foritm$work<d2cst><env>(d2c, env) = tread12_d2cst(d2c)
 } (* end of [tread12_d2cstlst] *)
 //
 (* ****** ****** *)
@@ -243,11 +254,11 @@ implement
 //{}(*tmp*)
 tread12_d2patlst(d2ps) =
 (
-list_foreach<d2pat>(d2ps)
+list_foritm<d2pat>(d2ps)
 ) where
 {
 implement(env)
-list_foreach$fwork<d2pat><env>(d2p, env) = tread12_d2pat(d2p)
+list_foritm$work<d2pat><env>(d2p, env) = tread12_d2pat(d2p)
 } (* end of [tread12_d2patlst] *)
 //
 (* ****** ****** *)
@@ -511,11 +522,11 @@ implement
 //{}(*tmp*)
 tread12_d2explst(d2es) =
 (
-list_foreach<d2exp>(d2es)
+list_foritm<d2exp>(d2es)
 ) where
 {
 implement(env)
-list_foreach$fwork<d2exp><env>(d2e, env) = tread12_d2exp(d2e)
+list_foritm$work<d2exp><env>(d2e, env) = tread12_d2exp(d2e)
 } (* end of [tread12_d2explst] *)
 //
 (* ****** ****** *)
@@ -662,22 +673,22 @@ implement
 //{}(*tmp*)
 tread12_d2gualst(d2gs) =
 (
-list_foreach<d2gua>(d2gs)
+list_foritm<d2gua>(d2gs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d2gua><env>(d2g, env) = tread12_d2gua(d2g)
+list_foritm$work<d2gua><env>(d2g, env) = tread12_d2gua(d2g)
 } (* end of [tread12_d2gualst] *)
 //
 implement
 //{}(*tmp*)
 tread12_d2claulst(dcls) =
 (
-list_foreach<d2clau>(dcls)
+list_foritm<d2clau>(dcls)
 ) where
 {
 implement(env)
-list_foreach$fwork<d2clau><env>(dcl, env) = tread12_d2clau(dcl)
+list_foritm$work<d2clau><env>(dcl, env) = tread12_d2clau(dcl)
 } (* end of [tread12_d2claulst] *)
 //
 (* ****** ****** *)
@@ -951,11 +962,11 @@ implement
 //{}(*tmp*)
 tread12_d2eclist(d2cs) =
 (
-list_foreach<d2ecl>(d2cs)
+list_foritm<d2ecl>(d2cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d2ecl><env>(d2c, env) = tread12_d2ecl(d2c)
+list_foritm$work<d2ecl><env>(d2c, env) = tread12_d2ecl(d2c)
 } (* end of [tread12_d2eclist] *)
 //
 (* ****** ****** *)
@@ -989,11 +1000,11 @@ implement
 //{}(*tmp*)
 tread12_f2arglst(f2as) =
 (
-list_foreach<f2arg>(f2as)
+list_foritm<f2arg>(f2as)
 ) where
 {
 implement(env)
-list_foreach$fwork<f2arg><env>(f2a, env) = tread12_f2arg(f2a)
+list_foritm$work<f2arg><env>(f2a, env) = tread12_f2arg(f2a)
 } (* end of [tread12_f2arglst] *)
 //
 (* ****** ****** *)
@@ -1010,11 +1021,11 @@ implement
 //{}(*tmp*)
 tread12_tq2arglst(tqas) =
 (
-list_foreach<tq2arg>(tqas)
+list_foritm<tq2arg>(tqas)
 ) where
 {
 implement(env)
-list_foreach$fwork<tq2arg><env>(tq2a, env) = tread12_tq2arg(tq2a)
+list_foritm$work<tq2arg><env>(tq2a, env) = tread12_tq2arg(tq2a)
 } (* end of [tread12_tq2arglst] *)
 //
 (* ****** ****** *)
@@ -1031,11 +1042,11 @@ implement
 //{}(*tmp*)
 tread12_ti2arglst(tias) =
 (
-list_foreach<ti2arg>(tias)
+list_foritm<ti2arg>(tias)
 ) where
 {
 implement(env)
-list_foreach$fwork<ti2arg><env>(ti2a, env) = tread12_ti2arg(ti2a)
+list_foritm$work<ti2arg><env>(ti2a, env) = tread12_ti2arg(ti2a)
 } (* end of [tread12_ti2arglst] *)
 //
 (* ****** ****** *)
@@ -1065,11 +1076,11 @@ implement
 //{}(*tmp*)
 tread12_d2valdeclist(v2ds) =
 (
-list_foreach<d2valdecl>(v2ds)
+list_foritm<d2valdecl>(v2ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<d2valdecl><env>(v2d, env) = tread12_d2valdecl(v2d)
+list_foritm$work<d2valdecl><env>(v2d, env) = tread12_d2valdecl(v2d)
 } (* end of [tread12_d2valdeclist] *)
 //
 (* ****** ****** *)
@@ -1096,11 +1107,11 @@ implement
 //{}(*tmp*)
 tread12_d2vardeclist(v2ds) =
 (
-list_foreach<d2vardecl>(v2ds)
+list_foritm<d2vardecl>(v2ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<d2vardecl><env>(v2d, env) = tread12_d2vardecl(v2d)
+list_foritm$work<d2vardecl><env>(v2d, env) = tread12_d2vardecl(v2d)
 } (* end of [tread12_d2vardeclist] *)
 //
 (* ****** ****** *)
@@ -1132,11 +1143,11 @@ implement
 //{}(*tmp*)
 tread12_d2fundeclist(f2ds) =
 (
-list_foreach<d2fundecl>(f2ds)
+list_foritm<d2fundecl>(f2ds)
 ) where
 {
 implement(env)
-list_foreach$fwork<d2fundecl><env>(f2d, env) = tread12_d2fundecl(f2d)
+list_foritm$work<d2fundecl><env>(f2d, env) = tread12_d2fundecl(f2d)
 } (* end of [tread12_d2fundeclist] *)
 //
 (* ****** ****** *)

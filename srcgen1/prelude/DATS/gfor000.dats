@@ -121,7 +121,7 @@ range1_foldl
 range1_forall<x0> = gseq_forall<range1(x0)><x0>
 #impltmp
 {x0:t0}
-range1_foreach<x0> = gseq_foreach<range1(x0)><x0>
+range1_foritm<x0> = gseq_foritm<range1(x0)><x0>
 //
 (* ****** ****** *)
 //

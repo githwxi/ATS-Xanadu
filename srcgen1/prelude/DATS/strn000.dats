@@ -372,14 +372,14 @@ endlet//end-of-(else)//end-of-(if)
 (* ****** ****** *)
 //
 #impltmp
-strn_foreach<> =
-gseq_foreach<strn><cgtz>
+strn_foritm<> =
+gseq_foritm<strn><cgtz>
 //
 (* ****** ****** *)
 //
 #impltmp
-strn_rforeach<> =
-gseq_rforeach<strn><cgtz>
+strn_rforitm<> =
+gseq_rforitm<strn><cgtz>
 //
 (* ****** ****** *)
 //
@@ -388,8 +388,8 @@ strn_iforall<> =
 gseq_iforall<strn><cgtz>
 //
 #impltmp
-strn_iforeach<> =
-gseq_iforeach<strn><cgtz>
+strn_iforitm<> =
+gseq_iforitm<strn><cgtz>
 //
 (* ****** ****** *)
 (* ****** ****** *)

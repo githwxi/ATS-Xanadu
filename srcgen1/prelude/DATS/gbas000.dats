@@ -162,32 +162,32 @@ group$test0<x0> = group$test<x0>
 //
 #impltmp
 <>(*tmp*)
-x2foreach_row$beg() = ((*void*))
+x2foritm_row$beg() = ((*void*))
 #impltmp
 <>(*tmp*)
-x2foreach_row$end() = ((*void*))
+x2foritm_row$end() = ((*void*))
 //
 #impltmp
 <>(*tmp*)
-x2foreach_col$beg() = ((*void*))
+x2foritm_col$beg() = ((*void*))
 #impltmp
 <>(*tmp*)
-x2foreach_col$end() = ((*void*))
+x2foritm_col$end() = ((*void*))
 //
 (* ****** ****** *)
 #impltmp
 <x0><y0>(*tmp*)
-x2iforeach_row$work = x2iforeach$work<x0><y0>
+x2iforitm_row$work = x2iforitm$work<x0><y0>
 #impltmp
 <x0><y0>(*tmp*)
-x2iforeach_col$work = x2iforeach$work<x0><y0>
+x2iforitm_col$work = x2iforitm$work<x0><y0>
 (* ****** ****** *)
 #impltmp
 <x0><y0>(*tmp*)
-x2iforeach_row$work = x2iforeach$work<x0><y0>
+x2iforitm_row$work = x2iforitm$work<x0><y0>
 #impltmp
 <x0><y0>(*tmp*)
-x2iforeach_col$work = x2iforeach$work<x0><y0>
+x2iforitm_col$work = x2iforitm$work<x0><y0>
 (* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen1_prelude_DATS_gbas000.dats] *)

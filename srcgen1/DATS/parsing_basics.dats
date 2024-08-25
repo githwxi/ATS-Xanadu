@@ -816,11 +816,11 @@ list_vt2t
 //
 (*
 val _(*ntok*) =
-list_iforeach<token>(toks) where
+list_iforitm<token>(toks) where
 {
 //
 implement(env)
-list_iforeach$fwork<token><env>
+list_iforitm$fwork<token><env>
   (i, x, env) =
   println!("TOKEN(", i, ") = ", x)
 //

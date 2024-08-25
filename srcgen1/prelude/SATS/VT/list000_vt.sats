@@ -291,13 +291,13 @@ list_vt_forall2(!list_vt(x0)): bool
 //
 fun
 <x0:vt>
-list_vt_foreach0(~list_vt(x0)): void
+list_vt_foritm0(~list_vt(x0)): void
 fun
 <x0:vt>
-list_vt_foreach1(!list_vt(x0)): void
+list_vt_foritm1(!list_vt(x0)): void
 fun
 <x0:vt>
-list_vt_foreach2(!list_vt(x0)): void
+list_vt_foritm2(!list_vt(x0)): void
 //
 (* ****** ****** *)
 //
@@ -537,10 +537,10 @@ rstrmize0 with list_vt_rstrmize0 of 1000
 (* ****** ****** *)
 
 (*
-#symload foreach with list_vt_foreach0 of 1000
+#symload foritm with list_vt_foritm0 of 1000
 *)
-#symload foreach0 with list_vt_foreach0 of 1000
-#symload foreach1 with list_vt_foreach1 of 1000
+#symload foritm0 with list_vt_foritm0 of 1000
+#symload foritm1 with list_vt_foritm1 of 1000
 
 (* ****** ****** *)
 //

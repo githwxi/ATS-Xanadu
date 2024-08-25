@@ -73,7 +73,7 @@ optn_forall
 {b:b0}(xs: optn(a, b)): bool
 fun
 <a:t0>
-optn_foreach
+optn_foritm
 {b:b0}(xs: optn(a, b)): void
 //
 fun
@@ -82,7 +82,7 @@ optn_rforall
 {b:b0}(xs: optn(a, b)): bool
 fun
 <a:t0>
-optn_rforeach
+optn_rforitm
 {b:b0}(xs: optn(a, b)): void
 //
 (* ****** ****** *)
@@ -152,12 +152,12 @@ optn_copy_vt
 (* ****** ****** *)
 
 #symload forall with optn_forall of 1000
-#symload foreach with optn_foreach of 1000
+#symload foritm with optn_foritm of 1000
 
 (* ****** ****** *)
 
 #symload rforall with optn_rforall of 1000
-#symload rforeach with optn_rforeach of 1000
+#symload rforitm with optn_rforitm of 1000
 
 (* ****** ****** *)
 

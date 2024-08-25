@@ -114,7 +114,7 @@ fun
 range1_forall(range1(x0)): bool
 fun
 <x0:t0>
-range1_foreach(range1(x0)): void
+range1_foritm(range1(x0)): void
 //
 (* ****** ****** *)
 //
@@ -137,7 +137,7 @@ range1_rstrmize(range1(x0)): strm_vt(x0)
 #symload foldl with range1_foldl of 1000
 //
 #symload forall with range1_forall of 1000
-#symload foreach with range1_foreach of 1000
+#symload foritm with range1_foritm of 1000
 //
 #symload listize with range1_listize of 1000
 #symload strmize with range1_strmize of 1000

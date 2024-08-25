@@ -723,7 +723,7 @@ case+ xs of
 //
 #impltmp
 <x0>(*tmp*)
-list_foreach(xs) =
+list_foritm(xs) =
   (loop(xs)) where
 {
 fnx
@@ -735,10 +735,10 @@ case+ xs of
 | list_cons(x0, xs) =>
   let
   val () =
-  foreach$work<x0>(x0) in loop(xs)
+  foritm$work<x0>(x0) in loop(xs)
   end
 )
-}(*where*)//end-of-[list_foreach(xs)]
+}(*where*)//end-of-[list_foritm(xs)]
 //
 (* ****** ****** *)
 //
@@ -1052,7 +1052,7 @@ val test = iforall$test<x0>(i0, x1)}
 //
 #impltmp
 <x0>(*tmp*)
-list_iforeach(xs) =
+list_iforitm(xs) =
 (
 loop(0(*i0*), xs)) where
 {
@@ -1069,9 +1069,9 @@ list_cons(x1, xs) =>
 (
   loop(i0+1, xs)) where
 {
-val () = iforeach$work<x0>(i0, x1)}
+val () = iforitm$work<x0>(i0, x1)}
 )
-}(*where*)//end-of-[list_iforeach<x0>(xs)]
+}(*where*)//end-of-[list_iforitm<x0>(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1252,7 +1252,7 @@ gseq_length<list(a)><a> = list_length<a>
 gseq_forall<list(a)><a> = list_forall<a>
 #impltmp
 {a:t0}
-gseq_foreach<list(a)><a> = list_foreach<a>
+gseq_foritm<list(a)><a> = list_foritm<a>
 //
 (* ****** ****** *)
 //

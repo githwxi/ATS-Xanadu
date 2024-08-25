@@ -724,36 +724,36 @@ optn_cons(s0e) => s0exp_fpemsg(out, s0e)
 #implfun
 i0dntlst_fpemsg
 (out, ids) =
-list_foreach<i0dnt>(ids) where
+list_foritm<i0dnt>(ids) where
 {
 #impltmp
-foreach$work<i0dnt>(id1) = i0dnt_fpemsg(out,id1)
+foritm$work<i0dnt>(id1) = i0dnt_fpemsg(out,id1)
 }
 (* ****** ****** *)
 //
 #implfun
 sort0lst_fpemsg
 (out, sts) =
-list_foreach<sort0>(sts) where
+list_foritm<sort0>(sts) where
 {
 #impltmp
-foreach$work<sort0>(st1) = sort0_fpemsg(out,st1)
+foritm$work<sort0>(st1) = sort0_fpemsg(out,st1)
 }
 #implfun
 s0explst_fpemsg
 (out, ses) =
-list_foreach<s0exp>(ses) where
+list_foritm<s0exp>(ses) where
 {
 #impltmp
-foreach$work<s0exp>(se1) = s0exp_fpemsg(out,se1)
+foritm$work<s0exp>(se1) = s0exp_fpemsg(out,se1)
 }
 #implfun
 l0s0elst_fpemsg
 (out, lxs) =
-list_foreach<l0s0e>(lxs) where
+list_foritm<l0s0e>(lxs) where
 {
 #impltmp
-foreach$work<l0s0e>(lx1) = l0s0e_fpemsg(out,lx1)
+foritm$work<l0s0e>(lx1) = l0s0e_fpemsg(out,lx1)
 }
 //
 (* ****** ****** *)
@@ -761,50 +761,50 @@ foreach$work<l0s0e>(lx1) = l0s0e_fpemsg(out,lx1)
 #implfun
 s0arglst_fpemsg
 (out, sas) =
-list_foreach<s0arg>(sas) where
+list_foritm<s0arg>(sas) where
 {
 #impltmp
-foreach$work<s0arg>(s0a) = s0arg_fpemsg(out,s0a)
+foritm$work<s0arg>(s0a) = s0arg_fpemsg(out,s0a)
 }
 (* ****** ****** *)
 //
 #implfun
 s0maglst_fpemsg
 (out, sms) =
-list_foreach<s0mag>(sms) where
+list_foritm<s0mag>(sms) where
 {
 #impltmp
-foreach$work<s0mag>(sma) = s0mag_fpemsg(out,sma)
+foritm$work<s0mag>(sma) = s0mag_fpemsg(out,sma)
 }
 (* ****** ****** *)
 //
 #implfun
 t0arglst_fpemsg
 (out, tas) =
-list_foreach<t0arg>(tas) where
+list_foritm<t0arg>(tas) where
 {
 #impltmp
-foreach$work<t0arg>(t0a) = t0arg_fpemsg(out,t0a)
+foritm$work<t0arg>(t0a) = t0arg_fpemsg(out,t0a)
 }
 (* ****** ****** *)
 //
 #implfun
 t0maglst_fpemsg
 (out, tms) =
-list_foreach<t0mag>(tms) where
+list_foritm<t0mag>(tms) where
 {
 #impltmp
-foreach$work<t0mag>(tma) = t0mag_fpemsg(out,tma)
+foritm$work<t0mag>(tma) = t0mag_fpemsg(out,tma)
 }
 (* ****** ****** *)
 //
 #implfun
 s0qualst_fpemsg
 (out, sqs) =
-list_foreach<s0qua>(sqs) where
+list_foritm<s0qua>(sqs) where
 {
 #impltmp
-foreach$work<s0qua>(sq1) = s0qua_fpemsg(out,sq1)
+foritm$work<s0qua>(sq1) = s0qua_fpemsg(out,sq1)
 }
 (* ****** ****** *)
 //
@@ -1820,19 +1820,19 @@ optn_cons(d0e) => d0exp_fpemsg(out, d0e)
 #implfun
 d0patlst_fpemsg
 (out, dps) =
-list_foreach<d0pat>(dps) where
+list_foritm<d0pat>(dps) where
 {
 #impltmp
-foreach$work<d0pat>(dp1) = d0pat_fpemsg(out,dp1)
+foritm$work<d0pat>(dp1) = d0pat_fpemsg(out,dp1)
 }
 //
 #implfun
 l0d0plst_fpemsg
 (out, dps) =
-list_foreach<l0d0p>(dps) where
+list_foritm<l0d0p>(dps) where
 {
 #impltmp
-foreach$work<l0d0p>(ldp) = l0d0p_fpemsg(out,ldp)
+foritm$work<l0d0p>(ldp) = l0d0p_fpemsg(out,ldp)
 }
 //
 (* ****** ****** *)
@@ -1840,19 +1840,19 @@ foreach$work<l0d0p>(ldp) = l0d0p_fpemsg(out,ldp)
 #implfun
 d0explst_fpemsg
 (out, des) =
-list_foreach<d0exp>(des) where
+list_foritm<d0exp>(des) where
 {
 #impltmp
-foreach$work<d0exp>(de1) = d0exp_fpemsg(out,de1)
+foritm$work<d0exp>(de1) = d0exp_fpemsg(out,de1)
 }
 //
 #implfun
 l0d0elst_fpemsg
 (out, des) =
-list_foreach<l0d0e>(des) where
+list_foritm<l0d0e>(des) where
 {
 #impltmp
-foreach$work<l0d0e>(lde) = l0d0e_fpemsg(out,lde)
+foritm$work<l0d0e>(lde) = l0d0e_fpemsg(out,lde)
 }
 //
 (* ****** ****** *)
@@ -1860,10 +1860,10 @@ foreach$work<l0d0e>(lde) = l0d0e_fpemsg(out,lde)
 #implfun
 f0arglst_fpemsg
 (out, f0as) =
-list_foreach<f0arg>(f0as) where
+list_foritm<f0arg>(f0as) where
 {
 #impltmp
-foreach$work<f0arg>(f0a1) = f0arg_fpemsg(out,f0a1)
+foritm$work<f0arg>(f0a1) = f0arg_fpemsg(out,f0a1)
 }
 //
 (* ****** ****** *)
@@ -1871,10 +1871,10 @@ foreach$work<f0arg>(f0a1) = f0arg_fpemsg(out,f0a1)
 #implfun
 t0qualst_fpemsg
 (out, t0qs) =
-list_foreach<t0qua>(t0qs) where
+list_foritm<t0qua>(t0qs) where
 {
 #impltmp
-foreach$work<t0qua>(t0q1) = t0qua_fpemsg(out,t0q1)
+foritm$work<t0qua>(t0q1) = t0qua_fpemsg(out,t0q1)
 }
 //
 (* ****** ****** *)
@@ -1882,10 +1882,10 @@ foreach$work<t0qua>(t0q1) = t0qua_fpemsg(out,t0q1)
 #implfun
 d0gualst_fpemsg
 (out, d0gs) =
-list_foreach<d0gua>(d0gs) where
+list_foritm<d0gua>(d0gs) where
 {
 #impltmp
-foreach$work<d0gua>(dgua) = d0gua_fpemsg(out,dgua)
+foritm$work<d0gua>(dgua) = d0gua_fpemsg(out,dgua)
 }
 //
 (* ****** ****** *)
@@ -1893,10 +1893,10 @@ foreach$work<d0gua>(dgua) = d0gua_fpemsg(out,dgua)
 #implfun
 d0clslst_fpemsg
 (out, d0cs) =
-list_foreach<d0cls>(d0cs) where
+list_foritm<d0cls>(d0cs) where
 {
 #impltmp
-foreach$work<d0cls>(dcls) = d0cls_fpemsg(out,dcls)
+foritm$work<d0cls>(dcls) = d0cls_fpemsg(out,dcls)
 }
 //
 (* ****** ****** *)
@@ -1904,10 +1904,10 @@ foreach$work<d0cls>(dcls) = d0cls_fpemsg(out,dcls)
 #implfun
 d0eclist_fpemsg
 (out, dcls) =
-list_foreach<d0ecl>(dcls) where
+list_foritm<d0ecl>(dcls) where
 {
 #impltmp
-foreach$work<d0ecl>(dcl1) = d0ecl_fpemsg(out,dcl1)
+foritm$work<d0ecl>(dcl1) = d0ecl_fpemsg(out,dcl1)
 }
 //
 (* ****** ****** *)
@@ -2256,10 +2256,10 @@ endlet // end of [D0TSTnode(_,_,_,_)]
 #implfun
 s0tcnlst_fpemsg
 (out, tcns) =
-list_foreach<s0tcn>(tcns) where
+list_foritm<s0tcn>(tcns) where
 {
 #impltmp
-foreach$work<s0tcn>(tcn1) = s0tcn_fpemsg(out,tcn1)
+foritm$work<s0tcn>(tcn1) = s0tcn_fpemsg(out,tcn1)
 }
 //
 (* ****** ****** *)
@@ -2267,10 +2267,10 @@ foreach$work<s0tcn>(tcn1) = s0tcn_fpemsg(out,tcn1)
 #implfun
 d0tstlst_fpemsg
 (out, d0ts) =
-list_foreach<d0tst>(d0ts) where
+list_foritm<d0tst>(d0ts) where
 {
 #impltmp
-foreach$work<d0tst>(d0t1) = d0tst_fpemsg(out,d0t1)
+foritm$work<d0tst>(d0t1) = d0tst_fpemsg(out,d0t1)
 }
 //
 (* ****** ****** *)
@@ -2349,10 +2349,10 @@ endlet // end of [D0TYPnode(_,_,_,_,_)]
 #implfun
 s0unilst_fpemsg
 (out, s0us) =
-list_foreach<s0uni>(s0us) where
+list_foritm<s0uni>(s0us) where
 {
 #impltmp
-foreach$work<s0uni>(s0u1) = s0uni_fpemsg(out,s0u1)
+foritm$work<s0uni>(s0u1) = s0uni_fpemsg(out,s0u1)
 }
 //
 (* ****** ****** *)
@@ -2360,10 +2360,10 @@ foreach$work<s0uni>(s0u1) = s0uni_fpemsg(out,s0u1)
 #implfun
 d0tcnlst_fpemsg
 (out, tcns) =
-list_foreach<d0tcn>(tcns) where
+list_foritm<d0tcn>(tcns) where
 {
 #impltmp
-foreach$work<d0tcn>(tcn1) = d0tcn_fpemsg(out,tcn1)
+foritm$work<d0tcn>(tcn1) = d0tcn_fpemsg(out,tcn1)
 }
 //
 (* ****** ****** *)
@@ -2371,10 +2371,10 @@ foreach$work<d0tcn>(tcn1) = d0tcn_fpemsg(out,tcn1)
 #implfun
 d0typlst_fpemsg
 (out, d0ts) =
-list_foreach<d0typ>(d0ts) where
+list_foritm<d0typ>(d0ts) where
 {
 #impltmp
-foreach$work<d0typ>(d0t1) = d0typ_fpemsg(out,d0t1)
+foritm$work<d0typ>(d0t1) = d0typ_fpemsg(out,d0t1)
 }
 //
 (* ****** ****** *)
@@ -2513,10 +2513,10 @@ endlet // end of [ D0ARGdyn2(_,_,_,_) ]
 #implfun
 q0arglst_fpemsg
 (out, q0as) =
-list_foreach<q0arg>(q0as) where
+list_foritm<q0arg>(q0as) where
 {
 #impltmp
-foreach$work<q0arg>(q0a1) = q0arg_fpemsg(out,q0a1)
+foritm$work<q0arg>(q0a1) = q0arg_fpemsg(out,q0a1)
 }
 //
 (* ****** ****** *)
@@ -2524,10 +2524,10 @@ foreach$work<q0arg>(q0a1) = q0arg_fpemsg(out,q0a1)
 #implfun
 t0qaglst_fpemsg
 (out, tqas) =
-list_foreach<t0qag>(tqas) where
+list_foritm<t0qag>(tqas) where
 {
 #impltmp
-foreach$work<t0qag>(tqa1) = t0qag_fpemsg(out,tqa1)
+foritm$work<t0qag>(tqa1) = t0qag_fpemsg(out,tqa1)
 }
 //
 (* ****** ****** *)
@@ -2535,10 +2535,10 @@ foreach$work<t0qag>(tqa1) = t0qag_fpemsg(out,tqa1)
 #implfun
 a0typlst_fpemsg
 (out, atps) =
-list_foreach<a0typ>(atps) where
+list_foritm<a0typ>(atps) where
 {
 #impltmp
-foreach$work<a0typ>(atp1) = a0typ_fpemsg(out,atp1)
+foritm$work<a0typ>(atp1) = a0typ_fpemsg(out,atp1)
 }
 //
 (* ****** ****** *)
@@ -2546,10 +2546,10 @@ foreach$work<a0typ>(atp1) = a0typ_fpemsg(out,atp1)
 #implfun
 d0arglst_fpemsg
 (out, d0as) =
-list_foreach<d0arg>(d0as) where
+list_foritm<d0arg>(d0as) where
 {
 #impltmp
-foreach$work<d0arg>(d0a1) = d0arg_fpemsg(out,d0a1)
+foritm$work<d0arg>(d0a1) = d0arg_fpemsg(out,d0a1)
 }
 //
 (* ****** ****** *)
@@ -2810,10 +2810,10 @@ l0d0e_RBRACE_cons1
 #implfun
 d0valdclist_fpemsg
 (out, d0cs) =
-list_foreach<d0valdcl>(d0cs) where
+list_foritm<d0valdcl>(d0cs) where
 {
 #impltmp
-foreach$work<d0valdcl>(d0c1) = d0valdcl_fpemsg(out,d0c1)
+foritm$work<d0valdcl>(d0c1) = d0valdcl_fpemsg(out,d0c1)
 }
 //
 (* ****** ****** *)
@@ -2821,10 +2821,10 @@ foreach$work<d0valdcl>(d0c1) = d0valdcl_fpemsg(out,d0c1)
 #implfun
 d0vardclist_fpemsg
 (out, d0cs) =
-list_foreach<d0vardcl>(d0cs) where
+list_foritm<d0vardcl>(d0cs) where
 {
 #impltmp
-foreach$work<d0vardcl>(d0c1) = d0vardcl_fpemsg(out,d0c1)
+foritm$work<d0vardcl>(d0c1) = d0vardcl_fpemsg(out,d0c1)
 }
 //
 (* ****** ****** *)
@@ -2832,10 +2832,10 @@ foreach$work<d0vardcl>(d0c1) = d0vardcl_fpemsg(out,d0c1)
 #implfun
 d0fundclist_fpemsg
 (out, d0cs) =
-list_foreach<d0fundcl>(d0cs) where
+list_foritm<d0fundcl>(d0cs) where
 {
 #impltmp
-foreach$work<d0fundcl>(d0c1) = d0fundcl_fpemsg(out,d0c1)
+foritm$work<d0fundcl>(d0c1) = d0fundcl_fpemsg(out,d0c1)
 }
 //
 (* ****** ****** *)
@@ -2843,10 +2843,10 @@ foreach$work<d0fundcl>(d0c1) = d0fundcl_fpemsg(out,d0c1)
 #implfun
 d0cstdclist_fpemsg
 (out, d0cs) =
-list_foreach<d0cstdcl>(d0cs) where
+list_foritm<d0cstdcl>(d0cs) where
 {
 #impltmp
-foreach$work<d0cstdcl>(d0c1) = d0cstdcl_fpemsg(out,d0c1)
+foritm$work<d0cstdcl>(d0c1) = d0cstdcl_fpemsg(out,d0c1)
 }
 //
 (* ****** ****** *)

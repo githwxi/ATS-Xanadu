@@ -23,11 +23,11 @@ gseq_make0_llist<xs><x0>
 <xs><x0>
 gseq_free(xs) =
 (
-gseq_foreach0<xs><x0>(xs)
+gseq_foritm0<xs><x0>(xs)
 ) where
 {
 #impltmp
-foreach$work0<x0> = g_free<x0>
+foritm$work0<x0> = g_free<x0>
 }
 //
 (* ****** ****** *)
@@ -101,12 +101,12 @@ gseq_print$beg0
 //
 val () =
 (
-gseq_iforeach0<xs><x0>(xs)
+gseq_iforitm0<xs><x0>(xs)
 ) where
 {
 //
 #impltmp
-iforeach$work0<x0>
+iforitm$work0<x0>
   (i0, x0) =
 (
   g_print0<x0>(x0)
@@ -138,12 +138,12 @@ gseq_print$beg1
 //
 val () =
 (
-gseq_iforeach1<xs><x0>(xs)
+gseq_iforitm1<xs><x0>(xs)
 ) where
 {
 //
 #impltmp
-iforeach$work1<x0>
+iforitm$work1<x0>
   (i0, x0) =
 (
   g_print1<x0>(x0)
@@ -301,11 +301,11 @@ val p0 = $addr(r0)
 //
 val () =
 (
-  gseq_foreach0<xs><x0>(xs)
+  gseq_foritm0<xs><x0>(xs)
 ) where
 {
 #impltmp
-foreach$work0<x0>(x0) =
+foritm$work0<x0>(x0) =
 let
 val r0 = $UN.p2tr_get<r0>(p0)
 in
@@ -313,10 +313,10 @@ in
 $UN.p2tr_set<r0>
 (p0, foldl$fopr0<x0><r0>(r0, x0))
 //
-end // end of [foreach$work0]
+end // end of [foritm$work0]
 }
 //
-}(*where*)//end-[gseq_foldl0/foreach0]
+}(*where*)//end-[gseq_foldl0/foritm0]
 
 (* ****** ****** *)
 
@@ -333,11 +333,11 @@ val p0 = $addr(r0)
 //
 val () =
 (
-  gseq_foreach1<xs><x0>(xs)
+  gseq_foritm1<xs><x0>(xs)
 ) where
 {
 #impltmp
-foreach$work1<x0>(x0) =
+foritm$work1<x0>(x0) =
 let
 val r0 = $UN.p2tr_get<r0>(p0)
 in
@@ -345,10 +345,10 @@ in
 $UN.p2tr_set<r0>
   (p0, foldl$fopr1<x0><r0>(r0, x0))
 //
-end // end of [foreach$work1]
+end // end of [foritm$work1]
 }
 //
-}(*where*)//end-[gseq_foldl1/foreach1]
+}(*where*)//end-[gseq_foldl1/foritm1]
 
 (* ****** ****** *)
 //
@@ -629,7 +629,7 @@ end(*let*)//end-of(gseq_exists1/forall1)
 //
 #impltmp
 <xs><x0>
-gseq_foreach0(xs) =
+gseq_foritm0(xs) =
 let
 val
 test =
@@ -638,16 +638,16 @@ gseq_forall0<xs><x0>(xs) where
 #impltmp
 forall$test0<x0>(x0) =
 let
-val () = foreach$work0<x0>(x0) in true
+val () = foritm$work0<x0>(x0) in true
 end
 }
 in
   // nothing
-end(*let*)//end-of(gseq_foreach0/forall0)
+end(*let*)//end-of(gseq_foritm0/forall0)
 //
 #impltmp
 <xs><x0>
-gseq_foreach1(xs) =
+gseq_foritm1(xs) =
 let
 val
 test =
@@ -656,16 +656,16 @@ gseq_forall1<xs><x0>(xs) where
 #impltmp
 forall$test1<x0>(x0) =
 let
-val () = foreach$work1<x0>(x0) in true
+val () = foritm$work1<x0>(x0) in true
 end
 }
 in
   // nothing
-end(*let*)//end-of(gseq_foreach1/forall1)
+end(*let*)//end-of(gseq_foritm1/forall1)
 //
 #impltmp
 <xs><x0>
-gseq_foreach2(xs) =
+gseq_foritm2(xs) =
 let
 val
 test =
@@ -674,12 +674,12 @@ gseq_forall2<xs><x0>(xs) where
 #impltmp
 forall$test2<x0>(x0) =
 let
-val () = foreach$work2<x0>(x0) in true
+val () = foritm$work2<x0>(x0) in true
 end
 }
 in
   // nothing
-end(*let*)//end-of(gseq_foreach2/forall2)
+end(*let*)//end-of(gseq_foritm2/forall2)
 //
 (* ****** ****** *)
 
@@ -958,7 +958,7 @@ end(*let*)//end(gseq_iforall1/forall1)
 //
 #impltmp
 <xs><x0>
-gseq_iforeach0(xs) =
+gseq_iforitm0(xs) =
 let
 val
 test =
@@ -968,16 +968,16 @@ gseq_iforall0<xs><x0>(xs) where
 iforall$test0<x0>(i0, x0) =
 let
 val () =
-iforeach$work0<x0>(i0, x0) in true
+iforitm$work0<x0>(i0, x0) in true
 end//let
 }
 in
   // nothing
-end // end of [gseq_iforeach0/iforall0]
+end // end of [gseq_iforitm0/iforall0]
 //
 #impltmp
 <xs><x0>
-gseq_iforeach1(xs) =
+gseq_iforitm1(xs) =
 let
 val
 test =
@@ -987,12 +987,12 @@ gseq_iforall1<xs><x0>(xs) where
 iforall$test1<x0>(i0, x0) =
 let
 val () =
-iforeach$work1<x0>(i0, x0) in true
+iforitm$work1<x0>(i0, x0) in true
 end//let
 }
 in
   // nothing
-end // end of [gseq_iforeach1/iforall1]
+end // end of [gseq_iforitm1/iforall1]
 //
 (* ****** ****** *)
 //

@@ -2765,7 +2765,7 @@ end//let
 end where
 {
 //
-// (*
+(*
 val
 loc0 = d3e0.lctn((*void*))
 val () = prerrln
@@ -2774,7 +2774,7 @@ val () = prerrln
   ("trans23_d3exp_tpck: d3e0 = ", d3e0)
 val () = prerrln
   ("trans23_d3exp_tpck: t2p0 = ", t2p0)
-// *)
+*)
 //
 }(*where*) // end-of-[trans23_d3exp_tpck(...)]
 

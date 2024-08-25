@@ -214,7 +214,7 @@ else true // end of [else]
 (* ****** ****** *)
 //
 #impltmp
-gint_foreach_sint<>
+gint_foritm_sint<>
   (xs) =
 ( loop(0) ) where
 {
@@ -229,9 +229,9 @@ if
 then
 loop(suc(x0)) where
 {
-val () = foreach$work<x0>(x0)
+val () = foritm$work<x0>(x0)
 } else ((*void*)) //end(else)
-} (* end of [gint_foreach_sint] *)
+} (* end of [gint_foritm_sint] *)
 //
 (* ****** ****** *)
 //
@@ -442,7 +442,7 @@ gseq_consq<xs><x0> = gint_consq_sint<>
 #impltmp
 gseq_forall<xs><x0> = gint_forall_sint<>
 #impltmp
-gseq_foreach<xs><x0> = gint_foreach_sint<>
+gseq_foritm<xs><x0> = gint_foritm_sint<>
 #impltmp
 gseq_rforall<xs><x0> = gint_rforall_sint<>
 //
@@ -468,9 +468,9 @@ Tue Aug 15 08:23:58 EDT 2023
 gint_repeat_sint_f0un
 <(*none*)>(sint, work) =
 (
-  gint_foreach_sint<>(sint)) where
+  gint_foritm_sint<>(sint)) where
 {
-  #impltmp foreach$work<nint>(_) = work() }
+  #impltmp foritm$work<nint>(_) = work() }
 //
 (* ****** ****** *)
 

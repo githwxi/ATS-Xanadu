@@ -46,22 +46,22 @@ in//let
 //
 #impltmp
 <xz><xs><x0>
-gseq_concat_foreach
+gseq_concat_foritm
   (xss) =
 (
-gseq_foreach
+gseq_foritm
 <xz><xs>(xss)) where
 {
 #impltmp
-foreach$work<xs>(xs) =
+foritm$work<xs>(xs) =
 let
 #impltmp
-foreach$work<x0> =
-concat_foreach$work<x0>
+foritm$work<x0> =
+concat_foritm$work<x0>
 in//let
-  gseq_foreach<xs><x0>(xs) end//let
+  gseq_foritm<xs><x0>(xs) end//let
 }
-//where//end-of-[gseq_concat_foreach(...)]
+//where//end-of-[gseq_concat_foritm(...)]
 //
 (* ****** ****** *)
 //
@@ -110,16 +110,16 @@ strm_vt_forall0
 //
 #impltmp
 <xs><x0>
-gseq_uncons_foreach
+gseq_uncons_foritm
   ( xs ) =
 (
-strm_vt_foreach0
+strm_vt_foritm0
 (gseq_uncons_strmize<xs><x0>(xs))
 ) where
 { #impltmp
-  foreach$work0<(x0,xs)>(xxs) = 
-  uncons_foreach$work<xs><x0>(xxs.0,xxs.1) }
-//(*where*)//end-of-[gseq_uncons_foreach(xs)]
+  foritm$work0<(x0,xs)>(xxs) = 
+  uncons_foritm$work<xs><x0>(xxs.0,xxs.1) }
+//(*where*)//end-of-[gseq_uncons_foritm(xs)]
 //
 (* ****** ****** *)
 //
@@ -189,22 +189,22 @@ uncons_forall$test
 //
 #impltmp
 <xs><x0>
-gseq_2choose_foreach
+gseq_2choose_foritm
   ( xs ) =
 (
-gseq_uncons_foreach<xs><x0>(xs)
+gseq_uncons_foritm<xs><x0>(xs)
 ) where
 {
 #impltmp
-uncons_foreach$work
+uncons_foritm$work
 <xs><x0>( x0 , xs ) =
 (
-  gseq_foreach<xs><x0>(xs) ) where
+  gseq_foritm<xs><x0>(xs) ) where
 {
   #impltmp
-  foreach$work<x0>(x1) =
-  c2hoose_foreach$work<x0>( x0 , x1 ) }
-}(*where*)//end-of-[gseq_2choose_foreach(xs)]
+  foritm$work<x0>(x1) =
+  c2hoose_foritm$work<x0>( x0 , x1 ) }
+}(*where*)//end-of-[gseq_2choose_foritm(xs)]
 //
 (* ****** ****** *)
 

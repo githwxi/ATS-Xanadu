@@ -577,7 +577,7 @@ end // end of [list_vt_cons]
 //
 #impltmp
 <a>(*tmp*)
-list_vt_foreach0
+list_vt_foritm0
   (xs) =
   (loop(xs)) where
 {
@@ -593,16 +593,16 @@ list_vt_nil() => ()
 list_vt_cons(x0, xs) =>
 let
 val () =
-foreach$work0<a>(x0) in loop(xs)
+foritm$work0<a>(x0) in loop(xs)
 end // end of [list_vt_cons]
 )
-}(*where*)//end-of-[list_vt_foreach0]
+}(*where*)//end-of-[list_vt_foritm0]
 //
 (* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
-list_vt_foreach1
+list_vt_foritm1
   (xs) =
   (loop(xs)) where
 {
@@ -618,16 +618,16 @@ list_vt_nil() => ()
 list_vt_cons(x0, xs) =>
 let
 val () =
-foreach$work1<a>(x0) in loop(xs)
+foritm$work1<a>(x0) in loop(xs)
 end // end of [list_vt_cons]
 )
-}(*where*)//end-of-[list_vt_foreach1]
+}(*where*)//end-of-[list_vt_foritm1]
 //
 (* ****** ****** *)
 //
 #impltmp
 <a>(*tmp*)
-list_vt_foreach2
+list_vt_foritm2
   (xs) =
   (loop(xs)) where
 {
@@ -643,10 +643,10 @@ list_vt_nil() => ()
 list_vt_cons(!x0, xs) =>
 let
 val () =
-foreach$work2<a>(x0) in loop(xs)
+foritm$work2<a>(x0) in loop(xs)
 end // end of [list_vt_cons]
 )
-}(*where*)//end-of-[list_vt_foreach2]
+}(*where*)//end-of-[list_vt_foritm2]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1177,12 +1177,12 @@ gseq_forall1
 //
 #impltmp
 {a:vt}
-gseq_foreach0
-<list_vt(a)><a> = list_vt_foreach0<a>
+gseq_foritm0
+<list_vt(a)><a> = list_vt_foritm0<a>
 #impltmp
 {a:vt}
-gseq_foreach1
-<list_vt(a)><a> = list_vt_foreach1<a>
+gseq_foritm1
+<list_vt(a)><a> = list_vt_foritm1<a>
 //
 (* ****** ****** *)
 //

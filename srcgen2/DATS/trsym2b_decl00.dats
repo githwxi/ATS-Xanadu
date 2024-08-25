@@ -247,11 +247,11 @@ HX-2024-08-01:
 This part is moved
 to [trans2a_decl00]!
 (
-  list_foreach(d2cs)
+  list_foritm(d2cs)
 ) where
 {
   #impltmp
-  foreach$work
+  foritm$work
   <d2cst>(d2c1) =
   (
     myd2c_fix_xtyp(d2c1) ) }

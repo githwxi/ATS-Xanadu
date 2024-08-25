@@ -3037,10 +3037,10 @@ d2var_lftize(d2v1) else ())
 fun
 d2patlst_lftize
 (d2ps: d2patlst): void =
-list_foreach(d2ps) where
+list_foritm(d2ps) where
 {
 #impltmp
-foreach$work<d2pat> = d2pat_lftize }
+foritm$work<d2pat> = d2pat_lftize }
 //
 (* ****** ****** *)
 //

@@ -26,17 +26,25 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 // Author: Hongwei Xi
 // Start Time: September, 2018
 // Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #include
 "share/atspre_staload.hats"
 #staload
 UN = "prelude/SATS/unsafe.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload "./../SATS/mylib00.sats"
+#staload "./../DATS/mylib00.dats"
 //
 (* ****** ****** *)
 //
@@ -49,6 +57,7 @@ UN = "prelude/SATS/unsafe.sats"
 //
 #staload "./../SATS/tread01.sats"
 //
+(* ****** ****** *)
 (* ****** ****** *)
 
 implement
@@ -144,11 +153,11 @@ implement
 //{}(*tmp*)
 tread01_g1explst(g1es) =
 (
-list_foreach<g1exp>(g1es)
+list_foritm<g1exp>(g1es)
 ) where
 {
 implement(env)
-list_foreach$fwork<g1exp><env>(g1e, env) = tread01_g1exp(g1e)
+list_foritm$work<g1exp><env>(g1e, env) = tread01_g1exp(g1e)
 } (* end of [tread01_g1explst] *)
 //
 (* ****** ****** *)
@@ -161,11 +170,11 @@ implement
 //{}(*tmp*)
 tread01_g1marglst(gmas) =
 (
-list_foreach<g1marg>(gmas)
+list_foritm<g1marg>(gmas)
 ) where
 {
 implement(env)
-list_foreach$fwork<g1marg><env>(gma, env) = tread01_g1marg(gma)
+list_foritm$work<g1marg><env>(gma, env) = tread01_g1marg(gma)
 } (* end of [tread01_g1marglst] *)
 //
 (* ****** ****** *)
@@ -244,11 +253,11 @@ implement
 tread01_s1arglst
   (s1as) =
 (
-list_foreach<s1arg>(s1as)
+list_foritm<s1arg>(s1as)
 ) where
 {
 implement(env)
-list_foreach$fwork<s1arg><env>(s1a, env) = tread01_s1arg(s1a)
+list_foritm$work<s1arg><env>(s1a, env) = tread01_s1arg(s1a)
 } (* end of [tread01_s1arglst] *)
 //
 implement
@@ -256,11 +265,11 @@ implement
 tread01_s1marglst
   (smas) =
 (
-list_foreach<s1marg>(smas)
+list_foritm<s1marg>(smas)
 ) where
 {
 implement(env)
-list_foreach$fwork<s1marg><env>(sma, env) = tread01_s1marg(sma)
+list_foritm$work<s1marg><env>(sma, env) = tread01_s1marg(sma)
 } (* end of [tread01_s1marglst] *)
 //
 (* ****** ****** *)
@@ -322,11 +331,11 @@ implement
 tread01_t1arglst
   (t1as) =
 (
-list_foreach<t1arg>(t1as)
+list_foritm<t1arg>(t1as)
 ) where
 {
 implement(env)
-list_foreach$fwork<t1arg><env>(t1a, env) = tread01_t1arg(t1a)
+list_foritm$work<t1arg><env>(t1a, env) = tread01_t1arg(t1a)
 } (* end of [tread01_t1arglst] *)
 //
 implement
@@ -334,11 +343,11 @@ implement
 tread01_t1marglst
   (tmas) =
 (
-list_foreach<t1marg>(tmas)
+list_foritm<t1marg>(tmas)
 ) where
 {
 implement(env)
-list_foreach$fwork<t1marg><env>(tma, env) = tread01_t1marg(tma)
+list_foritm$work<t1marg><env>(tma, env) = tread01_t1marg(tma)
 } (* end of [tread01_t1marglst] *)
 //
 (* ****** ****** *)
@@ -351,11 +360,11 @@ implement
 //{}(*tmp*)
 tread01_s1unilst(s1us) =
 (
-list_foreach<s1uni>(s1us)
+list_foritm<s1uni>(s1us)
 ) where
 {
 implement(env)
-list_foreach$fwork<s1uni><env>(s1u, env) = tread01_s1uni(s1u)
+list_foritm$work<s1uni><env>(s1u, env) = tread01_s1uni(s1u)
 } (* end of [tread01_s1unilst] *)
 //
 (* ****** ****** *)
@@ -377,11 +386,11 @@ implement
 //{}(*tmp*)
 tread01_s1explst(s1es) =
 (
-list_foreach<s1exp>(s1es)
+list_foritm<s1exp>(s1es)
 ) where
 {
 implement(env)
-list_foreach$fwork<s1exp><env>(s1e, env) = tread01_s1exp(s1e)
+list_foritm$work<s1exp><env>(s1e, env) = tread01_s1exp(s1e)
 } (* end of [tread01_s1explst] *)
 //
 (* ****** ****** *)
@@ -394,11 +403,11 @@ implement
 //{}(*tmp*)
 tread01_s1qualst(s1qs) =
 (
-list_foreach<s1qua>(s1qs)
+list_foritm<s1qua>(s1qs)
 ) where
 {
 implement(env)
-list_foreach$fwork<s1qua><env>(s1q, env) = tread01_s1qua(s1q)
+list_foritm$work<s1qua><env>(s1q, env) = tread01_s1qua(s1q)
 } (* end of [tread01_s1qualst] *)
 //
 (* ****** ****** *)
@@ -468,11 +477,11 @@ implement
 tread01_s1rtconlst
   (s1cs) =
 (
-list_foreach<s1rtcon>(s1cs)
+list_foritm<s1rtcon>(s1cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<s1rtcon><env>(s1c, env) = tread01_s1rtcon(s1c)
+list_foritm$work<s1rtcon><env>(s1c, env) = tread01_s1rtcon(s1c)
 } (* end of [tread01_s1rtconlst] *)
 //
 (* ****** ****** *)
@@ -497,11 +506,11 @@ implement
 tread01_d1tsortlst
   (d1ts) =
 (
-list_foreach<d1tsort>(d1ts)
+list_foritm<d1tsort>(d1ts)
 ) where
 {
 implement(env)
-list_foreach$fwork<d1tsort><env>(d1t, env) = tread01_d1tsort(d1t)
+list_foritm$work<d1tsort><env>(d1t, env) = tread01_d1tsort(d1t)
 } (* end of [tread01_d1tsortlst] *)
 //
 (* ****** ****** *)
@@ -533,11 +542,11 @@ implement
 tread01_d1atconlst
   (d1cs) =
 (
-list_foreach<d1atcon>(d1cs)
+list_foritm<d1atcon>(d1cs)
 ) where
 {
 implement(env)
-list_foreach$fwork<d1atcon><env>(d1c, env) = tread01_d1atcon(d1c)
+list_foritm$work<d1atcon><env>(d1c, env) = tread01_d1atcon(d1c)
 } (* end of [tread01_d1atconlst] *)
 //
 (* ****** ****** *)

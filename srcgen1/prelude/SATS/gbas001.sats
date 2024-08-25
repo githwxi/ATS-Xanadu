@@ -15,7 +15,7 @@ fun
 append_forall$test(x0): bool
 fun
 <x0:t0>
-append_foreach$work(x0): void
+append_foritm$work(x0): void
 //
 (* ****** ****** *)
 //
@@ -24,7 +24,7 @@ fun
 concat_forall$test(x0): bool
 fun
 <x0:t0>
-concat_foreach$work(x0): void
+concat_foritm$work(x0): void
 //
 (* ****** ****** *)
 //
@@ -35,7 +35,7 @@ uncons_forall$test(x0,xs): bool
 fun
 <xs:t0>
 <x0:t0>
-uncons_foreach$work(x0,xs): void
+uncons_foritm$work(x0,xs): void
 //
 (* ****** ****** *)
 //
@@ -44,7 +44,7 @@ fun
 c2hoose_forall$test(x0,x0): bool
 fun
 <x0:t0>
-c2hoose_foreach$work(x0,x0): void
+c2hoose_foritm$work(x0,x0): void
 //
 (* ****** ****** *)
 

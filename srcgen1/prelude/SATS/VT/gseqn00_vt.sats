@@ -117,7 +117,7 @@ fun
 <xs:
 i0->vt>
 <x0:vt>
-<ln:i0>glseqn_iforeachn0(xs: ~xs(ln)): void
+<ln:i0>glseqn_iforitmn0(xs: ~xs(ln)): void
 //
 (* ****** ****** *)
 
