@@ -269,6 +269,31 @@ val () = print1s
 (msg, ": res0 = ", r0, "\n") in r0 end
 //
 (* ****** ****** *)
+//
+#impltmp
+< a1:t0 >
+< a2:t0 >
+< a3:t0 >
+< r0:vt >
+f_trace_f3un
+ (msg, f00) =
+lam
+(x1:a1
+,x2:a2,x3:a3) => let
+//
+val () = prints
+(msg, ": arg1 = ", x1, "\n")
+val () = prints
+(msg, ": arg2 = ", x2, "\n")
+val () = prints
+(msg, ": arg3 = ", x3, "\n")
+//
+val r0 = f00(  x1, x2, x3  )
+//
+val () = print1s
+(msg, ": res0 = ", r0, "\n") in r0 end
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)

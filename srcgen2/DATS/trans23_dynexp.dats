@@ -1365,6 +1365,7 @@ D2Edapp
 val
 d3f0 =
 trans23_d2exp(env0, d2f0)
+//
 val
 d3f0 = d3exp_sapqize(d3f0)
 //
@@ -1372,7 +1373,10 @@ val d3es =
 trans23_d2explst(env0, d2es)
 //
 val tfun = d3f0.styp((*nil*))
+//
 (*
+HX-2024-08-24:
+[d3exp_sapqize] does it:
 val tfun = s2typ_hnfiz0(tfun)
 *)
 //
