@@ -40,17 +40,21 @@
 (*
 fun
 <a:vt>
-g_new((*_*)): a
+g_new((*_*)): (a)
 *)
 fun
 <a:vt>
-g_make((*_*)): a
+g_make((*_*)): (a)
 //
 (* ****** ****** *)
 //
 fun
+<a:t0>
+g_void(x: a): void
+//
+fun
 <a:vt>
-g_self(x : a): a
+g_self(x: a): ( a )
 //
 (* ****** ****** *)
 //
