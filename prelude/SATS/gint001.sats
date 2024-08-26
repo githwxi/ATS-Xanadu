@@ -73,16 +73,33 @@ fun<>
 nint_irforall(xs: nint): bool
 *)
 //
-#symload forall with nint_forall of 1000
-#symload rforall with nint_rforall of 1000
+#symload
+forall with nint_forall of 1000
+#symload
+rforall with nint_rforall of 1000
 (*
-#symload iforall with nint_iforall of 1000
-#symload irforall with nint_irforall of 1000
+#symload
+iforall with nint_iforall of 1000
+#symload
+irforall with nint_irforall of 1000
 *)
 //
 (* ****** ****** *)
 //
-(*
+fun<>
+nint_forall_f1un
+(ni: nint, test: (ni)->bool): bool
+#symload
+forall with nint_forall_f1un of 1000
+//
+fun<>
+nint_rforall_f1un
+(ni: nint, test: (ni)->bool): bool
+#symload
+rforall with nint_rforall_f1un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 HX-2024-08-07:
@@ -90,21 +107,48 @@ There is no need for these
 special function interfaces!
 Wed 07 Aug 2024 01:58:00 PM EDT
 *)
+(*
+HX-2024-08-26:
+Mon 26 Aug 2024 07:19:34 AM EDT
+However, these interfaces do
+help support symbol overloading!
+*)
 //
 fun<>
 nint_foritm(xs: nint): void
 fun<>
 nint_rforitm(xs: nint): void
+(*
 fun<>
 nint_iforitm(xs: nint): void
 fun<>
 nint_irforitm(xs: nint): void
-//
-#symload foritm with nint_foritm of 1000
-#symload rforitm with nint_rforitm of 1000
-#symload iforitm with nint_iforitm of 1000
-#symload irforitm with nint_irforitm of 1000
 *)
+//
+#symload
+foritm with nint_foritm of 1000
+#symload
+rforitm with nint_rforitm of 1000
+(*
+#symload
+iforitm with nint_iforitm of 1000
+#symload
+irforitm with nint_irforitm of 1000
+*)
+//
+(* ****** ****** *)
+//
+fun<>
+nint_foritm_f1un
+(ni: nint, work: (ni)->void): void
+#symload
+foritm with nint_foritm_f1un of 1000
+//
+fun<>
+nint_rforitm_f1un
+(ni: nint, work: (ni)->void): void
+#symload
+rforitm with nint_rforitm_f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

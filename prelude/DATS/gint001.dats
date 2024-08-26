@@ -37,89 +37,112 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload UN =
-"prelude/SATS/unsfx00.sats"
-(* ****** ****** *)
-(* ****** ****** *)
 #typedef ut = unit
 #typedef ni = nint
 (* ****** ****** *)
 (* ****** ****** *)
+#staload UN =
+"prelude/SATS/unsfx00.sats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #impltmp
-gasz_forall
-<ni><ut>(ni) =
+gseq_forall
+<nint><ut>(ni) =
 (
 nint_forall(ni)) where
 {
 #impltmp
 forall$test<ni>(i0) = 
-forall$test<ut>(unit())}
+(
+forall$test<ut>(unit()))}//where
 //
 #impltmp
-gseq_forall
-<ni><ut>(ni) =
+gasz_forall
+<nint><ut>(ni) =
 (
-gasz_forall<ni><ut>(ni))
+nint_forall(ni)) where
+{
+#impltmp
+forall$test<ni>(i0) = 
+(
+forall$test1<ut>(unit()))}//where
 //
 (* ****** ****** *)
 //
 #impltmp
-gasz_rforall
-<ni><ut>(ni) =
+gseq_rforall
+<nint><ut>(ni) =
 (
 nint_rforall(ni)) where
 {
 #impltmp
 rforall$test<ni>(i0) = 
-rforall$test<ut>(unit())
-}
+(
+rforall$test<ut>(unit()))}//where
 //
 #impltmp
-gseq_rforall
-<ni><ut>(ni) =
+gasz_rforall
+<nint><ut>(ni) =
 (
-gasz_rforall<ni><ut>(ni))
+nint_rforall(ni)) where
+{
+#impltmp
+rforall$test<ni>(i0) = 
+(
+rforall$test1<ut>(unit()))}//where
 //
 (* ****** ****** *)
 //
 #impltmp
-gasz_iforall
-<ni><ut>(ni) =
+gseq_iforall
+<nint><ut>(ni) =
 (
 nint_forall(ni)) where
 {
 val ut = unit()
 #impltmp
 forall$test<ni>(i0) =
-iforall$test<ut>(i0, ut)
-}
+(
+iforall$test<ut>(i0, ut))}//where
 //
 #impltmp
-gseq_iforall
-<ni><ut>(ni) =
+gasz_iforall
+<nint><ut>(ni) =
 (
-gasz_iforall<ni><ut>(ni))
+nint_forall(ni)) where
+{
+val ut = unit()
+#impltmp
+forall$test<ni>(i0) =
+(
+iforall$test1<ut>(i0, ut))}//where
 //
 (* ****** ****** *)
 //
 #impltmp
-gasz_irforall
-<ni><ut>(ni) =
+gseq_irforall
+<nint><ut>(ni) =
 (
 nint_rforall(ni)) where
 {
 val ut = unit()
 #impltmp
 rforall$test<ni>(i0) =
-irforall$test<ut>(i0, ut)
-}
+(
+irforall$test<ut>(i0, ut))}//where
 //
 #impltmp
-gseq_irforall
-<ni><ut>(ni) =
+gasz_irforall
+<nint><ut>(ni) =
 (
-gasz_irforall<ni><ut>(ni))
+nint_rforall(ni)) where
+{
+val ut = unit()
+#impltmp
+rforall$test<ni>(i0) =
+(
+irforall$test1<ut>(i0, ut))}//where
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -142,7 +165,7 @@ then loop(xs, i0+1) else false)}
 //
 #impltmp
 gasz_forall
-<ni><ni>(ni) =
+<nint><ni>(ni) =
 (
   nint_forall<>(ni)) where
 {
@@ -150,6 +173,23 @@ gasz_forall
 forall$test<ni> = forall$test1<ni>
 }
 //
+#impltmp
+gseq_forall<nint><ni> = nint_forall<>
+//
+(* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
+nint_forall_f1un
+  (ni, test) =
+(
+  nint_forall<>(ni)) where
+{
+#impltmp
+forall$test<ni>(i0) = test(   i0   )
+}(*where*)//end-of-[nint_forall_f1un]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -170,13 +210,61 @@ then loop(xs, i0+1) else false)}
 //
 #impltmp
 gasz_rforall
-<ni><ni>(ni) =
+<nint><ni>(ni) =
 (
   nint_rforall<>(ni)) where
 {
 #impltmp
 rforall$test<ni> = rforall$test1<ni>
 }
+//
+(* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
+nint_rforall_f1un
+  (ni, test) =
+(
+  nint_rforall<>(ni)) where
+{
+#impltmp
+rforall$test<ni>(i0) = test(   i0   )
+}(*where*)//end-of-[nint_rforall_f1un]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
+nint_foritm =
+gseq_foritm<nint><ni>(*void*)
+#impltmp
+<>(*tmp*)
+nint_foritm_f1un
+  (cs, work) =
+(
+  nint_foritm<>(cs)) where
+{
+#impltmp
+foritm$work<ni>(i0) = work(   i0   )
+}(*where*)//end-of-[nint_foritm_f1un]
+//
+(* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
+nint_rforitm =
+gseq_rforitm<nint><ni>(*void*)
+#impltmp
+<>(*tmp*)
+nint_rforitm_f1un
+  (cs, work) =
+(
+  nint_rforitm<>(cs)) where
+{
+#impltmp
+rforitm$work<ni>(i0) = work(   i0   )
+}(*where*)//end-of-[nint_rforitm_f1un]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -206,6 +294,8 @@ strmcon_vt_cons(i0, auxmain(i0+1))
 }(*where*)//end-[nint_strmize(ni)]
 *)
 //
+(* ****** ****** *)
+//
 (*
 HX-2024-07-22:
 Mon 22 Jul 2024 11:48:37 AM EDT
@@ -226,22 +316,6 @@ map$fopr<ni><ni>(i0) = (i0)
 nint_strqize(ni) =
 (
  $UN.strm2q_vt(nint_strmize<>(ni)))
-//
-(* ****** ****** *)
-//
-#impltmp
-gasz_strmize
-<ni><ni> = nint_strmize<>
-#impltmp
-gasz_strqize
-<ni><ni> = nint_strqize<>
-//
-#impltmp
-gseq_strmize
-<ni><ni> = gasz_strmize<ni><ni>
-#impltmp
-gseq_strqize
-<ni><ni> = gasz_strqize<ni><ni>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -268,22 +342,6 @@ rmap$fopr<ni><ni>(i0) = (i0)
 nint_rstrqize(ni) =
 (
  $UN.strm2q_vt(nint_rstrmize<>(ni)))
-//
-(* ****** ****** *)
-//
-#impltmp
-gasz_rstrmize
-<ni><ni> = nint_rstrmize<>
-#impltmp
-gasz_rstrqize
-<ni><ni> = nint_rstrqize<>
-//
-#impltmp
-gseq_rstrmize
-<ni><ni> = gasz_rstrmize<ni><ni>
-#impltmp
-gseq_rstrqize
-<ni><ni> = gasz_rstrqize<ni><ni>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -436,6 +494,31 @@ end(*let*)//else//end-of-[if(...)]
 )
 //
 }(*where*)//end-[nint_map_llist(ni)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+gasz_strmize<nint><ni> = nint_strmize<>
+#impltmp
+gasz_strqize<nint><ni> = nint_strqize<>
+//
+#impltmp
+gseq_strmize<nint><ni> = gasz_strmize<nint><ni>
+#impltmp
+gseq_strqize<nint><ni> = gasz_strqize<nint><ni>
+//
+(* ****** ****** *)
+//
+#impltmp
+gasz_rstrmize<nint><ni> = nint_rstrmize<>
+#impltmp
+gasz_rstrqize<nint><ni> = nint_rstrqize<>
+//
+#impltmp
+gseq_rstrmize<nint><ni> = gasz_rstrmize<nint><ni>
+#impltmp
+gseq_rstrqize<nint><ni> = gasz_rstrqize<nint><ni>
 //
 (* ****** ****** *)
 (* ****** ****** *)
