@@ -100,11 +100,10 @@ gseq_iforall
 (
 nint_forall(ni)) where
 {
-val ut = unit()
 #impltmp
 forall$test<ni>(i0) =
 (
-iforall$test<ut>(i0, ut))}//where
+iforall$test<ut>(i0,unit()))}//whr
 //
 #impltmp
 gasz_iforall
@@ -112,11 +111,10 @@ gasz_iforall
 (
 nint_forall(ni)) where
 {
-val ut = unit()
 #impltmp
 forall$test<ni>(i0) =
 (
-iforall$test1<ut>(i0, ut))}//where
+iforall$test1<ut>(i0,unit()))}//whr
 //
 (* ****** ****** *)
 //
@@ -126,11 +124,10 @@ gseq_irforall
 (
 nint_rforall(ni)) where
 {
-val ut = unit()
 #impltmp
 rforall$test<ni>(i0) =
 (
-irforall$test<ut>(i0, ut))}//where
+irforall$test<ut>(i0,unit()))}//whr
 //
 #impltmp
 gasz_irforall
@@ -138,11 +135,10 @@ gasz_irforall
 (
 nint_rforall(ni)) where
 {
-val ut = unit()
 #impltmp
 rforall$test<ni>(i0) =
 (
-irforall$test1<ut>(i0, ut))}//where
+irforall$test1<ut>(i0,unit()))}//whr
 //
 (* ****** ****** *)
 (* ****** ****** *)
