@@ -322,37 +322,19 @@ gseq_filter_self(xs: xs): (xs)
 fun
 <x0:t0>
 <y0:vt>
-mapstrq$fopr(itm: x0): strq_vt(y0)
+mapstrq$fopr
+(itm: x0): strq_vt(y0)
 *)
 fun
 <x0:t0>
 <y0:vt>
-rmapstrq$fopr(itm: x0): strq_vt(y0)
+rmapstrq$fopr
+(itm: x0): strq_vt(y0)
 fun
 <x0:t0>
 <y0:vt>
-imapstrq$fopr(pos: ni, itm: x0): strq_vt(y0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun<>
-nint_forall(xs: nint): bool
-fun<>
-nint_rforall(xs: nint): bool
-fun<>
-nint_iforall(xs: nint): bool
-fun<>
-nint_irforall(xs: nint): bool
-//
-fun<>
-nint_foritm(xs: nint): void
-fun<>
-nint_rforitm(xs: nint): void
-fun<>
-nint_iforitm(xs: nint): void
-fun<>
-nint_irforitm(xs: nint): void
+imapstrq$fopr
+(pos: ni, itm: x0): strq_vt(y0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -362,8 +344,7 @@ nint_strmize
 (xs: nint): strm_vt(ni)
 fun<>
 nint_strqize
-{n:i0}
-(xs: nint(n)): strq_vt(ni, n)
+{n:i0}(xs: nint(n)): strq_vt(ni, n)
 //
 (* ****** ****** *)
 //
@@ -372,8 +353,46 @@ nint_rstrmize
 (xs: nint): strm_vt(ni)
 fun<>
 nint_rstrqize
-{n:i0}
-(xs: nint(n)): strq_vt(ni, n)
+{n:i0}(xs: nint(n)): strq_vt(ni, n)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+nint_forall(xs: nint): bool
+fun<>
+nint_rforall(xs: nint): bool
+//
+fun<>
+nint_forall_f1un
+(ni: nint, test: (ni)->bool): bool
+#symload
+forall with nint_forall_f1un of 1000
+//
+fun<>
+nint_rforall_f1un
+(ni: nint, test: (ni)->bool): bool
+#symload
+rforall with nint_rforall_f1un of 1000
+//
+(* ****** ****** *)
+//
+fun<>
+nint_foritm(xs: nint): void
+fun<>
+nint_rforitm(xs: nint): void
+//
+fun<>
+nint_foritm_f1un
+(ni: nint, work: (ni)->void): void
+#symload
+foritm with nint_foritm_f1un of 1000
+//
+fun<>
+nint_rforitm_f1un
+(ni: nint, work: (ni)->void): void
+#symload
+rforitm with nint_rforitm_f1un of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
