@@ -768,9 +768,11 @@ optn_vt_cons(dpar) => @(1(*shrd*),dpar)
 //
 end where
 {
+(*
   val () =
   prerrln
   ("s2taload_from_fpath: fpth = ", fpth)
+*)
 (*
   val () =
   prerrln
@@ -932,12 +934,14 @@ def1 =
 (
   trans11_gmdef(gmas, def1))
 //
+(*
 val () =
 prerrln
 ("f0_define(12): sym0 = ", sym0)
 val () =
 prerrln
 ("f0_define(12): def1 = ", def1)
+*)
 //
 val () =
 tr12env_add0_g1mac(env0, sym0, def1)
@@ -1195,39 +1199,44 @@ D1Csexpdef
 //
 (*
 val () =
-prerrln("f0_sexpdef: smas = ", smas)
+prerrln
+("f0_sexpdef(12): smas = ", smas)
 val () =
-prerrln("f0_sexpdef: topt = ", topt)
+prerrln
+("f0_sexpdef(12): topt = ", topt)
 val () =
-prerrln("f0_sexpdef: sdef = ", sdef)
+prerrln
+("f0_sexpdef(12): sdef = ", sdef)
 *)
 //
-val
-( ) = tr12env_pshlam0(env0)
+val () =
+(
+  tr12env_pshlam0(env0))
 //
-val
-svss =
+val svss =
 trans12_s1maglst(env0, smas)
 //
-val
-sdef =
+val sdef =
 (
 case+ topt of
 |
 optn_nil() =>
-trans12_s1exp(env0, sdef)
+(
+  trans12_s1exp(env0, sdef))
 |
 optn_cons(s1t1) =>
 (
 trans12_s1exp_stck
-(env0 , sdef , s2t1)
-) where
-{ val s2t1 =
-  trans12_sort1(env0, s1t1) }
+( env0, sdef, s2t1 )) where
+{
+val
+s2t1 =
+(
+  trans12_sort1(env0, s1t1))
+}
 ) : s2exp // end of [val(sdef)]
 //
-val
-sdef =
+val sdef =
 (
 (
 case+ tres of
@@ -1236,7 +1245,7 @@ S2Tnone0() => sdef
 |
 _(*non-S2Tnone0*) =>
 (
-  s2exp_stck(loc0,sdef,tres) )
+  s2exp_stck(loc0,sdef,tres))
 ) where
 {
 val tres = sexpdef_sort2(tknd)
@@ -1246,7 +1255,7 @@ val tres = sexpdef_sort2(tknd)
 (*
 val () =
 prerrln
-( "f0_sexpdef: sdef = ", sdef )
+("f0_sexpdef(12): sdef = ", sdef)
 *)
 //
 val sdef =
@@ -1821,12 +1830,17 @@ end : d2ptmlst // end of [val(d2ps)]
 in//let
 //
 let
-val ditm =
-D2ITMsym(sym1,list_cons(dptm,d2ps))
+//
+val
+ditm =
+(
+D2ITMsym
+( sym1, list_cons(dptm, d2ps) ))
 //
 (*
 val () =
-prerrln("f0_symload: ditm = ", ditm)
+prerrln
+("f0_symload(12): ditm = ", ditm)
 *)
 //
 val () =

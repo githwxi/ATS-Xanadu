@@ -296,11 +296,11 @@ end(*let*)//end-of-[xats2js_i1parsed(filr,ipar)]
 list_xats2js_fnp
 ( e1, xs, fopr ) =
 (
-list_foreach_e1nv<x0><e1>(xs, e1)) where
+list_foritm_e1nv<x0><e1>(xs, e1)) where
 {
 #vwtpdef e1 = envx2js
 #impltmp
-foreach$work_e1nv<x0><e1>(x0, e1) = fopr(e1, x0)
+foritm$work_e1nv<x0><e1>(x0, e1) = fopr(e1, x0)
 } (*where*)//end of [list_xats2js_fnp(e1,xs,fopr)]
 //
 (* ****** ****** *)
