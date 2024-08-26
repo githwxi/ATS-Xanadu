@@ -232,9 +232,11 @@ val
 tenv =
 d1parsed_get_topenv(dpar)
 //
+(*
 val () =
 prerrln
 ("the_fxtyenv_pvsload:", tenv)
+*)
 //
 in//let
 case+ tenv of
@@ -644,9 +646,11 @@ in//let
 strn_append(XATSHOME, fnam)
 end (*let*) // end-of-(fpth)
 //
+(*
 val () =
 prerrln
 ("f0_pvsload: fpth = ", fpth)
+*)
 //
 val
 dpar =
@@ -748,16 +752,18 @@ dis.head() of
 D2ITMvar(d2v) =>
 (true(*failed*)) where
 {
-val loc =
-d2v.lctn((*nil*))
-val ( ) = prerrln
-("\
+//
+(*
+val loc = d2v.lctn((*nil*))
+val ( ) =
+prerrln("\
 TREAD12-WARNING: \
 the_tr12env_pvsload: f0_pvsfini: loc = ", loc)
-val ( ) = prerrln
-("\
+val ( ) =
+prerrln("\
 TREAD12-WARNING: \
 the_tr12env_pvsload: f0_pvsfini: d2v = ", d2v)
+*)
 }
 |_(*non-D2ITMvar*) => ans(* passed *)
 )
@@ -888,9 +894,10 @@ end where
 {
 (*
 val () =
-prerrln("the_sortenv_pvsfind: key = ", key)
+prerrln
+("the_sortenv_pvsfind: key = ", key)
 *)
-} (*where*) // [the_sortenv_pvsfind]
+}(*where*)//end(the_sortenv_pvsfind(key))
 //
 (* ****** ****** *)
 //
@@ -912,7 +919,7 @@ val () =
 prerrln
 ("the_sexpenv_pvsfind: key = ", key)
 *)
-} (*where*) // end-of-[the_sexpenv_pvsfind]
+}(*where*)//end(the_sexpenv_pvsfind(key))
 //
 (* ****** ****** *)
 //
@@ -934,7 +941,7 @@ val () =
 prerrln
 ("the_dexpenv_pvsfind: key = ", key)
 *)
-} (*where*) // end-of-[the_dexpenv_pvsfind]
+}(*where*)//end(the_dexpenv_pvsfind(key))
 //
 (* ****** ****** *)
 //
@@ -1170,5 +1177,8 @@ end(*let*)//end-of-[the_sortenv_allist_fprint(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_DATS_xglobal.dats] *)

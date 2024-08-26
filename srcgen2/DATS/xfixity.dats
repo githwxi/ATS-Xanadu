@@ -758,7 +758,7 @@ XATSOPT_fxitmlst_resolve$oprerr_exn of ((*void*))
 endlet // end of [fxitmlst_resolve$oprerr<a>(itm)]
 //
 (* ****** ****** *)
-
+//
 #impltmp
 <a>(*tmp*)
 fxitmlst_resolve$rederr
@@ -766,8 +766,7 @@ fxitmlst_resolve$rederr
 let
 //
 val () =
-prerr("FIXITY-ERROR:")
-val () = prerr( loc0 )
+prerr("FIXITY-ERROR:", loc0)
 val () =
 prerrln
 (": opr-fixity cannot be resolved: ", itms)
@@ -782,7 +781,11 @@ excptcon
 XATSOPT_fxitmlst_resolve$rederr_exn of ((*void*))
 }
 endlet // end of [fxitmlst_resolve$rederr<a>(loc0,itms)]
-
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_DATS_xfixity.dats] *)

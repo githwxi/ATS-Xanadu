@@ -3287,6 +3287,7 @@ val t2p1 = d2e0.styp((*0*))
 val ubtf =
 unify2a_s2typ(env0, t2p1, t2p0)
 //
+(*
 val () =
 let
 val
@@ -3295,7 +3296,9 @@ in//let
 prerrln
 ("trans2a_d2exp_tpck: loc0 = ", loc0)
 end//let
+*)
 //
+(*
 val () =
 prerrln
 ("trans2a_d2exp_tpck: d2e0 = ", d2e0)
@@ -3308,6 +3311,7 @@ prerrln
 val () =
 prerrln
 ("trans2a_d2exp_tpck: ubtf = ", ubtf)
+*)
 //
 in//let
 //

@@ -550,10 +550,10 @@ f0_strn
 (rep1: strn
 ,len2: sint): void =
 (
-strn_iforeach(rep1)) where
+strn_iforitm(rep1)) where
 {
 #impltmp
-iforeach$work
+iforitm$work
 <cgtz>(i0, ch) =
 (
 case+ ch of
@@ -813,12 +813,12 @@ i1valjs1_list
 ( filr: FILR
 , i1vs: i1valist): void =
 (
-list_iforeach(i1vs)) where
+list_iforitm(i1vs)) where
 {
 #typedef x0 = i1val
 #typedef xs = i1valist
 #impltmp
-iforeach$work<x0>(i0, x0) =
+iforitm$work<x0>(i0, x0) =
 (
 if
 (i0 >= 1)
@@ -833,12 +833,12 @@ l1i1vjs1_list
 ( filr: FILR
 , livs: l1i1vlst): void =
 (
-list_iforeach(livs)) where
+list_iforitm(livs)) where
 {
 #typedef x0 = l1i1v
 #typedef xs = l1i1vlst
 #impltmp
-iforeach$work<x0>(i0, x0) =
+iforitm$work<x0>(i0, x0) =
 (
 if
 (i0 >= 1)
