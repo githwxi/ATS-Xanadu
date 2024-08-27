@@ -120,12 +120,15 @@ XATSOPT "./../../.."
 #typedef d2cst = $D2E.d2cst
 #typedef d2var = $D2E.d2var
 (* ****** ****** *)
+//
 (*
 #typedef s2qag = $D2E.s2qag
 #typedef t2qag = $D2E.t2qag
 #typedef t2iag = $D2E.t2iag
-#typedef t2jag = $D2E.t2jag
 *)
+//
+#typedef t2jag = $D2E.t2jag
+//
 (* ****** ****** *)
 #typedef dimpl = $D2E.dimpl
 (* ****** ****** *)
@@ -158,12 +161,15 @@ XATSOPT "./../../.."
 #typedef d2cstlst = $D2E.d2cstlst
 #typedef d2varlst = $D2E.d2varlst
 (* ****** ****** *)
+//
 (*
 #typedef s2qaglst = $D2E.s2qaglst
 #typedef t2qaglst = $D2E.t2qaglst
 #typedef t2iaglst = $D2E.t2iaglst
-#typedef t2jaglst = $D2E.t2jaglst
 *)
+//
+#typedef t2jaglst = $D2E.t2jaglst
+//
 (* ****** ****** *)
 #typedef d3patlst = $D3E.d3patlst
 (* ****** ****** *)
@@ -424,13 +430,15 @@ i0exp_node =
 (* ****** ****** *)
 //
 |I0Etapp of (i0exp(*fun*))
-|I0Etapq of (i0exp(*fun*))
+//
+|I0Etapq of
+(i0exp(*fun*),t2jaglst(*tjas*))
 //
 (* ****** ****** *)
 //
 |I0Edap0 of (i0exp(*con*))
 |I0Edapp of
-(i0exp(*fun*), i0explst(*arg*))
+(i0exp(*fun*),i0explst(*darg*))
 //
 (* ****** ****** *)
 //

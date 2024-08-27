@@ -245,7 +245,8 @@ i0e0.node() of
 |I0Etimp
 (i0e1, timp) =>
 (
-print("I0Etimp(",i0e1,";",timp,")"))
+print
+("I0Etimp(", i0e1, ";", timp, ")"))
 //
 (* ****** ****** *)
 //
@@ -253,10 +254,12 @@ print("I0Etimp(",i0e1,";",timp,")"))
 (  i0f0  ) =>
 (
   print("I0Etapp(", i0f0, ")"))
+//
 |I0Etapq
-(  i0f0  ) =>
+(i0f0, tjas) =>
 (
-  print("I0Etapq(", i0f0, ")"))
+print
+("I0Etapq(", i0f0, ";", tjas, ")"))
 //
 (* ****** ****** *)
 //
@@ -264,6 +267,7 @@ print("I0Etimp(",i0e1,";",timp,")"))
 (  i0f0  ) =>
 (
   print("I0Edap0(", i0f0, ")"))
+//
 |I0Edapp
 (i0f0, i0es) =>
 print("I0Edapp(", i0f0, ";", i0es, ")")
