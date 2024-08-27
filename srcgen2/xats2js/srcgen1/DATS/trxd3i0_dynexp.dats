@@ -757,13 +757,13 @@ val loc0 = d3e0.lctn()
 //
 val-
 D3Etapq
-( d3f0, t2ps) = d3e0.node()
+( d3f0, tjas) = d3e0.node()
 val i0f0 = 
 (
   trxd3i0_d3exp(env0, d3f0))
 in//let
 (
-  i0exp(loc0, I0Etapq(i0f0)) )
+i0exp(loc0, I0Etapq(i0f0, tjas)))
 end//let//end-of-[f0_tapq(env0,d3e0)]
 //
 (* ****** ****** *)

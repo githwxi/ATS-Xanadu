@@ -96,7 +96,16 @@ fun
 fprintln
 (filr: FILR): void =
 (
- strn_fprint(filr,"\n"))//endfun
+strn_fprint(filr,"\n"))//endfun
+//
+(* ****** ****** *)
+//
+fun
+i0expfpr
+(filr: FILR
+,iexp: i0exp): void =
+(
+i0exp_fprint(filr,iexp))//endfun
 //
 (* ****** ****** *)
 //
@@ -420,6 +429,7 @@ in//let
 //
 case+
 timp.node() of
+//
 |T1IMPall1
 (dcst, dopt) =>
 (
@@ -428,9 +438,20 @@ case+ dopt of
 print("T1IMPall1(", ")")
 |optn_cons(idcl) =>
 let
-val loc0 = idcl.lctn() in
-print("T1IMPall1(", loc0, ")") end
+val loc0 = idcl.lctn()
+val (  ) =
+print("T1IMPall1(", loc0, ")")
+val (  ) =
+case+
+idcl.node() of
+|I0Dimplmnt0
+( tknd
+, stmp
+, dimp, fias, iexp) =>
+print("T1IMPall1(", dimp, ")")
+|_(*otherwise*) => ( (*void*) ) end
 )
+//
 |T1IMPallx
 (dcst, dopt) =>
 (
@@ -439,8 +460,18 @@ case+ dopt of
 print("T1IMPallx(", ")")
 |optn_cons(idcl) =>
 let
-val loc0 = idcl.lctn() in
-print("T1IMPallx(", loc0, ")") end
+val loc0 = idcl.lctn()
+val (  ) =
+print("T1IMPallx(", loc0, ")")
+val (  ) =
+case+
+idcl.node() of
+|I0Dimplmnt0
+( tknd
+, stmp
+, dimp, fias, iexp) =>
+print("T1IMPallx(", dimp, ")")
+|_(*otherwise*) => ( (*void*) ) end
 )
 //
 end//let//end-of-[t1imploc(filr,timp)]
@@ -1390,6 +1421,13 @@ let
 //
 val
 iopt = t1imp_i1cmpq(timp)
+//
+(*
+val () =
+(
+nindstrnfpr
+(filr, nind, "// ");i0expfpr(filr, i0e1);fprintln(filr))
+*)
 //
 in//let
 //

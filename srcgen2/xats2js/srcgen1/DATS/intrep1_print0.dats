@@ -357,17 +357,18 @@ detapq
 case+ i0e1.node() of
 |
 I0Etapq
-( i0e1 ) => detapq(i0e1)
+(i0e1, _) => detapq(i0e1)
 |
 _(*otherwise*) => ( i0e1 ))}
-}
+}(*where*)//end-of(I1INStimp)
 //
 (* ****** ****** *)
 //
 |I1INStup0
 (   i1vs   ) =>
-( print
-  ("I1INStup0(", i1vs, ")"))
+(
+print
+("I1INStup0(", i1vs, ")"))
 //
 |I1INStup1
 (tknd, i1vs) =>
