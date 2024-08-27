@@ -79,6 +79,8 @@ _(*DATS*)="./../DATS/js1emit.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#symload lctn with i1val_get_lctn
+(* ****** ****** *)
 #symload lctn with i1cmp_get_lctn
 #symload ival with i1cmp_get_ival
 #symload ilts with i1cmp_get_ilts
@@ -86,6 +88,10 @@ _(*DATS*)="./../DATS/js1emit.dats"
 #symload node with i1cls_get_node
 (* ****** ****** *)
 #symload node with t1imp_get_node
+(* ****** ****** *)
+#symload lctn with i1dcl_get_lctn
+#symload node with i1dcl_get_node
+(* ****** ****** *)
 (* ****** ****** *)
 #symload filr with envx2js_get_filr
 #symload nind with envx2js_get_nind
@@ -434,47 +440,123 @@ timp.node() of
 (dcst, dopt) =>
 (
 case+ dopt of
-|optn_nil() =>
+|
+optn_nil() =>
 print("T1IMPall1(", ")")
-|optn_cons(idcl) =>
+|
+optn_cons(idcl) =>
 let
-val loc0 = idcl.lctn()
+val loc0 = idcl.lctn((*0*))
 val (  ) =
 print("T1IMPall1(", loc0, ")")
-val (  ) =
-case+
-idcl.node() of
-|I0Dimplmnt0
-( tknd
-, stmp
-, dimp, fias, iexp) =>
-print("T1IMPall1(", dimp, ")")
-|_(*otherwise*) => ( (*void*) ) end
+end//let
 )
 //
 |T1IMPallx
 (dcst, dopt) =>
 (
 case+ dopt of
-|optn_nil() =>
+|
+optn_nil() =>
 print("T1IMPallx(", ")")
-|optn_cons(idcl) =>
+|
+optn_cons(idcl) =>
 let
-val loc0 = idcl.lctn()
+val loc0 = idcl.lctn((*0*))
 val (  ) =
 print("T1IMPallx(", loc0, ")")
-val (  ) =
-case+
-idcl.node() of
-|I0Dimplmnt0
-( tknd
-, stmp
-, dimp, fias, iexp) =>
-print("T1IMPallx(", dimp, ")")
-|_(*otherwise*) => ( (*void*) ) end
+end//let
 )
 //
-end//let//end-of-[t1imploc(filr,timp)]
+end(*let*)//end(t1imploc(filr,timp))
+//
+(* ****** ****** *)
+//
+fun
+t1impdcl
+(filr: FILR
+,timp: t1imp): void =
+let
+//
+#impltmp
+g_print$out<>() = filr
+//
+in//let
+//
+case+
+timp.node() of
+//
+|T1IMPall1
+(dcst, dopt) =>
+(
+case+ dopt of
+|
+optn_nil() =>
+print("T1IMPall1(", ")")
+|
+optn_cons(idcl) =>
+let
+val (  ) =
+print("T1IMPall1(", idcl, ")")
+end//let
+)
+//
+|T1IMPallx
+(dcst, dopt) =>
+(
+case+ dopt of
+|
+optn_nil() =>
+print("T1IMPallx(", ")")
+|
+optn_cons(idcl) =>
+let
+val (  ) =
+print("T1IMPallx(", idcl, ")")
+end//let
+)
+//
+end where
+{
+//
+#impltmp
+g_print
+<i1dcl>(idcl) =
+(
+  praux(idcl)) where
+{
+//
+fun
+praux
+(idcl: i1dcl): void =
+(
+case+
+idcl.node() of
+//
+|
+I1Dtmpsub
+(svts, idcl) =>
+(
+print(
+"I1Dtmpsub(");
+print(svts, ";");
+praux(idcl); print(")"))//tmpsub
+//
+|
+I1Dimplmnt0
+(tknd, stmp
+,dimp, fjas,icmp) =>
+(
+print(
+"I1Dimplmnt0(", dimp, ")"))//impl
+//
+|
+_(* else *) => print("...I1DCL...")
+)
+//
+}(*where*)//end-of-[g_print<i1dcl>]
+//
+}(*where*)//end(t1imploc(filr,timp))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1439,8 +1521,12 @@ nindstrnfpr
 (filr, nind, "// ");
 t1imploc(filr, timp);fprintln(filr);
 nindstrnfpr
+(filr, nind, "// ");
+t1impdcl(filr, timp);fprintln(filr);
+nindstrnfpr
 (filr, nind, "let ");
-i1tnmfpr(filr, itnm);strnfpr(filr, " = ");f0_t1imp(env0, timp);fprintln(filr))
+i1tnmfpr(filr, itnm);
+strnfpr(filr, " = ");f0_t1imp(env0, timp);fprintln(filr))
 |
 optn_cons(icmp) =>
 (
@@ -1451,6 +1537,9 @@ val () =
 nindstrnfpr
 (filr, nind, "// ");
 t1imploc(filr, timp);fprintln(filr);
+nindstrnfpr
+(filr, nind, "// ");
+t1impdcl(filr, timp);fprintln(filr);
 nindstrnfpr
 (filr, nind, "let ");i1tnmfpr(filr, itnm);fprintln(filr))}
 //
