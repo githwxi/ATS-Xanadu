@@ -67,4 +67,4 @@ ATS3_XANADU_srcgen1_prelude/DATS
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 //
-(* end of [ATS3_XANADU_srcgen1_prelude_prelude_dats.hats] *)
+(* end of [ATS3_XANADU_srcgen1_prelude_HATS_prelude_dats.hats] *)
