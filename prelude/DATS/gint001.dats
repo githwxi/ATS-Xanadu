@@ -378,7 +378,7 @@ nint_map_lstrm_f1un
 nint_map_lstrm<y0>(ni))
 where
 { #impltmp
-  map$fopr<ni><y0>(i0) = (fopr(i0))
+  map$fopr<ni><y0>(i0) = fopr( i0 )
 }(*where*)//end-[nint_map_lstrm_f1un]
 //
 (* ****** ****** *)
@@ -401,7 +401,8 @@ then strmcon_vt_nil() else
 let
 val y0 =
 rmap$fopr<ni><y0>(i0-1) in//let
-strmcon_vt_cons(y0, auxmain(i0-1))
+(
+ strmcon_vt_cons(y0, auxmain(i0-1)))
 end(*let*)//else//end-of-[if]
 )
 }(*where*)//end-[nint_rmap_lstrm(ni)]
@@ -414,7 +415,7 @@ nint_rmap_lstrm_f1un
 nint_rmap_lstrm<y0>(ni))
 where
 { #impltmp
-  rmap$fopr<ni><y0>(i0) = (fopr(i0))
+  rmap$fopr<ni><y0>(i0) = fopr( i0 )
 }(*where*)//end-[nint_rmap_lstrm_f1un]
 //
 (* ****** ****** *)

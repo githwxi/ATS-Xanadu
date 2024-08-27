@@ -112,9 +112,11 @@ endlet // end of [LCSRCfpath(fpth)]
 //
 ) where
 {
+(*
 val () =
-prerrln
-("the_drpth_push_lcsrc: source = ", source)
+prerrln("\
+the_drpth_push_lcsrc: source = ", source)
+*)
 } (*where*) // end-of-(the_drpth_push_lcsrc)
 
 (* ****** ****** *)
@@ -132,9 +134,11 @@ LCSRCsome1(name) => the_drpth_pop0()
 LCSRCfpath(fpth) => the_drpth_pop0()
 ) where
 {
+(*
 val () =
-prerrln
-("the_drpth_pop0_lcsrc: source = ", source)
+prerrln("\
+the_drpth_pop0_lcsrc: source = ", source)
+*)
 } (*where*) // end-of-(the_drpth_pop0_lcsrc)
 
 (* ****** ****** *)
