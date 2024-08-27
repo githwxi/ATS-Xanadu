@@ -55,17 +55,18 @@ mytest
 let
 //
 val dpar =
-  d3parsed_of_trtmp3b(dpar)
+d3parsed_of_trtmp3b(dpar)
 val dpar =
-  d3parsed_of_trtmp3c(dpar)
+d3parsed_of_trtmp3c(dpar)
 val dpar =
-  d3parsed_of_tread30(dpar)
+d3parsed_of_tread30(dpar)
 //
+(*
 val (  ) =
 (
- prerrln
- ("d3parsed(33) = ", dpar)
-)
+prerrln
+("d3parsed(33) = ", dpar))
+*)
 //
 val (  ) =
 let
@@ -115,6 +116,8 @@ srcgen1\
 /prelude\
 /DATS/CATS/JS/Node/process.dats"
 (* ****** ****** *)
+(* ****** ****** *)
+//
 val () =
 mymain() where
 {
@@ -122,15 +125,37 @@ mymain() where
 fun
 mymain((*void*)) =
 (
-mytest(argv[2])) where
+if
+length(argv) >= 3
+then
+(
+  mytest(argv[2]))
+else
+(
+let
+val (  ) =
+prerrln("\
+argv is too short: ", argv)
+end
+)
+) where
 {
-  val argv =
-  XATS2JS_NODE_argv_get()
-  val (  ) = prerrln("argv = ", argv)
-} (*where*)//end-of-[ mymain((*void*)) ]
 //
-}
+val argv =
+(
+  XATS2JS_NODE_argv_get((*0*)))
+(*
+val (  ) = prerrln("argv = ", argv)
+*)
+//
+}(*where*)//end-of-[mymain((*void*))]
+//
+}(*where*)//end-of-[val() = mymain()]
+//
 (* ****** ****** *)
 (* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_TEST_JS_test12_xats2js.dats] *)
