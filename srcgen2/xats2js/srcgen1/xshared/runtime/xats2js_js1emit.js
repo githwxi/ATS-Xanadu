@@ -14,26 +14,32 @@
 
 let XATSINT1 = (i) => i
 let XATSBOOL = (b) => b
-let XATSCHAR = (c) => c
-let XATSSFLT = (sflr) => sflt
-let XATSDFLT = (dflt) => dflt
-let XATSSTRN = (strn) => strn
+let XATSCNUL = ( ) => 0
+let XATSSFLT = (f) => f
+let XATSDFLT = (f) => f
+let XATSSTRN = (cs) => cs
+let XATSCHAR = (ch) => ch.charCodeAt(0)
 
 ////////////////////////////////////////////////////////////////////////////////////
 
+/*
+HX: this is historic:
 let XATSVAR0 = () => [null]
 let XATSVAR1 = (init) => [init]
 let XATSFLAT = (addr) => addr[0]
+*/
 
 ////////////////////////////////////////////////////////////////////////////////////
 
 let XATSDAPP = (dapp) => dapp
 let XATSCAPP = (_, capp) => capp
+let XATSCAST = (_, args) => args[0]
 
 ////////////////////////////////////////////////////////////////////////////////////
 
 let XATSPFLT = (pflt) => pflt
 let XATSPROJ = (proj) => proj
+let XATSP0RJ = (p0rj) => p0rj
 let XATSP1RJ = (_, p1rj) => p1rj
 let XATSP1CN = (_, p1cn) => p1cn
 
@@ -46,17 +52,18 @@ let XATSTUP1 = (knd0, tpl1) => tpl1
 let XATSRCD2 = (knd0, rcd2) => rcd2
 //
 ////////////////////////////////////////////////////////////////////////////////////
-
+//
 let XATSROOT = (x) => [0, x]
 let XATSLPFT = (i, x) => [1+0, x, i]
 let XATSLPBX = (i, x) => [1+1, x, i]
-
-let XATSVAR0 = () => XATSROOT([null])
+let XATSLPCN = (i, x) => [1+2, x, i+1]
+//
+let XATSVAR0 = (    ) => XATSROOT([null])
 let XATSVAR1 = (init) => XATSROOT([init])
-
+//
 let XATSADDR = (addr) => addr // HX: no-op
 let XATSFLAT = (addr) => XATS000_lvget(addr)
-
+//
 ////////////////////////////////////////////////////////////////////////////////////
 
 let XATSCTAG = (_, t) => t
@@ -78,22 +85,26 @@ let XATS000_patck = function(pck)
 
 ////////////////////////////////////////////////////////////////////////////////////
 
-
-let XATS000_dl0az = (dlaz) => dlaz()
-let XATS000_dl1az = (dlaz) => dlaz(1)
-
-let XATS000_assgn =
-  (lval, rval) => XATS000_lvset(lval, rval)
+let XATS000_fold = (pcon) => null
+let XATS000_free = (pcon) => null
 
 ////////////////////////////////////////////////////////////////////////////////////
-
+//
+let XATS000_dl0az = (dlaz) => dlaz()
+let XATS000_dl1az = (dlaz) => dlaz(1)
+//
+let XATS000_assgn =
+  (lval, rval) => XATS000_lvset(lval, rval)
+//
+////////////////////////////////////////////////////////////////////////////////////
+//
 let XATS000_ftset =
   function(tpl0, idx1, rval)
   {
     let tpl1 = tpl0.slice();
     tpl1[idx1] = rval; return tpl1
   }
-
+//
 let XATS000_lvget = function(lval)
   {
     let ctag = lval[0]
@@ -103,8 +114,10 @@ let XATS000_lvget = function(lval)
       return XATS000_lvget(lval[1])[lval[2]]
     if (ctag === 1+1)
       return lval[1][lval[2]]
+    if (ctag === 1+2)
+      return lval[1][lval[2]]
   }
-
+//
 let XATS000_lvset = function(lval, rval)
   {
     let ctag = lval[0]
@@ -115,8 +128,9 @@ let XATS000_lvset = function(lval, rval)
 	(lval[1], XATS000_ftset(XATS000_lvget(lval[1]), lval[2], rval))
     }
     if (ctag === 1+1) return ( lval[1][lval[2]] = rval )
+    if (ctag === 1+2) return ( lval[1][lval[2]] = rval )
   }
-
+//
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 //
