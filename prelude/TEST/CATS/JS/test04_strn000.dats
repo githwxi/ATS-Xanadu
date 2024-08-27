@@ -34,7 +34,7 @@ val AB =
 strn(26, lam(i) => 'a'+i)
 val () = prints("AB = ", AB, "\n")
 //
-val BA = reverse(AB)
+val BA = strn_reverse(AB)
 val () = prints("BA = ", BA, "\n")
 //
 val ABAB = appends(AB, AB)
