@@ -60,20 +60,15 @@ if
 (n0 <= 4)
 then false else
 (
-if
-(fp[n0-1]!='s')
+if(fp[n0-1]!='s')
 then (false) else
-if
-(fp[n0-2]!='t')
+if(fp[n0-2]!='t')
 then (false) else
-if
-(fp[n0-3]!='a')
+if(fp[n0-3]!='a')
 then (false) else
-if
-(fp[n0-4]!='s')
+if(fp[n0-4]!='s')
 then (false) else
-if
-(fp[n0-5]!='.')
+if(fp[n0-5]!='.')
 then (false) else (true))
 //
 end//let//end-of-[fpath_satsq(fp)]
@@ -94,20 +89,15 @@ if
 (n0 <= 4)
 then false else
 (
-if
-(fp[n0-1]!='s')
+if(fp[n0-1]!='s')
 then (false) else
-if
-(fp[n0-2]!='t')
+if(fp[n0-2]!='t')
 then (false) else
-if
-(fp[n0-3]!='a')
+if(fp[n0-3]!='a')
 then (false) else
-if
-(fp[n0-4]!='d')
+if(fp[n0-4]!='d')
 then (false) else
-if
-(fp[n0-5]!='.')
+if(fp[n0-5]!='.')
 then (false) else (true))
 //
 end//let//end-of-[fpath_datsq(fp)]
