@@ -178,5 +178,9 @@ fun<>
 fputc_ptr(chr: sint, fp: !FILP1): ierr
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_xatslib_libcats_libcats.sats] *)
+(* end of [ATS3/XANADU_srcgen1_xatslib_libcats_SATS_libcats.sats] *)

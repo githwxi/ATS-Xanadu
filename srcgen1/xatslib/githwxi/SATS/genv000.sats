@@ -68,7 +68,7 @@ forall$test_e1nv
 fun
 <x0:t0>
 <e1:vt>
-foreach$work_e1nv
+foritm$work_e1nv
 (x0: x0, e1: !e1): void
 *)
 //
@@ -123,7 +123,7 @@ fun
 <xs:t0>
 <x0:t0>
 <e1:vt>
-gseq_foreach_e1nv(xs, !e1): void
+gseq_foritm_e1nv(xs, !e1): void
 *)
 //
 (* ****** ****** *)

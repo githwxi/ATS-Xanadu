@@ -25,8 +25,17 @@ Mon 19 Feb 2024 10:54:31 AM
 "./../../../SATS/xlabel0.sats"
 (* ****** ****** *)
 (* ****** ****** *)
-#staload
+#staload // LEX =
 "./../../../SATS/lexing0.sats"
+(* ****** ****** *)
+#staload // PAR =
+"./../../../SATS/parsing.sats"
+(* ****** ****** *)
+(* ****** ****** *)
+#staload
+"./../../../SATS/staexp0.sats"
+#staload
+"./../../../SATS/dynexp0.sats"
 (* ****** ****** *)
 #staload
 "./../../../SATS/staexp1.sats"
@@ -37,11 +46,12 @@ Mon 19 Feb 2024 10:54:31 AM
 "./../../../SATS/staexp2.sats"
 #staload
 "./../../../SATS/statyp2.sats"
-(* ****** ****** *)
 #staload
 "./../../../SATS/dynexp2.sats"
+(* ****** ****** *)
 #staload
 "./../../../SATS/dynexp3.sats"
+(* ****** ****** *)
 (* ****** ****** *)
 #staload
 "./../../../SATS/trans01.sats"
@@ -72,13 +82,13 @@ Mon 19 Feb 2024 10:54:31 AM
 "./../../../SATS/fperr30.sats"
 (* ****** ****** *)
 //
-#staload
-"./../../../SATS/xatsopt.sats"
+#staload "./../../../SATS/xatsopt.sats"
+#staload "./../../../SATS/xglobal.sats"
 //
 (* ****** ****** *)
-#staload(* GLO = *)
-"./../../../SATS/xglobal.sats"
 (* ****** ****** *)
-(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XANADU_srcgen2_xats2js_srcgen1_HATS_libxatsopt.hats] *)
