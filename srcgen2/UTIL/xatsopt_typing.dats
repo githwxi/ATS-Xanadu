@@ -47,6 +47,75 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
+fpath_satsq
+(fp: strn): bool =
+let
+//
+val n0 =
+strn_length(fp)
+//
+in//in
+//
+if
+(n0 <= 4)
+then false else
+(
+if
+(fp[n0-1]!='s')
+then (false) else
+if
+(fp[n0-2]!='t')
+then (false) else
+if
+(fp[n0-3]!='a')
+then (false) else
+if
+(fp[n0-4]!='s')
+then (false) else
+if
+(fp[n0-5]!='.')
+then (false) else (true))
+//
+end//let//end-of-[fpath_satsq(fp)]
+//
+(* ****** ****** *)
+//
+fun
+fpath_datsq
+(fp: strn): bool =
+let
+//
+val n0 =
+strn_length(fp)
+//
+in//in
+//
+if
+(n0 <= 4)
+then false else
+(
+if
+(fp[n0-1]!='s')
+then (false) else
+if
+(fp[n0-2]!='t')
+then (false) else
+if
+(fp[n0-3]!='a')
+then (false) else
+if
+(fp[n0-4]!='d')
+then (false) else
+if
+(fp[n0-5]!='.')
+then (false) else (true))
+//
+end//let//end-of-[fpath_datsq(fp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 mymain_work
 (fpth: strn): void =
 let
@@ -68,7 +137,16 @@ end//let
 end where
 {
 //
-val dpar = d2parsed_of_fildats(fpth)
+val dpar =
+if
+(
+fpath_satsq(fpth))
+then
+(
+  d2parsed_of_filsats(fpth))//then
+else
+(
+  d2parsed_of_fildats(fpth))//else
 //
 }(*where*)//end-of-[mymain_work(fpth)]
 //
