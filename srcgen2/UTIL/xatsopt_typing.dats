@@ -46,16 +46,110 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val ret =
-the_fxtyenv_pvsload()
-val (  ) = prerrln
-("the_fxtyenv_pvsload() = ", ret)
+fun
+mymain_work
+(fpth: strn): void =
+let
 //
-val ret =
-the_tr12env_pvsload()
-val (  ) = prerrln
-("the_tr12env_pvsload() = ", ret)
+val (  ) =
+let
 //
+val out = g_stderr((*0*))
+//
+in//let
+//
+(
+prerrln
+("FPERR20_D2PARSED:");
+fperr20_d2parsed(out, dpar))
+//
+end//let
+//
+end where
+{
+//
+val dpar = d2parsed_of_fildats(fpth)
+//
+}(*where*)//end-of-[mymain_work(fpth)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+#staload
+"\
+srcgen1\
+/prelude\
+/DATS/CATS/JS/basics1.dats"
+(* ****** ****** *)
+#staload
+"\
+srcgen1\
+/prelude\
+/DATS/CATS/JS/Node/process.dats"
+//
+(* ****** ****** *)
+in//local
+(* ****** ****** *)
+//
+val () =
+mymain() where
+{
+//
+fun
+mymain((*void*)) =
+(
+if
+length(argv) >= 3
+then
+(
+  mymain_work(argv[2])
+) where
+{
+//
+val ret1 =
+the_fxtyenv_pvsload((*0*))
+val (  ) =
+if
+(ret1 > 0)
+then
+prerrln
+("The fixity-defs loaded!")
+//
+val ret2 =
+the_tr12env_pvsload((*0*))
+val (  ) =
+if
+(ret2 > 0)
+then prerrln
+("The trans12-defs loaded!")
+//
+}
+else
+(
+let
+val (  ) =
+prerrln("\
+[argv] is too short: ", argv)
+end//let
+)
+) where
+{
+//
+val argv =
+(
+  XATS2JS_NODE_argv_get((*0*)))
+(*
+val (  ) = prerrln("argv = ", argv)
+*)
+//
+}(*where*)//end-of-[mymain((*void*))]
+//
+}(*where*)//end-of-[val() = mymain()]
+//
+(* ****** ****** *)
+endloc//end-of-local(val() = mymain())
 (* ****** ****** *)
 (* ****** ****** *)
 //
