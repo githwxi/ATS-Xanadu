@@ -77,14 +77,16 @@ ATS_PACKNAME
 (* ****** ****** *)
 #staload "./../SATS/xatsopt.sats"
 (* ****** ****** *)
-
+//
 #implfun
-d2parsed_of_filsats(fpth) =
+d2parsed_of_filsats
+  ( fpth ) =
 d2parsed_of_trans02
 (
 d0parsed_from_fpath(0(*sta*), fpth))
 #implfun
-d2parsed_of_fildats(fpth) =
+d2parsed_of_fildats
+  ( fpth ) =
 d2parsed_of_trans02
 (
 d0parsed_from_fpath(1(*dyn*), fpth))
@@ -92,18 +94,20 @@ d0parsed_from_fpath(1(*dyn*), fpth))
 (* ****** ****** *)
 //
 #implfun
-d3parsed_of_filsats(fpth) =
+d3parsed_of_filsats
+  ( fpth ) =
 d3parsed_of_trans03
 (
 d0parsed_from_fpath(0(*sta*), fpth))
 #implfun
-d3parsed_of_fildats(fpth) =
+d3parsed_of_fildats
+  ( fpth ) =
 d3parsed_of_trans03
 (
 d0parsed_from_fpath(1(*dyn*), fpth))
 //
 (* ****** ****** *)
-
+//
 #implfun
 d2parsed_of_trans02(dpar) =
 let
@@ -114,9 +118,9 @@ val dpar = d2parsed_of_trans2a(dpar)
 val (  ) = d2parsed_by_trsym2b(dpar)
 val dpar = d2parsed_of_tread20(dpar) in dpar
 end (*let*) // end of [d2parsed_of_trans02(dpar)]
-
+//
 (* ****** ****** *)
-
+//
 #implfun
 d3parsed_of_trans03(dpar) =
 let
@@ -126,7 +130,11 @@ val dpar = d3parsed_of_tread23(dpar)
 val dpar = d3parsed_of_trans3a(dpar)
 val dpar = d3parsed_of_tread30(dpar) in dpar
 end (*let*) // end of [d3parsed_of_trans03(dpar)]
-
+//
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)
 
 (* end of [ATS3/XATSOPT_srcgen2_DATS_xatsopt_utils0.dats] *)
