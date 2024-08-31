@@ -66,21 +66,8 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val ret =
-the_fxtyenv_pvsload()
-val (  ) = prerrln
-("the_fxtyenv_pvsload() = ", ret)
-//
-val ret =
-the_tr12env_pvsload()
-val (  ) = prerrln
-("the_tr12env_pvsload() = ", ret)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 fun
-mytest
+mymain_work
 (fpath: string): void =
 let
 //
@@ -103,7 +90,6 @@ let
 val
 out = g_stderr((*0*))
 in//let
-//
 prerrln
 ("FPERR30_D3PARSED:");
 fperr30_d3parsed(out, dpar)
@@ -159,14 +145,34 @@ if
 length(argv) >= 3
 then
 (
-  mytest(argv[2]))
+  mymain_work(argv[2]))
+where
+{
+//
+val ret1 =
+the_fxtyenv_pvsload((*0*))
+val (  ) =
+if
+(ret1 > 0)
+then
+prerrln
+("The fixity-defs loaded!")
+//
+val ret2 =
+the_tr12env_pvsload((*0*))
+val (  ) =
+if
+(ret2 > 0)
+then prerrln
+("The trans12-defs loaded!")
+}
 else
 (
 let
 val (  ) =
 prerrln("\
-argv is too short: ", argv)
-end
+[argv] is too short: ", argv)
+end//let
 )
 ) where
 {
