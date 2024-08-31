@@ -510,7 +510,7 @@ fun
 sort0_errvl_a2
 (st1: sort0
 ,st2: sort0): sint =
-gmax
+maxs
 (errvl(st1),errvl(st2))
 #symload
 sort0_errvl with sort0_errvl_a2
@@ -521,7 +521,7 @@ sort0_errvl_a3
 (st1: sort0
 ,st2: sort0
 ,st3: sort0): sint =
-gmax
+maxs
 (errvl(st1)
 ,errvl(st2),errvl(st3))
 #symload
@@ -544,7 +544,7 @@ list_nil
 ((*nil*)) => 0
 |
 list_cons
-(st1,sts) => gmax(errvl(st1),errvl(sts)))
+(st1,sts) => maxs(errvl(st1),errvl(sts)))
 //
 (* ****** ****** *)
 //
@@ -691,7 +691,7 @@ fun
 s0exp_errvl_a2
 (se1: s0exp
 ,se2: s0exp): sint =
-gmax
+maxs
 (errvl(se1),errvl(se2))
 #symload
 s0exp_errvl with s0exp_errvl_a2
@@ -702,7 +702,7 @@ s0exp_errvl_a3
 (se1: s0exp
 ,se2: s0exp
 ,se3: s0exp): sint =
-gmax
+maxs
 (errvl(se1)
 ,errvl(se2),errvl(se3))
 #symload
@@ -724,7 +724,7 @@ list_nil((*nil*)) => 0
 |
 list_cons(se1,ses) =>
 (
-gmax
+maxs
 ( errvl(se1),s0exp_errvl_ses(ses)))
 endcas // end of [ case+(ses) ]
 )
@@ -777,7 +777,7 @@ list_nil((*nil*)) => 0
 |
 list_cons(lse1,lses) =>
 (
-gmax
+maxs
 ( errvl(lse1)
 , l0s0e_errvl_lses(lses)))
 endcas // end of [ case+(lses) ]
@@ -898,7 +898,9 @@ s0exp_lpar_errck
 , srp
 : s0exp_RPAREN): s0exp =
 let
-val lvl = gmax(errvl(ses),errvl(srp))
+val lvl =
+(
+  maxs(errvl(ses),errvl(srp)))
 in//let
 s0exp_errck
 (lvl+1, s0exp(loc,S0Elpar(tkb,ses,srp)))
@@ -919,7 +921,9 @@ s0exp_tup1_errck
 , srp
 : s0exp_RPAREN): s0exp =
 let
-val lvl = gmax(errvl(ses),errvl(srp))
+val lvl =
+(
+  maxs(errvl(ses),errvl(srp)))
 in//let
 s0exp_errck
 ( lvl+1
@@ -941,7 +945,9 @@ s0exp_rcd2_errck
 , lsrb
 : l0s0e_RBRACE): s0exp =
 let
-val lvl = gmax(errvl(lses),errvl(lsrb))
+val lvl =
+(
+  maxs(errvl(lses),errvl(lsrb)))
 in//let
 s0exp_errck
 ( lvl+1

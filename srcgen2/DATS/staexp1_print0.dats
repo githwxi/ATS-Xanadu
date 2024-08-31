@@ -106,7 +106,7 @@ g1arg_fprint
 case+
 g1a.node() of
 G1ARGnode(tok) =>
-print("G1ARGnode(",tok,")")
+prints("G1ARGnode(",tok,")")
 ) where
 {
   #impltmp g_print$out<>() = out
@@ -124,10 +124,10 @@ in//let
 case+ qid of
 |
 S1QIDnone(id1) =>
-print("S1QIDnone(", id1, ")")
+prints("S1QIDnone(", id1, ")")
 |
 S1QIDsome(tok, id1) =>
-print
+prints
 ("S1QIDsome(", tok, ";", id1, ")")
 end (*let*) // end of [s1qid_fprint]
 //
@@ -141,10 +141,10 @@ in//let
 case+ qid of
 |
 D1QIDnone(id1) =>
-print("D1QIDnone(", id1, ")")
+prints("D1QIDnone(", id1, ")")
 |
 D1QIDsome(tok, id1) =>
-print
+prints
 ("D1QIDsome(", tok, ";", id1, ")")
 end (*let*) // end of [d1qid_fprint]
 //
@@ -158,10 +158,10 @@ case+
 gma.node() of
 |
 G1MAGsarg(g1as) =>
-print("G1MAGsarg(",g1as,")")
+prints("G1MAGsarg(",g1as,")")
 |
 G1MAGdarg(g1as) =>
-print("G1MAGdarg(",g1as,")")
+prints("G1MAGdarg(",g1as,")")
 ) where
 {
   #impltmp g_print$out<>() = out
@@ -180,29 +180,29 @@ in//let
 case+ g1n of
 //
 | G1Nnil() =>
-  print("G1Nnil(",")")
+  prints("G1Nnil(",")")
 //
 | G1Nid0(id0) =>
-  print("G1Nid0(",id0,")")
+  prints("G1Nid0(",id0,")")
 //
 | G1Nint(int) =>
-  print("G1Nint(",int,")")
+  prints("G1Nint(",int,")")
 | G1Nchr(chr) =>
-  print("G1Nchr(",chr,")")
+  prints("G1Nchr(",chr,")")
 | G1Nflt(flt) =>
-  print("G1Nflt(",flt,")")
+  prints("G1Nflt(",flt,")")
 | G1Nstr(str) =>
-  print("G1Nstr(",str,")")
+  prints("G1Nstr(",str,")")
 //
 | G1Nlist(g1ns) =>
-  print("G1Nlist(",g1ns,")")
+  prints("G1Nlist(",g1ns,")")
 //
 (*
 | G1Nnone0() =>
-  print("G1Nnone0(",")")
+  prints("G1Nnone0(",")")
 *)
 | G1Nnone1(g1n1) =>
-  print("G1Nnone1(",g1n1,")")
+  prints("G1Nnone1(",g1n1,")")
 //
 end (*let*) // end of [g1nam_fprint(out,g1n)]
 
@@ -220,59 +220,59 @@ case+
 g1e.node() of
 //
 |G1Eint(tok) =>
-print("G1Eint(",tok,")")
+prints("G1Eint(",tok,")")
 (*
 |G1Ebtf(tok) =>
-print("G1Ebtf(",tok,")")
+prints("G1Ebtf(",tok,")")
 *)
 |G1Echr(tok) =>
-print("G1Echr(",tok,")")
+prints("G1Echr(",tok,")")
 |G1Eflt(tok) =>
-print("G1Eflt(",tok,")")
+prints("G1Eflt(",tok,")")
 |G1Estr(tok) =>
-print("G1Estr(",tok,")")
+prints("G1Estr(",tok,")")
 //
 |G1Eid0(id0) =>
-print("G1Eid0(",id0,")")
+prints("G1Eid0(",id0,")")
 //
 |
 G1Eb0sh(   ) =>
-print( "G1Eb0sh(" , ")" )
+prints( "G1Eb0sh(" , ")" )
 |
 G1Eb1sh(g1e) =>
-print("G1Eb1sh(",g1e,")")
+prints("G1Eb1sh(",g1e,")")
 //
 |
 G1Ea0pp(   ) =>
-print("G1Ea0pp(",")")
+prints("G1Ea0pp(",")")
 |
 G1Ea1pp
 (g1f0, g1e1) =>
-print("G1Ea1pp(",g1f0,";",g1e1,")")
+prints("G1Ea1pp(",g1f0,";",g1e1,")")
 |
 G1Ea2pp
 (g1f0, g1e1, g1e2) =>
-print
+prints
 ("G1Ea2pp(",g1f0,";",g1e1,";",g1e2,")")
 //
 |
 G1Elist(g1es) =>
-print("G1Elist(",g1es,")")
+prints("G1Elist(",g1es,")")
 //
 |
 G1Eift0
 (g1e1, g1e2, g1e3) =>
-print
+prints
 ("G1Eift0(",g1e1,";",g1e2,";",g1e3,")")
 //
 |
-G1Enone0() => print("G1Enone0(",")")
+G1Enone0() => prints("G1Enone0(",")")
 |
-G1Enone1(g0e1) => print("G1Enone1(",g0e1,")")
+G1Enone1(g0e1) => prints("G1Enone1(",g0e1,")")
 //
 |
 G1Eerrck
-(lvl(*err*),g1e1) => print("G1Eerrck(",lvl,";",g1e1,")")
+(lvl(*err*),g1e1) => prints("G1Eerrck(",lvl,";",g1e1,")")
 //
 end (*let*) // end of [g1exp_fprint(out,g1e)]
 
@@ -290,18 +290,18 @@ case+
 s1t.node() of
 |
 S1Tid0(id0) =>
-print("S1Tid0(",id0,")")
+prints("S1Tid0(",id0,")")
 //
 |
 S1Tint(int) =>
-print("S1Tint(",int,")")
+prints("S1Tint(",int,")")
 //
 // HX-2018-08: operators
 //
 |
 S1Ta0pp(   ) =>
 (
-  print(  "S1Ta0pp(",")"  )
+  prints(  "S1Ta0pp(",")"  )
 )
 //
 (*
@@ -312,30 +312,30 @@ S1Ta0pp(   ) =>
 |
 S1Ta1pp
 (s1f0, s1t1) =>
-print
+prints
 ("S1Ta1pp(",s1f0,";",s1t1,")")
 |
 S1Ta2pp
 ( s1f0
 , s1t1, s1t2) =>
-print
+prints
 ("S1Ta2pp(",s1f0,";",s1t1,";",s1t2,")")
 |
 S1Tlist(s1ts) =>
-print( "S1Tlist(", s1ts ,")" )
+prints( "S1Tlist(", s1ts ,")" )
 //
 |
 S1Tqual0(tok1,s1t2) =>
-print("S1Tqual0(",tok1,";",s1t2,")")
+prints("S1Tqual0(",tok1,";",s1t2,")")
 //
 |
-S1Tnone0() => print("S1Tnone0(", ")")
+S1Tnone0() => prints("S1Tnone0(", ")")
 |
-S1Tnone1(s0t1) => print("S1Tnone1(", s0t1 ,")")
+S1Tnone1(s0t1) => prints("S1Tnone1(", s0t1 ,")")
 //
 |
 S1Terrck
-(lvl(*err*),s1t1) => print("S1Terrck(",lvl,";",s1t1,")")
+(lvl(*err*),s1t1) => prints("S1Terrck(",lvl,";",s1t1,")")
 //
 end (*let*) // end of [sort1_fprint(out,s1t)]
 
@@ -352,7 +352,7 @@ case+
 tcn.node() of
 |
 S1TCNnode(id0, stq) =>
-print("S1TCNnode(",id0,";",stq,")")
+prints("S1TCNnode(",id0,";",stq,")")
 end (*let*) // end of [s1tcn_fprint]
 (* ****** ****** *)
 #implfun
@@ -368,7 +368,7 @@ dst.node() of
 |
 D1TSTnode(tid0,stcs) =>
 (
-print("D1TSTnode(",tid0,";",stcs,")"))
+prints("D1TSTnode(",tid0,";",stcs,")"))
 end (*let*) // end of [d1tst_fprint]
 (* ****** ****** *)
 
@@ -384,7 +384,7 @@ case+
 s1a.node() of
 |
 S1ARGsome(sid0, tres) =>
-print("S1ARGsome(",sid0,";",tres,")")
+prints("S1ARGsome(",sid0,";",tres,")")
 //
 end (*let*) // end of [s1arg_fprint]
 
@@ -402,7 +402,7 @@ case+
 s1m.node() of
 |
 S1MAGlist(s1as) =>
-print("S1MAGlist(",s1as,")")
+prints("S1MAGlist(",s1as,")")
 //
 end (*let*)//end of [s1mag_fprint(out,s1m)]
 //
@@ -420,7 +420,7 @@ case+
 t1a.node() of
 |
 T1ARGsome(s1t1, topt) =>
-print("T1ARGsome(",s1t1,";",topt,")")
+prints("T1ARGsome(",s1t1,";",topt,")")
 //
 end (*let*) // end of [t1arg_fprint]
 
@@ -438,7 +438,7 @@ case+
 t1m.node() of
 |
 T1MAGlist(t1as) =>
-print("T1MAGlist(",t1as,")")
+prints("T1MAGlist(",t1as,")")
 //
 end (*let*)//end of [t1mag_fprint(out,t1m)]
 //
@@ -456,11 +456,11 @@ s1q.node() of
 |
 S1QUAprop
 (  s1e  ) =>
-print("S1QUAprop(",s1e,")")
+prints("S1QUAprop(",s1e,")")
 |
 S1QUAvars
 (toks, topt) =>
-print("S1QUAvars(",toks,";",topt,")")
+prints("S1QUAvars(",toks,";",topt,")")
 end (*let*) // end-of-[s1qua_fprint(out,err)]
 //
 (* ****** ****** *)
@@ -478,100 +478,100 @@ s1e.node() of
 //
 |
 S1Eid0(id0) =>
-print("S1Eid0(",id0,")")
+prints("S1Eid0(",id0,")")
 //
 |
 S1Eint(int) =>
-print("S1Eint(",int,")")
+prints("S1Eint(",int,")")
 |
 S1Echr(chr) =>
-print("S1Echr(",chr,")")
+prints("S1Echr(",chr,")")
 |
 S1Eflt(flt) =>
-print("S1Eflt(",flt,")")
+prints("S1Eflt(",flt,")")
 |
 S1Estr(str) =>
-print("S1Estr(",str,")")
+prints("S1Estr(",str,")")
 //
 |
 S1Eb0sh(   ) =>
-print( "S1Eb0sh(" , ")" )
+prints( "S1Eb0sh(" , ")" )
 |
 S1Eb1sh(s1e) =>
-print("S1Eb1sh(",s1e,")")
+prints("S1Eb1sh(",s1e,")")
 //
 |
 S1Earrw(ses) =>
-print("S1Earrw(",ses,")")
+prints("S1Earrw(",ses,")")
 //
 |
 S1Ea0pp(   ) =>
-print
+prints
 (    "S1Ea0pp(", ")"    )
 |
 S1Ea1pp
 (s1f0, s1e1) =>
-print
+prints
 ("S1Ea1pp(",s1f0,";",s1e1,")")
 |
 S1Ea2pp
 (s1f0, s1e1, s1e2) =>
-print
+prints
 ("S1Ea2pp(",s1f0,";",s1e1,";",s1e2,")")
 |
 S1El1st(s1es) =>
-print( "S1El1st(", s1es ,")" )
+prints( "S1El1st(", s1es ,")" )
 |
 S1El2st(ses1, ses2) =>
-print("S1El2st(", ses1, ";", ses2 ,")")
+prints("S1El2st(", ses1, ";", ses2 ,")")
 //
 |
 S1Et1up(tknd, s1es) =>
-print("S1Et1up(",tknd,";",s1es,")")
+prints("S1Et1up(",tknd,";",s1es,")")
 |
 S1Et2up(tknd,ses1,ses2) =>
-print
+prints
 ("S1Et2up(",tknd,";",ses1,";",ses2,")")
 //
 |
 S1Er1cd(tknd, lses) =>
-print("S1Er1cd(",tknd,";",lses,")")
+prints("S1Er1cd(",tknd,";",lses,")")
 |
 S1Er2cd(tknd,lss1,lss2) =>
-print
+prints
 ("S1Er2cd(",tknd,";",lss1,";",lss2,")")
 //
 |
 S1Elams(smas,tres,s1e1) =>
-print
+prints
 ("S1Elams(",smas,";",tres,";",s1e1,")")
 //
 |
 S1Euni0(s1qs) =>
-print("S1Euni0(",s1qs,")")
+prints("S1Euni0(",s1qs,")")
 |
 S1Eexi0(tknd, s1qs) =>
-print("S1Eexi0(",tknd,";",s1qs,")")
+prints("S1Eexi0(",tknd,";",s1qs,")")
 //
 |
 S1Eannot(s1e1,s1t2) =>
 (
-print(  "S1Eannot(",s1e1,";",s1t2,")"  )
+prints(  "S1Eannot(",s1e1,";",s1t2,")"  )
 )
 |
 S1Equal0(tok1,s1e2) =>
 (
-print(  "S1Equal0(",tok1,";",s1e2,")"  )
+prints(  "S1Equal0(",tok1,";",s1e2,")"  )
 )
 //
 |
-S1Enone0() => print("S1Enone0(", ")")
+S1Enone0() => prints("S1Enone0(", ")")
 |
-S1Enone1(s0e1) => print("S1Enone1(", s0e1 ,")")
+S1Enone1(s0e1) => prints("S1Enone1(", s0e1 ,")")
 //
 |
 S1Eerrck
-(lvl(*err*),s1e1) => print("S1Eerrck(",lvl,";",s1e1,")")
+(lvl(*err*),s1e1) => prints("S1Eerrck(",lvl,";",s1e1,")")
 //
 end (*let*) // end of [s1exp_fprint(out,s1e)]
 
@@ -588,7 +588,7 @@ case+
 s1u.node() of
 |
 S1UNIsome(s1qs) =>
-print("S1UNIsome(",s1qs,")")
+prints("S1UNIsome(",s1qs,")")
 end (*let*) // end-of-[s1uni_fprint(out,err)]
 //
 (* ****** ****** *)
@@ -606,12 +606,12 @@ stdf.node() of
 |
 S1TDFsort(s1t1) =>
 (
-  print("S1TDFsort(",s1t1,")")
+  prints("S1TDFsort(",s1t1,")")
 )
 |
 S1TDFtsub(s1a1,s1es) =>
 (
-  print("S1TDFtsub(",s1a1,";",s1es,")")
+  prints("S1TDFtsub(",s1a1,";",s1es,")")
 )
 //
 end (*let*) // end of [s1tdf_fprint(out,stdf)]
@@ -634,7 +634,7 @@ D1TCNnode
 ,deid,s1es,sres) =>
 (
 print("D1TCNnode(");
-print(s1us,";",deid,";",s1es,";",sres,")"))
+prints(s1us,";",deid,";",s1es,";",sres,")"))
 //
 end (*let*) // end of [d1tcn_fprint(out,dtcn)]
 
@@ -656,9 +656,9 @@ D1TYPnode
 ,tmas,tres,tcns) =>
 (
 print("D1TYPnode(");
-print(deid,";",tmas,";",tres,";",tcns,")"))
+prints(deid,";",tmas,";",tres,";",tcns,")"))
 //
-end (*let*) // end of [d1typ_fprint(out,dtyp)]
+end (*let*) // end of [d1typ_fprintyyyyyyy(out,dtyp)]
 
 (* ****** ****** *)
 

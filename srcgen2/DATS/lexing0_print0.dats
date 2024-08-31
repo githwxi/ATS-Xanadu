@@ -63,88 +63,88 @@ T_EOL() => print("T_EOL")
 //
 |
 T_BLANK(rep) =>
-print("T_BLANK(", rep, ")")
+prints("T_BLANK(", rep, ")")
 |
 T_CLNLT(rep) =>
-print("T_CLNLT(", rep, ")")
+prints("T_CLNLT(", rep, ")")
 |
 T_DOTLT(rep) =>
-print("T_DOTLT(", rep, ")")
+prints("T_DOTLT(", rep, ")")
 //
 |
 T_SPCHR(rep) =>
-print("T_SPCHR(", rep, ")")
+prints("T_SPCHR(", rep, ")")
 //
 |
 T_IDENT(rep) =>
-print("T_IDENT(", rep, ")")
+prints("T_IDENT(", rep, ")")
 |
 T_IDALP(rep) =>
-print("T_IDALP(", rep, ")")
+prints("T_IDALP(", rep, ")")
 |
 T_IDSYM(rep) =>
-print("T_IDSYM(", rep, ")")
+prints("T_IDSYM(", rep, ")")
 //
 |
 T_IDDLR(rep) =>
-print("T_IDDLR(", rep, ")")
+prints("T_IDDLR(", rep, ")")
 |
 T_IDSRP(rep) =>
-print("T_IDSRP(", rep, ")")
+prints("T_IDSRP(", rep, ")")
 //
 |
 T_IDQUA(rep) =>
-print("T_IDQUA(", rep, ")")
+prints("T_IDQUA(", rep, ")")
 //
 |
 T_INT01(rep) =>
-print("T_INT01(", rep, ")")
+prints("T_INT01(", rep, ")")
 |
 T_INT02(bas, rep) =>
-print("T_INT02(", bas, ";", rep, ")")
+prints("T_INT02(", bas, ";", rep, ")")
 |
 T_INT03(bas, rep, sfx) =>
-print("T_INT03(", bas, ";", rep, ";", sfx, ")")
+prints("T_INT03(", bas, ";", rep, ";", sfx, ")")
 //
 |
 T_FLT01(rep) =>
-print("T_FLT01(", rep, ")")
+prints("T_FLT01(", rep, ")")
 |
 T_FLT02(bas, rep) =>
-print("T_FLT02(", bas, ";", rep, ")")
+prints("T_FLT02(", bas, ";", rep, ")")
 |
 T_FLT03(bas, rep, sfx) =>
-print("T_FLT03(", bas, ";", rep, ";", sfx, ")")
+prints("T_FLT03(", bas, ";", rep, ";", sfx, ")")
 //
 |
 T_CHAR1_nil0(rep) =>
-print("T_CHAR1_nil0(", rep, ")")
+prints("T_CHAR1_nil0(", rep, ")")
 |
 T_CHAR2_char(rep) =>
-print("T_CHAR2_char(", rep, ")")
+prints("T_CHAR2_char(", rep, ")")
 |
 T_CHAR3_blsh(rep) =>
-print("T_CHAR3_blsh(", rep, ")")
+prints("T_CHAR3_blsh(", rep, ")")
 //
 |
 T_STRN1_clsd(rep, len) =>
-print("T_STRN1_clsd(", rep, ";", len, ")")
+prints("T_STRN1_clsd(", rep, ";", len, ")")
 |
 T_STRN2_ncls(rep, len) =>
-print("T_STRN2_ncls(", rep, ";", len, ")")
+prints("T_STRN2_ncls(", rep, ";", len, ")")
 //
 |
 T_CMNT1_line(ag1, ag2) =>
-print("T_CMNT1_line(", ag1, ";", ag2, ")")
+prints("T_CMNT1_line(", ag1, ";", ag2, ")")
 |
 T_CMNT2_rest(ag1, ag2) =>
-print("T_CMNT2_rest(", ag1, ";", ag2, ")")
+prints("T_CMNT2_rest(", ag1, ";", ag2, ")")
 |
 T_CMNT3_ccbl(lvl, rep) =>
-print("T_CMNT3_ccbl(", lvl, ";", rep, ")")
+prints("T_CMNT3_ccbl(", lvl, ";", rep, ")")
 |
 T_CMNT4_mlbl(lvl, rep) =>
-print("T_CMNT4_mlbl(", lvl, ";", rep, ")")
+prints("T_CMNT4_mlbl(", lvl, ";", rep, ")")
 //
 (*
 HX-2022-06-15:
@@ -153,338 +153,319 @@ generated from the primary ones (that are
 obtained directly from lexing some source)
 *)
 //
-|
-T_AT0() =>
-print("T_AT0()")
-|
-T_BAR() =>
-print("T_BAR()")
-|
-T_CLN() =>
-print("T_CLN()")
-|
-T_DOT() =>
-print("T_DOT()")
+|T_AT0() =>
+prints("T_AT0(", ")")
+|T_BAR() =>
+prints("T_BAR(", ")")
+|T_CLN() =>
+prints("T_CLN(", ")")
+|T_DOT() =>
+prints("T_DOT(", ")")
 //
-|
-T_EQ0() =>
-print("T_EQ0()")
-|
-T_LT0() =>
-print("T_LT0()")
-|
-T_GT0() =>
-print("T_GT0()")
+|T_EQ0() =>
+prints("T_EQ0(", ")")
+|T_LT0() =>
+prints("T_LT0(", ")")
+|T_GT0() =>
+prints("T_GT0(", ")")
 //
-|
-T_DLR() =>
-print("T_DLR()")
-|
-T_SRP() =>
-print("T_SRP()")
+|T_DLR() =>
+prints("T_DLR(", ")")
+|T_SRP() =>
+prints("T_SRP(", ")")
 //
-|
-T_EQLT() =>
-print("T_EQLT()")
-|
-T_EQGT() =>
-print("T_EQGT()")
+|T_EQLT() =>
+prints("T_EQLT(", ")")
+|T_EQGT() =>
+prints("T_EQGT(", ")")
 //
-|
-T_LTGT() =>
-print("T_LTGT()")
-|
-T_GTLT() =>
-print("T_GTLT()")
-|
-T_MSLT() =>
-print("T_MSLT()")
-|
-T_MSGT() =>
-print("T_MSGT()")
+|T_LTGT() =>
+prints("T_LTGT(", ")")
+|T_GTLT() =>
+prints("T_GTLT(", ")")
+|T_MSLT() =>
+prints("T_MSLT(", ")")
+|T_MSGT() =>
+prints("T_MSGT(", ")")
 //
-|
-T_GTDOT() =>
-print("T_GTDOT()")
+|T_GTDOT() =>
+prints("T_GTDOT(", ")")
 //
-|
-T_COMMA() =>
-print("T_COMMA()")
-|
-T_SMCLN() =>
-print("T_SMCLN()")
+|T_COMMA() =>
+prints("T_COMMA(", ")")
+|T_SMCLN() =>
+prints("T_SMCLN(", ")")
 //
-|
-T_BSLSH() =>
-print("T_BSLSH()")
+|T_BSLSH() =>
+prints("T_BSLSH(", ")")
 //
-|
-T_LPAREN() =>
-print("T_LPAREN()")
-|
-T_RPAREN() =>
-print("T_RPAREN()")
+|T_LPAREN() =>
+(
+ prints("T_LPAREN(", ")"))
+|T_RPAREN() =>
+(
+ prints("T_RPAREN(", ")"))
 //
-|
-T_LBRCKT() =>
-print("T_LBRCKT()")
-|
-T_RBRCKT() =>
-print("T_RBRCKT()")
+|T_LBRCKT() =>
+(
+ prints("T_LBRCKT(", ")"))
+|T_RBRCKT() =>
+(
+ prints("T_RBRCKT(", ")"))
 //
-|
-T_LBRACE() =>
-print("T_LBRACE()")
-|
-T_RBRACE() =>
-print("T_RBRACE()")
+|T_LBRACE() =>
+(
+ prints("T_LBRACE(", ")"))
+|T_RBRACE() =>
+(
+ prints("T_RBRACE(", ")"))
 //
 |
 T_EXISTS(knd) =>
-print("T_EXISTS(", knd, ")")
+prints("T_EXISTS(", knd, ")")
 //
 |
 T_TRCD10(knd) =>
-print("T_TRCD10(", knd, ")")
+prints("T_TRCD10(", knd, ")")
 |
 T_TRCD20(knd) =>
-print("T_TRCD20(", knd, ")")
+prints("T_TRCD20(", knd, ")")
 //
 |
 T_AS0() =>
-print("T_AS0(", ")")
+prints("T_AS0(", ")")
 |
 T_OF0() =>
-print("T_OF0(", ")")
+prints("T_OF0(", ")")
 //
 |
 T_OP1() =>
-print("T_OP1(", ")")
+prints("T_OP1(", ")")
 |
 T_OP2(tok) =>
-print("T_OP2(", tok, ")")
+prints("T_OP2(", tok, ")")
 |
 T_OP3(tok) =>
-print("T_OP3(", tok, ")")
+prints("T_OP3(", tok, ")")
 //
 |
 T_IN0() =>
-print("T_IN0(", ")")
+prints("T_IN0(", ")")
 //
 |
 T_AND() =>
-print("T_AND(", ")")
+prints("T_AND(", ")")
 |
 T_END() =>
-print("T_END(", ")")
+prints("T_END(", ")")
 //
 |
 T_IF0() =>
-print("T_IF0(", ")")
+prints("T_IF0(", ")")
 |
 T_SIF() =>
-print("T_SIF(", ")")
+prints("T_SIF(", ")")
 //
 |
 T_THEN() =>
-print("T_THEN(", ")")
+prints("T_THEN(", ")")
 |
 T_ELSE() =>
-print("T_ELSE(", ")")
+prints("T_ELSE(", ")")
 //
 |
 T_WHEN() =>
-print("T_WHEN(", ")")
+prints("T_WHEN(", ")")
 |
 T_WITH() =>
-print("T_WITH(", ")")
+prints("T_WITH(", ")")
 //
 |
 T_SCAS() =>
-print("T_SCAS(", ")")
+prints("T_SCAS(", ")")
 |
 T_CASE(csk) =>
-print("T_CASE(", csk, ")")
+prints("T_CASE(", csk, ")")
 //
 |
 T_ENDST() =>
-print("T_ENDST(", ")")
+prints("T_ENDST(", ")")
 //
 |
 T_LAM(knd) =>
-print("T_LAM(", knd, ")")
+prints("T_LAM(", knd, ")")
 |
 T_FIX(knd) =>
-print("T_FIX(", knd, ")")
+prints("T_FIX(", knd, ")")
 //
 |
 T_LET() =>
-print("T_LET(", ")")
+prints("T_LET(", ")")
 |
 T_TRY() =>
-print("T_TRY(", ")")
+prints("T_TRY(", ")")
 |
 T_WHERE() =>
-print("T_WHERE(", ")")
+prints("T_WHERE(", ")")
 //
 |
 T_LOCAL() =>
-print("T_LOCAL(", ")")
+prints("T_LOCAL(", ")")
 //
 |
 T_ENDIF0() =>
-print("T_ENDIF0(", ")")
+prints("T_ENDIF0(", ")")
 |
 T_ENDCAS() =>
-print("T_ENDCAS(", ")")
+prints("T_ENDCAS(", ")")
 |
 T_ENDLAM() =>
-print("T_ENDLAM(", ")")
+prints("T_ENDLAM(", ")")
 |
 T_ENDFIX() =>
-print("T_ENDFIX(", ")")
+prints("T_ENDFIX(", ")")
 |
 T_ENDLET() =>
-print("T_ENDLET(", ")")
+prints("T_ENDLET(", ")")
 |
 T_ENDWHR() =>
-print("T_ENDWHR(", ")")
+prints("T_ENDWHR(", ")")
 |
 T_ENDLOC() =>
-print("T_ENDLOC(", ")")
+prints("T_ENDLOC(", ")")
 |
 T_ENDTRY() =>
-print("T_ENDTRY(", ")")
+prints("T_ENDTRY(", ")")
 //
 |
 T_VAL(vlk) =>
-print("T_VAL(", vlk, ")")
+prints("T_VAL(", vlk, ")")
 |
 T_VAR(vlk) =>
-print("T_VAR(", vlk, ")")
+prints("T_VAR(", vlk, ")")
 |
 T_FUN(fnk) =>
-print("T_FUN(", fnk, ")")
+prints("T_FUN(", fnk, ")")
 //
 |
 T_IMPLMNT(knd) =>
-print("T_IMPLMNT(", knd, ")")
+prints("T_IMPLMNT(", knd, ")")
 //
 |
 T_STACST0() =>
-print("T_STACST0(", ")")
+prints("T_STACST0(", ")")
 //
 |
 T_ABSSORT() =>
-print("T_ABSSORT(", ")")
+prints("T_ABSSORT(", ")")
 |
 T_SORTDEF() =>
-print("T_SORTDEF(", ")")
+prints("T_SORTDEF(", ")")
 |
 T_SEXPDEF(knd) =>
-print("T_SEXPDEF(", knd, ")")
+prints("T_SEXPDEF(", knd, ")")
 //
 |
 T_ABSIMPL() =>
-print("T_ABSIMPL(", ")")
+prints("T_ABSIMPL(", ")")
 |
 T_ABSOPEN() =>
-print("T_ABSOPEN(", ")")
+prints("T_ABSOPEN(", ")")
 |
 T_ABSTYPE(knd) =>
-print("T_ABSTYPE(", knd, ")")
+prints("T_ABSTYPE(", knd, ")")
 //
 |
 T_DATASORT() =>
-print("T_DATASORT(", ")")
+prints("T_DATASORT(", ")")
 //
 |
 T_EXCPTCON() =>
-print("T_EXCPTCON(", ")")
+prints("T_EXCPTCON(", ")")
 //
 |
 T_DATATYPE(knd) =>
-print("T_DATATYPE(", knd, ")")
+prints("T_DATATYPE(", knd, ")")
 |
 T_WITHTYPE(knd) =>
-print("T_WITHTYPE(", knd, ")")
+prints("T_WITHTYPE(", knd, ")")
 //
 |
 T_DLR_RAISE() =>
-print("T_DLR_RAISE(", ")")
+prints("T_DLR_RAISE(", ")")
 //
 |
 T_DLR_EXTNAM() =>
-print("T_DLR_EXTNAM(", ")")
+prints("T_DLR_EXTNAM(", ")")
 |
 T_DLR_EXISTS() =>
-print("T_DLR_EXISTS(", ")")
+prints("T_DLR_EXISTS(", ")")
 //
 (* ****** ****** *)
 |
 T_DLR_SYNEXT() =>
-print("T_DLR_SYNEXT(", ")")
+prints("T_DLR_SYNEXT(", ")")
 //
 (* ****** ****** *)
 |
 T_SRP_THEN() =>
-print("T_SRP_THEN(", ")")
+prints("T_SRP_THEN(", ")")
 |
 T_SRP_ELSE() =>
-print("T_SRP_ELSE(", ")")
+prints("T_SRP_ELSE(", ")")
 |
 T_SRP_ENDIF() =>
-print("T_SRP_ENDIF(", ")")
+prints("T_SRP_ENDIF(", ")")
 |
 T_SRP_IFDEC(knd) =>
-print("T_SRP_IFDEC(", knd, ")")
+prints("T_SRP_IFDEC(", knd, ")")
 |
 T_SRP_ELSIF(knd) =>
-print("T_SRP_ELSIF(", knd, ")")
+prints("T_SRP_ELSIF(", knd, ")")
 //
 |
 T_SRP_NONFIX() =>
-print("T_SRP_NONFIX(", ")")
+prints("T_SRP_NONFIX(", ")")
 |
 T_SRP_FIXITY(knd) =>
-print("T_SRP_FIXITY(", knd, ")")
+prints("T_SRP_FIXITY(", knd, ")")
 //
 |T_SRP_STATIC() =>
-print("T_SRP_STATIC(", ")")
+prints("T_SRP_STATIC(", ")")
 |T_SRP_EXTERN() =>
-print("T_SRP_EXTERN(", ")")
+prints("T_SRP_EXTERN(", ")")
 |T_SRP_STAVAL() =>
-print("T_SRP_STAVAL(", ")")
+prints("T_SRP_STAVAL(", ")")
 |T_SRP_EXTVAL() =>
-print("T_SRP_EXTVAL(", ")")
+prints("T_SRP_EXTVAL(", ")")
 //
 |
 T_SRP_DEFINE() =>
-print("T_SRP_DEFINE(", ")")
+prints("T_SRP_DEFINE(", ")")
 |
 T_SRP_MACDEF() =>
-print("T_SRP_MACDEF(", ")")
+prints("T_SRP_MACDEF(", ")")
 //
 |
 T_SRP_SYMLOAD() =>
-print("T_SRP_SYMLOAD(", ")")
+prints("T_SRP_SYMLOAD(", ")")
 //
 |
 T_SRP_INCLUDE() =>
-print("T_SRP_INCLUDE(", ")")
+prints("T_SRP_INCLUDE(", ")")
 (*
 |
 T_SRP_INPASTE() =>
-print("T_SRP_INPASTE(", ")")
+prints("T_SRP_INPASTE(", ")")
 *)
 //
 |
 T_SRP_STALOAD() =>
-print("T_SRP_STALOAD(", ")")
+prints("T_SRP_STALOAD(", ")")
 //
 |
 T_SRP_EXTCODE() =>
-print("T_SRP_EXTCODE(", ")")
+prints("T_SRP_EXTCODE(", ")")
 //
 (* ****** ****** *)
 //

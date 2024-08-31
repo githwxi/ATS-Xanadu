@@ -103,15 +103,15 @@ gs_max_n10
 //
 (* ****** ****** *)
 //
-#symload gmax with gs_max_n2
-#symload gmax with gs_max_n3
-#symload gmax with gs_max_n4
-#symload gmax with gs_max_n5
-#symload gmax with gs_max_n6
-#symload gmax with gs_max_n7
-#symload gmax with gs_max_n8
-#symload gmax with gs_max_n9
-#symload gmax with gs_max_n10
+#symload maxs with gs_max_n2
+#symload maxs with gs_max_n3
+#symload maxs with gs_max_n4
+#symload maxs with gs_max_n5
+#symload maxs with gs_max_n6
+#symload maxs with gs_max_n7
+#symload maxs with gs_max_n8
+#symload maxs with gs_max_n9
+#symload maxs with gs_max_n10
 //
 (* ****** ****** *)
 //
@@ -179,15 +179,15 @@ gs_min_n10
 //
 (* ****** ****** *)
 //
-#symload gmin with gs_min_n2
-#symload gmin with gs_min_n3
-#symload gmin with gs_min_n4
-#symload gmin with gs_min_n5
-#symload gmin with gs_min_n6
-#symload gmin with gs_min_n7
-#symload gmin with gs_min_n8
-#symload gmin with gs_min_n9
-#symload gmin with gs_min_n10
+#symload mins with gs_min_n2
+#symload mins with gs_min_n3
+#symload mins with gs_min_n4
+#symload mins with gs_min_n5
+#symload mins with gs_min_n6
+#symload mins with gs_min_n7
+#symload mins with gs_min_n8
+#symload mins with gs_min_n9
+#symload mins with gs_min_n10
 //
 (* ****** ****** *)
 //
@@ -301,15 +301,18 @@ gs_free_n10
 (* ****** ****** *)
 //
 #symload free with gs_free_n1
-#symload free with gs_free_n2
-#symload free with gs_free_n3
-#symload free with gs_free_n4
-#symload free with gs_free_n5
-#symload free with gs_free_n6
-#symload free with gs_free_n7
-#symload free with gs_free_n8
-#symload free with gs_free_n9
-#symload free with gs_free_n10
+(*
+#symload frees with gs_free_n1
+*)
+#symload frees with gs_free_n2
+#symload frees with gs_free_n3
+#symload frees with gs_free_n4
+#symload frees with gs_free_n5
+#symload frees with gs_free_n6
+#symload frees with gs_free_n7
+#symload frees with gs_free_n8
+#symload frees with gs_free_n9
+#symload frees with gs_free_n10
 //
 (* ****** ****** *)
 //
@@ -559,16 +562,16 @@ gs_fproc_n10
 , x09: a09, x10: a10 ) : void
 (* ****** ****** *)
 //
-#symload fproc with gs_fproc_n1
-#symload fproc with gs_fproc_n2
-#symload fproc with gs_fproc_n3
-#symload fproc with gs_fproc_n4
-#symload fproc with gs_fproc_n5
-#symload fproc with gs_fproc_n6
-#symload fproc with gs_fproc_n7
-#symload fproc with gs_fproc_n8
-#symload fproc with gs_fproc_n9
-#symload fproc with gs_fproc_n10
+#symload fprocs with gs_fproc_n1
+#symload fprocs with gs_fproc_n2
+#symload fprocs with gs_fproc_n3
+#symload fprocs with gs_fproc_n4
+#symload fprocs with gs_fproc_n5
+#symload fprocs with gs_fproc_n6
+#symload fprocs with gs_fproc_n7
+#symload fprocs with gs_fproc_n8
+#symload fprocs with gs_fproc_n9
+#symload fprocs with gs_fproc_n10
 //
 (* ****** ****** *)
 //
@@ -704,16 +707,14 @@ gs_fred2r_n10
 (*
 HX:
 for overloading
-print and println
+prints and printsln
 *)
 //
 (* ****** ****** *)
 //
-(*
 fun<>
 gs_print_n0
 ((*void*)) : void
-*)
 fun
 <a1:t0>
 gs_print_n1
@@ -824,15 +825,19 @@ gs_print_n10
 (* ****** ****** *)
 //
 #symload print with gs_print_n1
-#symload print with gs_print_n2
-#symload print with gs_print_n3
-#symload print with gs_print_n4
-#symload print with gs_print_n5
-#symload print with gs_print_n6
-#symload print with gs_print_n7
-#symload print with gs_print_n8
-#symload print with gs_print_n9
-#symload print with gs_print_n10
+#symload prints with gs_print_n0
+(*
+#symload prints with gs_print_n1
+*)
+#symload prints with gs_print_n2
+#symload prints with gs_print_n3
+#symload prints with gs_print_n4
+#symload prints with gs_print_n5
+#symload prints with gs_print_n6
+#symload prints with gs_print_n7
+#symload prints with gs_print_n8
+#symload prints with gs_print_n9
+#symload prints with gs_print_n10
 //
 (* ****** ****** *)
 //
@@ -948,17 +953,20 @@ gs_println_n10
 //
 (* ****** ****** *)
 //
-#symload println with gs_println_n0
 #symload println with gs_println_n1
-#symload println with gs_println_n2
-#symload println with gs_println_n3
-#symload println with gs_println_n4
-#symload println with gs_println_n5
-#symload println with gs_println_n6
-#symload println with gs_println_n7
-#symload println with gs_println_n8
-#symload println with gs_println_n9
-#symload println with gs_println_n10
+#symload printsln with gs_println_n0
+(*
+#symload printsln with gs_println_n1
+*)
+#symload printsln with gs_println_n2
+#symload printsln with gs_println_n3
+#symload printsln with gs_println_n4
+#symload printsln with gs_println_n5
+#symload printsln with gs_println_n6
+#symload printsln with gs_println_n7
+#symload printsln with gs_println_n8
+#symload printsln with gs_println_n9
+#symload printsln with gs_println_n10
 //
 (* ****** ****** *)
 (*
@@ -1178,15 +1186,15 @@ strn_append_n10
 , strn, strn, strn, strn
 , strn, strn, strn, strn): strn
 //
-#symload append with strn_append_n2
-#symload append with strn_append_n3
-#symload append with strn_append_n4
-#symload append with strn_append_n5
-#symload append with strn_append_n6
-#symload append with strn_append_n7
-#symload append with strn_append_n8
-#symload append with strn_append_n9
-#symload append with strn_append_n10
+#symload appends with strn_append_n2
+#symload appends with strn_append_n3
+#symload appends with strn_append_n4
+#symload appends with strn_append_n5
+#symload appends with strn_append_n6
+#symload appends with strn_append_n7
+#symload appends with strn_append_n8
+#symload appends with strn_append_n9
+#symload appends with strn_append_n10
 //
 *)
 //
@@ -1255,15 +1263,15 @@ list_append_n10
 , list(a0), list(a0)
 , list(a0), list(a0)): list(a0)
 //
-#symload append with list_append_n2
-#symload append with list_append_n3
-#symload append with list_append_n4
-#symload append with list_append_n5
-#symload append with list_append_n6
-#symload append with list_append_n7
-#symload append with list_append_n8
-#symload append with list_append_n9
-#symload append with list_append_n10
+#symload appends with list_append_n2
+#symload appends with list_append_n3
+#symload appends with list_append_n4
+#symload appends with list_append_n5
+#symload appends with list_append_n6
+#symload appends with list_append_n7
+#symload appends with list_append_n8
+#symload appends with list_append_n9
+#symload appends with list_append_n10
 //
 *)
 //

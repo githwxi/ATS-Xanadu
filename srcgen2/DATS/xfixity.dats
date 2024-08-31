@@ -284,10 +284,10 @@ in//let
 case+ fxi of
 |
 FXITMatm(itm) =>
-print("FXITMatm(",itm,")")
+prints("FXITMatm(",itm,")")
 |
 FXITMopr(itm,fxt) =>
-print("FXITMopr(",itm,";",fxt,")")
+prints("FXITMopr(",itm,";",fxt,")")
 end (*let*) // end of [fixty_fprint(out,fxi)]
 //
 (* ****** ****** *)
@@ -302,19 +302,19 @@ in//let
 case+ fxt of
 |
 FIXTYnon() =>
-print("FIXTYnon(",")")
+prints("FIXTYnon(",")")
 |
 FIXTYpre(p1) =>
-print("FIXTYpre(", p1, ")")
+prints("FIXTYpre(", p1, ")")
 |
 FIXTYpos(p1) =>
-print("FIXTYpos(", p1, ")")
+prints("FIXTYpos(", p1, ")")
 |
 FIXTYinf(p1, a2) =>
-print("FIXTYinf(",p1,";",a2,")")
+prints("FIXTYinf(",p1,";",a2,")")
 |
 FIXTYpreinf(p1, p2, a3) =>
-print("FIXTYpreinf(",p1,";",p2,";",a3,")")
+prints("FIXTYpreinf(",p1,";",p2,";",a3,")")
 end (*let*) // end of [fixty_fprint(out,fxt)]
 //
 (* ****** ****** *)

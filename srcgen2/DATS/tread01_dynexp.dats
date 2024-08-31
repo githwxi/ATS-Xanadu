@@ -128,8 +128,7 @@ fun
 d1pat_errvl_a2
 (dp1: d1pat
 ,dp2: d1pat): sint =
-gmax
-(errvl(dp1),errvl(dp2))
+maxs(errvl(dp1),errvl(dp2))
 #symload
 d1pat_errvl with d1pat_errvl_a2
 #symload errvl with d1pat_errvl_a2
@@ -150,7 +149,7 @@ list_nil((*nil*)) => 0
 |
 list_cons(de1,dps) =>
 (
-gmax
+maxs
 (errvl(de1),d1pat_errvl_lst(dps)))
 endcas // end of [ case+(dps) ]
 )
@@ -175,8 +174,9 @@ list_nil((*nil*)) => 0
 list_cons(ldp1,ldps) =>
 let
 val+
-D1LAB(lab, dp1) = ldp1 in
-gmax
+D1LAB(lab, dp1) = ldp1
+in//let
+maxs
 ( errvl(dp1)
 , l1d1p_errvl_ldps(ldps)) end
 endcas // end of [ case+(ldps) ]
@@ -210,7 +210,7 @@ d1pat_a1pp_errck
 ,dp2: d1pat): d1pat =
 let
 val
-lvl = gmax
+lvl = maxs
 (errvl(dp1), errvl(dp2)) in//let
 d1pat_errck
 (lvl+1, d1pat(loc, D1Pa1pp(dp1, dp2)))
@@ -223,7 +223,7 @@ d1pat_a2pp_errck
 ,dp2: d1pat
 ,dp3: d1pat): d1pat =
 let
-val lvl = gmax
+val lvl = maxs
 ( errvl(dp1)
 , errvl(dp2), errvl(dp3)) in//let
 d1pat_errck
@@ -251,7 +251,7 @@ d1pat_l2st_errck
 , dps2
 : d1patlst ): d1pat =
 let
-val lvl = gmax
+val lvl = maxs
 (errvl(dps1), errvl(dps2)) in//let
 d1pat_errck
 (lvl+1, d1pat(loc, D1Pl2st(dps1,dps2)))
@@ -282,9 +282,8 @@ d1pat_t2up_errck
 , dps2
 : d1patlst ): d1pat =
 let
-val
-lvl = gmax
-(errvl(dps1), errvl(dps2))
+val lvl =
+maxs(errvl(dps1), errvl(dps2))
 in//let
 d1pat_errck
 (lvl+1
@@ -316,9 +315,8 @@ d1pat_r2cd_errck
 , lss2
 : l1d1plst ): d1pat =
 let
-val
-lvl = gmax
-(errvl(lss1), errvl(lss2))
+val lvl =
+maxs(errvl(lss1), errvl(lss2))
 in//let
 d1pat_errck
 (lvl+1
@@ -594,8 +592,7 @@ fun
 d1exp_errvl_a2
 (de1: d1exp
 ,de2: d1exp): sint =
-gmax
-(errvl(de1),errvl(de2))
+maxs(errvl(de1),errvl(de2))
 #symload
 d1exp_errvl with d1exp_errvl_a2
 #symload errvl with d1exp_errvl_a2
@@ -616,7 +613,7 @@ list_nil((*nil*)) => 0
 |
 list_cons(de1,des) =>
 (
-gmax
+maxs
 (errvl(de1),d1exp_errvl_lst(des)))
 endcas // end of [ case+(des) ]
 )
@@ -656,7 +653,7 @@ list_cons(lde1,ldes) =>
 let
 val+
 D1LAB(lab, de1) = lde1 in
-gmax
+maxs
 ( errvl(de1)
 , l1d1e_errvl_ldes(ldes)) end
 endcas // end of [ case+(ldes) ]
@@ -693,7 +690,7 @@ case+ dcls of
 |
 list_nil((*nil*)) => 0
 |
-list_cons(dcl1,dcls) => gmax
+list_cons(dcl1,dcls) => maxs
 (errvl(dcl1), d1cls_errvl_lst(dcls))
 ) (*case+*)//end-of-(d1cls_errvl_lst)
 //
@@ -736,7 +733,7 @@ d1exp_a1pp_errck
 ,de1: d1exp
 ,de2: d1exp): d1exp =
 let
-val lvl = gmax
+val lvl = maxs
 (errvl(de1), errvl(de2)) in//let
 d1exp_errck
 (lvl+1, d1exp(loc, D1Ea1pp(de1, de2)))
@@ -749,7 +746,7 @@ d1exp_a2pp_errck
 ,de2: d1exp
 ,de3: d1exp): d1exp =
 let
-val lvl = gmax
+val lvl = maxs
 ( errvl(de1)
 , errvl(de2), errvl(de3)) in//let
 d1exp_errck
@@ -801,7 +798,7 @@ d1exp_l2st_errck
 , des2
 : d1explst ): d1exp =
 let
-val lvl = gmax
+val lvl = maxs
 (errvl(des1), errvl(des2)) in//let
 d1exp_errck
 (lvl+1, d1exp(loc, D1El2st(des1,des2)))
@@ -828,8 +825,8 @@ d1exp_s2eq_errck
 , des2
 : d1explst ): d1exp =
 let
-val lvl = gmax
-(errvl(des1), errvl(des2))
+val lvl =
+maxs(errvl(des1), errvl(des2))
 in//let
 d1exp_errck
 (lvl+1, d1exp(loc, D1Es2eq(des1,des2)))
@@ -847,9 +844,8 @@ d1exp_ift0_errck
 , dels
 : d1expopt): d1exp =
 let
-val lvl = gmax
-( errvl(d1e1)
-, errvl(dthn), errvl(dels))
+val lvl = maxs
+(errvl(d1e1),errvl(dthn),errvl(dels))
 in//let
 d1exp_errck
 ( lvl+1
@@ -868,9 +864,8 @@ d1exp_ift1_errck
 : d1expopt
 , tinv: t1inv): d1exp =
 let
-val lvl = gmax
-( errvl(d1e1)
-, errvl(dthn), errvl(dels))
+val lvl = maxs
+(errvl(d1e1),errvl(dthn),errvl(dels))
 in//let
 d1exp_errck
 (
@@ -892,8 +887,8 @@ d1exp_cas0_errck
 , d1cs
 : d1clslst ): d1exp =
 let
-val lvl = gmax
-(errvl(d1e1), errvl(d1cs))
+val lvl =
+maxs(errvl(d1e1), errvl(d1cs))
 in//let
 d1exp_errck
 ( lvl+1
@@ -912,8 +907,8 @@ d1exp_cas1_errck
 : d1clslst
 , tinv: t1inv): d1exp =
 let
-val lvl = gmax
-(errvl(d1e1), errvl(d1cs))
+val lvl =
+maxs(errvl(d1e1), errvl(d1cs))
 in//let
 d1exp_errck
 (
@@ -931,8 +926,8 @@ d1exp_let0_errck
 : d1eclist
 , d1e1: d1exp): d1exp =
 let
-val lvl = gmax
-(errvl(d1cs), errvl(d1e1))
+val lvl =
+maxs(errvl(d1cs), errvl(d1e1))
 in//let
 d1exp_errck
 (lvl+1, d1exp(loc, D1Elet0(d1cs,d1e1)))
@@ -947,8 +942,8 @@ d1exp_where_errck
 , d1cs
 : d1eclist): d1exp =
 let
-val lvl = gmax
-(errvl(d1cs), errvl(d1e1))
+val lvl =
+maxs(errvl(d1cs), errvl(d1e1))
 in//let
 d1exp_errck
 (lvl+1, d1exp(loc, D1Ewhere(d1e1,d1cs)))
@@ -1011,8 +1006,8 @@ d1exp_t2up_errck
 , des2
 : d1explst ): d1exp =
 let
-val lvl = gmax
-(errvl(des1), errvl(des2))
+val lvl =
+maxs(errvl(des1), errvl(des2))
 in//let
 d1exp_errck
 (lvl+1
@@ -1045,8 +1040,8 @@ d1exp_r2cd_errck
 , lss2
 : l1d1elst ): d1exp =
 let
-val lvl = gmax
-(errvl(lss1), errvl(lss2))
+val lvl =
+maxs(errvl(lss1), errvl(lss2))
 in//let
 d1exp_errck
 (lvl+1
@@ -1119,8 +1114,8 @@ d1exp_try0_errck
 : d1clslst): d1exp =
 let
 //
-val lvl = gmax
-(errvl(d1e1), errvl(d1cs))
+val lvl =
+maxs(errvl(d1e1), errvl(d1cs))
 //
 in//let
   d1exp( loc, D1Etry0(tknd,d1e1,d1cs) )
@@ -1181,8 +1176,8 @@ d1exp_exists_errck
 : d1explst
 , d1e1: d1exp): d1exp =
 let
-val lvl = gmax
-(errvl(d1es), errvl(d1e1))
+val lvl =
+maxs(errvl(d1es), errvl(d1e1))
 in//let
 d1exp_errck
 ( lvl+1

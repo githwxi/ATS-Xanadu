@@ -100,7 +100,6 @@ foritm$work<ni>(_) = f0((*void*))
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 (*
 HX-2024-08-24:
 Sat 24 Aug 2024 06:29:59 PM EDT
@@ -184,6 +183,12 @@ val () = print1s
 (msg, ": res0 = ", r0, "\n") in r0 end
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-08-31:
+Sat 31 Aug 2024 10:36:59 AM EDT
+*)
 //
 #impltmp
 < a1:t0 >
@@ -194,8 +199,7 @@ val () = print1s
 f_trace_f4un
  (msg, f00) =
 lam
-(x1:a1
-,x2:a2
+(x1:a1,x2:a2
 ,x3:a3,x4:a4) => let
 //
 val () = prints
@@ -205,12 +209,83 @@ val () = prints
 val () = prints
 (msg, ": arg3 = ", x3, "\n")
 val () = prints
-(msg, ": arg4 = ", x3, "\n")
+(msg, ": arg4 = ", x4, "\n")
 //
 val r0 = f00(x1, x2, x3, x4)
 //
 val () = print1s
 (msg, ": res0 = ", r0, "\n") in r0 end
+//
+(* ****** ****** *)
+//
+#impltmp
+< a1:t0 >
+< a2:t0 >
+< a3:t0 >
+< a4:t0 >
+< a5:t0 >
+< r0:vt >
+f_trace_f5un
+ (msg, f00) =
+lam
+(x1:a1
+,x2:a2,x3:a3
+,x4:a4,x5:a5) => let
+//
+val () = prints
+(msg, ": arg1 = ", x1, "\n")
+val () = prints
+(msg, ": arg2 = ", x2, "\n")
+val () = prints
+(msg, ": arg3 = ", x3, "\n")
+val () = prints
+(msg, ": arg4 = ", x4, "\n")
+val () = prints
+(msg, ": arg5 = ", x5, "\n")
+//
+val r0 =
+(
+  f00(x1 , x2 , x3 , x4 , x5))
+//
+val () =
+print1s(msg, ": res0 = ", r0, "\n") in r0 end
+//
+(* ****** ****** *)
+//
+#impltmp
+< a1:t0 >
+< a2:t0 >
+< a3:t0 >
+< a4:t0 >
+< a5:t0 >
+< a6:t0 >
+< r0:vt >
+f_trace_f6un
+ (msg, f00) =
+lam
+(x1:a1,x2:a2
+,x3:a3,x4:a4
+,x5:a5,x6:a6) => let
+//
+val () = prints
+(msg, ": arg1 = ", x1, "\n")
+val () = prints
+(msg, ": arg2 = ", x2, "\n")
+val () = prints
+(msg, ": arg3 = ", x3, "\n")
+val () = prints
+(msg, ": arg4 = ", x4, "\n")
+val () = prints
+(msg, ": arg5 = ", x5, "\n")
+val () = prints
+(msg, ": arg6 = ", x6, "\n")
+//
+val r0 =
+(
+  f00(x1, x2, x3, x4, x5, x6))
+//
+val () =
+print1s(msg, ": res0 = ", r0, "\n") in r0 end
 //
 (* ****** ****** *)
 (* ****** ****** *)
