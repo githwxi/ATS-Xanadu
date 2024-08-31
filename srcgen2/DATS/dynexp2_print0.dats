@@ -264,7 +264,7 @@ D2Pdapp
 ( d2f0
 , npf1, d2ps) =>
 (
-prints("D2Pdapp(");
+print("D2Pdapp(");
 prints(d2f0,";",npf1,";",d2ps,")") )
 //
 |
@@ -275,20 +275,20 @@ prints("D2Ptup0(",npf1,";",d2ps,")")
 D2Ptup1
 ( tknd
 , npf1, d2ps) =>
-( prints("D2Ptup1(")
+( print("D2Ptup1(")
 ; prints(tknd,";",npf1,";",d2ps,")") )
 |
 D2Prcd2
 ( tknd
 , npf1, ldps) =>
-( prints("D2Prcd2(")
+( print("D2Prcd2(")
 ; prints(tknd,";",npf1,";",ldps,")") )
 //
 |
 D2Pannot
 ( d2p1
 , s1e2, s2e2) =>
-( prints("D2Pannot(")
+( print("D2Pannot(")
 ; prints( d2p1,";",s1e2,";",s2e2,")" ))
 //
 |D2Pg1mac
@@ -301,8 +301,7 @@ D2Pannot
 let
 val
 t2p1 = d2p1.styp() in
-(
-  prints("D2Pt2pck(")
+( print("D2Pt2pck(")
 ; prints( d2p1,";",t2p1,";",t2p2,")") )
 endlet // end of [ D2Pt2pck(d2p1, t2p2) ]
 //
@@ -311,8 +310,7 @@ endlet // end of [ D2Pt2pck(d2p1, t2p2) ]
 let
 val
 t2p1 = d2p1.styp() in
-(
-  prints("D2Pt2pkc(")
+( print("D2Pt2pkc(")
 ; prints( d2p1,";",t2p1,";",t2p2,")") )
 endlet // end of [ D2Pt2pkc(d2p1, t2p2) ]
 //
@@ -443,7 +441,7 @@ prints( "D2Edap0(", d2f0, ")" )
 D2Edapp
 ( d2f0
 , npf1, d2es) =>
-( prints("D2Edapp(")
+( print("D2Edapp(")
 ; prints(d2f0,";",npf1,";",d2es,")"))
 //
 (* ****** ****** *)
@@ -470,14 +468,14 @@ prints("D2Elet0(",dcls,";",d2e1,")"))
 |D2Eift0
 ( d2e1
 , dthn, dels) =>
-( prints("D2Eift0(")
+( print("D2Eift0(")
 ; prints(d2e1,";",dthn,";",dels,")"))
 //
 |
 D2Ecas0
 ( tknd
 , d2e1, d2cs) =>
-( prints("D2Ecas0(");
+( print("D2Ecas0(");
   prints(tknd,";",d2e1,";",d2cs,")"))
 //
 (* ****** ****** *)
@@ -504,13 +502,13 @@ prints("D2Ercd0(",npf1,";",ldes,")"))
 D2Etup1
 ( tknd
 , npf1, d2es) =>
-( prints("D2Etup1(")
+( print("D2Etup1(")
 ; prints(tknd,";",npf1,";",d2es,")") )
 |
 D2Ercd2
 ( tknd
 , npf1, ldes) =>
-( prints("D2Ercd2(")
+( print("D2Ercd2(")
 ; prints(tknd,";",npf1,";",ldes,")") )
 //
 (* ****** ****** *)
@@ -544,8 +542,10 @@ prints
 D2Etry0
 ( tknd
 , d2e1, dcls) =>
-(prints("D2Etry0(")
-;prints( tknd, ";",d2e1, ";",dcls,")"))
+(
+print("D2Etry0(");
+prints
+(tknd, ";", d2e1, ";",dcls,")"))
 //
 (* ****** ****** *)
 //
@@ -597,7 +597,7 @@ D2Edtsel
 , lab1, dpis
 , npf1, opt2) =>
 (
-prints("D2Edtsel(");
+print("D2Edtsel(");
 prints(tknd,";", lab1,";");
 prints(dpis,";", npf1,";", opt2,")"))
 //
@@ -618,14 +618,14 @@ prints
 D2El1azy
 ( dsym
 , d2e1, d2es) =>
-( prints("D2El1azy(")
+( print("D2El1azy(")
 ; prints(dsym,";",d2e1,";",d2es,")") )
 //
 |
 D2Eannot
 ( d2e1
 , s1e2, s2e2) =>
-( prints("D2Eannot(")
+( print("D2Eannot(")
 ; prints(d2e1,";",s1e2,";",s2e2,")") )
 //
 |D2Eg1mac
@@ -638,7 +638,7 @@ prints("D2Eg1mac(",g1m1,")"))//D2Eg1mac
 let
 val
 t2p1 = d2e1.styp() in
-( prints("D2Elabck(")
+( print("D2Elabck(")
 ; prints( d2e1,";",t2p1,";",lab2,")") )
 endlet // end of [D2Elabck(d2e1, lab2)]
 |D2Et2pck
@@ -646,7 +646,7 @@ endlet // end of [D2Elabck(d2e1, lab2)]
 let
 val
 t2p1 = d2e1.styp() in
-( prints("D2Et2pck(")
+( print("D2Et2pck(")
 ; prints( d2e1,";",t2p1,";",t2p2,")") )
 endlet // end of [D2Et2pck(d2e1, t2p2)]
 //
@@ -900,13 +900,13 @@ prints("D2Cabsopen(",tknd,";",simp,")")
 |
 D2Cabsimpl
 (tknd,simp,sdef) =>
-( prints("D2Cabsimpl(")
+( print("D2Cabsimpl(")
 ; prints( tknd,";", simp,";",sdef,")"))
 //
 |
 D2Csymload
 (tknd,sym0,dptm) =>
-( prints("D2Csymload(")
+( print("D2Csymload(")
 ; prints( tknd,";",sym0,";",dptm,")" ))
 //
 |
@@ -914,7 +914,7 @@ D2Cinclude
 (knd0,tknd
 ,gsrc,fopt,dopt) =>
 (
-prints("D2Cinclude(");
+print("D2Cinclude(");
 prints
 (knd0,";"
 ,tknd,";",gsrc,";",fopt,";",dopt,")"))
@@ -924,7 +924,7 @@ D2Cstaload
 (knd0,tknd
 ,gsrc,fopt,dopt) =>
 (
-prints("D2Cstaload(");
+print("D2Cstaload(");
 prints
 (knd0,";"
 ,tknd,";",gsrc,";",fopt,";","...",")"))
@@ -966,7 +966,7 @@ D2Cfundclst
 (tknd
 ,tqas,d2cs,d2fs) =>
 (
-prints("D2Cfundclst(");
+print("D2Cfundclst(");
 prints(tknd,";",tqas,";",d2cs,";",d2fs,")"))
 //
 |
@@ -976,7 +976,7 @@ D2Cimplmnt0
 ,dqid,tias
 ,farg,sres,body) =>
 (
-prints("D2Cimplmnt0(");
+print("D2Cimplmnt0(");
 prints(tknd,";",sqas,";",tqas,";");
 prints(dqid,";",tias,";",farg,";",sres,";",body,")"))
 (*
@@ -987,7 +987,7 @@ D2Cimplmnt1
 ,dqid,tias
 ,farg,sres,body) =>
 (
-prints("D2Cimplmnt1(");
+print("D2Cimplmnt1(");
 prints(tknd,";",sqas,";",tqas,";");
 prints(dqid,";",tias,";",farg,";",sres,";",body,")"))
 *)
@@ -1223,7 +1223,7 @@ end (*let*) // end of [d2arg_fprint(...)]
 (* ****** ****** *)
 
 #implfun
-d2valdcl_fprints
+d2valdcl_fprint
   (out, dval) = let
 //
 val dpat =
@@ -1244,7 +1244,7 @@ end(*let*)//end-of-[d2valdcl_fprint(out,dval)]
 (* ****** ****** *)
 //
 #implfun
-d2vardcl_fprints
+d2vardcl_fprint
   (out, dvar) = let
 //
 val dpid =
@@ -1260,7 +1260,7 @@ d2vardcl_get_dini(dvar)
 //
 in//let
 (
-prints("D2VARDCL(");
+print("D2VARDCL(");
 prints(dpid,";",vpid,";",sres,";",dini,")"))
 end(*let*)//end-of-[d2vardcl_fprint(out,dvar)]
 //
@@ -1268,7 +1268,7 @@ end(*let*)//end-of-[d2vardcl_fprint(out,dvar)]
 (* ****** ****** *)
 //
 #implfun
-d2fundcl_fprints
+d2fundcl_fprint
   (out, dfun) = let
 //
 val dpid =
@@ -1294,7 +1294,7 @@ end(*let*)//end-of-[d2fundcl_fprint(out,dfun)]
 (* ****** ****** *)
 //
 #implfun
-d2cstdcl_fprints
+d2cstdcl_fprint
   (out, dcst) = let
 //
 val dpid =
@@ -1310,7 +1310,7 @@ d2cstdcl_get_dres(dcst)
 //
 in//let
 (
-prints("D2CSTDCL(");
+print("D2CSTDCL(");
 prints(dpid,";",darg,";",sres,";",dres,")"))
 end(*let*)//end-of-[d2cstdcl_fprint(out,dcst)]
 //
@@ -1318,7 +1318,7 @@ end(*let*)//end-of-[d2cstdcl_fprint(out,dcst)]
 (* ****** ****** *)
 
 #implfun
-d2parsed_fprints
+d2parsed_fprint
   (out, dpar) = let
 //
 val
@@ -1338,8 +1338,7 @@ d2parsed_get_parsed(dpar)
 //
 in//let
 (
-prints
-("D2PARSED(");
+print("D2PARSED(");
 prints
 (stadyn,";",nerror,";",source,";",parsed,")"))
 end (*let*) // end-of-[d2parsed_fprint(out,dpar)]

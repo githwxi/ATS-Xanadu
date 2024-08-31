@@ -137,7 +137,7 @@ auxmain( out, s2t1 );
 if
 (lvl
 >FPEMSG_ERRVL) then () else
-println("TREAD12-ERROR:", s2t0))
+printsln("TREAD12-ERROR:", s2t0))
 | _(* otherwise *) => (  (* skipped *)  )
 //
 end(*let*)//end-of(sort2_fpemsg(out,s2t0))
@@ -306,7 +306,7 @@ auxmain( out, s2e1 );
 if
 (lvl
 >FPEMSG_ERRVL) then () else
-println("TREAD12-ERROR:", s2e0)
+printsln("TREAD12-ERROR:", s2e0)
 )
 | _(* otherwise *) => (  (* skipped *)  )
 //
@@ -485,7 +485,7 @@ if
 >FPEMSG_ERRVL) then () else
 let
 val loc0 = d2p0.lctn() in
-println
+printsln
 ("TREAD12-ERROR:",loc0,":",d2p0)
 end
 )
@@ -789,7 +789,7 @@ if
 >FPEMSG_ERRVL) then () else
 let
 val loc0 = d2e0.lctn() in
-println
+printsln
 ("TREAD12-ERROR:",loc0,":",d2e0)
 end
 )
@@ -1132,7 +1132,7 @@ if
 >FPEMSG_ERRVL) then () else
 let
 val loc0 = dcl0.lctn() in
-println
+printsln
 ("TREAD12-ERROR:",loc0,":",dcl0)
 end
 )
@@ -1198,7 +1198,7 @@ case+ simp of
 case+ scs2 of
 |
 list_nil() =>
-println
+printsln
 ("TREAD12-ERROR:", simp)
 |
 list_cons(s2c1, scs2) => ()

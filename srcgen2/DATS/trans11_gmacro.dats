@@ -164,7 +164,7 @@ val
 genv =
 g1env_decode(genv)
 in//let
-print("G1ENV(", genv, ")")
+prints("G1ENV(", genv, ")")
 end where
 {
   #impltmp g_print$out<>() = out
