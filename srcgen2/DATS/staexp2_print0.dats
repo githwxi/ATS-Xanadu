@@ -229,7 +229,7 @@ let
 #impltmp
 g_print$out<>() = out
 in//let
-  prints(s2cst_get_name(s2c0))
+  print(s2cst_get_name(s2c0))
 (*
 ; prints(":", s2cst_get_sort(s2c0))
 *)
@@ -244,7 +244,7 @@ let
 #impltmp
 g_print$out<>() = out
 in//let
-  prints(s2var_get_name(s2v0))
+  print(s2var_get_name(s2v0))
 ; prints("[", s2v0.stmp(), "]")
 (*
 ; prints("[", s2v0.sort(), "]")
@@ -328,12 +328,12 @@ prints("S2Emet0(",s2es,";",s2e1,")")
 |
 S2Eexi0
 (s2vs, s2ps, s2e1) =>
-( prints("S2Eexi0(")
+( print("S2Eexi0(")
 ; prints(s2vs,";",s2ps,";",s2e1,")"))
 |
 S2Euni0
 (s2vs, s2ps, s2e1) =>
-( prints("S2Euni0(")
+( print("S2Euni0(")
 ; prints(s2vs,";",s2ps,";",s2e1,")"))
 //
 |
@@ -390,7 +390,7 @@ s2itm_fprint
 (out, s2i0) =
 let
 #impltmp
-g_prints$out<>() = out
+g_print$out<>() = out
 in//let
 //
 case+ s2i0 of

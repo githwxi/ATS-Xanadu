@@ -72,10 +72,10 @@ case+
 t2p0.node() of
 |
 T2Pnone0() =>
-print
+prints
 ("[", xt2p.stmp(), "]")
 | _(*non-T2Pnone0*) =>
-print
+prints
 ("[", xt2p.styp(), "]")
 end where
 {
@@ -98,43 +98,43 @@ t2p0.node() of
 (*
 |
 T2Pbas(sym1) =>
-print("T2Pbas(", sym1, ")")
+prints("T2Pbas(", sym1, ")")
 *)
 //
 |
 T2Pcst(s2c1) =>
-print("T2Pcst(", s2c1, ")")
+prints("T2Pcst(", s2c1, ")")
 |
 T2Pvar(s2v1) =>
-print("T2Pvar(", s2v1, ")")
+prints("T2Pvar(", s2v1, ")")
 //
 |
 T2Plft(t2p1) =>
-print("T2Plft(", t2p1, ")")
+prints("T2Plft(", t2p1, ")")
 //
 |
 T2Pxtv(xtp1) =>
-print("T2Pxtv(", xtp1, ")")
+prints("T2Pxtv(", xtp1, ")")
 //
 (* ****** ****** *)
 |
 T2Ptop0(t2p1) =>
-print("T2Ptop0(", t2p1, ")")
+prints("T2Ptop0(", t2p1, ")")
 |
 T2Ptop1(t2p1) =>
-print("T2Ptop1(", t2p1, ")")
+prints("T2Ptop1(", t2p1, ")")
 //
 (* ****** ****** *)
 //
 |
 T2Parg1
 (knd0, t2p1) =>
-print
+prints
 ("T2Parg1(", knd0, ";", t2p1, ")")
 |
 T2Patx2
 (tbef, taft) =>
-print
+prints
 ("T2Patx2(", tbef, ";", taft, ")")
 //
 (* ****** ****** *)
@@ -142,12 +142,12 @@ print
 |
 T2Papps
 (tfun, t2ps) =>
-print
+prints
 ("T2Papps(", tfun, ";", t2ps, ")")
 |
 T2Plam1
 (s2vs, tres) =>
-print
+prints
 ("T2Plam1(", s2vs, ";", tres, ")")
 //
 (* ****** ****** *)
@@ -155,42 +155,42 @@ print
 |
 T2Pf2cl(f2cl) =>
 (
-  print("T2Pf2cl(" , f2cl , ")") )
+  prints("T2Pf2cl(" , f2cl , ")") )
 |
 T2Pfun1
 ( f2cl
 , npf1, t2ps, tres) =>
 (
-print
+prints
 ("T2Pfun1(", f2cl, ";");
-print(npf1, ";", t2ps, ";", tres, ")"))
+prints(npf1, ";", t2ps, ";", tres, ")"))
 //
 |
 T2Ptext(name, t2ps) =>
-print("T2Ptext(", name, ";", t2ps, ")")
+prints("T2Ptext(", name, ";", t2ps, ")")
 //
 |
 T2Pexi0(s2vs, t2p1) =>
-print("T2Pexi0(", s2vs, ";", t2p1, ")")
+prints("T2Pexi0(", s2vs, ";", t2p1, ")")
 |
 T2Puni0(s2vs, t2p1) =>
-print("T2Puni0(", s2vs, ";", t2p1, ")")
+prints("T2Puni0(", s2vs, ";", t2p1, ")")
 //
 |
 T2Ptrcd
 (knd0, npf1, lses) =>
-print
+prints
 ("T2Ptrcd(", knd0, ";", npf1, ";", lses, ")")
 //
 |
-T2Pnone0() => print("T2Pnone0(",")")
+T2Pnone0() => prints("T2Pnone0(",")")
 |
-T2Pnone1(t2p1) => print("T2Pnone1(",t2p1,")")
+T2Pnone1(t2p1) => prints("T2Pnone1(",t2p1,")")
 |
-T2Ps2exp(s2e1) => print("T2Ps2exp(",s2e1,")")
+T2Ps2exp(s2e1) => prints("T2Ps2exp(",s2e1,")")
 //
 |T2Perrck // HX: tread-error
-(lvl0,t2p1) => print("T2Perrck(",lvl0,";",t2p1,")")
+(lvl0,t2p1) => prints("T2Perrck(",lvl0,";",t2p1,")")
 //
 end (*let*) // end of [s2typ_fprint(out,t2p0)]
 //
