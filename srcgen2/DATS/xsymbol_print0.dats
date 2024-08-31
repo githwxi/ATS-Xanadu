@@ -51,7 +51,7 @@ symbl_fprint
 (out, sym) =
 ( print(sym.name())
 (*
-; print("(", sym.stmp(), ")")
+; prints("(", sym.stmp(), ")")
 *)
 ) where
 {

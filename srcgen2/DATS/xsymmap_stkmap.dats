@@ -490,55 +490,65 @@ loop(map, kxs) where {
 stkmap_fprint1
   (out, map) =
 (
-auxprint(map)) where
+praux(map)) where
 {
 //
 #impltmp
 g_print$out<>() = out
 //
 fun
-auxprint
+praux
 ( map:
 ! stkmap(itm)): void =
 (
 case+ map of
 | // keep
 stkmap_nil() =>
-println("stkmap_nil(", ")")
+(
+printsln("stkmap_nil(", ")"))
 //
 | // keep
 stkmap_cons
 (k0, x0, map) =>
-auxprint(map) where
+(
+  praux(map)) where
 {
 val () =
-println
-("stkmap_cons(", k0, ";", x0) }
+printsln
+("stkmap_cons(", k0, ";", x0) }//whr
 //
 | // keep
 stkmap_lam0
 (   map   ) =>
-auxprint(map) where
-{ val () =
-  println("stkmap_lam0(", ")") }
+(
+  praux(map)) where
+{
+val () =
+printsln("stkmap_lam0(", ")") }//whr
 | // keep
 stkmap_let0
 (   map   ) =>
-auxprint(map) where
-{ val () =
-  println("stkmap_let0(", ")") }
+(
+  praux(map)) where
+{
+val () =
+printsln("stkmap_let0(", ")") }//whr
 | // keep
 stkmap_loc1
 (   map   ) =>
-auxprint(map) where
-{ val () =
-  println("stkmap_loc1(", ")") }
+(
+  praux(map)) where
+{
+val () =
+printsln("stkmap_loc1(", ")") }//whr
 | // keep
 stkmap_loc2
 (   map   ) =>
-auxprint(map) where
-{ val () =
-  println("stkmap_loc2(", ")") }
+(
+  praux(map)) where
+{
+val () =
+printsln("stkmap_loc2(", ")") }//whr
 )
 //
 } (*where*) // end of [stkmap_fprint1(...)]

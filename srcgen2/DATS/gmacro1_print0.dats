@@ -60,54 +60,66 @@ in//let
 case+ g1m0 of
 //
 |G1Mint(i0) =>
-print("G1Mint(", i0, ")")
+(
+ prints("G1Mint(", i0, ")"))
 |G1Mbtf(b0) =>
-print("G1Mbtf(", b0, ")")
+(
+ prints("G1Mbtf(", b0, ")"))
 |G1Mchr(c0) =>
-print("G1Mchr(", c0, ")")
+(
+ prints("G1Mchr(", c0, ")"))
 |G1Mflt(f0) =>
-print("G1Mflt(", f0, ")")
+(
+ prints("G1Mflt(", f0, ")"))
 |G1Mstr(s0) =>
-print("G1Mstr(", s0, ")")
+(
+ prints("G1Mstr(", s0, ")"))
 //
 |G1Mid0(gid) =>
-print("G1Mid0(", gid, ")")
+(
+ prints("G1Mid0(", gid, ")"))
 //
 |G1Msexp(g1m) =>
-print("G1Msexp(", g1m, ")")
+(
+ prints("G1Msexp(", g1m, ")"))
 |G1Mdpat(g1m) =>
-print("G1Mdpat(", g1m, ")")
+(
+ prints("G1Mdpat(", g1m, ")"))
 |G1Mdexp(g1m) =>
-print("G1Mdexp(", g1m, ")")
+(
+ prints("G1Mdexp(", g1m, ")"))
 //
 |
 G1Mift0
 (g1m1,g1m2,g1m3) =>
-print
+prints
 ("G1Mift0("
 , g1m1, ";", g1m2, ";", g1m3, ")")
 //
 |
 G1Mlam0(gids,gmac) =>
-print("G1Mlam0(", gids, ";", gmac, ")")
+prints
+("G1Mlam0(", gids, ";", gmac, ")")
 |
 G1Mapps(g1f0,g1ms) =>
-print("G1Mapps(", g1f0, ";", g1ms, ")")
+prints
+("G1Mapps(", g1f0, ";", g1ms, ")")
 //
 |
 G1Mlist(g1ms) =>
-print("G1Mlist(", g1ms, ")")
+(
+  prints("G1Mlist(", g1ms, ")"))
 //
 |
 G1Msubs(g1e1,genv) =>
-print("G1Msubs(", g1e1, ";", genv, ")")
+prints("G1Msubs(", g1e1, ";", genv, ")")
 //
 |
-G1Mnone0() => print( "G1Mnone0(" , ")" )
+G1Mnone0() => prints( "G1Mnone0(" , ")" )
 |
-G1Mnone1(g1e1) => print("G1Mnone1(", g1e1, ")")
+G1Mnone1(g1e1) => prints("G1Mnone1(", g1e1, ")")
 //
-end (*let*) // end of [ g1mac_fprint(out,g1m0) ]
+end (*let*) // end of [ g1mac_fprint(out, g1m0) ]
 //
 (* ****** ****** *)
 

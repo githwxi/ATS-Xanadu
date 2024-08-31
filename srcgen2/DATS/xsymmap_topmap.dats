@@ -279,9 +279,12 @@ in//let
 //
 case+ opt of
 | ~
-optn_vt_nil() => print("(nil)")
+optn_vt_nil
+( (*void*) ) =>
+(
+prints("(nil)"))
 | ~
-optn_vt_cons(sym) => print( sym )
+optn_vt_cons(sym) => prints(sym)
 //
 end (*let*) // end of [auxkey(k0)]
 //
@@ -301,13 +304,13 @@ strmcon_vt_cons
 (
   auxloop(kxs) ) where
 {
-  val () = auxkey(kx1.0)
+val () = auxkey(kx1.0)
 (*
-  val () = println(" -> ", kx1.1)
+val () = println(" -> ", kx1.1)
 *)
-  val () = // HX: [kx1.1] is list1
-  println(" -> ", list_head(kx1.1))
-}
+val () = // HX: [kx1.1] is list1
+printsln(" -> ", list_head(kx1.1))
+} (*where*)
 ) (*case+*) // end of [ auxloop(kxs) ]
 }
 end (*let*) // end of [topmap_fprint(out,map)]

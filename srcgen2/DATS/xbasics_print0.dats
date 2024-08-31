@@ -180,15 +180,22 @@ implknd_fprint
 in//let
 //
 case+ knd of
-| IMPLgen() => print( "IMPLgen" )
-| IMPLprf() => print( "IMPLprf" )
-| IMPLval() => print( "IMPLval" )
-| IMPLfun() => print( "IMPLfun" )
-| IMPLtmp() => print( "IMPLtmp" )
 //
-| IMPLtmpr() => print( "IMPLtmpr" )
+|
+IMPLgen() => print( "IMPLgen" )
+|
+IMPLprf() => print( "IMPLprf" )
+|
+IMPLval() => print( "IMPLval" )
+|
+IMPLfun() => print( "IMPLfun" )
+|
+IMPLtmp() => print( "IMPLtmp" )
 //
-end(*let*)//end-of(implknd_fprint)
+|
+IMPLtmpr() => print( "IMPLtmpr" )
+//
+end(*let*)//end-of(implknd_fprint(...))
 //
 (* ****** ****** *)
 //
@@ -204,14 +211,20 @@ in//let
 case+ f2cl of
 //
 (*
-| F2CLcon() =>
-    print( "F2CLcon" )
+|
+F2CLcon() =>
+(
+  print( "F2CLcon" ))
 *)
 //
-| F2CLfun() =>
-    print( "F2CLfun" )
-| F2CLclo(knd) =>
-    print( "F2CLclo(", knd, ")" )
+|
+F2CLfun() =>
+(
+  print( "F2CLfun" ))
+|
+F2CLclo(knd) =>
+(
+  prints( "F2CLclo(", knd, ")" ))
 //
 end(*let*)//end-of(f2clknd_fprint)
 //

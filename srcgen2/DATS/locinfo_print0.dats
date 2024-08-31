@@ -59,10 +59,10 @@ case+ src of
 LCSRCnone0() => print("()")
 |
 LCSRCfpath(fpx) =>
-print("LCSRCfpath(", fpx, ")")
+prints("LCSRCfpath(", fpx, ")")
 |
 LCSRCsome1(txt) =>
-print("LCSRCsome1(", txt, ")")
+prints("LCSRCsome1(", txt, ")")
 end (*let*) // end of [lcsrc_fprint]
 //
 (* ****** ****** *)
@@ -76,14 +76,14 @@ val nrow = pos.nrow()
 val ncol = pos.ncol()
 //
 in//let
-print
+prints
 ( (ntot+1)
 , "(line=", nrow+1
 , ",offs=", ncol+1, ")") where
 {
   #impltmp g_print$out<>() = out
 }
-end(*let*) // end of [postn_fprint]
+end(*let*)//end of [postn_fprint(...)]
 
 (* ****** ****** *)
 
@@ -98,8 +98,10 @@ val pend = loc.pend()
 #impltmp g_print$out<>() = out
 //
 in//let
-print(lsrc, "@(", pbeg, "--", pend, ")")
-end(*let*) // end of [loctn_fprint]
+(
+prints
+(lsrc, "@(", pbeg, "--", pend, ")"))
+end(*let*)//end of [loctn_fprint(out,loc)]
 
 (* ****** ****** *)
 (* ****** ****** *)

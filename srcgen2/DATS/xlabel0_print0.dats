@@ -57,9 +57,9 @@ label_fprint
 (
 case+ lab of
 | LABint(int) =>
-  print("LABint(", int, ")")
+  prints("LABint(", int, ")")
 | LABsym(sym) =>
-  print("LABsym(", sym, ")")
+  prints("LABsym(", sym, ")")
 ) where
 {
   #impltmp g_print$out<>() = out

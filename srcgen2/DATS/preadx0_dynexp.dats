@@ -108,15 +108,18 @@ D0Perrck
 d0pat_errvl with d0pat_errvl_a1
 #symload errvl with d0pat_errvl_a1
 (* ****** ****** *)
+//
 fun
 d0pat_errvl_a2
 (de1: d0pat
 ,de2: d0pat): sint =
-gmax
+maxs
 (errvl(de1),errvl(de2))
+//
 #symload
 d0pat_errvl with d0pat_errvl_a2
 #symload errvl with d0pat_errvl_a2
+//
 (* ****** ****** *)
 //
 #extern
@@ -137,7 +140,7 @@ list_nil
 |
 list_cons
 (d0p1,d0ps) =>
-gmax(errvl(d0p1), errvl(d0ps)))
+maxs(errvl(d0p1), errvl(d0ps)))
 //
 (* ****** ****** *)
 #extern
@@ -172,7 +175,7 @@ list_nil
 |
 list_cons
 (ldp1,ldps) =>
-gmax(errvl(ldp1), errvl(ldps)))
+maxs(errvl(ldp1), errvl(ldps)))
 //
 (* ****** ****** *)
 //
@@ -263,7 +266,7 @@ d0pat_lpar_errck
 : d0pat_RPAREN): d0pat =
 let
 val lvl =
-gmax(errvl(d0ps),errvl(drp0))
+maxs(errvl(d0ps),errvl(drp0))
 in//let
 d0pat_errck
 ( lvl+1
@@ -286,7 +289,8 @@ d0pat_tup1_errck
 : d0pat_RPAREN): d0pat =
 let
 val lvl =
-gmax(errvl(d0ps),errvl(tend))
+(
+  maxs(errvl(d0ps),errvl(tend)))
 in//let
 d0pat_errck
 (lvl+1,
@@ -310,7 +314,8 @@ d0pat_rcd2_errck
 : l0d0p_RBRACE): d0pat =
 let
 val lvl =
-gmax(errvl(ldps),errvl(tend))
+(
+  maxs(errvl(ldps),errvl(tend)))
 in//let
 d0pat_errck
 (lvl+1,
@@ -358,27 +363,33 @@ D0Eerrck
 d0exp_errvl with d0exp_errvl_a1
 #symload errvl with d0exp_errvl_a1
 (* ****** ****** *)
+//
 fun
 d0exp_errvl_a2
 (de1: d0exp
 ,de2: d0exp): sint =
-gmax
+maxs
 (errvl(de1),errvl(de2))
+//
 #symload
 d0exp_errvl with d0exp_errvl_a2
 #symload errvl with d0exp_errvl_a2
+//
 (* ****** ****** *)
+//
 fun
 d0exp_errvl_a3
 (de1: d0exp
 ,de2: d0exp
 ,de3: d0exp): sint =
-gmax
+maxs
 (errvl(de1)
 ,errvl(de2),errvl(de3))
+//
 #symload
 d0exp_errvl with d0exp_errvl_a3
 #symload errvl with d0exp_errvl_a3
+//
 (* ****** ****** *)
 //
 #extern
@@ -396,7 +407,7 @@ case+ d0es of
 |
 list_nil((*nil*)) => 0
 |
-list_cons(d0e1,d0es) => gmax
+list_cons(d0e1,d0es) => maxs
 (d0exp_errvl(d0e1), d0exp_errvl(d0es))
 ) (*case+*)//end-of-[d0exp_errvl_list]
 //
@@ -515,7 +526,7 @@ case+ ldes of
 |
 list_nil((*nil*)) => 0
 |
-list_cons(lde1,ldes) => gmax
+list_cons(lde1,ldes) => maxs
 (l0d0e_errvl(lde1), l0d0e_errvl(ldes))
 ) (*case+*)//end-of-(l0d0e_errvl_list)
 //
@@ -570,7 +581,7 @@ case+ dcls of
 |
 list_nil((*nil*)) => 0
 |
-list_cons(dcl1,dcls) => gmax
+list_cons(dcl1,dcls) => maxs
 (errvl(dcl1), d0cls_errvl_lst(dcls))
 ) (*case+*)//end-of-(d0cls_errvl_lst)
 //
@@ -606,7 +617,7 @@ case+ dcls of
 |
 list_nil((*nil*)) => 0
 |
-list_cons(dcl1,dcls) => gmax
+list_cons(dcl1,dcls) => maxs
 (d0ecl_errvl(dcl1), d0ecl_errvl(dcls))
 ) (*case+*)//end-of-(d0ecl_errvl_list)
 //
@@ -686,8 +697,9 @@ d0exp_lpar_errck
 , drp
 : d0exp_RPAREN): d0exp =
 let
-  val lvl =
-  gmax(errvl(des),errvl(drp))
+val lvl =
+(
+  maxs(errvl(des),errvl(drp)))
 in//let
 d0exp_errck
 (lvl+1, d0exp(loc,D0Elpar(tkb,des,drp)))
@@ -705,7 +717,7 @@ d0exp_ift0_errck
 let
 val lvl =
 (
-gmax
+maxs
 (errvl(d0e1)
 ,errvl(dthn),errvl(dels)))
 in//let
@@ -728,7 +740,7 @@ d0exp_ift1_errck
 let
 val lvl =
 (
-gmax
+maxs
 (errvl(d0e1)
 ,errvl(dthn),errvl(dels)))
 in//let
@@ -758,7 +770,7 @@ d0exp_cas0_errck
 let
 val lvl =
 (
-gmax
+maxs
 (errvl(d0e1),errvl(dcls)))
 in//let
 d0exp_errck
@@ -788,7 +800,7 @@ d0exp_cas1_errck
 let
 val lvl =
 (
-gmax
+maxs
 (errvl(d0e1),errvl(dcls)))
 in//let
 d0exp_errck
@@ -814,8 +826,9 @@ d0exp_tup1_errck
 , tend
 : d0exp_RPAREN): d0exp =
 let
-  val lvl =
-  gmax(errvl(d0es),errvl(tend))
+val lvl =
+(
+  maxs(errvl(d0es),errvl(tend)))
 in//let
 d0exp_errck
 (lvl+1,
@@ -838,8 +851,9 @@ d0exp_rcd2_errck
 , tend
 : l0d0e_RBRACE): d0exp =
 let
-  val lvl =
-  gmax(errvl(ldes),errvl(tend))
+val lvl =
+(
+  maxs(errvl(ldes),errvl(tend)))
 in//let
 d0exp_errck
 (lvl+1,
@@ -863,8 +877,9 @@ d0exp_let0_errck
 : d0explst
 , tend: token): d0exp =
 let
-  val lvl =
-  gmax(errvl(dcls),errvl(d0es))
+val lvl =
+(
+  maxs(errvl(dcls),errvl(d0es)))
 in//let
 d0exp_errck
 (lvl+1,
@@ -891,7 +906,7 @@ case+ dcls of
 |
 d0eclseq_WHERE
 (tbeg,topt,d0cs,tend) =>
-gmax(errvl(d0e1),errvl(d0cs)))
+maxs(errvl(d0e1),errvl(d0cs)))
 //
 in//let
 d0exp_errck
@@ -943,7 +958,8 @@ d0exp_try0_errck
 , tend: tokenopt): d0exp =
 let
 val lvl =
-gmax(errvl(d0es),errvl(dcls))
+(
+  maxs(errvl(d0es),errvl(dcls)))
 in//let
 d0exp_errck
 ( lvl+1,

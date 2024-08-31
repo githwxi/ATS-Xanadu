@@ -49,7 +49,7 @@ ATS_PACKNAME
 #impltmp
 drpth_fprint(out, dpx) =
 (
-print
+prints
 ("DRPTH(", dpx.name(), ")")
 ) where
 {
@@ -61,7 +61,7 @@ print
 #impltmp
 fpath_fprint(out, fpx) =
 (
-print
+prints
 ("FPATH(", fpx.fnm1(), ")")
 ) where
 {
@@ -76,7 +76,7 @@ fname_fprint(out, fnm) =
 case+ fnm of
 |
 FNMbase(name) =>
-print("FNMbase(", name, ")")
+prints("FNMbase(", name, ")")
 ) where
 {
   #impltmp g_print$out<>() = out

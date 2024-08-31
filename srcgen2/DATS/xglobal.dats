@@ -1168,7 +1168,7 @@ list_cons(kx1, kxs) =>
 (
 auxloop(kxs)) where
 {
-val () = println
+val () = printsln
 ("the_sortenv_allist:","(",kx1.0," -> ",kx1.1,")")
 }
 )(*case+*)//end-of-[auxloop(kxs)]

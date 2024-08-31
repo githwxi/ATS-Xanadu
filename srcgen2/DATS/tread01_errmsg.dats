@@ -167,7 +167,7 @@ if
 >FPEMSG_ERRVL) then () else
 let
 val loc0 = g1e0.lctn() in
-println
+printsln
 ("TREAD01-ERROR:",loc0,":",g1e0)
 end
 )
@@ -245,7 +245,7 @@ if
 >FPEMSG_ERRVL) then () else
 let
 val loc0 = s1t0.lctn() in
-println
+printsln
 ("TREAD01-ERROR:",loc0,":",s1t0)
 end
 )
@@ -407,7 +407,7 @@ if
 >FPEMSG_ERRVL) then () else
 let
 val loc0 = s1e0.lctn() in
-println
+printsln
 ("TREAD01-ERROR:",loc0,":",s1e0)
 end
 )
@@ -634,7 +634,7 @@ if
 >FPEMSG_ERRVL) then () else
 let
 val loc0 = d1p0.lctn() in
-println
+printsln
 ("TREAD01-ERROR:",loc0,":",d1p0)
 end
 )
@@ -889,7 +889,7 @@ if
 >FPEMSG_ERRVL) then () else
 let
 val loc0 = d1e0.lctn() in
-println
+printsln
 ("TREAD01-ERROR:",loc0,":",d1e0)
 end
 )
@@ -1155,12 +1155,12 @@ val
 loc0 = dcl.lctn()
 val
 loc1 = g1e1.lctn() in
-println(
+printsln(
 "TREAD01-ERROR:",
 loc0,":","D1Cinclude(...)");
-println(
+printsln(
 "TREAD01-ERROR:",loc1,":",g1e1
-)(*println*)
+)(*printsln*)
 end//let//end-of-[optn_nil()]
 |
 optn_cons(dcls) =>
@@ -1186,12 +1186,12 @@ val
 loc0 = dcl.lctn()
 val
 loc1 = g1e1.lctn() in
-println(
+printsln(
 "TREAD01-ERROR:",
 loc0,":","D1Cstaload(...)");
-println(
+printsln(
 "TREAD01-ERROR:",loc1,":",g1e1
-)(*println*)
+)(*printsln*)
 end//let//end-of-[optn_nil()]
 |
 optn_cons@(shrd, dpar) =>
@@ -1303,7 +1303,7 @@ if
 >FPEMSG_ERRVL) then () else
 let
 val loc0 = dcl0.lctn() in//let
-println
+printsln
 ("TREAD01-ERROR:",loc0,":",dcl0) end)
 //
 | _(* otherwise *) => (   (*skipped*)   )
