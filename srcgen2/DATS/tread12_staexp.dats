@@ -113,7 +113,7 @@ fun
 sort2_errvl_a2
 (s2t1: sort2
 ,s2t2: sort2): sint =
-gmax
+maxs
 (errvl(s2t1),errvl(s2t2))
 #symload
 sort2_errvl with sort2_errvl_a2
@@ -154,7 +154,7 @@ case+ s2ts of
 list_nil((*nil*)) => 0
 |
 list_cons(s2t1,s2ts) =>
-gmax
+maxs
 (
 errvl(s2t1),sort2_errvl_lst(s2ts))
 endcas // end of [ case+( s2ts ) ]
@@ -173,7 +173,7 @@ sort2_fun1_errck
 , s2t1: sort2): sort2 =
 let
 val lvl0 =
-gmax(errvl(s2ts), errvl(s2t1))
+maxs(errvl(s2ts), errvl(s2t1))
 in//let
 sort2_errck(lvl0+1,S2Tfun1(s2ts, s2t1))
 endlet // end of [sort2_a2pp_errck(...)]
@@ -317,7 +317,7 @@ fun
 s2exp_errvl_a2
 (s2e1: s2exp
 ,s2e2: s2exp): sint =
-gmax
+maxs
 (errvl(s2e1),errvl(s2e2))
 #symload
 s2exp_errvl with s2exp_errvl_a2
@@ -340,7 +340,7 @@ list_nil((*nil*)) => 0
 |
 list_cons(s2e1,s2es) =>
 (
-gmax
+maxs
 (
 errvl(s2e1),s2exp_errvl_lst(s2es)))
 endcas // end of [ case+(s2es)-of ]
@@ -367,7 +367,7 @@ list_cons(ls2e,lses) =>
 let
 val+
 S2LAB(lab, s2e1) = ls2e in
-gmax
+maxs
 ( errvl(s2e1)
 , l2s2e_errvl_lses(lses)) end
 endcas // end of [ case+(lses)-of ]
@@ -431,7 +431,7 @@ s2exp_apps_errck
 ,s2f0: s2exp
 ,s2es: s2explst): s2exp =
 let
-val lvl0 = gmax
+val lvl0 = maxs
 (errvl(s2f0), errvl(s2es))
 in//let
 s2exp_errck
@@ -463,7 +463,7 @@ s2exp_fun1_errck
 : s2exp(*body*)): s2exp =
 let
 val
-lvl0 = gmax
+lvl0 = maxs
 (errvl(s2es), errvl(sres)) in//let
 s2exp_errck
 (lvl0+1
@@ -479,7 +479,7 @@ s2exp_met0_errck
 : s2exp(*body*)): s2exp =
 let
 val
-lvl0 = gmax
+lvl0 = maxs
 (errvl(s2es), errvl(s2e1)) in//let
 s2exp_errck
 (lvl0+1,s2exp(s2t0,S2Emet0(s2es,s2e1)))
@@ -494,7 +494,7 @@ s2exp_exi0_errck
 : s2exp(*body*)): s2exp =
 let
 val
-lvl0 = gmax
+lvl0 = maxs
 (errvl(s2ps), errvl(s2e1)) in//let
 s2exp_errck
 (lvl0+1
@@ -510,7 +510,7 @@ s2exp_uni0_errck
 : s2exp(*body*)): s2exp =
 let
 val
-lvl0 = gmax
+lvl0 = maxs
 (errvl(s2ps), errvl(s2e1)) in//let
 s2exp_errck
 (lvl0+1
