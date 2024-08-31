@@ -715,6 +715,7 @@ tip1.node() of
   g2_trcd_tjp1(tip1, tjp1))
 //
 |T2Pnone0((*0*)) => (   true   )
+//
 |T2Pnone1(s2typ) => (   true   )
 |T2Ps2exp(s2exp) => (   true   )
 //
@@ -905,11 +906,11 @@ end(*let*)//end of [g2_trcd_tjp1(...)]
 //
 (*
 val () =
-prerrln
-("f0_targequ:f2_tip1_tjp1: tip1 = ", tip1)
+prerrln("\
+f0_targequ:f2_tip1_tjp1: tip1 = ", tip1)
 val () =
-prerrln
-("f0_targequ:f2_tip1_tjp1: tjp1 = ", tjp1)
+prerrln("\
+f0_targequ:f2_tip1_tjp1: tjp1 = ", tjp1)
 *)
 //
 (* ****** ****** *)
@@ -1546,11 +1547,11 @@ end(*let*)//end of [g2_trcd_tjp1(...)]
 //
 (*
 val () =
-prerrln
-("f0_targmat:f2_tip1_tjp1: tip1 = ", tip1)
+prerrln("\
+f0_targmat:f2_tip1_tjp1: tip1 = ", tip1)
 val () =
-prerrln
-("f0_targmat:f2_tip1_tjp1: tjp1 = ", tjp1)
+prerrln("\
+f0_targmat:f2_tip1_tjp1: tjp1 = ", tjp1)
 *)
 //
 (* ****** ****** *)
