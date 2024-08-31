@@ -104,68 +104,6 @@ g_ptype((*void*)): ( void )
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2024-08-24:
-Sat 24 Aug 2024 06:29:26 PM EDT
-*)
-//
-#typedef
-f0un(r0:vt) = () -> r0
-//
-#typedef
-f1un
-(a1:t0,r0:vt) = (a1) -> r0
-//
-#typedef
-f2un
-(a1:t0
-,a2:t0,r0:vt) = (a1,a2) -> r0
-//
-#typedef
-f3un
-(a1:t0
-,a2:t0
-,a3:t0,r0:vt) = (a1,a2,a3) -> r0
-//
-(* ****** ****** *)
-//
-fun
-<r0:vt>
-f_trace_f0un
-(msg: strn
-,f00: f0un(r0)): f0un(r0)
-fun
-<a1:t0>
-<r0:vt>
-f_trace_f1un
-(msg: strn
-,f00: f1un(a1,r0)): f1un(a1,r0)
-fun
-<a1:t0>
-<a2:t0>
-<r0:vt>
-f_trace_f2un
-(msg: strn
-,f00: f2un(a1,a2,r0)): f2un(a1,a2,r0)
-fun
-<a1:t0>
-<a2:t0>
-<a3:t0>
-<r0:vt>
-f_trace_f3un
-(msg: strn
-,f00: f3un(a1,a2,a3,r0)): f3un(a1,a2,a3,r0)
-//
-(* ****** ****** *)
-//
-#symload trace with f_trace_f0un of 1000
-#symload trace with f_trace_f1un of 1000
-#symload trace with f_trace_f2un of 1000
-#symload trace with f_trace_f3un of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
