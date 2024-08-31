@@ -787,7 +787,7 @@ val tnd = tok.tnode()
 //
 (*
 val ( ) =
-prerrln("p1_l0abl: tok = ", tok)
+prerrsln("p1_l0abl: tok = ", tok)
 *)
 //
 in
@@ -1744,7 +1744,7 @@ val tok = buf.getk0()
 //
 (*
 val ( )
-prerrln
+prerrsln
 ("pq_sort0_anno: tok = ", tok)
 *)
 //
@@ -2344,7 +2344,7 @@ val tnd = tok.tnode()
 //
 (*
 val () =
-prerrln("p1_s0exp_atm: tok = ", tok)
+prerrsln("p1_s0exp_atm: tok = ", tok)
 *)
 //
 in//let
@@ -2559,7 +2559,7 @@ end (*let*) // end of [T_TRCD20{...|...}]
 let
 (*
 val () =
-prerrln
+prerrsln
 ("p1_s0exp_atm: otherwise: tok = ", tok)
 *)
 in//let

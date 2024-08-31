@@ -71,10 +71,10 @@ let
 val
 loc0 = d3e0.lctn()
 val () =
-prerrln
+prerrsln
 ("trtmp3b_d3exp: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trtmp3b_d3exp: d3e0 = ", d3e0)
 *)
 //
@@ -263,7 +263,7 @@ end where // end-of-[f0_tapp(env0,d3e0)]
 {
 //
 (*
-val () = prerrln
+val () = prerrsln
 ("trtmp3b_d3exp: f0_tapp: d3e0 = ", d3e0)
 *)
 //
@@ -307,7 +307,7 @@ end where // end-of-[f0_tapq(env0,d3e0)]
 {
 //
 (*
-val () = prerrln
+val () = prerrsln
 ("trtmp3b_d3exp: f0_tapq: d3e0 = ", d3e0)
 *)
 //
@@ -1107,7 +1107,7 @@ trtmp3b_d3gpt
 val loc0 = dgpt.lctn()
 val
 val () =
-prerrln
+prerrsln
 ("trtmp3b_d3gpt: dgpt = ", dgpt)
 *)
 //
@@ -1133,7 +1133,7 @@ val loc0 = dcls.lctn()
 //
 (*
 val () =
-prerrln
+prerrsln
 ("trtmp3b_d3cls: dcls = ", dcls)
 *)
 //

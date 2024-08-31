@@ -144,7 +144,7 @@ val parsed =
 tread30_d3eclistopt(parsed, nerror)
 //
 (*
-val (    ) = prerrln
+val (    ) = prerrsln
 ("d3parsed_of_tread30: t3penv = ", t3penv)
 *)
 //

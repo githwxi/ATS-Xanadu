@@ -233,7 +233,7 @@ topmap_search$opt(topmap, k0))
 //
 (*
 val () =
-prerrln
+prerrsln
 ("tr3aenv_search$opt: k0 = ", k0)
 *)
 //
@@ -269,10 +269,10 @@ val k0 = d2c0.name((*0*))
 //
 (*
 val () =
-prerrln
+prerrsln
 ("tr3aenv_d2cins$any: k0 = ", k0)
 val () =
-prerrln
+prerrsln
 ("tr3aenv_d2cins$any: x0 = ", x0)
 *)
 //

@@ -59,7 +59,7 @@ in//let
 case+ lab of
 |
 I0LAB(l01, x02) =>
-print("I0LAB(",l01,";",x02,")")
+prints("I0LAB(",l01,";",x02,")")
 end(*let*)//end-of-[i0lab_fprint]
 //
 #impltmp
@@ -134,7 +134,7 @@ in//let
 case+ lab of
 |
 I1LAB(l01, x02) =>
-print("I1LAB(",l01,";",x02,")")
+prints("I1LAB(",l01,";",x02,")")
 end(*let*)//end-of-[i1lab_fprint]
 //
 #impltmp
@@ -267,10 +267,10 @@ in//let
 case+ tdxp of
 |
 TEQI0EXPnone() =>
-print("TEQI0EXPnone(", ")")
+prints("TEQI0EXPnone(", ")")
 |
 TEQI0EXPsome(tok0, i0e1) =>
-print("TEQI0EXPsome(",tok0,";",i0e1,")"))
+prints("TEQI0EXPsome(",tok0,";",i0e1,")"))
 endlet // end-of-[g_print<teqi0exp>(tdxp)]
 //
 (* ****** ****** *)
@@ -288,10 +288,10 @@ in//let
 case+ tdxp of
 |
 TEQI1CMPnone() =>
-print("TEQI1CMPnone(", ")")
+prints("TEQI1CMPnone(", ")")
 |
 TEQI1CMPsome(tok0, icmp) =>
-print("TEQI1CMPsome(",tok0,";",icmp,")"))
+prints("TEQI1CMPsome(",tok0,";",icmp,")"))
 endlet // end-of-[g_print<teqi1cmp>(tdxp)]
 //
 (* ****** ****** *)

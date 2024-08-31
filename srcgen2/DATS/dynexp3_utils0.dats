@@ -99,9 +99,9 @@ let
 val t2p0 = d3e0.styp()
 //
 (*
-val (  ) = prerrln
+val (  ) = prerrsln
 ("d3exp_trcdfltq: d3e0 = ", d3e0)
-val (  ) = prerrln
+val (  ) = prerrsln
 ("d3exp_trcdfltq: t2p0 = ", t2p0)
 *)
 //
@@ -195,7 +195,7 @@ end//let
 //
 (*
 val (  ) =
-prerrln
+prerrsln
 ("f0_implmnt0: dimp = ", dimp)
 *)
 //
@@ -235,11 +235,11 @@ end(*let*)//end-of-[f0_implmnt0(...)]
 //
 (*
 val () =
-prerrln("d3ecl_impsub: knd0 = ", knd0)
+prerrsln("d3ecl_impsub: knd0 = ", knd0)
 val () =
-prerrln("d3ecl_impsub: tsub = ", tsub)
+prerrsln("d3ecl_impsub: tsub = ", tsub)
 val () =
-prerrln("d3ecl_impsub: d3cl = ", d3cl)
+prerrsln("d3ecl_impsub: d3cl = ", d3cl)
 *)
 //
 (* ****** ****** *)
@@ -485,7 +485,7 @@ val-T_IMPLMNT(knd0) = tknd.node()
 //
 (*
   val () =
-  prerrln
+  prerrsln
   ("d3ecl_impltmprq: d3cl = ", d3cl)
 *)
 //
@@ -535,9 +535,9 @@ tenv =
 d3parsed_get_t3penv(dpar)
 //
 (*
-val () = prerrln
+val () = prerrsln
 ("static_search_dcst: shrd = ", shrd)
-val () = prerrln
+val () = prerrsln
 ("static_search_dcst: tenv = ", tenv)
 *)
 //
@@ -565,9 +565,9 @@ end//let//end-of-[f0_staload(d3cl,d2c0)]
 //
 (*
 val () =
-prerrln("static_search_dcst: d3cl = ", d3cl)
+prerrsln("static_search_dcst: d3cl = ", d3cl)
 val () =
-prerrln("static_search_dcst: d2c0 = ", d2c0)
+prerrsln("static_search_dcst: d2c0 = ", d2c0)
 *)
 //
 }(*where*) // end of [static_search_dcst(...)]
@@ -906,10 +906,10 @@ end(*let*)//end of [g2_trcd_tjp1(...)]
 //
 (*
 val () =
-prerrln("\
+prerrsln("\
 f0_targequ:f2_tip1_tjp1: tip1 = ", tip1)
 val () =
-prerrln("\
+prerrsln("\
 f0_targequ:f2_tip1_tjp1: tjp1 = ", tjp1)
 *)
 //
@@ -1013,10 +1013,10 @@ f2_ltis_ltjs
 (*
 val () =
 (
-  prerrln("f0_targequ: svts = ", svts) )
+  prerrsln("f0_targequ: svts = ", svts) )
 val () =
 (
-  prerrln("f0_targequ: t2js = ", t2js) )
+  prerrsln("f0_targequ: t2js = ", t2js) )
 *)
 //
 (* ****** ****** *)
@@ -1079,9 +1079,9 @@ D3Ctmpsub
 //
 (*
 val () =
-prerrln("tmpequal_d3cl_t2js: d3cl = ", d3cl)
+prerrsln("tmpequal_d3cl_t2js: d3cl = ", d3cl)
 val () =
-prerrln("tmpequal_d3cl_t2js: t2js = ", t2js)
+prerrsln("tmpequal_d3cl_t2js: t2js = ", t2js)
 *)
 //
 }(*where*)//end-of-[tmpequal_d3cl_t2js(d3cl,t2js)]
@@ -1547,10 +1547,10 @@ end(*let*)//end of [g2_trcd_tjp1(...)]
 //
 (*
 val () =
-prerrln("\
+prerrsln("\
 f0_targmat:f2_tip1_tjp1: tip1 = ", tip1)
 val () =
-prerrln("\
+prerrsln("\
 f0_targmat:f2_tip1_tjp1: tjp1 = ", tjp1)
 *)
 //
@@ -1752,16 +1752,16 @@ endlet//end-of-[list_cons(t2j1,t2js)]
 (*
 val () =
 (
-  prerrln("f0_targmat: svts = ", svts) )
+  prerrsln("f0_targmat: svts = ", svts) )
 val () =
 (
-  prerrln("f0_targmat: t2js = ", t2js) )
+  prerrsln("f0_targmat: t2js = ", t2js) )
 val () =
 (
-  prerrln("f0_targmat: s2qs = ", s2qs) )
+  prerrsln("f0_targmat: s2qs = ", s2qs) )
 val () =
 (
-  prerrln("f0_targmat: t2qs = ", t2qs) )
+  prerrsln("f0_targmat: t2qs = ", t2qs) )
 *)
 //
 }(*where*)//end-of-[f0_targmat(svts,...)]
@@ -1843,13 +1843,13 @@ val () =
 let
 val loc0 = d3cl.lctn()
 in//let
-prerrln("tmpmatch_d3cl_t2js: loc0 = ", loc0)
+prerrsln("tmpmatch_d3cl_t2js: loc0 = ", loc0)
 end//let
 //
 val () =
-prerrln("tmpmatch_d3cl_t2js: d3cl = ", d3cl)
+prerrsln("tmpmatch_d3cl_t2js: d3cl = ", d3cl)
 val () =
-prerrln("tmpmatch_d3cl_t2js: t2js = ", t2js)
+prerrsln("tmpmatch_d3cl_t2js: t2js = ", t2js)
 //
 *)
 //

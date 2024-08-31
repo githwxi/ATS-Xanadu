@@ -276,10 +276,10 @@ f0_DIGIT
 //
 (*
 val () =
-prerrln
+prerrsln
 ("gobj_lexing_tnode: ci0 = ", ci0)
 val () =
-prerrln
+prerrsln
 ("gobj_lexing_tnode: cc0 = ", cc0)
 *)
 //
@@ -481,7 +481,7 @@ gobj_lexing$getc1<obj>(buf)
 val cc0 = char_make_code(ci0)
 (*
 val () =
-prerrln
+prerrsln
 ("f0_IDFST: loop: cc0 = ", cc0)
 *)
 //
@@ -522,7 +522,7 @@ val cc1 = char_make_code(ci1)
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_SYDLR: loop: cc0 = ", cc0)
 *)
 //
@@ -595,7 +595,7 @@ val cc1 = char_make_code(ci1)
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_SYSRP: loop: cc0 = ", cc0)
 *)
 //
@@ -641,7 +641,7 @@ val cc0 = char_make_code(ci0)
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_IDSYM: loop: cc0 = ", cc0)
 *)
 //
@@ -758,7 +758,7 @@ val cc0 = char_make_code(ci0)
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_SQUOTE: loop30: cc0 = ", cc0)
 *)
 //
@@ -861,9 +861,9 @@ val cc0 = char_make_code(ci0)
 //
 (*
 val () =
-prerrln("f0_DQUOTE: ci0 = ", ci0)
+prerrsln("f0_DQUOTE: ci0 = ", ci0)
 val () =
-prerrln("f0_DQUOTE: cc0 = ", cc0)
+prerrsln("f0_DQUOTE: cc0 = ", cc0)
 *)
 //
 in//let

@@ -309,7 +309,7 @@ endlet // end-of-otherwise
 (* ****** ****** *)
 (*
 val (  ) =
-prerrln("tread23_d3ecl: d3cl = ", d3cl)
+prerrsln("tread23_d3ecl: d3cl = ", d3cl)
 *)
 (* ****** ****** *)
 //
@@ -401,10 +401,10 @@ D3Cinclude
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_include(23): loc = ", loc)
 val () =
-prerrln
+prerrsln
 ("f0_include(23): dopt = ", dopt)
 *)
 //
@@ -593,9 +593,9 @@ val loc0 = d3cl.lctn()
 //
 (*
 val (  ) =
-prerrln("f0_implmnt0(23): loc0 = ", loc0)
+prerrsln("f0_implmnt0(23): loc0 = ", loc0)
 val (  ) =
-prerrln("f0_implmnt0(23): d3cl = ", d3cl)
+prerrsln("f0_implmnt0(23): d3cl = ", d3cl)
 *)
 //
 } (*where*) // end of [f0_implmnt0(dcl,err)]
@@ -619,7 +619,7 @@ let
 val e00 = err
 (*
 val ( ) =
-prerrln
+prerrsln
 ("tread23_teqd3exp: d3e2 = ", d3e2)
 *)
 val d3e2 = tread23_d3exp(d3e2, err)

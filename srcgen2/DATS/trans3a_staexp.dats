@@ -70,7 +70,7 @@ trans3a_s2typ
 //
 (*
 val () =
-prerrln
+prerrsln
 ("trans3a_s2typ: t2p0 = ", t2p0)
 *)
 //

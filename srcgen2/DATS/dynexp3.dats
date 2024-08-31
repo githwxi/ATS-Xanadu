@@ -891,7 +891,7 @@ D3PARSED
 //
 (*
 val () =
-prerrln
+prerrsln
 ("d3parsed_make_args:nerror=",nerror)
 *)
 //

@@ -93,9 +93,9 @@ FIXTYinf(p1, a1) =>
 {
 (*
 val () =
-prerrln("mix_fixty_fixty: fx0 = ", fx0)
+prerrsln("mix_fixty_fixty: fx0 = ", fx0)
 val () =
-prerrln("mix_fixty_fixty: fx1 = ", fx1)
+prerrsln("mix_fixty_fixty: fx1 = ", fx1)
 *)
 } (*where*) // end of [mix_fixty_fixty(...)]
 //

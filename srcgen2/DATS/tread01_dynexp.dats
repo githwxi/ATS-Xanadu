@@ -531,9 +531,9 @@ val loc0 = d1p0.lctn((*void*))//needed
 //
 (*
 val (  ) =
-prerrln("tread01_d1pat: loc0 = ", loc0)
+prerrsln("tread01_d1pat: loc0 = ", loc0)
 val (  ) =
-prerrln("tread01_d1pat: d1p0 = ", d1p0)
+prerrsln("tread01_d1pat: d1p0 = ", d1p0)
 *)
 //
 } (*where*)//end(tread01_d1pat(d1p0,err))
@@ -1824,9 +1824,9 @@ val loc0 = d1e0.lctn((*void*))//needed
 //
 (*
 val (  ) =
-prerrln("tread01_d1exp: loc0 = ", loc0)
+prerrsln("tread01_d1exp: loc0 = ", loc0)
 val (  ) =
-prerrln("tread01_d1exp: d1e0 = ", d1e0)
+prerrsln("tread01_d1exp: d1e0 = ", d1e0)
 *)
 //
 } (*where*)//end(tread01_d1exp(d1e0,err))

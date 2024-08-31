@@ -102,10 +102,10 @@ let
 val
 loc = dcl0.lctn()
 val () =
-prerrln
+prerrsln
 ("trsym2b_d2ecl: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trsym2b_d2ecl: dcl0 = ", dcl0)
 *)
 //
@@ -229,12 +229,12 @@ D2Cfundclst
 //
 (*
 val () =
-prerrln(
+prerrsln(
 "\
 trsym2b_d2ecl: \
 D2Cfundclst: d2cs = ", d2cs)
 val () =
-prerrln(
+prerrsln(
 "\
 trsym2b_d2ecl: \
 D2Cfundclst: tqas = ", tqas)
@@ -288,7 +288,7 @@ loc0 = dcl0.lctn()
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_implmnt0: loc0 = ", loc0)
 *)
 //
@@ -302,7 +302,7 @@ D2Cimplmnt0
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_implmnt0: dcl0 = ", dcl0)
 *)
 //

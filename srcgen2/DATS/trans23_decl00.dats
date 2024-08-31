@@ -141,7 +141,7 @@ end where
 {
 (*
   val () =
-  prerrln
+  prerrsln
   ("s3taload_from_fpath: dpar = ", dpar)
 *)
 }(*where*)//end-of-[s3taload_from_fpath(...)]
@@ -156,10 +156,10 @@ trans23_d2ecl
 val
 loc0 = d2cl.lctn()
 val () =
-prerrln
+prerrsln
 ("trans23_d2ecl: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trans23_d2ecl: d2cl = ", d2cl)
 *)
 //
@@ -530,7 +530,7 @@ end where
 val loc0 = d2cl.lctn((*void*))
 //
 (*
-val () = prerrln
+val () = prerrsln
 ("trans23_d2ecl: f0_dyninit: d2cl = ", d2cl)
 *)
 //
@@ -562,7 +562,7 @@ end where
 val loc0 = d2cl.lctn((*void*))
 //
 (*
-val () = prerrln
+val () = prerrsln
 ("trans23_d2ecl: f0_extcode: d2cl = ", d2cl)
 *)
 //
@@ -594,7 +594,7 @@ end where
 val loc0 = d2cl.lctn()
 (*
 val (  ) =
-prerrln("f0_valdclst(23): d2cl = ", d2cl)
+prerrsln("f0_valdclst(23): d2cl = ", d2cl)
 *)
 //
 }(*where*) // end of [f0_valdclst(env0,d2cl)]
@@ -624,7 +624,7 @@ end where
 val loc0 = d2cl.lctn()
 (*
 val (  ) =
-prerrln("f0_vardclst(23): d2cl = ", d2cl)
+prerrsln("f0_vardclst(23): d2cl = ", d2cl)
 *)
 //
 }(*where*) // end of [f0_vardclst(env0,d2cl)]
@@ -658,7 +658,7 @@ end where
 val loc0 = d2cl.lctn()
 (*
 val (  ) =
-prerrln("f0_fundclst(23): d2cl = ", d2cl)
+prerrsln("f0_fundclst(23): d2cl = ", d2cl)
 *)
 //
 }(*where*) // end of [f0_fundclst(env0,d2cl)]
@@ -702,9 +702,9 @@ val loc0 = d2cl.lctn()
 //
 (*
 val (  ) =
-prerrln("f0_implmnt0(23): loc0 = ", loc0)
+prerrsln("f0_implmnt0(23): loc0 = ", loc0)
 val (  ) =
-prerrln("f0_implmnt0(23): d2cl = ", d2cl)
+prerrsln("f0_implmnt0(23): d2cl = ", d2cl)
 *)
 //
 } (*where*) // end of [f0_implmnt0(env0,d2cl)]
@@ -855,9 +855,9 @@ val wsxp =
 d2fundcl_get_wsxp(dfun)
 //
 (*
-val (  ) = prerrln
+val (  ) = prerrsln
 ("trans23_d2fundcl: f2as = ", f2as)
-val (  ) = prerrln
+val (  ) = prerrsln
 ("trans23_d2fundcl: tdxp = ", tdxp)
 *)
 //
@@ -871,9 +871,9 @@ val f2cl = F2CLfun((*void*))
 *)
 //
 (*
-val (  ) = prerrln
+val (  ) = prerrsln
 ("trans23_d2fundcl: f3as = ", f3as)
-val (  ) = prerrln
+val (  ) = prerrsln
 ("trans23_d2fundcl: tdxp = ", tdxp)
 *)
 //

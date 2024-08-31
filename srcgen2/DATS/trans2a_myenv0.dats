@@ -219,7 +219,7 @@ stkmap_search$opt(stkmap, k0)
 //
 (*
 val () =
-prerrln
+prerrsln
 ("tr2aenv_search$opt: k0 = ", k0)
 *)
 //
@@ -254,10 +254,10 @@ val k0 = s2c0.name()
 //
 (*
 val () =
-prerrln
+prerrsln
 ("tr2aenv_s2cins$any: k0 = ", k0)
 val () =
-prerrln
+prerrsln
 ("tr2aenv_s2cins$any: x0 = ", x0)
 *)
 //
@@ -282,10 +282,10 @@ tr2aenv_s2crch$opt(env0, s2c0)
 //
 (*
 val (  ) =
-prerrln
+prerrsln
 ("tr2aenv_evstyp_cst: s2c0 = ", s2c0)
 val (  ) =
-prerrln
+prerrsln
 ("tr2aenv_evstyp_cst: s2cs = ", s2cs)
 *)
 //

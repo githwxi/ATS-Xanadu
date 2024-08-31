@@ -289,7 +289,7 @@ prints( "D3Edap0(", d3f0, ")" )
 |
 D3Edapp
 (d3f0,npf1,d3es) =>
-( prints("D3Edapp(")
+( print("D3Edapp(")
 ; prints(d3f0,";",npf1,";",d3es,")"))
 //
 (* ****** ****** *)
@@ -297,12 +297,12 @@ D3Edapp
 |
 D3Epcon
 (tknd,dlab,dtup) =>
-( prints("D3Epcon(")
+( print("D3Epcon(")
 ; prints(tknd,";",dlab,";",dtup,")"))
 |
 D3Eproj
 (tknd,dlab,dtup) =>
-( prints("D3Eproj(")
+( print("D3Eproj(")
 ; prints(tknd,";",dlab,";",dtup,")"))
 //
 (* ****** ****** *)
@@ -317,13 +317,13 @@ prints("D3Elet0(",dcls,";",d3e1,")"))
 //
 |D3Eift0
 (d3e1,dthn,dels) =>
-( prints("D3Eift0(")
+( print("D3Eift0(")
 ; prints(d3e1,";",dthn,";",dels,")"))
 //
 |
 D3Ecas0
 (tknd,d3e1,dcls) =>
-( prints("D3Ecas0(");
+( print("D3Ecas0(");
   prints(tknd,";",d3e1,";",dcls,")"))
 //
 (* ****** ****** *)
@@ -342,12 +342,12 @@ prints("D3Etup0(",npf1,";",d3es,")"))
 |
 D3Etup1
 (tknd,npf1,d3es) =>
-( prints("D3Etup1(")
+( print("D3Etup1(")
 ; prints(tknd,";",npf1,";",d3es,")"))
 |
 D3Ercd2
 (tknd,npf1,ldes) =>
-( prints("D3Ercd2(")
+( print("D3Ercd2(")
 ; prints(tknd,";",npf1,";",ldes,")"))
 //
 (* ****** ****** *)
@@ -378,8 +378,9 @@ prints
 D3Etry0
 ( tknd
 , d3e1, dcls) =>
-(prints("D3Etry0(")
-;prints( tknd, ";",d3e1, ";",dcls,")"))
+(
+print("D3Etry0(");
+prints( tknd, ";",d3e1, ";",dcls,")"))
 //
 (* ****** ****** *)
 //
@@ -457,7 +458,7 @@ D3El1azy
 ( dsym
 , d3e1 , d3es ) =>
 (
-  prints("D3El1azy(")
+  print("D3El1azy(")
 ; prints( dsym, ";",d3e1, ";",d3es,")"))
 //
 (* ****** ****** *)
@@ -466,7 +467,7 @@ D3El1azy
 ( d3e1
 , s1e2 , s2e2 ) =>
 (
-  prints("D3Eannot(")
+  print("D3Eannot(")
 ; prints( d3e1, ";",s1e2, ";",s2e2,")"))
 //
 (* ****** ****** *)
@@ -477,7 +478,7 @@ let
 val
 t2p1 = d3e1.styp() in
 (
-  prints("D3Elabck(")
+  print("D3Elabck(")
 ; prints( d3e1, ";",t2p1, ";",lab2,")"))
 endlet // end of [ D3Elabck(d3e1, lab2) ]
 //
@@ -487,7 +488,7 @@ let
 val
 t2p1 = d3e1.styp() in
 (
-  prints("D3Et2pck(")
+  print("D3Et2pck(")
 ; prints( d3e1, ";",t2p1, ";",t2p2,")"))
 endlet // end of [ D3Et2pck(d3e1, t2p2) ]
 //
@@ -681,32 +682,35 @@ prints( "D3Clocal(",head,";",body,")" )
 |
 D3Cabsopen
 ( tknd , simp ) =>
-prints("D3Cabsopen(",tknd,";",simp,")")
+prints
+("D3Cabsopen(",tknd,";",simp,")")
 |
 D3Cabsimpl
 (tknd,simp,sdef) =>
-( prints("D3Cabsimpl(")
-; prints( tknd,";", simp,";",sdef,")"))
+(
+print("D3Cabsimpl(");
+prints(tknd, ";", simp, ";", sdef, ")")
+)
 //
 |
 D3Cinclude
-( knd0, tknd
-, gsrc, fopt, dopt ) =>
+(knd0,tknd
+,gsrc,fopt,dopt) =>
 (
-prints("D3Cinclude(");
+print("D3Cinclude(");
 prints
-(
-knd0,";",
-tknd,";",gsrc,";",fopt,";","...",")"))
+(knd0,";"
+,tknd,";",gsrc,";",fopt,";","...",")"))
 //
 |
 D3Cstaload
-( knd0, tknd
-, gsrc, fopt, dopt ) =>
+(knd0,tknd
+,gsrc,fopt,dopt) =>
 (
-prints("D3Cstaload(");
+print("D3Cstaload(");
 prints
-(knd0,";",tknd,";",gsrc,";",fopt,")"))
+(knd0,";"
+,tknd,";",gsrc,";",fopt,";","...",")"))
 //
 (* ****** ****** *)
 //
@@ -742,7 +746,7 @@ D3Cfundclst
 (tknd
 ,tqas,d2cs,d3fs) =>
 (
-prints("D3Cfundclst(");
+print("D3Cfundclst(");
 prints(tknd,";",tqas,";",d2cs,";",d3fs,")"))
 //
 |
@@ -753,7 +757,7 @@ D3Cimplmnt0
 ,dqid,tias
 ,farg,sres,body) =>
 (
-prints("D3Cimplmnt0(");
+print("D3Cimplmnt0(");
 prints(tknd,";",stmp,";");
 prints(sqas,";",tqas,";");
 prints(dqid,";",tias,";",farg,";",sres,";",body,")"))

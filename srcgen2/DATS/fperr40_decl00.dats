@@ -89,14 +89,15 @@ dcl.node() of
 _(*otherwise*) =>
 let
 //
-  val
-  loc = dcl.lctn()
-  val () = prerrln
-  ("fperr40_d4ecl: auxmain: loc = ", loc)
-  val () = prerrln
-  ("fperr40_d4ecl: auxmain: dcl = ", dcl)
+(*
+val loc = dcl.lctn()
+val ( ) = prerrsln("\
+fperr40_d4ecl: auxmain(40): loc = ", loc)
+val ( ) = prerrsln("\
+fperr40_d4ecl: auxmain(40): dcl = ", dcl)
+*)
 //
-end (*let*) // end-of-[ (* otherwise *) ]
+end (*let*) // end-of-[ (*  otherwise  *) ]
 //
 end (*let*) // end-of-[ auxmain(out, dcl) ]
 
@@ -117,13 +118,13 @@ let
 val loc0 = dcl0.lctn()
 in//let
 (*
-prerrln
+prerrsln
 ("fperr40_d4pat: loc0 = ", loc0)
 *)
 end//let
 (*
 val () =
-prerrln
+prerrsln
 ("fperr40_d4ecl: dcl0 = ", dcl0)
 *)
 //
@@ -141,7 +142,7 @@ if
 >FPERR40_ERRVL) then () else
 let
 val loc0 = dcl0.lctn() in
-println
+printsln
 ("FPERR40-ERROR:",loc0,":",dcl0)
 end
 )

@@ -205,9 +205,9 @@ let
 //
   val
   loc = dcl.lctn()
-  val () = prerrln
+  val () = prerrsln
   ("fperr20_d2ecl: auxmain: loc = ", loc)
-  val () = prerrln
+  val () = prerrsln
   ("fperr20_d2ecl: auxmain: dcl = ", dcl)
 //
 endlet
@@ -231,13 +231,13 @@ let
 val loc0 = dcl0.lctn()
 in//let
 (*
-prerrln
+prerrsln
 ("fperr20_d2ecl: loc0 = ", loc0)
 *)
 end//let
 (*
 val () =
-prerrln
+prerrsln
 ("fperr20_d2ecl: dcl0 = ", dcl0)
 *)
 //

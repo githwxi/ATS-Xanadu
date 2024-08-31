@@ -2252,7 +2252,8 @@ val-D2Esynext _ = d2e.node() in (d2e) end
 //
 (*
 val (  ) =
-(prerrln("tread20_d2exp: d2e0 = ", d2e0))
+(
+prerrsln("tread20_d2exp: d2e0 = ", d2e0))
 *)
 //
 (* ****** ****** *)

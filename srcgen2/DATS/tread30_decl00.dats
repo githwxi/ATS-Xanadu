@@ -323,10 +323,10 @@ D3Cinclude
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_include(30): loc = ", loc)
 val () =
-prerrln
+prerrsln
 ("f0_include(30): dopt = ", dopt)
 *)
 //
@@ -529,7 +529,7 @@ end (*let*) // end-of-[f0_implmnt0(dcl,err)]
 (*
 val () =
 (
-  prerrln("tread30_d3ecl: d3cl = ", d3cl) )
+  prerrsln("tread30_d3ecl: d3cl = ", d3cl) )
 *)
 //
 (* ****** ****** *)
@@ -551,7 +551,7 @@ let
 val e00 = err
 (*
 val ( ) =
-prerrln
+prerrsln
 ("tread30_teqd3exp: d3e2 = ", d3e2)
 *)
 val d3e2 = tread30_d3exp(d3e2, err)

@@ -85,10 +85,10 @@ let
 val
 loc0 = d3p0.lctn()
 val () =
-prerrln
+prerrsln
 ("trans3a_d3pat: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trans3a_d3pat: d3p0 = ", d3p0)
 *)
 //
@@ -566,10 +566,10 @@ let
 val
 loc0 = d3e0.lctn()
 val () =
-prerrln
+prerrsln
 ("trans3a_d3exp: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trans3a_d3exp: d3e0 = ", d3e0)
 *)
 //
@@ -2025,10 +2025,10 @@ let
 val
 loc0 = farg.lctn()
 val () =
-prerrln
+prerrsln
 ("trans3a_f3arg: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trans3a_f3arg: farg = ", farg)
 *)
 //
@@ -2120,7 +2120,7 @@ end//let//end-of-[D3GUAmat(...)]
 //
 (*
   val (  ) =
-  prerrln("trans3a_d3gua: dgua = ", dgua)
+  prerrsln("trans3a_d3gua: dgua = ", dgua)
 *)
 //
 }(*where*)//end-of-[trans3a_d3gua(env0,...)]
@@ -2136,7 +2136,7 @@ val loc0 = dgpt.lctn()
 (*
 val
 val () =
-prerrln
+prerrsln
 ("trans3a_d3gpt: dgpt = ", dgpt)
 *)
 //
@@ -2178,7 +2178,7 @@ val loc0 = d3c0.lctn()
 (*
 val
 val () =
-prerrln
+prerrsln
 ("trans3a_d3cls: d3c0 = ", d3c0)
 *)
 //

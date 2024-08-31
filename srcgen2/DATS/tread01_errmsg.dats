@@ -380,9 +380,9 @@ endlet where
 (*
   val loc = s1e.lctn()
   val ( ) =
-  prerrln("auxmain: loc = ", loc)
+  prerrsln("auxmain: loc = ", loc)
   val ( ) =
-  prerrln("auxmain: s1e = ", s1e)
+  prerrsln("auxmain: s1e = ", s1e)
 *)
 } (*where*)//end-of-(auxmain(out,s1e))
 //
@@ -607,9 +607,9 @@ endlet where
 (*
   val loc = d1p.lctn()
   val ( ) =
-  prerrln("auxmain: loc = ", loc)
+  prerrsln("auxmain: loc = ", loc)
   val ( ) =
-  prerrln("auxmain: d1p = ", d1p)
+  prerrsln("auxmain: d1p = ", d1p)
 *)
 } (*where*)//end-of-(auxmain(out,d1p))
 //
@@ -860,9 +860,9 @@ endlet where
 (*
   val loc = d1e.lctn()
   val ( ) =
-  prerrln("auxmain: loc = ", loc)
+  prerrsln("auxmain: loc = ", loc)
   val ( ) =
-  prerrln("auxmain: d1e = ", d1e)
+  prerrsln("auxmain: d1e = ", d1e)
 *)
 } (*where*)//end-of-(auxmain(out,d1e))
 //
@@ -1276,7 +1276,7 @@ D1Cerrck(_,_) => d1ecl_fpemsg(out, dcl)
 end where
 {
 (*
-  val () = prerrln
+  val () = prerrsln
   ("d1ecl_fpemsg:auxmain: dcl = ", dcl)
 *)
 }(*where*) // end-of-[auxmain( out,dcl )]

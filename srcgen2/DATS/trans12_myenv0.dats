@@ -261,12 +261,12 @@ stkmap_poploc0(stkmap)
 //
 (*
 val () =
-prerrln1
+prerrsln1
 ("sortenv_locjoin:nerr=", nerr)
 val () =
-prerrln1(
+prerrsln1(
 "sortenv_locjoin:stkmap(aft)=\n", stkmap
-)(*prerrln1*)
+)(*prerrsln1*)
 *)
 //
 val
@@ -329,10 +329,10 @@ val+
 //
 (*
 val () =
-prerrln
+prerrsln
 ("sortenv_insert$any: k0 = ", k0)
 val () =
-prerrln
+prerrsln
 ("sortenv_insert$any: x0 = ", x0)
 *)
 //
@@ -522,12 +522,12 @@ stkmap_poploc0(stkmap)
 //
 (*
 val () =
-prerrln1
+prerrsln1
 ("sexpenv_locjoin:nerr=", nerr)
 val () =
-prerrln1(
+prerrsln1(
 "sexpenv_locjoin:stkmap(aft)=\n", stkmap
-)(*prerrln1*)
+)(*prerrsln1*)
 *)
 //
 val
@@ -589,10 +589,10 @@ val+
 //
 (*
 val () =
-prerrln
+prerrsln
 ("sexpenv_insert$any: k0 = ", k0)
 val () =
-prerrln
+prerrsln
 ("sexpenv_insert$any: x0 = ", x0)
 *)
 //
@@ -602,13 +602,13 @@ if
 stkmap_nilq(stkmap)
 then
 (
-//prerrln
+//prerrsln
 //("sexpenv_insert$any: topmap");
 topmap_insert$any(topmap, k0, x0)//top
 )
 else
 (
-//prerrln
+//prerrsln
 //("sexpenv_insert$any: stkmap");
 stkmap_insert$any(stkmap, k0, x0)//inner
 )
@@ -788,12 +788,12 @@ stkmap_poploc0(stkmap)
 //
 (*
 val () =
-prerrln1
+prerrsln1
 ("dexpenv_locjoin:nerr=", nerr)
 val () =
-prerrln1 (
+prerrsln1 (
 "dexpenv_locjoin:stkmap(aft)=\n", stkmap
-) (*prerrln1*)
+) (*prerrsln1*)
 *)
 //
 val
@@ -846,10 +846,10 @@ val+
 //
 (*
 val () =
-prerrln
+prerrsln
 ("dexpenv_insert$any: k0 = ", k0)
 val () =
-prerrln
+prerrsln
 ("dexpenv_insert$any: x0 = ", x0)
 *)
 //
@@ -1120,9 +1120,9 @@ end where
 {
 (*
   val () =
-  prerrln("tr12env_add0_g1mac: k0 = ", k0)
+  prerrsln("tr12env_add0_g1mac: k0 = ", k0)
   val () =
-  prerrln("tr12env_add0_g1mac: x0 = ", x0)
+  prerrsln("tr12env_add0_g1mac: x0 = ", x0)
 *)
 } (*where*)//end-[tr12env_add0_g1mac(env0,...)]
 //
@@ -1153,9 +1153,9 @@ end where
 {
 (*
   val () =
-  prerrln("tr12env_add0_s2tex: k0 = ", k0)
+  prerrsln("tr12env_add0_s2tex: k0 = ", k0)
   val () =
-  prerrln("tr12env_add0_s2tex: x0 = ", x0)
+  prerrsln("tr12env_add0_s2tex: x0 = ", x0)
 *)
 } (*where*)//end-[tr12env_add0_s2tex(env0,...)]
 //
@@ -1186,9 +1186,9 @@ end where
 {
 (*
 val () =
-prerrln("tr12env_add0_s2itm: k0 = ", k0)
+prerrsln("tr12env_add0_s2itm: k0 = ", k0)
 val () =
-prerrln("tr12env_add0_s2itm: x0 = ", x0)
+prerrsln("tr12env_add0_s2itm: x0 = ", x0)
 *)
 } (*where*)//end-[tr12env_add0_s2itm(env0,...)]
 //
@@ -1219,9 +1219,9 @@ end where
 {
 (*
 val () =
-prerrln("tr12env_add0_d2itm: k0 = ", k0)
+prerrsln("tr12env_add0_d2itm: k0 = ", k0)
 val () =
-prerrln("tr12env_add0_d2itm: x0 = ", x0)
+prerrsln("tr12env_add0_d2itm: x0 = ", x0)
 *)
 } (*where*)//end-[tr12env_add0_d2itm(env0,...)]
 //
@@ -1275,11 +1275,11 @@ end where
 {
 (*
 val () =
-prerrln("tr12env_add1_f2env: gsym = ", k0)
+prerrsln("tr12env_add1_f2env: gsym = ", k0)
 *)
 (*
 val () =
-prerrln("tr12env_add1_f2env: fenv = ", x0)
+prerrsln("tr12env_add1_f2env: fenv = ", x0)
 *)
 } (*where*)//end[tr12env_add1_f2env(env0,...)]
 
@@ -1766,7 +1766,7 @@ tr12env_add0_s2itm(env0, sym0, sitm)
 end where
 {
 (*
-val () = prerrln
+val () = prerrsln
 ("tr12env_add0_s2var: s2v0 = ", s2v0)
 *)
 } (*where*)//end[tr12env_add0_s2var(env0,s2v0)]
@@ -1886,7 +1886,7 @@ end where
 //
 (*
   val () =
-  prerrln
+  prerrsln
   ("tr12env_add1_d2con: d2c0 = ", d2c0)
 *)
 //
@@ -1940,7 +1940,7 @@ end where
 //
 (*
   val () =
-  prerrln
+  prerrsln
   ("tr12env_add1_d2cst: d2c0 = ", d2c0)
 *)
 //

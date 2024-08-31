@@ -296,7 +296,7 @@ tmqstk_nil( ) =>
 ( err := 1;
   pshloc2(kxs, kys, err)) where
 {
-val () = prerrln
+val () = prerrsln
 ("tmqstk_locjoin: poploc1: tmqstk_nil")
 }
 //
@@ -305,7 +305,7 @@ tmqstk_svts =>
 ( err := 1;
   pshloc2(kxs, kys, err)) where
 {
-val () = prerrln
+val () = prerrsln
 ("tmqstk_locjoin: poploc1: tmqstk_svts")
 }
 | !
@@ -313,7 +313,7 @@ tmqstk_timp =>
 ( err := 1;
   pshloc2(kxs, kys, err)) where
 {
-val () = prerrln
+val () = prerrsln
 ("tmqstk_locjoin: poploc1: tmqstk_timp")
 }
 //
@@ -322,7 +322,7 @@ tmqstk_let0 _ =>
 ( err := 1;
   pshloc2(kxs, kys, err)) where
 {
-val () = prerrln
+val () = prerrsln
 ("tmqstk_locjoin: poploc1: tmqstk_let0")
 }
 | !
@@ -330,7 +330,7 @@ tmqstk_loc2 _ =>
 ( err := 1;
   pshloc2(kxs, kys, err)) where
 {
-val () = prerrln
+val () = prerrsln
 ("tmqstk_locjoin: poploc1: tmqstk_loc1")
 }
 ) (*case+*)//end of [poploc1(kxs,kys,err)]
@@ -363,7 +363,7 @@ tmqstk_nil( ) =>
 ( err := 1;
   poploc1(kxs, kys, err)) where
 {
-val () = prerrln
+val () = prerrsln
 ("tmqstk_locjoin: poploc2: tmqstk_nil")
 }
 //
@@ -372,7 +372,7 @@ tmqstk_svts _ =>
 ( err := 1;
   poploc1(kxs, kys, err)) where
 {
-val () = prerrln
+val () = prerrsln
 ("tmqstk_locjoin: poploc2: tmqstk_svts")
 }
 | !
@@ -380,7 +380,7 @@ tmqstk_timp _ =>
 ( err := 1;
   poploc1(kxs, kys, err)) where
 {
-val () = prerrln
+val () = prerrsln
 ("tmqstk_locjoin: poploc2: tmqstk_timp")
 }
 //
@@ -389,7 +389,7 @@ tmqstk_let0 _ =>
 ( err := 1;
   poploc1(kxs, kys, err)) where
 {
-val () = prerrln
+val () = prerrsln
 ("tmqstk_locjoin: poploc2: tmqstk_let0")
 }
 | !
@@ -397,7 +397,7 @@ tmqstk_loc1 _ =>
 ( err := 1;
   poploc1(kxs, kys, err)) where
 {
-val () = prerrln
+val () = prerrsln
 ("tmqstk_locjoin: poploc2: tmqstk_loc1")
 }
 //
@@ -645,10 +645,10 @@ tmqstk_timp
 //
 (*
 val () =
-prerrln
+prerrsln
 ("tmqstk_insert_timp: stmp = ", stmp)
 val () =
-prerrln
+prerrsln
 ("tmqstk_insert_timp: d3cl = ", d3cl)
 *)
 //
@@ -690,7 +690,7 @@ end where
 {
 (*
 val () =
-prerrln
+prerrsln
 ("tmqstk_insert_decl: d3cl = ", d3cl)
 *)
 }(*where*)//end-of-[tmqstk_insert_decl(...)]
@@ -745,12 +745,12 @@ _(* otherwise *) => (   false   )
 val () =
 prerr("tmqstk_search_dcst:")//val()
 val () =
-prerrln("test: dcl = ", dcl)//val()
+prerrsln("test: dcl = ", dcl)//val()
 //
 val () =
 prerr("tmqstk_search_dcst:")//val()
 val () =
-prerrln("test: d2c = ", d2c)//val()
+prerrsln("test: d2c = ", d2c)//val()
 //
 *)
 //
@@ -829,20 +829,20 @@ tmqstk_loc2(kxs) => loop(kxs,d2c,res)
 (*
 val () =
 prerr("tmqstk_search_dcst:")
-val () = prerrln("loop: d2c = ", d2c)
+val () = prerrsln("loop: d2c = ", d2c)
 *)
 //
 (*
 val () =
 prerr("tmqstk_search_dcst:")
-val () = prerrln("loop: res = ", res)
+val () = prerrsln("loop: res = ", res)
 *)
 //
 }(*where*) // end of [loop(kxs,d2c,res)]
 //
 (*
 val () =
-prerrln("tmqstk_search_dcst: d2c = ", d2c)
+prerrsln("tmqstk_search_dcst: d2c = ", d2c)
 *)
 //
 }(*where*)//end-of-[tmqstk_search_dcst(...)]
@@ -1154,7 +1154,7 @@ tmpequal_d3cl_t2js(dcl1, t2js)
 val () =
 prerr("tmqstk_impltmprecq:")
 val () =
-prerrln("tmpequal: test = ", test)
+prerrsln("tmpequal: test = ", test)
 *)
 //
 in//let
@@ -1174,7 +1174,7 @@ tmqstk_impltmprecq(stk1,d3cl,t2js))
 val () =
 prerr("tmqstk_impltmprecq:")
 val () =
-prerrln("tmqstk_timp: dcl1 = ", dcl1)
+prerrsln("tmqstk_timp: dcl1 = ", dcl1)
 *)
 //
 }(*where*)//end-of-[tmqstk_timp(...)]
@@ -1205,9 +1205,9 @@ tmqstk_impltmprecq(stk1, d3cl, t2js)
 //
 (*
 val () = // d3cl: stamp
-prerrln("tmqstk_impltmprecq: d3cl = ", d3cl)
+prerrsln("tmqstk_impltmprecq: d3cl = ", d3cl)
 val () =
-prerrln("tmqstk_impltmprecq: t2js = ", t2js)
+prerrsln("tmqstk_impltmprecq: t2js = ", t2js)
 *)
 //
 }(*where*) // end-of-[tmqstk_impltmprecq(...)]
@@ -1238,9 +1238,9 @@ end where
 //
 (*
 val () =
-prerrln("tr3cenv_impltmprecq: d3cl = ", d3cl)
+prerrsln("tr3cenv_impltmprecq: d3cl = ", d3cl)
 val () =
-prerrln("tr3cenv_impltmprecq: t2js = ", t2js)
+prerrsln("tr3cenv_impltmprecq: t2js = ", t2js)
 *)
 //
 }(*where*) // end-of-(tr3cenv_impltmprecq(env0))

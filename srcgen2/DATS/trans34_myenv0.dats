@@ -186,7 +186,7 @@ where
 {
 (*
 val () =
-prerrln
+prerrsln
 ("linstk_pshift0: stk0 = ", stk0)
 *)
 }
@@ -201,7 +201,7 @@ where
 {
 (*
 val () =
-prerrln
+prerrsln
 ("linstk_pshcas0: stk0 = ", stk0)
 *)
 }
@@ -267,7 +267,7 @@ loop
 {
 //
 val () =
-prerrln
+prerrsln
 ("linstk_lamvars:loop: stk0 = ", stk0)
 //
 }(*where*)
@@ -334,7 +334,7 @@ loop
 {
 //
 val () =
-prerrln
+prerrsln
 ("linstk_letvars:loop: stk0 = ", stk0)
 //
 }(*where*)
@@ -647,7 +647,7 @@ val
 end where
 {
 val () =
-prerrln
+prerrsln
 ("linstk_popift0:loop: stk0 = ", stk0)
 }(*where*) // end of [linstk_popift0(stk)]
 //
@@ -716,7 +716,7 @@ val
 end where
 {
 val () =
-prerrln
+prerrsln
 ("linstk_popift0:loop: stk0 = ", stk0)
 } (*where*) // end of [linstk_popcas0(stk)]
 //
@@ -795,7 +795,7 @@ end where
 {
 //
 val () =
-prerrln("linstk_getlam0: stk0 = ", stk0)
+prerrsln("linstk_getlam0: stk0 = ", stk0)
 //
 }(*where*) // end of [linstk_getlam0(stk)]
 //
@@ -873,7 +873,7 @@ end where
 {
 //
 val () =
-prerrln("linstk_getlet0: stk0 = ", stk0)
+prerrsln("linstk_getlet0: stk0 = ", stk0)
 //
 }(*where*) // end of [linstk_getlet0(stk)]
 //
@@ -951,7 +951,7 @@ end where
 {
 //
 val () =
-prerrln("linstk_getift0: stk0 = ", stk0)
+prerrsln("linstk_getift0: stk0 = ", stk0)
 //
 }(*where*) // end of [linstk_getlet0(stk)]
 //
@@ -1029,7 +1029,7 @@ end where
 {
 //
 val () =
-prerrln("linstk_getcas0: stk0 = ", stk0)
+prerrsln("linstk_getcas0: stk0 = ", stk0)
 //
 }(*where*) // end of [linstk_getcas0(stk)]
 //
@@ -1184,10 +1184,10 @@ linstk_dvar
 //
 (*
 val () =
-prerrln
+prerrsln
 ("linstk_d2vins_dvar: d2v1 = ", d2v1)
 val () =
-prerrln
+prerrsln
 ("linstk_d2vins_dvar: dtp1 = ", dtp1)
 *)
 //
@@ -1206,10 +1206,10 @@ linstk_dget
 //
 (*
 val () =
-prerrln
+prerrsln
 ("linstk_d2vins_dget: d2v1 = ", d2v1)
 val () =
-prerrln
+prerrsln
 ("linstk_d2vins_dget: dtp1 = ", dtp1)
 *)
 //
@@ -1226,10 +1226,10 @@ linstk_dset
 //
 (*
 val () =
-prerrln
+prerrsln
 ("linstk_d2vins_dset: d2v1 = ", d2v1)
 val () =
-prerrln
+prerrsln
 ("linstk_d2vins_dset: dtp1 = ", dtp1)
 *)
 //
@@ -1248,10 +1248,10 @@ linstk_dvtp
 //
 (*
 val () =
-prerrln
+prerrsln
 ("linstk_d2vins_dvtp: d2v1 = ", d2v1)
 val () =
-prerrln
+prerrsln
 ("linstk_d2vins_dvtp: dtp1 = ", dtp1)
 *)
 //
@@ -1271,10 +1271,10 @@ linstk_dlft
 //
 (*
 val () =
-prerrln
+prerrsln
 ("linstk_d2vins_dlft: d2v1 = ", d2v1)
 val () =
-prerrln
+prerrsln
 ("linstk_d2vins_dlft: lft1 = ", lft1)
 *)
 //
@@ -1851,7 +1851,7 @@ end(*let*)//end-of-[f0_annot(env0,dpat)]
 (* ****** ****** *)
 //
 val () =
-prerrln("tr34env_insert_dpat: dpat = ", dpat)
+prerrsln("tr34env_insert_dpat: dpat = ", dpat)
 //
 (* ****** ****** *)
 //
@@ -1875,7 +1875,7 @@ tr34env_insert_dpat(env0, dpat)
 {
 //
 val () =
-prerrln("tr34env_insert_dgpt: dgpt = ", dgpt)
+prerrsln("tr34env_insert_dgpt: dgpt = ", dgpt)
 //
 }(*where*)//end-of-[tr34env_insert_dgpt(env0,dgpt)]
 //
@@ -1896,7 +1896,7 @@ tr34env_insert_dpatlst(env0, d4ps)
 {
 //
 val () =
-prerrln("tr34env_insert_farg: farg = ", farg)
+prerrsln("tr34env_insert_farg: farg = ", farg)
 //
 }(*where*)//end-of-[tr34env_insert_farg(env0,farg)]
 //
@@ -1987,7 +1987,7 @@ end(*let*) // end-of-[list_cons(...)]
 )(*case+*) // end-of-[auxmain(env0,dvts)]
 //
 val () =
-prerrln("tr34env_d2vtck_dvts: dvts = ", dvts)
+prerrsln("tr34env_d2vtck_dvts: dvts = ", dvts)
 //
 }(*where*)//end of [tr34env_d2vtck_dvts(env0,dvts)]
 

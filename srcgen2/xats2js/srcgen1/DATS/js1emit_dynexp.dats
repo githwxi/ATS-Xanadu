@@ -129,7 +129,7 @@ val name =
 //
 in//let
 (
-  print('"', name, '"') )
+  prints('"', name, '"') )
 end(*let*)//end-of-[d2conjs1(...)]
 //
 (* ****** ****** *)
@@ -160,7 +160,7 @@ ipat.node() of
 //
 |I0Pcon(d2c0) =>
 (
-print
+prints
 ("XATSCTAG("
 ,'"', name, '"', ", ", ctag, ")")
 ) where
@@ -169,7 +169,7 @@ print
   val name = d2con_get_name(d2c0) }
 //
 |
-_(*non-I0Pcon*) => print('"',ipat,'"')
+_(*non-I0Pcon*) => prints('"',ipat,'"')
 //
 end(*let*)//end-of-[i0ctgjs1(filr,ipat)]
 //
@@ -188,13 +188,13 @@ ipat.node() of
 //
 |I0Pcon(d2c0) =>
 (
-  print('"', name, '"')) where
+  prints('"', name, '"')) where
 {
   val name = d2con_get_name(d2c0)
 }
 //
 |
-_(*non-I0Pcon*) => print('"',ipat,'"')
+_(*non-I0Pcon*) => prints('"',ipat,'"')
 //
 end(*let*)//end-of-[i0pcnjs1(filr,ipat)]
 //
@@ -283,7 +283,7 @@ ipat.node() of
 |
 _(*non-I0Pcon*) =>
 (
-conj(b0); print('"',ipat,'"'))
+conj(b0); prints('"',ipat,'"'))
 //end-of-[f0_ipat(b0,ival,ipat)]
 //
 (* ****** ****** *)
@@ -309,7 +309,7 @@ g_print
 in//let
 (conj(b0)
 ;print("XATS000_ctgeq(")
-;print(ival,", ",i0f0, ")")
+;prints(ival,", ",i0f0, ")")
 ;f0_ipatlst(b0+1,0,ival,ipat,i0ps))
 end(*let*)//end-of-[f0_dapp(...)]
 //
@@ -385,14 +385,14 @@ tknd.node() of
 //
 |T_TRCD10(knd0) =>
 (
-print("XATSTRCD(", knd0, ")"))
+prints("XATSTRCD(", knd0, ")"))
 |T_TRCD20(knd0) =>
 (
-print("XATSTRCD(", knd0, ")"))
+prints("XATSTRCD(", knd0, ")"))
 //
 |_(*otherwise*) =>
 (
-print
+prints
 ("XATSTRCD(", "'", tknd, "'", ")"))
 //
 end(*let*)//end-of-[xtrcdjs1(filr,tknd)]
@@ -412,7 +412,7 @@ LABsym(sym) =>
 let
 val nam =
 symbl_get_name(sym) in//let
-  print("'", nam, "'") end//let
+  prints("'", nam, "'") end//let
 ) where
 {
 //
@@ -442,13 +442,13 @@ timp.node() of
 case+ dopt of
 |
 optn_nil() =>
-print("T1IMPall1(", ")")
+prints("T1IMPall1(", ")")
 |
 optn_cons(idcl) =>
 let
 val loc0 = idcl.lctn((*0*))
 val (  ) =
-print("T1IMPall1(", loc0, ")")
+prints("T1IMPall1(", loc0, ")")
 end//let
 )
 //
@@ -458,13 +458,13 @@ end//let
 case+ dopt of
 |
 optn_nil() =>
-print("T1IMPallx(", ")")
+prints("T1IMPallx(", ")")
 |
 optn_cons(idcl) =>
 let
 val loc0 = idcl.lctn((*0*))
 val (  ) =
-print("T1IMPallx(", loc0, ")")
+prints("T1IMPallx(", loc0, ")")
 end//let
 )
 //
@@ -492,12 +492,12 @@ timp.node() of
 case+ dopt of
 |
 optn_nil() =>
-print("T1IMPall1(", ")")
+prints("T1IMPall1(", ")")
 |
 optn_cons(idcl) =>
 let
 val (  ) =
-print("T1IMPall1(", idcl, ")")
+prints("T1IMPall1(", idcl, ")")
 end//let
 )
 //
@@ -507,12 +507,12 @@ end//let
 case+ dopt of
 |
 optn_nil() =>
-print("T1IMPallx(", ")")
+prints("T1IMPallx(", ")")
 |
 optn_cons(idcl) =>
 let
 val (  ) =
-print("T1IMPallx(", idcl, ")")
+prints("T1IMPallx(", idcl, ")")
 end//let
 )
 //
@@ -539,7 +539,7 @@ I1Dtmpsub
 (
 print(
 "I1Dtmpsub(");
-print(svts, ";");
+prints(svts, ";");
 praux(idcl); print(")"))//tmpsub
 //
 |
@@ -547,7 +547,7 @@ I1Dimplmnt0
 (tknd, stmp
 ,dimp, fjas,icmp) =>
 (
-print(
+prints(
 "I1Dimplmnt0(", dimp, ")"))//impl
 //
 |
@@ -569,14 +569,14 @@ i1intjs1
 case-
 tint.node() of
 |T_INT01
-(  rep  ) => print
+(  rep  ) => prints
 ("XATSINT1(", rep, ")")
 |T_INT02
-(bas,rep) => print
+(bas,rep) => prints
 ("XATSINT2(",bas,",",rep,")")
 |T_INT03
 (bas
-,rep,sfx) => print
+,rep,sfx) => prints
 ("XATSINT3("
 ,bas, ",", rep, ",", sfx, ")")
 ) where
@@ -612,13 +612,13 @@ case-
 tchr.node() of
 |
 T_CHAR1_nil0 _ =>
-print("XATSCNUL(", ")")
+prints("XATSCNUL(", ")")
 |
 T_CHAR2_char(rep) =>
-print("XATSCHAR(", rep, ")")
+prints("XATSCHAR(", rep, ")")
 |
 T_CHAR3_blsh(rep) =>
-print("XATSCHAR(", rep, ")")
+prints("XATSCHAR(", rep, ")")
 //
 ) where
 {
@@ -757,7 +757,7 @@ list_cons(_, i1bs) =>
   (i0 > 1)
   then
   print(", ")
-; print("arg", i0)
+; prints("arg", i0)
 ; loop3(i0+1, i1bs, fjas))
 )
 //
@@ -785,7 +785,7 @@ ival.node() of
 (* ****** ****** *)
 (* ****** ****** *)
 |I1Vnil
-((*0*)) => print("[", "]")
+((*0*)) => prints("[", "]")
 (* ****** ****** *)
 (* ****** ****** *)
 |I1Vint
@@ -823,17 +823,17 @@ ival.node() of
 //
 |I1Vaddr(i1v1) =>
 (
-  print("XATSADDR(", i1v1, ")") )
+  prints("XATSADDR(", i1v1, ")") )
 |I1Vaexp(i0e1) =>
 (
-  print("XATSAEXP(", i0e1, ")") )
+  prints("XATSAEXP(", i0e1, ")") )
 //
 (* ****** ****** *)
 (* ****** ****** *)
 |I1Vp0rj
 ( itup,pind ) =>
 (
-print
+prints
 ("XATSP0RJ(",itup,"[",pind,"]", ")"))
 (* ****** ****** *)
 |I1Vp1cn
@@ -841,7 +841,7 @@ print
 , icon, pind) =>
 (
 print("XATSP1CN(");
-print
+prints
 (ipat, ", ", icon, "[",pind,"+1]", ")")
 ) where
 { #impltmp
@@ -852,7 +852,7 @@ print
 , itup, pind) =>
 (
 print("XATSP1RJ(");
-print
+prints
 (trcd, ", ", itup, "[", pind, "]", ")")
 ) where
 { #impltmp
@@ -862,7 +862,7 @@ print
 //
 |I1Vlpcn
 (plab, itup) =>
-( print
+( prints
   ("XATSLPCN(", plab, ", ", itup, ")")
 ) where
 { #impltmp
@@ -870,7 +870,7 @@ print
 //
 |I1Vlpft
 (plab, itup) =>
-( print
+( prints
   ("XATSLPFT(", plab, ", ", itup, ")")
 ) where
 { #impltmp
@@ -878,7 +878,7 @@ print
 //
 |I1Vlpbx
 (plab, itup) =>
-( print
+( prints
   ("XATSLPBX(", plab, ", ", itup, ")")
 ) where
 { #impltmp
@@ -909,7 +909,7 @@ val+
 I1LAB(lab1, i1v2) = liv0
 in//let
 (
-print(lab1, ": ", i1v2)) where
+prints(lab1, ": ", i1v2)) where
 {
   #impltmp
   g_print<label>(x) = labeljs1(filr, x)
@@ -1037,12 +1037,12 @@ i1valjs1_list(filr,i1vs);strnfpr(filr,"))"))
 |I1INSpflt
 (lab0, i1v1) =>
 (
-print("XATSPFLT(", i1v1, "[", lab0, "]", ")"))
+prints("XATSPFLT(", i1v1, "[", lab0, "]", ")"))
 //
 |I1INSproj
 (lab0, i1v1) =>
 (
-print("XATSPROJ(", i1v1, "[", lab0, "]", ")"))
+prints("XATSPROJ(", i1v1, "[", lab0, "]", ")"))
 //
 (* ****** ****** *)
 //
@@ -1814,7 +1814,7 @@ I1BNDcons(itnm, i0p1, dvvs) =>
 (
 nindfpr(filr,nind);
 (
-  print("let ", itnm, " = ", "arg", i0, "\n")))
+prints("let ", itnm, " = ", "arg", i0, "\n")))
 }
 )
 //

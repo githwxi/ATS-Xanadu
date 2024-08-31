@@ -535,7 +535,7 @@ endlet // end of [  _(* otherwise *)  ]
 (* ****** ****** *)
 (*
 val (  ) =
-prerrln("tread12_d2ecl: d2cl = ", d2cl)
+prerrsln("tread12_d2ecl: d2cl = ", d2cl)
 *)
 (* ****** ****** *)
 //
@@ -844,10 +844,10 @@ val loc = dcl.lctn()
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_include(12): loc = ", loc)
 val () =
-prerrln
+prerrsln
 ("f0_include(12): dopt = ", dopt)
 *)
 //
@@ -897,19 +897,19 @@ case+ dres of
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_staload(12): loc = ", loc)
 val () =
-prerrln
+prerrsln
 ("f0_staload(12): gsrc = ", gsrc)
 val () =
-prerrln
+prerrsln
 ("f0_staload(12): fopt = ", fopt)
 val () =
-prerrln
+prerrsln
 ("f0_staload(12): dres = ", dres)
 val () =
-prerrln
+prerrsln
 ("f0_staload(12): fknd = ", fknd)
 *)
 //
@@ -1323,9 +1323,9 @@ case+ scs2 of
 (*
   val loc0 = simp.lctn()
   val (  ) =
-  prerrln("tread12_simpl: loc0 = ", loc0)
+  prerrsln("tread12_simpl: loc0 = ", loc0)
   val (  ) =
-  prerrln("tread12_simpl: simp = ", simp)
+  prerrsln("tread12_simpl: simp = ", simp)
 *)
 //
 } (*where*) // end-of-[tread12_simpl(simp,err)]
@@ -1360,9 +1360,9 @@ case+ d2cs of
 (*
   val loc0 = dimp.lctn()
   val (  ) =
-  prerrln("tread12_dimpl: loc0 = ", loc0)
+  prerrsln("tread12_dimpl: loc0 = ", loc0)
   val (  ) =
-  prerrln("tread12_dimpl: dimp = ", dimp)
+  prerrsln("tread12_dimpl: dimp = ", dimp)
 *)
 //
 } (*where*) // end-of-[tread12_dimpl(dimp,err)]
@@ -1422,7 +1422,7 @@ let
 val e00 = err
 (*
 val ( ) =
-prerrln
+prerrsln
 ("tread12_teqd2exp: d2e2 = ", d2e2)
 *)
 val d2e2 = tread12_d2exp(d2e2, err)
@@ -1448,7 +1448,7 @@ let
 val e00 = err
 (*
 val ( ) =
-prerrln
+prerrsln
 ("tread12_wths2exp: s2e1 = ", s2e1)
 *)
 val s2e1 = tread12_s2exp(s2e1, err)

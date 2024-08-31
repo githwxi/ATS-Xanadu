@@ -381,9 +381,9 @@ endlet // end-of-[ f0_cond(g1e,err) ]
 (* ****** ****** *)
 (*
 val (  ) =
-prerrln("tread01_g1exp: loc0 = ", loc0)
+prerrsln("tread01_g1exp: loc0 = ", loc0)
 val (  ) =
-prerrln("tread01_g1exp: g1e0 = ", g1e0)
+prerrsln("tread01_g1exp: g1e0 = ", g1e0)
 *)
 (* ****** ****** *)
 //
@@ -622,9 +622,9 @@ val loc0 = s1t0.lctn()
 //
 (*
 val (  ) =
-prerrln("tread01_sort1: loc0 = ", loc0)
+prerrsln("tread01_sort1: loc0 = ", loc0)
 val (  ) =
-prerrln("tread01_sort1: s1t0 = ", s1t0)
+prerrsln("tread01_sort1: s1t0 = ", s1t0)
 *)
 //
 } (*where*) // end of [tread01_sort1(s1t0,err)]
@@ -1345,9 +1345,9 @@ endlet // end of [ f0_lams(s1e,err) ]
 (* ****** ****** *)
 (*
 val (  ) =
-prerrln("tread01_s1exp: loc0 = ", loc0)
+prerrsln("tread01_s1exp: loc0 = ", loc0)
 val (  ) =
-prerrln("tread01_s1exp: s1e0 = ", s1e0)
+prerrsln("tread01_s1exp: s1e0 = ", s1e0)
 *)
 (* ****** ****** *)
 //

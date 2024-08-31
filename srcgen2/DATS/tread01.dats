@@ -168,7 +168,7 @@ val
 source =
 d1parsed_get_source(dpar)
 in//let
-prerrln
+prerrsln
 ("d1parsed_fpemsg: source = ", source)
 end//let//end-of-[val()]
 *)

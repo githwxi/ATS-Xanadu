@@ -203,7 +203,7 @@ case+ dtp0 of
 {
 //
 val () =
-prerrln
+prerrsln
 ("d4typ_get_styp: dtp0 = ", dtp0)
 //
 }(*where*)//end-of-[d4typ_get_styp]
@@ -285,7 +285,7 @@ s2cst_get34_styp
 {
 (*
 val () =
-prerrln
+prerrsln
 ("\
 unify34_s2typ: \
 s2typ_eval$s2cst: s2c0 = ", s2c0)
@@ -314,10 +314,10 @@ val t2p0 = s2typ_unargx(t2p0)
 //
 (*
 val () =
-prerrln
+prerrsln
 ("unify34_s2typ: t2p1 = ", t2p1)
 val () =
-prerrln
+prerrsln
 ("unify34_s2typ: t2p2 = ", t2p2)
 *)
 //

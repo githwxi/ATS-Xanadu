@@ -373,7 +373,7 @@ g_print$out<>() = out
 val+I1OPR(name) = iopr
 //
 in//let
-  print("I1OPR(", name, ")") endlet
+  prints("I1OPR(", name, ")") endlet
 //
 end (*local*) // end of [local(i1opr_tbox)]
 //
@@ -419,7 +419,7 @@ g_print$out<>() = out
 val+I1TNM(stmp) = itnm
 //
 in//let
-  print("I1TNM(", stmp, ")") endlet
+  prints("I1TNM(", stmp, ")") endlet
 //
 (* ****** ****** *)
 //

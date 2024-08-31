@@ -112,7 +112,7 @@ val-
 D2Einclude _ = d2cl.node()
 //
 val () =
-prerrln
+prerrsln
 ("f0_include(dp): d2cl = ", d2cl)
 //
 end//let//end-of-[f0_include(env0,d2cl)]
@@ -128,7 +128,7 @@ val-
 D2Estaload _ = d2cl.node()
 //
 val () =
-prerrln
+prerrsln
 ("f0_staload(dp): d2cl = ", d2cl)
 //
 end//let//end-of-[f0_staload(env0,d2cl)]
@@ -138,7 +138,7 @@ end//let//end-of-[f0_staload(env0,d2cl)]
 (*
 val () =
 (
-  prerrln("xd2penv_d2ecl: d2cl = ", d2cl))
+  prerrsln("xd2penv_d2ecl: d2cl = ", d2cl))
 *)
 //
 (* ****** ****** *)

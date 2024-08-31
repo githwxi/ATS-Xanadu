@@ -81,7 +81,7 @@ D3Cimplmnt0
 {
 (*
 val () =
-prerrln
+prerrsln
 ("d3ecl_get_stmp: d3cl = ", d3cl)
 *)
 }(*where*)//end-of-[d3ecl_get_stmp(...)]
@@ -96,10 +96,10 @@ trtmp3b_d3ecl
 val
 loc0 = d3cl.lctn()
 val () =
-prerrln
+prerrsln
 ("trtmp3b_d3ecl: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trtmp3b_d3ecl: d3cl = ", d3cl)
 *)
 //
@@ -248,13 +248,13 @@ D3Cstaload
 ,fopt, dopt) = d3cl.node()
 //
 (*
-val () = prerrln
+val () = prerrsln
 ("f0_staload(3b): knd0 = ", knd0)
-val () = prerrln
+val () = prerrsln
 ("f0_staload(3b): tknd = ", tknd)
-val () = prerrln
+val () = prerrsln
 ("f0_staload(3b): gsrc = ", gsrc)
-val () = prerrln
+val () = prerrsln
 ("f0_staload(3b): dopt = ", dopt)
 *)
 //
@@ -311,10 +311,10 @@ D3Cvaldclst
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_valdclst(3b): loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("f0_valdclst(3b): d3cl = ", d3cl)
 *)
 //
@@ -344,10 +344,10 @@ D3Cvardclst
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_vardclst(3b): loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("f0_vardclst(3b): d3cl = ", d3cl)
 *)
 //
@@ -379,10 +379,10 @@ D3Cfundclst
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_fundclst(3b): loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("f0_fundclst(3b): d3cl = ", d3cl)
 *)
 //
@@ -482,7 +482,7 @@ end where
 {
 (*
   val () =
-  prerrln("trtmp3b_d3valdcl: dval = ", dval)
+  prerrsln("trtmp3b_d3valdcl: dval = ", dval)
 *)
 }(*let*)//end-of[trtmp3b_d3valdcl(env0,dval)]
 //
@@ -515,7 +515,7 @@ end where
 {
 (*
   val () =
-  prerrln("trtmp3b_d3vardcl: dvar = ", dvar)
+  prerrsln("trtmp3b_d3vardcl: dvar = ", dvar)
 *)
 }(*let*)//end-of-[trtmp3b_d3vardcl(env0,dvar)]
 //
@@ -555,7 +555,7 @@ end where
 //
 (*
 val () =
-prerrln("trtmp3b_d3fundcl: dfun = ", dfun)
+prerrsln("trtmp3b_d3fundcl: dfun = ", dfun)
 *)
 //
 }(*where*)//end-of-[trtmp3b_d3fundcl(env0,dfun)]

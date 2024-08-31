@@ -201,9 +201,9 @@ let
 //
   val
   loc = dcl.lctn()
-  val () = prerrln
+  val () = prerrsln
   ("fperr30_d3ecl: auxmain: loc = ", loc)
-  val () = prerrln
+  val () = prerrsln
   ("fperr30_d3ecl: auxmain: dcl = ", dcl)
 //
 end (*let*) // end-of-[ (* otherwise *) ]
@@ -227,13 +227,13 @@ let
 val loc0 = dcl0.lctn()
 in//let
 (*
-prerrln
+prerrsln
 ("fperr30_d3pat: loc0 = ", loc0)
 *)
 end//let
 (*
 val () =
-prerrln
+prerrsln
 ("fperr30_d3ecl: dcl0 = ", dcl0)
 *)
 //
@@ -251,7 +251,7 @@ if
 >FPERR30_ERRVL) then () else
 let
 val loc0 = dcl0.lctn() in
-println
+printsln
 ("FPERR30-ERROR:",loc0,":",dcl0)
 end
 )

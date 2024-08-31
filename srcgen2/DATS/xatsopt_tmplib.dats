@@ -287,7 +287,7 @@ in//let
 case+ lab of
 |
 S0LAB(l01,t02,x03) =>
-print("S0LAB(",l01,";",x03,")")
+prints("S0LAB(",l01,";",x03,")")
 end(*let*)//end-of-[s0lab_fprint]
 //
 #impltmp
@@ -330,7 +330,7 @@ in//let
 case+ lab of
 |
 D0LAB(l01,t02,x03) =>
-print("D0LAB(",l01,";",x03,")")
+prints("D0LAB(",l01,";",x03,")")
 end(*let*)//end-of-[d0lab_fprint]
 //
 #impltmp
@@ -593,10 +593,11 @@ g_print
 case+ tdxp of
 |
 TEQD0EXPnone() =>
-print("TEQD0EXPnone(", ")")
+prints("TEQD0EXPnone(", ")")
 |
 TEQD0EXPsome(tok, d0e) =>
-print("TEQD0EXPsome(", tok, ";", d0e, ")"))
+prints
+("TEQD0EXPsome(", tok, ";", d0e, ")"))
 //
 #impltmp
 g_print
@@ -605,10 +606,10 @@ g_print
 case+ wsxp of
 |
 WTHS0EXPnone() =>
-print("WTHS0EXPnone(", ")")
+prints("WTHS0EXPnone(", ")")
 |
 WTHS0EXPsome(tok, s0e) =>
-print("WTHS0EXPsome(", tok, ";", s0e, ")"))
+prints("WTHS0EXPsome(", tok, ";", s0e, ")"))
 //
 (* ****** ****** *)
 
@@ -650,7 +651,7 @@ in//let
 case+ lab of
 |
 S1LAB(l01, x02) =>
-print("S1LAB(",l01,";",x02,")")
+prints("S1LAB(",l01,";",x02,")")
 end(*let*)//end-of-[s1lab_fprint]
 //
 #impltmp
@@ -693,7 +694,7 @@ in//let
 case+ lab of
 |
 D1LAB(l01, x02) =>
-print("D1LAB(",l01,";",x02,")")
+prints("D1LAB(",l01,";",x02,")")
 end(*let*)//end-of-[d1lab_fprint]
 //
 #impltmp
@@ -940,10 +941,11 @@ g_print
 case+ tdxp of
 |
 TEQD1EXPnone() =>
-print("TEQD1EXPnone(", ")")
+prints("TEQD1EXPnone(", ")")
 |
 TEQD1EXPsome(tok1, d1e2) =>
-print("TEQD1EXPsome(", tok1, ";", d1e2, ")"))
+prints
+("TEQD1EXPsome(", tok1, ";", d1e2, ")"))
 //
 #impltmp
 g_print
@@ -952,10 +954,10 @@ g_print
 case+ wsxp of
 |
 WTHS1EXPnone() =>
-print("WTHS1EXPnone(", ")")
+prints("WTHS1EXPnone(", ")")
 |
 WTHS1EXPsome(tok1, s1e2) =>
-print("WTHS1EXPsome(", tok1, ";", s1e2, ")"))
+prints("WTHS1EXPsome(", tok1, ";", s1e2, ")"))
 //
 (* ****** ****** *)
 (*
@@ -1093,7 +1095,7 @@ in//let
 case+ lab of
 |
 S2LAB(l01, x02) =>
-print("S2LAB(",l01,";",x02,")")
+prints("S2LAB(",l01,";",x02,")")
 end(*let*)//end-of-[s2lab_fprint]
 //
 #impltmp
@@ -1135,7 +1137,7 @@ in//let
 case+ lab of
 |
 D2LAB(l01, x02) =>
-print("D2LAB(",l01,";",x02,")")
+prints("D2LAB(",l01,";",x02,")")
 end(*let*)//end-of-[d2lab_fprint]
 //
 #impltmp
@@ -1334,10 +1336,10 @@ g_print
 case+ tdxp of
 |
 TEQD2EXPnone() =>
-print("TEQD2EXPnone(", ")")
+prints("TEQD2EXPnone(", ")")
 |
 TEQD2EXPsome(tok0, d2e1) =>
-print("TEQD2EXPsome(", tok0, ";", d2e1, ")"))
+prints("TEQD2EXPsome(", tok0, ";", d2e1, ")"))
 //
 #impltmp
 g_print
@@ -1346,10 +1348,10 @@ g_print
 case+ wsxp of
 |
 WTHS2EXPnone() =>
-print("WTHS2EXPnone(", ")")
+prints("WTHS2EXPnone(", ")")
 |
 WTHS2EXPsome(tok0, s2e1) =>
-print("WTHS2EXPsome(", tok0, ";", s2e1, ")"))
+prints("WTHS2EXPsome(", tok0, ";", s2e1, ")"))
 //
 (* ****** ****** *)
 //
@@ -1358,19 +1360,22 @@ g_print
 <f2env>(fenv) = print("<f2env>")
 //
 (* ****** ****** *)
-
+//
 #impltmp
 g_print
 <s2taloadopt>(dopt) =
 (
 case+ dopt of
 |S2TALOADnone() =>
-print("S2TALOADnone(", ")")
+(
+ prints("S2TALOADnone(", ")"))
 |S2TALOADfenv(fenv) =>
-print("S2TALOADfenv(", fenv, ")")
+(
+ prints("S2TALOADfenv(", fenv, ")"))
 |S2TALOADdpar(knd0, dpar) =>
-print("S2TALOADdpar(", knd0, ";", dpar, ")"))
-
+(
+ prints("S2TALOADdpar(", knd0, ";", dpar, ")")))
+//
 (* ****** ****** *)
 (*
 HX: for level-3 syntax
@@ -1411,7 +1416,7 @@ in//let
 case+ lab of
 |
 D3LAB(l01, x02) =>
-print("D3LAB(",l01,";",x02,")")
+prints("D3LAB(",l01,";",x02,")")
 end(*let*)//end-of-[d3lab_fprint]
 //
 #impltmp
@@ -1488,10 +1493,10 @@ in//let
 case+ tenv of
 |
 D3TOPENVnone() =>
-print("D3TOPENVnone(", ")")
+prints("D3TOPENVnone(", ")")
 |
 D3TOPENVsome(tmap) =>
-print("D3TOPENVsome(", tmap, ")"))end
+prints("D3TOPENVsome(", tmap, ")"))end
 //
 (* ****** ****** *)
 //
@@ -1514,10 +1519,10 @@ in//let
 case+ tdxp of
 |
 TEQD3EXPnone() =>
-print("TEQD3EXPnone(", ")")
+prints("TEQD3EXPnone(", ")")
 |
 TEQD3EXPsome(tok0, d3e1) =>
-print("TEQD3EXPsome(",tok0,";",d3e1,")"))
+prints("TEQD3EXPsome(",tok0,";",d3e1,")"))
 endlet // end-of-[g_print<teqd3exp>(tdxp)]
 //
 (* ****** ****** *)
@@ -1528,9 +1533,11 @@ g_print
 (
 case+ dopt of
 |S3TALOADnone(dopt) =>
-print("S3TALOADnone(", dopt, ")")
+(
+ prints("S3TALOADnone(", dopt, ")"))
 |S3TALOADdpar(knd0, dpar) =>
-print("S3TALOADdpar(", knd0, ";", dpar, ")"))
+(
+ prints("S3TALOADdpar(", knd0, ";", dpar, ")")))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1575,7 +1582,7 @@ in//let
 case+ lab of
 |
 D4LAB(l01, x02) =>
-print("D4LAB(",l01,";",x02,")")
+prints("D4LAB(",l01,";",x02,")")
 end(*let*)//end-of-[d4lab_fprint]
 //
 #impltmp
@@ -1660,10 +1667,10 @@ in//let
 case+ tdxp of
 |
 TEQD4EXPnone() =>
-print("TEQD4EXPnone(", ")")
+prints("TEQD4EXPnone(", ")")
 |
 TEQD4EXPsome(tok0, d4e1) =>
-print("TEQD4EXPsome(",tok0,";",d4e1,")"))
+prints("TEQD4EXPsome(",tok0,";",d4e1,")"))
 endlet // end-of-[g_print<teqd4exp>(tdxp)]
 //
 (* ****** ****** *)

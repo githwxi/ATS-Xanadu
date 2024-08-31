@@ -668,13 +668,13 @@ s2exp_apps
 //
 (*
 val () =
-prerrln
+prerrsln
 ("s2exp_apps: s2f0 = ", s2f0)
 val () =
-prerrln
+prerrsln
 ("s2exp_apps: s2es = ", s2es)
 val () =
-prerrln
+prerrsln
 ("s2exp_apps: s2f0.sort = ", s2f0.sort())
 *)
 //
@@ -922,9 +922,9 @@ end (*let*) // end of [f0_cbrf(...)]
 //
 (*
 val () =
-prerrln("s2exp_apps_pq: s2f0 = ", s2f0)
+prerrsln("s2exp_apps_pq: s2f0 = ", s2f0)
 val () =
-prerrln("s2exp_apps_pq: s2es = ", s2es)
+prerrsln("s2exp_apps_pq: s2es = ", s2es)
 *)
 //
 } (*where*) // end of [s2exp_apps_pq(...)]
@@ -1651,11 +1651,13 @@ let
   val s2t0 = sort2_none0() 
 //
 (*
-val (  ) = prerrln
-("s2exp_none1: s1e0 = ", s1e0)
+val (  ) =
+(
+  prerrsln
+  ("s2exp_none1: s1e0 = ", s1e0))
 *)
 in//let
-  s2exp(s2t0, S2Enone1(s1e0))
+s2exp_make_node(s2t0, S2Enone1(s1e0))
 end (*let*) // end of [s2exp_none1(s1e0)]
 //
 (* ****** ****** *)

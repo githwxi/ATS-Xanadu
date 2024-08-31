@@ -427,7 +427,7 @@ val tnd = tok.tnode()
 //
 (*
 val () =
-prerrln
+prerrsln
 ("fp_d0ecl: tok=", tok)
 *)
 //
@@ -458,9 +458,9 @@ T_ENDLOC() => true | _ => false)
 //
 (*
 val ( ) =
-prerrln("fp_d0ecl: f00 = ", f00)
+prerrsln("fp_d0ecl: f00 = ", f00)
 val ( ) =
-prerrln("fp_d0ecl: tok = ", tok)
+prerrsln("fp_d0ecl: tok = ", tok)
 *)
 //
 in//let
@@ -1371,7 +1371,7 @@ val tok = buf.getk0()
 //
 (*
 val () =
-prerrln("p1_s0qag: tok = ", tok)
+prerrsln("p1_s0qag: tok = ", tok)
 *)
 //
 in//let
@@ -1413,7 +1413,7 @@ val tok = buf.getk0()
 //
 (*
 val () =
-prerrln("p1_t0qag: tok = ", tok)
+prerrsln("p1_t0qag: tok = ", tok)
 *)
 //
 in//let
@@ -1871,7 +1871,7 @@ val (  ) = buf.skip1()
 //
 (*
 val (  ) =
-prerrln
+prerrsln
 ("pk_valdclst: tknd=", tknd)
 *)
 //
@@ -1909,7 +1909,7 @@ val (  ) = buf.skip1()
 //
 (*
 val (  ) =
-prerrln
+prerrsln
 ("pk_vardclst: tknd=", tknd)
 *)
 //
@@ -1947,7 +1947,7 @@ val (  ) = buf.skip1()
 //
 (*
 val (  ) =
-prerrln
+prerrsln
 ("pk_fundclst: tknd=", tknd)
 *)
 //
@@ -2065,9 +2065,11 @@ topt = pq_EQ0(buf, err)
 //
 (*
 val () =
-prerrln("p1_d0valdcl: dpat = ", dpat)
+prerrsln
+("p1_d0valdcl: dpat = ", dpat)
 val () =
-prerrln("p1_d0valdcl: topt = ", topt)
+prerrsln
+("p1_d0valdcl: topt = ", topt)
 *)
 //
 in//let

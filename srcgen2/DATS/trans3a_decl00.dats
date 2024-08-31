@@ -96,10 +96,10 @@ d3ecl_make_node
 //
 (*
 val () =
-prerrln
+prerrsln
 ("d3ecl_tmplocal: tmps = ", tmps)
 val () =
-prerrln
+prerrsln
 ("d3ecl_tmplocal: dtmp = ", dtmp)
 *)
 //
@@ -115,10 +115,10 @@ trans3a_d3ecl
 val
 loc0 = d3cl.lctn()
 val () =
-prerrln
+prerrsln
 ("trans3a_d3ecl: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("trans3a_d3ecl: d3cl = ", d3cl)
 *)
 //
@@ -299,7 +299,7 @@ val (  ) =
 the_d3tmpenv_pvsadd0(fnm2,dpar)
 (*
 val (  ) =
-prerrln
+prerrsln
 ("f0_staload(3a): dpar = ", dpar)
 *)
 } (* end-of-[optn_vt_nil(...)] *)
@@ -310,7 +310,7 @@ S3TALOADdpar(shrd, dpar)) where
 {
 (*
 val (  ) =
-prerrln
+prerrsln
 ("f0_staload(3a): dpar = ", dpar)
 *)
 } (* end-of-[optn_vt_cons(...)] *)
@@ -368,10 +368,10 @@ D3Cvaldclst
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_valdclst: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("f0_valdclst: d3cl = ", d3cl)
 *)
 //
@@ -400,10 +400,10 @@ D3Cvardclst
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_vardclst: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("f0_vardclst: d3cl = ", d3cl)
 *)
 //
@@ -434,10 +434,10 @@ D3Cfundclst
 //
 (*
 val () =
-prerrln
+prerrsln
 ("f0_fundclst: loc0 = ", loc0)
 val () =
-prerrln
+prerrsln
 ("f0_fundclst: d3cl = ", d3cl)
 *)
 //
@@ -502,9 +502,9 @@ loc0 = d3cl.lctn((*void*)) // HX: enter
 //
 (*
 val (  ) =
-prerrln("f0_implmnt0(3a): loc0 = ", loc0)
+prerrsln("f0_implmnt0(3a): loc0 = ", loc0)
 val (  ) =
-prerrln("f0_implmnt0(3a): d3cl = ", d3cl)
+prerrsln("f0_implmnt0(3a): d3cl = ", d3cl)
 *)
 //
 }(*where*)//end of [f0_implmnt0(env0,d3cl)]
@@ -528,7 +528,7 @@ dimp = trans3a_d3ecl(env0, dimp)
 (*
 val
 (  ) =
-prerrln
+prerrsln
 ("f0_tmplocal(3a): dimp = ", dimp)
 *)
 //
@@ -552,9 +552,9 @@ loc0 = d3cl.lctn((*void*)) // HX: enter
 //
 (*
 val (  ) =
-prerrln("f0_tmplocal(3a): loc0 = ", loc0)
+prerrsln("f0_tmplocal(3a): loc0 = ", loc0)
 val (  ) =
-prerrln("f0_tmplocal(3a): d3cl = ", d3cl)
+prerrsln("f0_tmplocal(3a): d3cl = ", d3cl)
 *)
 //
 }(*where*)//end of [f0_tmplocal(env0,d3cl)]
@@ -733,7 +733,7 @@ end where
 //
 (*
 val () =
-prerrln("trans3a_d3fundcl: dfun = ", dfun)
+prerrsln("trans3a_d3fundcl: dfun = ", dfun)
 *)
 //
 }(*where*)//end-of-[trans3a_d3fundcl(env0,dfun)]

@@ -2312,7 +2312,7 @@ end (*let*) // end of [f0_dynconst(dcl, err)]
 (*
 val (  ) = // HX: for debugging
 (
-  prerrln( "preadx0_d0ecl: dcl = ", dcl ) )
+  prerrsln( "preadx0_d0ecl: dcl = ", dcl ) )
 *)
 (* ****** ****** *)
 //

@@ -153,7 +153,7 @@ dcl1 = d3ecl_tmpsub(tsub,dcl1)
 val (  ) =
 prerr("tr3benv_tapq_resolve:")
 val (  ) =
-prerrln("filter: dcl1 = ", dcl1)
+prerrsln("filter: dcl1 = ", dcl1)
 *)
 //
 in//let
@@ -166,9 +166,9 @@ end//let//end-of-[list_cons(...)]
 //
 (*
 val () =
-prerrln("tr3benv_tapq_resolve: d2c0 = ", d2c0)
+prerrsln("tr3benv_tapq_resolve: d2c0 = ", d2c0)
 val () =
-prerrln("tr3benv_tapq_resolve: t2js = ", t2js)
+prerrsln("tr3benv_tapq_resolve: t2js = ", t2js)
 *)
 //
 }(*where*)//end-of-[tr3benv_tapq_resolve(env0,...)]

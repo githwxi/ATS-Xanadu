@@ -601,7 +601,7 @@ end//let//end-of-[f0(tenv,g0nm)]
 //
 (*
 val () =
-prerrln
+prerrsln
 ("trans01_g0nam: g0nm = ", g0nm)
 *)
 //
@@ -972,13 +972,13 @@ trans01_g0exp
 val loc0 = g0e0.lctn()
 //
 val (  ) =
-prerrln(
+prerrsln(
 "trans01_g0exp: loc0 = ", loc0
-)(*prerrln*)
+)(*prerrsln*)
 val (  ) =
-prerrln(
+prerrsln(
 "trans01_g0exp: g0e0 = ", g0e0
-)(*prerrln*)
+)(*prerrsln*)
 *)
 //
 in(*in-of-let*)
@@ -1046,7 +1046,7 @@ end (*let*) // end of [G0MAGdarg(...)]
 {
 (*
 val (  ) =
-prerrln("trans01_g0mag: g0ma = ", g0ma)
+prerrsln("trans01_g0mag: g0ma = ", g0ma)
 *)
 } (*where*) // end of [trans01_g0mag(tenv,g0ma)]
 
@@ -1061,13 +1061,13 @@ trans01_sort0
 val loc0 = s0e0.lctn()
 //
 val (  ) =
-prerrln(
+prerrsln(
 "trans01_sort0: loc0 = ", loc0
-)(*prerrln*)
+)(*prerrsln*)
 val () =
-prerrln(
+prerrsln(
 "trans01_sort0: s0t0 = ", s0t0
-)(*prerrln*)
+)(*prerrsln*)
 //
 *)
 (* ****** ****** *)
@@ -1236,13 +1236,13 @@ trans01_s0exp
 val loc0 = s0e0.lctn()
 //
 val (  ) =
-prerrln(
+prerrsln(
 "trans01_s0exp: loc0 = ", loc0
-)(*prerrln*)
+)(*prerrsln*)
 val () =
-prerrln(
+prerrsln(
 "trans01_s0exp: s0e0 = ", s0e0
-)(*prerrln*)
+)(*prerrsln*)
 *)
 //
 (* ****** ****** *)
@@ -1793,7 +1793,7 @@ trans01_s0mag
 val loc0 = s0ma.lctn()
 //
 (*
-val (  ) = prerrln
+val (  ) = prerrsln
 ("trans01_s0mag: s0ma = ", s0ma)
 *)
 //

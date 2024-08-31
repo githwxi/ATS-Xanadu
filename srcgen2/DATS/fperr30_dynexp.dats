@@ -119,11 +119,11 @@ let
   val loc = d3p.lctn((*void*))
   val t2p = d3p.styp((*void*))
 //
-  val ( ) = prerrln
+  val ( ) = prerrsln
   ("fperr30_d3pat: auxmain: loc = ", loc)
-  val ( ) = prerrln
+  val ( ) = prerrsln
   ("fperr30_d3pat: auxmain: t2p = ", t2p)
-  val ( ) = prerrln
+  val ( ) = prerrsln
   ("fperr30_d3pat: auxmain: d3p = ", d3p)
 endlet
 //
@@ -144,13 +144,13 @@ let
 val loc0 = d3p0.lctn()
 in//let
 (*
-prerrln
+prerrsln
 ("fperr30_d3pat: loc0 = ", loc0)
 *)
 end//let
 (*
 val () =
-prerrln
+prerrsln
 ("fperr30_d3pat: d3p0 = ", d3p0)
 *)
 //
@@ -170,7 +170,7 @@ let
 val loc0 = d3p0.lctn((*0*))
 in//let
 (*
-prerrln
+prerrsln
 ("FPERR30-ERROR:",loc0,":",d3p0)
 *)
 end//let
@@ -326,11 +326,11 @@ let
   val loc = d3e.lctn((*void*))
   val t2p = d3e.styp((*void*))
 //
-  val ( ) = prerrln
+  val ( ) = prerrsln
   ("fperr30_d3exp: auxmain: loc = ", loc)
-  val ( ) = prerrln
+  val ( ) = prerrsln
   ("fperr30_d3exp: auxmain: t2p = ", t2p)
-  val ( ) = prerrln
+  val ( ) = prerrsln
   ("fperr30_d3exp: auxmain: d3e = ", d3e)
 //
 endlet
@@ -352,13 +352,13 @@ let
 val loc0 = d3e0.lctn()
 in//let
 (*
-prerrln
+prerrsln
 ("fperr30_d3exp: loc0 = ", loc0)
 *)
 end//let
 (*
 val () =
-prerrln
+prerrsln
 ("fperr30_d3exp: d3e0 = ", d3e0)
 *)
 //
@@ -378,7 +378,7 @@ let
 val loc0 = d3e0.lctn((*0*))
 in//let
 (*
-prerrln
+prerrsln
 ("FPERR30-ERROR:",loc0,":",d3e0)
 *)
 end//let

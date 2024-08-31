@@ -76,7 +76,7 @@ sort2_funq
 let
 (*
 val () =
-prerrln
+prerrsln
 ("sort2_funq: s2t0 = ", s2t0)
 *)
 in//let
@@ -341,30 +341,30 @@ else
 //
 (*
 val () =
-prerrln("subsort_test: t1 = ", t1)
+prerrsln("subsort_test: t1 = ", t1)
 val () =
-prerrln("subsort_test: t2 = ", t2)
+prerrsln("subsort_test: t2 = ", t2)
 //
 val b1 = sortbox(t1)
 val b2 = sortbox(t2)
 val () =
-prerrln("subsort_test:sortbox(t1) = ", b1)
+prerrsln("subsort_test:sortbox(t1) = ", b1)
 val () =
-prerrln("subsort_test:sortbox(t2) = ", b2)
+prerrsln("subsort_test:sortbox(t2) = ", b2)
 //
 val b1 = sortlin(t1)
 val b2 = sortlin(t2)
 val () =
-prerrln("subsort_test:sortlin(t1) = ", b1)
+prerrsln("subsort_test:sortlin(t1) = ", b1)
 val () =
-prerrln("subsort_test:sortlin(t2) = ", b2)
+prerrsln("subsort_test:sortlin(t2) = ", b2)
 //
 val b1 = sortprf(t1)
 val b2 = sortprf(t2)
 val () =
-prerrln("subsort_test:sortprf(t1) = ", b1)
+prerrsln("subsort_test:sortprf(t1) = ", b1)
 val () =
-prerrln("subsort_test:sortprf(t2) = ", b2)
+prerrsln("subsort_test:sortprf(t2) = ", b2)
 *)
 //
 }(*where*) // end-of-[subsort_test(t1, t2)]
@@ -488,9 +488,9 @@ if
 {
 (*
   val () =
-  prerrln("lte_sort2_sort2: x1 = ", x1)
+  prerrsln("lte_sort2_sort2: x1 = ", x1)
   val () =
-  prerrln("lte_sort2_sort2: x2 = ", x2)
+  prerrsln("lte_sort2_sort2: x2 = ", x2)
 *)
 } (*where*) // end of [lte_sort2_sort2(x1,x2)]
 
