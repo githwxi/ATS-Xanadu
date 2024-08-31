@@ -36,32 +36,32 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 #include
-"./../../../..\
+"./../../..\
 /HATS/xatsopt_sats.hats"
 #include
-"./../../../..\
+"./../../..\
 /HATS/xatsopt_dats.hats"
 (* ****** ****** *)
 #include
-"./../../HATS/libxatsopt.hats"
+"./../HATS/libxatsopt.hats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #staload
-"./../../SATS/intrep0.sats"
+"./../SATS/intrep0.sats"
 #staload
-"./../../SATS/intrep1.sats"
+"./../SATS/intrep1.sats"
 #staload
-"./../../SATS/trxd3i0.sats"
+"./../SATS/trxd3i0.sats"
 #staload
-"./../../SATS/trxi0i1.sats"
+"./../SATS/trxi0i1.sats"
 #staload
-"./../../SATS/xats2js.sats"
+"./../SATS/xats2js.sats"
 #staload
-"./../../SATS/js1emit.sats"
+"./../SATS/js1emit.sats"
 //
 #staload _ =
-"./../../DATS/xats2js_tmplib.dats"
+"./../DATS/xats2js_tmplib.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
